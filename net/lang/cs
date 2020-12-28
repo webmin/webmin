@@ -6,6 +6,7 @@ index_delete1=Deaktivace vybraných rozhraní
 index_delete2=Vymazat vybrané rozhraní
 index_delete3=Vymazat vybrané rozhraní a použít tuto konfiguraci
 index_apply2=Použij vybrané rozhraní
+
 ifcs_title=Síťové rozhraní
 ifcs_now=Právě aktivní rozhraní
 ifcs_activedesc=Níže sepsaná rozhraní jsou ve vašem systému aktivní. Ve většině případů je můžete upravit v tabulce <b>Boot Time</b>.
@@ -36,6 +37,7 @@ ifcs_all=Všechny rozhraní
 ifcs_ecannot=Nemáte oprávnění editovat síťová rozhraní
 ifcs_ecannot_this=Nemáte oprávnění editovat toto síťové rozhraní
 ifcs_range=Rozsah $1
+
 aifc_create=Vytvořit aktivní rozhraní
 aifc_edit=Editovat aktivní rozhraní
 aifc_desc1=Parametry aktivního rozhraní
@@ -56,6 +58,7 @@ aifc_emtu='$1' není platným MTU
 aifc_ehard='$1' není platnou hardwarovou adresou
 aifc_eexist=Rozhraní '$1' neexistuje
 aifc_eclash=Rozhraní $1 už má použitou tuto IP adresu
+
 bifc_create=Vytvořit bootovací rozhraní
 bifc_edit=Editovat bootovací rozhraní
 bifc_desc1=Parametry rozhraní pro Boot Time
@@ -77,6 +80,7 @@ bifc_err4=Chyba při deaktivaci rozhraní
 bifc_capply=Vytvořit a použít
 bifc_eapply=Nemůžete aktivovat rozhraní, protože se používá DHCP nebo BOOTP
 bifc_edhcpmain=DHCP může být aktivní pouze na primárním rozhraní.
+
 bonding_add=Přidat nové propojovací rozhraní.
 bonding_create=Vytvořit bootovací propojovací rozhraní.
 bonding_teamparts=Teaming partner
@@ -84,9 +88,11 @@ bonding_teammode=Mód pro teaming
 bonding_miimon=Interval pro Mii-monitoring
 bonding_updelay=Prodleva při nahození
 bonding_downdelay=Prodleva pro shození
+
 vlan_add=Přidat rozhraní Vlan Tagged
 vlan_physical=Fyzické zařízení
 vlan_create=Vytvořit rozhraní Vlan Tagged
+
 routes_title=Routery a brány
 routes_boot=Konfigurace routerování bude je aktivováno v <i>boot time</i>
 routes_now=Konfigurace routerů bude nyní aktivována
@@ -144,6 +150,7 @@ routes_derr=Chyba při vymazání routerů
 routes_denone=Nic není vybráno
 routes_ecnetmask2=Maska sítě nesmí být definována u výchozího routeru
 routes_ggw=Použít router $1 na rozhraní $2
+
 dns_title=DNS klient
 dns_options=Nastavení DNS klienta
 dns_hostname=Hostname
@@ -161,6 +168,7 @@ dns_edomain='$1' není platné doménové jméno
 dns_esearch=ádné domény k nalezení
 dns_hoststoo=Upravit hostname v adrese hosta jestliže je změněna?
 dns_dhcp=Jméno hosta je nastaveno pomocí DHCP serveru?
+
 hosts_title=Host Adresy
 hosts_ip=IP Adresy
 hosts_host=Hostnames
@@ -171,6 +179,7 @@ hosts_detail=Host a adresy
 hosts_return=seznam host adres
 hosts_ecannot=Nemáte oprávnění editovat host adresy
 hosts_delete=Vymazat vybrané Adresy Hostů
+
 ipnodes_title=IPv6 Adresy Hostu
 ipnodes_ip=IPv6 adresa
 ipnodes_host=Jméno hosta
@@ -180,6 +189,7 @@ ipnodes_create=Vytvořit adresu hosta verze IPv6
 ipnodes_detail=Hosté a Adresy
 ipnodes_return=Seznam IPv6 adres hostů
 ipnodes_ecannot=Nemáte povolení upravovat IPv6 adresy hosta
+
 log_create_host=Vytvořena host adresa $1
 log_delete_host=Smazána host adresa $1
 log_modify_host=Modifikovánsa host adresa $1
@@ -202,6 +212,7 @@ log_apply_bfics=Aktivováno $1 rozhraní během bootování
 log_create_route=Vytvořen aktivní router pro $1
 log_create_defroute=Vytvořit aktivní výchozí router
 log_delete_routes=Vymazat $1 aktivní routery
+
 acl_ifcs=Lze editovat síťové rozhraní?
 acl_routes=Lze editovat routerování a brány?
 acl_dns=Lze editovat nastavení DNS klienta?
@@ -218,6 +229,7 @@ acl_up=Mohu editovat aktivní status?
 acl_virt=Mohu přidat virtuální rozhraní?
 acl_delete=Mohu vymazat rozhraní?
 acl_hide=Skrýt needitovatelné rozhraní?
+
 interfaces_title1=Změnit rozhraní...
 interfaces_all=Všechna rozhraní...
 interfaces_sel=Vybraná rozhraní
@@ -225,7 +237,9 @@ interfaces_ok=OK
 interfaces_cancel=Storno
 interfaces_clear=Vyčistit
 interfaces_title2=Vybrat uživatele...
+
 apply_ecannot=Nemáte oprávnění uložit aktuální konfiguraci
+
 mod_egone=Rozhraní už není aktivní!
 mod_title=Aktivní rozhraní
 mod_desc=$1 rozhraní je použito pro $2, a nemůže být upravována pomocí tohoto modulu.
@@ -237,6 +251,7 @@ mod_pptpc=PPTP připojení $1
 mod_zones=virtuální rozhraní pro zónu <tt>$1</tt>
 mod_virtualmin=Virtualmin server <tt>$1</tt>
 mod_reseller=Virtualmin reseller <tt>$1</tt>
+
 range_edit=Upravit adresní rozsah
 range_create=Vytvořit Adresní Rozsah
 range_header=Možnosti pro adresní rozsah rozhraní
@@ -252,10 +267,13 @@ range_eend=Chybějící nebo špatná koncová adresa
 range_enum=Chybějící nebo nečíselné číslo prvního virtuálního rozhraní
 range_eclass=Začínající a koncové adresy musejí být ve stejné síti třídy C
 range_ebefore=Koncová adresa musí být vyšší než začínající
+
 chooser_any=&lt;Nějaký&gt;
 chooser_other=Další...
+
 dafics_err=Chyba při deaktivaci rozhraní
 daifcs_enone=Nic není vybráno
 daifcs_egone=Rozhraní neexistuje!
+
 dbifcs_err=Chyba při vymazání rozhraní
 dbifcs_err2=Chyba při aktivaci rozhraní

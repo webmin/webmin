@@ -19,6 +19,7 @@ index_refsel=Verfris gekies
 index_group=Lede van $1 
 index_tmpls=Redigeer e-possjablone
 index_tmplsdesc=Kyk en redigeer sjablone wat gebruik word om e-posboodskappe te stuur wat gestuur is wanneer dienste wat gemonitor word, afgaan.
+
 type_apache=Apache-webbediener
 type_inetd=Internet- en RPC-bediener
 type_xinetd=Uitgebreide internetbediener
@@ -73,8 +74,10 @@ type_alive=Lewende stelsel
 type_rssh=Afstand SSH
 type_slapd=LDAP-bediener
 type_ldap=LDAP-verbinding
+
 mon_create=Skep Monitor
 mon_edit=Wysig Monitor
+mon_virtualmin=Waarskuwing! Hierdie monitor word geassosieer met die Virtualmin-domein $1 en moet dus nie hier gewysig of verwyder word nie.
 mon_header=Monitor besonderhede
 mon_header2=Opdragte om uit te voer
 mon_header3=Gemonitorde diensopsies
@@ -138,6 +141,7 @@ mon_changes0=Wys elke tipe gebeurtenis
 mon_changes1=Wys slegs veranderinge
 mon_all=Toon alle historiese gebeure
 mon_nochanges=Geen statusveranderings het tydens die laaste historiese gebeure van $1 plaasgevind nie.
+
 sched_title=Geskeduleerde monitering
 sched_header=Opsies vir geskeduleerde agtergrondmonitering
 sched_mode=Geplande kontrole geaktiveer?
@@ -184,16 +188,19 @@ sched_subject0=Geen (waarskuwing is in die liggaam)
 sched_subject1=Waarskuwingsteks (laat die liggaam leeg)
 sched_subject2=Pasgemaakte teks
 sched_esubject=Onderwerp met SMS-boodskap ontbreek
+
 up_since=Sedert $1 
 depends_mod=Die module $1 is nie op u stelsel geïnstalleer nie
 depends_os=Die module $1 word nie op u stelsel ondersteun nie
 depends_remote=Die module $1 word nie op bediener $2 ondersteun nie
+
 tcp_host=Gasheer om aan te sluit
 tcp_port=Hawe om aan te sluit
 tcp_alarm=Verbindingstyd
 tcp_ehost=Ontbrekende of ongeldige gasheernaam
 tcp_eport=Poortnommer ontbreek of ongeldig
 tcp_ealarm=Ontbreek of ongeldige verbindingstydperk
+
 http_url=URL om aan te vra
 http_alarm=Verbindingstyd
 http_eurl=URL ontbreek of ongeldig
@@ -208,11 +215,13 @@ http_regexp=Die bladsy moet ooreenstem met regexp
 http_eregexp=Geen gereelde uitdrukking vir bladsy om by te pas nie
 http_none2=Moenie ooreenstem nie
 http_ehead=Die HEAD-aanvraagmetode kan nie gebruik word as daar na 'n reëlmatige uitdrukking gekyk word nie
+
 ping_host=Gasheer vir ping
 ping_wait=Tyd om te wag vir reaksie
 ping_ehost=Ontbrekende of ongeldige gasheernaam
 ping_ewait=Wagtyd ontbreek of ongeldig
 ping_econfig=Geen ping-opdrag is opgestel in Module Config nie
+
 proc_pid=Hardloop met PID's $1 
 proc_cmd=Opdrag om na te gaan
 proc_not=Misluk as die proses is
@@ -224,6 +233,7 @@ proc_ethresh=Ontbrekende of ongeldige aantal prosesse
 proc_asuser=Hardloop as gebruiker
 proc_anyuser=Enige gebruiker
 proc_easuser=Gebruiker vir die proses om te loop soos wat nie bestaan nie
+
 exec_cmd=Opdrag om te hardloop
 exec_mode=Verlaat statuskontrole
 exec_mode0=Misluk monitor as opdrag misluk
@@ -235,6 +245,7 @@ exec_noregexp=Moenie kyk nie
 exec_remode=Kontroleer weer
 exec_remode0=Misluk as die uitset nie ooreenstem nie
 exec_remode1=Misluk as die uitset wel ooreenstem
+
 file_file=Lêer, gids of patroon om na te gaan
 file_test=Toets om uit te voer
 file_test_0=Moet bestaan
@@ -253,6 +264,7 @@ file_group=Lêergroep moet wees
 file_nocheck=enigiets
 file_perms=Octale regte moet wees
 file_eperm=Lêers met verkeerde regte : $1 
+
 traffic_iface=Koppelvlak om te monitor
 traffic_bytes=Maksimum grepe/sekonde
 traffic_dir=Rigting om te monitor
@@ -262,6 +274,7 @@ traffic_dir2=Slegs uitgaande
 traffic_desc=Hierdie monitor hou die netwerkverkeer op 'n geselekteerde koppelvlak dop en vertoon die monitor as afwaarts as die verkeer die aantal grepe per sekonde hieronder oorskry. Dit werk regtig goed as geskeduleerde monitering ingeskakel is op 'n kort interval, soos elke 5 minute.
 traffic_eifaces=U bestuurstelsel het nie 'n/proc/net/dev-lêer nie
 traffic_ebytes=Ontbrekende of ongeldige aantal grepe/sekonde
+
 space_fs=Lêerstelsel om na te gaan
 space_min2=Minimum gratis spasie
 space_mode0=Absolute grootte
@@ -277,6 +290,7 @@ space_ierr=Slegs $1 inodes gratis
 space_merr=Slegs $1 spasie gratis
 space_perr=Slegs $1% gratis
 space_dferr=Kon nie lêersisteemgrootte kry nie
+
 load_time=Laai gemiddeld om na te gaan
 load_1=1 minuut
 load_5=5 minute
@@ -285,6 +299,7 @@ load_max=Maksimum lasgemiddeld
 load_emax=Gemiddelde maksimum laslading gemis of ongeldig
 load_ecmd=Die <tt>uptime</tt> opdrag is nie op u stelsel gevind nie
 load_efmt=Die uitvoer van die <tt>uptime</tt> opdrag kon nie ontleed word nie
+
 log_create=Geskep monitor $1 
 log_modify=Gewysigde monitor $1 
 log_delete=Monitor $1 is uitgevee
@@ -295,10 +310,14 @@ log_tmpl_modify=Gewysigde e-possjabloon $1
 log_tmpl_delete=E-possjabloon $1 is verwyder
 log_tmpl_deletes=$1 e-possjablone is uitgevee
 log_refresh=Verfris monitorstatusse
+
 acl_edit=Kan monitors gewysig en geskep word?
 acl_sched=Kan geskeduleerde monitering verander?
+
 change_file=Lêer of gids om te monitor (misluk as dit verander word)
+
 jabber_eparser=Die Perl-module $1 is nie op u stelsel geïnstalleer nie.
+
 memory_min2=Minimum gratis regte geheue
 memory_emin=Ontbrekende of ongeldige hoeveelheid gratis regte geheue
 memory_eproc=Webmin weet nie hoe om u geheue op u bedryfstelsel te kontroleer nie
@@ -308,7 +327,9 @@ memory_freelow=Slegs $1 regte geheue gratis
 memory_freelowswap=Slegs $1 virtuele geheue gratis
 memory_minswap=Minimum gratis virtuele geheue
 memory_eminswap=Ontbrekende of ongeldige hoeveelheid gratis virtuele geheue
+
 proftpd_etype=Hierdie monitor kan nie gebruik word wanneer ProFTPD selfstandig bestuur word nie
+
 mailserver_to=Stuur e-pos na adres
 mailserver_timeout=Time-out en interval
 mailserver_units_0=sekondes
@@ -316,22 +337,28 @@ mailserver_units_1=Minute
 mailserver_units_2=Ure
 mailserver_units_3=dae
 mailserver_desc=Die onderstaande adres moet 'n outo-antwoorder wees wat op die bronadres beantwoord met dieselfde onderwerp: reël.
+
 oldfile_file=Lêer om te monitor (misluk as dit nie verander word nie)
 oldfile_diff=Misluk indien nie verander nie
 oldfile_secs=secs
+
 raid_device=RAID-toestel
 raid_edevice=Geen RAID-toestel is gekies nie
 raid_bad=Slegte skyf bespeur
 raid_resync=Hersinkroniseer tans
 raid_notfound=RAID-toestel $1 nie gevind nie
 raid_other=Ander ..
+
 iface_iface=Koppelvlak om na te gaan
+
 init_action=Aksie om na te gaan
 init_eaction=Geen aksie gekies nie
+
 refresh_title=Verfris status
 refresh_doing=Verfris die status van alle monitors ..
 refresh_doing2=Verfris die status van $1 geselekteerde monitors.
 refresh_done=.. klaar.
+
 sensors_name=Sensor om na te gaan
 sensors_value=Misluk toe
 sensors_value0=Stelsel dui op waarskuwing
@@ -342,6 +369,7 @@ sensors_none=Geen sensors is op u stelsel bespeur nie. Miskien moet u die <tt>se
 sensors_cur=$1 (tans $2 $3)
 sensors_emin=Minimale waarde ontbreek of ongeldig
 sensors_emax=Die maksimum waarde ontbreek of ongeldig
+
 nut_ups=NUT UPS om na te gaan
 nut_name=Kenmerk om na te gaan
 nut_value=Misluk toe
@@ -352,6 +380,7 @@ nut_eups=Geen USP om te kontroleer is ingevoer nie
 nut_cur=$1 (tans $2)
 nut_emin=Minimale waarde ontbreek of ongeldig
 nut_emax=Die maksimum waarde ontbreek of ongeldig
+
 mailq_system=Posbediener
 mailq_qmailadmin=Qmail
 mailq_postfix=postfix
@@ -360,6 +389,7 @@ mailq_size=Maksimum e-pos-tougrootte
 mailq_esize=Maksimum grootte van die tou ontbreek of ongeldig
 mailq_toomany=Af - $1 boodskappe in die ry
 mailq_ok=Op - $1 boodskappe in die ry
+
 dns_server=DNS-bediener
 dns_host=Gasheernaam om op te soek
 dns_address=IP-adres verwag
@@ -367,6 +397,7 @@ dns_eserver=DNS-bediener ontbreek of ongeldig
 dns_ehost=Ontbrekende of ongeldige soeknaam vir gasheer om op te soek
 dns_eaddress=IP-adres ontbreek of ongeldig
 dns_ecmds=Nóg die <tt>nslookup</tt> of <tt>gra</tt> opdragte is op u stelsel geïnstalleer
+
 monitor_sub_down=$1 af op $2 
 monitor_pager_down=$1 : "$2" is af $3 
 monitor_snmp_down= $1:$2 
@@ -398,8 +429,10 @@ monitor_run1=Loop $1 op $2.
 monitor_run2=Loop $1.
 monitor_runerr=Kon nie $1 op $2 : $3 hardloop nie
 monitor_email_stat=Huidige status: $1 
+
 deletes_egone=Een van die gekose monitors bestaan nie meer nie
 deletes_enone=Geen monitors gekies nie
+
 ftp_host=FTP-bediener gasheer
 ftp_port=FTP-poort
 ftp_user=Teken in as gebruiker
@@ -416,6 +449,7 @@ ftp_econn=TLS FTP-verbinding misluk
 ftp_econn2=TLS FTP-verbinding misluk : $1 
 ftp_elogin=TLS FTP-aanmelding misluk : $1 
 ftp_etlsfile=TLS FTP-aflaai misluk : $1 
+
 query_driver=SQL databasis tipe
 query_db=Databasisnaam
 query_host=Databasisbediener gasheer
@@ -436,9 +470,12 @@ query_elogin=Aanmelding misluk : $1
 query_eprepare=SQL-fout : $1 
 query_eexecute=SQL misluk : $1 
 query_ewrong=Verkeerde resultaat : $1 
+
 consume_rate=Maksimum verbruikstempo (per sekonde)
 consume_high=Verbruikskoers is $1 / sekonde
+
 alive_up=Op vir $1 
+
 rssh_host=SSH-bedienergasheer
 rssh_ruser=Teken in as gebruiker
 rssh_rpass=Teken in met wagwoord
@@ -454,6 +491,7 @@ rssh_error=SSH-fout
 rssh_haspass=wagwoord
 rssh_port=SSH-bedienerspoort
 rssh_eport=Poortnommer ontbreek of ongeldig
+
 tmpls_title=E-possjablone
 tmpls_ecannot=U mag nie e-possjablone wysig nie
 tmpls_none=Geen e-possjablone is nog gedefinieër nie. Alle waarskuwings sal met die standaardboodskappe van Webmin gestuur word.
@@ -462,6 +500,7 @@ tmpls_email=E-pos boodskap
 tmpls_add=Voeg 'n nuwe e-possjabloon by.
 tmpls_return=sjablone lys
 tmpls_delete=Vee geselekteerde sjablone uit
+
 tmpl_title1=Skep e-possjabloon
 tmpl_title2=E-possjabloon wysig
 tmpl_header=Berig e-pospatroonboodskappe
@@ -486,9 +525,11 @@ tmpl_esms=SMS-boodskap ontbreek
 tmpl_esnmp=SNMP-boodskap ontbreek
 tmpl_err2=Kon nie die e-possjabloon uitvee nie
 tmpl_eusers=Dit word deur die volgende monitors gebruik : $1 
+
 dtmpls_err=Kon nie sjablone uitvee nie
 dtmpls_enone=Geen gekies nie
 dtmpls_eusers=$1 word deur die volgende monitors gebruik : $2 
+
 sslcert_src=Sertifikaatligging
 sslcert_url=Vanaf HTTPS URL
 sslcert_file=Van lêer op bediener
@@ -506,18 +547,21 @@ sslcert_eend=Nie geldig na $1 nie
 sslcert_left=Op - $1 dae tot verstryking
 sslcert_ematch=Gasheernaam $1 stem nie ooreen met sertifikaat $2 nie
 sslcert_emismatch=Sertifikaat-gasheernaamkontrole kan slegs gebruik word as u 'n URL nagaan
+
 du_dir=Gids om te monitor
 du_max=Maksimum grootte
 du_edir=Ontbrekende of nie-absolute gidspad
 du_emax=Maksimum of nie-numeriese maksimum grootte
 du_over=Grootte is $1 
 du_under=Grootte is slegs $1 
+
 ldap_edriver=Die Perl-module $1 is nie geïnstalleer nie
 ldap_host=LDAP-bediener gasheernaam
 ldap_port=LDAP-bedienerspoort
 ldap_ssl=Gebruik SSL-verbinding?
 ldap_user=LDAP-bedieneraanmelding
 ldap_pass=LDAP-bedienerwagwoord
+
 info_desc=Stelselmonitor
 info_last=Huidige toestand
 info_title=Stelsel- en bedienerstatus

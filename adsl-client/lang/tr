@@ -14,6 +14,7 @@ index_esetup=RedHat ADSL yapılandırma dosyası $1 sisteminizde mevcut değil. 
 index_setup=Yapılandırma dosyasını ayarla
 index_cancel=Bağlantıyı iptal et
 index_canceldesc=ADSL istemcisi bir bağlantı kurmaya çalışıyor. Bu butonu tıkladığınızda bağlantı denemesi $1 komutu ile iptal edilecektir.
+
 index_header=ADSL istemcisi yapılandırma seçenekleri
 index_desc=Aşağıdaki ayarlar sisteminizde başlatılacak olan yeni ADSL bağlantılarına uygulanacaktır. Eğer bunları değiştirirseniz, aktif hale gelmesi için bağlantıyı kapamalı ve yeniden başlatmalısınız.
 index_eth=Ethernet arayüzü
@@ -34,11 +35,13 @@ index_fw_standalone=Tek makine için
 index_fw_masquerade=NAT ağ geçidi için
 index_connect=Bağlantı için beklenecek süre
 index_forever=Daima
+
 start_err=ADSL bağlantısının başlatılmasında hata oluştu
 start_title=ADSL'i Başlat
 start_ip=ADSL bağlantısı $1 IP adresi ile oluşturuldu.
 start_demand=İstek üzerine bağlantı aktif olduğundan ADSL bağlantınız sadece gerektiğinde başlatılacaktır.
 start_bg=ADSL bağlantınız 20 saniye içinde başlatılacaktır. ADSL istemci programı başarılı olana kadar bağlanmayı deneyecektir.
+
 save_err=ADSL yapılandırmasının kaydedilmesinde hata oluştu
 save_eeth=Eksik ya da geçersiz ethernet arayüzü
 save_etimeout=Eksik ya da geçersiz istek üzerine bağlantı gecikme süresi
@@ -47,10 +50,12 @@ save_econnect=Eksik ya da geçersiz bağlantı gecikme süresi
 save_emss=Eksik ya da geçersiz maksimum paket boyutu
 save_title=Yapılandırmayı Kaydet
 save_desc=ADSL istemcisi yapılandırmanız başarı ile kaydedildi, ama yeniden bağlanılana kadar kullanılmayacaktır.
+
 stop_err=ADSL bağlantısının kapatılmasında hata oluştu
 stop_title=ADSL'i Kapat
 stop_ok=ADSL bağlantınız başarı ile kapatıldı.
 stop_failed=ADSL bağlantısını bir sebepten dolayı hala aktif!
+
 log_save=istemci yapılandırması kaydedildi
 log_stop=ADSL kapatıldı
 log_start=ADSL başladı

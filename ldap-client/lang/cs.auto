@@ -14,6 +14,7 @@ index_restart=Restartujte klienta LDAP klienta
 index_restartdesc=Použijte aktuální konfiguraci restartováním lokálního démona klienta LDAP.
 index_atboot=Spusťte klienta LDAP při spuštění
 index_atbootdesc=Mění, zda se démon klienta LDAP spustí, když se systém zavede nebo ne.
+
 server_title=Konfigurace serveru LDAP
 server_header=Server LDAP a možnosti přihlášení
 server_host=Názvy serverů LDAP
@@ -51,6 +52,7 @@ server_etimelimit=Chybějící nebo neplatný časový limit připojení
 server_ecacert=Chybějící nebo neplatný soubor certifikátu CA.
 server_euport=Chybějící nebo neplatný port pro server $1 
 server_euri=Nebyly zadány žádné servery LDAP
+
 base_title=Vyhledávací základny LDAP
 base_header=Vyhledávací umístění adresáře LDAP
 base_base=Globální vyhledávací základna
@@ -86,6 +88,7 @@ base_enetmasks=Chybí základna pro jména masky sítě
 base_ealiases=Chybí základna pro e-mailové aliasy
 base_enetgroup=Chybí základna pro netgroup
 base_etimelimit=Chybějící nebo neplatný časový limit vyhledávání
+
 pam_title=Možnosti ověřování
 pam_header=Nastavení PAM autentizace a hesla
 pam_filter=Další filtr LDAP
@@ -106,10 +109,12 @@ pam_efilter=Chybí další filtr LDAP
 pam_elogin=Chybějící nebo neplatný atribut LDAP pro uživatelské jméno
 pam_egroupdn=Chybí skupina LDAP k vynucení členství
 pam_emember=Chybějící nebo neplatný atribut LDAP pro členy skupiny
+
 switch_title=Služby využívající LDAP
 switch_service=Služba
 switch_srcs=Zdroje dat
 switch_return=služby využívající LDAP
+
 ldap_emodule=Není nainstalován modul $1 Perl potřebný pro komunikaci se serverem LDAP. <a href='$2'>Klikněte sem</a>, chcete-li si Webmin stáhnout a nainstalovat hned teď.
 ldap_emodule2=Není nainstalován modul $1 Perl potřebný pro komunikaci se serverem LDAP.
 ldap_econf=Konfigurační soubor klienta LDAP $1 nebyl ve vašem systému nalezen
@@ -119,6 +124,7 @@ ldap_elogin=Nepodařilo se navázat na server LDAP $1 jako $2 : $3
 ldap_anon=anonymní
 ldap_eparse=Nelze analyzovat URI serveru LDAP serveru $1 
 ldap_etls=Nepodařilo se přepnout do režimu TLS : $1 
+
 browser_title=Prohlížeč LDAP
 browser_econn=Nelze použít prohlížeč LDAP : $1 
 browser_base=Procházení:
@@ -129,6 +135,7 @@ browser_attrs=Atributy objektu
 browser_parent=Procházet rodiče
 browser_none=Žádný
 browser_sel=OK
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Uživatelské tiskárny
 order_xfn=XFN
 order_mdns4=Multicast DNS
 order_mdns4_minimal=Multicast DNS (minimální)
+
 desc_aliases=Sendmail aliasy
 desc_mail=Sendmail aliasy
 desc_hosts=Hostitelské adresy
@@ -177,6 +185,7 @@ desc_printers=Tiskárny
 desc_ipnodes=IP uzly
 desc_timezone=Časová pásma
 desc_locale=Národní prostředí
+
 eswitch_title=Upravit službu
 eswitch_egone=Služba neexistuje!
 eswitch_header=Detaily služby
@@ -196,6 +205,7 @@ eswitch_continue=Pokračujte ve vyhledávání
 eswitch_none=Žádný
 eswitch_err=Uložení služby se nezdařilo
 eswitch_enone=Nebyly vybrány žádné zdroje!
+
 log_server=Upravená konfigurace serveru LDAP
 log_base=Upravené základny vyhledávání LDAP
 log_pam=Změněné možnosti ověřování
@@ -205,6 +215,7 @@ log_delboot=Deaktivovaný démon klienta LDAP v době spuštění
 log_start=Spuštěn démon klienta LDAP
 log_stop=Zastaven démon klienta LDAP
 log_restart=Restartovaný démon klienta LDAP
+
 check_title=Ověření konfigurace LDAP
 check_base=Nalezení základny LDAP pro uživatele ..
 check_ebase=.. v konfiguraci klienta nebyl nalezen!

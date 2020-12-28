@@ -4,30 +4,43 @@ index_restart_wb=Restartujte servery Winbind
 index_restartmsg_wb=Klepnutím na toto tlačítko restartujete spuštěné servery Winbind ve vašem systému.
 index_stop_wb=Zastavte servery Winbind
 index_stopmsg_wb=Klepnutím na toto tlačítko vypnete spuštěné servery Winbind ve vašem systému.
+
 convert_who=Uživatelé Unix převést
 convert_who0=Pouze uvedení uživatelé nebo rozsahy UID
 convert_who1=Všichni kromě vyjmenovaných uživatelů a rozsahů UID
+
 net_ip=IP adresa
+
 smb_descriptionnone=Žádný
 smb_master_auto=Automatický
 smb_server=Heslo server
+
 euser_noexpire=Heslo Nikdy nevyprší
 euser_locked=Účet je uzamčen
+
 share_createperms=Vytvořit s oprávněními
 share_group=Vytvořit pomocí skupiny
+
 mkpass_added=Přidáno
 mkpass_user=Uživatelské jméno
 mkpass_action=Přijatá opatření
 mkpass_skipcount=Uživatelé $1 byli přeskočeni pro převod.
+
 savefshare_group=Chybějící nebo neplatná skupina pro nový adresář
 savefshare_perms=Chybějící nebo neplatná oprávnění pro nový adresář
 savefshare_emkdir=Nepodařilo se vytvořit adresář : $1 
+
 start_err_wb=Spuštění serverů Winbind se nezdařilo
+
 restart_err=Selhalo restartování serverů Samba
 restart_err_wb=Restartování serverů Winbind se nezdařilo
+
 viewu_refresh=Obnovit stránku.
+
 log_apply_wb=Restartované servery Winbind
 log_stop_wb=Zastavené servery Winbind
 log_start_wb=Spuštěny servery Winbind
+
 acl_bind=Lze přistupovat k možnostem winbind?
+
 bind_defaultdomain=Vždy použít výchozí doménu?

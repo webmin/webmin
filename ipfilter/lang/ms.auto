@@ -43,8 +43,10 @@ index_natnone=Tiada peraturan terjemahan alamat rangkaian yang telah ditakrifkan
 index_nataction=Mod NAT
 index_natfrom=Paket untuk dipadankan
 index_natto=Terjemahan
+
 dir_in=Masuk
 dir_out=Keluar
+
 action_pass=<font color=#00aa00>Lulus</font>
 action_block=<font color=#ff0000>Blok</font>
 action_skip=Langkau
@@ -57,6 +59,7 @@ action_map=Pemetaan
 action_rdr=Redirect
 action_bimap=Pemetaan Bidirectional
 action_map-block=Blok pemetaan
+
 laction_pass=<font color=#00aa00>Pas paket</font>
 laction_block=<font color=#ff0000>Blok paket, dengan kod ICMP</font>
 laction_log=Log pek, pada tahap
@@ -65,6 +68,7 @@ laction_skip=Langkau peraturan seterusnya
 laction_auth=Kebenaran ruang pengguna
 laction_preauth=Semak kebenaran sebelumnya
 laction_call=Fungsi kernel panggilan
+
 edit_title1=Buat Peraturan
 edit_title2=Edit Peraturan
 edit_header1=Tindakan peraturan
@@ -130,6 +134,7 @@ edit_icmp=Jenis ICMP
 edit_icmpany=&lt;Sebarang jenis&gt;
 edit_icmpcode=dan kod
 edit_codeany=&lt;Mana kod&gt;
+
 save_err=Gagal menyimpan peraturan
 save_ehostfrom=Nama hos asal yang hilang atau tidak sah
 save_ehostto=Nama hos destinasi yang hilang atau tidak sah
@@ -158,11 +163,13 @@ save_eto=Antara muka yang hilang atau tidak sah untuk dihantar
 save_etoip=Alamat IP tidak sah untuk dihantar
 save_ereplyto=Antara muka yang hilang atau tidak sah untuk membalasnya
 save_ereplytoip=Alamat IP tidak sah untuk membalas
+
 apply_err=Gagal menggunakan konfigurasi
 apply_remote=Ralat daripada $1 : $2 
 unapply_err=Gagal mengembalikan konfigurasi
 unapply_ein=Gagal mendapatkan peraturan input
 unapply_eout=Gagal mendapatkan peraturan keluaran
+
 desc_if=Jika $1 
 desc_and=dan
 desc_always=Sentiasa
@@ -196,6 +203,7 @@ desc_rdr=Alamat IP $1 port $2
 desc_dport1=pelabuhan adalah $1 
 desc_dport2=pelabuhan adalah antara $1 dan $2 
 desc_nattoiface=alamat antara muka
+
 log_create_rule=Peraturan $1 dibuat
 log_delete_rule=Peraturan $1 dipadam
 log_modify_rule=Peraturan $1 diubahsuai
@@ -224,6 +232,7 @@ log_add_host=Menambah pelayan kluster $1
 log_add_group=Menambahkan pelayan kelompok dari kumpulan $1 
 log_delete_host=Pelayan kluster yang dibuang $1 
 log_delete_group=Dikeluarkan pelayan kelompok $1 
+
 cluster_title=Pelayan Firewall Cluster
 cluster_none=Tiada pelayan telah ditambahkan ke cluster firewall lagi.
 cluster_host=Nama hos
@@ -234,6 +243,7 @@ cluster_gadd=Tambah pelayan dalam kumpulan
 cluster_need=Anda mesti menambah pelayan dengan log masuk dan kata laluan dalam Modul Indeks Servis Webmin sebelum mereka boleh diuruskan di sini.
 cluster_return=pelayan kluster
 cluster_delete=Buang yang ditanda
+
 add_title=Tambah Pelayan
 add_msg=Menambah $1 ..
 add_gmsg=Menambah pelayan dalam kumpulan $1 ..
@@ -242,6 +252,7 @@ add_gerr=Gagal menambah kumpulan
 add_echeck=Server $1 tidak mempunyai modul IPFilter Firewall
 add_emissing=Pelayan $1 tiada arahan firewall $2 
 add_ok=Ditambah $1, dengan peraturan firewall aktif $2.
+
 nat_title1=Buat Peraturan NAT
 nat_title2=Edit Peraturan NAT
 nat_action=Mod NAT
@@ -300,4 +311,5 @@ nat_edport2=Pelabuhan asli yang hilang atau tidak sah
 net_erdrip='$1' bukan alamat IP destinasi yang sah
 nat_erdrips=Tiada IP tujuan yang dimasukkan
 nat_erdrport=Port destinasi hilang atau tidak sah
+
 boot_esmf=Perkhidmatan SMF $1 tidak wujud atau tidak dalam keadaan yang diketahui

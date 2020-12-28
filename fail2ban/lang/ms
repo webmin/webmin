@@ -10,10 +10,12 @@ index_startdesc=Klik butang ini untuk memulakan pelayan Fail2Ban, supaya analisa
 index_restart=Mula semula pelayan Fail2Ban
 index_restartdesc=Klik butang ini untuk menggunakan konfigurasi semasa dengan memulakan semula pelayan Fail2Ban.
 index_return=Indeks modul
+
 check_edir=Direktori konfigurasi $1 tidak wujud
 check_econf=Fail konfigurasi $2 dalam $1 tidak wujud
 check_eclient=Arahan pelanggan $1 tidak dijumpai
 check_eserver=Arahan pelayan $1 tidak dijumpai
+
 filters_title=Penapis Log
 filters_name=Nama penapis
 filters_re=Regular expression
@@ -22,6 +24,7 @@ filters_add=Tambah penapis log baru.
 filters_return=Senarai penapis
 filters_derr=Gagal untuk memadam penapis
 filters_enone=Tiada dipilih
+
 filter_title1=Cipta Penapis
 filter_title2=Sunting Penapis
 filter_header=Butiran penapis log
@@ -34,6 +37,7 @@ filter_err=Gagal untuk menyimpan penapis
 filter_ename=Hilang atau nama penapis tidak sah
 filter_eclash=Nama penapis telah pun digunakan
 filter_efail=Tiada padanan 'regular expression' dimasukkan
+
 actions_title=Padanan Tindakan
 actions_name=Nama tindakan
 actions_ban=Arahan larangan
@@ -42,6 +46,7 @@ actions_add=Tambah tindakan baru.
 actions_return=Senarai tindakan
 actions_derr=Gagal untuk memadam tindakan
 actions_enone=Tiada dipilih
+
 action_title1=Cipta Padanan Tindakan
 action_title2=Sunting Padanan Tindakan
 action_header=Butiran padanan tindakan
@@ -56,5 +61,7 @@ action_stop=Arahan untuk dijalankan pada penutupan Fail2Ban
 action_check=Arahan untuk dijalankan sebelum menghalang IP
 action_ban=Arahan untuk menghalang IP
 action_unban=Arahan untuk menghapuskan sekatan IP
+
 jails_title=Penjara
+
 config_title=Konfigurasi global

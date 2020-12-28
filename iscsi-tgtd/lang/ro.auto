@@ -2,6 +2,7 @@ check_econfigset=Nici un set de fișiere de configurare iSCSI TGTd!
 check_econfig=Fișierul de configurare iSCSI TGTd $1 nu a fost găsit în sistemul dvs.
 check_etgtadm=Comanda de administrare iSCSI TGTd $1 nu a fost găsită în sistemul dvs.
 check_einit=Acțiunea de pornire $1 nu există
+
 index_title=iSCSI TGTd
 index_clink=Poate că nu este instalat sau configurația modulului <a href='$1'></a> este incorectă.
 index_stop=Opriți iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=Utilizatori permisiți
 index_size=Marimea totala
 index_noluns=Nici unul
 index_nousers=Orice
+
 dtargets_err=Nu a reușit să ștergeți țintele
 dtargets_enone=Nimic selectat!
+
 target_title1=Creați țintă iSCSI
 target_title2=Editează iSCSI Target
 target_header=Opțiuni de dispozitiv partajat iSCSI
@@ -74,11 +77,13 @@ target_direct=Acces direct la dispozitiv
 target_cache=Cache scrie pe dispozitiv?
 target_eaddr=Adresa IP permisă nevalidă
 target_eaname=Nume inițiator permis nevalid
+
 start_err=Eroare la pornirea iSCSI TGTd
 stop_err=Nu a reușit să oprească iSCSI TGTd
 restart_err=Nu a putut reporni iSCSI TGTd
 atboot_err=Activarea eșuată la pornire
 atboot_einit=Scriptul inițial $1 nu există
+
 log_create_target=Țintă creată $1 
 log_delete_target=Țintă eliminată $1 
 log_modify_target=Țintă modificată $1 
@@ -89,6 +94,7 @@ log_restart=Server iSCSI repornit
 log_atboot=Activat serverul iSCSI la momentul de pornire
 log_delboot=Dezactivat serverul iSCSI la momentul de pornire
 log_manual=Fișier de configurare editat manual
+
 manual_title=Editează fișierul de configurare
 manual_file=Selectați fișierul de editat:
 manual_ok=Deschis

@@ -10,6 +10,7 @@ index_actform=Forma
 index_actrun=Fuss
 index_actsql=Forma
 index_acted=Nyisd ki
+
 edit_desc2=HTML leírás
 edit_id=Parancs azonosítója
 edit_dir=Futtassa a könyvtárban
@@ -40,6 +41,7 @@ edit_format4=Töltse le, ha lehetséges
 edit_servers=Futtatás Webmin szerverekön
 edit_this=ezt a szervert
 edit_clone=Clone
+
 save_edir=Hiányzó vagy érvénytelen könyvtár
 save_eorder=A főoldalon történő megrendelésnek számnak kell lennie
 save_etimeout=Hiányzik vagy érvénytelen a várakozási idő
@@ -47,6 +49,7 @@ save_eusermin=A többi szerveren futó parancsok nem futtathatók a Usermin seg�
 save_eformat=Érvénytelen kimeneti MIME típus
 save_eopts=Hiányzik a (z) $1 paraméter opciós fájlja
 save_eopts2=A $1 paraméter opciós fájlja vagy alapértelmezett értéke nem tartalmazhatja :
+
 run_out2=Kimenet a parancsból ..
 run_outon=Teljesítmény $1 -ról $2 -re.
 run_out2on=Kimenet a $2 parancsból.
@@ -56,6 +59,7 @@ run_eupload=Nincs feltölthető fájl kiválasztva
 run_emust=Hiányzik az '$1' paraméter értéke
 run_timeout=A parancs nem fejeződött be $1 másodperces időtúllépés előtt.
 run_failed=A parancs meghiúsult a (z) $1 kilépési állapot mellett
+
 log_modify=Módosított $1 parancs
 log_create=Létrehozva a (z) $1 parancsot
 log_delete=$1 parancs törölve
@@ -64,11 +68,13 @@ log_modify_edit=Módosított $1 fájlszerkesztő
 log_create_edit=Létrehozta a (z) $1 fájlszerkesztőt
 log_delete_edit=$1 fájlszerkesztő törölve
 log_save_edit=Mentett fájl $1 
+
 acl_cmds=Parancsok, amelyeket ez a felhasználó futtathat
 acl_call=Minden parancs
 acl_csel=Kiválasztott ..
 acl_cexcept=Minden, kivéve a kiválasztott ..
 acl_edit=Létrehozhat és szerkeszthet parancsokat?
+
 file_ecannot=A fájlok szerkesztése tilos
 fcreate_title=Hozzon létre fájlszerkesztőt
 fedit_title=Fájlszerkesztő szerkesztése
@@ -92,6 +98,7 @@ file_egroup=Hiányzó vagy érvénytelen csoportnév
 file_eperms=Hiányzó vagy érvénytelen oktális engedélyek
 file_envs=Helyettesítő környezeti változók a fájlnévben?
 file_id=Szerkesztő azonosítója
+
 view_err=A fájl szerkesztése nem sikerült
 view_ecannot=Ezt a fájlt nem szerkesztheti
 view_title=Fájl szerkesztése
@@ -100,10 +107,12 @@ view_header=$1 fájl szerkesztése
 view_ebeforeedit=A szerkesztés előtti parancs sikertelen : $1 
 view_ebefore=A mentés előtti parancs sikertelen : $1 
 view_eafter=Az utómentés parancs sikertelen : $1 
+
 form_ecannot=Ez a parancs nem futtatható
 form_title=Parancs végrehajtása
 form_exec=kivégez
 form_edit=szerkesztése
+
 sql_title1=Hozzon létre SQL parancsot
 sql_title2=Szerkessze az SQL parancsot
 sql_header=SQL parancs részletei
@@ -119,6 +128,7 @@ sql_err=Az SQL parancs mentése nem sikerült
 sql_esql=Nincs megadva SQL
 sql_ehost=Hiányzó vagy érvénytelen adatbázis-kiszolgáló gazdagép
 sql_edb=Hiányzó vagy érvénytelen adatbázisnév
+
 srun_title=Végezze el az SQL parancsot
 srun_err=SQL parancs végrehajtása nem sikerült
 srun_edriver=Nem sikerült betölteni a DBI illesztőprogramot

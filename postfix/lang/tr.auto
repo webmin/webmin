@@ -3,6 +3,7 @@ connect_elogin=$1 veritabanına giriş yapılamadı: $2.
 index_title=Postfix Posta Sunucusu
 index_epath=Postfix kontrol komutu $1 sisteminizde kurulu değil. Belki <a href='$2'>modül yapılandırmanız</a> yanlış veya Postfix kurulu değil.
 index_postfix=Postfix
+
 internal_error=İç hata
 index_econfig=Postfix yapılandırma komutu $1 mevcut değil. Belki <a href='$2'>modül yapılandırmanız</a> yanlış.
 index_esuper=Postfix yönetici komutu $1 mevcut değil. Belki <a href='$2'>modül yapılandırmanız</a> yanlış.
@@ -14,8 +15,10 @@ index_startmsg=Postfix posta sunucusunu başlatmak için bu düğmeyi tıklatın
 index_reloadmsg=Postfix'in tüm yapılandırma dosyalarını yeniden okuması için bu düğmeyi tıklatın. Postfix yapılandırma dosyaları manuel olarak değiştirildiyse bu yararlı olabilir.
 index_version=Postfix sürümü $1
 opts_err=Seçenekler kaydedilemedi
+
 check_error=Geçerli Postfix yapılandırması kontrol edilirken hata oluştu. Lütfen Postfix yapılandırmasını elle düzeltin.
 check_manual=Postfix yapılandırma dosyasını el ile düzenleyin.
+
 address_rewriting_title=Adres Yeniden Yazma ve Maskeleme
 address_rewriting_ecannot=Adres yeniden yazma ve maskelemeyi düzenleme izniniz yok
 aliases_title=Posta Takma Adları
@@ -42,9 +45,11 @@ aliases_type5=Otomatik yanıt dosyası $1
 aliases_type6=$1 filtre dosyasını uygula
 aliases_none=Yok
 aliases_delete=Seçilen Takma Adları Sil
+
 postfinger_title=Yapılandırma Kontrolü
 postfinger_show=Göstermek
 postfinger_ecannot=Postfix yapılandırmasını kontrol etme izniniz yok
+
 mailclean_title=Temiz MailQueue
 mailclean_ecannot=MailQueues'ı temizleme ayrıcalığı yok
 mailclean_active=Aktif-Kuyruk
@@ -53,6 +58,7 @@ mailclean_deferred=Ertelenmiş-Kuyruk
 mailclean_defer=Ertele-Kuyruk
 mailclean_all=Tüm Kuyruklar
 mailclean_search=Arama dizisi
+
 aform_type0=Yok
 aform_type1=E
 aform_type2=Dosyadaki adresler
@@ -68,6 +74,7 @@ aform_val=Takma ad
 aform_afile=Düzenle ..
 aform_return=takma ad
 aform_cmt=Açıklama
+
 asave_err=Takma ad kaydedilemedi
 asave_eaddr='$1' geçerli bir adres değil
 asave_ealready='$1' için bir takma ad zaten var
@@ -78,11 +85,13 @@ asave_etype4='$1' geçerli bir program değil veya mevcut değil
 asave_etype5='$1' dosyasını otomatik yanıtla geçerli değil
 asave_etype4none=Program verilmiyor
 asave_etype6='$1' filtre dosyası geçerli değil
+
 afile_title=Adres Dosyasını Düzenle
 afile_desc=$1 dosyasındaki adresleri düzenlemek için aşağıdaki metin alanını kullanın.
 afile_efile=$1 'i düzenlemenize izin verilmiyor.
 afile_undo=Değişiklikleri geri al
 afile_ewrite=Adres dosyasına yazılamadı : $1
+
 ffile_title=Filtre Dosyasını Düzenle
 ffile_desc=$1 dosyasındaki filtre kurallarını ayarlamak için aşağıdaki formu kullanın.
 ffile_efile=$1 'i düzenlemenize izin verilmiyor.
@@ -98,6 +107,7 @@ ffile_other=Aksi takdirde $1
 ffile_err=Filtre dosyası kaydedilemedi
 ffile_ematch=Eksik maç
 ffile_eaction=Yönlendirme adresi eksik
+
 rfile_title=Otomatik Yanıt Dosyasını Düzenle
 rfile_desc=$1 içindeki otomatik kaydetme mesajını düzenlemek için aşağıdaki metin alanını kullanın. İleti, otomatik olarak etkinleştirildiğinde genişletilecek $SUBJECT, $FROM, $TO, $DATE ve $BODY makrolarını içerebilir.
 rfile_desc2=Ayrıca, otomatik olarak kullanılan varsayılanları ekleyen veya değiştiren posta üstbilgilerini aşağıdaki gibi satırlar koyarak da ayarlayabilirsiniz: <br><tt> Kimden: foo@bar.com </tt><br> <tt>Konu: Tatilde</tt> <br> iletinin üst kısmında, gövdeden tek bir boş satırla ayrılır.
@@ -116,11 +126,13 @@ rfile_from=Kimden: yanıt adresi
 rfile_auto=Otomatik (alıcının adresine göre)
 rfile_efrom=Gönderen: adresi
 rfile_fromdesc=A: otomatik yöntem güvenilir olmayabileceğinden, mümkün olduğunda her zaman Kimden: adresi belirtilmelidir.
+
 general_title=Genel seçenekler
 general_title_sensible=En Faydalı Genel seçenekler
 general_title_others=Diğer Genel Seçenekler
 general_ecannot=Genel Seçenekleri düzenleme izniniz yok
 what_is_it=Bu ne?
+
 opts_default=Varsayılan
 opts_none=Yok
 opts_nomap=Harita ayarlanmadı
@@ -140,10 +152,12 @@ opts_mail_owner=Posta sahibi
 opts_default_privs=Teslimat acentesinin varsayılan hakları
 opts_inet_interfaces=Posta almak için ağ arayüzleri
 opts_all_interfaces=Herşey
+
 opts_local_recipient_maps=Bilinmeyen yerel kullanıcıları reddet
 opts_no=Hayır
 opts_save=Kaydet ve Uygula
 opts_edir=Yalnızca $1 altında harita dosyaları belirtmenize izin verilir
+
 opts_allow_percent_hack="user%domain" i "user@domain" olarak yeniden yazın
 opts_append_at_myorigin="User" ifadesini "user@$mydomain" olarak yeniden yazın
 opts_append_dot_mydomain="User @ host" u "user@host.$mydomain" olarak yeniden yazın
@@ -153,13 +167,17 @@ opts_swap_bangpath="Site! Kullanıcısı" nı "kullanıcı @ sitesi" olarak yeni
 opts_masquerade_domains=Adres maskeleme
 opts_masquerade_exceptions=Maskeli istisnalar
 index_return=Postfix yapılandırması
+
 opts_alias_maps=Yerel dağıtım aracısı tarafından kullanılan takma ad veritabanları
 opts_alias_database="Newaliases" komutu ile oluşturulan takma ad veritabanları
 aliases_warning=Uyarı: <ul><li> ilk alan boş olmadığında, karşılık gelen veritabanlarını oluşturmak için varsayılan Postfix takma adları oluşturma komutu kullanılır; <li>başka Sendmail uyumluluk komutu "newaliases" kullanılır, bu ikinci alanın veritabanlarını kullanır.</ul>
+
 aliases_name=ad
 aliases_value=Diğer ad. ..
+
 new_alias=Yeni bir takma ad oluşturun
 new_aliasmsg=Yeni bir takma ad oluşturmak için bu düğmeyi tıklayın
+
 local_delivery_ecannot=Yerel dağıtım seçeneklerini düzenleme izniniz yok
 local_delivery_title=Yerel teslimat
 opts_local_transport=Yerel teslimatlar için taşıma adı
@@ -185,6 +203,7 @@ opts_local_destination_recipient_limit=Yerel ileti teslimi başına maksimum al�
 opts_local_destination_recipient_limit_default=Varsayılan
 opts_prepend_delivered_header=Aşağıdaki durumlarda bir <tt>Teslim Edilen-Kime:</tt> ekleyin. ..
 opts_prepend_delivered_header_default=Varsayılan
+
 resource_title=Genel Kaynak Kontrolü
 resource_ecannot=Kaynak kontrol parametrelerini düzenleme izniniz yok
 opts_bounce_size_limit=Maksimum geri dönen mesaj boyutu
@@ -204,6 +223,7 @@ opts_qmgr_message_recipient_limit=Maksimum bellek içi alıcı sayısı
 opts_queue_minfree=Kuyruk dosya sisteminde minimum boş alan
 opts_stale_lock_time=Eski kilidin bırakılmasından sonra maksimum süre
 opts_transport_retry_time=Bozuk bir MDT ile iletişim kurma girişimleri arasındaki saniye cinsinden süre
+
 opts_always_bcc=Her iletinin gizli kaydını alan adres
 opts_always_bcc_none=Yok
 opts_daemon_timeout=İşleme isteklerinde zaman aşımı
@@ -242,6 +262,7 @@ opts_trigger_timeout=Bir arka plan programına tetikleyici göndermek için maks
 opts_delay_warning_time=Teslimat yapılmadan uyarı göndermeden önce saat cinsinden süre
 opts_delay_warning_time_default2=Postfix varsayılanı
 opts_content_filter_default=Yok
+
 smtpd_title=SMTP Sunucusu Seçenekleri
 smtpd_ecannot=SMTP sunucusu seçeneklerini düzenleme izniniz yok
 opts_disable_vrfy_command=SMTP VRFY komutunu devre dışı bırak
@@ -273,6 +294,7 @@ smtpd_nomap=Henüz geçiş için izin verilen adresler için harita girilmedi.
 smtpd_nomap2=Henüz gönderen adreslerine ilişkin kısıtlamalar için harita girilmedi.
 smtpd_map=Geçiş için izin verilen adresler
 smtpd_map2=Gönderen adreslerindeki kısıtlamalar
+
 smtp_title=SMTP İstemci Seçenekleri
 smtp_ecannot=SMTP istemcisi seçeneklerini düzenleme izniniz yok
 opts_best_mx_transport=En iyi MX ana bilgisayarı olarak listelendiğinde eylem
@@ -293,6 +315,7 @@ opts_smtp_data_done_timeout="" İle biten cevabı beklerken zaman aşımı
 opts_smtp_quit_timeout=QUIT yanıtını beklerken zaman aşımı
 opts_smtp_use_tls=SMTP bağlantıları için TLS kullanma
 opts_smtp_sasl_security_options=SASL güvenlik seçenekleri
+
 rate_title=Yayınlanma oranları
 rate_ecannot=Dağıtım ücretleri seçeneklerini düzenleme izniniz yok
 opts_default_destination_concurrency_limit=Aynı hedefe maksimum paralel teslimat sayısı
@@ -303,18 +326,21 @@ opts_maximal_queue_lifetime=İleti teslim edilemeden önceki kuyruktaki maksimum
 opts_minimal_backoff_time=Ertelenmiş bir mesajı iletme girişimleri arasındaki minimum süre (saniye)
 opts_queue_run_delay=Ertelenmiş kuyruğun taranması arasındaki süre (saniye)
 opts_defer_transports=Teslim edilmemesi gereken nakliye işlemleri
+
 debug_title=Hata ayıklama özellikleri
 debug_ecannot=Hata ayıklama özelliklerini düzenleme izniniz yok
 opts_debug_peer_list=Ayrıntılı günlük etkin olan etki alanı / ağ modellerinin listesi
 opts_debug_peer_level=Yukarıdaki listeyle eşleşirken ayrıntılı kayıt düzeyi
 debug_version=Webmin için Postfix Modülü - Sürüm $1
 opts_edebug=Eksik veya geçersiz ayrıntılı günlük kaydı düzeyi - sıfırdan büyük bir sayı olmalıdır
+
 ldap_title=LDAP aramaları
 ldap_ecannot=LDAP arama seçeneklerini düzenleme izniniz yok
 ldap_non_existent=Postfix sisteminizde LDAP yok gibi görünüyor
 opts_ldap_lookup_timeout=LDAP veritabanı aramaları için zaman aşımı
 opts_ldap_search_base=Aranacak LDAP veritabanı
 opts_ldap_server_host=LDAP sunucusu ana bilgisayar adı
+
 canonical_title=Kanonik Haritalama
 canonical_ecannot=Standart harita yapılandırmasını düzenleme izniniz yok
 opts_canonical_maps=Adres eşleme arama tabloları
@@ -328,6 +354,7 @@ canonical_edit_title=Kanonik Haritayı Düzenle
 canonical_return_sender=gönderen kanonik haritalar
 canonical_return_recipient=alıcı kanonik haritalar
 canonical_return=kanonik haritalar
+
 mapping_name=ad
 mapping_value=Haritalar. ..
 mapping_delete=Silme seçildi
@@ -355,6 +382,7 @@ mapping_toomany=$2 görüntüleme sınırının üstünde olan $1 harita girişl
 mapping_find=Eşleşen eşlemeleri göster:
 mapping_search=Arama
 mapping_match=<tt>$1</tt> ile eşleşen dosya girişlerini eşleyin.
+
 virtual_title=Sanal Etki Alanları
 virtual_ecannot=Sanal etki alanları eşleme yapılandırmasını düzenleme izniniz yok
 opts_virtual_maps=Alan adı eşleme arama tabloları
@@ -362,29 +390,44 @@ opts_virtual_alias_maps=Alan adı eşleme arama tabloları
 opts_virtual_alias_domains=İçin sanal eşleme yapılacak alanlar
 virtual_same=Alan adı eşleme tablolarından
 virtual_return=sanal alanlar
+
 transport_title=Ulaşım Haritalama
 transport_ecannot=Aktarım eşleme yapılandırmasını düzenleme izniniz yok
 opts_transport_maps=Taşıma eşleme arama tabloları
 transport_return=ulaşım haritaları
+
+sni_title=Sertifika Eşleme
+sni_ecannot=Sertifika eşleme yapılandırmasını düzenlemenize izin verilmiyor
+opts_sni_maps=Sertifika eşleme arama tabloları
+sni_return=sertifika haritaları
+sni_dom=Ana bilgisayar adı
+sni_certs=Sertifika dosyaları
+
 relocated_title=Taşınan Eşleme
 relocated_ecannot=Yeniden konumlandırılmış eşleme yapılandırmasını düzenleme izniniz yok
 relocated_return=taşınan haritalar
 opts_relocated_maps=Yeniden konumlandırılmış eşleme arama tabloları
 opts_content_filter=E-posta içerik filtresi
+
 map_click=Özelliklerini düzenlemek için herhangi bir eşlemeyi tıklayın:
 no_map=(Henüz bir harita tanımlanmamıştır. Önce bir harita tanımlayın, sonra düzenleyebilirsiniz)
 no_map2=Şu anda harita tanımlanmamış. Önce bir harita tanımlayın, ardından düzenleyebilirsiniz.
+
 stop_efailed=Postfix durdurulamadı
 stop_ecannot=Postfix'i durdurmanıza izin verilmiyor
+
 start_efailed=Postfix başlatılamadı
 start_ecannot=Postfix'i başlatma izniniz yok
+
 reload_efailed=Postfix yeniden yüklenemedi
 reload_ecannot=Postfix'i yeniden yüklemenize izin verilmiyor
+
 query_get_efailed=$1 parametresinin geçerli değerini almak için Postfix config komutu sorgulanamadı: <tt>$2</tt>
 query_set_efailed=$1 parametresinin geçerli değerini $2 olarak ayarlamak için Postfix config komutu sorgulanamadı: <tt>$3</tt>
 regenerate_ecannot=Takma Adları Yeniden Oluşturmanıza İzin Verilmiyor
 regenerate_alias_efailed=Takma adlar yeniden oluşturulamadı: <tt>$1</tt>
 regenerate_table_efailed=$1 tablosu yeniden oluşturulamadı: <tt>$2</tt>
+
 acl_resource=Kaynakları düzenleyebilir mi?
 acl_aliases=Takma adları düzenleyebilir mi?
 acl_aliases_options=Takma ad seçeneklerini düzenleyebilir mi?
@@ -393,6 +436,7 @@ acl_address_rewriting=Adres yeniden yazımını düzenleyebilir mi?
 acl_canonical=Canonical düzenleyebilir mi?
 acl_virtual=Sanal düzenleyebilir mi?
 acl_transport=Aktarımı düzenleyebilir mi?
+acl_sni=Sertifikaları düzenleyebilir mi?
 acl_relocated=Düzenleme yeniden yerleştirilebilir mi?
 acl_header=Üstbilgi kontrollerini düzenleyebilir mi?
 acl_local_delivery=Yerel teslimatı düzenleyebilir mi?
@@ -411,6 +455,7 @@ acl_postfinger=Postfix yapılandırmasını kontrol edebilir mi?
 acl_manual=Yapılandırma dosyasını düzenleyebilir mi?
 acl_dir=Harita dosyaları için izin verilen dizin
 acl_bcc=BCC eşlemesini düzenleyebilir mi?
+
 boxes_title=Kullanıcı Posta Kutuları
 boxes_user=kullanıcı
 boxes_size=Posta kutusu boyutu
@@ -420,6 +465,7 @@ boxes_sent=Gönderilmiş postalar
 boxes_ecannot=E-postayı okuma izniniz yok
 boxes_toomany=Sisteminizde tüm posta kutularını listelemek için çok fazla kullanıcı var.
 boxes_go=Kullanıcı için postayı görüntüle:
+
 mail_title=Kullanıcı e-postası
 mail_from=itibaren
 mail_date=tarih
@@ -458,6 +504,7 @@ mail_forward=ileri
 mail_rfc=Satırdan
 mail_move=Taşınmak:
 mail_eexists=Mesaj artık mevcut değil!
+
 view_title=E-postayı Oku
 view_desc=$2 içindeki $1 mesajı
 view_desc2=$2 kullanıcısı için $1 mesajı
@@ -486,6 +533,7 @@ view_body=Mesaj metni
 view_afile=Ek adı
 view_atype=Ek tipi
 view_asize=Dosya boyutu
+
 compose_title=E-posta oluştur
 reply_title=E-postaya cevap ver
 forward_title=E-posta Yönlendir
@@ -496,6 +544,7 @@ reply_mailforward=Yönlendirilmiş mesajlar
 reply_attach2=İstemci ve sunucu tarafı Ekleri
 reply_send=Posta göndermek
 reply_ecannot=Bu kullanıcı olarak posta göndermenize izin verilmiyor
+
 send_err=Posta gönderilemedi
 send_eto=Adresi eksik
 send_efrom=Gönderen adresi eksik
@@ -509,6 +558,7 @@ send_eperms=$1 kullanıcısı $2
 send_eperms2=$1 dosyasını göndermenize izin verilmiyor
 send_epath=Sendmail yürütülebilir $1 mevcut değil.
 send_ewrapper=Postfix sendmail arayüz programı mevcut değil
+
 search_title=Arama Sonuçları
 search_ecannot=Bu kullanıcının e-postasını arama izniniz yok
 search_ematch=Eşleşecek metin girmelisiniz.
@@ -516,6 +566,7 @@ search_efield=Bir arama türü seçmelisiniz.
 search_none=Mesaj bulunamadı.
 search_results2=$1 $2 ile eşleşen posta iletileri ..
 search_results3=$1 eşleşmeyen posta iletileri $2 ..
+
 match_from=Gönderen: eşleşmeler
 match_subject=Konu: eşleşmeler
 match_to=Alıcı: eşleşmeler
@@ -533,6 +584,7 @@ match_!date=Tarih: eşleşmiyor
 match_!body=Vücut uyuşmuyor
 match_!size=Boyut daha küçük
 match_!headers=Üstbilgiler eşleşmiyor
+
 mailq_title=Posta Sırası
 mailq_count=$1 mesajlar
 mailq_none=Şu anda teslim edilecek posta iletisi yok
@@ -561,15 +613,20 @@ mailq_active=Aktif
 mailq_deferred=Ertelenmiş
 mailq_hold=Seçileni Tut
 mailq_unhold=Seçileni Bekletmeyi Kaldır
+
 flushq_title=Sırayı Al
 flushq_desc=$1 komutuyla postanın teslim edilmeye çalışılması zorlanıyor.
+
 qview_title=Kuyruğa Alınmış Mesaj
 qview_desc=$1 dosyasından
 qview_headers=Posta başlıkları
 qview_attach=Ekler
+
 after_err=Postfix yapılandırma hatası : $1
+
 searchq_title=Sıra Arama Sonuçları
 searchq_none=Kuyruğa alınmış ileti bulunamadı.
+
 header_title=Başlık Kontrolleri
 header_ecannot=Başlık kontrollerini düzenleme izniniz yok
 header_eregexp=Başlık kontrolleri haritası <tt>regexp:</tt> <i>dosya adı</i> biçiminde olmalıdır
@@ -588,15 +645,18 @@ header_reject=Reddet (hata mesajı ile..)
 header_warn=Günlük uyarısı (mesajla..)
 header_ename=Geçersiz normal ifade - / bir şey /
 header_return=başlık kontrolleri
+
 body_title=Vücut Kontrolleri
 body_ecannot=Gövde kontrollerini düzenleme izniniz yok
 body_eregexp=Karoseri kontrol haritası <tt>regexp:</tt> <i>dosya adı</i> biçiminde olmalıdır
 opts_body_checks=Mesaj gövdesi kontrol tabloları
 body_return=vücut kontrolleri
+
 dependent_title=Gönderene Bağımlı Taşıma Eşleme
 dependent_ecannot=Gönderene bağlı taşıma eşlemelerini düzenleme izniniz yok
 dependent_eregexp=Gönderene bağlı taşıma haritası <tt>regexp:</tt> <i>dosya adı</i> biçiminde olmalıdır
 dependent_return=gönderene bağlı taşıma eşlemeleri
+
 manual_title=Harita Dosyasını Düzenle
 manual_file=Düzenlemek için bir harita dosyası seçin:
 manual_change=Değişiklik
@@ -604,9 +664,11 @@ manual_editing=$1 içindeki eşlemeleri manuel olarak düzenlemek için aşağı
 manual_err=Harita dosyası kaydedilemedi
 manual_efile=Geçersiz harita dosya adı!
 manual_ecannot=Harita dosyalarını manuel olarak düzenleme izniniz yok
+
 delq_titles=Mesajları Silme
 delq_rusure=Seçilen $1 sıraya alınmış iletileri silmek istediğinizden emin misiniz?
 delq_confirm=Mesajları sil
+
 master_title=Sunucu İşlemleri
 master_name=İşlem adı
 master_enabled=Etkin mi?
@@ -647,8 +709,10 @@ master_einet=Dinlenecek bir ana bilgisayar adresi yalnızca İnternet işlemleri
 master_ecommand=Eksik sunucu işlem komutu
 master_ewakeup=Eksik veya geçersiz uyandırma zamanı
 master_emaxprocs=Eksik veya geçersiz maksimum işlem sayısı
+
 delete_err=Eşlemeler silinemedi
 delete_enone=Hiçbiri seçilmedi
+
 cmanual_title=Yapılandırma Dosyalarını Düzenle
 cmanual_ecannot=Postfix yapılandırma dosyasını düzenlemenize izin verilmiyor
 cmanual_ok=Düzenle
@@ -656,10 +720,12 @@ cmanual_efile=Seçilen dosya Postfix yapılandırmasının bir parçası değil
 cmanual_file=Yapılandırma dosyasını düzenle:
 cmanual_edata=Hiçbir şey girmedi!
 cmanual_err=Yapılandırma dosyası kaydedilemedi
+
 access_return=erişim haritası tablosu
 edit_map_file=Harita Dosyasını Düzenle
 opts_reject_rbl_client=Gerçek Zamanlı Kara Listeler (RBL) aramaları
 opts_check_sender_access=Gönderen erişim haritası tablosunu kontrol edin
+
 log_misc=Genel seçenekler değişti
 log_opts=Adres yeniden yazma ve maskeleme değiştirildi
 log_aliases=Değişen takma ad seçenekleri
@@ -667,6 +733,7 @@ log_canonical=Standart haritalama seçeneklerini değiştirme
 log_virtual=Değişen sanal etki alanı seçenekleri
 log_bcc=BCC harita seçeneklerini değiştirdi
 log_transport=Değiştirilmiş taşıma eşleme seçenekleri
+log_sni=Sertifika eşleme seçeneklerini değiştirin
 log_dependent=Gönderene bağlı adres seçenekleri değiştirildi
 log_relocated=Yer değiştirme eşleme seçenekleri değiştirildi
 log_header=Üstbilgi denetimi seçenekleri değiştirildi
@@ -744,6 +811,7 @@ log_sender_dependent_default_transport_maps_modify=Değiştirilmiş gönderene b
 log_sender_dependent_default_transport_maps_delete=Gönderene bağımlı adres silindi $1
 log_delete_sender_dependent_default_transport_mapss=Gönderene bağımlı $1 adresleri silindi
 log_manual_sender_dependent_default_transport_mapss=$1 içindeki gönderene bağlı adresler manuel olarak düzenlendi
+
 sasl_title=SMTP Kimlik Doğrulaması ve Şifreleme
 opts_smtpd_sasl_auth_enable=SASL SMTP kimlik doğrulaması gerekli mi?
 opts_smtp_sasl_auth_enable=SASL SMTP kimlik doğrulaması kullanılsın mı?
@@ -790,6 +858,7 @@ sasl_nologin=Gerekli değil
 sasl_userpass=$2 şifresiyle $1 olarak giriş yapın
 sasl_elogin=Eksik veya geçersiz SMTP girişi (boşluk veya iki noktaya izin verilmez)
 sasl_epass=Geçersiz SMTP şifresi (boşluğa izin verilmez)
+
 client_title=SMTP İstemcisi Kısıtlamaları
 client_ecannot=SMTP istemcisi kısıtlamalarını düzenleme izniniz yok
 client_restrict=Müşteri kısıtlamaları
@@ -799,6 +868,7 @@ client_other=Diğer kısıtlamalar :
 client_err=İstemci kısıtlamaları kaydedilemedi
 client_evalue=Kısıtlama için eksik değer $1
 client_return=SMTP istemcisi kısıtlamaları
+
 chooser_title=Harita Kaynağını Seçin
 chooser_header=Harita kaynağı $1
 chooser_none=Yok
@@ -854,6 +924,7 @@ chooser_elquery_filter=Harita için eksik sorgu filtresi $1
 chooser_elresult_attribute=$1 haritası için eksik veya geçersiz sonuç özellik adı
 chooser_elbind_dn=Harita için LDAP sunucusu için eksik giriş $1
 chooser_elbind_pw=Harita için LDAP sunucusu için eksik şifre $1
+
 mysql_ecfile=MySQL yapılandırma dosyası $1 bulunamadı
 mysql_ecfile2=MySQL yapılandırma dosyasında $1 tablosu bulunamadı
 mysql_edriver=Veritabanı sürücüsü $1 yüklenemedi
@@ -865,6 +936,7 @@ mysql_eupdate=SQL güncelleme başarısız oldu : $1
 mysql_elist=SQL sorgusu başarısız oldu : $1
 mysql_esource=$1 adında MySQL kaynağı bulunamadı
 mysql_eneed=MySQL yapılandırma parametresi $1 bulunamadı. Webmin hangi tablo ve alanları sorgulayacağını bulmak için buna ihtiyaç duyar.
+
 ldap_ecfile=LDAP yapılandırma dosyası $1 bulunamadı
 ldap_eldapmod=LDAP ile iletişim kurmak için gereken $1 perl modülü kurulu değil veya yüklenemez
 ldap_eldap=$2 bağlantı noktasındaki LDAP sunucusuna $1 bağlanılamadı
@@ -875,6 +947,7 @@ ldap_edelete=$1 öğesinin LDAP silinmesi başarısız oldu : $2
 ldap_equery=$1 'nin LDAP araması başarısız oldu : $2
 ldap_erename=$1, $2 olarak LDAP yeniden adlandırılamadı : $3
 ldap_emodify=$1 'nin LDAP değişikliği başarısız oldu : $2
+
 bcc_title=BCC Haritalaması
 bcc_ecannot=BCC eşlemelerini düzenleme izniniz yok
 opts_sender_bcc_maps=Gönderen BCC eşleme arama tabloları

@@ -2,6 +2,7 @@ index_title=Serwer poczty głosowej
 index_ecmd=Polecenie Vgetty $1 nie zostało znalezione na tym systemie. Możliwe, że nie jest zainstalowane lub <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
 index_econfig=Plik konfiguracyjny Vgetty $1 nie został znaleziony na tym systemie. Możliwe, że nie jest zainstalowany lub <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
 index_return=poczty głosowej
+
 vgetty_title=Konfiguracja portu szeregowego
 vgetty_desc=Aby twój serwer odpowiedział na połączenia głosowe z modemu podłączonego przez port szeregowy, musi być on wyświetlony poniżej. Gdy dodasz port do listy program $1 zostanie skonfigurowany do odbierania i odtwarzania wiadomości.
 vgetty_add=Dodaj nowy port szeregowy
@@ -32,6 +33,7 @@ vgetty_erings=Brakująca lub błędna liczba sygnałów
 vgetty_erings2=Liczba sygnałów musi wynosić przynajmniej 2
 vgetty_eans=Nie wybrano trybu odbioru
 vgetty_eclash=Port szeregowy $1 jest już w użyciu
+
 options_title=Opcje serwera poczty głosowej
 options_header=Opcje dla wszystkich portów szeregowych
 options_maxlen=Maksymalna długość wiadomości
@@ -68,6 +70,7 @@ options_eprog=Brakujący lub nie istniejący program do uruchomienia
 options_eowner=Brakujący lub błędny użytkownik Unix'a dla plików wiadomości
 options_egroup=Brakująca lub błędna grupa Unix'a dla plików wiadomości
 options_emode=Brakujące lub nieprawidłowe uprawnienia dla plików wiadomości ósemkowych
+
 received_title=Otrzymane wiadomości
 recieved_desc=Wiadomości poczty głosowej, które zostały odebrane przez serwer są wyświetlone poniżej. Aby odsłuchać wiadomości, kliknij na datę/czas, w pierwszej kolumnie.
 received_none=Nie znaleziono otrzymanych wiadomości poczty głosowej
@@ -79,9 +82,12 @@ received_delete=Usuń zaznaczone wiadomości
 received_move=Konwertuj zaznaczone na pozdrowienia poczty
 received_all=Zaznacz wszystko
 received_invert=Odwróć zaznaczenie
+
 listen_efile=Błędna nazwa wiadomości!
 listen_epath=Wiadomość poczty głosowej nie istnieje
+
 delete_efile=Błędna nazwa wiadomości!
+
 messages_title=Powitanie poczty głosowej
 messages_desc=Ta strona zawiera wiadomości powitań poczty głosowej, które będą odtworzone, gdy dzwoniący połączy się z serwerem poczty głosowej. Jeżeli masz więcej niż jedno powitanie, będą one odtwarzane losowo.
 messages_file=Nazwa pliku
@@ -89,12 +95,15 @@ messages_none=Powitanie nie jest dostępne
 messages_updesc=Ten formularz pozwala na dodanie dodatkowych plików WAV z powitaniem dla poczty głosowej, które zostaną skonwertowane na wybrany przez ciebie format. Częstotliwość próbkowania (sample rate) pliku WAV powinna być taka sama jak Częstotliwość próbkowania odbieranych wiadomości.
 messages_upload=Wyślij wiadomość
 messages_fmt=konwertuj do
+
 pvfdesc=$1, $2 bity
+
 upload_err=Błąd dodawania wiadomości
 upload_emessage=Nie wybrano pliku WAV
 upload_ewav=Błąd konwertowania pliku WAV : $1
 upload_epvf=Błąd tworzenia pliku RMD : $1
 upload_esame=Plik wiadomości $1 już istnieje
+
 log_apply=Zastosowana konfiguracja
 log_upload=Wysłano przywitanie $1
 log_move=Skonwertowano $1 otrzymanych wiadomości
@@ -104,5 +113,6 @@ log_options=Zmieniono opcje poczty głosowej
 log_vgetty_create=Dodano port szeregowy $1
 log_vgetty_modify=Zmieniono port szeregowy $1
 log_vgetty_delete=Usunięto port szeregowy $1
+
 email_subject=Wiadomość poczty głosowej
 email_body=Otrzymane wiadomości poczty głosowej $1 z $2.

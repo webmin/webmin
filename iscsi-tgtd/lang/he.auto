@@ -2,6 +2,7 @@ check_econfigset=אין הגדרת קובץ תצורה של iSCSI TGTd!
 check_econfig=קובץ התצורה iSCSI TGTd $1 לא נמצא במערכת שלך.
 check_etgtadm=פקודת הניהול iSCSI TGTd $1 לא נמצאה במערכת שלך.
 check_einit=פעולת אתחול $1 אינה קיימת
+
 index_title=iSCSI TGTd
 index_clink=אולי הוא לא מותקן, או <a href='$1'>תצורת המודול</a> שלך שגויה.
 index_stop=עצור את iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=משתמשים מורשים
 index_size=גודל כולל
 index_noluns=אף אחד
 index_nousers=כל
+
 dtargets_err=מחיקת יעדים נכשלה
 dtargets_enone=לא נבחר!
+
 target_title1=צור יעד iSCSI
 target_title2=ערוך יעד iSCSI
 target_header=אפשרויות התקן משותפות של iSCSI
@@ -74,11 +77,13 @@ target_direct=גישה ישירה למכשירים
 target_cache=מטמון כותב למכשיר?
 target_eaddr=כתובת IP לא חוקית
 target_eaname=שם יוזם מותר לא חוקי
+
 start_err=הפעלת iSCSI TGTd נכשלה
 stop_err=עצירת iSCSI TGTd נכשלה
 restart_err=ההפעלה מחדש של iSCSI TGTd נכשלה
 atboot_err=ההפעלה נכשלה
 atboot_einit=סקריפט Init $1 אינו קיים
+
 log_create_target=יצר יעד $1 
 log_delete_target=היעד $1 נמחק
 log_modify_target=יעד שונה 1
@@ -89,6 +94,7 @@ log_restart=הפעל מחדש את שרת iSCSI
 log_atboot=שרת iSCSI מופעל בזמן האתחול
 log_delboot=שרת iSCSI מושבת בזמן האתחול
 log_manual=קובץ תצורה שערך ידנית
+
 manual_title=ערוך את קובץ התצורה
 manual_file=בחר קובץ לעריכה:
 manual_ok=פתוח

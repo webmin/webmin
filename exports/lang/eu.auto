@@ -12,6 +12,7 @@ index_eprog=NFS zerbitzariaren exekutagarria ez da zure sisteman aurkitu. Ez dir
 index_delete=Ezabatu hautatutako esportazioak
 index_disable=Desgaitu hautatua
 index_enable=Gaitu hautatua
+
 edit_title=Editatu Exporta
 create_title=Sortu Export
 edit_details=Esportatu xehetasunak
@@ -65,6 +66,7 @@ edit_sec_krb5i=Kerberosen osotasuna
 edit_sec_krb5p=Kerberosen pribatutasuna
 edit_sec_lipkey=LIPKEY
 edit_sec_spkm=SPKM
+
 save_err=Ezin izan da esportazioa gorde
 save_edir=Ez dago '$1' direktoriorik
 save_epfs='$1' pseudo-fitxategi sistemaren bideak ez du bide absoluturik
@@ -78,6 +80,7 @@ save_pfs='$1' direktorio gisa esportatu da jada
 save_create_dir=Ezin da '$1' direktorioa sortu
 save_eanonuid=Sarbide erabiltzaile anonimo baliogabea
 save_eanongid=Sarbide-talde anonimo baten baliogabea
+
 exports_webnfs=WebNFS bezero
 exports_ngroup=Netgroup $1 
 exports_net=Network $1 
@@ -85,6 +88,7 @@ exports_all=Denek
 exports_hosts=Ostalariak $1 
 exports_host=Ostalaria $1 
 exports_gss=Autentifikatutako sarea: $1 
+
 log_modify=$1 esportatutako NFS esportazioa
 log_modify_l=Aldatutako NFS esportazioa $1 etik $2 ra
 log_delete=$1 NFS esportazioa ezabatu da

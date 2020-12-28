@@ -26,6 +26,7 @@ index_delete=Usuń zaznaczone
 index_joingroup=Dodaj do grupy:
 index_eulist=Nie udało się pobrać listy użytkowników : $1
 index_eglist=Nie udało się pobrać listy grup : $1
+
 edit_title=Modyfikuj użytkownika Webmina
 edit_title2=Nowy użytkownik Webmina
 edit_readonly=Ten użytkownik Webmina nie powinien być edytowany jeśli jest zarządzany przez moduł $1. Jeśli mimo wszystko chcesz edytować użytkownika <a href='$2'>Kliknij tutaj</a> - zauważ jednak, że ręczne zmiany mogą zostać nadpisane!
@@ -109,6 +110,7 @@ edit_proto_mysql=Baza MySQL
 edit_proto_postgresql=Baza PostgreSQL
 edit_proto_ldap=Serwer LDAP
 edit_proto_=Pliki lokalne
+
 save_err=Nie udało się zachować użytkownika
 save_ename='$1' nie jest prawidłową nazwą użytkownika
 save_enamewebmin=Nazwa użytkownika 'webmin' jest zarezerwowana do użytku wewnętrznego
@@ -138,11 +140,13 @@ save_edays=Nie wybrano dni dostępu
 save_ehours=Brakujący lub nieprawidłowy czas dostępu
 save_ehours2=Czas rozpoczęcia dostępu musi być przed końcem
 save_etemp=Nie można użyć opcji wymuszenia zmiany hasła przy następnym logowaniu dopóki włączone jest <a href='$1'>pytanie użytkowników o podanie nowego hasła</a>
+
 delete_err=Nie udało się usunąć użytkownika
 delete_eself=Nie możesz usunąć samego siebie
 delete_ecannot=Nie masz zezwolenia na usuwanie użytkowników
 delete_euser=Nie masz zezwolenia na usunięcie tego użytkownika
 delete_eanonuser=Ten użytkownik jest wykorzystywany przy anonimowym dostępie do modułu
+
 cert_title=Poproś o certyfikat
 cert_issue=Certyfikat wydany
 cert_header=Dane nowego certyfikatu
@@ -162,6 +166,7 @@ cert_ekey=Twoja przeglądarka nie zaakceptowała nowego klucza SSL - być może 
 cert_eca=Nie udało się ustawić centrum autoryzacji: $1
 cert_already=Uwaga - już używasz certyfikatu $1.
 cert_etempdir=Błędny plik certyfikatu
+
 acl_title=Kontrola dostępu do modułu
 acl_title2=$2 dla użytkownika $1
 acl_title3=$2 dla grupy $1
@@ -170,6 +175,7 @@ acl_config=Czy może zmieniać konfigurację modułu?
 acl_reset=Zresetuj do pełnego dostępu
 acl_rbac=Pobrać ustawienia kontroli dostępu z RBAC?
 acl_rbacyes=Tak (zastępuje poniższe ustawienia)
+
 acl_uall=Wszystkich użytkowników
 acl_uthis=Ten użytkownik
 acl_usel=Wybranych ..
@@ -209,6 +215,7 @@ acl_switch=Czy może przełączać się na innego użytkownika?
 acl_times=Czy może zmieniać dozwolone godziny logowania?
 acl_pass=Może zmieniać ograniczenia hasła?
 acl_sql=Może konfigurować bazę użytkowników i grup?
+
 log_modify=Zmodyfikowano użytkownika Webmina $1
 log_rename=Zmieniono nazwę użytkownika Webmina $1 na $2
 log_create=Utworzono użytkownika Webmina $1
@@ -231,6 +238,7 @@ log_sync=Zmieniono synchronizację użytkownika unixa
 log_sql=Zmieniono bazę danych użytkownika i grupy
 log_twofactor=Użytkownik $1 uczestniczy w dwustopniowym uwierzytelnianiu u dostawcy: $2
 log_onefactor=Użytkownik $1 już NIE uczestniczy w dwustopniowym uwierzytelnianiu u dostawcy: $2
+
 gedit_ecannot=Nie masz uprawnień do zmiany grup
 gedit_title=Zmień grupę Webmina
 gedit_title2=Utwórz grupę Webmina
@@ -240,6 +248,7 @@ gedit_modules=Moduły członków
 gedit_members=Członek użytkowników i grup
 gedit_desc=Opis grupy
 gedit_egone=Wybrana grupa nie istnieje!
+
 gdelete_err=Nie udało się usunąć grupy
 gdelete_ecannot=Nie masz uprawnień do usuwania grup
 gdelete_euser=Nie możesz usunąć własnej grupy
@@ -247,11 +256,13 @@ gdelete_esub=Nie można usunąć grup z podgrupami
 gdelete_title=Usuń grupę
 gdelete_desc=Czy na pewno chcesz usunąć grupę $1 wraz z jej członkami $2?
 gdelete_ok=Usuń grupę
+
 gsave_err=Nie udało się zachować grupy
 gsave_ename=Brakująca lub niepoprawna nazwa grupy
 gsave_enamewebmin=Nazwa grupy 'webmin' jest zastrzeżona do użytku wewnętrznego
 gsave_edup=Nazwa grupy jest już używana
 gsave_edesc=Niewłaściwy opis - znak : jest niedozwolony
+
 convert_title=Przekształć użytkowników
 convert_ecannot=Nie masz uprawnień do przekształcania użytkownika Unixa
 convert_nogroups=W systemie nie zdefiniowano grup Webmina. Musisz utworzyć przynajmniej jedną grupę przed konwersją, aby określić uprawnienia dla przekształconych użytkowników.
@@ -280,6 +291,7 @@ convert_user=Użytkownik Unixa
 convert_action=Podjęta akcja
 convert_done=$1 skonwertowanych użytkowników, $2 nieprawidłowych, $3 już istnieje, $4 wykluczonych.
 convert_users=Konwertuj użytkownika
+
 sync_title=Synchronizacja użytkowników Unixa
 sync_desc=Ten formularz umożliwia skonfigurowanie automatycznej synchronizacji użytkowników Unixa utworzonych za pomocą Webmina i użytkownikami z tego modułu.
 sync_nogroups=W systemie nie zdefiniowano żadnej grupy Webmina. Aby ustawić dostęp dla tworzonych użytkowników, trzeba utworzyć co najmniej jedną grupę.
@@ -290,6 +302,7 @@ sync_delete=Usuwaj odpowiedniego użytkownika Webmina, gdy usuwany jest użytkow
 sync_group=Przypisuj nowych użytkowników do grupy Webmina
 sync_unix=Ustawiaj hasła dla nowych użytkowników dla uwierzytelnianie Unixowego.
 sync_ecannot=Nie masz uprawnień do konfigurowania synchronizacji użytkowników.
+
 unix_title=Autoryzacja użytkowników Unixa
 unix_err=Błąd zapisywania uwierzytelniania Unixa
 unix_desc=Za pomocą tej strony możesz skonfigurować Webmina, aby zatwierdzał próby logowania na podstawie listy użytkowników systemu PAM. Może to być przydatne, gdy liczba użytkowników Unixa, którym chcesz dać dostęp do Webmina jest duża.
@@ -322,26 +335,31 @@ unix_esudo=Komenda $1 nie została zainstalowana
 unix_esudomod=Moduł Perla $1 wymagany dla uwierzytelnienia <tt>sudo</tt> nie został zainstalowany
 unix_header=Ustawienia uwierzytelniania użytkownika Unix'a
 unix_utable=Dozwoleni użytkownicy Unix'a
+
 sessions_title=Bieżące sesje logowania
 sessions_id=ID sesji
 sessions_user=Użytkownik Webmina
 sessions_login=Zalogowany
 sessions_host=Adres IP
 sessions_lview=Wyświetl logi...
+
 hide_title=Ukryj nieużywane moduły
 hide_desc=Następujące moduły zostaną usunięte z listy dostępu modułu dla $1 jeśli korespondujące serwery nie są zainstalowane w systemie...
 hide_ok=Ukryj moduły
 hide_none=Nie ma nic do ukrycia - $1 nie ma dostępu do żadnego z modułów, dla których korespondujące serwery nie są zainstalowane.
 hide_desc2=Zauważ, że te moduły nie pojawią się automatycznie, gdy korespondujące serwery zostaną zainstalowane. Będziesz musiał ręcznie dodać uprawnienia dostępu za pomocą tego modułu.
 hide_clone=(Klonuj $1)
+
 switch_euser=Nie masz uprawnień do przełączania do tego użytkownika
 switch_eold=Nie znaleziono istniejącej sesji!
+
 rbac_title=Ustawienia RBAC
 rbac_desc=Integracja RBAC z Webminem dostarcza sposobu na określanie dostępu do modułu dla użytkownika i jego uprawnień ACL za pomocą bazy danych RBAC (Kontroli dostępu bazującej na rolach) zamiast za pomocą plików konfiguracyjnych Webmina. Gdy obsługa RBAC jest wlączona, każdy użytkownik, dla którego opcja <b>$edit_rbacdeny1</b> jest zaznaczona, będzie posiadał uprawnienia określane przez RBAC, a nie ustawienia kontroli dostępu Webmina.
 rbac_esolaris=RBAC jest obsługiwany na razie tylko przez Solarisa i nie można go używać w tym systemie $1.
 rbac_eperl=Moduł $1 Perla wymagany przez integracje RBAC nie jest zainstalowany. Aby go zainstalować <a href='$2'>kliknij tutaj</a>.
 rbac_ecpan=Nie posiadasz dostępu do strony Moduły Perla, aby zainstalować wymagany moduł $1 do integracji RBAC.
 rbac_ok=Integracja RBAC jest dostępna w tym systemie i można ją włączyć dla poszczególnych użytkowników na stronie Edycja użytkownika Webmina.
+
 udeletes_err=Błąd usuwanie użytkowników
 udeletes_jerr=Dodanie użytkowników do grupy nie powiodło się
 udeletes_enone=Nie wybrane
@@ -350,11 +368,13 @@ udeletes_rusure=Czy jesteś pewny, że chcesz usunąć $1 wybranych użytkownik�
 udeletes_users=Wybrano użytkowników: $1
 udeletes_ok=Usuń użytkowników
 udeletes_ereadonly=Jeden z wybranych użytkowników jest oznaczony jako nie-edytowalny
+
 gdeletes_err=Błąd usuwania grup
 gdeletes_title=Usuń grupy
 gdeletes_rusure=Czy jesteś pewien, że chcesz usunąć $1 wybranych grup, i $2 użytków, których zawierają? Wszystkie ustawienia kontroli dostępu i szczegóły użytkowników zostaną utracone.
 gdeletes_users=Wybrane grupy: $1
 gdeletes_ok=Usuń grupy
+
 pass_title=Ograniczenia hasła
 pass_ecannot=Nie masz uprawnień do edycji ograniczeń hasła
 pass_header=Opcje ograniczeń hasła Webmina
@@ -377,6 +397,7 @@ pass_eminsize=Brakująca lub nienumeryczna minimalna długość hasła
 pass_emaxdays=Brakująca lub nienumeryczna liczba dni przed zmianą
 pass_elockdays=Brakująca lub nienumeryczna liczba dni przed zablokowaniem konta
 pass_eoldblock=Brakująca lub nienumeryczna liczba starych haseł do odrzucenia
+
 cpass_minsize=Musi zawierać przynajmniej $1 znaków
 cpass_notre=Pasuje do niedozwolonego wzorca
 cpass_re=Nie pasuje do wymaganego wzorca
@@ -384,6 +405,7 @@ cpass_name=Zawiera nazwę użytkownika
 cpass_dict=Jest słowem ze słownika
 cpass_spellcmd=Nie zainstalowano komend $1 lub $2 wymaganych do sprawdzania słów ze słownika
 cpass_old=Nie można używać starych haseł
+
 sql_title=Baza danych użytkowników i grup
 sql_ecannot=Nie masz uprawnień do konfigurowania bazy użytkowników i grup
 sql_header=Opcje zaplecza bazy danych dla użytkowników i grup
@@ -426,21 +448,25 @@ sql_dnerr=Ustawienia bazy użytkowników i grup są prawidłowe, ale DN LDAP : $
 sql_dnerr2=Kliknij przycisk <b>Twórz DN</b> poniżej, aby stworzyć DN automatycznie, lub ręcznie dodaj DN do Twojego serwera LDAP.
 sql_makedn=Twórz DN
 sql_schema=Pobierz schemat LDAP
+
 make_title=Twórz tabele użytkownika i grupy
 make_err=Nie udało się utworzyć tabel dla użytkownika i grupy
 make_exec=Wykonywanie zapytania SQL $1 ..
 make_failed=.. tworzenie nieudane : $1
 make_done=.. zrobione
 make_still=Mimo utworzenia tabeli : $1, nadal istnieją pewne problemy
+
 makedn_title=Twórz DN LDAP
 makedn_eoc=Nie znaleziono klas obiektu strukturalnego!
 makedn_exec=Tworzenie DN rodzica $1 ..
 makedn_failed=.. tworzenie nieudane : $1
 makedn_done=.. zrobione
 makedn_still=Mimo utworzenia DN : $1, nadal istnieją pewne problemy
+
 schema_title=Pobierz schemat LDAP
 schema_desc=Zanim Webmin będzie mógł używać serwera LDAP do przechowywania użytkowników i grup musi zostać skonfigurowany tak, aby używał poniższego schematu. Można to zrobić zapisując definicję schematu <tt>/etc/ldap/schema</tt> lub <tt>/etc/openldap/schema</tt> jako <tt>webmin.schema</tt>. Następnie należy skonfigurować serwer tak, aby używał tego pliku.
 schema_download=Pobierz plik schematu : <a href=$1>$1</a>
+
 twofactor_err=Błąd konfigurowania Włącz dwustopniowego uwierzytelniania
 twofactor_euser=Użytkownik Webmina nie został znaleziony!
 twofactor_title=Dwustopniowe uwierzytelnianie

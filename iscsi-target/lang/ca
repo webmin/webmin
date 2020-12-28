@@ -1,6 +1,7 @@
 check_econfig=No s'ha trobat al sistema el fitxer $1 de configuració d'objectius iSCSI.
 check_eietadm=No s'ha trobat al sistema l'ordre $1 d'administració d'objectius iSCSI.
 check_einit=L'acció d'engegada $1 no existeix
+
 index_title=Objectius iSCSI
 index_clink=Pot ser que no estigui instal·lada, o bé que la <a href='$1'>configuració del mòdul</a> sigui incorrecta.
 index_stop=Atura els Objectius iSCSI
@@ -22,8 +23,10 @@ index_noluns=Cap
 index_nousers=Qualsevol
 index_nullio=Disc RAM de $1 sectors
 index_size=Mida total
+
 dtargets_err=No s'han pogut suprimir els objectius
 dtargets_enone=No n'has seleccionat cap!
+
 target_title1=Creació d'Objectiu iSCSI
 target_title2=Edició d'Objectiu iSCSI
 target_header=Opcions del dispositiu compartit iSCSI
@@ -68,11 +71,13 @@ target_noalias=Cap
 target_hdigest=Suma de comprovació de la capçalera
 target_ddigest=Suma de comprovació de les dades
 target_nodigest=Cap
+
 auth_title=Paràmetres d'Autenticació
 auth_header=Opcions d'autenticació per defecte de tots els objectius
 auth_iuser=Autenticació per part dels clients
 auth_ouser=Autenticació als clients
 auth_err=No s'han pogut desar els paràmetres d'autenticació
+
 conn_title=Paràmetres de Connexió
 conn_header=Opcions de connexió per defecte de tots els objectius
 conn_sessions=Nombre màxim de sessions concurrents
@@ -91,6 +96,7 @@ conn_emaxrecv=Hi falta la llargada màxima del segment de recepció o bé no és
 conn_emaxxmit=Hi falta llargada màxima del segment de transmissió o bé no és numèrica
 conn_emaxburst=Hi falta la mida màxima de burst client o bé no és numèrica
 conn_efirstburst=Hi falta la mida màxima de dades no sol·licitades del client o bé no és numèrica
+
 timeout_title=Paràmetres de Temps Límit
 timeout_header=Opcions de temps límit del client
 timeout_nopi=Interval entre <i>pings</i> quan està inactiu
@@ -98,6 +104,7 @@ timeout_nopinone=No facis mai <i>ping</i>
 timeout_secs=segons
 timeout_nopt=Temps d'espera per a la resposta de <i>ping</i>
 timeout_noptnone=El mateix que el temps de <i>ping</i>
+
 addr_title=Adreça i Port del Servidor
 addr_header=Opcions de xarxa del servidor iSCSI
 addr_addr=Escolta l'adreça IP
@@ -110,18 +117,21 @@ addr_err=No s'ha pogut desar l'adreça del servidor
 addr_eaddr=L'adreça a escoltar ha de ser una adreça IP
 addr_eport=El port a escoltar ha de ser un número
 addr_edebug=El nivell de depuració ha de ser un número
+
 initiators_title=Adreces Client Permeses
 initiators_none=Encara no s'ha definit cap adreça client permesa. No hi ha cap client que es pugui connectar.
 initiators_ips=Clients permesos
 initiators_title1=Addició d'Adreces Client Permeses
 initiators_title2=Edició d'Adreces Client Permeses
 initiators_header=Clients iSCSI permesos per a l'objectiu
+
 targets_title=Adreces permeses del Servidor
 targets_none=Encara no s'ha definit cap adreça permesa del servidor. No hi ha cap client que es pugui connectar.
 targets_ips=Interfícies permeses del servidor
 targets_title1=Addició d'Adreces Permeses del Servidor
 targets_title2=Edició d'Adreces Permeses del Servidor
 targets_header=Interfícies permeses del servidor iSCSI per a l'objectiu
+
 allow_target=Nom de l'objectiu
 allow_move=Desplaça
 allow_delete=Suprimeix els seleccionats
@@ -133,17 +143,21 @@ allow_return=als objectius i adreces permeses
 allow_err=No s'han pogut desar les adreces permeses
 allow_eaddr=L'adreça $1 no és vàlida. Ha de ser una adreça IPv4, una xarxa/màscara IPv4, o bé una adreça IPv6 entre claudàtors.
 allow_eaddrs=No has introduït cap adreça permesa
+
 dallow_err=No s'han pogut suprimir les adreces permeses
 dallow_enone=No n'has seleccionat cap
+
 manual_title=Edició del Fitxer de Configuració
 manual_desc=Utilitza la caixa de text de sota per a editar el fitxer $1 de configuració del servidor iSCSI. Ves amb compte, perquè no es durà a terme cap validació de la teva entrada!
 manual_err=No s'ha pogut desar el fitxer de configuració
 manual_edata=No has introduït cap contingut!
+
 start_err=No s'ha pogut iniciar el servidor iSCSI
 stop_err=No s'ha pogut aturar el servidor iSCSI
 restart_err=No s'ha pogut reiniciar el servidor iSCSI
 atboot_err=No s'ha pogut activar en engegar el sistema
 atboot_einit=El script d'inicialització $1 no existeix
+
 log_create_target=S'ha creat l'objectiu $1
 log_delete_target=S'ha suprimit l'objectiu $1
 log_modify_target=S'ha modificat l'objectiu $1

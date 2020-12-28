@@ -40,6 +40,7 @@ index_descfetch=Din il-paġna hija għat-tniżżil ta 'fajl mis-sistema li tħad
 index_email=Ibgħat email meta jsiru t-tniżżil?
 index_emailto=Iva, biex tindirizza
 index_email2=Ibgħat imejl meta l-uploads isiru?
+
 upload_title=Itella 'l-Fajls
 upload_err=Ma rnexxielux itella 'l-fajls
 upload_edir=Nieqes id-direttorju biex ittella 'għalih
@@ -63,6 +64,7 @@ upload_saving=Iffranka l-fajl $1 ..
 upload_saved=.. kiteb $1 
 upload_unzipping=Estrazzjoni ta 'fajl $1 ..
 upload_unzipdone=.. $1 
+
 download_err=Ma rnexxielux isalva t-tniżżil
 download_enone=L-ebda URL biex tniżżel ma ddaħħal
 download_eurl="$1" mhix URL valida
@@ -74,9 +76,11 @@ download_failed=Id-download fallew : $1
 download_eaccess=M'għandekx permess tniżżel fajls minn $1 
 download_eucannot=M’intix permess li tniżżel fajls bħala utent $1 
 download_egcannot=Il-grupp magħżul ma fihx l-utent magħżul
+
 cancel_err=Ma rnexxielux jikkanċella d-downloads
 cancel_enone=L-ebda magħżul
 cancel_ecannot=Mhux permess li tikkanċella downloads għal utent $1 
+
 log_cancel=$1 download (i) ikkanċellat
 log_upload_l=Fajl (i) imtella '(i) $1 
 log_upload=Imtella ' $1 fajl (i)
@@ -84,6 +88,7 @@ log_download_l=URL (i) imniżżla (1)
 log_download=URL imniżżel $1 
 log_sdownload_l=Skedata t-tniżżil tal-URL (i) $1 
 log_sdownload=Skedata t-tniżżil ta ' $1 URL (i)
+
 acl_users=Jistgħu jtellgħu u jniżżlu l-fajls bħala utenti
 acl_all=L-utenti kollha
 acl_this=Utent Webmin attwali
@@ -98,6 +103,7 @@ acl_max=Daqs massimu tal-upload
 acl_unlim=Bla limitu
 acl_b=bytes
 acl_fetch=Tista 'tniżżel fajls fuq PC?
+
 fetch_err=Ma rnexxielux iniżżel il-fajl
 fetch_ecannot=M'għandekx permess tniżżel fajls fuq PC
 fetch_efile=L-ebda isem tal-fajl ma daħal
@@ -106,6 +112,7 @@ fetch_eopen=Ma rnexxielux jiftaħ fajl : $1
 fetch_eaccess=M'intix permess li tniżżel fajls minn $1 
 fetch_ezip=Direttorju ma jistax jitniżżel sakemm il-kmand <tt>zip</tt> ikun installat
 fetch_eroot=Id-direttorju tal-għeruq ma jistax jitniżżel!
+
 email_downmsg=Tlesta t-tniżżil li ġej :
 email_downurl=URL: $1 
 email_downerr=Messaġġ ta 'żball: $1 

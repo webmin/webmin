@@ -8,6 +8,7 @@ index_style=打印系统： $1
 index_cluster=集群服务器
 index_clusterdesc=单击此按钮可以设置其他Webmin服务器，在这些服务器上将创建，更新和删除打印机。
 index_delete=删除选定的打印机
+
 style_solaris=的Solaris
 style_linux=Linux LPR
 style_freebsd=FreeBSD LPR
@@ -17,26 +18,34 @@ style_unixware=UnixWare
 style_cups=CUPS
 style_irix=虹膜
 style_aix=艾克斯
+
 edit_unlimited=无限
 edit_check=检查远程服务器是否启动？
+
 blocks=块
+
 save_erport=远程端口'$1'无效
 save_evalid=打印系统不允许该打印机
 save_errslave=打印机在此系统上创建成功，但是在群集系统上发生以下错误： $1
 save_egone=找不到名为“$1”的打印机
 save_errdelslave=打印机在此系统上删除了OK，但是在群集系统上发生以下错误： $1
+
 jobs_test=打印测试页
 jobs_cancelsel=取消选定的工作
 jobs_on=在打印机 $1上
 jobs_return=打印作业列表
+
 restart_ecannot=您不允许重新启动调度程序
 restart_err=无法重新启动调度程序
+
 redhat_printer2=打印机型号和驱动程序
+
 suse_raw=生的
 suse_extra=额外的Ghostscript选项
 suse_yast2=YAST2驱动程序
 suse_edriver=未选择打印机类型
 suse_eres=缺少决议或决议无效
+
 acl_restart=仅重启
 acl_test=可以打印测试页吗？
 acl_user=管理归谁所有的打印作业
@@ -44,18 +53,26 @@ acl_user_all=所有用户
 acl_user_this=Webmin当前用户
 acl_delete=可以删除打印机吗？
 acl_cluster=可以管理打印机集群吗？
+
 log_restart=重新启动打印计划程序
 log_cancel_sel=已取消 $1上的 $2打印作业
+
 linux_ecmd=在系统上找不到命令 $1，这表示未安装Linux打印系统。
 linux_espool=系统上不存在假脱机目录 $1，这表示未安装Linux打印系统。
+
 freebsd_ecmd=在系统上找不到命令 $1，这表示未安装FreeBSD打印系统。
 freebsd_espool=您的系统上不存在假脱机目录 $1，这表示未安装FreeBSD打印系统。
+
 unixware_ecmd=在系统上找不到命令 $1，这表示未安装UnixWare打印系统。
+
 hpux_ecmd=在系统上找不到命令 $1，这表示未安装HPUX打印系统。
 hpux_eiface=接口脚本目录 $1在您的系统上不存在，这表明未安装HPUX打印系统。
+
 lprng_ecmd=在系统上找不到命令 $1，表示未安装LPRng打印系统。
 lprng_espool=您的系统上不存在假脱机目录 $1，这表示未安装LPRng打印系统。
+
 solaris_ecmd=在系统上找不到命令 $1，这表明未安装Solaris打印系统。
+
 test_title=打印测试页
 test_ecannot=您无权打印测试页
 test_desc=该表格允许您打印打印机 $1的测试页。选择您要打印的页面类型：
@@ -67,6 +84,7 @@ test_print=打印页面
 test_exec=使用命令 $1..打印测试页
 test_failed=..命令失败！
 test_ok=..命令完成。
+
 cups_none=没有
 cups_nonemsg=远程或原始打印机
 cups_prog=程序
@@ -74,11 +92,14 @@ cups_driver=CUPS驱动
 cups_eprog='$1'不是有效程序
 cups_opts=$1的选项
 cups_ecmd=在系统上找不到命令 $1，这表明未安装CUPS打印系统。
+
 irix_ecmd=在系统上找不到命令 $1，这表明未安装IRIX打印系统。
 irix_eiface=接口脚本目录 $1在您的系统上不存在，这表明未安装IRIX打印系统。
+
 aix_port=打印机端口 $1
 aix_edesc=说明无效-仅允许使用字母和数字，并且不能使用空格
 aix_ecmd=找不到AIX打印机服务器 $1。可能未安装，或者正在使用其他打印系统。
+
 cluster_title=群集打印机服务器
 cluster_none=尚未将服务器添加到打印机群集中。
 cluster_host=主机名
@@ -90,6 +111,7 @@ cluster_need=您必须先在Webmin服务器索引模块中添加具有登录名�
 cluster_return=集群服务器
 cluster_delete=删除选定
 cluster_ecannot=您无权管理群集打印机服务器
+
 add_title=添加服务器
 add_msg=正在添加 $1 ..
 add_gmsg=在组 $1中添加服务器 ..

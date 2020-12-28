@@ -11,11 +11,13 @@ index_boot=부팅 할 때 시작 하시겠습니까?
 index_bootdesc=시스템 부팅시 Dovecot 서버 시작을 활성화 또는 비활성화하려면이 설정을 변경하십시오.
 index_return=모듈 색인
 index_version=버전 $1
+
 stop_err=도브 코트를 멈추지 못했습니다.
 stop_erunning=더 이상 달리지 않는다
 start_err=도브 코트를 시작하지 못했습니다
 start_eprotos=<b>네트워킹 및 프로토콜</b> 페이지에서 선택된 프로토콜이 없습니다
 apply_err=구성을 적용하지 못했습니다
+
 net_title=네트워킹 및 프로토콜
 net_header=도브 코트 네트워킹 및 메일 프로토콜 옵션
 net_protocols=메일 프로토콜 제공
@@ -42,8 +44,11 @@ net_eimaps_listen=IMAP SSL 연결에 유효하지 않은 IP 주소
 net_epop3s_listen=POP3 SSL 연결에 유효하지 않은 IP 주소
 net_elisten=비 SSL 연결에 유효하지 않은 IP 주소
 net_essl_listen=SSL 연결에 유효하지 않은 IP 주소
+
 imap_title=IMAP 옵션
+
 pop3_title=POP3 옵션
+
 ssl_title=SSL 구성
 ssl_header=IMAP 및 POP3 SSL 모드 옵션
 ssl_key=SSL 개인 키 파일
@@ -61,7 +66,9 @@ ssl_ecert=누락되었거나 존재하지 않는 인증서 파일
 ssl_eca=누락되었거나 존재하지 않는 클라이언트 CA 인증서 파일
 ssl_eregen=누락되거나 숫자가 아닌 매개 변수 재생성 간격
 ssl_epass=SSL 키 파일 비밀번호를 입력하지 않았습니다
+
 misc_title=다른 옵션
+
 login_title=사용자 및 로그인 옵션
 login_header=사용자 인증 및 로그인 옵션
 login_fuid=유효한 최소 UID
@@ -117,6 +124,7 @@ login_procs=최대 로그인 프로세스
 login_count=초기 로그인 프로세스
 login_eprocs=최대 로그인 프로세스 수가 없거나 유효하지 않습니다
 login_ecount=초기 로그인 프로세스 수가 없거나 유효하지 않습니다
+
 mail_title=메일 파일
 mail_header=메일 위치 및 읽기 옵션
 mail_env=메일 파일 위치
@@ -169,6 +177,7 @@ mail_eindexmode=메일 파일 위치가 자동으로 감지되면 색인 파일 
 mail_econtrolmode=메일 파일 위치가 자동으로 감지되면 제어 파일 위치를 설정할 수 없습니다
 mail_eindex=인덱스 파일의 절대 경로가 없거나 잘못되었습니다
 mail_econtrol=제어 파일의 절대 경로가 없거나 유효하지 않습니다
+
 log_net=변경된 네트워킹 및 프로토콜
 log_login=변경된 사용자 및 로그인 옵션
 log_mail=변경된 메일 파일
@@ -179,6 +188,7 @@ log_stop=도브 코트 서버 중지
 log_bootup=부팅시 도브 코트 활성화
 log_bootdown=부팅시 도브 코트 비활성화
 log_manual=수동으로 편집 한 구성 파일 $1
+
 manual_title=구성 파일 편집
 manual_editsel=Dovecot 구성 파일 편집
 manual_err=구성 파일을 저장하지 못했습니다

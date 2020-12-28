@@ -14,10 +14,12 @@ index_apply=aplica
 index_return=Index PPP
 index_none=Nu aveți acces la nicio caracteristică a acestui modul.
 index_delete=Ștergeți conturile selectate
+
 secrets_title=Conturi PPP
 secrets_return=index
 secrets_none=Nu s-au creat încă conturi PPP.
 secrets_ecannot=Nu aveți voie să editați conturi PPP
+
 edit_secret_etitle=Editați contul PPP
 edit_secret_ctitle=Creați cont PPP
 edit_secret_acc=Cont PPP
@@ -37,8 +39,10 @@ edit_secret_alist=Permite listarea ..
 edit_secret_save=salva
 edit_secret_del=Șterge
 edit_secret_return=lista de conturi
+
 save_secret_esave=Nu a putut salva contul
 save_secret_enoip=„$1” nu este o adresă validă
+
 log_create=Cont PPP creat $1 
 log_modify=Cont PPP modificat $1 
 log_delete=Contul PPP șters $1 
@@ -54,6 +58,7 @@ log_dialin_move=Număr ID de apelant mutat $1
 log_mgetty_create=Portul serial creat 1
 log_mgetty_modify=Port seriat modificat $1 
 log_mgetty_delete=Portul serial șterge $1 
+
 options_title=Opțiuni PPP
 options_serial=Pentru portul serial $1 
 options_dev=Pentru dispozitivul $1 
@@ -84,6 +89,7 @@ options_idle=Timp inactiv înainte de deconectare
 options_idle_def=Nu
 options_eidle=Lipsește sau nu este valabil timpul inactiv
 options_ecannot=Nu aveți voie să editați opțiunile PPP
+
 mgetty_title=Configurare port serial
 mgetty_ecmd=Comanda $1 nu a fost găsită în sistemul dvs. Acest program este necesar pentru a gestiona conectările portului serial prin modem sau conexiune directă.
 mgetty_desc=Pentru ca serverul dvs. să permită conectarea la un port serial prin modem sau o conexiune directă, trebuie să fie listat mai jos. Când adăugați un port la această listă, programul $1 va fi configurat pentru a răspunde la conexiunile modemului și pentru a afișa un prompt de conectare.
@@ -125,6 +131,7 @@ mgetty_apply=Aplicați configurare
 mgetty_applydesc=Faceți clic pe acest buton pentru a aplica configurația curentă a portului serial rulând comanda $1 și omorând toate procesele Mgetty.
 mgetty_applyerr=Eroare la aplicarea configurației
 mgetty_ecannot=Nu aveți voie să editați configurațiile portului serial
+
 dialin_title=Acces ID ID
 dialin_desc=Această pagină vă permite să configurați Mgetty pentru a permite sau refuza accesul dialin în funcție de numărul de telefon al unui apelant. Când apare un apel, prima intrare din listă care se potrivește cu numărul de telefon va determina dacă apelul este acceptat sau nu.
 dialin_efile=Fișierul de control al accesului ID-ului apelantului Mgetty $1 nu a fost găsit în sistemul dvs. Poate că Mgetty nu este instalat sau <a href='$2'>configurația modulului</a> este incorectă.
@@ -145,9 +152,12 @@ dialin_move=Mișcare
 dialin_err=Nu a putut salva numărul de identificare al apelantului
 dialin_enumber=Număr de telefon lipsă sau nevalid
 dialin_ecannot=Nu aveți voie să editați accesul ID-ului apelantului
+
 acl_pages=Pagini disponibile
 acl_direct=Mergi direct la o pagină?
+
 sync_ecannot=Nu aveți voie să editați opțiunile de sincronizare unix-ppp
 sync_title=Sincronizare utilizator
+
 delete_err=Nu a reușit să ștergeți conturile
 delete_enone=Nimic selectat

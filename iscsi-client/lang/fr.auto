@@ -3,8 +3,10 @@ index_clink=Il n'est peut-être pas installé ou la configuration de votre <a hr
 index_return=index du module
 index_atboot=Commencez au démarrage?
 index_atbootdesc=Modifiez cette option pour contrôler si le client iSCSI est démarré au démarrage ou non. Ceci est nécessaire pour que les systèmes de fichiers montés à partir de serveurs iSCSI soient montés automatiquement.
+
 check_econfig=Le fichier de configuration du client iSCSI $1 est introuvable sur votre système.
 check_eiscsiadm=Le programme d'administration client iSCSI $1 est introuvable sur votre système.
+
 auth_title=Options d'authentification
 auth_header=Authentification client et serveur iSCSI
 auth_name=Nom de l'initiateur du système local
@@ -29,6 +31,7 @@ auth_edpassword=Mot de passe de découverte manquant pour le serveur
 auth_edusername_in=Nom d'utilisateur de découverte manquant pour le client
 auth_edpassword_in=Mot de passe de découverte manquant pour le client
 auth_egen=Impossible de générer un nouveau nom!
+
 timeout_title=Délais d'attente iSCSI
 timeout_header=Options de délai d'expiration du client iSCSI
 timeout_timeout=Temps d'attente avant l'échec des commandes SCSI
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Temps manquant ou non numérique pour attendre le ping
 timeout_eabort_timeout=Temps manquant ou non numérique pour attendre la réponse d'abandon avant d'échouer
 timeout_elu_reset_timeout=Temps manquant ou non numérique pour attendre la réponse de l'unité logique avant d'échouer
 timeout_etgt_reset_timeout=Temps manquant ou non numérique pour attendre la réponse cible avant d'échouer
+
 iscsi_title=Options iSCSI
 iscsi_header=Autres options iSCSI
 iscsi_startup=Connecter des sessions au démarrage?
@@ -62,6 +66,7 @@ iscsi_err=Échec de l'enregistrement des options iSCSI
 iscsi_eretry=Nombre de fois manquant ou non numérique pour réessayer la connexion
 iscsi_ecmds=Commandes maximales manquantes ou non numériques mises en file d'attente par session
 iscsi_equeue=Commandes maximales manquantes ou non numériques en file d'attente par périphérique
+
 ifaces_title=Interfaces iSCSI
 ifaces_elist=Échec de la liste des interfaces : $1 
 ifaces_name=Nom d'interface
@@ -78,11 +83,13 @@ ifaces_hwaddress=Adresse Mac
 ifaces_ifacename=Interface source
 ifaces_ipaddressdef=Automatique
 ifaces_notset=Automatique
+
 iadd_err=Impossible d'ajouter l'interface
 iadd_eclash=Une interface nommée $1 existe déjà
 iadd_eipaddress=Adresse IP source manquante ou non valide
 iadd_ehwaddress=Adresse MAC manquante ou invalide
 iadd_ename=Le nom de l'interface est manquant ou contient des caractères non valides
+
 difaces_err=Impossible de supprimer les interfaces
 difaces_enone=Aucune sélection
 difaces_edelete=Échec de la suppression de l'interface $1 : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Supprimer les interfaces
 difaces_target=Objectif iSCSI
 difaces_ip=Serveur iSCSI
 difaces_users=Certaines connexions utilisant ces interfaces sont actuellement actives et ne fonctionneront pas lorsque les interfaces seront supprimées :
+
 conns_title=Connexions iSCSI
 conns_elist=Échec de la liste des connexions : $1 
 conns_ip=IP du serveur
@@ -113,6 +121,7 @@ conns_return=liste des connexions
 conns_iface=Interface iSCSI
 conns_ifacedef=Choisissez automatiquement
 conns_ifaceerr=Impossible de récupérer les interfaces : $1 
+
 add_title=Ajouter une connexion iSCSI
 add_err=Impossible d'ajouter la connexion iSCSI
 add_ehost=Nom d'hôte manquant ou non résoluble
@@ -129,6 +138,7 @@ add_on=$1 sur $2
 add_auth=Se connecter au serveur
 add_auth1=Utiliser la méthode d'authentification par défaut
 add_auth0=Connectez-vous en tant que $2 avec le mot de passe $3 en utilisant la méthode $1 
+
 dconns_err=Impossible de déconnecter les connexions
 dconns_enone=Aucune sélection
 dconns_edelete=Échec de la suppression de la cible $2 de l'hôte $1 : $3 
@@ -142,6 +152,7 @@ dconns_use=Utilisé par
 dconns_size=Taille de la partition
 dconns_confirm=Supprimer les connexions
 dconns_unused=Inutilisé
+
 vconn_title=Connexion iSCSI
 vconn_egone=La connexion sélectionnée n'existe plus!
 vconn_header=Détails de la connexion iSCSI
@@ -160,8 +171,10 @@ vconn_device3=Nom d'appareil constant
 vconn_delete=Déconnecter la connexion
 vconn_users=Utilisateurs actuels
 vconn_size=Taille du disque
+
 atboot_err=Échec de l'activation au démarrage
 atboot_einit=Aucune action de démarrage nommée $1 n'existe
+
 log_auth=Options d'authentification enregistrées
 log_timeout=Options de délai d'attente enregistrées
 log_iscsi=Options iSCSI enregistrées

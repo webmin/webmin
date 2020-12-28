@@ -14,10 +14,12 @@ index_apply=Toevoegen
 index_return=PPP index
 index_none=U heeft tot geen enkele optie van deze module toegang.
 index_delete=Verwijder Geselecteerde Accounts
+
 secrets_title=PPP Accounts
 secrets_return=index
 secrets_none=Er zijn nog geen PPP accounts gemaakt.
 secrets_ecannot=U bent niet bevoegd om PPP accounts te bewerken
+
 edit_secret_etitle=Bewerk PPP Account
 edit_secret_ctitle=Maak PPP Account
 edit_secret_acc=PPP Account
@@ -37,8 +39,10 @@ edit_secret_alist=Toegestane lijst ..
 edit_secret_save=Opslaan
 edit_secret_del=Verwijder
 edit_secret_return=account lijst
+
 save_secret_esave=Mislukt om account op te slaan
 save_secret_enoip='$1' is geen geldig adres
+
 log_create=Aangemaakte PPP account $1
 log_modify=Gemodificeerde PPP account $1
 log_delete=Verwijderde PPP account $1
@@ -54,6 +58,7 @@ log_dialin_move=Verplaatste beller ID nummer $1
 log_mgetty_create=Aangemaakte seriële poort $1
 log_mgetty_modify=Gemodificeerde seriële poort $1
 log_mgetty_delete=Verwijderde seriële poort $1
+
 options_title=PPP Opties
 options_serial=Voor seriële poort $1
 options_dev=Voor apparaat $1
@@ -84,6 +89,7 @@ options_idle=Wachttijd voor verbreken
 options_idle_def=Nooit
 options_eidle=Ontbrekende of ongeldige wacht tijd
 options_ecannot=U bent niet bevoegd om PPP opties te bewerken
+
 mgetty_title=Seriële Poort Configuratie
 mgetty_ecmd=De opdracht $1 is niet gevonden op uw systeem. Dit programma is nodig om seriële poort inlogs via modem of directe verbindingen af te handelen.
 mgetty_desc=Indien u wilt dat uw server inloggen toestaat via een modem of een directe verbinding moet dit in de lijst hieronder staan. Wanneer u een poort toevoegt aan de lijst zal het $1 programma worden geconfigureerd om modem verbindingen te beantwoorden en een inlog laten zien via een prompt.
@@ -125,6 +131,7 @@ mgetty_apply=Configuratie Toevoegen
 mgetty_applydesc=Klik op deze knop om de huidige seriele poort configuratie toe te voegen met de opdracht $1 en tegelijk alle Mgetty processen te killen.
 mgetty_applyerr=Mislukt om configuratie toe te voegen
 mgetty_ecannot=U bent niet bevoegd om seriële poort configuraties te bewerken
+
 dialin_title=Beller ID Toegang
 dialin_desc=Op deze pagina kunt u Mgetty configureren zodat deze een inbel toegang weigert of toestaat gebaseerd op een telefoonnummer of een beller. Wanneer er een telefoontje binnenkomt zal de eerste in de lijst die overeenkomt met het telefoonnummer bepalen of het inkomende telefoontje word geaccepteerd of niet.
 dialin_efile=De Mgetty beller ID toegangs controle file $1 is niet gevonden op uw systeem. Misschien is Mgetty niet geinstalleerd of uw <a href='$2'>module configuratie</a> is  niet correct.
@@ -145,9 +152,12 @@ dialin_move=Verplaats
 dialin_err=Mislukt om beller ID nummer op te slaan
 dialin_enumber=Ontbrekende of ongeldig telefoon nummer
 dialin_ecannot=U bent niet bevoegd een beller ID toegang te bewerken
+
 acl_pages=Beschikbare pagina's
 acl_direct=Ga direct naar een pagina?
+
 sync_ecannot=U bent niet bevoegd om unix-ppp synchronisatie opties te bewerken
 sync_title=Gebruiker Synchronisatie
+
 delete_err=Mislukt om accounts te verwijderen
 delete_enone=Niets geselecteerd

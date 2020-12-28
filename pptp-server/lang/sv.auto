@@ -10,6 +10,7 @@ index_apply=Använd konfigurering
 index_applydesc=Klicka på den här knappen för att tillämpa de aktuella PPTP-serveralternativen genom att stoppa och starta om PPTP-serverprocessen. Ändringar av PPP-alternativ och PPP-konton kommer alltid att gälla för alla nya anslutningar
 index_return=modulindex
 index_epppd=PPP-serverprogrammet $1 är inte installerat på ditt system. PPTP beror på att den fungerar.
+
 conf_title=PPTP-serveralternativ
 conf_ecannot=Du får inte redigera PPTP-serveralternativ
 conf_header=PPTP-serverkonfiguration
@@ -35,6 +36,7 @@ conf_elocalip='$1' är inte en giltig lokal IP-adress eller intervall
 conf_eremoteip='$1' är inte en giltig fjärr-IP-adress eller intervall
 conf_efrom=IPX-nätverk från adress saknas eller
 conf_eto=Saknat eller ogiltigt IPX-nätverk för adress
+
 options_title=PPP-alternativ
 options_ecannot=Du får inte redigera PPP-alternativ
 options_desc0=PPP-alternativen nedan från $1 gäller ALLA inkommande anslutningar som mottagits av ditt system, inklusive sådana för uppringningsmodem.
@@ -67,6 +69,7 @@ options_mschap=MS-CHAP-autentisering
 options_mschap-v2=MS-CHAP version 2-autentisering
 options_chapms=MS-CHAP-autentisering
 options_chapms-v2=MS-CHAP version 2-autentisering
+
 secrets_title=PPP-konton
 secrets_ecannot=Du får inte redigera PPP-konton
 secrets_return=index
@@ -80,6 +83,7 @@ secrets_sany=NÅGRA
 secrets_create=Skapa nytt PPP-konto.
 secrets_desc=PPP-kontona som listas på denna sida är hämtade från filen $1, som används för $3 -autentisering. Endast de för din server $2 visas, inte konton för utgående anslutningar.
 secrets_delete=Radera valda PPP-konton
+
 edit_secret_etitle=Redigera PPP-konto
 edit_secret_ctitle=Skapa PPP-konto
 edit_secret_acc=PPP-konto
@@ -99,15 +103,20 @@ edit_secret_alist=Tillåt listade ..
 edit_secret_save=Spara
 edit_secret_del=Radera
 edit_secret_return=kontolista
+
 save_secret_esave=Det gick inte att spara konto
 save_secret_enoip='$1' är inte en giltig adress
+
 stop_err=Det gick inte att stoppa PPTP-servern
 stop_egone=Kör inte längre
 stop_ecannot=Du får inte stoppa PPTP-servern
+
 start_err=Det gick inte att starta PPTP-servern
 start_ecannot=Du får inte starta PPTP-servern
+
 apply_err=Det gick inte att starta om PPTP-servern
 apply_ecannot=Du får inte starta om PPTP-servern
+
 conns_title=Aktiva anslutningar
 conns_ecannot=Du får inte hantera aktiva anslutningar
 conns_desc=Den här sidan visar de för närvarande aktiva PPTP-anslutningarna till din server. Klicka på dess gränssnittsnamn för att med kraft koppla bort en.
@@ -119,9 +128,11 @@ conns_remote=Klientens VPN-adress
 conns_none=Inga PPTP-anslutningar verkar vara aktiva just nu.
 conns_unknown=Okänd
 conns_user=Användarnamn
+
 disc_err=Det gick inte att koppla bort
 disc_egone=Anslutningarna är inte längre aktiva
 disc_ekill=Processen körs inte längre
+
 log_secret_create=Skapat PPP-konto $1 
 log_secret_modify=Ändrat PPP-konto $1 
 log_secret_delete=Raderat PPP-konto $1 
@@ -132,6 +143,7 @@ log_disc=Kopplad klient $1
 log_start=Startad PPTP-server
 log_stop=Stoppad PPTP-server
 log_apply=Tillämpad PPTP-serverkonfiguration
+
 acl_conf=Kan redigera konfiguration?
 acl_options=Kan redigera alternativ?
 acl_secrets=Kan hantera PPTP-konton?

@@ -10,6 +10,7 @@ index_range=Stvaranje izvješća za datumski raspon
 index_view=Pogledajte generirano izvješće
 index_viewdesc=Pogledajte zadnje generirano izvješće u direktoriju $1.
 index_return=indeks modula
+
 log_title=Izvor zapisa i odredište izvješća
 log_header=Izvor log datoteka lignje i generirane opcije izvještaja
 log_access_log=Izvor log datoteka lignje
@@ -30,6 +31,7 @@ log_elastlog=Nedostaje ili nije broj
 log_eemail=Nedostaje ili je neispravna e-adresa
 log_emailx=Program koji nedostaje ili ne postoji
 log_squidguard_log_path=Datoteka zapisa SquidGuard-a
+
 style_title=Stil izvješća
 style_header=HTML stil izvještavanja i mogućnosti boja
 style_title2=Naslov izvješća
@@ -54,6 +56,7 @@ style_efont=Nedostaje ili neispravno ime fonta
 style_esize=Nedostajuća ili nevaljana širina i visina slike
 style_language=Jezik izvještaja
 style_charset=Prijavi karakter znaka
+
 report_title=Opcije izvješća
 report_header=Prijavi izvješće o sadržajima i mogućnostima generacije
 report_resolve_ip=Riješite IP adrese?
@@ -134,6 +137,7 @@ report_echar=Prostori nisu dopušteni
 report_estring=Nedostaje ili nije važeći zamjenski tekst
 report_eselect=Ništa nije odabrano
 report_eenter=Ništa nije ušlo
+
 sched_title=Izrada planiranog izvješća
 sched_header=Zakazane mogućnosti izvještavanja
 sched_sched=Je li planirano izvješće omogućeno?
@@ -148,9 +152,11 @@ sched_rsel=Oni od $1 do prije $2 dana
 sched_err=Spremanje planirane generacije izvješća nije uspjelo
 sched_erfrom=Nedostaje ili nije važeći početni broj dana prije
 sched_erto=Nedostaje ili je nevažeći završni broj dana prije
+
 view_title=Sarg izvješće
 view_efile=Nevažeće ime datoteke!
 view_eopen=Otvaranje datoteke izvještaja nije uspjelo
+
 gen_title=Generiranje izvještaja
 gen_header=Sada se generira Sarg izvješće iz datoteke dnevnika lignje $1 i sve rotirane verzije ..
 gen_done=.. gotovo
@@ -160,6 +166,7 @@ gen_view=Pogledajte dovršeno izvješće.
 gen_err=Generiranje izvješća nije uspjelo
 gen_efrom=Nedostaje ili nije valjan od dana
 gen_eto=Danas nedostaje ili je nevažeći
+
 webmin_log_log=Ažurirano izvor zapisnika i odredišta izvješća
 webmin_log_report=Ažurirane opcije izvještaja
 webmin_log_style=Ažurirane opcije stila izvješća

@@ -10,6 +10,7 @@ index_apply=設定を適用
 index_applydesc=このボタンをクリックして、PPTPサーバープロセスを停止して再起動することにより、現在のPPTPサーバーオプションを適用します。 PPPオプションとPPPアカウントの変更は、新しい接続に常に適用されます
 index_return=モジュールインデックス
 index_epppd=PPPサーバープログラム $1がシステムにインストールされていません。 PPTPは、その動作に依存しています。
+
 conf_title=PPTPサーバーオプション
 conf_ecannot=PPTPサーバーオプションを編集することはできません
 conf_header=PPTPサーバーの構成
@@ -35,6 +36,7 @@ conf_elocalip=「$1」は有効なローカルIPアドレスまたは範囲で�
 conf_eremoteip=「$1」は有効なリモートIPアドレスまたは範囲ではありません
 conf_efrom=アドレスからIPXネットワークが欠落しているか無効です
 conf_eto=アドレス指定するIPXネットワークがないか、無効です
+
 options_title=PPPオプション
 options_ecannot=PPPオプションを編集することはできません
 options_desc0=以下の $1からのPPPオプションは、ダイヤルアップモデムへの接続を含む、システムが受信するすべての着信接続に適用されます。
@@ -67,6 +69,7 @@ options_mschap=MS-CHAP認証
 options_mschap-v2=MS-CHAPバージョン2認証
 options_chapms=MS-CHAP認証
 options_chapms-v2=MS-CHAPバージョン2認証
+
 secrets_title=PPPアカウント
 secrets_ecannot=PPPアカウントの編集は許可されていません
 secrets_return=インデックス
@@ -80,6 +83,7 @@ secrets_sany=どれか
 secrets_create=新しいPPPアカウントを作成します。
 secrets_desc=このページにリストされているPPPアカウントは、 $3認証に使用されるファイル $1から取得されます。サーバー $2のアカウントのみが表示され、発信接続を行うためのアカウントは表示されません。
 secrets_delete=選択したPPPアカウントを削除
+
 edit_secret_etitle=PPPアカウントを編集
 edit_secret_ctitle=PPPアカウントを作成する
 edit_secret_acc=PPPアカウント
@@ -99,15 +103,20 @@ edit_secret_alist=リストに許可します。
 edit_secret_save=セーブ
 edit_secret_del=削除する
 edit_secret_return=アカウントリスト
+
 save_secret_esave=アカウントを保存できませんでした
 save_secret_enoip=「$1」は有効な住所ではありません
+
 stop_err=PPTPサーバーを停止できませんでした
 stop_egone=もう走っていない
 stop_ecannot=PPTPサーバーを停止することはできません
+
 start_err=PPTPサーバーの起動に失敗しました
 start_ecannot=PPTPサーバーを起動することはできません
+
 apply_err=PPTPサーバーの再起動に失敗しました
 apply_ecannot=PPTPサーバーを再起動することはできません
+
 conns_title=アクティブな接続
 conns_ecannot=アクティブな接続を管理することはできません
 conns_desc=このページには、サーバーへの現在アクティブなPPTP接続が一覧表示されます。強制的に切断するには、インターフェース名をクリックします。
@@ -119,9 +128,11 @@ conns_remote=クライアントVPNアドレス
 conns_none=現時点では、アクティブなPPTP接続はありません。
 conns_unknown=わからない
 conns_user=ユーザー名
+
 disc_err=切断できませんでした
 disc_egone=接続はアクティブではありません
 disc_ekill=プロセスはもう実行されていません
+
 log_secret_create=PPPアカウント $1を作成しました
 log_secret_modify=変更されたPPPアカウント $1
 log_secret_delete=PPPアカウント $1を削除しました
@@ -132,6 +143,7 @@ log_disc=切断されたクライアント $1
 log_start=PPTPサーバーを起動しました
 log_stop=停止したPPTPサーバー
 log_apply=適用されたPPTPサーバー構成
+
 acl_conf=構成を編集できますか？
 acl_options=オプションを編集できますか？
 acl_secrets=PPTPアカウントを管理できますか？

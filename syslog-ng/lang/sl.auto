@@ -9,6 +9,7 @@ index_start=Zaženite Syslog-NG
 index_startdesc=Kliknite ta gumb in zaženite demon Syslog-NG s trenutno konfiguracijo.
 index_return=kazalo modula
 index_version=Syslog-NG $1 
+
 options_title=Možnosti beleženja
 options_header=Možnosti za vse datoteke dnevnika
 options_secs=sekund
@@ -55,6 +56,7 @@ options_esync=Manjkajoče ali neveljavno število sporočil, ki jih želite shra
 options_estats=Manjka ali neštevilčen čas za čakanje med statističnimi sporočili
 options_elog_fifo_size=Manjkajoče ali neveljavno število sporočil v medpomnilniku
 options_elog_msg_size=Največja ali neštevilčna največja velikost dnevnika sporočila
+
 destinations_title=Dnevniški cilji
 destinations_name=Ime cilja
 destinations_type=Pišite na
@@ -77,6 +79,7 @@ destinations_add=Dodajte nov cilj dnevnika.
 destinations_return=prijavite cilje
 destinations_desc=Dnevnik drugega modula
 destinations_cmd=Izhod iz $1 
+
 destination_header=Prijavite se ciljne možnosti
 destination_title1=Ustvari dnevnik cilja
 destination_title2=Uredi cilj dnevnika
@@ -117,17 +120,22 @@ destination_enet_localip=Manjkajoč ali neveljaven lokalni IP naslov
 destination_enet_localport=Manjkajoča ali neveljavna številka lokalnega pristanišča
 destination_enet_host=Manjkajoči ali neveljavni gostitelj ali naslov strežnika Syslog
 destination_eunix=Manjka ime vtičnice Unix
+
 ddelete_err=Brisanje ciljev ni uspelo
 ddelete_enone=Izbrana ni nobena
 ddelete_eused=Cilja $1 ni mogoče izbrisati, saj ga uporablja cilj dnevnika
+
 sdelete_err=Brisanja virov ni bilo mogoče
 sdelete_enone=Izbrana ni nobena
 sdelete_eused=Vira dnevnika $1 ni mogoče izbrisati, saj ga uporablja cilj dnevnika
+
 fdelete_err=Izbris filtrov ni uspel
 fdelete_enone=Izbrana ni nobena
 fdelete_eused=Filtra dnevnika $1 ni mogoče izbrisati, ker ga uporablja cilj dnevnika
+
 ldelete_err=Brisanje ciljev dnevnika ni uspelo
 ldelete_enone=Izbrana ni nobena
+
 filters_title=Dnevni filtri
 filters_name=Ime filtra
 filters_desc=Pogoji
@@ -144,6 +152,7 @@ filters_program=program <tt>$1</tt>
 filters_match=ujema z "$1"
 filters_host=od imena gostitelja <tt>$1</tt>
 filters_netmask=od pošiljatelja <tt>$1</tt>
+
 filter_title1=Ustvari filter dnevnika
 filter_title2=Uredi filter dnevnika
 filter_header=Podrobnosti o specifikaciji filtra dnevnika
@@ -169,6 +178,7 @@ filter_enet=Manjkajoč ali neveljaven omrežni naslov IP
 filter_emask=Manjkajoča ali neveljavna mreža
 filter_ebool=Napaka v zapletenem izražanju
 filter_egone=Filter ne obstaja več!
+
 logs_title=Dnevniški cilji
 logs_source=Viri
 logs_filter=Filtri
@@ -177,6 +187,7 @@ logs_add=Dodajte nov cilj dnevnika.
 logs_delete=Izbrišite izbrane cilje dnevnika
 logs_return=dnevni cilji
 logs_none=Noben
+
 log_title1=Ustvari ciljni dnevnik
 log_title2=Uredi cilje dnevnika
 log_header=Izbira vira, filtra in cilja
@@ -190,6 +201,7 @@ log_flags=Možnosti cilja
 log_egone=Cilj dnevnika ne obstaja več!
 log_err=Cilja dnevnika ni bilo mogoče shraniti
 log_esource=Izbran ni noben vir
+
 sources_title=Viri dnevnika
 sources_none=Viri še niso definirani!
 sources_add=Dodajte nov vir dnevnika.
@@ -207,6 +219,7 @@ sources_typen=Sončni tok
 sources_typenw=Syslog strežnik
 sources_return=viri dnevnikov
 sources_none2=Noben
+
 source_title1=Ustvari vir dnevnika
 source_title2=Urejanje vira dnevnika
 source_header=Možnosti vira dnevnika
@@ -243,15 +256,20 @@ source_door=Ime datoteke vrat
 source_esun_streams_name=Manjkajoče ali neveljavno ime datoteke datoteke Sun stream
 source_edoor=Manjkajoče ali neveljavno ime datoteke strežnika vrat
 source_transport=Omrežni protokol
+
 view_title=Ogled dnevnika
 view_header=Zadnje $1 vrstice $2 
 view_empty=Datoteka dnevnika je prazna
 view_refresh=Osveži
 view_filter=Pokaži samo vrstice z besedilom $1 
+
 apply_err=Konfiguracije ni bilo mogoče uporabiti
 apply_egone=Ne teče!
+
 start_err=Zagon strežnika Syslog-NG ni uspel
+
 stop_err=Ni uspelo ustaviti strežnika Syslog-NG
+
 log_create_destination=Ustvarjen cilj dnevnika $1 
 log_modify_destination=Spremenjen cilj dnevnika $1 
 log_delete_destination=Izbrisan cilj dnevnika $1 

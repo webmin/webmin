@@ -9,9 +9,12 @@ index_apply=Uporabi spremembe
 index_applydesc=Kliknite ta gumb, če želite uporabiti trenutno konfiguracijo izvoza datotek. Tako bodo vsi našteti imeniki na voljo z navedenimi možnostmi.
 index_return=izvozni seznam
 index_echeck=V tem sistemu strežnika NFS ni mogoče uporabiti : $1 
+
 check_ecmd=Ukaz strežnika NFS $1 ni nameščen
+
 delete_err=Izvoza ni bilo mogoče izbrisati
 delete_enone=Izbrana ni nobena
+
 edit_title1=Uredi izvoz
 edit_title2=Ustvari izvoz
 edit_header1=Možnosti izvoza
@@ -31,6 +34,7 @@ edit_clients=Stranke
 edit_hosts=Gostitelji / mreže
 edit_network=Omrežje
 edit_mask=Maska
+
 save_err=Izvoza ni bilo mogoče shraniti
 save_edir='$1' ni imenik ali ne obstaja
 save_enone=Za izvoz morate vnesti vsaj en imenik
@@ -44,4 +48,5 @@ save_enetwork='$1' ni veljavno omrežje
 save_enetmask='$1' ni veljavna omrežna maska
 save_esame1=Imenik <tt>$1</tt> je že izvožen v <tt>$2</tt>. Vaš operacijski sistem ne dovoljuje, da bi se imeniki v istem <i>lokalnem</i> datotečnem sistemu posebej izvozili na isti gostitelj
 save_esame2=Imenik <tt>$1</tt> je že izvožen v <tt>$2</tt>. Vaš operacijski sistem ne dovoljuje, da bi se imeniki v istem <i>lokalnem</i> datotečnem sistemu posebej izvozili v isto omrežje
+
 restart_err=Sprememb ni bilo mogoče uporabiti

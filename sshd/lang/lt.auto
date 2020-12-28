@@ -16,8 +16,10 @@ index_type=SSH rakto tipas:
 index_rsa1=RSA (SSH v1)
 index_rsa=RSA (SSH v2)
 index_dsa=DSA (skirtas SSH v2)
+
 bits=bitai
 secs=sekundžių
+
 users_title=Autentifikavimas
 users_header=Prisijungimo ir autentifikavimo parinktys
 users_expire=Dienos iki sąskaitos galiojimo pabaigos įspėti vartotoją
@@ -54,6 +56,7 @@ users_eauthkeys=Trūksta arba netinkamos išvaizdos įgaliotų raktų failas
 users_maxauthtries=Maksimalus prisijungimo bandymas prisijungiant
 users_emaxauthtries=Trūksta arba nėra skaitinių prisijungimo bandymų prisijungti
 users_chal=Naudoti iššūkio ir atsako autentifikavimą?
+
 net_title=Tinklo kūrimas
 net_header=Tinklo galimybės
 net_port=Klausykite uoste
@@ -91,6 +94,7 @@ net_eprots=Turite pasirinkti bent vieną protokolą
 net_eladdress=„$1“ nėra tinkamas adresas, kurio norite klausytis
 net_elport=„$1“ nėra tinkamas prievadas, kurio reikia klausytis
 net_elisten2=Įvestų adresų nėra
+
 access_title=Prieigos kontrolė
 access_header=Tinklo ir prisijungimo prieigos kontrolės parinktys
 access_allowu=Leisti tik vartotojams
@@ -108,6 +112,7 @@ access_eallowg=Negalima patekti į grupes
 access_edenyg=Į grupę neįtraukta jokių neigiamų grupių
 access_eallowh=Nėra priimančiųjų įeiti
 access_edenyh=Nebuvo jokių šeimininkų, kurie galėtų paneigti
+
 misc_title=Įvairūs variantai
 misc_header=Kitos įvairios SSH serverio parinktys
 misc_x11=Leisti X11 ryšio peradresavimą?
@@ -131,14 +136,17 @@ misc_eumask=Trūksta arba netinkamas 4 skaitmenų aštuonkojo umaskas
 misc_ebits=Trūksta arba netinkamas serverio rakto dydis
 misc_eregen=Trūksta arba netinkamas rakto atstatymo intervalas
 misc_epid=Trūksta PID failo kelio
+
 start_err=Nepavyko paleisti SSH serverio
 apply_epid=Nebėga
+
 hosts_title=Kliento pagrindinio kompiuterio parinktys
 hosts_header=SSH kliento kompiuteriai
 hosts_none=Nebuvo apibrėžtos jokios kliento prieglobos parinktys. Visuose SSH kliento prisijungimuose bus naudojami numatytieji nustatymai.
 hosts_all=Visi šeimininkai
 hosts_add=Pridėkite kliento pagrindinio kompiuterio parinktis.
 hosts_return=klientų prieglobos sąrašas
+
 host_create=Pridėti pagrindinio kompiuterio parinktis
 host_edit=Redaguoti pagrindinio kompiuterio parinktis
 host_header=Kliento galimybės naudoti SSH pagrindinį kompiuterį
@@ -194,6 +202,7 @@ host_eprots=Turite pasirinkti bent vieną protokolą
 host_proxy=Ryšio tarpinio serverio komanda
 host_proxy_def=Nė vienas
 host_eproxy=Trūksta arba netinkamai atrodo tarpinio serverio komanda
+
 log_users=Pakeistos autentifikavimo parinktys
 log_net=Pakeistos tinklo galimybės
 log_access=Pakeista prieigos kontrolė
@@ -208,6 +217,7 @@ log_stop=Sustabdytas SSH serveris
 log_start=Paleistas SSH serveris
 log_apply=Taikoma konfigūracija
 log_manual=Rankiniu būdu redaguojamas konfigūracijos failas $1
+
 sync_title=Vartotojo SSH rakto nustatymas
 sync_desc=Šis puslapis leidžia konfigūruoti automatinį SSH nustatymą naujiems „Unix“ vartotojams, sukurtiems jūsų sistemoje. Jei sukonfigūruota, naujiems vartotojams nereikės paleisti <tt>ssh-keygen</tt> prieš naudojant SSH.
 sync_create=Nustatyti SSH raktą naujiems „Unix“ vartotojams?
@@ -216,9 +226,11 @@ sync_pass=Naudoti slaptažodį kaip rakto slaptafrazę?
 sync_gnupg=Nustatykite GNUPG raktą naujiems „Unix“ vartotojams.
 sync_type=Rakto tipas
 sync_auto=&lt;Automatinis&gt;
+
 keys_title=Pagrindinio kompiuterio SSH raktai
 keys_desc=Šiame puslapyje galite peržiūrėti šio pagrindinio kompiuterio SSH raktus.
 keys_none=Nepavyko rasti „HostKey“ įrašų jūsų SSHD konfigūracijoje.
+
 manual_title=Redaguoti konfigūravimo failus
 manual_ecannot=Jums neleidžiama redaguoti SSH serverio konfigūracijos failo
 manual_ok=Redaguoti
@@ -226,5 +238,6 @@ manual_efile=Pasirinktas failas nėra SSH serverio konfigūracijos dalis
 manual_file=Redaguoti konfigūracijos failą:
 manual_edata=Niekas neįėjo!
 manual_err=Nepavyko išsaugoti konfigūracijos failo
+
 dknown_err=Nepavyko ištrinti žinomų prieglobos
 dknown_enone=Nepasirinkta

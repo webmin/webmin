@@ -14,6 +14,7 @@ index_esetup=Le fichier de configuration $1 Redhat ADSL n'existe pas sur votre s
 index_setup=Mettre en place le fichier de configuration
 index_cancel=Annuler la connexion
 index_canceldesc=Le client ADSL essaie actuellement d'établir une connexion. Cliquez sur ce bouton pour annuler la tentative avec la commande $1.
+
 index_header=Options de configuration du client ADSL
 index_desc=Les réglages ci-dessous s'appliquent à n'importe quelle connexion ADSL nouvelle que démarre votre système. Si vous les changez, vous devez arrêter la connexion et la redémarrer pour que les modifications entrent en vigueur.
 index_eth=Interface Ethernet
@@ -34,11 +35,13 @@ index_fw_standalone=Pour un seul hôte
 index_fw_masquerade=Pour une passerelle NAT 
 index_connect=Temps imparti pendant lequel tenter une connexion
 index_forever=Toujours
+
 start_err=Impossible de démarrer la connexion ADSL 
 start_title=Démarrage de l'ADSL
 start_ip=Une connexion ADSL a été établie avec l'adresse IP $1.
 start_demand=Du fait que le mode connexion à la demande est activé, votre connexion ADSL ne sera démarrée que quand c'est nécessaire.
 start_bg=La connexion ADSL n'a pas été démarrée dans l'intervalle de 20 secondes. Le client ADSL continuera à tenter de se connecter en arrière-plan jusqu'à ce qu'il y réussisse.
+
 save_err=Impossible d'enregistrer la configuration ADSL
 save_eeth=Il semble que l'interface ethernet est manquante ou invalide
 save_etimeout=Temps imparti à la demande manquant ou invalide
@@ -47,10 +50,12 @@ save_econnect=Temps imparti à la connexion manquant ou invalide
 save_emss=Taille de paquets maximale manquante ou invalide
 save_title=Enregistrer la configuration
 save_desc=Votre configuration client ADSL a été enregistrée avec succès, mais ne sera pas utilisée jusqu'à ce que vous vous reconnectiez.
+
 stop_err=Impossible d'arrêter la connexion ADSL 
 stop_title=Arrêter ADSL
 stop_ok=Votre connexion ADSL a été arrêtée avec succès.
 stop_failed=Votre connexion ADSL est encore active pour une raison quelconque !
+
 log_save=Enregistré la configuration client
 log_stop=Arrêté ADSL
 log_start=Démarré ADSL

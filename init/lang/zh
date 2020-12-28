@@ -20,6 +20,7 @@ index_stop=停止选中的
 index_start=开始选中的
 index_rlchange=改变运行级别：
 index_rlchangedesc=点击此按钮将您的系统从现在的运行级别切换至已选择的模式下。这样做将会停止现在的等级中的所有操作，然后就会启动新的运行级别的所有操作。
+
 edit_title=编辑操作
 create_title=创建操作
 edit_ecannot=您没有编辑启动操作的权限
@@ -48,10 +49,12 @@ edit_statusnow=显示状态
 edit_return=操作
 edit_status=现在开始？
 edit_unknown=未知
+
 save_err=保存操作失败
 save_ecannot=您没有编辑启动操作的权限
 save_ealready=名为'$1'的操作已存在
 save_ewrite=无法写入到$1 : $2
+
 ss_ecannot=您没有开始或停止启动操作的权限
 ss_start=开始操作
 ss_stop=停止操作
@@ -59,20 +62,24 @@ ss_restart=重新启动操作
 ss_reload=重新加载操作
 ss_status=动作状态
 ss_exec=执行 $1 ..
+
 shutdown_ecannot=您没有关闭系统的权限
 shutdown_title=关机
 shutdown_rusure=您确定要用这个命令$1来关闭系统吗？
 shutdown_ok=关闭系统
 shutdown_exec=用命令 $1 ..关闭系统
+
 reboot_ecannot=您没有重新启动系统的权限
 reboot_title=重新启动
 reboot_rusure=您确定要用这个命令$1重新启动系统吗？
 reboot_ok=重新启动系统
 reboot_exec=用命令 $1 .. 重新启动系统
+
 acl_script=可以编辑启动脚本吗？
 acl_actions=可以编辑、创建和删除操作吗？
 acl_reboot=可以重新启动系统吗？
 acl_shutdown=可以关闭系统吗？
+
 log_rename=将操作 $1 重命名为$2
 log_modify=已修改操作 $1
 log_create=已创建操作 $1
@@ -83,6 +90,7 @@ log_reboot=重新启动系统
 log_shutdown=关闭系统
 log_local=已修改启动脚本
 log_bootup=已为 $1 改变了启动操作
+
 edit_hostconfig_startup=如果已启动本操作的话，系统启动时就会执行该脚本$1。您可以在下面编辑。
 edit_hostconfig_plist=文件集包含带有相关的启动脚本的某些参数。您可以在下面编辑
 edit_hostconfig_new=创建新的操作
@@ -94,9 +102,11 @@ edit_hostconfig_array=字段$1、$2及 $3是数组字段，并且可以包含一
 edit_hostconfig_further=在创建新的启动操作之后，系统将会转发一页面，如需要的话，您在此可以编辑的启动脚本和参数列表。
 edit_hostconfig_hostconfig=文件 $1 会在系统开始时启动控制系统服务和后台程序。您可以在下面编辑此文件
 edit_hostconfig_title=编辑Hostconfig
+
 mass_enone=未选择操作
 mass_start=开始操作
 mass_stop=停止操作
+
 change_err=您没有切换执行等级的权限
 change_title=切换执行等级
 change_cmd=用命令$2切换至执行等级$1。这将需要些时间，而且切换之后Webmin可能会无法使用。

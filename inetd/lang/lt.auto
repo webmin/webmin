@@ -14,6 +14,7 @@ index_search=Vaizdinės reklamos paslaugos, atitinkančios:
 index_sok=Paieška
 index_toomany=Šiame puslapyje yra per daug interneto paslaugų.
 index_none=Jokios interneto paslaugos neatitiko jūsų paieškos.
+
 error_restart=Nepavyko iš naujo paleisti „Inetd“
 error_saverpc=Nepavyko išsaugoti RPC programos
 error_invalidprgname=„$1“ nėra tinkamas programos pavadinimas
@@ -43,6 +44,7 @@ error_nameexist=Paslauga pavadinimu $1 ir protokolu $2 jau egzistuoja
 error_inetservice=Interneto paslauga pavadinimu $1 ir protokolu $2 jau egzistuoja
 error_smfservice=Nepavyko atnaujinti smf paslaugos su cmd '$1', klaidos kodu $2 
 error_smf_cmdfield=Smf atveju programos '$1' failo pavadinimas turi atitikti pirmąjį komandos lauko argumentą, t. Y. Būti '$2'.
+
 editrpc_title1=Sukurti RPC programą
 editrpc_title2=Redaguoti RPC programą
 editrpc_detail=RPC programos informacija
@@ -69,6 +71,7 @@ editrpc_execasuser=Vykdyti kaip vartotojui
 editrpc_max=Daugiausia per minutę
 editrpc_default=Numatytas
 editrpc_execasgrp=Vykdyti kaip grupę
+
 editserv_title1=Sukurti interneto paslaugą
 editserv_title2=Redaguoti interneto paslaugą
 editserv_detail=Informacija apie interneto paslaugas
@@ -82,6 +85,7 @@ editserv_wrapper=TCP-įvyniojimas
 editserv_inetd=Vidinis <tt>inetd</tt>
 editserv_qm=Komandos gali nebūti?
 editserv_ename=Nėra tokio pavadinimo ir protokolo paslaugų
+
 log_apply=Taikomi pakeitimai
 log_create_serv=Sukurta paslauga $1 
 log_modify_serv=Modifikuota paslauga $1 
@@ -95,6 +99,7 @@ log_delete_serv_l=Ištrinta paslauga $1 iš uosto $2
 log_create_prog_l=Sukurtos paslaugos $1 prievado $2 programoje $3 
 log_modify_prog_l=Modifikuota paslauga $1 prievado $2 programoje $3 
 log_delete_prog_l=Ištrinta paslauga $1 prievado $2 programoje $3 
+
 log_create_rpc=Sukurta RPC $1 
 log_modify_rpc=Modifikuotas RPC $1 
 log_delete_rpc=Ištrinta RPC $1 

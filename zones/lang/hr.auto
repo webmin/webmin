@@ -4,6 +4,7 @@ index_none=Još nije definirana nijedna zona.
 index_add=Dodajte novu zonu.
 index_return=popis zona
 index_zones=Postojeće zone
+
 edit_title=Uredi zonu
 edit_common=Opća konfiguracija zone
 edit_name=Naziv zone
@@ -57,20 +58,26 @@ edit_attrnone=Još nisu definirani generički atributi.
 edit_attradd=Dodajte novi generički atribut.
 edit_webmin=Otvorite Webmin
 edit_brand=marka
+
 ui_cancel=Otkazati
+
 save_err=Spremanje zone nije uspjelo
 save_epool=Nedostaje ili nije važeći bazen
 save_ewebmin=Webmin se ne radi u ovoj zoni
+
 reboot_title=Ponovno pokrenite zonu
 reboot_rusure=Jeste li sigurni da želite ponovno pokrenuti zonu $1 ? Svi procesi koji se odvijaju u njemu ponovno će se pokrenuti.
 reboot_err=Ponovno pokretanje zone nije uspjelo
 reboot_doing=Sada ponovo pokrenite zonu ..
+
 reboot_failed=.. neuspjeh  :
 reboot_ok=.. kompletna.
+
 halt_title=Zona isključivanja
 halt_rusure=Jeste li sigurni da želite zatvoriti zonu $1 ? Svi procesi koji se odvijaju u njemu bit će zaustavljeni.
 halt_err=Zatvaranje zona nije uspjelo
 halt_doing=Sada se zona isključivanja
+
 boot_title=Bootup zona
 boot_err=Pokretanje zone nije uspjelo
 boot_doing=Sada podizanje zone ..
@@ -78,10 +85,12 @@ delete_title=Izbriši zonu
 delete_rusure=Jeste li sigurni da želite izbrisati zonu $1 ? Sve datoteke unutar njegovih privatnih datotečnih sustava će biti izgubljene.
 delete_err=Brisanje zone nije uspjelo
 delete_doing=Sada brišem zonu ..
+
 uninstall_title=Deinstalirajte sustav
 uninstall_rusure=Jeste li sigurni da želite ukloniti sistemski softver iz zone $1 ? Sve datoteke unutar njegovih privatnih datotečnih sustava će biti izgubljene.
 uninstall_err=Deinstalacija softvera sustava iz zone nije uspjela
 uninstall_doing=Sada uklanjanje sustava iz zone ..
+
 install_title=Instalirajte sustav
 install_doing=Sada instaliranje sustava u zonu ..
 net_title1=Stvorite mrežno sučelje
@@ -96,6 +105,7 @@ net_enetmask=Nevažeća mrežna maska
 net_eaddress=Nevaljana IP adresa
 net_egone=Sučelje više ne postoji!
 net_eclash=Mrežno sučelje s istom IP adresom već postoji u ovoj zoni
+
 pkg_title1=Dodajte direktorij paketa
 pkg_title2=Uređivanje direktorija paketa
 pkg_header=Pojedinosti o nasljeđenom paketu
@@ -107,6 +117,7 @@ pkg_eclash=Katalog paketa već postoji u ovoj zoni
 pkg_inherit=Nasljedni paketi iz globalne zone
 pkg_inherit_yes=Da (rijetka korijenska zona)
 pkg_inherit_no=Ne (cijela korijenska zona)
+
 fs_title1=Stvorite datotečni sustav
 fs_title2=Uredi datotečni sustav
 fs_header=Dodatne pojedinosti o datotečnom sustavu
@@ -128,6 +139,7 @@ fs_eoptions=Nevažeće mogućnosti montiranja (mora biti popis odvojen zarezom k
 fs_egone=Datotečni sustav više ne postoji!
 fs_mount=Mount nakon stvaranja?
 fs_eclash=U ovoj zoni već postoji datotečni sustav koji koristi isti direktorij
+
 rctl_title1=Stvorite kontrolu resursa
 rctl_title2=Uređivanje kontrole resursa
 rctl_header=Vrsta i ograničenja kontrole resursa
@@ -148,6 +160,7 @@ rctl_elimit=Ne broj
 rctl_eaction=U retku $1 nije odabran signal
 rctl_evalues=Nisu unesena ograničenja
 rctl_eclash=U ovoj zoni već postoji kontrola za isti resurs
+
 attr_title1=Stvorite generičke atribute
 attr_title2=Uređivanje generičkih atributa
 attr_header=Pojedinosti atributa generičke zone
@@ -165,6 +178,7 @@ attr_euint=Vrijednost nije pozitivni cijeli broj
 attr_eboolean=Vrijednost nije 'true' ili 'false'
 attr_egone=Atributi više ne postoje!
 attr_eclash=Atribut istog imena već postoji u ovoj zoni
+
 status_running=Trčanje
 status_installed=Zaustavljeno
 status_configured=Nije instalirano
@@ -172,13 +186,16 @@ status_incomplete=Se instalira
 status_ready=Spreman
 status_down=dolje
 status_shutting_down=Isključivanje
+
 list_name=Naziv zone
 list_id=ID broj
 list_path=Imenik zona
 list_status=Status
 list_actions=akcije
+
 zone_in=U zoni $1 
 pool_none=nijedan
+
 create_title=Stvori zonu
 create_header=Novi detalji o zoni
 create_path=Imenik datoteka datoteka zona
@@ -239,6 +256,7 @@ create_erouter=Nedostaje ili nije važeća zadana IP adresa usmjerivača
 create_removingpkgs=uklanjanje naslijeđenih direktorija paketa. ..
 create_brand=marka
 create_brandmsg=Zona marke
+
 log_create_zone=Stvorena zona $1 
 log_delete_zone=Izbrisana zona $1 
 log_save_zone=Izmijenjena konfiguracija za zonu $1 
@@ -262,6 +280,7 @@ log_delete_rctl=Izbrisana kontrola resursa za $1 u zoni $2
 log_create_attr=Stvoren generički atribut $1 u zoni $2 
 log_modify_attr=Izmijenjeni generički atribut $1 u zoni $2 
 log_delete_attr=Izbrisani generički atribut $1 u zoni $2 
+
 webmin_eperl=Perl nije instaliran na $1 
 webmin_eroot=Imenik $1 ne postoji ili ne sadrži Webmin.
 webmin_title=Instalirajte Webmin

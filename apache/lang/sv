@@ -56,6 +56,7 @@ index_fmode1=Virtuell server fil $1
 index_fmode1d=Ny fil under virtuell servers mapp $1
 index_fmode2=Vald fil..
 index_delete=Ta bort valda Servrar
+
 cvirt_ecannot=Du får inte skapa en virtuell server
 cvirt_err=Det gick inte att skapa en virtuell server
 cvirt_eaddr1=Ingen adress angiven
@@ -68,6 +69,7 @@ cvirt_eroot3=Du är inte tillåten att använda rot mappen '$1'
 cvirt_etaken=En virtuell server med samma namn och port existerar redan
 cvirt_efile=Misslyckades att skriva till $1 : $2
 cvirt_emissing=Den nya virtuella servern blev tillagd till $1, men denna fil används inte av Apache. Kontrollera <a href='$2'>modul konfigurationen</a>
+
 etype=Du får inte ändra denna typ av inställningar
 efailed=Det gick inte att spara $1
 apache_apply=Genomför ändringar
@@ -77,6 +79,7 @@ auth_return=åtkomst kontroll
 default_serv=Standard server
 bytes=bytes
 eafter=Konfigurations verifiering misslyckades : $1 Ändringar har inte genomförts.
+
 global_ecannot=Du får inte ändra globala inställningar
 global_mime=Global MIME-typlista
 global_mimedesc=Klicka på en MIME-typ i listan nedan för att ändra den eller använd länken längst ned på sidan för att lägga till en ny typ i listan.
@@ -84,6 +87,7 @@ global_type=Typ
 global_ext=Filändelser
 global_add=Lägg till en ny MIME-typ
 global_return=MIME-typer
+
 mime_ecannot=Du får inte ändra MIME-typer
 mime_edit=Ändra MIME-typ
 mime_add=Lägg till MIME-typ
@@ -92,6 +96,7 @@ mime_type=MIME-typ
 mime_ext=Filändelser
 mime_err=Det gick inte att spara MIME-typ
 mime_etype='$1' är inte en giltig MIME-typ
+
 virt_ecannot=Du får inte ändra i denna virtuella server
 virt_title=Tillval för virtuell server
 virt_header=För $1
@@ -117,6 +122,7 @@ virt_path=Sökväg
 virt_return=serverindex
 virt_euser=Du får inte ändra användare eller grupp för denna virtuella server.
 virt_header2=$1 för $2
+
 vserv_title=Inställningar för virtuella servrar
 vserv_ecannot=Du får inte ändra adressen för denna virtuella server
 vserv_addr=Adress
@@ -135,10 +141,12 @@ vserv_eport='$1' är inte en giltig port
 vserv_eroot='$1' är inte en giltig dokumentrot
 vserv_ename='$1' är inte ett giltigt servernamn
 vserv_eaddrs=Du har inte angivit adresser till virtuella servrar
+
 show_title=Direktiv
 show_edit=Ändra Apache-direktiv
 show_these=Ändra direktiv för hand
 show_ok=Ändra
+
 manual_configs=Ändra Konfigurerings filer
 manual_title=Ändra direktiv
 manual_header=I textrutan nedan kan du ändra i Apache-direktiven i $1 som gäller för denna virtuella server, katalog eller filer.
@@ -148,6 +156,7 @@ manual_efile=Felaktig Apache konfigurations fil
 manual_etest=Fel i konfigurations fil upptäckt: $1
 manual_editfile=Ändra konfigurerings fil:
 manual_switch=Ändra
+
 dir_title=Inställningar för Per-Directory
 dir_proxyall=Alla proxy förfrågningar
 dir_header=För $1 på $2
@@ -164,6 +173,7 @@ dir_re=Matcha reguljärt uttryck (regexp)
 dir_path=Sökväg
 dir_return=katalog index
 dir_header2=$1 för $2
+
 type_0=Processer och begränsningar
 type_1=Nätverk och adresser
 type_2=Apache-moduler
@@ -185,6 +195,7 @@ type_17=Automatisk Virtuell Värd
 type_18=Filter
 type_19=Språk
 type_20=Bild karta
+
 htaccess_title=Per-Directory inställnings filer
 htaccess_ecannot=Du får inte ändra .htaccess-filer
 htaccess_file=Existerande val fil
@@ -197,6 +208,7 @@ htaccess_return=lista över inställnings filer
 htaccess_edir='$1' är inte en giltig katalog
 htaccess_ecreate=Du får inte skapa denna inställnings fil
 htaccess_edelete=Du får inte ta bort denna inställnings fil
+
 htindex_ecannot=Du får inte ändra denna inställnings fil
 htindex_title=Per-Directory-inställnings fil
 htindex_delete=Ta bort fil
@@ -212,12 +224,14 @@ htindex_path=Sökväg
 htindex_header=För $1
 htindex_header2=$1 för inställnings fil $2
 htindex_return=Lista över inställnings filer
+
 htfile_title=Per-Fil-inställningar
 htfile_header=För $1 i $2
 htfile_show=Visa direktiv
 htfile_edit=Ändra direktiv
 htfile_apply=Inställningarna gäller för ...
 htfile_header2=$1 för $2
+
 reconfig_title=Ändra konfiguration för kända moduler
 reconfig_ecannot=Du får inte ändra konfiguration för apache
 reconfig_ever=Det gick inte att hitta någon versionsbeteckning för den exekverbara Apacheserver-filen $1. Kontrollera <a href='$2'>modulkonfigurationen</a> så att du har angivit rätt sökväg.
@@ -225,11 +239,13 @@ reconfig_desc1=Din Apache-konfiguration har ändrats eller har ännu inte kontro
 reconfig_desc2=Nedan fins en lista över alla Apache-moduler som Webmin stödjer, där installerade moduler är valda. Om du använder dynamiskt inlästa moduler kan du behöva välja till dessa.
 reconfig_desc3=Om du är osäker vilken modul som har stöd av Apache på ditt system, bara Konfigurera som Webmin kan normalt arbeta ut stödda moduler automatiskt.
 reconfig_ok=Konfigurera
+
 defines_title=Ändra definierade parametrar
 defines_ecannot=Du får inte ändra httpd-definitioner
 defines_desc=När du startar Apache, kan du ange parametrar med flaggan <tt>-D</tt>. Eftersom dessa parametrar kan påverka vilka direktiv som används i dina inställnings filer måste Webmin veta vilka parametrar som ska vidarebefordras till Apache när det startas. Ange de parametrar som används på ditt system i textfältet till höger.
 defines_config=Observera att följande parametrar redan är kända: $1
 defines_list=Definierade parametrar
+
 authu_ecannot='$1' är inte en tillåten användar fil
 authu_title=Lista över användare
 authu_header=I fil $1
@@ -251,6 +267,7 @@ authu_sync=I inställningarna nedan kan du konfigurera Webmin att automatiskt l�
 authu_screate=Lägg till en användare när Unix-användaren läggs till
 authu_sdelete=Ta bort en användare när Unix-användaren tas bort
 authu_smodify=Ändra en användare när Unix-användaren ändras
+
 authg_ecannot='$1' är inte en tillåten grupp-text fil
 authg_title=Lista över grupper
 authg_header=Från fil $1
@@ -268,22 +285,26 @@ authg_err=Det gick inte att spara grupp
 authg_euser=Inget gruppnamn har angivits
 authg_euser2=Gruppnamn kan inte innehålla :
 authg_edup=Det finns redan en grupp med namn '$1'
+
 stop_err=Det gick inte att stanna apache
 stop_ecannot=Du får inte stanna apache
 stop_epid=Det gick inte att öppna PID-fil $1
 stop_epid2=Ogiltig PID-fil $1
 stop_esig=Det gick inte att skicka SIGTERM till process $1
+
 start_err=Det gick inte att starta apache
 start_ecannot=Du får inte starta apache
 start_ecmd=$1 Det gick inte: $2
 start_eunknown=Okänd anledning
 start_eafter=Apache verkar inte vara igång
+
 restart_err=Det gick inte att göra ändringarna
 restart_epid=Det gick inte att öppna PID-fil $1
 restart_epid2=Ogiltig PID-fil $1
 restart_esig=Det gick inte att skicka SIGHUP till process $1
 restart_eunknown=Okänd anledning
 restart_ecannot=Du är inte tillåten att genomföra ändringar
+
 acl_virts=Virtuella servrar som denna användare kan ändra
 acl_vall=Alla servrar
 acl_vsel=Angivna ...
@@ -306,6 +327,7 @@ acl_dirs=Apache direktiv tillgängliga<br><font size=-1> (Ämnen av typ begräns
 acl_dirs0=Alla
 acl_dirs1=Endast listade ..
 acl_dirs2=Alla utom listade ..
+
 core_maxconc=Maximalt antal samtidiga förfrågningar
 core_maxkeep=Maximalt antal ihållande förfrågningar per anslutning
 core_maxreq=Maximalt antal förfrågningar per server process
@@ -487,10 +509,12 @@ core_infilter=Genomför inmatnings filter för alla filer
 core_outfilter=Genomför utmatning för alla filer
 core_defchar=Character ställt för dokument
 core_edefchar=Saknad eller felaktig character set för dokument
+
 mod_negotiation_cache=Cacha innehålls förhandlade dokument?
 mod_negotiation_pri=Språk prioritet för multi-views
 mod_negotiation_def=Standard
 mod_negotiation_epri=Språk prioriteter saknas
+
 mod_cgi_logname=Logg för CGI-script
 mod_cgi_none=Ingen
 mod_cgi_elogname=Ogiltig loggfil för CGI-script
@@ -500,6 +524,7 @@ mod_cgi_elogsize=CGI-script loggens storlek måste vara ett heltal
 mod_cgi_post=Maximal postad datastorlek som loggas
 mod_cgi_epost=Maximal postad datastorlek måste vara ett heltal
 mod_cgi_eunder=CGI-script loggen finns inte under den tillåtna katalogen
+
 mod_alias_from=Från
 mod_alias_to=Till
 mod_alias_status=Status
@@ -523,6 +548,7 @@ mod_alias_cgi2=alias för CGI-katalog
 mod_alias_rcgi=Alias för CGI-katalog (regexp)
 mod_alias_rcgi2=alias för CGI-katalog (regexp)
 mod_alias_estatus='$1' är inte en giltig status
+
 mod_proxy_proxy=Agera som proxy-server?
 mod_proxy_req=Förfrågningar
 mod_proxy_forw=Skicka vidare till
@@ -592,11 +618,13 @@ mod_proxy_timeout=Proxy förfrågan paus i sekunder
 mod_proxy_etimeout=Proxy förfrågan paus måste vara angivet i sekunder
 mod_proxy_via=Sätt Via: headers
 mod_proxy_not=Ingen
+
 mod_log_agent_default=Standard
 mod_log_agent_file=Fil ...
 mod_log_agent_program=Program ...
 mod_log_agent_log=Loggfil för webbläsare
 mod_log_agent_efile=$1 är inte ett giltigt namn för loggfil för webbläsare
+
 mod_log_config_common=Gemensamt logg format
 mod_log_config_named=Namngivet loggformat
 mod_log_config_nick=Kortnamn
@@ -615,6 +643,7 @@ mod_log_config_enofilprog=Loggfil eller program saknas
 mod_log_config_efilprog='$1' är inte ett giltigt loggfilnamn eller program
 mod_log_config_eifset=Valet 'If set' kan inte användas med standardformatet för loggning
 mod_log_config_edir=Mapp för loggnings fil '$1' existerar inte
+
 mod_log_referer_default=Standard
 mod_log_referer_file=Fil ...
 mod_log_referer_program=Program ...
@@ -622,7 +651,9 @@ mod_log_referer_log=Referensloggfil
 mod_log_referer_nolog=Logga inte referenser från
 mod_log_referer_elog=$1 är inte ett giltigt namn för referensloggen
 mod_log_referer_edir=Referensloggen finns inte under den tillåtna katalogen
+
 mod_status_msg=Visa utökad statusinformation
+
 mod_mime_ext=Utökningar
 mod_mime_xtype=Extra MIME-typer
 mod_mime_mtype=MIME-typ
@@ -655,6 +686,7 @@ mod_mime_outfilter=Utmatnings filter
 mod_mime_infilter=Inmatnings filter
 mod_mime_filters=Filter att genomföra
 mod_mime_efext=Ingen utökning given för filter $1
+
 mod_setenvif_header=Ärenderad
 mod_setenvif_match=Matcha
 mod_setenvif_case=Matcha skiftläge
@@ -665,11 +697,13 @@ mod_setenvif_eheader=Ogiltigt ärende '$1'
 mod_setenvif_eregex=Ogiltigt reguljärt uttryck '$1'
 mod_setenvif_evar=Ogiltigt variabelnamn '$1'
 mod_setenvif_clear=Rensa
+
 mod_userdir_default=Standard
 mod_userdir_all=Alla användare åtkomliga
 mod_userdir_except=Alla användare förutom
 mod_userdir_dir=Användares WWW-katalog
 mod_userdir_edir=Du är inte tillåten att använda specificerad användar WWW mapp
+
 mod_imap_action=Åtgärd vid felaktig användning av imagemaps
 mod_imap_default=Standard
 mod_imap_godefurl=Gå till standard-URL
@@ -689,8 +723,10 @@ mod_imap_refurl=Hänvisande URL
 mod_imap_url=URL ...
 mod_imap_defbase=Standardbas för imagemaps
 mod_imap_eurl='$1' är inte en giltig URL
+
 mod_speling_autocorr=Korrigera felstavade URL:er automatiskt?
 mod_speling_default=Standard
+
 mod_actions_mime=Hanterare/MIME-typ
 mod_actions_cgiurl=URL till CGI-script
 mod_actions_mimecgi=CGI-åtgärder för hanterare eller MIME-typ
@@ -700,10 +736,13 @@ mod_actions_httpcgi=HTTP-metod CGI-åtgärder
 mod_actions_emime='$1' är inte en giltig hanterare eller MIME-typ
 mod_actions_ecgi='$1' är inte ett giltigt CGI-script
 mod_actions_enometh=Du har inte angivit någon metod för CGI-scriptet '$1'
+
 mod_include_incl=Processa inkluderingar av körbara filer?
 mod_include_set=Ja och ändra senast-ändrad-datum
 mod_include_default=Standard
+
 mod_dir_txt=Index filer för kataloger
+
 mod_autoindex_default=Standard
 mod_autoindex_asc=Stigande
 mod_autoindex_descend=Fallande
@@ -712,6 +751,7 @@ mod_autoindex_date=Datum
 mod_autoindex_size=Storlek
 mod_autoindex_desc=Beskrivning
 mod_autoindex_sort=Sortera katalog index efter
+
 browsermatch_regexp=Reguljärt uttryck för webbläsare
 browsermatch_case=Matcha skift läge?
 browsermatch_var=Sätt variabel
@@ -719,6 +759,7 @@ browsermatch_value=Värde
 browsermatch_txt=Variabler sätts baserat på webbläsarens typ
 browsermatch_evar='$1' är ett ogiltigt variabel namn
 browsermatch_clear=Rensa
+
 autoindex_fname=Filnamn
 autoindex_mime=MIME-typ
 autoindex_enc=Kodning
@@ -772,9 +813,11 @@ autoindex_sicon=Visa fil ikoner
 autoindex_srules=Visa &lt;hr&gt; linjer
 autoindex_track=Inkludera ETags på huvuden
 autoindex_version=Sortera med versions strängar
+
 mod_mime_magic_file=Fil för MIMEs magiska tal
 mod_mime_magic_none=Ingen
 mod_mime_magic_efile=Ogiltigt filnamn för MIMEs magiska tal
+
 mod_env_var=Variabel
 mod_env_value=Värde
 mod_env_pass=Skicka vidare
@@ -785,6 +828,7 @@ mod_env_passall=Skicka vidare alla miljö variabler till CGI's
 mod_env_default=Standard
 mod_env_evar='$1' är inte ett giltigt variabel namn
 mod_env_evalue='$1' är inte ett giltigt variabel värde
+
 mod_access_order=Ordning för kontroll av åtkomsts rättigheter:
 mod_access_denyallow=Neka, sedan tillåt
 mod_access_allowdeny=Tillåt, sedan neka
@@ -807,6 +851,7 @@ mod_access_epip='$1' är inte en giltig del av en IP-adress
 mod_access_emask='$1' är inte ett giltigt par av nät/nätmask
 mod_access_ecidr='$1' är inte ett giltigt nät/CIDR
 mod_access_evar='$1' är inte ett giltigt variabelnamn
+
 mod_auth_ufile=Användar textfil
 mod_auth_uedit=Ändra användare
 mod_auth_gfile=Grupp textfil
@@ -817,6 +862,7 @@ mod_auth_eudir=Användar textfilen finns inte under den tillåtna katalogen
 mod_auth_egdir=Grupp textfilen finns inte under tillåtna katalogen
 mod_auth_eufile=Ogiltigt namn för användar textfil
 mod_auth_egfile=Ogiltigt namn för grupp textfil
+
 mod_auth_dbm_ufile=DBM-användarfil
 mod_auth_dbm_gfile=DBM-gruppfil
 mod_auth_dbm_pass=Skicka vidare misslyckade försök till nästa modul?
@@ -827,6 +873,7 @@ mod_auth_dbm_egfile=Ogiltigt namn för DBM-gruppfil
 mod_auth_dbm_type=DBM databas typ
 mod_auth_dbm_gtype=DBM grupp databas typ
 mod_auth_dbm_default=DBM format att falla tillbaka till
+
 mod_cern_meta_process=Processa huvudets metafiler
 mod_cern_meta_dir=Underkatalog för huvudets metafiler
 mod_cern_meta_default=Standard
@@ -834,6 +881,7 @@ mod_cern_meta_edir=Ogiltig underkatalog för huvudets metafiler
 mod_cern_meta_suffix=Filändelse för huvudets metafiler
 mod_cern_meta_default2=Standard
 mod_cern_meta_esuffix=Ogiltig filändelse för metafiler
+
 mod_ssl_enable=Använda SSL?
 mod_ssl_proto=SSL-protokoll
 mod_ssl_cfile=Certifikat/privat nyckelfil
@@ -859,6 +907,7 @@ mod_ssl_passsc=Exekvera skript $1
 mod_ssl_epassph=Inget SSL lösenord angett
 mod_ssl_epasssc=Saknad eller felaktig SSL lösenord skript
 mod_ssl_ecerton=När SSL är aktiverad, Måste en certifikatfil väljas.
+
 mod_apachessl_notssl=Neka SSL tillgång
 mod_apachessl_forcessl=Tvinga SSL/notSSL tillgång?
 mod_apachessl_capath=Sökväg till mapp med certifikat av den Certification Authorities i
@@ -891,6 +940,7 @@ mod_apachessl_nov2=Inaktivera SSL version 2
 mod_apachessl_fake=Simulera användar baserad verifierings inloggning, användandes av certifikat namn
 mod_apachessl_cdnfile=Fil mot klient DN är kontrollerad
 mod_apachessl_ecdnfile=Saknad fil mot klient DN är kontrollerad
+
 log_global=Ändrade globala inställningar för $1
 log_virtc=Skapade server $1
 log_virts=Konfigurerade om server $1
@@ -931,8 +981,10 @@ log_stop=Stannade webbserver
 log_apply=Tog ändringar i drift
 log_manual=Manuellt ändrad konfigurations fil $1
 log_virts_delete=Borttagen $1 virtuella servrar
+
 search_title=Hitta Servrar
 search_notfound=Inga matchade virtuella servrar funna
+
 mod_php_value=PHP Konfigurations Värden
 mod_php_flag=PHP Konfigurations Flaggor
 mod_php_admin_value=PHP Admin Konfigurations Värde
@@ -941,6 +993,7 @@ mod_php_name_header=Inställning
 mod_php_value_header=Värde
 mod_php_ename='$1' är ett felaktigt namn
 mod_php_evalue='$1' är ett felaktigt värde för $2
+
 mod_vhost_alias_root=Automatisk virtuell värd rot
 mod_vhost_alias_ip=Använd IP adress istället för värd namn?
 mod_vhost_alias_none=Ingen
@@ -948,12 +1001,14 @@ mod_vhost_alias_script=Automatisk virtuell värd cgi-bin
 mod_vhost_alias_eroot=Saknad eller felaktig virtuell värd rot
 mod_vhost_alias_eroot2=Virtuell värd rot mapp är inte tillåten
 mod_vhost_alias_escript=Saknad eller felaktig virtuell värd cgi-bin
+
 worker_minspare=Minimalt lediga trådar
 worker_maxspare=Maximalt lediga trådar
 worker_eminspare=Minimalt lediga trådar måste vara ett heltal
 worker_emaxspare=Maximalt lediga trådar måste vara ett heltal
 worker_threads=Trådar per barn process
 worker_ethreads=Nummer av trådar per barn process måste vara ett heltal
+
 perchild_sthreads=Initialt antal trådar per barn process
 perchild_esthreads=Nummer av trådar per barn process måste vara ett heltal
 perchild_numservers=Nummer av barn processer
@@ -969,6 +1024,7 @@ perchild_gid=GID
 perchild_enum=Process nummer måste vara ett icke noll heltal
 perchild_euid=UID måste vara ett heltal
 perchild_egid=GID måste vara ett heltal
+
 cache_enable=Aktiv?
 cache_type=cache förvaring
 cache_disk=Disk
@@ -989,12 +1045,14 @@ cache_eminos=Minimal objekt storlek att cacha måste vara ett nummer av byte
 cache_emaxos=Maximal objekt storlek att cacha måste vara ett nummer av byte
 cache_maxoc=Maximal objekt att cacha på minnet
 cache_emaxoc=Nummer av objekt att cacha på minnet måste vara ett heltal
+
 suexec_su=Kör CGI program som
 suexec_none=Användare från global konfiguration
 suexec_user=Unix användare
 suexec_group=och grupp
 suexec_euser=Saknad eller felaktig användare att köra CGI program som
 suexec_egroup=Saknad eller felaktig grupp att köra CGI program som
+
 filter_name=Namn
 filter_intype=Inmatning MIME typ
 filter_outtype=Utmatnings MIME typ
@@ -1004,11 +1062,13 @@ filter_in=inmatnings Filter Definition
 filter_out=Utmatnings Filter Definition
 filter_ename=Felaktigt filter namn '$1'
 filter_ecmd=Saknat kommando för filter '$1'
+
 cdir_err=Misslyckades att skapa per-direktions val
 cdir_err2=Misslyckades att spara per-direktions val
 cdir_epath=Saknad sökväg
 cdir_eproxy=Proxy val kan inte skapas med match regexp valet aktiv
 cdir_ecannot=Du är inte tillåten att skapa per-direktions val för given sökväg
+
 mod_band_enable=Bandbredds begränsning aktiv?
 mod_band_bw=Begränsa (byte/sek)
 mod_band_client=För klienter
@@ -1027,24 +1087,30 @@ mod_band_epulse=Saknad eller felaktig intervall mellan begränsade paket
 mod_band_dir=Bandbredds begränsning data fils mapp
 mod_band_edir=Saknad eller icke existerande bandbredds data fel mapp
 mod_band_esubdir=Saknad obligatorisk under mapp <tt>$1</tt> under bandbredds data fil mapp
+
 mod_dav_active=WebDAV aktiv?
 mod_dav_inf=Tillåten obegränsat djup DAV PROPFIND förfrågning?
 mod_dav_timeout=Minimal DAV paus i sekunder
 mod_dav_etimeout=Saknad eller felaktig DAV time out
+
 delete_err=Misslyckades att ta bort virtuell server
 delete_enone=Ingen vald
 delete_ecannot=Du är inte tillåten att ta bort servrar
 delete_ecannot2=Du är inte tillåten att ändra denna server $1
+
 syslog_desc=Apache fel logg
+
 mod_auth_basic_pass=Skicka grund inloggnings misslyckande till nästa modul?
 mod_auth_basic_prov=Grund användar inloggning fil typ
 mod_auth_basic_file=Text fil
 mod_auth_basic_dbm=DBM databas
+
 mod_auth_digest_pass=Skicka sammandragen inloggnings fel till nästa modul?
 mod_auth_digest_prov=Sammandragen användar inloggnings fil typ
 mod_auth_digest_al=Hashande algoritm
 mod_auth_digest_domain=URL's och sökväg på samma domän
 mod_auth_digest_edomain=Saknade URL's och sökvägar på samma domän
+
 mods_title=Konfigurera Apache Moduler
 mods_mod=Modul
 mods_state=Nuvarande status

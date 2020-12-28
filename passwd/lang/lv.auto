@@ -5,6 +5,7 @@ index_user=Mainīt lietotāja paroli:
 index_euseradmin=Šo moduli nevar izmantot, jo modulis Lietotāji un grupas nav instalēts vai netiek atbalstīts jūsu sistēmā.
 index_toomany=Jūsu sistēmā ir pārāk daudz lietotāju, lai tos parādītu. Zemāk ievadiet tā lietotāja vārdu, kura paroli vēlaties mainīt.
 index_none=Jums nav piekļuves nevienam lietotājam, lai mainītu viņu paroles.
+
 passwd_title=Mainīt paroli
 passwd_header=Unix lietotāja paroles maiņa
 passwd_for=Paroles maiņa
@@ -23,7 +24,9 @@ passwd_erepeat=Jaunās paroles nav vienādas
 passwd_ecmd=$1 neizdevās : $2 
 passwd_ok=Lietotāja $1 parole ir veiksmīgi nomainīta. Ja šis ir jūsu pašreizējais Webmin lietotājs, jūs, iespējams, būsit spiests pieteikties vēlreiz.
 passwd_ok2=Lietotāja $1 parole ir veiksmīgi nomainīta.
+
 log_passwd=Mainīta parole lietotājam $1 
+
 acl_repeat=Vai atkal jāievada jaunā parole?
 acl_self=Vai vienmēr atļaut mainīt savu paroli?
 acl_old=Jāievada vecā parole?

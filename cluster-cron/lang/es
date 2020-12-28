@@ -5,18 +5,22 @@ index_servers=Ejecutar en servidores
 index_return=lista de tares de cron de cluster
 index_more=$1 más ..
 index_run=Ejecutar ahora..
+
 edit_title=Editar Tarea de Cron de Cluster
 create_title=Crear Tarea de Cron de Cluster
 edit_servers=Ejecutar en servidores
 edit_group=Miembros de $1
 edit_this=este servidor
 edit_all=&lt;Todos los hosts&gt;
+
 save_err=Fallo al salvar tarea de cron de cluster
+
 exec_title=Ejecutar Tarea Cron de Cluster
 exec_cmd=Ejecutando $1 en servidores seleccionados ..
 exec_failed=Fallo al ejecutar en $1 : $2
 exec_success=Salida desde $1 ..
 exec_nohosts=No se seleccionaron hosts en los que ejecutar, o los grupos seleccionados no contienen ningún host utilizable.
+
 log_run=Ejecutado $1 en $2 servidores
 log_run_l=Ejecutado $1 en $2
 log_create=Creada tarea de cron de cluster para $1

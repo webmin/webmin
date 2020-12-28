@@ -40,6 +40,7 @@ index_descfetch=Tato stránka slouží ke stažení souboru ze systému, na kter
 index_email=Po dokončení stahování poslat e-mail?
 index_emailto=Ano, na adresu
 index_email2=Po odeslání odeslat e-mail?
+
 upload_title=Nahrát soubory
 upload_err=Nahrání souborů se nezdařilo
 upload_edir=Chybí adresář, do kterého se má nahrát
@@ -63,6 +64,7 @@ upload_saving=Ukládání souboru $1 ..
 upload_saved=.. napsal $1 
 upload_unzipping=Extrahuje se soubor $1 ..
 upload_unzipdone=.. $1 
+
 download_err=Uložení stahování se nezdařilo
 download_enone=Nebyly zadány žádné adresy URL ke stažení
 download_eurl='$1' není platná URL
@@ -74,9 +76,11 @@ download_failed=Stahování se nezdařilo : $1
 download_eaccess=Nemáte oprávnění stahovat soubory do $1 
 download_eucannot=Nemáte oprávnění stahovat soubory jako uživatel $1 
 download_egcannot=Vybraná skupina neobsahuje vybraného uživatele
+
 cancel_err=Stahování se nezdařilo
 cancel_enone=Nebyl vybrán žádný
 cancel_ecannot=Pro uživatele $1 nemáte dovoleno zrušit stahování
+
 log_cancel=Zrušeno $1 stahování (s)
 log_upload_l=Nahrané soubory $1 
 log_upload=Nahráno $1 souborů
@@ -84,6 +88,7 @@ log_download_l=Stažené adresy URL $1
 log_download=Stažené adresy URL: $1 
 log_sdownload_l=Naplánováno stahování adres URL $1 
 log_sdownload=Naplánováno stahování $1 adres URL
+
 acl_users=Může nahrávat a stahovat soubory jako uživatelé
 acl_all=Všichni uživatelé
 acl_this=Aktuální uživatel Webmin
@@ -98,6 +103,7 @@ acl_max=Maximální velikost nahrávání
 acl_unlim=Neomezený
 acl_b=bajtů
 acl_fetch=Lze stahovat soubory do PC?
+
 fetch_err=Soubor se nepodařilo stáhnout
 fetch_ecannot=Není dovoleno stahovat soubory do PC
 fetch_efile=Nebyl zadán žádný název souboru
@@ -106,6 +112,7 @@ fetch_eopen=Nepodařilo se otevřít soubor : $1
 fetch_eaccess=Nemáte oprávnění stahovat soubory z $1 
 fetch_ezip=Adresář nelze stáhnout, pokud není nainstalován příkaz <tt>zip</tt>
 fetch_eroot=Kořenový adresář nelze stáhnout!
+
 email_downmsg=Následující stahování bylo dokončeno :
 email_downurl=URL: $1 
 email_downerr=Chybová zpráva: $1 

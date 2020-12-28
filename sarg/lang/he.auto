@@ -10,6 +10,7 @@ index_range=צור דוח לטווח תאריכים
 index_view=הצג דוח שנוצר
 index_viewdesc=הצג את הדוח האחרון שנוצר בספריה $1.
 index_return=אינדקס מודול
+
 log_title=מקור יומן ויעד דוח
 log_header=מקור קובץ יומן דיונון ואפשרויות דוח שנוצרו
 log_access_log=מקור קובץ יומן דיונון
@@ -30,6 +31,7 @@ log_elastlog=חסר מספר או לא
 log_eemail=כתובת דוא"ל חסרה או לא חוקית
 log_emailx=תוכנית דואר חסרה או לא קיימת
 log_squidguard_log_path=קובץ יומן SquidGuard
+
 style_title=דווח על סגנון
 style_header=אפשרויות דוחות HTML וסגנון צבע
 style_title2=כותרת הדוח
@@ -54,6 +56,7 @@ style_efont=שם גופן חסר או לא חוקי
 style_esize=רוחב וגובה תמונה חסרים או לא חוקיים
 style_language=דווח על שפה
 style_charset=דווח על ערכת תווים
+
 report_title=אפשרויות דוח
 report_header=דווח על אפשרויות וייצור של תוכן
 report_resolve_ip=לפתור כתובות IP?
@@ -134,6 +137,7 @@ report_echar=חללים אסורים
 report_estring=טקסט חלופי חסר או לא תקף
 report_eselect=שום דבר לא נבחר
 report_eenter=שום דבר לא נכנס
+
 sched_title=הפקת דוחות מתוזמנים
 sched_header=אפשרויות דיווח מתוזמנות
 sched_sched=דוח מתוזמן מופעל?
@@ -148,9 +152,11 @@ sched_rsel=אלו שלפני $1 ל- $2 יומיים
 sched_err=שמירת יצירת הדוחות המתוזמנת נכשלה
 sched_erfrom=מספר התחלה חסר או לא חוקי לפני הימים
 sched_erto=מספר סיום חסר או לא תקף לפני ימים
+
 view_title=דו"ח סרג
 view_efile=שם קובץ לא תקין!
 view_eopen=פתיחת קובץ הדוח נכשלה
+
 gen_title=להפיק דוח
 gen_header=כעת הפקת דוח Sarg מקובץ יומן הדיונון $1 וכל הגרסאות המסתובבות ..
 gen_done=.. בוצע
@@ -160,6 +166,7 @@ gen_view=צפה בדוח שהושלם.
 gen_err=יצירת הדוח נכשלה
 gen_efrom=חסר או לא תקף מהיום
 gen_eto=חסר או לא תקף עד היום
+
 webmin_log_log=מקור יומן מעודכן ואפשרויות יעד של דוחות
 webmin_log_report=אפשרויות דוחות מעודכנות
 webmin_log_style=אפשרויות סגנון דוחות מעודכנות

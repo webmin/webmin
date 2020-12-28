@@ -25,12 +25,15 @@ index_up=بدء الاتصال:
 index_updesc=حدد اتصالاً من القائمة الموجودة بجوار هذا الزر ، وانقر فوقه لمحاولة إنشائه على الفور.
 index_nopol=لم يتم العثور على سياسات شبكة - ربما <a href='$1'>تكوين الشبكة</a> غير صحيح.
 index_import=استيراد اتصال من ملف.
+
 stop_err=فشل إيقاف خادم IPsec
 start_err=فشل بدء تشغيل خادم IPsec
 restart_err=فشلت إعادة تشغيل خادم IPsec
 start_elog=تم تسجيل الأخطاء التالية :$1
+
 newkey_err=فشل في إنشاء المفتاح
 newkey_ehost=اسم مضيف مفقود أو غير صالح
+
 edit_title1=إنشاء اتصال
 edit_title2=تحرير الاتصال
 edit_header=تفاصيل اتصال IPsec VPN
@@ -101,6 +104,7 @@ edit_unit_s=ثانية
 edit_unit_m=دقائق
 edit_unit_h=ساعات
 edit_unit_d=أيام
+
 config_title=تكوين الخادم
 config_header=إعدادات خادم VPN العام
 config_ifaces=واجهات الشبكة ل IPsec
@@ -118,6 +122,7 @@ config_nat=هل تريد تمكين اجتياز NAT؟
 config_err=فشل في حفظ تكوين الخادم
 config_eri=يتم سرد الواجهة الحقيقية '$1' أكثر من مرة
 config_enone=لم يتم تحديد واجهات شبكة
+
 showkey_title=إظهار المفتاح العام
 showkey_desc1=يجب نسخ مفتاح RSA العام الموضح أدناه في تكوين الأنظمة الأخرى المتصلة بهذا النظام ، في القسم المتعلق بهذا المضيف.
 showkey_desc2=يمكن استخدام القيم الموضحة أدناه لإنشاء سجل DNS KEY لهذا المضيف ، بحيث يمكن للأنظمة الأخرى المتصلة به البحث عن مفتاحه العام.
@@ -125,6 +130,7 @@ showkey_flags=الأعلام
 showkey_proto=بروتوكول
 showkey_alg=خوارزمية
 showkey_key=البيانات الرئيسية
+
 policy_desc_block=الشبكات المحجوبة
 policy_desc_clear=مسح شبكات المرور
 policy_desc_private=شبكات مشفرة
@@ -145,6 +151,7 @@ policy_mask=اختصار
 policy_err=فشل في حفظ الشبكات
 policy_enet=عنوان IP للشبكة غير صالح في الصف$1
 policy_emask=طول البادئة غير صالح في الصف$2
+
 save_err=فشل في حفظ الاتصال
 save_ename=اسم الاتصال مفقود أو غير صالح
 save_ekeying=عدد عمليات إعادة إدخال المفاتيح مفقودة أو غير صالحة
@@ -164,6 +171,7 @@ save_eleftcert=شهادة خادم محلي مفقودة أو غير صالحة
 save_erightcert=شهادة خادم بعيد مفقودة أو غير صالحة
 save_ekeylife=عمر مفتاح الاتصال مفقود أو غير صالح
 save_eikelifetime=عمر قناة المفتاح مفقود أو غير صالح
+
 log_create_conn=اتصال تم إنشاؤه$1
 log_delete_conn=اتصال محذوف$1
 log_modify_conn=اتصال معدّل$1
@@ -182,8 +190,10 @@ log_delete_secret=تم حذف المفتاح السري لـ$1
 log_create_secret_nn=إنشاء مفتاح سري لأي مضيف
 log_modify_secret_nn=تعديل مفتاح سري لأي مضيف
 log_delete_secret_nn=تم حذف المفتاح السري لأي مضيف
+
 up_title=ابدأ الاتصال
 up_cmd=جاري بدء الاتصال بالأمر$1 ..
+
 export_title=تكوين التصدير
 export_desc=يمكن استخدام هذا النموذج لتصدير قسم ملف التكوين للاتصال$1 ، بحيث يمكن استيراده بسهولة على الخادم في الطرف الآخر.
 export_print=عرض التكوين في المتصفح
@@ -193,11 +203,13 @@ export_err=فشل تصدير التكوين
 export_efile=اسم ملف مفقود
 export_esave=فشلت الكتابة إلى الملف :$1
 export_done=تكوين تم تصديره للاتصال$1 إلى$2 ($3 بايت).
+
 import_title=تكوين الاستيراد
 import_desc=يمكن استخدام هذا النموذج لاستيراد قسم ملف التكوين لاتصال ، مثل واحد تم إنشاؤه بواسطة ميزة تصدير الوحدة النمطية على نظام آخر.
 import_upload=استيراد من ملف التحميل ..
 import_file=استيراد من ملف جانب الخادم ..
 import_ok=استيراد الآن
+
 import_err=فشل استيراد التكوين
 import_eupload=لم يتم تحديد ملف للتحميل
 import_efile=لم يتم إدخال ملف من جانب الخادم
@@ -207,6 +219,7 @@ import_eclash=يوجد اتصال يسمى$1 موجود بالفعل.
 import_done1=تمت إضافة اتصال IPsec الجديد$1 بنجاح.
 import_done2=تم تحديث اتصال IPsec $1 بنجاح.
 import_over=هل تريد استبدال الاتصال الموجود بنفس الاسم؟
+
 secrets_title=مفاتيح سرية
 secrets_none=لم يتم العثور على مفاتيح أسرار!
 secrets_name=سر
@@ -220,6 +233,7 @@ secrets_mod=المعامل$1
 secrets_newpsk=إنشاء مفتاح سر مشترك جديد.
 secrets_newrsa=إنشاء مفتاح RSA جديد.
 secrets_return=قائمة المفاتيح السرية
+
 secret_title1=إنشاء مفتاح سري
 secret_title2=تحرير المفتاح السري
 secret_header=تفاصيل المفتاح السري

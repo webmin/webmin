@@ -11,11 +11,13 @@ index_boot=Ibda mill-ibbutjar?
 index_bootdesc=Ibdel din l-issettjar biex tippermetti jew iwaqqaf il-bidu tas-server Dovecot fil-ħin tal-bidu tas-sistema.
 index_return=indiċi tal-modulu
 index_version=Verżjoni $1
+
 stop_err=Naqset milli twaqqaf Dovecot
 stop_erunning=Ma għadux għaddej
 start_err=Naqset milli tibda Dovecot
 start_eprotos=L-ebda protokoll magħżul fuq il-paġna <b>Netwerking u Protokolli</b>
 apply_err=Ma rnexxielux japplika l-konfigurazzjoni
+
 net_title=Netwerking u Protokolli
 net_header=Netwerk Dovecot u għażliet ta 'protokoll tal-posta
 net_protocols=Iservu protokolli bil-posta
@@ -42,8 +44,11 @@ net_eimaps_listen=Indirizz IP mhux validu għal konnessjonijiet SSL IMAP
 net_epop3s_listen=Indirizz IP mhux validu għall-konnessjonijiet SSL POP3
 net_elisten=Indirizz IP mhux validu għal konnessjonijiet mhux SSL
 net_essl_listen=Indirizz IP mhux validu għal konnessjonijiet SSL
+
 imap_title=Għażliet IMAP
+
 pop3_title=Għażliet POP3
+
 ssl_title=Konfigurazzjoni SSL
 ssl_header=Għażliet tal-modalità IMAP u POP3 SSL
 ssl_key=Fajl privat SSL
@@ -61,7 +66,9 @@ ssl_ecert=Fajl taċ-ċertifikat nieqes jew ineżistenti
 ssl_eca=Fajl taċ-ċertifikat CA tal-klijent nieqes jew ineżistenti
 ssl_eregen=Intervall ta 'riġenerazzjoni tal-parametri nieqes jew mhux numeriċi
 ssl_epass=L-ebda password tal-fajl ewlieni SSL ma daħal
+
 misc_title=Għażliet oħra
+
 login_title=L-Għażliet tal-Utent u l-Idħol
 login_header=Awtentikazzjoni ta 'l-utent u għażliet ta' dħul
 login_fuid=UID minimu validu
@@ -117,6 +124,7 @@ login_procs=Proċessi massimi ta 'dħul
 login_count=Proċessi inizjali ta 'login
 login_eprocs=Numru massimu nieqes jew invalidu ta 'proċessi ta' login
 login_ecount=Numru inizjali nieqes jew invalidu ta 'proċessi ta' login
+
 mail_title=Fajls Mail
 mail_header=Post tal-posta u għażliet ta 'qari
 mail_env=Post tal-fajl tal-posta
@@ -169,6 +177,7 @@ mail_eindexmode=Il-lokazzjoni tal-fajls ta 'indiċi ma tistax tkun issettjata me
 mail_econtrolmode=Il-lokazzjoni tal-fajls ta 'kontroll ma tistax tiġi ssettjata meta l-lokazzjoni tal-fajl tal-posta elettronika tiġi skoperta awtomatikament
 mail_eindex=It-triq assoluta nieqsa jew invalida għall-fajls tal-indiċi
 mail_econtrol=It-triq assoluta nieqsa jew invalida għall-fajls ta 'kontroll
+
 log_net=Netwerking u Protokolli mibdula
 log_login=Utenti mibdula u Għażliet ta 'Idħol
 log_mail=Inbidlu Fajls Mail
@@ -179,6 +188,7 @@ log_stop=Waqaf is-Server Dovecot
 log_bootup=Attiva Dovecot fil-ħin tal-bidu
 log_bootdown=B'diżabilità Dovecot fil-ħin tal-bidu
 log_manual=Fajl ta 'konfigurazzjoni editjat manwalment $1
+
 manual_title=Editja l-Iskedi tal-Konfigurazzjoni
 manual_editsel=Editja l-fajl tal-konfigurazzjoni Dovecot
 manual_err=Ma rnexxielux isalva fajl konfigurativ

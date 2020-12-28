@@ -155,8 +155,10 @@ menu_bookmarks=Penanda buku
 notallowed=Anda tidak dibenarkan mengakses $1. Direktori yang dibenarkan adalah : $2 
 error_upload_emax=Fail yang dimuat naik lebih besar daripada had $1 
 extract_etype=Jenis fail arkib yang tidak disokong
+
 info_total1=Jumlah: $1 fail dan direktori $2 
 info_total2=Jumlah: $1 fail dan $2 direktori
 info_total3=Jumlah: $1 fail dan $2 direktori
 info_total4=Jumlah: $1 fail dan $2 direktori
+
 ownership=Pemilik

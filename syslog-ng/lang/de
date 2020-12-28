@@ -9,6 +9,7 @@ index_start=Starte Syslog-NG
 index_startdesc=Klicken Sie auf diese Schaltfläche, um die Syslog-NG-Daemon mit der aktuellen Konfiguration zu starten.
 index_return=Modulindex
 index_version=Syslog-NG $1
+
 options_title=Logging Optionen
 options_header=Optionen für alle Log Dateien
 options_secs=Sekunden
@@ -55,6 +56,7 @@ options_esync=Fehlende oder ungültige Anzahl von Nachrichten zu puffern vor dem
 options_estats=Fehlende oder nicht-numerische Zeit zu warten zwischen Statistik-Nachrichten
 options_elog_fifo_size=Fehlende oder ungültige Anzahl von Nachrichten zu puffern
 options_elog_msg_size=Fehlende oder nicht-numerische maximale Protokollnachrichtengröße
+
 destinations_title=Log Ziele
 destinations_name=Ziel Name
 destinations_type=Schreibe nach
@@ -77,6 +79,7 @@ destinations_add=Ein neues Log-Ziel hinzufügen.
 destinations_return=Log Ziele
 destinations_desc=Andere Module Log
 destinations_cmd=Output von $1
+
 destination_header=Log Zieloptionen
 destination_title1=Erstelle Log-Ziele
 destination_title2=Editiere Log-Ziele
@@ -117,17 +120,22 @@ destination_enet_localip=Fehlende oder ungültige lokale IP Adresse
 destination_enet_localport=Fehlende oder ungültige lokale Portnummer
 destination_enet_host=Fehlende(r) oder ungültige(r) Syslog Server Host oder Adresse
 destination_eunix=Fehlender Unix Socket Name
+
 ddelete_err=Fehlgeschlagen Zile zu löschen
 ddelete_enone=Nichts ausgewählt
 ddelete_eused=Das Ziel $1 kann nicht gelöscht werden, da es durch eine Log-Ziel verwendet wird
+
 sdelete_err=Fehlgeschlagen Quellen zu löschen
 sdelete_enone=Keine ausgewählt
 sdelete_eused=Die Log-Quelle $1 kann nicht gelöscht werden, da es von einem Protokollziel verwendet wird
+
 fdelete_err=Fehlgeschlagen Filter zu löschen
 fdelete_enone=Keine ausgewählt
 fdelete_eused=Das Log-Filter $1 kann nicht gelöscht werden, da es durch eine Log-Ziel verwendet wird
+
 ldelete_err=Fehlgeschlagen Log-Ziel zu löschen
 ldelete_enone=Nichts ausgewählt
+
 filters_title=Log Filter
 filters_name=Filtername
 filters_desc=Bedingungen
@@ -144,6 +152,7 @@ filters_program=Programm <tt>$1</tt>
 filters_match=entspricht "$1"
 filters_host=Von Hostname <tt>$1</tt>
 filters_netmask=von Sender <tt>$1</tt>
+
 filter_title1=Erstelle Log-Filter
 filter_title2=Editiere Log-Filter
 filter_header=Log-Filter Spezifikationsdetails
@@ -169,6 +178,7 @@ filter_enet=Fehlende oder ungültige Netzwerk IP-Adresse
 filter_emask=Fehlender oder ungültiger Netzmaske
 filter_ebool=Fehler im komplexen Ausdruck
 filter_egone=Filter existiert nicht länger!
+
 logs_title=Log-Ziel
 logs_source=Quellen
 logs_filter=Filter
@@ -177,6 +187,7 @@ logs_add=Ein neues Log-ZIel erstellt.
 logs_delete=Lösche ausgewählte Log-Ziele
 logs_return=Logge Ziele
 logs_none=Nichts
+
 log_title1=Log-Ziel erstellt
 log_title2=Log-Ziel erstellt
 log_header=Log-Quelle, Filter und Ziel-Auswahl
@@ -190,6 +201,7 @@ log_flags=Ziel Optionen
 log_egone=Log-Ziel existiert nicht länger!
 log_err=Fehlgeschlagen Log-Ziel zu speichern
 log_esource=Keine Quellen ausgewählt
+
 sources_title=Log Quellen
 sources_none=Keine Quellen wurden bisher definiert!
 sources_add=Füge eine neue Log-Quelle hinzu
@@ -207,6 +219,7 @@ sources_typen=Sun stream
 sources_typenw=Syslog-Server
 sources_return=Log Quellen
 sources_none2=Keine
+
 source_title1=Erstelle Log Quelle
 source_title2=Editiere Log Quelle
 source_header=Log-Quellen-Optionen
@@ -243,15 +256,20 @@ source_door=Door Dateiname
 source_esun_streams_name=Fehlender oder ungültiger Sun streams Dateiname
 source_edoor=Fehlender oder ungültiger Sun-streams door Dateinamen
 source_transport=Netzwerkprotokoll
+
 view_title=Zeige Logdatei
 view_header=Letzten $1 Zeilen von $2
 view_empty=Log Datei ist leer
 view_refresh=Aktualisieren
 view_filter=Zeige nur Zeilen mit Text $1
+
 apply_err=Fehlgeschlagen die Konfiguration anzuwenden
 apply_egone=Läuft nicht!
+
 start_err=Fehlgeschlagen Syslog-NG Server zu starten
+
 stop_err=Fehlgeschlagen Syslog-NG Server zu stoppen
+
 log_create_destination=Log-Ziele $1 erstellt
 log_modify_destination=Log-Ziel $1 modifiziert
 log_delete_destination=Log-Ziel $1 gelöscht

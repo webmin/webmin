@@ -9,6 +9,7 @@ index_startmsg=Klicken Sie auf diese Schaltfläche, um den FTP-Server mit der ak
 index_startmsg2=Klicken Sie diesen Button um den FTP-Server mit der momentanen Konfiguration zu starten. Sie können den Server auch dahingehend konfigurieren, daß er aus Inetd oder XInetd oder vergleichbaren Programmen gestartet werden kann.
 index_return=FTP-Server-Einstellungen
 index_version=WU-FTPd Version $1
+
 class_title=Benutzer und Klassen
 class_header=Benutzerklassen und Benutzereinstellungen
 class_class=Benutzerklassen
@@ -31,6 +32,7 @@ class_err=Fehler beim Speichern der Benutzerklassen
 class_eclass='$1' ist kein gültiger Klassenname
 class_etypes=Keine Typen ausgewählt für Klasse '$1'
 class_eaddrs=Keine Adressen angegeben für Klasse '$1'
+
 message_title=Meldungen und Banner
 message_header=Meldungen, Banner und LIESMICH-Dateien
 message_message=Meldungsdateien
@@ -59,6 +61,7 @@ message_eclass=Klasse '$1' existiert nicht
 message_ebanner='$1' ist keine gültige Anmelde-Banner-Datei
 message_ehostname=Fehlender oder ungültiger Host-Name
 message_eemail=Fehlende oder ungültige E-Mail-Adresse
+
 acl_title=Grenzwerte und Zugriffskontrolle
 acl_header=Grenzwerte und Zugriffskontrolleinstellungen
 acl_deny=Verweigere Zugriff von
@@ -105,6 +108,7 @@ acl_elmsg='$1' ist keine gültige Fehlermeldungsdatei
 acl_efbcount='$1' ist keine gültige Anzahl von Dateien oder Bytes
 acl_elimit='$1' ist keine gültige Zeitgrenze
 acl_efails='$1' ist keine gültige Anzahl von Anmeldefehlern
+
 net_title=Netzwerk
 net_header=Netzwerkeinstellungen
 net_tcp=TCP-Fenstergrößen
@@ -122,6 +126,7 @@ net_eip='$1' ist keine gültige IP-Adresse
 net_enet='$1' ist keine gültige Netzwerkadresse
 net_ecidr='$1' ist keine gültige Anzahl von Netzwerk-Bits
 net_eport='$1' ist keine gültige Anschlussnummer
+
 log_title=Protokollierung
 log_header=Protokollierungseinstellungen
 log_commands=Alle Befehle protokollieren für
@@ -139,6 +144,7 @@ log_syslog=Systemprotokoll
 log_xferlog=XFER-Protokolldatei
 log_sysxfer=Beide Richtungen
 log_err=Fehler beim Speichern der Protokollierungseinstellungen
+
 alias_title=Aliases und Pfade
 alias_header=Alias- und Pfadeinstellungen
 alias_alias=CD-Verzeichnis-Aliases
@@ -149,6 +155,7 @@ alias_err=Fehler beim Speichern der Aliases und Pfade
 alias_efrom='$1' ist kein gültiger Alias-Name
 alias_eto='$1' ist kein gültiges Alias-Verzeichnis
 alias_ecdpath='$1' ist kein gültiges CD-Suchverzeichnis
+
 anon_title=Anonymes FTP
 anon_eftp=Warnung - Ihr System hat keinen <tt>FTP</tt>-Benutzer, daher ist anonymes FTP evtl. nicht konfiguriert.
 anon_header=Einstellungen für anonymes FTP
@@ -171,6 +178,7 @@ anon_uids=Für Unix-Benutzer
 anon_err=Fehler beim Speichern der Einstellungen für anonymes FTP
 anon_edir='$1' ist kein gültiges Verzeichnis
 anon_egroup='$1' ist keine gültige Gruppe
+
 perm_title=Rechte
 perm_header=Einstellungen der Zugriffsrechte
 perm_perms=Befehlseinschränkungen
@@ -192,7 +200,9 @@ perm_err=Fehler beim Speichern der Zugriffsrechte
 perm_echar='$1' ist kein gültiger regulärer Ausdruck für Zeichen
 perm_etypes=Kein Benutzertyp gewählt
 perm_emesg='$1' ist keine gültige Fehlermeldungsdatei
+
 host_title=Host-Zugriffskontrolle
+
 misc_title=Verschiedene Einstellungen
 misc_header=Verschiedene Einstellungen
 misc_lslong=Langer Listing-Befehl
@@ -213,6 +223,7 @@ misc_elsplain=Fehlender normaler Listing-Befehl
 misc_eshutdown=Fehlende Shutdown-Benachrichtigungsdatei
 misc_enice='$1' ist kein gültiger Nicelevel
 misc_eumask='$1' ist keine gültige Umask
+
 log_class=Benutzer und Klassen geändert
 log_message=Nachrichten und Banner geändert
 log_acl=Geänderte Begrenzungen und Zugriffskontrollen

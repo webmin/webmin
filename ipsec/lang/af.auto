@@ -25,12 +25,15 @@ index_up=Begin verbinding:
 index_updesc=Kies 'n verbinding uit die lys langs hierdie knoppie en klik op dit om die onmiddellike instelling te probeer.
 index_nopol=Geen netwerkbeleide is gevind nie - u <a href='$1'>netwerkopstelling</a> is miskien verkeerd.
 index_import=Voer verbinding vanaf lêer in.
+
 stop_err=Kon nie die IPsec-bediener stop nie
 start_err=Kon nie die IPsec-bediener begin nie
 restart_err=Kon nie weer begin met die IPsec-bediener nie
 start_elog=Die volgende foute is aangeteken : $1 
+
 newkey_err=Kon nie sleutel genereer nie
 newkey_ehost=Ontbrekende of ongeldige gasheernaam
+
 edit_title1=Skep verbinding
 edit_title2=Redigeer verbinding
 edit_header=IPsec VPN-verbindingbesonderhede
@@ -101,6 +104,7 @@ edit_unit_s=secs
 edit_unit_m=mins
 edit_unit_h=ure
 edit_unit_d=dae
+
 config_title=Bedienerkonfigurasie
 config_header=Globale VPN-bedienerinstellings
 config_ifaces=Netwerk koppelvlakke vir IPsec
@@ -118,6 +122,7 @@ config_nat=Aktiveer NAT-deurkruising?
 config_err=Kon nie bedienerkonfigurasie stoor nie
 config_eri=Die regte koppelvlak '$1' word meer as een keer gelys
 config_enone=Geen netwerk koppelvlakke is gespesifiseer nie
+
 showkey_title=Wys openbare sleutel
 showkey_desc1=Die openbare RSA-sleutel hieronder moet gekopieër word na die konfigurasie van ander stelsels wat met hierdie een verbind word, in die gedeelte wat met hierdie gasheer verband hou.
 showkey_desc2=Die onderstaande waardes kan gebruik word om 'n DNS-sleutelrekord vir hierdie gasheer te skep, sodat ander stelsels wat daarby aansluit, die openbare sleutel kan opspoor.
@@ -125,6 +130,7 @@ showkey_flags=vlae
 showkey_proto=Protokol
 showkey_alg=algoritme
 showkey_key=Sleutel data
+
 policy_desc_block=Geblokkeerde netwerke
 policy_desc_clear=Maak verkeersnetwerke skoon
 policy_desc_private=Geënkripteerde netwerke
@@ -145,6 +151,7 @@ policy_mask=voorvoegsel
 policy_err=Kon nie netwerke stoor nie
 policy_enet=Ongeldige netwerk-IP-adres op ry $1 
 policy_emask=Ongeldige voorvoegsellengte op ry $2 
+
 save_err=Kon nie die verbinding stoor nie
 save_ename=Ontbrekende of ongeldige verbindingnaam
 save_ekeying=Ontbrekende of ongeldige aantal toets-herproewe
@@ -164,6 +171,7 @@ save_eleftcert=Ontbrekende of ongeldige plaaslike bedienersertifikaat
 save_erightcert=Ontbrekende of ongeldige bedienersertifikaat ontbreek
 save_ekeylife=Lewenslange ontbrekende of ongeldige verbindingsleutel
 save_eikelifetime=Die leeftyd van die sleutelkanaal ontbreek of ongeldig
+
 log_create_conn=Verbinding $1 geskep
 log_delete_conn=Verbinding $1 is verwyder
 log_modify_conn=Gewysigde verbinding $1 
@@ -182,8 +190,10 @@ log_delete_secret=Die geheime sleutel vir $1 is verwyder
 log_create_secret_nn=Geheime sleutel vir enige gasheer geskep
 log_modify_secret_nn=Gewysigde geheime sleutel vir enige gasheer
 log_delete_secret_nn=Die geheime sleutel vir enige gasheer is uitgevee
+
 up_title=Begin verbinding
 up_cmd=Begin verbinding met opdrag $1.
+
 export_title=Voer konfigurasie uit
 export_desc=Hierdie vorm kan gebruik word om die konfigurasie-lêergedeelte vir verbinding $1 uit te voer, sodat dit maklik aan die ander kant op die bediener ingevoer kan word.
 export_print=Vertoon konfigurasie in die blaaier
@@ -193,11 +203,13 @@ export_err=Kon nie die konfigurasie uitvoer nie
 export_efile=Ontbrekende lêernaam
 export_esave=Kon nie na lêer skryf nie : $1 
 export_done=Konfigurasie uitgevoer vir verbinding $1 tot $2 ($3 grepe).
+
 import_title=Voer konfigurasie in
 import_desc=Hierdie vorm kan gebruik word om 'n konfigurasie-lêergedeelte vir 'n verbinding in te voer, soos een wat deur die uitvoerfunksie van die module op 'n ander stelsel geskep word.
 import_upload=Voer in vanaf oplaai lêer ..
 import_file=Voer vanaf lêer aan die sykant in.
 import_ok=Voer nou in
+
 import_err=Kon nie die konfigurasie invoer nie
 import_eupload=Geen lêer is gekies om op te laai nie
 import_efile=Geen bediener-sylêer is ingevoer nie
@@ -207,6 +219,7 @@ import_eclash=Daar bestaan reeds 'n verbinding met die naam $1.
 import_done1=Die nuwe IPsec-verbinding $1 is suksesvol bygevoeg.
 import_done2=Die IPsec-verbinding $1 is suksesvol opgedateer.
 import_over=Die bestaande verbinding met dieselfde naam oorskryf?
+
 secrets_title=Geheime sleutels
 secrets_none=Geen geheime sleutels is gevind nie!
 secrets_name=Geheim vir
@@ -220,6 +233,7 @@ secrets_mod=Modulus $1
 secrets_newpsk=Skep 'n nuwe, gedeelde geheime sleutel.
 secrets_newrsa=Skep 'n nuwe RSA-sleutel.
 secrets_return=geheime sleutel lys
+
 secret_title1=Skep geheime sleutel
 secret_title2=Wysig geheime sleutel
 secret_header=Geheime sleutelbesonderhede

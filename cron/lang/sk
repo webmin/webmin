@@ -1,5 +1,6 @@
 index_command=Príkaz
 index_comment=Popis
+
 create_title=Vytvoriť plánovanú úlohu
 edit_commands=Príkazy
 edit_command=Príkaz
@@ -9,6 +10,7 @@ edit_hours=Hodiny
 edit_days=Dni
 edit_months=Mesiace
 edit_run=Spustiť teraz
+
 acl_all=Všetci užívatelia
 acl_only=Iba užívatelia
 acl_except=Všetci okrem užívateľov

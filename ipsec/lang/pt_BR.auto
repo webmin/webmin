@@ -25,12 +25,15 @@ index_up=Iniciar conexão:
 index_updesc=Selecione uma conexão na lista ao lado deste botão e clique nela para tentar seu estabelecimento imediato.
 index_nopol=Nenhuma política de rede foi encontrada - talvez sua <a href='$1'>configuração de rede</a> esteja incorreta.
 index_import=Importar conexão do arquivo.
+
 stop_err=Falha ao parar o servidor IPsec
 start_err=Falha ao iniciar o servidor IPsec
 restart_err=Falha ao reiniciar o servidor IPsec
 start_elog=Os seguintes erros foram registrados : $1 
+
 newkey_err=Falha ao gerar a chave
 newkey_ehost=Nome de host ausente ou inválido
+
 edit_title1=Criar conexão
 edit_title2=Editar conexão
 edit_header=Detalhes da conexão VPN IPsec
@@ -101,6 +104,7 @@ edit_unit_s=segundos
 edit_unit_m=min
 edit_unit_h=horas
 edit_unit_d=dias
+
 config_title=Configuração do servidor
 config_header=Configurações globais do servidor VPN
 config_ifaces=Interfaces de rede para IPsec
@@ -118,6 +122,7 @@ config_nat=Ativar passagem NAT?
 config_err=Falha ao salvar a configuração do servidor
 config_eri=A interface real '$1' está listada mais de uma vez
 config_enone=Nenhuma interface de rede foi especificada
+
 showkey_title=Mostrar chave pública
 showkey_desc1=A chave pública RSA mostrada abaixo deve ser copiada na configuração de outros sistemas conectados a este, na seção relacionada a este host.
 showkey_desc2=Os valores mostrados abaixo podem ser usados para criar um registro DNS KEY para esse host, para que outros sistemas conectados a ele possam procurar sua chave pública.
@@ -125,6 +130,7 @@ showkey_flags=Bandeiras
 showkey_proto=Protocolo
 showkey_alg=Algoritmo
 showkey_key=Data chave
+
 policy_desc_block=Redes bloqueadas
 policy_desc_clear=Limpar redes de tráfego
 policy_desc_private=Redes criptografadas
@@ -145,6 +151,7 @@ policy_mask=Prefixo
 policy_err=Falha ao salvar redes
 policy_enet=Endereço IP de rede inválido na linha $1 
 policy_emask=Comprimento de prefixo inválido na linha $2 
+
 save_err=Falha ao salvar a conexão
 save_ename=Nome de conexão ausente ou inválido
 save_ekeying=Número ausente ou inválido de novas tentativas de digitação
@@ -164,6 +171,7 @@ save_eleftcert=Certificado de servidor local ausente ou inválido
 save_erightcert=Certificado de servidor remoto ausente ou inválido
 save_ekeylife=Vida útil da chave de conexão ausente ou inválida
 save_eikelifetime=Vida útil do canal de codificação ausente ou inválida
+
 log_create_conn=Conexão criada $1 
 log_delete_conn=Conexão excluída $1 
 log_modify_conn=Conexão modificada $1 
@@ -182,8 +190,10 @@ log_delete_secret=Chave secreta excluída para $1
 log_create_secret_nn=Chave secreta criada para qualquer host
 log_modify_secret_nn=Chave secreta modificada para qualquer host
 log_delete_secret_nn=Chave secreta excluída para qualquer host
+
 up_title=Iniciar conexão
 up_cmd=Iniciando a conexão com o comando $1 ..
+
 export_title=Exportar Configuração
 export_desc=Este formulário pode ser usado para exportar a seção do arquivo de configuração para a conexão $1, para que possa ser facilmente importada no servidor na outra extremidade.
 export_print=Exibir configuração no navegador
@@ -193,11 +203,13 @@ export_err=Falha ao exportar configuração
 export_efile=Nome de arquivo ausente
 export_esave=Falha ao gravar no arquivo : $1 
 export_done=Configuração exportada para a conexão $1 a $2 ($3 bytes).
+
 import_title=Importar configuração
 import_desc=Este formulário pode ser usado para importar uma seção do arquivo de configuração para uma conexão, como uma criada pelo recurso de exportação do módulo em outro sistema.
 import_upload=Importar do arquivo de upload.
 import_file=Importar do arquivo do lado do servidor.
 import_ok=Importar agora
+
 import_err=Falha ao importar a configuração
 import_eupload=Nenhum arquivo selecionado para upload
 import_efile=Nenhum arquivo do lado do servidor inserido
@@ -207,6 +219,7 @@ import_eclash=Uma conexão chamada $1 já existe.
 import_done1=Adicionada com sucesso a nova conexão IPsec $1.
 import_done2=Atualizou com êxito a conexão IPsec $1.
 import_over=Substituir conexão existente com o mesmo nome?
+
 secrets_title=Chaves Secretas
 secrets_none=Nenhuma chave secreta foi encontrada!
 secrets_name=Segredo para
@@ -220,6 +233,7 @@ secrets_mod=Módulo $1
 secrets_newpsk=Crie uma nova chave secreta compartilhada.
 secrets_newrsa=Crie uma nova chave RSA.
 secrets_return=lista de chaves secretas
+
 secret_title1=Criar chave secreta
 secret_title2=Editar chave secreta
 secret_header=Detalhes da chave secreta

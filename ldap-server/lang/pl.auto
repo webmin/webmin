@@ -16,6 +16,7 @@ index_setupdesc=Baza danych twojego serwera LDAP nie zawiera jeszcze głównej n
 index_setup=Utwórz główną nazwę wyróżniającą
 index_permsdesc=Katalog danych serwera LDAP $1 zawiera pliki nienależące do poprawnego użytkownika $2, co oznacza, że poprawne uruchomienie jest mało prawdopodobne. Jednak Webmin może to naprawić, klikając poniższy przycisk.
 index_perms=Napraw własność
+
 connect_eserver=Serwer LDAP $1 nie istnieje
 connect_euser=Żaden użytkownik nie może się zalogować, jak skonfigurowano
 connect_epass=Nie skonfigurowano hasła do logowania
@@ -28,6 +29,7 @@ connect_eldap=Nie udało się połączyć z serwerem LDAP $1 na porcie $2
 connect_essl=Nie można uruchomić szyfrowania TLS na serwerze LDAP $1 : $2 
 connect_elogin=Nie udało się zalogować do serwera LDAP $1 jako $2 : $3 
 connect_cpan=Możesz mieć <tt>$1</tt> moduł Perla <a href='$2'>automatycznie zainstalowany</a> z CPAN.
+
 slapd_title=Konfiguracja serwera OpenLDAP
 ldif_title=Konfiguracja serwera OpenLDAP
 slapd_header=Opcje globalnego serwera LDAP
@@ -76,6 +78,7 @@ slapd_protos=Połączenia LDAP do zaakceptowania
 slapd_ldap=LDAP przez sieć
 slapd_ldaps=LDAP przez SSL
 slapd_ldapi=Plik gniazda Unix
+
 schema_title=Zarządzaj schematem
 schema_file=Nazwa
 schema_desc=Opis
@@ -93,6 +96,7 @@ schema_edesc=Ta strona umożliwia ręczną edycję pliku schematu LDAP. Należy 
 schema_return=lista schematów
 schema_emove=Nie można znaleźć pliku schematu do przeniesienia!
 schema_ecannot=Nie możesz zarządzać schematem LDAP
+
 acl_title=Kontrola dostępu LDAP
 acl_ecannot=Nie wolno konfigurować kontroli dostępu LDAP
 acl_what=Obiekty
@@ -103,6 +107,7 @@ acl_none=Nie zdefiniowano jeszcze reguł kontroli dostępu. Wszystkie obiekty w 
 acl_delete=Usuń wybrane reguły
 acl_add=Dodaj nową regułę kontroli dostępu.
 acl_return=zasady kontroli dostępu
+
 browser_title=Przeglądaj bazę danych
 browser_econn=Nie można użyć przeglądarki LDAP : $1 
 browser_ecannot=Nie możesz przeglądać bazy danych LDAP
@@ -136,24 +141,30 @@ browser_nomatch=Brak obiektów spełniających kryteria wyszukiwania dla $1.
 browser_search=Znajdź pasujące obiekty :
 browser_search2=Pokazywanie pasujących obiektów :
 browser_sok=Szukaj
+
 save_err=Nie udało się zmienić atrybutu
 save_ebase=Nie można pobrać obiektu $1 z bazy danych
 save_emodify=Modyfikacja LDAP $2 w $1 nie powiodła się : $3 
 save_enone=Nie wprowadzono żadnych wartości
+
 add_err=Nie udało się dodać atrybutu
 add_eadd=Brak lub nieprawidłowa nazwa atrybutu
 add_evalue=Brakująca wartość
 add_emodify=Nie udało się dodać LDAP $2 do $1 : $3 
+
 delete_err=Nie udało się usunąć atrybutów
 delete_enone=Nie wybrano
 delete_emodify=Usunięcie LDAP $2 z $1 nie powiodło się : $3 
+
 sdelete_err=Nie udało się usunąć obiektów
 sdelete_edn=Obiekt $1 nie został znaleziony
 sdelete_edel=Usunięcie LDAP $1 nie powiodło się : $2 
+
 rename_err=Nie można zmienić nazwy obiektu
 rename_eget=Nie można znaleźć obiektu o DN $1 
 rename_enew=Nowa nazwa wydaje się nieprawidłowa
 rename_erename=Błąd LDAP newdn do $2 z $1 nie powiódł się : $3 
+
 oadd_title=Utwórz obiekt
 oadd_header=Nowe szczegóły obiektu LDAP
 oadd_base=DN obiektu nadrzędnego
@@ -170,6 +181,7 @@ oadd_eget2=Nie udało się sprawdzić kolizji z $1 : $2
 oadd_eclash=Obiekt o nazwie DN $1 już istnieje
 oadd_eadd=Nie udało się dodać LDAP $1 : $2 
 oadd_err=Nie udało się utworzyć nowego obiektu
+
 create_title=Utwórz drzewo
 create_ecannot=Nie możesz utworzyć nowego drzewa
 create_desc=Ta strona zapewnia wygodny sposób tworzenia nazwy wyróżniającej, która będzie podstawą nowego drzewa w bazie danych. Może również utworzyć przykładowy alias użytkownika lub e-maila pod drzewem, jako szablon dla własnych obiektów.
@@ -191,18 +203,23 @@ create_done=.. gotowy
 create_doingex=Tworzenie przykładowego obiektu z DN $1 ..
 create_edoingex=.. nie powiodło się: $1. Z drzewa można jednak nadal korzystać.
 create_eoc=Nie można znaleźć odpowiedniej klasy obiektu dla nowej nazwy wyróżniającej
+
 eunknown=Nieznany błąd
+
 apply_err=Nie można zastosować konfiguracji
 apply_ecmd=Błąd $1 : $2 
 apply_ecannot=Nie możesz zastosować konfiguracji
+
 stop_err=Nie udało się zatrzymać serwera LDAP
 stop_ecmd=Błąd $1 : $2 
 stop_egone=Już nie działa!
 stop_ekill=Proces zabijania nie powiódł się : $1 
 stop_ecannot=Nie możesz zatrzymać serwera LDAP
+
 start_err=Nie udało się uruchomić serwera LDAP
 start_ecmd=Błąd $1 : $2 
 start_ecannot=Nie możesz uruchomić serwera LDAP
+
 log_create_dn=Utworzono obiekt $1 
 log_delete_dn=Usunięty obiekt $1 
 log_rename_dn=Nazwa obiektu zmieniona $1 
@@ -234,6 +251,7 @@ log_up_access=Przeniesiono w górę regułę kontroli dostępu dla $1
 log_down_access=Przeniesiono regułę kontroli dostępu w dół dla $1 
 log_delete_accesses=Usunięte reguły kontroli dostępu $1 
 log_all=wszystkie przedmioty
+
 gencert_title=Wygeneruj certyfikat SSL
 gencert_header=Nowe szczegóły certyfikatu SSL
 gencert_create=Utwórz certyfikat
@@ -245,7 +263,9 @@ gencert_dir=Informator
 gencert_err=Nie udało się wygenerować certyfikatu
 gencert_edest=Katalog docelowy nie istnieje
 gencert_epath=Pliki certyfikatów i kluczy w konfiguracji serwera LDAP muszą być ścieżkami bezwzględnymi
+
 perms_err=Nie można naprawić własności pliku
+
 acl_slapd=Czy można skonfigurować serwer LDAP?
 acl_ldif=Czy można skonfigurować serwer LDAP?
 acl_schema=Czy można zarządzać schematem?
@@ -254,6 +274,7 @@ acl_browser=Czy mogę przeglądać i edytować bazę danych?
 acl_create=Czy można utworzyć nowe drzewo?
 acl_start=Czy można uruchomić i zatrzymać serwer LDAP?
 acl_apply=Czy można zastosować zmiany w konfiguracji?
+
 access_desc=$2 o $1 
 access_self=samego siebie
 access_users=uwierzytelnieni użytkownicy
@@ -273,6 +294,7 @@ access_lcompare=Porównać
 access_lsearch=Szukaj
 access_lread=Czytać
 access_lwrite=pisać
+
 eacl_title1=Utwórz regułę kontroli dostępu
 eacl_title2=Edytuj regułę kontroli dostępu
 eacl_header=Szczegóły reguły kontroli dostępu do bazy danych LDAP

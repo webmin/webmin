@@ -15,6 +15,7 @@ index_actform=Form
 index_actrun=Ausführen
 index_actsql=Form
 index_acted=Öffne
+
 edit_title=Bearbeite Befehl
 create_title=Befehl erstellen
 edit_ecannot=Sie haben keine Berechtigung, Befehle zu bearbeiten
@@ -65,6 +66,7 @@ edit_format3=Umleiten zur Form
 edit_servers=Führe auf Webmin Server aus
 edit_this=dieser Server
 edit_clone=Klonen
+
 save_err=Fehler beim Speichern des Befehls
 save_ecannot=Sie haben keine Berechtigung, Befehle zu bearbeiten
 save_ecmd=Kein Befehl angegeben
@@ -77,6 +79,7 @@ save_eusermin=Befehle, die auf anderen Servern ausgeführt werden, können nicht
 save_eformat=Ungültiger MIME-Typ Output
 save_eopts=Fehlende Optionsdatei für den Parameter $1
 save_eopts2=Die Optionsdatei oder der Standardwert für den Parameter $1 darf nicht enthalten:
+
 run_err=Fehler beim Ausführen des Befehls
 run_ecannot=Sie haben keine Berechtigung, diesen Befehl auszuführen
 run_euser=Fehlender oder ungültiger Benutzer
@@ -93,6 +96,7 @@ run_eupload=Keine Datei zum Hochladen ausgewählt
 run_emust=Fehlender Wert für Parameter '$1'
 run_timeout=Die Ausführung wurde nach einem Zeitablauf von $1 Sekunden terminiert.
 run_failed=Befehl mit Fehlercode $1 fehlgeschlagen
+
 log_modify=Befehl $1 geändert
 log_create=Befehl $1 angelegt
 log_delete=Befehl $1 gelöscht
@@ -101,11 +105,13 @@ log_modify_edit=Editor $1 geändert
 log_create_edit=Editor $1 angelegt
 log_delete_edit=Editor $1 gelöscht
 log_save_edit=Datei $1 gespeichert
+
 acl_cmds=Befehle, die dieser Benutzer ausführen kann
 acl_call=Alle Befehle
 acl_csel=Ausgewählte..
 acl_cexcept=Alle außer ausgewählte..
 acl_edit=Darf Befehle erstellen und bearbeiten?
+
 file_ecannot=Sie sind nicht berechtigt, Dateien zu bearbeiten
 fcreate_title=Neuen Editor erstellen
 fedit_title=Editor bearbeiten
@@ -129,6 +135,7 @@ file_egroup=Fehlender oder ungültiger Gruppenname
 file_eperms=Fehlende oder ungültige Zugriffsrechte
 file_envs=Ersetze Umgebungsvariabeln in Dateiname?
 file_id=Editor ID
+
 view_err=Fehler beim Bearbeiten der Datei
 view_ecannot=Sie sind nicht berechtigt, diese Datei zu bearbeiten
 view_title=Datei bearbeiten
@@ -137,10 +144,12 @@ view_header=Editiere Datei $1
 view_ebeforeedit=Befehl vor dem Editieren fehlgeschlagen : $1
 view_ebefore=Befehl vor dem Speichern fehlgeschlagen : $1
 view_eafter=Befehl nach dem Speichern fehlgeschlagen : $1
+
 form_ecannot=Sie sind nicht berechtigt, diesen Befehl auszuführen
 form_title=Befehl ausführen
 form_exec=Ausführen
 form_edit=Editiere
+
 sql_title1=Erstelle SQL Befehl
 sql_title2=Editiere SQL Befehl
 sql_header=SQL Befehl Details
@@ -156,6 +165,7 @@ sql_err=Fehlgeschlagen SQL Befehl zu speichern
 sql_esql=Kein SQL eingegeben
 sql_ehost=Fehlender oder ungültiger Datenbankserver Host
 sql_edb=Fehlender oder ungültiger Datenbankname
+
 srun_title=Führe SQL Befehl aus
 srun_err=Fehlgeschlagen SQL Befehl auszuführen
 srun_edriver=Konnte den DBI Treiber nicht laden

@@ -25,6 +25,7 @@ index_resetdesc=기존의 모든 방화벽 규칙을 지우고 기본 초기 구
 index_cluster=클러스터 서버
 index_clusterdesc=방화벽 구성이 자동으로 복사 될 추가 Webmin 서버를 설정하려면이 단추를 클릭하십시오.
 index_return=방화벽 규칙
+
 index_num=숫자
 index_action=동작
 index_desc=조건
@@ -37,6 +38,7 @@ index_delete=선택된 것을 지워 라
 index_existing=Webmin이 현재 사용중인 $1 IPFW 방화벽 규칙을 감지했으며 $2 파일에 기록되지 않았습니다. 이 규칙은 스크립트를 사용하여 설정 한 것일 수 있습니다.이 모듈은 읽고 편집하는 방법을 모릅니다. <p>이 모듈을 사용하여 IPFW 방화벽을 관리하려면 아래 버튼을 클릭하여 기존 규칙을 저장 파일로 변환하십시오. 기존 방화벽 스크립트를 비활성화하십시오.
 index_saveex=방화벽 규칙 저장
 index_headerex=기존 방화벽 구성
+
 action_allow=<font color=#00aa00>허용</font>
 action_deny=<font color=#ff0000>삭제</font>
 action_reject=<font color=#ff4400>거부</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>드롭 패킷</font>
 laction_reject=<font color=#ff4400>ICMP 거부 반환</font>
 laction_reset=<font color=#ff4400>TCP 연결 재설정</font>
 laction_skipto=규칙으로 건너 뛰기
+
 edit_title1=규칙 만들기
 edit_title2=규칙 $1 편집
 edit_header1=규칙 동작
@@ -114,6 +117,7 @@ edit_src-addr=소스 주소에서 ..
 edit_src-port=소스 포트에서 ..
 edit_dst-addr=목적지 주소로 ..
 edit_dst-port=대상 포트로 ..
+
 save_err=규칙을 저장하지 못했습니다
 save_enum=규칙 번호가 없거나 유효하지 않습니다
 save_eskipto=건너 뛸 규칙 번호가 없거나 잘못되었습니다.
@@ -144,7 +148,9 @@ save_etcpflags=프로토콜이 TCP 인 경우에만 TCP 플래그를 지정할 �
 save_elimit=최대 한계가 없거나 유효하지 않습니다
 save_edstport=대상 포트가 없거나 잘못되었습니다
 save_esrcport=소스 포트가 없거나 유효하지 않습니다
+
 apply_err=구성을 적용하지 못했습니다
+
 desc_if=$1 인 경우
 desc_and=과
 desc_always=항상
@@ -191,6 +197,7 @@ desc_where=여기서 $1
 desc_all=모든 패킷
 desc_in=패킷이 들어오는 중
 desc_out=패킷이 발신됩니다
+
 log_create_rule=$1 규칙 생성
 log_delete_rule=$1 규칙을 삭제했습니다.
 log_modify_rule=$1 규칙 수정
@@ -206,6 +213,7 @@ log_convert=변환 된 활성 방화벽 규칙
 log_setup=초기 방화벽 설정 수행
 log_unapply=복귀 된 방화벽 구성
 log_delsel=$1 개의 규칙을 삭제했습니다.
+
 cluster_title=클러스터 방화벽 서버
 cluster_none=방화벽 클러스터에 서버가 아직 추가되지 않았습니다.
 cluster_host=호스트 이름
@@ -216,6 +224,7 @@ cluster_gadd=그룹에 서버 추가
 cluster_need=여기에서 관리하려면 Webmin Servers Index 모듈에 로그인 및 비밀번호가있는 서버를 추가해야합니다.
 cluster_return=클러스터 서버
 cluster_delete=선택된 것을 지워 라
+
 add_title=서버 추가
 add_msg=$1 추가 중 ..
 add_gmsg=$1 그룹에 서버 추가

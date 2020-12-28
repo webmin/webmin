@@ -88,6 +88,7 @@ index_ipset_size=Größe
 index_ipvxmode=IP-Protokollversion ändern:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=Protokoll ist $1
 desc_p!=Protokoll ist nicht $1
 desc_s=Quelle ist $1
@@ -114,6 +115,8 @@ desc_tcp-option=Paket nutzt TCP Option $1
 desc_tcp-option!=Paket nutzt nicht TCP Option $1
 desc_icmp-type=ICMP Typ ist $1
 desc_icmp-type!=ICMP Typ ist nicht $1
+desc_icmpv6-type=ICMP-Typ ist $1
+desc_icmpv6-type!=ICMP-Typ ist nicht $1
 desc_mac-source=Ethernetadresse ist $1
 desc_mac-source!=Ethernetadresse ist nicht $1
 desc_limit=Rate ist weniger als $1
@@ -146,10 +149,15 @@ desc_always=Immer
 desc_args--match-set=$2 in IP-Set $1 enthalten ist
 desc_src=Quelle
 desc_dest=Ziel
+
 redhat_einstalled=Kein <tt>iptables(6)</tt> Systemstart Aktion wurde festgestellt, was darauf hinweist, dass das IPtables-Paket nicht auf Ihrem System installiert ist.
 redhat_eoutput=Ein Fehler ist beim Abrufen des IPtables Status von dem Befehl $1 aufgetreten. Dies ist wahrscheinlich darauf zurückzuführen, dass Ihr System so konfiguriert wurde, IPchains anstelle von IPtables zu benutzen.
+
 gentoo_escript=Das Gentoo IPtables Startskript $1 wurde nicht auf Ihrem System gefunden.
+
 eiptables=Unbekannt IPtables Speicherdatei Zeile: $1
+eip6tables=Unbekannt ip6tables Speicherdatei Zeile: $1
+
 edit_title1=Regel hinzufügen
 edit_title2=Editiere Regel
 edit_title3=Klone Regel
@@ -218,6 +226,7 @@ edit_physdevout=Ausgehendes physikalische Schnittstelle
 edit_physdevisin=Paket eingehend auf Bridge-Schnittstelle
 edit_physdevisout=Paket ausgehend auf Bridge-Schnittstelle
 edit_physdevisbridged=Paket wird gebridged
+
 save_err=Fehlgeschlagen Regel zu speichern
 save_echain=Fehlende oder Ungültige Kette zum Ausfüren
 save_esource=Fehlende oder ungültige Quelladresse oder Netzwerk
@@ -262,23 +271,28 @@ save_estates=Kein Verbindungsstatus gewählt
 save_ecanjump=Es ist Ihnen nicht erlaubt diese Aktion zu benutzen
 save_ephysdevin=Fehlende oder ungültige eingehende physikalische Schnittstelle
 save_ephysdevout=Fehlende oder ungültige ausgehende physikalische Schnittstelle
+
 delete_title=Lösche Regel
 delete_rusure=Sind Sie sicher, dass Sie die Kette $1 löschen möchten? $2 Regeln werden in ihr gelöscht.
 delete_ok=Lösche jetzt
 delete_ecannot=Es ist Ihnen nicht erlaubt die Regeln zu löschen
+
 clear_title=Regeln leeren
 clear_rusure=Sind Sie sicher, dass Sie alle $2 Regeln von Kette $1 löschen möchten?
 clear_ecannot=Es ist Ihnen nicht erlaubt die Regeln zu leeren
+
 new_err=Fehlgeschlagen eine Regel zu erstellen
 new_ename=Fehlender oder ungültiger Ketten-Name
 new_etaken=Eine Regeln mit diesem Namen existiert bereits
 new_ecannot=Es ist Ihnen nicht erlaubt Ketten zu erstellen
+
 apply_err=Fehlgeschlagen die Konfiguration anzuwenden
 apply_ecannot=Sie sind nicht berechtigt die Konfiguration anzuwenden
 apply_remote=Fehler von $1 : $2
 unapply_err=Fehlgeschlagen die Konfiguration zurückzusetzen
 unapply_ecannot=Sie sind nicht berechtigt die Konfiguration zurückzusetzen
 bootup_ecannot=Es ist Ihnen nicht erlaubt die Firewall beim Booten zu aktivieren oder zu deaktivieren
+
 log_rename_chain=Kette $1 in Tabelle $2 umbenannt
 log_apply=Angewandte Konfiguration
 log_unapply=Konfiguration zurückgesetzt
@@ -289,8 +303,10 @@ log_bootdown=Firewall beim Booten deaktiviert
 log_add_host=Cluster Server $1 hinzugefügt
 log_add_group=Cluster-Server von Gruppe $1 hinzugefügt
 log_openports=Firewallports $1 geöffnet
+
 setup_eiface=Keine externe Netzwerkschnittstelle eingegeben
 setup_ecannot=Es ist Ihnen nicht erlaubt die Firewall einzurichten
+
 acl_tables=Erlaubte IPtables
 acl_apply=Kann Konfiguration anwenden?
 acl_unapply=Kann Konfiguration rückgängig machen?
@@ -302,9 +318,11 @@ acl_jall=Alle
 acl_newchain=Kann neue Regeln erstellen?
 acl_delchain=Kann Regeln löschen oder leeren?
 acl_policy=Kann Standardrechte verändern?
+
 etable=Es ist Ihnen nicht erlaubt diese IPtable zu editieren
 ejump=Es ist Ihnen nicht erlaubt diese Regel zu editieren
 ecluster=Es ist Ihnen nicht erlaubt den Firewall-Cluster zu verwalten
+
 cluster_title=Cluster Firewall Server
 cluster_none=Keine Server wurden dem Firewallcluster bisher hinzugefügt.
 cluster_host=Hostname
@@ -315,6 +333,7 @@ cluster_gadd=Server in Gruppe hinzufügen
 cluster_need=Sie müssen Server mit einem Benutzernamen und Kennwort in dem Webmin-Server Index Modul hinzufügen, bevor sie hier verwaltet werden können.
 cluster_return=Cluster Server
 cluster_delete=Ausgewähltes löschen
+
 add_title=Füge Server hinzu
 add_msg=Füge hinzu $1 ..
 add_gmsg=Füge Server in Gruppe $1 hinzu ..
@@ -324,13 +343,16 @@ add_echeck=Server $1 hat kein Linux Firewall Modul
 add_emissing=Server $1 fehlt der Firewall Befehl $2
 add_ok=Hinzugefügt $1, mit $2 aktive Firewall Regeln.
 add_enone=Keine Server zum Hinzufügen ausgewählt!
+
 policy_ecannot=Keine Berechtigung zum Aendern der Policy dieser Kette
+
 move_title=Verschiebe Regeln
 move_count=Regeln ausgewählt
 move_chain=Aktuelle Änderung
 move_dest=Ziel-Kette
 move_ok=Verschiebe jetzt
 move_header=Regel Verschiebe-Optionen
+
 rename_title=Regeln umbenennen
 rename_count=Regel in Kette
 rename_chain=Aktueller Name
@@ -340,6 +362,3 @@ rename_header=Optionen zum Umbenennen er Kette
 rename_adjust=Andere Regeln die zu dieser Kette Springen anpassen?
 rename_none=Nichts
 rename_ecannot=Es ist Ihnen nicht erlaubt Ketten umzubenennen
-desc_icmpv6-type=ICMP-Typ ist $1
-desc_icmpv6-type!=ICMP-Typ ist nicht $1
-eip6tables=Unbekannt ip6tables Speicherdatei Zeile: $1

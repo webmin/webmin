@@ -1,4 +1,5 @@
 quota_unlimited=Neomejeno
+
 acl_fss=Datoteke, ki jih ta uporabnik lahko ureja
 acl_fall=Vsi datotečni sistemi
 acl_fsel=Izbrano ..
@@ -24,9 +25,11 @@ acl_maxblocks=Največja dovoljena kvota blokov
 acl_maxfiles=Največja dovoljena kvota za datoteke
 acl_unlimited=Neomejeno
 acl_email=Ali lahko nastavite obvestila po e-pošti?
+
 activate_eallow=V tem datotečnem sistemu ne smete omogočiti ali onemogočiti kvot
 activate_eon=Kvot ni bilo mogoče vklopiti
 activate_eoff=Kvot ni bilo mogoče izklopiti
+
 check_title=Preverite kvote
 check_return=$1 seznam
 check_ecannot=V tem datotečnem sistemu ne morete preveriti kvot
@@ -34,11 +37,13 @@ check_running=Ukaz <tt>quotacheck</tt> se zdaj izvaja za preverjanje uporabe blo
 check_done=... Končano.
 check_rgroup=skupina
 check_ruser=uporabnik
+
 cgroup_efail=Kopije ni bilo mogoče kopirati
 cgroup_ecannot=Ne morete kopirati kvot
 cgroup_egallow=Ne smete kopirati kvot te skupine
 cgroup_enogroup=Nobene skupine, ki bi jo lahko kopirali
 cgroup_eallowto=Ne smete kopirati kvot na '$1'
+
 cgform_title=Kopirajte kvote
 cgform_return=skupinska kvota
 cgform_ecannot=Ne morete kopirati kvot
@@ -48,11 +53,13 @@ cgform_all=Vse skupine v vašem sistemu
 cgform_select=Izbrane skupine
 cgform_contain=Skupine, ki vsebujejo uporabnike
 cgform_doit=Kopirati
+
 cuser_efail=Kopije ni bilo mogoče kopirati
 cuser_ecannot=Ne morete kopirati kvot
 cuser_euallow=Ne smete kopirati kvot tega uporabnika
 cuser_enouser=Ni uporabnikov, ki bi jih kopirali
 cuser_eallowto=Ne smete kopirati kvot na '$1'
+
 cuform_title=Kopirajte kvote
 cuform_return=uporabniška kvota
 cuform_ecannot=Ne morete kopirati kvot
@@ -62,6 +69,7 @@ cuform_all=Vsi uporabniki v vašem sistemu
 cuform_select=Izbrani uporabniki
 cuform_members=Člani izbranih skupin
 cuform_doit=Kopirati
+
 egroup_title=Uredite kvoto skupine
 egroup_freturn=seznam datotek
 egroup_greturn=seznam skupin
@@ -80,6 +88,7 @@ egroup_hflimit=Omejitev trde datoteke
 egroup_update=Nadgradnja
 egroup_listall=Seznam vseh kvot
 egroup_listalldesc=Kliknite ta gumb, da prikažete seznam vseh datotečnih sistemov, v katerih ima ta skupina disk, s povezavami za njihovo urejanje.
+
 euser_title=Uredite uporabniško kvoto
 euser_freturn=seznam datotek
 euser_ureturn=seznam uporabnikov
@@ -102,6 +111,7 @@ euser_hflimit=Omejitev trde datoteke
 euser_update=Nadgradnja
 euser_listall=Seznam vseh kvot
 euser_listalldesc=Kliknite ta gumb, da prikažete seznam vseh datotečnih sistemov, na katerih ima ta uporabnik diskovne kvote, s povezavami za njihovo urejanje.
+
 gfilesys_title=Skupinske kvote
 gfilesys_return=seznam datotečnih sistemov
 gfilesys_ecannot=Ne morete urejati kvot za $1
@@ -120,6 +130,7 @@ gfilesys_copy=Kopirajte kvote
 gfilesys_editdesc=Oglejte si in uredite kvote za to skupino v nekaterih drugih datotečnih sistemih, za katere trenutno nima kvot.
 gfilesys_copydesc=Kopirajte omejitve kvot za to skupino iz vseh datotečnih sistemov v nekatere ali vse druge skupine.
 gfilesys_enone=Ime skupine ni vneseno
+
 ggracef_title=Grace Times
 ggracef_return=seznam skupin
 ggracef_ecannot=V tem datotečnem sistemu ne morete urejati milosti
@@ -128,9 +139,11 @@ ggracef_graces=Skupina Grace Times za <tt>$1</tt>
 ggracef_block=Za blok kvote
 ggracef_file=Za kvoto datotek
 ggracef_update=Nadgradnja
+
 ggraces_esave=Časa milosti ni bilo mogoče shraniti
 ggraces_eedit=V tem datotečnem sistemu ne morete urejati milosti
 ggraces_enumber='$1' ni številka
+
 index_quser=Uporabniške kvote
 index_qgroup=Skupinske kvote
 index_qboth=Uporabniške in skupinske kvote
@@ -154,6 +167,7 @@ index_egroup=Urejanje kvot skupine:
 index_egroupdesc=Vnesite ali izberite skupino in kliknite ta gumb, da si ogledate kvote v vseh datotečnih sistemih.
 index_nosupport=Noben lokalni datotečni sistem ne more podpirati kvot.
 index_mountmod=Kvote za datotečni sistem lahko omogočite v modulu <a href='$1'>Disk in omrežni datotečni sistemi</a>.
+
 lgroups_failed=Skupine ni bilo mogoče navesti
 lgroups_tablist=Seznam skupin
 lgroups_eallow=V tem datotečnem sistemu ne morete urejati kvot
@@ -182,13 +196,17 @@ lgroups_tofixed=Naslov 1
 lgroups_emailheader=E-poštnim skupinam, ki se približujejo kvoti
 lgroups_email=Pošljite e-pošto skupinam?
 lgroups_tovirt=Lastnik virtualne domene
+
 sgroup_egroup=Za to skupino ne morete urejati kvot
 sgroup_efs=V tem datotečnem sistemu ne morete urejati kvot
+
 ssync_ecannot=Za ta datotečni sistem ne morete nastaviti privzete kvote
+
 suser_euser=Za tega uporabnika ne morete urejati kvot
 suser_efs=V tem datotečnem sistemu ne morete urejati kvot
 suser_emaxblocks=Omejitve blokov ne smete odobriti nad $1 
 suser_emaxfiles=Omejitev datotek nad $1 vam ni dovoljena
+
 ufilesys_title=Uporabniške kvote
 ufilesys_return=seznam datotečnih sistemov
 ufilesys_ecannot=Ne morete urejati kvot za $1
@@ -208,6 +226,7 @@ ufilesys_copydesc=Kopirajte omejitve kvot za tega uporabnika v vse datotečne si
 ufilesys_copy=Kopirajte kvote
 ufilesys_grace=Milost
 ufilesys_enone=Uporabniško ime ni vneseno
+
 ugracef_title=Grace Times
 ugracef_return=seznam uporabnikov
 ugracef_ecannot=V tem datotečnem sistemu ne morete urejati milosti
@@ -216,9 +235,11 @@ ugracef_graces=Uporabnik Grace Times za <tt>$1</tt>
 ugracef_block=Za blok kvote
 ugracef_file=Za kvoto datotek
 ugracef_update=Nadgradnja
+
 ugraces_esave=Časa milosti ni bilo mogoče shraniti
 ugraces_eedit=V tem datotečnem sistemu ne morete urejati milosti
 ugraces_enumber='$1' ni številka
+
 lusers_failed=Uporabnikov ni bilo mogoče navesti
 lusers_tablist=Seznam uporabnikov
 lusers_tabdefault=Privzete kvote
@@ -264,12 +285,14 @@ lusers_from=Od: naslov za e-pošto
 lusers_mass=Posodobi izbrane uporabnike
 lusers_cc=Pošljite tudi e-pošto na
 lusers_nocc=Nihče
+
 grace_seconds=Sekunde
 grace_minutes=Minute
 grace_hours=Ure
 grace_days=Dnevi
 grace_weeks=Tedne
 grace_months=Mesece
+
 log_activate_u=Omogočene uporabniške kvote za $1 
 log_activate_g=Omogočene skupinske kvote za $1 
 log_activate_ug=Omogočene uporabniške in skupinske kvote za $1 
@@ -287,6 +310,7 @@ log_check=Preverjene kvote za $1
 log_copy_u=Kopirane uporabniške kvote $1 
 log_copy_g=Kopirane kvote skupine $1 
 log_support=Omogočena podpora za kvote za $1 
+
 email_err=Možnosti shranjevanja e-pošte ni bilo mogoče shraniti
 email_ecannot=Ni vam dovoljeno spreminjati možnosti e-pošte
 email_einterval=Manjkajoč ali neveljaven interval
@@ -299,6 +323,7 @@ gemail_msg=Uporaba diskov za skupino $1 v datotečnem sistemu $2 je dosegla $3% 
 email_subject=Diskovna kvota je presežena
 gemail_subject=Diskovna kvota je presežena
 email_eto=Manjka ciljni e-poštni naslov
+
 umass_title=Posodobite uporabniške kvote
 umass_header=Spremembe kvot veljajo za izbrane uporabnike
 umass_sblocks=Omejitev mehkega bloka
@@ -315,6 +340,7 @@ umass_esfiles=Manjkajoča ali neveljavna omejitev mehke datoteke
 umass_ehfiles=Manjkajoča ali neveljavna omejitev trde datoteke
 umass_count=Spodnje spremembe bodo veljale za $1 izbrane uporabnike ..
 umass_err=Uporabniške kvote ni bilo mogoče posodobiti
+
 gmass_title=Posodobite kvote skupine
 gmass_header=Spremembe kvot veljajo za izbrane skupine
 gmass_count=Spodnje spremembe bodo veljale za $1 izbrane skupine.

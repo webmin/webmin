@@ -8,6 +8,7 @@ index_none=Nie zdefiniowano żadnych opcji startowych. Upewnij się, że dodałe
 index_efile=Nie znaleziono w systemie pliku menu GRUBa $1. Prawdopodobnie nie zainstalowano GRUBa lub <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
 index_epath=Nie znaleziono w systemie progrzmu GRUBa $1. Prawdopodobnie nie zainstalowano GRUBa lub <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
 index_return=listy opcji
+
 title_add=Dodaj opcję startową
 title_edit=Zmień opcję startową
 title_header=Dane opcji menu startowego
@@ -29,6 +30,7 @@ title_eroot=Nie podano partycji
 title_ekernel=Nie podana lub niepoprawna ścieżka do kernela
 title_echain=Nie podany lub niepoprawny plik "chainloader"-a
 title_edev=Urządzenie partycji $1 nie jest obsługiwane
+
 global_title=Opcje ogólne
 global_header=Opcje ogólne menu startowego
 global_default=Domyślna opcja startowa
@@ -43,6 +45,7 @@ global_err=Nie udało się zachować opcji ogólnych
 global_etimeout=Nie podany lub nieporawny czas oczekiwania
 global_edev=Nie obsługiwany(-a) dysk/partycja instalacyjny(-a) $1
 global_eother=Nie podany(-a) lub niepoprawny(-a) dysk/partycja
+
 install_title=Zainstaluj GRUBa
 install_err=Nie udało się zainstalować GRUBa
 install_efind=Nie znaleziono pliku menu

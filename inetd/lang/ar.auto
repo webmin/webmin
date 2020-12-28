@@ -14,6 +14,7 @@ index_search=مطابقة خدمات العرض:
 index_sok=بحث
 index_toomany=هناك العديد من خدمات الإنترنت لعرضها على هذه الصفحة.
 index_none=لم تتطابق أي خدمات إنترنت مع بحثك.
+
 error_restart=فشل إعادة تشغيل Inetd
 error_saverpc=فشل في حفظ برنامج RPC
 error_invalidprgname=إن '$1' ليس اسم برنامج صالحًا
@@ -43,6 +44,7 @@ error_nameexist=خدمة بالاسم$1 والبروتوكول$2 موجود با
 error_inetservice=توجد بالفعل خدمة إنترنت بالاسم$1 والبروتوكول$2
 error_smfservice=فشل تحديث خدمة smf مع cmd '$1' ، رمز الخطأ$2
 error_smf_cmdfield=بالنسبة إلى smf ، يجب أن يتطابق اسم ملف البرنامج '$1' مع الوسيطة الأولى لمجال الأوامر ، أي أن يكون '$2'
+
 editrpc_title1=إنشاء برنامج RPC
 editrpc_title2=تحرير برنامج RPC
 editrpc_detail=تفاصيل برنامج RPC
@@ -69,6 +71,7 @@ editrpc_execasuser=تنفيذ كمستخدم
 editrpc_max=ماكس لكل دقيقة
 editrpc_default=إفتراضي
 editrpc_execasgrp=تنفيذ كمجموعة
+
 editserv_title1=إنشاء خدمة إنترنت
 editserv_title2=تحرير خدمة الإنترنت
 editserv_detail=تفاصيل خدمة الإنترنت
@@ -82,6 +85,7 @@ editserv_wrapper=غلاف TCP
 editserv_inetd=داخلي لـ <tt>inetd</tt>
 editserv_qm=قد لا توجد القيادة؟
 editserv_ename=لا توجد خدمة بهذا الاسم والبروتوكول موجود
+
 log_apply=التغييرات التطبيقية
 log_create_serv=الخدمة التي تم إنشاؤها$1
 log_modify_serv=الخدمة المعدلة$1
@@ -95,6 +99,7 @@ log_delete_serv_l=خدمة محذوفة$1 على المنفذ$2
 log_create_prog_l=تم إنشاء الخدمة$1 على المنفذ$2 للبرنامج$3
 log_modify_prog_l=خدمة معدلة$1 على المنفذ$2 للبرنامج$3
 log_delete_prog_l=خدمة محذوفة$1 على المنفذ$2 للبرنامج$3
+
 log_create_rpc=تم إنشاء RPC$1
 log_modify_rpc=تعديل RPC$1
 log_delete_rpc=تم حذف RPC$1

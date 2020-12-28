@@ -5,15 +5,21 @@ index_checkconfig=Ellenőrizze, hogy a chroot könyvtár helyesen van-e beállí
 index_eexpired=Figyelem: A következő zónák már nem rendelkeznek DNSSEC aláírásokkal : $1
 index_eexpired_conf=Az automatikus aláírást újra engedélyezni kell a $1 oldalon.
 index_eexpired_mod=Használja a $1 modult vagy a DNSSEC letiltásához ezekben a tartományokban, vagy ellenőrizze, miért nem sikerül az aláírás.
+
 master_inview=$1 a $2 nézetben
 master_egone=A $1 zóna egyetlen nézetben sem létezik
 master_egone2=A $1 zóna nem létezik!
 master_egone3=A $1 zóna a $2 nézetben nem létezik!
+
 delete_vwarn=Ez a zóna a $1 Virtualmin domainhez van társítva, ezért itt nem szabad törölni!
+
 delete_vwarn2=Ez a zóna a $1 és a (z) $2 Virtualmin domainhez van társítva, ezért itt nem szabad törölni!
+
 mcreate_dnssec_tools_enable=Engedélyezze a DNSSEC-et a DNSSEC-Tools használatával
+
 recs_nosearch=Nincs keresési feltétel.
 recs_needsearch=Írja be a keresést a megfelelő rekordok kereséséhez.
+
 edit_eusage=A '$1' nem érvényes TLSA-használati szám
 edit_eselector=A '$1' nem érvényes TLSA választószám
 edit_ematch=A '$1' nem érvényes TLSA-egyezési szám
@@ -28,22 +34,27 @@ edit_edmarcpct=Az üzenetek százalékának 0 és 100 közötti egész számnak 
 edit_edmarcrua=Hiányzik az összesített visszajelzési cím
 edit_edmarcruf=Hiányzó igazságügyi információs cím
 edit_ecaavalue2=Hiányzó vagy érvénytelen megjelenésű domain név
+
 text_rawformat=Ez a zóna nyers bináris formátumban van, így nem jeleníthető meg szövegként.
+
 type_NSEC3PARAM=DNSSEC paraméterek
 type_TLSA=SSL tanúsítvány
 type_SSHFP=SSH nyilvános kulcs
 type_DMARC=DMARC
 type_CAA=Tanúsító hatóság
+
 edit_DMARC=DMARC
 edit_NSEC3PARAM=DNSSEC paraméterek
 edit_TLSA=SSL tanúsítvány
 edit_SSHFP=SSH nyilvános kulcs
 edit_CAA=Tanúsító hatóság
+
 recs_DMARC=DMARC
 recs_NSEC3PARAM=DNSSEC paraméterek
 recs_TLSA=SSL tanúsítvány
 recs_SSHFP=SSH nyilvános kulcs
 recs_CAA=Tanúsító hatóság
+
 value_TLSA1=Tanúsítvány használata
 value_TLSA2=Tanúsítványválasztó
 value_TLSA3=Tanúsítvány-egyezés
@@ -76,6 +87,7 @@ value_CAA3=CA domain név
 value_caa_issue=Egy domain tanúsítvány
 value_caa_issuewild=Helyettesítő karakter
 value_caa_iodef=Az irányelv megsértésének URL-je
+
 tlsa_usage0=Tanúsító hatóság
 tlsa_usage1=Vége entitás
 tlsa_usage2=Bizalmi horgony
@@ -85,15 +97,18 @@ tlsa_selector1=Nyilvános kulcs információ
 tlsa_match0=Nem szétszórt tartalom
 tlsa_match1=SHA-256 hashed
 tlsa_match2=Az SHA-512 hashed
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 acl_inviews=A nézetekben ez a felhasználó szerkesztheti a domaineket a
 acl_toplevel=Bármelyik nézeten kívül
 acl_dnssec=Beállíthatjuk a DNSSEC-t a zónákhoz?
+
 net_taddr=Forrás IPv4 cím az átvitelhez
 net_tport=Forrás IPv4 port az átvitelhez
 net_taddr6=Forrás IPv6 cím az átvitelhez
@@ -102,15 +117,21 @@ net_taddrdef=Legközelebbi IP
 net_etport=Az átviteli forrás portja nem adható meg cím nélkül
 net_eaddr=A '$1' nem érvényes IPv4 cím
 net_eaddr6=A '$1' nem érvényes IPv6 cím
+
 zonedef_dnssec_dt=Automatizálja az összes DNSSEC műveletet (figyelmen kívül hagyja az alábbi beállításokat)?
 zonedef_dne=Hitelesített létezés tagadás a
+
 convert_efilesize=A $1 fájl nem létezik, vagy üres
 convert_ebinary=A bináris szolga zónából szöveges formátumra való átalakításhoz szükséges parancs nincs telepítve
 convert_ecompile=A bináris és szöveges formátum konvertálása sikertelen : $1
+
 massdelete_vwarn=Egyes zónák a $1 Virtualmin domainhez vannak társítva, ezért itt nem szabad törölni őket!
 massdelete_vwarn2=Egyes zónák a (z) $1 és a (z) $2 Virtualmin domainhez vannak társítva, ezért itt nem szabad törölni őket!
+
 rmass_esign=.. kész, de az aláírás sikertelen : $1
+
 dnssec_secs=másodperc
+
 dnssectools_title=DNSSEC-Tools automatizálás
 dt_conf_title=DNSSEC-Tools automatizálás
 dt_enable_title=DNSSEC-Tools automatizálás
@@ -175,14 +196,17 @@ dt_status_inKSKroll=A KSK Roll-ban
 dt_status_inZSKroll=A ZSK Roll-ban
 dt_status_signed=aláírt
 dt_status_unsigned=Aláírás nélküli
+
 zonekey_publicfile=Nyilvános kulcsfájl : $1
 zonekey_privatefile=Privát kulcsfájl : $1
 zonekey_ds=A szülői zóna DS rekordja :
 zonekey_eprivate=A zónához társított privát kulcs nem olvasható : $1
+
 trusted_auto=Igen (automatikus mód)
 trusted_dlvs1=Meghatározza automatikusan
 trusted_dlvs0=Alább listázva. ..
 trusted_dlvs2=Egyik sem
 trusted_warning=Figyelem! A BIND DNSSEC klienskonfigurációja elavult kulcsokat tartalmaz, amelyek 2017. októberében nem működnek. Vagy használja a <a href='$1'>BIND DNSSEC ellenőrző oldalt</a> a konfiguráció beállításához, vagy kattintson az alábbi gombra.
 trusted_fix=Javítsa ki a DNSSEC-konfigurációt
+
 xfer_none=A tesztátvitel sikeresnek tűnt, de valójában nem hozott be rekordot!

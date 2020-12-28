@@ -7,6 +7,7 @@ index_dsize=Tamaño total
 index_dmodel=Marca y modelo
 index_dparts=Rebanadas
 index_return=lista de discos
+
 disk_title=Editar disco
 disk_egone=¡El disco ya no existe!
 disk_no=Rebanada
@@ -31,9 +32,11 @@ disk_return=detalles del disco y lista de cortes
 disk_add=Crea una nueva rebanada.
 disk_smart=Mostrar estado INTELIGENTE
 disk_smartdesc=Muestre el estado actual de esta unidad según lo detecta SMART y verifique si hay errores de disco.
+
 select_device=$1 dispositivo $2 
 select_slice=$1 dispositivo $2 sector $3 
 select_part=$1 dispositivo $2 segmento $3 partición $4 
+
 slice_title=Editar rebanada
 slice_egone=¡La porción seleccionada no existe!
 slice_ssize=Tamaño de la rebanada
@@ -58,6 +61,7 @@ slice_return=detalles de corte y lista de particiones
 slice_err=Error al modificar el segmento
 slice_header=Detalles de corte
 slice_suse=Utilizado directamente por
+
 dslice_title=Eliminar rebanada
 dslice_rusure=¿Está seguro de que desea eliminar el segmento $1 ? Cualquier partición y sistema de archivos que contenga también se eliminará.
 dslice_warn=Advertencia: este segmento lo utiliza actualmente : $1 
@@ -65,6 +69,7 @@ dslice_confirm=Elimina ahora
 dslice_deleting=Eliminando la porción $1 ..
 dslice_failed=.. error al eliminar : $1 
 dslice_done=.. hecho
+
 nslice_title=Crear rebanada
 nslice_header=Nuevos detalles de corte
 nslice_number=Número de rebanada
@@ -86,6 +91,7 @@ nslice_done=.. rebanada agregada
 nslice_parting=Crear particiones predeterminadas en el segmento $1 en $2 ..
 nslice_pfailed=.. error al crear la partición : $1 
 nslice_pdone=.. partición agregada
+
 npart_title=Crear partición
 npart_header=Nuevos detalles de partición
 npart_letter=Carta de partición
@@ -98,6 +104,7 @@ npart_emax=El bloque final no puede ser mayor que el tamaño de corte de $1 bloq
 npart_creating=Creando la partición $1 en $2 ..
 npart_failed=.. error al crear la partición : $1 
 npart_done=.. partición agregada
+
 part_title=Editar partición
 part_egone=¡La partición ya no existe!
 part_header=Detalles de partición
@@ -124,6 +131,7 @@ part_newmount2=Partición de montaje
 part_mountmsg=Monte este dispositivo en un nuevo directorio en su sistema, de modo que pueda usarse para almacenar archivos. Ya debe haberse creado un sistema de archivos en el dispositivo.
 part_mountmsg2=Monte este dispositivo como memoria virtual en su sistema, para aumentar la cantidad de memoria disponible.
 part_cannotedit=Esta partición no puede modificarse ya que está actualmente en uso.
+
 dpart_title=Eliminar partición
 dpart_rusure=¿Está seguro de que desea eliminar la partición $1 ? Cualquier sistema de archivos dentro de él también se eliminará.
 dpart_warn=Advertencia: esta partición es utilizada actualmente por $1 
@@ -131,6 +139,7 @@ dpart_confirm=Elimina ahora
 dpart_deleting=Eliminando la partición $1 ..
 dpart_failed=.. error al eliminar : $1 
 dpart_done=.. hecho
+
 newfs_title=Crear sistema de archivos
 newfs_header=Nuevos detalles del sistema de archivos
 newfs_free=Espacio para reservar para root
@@ -145,11 +154,13 @@ newfs_elabel=Etiqueta faltante o inválida
 newfs_creating=Creando un sistema de archivos en $1 ..
 newfs_failed=.. creación fallida!
 newfs_done=.. creado con éxito
+
 fsck_title=Comprobar sistema de archivos
 fsck_err=Error al verificar el sistema de archivos
 fsck_checking=Comprobando el sistema de archivos en $1 ..
 fsck_failed=.. verificación falló!
 fsck_done=.. verificación completada sin errores encontrados
+
 log_create_slice=Rebanada creada $1 
 log_delete_slice=Parte eliminada $1 
 log_modify_slice=Rebanada modificada $1 

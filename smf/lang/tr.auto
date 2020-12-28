@@ -180,6 +180,7 @@ whats_this_NSTATE=Hizmetin bir sonraki durumu, hizmet geçişi sırasında kulla
 whats_this_SCOPE=Hizmet örneğinin kapsam adı. Bakınız: smf (5). Bkz: svcs (1).
 whats_this_STIME=Hizmetin geçerli duruma girdiği saat (bugün ise) veya tarih. Bakınız: smf (5). Bkz: svcs (1).
 whats_this_Select=Etkinleştirmek/devre dışı bırakmak/yenilemek vb. İstediğiniz hizmetlerin listesini buradan kontrol edin.
+
 whats_this_service_detail=Üst düzey hizmet bilgilerini burada belirtin/düzenleyin: hizmet adı, sürüm numarası, bildirim ve kararlılık için paket adı. Bakınız: smf (5). Bakınız: svccfg (1M). Bkz. Service_bundle (4).
 whats_this_bundle_name=Manifest'teki hizmet paketinin adı. Bir manifestte birden fazla hizmet paketlenebilir, ancak buradaki ad önemli değildir. Halihazırda var olan hizmetler için, svccfg'nin SMF deposundan bir bildirim gönderirken yaptığı şey bu şekilde dışa aktarılacak şekilde ayarlanacaktır. Bakınız: svccfg (1M). Bkz. Service_bundle (4).
 whats_this_service_name=Hizmetin adı. Sözleşme [general_service_category]/[name] biçimini kullanmaktır. Daha önce sağlanan kategoriler arasında uygulama (üst düzey uygulamalar), kilometre taşı (ad hizmetleri gibi diğer hizmetlerin koleksiyonları), platform (platforma özgü hizmetler), sistem (Solaris sistem hizmetleri), cihaz (cihaza özel hizmetler), ağ (ağ/internet hizmetleri) ve site (siteye özgü açıklamalar). Kendi kategorinizi de belirtebilirsiniz, ancak çoğu hizmet yukarıdakilerden birine rahatça uymalıdır. Bakınız: smf (5).

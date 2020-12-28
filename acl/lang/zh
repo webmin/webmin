@@ -19,6 +19,7 @@ index_members=成员
 index_modgroups=工作组 $1 的模块
 index_sync=配置 Unix 用户同步
 index_unix=配置 Unix 用户的验证
+
 edit_title=编辑 Webmin 用户
 edit_title2=创建 Webmin 用户
 edit_rights=Webmin 用户访问权限
@@ -54,6 +55,7 @@ edit_theme=个人主题
 edit_themeglobal=来自 Webmin 设定
 edit_themedef=默认的 Webmin 主题
 edit_log=查看日志
+
 save_err=保存用户失败
 save_ename=错误的用户名‘$1’
 save_edup=用户名‘$1’已经存在
@@ -74,10 +76,12 @@ save_enet=‘$1’不是一个有效的网址
 save_emask=‘$1’不是一个有效的网络掩码
 save_eip=‘$1’不是一个完整的 IP 地址或网络地址
 save_ehost=没有找到‘$1’的 IP 地址
+
 delete_err=删除用户失败
 delete_eself=您不能删除您自己
 delete_ecannot=您没有删除用户的权限
 delete_euser=您没有删除这个用户的权限
+
 cert_title=申请验证
 cert_issue=发放验证
 cert_header=新验证详细资料
@@ -92,11 +96,13 @@ cert_key=密码长度
 cert_ekey=您的浏览器没有提交新的 SSL 密码──可能它不支持 SSL 客户验证。
 cert_eca=设置验证失败 : $1
 cert_already=警告 - 您正在使用验证 $1。
+
 acl_title=模块访问控制
 acl_title2=$2 中的 $1
 acl_title3=$2 中的 $1 工作组
 acl_options=$1 访问控制选项
 acl_config=是否可以编辑模块配置？
+
 acl_uall=所有用户
 acl_usel=选择 ..
 acl_gr=$1 的成员
@@ -127,6 +133,7 @@ acl_perms_1=和创建者相同的模块访问控制
 acl_perms_0=默认的模块访问控制
 acl_sync=是否可以配置用户同步？
 acl_unix=是否可以配置 unix 验证？
+
 log_modify=修改 Webmin 用户 $1
 log_rename=更改 Webmin 用户名 $1 为 $2
 log_create=创建 Webmin 用户 $1
@@ -138,21 +145,25 @@ log_modify_g=修改 Webmin 工作组 $1
 log_rename_g=将工作组 $1 重新命名为 $2
 log_create_g=创建 Webmin 工作组 $1
 log_delete_g=删除 Webmin 工作组 $1
+
 gedit_ecannot=您没有编辑工作组的权限
 gedit_title=编辑 Webmin 工作组
 gedit_title2=创建 Webmin 工作组
 gedit_group=工作组名称
 gedit_rights=Webmin 工作组访问权限
 gedit_modules=成员的模块
+
 gdelete_err=删除工作组失败
 gdelete_ecannot=您没有删除工作组的权限
 gdelete_euser=您不能删除您自己的工作组
 gdelete_title=删除工作组
 gdelete_desc=您确定想要删除工作组 $1 和它的用户 $2 吗？
 gdelete_ok=删除工作组
+
 gsave_err=无法保存工作组
 gsave_ename=不存在的或无效的工作组名称
 gsave_edup=工作组名称已经存在
+
 convert_title=用户转换
 convert_ecannot=您没有转换 Unix 用户的权限
 convert_nogroups=您的系统中没有定义过的 Webmin 工作组。至少必须创建一个工作组，以便为已转换用户定义权限。
@@ -175,6 +186,7 @@ convert_skip=$1 被忽略
 convert_exists=$1 已经存在
 convert_added=$1 已被增加
 convert_msg=正在转换 Unix 用户...
+
 sync_title=Unix 用户同步
 sync_desc=这个表格可以让您通过 Webmin 来配置 Unix 用户及这个模块中用户的自动同步。
 sync_nogroups=您的系统中没有定义过的 Webmin 工作组。至少需创建一个工作组，以便为已转换用户定义许可。
@@ -183,6 +195,7 @@ sync_update=在更新 Unix 用户后更新相应的 Webmin 用户。
 sync_delete=在删除 Unix 用户后删除相应的 Webmin 用户
 sync_group=为 Webmin 工作组指定一个新用户
 sync_ecannot=您没有配置用户同步的权限。
+
 unix_title=Unix 用户验证
 unix_desc=您可以在该页配置 Webmin 使用系统用户列表和 PAM 验证登录。如果您有许多想要授予访问 Webmin 的 Unix 用户，这个方法就会很有用。
 unix_def=只允许 Webmin 用户登录

@@ -17,6 +17,7 @@ index_checkconfig=Make sure that the chroot directory is set correctly on the <a
 index_eexpired=Warning : The following zones have expired DNSSEC signatures : $1
 index_eexpired_conf=Automatic signing should be re-enabled on the $1 page.
 index_eexpired_mod=Use the $1 module to either disable DNSSEC for these domains, or check why signing is failing.
+
 master_inview=از نظر$1 از$2
 master_egone=Zone $1 does not exist in any view
 master_egone2=Zone $1 does not exist!
@@ -29,22 +30,27 @@ master_movedesc=این منطقه را به یک نمای دیگر منتقل م
 master_applymsg2=برای اعمال تغییرات فقط در این منطقه ، روی این دکمه کلیک کنید. این کار فقط در صورتی انجام می شود که حداقل یک بار از زمان ایجاد منطقه ، برای کل سرور اعمال شود.
 master_esoagone=هیچ سابقه SOA یافت نشد!
 master_einclude=پرونده الگوی اضافی وجود ندارد
+
 delete_mesg3=Are you sure you want to delete the zone $1 ?
 delete_vwarn=این منطقه با دامنه Virtualmin $1 همراه است و بنابراین نباید در اینجا حذف شود!
 delete_vwarn2=این منطقه با دامنه Virtualmin $1 و$2 دیگر همراه است و بنابراین نباید اینجا حذف شود!
+
 mcreate_dnssec_tools_enable=DNSSEC را با استفاده از DNSSEC-Tools فعال کنید
 mcreate_ednssecsize=Failed to compute key size : $1
 mcreate_ednssec=Record creation succeeded, but DNSSEC failed : $1
+
 slave_master_port=بندر
 slave_convertdesc=برای تبدیل این منطقه برده به یک استاد ، با تمام رکوردهایی که آخرین بار از سیستم اصلی اصلی منتقل شده است ، روی این دکمه کلیک کنید.
 slave_applymsg2=برای مجبور کردن انتقال مجدد منطقه از سرور اصلی ، بر روی این دکمه کلیک کنید تا آخرین رکوردها به دست آید.
 slave_xfer=انتقال منطقه تست
+
 recs_find=نمایش سوابق مطابقت:
 recs_search=جستجو کردن
 recs_drev=معکوس ها را هم حذف کنید؟
 recs_none=The domain does not have any $1 records yet.
 recs_nosearch=هیچ سوابقی با جستجوی شما مطابقت ندارد
 recs_needsearch=جستجو را برای یافتن سوابق منطبق وارد کنید.
+
 edit_canon=نام كانوني كامل
 edit_egone=سابقه انتخابی دیگر وجود ندارد!
 edit_eusage='$1' is not a valid TLSA usage number
@@ -69,25 +75,32 @@ edit_edmarcpct=درصد پیام ها باید عدد صحیحی بین 0 و 100
 edit_edmarcrua=آدرس بازخورد جمع وجود ندارد
 edit_edmarcruf=آدرس اطلاعات پزشکی قانونی موجود نیست
 edit_ecaavalue2=نام دامنه نامشخص یا نامعتبر است
+
 text_desc3=This form allows you to manually edit the DNS records file $1. No syntax checking will be done by Webmin.
 text_soa=تعداد سریال را بطور خودکار افزایش دهید
 text_rawformat=این منطقه در قالب باینری خام است و بنابراین به صورت متن نمایش داده نمی شود.
+
 fwd_delmsg=برای پاک کردن این منطقه از سرور DNS خود روی این دکمه کلیک کنید. سوابق موجود در آن با استفاده از فرآیند وضوح عادی جستجو می شوند.
+
 delegation_delmsg=برای پاک کردن این منطقه از سرور DNS خود روی این دکمه کلیک کنید. انواع ضبط در آن به غیر از NS سپس توسط BIND شناخته می شوند.
+
 boot_egzip=The root zone file is compressed, but the <tt>gzip</tt> command is not installed on your system!
 boot_egzip2=Uncompression of root zone file failed : $1
+
 type_NSEC3PARAM=پارامترهای DNSSEC
 type_SPF=فرستنده مجاز از
 type_TLSA=گواهی SSL
 type_SSHFP=کلید عمومی SSH
 type_DMARC=DMARC
 type_CAA=صدور گواهی
+
 edit_SPF=فرستنده مجاز از
 edit_DMARC=DMARC
 edit_NSEC3PARAM=پارامترهای DNSSEC
 edit_TLSA=گواهی SSL
 edit_SSHFP=کلید عمومی SSH
 edit_CAA=صدور گواهی
+
 recs_defttl=TTL پیش فرض
 recs_SPF=فرستنده مجاز از
 recs_DMARC=DMARC
@@ -96,6 +109,7 @@ recs_TLSA=گواهی SSL
 recs_SSHFP=کلید عمومی SSH
 recs_CAA=صدور گواهی
 recs_delete=انتخاب شده را پاک کن
+
 value_AAAA1=آدرس IPv6
 value_SRV3=بندر
 value_TLSA1=استفاده از گواهینامه
@@ -149,6 +163,7 @@ value_CAA3=نام دامنه CA
 value_caa_issue=گواهینامه دامنه تک
 value_caa_issuewild=گواهینامه Wildcard
 value_caa_iodef=URL نقض خط مشی
+
 tlsa_usage0=صدور گواهی
 tlsa_usage1=موجودیت انتهایی
 tlsa_usage2=اعتماد لنگر
@@ -158,18 +173,22 @@ tlsa_selector1=اطلاعات کلید عمومی
 tlsa_match0=محتوای حذف نشده
 tlsa_match1=SHA-256 hashed
 tlsa_match2=SHA-512 hashed
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 eipacl='$1' is not a valid IP address or ACL name
+
 acl_inviews=مشاهده این کاربر می تواند دامنه ها را ویرایش کند
 acl_toplevel=خارج از هر منظره
 acl_applygonly=فقط پیکربندی را اعمال کنید
 acl_dnssec=آیا می توان DNSSEC را برای مناطق تنظیم کرد؟
 acl_vnone=بدون بازدید
+
 logging_catsdesc=این جدول کنترل می کند که کدام دسته از پیام ها برای کانال های ورود به سیستم نوشته شده اند ، همانطور که در برگه دیگر تعریف شده است.
 logging_chansdesc=در این جدول کانال های ورود به سیستم ، فایل ها یا مقصد دیگری که می توان پیام ها را برای ورود به سیستم قرار داد ، لیست می کند. چهار مورد اول به صورت پیش فرض ساخته شده در BIND هستند و قابل تغییر نیستند.
 logging_stderr=خروجی خطای استاندارد
@@ -177,9 +196,12 @@ logging_pcat2=دسته ورود؟
 logging_psev2=شدت ورود به سیستم؟
 logging_ptime2=زمان ورود؟
 logging_efile2=نام پرونده ورود به سیستم باید مسیری مطلق باشد
+
 acls_eline=Each IP address must be entered on a separate line for ACL '$1'
+
 forwarding_out=حداکثر انتقال منطقه خروجی همزمان
 forwarding_per_ns=حداکثر انتقال همزمان همزمان در هر سرور
+
 net_ip=آدرس آی پی
 net_port=شماره بندر
 net_recur=اجازه از نمایش داده شدگان بازگشتی از
@@ -193,6 +215,7 @@ net_taddrdef=نزدیکترین IP
 net_etport=پورت منبع انتقال را نمی توان بدون آدرس مشخص کرد
 net_eaddr='$1' is not a valid IPv4 address
 net_eaddr6='$1' is not a valid IPv6 address
+
 controls_inetopt=کنترل از طریق شبکه مجاز است؟
 controls_inetyes=Yes, on IP address $1 port $2
 controls_allowips=آدرس های IP مشتری مجاز است
@@ -210,7 +233,9 @@ controls_eunixpath=مسیر پرونده FIFO وجود ندارد یا نامع�
 controls_eunixperm=مجوزهای پرونده اوکتال فاقد یا نامعتبر است
 controls_eunixowner=صاحب پرونده موجود نیست یا نامعتبر است
 controls_eunixgroup=گروه پرونده موجود نیست یا نامعتبر است
+
 controls_port=بندر
+
 zonedef_prins=سرور پیش فرض برای دامنه های اصلی
 zonedef_this=System hostname ($1)
 zonedef_eprins=سرور پیش فرض نامعتبر یا نامعتبر برای دامنه های اصلی
@@ -222,11 +247,14 @@ zonedef_size=اندازه اولیه کلید
 zonedef_single=تعداد کلید برای ایجاد
 zonedef_two=کلید منطقه و کلید امضای کلید
 zonedef_one=فقط کلید منطقه
+
 findfree_fromip=از آدرس IP
 findfree_toip=به آدرس IP
 findfree_msg=Found $1 free IP addresses
 findfree_msg2=(of which $1 are like <i>freeXXX</i>, $2 like <i>freemac</i>)
+
 free_ip=آدرس آی پی
+
 log_manual=Manually edited config file $1
 log_rndc=تنظیم RNDC
 log_delete_recs=Deleted $1 records
@@ -241,16 +269,21 @@ log_sign=Updated DNSSEC signatures for zone $1
 log_resign=Re-signed DNSSEC key for zone $1
 log_trusted=تأیید DNSSEC تغییر کرد
 log_dnssec=دوباره امضای کلید DNSSEC را تغییر دهید
+
 convert_efilesize=Records file $1 does not exist or is empty
 convert_ebinary=دستور مورد نیاز برای تبدیل از یک منطقه برده دودویی به یک استاد فرمت متن نصب نشده است
 convert_ecompile=Binary to text format conversion failed : $1
+
 view_opts2=گزینه هایی برای مناطق مشاهده شده
 view_delete=حذف نمای
 view_deletemsg=برای حذف نمای روی این دکمه کلیک کنید. شما یک انتخاب از مناطق متحرک آن را به یک منظره دیگر یا حذف آنها نیز خواهید داشت.
+
 hint_refetchdesc=بر روی این دکمه کلیک کنید تا Webmin بار دیگر فایل منطقه root را از منبع آن در سرور داخلی FTP بارگیری کند.
 hint_delete=حذف Root Zone
 hint_deletedesc=با کلیک بر روی این دکمه برای حذف این منطقه ریشه ای. بدون آن ، سرویس دهنده شما قادر به حل دامنه ها در اینترنت غیر از مواردی نیست که برای آن ثانویه باشد.
+
 hcreate_header=جزئیات منطقه ریشه
+
 slaves_dosec=ثانویه ایجاد کنید؟
 slaves_dosec1=ثانوی
 slaves_dosec0=اولیه
@@ -261,16 +294,20 @@ slaves_sec=ثانویه بر روی برده هنگام ایجاد محلی ای
 slaves_name=نام برای سابقه NS
 slaves_same=همان نام میزبان
 slaves_header=گزینه های سرور برده خوشه
+
 add_eversion2=Server $1 is not running Webmin version $2 or above, which is needed to add zones to more than one view
 add_eipaddr=Server $1 has an IP address instead of a hostname
 add_ename=نام پرونده NS وجود ندارد یا نامعتبر است
 add_egname=هنگام اضافه کردن گروه ، نام ضبط NS را نمی توان مشخص کرد
 add_emyip=Could not work out this system's IP address. You should set the <b>Default master server IP for remote slave zones</b> on the Module Config page.
+
 mass_elocal=پرونده دسته ای موجود نیست یا وجود ندارد
 mass_elocalcannot=شما مجاز به استفاده از پرونده دسته انتخابی نیستید
 mass_eviewcannot=شما مجاز به اضافه کردن مناطق به این نمای نیست
+
 massdelete_vwarn=بعضی از مناطق با دامنه Virtualmin $1 همراه هستند ، بنابراین نباید در اینجا حذف شود!
 massdelete_vwarn2=بعضی از مناطق با دامنه Virtualmin $1 و$2 دیگر مرتبط هستند و بنابراین نباید اینجا حذف شود!
+
 rndc_title=تنظیم RNDC
 rndc_desc=این صفحه می تواند برای تنظیم BIND برای کنترل توسط برنامه RNDC مورد استفاده قرار گیرد ، به طوری که بدون نیاز به انجام یک راه اندازی مجدد کامل BIND ، می توان مناطق مجزا را تازه کرد.
 rndc_desc2=به نظر می رسد RNDC قبلاً درست تنظیم شده است ، بنابراین احتمالاً نیازی به استفاده از این فرم ندارید.
@@ -281,11 +318,13 @@ rndc_ok=بله ، تنظیم RNDC
 rndc_err=تنظیم RNDC انجام نشد
 rndc_ekey=کلید در rndc.conf یافت نشد
 rndc_esecret=در rndc.conf راز یافت نشد
+
 drecs_err=سوابق حذف نشد
 drecs_enone=هیچ یک انتخاب نشده است
 drecs_title=سوابق را حذف کنید
 drecs_rusure=Are you sure you want to delete the $1 selected records from $2?
 drecs_ok=اکنون حذف کنید
+
 manual_title=پیکربندی پرونده را ویرایش کنید
 manual_ecannot=شما مجاز به ویرایش پرونده پیکربندی BIND نیستید
 manual_ok=ویرایش کنید
@@ -293,7 +332,9 @@ manual_efile=پرونده انتخاب شده بخشی از پیکربندی BIN
 manual_file=ویرایش پرونده پیکربندی:
 manual_edata=هیچ چیز وارد نشده است!
 manual_err=ذخیره پرونده پیکربندی انجام نشد
+
 syslog_desc=پیام های سرور BIND DNS
+
 umass_err=به روزرسانی مناطق انجام نشد
 umass_enone=هیچ یک انتخاب نشده است
 umass_title=سوابق را در مناطق به روز کنید
@@ -312,6 +353,7 @@ umass_done=.. updated $1 matching records out of $2.
 umass_none=.. no matching records out of $1 to update found.
 umass_egone=منطقه وجود ندارد
 emass_emx='$1' is not a mail server priority number followed by a valid hostname
+
 rdmass_err=سوابق در مناطق حذف نشد
 rdmass_enone=هیچ یک انتخاب نشده است
 rdmass_title=رکورد ها را در مناطق حذف کنید
@@ -328,6 +370,7 @@ rdmass_done=.. deleted $1 matching records out of $2.
 rdmass_none=.. no matching records out of $1 to delete found.
 rdmass_ok=سوابق را حذف کنید
 rdmass_sel=سوابق نامگذاری شده است
+
 rmass_err=سوابق اضافه نشد
 rmass_enone=هیچ یک انتخاب نشده است
 rmass_title=ضبط را به مناطق اضافه کنید
@@ -347,18 +390,22 @@ rmass_esign=.. done, but signing failed : $1
 rmass_eclash=.. a record with the same name and value $1 already exists.
 rmass_eclash2=.. a record with the same name and the same value $1 already exists.
 rmass_clash=حتی اگر سابقه قبلاً وجود داشته باشد ایجاد کنید؟
+
 check_title=سوابق را بررسی کنید
 check_ecannot=شما مجاز به بررسی سوابق نیستید
 check_errs=The following errors were found in the records file $1 ..
 check_allok=No errors were found in the records file $1.
+
 ncheck_title=پیکربندی BIND را بررسی کنید
 ncheck_ecannot=شما مجاز به بررسی پیکربندی BIND نیستید
 ncheck_errs=The following errors were found in the BIND configuration file $1 or referenced zone files ..
 ncheck_allok=No errors were found in the BIND configuration file $1 or referenced zone files.
+
 links_restart=پیکربندی را اعمال کنید
 links_stop=BIND را متوقف کنید
 links_start=BIND را شروع کنید
 links_apply=منطقه را اعمال کنید
+
 dnssec_title=دوباره امضای کلید DNSSEC
 dnssec_ecannot=شما مجاز به پیکربندی DNSSEC نیست
 dnssec_header=گزینه های کلید امضا مجدد
@@ -369,6 +416,7 @@ dnssec_secs=ثانیه
 dnssec_desc=مناطق امضا شده با DNSSEC معمولاً دارای دو کلید هستند - یک کلید منطقه ای که باید مجدداً تولید و امضا شود ، و یک کلید امضای اصلی که ثابت است. این صفحه به شما امکان می دهد Webmin را پیکربندی کنید تا این دوباره امضا را بطور خودکار انجام دهد.
 dnssec_err=ذخیره مجدد کلید DNSSEC انجام نشد
 dnssec_eperiod=تعداد روزهای نامعتبر یا نامعتبر بین علائم دوباره
+
 dnssectools_title=اتوماسیون ابزارهای DNSSEC
 dt_conf_title=اتوماسیون ابزارهای DNSSEC
 dt_enable_title=اتوماسیون ابزارهای DNSSEC
@@ -433,6 +481,7 @@ dt_status_inKSKroll=در رول KSK
 dt_status_inZSKroll=در رول ZSK
 dt_status_signed=امضاء شده
 dt_status_unsigned=امضا نشده
+
 zonekey_title=کلید تنظیم DNSSEC
 zonekey_desc=این منطقه هنوز کلید امضای DNSSEC را ندارد. برای ایجاد Webmin می توانید از این فرم استفاده کنید ، به این ترتیب مشتریانی که این منطقه را حل می کنند در برابر حملات جعل DNS محافظت می شوند.
 zonekey_header=گزینه های کلیدی DNSSEC جدید
@@ -466,9 +515,12 @@ zonekey_sign=منطقه ثبت نام کنید
 zonekey_signdesc=بلافاصله مجدد این منطقه را امضا کنید تا هرگونه تغییر در سوابق ایجاد شده در سوابق امضاء درج شود.
 zonekey_resign=دوباره امضا کنید منطقه
 zonekey_resigndesc=یک کلید امضاء منطقه جدید ایجاد کنید ، آن را با کلید اصلی منطقه امضا کنید و دوباره تمام سوابق را امضا کنید.
+
 sign_err=منطقه امضا نشد
 sign_emsg=DNSSEC signing after records change failed : $1
+
 resign_err=منطقه دوباره امضاء نشد
+
 trusted_title=تأیید DNSSEC
 trusted_ecannot=شما مجاز به پیکربندی تأیید DNSSEC نیستید
 trusted_esupport=نسخه BIND شما از تأیید DNSSEC پشتیبانی نمی کند
@@ -503,6 +555,7 @@ trusted_setup=For DNSSEC to be useful to verify the majority of signed zones on 
 trusted_ok=تنظیم DLV و تأیید صحت DNSSEC را فعال کنید
 trusted_warning=Warning! Your BIND DNSSEC client configuration contains out of date keys that will stop working in October 2017. Either use the <a href='$1'>BIND DNSSEC Verification page</a> to adjust the configuration, or click the button below.
 trusted_fix=پیکربندی DNSSEC را برطرف کنید
+
 xfer_title=انتقال منطقه تست
 xfer_doing=Testing transfer of slave zone from $1 ..
 xfer_failed=.. from $1 : Failed : $2

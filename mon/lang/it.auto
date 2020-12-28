@@ -6,6 +6,7 @@ mon_conf_title=Configurazione di base
 mon_status_title=Stato operativo
 hostgroups_title=Configurazione MON-Hostgroups
 services_title=Definizioni del servizio Watchgroups
+
 head_hostgroups=Hostgroup e servizi
 head_groups=Nome gruppo host
 head_members=Membri del gruppo host
@@ -17,6 +18,7 @@ head_monauth=Fornire autenticazione per MONCMD
 head_usr=Nome utente
 head_pass=Parola d'ordine
 head_mand=(I parametri in "COLORE ROSSO" sono obbligatori)
+
 err_nomon=il pacchetto 'mon' non è installato sul sistema
 err_nomonconf=Il file di configurazione MON $1 non è stato trovato sul tuo sistema. Forse MON non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
 err_nowatch=Nessun gruppo di controllo selezionato. Seleziona almeno un Watchgroup per procedere.
@@ -28,6 +30,7 @@ stop_epid=Non più in esecuzione
 start_err=Impossibile avviare MON
 restart_err=Impossibile riavviare MON
 restart_epid=Impossibile ottenere il PID
+
 other=Altro (spazio separato)
 next=Il prossimo
 mon_stat=Stato MON
@@ -43,6 +46,7 @@ save_apply=Salva e applica
 watch=Watchgroup
 members=Membri
 def_perargs=wd {sab-dom}
+
 def_desc=descrizione
 def_inter=intervallo
 def_mon=tenere sotto controllo
@@ -58,9 +62,11 @@ def_trapdur=trapduration
 def_rand=randskew
 def_exclhost=exclude_hosts
 def_exclper=exclude_period
+
 groups_title=Gruppi host
 groups_group=Nome del gruppo
 groups_members=Host membri
+
 watches_title=Elenchi di orologi
 watches_group=Gruppo di controllo
 watches_services=Servizi monitorati
@@ -68,6 +74,7 @@ watches_sadd=Aggiungi servizio ..
 watches_add=Aggiungi lista di controllo per il gruppo :
 watches_return=liste di controllo
 watches_none=Non sono stati ancora definiti elenchi di controllo.
+
 global_title=Opzioni globali
 global_header=Opzioni di configurazione MON globali
 global_maxprocs=Processi MON massimi
@@ -85,6 +92,7 @@ global_ehistlength=Lunghezza cronologia eventi mancante o non valida
 global_ealertdir=Directory dei programmi di avviso mancante o non valida
 global_emondir=Directory dei programmi di monitoraggio mancante o non valida
 global_euserfile=File utenti MON mancante
+
 watch_title=Modifica elenco di controllo
 watch_header=Dettagli dell'orologio del gruppo host
 watch_group=Gruppo host da guardare
@@ -93,6 +101,7 @@ watch_service=Nome di Servizio
 watch_monitor=Monitor da usare
 watch_interval=Controlla ogni
 watch_periods=Periodi di monitoraggio
+
 service_title=Aggiungi servizio
 service_title2=Modifica servizio
 service_header=Dettagli di servizio guardati
@@ -145,16 +154,19 @@ service_epstr=Specifica del periodo mancante
 service_known0=<tt>Time::Period</tt> stringa
 service_known1=Giorni e ore specificati
 service_known2=Periodo definito
+
 status_title=Stato MON
 status_ecgi=Il programma CGI di stato MON $1 non esiste. Forse non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
 status_eperl=Il programma CGI di stato MON richiede il modulo $1 perl. <a href='$2'>Fai clic qui</a> per installarlo direttamente da CPAN.
 status_esame=Il programma CGI di stato MON $1 è stato impostato sullo script <tt>mon.cgi</tt> in questo modulo Webmin, non sul programma CGI fornito con MON. Modifica la <a href='$2'>configurazione del modulo</a> per utilizzare il percorso corretto.
+
 users_title=Utenti MON
 users_etype=L'elenco utenti MON non può essere modificato poiché MON non è attualmente configurato per usarlo per l'autenticazione nella pagina <a href='$1'>Opzioni globali</a>.
 users_header=Utenti MON consentiti in $1 
 users_nousers=Nessun utente MON è stato definito in $1.
 users_add=Crea un nuovo utente.
 users_return=Elenco utenti MON
+
 user_create=Crea utente MON
 user_edit=Modifica utente MON
 user_header=Dettagli utente MON
@@ -164,6 +176,7 @@ user_leave=Lascia invariato
 user_err=Impossibile salvare l'utente
 user_euser=Nome utente mancante o non valido
 user_esame=Un utente con lo stesso nome esiste già
+
 auth_title=Comandi del cliente
 auth_desc=Questa pagina consente di controllare quali comandi MON possono essere eseguiti da quali utenti quando utilizzano i programmi client.
 auth_cmd=Comando MON
@@ -173,6 +186,7 @@ auth_all=Tutti
 auth_sel=Solo utenti
 auth_err=Impossibile salvare i comandi client
 auth_eusers=Nessun utente immette per il comando $1 
+
 periods_title=Periodi definiti
 periods_period=Nome del periodo
 periods_times=Giorni e orari
@@ -181,5 +195,6 @@ periods_allhours=Tutte le ore
 periods_err=Impossibile salvare periodi definiti
 periods_ename='$1' non è un nome di periodo valido
 periods_ehour=Ora mancante o non valida per il periodo $1 (deve essere simile alle 9:00 o alle 17:00)
+
 show_title=Stato operativo
 show_ecgi=Il programma di stato MON $1 non esiste. Forse non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.

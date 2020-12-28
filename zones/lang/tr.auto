@@ -4,6 +4,7 @@ index_none=Henüz hiçbir bölge tanımlanmadı.
 index_add=Yeni bir bölge ekleyin.
 index_return=bölge listesi
 index_zones=Mevcut Bölgeler
+
 edit_title=Bölgeyi Düzenle
 edit_common=Genel bölge yapılandırması
 edit_name=Bölge adı
@@ -57,20 +58,26 @@ edit_attrnone=Henüz herhangi bir jenerik özellik tanımlanmamıştır.
 edit_attradd=Yeni bir genel özellik ekleyin.
 edit_webmin=Webmin'i aç
 edit_brand=Marka
+
 ui_cancel=İptal etmek
+
 save_err=Bölge kaydedilemedi
 save_epool=Eksik veya geçersiz havuz
 save_ewebmin=Webmin bu bölgede çalışmıyor
+
 reboot_title=Yeniden Başlatma Bölgesi
 reboot_rusure=$1 bölgesini yeniden başlatmak istediğinizden emin misiniz? İçinde çalışan tüm işlemler yeniden başlatılır.
 reboot_err=Bölge yeniden başlatılamadı
 reboot_doing=Şimdi bölge yeniden başlatılıyor ..
+
 reboot_failed=.. başarısız oldu  :
 reboot_ok=.. tamamlayınız.
+
 halt_title=Kapatma Bölgesi
 halt_rusure=$1 bölgesini kapatmak istediğinizden emin misiniz? İçinde çalışan tüm işlemler durdurulacaktır.
 halt_err=Kapatma bölgesi başarısız oldu
 halt_doing=Şimdi bölge kapatılıyor ..
+
 boot_title=Açılış Bölgesi
 boot_err=Açılış bölgesi başarısız oldu
 boot_doing=Şimdi bölge açılıyor. ..
@@ -78,10 +85,12 @@ delete_title=Bölgeyi Sil
 delete_rusure=$1 bölgesini silmek istediğinizden emin misiniz? Özel dosya sistemlerindeki tüm dosyalar kaybolacaktır.
 delete_err=Bölge silinemedi
 delete_doing=Şimdi bölge siliniyor ..
+
 uninstall_title=Yüklemeyi Kaldırma Sistemi
 uninstall_rusure=Sistem yazılımını $1 bölgesinden kaldırmak istediğinizden emin misiniz? Özel dosya sistemlerindeki tüm dosyalar kaybolacaktır.
 uninstall_err=Sistem yazılımı bölgeden kaldırılamadı
 uninstall_doing=Şimdi sistemin bölgeden kaldırılması ..
+
 install_title=Sistemi Kur
 install_doing=Şimdi sistemi bölgeye kuruyor ..
 net_title1=Ağ Arayüzü Oluştur
@@ -96,6 +105,7 @@ net_enetmask=Geçersiz ağ maskesi
 net_eaddress=Geçersiz IP adresi
 net_egone=Arayüz artık mevcut değil!
 net_eclash=Bu bölgede aynı IP adresine sahip bir ağ arayüzü zaten var
+
 pkg_title1=Paket Dizini Ekle
 pkg_title2=Paket Dizinini Düzenle
 pkg_header=Devralınan paket dizini ayrıntıları
@@ -107,6 +117,7 @@ pkg_eclash=Paket dizini bu bölgede zaten var
 pkg_inherit=Paketleri global bölgeden devral
 pkg_inherit_yes=Evet (seyrek kök bölgesi)
 pkg_inherit_no=Hayır (tüm kök bölgesi)
+
 fs_title1=Dosya Sistemi Oluştur
 fs_title2=Dosya Sistemini Düzenle
 fs_header=Ek dosya sistemi ayrıntıları
@@ -128,6 +139,7 @@ fs_eoptions=Geçersiz bağlama seçenekleri (ro, nosuid gibi virgülle ayrılmı
 fs_egone=Dosya sistemi artık mevcut değil!
 fs_mount=Oluşturduktan sonra monte?
 fs_eclash=Bu bölgede aynı dizini kullanan bir dosya sistemi zaten var
+
 rctl_title1=Kaynak Kontrolü Oluşturun
 rctl_title2=Kaynak Denetimini Düzenle
 rctl_header=Kaynak kontrol türü ve sınırları
@@ -148,6 +160,7 @@ rctl_elimit=Sayı değil
 rctl_eaction=$1 satırında sinyal seçilmedi
 rctl_evalues=Limit girilmedi
 rctl_eclash=Bu bölgede aynı kaynak için bir denetim zaten var
+
 attr_title1=Genel Özellik Oluştur
 attr_title2=Genel Özelliği Düzenle
 attr_header=Genel bölge özellik ayrıntıları
@@ -165,6 +178,7 @@ attr_euint=Değer pozitif bir tam sayı değil
 attr_eboolean=Değer 'doğru' veya 'yanlış' değil
 attr_egone=Özellik artık mevcut değil!
 attr_eclash=Bu bölgede aynı ada sahip bir özellik zaten var
+
 status_running=Koşu
 status_installed=Durduruldu
 status_configured=Yüklü değil
@@ -172,13 +186,16 @@ status_incomplete=Yükleniyor
 status_ready=hazır
 status_down=Aşağı
 status_shutting_down=Kapatmak
+
 list_name=Bölge adı
 list_id=Kimlik Numarası.
 list_path=Bölge dizini
 list_status=durum
 list_actions=Hareketler
+
 zone_in=$1 bölgesinde
 pool_none=Yok
+
 create_title=Bölge Oluştur
 create_header=Yeni bölge ayrıntıları
 create_path=Bölge dosyaları dizini
@@ -239,6 +256,7 @@ create_erouter=Eksik veya geçersiz varsayılan yönlendirici IP adresi
 create_removingpkgs=devralınan paket dizinleri kaldırılıyor. ..
 create_brand=Marka
 create_brandmsg=Marka bilinci oluşturma bölgesi
+
 log_create_zone=$1 bölgesi oluşturuldu
 log_delete_zone=$1 silinen bölge
 log_save_zone=$1 bölgesi için değiştirilmiş yapılandırma
@@ -262,6 +280,7 @@ log_delete_rctl=$2 bölgesindeki $1 için kaynak kontrolü silindi
 log_create_attr=$2 bölgesinde $1 genel özniteliği oluşturuldu
 log_modify_attr=$2 bölgesinde $1 değiştirilmiş genel özellik
 log_delete_attr=$2 bölgesinde $1 genel özniteliği silindi
+
 webmin_eperl=$1 'de Perl kurulu değil
 webmin_eroot=$1 dizini mevcut değil veya Webmin içermiyor.
 webmin_title=Webmin'i yükle

@@ -2,6 +2,7 @@ index_title=Máy khách và máy chủ NIS
 index_return=Menu NIS
 index_enis=Máy của bạn dường như không cài đặt hỗ trợ máy khách hoặc máy chủ NIS.
 index_enis2=Chỉ có tính năng dịch vụ khách của mô-đun này sẽ có thể sử dụng được.
+
 client_title=Khách hàng NIS
 client_header=Cấu hình máy khách NIS
 client_domain=Tên miền NIS
@@ -17,10 +18,12 @@ client_eserver='$1' không phải là tên máy chủ hợp lệ
 client_eypwhich=không thể liên kết với miền NIS
 client_ehosts='$1' không có trong tệp máy chủ
 client_enis=Máy của bạn dường như không cài đặt hỗ trợ máy khách NIS.
+
 switch_title=Dịch vụ khách hàng
 switch_service=Dịch vụ
 switch_srcs=Nguồn dữ liệu
 switch_return=dịch vụ khách hàng
+
 order_=&nbsp;
 order_nisplus=NIS +
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=Máy in người dùng
 order_xfn=XFN
+
 server_title=Máy chủ NIS
 server_header=Tùy chọn máy chủ NIS
 server_boot=Kích hoạt máy chủ NIS?
@@ -65,6 +69,7 @@ server_solaris=Lưu ý - trên Solaris, miền NIS của máy khách và máy ch
 server_edir=Thư mục tệp nguồn không hợp lệ
 server_epwdir=Thư mục tập tin nguồn mật khẩu không hợp lệ
 server_enis=Máy của bạn dường như không cài đặt hỗ trợ máy chủ NIS.
+
 tables_title=Bàn NIS
 tables_switch=Chỉnh sửa bảng NIS :
 tables_header=Bảng $1 NIS từ $2 
@@ -81,6 +86,7 @@ tables_search=Tìm kiếm
 tables_nomatch=Không có hồ sơ phù hợp với tìm kiếm của bạn
 tables_build=Xây dựng lại các bảng NIS
 tables_buildmsg=Nhấp vào nút này để xây dựng lại cơ sở dữ liệu NIS từ dữ liệu bảng. Nếu bạn đã thực hiện bất kỳ thay đổi nào, bạn sẽ cần phải thực hiện điều này để cung cấp chúng cho các khách hàng của NIS.
+
 desc_aliases=Bí danh Sendmail
 desc_mail=Bí danh Sendmail
 desc_hosts=Địa chỉ máy chủ
@@ -116,6 +122,7 @@ desc_printers=Máy in
 desc_ipnodes=Các nút IP
 desc_timezone=Múi giờ
 desc_locale=Địa phương
+
 hosts_title=Địa chỉ máy chủ
 hosts_ip=địa chỉ IP
 hosts_name=Tên máy chủ
@@ -124,6 +131,7 @@ hosts_err=Không thể lưu máy chủ
 hosts_eip=Địa chỉ IP bị thiếu hoặc không hợp lệ
 hosts_ename=Tên máy chủ bị thiếu hoặc không hợp lệ
 hosts_aliases=Bí danh
+
 group_name=Tên nhóm
 group_gid=Id nhóm
 group_members=Thành viên nhóm
@@ -134,6 +142,7 @@ group_none=Không cần mật khẩu
 group_encrypted=Mật khẩu được mã hóa trước
 group_clear=Mật khẩu bình thường
 group_err=Không thể lưu nhóm
+
 passwd_name=tên tài khoản
 passwd_uid=Tên người dùng
 passwd_real=Tên thật
@@ -171,6 +180,7 @@ passwd_emax=Số ngày tối đa không hợp lệ
 passwd_emin=Số ngày tối thiểu không hợp lệ
 passwd_einactive=Số ngày không hoạt động không hợp lệ
 passwd_eexpiry=Ngày hết hạn không hợp lệ
+
 services_name=Tên dịch vụ
 services_proto=Giao thức
 services_port=Hải cảng
@@ -179,6 +189,7 @@ services_header=Tùy chọn dịch vụ mạng inetd
 services_err=Không thể lưu dịch vụ
 services_ename=Tên dịch vụ bị thiếu hoặc không hợp lệ
 services_eport=Cổng bị thiếu hoặc không hợp lệ
+
 protocols_name=Tên giao thức
 protocols_number=Con số
 protocols_aliases=Bí danh
@@ -187,6 +198,7 @@ protocols_header=Tùy chọn giao thức mạng
 protocols_err=Không thể lưu giao thức
 protocols_ename=Tên thiếu hoặc không hợp lệ
 protocols_enumber=Số bị thiếu hoặc không hợp lệ
+
 netgroup_name=Tên nhóm
 netgroup_members=Các thành viên
 netgroup_title=Nhóm mạng
@@ -201,6 +213,7 @@ netgroup_ename=Tên nhóm mạng bị thiếu hoặc không hợp lệ
 netgroup_ehost=Máy chủ bị thiếu hoặc không hợp lệ trong hàng $1 
 netgroup_euser=Người dùng bị thiếu hoặc không hợp lệ trong hàng $1 
 netgroup_edom=Tên miền NIS bị thiếu hoặc không hợp lệ trong hàng $1 
+
 ethers_mac=Địa chỉ Ethernet
 ethers_ip=địa chỉ IP
 ethers_title=Địa chỉ Ethernet
@@ -208,6 +221,7 @@ ethers_header=Tùy chọn ánh xạ Ethernet
 ethers_err=Không thể lưu địa chỉ ethernet
 ethers_emac=Địa chỉ ethernet không hợp lệ
 ethers_eip=địa chỉ IP không hợp lệ
+
 rpc_name=Tên chương trình
 rpc_number=Con số
 rpc_aliases=Bí danh
@@ -216,6 +230,7 @@ rpc_header=Chi tiết chương trình RPC
 rpc_err=Không thể lưu chương trình RPC
 rpc_ename=Tên chương trình bị thiếu hoặc không hợp lệ
 rpc_enumber=Số bị thiếu hoặc không hợp lệ
+
 networks_title=Địa chỉ mạng
 networks_ip=địa chỉ IP
 networks_name=Tên mạng
@@ -224,6 +239,7 @@ networks_err=Không thể lưu mạng
 networks_eip=Địa chỉ IP bị thiếu hoặc không hợp lệ
 networks_ename=Tên thiếu hoặc không hợp lệ
 networks_aliases=Bí danh
+
 netmasks_net=Địa chỉ mạng
 netmasks_mask=Netmask
 netmasks_title=Netmask
@@ -231,6 +247,7 @@ netmasks_header=Chi tiết mặt nạ mạng
 netmasks_err=Không thể lưu netmask
 netmasks_enet=Địa chỉ mạng bị thiếu hoặc không hợp lệ
 netmasks_emask=Thiếu hoặc không hợp lệ netmask
+
 aliases_from=Địa chỉ
 aliases_to=Bí danh để
 aliases_title=Bí danh Sendmail
@@ -238,6 +255,7 @@ aliases_header=Chi tiết bí danh Sendmail
 aliases_err=Không thể lưu bí danh
 aliases_efrom=Địa chỉ thiếu hoặc không hợp lệ
 aliases_eto=Thiếu địa chỉ
+
 security_title=Bảo mật máy chủ
 security_header=Tùy chọn bảo mật máy chủ NIS
 security_ok=Lưu và áp dụng
@@ -266,6 +284,7 @@ security_sec_des=Yêu cầu DES
 security_ehost='$1' không phải là tên máy chủ hợp lệ
 security_emap='$1' không phải là bảng NIS hợp lệ
 security_efield='$1' không phải là số trường hợp lệ
+
 eswitch_title=Chỉnh sửa dịch vụ
 eswitch_egone=Dịch vụ không tồn tại!
 eswitch_header=Chi tiết dịch vụ

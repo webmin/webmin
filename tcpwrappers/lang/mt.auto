@@ -10,6 +10,7 @@ index_hosts=L-ospiti
 index_cmd=Kmand
 index_delete=Ħassar Magħżul
 index_none=xejn
+
 edit_title1allow=Oħloq Ħalli Regola
 edit_title2allow=Edit Ħalli r-Regola
 edit_title1deny=Oħloq Regola taċ-Ċaħda
@@ -22,9 +23,11 @@ edit_hosts=Ospitanti mill-bogħod
 edit_hostsexcept=Ħlief l-ospiti
 edit_cmd=Shell jikkmanda
 edit_efound=Daemon '$1' ma nstabx fil-konfigurazzjoni ta 'xinetd.
+
 save_errtitle=Żball fir-regola tas-salvataġġ
 save_ehost=Input ospitanti fih karattri ħżiena
 save_ecmd=Input tal-kmand fih karattri ħżiena
 save_eservice=Ismijiet tad-demoni fihom karattri ħżiena
+
 del_errtitle=Żball fuq ir-regoli li jitħassru
 del_enone=Ebda regoli mmarkati biex jitħassru

@@ -10,6 +10,7 @@ index_apply=Yapılandırmayı Uygula
 index_applydesc=PPTP sunucusu işlemini durdurup yeniden başlatarak geçerli PPTP sunucusu seçeneklerini uygulamak için bu düğmeyi tıklatın. PPP seçeneklerinde ve PPP hesaplarında yapılan değişiklikler yeni bağlantılara her zaman uygulanacaktır
 index_return=modül dizini
 index_epppd=$1 PPP sunucu programı sisteminizde yüklü değil. PPTP, çalışmasına bağlıdır.
+
 conf_title=PPTP Sunucu Seçenekleri
 conf_ecannot=PPTP sunucusu seçeneklerini düzenleme izniniz yok
 conf_header=PPTP sunucu yapılandırması
@@ -35,6 +36,7 @@ conf_elocalip='$1' geçerli bir yerel IP adresi veya aralığı değil
 conf_eremoteip='$1' geçerli bir uzak IP adresi veya aralığı değil
 conf_efrom=Adresinden eksik veya geçersiz IPX ağı
 conf_eto=Adrese eksik veya geçersiz IPX ağı
+
 options_title=PPP Seçenekleri
 options_ecannot=PPP seçeneklerini düzenleme izniniz yok
 options_desc0=$1 altındaki aşağıdaki PPP seçenekleri, çevirmeli modemler dahil sisteminiz tarafından alınan TÜM gelen bağlantılar için geçerlidir.
@@ -67,6 +69,7 @@ options_mschap=MS-CHAP kimlik doğrulaması
 options_mschap-v2=MS-CHAP sürüm 2 kimlik doğrulaması
 options_chapms=MS-CHAP kimlik doğrulaması
 options_chapms-v2=MS-CHAP sürüm 2 kimlik doğrulaması
+
 secrets_title=PPP Hesapları
 secrets_ecannot=PPP hesaplarını düzenleme izniniz yok
 secrets_return=indeks
@@ -80,6 +83,7 @@ secrets_sany=HİÇ
 secrets_create=Yeni bir PPP hesabı oluşturun.
 secrets_desc=Bu sayfada listelenen PPP hesapları, $3 kimlik doğrulaması için kullanılan $1 dosyasından alınır. Yalnızca $2 sunucunuz için olanlar gösterilir, giden bağlantılar için hesaplar gösterilmez.
 secrets_delete=Seçilen PPP Hesaplarını Sil
+
 edit_secret_etitle=PPP Hesabını Düzenle
 edit_secret_ctitle=PPP Hesabı Oluşturun
 edit_secret_acc=PPP Hesabı
@@ -99,15 +103,20 @@ edit_secret_alist=Listeye izin ver ..
 edit_secret_save=Kayıt etmek
 edit_secret_del=Sil
 edit_secret_return=hesap listesi
+
 save_secret_esave=Hesap kaydedilemedi
 save_secret_enoip='$1' geçerli bir adres değil
+
 stop_err=PPTP sunucusu durdurulamadı
 stop_egone=Artık koşmuyor
 stop_ecannot=PPTP sunucusunu durdurmanıza izin verilmiyor
+
 start_err=PPTP sunucusu başlatılamadı
 start_ecannot=PPTP sunucusunu başlatma izniniz yok
+
 apply_err=PPTP sunucusu yeniden başlatılamadı
 apply_ecannot=PPTP sunucusunu yeniden başlatmanıza izin verilmiyor
+
 conns_title=Aktif Bağlantılar
 conns_ecannot=Etkin bağlantıları yönetme izniniz yok
 conns_desc=Bu sayfa, sunucunuza şu anda etkin olan PPTP bağlantılarını listeler. Birinin zorla bağlantısını kesmek için arayüz adını tıklayın.
@@ -119,9 +128,11 @@ conns_remote=İstemci VPN adresi
 conns_none=Şu anda hiçbir PPTP bağlantısı etkin görünmüyor.
 conns_unknown=Bilinmeyen
 conns_user=Kullanıcı adı
+
 disc_err=Bağlantı kesilemedi
 disc_egone=Bağlantılar artık etkin değil
 disc_ekill=İşlem artık çalışmıyor
+
 log_secret_create=$1 PPP hesabı oluşturuldu
 log_secret_modify=Değiştirilmiş PPP hesabı $1 
 log_secret_delete=$1 silinmiş PPP hesabı
@@ -132,6 +143,7 @@ log_disc=Bağlantısı kesilmiş istemci $1
 log_start=PPTP sunucusu başlatıldı
 log_stop=PPTP sunucusu durduruldu
 log_apply=Uygulamalı PPTP sunucusu yapılandırması
+
 acl_conf=Yapılandırmayı düzenleyebilir mi?
 acl_options=Seçenekleri düzenleyebilir mi?
 acl_secrets=PPTP hesaplarını yönetebilir mi?

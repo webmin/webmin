@@ -7,6 +7,7 @@ index_none=Der er endnu ikke defineret nogen NFS-eksport.
 index_apply=Anvend konfiguration
 index_applydesc=Klik på denne knap for at gøre alle de eksport, der er anført ovenfor, aktive med deres konfigurerede indstillinger.
 index_return=eksportliste
+
 edit_title1=Opret eksport
 edit_title2=Rediger eksport
 edit_header=Eksporter detaljer
@@ -24,12 +25,14 @@ edit_access=Monter adgang
 edit_all=Alle værter
 edit_sel=Listede værter ..
 edit_none=Ingen værter
+
 save_err=Eksporten kunne ikke gemmes
 save_edir=Manglende eller ikke-eksisterende mappe til eksport
 save_eanon=Manglende eller ugyldig root-bruger
 save_erw=Ingen læse-skriv værter indtastet
 save_eroot=Der er ikke angivet nogen rootfiladgangsværter
 save_eaccess=Der er ikke angivet nogen monteringsadgangshosts
+
 log_create_export=Oprettet eksport af $1 
 log_delete_export=Slet eksport af $1 
 log_modify_export=Ændret eksport af $1 

@@ -34,10 +34,12 @@ index_mass=Excluir usuários selecionados
 index_mass2=Desativar selecionado
 index_mass3=Ativar selecionado
 index_gmass=Excluir grupos selecionados
+
 search_notfound=Nenhum usuário correspondente encontrado
 search_found=Encontrados $1 usuários correspondentes.
 search_gnotfound=Nenhum grupo correspondente encontrado
 search_gfound=Encontrados $1 grupos correspondentes.
+
 gid=Grupo
 gidnum=ID do grupo
 office=Escritório
@@ -72,6 +74,7 @@ uedit_uid_calc=Calculado
 uedit_disabled=Login desativado temporariamente
 uedit_sys=Sistema padrão
 uedit_clone=Clonar usuário
+
 usave_elength=O nome de usuário não pode ter mais que $1 letras
 usave_ere=O nome de usuário não corresponde a regexp $1
 usave_erename=Você não tem permissão para renomear usuários
@@ -94,6 +97,7 @@ usave_epasswd_same=A senha contém ou é igual ao nome de usuário
 usave_epasswd_mindays=A senha foi alterada há menos de $1 dias atrás
 usave_epasswd_cmd=Falha no comando de validação de senha
 usave_eothers=O usuário foi salvo com sucesso, mas ocorreu um erro em outro módulo : $1
+
 gedit_desc=Descrição
 gedit_oneperline=(Um por linha)
 gedit_ecreate=Você não pode criar novos grupos
@@ -108,6 +112,7 @@ gedit_selu=Usuários no grupo
 gedit_pri=Membros do grupo principal
 gedit_prinone=Nenhum usuário tem esse grupo como principal
 gedit_clone=Grupo Clone
+
 gsave_elength=O nome do grupo não pode ter mais que $1 letras
 gsave_eggid=Você não tem permissão para alterar o GID dos grupos
 gsave_eallgid=Todos os GIDs permitidos foram alocados
@@ -115,9 +120,11 @@ gsave_eothers=O grupo foi salvo com sucesso, mas ocorreu um erro em outro módul
 gsave_egidused2=O GID já está em uso
 usave_efromroot=Você não pode mover o diretório inicial de /
 usave_etoroot=Você não pode mover o diretório inicial para /
+
 logins_elist=Você não tem permissão para listar logins
 logins_elistu=Você não tem permissão para listar logins para '$1'
 logins_local=Local
+
 udel_enum=Número de usuário inválido
 udel_eroot=Você não tem permissão para excluir usuários do sistema (aqueles com um UID menor ou igual a 10).
 udel_echanged=O arquivo de senha foi alterado. Volte à lista de usuários e selecione esse usuário novamente.
@@ -126,10 +133,12 @@ udel_failed=.. falhou!  : $1
 udel_others=ATENÇÃO! O diretório inicial $1 contém arquivos $2 pertencentes a outros usuários.
 udel_dothers=Excluir usuário em outros módulos?
 udel_root=Atenção! Se o usuário root for excluído, talvez você não possa administrar seu sistema no futuro.
+
 gdel_eroot=Você não tem permissão para excluir grupos de sistemas (aqueles com um GID menor ou igual a 10).
 gdel_enum=Número de grupo inválido
 gdel_dothers=Excluir grupo em outros módulos?
 gdel_other=Excluindo de outros módulos.
+
 many_title=Crie vários usuários
 many_desc=Este formulário permite criar muitos usuários ao mesmo tempo, a partir de um arquivo de texto carregado ou local. Cada linha no arquivo especifica um usuário no seguinte formato:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -153,6 +162,7 @@ many_eshell=Shell inválido na linha $1 : $2
 many_emkdir=Falha ao criar o diretório inicial $1 : $2 
 many_egtaken=Nome do grupo já em uso na linha $1 : $2 
 many_ok=Usuário criado $1
+
 acl_uedit_gid=Usuários com GIDs no intervalo
 acl_uedit_sec=Incluir grupos secundários?
 acl_uedit_this=Somente este usuário
@@ -182,6 +192,7 @@ acl_udelete=Pode excluir usuários?
 acl_gdelete=Pode excluir grupos?
 acl_urename=Pode renomear usuários?
 acl_grename=Pode renomear grupos?
+
 log_urename=Usuário renomeado $1 para $2
 log_umodify=Usuário modificado $1
 log_ucreate=Usuário criado $1
@@ -200,6 +211,7 @@ log_ugbatch=Arquivo em lote do grupo carregado executado
 log_ugbatch_l=Arquivo em lote do grupo carregado executado ($1 criado, $2 modificado, $3 excluído)
 log_delete_users=Usuários $1 excluídos
 log_delete_groups=Grupos $1 excluídos
+
 batch_title=Executar arquivo em lote
 batch_ecannot=Você não pode usar o formulário de arquivo em lote
 batch_desc=Este formulário permite criar, modificar ou excluir muitos usuários ao mesmo tempo a partir de um arquivo de texto carregado ou local. Cada linha do arquivo especifica uma ação a ser executada, dependendo do seu primeiro campo. Os formatos de linha são :
@@ -258,12 +270,14 @@ batch_eexpire=Dia de validade inválido na linha $1 : $2
 batch_echange=Dia de alteração de senha inválida na linha $1 : $2 
 batch_instr=Instruções e formato do lote
 batch_header=Opções de criação, atualização e exclusão de usuários em lote
+
 who_title=Usuários conectados
 who_user=Usuário Unix
 who_tty=TTY
 who_when=Conectado em
 who_from=Conectado a partir de
 who_none=Nenhum usuário está conectado no momento.
+
 export_title=Exportar arquivo em lote
 export_desc=Este formulário permite criar um arquivo em lotes contendo alguns ou todos os usuários disponíveis no sistema. O arquivo pode ser usado na página Executar Arquivo em Lote em outro sistema para recriar os usuários exportados, supondo que ele use o formato de arquivo em lote selecionado.
 export_header=Opções de exportação de usuários em lote
@@ -284,6 +298,7 @@ export_done=Exportou com sucesso $1 usuários para o arquivo $2 ($3).
 export_pft=Formato de arquivo em lote
 export_who=Usuários a exportar
 export_ecannot=Você não tem permissão para exportar usuários
+
 gexport_title=Arquivo de lote de grupos de exportação
 gexport_desc=Este formulário permite criar um arquivo em lotes contendo alguns ou todos os grupos disponíveis no sistema. O arquivo pode ser usado na página Executar Arquivo em Lote de Grupo em outro sistema para recriar os grupos exportados.
 gexport_header=Opções de exportação do grupo de lotes
@@ -292,6 +307,7 @@ gexport_ecannot=Você não tem permissão para exportar grupos
 gexport_err=Falha ao exportar o arquivo em lotes do grupo
 gexport_egid=Primeiro GID inválido no intervalo
 gexport_egid2=Segundo GID inválido no intervalo
+
 pft_0=Somente arquivo <tt>passwd</tt> clássico
 pft_1=Arquivo BSD <tt>master.passwd</tt>
 pft_2=Arquivos padrão <tt>passwd</tt> e <tt>shadow</tt>
@@ -299,6 +315,7 @@ pft_3=Arquivo <tt>passwd</tt> do Unixware
 pft_4=Arquivos <tt>passwd</tt> e <tt>security</tt> do AIX
 pft_5=OpenServer <tt>passwd</tt> e arquivos curtos <tt>shadow</tt>
 pft_6=Banco de dados MacOS NetInfo
+
 umass_title=Excluir usuários
 umass_err=Falha ao excluir usuários
 umass_sure=Tem certeza de que deseja excluir os usuários selecionados $1? Seus diretórios pessoais contêm $2 de arquivos.
@@ -310,6 +327,7 @@ umass_del1=Excluir usuários
 umass_del2=Excluir usuários e diretórios pessoais
 umass_eroot=Você não tem permissão para excluir usuários do sistema (aqueles com um UID menor ou igual a 10).
 umass_doing=Excluindo usuário $1 ..
+
 gmass_title=Excluir grupos
 gmass_err=Falha ao excluir grupos
 gmass_sure=Tem certeza de que deseja excluir os grupos selecionados $1?
@@ -319,16 +337,19 @@ gmass_del=Excluir grupos
 gmass_eroot=Você não tem permissão para excluir grupos de sistemas (aqueles com um GID menor ou igual a 10).
 gmass_doing=Excluindo o grupo $1 ..
 gmass_eprimary=O grupo $1 não pode ser excluído, pois é o grupo principal do usuário $2.
+
 dmass_title=Desativar usuários
 dmass_sure=Tem certeza de que deseja desativar os usuários selecionados $1? Eles podem ser reativados posteriormente, sem perda de senhas ou dados.
 dmass_dis=Desativar usuários
 dmass_pass=Bloqueando temporariamente a senha ..
 dmass_doing=Desativando o usuário $1 ..
 dmass_already=.. já desativado!
+
 emass_title=Habilitar usuários
 emass_pass=Desbloqueando a senha ..
 emass_doing=Ativando o usuário $1 ..
 emass_already=.. já habilitado!
+
 gbatch_title=Executar arquivo de lote do grupo
 gbatch_ecannot=Você não pode usar o formulário de arquivo em lotes do grupo
 gbatch_desc=Este formulário permite criar, modificar ou excluir muitos grupos de uma vez a partir de um arquivo de texto carregado ou local. Cada linha do arquivo especifica uma ação a ser executada, dependendo do seu primeiro campo. Os formatos de linha são :

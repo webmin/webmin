@@ -57,6 +57,7 @@ index_reposdisable=Desativar repositórios
 index_reposenable=Ativar repositórios
 index_reposdelete=Excluir repositórios
 index_repoheader=Novas opções de repositório de pacotes
+
 update_title=Atualizar Pacotes
 update_title2=Instalar pacotes
 update_enone=Nenhum pacote selecionado
@@ -94,9 +95,11 @@ update_none=Nenhum
 update_ops=Criando lista completa de pacotes.
 update_rebootdesc=Um dos pacotes instalados requer que uma reinicialização seja totalmente aplicada.
 update_reboot=Reinicie agora
+
 sched_title=Atualização agendada
 sched_yes=A verificação agendada de atualizações agora está ativa.
 sched_no=A verificação agendada de atualizações foi desativada.
+
 log_update=$1 pacotes atualizados instalados
 log_sched=Atualizações agendadas ativadas
 log_unsched=Atualizações agendadas desativadas
@@ -108,11 +111,13 @@ log_enable_repo=Repositório de pacotes ativado $1
 log_disable_repo=Repositório de pacotes desativado $1 
 log_delete_repo=Repositório de pacotes excluídos $1 
 log_create_repo=Repositório do pacote criado $1 
+
 refresh_title=Atualizando pacotes
 refresh_clearing=Limpando caches de pacotes.
 refresh_done=.. feito
 refresh_available=Buscando novamente os pacotes disponíveis.
 refresh_done3=.. encontrou $1 atualizações possíveis
+
 view_title=Detalhes de embalagem
 view_header=Informações atualizáveis do pacote
 view_name=Nome do pacote
@@ -126,12 +131,14 @@ view_changelog=Registro de alterações para a versão disponível
 view_software=Gerenciar pacote
 view_update=Pacote de atualização
 view_install=Instalar pacote
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (onda de explosão)
 system_webmin=Módulo Webmin
 system_usermin=Módulo Usermin
 system_tgz=Webmin ou Usermin tar.gz
+
 repos_err_disable=Falha ao desativar repositórios
 repos_err_enable=Falha ao ativar repositórios
 repos_err_delete=Falha ao excluir repositórios

@@ -9,6 +9,7 @@ index_rpc=RPC程式
 index_newrpc=新增一個RPC服務
 index_apply=套用更改
 index_applymsg=點擊此按鈕，發送 SIGHUP 信號給正在執行的<tt>inetd</tt>程序，以套用當前的配置
+
 error_restart=重新啟動Inetd失敗
 error_saverpc=儲存RPC程式失敗
 error_invalidprgname='$1'不是一個有效的程式名稱
@@ -34,6 +35,7 @@ error_childnum=假如設定了每分鐘最大值, 就必須輸入子程序數目
 error_serviceexist=使用埠 $1 和協定 $2 的服務已經存在
 error_nameexist=名稱為 $1 和協定為 $2 的服務已經存在
 error_inetservice=名稱為 $1 和協定為 $2 的網際網路服務已經存在
+
 editrpc_title1=新增RPC程式
 editrpc_title2=編輯RPC程式
 editrpc_detail=RPC程式內容
@@ -56,6 +58,7 @@ editrpc_execasuser=執行的使用者
 editrpc_max=每分鐘最大值
 editrpc_default=預設
 editrpc_execasgrp=執行的群組
+
 editserv_title1=新增網際網路服務
 editserv_title2=編輯網際網路服務
 editserv_detail=網際網路服務內容
@@ -67,6 +70,7 @@ editserv_maxchild=最多子程序數
 editserv_execlogin=以登錄級別執行
 editserv_wrapper=TCP-Wrapper
 editserv_inetd=在 <tt>inetd</tt> 內部
+
 log_apply=已套用更改
 log_create_serv=已新增服務 $1
 log_modify_serv=已修改服務 $1
@@ -80,6 +84,7 @@ log_delete_serv_l=已在埠 $2 刪除服務 $1
 log_create_prog_l=已在埠 $2 新增程式 $3 服務 $1
 log_modify_prog_l=已在埠 $2 更新程式 $3 服務 $1
 log_delete_prog_l=已在埠 $2 刪除程式 $3 服務 $1
+
 log_create_rpc=已新增 RPC $1
 log_modify_rpc=已修改 RPC $1
 log_delete_rpc=已刪除 RPC $1

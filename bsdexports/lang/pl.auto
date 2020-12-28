@@ -9,9 +9,12 @@ index_apply=Zatwierdź zmiany
 index_applydesc=Kliknij ten przycisk, aby zastosować bieżącą konfigurację eksportu plików. Dzięki temu wszystkie wyżej wymienione katalogi będą dostępne z określonymi opcjami.
 index_return=lista eksportu
 index_echeck=Serwer NFS nie może być używany w tym systemie : $1 
+
 check_ecmd=Polecenie serwera NFS $1 nie jest zainstalowane
+
 delete_err=Nie udało się usunąć eksportu
 delete_enone=Nie wybrano
+
 edit_title1=Edytuj eksport
 edit_title2=Utwórz eksport
 edit_header1=Opcje eksportu
@@ -31,6 +34,7 @@ edit_clients=Klienci
 edit_hosts=Hosty / grupy sieciowe
 edit_network=Sieć
 edit_mask=Maska
+
 save_err=Nie udało się zapisać eksportu
 save_edir=„$1” nie jest katalogiem lub nie istnieje
 save_enone=Musisz podać co najmniej jeden katalog do wyeksportowania
@@ -44,4 +48,5 @@ save_enetwork=„$1” nie jest prawidłową siecią
 save_enetmask=„$1” nie jest prawidłową maską sieci
 save_esame1=Katalog <tt>$1</tt> jest już eksportowany do <tt>$2</tt>. Twój system operacyjny nie pozwala na eksportowanie katalogów w tym samym <i>lokalnym</i> systemie plików do tego samego hosta osobno
 save_esame2=Katalog <tt>$1</tt> jest już eksportowany do <tt>$2</tt>. Twój system operacyjny nie pozwala na eksportowanie katalogów w tym samym <i>lokalnym</i> systemie plików do tej samej sieci osobno
+
 restart_err=Nie udało się zastosować zmian

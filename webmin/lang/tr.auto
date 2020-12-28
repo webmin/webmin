@@ -1,5 +1,6 @@
 index_refresh=Modülleri Yenile
 index_refreshmsg=Yüklü sunucular için tüm Webmin modüllerini yeniden kontrol edin ve 'Kullanılmayan modüller' kategorisinde görünenleri güncelleyin.
+
 access_ip=İzin verilen IP adresleri
 access_local=Yerel ağı listeye dahil et
 access_elibwrap=$1 Perl modülü kurulu olmadığından TCP sarmalayıcıları kullanarak IP erişim kontrolü kullanılamaz.
@@ -9,6 +10,7 @@ access_eip6='$1' tam bir IPv6 veya ağ adresi değil
 access_ecidr6='$1' geçerli bir IPv6 ağ boyutu değil
 access_ecidr8=IPv6 ağ boyutu '$1' 8 ile bölünebilir olmalıdır
 access_trust=Proxy'ler tarafından sağlanan uzak IP adresine güveniyor musunuz?
+
 bind_firewall=Güvenlik duvarında yeni bağlantı noktaları açılsın mı?
 bind_resolv_myname=Bağlı IP adresi ters çözüm mü?
 bind_ipv6=IPv6 bağlantıları kabul edilsin mi?
@@ -16,6 +18,7 @@ bind_eipv6=$1 Perl modülü kurulu olmadığı sürece IPv6 etkinleştirilemez
 bind_redirecting=Yeni URL'ye yönlendiriliyor ..
 bind_elsof=Yeni bağlantı noktası $1 başka bir işlem tarafından zaten kullanılıyor
 bind_eonsystem=$1 IP adresi bu sistemde etkin değil ve bu nedenle kullanılamıyor
+
 log_status=Günlük kaydı etkin mi?
 log_clear2=Günlük dosyaları periyodik olarak temizlensin mi?
 log_period=Evet, her $1 saatte bir
@@ -29,6 +32,7 @@ log_login=İşlem günlüğüne Webmin girişleri ve çıkışları dahil edilsi
 log_email=Günlüğe kaydedilen işlemleri e-postayla adresine gönder
 log_emailnone=Gönderme
 log_inmodsemail=İçindeki işlemler için e-posta gönder
+
 proxy_osdn=İndirmeler için tercih edilen OSDN aynası
 proxy_mirrordef=&lt;Varsayılan (Sourceforge karar versin)&gt;
 proxy_mirrordef2=Varsayılan (Sourceforge karar versin)
@@ -57,6 +61,7 @@ proxy_return=proxy sunucuları ve indirmeler
 proxy_tabproxy=Proxy
 proxy_tabdown=İndirilmesi
 proxy_fallback=Proxy çalışmıyorsa doğrudan istek denemek ister misiniz?
+
 ui_nice_size_type=İkili ölçüm birimleri kullanın (KB, MB, GB yerine KiB, MiB, GiB)
 ui_width=Yardım penceresi genişliği
 ui_height=Yardım penceresi yüksekliği
@@ -78,6 +83,7 @@ ui_dateformat_dd/mm/yyyy=gg/aa/yyyy (ör. 16/09/2001)
 ui_dateformat_mm/dd/yyyy=aa/gg/yyyy (ör. 09/16/2001)
 ui_dateformat_yyyy/mm/dd=yyyy/aa/gg (ör. 2001/09/16)
 ui_ehostnamedisplay=Eksik veya geçersiz görünen ana bilgisayar adı
+
 mods_installsource=Yükleme yeri
 mods_grantto=Adresine erişim izni verin
 mods_nodeps2=Silerken modül bağımlılıklarını yoksay
@@ -97,10 +103,13 @@ mods_tabinstall=Yüklemek
 mods_tabclone=Klon
 mods_tabdelete=Sil
 mods_tabexport=ihracat
+
 install_enotar=Webmin modüllerini ayıklamak için gereken <tt>tar</tt> komutu sisteminizde bulunamadı
 install_line2=$2 ($3 kB) içindeki <a href='$5'>$1</a> kategori $4
 install_line3=$2 ($3 kB) içindeki $1, görünümden gizlendi
+
 delete_desc2=$2 içindeki $1 ($3 kB)
+
 os_desc3=Bu sayfa, Webmin tarafından yükleme zamanında algılanan işletim sistemini ve o anda algılanan sistemi görüntüler. Farklıysa, Webmin'in işletim sistemi bilgilerinin güncellenmesini seçebilirsiniz; bu, yakın zamanda yükseltme yaptıysanız gerekli olabilir.
 os_webmin=Webmin'e göre işletim sistemi
 os_iwebmin=Webmin tarafından kullanılan dahili işletim sistemi kodu
@@ -114,6 +123,7 @@ os_eiversion=Dahili işletim sistemi sürümü eksik
 os_incorrect=Uyarı - Sisteminizde aslında $1 sürüm $2 çalışıyor.
 os_fix=Algılanan İşletim Sistemini Güncelle
 os_usermin=Ayrıca Usermin İşletim Sistemini de güncelleyin
+
 ssl_deny=Reddedilecek SSL protokolü sürümleri
 ssl_compression=Sıkıştırılmış SSL bağlantılarına izin verilsin mi?
 ssl_honorcipherorder=Sunucu tanımlı şifre sırasını kullanmaya zorlanıyor musunuz?
@@ -189,15 +199,19 @@ ssl_letsnotrenew=Yalnızca manuel olarak yenile
 ssl_staging=Hadi sunucuyu şifreleyelim
 ssl_staging0=Gerçek
 ssl_staging1=Evreleme (yalnızca test)
+
 newkey_ecns=Hiçbir sunucu adı girilmedi
 newkey_ecountry=Ülke kodu iki harf olmalıdır
+
 newcsr_err=SSL CSR oluşturulamadı
 newcsr_efile=Eksik CSR dosya adı
 newcsr_title=CSR oluştur
 newcsr_ok=Aşağıdaki SSL sertifikası isteği başarıyla oluşturuldu :
 newcsr_ok2=Bu CSR, imzalanmış bir sertifikayı iade edecek bir imza yetkilisine gönderilmelidir. Bu, <b>Sertifika yükle</b> sekmesini kullanarak yukarıdaki anahtarla yüklenebilir.
+
 startpage_webminup=Webmin güncellemeleri Sistem Bilgileri sayfasında gösterilsin mi?
 startpage_moduleup=Modül güncellemeleri Sistem Bilgisi sayfasında gösterilsin mi?
+
 upgrade_descdeb=Bu form, Debian paketini yükselterek tüm Webmin kurulumunuzu yeni bir sürüme yükseltmenizi sağlar. Yerel bir.deb dosyasından, yüklenen bir dosyadan veya <a href=http://www.webmin.com/>www.webmin.com</a> adresindeki en son sürümden yükleme yapabilirsiniz. Manuel yükseltmede olduğu gibi, tüm yapılandırma ayarlarınız ve üçüncü taraf modüller korunacaktır.
 upgrade_descsun-pkg=Bu form, Webmin kurulumunuzun tamamını Sun tarafından sağlanan Solaris paketinden yeni bir sürüme yükseltmenizi sağlar. Yerel bir Solaris paket dosyasından veya yüklenen bir dosyadan yükleyebilirsiniz. En son paketleri <a href=http://www.sun.com/bigadmin/content/webmin/>http://www.sun.com/bigadmin/content/webmin/</a> adresinde bulabilirsiniz. Manuel yükseltmede olduğu gibi, tüm yapılandırma ayarlarınız ve üçüncü taraf modüller korunacaktır.
 upgrade_edeb=Geçerli bir Webmin Debian paket dosyası değil
@@ -217,6 +231,7 @@ upgrade_tabupdate=Güncelleme modülleri
 upgrade_tabsched=Zamanlanmış güncelleme
 upgrade_src=Webmin'i
 upgrade_opts=Yükseltme seçenekleri
+
 update_checksig=Webmin dışı depolardaki imzaları kontrol edin
 update_user=Sunucuyu güncellemek için giriş yapın
 update_pass=Güncelleme sunucusu şifresi
@@ -226,6 +241,7 @@ update_enomodsig=Modül için imza dosyası indirilemedi : $1
 update_ebadmodsig=Modül imza denetimi başarısız oldu : $1
 update_src=Modülleri şuradan yükseltin:
 update_opts=Modül güncelleme seçenekleri
+
 ca_alt=Ek alanlar
 ca_city=Şehir veya bölge
 ca_issuer_cn=İhraççı adı
@@ -233,6 +249,7 @@ ca_issuer_o=İhraççı organizasyon
 ca_issuer_email=Sertifikayı veren e-posta adresi
 ca_type=Sertifika Türü
 ca_notafter=Tarihine kadar geçerlidir
+
 session_ptimeout=Şifre zaman aşımları
 session_pblock=Giriş blokları başarısız oldu
 session_blockuser=$2 saniye boyunca $1 oturum açma başarısız olan kullanıcıları engelleyin.
@@ -260,9 +277,11 @@ session_sha512=SHA512 şifrelemesi kullanın
 session_emd5mod=MD5 şifrelemesi kullanılamaz, çünkü Perl $1 modülü kurulu değildir.
 session_esha512mod=SHA512 şifreleme kullanılamaz, çünkü Perl $1 modülü kurulu değildir.
 session_blocklock=Ayrıca oturum açma başarısız olan kullanıcıları da kilitle
+
 categories_lang=Kategorileri dilde düzenle:
 categories_langok=Değişiklik
 categories_custom=görenek
+
 log_osdn=Değişen indirme seçenekleri
 log_twofactor=İki faktörlü kimlik doğrulama seçenekleri değiştirildi
 log_newcsr=Yeni SSL CSR oluşturuldu
@@ -284,6 +303,7 @@ log_onedelete_webmincron=$1 modülünde zamanlanmış işlev silindi
 log_letsencrypt=Let's Encrypt'ten yeni SSL sertifikası istendi
 log_letsencryptdns=$1 için DNS kaydını şifreleyelim
 log_letsencryptcleanup=$1 için DNS kaydını şifreleyelim
+
 themes_none=Yok - temanın karar vermesine izin ver
 themes_overdesc=Kaplamalar renkleri, arka planları ve simgeleri değiştirerek temanın görünümünü değiştirir. Düzeni değiştirmezler.
 themes_overlay=Geçerli yer paylaşımı :
@@ -292,19 +312,25 @@ themes_taboverlay=Yer paylaşımını değiştir
 themes_tabinstall=TEMAYI yükle
 themes_tabdelete=Temaları sil
 themes_tabexport=Temaları dışa aktarma
+
 themes_line=$2 içindeki $1 ($3 kB)
 themes_ok2=Tema yer paylaşımı başarıyla değişti.. Webmin dizin sayfasına yönlendiriliyor.
 themes_err4=Yer paylaşımı teması değiştirilemedi
 themes_eoverlay=Seçilen yer paylaşımı geçerli genel temayla uyumlu değil
+
 themes_desc4=Yüklü temalar aşağıdaki formu kullanarak bir wbt.gz dosyası olarak dışa aktarılabilir. Bir tema dosyası daha sonra Webmin çalıştıran başka bir sisteme kurulabilir.
 themes_exportmods=Dışa aktarılacak temalar
 themes_exportok=Seçilen Temaları Dışa Aktar
+
 referers_none2=UYARI: Bu, sisteminizi XSS saldırılarına kadar açar!
 referers_err=Yönlendiriciler kaydedilemedi
 referers_ehost='$1' geçerli bir güvenilir ana bilgisayar adı değil
+
 update_fixes=Sorunu giderir
 update_mtype=$1 modülü, bir $2 paketinden yüklendiği için güncellenemiyor
+
 third_title=Üçüncü Taraf Modülünü Seçin
+
 ipkey_title1=SSL Anahtarı Oluştur
 ipkey_title2=SSL Anahtarını Düzenle
 ipkey_header=IP'ye özgü SSL anahtarı ayrıntıları
@@ -314,6 +340,7 @@ ipkey_eip2='$1' geçerli bir IP adresi veya ana bilgisayar adı değil
 ipkey_eips=IP adresi girilmedi
 ipkey_eextracas=Ek sertifika dosyası girilmedi
 ipkey_eextraca=Ek sertifika dosyası $1 mevcut değil
+
 descs_title=Modül Başlıkları
 descs_info=Bu sayfa, standart açıklamalarını geçersiz kılmak için Webmin modülleri için alternatif başlıklar belirtmenize olanak tanır.
 descs_mod=modül
@@ -323,11 +350,13 @@ descs_cdesc=Klon başlığı
 descs_err=Modül başlıkları kaydedilemedi
 descs_edesc='$1' modülü için başlık eksik
 descs_etitle='$1' klonu için eksik başlık
+
 export_err=Modüller dışa aktarılamadı
 export_ecmd=Gerekli eksik komut $1
 export_efile=Eksik veya geçersiz dışa aktarma dosyası
 export_done=Seçilen modüller başarıyla $1 öğesine dışa aktarıldı.
 export_title=İhracat Modülleri
+
 advanced_title=Gelişmiş seçenekler
 advanced_header=Gelişmiş ve deneysel seçenekler
 advanced_temp=Geçici dosyalar dizini
@@ -371,10 +400,13 @@ advanced_listdir=Dizin dosyası olmadan dizinler listelenir mi?
 advanced_headers=Ekstra HTTP başlıkları
 advanced_eheader=Üstbilgiler <tt>Üstbilgi: Değer</tt> gibi biçimlendirilmelidir
 advanced_sortconfigs=Yapılandırma dosyaları anahtarlarına göre sıralanmış olarak kaydedilsin mi?
+
 syslog_errorlog=Webmin hata günlüğü
+
 clear_title=İndirme Önbelleğini Temizle
 clear_done=$2 URL'lerinden $1 dosya içeren Webmin önbelleği başarıyla temizlendi.
 clear_none=Şu anda Webmin indirme önbelleğinde URL yok.
+
 savekey_err=Yeni anahtar kaydedilemedi
 savekey_ekey=Eksik veya geçersiz PEM biçim anahtarı
 savekey_ecert=Eksik veya geçersiz PEM biçiminde sertifika
@@ -384,6 +416,7 @@ savekey_title=Mevcut Anahtarı Yükle
 savekey_done2=Sağlanan SSL anahtarı $1 klasörüne ve $2 klasörüne kaydedildi.
 savekey_done=Sağlanan SSL anahtarı ve sertifikası $1 dosyasına kaydedildi.
 savekey_done3=Sağlanan zincirleme SSL sertifikası $1 dosyasına kaydedildi.
+
 cache_title=Önbelleğe alınan URL'ler
 cache_search=Şunları içeren URL'leri bulun:
 cache_ok=Arama
@@ -396,8 +429,10 @@ cache_delete=Önbellekten Seçilenleri Temizle
 cache_err=Önbelleğe alınmış URL'ler temizlenemedi
 cache_enone=Hiçbiri seçilmedi
 cache_efile=Geçersiz dosya adı
+
 restart_title=Webmin yeniden başlatılıyor
 restart_done=Webmin sunucusu işlemi yeniden başlatılıyor - devam etmeden önce lütfen birkaç saniye bekleyin.
+
 mobile_title=Mobil Cihaz Seçenekleri
 mobile_header=Mobil tarayıcılar için seçenekler
 mobile_theme=Mobil tarayıcılar için tema
@@ -406,6 +441,7 @@ mobile_nosession=HTTP kimlik doğrulaması kullanılmaya zorlanıyor mu?
 mobile_agents=Mobil tarayıcılar için ek kullanıcı aracıları
 mobile_err=Mobil cihaz seçenekleri kaydedilemedi
 mobile_prefixes=Mobil tarayıcılar için URL ana bilgisayar adı önekleri
+
 blocked_title=Engellenen Ana Bilgisayarlar ve Kullanıcılar
 blocked_type=tip
 blocked_who=Ana bilgisayar adı veya kullanıcı adı
@@ -417,9 +453,11 @@ blocked_host=İstemci ana bilgisayarı
 blocked_clear=Tüm Blokları Temizle
 blocked_cleardesc=Webmin sunucusu işlemini yeniden başlatarak mevcut tüm ana bilgisayar ve kullanıcı bloklarını temizlemek için bu düğmeyi tıklatın.
 blocked_restarting=Webmin sunucusu işlemi engellenen ana bilgisayarları ve kullanıcıları temizlemek için yeniden başlatılıyor. Lütfen devam etmeden önce birkaç saniye bekleyin.
+
 refreshmods_title=Modülleri Yenile
 refreshmods_installed=Kullanılabilir Webmin modülleri kontrol ediliyor ..
 refeshmods_counts=.. yüklü uygulamalarda $2 bulundu, $1 kurulu değil.
+
 debug_title=Hata Ayıklama Günlük Dosyası
 debug_header=Webmin hata ayıklama günlük dosyası seçenekleri
 debug_enabled=Hata ayıklama günlüğü etkin mi?
@@ -447,6 +485,7 @@ debug_cmd=Komut satırı
 debug_cron=Arka plan işleri
 debug_inmods=Hata ayıklama günlükleri yazmak için modüller
 debug_emodules=Seçilenler için hata ayıklanacak modül yok
+
 notif_passexpired=Webmin şifrenizin süresi doldu! Bir sonraki girişte değiştirmek zorunda kalacaksınız.
 notif_passchange=Webmin şifreniz en son $1 tarihinde değiştirildi ve $2 gün içinde değiştirilmelidir.
 notif_passlock=Webmin şifreniz en son $1 sayfasında değiştirildi ve hesabınız değiştirilmezse $2 gün içinde kilitlenecek.
@@ -462,6 +501,7 @@ notify_updatedesc=Sorunu giderir
 notif_updateok=Güncelleştirmeleri Şimdi Yükle
 notif_reboot=Son paket güncellemeleri (yeni çekirdek sürümü gibi), tamamen yeniden başlatılmasını gerektirir.
 notif_rebootok=Şimdi yeniden başlat
+
 status_title=Arka Plan Durum Koleksiyonu
 status_header=Durum toplama işi ayarları
 status_interval=Sistem durumu arka planda toplanıyor mu?
@@ -473,6 +513,7 @@ status_temp=Sürüş sıcaklıkları toplansın mı?
 status_units=Sıcaklık birimleri
 status_celsius=Selsius
 status_fahrenheit=fahrenhayt
+
 sendmail_title=E-mail göndermek
 sendmail_desc=Bu sayfa, Webmin'in zamanlanmış yedeklemeler veya arka plan izleme gibi e-postaları nasıl göndereceğini denetler. Ayrıca Kullanıcı Postalarını Oku modülü kullanılarak gönderilen e-postaları da etkiler.
 sendmail_header=Posta gönderme seçenekleri
@@ -513,12 +554,14 @@ sendmail_url=E-postada kullanım için Webmin URL'si
 sendmail_url_def=Varsayılan ($1)
 sendmail_url_custom=Özel URL
 sendmail_eurl=Eksik veya geçersiz özel URL
+
 testmail_title=Test E-postası Gönder
 testmail_err=Test mesajı gönderilemedi
 testmail_eto=Hedef adresi girilmedi
 testmail_sending=$1 'den $2' ye mesaj gönderme.
 testmail_done=.. mesajı gönderildi. Gerçekten teslim edildiğinden emin olmak için hedef adresin posta kutusunu kontrol edin.
 testmail_failed=.. gönderme başarısız : $1
+
 web_title=Web Sunucusu Seçenekleri
 web_header=Webmin'in yerleşik web sunucusu için seçenekler
 web_expires=Statik dosyalar için istemci tarafı önbellek süresi
@@ -530,6 +573,7 @@ web_expirespaths=URL yolunu temel alan istemci tarafı önbellek süreleri
 web_expirespath=Yol düzenli ifadesi
 web_expirestime=Saniye cinsinden önbellek süresi
 web_eexpires2=$1 satırında eksik veya sayısal olmayan istemci tarafı önbellek süresi
+
 webmincron_title=Webmin Zamanlanmış İşlevleri
 webmincron_emodule=Webmin Cron Jobs modülü kurulu değil!
 webmincron_module=Webmin modülü
@@ -553,6 +597,7 @@ webmincron_when1=Belirli zamanlar
 webmincron_secs=saniye
 webmincron_err=Zamanlanmış işlev kaydedilemedi
 webmincron_einterval=Aralık, sıfırdan birkaç saniye daha uzun olmalıdır
+
 twofactor_title=İki Faktörlü Kimlik Doğrulama
 twofactor_header=İki faktörlü kimlik doğrulama seçenekleri
 twofactor_provider=Kimlik doğrulama sağlayıcısı
@@ -591,6 +636,7 @@ twofactor_secret1=Rastgele oluşturuldu
 twofactor_secret0=16 karakterli anahtar kullanın
 twofactor_esecret=Gizli anahtar tam olarak 16 karakter uzunluğunda olmalı ve yalnızca harf ve rakam içermelidir
 twofactor_esession=Oturum tabanlı kimlik doğrulama etkin olmadığı sürece iki faktörlü kimlik doğrulama kullanılamaz
+
 letsencrypt_title=Sertifika İsteğini Şifreleyelim
 letsencrypt_err=Sertifika istenemedi
 letsencrypt_ecmds=Sisteminizde <tt>certbot</tt> istemcisini şifreleyelim veya <tt>python</tt> komutu bulunamadı
@@ -624,5 +670,6 @@ letsencrypt_ecsr=CSR oluşturulamadı : $1
 letsencrypt_ekeygen=Özel anahtar oluşturulamadı : $1
 letsencrypt_enative=Yerel Let's Encrypt istemcisi (certbot) daha önce bu sistemde kullanıldı ve gelecekteki tüm sertifika istekleri için kullanılmalıdır
 letsencrypt_eacmedns=Yalnızca resmi Let's Encrypt istemcisi DNS tabanlı doğrulamayı destekler
+
 announce_hide=Bu Duyuruyu Gizle
 alert_hide=Uyarıyı Gizle

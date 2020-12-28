@@ -19,11 +19,13 @@ index_force=Forza rotazione del registro
 index_forcedesc=Forza la rotazione immediata di tutti i file di registro, anche se non è ancora il momento.
 index_logrotate=logrotate
 index_delete=Elimina rotazioni di registro selezionate
+
 period_daily=Quotidiano
 period_weekly=settimanalmente
 period_monthly=Mensile
 period_never=Mai
 period_bytes=byte
+
 edit_title1=Modifica file di registro
 edit_title2=Crea file di registro
 edit_header=Dettagli del file di registro ruotati
@@ -62,8 +64,10 @@ edit_pre=Comandi da eseguire prima della rotazione
 edit_default=Predefinito ($1)
 edit_sharedscripts=Eseguire gli script una sola volta per tutti i file?
 edit_now=Ruota ora
+
 global_title=Opzioni globali
 global_header=Opzioni predefinite per tutti i file di registro
+
 save_err=Impossibile salvare il registro
 save_efile=Nome file registro mancante o non valido
 save_esize=Dimensione massima mancante o non valida
@@ -81,6 +85,7 @@ save_eerrors=Indirizzo email mancante per messaggi di errore
 save_epre=Lo script di pre-rotazione non può contenere una riga <tt>endscript</tt> o <tt>endrotate</tt>
 save_epost=Lo script post-rotazione non può contenere una riga <tt>endscript</tt> o <tt>endrotate</tt>
 save_enofiles=Nessun file da ruotare inserito
+
 log_modify_sched=Rotazione registro modificata Processo cron
 log_create_sched=Processo cron di rotazione registro creato
 log_delete_sched=Rot cron log cancellato
@@ -89,6 +94,7 @@ log_create=Aggiunta rotazione per il file di registro $1
 log_modify=Rotazione modificata per il file di registro $1 
 log_delete=Rotazione eliminata per il file di registro $1 
 log_delete_logs=Rotazione eliminata per i file di registro $1 
+
 sched_title=Pianificazione rotazione registro
 sched_desc=Per eseguire la rotazione del registro configurata utilizzando questo modulo, il comando $1 deve essere eseguito su una pianificazione regolare (in genere giornaliera) da Cron.
 sched_runparts=Attualmente, il comando di rotazione del registro viene eseguito dallo script $1 $2 e non può essere modificato.
@@ -98,10 +104,12 @@ sched_enabled=Abilitato, a volte sotto.
 sched_save=Aggiorna Cron Job
 sched_err=Impossibile salvare il programma di rotazione
 sched_when=Tempi per correre
+
 force_title=Forza rotazione del registro
 force_doing=Forzare l'immediata rotazione di tutti i file di registro.
 force_doingone=Forzare la rotazione immediata di un file di registro.
 force_done=.. fatto.
 force_failed=.. fallito! Vedere l'output sopra per il motivo.
+
 delete_err=Impossibile eliminare i registri
 delete_enone=Nessuno selezionato

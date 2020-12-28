@@ -10,6 +10,7 @@ index_range=Sukurti ataskaitą pagal dienų seką
 index_view=Peržiūrėti sugeneruotą ataskaitą
 index_viewdesc=Peržiūrėkite naujausią sugeneruotą ataskaitą kataloge $1.
 index_return=modulio rodyklė
+
 log_title=Žurnalo šaltinis ir ataskaitos tikslas
 log_header=Šaltinio kalmarų žurnalo failas ir sugeneruotos ataskaitos parinktys
 log_access_log=Šaltinio kalmarų žurnalo failas
@@ -30,6 +31,7 @@ log_elastlog=Nėra numerio arba jo nėra
 log_eemail=Nėra elektroninio pašto adreso arba jis netinkamas
 log_emailx=Nėra pašto programos arba jos nėra
 log_squidguard_log_path=„SquidGuard“ žurnalo failas
+
 style_title=Ataskaitos stilius
 style_header=HTML ataskaitos stiliaus ir spalvų parinktys
 style_title2=Ataskaitos pavadinimas
@@ -54,6 +56,7 @@ style_efont=Trūksta arba netinkamas šrifto vardas
 style_esize=Trūksta arba netinkamas vaizdo plotis ir aukštis
 style_language=Ataskaitos kalba
 style_charset=Pranešti apie simbolių rinkinį
+
 report_title=Ataskaitos parinktys
 report_header=Pranešti apie turinį ir generavimo galimybes
 report_resolve_ip=Išspręsti IP adresus?
@@ -134,6 +137,7 @@ report_echar=Tarpai neleidžiami
 report_estring=Trūksta arba netinkamas pakeitimo tekstas
 report_eselect=Nieko nepasirinkta
 report_eenter=Niekas neįėjo
+
 sched_title=Suplanuota ataskaitų generavimas
 sched_header=Suplanuotos ataskaitų teikimo galimybės
 sched_sched=Suplanuota ataskaita įjungta?
@@ -148,9 +152,11 @@ sched_rsel=Tie, nuo $1 iki $2 dienų
 sched_err=Nepavyko išsaugoti suplanuotos ataskaitos generavimo
 sched_erfrom=Trūksta arba netinkamas pradžios dienų skaičius
 sched_erto=Trūksta arba netinkamas pabaigos dienų skaičius
+
 view_title=Sargo ataskaita
 view_efile=Neteisingas failo pavadinimas!
 view_eopen=Nepavyko atidaryti ataskaitos failo
+
 gen_title=Sukurti ataskaitą
 gen_header=Dabar kuriu „Sarg“ ataskaitą iš kalmarų žurnalo failo $1 ir visų pasuktų versijų ..
 gen_done=.. padaryta
@@ -160,6 +166,7 @@ gen_view=Žiūrėti užpildytą ataskaitą.
 gen_err=Nepavyko sugeneruoti ataskaitos
 gen_efrom=Trūksta arba netinkama nuo dienos
 gen_eto=Trūksta arba netinkama šią dieną
+
 webmin_log_log=Atnaujintos žurnalo šaltinio ir ataskaitos apie kelionės tikslą parinktys
 webmin_log_report=Atnaujintos ataskaitos parinktys
 webmin_log_style=Atnaujintos ataskaitos stiliaus parinktys

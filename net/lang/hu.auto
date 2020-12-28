@@ -4,9 +4,12 @@ bifc_bridgestp=Átfogó fa protokoll
 bifc_bridgefd=Előre késleltetés
 bifc_bridgewait=Késés, hogy elérhetővé váljon
 bifc_ebond=A kötvény interfésznek számnak kell lennie
+
 bonding_teampartsdesc=Különálló partnerek fehérekkel, pl. "eth2 eth4"
 bonding_primary=Elsődleges interfész
 bonding_primarydesc=Csak aktív biztonsági mentés, balance-tlb vagy balance-alb csoportosítási módok esetén alkalmazható
 bonding_miimondesc=(Hagyja üresen a link figyelésének letiltását)
+
 hosts_active=Engedélyezve van?
+
 acl_sysinfo=Mutassa a rendelkezésre álló hálózati interfészeket az irányítópulton

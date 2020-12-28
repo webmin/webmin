@@ -2,6 +2,7 @@ index_title=NIS klients un serveris
 index_return=NIS izvēlne
 index_enis=Šķiet, ka jūsu mašīnā nav instalēts NIS klienta vai servera atbalsts.
 index_enis2=Būs izmantojama tikai šī moduļa klientu pakalpojumu funkcija.
+
 client_title=NIS klients
 client_header=NIS klienta konfigurācija
 client_domain=NIS domēns
@@ -17,10 +18,12 @@ client_eserver='$1' nav derīgs servera nosaukums
 client_eypwhich=neizdevās izveidot saiti ar NIS domēnu
 client_ehosts=“$1” nav saimniekdatoru failā
 client_enis=Šķiet, ka jūsu mašīnā nav instalēts NIS klientu atbalsts.
+
 switch_title=Klientu pakalpojumi
 switch_service=apkalpošana
 switch_srcs=Datu avoti
 switch_return=klientu apkalpošana
+
 order_=&nbsp;
 order_nisplus=NIS +
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Hesiods
 order_ldap=LDAP
 order_user=Lietotāju printeri
 order_xfn=XFN
+
 server_title=NIS serveris
 server_header=NIS servera opcijas
 server_boot=Vai iespējot NIS serveri?
@@ -65,6 +69,7 @@ server_solaris=Piezīme. Solaris klienta un servera NIS domēni vienmēr ir vien
 server_edir=Nederīgs avota failu direktorijs
 server_epwdir=Nederīgs paroles avota failu direktorijs
 server_enis=Šķiet, ka jūsu mašīnā nav instalēts NIS servera atbalsts.
+
 tables_title=NIS galdi
 tables_switch=Rediģēt NIS tabulu :
 tables_header=$1 NIS tabula no $2 
@@ -81,6 +86,7 @@ tables_search=Meklēt
 tables_nomatch=Jūsu meklēšanai neatbilda neviens ieraksts
 tables_build=Atjaunojiet NIS tabulas
 tables_buildmsg=Noklikšķiniet uz šīs pogas, lai atjaunotu NIS datu bāzes no tabulas datiem. Ja esat veicis kādas izmaiņas, jums tas būs jādara, lai tās būtu pieejamas NIS klientiem.
+
 desc_aliases=Sendmail aizstājvārdi
 desc_mail=Sendmail aizstājvārdi
 desc_hosts=Resursdatora adreses
@@ -116,6 +122,7 @@ desc_printers=Printeri
 desc_ipnodes=IP mezgli
 desc_timezone=Laika zonas
 desc_locale=Locales
+
 hosts_title=Resursdatora adrese
 hosts_ip=IP adrese
 hosts_name=Resursdatora nosaukums
@@ -124,6 +131,7 @@ hosts_err=Neizdevās saglabāt resursdatoru
 hosts_eip=Trūkst vai nav derīga IP adrese
 hosts_ename=Trūkst vai nav derīgs resursdatora nosaukums
 hosts_aliases=Pseidonīmi
+
 group_name=Grupas nosaukums
 group_gid=Grupas ID
 group_members=Grupas biedri
@@ -134,6 +142,7 @@ group_none=Parole nav nepieciešama
 group_encrypted=Iepriekš šifrēta parole
 group_clear=Parasta parole
 group_err=Neizdevās saglabāt grupu
+
 passwd_name=Lietotājvārds
 passwd_uid=Lietotāja ID
 passwd_real=Īstais vārds
@@ -171,6 +180,7 @@ passwd_emax=Nederīgs maksimālais dienu skaits
 passwd_emin=Nederīgs minimālais dienu skaits
 passwd_einactive=Nederīgs neaktīvo dienu skaits
 passwd_eexpiry=Derīgs derīguma termiņš
+
 services_name=Pakalpojuma nosaukums
 services_proto=Protokols
 services_port=Osta
@@ -179,6 +189,7 @@ services_header=Iekšējās tīkla pakalpojumu iespējas
 services_err=Neizdevās saglabāt pakalpojumu
 services_ename=Trūkst vai nav derīgs pakalpojuma nosaukums
 services_eport=Trūkst vai nav derīgs ports
+
 protocols_name=Protokola nosaukums
 protocols_number=Skaits
 protocols_aliases=Pseidonīmi
@@ -187,6 +198,7 @@ protocols_header=Tīkla protokola iespējas
 protocols_err=Neizdevās saglabāt protokolu
 protocols_ename=Trūkst vai nav derīgs vārds
 protocols_enumber=Trūkst vai nav derīgs numurs
+
 netgroup_name=Tīkla grupas nosaukums
 netgroup_members=Locekļi
 netgroup_title=Tīkla grupa
@@ -201,6 +213,7 @@ netgroup_ename=Trūkst vai nav derīgs tīkla grupas nosaukums
 netgroup_ehost=Trūkst vai nav derīgs resursdators rindā $1 
 netgroup_euser=Trūkst vai nav derīgs lietotājs rindā $1 
 netgroup_edom=Trūkst vai nav derīgs NIS domēns rindā $1 
+
 ethers_mac=Ethernet adrese
 ethers_ip=IP adrese
 ethers_title=Ethernet adrese
@@ -208,6 +221,7 @@ ethers_header=Ethernet kartēšanas iespējas
 ethers_err=Neizdevās saglabāt Ethernet adresi
 ethers_emac=Nederīga Ethernet adrese
 ethers_eip=Nederīga IP adrese
+
 rpc_name=Programmas nosaukums
 rpc_number=Skaits
 rpc_aliases=Pseidonīmi
@@ -216,6 +230,7 @@ rpc_header=RPC programmas informācija
 rpc_err=Neizdevās saglabāt RPC programmu
 rpc_ename=Trūkst vai nav derīgs programmas nosaukums
 rpc_enumber=Trūkst vai nav derīgs numurs
+
 networks_title=Tīkla adrese
 networks_ip=IP adrese
 networks_name=Tīkla nosaukums
@@ -224,6 +239,7 @@ networks_err=Neizdevās saglabāt tīklu
 networks_eip=Trūkst vai nav derīga IP adrese
 networks_ename=Trūkst vai nav derīgs vārds
 networks_aliases=Pseidonīmi
+
 netmasks_net=Tīkla adrese
 netmasks_mask=Netmasks
 netmasks_title=Netmasks
@@ -231,6 +247,7 @@ netmasks_header=Tīkla maskas informācija
 netmasks_err=Neizdevās saglabāt tīkla masku
 netmasks_enet=Trūkst vai nav derīga tīkla adrese
 netmasks_emask=Trūkst vai nav derīgs tīkla masks
+
 aliases_from=Adrese
 aliases_to=Pseidonīms
 aliases_title=Sendmail Alias
@@ -238,6 +255,7 @@ aliases_header=Sūtīt pasta aizstājvārda informāciju
 aliases_err=Neizdevās saglabāt aizstājvārdu
 aliases_efrom=Trūkst vai nav norādīta adrese
 aliases_eto=Trūkst adreses
+
 security_title=Servera drošība
 security_header=NIS servera drošības iespējas
 security_ok=Saglabājiet un piesakieties
@@ -266,6 +284,7 @@ security_sec_des=Nepieciešama DES
 security_ehost='$1' nav derīgs resursdatora nosaukums
 security_emap='$1' nav derīga NIS tabula
 security_efield='$1' nav derīgs lauka numurs
+
 eswitch_title=Rediģēšanas pakalpojums
 eswitch_egone=Pakalpojums neeksistē!
 eswitch_header=Informācija par pakalpojumu

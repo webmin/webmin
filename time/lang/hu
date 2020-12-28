@@ -9,6 +9,7 @@ index_sync=Ütemezés és elfogadás
 index_hardware2=Beállítsam a hardverórát is
 index_tzheader=Időzóna
 index_tz=Időzóna módosítása erre
+
 action_save=Mentés
 action_apply=Érvényesítés
 action_sync=A rendszeridő szinkronizációja a hardwareórával
@@ -16,6 +17,7 @@ action_sync_s=A hardwareóra szinkronizációja a rendszeridővel
 action_timeserver_sys=Rendszeridő szinkronizálása
 action_timeserver_hw=Hardwareóra szinkronizálása
 action_savezone=Időzóna megváltoztatása
+
 acl_sys=A felhasználó át tudja állítani a rendszeridőt
 acl_hw=A felhasználó át tudja állítani a hardwareórát
 acl_timezone=A felhasználó beállíthatja az időzónát?
@@ -26,18 +28,22 @@ acl_error=Önnek van hozzáférése a rendszeridő modulhoz, de sem a rendszerid
 acl_nosys=Önnek nincs jogosultásga a rendszeridő átállításához
 acl_nohw=Önnek nincs jogosultsága a hardwareóra átállításához
 acl_nontp=Önnek nincs engedélyezve, hogy szinkronizáljon az időszerverrel
+
 sys_title=Rendszeridő
 hw_title=Hardwareidő
+
 day=Nap
 month=Hónap
 date=Hanyadika
 hour=Óra
 year=Év
+
 error_cnf=Hiba : $1 parancs nem létezik
 error_hw=A hardwareóra beállítása nem sikerült : $1
 error_sync=A rendszeridővel történő szinkronizáció nem sikerült : $1
 error_ediff=Az időszerver által adott és a lokális szerver ideje közötti különbség túl nagy: $1 nap
 error_entp=NTP időszinkronizálás sikertelen: $1
+
 log_set_date=Rendszeridő beállítsa $1 -ra
 log_set_hwclock=Hardveróra beállítása $1 -ra
 log_remote_date=Lekért rendszeridő a $2 -ról
@@ -47,6 +53,7 @@ log_remote_hwclock_l=Lekért hardveridő $1 a $2 -ról
 log_sync=Szinkronizálja a rendszeridőt a hardveridővel
 log_sync_s=Szinkronizálja a hardveridőt a rendszeridővel
 log_timezone=Időzóna módosítása $1 -re
+
 timezone_err=Nem lehet elmenteni az időzónát
 timezone_ecannot=Önnek nincs engedélyezve a időzóna beállítása
 timezone_enone=Nem lett időzóna kiválasztva

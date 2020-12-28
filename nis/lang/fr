@@ -2,6 +2,7 @@ index_title=Client et Serveur NIS
 index_return=Menu NIS
 index_enis=Il semble qu'aucun client ou serveur NIS n'a été installé sur votre machine.
 index_enis2=Seule la fonction de service client de ce module sera utilisable.
+
 client_title=Client NIS
 client_header=Configuration du client NIS
 client_domain=Domaine NIS
@@ -17,10 +18,12 @@ client_eserver='$1' n'est pas un nom de serveur valide
 client_eypwhich=échec de l'attachement au domaine NIS
 client_ehosts='$1' n'est pas présent dans le fichier hosts
 client_enis=Votre ordinateur ne semble pas avoir pris en charge le client NIS.
+
 switch_title=Services client
 switch_service=Service
 switch_srcs=Source d'information
 switch_return=services clients
+
 order_=&nbsp;
 order_nisplus=NIS+
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=Imprimantes utilisateur
 order_xfn=XFN
+
 server_title=Serveur NIS
 server_header=Option du serveur NIS
 server_boot=Activer le serveur NIS ?
@@ -65,6 +69,7 @@ server_solaris=Note - sur Solaris, le domaine du client et du serveur NIS sont t
 server_edir=Répertoire de fichiers de sources invalide.
 server_epwdir=Répertoire de fichiers de mots de passes de sources invalide
 server_enis=Il semble qu'aucun serveur NIS n'ait été installé sur votre machine.
+
 tables_title=Tables NIS
 tables_switch=Éditez la table NIS :
 tables_header=Table NIS des $1 de $2
@@ -81,6 +86,7 @@ tables_search=Chercher
 tables_nomatch=Aucun enregistrement ne correspond à votre recherche
 tables_build=Reconstruire les tables NIS
 tables_buildmsg=Cliquez sur ce bouton pour reconstruire les bases de données NIS à partir des données de la table. Si vous avez apporté des modifications, vous devrez le faire pour les mettre à la disposition des clients NIS.
+
 desc_aliases=Alias Sendmail
 desc_mail=Alias Sendmail
 desc_hosts=Adresses de machines
@@ -116,6 +122,7 @@ desc_printers=Imprimantes
 desc_ipnodes=Noeuds IP
 desc_timezone=Zones temporelles (Timezones)
 desc_locale=Locales
+
 hosts_title=Adresse de la machine
 hosts_ip=Adresse IP
 hosts_name=Nom de machine
@@ -124,6 +131,7 @@ hosts_err=Échec de la sauvegarde de la configuration de la machine
 hosts_eip=Adresse IP manquante ou invalide
 hosts_ename=Nom de machine manquant ou invalide
 hosts_aliases=Alias
+
 group_name=Nom de groupe
 group_gid=ID de groupe
 group_members=Membres du groupe
@@ -134,6 +142,7 @@ group_none=Aucun mot de passe nécessaire
 group_encrypted=Mot de passe préencrypté
 group_clear=Mot de passe normal
 group_err=Échec de la sauvegarde de la configuration du groupe
+
 passwd_name=Nom d'utilisateur
 passwd_uid=ID d'utilisateur
 passwd_real=Identité
@@ -171,6 +180,7 @@ passwd_emax=Nombre maximum de jours invalide
 passwd_emin=Nombre minimum de jours invalide
 passwd_einactive=Nombre de jours d'inactivité invalide
 passwd_eexpiry=Date d'expiration ivalide
+
 services_name=Nom de service
 services_proto=Protocole
 services_port=Port
@@ -179,6 +189,7 @@ services_header=Options de service réseau inetd
 services_err=Échec de la sauvegarde de la configuration du service
 services_ename=Nom de service manquant ou invalide
 services_eport=Port manquant ou invalide
+
 protocols_name=Nom de protocole
 protocols_number=Numéro
 protocols_aliases=Alias
@@ -187,6 +198,7 @@ protocols_header=Options de protocole réseau
 protocols_err=Échec de la sauvegarde de la configuration du protocole
 protocols_ename=Nom manquant ou invalide
 protocols_enumber=Numéro manquant ou invalide
+
 netgroup_name=Nom de groupe réseau
 netgroup_members=Membres
 netgroup_title=Groupe réseau
@@ -201,6 +213,7 @@ netgroup_ename=Nom de groupe réseau manquant ou invalide
 netgroup_ehost=Nom de machine manquant ou invalide à la ligne $1
 netgroup_euser=Utilisateur manquant ou invalide à la ligne $1
 netgroup_edom=Domaine NIS manquant ou invalide à la ligne $1
+
 ethers_mac=Adresse ethernet
 ethers_ip=Adresse IP
 ethers_title=Adresse ethernet
@@ -208,6 +221,7 @@ ethers_header=Option de correspondance des adresses ethernet
 ethers_err=Échec de la sauvegarde de la configuration de l'adresse ethernet
 ethers_emac=Adresse ethernet invalide
 ethers_eip=Adresse IP invalide
+
 rpc_name=Nom de programme
 rpc_number=Numéro
 rpc_aliases=Alias
@@ -216,6 +230,7 @@ rpc_header=Précisions sur le programme RPC
 rpc_err=Échec de la sauvegarde de la configuration du programme RPC
 rpc_ename=Nom de programme manquant ou invalide
 rpc_enumber=Numéro manquant ou invalide
+
 networks_title=Adresse du réseau
 networks_ip=Adresse IP
 networks_name=Nom du réseau
@@ -224,6 +239,7 @@ networks_err=Échec de la sauvegarde des paramètres réseau
 networks_eip=Adresse IP manquante ou invalide
 networks_ename=Nom manquant ou invalide
 networks_aliases=Alias
+
 netmasks_net=Adresse réseau
 netmasks_mask=Masque de réseau
 netmasks_title=Masque de réseau
@@ -231,6 +247,7 @@ netmasks_header=Précision des masques de réseau
 netmasks_err=Échec de la sauvegarde du masque de réseau
 netmasks_enet=Adresse réseau manquante ou invalide
 netmasks_emask=Manque de réseau manquant ou invalide
+
 aliases_from=Adresse
 aliases_to=Alias to
 aliases_title=Alias de Sendmail
@@ -238,6 +255,7 @@ aliases_header=Précision des alias de Sendmail
 aliases_err=Échec de la sauvegarde de l'alias
 aliases_efrom=Adresses manquantes ou invalides
 aliases_eto=Adresses to manquantes
+
 security_title=Sécurité du serveur
 security_header=Options de sécurité du serveur NIS
 security_ok=Sauvegarder et actionner
@@ -266,6 +284,7 @@ security_sec_des=Exiger DES
 security_ehost='$1' n'est pas un nom de machine valide
 security_emap='$1' n'est pas une table NIS valide
 security_efield='$1' n'est pas un numéro de champ valide
+
 eswitch_title=Modifier le service
 eswitch_egone=Le service n'existe pas!
 eswitch_header=Détails du service

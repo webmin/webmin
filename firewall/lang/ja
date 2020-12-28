@@ -57,6 +57,7 @@ index_auto4=SSH,IDENT,ping 1024以上のポート以外の接続を遮断する 
 index_auto=ファイヤウォールを設定する
 index_add=追加
 index_shorewall=注意! ファイヤウォールの生成に Shorewall が使われています。 こちら<a href='$1'>Shoreline Firewall module</a>を使用してください
+
 desc_p=プロトコルが $1 である
 desc_p!=プロトコルが $1 でない
 desc_s=発信元が $1 である
@@ -106,9 +107,14 @@ desc_tos!=TOS(type of service)フィールドが $1 でない
 desc_conds=もし $1
 desc_and=且つ
 desc_always=常に
+
 redhat_eoutput=コマンド $1 で IPtablesのステータスを取得する際にエラーが発生しました。システムがIPtablesの代わりにIPchainsを使用している可能性があります
+
 gentoo_escript=Gentoo IPtables 起動スクリプト $1 がみつかりませんでした
+
 eiptables=不明なIPtables保存ファイル 行番号: $1
+eip6tables=不明なip6tables保存ファイル 行番号: $1
+
 edit_title1=ルールの追加
 edit_title2=ルールの編集
 edit_title3=ルールの複製
@@ -168,6 +174,7 @@ edit_after=ルール $1 の後
 edit_args=追加パラメータ
 edit_rwith=拒否するICMPタイプ
 edit_rwithtype=$1 タイプ
+
 save_err=ルールの保存に失敗しました
 save_echain=不正な実行チェインです
 save_esource=不正な発信元のアドレスまたはネットワークです
@@ -209,16 +216,21 @@ save_esipto=送信元変換(SNAT)対象範囲の終了ポートが不正です
 save_espfrom=送信元変換(SNAT)対象範囲の開始ポートが不正です
 save_espto=送信元変換(SNAT)対象範囲の終了ポートが不正です
 save_estates=接続状態が選択されていません
+
 delete_title=チェインの削除
 delete_rusure=チェイン $1 を削除しますか? チェインに含まれる $2 個のルールも削除されます
 delete_ok=削除
+
 clear_title=チェインをクリヤする
 clear_rusure=チェイン $1 の $2 ルールを削除しますか？
+
 new_err=チェインの作成に失敗しました
 new_ename=不正なチェイン名です
 new_etaken=この名前のチェインは既に存在します
+
 apply_err=設定の適用に失敗しました
 unapply_err=設定を元に戻せませんでした
+
 log_create_rule=テーブル $2 の チェイン $1 にルールを追加した
 log_modify_rule=テーブル $2 の チェイン $1 のルールを編集した
 log_delete_rule=テーブル $2 の チェイン $1 のルールを削除した
@@ -233,5 +245,5 @@ log_setup=ファイヤウォールを設定した
 log_convert=既存のファイヤウォールを変換した
 log_bootup=ファイヤウォールをシステム起動時に有効にした
 log_bootdown=ファイヤウォールをシステム起動時に無効した
+
 setup_eiface=外部ネットワークインタフェースがありません
-eip6tables=不明なip6tables保存ファイル 行番号: $1

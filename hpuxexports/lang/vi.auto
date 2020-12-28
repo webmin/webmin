@@ -14,6 +14,7 @@ index_ro_rw=tất cả các máy chủ truy cập đọc, máy chủ được ch
 index_sel_rw=máy chủ được chọn truy cập ghi
 index_all_rw=tất cả các máy chủ truy cập ghi
 index_sel_root=lựa chọn truy cập root máy chủ
+
 edit_title=Chỉnh sửa xuất
 create_title=Tạo xuất
 edit_details=Xuất chi tiết
@@ -56,6 +57,7 @@ edit_anon_access=Người dùng ẩn danh
 edit_anon_notset=Không được thiết lập
 edit_anon_noaccess=Không truy cập
 edit_async=Viết không đồng bộ
+
 save_err=Không thể lưu xuất
 save_edir=Thư mục '$1' không tồn tại
 save_enetgroup=Nhóm mạng không hợp lệ hoặc bị thiếu
@@ -65,6 +67,7 @@ save_ehost='$2' - '$1' không phải là tên máy chủ hợp lệ
 save_enohost='$1' - Bạn không liệt kê bất kỳ máy chủ nào
 save_euids=Các UID không tin cậy phải là danh sách các số hoặc phạm vi được phân tách bằng dấu phẩy
 save_egids=Các GID không tin cậy phải là danh sách các số hoặc phạm vi được phân tách bằng dấu phẩy
+
 log_modify=Xuất khẩu NFS đã sửa đổi $1 
 log_modify_l=Xuất khẩu NFS đã sửa đổi $1 thành $2 
 log_delete=Đã xóa xuất NFS $1 

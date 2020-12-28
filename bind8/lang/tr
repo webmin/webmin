@@ -47,6 +47,7 @@ index_sapplymsg=Seçili host üzerinde çalışan BIND sunucusunu tekrar başlat
 index_all=Bütün bölgeler
 index_massdelete=Seçili Öğeyi Sil
 index_bind=BIND
+
 master_title=Ana Bölgeyi Düzenle
 master_ecannot=Ana bölgeyi düzenlemek için izininiz yoktur
 master_eviewcannot=Bu görüntüde yeni bir bölge oluşturmaya yetkiniz yoktur
@@ -116,6 +117,7 @@ master_eserial=Seri numarası mutlaka rakamlardan oluşmalıdır
 master_apply=Değişiklikleri Uygula
 master_defttl=Kayıtlar için varsayılan TTL
 master_edefttl='$1' kayıtlar için geçerli bir TTL öndeğeri değildir
+
 delete_title=Bölge Sil
 delete_mesg=$1 bölgesini silmek istediğinizden emin misiniz? Bütün kayıtlar ve bölge silinecektir.
 delete_mesg2=Kök bölgesini silmek istediğinizden emin misiniz? DNS sunucunuz adresleri internette arayamayabilir?
@@ -124,6 +126,7 @@ delete_fwd=Diğer bölgelerdeki düz kayıtlar silinsin mi ?
 delete_onslave=Bağımlı sunuculardan da sileyim mi?
 delete_errslave=Ana bölge başarıyla silindi, ancak bağımlı bölgelerde hatalar oluştu : $1
 delete_ezone=Bağimlı sunucuda bölge bulunamadı
+
 mcreate_title=Ana Bölge Oluştur
 mcreate_ecannot=Ana bölge oluşturamazsınız
 mcreate_opts=Yeni ana bölge seçenekleri
@@ -135,6 +138,7 @@ mcreate_view=Görüntüde oluştur
 mcreate_file=Kayıt dosyası
 mcreate_auto=Otomatik
 mcreate_err=Bölge oluşturulmasında hata oluştu
+
 slave_title=Alt Bölgeleri Düzenle
 stub_title=Stub Bölge Düzenle
 slave_ecannot=Bu bölgeyi düzenlemek için izininiz yoktur
@@ -163,6 +167,7 @@ slave_delmsg=DNS sunucusundan bu bölgeyi silmek için bu tuşa tıklayın. Kayn
 slave_apply=Güncelleştirmeyi Zorunlu Kıl
 slave_last=Son transfer edilen : $1
 slave_never=Asla
+
 screate_title1=Alt Bölgeleri Oluştur
 screate_title2=Stub Bölge Oluştur
 screate_ecannot1=Alt bölge oluşturmak için izininiz yoktur
@@ -175,6 +180,7 @@ screate_rev=Ters (İsimlere Adresler)
 screate_dom=Alan adı / Ağ
 screate_err1=Alt bölgenin oluşturulmasında hata oluştu
 screate_err2=Stub bölgesinin oluşturulmasında hata oluştu
+
 recs_ecannot=Bu bölgede kayıtları değiştirmek için izininiz yoktur
 recs_ecannottype=Bu tip kayıtları düzenlemeye yetkiniz yoktur
 recs_title=$1 Kayıt
@@ -189,6 +195,7 @@ recs_vals=Değerleri
 recs_find=Kayıt eşleşmelerini göster:
 recs_search=Ara
 recs_drev=Ters kayıtları da sileyim mi?
+
 edit_title=$1 Düzenle
 edit_header=$1 içinde
 edit_edit=$1 Kaydını Düzenle
@@ -225,6 +232,7 @@ edit_elabel='$1'deki bir etiket çok uzun
 edit_eloc=Eksik enlem ve boylam
 edit_eweight='$1' geçerli bir servis ağırlığı değildir
 edit_eport='$1' geçerli bir port numarası değildir
+
 edit_etarget='$1' geçerli bir sunucu adı ya da adresi değildir
 edit_return=kayıt
 edit_ecname1=Veri kümesini ya da dosyayı gösteren alternatif kayıt adını, varolan kayıtla aynı isimde oluşturamazsınız.
@@ -244,12 +252,14 @@ edit_espfa='$1' üzerinden göndermek için geçerli bir host değildir
 edit_espfmx='$1' MX üzerinden göndermek için geçerli bir alan adı değildir
 edit_espfip='$1' üzerinden göndermek için geçerli IP adresi veya IP/önadı değildir
 edit_espfinclude='$1' üzerinden göndermek için geçerli bir ek alan adı değildir
+
 text_title=Kayıt Dosyasını Düzenle
 text_title2=Görüntü Kayıt Dosyası
 text_desc2=Bu sayfa, ana (master) sunucudan transfer edildiğinde BIND tarafından oluşturulmuş olan $1 DNS kayıt dosyasını gösteriyor.
 text_undo=Geri Al
 text_ecannot=Kayıt dosyalarını düzenlemek için izininiz yoktur
 text_none=Dosya boş görünüyor, muhtemelen ana (master) sunucudan gönderilen bölge henüz transfer edilemedi.
+
 restart_err=Değişiklikleri uygularken hata oluştu
 restart_ecannot=BIND'i yeniden başlatmak için izininiz yoktur
 restart_epidfile=$1'de BIND PID bulamadı
@@ -258,10 +268,12 @@ restart_erunning2=$1 bağımlı sunucuda BIND calışıyor görünmüyor
 restart_endc=NDC komutunda hata oluştu : $1
 restart_ecmd=Yeniden başlatma komutunda hata oluştu : $1
 restart_eversion=$1 bağımlı sunucusu Webmin versiyon $2 veya daha üstünü çalıştırmıyor
+
 start_ecannot=BIND'i başlatmak için izininiz yoktur
 start_error=BIND'in başlatılmasında hata oluştu : $1
 stop_epid=BIND çalışmıyor
 stop_ecannot=BIND'i durdurmaya yetkili değilsiniz
+
 fwd_title=Ön Bölgeyi Düzenle
 fwd_ecannot=Bu bölgeyi düzenlemek için izininiz yoktur
 fwd_opts=Bölge Seçenekleri
@@ -269,11 +281,13 @@ fwd_masters=ana sunucular
 fwd_forward=Diğer sunucular denensin mi?
 fwd_check=İsimler kontrol edilsin?
 fwd_err=Seçeneklerin kaydedilmesinde hata oluştu
+
 delegation_title=Yetkilendirme Bölgesini Düzenle
 delegation_ecannot=Bu bölgeyi düzenlemek için izininiz yoktur
 delegation_opts=Bölge Seçenekleri
 delegation_err=Seçeneklerin kaydedilmesinde hata oluştu
 delegation_noopts=Yetkilendirme bölgeleri her hangi bir yapılandırma seçeneğine sahip değildir.
+
 fcreate_title=Ön Bölge Oluştur
 fcreate_ecannot=Ön bölge oluşturmak için izininiz yoktur
 fcreate_opts=Yeni ön bölge seçenekleri
@@ -283,10 +297,12 @@ fcreate_rev=Ters (Adresler İsimlere)
 fcreate_dom=Alan adı / Ağ
 fcreate_masters=Ana sunucular
 fcreate_err=Ön bölge oluşturulmasında hata oluştu
+
 dcreate_title=Sadece Yetkilendirme Bölgesi Oluştur
 dcreate_ecannot=Yetkilendirme bölgeleri oluşturma hakkınız yoktur
 dcreate_opts=Yeni yetkilendirme bölgesi seçenekleri
 dcreate_err=Yetkilendirme bölgesi oluşturulurken hata oluştu
+
 create_enet='$1' geçerli bir ağ değildir
 create_edom='$1' geçerli bir alan adı değildir
 create_edom2='$1' bir alan adı olmalıdır, ağ değil
@@ -296,7 +312,9 @@ create_efile3='$1' in oluşturulmasında hata oluştu : $2
 create_efile4=$1 dosyası zaten mevcut
 create_emaster='$1' geçerli bir ana sunucu adresi değildir
 create_enone=En az bir ana sunucu girmelisiniz
+
 boot_err=Dosya indirmede hata oluştu
+
 type_A=Adres
 type_AAAA=IPv6 Adresi
 type_NS=İsim Sunucusu
@@ -312,6 +330,7 @@ type_LOC=Yer
 type_SRV=Servis Adresi
 type_ALL=Bütün Kayıt Tipleri
 type_KEY=Açık Anahtar
+
 edit_A=Adres
 edit_AAAA=IPv6 Adresi
 edit_NS=İsim Sunucusu
@@ -326,6 +345,7 @@ edit_PTR=Ters Adres
 edit_LOC=Yer
 edit_SRV=Servis Adresi
 edit_KEY=Açık Anahtar
+
 recs_A=Adres
 recs_AAAA=IPv6 Adresi
 recs_NS=İsim Sunucusu
@@ -342,6 +362,7 @@ recs_SRV=Servis Adresi
 recs_ALL=Hepsi
 recs_KEY=Açık Anahtar
 recs_delete=Seçili öğeleri Sil
+
 value_A1=Adres
 value_NS1=İsim Sunucu
 value_CNAME1=Gerçek İsim
@@ -380,6 +401,7 @@ value_spfall2=Vazgeç (~hepsi)
 value_spfall1=Nötr (?hepsi)
 value_spfall0=İzin ver (+hepsi)
 value_spfalldef=Varsayılan
+
 warn=Uyarı
 fail=Hata
 ignore=Yoksay
@@ -432,6 +454,7 @@ acl_ztypes_master=Ana
 acl_ztypes_slave=Bağımlı/koçan
 acl_ztypes_delegation=Yetki vermek
 acl_ztypes_forward=Yönlendir
+
 servers_title=Diğer DNS sunucuları
 servers_ip=IP adresi
 servers_bogus=Sahte sunucuyu yoksay?
@@ -443,6 +466,7 @@ servers_keys=DNS anahtarlarını kullan
 servers_err=Diğer DNS sunucularının kaydedilmesinde hata oluştu
 servers_eip='$1' geçerli bir IP adresi değil
 servers_etrans='$1' geçerli bir en çok transfer sayısı değil
+
 logging_title=Kayıt ve Hatalar
 logging_ecannot=Kayıt tutmayı yapılandırmak için izininiz yoktur
 logging_header=Genel kayıt ve hata seçenekleri
@@ -474,12 +498,14 @@ logging_ename='$1' geçerli bir kanal ismi değil
 logging_efile=Kayıt dosyası adı bulunamadı
 logging_ever='$1' geçerli sürüm sayısı değil
 logging_esize='$1' geçerli bir kayıt boyutu değil
+
 acls_title=Erişim Kontrol Listeleri
 acls_ecannot=Genel erişim kontrol listelerini düzenlemek için izininiz yoktur
 acls_name=Erişim Kontrol Listesi Adı
 acls_values=Bulunan adresler, ağlar ve erişim kontrol listeleri
 acls_err=Erişim kontrol listelerinin kaydedilmesinde hata oluştu
 acls_ename='$1' geçerli bir kontrol listesi adı değil
+
 files_title=Dosya ve Dizinler
 files_ecannot=Dosyaları yapılandırmak için izininiz yoktur
 files_header=Genel dosya ve dizin seçenekleri
@@ -489,6 +515,7 @@ files_pid=İşlem ID dosyası
 files_xfer=Bölge transfer programı yolu
 files_err=Dosya ve dizin seçeneklerinin kaydedilmesinde hata oluştu
 files_efile=Dosya adı girilmemiş ya da yanlış girilmiş
+
 forwarding_title=Yönlendirme ve Transferler
 forwarding_ecannot=Gönderim ve transfer seçeneklerini düzenlemek için izininiz yoktur
 forwarding_header=Genel gönderim ve transfer seçenekleri
@@ -505,6 +532,7 @@ forwarding_etrans=Aynı zamandaki maksimum transfer sayısı girilmemiş ya da y
 forwarding_minutes=dakika
 forwarding_ip=IP adresi
 forwarding_port=Port (seçime bağlı)
+
 net_title=Adresler ve Topoloji
 net_ecannot=Adres ve topoloji seçeneklerinin değiştirilmesinde hata oluştu
 net_header=Genel adres ve topoloji seçenekleri
@@ -520,6 +548,7 @@ net_err=Adres ve topoloji seçeneklerinin kaydedilmesinde hata oluştu
 net_eport='$1' geçerli bir port numarası değil
 net_etopology=Topoloji adresleri girilmedi
 net_erecur=Döngüsel aramaya izin verilecek adres girilmedi
+
 controls_title=Kontrol Arayüzü Seçenekleri
 controls_ecannot=Kontrol seçeneklerini düzenlemek için izininiz yoktur
 controls_header=Kontrol seçenekleri
@@ -541,6 +570,7 @@ controls_eunixpath=Eksik ya da geçersiz FIFO dosya yolu
 controls_eunixperm=Eksik ya da geçersiz oktal dosya izinleri
 controls_eunixowner=Eksik ya da geçersiz dosya sahipliği
 controls_eunixgroup=Eksik ya da geçersiz dosya grubu
+
 controls_inet=İnternet port erişimi
 controls_unix=Unix FIFO erişimi
 controls_port=port
@@ -554,6 +584,7 @@ controls_efile=FIFO dosya adı girilmemiş ya da yanlış girilmiş
 controls_eperms=FIFO izinleri girilmemiş ya da yanlış girilmiş
 controls_eowner=FIFO sahibi olan UID girilmemiş ya da yanlış girilmiş
 controls_egroup=FIFO sahibi olan GID girilmemiş ya da yanlış girilmiş
+
 keys_title=DNS Anahtarları
 keys_id=Anahtar ID
 keys_alg=Algoritma
@@ -562,6 +593,7 @@ keys_ecannot=DNS anahtarlarını düzenlemeye yetkiniz yoktur
 keys_err=DNS anahtarlarını kaydederken hata oluştu
 keys_ekey='$1' geçersiz anahtar ID
 keys_esecret=Eksik ya da geçersiz base-64 gizli şifreli $1 anahtarı
+
 misc_title=Çeşitli Seçenekler
 misc_ecannot=Çeşitli seçenekleri düzenlemek için izininiz yoktur
 misc_header=Çeşitli genel seçenekler
@@ -581,6 +613,7 @@ misc_esize='$1' geçerli bir boyut değil
 misc_efiles='$1' geçerli bir maksimum açık dosya sayısı değil
 misc_emins='$1' geçerli bir dakika sayısı değil
 misc_mins=dak
+
 zonedef_title=Bölge Öntanımlamaları
 zonedef_msg=Yeni ana bölge için öntanımlamaları
 zonedef_err=Bölge öntanımlılarının kaydedilmesinde hata oluştu
@@ -596,17 +629,22 @@ zonedef_email=Öntanımlı e-posta adresi
 zonedef_prins=Ana (master) alanlar için varsayılan isim sunucusu
 zonedef_this=Sistem host adı ($1)
 zonedef_eprins=Ana (master) alanlar için eksik ya da geçersiz varsayılan isim sunucusu
+
 find_title=Bölge Ara
 find_match=$1 ile eşleşen bölgeler ..
 find_none=Hiçbir bölge bulunamadı
+
 efirst=$2'deki $1 satırında kötü ilk komut
+
 findfree_title=Kullanılmayan IP Ara
+
 findfree_desc=Kullanılmayan IP'leri Ara
 findfree_nofind=Kullanılmayan IP'leri arayamazsınız
 findfree_header=$1 'de
 findfree_sopt=Arama Seçenekleri
 findfree_cf=<em>'freeXXX'</em> makine adları kullanılmayan IP olarak değerelendirilsin mi?
 findfree_search=Ara
+
 free_title=Boş IP Adresleri
 log_servers=Diğer DNS sunucuları değiştirildir
 log_logging=Kayıt ve hatalar değiştirildi
@@ -654,11 +692,14 @@ log_mass=Toplu iş dosyasından $1 bölge oluşturuldu
 log_rndc=RNDC Kur
 log_delete_recs=$1 kayıt silindi
 log_delete_zones=$1 bölge silindi
+
 convert_err=Bölgenin dönüştürülmesinde hata oluştu
 convert_efile=Bir kayıt dosyası, bağımlı bölge, ana bölgeye (master) çevrilmeden önce belirtilmelidir.
+
 whois_title=WHOIS Bilgisi
 whois_header=$1 komutunun çıktısı ..
 whois_ecannot=WHOIS bilgisine bakmaya yetkili değilsiniz
+
 view_title=İstemci Görüntüsünü Düzenle
 view_opts=İstemci görüntü detayları
 view_name=Görüntü adı
@@ -666,6 +707,7 @@ view_class=DNS kayıtları sınıfı
 view_match=Bu görüntüyü istemcilere uygula
 view_recursion=İstemciler için döngüsel aramalar yapılsın mı?
 view_ecannot=Bu görüntüyü düzenlemeye yetkili değilsiniz
+
 vcreate_title=İstemci Görüntüsü Oluştur
 vcreate_match_all=Bütün istemciler
 vcreate_match_sel=Seçili adresler, ağlar ve ACL'ler
@@ -674,11 +716,13 @@ vcreate_ename=Eksik ya da geçersiz görüntü ismi
 vcreate_etaken=Görüntü ismi zaten mevcut
 vcreate_eclass=Eksik ya da geçersiz sınıf ismi
 vcreate_ecannot=Görüntü oluşturmaya yetkili değilsiniz
+
 hint_title=Kök Bölgelerini Düzenle
 hint_desc=Kök bölge (root zone), DNS sunucunuzun kök sunucuları ile kontak kurmasını sağlar.  DNS sunucunuz tarafından çözümlenemeyen alanlarda <tt>.com</tt> veya <tt>.net.tr</tt> gibi isimleri çözebilir. DNS sunucunuz iç ağda kullanılmadığı veya tüm sorgular başka bir sunucuya yönlendirilmediği takdirde bu kök bölgeyi silmemelisiniz.
 hint_move=Görüntüye taşı:
 hint_ecannot=Bu kök bölgesini düzenlemenize izin verilmiyor
 hint_refetch=Kök İsim Sunucularını Tekrar Yükle
+
 hcreate_title=Kök Bölge Oluştur
 hcreate_desc=Kök bölge (root zone), DNS sunucunuzun kök sunucuları ile kontak kurmasını sağlar.  DNS sunucunuz tarafından çözümlenemeyen alanlarda <tt>.com</tt> veya <tt>.net.tr</tt> gibi isimleri çözebilir. Eğer birden fazla görüntü kullanıyorsanız, her birinde ayrı kök bölgeye sahip olarak tüm istemcilerin internet alanlarını doğru çözümlemelerini sağlayabilirsiniz.
 hcreate_file=Dosyada kök sunucularını depola
@@ -691,6 +735,7 @@ hcreate_efile='$1' izin verilemeyen kök dosyası
 hcreate_efile2=Eksik ya da geçersiz kök dosyası
 mcreate_erecs=Varolan kök bölge dosyası geçersizdir
 hcreate_err=Kök bölgesi oluşturulurken hata oluştu
+
 vdelete_title=Görünümü Sil
 vdelete_mesg=$1 istemci görüntüsünü silmek istediğinizden emin misiniz ? Bu görüntüdeki bütün bölgelerde silinecek (klasörleriyle birlikte) ya da alttaki seçiminize bağlı olarak diğer görüntüye taşınacaktır.
 vdelete_mesg2=$1 istemci görüntüsünü silmek istediğinizden emin misiniz ?
@@ -698,6 +743,7 @@ vdelete_newview=Bu görüntüdeki bölgeler
 vdelete_root=Görüntülerin dışına taşı
 vdelete_delete=Hepsini sil
 vdelete_move=Görüntüye taşı
+
 gen_title=Kayıt Üreteçleri
 gen_desc=Bu sayfa, herbiri çoklu kayıtları oluşturacak olan üreteçleri yani bu bölgede kullanılan artan sayacı tanımlamanıza izin verir. Bu, ters bölgenin kısmen diğer sunucuyu yetkilendirilmesi için yararlı olabilir.
 gen_range=Aralık
@@ -717,7 +763,9 @@ gen_evalue=Üreteç $1 için geçersiz ya da eksik host adı şablonu
 gen_title2=Oluşturulan Kayıtlar
 gen_raw=Dosya satırını yapılandır
 gen_ecannot=Kayıt üreteçlerini düzenlemeye yetkili değilsiniz
+
 refetch_err=Kök bölgesini tekrar yüklerken hata oluştu
+
 slaves_title=Grup (cluster) Bağımlı Sunucular
 slaves_none=Henüz DNS grubuna (cluster) eklenen sunucu yoktur.
 slaves_host=Host adı
@@ -741,6 +789,7 @@ slaves_sync=Var olan bütün ana (master) alanları bağımlılarda oluşturayı
 slaves_sec=Yerel olarak oluştururken bağımlı sunucuda ikinci oluşturayım mı?
 slaves_name=NS kayıdı için isim
 slaves_same=Host adıyla aynı
+
 add_title=Sunucu Ekle
 add_msg=$1 ekleniyor ..
 add_gmsg=$1 grubuna sunucu eklemek ..
@@ -755,6 +804,7 @@ add_createerr=$1, $2 yeni bağımlı bölgeyle kuruldu, fakat $3 hatayla karşı
 add_createok=$1, $2 yeni bağımlı bölgeyle kurdu.
 add_ename=Eksik ya da geçersiz NS kayıt adı
 add_egname=Bir grup eklenirken bir NS (isim sunucusu) kayıt ismi belirlenemez
+
 mass_title=Toplu İş Dosyasından Bölgeler Oluşturmak
 mass_desc=Bu sayfa, karşı yükleme veya sunucuda bulunan metin dosyasından bir kerede çoklu bölgeler oluşturmanıza izin verir. Dosyadaki her satır şu biçimde olmalıdır:<p><tt><i>alanadı</i>:<i>tip</i>:<i>dosyaadı</i>:<i>ana IP'ler</i></tt><p><i>tip</i> mutlaka <tt>ana</tt>, <tt>bağımlı</tt>, <tt>koçan</tt> ya da <tt>yönlendirme</tt> bunlardan biri olmalıdır. <i>dosyaadı</i> seçmelidir. Eksikse otomatik olarak tanımlanmış olacaktır. Sadece bağımlı bölgeler için <i>ana IP'lerin</i> verilmesi gerekiyor.
 mass_local=Yerel toplu iş dosyası
@@ -783,6 +833,7 @@ mass_done=.. yapıldı.
 mass_emips=Eksik ana (master) IP adresleri
 mass_addedslaves=$1 bağımlı sunuculara eklendi
 mass_eonslave=Bağımlı sunucularda hatalar oluştu : $1
+
 massdelete_title=Bölgeleri Sil
 massdelete_rusure=$1 seçili bölgeyi silmek istediğinizden emin misiniz? ($2)
 massdelete_ok=Şimdi Sil
@@ -790,6 +841,7 @@ massdelete_zone=$1 bölgesini siliyor ..
 massdelete_done=.. yapıldı.
 massdelete_slaves=Bağımlı sunuculardan $1 bölgesi siliniyor ..
 massdelete_failed=.. bazı bağımlılarda hata oluştu :
+
 rndc_title=RNDC Kur
 rndc_desc=Bu sayfa BIND'in RNDC programı tarafından kontrol edilmesi için kullanılabilir. Öyleki kişisel bölgeler, BIND tam olarak yeniden başlatılmaya gerek kalmadan yenilenebilir
 rndc_desc2=RNDC doğru olarak kurulmuş görünüyor, bu formu kullanmaya ihtiyacınız yok.
@@ -800,11 +852,13 @@ rndc_ok=Evet, RNDC'yi Kur
 rndc_err=RNDC kurulurken hata oluştu
 rndc_ekey=Anahtar rndc.conf dosyasında bulamadı
 rndc_esecret='secret' rndc.conf dosyasında bulunamadı
+
 drecs_err=Kayıtları silerken hata oluştu
 drecs_enone=Hiçbiri seçilmedi
 drecs_title=Kayıtları Sil
 drecs_rusure=$2'den seçtiğiniz $1 kayıtlarını silmek istediğinizden emin misiniz?
 drecs_ok=Şimdi Sil
+
 manual_title=Yapılandırma Dosyasını Düzenle
 manual_ecannot=BIND yapılandırma dosyasını düzenlemeye izniniz yoktur
 manual_ok=Düzenle
@@ -812,4 +866,5 @@ manual_efile=Seçilen dosya BIND yapılandırmasının parçası değildir
 manual_file=Yapılandırma dosyasını düzenle:
 manual_edata=Hiçbirşey girilmedi!
 manual_err=Yapılandırma dosyasını kayıt ederken hata oluştu
+
 syslog_desc=BIND DNS sunucu mesajları

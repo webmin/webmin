@@ -23,6 +23,7 @@ index_follow=Na $1
 index_forcetar=In TAR-formaat
 index_delete=Vee geselekteerde rugsteun uit
 index_nostrftime=Waarskuwing - sommige rugsteunkoste gebruik % in hul lêernaam, maar substitusie-substitusie is nie op die Module Config-bladsy ingeskakel nie.
+
 dump_dir=Gids om te rugsteun
 dump_dirs=Gidse om te rugsteun
 dump_fs=Leêr stelsel
@@ -108,6 +109,7 @@ dump_remount=Opnuut met die <tt>middagete</tt> opsie tydens rugsteun?
 dump_eftpupdate=Die gebruik van FTP is nie moontlik om lêers by 'n bestaande argief te voeg nie.
 dump_eleveldir=Slegs vlak 0-rugsteun word toegelaat vir kaarte wat nie lêerstelsel-punte is nie
 dump_eupdatedir=Die <tt>/etc/dumpdates</tt> -lêer kan slegs opgedateer word vir kaarte wat lêerstelsel-monteerpunte is
+
 edit_err=Kon nie rugsteun skep nie
 edit_edir=Die rugsteungids ontbreek
 edit_efs=Lêersisteme van tipe $1 kan nie deur hierdie module gerugsteun word nie
@@ -132,9 +134,11 @@ edit_tolevel=$1 tot $2 (vlak $3)
 edit_special=Rugsteunskedule
 edit_when=Wanneer om te rugsteun
 edit_clone=kloon
+
 save_err=Kon nie rugsteun stoor nie
 save_edir=Ontbrekende of ongeldige rugsteungids
 save_efs=Rugsteungids kan nie na 'n ander lêerstelsel verander nie
+
 backup_title=Maak nou 'n rugsteun
 backup_desc=Doen rugsteun van $1 tot $2.
 backup_reverify=.. voltooi. Verifieer nou rugsteun ..
@@ -147,6 +151,7 @@ backup_notape=.. rugsteun het die kapasiteit van 'n enkele band oorskry. Die ver
 backup_egone=Rugsteun bestaan nie!
 backup_bg=Begin agtergrond rugsteun proses. U kan die vordering daarvan monitor in die afdeling <b>Backup Jobs</b> op die hoofblad van die module, en u sal per e-pos in kennis gestel word van die finale status daarvan.
 backup_ecannot=U mag nie die gids rugsteun nie
+
 restore_title=Herstel rugsteun
 restore_err=Kon nie rugsteun herstel nie
 restore_ecommand=Die opdrag $1 wat nodig is om die rugsteun van $2 lêersisteem te herstel, is nie op u stelsel gevind nie. Miskien is dit nie tans geïnstalleer nie.
@@ -190,6 +195,7 @@ restore_gzip=Ontpak die argief?
 restore_keep=Moenie lêers oorskryf nie?
 restore_emulti=Herstel van meervoudige lêers kan nie vanaf 'n bandtoestel gedoen word nie
 restore_emulti2=Herstel van meervoudige lêers kan nie vanaf 'n afstandbediener gedoen word nie
+
 log_create=Skep rugsteunkonfigurasie vir $1 
 log_modify=Gewysigde rugsteunkonfigurasie vir $1 
 log_delete=Rugsteunkonfigurasie vir $1 is verwyder
@@ -197,13 +203,16 @@ log_backup=Ondersteun $1 tot $2
 log_bgbackup=Begin rugsteun van $1 tot $2 
 log_restore=Gerugsteun rugsteun vanaf $1 
 log_kill=Beëindigde rugsteun vir $1 
+
 kill_err=Kon nie die rugsteun beëindig nie
 kill_egone=Nie meer hardloop nie!
 kill_ecannot=U mag nie hierdie rugsteun beëindig nie
+
 newtape_err=Kon nie 'n nuwe band teken nie
 newtape_egone=Rugsteun loop nie meer nie!
 newtape_estatus=Die rugsteun wag nie meer op 'n nuwe band nie
 newtape_ecannot=U mag nie hierdie rugsteun bestuur nie
+
 acl_edit=Kan u rugsteun skep en redigeer?
 acl_restore=Kan rugsteun herstel word?
 acl_cmds=Kan voor- en na-opdragte geredigeer word?
@@ -211,8 +220,10 @@ acl_extra=Kan ekstra opdragreëlparameters gewysig word?
 acl_dirs=Toegestane kaarte vir rugsteun
 acl_all=Alle gidse
 acl_list=Slegs gelys ..
+
 delete_err=Kon nie rugsteun uitvee nie
 delete_enone=Geen gekies nie
+
 email_already=Die rugsteun werk reeds met PID $1.
 email_ebefore=Die opdrag voor die rugsteun het misluk!
 email_verify=Verifieer rugsteun ..
@@ -220,5 +231,6 @@ email_eafter=Na-rugsteunopdrag het misluk!
 email_subject=Rugsteun van $1 op $2 
 email_ok=Rugsteun het geslaag
 email_failed=Rugsteun het misluk!
+
 newtape_subject=Tapeverandering $1 vir rugsteun van $2 op $3 
 newtape_body=Die rugsteun van $2 op $3 het die maksimum hoeveelheid toegelate data op band $1 bereik. U moet 'n nuwe band laai en op die 'Tape Loaded'-skakel in Webmin se Filesystem Backup-module klik om voort te gaan met die rugsteun.

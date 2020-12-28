@@ -38,6 +38,7 @@ index_restartdesc=Klik på denne knap for at aktivere den aktuelle Squid-konfigu
 index_iptables=Port omdirigeringsopsætning
 index_squid=Squid Proxy Server
 index_manual=Rediger konfigurationsfiler
+
 manual_title=Rediger konfigurationsfiler
 manual_file=Vælg en konfigurationsfil, der skal redigeres:
 manual_change=Lave om
@@ -45,6 +46,7 @@ manual_editing=Brug tekstboksen nedenfor til manuelt at redigere konfiggerne i $
 manual_err=Kunne ikke gemme konfigurationsfilen
 manual_efile=Ugyldigt konfigurationsfilnavn!
 manual_ecannot=Du har ikke tilladelse til manuelt at redigere konfigurationsfiler
+
 buttsave=Gemme
 buttdel=Slet
 buttcreat=skab
@@ -54,6 +56,7 @@ default=Standard
 none=Ingen
 on=På
 off=Af
+
 acl_header1=Opret ACL
 acl_header2=Rediger ACL
 acl_name=ACL-navn
@@ -109,6 +112,7 @@ acl_file=Gem ACL-værdier i filen
 acl_nofile=Blæksprutte-konfiguration
 acl_infile=Separat fil
 acl_keep=Brug bare det eksisterende indhold af filen?
+
 aclsave_failsave=Kunne ikke gemme ACL
 aclsave_faildel=Kunne ikke slette ACL
 aclsave_epr=Denne ACL bruges af en proxybegrænsning
@@ -128,11 +132,13 @@ aclsave_eemin=Ugyldig slutning min
 aclsave_efile=Du har ikke tilladelse til at skrive til ACL-filen '$1'
 aclsave_enofile=Intet ACL-filnavn indtastet
 aclsave_ealready=ACL-fil findes allerede
+
 cach_ecannot=Du har ikke adgang til statistik over cachemanager
 cach_err=Fejl
 cach_nfound=Programmet Squid cache manager <tt>$1</tt> blev ikke fundet på dit system. Måske er din <a href=/config.cgi?$2>modulkonfiguration</a> forkert.
 cach_return=blæksprutteindeks
 cach_esame=<b>Squid cachemgr.cgi-eksekverbar</b> er indstillet til Webmins cachemgr.cgi-program, ikke det, der leveres af Squid.
+
 chown_header=Skift ejerskab
 chown_stop=Stop blæksprutte. ..
 chown_done=.. Færdig
@@ -140,6 +146,7 @@ chown_chown=Ændrer ejerskab. ..
 chown_restart=Genoptager blæksprutte. ..
 chown_failrestart=Kunne ikke genstarte Squid ..
 chown_return=blæksprutteindeks
+
 clear_ecannot=Du har ikke lov til at rydde og genopbygge cachen
 clear_header=Ryd og genopbyg cache
 clear_msgclear=Er du sikker på, at du vil rydde og genopbygge din blæksprutte-cache? Dette vil slette <b>alle</b> de filer, du har cache, og genstarte din Squid-server.
@@ -153,6 +160,7 @@ clear_failrestart=Kunne ikke genstarte Squid ..
 clear_return=blæksprutteindeks
 clear_url=Fjern en URL fra cachen:
 clear_ok=Fjerne
+
 eacl_ecannot=Du har ikke tilladelse til at redigere adgangskontrol
 eacl_header=Adgangskontrol
 eacl_acls=Lister med adgangskontrol
@@ -169,8 +177,10 @@ eacl_nopr=Der er ikke defineret nogen proxy-begrænsninger.
 eacl_addpr=Tilføj proxy-begrænsning.
 eacl_noprr=Der er ikke defineret nogen proxysvarbegrænsninger
 eacl_addprr=Tilføj proxy-svarbegrænsning.
+
 eacl_replypr=Besvar proxybegrænsninger
 eacl_replynopr=Der er ikke defineret nogen proxy-begrænsninger for svar
+
 eacl_icpr=ICP-begrænsninger
 eacl_noicpr=Ingen ICP-begrænsninger er defineret
 eacl_addicpr=Tilføj ICP-begrænsning.
@@ -187,6 +197,7 @@ eacl_eclass=Ingen programklasse valgt
 eacl_cname=Skriv navn
 eacl_file=Fra fil $1
 eacl_hdelete=Slet valgte begrænsninger
+
 eadm_ecannot=Du har ikke tilladelse til at redigere administrative indstillinger
 eadm_header=Administrative indstillinger
 eadm_aao=Administrations- og meddelelsesindstillinger
@@ -213,6 +224,7 @@ eadm_caf=Cache annoncerer fil
 eadm_annp=Meddelelsesperiode
 eadm_buttsave=Gemme
 eadm_return=blæksprutteindeks
+
 eauth_ecannot=Du har ikke tilladelse til at redigere proxy-godkendelse
 eauth_header=Proxy-godkendelse
 eauth_aopt=Autentificeringsindstillinger
@@ -226,6 +238,7 @@ eauth_pusers=Proxy-brugere
 eauth_nopusers=Ingen proxy-brugere er i øjeblikket defineret.
 eauth_addpuser=Tilføj en ny proxy-bruger.
 eauth_return=blæksprutteindeks
+
 ec_ecannot=Du har ikke tilladelse til at redigere cacheindstillinger
 ec_header=Cache-indstillinger
 ec_cro=Cache- og anmodningsmuligheder
@@ -280,6 +293,7 @@ ec_return=blæksprutteindeks
 ec_maxreplies=Maksimale svarstørrelser
 ec_maxrn=Størrelse (kB)
 ec_maxracls=For anmodninger, der matcher ACL'er (lad dem være tomme for alle)
+
 ech_header=Opret cache-vært
 ech_header1=Rediger cache-vært
 ech_cho=Cache-hostindstillinger
@@ -324,6 +338,7 @@ ech_origin=Behandler vært som oprindelsesserver?
 ech_force=Tving vært: header til
 ech_same=Uændret
 ech_ssl=Opret forbindelse ved hjælp af SSL?
+
 eicp_ecannot=Du har ikke tilladelse til at redigere andre cacher
 eicp_header=Andre cacher
 eicp_opcs=Andre proxy-cache-servere
@@ -361,6 +376,7 @@ eicp_ttype=Type
 eicp_tpport=Proxy-port
 eicp_tiport=ICP-port
 eicp_delete=Slet valgte cacher
+
 elogs_ecannot=Du har ikke tilladelse til at redigere logging
 elogs_header=Logning
 elogs_lalo=Indstillinger for logning og logfile
@@ -394,6 +410,7 @@ elogs_notset=Ikke indstillet
 elogs_dont=Log ikke
 elogs_file=Fil $1
 elogs_squid=Blæksprutte standard
+
 emem_ecannot=Du har ikke lov til at redigere hukommelsesanvendelse
 emem_dheader=Brug af hukommelse og disk
 emem_header=Brug af hukommelse
@@ -419,6 +436,7 @@ emem_lfuda=Dynamisk mindst anvendte
 emem_hlru=Bunke mindst brugt
 emem_return=blæksprutteindeks
 emem_mrp=Hukommelsesudskiftningspolitik
+
 emisc_ecannot=Du har ikke lov til at redigere diverse indstillinger
 emisc_header=Diverse muligheder
 emisc_mo=Diverse muligheder
@@ -455,6 +473,7 @@ emisc_wccpin=WCCP indgående adresse
 emisc_wccpout=WCCP udgående adresse
 emisc_none=Ingen
 emisc_virtual=Virtual
+
 eports_ecannot=Det er ikke tilladt at redigere porte og netværk
 eports_header=Porte og netværk
 eports_pano=Porte og netværksindstillinger
@@ -480,6 +499,7 @@ eports_unc=Har urene SSL-lukninger?
 eports_checkhost=Valider værtsnavne i URL'er?
 eports_underscore=Tillad understregning i værtsnavne?
 eports_all=Alle
+
 eprogs_ecannot=Du har ikke tilladelse til at redigere hjælperprogrammer
 eprogs_header=Hjælpeprogrammer
 eprogs_chpo=Programmuligheder for cachehjælper
@@ -508,6 +528,7 @@ eprogs_ttl=Autentificering af cache-tid
 eprogs_aittl=Autentificer IP-cache-tid
 eprogs_realm=Godkendelsesområde
 eprogs_return=blæksprutteindeks
+
 euser_header=Opret proxy-bruger
 euser_header1=Rediger proxy-bruger
 euser_pud=Proxy-brugeroplysninger
@@ -516,6 +537,7 @@ euser_p=Adgangskode
 euser_u1=Uændret
 euser_e=Aktiveret?
 euser_return=brugernes liste
+
 ahttp_header=Opret proxy-begrænsning
 ahttp_header1=Rediger proxybegrænsning
 ahttp_pr=Proxy-begrænsning
@@ -525,10 +547,13 @@ ahttp_d=Nægte
 ahttp_ma=Match ACL'er
 ahttp_dma=Ikke match ACL'er
 ahttp_return=ACL-liste
+
 ahttp_replyheader=Opret begrænsning af proxysvar
 ahttp_replyheader1=Rediger begrænsning af proxysvar
 ahttp_replypr=Proxy-svarbegrænsning
+
 sahttp_ftspr=Kunne ikke gemme proxy-svarbegrænsning
+
 aicp_header=Opret ICP-begrænsning
 aicp_header1=Rediger ICP-begrænsning
 aicp_ir=ICP-begrænsning
@@ -538,7 +563,9 @@ aicp_d=Nægte
 aicp_ma=Match ACL'er
 aicp_dma=Ikke match ACL'er
 aicp_return=ACL-liste
+
 saicp_ftsir=Kunne ikke gemme ICP-begrænsningen
+
 icache_ecannot=Du må ikke initialisere cachen
 icache_ftic=Kunne ikke initialisere cache
 icache_ymcautrsa=Du skal vælge en bruger til at køre Squid som
@@ -546,7 +573,9 @@ icache_euser=Bruger til at køre Squid, som ikke findes
 icache_itscwtc=Initialiserer blæksprutte cachen med kommandoen <tt>$1</tt> ..
 icache_return=blæksprutteindeks
 icache_title=Initialiser cache
+
 restart_ftrs=Kunne ikke konfigurere blæksprutter
+
 sadmin_ftsao=Kunne ikke gemme administrative indstillinger
 sadmin_header=Skift ejerskab
 sadmin_msg1=Du har ændret den bruger eller gruppe, som Squid kører som. For at dette får virkning korrekt, skal ejerskabet til alle cache- og logfiler opdateres og Squid genstartes.
@@ -556,10 +585,12 @@ sadmin_inavea='$1' er ikke en gyldig e-mail-adresse
 sadmin_inavh='$1' er ikke et gyldigt værtsnavn
 sadmin_inavap='$1' er ikke en gyldig annonceringsperiode
 sadmin_inavp='$1' er ikke en gyldig port
+
 sauth_ftsao=Kunne ikke gemme godkendelsesindstillinger
 sauth_iomuf=Ugyldigt eller manglende brugernavn
 sauth_iomd=Ugyldigt eller manglende domæne
 sauth_msg1=Din version af Squid er ikke blevet udarbejdet med support til proxy-godkendelse
+
 scache_ftsco=Kunne ikke gemme cacheindstillinger
 scache_emsg0=Du skal åbne mindst et cache-bibliotek
 scache_emsg1=Cache-biblioteket '$1' findes ikke
@@ -577,14 +608,17 @@ scache_emsg12='$1' er ikke en gyldig biblioteksstørrelse
 scache_emsg13='$1' er ikke en gyldig vært
 scache_emsg14='$1' er ikke en gyldig port
 scache_emaxrs=Ugyldig maksimal kropsstørrelse i række $1
+
 schost_ftsc=Kunne ikke gemme cachen
 schost_emsg1='$1' er ikke et gyldigt cache-værtsnavn
 schost_emsg2='$1' er ikke en gyldig proxy-port
 schost_emsg3='$1' er ikke en gyldig ICP-port
 schost_emsg4='$1' er ikke en gyldig live-tid
 schost_emsg5='$1' er ikke en gyldig vægtning
+
 sicp_ftsco=Kunne ikke gemme cacheindstillinger
 sicp_emsg1='$1' er ikke en gyldig timeout
+
 slogs_ftslo=Kunne ikke gemme loggingsindstillinger
 slogs_emsg1='$1' er ikke et absolut filnavn
 slogs_emsg2='$1' er ikke et gyldigt filnavn
@@ -594,20 +628,24 @@ slogs_emsg5='$1' er ikke en gyldig liste over fejlfindingsindstillinger
 slogs_efname=Ugyldigt formatnavn i række $1
 slogs_effmt=Manglende logformat i række $1
 slogs_eafile=Manglende eller ugyldig logfil i række $1
+
 smem_ftsmo=Gemte hukommelsesindstillinger mislykkedes
 smem_emsg1='$1' er ikke en gyldig cache-størrelse
 smem_emsg2='$1' er ikke et gyldigt højvandsmærke
 smem_emsg3='$1' er ikke et gyldigt lavt vandmærke
 smem_emsg4='$1' er ikke en gyldig objektstørrelse
+
 smisc_ftso=Kunne ikke gemme indstillinger
 smisc_emsg1='$1' er ikke et gyldigt antal rotationer
 smisc_emsg2='$1' er ikke et gyldigt domæne
 smisc_emsg3='$1' er ikke en gyldig proxy
 smisc_emsg4='$1' er ikke et gyldigt antal humle
+
 sport_ftspo=Kunne ikke gemme portindstillinger
 sport_emsg1='$1' er ikke et gyldigt portnummer
 sport_emsg2='$1' er ikke en gyldig adresse
 sport_emsg3='$1' er ikke en gyldig bufferstørrelse
+
 sprog_ftshpo=Kunne ikke gemme hjælpeprogrammets indstillinger
 sprog_emsg1=Manglende FTP-indstillinger
 sprog_emsg2='$1' er ikke et gyldigt program
@@ -620,19 +658,23 @@ sprog_emsg8='$1' er ikke en gyldig IP-adresse
 sprog_emsg9='$1' er ikke en gyldig cache-tid
 sprog_emsg10='$1' er ikke en gyldig TTL
 sprog_echildren=Antallet af programmer skal være et tal større end nul
+
 suser_ftsu=Kunne ikke gemme brugeren
 suser_emsg1=Ugyldigt eller manglende brugernavn
 suser_etaken=Brugernavnet er allerede i brug
+
 start_ftsq=Kunne ikke starte Squid
 start_ecannot=Du har ikke lov til at starte blæksprutte
 stop_ftsq=Kunne ikke stoppe blæksprutte
 stop_ecannot=Du må ikke stoppe blæksprutte
+
 calamaris_ecannot=Du har ikke adgang til Calamaris log-analyse
 calamaris_title=Calamaris loganalyse
 calamaris_last=Begrænsning af analyse til sidste $1 linjer med logfiler ..
 calamaris_eprog=Calamaris-eksekverbar $1 blev ikke fundet. Måske er det ikke installeret på dit system, eller din <a href='$2'>modulkonfiguration</a> er forkert.
 calamaris_elogs=Logkataloget $1 indeholder ingen <tt>access.log</tt> filer. Måske er blæksprutte ikke blevet kørt endnu, eller din <a href='$2'>modulkonfiguration</a> er forkert.
 calamaris_gen=Rapport genereret på $1
+
 lib_emsg1='$1' er ikke en gyldig IP-adresse
 lib_seconds=sekunder
 lib_minutes=minutter
@@ -680,6 +722,7 @@ lib_aclmuip=Maks bruger-IP
 lib_buttac=Anvend ændringer
 lib_buttss=Stop blæksprutte
 lib_buttss1=Start blæksprutte
+
 log_ports=Ændrede porte og netværksindstillinger
 log_icp=Ændrede andre cacheindstillinger
 log_mem=Ændrede indstillinger for hukommelsesanvendelse
@@ -734,25 +777,31 @@ log_pools_delete=Slettet $1 forsinkelsespuljer
 log_delay_create=Tilføjet ACL til forsinkelsepool $1
 log_delay_modify=Ændret ACL til forsinkelsespool $1
 log_delay_delete=ACL slettet for forsinkelsespool $1
+
 log_delay_move=Flyttede ACL til forsinkelsespool $1
 log_refresh_create=Oprettet opdateringsregel for $1
 log_refresh_modify=Ændret opdateringsregel for $1
 log_refresh_delete=Slettet opdateringsregel for $1
+
 log_refresh_move=Flyttede opdateringsregel for $1
 log_refreshes_delete=Slettet $1 opdateringsregler
 log_iptables=Opdateret opsætning af portomdirigering
 log_purge=Fjernet URL $1 fra cache
 log_cachemgr=Ændrede cache manager-adgangskoder
+
 acl_root=Rootkatalog til ACL-filer
 acl_sections=Tilladte konfigurationssider
 acl_start=Kan starte og stoppe blæksprutte?
 acl_restart=Kan anvendes blæksprutte-konfiguration?
+
 always_create=Opret direkte hentning
 always_edit=Rediger direkte hentning
 always_header=Hent direkte anmodninger, der matcher ACL'er
+
 never_create=Opret indirekte hent
 never_edit=Rediger indirekte hent
 never_header=Hent aldrig direkte anmodninger, der matcher ACL'er
+
 delay_title=Forsink pooler
 delay_add=Tilføj en ny forsinkelsespool.
 delay_num=Nummer
@@ -802,11 +851,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=MB
+
 dpool_err=Kunne ikke slette forsinkelsesbassiner
 dpool_enone=Ingen valgt
+
 apool_header=Tilføj forsinkelsespool ACL
 apool_header1=Rediger forsinkelsespool ACL
 apool_pr=Forsink pool ACL
+
 authparam_title=Godkendelsesprogrammer
 authparam_header=Indstillinger for ekstern godkendelse
 authparam_ttl=Tid til at cache adgangskoder til
@@ -849,6 +901,7 @@ ext_ecache=Manglende eller ugyldig cache-størrelse
 ext_eprogram=Der blev indtastet en ugyldig programsti
 ext_eclash=En ekstern programtype med samme navn findes allerede
 ext_eused=Dette eksterne program er i brug af en ACL
+
 header_title=Adgangskontrol til overskrift
 header_none=Der er endnu ikke defineret nogen regler for kontrol med headeradgang.
 header_name=HTTP-overskrift
@@ -868,6 +921,7 @@ header_err=Kunne ikke gemme hovedadgangskontrolreglen
 header_ename=Manglende eller ugyldigt overskriftnavn
 header_request_header_access=Anmod om overskrifter
 header_reply_header_access=Besvar headere
+
 refresh_title=Opdater regler
 refresh_none=Der er endnu ikke defineret nogen opdateringsregler.
 refresh_re=Almindelig udtryk
@@ -894,6 +948,7 @@ refresh_epc=Manglende eller ugyldig aldersprocent
 refresh_delete=Slet valgte opdateringsregler
 drefresh_err=Kunne ikke slette opdateringsregler
 drefesh_enone=Ingen valgt
+
 iptables_title=Port omdirigeringsopsætning
 iptables_inst0=IPtables-firewall-kommandoer, der er nødvendige for at opsætte portomdirigering, ser ikke ud til at være installeret på dit system. Se <a href='$1'>Linux Firewall</a> modulet for flere detaljer.
 iptables_inst1=<a href='$1'>Linux Firewall</a> -modulet ser ikke ud til at være konfigureret fuldstændigt på dit system. Dette modul bruger denne til at konfigurere omdirigering af Frox-port.
@@ -908,18 +963,23 @@ iptables_enet=Manglende eller ugyldig netværksadresse (skal være som 192.168.1
 iptables_eiface=Manglende eller ugyldig netværksgrænseflade
 iptables_eapply=Anvend firewall mislykkedes : $1
 iptables_eapply2=Anvend Squid mislykkedes : $1
+
 syslog_access=Blækfiskadgangslog
 syslog_cache=Blæksprutte cache-log
 syslog_store=Log ind med blæksprutteobjekter
+
 purge_err=Kunne ikke rydde URL fra cache
 purge_title=Ryd bufret URL
 purge_doing=Rydder URL $1 ..
 purge_done=.. Færdig.
 purge_failed=.. mislykkedes! Se fejlmeddelelsen ovenfor af grunden til.
+
 dhttp_err=Kunne ikke slette proxybegrænsninger
 dhttp_enone=Ingen valgt
+
 dicp_err=Kunne ikke slette ICP-begrænsninger
 dicp_enone=Ingen valgt
+
 cachemgr_title=Cache Manager-adgangskoder
 cachemgr_ecannot=Du har ikke tilladelse til at redigere cache manager-adgangskoder
 cachemgr_def1=Ingen adgangskoder kræves

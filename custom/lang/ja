@@ -15,6 +15,7 @@ index_actform=Form
 index_actrun=Run
 index_actsql=Form
 index_acted=Open
+
 edit_title=コマンドの編集
 create_title=コマンドの作成
 edit_ecannot=コマンドを編集できません
@@ -52,6 +53,7 @@ edit_secs=秒
 edit_clear=環境変数をクリアしますか?
 edit_servers=Run on Webmin servers
 edit_this=this server
+
 save_err=コマンドを保存できませんでした
 save_ecannot=コマンドを編集できません
 save_ecmd=コマンドが入力されていません
@@ -61,6 +63,7 @@ save_euser=ユーザが存在しないか無効です
 save_eorder=Ordering on main page must be a number
 save_etimeout=Missing or invalid maximum time to wait
 save_eusermin=Commands that run on other servers cannot be run from Usermin
+
 run_err=コマンドを実行できませんでした
 run_ecannot=このコマンドは編集できません
 run_euser=ユーザが存在しないか無効です
@@ -75,6 +78,7 @@ run_ecmduser=User '$1' to run command as does not exist
 run_eopt=Invalid option selected
 run_eupload=No file to upload selected
 run_timeout=Command terminated after $1 second timeout.
+
 log_modify=コマンド $1 を変更しました
 log_create=コマンド $1 を作成しました
 log_delete=コマンド $1 を削除しました
@@ -83,11 +87,13 @@ log_modify_edit=Modified file editor $1
 log_create_edit=Created file editor $1
 log_delete_edit=Deleted file editor $1
 log_save_edit=Saved file $1
+
 acl_cmds=このユーザが実行できるコマンド
 acl_call=すべてのコマンド
 acl_csel=選択..
 acl_cexcept=All except selected..
 acl_edit=コマンドの作成と編集を可能にしますか？
+
 file_ecannot=You are not allowed to edit files
 fcreate_title=ファイルエディタの作成
 fedit_title=ファイルエディタの編集
@@ -110,15 +116,18 @@ file_egroup=Missing or invalid group name
 file_eperms=Missing or invalid octal permissions
 file_envs=ファイル名の代わりに環境変数を使いますか?
 file_id=エディタID
+
 view_err=Failed to edit file
 view_ecannot=You are not allowed to edit this file
 view_title=ファイルの編集
 view_efile=Write to $1 failed : $2
 view_header=ファイル $1 を編集中です
+
 form_ecannot=You are not allowed to run this command
 form_title=Execute Command
 form_exec=Execute
 form_edit=Edit
+
 sql_title1=SQLコマンドの作成
 sql_title2=SQLコマンドの編集
 sql_header=SQLコマンドの詳細
@@ -134,6 +143,7 @@ sql_err=Failed to save SQL command
 sql_esql=No SQL entered
 sql_ehost=Missing or invalid database server host
 sql_edb=Missing or invalid database name
+
 srun_title=SQLコマンドの実行
 srun_err=Failed to execute SQL command
 srun_edriver=Could not load DBI driver

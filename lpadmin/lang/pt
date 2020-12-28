@@ -12,6 +12,7 @@ index_stopmsg=Clique neste botão para parar o processo em curso do catalogador 
 index_start=Iniciar Catalogador
 index_startmsg=Clique neste botão para iniciar o processo do catalogador da impressora. Isto permitirá que qualquer utilizador local ou remoto imprima no seu sistema.
 index_return=lista de impressoras
+
 edit_eedit=Você não está autorizado para editar esta impressora
 edit_eadd=Você não está autorizado para adicionar impressoras
 edit_add=Criar Impressora
@@ -51,7 +52,9 @@ edit_wgroup=Grupo de Trabalho
 edit_hpnp=Servidor HPNP remoto
 edit_port=Porta
 edit_driver=Controlador da impressora
+
 blocks=blocos
+
 save_err=Erro ao guardar impressora
 save_eadd=Você não está autorizado para adicionar impressoras
 save_eedit=Você não está autorizado para editar esta impressora
@@ -66,6 +69,7 @@ save_efile='$1' não existe
 save_erhost=O anfitrião remoto '$1' não existe
 save_erqueue='$1' não é um nome de fila de trabalho remota válida
 save_eremote=Os controladores não podem ser usados um impressoras Unix remotas
+
 jobs_title=Tarefas de Impressão
 jobs_header=Tarefas de impressão em $1
 jobs_id=ID da tarefa
@@ -75,13 +79,17 @@ jobs_when=Submetido às
 jobs_file=Nome do Ficheiro
 jobs_cancel=Clique num ID de tarefa da lista acima para cancelar.
 jobs_none=Não há tarefas de impressão em $1
+
 cancel_ecannot=Você não está autorizado para cancelar tarefas de impressão
 cancel_err=Erro ao cancelar a tarefa de impressão
 cancel_egone=A tarefa de impressão $1 já não existe
+
 start_ecannot=Você não está autorizado para iniciar o catalogador
 start_err=Erro ao iniciar o catalogador
+
 stop_ecannot=Você não está autorizado para parar o catalogador
 stop_err=Erro ao parar o catalogador
+
 webmin_none=Nenhum
 webmin_nonemsg=Impressora postscript ou de texto
 webmin_remotemsg=Impressora remota
@@ -92,6 +100,7 @@ webmin_uniprint=Controlador de uni-impressão
 webmin_edrivers=Erro ao obter controladores de $1. Os controladores de impressão do Webmin que utilizem ghostscript não estarão disponíveis
 webmin_egs=O comando $1 não foi encontrado. Os controladores de impressão do Webmin que utilizem ghostscript não estarão disponíveis
 webmin_edriver='$1' não existe
+
 caldera_none=Nenhum
 caldera_nonemsg=Impressora remota ou sem buffer
 caldera_prog=Programa
@@ -105,6 +114,7 @@ caldera_uniprint=Controlador de uni-impressão
 caldera_eprog='$1' não existe
 caldera_edriver=Não foi seleccionado nenhum controlador de impressão
 caldera_eres=Não seleccionada nenhuma resolução
+
 redhat_none=Nenhum
 redhat_nonemsg=Impressora postscript ou de texto
 redhat_prog=Programa
@@ -122,6 +132,7 @@ redhat_edriver=Não foi seleccionado nenhum controlador de impressão
 redhat_ehmargin=Margem direita/esquerda inválida ou em falta
 redhat_evmargin=Margem superior/inferior inválida ou em falta
 redhat_eres=No resolution selected Não foi seleccionada nehuma resolução
+
 acl_printers=Impressoras que este utilizador pode configuar
 acl_add=Pode adicionar novas impressoras?
 acl_cancel=Pode cancelar tarefas de impresão?

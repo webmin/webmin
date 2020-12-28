@@ -1,11 +1,16 @@
 index_ver=Versi $1 
 index_header=Modul Fail2Ban
+
 filters_einuse=Penapis $1 tidak dapat dipadamkan, kerana ia digunakan oleh penjara : $2 
+
 filter_desc=Gunakan <i>&lt;HOST&gt;</i> dalam ungkapan biasa di mana nama hos atau alamat IP sepatutnya muncul.
 filter_einuse=Penapis ini tidak dapat dipadamkan, kerana ia digunakan oleh penjara : $1 
+
 actions_einuse=Tindakan $1 tidak dapat dipadamkan, kerana ia digunakan oleh penjara : $2 
+
 action_desc=<i>&lt;ip&gt;</i> akan digantikan dengan alamat IP yang dilarang.
 action_einuse=Tindakan ini tidak dapat dipadamkan, kerana ia digunakan oleh penjara : $1 
+
 jails_add=Tambah penjara baru.
 jails_name=Nama penjara
 jails_filter=Penapis log
@@ -17,6 +22,7 @@ jails_defdesc=Edit tetapan dan batas lalai yang berlaku untuk semua penjara yang
 jails_return=senarai penjara
 jails_derr=Gagal memadamkan penjara
 jails_enone=Tiada yang dipilih
+
 jail_title1=Buat Penjara
 jail_title2=Edit Penjara
 jail_header=Butir penjelasan tindakan penapis
@@ -56,13 +62,16 @@ jail_banaction=Tindakan lalai untuk memohon
 jail_defprotocol=Protokol lalai untuk tindakan
 jail_edestemail=Alamat e-mel pemberitahuan lalai atau tidak sah
 jail_eignoreip=Alamat IP tidak sah untuk diabaikan
+
 jaildef_title=Pilihan Penjara Lalai
 jaildef_header=Lalai untuk semua penjara
 jaildef_err=Gagal menyimpan pilihan penjara lalai
 jaildef_egone=Tiada penjara DEFAULT ditemui!
+
 start_err=Gagal memulakan pelayan
 stop_err=Gagal menghentikan pelayan
 restart_err=Gagal memulakan semula pelayan
+
 log_create_filter=Penapis yang dibuat $1 
 log_update_filter=Penapis diubahsuai $1 
 log_delete_filter=Penapis dipadamkan $1 
@@ -80,6 +89,7 @@ log_atboot=Diaktifkan Fail2Ban pada masa boot
 log_delboot=Fail2Ban dilumpuhkan pada masa boot
 log_manual=Fail konfigurasi yang diedit $1 
 log_jaildef=Pilihan penjara lalai diubah suai
+
 config_edef=Tiada bahagian Definisi yang terdapat dalam fail konfigurasi!
 config_header=Tetapan konfigurasi untuk Fail2Ban
 config_loglevel=Tahap pembalakan minimum
@@ -91,10 +101,12 @@ config_socket=Socket untuk komunikasi dengan pelayan
 config_err=Gagal menyimpan konfigurasi global
 config_elogtarget=Fail untuk menulis log mesti menjadi laluan mutlak
 config_esocket=Fail soket mestilah jalan mutlak
+
 manual_title=Edit Fail Config
 manual_desc=Fail untuk diedit:
 manual_ok=okey
 manual_efile=Fail terpilih bukan sebahagian daripada konfigurasi Fail2Ban!
 manual_err=Gagal mengedit fail konfigurasi
 manual_edata=Tiada kandungan fail konfigurasi yang dimasukkan
+
 syslog_logtarget=Log tindakan Fail2Ban

@@ -57,6 +57,7 @@ index_reposdisable=Onemogući spremišta
 index_reposenable=Omogući spremišta
 index_reposdelete=Brisanje spremišta
 index_repoheader=Nove mogućnosti skladišta paketa
+
 update_title=Ažurirajte pakete
 update_title2=Instalirajte pakete
 update_enone=Nije odabran nijedan paket
@@ -94,9 +95,11 @@ update_none=nijedan
 update_ops=Izrada kompletnog popisa paketa ..
 update_rebootdesc=Jedan od instaliranih paketa zahtijeva da se potpuno primijeni ponovno pokretanje.
 update_reboot=Ponovno pokreni sada
+
 sched_title=Planirano ažuriranje
 sched_yes=Planirana provjera ažuriranja sada je aktivna.
 sched_no=Planirano provjeravanje ažuriranja onemogućeno je.
+
 log_update=Instalirani $1 ažurirani paketi
 log_sched=Omogućena zakazana ažuriranja
 log_unsched=Onemogućena su zakazana ažuriranja
@@ -108,11 +111,13 @@ log_enable_repo=Omogućeno spremište paketa $1
 log_disable_repo=Onemogućeno spremište paketa $1 
 log_delete_repo=Izbrisano spremište paketa $1 
 log_create_repo=Napravljeno spremište paketa $1 
+
 refresh_title=Osvježavajuće pakete
 refresh_clearing=Brisanje predmemorije paketa ..
 refresh_done=.. gotovo
 refresh_available=Ponovno dohvaćanje dostupnih paketa ..
 refresh_done3=.. je pronađeno $1 moguća ažuriranja
+
 view_title=Pojedinosti o paketu
 view_header=Ažurirane informacije o paketu
 view_name=Naziv paketa
@@ -126,12 +131,14 @@ view_changelog=Promjena raspoložive verzije
 view_software=Upravljanje paketom
 view_update=Ažurirajte paket
 view_install=Instalirajte paket
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)
 system_webmin=Webmin modul
 system_usermin=Usermin modul
 system_tgz=Webmin ili Usermin tar.gz
+
 repos_err_disable=Deaktiviranje spremišta nije uspjelo
 repos_err_enable=Omogućivanje spremišta nije uspjelo
 repos_err_delete=Brisanje spremišta nije uspjelo

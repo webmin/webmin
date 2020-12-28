@@ -5,6 +5,7 @@ index_delete2=Elimina le interfacce selezionate
 index_delete3=Elimina e applica le interfacce selezionate
 index_apply2=Applica interfacce selezionate
 index_vmin=virtualmin
+
 ifcs_activedesc=Le interfacce elencate in questa tabella sono attualmente attive sul sistema. Nella maggior parte dei casi, è necessario modificarli nella scheda <b>Attivato all'avvio</b>.
 ifcs_bootdesc=Le interfacce elencate in questa tabella verranno attivate all'avvio del sistema e ora saranno generalmente attive anche.
 ifcs_ip6=Indirizzo IPv6
@@ -29,12 +30,14 @@ ifcs_linkyes=Collegato
 ifcs_linkno=Disconnessi
 ifcs_speed=Velocità dell'interfaccia
 ifcs_duplex=, $1 duplex
+
 aifc_evirtmin=Il numero di interfaccia virtuale deve essere almeno $1 
 aifc_eclash=L'interfaccia $1 sta già utilizzando questo indirizzo IP
 aifc_eaddress6=L'indirizzo IPv6 nella riga $1 non è valido
 aifc_enetmask6=La maschera di rete IPv6 nella riga $1 deve essere un numero intero compreso tra 1 e 128
 aifc_eclash6=L'indirizzo IPv6 nella riga $1 è già in uso dall'interfaccia $2 
 aifc_eaddresses6=Nessun indirizzo IPv6 inserito
+
 bifc_act=Attivare all'avvio?
 bifc_dapply=Elimina e applica
 bifc_err4=Impossibile disattivare l'interfaccia
@@ -48,6 +51,7 @@ bifc_bridgestp=Protocollo Spanning Tree
 bifc_bridgefd=Ritardo in avanti
 bifc_bridgewait=Ritardo per diventare disponibile
 bifc_ebond=L'interfaccia Bond deve essere un numero
+
 bonding_add=Aggiungi una nuova interfaccia di legame.
 bonding_create=Crea interfaccia di legame
 bonding_teamparts=Partner di squadra
@@ -59,11 +63,14 @@ bonding_miimon=Intervallo di monitoraggio Mii
 bonding_miimondesc=(Lascia vuoto per disabilitare il monitoraggio dei collegamenti)
 bonding_updelay=updelay
 bonding_downdelay=downdelay
+
 vlan_add=Aggiungi Vlan Tagged Interface
 vlan_physical=Dispositivo fisico
 vlan_id=ID Vlan
 vlan_create=Crea interfaccia VLAN
+
 bridge_create=Crea interfaccia Bridge
+
 routes_now=Configurazione del routing attivata ora
 routes_default6=Router IPv6 predefinito
 routes_default2=Percorsi predefiniti
@@ -106,10 +113,13 @@ routes_tabboot=Configurazione del tempo di avvio
 routes_tabactive=Configurazione attiva
 routes_descactive=Questa sezione elenca le route attualmente configurate dal sistema e consente di aggiungere o rimuovere route attive su alcuni sistemi. Fare attenzione, poiché modifiche errate potrebbero interrompere il sistema che esegue Webmin dal resto della rete.
 routes_descboot=Questa sezione consente di configurare i percorsi che vengono attivati all'avvio del sistema o quando le impostazioni di rete vengono nuovamente applicate.
+
 dns_hoststoo=Aggiornare il nome host negli indirizzi host se modificato?
 dns_dhcp=Il nome host è impostato dal server DHCP?
+
 hosts_active=Abilitato?
 hosts_delete=Elimina gli indirizzi host selezionati
+
 ipnodes_title=Indirizzi host IPv6
 ipnodes_ip=Indirizzo IPv6
 ipnodes_host=Nomi host
@@ -121,6 +131,7 @@ ipnodes_return=Elenco indirizzi host IPv6
 ipnodes_ecannot=Non è consentito modificare gli indirizzi host IPv6
 ipnodes_none=Nessun indirizzo host IPv6 è stato ancora definito.
 ipnodes_delete=Elimina gli indirizzi host IPv6 selezionati
+
 log_create_ipnode=Indirizzo host IPv6 creato $1 
 log_delete_ipnode=Indirizzo host IPv6 eliminato $1 
 log_modify_ipnode=Indirizzo host IPv6 modificato $1 
@@ -132,6 +143,7 @@ log_apply_bfics=Interfacce di avvio $1 attivate
 log_create_route=Percorso attivo creato per $1 
 log_create_defroute=Percorso predefinito attivo creato
 log_delete_routes=$1 percorsi attivi eliminati
+
 acl_ifcs_ex=Interfacce tranne
 acl_apply=È possibile applicare la configurazione?
 acl_bootonly=È possibile modificare le interfacce attive?
@@ -143,7 +155,9 @@ acl_virt=È possibile aggiungere interfacce virtuali?
 acl_delete=È possibile eliminare le interfacce?
 acl_hide=Nascondere interfacce non modificabili?
 acl_sysinfo=Mostra le interfacce di rete disponibili su Dashboard
+
 apply_ecannot=Non è consentito applicare la configurazione
+
 mod_egone=L'interfaccia non è più attiva!
 mod_title=Interfaccia attiva
 mod_desc=L'interfaccia $1 viene utilizzata per $2 e quindi non può essere gestita utilizzando questo modulo.
@@ -155,6 +169,7 @@ mod_pptpc=la connessione PPTP $1
 mod_zones=un'interfaccia virtuale per la zona <tt>$1</tt>
 mod_virtualmin=il server Virtualmin <tt>$1</tt>
 mod_reseller=il rivenditore Virtualmin <tt>$1</tt>
+
 range_edit=Modifica intervallo di indirizzi
 range_create=Crea intervallo di indirizzi
 range_header=Opzioni di interfaccia dell'intervallo di indirizzi
@@ -170,13 +185,17 @@ range_eend=Indirizzo IP finale mancante o non valido
 range_enum=Primo numero di interfaccia virtuale mancante o non numerico
 range_eclass=Gli indirizzi di inizio e fine devono trovarsi all'interno della stessa rete di classe C.
 range_ebefore=L'indirizzo finale deve essere maggiore dell'indirizzo iniziale
+
 chooser_any=&lt;Any&gt;
 chooser_other=Altro ..
+
 dafics_err=Disattivazione delle interfacce non riuscita
 daifcs_enone=Nessuno selezionato
 daifcs_egone=L'interfaccia non esiste più!
+
 dbifcs_err=Impossibile eliminare le interfacce
 dbifcs_err2=Impossibile attivare le interfacce
+
 hdelete_err=Impossibile eliminare gli indirizzi host
 hdelete_enone=Nessuno selezionato
 idelete_err=Impossibile eliminare gli indirizzi host IPv6

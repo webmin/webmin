@@ -6,6 +6,7 @@ mon_conf_title=基本設定
 mon_status_title=稼働状況
 hostgroups_title=MON設定-ホストグループ
 services_title=ウォッチグループ-サービス定義
+
 head_hostgroups=ホストグループとサービス
 head_groups=ホストグループ名
 head_members=ホストグループメンバー
@@ -17,6 +18,7 @@ head_monauth=MONCMDの認証を提供する
 head_usr=ユーザー名
 head_pass=パスワード
 head_mand=（「RED COLOR」のパラメーターは必須です）
+
 err_nomon=パッケージ「mon」がシステムにインストールされていません
 err_nomonconf=MON構成ファイル $1がシステムで見つかりませんでした。 MONがインストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
 err_nowatch=ウォッチグループが選択されていません。続行するには、少なくとも1つのウォッチグループを選択します。
@@ -28,6 +30,7 @@ stop_epid=もう走っていない
 start_err=MONを開始できませんでした
 restart_err=MONの再起動に失敗しました
 restart_epid=PIDを取得できませんでした
+
 other=その他（スペース区切り）
 next=次
 mon_stat=MONステータス
@@ -43,6 +46,7 @@ save_apply=保存して適用
 watch=ウォッチグループ
 members=会員
 def_perargs=wd {土日}
+
 def_desc=説明
 def_inter=間隔
 def_mon=モニター
@@ -58,9 +62,11 @@ def_trapdur=trap期間
 def_rand=ランドスキュー
 def_exclhost=exclude_hosts
 def_exclper=exclude_period
+
 groups_title=ホストグループ
 groups_group=グループ名
 groups_members=メンバーホスト
+
 watches_title=ウォッチリスト
 watches_group=ウォッチンググループ
 watches_services=監視されているサービス
@@ -68,6 +74,7 @@ watches_sadd=サービスを追加します。
 watches_add=グループのウォッチリストを追加：
 watches_return=ウォッチリスト
 watches_none=ウォッチリストはまだ定義されていません。
+
 global_title=グローバルオプション
 global_header=グローバルMON設定オプション
 global_maxprocs=最大MONプロセス
@@ -85,6 +92,7 @@ global_ehistlength=イベント履歴の長さが欠落しているか無効で�
 global_ealertdir=アラートプログラムディレクトリが見つからないか無効です
 global_emondir=モニタープログラムディレクトリが見つからないか無効です
 global_euserfile=不足しているMONユーザーファイル
+
 watch_title=ウォッチリストを編集
 watch_header=ホストグループの監視の詳細
 watch_group=監視するホストグループ
@@ -93,6 +101,7 @@ watch_service=サービス名
 watch_monitor=使用するモニター
 watch_interval=毎回確認
 watch_periods=監視期間
+
 service_title=サービスを追加
 service_title2=サービスを編集
 service_header=視聴したサービスの詳細
@@ -145,16 +154,19 @@ service_epstr=期間指定がありません
 service_known0=<tt>Time::Period</tt>文字列
 service_known1=指定された曜日と時間
 service_known2=定義された期間
+
 status_title=MONステータス
 status_ecgi=MONステータスCGIプログラム $1は存在しません。インストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
 status_eperl=MONステータスCGIプログラムには、 $1 perlモジュールが必要です。 <a href='$2'>ここをクリック</a>して、CPANから直接インストールします。
 status_esame=MONステータスCGIプログラム $1は、このWebminモジュールの<tt>mon.cgi</tt>スクリプトに設定されています。MONに付属のCGIプログラムではありません。正しいパスを使用するように<a href='$2'>モジュール構成</a>を調整します。
+
 users_title=MONユーザー
 users_etype=現在、MONは<a href='$1'>グローバルオプション</a>ページで認証に使用するように構成されていないため、MONユーザーリストを編集できません。
 users_header=$1で許可されているMONユーザー
 users_nousers=$1にはMONユーザーが定義されていません。
 users_add=新しいユーザーを作成します。
 users_return=MONユーザーリスト
+
 user_create=MONユーザーを作成する
 user_edit=MONユーザーの編集
 user_header=MONユーザーの詳細
@@ -164,6 +176,7 @@ user_leave=そのままにしておきます
 user_err=ユーザーを保存できませんでした
 user_euser=ユーザー名がないか無効です
 user_esame=同じ名前のユーザーが既に存在します
+
 auth_title=クライアントコマンド
 auth_desc=このページでは、クライアントプログラムの使用時に、どのユーザーがどのMONコマンドを実行できるかを制御できます。
 auth_cmd=MONコマンド
@@ -173,6 +186,7 @@ auth_all=みんな
 auth_sel=ユーザーのみ
 auth_err=クライアントコマンドの保存に失敗しました
 auth_eusers=コマンド $1にユーザーが入力していません
+
 periods_title=定義された期間
 periods_period=期間名
 periods_times=曜日と時間
@@ -181,5 +195,6 @@ periods_allhours=すべての時間
 periods_err=定義された期間を保存できませんでした
 periods_ename=「$1」は有効な期間名ではありません
 periods_ehour=期間 $1の時間がないか、無効です（午前9時または午後5時のようにする必要があります）
+
 show_title=稼働状況
 show_ecgi=MONステータスプログラム $1は存在しません。インストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。

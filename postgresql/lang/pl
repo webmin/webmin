@@ -14,6 +14,7 @@ index_add=Utwórz nową bazę danych
 index_users=Opcje użytkownika
 index_return=listy baz danych
 index_esql=Nie znaleziono w systemie programu klienta PostgreSQLa $1. Być może nie zainstalowano PostgreSQLa lub Twoja <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
+
 index_ehba=Nie znaleziono w systemie pliku konfiguracyjnego hostów PostgreSQLa $1. Być może nie zainicjalizowano PostgreSQLa lub Twoja <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
 index_superuser=Nie można uruchomić programu klienta PostgreSQLa psql. Być może nie zainstalowano PostgreSQLa lub Twoja <a href='$1'>konfiguracja modułu</a> jest nieprawidłowa.
 index_eversion=Baza danych PostgreSQLa w systemie ma wersję $1, a Webmin obsługuje jedynie wersje $2 i wyższe.
@@ -21,10 +22,12 @@ index_elibrary=Nie można uruchomić programu klienta PostgreSQL $1, gdyż nie m
 index_tables=Tabele
 index_hostdesc=Kliknij na ten przycisk, aby edytować listę hostów i metodę uwierzytelniania dla połączeń z PostgreSQL.
 index_jumpok=Otwórz
+
 login_err=Nie udało się zalogować
 login_ecannot=Nie masz uprawnień do konfigurowania logowania do bazy danych
 login_elogin=Nie podano nazwy administratora bazy
 login_epass=Niepoprawna nazwa administratora bazy lub jego hasło
+
 dbase_title=Zmień bazę danych
 dbase_tables=Tabele bazy danych
 dbase_add=Utwórz nową tabelę
@@ -34,6 +37,7 @@ dbase_none=Baza danych nie zawiera żadnej tabeli.
 dbase_fields=Pola:
 dbase_return=listy tabel
 dbase_ecannot=Nie masz uprawnień do zmiany tej bazy danych
+
 table_title=Zmień tabelę
 table_title2=Utwórz tabelę
 table_opts=Opcje pól
@@ -72,25 +76,30 @@ field_esize='$1' nie jest poprawnym rozmiarem pola
 field_eenum=Nie wprowadzono wartości wyliczeniowej
 field_efield='$1' nie jest poprawną nazwą pola
 field_ekey=Pola dopuszczające brak wartości nie mogą być częścią klucza głównego
+
 exec_title=Wykonaj SQL
 exec_header=Wprowadź polecenie SQL-owe, które ma być wykonane w bazie danych $1 ..
 exec_exec=Wykonaj
 exec_err=Nie udało się wykonać SQL
 exec_out=Wynik polecenia SQL $1 ..
 exec_none=Polecenie nic nie zwróciło
+
 stop_err=Nie udało się zatrzymać serwera baz danych
 stop_epidfile=Nie udało się otworzyć pliku z numerem PID $1
 stop_ekill=Nie udało się zabić procesu $1 : $2
 start_err=Nie udało się uruchomić serwera baz danych
+
 ddrop_err=Nie udało się usunąć bazy danych
 ddrop_title=Usuń bazę danych
 ddrop_rusure=Czy jesteś pewien, że chcesz usunąć bazę danych $1 ? Zostanie skasowanych $2 tabel zawierających $3 wierszy z danymi.
 ddrop_mysql=Prawdopodobnie uniemożliwi to dalsze korzystanie z serwera PostgreSQL, gdyż jest to podstawowa baza danych!
 ddrop_ok=Usuń bazę danych
+
 tdrop_err=Nie udało się usunąć tabeli
 tdrop_title=Usuń tabelę
 tdrop_rusure=Czy jesteś pewien, że chcesz usunąć tabelę $1 z bazy danych $2 ? Zostanie skasowanych $3 wierszy z danymi.
 tdrop_ok=Usuń tabelę
+
 view_title=Dane w tabeli
 view_pos=Wiersze tabeli $3 od $1 do $2
 view_none=Ta tabela nie zawiera danych
@@ -100,6 +109,7 @@ view_delete=Skasuj wybrane wiersze
 view_nokey=Danych w tej tabeli nie można modyfikować, gdyż nie zawiera ona klucza głównego.
 view_all=Zaznacz wszystkie
 view_invert=Odwróć zaznaczenie
+
 newdb_title=Utwórz bazę danych
 newdb_header=Opcje nowej bazy danych
 newdb_db=Nazwa bazy danych
@@ -108,6 +118,7 @@ newdb_err=Nie udało się utworzyć bazy danych
 newdb_edb=Nie podana lub niepoprawna nazwa bazy danych
 newdb_ecannot=Nie masz uprawnień do tworzenia baz danych
 newdb_epath=Nie podano ścieżki do bazy danych
+
 user_title=Użytkownicy PostgreSQLa
 user_ecannot=Nie masz uprawnień do zmiany użytkowników
 user_name=Nazwa użytkownika
@@ -126,6 +137,7 @@ user_none=Brak
 user_err=Nie udało się zachować użytkownika
 user_epass=Nie podane lub niepoprawne hasło
 user_ename=Nie podana lub niepoprawna nazwa użytkownika
+
 host_ecannot=Nie masz uprawnień do zmiany dozwolonych hostów
 host_title=Dozwolone hosty
 host_local=Lokalne połączenie
@@ -156,6 +168,7 @@ host_epassword=Nie podany lub niepoprawny plik haseł
 host_enetmask=Nie podana lub niepoprawna maska sieci
 host_enetwork=Nie podana lub niepoprawna sieć
 host_ehost=Nie podany lub niepoprawny adres IP hosta
+
 grant_title=Nadane uprawnienia
 grant_tvi=Obiekt
 grant_type=Typ
@@ -179,6 +192,7 @@ grant_v=Widok
 grant_i=Indeks
 grant_S=Ciąg
 grant_none=Brak tabel, widoków, ciągów i indeksów, w których można nadać uprawnienia.
+
 group_title=Grupy PostgreSQLa
 group_ecannot=Nie masz uprawnień do zmiany grup
 group_name=Nazwa grupy
@@ -194,6 +208,7 @@ group_ename=Nie podana lub niepoprawna nazwa grupy
 group_egid=Nie podany lub niepoprawny nr ID grupy
 group_etaken=Ta nazwa grupy jest już używana
 group_none=Nie istnieje żadna grupa PostgreSQLa
+
 esql=Wykonanie SQL $1 nie powiodło się : $2
 log_start=Uruchomiono serwer PostgreSQL
 log_stop=Zatrzymano serwer PostgreSQL
@@ -201,6 +216,7 @@ log_db_create=Utworzono bazę danych $1
 log_db_delete=Usunięto bazę danych $1
 log_table_create=Utworzono tabelę $1 w bazie danych $2
 log_table_delete=Usunięto tabelę $1 z bazy danych $2
+
 log_field_create=Dodano pole $1 $4 do $2 w bazie danych $3
 log_field_modify=Zmieniono pole $1 $4 w $2 w bazie danych $3
 log_field_delete=Usunięto pole $1 z $2 w bazie danych $3
@@ -225,6 +241,7 @@ log_create_hba=Utworzono dozwolony host $1
 log_modify_hba=Zmieniono dozwolony host $1
 log_delete_hba=Usunięto dozwolony host $1
 log_grant=Zapewniono uprawnienia do $1 w bazie danych $2
+
 acl_dbs=Bazy danych, którymi ten użytkownik może zarządzać
 acl_dbscannot=Ta kontrola dostępu stanie się bardziej efektywna po uruchomieniu serwera baz danych PostgreSQL.
 acl_dall=Wszystkie

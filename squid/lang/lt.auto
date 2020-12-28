@@ -38,6 +38,7 @@ index_restartdesc=Spustelėkite šį mygtuką, kad suaktyvintumėte dabartinę k
 index_iptables=Uosto nukreipimo sąranka
 index_squid=Kalmarų tarpinis serveris
 index_manual=Redaguoti konfigūracijos failus
+
 manual_title=Redaguoti konfigūracijos failus
 manual_file=Pasirinkite norimą redaguoti konfigūracijos failą:
 manual_change=Keisti
@@ -45,6 +46,7 @@ manual_editing=Norėdami rankiniu būdu redaguoti $1 konfigūracijas, naudokite 
 manual_err=Nepavyko išsaugoti konfigūracijos failo
 manual_efile=Neteisingas konfigūracijos failo vardas!
 manual_ecannot=Neleidžiama rankiniu būdu redaguoti konfigūracijos failų
+
 buttsave=Sutaupyti
 buttdel=Ištrinti
 buttcreat=Sukurti
@@ -54,6 +56,7 @@ default=Numatytas
 none=Nė vienas
 on=Įjungta
 off=Išjungta
+
 acl_header1=Sukurti ACL
 acl_header2=Redaguoti ACL
 acl_name=ACL vardas
@@ -109,6 +112,7 @@ acl_file=Saugokite ACL reikšmes faile
 acl_nofile=Kalmarų konfigūracija
 acl_infile=Atskira byla
 acl_keep=Tiesiog naudoti esamą failo turinį?
+
 aclsave_failsave=Nepavyko išsaugoti ACL
 aclsave_faildel=Nepavyko ištrinti ACL
 aclsave_epr=Ši ACL naudojama tarpinio serverio apribojimo dėka
@@ -128,11 +132,13 @@ aclsave_eemin=Netinkama pabaiga min
 aclsave_efile=Jums neleidžiama rašyti į ACL failą „$1“
 aclsave_enofile=Neįvestas ACL failo vardas
 aclsave_ealready=ACL failas jau yra
+
 cach_ecannot=Jums neleidžiama pasiekti talpyklos tvarkyklės statistikos
 cach_err=Klaida
 cach_nfound=Kalmarų talpyklos tvarkyklės programa <tt>$1</tt> jūsų sistemoje nerasta. Galbūt jūsų <a href=/config.cgi?$2>modulio konfigūracija</a> yra neteisinga.
 cach_return=kalmarų indeksas
 cach_esame=<b>Kalmarų cachemgr.cgi vykdomasis failas</b> nustatytas Webmin cachemgr.cgi programai, o ne tai, kurią tiekia kalmarai.
+
 chown_header=Keisti nuosavybės teises
 chown_stop=Sustabdyti kalmarus. ..
 chown_done=.. Padaryta
@@ -140,6 +146,7 @@ chown_chown=Keičiama nuosavybės teisė. ..
 chown_restart=Kalmarų paleidimas iš naujo. ..
 chown_failrestart=Nepavyko iš naujo paleisti kalmarų.
 chown_return=kalmarų indeksas
+
 clear_ecannot=Jums neleidžiama išvalyti ir atkurti talpyklos
 clear_header=Išvalykite ir atkurkite talpyklą
 clear_msgclear=Ar tikrai norite išvalyti ir atkurti savo Kalmarų talpyklą? Tai ištrins <b>visus</b> failus, kuriuos buvote talpykloje, ir iš naujo paleisite Kalmarų serverį.
@@ -153,6 +160,7 @@ clear_failrestart=Nepavyko iš naujo paleisti kalmarų.
 clear_return=kalmarų indeksas
 clear_url=Pašalinkite vieną URL iš talpyklos:
 clear_ok=Pašalinti
+
 eacl_ecannot=Jums neleidžiama redaguoti prieigos valdymo
 eacl_header=Prieigos kontrolė
 eacl_acls=Prieigos kontrolės sąrašai
@@ -169,8 +177,10 @@ eacl_nopr=Nėra apibrėžti tarpinio serverio apribojimai.
 eacl_addpr=Pridėti tarpinio serverio apribojimą.
 eacl_noprr=Nėra apibrėžti tarpinio serverio atsakymo apribojimai
 eacl_addprr=Pridėti tarpinio serverio atsakymo apribojimą.
+
 eacl_replypr=Atsakykite įgaliotojo serverio apribojimus
 eacl_replynopr=Nėra apibrėžti atsakymo tarpinio serverio apribojimai
+
 eacl_icpr=ICP apribojimai
 eacl_noicpr=Nėra apibrėžti ICP apribojimai
 eacl_addicpr=Pridėti ICP apribojimą.
@@ -187,6 +197,7 @@ eacl_eclass=Nepasirinkta nė viena programos klasė
 eacl_cname=Įveskite pavadinimą
 eacl_file=Iš failo $1
 eacl_hdelete=Ištrinti pasirinktus apribojimus
+
 eadm_ecannot=Jums neleidžiama redaguoti administravimo parinkčių
 eadm_header=Administravimo galimybės
 eadm_aao=Administravimo ir skelbimo parinktys
@@ -213,6 +224,7 @@ eadm_caf=Talpyklos skelbimo failas
 eadm_annp=Skelbimo laikotarpis
 eadm_buttsave=Sutaupyti
 eadm_return=kalmarų indeksas
+
 eauth_ecannot=Jums neleidžiama redaguoti tarpinio serverio autentifikavimo
 eauth_header=Tarpinio serverio autentifikavimas
 eauth_aopt=Autentifikavimo parinktys
@@ -226,6 +238,7 @@ eauth_pusers=Tarpiniai vartotojai
 eauth_nopusers=Šiuo metu nėra apibrėžti tarpinio serverio vartotojai.
 eauth_addpuser=Pridėkite naują tarpinio serverio vartotoją.
 eauth_return=kalmarų indeksas
+
 ec_ecannot=Neleidžiama redaguoti talpyklos parinkčių
 ec_header=Talpyklos parinktys
 ec_cro=Talpyklos išsaugojimas ir užklausos parinktys
@@ -280,6 +293,7 @@ ec_return=kalmarų indeksas
 ec_maxreplies=Maksimalūs atsakymo kūno dydžiai
 ec_maxrn=Dydis (kB)
 ec_maxracls=Jei užklausos atitinka ACL (palikite tuščią visiems)
+
 ech_header=Sukurti talpyklos pagrindinį kompiuterį
 ech_header1=Redaguoti talpyklos pagrindinį kompiuterį
 ech_cho=Talpyklos pagrindinio kompiuterio parinktys
@@ -324,6 +338,7 @@ ech_origin=Laikyti pagrindinį serverį kaip kilmės serverį?
 ech_force=Priverstinis priegloba: antraštė į
 ech_same=Nekeista
 ech_ssl=Prisijunkite naudodami SSL?
+
 eicp_ecannot=Jums neleidžiama redaguoti kitų talpyklų
 eicp_header=Kiti talpyklos
 eicp_opcs=Kiti tarpinio serverio talpyklos serveriai
@@ -361,6 +376,7 @@ eicp_ttype=Tipas
 eicp_tpport=Tarpinio serverio prievadas
 eicp_tiport=ICP prievadas
 eicp_delete=Ištrinti pasirinktus talpyklos
+
 elogs_ecannot=Jums neleidžiama redaguoti registravimo
 elogs_header=Medienos ruoša
 elogs_lalo=Registravimas ir žurnalo failo parinktys
@@ -394,6 +410,7 @@ elogs_notset=Nenustatyta
 elogs_dont=Negalima prisijungti
 elogs_file=Failas $1
 elogs_squid=Kalmarų standartas
+
 emem_ecannot=Jums neleidžiama redaguoti atminties naudojimo
 emem_dheader=Atminties ir disko naudojimas
 emem_header=Atminties naudojimas
@@ -419,6 +436,7 @@ emem_lfuda=Dinaminis mažiausiai naudojamas
 emem_hlru=Krūva rečiau naudojama
 emem_return=kalmarų indeksas
 emem_mrp=Atminties pakeitimo politika
+
 emisc_ecannot=Jums neleidžiama redaguoti įvairių variantų
 emisc_header=Įvairūs variantai
 emisc_mo=Įvairūs variantai
@@ -455,6 +473,7 @@ emisc_wccpin=WCCP gaunamas adresas
 emisc_wccpout=WCCP išeinantis adresas
 emisc_none=Nė vienas
 emisc_virtual=Virtualus
+
 eports_ecannot=Jums neleidžiama redaguoti prievadų ir tinklo
 eports_header=Uostai ir tinklai
 eports_pano=Uostai ir tinklo galimybės
@@ -480,6 +499,7 @@ eports_unc=Ar nešvarūs SSL išjungimai?
 eports_checkhost=Patvirtinti pagrindinio kompiuterio pavadinimus URL adresuose?
 eports_underscore=Ar leisti pabraukti pagrindinius pavadinimus?
 eports_all=Visi
+
 eprogs_ecannot=Jums neleidžiama redaguoti pagalbininkų programų
 eprogs_header=Pagalbininkų programos
 eprogs_chpo=Programos „Cache Helper“ parinktys
@@ -508,6 +528,7 @@ eprogs_ttl=Autentifikacijos talpyklos laikas
 eprogs_aittl=Autentifikuokite IP talpyklos laiką
 eprogs_realm=Autentifikavimo sritis
 eprogs_return=kalmarų indeksas
+
 euser_header=Sukurti tarpinį vartotoją
 euser_header1=Redaguoti tarpinio serverio vartotoją
 euser_pud=Informacija apie tarpinį asmenį
@@ -516,6 +537,7 @@ euser_p=Slaptažodis
 euser_u1=Nekeista
 euser_e=Įjungtas?
 euser_return=vartotojų sąrašas
+
 ahttp_header=Sukurti tarpinio serverio apribojimą
 ahttp_header1=Redaguoti tarpinio serverio apribojimą
 ahttp_pr=Įgaliotojo serverio apribojimas
@@ -525,10 +547,13 @@ ahttp_d=Neigti
 ahttp_ma=Atitikti ACL
 ahttp_dma=Nesutampa su ACL
 ahttp_return=ACL sąrašas
+
 ahttp_replyheader=Sukurti tarpinio serverio atsakymo apribojimą
 ahttp_replyheader1=Redaguoti tarpinio serverio atsakymo apribojimą
 ahttp_replypr=Įgaliotojo serverio atsakymo apribojimas
+
 sahttp_ftspr=Nepavyko išsaugoti tarpinio serverio atsakymo apribojimo
+
 aicp_header=Sukurti ICP apribojimą
 aicp_header1=Redaguoti ICP apribojimą
 aicp_ir=ICP apribojimas
@@ -538,7 +563,9 @@ aicp_d=Neigti
 aicp_ma=Atitikti ACL
 aicp_dma=Nesutampa su ACL
 aicp_return=ACL sąrašas
+
 saicp_ftsir=Nepavyko išsaugoti ICP apribojimo
+
 icache_ecannot=Jums neleidžiama inicijuoti talpyklos
 icache_ftic=Nepavyko inicijuoti talpyklos
 icache_ymcautrsa=Turite pasirinkti vartotoją, kuris paleis „Squid as“
@@ -546,7 +573,9 @@ icache_euser=Vartotojas paleidžia „Squid as“ neegzistuoja
 icache_itscwtc=Inicijuodami Kalmarų talpyklą naudokite komandą <tt>$1</tt> ..
 icache_return=kalmarų indeksas
 icache_title=Inicijuokite talpyklą
+
 restart_ftrs=Nepavyko iš naujo sukonfigūruoti kalmarų
+
 sadmin_ftsao=Nepavyko išsaugoti administravimo parinkčių
 sadmin_header=Keisti nuosavybės teises
 sadmin_msg1=Jūs pakeitėte vartotoją ar grupę, kuriai kalmarai veikia. Kad tai tinkamai įsigaliotų, turėtų būti atnaujinta visų talpyklos ir žurnalo failų nuosavybė ir „Squid“ paleista iš naujo.
@@ -556,10 +585,12 @@ sadmin_inavea=„$1“ nėra teisingas el. Pašto adresas
 sadmin_inavh=„$1“ nėra teisingas pagrindinio kompiuterio vardas
 sadmin_inavap=„$1“ nėra galiojantis skelbimo laikotarpis
 sadmin_inavp=„$1“ nėra galiojantis prievadas
+
 sauth_ftsao=Nepavyko išsaugoti autentifikavimo parinkčių
 sauth_iomuf=Netinkamas arba trūkstamas vartotojo failo vardas
 sauth_iomd=Netinkamas arba jo nėra
 sauth_msg1=Jūsų „Squid“ versija nebuvo sudaryta su tarpinio serverio autentifikavimo palaikymu
+
 scache_ftsco=Nepavyko išsaugoti talpyklos galimybių
 scache_emsg0=Turite įvesti bent vieną talpyklos katalogą
 scache_emsg1=Talpyklos katalogo „$1“ nėra
@@ -577,14 +608,17 @@ scache_emsg12=„$1“ yra netinkamas katalogo dydis
 scache_emsg13=„$1“ nėra tinkamas pagrindinis kompiuteris
 scache_emsg14=„$1“ nėra galiojantis prievadas
 scache_emaxrs=Netinkamas maksimalus kūno dydis eilutėje $1
+
 schost_ftsc=Talpyklos išsaugoti nepavyko
 schost_emsg1=„$1“ nėra tinkamas talpyklos pagrindinio kompiuterio vardas
 schost_emsg2=„$1“ nėra tinkamas tarpinio serverio prievadas
 schost_emsg3=„$1“ nėra galiojantis ICP prievadas
 schost_emsg4=„$1“ nėra tinkamas laikas gyventi
 schost_emsg5=„$1“ negalioja
+
 sicp_ftsco=Nepavyko išsaugoti talpyklos galimybių
 sicp_emsg1=„$1“ negalioja
+
 slogs_ftslo=Nepavyko išsaugoti registravimo parinkčių
 slogs_emsg1=„$1“ nėra absoliutus failo vardas
 slogs_emsg2='$1' yra neteisingas failo vardas
@@ -594,20 +628,24 @@ slogs_emsg5=„$1“ nėra tinkamas derinimo parinkčių sąrašas
 slogs_efname=Netinkamas formato pavadinimas eilutėje $1
 slogs_effmt=Trūksta žurnalo formato eilutėje $1
 slogs_eafile=Trūksta arba netinkamas žurnalo failas eilutėje $1
+
 smem_ftsmo=Nepavyko išsaugoti atminties parinkčių
 smem_emsg1=„$1“ nėra tinkamas talpyklos dydis
 smem_emsg2=„$1“ nėra teisingas aukšto vandens ženklas
 smem_emsg3=„$1“ nėra tinkamas žemo vandens ženklas
 smem_emsg4=„$1“ nėra tinkamas objekto dydis
+
 smisc_ftso=Nepavyko išsaugoti parinkčių
 smisc_emsg1=„$1“ nėra tinkamas apsisukimų skaičius
 smisc_emsg2=„$1“ nėra galiojantis domenas
 smisc_emsg3=„$1“ nėra tinkamas tarpinis serveris
 smisc_emsg4=„$1“ nėra tinkamas apynių skaičius
+
 sport_ftspo=Nepavyko išsaugoti prievado parinkčių
 sport_emsg1=„$1“ nėra galiojantis prievado numeris
 sport_emsg2=„$1“ nėra teisingas adresas
 sport_emsg3=„$1“ nėra tinkamas buferio dydis
+
 sprog_ftshpo=Nepavyko išsaugoti pagalbininkų programos parinkčių
 sprog_emsg1=Trūksta FTP parinkčių
 sprog_emsg2=„$1“ nėra tinkama programa
@@ -620,19 +658,23 @@ sprog_emsg8=„$1“ nėra galiojantis IP adresas
 sprog_emsg9=„$1“ nėra tinkamas talpyklos laikas
 sprog_emsg10=„$1“ nėra galiojantis TTL
 sprog_echildren=Programų skaičius turi būti didesnis nei nulis
+
 suser_ftsu=Nepavyko išsaugoti vartotojo
 suser_emsg1=Netinkamas vartotojo vardas arba jo nėra
 suser_etaken=Vartotojo vardas jau yra naudojamas
+
 start_ftsq=Nepavyko paleisti Kalmarų
 start_ecannot=Jums neleidžiama pradėti kalmarų
 stop_ftsq=Nepavyko sustabdyti Kalmarų
 stop_ecannot=Jums neleidžiama sustoti Kalmarų
+
 calamaris_ecannot=Jums neleidžiama pasiekti „Calamaris“ žurnalo analizės
 calamaris_title=Calamaris žurnalo analizė
 calamaris_last=Apriboti analizę iki paskutinių $1 žurnalų eilučių.
 calamaris_eprog=„Calamaris“ vykdomasis $1 nerastas. Galbūt jis neįdiegtas jūsų sistemoje arba neteisinga <a href='$2'>modulio konfigūracija</a>.
 calamaris_elogs=Žurnalų kataloge $1 nėra <tt>access.log</tt> failų. Gal kalmaras dar nebuvo paleistas arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
 calamaris_gen=Ataskaita sugeneruota $1
+
 lib_emsg1=„$1“ nėra galiojantis IP adresas
 lib_seconds=sekundžių
 lib_minutes=minučių
@@ -680,6 +722,7 @@ lib_aclmuip=Maksimalus vartotojo IP
 lib_buttac=Taikyti pakeitimus
 lib_buttss=Stop kalmarai
 lib_buttss1=Pradėti kalmarus
+
 log_ports=Pakeisti uostai ir tinklo galimybės
 log_icp=Pakeistos kitos talpyklos parinktys
 log_mem=Pakeistos atminties naudojimo galimybės
@@ -734,25 +777,31 @@ log_pools_delete=Ištrinti $1 atidėjimo fondai
 log_delay_create=Pridėta ACL uždelsimo fondui $1
 log_delay_modify=Modifikuotas ACL uždelsimo fondui $1
 log_delay_delete=Ištrinta ACL už vėlavimo rezervą $1
+
 log_delay_move=Perkelta ACL už vėlavimo rezervą $1
 log_refresh_create=Sukurta atnaujinimo taisyklė, skirta $1
 log_refresh_modify=Pakeista $1 atnaujinimo taisyklė
 log_refresh_delete=Ištrinta $1 atnaujinimo taisyklė
+
 log_refresh_move=Perkelta $1 atnaujinimo taisyklė
 log_refreshes_delete=Ištrintos $1 atnaujinimo taisyklės
 log_iptables=Atnaujinta prievado peradresavimo sąranka
 log_purge=Iš talpyklos pašalintas URL $1
 log_cachemgr=Pakeisti talpyklos tvarkyklės slaptažodžiai
+
 acl_root=Šaknų katalogas ACL failams
 acl_sections=Leidžiami konfigūracijos puslapiai
 acl_start=Ar gali pradėti ir sustabdyti kalmarus?
 acl_restart=Ar galima naudoti kalmarų konfigūraciją?
+
 always_create=Sukurti tiesioginį gavimą
 always_edit=Redaguoti tiesioginį gavimą
 always_header=Tiesiogiai gaukite užklausas, atitinkančias ACL
+
 never_create=Sukurti netiesioginį pateikimą
 never_edit=Redaguoti netiesioginį gavimą
 never_header=Niekada tiesiogiai nekelkite užklausų, atitinkančių ACL
+
 delay_title=Atidėti baseinus
 delay_add=Pridėkite naują atidėjimo baseiną.
 delay_num=Skaičius
@@ -802,11 +851,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=MB
+
 dpool_err=Nepavyko ištrinti atidėjimo telkinių
 dpool_enone=Nepasirinkta
+
 apool_header=Pridėti „Delay Pool ACL“
 apool_header1=Redaguoti „Delay Pool ACL“
 apool_pr=Vėlinti baseiną ACL
+
 authparam_title=Autentifikavimo programos
 authparam_header=Išorinės autentifikacijos programos parinktys
 authparam_ttl=Laikas išsaugoti slaptažodžius
@@ -849,6 +901,7 @@ ext_ecache=Trūksta arba netinkamas talpyklos dydis
 ext_eprogram=Įvestas neteisingas programos kelias
 ext_eclash=Išorinis programos tipas tuo pačiu pavadinimu jau egzistuoja
 ext_eused=Šią išorinę programą naudoja ACL
+
 header_title=Antraštės prieigos kontrolė
 header_none=Dar nėra apibrėžtos antraštės prieigos kontrolės taisyklės.
 header_name=HTTP antraštė
@@ -868,6 +921,7 @@ header_err=Nepavyko išsaugoti antraštės prieigos kontrolės taisyklės
 header_ename=Trūksta arba netinkamas antraštės pavadinimas
 header_request_header_access=Užklausa antraštes
 header_reply_header_access=Atsakyti antraštes
+
 refresh_title=Atnaujinimo taisyklės
 refresh_none=Dar nėra apibrėžtos atnaujinimo taisyklės.
 refresh_re=Įprasta išraiška
@@ -894,6 +948,7 @@ refresh_epc=Dingęs arba netinkamas amžiaus procentas
 refresh_delete=Ištrinkite pasirinktas atnaujinimo taisykles
 drefresh_err=Nepavyko ištrinti atnaujinimo taisyklių
 drefesh_enone=Nepasirinkta
+
 iptables_title=Uosto nukreipimo sąranka
 iptables_inst0=„IPtable“ ugniasienės komandos, reikalingos uosto nukreipimui nustatyti, neatrodo, kad jos būtų įdiegtos jūsų sistemoje. Norėdami gauti daugiau informacijos, žiūrėkite <a href='$1'>„Linux“ užkardą</a>.
 iptables_inst1=Panašu, kad <a href='$1'>„Linux“ ugniasienė</a> modulis nėra visiškai nustatytas jūsų sistemoje. Šis modulis naudoja šį modulį Frox prievado peradresavimui nustatyti.
@@ -908,18 +963,23 @@ iptables_enet=Trūksta arba netinkamas tinklo adresas (turėtų būti toks, kaip
 iptables_eiface=Trūksta arba netinkama tinklo sąsaja
 iptables_eapply=Taikyti ugniasienę nepavyko : $1
 iptables_eapply2=Taikyti kalmarus nepavyko : $1
+
 syslog_access=Kalmarų prieigos žurnalas
 syslog_cache=Kalmarų talpyklos žurnalas
 syslog_store=Kalmarų objektų saugyklos žurnalas
+
 purge_err=Nepavyko išvalyti URL iš talpyklos
 purge_title=Išvalyti talpyklos URL
 purge_doing=Išvalomas URL $1 ..
 purge_done=.. padaryta.
 purge_failed=.. nepavyko! Norėdami sužinoti priežastį, skaitykite aukščiau pateiktą klaidos pranešimą.
+
 dhttp_err=Nepavyko ištrinti tarpinio serverio apribojimų
 dhttp_enone=Nepasirinkta
+
 dicp_err=Nepavyko ištrinti ICP apribojimų
 dicp_enone=Nepasirinkta
+
 cachemgr_title=Talpyklos tvarkyklės slaptažodžiai
 cachemgr_ecannot=Neleidžiama redaguoti talpyklos tvarkyklės slaptažodžių
 cachemgr_def1=Nereikia slaptažodžių

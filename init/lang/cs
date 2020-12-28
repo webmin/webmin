@@ -42,6 +42,7 @@ index_rdesc=Popis
 index_rboot=Spustit při startu?
 index_radd=Vytvořit novou akci.
 index_unknown=Neznámý
+
 edit_title=Editovat akci
 create_title=Vytvořit akci
 edit_ecannot=Nemáte oprávnění editovat startovací akce
@@ -74,6 +75,7 @@ edit_statusnow=Zobrazit stav
 edit_return=akce
 edit_status=Spustit ihned?
 edit_unknown=Neznámý
+
 save_err=Chyba při ukládání akce
 save_ecannot=Nemáte oprávnění editovat startovací akce
 save_ealready=Akce nazvaná '$1' již existuje
@@ -82,6 +84,7 @@ save_ename=Chybějící nebo neplatné jméno akce
 save_eclash=Akce stejného jména již existuje
 save_escript=Nebyl vložen žádný skript akce
 save_estartcmd=Chybějící příkaz pro start
+
 ss_ecannot=Nemáte oprávnění spustit nebo ukončit startovací akce
 ss_start=Spustit akci
 ss_stop=Zastavit akci
@@ -92,21 +95,25 @@ ss_exec=Spouští se $1 ..
 ss_doingstart=Spouští se akce $1 ..
 ss_doingstop=Zastavuje se akce $1 ..
 ss_doingstatus=Požadovaný status pro akci $1 ..
+
 shutdown_ecannot=Nemáte oprávnění vypnout systém
 shutdown_title=Vypnutí
 shutdown_rusure=Skutečně chcete vypnout systém pomocí příkazu $1 ?
 shutdown_ok=Vypnutí systému
 shutdown_exec=Probíhá vypínání pomocí příkazu $1 ..
+
 reboot_ecannot=Nemáte oprávnění restartovat systém
 reboot_title=Restart
 reboot_rusure=Skutečně chcete restartovat systém pomocí příkazu $1 ?
 reboot_ok=Restartovat systém
 reboot_exec=Probíhá restart pomocí příkazu $1 ..
+
 acl_script=Může editovat startovací skript?
 acl_actions=Může editovat, vytvářet a mazat akce?
 acl_runonly=Pouze spustit
 acl_reboot=Může restartovat systém?
 acl_shutdown=Může vypnout systém?
+
 log_rename=Akce $1 přejmenována na $2
 log_modify=Modifikována akce $1
 log_create=Vytvořena akce $1
@@ -127,6 +134,7 @@ log_massrestart=Restartovány akce $1
 log_massenable=Povoleny akce $1
 log_massdisable=Zakázány akce $1
 log_telinit=Přepnuto na úroveň běhu $1
+
 edit_hostconfig_startup=Skript $1 se spustí a průběhu startování systému, pokud je tato akce aktivní. Můžete ji editovat níže
 edit_hostconfig_plist=Soubor $1 nastavuje hlavní parametry, které bude respektovat startovací skript. Můžete jej editovat níže
 edit_hostconfig_new=Vytvořit novou akci
@@ -138,6 +146,7 @@ edit_hostconfig_array=Pole $1, $2, a $3 jsou pole typu array a mohou obsahovat v
 edit_hostconfig_further=Po vytvoření nové spouštěcí akce, byste měli přejít na stránku, která vám  umožní upravit spouštěcí skript a seznam parametrů, pokud je potřeba.
 edit_hostconfig_hostconfig=Soubor $1 kontroluje systémové služby a démony, které jsou spouštěny během startu. Můžete ho editovat níže
 edit_hostconfig_title=Editovat Hostconfig
+
 mass_enone=Žádné akce nebyly vybrány
 mass_enone2=Nejsou vybrány žádné služby
 mass_start=Spouštění akcí
@@ -150,6 +159,7 @@ mass_starting=Spouštění akce $1 ..
 mass_stopping=Ukončování akce $1 ..
 mass_failed=.. selhalo!
 mass_ok=.. hotovo.
+
 change_err=Nemáte oprávnění přepínat úrovně běhu
 change_title=Přepnutí úrovně běhu
 change_cmd=Přepínání úrovně běhu $1 pomocí příkazu $2. Toto může být občas využíváno a Webmin nemusí být přístupný po takovém přepnutí.

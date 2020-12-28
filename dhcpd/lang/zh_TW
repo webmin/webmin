@@ -63,12 +63,14 @@ index_match1=contains
 index_match2=matches
 index_dhcpd=ISC DHCPd
 index_delete=刪除已選取
+
 butt_save=儲存
 butt_eco=編輯客戶端選項
 butt_vco=檢視客戶端選項
 butt_del=刪除
 butt_create=建立
 butt_leases=租約列表
+
 esub_crheader=建立子網路
 esub_edheader=編輯子網路
 esub_tabhdr=子網路詳細資料
@@ -82,12 +84,14 @@ esub_groups=子網路中的群組
 esub_pools=子網路的位址池
 esub_pool=池$1
 esub_poolnone=未定義位址池
+
 esub_pooladd=新增位址池
 esub_none=無
 esub_return=子網路列表
 esub_retshar=共享的網路
 esub_desc=子網路說明敘述
 esub_fopeer=Failover Peer
+
 esh_crheader=建立共享的網路
 esh_eheader=編輯共享的網路
 esh_tabhdr=共享網路的詳細資料
@@ -98,6 +102,7 @@ esh_subn=共享網路中的子網路
 esh_return=子網路列表
 esh_pools=Address Pools for Shared Network
 esh_desc=共享網路說明敘述
+
 ehost_crheader=建立主機
 ehost_eheader=編輯主機
 ehost_tabhdr=主機詳細資料
@@ -118,6 +123,7 @@ ehost_retgroup=群組
 ehost_retsubn=子網路
 ehost_retshar=共享網路
 ehost_desc=主機說明敘述
+
 egroup_crheader=建立主機群組
 egroup_eheader=編輯主機群組
 egroup_tblhdr=群組詳細資料
@@ -128,6 +134,7 @@ egroup_return=主機列表
 egroup_retsubn=子網路
 egroup_retshar=共享網路
 egroup_desc=群組說明敘述
+
 default=預設
 secs=秒
 none=無
@@ -147,19 +154,23 @@ listl_all=列出所有活動中和已過期的租約
 listl_delete=點選上面列表中的一個租約IP位址並將其刪除。
 listl_unknown=未知
 listl_allocs=$1 個有效的 IP 位址, $2 個已分配 ($3 %)
+
 restart_errmsg1=重新啟動 dhcpd 失敗
 restart_errmsg2=送出控制訊號給程序失敗
 start_failstart=啟動 dhcpd 失敗
+
 sgroup_faildel=刪除群組失敗
 sgroup_failsave=儲存群組失敗
 sgroup_invassign=將群組指定到不正確的區
 sgroup_echanged=設定檔內容已變更。請再試一次。
+
 shost_faildel=刪除主機失敗
 shost_failsave=儲存主機失敗
 shost_invalidhn=不是一個有效的主機名稱
 shost_invalidhwa='$1' 不是一個有效的 $2 位址
 shost_invalidaddr='$1'包含無效的主機名稱或IP位址
 shost_invassign=將主機指定到不正確的區
+
 sopt_failsave=儲存客戶端選項失敗
 sopt_invalidip=不是一個有效的 IP 位址
 sopt_invalidint=不是一個整數
@@ -167,10 +178,12 @@ sopt_invalidipp=不是一個有效的 IP 位址對 (例如 1.2.3.4,5.6.7.8)
 sopt_edname='$1' 不是一個有效的選項名稱
 sopt_ednum='$1' 不是一個有效的選項數值
 sopt_edtype='$1' 不是一個有效的選項類型
+
 sshared_faildel=刪除共享網路失敗
 sshared_failsave=儲存共享網路失敗
 sshared_invalidsname=遺失或錯誤的共享網路名稱
 sshared_nosubnet=共享網路'$1'未包含任何子網路。
+
 ssub_faildel=刪除子網路失敗
 ssub_failsave=儲存子網路失敗
 ssub_invalidsubaddr=不是一個有效的子網路位址
@@ -178,6 +191,7 @@ ssub_invalidnmask=不是一個有效的子網路遮罩
 ssub_invalidipr=不是一個有效的 IP 位址
 ssub_nosubnet=共享網路'$1'未包含任何子網路。
 ssub_invalidfopeer=is not a valid failover peer
+
 plib_deflt=預設的租約時間
 plib_bfname=開機檔案名稱
 plib_maxlt=最大租約時間
@@ -229,6 +243,7 @@ plib_eexpr=This section of the DHCP configuration contains the expression direct
 plib_auth_subnet=Server is authoritative for this subnet?
 plib_auth_shared-network=Server is authoritative for this shared network?
 plib_auth_global=Server is authoritative for all subnets?
+
 eopt_header=客戶端選項
 eopt_subtitle=給子網路 $1
 eopt_returnsub=子網路列表
@@ -272,6 +287,7 @@ eopt_slpa=SLP directory agent IPs
 eopt_slpaips=These IPs only?
 eopt_slps=SLP service scope
 eopt_slpsonly=This scope only?
+
 log_apply=套用變更
 log_start=啟動 DHCP 伺服器
 log_stop=停止 DHCP 伺服器
@@ -294,6 +310,7 @@ log_options_group=已為主機$1群組修改選項
 log_delete_lease=已為$1刪除租約
 log_delete_subnets=已為 $1 刪除子網路和共享網路
 log_delete_hosts=已為 $1 刪除主機和主機群組
+
 keys_edit=編輯 TSIG key
 keys_create=建立 TSIG keys
 keys_title=DNS Keys
@@ -304,12 +321,14 @@ keys_ecannot=You are not allowed to edit DNS keys
 keys_err=Failed to save DNS keys
 keys_ekey='$1' is not a valid key ID
 keys_esecret=Missing or invalid base-64 encoded secret for key $1
+
 pool_edit=編輯位址池
 pool_create=已新增的位址池
 pool_header=位址池選項
 pool_allow=允許的客戶
 pool_deny=禁止的客戶
 pool_return=子網路
+
 cdel_header=警告
 cdel_shared1=共享網路
 cdel_shared2=共享網路
@@ -327,6 +346,7 @@ cdel_txt=刪除$1 '$2'也將會刪除其所包含的目錄：
 cdel_confirm=您真的想刪除$1
 cdel_eunknown=未知錯誤
 cdel_return=主機和網路列表
+
 eacl_aviol=違反訪問控制
 eacl_np=您沒有許可
 eacl_pdh=刪除主機
@@ -350,6 +370,7 @@ eacl_pdl=刪除租約
 eacl_psl=瀏覽租約
 eacl_pglob=編輯全局選項
 eacl_papply=重新啟動本服務
+
 acl_apply=可以套用變更嗎？
 acl_r_leases=可以瀏覽租約嗎？
 acl_w_leases=可以移除租約嗎？
@@ -378,9 +399,11 @@ acl_err=錯誤儲存ACL列表
 acl_ernow=如果您想在全局ACL中啟動用於某些物件類型的寫入功能，您必須也啟動本物件的讀取功能。
 acl_normal=通常
 acl_paranoic=paranoic
+
 iface_title=網路介面
 iface_desc=DHCP 伺服器僅可分配IP位址在已使用的網路介面上. 這個網路介面必須包含所有已定義的子網路, 假如沒有指定, DHCP 伺服器將會嘗試自動擇一使用.
 iface_listen=接收的介面
+
 lookup_ehost=沒有主機名稱, IP 位址或是 MAC 位址 $1 已存在
 lookup_ehostname=沒有輸入主機名稱, IP 位址或是 MAC 位址.
 lookup_egroup=沒有群組名稱或是網域 $1 已存在
@@ -389,6 +412,7 @@ lookup_esubnet=No subnet with the address or address/netmask $1 exists
 lookup_esubnetname=沒有輸入子網路位址或 IP/遮罩
 lookup_eshared=No shared network with the name $1 exists
 lookup_esharedname=沒有輸入共享網路名稱
+
 zone_key=DNS-網域
 index_addzone=新增 DNS 網域.
 index_zone=網域
@@ -403,16 +427,21 @@ zone_return=主選單
 zone_faildel=Failed to delete zone
 zone_failsave=Failed to save zone
 zone_tsigkey=TSIG key
+
 plib_clientupdates=允許用戶端更新他們的紀錄?
+
 text_title=dhcpd.conf
 text_editor=文字編輯區
 text_return=主選單
 text_undo=恢復
 text_ecannot=您無權修改這個設定檔
+
 index_buttetext=設定檔
 index_text=編輯設定檔在文字編輯區 (請小心!)
+
 stop_err=停止 DHCP 伺服器失敗
 stop_ekill=沒有執行!
+
 sdelete_err=刪除子網路和共享網路失敗
 sdelete_enone=None selected
 sdelete_title=刪除子網路和共享網路
@@ -420,6 +449,7 @@ sdelete_rusure1=您確定要刪除您選擇的這個 $1 子網路和 $2 共享�
 sdelete_rusure2=您確定要刪除您選擇的這個 $1 子網路嗎? 任何在這個子網路內的元件資料也會被一併刪除.
 sdelete_rusure3=您確定要刪除您選擇的這個 $2 共享網路嗎? 任何子網路或元件也會被一併刪除.
 sdelete_ok=立刻刪除
+
 hdelete_err=刪除主機和群組失敗
 hdelete_enone=None selected
 hdelete_title=刪除主機和群組

@@ -28,6 +28,7 @@ index_tabinstall=Namestite modul
 index_tabsuggest=Predlagani moduli
 index_allmods2=Manjkajoči moduli, ki jih uporablja Webmin
 index_wantmods=Moduli za namestitev
+
 download_err=Modula ni mogoče namestiti
 download_elocal=Lokalna datoteka ni dana
 download_elocal2='$1' ne obstaja
@@ -65,6 +66,7 @@ download_ebuild=Za izgradnjo enega ali več modulov Perl je potreben $1, vendar 
 download_yum=Namestitev modula Perl $1 iz paketa $2 ..
 download_missingok=Moduli manjkajo iz CPAN-a
 download_fallback=Nekaterih modulov ni uspelo namestiti iz paketov, namesto tega poskušajo namestitev iz vira.
+
 install_title=Namestite modul
 install_untar=Datoteka modula za odvezovanje
 install_make=Zbirni modul
@@ -84,11 +86,13 @@ install_err2=Modul lahko namestite tudi iz CPAN z ukazom $1.
 install_exec=Izvajanje $1.
 install_efile=Datoteka z modulom $1 ne obstaja več
 install_needunlink=Lahko poskusite znova namestiti tako, da se vrnete na prejšnjo stran in izberete različne možnosti. V nasprotnem primeru <a href='$1'>kliknite tukaj, da izbrišete datoteke začasnega paketa</a>, da prihranite prostor na disku.
+
 cpan_sel=Moduli pod $1 ..
 cpan_title=Izberite modul Perl
 cpan_search=Poiščite module z imenom
 cpan_match=Moduli, ki ustrezajo $1 ..
 cpan_none=Zadetkov ni bilo.
+
 edit_title=Podrobnosti o modulu
 edit_header=Informacije o modulu
 edit_mod=Ime modula
@@ -105,6 +109,7 @@ edit_method=Nameščeno iz
 edit_rpm=RPM paket $1 
 edit_debian=Debian paket $1 
 edit_manual=Ročna namestitev modula Perl
+
 uninstall_title=Odstranite modul
 uninstall_rusure=Ali ste prepričani, da želite odstraniti modul Perl $1 ? Naslednje datoteke bodo izbrisane :
 uninstall_rusure2=Ali ste prepričani, da želite odstraniti modul Perl $1 in podmodul (i) $2 ? <br> Izbrisane bodo naslednje datoteke :
@@ -112,7 +117,9 @@ uninstall_ok=Odstrani zdaj
 uninstall_rpm=Modul bo odstranjen, če odstranite paket $1 RPM.
 uninstall_debian=Modul bomo odstranili z odstranitvijo paketa Debian $1.
 uninstall_err=Deinstaliranje modula ni bilo mogoče
+
 delete_efile=Neveljavna datoteka paketa!
+
 uninstalls_title=Odstranjevanje modulov
 uninstalls_err=Odstranjevanje modulov ni bilo mogoče
 uninstalls_enone=Izbrana ni nobena

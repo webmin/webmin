@@ -7,6 +7,7 @@ index_none=Henüz hiçbir NFS dışa aktarımı tanımlanmadı.
 index_apply=Yapılandırmayı Uygula
 index_applydesc=Yukarıda listelenen tüm dışa aktarmaları yapılandırılmış seçenekleriyle etkinleştirmek için bu düğmeyi tıklayın.
 index_return=ihracat listesi
+
 edit_title1=Dışa Aktarma Oluştur
 edit_title2=Dışa Aktarmayı Düzenle
 edit_header=Ayrıntıları dışa aktar
@@ -24,12 +25,14 @@ edit_access=Montaj erişimi
 edit_all=Tüm ev sahipleri
 edit_sel=Listelenen ana bilgisayarlar ..
 edit_none=Ana bilgisayar yok
+
 save_err=Dışa aktarma kaydedilemedi
 save_edir=Dışa aktarılacak eksik veya var olmayan dizin
 save_eanon=Eksik veya geçersiz kök kullanıcı
 save_erw=Hiçbir okuma-yazma ana bilgisayarı girilmedi
 save_eroot=Kök dosya erişim ana bilgisayarı girilmedi
 save_eaccess=Bağlanan erişim ana bilgisayarı girilmedi
+
 log_create_export=$1 ihracat oluşturuldu
 log_delete_export=$1 silme işlemi silindi
 log_modify_export=$1 değiştirilmiş dışa aktarımı

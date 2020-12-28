@@ -4,6 +4,7 @@ index_desc=popis
 index_add=Pridajte novú službu PAM.
 index_return=zoznam služieb
 index_none=Vo vašom systéme sa v adresári $1 nenašli žiadne konfiguračné súbory PAM. Možno PAM nie je podporované alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
+
 desc_su=Zmeniť používateľa
 desc_su-l=Prepnúť používateľa (s prihlásením)
 desc_login=Miestne alebo vzdialené prihlásenie
@@ -87,6 +88,7 @@ desc_common-account=Overenie spoločného účtu
 desc_common-auth=Bežné overovanie totožnosti
 desc_common-password=Bežná zmena hesla
 desc_common-session=Spoločné nastavenie relácie
+
 edit_title=Upraviť službu PAM
 edit_header=Podrobnosti služby PAM
 edit_name=Názov služby
@@ -107,6 +109,7 @@ edit_move=sťahovať
 edit_return=Služba PAM
 edit_inc=Zahrnúť službu $1 
 edit_iheader=Zahrnuté služby PAM
+
 pam_pwdb.so=Autentifikácia hesla Unix
 pam_securetty.so=Bezpečná kontrola TTY pre root
 pam_nologin.so=<tt>/etc/nologin</tt> kontrola súboru
@@ -149,6 +152,7 @@ pam_console.so=Skontrolujte iba konzolu
 pam_xauth.so=X autentifikácia
 pam_stack.so=Zavolajte na inú službu PAM
 pam_foreground.so=Nastavenie konzoly
+
 control_requisite=potrebný
 control_required=Požadovaný
 control_sufficient=dostatočný
@@ -157,6 +161,7 @@ control_desc_requisite=Zlyhanie overenia ihneď po zlyhaní
 control_desc_required=Zlyhanie overenia na konci pri zlyhaní
 control_desc_sufficient=Úspešné overenie dosiahnete hneď po úspechu
 control_desc_optional=Úspech alebo neúspech sa ignoruje
+
 create_title=Vytvorte službu PAM
 create_header=Nové možnosti služby PAM
 create_name=Názov služby
@@ -165,6 +170,7 @@ create_mods=Počiatočné moduly PAM
 create_0=nikto
 create_1=Autentifikácia v systéme Unix
 create_2=Odoprieť prístup
+
 mod_edit=Upraviť modul PAM
 mod_create=Pridajte modul PAM
 mod_header=Možnosti modulu PAM
@@ -178,10 +184,12 @@ mod_type_password=Zmena hesla
 mod_control=Úroveň poruchy
 mod_args=Argumenty modulu
 mod_err=Nepodarilo sa uložiť modul
+
 pwdb_shadow=Použiť súbor tieňového hesla?
 pwdb_nullok=Prijímate nulové heslá?
 pwdb_md5=Používate heslá šifrované MD5?
 pwdb_nodelay=Oneskorenie po neúspešnom prihlásení?
+
 unix_nullok_secure=Prijímate nulové heslá v zabezpečených TTY?
 unix_min=Minimálna dĺžka hesla
 unix_nomin=nikto
@@ -190,6 +198,7 @@ unix_nomax=Bez obmedzenia
 unix_obscure=Zabrániť používaniu jednoduchých hesiel?
 unix_emin=Chýbajúca alebo neplatná minimálna dĺžka hesla
 unix_emax=Chýbajúca alebo neplatná maximálna dĺžka hesla
+
 listfile_item=Vyhľadajte súbor
 listfile_item_user=užívateľské meno
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=Obmedziť kontrolu na
 listfile_all=Všetci používatelia
 listfile_user=Iba používateľ
 listfile_group=Iba skupina
+
 cracklib_type=Zadajte heslo okamžite
 cracklib_retry=Maximálny počet opakovaní pred zlyhaním
 cracklib_eretry=Chýbajúci alebo neplatný počet opakovaní
 cracklib_etype=Chýbajúci alebo neplatný typ hesla
+
 rhosts_equiv=Čítate súbor <tt>/etc/hosts.equiv</tt>?
 rhosts_rhosts=Čítajú súbory <tt>.rhosts</tt> používateľov?
 rhosts_promiscuous=<tt>+</tt> vstup umožňuje všetkým hostiteľom?
 rhosts_suppress=Zlyhania pri prihlasovaní do denníka?
+
 env_var=Názov premennej
 env_def=Predvolená hodnota
 env_over=Prepísať hodnotu
 env_evar=Názvy premenných nemôžu obsahovať medzery
+
 securetty_ttys=Zabezpečené TTY
+
 shells_shells=Platné schránky používateľa
+
 tally_deny=Zlyhal pokus pred odmietnutím prístupu
 tally_reset=Reset zlyhania závisí od úspechu
 tally_edeny=Chýbajúci alebo neplatný počet pokusov o zlyhanie
 tally_magic=Počet zlyhaní platí pre <tt>root</tt>?
 tally_root=<tt>root</tt> účet môže byť odmietnutý?
+
 time_services=služby
 time_ttys=ttyS
 time_users=užívatelia
 time_times=Časy prístupu
 time_info=Všetky polia môžu obsahovať viac hodnôt oddelených znakom | a hodnoty môžu použiť * ako zástupný znak alebo! ako negátor.
+
 group_services=služby
 group_ttys=ttyS
 group_users=užívatelia
 group_times=Časy prístupu
 group_groups=Pridajte skupiny
 group_info=Všetky polia môžu obsahovať viac hodnôt oddelených znakom | a hodnoty môžu použiť * ako zástupný znak alebo! ako negátor.
+
 wheel_group=Skontrolujte členstvo v skupine
 wheel_group_def=Predvolené (<tt>koliesko</tt> alebo GID 0)
 wheel_trust=Členovia skupiny obchádzajú ďalšiu autentifikáciu?
 wheel_deny=Zakázať namiesto toho, aby ste umožnili členom skupiny?
 wheel_egroup=Chýba alebo je neplatný názov skupiny
+
 motd_file=Súbor na zobrazenie
 motd_file_def=Predvolené (<tt>/etc/motd</tt>)
 motd_efile=Chýba alebo je neplatný názov súboru
+
 mail_nopen=Zobraziť upozornenie na e-mail pri prihlásení?
 mail_close=Zobraziť upozornenie na e-mail pri odhlásení?
 mail_empty=Upozorniť, či je poštový súbor prázdny?
 mail_noenv=Nastaviť premennú prostredia $ MAIL?
 mail_dir=Adresár spoolovej pošty
 mail_edir=Chýbajúci alebo neplatný adresár spoolovej pošty
+
 stack_service=Odovzdajte kontrolu do služby PAM
+
 log_pam_create=Vytvorená služba PAM $1 
 log_pam_delete=Odstránená služba PAM $1 
 log_mod_create=Modul PAM $1 bol pridaný do služby $2 
@@ -262,6 +284,7 @@ log_inc_create=Pridané zahŕňajú $1 pre službu $2
 log_inc_modify=Upravené zahŕňajú $1 pre službu $2 
 log_inc_delete=Odstránené zahŕňajú $1 pre službu $2 
 log_incs=Aktualizované zahŕňa službu $1 
+
 inc_edit=Upraviť zahrnutú službu
 inc_create=Vytvorte zahrnutú službu
 inc_header=Zahrnuté podrobnosti o službe PAM

@@ -15,6 +15,7 @@ index_actform=Formă
 index_actrun=Alerga
 index_actsql=Formă
 index_acted=Deschis
+
 edit_title=Editează comanda
 create_title=Creați comandă
 edit_ecannot=Nu aveți voie să editați comenzi
@@ -66,6 +67,7 @@ edit_format4=Descărcați când este posibil
 edit_servers=Rulați pe servere Webmin
 edit_this=acest server
 edit_clone=Clone
+
 save_err=Nu a reușit să salveze comanda
 save_ecannot=Nu aveți voie să editați comenzi
 save_ecmd=Nu a fost introdusă nicio comandă
@@ -78,6 +80,7 @@ save_eusermin=Comenzile care rulează pe alte servere nu pot fi rulate de la Use
 save_eformat=Tip MIME de ieșire nevalid
 save_eopts=Fișierul de opțiuni lipsește pentru parametrul $1 
 save_eopts2=Fișierul de opțiuni sau valoarea implicită pentru parametrul $1 nu pot conține :
+
 run_err=Nu a reușit să execute comanda
 run_ecannot=Nu aveți voie să rulați această comandă
 run_euser=Utilizator lipsă sau nevalid
@@ -94,6 +97,7 @@ run_eupload=Nu a fost selectat niciun fișier de încărcat
 run_emust=Valoarea lipsă pentru parametrul „$1”
 run_timeout=Comanda nu a reușit să finalizeze înainte de $1 oa doua perioadă de timp.
 run_failed=Comanda a eșuat cu starea de ieșire $1 
+
 log_modify=Comandă modificată $1 
 log_create=Comanda creată $1 
 log_delete=Comanda eliminată $1 
@@ -102,11 +106,13 @@ log_modify_edit=Editor de fișiere modificat $1
 log_create_edit=Editor de fișiere creat $1 
 log_delete_edit=Editorul de fișiere șters $1 
 log_save_edit=Fișier salvat $1 
+
 acl_cmds=Comenzile pe care le poate executa acest utilizator
 acl_call=Toate comenzile
 acl_csel=Selectat ..
 acl_cexcept=Toate, cu excepția celor selectate ..
 acl_edit=Poate crea și edita comenzi?
+
 file_ecannot=Nu aveți voie să editați fișiere
 fcreate_title=Creați fișier editor
 fedit_title=Editează fișier editor
@@ -130,6 +136,7 @@ file_egroup=Numele grupului lipsă sau nevalid
 file_eperms=Permisele octale lipsă sau nevalide
 file_envs=Înlocuiți variabilele de mediu în numele fișierului?
 file_id=ID editor
+
 view_err=Eroare la editarea fișierului
 view_ecannot=Nu aveți voie să editați acest fișier
 view_title=Editează fișierul
@@ -138,10 +145,12 @@ view_header=Editarea fișierului $1
 view_ebeforeedit=Comanda înainte de editare a eșuat : $1 
 view_ebefore=Comanda înainte de salvare a eșuat : $1 
 view_eafter=Comanda după salvare a eșuat : $1 
+
 form_ecannot=Nu aveți voie să rulați această comandă
 form_title=Execută comanda
 form_exec=A executa
 form_edit=Editați | ×
+
 sql_title1=Creați comandă SQL
 sql_title2=Editează comanda SQL
 sql_header=Detalii de comandă SQL
@@ -157,6 +166,7 @@ sql_err=Nu a reușit să salveze comanda SQL
 sql_esql=Nu a fost introdus SQL
 sql_ehost=Gazda serverului bazei de date lipsă sau nevalidă
 sql_edb=Numele bazei de date lipsă sau nevalid
+
 srun_title=Executați comanda SQL
 srun_err=Nu a reușit să execute comanda SQL
 srun_edriver=Nu s-a putut încărca driverul DBI

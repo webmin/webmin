@@ -13,6 +13,7 @@ index_ident=Identificar um Ficheiro
 index_identmsg=Introduza um comando ou um caminho do ficheiro para procurar na base de dados $1.
 index_identok=Procurar Por:
 index_return=lista de pacotes
+
 search_title=Procura de Pacotes
 search_nomatch=Não há pacotes que coincidam com $1
 search_none=Nenhum
@@ -20,6 +21,7 @@ search_desc=Descrição
 search_class=Classe
 search_pack=Pacote
 search_match=Pacotes que coincidem com $1
+
 edit_title=Editar Pacote
 edit_details=Detalhes do Pacote
 edit_desc=Descrição
@@ -33,6 +35,7 @@ edit_inst=Instalado
 edit_list=Listar Ficheiros
 edit_uninst=Desinstalar
 edit_return=detalhes do pacote
+
 list_title=Ficheiros do Pacote
 list_files=Ficheiros para o Pacote $1
 list_path=Caminho
@@ -41,11 +44,13 @@ list_group=Grupo
 list_type=Tipo
 list_size=Tamanho
 list_status=Estado
+
 delete_err=Erro ao apagar o pacote $1
 delete_epack=O pacote $1 não existe
 delete_title=Apagar Pacote
 delete_rusure=Tem a certeza que quer apagar o pacote $1 ? Todos os $2 ficheiros ($3) serão apagados para sempre.
 delete_ok=Apagar
+
 file_title=Informação do Ficheiro
 file_notfound=Não está disponível a informação acerca de $1
 file_path=Caminho
@@ -59,6 +64,7 @@ file_pack=Pacote
 file_class=Classe
 file_desc=Descrição
 file_none=Nenhum
+
 install_err=Erro ao instalar pacote
 install_elocal=Não foi dado nenhum ficheiro local
 install_elocal2='$1' não existe
@@ -71,6 +77,7 @@ install_title=Instalar Pacote
 install_header=Instalar Pacote
 install_packs=Pacote(s) a instalar
 install_ok=Instalar
+
 do_err=Erro ao instalar pacote $1
 do_title=Instalar Pacote
 do_efailed=Erro na instalação : $1
@@ -87,9 +94,11 @@ do_arch=Arquitectura
 do_inst=Instalado
 do_none=Nenhum
 do_files=Ficheiros do Pacote
+
 pkgadd_root=Directório raíz
 pkgadd_eroot=o directório raíz '$1' não existe
 pkgadd_unknown=Desconhecido
+
 rpm_upgrade=Actualizar pacote?
 rpm_replacepkgs=Sobreposicionar pacote?
 rpm_nodeps=Ignorar dependências?
@@ -99,14 +108,17 @@ rpm_excludedocs=Instalar documentação?
 rpm_replacefiles=Sobreposicionar ficheiros?
 rpm_root=Directório raíz
 rpm_eroot=O directório raíz '$1' não existe
+
 bsd_unknown=Desconhecido
 bsd_scripts=Executar guiões de pré e pós instalação?
 bsd_force=Forçar a instalação se faltarem os pré-requesitos?
+
 slack_unclass=Outro
 slack_unknown=Desconhecido
 slack_missing=Em falta
 slack_root=Directório raíz
 slack_eroot=Directório raíz inválido ou em falta
+
 debian_unknown=Desconhecido
 debian_depends=Ignorar problemas de dependência?
 debian_conflicts=Ignorar conflito de pacotes?

@@ -21,6 +21,7 @@ index_eversion=Il-verżjoni ta 'STunnel installata fis-sistema tiegħek hija $1,
 index_conf=Mill-fajl tal-konfigurazzjoni $1 
 index_noconf=L-ebda fajl ta 'konfigurazzjoni!
 index_delete=Ħassar il-Mina magħżula
+
 edit_title=Editja SSL Munnel
 create_title=Oħloq Mina SSL
 edit_header1=Għażliet mis-sors tal-mina
@@ -47,6 +48,7 @@ edit_tcpw=Isem tat-tgeżwir TCP
 edit_auto=Awtomatiku
 edit_iface=Indirizz tas-sors ħiereġ
 edit_type=Mexxi minn
+
 save_err=Ma rnexxielux isalva mina SSL
 save_enclash=L-isem tas-servizz $2 huwa diġà użat fuq il-port $1.
 save_einetd=Diġà hemm servizz inetd imsejjaħ $1.
@@ -61,6 +63,7 @@ save_etcpw=Nieqes jew invalidu TCP-wrappers name
 save_eiface=Indirizz tas-sors li jkun nieqes jew invalidu
 save_exinetd=Diġà hemm xinetd servizz imsejjaħ $1 
 save_export=Il-port $1 huwa diġà użat mis-servizz xinetd $2 
+
 log_apply=Bidliet Applikati
 log_create=Il-mina maħluqa ta 'SSL $1 
 log_delete=Mina mħassra SSL $1 

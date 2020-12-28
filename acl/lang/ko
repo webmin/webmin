@@ -22,6 +22,7 @@ index_unix=유닉스 그룹 동기화 설정
 index_sessions=로그인 세션 보기
 index_rbac=RBAC 설정
 index_delete=선택된 것을 삭제
+
 edit_title=Webmin 사용자 편집
 edit_title2=Webmin 사용자 작성
 edit_readonly=이 Webmin 유저는 $1 모듈에 의해 관리되어 지기 때문에 수정할 수 없습니다. 어쨌든 이 경고를 무시하고 유저를 수정하려면 <a href='$2'>여기를 클릭</a>하십시오. - 하지만 다른 수작업에 의하여 다시 변경될 수 있으니 주의 하십시오.
@@ -91,6 +92,7 @@ edit_ui=사용자 인터페이스 옵션
 edit_security=보안과 제한 옵션
 edit_mods=사용 가능한 Webmin 모듈
 edit_modsg=사용 가능한 Webmin 모듈 (in addition to those from group)
+
 save_err=사용자를 저장하지 못했습니다
 save_ename='$1'은(는) 유효한 사용자 이름이 아닙니다
 save_enamewebmin=사용자 이름 'webmin' 은 내부적으로 사용하기 위해 예약되어진 이름입니다.
@@ -118,10 +120,12 @@ save_eminsize=최소 암호 길이가 지정되지 않았거나 숫자가 아닙
 save_edays=허가할 날이 선택되지 않았습니다.
 save_ehours=허락된 시간이 없거나 유효하지 않습니다.
 save_ehours2=허가하기 위한 시작 시간은 끝보다 전이어야 합니다.
+
 delete_err=사용자를 삭제하지 못했습니다
 delete_eself=자신은 삭제할 수 없습니다
 delete_ecannot=사용자를 삭제할 수 없습니다
 delete_euser=이 사용자를 삭제할 수 없습니다
+
 cert_title=인증서 요청
 cert_issue=인증서 발행
 cert_header=새 인증서 정보
@@ -140,6 +144,7 @@ cert_install=브라우저에 인증서 설치
 cert_ekey=브라우저에서 새 SSL 키를 제출하지 않았습니다. 브라우저에서 SSL 클라이언트 인증서를 지원하지 않는 것일 수 있습니다.
 cert_eca=인증서 권한을 설정하지 못했습니다:  $1
 cert_already=경고 - 이미 인증서 $1을(를) 사용하고 있습니다.
+
 acl_title=모듈 권한 제어
 acl_title2=$2의 $1
 acl_title3=$2의 그룹 $1
@@ -148,6 +153,7 @@ acl_config=모듈 구성을 편집할 수 있습니까?
 acl_reset=모든 접속을 위한 재설정
 acl_rbac=RBAC 에서 access 조정 설정을 가져 오겠습니까?
 acl_rbacyes=예 (아래의 설정을 덮어씁니다.)
+
 acl_uall=모든 사용자
 acl_uthis=이 사용자
 acl_usel=선택한 사용자..
@@ -185,6 +191,7 @@ acl_theme=사용자 테마를 변경할 수 있습니까?
 acl_ips=IP 접속 조절을 변경할 수 있습니까?
 acl_switch=다른 사용자로 전환을 할 수 있습니까?
 acl_times=로그인 세션 유지 시간을 변경하겠습니까?
+
 log_modify=Webmin 사용자 $1 수정됨
 log_rename=Webmin 사용자 이름이 $1에서 $2(으)로 바뀜
 log_create=Webmin 사용자 $1작성됨
@@ -203,6 +210,7 @@ log_delete_groups=Webmin 그룹 $1 삭제
 log_pass=암호 제한 변경
 log_unix=유닉스 사용자 인증 변경
 log_sync=유닉스 사용자 동기화 변경
+
 gedit_ecannot=그룹을 편집할 수 없습니다
 gedit_title=Webmin 그룹 편집
 gedit_title2=Webmin 그룹 작성
@@ -210,6 +218,7 @@ gedit_group=그룹 이름
 gedit_rights=Webmin 그룹 권한
 gedit_modules=구성원 모듈
 gedit_members=Member users and groups
+
 gdelete_err=그룹을 삭제하지 못했습니다
 gdelete_ecannot=그룹을 삭제할 수 없습니다
 gdelete_euser=자신의 그룹은 삭제할 수 없습니다
@@ -217,10 +226,12 @@ gdelete_esub=하위 그룹과 함게 그룹을 삭제할 수 없습니다.
 gdelete_title=그룹 삭제
 gdelete_desc=그룹 $1 및 해당 구성원 사용자 $2을(를) 삭제하시겠습니까?
 gdelete_ok=그룹 삭제
+
 gsave_err=그룹을 저장하지 못했습니다
 gsave_ename=없거나 유효하지 않은 그룹 이름
 gsave_enamewebmin=그룹 이름 'webmin' 은 내부 예약어 입니다.
 gsave_edup=이미 사용되고 있는 그룹 이름입니다
+
 convert_title=사용자 변환
 convert_ecannot=유닉스 사용자 변환 권한이 없습니다
 convert_nogroups=시스템에 정의된 Webmin 그룹이 없습니다. 변환된 사용자의 사용 권한을 정의하려면, 변환하기 전에 적어도 하나의 그룹을 작성해야 합니다.
@@ -244,6 +255,7 @@ convert_exists=$1 이(가) 이미 있습니다
 convert_invalid=$1 은 유효하지 않은 Webmin 사용자 이름 입니다.
 convert_added=$1 이(가) 추가됩니다
 convert_msg=유닉스 사용자 변환 중...
+
 sync_title=유닉스 사용자 동기화
 sync_desc=이 폼은 Webmin 을 통하여 생성된 유닉스 사용자의 자동 동기화 설정을 할 수 있습니다.
 sync_nogroups=시스템에 Webmin 그룹이 정의 되어 있지 않습니다. 생성된 유저의 권한을 설정하려면, 적어도 하나의 그룹이 생성되어 있어야 합니다.
@@ -253,6 +265,7 @@ sync_delete=유닉스 사용자 삭제시, 매치되는 Webmin 사용자 삭제
 sync_group=Webmin 구릅에 새로운 사용자 지정
 sync_unix=유닉스 인증을 위한 새로운 사용자의 암호 지정
 sync_ecannot=사용자 동기화 권한이 없습니다.
+
 unix_title=유닉스 사용자 인증
 unix_err=유닉스 인증 저장 실패
 unix_desc=이 페이지에서 시스템 사용자 리스트와 PAM 에 대한 로그인 시도를 유효하게 하기 위한 Webmin 설정을 할 수 있습니다. Webmin 으로의 접속을 줄 유기스 사용자가 아주 많을 경우 유용하게 사용할 수 있습니다.
@@ -282,26 +295,31 @@ unix_sudo=<tt>root</tt>로 로그인하기 위해 <tt>sudo</tt>를 이용하여 
 unix_pamany=PAM 인증을 통과한 로그인은 $1 로 취급합니다.
 unix_esudo=$1 명령은 설치되어 있지 않습니다.
 unix_esudomod=<tt>sudo</tt> 인증을 위해서 펄모듈 $1 이 설치되어야 합니다.
+
 sessions_title=현재 로그인 세션
 sessions_id=세션 ID
 sessions_user=Webmin 사용자
 sessions_login=로그인 시간
 sessions_host=IP 주소
 sessions_lview=로그 보기..
+
 hide_title=사용하지 않는 모듈 숨기기
 hide_desc=다음의 모듈들은 시스템에 설치되지 않은 서비스에 대응하는 $1 에 대한 모듈 권한 리스트로 부터 삭제될 것입니다.
 hide_ok=모듈 숨기기
 hide_none=Nothing to hide - $1 does not have access to any modules whose corresponding servers are not installed on your system.
 hide_desc2=Be aware that these modules will not re-appear automatically if the corresponding servers are installed. You will need to grant access manually using this module.
 hide_clone=(Clone $1)
+
 switch_euser=이 사용자로의 전환 권한이 없습니다.
 switch_eold=세션을 찾을 수 없습니다.
+
 rbac_title=RBAC 설정
 rbac_desc=Webmin's RBAC integration provides a way for user module and ACL permissions to be determined from an RBAC (Role Based Access Control) database, rather than Webmin's own configuration files. Once RBAC support is enabled, any user for whom the <b>$edit_rbacdeny1</b> option is selected will have his capabilities determined by RBAC rather than Webmin's own access control settings.
 rbac_esolaris=RBAC 는 현재 Solaris 에서만 지원이 됩니다. $1 system 에서는 사용할 수 없습니다.
 rbac_eperl=The Perl module $1 needed for RBAC integration is not installed. <a href='$2'>Click here</a> to have it installed now.
 rbac_ecpan=You do not have access to Webmin's Perl Modules page in order to install the necessary $1 module for RBAC integration.
 rbac_ok=RBAC integration is available on this sytem, and can be enabled on a per-user basis on the Edit Webmin User page.
+
 udeletes_err=유저 삭제 실패
 udeletes_enone=선택된 것이 없음
 udeletes_title=유저 삭제
@@ -309,11 +327,13 @@ udeletes_rusure=Are you sure you want to delete the $1 selected users? All of th
 udeletes_users=선택된 유저: $1
 udeletes_ok=유저 삭제
 udeletes_ereadonly=One of the selected users is marked as non-editable
+
 gdeletes_err=그룹 삭제 실패
 gdeletes_title=그룹 삭제
 gdeletes_rusure=Are you sure you want to delete the $1 selected groups, and the $2 users they contain? All of their access control settings and user details will be lost.
 gdeletes_users=선택된 그룹: $1
 gdeletes_ok=그룹 삭제
+
 pass_title=암호 제한
 pass_header=Webmin 암호 강제 옵션
 pass_minsize=최소 암호 길이
@@ -335,6 +355,7 @@ pass_eminsize=최소 암호 길이가 지정되지 않았거나 숫자가 아닙
 pass_emaxdays=변경전 날수가 지정되지 않았거나 숫자가 아닙니다.
 pass_elockdays=계정이 잠기는 일수가 지정되지 않았거나 숫자가 아닙니다.
 pass_eoldblock=이전 암호 거부 회수가 지정되지 않았거나 숫자가 아닙니다.
+
 cpass_minsize=적어도 $1글자 보다 길어야 합니다.
 cpass_notre=허락되지 않는 규칙에 일치합니다.
 cpass_re=요구되어지는 규칙에 일치하지 않습니다.

@@ -17,6 +17,7 @@ index_tdesc=Beschreibung
 index_tucount=Benutzer
 index_tgcount=Gruppen
 index_ttype=Betriebssystemtyp
+
 add_title=Füge Server hinzu
 add_msg=Einfügen von $1 ..
 add_gmsg=Füge Server der Gruppe $1 hinzu ..
@@ -26,6 +27,7 @@ add_echeck=Der Server $1 hat nicht das gleiche Benutzer- und Gruppenmodul
 add_epft=Der Server $1 hat nicht das gleiche Benutzerdateiformat wie dieser
 add_egft=Der Server $1 hat nicht das gleiche Gruppendateiformat wie dieser
 add_ok=Hinzugefügt wurde $1 mit $2 Benutzern und $3 Gruppen.
+
 host_title=Betreute Server
 host_header=Software-Details der betreuten Server
 host_name=Hostname
@@ -34,8 +36,7 @@ host_delete=Von der Liste der betreuten Server löschen
 host_refresh=Aktualisere Benutzer- und Gruppenliste
 host_users=Anzahl der Benutzer
 host_groups=Anzahl der Gruppen
-host_ulist=Benutzer auf Server
-host_glist=Gruppen auf dem Server
+
 host_return=Serverdetails
 refresh_title=Aktualisiere Benutzer und Gruppen
 refresh_header=Frage die komplette Benutzer- und Gruppenliste von allen Servern ab ..
@@ -49,6 +50,7 @@ refresh_gdel=Gelöscht wurde(n) $1 Gruppe(n)
 refresh_done=.. erledigt
 refresh_del=$1 wurde von der Serverliste entfernt
 refresh_failed=Konnte $1 nicht aktualisieren : $2
+
 uedit_host=Eigenschaften von $1
 uedit_leave=Nicht ändern
 uedit_set=Setze auf
@@ -66,6 +68,7 @@ uedit_servers=Server auf denen erzeugt wird
 uedit_all=&lt;Alle Server&gt;
 uedit_donthave=&lt;Server, die ihn nicht haben&gt;
 uedit_group=Mitglieder von $1
+
 usave_einuse=Ein Benutzer mit dem gleichen Namen existiert bereist auf Server $1
 usave_esecgid=Die sekundäre Gruppe $1 existiert nicht
 usave_con=Erzeuge auf $1 ..
@@ -88,16 +91,20 @@ usave_header=Erzeuge Benutzer $1 auf allen Servern ..
 usave_header5=Erzeuge Benutzer $1 auf $2 ..
 usave_header4=Erzeuge Benutzer $1 in Mitgliedern der Gruppe $2 ..
 usave_header3=Erzeuge Benutzer $1 auf Servern, die ihn nicht nicht haben ..
+
 search_hosts=Server
+
 udel_on=Lösche von $1 ...
 udel_servs=Löschen das Heimatverzeichnisses, wenn es existiert auf
 udel_others=Lösche Benutzer in anderen Modulen?
 udel_dothers=Lösche in anderen Modulen ..
 udel_gone=Benutzer existiert nicht mehr.
 udel_failed=Konnte Benutzer nicht löschen : $1
+
 gdel_on=Lösche von $1 ..
 gdel_gone=Benutzer existiert nicht mehr.
 gdel_failed=Konnte Gruppe nicht löschen  : $1
+
 gsave_create=Erzeuge Gruppendateieintrag ..
 gsave_con=Erzeuge auf $1 ..
 gsave_euser=Benutzer $1 existiert nicht
@@ -110,10 +117,12 @@ gsave_header=Erzeuge Gruppe $1 auf allen Server ..
 gsave_header5=Erzeuge Gruppe $1 auf $2 ..
 gsave_header4=Erzeuge Gruppe $1 auf Mitgliedern der Gruppe $2 ..
 gsave_header3=Erzeuge Gruppe $1 auf Servern, wo es sie noch nicht gibt ..
+
 gedit_host=Eigenschaften von $1
 gedit_add=Benutzer hinzufügen
 gedit_del=Benutzer löschen
 gedit_donthave=&lt;Server, die es nicht haben&gt;
+
 sync_title=Synchronisiere Server
 sync_desc=Auf dieser Seite können Sie im Webmin-Cluster Benutzer und Gruppen im Webmin-Cluster dort anlegen, wo diese noch nicht existieren. Auf diese Weise bringen Sie alle Server in Ihrem Cluster durch Synchronisierung auf den gleichen Stand.
 sync_hosts=Auswahl der Server zur Synchronisation
@@ -141,6 +150,7 @@ sync_test=Testlauf! - Nur anzeigen, was geschehen würde.
 sync_makehome=Erzeuge Benutzer-Heimatverzeichnisse?
 sync_copy=Dateien in das Heimatverzeichnis kopieren?
 sync_others=Benutzer in anderen Modulen einrichten?
+
 log_create_user=Erzeugter Benutzer $1
 log_delete_user=Gelöschter Benutzer $1
 log_modify_user=Veränderter Benutzer $1

@@ -24,8 +24,10 @@ all=همه
 index_view=چشم انداز ..
 index_viewfile=مشاهده پرونده ورود:
 index_viewok=چشم انداز
+
 restart_ekill=سیگنال کردن روند syslog $1 : $2 انجام نشد
 restart_ecannot=شما مجاز به راه اندازی مجدد syslog نیستید
+
 start_ecannot=شما مجاز به شروع syslog نیستید
 edit_title=ویرایش سیستم ورود به سیستم
 create_title=ورود به سیستم را اضافه کنید
@@ -56,11 +58,13 @@ edit_tag=فقط برای برنامه
 edit_return=جزئیات ورود به سیستم
 edit_ecannot=شما مجاز به ویرایش تنظیمات ورود به سیستم نیستید
 edit_ecannot2=شما مجاز به ویرایش این گزارش نیستید
+
 view_title=مشاهده ورود به سیستم
 view_header=آخرین$1 خط$2
 view_empty=پرونده log خالی است
 view_refresh=تازه کردن
 view_filter=فقط خطوط با متن$1 نشان داده شود
+
 save_err=ورود به سیستم ذخیره نشد
 save_efile="$1" نام خانوادگی معتبری نیست :$2
 save_epipe='$1' یک لوله با نام معتبر نیست
@@ -80,11 +84,13 @@ save_ecannot5=شما مجاز به تغییر این گزارش نیستید
 save_ecannot6=شما مجاز به مشاهده سیاهههای دلخواه نیستید
 save_ecannot7=شما مجاز به مشاهده این گزارش اضافی نیستید
 save_emissing=برای مشاهده پرونده پرونده موجود نیست
+
 log_modify=ورود به سیستم اصلاح شده به$1
 log_create=ورود به سیستم$1 اضافه شد
 log_delete=ورود به سیستم$1 حذف شد
 log_apply=تغییرات کاربردی
 log_start=سرور ورود به سیستم را شروع کرد
+
 desc_sysmesg=پیام های سیستم
 desc_mail=ورود به سیستم نامه
 desc_auth=ورود به سیستم تأیید اعتبار
@@ -93,6 +99,7 @@ desc_news=گزارش خبر NNTP
 desc_uucp=UUCP ورود به سیستم
 desc_debug=پیام های اشکال زدایی
 desc_cron=Cron Log Log
+
 acl_noedit=فقط می توانید سیاههها را مشاهده کنید؟
 acl_any=آیا می توانید هر پرونده را به عنوان ورود مشاهده کنید؟
 acl_logs=می توانید پرونده های log را مشاهده و پیکربندی کنید

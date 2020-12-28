@@ -1,5 +1,6 @@
 index_title=Webmin beállítása
 index_return=a Webmin beállításához
+
 access_title=IP hozzáférés-vezérlés
 access_desc=A Webmin kiszolgáló beállítható úgy, hogy egyes IP címekről tiltja vagy engedélyezi a hozzáférést az alábbi űrlap használatával. Hostnevek (pl. foo.bar.com) és IP hálózatok (pl. 10.254.3.0 vagy 10.254.1.0/255.255.255.128) egyaránt megadhatók. Ajánlott korlátozni a gépéhez történő hozzáférést megbízható címekre, különösen ha az elérhető az Internet-en keresztül, különben bárki, aki megsejti az Ön jelszavát, szabad kezet kap a rendszer irányítása felett.
 access_header=Hozzáférés-vezérlés
@@ -13,9 +14,11 @@ access_emask='$1' egy érvénytelen netmaszk
 access_eip=A(z) '$1' nem teljes IP vagy hálózati cím
 access_ehost=Nem sikerült IP címet találni a(z) '$1' hosthoz.
 access_eself=Az Ön jelenlegi IP címe ($1) vélhetőleg le van tiltva.
+
 bind_title=Port és Cím
 bind_header=IP cím és port
 bind_err=A cím megváltoztatása nem sikerült.
+
 log_title=Naplózás
 log_desc=A Webmin beállítható úgy, hogy lejegyezze a web kiszolgáló találatait a szabványos CLF naplófájl-formátumban. Ha a naplózást bekapcsolja, akkor kiválaszthatja, hogy mely IP címeket vagy hostneveket kíván regisztrálni, illetve, hogy milyen gyakorisággal törlődjön a naplófájl. Ha él a lehetőséggel, akkor a bejegyzések a $1 fájlban fognak tárolódni.
 log_header=Web kiszolgáló naplózás
@@ -24,6 +27,7 @@ log_enable=Naplózás bekapcsolása
 log_resolv=Megfejtett hostnevek regisztrálása
 log_err=A naplózásra vonatkozó opciók elmentése nem sikerült.
 log_ehours='$1' nem megfelő szám óraszám
+
 proxy_title=Proxy kiszolgálók
 proxy_desc=Ha a hoszt, amelyen a Webmin fut, tűzfal mögött van, akkor lehet, hogy szükséges egy proxy kiszolgáló a web és FTP helyek hozzáféréséhez. Egyes modulok, mint például a <tt>Szoftver csomagok</tt>, használni fogják ezeket a proxy-kat fájlok vagy programok letöltéséhez.
 proxy_header=Proxy kiszolgálók
@@ -32,11 +36,13 @@ proxy_ftp=FTP proxy
 proxy_none=Nincs
 proxy_nofor=Nincs proxy-használat az alábbiakra:
 proxy_err=A proxy-beállítás mentése nem sikerült.
+
 cs_page=Oldal háttér
 cs_text=Normal szöveg
 cs_table=Tábla háttér
 cs_header=Tábla fejléc
 cs_link=Link szöveg
+
 mods_title=Webmin modulok
 mods_desc1=Telepítés után a Webminhez további modulok adhatók a jobboldali űrlappal. Az összetevők jellemzően <tt>.wbm</tt> fájlokban terjednek, amelyegy vagy több modult is tartalmazhat. Ha egy modul licensze olyan, hogy csakegy adott hosztról futhat, akkor azt nem telepítheti. 
 mods_install=Modul telepítése
@@ -52,6 +58,7 @@ mods_cloneok=Modul klónozása
 mods_desc3=Létező modulok és ezek klónjai törölhetők az alábbi űrlappal. Ha egy modul a klónjaival együtt törlődik, akkor teljesen eltünik a rendszerről. Ha egy modul egyszer letörlődött, akkor újra kell telepíteni ahhoz, hogy újra használni lehessen. Egy modul nem törölhető ha egy másik rá épül.
 mods_delete=Modulok törlése
 mods_deleteok=Kiválasztott modulok törlése
+
 install_err1=A(z) $1 fájból modul telepítés nem sikerült
 install_efile=A fájl nem létezik
 install_err2=A feltöltött modul telepítése nem sikerült
@@ -67,28 +74,34 @@ install_edep=A(z) $1 igényli a(z) $2 modult
 install_eextract=A kicsomagolás nem sikerült : $1
 install_title=Modul telepítése
 install_desc=Az alábbi modulok telepítése sikeresen befejeződött és hozzáadódtak  a hozzáférés-vezérlési listához :
+
 clone_err=A modul klónozása nem sikerült
 clone_elink=sikertelen symlink : $1
 clone_ecopy=a beálítás másolása nem sikerült : $1
 clone_desc=$1 klónja
+
 delete_err=A modulok törlése nem sikerült
 delete_edep=A(z) $1 modul nem törölhető, mert a(z) $2 igényli
 delete_desc1=$1 ($2 klónja)
 delete_desc2=$1 in $2 ($3 kB)
 delete_title=Modulok törlése
 delete_msg=Az alábbi modulok a telepített Webminből sikeresen törlődtek :
+
 os_title=Operációs rendszer
 os_header=A Hoszt Operációs Rendszere
 os_new=Új operációs rendszer
+
 lang_title=Nyelvezet
 lang_title2=Webmin nyelvezete
 lang_lang=Használandó nyelv
 lang_intro=Ezzel az oldallal beállíthtaja, hogy a Webmin milyen nyelvet használjon a szövegcímek, parancssorok és üzenetek megjelenítéséhez.
 lang_ok=Nyelvezet változtatása
+
 ssl_title=SSL titkosítás
 ssl_desc1=A hoszton, amelyen a Webmin fut, fellelhető az SSLeay Perl modul telepített változata. Ennek használatával a Webmin támogatni fogja a titkosított kommunikációt a böngésző és a kiszolgáló között. Ha Ön a Webmin kiszolgálóját az Internet-en keresztül haszálja, akkor különösen ajánlott az SSL használata, mellyel megakadályozható egy esetleges támadó abban, hogy elcsípje az Ön Webmin jelszavát.
 ssl_desc2=Figyelem! Csak akkor kapcsolja be az SSL támogatást, ha van olyan böngészője, amely támogatja az SSL-t (mint például a Netscape vagy az Internet Explorer), és nincs olyan tűzfal, amely blokkolja a <b>https</b> kéréseket az Ön böngészője és a Webmin hosztja között.
 ssl_header=SSL támogatás
+
 startpage_title=Index oldali opciók
 startpage_tabs=Kategorizálja a modulokat?
 startpage_nocol=Oszlopok száma

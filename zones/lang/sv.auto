@@ -4,6 +4,7 @@ index_none=Inga zoner har definierats än.
 index_add=Lägg till en ny zon.
 index_return=zonlista
 index_zones=Befintliga zoner
+
 edit_title=Redigera zon
 edit_common=Allmän zonkonfiguration
 edit_name=Zonnamn
@@ -57,20 +58,26 @@ edit_attrnone=Inga generiska attribut har definierats än.
 edit_attradd=Lägg till ett nytt generiskt attribut.
 edit_webmin=Öppna Webmin
 edit_brand=varumärke
+
 ui_cancel=Annullera
+
 save_err=Det gick inte att spara zon
 save_epool=Saknad eller ogiltig pool
 save_ewebmin=Webmin körs inte i den här zonen
+
 reboot_title=Starta om zonen
 reboot_rusure=Är du säker på att du vill starta om zonen $1 ? Alla processer som körs inom det kommer att startas om.
 reboot_err=Det gick inte att starta om zonen
 reboot_doing=Starta om zonen nu ..
+
 reboot_failed=.. misslyckades :
 reboot_ok=.. komplett.
+
 halt_title=Avstängningszon
 halt_rusure=Är du säker på att du vill stänga av zonen $1 ? Alla processer som körs inom det kommer att stoppas.
 halt_err=Det gick inte att stänga av zonen
 halt_doing=Stänger nu zonen ..
+
 boot_title=Bootup Zone
 boot_err=Det gick inte att starta upp zonen
 boot_doing=Nu startar upp zonen ..
@@ -78,10 +85,12 @@ delete_title=Radera zon
 delete_rusure=Är du säker på att du vill ta bort zonen $1 ? Alla filer inom dess privata filsystem kommer att gå förlorade.
 delete_err=Det gick inte att ta bort zonen
 delete_doing=Raderar nu zon ..
+
 uninstall_title=Avinstallera systemet
 uninstall_rusure=Är du säker på att du vill avinstallera systemprogramvaran från zon $1 ? Alla filer inom dess privata filsystem kommer att gå förlorade.
 uninstall_err=Det gick inte att avinstallera systemprogramvaran från zonen
 uninstall_doing=Avinstallera nu systemet från zon ..
+
 install_title=Installera System
 install_doing=Installera nu systemet i zonen ..
 net_title1=Skapa nätverksgränssnitt
@@ -96,6 +105,7 @@ net_enetmask=Ogiltig netmask
 net_eaddress=Ogiltig IP-adress
 net_egone=Gränssnittet finns inte längre!
 net_eclash=Ett nätverksgränssnitt med samma IP-adress finns redan i denna zon
+
 pkg_title1=Lägg till paketkatalog
 pkg_title2=Redigera paketkatalog
 pkg_header=Ärvda paketkataloginformation
@@ -107,6 +117,7 @@ pkg_eclash=Paketkatalogen finns redan i den här zonen
 pkg_inherit=Arv paket från global zon
 pkg_inherit_yes=Ja (gles rotzon)
 pkg_inherit_no=Nej (hela rotzonen)
+
 fs_title1=Skapa filsystem
 fs_title2=Redigera filsystem
 fs_header=Ytterligare filsystemdetaljer
@@ -128,6 +139,7 @@ fs_eoptions=Ogiltiga monteringsalternativ (måste vara en kommaseparerad lista s
 fs_egone=Filsystem finns inte längre!
 fs_mount=Montering efter skapandet?
 fs_eclash=Ett filsystem som använder samma katalog finns redan i den här zonen
+
 rctl_title1=Skapa resurskontroll
 rctl_title2=Redigera resurskontroll
 rctl_header=Resurskontrolltyp och begränsningar
@@ -148,6 +160,7 @@ rctl_elimit=Inte ett nummer
 rctl_eaction=Ingen signal vald i rad $1 
 rctl_evalues=Inga gränser angivna
 rctl_eclash=En kontroll för samma resurs finns redan i denna zon
+
 attr_title1=Skapa generiskt attribut
 attr_title2=Redigera generiskt attribut
 attr_header=Generiska zonattributdetaljer
@@ -165,6 +178,7 @@ attr_euint=Värdet är inte ett positivt heltal
 attr_eboolean=Värdet är inte "sant" eller "falskt"
 attr_egone=Attributet finns inte längre!
 attr_eclash=Ett attribut med samma namn finns redan i den här zonen
+
 status_running=Löpning
 status_installed=stoppas
 status_configured=Inte installerad
@@ -172,13 +186,16 @@ status_incomplete=Att installeras
 status_ready=Redo
 status_down=Ner
 status_shutting_down=Stänger ner
+
 list_name=Zonnamn
 list_id=Id nr.
 list_path=Zonkatalog
 list_status=Status
 list_actions=Handlingar
+
 zone_in=I zon $1 
 pool_none=Ingen
+
 create_title=Skapa zon
 create_header=Nya zondetaljer
 create_path=Katalog för zonfiler
@@ -239,6 +256,7 @@ create_erouter=IP-adress för standardrutern saknas eller ogiltig
 create_removingpkgs=tar bort ärvda paketkataloger. ..
 create_brand=varumärke
 create_brandmsg=Varumärkeszon
+
 log_create_zone=Skapad zon $1 
 log_delete_zone=Raderad zon $1 
 log_save_zone=Modifierad konfiguration för zon $1 
@@ -262,6 +280,7 @@ log_delete_rctl=Resurskontrollen har raderats för $1 i zon $2
 log_create_attr=Skapat generiskt attribut $1 i zon $2 
 log_modify_attr=Modifierat generiskt attribut $1 i zon $2 
 log_delete_attr=Raderat generiskt attribut $1 i zon $2 
+
 webmin_eperl=Perl är inte installerad på $1 
 webmin_eroot=Katalogen $1 finns inte eller innehåller inte Webmin.
 webmin_title=Installera Webmin

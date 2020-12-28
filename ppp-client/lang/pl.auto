@@ -24,13 +24,16 @@ index_out=Dane wyjściowe z $1 były
 index_boot=Połącz przy rozruchu za pomocą:
 index_noboot=&lt;Nie łącz się&gt;
 index_bootdesc=Zmień tę opcję, aby kontrolować, czy wybrane połączenie PPP jest uruchamiane podczas uruchamiania, czy nie.
+
 init_title=Wykryj konfigurację
 init_cmd=Wykrywanie podłączonego modemu za pomocą polecenia $1 ..
 init_done=.. gotowy
 init_modems=Modemy są skonfigurowane na $1 i $2.
 init_modem=Modem został wykryty na $1.
 init_none=Nie wykryto modemów!
+
 device_serial=port szeregowy $1 
+
 connect_title=Nawiąż połączenie
 connect_cmd=Próba nawiązania połączenia za pomocą polecenia $1 ..
 connect_failed=.. połączenie nieudane! Zobacz wynik powyżej, dlaczego.
@@ -40,12 +43,14 @@ connect_dns=Korzystanie z konfiguracji DNS przypisanej do PPP.
 connect_dns2=Konfiguracja DNS przypisana do PPP została ustawiona.
 connect_dnsto=Przekroczono limit czasu oczekiwania na konfigurację DNS przypisaną do PPP.
 connect_dnsdown=Wygląda na to, że połączenie nie powiodło się podczas oczekiwania na konfigurację DNS przypisaną do PPP.
+
 disc_title=Zamknij PPP
 disc_err=Nie udało się zamknąć połączenia PPP
 disc_edown=Już odłączony
 disc_ok1=Twoje połączenie PPP wykonane przy użyciu $2 zostało pomyślnie zamknięte.
 disc_ok2=Twoje połączenie PPP zostało pomyślnie zamknięte.
 disc_dns=Przywrócono starą konfigurację DNS.
+
 edit_title1=Dodaj Dialer ISP
 edit_title2=Edytuj Dialer ISP
 edit_ddesc=Te ustawienia domyślne zostaną zastosowane do połączeń wykonanych przy użyciu dowolnego innego dialera.
@@ -76,6 +81,7 @@ edit_idle=Limit czasu bezczynności (w sekundach)
 edit_def=Z ustawień domyślnych
 edit_inherits=Dziedzicz ustawienia
 edit_from=Z dialera ..
+
 save_err=Nie udało się zapisać dialera
 save_err2=Nie udało się usunąć dialera
 save_ename=Brakująca lub nieprawidłowa nazwa dialera
@@ -88,6 +94,7 @@ save_edial=Brakująca lub nieprawidłowa liczba prób wybierania numeru
 save_eidle=Brak lub nieprawidłowy limit czasu bezczynności
 save_einherits=Nie można usunąć tego dialera, ponieważ „$1” dziedziczy po nim ustawienia.
 save_eclash=Dialer o tej samej nazwie już istnieje
+
 log_create=Utworzono $1 
 log_update=Zaktualizowano $1 
 log_delete=Usunięte $1 

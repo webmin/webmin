@@ -1,5 +1,6 @@
 index_euser=$1 RBAC yapılandırma dosyası sisteminizde bulunamadı. Belki RBAC kurulu değildir veya <a href='$2'>modül yapılandırması</a> yanlıştır.
 index_return=modül dizini
+
 users_title=Kullanıcı Özellikleri
 users_user=Kullanıcı adı
 users_profiles=Verilen profiller
@@ -10,6 +11,7 @@ users_return=kullanıcı özellikleri listesi
 users_type=tip
 users_role=rol
 users_project=proje
+
 user_title1=Kullanıcı Nitelikleri Oluşturma
 user_title2=Kullanıcı Özelliklerini Düzenle
 user_header=Unix kullanıcısına verilen özellikler
@@ -35,6 +37,7 @@ user_eauth='$1' geçerli bir yetkilendirme değil
 user_ecannot=Bu kullanıcıyı düzenlemenize izin verilmiyor
 user_erole='$1' rolünü atamanıza izin verilmiyor
 user_eprof='$1' profilini atamanıza izin verilmiyor
+
 auths_title=Yetkileri
 auths_name=Yetkilendirme adı
 auths_desc=Açıklama
@@ -42,8 +45,10 @@ auths_none=Henüz herhangi bir yetki tanımlanmadı.
 auths_add=Yeni bir yetkilendirme ekleyin.
 auths_return=yetki listesi
 auths_ecannot=Yetkileri düzenleme izniniz yok
+
 authc_name=yetki
 authc_desc=Açıklama
+
 auth_title1=Yetkilendirme Oluştur
 auth_title2=Yetkilendirmeyi Düzenle
 auth_header=Yetkilendirme ayrıcalık ayrıntıları
@@ -57,6 +62,7 @@ auth_edesc=Geçersiz uzun açıklama
 auth_eclash=Aynı ada sahip bir yetkilendirme zaten var
 auth_einuseu=Bu yetkilendirme $1 kullanıcısı tarafından kullanılıyor ve bu nedenle silinemez
 auth_einusep=Bu yetkilendirme $1 profili tarafından kullanılıyor ve bu nedenle silinemez
+
 profs_title=Profiller
 profs_name=Profil ismi
 profs_desc=Açıklama
@@ -65,6 +71,7 @@ profs_none=Henüz profil tanımlanmadı.
 profs_add=Yeni bir profil ekleyin.
 profs_return=profil listesi
 profs_ecannot=Profilleri düzenleme izniniz yok
+
 prof_title1=Profil oluştur
 prof_title2=Profili Düzenle
 prof_header=Yetkilendirme profili ayrıntıları
@@ -81,6 +88,7 @@ prof_einuseu=Bu profil $1 kullanıcısı tarafından kullanılıyor ve bu nedenl
 prof_einusep=Bu profil $1 profiline göre kullanılıyor ve bu nedenle silinemez
 prof_einusee=Bu profil $1 ile ilgili yürütme profiline sahip ve bu nedenle silinemez
 prof_none=Kullanılabilir profil yok
+
 execs_title=Uygulama Profilleri
 execs_name=Profil
 execs_policy=Güvenlik Politikası
@@ -92,6 +100,7 @@ execs_none=Henüz hiçbir yürütme profili tanımlanmadı.
 execs_add=Yeni bir yürütme profili ekleyin.
 execs_return=yürütme profilleri listesi
 execs_ecannot=Yürütme profillerini düzenleme izniniz yok
+
 exec_title1=Yürütme Profili Oluştur
 exec_title2=Yürütme Profilini Düzenle
 exec_header=Yürütme profili ayrıntıları
@@ -113,6 +122,7 @@ exec_erruid=Olarak çalıştırılacak eksik veya geçersiz kullanıcı
 exec_errgid=Olarak çalıştırılacak eksik veya geçersiz grup
 exec_erreuid=Çalıştırılacak eksik veya geçersiz etkili kullanıcı
 exec_erregid=Olarak çalışacak eksik veya geçersiz etkili grup
+
 policy_title=Sistem Politikaları
 policy_header=Global sistem politikası ayarları
 policy_auths=Tüm kullanıcılar için yetkiler
@@ -126,16 +136,20 @@ policy_err=Sistem politikaları kaydedilemedi
 policy_eallow=Seçime izin verecek algoritma yok
 policy_eclash=İzin vermek ve kullanımdan kaldırmak için kullanılan algoritmalar aynı anda seçilemez
 policy_ecannot=Sistem politikalarını düzenleme izniniz yok
+
 attr_none=Tanımlanmış kullanıcı özelliği yok
 attr_nonenormal=Tanımlanmış Unix kullanıcısı yok
 attr_nonerole=Tanımlanmış kullanılabilir rol yok
+
 help_epath=Geçersiz yardım dosyası yolu!
 help_link=(Yardım..)
+
 crypt___unix__=Unix şifrelemesi
 crypt_1=BSD MD5
 crypt_2a=BSD Flowfish
 crypt_md5=Sun MD5
 crypt_rot13=ROT13
+
 log_create_user=$1 için kullanıcı özellikleri oluşturuldu
 log_modify_user=$1 için değiştirilmiş kullanıcı özellikleri
 log_delete_user=$1 için kullanıcı özellikleri silindi
@@ -152,6 +166,7 @@ log_create_project=$1 projesi oluşturuldu
 log_modify_project=Değiştirilmiş proje $1 
 log_delete_project=$1 projesi silindi
 log_policy=Değişen sistem politikaları
+
 acl_roles=Rolleri düzenleyebilir mi?
 acl_users=Kullanıcı özelliklerini düzenleyebilir mi?
 acl_roleassign=Rol atayabilir
@@ -166,6 +181,7 @@ acl_profs=Profilleri düzenleyebilir mi?
 acl_ro=Sadece Görüntüle
 acl_execs=Yürütme profillerini düzenleyebilir mi?
 acl_projects=Projeleri düzenleyebilir mi?
+
 projects_title=Projeler
 projects_name=ad
 projects_id=İD
@@ -184,6 +200,7 @@ projects_exceptusers=$1 hariç tüm kullanıcılar
 projects_exceptgroups=$1 hariç tüm gruplar
 projects_onlyusers=Yalnızca 1
 projects_onlygroups=Yalnızca 1
+
 project_title1=Proje Oluştur
 project_title2=Projeyi Düzenle
 project_header=Proje detayları ve üyeleri
@@ -219,6 +236,7 @@ project_egroupscannot=Hariç tutulacak grup yok
 project_elimit=$1 satırında eksik veya geçersiz sınır
 project_epool=Eksik veya geçersiz proje havuzu adı
 project_erss=Eksik veya geçersiz maksimum bellek
+
 prctl_title=Kaynak Kontrolleri
 prctl_ok=Şunun için sınırları göster:
 prctl_mode0=Kimliği olan işlem

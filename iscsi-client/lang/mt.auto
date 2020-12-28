@@ -3,8 +3,10 @@ index_clink=Forsi mhuwiex installat, jew il-<a href='$1'>konfigurazzjoni tal-mod
 index_return=indiċi tal-modulu
 index_atboot=Ibda mill-ibbutjar?
 index_atbootdesc=Ibdel din l-għażla biex tikkontrolla jekk il-klijent iSCSI hux qed jibda fil-ħin tal-bidu jew le. Dan huwa meħtieġ biex is-sistemi ta 'fajls immuntati minn servers iSCSI jiġu mmuntati awtomatikament.
+
 check_econfig=Il-fajl tal-konfigurazzjoni tal-klijent iSCSI $1 ma nstabx fis-sistema tiegħek.
 check_eiscsiadm=Il-programm ta 'amministrazzjoni tal-klijent iSCSI $1 ma nstabx fis-sistema tiegħek.
+
 auth_title=Għażliet ta 'Awtentikazzjoni
 auth_header=Awtentikazzjoni tal-klijent u server iSCSI
 auth_name=Isem l-inizjatur tas-sistema lokali
@@ -29,6 +31,7 @@ auth_edpassword=Nieqes il-password tal-iskoperta għas-server
 auth_edusername_in=Username tal-iskoperta nieqes għall-klijent
 auth_edpassword_in=Nieqes il-password tal-iskoperta għall-klijent
 auth_egen=Ma rnexxielux jiġġenera isem ġdid!
+
 timeout_title=iSCSI Timeouts
 timeout_header=għażliet ta 'skadenza għall-klijent iSCSI
 timeout_timeout=Ħin biex tistenna qabel ma tfalli l-kmandi SCSI
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Ħin nieqes jew mhux numeriku biex tistenna l-ping qab
 timeout_eabort_timeout=Nieqes il-ħin jew mhux numeriku biex tistenna r-rispons tal-abort qabel ma tfalli
 timeout_elu_reset_timeout=Ħin nieqes jew mhux numeriku biex tistenna r-rispons tal-unità loġika qabel ma tfalli
 timeout_etgt_reset_timeout=Ħin nieqes jew mhux numeriku biex tistenna r-rispons fil-mira qabel ma tfalli
+
 iscsi_title=Għażliet iSCSI
 iscsi_header=Għażliet oħra tal-iSCSI
 iscsi_startup=Qabbad sessjonijiet fil-ħin tal-bidu?
@@ -62,6 +66,7 @@ iscsi_err=Ma rnexxielux isalva l-għażliet iSCSI
 iscsi_eretry=Numru ta 'drabi nieqsa jew mhux numeriċi biex terġa' tipprova l-login
 iscsi_ecmds=Kmandi massimi nieqsa jew mhux numeriċi fil-kju għal kull sessjoni
 iscsi_equeue=Kmandi massimi nieqsa jew mhux numeriċi fil-kju għal kull apparat
+
 ifaces_title=Interfaces iSCSI
 ifaces_elist=Naqsu milli jelenka l-interfejs : $1 
 ifaces_name=L-isem tal-interfaċċa
@@ -78,11 +83,13 @@ ifaces_hwaddress=Indirizz MAC
 ifaces_ifacename=Interfaċċa tas-sors
 ifaces_ipaddressdef=Awtomatiku
 ifaces_notset=Awtomatiku
+
 iadd_err=Naqset milli żżid interface
 iadd_eclash=Interfaċċja bl-isem $1 diġà teżisti
 iadd_eipaddress=Indirizz IP sors nieqes jew invalidu
 iadd_ehwaddress=Indirizz MAC nieqes jew invalidu
 iadd_ename=L-isem tal-interfaċċa huwa nieqes jew fih karattri invalidi
+
 difaces_err=Ma rnexxielux ineħħi l-interfejs
 difaces_enone=L-ebda magħżul
 difaces_edelete=Tneħħi l-interfaċċa $1 falluta : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Neħħi l-Interfaces
 difaces_target=mira iSCSI
 difaces_ip=server iSCSI
 difaces_users=Uħud mill-konnessjonijiet li jużaw dawn l-interfaces bħalissa huma attivi, u jonqsu milli joperaw meta jitneħħew l-interfaces :
+
 conns_title=Konnessjonijiet iSCSI
 conns_elist=Naqsu milli jelenka l-konnessjonijiet : $1 
 conns_ip=IP Server
@@ -113,6 +121,7 @@ conns_return=lista tal - konnessjonijiet
 conns_iface=Interfaċċa iSCSI
 conns_ifacedef=Agħżel awtomatikament
 conns_ifaceerr=Ma rnexxielux iġib l-interfaces : $1 
+
 add_title=Żid Konnessjoni iSCSI
 add_err=Naqset milli żżid konnessjoni iSCSI
 add_ehost=Numru tal-host nieqes jew mhux riżolvibbli
@@ -129,6 +138,7 @@ add_on=$1 fuq $2
 add_auth=Idħol fis-server
 add_auth1=Uża metodu ta ’awtentikazzjoni default
 add_auth0=Idħol bħala $2 bil-password $3 billi tuża l-metodu $1 
+
 dconns_err=Ma rnexxielux jiskonnettja l-konnessjonijiet
 dconns_enone=L-ebda magħżul
 dconns_edelete=It-tneħħija tal-mira $2 mill-host $1 falliet : $3 
@@ -142,6 +152,7 @@ dconns_use=Użat minn
 dconns_size=Daqs tal-partizzjoni
 dconns_confirm=Neħħi Konnessjonijiet
 dconns_unused=Mhux użat
+
 vconn_title=Konnessjoni iSCSI
 vconn_egone=Konnessjoni magħżula m'għadhiex teżisti!
 vconn_header=Dettalji dwar il-konnessjoni iSCSI
@@ -160,8 +171,10 @@ vconn_device3=Isem kostanti tal-apparat
 vconn_delete=Skonnettja l-Konnessjoni
 vconn_users=Utenti kurrenti
 vconn_size=Daqs tad-diska
+
 atboot_err=Naqset milli tippermetti fil-ħin tal-bidu
 atboot_einit=Ma teżisti l-ebda azzjoni ta 'boot bl-isem $1 
+
 log_auth=Għażliet ta 'awtentikazzjoni salvati
 log_timeout=Għażliet ta 'timeout iffrankati
 log_iscsi=Għaddiet ta 'għażliet iSCSI

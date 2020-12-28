@@ -21,6 +21,7 @@ index_eversion=Järjestelmään asennetun STunnel-version on $1, mutta tämä mo
 index_conf=Konfiguraatiotiedostosta $1 
 index_noconf=Ei määritystiedostoa!
 index_delete=Poista valitut tunnelit
+
 edit_title=Muokkaa SSL-tunnelia
 create_title=Luo SSL-tunneli
 edit_header1=Tunnelilähteen vaihtoehdot
@@ -47,6 +48,7 @@ edit_tcpw=TCP-kääreiden nimi
 edit_auto=Automaattinen
 edit_iface=Lähtevän lähteen osoite
 edit_type=Paeta
+
 save_err=SSL-tunnelin tallentaminen epäonnistui
 save_enclash=Palvelunimeä $2 käytetään jo portissa $1.
 save_einetd=Inetd-palvelu nimeltään $1 on jo olemassa.
@@ -61,6 +63,7 @@ save_etcpw=Puuttuva tai virheellinen TCP-kääreiden nimi
 save_eiface=Puuttuva tai virheellinen lähtevän lähteen osoite
 save_exinetd=Siellä on jo xinetd-palvelu nimeltään $1 
 save_export=Portti $1 on jo xinetd-palvelun $2 käytössä
+
 log_apply=Sovelletut muutokset
 log_create=Luotu SSL-tunneli $1 
 log_delete=Poistettu SSL-tunneli $1 

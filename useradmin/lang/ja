@@ -33,11 +33,13 @@ index_mass=選択したユーザを削除
 index_mass2=選択したユーザを無効に
 index_mass3=選択したユーザを有効に
 index_gmass=選択したグループを削除
+
 search_title=検索結果
 search_notfound=一致するユーザはありませんでした
 search_found=Found $1 matching users ..
 search_gnotfound=一致するグループはありませんでした
 search_gfound=Found $1 matching groups ..
+
 uedit_title=ユーザの編集
 uedit_title2=ユーザの作成
 uedit_details=ユーザの詳細
@@ -109,6 +111,7 @@ uedit_forcechange=次のログイン時に強制的に変更しますか?
 uedit_uid_def=自動
 uedit_uid_calc=計算
 uedit_disabled=一時的にログイン不可
+
 usave_err=ユーザを保存できませんでした
 usave_eedit=このユーザを編集できません
 usave_ecreate=新しいユーザを作成できません
@@ -158,6 +161,7 @@ usave_epasswd_re=Password does not match regexp $1
 usave_epasswd_dict=Password is a dictionary word
 usave_epasswd_same=Password contains or is the same as username
 usave_eothers=The user was successfully saved, but an error occured in another module : $1
+
 gedit_title=グループの編集
 gedit_title2=グループの作成
 gedit_details=グループの詳細
@@ -172,6 +176,7 @@ gedit_cothers=別のモジュールでグループを作成しますか?
 gedit_mothers=別のモジュールでグループを変更しますか?
 gedit_gid_calc=計算
 gedit_gid_def=自動
+
 gsave_err=グループを保存できませんでした
 gsave_eedit=このグループを編集できません
 gsave_ecreate=新しいグループを作成できません
@@ -188,6 +193,7 @@ usave_egidused=グループ$1がすでにGID $2を使っています
 gsave_egidused2=GID is already in use
 usave_efromroot=ホームディレクトリを/から移動することはできません
 usave_etoroot=ホームディレクトリを/に移動することはできません
+
 logins_title=ログインの記録
 logins_head=$1のログイン記録
 logins_from=ログイン元
@@ -200,6 +206,7 @@ logins_none=ログインは記録されていません
 logins_elist=ログイン記録を表示する許可がありません
 logins_elistu='$1'のログイン記録を見る許可がありません
 logins_local=ローカル
+
 udel_title=ユーザの削除
 udel_err=ユーザを削除できませんでした
 udel_enum=Invalid user number
@@ -221,6 +228,7 @@ udel_del2=ユーザとそのホームディレクトリを削除
 udel_others=警告! ホームディレクトリ$1には他のユーザが所有するファイルが$2個あります。
 udel_dothers=Delete user in other modules?
 udel_root=Warning! If the root user is deleted, you may not be able to administer your system in future.
+
 gdel_title=グループの削除
 gdel_err=グループを削除できませんでした
 gdel_eroot=You are not allowed to delete system groups (those with a GID less than or equal to 10).
@@ -234,6 +242,7 @@ gdel_sure=グループ$1を削除してもよろしいですか?
 gdel_del=グループを削除
 gdel_dothers=Delete group in other modules?
 gdel_other=Deleting from other modules ..
+
 many_title=複数のユーザの作成
 many_desc=このフォームでは、アップロードしたファイルやローカルにあるテキストファイルを元にして複数のユーザを一度に作成できます。ファイルには、下記の形式で1行に1ユーザずつ指定します:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -257,6 +266,7 @@ many_eshell=$1行目に無効なシェルがあります : $2
 many_emkdir=ホームディレクトリ$1を作成できませんでした : $2
 many_egtaken=$1行目のグループ名はすでに使用されています : $2
 many_ok=ユーザ$1を作成しました
+
 acl_uedit=編集可能なUnixユーザ
 acl_uedit_all=すべてのユーザ
 acl_uedit_none=なし
@@ -316,6 +326,7 @@ acl_udelete=Can delete users?
 acl_gdelete=Can delete groups?
 acl_urename=Can rename users?
 acl_grename=Can rename groups?
+
 log_urename=ユーザ$1の名前を$2に変更しました
 log_umodify=ユーザ$1を修正しました
 log_ucreate=ユーザ$1を作成しました
@@ -328,6 +339,7 @@ log_batch=Executed batch file $1
 log_batch_l=Executed batch file $1 ($2 created, $3 modified, $4 deleted)
 log_ubatch=Executed uploaded batch file
 log_ubatch_l=Executed uploaded batch file ($1 created, $2 modified, $3 deleted)
+
 batch_title=バッチファイルの実行
 batch_ecannot=You cannot use the batch file form
 batch_desc=このフォームではアップロード済みテキストファイルまたはローカルテキストファイルから一度に多数のユーザを作成/変更/削除できます。ファイルの各行は最初のフィールドにより動作を指定します。行フォーマット:
@@ -386,12 +398,14 @@ batch_eexpire=Invalid expiry day on line $1 : $2
 batch_echange=Invalid password change day on line $1 : $2
 batch_instr=Instructions and batch format
 batch_header=Batch user creation, update and deletion options
+
 who_title=ログインしているユーザ
 who_user=Unix user
 who_tty=TTY
 who_when=Logged in at
 who_from=Logged in from
 who_none=No users are currently logged in.
+
 export_title=Export Batch File
 export_desc=This form allows you to create a batch file containing some or all of the available users on the system. The file can be used on the Export Batch File page on another system to re-create the exported users, assuming that it uses the selected batch file format.
 export_to=Batch file destination
@@ -410,6 +424,7 @@ export_egid2=Invalid second GID in range
 export_done=Successfully exported $1 users to the file $2 ($3).
 export_pft=Batch file format
 export_who=Users to export
+
 pft_0=Classic <tt>passwd</tt> file only
 pft_1=BSD <tt>master.passwd</tt> file
 pft_2=Standard <tt>passwd</tt> and <tt>shadow</tt> files
@@ -417,6 +432,7 @@ pft_3=Unixware <tt>passwd</tt> file
 pft_4=AIX <tt>passwd</tt> and <tt>security</tt> files
 pft_5=OpenServer <tt>passwd</tt> and short <tt>shadow</tt> files
 pft_6=MacOS NetInfo database
+
 umass_title=Delete Users
 umass_err=Failed to delete users
 umass_sure=Are you sure you want to delete the $1 selected users? Their home directories contain $2 of files.
@@ -426,6 +442,7 @@ umass_del1=Delete Users
 umass_del2=Delete Users and Home Directories
 umass_eroot=You are not allowed to delete system users (those with a UID less than or equal to 10).
 umass_doing=Deleting user $1 ..
+
 gmass_title=Delete Groups
 gmass_err=Failed to delete groups
 gmass_sure=Are you sure you want to delete the $1 selected groups?
@@ -435,12 +452,14 @@ gmass_del=Delete Groups
 gmass_eroot=You are not allowed to delete system groups (those with a GID less than or equal to 10).
 gmass_doing=Deleting group $1 ..
 gmass_eprimary=The group $1 cannot be deleted, as it is the primary group of user $2.
+
 dmass_title=Disable Users
 dmass_sure=Are you sure you want to disable the $1 selected users? They can be re-enabled later with no loss of their passwords or data.
 dmass_dis=Disable Users
 dmass_pass=Temporarily locking password ..
 dmass_doing=Disabling user $1 ..
 dmass_already=.. already disabled!
+
 emass_title=Enable Users
 emass_pass=Unlocking password ..
 emass_doing=Enabling user $1 ..

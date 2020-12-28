@@ -30,6 +30,7 @@ index_return=bölge listesi
 index_ezones=FirewallD bölgesi bulunamadı!
 index_none=Bu bölgede henüz izin verilen bağlantı noktası veya hizmet yok.
 index_ifaces=Arabirimlere kurallar uygulayın:
+
 port_edit=Bağlantı Noktasını Düzenle
 port_create=Bağlantı Noktası Ekle
 port_header=İzin verilen bağlantı noktası seçenekleri
@@ -45,11 +46,13 @@ port_eport=Eksik veya geçersiz bağlantı noktası numarası veya adı
 port_eportlow=Düşük bağlantı noktası bir sayı olmalıdır
 port_eporthigh=Yüksek bağlantı noktası bir sayı olmalıdır
 port_eportrange=Düşük bağlantı noktası yüksek bağlantı noktasının altında olmalıdır
+
 serv_edit=Hizmeti Düzenle
 serv_create=Hizmet Ekle
 serv_header=İzin verilen servis seçenekleri
 serv_name=İzin verilen hizmet
 serv_err=Hizmet kaydedilemedi
+
 forward_edit=Yönlendirmeyi Düzenle
 forward_create=İleri Oluştur
 forward_header=Bağlantı noktası yönlendirme seçenekleri
@@ -61,10 +64,13 @@ forward_dstaddr=Varış noktası
 forward_dstlocal=Bu sistem
 forward_edstaddr=Geçersiz IPv4 hedef adresi
 forward_eneither=Bir hedef adres veya bağlantı noktası veya her ikisi de girilmelidir
+
 check_ecmd=$1 FirewallD kontrol komutu sisteminizde bulunamadı
+
 delete_err=Kurallar silinemedi
 delete_enone=Hiçbiri seçilmedi!
 delete_edel=$1 kaldırılamadı : $2 
+
 zone_title=Bölge Oluştur
 zone_header=Yeni bölge seçenekleri
 zone_name=Bölge adı
@@ -77,12 +83,16 @@ zone_mode4=Sanal barındırma için kullanılan bağlantı noktaları
 zone_err=Bölge oluşturulamadı
 zone_ename=Eksik veya geçersiz bölge adı
 zone_eclash=Aynı ada sahip bir bölge zaten var
+
 delzone_title=Bölgeyi Sil
 delzone_err=Bölge silinemedi
 delzone_edefault=Varsayılan bölge kaldırılamaz
 delzone_rusure=$2 bağlantı noktası ve $3 hizmetini içeren $1 bölgesini silmek istediğinizden emin misiniz?
+
 defzone_err=Bölge varsayılan olarak ayarlanamadı
+
 restart_err=Yapılandırma uygulanamadı
+
 stop_err=Güvenlik DuvarıD durdurulamadı
 start_err=Güvenlik DuvarıD başlatılamadı
 log_stop=Güvenlik Duvarı DurdurulduD

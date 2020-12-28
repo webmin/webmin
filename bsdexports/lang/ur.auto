@@ -9,9 +9,12 @@ index_apply=تبدیلیوں کا اطلاق کریں
 index_applydesc=موجودہ فائل برآمدی ترتیب کو لاگو کرنے کے لئے اس بٹن پر کلک کریں۔ یہ مندرجہ بالا تمام ڈائریکٹریوں کو مخصوص اختیارات کے ساتھ دستیاب بنائے گی۔
 index_return=برآمدات کی فہرست
 index_echeck=اس نظام پر NFS سرور استعمال نہیں کیا جاسکتا :$1
+
 check_ecmd=این ایف ایس سرور کمانڈ$1 انسٹال نہیں ہے
+
 delete_err=برآمدات کو حذف کرنے میں ناکام
 delete_enone=کوئی بھی منتخب نہیں ہوا
+
 edit_title1=ایکسپورٹ میں ترمیم کریں
 edit_title2=ایکسپورٹ بنائیں
 edit_header1=برآمد کے اختیارات
@@ -31,6 +34,7 @@ edit_clients=مؤکل
 edit_hosts=میزبان / نیٹ گروپ
 edit_network=نیٹ ورک
 edit_mask=ماسک
+
 save_err=برآمد کو بچانے میں ناکام
 save_edir='$1' ڈائریکٹری نہیں ہے یا موجود نہیں ہے
 save_enone=برآمد کرنے کے ل You آپ کو کم از کم ایک ڈائریکٹری درج کرنا ہوگی
@@ -44,4 +48,5 @@ save_enetwork='$1' ایک درست نیٹ ورک نہیں ہے
 save_enetmask='$1' ایک درست نیٹ ماسک نہیں ہے
 save_esame1=The directory <tt>$1</tt> is already being exported to <tt>$2</tt>. Your operating system does not allow directories on the same <i>local</i> filesystem to be exported to the same host separately
 save_esame2=The directory <tt>$1</tt> is already being exported to <tt>$2</tt>. Your operating system does not allow directories on the same <i>local</i> filesystem to be exported to the same network separately
+
 restart_err=تبدیلیاں لاگو کرنے میں ناکام

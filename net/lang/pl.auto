@@ -1,12 +1,17 @@
 ifcs_auto6=Od odkrycia IPv6
+
 bifc_bridgestp=Protokół drzewa opinającego
 bifc_bridgefd=Opóźnienie przekazywania
 bifc_bridgewait=Opóźnij się, aby stać się dostępnym
+
 bonding_primary=Główny interfejs
 bonding_primarydesc=Dotyczy tylko trybów łączenia activebackup, balance-tlb lub balance-alb
 bonding_miimondesc=(Pozostaw puste, aby wyłączyć monitorowanie linków)
 bonding_updelay=Aktualizacja
 bonding_downdelay=Downdelay
+
 routes_gwmetric=Interfejs metryczny
+
 hosts_active=Włączony?
+
 acl_sysinfo=Pokaż dostępne interfejsy sieciowe na pulpicie nawigacyjnym

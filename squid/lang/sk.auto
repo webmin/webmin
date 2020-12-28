@@ -38,6 +38,7 @@ index_restartdesc=Kliknutím na toto tlačidlo aktivujete aktuálnu konfiguráci
 index_iptables=Nastavenie presmerovania portov
 index_squid=Squid Proxy Server
 index_manual=Upravte konfiguračné súbory
+
 manual_title=Upravte konfiguračné súbory
 manual_file=Vyberte konfiguračný súbor, ktorý chcete upraviť:
 manual_change=zmena
@@ -45,6 +46,7 @@ manual_editing=Pomocou textového poľa nižšie môžete manuálne upravovať k
 manual_err=Nepodarilo sa uložiť konfiguračný súbor
 manual_efile=Neplatný názov súboru s konfiguráciou!
 manual_ecannot=Nemáte povolené manuálne upravovať konfiguračné súbory
+
 buttsave=Uložiť
 buttdel=delete
 buttcreat=vytvoriť
@@ -54,6 +56,7 @@ default=štandardné
 none=nikto
 on=na
 off=preč
+
 acl_header1=Vytvorte zoznam prístupových práv
 acl_header2=Upraviť zoznam prístupových práv
 acl_name=Názov ACL
@@ -109,6 +112,7 @@ acl_file=Uložte hodnoty ACL do súboru
 acl_nofile=Chobotnice konfigurácia
 acl_infile=Samostatný súbor
 acl_keep=Používate iba existujúci obsah súboru?
+
 aclsave_failsave=Nepodarilo sa uložiť ACL
 aclsave_faildel=Nepodarilo sa odstrániť zoznam ACL
 aclsave_epr=Toto ACL sa používa ako obmedzenie proxy
@@ -128,11 +132,13 @@ aclsave_eemin=Neplatné ukončenie min
 aclsave_efile=Nemáte oprávnenie zapisovať do súboru ACL '$1'
 aclsave_enofile=Nebol zadaný žiadny názov súboru ACL
 aclsave_ealready=Súbor ACL už existuje
+
 cach_ecannot=Nemáte prístup k štatistikám správcu vyrovnávacej pamäte
 cach_err=Chyba
 cach_nfound=Program správcu vyrovnávacej pamäte Squid <tt>$1</tt> nebol vo vašom systéme nájdený. Možno je vaša <a href=/config.cgi?$2>konfigurácia modulu</a> nesprávna.
 cach_return=chobotnice index
 cach_esame=Spustiteľný súbor <b>Squid cachemgr.cgi</b> je nastavený na program camingr.cgi Webmin, nie na program dodávaný spoločnosťou Squid.
+
 chown_header=Zmena vlastníctva
 chown_stop=Zastavuje sa chobotnica. ..
 chown_done=.. Hotový
@@ -140,6 +146,7 @@ chown_chown=Zmena vlastníctva. ..
 chown_restart=Reštartuje sa Squid. ..
 chown_failrestart=Squid sa nepodarilo znova spustiť.
 chown_return=chobotnice index
+
 clear_ecannot=Nemáte povolenie vymazať a znovu vytvoriť vyrovnávaciu pamäť
 clear_header=Vyčistite a znovu vytvorte vyrovnávaciu pamäť
 clear_msgclear=Naozaj chcete vyčistiť a znovu vytvoriť vyrovnávaciu pamäť Squid? Týmto sa odstránia <b>všetky</b> súbory, ktoré ste uložili do vyrovnávacej pamäte, a znova sa spustí server Squid.
@@ -153,6 +160,7 @@ clear_failrestart=Squid sa nepodarilo znova spustiť.
 clear_return=chobotnice index
 clear_url=Odstránenie jednej adresy URL z vyrovnávacej pamäte:
 clear_ok=Remove
+
 eacl_ecannot=Nemáte oprávnenie upravovať riadenie prístupu
 eacl_header=Riadenie prístupu
 eacl_acls=Zoznamy kontroly prístupu
@@ -169,8 +177,10 @@ eacl_nopr=Nie sú definované žiadne obmedzenia proxy.
 eacl_addpr=Pridajte obmedzenia proxy.
 eacl_noprr=Nie sú definované žiadne obmedzenia odpovede servera proxy
 eacl_addprr=Pridajte obmedzenie odpovede servera proxy.
+
 eacl_replypr=Odpovedať na obmedzenia proxy
 eacl_replynopr=Nie sú definované žiadne obmedzenia proxy proxy
+
 eacl_icpr=Obmedzenia ICP
 eacl_noicpr=Nie sú definované žiadne obmedzenia ICP
 eacl_addicpr=Pridajte obmedzenie ICP.
@@ -187,6 +197,7 @@ eacl_eclass=Nie je vybratá žiadna trieda programu
 eacl_cname=Zadajte názov
 eacl_file=Zo súboru $1
 eacl_hdelete=Odstrániť vybraté obmedzenia
+
 eadm_ecannot=Nemáte oprávnenie upravovať administratívne možnosti
 eadm_header=Možnosti správy
 eadm_aao=Administratívne a oznamovacie možnosti
@@ -213,6 +224,7 @@ eadm_caf=Vyrovnávacia pamäť oznamuje súbor
 eadm_annp=Oznamovacie obdobie
 eadm_buttsave=Uložiť
 eadm_return=chobotnice index
+
 eauth_ecannot=Nemáte oprávnenie overovať totožnosť servera proxy
 eauth_header=Overenie servera proxy
 eauth_aopt=Možnosti overenia
@@ -226,6 +238,7 @@ eauth_pusers=Používatelia proxy
 eauth_nopusers=Momentálne nie sú definovaní žiadni používatelia proxy.
 eauth_addpuser=Pridajte nového používateľa proxy.
 eauth_return=chobotnice index
+
 ec_ecannot=Nemáte oprávnenie upravovať možnosti vyrovnávacej pamäte
 ec_header=Možnosti vyrovnávacej pamäte
 ec_cro=Možnosti vyrovnávacej pamäte a žiadosti
@@ -280,6 +293,7 @@ ec_return=chobotnice index
 ec_maxreplies=Maximálna veľkosť tela odpovede
 ec_maxrn=Veľkosť (kB)
 ec_maxracls=Pre žiadosti zodpovedajúce zoznamom prístupových práv (ponechajte prázdne pre všetkých)
+
 ech_header=Vytvorte hostiteľa vyrovnávacej pamäte
 ech_header1=Upraviť hostiteľa vyrovnávacej pamäte
 ech_cho=Možnosti hostiteľa vyrovnávacej pamäte
@@ -324,6 +338,7 @@ ech_origin=Považujete hostiteľa za pôvodný server?
 ech_force=Vynútiť hostiteľa: hlavička na
 ech_same=nezmenený
 ech_ssl=Pripojiť sa pomocou SSL?
+
 eicp_ecannot=Nemáte dovolené upravovať ďalšie pamäte cache
 eicp_header=Ostatné cache
 eicp_opcs=Iné proxy vyrovnávacie servery
@@ -361,6 +376,7 @@ eicp_ttype=typ
 eicp_tpport=Proxy port
 eicp_tiport=ICP port
 eicp_delete=Vymazať vybrané medzipamäte
+
 elogs_ecannot=Nemáte oprávnenie upravovať protokolovanie
 elogs_header=protokolovanie
 elogs_lalo=Možnosti protokolovania a protokolovania
@@ -394,6 +410,7 @@ elogs_notset=Nie je nastavené
 elogs_dont=Neprihlasovať sa
 elogs_file=Súbor $1
 elogs_squid=Oliheň štandard
+
 emem_ecannot=Nie je dovolené upravovať využitie pamäte
 emem_dheader=Využitie pamäte a disku
 emem_header=Využitie pamäte
@@ -419,6 +436,7 @@ emem_lfuda=Dynamicky najmenej často používané
 emem_hlru=Halda najmenej často používaná
 emem_return=chobotnice index
 emem_mrp=Zásady výmeny pamäte
+
 emisc_ecannot=Nemáte dovolené upravovať rôzne možnosti
 emisc_header=Rôzne možnosti
 emisc_mo=Rôzne možnosti
@@ -455,6 +473,7 @@ emisc_wccpin=WCCP prichádzajúca adresa
 emisc_wccpout=Odchádzajúca adresa WCCP
 emisc_none=nikto
 emisc_virtual=virtuálne
+
 eports_ecannot=Nemáte oprávnenie upravovať porty a vytváranie sietí
 eports_header=Porty a vytváranie sietí
 eports_pano=Možnosti portov a sietí
@@ -480,6 +499,7 @@ eports_unc=Uskutočňujú nečisté vypínania SSL?
 eports_checkhost=Overiť názvy hostiteľov v adresách URL?
 eports_underscore=Povoliť podčiarknutie v názvoch hostiteľov?
 eports_all=všetko
+
 eprogs_ecannot=Nemáte oprávnenie upravovať pomocné programy
 eprogs_header=Pomocné programy
 eprogs_chpo=Možnosti programu Pomocník pre vyrovnávaciu pamäť
@@ -508,6 +528,7 @@ eprogs_ttl=Čas overovacej vyrovnávacej pamäte
 eprogs_aittl=Overte čas vyrovnávacej pamäte IP
 eprogs_realm=Autentifikačná oblasť
 eprogs_return=chobotnice index
+
 euser_header=Vytvorenie proxy servera
 euser_header1=Upraviť používateľa proxy
 euser_pud=Podrobnosti o proxy serveri
@@ -516,6 +537,7 @@ euser_p=heslo
 euser_u1=nezmenený
 euser_e=Povolené?
 euser_return=zoznam používateľov
+
 ahttp_header=Vytvorte obmedzenie servera proxy
 ahttp_header1=Upraviť obmedzenia servera proxy
 ahttp_pr=Obmedzenie proxy
@@ -525,10 +547,13 @@ ahttp_d=poprieť
 ahttp_ma=Zhodné zoznamy ACL
 ahttp_dma=Nezodpovedajú ACL
 ahttp_return=Zoznam ACL
+
 ahttp_replyheader=Vytvorte obmedzenie odpovede servera proxy
 ahttp_replyheader1=Upraviť obmedzenie odpovede na proxy
 ahttp_replypr=Obmedzenie odpovede servera proxy
+
 sahttp_ftspr=Uloženie obmedzenia odpovede servera proxy zlyhalo
+
 aicp_header=Vytvorte obmedzenie ICP
 aicp_header1=Upraviť obmedzenie ICP
 aicp_ir=Obmedzenie ICP
@@ -538,7 +563,9 @@ aicp_d=poprieť
 aicp_ma=Zhodné zoznamy ACL
 aicp_dma=Nezodpovedajú ACL
 aicp_return=Zoznam ACL
+
 saicp_ftsir=Nepodarilo sa uložiť obmedzenie ICP
+
 icache_ecannot=Nemáte povolenie inicializovať vyrovnávaciu pamäť
 icache_ftic=Nepodarilo sa inicializovať vyrovnávaciu pamäť
 icache_ymcautrsa=Musíte si vybrať užívateľa, ktorý bude Squid používať
@@ -546,7 +573,9 @@ icache_euser=Užívateľ spustiť Squid, ako neexistuje
 icache_itscwtc=Inicializácia vyrovnávacej pamäte Squid príkazom <tt>$1</tt> ..
 icache_return=chobotnice index
 icache_title=Inicializujte vyrovnávaciu pamäť
+
 restart_ftrs=Nepodarilo sa znova nakonfigurovať chobotnicu
+
 sadmin_ftsao=Nepodarilo sa uložiť administratívne možnosti
 sadmin_header=Zmena vlastníctva
 sadmin_msg1=Zmenili ste používateľa alebo skupinu, v ktorej beží Squid. Aby sa to správne prejavilo, je potrebné aktualizovať vlastníctvo všetkých súborov vyrovnávacej pamäte a protokolov a znova spustiť Squid.
@@ -556,10 +585,12 @@ sadmin_inavea=$1 nie je platná e-mailová adresa
 sadmin_inavh=$1 nie je platný názov hostiteľa
 sadmin_inavap=$1 nie je platné oznamovacie obdobie
 sadmin_inavp=$1 nie je platný port
+
 sauth_ftsao=Možnosti autentifikácie sa nepodarilo uložiť
 sauth_iomuf=Názov súboru je neplatný alebo chýba
 sauth_iomd=Neplatná alebo chýbajúca doména
 sauth_msg1=Vaša verzia Squid nebola kompilovaná s podporou proxy autentifikácie
+
 scache_ftsco=Možnosti vyrovnávacej pamäte sa nepodarilo uložiť
 scache_emsg0=Musíte zadať aspoň jeden adresár vyrovnávacej pamäte
 scache_emsg1=Adresár vyrovnávacej pamäte „$1“ neexistuje
@@ -577,14 +608,17 @@ scache_emsg12='$1' nie je platná veľkosť adresára
 scache_emsg13=$1 nie je platný hostiteľ
 scache_emsg14=$1 nie je platný port
 scache_emaxrs=Neplatná maximálna veľkosť tela v riadku $1
+
 schost_ftsc=Nepodarilo sa uložiť vyrovnávaciu pamäť
 schost_emsg1=$1 nie je platný názov hostiteľa vyrovnávacej pamäte
 schost_emsg2='$1' nie je platný port proxy
 schost_emsg3=$1 nie je platný ICP port
 schost_emsg4='$1' nie je platný čas do života
 schost_emsg5='$1' nie je platná váha
+
 sicp_ftsco=Možnosti vyrovnávacej pamäte sa nepodarilo uložiť
 sicp_emsg1=$1 nie je platný časový limit
+
 slogs_ftslo=Možnosti protokolovania sa nepodarilo uložiť
 slogs_emsg1='$1' nie je absolútny názov súboru
 slogs_emsg2=$1 nie je platný názov súboru
@@ -594,20 +628,24 @@ slogs_emsg5='$1' nie je platný zoznam možností ladenia
 slogs_efname=V riadku $1 je neplatný názov formátu
 slogs_effmt=Chýba formát denníka v riadku $1
 slogs_eafile=Chýbajúci alebo neplatný protokolový súbor v riadku $1
+
 smem_ftsmo=Možnosti pamäte sa nepodarilo uložiť
 smem_emsg1='$1' nie je platná veľkosť vyrovnávacej pamäte
 smem_emsg2='$1' nie je platná známka vysokej hladiny vody
 smem_emsg3=„$1“ nie je platná značka s nízkym obsahom vody
 smem_emsg4='$1' nie je platná veľkosť objektu
+
 smisc_ftso=Možnosti sa nepodarilo uložiť
 smisc_emsg1='$1' nie je platný počet rotácií
 smisc_emsg2=$1 nie je platná doména
 smisc_emsg3=$1 nie je platný proxy
 smisc_emsg4=$1 nie je platný počet chmeľu
+
 sport_ftspo=Možnosti portu sa nepodarilo uložiť
 sport_emsg1='$1' nie je platné číslo portu
 sport_emsg2='$1' nie je platná adresa
 sport_emsg3='$1' nie je platná veľkosť vyrovnávacej pamäte
+
 sprog_ftshpo=Nepodarilo sa uložiť možnosti pomocného programu
 sprog_emsg1=Chýbajú možnosti FTP
 sprog_emsg2=$1 nie je platný program
@@ -620,19 +658,23 @@ sprog_emsg8=$1 nie je platná adresa IP
 sprog_emsg9='$1' nie je platný čas vyrovnávacej pamäte
 sprog_emsg10=$1 nie je platný TTL
 sprog_echildren=Počet programov musí byť číslo väčšie ako nula
+
 suser_ftsu=Nepodarilo sa uložiť používateľa
 suser_emsg1=Neplatné alebo chýbajúce používateľské meno
 suser_etaken=Užívateľské meno sa už používa
+
 start_ftsq=Squid sa nepodarilo spustiť
 start_ecannot=Nemáte dovolené spustiť Squid
 stop_ftsq=Squid sa nepodarilo zastaviť
 stop_ecannot=Nemáte dovolené zastaviť Squida
+
 calamaris_ecannot=Nemáte prístup k analýze protokolov Calamaris
 calamaris_title=Analýza protokolu Calamaris
 calamaris_last=Obmedzenie analýzy na poslednú $1 riadky denníkov.
 calamaris_eprog=Spustiteľný calamaris $1 nebol nájdený. Možno nie je nainštalovaný vo vašom systéme alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
 calamaris_elogs=Adresár denníka $1 neobsahuje žiadne súbory <tt>access.log</tt>. Možno ešte nie je spustená chobotnica alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
 calamaris_gen=Prehľad vygenerovaný dňa $1
+
 lib_emsg1=$1 nie je platná adresa IP
 lib_seconds=sekundy
 lib_minutes=minúty
@@ -680,6 +722,7 @@ lib_aclmuip=Maximálna IP užívateľa
 lib_buttac=Aplikovať zmeny
 lib_buttss=Zastavte chobotnicu
 lib_buttss1=Začnite chobotnicu
+
 log_ports=Zmenené porty a možnosti sieťového pripojenia
 log_icp=Zmenené ďalšie možnosti vyrovnávacej pamäte
 log_mem=Zmenené možnosti využitia pamäte
@@ -734,25 +777,31 @@ log_pools_delete=Odstránené skupiny oneskorení $1
 log_delay_create=Pridaný zoznam prístupových práv pre fond oneskorení $1
 log_delay_modify=Upravený zoznam prístupových práv pre oblasť oneskorení $1
 log_delay_delete=Odstránený zoznam prístupových práv pre oblasť oneskorení $1
+
 log_delay_move=ACL bol presunutý do fondu oneskorení $1
 log_refresh_create=Vytvorené pravidlo obnovenia pre $1
 log_refresh_modify=Upravené pravidlo obnovenia pre $1
 log_refresh_delete=Odstránené pravidlo obnovenia pre $1
+
 log_refresh_move=Pravidlo premiestnenia bolo aktualizované pre $1
 log_refreshes_delete=Odstránené $1 pravidlá obnovenia
 log_iptables=Aktualizované nastavenie presmerovania portov
 log_purge=Odstránená adresa URL $1 z vyrovnávacej pamäte
 log_cachemgr=Zmenené heslá správcu vyrovnávacej pamäte
+
 acl_root=Koreňový adresár pre súbory ACL
 acl_sections=Povolené konfiguračné stránky
 acl_start=Môže spustiť a zastaviť Squid?
 acl_restart=Môžete použiť konfiguráciu Squid?
+
 always_create=Vytvoriť priame načítanie
 always_edit=Upraviť priame načítanie
 always_header=Priame načítanie žiadostí zodpovedajúcich zoznamom prístupových práv
+
 never_create=Vytvoriť nepriame načítanie
 never_edit=Upraviť nepriame načítanie
 never_header=Nikdy priamo načítať žiadosti zodpovedajúce zoznamom prístupových práv
+
 delay_title=Oneskorené bazény
 delay_add=Pridajte nový fond oneskorení.
 delay_num=číslo
@@ -802,11 +851,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=mb
 pool_unit5=MB
+
 dpool_err=Odstránenie fondov oneskorenia zlyhalo
 dpool_enone=Žiadne vybraté
+
 apool_header=Pridať ACL oneskoreného fondu
 apool_header1=Upraviť oneskorenie fondu ACL
 apool_pr=Oneskorený bazén ACL
+
 authparam_title=Autentifikačné programy
 authparam_header=Možnosti programu externého overovania
 authparam_ttl=Čas na uloženie hesiel do vyrovnávacej pamäte pre
@@ -849,6 +901,7 @@ ext_ecache=Chýbajúca alebo neplatná veľkosť vyrovnávacej pamäte
 ext_eprogram=Zadali ste neplatnú cestu programu
 ext_eclash=Externý typ programu s rovnakým názvom už existuje
 ext_eused=Tento externý program používa ACL
+
 header_title=Kontrola prístupu do záhlavia
 header_none=Zatiaľ neboli definované žiadne pravidlá riadenia prístupu k hlavičke.
 header_name=Hlavička HTTP
@@ -868,6 +921,7 @@ header_err=Nepodarilo sa uložiť pravidlo riadenia prístupu k hlavičke
 header_ename=Chýba alebo je neplatný názov hlavičky
 header_request_header_access=Vyžiadať hlavičky
 header_reply_header_access=Odpovedať hlavičky
+
 refresh_title=Obnoviť pravidlá
 refresh_none=Zatiaľ neboli definované žiadne pravidlá obnovenia.
 refresh_re=Regulárny výraz
@@ -894,6 +948,7 @@ refresh_epc=Chýbajúce alebo neplatné percento veku
 refresh_delete=Odstrániť vybrané pravidlá obnovenia
 drefresh_err=Nepodarilo sa odstrániť pravidlá obnovenia
 drefesh_enone=Žiadne vybraté
+
 iptables_title=Nastavenie presmerovania portov
 iptables_inst0=Príkazy brány firewall IPtables potrebné na nastavenie presmerovania portov sa vo vašom systéme pravdepodobne nenachádzajú. Ďalšie podrobnosti nájdete v module <a href='$1'>Linux Firewall</a>.
 iptables_inst1=Zdá sa, že modul <a href='$1'>Linux Firewall</a> nie je vo vašom systéme úplne nastavený. Tento modul využíva tento modul na nastavenie presmerovania portov Frox.
@@ -908,18 +963,23 @@ iptables_enet=Chýbajúca alebo neplatná sieťová adresa (mala by byť naprík
 iptables_eiface=Chýbajúce alebo neplatné sieťové rozhranie
 iptables_eapply=Aplikácia brány firewall zlyhala : $1
 iptables_eapply2=Aplikácia Squid zlyhala : $1
+
 syslog_access=Protokol chobotnice
 syslog_cache=Protokol chobotnice
 syslog_store=Protokol obchodu olihní
+
 purge_err=Vymazanie adresy URL z vyrovnávacej pamäte zlyhalo
 purge_title=Vymazať webovú adresu vo vyrovnávacej pamäti
 purge_doing=Vymazáva sa webová adresa $1 ..
 purge_done=.. hotový.
 purge_failed=.. zlyhalo! Dôvod prečo je uvedený vyššie v chybovom hlásení.
+
 dhttp_err=Odstránenie obmedzení servera proxy zlyhalo
 dhttp_enone=Žiadne vybraté
+
 dicp_err=Obmedzenia ICP sa nepodarilo odstrániť
 dicp_enone=Žiadne vybraté
+
 cachemgr_title=Heslá správcu vyrovnávacej pamäte
 cachemgr_ecannot=Nemáte oprávnenie upravovať heslá správcu vyrovnávacej pamäte
 cachemgr_def1=Nevyžadujú sa žiadne heslá

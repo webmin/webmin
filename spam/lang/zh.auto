@@ -13,6 +13,7 @@ index_applydesc=单击此按钮可通过向所有正在运行的 $1进程发送H
 index_cpan=因为SpamAssassin是Perl模块，所以您还可以使用Webmin的<a href='$2'>Perl模块</a>模块自动安装它，以从CPAN下载 $1。
 index_spamassassin=垃圾邮件刺客
 index_ecannot=您无权管理SpamAssassin配置文件 $1
+
 white_title=允许和拒绝的地址
 white_desc=此页面上的表格可让您指定始终（或从未）归类为垃圾邮件的电子邮件的“发件人”和“收件人：”地址。 SpamAssassin的规则将正常处理任何其他电子邮件。所有电子邮件地址都可以包含通配符，例如*@foo.com或*.foo.com，以匹配整个域。
 white_from=发件人永不归类为垃圾邮件
@@ -44,6 +45,7 @@ white_tabham=允许的地址
 white_tabspam=拒绝的地址
 white_tabsome=目的地址
 white_tabimport=汇入地址
+
 score_title=垃圾邮件分类
 score_desc=SpamAssassin根据邮件的内容和标题为每个邮件分配分数。此页面上的选项确定了将其视为垃圾邮件的分数，以及确定该分数的一些方法。
 score_header=垃圾邮件分类选项
@@ -77,6 +79,7 @@ score_emxdelay=在两次MX检查之间等待的秒数丢失或无效
 score_etimeout=等待RBL查询的秒数丢失或无效
 score_ereceived=接收到的标题缺少或无效的数量：要用RBL检查的标题
 score_bayes=使用贝叶斯学习分类器？
+
 report_title=讯息修改
 report_desc=此页面上的选项控制SpamAssassin对所分析的所有邮件的标头和正文进行的修改，以及对归类为垃圾邮件的邮件的修改。
 report_header=分析和垃圾邮件修改选项
@@ -109,6 +112,7 @@ report_addspam=垃圾邮件
 report_addham=火腿
 report_addall=所有
 report_eaddheader=缺少或无效的附加标头添加 $1
+
 user_title=杂项用户选项
 user_desc=此页面上的选项主要与SpamAssassin用于外部垃圾邮件识别程序Razor，DCC和Pyzor的路径和设置有关。您还可以告诉SpamAssassin是否能够执行DNS查找。
 user_header=其他用户级别的选项
@@ -131,6 +135,7 @@ user_err=无法保存用户选项
 user_etimeout=“$1”不是有效的超时
 user_epath='$1'不是有效的客户端程序路径
 user_emax='$1'不是有效的校验和计数
+
 header_title=标头和身体测试
 header_desc=该页面允许您根据邮件标题，正文内容，正文中找到的URL或其他测试的组合，定义SpamAssassin将应用于电子邮件的其他测试。分配给每个测试的名称由您决定，但通常类似于CONTAINS_FOO。可以通过在页面底部的表中输入您自己的或内置的测试名称来设置SpamAssassin添加到与测试匹配的邮件中的实际分数。
 header_switch=切换到简单模式 ..
@@ -164,6 +169,7 @@ header_eeval='$1'不是有效的评估函数
 header_eheader=“$1”不是有效的电子邮件标题
 header_eregexp='$1'不是有效的正则表达式（必须类似于/ expression /）
 header_emeta=缺少测试'$1'的测试表达式
+
 priv_title=杂项特权选项
 priv_desc=只能在全局设置此选项，而不能在单个用户的配置文件中设置。它们通过各种配置和日志文件的路径进行控制。
 priv_header=其他特权级别设置
@@ -183,6 +189,7 @@ priv_eargs='$1'不是有效的参数列表
 priv_emscore='$1'不是有效的最高短语分数
 priv_ephrase=“$1”不是有效的两个字的垃圾邮件短语
 priv_escore=垃圾邮件词组“$1”的分数缺失或无效
+
 usually=通常为 $1
 ecannot=您无权使用此页面
 setup_title=为SpamAssassin设置Procmail
@@ -202,11 +209,13 @@ setup_drop1=收件人Unix用户
 setup_drop0=<tt>root</tt>用户
 setup_ok=为SpamAssassin设置Procmail
 setup_email=转发到电子邮件地址
+
 setup_err=无法设置SpamAssassin
 setup_efile=缺少或无效的mbox格式文件
 setup_emaildir=Qmail邮件目录丢失或无效
 setup_emhdir=MH邮件目录丢失或无效
 setup_eemail=电子邮件地址丢失或无效
+
 log_white=修改的允许和拒绝地址
 log_score=修改后的垃圾邮件分类
 log_report=修改邮件修改
@@ -217,12 +226,14 @@ log_setup=为SpamAssassin设置Procmail
 log_procmail=更改Procmail配置
 log_import=导入了 $1个允许的地址
 log_manual=手动编辑的配置文件
+
 import_title=导入地址
 import_err=导入地址失败
 import_efile=没有要导入的文件
 import_enone=在文件中找不到电子邮件地址
 import_ok1=在文件中找到 $2个电子邮件地址，其中 $1个是新电子邮件地址，并且已添加到“允许的地址”列表中。
 import_ok2=在文件中找到了 $1个电子邮件地址，但它们都已在允许的地址列表中。
+
 mail_title=垃圾邮件
 mail_desc=此页面列出了已被归类为垃圾邮件的邮件，正在等待某些操作。识别错误的邮件可以移至收件箱，而真正属于垃圾邮件的邮件则可以删除。
 mail_level=得分了
@@ -240,10 +251,13 @@ mail_will=在 $1分钟内自动刷新
 mail_wills=在 $1秒内自动刷新
 mail_delall=删除所有垃圾邮件
 mail_search3=搜索以上分数：
+
 process_eclean=从此电子邮件中删除SpamAssassin标头时发生错误
 process_ereport=无法将电子邮件报告给SpamAssassin： $1
+
 apply_err=无法应用更改
 apply_none=找不到SpamAssassin守护进程！
+
 acl_avail=用户可用的图标
 acl_file=SpamAssassin配置文件进行编辑
 acl_filedef=全局配置文件
@@ -251,8 +265,10 @@ acl_awl=允许用户进行自动白名单编辑
 acl_awl0=所有用户
 acl_awl1=仅列出的用户 $1
 acl_awl2=仅组 $1的成员
+
 search_escore=垃圾邮件分数缺失或无效
 search_results5=$1邮件的垃圾邮件得分等于或高于 $2 ..
+
 razor_title=设置剃刀垃圾邮件检测器
 razor_desc=Vipul的Razor是协作式垃圾邮件检测和报告系统，可以改善发送到您地址的垃圾邮件的分类。但是，必须先使用以下表格注册才能使用Razor帐户。
 razor_user=剃刀用户名
@@ -267,6 +283,7 @@ razor_epass=密码遗失
 razor_doing=现在尝试注册并设置Razor ..
 razor_done=..完成。
 razor_failed=..失败了！有关原因，请参见上面的错误输出。
+
 amavisd_title=Amavisd垃圾邮件传递
 amavisd_desc=该表格可用于更改Amavisd配置，该配置确定分类为垃圾邮件的邮件会发生什么情况。
 amavis_ok=更改Amavisd交付
@@ -304,9 +321,11 @@ amavis_quarantine_today=今日（24h）在隔离区中的垃圾邮件
 amavis_quarantine_week=本周隔离区中的垃圾邮件（7天）
 amavis_quarantine_month=本月（30天）在隔离区中的垃圾邮件
 amavis_quarantine_total=隔离区中的垃圾邮件总数
+
 procmail_title=Procmail垃圾邮件传递
 procmail_ok=更改Procmail传递
 procmail_desc=该表格可用于更改Procmail配置，该配置确定分类为垃圾邮件的邮件发生了什么。
+
 simple_title=标头和身体测试
 simple_desc=此页面使您可以根据邮件标题，正文内容和正文中的URL，定义SpamAssassin将应用于电子邮件的其他测试。分配给每个测试的名称由您决定，但通常类似于CONTAINS_FOO。
 simple_switch=切换到高级模式 ..
@@ -317,8 +336,10 @@ simple_regexp=匹配表达
 simple_score=分数申请
 simple_describe=描述
 simple_err=保存消息测试失败
+
 before_ecmd=保存前命令失败： $1
 after_ecmd=后保存命令失败： $1
+
 connect_emysql=无法加载数据库驱动程序 $1
 connect_elogin=无法登录数据库 $1:$2。
 connect_equery=数据库 $1不包含首选项表 $2
@@ -326,9 +347,11 @@ connect_eldapmod=与LDAP通信所需的Perl模块 $1未安装或不可加载
 connect_eldap=无法在端口 $2上连接到LDAP服务器 $1
 connect_eldaplogin=无法以 $2的身份登录到LDAP服务器 $1 : $3
 connect_ebase=LDAP基本DN $1无效： $2
+
 eldap=LDAP操作失败： $1
 esql=SQL失败： $1
 ldap_euser=找不到 $1的LDAP用户对象
+
 db_title=SQL和LDAP数据库
 db_header=配置存储数据库选项
 db_dsn=将用户配置存储在
@@ -364,6 +387,7 @@ db_eldapport=缺少或无效的LDAP服务器端口号
 db_eldapdn=基本DN丢失或无效-不允许有空格
 db_eldapattr=缺少或无效的SpamAssassin属性
 db_eldapuid=用户名属性缺失或无效
+
 awl_title=管理自动白名单
 awl_search=在白名单中搜索：
 awl_ok=搜索
@@ -389,6 +413,7 @@ awl_deleteone=清除自动白名单
 awl_deleteonedesc=删除用户 $1的所有自动白名单条目。
 awl_deleteall=清除所有自动白名单
 awl_deletealldesc=删除系统上所有用户的所有自动白名单条目。
+
 dawl_err=无法从自动白名单中删除
 dawl_eopen=无法打开白名单
 dawl_enone=未选择要删除的地址
@@ -396,6 +421,7 @@ dawl_ecannot=您无权管理该用户的自动白名单
 dawl_doing=删除所有用户的自动白名单。
 dawl_done=..从 $1个用户中删除了 $2个条目。
 dawl_title=删除所有自动白名单
+
 manual_title=编辑配置文件
 manual_file=编辑配置文件：
 manual_ok=好

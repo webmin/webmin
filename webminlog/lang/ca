@@ -30,6 +30,7 @@ index_sdesc=La descripció de l'acció conté
 index_shost=Servidor Webmin origen
 index_long=Mostra les descripcions llargues de les accions
 index_global=&lt;A cap mòdul&gt;
+
 search_title=Resultats de la Recerca
 search_date=Data
 search_time=Hora
@@ -63,6 +64,7 @@ search_global_baduser=El nom d'usuari és incorrecte
 search_global_badpass=La contrasenya és incorrecta
 search_global_twofactor=El testimoni de dos factors és invàlid
 search_csv=Exporta com a CSV
+
 view_title=Detalls de l'Acció
 view_header=Detalls de l'acció registrada $1
 view_action=Descripció
@@ -96,11 +98,13 @@ view_files=Fitxers canviats i programes executats
 view_raw=Dades del registre pelades
 view_rawname=Nom del paràmetre
 view_rawvalue=valor del paràmetre
+
 acl_mods=Pot veure els registres dels mòduls
 acl_all=Tots
 acl_sel=Els seleccionats a sota...
 acl_users=Pot veure les accions per usuari
 acl_rollback=Pot revertir les accions
+
 rollback_title=Acció de Reversió
 rollback_rusure=Segur que vols revertir tots els fitxers llistats a sota al seu contingut abans d'haver pres aquesta acció? Totes les dades que contenen actualment es reescriuran amb els canvis següents:
 rollback_isdir=Un directori - no es farà cap canvi.
@@ -123,4 +127,5 @@ rollback_modfile=S'ha revertit el contingut del fitxer $1.
 rollback_deleted=S'ha suprimit el fitxer $1.
 rollback_nodeleted=S'ha omès el fitxer inexistent $1.
 rollback_enone=No has seleccionat cap fitxer
+
 log_rollback=S'ha revertit l'acció $1 al mòdul $2

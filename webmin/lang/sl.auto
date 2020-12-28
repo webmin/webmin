@@ -9,6 +9,7 @@ index_restart=Znova zaženite Webmin
 index_restartmsg=Kliknite ta gumb, da znova zaženete postopek strežnika Webmin. To bo morda potrebno, če ste nedavno nadgradili Perl.
 index_refresh=Osvežite module
 index_refreshmsg=Ponovno preverite vse module Webmin za nameščene strežnike in posodobite tiste, ki so prikazani v kategoriji »Neuporabljeni moduli«.
+
 access_title=Nadzor dostopa IP
 access_desc=Strežnik Webmin je lahko konfiguriran tako, da zavrača ali dovoli dostop samo z določenih naslovov IP s pomočjo tega obrazca. Vnesete lahko tudi imena gostiteljev (kot foo.bar.com) in omrežja IP (na primer 10.254.3.0 ali 10.254.1.0/255.255.255.128 ali 10.254.1.0/25 ali 10.254.1.5-10.254.97.127). Omejite dostop do svojega strežnika na zaupanja vredne naslove, še posebej, če je dostopen z interneta. V nasprotnem primeru bo vsak, ki ugane vaše geslo, imel popoln nadzor nad vašim sistemom.
 access_ip=Dovoljeni naslovi IP
@@ -33,6 +34,7 @@ access_ehost=IP-naslova ni bilo mogoče najti za '$1'
 access_eself=Vaš trenutni naslov IP ($1) bo zavrnjen
 access_always=Ali rešite imena gostiteljev na vsako zahtevo?
 access_trust=Zaupate oddaljenemu naslovu IP, ki ga nudijo posredniki?
+
 bind_title=Pristanišča in naslovi
 bind_desc2=Ta obrazec lahko uporabite za spremembo številke vrat, ki jo Webmin posluša, ali pa posluša le en sam naslov IP v vašem sistemu. Konfigurirate ga lahko tudi tako, da sprejema povezave v več vratih ali posluša več IP naslovov. Opomba - vaš spletni brskalnik vas bo po spremembi vrat ali zavezujočega naslova morda pozval, da se znova prijavite.
 bind_header=IP naslovi in vrata
@@ -61,6 +63,7 @@ bind_eipv6=IPv6 ni mogoče omogočiti, če ni nameščen $1 modul Perl
 bind_redirecting=Preusmeritev na nov URL ..
 bind_elsof=Nov port $1 že uporablja drug postopek
 bind_eonsystem=IP naslov $1 v tem sistemu ni aktiven, zato ga ni mogoče uporabiti
+
 log_title=Zapisovanje dnevnikov
 log_desc=Webmin je mogoče konfigurirati za pisanje dnevnika zadetkov spletnega strežnika v standardni datotečni datoteki CLF. Če je beleženje omogočeno, lahko izberete tudi, ali so zapisani naslovi IP ali imena gostiteljev in kako pogosto se briše datoteka dnevnika. Ko je omogočeno, se dnevniki zapišejo v datoteko $1.
 log_desc2=Ko je beleženje omogočeno, bo Webmin v datoteko $1 zapisal podrobnejši dnevnik uporabniških dejanj. Ta dnevnik si lahko ogledate in analizirate z modulom Dnevniškega dejanja Webmin, da vidite, kaj točno počne vsak uporabnik Webmin-a.
@@ -92,6 +95,7 @@ log_login=Ali v dnevnik dejanj vključite Webmin prijave in odjave?
 log_email=Prijavite prijavljena dejanja po e-pošti na
 log_emailnone=Ne pošiljaj
 log_inmodsemail=Pošljite e-pošto za dejanja v
+
 proxy_title=Proxy strežniki in prenosi
 proxy_desc=Če gostitelj, na katerem se izvaja Webmin, stoji za nekakšnim požarnim zidom, boste morda morali nastaviti strežnik proxy, ki ga bo uporabljal za dostop do spletnih in FTP mest. Nekateri moduli, na primer <tt>programski paketi</tt>, bodo ta pooblastila uporabili pri nalaganju datotek ali programov.
 proxy_header=Proxy strežniki
@@ -134,6 +138,7 @@ proxy_return=proxy strežnike in prenose
 proxy_tabproxy=Bližanje
 proxy_tabdown=Prenašanje
 proxy_fallback=Poskusite neposredno zahtevo, če proxy ni?
+
 ui_title=Uporabniški vmesnik
 ui_desc=Ta obrazec vam omogoča urejanje možnosti uporabniškega vmesnika, ki jih uporabljajo vsi moduli. Pri vnosu barv mora biti vsaka določena s standardnim sistemom RGB, kjer je vsaka vrednost šestnajstiška številka od 00 do ff.
 ui_header=Možnosti uporabniškega vmesnika
@@ -183,6 +188,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/llll (tj. 16.9.2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/llll (16.09.2001)
 ui_dateformat_yyyy/mm/dd=llll/mm/dd (tj. 2001/09/16)
 ui_ehostnamedisplay=Manjkajoče ali neveljavno ime gostitelja zaslona
+
 mods_title=Webmin moduli
 mods_desc1=Webmin module lahko po namestitvi dodate s pomočjo obrazca na desni strani. Moduli so običajno razporejeni v datotekah <tt>.wbm</tt>, od katerih lahko vsak vsebuje enega ali več modulov. Module je mogoče namestiti tudi iz datotek RPM, če jih podpira vaš operacijski sistem.
 mods_installsource=Namestitev iz
@@ -226,6 +232,7 @@ mods_tabinstall=Namestite
 mods_tabclone=Klon
 mods_tabdelete=Izbriši
 mods_tabexport=Izvoz
+
 install_err1=Namestitve modula ni bilo mogoče iz $1
 install_efile=Datoteka ne obstaja
 install_err2=Naloženega modula ni bilo mogoče namestiti
@@ -259,10 +266,12 @@ install_cat=Pod kategorijo $1.
 install_eneither=RPM ne vsebuje spletnega modula ali teme
 install_err4=Namestitve standardnega modula ni bilo mogoče
 install_emissing=Navedeni modul ne obstaja
+
 clone_err=Modula ni bilo mogoče klonirati
 clone_elink=symlink ni uspel : $1
 clone_ecopy=ni uspelo kopirati config : $1
 clone_desc=Klon $1
+
 delete_err=Izbris modulov ni uspel
 delete_edep=Modula $1 ni mogoče izbrisati, saj je modul $2 odvisen od njega
 delete_desc1=$1 (klon $2)
@@ -274,6 +283,7 @@ delete_rusure2=Ali ste prepričani, da želite izbrisati temo $2? $1 kB datotek 
 delete_rusure3=Ali ste prepričani, da želite izbrisati klone modulov $2?
 delete_acls=Ali želite odstraniti uporabnike in ponastaviti nastavitve nadzora dostopa?
 delete_enone=Izbran ni noben modul
+
 os_title=Operacijski sistem in okolje
 os_desc3=Ta stran prikazuje operacijski sistem, ki ga je Webmin zaznal ob namestitvi, in sistem, ki je trenutno zaznan. Če so drugačni, lahko izberete, da bodo posodobljeni podatki o operacijskem sistemu Webmin, kar bo morda potrebno, če ste ga nedavno nadgradili.
 os_desc2=Prav tako lahko spremenite iskalno pot, ki jo uporablja Webmin pri izvajanju programov, in pot v knjižnici v skupni rabi je bila prenesena na katere koli programe.
@@ -296,6 +306,7 @@ os_eiversion=Manjka notranja različica operacijskega sistema
 os_incorrect=Opozorilo - vaš sistem dejansko izvaja $1 $2.
 os_fix=Posodobiti zaznani operacijski sistem
 os_usermin=Posodobite tudi Usermin OS
+
 lang_title=Jezik
 lang_title2=Jezik spletnega jezika
 lang_lang=Prikaz v jeziku
@@ -307,6 +318,7 @@ lang_chardef=Določa jezik
 lang_charover=Nabor znakov
 lang_err=Jezika ni bilo mogoče shraniti
 lang_echarset=Manjkajoči ali neveljaven videz nabora znakov
+
 ssl_title=Šifriranje SSL
 ssl_essl=Perl modul Net::SSLeay ni videti nameščen v vašem sistemu. Če želite namestiti knjižnico OpenSSL in Net::SSLeay, sledite <a href='$1'>tem navodilom</a> s spletnega mesta Webmin.
 ssl_cpan=Lahko pa Webmin <a href='$1'>prenesete in namestite</a> zahtevani modul Net::SSLeay Perl za vas.
@@ -412,6 +424,7 @@ ssl_letsnotrenew=Obnavljajte samo ročno
 ssl_staging=Šifrirajmo strežnik
 ssl_staging0=Resnično
 ssl_staging1=Ustvarjanje (samo test)
+
 newkey_err=Ustvarjanja SSL ključa ni bilo mogoče
 newkey_ecn=Manjkajoče ali neveljavno ime strežnika
 newkey_ecns=Ime strežnika ni vneseno
@@ -424,11 +437,13 @@ newkey_ok=Naslednji ključ SSL je bil uspešno ustvarjen :
 newkey_esize=Manjkajoča ali neveljavna velikost ključa
 newkey_edays=Manjkajoče ali neveljavno število dni pred iztekom
 newkey_ecountry=Koda države mora biti dve črki
+
 newcsr_err=SSL CSR ni bilo mogoče ustvariti
 newcsr_efile=Manjka ime datoteke CSR
 newcsr_title=Ustvari CSR
 newcsr_ok=Naslednja zahteva za SSL potrdilo je bila uspešno ustvarjena :
 newcsr_ok2=Ta CSR mora biti poslana podpisniku, ki vrne podpisano potrdilo. To je mogoče namestiti s ključem zgoraj na kartici <b>Naloži potrdilo</b>.
+
 startpage_title=Možnosti kazalo strani
 startpage_intro2=Na tej strani lahko nadzorujete videz glavnega menija Webmin. Nekatere možnosti so morda učinkovite le pri uporabi privzete teme.
 startpage_tabs=Razvrstiti module?
@@ -442,6 +457,7 @@ startpage_gotonone=&lt;Nihče&gt;
 startpage_gotomodule=Po prijavi vedno pojdite na modul
 startpage_webminup=Pokaži posodobitve Webmin na strani Informacije o sistemu?
 startpage_moduleup=Pokaži posodobitve modula na strani Informacije o sistemu?
+
 upgrade_title=Nadgradite Webmin
 upgrade_desc=Ta obrazec vam omogoča nadgradnjo celotne namestitve Webmin na novo različico. Namestite ga lahko iz lokalne datoteke, naložene datoteke ali iz najnovejše različice na <a href=http://www.webmin.com/>www.webmin.com</a>. Tako kot pri ročni nadgradnji bodo tudi vse nastavitve konfiguracije in moduli drugih proizvajalcev shranjeni.
 upgrade_descrpm=Ta obrazec vam omogoča, da nadgradite celotno namestitev spletnega mesta na novo različico z možnostjo nadgradnje RPM. Namestite lahko iz lokalne datoteke RPM, naložene datoteke ali iz najnovejše različice na <a href=http://www.webmin.com/>www.webmin.com</a>. Tako kot pri ročni nadgradnji bodo tudi vse nastavitve konfiguracije in moduli drugih proizvajalcev shranjeni.
@@ -506,10 +522,12 @@ upgrade_tabupdate=Posodobite module
 upgrade_tabsched=Načrtovana posodobitev
 upgrade_src=Nadgradite Webmin s
 upgrade_opts=Možnosti nadgradnje
+
 newmod_desc=Ko je Webmin nadgrajen, bodo vsi novi moduli v novi različici dodeljeni enemu ali več uporabnikom. Ta obrazec omogoča nastavitev uporabnikov, ki prejmejo nove module. Ta nastavitev bo uporabljena pri nadgradnji v ukazni vrstici ali uporabi zgornjega obrazca.
 newmod_header=Donacije za nove module
 newmod_def=Privzeto vedenje - dodelite nove module <tt>root</tt> ali <tt>admin</tt>
 newmod_users=Dodelite nove module :
+
 update_desc1=Ta obrazec vam omogoča nadgradnjo modulov Webmin, za katere je bilo ugotovljeno, da vsebujejo napake ali varnostne luknje na strani <a href=http://www.webmin.com/updates.html>Spletne posodobitve</a> ali iz drugega vira. Tako boste primerjali trenutno nameščene module s tistimi, ki so na voljo za posodobitev, in po želji samodejno prenesli in namestili vse zastarele module.
 update_header1=Posodobite module zdaj
 update_header2=Posodobite module po urniku
@@ -536,6 +554,7 @@ update_enomodsig=Podpisne datoteke za modul ni mogoče prenesti : $1
 update_ebadmodsig=Preverjanje podpisa modula ni uspelo : $1
 update_src=Nadgradite module iz
 update_opts=Možnosti posodobitve modula
+
 ca_title=Organ za potrjevanje
 ca_old=Obstoječe potrdilo
 ca_header1=Ustvari nov certifikat CA
@@ -567,6 +586,7 @@ ca_eminiserv=Potrdila odjemalcev SSL so podprta samo pod miniserv.
 ca_eversion=Različica modula Perl Net::SSLeay, nameščen v vašem sistemu, ne podpira SSL certifikatov stranke.
 ca_essleay=Ukaza za upravljanje SSL $1 v vašem sistemu ni bilo mogoče najti. Morda boste morali spremeniti pot v konfiguraciji modula Webmin Users.
 ca_essl=Potrjevanje SSL je mogoče nastaviti šele, ko spletni strežnik deluje v načinu SSL.
+
 session_title=Preverjanje pristnosti
 session_desc1=Če je omogočeno, časovne omejitve gesla ščitijo vaš strežnik Webmin pred napadi grobega zloma z geslom, tako da med vsakim neuspelim poskusom prijave za istega uporabnika dodate stalno zakasnitev.
 session_header=Možnosti overjanja in možnosti seje
@@ -630,10 +650,12 @@ session_sha512=Uporabite šifriranje SHA512
 session_emd5mod=Šifriranja MD5 ni mogoče uporabiti, saj modul Perl $1 ni nameščen.
 session_esha512mod=Šifriranja SHA512 ni mogoče uporabiti, saj modul Perl $1 ni nameščen.
 session_blocklock=Zaklenite tudi uporabnike z neuspešno prijavo
+
 assignment_title=Ponovno dodelite module
 assignment_header=Naloge kategorije modulov
 assignment_ok=Spremeni kategorije
 assignment_desc=Ta obrazec vam omogoča, da konfigurirate, v kateri kategoriji je vsak modul prikazan na strani indeksa Webmin.
+
 categories_title=Urejanje kategorij
 categories_header=ID kategorije in opisi
 categories_desc=Ta obrazec vam omogoča preimenovanje obstoječih kategorij Webmin in ustvarjanje novih, ki jim dodelite module. Zgornji del tabele je za spreminjanje opisov vgrajenih kategorij, spodnji del pa za dodajanje ID-jev in opisov novih kategorij.
@@ -646,6 +668,7 @@ categories_name=Prikazan opis
 categories_lang=Urejanje kategorij v jeziku:
 categories_langok=Spremeni se
 categories_custom=Po meri
+
 log_access=Spremenjen nadzor dostopa IP
 log_bind=Spremenjena vrata in naslov
 log_log=Spremenjene možnosti beleženja
@@ -691,6 +714,7 @@ log_onedelete_webmincron=Izbrisana načrtovana funkcija v modulu $1
 log_letsencrypt=Zahtevano novo potrdilo SSL od Let's Šifriraj
 log_letsencryptdns=Ustvarimo Šifriraj DNS zapis za $1
 log_letsencryptcleanup=Odstranjeni Šifrirajmo DNS zapis za $1
+
 themes_title=Teme Webmin
 themes_desc=Teme nadzirajo videz uporabniškega vmesnika Webmin, vključno z ikonami, barvami, ozadji in postavitvijo strani. Spodnje izbirno polje lahko uporabite za izbiro ene od tem, nameščenih v vašem sistemu.
 themes_sel=Trenutna tema :
@@ -706,6 +730,7 @@ themes_taboverlay=Spremenite prekrivanje
 themes_tabinstall=Namestite temo
 themes_tabdelete=Brisanje tem
 themes_tabexport=Izvozi teme
+
 themes_err1=Teme ni bilo mogoče namestiti iz $1
 themes_efile=Datoteka ne obstaja
 themes_err2=Naložene teme ni bilo mogoče namestiti
@@ -731,9 +756,11 @@ themes_delok=Tema za brisanje :
 themes_return=seznam tem
 themes_err4=Teme prekrivanja ni bilo mogoče spremeniti
 themes_eoverlay=Izbrano prekrivanje ni združljivo s trenutno globalno temo
+
 themes_desc4=Nameščene teme lahko izvozite kot datoteko wbt.gz s spodnjim obrazcem. Nato je mogoče tematsko datoteko namestiti v drug sistem, v katerem je nameščen Webmin.
 themes_exportmods=Teme za izvoz
 themes_exportok=Izvozi izbrane teme
+
 referers_title=Zaupanja vredni napotniki
 referers_desc=Ta stran vam omogoča, da konfigurirate podporo za preverjanje napotitelja Webmin-a, ki se uporablja za preprečevanje zlonamernih povezav z drugih spletnih mest, ki varujejo vaš brskalnik, da s Webminom počne nevarne stvari. Če pa imate povezave do spletnega mesta s svojih lastnih spletnih mest, na katere ne želite biti opozorjeni, jih morate dodati na spodnji seznam.
 referers_list=Zaupanja vredna spletna mesta
@@ -742,6 +769,7 @@ referers_none2=OPOZORILO: S tem se vaš sistem odpre do napadov XSS!
 referers_referer=Omogočeno preverjanje napotitve?
 referers_err=Reševalcev ni bilo mogoče shraniti
 referers_ehost='$1' ni veljavno zaupanja vredno ime gostitelja
+
 update_err=Posodobitev modulov ni uspela
 update_eurl=Manjkajoči ali neveljaven URL posodobitve
 update_title=Posodobiti module
@@ -762,6 +790,7 @@ update_rv=Preverjanje posodobljenih modulov Webmin iz $1
 update_eemail=E-poštni naslov morate vnesti samo, če prikazuje samo, kaj bi bilo posodobljeno.
 update_subject=Poročilo o posodobitvi modulov Webmin
 update_version=Za prenos je zdaj na voljo nova izdaja Webmin (različica $1). Prihodnje posodobitve bodo izdane samo za najnovejšo različico.
+
 anon_title=Dostop do anonimnega modula
 anon_desc=Ta stran vam omogoča, da odobrite dostop do izbranih modulov in poti Webmin, ne da bi se odjemalci prijavili. Za vsako pot modula, ki jo vnesete spodaj (na primer <tt>/custom</tt> ali <tt>/passwd</tt>), morate vnesti tudi ime uporabnika Webmin, katerega dovoljenja bodo uporabljena za dostop do modul.
 anon_desc2=Pri dodeljevanju anonimnega dostopa bodite ZELO previdni, saj lahko nezadostni nadzor dostopa do IP ali dostop do napačnega modula napadalcem omogoči prevzem vašega sistema.
@@ -770,15 +799,19 @@ anon_user=Uporabnik Webmin
 anon_err=Anonimnega dostopa ni bilo mogoče shraniti
 anon_eurl=„$1“ ni veljavna pot do URL-ja
 anon_euser=Manjkajoči ali neveljaven uporabnik Webmin za URL naslov »$1«
+
 enogpg=GnuPG ni nameščen
+
 standard_failed=Seznama modulov ni bilo mogoče prenesti : $1
 standard_header=Standardni moduli Webmin
 standard_warn=Opozorilo - ne uporabljate najnovejše različice Webmin $1, zato teh modulov verjetno ne bo mogoče namestiti.
 standard_eurl=Neveljaven URL standardnih modulov
+
 third_failed=Seznama modulov ni bilo mogoče prenesti : $1
 third_header=Webmin moduli tretjih oseb
 third_eurl=Neveljaven URL modulov tretjih oseb
 third_title=Izberite tretji modul
+
 lock_title=Zaklepanje datoteke
 lock_desc=Webmin bo privzeto pridobil zaklepanje katere koli datoteke, ki jo spremeni, da bi preprečil hkratno spreminjanje z več postopki, kar bi lahko privedlo do poškodbe datoteke. Ta stran vam omogoča, da selektivno ali popolnoma onemogočite zaklepanje, če povzroča težave.
 lock_header=Nastavitve zaklepanja datotek
@@ -789,6 +822,7 @@ lock_except=Zakleni vse datoteke in mape, razen ..
 lock_err=Zaklepanja datoteke ni bilo mogoče shraniti
 lock_edir='$1' ni absolutna pot
 lock_edirs=Nobenih datotek ali imenikov ni vnesenih
+
 ipkey_title1=Ustvari SSL ključ
 ipkey_title2=Uredi SSL ključ
 ipkey_header=Podrobnosti o ključu SSL, specifične za IP
@@ -798,6 +832,7 @@ ipkey_eip2='$1' ni veljaven naslov IP ali ime gostitelja
 ipkey_eips=IP-naslovov ni vnesenih
 ipkey_eextracas=Dodatne datoteke potrdil niso vnesene
 ipkey_eextraca=Dodatna datoteka potrdila $1 ne obstaja
+
 descs_title=Naslovi modulov
 descs_info=Ta stran vam omogoča, da določite nadomestne naslove za module Webmin in nadomestite njihove standardne opise.
 descs_mod=Modul
@@ -807,11 +842,13 @@ descs_cdesc=Klonski naslov
 descs_err=Naslovov modula ni bilo mogoče shraniti
 descs_edesc=Manjka naslov modula '$1'
 descs_etitle=Manjka naslov za klon '$1'
+
 export_err=Izvoz modulov ni uspel
 export_ecmd=Manjka potreben ukaz $1
 export_efile=Manjkajoča ali neveljavna izvozna datoteka
 export_done=Izbrane module smo uspešno izvozili v $1.
 export_title=Izvoz modulov
+
 advanced_title=Napredne možnosti
 advanced_header=Napredne in eksperimentalne možnosti
 advanced_temp=Imenik začasnih datotek
@@ -855,10 +892,13 @@ advanced_listdir=Seznam imenikov brez indeksne datoteke?
 advanced_headers=Dodatne glave HTTP
 advanced_eheader=Glave morajo biti oblikovane kot <tt>Glava: Vrednost</tt>
 advanced_sortconfigs=Ali želite shraniti konfiguracijske datoteke, razvrščene po njihovih ključih?
+
 syslog_errorlog=Dnevnik napak Webmin
+
 clear_title=Počisti predpomnilnik prenosov
 clear_done=Webmin predpomnilnik, ki vsebuje $1 datotek iz $2 URL-jev, je bil uspešno izbrisan.
 clear_none=V predpomnilniku za prenos Webmin trenutno ni URL-jev.
+
 savekey_err=Novega ključa ni bilo mogoče shraniti
 savekey_ekey=Manjkajoč ali neveljaven ključ formata PEM
 savekey_ecert=Manjkajoče ali neveljavno potrdilo PEM formata
@@ -868,6 +908,7 @@ savekey_title=Naložite obstoječi ključ
 savekey_done2=Priloženi ključ SSL je bil shranjen v $1, potrdilo pa v $2.
 savekey_done=Priloženi SSL ključ in potrdilo sta shranjena v datoteko $1.
 savekey_done3=Priloženi verižni SSL certifikat je bil shranjen v datoteko $1.
+
 cache_title=Predpomnjeni URL-ji
 cache_search=Poiščite URL-je, ki vsebujejo:
 cache_ok=Iskanje
@@ -880,8 +921,10 @@ cache_delete=Flush Izbrano iz predpomnilnika
 cache_err=Ni bilo mogoče izpirati predpomnjenih URL-jev
 cache_enone=Izbrana ni nobena
 cache_efile=Neveljavno ime datoteke
+
 restart_title=Znova zaženite Webmin
 restart_done=Postopek v strežniku Webmin se znova zažene - počakajte nekaj sekund, preden nadaljujete.
+
 mobile_title=Možnosti mobilnih naprav
 mobile_header=Možnosti za brskalnike za mobilne naprave
 mobile_theme=Tema za brskalnike za mobilne naprave
@@ -890,6 +933,7 @@ mobile_nosession=Prisiliti uporabo overjanja HTTP?
 mobile_agents=Dodatna uporabniška sredstva za mobilne brskalnike
 mobile_err=Možnosti mobilnih naprav ni bilo mogoče shraniti
 mobile_prefixes=Predpone imena gostitelja URL za brskalnike mobilnih naprav
+
 blocked_title=Blokirani gostitelji in uporabniki
 blocked_type=Vtipkajte
 blocked_who=Ime gostitelja ali uporabniško ime
@@ -901,9 +945,11 @@ blocked_host=Gostitelj odjemalca
 blocked_clear=Počisti vse bloke
 blocked_cleardesc=Kliknite ta gumb, da počistite vse trenutne bloke gostitelja in uporabnika, tako da znova zaženete postopek strežnika Webmin.
 blocked_restarting=Postopek strežnika Webmin se zdaj zažene, da počistite blokirane gostitelje in uporabnike. Pred nadaljevanjem počakajte nekaj sekund.
+
 refreshmods_title=Osvežite module
 refreshmods_installed=Preverjanje uporabnih modulov Webmin ..
 refeshmods_counts=.. najdeno $2 z nameščenimi aplikacijami, $1 ni nameščen.
+
 debug_title=Odpravljanje napak pri datoteki dnevnika
 debug_header=Možnosti datoteke dnevnika za odpravljanje napak za Webmin
 debug_enabled=Dnevnik za odpravljanje napak je omogočen?
@@ -931,6 +977,7 @@ debug_cmd=Ukazna vrstica
 debug_cron=Opravila v ozadju
 debug_inmods=Moduli za pisanje dnevnikov za odpravljanje napak za
 debug_emodules=Izbranih modulov ni mogoče odpraviti
+
 notif_passexpired=Geslo za Webmin je poteklo! Pri naslednji prijavi boste morali to spremeniti.
 notif_passchange=Geslo za Webmin je bilo nazadnje spremenjeno $1 in ga je treba spremeniti v $2 dneh.
 notif_passlock=Vaše geslo za Webmin je bilo nazadnje spremenjeno $1, vaš račun pa bo zaklenjen v $2 dneh, če ni spremenjen.
@@ -946,6 +993,7 @@ notify_updatedesc=Težava odpravlja
 notif_updateok=Namestite posodobitve zdaj
 notif_reboot=Zadnje posodobitve paketov (na primer nova različica jedra) zahtevajo ponovni zagon v celoti.
 notif_rebootok=Ponovno zaženi
+
 status_title=Zbirka stanja ozadja
 status_header=Nastavitve opravila zbiranja stanja
 status_interval=Zbiranje stanja sistema v ozadju?
@@ -957,6 +1005,7 @@ status_temp=Zbirate pogonske temperature?
 status_units=Enote za temperature
 status_celsius=Celzija
 status_fahrenheit=Fahrenheit
+
 sendmail_title=Pošiljanje e-pošte
 sendmail_desc=Ta stran nadzoruje, kako Webmin pošilja e-pošto, na primer iz načrtovanih varnostnih kopij ali spremljanja ozadja. Vpliva tudi na e-pošto, poslano z modulom Preberite uporabniško pošto.
 sendmail_header=Možnosti pošiljanja pošte
@@ -997,12 +1046,14 @@ sendmail_url=URL Webmin za uporabo v e-pošti
 sendmail_url_def=Privzeto ($1)
 sendmail_url_custom=URL po meri
 sendmail_eurl=Manjkajoči ali neveljavni URL po meri
+
 testmail_title=Pošlji testno e-pošto
 testmail_err=Testnega sporočila ni bilo mogoče poslati
 testmail_eto=Ni vnešen ciljni naslov
 testmail_sending=Pošiljanje sporočila iz $1 na $2.
 testmail_done=.. sporočilo poslano. Preverite nabiralnik ciljnega naslova in se prepričajte, da je bil dejansko dostavljen.
 testmail_failed=.. pošiljanje ni uspelo : $1
+
 web_title=Možnosti spletnega strežnika
 web_header=Možnosti za vgrajen spletni strežnik Webmin
 web_expires=Čas predpomnilnika za statične datoteke
@@ -1014,6 +1065,7 @@ web_expirespaths=Časi predpomnilnika na strani odjemalca na podlagi poti do URL
 web_expirespath=Pot rednega izražanja
 web_expirestime=Čas predpomnilnika v sekundah
 web_eexpires2=Manjkajoči ali neštevilčni čas predpomnilnika na strani odjemalca v vrstici $1
+
 webmincron_title=Funkcije, razporejene po spletu
 webmincron_emodule=Modul Webmin Cron Jobs ni nameščen!
 webmincron_module=Webmin modul
@@ -1037,6 +1089,7 @@ webmincron_when1=Določeni časi
 webmincron_secs=sekund
 webmincron_err=Ni bilo mogoče shraniti načrtovane funkcije
 webmincron_einterval=Interval mora biti več sekund večji od nič
+
 twofactor_title=Dvofaktorska overitev
 twofactor_header=Možnosti preverjanja pristnosti z dvema faktorjema
 twofactor_provider=Ponudnik overjanja
@@ -1075,6 +1128,7 @@ twofactor_secret1=Generirano naključno
 twofactor_secret0=Uporabite 16-znakovno tipko
 twofactor_esecret=Tajni ključ mora biti dolg točno 16 znakov in vsebovati samo črke in številke
 twofactor_esession=Dvofaktorske avtentikacije ni mogoče uporabiti, če ni aktivirana avtentikacija na podlagi seje
+
 letsencrypt_title=Šifrirajmo zahtevo po certifikatu
 letsencrypt_err=Potrdila ni bilo mogoče
 letsencrypt_ecmds=V vašem sistemu niso bili najdeni ukazi stranke odjemaj šifriraj <tt>certbot</tt> niti ukaza <tt>python</tt>
@@ -1108,5 +1162,6 @@ letsencrypt_ecsr=Generacije CSR ni uspelo : $1
 letsencrypt_ekeygen=Ni bilo mogoče ustvariti zasebnega ključa : $1
 letsencrypt_enative=Domači odjemalec Let's Encrypt (certbot) je bil prej uporabljen v tem sistemu in ga je treba uporabiti za vse prihodnje zahteve za potrdila
 letsencrypt_eacmedns=Samo uradni odjemalec Let's Encrypt podpira preverjanje na podlagi DNS
+
 announce_hide=Skrij to obvestilo
 alert_hide=Skrij opozorilo

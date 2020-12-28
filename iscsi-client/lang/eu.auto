@@ -3,8 +3,10 @@ index_clink=Agian ez dago instalatuta edo zure <a href='$1'>moduluaren konfigura
 index_return=moduluaren aurkibidea
 index_atboot=Hasi abiarazi?
 index_atbootdesc=Aldatu aukera hau iSCSI bezeroa abiaraztean abiarazteko edo ez kontrolatzeko. Hau iSCSI zerbitzarietatik automatikoki muntatu ahal izateko fitxategi-sistemetarako beharrezkoa da.
+
 check_econfig=Ez da iSCSI bezeroaren konfigurazio fitxategia $1 zure sisteman aurkitu.
 check_eiscsiadm=Ez da iSCSI bezeroaren administrazioa $1 programa zure sisteman aurkitu.
+
 auth_title=Autentifikazio aukerak
 auth_header=iSCSI bezeroaren eta zerbitzariaren autentikazioa
 auth_name=Tokiko sistemaren hasierako izena
@@ -29,6 +31,7 @@ auth_edpassword=Aurkikuntzaren pasahitza falta da zerbitzariarentzat
 auth_edusername_in=Aurkikuntzaren erabiltzaile izena galdu da bezeroarentzako
 auth_edpassword_in=Bezeroarentzako aurkikuntza pasahitza falta da
 auth_egen=Huts egin du izen berri bat sortzen!
+
 timeout_title=iSCSI Denbora tarteak
 timeout_header=iSCSI bezeroaren denbora-muga aukerak
 timeout_timeout=SCSI komandoak huts egin aurretik itxaron behar da
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Falta da edo zenbakizko denbora huts egin aurretik pin
 timeout_eabort_timeout=Falta edo zenbakizko denbora huts egin aurretik abortuaren erantzunaren zain egoteko
 timeout_elu_reset_timeout=Falta da edo zenbakizko denbora huts egin aurretik unitate logikoaren erantzunaren zain egoteko
 timeout_etgt_reset_timeout=Falta da edo zenbakizko denbora huts egin aurretik xede-erantzunaren zain egoteko
+
 iscsi_title=iSCSI Aukerak
 iscsi_header=Beste iSCSI aukerak
 iscsi_startup=Lotu saioak abio garaian?
@@ -62,6 +66,7 @@ iscsi_err=Ezin izan da iSCSI aukerak gordetzea
 iscsi_eretry=Saioa saiatzeko saiatzeko behin edo ez zenbakizko kopurua
 iscsi_ecmds=Saio bakoitzeko ilaran dauden gehieneko komandoak falta edo ez diren zenbakiak
 iscsi_equeue=Gailu bakoitzeko ilaran dauden gehieneko komando falta edo ez-zenbakiak
+
 ifaces_title=iSCSI interfazeak
 ifaces_elist=Huts egin du interfazeak zerrendatzean : $1 
 ifaces_name=Interfazearen izena
@@ -78,11 +83,13 @@ ifaces_hwaddress=MAC helbidea
 ifaces_ifacename=Iturburu-interfazea
 ifaces_ipaddressdef=automatikoa
 ifaces_notset=automatikoa
+
 iadd_err=Huts egin du interfazea gehitzean
 iadd_eclash=$1 izeneko interfazea dagoeneko badago
 iadd_eipaddress=Iturburu IP helbide falta edo baliogabea
 iadd_ehwaddress=MAC helbide falta edo baliogabea
 iadd_ename=Interfazearen izena falta da edo karaktere baliogabeak ditu
+
 difaces_err=Ezin izan da interfazeak kendu
 difaces_enone=Ez da hautatu
 difaces_edelete=$1 interfazea kentzeak huts egin du : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Kendu interfazeak
 difaces_target=iSCSI xede
 difaces_ip=iSCSI zerbitzaria
 difaces_users=Interfaze hauek erabiltzen dituzten konexio batzuk aktibatuta daude eta ez dute funtzionatzen interfazeak kentzean :
+
 conns_title=iSCSI konexioak
 conns_elist=Huts egin du konexioen zerrendak : $1 
 conns_ip=Zerbitzariaren IPa
@@ -113,6 +121,7 @@ conns_return=konexioen zerrenda
 conns_iface=iSCSI interfazea
 conns_ifacedef=Aukeratu automatikoki
 conns_ifaceerr=Huts egin du interfazeak eskuratzean : $1 
+
 add_title=Gehitu iSCSI konexioa
 add_err=Ezin izan da iSCSI konexioa gehitu
 add_ehost=Falta den edo ebatzi ezin den ostalariaren izena
@@ -129,6 +138,7 @@ add_on=$1 $2 an
 add_auth=Sartu zerbitzarira
 add_auth1=Erabili autentifikazio metodo lehenetsia
 add_auth0=Sartu $2 gisa $3 pasahitzarekin $1 metodoa erabiliz
+
 dconns_err=Ezin izan da konexioak deskonektatu
 dconns_enone=Ez da hautatu
 dconns_edelete=$2 ostalariaren $1 kentzeak huts egin du : $3 
@@ -142,6 +152,7 @@ dconns_use=Erabilitakoak
 dconns_size=Zatiaren tamaina
 dconns_confirm=Kendu Konexioak
 dconns_unused=Erabili gabeko
+
 vconn_title=iSCSI konexioa
 vconn_egone=Hautatutako konexioa ez da gehiago!
 vconn_header=iSCSI konexioaren xehetasunak
@@ -160,8 +171,10 @@ vconn_device3=Gailuaren izen konstantea
 vconn_delete=Deskonektatu konexioa
 vconn_users=Egungo erabiltzaileak
 vconn_size=Diskoaren tamaina
+
 atboot_err=Huts egin du abiaraztean
 atboot_einit=Ez da $1 izeneko abio ekintzarik
+
 log_auth=Gorde autentifikazio aukerak
 log_timeout=Aurrezteko denbora aurrezteko aukerak
 log_iscsi=Gordetu iSCSI aukerak

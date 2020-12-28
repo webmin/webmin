@@ -5,6 +5,7 @@ index_fileshare=compartición de archivos
 index_printershare=compartición de impresoras
 index_shareconf=configuración de compartición
 index_version=Versión $1 de Samba
+
 index_sharename=Nombre de Compartición
 index_path=Trayectoria
 index_security=Seguridad
@@ -31,12 +32,14 @@ index_startmsg=Los servidores samba no parece que estén siendo ejecutados en tu
 index_restart=Rearrancar Servidores Samba
 index_restartmsg=Haz click en este botón para rearrancar los servidores samba en ejecución de tu sistema. Esto forzará que la actual configuración sea aplicada.
 index_restartmsg2=Esto también desconectará cualquier conexión con el servidor. Por ello, si no quieres que la configuración en curso sea aplicada inmediátamente, deberías esperar 1 minuto hasta que Samba vuelva a cargar la configuración automáticamente.
+
 config_mins=Mins
 config_secs=Segs
 config_bytes=Octetos
 config_never=Nunca
 config_all=Todos(as)
 config_neither=Ninguno(a)
+
 global_title=Configuración Global
 global_unixnetwork=Red de Unix
 global_winnetwork=Red de Windows
@@ -46,6 +49,7 @@ global_misc=Opciones Varias
 global_filedefault=Valores por defecto de Compartición de Archivos
 global_prndefault=Valores por defecto de Compartición de Impresoras
 global_password=Claves de Acceso Encriptadas
+
 error_nosamba=No se ha encontrado el ejecutable <tt>$1</tt> del servidor samba. O samba no está instalado en tu sistema o tu <a href="$2">configuración del módulo</a> is incorrecta.
 error_version=Webmin no ha podido obtener la versión de tu ejecutable de servidor samba <tt>$1</tt>. Revisa tu <a href="$2">configuración del módulo</a> para asegurarte de que la trayectoria es la correcta.
 error_config=No se ha encontrado el archivo de configuración $1. Los más seguro es que Samba no esté instalado en tu sistema o que la <a href="$2">configuración del módulo</a> sea incorrecta.
@@ -53,6 +57,7 @@ error_include=Webmin no puede manejar los archivos de configuración de samba qu
 error_delshare=No pude borrar la compartición
 error_delcopy=La compartición '$1' se copia desde esta compartición
 error_savename=No pude salvar cómo dar nombre a archivos
+
 convert_title=Convertir Usuarios
 convert_msg=Este formulario te permite sicronizar la lista de usuarios de Unix y Samba. Cuando Samba usa <a href=$1>claves de acceso encriptadas</a>, se usa una lista separada de usuarios y claves de acceso en vez de la lista de usuarios del sistema.
 convert_noconv=No convertir o quitar estos usuarios:
@@ -64,6 +69,7 @@ convert_nopasswd=Sin clave de acceso
 convert_lock=Cuenta bloqueada
 convert_passwd=Usa esta clave de acceso
 convert_convert=Convertir Usuarios
+
 misc_title=Opciones Varias
 misc_debug=Nivel de depuración
 misc_cachecall=¿Caché de llamadas <tt>getwd()</tt>?
@@ -77,6 +83,7 @@ misc_chroot=directorio de <tt>chroot()</tt>
 misc_smbrun=Trayectoria a <tt>smbrun</tt>
 misc_clienttime=Desplazamiento de hora del Cliente
 misc_readprediction=¿Predicción de Lectura?
+
 net_title=Opciones de Red de Unix
 net_idle=Tiempo que transcurre antes de desconectar
 net_trustlist=Archivo de usarios/máquinas fiables
@@ -91,6 +98,7 @@ net_every=Enviar cada
 net_maxpacket=Máxima medida de paquete
 net_listen=Escuchar en dirección
 net_socket=Opciones de Socket
+
 passwd_title=Opciones de Clave de Acceso
 passwd_encrypt=¿Uso claves de acceso encriptadas?
 passwd_allownull=¿Permito claves de acceso nulas?
@@ -103,11 +111,13 @@ passwd_send=Enviar
 passwd_map=Mapeo de Nombres de Usuario
 passwd_unixuser=Usuarios de Unix
 passwd_winuser=Usuarios de Windows
+
 print_title=Opciones de Impresión
 print_style=Estilo de impresión de Unix
 print_show=¿Ver todas las impresoras?
 print_printcap=Archivo printcap
 print_cachetime=Tiempo de caché de estado de impresora
+
 smb_title=Opciones de Red de Windows
 smb_workgroup=Grupo de Trabajo
 smb_wins=modo WINS
@@ -134,13 +144,16 @@ smb_nowhere=Ninguno
 smb_fromlist=Desde la lista...
 smb_ip=Dirección IP
 smb_asworkgroup=<b>Como Grupo de Trabajo</b> (opcional)
+
 create_title=Crear Copia
 create_msg=Una compartición copiada heredará todos sus valores por defecto de la compartición que se seleccione. Si se cambia la compartición emisora también lo hará la copia.
 create_from=Compartición desde donde copiar:
 create_name=Nuevo nombre de compartición:
+
 smbuser_title=Usuarios de Samba
 smbuser_list=Lista de Usuarios de Samba
 smbuser_nouser=No se han definido usuarios de Samba
+
 euser_title=Editar Usuario de Samba
 euser_name=Nombre de usuario
 euser_uid=UID de Unix
@@ -159,6 +172,7 @@ euser_locked=Cuenta bloqueada
 euser_nopwrequired=No se requiere clave de acceso
 euser_disable=Cuenta desactivada
 euser_trust=Cuenta fiable de estación de trabajo
+
 fmisc_title=Valores varios por defecto de archivo
 fmisc_for=Para compartición <tt>$1</tt>
 fmisc_lockfile=¿Hago bloqueo de archivo?
@@ -174,6 +188,7 @@ fmisc_conncmd=Comando a ejecutar al conectarse
 fmisc_disconncmd=Comando a ejecutar al desconectarse
 fmisc_rootconn=Comando a ejecutar al conectarser <i>como root</i>
 fmisc_rootdisconn=Comando a ejecutar al desconectarse <i>como root</i>
+
 fname_title1=Valores por defecto de Cómo dar Nombre a Archivos
 fname_title2=Editar Cómo dar Nombre a Archivos
 fname_option=Opciones de Cómo dar Nombre a Archivos
@@ -188,6 +203,7 @@ fname_hide=¿Oculto archivos que empiezan por punto?
 fname_archive=¿Salvo el atributo de archivo de DOS?
 fname_hidden=¿Salvo el atributo de oculto de DOS?
 fname_system=¿Salvo el atributo de sistema de DOS?
+
 fperm_title1=Valores por Defecto de Permisos de Archivo
 fperm_title2=Editar Permisos de Archivo
 fperm_option=Opciones de Permisos de Archivo
@@ -200,6 +216,7 @@ fperm_link=¿Permito enlaces simbólicos fuera de la compartición?
 fperm_delro=¿Puedo borrar archivos de sólo lectura?
 fperm_forcefile=Forzar modo de archivo de Unix
 fperm_forcedir=Forzar modo de directorio de Unix
+
 share_title1=Valores por defecto de Compartición de Archivos
 share_title2=Editar Compartición de Archivo
 share_title3=Crear Compartición de Archivo
@@ -217,6 +234,7 @@ share_security=Control de Seguridad y Acceso
 share_permission=Permisos de Archivo
 share_naming=Cómo dar Nombre a Archivos
 share_misc=Opciones varias
+
 print_title1=Opciones por defecto de Impresora
 print_title2=Editar Opciones de Impresora
 print_option=Opciones de Impresora
@@ -228,6 +246,7 @@ print_delete=Comando para borrar tarea
 print_pause=Comando para poner tarea en pausa
 print_unresume=Comando para reiniciar tarea
 print_driver=Controlador de Impresora
+
 pshare_title1=Valores por defecto de Impresora
 pshare_title2=Editar Compartición de Impresora
 pshare_title3=Crear Compartición de Impresora
@@ -236,6 +255,7 @@ pshare_name=Nombre de Compartición
 pshare_all=Compartición de Todas las Impresoras
 pshare_unixprn=Impresora de Unix
 pshare_spool=Directorio de Spool
+
 sec_index1=Valores por defecto de Seguridad
 sec_index2=Editar Seguridad
 sec_writable=¿Se puede escribir?
@@ -258,12 +278,14 @@ sec_rouser=Usuarios de sólo lectura
 sec_rogroup=Grupos de sólo lectura
 sec_rwuser=Usuarios de lectura/escritura
 sec_rwgroup=Grupos de lectura/escritura
+
 esync_title=Sincronización de Usuario
 esync_msg=Se puede configurar Webmin de tal manera que los cambios en la lista de usuarios de Unix sean automáticamente aplicados a la lista de usuarios de Samba. Esto sólo funcionará cuando el módulo de Webmin de <tt>Usuarios y Grupos</tt> sea utilizado para añadir, borrar y cambiar usuarios.
 esync_add=Añadir usuario de Samba al crear un usuario de Unix
 esync_chg=Cambiar el usuario de Samba cuando se cambie el de Unix
 esync_del=Borrar el usuario de Samba al borrar el de Unix
 esync_apply=Aplicar
+
 mkpass_title=Convertir Usuarios
 mkpass_convfail=No pude convertir usuario
 mkpass_msg=Convirtiendo usuarios de Unix...
@@ -272,24 +294,30 @@ mkpass_same=ya es el mismo
 mkpass_update=siendo actualizado
 mkpass_del=siendo borrado
 mkpass_passfail=No pude poner la clave de acceso
+
 savecopy_fail=No pude crear la copia
 savecopy_global=No se puede utilizar el nombre 'global' para una compartición
 savecopy_exist=Ya existe una compartición llamada '$1'
+
 saveuser_fail="No pude salvar el usuario"
 saveuser_uid="'$1' no es una UID válida de Unix"
 saveuser_colon=El nombre real no puede contener el carácter:
 saveuser_home=No existe el directorio inicial '$1'
 saveuser_shell=$1 no es un shell válido
 saveuser_pass=No pude cambiar la clave de acceso mediante smbpasswd : $1
+
 savefmisc_fail=No pude salvar las opciones varias
 savefmisc_number='$1' no es un número válido de conexiones
+
 savefperm_fail=No pude salvar permisos de archivo
 savefperm_mode='$1' no es un nombre válido de archivo Unix
+
 savefshare_fail=No pude salvar compartición
 savefshare_nopath=No se ha digitado la trayectoria
 savefshare_exist=Ya existe una compartición llamada '$1'
 savefshare_mode="'$1' no es un nombre válido de compartición
 savefshare_global="No se puede usar el nombre 'global' para una compartición
+
 savemisc_fail=No pude salvar las opciones
 savemisc_lockdir=No existe el directorio especificado en el Directorio de Bloqueo
 savemisc_logdir=No existe el directorio especificado en el Directorio de Diario
@@ -298,34 +326,44 @@ savemisc_overlap='$1' no es una medida válida de solapamiento de lectura
 savemisc_chroot=No existe el directorio de chroot '$1'
 savemisc_smbrun=El programa smbrun '$1' no existe o no es ejecutable
 savemisc_time='$1' no es un desplazamiento de tiempo válido
+
 savenet_fail=No pude salvar las opciones
 savenet_timeout='$1' no es un tiempo válido de desconexión
 savenet_ip='$1' no es un byte de IP válido
 savenet_keep='$1' no es un intervalo válido de manterner_vivo
 savenet_maxxmit='$1' no es una medida válida de paquete máximo
+
 savepass_fail=No pude salvar las opciones
 savepass_nopass=Tu versión de samba no soporta claves de acceso encriptadas
 savepass_passwd=No se ha digitado programa para el cambio de claves de acceso
 savepass_level='$1' no es una diferencia válida entre mayúsculas/minúsculas para claves de acceso
 savepass_chat=La secuencia de charla para cambio de clave de acceso está vacía
+
 savepopts_fail=No pude salvar opciones de impresora
 savepopts_number=El espacio mínimo libre debe de ser un número
+
 saveprint_fail=No pude salvar las opciones
 saveprint_printcap=No existe el archivo de printcap '$1'
 saveprint_cache='$1' no es un tiempo válido de caché
+
 savepshare_fail=No puede salvar compartición de impresora
 savepshare_exist=Ya existe una compartición llamada '$1'
 savepshare_name='$1' no es un nombre válido de compartición
 savepshare_global=No se puede usar el nombre 'global' para una compartición
+
 savesec_fail=No pude salvar la seguridad
+
 savesmb_fail=No pude salvar las opciones
 savesmb_size='$1' no es una medida de disco válida
 savesmb_oslevel='$1' no es una prioridad válida de hojeador maestro
 savesmb_server=Debes de digitar un servidor de claves de acceso
+
 start_err=No pude arrancar los servidores samba
 start_fail=$1 falló
+
 swats_fail=No pude salvar el nombre de usuario
 swats_user=Nombre de usuario de SWAT sin poner
+
 viewu_index=Usuarios en curso
 viewu_list=Usuarios en curso de <i>$1</i>
 viewu_share=Compartición
@@ -338,6 +376,7 @@ viewu_msg1=Haz click en una ID de proceso de la lista superior para desconectar 
 viewu_msg2=En este momento no hay usuarios conectados
 viewu_locks=Archivos Abiertos
 viewu_none=Ninguno
+
 log_apply=Servidores Samba rearrancados
 log_start=Arrancados servidores Samba
 log_save_fshare=Modificada compartición de archivo $1
@@ -366,6 +405,7 @@ log_epass_l=Convertidos usuarios Unix a usuarios Samba ($1 creados, $2 modificad
 log_copy=Copiada compartición $2 a $1
 log_save_euser=Modificado usuario Samba $1
 log_delete_euser=Borrado usuario Samba $1
+
 swat_title=Hacer login a SWAT
 swat_list=Hacer login a SWAT
 swat_msg1=Tu nombre de usuario y clave de acceso a SWAT son incorrectos. Usa el formulario inferior para hacer login de nuevo.
@@ -377,6 +417,7 @@ swat_password=Clave de Acceso
 swat_login=Hacer login
 swat_clear=Limpiar
 swat_logout=Salir de SWAT
+
 eacl_aviol=Violción de control de acceso
 eacl_np=No tienes permisos
 eacl_papply=rearrancar este servicio
@@ -412,6 +453,7 @@ eacl_pafs=acceder a esta compartición de archivos
 eacl_paps=acceder a este compartición de impresora
 eacl_pcps=crear compartición de impresora
 eacl_pcfs=crear compartición de archivos
+
 acl_apply=¿Puede aplicar los cambios y parar Samba?
 acl_view_all_con=¿Puede ver todas las conexiones?
 acl_kill_con=¿Puede borrar las conexiones?

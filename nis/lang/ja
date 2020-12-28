@@ -1,6 +1,7 @@
 index_title=NIS クライアントとサーバ
 index_return=NIS メニュー
 index_enis=ご使用のマシンには NIS クライアントまたはサーバのサポートがインストールされていないと思われます。
+
 client_title=NIS クライアント
 client_header=NIS クライアント設定
 client_domain=NIS ドメイン
@@ -15,8 +16,10 @@ client_edomain=ドメイン名がないか無効です
 client_eserver='$1' は無効なサーバ名です
 client_eypwhich=NIS ドメインをバインドできませんでした
 client_ehosts='$1' はホスト ファイルにありません
+
 switch_title=クライアント サービス
 switch_service=サービス
+
 order_= 
 order_nisplus=NIS+
 order_nis=NIS
@@ -28,6 +31,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=ユーザ プリンタ
 order_xfn=XFN
+
 server_title=NIS サーバ
 server_header=NIS サーバ オプション
 server_boot=NIS サーバを有効にしますか？
@@ -60,6 +64,7 @@ server_ebootdom=この NIS サーバはドメインを設定しないと有効�
 server_solaris=注意 - Solaris ではクライアントとサーバ NIS ドメインは常に同じで、ドメインを設定しないとサーバを操作できません。
 server_edir=無効なパスワード ソース ファイル ディレクトリ
 server_enis=ご使用のマシンには NISサーバのサポートがインストールされていないと思われます。
+
 tables_title=NIS テーブル
 tables_switch=NIS テーブルの編集:
 tables_header=$2 からの$1 NIS テーブル
@@ -71,6 +76,7 @@ tables_return=NIS テーブル
 tables_text=テーブルを手動で編集
 tables_emaster=システムは現在 マスター NIS サーバとして実行されていないため、NIS テーブルを編集することはできません。
 tables_eslave=システムは現在 マスター サーバからすべてのテーブルを受け取る NIS スレイブなので NIS テーブルを編集することはできません。
+
 desc_aliases=sendmail エイリアス
 desc_mail=sendmail エイリアス
 desc_hosts=ホスト アドレス
@@ -103,6 +109,7 @@ desc_printers=プリンタ
 desc_ipnodes=IP ノード
 desc_timezone=タイムゾーン
 desc_locale=ロケール
+
 hosts_title=ホスト アドレス
 hosts_ip=IP アドレス
 hosts_name=ホスト名
@@ -111,6 +118,7 @@ hosts_err=ホストを保存できませんでした
 hosts_eip=IP アドレスがないか無効です
 hosts_ename=ホスト名がないか無効です
 hosts_aliases=エイリアス
+
 group_name=グループ名
 group_gid=グループ ID
 group_members=メンバー
@@ -121,6 +129,7 @@ group_none=パスワードは不要です
 group_encrypted=事前に暗号化されたパスワード
 group_clear=標準パスワード
 group_err=グループを保存できませんでした
+
 passwd_name=ユーザ名
 passwd_uid=ユーザ ID
 passwd_real=実名
@@ -158,6 +167,7 @@ passwd_emax=最大日数が無効です
 passwd_emin=最小日数が無効です
 passwd_einactive=非アクティブ日数が無効です
 passwd_eexpiry=有効期限が無効です
+
 services_name=サービス名
 services_proto=プロトコル
 services_port=ポート
@@ -166,6 +176,7 @@ services_header=Inetd ネットワーク サービス オプション
 services_err=サービスを保存できませんでした
 services_ename=サービス名がないか無効です
 services_eport=ポートがないか無効です
+
 protocols_name=プロトコル名
 protocols_number=数
 protocols_aliases=エイリアス
@@ -174,6 +185,7 @@ protocols_header=ネットワーク プロトコルのオプション
 protocols_err=プロトコルを保存できませんでした
 protocols_ename=プロトコル名がないか無効です
 protocols_enumber=プロトコル番号がないか無効です
+
 netgroup_name=Netgroup 名
 netgroup_members=メンバー
 netgroup_title=ネットワーク グループ
@@ -188,6 +200,7 @@ netgroup_ename=netgroup名がないか無効です
 netgroup_ehost=行 $1 のホストがないか無効です
 netgroup_euser=行 $1 のユーザがないか無効です
 netgroup_edom=行 $1 の NIS ドメインがないか無効です
+
 ethers_mac=イーサネット アドレス
 ethers_ip=IP アドレス
 ethers_title=イーサネット アドレス
@@ -195,6 +208,7 @@ ethers_header=イーサネット マッピング オプション
 ethers_err=イーサネット アドレスを保存できませんでした
 ethers_emac=イーサネット アドレスが無効です
 ethers_eip=IP アドレスが無効です
+
 rpc_name=プログラム名
 rpc_number=プログラム番号
 rpc_aliases=エイリアス
@@ -203,6 +217,7 @@ rpc_header=RPC プログラムの詳細
 rpc_err=RPC プログラムを保存できませんでした
 rpc_ename=プログラム名がないか無効です
 rpc_enumber=プログラム番号がないか無効です
+
 networks_title=ネットワーク アドレス
 networks_ip=IP アドレス
 networks_name=ネットワーク名
@@ -211,6 +226,7 @@ networks_err=ネットワークを保存できませんでした
 networks_eip=IP アドレスがないか無効です
 networks_ename=ネットワーク名がないか無効です
 networks_aliases=エイリアス
+
 netmasks_net=ネットワーク アドレス
 netmasks_mask=ネットマスク
 netmasks_title=ネットマスク
@@ -218,6 +234,7 @@ netmasks_header=ネットワーク マスクの詳細
 netmasks_err=ネットマスクを保存できませんでした
 netmasks_enet=ネットワーク アドレスがないか無効です
 netmasks_emask=ネットマスクがないか無効です
+
 aliases_from=アドレス
 aliases_to=エイリアス
 aliases_title=sendmail エイリアス
@@ -225,6 +242,7 @@ aliases_header=sendmail エイリアスの詳細
 aliases_err=エイリアスを保存できませんでした
 aliases_efrom=アドレスがないか無効です
 aliases_eto=To （宛先）アドレスがありません
+
 security_title=サーバ セキュリティ
 security_header=NIS サーバ セキュリティ オプション
 security_ok=保存して適用

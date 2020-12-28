@@ -23,6 +23,7 @@ index_follow=Po $1
 index_forcetar=w formacie TAR
 index_delete=Usuń wybrane kopie zapasowe
 index_nostrftime=Uwaga - niektóre zadania kopii używają % w nazwach swoich plików, ale podmiana strftime nie jest włączona na stronie konfiguracji modułu
+
 dump_dir=Katalog kopii zapasowej
 dump_dirs=Katalogi kopii zapasowych
 dump_fs=System plików
@@ -108,6 +109,7 @@ dump_remount=Ponownie montować z opcją <tt>noatime</tt> podczas kopii?
 dump_eftpupdate=Dodanie plików do istniejącego archiwum jest niemożliwe, przy używaniu FTP.
 dump_eleveldir=Tylko poziom 0 kopii zapasowych jest dozwolony dla katalogów, które nie są punktami montowania systemu plików.
 dump_eupdatedir=Plik <tt>/etc/dumpdates</tt> może być zaktualizowany tylko dla katalogów, które są w punktach montowania systemu plików
+
 edit_err=Błąd tworzenia kopii zapasowej
 edit_edir=Brakujący katalog kopii zapasowej
 edit_efs=Typ systemu plików $1 nie może być kopiowany za pomocą tego modułu
@@ -130,9 +132,11 @@ edit_to=$1 do $2
 edit_tolevel=$1 do $2 (poziom $3)
 edit_special=Harmonogram kopii
 edit_when=Po utworzeniu kopii
+
 save_err=Błąd zapisywania kopii zapasowej
 save_edir=Brakujący lub nieprawidłowy katalog kopii zapasowej
 save_efs=Katalog kopii nie może być zmieniony do innego systemu plików
+
 backup_title=Utwórz kopię zapasową
 backup_desc=Wykonywanie kopii zapasowej z $1 do $2 ..
 backup_reverify=.. gotowe. Trwa weryfikacja kopii zapasowej
@@ -145,6 +149,7 @@ backup_notape=.. wielkość kopii zapasowej przekracza pojemność pojedynczej t
 backup_egone=Kopia zapasowa nie istnieje!
 backup_bg=Uruchomiono w tle proces kopii zapasowej. Możesz monitorować postęp w sekcji <b>Uruchomione zadania kopii</b> na głównej stronie modułu. Po zakończeniu zostaniesz o tym poinformowany przez e-mail.
 backup_ecannot=Nie masz uprawnień do zarządzania kopią zapasową tego katalogu
+
 restore_title=Przywracanie kopii zapasowej
 restore_err=Błąd przywracania kopii zapasowej
 restore_ecommand=Polecenie $1, które jest potrzebne do przywrócenia kopii zapasowych systemu plików $2 nie zostało znalezione w twoim systemie. Możliwe, że nie jest zainstalowane.
@@ -188,6 +193,7 @@ restore_gzip=Dekompresować archiwum?
 restore_keep=Nie nadpisywać plików?
 restore_emulti=Przywrócenie wielu plików nie może być zrobione z urządzenia taśmowego
 restore_emulti2=Przywrócenie wielu plików nie może być zrobione ze zdalnego serwera
+
 log_create=Utworzono konfigurację zapasową dla $1
 log_modify=Zmodyfikowano konfigurację zapasową dla $1
 log_delete=Usunięto konfigurację zapasową dla $1
@@ -195,13 +201,16 @@ log_backup=Wykonano kopię zapasową $1 do $2
 log_bgbackup=Uruchomiono kopię zapasową z $1 do $2
 log_restore=Przywrócono kopię zapasową z $1
 log_kill=Przerwano kopię zapasową dla $1
+
 kill_err=Błąd przerywania kopii
 kill_egone=Nie jest już uruchomiony!
 kill_ecannot=Nie masz uprawnień do przerwania tej kopii
+
 newtape_err=Błędny sygnał nowej taśmy
 newtape_egone=Kopia nie jest już uruchomiona!
 newtape_estatus=Kopia zapasowa już nie oczekuje nowej taśmy
 newtape_ecannot=Nie masz uprawnień do zarządzania tą kopią zapasową
+
 acl_edit=Może tworzyć i edytować kopie zapasowe?
 acl_restore=Może przywracać kopie zapasowe?
 acl_cmds=Może edytować polecenia przed i po?
@@ -209,8 +218,10 @@ acl_extra=Może edytować dodatkowe parametry poleceń?
 acl_dirs=Dozwolone katalogi dla kopii zapasowych
 acl_all=Wszystkie katalogi
 acl_list=Tylko wymienione ..
+
 delete_err=Błąd kasowania kopii zapasowych
 delete_enone=Nic nie wybrano
+
 email_already=Kopia zapasowa jest już uruchomiona z PID $1.
 email_ebefore=Polecenie przed kopią zapasową nie powiodło się!
 email_verify=Weryfikacja kopii zapasowej ..
@@ -218,5 +229,6 @@ email_eafter=Polecenie po kopii zapasowej nie powiodło się!
 email_subject=Kopia zapasowa z $1 na $2
 email_ok=Kopia zapasowa została wykonana
 email_failed=Wykonanie kopii zapasowej nie powiodło się!
+
 newtape_subject=Taśma zmieniona $1 dla kopii z $2 na $3
 newtape_body=Kopia $2 na $3 osiągnęła maksymalną pojemność taśmy $1. Musisz załadować nową taśmę i kliknąć na 'Załadowano taśmę' w module Webmina - Kopia zapasowa systemu plików, aby kontynuować.

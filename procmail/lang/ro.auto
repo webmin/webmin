@@ -32,6 +32,7 @@ index_man=Editează manual configurația
 index_mandesc=Editați direct fișierul principal de configurare Procmail, pentru a crea propriile reguli, variabile și blocuri.
 index_ecmd=Programul Procmail $1 nu a fost găsit în sistemul dvs. Fie că nu este instalat, fie configurația <a href='$2'>a modulului</a> este incorectă.
 index_delete=Ștergeți acțiunile selectate
+
 edit_title2=Modificați acțiunea
 edit_title1=Creați acțiune
 edit_header1=Detalii despre acțiunea de livrare
@@ -67,6 +68,7 @@ edit_none=Nici unul
 edit_lock=Fișier specific
 edit_ctype=Tipul condiției
 edit_cvalue=Expresie sau comandă regulată
+
 save_err=Nu a reușit să salveze acțiunea
 save_eaction_0=Fișierul lipsește pentru a fi anexat
 save_eaction_1=Lipsește folderul MH la care să scrie
@@ -79,6 +81,7 @@ save_elockfile=Lipsește numele fișierului de blocare
 save_esize=Dimensiunea de e-mail lipsă sau nevalidă pentru condiția $1 
 save_ere=Lipsește expresia regulată pentru condiția $1 
 save_eshell=Lipsește comanda pentru condiția $1 
+
 env_title1=Creați variabilă
 env_title2=Editează variabila
 env_header=Variabila de mediu Procmail
@@ -86,15 +89,19 @@ env_name=Denumirea variabilă
 env_value=Valoare
 env_err=Salvarea variabilei nu a reușit
 env_ename=Numele variabilei lipsă sau nevalide
+
 inc_title1=Adăugați fișierul include
 inc_title2=Editează Include fișier
 inc_header=Fișier cu reguli procmail incluse
 inc_inc=Fișier inclus
 inc_einc=Nu include fișierul introdus
+
 config_eline=Linia necunoscută $1 în $2 : $3 
+
 manual_title=Editează configurația
 manual_desc=Această pagină poate fi utilizată pentru a edita manual fișierul de configurare Procmail $1. Aveți grijă, deoarece nu se va face verificarea sintaxei.
 manual_edata=Nici o informație nu a fost furnizată de browser!
+
 log_create_rec=Reteta creata la $1 
 log_delete_rec=Rețetă ștersă la $1 
 log_modify_rec=Rețetă modificată la $1 
@@ -114,7 +121,9 @@ log_delete_inc=Șters a include fișierul $1
 log_manual=Configurație editată manual
 log_up=A mutat o intrare în sus
 log_down=A mutat o intrare în jos
+
 delete_err=Nu a reușit să ștergeți acțiunile
 delete_enone=Nimic selectat
+
 check_epostfix=Procmail nu este activat în configurația dvs. Postfix. Fișierul de configurare <tt>$2</tt> trebuie să aibă opțiunea <tt>$1</tt> setată la <tt>$3</tt>.
 check_esendmail=Sendmail nu este configurat pentru a utiliza Procmail pentru livrare locală. Aceasta poate fi configurată în modulul <a href='$1'>Sendmin Mail Server</a> Webmin.

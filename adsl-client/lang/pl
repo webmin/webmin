@@ -16,6 +16,7 @@ index_cancel=Anuluj połączenie
 index_canceldesc=Klient ADSL próbuje nawiązać połączenie. Kliknij ten przycisk, aby anulować próbę za pomocą komendy $1.
 index_cdemand=Anuluj Na-żądanie
 index_cdemanddesc=Klient ADSL oczekuje na żądania połączeń. Kliknij ten przycisk aby zatrzymać go za pomocą komendy $1.
+
 index_header=Opcje konfiguracji klienta ADSL
 index_desc=Poniższe ustawienia dotyczą nowego połączenia ADSL uruchamianego przez system. Jeśli dokonasz zmian i chcesz aby przyniosły efekt, musisz wyłączyć i zrestartować połączenie.
 index_eth=Interface Ethernet
@@ -36,11 +37,13 @@ index_fw_standalone=Dla pojedynczego hosta
 index_fw_masquerade=Dla bramki NAT
 index_connect=Czas potrzebny na próbę połączenia dla
 index_forever=Na zawsze
+
 start_err=Błąd uruchamiania połączenia ADSL
 start_title=Uruchom ADSL
 start_ip=Połączenie ADSL zostało uruchomione z adresem IP $1.
 start_demand=Ponieważ tryb połączenia na żądanie jest aktyny, połączenie ADSL będzie uruchamiane tylko wtedy, gdy będzie potrzebne.
 start_bg=Połączenie ADSL nie zostało uruchomione w ciągu 20 sekund. Klient ADSL będzie kontynuować próby połączenie w tle.
+
 save_err=Błąd zapisywania konfiguracji ADSL
 save_eeth=Brakujący lub nieprawidłowy interfejs ethernetowy
 save_etimeout=Brakujący lub nieprawidłowy czas oczekiwania na połączenie na żądanie
@@ -49,10 +52,12 @@ save_econnect=Brakujący lub nieprawidłowy czas oczekiwania na połączenie
 save_emss=Brakujący lub nieprawidłowy maksymalny rozmiar pakietu
 save_title=Zapisz konfigurację
 save_desc=Konfiguracja twojego klienta ADSL została prawidłowo zapisana, ale nie będzie aktywna dopóki ponownie nie uruchomisz połączenia.
+
 stop_err=Błąd zamykania połączenia ADSL
 stop_title=Zamknij ADSL
 stop_ok=Połączenie ADSL zostało poprawnie zamknięte.
 stop_failed=Połączenie ADSL jest wciąż aktywne!
+
 log_save=Zapisano konfigurację klienta
 log_stop=Wyłączono ADSL
 log_start=Uruchomiono ADSL

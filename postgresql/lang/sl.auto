@@ -16,6 +16,7 @@ index_add=Ustvari novo bazo podatkov.
 index_users=Uporabnik, skupine in dovoljenja
 index_return=seznam baz podatkov
 index_esql=Odjemalskega programa PostgreSQL $1 v vašem sistemu ni bilo mogoče najti. Mogoče PostgreSQL ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
+
 index_ehba=Konfiguracijske datoteke gostitelja PostgreSQL $1 v vašem sistemu ni bilo mogoče najti. Mogoče PostgreSQL ni bil inicializiran ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
 index_superuser=Program odjemalec PostgreSQL psql se ni mogel izvršiti v vašem sistemu. Mogoče PostgreSQL ni nameščen ali pa je vaša <a href='$1'>konfiguracija modula</a> napačna.
 index_eversion=Baza podatkov PostgreSQL v vašem sistemu je različica $1, vendar Webmin podpira samo različice $2 in novejše.
@@ -48,10 +49,12 @@ index_gist=Splošno drevo za iskanje v indeksu
 index_jump=Ali uredite bazo podatkov:
 index_jumpok=Odprto
 index_edithosts=Konfigurirajte dovoljene sisteme gostitelja
+
 login_err=Prijava ni uspela
 login_ecannot=Ni vam dovoljeno konfigurirati prijave v bazo
 login_elogin=Manjka skrbniška prijava
 login_epass=Nepravilno uporabniško ime ali geslo
+
 dbase_title=Urejanje baze podatkov
 dbase_noconn=Ta baza trenutno ne sprejema povezav, zato v njej ni mogoče izvajati nobenih dejanj.
 dbase_header=Tabele, indeksi, pogledi in zaporedja zbirke podatkov
@@ -78,6 +81,7 @@ dbase_jump=Uredi tabelo:
 dbase_vjump=Uredi pogled:
 dbase_ijump=Uredi indeks:
 dbase_sjump=Uredi zaporedje:
+
 table_title=Uredi tabelo
 table_title2=Ustvari tabelo
 table_opts=Možnosti polja
@@ -105,6 +109,7 @@ table_eblob=Za polje BLOB $1 ni potrebna nobena velikost
 table_csv=Izvozi kot CSV
 table_index=Ustvari indeks
 table_delete=Izbriši izbrana polja
+
 field_title1=Dodaj polje
 field_title2=Spremeni polje
 field_in=V tabeli $1 v zbirki podatkov $2 
@@ -123,6 +128,7 @@ field_esize='$1' ni veljavna velikost polja
 field_eenum=Opisane vrednosti niso vnesene
 field_efield='$1' ni veljavno ime polja
 field_ekey=Polja, ki dovoljujejo ničelne vrednosti, ne morejo biti del primarnega ključa
+
 exec_title=Izvedite SQL
 exec_header=Vnesite ukaz SQL za izvajanje v bazi $1.
 exec_old=Ali pa izberite prejšnji ukaz SQL :
@@ -152,21 +158,25 @@ exec_tabexec=Izvedite SQL
 exec_tabfile=Zaženite SQL iz datoteke
 exec_tabimport=Uvozi besedilno datoteko
 exec_return=izvedite obrazec SQL
+
 stop_err=Ni uspelo zaustaviti strežnik baz podatkov
 stop_epidfile=PID datoteke ni bilo mogoče odpreti, $1 
 stop_ekill=Ni bilo mogoče ubiti postopka $1 : $2 
 stop_ecannot=Ne morete ustaviti strežnika baz podatkov
 start_err=Zagon strežnika baz podatkov ni uspel
 start_ecannot=Ni vam dovoljeno zagnati strežnika baz podatkov
+
 ddrop_err=Baze podatkov ni bilo mogoče spustiti
 ddrop_title=Izpustite bazo podatkov
 ddrop_rusure=Ali ste prepričani, da želite spustiti bazo podatkov $1 ? $2 tabel, ki vsebujejo $3 vrstic podatkov, bodo izbrisane.
 ddrop_mysql=Ker gre za glavno bazo podatkov, bo spuščanje vašega PostgreSQL strežnika verjetno neuporabno!
 ddrop_ok=Izpustite bazo podatkov
+
 tdrop_err=Tabele ni bilo mogoče spustiti
 tdrop_title=Spusti mizo
 tdrop_rusure=Ali ste prepričani, da želite spustiti tabelo $1 v bazo podatkov $2 ? $3 vrstice podatkov bodo izbrisani.
 tdrop_ok=Spusti mizo
+
 view_title=Podatki tabele
 view_pos=Vrstice $1 do $2 od $3 
 view_none=Ta tabela ne vsebuje podatkov
@@ -201,6 +211,7 @@ view_set=Nastavi na vsebino datoteke ..
 view_warn=Opozorilo - nalaganje datotek v in ogled vsebine polj <tt></tt> ali <tt>bytea</tt> verjetno ne bo delovalo, razen če sta nameščena in uporabljena modula $1 in $2 Perl.
 view_adv=napredno iskanje
 view_sqlrun=Rezultati, ustvarjeni s poizvedbo SQL : $1 
+
 newdb_title=Ustvari bazo podatkov
 newdb_header=Nove možnosti baze podatkov
 newdb_db=Ime baze podatkov
@@ -215,6 +226,7 @@ newdb_encoding=Kodiranje nabora znakov
 newdb_eencoding=Manjkajoče kodiranje nabora znakov
 newdb_template=Baza predloga
 newdb_notemplate=Noben
+
 user_title=Uporabniki PostgreSQL
 user_vwarning=OPOZORILO: Ta uporabnik PostgreSQL je skrbniška prijava za Virtualmin domeno $1. Če spremenite tukaj nastavitve, lahko pri Virtualminu pride do napak.
 user_ecannot=Uporabnikov ne morete urejati
@@ -244,6 +256,7 @@ user_sync_delete=Ko izbrišete ustreznega uporabnika Unix, izbrišite uporabnika
 user_delete=Izbriši izbrano
 user_derr=Uporabnikov ni bilo mogoče izbrisati
 user_enone=Izbran ni noben uporabnik
+
 host_ecannot=Dovoljenih gostiteljev ne morete urejati
 host_title=Dovoljeni gostitelji
 host_desc=Ko se odjemalec poveže z bazo, se spodaj navedeni gostitelji obdelujejo po vrstnem redu, dokler se ena ne ujema in odjemalca ni dovoljeno ali zavrnjeno.
@@ -299,8 +312,10 @@ host_derr=Dovoljenih gostiteljev ni bilo mogoče izbrisati
 host_enone=Izbran ni noben gostitelj
 host_manual=Uredi datoteko za konfiguriranje
 host_manualdesc=Kliknite ta gumb, če želite ročno urediti dovoljeno konfiguracijsko datoteko gostiteljev.
+
 manual_title=Uredi datoteko za konfiguriranje
 manual_err=Konfiguracijske datoteke ni bilo mogoče shraniti
+
 grant_title=Podeljeni privilegiji
 grant_tvi=Predmet
 grant_type=Vtipkajte
@@ -328,6 +343,7 @@ grant_none=Za podeljevanje privilegijev ne obstajajo tabele, pogledi, zaporedja 
 grant_toomany=Predmetov je za prikaz preveč. Poiščite ujemanje predmetov:
 grant_showing=Prikaz predmetov, ki ustrezajo $1.
 grant_delete=Ponastavi izbrane donacije
+
 group_title=Skupine PostgreSQL
 group_ecannot=Nimate dovoljenja za urejanje skupin
 group_name=Ime skupine
@@ -347,6 +363,7 @@ group_etaken=Ime skupine je že v uporabi
 group_none=Trenutno ni skupin PostgreSQL.
 group_derr=Brisanja skupin ni bilo mogoče
 group_enone=Nobena skupina ni izbrana
+
 esql=SQL $1 ni uspel : $2 
 log_start=Začel strežnik PostgreSQL
 log_stop=Zaustavljen strežnik PostgreSQL
@@ -403,6 +420,7 @@ log_backup_l=Varnostno kopiranje baze podatkov $1 v datoteko $2
 log_backup_all=Varnostno kopiranje vseh zbirk podatkov
 log_backup_all_l=Varnostno kopiranje vseh baz podatkov v datoteko $2 
 log_manual=Ročno urejena dovoljena konfiguracijska datoteka gostiteljev
+
 acl_dbs=Baze podatkov, ki jih ta uporabnik lahko upravlja
 acl_dbscannot=Ta nadzor dostopa bo začel veljati po zagonu strežnika baz podatkov PostgreSQL.
 acl_dall=Vse baze podatkov
@@ -423,13 +441,17 @@ acl_cmds=Ali lahko urejate pred in po ukazih za varnostno kopiranje?
 acl_views=Ali si lahko ogledate in upravljate poglede?
 acl_indexes=Ali si lahko ogledate in upravljate indekse?
 acl_seqs=Ali si lahko ogledate in upravljate sekvence?
+
 fdrop_err=Polja ni bilo mogoče izbrisati
 fdrop_enone=Izbrana ni nobena
 fdrop_eall=Iz tabele ne morete izbrisati vseh polj!
+
 setup_err=Ni bilo mogoče inicializirati baze podatkov
 setup_ecannot=Ni vam dovoljeno inicializirati baze podatkov
+
 dbase_bkup=Rezerva
 dbase_rstr=Obnovi
+
 restore_title=Obnovi bazo podatkov
 restore_header=Obnovi možnosti baze podatkov
 restore_db=Ime baze podatkov
@@ -452,6 +474,7 @@ restore_tables=Tabele za obnovo
 restore_tables1=Vse v varnostni datoteki
 restore_tables0=Navedene tabele
 restore_failed=Obnovitev ni uspela : $1 
+
 backup_title=Varnostno kopiranje podatkovne baze
 backup_title2=Varnostno kopirajte vse baze podatkov
 backup_header1=Rezervni cilj
@@ -500,17 +523,21 @@ backup_ebefore=Ukaz pred varnostno kopijo ni uspel!
 backup_cmode=Kdaj zagnati ukaze
 backup_cmode1=Pred/po vseh bazah podatkov
 backup_cmode0=Pred/po vsaki bazi podatkov
+
 r_command=Ukaz ni podprt
+
 adv_title=napredno iskanje
 adv_and=Poiščite zapise, ki ustrezajo vsem kriterijem ..
 adv_or=Poiščite zapise, ki ustrezajo katerim koli kriterijem ..
 adv_ok=Iščite zdaj
+
 tdrops_enone=Izbrana ni nobena tabela
 tdrops_err=Tabele ni bilo mogoče spustiti
 tdrops_ok=Spusti
 tdrops_title=Izpusti izbrano
 tdrops_rusure=Ali ste prepričani, da želite spustiti $1 izbrano tabelo v bazo podatkov $2 ? $3 vrstice podatkov bodo izbrisani.
 tdrops_rusure2=Ali ste prepričani, da želite spustiti $1 izbrano tabelo v bazo podatkov $2 ?
+
 ddrops_err=Baze podatkov ni bilo mogoče spustiti
 ddrops_title=Spusti baze podatkov
 ddrops_rusure=Ali ste prepričani, da želite spustiti $1 izbrane baze podatkov? $2 tabel, ki vsebujejo $3 vrstic podatkov, bodo izbrisane.
@@ -518,6 +545,7 @@ ddrops_mysql=Ker je izbrana glavna baza podatkov, bo spuščanje vašega Postgre
 ddrops_ok=Spusti baze podatkov
 ddrops_enone=Nobena baza podatkov ni izbrana
 ddrops_ecannotdb=Ni vam dovoljeno zapustiti baze podatkov $1 
+
 csv_title=Izvozi datoteko CSV
 csv_header=Možnosti izvoza CSV
 csv_dest=Izvozna destinacija
@@ -538,6 +566,7 @@ csv_done=Izvoz CSV v $1 je končan. Nastala velikost datoteke je $2.
 csv_headers=Ali želite v datoteko CSV vključiti imena stolpcev?
 csv_cols=Stolpci, ki jih želite vključiti v CSV
 csv_ecols=Ni izbranih nobenih stolpcev
+
 import_title=Uvozi podatke
 import_uploadout=Uvoz podatkov iz naložene datoteke ..
 import_fileout=Uvoz podatkov iz datoteke $1 ..
@@ -545,6 +574,7 @@ import_eupload=Manjka naložena uvozna datoteka
 import_efile=Manjka ime datoteke za uvoz
 import_done=.. ustvaril $1 vrstice, preskočil $2 dvojnika.
 import_erow=.. ni vrstic v vrstici $1 
+
 index_title1=Ustvari indeks
 index_header1=Možnosti indeksa
 index_name=Ime kazala
@@ -562,6 +592,7 @@ index_ecols=Izbrano ni nobeno polje
 index_title2=Uredi indeks
 index_header=Indeks $1 v bazi podatkov $2 
 index_ecannot=Ne morete upravljati indeksov
+
 view_title1=Ustvari pogled
 view_title2=Uredi pogled
 view_header1=Ogled podrobnosti
@@ -576,6 +607,7 @@ view_eclash=Pogled z istim imenom že obstaja
 view_equery=Manjka poizvedba SQL
 view_ecols=Nobenega imena stolpcev ni vneseno
 view_ecannot=Ni vam dovoljeno upravljati pogledov
+
 seq_title1=Ustvari zaporedje
 seq_title2=Uredi zaporedje
 seq_header1=Možnosti povečevanja zaporedja
@@ -595,5 +627,6 @@ seq_emin=Manjkajoča ali neveljavna minimalna vrednost
 seq_emax=Manjkajoča ali neveljavna najvišja vrednost
 seq_ecache=Manjkajoče ali neveljavno število vrednosti za predpomnjenje
 seq_ecannot=Ni vam dovoljeno upravljati zaporedij
+
 dgrant_err=Ponastavitve donacij ni bilo mogoče
 dgrant_enone=Izbran ni noben predmet

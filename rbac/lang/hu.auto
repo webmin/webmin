@@ -1,5 +1,6 @@
 index_euser=A (z) $1 RBAC konfigurációs fájl nem található a rendszerén. Lehet, hogy az RBAC nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
 index_return=modul index
+
 users_title=Felhasználói attribútumok
 users_user=Felhasználónév
 users_profiles=Nyújtott profilok
@@ -10,6 +11,7 @@ users_return=felhasználói attribútumok listája
 users_type=típus
 users_role=Szerep
 users_project=program
+
 user_title1=Hozzon létre felhasználói attribútumokat
 user_title2=Felhasználói attribútumok szerkesztése
 user_header=A Unix felhasználó számára megadott attribútumok
@@ -35,6 +37,7 @@ user_eauth=A '$1' nem érvényes felhatalmazás
 user_ecannot=A felhasználó nem szerkeszthető
 user_erole=Nem szabad hozzárendelni a '$1' szerepet
 user_eprof=Nem szabad hozzárendelni a (z) '$1' profilt
+
 auths_title=Az engedélyeket
 auths_name=Az engedély neve
 auths_desc=Leírás
@@ -42,8 +45,10 @@ auths_none=Még nem határoztak meg engedélyeket.
 auths_add=Adjon hozzá új engedélyt.
 auths_return=engedélyek listája
 auths_ecannot=A jogosultságok nem szerkeszthetők
+
 authc_name=meghatalmazás
 authc_desc=Leírás
+
 auth_title1=Hozzon létre engedélyt
 auth_title2=A jogosultság szerkesztése
 auth_header=Az engedélyezési jogosultságok részletei
@@ -57,6 +62,7 @@ auth_edesc=Érvénytelen hosszú leírás
 auth_eclash=Az azonos nevű felhatalmazás már létezik
 auth_einuseu=Ezt az engedélyt a (z) $1 felhasználó használja, így nem törölhető
 auth_einusep=Ezt az engedélyt a $1 profil használja, így nem törölhető
+
 profs_title=profilok
 profs_name=Profil név
 profs_desc=Leírás
@@ -65,6 +71,7 @@ profs_none=Még nincs profil.
 profs_add=Új profil hozzáadása.
 profs_return=profilok listája
 profs_ecannot=A profilokat nem szerkesztheti
+
 prof_title1=Profil létrehozása
 prof_title2=Profil szerkesztése
 prof_header=Az engedélyezési profil részletei
@@ -81,6 +88,7 @@ prof_einuseu=Ezt a profilt a (z) $1 felhasználó használja, így nem törölhe
 prof_einusep=Ezt a profilt a (z) $1 profil használja, így nem törölhető
 prof_einusee=Ennek a profilnak $1 kapcsolódó végrehajtási profilja van, így nem törölhető
 prof_none=Nincs elérhető profil
+
 execs_title=Végrehajtási profilok
 execs_name=Profil
 execs_policy=Biztonsági politika
@@ -92,6 +100,7 @@ execs_none=Még nem definiáltak végrehajtási profilokat.
 execs_add=Adjon hozzá egy új végrehajtási profilt.
 execs_return=végrehajtási profilok listája
 execs_ecannot=A végrehajtási profilokat nem szerkesztheti
+
 exec_title1=Hozzon létre végrehajtási profilt
 exec_title2=Végrehajtási profil szerkesztése
 exec_header=Végrehajtási profil részletei
@@ -113,6 +122,7 @@ exec_erruid=Hiányzó vagy érvénytelen felhasználó futtatásához
 exec_errgid=Hiányzó vagy érvénytelen csoport futtatásához
 exec_erreuid=Hiányzó vagy érvénytelen tényleges felhasználó futtatásához
 exec_erregid=Hiányzik vagy érvénytelen a tényleges csoport futtatásához
+
 policy_title=Rendszer házirendek
 policy_header=Globális rendszabály-beállítások
 policy_auths=Minden felhasználó jogosultságai
@@ -126,16 +136,20 @@ policy_err=Nem sikerült menteni a rendszabályokat
 policy_eallow=Nincs kiválasztott algoritmus
 policy_eclash=Az engedélyezés és az elavulás algoritmusa nem választható ki egyszerre
 policy_ecannot=Nem engedélyezi a rendszabályok szerkesztését
+
 attr_none=Nincs meghatározva felhasználói attribútumok
 attr_nonenormal=Nincs meghatározva Unix-felhasználó
 attr_nonerole=Nincs elérhető szerep meghatározva
+
 help_epath=Érvénytelen súgófájl elérési útja!
 help_link=(Segítség..)
+
 crypt___unix__=Unix kripta
 crypt_1=BSD MD5
 crypt_2a=BSD Flowfish
 crypt_md5=Sun MD5
 crypt_rot13=ROT13
+
 log_create_user=Készítette a $1 felhasználói attribútumait
 log_modify_user=A (z) $1 módosított felhasználói attribútumai
 log_delete_user=Törölt felhasználói attribútumok a (z) $1 -ről
@@ -152,6 +166,7 @@ log_create_project=Létrehozta a (z) $1 projektet
 log_modify_project=Módosított projekt $1 
 log_delete_project=$1 projekt törölve
 log_policy=Megváltozott rendszabályok
+
 acl_roles=Szerkesztheti a szerepeket?
 acl_users=Szerkesztheti a felhasználói attribútumokat?
 acl_roleassign=Meg tud osztani szerepeket
@@ -166,6 +181,7 @@ acl_profs=Szerkesztheti a profilokat?
 acl_ro=Csak megtekintésre
 acl_execs=Szerkeszthetjük a végrehajtási profilokat?
 acl_projects=Szerkesztheti a projekteket?
+
 projects_title=projektek
 projects_name=Név
 projects_id=ID
@@ -184,6 +200,7 @@ projects_exceptusers=Minden felhasználó, kivéve: $1
 projects_exceptgroups=Minden csoport, kivéve: $1 
 projects_onlyusers=Csak 1
 projects_onlygroups=Csak 1
+
 project_title1=Projekt létrehozása
 project_title2=Projekt szerkesztése
 project_header=A projekt részletei és tagjai
@@ -219,6 +236,7 @@ project_egroupscannot=Nincs kiválasztott csoport
 project_elimit=Hiányzó vagy érvénytelen korlátozás a (z) $1 sorban
 project_epool=Hiányzik vagy érvénytelen a projektkészlet neve
 project_erss=Hiányzó vagy érvénytelen maximális memória
+
 prctl_title=Erőforrás-vezérlés
 prctl_ok=A következő korlátozások megjelenítése:
 prctl_mode0=Folyamat azonosítóval

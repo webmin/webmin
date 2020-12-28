@@ -10,6 +10,7 @@ index_startmsg=Cliquez sur ce bouton pour démarrer Sendmail avec la commande $1
 index_version2=Sendmail version $1, configuration $2
 index_xversion=Sendmail version $1
 index_version=Sendmail configuration $1
+
 opts_title=Options Sendmail
 opts_ecannot=Vous n'êtes pas autorisé à modifier les options de Sendmail.
 opts_ds=Envoyer le courrier sortant via l'hôte
@@ -49,6 +50,7 @@ opts_deferred=Différé
 opts_gecos=Accepter le courrier pour les noms réels des utilisateurs ?
 opts_hops=Compte maximal de sauts dans les messages
 opts_daemon=Options du port SMTP
+
 aliases_title=Alias de courrier
 aliases_ecannot=Vous n'êtes pas autorisé à modifier les alias
 aliases_enofile=Aucun fichier d'alias n'est défini dans votre configuration de Sendmail
@@ -64,6 +66,7 @@ aliases_none=Aucun
 aliases_return=à la liste des alias
 aliases_toomany=Il y a trop d'alias de courrier sur votre système pour les afficher sur cette page.
 aliases_go=Chercher les alias correspondant à :
+
 aform_ecannot=Vous n'êtes pas autorisé à modifier cet alias
 aform_type0=Aucun
 aform_type1=Adresse électronique
@@ -79,11 +82,13 @@ aform_enabled=Activé ?
 aform_val=Alias pour
 aform_afile=Modifier...
 aform_return=aux alias
+
 afile_title=Édition d'un fichier d'adresses
 afile_desc=Utilisez la zone de texte ci-dessous pour modifier les adresses dans le fichier $1.
 afile_efile=Vous n'êtes pas autorisé à modifier $1.
 afile_undo=Annuler les changements
 afile_ewrite=Impossible d'écrire dans le fichier d'adresses : $1
+
 ffile_title=Édition d'un fichier de filtrage
 ffile_desc=Utilisez le formulaire ci-dessous pour configurer les règles de filtrage dans le fichier $1.
 ffile_efile=Vous n'êtes pas autorisé à modifier $1.
@@ -97,8 +102,10 @@ ffile_what0=ne correspond pas
 ffile_what1=correspond
 ffile_other=Sinon transférer vers $1
 ffile_err=Impossible d'enregistrer le fichier de filtrage
+
 ffile_ematch=Correspondance manquante
 ffile_eaction=Adresse de transfert manquante
+
 rfile_title=Édition d'un fichier de réponse automatique
 rfile_desc=Utilisez la zone de texte ci-dessous pour modifier le message de réponse automatique dans $1. Le message peut contenir les macros $SUBJECT, $FROM, $TO, $DATE et $BODY qui développées quand la réponse automatique est activée.
 rfile_desc2=Vous pouvez également définir des en-têtes de courrier qui ajoutent ou remplacent les valeurs par défaut utilisées dans la réponse automatique en plaçant des lignes comme :<br><tt>From: titi@toto.com</tt><br><tt>Subject: En vacances</tt><br>au début du message, séparées du corps par une seule ligne vierge.
@@ -117,6 +124,7 @@ rfile_from=Champ From: pour la réponse
 rfile_auto=Automatique (en fonction de l'adresse du destinataire)
 rfile_efrom=Champ From: manquant
 rfile_fromdesc=Le champ From: devrait toujours être spécifié dans la mesure du possible, car la méthode automatique risque de ne pas être fiable.
+
 asave_err=Impossible d'enregistrer l'alias
 asave_ecannot2=Vous n'êtes pas autorisé à modifier les alias
 asave_ecannot=Vous n'êtes pas autorisé à modifier cet alias
@@ -133,6 +141,7 @@ asave_etype5=Le fichier de réponse automatique '$1' n'est pas valide
 asave_etype4none=Aucun programme indiqué
 asave_etype6=Le fichier de filtrage '$1' n'est pas valide
 asave_esame=Vous n'êtes pas autorisé à créer un alias du même nom que votre nom de connexion Webmin
+
 cws_title=Domaines locaux
 cws_ecannot=Vous n'êtes pas autorisé à modifier les domaines locaux
 cws_domains=Domaines gérés par ce serveur
@@ -141,6 +150,7 @@ cws_desc2=Notez que le simple fait d'inclure un domaine dans la liste ne suffit 
 cws_err=Impossible d'enregistrer les domaines locaux
 cws_ehost='$1' n'est pas un hôte ou un nom de domaine valide
 cws_eip='$1' est une adresse IP, pas un domaine
+
 masq_title=Mascarade d'un domaine
 masq_ecannot=Vous n'êtes pas autorisé à configurer la mascarade
 masq_domain=Faire passer pour le domaine
@@ -152,12 +162,14 @@ masq_err=Impossible d'enregistrer la mascarade de domaine
 masq_edomain='$1' n'est pas un domaine valide sous lequel effectuer une mascarade
 masq_ehost='$1' n'est pas un hôte ou un nom de domaine valide
 masq_eip='$1' est une adresse IP, non un domaine
+
 trusts_title=Utilisateurs de confiance
 trusts_ecannot=Vous n'êtes pas autorisé à modifier les utilisateurs de confiance
 trusts_users=Utilisateurs locaux auxquels Sendmail fait confiance
 trusts_desc=Si un utilisateur local essaie d'envoyer du courrier, Sendmail autorisera seulement l'utilisateur à fournir un champ <tt>From:</tt> différent si l'utilisateur est sur la liste dans la partie gauche. Cette restriction existe pour empêcher les utilisateurs de construire des messages électroniques avec des champs d'origine <tt>From:</tt> provenant de votre système.
 trusts_err=Impossible d'enregistrer les utilisateurs de confiance
 trusts_euser='$1' n'est pas un utilisateur valide
+
 virtusers_title=Associations d'adresses
 virtusers_ecannot=Vous n'êtes pas autorisé à modifier les associations d'adresses
 virtusers_efeature=Votre configuration Sendmail ne semble pas avoir la fonctionnalité d'association d'adresses (<tt>virtuser</tt>) activée. <a href='$1'>Cliquez ici</a> pour configurer les fonctionnalités de Sendmail.
@@ -173,6 +185,7 @@ virtusers_address=Adresse $1
 virtusers_return=à la liste des associations d'adresses
 virtusers_toomany=Il y a trop d'associations d'adresses sur votre système pour les afficher sur cette page.
 virtusers_go=Chercher des associations d'adresses correspondantes :
+
 vform_edit=Édition d'une association
 vform_create=Création d'une association
 vform_for=Courrier pour
@@ -185,6 +198,7 @@ vform_err_nouser=nouser
 vform_err_nohost=nohost
 vform_end=Déplacer à la fin
 vform_ecannot=Vous n'êtes pas autorisé à modifier cette association d'adresses
+
 vsave_ecannot=Vous n'êtes pas autorisé à modifier des associations d'adresses
 vsave_ecannot2=Vous n'êtes pas autorisé à modifier cette association d'adresses
 vsave_emax=Vous n'êtes pas autorisé à créer plus de $1 association(s) d'adresses
@@ -200,6 +214,7 @@ vsave_eaddr='$1' n'est pas une adresse valide
 vsave_ecannot4=Vous n'êtes pas autorisé à créer des associations vers des domaines
 vsave_edomdom=Un seul domaine peut être associé à un autre domaine
 vsave_ecannot5=Vous n'êtes pas autorisé à créer des associations qui retournent une erreur
+
 mailers_title=Routage de domaines
 mailers_cannot=Vous n'êtes pas autorisé à modifier un routage de domaines
 mailers_edirective=Votre configuration de Sendmail ne contient pas la directive nécessaire pour le routage de domaines.
@@ -212,6 +227,7 @@ mailers_for=Courrier pour...
 mailers_delivery=Distribution
 mailers_to=Envoyer à...
 mailers_return=à la liste des routages de domaines
+
 mform_edit=Édition d'un routage
 mform_create=Création d'un routage
 mform_for=Courrier pour
@@ -235,10 +251,12 @@ mform_procmail=Procmail
 mform_mail11=mail11 DECnet
 mform_error=Erreur
 mform_ecannot=Vous n'êtes pas autorisé à modifier un routage de domaines
+
 msave_ecannot=Vous n'êtes pas autorisé à modifier un routage de domaines
 msave_err=Impossible d'enregistrer le routage de domaines
 msave_edomain='$1' n'est pas un hôte ou un domaine valide
 msave_edup=Un routage de domaine pour '$1' est déjà défini
+
 generics_title=Adresses sortantes
 generics_cannot=Vous n'êtes pas autorisé à modifier une adresse sortante
 generics_econfig=Votre fichier de configuration Sendmail n'a pas la directive nécessaire pour l'association des adresses sortantes
@@ -251,17 +269,20 @@ generics_to=Changer pour...
 generics_return=à la liste des associations d'adresses
 generics_toomany=Il y a trop d'adresses sortantes sur votre système pour les afficher sur cette page.
 generics_go=Chercher des adresses sortantes correspondantes :
+
 gform_edit=Édition d'une association
 gform_create=Création d'une association
 gform_from=Courrier provenant de
 gform_to=Changer pour
 gform_ecannot=Vous n'êtes pas autorisé à modifier cette adresse sortante
+
 gsave_ecannot=Vous n'êtes pas autorisé à modifier les adresses sortantes
 gsave_ecannot2=Vous n'êtes pas autorisé à modifier cette adresse sortante
 gsave_err=Impossible d'enregistrer l'adresse sortante
 gsave_efrom='$1' n'est pas un champ From: valide
 gsave_ematch=Le champ From: ne correspond pas à '$1'
 gsave_eto='$1' n'est pas une nouvelle adresse valide
+
 cgs_title=Domaines sortants
 cgs_ecannot=Vous n'êtes pas autorisé à modifier les domaines sortants
 cgs_header=Domaines des adresses sortantes
@@ -269,6 +290,7 @@ cgs_desc=En dehors du courrier envoyé par les utilisateurs locaux, Sendmail n'e
 cgs_err=Impossible d'enregistrer les domaines sortants
 cgs_ehost='$1' n'est pas un hôte ou un nom de domaine valide
 cgs_eip='$1' est une adresse IP, pas un domaine
+
 domains_title=Associations de domaines
 domains_ecannot=Vous n'êtes pas autorisé à modifier une association de domaines
 domains_econfig=Votre fichier de configuration de sendmail n'a pas la directive nécessaire pour une association de domaines.
@@ -278,14 +300,17 @@ domains_desc=Une association de domaines modifie le champ <tt>To:</tt> des messa
 domains_from=Provenant du domaine...
 domains_to=Vers le domaine...
 domains_return=à la liste des associations de domaines
+
 dform_edit=Édition d'une association
 dform_create=Création d'une association
 dform_from=Provenant du domaine
 dform_to=Vers le domaine
 dform_ecannot=Vous n'êtes pas autorisé à modifier une association de domaines
+
 dsave_ecannot=Vous n'êtes pas autorisé à modifier une association de domaines
 dsave_err=Impossible d'enregistrer l'association de domaines
 dsave_edomain=$1 n'est pas un nom de domaine valide
+
 access_title=Contrôle du spam
 access_efeature=Votre configuration sendmail n'a pas la fonctionnalité contrôle de spam (<tt>access_db</tt>) activée. <a href='$1'>Cliquez ici</a> pour configurer les fonctionnalités de sendmail.
 access_efile=Le fichier texte $1 à partir duquel la base de données $2 est construite n'existe pas. Peut-être devez-vous modifier la <a href='$3'>configuration du module</a> pour utiliser le chemin d'accès correct.
@@ -316,6 +341,7 @@ sform_reject=Rejeter
 sform_discard=Supprimer silencieusement
 sform_err=Code d'erreur
 sform_msg=Message
+
 ssave_err=Impossible d'enregistrer la règle de contrôle de spam
 ssave_etype0='$1' n'est pas une adresse valide
 ssave_etype1='$1' n'est pas une adresse réseau valide
@@ -323,6 +349,7 @@ ssave_etype2='$1' n'est pas un nom d'utilisateur valide
 ssave_etype3='$1' n'est pas un domaine valide
 ssave_ecode='$1' n'est pas un code d'erreur SMTP valide
 ssave_ealready=Une règle de contrôle de spam pour '$1' existe déjà
+
 relay_title=Relais de domaines
 relay_ecannot=Vous n'êtes pas autorisé à modifier les relais de domaines
 relay_eversion=Seules les versions 8.9 et supérieures de Sendmain prennent en charge la fonctionnalité relais de domaines.
@@ -331,6 +358,7 @@ relay_desc1=À moins d'être autorisé par les règles de <a href='$1'>contrôle
 relay_desc2=Si votre système sert de passerelle à plusieurs domaines qui ne sont pas directement accessibles de l'extérieur de votre réseau (à l'aide de la fonction <a href='$1'>routage de domaines</a>), alors tous ces domaines doivent être répertoriés ci-dessous.
 relay_err=Impossible d'enregistrer les relais de domaines
 relay_edomain='$1' n'est pas un nom de domaine valide
+
 mailq_title=File d'attente de courrier
 mailq_count=$1 messages
 mailq_ecannot=Vous n'êtes pas autorisé à voir la file d'attente de courrier
@@ -356,11 +384,14 @@ mailq_flushquar=Vidage de la file d'attente de quarantaine
 mailq_flushquardesc=Cliquez sur ce bouton pour forcer uniquement la distribution des messages en quarantaine dans la file d'attente.
 mailq_search=Chercher des messages mis en file d'attente où
 mailq_quar=En quarantaine
+
 flushq_title=Vider la file d'attente
 flushq_desc=Distribution forcée du courrier tentée avec la commande $1 en cours...
 flushq_ecannot=Vous n'êtes pas autorisé à vider la file d'attente de courrier
+
 searchq_title=Résultats de recherche dans une file d'attente
 searchq_none=Aucun message en file d'attente trouvé.
+
 delq_err=Impossible de supprimer le message
 delq_ecannot=Vous n'êtes pas autorisé à supprimer un message de la file d'attente
 delq_locked=Le fichier est actuellement verrouillé pour envoi
@@ -374,6 +405,7 @@ delq_ok=suppression effectuée
 delq_title=Supprimer le message
 delq_force=Forcer la suppression quoi qu'il en soit
 delq_ecannot2=vous ne pouvez pas supprimer ce message
+
 boxes_title=Boîtes aux lettres des utilisateurs
 boxes_user=Utilisateurs
 boxes_size=Taille de la boîte aux lettres
@@ -383,6 +415,7 @@ boxes_sent=Courrier envoyé
 boxes_ecannot=Vous n'êtes pas autorisé à lire le courrier électronique
 boxes_toomany=Il y a trop d'utilisateurs sur votre système pour répertorier toutes leurs boîtes aux lettres.
 boxes_go=Voir le courrier de l'utilisateur :
+
 mail_title=Courrier électronique des utilisateurs
 mail_from=De
 mail_date=Date
@@ -423,6 +456,7 @@ mail_move=Déplacer vers :
 mail_copy=Copier dans :
 mail_rfc=À partir de la ligne
 mail_eexists=Le message n'existe plus !
+
 view_title=Lecture du courrier électronique
 view_desc=Message $1 dans $2
 view_desc2=Message $1 pour l'utilisateur $2
@@ -449,6 +483,7 @@ view_mark2=Spécial
 view_return=message électronique originel
 view_sub=Message électronique attaché
 view_egone=Ce message n'existe plus
+
 compose_title=Rédaction d'un message électronique
 reply_title=Réponse à un message électronique
 forward_title=Transfert d'un message électronique
@@ -460,6 +495,7 @@ reply_attach2=Pièces jointes côté client et serveur
 reply_send=Envoyer le message
 reply_ecannot=Vous n'êtes pas autorisé à envoyer du courrier à cet utilisateur
 reply_body=Texte du message
+
 send_err=Impossible d'envoyer le message
 send_eto=Champ To: manquant
 send_efrom=Champ From: manquant
@@ -472,6 +508,7 @@ send_eattach=Les pièces jointes ne peuvent pas dépasser une taille totale de $
 send_eperms=L'utilisateur $1 ne peut pas lire $2
 send_eperms2=Vous n'êtes pas autorisé à envoyer le fichier $1
 send_epath=L'exécutable de sendmail $1 n'existe pas.
+
 delete_title=Suppression d'un message
 delete_rusure=Êtes-vous sûr de vouloir supprimer les $1 messages sélectionnés de $2 ? Cette opération peut prendre du temps dans le cas d'un fichier de courrier volumineux. Vous ne devriez effectuer aucune action jusqu'à ce que la suppression soit terminée.
 delete_rusure2=Êtes-vous sûr de vouloir supprimer ce message de $1 ? Cette opération prendre du temps dans le cas d'un fichier de courrier volumineux. Vous ne devriez effectuer aucune action jusqu'à ce que la suppression soit terminée.
@@ -484,6 +521,7 @@ delete_emoveuser=L'utilisateur vers lequel déplacer le message n'existe pas
 delete_emovecannot=Vous n'êtes pas autorisé à déplacer du courrier vers l'utilisateur spécifié
 delete_emovenone=Aucun message sélectionné à déplacer
 delete_nobutton=Vous n'avez cliqué sur aucun bouton
+
 search_title=Résultats de recherche
 search_ecannot=Vous n'êtes pas autorisé à effectuer une recherche dans le courrier électronique de cet utilisateur
 search_ematch=Vous devez saisir du texte par rapport auquel établir une correspondance.
@@ -497,6 +535,7 @@ search_results4=$1 messages correspondant à votre recherche
 search_local=Dans les dossiers locaux
 search_all=Dans tous les dossiers
 search_eboolean=Les recherches booléennes à l'aide de 'and' et 'or' ne sont pas prises en charge
+
 file_title=Édition d'un fichier Sendmail
 file_desc=Utilisez la zone de texte ci-dessous pour modifier manuellement le fichier Sendmail $1.
 file_undo=Annuler les changements
@@ -573,6 +612,7 @@ acl_boxname2=Rien
 acl_usersm=Utilisateurs correspondant
 acl_asame=Les mêmes que le nom d'utilisateur
 acl_usersu=Avec l'UID dans l'intervalle
+
 log_opts=Changé les options de sendmail
 log_alias_create=Créé l'alias $1
 log_alias_modify=Modifié l'alias $1
@@ -601,6 +641,7 @@ log_domain_manual=Modifié manuellement le fichier d'association de domaines $1
 log_access_create=Créé le contrôle de spam pour $1
 log_access_modify=Modifié le contrôle de spam pour $1
 log_access_delete=Supprimé le contrôle de spam pour $1
+
 log_access_manual=Modifié manuellement le fichier de contrôle de spam $1
 log_relay=Changé les relais de domaines
 log_flushq=Vidé la file d'attente de courrier
@@ -616,6 +657,7 @@ log_feature_modify=Modifié l'élément M4 $1
 log_feature_delete=Supprimé l'élément M4 $1
 log_feature_move=Déplacé l'élément M4 $1
 log_build=Reconstruit la configuration de sendmail
+
 match_from=Le champ From: correspond
 match_subject=Le champ Subject: correspond
 match_to=Le champ To: correspond
@@ -635,6 +677,7 @@ match_!status=L'état ne correspond pas
 match_!body=Le corps ne correspond pas
 match_!size=La taille est inférieure à
 match_!headers=Les en-têtes ne correspondent pas
+
 features_title=Configuration de M4 Sendmail
 features_desc=Cette page répertorie les éléments pertinents du fichier de configuration de M4 Sendmail $1 à partir duquel le fichier de configuration $2 proprement dit est construit.
 features_type=Type de l'élément
@@ -654,6 +697,7 @@ features_efeatures=Le répertoire de base $1 de configuration de M4 Sendmail n'a
 features_econfig=Les emplacements du répertoire de base M4 Sendmail et le fichier de configuration de M4 n'ont pas encore été définis dans votre <a href='$1'>configuration du module</a>. Si vous avez installé Sendmail à partir du source, ceux-ci devraient se trouver dans le répertoire source d'origine.
 features_move=Déplacer
 features_manual=Modifier le fichier manuellement
+
 feature_add=Ajout d'un élément de configuration
 feature_edit=Édition d'un élément de configuration
 feature_header=Détails de l'élément de configuration M4
@@ -674,12 +718,15 @@ feature_emailer=Le client de messagerie $1 existe déjà
 feature_eostype=Le type du système d'exploitation est déjà défini en tant que $1
 feature_manual=Modifier le fichier M4
 feature_mdesc=Cette page vous permet de modifier manuellement le fichier de configuration M4 Sendmail $1. Faites attention car aucune vérification de syntaxe ne sera effectuée sur vos modifications.
+
 feat_access_db=Fichier de contrôle de spam
 feat_virtusertable=Associations d'adresses
 feat_mailertable=Routage de domaines
 feat_genericstable=Adresses sortantes
 feat_domaintable=Associations de domaines
+
 mailer_local=Distribution Unix locale
+
 build_title=Reconstruction de la configuration de Sendmail
 build_em4=La commande $1 nécessaire pour reconstruire le fichier de configuration Sendmail n'a pas été trouvée sur votre système.
 build_ebuild=Impossible de construire la configuration : $1

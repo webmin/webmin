@@ -48,6 +48,7 @@ index_all=Alla zoner
 index_massdelete=Ta bort valda
 index_massupdate=Uppdatera Poster på valda
 index_bind=BIND
+
 master_title=Ändra masterzon
 master_ecannot=Du får inte ändra denna zon
 master_eviewcannot=Du är inte tillåten att skapa en zon på den vy'n
@@ -118,6 +119,7 @@ master_eserial=Serie nummer måste vara en sträng av digitaler
 master_apply=Genomför Ändringar
 master_defttl=Default time-to-live för records
 master_edefttl='$1' är inte en godkänd default time-to-live för records
+
 delete_title=Ta bort zon
 delete_mesg=Är du säker på att du vill ta bort zon $1? Alla poster och zonfilen kommer att tas bort.
 delete_mesg2=Är du säker att du vill ta bort root zonen? Din DNS server kan inte längre slå upp adresser på internet.
@@ -126,6 +128,7 @@ delete_fwd=Ta bort framåt uppslagnings poster i andra zoner?
 delete_onslave=Ta också bort från slav servrar?
 delete_errslave=Master zon borttagen OK, men följande fel hände på slavarna : $1
 delete_ezone=Zonen blev inte funnen på slav servern
+
 mcreate_title=Skapa masterzon
 mcreate_ecannot=Du får inte skapa masterzoner
 mcreate_opts=Inställningar för ny masterzon
@@ -137,6 +140,7 @@ mcreate_view=Skapa en vy
 mcreate_file=Fil med poster
 mcreate_auto=Automatisk
 mcreate_err=Det gick inte att skapa masterzonen
+
 slave_title=Ändra slavzon
 stub_title=Ändra återvänds zon
 slave_ecannot=Du får inte ändra denna zon
@@ -165,6 +169,7 @@ slave_delmsg=Klicka på Knappen för att ta bort denna zon från din DNS server,
 slave_apply=Tvinga Uppdatering
 slave_last=Senast övereförd : $1
 slave_never=Aldrig
+
 screate_title1=Skapa slavzon
 screate_title2=Skapa återvändszon
 screate_ecannot1=Du får inte skapa slavzoner
@@ -177,6 +182,7 @@ screate_rev=Bakåtuppslagning (adresser till namn)
 screate_dom=Domännamn/nätverk
 screate_err1=Det gick inte att skapa slavzon
 screate_err2=Det gick inte att skapa återvändszon
+
 recs_ecannot=Du får inte ändra poster i denna zon
 recs_ecannottype=Du är inte tillåten att ändra records av denna typ
 recs_title=$1 Poster
@@ -191,6 +197,7 @@ recs_vals=Värden
 recs_find=Visa records matchande:
 recs_search=Sök
 recs_drev=Ta bort Reverses också?
+
 edit_title=Ändra $1
 edit_header=I $1
 edit_edit=Ändra post $1
@@ -246,12 +253,14 @@ edit_espfa=$1' är inte en godkänd värd att tillåta sändning från
 edit_espfmx='$1' är inte en godkänd domän namn att tillåta MX sändning från
 edit_espfip='$1' är inte ett godkänt IP adress eller IP/prefix att godkänna sändning från
 edit_espfinclude='$1' är inte en godkänd domän från vilken e-post är skickad
+
 text_title=Ändra fil med poster
 text_title2=Visa Post fil
 text_desc2=Den här sidan visar DNS post fil $1, skapad av BIND när den blivit överförd från master servern.
 text_undo=Ångra
 text_ecannot=Du får inte ändra i filerna
 text_none=Hur som helst, den nuvarande filen är tom, troligen pågrundav att zonen inte ännu har blivit överförd från master servern.
+
 restart_err=Misslyckades att genomföra ändringar
 restart_ecannot=Du får inte starta om BIND
 restart_epidfile=Kunde inte finna BIND PID på $1
@@ -260,10 +269,12 @@ restart_erunning2=BIND verkar inte att vara igång på denna slav server $1
 restart_endc=NDC kommando misslyckades : $1
 restart_ecmd=Starta om kommande misslyckades : $1
 restart_eversion=Slav server $1 kör inte Webmin version $2 eller över
+
 start_ecannot=Du får inte starta BIND
 start_error=Det gick inte att starta BIND: $1
 stop_epid=BIND är inte igång
 stop_ecannot=Du är inte tillåten att stoppa BIND
+
 fwd_title=Ändra Genomfarts zon
 fwd_ecannot=Du får inte ändra i denna zon
 fwd_opts=Zon inställningar
@@ -271,11 +282,13 @@ fwd_masters=Master servrar
 fwd_forward=Prova med andra servrar?
 fwd_check=Kontrollera namn?
 fwd_err=Det gick inte att spara inställningar
+
 delegation_title=Ändra Delegations Zon
 delegation_ecannot=Du är inte tillåten att ändra denna zon
 delegation_opts=Zon val
 delegation_err=Misslyckades att spara valet
 delegation_noopts=Delegations zoner har inte någon konfigurerade val.
+
 fcreate_title=Skapa genomfarts Zon
 fcreate_ecannot=Du får inte skapa genomfarts zoner
 fcreate_opts=Inställningar för ny genomfarts zon
@@ -285,10 +298,12 @@ fcreate_rev=Bakåt uppslagning (adresser till namn)
 fcreate_dom=Domännamn/nätverk
 fcreate_masters=Master servrar
 fcreate_err=Det gick inte att skapa genomfarts zon
+
 dcreate_title=Skapa Delegation-Endast zon
 dcreate_ecannot=Du är inte tillåten att skapa delegations zoner
 dcreate_opts=Ny delegations zon val
 dcreate_err=Misslyckades att skapa delegations zon
+
 create_enet='$1' är inte ett giltigt nätverk
 create_edom='$1' är inte ett giltigt domännamn
 create_edom2='$1' måste vara en domän, inte ett nätverk
@@ -298,7 +313,9 @@ create_efile3=Det gick inte att skapa '$1' : $2
 create_efile4=Fil $1 existerar redan
 create_emaster='$1' är inte en giltig master server adress
 create_enone=Du måste ange minst en master server
+
 boot_err=Ned laddningen misslyckades
+
 type_A=Adress
 type_AAAA=IPv6-adress
 type_NS=Namn Server
@@ -314,6 +331,7 @@ type_LOC=Lokalisering
 type_SRV=Tjänst Adress
 type_ALL=Alla Post typer
 type_KEY=Publik Nyckel
+
 edit_A=Adress
 edit_AAAA=IPv6-adress
 edit_NS=Namn server
@@ -328,6 +346,7 @@ edit_PTR=Bakåt adress
 edit_LOC=Lokalisering
 edit_SRV=Service adress
 edit_KEY=Publik Nyckel
+
 recs_A=Adress
 recs_AAAA=IPv6-adress
 recs_NS=Namnserver
@@ -344,6 +363,7 @@ recs_SRV=Service Adress
 recs_ALL=Alla
 recs_KEY=Publik Nyckel
 recs_delete=Ta bort Valda
+
 value_A1=Adress
 value_NS1=Namn Server
 value_CNAME1=Verkligt namn
@@ -382,6 +402,7 @@ value_spfall2=Motverka (~alla)
 value_spfall1=Neutral (?alla)
 value_spfall0=Tillåt (+alla)
 value_spfalldef=Standard
+
 warn=Varning
 fail=Fel
 ignore=Strunta i
@@ -395,6 +416,7 @@ listed=Uppräknade ...
 eip='$1' är inte en giltig IP-adress
 eport='$1 är inte ett godkänt port nummer
 eipacl='$1' är inte ett godkänt adress eller ACL namn
+
 acl_zones=Domäner som denna användare kan ändra i
 acl_zall=Alla zoner
 acl_zsel=Angivna zoner ..
@@ -435,6 +457,7 @@ acl_ztypes_master=Master
 acl_ztypes_slave=Slav/ätervänds
 acl_ztypes_delegation=Delegering
 acl_ztypes_forward=Vidare befordra
+
 servers_title=Andra DNS-servrar
 servers_ip=IP-adress
 servers_bogus=Strunta i falsk server?
@@ -446,6 +469,7 @@ servers_keys=Använd DNS nycklar
 servers_err=Det gick inte att spara andra DNS-servrar
 servers_eip='$1' är inte en giltig IP-adress
 servers_etrans='$1' är inte ett giltig antal för överföringar
+
 logging_title=Loggning och fel
 logging_ecannot=Du får inte konfigurera loggningen
 logging_header=Globala inställningar för loggning och fel
@@ -477,12 +501,14 @@ logging_ename='$1' är inte ett giltigt kanalnamn
 logging_efile=Logg filnamn saknas
 logging_ever='$1' är inte ett giltigt versions antal
 logging_esize='$1' är inte en giltig logg fil storlek
+
 acls_title=Listor över åtkomst kontroll
 acls_ecannot=Du får inte ändra globala ACL:er
 acls_name=ACL-namn
 acls_values=Tillhörande adresser, nätverk och ACL:er
 acls_err=Misslyckades att spara listor över åtkomst kontroll
 acls_ename='$1' är inte ett giltigt ACL-namn
+
 files_title=Filer och kataloger
 files_ecannot=Du får inte ändra inställningarna för filer
 files_header=Globala inställningar för filer och kataloger
@@ -492,6 +518,7 @@ files_pid=Fil för process-ID
 files_xfer=Sökväg till zon överförings program
 files_err=Det gick inte att spara inställningar för filer och kataloger
 files_efile=Filnamn saknas eller är ogiltigt
+
 forwarding_title=Överföring och eftersändning
 forwarding_ecannot=Du får inte ändra inställningarna för överföring och eftersändning
 forwarding_header=Globala inställningar för överföring och eftersändning
@@ -508,6 +535,7 @@ forwarding_etrans=Max antal för samtidiga överföringar saknas eller är felak
 forwarding_minutes=minuter
 forwarding_ip=IP adress
 forwarding_port=Port (tillval)
+
 net_title=Adresser och topologi
 net_ecannot=Du får inte ändra inställningar för adresser och topologi
 net_header=Globala inställningar för adresser och topologi
@@ -523,6 +551,7 @@ net_err=Det gick inte att spara inställningar för adresser och topologi.
 net_eport='$1' är inte ett giltigt portnummer.
 net_etopology=Du har inte angivit någon topologiadress.
 net_erecur=Inga adresser att tillåta recursion från skriven
+
 controls_title=Kontrollera Gränssnitt Val
 controls_ecannot=Du är inte tillåten att ändra kontroll valen
 controls_header=Kontroll val
@@ -544,6 +573,7 @@ controls_eunixpath=Saknad eller felaktig FIFO fil sökväg
 controls_eunixperm=Saknad eller felaktig oktal fil tillstånd
 controls_eunixowner=Saknad eller felaktig fil ägare
 controls_eunixgroup=Saknad eller felaktig fil grupp
+
 controls_inet=Internet port tillgång
 controls_unix=Unix FIFO tillgång
 controls_port=port
@@ -557,6 +587,7 @@ controls_efile=saknad eller felaktig FIFO fil namn
 controls_eperms=Saknad eller felaktig FIFO tillstånd
 controls_eowner=Saknad eller felaktig FIFO ägar UID
 controls_egroup=Saknad eller felaktig FIFO ägar GID
+
 keys_title=DNS Nyckel
 keys_id=Nyckel ID
 keys_alg=Algoritm
@@ -565,6 +596,7 @@ keys_ecannot=Du är inte tillåten att ändra DNS nycklar
 keys_err=Misslyckades att spara DNS nyckel
 keys_ekey='$1' är inte en godkänd nyckel ID
 keys_esecret=Saknad eller felaktig base-64 kodad hemlig för nyckel $1
+
 misc_title=Blandade inställningar
 misc_ecannot=Du får inte ändra de blandade inställningarna
 misc_header=Blandade globala inställningar
@@ -584,6 +616,7 @@ misc_esize='$1' är inte en giltig storlek
 misc_efiles='$1' är inte ett giltigt maxantal för öppna filer
 misc_emins='$1' är inte ett giltigt antal minuter
 misc_mins=min
+
 zonedef_title=Zon standard
 zonedef_msg=Standard för nya master zoner
 zonedef_err=Det gick inte att spara zon standard
@@ -599,17 +632,22 @@ zonedef_email=Standard e-post adress
 zonedef_prins=Standard namn server för master domäner
 zonedef_this=System värd namn ($1)
 zonedef_eprins=Saknad eller felaktig standard namn server för master domäner
+
 find_title=Sök zoner
 find_match=Zoner som matchar $1 ...
 find_none=Inga zoner funna
+
 efirst=Ogiltigt första direktiv på rad $1 i $2
+
 findfree_title=Sök lediga IP
+
 findfree_desc=Sök efter lediga IP-nummer
 findfree_nofind=Du får inte söka efter lediga IP-nummer
 findfree_header=I $1
 findfree_sopt=Sök villkor
 findfree_cf=Anse <em>freeXXX</em>-datornamn som lediga IP-nummer?
 findfree_search=Sök
+
 free_title=Lediga IP Adresser
 log_servers=Ändrade övriga DNS-servrar
 log_logging=Ändrade loggning och fel
@@ -657,11 +695,14 @@ log_mass=Skapade $1 zoner från skript fil
 log_rndc=Ställ in RNDC
 log_delete_recs=Tog bort $1 poster
 log_delete_zones=Tog bort $1 zoner
+
 convert_err=Misslyckades att konvertera zon
 convert_efile=En post fil måste vara specificerad före en slav zon kan bli konverterad till en master.
+
 whois_title=WHOIS Information
 whois_header=Utmatning från kommando $1 ..
 whois_ecannot=Du är inte tillåten att slå upp WHOIS information
+
 view_title=Ändra Klient Vy
 view_opts=Klient vy detaljer
 view_name=Vy namn
@@ -669,6 +710,7 @@ view_class=DNS posters klass
 view_match=Genomför denna vy till klienter
 view_recursion=Gör full rekursiv uppslagning för klienter?
 view_ecannot=Du är inte tillåten att ändra denna vy
+
 vcreate_title=Skapa Klient Vyer
 vcreate_match_all=Alla klienter
 vcreate_match_sel=Valda adresser, nätverk och ACL'er
@@ -677,11 +719,13 @@ vcreate_ename=Saknad eller felaktig vy namn
 vcreate_etaken=Vy namn är redan tagen
 vcreate_eclass=Saknad eller felaktig klass namn
 vcreate_ecannot=Du är inte tillåten att skapa vyer
+
 hint_title=Ändra Root zon
 hint_desc=Roor zonen är använd av din DNS server för att kontakta root servrar på internet, så att den kan lösa upp namn på domäner som inte handhas av din DNS server, som<tt>.com</tt> eller <tt>.net.au</tt>. Om inte din DNS server är för användning av internt nätverk eller du är vidarebefordra för all förfrågningar till en annan server, Du skall inte ta bort denna root zon.
 hint_move=Flytta till vy:
 hint_ecannot=Du är inte tillåten att ändra denna root zon
 hint_refetch=Åter-Ladda ner Root Namn serverar
+
 hcreate_title=Sakpa Root Zon
 hcreate_desc=Root zonen är använd av din DNS server för att kontakta root servrar på internet, så att den kan lösa upp namn på domäner den inte kan hantera själv, <tt>.com</tt> eller <tt>.net.au</tt>. Om du använder multipla vyer, kan du behöva separata root zoner på varje vy så att alla klienter kan lösa upp domäner riktigt.
 hcreate_file=Spara root serverar på fil
@@ -694,6 +738,7 @@ hcreate_efile='$1' är inte en tillåten root fil
 hcreate_efile2=Saknad eller felaktig root fil
 mcreate_erecs=Inte en giltig existerande zon fil
 hcreate_err=Misslyckades att skapa root zon
+
 vdelete_title=Ta bort Vy
 vdelete_mesg=Är du säker på att du vill ta bort denna klient vy $1 ? Alla zoner på denna vy kommer antingen bli bort tagen (med deras zon filer) eller flyttad till en annan beroende på ditt val under.
 vdelete_mesg2=Är du säker att du vill ta bort klient vy'n $1 ?
@@ -701,6 +746,7 @@ vdelete_newview=Zoner inom denna vy
 vdelete_root=Flytta ut ur denna vy
 vdelete_delete=Ta bort totalt
 vdelete_move=Flytta till vy
+
 gen_title=Post Generatorer
 gen_desc=Den här sidan tillåter dig att definiera generatorer, varje som kommer att skapa multipla poster på den zon användande av en ökande räknare. Detta kan vara värdefullt för delegerings delar av bakåt uppslagnings zon till en annan server.
 gen_range=Område
@@ -720,7 +766,9 @@ gen_evalue=Saknad eller felaktigt värd namn förlopp för generator $1
 gen_title2=Genererade Poster
 gen_raw=Konfigurerings fil rad
 gen_ecannot=Du är inte tillåten att ändra post generatorer
+
 refetch_err=Misslyckadess att åter-ladda ner root zon
+
 slaves_title=Kluster Slav Servrar
 slaves_none=Inga servrar har blivit tillagda på DNS kluster ännu.
 slaves_host=Värd namn
@@ -744,6 +792,7 @@ slaves_sync=Skapa alla existerande master zoner på slav?
 slaves_sec=Skapa sekundära på slav när lokalt skapas?
 slaves_name=Namn för NS record
 slaves_same=Somliga värd namn
+
 add_title=Lägg till Serverar
 add_msg=Lägger till $1 ..
 add_gmsg=Lägger till servrar till grupp $1 ..
@@ -758,6 +807,7 @@ add_createerr=Ställ in $1 med $2 ny slav zon, men stötte på $3 fel :
 add_createok=Ställde in $1 med $2 nya slav zoner.
 add_ename=saknad eller felaktig NS record namn
 add_egname=Ett NS record namn kan inte bli specificerad när gupp läggs till
+
 mass_title=Skapa Zoner Från Batch Fil
 mass_desc=Denna sida tillåter dig att skapa multipla zoner på en gång från en uppladdad server-side text fil. Varje rad på filen måste ha följande format: <p><tt><i>domän namn</i>:<i>typ</i> måste vara en av <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> eller <tt>forward</tt>. <i>fil namn</i> är valfritt, och kommer att bli automatiskt saknad. <i>master IPs</i> behöver endast anges till slav zonerna.
 mass_local=Lokal batch fil
@@ -786,6 +836,7 @@ mass_done=.. färdig
 mass_emips=Saknad master IP adress
 mass_addedslaves=Lade till $1 slav servrar OK
 mass_eonslave=Fel uppstod när skapande av slav serverar : $1
+
 massdelete_title=Tar bort Zoner
 massdelete_rusure=Är du säker att du vill ta bort $1 valda zoner? ($2)
 massdelete_ok=Ta bort Nu
@@ -793,6 +844,7 @@ massdelete_zone=Tar bort zon $1 ..
 massdelete_done=.. färdig
 massdelete_slaves=Tar bort zon $1 från slav servrar ..
 massdelete_failed=.. somliga slavar misslyckades :
+
 rndc_title=Ställ in RNDC
 rndc_desc=Denna sida kan användas att sätta upp BIND för kontrolleras av RNDC program, så att individuella zoner kan bli uppdaterad utan att starta om BIND.
 rndc_desc2=RNDC verkar vara inställd riktigt redan, så troligen behöver du inte använda detta formulär.
@@ -803,11 +855,13 @@ rndc_ok=Ja, Ställ in RNDC
 rndc_err=Misslyckades att ställa in RNDC
 rndc_ekey=Kunde inte hitta nyckel i rndc.conf
 rndc_esecret=Kunde inte finna secret i rndc.conf
+
 drecs_err=Misslyckades att ta bort Poster
 drecs_enone=Ingen vald
 drecs_title=Ta bort Poster
 drecs_rusure=Är du säker att du vill ta bort $1 valda poster från $2?
 drecs_ok=Ta bort Nu
+
 manual_title=Ändra Konfigurerings Fil
 manual_ecannot=Du är inte tillåten att ändra BIND konfigurerings fil
 manual_ok=Ändra
@@ -815,7 +869,9 @@ manual_efile=Vald fil är inte del av BIND konfiguration
 manual_file=Ändra konfigurerings fil:
 manual_edata=Inget inskrivet!
 manual_err=Misslyckades att spar konfigurerings fil
+
 syslog_desc=BIND DNS server meddelanden
+
 umass_err=Misslyckades att uppdatera zoner
 umass_enone=Ingen vald
 umass_title=Uppdatera Poster på zoner

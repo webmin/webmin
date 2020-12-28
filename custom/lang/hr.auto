@@ -3,6 +3,7 @@ index_actform=Oblik
 index_actrun=Trčanje
 index_actsql=Oblik
 index_acted=Otvoren
+
 edit_desc2=HTML opis
 edit_must=Potreban?
 edit_type12=Više izbornika ..
@@ -17,13 +18,17 @@ edit_format2=Preusmjeravanje na indeks
 edit_format3=Preusmjeravanje na oblik
 edit_format4=Preuzmite kad je to moguće
 edit_clone=Klon
+
 save_eformat=Nevažeća vrsta MIME izlaza
 save_eopts=Datoteka opcija nedostaje za parametar $1 
 save_eopts2=Datoteka opcija ili zadana vrijednost za parametar $1 ne može sadržavati :
+
 run_eupload=Nije odabrana datoteka za prijenos
 run_emust=Nedostaje vrijednost za parametar '$1'
 run_failed=Naredba nije uspjela sa statusom izlaza $1 
+
 file_beforeedit=Naredba za pokretanje prije uređivanja
+
 view_header=Uređivanje datoteke $1 
 view_ebeforeedit=Naredba prije uređivanja nije uspjela : $1 
 view_ebefore=Naredba prije spremanja nije uspjela : $1 

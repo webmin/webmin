@@ -40,6 +40,7 @@ index_descfetch=Ta stran je za prenos datoteke iz sistema, v katerem je namešč
 index_email=Ali po e-pošti pošljete e-pošto?
 index_emailto=Da, na naslov
 index_email2=Pošljite e-pošto, ko je prenos naložen?
+
 upload_title=Naloži datoteke
 upload_err=Ni bilo mogoče naložiti datotek
 upload_edir=Manjkajoči imenik za nalaganje
@@ -63,6 +64,7 @@ upload_saving=Shranjevanje datoteke $1 ..
 upload_saved=.. je napisal $1 
 upload_unzipping=Pridobivanje datoteke $1.
 upload_unzipdone=.. $1 
+
 download_err=Prenosa ni bilo mogoče shraniti
 download_enone=Vnesenih ni bilo URL-jev
 download_eurl='$1' ni veljaven URL
@@ -74,9 +76,11 @@ download_failed=Prenos ni uspel : $1
 download_eaccess=Nimate dovoljenja za prenos datotek na $1 
 download_eucannot=Ni vam dovoljeno prenašati datotek kot uporabnik $1 
 download_egcannot=Izbrana skupina ne vsebuje izbranega uporabnika
+
 cancel_err=Prenosov ni bilo mogoče preklicati
 cancel_enone=Izbrana ni nobena
 cancel_ecannot=Za uporabnika $1 ni dovoljeno preklicati prenosov
+
 log_cancel=Preklicano $1 prenosov
 log_upload_l=Naložene datoteke $1 
 log_upload=Naloženih $1 datotek
@@ -84,6 +88,7 @@ log_download_l=Preneseni URL-ji $1
 log_download=Preneseni $1 URL-ji
 log_sdownload_l=Načrtovan je prenos URL-jev $1 
 log_sdownload=Planiran prenos $1 URL-jev
+
 acl_users=Kot uporabniki lahko naložijo in prenesejo datoteke
 acl_all=Vsi uporabniki
 acl_this=Trenutni uporabnik Webmin-a
@@ -98,6 +103,7 @@ acl_max=Največja velikost nalaganja
 acl_unlim=Neomejeno
 acl_b=bajti
 acl_fetch=Lahko prenesete datoteke na računalnik?
+
 fetch_err=Prenos datoteke ni uspel
 fetch_ecannot=Nalaganje datotek na računalnik vam ni dovoljeno
 fetch_efile=Ime datoteke ni vneseno
@@ -106,6 +112,7 @@ fetch_eopen=Ni bilo mogoče odpreti datoteke : $1
 fetch_eaccess=Nimate dovoljenja za prenos datotek od $1 
 fetch_ezip=Imenika ni mogoče prenesti, če ni nameščen ukaz <tt>zip</tt>
 fetch_eroot=Korenskega imenika ni mogoče prenesti!
+
 email_downmsg=Dokončan je naslednji prenos :
 email_downurl=URL: $1 
 email_downerr=Sporočilo o napaki: $1 

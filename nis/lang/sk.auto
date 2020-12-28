@@ -2,6 +2,7 @@ index_title=Klient a server NIS
 index_return=Ponuka NIS
 index_enis=Zdá sa, že na vašom počítači nie je nainštalovaná podpora klienta alebo servera NIS.
 index_enis2=Použiteľné budú iba funkcie klientskych služieb tohto modulu.
+
 client_title=Klient NIS
 client_header=Konfigurácia klienta NIS
 client_domain=Doména NIS
@@ -17,10 +18,12 @@ client_eserver='$1' nie je platný názov servera
 client_eypwhich=sa nepodarilo naviazať na doménu NIS
 client_ehosts=$1 sa nenachádza v súbore hosts
 client_enis=Zdá sa, že váš počítač nemá nainštalovanú podporu klientov NIS.
+
 switch_title=Klientske služby
 switch_service=služba
 switch_srcs=Zdroje dát
 switch_return=klientske služby
+
 order_=&nbsp;
 order_nisplus=NIS +
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=Používateľské tlačiarne
 order_xfn=XFN
+
 server_title=NIS Server
 server_header=Možnosti servera NIS
 server_boot=Povoliť server NIS?
@@ -65,6 +69,7 @@ server_solaris=Poznámka - v systéme Solaris sú klientske a serverové domény
 server_edir=Neplatný adresár zdrojových súborov
 server_epwdir=Neplatný adresár zdrojových súborov hesiel
 server_enis=Zdá sa, že váš počítač nemá nainštalovanú podporu servera NIS.
+
 tables_title=Tabuľky NIS
 tables_switch=Upraviť tabuľku NIS :
 tables_header=Tabuľka $1 NIS z $2 
@@ -81,6 +86,7 @@ tables_search=Vyhľadávanie
 tables_nomatch=Vášmu vyhľadávaniu nezodpovedajú žiadne záznamy
 tables_build=Znovu zostaviť tabuľky NIS
 tables_buildmsg=Kliknutím na toto tlačidlo znova zostavíte databázy NIS z údajov tabuľky. Ak ste vykonali nejaké zmeny, musíte to urobiť, aby ste ich sprístupnili klientom NIS.
+
 desc_aliases=Sendmail aliasy
 desc_mail=Sendmail aliasy
 desc_hosts=Hostiteľské adresy
@@ -116,6 +122,7 @@ desc_printers=tlačiarne
 desc_ipnodes=Uzly IP
 desc_timezone=Časové pásma
 desc_locale=locales
+
 hosts_title=Adresa hostiteľa
 hosts_ip=IP adresa
 hosts_name=Meno hosťa
@@ -124,6 +131,7 @@ hosts_err=Uloženie hostiteľa zlyhalo
 hosts_eip=Chýbajúca alebo neplatná adresa IP
 hosts_ename=Chýba alebo je neplatný názov hostiteľa
 hosts_aliases=prezývky
+
 group_name=Názov skupiny
 group_gid=ID skupiny
 group_members=Členovia skupiny
@@ -134,6 +142,7 @@ group_none=Nevyžaduje sa žiadne heslo
 group_encrypted=Predšifrované heslo
 group_clear=Normálne heslo
 group_err=Uloženie skupiny zlyhalo
+
 passwd_name=užívateľské meno
 passwd_uid=ID používateľa
 passwd_real=Skutočné meno
@@ -171,6 +180,7 @@ passwd_emax=Neplatný maximálny počet dní
 passwd_emin=Neplatný minimálny počet dní
 passwd_einactive=Neplatný počet neaktívnych dní
 passwd_eexpiry=Neplatný dátum exspirácie
+
 services_name=Názov služby
 services_proto=Protokol
 services_port=prístav
@@ -179,6 +189,7 @@ services_header=Inetd možnosti sieťových služieb
 services_err=Nepodarilo sa uložiť službu
 services_ename=Chýba alebo je neplatný názov služby
 services_eport=Chýba alebo je neplatný port
+
 protocols_name=Názov protokolu
 protocols_number=číslo
 protocols_aliases=prezývky
@@ -187,6 +198,7 @@ protocols_header=Možnosti sieťového protokolu
 protocols_err=Protokol sa nepodarilo uložiť
 protocols_ename=Chýbajúce alebo neplatné meno
 protocols_enumber=Chýbajúce alebo neplatné číslo
+
 netgroup_name=Názov Netgroup
 netgroup_members=členovia
 netgroup_title=Skupina sietí
@@ -201,6 +213,7 @@ netgroup_ename=Chýba alebo je neplatný názov siete
 netgroup_ehost=Chýbajúci alebo neplatný hostiteľ v riadku $1 
 netgroup_euser=Chýbajúci alebo neplatný používateľ v riadku $1 
 netgroup_edom=Chýba alebo je neplatná doména NIS v riadku $1 
+
 ethers_mac=Ethernetová adresa
 ethers_ip=IP adresa
 ethers_title=Ethernetová adresa
@@ -208,6 +221,7 @@ ethers_header=Možnosti mapovania Ethernetu
 ethers_err=Nepodarilo sa uložiť ethernetovú adresu
 ethers_emac=Neplatná adresa siete Ethernet
 ethers_eip=Neplatná adresa IP
+
 rpc_name=Názov programu
 rpc_number=číslo
 rpc_aliases=prezývky
@@ -216,6 +230,7 @@ rpc_header=Podrobnosti programu RPC
 rpc_err=Program RPC sa nepodarilo uložiť
 rpc_ename=Chýba alebo je neplatný názov programu
 rpc_enumber=Chýbajúce alebo neplatné číslo
+
 networks_title=Sieťová adresa
 networks_ip=IP adresa
 networks_name=Názov sieťe
@@ -224,6 +239,7 @@ networks_err=Nepodarilo sa uložiť sieť
 networks_eip=Chýbajúca alebo neplatná adresa IP
 networks_ename=Chýbajúce alebo neplatné meno
 networks_aliases=prezývky
+
 netmasks_net=Sieťová adresa
 netmasks_mask=maska siete
 netmasks_title=maska siete
@@ -231,6 +247,7 @@ netmasks_header=Podrobnosti masky siete
 netmasks_err=Nepodarilo sa uložiť masku siete
 netmasks_enet=Chýbajúca alebo neplatná sieťová adresa
 netmasks_emask=Chýbajúca alebo neplatná sieťová maska
+
 aliases_from=adresa
 aliases_to=Alias to
 aliases_title=Sendmail Alias
@@ -238,6 +255,7 @@ aliases_header=Podrobnosti o aliase Sendmail
 aliases_err=Nepodarilo sa uložiť alias
 aliases_efrom=Chýbajúca alebo neplatná adresa
 aliases_eto=Chýba adresa
+
 security_title=Zabezpečenie servera
 security_header=Možnosti zabezpečenia servera NIS
 security_ok=Uložiť a použiť
@@ -266,6 +284,7 @@ security_sec_des=Vyžadovať DES
 security_ehost=$1 nie je platný názov hostiteľa
 security_emap='$1' nie je platná tabuľka NIS
 security_efield='$1' nie je platné číslo poľa
+
 eswitch_title=Upraviť službu
 eswitch_egone=Služba neexistuje!
 eswitch_header=Servisné údaje

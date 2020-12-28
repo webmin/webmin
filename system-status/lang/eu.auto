@@ -44,6 +44,7 @@ right_upsec=$1 pakete eguneratzeak eskuragarri daude eta horietatik $2 segurtasu
 right_recollect=Eguneratu sistemaren informazioa
 right_vvirtualmin=Virtualmin bertsioa
 right_vvm2=Cloudmin bertsioa
+
 acl_show=Sistemaren informazioa erakusteko
 acl_showall=Dena
 acl_showsel=Hautatuta bakarrik ..

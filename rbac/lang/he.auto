@@ -1,5 +1,6 @@
 index_euser=קובץ התצורה RBAC $1 לא נמצא במערכת שלך. אולי RBAC אינו מותקן, או <a href='$2'>תצורת המודול</a> שגויה.
 index_return=אינדקס מודול
+
 users_title=תכונות משתמש
 users_user=שם משתמש
 users_profiles=ניתן פרופילים
@@ -10,6 +11,7 @@ users_return=רשימת תכונות משתמש
 users_type=סוג
 users_role=תפקיד
 users_project=פרויקט
+
 user_title1=צור תכונות משתמש
 user_title2=ערוך תכונות משתמש
 user_header=תכונות שהוענקו למשתמש יוניקס
@@ -35,6 +37,7 @@ user_eauth='$1' אינו הרשאה חוקית
 user_ecannot=אינך רשאי לערוך משתמש זה
 user_erole=אינך רשאי להקצות את התפקיד '$1'
 user_eprof=אינך רשאי להקצות את הפרופיל '$1'
+
 auths_title=הרשאות
 auths_name=שם ההרשאה
 auths_desc=תיאור
@@ -42,8 +45,10 @@ auths_none=טרם הוגדרו הרשאות.
 auths_add=הוסף הרשאה חדשה.
 auths_return=רשימת הרשאות
 auths_ecannot=אינך רשאי לערוך הרשאות
+
 authc_name=הרשאה
 authc_desc=תיאור
+
 auth_title1=צור הרשאה
 auth_title2=ערוך הרשאה
 auth_header=פרטי הרשאות הרשאה
@@ -57,6 +62,7 @@ auth_edesc=תיאור ארוך ולא חוקי
 auth_eclash=הרשאה עם אותו שם כבר קיימת
 auth_einuseu=הרשאה זו נמצאת בשימוש על ידי המשתמש $1, ולכן לא ניתן למחוק אותה
 auth_einusep=הרשאה זו נמצאת בשימוש על ידי פרופיל $1, ולכן לא ניתן למחוק אותה
+
 profs_title=פרופילים
 profs_name=שם פרופיל
 profs_desc=תיאור
@@ -65,6 +71,7 @@ profs_none=עדיין לא הוגדרו פרופילים.
 profs_add=הוסף פרופיל חדש.
 profs_return=רשימת פרופילים
 profs_ecannot=אינך מורשה לערוך פרופילים
+
 prof_title1=צור פרופיל
 prof_title2=ערוך פרופיל
 prof_header=פרטי פרופיל הרשאה
@@ -81,6 +88,7 @@ prof_einuseu=פרופיל זה נמצא בשימוש על ידי המשתמש $1
 prof_einusep=פרופיל זה נמצא בשימוש על ידי פרופיל $1, ולכן לא ניתן למחוק אותו
 prof_einusee=לפרופיל זה $1 פרופילי ביצוע קשורים, ולכן לא ניתן למחוק אותו
 prof_none=אין פרופילים זמינים
+
 execs_title=פרופילי ביצוע
 execs_name=פרופיל
 execs_policy=מדיניות אבטחה
@@ -92,6 +100,7 @@ execs_none=עדיין לא הוגדרו פרופילי ביצוע.
 execs_add=הוסף פרופיל ביצוע חדש.
 execs_return=רשימת פרופילי ביצוע
 execs_ecannot=אינך רשאי לערוך פרופילי ביצוע
+
 exec_title1=צור פרופיל ביצוע
 exec_title2=ערוך פרופיל ביצוע
 exec_header=פרטי פרופיל ביצוע
@@ -113,6 +122,7 @@ exec_erruid=משתמש חסר או לא חוקי לרוץ כמו
 exec_errgid=קבוצה חסרה או לא תקפה לרוץ בתור
 exec_erreuid=משתמש אפקטיבי חסר או לא חוקי לרוץ כמו
 exec_erregid=קבוצה אפקטיבית חסרה או לא חוקית להפעלה כ
+
 policy_title=מדיניות מערכת
 policy_header=הגדרות מדיניות מערכת גלובלית
 policy_auths=הרשאות לכל המשתמשים
@@ -126,16 +136,20 @@ policy_err=שמירת מדיניות המערכת נכשלה
 policy_eallow=אין אלגוריתמים המאפשרים שנבחרו
 policy_eclash=לא ניתן לבחור את שניהם בו זמנית לאלגוריתם להתיר ולפחות
 policy_ecannot=אינך רשאי לערוך מדיניות מערכת
+
 attr_none=לא הוגדרו תכונות משתמשים
 attr_nonenormal=אין הגדרת משתמשי יוניקס
 attr_nonerole=לא הוגדרו תפקידים זמינים
+
 help_epath=נתיב קובץ עזרה לא חוקי!
 help_link=(עזרה..)
+
 crypt___unix__=Unix crypt
 crypt_1=BSD MD5
 crypt_2a=BSD Flowfish
 crypt_md5=Sun MD5
 crypt_rot13=ROT13
+
 log_create_user=יצר תכונות משתמש עבור $1 
 log_modify_user=תכונות משתמש משתנות עבור $1 
 log_delete_user=מאפייני משתמש נמחקו עבור $1 
@@ -152,6 +166,7 @@ log_create_project=יצר פרויקט $1
 log_modify_project=פרויקט שונה $1 
 log_delete_project=פרויקט $1 נמחק
 log_policy=מדיניות מערכת שונתה
+
 acl_roles=האם ניתן לערוך תפקידים?
 acl_users=האם ניתן לערוך תכונות משתמש?
 acl_roleassign=יכול להקצות תפקידים
@@ -166,6 +181,7 @@ acl_profs=האם ניתן לערוך פרופילים?
 acl_ro=לצפייה בלבד
 acl_execs=האם ניתן לערוך פרופילי ביצוע?
 acl_projects=האם ניתן לערוך פרויקטים?
+
 projects_title=פרויקטים
 projects_name=שם
 projects_id=תעודת זהות
@@ -184,6 +200,7 @@ projects_exceptusers=כל המשתמשים למעט $1
 projects_exceptgroups=כל הקבוצות למעט $1 
 projects_onlyusers=רק $1 
 projects_onlygroups=רק $1 
+
 project_title1=צור פרויקט
 project_title2=ערוך פרוייקט
 project_header=פרטי הפרויקט וחברים
@@ -219,6 +236,7 @@ project_egroupscannot=לא נבחרו קבוצות שלא לכלול
 project_elimit=מגבלה חסרה או לא חוקית בשורה $1 
 project_epool=שם מאגר הפרוייקטים חסר או לא תקף
 project_erss=זיכרון מרבי חסר או לא תקף
+
 prctl_title=בקרות משאבים
 prctl_ok=הצג גבולות עבור:
 prctl_mode0=תהליך עם תעודת זהות

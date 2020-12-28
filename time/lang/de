@@ -17,6 +17,7 @@ index_tabsync=Zeit-Server synchronisieren
 index_desctime=Dieses Formular ist für die Änderung der aktuellen Systemzeit, die von allen laufenden Prozessen verwendet wird. Bei Betriebssystemen, die eine separate Hardware-Uhr haben, kann es verwendet werden, um diese ebenso zu setzen.
 index_desczone=Diese Form ermöglicht es Ihnen, das System der Standard-Zeitzone zu setzen, welche verwendet wird, um die Systemzeit in ein lesbares Format zu konvertieren und das Offset einzustellen.
 index_descsync=Diese Form ist für das Konfiguration des Systems, um die Zeit automatisch mit einem remoten Server zu synchronisieren. Die Synchronisation wird durchgeführt unter Verwendung des Unix <tt>time</tt>-Protokoll oder NTP, je nachdem, welche Befehle installiert sind und was das Remote-System unterstützt.
+
 action_save=Speichern
 action_apply=Anwenden
 action_sync=Synchronisiere Systemzeit nach Hardware-Zeit
@@ -24,6 +25,7 @@ action_sync_s=Synchronisiere Hardware-Zeit nach Systemzeit
 action_timeserver_sys=Synchronisiere Systemzeit
 action_timeserver_hw=Synchronisiere Hardware-Zeit
 action_savezone=Ändere Zeitzone
+
 acl_sys=Benutzer darf Systemzeit bearbeiten?
 acl_hw=Benutzer darf Hardware-Zeit bearbeiten
 acl_timezone=Benutzer darf Zeitzone setzen?
@@ -34,8 +36,10 @@ acl_error=Sie haben Zugriff auf das Modul Systemzeit, aber Sie haben keine Berec
 acl_nosys=Sie haben keine Berechtigung, die Systemzeit zu bearbeiten
 acl_nohw=Sie haben keine Berechtigung, die Hardware-Zeit zu bearbeiten
 acl_nontp=Sie dürfen die Systemzeit nicht mit einem Zeit-Server abgleichen
+
 sys_title=Systemzeit
 hw_title=Hardware-Zeit
+
 day=Tag
 month=Monat
 date=Datum
@@ -43,12 +47,14 @@ hour=Stunde
 year=Jahr
 minute=Minute
 second=Sekunde
+
 error_cnf=Fehler : $1 Befehl nicht gefunden
 error_hw=Kann Hardware-Zeit nicht einstellen : $1
 error_sync=Kann Systemzeit nicht setzen : $1
 error_ediff=Die Differenz zwischen Zeit-Server und Systemzeit ist zu groß : $1 Tage
 error_entp=NTP-Zeitsynchronisation fehlgeschlagen : $1
 error_etimeserver=Kein Zeit-Server wurde eingegeben
+
 log_set_date=Setze Systemzeit auf $1
 log_set_hwclock=Setze Hardware-Zeit auf $1
 log_remote_date=Geholte Systemzeit von $2
@@ -58,6 +64,7 @@ log_remote_hwclock_l=Geholte Hardware-Zeit $1 von $2
 log_sync=Systemzeit mit Hardware-Zeit synchronisiert
 log_sync_s=Hardware-Zeit mit Systemzeit synchronisiert
 log_timezone=Zeitzone nach $1 geändert
+
 timezone_err=Konnte Zeitzone nicht speichern
 timezone_ecannot=Sie dürfen die Zeitzone nicht ändern
 timezone_enone=Keine Zone ausgewählt

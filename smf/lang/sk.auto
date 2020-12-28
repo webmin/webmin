@@ -180,6 +180,7 @@ whats_this_NSTATE=Ďalší stav služby, užitočné pri prechode služby. Znak 
 whats_this_SCOPE=Názov rozsahu inštancie služby. Pozri: SMF (5). Pozri: svcs (1).
 whats_this_STIME=Čas (ak je dnes) alebo dátum, kedy služba vstúpila do aktuálneho stavu. Pozri: SMF (5). Pozri: svcs (1).
 whats_this_Select=Tu nájdete zoznam služieb, ktoré chcete povoliť/zakázať/obnoviť atď.
+
 whats_this_service_detail=Tu zadajte/upravte informácie o službe toplevel: názov služby, číslo verzie, názov balíka pre manifest a stabilitu. Pozri: SMF (5). Pozri: svccfg (1M). Pozri: service_bundle (4).
 whats_this_bundle_name=Názov súboru služieb v manifeste. V jednom manifeste je možné spojiť viacero služieb, ale názov tu nie je dôležitý. Pre už existujúce služby sa nastaví export, pretože to je to, čo robí svccfg, keď exportuje manifest z úložiska SMF. Pozri: svccfg (1M). Pozri: service_bundle (4).
 whats_this_service_name=Názov služby. Konvencia má používať formát [general_service_category]/[name]. Medzi už poskytované kategórie patria aplikácie (aplikácie na vyššej úrovni), medzník (zbierky iných služieb, ako sú napríklad menové služby), platforma (služby špecifické pre platformu), systém (služby systému Solaris), zariadenie (služby špecifické pre dané zariadenie), sieť (sieťové/internetové služby) a stránka (osobitné opisy stránok). Samozrejme môžete určiť aj svoju vlastnú kategóriu, ale väčšina služieb by sa mala pohodlne zmestiť do jednej z vyššie uvedených. Pozri: SMF (5).

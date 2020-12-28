@@ -39,7 +39,9 @@ index_thost=Pagrindinio kompiuterio vardas
 index_tdesc=apibūdinimas
 index_tver=Versija
 index_ttype=OS tipas
+
 this_server=šį serverį
+
 add_title=Pridėti serverius
 add_msg=Pridedama $1 ..
 add_gmsg=Serverių pridėjimas grupėje $1 ..
@@ -49,6 +51,7 @@ add_echeck=Serveris $1 neturi „Usermin“ konfigūracijos modulio
 add_echeck2=Serveris $1 neturi „Usermin Users“ modulio
 add_eversion=Serveris $1 neveikia „Usermin“ $2 ar naujesnės versijos.
 add_ok=Pridėta $1 su $2 moduliais ir $3 temomis.
+
 refresh_title=Atnaujinkite modulių ir temų sąrašus
 refresh_header=Iš visų serverių iš naujo prašoma modulio ir temų sąrašų.
 refresh_header4=Iš naujo paprašykite modulio ir temų sąrašų iš $2 narių.
@@ -64,6 +67,7 @@ refresh_g2=Pašalinta $1 grupė.
 refresh_done=.. padaryta
 refresh_del=$1 pašalintas iš serverių sąrašo
 refresh_failed=Nepavyko atnaujinti $1 : $2 
+
 host_title=Tvarko serveris
 host_header=Tvarkoma „Usermin“ serverio informacija
 host_name=Pagrindinio kompiuterio vardas
@@ -81,6 +85,7 @@ host_header_u=„Usermin“ vartotojai
 host_header_g=Vartotojo grupės
 host_return=serverio duomenys
 host_version2=Versija
+
 edit_title_mod=Redaguoti modulį
 edit_title_theme=Redaguoti temą
 edit_header_mod=„Usermin“ modulio informacija iš $1 
@@ -103,6 +108,7 @@ edit_codes=Iš $1 bandymo
 edit_acl=Redaguoti ACL
 edit_uacl=$2 vartotojas $1 
 edit_gacl=Grupė $1 $2 
+
 install_err=Nepavyko įdiegti modulio
 install_title=Įdiekite modulį
 install_elocal=Vietinė byla nepateikta
@@ -123,6 +129,7 @@ do_failed=Nepavyko įdiegti $1 : $2
 do_success_mod=$1 įdiegtas modulis $2 
 do_success_theme=$2 įdiegta tema $1 
 do_done=.. padaryta
+
 delete_err=Nepavyko ištrinti $1 modulio
 delete_epack=Modulio $1 nėra
 delete_title=Ištrinti modulį
@@ -140,6 +147,7 @@ delete_edepends=Modulis (-iai) $1 priklauso nuo jo.
 delete_egone=Modulio nebeegzistuoja
 delete_esuccess=Sėkmingai ištrinta iš $1 : $2 
 delete_acls=Pašalinti iš vartotojų ir iš naujo nustatyti prieigos kontrolės nustatymus?
+
 user_title1=Sukurti „Usermin“ vartotoją
 user_header1=Nauja „Usermin“ vartotojo informacija
 user_name=Vartotojo vardas
@@ -198,11 +206,13 @@ user_all=&lt;visi šeimininkai&gt;
 user_donthave=&lt;šeimininkai, kurie to neturi&gt;
 user_have=&lt;šeimininkai, kurie tai turi&gt;
 user_ofgroup=$1 nariai
+
 udelete_title=Ištrinti vartotoją
 udelete_doing=Ištrinamas vartotojas $1 iš visų prieglobų.
 udelete_success=Sėkmingai ištrinta iš $1 
 udelete_failed=Nepavyko ištrinti iš $1 : $2 
 udelete_done=.. padaryta
+
 group_title1=Sukurti grupę
 group_header1=Nauja „Usermin“ grupės informacija
 group_name=Grupės pavadinimas
@@ -230,6 +240,7 @@ group_failed2=Nepavyko atnaujinti grupės $1 : $2
 group_return=grupės duomenys
 group_nomems=Nėra narių
 group_servers=Kuriamas serveris (-iai)
+
 gdelete_title=Ištrinti grupę
 gdelete_desc=Ar tikrai norite ištrinti $1 grupę ir jos narius $2 iš visų prieglobų?
 gdelete_ok=Ištrinti grupę
@@ -238,6 +249,7 @@ gdelete_success=Sėkmingai ištrinta iš $1
 gdelete_failed=Nepavyko ištrinti iš $1 : $2 
 gdelete_done=.. padaryta
 gdelete_esub=Ši grupė turi $1 pogrupius, todėl jos negalima ištrinti.
+
 acl_title=Modulio prieigos kontrolė
 acl_title2=$1 vartotojui $1 $2 
 acl_title3=$1 grupei $2 $3
@@ -256,6 +268,7 @@ acl_doing2=$2 prieigos valdymo nustatymas.
 acl_success=Sėkmingai nustatykite prieigos valdymą $1 
 acl_failed=Nepavyko nustatyti prieigos valdymo $1 : $2 
 acl_done=.. padaryta
+
 sync_title=Sinchronizuoti serverius
 sync_desc=Ši forma leidžia jums sukurti „Usermin“ vartotojus ir grupes serveriuose, kurie jų šiuo metu neturi, kad būtų galima sinchronizuoti paskyras visuose jūsų grupės serveriuose.
 sync_hosts=Sinchronizuojami serveriai
@@ -279,6 +292,7 @@ sync_gcreate=Pridedama „ $1 “ vartotojo grupė ..
 sync_acl=Kopijuojami $1 ACL failai.
 sync_test=Tik parodyk, kas bus padaryta?
 sync_restart=Iš naujo paleisti „Usermin..“
+
 upgrade_title=Atnaujinkite „Usermin“
 upgrade_header=„Usermin“ atnaujinimas visose šeimose.
 upgrade_header2=„Usermin“ atnaujinimas $1 ..
@@ -297,6 +311,7 @@ upgrade_failed=Nepavyko įdiegti $1 : $2
 upgrade_done=.. padaryta
 upgrade_efast=Galima atnaujinti tik tuos serverius, kurie naudoja greitą RPC režimą
 upgrade_ereconn=Po atnaujinimo nepavyko prisijungti prie „Usermin“!  : $1 
+
 update_title=Atnaujinkite modulius
 update_header=Atnaujinami visi pagrindiniai moduliai ..
 update_header5=Atnaujinami moduliai $2 ..

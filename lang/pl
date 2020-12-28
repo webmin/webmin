@@ -12,7 +12,9 @@ main_readonly=(Tryb tylko do odczytu)
 main_return=Powrót do $1
 main_unused=Nie-używane moduły
 main_refreshmods=Odśwież moduły
+
 link_essl=Moduł Perl Net::SSLeay wymagany do tworzenia połączeń HTTPS nie jest zainstalowany w Twoim systemie.
+
 category_servers=Serwery
 category_hardware=Sprzęt
 category_system=System
@@ -21,6 +23,7 @@ category_net=Sieć
 category_syslet=Syslet
 category_cluster=Klaster
 category_info=Informacje
+
 longcategory_servers=Moduły do konfiguracji www, e-mail, FTP i innych usług
 longcategory_hardware=Moduły do konfiguracji drukarek, dysków i innych urządzeń
 longcategory_system=Moduły dla użytkowników, systemów plików, zadań crona i innych ustawień systemowych
@@ -28,11 +31,13 @@ longcategory_webmin=Moduły do konfigurowania Webmina
 longcategory_net=Moduły do konfiguracji sieci i usług sieciowych
 longcategory_cluster=Moduły, które mogą zarządzać wieloma serwerami z jednego interfejsu
 longcategory_info=Moduły, które wyświetlają informacje o Twoim systemie
+
 header_webmin=Indeks Webmina
 header_module=Indeks modułu
 header_help=Pomoc..
 header_config=Konfiguracja modułu
 header_servers=Serwery Webmina
+
 index=indeksu
 yes=Tak
 no=Nie
@@ -62,12 +67,14 @@ euserdbacl=Nie udało się odczytać ACL użytkownika : $1
 euserdbacl2=Nie udało się zaktualizować ACL użytkownika : $1s
 egroupdbacl=Nie udało się odczytać ACL grupy : $1
 egroupdbacl2=Nie udało się zaktualizować ACL grupy : $1
+
 chooser_title1=Wybierz plik..
 chooser_title2=Wybierz katalog..
 chooser_dir=Zawartość $1
 chooser_ok=OK
 chooser_date=Wybierz datę
 chooser_eopen=Listing nie powiódł się : $1
+
 users_title1=Wybierz użytkowników..
 users_title2=Wybierz użytkownika..
 users_sel=Wybrani użytkownicy
@@ -75,6 +82,7 @@ users_all=Wszyscy użytkownicy
 users_ok=OK
 users_cancel=Anuluj
 users_clear=Czyść
+
 groups_title1=Wybierz grupy..
 groups_title2=Wybierz grupę..
 groups_all=Wszystkie grupy
@@ -82,6 +90,7 @@ groups_sel=Wybrane grupy
 groups_ok=OK
 groups_cancel=Anuluj
 groups_clear=Czyść
+
 modules_title1=Wybierz moduły..
 modules_title2=Wybierz moduł..
 modules_sel=Wybrane moduły
@@ -89,6 +98,7 @@ modules_all=Wszystkie moduły
 modules_ok=Ok
 modules_cancel=Anuluj
 modules_clear=Czyść
+
 config_ecannot=Nie masz uprawnień do konfiguracji tego modułu
 config_title=Konfiguracja
 config_dir=modułu $1
@@ -99,6 +109,7 @@ config_err=Nie udało się zapisać konfiguracji
 config_nochange=Nie zmieniaj
 config_setto=Ustaw na
 config_ewebmin=Parametr typu 14 działa tylko w Webminie
+
 help_err=Nie mogę wyświetlić pomocy
 help_epath=Nie podano lub podano nieprawidłową ścieżkę dostępu do pomocy
 help_efile=Nie mogę przeczytać zbioru pomocy $1
@@ -106,6 +117,7 @@ help_eheader=Brak sekcji &lt;header&gt;
 help_einclude=Nie mogę włączyć $1
 help_eif=$1 błąd : $2
 help_eexec=$1 błąd : $2
+
 referer_title=Uwaga niebezpieczeństwo!
 referer_warn=<b>Uwaga!</b> Webmin wykrył, że program $2 jest dowiązany do URL-a $1 znajdującego się poza serwerem Webmina. Może to być próba podstępnego zmuszenia twojego serwera do wykonania niebezpiecznego polecenia.
 referer_warn_unknown=<b>Uwaga!</b> Webmin wykrył, że program $1 jest dowiązany do nieznanego URL-a znajdującego się poza serwerem Webmina. Może to być próba podstępnego zmuszenia twojego serwera do wykonania niebezpiecznego polecenia.
@@ -113,6 +125,7 @@ referer_fix1=Jeśli jest to uzasadnione połączenie, możesz pozwolić na poł�
 referer_fix2=Możesz też tak skonfigurować webmina aby zezwalał na to połączenie używając wiersza poleceń: <ul><li>Zaloguj jako <tt>root</tt> i edytuj plik <tt>/etc/webmin/config</tt>.<li>Dodaj linię <tt>referers=$1</tt> na końcu pliku, lub jeśli wiersz <tt>referers</tt> już istnieje - dodaj do niej <tt>$1</tt>.<li>Zapisz plik.</ul>
 referer_fix3u=Upewnij się, że twoja przeglądarka jest skonfigurowana do wysyłania referrera, aby mógł być on zweryfikowany przez Webmina.
 referer_fix2u=Możesz też tak skonfigurować webmina aby zezwalał na połączenia z nieznanych odsyłaczy w następujący sposób:<ul><li>Zaloguj się jako <tt>root</tt> i edytuj plik <tt>/etc/webmin/config</tt>.<li>Odnajdź wiersz <tt>referers_none=1</tt> i zmień go na <tt>referers_none=0</tt>.<li>Zapisz plik.</ul>
+
 session_header=Logowanie do Webmina
 session_mesg=Musisz podać nazwę użytkownika i hasło, aby zalogować się do serwera Webmina na $1.
 session_mesg2=Musisz podać nazwę użytkownika i hasło aby się zalogować.
@@ -126,11 +139,13 @@ session_twofailed=Dwustopniowe uwierzytelnianie nie powiodło się : $1
 session_logout=Logowanie zakończone pomyślnie. Użyj poniższego formularza, aby zalogować się ponownie.
 session_timed_out=Sesja wygasła po $1 minutach braku aktywności.
 session_save=Zapamiętaj mnie
+
 pam_header=Zaloguj do Webmina
 pam_mesg=Musisz odpowiedzieć na poniższe pytanie aby zalogować się do serwera Webmina na $1.
 pam_mesg2=Musisz odpowiedzieć na poniższe pytanie aby się zalogować.
 pam_login=Kontynuuj
 pam_restart=Uruchom ponownie
+
 acl_root=Katalog główny dla wyboru pliku
 acl_otherdirs=Inne widoczne katalogi
 acl_nodot=Ukrywać pliki i katalogi, których nazwa rozpoczyna się kropką?
@@ -163,6 +178,7 @@ acl_negative=Przyznać użytkownikowi nowe uprawnienia modułu?
 acl_fileunix=Przeglądaj pliki jako użytkownik Unix
 acl_sameunix=Taki sam jak login do Webmina
 acl_webminsearch=Pokazywać pole wyszukiwania?
+
 month_1=Styczeń
 month_2=Luty
 month_3=Marzec
@@ -175,6 +191,7 @@ month_9=Wrzesień
 month_10=Październik
 month_11=Listopad
 month_12=Grudzień
+
 day_0=Niedziela
 day_1=Poniedziałek
 day_2=Wtorek
@@ -182,6 +199,7 @@ day_3=Środa
 day_4=Czwartek
 day_5=Piątek
 day_6=Sobota
+
 smonth_1=Sty
 smonth_2=Lut
 smonth_3=Mar
@@ -194,6 +212,7 @@ smonth_9=Wrz
 smonth_10=Paź
 smonth_11=Lis
 smonth_12=Gru
+
 sday_0=Ni
 sday_1=Po
 sday_2=Wt
@@ -201,12 +220,15 @@ sday_3=Śr
 sday_4=Cz
 sday_5=Pi
 sday_6=So
+
 emodule=Dostęp zabroniony : Użytkownik $1 nie ma praw do korzystania z modułu $2
 emodulecheck=Moduł $1 nie jest dostępny dla Twojego systemu
 elock_tries2=Przez $2 minut nie udało się zablokować pliku $1. Ostatni błąd : $3
+
 skill_high=Ekspert
 skill_medium=Przeciętny
 skill_low=Nowicjusz
+
 feedback_title=Opinie o Webminie
 feedback_desc=Ten formularz pozwala raportować błędy i zgłaszać sugestie do programistów Webmina dotyczące dowolnych problemów lub brakujących funkcji które odnalazłeś. Kiedy przycisk Wyślij zostanie kliknięty, szczegóły wprowadzone do formularza zostaną wysłane do $1.
 feedback_desc2=Ta opinia zostanie wysłana do programisty Webmina, nie do Twojego administratora, ISP lub firmy hostingowej. Prosimy o pisanie opinii w języku angielskim, nawet jeśli obecnie używasz Webmina w innym języku.
@@ -235,15 +257,18 @@ feedback_to=Wyślij opinię na adres
 feedback_enoto=Nie wprowadzono adresu, na który wysłać opinię
 feedback_ecannot=Nie masz uprawnień do wysyłania opinii
 feedback_ecannot2=Nie masz uprawnień do wysyłania opinii zawierających pliki konfiguracyjne
+
 progress_size2=Pobieranie $1 ($2) ..
 progress_nosize=Pobieranie $1 ..
 progress_datan=Pobrano $1 ($2 %)
 progress_data2n=Pobrano $1
 progress_done=.. pobieranie ukończone.
 progress_incache=Znaleziono $1 w cache'u ..
+
 readparse_cdheader=Brakuje nagłówka Content-Disposition
 readparse_enc=Oczekiwane kodowanie form-data, ale otrzymano kodowanie normalne
 readparse_max=Dane przekroczyły maksymalny rozmiar $1 bajtów
+
 password_expired=Twoje hasło wygasło i musi zostać wybrane nowe.
 password_temp=Musisz wybrać nowe hasło aby zastąpić logowanie tymczasowe.
 password_header=Wybierz nowe hasło
@@ -262,6 +287,7 @@ password_enew2=Twoje nowe hasła nie pasują do siebie
 password_epam=Błąd PAM : $1
 password_emodpam=Moduł Perl Authen::PAM wymagany do zmiany hasła nie jest zainstalowany!
 password_enewpass=Nowe hasło nie jest dozwolone : $1
+
 ui_mandatory=To pole jest obowiązkowe
 ui_checkmandatory=Nic nie zostało wybrane
 ui_errors=Wystąpiło wiele błędów :
@@ -276,7 +302,9 @@ ui_etime=Nieprawidłowy czas
 ui_paging=Pokazuj wiersze $1 do $2 z $3
 ui_rowlabel=$2 w wierszu $1 :
 ui_filterbox=Wpisz filtr..
+
 header_statusmsg=$1 zalogowany do $2 $3 na $4 ($5)
+
 uptracker_title=Wysyłanie pliku
 uptracker_file=Nazwa pliku
 uptracker_size=Rozmiar
@@ -284,6 +312,7 @@ uptracker_pc=Postęp
 uptracker_eid=Nie określono ID uploadu
 uptracker_eid2=ID uploadu jest niewłaściwe!
 uptracker_of=$1 z $2
+
 wsearch_title=Szukaj $1
 wsearch_modt=Moduł
 wsearch_mtitle=Nazwa modułu
@@ -311,6 +340,7 @@ wsearch_hmod=Moduł
 wsearch_moddir=URL /$1/
 wsearch_searching=Wyszukiwanie $1 . .
 wsearch_found=znaleziono $1 pozycji :
+
 sql_emysqldriver=Nie udało się załadować sterownika MySQL DBI
 sql_emysqlconnect=Nie udało się połączyć z bazą MySQL : $1
 sql_epostgresqldriver=Nie udało się załadować sterownika PostgreSQL DBI

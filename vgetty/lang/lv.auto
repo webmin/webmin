@@ -2,6 +2,7 @@ index_title=Balss pasta serveris
 index_ecmd=Vgetty komanda $1 jūsu sistēmā netika atrasta. Varbūt tas nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 index_econfig=Vgetty konfigurācijas fails $1 jūsu sistēmā netika atrasts. Varbūt tas nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 index_return=balss pasta indekss
+
 vgetty_title=Sērijas porta konfigurācija
 vgetty_desc=Lai jūsu serveris atbildētu uz balss zvaniem ar modemu, kas savienots ar seriālo portu, tam jābūt uzskaitītam zemāk. Pievienojot portu šim sarakstam, programma $1 tiks konfigurēta, lai atbildētu uz zvaniem un atskaņotu ziņojumu.
 vgetty_add=Pievienojiet jaunu seriālo portu
@@ -32,6 +33,7 @@ vgetty_erings=Trūkst vai nav derīgs gredzenu skaits
 vgetty_erings2=Gredzenu skaitam jābūt vismaz 2
 vgetty_eans=Nav izvēlēts neviens atbildēšanas režīms
 vgetty_eclash=Sērijas ports $1 jau tiek izmantots
+
 options_title=Balss pasta servera opcijas
 options_header=Visu seriālo portu opcijas
 options_maxlen=Maksimālais ziņojuma garums
@@ -68,6 +70,7 @@ options_eprog=Trūkst vai nav programmas, kas darbotos
 options_eowner=Trūkst vai nav derīgs Unix lietotājs ziņojumu failiem
 options_egroup=Trūkst vai nav derīga Unix grupa ziņojumu failiem
 options_emode=Trūkst vai nav derīgas ziņojumu failu astoņkāju atļaujas
+
 received_title=Saņemtie ziņojumi
 recieved_desc=Tālāk ir norādīti balss pasta ziņojumi, kurus ir saņēmis jūsu serveris. Lai noklausītos ziņojumu, pirmajā kolonnā noklikšķiniet uz datuma/laika.
 received_none=Neviens saņemts balss pasta ziņojums netika atrasts.
@@ -79,9 +82,12 @@ received_delete=Dzēsiet atlasītos ziņojumus
 received_move=Pārvērst atlasītos sveicienos
 received_all=Izvēlēties visus
 received_invert=Apgrieztā atlase
+
 listen_efile=Nederīgs ziņojuma faila nosaukums!
 listen_epath=Balss pasta ziņojums vairs nepastāv
+
 delete_efile=Nederīgs ziņojuma faila nosaukums!
+
 messages_title=Apsveikuma ziņojumi
 messages_desc=Šajā lapā ir uzskaitīti apsveikuma ziņojumi, kas tiks atskaņoti, kad zvanītājs izveidos savienojumu ar jūsu balss pasta serveri. Ja jums ir vairāk nekā viens, tiks izmantots viens nejauši izvēlēts ziņojums.
 messages_file=Faila nosaukums
@@ -89,12 +95,15 @@ messages_none=Apsveikuma ziņojumi nav pieejami.
 messages_updesc=Šī forma ļauj augšupielādēt papildu apsveikuma ziņojuma WAV failu, kas tiks pārveidots izvēlētajā formātā, lai to izmantotu jūsu modems. Augšupielādētā WAV izlases likmei jābūt tādai pašai kā saņemto ziņojumu izlases likmei, tāpat kā izvēlētajam formātam.
 messages_upload=Augšupielādēt ziņojumu
 messages_fmt=konvertēt uz
+
 pvfdesc=$1, $2 biti
+
 upload_err=Neizdevās pievienot ziņojumu
 upload_emessage=Nav atlasīts WAV fails
 upload_ewav=Neizdevās konvertēt WAV failu : $1 
 upload_epvf=Neizdevās izveidot RMD failu : $1 
 upload_esame=Ziņojuma fails $1 jau pastāv
+
 log_apply=Lietotā konfigurācija
 log_upload=Augšupielādēts sveiciena ziņojums $1 
 log_move=Pārveidoti $1 saņemtie ziņojumi
@@ -104,5 +113,6 @@ log_options=Mainītas balss pasta iespējas
 log_vgetty_create=Pievienots sērijas ports $1 
 log_vgetty_modify=Pārveidots seriālais ports $1 
 log_vgetty_delete=Dzēsts sērijas ports $1 
+
 email_subject=Balss pasta ziņojums
 email_body=Balss pasta ziņojums saņemts no $1 līdz $2.

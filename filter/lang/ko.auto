@@ -45,6 +45,7 @@ index_ondate=데이트
 index_charset=자동 회신 메시지 문자 세트
 index_subject=자동 회신 메시지 제목
 index_nowebmin=이 모듈은 Usermin에서만 사용됩니다. Webmin에 표시되면 사용중인 테마가 불완전한 것입니다.
+
 edit_title1=필터 만들기
 edit_title2=필터 편집
 edit_header1=필터 조건
@@ -71,6 +72,7 @@ edit_amode7=라는 새 폴더에 저장
 edit_nobounce=바운스 메시지 전달 금지
 edit_apply=폴더에 일치하는 이메일 표시 :
 edit_move=폴더의 이메일에 적용 :
+
 save_err=필터를 저장하지 못했습니다
 save_egone=필터가 더 이상 존재하지 않습니다!
 save_econdheader=이메일 헤더가 없거나 잘못되었습니다
@@ -89,8 +91,10 @@ save_enewfolder3=같은 이름의 폴더가 이미 존재합니다
 save_estart=잘못된 자동 회신 시작 날짜
 save_eend=잘못된 자동 회신 종료 날짜
 save_echarset=자동 회신 문자 집합이 없거나 잘못되었습니다
+
 delete_err=필터를 삭제하지 못했습니다
 delete_enone=선택된 사항 없음
+
 aliases_type1=주소 1
 aliases_type2=파일 $1 의 주소
 aliases_type3=파일 $1 
@@ -101,6 +105,7 @@ aliases_your=사서함
 aliases_delete=메일 삭제
 aliases_other=사용자 $1 의 사서함
 aliases_auto=메시지가 $1 인 자동 응답기
+
 auto_title=이메일 자동 회신
 auto_header=자동 이메일 회신 옵션
 auto_enabled=자동 응답이 가능합니까?
@@ -111,12 +116,14 @@ auto_charsetdef=현재 언어에서
 auto_charsetother=다른 문자 세트
 auto_period=답글 사이의 최소 간격
 auto_err=자동 회신을 저장하지 못했습니다
+
 forward_title=이메일 전달
 forward_header=이메일 전달 옵션
 forward_enabled=이메일 전달이 가능합니까?
 forward_to=주소로 전달
 forward_cont=정상적으로 배달합니까?
 forward_err=이메일 전달을 저장하지 못했습니다
+
 move_err=필터를 적용하지 못했습니다
 move_esrc=소스 폴더 $1 이 (가) 없습니다!
 move_edest=대상 폴더 $1 이 (가) 없습니다!

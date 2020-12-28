@@ -22,6 +22,7 @@ index_auto=البحث عن الخوادم تلقائيا
 index_automsg=انقر على هذا الزر لإعداد الاكتشاف الدوري التلقائي لخوادم Webmin الجديدة على شبكتك.
 index_search=إظهار الخوادم المطابقة:
 index_ok=البحث
+
 edit_title=تحرير الخادم
 create_title=تسجيل الخادم
 edit_details=تفاصيل الخادم
@@ -57,6 +58,7 @@ edit_baduser=تسجيل الدخول مرفوض
 edit_invalid=لا يمكن للمستخدم القيام بـ RPC
 edit_version=تشغيل Webmin $1
 edit_same=متاح فقط في وضع مصادقة الجلسة ، وعندما تكون كلمة المرور متاحة لبرامج Webmin.
+
 save_err=فشل حفظ الخادم
 save_ehost=اسم مضيف مفقود أو غير صالح
 save_ehost2=المضيف غير موجود
@@ -67,6 +69,7 @@ save_epass=كلمة مرور مفقودة
 save_egroup=اسم المجموعة مفقود
 save_elogin=تسجيل الدخول أو كلمة المرور غير صالحة للاستضافة
 save_egroup2=اسم مجموعة جديد غير صالح
+
 find_title=البحث عن الخوادم
 find_new=تم العثور على خادم جديد في $1
 find_but=تم العثور على خادم جديد قي $1, ولكن فشلت المصادقة: $2
@@ -81,16 +84,20 @@ find_ecannot=غير مسموح لك بالعثور على الخوادم
 find_scanning=جارٍ البحث عن الخوادم في الشبكة $1 ..
 find_broading=البث للخوادم على العناوين $1 ..
 find_eport=رقم المنفذ المفقود أو غير الصحيح
+
 log_modify=الخادم المعدل $1
 log_create=الخادم المسجل $1
 log_delete=الخادم المحذوف $1
 log_find=العثور على الخادم $1
 log_deletes=المحذوفة $1 خوادم
+
 link_elogin=فشل تسجيل الدخول إلى $1 كـ $2
 link_ecannot=غير مسموح لك باستخدام هذا الخادم
 link_essl=ليس لديك مكتبة Perl Net :: SSLeay مثبتة
 link_eautologin=تسجيل الدخول أو كلمة المرور غير صالحة لـ $1. <a href='$2'>انقر هنا</a> لإعادة المحاولة.
+
 lib_other=آخر
+
 acl_edit=يستطيع تحرير الخوادم؟
 acl_find=يستطيع العثور على الخوادم؟
 acl_servers=يستطيع استخدام الخوادم
@@ -102,6 +109,7 @@ acl_forcefast=وضع RPC السريع على الوضع الافتراضي؟
 acl_forcetype=نوع نظام التشغيل Force الافتراضي؟
 acl_forcelink=نوع تسجيل الدخول إلى الوضع الافتراضي؟
 acl_links=يستطيع الاتصال بالخوادم؟
+
 login_title=تسجيل الدخول إلى الخادم
 login_desc=يجب عليك إدخال اسم مستخدم وكلمة مرور لتسجيل الدخول إلى خادم Webmin $1.
 login_header=مصادقة Webmin
@@ -109,13 +117,16 @@ login_user=اسم المستخدم
 login_pass=كلمة المرور
 login_login=الدخول
 login_esame=خيار استخدام نفس تسجيل الدخول مثل هذا الخادم يمكن استخدامه فقط عندما لا يكون في وضع مصادقة الجلسة، وعندما تكون كلمة المرور متاحة لبرامج Webmin.
+
 this_server=هذا الخادم
+
 delete_err=فشل حذف الخوادم
 delete_enone=لا شيء محدد
 delete_ecannot=غير مسموح لك بحذف الخوادم
 delete_title=حذف الخوادم
 delete_rusure=هل أنت متأكد من أنك تريد إزالة خوادم $1 المحددة؟
 delete_confirm=حذف الآن
+
 auto_title=البحث عن الخوادم تلقائيًا
 auto_header=خيارات تسجيل الخادم التلقائي
 auto_sched=تحقق من الخوادم الجديدة؟
@@ -141,8 +152,10 @@ auto_smtp=إرسال عبر خادم SMTP
 auto_self=هذا النظام
 auto_esmtp=خادم SMTP مفقود أو غير صالح
 auto_findself=سجل هذا النظام أيضًا؟
+
 config_deftype=نوع النظام الافتراضي
 config_typeauto=تلقائي
+
 email_regsubject=تم تسجيل النظام $1
 email_reg=تم تسجيل النظام $1 تلقائيًا.
 email_unregsubject=لم يتم تسجيل النظام $1

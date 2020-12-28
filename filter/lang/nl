@@ -42,6 +42,7 @@ index_astart=Verstuur geen auto-antwoord voordat
 index_aend=Stuur geen auto-antwoord nadat
 index_charset=Auto-antwoord berichten karakter set
 index_nowebmin=Deze module kan alleen gebruikt worden in Usermin. Wanneer het zichtbaar is in Webmin is de theme die U gebruikt incompleet.
+
 edit_title1=Maak Filter
 edit_title2=Bewerk Filter
 edit_header1=Voorwaarde voor filter
@@ -66,6 +67,7 @@ edit_continue=Ga door met andere filter regels, zelfs na toevoegen van deze acti
 edit_amode6=Stuur automatisch antwoord
 edit_amode7=Opslaan naar nieuwe folder genaamd
 edit_nobounce=Onderdruk doorsturen van afgeketste berichten
+
 save_err=Mislukt om filter op te slaan
 save_econdheader=Ontbrekende of ongeldige email header
 save_econdlevel=Minimum spam score moet een integer zijn groter dan nul (0)
@@ -83,8 +85,10 @@ save_enewfolder3=Een folder met dezelfde naam bestaat al
 save_estart=Ongeldig auto-antwoord start datum
 save_eend=Ongeldig auto-antwoord eind datum
 save_echarset=Ontbrekende of ongeldige auto-antwoord karakter set
+
 delete_err=Mislukt om filters te verwijderen
 delete_enone=Niets geselecteerd
+
 aliases_type1=Adres $1
 aliases_type2=Adressen in file $1
 aliases_type3=File $1
@@ -95,6 +99,7 @@ aliases_your=Uw mailbox
 aliases_delete=Verwijder mail
 aliases_other=Mailbox van gebruiker $1
 aliases_auto=Autoresponder met bericht $1
+
 auto_title=Automatisch email antwoord
 auto_header=Automatische email antwoord opties
 auto_enabled=Automatisch antwoorden aanzetten?
@@ -104,6 +109,7 @@ auto_charsetdef=Van de huidige taal
 auto_charsetother=Andere karakter set
 auto_period=Minimale interval tussen antwoorden
 auto_err=Mislukt om automatisch antwoorden op te slaan
+
 forward_title=Doorsturen Email
 forward_header=Email doorstuur opties
 forward_enabled=Email doorsturen aangezet?

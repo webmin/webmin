@@ -16,8 +16,10 @@ index_type=SSH-nøgeltype:
 index_rsa1=RSA (for SSH v1)
 index_rsa=RSA (for SSH v2)
 index_dsa=DSA (for SSH v2)
+
 bits=bits
 secs=sekunder
+
 users_title=Godkendelse
 users_header=Indstillinger for login og godkendelse
 users_expire=Dage før konto udløber for at advare bruger
@@ -54,6 +56,7 @@ users_eauthkeys=Manglende eller ugyldigt udseende autoriseret nøglefil
 users_maxauthtries=Maksimum loginforsøg pr. Forbindelse
 users_emaxauthtries=Manglende eller ikke-numerisk antal loginforsøg pr. Forbindelse
 users_chal=Brug autentificering af udfordringssvar?
+
 net_title=Netværk
 net_header=Netværksindstillinger
 net_port=Lyt på havn
@@ -91,6 +94,7 @@ net_eprots=Du skal vælge mindst en protokol
 net_eladdress='$1' er ikke en gyldig adresse at lytte til
 net_elport='$1' er ikke en gyldig port at lytte til
 net_elisten2=Ingen indtastede adresser at lytte til
+
 access_title=Adgangskontrol
 access_header=Indstillinger for adgangskontrol til netværk og login
 access_allowu=Tillad kun brugere
@@ -108,6 +112,7 @@ access_eallowg=Ingen grupper tilladt indtastet
 access_edenyg=Ingen grupper at nægte indtastet
 access_eallowh=Ingen værter at tillade indtastet
 access_edenyh=Ingen værter at nægte indtastet
+
 misc_title=Diverse muligheder
 misc_header=Andre diverse SSH-serverindstillinger
 misc_x11=Tillad viderestilling af X11-forbindelse?
@@ -131,14 +136,17 @@ misc_eumask=Manglende eller ugyldig 4-cifret octal umask
 misc_ebits=Manglende eller ugyldig servernøglestørrelse
 misc_eregen=Manglende eller ugyldig nøgleregenerationsinterval
 misc_epid=Manglende PID-filsti
+
 start_err=Kunne ikke starte SSH-server
 apply_epid=Kører ikke
+
 hosts_title=Indstillinger for klienthost
 hosts_header=SSH-klientværter
 hosts_none=Der er ikke defineret nogen klienthostindstillinger. Alle SSH-klientlogins bruger standardindstillingerne.
 hosts_all=Alle værter
 hosts_add=Tilføj muligheder for klient vært.
 hosts_return=klient vært liste
+
 host_create=Tilføj værtindstillinger
 host_edit=Rediger værtsindstillinger
 host_header=Klientindstillinger for SSH-vært
@@ -194,6 +202,7 @@ host_eprots=Du skal vælge mindst en protokol
 host_proxy=Forbindelse proxy kommando
 host_proxy_def=Ingen
 host_eproxy=Manglende eller ugyldig-ser forbindelsesproxy-kommando
+
 log_users=Ændrede godkendelsesindstillinger
 log_net=Ændrede netværksindstillinger
 log_access=Ændret adgangskontrol
@@ -208,6 +217,7 @@ log_stop=Stopet SSH-server
 log_start=Startet SSH-server
 log_apply=Anvendt konfiguration
 log_manual=Manuel redigering af konfigurationsfil $1
+
 sync_title=Bruger SSH-nøgleopsætning
 sync_desc=Denne side giver dig mulighed for at konfigurere den automatiske opsætning af SSH til nye Unix-brugere, der er oprettet på dit system. Hvis de er konfigureret, behøver nye brugere ikke at køre <tt>ssh-keygen</tt> før de bruger SSH.
 sync_create=Opsætning af SSH-nøgle til nye Unix-brugere?
@@ -216,9 +226,11 @@ sync_pass=Brug adgangskode som nøgleordssætning?
 sync_gnupg=Opsæt GNUPG-nøgle til nye Unix-brugere.
 sync_type=Nøgletype
 sync_auto=&lt;Automatisk&gt;
+
 keys_title=Vært SSH-nøgler
 keys_desc=På denne side kan du se SSH-nøglerne til denne vært.
 keys_none=Kunne ikke finde nogen HostKey-poster i din SSHD-konfiguration.
+
 manual_title=Rediger konfigurationsfiler
 manual_ecannot=Du har ikke tilladelse til at redigere konfigurationsfilen til SSH-serveren
 manual_ok=Redigere
@@ -226,5 +238,6 @@ manual_efile=Den valgte fil er ikke en del af SSH-serverkonfigurationen
 manual_file=Rediger konfigurationsfil:
 manual_edata=Intet indtastet!
 manual_err=Kunne ikke gemme konfigurationsfilen
+
 dknown_err=Kunne ikke slette kendte værter
 dknown_enone=Ingen valgt

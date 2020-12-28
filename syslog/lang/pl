@@ -24,8 +24,10 @@ all=Wszystkie
 index_view=Wyświetl..
 index_viewfile=Wyświetl plik loga:
 index_viewok=Wyświetl
+
 restart_ekill=Nie udało się wysłać sygnału do procesu sysloga $1 : $2
 restart_ecannot=Nie masz uprawnień do restartu sysloga
+
 start_ecannot=Nie masz uprawnień do uruchomienia sysloga
 edit_title=Zmień Log Systemowy
 create_title=Dodaj log systemowy
@@ -56,11 +58,13 @@ edit_tag=Tylko dla programu
 edit_return=szczegółów loga
 edit_ecannot=Nie masz uprawnień do edycji ustawień loga
 edit_ecannot2=Nie masz uprawnień do edycji tego loga
+
 view_title=Wyświetl log
 view_header=Ostatnie $1 linii $2
 view_empty=Plik loga jest pusty
 view_refresh=Odśwież
 view_filter=Wyświetl tylko linie z tekstem $1
+
 save_err=Nie udło sie zapisać logu
 save_efile='$1' nie jest poprawną nazwą pliku : $2
 save_epipe='$1' nie jest poprawnym nazwanym potokiem
@@ -80,11 +84,13 @@ save_ecannot5=Nie masz uprawnień do zmodyfikowania tego loga
 save_ecannot6=Nie masz uprawnień do wyświetlania dowolnych logów
 save_ecannot7=Nie masz uprawnień do wyświetlenia tego dodatkowego loga
 save_emissing=Brak pliku loga do wyświetlenia
+
 log_modify=Zmieniono log do $1
 log_create=Dodano log do $1
 log_delete=Usunięto log do $1
 log_apply=Zastosowano zmiany
 log_start=Uruchom serwer logów
+
 desc_sysmesg=Komunikaty systemu
 desc_mail=Log poczty
 desc_auth=Log autoryzacji
@@ -93,6 +99,7 @@ desc_news=Log NNTP
 desc_uucp=Log UUCP
 desc_debug=Komunikaty uruchamiania
 desc_cron=Log zadań crona
+
 acl_noedit=Może tylko wyświetlać logi?
 acl_any=Może wyświetlać dowolny plik jako log?
 acl_logs=Może wyświetlać i konfigurować pliki logów

@@ -28,6 +28,7 @@ index_tabinstall=Installiere Module
 index_tabsuggest=Empfohlene Module
 index_allmods2=Fehlende Module, die von Webmin verwendet werden
 index_wantmods=Module zum installieren
+
 download_err=Fehler beim Installieren des Moduls
 download_elocal=Keine lokale Datei angegeben
 download_elocal2='$1' ist nicht vorhanden
@@ -65,6 +66,7 @@ download_ebuild=Ein oder mehrere der Perl-Module benötigen $1 um gebaut zu werd
 download_yum=Installiere Perl Module $1 vom Paket $2 ..
 download_missingok=Module fehlend von CPAN
 download_fallback=Einige Module konnten nicht von den Packages installiert werden, versuche die Installation stattdessen von der Quelle ..
+
 install_title=Installiere Modul
 install_untar=Entpacke Moduldateien
 install_make=Kompiliere Modul
@@ -84,11 +86,13 @@ install_err2=Sie können das Modul von CPAN auch installieren mit dem Befehl $1.
 install_exec=Starte $1 ..
 install_efile=Moduldatei $1 ist nicht mehr vorhanden
 install_needunlink=Sie können nun einen erneuten Installationsversuch starten, in dem Sie auf die vorherige Seite zurückkehren und andere Optionen auswählen. Ansonsten <a href='$1'>klicken Sie hier um temporär angelegte Dateien zu löschen</a> damit Festplattenplatz freigegeben werden kann.
+
 cpan_sel=Module unter $1 ..
 cpan_title=Wählen Sie das Perl-Modul
 cpan_search=Finde Module mit dem Namen:
 cpan_match=Passende(s) Modul(e) $1 ..
 cpan_none=Keine Übereinstimmung gefunden.
+
 edit_title=Modul-Details
 edit_header=Modulinformation
 edit_mod=Modulname
@@ -105,6 +109,7 @@ edit_method=Installiert von
 edit_rpm=RPM-Paket $1
 edit_debian=Debianpaket $1
 edit_manual=Manuelle Installation eines Perl-Modules
+
 uninstall_title=Deinstalliere Module
 uninstall_rusure=Sind Sie sicher, daß Sie das Perl-Modul $1 deinstallieren wollen? Die folgenden Dateien werden gelöscht:
 uninstall_rusure2=Sind Sie sicher, daß Sie das Perl-Modul $1 und Untermodul(e) $2 deinstallieren wollen? <br> Die folgenden Dateien werden gelöscht:
@@ -112,7 +117,9 @@ uninstall_ok=Jetzt deinstallieren
 uninstall_rpm=Das Modul wird durch die Deinstallation des RPM-Paketes $1 deinstalliert.
 uninstall_debian=Dieses Modul wird durch die Deinstallation des $1 Debianpaketes entfernt.
 uninstall_err=Konnte Modul nicht deinstallieren
+
 delete_efile=Ungültige Paketdatei!
+
 uninstalls_title=Deinstalliere ausgewählte Module
 uninstalls_err=Fehler beim Deinstallieren der Module
 uninstalls_enone=Keine Module ausgewählt

@@ -19,6 +19,7 @@ index_nostrftime=Pozor - některé úkoly zálohy používají v názvu souboru 
 index_tabsched=Naplánované zálohy
 index_tabbackup=Spustit zálohu
 index_tabrestore=Spustit obnovu
+
 edit_title1=Vytvořit plánovač záloh
 edit_title2=Upravit plánovač záloh
 edit_header=Volby pro naplánování záloh
@@ -38,9 +39,11 @@ edit_nofiles=Konfigurační soubory serveru
 edit_run=Ihned uložit a zazálohovat
 edit_return=formulář pro zálohu
 edit_other=Jiné soubory ze seznamu ..
+
 save_err=Chyba při ukládání zálohy
 save_emods=Nebyly vybrány žádné moduly
 save_ewebmin=Nebyly vybrány konfigurace ani serveru ani webminu
+
 backup_mode0=Lokální soubor
 backup_mode1=FTP server
 backup_mode2=SSH server
@@ -57,6 +60,7 @@ backup_egunzip=Záloha je kompresována, avšak <tt>gunzip</tt> není nainstalov
 backup_euntar=Chyba v un-TAR : $1
 backup_enone2=Žádné soubory z vybraných modulů nejsou v záloze
 backup_epre2=Modulem $1 byla odmítnuta obnova : $2
+
 backup_err=Chyba při zálohování
 backup_edest=Chybějící nebo nesprávná absolutní cesta k lokálnímu souboru
 backup_eserver1=Chybějící nebo chybný FTP server
@@ -72,27 +76,32 @@ backup_title=Nastavení zálohování
 backup_doing=Počáteční záloha modulu pro konfigurační soubory na $1 ..
 backup_failed=.. chyba! $1
 backup_done=.. hotovo. Konečná velikost zálohy je $1, přičemž obsahuje $2 souborů.
+
 restore_err=Chyba při obnově
 restore_title=Konfigurace obnovy
 restore_doing=Spustila se obnova konfiguračních souborů modulu z $1 ..
 restore_failed=.. chyba! $1
 restore_done=.. hotovo. $1 souborů bylo obnoveno.
+
 nice_ftp=$2 na $1 přes FTP
 nice_ftpp=$2 na $1 portu $3 přes FTP
 nice_ssh=$2 na $1 přes SSH
 nice_sshp=$2 na $1 portu $3 přes SSH
 nice_upload=nahrán soubor
 nice_download=prohlížeč
+
 log_backup=Zazálohováno $1 modulů do $2
 log_restore=Obnoveno $1 modulů z $2
 log_create_backup=Vytvořena záloha $1 modulů do $2
 log_modify_backup=Upravena záloha $1 modulů do $2
 log_delete_backup=Smazána záloha $1 modulů do $2
 log_run_backup=Spuštěna záloha $1 modulů do $2
+
 run_title=Zálohovat konfigurace
 run_doing=Spustila se záloha $1 modulů do $2 ..
 run_ok=.. záloha byla úspěšná.
 run_failed=.. záloha nebyla úspěšná! Chcete-li vědět důvod, podívejte se na výše uvedenou chybovou hlášku.
+
 email_mods=Zálohovat moduly :
 email_failed=do $1 je neúspěšná :
 email_ok=do $1 je úspěšná.

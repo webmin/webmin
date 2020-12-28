@@ -7,6 +7,7 @@ index_inetd=현재 Webmin 이 <tt>inetd</tt> 로 작동하고 있기 때문에, 
 index_apache=현재 Webmin 이 apache 에서 작동을 하고 있기 때문에, 이 옵션을 활성화 하지 않아도 됩니다.
 index_restart=Webmin 재시작
 index_restartmsg=Webmin 프로세스를 재시작 하기 위해서 이 버튼을 클릭 하십시오. 최근에 펄을 업그레이드 했다면, 이 작업이 필요 합니다.
+
 access_title=IP 접근 제어
 access_desc=이 양식에서는 특정 IP 주소의 Webmin 서버 접근를 거부하거나 허용하도록 Webmin 서버를 구성할 수 있습니다. 호스트 이름(예: foo.bar.com)과 IP 네트워크(예: 10.254.3.0 또는 10.254.1.0/255.255.255.128)도 입력할 수 있습니다. 신뢰할 수 있는 서버 주소(특히 인터넷에서 접근할 수 있는 서버인 경우)에만 접근할 수 있어야 합니다. 그렇지 않으면 패스워드를 유추해서 침입한 사람이 시스템을 완전히 제어할 수도 있습니다.
 access_ip=허락된 IP 주소
@@ -24,6 +25,7 @@ access_eip='$1'은(는) 완전한 IP 또는 네트워크 주소가 아닙니다
 access_ehost='$1'의 IP 주소를 찾지 못했습니다
 access_eself=현재 IP 주소($1)가 거부됩니다
 access_always=모든 질의에 대해 hostname 을 resolve 합니다.
+
 bind_title=포트 및 주소
 bind_desc2=이 폼은 Webmin 이 귀 기울일 포트 번호를 변경하거나 시스템에 오직 하나의 IP 주소에 귀를 기울이도록 하는데 사용할 수 있습니다. 또는 여러 포트에 연결을 할 수 있도록 설정할 수 있으며, 여러 IP 주소에 귀 기울이도록 할 수도 있습니다. 주의 - 포트나 바인딩 된 주소가 변경이 된후에, 웹 브라우저가 다시 접속해야 할 수 있습니다.
 bind_header=IP 주소 및 포트
@@ -46,6 +48,7 @@ bind_erestart=새로운 주소와 포트 설정으로 Webmin 을 시작동 에�
 bind_elisten=UDP broadcast 를 수신할 포트가 누락 되었거나 유효하지 않습니다.
 bind_ehostname=웹서버 호스트 이름이 누락 되었거나 유효하지 않습니다.
 bind_resolv_myname=접속된 IP 주소의 이름을 체크하겠습니까?
+
 log_title=로그
 log_desc=웹 서버 방문 횟수에 대한 로그를 표준 CLF 로그 파일 형식으로 기록하도록 Webmin을 구성할 수 있습니다. 로그 기능을 설정한 경우에는 기록될 IP 주소나 호스트 이름의 기록 여부와 로그 파일의 지우기 빈도도 선택할 수 있습니다. 이 경우 로그는 $1 파일에 기록됩니다.
 log_desc2=로그 기능을 설정한 경우, Webmin은 보다 자세한 사용자 동작 로그를 $1 파일에 기록합니다. Webmin 동작 로그 모듈을 사용하여 이 로그를 보거나 분석하면 각각의 Webmin 사용자가 수행한 동작을 정확히 알 수 있습니다.
@@ -71,6 +74,7 @@ log_ediff=시스템에 파일 변경 내용을 로그하는 데 필요한 명령
 log_perms=로그 파일 퍼미션
 log_eperms=(755와 같은) 10진수 퍼미션이 누락되었거나 유효하지 않습니다.
 log_syslog=syslog 에도 로그를 남기겠습니까?
+
 proxy_title=프록시 서버
 proxy_desc=Webmin을 실행 중인 호스트에 특정 방화벽이 사용된 경우에는 웹 사이트와 FTP 사이트에 접근하는 데 사용할 프록시 서버를 설정해야 합니다. 특정 모듈(예:<tt>소프트웨어 패키지</tt>)에서는 파일이나 프로그램을 다운로드할 때 이 프록시를 사용합니다.
 proxy_header=프록시 서버
@@ -113,6 +117,7 @@ proxy_return=프락시 서버와 다운로드
 proxy_tabproxy=프락시
 proxy_tabdown=다운로드
 proxy_fallback=프락시가 다운되었다면, 직접 질의를 요청 하도록 하겠습니까?
+
 ui_title=사용자 인터페이스
 ui_desc=이 양식에서는 모든 모듈에 사용되는 사용자 인터페이스 옵션을 편집할 수 있습니다. 색상을 입력할 때는 표준 RGB 시스템을 사용하여 각각의 색상을 지정해야 합니다(0x00과 0xff 사이의 16진수 값).
 ui_header=사용자 인터페이스 옵션
@@ -159,6 +164,7 @@ ui_dateformat_dd/mon/yyyy=dd/mon/yyyy (예 16/Sep/2001)
 ui_dateformat_dd/mm/yyyy=dd/mm/yyyy (예 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/yyyy (예 09/16/2001)
 ui_dateformat_yyyy/mm/dd=yyyy/mm/dd (예 2001/09/16)
+
 mods_title=Webmin 모듈
 mods_desc1=설치한 후에는 오른쪽 양식을 사용하여 Webmin 모듈을 추가할 수 있습니다. 모듈은 일반적으로 <tt>.wbm</tt> 파일로 배포됩니다. 각 파일에는 하나 이상의 모듈이 포함될 수 있습니다. 운영 체제에서 지원하는 경우에는 RPM 파일로부터 모듈을 설치할 수도 있습니다.
 mods_installsource=설치 위치
@@ -201,6 +207,7 @@ mods_tabinstall=설치
 mods_tabclone=복제
 mods_tabdelete=삭제
 mods_tabexport=내보내기
+
 install_err1=$1에서 모듈을 설치하지 못했습니다
 install_efile=파일이 존재하지 않습니다
 install_err2=업로드한 모듈을 설치하지 못했습니다
@@ -234,10 +241,12 @@ install_cat=$1 카테고리 하위.
 install_eneither=RPM 에 webmin 모듈 또는 테마가 포함이 되어 있지 않습니다.
 install_err4=표준 모듈 설치 실패
 install_emissing=지정된 모듈이 존재하지 않음
+
 clone_err=모듈을 복제하지 못했습니다
 clone_elink=심볼릭 링크 실패: $1
 clone_ecopy=구성을 복사하지 못했습니다: $1
 clone_desc=$1의 복제
+
 delete_err=모듈을 삭제하지 못했습니다
 delete_edep=모듈 $2이(가) 종속되어 있으므로 모듈 $1을(를) 삭제할 수 없습니다
 delete_desc1=$1($2의 복제)
@@ -249,6 +258,7 @@ delete_rusure2=테마 $2을(를) 삭제하시겠습니까? 파일의 $1 kB 가 �
 delete_rusure3=모듈 복제 $2을(를) 삭제하시겠습니까?
 delete_acls=유저 삭제후, 접근 제어 설정을 초기화 하겠습니까?
 delete_enone=선택된 모듈 없음
+
 os_title=운영 체제
 os_desc3=이 페이지는 Webmin 설치시에 감지된 OS 와 현재 감지된 OS 를 출력합니다. 만약, 필요에 의해 최근 업데이트를 하여 다를 경우에는 Webmin 의 OS 정보를 갱신할 수 있습니다.
 os_desc2=또한 프로그램을 실행할 때 Webmin에 사용되는 검색 경로와 모든 프로그램에 전달되는 공유 라이브러리 경로도 변경할 수 있습니다.
@@ -269,6 +279,7 @@ os_eversion=운영체제 버전을 알 수 없음
 os_eiversion=내부 운영체제 버전을 알 수 없음
 os_incorrect=경고 - 이 시스템은 실제 $1 버전 $2(이)가 실행중입니다.
 os_fix=감지된 운영체제 업데이트
+
 lang_title=언어
 lang_title2=Webmin 언어
 lang_lang=표시 언어
@@ -280,6 +291,7 @@ lang_chardef=Determined by language
 lang_charover=강제 문자셋 설정
 lang_err=언어 저장 실패
 lang_echarset=문자셋이 없거나, 알 수 없음
+
 ssl_title=SSL 암호화
 ssl_essl=펄 모듈 Net::SSLeay 를 시스템에서 찾을 수 없거나 설치가 되어 있지 않습니다. OpenSSL 라이브러리와 Net::SSLeay 를 설치하기 위해서 Webmin 웹사이트의 <a href='$1'>지시사항</a>을 참고 하십시오.
 ssl_cpan=대신, 필요한 펄 모듈 Net::SSLeay 는 Webmin <a href='$1'>다운로드와 설치</a>에서 구할 수 있습니다.
@@ -339,6 +351,7 @@ ssl_pem=PEM 형식
 ssl_pkcs12=PKCS12 형식
 ssl_current=이 섹션에서 현재 Webmin 인증서의 상세사항을 볼 수 있으며, 다운로드 하여 브라우저에 저장할 수 있습니다.
 ssl_edownload=인증서에서 PEM 데이터를 푸는데 실패했습니다.
+
 newkey_err=SSL 키 생성 실패
 newkey_ecn=서버 이름이 없거나 유효하지 않습니다.
 newkey_efile=키 파일 이름이 없습니다.
@@ -350,6 +363,7 @@ newkey_ok=다음 SSL 키 생성에 성공했습니다.
 newkey_esize=키 크기가 없거나 유효하지 않습니다.
 newkey_edays=만료전의 남은 날에 대한 값이 없거나 유효하지 않습니다.
 newkey_ecountry=국가 코드는 2자리 철자여야 합니다.
+
 startpage_title=인덱스 페이지 옵션
 startpage_intro2=이 페이지에서 Webmin의 메인 메뉴의 모양을 조절할 수 있습니다. 어떤 옵션은 기본 테마를 사용할 경우에만 영향을 미치게 됩니다.
 startpage_tabs=모듈 범주를 지정합니까?
@@ -361,6 +375,7 @@ startpage_deftab=기본 범주
 startpage_nohost=타이틀에서 버전, 호스트이름 OS 를 보겠습니까?
 startpage_gotonone=&lt;없음&gt;
 startpage_gotomodule=로그인 후, 항상 모듈로 이동
+
 upgrade_title=Webmin 업그레이드
 upgrade_desc=이 양식에서는 전체 Webmin 설치를 새 버전으로 업그레이드할 수 있습니다. 로컬 파일, 업로드한 파일 또는 최신 버전의 파일(<a href=http://www.webmin.com/>www.webmin.com</a>)로부터 설치할 수 있습니다. 수동 업그레이드의 경우와 마찬가지로, 모든 구성 설정과 타사 모듈이 그대로 유지됩니다.
 upgrade_descrpm=이 양식에서는 RPM의 업그레이드 옵션을 사용하여 전체 Webmin 설치를 새 버전으로 업데이트할 수 있습니다. 로컬 RPM 파일, 업로드한 파일 또는 최신 버전의 파일(<a href=http://www.webmin.com/>www.webmin.com</a>)로부터 설치할 수 있습니다. 수동 업그레이드의 경우와 마찬가지로, 모든 구성 설정과 타사 모듈이 그대로 유지됩니다.
@@ -422,10 +437,12 @@ upgrade_tabupgrade=Webmin 업그레이드
 upgrade_tabgrants=새 모듈 권한
 upgrade_tabupdate=모듈 업데이트
 upgrade_tabsched=일정 업데이트
+
 newmod_desc=Webmin 을 업그레이드 할때, 새로운 버전의 어떠한 새 모듈들은 하나 또는 그 이상의 사용자에게 의도하지 않은 권한이 주어질 수 있습니다. 이 폼은 새 모듈의 권한을 받을 사용자들을 설정할 수 있습니다. 이 설정은 명령행이나 상단의 폼을 이용하여 업그레이드 했을 때 적용이 됩니다.
 newmod_header=새로운 모듈 권한
 newmod_def=기본 행동 - 새로운 모듈에 대하여 <tt>root</tt> 또는 <tt>admin</tt> 에게 권한을 줌
 newmod_users=새로운 모듈 권한 :
+
 update_desc1=<a href=http://www.webmin.com/updates.html>Webmin 업데이트</a> 페이지 또는 다른 곳에서 버그나 보안구멍을 포함한 Webmin 모듈을 업그레이드 할 수 있습니다. 현재 설치되어 있는 모듈과 업데이트가 가능한 것을 비교하여, 새버전이 있는 모듈을 자동으로 받아서 설치하도록 할 수 있습니다.
 update_header1=지금 모듈 업데이트
 update_header2=모듈 업데이트 일정
@@ -445,6 +462,7 @@ update_sched2=모듈을 $3일마다 $1:$2에 업데이트
 update_none=이 버전에 대한 Webmin 업데이트가 없습니다.
 update_failed=모듈 설치 실패 : $1
 update_desc2=<a href=http://www.webmin.com/updates.html>Webmin 업데이트</a> 페이지 또는 다른 곳에서 버그나 보안구멍을 포함한 Webmin 모듈의 자동 업데이트에 대한 스케줄을 설정할 수 있습니다. 이 서비스를 사용하는 동안에, 업데이트 서버가 안전성을 보장하지 못할 경우 공격자에게 시스템을 공격당할 수 있으므로 주의해야 합니다.
+
 ca_title=인증 기관
 ca_old=기존 인증서
 ca_header1=새 CA 인증서 작성
@@ -475,6 +493,7 @@ ca_eminiserv=SSL 클라이언트 인증서는 miniserv 아래서만 지원됩니
 ca_eversion=시스템에 설치된 Perl Net::SSLeay 모듈 버전은 SSL 클라이언트 인증서를 지원하지 않습니다.
 ca_essleay=시스템에 SSL 관리 명령 $1이(가) 없습니다. Webmin 사용자 모듈 구성에서 해당 경로를 변경해야 할 수 있습니다.
 ca_essl=SSL 인증은 웹 서버가 SSL 모드로 실행 중일 때만 설정할 수 있습니다.
+
 session_title=인증
 session_desc1=인증 기능을 설정한 경우에는 패스워드 시간 초과를 통해 같은 사용자의 로그인 시도 실패 사이의 지연 시간이 지속적으로 증가되므로 Webmin 서버에 대한 패스워드 크래킹 공격을 막을 수 있습니다.
 session_header=인증 및 세션 옵션
@@ -519,10 +538,12 @@ session_md5off=Webmin 암호에 표준 유닉스 <tt>crypt</tt> 암호화를 사
 session_md5on=Webmin 암호에 MD5 암호화를 사용합니다. (긴 암호 사용)
 session_emd5mod=$1 펄 모듈이 설치되어 있지 않아서 MD5 암호화를 사용할 수 없습니다.
 session_blocklock=또한 로그인 실패한 사용자를 잠금
+
 assignment_title=모듈 재할당
 assignment_header=모듈 범주 할당
 assignment_ok=범주 변경
 assignment_desc=이 양식에서는 각 모듈이 Webmin 인덱스 페이지에 표시되는 범주를 구성할 수 있습니다.
+
 categories_title=범주 편집
 categories_header=범주 ID 및 설명
 categories_desc=이 양식에서는 기존 Webmin 범주의 이름을 바꾸거나 모듈을 할당할 새 범주를 작성할 수 있습니다. 테이블의 윗부분은 기본 제공 범주에 대한 설명을 변경하는 데 사용되며, 아래 부분은 새 범주 ID와 설명을 추가하는 데 사용됩니다.
@@ -534,6 +555,7 @@ categories_code=ID
 categories_name=설명 출력
 categories_lang=이 언어의 카테고리 편집:
 categories_langok=변경
+
 log_access=IP 접근 제어 변경됨
 log_bind=포트 및 주소 변경됨
 log_log=로그 옵션 변경됨
@@ -567,6 +589,7 @@ log_savekey=존재하는 SSL 키 업로드
 log_deletecache=캐쉬에서 $1 URL 초기화
 log_clearcache=캐쉬에서 모든 URL 초기화
 log_lock=파일 라킹 변경
+
 themes_title=Webmin 테마
 themes_desc=테마는 Webmin 사용자 인터페이스(아이콘, 색상, 배경 및 레이아웃 페이지 등)의 모양을 제어합니다. 아래의 선택란을 사용하여 시스템에 설치된 테마 중 하나를 선택할 수 있습니다.
 themes_sel=현재 테마:
@@ -574,6 +597,7 @@ themes_default=Webmin 기본 테마
 themes_change=변경
 themes_installdesc=아래의 양식에서는 시스템에 새 Webmin 테마를 설치할 수 있습니다. 테마는 일반적으로 <tt>.wbt</tt> 파일로 배포되지만, 운영 체제에서 지원할 경우에는 RPM 파일로부터 설치할 수도 있습니다.
 themes_installok=테마 설치
+
 themes_err1=$1에서 테마를 설치하지 못했습니다
 themes_efile=파일이 존재하지 않습니다
 themes_err2=업로드한 테마를 설치하지 못했습니다
@@ -596,9 +620,11 @@ themes_ok=테마가 성공적으로 변경되었으며 Webmin 인덱스 페이�
 themes_delete=이 폼은 시스템에 설치되어 있는 현재 사용하지 않는 테마를 삭제할 수 있습니다.
 themes_delok=삭제할 테마 :
 themes_return=테마 리스트
+
 themes_desc4=다음의 폼을 사용하여 설치된 테마를 wbt.gz 로 내보내기 할 수 있습니다. 테마 파일은 다른 시스템의 Webmin에 설치할 수 있습니다.
 themes_exportmods=내보낼 테마
 themes_exportok=선택된 테마 내보내기
+
 referers_title=신뢰할 수 있는 중재자
 referers_desc=이 페이지에서는 브라우저를 속여서 Webmin에 유해한 작업을 수행하려는 다른 웹사이트의 악의적 링크를 막는 데 사용되는 Webmin 중재자 검사 지원을 구성할 수 있습니다. 그러나 경고를 표시하지 않을 개인 웹 사이트의 Webmin 링크인 경우에는 아래의 목록에 해당 사이트를 추가해야 합니다.
 referers_list=신뢰할 수 있는 웹사이트
@@ -606,6 +632,7 @@ referers_none=알 수 없는 중재자의 링크 신뢰
 referers_referer=중재자 검사 기능이 설정되어 있습니까?
 referers_err=레퍼러 저장 실패
 referers_ehost='$1' 은 신뢰할 수 있는 호스트 이름이 아닙니다.
+
 update_err=모듈 업데이트 실패
 update_eurl=업데이트 URL 이 없거나 유효하지 않습니다.
 update_title=모듈 업데이트
@@ -626,6 +653,7 @@ update_rv=$1에서 Webmin 모듈 업데이트를 위한 검사
 update_eemail=무엇이 업데이트 되었는지 확인하려면 이메일 주소를 입력하십시오.
 update_subject=Webmin 모듈 업데이트 리포트
 update_version=지금 새로운 Webmin (버전 $1) 릴리즈를 받을 수 있습니다. 앞으로 업데이트는 최종 버전을 위해서만 릴리즈 될 것입니다.
+
 anon_title=익명 모듈 접근
 anon_desc=이 페이지에서 선택된 Webmin 모듈과 로그인에 필요한 경로에 대한 접근 권한을 설정할 수 있습니다. (<tt>/customr</tt> 또는 <tt>/passwd</tt> 와 같이) 아래에 입력한 각 모듈 경로에 대하여 모듈 접속에 사용될 권한을 가진 Webmin 유저의 이름을 입력할 수 있습니다.
 anon_desc2=익명 접속을 허가할 경우에는 매우 주의해야 합니다. 부적절한 IP 접속 관리 또는 잘못된 모듈의 접속 허가를 했을 경우, 시스템에 공격을 유발할 수 있습니다.
@@ -634,15 +662,19 @@ anon_user=Webmin 유저
 anon_err=익명 접속 저장 실패
 anon_eurl='$1'은(는) 유효한 URL 경로가 아닙니다.
 anon_euser=URL 경로 '$1'에 대하여 Webmin 유저가 없거나 유효하지 않습니다.
+
 enogpg=GnuPG 가 설치되어 있지 않습니다.
+
 standard_failed=모듈 리스트 받기 실해 : $1
 standard_header=표준 Webmin 모듈
 standard_warn=경고 - 현재 구동중인 Webmin이 최신 버전($1)이 아니기 때문에 이 모듈들은 아마 설치되지 않을 것입니다.
 standard_eurl=표준 모듈 URL 이 유효하지 않습니다.
+
 third_failed=모듈 리스트 다운로드 실패 :$1
 third_header=Thrid Party Webmin 모듈
 third_eurl=유효하지 않은 thrid party 모듈 URL
 third_title=외부 모듈 선택
+
 lock_title=파일 락
 lock_desc=기본적으로, Webmin 은 파일 파손을 야기할 수 있는 다중 작업에 대한 동시 변경을 막기 위하여 어떠한 파일로 락을 만들게 됩니다. 이 페이지는 만약 문제가 발생할 경우, 선택적 또는 전체적으로 락생성을 막는 것을 설정할 수 있습니다.
 lock_header=파일 락 설정
@@ -653,22 +685,26 @@ lock_except=다음을 제외한 모든 파일과 디렉토리에 락 생성
 lock_err=파일 락을 저장하는데 실패했습니다.
 lock_edir='$1'은(는) 절대 경로가 아닙니다.
 lock_edirs=입력된 파일 또는 디렉토리가 없습니다.
+
 ipkey_title1=SSL 키 생성
 ipkey_title2=SSL 캐 편집
 ipkey_header=IP-specific SSL 키 상세사항
 ipkey_err=SSL 키 저장 실패
 ipkey_eips=입력된 IP 주소가 없스비낟.
+
 descs_title=모듈 타이틀
 descs_info=이 페이지에서 Webmin 모듈의 표준 설명을 무시할 수 있는 대체 타이틀을 지정할 수 있습니다.
 descs_mod=모듈
 descs_desc=새로운 타이틀
 descs_err=모듈 타이틀 저장 실패
 descs_edesc=모듈 '$1'의 타이틀이 없음
+
 export_err=모듈 내보내기 실패
 export_ecmd=필요한 명령 $1이(가) 없습니다.
 export_efile=내보낼 파일이 없거나 유효하지 않습니다.
 export_done=선택된 모듈을 $1로 내보내기에 성공했습니다.
 export_title=모듈 내보내기
+
 advanced_title=고급 옵션
 advanced_header=고급과 실험적인 옵션
 advanced_temp=임시 파일 디렉토리
@@ -692,10 +728,13 @@ advanced_eumask=Umask 는 반드시 3개의 8진수 숫자로 이루어져야 �
 advanced_etempdelete=임시 파일 보존 기간의 값이 지정되지 않았거나 또는 유효하지 않습니다.
 advanced_nice=예약 작업을 위한 CPU 우선 순위
 advanced_pri=우선 순위 등급
+
 syslog_errorlog=Webmin 에러 로그
+
 clear_title=다운로드 캐쉬 초기화
 clear_done=$2 URL 에서 파일들의 $1을(를) 포함하고 있는 Webmin 캐쉬가 성공적으로 초기화 되었습니다.
 clear_none=Webmin 다운로드 캐쉬에 현재 URL 이 없습니다.
+
 savekey_err=새 키를 저장하는데 실패했습니다.
 savekey_ekey=PEM 형식 키가 지정되지 않았거나 유효하지 않습니다.
 savekey_ecert=인증서 PEM 형식이 없거나 유효하지 않습니다.
@@ -703,6 +742,7 @@ savekey_ecert2=PEM 형식 키와 인증서가 지정이 되지 않았거나 유�
 savekey_title=존재하는 키 업로드
 savekey_done2=적용된 SSL 키가 $1에 저장되었습니다. 인증서는 $2에 저장 되었습니다.
 savekey_done=적용된 SSL 키와 인증서는 파일 $1에 저장이 되었습니다.
+
 cache_title=캐쉬된 URL
 cache_search=포함된 URL 발견:
 cache_ok=검색
@@ -715,8 +755,10 @@ cache_delete=캐쉬에서 선택된 것을 비우기
 cache_err=캐쉬된 URL 비우기 실패
 cache_enone=선택된 것이 없음
 cache_efile=유효하지 않은 파일 이름
+
 restart_title=Webmin 재시작
 restart_done=Webmin 서버 프로세스가 재시작 됩니다. 계속하기 위하여 몇초간 대기하십시오.
+
 mobile_title=모바일 장치 옵션
 mobile_header=모바일 브라우저 옵션
 mobile_theme=모바일 브라우저 테마
@@ -725,6 +767,7 @@ mobile_nosession=HTTP 인증 사용을 강제하겠습니까?
 mobile_agents=모바일 브라우저의 추가 유저 에이전트
 mobile_err=모바일 장치 옵션 저장 실패
 mobile_prefixes=모바일 브라우저 URL 호스트 이름 프리픽스
+
 blocked_title=제한된 호스트와 유저
 blocked_type=형식
 blocked_who=호스트네임 또는 유저이름
@@ -736,6 +779,7 @@ blocked_host=클라이언트 호스트
 blocked_clear=모든 제한을 초기화
 blocked_cleardesc=Webmin 서버 프로세스를 재시작 하여 모든 현재 호스트와 유저 제한을 초기화 하려면 이 버튼을 클릭 하십시오.
 blocked_restarting=제한된 호스트와 유저를 초기화 하기 위하여 Webmin 프로세스를 재시작 합니다. 계속 진행하기 위하여 몇초간 대기하시기 바랍니다.
+
 refreshmods_title=모듈 갱신
 refreshmods_installed=사용 가능한 Webmin 모듈 검사 ..
 refeshmods_counts=.. 설치된 응용 프로그램에서 $2(을)를 찾았습니다. $1(은)는 설치되어 있지 않습니다.

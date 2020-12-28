@@ -26,6 +26,7 @@ index_start=Start planlagte kommandoserver
 index_startdesc=Start <tt>atd</tt> baggrundsserverprocessen, der kører planlagte kommandoer. Dette er nødvendigt for at kommandoer skal udføres på deres angivne tidspunkter.
 index_boot=Start server ved opstart?
 index_bootdesc=Skift denne indstilling for at aktivere eller deaktivere start af den planlagte kommandoserver på systemstarttidspunktet.
+
 edit_title=Planlagt kommando
 edit_cmd=Komplet script til at udføre
 edit_shortcmd=Kommando til at udføre
@@ -35,6 +36,7 @@ edit_run=Kør nu
 edit_ejob=Planlagt kommando findes ikke længere!
 edit_ecannot=Du har ikke tilladelse til at redigere denne planlagte kommando
 edit_showfull=Vis hele scriptet.
+
 create_err=Kunne ikke oprette skema-kommando
 create_euser=Manglende eller ugyldigt brugernavn
 create_edate=Manglende eller ugyldig dato eller tid
@@ -43,22 +45,28 @@ create_efuture=Dato og tid er i fortiden
 create_edir=Manglende eller ugyldig mappe
 create_ecannot=Du har ikke lov til at oprette planlagte kommandoer for denne bruger
 create_eallow=Den specificerede bruger må ikke køre planlagte kommandoer
+
 delete_err=Kunne ikke annullere kommandoen
 delete_egone=Kommando allerede kørt eller slettet
+
 acl_users=Kan redigere planlagte kommandoer til
 acl_all=Alle brugere
 acl_this=Nuværende Webmin-bruger
 acl_only=Kun brugere
 acl_except=Alle undtagen brugere
 acl_allow=Kan redigering være tilladt hos brugere?
+
 run_title=Kører kommando
 run_output=Output fra planlagt kommando ..
 run_none=Ingen output genereret
+
 allow_err=Kunne ikke gemme tilladte brugere
 allow_ecannot=Du har ikke lov til at administrere tilladte brugere
 allow_eusers=Der er ikke angivet nogen brugere
+
 deletes_err=Kunne ikke annullere kommandoer
 deletes_enone=Ingen valgt
+
 log_allow=Ændrede tilladte brugere
 log_create_job=Oprettet planlagt kommando til $1 
 log_delete_job=Annulleret planlagt kommando for $1 
@@ -68,5 +76,6 @@ log_stop=Stoppet planlagte kommandoserver
 log_start=Startet planlagt kommandoserver
 log_bootup=Aktiveret planlagt kommandoserver ved opstart
 log_bootdown=Deaktiveret planlagt kommandoserver ved opstart
+
 stop_err=Serveren kunne ikke stoppes
 start_err=Serveren kunne ikke startes

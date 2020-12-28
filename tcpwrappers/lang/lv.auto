@@ -10,6 +10,7 @@ index_hosts=Saimnieki
 index_cmd=Pavēle
 index_delete=Dzēst atlasīto
 index_none=neviena
+
 edit_title1allow=Izveidot atļauju kārtulu
 edit_title2allow=Rediģēt Atļaut kārtulu
 edit_title1deny=Izveidot nolieguma noteikumu
@@ -22,9 +23,11 @@ edit_hosts=Attālie saimnieki
 edit_hostsexcept=Izņemot saimniekus
 edit_cmd=Čaulas komandas
 edit_efound=Demons '$1' netika atrasts xinetd konfigurācijā.
+
 save_errtitle=Kļūda saglabāšanas noteikumā
 save_ehost=Resursdatora ieejā ir sliktas rakstzīmes
 save_ecmd=Komandu ievadē ir sliktas rakstzīmes
 save_eservice=Dēmonu nosaukumos ir sliktas rakstzīmes
+
 del_errtitle=Kļūda noteikumu dzēšanā
 del_enone=Nav noteikumu, kas būtu dzēsts

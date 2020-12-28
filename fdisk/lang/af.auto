@@ -44,6 +44,7 @@ index_dscsi=SCSI-toestel $1 -beheerder $2
 index_draid=RAID vlak $1 
 index_dparts=partisies
 index_none2=Geen skywe is op hierdie stelsel gevind nie.
+
 bytes=grepe
 megabytes=megagrepe
 extended=uitgebrei
@@ -67,6 +68,7 @@ select_promise=Beloof RAID-skyf $1
 select_ppart=Beloof RAID-stasie $1 -partisie $2 
 select_nvme=NVME SSD $1 drive $2 
 select_nvmepart=NVME SSD $1 drive $2 partition $3 
+
 edit_title=Wysig partisie
 create_title=Skep partisie
 edit_ecannot=U mag nie hierdie skyf redigeer nie
@@ -110,6 +112,7 @@ edit_newmount2=Mount Partition
 edit_mountas=as
 edit_mountmsg=Monteer hierdie partisie op 'n nuwe gids op u stelsel, sodat dit gebruik kan word om lêers te stoor. 'N Lêerstelsel moet reeds op die partisie geskep wees.
 edit_mountmsg2=Monteer hierdie partisie as 'n virtuele geheue op u stelsel om die hoeveelheid beskikbare geheue te verhoog.
+
 mkfs_title=Nuwe lêerstelsel
 mkfs_ecannot=U mag nie 'n nuwe lêerstelsel op hierdie skyf bou nie
 mkfs_desc1=As u op die knoppie onderaan hierdie vorm klik, sal u 'n nuwe $1 -lêerstelsel op die toestel $2 bou. Alle data op hierdie partisie sal permanent uitgevee word.
@@ -120,6 +123,7 @@ mkfs_err=Kon nie lêerstelsel skep nie
 mkfs_exec=Voer opdrag $1 uit.
 mkfs_failed=.. opdrag misluk!
 mkfs_ok=.. opdrag voltooi.
+
 fsck_title=Herstel lêerstelsel
 fsck_ecannot=U mag nie hierdie skyf fsck nie
 fsck_desc1=As u op die <tt>Herstellêersisteem</tt> klik, sal u die beskadigde $1 -lêerstelsel op $2 herstel om op $3 te monteer. As die lêerstelsel nie beskadig is nie, sal geen veranderinge aangebring word nie.
@@ -132,6 +136,7 @@ fsck_err3=foute gevind en gekorrigeer - herlaai is nodig
 fsck_err4=foute gevind, maar NIE reggestel nie
 fsck_err16=opdragreëlfout
 fsck_unknown=onbekende terugkode $1 
+
 tunefs_title=Stel lêerstelsel in
 tunefs_ecannot=U mag nie hierdie lêerstelsel instel nie
 tunefs_desc=Met hierdie vorm kan u verskillende parameters van die $1 -lêerstelsel op $2 aanpas om op $3 te monteer. Bestaande lêers op hierdie lêerstelsel sal nie beïnvloed word nie.
@@ -153,10 +158,12 @@ tunefs_err=Kon nie die lêerstelsel instel nie
 tunefs_exec=Voer opdrag $1 uit.
 tunefs_failed=.. opdrag misluk!
 tunefs_ok=.. opdrag voltooi.
+
 reboot_title=reboot
 reboot_msg=Herbegin nou. ..
 reboot_ok=Herbegin nou
 reboot_why=U het die partitietabel op $1 verander. Om hierdie stelsel behoorlik in werking te stel, moet u stelsel herlaai word.
+
 save_err=Kon nie partisie stoor nie
 save_ecannot=U mag nie hierdie skyf redigeer nie
 save_estart='$1' is nie 'n geldige beginsilinder nie
@@ -165,6 +172,7 @@ save_emin=Die beginsilinder moet> = $1 wees
 save_emax=Die eindsilinder moet <= $1 wees
 save_eminmax=Die beginsilinder moet minder wees as die einde
 save_eoverlap=Oorvleueling bespeur met partisie $1 ($2 tot $3)
+
 ext2_b=Blokgrootte
 ext2_f=Fragmentgrootte
 ext2_i=Bytes per inode
@@ -172,6 +180,7 @@ ext2_m=Gereserveerde blokke
 ext2_g=Blokke per groep
 ext2_c=Kyk vir slegte blokke?
 ext3_j=Grootte van die joernaal
+
 msdos_ff=Aantal FAT's
 msdos_F=VET grootte
 msdos_F_other=Ander ..
@@ -180,24 +189,32 @@ msdos_n=Volume naam
 msdos_r=Wortelinskrywings
 msdos_s=Groepgrootte
 msdos_c=Kyk vir slegte blokke?
+
 minix_n=Lengte van lêernaam
 minix_i=Aantal inodes
 minix_b=Aantal blokke
 minix_c=Kyk vir slegte blokke?
+
 reiserfs_force=Dwing lêersisteemskepping
 reiserfs_hash=Hash-funksie
+
 xfs_force=Dwing lêersisteemskepping
 xfs_b=Blokgrootte
+
 jfs_s=Log grootte
 jfs_c=Kyk vir slegte blokke?
+
 btrfs_l=Blaargrootte
 btrfs_n=Knooppuntgrootte
 btrfs_s=Sektorgrootte
+
 fatx_none=Daar is geen opsies beskikbaar vir FATX-lêerstelsels nie.
+
 acl_disks=Disks wat hierdie gebruiker kan partisie en formateer
 acl_dall=Alle skywe
 acl_dsel=Gekies ..
 acl_view=Kan diskette wat nie bewerk kan word nie, gekyk word?
+
 hdparm_title=Wysig IDE-parameters
 hdparm_on=op
 hdparm_off=af
@@ -226,9 +243,11 @@ hdparm_performing=presterende
 hdparm_buf1=Buffer-kas:
 hdparm_buf2=gebuffer:
 hdparm_speedres=Spoedtoetsuitslae
+
 blink_title=Identifiseer Drive
 blink_desc=Die aktiwiteits-LED van die aandrywing sal nou sestig keer aansteek
 blink_back=Gaan terug
+
 log_modify=Gewysig $1 
 log_create=Skep $1 
 log_delete=$1 is uitgevee
@@ -236,6 +255,7 @@ log_mkfs=Skep $1 lêerstelsel op $2
 log_tunefs=$1 lêerstelsel op $2 ingestel
 log_fsck=$1 lêerstelsel herstel op $2 
 log_hdparm=Gewysigde IDE-parameters vir $1 
+
 fs_ext2=Ou Linux-moedertaal
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -246,9 +266,11 @@ fs_ext4=Nuwe Linux-moedertaal
 fs_xfs=SGI
 fs_jfs=IBM Journalling
 fs_btrfs=BTR
+
 delete_title=Verwyder partisie
 delete_rusure=Is u seker dat u $1 ($2) wil uitvee? Gegewens oor hierdie partisie kan vir ewig verlore gaan.
 delete_ok=Vee nou uit
+
 disk_title=Wysig skyfpartisies
 disk_egone=Skyf bestaan nie meer nie!
 disk_no=aantal
@@ -269,11 +291,13 @@ disk_table=<b>Partisie tabelformaat:</b> $1
 disk_notable=<b>Partisie-tabelformaat:</b> Geen geskep nie
 disk_needtable=Geen partisies kan sonder 'n partisietabel geskep word nie.
 disk_return=lys van partisies
+
 relabel_title=Vee partisies uit
 relabel_warn=Is u seker dat u alle partisies op $1 ($2) wil uitvee deur die skyfetiket weer te skryf? Alle bestaande data en lêerstelsels sal verlore gaan!
 relabel_parts=Bestaande partisies
 relabel_noparts=Niks is nog geskep nie
 relabel_table=Partisie tabel formaat
 relabel_ok=Vee en etiketteer weer
+
 table_msdos=MS-DOS (standaard-partisieformaat)
 table_gpt=GPT (vir 2T of groter skywe)

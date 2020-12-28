@@ -10,6 +10,7 @@ index_range=Vygenerujte prehľad pre časové obdobie
 index_view=Zobraziť vygenerovaný prehľad
 index_viewdesc=Zobraziť naposledy vygenerovaný prehľad v adresári $1.
 index_return=index modulu
+
 log_title=Zdroj denníka a cieľ správy
 log_header=Zdrojový súbor chobotnice a generované možnosti prehľadu
 log_access_log=Zdrojový súbor chobotnice
@@ -30,6 +31,7 @@ log_elastlog=Chýba alebo nie je číslo
 log_eemail=Chýbajúca alebo neplatná e-mailová adresa
 log_emailx=Chýbajúci alebo neexistujúci poštový program
 log_squidguard_log_path=Protokolový súbor SquidGuard
+
 style_title=Štýl prehľadu
 style_header=Možnosti štýlu a farieb správy HTML
 style_title2=Názov prehľadu
@@ -54,6 +56,7 @@ style_efont=Chýba alebo je neplatný názov písma
 style_esize=Chýbajúca alebo neplatná šírka a výška obrázka
 style_language=Jazyk správy
 style_charset=Správa znakovej sady
+
 report_title=Možnosti prehľadu
 report_header=Nahlásiť obsah a možnosti generovania
 report_resolve_ip=Vyriešiť IP adresy?
@@ -134,6 +137,7 @@ report_echar=Priestory nie sú povolené
 report_estring=Chýba alebo je neplatný náhradný text
 report_eselect=Nič vybrané
 report_eenter=Nič nevstúpilo
+
 sched_title=Plánované generovanie výkazov
 sched_header=Možnosti plánovaného prehľadu
 sched_sched=Plánovaný prehľad je povolený?
@@ -148,9 +152,11 @@ sched_rsel=Tí od $1 do $2 dní
 sched_err=Uloženie plánovaného generovania prehľadu zlyhalo
 sched_erfrom=Chýba alebo je neplatný počiatočný počet dní
 sched_erto=Chýbajúci alebo neplatný konečný počet dní
+
 view_title=Sargova správa
 view_efile=Neplatný názov súboru!
 view_eopen=Súbor prehľadu sa nepodarilo otvoriť
+
 gen_title=Generovať správu
 gen_header=Teraz sa generuje správa Sarg zo súboru protokolu Squid $1 a všetkých rotovaných verzií ..
 gen_done=.. hotový
@@ -160,6 +166,7 @@ gen_view=Zobraziť dokončenú správu.
 gen_err=Nepodarilo sa vygenerovať prehľad
 gen_efrom=Chýbajúce alebo neplatné odo dňa
 gen_eto=Chýbajúce alebo neplatné do dnešného dňa
+
 webmin_log_log=Aktualizované možnosti zdroja denníka a hlásenia cieľa
 webmin_log_report=Aktualizované možnosti prehľadu
 webmin_log_style=Aktualizované možnosti štýlu prehľadu

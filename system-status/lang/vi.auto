@@ -44,6 +44,7 @@ right_upsec=Cập nhật gói $1 có sẵn, trong đó $2 là cập nhật bảo
 right_recollect=Làm mới thông tin hệ thống
 right_vvirtualmin=Phiên bản ảo
 right_vvm2=Phiên bản đám mây
+
 acl_show=Thông tin hệ thống để hiển thị
 acl_showall=Mọi điều
 acl_showsel=Chỉ được chọn ..

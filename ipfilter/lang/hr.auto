@@ -43,8 +43,10 @@ index_natnone=Još nisu definirana pravila za prijevod mrežne adrese.
 index_nataction=NAT način rada
 index_natfrom=Paketi koji odgovaraju
 index_natto=Prijevod
+
 dir_in=dolazni
 dir_out=otvoren
+
 action_pass=<font color=#00aa00>Prolaz</font>
 action_block=<font color=#ff0000>Blokiraj</font>
 action_skip=Preskočiti
@@ -57,6 +59,7 @@ action_map=kartografija
 action_rdr=preusmjeravanje
 action_bimap=Dvosmjerno mapiranje
 action_map-block=Blokiranje blokova
+
 laction_pass=<font color=#00aa00>Proslijedi paket</font>
 laction_block=<font color=#ff0000>Blokiraj paket sa ICMP kodom</font>
 laction_log=Dnevnik paketa, na razini
@@ -65,6 +68,7 @@ laction_skip=Preskočite sljedeća pravila
 laction_auth=Autorizacija korisničkog prostora
 laction_preauth=Provjerite prethodnu autorizaciju
 laction_call=Nazovite funkciju jezgre
+
 edit_title1=Stvorite pravilo
 edit_title2=Uredi pravilo
 edit_header1=Pravilo akcije
@@ -130,6 +134,7 @@ edit_icmp=ICMP tip
 edit_icmpany=&lt;Bilo koje vrste&gt;
 edit_icmpcode=i kod
 edit_codeany=&lt;Bilo koji kod&gt;
+
 save_err=Spremanje pravila nije uspjelo
 save_ehostfrom=Nedostaje ili nevažeće ime izvora
 save_ehostto=Nedostaje ili nevaljano ime hosta odredišta
@@ -158,11 +163,13 @@ save_eto=Nedostaje ili nevažeće sučelje za slanje
 save_etoip=Nevaljana IP adresa koju želite poslati
 save_ereplyto=Nedostaje ili je nevažeće sučelje za odgovor na
 save_ereplytoip=IP adresa je neispravna na odgovor
+
 apply_err=Konfiguracija nije primijenjena
 apply_remote=Pogreška od $1 : $2 
 unapply_err=Konfiguracija nije vraćena
 unapply_ein=Pravila za unos nisu uspjela
 unapply_eout=Nije uspjelo dobiti izlazna pravila
+
 desc_if=Ako $1 
 desc_and=i
 desc_always=Stalno
@@ -196,6 +203,7 @@ desc_rdr=IP adrese $1 port $2
 desc_dport1=priključak je $1 
 desc_dport2=priključak je između $1 i $2 
 desc_nattoiface=adresa sučelja
+
 log_create_rule=Izrađeno je pravilo $1 
 log_delete_rule=Izbrisano je pravilo $1 
 log_modify_rule=Izmijenjeno pravilo $1 
@@ -224,6 +232,7 @@ log_add_host=Dodan je cluster server $1
 log_add_group=Dodani su poslužitelji klastera iz grupe $1 
 log_delete_host=Uklonjen je poslužitelj klastera $1 
 log_delete_group=Uklonjeni su $1 poslužitelji klastera
+
 cluster_title=Poslužitelji vatrozida klastera
 cluster_none=U grupu vatrozida još nije dodan nijedan poslužitelj.
 cluster_host=Ime računala
@@ -234,6 +243,7 @@ cluster_gadd=Dodajte poslužitelje u grupi
 cluster_need=Prije nego što se njima ovdje može upravljati, morate dodati servere s prijavom i zaporkom u modulu Webmin Servers Index.
 cluster_return=poslužitelji klastera
 cluster_delete=Ukloni odabrano
+
 add_title=Dodajte poslužitelje
 add_msg=Dodavanje $1.
 add_gmsg=Dodavanje poslužitelja u grupu $1 ..
@@ -242,6 +252,7 @@ add_gerr=Nije uspjelo dodavanje grupe
 add_echeck=Server $1 nema IPFilter Firewall modul
 add_emissing=Poslužitelju $1 nedostaje naredba vatrozida $2 
 add_ok=Dodano je $1, s $2 pravilima aktivnog vatrozida.
+
 nat_title1=Stvorite NAT pravilo
 nat_title2=Uredi NAT pravilo
 nat_action=NAT način rada
@@ -300,4 +311,5 @@ nat_edport2=Nedostaje ili je nevažeći izvorni port koji završava
 net_erdrip='$1' nije valjana odredišna IP adresa
 nat_erdrips=Nema unesenih odredišnih IP adresa
 nat_erdrport=Nedostaje ili nije važeći odredišni port
+
 boot_esmf=SMF usluga $1 ne postoji ili nije u poznatom stanju

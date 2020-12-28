@@ -17,6 +17,7 @@ index_tdesc=Description
 index_tucount=Users
 index_tgcount=Groups
 index_ttype=OS type
+
 add_title=Add Servers
 add_msg=Adding $1 ..
 add_gmsg=Adding servers in group $1 ..
@@ -26,6 +27,7 @@ add_echeck=Server $1 does not have the users and groups module
 add_epft=Server $1 does not use the same user files format as this host
 add_egft=Server $1 does not use the same group file format as this host
 add_ok=Added $1 with $2 users and $3 groups.
+
 host_title=Managed Server
 host_header=Software managed server details
 host_name=Host name
@@ -34,8 +36,7 @@ host_delete=Remove From Managed List
 host_refresh=Refresh Users and Groups
 host_users=Number of users
 host_groups=Number of groups
-host_ulist=Users on Server
-host_glist=Groups on Server
+
 host_return=server details
 refresh_title=Refresh Users and Groups
 refresh_header=Re-requesting user and group lists from all servers ..
@@ -49,6 +50,7 @@ refresh_gdel=remove $1 groups
 refresh_done=.. done
 refresh_del=Removed $1 from server list
 refresh_failed=Failed to refresh $1 : $2
+
 uedit_host=Details from $1
 uedit_leave=Don't change
 uedit_set=Set to
@@ -66,6 +68,7 @@ uedit_servers=Server(s) to create on
 uedit_all=&lt;all hosts&gt;
 uedit_donthave=&lt;hosts that don't have him&gt;
 uedit_group=Members of $1
+
 usave_einuse=A user with the same name already exists on $1
 usave_esecgid=Secondary group $1 does not exist
 usave_con=Creating on $1 ..
@@ -88,16 +91,20 @@ usave_header=Creating user $1 on all hosts ..
 usave_header5=Creating user $1 on $2 ..
 usave_header4=Creating user $1 on members of group $2 ..
 usave_header3=Creating user $1 on hosts that do not have him ..
+
 search_hosts=Hosts
+
 udel_on=Deleting from $1 ..
 udel_servs=Delete home directory if exists on
 udel_others=Delete user in other modules?
 udel_dothers=Deleting in other modules ..
 udel_gone=User no longer exists.
 udel_failed=Failed to delete user : $1
+
 gdel_on=Deleting from $1 ..
 gdel_gone=User no longer exists.
 gdel_failed=Failed to delete group : $1
+
 gsave_create=Adding group file entry ..
 gsave_con=Creating on $1 ..
 gsave_euser=User $1 does not exist
@@ -110,10 +117,12 @@ gsave_header=Creating group $1 on all hosts ..
 gsave_header5=Creating group $1 on $2 ..
 gsave_header4=Creating group $1 on members of group $2 ..
 gsave_header3=Creating group $1 on hosts that do not have it ..
+
 gedit_host=Details from $1
 gedit_add=Add users
 gedit_del=Remove users
 gedit_donthave=&lt;hosts that don't have it&gt;
+
 sync_title=Synchronize Servers
 sync_desc=This form allows you to create users and groups on servers that do not currently have them, in order to bring accounts into sync across all servers in your cluster.
 sync_hosts=Servers to synchronize
@@ -141,6 +150,7 @@ sync_test=Only show what would be done?
 sync_makehome=Create home directories?
 sync_copy=Copy files to home directory?
 sync_others=Create user in other modules?
+
 log_create_user=Created user $1
 log_delete_user=Deleted user $1
 log_modify_user=Modified user $1

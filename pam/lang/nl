@@ -4,6 +4,7 @@ index_desc=Omschrijving
 index_add=Toevoegen van een nieuwe PAM service
 index_return=service lijst
 index_none=Er zijn geen PAM configuratie files gevonden op uw systeem in de directory $1. Misschien word PAM niet ondersteund of uw <a href='$2'>module configuratie</a> is niet correct.
+
 desc_su=Overschakelen gebruiker
 desc_su-l=Overschakelen gebruiker (met login)
 desc_login=Lokaal of remote login
@@ -87,6 +88,7 @@ desc_common-account=Algemene account verificatie
 desc_common-auth=Algemene authenticatie
 desc_common-password=Algemene wachtwoord veranderingen
 desc_common-session=Algemene sessie setup
+
 edit_title=Bewerk PAM Service
 edit_header=PAM service details
 edit_name=Service naam
@@ -107,6 +109,7 @@ edit_move=Verplaats
 edit_return=PAM service
 edit_inc=Inclusief service $1
 edit_iheader=Inclusief PAM services
+
 pam_pwdb.so=Unix wachtwoord authenticatie
 pam_securetty.so=Veilige TTY check voor root
 pam_nologin.so=<tt>/etc/nologin</tt> file check
@@ -149,6 +152,7 @@ pam_console.so=Alleen console check
 pam_xauth.so=X authenticatie
 pam_stack.so=Oproepen van andere PAM service
 pam_foreground.so=Console setup
+
 control_requisite=Vereist
 control_required=Benodigd
 control_sufficient=Voldoende
@@ -157,6 +161,7 @@ control_desc_requisite=Stop met authenticatie direct bij een falen
 control_desc_required=Stop met authenticatie aan het einde van een falen
 control_desc_sufficient=Start authenticatie direct bij succes
 control_desc_optional=Slagen of falen werd genegeerd
+
 create_title=Maak PAM Service
 create_header=Nieuwe PAM service opties
 create_name=Service naam
@@ -165,6 +170,7 @@ create_mods=Initieer PAM modules
 create_0=Geen
 create_1=Unix authenticatie
 create_2=Weiger alle toegangen
+
 mod_edit=Bewerk PAM Module
 mod_create=Toevoegen PAM Module
 mod_header=PAM module opties
@@ -178,10 +184,12 @@ mod_type_password=Wachtwoord verandering
 mod_control=Fouten niveau
 mod_args=Module argumenten
 mod_err=Mislukt om module op te slaan
+
 pwdb_shadow=Gebruik schaduw wachtwoord file?
 pwdb_nullok=Accepteer nul wachtwoorden?
 pwdb_md5=Gebruik MD5-versleutelde wachtwoorden?
 pwdb_nodelay=Vertraging na mislukte login?
+
 unix_nullok_secure=Accepteer nul wachtwoorden op veilige TTYs?
 unix_min=Minimum wachtwoord lengte
 unix_nomin=Geen
@@ -190,6 +198,7 @@ unix_nomax=Geen limiet
 unix_obscure=Voorkom gebruik van makkelijke wachtwoorden?
 unix_emin=Ontbrekende of ongeldige minimum wachtwoord lengte
 unix_emax=Ontbrekende of ongeldige maximum wachtwoord lengte
+
 listfile_item=Zoek file voor
 listfile_item_user=Gebruikersnaam
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=Limiteer controle tot
 listfile_all=Alle gebruikers
 listfile_user=Alleen gebruiker
 listfile_group=Alleen de groep
+
 cracklib_type=Wachtwoord type in de prompt
 cracklib_retry=Maximum nieuwe pogingen voordat falen word bepaald
 cracklib_eretry=Ontbrekend of ongeldig aantal nieuwe pogingen
 cracklib_etype=Ontbrekend of ongeldig wachtwoord type
+
 rhosts_equiv=Lees <tt>/etc/hosts.equiv</tt> file?
 rhosts_rhosts=Lees gebruikers <tt>.rhosts</tt> files?
 rhosts_promiscuous=<tt>+</tt> ingang staat alle host toe?
 rhosts_suppress=Log authenticatie mislukkingen?
+
 env_var=Variabele naam
 env_def=Standaard waarde
 env_over=Opheffen waarde
 env_evar=Variabele namen mogen geen spaties bevatten
+
 securetty_ttys=Veilige TTYs
+
 shells_shells=Geldige gebruiker shells
+
 tally_deny=Mislukte pogingen voordat toegang word geweigerd
 tally_reset=Reset mislukte telling bij succes
 tally_edeny=Ontbrekende of ongeldig aantal mislukte pogingen
 tally_magic=Mislukte telling toevoegen aan <tt>root</tt>?
 tally_root=<tt>root</tt> account mag worden genegeerd?
+
 time_services=Services
 time_ttys=TTYs
 time_users=Gebruikers
 time_times=Toegangs tijden
 time_info=Alle velden mogen verschillende waardes bevatten gescheiden met een | , en de waardes mogen een * gebruiken als wildcart of een ! als negeer teken.
+
 group_services=Services
 group_ttys=TTYs
 group_users=Gebruikers
 group_times=Toegangs tijden
 group_groups=Toevoegen groepen
 group_info=Alle velden kunnen verschillende waardes bevatten gescheiden met een | , en waardes kunnen een * gebruiken als wildcart of een ! als negeer teken.
+
 wheel_group=Controleer voor lidmaatschap van groep
 wheel_group_def=Standaard (<tt>wheel</tt> of GID 0)
 wheel_trust=Groep leden omleiding voor verdere authenticatie?
 wheel_deny=Negeer inplaats van toestaan van groep leden?
 wheel_egroup=Ontbrekende of ongeldige groep naam
+
 motd_file=File om te laten zien
 motd_file_def=Standaard (<tt>/etc/motd</tt>)
 motd_efile=Ontbrekende of ongeldige filenaam
+
 mail_nopen=Laat een mail notificatie zien tijdens inloggen?
 mail_close=Laat mail notificatie zien tijdens uitloggen?
 mail_empty=Waarschuwen wanneer de mail file leeg is?
 mail_noenv=Zet $MAIL omgeving variabelen?
 mail_dir=Mail spoel directory
 mail_edir=Ontbrekende of ongeldige mail spoel directory
+
 stack_service=Pas check op PAM service
+
 log_pam_create=Aangemaakte in service $1
 log_pam_delete=Verwijderde in service $1
 log_mod_create=Toegevoegde PAM module $1 aan service $2
@@ -262,6 +284,7 @@ log_inc_create=Toegevoegde include $1 voor service $2
 log_inc_modify=Gemodificeerde include $1 voor service $2
 log_inc_delete=Verwijderde include $1 voor service $2
 log_incs=Ge-update includes $1 voor service $2
+
 inc_edit=Bewerk Inclusief Service
 inc_create=Maak Inclusief Service
 inc_header=Inclusief PAM service details

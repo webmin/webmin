@@ -6,6 +6,7 @@ index_printershare=chia sẻ máy in
 index_shareconf=chia sẻ cấu hình
 index_version=Phiên bản Samba $1 
 index_samba=Samba
+
 index_sharename=Tên chia sẻ
 index_path=Con đường
 index_security=Bảo vệ
@@ -42,12 +43,14 @@ index_stopmsg=Nhấp vào nút này để tắt các máy chủ Samba đang ch�
 index_stopmsg_wb=Nhấp vào nút này để tắt các máy chủ Winbind đang chạy trên hệ thống của bạn.
 index_einclude=Cảnh báo - Tệp cấu hình Samba của bạn $1 chứa chỉ thị $2 hoặc $3. Điều này có thể khiến Webmin sửa đổi tệp không chính xác.
 index_delete=Xóa cổ phiếu đã chọn
+
 config_mins=Phút
 config_secs=Giây
 config_bytes=Byte
 config_never=Không bao giờ
 config_all=Tất cả
 config_neither=Cũng không
+
 global_title=Cấu hình Toàn cầu
 global_unixnetwork=Mạng Unix
 global_winnetwork=Mạng Windows
@@ -60,6 +63,7 @@ global_password=Mật khẩu được mã hóa
 global_users=Người dùng Samba
 global_group=Nhóm Samba
 global_bind=Tùy chọn Winbind
+
 error_nosamba=Không tìm thấy máy chủ Samba <tt>$1</tt>. Samba không được cài đặt trên hệ thống của bạn hoặc <a href="$2">cấu hình mô-đun</a> của bạn không chính xác.
 error_version=Webmin không thể tải phiên bản máy chủ Samba của bạn <tt>$1</tt>. Kiểm tra <a href="$2">cấu hình mô-đun</a> của bạn để đảm bảo đây là đường dẫn chính xác.
 error_config=Không tìm thấy tệp cấu hình $1. Rất có thể Samba chưa được cài đặt trên hệ thống của bạn hoặc <a href="$2">cấu hình mô-đun</a> của bạn không chính xác.
@@ -67,6 +71,7 @@ error_include=Webmin không thể xử lý các tệp cấu hình Samba sử d�
 error_delshare=Không thể xóa chia sẻ
 error_delcopy=Chia sẻ bản sao '$1' từ chia sẻ này
 error_savename=Không thể lưu tên tệp
+
 convert_title=Chuyển đổi người dùng
 convert_msg=Biểu mẫu này cho phép bạn đồng bộ hóa danh sách người dùng Unix và Samba. Khi Samba đang sử dụng <a href=$1>mật khẩu được mã hóa</a>, một danh sách người dùng và mật khẩu riêng được sử dụng thay vì danh sách người dùng hệ thống.
 convert_noconv=Không chuyển đổi hoặc xóa những người dùng này:
@@ -83,6 +88,7 @@ convert_cannot=Người dùng Unix không thể được chuyển đổi thành 
 convert_who=Người dùng Unix chuyển đổi
 convert_who0=Chỉ những người dùng được liệt kê hoặc phạm vi UID
 convert_who1=Tất cả ngoại trừ người dùng được liệt kê và phạm vi UID
+
 misc_title=sự lựa chọn hỗn hợp
 misc_debug=Mức gỡ lỗi
 misc_cachecall=Các cuộc gọi <tt>getwd ()</tt> bộ nhớ cache?
@@ -96,6 +102,7 @@ misc_chroot=thư mục <tt>chroot ()</tt>
 misc_smbrun=Đường dẫn đến <tt>smbrun</tt>
 misc_clienttime=Thời gian bù của khách hàng
 misc_readprediction=Đọc dự đoán?
+
 net_title=Tùy chọn mạng Unix
 net_idle=Thời gian rảnh trước khi ngắt kết nối
 net_trustlist=Tệp máy chủ/người dùng đáng tin cậy
@@ -111,6 +118,7 @@ net_maxpacket=Kích thước gói tối đa
 net_listen=Nghe theo địa chỉ
 net_ip=địa chỉ IP
 net_socket=Tùy chọn ổ cắm
+
 passwd_title=Tùy chọn mật khẩu
 passwd_encrypt=Sử dụng mật khẩu được mã hóa?
 passwd_allownull=Cho phép mật khẩu null?
@@ -124,11 +132,13 @@ passwd_send=Gửi
 passwd_map=Ánh xạ tên người dùng
 passwd_unixuser=Người dùng Unix
 passwd_winuser=Người dùng Windows
+
 print_title=Tùy chọn in
 print_style=Phong cách in Unix
 print_show=Hiển thị tất cả các máy in?
 print_printcap=Tập tin in
 print_cachetime=Thời gian bộ nhớ cache trạng thái máy in
+
 smb_title=Tùy chọn mạng Windows
 smb_workgroup=Nhóm làm việc
 smb_wins=Chế độ THẮNG
@@ -159,14 +169,17 @@ smb_nowhere=Hư không
 smb_fromlist=Từ danh sách. ..
 smb_ip=Địa chỉ IP
 smb_asworkgroup=<b>Là nhóm làm việc</b> (tùy chọn)
+
 create_title=Tạo bản sao
 create_msg=Một chia sẻ sao chép sẽ kế thừa tất cả các giá trị mặc định của nó từ chia sẻ bạn chọn. Nếu chia sẻ nguồn được thay đổi, bản sao cũng vậy.
 create_from=Chia sẻ để sao chép từ:
 create_name=Tên chia sẻ mới:
+
 smbuser_title=Người dùng Samba
 smbuser_list=Danh sách người dùng Samba
 smbuser_nouser=Không có người dùng Samba được xác định.
 smbuser_cannot=Người dùng Samba không thể được liệt kê
+
 euser_title=Chỉnh sửa người dùng Samba
 euser_name=tên tài khoản
 euser_uid=Unix UID
@@ -185,6 +198,7 @@ euser_locked=Tài khoản bị khoá
 euser_nopwrequired=Không cần mật khẩu
 euser_disable=Tài khoản bị vô hiệu hóa
 euser_trust=Tài khoản ủy thác máy trạm
+
 fmisc_title=Mặc định tệp khác
 fmisc_for=Để chia sẻ <tt>$1</tt>
 fmisc_lockfile=Làm tập tin khóa?
@@ -202,6 +216,7 @@ fmisc_conncmd=Lệnh chạy trên kết nối
 fmisc_disconncmd=Lệnh chạy trên ngắt kết nối
 fmisc_rootconn=Lệnh chạy trên kết nối <i>với quyền root</i>
 fmisc_rootdisconn=Lệnh chạy khi ngắt kết nối <i>với quyền root</i>
+
 fname_title1=Mặc định đặt tên tệp
 fname_title2=Chỉnh sửa tên đặt tên
 fname_option=Tùy chọn đặt tên tệp
@@ -216,6 +231,7 @@ fname_hide=Ẩn tập tin dấu chấm?
 fname_archive=Lưu cờ lưu trữ DOS?
 fname_hidden=Lưu DOS ẩn cờ?
 fname_system=Lưu cờ hệ thống DOS?
+
 fperm_title1=Quyền mặc định tệp
 fperm_title2=Chỉnh sửa quyền
 fperm_option=Tùy chọn cấp phép tệp
@@ -228,6 +244,7 @@ fperm_link=Cho phép liên kết ngoài chia sẻ?
 fperm_delro=Có thể xóa các tập tin chỉ đọc?
 fperm_forcefile=Buộc chế độ tập tin Unix
 fperm_forcedir=Buộc chế độ thư mục Unix
+
 share_title1=Mặc định chia sẻ tệp
 share_title2=Chỉnh sửa chia sẻ tệp
 share_title3=Tạo chia sẻ tệp
@@ -251,6 +268,7 @@ share_naming=Đặt tên tệp
 share_misc=sự lựa chọn hỗn hợp
 share_samedesc1=Lưu ý - các cài đặt này cũng có hiệu lực mặc định cho tất cả các chia sẻ tệp.
 share_samedesc2=Lưu ý - các cài đặt này cũng có hiệu lực mặc định cho tất cả các chia sẻ máy in.
+
 print_title1=Mặc định tùy chọn máy in
 print_title2=Chỉnh sửa tùy chọn máy in
 print_option=Tùy chọn máy in
@@ -262,6 +280,7 @@ print_delete=Xóa lệnh công việc
 print_pause=Tạm dừng lệnh
 print_unresume=Lệnh công việc không đáp ứng
 print_driver=Trình điều khiển máy in
+
 pshare_title1=Mặc định chia sẻ máy in
 pshare_title2=Chỉnh sửa máy in Chia sẻ
 pshare_title3=Tạo máy in Chia sẻ
@@ -270,6 +289,7 @@ pshare_name=Chia sẻ tên
 pshare_all=Tất cả các máy in chia sẻ
 pshare_unixprn=Máy in Unix
 pshare_spool=Thư mục Spool
+
 sec_index1=Mặc định bảo mật
 sec_index2=Chỉnh sửa bảo mật
 sec_writable=Có thể viết được không?
@@ -292,6 +312,7 @@ sec_rouser=Chỉ đọc người dùng
 sec_rogroup=Chỉ đọc các nhóm
 sec_rwuser=Đọc/ghi người dùng
 sec_rwgroup=Đọc/viết nhóm
+
 esync_title=Đồng bộ hóa người dùng
 esync_msg=Webmin có thể được cấu hình để những thay đổi trong danh sách người dùng Unix sẽ tự động được áp dụng cho danh sách người dùng Samba. Điều này sẽ chỉ hoạt động khi mô đun Webmin <b>Người dùng và Nhóm</b> được sử dụng để thêm, xóa hoặc thay đổi người dùng.
 esync_add=Thêm người dùng Samba khi người dùng Unix được thêm vào
@@ -303,6 +324,7 @@ esync_gid=Nhóm SID hoặc RID cho người dùng mới
 esync_apply=Ứng dụng
 esync_cannot=Đồng bộ hóa người dùng không thể được cấu hình
 esync_egid=Thiếu nhóm SID hoặc RID
+
 mkpass_title=Chuyển đổi người dùng
 mkpass_convfail=Không thể chuyển đổi người dùng
 mkpass_msg=Chuyển đổi người dùng Unix. ..
@@ -315,10 +337,12 @@ mkpass_passfail=Không thể đặt mật khẩu
 mkpass_user=tên tài khoản
 mkpass_action=Hành động
 mkpass_skipcount=$1 người dùng đã bị bỏ qua để chuyển đổi.
+
 savecopy_fail=Không thể tạo bản sao
 savecopy_global=Tên 'toàn cầu' không thể được sử dụng cho một phần
 savecopy_exist=Một chia sẻ có tên '$1' đã tồn tại
 savecopy_ename=Không có tên chia sẻ
+
 saveuser_fail=Không thể lưu người dùng
 saveuser_uid='$1' không phải là UID Unix hợp lệ
 saveuser_colon=Tên thật không thể chứa ký tự :
@@ -326,10 +350,13 @@ saveuser_home=Thư mục chính '$1' không tồn tại
 saveuser_shell=$1 không phải là vỏ hợp lệ
 saveuser_pass=Không thể thay đổi mật khẩu bằng smbpasswd : $1 
 saveuser_ews=Tùy chọn 'Tài khoản tin cậy máy trạm' không thể được bật cho người dùng hiện tại
+
 savefmisc_fail=Không thể lưu các tùy chọn linh tinh
 savefmisc_number='$1' không phải là số lượng kết nối hợp lệ
+
 savefperm_fail=Không thể lưu quyền truy cập tệp
 savefperm_mode='$1' không phải là chế độ tệp Unix hợp lệ
+
 savefshare_fail=Không thể lưu chia sẻ
 savefshare_nopath=Không có con đường nào
 savefshare_exist=Một chia sẻ có tên '$1' đã tồn tại
@@ -339,6 +366,7 @@ savefshare_owner=Chủ sở hữu bị thiếu hoặc không hợp lệ cho thư
 savefshare_group=Nhóm thiếu hoặc không hợp lệ cho thư mục mới
 savefshare_perms=Thiếu quyền hoặc không hợp lệ cho thư mục mới
 savefshare_emkdir=Không thể tạo thư mục : $1 
+
 savemisc_fail=Không thể lưu tùy chọn
 savemisc_lockdir=Thư mục chứa thư mục khóa không tồn tại
 savemisc_logdir=Thư mục chứa tệp nhật ký không tồn tại
@@ -347,37 +375,48 @@ savemisc_overlap='$1' không phải là kích thước đọc chồng chéo hợ
 savemisc_chroot=Thư mục chroot '$1' không tồn tại
 savemisc_smbrun=Chương trình smbrun '$1' không tồn tại hoặc không thể thực thi
 savemisc_time='$1' không phải là thời gian bù hợp lệ
+
 savenet_fail=Không thể lưu tùy chọn
 savenet_timeout='$1' không phải là thời gian chờ ngắt kết nối hợp lệ
 savenet_ip='$1' không phải là byte IP hợp lệ
 savenet_keep='$1' không phải là khoảng giữ cố định hợp lệ
 savenet_maxxmit='$1' không phải là kích thước gói tối đa hợp lệ
+
 savepass_fail=Không thể lưu tùy chọn
 savepass_nopass=Phiên bản Samba của bạn không hỗ trợ mật khẩu được mã hóa
 savepass_passwd=Không có chương trình thay đổi mật khẩu nào
 savepass_level='$1' không phải là trường hợp chênh lệch mật khẩu hợp lệ
 savepass_chat=Trình tự trò chuyện mật khẩu thay đổi trống
+
 savepopts_fail=Không thể lưu tùy chọn máy in
 savepopts_number=Không gian trống tối thiểu phải là một số
+
 saveprint_fail=Không thể lưu tùy chọn
 saveprint_printcap=Tệp printcap '$1' không tồn tại
 saveprint_cache='$1' không phải là thời gian bộ nhớ cache hợp lệ
+
 savepshare_fail=Không thể lưu chia sẻ máy in
 savepshare_exist=Một chia sẻ có tên '$1' đã tồn tại
 savepshare_name='$1' không phải là tên chia sẻ hợp lệ
 savepshare_global=Tên 'toàn cầu' không thể được sử dụng cho một phần
+
 savesec_fail=Không thể bảo mật
+
 savesmb_fail=Không thể lưu tùy chọn
 savesmb_size='$1' không phải là kích thước đĩa hợp lệ
 savesmb_oslevel='$1' không phải là ưu tiên của trình duyệt chính hợp lệ
 savesmb_server=Bạn phải nhập một máy chủ mật khẩu
+
 start_err=Không thể khởi động máy chủ Samba
 start_fail=$1 thất bại
 start_err_wb=Không thể khởi động máy chủ Winbind
+
 restart_err=Không thể khởi động lại máy chủ Samba
 restart_err_wb=Không thể khởi động lại máy chủ Winbind
+
 swats_fail=Không thể lưu tên người dùng
 swats_user=Thiếu tên người dùng SWAT
+
 viewu_index=Những người dùng hiện tại
 viewu_list=Người dùng hiện tại của $1 
 viewu_share=Chia sẻ
@@ -394,6 +433,7 @@ viewu_ecmd=Chương trình trạng thái Samba $1 dường như không được 
 viewu_kill=Ngắt kết nối người dùng đã chọn
 viewu_enone=Không có người dùng nào được chọn
 viewu_refresh=Làm mới trang.
+
 log_apply=Khởi động lại máy chủ Samba
 log_apply_wb=Khởi động lại máy chủ Winbind
 log_stop=Máy chủ Samba đã dừng
@@ -435,6 +475,7 @@ log_modify_group=Nhóm Samba đã sửa đổi $1
 log_delete_group=Đã xóa nhóm Samba $1 
 log_gsync=Cấu hình đồng bộ hóa nhóm Unix
 log_manual=Tập tin cấu hình được chỉnh sửa thủ công $1 
+
 swat_title=Đăng nhập SWAT
 swat_list=Đăng nhập SWAT
 swat_msg1=Tên người dùng và mật khẩu SWAT hiện tại của bạn không chính xác. Sử dụng mẫu dưới đây để đăng nhập lại.
@@ -446,6 +487,7 @@ swat_password=Mật khẩu
 swat_login=Đăng nhập
 swat_clear=Thông thoáng
 swat_logout=Thoát khỏi SWAT
+
 eacl_aviol=Vi phạm kiểm soát truy cập
 eacl_np=Bạn không có quyền
 eacl_papply=khởi động lại dịch vụ này
@@ -481,6 +523,7 @@ eacl_pafs=truy cập chia sẻ tập tin này
 eacl_paps=truy cập chia sẻ máy in này
 eacl_pcps=tạo chia sẻ máy in
 eacl_pcfs=tạo chia sẻ tập tin
+
 acl_apply=Có thể áp dụng thay đổi và ngăn chặn Samba?
 acl_view_all_con=Có thể xem tất cả các kết nối?
 acl_kill_con=Có thể loại bỏ kết nối?
@@ -527,6 +570,7 @@ acl_maint_groups=Có thể xem, chỉnh sửa và thêm các nhóm?
 acl_maint_gsync=Có thể duy trì tự động đồng bộ hóa Unix sang Samba nhóm?
 acl_winbind=Có thể liên kết với tên miền?
 acl_bind=Có thể truy cập các tùy chọn winbind?
+
 groups_title=Nhóm Samba
 groups_name=Tên nhóm
 groups_unix=Nhóm Unix
@@ -542,6 +586,7 @@ groups_return=danh sách nhóm
 groups_add=Thêm một nhóm Samba mới.
 groups_ecannot=Bạn không được phép xem hoặc chỉnh sửa các nhóm Samba
 groups_cannot=Nhóm Samba không thể được liệt kê
+
 gedit_title2=Chỉnh sửa nhóm Samba
 gedit_title1=Tạo nhóm Samba
 gedit_header=Chi tiết nhóm Samba
@@ -554,11 +599,13 @@ gedit_unix=Nhóm Unix
 gedit_unixgr=Nhóm ..
 gedit_none=không ai
 gedit_set=Liệt kê ..
+
 gsave_err=Không thể lưu nhóm
 gsave_eunix=Tên nhóm Unix hoặc GID bị thiếu hoặc không hợp lệ
 gsave_ename=Tên nhóm thiếu
 gsave_epriv=Thiếu đặc quyền nhóm
 gsave_elocal=Đặc quyền chỉ có thể được đặt cho các nhóm địa phương
+
 gsync_title=Đồng bộ hóa nhóm
 gsync_msg=Webmin có thể được cấu hình để những thay đổi trong danh sách nhóm Unix sẽ tự động được áp dụng cho danh sách nhóm Samba. Điều này sẽ chỉ hoạt động khi mô đun <b>Người dùng và Nhóm</b> Webmin được sử dụng để thêm, xóa hoặc thay đổi nhóm.
 gsync_add=Thêm một nhóm Samba khi một nhóm Unix được thêm vào
@@ -569,10 +616,12 @@ gsync_type=Loại nhóm mới
 gsync_priv=Đặc quyền cho các nhóm mới (nếu địa phương)
 gsync_ecannot=Bạn không được phép định cấu hình đồng bộ hóa nhóm
 gsync_cannot=Đồng bộ hóa nhóm không thể được cấu hình
+
 check_user1=$1 : Mật khẩu được mã hóa không được bật trên trang <a href='$2'>Xác thực</a>.
 check_user2=$1 : Không phải tệp mật khẩu Samba hoặc đường dẫn đến pdbedit được đặt trên trang <a href='$2'>Cấu hình mô-đun</a>.
 check_group1=$1 : Các nhóm chỉ được hỗ trợ trong Samba phiên bản 3.
 check_group2=$1 : Không phải đường dẫn đến lệnh smbgroupedit hoặc net được đặt trên trang <a href='$2'>Cấu hình mô-đun</a>.
+
 winbind_title=Ràng buộc với tên miền
 winbind_ecannot=Bạn không được phép liên kết với các tên miền
 winbind_msg=Biểu mẫu này có thể được sử dụng để liên kết máy chủ Samba của bạn với miền Windows, thường được quản lý bởi một máy chủ khác.
@@ -588,6 +637,7 @@ winbind_edom=Thiếu tên miền
 winbind_cmd=Liên kết với tên miền bằng lệnh $1 ..
 winbind_failed=.. thất bại! Xem đầu ra ở trên cho lý do tại sao.
 winbind_ok=.. hoàn thành.
+
 bind_title=Tùy chọn Winbind
 bind_ecannot=Bạn không được phép chỉnh sửa tùy chọn winbind
 bind_header=Tùy chọn ràng buộc miền Windows
@@ -606,9 +656,11 @@ bind_erealm=Vương quốc Kerberos không hợp lệ
 bind_ecache=Thiếu thời gian bộ nhớ cache không hợp lệ
 bind_euid=Phạm vi UID không hợp lệ - phải giống như 20000-30000
 bind_egid=Phạm vi GID không hợp lệ - phải giống như 20000-30000
+
 manual_title=Chỉnh sửa tập tin cấu hình
 manual_desc=Chỉnh sửa tệp cấu hình Samba $1 ..
 manual_err=Không thể lưu tập tin cấu hình
 manual_edata=Không có gì vào!
+
 delete_err=Không thể xóa cổ phiếu
 delete_enone=Không được chọn

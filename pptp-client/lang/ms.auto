@@ -18,10 +18,12 @@ index_version=Versi PPPd $1
 index_boot=Sambungkan pada boot:
 index_noboot=&lt;Jangan sambung&gt;
 index_bootdesc=Ubah pilihan ini untuk mengawal sama ada sambungan VPTP PPTP yang dipilih dimulakan pada waktu boot atau tidak.
+
 disc_err=Gagal melepaskan terowong
 disc_egone=Tidak lagi aktif
 disc_ekill=Gagal membunuh proses pppd
 disc_done=Terowong $1 berjaya diputuskan.
+
 conn_err=Gagal menyambung terowong
 conn_egone=Terowong tidak lagi wujud
 cone_ealready=Telah disambungkan
@@ -32,6 +34,7 @@ conn_ok=.. sambungan berjaya diaktifkan menggunakan antara muka $1. Alamat tempa
 conn_timeout=.. sambungan telah gagal! Semak mesej log di bawah untuk mendapatkan maklumat mengapa.
 conn_routes=Menambah laluan dengan arahan ..
 conn_mppe=Protokol MPPE untuk penyulitan VPN memerlukan daemon PPP dan sokongan kernel. Walau bagaimanapun, kesilapan di atas menunjukkan bahawa salah satu atau kedua-duanya tidak terdapat pada sistem anda. Jika pelayan PPTP tidak memerlukan MPPE, cuba matikan semua pilihan yang berkaitan dengannya pada halaman <a href='$1'>pilihan PPP global</a>.
+
 edit_title1=Tambah Tunai PPTP
 edit_title2=Edit Terowong PPTP
 edit_header=Opsyen terowong PPTP VPN
@@ -60,6 +63,7 @@ edit_file=Fail pilihan PPP
 edit_none=Tiada
 edit_global=Fail global standard
 edit_ofile=Fail lain ..
+
 save_err=Gagal menyimpan terowong
 save_ename=Nama terowong yang hilang
 save_eserver=Pelayan hilang atau tidak sah untuk disambungkan
@@ -75,6 +79,7 @@ save_egw2=Gerbang tidak sah untuk tuan rumah dalam laluan $1
 save_erename=Gagal menamakan semula fail terowong
 save_eclash=Terowong atau PPP dengan nama yang sama sudah wujud
 save_efile=Fail opsyen PPP yang hilang atau tidak sah
+
 opts_title=Opsyen PPP Global
 opts_desc=Tetapan di bawah diambil dari $1, dan akan digunakan untuk semua terowong yang ditetapkan menggunakan fail pilihan PPP global standard.
 opts_header=Pilihan PPP untuk semua terowong
@@ -84,6 +89,7 @@ opts_err=Gagal menyimpan pilihan PPP global
 opts_emtu=Saiz paket penghantaran maksimum atau tidak sah
 opts_emru=Saiz maksimum paket yang diterima atau tidak sah
 opts_msdesc=Pilihan di bawah membolehkan penyulitan MPPE digunakan oleh pelayan VPN Windows. Bagaimanapun, MPPE memerlukan sokongan dalam daemon PPP dan kernel sistem operasi.
+
 mppe_mppe-40=Gunakan penyulitan MPPE 40-bit?
 mppe_mppe-128=Gunakan penyulitan MPPE 128-bit?
 mppe_mppe-stateless=Dayakan mod MPPE tanpa statik?
@@ -95,6 +101,7 @@ mppe_d1=Dibenarkan
 mppe_mppe-stateful=Dayakan mod MPPE yang bernas?
 mppe_old=Amaran - Perintah MPPE gaya lama $1 didapati dalam fail konfigurasi anda, walaupun daemon PPP anda menyokong arahan gaya baru.
 mppe_new=Amaran - Arahan MPPE gaya baru $1 dijumpai dalam fail konfigurasi anda, walaupun daemon PPP anda hanya menyokong arahan gaya lama.
+
 log_create=Terowong PPTP dibuat $1 
 log_update=Terowong PPTP diubah suai $1 
 log_delete=Terowong PPTP yang dihapus $1 

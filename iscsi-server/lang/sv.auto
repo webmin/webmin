@@ -1,5 +1,6 @@
 check_etargets=ISCSI-serverns konfigurationsfil $1 hittades inte på ditt system.
 check_eserver=ISCSI-serverprogrammet $1 hittades inte på ditt system.
+
 index_title=iSCSI-server
 index_clink=Kanske är den inte installerad, eller är din <a href='$1'>modulkonfiguration</a> felaktig.
 index_stop=Stoppa iSCSI-servern
@@ -11,6 +12,7 @@ index_restartdesc=Klicka på den här knappen för att tillämpa den aktuella ko
 index_atboot=Börja vid start?
 index_atbootdesc=Ändra det här alternativet för att kontrollera om iSCSI-servern startas vid starttid eller inte. Om det för närvarande inte startas vid start och Ja väljs, skapas ett nytt init-skript.
 index_return=modulindex
+
 extents_title=Enheter att dela
 extents_none=Inga enheter att dela har skapats än.
 extents_name=Enhetsnamn
@@ -25,6 +27,7 @@ extents_denone=Ingen vald
 extents_einuse=Enhet $1 kan inte raderas, eftersom den används av : $2 
 extents_drusure=Är du säker på att du vill ta bort följande enheter: $1 ? Deras innehåll kommer att bevaras, men de kommer inte längre att vara tillgängliga för iSCSI-klienter.
 extents_sure=Radera enheter
+
 extent_create=Skapa enhet att dela
 extent_edit=Redigera enhet att dela
 extent_egone=Enhet för att dela $1 finns inte!
@@ -50,6 +53,7 @@ extent_estart=Startens omfattning måste vara ett nummer
 extent_esize=Storleken på omfattningen måste vara ett nummer
 extent_esizemax=Utgångens slut kan inte vara större än enhetsstorleken på $1 
 extent_einuse=Den här enheten kan inte raderas, eftersom den används av : $1 
+
 devices_title=Enhetskombinationer
 devices_none=Inga enhetskombinationer har skapats än.
 devices_name=Kombinationsnamn
@@ -65,6 +69,7 @@ devices_denone=Ingen vald
 devices_einuse=Kombination $1 kan inte raderas, eftersom den används av : $2 
 devices_drusure=Är du säker på att du vill ta bort följande enhetskombinationer: $1 ? Deras innehåll kommer att bevaras, men de kommer inte längre att vara tillgängliga för iSCSI-klienter.
 devices_sure=Radera enhetskombinationer
+
 device_create=Skapa enhetskombination
 device_edit=Redigera enhetskombination
 device_egone=Enhetskombination $1 finns inte!
@@ -81,6 +86,7 @@ device_sure=Radera enhetskombination
 device_einuse=Den här enhetskombinationen kan inte raderas, eftersom den används av : $1 
 device_eextents=Inga medlemmar har valts
 device_eself=En av de valda medlemsenheterna innehåller den här enheten!
+
 targets_title=Dela mål
 targets_none=Inga delningsmål har skapats än.
 targets_name=Målnamn
@@ -96,6 +102,7 @@ targets_derr=Det gick inte att ta bort delningsmål
 targets_denone=Ingen vald
 targets_drusure=Är du säker på att du vill ta bort följande delningsmål: $1 ? Ingen data kommer att gå förlorad, men de kommer inte längre att vara tillgängliga för iSCSI-klienter.
 targets_sure=Radera delningsmål
+
 target_create=Skapa delningsmål
 target_edit=Redigera delningsmål
 target_egone=Delingsmål $1 finns inte!
@@ -112,6 +119,7 @@ target_rusure=Är du säker på att du vill ta bort delningsmålet $1 ? Ingen da
 target_sure=Radera mål
 target_enetwork=Det saknas eller ogiltigt nätverk att dela med
 target_emask=Saknas eller ogiltig netmask att dela med
+
 opts_title=iSCSI-serveralternativ
 opts_header=Alternativ för alla iSCSI-mål
 opts_ip4=Acceptera IPv4-anslutningar
@@ -124,10 +132,12 @@ opts_err=Det gick inte att spara alternativ
 opts_ename=Saknat eller ogiltigt namn - endast bokstäver, siffror, bindestreck, punkt och understreck är tillåtna
 opts_eport=Portnummer saknas eller icke-numeriskt
 opts_esess=Saknade eller icke-numeriska maximala sessioner
+
 manual_title=Redigera konfigurationsfil
 manual_desc=Använd textrutan nedan för att redigera iSCSI-serverkonfigurationsfilen $1. Var försiktig, eftersom ingen validering utförs på din input!
 manual_err=Det gick inte att spara konfigurationsfilen
 manual_edata=Inget innehåll anges!
+
 users_title=iSCSI-verifiering
 users_none=Inga iSCSI-användare har skapats än. Kunder kan komma åt delade enheter utan att verifiera.
 users_add=Lägg till en ny iSCSI-användare.
@@ -135,6 +145,7 @@ users_delete=Radera valda användare
 users_name=Användarnamn
 users_mode=Autentiseringsmetod
 users_return=lista över användare
+
 user_create=Skapa iSCSI-användare
 user_edit=Redigera iSCSI-användare
 user_header=iSCSI användarinformation
@@ -145,13 +156,16 @@ user_egone=Användaren finns inte längre!
 user_err=Det gick inte att spara iSCSI-användare
 user_euser=Saknat eller ogiltigt användarnamn - mellanslag och kolon är inte tillåtna
 user_epass=Saknat eller ogiltigt lösenord - mellanslag och kolon är inte tillåtna
+
 desc_extent=Enhet för att dela $1 
 desc_device=Enhetskombination $1 
 desc_target=Delingsmål $1 
+
 start_err=Det gick inte att starta iSCSI-servern
 stop_err=Det gick inte att stoppa iSCSI-servern
 restart_err=Det gick inte att starta om iSCSI-servern
 atboot_err=Det gick inte att aktivera vid start
+
 log_create_extent=Skapad enhet för att dela $1 
 log_modify_extent=Uppdaterad enhet för att dela $1 
 log_delete_extent=En enhet har raderats för att dela $1 

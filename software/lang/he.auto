@@ -25,6 +25,7 @@ index_echeckupdate=לא אותרה מערכת עדכונים!
 index_filter=חבילות סינון
 index_filterclear=נקה את המסנן
 index_filtered=מציג <tt>$1</tt> חבילות מתוך <tt>$2</tt>
+
 search_title=חיפוש חבילות
 search_nomatch=אין חבילות תואמות $1 
 search_none=אף אחד
@@ -37,6 +38,7 @@ search_esearch=לא נכנסת לחיפוש!
 search_delete=הסר התקנת חבילות שנבחרו
 search_selall=בחר הכל
 search_invert=בחירה הפוך
+
 edit_title=ערוך את החבילה
 edit_details=פרטי החבילה
 edit_desc=תיאור
@@ -53,6 +55,7 @@ edit_uninst=הסר את ההתקנה
 edit_uninstdesc=הסר חבילה זו מהמערכת שלך.
 edit_return=פרטי חבילה
 edit_egone=החבילה כבר לא מותקנת
+
 list_title=קבצי חבילה
 list_files=קבצים לחבילה $1 
 list_path=נתיב
@@ -64,6 +67,7 @@ list_status=סטטוס
 list_ok=בסדר
 list_view=(נוף)
 list_eview=פתיחת $1 : $2 נכשלה
+
 delete_err=מחיקת החבילה $1 נכשלה
 delete_epack=החבילה $1 אינה קיימת
 delete_title=מחק את החבילה
@@ -75,6 +79,7 @@ delete_noscripts=מדלג על הסרת סקריפטים?
 delete_efile=קובץ זמני לא חוקי למחיקה
 delete_purge=לטהר קבצי תצורה?
 delete_depstoo=הסירו גם תלות שאינה בשימוש?
+
 file_title=מידע על קבצים
 file_notfound=אין מידע אודות $1 זמין
 file_path=נתיב
@@ -88,6 +93,7 @@ file_pack=חבילה
 file_class=מעמד
 file_desc=תיאור
 file_none=אף אחד
+
 install_err=התקנת החבילה נכשלה
 install_elocal=לא ניתן קובץ מקומי
 install_elocal2='$1' אינו קיים
@@ -101,6 +107,7 @@ install_title=התקן את החבילה
 install_header=התקן חבילה
 install_packs=חבילות (ים) להתקנה
 install_ok=להתקין
+
 do_err=התקנת החבילה $1 נכשלה
 do_title=התקן את החבילה
 do_efailed=ההתקנה נכשלה : $1 
@@ -117,10 +124,12 @@ do_arch=ארכיטקטורה
 do_inst=מותקן
 do_none=אף אחד
 do_files=קבצי חבילה
+
 pkgadd_root=ספריית שורש
 pkgadd_eroot=ספריית השורש '$1' אינה קיימת
 pkgadd_unknown=לא ידוע
 pkgadd_manager=מנהל חבילות מערכת V
+
 rpm_upgrade=לשדרג את החבילה?
 rpm_replacepkgs=להחליף חבילה?
 rpm_nodeps=להתעלם מתלות?
@@ -138,10 +147,12 @@ rpm_find=חפש rpmfind.net ..
 rpm_findrpm=שם קובץ חבילה
 rpm_finddistro=הפצה
 rpm_finddesc=תיאור
+
 bsd_unknown=לא ידוע
 bsd_scripts=לבצע סקריפטים לפני התקנה ופרסום?
 bsd_force=לכפות התקנה אם חסרים תנאים מוקדמים?
 bsd_manager=מנהל חבילות $1 
+
 slack_unclass=אחר
 slack_unknown=לא ידוע
 slack_missing=חסר
@@ -149,12 +160,14 @@ slack_root=ספריית שורש
 slack_eroot=ספריית שורש חסרה או לא חוקית
 slack_manager=מנהל חבילות Slackware
 slack_edir=ספריית חבילות Slackware חסרה $1 
+
 debian_unknown=לא ידוע
 debian_depends=להתעלם מבעיות תלות?
 debian_conflicts=מתעלמים מהתנגשויות בחבילה?
 debian_overwrite=להחליף קבצים מחבילות אחרות?
 debian_downgrade=החלף חבילה חדשה יותר ישנה?
 debian_manager=דביאן DPKG
+
 log_install_package=חבילה מותקנת $1 
 log_install_apt_l=חבילות מותקנות $1 מ- APT
 log_install_apt=התקנת חבילות $2 מ- APT
@@ -173,6 +186,7 @@ log_upgrade_yum_l=חבילה (ים) משודרגת $1 מ- YUM
 log_upgrade_yum=$2 חבילות (ים) משודרגות מ- YUM
 log_check_rhn_l=חבילות (ים) משודרגות $1 מרשת Redhat
 log_check_rhn=$2 חבילות (ים) משודרגות מרשת Redhat
+
 rhn_input=חבילה מרשת Redhat
 rhn_find=חפש ב- RHN ..
 rhn_install=התקנת חבילות עם פקודה $1.
@@ -200,6 +214,7 @@ rhn_eproxy=שרת proxy חסר או לא חוקי
 rhn_skip=דלג על התאמת חבילות
 rhn_nonefound=אין חבילות זמינות לעדכון.
 rhn_name=Redhat Network
+
 apt_input=חבילה מ- APT
 apt_install=התקנת חבילות עם פקודה $1.
 apt_ok=.. התקן הושלם.
@@ -229,6 +244,7 @@ apt_repo_url=כתובת אתר בסיס למאגר
 apt_repo_path=רכיבי נתיב הפצה
 apt_repo_eurl=כתובת אתר בסיסית חסרה או לא חוקית
 apt_repo_epath=נתיב חלוקה חסר
+
 yum_input=חבילה מ- YUM
 yum_install=התקנת חבילות עם פקודה $1.
 yum_ok=.. התקן הושלם.
@@ -259,6 +275,7 @@ yum_repo_ename=שם מאגר חסר
 yum_repo_eurl=כתובת אתר מאגר חסרה או לא חוקית
 yum_repo_egpg=קובץ ה- Cert של GPG חסר או שאינו קיים
 yum_repo_efile=קובץ מאגר כבר קיים!
+
 urpmi_name=URPMI
 urpmi_input=חבילה מ- URPMI
 urpmi_find=עיין ב- URPMI ..
@@ -273,6 +290,7 @@ urpmi_upgradeok=.. שלם.
 urpmi_install=התקנת חבילות עם פקודה $1.
 urpmi_ok=.. התקן הושלם.
 urpmi_failed=.. ההתקנה נכשלה!
+
 rpm_missing=חסר
 rpm_checkfail=בדיקת $1 נכשלה
 rpm_md5=MD5
@@ -284,6 +302,7 @@ rpm_user=בעלות על משתמשים
 rpm_perm=הרשאות
 rpm_group=בעלות בקבוצה
 rpm_erpm=RPM $1 לא נמצא : $2 
+
 soft_reg=קובץ רגיל
 soft_dir=מדריך
 soft_spec=קובץ מיוחד
@@ -295,6 +314,7 @@ soft_euncompress=הקובץ דחוס, אך הפקודה <tt>ביטול הדחי�
 soft_euncmsg=ביטול דחיסת הקובץ נכשל : $1 
 soft_egzip=הקובץ gzipped, אך פקודת ה- gzip לא נמצאה במערכת שלך.
 soft_egzmsg=נכשל קובץ האקדח : $1 
+
 aix_unknown=לא ידוע
 aix_device=התקן / ספריית INPUT לתוכנה
 aix_software=תוכנה להתקנה
@@ -312,6 +332,7 @@ aix_accept=לקבל הסכמי רישיון חדשים?
 aix_license=תצוגה מקדימה של הסכמי LICENSE חדשים?
 aix_clean=כשל בהתקנת ניקוי?
 aix_manager=מנהל החבילות של AIX
+
 emerge_input=ממאגר Portage
 emerge_find=לחפש ..
 emerge_install=מתקין חבילה עם פקודה $1 ..
@@ -327,6 +348,7 @@ emerge_noreplace=להחליף חבילות קיימות?
 emerge_onlydeps=רק להתקין תלות?
 emerge_title=פורטל חיפוש
 emerge_name=פורטאג '
+
 cygwin_fmissing=הקובץ חסר
 cygwin_lmissing=הקובץ שאליו מצביע הקישור חסר
 cygwin_estat=נכשל קובץ ה- stat: $1 
@@ -336,6 +358,7 @@ cygwin_badpostscript=אזהרה: נראה כי סקריפט זה אינו מופ
 cygwin_pkgexists=החבילה $1 כבר קיימת.
 cygwin_warnuse=אזהרה: זהו אינו ממשק רשמי לניהול תוכנת Cygwin. השתמש על אחריותך בלבד.
 cygwin_edb=בסיס הנתונים של חבילות Cygwin חסר $1 
+
 deletes_err=מחיקת החבילות נכשלה
 deletes_enone=לא נבחרו חבילות
 deletes_title=מחק חבילות
@@ -346,6 +369,7 @@ deletes_failed2=הסרת ההתקנה נכשלה : $1
 deletes_success2=הסרת ההתקנה.
 deletes_rusure=האם אתה בטוח שברצונך להסיר את ההתקנה של החבילות $1 ?
 deletes_ok=מחק את כולם
+
 csw_input=חבילה מ- CSW
 csw_install=התקנת חבילות עם פקודה $1.
 csw_ok=.. התקן הושלם.
@@ -360,20 +384,24 @@ csw_name=CSW
 csw_form=שדרוג חבילות
 csw_upgrade=שדרג את כל החבילות המותקנות
 csw_updatedesc=שדרוג כל החבילות המותקנות עם הפקודה $1.
+
 missing_msg=חבילה $1 ניתנת להתקנה אוטומטית על ידי Webmin באמצעות $2.
 missing_now=להתקין עכשיו
+
 find_title=חפש חבילה
 find_search=מצא חבילות תואמות:
 find_name=שם
 find_version=גרסה
 find_desc=תיאור
 find_none=לא נמצאו חבילות התואמות לחיפוש שלך.
+
 msi_users=הפוך אפליקציה חדשה לזמינה
 msi_users0=אף אחד
 msi_users1=משתמש נוכחי
 msi_users2=כל המשתמשים
 msi_missing=לא קיים
 msi_size=גודל לא נכון
+
 hpux_create_target_path=ליצור נתיב יעד?
 hpux_mount_all_filesystems=להעלות את כל מערכות הקבצים?
 hpux_reinstall=התקן מחדש?
@@ -389,6 +417,7 @@ hpux_enforce_dependencies=לאכוף תלות?
 hpux_enforce_scripts=לאכוף סקריפטים?
 hpux_enforce_dsa=לאכוף ניתוח שטח דיסק?
 hpux_root=ספריית שורש
+
 ports_install=התקנת יציאות FreeBSD $1 ..
 ports_failed=.. חלק מהיציאות נכשלו
 ports_ok=.. התקן הושלם
@@ -399,18 +428,22 @@ ports_form=עדכן את מסד הנתונים של הנמלים
 ports_apply=הורד את תמונת המצב האחרונה
 ports_upgrade=הורדת תמונת מצב של יציאות
 ports_running=הפעלת פקודה $1 ..
+
 pkg_install=התקנת חבילות FreeBSD $1 ..
 pkg_failed=.. חלק מהחבילות נכשלו
 pkg_ok=.. התקן הושלם
 pkg_find=חיפוש pkgng
 pkg_input=חבילה מ- pkgng
+
 pkgsrc_install=התקנת חבילות pkgsrc $1 ..
 pkgsrc_failed=.. חלק מהחבילות נכשלו
 pkgsrc_ok=.. התקן הושלם
 pkgsrc_find=חיפוש pkgng
 pkgsrc_input=חבילה מ- pkgsrc
+
 log_IPKG_update=מסד נתונים IPKG מעודכן
 log_IPKG_upgrade=חבילות IPKG מותקנות משודרגות
+
 IPKG_name=IPKG
 IPKG_input=חבילה מ- IPKG
 IPKG_find=עיין ב- IPKG ..

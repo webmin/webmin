@@ -12,6 +12,7 @@ index_search=Procurar
 index_return=formulário de procura
 index_nolog=<b>Nota</b> - <a href='$1'>Log no Webmin</a> não está habilitado no momento, portanto é provável que as buscas no log de ações não produzam resultado algum.
 index_nologfiles=<b>Nota</b> - <a href='$1'>Log de mudanças em arquivos</a> não está habilitado no momento, portanto é provável que os detalhes de ações logadas não incluam arquivos modificados ou comandos executados.
+
 search_title=Resultados da Busca
 search_date=Data
 search_time=Hora
@@ -31,6 +32,7 @@ search_critt2=em $1
 search_config=Configuração de módulo modificada
 search_etime=Hora de início ou final inválida
 search_err=Busca falhou
+
 view_title=Detalhes de Ações
 view_header=Detalhes de ações logadas $1
 view_action=Descrição

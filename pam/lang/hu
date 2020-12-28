@@ -4,6 +4,7 @@ index_desc=Description
 index_add=Add a new PAM service.
 index_return=service list
 index_none=No PAM configuration files were found on your system in the directory $1. Maybe PAM is not supported, or your <a href='$2'>module configuration</a> is incorrect.
+
 desc_su=Switch user
 desc_su-l=Switch user (with login)
 desc_login=Local or remote login
@@ -87,6 +88,7 @@ desc_common-account=Common account verification
 desc_common-auth=Common authentication
 desc_common-password=Common password change
 desc_common-session=Common session setup
+
 edit_title=Edit PAM Service
 edit_header=PAM service details
 edit_name=Service name
@@ -107,6 +109,7 @@ edit_move=Move
 edit_return=PAM service
 edit_inc=Include service $1
 edit_iheader=Included PAM services
+
 pam_pwdb.so=Unix password authentication
 pam_securetty.so=Secure TTY check for root
 pam_nologin.so=<tt>/etc/nologin</tt> file check
@@ -149,6 +152,7 @@ pam_console.so=Console only check
 pam_xauth.so=X authentication
 pam_stack.so=Call other PAM service
 pam_foreground.so=Console setup
+
 control_requisite=Requisite
 control_required=Required
 control_sufficient=Sufficient
@@ -157,6 +161,7 @@ control_desc_requisite=Fail authentication immediately on failure
 control_desc_required=Fail authentication at end on failure
 control_desc_sufficient=Succeed authentication immediately on success
 control_desc_optional=Success or failure is ignored
+
 create_title=Create PAM Service
 create_header=New PAM service options
 create_name=Service name
@@ -165,6 +170,7 @@ create_mods=Initial PAM modules
 create_0=None
 create_1=Unix authentication
 create_2=Deny all access
+
 mod_edit=Edit PAM Module
 mod_create=Add PAM Module
 mod_header=PAM module options
@@ -178,10 +184,12 @@ mod_type_password=Password change
 mod_control=Failure level
 mod_args=Module arguments
 mod_err=Failed to save module
+
 pwdb_shadow=Use shadow password file?
 pwdb_nullok=Accept null passwords?
 pwdb_md5=Use MD5-encrypted passwords?
 pwdb_nodelay=Delay after failed login?
+
 unix_nullok_secure=Accept null passwords on secure TTYs?
 unix_min=Minimum password length
 unix_nomin=None
@@ -190,6 +198,7 @@ unix_nomax=No limit
 unix_obscure=Prevent use of easy passwords?
 unix_emin=Missing or invalid minimum password length
 unix_emax=Missing or invalid maximum password length
+
 listfile_item=Search file for
 listfile_item_user=Username
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=Limit check to
 listfile_all=All users
 listfile_user=Only user
 listfile_group=Only group
+
 cracklib_type=Password type in prompt
 cracklib_retry=Maximum retries before failure
 cracklib_eretry=Missing or invalid number of retries
 cracklib_etype=Missing or invalid password type
+
 rhosts_equiv=Read <tt>/etc/hosts.equiv</tt> file?
 rhosts_rhosts=Read users' <tt>.rhosts</tt> files?
 rhosts_promiscuous=<tt>+</tt> entry allows all hosts?
 rhosts_suppress=Log authentication failures?
+
 env_var=Variable name
 env_def=Default value
 env_over=Override value
 env_evar=Variable names cannot contain spaces
+
 securetty_ttys=Secure TTYs
+
 shells_shells=Valid user shells
+
 tally_deny=Failure attempts before denying access
 tally_reset=Reset failure count on success
 tally_edeny=Missing or invalid number of failure attempts
 tally_magic=Failure count applies to <tt>root</tt>?
 tally_root=<tt>root</tt> account can be denied?
+
 time_services=Services
 time_ttys=TTYs
 time_users=Users
 time_times=Access times
 time_info=All fields can contain multiple values separated by |, and values can use * as a wildcard or ! as a negator.
+
 group_services=Services
 group_ttys=TTYs
 group_users=Users
 group_times=Access times
 group_groups=Add groups
 group_info=All fields can contain multiple values separated by |, and values can use * as a wildcard or ! as a negator.
+
 wheel_group=Check for membership of group
 wheel_group_def=Default (<tt>wheel</tt> or GID 0)
 wheel_trust=Group members bypass futher authentication?
 wheel_deny=Deny instead of allowing group members?
 wheel_egroup=Missing or invalid group name
+
 motd_file=File to display
 motd_file_def=Default (<tt>/etc/motd</tt>)
 motd_efile=Missing or invalid filename
+
 mail_nopen=Display mail notification at login?
 mail_close=Display mail notification at logout?
 mail_empty=Notify if the mail file is empty?
 mail_noenv=Set $MAIL environment variable?
 mail_dir=Mail spool directory
 mail_edir=Missing or invalid mail spool directory
+
 stack_service=Pass check on to PAM service
+
 log_pam_create=Created PAM service $1
 log_pam_delete=Deleted PAM service $1
 log_mod_create=Added PAM module $1 to service $2
@@ -262,6 +284,7 @@ log_inc_create=Added include $1 for service $2
 log_inc_modify=Modified include $1 for service $2
 log_inc_delete=Deleted include $1 for service $2
 log_incs=Updated includes for service $1
+
 inc_edit=Edit Included Service
 inc_create=Create Included Service
 inc_header=Included PAM service details

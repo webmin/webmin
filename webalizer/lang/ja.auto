@@ -26,6 +26,7 @@ index_when=はい、 $1
 index_webalizer=Webalizer
 index_enable=選択したスケジュール
 index_disable=選択解除
+
 edit_title1=ログファイルを追加
 edit_title2=ログファイルの編集
 edit_header=ログファイルレポートオプション
@@ -49,12 +50,14 @@ edit_cmode0=グローバルオプションを使用する
 edit_cmode1=カスタムオプション
 edit_cmode2=その他の設定ファイル ..
 edit_clear=スケジュールされたレポート後にログファイルをクリアしますか？
+
 gen_title=レポートを生成
 gen_header=Webalizerを実行して、 $1からレポートを生成します ..
 gen_done=..完了
 gen_failed=.. Webalizerが失敗しました！詳細については、上記の出力を参照してください。
 gen_nothing=.. Webalizerは終了しましたが、レポートは生成されませんでした。詳細については、上記の出力を参照してください。
 gen_view=完成したレポートを表示します。
+
 save_err=ログファイルを保存できませんでした
 save_efile=ログファイルが入力されなかったか、存在しません
 save_ecfile=存在しないか存在しない他の構成ファイル
@@ -64,12 +67,14 @@ save_ewuser=$1というUnixユーザーは存在しません
 save_ehost=ウェブサイトのホスト名がないか無効です
 save_etitle=レポートのタイトルがありません
 save_ecannot=$1未満のログのレポートのみを生成できます
+
 view_epath=無効なPATH_INFO
 view_efile=無効なレポートファイル名
 view_elog=無効なログファイル
 view_ecannot=このレポートを表示することはできません
 view_eopen=レポートファイルを開けませんでした
 view_title=レポートを見る
+
 global_title=グローバルWebalizerオプション
 global_title2=Webalizerレポートオプション
 global_for=ログファイル $1の場合
@@ -130,6 +135,7 @@ global_includesite=無視しないクライアント
 global_includereferrer=無視しないリファラー
 global_includeuser=無視しないユーザー
 global_includeagent=無視しないブラウザ
+
 global_err=Webalizerオプションを保存できませんでした
 global_ereport=レポートタイトルのプレフィックスがありません
 global_ehost=ホスト名が欠落しているか無効です
@@ -139,6 +145,7 @@ global_etable='$1'テーブルのサイズがないか無効です
 global_ehistory=履歴ファイル名が欠落しているか無効です
 global_ecurrent=増分ファイル名が欠落しているか無効です
 global_ecache=DNSキャッシュファイル名が欠落しているか無効です
+
 log_create_log=$1のレポートを作成しました
 log_modify_log=$1の変更されたレポート
 log_delete_log=$1のレポートを削除しました
@@ -147,6 +154,7 @@ log_global=変更されたグローバルWebalizerオプション
 log_global2=$1のWebalizerオプションの変更
 log_enable_logs=$1ログのスケジュールされたレポート
 log_disable_logs=$1ログのスケジュールされていないレポート
+
 acl_view=既存のレポートのみを表示できますか？
 acl_global=グローバルWebalizerオプションを編集できますか？
 acl_dir=以下のログのレポートの表示と編集のみを許可します

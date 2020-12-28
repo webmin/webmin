@@ -2,8 +2,10 @@ index_title=Serwer PPP Dialin
 index_return=Indeks PPP
 index_none=Nie masz dostępu do żadnej funkcji tego modułu.
 index_delete=Usuń wybrane konta
+
 secrets_none=Nie utworzono jeszcze kont PPP.
 secrets_ecannot=Nie możesz edytować kont PPP
+
 log_deletes=Usunięto $1 kont PPP
 log_apply=Zastosowana konfiguracja Mgetty
 log_options=Zapisane opcje PPP
@@ -15,6 +17,7 @@ log_dialin_move=Przeniesiony numer identyfikacyjny dzwoniącego $1
 log_mgetty_create=Utworzono port szeregowy $1 
 log_mgetty_modify=Zmodyfikowany port szeregowy $1 
 log_mgetty_delete=Usunięto port szeregowy $1 
+
 options_title=Opcje PPP
 options_serial=Dla portu szeregowego $1 
 options_dev=Dla urządzenia $1 
@@ -45,6 +48,7 @@ options_idle=Czas bezczynności przed rozłączeniem
 options_idle_def=Nigdy
 options_eidle=Brakujący lub nieprawidłowy czas bezczynności
 options_ecannot=Nie możesz edytować opcji PPP
+
 mgetty_title=Konfiguracja portu szeregowego
 mgetty_ecmd=W systemie nie znaleziono polecenia $1. Ten program jest potrzebny do obsługi logowania do portu szeregowego za pośrednictwem modemu lub połączenia bezpośredniego.
 mgetty_desc=Aby Twój serwer zezwalał na logowanie na porcie szeregowym przez modem lub połączenie bezpośrednie, musi być wymieniony poniżej. Po dodaniu portu do tej listy program $1 zostanie skonfigurowany do odbierania połączeń modemowych i wyświetlania monitu logowania.
@@ -86,6 +90,7 @@ mgetty_apply=Zastosuj konfigurację
 mgetty_applydesc=Kliknij ten przycisk, aby zastosować bieżącą konfigurację portu szeregowego, uruchamiając polecenie $1 i zabijając wszystkie procesy Mgetty.
 mgetty_applyerr=Nie można zastosować konfiguracji
 mgetty_ecannot=Nie możesz edytować konfiguracji portu szeregowego
+
 dialin_title=Dostęp do identyfikatora dzwoniącego
 dialin_desc=Na tej stronie możesz skonfigurować Mgetty, aby zezwalał lub odmawiał dostępu do wybierania numeru na podstawie numeru telefonu osoby dzwoniącej. Kiedy nadejdzie połączenie, pierwszy wpis na liście, który pasuje do numeru telefonu, określa, czy połączenie zostanie zaakceptowane, czy nie.
 dialin_efile=Plik kontroli dostępu identyfikatora dzwoniącego Mgetty $1 nie został znaleziony w twoim systemie. Być może Mgetty nie jest zainstalowany lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
@@ -106,9 +111,12 @@ dialin_move=Ruszaj się
 dialin_err=Nie udało się zapisać numeru identyfikacyjnego dzwoniącego
 dialin_enumber=Brakujący lub nieprawidłowy numer telefonu
 dialin_ecannot=Nie możesz edytować dostępu do identyfikatora dzwoniącego
+
 acl_pages=Dostępne strony
 acl_direct=Przejdź bezpośrednio do jednej strony?
+
 sync_ecannot=Nie możesz edytować opcji synchronizacji unix-ppp
 sync_title=Synchronizacja użytkownika
+
 delete_err=Nie udało się usunąć kont
 delete_enone=Nie wybrano

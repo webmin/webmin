@@ -21,6 +21,7 @@ index_eversion=Sisteminizde kurulu STunnel sürümü $1, ancak bu modül $2 ve �
 index_conf=$1 yapılandırma dosyasından
 index_noconf=Yapılandırma dosyası yok!
 index_delete=Seçilen Tünelleri Sil
+
 edit_title=SSL Tünelini Düzenle
 create_title=SSL Tüneli Oluştur
 edit_header1=Tünel kaynağı seçenekleri
@@ -47,6 +48,7 @@ edit_tcpw=TCP-sarmalayıcıların adı
 edit_auto=Otomatik
 edit_iface=Giden kaynak adresi
 edit_type=Kaçmak
+
 save_err=SSL tüneli kaydedilemedi
 save_enclash=$2 hizmet adı, $1 bağlantı noktasında zaten kullanılıyor.
 save_einetd=$1 adında bir inetd hizmeti zaten var.
@@ -61,6 +63,7 @@ save_etcpw=Eksik veya geçersiz TCP sarmalayıcı adı
 save_eiface=Eksik veya geçersiz giden kaynak adresi
 save_exinetd=$1 adında bir xinetd hizmeti zaten var
 save_export=$1 bağlantı noktası zaten $2 xinetd hizmeti tarafından kullanılıyor
+
 log_apply=Uygulanan Değişiklikler
 log_create=$1 SSL tüneli oluşturuldu
 log_delete=$1 SSL tüneli silindi

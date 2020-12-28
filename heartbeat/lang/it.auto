@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Lo script per richiedere risorse dall'altro nodo ($1) no
 index_version=Versione Heartbeat $1 
 index_noversion=Avviso: la versione di Heartbeat installata sul sistema non può essere rilevata automaticamente. Dovresti impostarlo nella pagina <a href='$1'>configurazione del modulo</a>.
 index_status=Stato del battito cardiaco
+
 conf_title=Opzioni di configurazione
 conf_header=Opzioni di configurazione del battito cardiaco
 conf_serials=Porte heartbeat seriali
@@ -54,6 +55,7 @@ conf_auto_on=$ {} Conf_enabled
 conf_auto_off=$ {} Conf_disabled
 conf_auto_legacy=Modalità legacy
 conf_auto_=$ {Default}
+
 res_title=Risorse del cluster
 res_node=Nodo primario
 res_ips=Indirizzi IP
@@ -67,6 +69,7 @@ res_getserv=Ottieni risorse
 res_hbdown=Battito cardiaco
 res_up=SU
 res_down=GIÙ
+
 node_create=Aggiungi risorsa cluster
 node_edit=Modifica risorsa cluster
 node_header=Dettagli delle risorse del cluster
@@ -83,6 +86,7 @@ node_enone=Nodo primario mancante o non valido
 node_eip='$1' non è un indirizzo IP valido
 node_ecidr='$1' non è un CIDR valido
 node_ebroad='$1' non è un indirizzo di trasmissione valido
+
 auth_title=Chiavi di autenticazione
 auth_header=Autenticazione nodo cluster
 auth_mode=Modalità di autenticazione
@@ -92,6 +96,8 @@ auth_md5=MD5 con password
 auth_err=Impossibile salvare le chiavi di autenticazione
 auth_emd5=Password MD5 mancante o non valida
 auth_esha1=Password SHA1 mancante o non valida
+
 start_err=Impossibile avviare il battito cardiaco
+
 apply_err=Impossibile applicare le modifiche
 apply_epid=Il processo non è più in esecuzione

@@ -13,6 +13,7 @@ index_addsnap=Crear una nueva instantánea.
 index_return=grupos de volumen
 index_init=Esto puede ser debido a que LVM aún no ha sido activado. <a href='$1'>Actívalo ahora</a> para ver todos los grupos de volúmenes.
 index_eversion=Webmin sólo soporta la versión 1.0 o superior de LVM. La salida de $1 en tu sistema fue: $2
+
 lv_edit=Editar Volumen Lógico
 lv_edit_snap=Editar Instantánea
 lv_create=Crear Volumen Lógico
@@ -57,6 +58,7 @@ lv_mkfsdesc=Selecciona un tipo de sistema de archivos y haz click en este botón
 lv_toobig=La nueva medida del volumen es de $1 bloques (de $2 cada uno), pero hay sólo $3 libres en el grupo de volumen.
 lv_snapof=Instantánea de volumen lógico
 lv_nosnap=¡No la pude determinar!
+
 mkfs_title=Crear Sistema de Archivos
 mkfs_desc=Este formulario te permite construir un nuevo sistema de archivos $2 ($1) en el volumen lógico $3. Todos los datos que existan serán borrados.
 mkfs_header=Opciones de nuevo sistema de archivos
@@ -64,13 +66,16 @@ mkfs_err=No pude crear sistema de archivos
 mkfs_exec=Ejecutando comando $1...
 mkfs_failed=... ¡falló el comando!
 mkfs_ok=... comando completado.
+
 resize_title=Redimensionar Volumen Lógico
 resize_mesg=El sistema de archivos $1 de este volumen lógico no pude ser redimensionado. Si redimensionas el volumen lógico, debes de recrear el sistema de archivos, lo cual borrará todos los datos.
 resize_mesg2=Webmin no conoce qué clase de sistema de archivos hay en este volumen lógico, si hay. Si redimensionas el volumen lógico, debes de recrear el sistema de archivos, lo cual borrará todos los datos.
 resize_fs=Hubo un error redimensionando el sistema de archivos $1 de este volumen lógico: $2. Si redimensionas el volumen lógico, debes de recrear el sistema de archivos, lo cual borrará todos los datos.
 resize_ok=Redimensionar Volumen Lógico
+
 init_title=Activar LVM
 init_cmd=Eejcutando comando $1...
+
 pv_edit=Editar Volumen Físico
 pv_create=Añadir a grupo de volumen
 pv_vg=En grupo de volumen $1
@@ -89,6 +94,7 @@ pv_rusure=¿Estás seguro de querer quitar el dispositivo $1 de volumen físco d
 pv_deleteok=Quitar Volumen
 pv_eother=Dispositivo de disco falta o es inválido
 pv_raid=Dispositivo de RAID $1
+
 vg_edit=Editar Grupo de Volumen
 vg_create=Crear Grupo de Volumen
 vg_name=Nombre de grupo de volumen
@@ -105,6 +111,7 @@ vg_cannot=Este grupo de volumen no puede ser borrado ya que aún tiene $1 volúm
 vg_deleteok=Borrar Ahora
 vg_ename=Nombre de grupo de volumen falta o es inválido
 vg_epesize=Medida de bloque asignado falta o es inválida
+
 log_create_vg=Creado grupo de Volumen $1
 log_modify_vg=Modificado grupo de Volumen $1
 log_delete_vg=Borrado grupo de Volumen $1

@@ -11,6 +11,7 @@ index_uploaded=Feltöltött file -ból
 index_ftp=Ftp vagy http URL-ből
 index_installok=Telepítése
 index_return=modul lista
+
 download_err=Nem lehet telepíteni a modult
 download_elocal=Nem lett helyi file megadva
 download_elocal2=A(z) '$1' nem létezik
@@ -33,6 +34,7 @@ download_cont=A telepítés folytatása
 download_epackages=Érvénytelen CPAN modul URL
 download_ecpan=A $1 modult nem találom a CPAN modulok listájában
 download_args=<tt>Makefile.PL</tt> paraméterei
+
 install_title=Modul telepítése
 install_untar=Untar futtatása a  modul file-on
 install_make=A modul lefordítésa
@@ -46,8 +48,10 @@ install_done_3=A(z) $1 előállítása, tesztelése és telepítése sikeres.
 install_err=A(z) $1 telepítése sikertelen. Ellenőrizze a kimenetet, és próbálja kézileg felinstallálni.
 install_exec=Futtatom a(z) $1 ..
 install_efile=A(z) $1 module file már nem létezik
+
 cpan_sel=Modulok a(z) $1 alatt..
 cpan_title=Válassza ki a Perl modult
+
 edit_title=Modul részletezése
 edit_header=Modul információk
 edit_mod=Modul neve

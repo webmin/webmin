@@ -10,6 +10,7 @@ index_action=Funktion
 index_desc=Beskrivning
 index_boot=Starta vid systemstart?
 index_status=Startad nu?
+
 edit_title=Ändra funtion
 create_title=Skapa funktion
 edit_ecannot=Du får inte ändra startfunktioner
@@ -38,10 +39,12 @@ edit_statusnow=Visa status
 edit_return=funktion
 edit_status=Startad nu?
 edit_unknown=Okänd
+
 save_err=Det gick inte att spara funktion
 save_ecannot=Du får inte ändra startfunktioner
 save_ealready=Det finns redan en funktion som heter '$1'
 save_ewrite=Det gick inte att skriva till $1: $2
+
 ss_ecannot=Du får inte starta eller avsluta startfunktioner
 ss_start=Startfunktion
 ss_stop=Avstängningsfunktion
@@ -49,20 +52,24 @@ ss_restart=Omstartsfunktion
 ss_reload=Omladdningsfunktion
 ss_status=Funktionsstatus
 ss_exec=Utför $1 ...
+
 shutdown_ecannot=Du får inte stänga av systemet
 shutdown_title=Stäng av
 shutdown_rusure=Vill du verkligen stänga av systemet med kommandot $1?
 shutdown_ok=Stäng av systemet
 shutdown_exec=Stänger av med kommando $1 ...
+
 reboot_ecannot=Du får inte starta om systemet
 reboot_title=Starta om
 reboot_rusure=Vill du verkligen starta om systemet med kommandot $1?
 reboot_ok=Starta om systemet
 reboot_exec=Startar om med kommando $1 ...
+
 acl_script=Kunna ändra startscriptet?
 acl_actions=Kunna ändra, skapa och ta bort funktioner?
 acl_reboot=Kunna starta om systemet?
 acl_shutdown=Kunna stänga av systemet?
+
 log_rename=Bytte namn på funktion $1 till $2
 log_modify=Modifierade funktion $1
 log_create=Lade till funktion $1

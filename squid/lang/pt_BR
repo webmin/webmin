@@ -37,6 +37,7 @@ index_restart=Aplicar Configuração
 index_restartdesc=Clique neste botão para ativar a configuração atual do Squid.
 index_iptables=Configuração de Redirecionamento de Porta
 index_squid=Servidor Proxy Squid
+
 buttsave=Salvar
 buttdel=Deletar
 buttcreat=Criar
@@ -46,6 +47,7 @@ default=Padrão
 none=Nenhum
 on=Ligado
 off=Desligado
+
 acl_header1=Criar ACL
 acl_header2=Editar ACL
 acl_name=Nome da ACL
@@ -100,6 +102,7 @@ acl_file=Armazenar valores ACL em arquivo
 acl_nofile=Configuração do Squid
 acl_infile=Arquivo separado
 acl_keep=Só usar conteúdos existentes no arquivo?
+
 aclsave_failsave=Falhou ao salvar ACL
 aclsave_faildel=Falhou ao deletar ACL
 aclsave_epr=Esta ACL está sendo usada por uma restrição do proxy
@@ -119,11 +122,13 @@ aclsave_eemin=Minuto de fim inválido
 aclsave_efile=Você não está autorizado a escrever no arquivo ACL '$1'
 aclsave_enofile=Nenhum nome de arquivo ACL inserido
 aclsave_ealready=O arquivo ACL já existe
+
 cach_ecannot=Você não está autorizado a acessar o gerenciador de estatísticas do cache
 cach_err=Erro
 cach_nfound=O programa gerenciador de cache do Squid <tt>$1</tt> não foi encontrado no seu sistema. Talvez sua<a href=/config.cgi?$2 >configuração do módulo</a> esteja incorreta.
 cach_return=índice do squid
 cach_esame=O <b>Executável do Squid cachemgr.cgi</b> está definido para is set to Webmin's cachemgr.cgi program, not the one supplied by Squid.
+
 chown_header=Alterando Dono
 chown_stop=Parando squid ...
 chown_done=.. Concluído
@@ -131,6 +136,7 @@ chown_chown=Alterando Dono ...
 chown_restart=Re-iniciando Squid ...
 chown_failrestart=Falhou ao re-iniciar Squid ..
 chown_return=índice do squid
+
 clear_ecannot=Você não está autorizado a limpar e refazer o cache
 clear_header=Limpar e Refazer o Cache
 clear_msgclear=Você tem certeza qe deseja limpar e refazer o seu cache? Isto irá apagar <b>todos</b> os arquivos que você tenha deixado em cache e reniciar seu servidor Squid.
@@ -144,6 +150,7 @@ clear_failrestart=Falhou ao reiniciar o Squid ..
 clear_return=índice do squid
 clear_url=Remove uma URL do cache:
 clear_ok=Remover
+
 eacl_ecannot=Você não está autorizado a editar o controle de acesso
 eacl_header=Controle de Acesso
 eacl_acls=Lista de Controle de Acesso
@@ -160,8 +167,10 @@ eacl_nopr=Nenhuma restrição de proxy definida
 eacl_addpr=Adicionar restrição de proxy
 eacl_noprr=Nenhuma restrição de resposta do proxy definida
 eacl_addprr=Adicionar restrição de resposta do proxy
+
 eacl_replypr=Restrição de resposta do proxy
 eacl_replynopr=Nenhuma restrição de resposta do proxy definida
+
 eacl_icpr=Restrição ICP
 eacl_noicpr=Nenhuma restrição ICP definida
 eacl_addicpr=Adicionar restrição ICP
@@ -178,6 +187,7 @@ eacl_eclass=Nenhuma classe de programa selecionada
 eacl_cname=Nome do Tipo
 eacl_file=Do arquivo $1
 eacl_hdelete=Apagar Restrições Selecionadas
+
 eadm_ecannot=Você não está autorizado a editar as opções administrativas
 eadm_header=Opções Administrativas
 eadm_aao=Opções de Administração e Anúncio
@@ -204,6 +214,7 @@ eadm_caf=Arquivo de anúncio do cache
 eadm_annp=Período de Anúncio
 eadm_buttsave=Salvar
 eadm_return=índice do squid
+
 eauth_ecannot=Você não está autorizado a editar a autenticação do proxy
 eauth_header=Autenticação do Proxy
 eauth_aopt=Opções de Autenticação
@@ -217,6 +228,7 @@ eauth_pusers=Usuários Proxy
 eauth_nopusers=Nenhum usuários proxy está atualmente definido.
 eauth_addpuser=Adicionar um novo usuário proxy
 eauth_return=índice do squid
+
 ec_ecannot=Você não está autorizado a editar as opções de cache
 ec_header=Opções do cache
 ec_cro=Opções de Armazenamento e Requisição
@@ -270,6 +282,7 @@ ec_return=índice do squid
 ec_maxreplies=Tamanhos máximos de corpo de resposta
 ec_maxrn=Tamanho (kB)
 ec_maxracls=Parar requisições de correspondências ACL (deixar vazio para todos)
+
 ech_header=Criar Host de Cache
 ech_header1=Editar Host de Cache
 ech_cho=Opções do Host de Cache
@@ -313,6 +326,7 @@ ech_origin=Tratar host como servidor de origem?
 ech_force=Forçar Host: cabeçalhos para
 ech_same=Não alterados
 ech_ssl=Conectar usando SSL?
+
 eicp_ecannot=Você não está autorizado a editar outros caches
 eicp_header=Outros Caches
 eicp_opcs=Outros servidores proxy de cache
@@ -350,6 +364,7 @@ eicp_ttype=Tipo
 eicp_tpport=Porta do proxy
 eicp_tiport=Porta ICP
 eicp_delete=Apagar Caches Selecionados
+
 elogs_ecannot=Você não está autorizado a editar o logging
 elogs_header=Registro
 elogs_lalo=Opções de Registro e Arquivo de Registro
@@ -382,6 +397,7 @@ elogs_aacls=Somente registrar para ACL
 elogs_notset=Não definido
 elogs_dont=Não registrar
 elogs_file=Arquivo $1
+
 emem_ecannot=Você não está autorizado a editar o úso de memória
 emem_dheader=Uso de Disco e Memória
 emem_header=Uso da Memória
@@ -407,6 +423,7 @@ emem_lfuda=Dynamic least frequently used
 emem_hlru=Heap least frequently used
 emem_return=índice do squid
 emem_mrp=Política de substituição de memória
+
 emisc_ecannot=Você não está autorizado a editar as opções de  miscelânea
 emisc_header=Opções de Miscelânea
 emisc_mo=Opções de Miscelânea
@@ -443,6 +460,7 @@ emisc_wccpin=Endereço de Entrada WCCP
 emisc_wccpout=Endereço de Saída WCCP
 emisc_none=Nenhum
 emisc_virtual=Virtual
+
 eports_ecannot=Você não está autorizado a editar as portas e rede
 eports_header=Portas and Rede
 eports_pano=Opções de Portas e Rede
@@ -467,6 +485,7 @@ eports_sel=Listado abaixo..
 eports_unc=Fazer desligamento SSL sujo?
 eports_checkhost=Validar nomes de computadores nas URLs?
 eports_underscore=Permitir underlines nos nomes dos computadores?
+
 eprogs_ecannot=Você não está autorizado a editar programas de ajuda
 eprogs_header=Programas de Ajuda
 eprogs_chpo=Opções de Programa de Ajuda do Cache
@@ -491,6 +510,7 @@ eprogs_ttl=Tempo de autenticação do cache
 eprogs_aittl=Tempo de autenticação IP do cache
 eprogs_realm=Domínio de autenticação
 eprogs_return=índice do squid
+
 euser_header=Criar Usuário Proxy
 euser_header1=Editar Usuário Proxy
 euser_pud=Detalhes do Usuário Proxy
@@ -499,6 +519,7 @@ euser_p=Senha
 euser_u1=Não alterar
 euser_e=Habilitar?
 euser_return=Lista de usuários
+
 ahttp_header=Criar restrição de Proxy
 ahttp_header1=Editar Restrição de Proxy
 ahttp_pr=Restrição de Proxy
@@ -508,10 +529,13 @@ ahttp_d=Negar
 ahttp_ma=Combinar ACLs
 ahttp_dma=Não combinar ACLs
 ahttp_return=Lista de ACL
+
 ahttp_replyheader=Criar Restrição de Resposta do Proxy
 ahttp_replyheader1=Editar Restrição de Resposta do Proxy
 ahttp_replypr=Restrição de Resposta do Proxy
+
 sahttp_ftspr=Falhou ao salvar restrições de proxy
+
 aicp_header=Criar Restrição ICP
 aicp_header1=Editar Restrição ICP
 aicp_ir=Restrição ICP
@@ -521,7 +545,9 @@ aicp_d=Negar
 aicp_ma=Combine ACLs
 aicp_dma=Não combine ACLs
 aicp_return=Lista de ACL
+
 saicp_ftsir=Falhou ao salvar Restrições ICP
+
 icache_ecannot=Você não está autorizado a inicializar o cache
 icache_ftic=Falhou ao iniciar cache
 icache_ymcautrsa=Você deve escolher um usuário para executar o Squid
@@ -529,7 +555,9 @@ icache_euser=O usuário para executar o proxy não existe
 icache_itscwtc=Iniciando o cache do Squid com o comando <tt>$1</tt> ..
 icache_return=índice do squid
 icache_title=Inicializar Cache
+
 restart_ftrs=Falhou ao reconfigurar o squid
+
 sadmin_ftsao=Falhou ao salvar opções administrativas
 sadmin_header=Altere o Proprietário
 sadmin_msg1=Você alterou o usuário ou grupo que o Squid é executado. Para que isso tenha efeito, o proprietário do todo o cache e arquivos de registro deve ser atualizado e o Squid reiniciado. 
@@ -539,10 +567,12 @@ sadmin_inavea='$1' não é um endereço de e-mail válido
 sadmin_inavh='$1' não é um nome de computador válido
 sadmin_inavap='$1' não é um período de anúncio válido
 sadmin_inavp='$1' não é uma porta válida
+
 sauth_ftsao=Falhou ao salvar opções de autenticação
 sauth_iomuf=Usuários do nome do arquivo inválido ou faltando
 sauth_iomd=Domínio inválido ou faltando
 sauth_msg1=Sua versão do Squid não foi compilada com suporte para autenticação de proxy
+
 scache_ftsco=Falhou ao salvar opções do cache
 scache_emsg0=Você deve inserir ao final um diretório de cache
 scache_emsg1=O diretório de '$1' não existe
@@ -560,14 +590,17 @@ scache_emsg12='$1' não é um tamanho de diretório válido
 scache_emsg13='$1' não é um host válido 
 scache_emsg14='$1' não é uma porta válida
 scache_emaxrs=Tamanho máximo do corpo inválido na linha $1
+
 schost_ftsc=Falhou ao salvar cache
 schost_emsg1='$1' não é um nome de computador válido
 schost_emsg2='$1' não é uma port de proxy válida
 schost_emsg3='$1' não é uma porta TCP válida
 schost_emsg4='$1' não é um time-to-live válido
 schost_emsg5='$1' não é um peso válido
+
 sicp_ftsco=Falhou ao salvar opções de cache
 sicp_emsg1='$1' não é um tempo limite válido
+
 slogs_ftslo=Falhou ao salvar opções de registro
 slogs_emsg1='$1' não é um nome de arquivo absoluto válido 
 slogs_emsg2='$1' não é um nome de arquivo válido
@@ -577,20 +610,24 @@ slogs_emsg5='$1' não é uma lista de opções de depuração válida
 slogs_efname=Nome do formato inválido na linha $1
 slogs_effmt=Formato dos registros faltando na linha $1
 slogs_eafile=Arquivo de registro inválido ou faltando na linha $1
+
 smem_ftsmo=Falhou ao salvar opções de memória
 smem_emsg1='$1' não é um tamanho de cache válido
 smem_emsg2='$1' não é um high-water mark válido
 smem_emsg3='$1' não é um low-water mark válido
 smem_emsg4='$1' não é um tamanho de objeto válido
+
 smisc_ftso=Falhou ao salvar opções
 smisc_emsg1='$1' não é um número de rotações válido
 smisc_emsg2='$1' não é um domínio válido
 smisc_emsg3='$1' não é um proxy válido
 smisc_emsg4='$1' não é um número de hops válido
+
 sport_ftspo=Falhou ao salvar opções de porta
 sport_emsg1='$1' não é um número de portas válido
 sport_emsg2='$1' não é um endereço válido 
 sport_emsg3='$1' não é um tamanho do buffer válido
+
 sprog_ftshpo=Falhou ao salvar opções do programa de ajuda
 sprog_emsg1=Opções de FTP faltando
 sprog_emsg2='$1' não é um programa válido
@@ -601,19 +638,23 @@ sprog_emsg6='$1' não é uma largura de coluna válida
 sprog_emsg7=Nenhum servidor DNS inserido
 sprog_emsg8='$1' não é um endereço IP válido
 sprog_emsg9='$1' não é um tempo de cache válido
+
 suser_ftsu=Falhou ao salvar usuário
 suser_emsg1=Nome de usuário inválido ou faltando
 suser_etaken=O nome de usuário já está em uso
+
 start_ftsq=Falhou ao iniciar o Squid
 start_ecannot=Você não está autorizado a iniciar o Squid
 stop_ftsq=Falhou ao parar o Squid
 stop_ecannot=Você não está autorizado a para o Squid
+
 calamaris_ecannot=Você não está autorizado a acessar a análise de registros do Calamaris
 calamaris_title=Analisador de Registro Calamaris
 calamaris_last=Limitar a análise para útimas $1 linhas de registros ..
 calamaris_eprog=O executável do calamaris $1 não foi encontrado. Talvez não esteja instalado no seu sistema ou sua <a href='$2'>configuração do módulo</a> esteja incorreta.
 calamaris_elogs=O diretório de registro $1 não contém nenhum arquivo <tt>access.log</tt>. Talvez o squid não esteja sendo executado ainda, ou a sua <a href='$2'>configuração do módulo</a> esteja incorreta.
 calamaris_gen=Relatório gerado em $1
+
 lib_emsg1='$1' não é um endereço IP válido
 lib_seconds=segundos
 lib_minutes=minutos
@@ -661,6 +702,7 @@ lib_aclmuip=Máximo de IP do Usuário
 lib_buttac=Aplicar Alterações
 lib_buttss=Parar Squid
 lib_buttss1=Iniciar Squid
+
 log_ports=Opções de portas e rede alteradas
 log_icp=Outras opções do cache
 log_mem=Opções de uso de memória alteradas
@@ -715,25 +757,31 @@ log_pools_delete=Pool de recursos $1 apagados
 log_delay_create=ACL para pool de revezamento $1 adicionado
 log_delay_modify=ACL para pool de revezamento $1 modificado
 log_delay_delete=ACL para pool de revezamento $1 apagado
+
 log_delay_move=ACL para pool de revezamento $1 movido
 log_refresh_create=Regra de atualização para $1 criada
 log_refresh_modify=Regra de atualização para $1 modificada
 log_refresh_delete=Regra de atualização para $1 apagada
+
 log_refresh_move=Regra de atualização para $1 movida
 log_refreshes_delete=Regras de atualização $1 apagadas
 log_iptables=Definição de redirecionamento de porta atualizada
 log_purge=URLs $1 removidas do cache
 log_cachemgr=Senhas do gerenciador de cache removidas
+
 acl_root=Diretório Raiz para arquivos ACL
 acl_sections=Páginas de configuração permitida
 acl_start=Pode iniciar e parar o Squid?
 acl_restart=Pode aplicar a configuração do Squid?
+
 always_create=Criar Obtenção direta
 always_edit=Editar Obtenção dirta
 always_header=Obter diretamente requisições correspondentes a ACLs
+
 never_create=Criar Obtenção indireta
 never_edit=Editar Obtenção indireta
 never_header=Nunca obter requisições correspondentes a ACLs
+
 delay_title=Pools de Revezamento
 delay_add=Adicionar um novo pool de revezamento
 delay_num=Número
@@ -783,11 +831,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=MB
+
 dpool_err=Falhou ao apagar pools de revezamento
 dpool_enone=Nenhum selecionado
+
 apool_header=Adicionar ACL de Pool de Revezamento
 apool_header1=Editar ACL de Pool de Revezamento
 apool_pr=ACL do Pool de Revezamento
+
 authparam_title=Programas de Autenticação
 authparam_header=Opções do Programa de autenticação externa
 authparam_ttl=Hora para armazenar as senhas
@@ -827,6 +878,7 @@ ext_ecache=Tamanho do cache inválido ou faltando
 ext_eprogram=Caminho para o programa inválido 
 ext_eclash=Um tipo de programa externo  com o mesmo nome já existe
 ext_eused=Este programa externo está em uso pelo ACL
+
 header_title=Cabeçalho de Controle de Acesso
 header_none=Nenhuma regra de cabeçalho de controle de acesso foi definida ainda.
 header_name=Cabeçalho HTTP
@@ -846,6 +898,7 @@ header_err=Falhou ao salvar regra de cabeçalho de controle de acesso
 header_ename=Nome do cabeçalho inválido ou faltando
 header_request_header_access=Requisição de Cabeçalhos
 header_reply_header_access=Responder Cabeçalhos
+
 refresh_title=Regras de atualização
 refresh_none=Nenhuma regra de atualização foi definida ainda.
 refresh_re=Expressão Regular
@@ -872,6 +925,7 @@ refresh_epc=Percentual de tempo inválido ou faltando
 refresh_delete=Apagar as Regras de Atualização Selecionadas
 drefresh_err=Falhou ao apagar regras de atualizações
 drefesh_enone=Nenhuma selecionada
+
 iptables_title=Definição de Redirecionamento de porta
 iptables_inst0=O comando que o firewall do IPtables precisa para definir o redirecionamento de porta parece não estar instalado no seu sistema. Veja o seu módulo <a href=$1'>Firewall do Linux</a> para mais detalhes.
 iptables_inst1=O seu módulo <a href=$1'>Firewall do Linux</a> parece não estar completamente instalado no seu sistema. Este módulo é utilizado para fazer o redirecionamento de portas.
@@ -884,17 +938,22 @@ iptables_enet=Endereço de rede inválido ou faltando (pode ser como 192.168.1.0
 iptables_eiface=Interface de rede inválida ou faltando
 iptables_eapply=Aplicar regra de firewall falhou : $1
 iptables_eapply2=Aplicar Squid falhou: $1
+
 syslog_cache=Registro de cache do Squid
 syslog_store=Registro de armazenamento de objeto do Squid
+
 purge_err=Falhou ao limpar as URLs do cache
 purge_title=Limpar URL Armazenadas
 purge_doing=Limpando URL $1 ..
 purge_done=.. feito
 purge_failed=.. falhou! Veja a mensagem de erro acima para saber o motivo.
+
 dhttp_err=Falhou ao apagar restrições do proxy
 dhttp_enone=Nenhum selecionado
+
 dicp_err=Falhou ao apagar restrições ICP
 dicp_enone=Nenhum selecionado
+
 cachemgr_title=Senhas do Gerenciador de Cache
 cachemgr_ecannot=Você não está autorizado a editar a senha do gerenciador de cache
 cachemgr_def1=Nenhuma senha requerida

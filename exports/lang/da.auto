@@ -12,6 +12,7 @@ index_eprog=NFS-serverens eksekverbare blev ikke fundet på dit system. NFS-pakk
 index_delete=Slet valgte eksport
 index_disable=Deaktiver valgt
 index_enable=Aktivér valgt
+
 edit_title=Rediger eksport
 create_title=Opret eksport
 edit_details=Eksporter detaljer
@@ -65,6 +66,7 @@ edit_sec_krb5i=Kerberos integritet
 edit_sec_krb5p=Kerberos privatliv
 edit_sec_lipkey=LIPKEY
 edit_sec_spkm=SPKM
+
 save_err=Eksporten kunne ikke gemmes
 save_edir=Directory '$1' findes ikke
 save_epfs=Pseudo-filsystemsti '$1' ligner ikke en absolut sti
@@ -78,6 +80,7 @@ save_pfs='$1' er allerede eksporteret som et bibliotek
 save_create_dir=Kan ikke oprette biblioteket '$1'
 save_eanonuid=Ugyldigt anonymt brugernavn
 save_eanongid=Ugyldigt anonymt adgangsgruppenavn
+
 exports_webnfs=WebNFS klienter
 exports_ngroup=Netgroup $1 
 exports_net=Netværk $1 
@@ -85,6 +88,7 @@ exports_all=Alle sammen
 exports_hosts=Værter $1 
 exports_host=Host $1 
 exports_gss=Godkendt netværk: $1 
+
 log_modify=Ændret NFS-eksport $1 
 log_modify_l=Ændret NFS-eksport $1 til $2 
 log_delete=NFS-eksport $1 er slettet

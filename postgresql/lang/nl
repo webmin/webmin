@@ -16,6 +16,7 @@ index_add=Maak een nieuwe database.
 index_users=Gebruikers, groepen en Permissies
 index_return=database lijst
 index_esql=Het PostgreSQL client programma $1 is niet gevonden op uw systeem. Misschien is PostgreSQL niet geinstalleerd, of is uw <a href='$2'>module configuratie</a> niet correct.
+
 index_ehba=De PostgreSQL host configuratie file $1 is niet gevonden op uw systeem. Misschien is PostgreSQL niet geinitialiseerd , of uw <a href='$2'>module configuratie</a> is niet correct.
 index_superuser=Het PostgreSQL client programma psql kon niet worden gestart op uw systeem. Misschien is PostgreSQL niet geinstalleerd of uw <a href='$1'>module configuratie</a> is niet correct.
 index_eversion=De PostgreSQL database op uw systeem is versie $1, maar Webmin ondersteunt alleen versie $2 en hoger.
@@ -48,10 +49,12 @@ index_gist=Algemene Index Zoek Boom
 index_jump=Of bewerk database :
 index_jumpok=Open
 index_edithosts=Configureer Toegestane Host Systemen
+
 login_err=Login mislukt
 login_ecannot=U bent niet bevoegd om de database login te configureren
 login_elogin=Ontbrekende administratie login
 login_epass=Verkeerde administratie gebruikersnaam of wachtwoord
+
 dbase_title=Bewerk Database
 dbase_noconn=Deze database accepteert op dit moment geen verbindingen, dus kunnen er geen acties mee worden ondernomen.
 dbase_header=Database tabellen, indexen, overzichten en opeenvolgingen
@@ -78,6 +81,7 @@ dbase_jump=Bewerk tabel :
 dbase_vjump=Bewerk uiterlijk :
 dbase_ijump=Bewerk index :
 dbase_sjump=Bewerk volgorde :
+
 table_title=Bewerk Tabel
 table_title2=Maak Tabel
 table_opts=Veld opties
@@ -105,6 +109,7 @@ table_eblob=Er is geen grote nodig voor BLOB veld $1
 table_csv=Exporteren als CSV
 table_index=Maak Index
 table_delete=Verwijder Geselecteerde Velden
+
 field_title1=Toevoegen Veld
 field_title2=Modificeer Veld
 field_in=In tabel $1 in database $2
@@ -123,6 +128,7 @@ field_esize='$1' is geen geldige veld grote
 field_eenum=Geen opgesomd waardes ingevuld
 field_efield='$1' is geen geldige veld naam
 field_ekey=Velden die nullen bevatten kunnen geen onderdeel zijn van de primaire sleutel
+
 exec_title=Uitvoeren SQL
 exec_header=Geef een SQL opdracht om uit te voeren op database $1 ..
 exec_old=Of selecteer een vorige SQL opdracht :
@@ -152,21 +158,25 @@ exec_tabexec=Uitvoeren SQL
 exec_tabfile=Uitvoeren SQL van file
 exec_tabimport=Importeer tekst file
 exec_return=Uitvoeren SQL formulier
+
 stop_err=Mislukt om de database server te stoppen
 stop_epidfile=Openen van PID file $1 mislukt
 stop_ekill=Killen is mislukt voor proces $1 : $2
 stop_ecannot=U bent niet bevoegd om de database server te stoppen
 start_err=Mislukt om de database server te starten
 start_ecannot=U bent niet bevoegd om de database server te starten
+
 ddrop_err=Mislukt database te droppen
 ddrop_title=Drop Database
 ddrop_rusure=Weet u zeker dat u de database $1 wilt droppen? $2 tabellen die $3 rijen met data bevatten zul worden verwijdert.
 ddrop_mysql=Omdat dit de master database is, zal het droppen ervan waarschijnlijk uw PostgreSQL server onbruikbaar maken!
 ddrop_ok=Drop Database
+
 tdrop_err=Mislukt om tabel te droppen
 tdrop_title=Drop Tabel
 tdrop_rusure=Weet u zeker dat u tabel $1 in database $2 wilt droppen? $3 rijen met data zullen worden verwijdert.
 tdrop_ok=Drop Tabel
+
 view_title=Tabel Data
 view_pos=Rijen $1 tot $2 van $3
 view_none=Deze tabel bevat geen data
@@ -199,6 +209,7 @@ view_set=Zet naar de inhoud van file ..
 view_warn=Waarschuwing - uploaden van files in- en bekijken van de inhoud van <tt>tekst</tt> or <tt>bytea</tt> velden zal niet werken totdat de $1 en $2 Perl modules geinstalleerd en in gebruik zijn.
 view_adv=Geavanceerd Zoeken
 view_sqlrun=Resultaten gegenereerd door de SQL wachtrij : $1
+
 newdb_title=Gemaakte Database
 newdb_header=Nieuwe database opties
 newdb_db=Database naam
@@ -213,6 +224,7 @@ newdb_encoding=Karakter set codering
 newdb_eencoding=Ontbrekend karakter set codering
 newdb_template=Template database
 newdb_notemplate=Niets
+
 user_title=PostgreSQL gebruikers
 user_ecannot=U bent niet bevoegd om gebruikers te bewerken
 user_name=Gebruikersnaam
@@ -241,6 +253,7 @@ user_sync_delete=Verwijder een PostgreSQL gebruiker wanneer dezelfde Unix gebrui
 user_delete=Verwijder Geselecteerde
 user_derr=Mislukt om gebruiker te verwijderen
 user_enone=Geen gebruikers geselecteerd
+
 host_ecannot=U bent niet bevoegd om toegestane hosts te bewerken
 host_title=Toegestane Hosts
 host_desc=Wanneer een client verbind met een database,  word dit afgehandeld met de hosts in de lijst hieronder in de juiste volgorde totdat er 1 overeenkomt, en de client toegang krijgt of word geweigerd.
@@ -294,6 +307,7 @@ host_ssl=SSL verbinding vereist?
 host_viassl=Via SSL
 host_derr=Mislukt om toegestane hosts te verwijderen
 host_enone=Geen hosts geselecteerd
+
 grant_title=Toegekende Privileges
 grant_tvi=Object
 grant_type=Type
@@ -321,6 +335,7 @@ grant_none=Er bestaan geen tabellen, overzichten of indexen om privileges aan to
 grant_toomany=Er zijn teveel objecten om te laten zien. Vind objecten overeenkomend met:
 grant_showing=Laat objecten zien overeenkomend met $1 ..
 grant_delete=Reset Geselecteerd Bevoegdheden
+
 group_title=PostgreSQL Groepen
 group_ecannot=U bent niet bevoegd om groepen te bewerken
 group_name=Groep naam
@@ -340,6 +355,7 @@ group_etaken=Groep naam is reeds in gebruik
 group_none=Er bestaan op dit moment geen PostgreSQL groepen.
 group_derr=Mislukt om groepen te verwijderen
 group_enone=Geen groepen geselecteerd
+
 esql=SQL $1 mislukt : $2
 log_start=Gestarte PostgreSQL server
 log_stop=Gestopte PostgreSQL server
@@ -395,6 +411,7 @@ log_backup=Backup klaar van database $1
 log_backup_l=Backup van database $1 naar file $2 is klaar
 log_backup_all=Backup van alle databases is klaar
 log_backup_all_l=Backup van alle databases naar file $2 is klaar
+
 acl_dbs=Databases die deze gebruiker mag beheren
 acl_dbscannot=Deze toegang controle word pas actief nadat u de PostgreSQL database server gestart heeft.
 acl_dall=Alle databases
@@ -415,13 +432,17 @@ acl_cmds=Mag voor- en na backup opdrachten bewerken?
 acl_views=Mag overzichten bekijken en beheren?
 acl_indexes=Mag indexen bekijken en beheren?
 acl_seqs=Mag overzichten en de volgorde beheren?
+
 fdrop_err=Mislukt om velden te verwijderen
 fdrop_enone=Niets geselecteerd
 fdrop_eall=U kunt niet alle velden verwijderen van een tabel!
+
 setup_err=Initialiseren van de database mislukt
 setup_ecannot=U bent niet bevoegd de database te initialiseren.
+
 dbase_bkup=Backup
 dbase_rstr=Herstellen
+
 restore_title=Herstel Database
 restore_header=Database herstel opties
 restore_db=Database naam
@@ -444,6 +465,7 @@ restore_tables=Tabellen om te herstellen
 restore_tables1=Alles in een backup file
 restore_tables0=Tabellen in de lijst
 restore_failed=Herstellen mislukt : $1
+
 backup_title=Backup Database
 backup_title2=Backup Alle Databases
 backup_header1=Backup bestemming
@@ -492,17 +514,21 @@ backup_ebefore=De opdracht vooraf de backup mislukte!
 backup_cmode=Wanneer de opdrachten uitvoeren
 backup_cmode1=Voor / na alle databases
 backup_cmode0=Voor / na iedere database
+
 r_command=Opdracht Niet Ondersteund
+
 adv_title=Geavanceerd Zoeken
 adv_and=Vind records die overeenkomen met alle criteria ..
 adv_or=Vind records die overeenkomen met iedere criteria ..
 adv_ok=Zoek Nu
+
 tdrops_enone=Geen objecten geselecteerd om te droppen
 tdrops_err=Mislukt om objecten te droppen
 tdrops_ok=Drop Objecten
 tdrops_title=Drop Objecten
 tdrops_rusure=Weet u zeker dat u de $1 geselecteerde objecten wilt droppen in database $2 ? $3 rijen met data zullen worden verwijderd.
 tdrops_rusure2=Weet u zeker dat u de $1 geselecteerde objecten wilt droppen in database $2 ?
+
 ddrops_err=Mislukt om databases te droppen
 ddrops_title=Drop Databases
 ddrops_rusure=Weet u zeker dat u de databases $1 wilt droppen? $2 tabellen die $3 rijen met data bevatten zul worden verwijdert.
@@ -510,6 +536,7 @@ ddrops_mysql=Omdat de master database is geselecteerd, zal het droppen hiervan w
 ddrops_ok=Drop Databases
 ddrops_enone=Geen databases geselecteerd
 ddrops_ecannotdb=U bent niet bevoegd om de database $1 te droppen
+
 csv_title=Exporteer CSV File
 csv_header=CSV export opties
 csv_dest=Exporteer bestemming
@@ -530,6 +557,7 @@ csv_done=CSV exporteren naar $1 is compleet. De uiteindelijke file grote is $2.
 csv_headers=Voeg kolommen namen toe in CVS?
 csv_cols=Kolommen om in te voegen in CVS
 csv_ecols=Geen kolommen geexporteerd
+
 import_title=Importeer Data
 import_uploadout=Importeer data van ge-uploaden file
 import_fileout=Importeer data van file $1 ..
@@ -537,6 +565,7 @@ import_eupload=Ontbrekende ge-uploaden import file
 import_efile=Ontbrekende import file naam
 import_done=..  $1 rijen gemaakt, $2 duplicaten overgeslagen.
 import_erow=.. geen velden gevonden in rij $1
+
 index_title1=Maak Index
 index_header1=Index opties
 index_name=Index naam
@@ -554,6 +583,7 @@ index_ecols=Geen velden geselecteerd
 index_title2=Bewerk Index
 index_header=Index $1 in database $2
 index_ecannot=U bent niet bevoegd om indexen te beheren
+
 view_title1=Maak Overzicht
 view_title2=Bewerk Overzicht
 view_header1=Overzicht details
@@ -568,6 +598,7 @@ view_eclash=Een overzicht met dezelfde naam bestaat reeds
 view_equery=Ontbrekende SQL wachtrij
 view_ecols=Er zijn geen kolom namen ingevuld
 view_ecannot=U bent niet bevoegd om overzichten te beheren
+
 seq_title1=Maak Opeenvolging
 seq_title2=Bewerk Opeenvolging
 seq_header1=Optellende volgorde opties
@@ -587,5 +618,6 @@ seq_emin=Ontbrekende of ongeldige minimum waarde
 seq_emax=Ontbrekende of ongeldige maximum waarde
 seq_ecache=Ontbrekende of ongeldig aantal waardes om in cache te zetten
 seq_ecannot=U bent niet bevoegd om opeenvolgingen te beheren
+
 dgrant_err=Mislukt om de bevoegdheden te resetten
 dgrant_enone=Geen objecten geselecteerd

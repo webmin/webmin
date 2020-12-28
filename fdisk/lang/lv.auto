@@ -44,6 +44,7 @@ index_dscsi=SCSI ierīce $1 kontrolieris $2
 index_draid=RAID līmenis $1 
 index_dparts=Starpsienas
 index_none2=Šajā sistēmā netika atrasts neviens disks.
+
 bytes=baiti
 megabytes=megabaiti
 extended=Pagarināts
@@ -67,6 +68,7 @@ select_promise=Apsoliet RAID disku $1
 select_ppart=Apsoliet RAID diska $1 nodalījumu $2 
 select_nvme=NVME SSD $1 disks $2 
 select_nvmepart=NVME SSD $1 diska $2 nodalījums $3 
+
 edit_title=Rediģēt nodalījumu
 create_title=Izveidot nodalījumu
 edit_ecannot=Jums nav atļauts rediģēt šo disku
@@ -110,6 +112,7 @@ edit_newmount2=Mount nodalījums
 edit_mountas=kā
 edit_mountmsg=Pievienojiet šo nodalījumu jaunā sistēmas direktorijā, lai to varētu izmantot failu glabāšanai. Nodalījumā jau jābūt izveidotai failu sistēmai.
 edit_mountmsg2=Uzstādiet šo nodalījumu kā virtuālo atmiņu savā sistēmā, lai palielinātu pieejamās atmiņas daudzumu.
+
 mkfs_title=Jauna failu sistēma
 mkfs_ecannot=Šajā diskā jums nav atļauts veidot jaunu failu sistēmu
 mkfs_desc1=Noklikšķinot uz pogas šīs veidlapas apakšā, ierīcē $2 tiks izveidota jauna failu sistēma $1. Visi dati par šo nodalījumu tiks neatgriezeniski izdzēsti.
@@ -120,6 +123,7 @@ mkfs_err=Neizdevās izveidot failu sistēmu
 mkfs_exec=Izpilda komandu $1.
 mkfs_failed=.. komanda neizdevās!
 mkfs_ok=.. komanda pabeigta.
+
 fsck_title=Labojiet failu sistēmu
 fsck_ecannot=Jums nav atļauts fsck šo disku
 fsck_desc1=Noklikšķinot uz pogas <tt>Failu sistēmas labošana</tt>, mēģinās salabot bojāto $1 failu sistēmu $2, lai to uzstādītu $3. Ja failu sistēma nav bojāta, izmaiņas netiks veiktas.
@@ -132,6 +136,7 @@ fsck_err3=atrastas un izlabotas kļūdas - nepieciešama atkārtota sāknēšana
 fsck_err4=atrastas kļūdas, kuras NAV labotas
 fsck_err16=komandrindas kļūda
 fsck_unknown=nezināms atgriešanās kods $1 
+
 tunefs_title=Noskaņot failu sistēmu
 tunefs_ecannot=Jums nav atļauts noskaņot šo failu sistēmu
 tunefs_desc=Šī forma ļauj pielāgot dažādus faila $1 parametrus uz $2, lai tos uzstādītu uz $3. Esošie faili šajā failu sistēmā netiks ietekmēti.
@@ -153,10 +158,12 @@ tunefs_err=Neizdevās noregulēt failu sistēmu
 tunefs_exec=Izpilda komandu $1.
 tunefs_failed=.. komanda neizdevās!
 tunefs_ok=.. komanda pabeigta.
+
 reboot_title=Atsāknēšana
 reboot_msg=Atsāknēšana tagad ..
 reboot_ok=Restartēt tagad
 reboot_why=Jūs esat mainījis nodalījumu tabulu $1. Lai šīs izmaiņas stātos spēkā, jūsu sistēma ir jāpārstartē.
+
 save_err=Neizdevās saglabāt nodalījumu
 save_ecannot=Jums nav atļauts rediģēt šo disku
 save_estart='$1' nav derīgs sākuma cilindrs
@@ -165,6 +172,7 @@ save_emin=Starta cilindram jābūt> = $1
 save_emax=Beigu cilindram jābūt <= $1 
 save_eminmax=Sākuma cilindram jābūt mazākam par beigu daļu
 save_eoverlap=Pārklāta partitūra $1 ($2 līdz $3)
+
 ext2_b=Bloka lielums
 ext2_f=Fragmenta lielums
 ext2_i=Baiti vienā ievilkumā
@@ -172,6 +180,7 @@ ext2_m=Rezervētie bloki
 ext2_g=Bloki pa grupām
 ext2_c=Pārbaudiet, vai nav bloku?
 ext3_j=Žurnāla faila lielums
+
 msdos_ff=FAT skaits
 msdos_F=FAT lielums
 msdos_F_other=Cits ..
@@ -180,24 +189,32 @@ msdos_n=Apjoma nosaukums
 msdos_r=Saknes ieraksti
 msdos_s=Kopas lielums
 msdos_c=Pārbaudiet, vai nav bloku?
+
 minix_n=Faila nosaukuma garums
 minix_i=Inodu skaits
 minix_b=Bloku skaits
 minix_c=Pārbaudiet, vai nav bloku?
+
 reiserfs_force=Piespiest failu sistēmas izveidi
 reiserfs_hash=Hash funkcija
+
 xfs_force=Piespiest failu sistēmas izveidi
 xfs_b=Bloka lielums
+
 jfs_s=Žurnāla lielums
 jfs_c=Pārbaudiet, vai nav bloku?
+
 btrfs_l=Lapu lielums
 btrfs_n=Mezgla lielums
 btrfs_s=Nozares lielums
+
 fatx_none=FATX failu sistēmām nav pieejamas opcijas.
+
 acl_disks=Diski, ko šis lietotājs var nodalīt un formatēt
 acl_dall=Visi diski
 acl_dsel=Atlasīts ..
 acl_view=Vai var apskatīt nerediģējamus diskus?
+
 hdparm_title=Rediģēt IDE parametrus
 hdparm_on=Ieslēgts
 hdparm_off=Izslēgts
@@ -226,9 +243,11 @@ hdparm_performing=Uzstājas
 hdparm_buf1=Bufera kešatmiņa:
 hdparm_buf2=Buferēts:
 hdparm_speedres=Ātruma testa rezultāti
+
 blink_title=Identificējiet disku
 blink_desc=Diska aktivitātes LED tagad iedegsies sešdesmit reizes
 blink_back=Atgriezties
+
 log_modify=Pārveidots $1 
 log_create=Izveidots $1 
 log_delete=Izdzēsts $1 
@@ -236,6 +255,7 @@ log_mkfs=Izveidota $1 failu sistēma $2
 log_tunefs=Noskaņota $1 failu sistēma $2 
 log_fsck=Izlabota $1 failu sistēma $2 
 log_hdparm=Modificēti IDE parametri $1 
+
 fs_ext2=Vecais Linux vietējais
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -246,9 +266,11 @@ fs_ext4=Jauns Linux vietējais
 fs_xfs=SGI
 fs_jfs=IBM Journalling
 fs_btrfs=BTR
+
 delete_title=Dzēst nodalījumu
 delete_rusure=Vai tiešām vēlaties izdzēst $1 ($2)? Dati par šo nodalījumu var tikt zaudēti uz visiem laikiem.
 delete_ok=Dzēst tūlīt
+
 disk_title=Rediģēt diska nodalījumus
 disk_egone=Diska vairs nav!
 disk_no=Skaits
@@ -269,11 +291,13 @@ disk_table=<b>Sadalījuma tabulas formāts:</b> $1
 disk_notable=<b>Sadalījuma tabulas formāts:</b> Nav izveidots
 disk_needtable=Bez nodalījumu tabulas nevar izveidot nodalījumus.
 disk_return=nodalījumu saraksts
+
 relabel_title=Noslaukiet starpsienas
 relabel_warn=Vai tiešām vēlaties izdzēst visus nodalījumus no $1 ($2), pārrakstot diska etiķeti? Visi esošie dati un failu sistēmas tiks zaudētas.
 relabel_parts=Esošās starpsienas
 relabel_noparts=Pagaidām neviens nav izveidots
 relabel_table=Sadalījuma tabulas formāts
 relabel_ok=Noslaukiet un atkārtoti marķējiet
+
 table_msdos=MS-DOS (standarta nodalījuma formāts)
 table_gpt=GPT (2T vai lielākiem diskiem)

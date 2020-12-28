@@ -52,6 +52,7 @@ index_sadd=Crie um novo serviço systemd.
 index_always=Sempre
 index_ladd=Crie um novo agente launchd.
 index_lname=Nome do agente
+
 edit_title=Editar ação
 create_title=Criar Ação
 edit_ecannot=Você não tem permissão para editar ações de inicialização
@@ -85,6 +86,7 @@ edit_statusnow=Mostrar status
 edit_return=açao
 edit_status=Começou agora?
 edit_unknown=Desconhecido
+
 save_err=Falha ao salvar a ação
 save_ecannot=Você não tem permissão para editar ações de inicialização
 save_ealready=Uma ação chamada '$1' já existe
@@ -93,6 +95,7 @@ save_ename=Nome de ação ausente ou inválido
 save_eclash=Já existe uma ação com o mesmo nome
 save_escript=Nenhum script de ação inserido
 save_estartcmd=Comando de inicialização ausente
+
 ss_ecannot=Você não tem permissão para iniciar ou parar ações de inicialização
 ss_start=Iniciar ação
 ss_stop=Stop Action
@@ -103,21 +106,25 @@ ss_exec=Executando $1 ..
 ss_doingstart=Iniciando a ação $1 ..
 ss_doingstop=Parando a ação $1 ..
 ss_doingstatus=Solicitando status da ação $1 ..
+
 shutdown_ecannot=Você não tem permissão para desligar o sistema
 shutdown_title=Desligar
 shutdown_rusure=Tem certeza de que deseja desligar o sistema com o comando $1 ?
 shutdown_ok=Sistema de desligamento
 shutdown_exec=Desligando com o comando $1 ..
+
 reboot_ecannot=Você não tem permissão para reiniciar o sistema
 reboot_title=Reiniciar
 reboot_rusure=Tem certeza de que deseja reiniciar o sistema com o comando $1 ?
 reboot_ok=Reiniciar sistema
 reboot_exec=Reiniciando com o comando $1 ..
+
 acl_script=Pode editar o script de inicialização?
 acl_actions=Pode executar, editar, criar e excluir ações?
 acl_runonly=Executar apenas
 acl_reboot=Pode reiniciar o sistema?
 acl_shutdown=Pode desligar o sistema?
+
 log_rename=Ação renomeada $1 a $2 
 log_modify=Ação modificada $1 
 log_create=Ação criada $1 
@@ -138,6 +145,7 @@ log_massrestart=Ações reiniciadas $1
 log_massenable=Ações ativadas $1 
 log_massdisable=Ações desativadas $1 
 log_telinit=Comutado para o nível de execução $1 
+
 edit_hostconfig_startup=O script $1 é executado no momento da inicialização do sistema se esta ação estiver ativa. Você pode editá-lo abaixo
 edit_hostconfig_plist=O arquivo $1 define certos parâmetros com relação ao script de inicialização. Você pode editá-lo abaixo
 edit_hostconfig_new=Criar nova ação
@@ -149,6 +157,7 @@ edit_hostconfig_array=Os campos $1, $2 e $3 são campos de matriz e podem conter
 edit_hostconfig_further=Após criar a nova ação de inicialização, você será encaminhado para uma página na qual poderá ajustar o script de inicialização e a lista de parâmetros, se necessário.
 edit_hostconfig_hostconfig=O arquivo $1 controla serviços e daemons em todo o sistema iniciados na inicialização do sistema. Você pode editá-lo abaixo
 edit_hostconfig_title=Editar Hostconfig
+
 mass_enone=Nenhuma ação selecionada
 mass_enone2=Nenhum serviço selecionado
 mass_start=Iniciando ações
@@ -169,9 +178,11 @@ mass_udisable=Desativando o serviço $1 no momento da inicialização.
 mass_ustarting=Iniciando o serviço $1 ..
 mass_ustopping=Parando o serviço $1 ..
 mass_urestarting=Reiniciando o serviço $1 ..
+
 change_err=Você não tem permissão para alternar níveis de execução
 change_title=Alternar nível de execução
 change_cmd=Alternando para o nível de execução $1 com o comando $2. Isso pode levar algum tempo e o Webmin pode não estar mais disponível após a troca.
+
 mode_init=SysV init
 mode_osx=Mac OS
 mode_local=Script de inicialização única
@@ -180,6 +191,7 @@ mode_rc=Scripts do FreeBSD RC
 mode_upstart=Subir na vida
 mode_systemd=Systemd
 mode_launchd=LaunchD
+
 upstart_title1=Criar serviço inicial
 upstart_title2=Editar serviço inicial
 upstart_egone=O serviço não existe mais!
@@ -204,6 +216,7 @@ upstart_eserver=Nenhum comando do servidor digitado
 upstart_eserver2=O comando do servidor não existe
 upstart_eserver3=Apenas um comando do servidor pode ser inserido
 upstart_return=serviço inicial
+
 systemd_title1=Criar serviço Systemd
 systemd_title2=Editar serviço Systemd
 systemd_egone=O serviço não existe mais!
@@ -227,6 +240,7 @@ systemd_edesc=Descrição de serviço ausente
 systemd_return=serviço systemd
 systemd_econf=Nenhuma configuração do systemd inserida
 systemd_estart=Comandos ausentes para execução na inicialização
+
 launchd_title1=Criar agente Launchd
 launchd_title2=Editar agente iniciado
 launchd_egone=O agente não existe mais!
@@ -247,4 +261,5 @@ launchd_eclash=Um agente com o mesmo nome já existe
 launchd_return=agente launchd
 launchd_econf=Nenhuma configuração launchd inserida
 launchd_estart=Comando do servidor ausente
+
 syslog_journalctl=Logs SystemD

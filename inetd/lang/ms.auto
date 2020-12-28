@@ -14,6 +14,7 @@ index_search=Padanan perkhidmatan paparan:
 index_sok=Carian
 index_toomany=Terdapat terlalu banyak perkhidmatan internet untuk dipaparkan di halaman ini.
 index_none=Tiada perkhidmatan internet yang sepadan dengan carian anda.
+
 error_restart=Gagal memulakan semula Inetd
 error_saverpc=Gagal menyimpan program RPC
 error_invalidprgname='$1' bukan nama program yang sah
@@ -43,6 +44,7 @@ error_nameexist=Perkhidmatan dengan nama $1 dan protokol $2 sudah wujud
 error_inetservice=Perkhidmatan internet dengan nama $1 dan protokol $2 sudah wujud
 error_smfservice=Gagal mengemas kini perkhidmatan smf dengan cmd '$1', fail ralat $2 
 error_smf_cmdfield=Untuk smf, nama fail program '$1' mesti sepadan dengan hujah pertama medan arahan, iaitu $ '2'
+
 editrpc_title1=Buat RPC Program
 editrpc_title2=Edit Program RPC
 editrpc_detail=Detail Program RPC
@@ -69,6 +71,7 @@ editrpc_execasuser=Jalankan Sebagai Pengguna
 editrpc_max=Max per minit
 editrpc_default=Lalai
 editrpc_execasgrp=Jalankan sebagai Kumpulan
+
 editserv_title1=Buat Perkhidmatan Internet
 editserv_title2=Edit Perkhidmatan Internet
 editserv_detail=Maklumat Perkhidmatan Internet
@@ -82,6 +85,7 @@ editserv_wrapper=TCP-Wrapper
 editserv_inetd=Dalaman untuk <tt>inetd</tt>
 editserv_qm=Perintah mungkin tidak wujud?
 editserv_ename=Tiada perkhidmatan dengan nama dan protokol itu wujud
+
 log_apply=Perubahan yang digunakan
 log_create_serv=Perkhidmatan yang dibuat $1 
 log_modify_serv=Perkhidmatan diubah suai $1 
@@ -95,6 +99,7 @@ log_delete_serv_l=Perkhidmatan dipadam $1 pada port $2
 log_create_prog_l=Perkhidmatan yang dibuat $1 pada port $2 untuk program $3 
 log_modify_prog_l=Perkhidmatan yang diubahsuai $1 pada port $2 untuk program $3 
 log_delete_prog_l=Perkhidmatan yang dipadam $1 pada port $2 untuk program $3 
+
 log_create_rpc=Dibuat RPC $1 
 log_modify_rpc=Modifikasi RPC $1 
 log_delete_rpc=RPC $1 dibuang

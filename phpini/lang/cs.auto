@@ -1,9 +1,13 @@
 file_eread=Nepodařilo se přečíst $1 : $2 
+
 list_format_ini=Formát INI
 list_format_fpm=Formát FPM
+
 session_eredis=Chybějící nebo deaktivované rozšíření redis
+
 misc_include=Povolit otevření dálkového Zahrnuje?
 misc_path=Informace o opravné cestě CGI?
 misc_timezone=Časové pásmo PHP
 misc_charset=Výchozí znaková sada
+
 acl_user=Čtení a zápis souborů jako uživatel

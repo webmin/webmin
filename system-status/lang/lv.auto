@@ -44,6 +44,7 @@ right_upsec=Ir pieejami $1 pakotnes atjauninājumi, no kuriem $2 ir drošības a
 right_recollect=Atsvaidziniet sistēmas informāciju
 right_vvirtualmin=Virtualmin versija
 right_vvm2=Cloudmin versija
+
 acl_show=Parādāma sistēmas informācija
 acl_showall=Viss
 acl_showsel=Tikai atlasīts ..

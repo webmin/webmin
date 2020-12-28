@@ -14,6 +14,7 @@ index_actform=Borang
 index_actrun=Jalankan
 index_actsql=Borang
 index_acted=Buka
+
 edit_title=Edit Perintah
 create_title=Buat Perintah
 edit_ecannot=Anda tidak dibenarkan menyunting arahan
@@ -65,6 +66,7 @@ edit_format4=Muat turun bila boleh
 edit_servers=Jalankan pada pelayan Webmin
 edit_this=pelayan ini
 edit_clone=Clone
+
 save_err=Gagal menyimpan arahan
 save_ecannot=Anda tidak dibenarkan menyunting arahan
 save_ecmd=Tiada arahan yang dimasukkan
@@ -77,6 +79,7 @@ save_eusermin=Perintah yang dijalankan pada pelayan lain tidak boleh dijalankan 
 save_eformat=Jenis MIME output tidak sah
 save_eopts=Fail pilihan yang hilang untuk parameter $1 
 save_eopts2=Fail pilihan atau nilai lalai untuk parameter $1 tidak boleh mengandungi :
+
 run_err=Gagal melaksanakan arahan
 run_ecannot=Anda tidak dibenarkan menjalankan arahan ini
 run_euser=Pengguna yang hilang atau tidak sah
@@ -93,6 +96,7 @@ run_eupload=Tiada fail untuk muat naik dipilih
 run_emust=Nilai tiada untuk parameter '$1'
 run_timeout=Perintah gagal dilengkapkan sebelum tamat tempoh $1.
 run_failed=Perintah gagal dengan status keluar $1 
+
 log_modify=Perintah yang diubahsuai $1 
 log_create=Perintah yang dibuat $1 
 log_delete=Perintah yang dipadam $1 
@@ -101,9 +105,11 @@ log_modify_edit=Editor fail diubah suai $1
 log_create_edit=Editor fail yang dibuat $1 
 log_delete_edit=Editor fail dipadam $1 
 log_save_edit=Fail disimpan $1 
+
 acl_cmds=Perintah pengguna ini boleh dijalankan
 acl_csel=Terpilih ..
 acl_edit=Bolehkah membuat dan mengedit arahan?
+
 file_ecannot=Anda tidak dibenarkan mengedit fail
 fcreate_title=Buat Editor Fail
 fedit_title=Edit Editor Fail
@@ -127,6 +133,7 @@ file_egroup=Nama kumpulan yang hilang atau tidak sah
 file_eperms=Keizinan tidak sah atau tidak sah
 file_envs=Pembolehubah persekitaran pengganti dalam nama fail?
 file_id=ID editor
+
 view_err=Gagal mengedit fail
 view_ecannot=Anda tidak dibenarkan mengedit fail ini
 view_title=Edit Fail
@@ -135,10 +142,12 @@ view_header=Mengedit fail $1
 view_ebeforeedit=Arahan sebelum pengeditan gagal : $1 
 view_ebefore=Perintah sebelum penjimatan gagal : $1 
 view_eafter=Arahan penjimatan gagal : $1 
+
 form_ecannot=Anda tidak dibenarkan menjalankan arahan ini
 form_title=Jalankan Perintah
 form_exec=Jalankan
 form_edit=Edit
+
 sql_title1=Buat Perintah SQL
 sql_title2=Edit Perintah SQL
 sql_header=Butiran arahan SQL
@@ -154,6 +163,7 @@ sql_err=Gagal menyimpan arahan SQL
 sql_esql=Tiada SQL dimasukkan
 sql_ehost=Hos pelayan pangkalan data yang hilang atau tidak sah
 sql_edb=Nama pangkalan data yang hilang atau tidak sah
+
 srun_title=Jalankan Perintah SQL
 srun_err=Gagal melaksanakan arahan SQL
 srun_edriver=Tidak boleh memuatkan pemandu DBI

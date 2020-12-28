@@ -10,8 +10,10 @@ index_onadd=Dodaj nowe konto PPP przy dodawaniu nowego użytkownika Uniksa, dla 
 index_onchange=Zmień konto PPP przy zmianie użytkownika Uniksa
 index_ondelete=Usuń konto PPP przy usuwaniu użytkownika Uniksa
 index_apply=Zastosuj
+
 secrets_title=Konta PPP
 secrets_return=indeksu
+
 edit_secret_etitle=Zmień konto PPP
 edit_secret_ctitle=Utwórz konto PPP
 edit_secret_acc=Konto PPP
@@ -31,8 +33,10 @@ edit_secret_alist=Pozwól wymienionym..
 edit_secret_save=Zachowaj
 edit_secret_del=Usuń 
 edit_secret_return=listy kont
+
 save_secret_esave=Nie udało się zachować konta
 save_secret_enoip='$1' nie jest poprawnym adresem
+
 log_create=Utworzono użytkownika PPP $1
 log_modify=Zmieniono użytkownika PPP $1
 log_delete=Usunięto użytkownika PPP $1

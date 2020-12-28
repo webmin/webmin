@@ -44,6 +44,7 @@ index_dscsi=Dispositiu SCSI $1 controladora $2
 index_draid=Nivell RAID $1
 index_dparts=Particions
 index_none2=No s'ha trobat cap disc en aquest sistema.
+
 bytes=bytes
 megabytes=Megabytes
 extended=Ampliada
@@ -67,6 +68,7 @@ select_promise=Unitat RAID Promise $1
 select_ppart=Unitat RAID Promise $1 partició $2
 select_nvme=Unitat $1 SSD NVME $2
 select_nvmepart=Unitat $1 SSD NVME $2 partició $3
+
 edit_title=Edició de Partició
 create_title=Creació de Partició
 edit_ecannot=No tens permís per editar aquest disc
@@ -110,6 +112,7 @@ edit_newmount2=Munta la Partició
 edit_mountas=com
 edit_mountmsg=Munta aquesta partició en un nou directori del sistema de fitxers de manera que es pugui utilitzar per emmagatzemar fitxers. S'ha d'haver creat abans un sistema de fitxers a la partició.
 edit_mountmsg2=Munta aquesta partició com a memòria virtual al sistema, per incrementar la quantitat de memòria disponible.
+
 mkfs_title=Nou Sistema de Fitxers
 mkfs_ecannot=No tens permís per crear un nou sistema de fitxers en aquest disc
 mkfs_desc1=Fent clic al botó del peu d'aquest formulari crearàs un nou sistema de fitxers $1 al dispositiu $2. Totes les dades d'aquesta partició s'esborraran de forma definitiva.
@@ -120,6 +123,7 @@ mkfs_err=No s'ha pogut crear el sistema de fitxers
 mkfs_exec=S'està executant l'ordre $1...
 mkfs_failed=...l'ordre ha fallat!
 mkfs_ok=...ordre completa.
+
 fsck_title=Reparació de Sistema de Fitxers
 fsck_ecannot=No tens permís per executar fsck sobre aquest disc
 fsck_desc1=Fent clic sobre el botó <tt>Repara Sistema de Fitxers</tt>, provarà de reparar el sistema de fitxers $1 deteriorat de $2 per muntar-lo a $3. Si el sistema de fitxers no està deteriorat, no es farà cap canvi.
@@ -132,6 +136,7 @@ fsck_err3=errors trobats i corregits - cal reengegar
 fsck_err4=errors trobats però NO corregits
 fsck_err16=error de la línia d'ordres
 fsck_unknown=codi de retorn desconegut: $1
+
 tunefs_title=Sintonització de Sistema de Fitxers
 tunefs_ecannot=No tens permís per sintonitzar aquest sistema de fitxers
 tunefs_desc=Aquest formulari permet ajustar diversos paràmetres del sistema de fitxers $1 de $2 per muntar-lo a $3. Els fitxers existents d'aquests sistema no en seran afectats.
@@ -153,10 +158,12 @@ tunefs_err=No s'ha pogut sintonitzar el sistema de fitxers
 tunefs_exec=S'està executant l'ordre $1...
 tunefs_failed=...l'ordre ha fallat!
 tunefs_ok=...ordre completa.
+
 reboot_title=Reengegada
 reboot_msg=Reengegant...
 reboot_ok=Reengega Ara
 reboot_why=Has canviat la taula de particions de $1. Per tal que aquest canvi tingui efecte, cal reengegar el sistema.
+
 save_err=No s'ha pogut desar la partició
 save_ecannot=No tens permís per editar aquest disc
 save_estart='$1' no és un cilindre inicial vàlid
@@ -165,6 +172,7 @@ save_emin=El cilindre inicial ha de ser >= $1
 save_emax=El cilindre final ha de ser <= $1
 save_eminmax=El cilindre inicial ha de ser menor que el final
 save_eoverlap=S'ha detectat una superposició amb la partició $1 ($2 a $3)
+
 ext2_b=Mida del bloc
 ext2_f=Mida del fragment
 ext2_i=Bytes per inode
@@ -172,6 +180,7 @@ ext2_m=Blocs reservats
 ext2_g=Blocs per grup
 ext2_c=Verifica els blocs dolents
 ext3_j=Mida del fitxer de diari
+
 msdos_ff=Nombre de FATs
 msdos_F=Mida de la FAT
 msdos_F_other=Altres...
@@ -180,24 +189,32 @@ msdos_n=Nom del volum
 msdos_r=Entrades arrel
 msdos_s=Mida del clúster
 msdos_c=Verifica els blocs dolents
+
 minix_n=Llargada dels noms de fitxers
 minix_i=Nombre d'inodes
 minix_b=Nombre de blocs
 minix_c=Verifica els blocs dolents
+
 reiserfs_force=Força la creació del sistema de fitxers
 reiserfs_hash=Funció hash
+
 xfs_force=Força la creació del sistema de fitxers
 xfs_b=Mida del bloc
+
 jfs_s=Mida del registre
 jfs_c=Verifica els blocs dolents
+
 btrfs_l=Mida de la fulla
 btrfs_n=Mida del node
 btrfs_s=Mida del sector
+
 fatx_none=No hi ha cap opció disponible per als sistemes de fitxers FATX.
+
 acl_disks=Discs que aquest usuari pot particionar i formatar
 acl_dall=Tots els discs
 acl_dsel=Seleccionats...
 acl_view=Pot veure discs no editables
+
 hdparm_title=Edició de Paràmetres IDE
 hdparm_on=Activat
 hdparm_off=Desactivat
@@ -226,9 +243,11 @@ hdparm_performing=Executant
 hdparm_buf1=Cau del buffer:
 hdparm_buf2=Amb buffer:
 hdparm_speedres=Resultats del test de velocitat
+
 blink_title=Identificació d'Unitat
 blink_desc=Ara el LED d'activitat de la unitat s'encendrà seixanta cops
 blink_back=Torna Enrere
+
 log_modify=S'ha modificat $1
 log_create=S'ha creat $1
 log_delete=S'ha suprimit $1
@@ -236,6 +255,7 @@ log_mkfs=S'ha creat el sistema de fitxers $1 de $2
 log_tunefs=S'ha sintonitzat el sistema de fitxers $1 de $2
 log_fsck=S'ha reparat el sistema de fitxers $1 de $2
 log_hdparm=S'han modificat el paràmetres IDE de $1
+
 fs_ext2=Natiu Linux Antic
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -246,9 +266,11 @@ fs_ext4=Natiu Linux Nou
 fs_xfs=SGI
 fs_jfs=Fitxers de diari IBM
 fs_btrfs=BTR
+
 delete_title=Supressió de Partició
 delete_rusure=Segur que vols suprimir $1 ($2)? Les dades d'aquesta partició es perdran per sempre.
 delete_ok=Suprimeix-la Ara
+
 disk_title=Edició de Particions de Disc
 disk_egone=El disc ja no existeix!
 disk_no=Número
@@ -269,11 +291,13 @@ disk_table=<b>Format de la taula de particions:</b> $1
 disk_notable=<b>Format de taula de particions:</b> No n'hi ha cap de creada
 disk_needtable=No es pot crear cap partició sense una taula de particions.
 disk_return=a la llista de particions
+
 relabel_title=Neteja de Particions
 relabel_warn=Segur que vols netejar totes les particions de $1 ($2) reescrivint l'etiqueta del disc? Es perdran totes les dades i tots els sistemes de fitxers!
 relabel_parts=Particions existents
 relabel_noparts=Encara no n'hi ha cap de creada
 relabel_table=Format de la taul de particions
 relabel_ok=Neteja i Reetiqueta
+
 table_msdos=MS-DOS (Format estàndard de particions)
 table_gpt=GPT (Per a discs de 2T o més grans)

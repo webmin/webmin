@@ -25,6 +25,7 @@ index_resetdesc=Nhấp vào nút này để xóa tất cả các quy tắc tư�
 index_cluster=Máy chủ cụm
 index_clusterdesc=Nhấp vào nút này để thiết lập các máy chủ Webmin bổ sung mà cấu hình tường lửa sẽ được tự động sao chép.
 index_return=quy tắc tường lửa
+
 index_num=Số
 index_action=Hoạt động
 index_desc=Điều kiện
@@ -37,6 +38,7 @@ index_delete=Xóa đã chọn
 index_existing=Webmin đã phát hiện các quy tắc tường lửa $1 IPFW hiện đang được sử dụng, không được ghi lại trong tệp $2. Các quy tắc này có thể được thiết lập từ một tập lệnh mà mô-đun này không biết cách đọc và chỉnh sửa. <P> Nếu bạn muốn sử dụng mô-đun này để quản lý tường lửa IPFW của mình, hãy nhấp vào nút bên dưới để chuyển đổi các quy tắc hiện có sang tệp lưu. và sau đó vô hiệu hóa tập lệnh tường lửa hiện có của bạn.
 index_saveex=Lưu quy tắc tường lửa
 index_headerex=Cấu hình tường lửa hiện có
+
 action_allow=<font color=#00aa00>Cho phép</font>
 action_deny=<font color=#ff0000>Thả</font>
 action_reject=<font color=#ff4400>Từ chối</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Thả gói</font>
 laction_reject=<font color=#ff4400>Trả lại từ chối ICMP</font>
 laction_reset=<font color=#ff4400>Đặt lại kết nối TCP</font>
 laction_skipto=Bỏ qua quy tắc
+
 edit_title1=Tạo quy tắc
 edit_title2=Chỉnh sửa quy tắc $1 
 edit_header1=Quy tắc hành động
@@ -114,6 +117,7 @@ edit_src-addr=Từ địa chỉ nguồn ..
 edit_src-port=Từ cổng nguồn ..
 edit_dst-addr=Đến địa chỉ đích ..
 edit_dst-port=Đến cảng đích ..
+
 save_err=Không thể lưu quy tắc
 save_enum=Số quy tắc bị thiếu hoặc không hợp lệ
 save_eskipto=Số quy tắc bị thiếu hoặc không hợp lệ để bỏ qua
@@ -144,7 +148,9 @@ save_etcpflags=Cờ TCP chỉ có thể được chỉ định nếu giao thức
 save_elimit=Giới hạn tối đa bị thiếu hoặc không hợp lệ
 save_edstport=Cổng đích bị thiếu hoặc không hợp lệ
 save_esrcport=Cổng nguồn bị thiếu hoặc không hợp lệ
+
 apply_err=Không thể áp dụng cấu hình
+
 desc_if=Nếu $1 
 desc_and=và
 desc_always=Luôn luôn
@@ -191,6 +197,7 @@ desc_where=trong đó $1
 desc_all=cho tất cả các gói
 desc_in=gói đang đến
 desc_out=gói đi
+
 log_create_rule=Tạo quy tắc $1 
 log_delete_rule=Đã xóa quy tắc $1 
 log_modify_rule=Đã sửa đổi quy tắc $1 
@@ -206,6 +213,7 @@ log_convert=Chuyển đổi quy tắc tường lửa hoạt động
 log_setup=Thực hiện thiết lập tường lửa ban đầu
 log_unapply=Cấu hình tường lửa hoàn nguyên
 log_delsel=Đã xóa quy tắc $1 
+
 cluster_title=Máy chủ tường lửa cụm
 cluster_none=Chưa có máy chủ nào được thêm vào cụm tường lửa.
 cluster_host=Tên máy chủ
@@ -216,6 +224,7 @@ cluster_gadd=Thêm máy chủ trong nhóm
 cluster_need=Bạn phải thêm các máy chủ có thông tin đăng nhập và mật khẩu trong mô-đun Chỉ mục Máy chủ Webmin trước khi chúng có thể được quản lý tại đây.
 cluster_return=máy chủ cụm
 cluster_delete=Bỏ đã chọn
+
 add_title=Thêm máy chủ
 add_msg=Thêm $1 ..
 add_gmsg=Thêm máy chủ trong nhóm $1 ..

@@ -14,6 +14,7 @@ index_ro_rw=kaikki isännät lukevat pääsyä, valitut isännät kirjoittavat p
 index_sel_rw=valitut isännät kirjoittavat pääsyn
 index_all_rw=kaikki isännät kirjoittavat pääsyn
 index_sel_root=valitut isännät pääkäyttäjät
+
 edit_title=Muokkaa vientiä
 create_title=Luo vienti
 edit_details=Vie yksityiskohdat
@@ -56,6 +57,7 @@ edit_anon_access=Tuntematon käyttäjä
 edit_anon_notset=Ei valittu
 edit_anon_noaccess=Ei pääsyä
 edit_async=Asynkroninen kirjoittaa
+
 save_err=Viennin tallennus epäonnistui
 save_edir=Hakemistoa '$1' ei ole
 save_enetgroup=Virheellinen tai puuttuva verkkoryhmä
@@ -65,6 +67,7 @@ save_ehost='$2' - '$1' ei ole kelvollinen isäntänimi
 save_enohost='$1' - et ilmoittanut mitään isäntiä
 save_euids=UID: ien, joita ei pidä luottaa, on oltava pilkuilla erotettu luettelo numeroista tai alueista
 save_egids=GID: ien, joita ei luota, on oltava pilkuilla erotettu luettelo numeroista tai alueista
+
 log_modify=Muokattu NFS-vienti $1 
 log_modify_l=Muokattu NFS-vienti $1 - $2 
 log_delete=Poistettu NFS-vienti $1 

@@ -2,6 +2,7 @@ index_title=NIS Client and Server
 index_return=NIS menu
 index_enis=Your machine does not appear to have NIS client or server support installed.
 index_enis2=Only the client services feature of this module will be usable.
+
 client_title=NIS Client
 client_header=NIS client configuration
 client_domain=NIS domain
@@ -17,10 +18,12 @@ client_eserver='$1' is not a valid server name
 client_eypwhich=failed to bind to NIS domain
 client_ehosts='$1' is not in the hosts file
 client_enis=Your machine does not appear to have NIS client support installed.
+
 switch_title=Client Services
 switch_service=Service
 switch_srcs=Data sources
 switch_return=client services
+
 order_= 
 order_nisplus=NIS+
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=User printers
 order_xfn=XFN
+
 server_title=NIS Server
 server_header=NIS server options
 server_boot=Enable NIS server?
@@ -65,6 +69,7 @@ server_solaris=Note - on Solaris, the client and server NIS domains are always t
 server_edir=Invalid source files directory
 server_epwdir=Invalid password source files directory
 server_enis=Your machine does not appear to have NIS server support installed.
+
 tables_title=NIS Tables
 tables_switch=Edit NIS table :
 tables_header=$1 NIS table from $2
@@ -81,6 +86,7 @@ tables_search=Search
 tables_nomatch=No records matched your search
 tables_build=Rebuild NIS tables
 tables_buildmsg=Click this button to rebuild the NIS databases from the table data. If you have made any changes, you will need to do this to make them available to NIS clients.
+
 desc_aliases=Sendmail aliases
 desc_mail=Sendmail aliases
 desc_hosts=Host addresses
@@ -116,6 +122,7 @@ desc_printers=Printers
 desc_ipnodes=IP nodes
 desc_timezone=Timezones
 desc_locale=Locales
+
 hosts_title=Host Address
 hosts_ip=IP address
 hosts_name=Hostname
@@ -124,6 +131,7 @@ hosts_err=Failed to save host
 hosts_eip=Missing or invalid IP address
 hosts_ename=Missing or invalid hostname
 hosts_aliases=Aliases
+
 group_name=Group name
 group_gid=Group ID
 group_members=Group members
@@ -134,6 +142,7 @@ group_none=No password required
 group_encrypted=Pre-encrypted password
 group_clear=Normal password
 group_err=Failed to save group
+
 passwd_name=Username
 passwd_uid=User ID
 passwd_real=Real name
@@ -171,6 +180,7 @@ passwd_emax=Invalid maximum number of days
 passwd_emin=Invalid minimum number of days
 passwd_einactive=Invalid number of inactive days
 passwd_eexpiry=Invalid expiry date
+
 services_name=Service name
 services_proto=Protocol
 services_port=Port
@@ -179,6 +189,7 @@ services_header=Inetd network service options
 services_err=Failed to save service
 services_ename=Missing or invalid service name
 services_eport=Missing or invalid port
+
 protocols_name=Protocol name
 protocols_number=Number
 protocols_aliases=Aliases
@@ -187,6 +198,7 @@ protocols_header=Network protocol options
 protocols_err=Failed to save protocol
 protocols_ename=Missing or invalid name
 protocols_enumber=Missing or invalid number
+
 netgroup_name=Netgroup name
 netgroup_members=Members
 netgroup_title=Network Group
@@ -201,6 +213,7 @@ netgroup_ename=Missing or invalid netgroup name
 netgroup_ehost=Missing or invalid host in row $1
 netgroup_euser=Missing or invalid user in row $1
 netgroup_edom=Missing or invalid NIS domain in row $1
+
 ethers_mac=Ethernet address
 ethers_ip=IP address
 ethers_title=Ethernet Address
@@ -208,6 +221,7 @@ ethers_header=Ethernet mapping options
 ethers_err=Failed to save ethernet address
 ethers_emac=Invalid ethernet address
 ethers_eip=Invalid IP address
+
 rpc_name=Program name
 rpc_number=Number
 rpc_aliases=Aliases
@@ -216,6 +230,7 @@ rpc_header=RPC program details
 rpc_err=Failed to save RPC program
 rpc_ename=Missing or invalid program name
 rpc_enumber=Missing or invalid number
+
 networks_title=Network Address
 networks_ip=IP address
 networks_name=Network name
@@ -224,6 +239,7 @@ networks_err=Failed to save network
 networks_eip=Missing or invalid IP address
 networks_ename=Missing or invalid name
 networks_aliases=Aliases
+
 netmasks_net=Network address
 netmasks_mask=Netmask
 netmasks_title=Netmask
@@ -231,6 +247,7 @@ netmasks_header=Network mask details
 netmasks_err=Failed to save netmask
 netmasks_enet=Missing or invalid network address
 netmasks_emask=Missing or invalid netmask
+
 aliases_from=Address
 aliases_to=Alias to
 aliases_title=Sendmail Alias
@@ -238,6 +255,7 @@ aliases_header=Sendmail alias details
 aliases_err=Failed to save alias
 aliases_efrom=Missing or invalid address
 aliases_eto=Missing to addresses
+
 security_title=Server Security
 security_header=NIS server security options
 security_ok=Save and Apply
@@ -266,6 +284,7 @@ security_sec_des=Require DES
 security_ehost='$1' is not a valid hostname
 security_emap='$1' is not a valid NIS table
 security_efield='$1' is not a valid field number
+
 eswitch_title=Edit Service
 eswitch_egone=Service does not exist!
 eswitch_header=Service details

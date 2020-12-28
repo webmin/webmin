@@ -28,6 +28,7 @@ index_tabinstall=Installer modul
 index_tabsuggest=Foreslåede moduler
 index_allmods2=Manglende moduler brugt af Webmin
 index_wantmods=Moduler, der skal installeres
+
 download_err=Kunne ikke installere modulet
 download_elocal=Ingen lokal fil angivet
 download_elocal2='$1' findes ikke
@@ -65,6 +66,7 @@ download_ebuild=Et eller flere af Perl-modulerne skal $1 bygges, men dette Perl-
 download_yum=Installation af Perl-modul $1 fra pakke $2.
 download_missingok=Moduler mangler fra CPAN
 download_fallback=Nogle moduler kunne ikke installeres fra pakker, idet de prøvede installationen fra kilden i stedet ..
+
 install_title=Installer modul
 install_untar=Untarring modulfil
 install_make=Kompileringsmodul
@@ -84,11 +86,13 @@ install_err2=Du kan også installere modulet fra CPAN med kommandoen $1.
 install_exec=Udfører $1 ..
 install_efile=Modulfil $1 findes ikke længere
 install_needunlink=Du kan prøve at installere igen ved at gå tilbage til den forrige side og vælge forskellige indstillinger. Ellers skal du <a href='$1'>klikke her for at slette de midlertidige pakkefiler</a> for at spare diskplads.
+
 cpan_sel=Moduler under $1.
 cpan_title=Vælg Perl-modul
 cpan_search=Find navngivne moduler
 cpan_match=Moduler, der matcher $1 ..
 cpan_none=Ingen match fundet.
+
 edit_title=Moduldetaljer
 edit_header=Modulinformation
 edit_mod=Modulnavn
@@ -105,6 +109,7 @@ edit_method=Installeret fra
 edit_rpm=RPM-pakke $1 
 edit_debian=Debian-pakke $1 
 edit_manual=Manuel Perl-modulinstallation
+
 uninstall_title=Afinstaller modul
 uninstall_rusure=Er du sikker på, at du vil afinstallere Perl-modulet $1 ? Følgende filer slettes :
 uninstall_rusure2=Er du sikker på, at du vil afinstallere Perl-modulet $1 og undermodul (er) $2 ? <br> Følgende filer vil blive slettet :
@@ -112,7 +117,9 @@ uninstall_ok=Afinstaller nu
 uninstall_rpm=Modulet fjernes ved at afinstallere pakken $1 RPM.
 uninstall_debian=Modulet fjernes ved at afinstallere Debian-pakken $1.
 uninstall_err=Kunne ikke afinstallere modulet
+
 delete_efile=Ugyldig pakkefil!
+
 uninstalls_title=Afinstaller moduler
 uninstalls_err=Kunne ikke afinstallere moduler
 uninstalls_enone=Ingen valgt

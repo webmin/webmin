@@ -1,4 +1,5 @@
 quota_unlimited=Neierobežots
+
 acl_fss=Failsistēmas, kuras šis lietotājs var rediģēt
 acl_fall=Visas failu sistēmas
 acl_fsel=Atlasīts ..
@@ -24,9 +25,11 @@ acl_maxblocks=Maksimālā pieļaujamā bloka kvota
 acl_maxfiles=Maksimālā pieļaujamā faila kvota
 acl_unlimited=Neierobežots
 acl_email=Vai var iestatīt e-pasta paziņojumus?
+
 activate_eallow=Jums nav atļauts iespējot vai atspējot kvotas šajā failu sistēmā
 activate_eon=Neizdevās ieslēgt kvotas
 activate_eoff=Neizdevās izslēgt kvotas
+
 check_title=Pārbaudiet kvotas
 check_return=$1 saraksts
 check_ecannot=Jūs nevarat pārbaudīt kvotas šajā failu sistēmā
@@ -34,11 +37,13 @@ check_running=Tagad tiek palaista komanda <tt>quotacheck</tt>, lai pārbaudītu 
 check_done=... Gatavs.
 check_rgroup=grupa
 check_ruser=lietotājs
+
 cgroup_efail=Neizdevās nokopēt kvotas
 cgroup_ecannot=Jūs nevarat nokopēt kvotas
 cgroup_egallow=Jums nav atļauts kopēt šīs grupas kvotas
 cgroup_enogroup=Nav grupu, uz kurām kopēt
 cgroup_eallowto=Jums nav atļauts kopēt kvotas uz “$1”
+
 cgform_title=Kopēt kvotas
 cgform_return=grupas kvota
 cgform_ecannot=Jūs nevarat nokopēt kvotas
@@ -48,11 +53,13 @@ cgform_all=Visas grupas jūsu sistēmā
 cgform_select=Atlasītās grupas
 cgform_contain=Grupas, kurās ir lietotāji
 cgform_doit=Kopēt
+
 cuser_efail=Neizdevās nokopēt kvotas
 cuser_ecannot=Jūs nevarat nokopēt kvotas
 cuser_euallow=Jums nav atļauts kopēt šī lietotāja kvotas
 cuser_enouser=Nav lietotāju, uz kuriem kopēt
 cuser_eallowto=Jums nav atļauts kopēt kvotas uz “$1”
+
 cuform_title=Kopēt kvotas
 cuform_return=lietotāja kvota
 cuform_ecannot=Jūs nevarat nokopēt kvotas
@@ -62,6 +69,7 @@ cuform_all=Visi lietotāji jūsu sistēmā
 cuform_select=Atlasītie lietotāji
 cuform_members=Izvēlēto grupu dalībnieki
 cuform_doit=Kopēt
+
 egroup_title=Rediģēt grupas kvotu
 egroup_freturn=failu sistēmas saraksts
 egroup_greturn=grupu saraksts
@@ -80,6 +88,7 @@ egroup_hflimit=Cietā faila ierobežojums
 egroup_update=Atjaunināt
 egroup_listall=Uzskaitiet visas kvotas
 egroup_listalldesc=Noklikšķiniet uz šīs pogas, lai parādītu visu failu sistēmu sarakstu, kurās šai grupai ir diska kvotas, ar saitēm to rediģēšanai.
+
 euser_title=Rediģēt lietotāja kvotu
 euser_freturn=failu sistēmas saraksts
 euser_ureturn=lietotāju saraksts
@@ -102,6 +111,7 @@ euser_hflimit=Cietā faila ierobežojums
 euser_update=Atjaunināt
 euser_listall=Uzskaitiet visas kvotas
 euser_listalldesc=Noklikšķiniet uz šīs pogas, lai parādītu visu failu sistēmu sarakstu, kurās šim lietotājam ir diska kvotas, ar saitēm to rediģēšanai.
+
 gfilesys_title=Grupu kvotas
 gfilesys_return=failu sistēmu saraksts
 gfilesys_ecannot=Jūs nevarat rediģēt “$1” kvotas
@@ -120,6 +130,7 @@ gfilesys_copy=Kopēt kvotas
 gfilesys_editdesc=Skatiet un rediģējiet šīs grupas kvotas kādā citā failu sistēmā, kurā tai pašlaik nav kvotu.
 gfilesys_copydesc=Kopēt visu failu sistēmu kvotu limitus šai grupai uz dažām vai visām citām grupām.
 gfilesys_enone=Nav ievadīts grupas nosaukums
+
 ggracef_title=Žēlastības laiki
 ggracef_return=grupu saraksts
 ggracef_ecannot=Šajā failu sistēmā nevar rediģēt labvēlības laikus
@@ -128,9 +139,11 @@ ggracef_graces=Grupas labvēlības laiki <tt>$1</tt>
 ggracef_block=Par bloka kvotu
 ggracef_file=Par faila kvotu
 ggracef_update=Atjaunināt
+
 ggraces_esave=Neizdevās saglabāt labvēlības laikus
 ggraces_eedit=Šajā failu sistēmā nevar rediģēt labvēlības laikus
 ggraces_enumber='$1' nav skaitlis
+
 index_quser=Lietotāju kvotas
 index_qgroup=Grupu kvotas
 index_qboth=Lietotāju un grupu kvotas
@@ -154,6 +167,7 @@ index_egroup=Rediģēt grupas kvotas:
 index_egroupdesc=Ievadiet vai atlasiet grupu un noklikšķiniet uz šīs pogas, lai apskatītu tās kvotas visās failu sistēmās.
 index_nosupport=Neviena vietējā failu sistēma nevar atbalstīt kvotas.
 index_mountmod=Failu sistēmas kvotas var iespējot modulī <a href='$1'>diska un tīkla failu sistēmas</a>.
+
 lgroups_failed=Neizdevās uzskaitīt grupas
 lgroups_tablist=Grupu saraksts
 lgroups_eallow=Jums nav atļauts rediģēt kvotas šajā failu sistēmā
@@ -182,13 +196,17 @@ lgroups_tofixed=Adrese 1
 lgroups_emailheader=E-pasts grupām, kas tuvojas kvotai
 lgroups_email=Vai sūtīt e-pastu grupām?
 lgroups_tovirt=Virtualmin domēna īpašnieks
+
 sgroup_egroup=Jums nav atļauts rediģēt šīs grupas kvotas
 sgroup_efs=Jums nav atļauts rediģēt kvotas šajā failu sistēmā
+
 ssync_ecannot=Šai failu sistēmai nevar iestatīt noklusējuma kvotu
+
 suser_euser=Jums nav atļauts rediģēt šī lietotāja kvotas
 suser_efs=Jums nav atļauts rediģēt kvotas šajā failu sistēmā
 suser_emaxblocks=Jums nav atļauts piešķirt bloka ierobežojumus virs $1 
 suser_emaxfiles=Jums nav atļauts piešķirt failu ierobežojumus virs $1 
+
 ufilesys_title=Lietotāju kvotas
 ufilesys_return=failu sistēmu saraksts
 ufilesys_ecannot=Jūs nevarat rediģēt “$1” kvotas
@@ -208,6 +226,7 @@ ufilesys_copydesc=Kopējiet visiem lietotājiem failu sistēmu kvotu ierobežoju
 ufilesys_copy=Kopēt kvotas
 ufilesys_grace=Žēlastība
 ufilesys_enone=Nav ievadīts lietotājvārds
+
 ugracef_title=Žēlastības laiki
 ugracef_return=lietotāju saraksts
 ugracef_ecannot=Šajā failu sistēmā nevar rediģēt labvēlības laikus
@@ -216,9 +235,11 @@ ugracef_graces=<tt>$1</tt> lietotāja labvēlības laiks
 ugracef_block=Par bloka kvotu
 ugracef_file=Par faila kvotu
 ugracef_update=Atjaunināt
+
 ugraces_esave=Neizdevās saglabāt labvēlības laikus
 ugraces_eedit=Šajā failu sistēmā nevar rediģēt labvēlības laikus
 ugraces_enumber='$1' nav skaitlis
+
 lusers_failed=Neizdevās uzskaitīt lietotājus
 lusers_tablist=Lietotāju saraksts
 lusers_tabdefault=Noklusējuma kvotas
@@ -264,12 +285,14 @@ lusers_from=No: adrese e-pastam
 lusers_mass=Atjauniniet atlasītos lietotājus
 lusers_cc=Nosūtīt arī e-pastu uz
 lusers_nocc=Neviens
+
 grace_seconds=Sekundēs
 grace_minutes=Minūtes
 grace_hours=Stundas
 grace_days=Dienas
 grace_weeks=Nedēļas
 grace_months=Mēneši
+
 log_activate_u=Iespējotas lietotāju kvotas $1 
 log_activate_g=Iespējotas grupas kvotas $1 
 log_activate_ug=Iespējotas lietotāju un grupu kvotas $1 
@@ -287,6 +310,7 @@ log_check=Pārbaudītas kvotas $1
 log_copy_u=Kopētas lietotāja $1 kvotas
 log_copy_g=Kopētas grupas $1 kvotas
 log_support=Iespējots kvotas atbalsts $1 
+
 email_err=Neizdevās saglabāt e-pasta opcijas
 email_ecannot=Jums nav atļauts mainīt e-pasta opcijas
 email_einterval=Trūkst vai nav derīgs intervāls
@@ -299,6 +323,7 @@ gemail_msg=Diska lietojums grupai $1 failu sistēmā $2 ir sasniedzis $3% no at�
 email_subject=Diska kvota ir pārsniegta
 gemail_subject=Diska kvota ir pārsniegta
 email_eto=Trūkst adresāta e-pasta adreses
+
 umass_title=Atjauniniet lietotāju kvotas
 umass_header=Kvotas izmaiņas tiek piemērotas atlasītajiem lietotājiem
 umass_sblocks=Mīksto bloku robeža
@@ -315,6 +340,7 @@ umass_esfiles=Trūkst vai nav derīgs mīksto failu ierobežojums
 umass_ehfiles=Trūkst vai nav derīgs cietā faila ierobežojums
 umass_count=Tālāk veiktās izmaiņas attieksies uz $1 atlasītajiem lietotājiem.
 umass_err=Neizdevās atjaunināt lietotāju kvotas
+
 gmass_title=Atjaunināt grupas kvotas
 gmass_header=Kvotu izmaiņas tiek piemērotas atlasītajām grupām
 gmass_count=Zemāk redzamās izmaiņas attieksies uz $1 atlasītajām grupām.

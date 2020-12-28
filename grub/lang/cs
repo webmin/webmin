@@ -8,6 +8,7 @@ index_none=Nejsou definována žádná boot nastavení. Ujistěte se, že jste p
 index_efile=Soubor s GRUB menu $1 nebyl ve vašem systému nalezen. Možná není GRUB nainstalován, nebo <a href='$2'>konfigurace modulu</a> není správná.
 index_epath=Spouštěč GRUBu $1 nebyl ve vašem systému nalezen. Možná není GRUB nainstalován, nebo <a href='$2'>konfigurace modulu</a> není správná.
 index_return=seznam nastavení
+
 title_add=Přidání boot nastavení
 title_edit=Editace boot nastavení
 title_header=Detaily nastavení boot menu
@@ -32,6 +33,7 @@ title_echain=Chybějící nebo nesprávný soubor chainloader
 title_edev=Nepodporované zařízení s root oddílem $1
 title_einitrd=Chybějící název počátečního ramdisk souboru
 title_lock=Uzamkonut heslem?
+
 global_title=Globální nastavení
 global_header=Globální nastavení boot menu
 global_default=Výchozí boot nastavení
@@ -51,6 +53,7 @@ global_edev=Nepodporovaný disk/oddíl pro instalaci $1
 global_eother=Chybějící nebo nesprávný disk/oddíl
 global_epassword=Chybějící nebo nesprávné boot heslo
 global_epasswordfile=Chybějící název souboru alternativního menu
+
 install_title=Instalace GRUB
 install_err=Chyba při instalaci GRUB
 install_efind=Nemůže být nalezen soubor s menu

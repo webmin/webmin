@@ -1,11 +1,14 @@
 connect_emysql=Det gick inte att ladda databasdrivrutinen $1
 connect_elogin=Det gick inte att logga in på databasen $1:$2.
 index_postfix=postfix
+
 index_esuper=Postfix-handledarens kommando $1 finns inte. Kanske är din <a href='$2'>modulkonfiguration</a> felaktig.
 index_reload=Ladda om konfiguration
 index_reloadmsg=Klicka på den här knappen för att låta Postfix läsa alla konfigurationsfiler igen. Detta kan vara användbart om Postfix-konfigurationsfilerna har ändrats manuellt.
 index_version=Postfix-version $1
+
 check_manual=Redigera manuellt Postfix-konfigurationsfilen.
+
 aliases_failed_delete=Det gick inte att ta bort alias: $1
 aliases_click=Klicka på ett alias för att redigera dess egenskaper:
 aliases_addr=Alias från ..
@@ -18,9 +21,11 @@ aliases_type5=Skriv automatiskt filen $1
 aliases_type6=Använd filterfil $1
 aliases_none=Ingen
 aliases_delete=Radera valda alias
+
 postfinger_title=Konfigurationskontroll
 postfinger_show=Visa
 postfinger_ecannot=Du får inte kontrollera Postfix-konfigurationen
+
 mailclean_title=Rengör MailQueue
 mailclean_ecannot=Inga privilegier att rengöra MailQueues
 mailclean_active=Active-kö
@@ -29,6 +34,7 @@ mailclean_deferred=Uppskjuten-Queue
 mailclean_defer=Skjut upp-Queue
 mailclean_all=Alla köer
 mailclean_search=Sök-String
+
 aform_type0=Ingen
 aform_type1=E-postadress
 aform_type2=Adresser i fil
@@ -44,6 +50,7 @@ aform_val=Alias till
 aform_afile=Redigera ..
 aform_return=alias
 aform_cmt=Beskrivning
+
 asave_err=Det gick inte att spara alias
 asave_eaddr='$1' är inte en giltig adress
 asave_ealready=Ett alias för '$1' finns redan
@@ -54,11 +61,13 @@ asave_etype4='$1' är inte ett giltigt program eller finns inte
 asave_etype5=Filen '$1' automatiskt kan inte gälla
 asave_etype4none=Inget program ges
 asave_etype6=Filterfil "$1" är inte giltig
+
 afile_title=Redigera adressfil
 afile_desc=Använd textområdet nedan för att redigera adresserna i filen $1.
 afile_efile=Du får inte redigera $1.
 afile_undo=Ångra ändringar
 afile_ewrite=Det gick inte att skriva till adressfilen : $1
+
 ffile_title=Redigera filterfil
 ffile_desc=Använd formuläret nedan för att ställa in filterregler i filen $1.
 ffile_efile=Du får inte redigera $1.
@@ -74,6 +83,7 @@ ffile_other=Annars vidarebefordra till $1
 ffile_err=Det gick inte att spara filterfilen
 ffile_ematch=Matchen saknas
 ffile_eaction=Saknad vidarebefordringsadress
+
 rfile_title=Redigera Autoreply File
 rfile_desc=Använd textområdet nedan för att redigera autosvarmeddelandet i $1. Meddelandet kan innehålla makron $SUBJECT, $FROM, $TO, $DATE och $BODY som kommer att utökas när autoreply aktiveras.
 rfile_desc2=Du kan också ställa e-posthuvuden som lägger till eller ersätter standardinställningarna som används i autoskyddet genom att sätta rader som: <br><tt> Från: foo@bar.com </tt><br> <tt>Ämne: På semester</tt> <br> högst upp i meddelandet, separerat från kroppen med en enda tom rad.
@@ -92,29 +102,38 @@ rfile_from=Från: adress för svar
 rfile_auto=Automatisk (baserad på mottagarens adress)
 rfile_efrom=Saknas från: adress
 rfile_fromdesc=A Från: adress ska alltid anges där det är möjligt eftersom den automatiska metoden kanske inte är tillförlitlig.
+
 opts_nomap=Ingen kartuppsättning
 opts_setmap=Kartspecifikationer
 opts_notify_classes_sel=Valt nedan
+
 opts_edir=Du får bara ange kartfiler under $1
+
 opts_mailbox_size_limit=Maximal storlek på en brevlåda
+
 opts_mynetworks_style=Automatiska lokala nätverk
 opts_mynetworks_subnet=Samma IP-subnät
 opts_mynetworks_class=Samma nätverksklass
 opts_mynetworks_host=Endast lokal maskin
 opts_delay_warning_time_default2=Postfix standard
 opts_content_filter_default=Ingen
+
 opts_relay_recipient_maps=Karta för tillåtna adresser för vidarebefordran
 smtpd_nomap=Det finns ännu ingen karta för tillåtna adresser för vidarebefordran.
 smtpd_nomap2=Ingen karta för begränsningar för avsändaradresser har ännu lagts in.
 smtpd_map=Tillåtna adresser för vidarebefordran
 smtpd_map2=Begränsningar i avsändarens adresser
+
 opts_smtp_use_tls=Använd TLS för SMTP-anslutningar
 opts_smtp_sasl_security_options=SASL-säkerhetsalternativ
+
 debug_version=Postfix-modul för Webmin - version $1
 opts_edebug=Saknad eller ogiltig verbos loggningsnivå - måste vara ett nummer större än noll
+
 canonical_return_sender=avsändares kanoniska kartor
 canonical_return_recipient=mottagare kanoniska kartor
 canonical_return=kanoniska kartor
+
 mapping_delete=Radera valda
 mapping_cmt=Beskrivning
 mapping_ecannot=Du får bara redigera kartor under $1
@@ -129,25 +148,42 @@ mapping_toomany=Det finns $1 kartposter som ligger över visningsgränsen för $
 mapping_find=Visa matchningar som matchar:
 mapping_search=Sök
 mapping_match=Kartfilsposter som matchar <tt>$1</tt> ..
+
 opts_virtual_alias_maps=Domänavbildningssökningstabeller
 opts_virtual_alias_domains=Domäner att utföra virtuell kartläggning för
 virtual_same=Från domänmappningstabeller
 virtual_return=virtuella domäner
+
 transport_return=transportkartor
+
+sni_title=Certifikatmappning
+sni_ecannot=Du har inte rätt att redigera konfigurationen för certifikatmappning
+opts_sni_maps=Tabeller för uppslag av certifikatmappning
+sni_return=certifikatkartor
+sni_dom=Värdnamn
+sni_certs=Certifikatfiler
+
 relocated_return=flyttade kartor
 opts_content_filter=E-postinnehållsfilter
+
 no_map2=Ingen karta är för närvarande definierad. Definiera en karta först, sedan kan du redigera den.
+
 stop_efailed=Det gick inte att stoppa Postfix
 stop_ecannot=Du får inte stoppa Postfix
+
 start_efailed=Det gick inte att starta Postfix
 start_ecannot=Du får inte starta Postfix
+
 reload_efailed=Det gick inte att ladda om Postfix
 reload_ecannot=Du får inte ladda om Postfix igen
+
 query_get_efailed=Det gick inte att fråga Postfix-konfigureringskommandot för att få det aktuella värdet på parametern $1: <tt>$2</tt>
 query_set_efailed=Det gick inte att fråga Postfix-konfigureringskommandot för att ställa in det aktuella värdet på parameter $1 till $2: <tt>$3</tt>
 regenerate_ecannot=Du får inte återskapa aliaserna
+
 regenerate_alias_efailed=Det gick inte att återskapa alias: <tt>$1</tt>
 regenerate_table_efailed=Det gick inte att regenerera tabellen $1: <tt>$2</tt>
+
 acl_resource=Kan redigera resurser?
 acl_aliases=Kan redigera alias?
 acl_aliases_options=Kan du redigera aliasalternativ?
@@ -156,6 +192,7 @@ acl_address_rewriting=Kan redigera adressskrivning?
 acl_canonical=Kan redigera kanoniska?
 acl_virtual=Kan redigera virtuellt?
 acl_transport=Kan redigera transport?
+acl_sni=Kan redigera certifikat?
 acl_relocated=Kan redigera flyttas?
 acl_header=Kan redigera rubrikcheck?
 acl_local_delivery=Kan redigera lokal leverans?
@@ -174,6 +211,7 @@ acl_postfinger=Kan kontrollera postfixkonfiguration?
 acl_manual=Kan redigera konfigurationsfilen?
 acl_dir=Tillåten katalog för kartfiler
 acl_bcc=Kan redigera BCC-kartläggning?
+
 boxes_title=Användarbrevlådor
 boxes_user=Användare
 boxes_size=Postlådestorlek
@@ -183,6 +221,7 @@ boxes_sent=Skickade post
 boxes_ecannot=Du får inte läsa e-post
 boxes_toomany=Det finns för många användare på ditt system för att lista alla deras postlådor.
 boxes_go=Visa e-post för användare:
+
 mail_title=Användar-e-post
 mail_from=Från
 mail_date=Datum
@@ -221,6 +260,7 @@ mail_forward=Framåt
 mail_rfc=Från rad
 mail_move=Flytta till:
 mail_eexists=Meddelandet finns inte längre!
+
 view_title=Läs e-post
 view_desc=Meddelande $1 i $2
 view_desc2=Meddelande $1 för användare $2
@@ -249,6 +289,7 @@ view_body=Meddelandetext
 view_afile=Bilaga namn
 view_atype=Tillbehörstyp
 view_asize=Filstorlek
+
 compose_title=Skriv e-post
 reply_title=Svara på e-post
 forward_title=Vidarebefordra e-post
@@ -259,6 +300,7 @@ reply_mailforward=Vidarebefordrade meddelanden
 reply_attach2=Klient- och serversidan Bilagor
 reply_send=Skicka brev
 reply_ecannot=Du får inte skicka e-post som den här användaren
+
 send_err=Det gick inte att skicka e-post
 send_eto=Saknas till adress
 send_efrom=Saknas från adress
@@ -272,6 +314,7 @@ send_eperms=Användare $1 kan inte läsa $2
 send_eperms2=Du får inte skicka fil $1
 send_epath=Sendmail körbar $1 finns inte.
 send_ewrapper=Postfix sendmail-gränssnittsprogram finns inte
+
 search_title=sökresultat
 search_ecannot=Du får inte söka i den här användarens e-post
 search_ematch=Du måste ange text för att matcha mot.
@@ -279,6 +322,7 @@ search_efield=Du måste välja en söktyp.
 search_none=Inga meddelanden hittades.
 search_results2=$1 e-postmeddelanden som matchar $2 ..
 search_results3=$1 e-postmeddelanden som inte matchar $2 ..
+
 match_from=Från: matcher
 match_subject=Ämne: matcher
 match_to=Till: matcher
@@ -296,6 +340,7 @@ match_!date=Datum: stämmer inte
 match_!body=Kroppen matchar inte
 match_!size=Storleken är mindre än
 match_!headers=Rubriker matchar inte
+
 mailq_title=E-postkö
 mailq_count=$1 meddelanden
 mailq_none=Inga e-postmeddelanden står för närvarande i kö för leverans
@@ -324,15 +369,20 @@ mailq_active=Aktiva
 mailq_deferred=uppskjuten
 mailq_hold=Håll vald
 mailq_unhold=Ta bort valt
+
 flushq_title=Spolningskö
 flushq_desc=Tvingar försökt leverans av e-post med kommandot $1 ..
+
 qview_title=Meddelande i kö
 qview_desc=Från fil $1
 qview_headers=E-posthuvuden
 qview_attach=bilagor
+
 after_err=Konfigurationsfel efter postfix : $1
+
 searchq_title=Resultat för kösökning
 searchq_none=Inga kömeddelanden hittades.
+
 header_title=Header Checks
 header_ecannot=Du får inte redigera rubrikcheck
 header_eregexp=Kartan för rubrikkontroller måste vara i formatet <tt>regexp:</tt> <i>filnamn</i>
@@ -351,15 +401,18 @@ header_reject=Avvisa (med felmeddelande..)
 header_warn=Loggarvarning (med meddelande..)
 header_ename=Ogiltigt regelbundet uttryck - måste vara som / något /
 header_return=rubrikcheck
+
 body_title=Kroppskontroller
 body_ecannot=Du får inte redigera kroppskontroller
 body_eregexp=Kroppskontrollskartan måste vara i formatet <tt>regexp:</tt> <i>filnamn</i>
 opts_body_checks=Tabeller för kontroll av meddelanden
 body_return=kroppskontroller
+
 dependent_title=Avsändarberoende transportkartläggning
 dependent_ecannot=Du får inte redigera avsändarberoende transportkartläggningar
 dependent_eregexp=Den avsändarberoende transportkartan måste vara i formatet <tt>regexp:</tt> <i>filnamn</i>
 dependent_return=avsändarberoende transportkartläggningar
+
 manual_title=Redigera kartfil
 manual_file=Välj en kartfil som ska redigeras:
 manual_change=Förändra
@@ -367,9 +420,11 @@ manual_editing=Använd textrutan nedan för att manuellt redigera mappningarna i
 manual_err=Det gick inte att spara kartfilen
 manual_efile=Ogiltigt kartfilnamn!
 manual_ecannot=Du får inte redigera kartfiler manuellt
+
 delq_titles=Radera meddelanden
 delq_rusure=Är du säker på att du vill ta bort $1 meddelanden i kö?
 delq_confirm=Radera meddelanden
+
 master_title=Serverprocesser
 master_name=Process namn
 master_enabled=Aktiverad?
@@ -410,8 +465,10 @@ master_einet=En värdadress att lyssna på kan endast anges för Internet-proces
 master_ecommand=Serverprocesskommando saknas
 master_ewakeup=Saknad eller ogiltig väckningstid
 master_emaxprocs=Det maximala antalet processer saknas eller ogiltig
+
 delete_err=Det gick inte att ta bort mappningar
 delete_enone=Ingen vald
+
 cmanual_title=Redigera konfigurationsfiler
 cmanual_ecannot=Du får inte redigera Postfix-konfigurationsfilen
 cmanual_ok=Redigera
@@ -419,10 +476,12 @@ cmanual_efile=Den valda filen är inte en del av Postfix-konfigurationen
 cmanual_file=Redigera konfigurationsfil:
 cmanual_edata=Ingenting kom in!
 cmanual_err=Det gick inte att spara konfigurationsfilen
+
 access_return=åtkomst karttabell
 edit_map_file=Redigera kartfil
 opts_reject_rbl_client=RBL-uppslag i realtid
 opts_check_sender_access=Kontrollera avsändarkorttabellen
+
 log_misc=Ändrade allmänna alternativ
 log_opts=Ändrat adressskrivning och maskering
 log_aliases=Ändrade aliasalternativ
@@ -430,6 +489,7 @@ log_canonical=Ändra kanoniska kartalternativ
 log_virtual=Ändrade alternativ för virtuella domäner
 log_bcc=Ändrade BCC-kartalternativ
 log_transport=Ändrade alternativ för transportkartläggning
+log_sni=Ändra certifikatmappningsalternativ
 log_dependent=Ändrade avsändarberoende adressalternativ
 log_relocated=Ändrade kartläggningsalternativ för omlokalisering
 log_header=Ändrade alternativ för rubrikontroll
@@ -507,6 +567,7 @@ log_sender_dependent_default_transport_maps_modify=Modifierad avsändarberoende 
 log_sender_dependent_default_transport_maps_delete=Raderad avsändarberoende adress $1
 log_delete_sender_dependent_default_transport_mapss=Raderade $1 avsändarberoende adresser
 log_manual_sender_dependent_default_transport_mapss=Manuell redigerad avsändarberoende adresser i $1
+
 sasl_title=SMTP-autentisering och kryptering
 opts_smtpd_sasl_auth_enable=Behöver du SASL SMTP-autentisering?
 opts_smtp_sasl_auth_enable=Använd SASL SMTP-autentisering?
@@ -553,6 +614,7 @@ sasl_nologin=Ingen behövs
 sasl_userpass=Logga in som $1 med lösenord $2
 sasl_elogin=Saknad eller ogiltig SMTP-inloggning (inga mellanslag eller kolon tillåtna)
 sasl_epass=Ogiltigt SMTP-lösenord (inga platser tillåtna)
+
 client_title=SMTP-klientbegränsningar
 client_ecannot=Du får inte redigera SMTP-klientbegränsningar
 client_restrict=Klientbegränsningar
@@ -562,6 +624,7 @@ client_other=Andra begränsningar :
 client_err=Det gick inte att spara klientbegränsningar
 client_evalue=Saknas värde för begränsning $1
 client_return=SMTP-klientbegränsningar
+
 chooser_title=Välj kartkälla
 chooser_header=Kartkälla $1
 chooser_none=Ingen
@@ -617,6 +680,7 @@ chooser_elquery_filter=Saknande frågefilter för karta $1
 chooser_elresult_attribute=Saknande eller ogiltigt resultatattributnamn för karta $1
 chooser_elbind_dn=Saknar inloggning för LDAP-server för karta $1
 chooser_elbind_pw=Lösenord för LDAP-server saknas för karta $1
+
 mysql_ecfile=MySQL-konfigurationsfilen $1 hittades inte
 mysql_ecfile2=Det gick inte att hitta tabellen i MySQL-konfigurationsfilen $1
 mysql_edriver=Det gick inte att ladda databasdrivrutinen $1
@@ -628,6 +692,7 @@ mysql_eupdate=SQL-uppdatering misslyckades : $1
 mysql_elist=SQL-frågan misslyckades : $1
 mysql_esource=Ingen MySQL-källa med namnet $1 hittades
 mysql_eneed=MySQL-konfigurationsparametern $1 hittades inte. Webmin behöver detta för att ta reda på vilken tabell och fält som ska sökas.
+
 ldap_ecfile=LDAP-konfigurationsfil $1 hittades inte
 ldap_eldapmod=Perl-modul $1 som behövs för att kommunicera med LDAP är inte installerad eller inte lastbar
 ldap_eldap=Det gick inte att ansluta till LDAP-server $1 på port $2
@@ -638,6 +703,7 @@ ldap_edelete=LDAP-radering av $1 misslyckades : $2
 ldap_equery=LDAP-sökning av $1 misslyckades : $2
 ldap_erename=LDAP-namnbyte av $1 till $2 misslyckades : $3
 ldap_emodify=LDAP-modifiering av $1 misslyckades : $2
+
 bcc_title=BCC-kartläggning
 bcc_ecannot=Du får inte redigera BCC-mappningar
 opts_sender_bcc_maps=Avsändartabeller för BCC-kartläggning

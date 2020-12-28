@@ -2,6 +2,7 @@ index_inetd=因為Webmin當前由<tt>inetd</tt>運行，所以您可能不想啟
 index_apache=因為Webmin當前在Apache下運行，所以您可能不想啟用此選項。
 index_refresh=刷新模塊
 index_refreshmsg=重新檢查所有已安裝服務器的Webmin模塊，並更新“未使用的模塊”類別中顯示的模塊。
+
 access_ip=允許的IP地址
 access_local=在列表中包括本地網絡
 access_elibwrap=由於沒有安裝$1 Perl模塊，因此無法使用TCP-wrappers進行IP訪問控制。
@@ -11,6 +12,7 @@ access_eip6='$1'不是完整的IPv6或網絡地址
 access_ecidr6='$1'不是有效的IPv6網絡大小
 access_ecidr8=IPv6網絡大小'$1'必須被8整除
 access_trust=信任代理提供的遠程IP地址嗎？
+
 bind_desc2=此表單可用於更改Webmin偵聽的端口號，或僅在系統上的單個IP地址上偵聽此端口號。您還可以將其配置為接受多個端口上的連接，或偵聽多個IP地址。注意-更改端口或綁定地址後，您的Web瀏覽器可能會提示您重新登錄。
 bind_firewall=在防火牆上打開新端口？
 bind_sip=綁定到IP地址
@@ -24,6 +26,7 @@ bind_eipv6=除非安裝了$1 Perl模塊，否則無法啟用IPv6
 bind_redirecting=重定向到新URL ..
 bind_elsof=新端口$1已被另一個進程使用
 bind_eonsystem=IP地址$1在此系統上未激活，因此無法使用
+
 log_status=正在記錄活動？
 log_clear2=定期清除日誌文件？
 log_period=是的，每$1小時
@@ -37,6 +40,7 @@ log_login=在操作日誌中包括Webmin登錄名和註銷名？
 log_email=通過電子郵件將記錄的操作發送至
 log_emailnone=不要發送
 log_inmodsemail=發送電子郵件以進行以下操作
+
 proxy_osdn=首選的OSDN鏡像下載
 proxy_mirrordef=&lt;默認（讓Sourceforge決定）&gt;
 proxy_mirrordef2=默認值（由Sourceforge決定）
@@ -65,6 +69,7 @@ proxy_return=代理服務器和下載
 proxy_tabproxy=代理
 proxy_tabdown=正在下載
 proxy_fallback=如果代理已關閉，請嘗試直接請求？
+
 ui_rgb=<font color=＃ff0000>RR</font> <font color=＃00ff00>GG</font> <font color=＃0000ff>BB</font>十六進制顏色
 ui_ergb='$1'的十六進制顏色值無效
 ui_nice_size_type=使用二進制計量單位（KiB，MiB，GiB，而不是KB，MB，GB）
@@ -90,6 +95,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/yyyy（即16/09/2001）
 ui_dateformat_mm/dd/yyyy=毫米/日/年（即2001年9月16日）
 ui_dateformat_yyyy/mm/dd=yyyy/mm/dd（即2001/09/16）
 ui_ehostnamedisplay=顯示主機名缺失或無效
+
 mods_installsource=從安裝
 mods_grantto=授予訪問權限
 mods_nodeps2=刪除時忽略模塊依賴性
@@ -109,12 +115,15 @@ mods_tabinstall=安裝
 mods_tabclone=克隆
 mods_tabdelete=刪除
 mods_tabexport=出口
+
 install_enotar=在系統上找不到提取Webmin模塊所需的<tt>tar</tt>命令
 install_edep2=模塊$1至少需要模塊$3的模塊$2
 install_line3=$2（$3 kB）中的$1
 install_ebunzip=文件被bzip壓縮，但是在您的系統上找不到$1命令
+
 delete_rusure3=您確定要刪除模塊克隆$2嗎？
 delete_acls=從用戶中刪除並重置訪問控制設置？
+
 os_desc3=該頁面顯示Webmin在安裝時檢測到的操作系統以及當前檢測到的系統。如果它們不同，則可以選擇更新Webmin的OS信息，如果您最近進行了升級，則可能需要更新。
 os_webmin=符合Webmin的操作系統
 os_iwebmin=Webmin使用的內部OS代碼
@@ -128,6 +137,7 @@ os_eiversion=缺少內部操作系統版本
 os_incorrect=警告-您的系統實際上正在運行$1版本$2。
 os_fix=更新檢測到的操作系統
 os_usermin=同時更新Usermin OS
+
 ssl_cpan=或者，您可以讓Webmin為您<a href='$1'>下載並安裝</a>所需的Net::SSLeay Perl模塊。
 ssl_emessage=來自Perl的錯誤消息是：$1
 ssl_deny=拒絕的SSL協議版本
@@ -211,16 +221,20 @@ ssl_letsnotrenew=僅手動續訂
 ssl_staging=讓我們加密服務器
 ssl_staging0=真實
 ssl_staging1=暫存（僅測試）
+
 newkey_ecns=沒有輸入服務器名稱
 newkey_ecat=寫入新密鑰文件時發生錯誤：
 newkey_ecountry=國家/地區代碼必須為兩個字母
+
 newcsr_err=無法創建SSL CSR
 newcsr_efile=缺少CSR文件名
 newcsr_title=產生企業社會責任
 newcsr_ok=成功生成以下SSL證書請求：
 newcsr_ok2=此CSR必鬚髮送給簽名機構，簽名機構將返回簽名證書。可以使用<b>上傳證書</b>標籤使用上方的密鑰進行安裝。
+
 startpage_webminup=在“系統信息”頁面上顯示Webmin更新？
 startpage_moduleup=在“系統信息”頁面上顯示模塊更新？
+
 upgrade_descdeb=通過此表，您可以通過升級Debian軟件包將整個Webmin安裝升級到新版本。您可以從本地.deb文件，上載的文件或最新版本的<a href=http://www.webmin.com/>www.webmin.com</a>安裝。與手動升級一樣，所有配置設置和第三方模塊都將保留。
 upgrade_descsun-pkg=該表格使您可以將整個Webmin安裝從Sun提供的Solaris軟件包升級到新版本。您可以從本地Solaris軟件包文件或上載的文件進行安裝。可以在<a href=http://www.sun.com/bigadmin/content/webmin/>http://www.sun.com/bigadmin/content/webmin/</a>中找到最新的軟件包。與手動升級一樣，所有配置設置和第三方模塊都將保留。
 upgrade_descgentoo=通過刪除當前的Gentoo Emerge軟件包並安裝新的軟件包，此表單使您可以將整個Webmin安裝升級到新版本。您可以從本地Gentoo軟件包文件，上載的文件或從Emerge存儲庫中的最新版本進行安裝。與手動升級一樣，所有配置設置和第三方模塊都將保留。
@@ -249,6 +263,7 @@ upgrade_tabupdate=更新模塊
 upgrade_tabsched=預定的更新
 upgrade_src=從升級Webmin
 upgrade_opts=升級選項
+
 update_checksig=檢查非Webmin存儲庫上的簽名
 update_user=登錄以更新服務器
 update_pass=更新服務器的密碼
@@ -258,6 +273,7 @@ update_enomodsig=無法下載模塊的簽名文件：$1
 update_ebadmodsig=模塊簽名檢查失敗：$1
 update_src=從升級模塊
 update_opts=模塊更新選項
+
 ca_alt=其他網域
 ca_city=城市或地區
 ca_issuer_cn=發行人名稱
@@ -265,6 +281,7 @@ ca_issuer_o=發行人組織
 ca_issuer_email=發行人的電子郵件地址
 ca_type=證書類別
 ca_notafter=有效期至
+
 session_ptimeout=密碼超時
 session_pblock=登錄塊失敗
 session_blockuser=阻止用戶$1以上的用戶登錄失敗$2秒。
@@ -293,9 +310,11 @@ session_sha512=使用SHA512加密
 session_emd5mod=無法使用MD5加密，因為未安裝Perl $1模塊。
 session_esha512mod=由於未安裝Perl $1模塊，因此無法使用SHA512加密。
 session_blocklock=同時鎖定登錄失敗的用戶
+
 categories_lang=編輯語言類別：
 categories_langok=更改
 categories_custom=自訂
+
 log_osdn=更改了下載選項
 log_twofactor=更改了兩因素身份驗證選項
 log_newcsr=創建了新的SSL CSR
@@ -317,6 +336,7 @@ log_onedelete_webmincron=模塊$1中已刪除的預定函數
 log_letsencrypt=從“加密”請求新的SSL證書
 log_letsencryptdns=為$1創建了“讓我們加密DNS記錄”
 log_letsencryptcleanup=刪除了讓我們加密$1的DNS記錄
+
 themes_none=無-由主題決定
 themes_overdesc=覆蓋層通過更改顏色，背景和圖標來修改主題的外觀。它們不會更改佈局。
 themes_overlay=當前疊加：
@@ -325,19 +345,26 @@ themes_taboverlay=更改疊加
 themes_tabinstall=安裝主題
 themes_tabdelete=刪除主題
 themes_tabexport=導出主題
+
 themes_ok2=主題疊加成功更改..重定向到Webmin索引頁面。
 themes_err4=更改疊加主題失敗
 themes_eoverlay=所選的疊加層與當前的全局主題不兼容
+
 themes_desc4=可以使用以下表單將已安裝的主題導出為wbt.gz文件。然後可以將主題文件安裝到另一個運行Webmin的系統上。
 themes_exportmods=導出主題
 themes_exportok=導出所選主題
+
 referers_none2=警告：這使您的系統容易受到XSS攻擊！
 referers_err=無法保存引薦來源
 referers_ehost='$1'不是有效的受信任主機名
+
 update_mtype=模塊$1無法更新，因為它是從$2軟件包安裝的
 update_emins=缺少或無效的分鐘來更新
+
 standard_failed=無法下載模塊列表：$1
+
 third_title=選擇第三方模塊
+
 ipkey_title1=創建SSL密鑰
 ipkey_title2=編輯SSL密鑰
 ipkey_header=IP專用的SSL密鑰詳細信息
@@ -347,6 +374,7 @@ ipkey_eip2='$1'不是有效的IP地址或主機名
 ipkey_eips=沒有輸入IP地址
 ipkey_eextracas=沒有輸入其他證書文件
 ipkey_eextraca=附加證書文件$1不存在
+
 descs_title=模塊標題
 descs_info=該頁面允許您為Webmin模塊指定備用標題，以覆蓋其標准說明。
 descs_mod=模組
@@ -356,11 +384,13 @@ descs_cdesc=克隆標題
 descs_err=保存模塊標題失敗
 descs_edesc=模塊“$1”的標題丟失
 descs_etitle=克隆“$1”的標題丟失
+
 export_err=導出模塊失敗
 export_ecmd=缺少所需的命令$1
 export_efile=丟失或無效的導出文件
 export_done=成功將所選模塊導出到$1。
 export_title=導出模塊
+
 advanced_title=高級選項
 advanced_header=進階和實驗選項
 advanced_temp=臨時文件目錄
@@ -404,10 +434,13 @@ advanced_listdir=列出沒有索引文件的目錄？
 advanced_headers=額外的HTTP標頭
 advanced_eheader=標頭的格式必須類似於<tt>Header：Value</tt>
 advanced_sortconfigs=保存按其鍵排序的配置文件？
+
 syslog_errorlog=Webmin錯誤日誌
+
 clear_title=清除下載緩存
 clear_done=已成功清除包含來自 $2 URL的文件的$1的Webmin緩存。
 clear_none=Webmin下載緩存中當前沒有URL。
+
 savekey_err=保存新密鑰失敗
 savekey_ekey=PEM格式密鑰缺失或無效
 savekey_ecert=PEM格式證書缺失或無效
@@ -417,6 +450,7 @@ savekey_title=上傳現有密鑰
 savekey_done2=提供的SSL密鑰已保存在$1中，證書已保存在$2中。
 savekey_done=提供的SSL密鑰和證書已保存在文件$1中。
 savekey_done3=提供的鏈接SSL證書已保存在文件$1中。
+
 cache_title=緩存的URL
 cache_search=查找包含以下內容的網址：
 cache_ok=搜索
@@ -429,8 +463,10 @@ cache_delete=從緩存中清除所選內容
 cache_err=無法刷新緩存的URL
 cache_enone=未選擇
 cache_efile=無效的文件名
+
 restart_title=重新啟動Webmin
 restart_done=Webmin服務器進程現在正在重新啟動-請等待幾秒鐘，然後再繼續。
+
 mobile_title=移動設備選項
 mobile_header=移動瀏覽器的選項
 mobile_theme=移動瀏覽器的主題
@@ -439,6 +475,7 @@ mobile_nosession=強制使用HTTP身份驗證？
 mobile_agents=移動瀏覽器的其他用戶代理
 mobile_err=無法保存移動設備選項
 mobile_prefixes=移動瀏覽器的URL主機名前綴
+
 blocked_title=被阻止的主機和用戶
 blocked_type=類型
 blocked_who=主機名或用戶名
@@ -450,9 +487,11 @@ blocked_host=客戶主機
 blocked_clear=清除所有方塊
 blocked_cleardesc=單擊此按鈕以通過重新啟動Webmin服務器進程來清除所有當前主機和用戶塊。
 blocked_restarting=Webmin服務器進程現在正在重新啟動，以清除被阻止的主機和用戶-請等待幾秒鐘，然後繼續。
+
 refreshmods_title=刷新模塊
 refreshmods_installed=檢查可用的Webmin模塊 ..
 refeshmods_counts=..找到了已安裝應用程序的$2，未安裝$1。
+
 debug_title=調試日誌文件
 debug_header=Webmin調試日誌文件選項
 debug_enabled=啟用了調試日誌？
@@ -480,6 +519,7 @@ debug_cmd=命令行
 debug_cron=後台工作
 debug_inmods=編寫調試日誌的模塊
 debug_emodules=沒有要調試的模塊可供選擇
+
 notif_passexpired=您的Webmin密碼已過期！您將被迫在下次登錄時更改它。
 notif_passchange=您的Webmin密碼最後一次在$1上更改，並且必須在$2天內更改。
 notif_passlock=您的Webmin密碼最後一次在$1上更改，如果未更改，您的帳戶將在$2天被鎖定。
@@ -495,6 +535,7 @@ notify_updatedesc=解決問題
 notif_updateok=立即安裝更新
 notif_reboot=最近的軟件包更新（例如新的內核版本）要求重新啟動才能完全應用。
 notif_rebootok=馬上重啟
+
 status_title=後台狀態收集
 status_header=狀態收集作業設置
 status_interval=在後台收集系統狀態？
@@ -506,6 +547,7 @@ status_temp=收集驅動器溫度？
 status_units=溫度單位
 status_celsius=攝氏溫度
 status_fahrenheit=華氏溫度
+
 sendmail_title=發送郵件
 sendmail_desc=該頁面控制Webmin如何發送電子郵件，例如來自計劃的備份或後台監視。它還會影響使用“讀取用戶郵件”模塊發送的電子郵件。
 sendmail_header=郵件發送選項
@@ -546,12 +588,14 @@ sendmail_url=用於電子郵件的Webmin URL
 sendmail_url_def=默認值（$1）
 sendmail_url_custom=自定義網址
 sendmail_eurl=自定義網址缺失或無效
+
 testmail_title=發送測試電子郵件
 testmail_err=無法發送測試消息
 testmail_eto=沒有輸入目的地地址
 testmail_sending=正在將消息從$1發送到$2 ..
 testmail_done=..消息已發送。檢查目標地址的郵箱，以確保它已實際傳遞。
 testmail_failed=..發送失敗：$1
+
 web_title=Web服務器選項
 web_header=Webmin內置Web服務器的選項
 web_expires=客戶端的靜態文件緩存時間
@@ -563,6 +607,7 @@ web_expirespaths=基於URL路徑的客戶端緩存時間
 web_expirespath=路徑正則表達式
 web_expirestime=緩存時間（以秒為單位）
 web_eexpires2=$1行中缺少或非數字的客戶端高速緩存時間
+
 webmincron_title=Webmin預定功能
 webmincron_emodule=未安裝Webmin Cron Jobs模塊！
 webmincron_module=Webmin模塊
@@ -586,6 +631,7 @@ webmincron_when1=具體時間
 webmincron_secs=秒
 webmincron_err=保存預定功能失敗
 webmincron_einterval=間隔必須大於零秒
+
 twofactor_title=兩要素認證
 twofactor_header=兩因素身份驗證選項
 twofactor_provider=認證提供者
@@ -624,6 +670,7 @@ twofactor_secret1=隨機產生
 twofactor_secret0=使用16個字符的密鑰
 twofactor_esecret=密鑰長度必須恰好為16個字符，並且只能包含字母和數字
 twofactor_esession=除非基於會話的身份驗證處於活動狀態，否則不能使用兩因素身份驗證
+
 letsencrypt_title=讓我們加密證書申請
 letsencrypt_err=申請證書失敗
 letsencrypt_ecmds=在您的系統上找不到“讓我們加密”客戶端命令<tt>certbot</tt>或<tt>python</tt>命令
@@ -657,5 +704,6 @@ letsencrypt_ecsr=無法生成CSR：$1
 letsencrypt_ekeygen=無法生成私鑰：$1
 letsencrypt_enative=本地的Let's Encrypt客戶端（certbot）先前在此系統上使用，並且必須用於以後的所有證書請求
 letsencrypt_eacmedns=僅官方的Let's Encrypt客戶端支持基於DNS的驗證
+
 announce_hide=隱藏此公告
 alert_hide=隱藏警報

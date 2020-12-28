@@ -21,6 +21,7 @@ index_thost=Värdnamn
 index_tdesc=Beskrivning
 index_tcount=paket
 index_ttype=OS-typ
+
 install_err=Det gick inte att installera paketet
 install_elocal=Ingen lokal fil anges
 install_elocal2='$1' finns inte
@@ -37,6 +38,7 @@ install_ok=Installera
 install_erus=Denna server använder ett annat uppdateringssystem än huvudservern ($1 kontra $2)
 install_eupdate=Ett fel uppstod vid installation av de angivna uppdateringarna
 install_ealready=Version $1 är redan installerad
+
 add_title=Lägg till servrar
 add_msg=Lägger till $1 ..
 add_gmsg=Lägga till servrar i grupp $1 ..
@@ -45,6 +47,7 @@ add_gerr=Det gick inte att lägga till grupp
 add_echeck=Server $1 har inte mjukvarupaketmodulen
 add_esystem=Servern $1 använder inte samma paketsystem som den här maskinen
 add_ok=Lade till $1 med $2 -paket.
+
 search_title=Paketsökning
 search_nomatch=Inga paket matchade $1 
 search_none=Ingen
@@ -56,6 +59,7 @@ search_return=sökresultat
 search_delete=Avinstallera valda paket från:
 search_selall=Välj alla
 search_invert=Invertera valet
+
 host_title=Hanterad server
 host_header=Mjukvarahanterad serverinformation
 host_name=Värdnamn
@@ -70,6 +74,7 @@ host_count=Paket installerade
 host_os=OS från Webmin
 host_return=serverinformation
 host_system=Paketsystem
+
 edit_title=Redigera paketet
 edit_details=Paketdetaljer från $1 
 edit_desc=Beskrivning
@@ -88,6 +93,7 @@ edit_all=&lt;alla värdar&gt;
 edit_donthave=&lt;värdar som inte har det&gt;
 edit_have=&lt;värdar som har det&gt;
 edit_group=Medlemmar av $1 
+
 list_title=Paketfiler
 list_files=Filer för paket $1 på $2 
 list_path=Väg
@@ -97,6 +103,7 @@ list_type=Typ
 list_size=Storlek
 list_status=Status
 list_ok=OK
+
 refresh_title=Uppdatera paketlistor
 refresh_header=Begär om paketlistor från alla servrar igen.
 refresh_header4=Begär om paketlistor från medlemmar i $2 igen.
@@ -108,6 +115,7 @@ refresh_4=Uppdaterad $1 (inga ändringar)
 refresh_done=.. Gjort
 refresh_del=Borttagen $1 från serverlistan
 refresh_failed=Det gick inte att uppdatera $1 : $2 
+
 delete_err=Det gick inte att ta bort paketet $1 
 delete_epack=Paketet $1 finns inte
 delete_title=Radera paketet
@@ -120,6 +128,7 @@ delete_error=Det gick inte att ta bort från $1 : $2
 delete_success=Raderas från $1.
 delete_done=.. Gjort
 delete_header=Ta bort paket $1 ..
+
 do_title=Installera paketet
 do_header=Installerar $1 på alla värdar ..
 do_header3=Installerar $1 på värdar som inte har det ännu ..
@@ -140,6 +149,7 @@ do_arch=Arkitektur
 do_inst=installerad
 do_none=Ingen
 do_edeleted=Installationsfilen har tagits bort - gå tillbaka till modulindexet och försök igen.
+
 compare_title=Jämför paket
 compare_desc=Detta formulär kan användas för att jämföra paketen som är installerade på två eller flera servrar och hitta eventuella avvikelser mellan tillgängliga versioner eller paket.
 compare_hosts=Servrar att jämföra
@@ -154,6 +164,7 @@ compare_showall=Paket att visa
 compare_showall1=Allt
 compare_showall0=Endast missförhållanden
 compare_got=OK
+
 deletes_err=Det gick inte att ta bort paket
 deletes_enone=Inga paket valda
 deletes_title=Radera paket

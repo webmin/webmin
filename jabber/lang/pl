@@ -17,6 +17,7 @@ index_restartmsg=Kliknij na ten przycisk, aby zastosować aktualną konfiguracj�
 index_comments=Ostrzeżenie - twój plik konfiguracyjny Jabber $1 zawiera komentarze, zostaną one usunięte jeżeli zmienisz konfigurację używając tego modułu.
 index_return=menu Jabber
 index_version=Jabber wersja $1
+
 general_title=Główne opcje
 general_header=Główne opcje serwera Jabber
 general_host=Twoja nazwa hosta serwera
@@ -32,6 +33,7 @@ general_eelogfmt=Brakujący format loga błędów
 general_erlog=Brakujący lub nieprawidłowy plik loga ruchu
 general_erlogfmt=Brakujący format loga ruchu
 general_epidfile=Brakujący lub nieprawidłowy plik ID procesu
+
 messages_title=Wiadomość
 messages_header=Serwer wiadomości Jabber dla klientów
 messages_wsubject=Temat wiadomości powitalnej
@@ -44,6 +46,7 @@ messages_vcard2jud=Wysłać vCard do katalogu użytkownika Jabber?
 messages_err=Błąd zapisywania wiadomości
 messages_evcard=Błędny XML vCard : $1
 messages_etag=Serwer XML vCard nie uruchomił się z &lt;vCard&gt;
+
 modules_title=Moduły Jabber
 modules_desc=Moduły wymienione poniżej są używane w kolejności otrzymywania wiadomości procesu przez menadżer sesji Jabber. Zmień tę listę tylko wtedy, jeżeli wiesz co robisz.
 modules_header=Moduły zarządzania sesją serwera Jabber
@@ -52,6 +55,7 @@ modules_so=Wspólne biblioteki
 modules_err=Błąd zapisywania modułów Jabber
 modules_emod='$1' nie jest poprawną nazwą modułu
 modules_eso=Wspólne biblioteka '$1' nie istnieje
+
 karma_title=Kontrola ruchu Karma
 karma_header=Opcje kontrolowania szybkości ruchu
 karma_rate=Nadmierna obsługa połączeń
@@ -80,6 +84,7 @@ karma_epenalty=Brakująca lub nieprawidłowa penalty periods
 karma_erestore=Brakujące lub nieprawidłowe okresy przywrócenia
 karma_epoints=Brakująca lub nieprawidłowa liczba połączeń
 karma_etime=Brakujący lub nieprawidłowy czas blokowania dla
+
 ips_title=Kontrola dostępu IP
 ips_header=Kontrola dostępu IP serwera Jabber
 ips_allow=Dozwolone adresy IP
@@ -89,10 +94,12 @@ ips_none=Brak
 ips_sel=Wybrane adresy/maski sieci ..
 ips_err=Błąd zapisywania kontroli dostępu IP
 ips_eaddr='$1' nie jest poprawny. Powinien być adres IP lub adres IP/maska sieci
+
 file_title=Edycja pliku konfiguracyjnego
 file_desc=Użyj poniższego formularza, aby bezpośrednio edytować plik konfiguracyjny Jabber. Powinieneś to robić tylko jeżeli rozumiesz format XML pliku konfiguracyjnego.
 file_header=Edycja pliku konfiguracyjnego Jabber
 file_err=Błąd zapisu pliku konfiguracyjnego
+
 admin_title=Użytkownicy administracyjni
 admin_header=Użytkownicy administracyjni serwera
 admin_read=Admini z dostępem odczytu
@@ -100,11 +107,13 @@ admin_write=Admini z dostępem zapisu
 admin_reply=Auto-odpowiedź  do wiadomości admina?
 admin_rsubject=Temat auto-odpowiedzi
 admin_rbody=Wiadomość auto-odpowiedzi
+
 filter_title=Filtry użytkowników
 filter_header=Uprawnienia filtrów użytkownika
 filter_max=Maksymalne reguły filtra
 filter_conds=Dozwolone warunki filtrów
 filter_acts=Dozwolone akcje filtra
+
 restart_err=Błąd zastosowania zmian
 stop_err=Błąd zatrzymywania Jabber
 stop_epid=Nie można odnaleźć procesu Jabber

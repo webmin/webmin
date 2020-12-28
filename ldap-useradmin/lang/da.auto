@@ -19,10 +19,13 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=LDAP-brugere
 index_groups=LDAP-grupper
+
 imap_econn=Kunne ikke oprette forbindelse til IMAP-server $1 
 imap_elogin=Kunne ikke logge ind på IMAP-server $1 som $2 : $3 
 conn_eldap_host=Der blev ikke fundet nogen LDAP-klientkonfigurationsfil på dit system, så LDAP-serveren skal indstilles på siden Module Config
 conn_elogin=Der blev ikke fundet nogen LDAP-klientkonfigurationsfil på dit system, så LDAP-login skal indstilles på siden Module Config
+conn_efile_open=Kunne ikke åbne filen LDAP bind-legitimationsoplysninger:
+
 uedit_cap=Brugerfunktioner
 uedit_samba=Samba login?
 uedit_cyrus=IMAP-server login?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=Sidste adgangskodeopdatering
 uedit_sambapwdcanchange=Adgangskode kan ændres
 uedit_sambabadpasswordcount=Dårligt kodeordantal
 uedit_sambaacctflags=Kontoflager
+
 usave_eadd=Kunne ikke tilføje bruger til LDAP-database : $1 
 usave_emod=Kunne ikke ændre bruger i LDAP-database : $1 
 usave_emoddn=Kunne ikke omdøbe bruger i LDAP-database : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=Brugeren $1 bruger allerede $2 $3
 usave_eattrdupg=Gruppen $1 bruger allerede $2 $3 
 usave_ereal=Manglende rigtigt navn
 usave_equota=Manglende eller ugyldig IMAP-kvote
+
 search_err=Søgning efter $1 under $2 mislykkedes : $3 
+
 gedit_dn=Gruppens LDAP DN
 gedit_return=gruppeoplysninger
 gedit_cap=Gruppefunktioner
 gedit_samba=Samba gruppe?
+
 gsave_egone=Gruppen eksisterer ikke længere!
 gsave_edelete=Kunne ikke slette gruppen fra LDAP-databasen : $1 
 gsave_eadd=Kunne ikke føje gruppe til LDAP-database : $1 
 gsave_emod=Kunne ikke ændre gruppe i LDAP-database : $1 
 gsave_emoddn=Kunne ikke omdøbe gruppe i LDAP-database : $1 
+
 gdel_group=Sletning af LDAP-gruppepost.
+
 udel_pass=Sletning af LDAP-brugerindgang ..
 udel_book=Sletning fra adressebog ..
 udel_imap=Sletning af IMAP-mappe ..
 udel_warnimap=Den eksisterende postpostkasse slettes, når du sletter hjemmekataloget!
 udel_failed=.. mislykkedes!  : $1 
+
 raw_title=LDAP-attributter
 raw_name=Attributnavn
 raw_value=Værdier
 raw_for=For $1 
+
 batch_samba=Opret Samba-konto til nye brugere?
 batch_imap=Opret IMAP-konto til nye brugere?
 batch_descafter3=I <b>oprette</b> og <b>ændre</b> linjer kan du valgfrit tilføje ekstra felter, der indeholder LDAP-attributter i <i>navn</i> = <i>værdi</i> -format, til tildeles de nye eller ændrede brugere.

@@ -15,6 +15,7 @@ index_actform=Forma
 index_actrun=Skrien
 index_actsql=Forma
 index_acted=Atvērt
+
 edit_title=Rediģēšanas komanda
 create_title=Izveidot komandu
 edit_ecannot=Jums nav atļauts rediģēt komandas
@@ -66,6 +67,7 @@ edit_format4=Ja iespējams, lejupielādējiet
 edit_servers=Palaist Webmin serveros
 edit_this=šis serveris
 edit_clone=Klons
+
 save_err=Neizdevās saglabāt komandu
 save_ecannot=Jums nav atļauts rediģēt komandas
 save_ecmd=Nav ievadīta komanda
@@ -78,6 +80,7 @@ save_eusermin=Komandas, kas darbojas citos serveros, nevar palaist no Usermin
 save_eformat=Nederīgs izvades MIME tips
 save_eopts=Trūkst parametra $1 opciju faila
 save_eopts2=Opciju failā vai parametra $1 noklusējuma vērtībā nedrīkst būt :
+
 run_err=Neizdevās izpildīt komandu
 run_ecannot=Jums nav atļauts palaist šo komandu
 run_euser=Trūkst vai nav derīgs lietotājs
@@ -94,6 +97,7 @@ run_eupload=Nav atlasīts neviens augšupielādējams fails
 run_emust=Trūkst parametra “$1” vērtības
 run_timeout=Komandu neizdevās pabeigt pirms $1 sekundes noildzes.
 run_failed=Komanda neizdevās ar izejas statusu $1 
+
 log_modify=Pārveidota komanda $1 
 log_create=Izveidota komanda $1 
 log_delete=Izdzēsta komanda $1 
@@ -102,11 +106,13 @@ log_modify_edit=Pārveidots faila redaktors $1
 log_create_edit=Izveidots failu redaktors $1 
 log_delete_edit=Izdzēsts faila redaktors $1 
 log_save_edit=Saglabāts fails $1 
+
 acl_cmds=Komandas, kuras šis lietotājs var palaist
 acl_call=Visas komandas
 acl_csel=Atlasīts ..
 acl_cexcept=Visi, izņemot atlasītos ..
 acl_edit=Vai var izveidot un rediģēt komandas?
+
 file_ecannot=Jums nav atļauts rediģēt failus
 fcreate_title=Izveidot failu redaktoru
 fedit_title=Rediģēt failu redaktoru
@@ -130,6 +136,7 @@ file_egroup=Trūkst vai nav derīgs grupas nosaukums
 file_eperms=Trūkst vai nav derīgas oktāla atļaujas
 file_envs=Aizstāt vides mainīgos faila nosaukumā?
 file_id=Redaktora ID
+
 view_err=Neizdevās rediģēt failu
 view_ecannot=Jums nav atļauts rediģēt šo failu
 view_title=Rediģēt failu
@@ -138,10 +145,12 @@ view_header=Rediģēt failu $1
 view_ebeforeedit=Pirms rediģēšanas komanda neizdevās : $1 
 view_ebefore=Pirms saglabāšanas komanda neizdevās : $1 
 view_eafter=Komanda pēc saglabāšanas neizdevās : $1 
+
 form_ecannot=Jums nav atļauts palaist šo komandu
 form_title=Izpildīt komandu
 form_exec=Izpildīt
 form_edit=Rediģēt
+
 sql_title1=Izveidot SQL komandu
 sql_title2=Rediģēt SQL komandu
 sql_header=SQL komandas informācija
@@ -157,6 +166,7 @@ sql_err=Neizdevās saglabāt SQL komandu
 sql_esql=Nav ievadīts SQL
 sql_ehost=Trūkst vai nav derīga datu bāzes servera resursdators
 sql_edb=Trūkst vai nav derīgs datu bāzes nosaukums
+
 srun_title=Izpildiet SQL komandu
 srun_err=Neizdevās izpildīt SQL komandu
 srun_edriver=Nevarēja ielādēt DBI draiveri

@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Le script pour demander des ressources à l'autre nœud 
 index_version=Version de pulsation $1 
 index_noversion=Avertissement - La version de Heartbeat installée sur votre système n'a pas pu être détectée automatiquement. Vous devez le définir sur la page de <a href='$1'>configuration du module</a>.
 index_status=Statut du rythme cardiaque
+
 conf_title=Options de configuration
 conf_header=Options de configuration de Heartbeat
 conf_serials=Ports de pulsation série
@@ -54,6 +55,7 @@ conf_auto_on=$ {conf_enabled}
 conf_auto_off=$ {conf_disabled}
 conf_auto_legacy=Mode hérité
 conf_auto_=$ {default}
+
 res_title=Ressources du cluster
 res_node=Noeud principal
 res_ips=Adresses IP
@@ -67,6 +69,7 @@ res_getserv=Obtenir des ressources
 res_hbdown=Battement de coeur
 res_up=UP
 res_down=VERS LE BAS
+
 node_create=Ajouter une ressource de cluster
 node_edit=Modifier la ressource de cluster
 node_header=Détails des ressources de cluster
@@ -83,6 +86,7 @@ node_enone=Noeud principal manquant ou non valide
 node_eip='$1' n'est pas une adresse IP valide
 node_ecidr='$1' n'est pas un CIDR valide
 node_ebroad='$1' n'est pas une adresse de diffusion valide
+
 auth_title=Clés d'authentification
 auth_header=Authentification du nœud de cluster
 auth_mode=Mode d'authentification
@@ -92,6 +96,8 @@ auth_md5=MD5 avec mot de passe
 auth_err=Échec de l'enregistrement des clés d'authentification
 auth_emd5=Mot de passe MD5 manquant ou invalide
 auth_esha1=Mot de passe SHA1 manquant ou invalide
+
 start_err=Impossible de démarrer le rythme cardiaque
+
 apply_err=Échec de l'application des modifications
 apply_epid=Le processus n'est plus en cours d'exécution

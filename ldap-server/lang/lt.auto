@@ -16,6 +16,7 @@ index_setupdesc=Jūsų LDAP serverio duomenų bazėje dar nėra šaknies DN $1, 
 index_setup=Sukurkite šakninį DN
 index_permsdesc=LDAP serverio duomenų kataloge $1 yra failų, kurie nepriklauso tinkamam vartotojui $2, o tai reiškia, kad mažai tikėtina, kad jis tinkamai įsijungs. Tačiau „Webmin“ gali tai išspręsti spustelėdamas žemiau esantį mygtuką.
 index_perms=Pataisykite nuosavybės teises
+
 connect_eserver=LDAP serverio $1 nėra
 connect_euser=Nėra vartotojo prisijungti, kaip buvo sukonfigūruota
 connect_epass=Nebuvo sukonfigūruotas joks prisijungimo slaptažodis
@@ -28,6 +29,7 @@ connect_eldap=Nepavyko prisijungti prie $2 prievado LDAP serverio $1
 connect_essl=Nepavyko pradėti TLS šifravimo naudojant LDAP serverį $1 : $2 
 connect_elogin=Nepavyko prisijungti prie $1 LDAP serverio kaip $2 : $3 
 connect_cpan=Galite turėti <tt>$1</tt> „Perl“ modulį <a href='$2'>automatiškai įdiegtą</a> iš CPAN.
+
 slapd_title=„OpenLDAP“ serverio konfigūracija
 ldif_title=„OpenLDAP“ serverio konfigūracija
 slapd_header=Visuotinės LDAP serverio parinktys
@@ -76,6 +78,7 @@ slapd_protos=LDAP jungtys, kurias reikia priimti
 slapd_ldap=LDAP tinkle
 slapd_ldaps=LDAP per SSL
 slapd_ldapi=„Unix“ lizdo failas
+
 schema_title=Tvarkyti schemą
 schema_file=vardas
 schema_desc=apibūdinimas
@@ -93,6 +96,7 @@ schema_edesc=Šis puslapis leidžia rankiniu būdu redaguoti LDAP schemos failą
 schema_return=schemų sąrašas
 schema_emove=Nepavyko rasti schemos failo, kurį būtų galima perkelti!
 schema_ecannot=Jums neleidžiama valdyti LDAP schemos
+
 acl_title=LDAP prieigos kontrolė
 acl_ecannot=Jums neleidžiama konfigūruoti LDAP prieigos valdymo
 acl_what=Objektai
@@ -103,6 +107,7 @@ acl_none=Dar nėra apibrėžtos prieigos kontrolės taisyklės. Visi objektai LD
 acl_delete=Ištrinti pasirinktas taisykles
 acl_add=Pridėkite naują prieigos kontrolės taisyklę.
 acl_return=prieigos kontrolės taisyklės
+
 browser_title=Naršykite duomenų bazėje
 browser_econn=Negalima naudoti LDAP naršyklės : $1 
 browser_ecannot=Jums neleidžiama naršyti LDAP duomenų bazėje
@@ -136,24 +141,30 @@ browser_nomatch=Nė vienas objektas neatitiko jūsų paieškos pagal $1.
 browser_search=Rasti objektus, atitinkančius :
 browser_search2=Rodomi atitinkantys objektai :
 browser_sok=Paieška
+
 save_err=Nepavyko pakeisti atributo
 save_ebase=Nepavyko gauti objekto $1 iš duomenų bazės
 save_emodify=$2 LDAP modifikacija $1 nepavyko : $3 
 save_enone=Neįvesta reikšmių
+
 add_err=Nepavyko pridėti atributo
 add_eadd=Trūksta arba netinkamas atributo pavadinimas
 add_evalue=Trūksta vertės
 add_emodify=Nepavyko pridėti $2 prie LDAP prie $1 : $3 
+
 delete_err=Nepavyko pašalinti atributų
 delete_enone=Nepasirinkta
 delete_emodify=$2 LDAP ištrinti iš $1 nepavyko : $3 
+
 sdelete_err=Nepavyko ištrinti objektų
 sdelete_edn=Objektas $1 nerastas
 sdelete_edel=Nepavyko ištrinti $1 LDAP : $2 
+
 rename_err=Nepavyko pervardyti objekto
 rename_eget=Nepavyko rasti objekto su DN $1 
 rename_enew=Naujas vardas neatrodo galiojantis
 rename_erename=Nepavyko atnaujinti LDAP į $2 iš $1 : $3 
+
 oadd_title=Sukurti objektą
 oadd_header=Nauja LDAP objekto informacija
 oadd_base=Tėvų objektas DN
@@ -170,6 +181,7 @@ oadd_eget2=Nepavyko patikrinti susidūrimo su $1 : $2
 oadd_eclash=Objektas su DN $1 jau yra
 oadd_eadd=Nepavyko pridėti LDAP $1 : $2 
 oadd_err=Nepavyko sukurti naujo objekto
+
 create_title=Sukurti medį
 create_ecannot=Jums neleidžiama kurti naujo medžio
 create_desc=Šis puslapis buvo patogus būdas sukurti DN, kuris bus naujo medžio pagrindas duomenų bazėje. Tai taip pat gali sukurti vartotojo pavyzdį arba el. Pašto slapyvardį po medžiu kaip savo objektų šabloną.
@@ -191,18 +203,23 @@ create_done=.. padaryta
 create_doingex=Objekto su DN $1 pavyzdžio kūrimas.
 create_edoingex=.. nepavyko: $1. Tačiau medis vis tiek gali būti naudojamas.
 create_eoc=Nepavyko rasti tinkamos objekto klasės naujam DN
+
 eunknown=Nežinoma klaida
+
 apply_err=Nepavyko pritaikyti konfigūracijos
 apply_ecmd=$1 nepavyko : $2 
 apply_ecannot=Jums neleidžiama naudoti konfigūracijos
+
 stop_err=Nepavyko sustabdyti LDAP serverio
 stop_ecmd=$1 nepavyko : $2 
 stop_egone=Nebėra!
 stop_ekill=Nužudymo procesas nepavyko : $1 
 stop_ecannot=Jums neleidžiama sustabdyti LDAP serverio
+
 start_err=Nepavyko paleisti LDAP serverio
 start_ecmd=$1 nepavyko : $2 
 start_ecannot=Jums neleidžiama paleisti LDAP serverio
+
 log_create_dn=Sukurtas objektas $1 
 log_delete_dn=Ištrintas objektas $1 
 log_rename_dn=Pervardytas objektas $1 
@@ -234,6 +251,7 @@ log_up_access=Perkelta prieigos kontrolės taisyklė $1
 log_down_access=Perkelta $1 prieigos kontrolės taisyklė žemyn
 log_delete_accesses=Ištrintos $1 prieigos kontrolės taisyklės
 log_all=visi objektai
+
 gencert_title=Generuokite SSL sertifikatą
 gencert_header=Nauja SSL sertifikato informacija
 gencert_create=Sukurti sertifikatą
@@ -245,7 +263,9 @@ gencert_dir=Katalogas
 gencert_err=Nepavyko sugeneruoti sertifikato
 gencert_edest=Paskirties katalogo nėra
 gencert_epath=Sertifikatai ir pagrindiniai failai LDAP serverio konfigūracijoje turi būti absoliutūs keliai
+
 perms_err=Nepavyko nustatyti failo nuosavybės
+
 acl_slapd=Ar galima sukonfigūruoti LDAP serverį?
 acl_ldif=Ar galima sukonfigūruoti LDAP serverį?
 acl_schema=Ar gali valdyti schemą?
@@ -254,6 +274,7 @@ acl_browser=Ar galite naršyti ir redaguoti duomenų bazę?
 acl_create=Ar galite sukurti naują medį?
 acl_start=Ar galima paleisti ir sustabdyti LDAP serverį?
 acl_apply=Ar galima pritaikyti konfigūracijos pakeitimus?
+
 access_desc=$2 pagal $1 
 access_self=savarankiškai
 access_users=autentifikuoti vartotojai
@@ -273,6 +294,7 @@ access_lcompare=Palyginkite
 access_lsearch=Paieška
 access_lread=Skaitykite
 access_lwrite=Rašyk
+
 eacl_title1=Sukurti prieigos kontrolės taisyklę
 eacl_title2=Redaguoti prieigos kontrolės taisyklę
 eacl_header=LDAP duomenų bazės prieigos kontrolės taisyklės informacija

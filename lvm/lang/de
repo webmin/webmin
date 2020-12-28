@@ -42,6 +42,7 @@ index_lvused=Speicher benutzt
 index_lvuse=Benutzt für
 index_snapof=(Snapshot von $1)
 index_thin=LVM Thin-Pool für $1 LVs
+
 lv_edit=Editiere logisches Volume
 lv_edit_snap=Editiere Snapshot
 lv_create=Erstelle logisches Volume
@@ -128,6 +129,7 @@ lv_pvfrom=Verschiebe Blöcke vom physischen Datenträger
 lv_pvto=Auf physikalischem Volume
 lv_moveok=Verschiebe Blöcke
 lv_return=logisches Volumen
+
 mkfs_title=Erstelle Dateisystem
 mkfs_desc=Mit diesem Formular können Sie ein neues $2 ($1)-Dateisystem auf dem logischen Volume $3 erstellen. Alle vorhandenen Daten werden gelöscht.
 mkfs_header=Optionen des neues Dateisystems
@@ -135,6 +137,7 @@ mkfs_err=Fehlgeschlagen Dateisystem zu erstellen
 mkfs_exec=Führe Befehl $1 aus ..
 mkfs_failed=...Befehl fehlgeschlagen!
 mkfs_ok=.. Befehl komplett.
+
 resize_title=Logisches Volume anpassen
 resize_mesg=Die $1 Dateisystem auf diesem logischen Volumes kann nicht verändert werden. Wenn Sie nur den logischen Datenträger ändern, müssen Sie das Dateisystem neu erstellen, das alle Daten löscht.
 resize_mesg2=Webmin weiß nicht, welche Art von Dateisystem auf diesem Logical Volume ist, falls vorhanden. Wenn Sie das logische Volume ändern möchten, müssen Sie das Dateisystem neu erstellen, welche alle Daten darauf löscht.
@@ -142,8 +145,10 @@ resize_fs=Es gab einen Fehler bei der Größenänderung des $1 Dateisystems auf 
 resize_ok=Logisches Volume anpassen
 resize_emounted=Das Dateisystem auf diesem logischen Volume kann nicht verändert werden, während es gemountet ist
 resize_emounted2=Das Dateisystem auf diesem logischen Volume kann nicht geschrumpft werden, während es montiert wurde
+
 init_title=Aktiviere LVM
 init_cmd=Laufender Befehl $1 ..
+
 pv_edit=Editiere physisches Volume
 pv_create=Physisches Volume hinzufügen
 pv_vg=In Volumegruppe $1
@@ -170,6 +175,7 @@ pv_eother=Fehlendes oder ungültige Disk Gerät
 pv_raid=RAID Gerät $1
 pv_lvs=Aufteilung nach logischen Volumes
 pv_egone=Physisches Volume existiert nicht länger!
+
 vg_edit=Editiere Volumegruppe
 vg_create=Erstelle Volumegruppe
 vg_name=Volumegruppenname
@@ -188,11 +194,13 @@ vg_deleteok=Lösche jetzt
 vg_ename=Fehlender oder ungültiger Volumegruppenname
 vg_epesize=Fehlende oder ungültige Zuweisungs-Blockgröße
 vg_egone=Volumegruppe existiert nicht länger!
+
 pvmove_err=Fehlgeschlagen logisches Volume zu verschieben
 pvmove_title=Verschiebe logisches Volume
 pvmove_start=Verschiebe logisches Volume $1 von $2 nach $3 ..
 pvmove_failed=.. verschieben fehlgeschlagen!
 pvmove_done=.. verschieben komplett
+
 thin_title=Erstelle Thin-Pool
 thin_desc=A thin pool is a pair of LVs that can be used to create additional LVs that can be larger than the available extents. Space is only consumed when needed, rather than when the LVs inside the pool are created. WARNING - Any data on the selected LVs will be lost!
 thin_header=Neuer Thin-Pool Details
@@ -204,6 +212,7 @@ thin_err=Fehler beim Erstellen eines Thin-Pools
 thin_esame=Beide ausgewählten LVs sind gleich
 thin_edata=Die ausgewählten Daten LV werden bereits verwendet
 thin_emetadata=Die ausgewählten Metadaten LV werden bereits verwendet
+
 log_create_vg=Volumegruppe $1 erstellt
 log_modify_vg=Volumegruppe $1 modifiziert
 log_delete_vg=Volumegruppe $1 gelöscht
@@ -216,4 +225,5 @@ log_create_pv=Physisches Volume $1 nach VG $2 hinzugefügt
 log_modify_pv=Physikalisches Volume $1 in VG $2 modifiziert
 log_delete_pv=Physisches Volume $1 von VG $2 entfernt
 log_resize_pv=Physisches Volume $1 in VG $2 geändert
+
 blocks=Blöcke

@@ -17,6 +17,7 @@ index_restartmsg=Fes clic sobre aquest botó per aplicar la configuració actual
 index_comments=Atenció - el fitxer de configuració $1 de Jabber conté comentaris, que s'eliminaran si es fan canvis de configuració utilitzant aquest mòdul.
 index_return=al menú de Jabber
 index_version=Versió Jabber $1
+
 general_title=Opcions Generals
 general_header=Opcions globals del servidor Jabber
 general_host=El nom del teu servidor
@@ -32,6 +33,7 @@ general_eelogfmt=Hi falta el format del registre d'errors o bé és invàlid
 general_erlog=Hi falta el fitxer de registre de trànsit o bé és invàlid
 general_erlogfmt=Hi falta el format dels registres de trànsit o bé és invàlid
 general_epidfile=Hi falta el fitxer d'ID de procés o bé és invàlid
+
 messages_title=Missatges
 messages_header=Missatge del servidor Jabber per als clients
 messages_wsubject=Assumpte del missatge de benvinguda
@@ -44,6 +46,7 @@ messages_vcard2jud=Envia la vCard al directori d'usuari de Jabber
 messages_err=No s'han pogut desar els missatges
 messages_evcard=XML de vCard invàlid: $1
 messages_etag=El XML de la vCard del servidor no comença amb &lt;vCard&gt;
+
 modules_title=Mòduls de Jabber
 modules_desc=Els mòduls llistats a sota s'utilitzen per tal de processar els missatges rebuts pel gestor de sessions de Jabber. Canvia aquesta llista només si saps el que estàs fent.
 modules_header=Mòduls de gestió de sessió del servidor Jabber
@@ -52,6 +55,7 @@ modules_so=Llibreria compartida
 modules_err=No s'han pogut desar els mòduls de Jabber
 modules_emod='$1' no és un nom de mòdul vàlid
 modules_eso=La llibreria compartida '$1' no existeix
+
 karma_title=Control de Trànsit Karma
 karma_header=Opcions de control de la cadència de trànsit
 karma_rate=Gestió de connexions excessives
@@ -80,6 +84,7 @@ karma_epenalty=Hi falten els períodes de càstig o bé són invàlids
 karma_erestore=Hi falten els períodes de restauració o bé són invàlids
 karma_epoints=Hi falta el nombre de connexions o bé és invàlid
 karma_etime=Hi falta el temps de bloqueig o bé és invàlid
+
 ips_title=Control d'Accés IP
 ips_header=Control d'accés IP al servidor Jabber
 ips_allow=IPs de clients permeses
@@ -89,10 +94,12 @@ ips_none=Cap
 ips_sel=Adreces/màscares llistades...
 ips_err=No s'ha pogut desar el control d'accés IP
 ips_eaddr='$1' no és una adreça IP o adreça/màscara IP vàlida
+
 file_title=Edició de la Configuració
 file_desc=Utilitza el formulari de sota per editar directament el fitxer de configuració de Jabber. Això ho pots fer només si entens el format de configuració XML.
 file_header=Edita el fitxer de configuració de Jabber
 file_err=No s'ha pogut desar el fitxer de configuració
+
 admin_title=Usuaris Administradors
 admin_header=Usuaris administradors del servidor
 admin_read=Administradors amb accés de lectura
@@ -100,11 +107,13 @@ admin_write=Administradors amb accés d'escriptura
 admin_reply=Respon automàticament els missatges d'administració
 admin_rsubject=Tema de l'autoresposta
 admin_rbody=Missatge d'autoresposta
+
 filter_title=Filtres d'Usuari
 filter_header=Permisos de filtres d'usuari
 filter_max=Nombre màxim de regles filtratge
 filter_conds=Condicions de filtratge permeses
 filter_acts=Accions de filtratge permeses
+
 restart_err=No s'han pogut aplicar els canvis
 stop_err=No s'ha pogut aturar Jabber
 stop_epid=No s'ha pogut trobar el procés de Jabber

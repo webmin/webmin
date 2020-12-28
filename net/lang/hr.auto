@@ -7,6 +7,7 @@ index_delete2=Brisanje odabranih sučelja
 index_delete3=Izbrišite i primijenite odabrana sučelja
 index_apply2=Primjena odabranih sučelja
 index_vmin=Virtualmin
+
 ifcs_title=Mrežna sučelja
 ifcs_now=Trenutno aktivan
 ifcs_activedesc=Sučelja navedena u ovoj tablici trenutno su aktivna u sustavu. U većini slučajeva trebali biste ih urediti na kartici <b>Aktivirano pri pokretanju</b>.
@@ -55,6 +56,7 @@ ifcs_linkyes=povezan
 ifcs_linkno=Ne-spojeni
 ifcs_speed=Brzina sučelja
 ifcs_duplex=, $1 dupleks
+
 aifc_create=Stvorite aktivno sučelje
 aifc_edit=Uređivanje aktivnog sučelja
 aifc_desc1=Aktivni parametri sučelja
@@ -79,6 +81,7 @@ aifc_eaddress6=IPv6 adresa u retku $1 nije valjana
 aifc_enetmask6=Mreža maske IPv6 u retku $1 mora biti cijeli broj između 1 i 128
 aifc_eclash6=IPv6 adresa u retku $1 već koristi sučelje $2 
 aifc_eaddresses6=IPv6 adrese nisu unesene
+
 bifc_create=Stvorite Bootup sučelje
 bifc_act=Aktivirati pri pokretanju?
 bifc_edit=Uredi Bootup sučelje
@@ -110,6 +113,7 @@ bifc_bridgestp=Protokol drveća koja se proteže
 bifc_bridgefd=Odgoda prema naprijed
 bifc_bridgewait=Odgodite kako bi postali dostupni
 bifc_ebond=Sučelje obveznice mora biti broj
+
 bonding_add=Dodajte novo vezivno sučelje.
 bonding_create=Stvorite sučelje za povezivanje
 bonding_teamparts=Partneri u timu
@@ -121,11 +125,14 @@ bonding_miimon=Mii-Interval praćenja
 bonding_miimondesc=(Ostavite prazno da biste onemogućili nadgledanje veza)
 bonding_updelay=Updelay
 bonding_downdelay=Downdelay
+
 vlan_add=Dodajte Vlan označeno sučelje
 vlan_physical=Fizički uređaj
 vlan_id=Vlan ID
 vlan_create=Napravite VLAN sučelje
+
 bridge_create=Stvaranje sučelja mosta
+
 routes_title=Usmjeravanje i prolazi
 routes_boot=Konfiguracija ruta aktivirana je u <i>vrijeme dizanja</i>
 routes_now=Konfiguracija ruta trenutno je aktivirana
@@ -194,6 +201,7 @@ routes_tabboot=Konfiguracija vremena podizanja sustava
 routes_tabactive=Aktivna konfiguracija
 routes_descactive=Ovaj odjeljak navodi rute koje je sustav trenutno konfigurirao te vam omogućuje dodavanje ili uklanjanje aktivnih ruta na nekim sustavima. Pazite na to, jer neispravne promjene mogu oduzeti sustav koji pokreće Webmin iz ostatka mreže.
 routes_descboot=Ovaj odjeljak vam omogućuje konfiguriranje ruta koje se aktiviraju pri pokretanju sustava ili kada su mrežne postavke u potpunosti primijenjene.
+
 dns_title=Ime i DNS klijenta
 dns_options=Opcije DNS klijenta
 dns_hostname=Ime računala
@@ -211,6 +219,7 @@ dns_edomain='$1' nije valjano ime domene
 dns_esearch=Nijedna domena za pretraživanje nije dana
 dns_hoststoo=Ažurirati ime hosta u adresama domaćina ako se promijeni?
 dns_dhcp=Ime hosta postavlja DHCP poslužitelj?
+
 hosts_title=Adrese domaćina
 hosts_active=Omogućeno?
 hosts_ip=IP adresa
@@ -222,6 +231,7 @@ hosts_detail=Domaćin i adrese
 hosts_return=popis adresa glavnog računala
 hosts_ecannot=Nije vam dopušteno uređivanje adresa domaćina
 hosts_delete=Izbrišite odabrane adrese hosta
+
 ipnodes_title=IPv6 adrese domaćina
 ipnodes_ip=IPv6 adresa
 ipnodes_host=Nazivi hosta
@@ -233,6 +243,7 @@ ipnodes_return=IPv6 popis adresa računala
 ipnodes_ecannot=Nije vam dopušteno uređivanje IPv6 adresa glavnog računala
 ipnodes_none=Još nije definirana IPv6 adresa domaćina.
 ipnodes_delete=Izbriši odabrane adrese IPv6 domaćina
+
 log_create_host=Izrađena adresa domaćina $1 
 log_delete_host=Izbrisana adresa računala $1 
 log_modify_host=Izmijenjena adresa domaćina $1 
@@ -256,6 +267,7 @@ log_apply_bfics=Aktivirano $1 vrijeme pokretanja
 log_create_route=Izrađena je aktivna ruta za $1 
 log_create_defroute=Stvorena aktivna zadana ruta
 log_delete_routes=Izbrisani su $1 aktivne rute
+
 acl_ifcs=Mogu li uređivati mrežna sučelja?
 acl_routes=Mogu li uređivati usmjeravanje i pristupnike?
 acl_dns=Mogu li urediti postavke klijenta DNS?
@@ -273,6 +285,7 @@ acl_virt=Mogu li dodati virtualna sučelja?
 acl_delete=Mogu li izbrisati sučelja?
 acl_hide=Sakriti sučelja koja ne mogu uređivati?
 acl_sysinfo=Prikažite raspoloživa mrežna sučelja na nadzornoj ploči
+
 interfaces_title1=Odaberite sučelja. ..
 interfaces_all=Sva sučelja. ..
 interfaces_sel=Odabrana sučelja
@@ -280,7 +293,9 @@ interfaces_ok=u redu
 interfaces_cancel=Otkazati
 interfaces_clear=Čisto
 interfaces_title2=Odaberite korisnika. ..
+
 apply_ecannot=Nije vam dopušteno primijeniti konfiguraciju
+
 mod_egone=Sučelje više nije aktivno!
 mod_title=Aktivno sučelje
 mod_desc=Sučelje $1 koristi se za $2 i tako se ne može upravljati pomoću ovog modula.
@@ -292,6 +307,7 @@ mod_pptpc=PPTP veza $1
 mod_zones=virtualno sučelje za zonu <tt>$1</tt>
 mod_virtualmin=virtualni poslužitelj <tt>$1</tt>
 mod_reseller=virtualni prodavač <tt>$1</tt>
+
 range_edit=Uredi raspon adresa
 range_create=Stvorite raspon adresa
 range_header=Opcije sučelja raspona adresa
@@ -307,13 +323,17 @@ range_eend=Nedostaje ili nije važeća neispravna IP adresa
 range_enum=Nedostaje ili ne numerički prvi broj virtualnog sučelja
 range_eclass=Početna i završna adresa moraju biti unutar iste mreže C klase
 range_ebefore=Završna adresa mora biti veća od početne adrese
+
 chooser_any=&lt;Bilo&gt;
 chooser_other=Ostali ..
+
 dafics_err=Deaktiviranje sučelja nije uspjelo
 daifcs_enone=Nijedna nije odabrana
 daifcs_egone=Sučelje više ne postoji!
+
 dbifcs_err=Brisanje sučelja nije uspjelo
 dbifcs_err2=Aktiviranje sučelja nije uspjelo
+
 hdelete_err=Brisanje adresa računala nije uspjelo
 hdelete_enone=Nijedna nije odabrana
 idelete_err=Brisanje IPv6 adresa glavnog računala nije uspjelo

@@ -19,6 +19,7 @@ index_refsel=Làm mới được chọn
 index_group=Thành viên của $1 
 index_tmpls=Chỉnh sửa mẫu email
 index_tmplsdesc=Xem và chỉnh sửa các mẫu được sử dụng để tạo thư email được gửi khi các dịch vụ được giám sát ngừng hoạt động.
+
 type_apache=Máy chủ web Apache
 type_inetd=Máy chủ Internet và RPC
 type_xinetd=Máy chủ Internet mở rộng
@@ -73,8 +74,10 @@ type_alive=Hệ thống sống
 type_rssh=SSH từ xa
 type_slapd=Máy chủ LDAP
 type_ldap=Kết nối LDAP
+
 mon_create=Tạo màn hình
 mon_edit=Chỉnh sửa màn hình
+mon_virtualmin=Cảnh báo! Màn hình này được liên kết với miền Virtualmin $1, do đó bạn không nên chỉnh sửa hoặc xóa tại đây.
 mon_header=Giám sát chi tiết
 mon_header2=Các lệnh để chạy
 mon_header3=Tùy chọn dịch vụ được giám sát
@@ -138,6 +141,7 @@ mon_changes0=Hiển thị mọi loại sự kiện
 mon_changes1=Chỉ hiển thị thay đổi
 mon_all=Hiển thị tất cả các sự kiện lịch sử
 mon_nochanges=Không có thay đổi trạng thái xảy ra trong các sự kiện lịch sử $1 vừa qua.
+
 sched_title=Giám sát theo lịch trình
 sched_header=Tùy chọn giám sát nền theo lịch trình
 sched_mode=Kiểm tra theo lịch trình kích hoạt?
@@ -184,16 +188,19 @@ sched_subject0=Không có (cảnh báo là trong cơ thể)
 sched_subject1=Văn bản cảnh báo (để trống cơ thể)
 sched_subject2=Văn bản tùy chỉnh
 sched_esubject=Thiếu chủ đề tin nhắn SMS
+
 up_since=Lên từ $1 
 depends_mod=Mô-đun $1 không được cài đặt trên hệ thống của bạn
 depends_os=Mô-đun $1 không được hỗ trợ trên hệ thống của bạn
 depends_remote=Mô-đun $1 không được hỗ trợ trên máy chủ $2 
+
 tcp_host=Máy chủ để kết nối với
 tcp_port=Cổng để kết nối với
 tcp_alarm=Hết thời gian kết nối
 tcp_ehost=Tên máy chủ bị thiếu hoặc không hợp lệ
 tcp_eport=Số cổng bị thiếu hoặc không hợp lệ
 tcp_ealarm=Hết thời gian chờ kết nối bị thiếu hoặc không hợp lệ
+
 http_url=URL để yêu cầu
 http_alarm=Hết thời gian kết nối
 http_eurl=URL bị thiếu hoặc không hợp lệ
@@ -208,11 +215,13 @@ http_regexp=Trang phải phù hợp với regrec
 http_eregexp=Không có biểu thức chính quy cho trang để khớp
 http_none2=Không khớp
 http_ehead=Phương thức yêu cầu CHÍNH không thể được sử dụng khi kiểm tra biểu thức chính quy
+
 ping_host=Lưu trữ để ping
 ping_wait=Thời gian chờ phản hồi
 ping_ehost=Tên máy chủ bị thiếu hoặc không hợp lệ
 ping_ewait=Thời gian chờ thiếu hoặc không hợp lệ
 ping_econfig=Không có lệnh ping nào được đặt trong Module Config
+
 proc_pid=Chạy với PID $1 
 proc_cmd=Lệnh kiểm tra
 proc_not=Thất bại nếu quá trình là
@@ -224,6 +233,7 @@ proc_ethresh=Số lượng quá trình bị thiếu hoặc không hợp lệ
 proc_asuser=Chạy như người dùng
 proc_anyuser=Bất kỳ người dùng
 proc_easuser=Người dùng cho quá trình chạy như không tồn tại
+
 exec_cmd=Lệnh chạy
 exec_mode=Kiểm tra trạng thái thoát
 exec_mode0=Màn hình bị lỗi nếu lệnh thất bại
@@ -235,6 +245,7 @@ exec_noregexp=Đừng kiểm tra
 exec_remode=Kiểm tra lại
 exec_remode0=Thất bại nếu đầu ra không khớp
 exec_remode1=Thất bại nếu đầu ra không khớp
+
 file_file=Tệp, thư mục hoặc mẫu để kiểm tra
 file_test=Kiểm tra để thực hiện
 file_test_0=Phải tồn tại
@@ -253,6 +264,7 @@ file_group=Nhóm tệp phải là
 file_nocheck=Bất cứ điều gì
 file_perms=Quyền hạn bát phân phải là
 file_eperm=Các tệp có quyền sai : $1 
+
 traffic_iface=Giao diện giám sát
 traffic_bytes=Byte tối đa/giây
 traffic_dir=Hướng giám sát
@@ -262,6 +274,7 @@ traffic_dir2=Chỉ đi
 traffic_desc=Màn hình này theo dõi lưu lượng mạng trên một giao diện đã chọn và hiển thị màn hình xuống nếu lưu lượng vượt quá số byte mỗi giây được nhập bên dưới. Điều này chỉ thực sự hoạt động tốt nếu tính năng giám sát theo lịch được bật ở một khoảng thời gian ngắn, như cứ sau 5 phút.
 traffic_eifaces=Hệ điều hành của bạn không có tệp/Proc/net/dev
 traffic_ebytes=Thiếu hoặc không hợp lệ số byte/giây
+
 space_fs=Hệ thống tập tin để kiểm tra
 space_min2=Không gian trống tối thiểu
 space_mode0=Kích thước tuyệt đối
@@ -277,6 +290,7 @@ space_ierr=Chỉ $1 inodes miễn phí
 space_merr=Chỉ $1 dung lượng trống
 space_perr=Chỉ $1% miễn phí
 space_dferr=Không thể lấy kích thước hệ thống tập tin
+
 load_time=Tải trung bình để kiểm tra
 load_1=1 phút
 load_5=5 phút
@@ -285,6 +299,7 @@ load_max=Tải trung bình tối đa
 load_emax=Thiếu trung bình tải tối đa hoặc không hợp lệ
 load_ecmd=Không tìm thấy lệnh <tt>thời gian hoạt động</tt> trên hệ thống của bạn
 load_efmt=Không thể phân tích cú pháp đầu ra của lệnh <tt>thời gian hoạt động</tt>
+
 log_create=Đã tạo màn hình $1 
 log_modify=Màn hình đã sửa đổi $1 
 log_delete=Đã xóa màn hình $1 
@@ -295,10 +310,14 @@ log_tmpl_modify=Mẫu email đã sửa đổi $1
 log_tmpl_delete=Đã xóa mẫu email $1 
 log_tmpl_deletes=Đã xóa mẫu $1 email
 log_refresh=Trạng thái màn hình được làm mới
+
 acl_edit=Có thể chỉnh sửa và tạo màn hình?
 acl_sched=Có thể thay đổi theo dõi lịch trình?
+
 change_file=Tệp hoặc thư mục để theo dõi (thất bại nếu thay đổi)
+
 jabber_eparser=Mô-đun Perl $1 không được cài đặt trên hệ thống của bạn.
+
 memory_min2=Bộ nhớ thực tối thiểu miễn phí
 memory_emin=Bộ nhớ thực miễn phí hoặc không hợp lệ
 memory_eproc=Webmin không biết cách kiểm tra bộ nhớ trống trên hệ điều hành của bạn
@@ -308,7 +327,9 @@ memory_freelow=Chỉ có $1 bộ nhớ thực miễn phí
 memory_freelowswap=Chỉ có $1 bộ nhớ ảo miễn phí
 memory_minswap=Bộ nhớ ảo miễn phí tối thiểu
 memory_eminswap=Bộ nhớ ảo miễn phí hoặc không hợp lệ
+
 proftpd_etype=Màn hình này không thể được sử dụng khi ProFTPD chạy độc lập
+
 mailserver_to=Gửi email đến địa chỉ
 mailserver_timeout=Thời gian chờ và khoảng thời gian
 mailserver_units_0=Giây
@@ -316,22 +337,28 @@ mailserver_units_1=Phút
 mailserver_units_2=Giờ
 mailserver_units_3=Ngày
 mailserver_desc=Địa chỉ bên dưới phải là thư trả lời tự động trả lời địa chỉ nguồn có cùng dòng Chủ đề :.
+
 oldfile_file=Tệp để theo dõi (không thành công nếu không thay đổi)
 oldfile_diff=Thất bại nếu không thay đổi cho
 oldfile_secs=giây
+
 raid_device=Thiết bị RAID
 raid_edevice=Không có thiết bị RAID nào được chọn
 raid_bad=Phát hiện đĩa xấu
 raid_resync=Hiện đang đồng bộ lại
 raid_notfound=Không tìm thấy thiết bị RAID $1 
 raid_other=Khác ..
+
 iface_iface=Giao diện để kiểm tra
+
 init_action=Hành động để kiểm tra
 init_eaction=Không có hành động nào được chọn
+
 refresh_title=lam mơi tâm trạng
 refresh_doing=Làm mới trạng thái của tất cả các màn hình ..
 refresh_doing2=Làm mới trạng thái của $1 màn hình đã chọn ..
 refresh_done=.. làm xong.
+
 sensors_name=Cảm biến để kiểm tra
 sensors_value=Thất bại khi
 sensors_value0=Hệ thống chỉ ra cảnh báo
@@ -342,6 +369,7 @@ sensors_none=Không có cảm biến được phát hiện trên hệ thống c�
 sensors_cur=$1 (hiện tại $2 $3)
 sensors_emin=Thiếu hoặc giá trị tối thiểu không hợp lệ
 sensors_emax=Thiếu hoặc không hợp lệ giá trị tối đa
+
 nut_ups=NUT UPS để kiểm tra
 nut_name=Thuộc tính để kiểm tra
 nut_value=Thất bại khi
@@ -352,6 +380,7 @@ nut_eups=Không có USP để kiểm tra đã nhập
 nut_cur=$1 (hiện tại $2)
 nut_emin=Thiếu hoặc giá trị tối thiểu không hợp lệ
 nut_emax=Thiếu hoặc không hợp lệ giá trị tối đa
+
 mailq_system=Máy chủ thư
 mailq_qmailadmin=Qmail
 mailq_postfix=Hậu tố
@@ -360,6 +389,7 @@ mailq_size=Kích thước hàng đợi thư tối đa
 mailq_esize=Kích thước hàng đợi tối đa bị thiếu hoặc không hợp lệ
 mailq_toomany=Xuống - $1 tin nhắn được xếp hàng
 mailq_ok=Lên - $1 tin nhắn được xếp hàng
+
 dns_server=máy chủ DNS
 dns_host=Tên máy chủ để tra cứu
 dns_address=Địa chỉ IP dự kiến
@@ -367,6 +397,7 @@ dns_eserver=Máy chủ DNS bị thiếu hoặc không hợp lệ
 dns_ehost=Tên máy chủ bị thiếu hoặc không hợp lệ để tra cứu
 dns_eaddress=Địa chỉ IP dự kiến bị thiếu hoặc không hợp lệ
 dns_ecmds=Cả các lệnh <tt>nslookup</tt> hoặc <tt>dig</tt> đều được cài đặt trên hệ thống của bạn
+
 monitor_sub_down=$1 giảm trên $2 
 monitor_pager_down=$1 : "$2" giảm $3 
 monitor_snmp_down= $1:$2 
@@ -398,8 +429,10 @@ monitor_run1=Chạy $1 trên $2 ..
 monitor_run2=Chạy $1 ..
 monitor_runerr=Không thể chạy $1 trên $2 : $3 
 monitor_email_stat=Trạng thái hiện tại: $1 
+
 deletes_egone=Một trong những màn hình được chọn không còn tồn tại
 deletes_enone=Không có màn hình được chọn
+
 ftp_host=Máy chủ FTP
 ftp_port=Cổng FTP
 ftp_user=Đăng nhập với tư cách người dùng
@@ -416,6 +449,7 @@ ftp_econn=Kết nối FTP TLS không thành công
 ftp_econn2=Kết nối FTP TLS không thành công : $1 
 ftp_elogin=Đăng nhập FTP TLS không thành công : $1 
 ftp_etlsfile=Tải xuống TLS FTP không thành công : $1 
+
 query_driver=Kiểu cơ sở dữ liệu SQL
 query_db=Tên cơ sở dữ liệu
 query_host=Máy chủ cơ sở dữ liệu
@@ -436,9 +470,12 @@ query_elogin=Đăng nhập thất bại : $1
 query_eprepare=Lỗi SQL : $1 
 query_eexecute=SQL thất bại : $1 
 query_ewrong=Kết quả không chính xác : $1 
+
 consume_rate=Tốc độ tiêu thụ tối đa (mỗi giây)
 consume_high=Tỷ lệ tiêu thụ là $1 / giây
+
 alive_up=Lên $1 
+
 rssh_host=Máy chủ SSH
 rssh_ruser=Đăng nhập với tư cách người dùng
 rssh_rpass=Đăng nhập bằng mật khẩu
@@ -454,6 +491,7 @@ rssh_error=Lỗi SSH
 rssh_haspass=Mật khẩu
 rssh_port=Cổng máy chủ SSH
 rssh_eport=Số cổng bị thiếu hoặc không hợp lệ
+
 tmpls_title=mẫu thư điện tử
 tmpls_ecannot=Bạn không được phép chỉnh sửa các mẫu email
 tmpls_none=Không có mẫu email nào được xác định. Tất cả các cảnh báo sẽ được gửi bằng các tin nhắn mặc định của Webmin.
@@ -462,6 +500,7 @@ tmpls_email=Tin nhắn điện tử
 tmpls_add=Thêm một mẫu email mới.
 tmpls_return=danh sách mẫu
 tmpls_delete=Xóa các mẫu đã chọn
+
 tmpl_title1=Tạo mẫu email
 tmpl_title2=Chỉnh sửa mẫu email
 tmpl_header=Thông báo mẫu email
@@ -486,9 +525,11 @@ tmpl_esms=Thiếu tin nhắn SMS
 tmpl_esnmp=Thiếu tin nhắn SNMP
 tmpl_err2=Không thể xóa mẫu email
 tmpl_eusers=Nó được sử dụng bởi các màn hình sau : $1 
+
 dtmpls_err=Không thể xóa mẫu
 dtmpls_enone=Không được chọn
 dtmpls_eusers=$1 được sử dụng bởi các màn hình sau : $2 
+
 sslcert_src=Địa điểm chứng nhận
 sslcert_url=Từ URL HTTPS
 sslcert_file=Từ tệp trên máy chủ
@@ -506,18 +547,21 @@ sslcert_eend=Không hợp lệ sau $1
 sslcert_left=Lên - $1 ngày cho đến khi hết hạn
 sslcert_ematch=Tên máy chủ $1 không khớp với chứng chỉ $2 
 sslcert_emismatch=Kiểm tra tên máy chủ chứng chỉ chỉ có thể được sử dụng khi kiểm tra URL
+
 du_dir=Thư mục để theo dõi
 du_max=Kích thước tối đa
 du_edir=Đường dẫn thư mục bị thiếu hoặc không tuyệt đối
 du_emax=Thiếu kích thước tối đa hoặc không số
 du_over=Kích thước là $1 
 du_under=Kích thước chỉ $1 
+
 ldap_edriver=Mô-đun Perl $1 chưa được cài đặt
 ldap_host=Tên máy chủ LDAP
 ldap_port=Cổng máy chủ LDAP
 ldap_ssl=Sử dụng kết nối SSL?
 ldap_user=Đăng nhập máy chủ LDAP
 ldap_pass=Mật khẩu máy chủ LDAP
+
 info_desc=Giám sát hệ thống
 info_last=Tình trạng hiện tại
 info_title=Trạng thái hệ thống và máy chủ

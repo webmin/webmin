@@ -16,8 +16,10 @@ index_type=SSH tip ključa:
 index_rsa1=RSA (za SSH v1)
 index_rsa=RSA (za SSH v2)
 index_dsa=DSA (za SSH v2)
+
 bits=komadići
 secs=sekundi
+
 users_title=Ovjera
 users_header=Opcije za prijavu i provjeru autentičnosti
 users_expire=Danima prije isteka računa kako bi upozorio korisnika
@@ -54,6 +56,7 @@ users_eauthkeys=Datoteka s autoriziranim ključevima koji nedostaju ili su neisp
 users_maxauthtries=Maksimalni pokušaji prijave po vezi
 users_emaxauthtries=Nedostaje ili neznamenkasti broj pokušaja prijave po vezi
 users_chal=Koristite provjeru autentičnosti-odgovor?
+
 net_title=Umrežavanje
 net_header=Opcije umrežavanja
 net_port=Slušaj na luci
@@ -91,6 +94,7 @@ net_eprots=Morate odabrati barem jedan protokol
 net_eladdress='$1' nije valjana adresa koju treba slušati
 net_elport="$1" nije valjani port koji možete slušati
 net_elisten2=Nema upisane adrese za slušanje
+
 access_title=Kontrola pristupa
 access_header=Opcije kontrole pristupa mreži i prijave
 access_allowu=Dopusti samo korisnicima
@@ -108,6 +112,7 @@ access_eallowg=Nema unesenih grupa
 access_edenyg=Nijedna grupa za uskratiti nije ušla
 access_eallowh=Nema unesenih domaćina
 access_edenyh=Domaćini nisu mogli odbiti unesene
+
 misc_title=Ostale mogućnosti
 misc_header=Ostale opcije SSH poslužitelja
 misc_x11=Dopuštate prosljeđivanje veze X11?
@@ -131,14 +136,17 @@ misc_eumask=Nedostaje ili je nevaljan četveroznamenkasti oktalni umask
 misc_ebits=Nedostaje ili nije važeća veličina ključa poslužitelja
 misc_eregen=Nedostaje ili nije važeći interval regeneracije ključa
 misc_epid=Nedostaje put PID datoteke
+
 start_err=Nije uspio pokretanje SSH poslužitelja
 apply_epid=Ne trčim
+
 hosts_title=Opcije domaćina klijenta
 hosts_header=Klijenti SSH-a
 hosts_none=Nisu definirane nijedne mogućnosti glavnog računala. Sve prijave SSH klijenta koristit će zadane postavke.
 hosts_all=Svi domaćini
 hosts_add=Dodajte opcije za domaćina klijenta.
 hosts_return=popis domaćina klijenta
+
 host_create=Dodajte mogućnosti domaćina
 host_edit=Uređivanje opcija domaćina
 host_header=Klijentske mogućnosti za SSH domaćin
@@ -194,6 +202,7 @@ host_eprots=Morate odabrati barem jedan protokol
 host_proxy=Naredba proxy za povezivanje
 host_proxy_def=nijedan
 host_eproxy=Nedostaje ili je nevažeća naredba proxy veze
+
 log_users=Izmijenjene su opcije provjere autentičnosti
 log_net=Izmijenjene su mogućnosti umrežavanja
 log_access=Izmijenjena kontrola pristupa
@@ -208,6 +217,7 @@ log_stop=Zaustavljen SSH poslužitelj
 log_start=Započeo SSH poslužitelj
 log_apply=Primijenjena konfiguracija
 log_manual=Ručno uređivanje konfiguracijske datoteke $1
+
 sync_title=Postavljanje korisničkog SSH ključa
 sync_desc=Ova stranica omogućuje konfiguriranje automatskog postavljanja SSH-a za nove Unix korisnike kreirane na vašem sustavu. Ako je konfigurirano, novi korisnici neće morati pokrenuti <tt>ssh-keygen</tt> prije upotrebe SSH-a.
 sync_create=Postavljanje SSH ključa za nove Unix korisnike?
@@ -216,9 +226,11 @@ sync_pass=Koristite lozinku kao ključnu lozinku?
 sync_gnupg=Postavljanje GNUPG tipke za nove Unix korisnike.
 sync_type=Tip ključa
 sync_auto=&lt;Automatski&gt;
+
 keys_title=Ključevi SSH domaćina
 keys_desc=Ova vam stranica omogućuje pregled SSH ključeva za ovaj domaćin.
 keys_none=U vašoj SSHD konfiguraciji nije pronađen nijedan unos HostKey.
+
 manual_title=Uređivanje datoteka za konfiguriranje
 manual_ecannot=Nije vam dopušteno uređivanje konfiguracijske datoteke SSH poslužitelja
 manual_ok=Uredi
@@ -226,5 +238,6 @@ manual_efile=Odabrana datoteka nije dio konfiguracije SSH poslužitelja
 manual_file=Uređivanje konfiguracijske datoteke:
 manual_edata=Ništa nije ušlo!
 manual_err=Konfiguriranje datoteke nije uspjelo
+
 dknown_err=Brisanje poznatih domaćina nije uspjelo
 dknown_enone=Nijedna nije odabrana

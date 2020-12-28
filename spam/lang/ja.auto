@@ -13,6 +13,7 @@ index_applydesc=このボタンをクリックして、実行中のすべての 
 index_cpan=SpamAssassinはPerlモジュールであるため、Webminの<a href='$2'>Perl Modules</a>モジュールを使用してCPANから $1をダウンロードすることもできます。
 index_spamassassin=SpamAssassin
 index_ecannot=SpamAssassin構成ファイル $1を管理することは許可されていません
+
 white_title=許可されたアドレスと拒否されたアドレス
 white_desc=このページの表では、スパムとして常にまたはまったく分類されない電子メールの差出人アドレスと宛先アドレスを指定できます。その他の電子メールは、SpamAssassinのルールによって通常どおり処理されます。すべてのメールアドレスには、ドメイン全体に一致する*@foo.comや*.foo.comなどのワイルドカードを含めることができます。
 white_from=送信者がスパムとして分類しない
@@ -44,6 +45,7 @@ white_tabham=許可されたアドレス
 white_tabspam=拒否されたアドレス
 white_tabsome=宛先アドレス
 white_tabimport=住所をインポート
+
 score_title=スパムの分類
 score_desc=SpamAssassinは、コンテンツとヘッダーに基づいて各メッセージにスコアを割り当てます。このページのオプションは、メッセージがスパムと見なされるスコアと、スコアの計算に使用されるいくつかの方法を決定します。
 score_header=スパムメッセージ分類オプション
@@ -77,6 +79,7 @@ score_emxdelay=MXチェック間で待機する秒がないか、無効です
 score_etimeout=RBLクエリを待機するための、欠落した秒または無効な秒
 score_ereceived=RBLで確認するReceived：ヘッダーの数が欠落しているか無効です
 score_bayes=ベイジアン学習分類器を使用しますか？
+
 report_title=メッセージ修正
 report_desc=このページのオプションは、SpamAssassinが分析するすべてのメッセージのヘッダーと本文に対して行う変更、およびスパムとして分類されたメッセージに対して行う変更を制御します。
 report_header=分析およびスパムメッセージの変更オプション
@@ -109,6 +112,7 @@ report_addspam=スパム
 report_addham=ハム
 report_addall=すべて
 report_eaddheader=$1を追加するための追加ヘッダーがないか無効です
+
 user_title=その他のユーザーオプション
 user_desc=このページのオプションは、SpamAssassinが外部のスパム識別パッケージRazor、DCC、およびPyzorに使用するパスと設定にほとんど関連しています。また、DNSルックアップを実行できるかどうかをSpamAssassinに伝えることもできます。
 user_header=その他のユーザーレベルのオプション
@@ -131,6 +135,7 @@ user_err=ユーザーオプションを保存できませんでした
 user_etimeout=「$1」は有効なタイムアウトではありません
 user_epath=「$1」は有効なクライアントプログラムパスではありません
 user_emax=「$1」は有効なチェックサムカウントではありません
+
 header_title=ヘッダーおよびボディテスト
 header_desc=このページでは、メッセージヘッダー、本文の内容、本文で見つかったURL、または他のテストの組み合わせに基づいて、SpamAssassinが電子メールに適用する追加のテストを定義できます。各テストに割り当てられる名前はあなた次第ですが、通常はCONTAINS_FOOのようなものです。 SpamAssassinがテストに一致するメッセージに追加する実際のスコアは、ページ下部の表に独自のテスト名または組み込みのテスト名を入力することで設定できます。
 header_switch=シンプルモードに切り替え ..
@@ -164,6 +169,7 @@ header_eeval=「$1」は有効な評価関数ではありません
 header_eheader=「$1」は有効なメールヘッダーではありません
 header_eregexp=「$1」は有効な正規表現ではありません（/ expression /のようにする必要があります）
 header_emeta=テスト '$1'のテスト式がありません
+
 priv_title=その他の特権オプション
 priv_desc=このオプションは、個々のユーザーの構成ファイルではなく、グローバルにのみ設定できます。これらは、さまざまな構成およびログファイルへのパスで制御します。
 priv_header=その他の特権レベル設定
@@ -183,6 +189,7 @@ priv_eargs=「$1」は有効な引数のリストではありません
 priv_emscore=「$1」は有効な最高フレーズスコアではありません
 priv_ephrase=「$1」は有効な2単語のスパムフレーズではありません
 priv_escore=スパムフレーズ「$1」のスコアが欠落しているか無効です
+
 usually=通常 $1
 ecannot=このページの使用は許可されていません
 setup_title=SpamAssassinのProcmailのセットアップ
@@ -202,11 +209,13 @@ setup_drop1=受信者のUnixユーザー
 setup_drop0=<tt>root</tt>ユーザー
 setup_ok=SpamAssassinのProcmailのセットアップ
 setup_email=メールアドレスに転送
+
 setup_err=SpamAssassinのセットアップに失敗しました
 setup_efile=mbox形式ファイルが見つからないか無効です
 setup_emaildir=Qmailメールディレクトリが見つからないか無効です
 setup_emhdir=MHメールディレクトリが見つからないか無効です
 setup_eemail=メールアドレスが見つからないか無効です
+
 log_white=変更された許可および拒否されたアドレス
 log_score=変更されたスパム分類
 log_report=変更されたメッセージの変更
@@ -217,12 +226,14 @@ log_setup=SpamAssassinのProcmailのセットアップ
 log_procmail=変更されたProcmail構成
 log_import=インポートされた $1個の許可されたアドレス
 log_manual=手動で編集された構成ファイル
+
 import_title=住所のインポート
 import_err=住所のインポートに失敗しました
 import_efile=選択したものからインポートするファイルがありません
 import_enone=ファイルにメールアドレスが見つかりません
 import_ok1=ファイル内に $2個の電子メールアドレスが見つかりました。そのうち $1個は新規で、許可されたアドレスリストに追加されました。
 import_ok2=ファイルに $1個の電子メールアドレスが見つかりましたが、それらはすべて許可アドレスリストにすでに含まれていました。
+
 mail_title=迷惑メール
 mail_desc=このページには、スパムとして分類されたメッセージが一覧表示され、何らかのアクションを待っています。誤って識別されたメッセージは受信トレイに移動できますが、実際にスパムであるメッセージは削除できます。
 mail_level=スコア
@@ -240,10 +251,13 @@ mail_will=$1分で自動更新
 mail_wills=$1秒で自動更新
 mail_delall=すべてのスパムを削除
 mail_search3=上記のスコアを検索：
+
 process_eclean=このメールからSpamAssassinヘッダーを削除中にエラーが発生しました
 process_ereport=SpamAssassinにメールを報告できませんでした： $1
+
 apply_err=変更を適用できませんでした
 apply_none=SpamAssassinデーモンプロセスが見つかりません！
+
 acl_avail=ユーザーが利用できるアイコン
 acl_file=編集するSpamAssassin構成ファイル
 acl_filedef=グローバル構成ファイル
@@ -251,8 +265,10 @@ acl_awl=自動ホワイトリスト編集を許可されたユーザー
 acl_awl0=すべてのユーザー
 acl_awl1=リストされたユーザーのみ $1
 acl_awl2=グループ $1のメンバーのみ
+
 search_escore=スパムスコアがないか無効です
 search_results5=スパムスコアが $2以上の $1メールメッセージ
+
 razor_title=Razor Spam Detectorのセットアップ
 razor_desc=Vipul's Razorは、あなたのアドレスに送信されるスパムの分類を改善できる、協調的なスパム検出および報告システムです。ただし、使用する前に、以下のフォームを使用して、Razorアカウントに登録する必要があります。
 razor_user=Razorユーザー名
@@ -267,6 +283,7 @@ razor_epass=パスワードがありません
 razor_doing=Razorを登録してセットアップしようとしています。
 razor_done=..完了。
 razor_failed=..失敗しました！その理由については、上記のエラー出力を参照してください。
+
 amavisd_title=Amavisdスパム配信
 amavisd_desc=このフォームを使用して、スパムとして分類されたメッセージに何が起こるかを決定するAmavisd設定を変更できます。
 amavis_ok=Amavisd配信を変更する
@@ -304,9 +321,11 @@ amavis_quarantine_today=今日の検疫のスパムメール（24時間）
 amavis_quarantine_week=今週の検疫のスパムメール（7日間）
 amavis_quarantine_month=今月（30日間）の検疫内のスパムメール
 amavis_quarantine_total=検疫内のスパムメールの総数
+
 procmail_title=Procmailスパム配信
 procmail_ok=Procmail配信の変更
 procmail_desc=このフォームを使用して、スパムとして分類されたメッセージの処理方法を決定するProcmail構成を変更できます。
+
 simple_title=ヘッダーおよびボディテスト
 simple_desc=このページでは、メッセージヘッダー、本文のコンテンツ、本文で見つかったURLに基づいて、SpamAssassinが電子メールに適用する追加のテストを定義できます。各テストに割り当てられる名前はあなた次第ですが、通常はCONTAINS_FOOのようなものです。
 simple_switch=詳細モードに切り替えます ..
@@ -317,8 +336,10 @@ simple_regexp=一致表現
 simple_score=適用するスコア
 simple_describe=説明
 simple_err=メッセージテストの保存に失敗しました
+
 before_ecmd=保存前のコマンドが失敗しました： $1
 after_ecmd=保存後のコマンドが失敗しました： $1
+
 connect_emysql=データベースドライバ $1のロードに失敗しました
 connect_elogin=データベース $1へのログインに失敗しました： $2。
 connect_equery=データベース $1には設定テーブル $2が含まれていません
@@ -326,9 +347,11 @@ connect_eldapmod=LDAPとの通信に必要なPerlモジュール $1がインス�
 connect_eldap=ポート $2でLDAPサーバー $1に接続できませんでした
 connect_eldaplogin=LDAPサーバー $1に $2としてログインできませんでした： $3
 connect_ebase=LDAPベースDN $1は無効です： $2
+
 eldap=LDAP操作が失敗しました： $1
 esql=SQLが失敗しました： $1
 ldap_euser=$1のLDAPユーザーオブジェクトが見つかりませんでした
+
 db_title=SQLおよびLDAPデータベース
 db_header=構成保管データベースのオプション
 db_dsn=ユーザー設定を保存する
@@ -364,6 +387,7 @@ db_eldapport=LDAPサーバーのポート番号が欠落しているか無効で
 db_eldapdn=ベースDNが欠落しているか無効です-スペースは使用できません
 db_eldapattr=SpamAssassin属性が欠落しているか無効です
 db_eldapuid=ユーザー名属性が欠落しているか無効です
+
 awl_title=自動ホワイトリストを管理する
 awl_search=ホワイトリストを検索：
 awl_ok=探す
@@ -389,6 +413,7 @@ awl_deleteone=自動ホワイトリストをクリア
 awl_deleteonedesc=ユーザー $1のすべての自動ホワイトリストエントリを削除します。
 awl_deleteall=すべての自動ホワイトリストをクリア
 awl_deletealldesc=システム上のすべてのユーザーのすべての自動ホワイトリストエントリを削除します。
+
 dawl_err=自動ホワイトリストから削除できませんでした
 dawl_eopen=ホワイトリストを開けませんでした
 dawl_enone=削除するアドレスが選択されていません
@@ -396,6 +421,7 @@ dawl_ecannot=このユーザーの自動ホワイトリストを管理するこ�
 dawl_doing=すべてのユーザーの自動ホワイトリストの削除 ..
 dawl_done=.. $1ユーザーから $2エントリを削除しました。
 dawl_title=すべての自動ホワイトリストを削除
+
 manual_title=構成ファイルの編集
 manual_file=設定ファイルの編集：
 manual_ok=OK

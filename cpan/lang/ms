@@ -27,6 +27,7 @@ index_tabmods=Modul sedia ada
 index_tabinstall=Pasang Modul
 index_tabsuggest=Modul yang dicadangkan
 index_wantmods=Modul untuk dipasang
+
 download_err=Gagal memasang modul
 download_elocal=Tiada fail tempatan diberi
 download_elocal2='$1' tidak wujud
@@ -64,6 +65,7 @@ download_ebuild=Satu atau lebih daripada modul Perl memerlukan $1 untuk dibina, 
 download_yum=Memasang Perl modul $1 dari pakej $2 ..
 download_missingok=Modul hilang dari CPAN
 download_fallback=Beberapa modul telah gagal dipasang dari pakej, mencuba pemasangan dari sumber..
+
 install_title=Pasang Modul
 install_untar=Nyahtar fail modul
 install_make=Mengkompil modul
@@ -83,11 +85,13 @@ install_err2=Anda boleh juga pasang modul daripada CPAN dengan arahan $1.
 install_exec=Melaksana $1 ..
 install_efile=Fail modul $1 tidak lagi wujud
 install_needunlink=Anda boleh cuba memasang semula dengan kembali ke laman sebelumnya dan buat pilihan yang lain. Ataupun, <a href='$1'>klik disini</a> untuk padam fail sementara bagi menjimatkan ruang disk.
+
 cpan_sel=Modul dibawah $1 ..
 cpan_title=Pilih modul Perl
 cpan_search=Cari nama modul
 cpan_match=Modul sepadan $1 ..
 cpan_none=Tiada yang sepadan.
+
 edit_title=Perincian Modul
 edit_header=Infomasi modul
 edit_mod=Nama modul
@@ -104,6 +108,7 @@ edit_method=Dipasang dari
 edit_rpm=Pakej RPM $1
 edit_debian=Pakej Debian $1
 edit_manual=Memasang modul Perl secara manual
+
 uninstall_title=Nyahpasang Modul
 uninstall_rusure=Adakah anda pasti untuk menyahpasang modul Perl $1 ? Fail berikut akan dipadam :
 uninstall_rusure2=Adakah anda pasti untuk menyahpasang modul Perl $1 dan submodul $2 ? <br> Fail berikut akan dipadam :
@@ -111,7 +116,9 @@ uninstall_ok=Nyahpasang sekarang
 uninstall_rpm=Modul ini akan dibuang apabila menyahpasang pakej RPM $1
 uninstall_debian=Modul ini akan dibuang apabila menyahpasang pakej Debian $1
 uninstall_err=Gagal untuk menyahpasang modul
+
 delete_efile=Fail pakej tidak sah!
+
 uninstalls_title=Menyahpasang Modul
 uninstalls_err=Gagal untuk menyahpasang modul
 uninstalls_enone=Tiada dipilih

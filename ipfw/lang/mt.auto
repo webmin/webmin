@@ -25,6 +25,7 @@ index_resetdesc=Ikklikkja din il-buttuna biex tikklerja r-regoli tal-firewall ko
 index_cluster=Servers ta 'Kluster
 index_clusterdesc=Ikklikkja din il-buttuna biex tistabbilixxi servers tal-Webmin addizzjonali li magħhom il-konfigurazzjoni tal-firewall tiġi kkupjata awtomatikament.
 index_return=regoli tal-firewall
+
 index_num=Numru
 index_action=Azzjoni
 index_desc=Kundizzjoni
@@ -37,6 +38,7 @@ index_delete=Ħassar Magħżul
 index_existing=Webmin sabet $1 firewall IPFW regoli li qed jintużaw bħalissa, li mhumiex irreġistrati fil-file $2. Dawn ir-regoli kienu probabilment issettjati minn skript, li dan il-modulu ma jafx kif jaqra u jeditja., u mbagħad iddiżattiva l-iskript tal-firewall eżistenti tiegħek.
 index_saveex=Issejvja r-Regoli tal-Firewall
 index_headerex=Konfigurazzjoni tal-firewall eżistenti
+
 action_allow=<font color=#00aa00>Ħalli</font>
 action_deny=<font color=#ff0000>Waqqa</font>
 action_reject=<font color=#ff4400>Irrifjuta</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Drop pakkett</font>
 laction_reject=<font color=#ff4400>Tirrifjuta ċ-ċaħda tal-ICMP</font>
 laction_reset=<font color=#ff4400>Irrisettja l-konnessjoni TCP</font>
 laction_skipto=Aqbeż għar-regola
+
 edit_title1=Oħloq Regola
 edit_title2=Editja r-Regola $1 
 edit_header1=Azzjoni tar-Regola
@@ -114,6 +117,7 @@ edit_src-addr=Mill-indirizz tas-sors ..
 edit_src-port=Mill-port tas-sors ..
 edit_dst-addr=Għall-indirizz tad-destinazzjoni ..
 edit_dst-port=Għal port ta ’destinazzjoni ..
+
 save_err=Irnexxielu jiffranka r-regola
 save_enum=Numru tar-regola nieqsa jew invalida
 save_eskipto=Numru tar-regola nieqes jew invalidu biex wieħed jaqbeż għal
@@ -144,7 +148,9 @@ save_etcpflags=Il-bnadar TCP jistgħu jiġu speċifikati biss jekk il-protokoll 
 save_elimit=Limitu massimu nieqes jew invalidu
 save_edstport=Port tad-destinazzjoni nieqes jew invalidu
 save_esrcport=Port tas-sors nieqes jew invalidu
+
 apply_err=Ma rnexxielux japplika l-konfigurazzjoni
+
 desc_if=Jekk $1 
 desc_and=u
 desc_always=Dejjem
@@ -191,6 +197,7 @@ desc_where=fejn $1
 desc_all=għall-pakketti kollha
 desc_in=il-pakkett huwa dieħel
 desc_out=il-pakkett huwa ħiereġ
+
 log_create_rule=Ħolqot regola $1 
 log_delete_rule=Regola mħassra $1 
 log_modify_rule=Regola modifikata $1 
@@ -206,6 +213,7 @@ log_convert=Regoli konvertiti attivi firewall
 log_setup=Wettaq setup tal-firewall inizjali
 log_unapply=Konfigurazzjoni tal-firewall maqluba
 log_delsel=$1 imħassar
+
 cluster_title=Cluster Firewall Servers
 cluster_none=L-ebda servers ma ġew miżjuda mal-cluster tal-firewall s'issa.
 cluster_host=L-isem tal-host
@@ -216,6 +224,7 @@ cluster_gadd=Żid is-servers fi grupp
 cluster_need=Trid iżżid is-servers bil-login u l-password fil-modulu tal-Indiċi Servers tal-Webmin qabel ma jkunu jistgħu jiġu ġestiti hawn.
 cluster_return=Servers ta 'raggruppament
 cluster_delete=Neħħi Magħżul
+
 add_title=Żid is-Servers
 add_msg=Żieda ta ' $1 ..
 add_gmsg=Żieda ta 'servers fil-grupp $1 ..

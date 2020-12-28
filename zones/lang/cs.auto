@@ -4,6 +4,7 @@ index_none=Dosud nebyly definovány žádné zóny.
 index_add=Přidejte novou zónu.
 index_return=seznam zón
 index_zones=Existující zóny
+
 edit_title=Upravit zónu
 edit_common=Obecná konfigurace zóny
 edit_name=Název zóny
@@ -57,20 +58,26 @@ edit_attrnone=Dosud nebyly definovány žádné obecné atributy.
 edit_attradd=Přidejte nový obecný atribut.
 edit_webmin=Otevřete Webmin
 edit_brand=Značka
+
 ui_cancel=zrušení
+
 save_err=Uložení zóny se nezdařilo
 save_epool=Chybějící nebo neplatný fond
 save_ewebmin=Webmin není spuštěn v této zóně
+
 reboot_title=Restartujte zónu
 reboot_rusure=Opravdu chcete restartovat zónu $1 ? Všechny procesy spuštěné v něm budou restartovány.
 reboot_err=Zóna se nepodařilo restartovat
 reboot_doing=Nyní restartujte zónu ..
+
 reboot_failed=.. selhalo :
 reboot_ok=.. kompletní.
+
 halt_title=Vypínací zóna
 halt_rusure=Opravdu chcete vypnout zónu $1 ? Všechny procesy, které v něm probíhají, budou zastaveny.
 halt_err=Vypnutí zóny se nezdařilo
 halt_doing=Nyní se vypíná zóna ..
+
 boot_title=Bootup Zone
 boot_err=Spouštěcí zóna se nezdařila
 boot_doing=Nyní spouštěcí zóna ..
@@ -78,10 +85,12 @@ delete_title=Smazat zónu
 delete_rusure=Opravdu chcete odstranit zónu $1 ? Všechny soubory v soukromých souborových systémech budou ztraceny.
 delete_err=Odstranění zóny se nezdařilo
 delete_doing=Nyní se mazá zóna ..
+
 uninstall_title=Odinstalovat systém
 uninstall_rusure=Opravdu chcete odinstalovat systémový software ze zóny $1 ? Všechny soubory v soukromých souborových systémech budou ztraceny.
 uninstall_err=Nepodařilo se odinstalovat systémový software ze zóny
 uninstall_doing=Nyní odinstalujete systém ze zóny ..
+
 install_title=Nainstalujte systém
 install_doing=Nyní instalujeme systém do zóny ..
 net_title1=Vytvořit síťové rozhraní
@@ -96,6 +105,7 @@ net_enetmask=Neplatná maska sítě
 net_eaddress=Neplatná adresa IP
 net_egone=Rozhraní již neexistuje!
 net_eclash=V této zóně již existuje síťové rozhraní se stejnou IP adresou
+
 pkg_title1=Přidat adresář balíčku
 pkg_title2=Upravit adresář balíčku
 pkg_header=Zděděné podrobnosti adresáře balíčku
@@ -107,6 +117,7 @@ pkg_eclash=Adresář balíčku již v této zóně existuje
 pkg_inherit=Zdědí balíčky z globální zóny
 pkg_inherit_yes=Ano (řídká kořenová zóna)
 pkg_inherit_no=Ne (celá kořenová zóna)
+
 fs_title1=Vytvořte souborový systém
 fs_title2=Upravit souborový systém
 fs_header=Další podrobnosti o souborovém systému
@@ -128,6 +139,7 @@ fs_eoptions=Neplatné možnosti připojení (musí to být seznam oddělený č�
 fs_egone=Souborový systém již neexistuje!
 fs_mount=Připojit po vytvoření?
 fs_eclash=V této zóně již existuje souborový systém používající stejný adresář
+
 rctl_title1=Vytvořit řízení zdrojů
 rctl_title2=Upravit řízení zdrojů
 rctl_header=Typ a limity řízení zdrojů
@@ -148,6 +160,7 @@ rctl_elimit=Ne číslo
 rctl_eaction=V řádku $1 nebyl vybrán žádný signál
 rctl_evalues=Nebyly zadány žádné limity
 rctl_eclash=V této zóně již existuje ovládací prvek pro stejný prostředek
+
 attr_title1=Vytvořit obecný atribut
 attr_title2=Upravit obecný atribut
 attr_header=Podrobnosti o atributech obecné zóny
@@ -165,6 +178,7 @@ attr_euint=Hodnota není kladné celé číslo
 attr_eboolean=Hodnota není „true“ nebo „false“
 attr_egone=Atribut již neexistuje!
 attr_eclash=Atribut se stejným názvem již v této zóně existuje
+
 status_running=Běh
 status_installed=Zastavil se
 status_configured=Není instalován
@@ -172,13 +186,16 @@ status_incomplete=Probíhá instalace
 status_ready=Připraveno
 status_down=Dolů
 status_shutting_down=Vypínání
+
 list_name=Název zóny
 list_id=Identifikační číslo
 list_path=Adresář zóny
 list_status=Postavení
 list_actions=Akce
+
 zone_in=V zóně $1 
 pool_none=Žádný
+
 create_title=Vytvořit zónu
 create_header=Nové podrobnosti zóny
 create_path=Adresář souborů zóny
@@ -239,6 +256,7 @@ create_erouter=Chybějící nebo neplatná výchozí adresa IP routeru
 create_removingpkgs=odstraňování zděděných adresářů balíčků. ..
 create_brand=Značka
 create_brandmsg=Branding zone
+
 log_create_zone=Vytvořená zóna $1 
 log_delete_zone=Odstraněná zóna $1 
 log_save_zone=Upravená konfigurace pro zónu $1 
@@ -262,6 +280,7 @@ log_delete_rctl=Odstraněn ovládací prvek pro $1 v zóně $2
 log_create_attr=Byl vytvořen obecný atribut $1 v zóně $2 
 log_modify_attr=Upravený obecný atribut $1 v zóně $2 
 log_delete_attr=Byl odstraněn obecný atribut $1 v zóně $2 
+
 webmin_eperl=Perl není nainstalován na $1 
 webmin_eroot=Adresář $1 neexistuje nebo neobsahuje Webmin.
 webmin_title=Nainstalujte webmin

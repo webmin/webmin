@@ -13,6 +13,7 @@ index_ident=Identifiera en fil
 index_identmsg=Ange kommando eller sökvägen till en fil som systemet ska söka efter i databasen <tt>$1</tt>.
 index_identok=Sök efter:
 index_return=paketlista
+
 search_title=Paketsökning
 search_nomatch=Inget paket stämde med $1
 search_none=Inget
@@ -21,6 +22,7 @@ search_class=Klass
 search_pack=Paket
 search_match=Paket som stämmer med $1
 search_return=sökresultat
+
 edit_title=Ändra paket
 edit_details=Uppgifter om paket
 edit_desc=Beskrivning
@@ -34,6 +36,7 @@ edit_inst=Installerat
 edit_list=Lista filer
 edit_uninst=Avinstallera
 edit_return=uppgifter om paket
+
 list_title=Paketfiler
 list_files=Filer tillhörande paket $1
 list_path=Sökväg
@@ -42,11 +45,13 @@ list_group=Grupp
 list_type=Typ
 list_size=Storlek
 list_status=Status
+
 delete_err=Det gick inte att ta bort paket $1
 delete_epack=Paket $1 finns inte
 delete_title=Ta bort paket
 delete_rusure=Vill du verkligen ta bort paket $1? Upp till $2 filer ($3) kommer att raderas permanent.
 delete_ok=Ta bort
+
 file_title=Filinformation
 file_notfound=Det finns ingen tillgänglig information om $1
 file_path=Sökväg
@@ -60,6 +65,7 @@ file_pack=Paket
 file_class=Klass
 file_desc=Beskrivning
 file_none=Ingen
+
 install_err=Det gick inte att installera paketet
 install_elocal=Du har inte angivit någon lokal fil
 install_elocal2='$1' finns inte
@@ -72,6 +78,7 @@ install_title=Installera paket
 install_header=Installera paket
 install_packs=Paket som ska installeras
 install_ok=Installera
+
 do_err=Det gick inte att installera paket $1
 do_title=Installera paket
 do_efailed=Installationen misslyckades: $1
@@ -88,9 +95,11 @@ do_arch=Arkitektur
 do_inst=Installerat
 do_none=Inget
 do_files=Paketfiler
+
 pkgadd_root=Rotkatalog
 pkgadd_eroot=Rotkatalog '$1' finns inte
 pkgadd_unknown=Okänd
+
 rpm_upgrade=Uppgradera paket?
 rpm_replacepkgs=Skriva över paket?
 rpm_nodeps=Strunta i beroenden?
@@ -100,25 +109,30 @@ rpm_excludedocs=Installera dokumentation?
 rpm_replacefiles=Skriva över filer?
 rpm_root=Rotkatalog
 rpm_eroot=Rotkatalog '$1' finns inte
+
 bsd_unknown=Okänd
 bsd_scripts=Utföra pre- och postinstallationsscript?
 bsd_force=Driva igenom installation även om nödvändiga förutsättningar ej är uppfyllda?
+
 slack_unclass=Övrig
 slack_unknown=Okänd
 slack_missing=Saknas
 slack_root=Rotkatalog
 slack_eroot=Rotkatalog saknas eller är felaktigt angiven
+
 debian_unknown=Okänd
 debian_depends=Strunta i beroendeproblem?
 debian_conflicts=Strunta i paketkonflikter?
 debian_overwrite=Skriva över filer från andra paket?
 debian_downgrade=Byta ut nyare paket mot äldre?
+
 log_install_package=Installerade paket $1
 log_install_apt_l=Installerade paket $1 från APT
 log_install_apt=Installerade $2 paket från APT
 log_check_apt_l=Uppgraderade paket $1 från APT
 log_check_apt=Uppgraderade $2 paket från APT
 log_delete=Avinstallerade paket $1
+
 rhn_input=Paket från Redhat Network
 rhn_install=Installerar paket med kommando $1 ...
 rhn_ok=... installationen klar.
@@ -142,6 +156,7 @@ rhn_proxy=Proxyserver-URL för nedladdning
 rhn_none=Avslagen
 rhn_eproxy=Proxyserver saknas eller är felaktigt angiven
 rhn_skip=Hoppa över paket som matchar
+
 apt_input=Paket från Debian APT
 apt_install=Installerar paket med kommandot $1 ...
 apt_ok=... installationen klar.

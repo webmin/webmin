@@ -21,6 +21,7 @@ index_thost=gasheernaam
 index_tdesc=beskrywing
 index_tcount=pakkette
 index_ttype=OS-tipe
+
 install_err=Kon nie die pakket installeer nie
 install_elocal=Geen plaaslike lêer gegee nie
 install_elocal2='$1' bestaan nie
@@ -37,6 +38,7 @@ install_ok=installeer
 install_erus=Hierdie bediener gebruik 'n ander opdateringstelsel as die meesterbediener ($1 teenoor $2)
 install_eupdate=Kon nie die gespesifiseerde opdaterings installeer nie
 install_ealready=Weergawe $1 is reeds geïnstalleer
+
 add_title=Voeg bedieners by
 add_msg=Voeg $1 by.
 add_gmsg=Voeg bedieners in groep $1 by.
@@ -45,6 +47,7 @@ add_gerr=Kon nie groep byvoeg nie
 add_echeck=Bediener $1 het nie die sagtewarepakketmodule nie
 add_esystem=Bediener $1 gebruik nie dieselfde pakketstelsel as hierdie masjien nie
 add_ok=$1 met $2 pakkette bygevoeg.
+
 search_title=Pakketsoektog
 search_nomatch=Geen pakkette stem ooreen met $1 nie
 search_none=Geen
@@ -56,6 +59,7 @@ search_return=Soek Resultate
 search_delete=Verwyder geselekteerde pakkette vanaf:
 search_selall=Kies alles
 search_invert=Keer die keuse om
+
 host_title=Bestuurde bediener
 host_header=Sagteware bestuurde bedienerdetails
 host_name=Gasheernaam
@@ -70,6 +74,7 @@ host_count=Pakkette geïnstalleer
 host_os=OS vanaf Webmin
 host_return=bediener besonderhede
 host_system=Pakketstelsel
+
 edit_title=Wysig pakket
 edit_details=Pakketbesonderhede vanaf $1 
 edit_desc=beskrywing
@@ -88,6 +93,7 @@ edit_all=&lt;alle leërskare&gt;
 edit_donthave=&lt;leërskare wat dit nie het nie&gt;
 edit_have=&lt;leërskare wat dit het&gt;
 edit_group=Lede van $1 
+
 list_title=Pakketlêers
 list_files=Lêers vir pakket $1 op $2 
 list_path=pad
@@ -97,6 +103,7 @@ list_type=tipe
 list_size=grootte
 list_status=status
 list_ok=OK
+
 refresh_title=Verfris pakketlyste
 refresh_header=Versoek die pakketlyste van alle bedieners weer aan ..
 refresh_header4=Versoek die pakketlyste van lede van $2. weer.
@@ -108,6 +115,7 @@ refresh_4=Verfris $1 (geen veranderinge)
 refresh_done=.. klaar
 refresh_del=$1 van die bedienerslys verwyder
 refresh_failed=Kon nie $1 : $2 verfris nie
+
 delete_err=Kon nie pakket $1 uitvee nie
 delete_epack=Die pakket $1 bestaan nie
 delete_title=Vee die pakket uit
@@ -120,6 +128,7 @@ delete_error=Kon nie van $1 : $2 verwyder nie
 delete_success=Van $1 verwyder.
 delete_done=.. klaar
 delete_header=Vee pakket $1 uit.
+
 do_title=Installeer pakket
 do_header=Installeer $1 op alle gashere. ..
 do_header3=Installeer $1 op gashere wat dit nog nie het nie ..
@@ -140,6 +149,7 @@ do_arch=argitektuur
 do_inst=geïnstalleer
 do_none=Geen
 do_edeleted=Installeerlêer is uitgevee - keer terug na die module-indeks en probeer weer.
+
 compare_title=Vergelyk pakkette
 compare_desc=Hierdie vorm kan gebruik word om die pakkette wat op twee of meer bedieners geïnstalleer is, te vergelyk, en om enige verskil tussen weergawes of pakkette te vind.
 compare_hosts=Bedieners om te vergelyk
@@ -154,6 +164,7 @@ compare_showall=Pakkies om te wys
 compare_showall1=Almal
 compare_showall0=Slegs verkeerde ooreenkomste
 compare_got=OK
+
 deletes_err=Kon nie pakkette uitvee nie
 deletes_enone=Geen pakkette is gekies nie
 deletes_title=Vee pakkette uit

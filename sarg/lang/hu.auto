@@ -10,6 +10,7 @@ index_range=Jelentés generálása a dátumtartományra
 index_view=Tekintse meg a létrehozott jelentést
 index_viewdesc=Tekintse meg a legutóbb létrehozott jelentést a $1 könyvtárban.
 index_return=modul index
+
 log_title=Naplóforrás és jelentés cél
 log_header=Source Squid naplófájl és a létrehozott jelentésbeállítások
 log_access_log=Source Squid naplófájl
@@ -30,6 +31,7 @@ log_elastlog=Hiányzik vagy nincs szám
 log_eemail=Hiányzó vagy érvénytelen e-mail cím
 log_emailx=Hiányzó vagy nem létező levelezőprogram
 log_squidguard_log_path=SquidGuard naplófájl
+
 style_title=Jelentés stílusa
 style_header=HTML jelentés stílus és színbeállítások
 style_title2=Jelentés címe
@@ -54,6 +56,7 @@ style_efont=Hiányzó vagy érvénytelen betűnév
 style_esize=Hiányzik vagy érvénytelen a kép szélessége és magassága
 style_language=Jelentés nyelve
 style_charset=Jelentés karakterkészlet
+
 report_title=Jelentési beállítások
 report_header=Jelentés a tartalomról és az előállítási lehetőségekről
 report_resolve_ip=Megoldja az IP-címeket?
@@ -134,6 +137,7 @@ report_echar=A térköz nem megengedett
 report_estring=Hiányzó vagy érvénytelen csereszöveg
 report_eselect=Nincs kiválasztva
 report_eenter=Semmi nem lépett be
+
 sched_title=Ütemezett jelentéskészítés
 sched_header=Ütemezett jelentési lehetőségek
 sched_sched=Ütemezett jelentés engedélyezve?
@@ -148,9 +152,11 @@ sched_rsel=$1 és $2 nappal ezelőtt
 sched_err=Az ütemezett jelentésgeneráció mentése nem sikerült
 sched_erfrom=Hiányzó vagy érvénytelen kezdőszám a nappal ezelőtt
 sched_erto=Hiányzó vagy érvénytelen véget érő napok száma
+
 view_title=Sarg-jelentés
 view_efile=Érvénytelen fáljnév!
 view_eopen=Nem sikerült megnyitni a jelentésfájlt
+
 gen_title=Jelentést készít
 gen_header=Most Sarg jelentést generálunk a (z) $1 Squid naplófájlból és az összes elforgatott verzióból.
 gen_done=.. Kész
@@ -160,6 +166,7 @@ gen_view=A befejezett jelentés megtekintése.
 gen_err=Nem sikerült létrehozni a jelentést
 gen_efrom=Hiányzik vagy érvénytelen a naptól
 gen_eto=Napjainkban hiányzik vagy érvénytelen
+
 webmin_log_log=Frissített naplóforrás és jelentési célbeállítások
 webmin_log_report=Frissített jelentési lehetőségek
 webmin_log_style=Frissített jelentésstílus-beállítások

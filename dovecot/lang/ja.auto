@@ -11,11 +11,13 @@ index_boot=起動時に開始しますか？
 index_bootdesc=この設定を変更して、システムの起動時にDovecotサーバーの起動を有効または無効にします。
 index_return=モジュールインデックス
 index_version=バージョン$1
+
 stop_err=Dovecotを停止できませんでした
 stop_erunning=もう走っていない
 start_err=Dovecotを起動できませんでした
 start_eprotos=[<b>ネットワークとプロトコル</b>]ページでプロトコルが選択されていません
 apply_err=構成を適用できませんでした
+
 net_title=ネットワーキングとプロトコル
 net_header=Dovecotネットワークとメールプロトコルオプション
 net_protocols=メールプロトコルを提供する
@@ -42,8 +44,11 @@ net_eimaps_listen=IMAP SSL接続の無効なIPアドレス
 net_epop3s_listen=POP3 SSL接続の無効なIPアドレス
 net_elisten=非SSL接続の無効なIPアドレス
 net_essl_listen=SSL接続の無効なIPアドレス
+
 imap_title=IMAPオプション
+
 pop3_title=POP3オプション
+
 ssl_title=SSL構成
 ssl_header=IMAPおよびPOP3 SSLモードオプション
 ssl_key=SSL秘密鍵ファイル
@@ -61,7 +66,9 @@ ssl_ecert=証明書ファイルが存在しないか存在しない
 ssl_eca=存在しないまたは存在しないクライアントCA証明書ファイル
 ssl_eregen=パラメータの再生成間隔がないか、数値ではない
 ssl_epass=SSLキーファイルのパスワードが入力されていません
+
 misc_title=他のオプション
+
 login_title=ユーザーとログインのオプション
 login_header=ユーザー認証とログインオプション
 login_fuid=最小有効UID
@@ -117,6 +124,7 @@ login_procs=最大ログインプロセス
 login_count=初期ログインプロセス
 login_eprocs=ログインプロセスの最大数がないか、無効です
 login_ecount=ログインプロセスの初期数が欠落しているか無効です
+
 mail_title=メールファイル
 mail_header=メールの場所と読み取りオプション
 mail_env=メールファイルの場所
@@ -169,6 +177,7 @@ mail_eindexmode=メールファイルの場所が自動的に検出された場�
 mail_econtrolmode=メールファイルの場所が自動的に検出される場合、制御ファイルの場所を設定できません
 mail_eindex=インデックスファイルの絶対パスが見つからないか無効です
 mail_econtrol=制御ファイルの絶対パスが欠落しているか無効です
+
 log_net=変更されたネットワークとプロトコル
 log_login=ユーザーおよびログインオプションの変更
 log_mail=変更されたメールファイル
@@ -179,6 +188,7 @@ log_stop=Dovecotサーバーを停止しました
 log_bootup=起動時にDovecotを有効化
 log_bootdown=起動時にDovecotを無効にしました
 log_manual=手動で編集された構成ファイル$1
+
 manual_title=構成ファイルの編集
 manual_editsel=Dovecot構成ファイルの編集
 manual_err=構成ファイルを保存できませんでした

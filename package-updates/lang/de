@@ -57,6 +57,7 @@ index_reposdisable=Disable Repositories
 index_reposenable=Enable Repositories
 index_reposdelete=Delete Repositories
 index_repoheader=New package repository options
+
 update_title=Update Pakete
 update_title2=Install Packages
 update_enone=No packages selected
@@ -94,18 +95,22 @@ update_none=Nichts
 update_ops=Erstelle vollständige Liste der Updates ..
 update_rebootdesc=Eines der aktualisierten Pakete benötigt einen Neustart um in vollem Umfang genutzt werden zu können.
 update_reboot=Starte jetzt neu
+
 sched_title=Zeitgesteuertes Update
 sched_yes=Geplante Suche nach Updates ist nun aktiv.
 sched_no=Geplante Überprüfung auf Updates wurde deaktiviert.
+
 log_update=$1 aktualisierte Pakete installiert
 log_sched=Aktiviere geplante Updates
 log_unsched=Deaktiviere geplante Updates
 log_refresh=Verfügbare Pakete aktualisiert
+
 refresh_title=Aktualisiere Pakete
 refresh_clearing=Lösche Caches der Pakete ..
 refresh_done=..fertig
 refresh_available=Erneutes Abrufen der verfügbaren Pakete ..
 refresh_done3=...$1 mögliche Updates gefunden
+
 view_title=Paketdetails
 view_header=Aktualisierbare Paketinformationen
 view_name=Paketname
@@ -119,12 +124,14 @@ view_changelog=Changelog für verfügbare Version
 view_software=Verwalte Pakete
 view_update=Updatepaket
 view_install=Installiere Pakete
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)
 system_webmin=Webmin Modul
 system_usermin=Usermin Modul
 system_tgz=Webmin oder Usermin tar.gz
+
 repos_err_disable=Failed to disable repositories
 repos_err_enable=Failed to enable repositories
 repos_err_delete=Failed to delete repositories

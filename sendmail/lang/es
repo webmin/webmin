@@ -8,6 +8,7 @@ index_stopmsg=Haz click en este botón para parar el proceso en curso de sendmai
 index_start=Arrancar Sendmail
 index_startmsg=Haz click en este botón para arrancar sendmail con el comando $1. Hasta que se haga esto, el correo no será entregado a los usuarios locales desde otros sistemas y los clientes no podrán utilizar este sistema como un servidor de correo.
 index_version=Versión $1 de Sendmail
+
 opts_title=Opciones de Sendmail
 opts_ecannot=No estás autorizado a editar las opciones de sendmail
 opts_ds=Enviar correo saliente a través de la máquina
@@ -47,6 +48,7 @@ opts_deferred=Diferido
 opts_gecos=¿Acepto correo para los nombres reales de usuarios?
 opts_hops=Máximo número de saltos de correo
 opts_daemon=Opciones de puerto SMTP
+
 aliases_title=Alias de Correo
 aliases_ecannot=No estás autorizado a editar alias
 aliases_addr=Dirección
@@ -61,6 +63,7 @@ aliases_none=Ninguno
 aliases_return=lista de alias
 aliases_toomany=Hay demasiados aliases de correo en tu sistema para que quepan en esta página.
 aliases_go=Hallar aliases que coincidan con:
+
 aform_ecannot=No estás autorizado a editar este alias
 aform_type0=Ninguna
 aform_type1=Dirección de Correo
@@ -76,11 +79,13 @@ aform_enabled=¿Activado?
 aform_val=Alias de
 aform_afile=Editar...
 aform_return=alias
+
 afile_title=Editar Archivo de Direcciones
 afile_desc=Usar el área de texto inferior para editar las direcciones en el archivo $1.
 afile_efile=No estás autorizado a editar $1.
 afile_undo=Deshacer los Cambios
 afile_ewrite=No pude escribir en archivo de direcciones: $1
+
 ffile_title=Editar Archivo de Filtro
 ffile_desc=Usa el formulario inferior para configurar reglas de filtro en el archivo $1.
 ffile_efile=No estás autorizado a editar $1.
@@ -94,13 +99,16 @@ ffile_what0=no coincide
 ffile_what1=coincide
 ffile_other=En caso contrario remitir a $1
 ffile_err=No pude salvar archivo de filtro
+
 ffile_ematch=Falta coincidencia
 ffile_eaction=Falta dirección de reenvío
+
 rfile_title=Editar Archivo de Autoréplica
 rfile_desc=Usar el área de texto inferior para editar el mensaje de autoréplica en $1. El mensaje puede contener las macros $SUBJECT, $FROM, $TO, $DATE y $BODY que serán expandidas cuando la autoréplica esté activada.
 rfile_desc2=Tambien puedes poner las cabeceras de correo que se añaden o reemplazan los valores por defecto usados en la respuesta automática poniendo líneas como:<br><tt>From: foo@bar.com</tt><br><tt>Subject: De vacaciones</tt><br>en la parte superior del mensaje, separado del cuerpo por una sola línea en blanco.
 rfile_efile=No estás autorizado a editar $1.
 rfile_undo=Deshacer los Cambios
+
 asave_err=Error al salvar alias
 asave_ecannot2=No estás autorizado a editar alias
 asave_ecannot=No estás autorizado a editar este alias
@@ -117,6 +125,7 @@ asave_etype5=Archivo de autoréplica '$1' no es válido o no existe
 asave_etype4none=No se ha suministrado programa alguno
 asave_etype6=El archivo de filtro '$1' no es válido
 asave_esame=Sólo estás autorizado a crear un alias con el mismo nombre que tu login en webmin login
+
 cws_title=Dominios Locales
 cws_ecannot=No estás autorizado a editar dominios locales
 cws_domains=Dominios manejados por este servidor
@@ -125,6 +134,7 @@ cws_desc2=Date cuenta de que con sólo incluir un dominio en la lista no es sufi
 cws_err=Error al salvar dominios locales
 cws_ehost='$1' no es un nombre de máquina o de dominio válido
 cws_eip='$1' es una dirección IP, no un dominio
+
 masq_title=Enmascaramiento de Dominio
 masq_ecannot=No estás autorizado a configurar enmascaramiento
 masq_domain=Enmascarar como dominio
@@ -135,12 +145,14 @@ masq_err=Error al salvar enmascaramiento de dominio.
 masq_edomain='$1' no es un dominio a enmascarar válido
 masq_ehost='$1' no es una máquina o nombre de dominio válido
 masq_eip='$1' es una dirección IP, no un dominio
+
 trusts_title=Usuarios Fiables
 trusts_ecannot=No estás autorizado a editar usuarios fiables
 trusts_users=Usuarios locales en que sendmail confía
 trusts_desc=Si un usuario local intenta enviar correo, sendmail permitirá sólo que el usuario suministre una dirección <tt>Desde: (From:)</tt> diferente si el usuario está en la lista de la izquierda. Esta restricción existe para prevenir que los usuarios envíen correo con direcciones <tt>Desde: (From:)</tt> falsas desde tu sistema.
 trusts_err=Error al salvar usuarios fiables
 trusts_euser='$1' no es un usuario válido
+
 virtusers_title=Mapeo de Direcciones
 virtusers_ecannot=No estás autorizado a mapear direcciones
 virtusers_efeature=Tu configuración de sendmail no tiene la característica del mapeo de dirección (<tt>virtuser</tt>) activada. <a href='$1'>Haz click aquí</a> para configurar las características de sendmail.
@@ -156,6 +168,7 @@ virtusers_address=Dirección $1
 virtusers_return=lista de mapeo de direcciones
 virtusers_toomany=Hay demasiados mapeos de dirección en tu sistema para que quepan en esta página.
 virtusers_go=Hallar mapeos de dirección que coincidan con:
+
 vform_edit=Edita Mapeo
 vform_create=Crear Mapeo
 vform_for=Correo para
@@ -167,6 +180,7 @@ vform_err_nouser=usuario inexistente
 vform_err_nohost=máquina inexistente
 vform_end=Move al final
 vform_ecannot=No estás autorizado a editar este mapeo de dirección
+
 vsave_ecannot=No estás autorizado a editar mapeo de direcciones
 vsave_ecannot2=No estás autorizado a editar este mapeo de dirección
 vsave_emax=No estás autorizado a crear más de $1 mapeos de direcciones
@@ -182,6 +196,7 @@ vsave_eaddr='$1' no es una dirección válida
 vsave_ecannot4=No estás autorizado a crear mapeos a dominios
 vsave_edomdom=Sólo un dominio puede ser mapeado a otro dominio
 vsave_ecannot5=No estás autorizado a crear mapeos que devuelvan un error
+
 mailers_title=Enrutamiento de Dominio
 mailers_cannot=No estás autorizado a editar enrutamiento de dominio
 mailers_edirective=Tu archivo de configuración de sendmail no tiene la directiva necesaria para enrutamiento de dominio.
@@ -193,6 +208,7 @@ mailers_for=Correo para...
 mailers_delivery=Entrega
 mailers_to=Enviar a...
 mailers_return=lista de enrutamiento de dominio
+
 mform_edit=Editar Enrutamiento
 mform_create=Crear Enrutamiento
 mform_for=Correo para
@@ -213,10 +229,12 @@ mform_procmail=Procmail
 mform_mail11=DECnet mail11
 mform_error=Error
 mform_ecannot=No estás autorizado a editar enrutamiento de dominio
+
 msave_ecannot=No estás autorizado a salvar enrutamiento de dominio
 msave_err=Error al salvar enrutamiento de dominio
 msave_edomain='$1' no es una máquina o dominio válido
 msave_edup=Ya está definidio el enrutamiento de dominio para '$1'
+
 generics_title=Direcciones de Salida
 generics_cannot=No estás autorizado a editar direcciones de salida
 generics_econfig=Tu archivo de configuración de sendmail no tiene la directiva necesaria para mapear direcciones de salida.
@@ -229,17 +247,20 @@ generics_to=Cambia a..
 generics_return=lista de mapeo de direcciones
 generics_toomany=Hay demasiadoas direcciones salientes en tu sistema como para que quepan en esta página.
 generics_go=Hallar diercciones salientes que coincidan con:
+
 gform_edit=Editar Mapeo
 gform_create=Crear Mapeo
 gform_from=Correo desde
 gform_to=Cambia a
 gform_ecannot=No estás autorizado a editar esta dirección de salida
+
 gsave_ecannot=No estás autorizado a salvar esta dirección de salida
 gsave_ecannot2=No estás autorizado a salvar esta dirección de salida
 gsave_err=Error al salvar dirección de salida
 gsave_efrom='$1' no es una dirección 'desde' válida
 gsave_ematch=La dirección 'desde' no coincide con '$1'
 gsave_eto='$1' no es una nueva dirección válida
+
 cgs_title=Dominios de Salida
 cgs_ecannot=No estás autorizado a editar dominios de salida
 cgs_header=Dominios de Direcciones Salientes
@@ -247,6 +268,7 @@ cgs_desc=Además del correo enviado por los usuarios locales, sendmail realizar�
 cgs_err=Error al salvar dominios salientes
 cgs_ehost='$1' no es un nombre de máquina o dominio válido
 cgs_eip='$1' es una dirección IP, no un dominio
+
 domains_title=Mapeo de Dominio
 domains_ecannot=No estás autorizado a editar mapeo de dominio
 domains_econfig=Tu archivo de configuración de sendmail no tiene la directiva necesaria para mapeos de dominio.
@@ -256,14 +278,17 @@ domains_desc=El mapeo de dominios modifica la dirección <tt>A: (To:)</tt> de lo
 domains_from=Desde dominio...
 domains_to=A dominio...
 domains_return=lista de mapeo de dominios
+
 dform_edit=Editar Mapeo
 dform_create=Crear Mapeo
 dform_from=Desde dominio
 dform_to=A dominio
 dform_ecannot=No estás autorizado a editar mapeo de dominio
+
 dsave_ecannot=No estás autorizado a editar mapeo de dominio
 dsave_err=Error al salvar mapeo de dominio
 dsave_edomain='$1' no es un nombre de dominio válido
+
 access_title=Control de 'a Rechazar'
 access_ecannot=No estás autorizado a configurar control de 'a rechazar'
 access_efeature=Tu configuración de sendmail no tiene la característica de control de 'a rechazar' <tt>access</tt>) activada. <a href='$1'>Haz click aquí</a> para configurar las características de sendmail.
@@ -289,6 +314,7 @@ sform_discard=Descartar en silencio
 sform_err=Código de error
 sform_msg=Mensaje
 sform_ecannot=No estás autorizado a configurar control de 'a Rechazar'
+
 ssave_err=Error al salvar regla de control de 'a rechazar'
 ssave_etype0='$1' no es una dirección válida
 ssave_etype1='$1' no es una dirección de red válida
@@ -296,6 +322,7 @@ ssave_etype2='$1' no es un nombre de usuario válido
 ssave_etype3='$1' no es un dominio válido
 ssave_ecode='$1' no es un código de error SMTP válido
 ssave_ealready=Ya existe una regla de control de 'a rechazar' para '$1'
+
 relay_title=Dominios de Retransmisión
 relay_ecannot=No estás autorizado a editar dominios de retransmisión
 relay_eversion=Sólo las versiones de sendmail 8.9 y superiores soportan la característica de dominios de retransmisión.
@@ -304,6 +331,7 @@ relay_desc1=A menos que estés autorizado por las reglas de <a href='$1'>control
 relay_desc2=Si tu sistema sirve de pasarela de varios dominios que no son directamente accesibles desde fuera de tu red (usando la característica de <a href='$1'>enrutamiento de dominio</a>), entonces todos esos dominios deberían de estar listados aquí.
 relay_err=Error al salvar dominios de retransmisión
 relay_edomain='$1' no es un nombre de dominio válido
+
 mailq_title=Cola de Correo
 mailq_count=$1 mensajes
 mailq_ecannot=No estás autorizado a ver la cola de correo
@@ -324,8 +352,10 @@ mailq_delete=Borrar mensajes seleccionados
 mailq_return=cola de correo
 mailq_flush=Limpiar Cola de Correo
 mailq_flushdesc=Haz click en este botón para forzar la entrega inmediata de todos los mensaje en la cola y mostrar los resultados.
+
 flushq_title=Limpiar Cola
 flushq_desc=Forzando la ya intentada entrega de correo con el comando $1...
+
 delq_err=Error al quitar mensaje
 delq_ecannot=No estás autorizado a quitar mensajes de la cola
 delq_locked=En este momento está bloqueado para ser enviado
@@ -336,6 +366,7 @@ delq_egone=ya borrado o entregado
 delq_elocked=bloqueado para ser enviado
 delq_ok=Borrado ok
 delq_title=Borrando Mensajes
+
 boxes_title=Buzones de Usuario
 boxes_user=Usuario
 boxes_size=Medida de Buzón
@@ -345,6 +376,7 @@ boxes_sent=Correo enviado
 boxes_ecannot=No estás autorizado a leer correo
 boxes_toomany=Hay demasiados usuarios en tu sistema como para listar todos sus buzones.
 boxes_go=Ver correo para usuario:
+
 mail_title=Correo de Usuario
 mail_from=Desde
 mail_date=Fecha
@@ -381,6 +413,7 @@ mail_mark1=Leídos
 mail_mark2=Especiales
 mail_forward=Remitir seleccionado
 mail_rfc=Desde línea
+
 view_title=Leer Correo
 view_desc=Mensaje $1 en $2
 view_desc2=Mensaje $1 para usuario $2
@@ -404,6 +437,7 @@ view_mark1=Leído
 view_mark2=Especial
 view_return=correo original
 view_sub=Correo Adjunto
+
 compose_title=Componer Correo
 reply_title=Responder a Correo
 forward_title=Remitir Correo
@@ -413,6 +447,7 @@ reply_mailforward=Mensajes remitidos
 reply_attach2=Adjuntados desde cliente y servidor
 reply_send=Enviar Correo
 reply_ecannot=No estás autorizado a enviar correo a este usuario
+
 send_err=Error al enviar correo
 send_eto=Dirección 'A' sin poner
 send_efrom=Dirección 'De' sin poner
@@ -425,14 +460,17 @@ send_eattach=Los archivos incluídos no pueden exceder más de 1kB de medida
 send_eperms=El usuario $1 no puede leer $2
 send_eperms2=No estás autorizado a enviar archivo $1
 send_epath=El ejecutable de Sendmail $1 no existe.
+
 delete_ecannot=No estás autorizado a borrar correo de este usuario
 delete_enone=No se ha seleccionado correo para ser borrado
 delete_emnone=No hay correo seleccionado para marcar
+
 search_title=Resultados de la búsqueda
 search_ecannot=No estás autorizado a buscar en este correo de usuario
 search_ematch=Debes de digitar un texto que coincida con algo.
 search_none=No se han encontrado mensajes.
 search_results3=$1 mensajes de correo no coinciden con $2...
+
 file_title=Editar Archivo de Sendmail
 file_desc=Usar la caja de texto inferior para editar manuálmente el archivo de Sendmail $1.
 file_undo=Deshacer los Cambios
@@ -500,6 +538,7 @@ acl_boxname1=Nombre real de usuario
 acl_boxname2=Nada
 acl_usersm=Usuarios que coincidan
 acl_asame=Igual que nombre de usuario
+
 log_opts=Cambiadas opciones de sendmail
 log_alias_create=Creado alias $1
 log_alias_modify=Modificado alias $1
@@ -528,6 +567,7 @@ log_domain_manual=Editado manuálmente archivo de mapeo de dominio $1
 log_access_create=Creado control de 'a rechazar' para $1
 log_access_modify=Modificado control de 'a rechazar' para $1
 log_access_delete=Borrado control de 'a rechazar' para $1
+
 log_access_manual=Editado manuálmente archivo de control de 'a rechazar' para $1
 log_relay=Cambiados dominios de retransmisión
 log_flushq=Cola de correo vaciada
@@ -542,6 +582,7 @@ log_feature_modify=Modificada entrada M4 $1
 log_feature_delete=Borrada entrada M4 $1
 log_feature_move=Movida entrada M4 $1
 log_build=Configuración de sendmail reconstruída
+
 match_from=De: coincide
 match_subject=Asunto: coincide
 match_to=Para: coincide
@@ -556,6 +597,7 @@ match_!cc=Cc: no coincide
 match_!date=Fecha: no coincide
 match_!body=El cuerpo no coincide
 match_!size=La medida es menor que
+
 features_title=Configuración M4 de Sendmail
 features_desc=Esta página lista las entradas relevantes del archivo de configuración M4 de Sendmail $1, desde el cual el archivo de configuración actual $2 ha sido reconstruído.
 features_type=Tipo de entrada
@@ -575,6 +617,7 @@ features_efeatures=El directorio base de configuración M4 de Sendmail $2 no fue
 features_econfig=La localización del directorio base M4 de Sendmail y el archivo de configuración M4 no han sido configurados aún en tu <a href='$1'>configuración del módulo</a>. Si has instalado Sendmail desde la fuente, éstos deberían de estar el directorio fuente original.
 features_move=Mover
 features_manual=Editar archivo manuálmente
+
 feature_add=Añadir Entrada de Configuración
 feature_edit=Editar Entrada de Configuración
 feature_header=Detalles de entrada de configuración M4
@@ -595,12 +638,15 @@ feature_emailer=El cartero $1 ya existe
 feature_eostype=El tipo de SO ya está definido como $1
 feature_manual=Editar Archivo M4
 feature_mdesc=Esta página te permite editar manuálmente el archivo de configuración M4 de Sendmail $1. Ten cuidado ya que no se realiza revisión de sintáxis de tus ediciones.
+
 feat_access_db=Archivo de control de 'a rechazar'
 feat_virtusertable=Mapeo de Dirección
 feat_mailertable=Enrutamiento de Dominio
 feat_genericstable=Direcciones Salientes
 feat_domaintable=Mapeo de Dominio
+
 mailer_local=Entrega Local de Unix
+
 build_title=Reconstruir Configuración de Sendmail
 build_em4=El comando $1 necesario para reconstruir el archivo de configuración de Sendmail no fue hallado en tu sistema.
 build_ebuild=No pude contruir configuración: $1

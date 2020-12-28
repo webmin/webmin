@@ -18,10 +18,12 @@ index_version=PPPd Version $1
 index_boot=Verbinde beim Booten:
 index_noboot=&lt;Verbinde nicht&gt;
 index_bootdesc=Ändert diese Option, um zu kontrollieren, ob die ausgewählte PPTP-VPN-Verbindung beim Systemstart gestartet oder nicht gestartet wird.
+
 disc_err=Fehlgeschlagen Tunnel zu trennen
 disc_egone=Nicht länger aktiv
 disc_ekill=Fehlgeschlagen pppd Prozess zu killen
 disc_done=Tunnel $1 wurde erfolgreich getrennt.
+
 conn_err=Fehlgeschlagen zum Tunnel zu verbinden
 conn_egone=Tunnel existiert nicht länger
 cone_ealready=Bereits verbunden
@@ -32,6 +34,7 @@ conn_ok=.. Verbindung erfolgreich mit Schnittstelle $1 aktiviert. Ihre lokale Ad
 conn_timeout=.. Verbindung fehlgeschlagen! Prüfe die Log-Nachrichten unten für Informationen warum.
 conn_routes=Füge Routen mit Befehlen hinzu ..
 conn_mppe=Das MPPE-Protokoll für VPN-Verschlüsselung erfordert PPP-Dämon und Kernel-Unterstützung. Allerdings deuten die oben genannten Fehler darauf hin, dass eine oder beide nicht auf Ihrem System verfügbar sind. Wenn der PPTP-Server nicht MPPE benötigt, deaktivieren Sie alle Optionen auf der <a href='$1'>Globalen PPP-Optionen</a> Seite.
+
 edit_title1=PPTP Tunnel hinzufügen
 edit_title2=Editiere PPTP Tunnel
 edit_header=PPTP VPN Zunnel Optionen
@@ -60,6 +63,7 @@ edit_file=PPP Optionen Datei
 edit_none=Nichts
 edit_global=Standard globale Datei
 edit_ofile=Andere Datei ..
+
 save_err=Fehlgeschlagen Tunnel zu speichern
 save_ename=Fehlender Tunnelname
 save_eserver=Fehlender oder ungültiger Server zum verbinden
@@ -75,6 +79,7 @@ save_egw2=Ungültiger Gateway für den Host in Route $1
 save_erename=Fehlgeschlagen Tunnel Datei umzubenennen
 save_eclash=Ein Tunnel- oder PPP-Peer mit dem gleichen Namen ist bereits vorhanden
 save_efile=Fehlende oder ungültige PPP Optionen Datei
+
 opts_title=Globale PPP Optionen
 opts_desc=Die nachstehenden Einstellungen werden von $1 genommen und werden für alle Tunnel angewendet, die für die globale Standards-PPP-Optionsdatei gelten.
 opts_header=PPP Optionen für alle Tunnel
@@ -84,6 +89,7 @@ opts_err=Fehlgeschlagen globale PPP Optionen zu speichern
 opts_emtu=Fehlende oder ungültige maximale Sende-Paket-Größe
 opts_emru=Fehlende oder ungültige Empfangs-Paket-Größe
 opts_msdesc=Die folgenden Optionen ermöglicht MPPE-Verschlüsselung, von Windows-VPN-Servern verwendet. MPPE benötigt einerseits Unterstützung sowohl im PPP-Dämon als auch Betriebssystem-Kernel.
+
 mppe_mppe-40=Benutze 40-bit MPPE Verschlüsselung?
 mppe_mppe-128=Benutze 128-bit MPPE Verschlüsselung?
 mppe_mppe-stateless=Aktiviere stateless MPPE Modus?
@@ -95,6 +101,7 @@ mppe_d1=Erlaubt
 mppe_mppe-stateful=Aktiviere stateful MPPE Modus?
 mppe_old=Warnung - Die alten-Style-MPPE-Richtlinien $1 wurden in der Konfigurationsdatei gefunden, auch wenn die PPP-Dämon die neuen Stil-Richtlinien unterstützen.
 mppe_new=Warnung - Die neuen Stil MPPE-Richtlinien $1 wurden in der Konfigurationsdatei gefunden, auch wenn die PPP-Dämon nur die alten Stil-Richtlinien unterstützen.
+
 log_create=PPTP Tunnel $1 erstellt
 log_update=PPTP Tunnel $1 modifiziert
 log_delete=PPTP Tunnel $1 gelöscht

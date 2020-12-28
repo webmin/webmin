@@ -15,6 +15,7 @@ index_actform=Form
 index_actrun=Løb
 index_actsql=Form
 index_acted=Åben
+
 edit_title=Rediger kommando
 create_title=Opret kommando
 edit_ecannot=Du har ikke tilladelse til at redigere kommandoer
@@ -66,6 +67,7 @@ edit_format4=Download når det er muligt
 edit_servers=Kør på Webmin-servere
 edit_this=denne server
 edit_clone=Klon
+
 save_err=Kunne ikke gemme kommandoen
 save_ecannot=Du har ikke tilladelse til at redigere kommandoer
 save_ecmd=Ingen kommando indtastet
@@ -78,6 +80,7 @@ save_eusermin=Kommandoer, der kører på andre servere, kan ikke køres fra User
 save_eformat=Ugyldig output MIME-type
 save_eopts=Manglende indstillingsfil for parameter $1 
 save_eopts2=Indstillingsfil eller standardværdi for parameter $1 kan ikke indeholde :
+
 run_err=Kunne ikke udføre kommandoen
 run_ecannot=Du har ikke tilladelse til at køre denne kommando
 run_euser=Manglende eller ugyldig bruger
@@ -94,6 +97,7 @@ run_eupload=Ingen fil, der skal uploades, er valgt
 run_emust=Manglende værdi for parameteren '$1'
 run_timeout=Kommandoen kunne ikke fuldføres før $1 sekund timeout.
 run_failed=Kommandoen mislykkedes med exit-status $1 
+
 log_modify=Ændret kommando $1 
 log_create=Oprettet kommando $1 
 log_delete=Slettet kommando $1 
@@ -102,11 +106,13 @@ log_modify_edit=Ændret fileditor $1
 log_create_edit=Oprettet fileditor $1 
 log_delete_edit=Slet fileditor $1 
 log_save_edit=Gemt fil $1 
+
 acl_cmds=Kommandoer, som denne bruger kan køre
 acl_call=Alle kommandoer
 acl_csel=Valgte ..
 acl_cexcept=Alle undtagen valgt ..
 acl_edit=Kan oprette og redigere kommandoer?
+
 file_ecannot=Du har ikke tilladelse til at redigere filer
 fcreate_title=Opret fileditor
 fedit_title=Rediger fileditor
@@ -130,6 +136,7 @@ file_egroup=Manglende eller ugyldigt gruppenavn
 file_eperms=Manglende eller ugyldige oktale tilladelser
 file_envs=Erstat miljøvariabler i filnavn?
 file_id=Editor ID
+
 view_err=Kunne ikke redigere filen
 view_ecannot=Du har ikke tilladelse til at redigere denne fil
 view_title=Rediger fil
@@ -138,10 +145,12 @@ view_header=Redigering af fil $1
 view_ebeforeedit=Før-redigeringskommandoen mislykkedes : $1 
 view_ebefore=Før-gemning kommando mislykkedes : $1 
 view_eafter=Efter-gemenskommando mislykkedes : $1 
+
 form_ecannot=Du har ikke tilladelse til at køre denne kommando
 form_title=Udfør kommando
 form_exec=Udfør
 form_edit=Redigere
+
 sql_title1=Opret SQL-kommando
 sql_title2=Rediger SQL-kommando
 sql_header=SQL-kommandodetaljer
@@ -157,6 +166,7 @@ sql_err=Kunne ikke gemme SQL-kommando
 sql_esql=Ingen SQL indtastet
 sql_ehost=Manglende eller ugyldig databaseserverhost
 sql_edb=Manglende eller ugyldigt databasenavn
+
 srun_title=Udfør SQL-kommando
 srun_err=Kunne ikke udføre SQL-kommando
 srun_edriver=DBI-driver kunne ikke indlæses

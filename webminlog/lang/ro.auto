@@ -30,6 +30,7 @@ index_sdesc=Descrierea acțiunii conține
 index_shost=Server Webmin sursă
 index_long=Arată descrieri complete de acțiune?
 index_global=&lt;Nu în niciun modul&gt;
+
 search_title=rezultatele cautarii
 search_date=Data
 search_time=Timp
@@ -63,6 +64,7 @@ search_global_baduser=Nume de utilizator necorespunzător
 search_global_badpass=Parola greșită
 search_global_twofactor=Jetonul cu doi actori nevalid
 search_csv=Exportați ca CSV.
+
 view_title=Detalii despre acțiune
 view_header=Detalii despre acțiunea înregistrată $1 
 view_action=Descriere
@@ -96,12 +98,14 @@ view_files=Fișierele au fost schimbate și comenzile sunt executate
 view_raw=Date de jurnal brut
 view_rawname=Numele parametrului
 view_rawvalue=Valoarea parametrului
+
 acl_mods=Poate vizualiza jurnalele în module
 acl_all=Toate
 acl_sel=Selectat mai jos ..
 acl_self=Numai eu
 acl_users=Poate vizualiza acțiunile utilizatorilor
 acl_rollback=Pot acționa înapoi acțiuni?
+
 rollback_title=Rollback Action
 rollback_rusure=Sunteți sigur că doriți să refaceți toate fișierele enumerate mai jos în conținutul lor înainte de a fi luat această acțiune? Orice date pe care le conțin în prezent vor fi suprascrise cu următoarele modificări :
 rollback_isdir=Un director - nu se va face nicio modificare.
@@ -124,4 +128,5 @@ rollback_modfile=Conținut înapoi al fișierului $1.
 rollback_deleted=Fișier șters $1.
 rollback_nodeleted=Salt la fișierul inexistent $1.
 rollback_enone=Nu au fost selectate fișiere
+
 log_rollback=Acțiune retrocedată $1 în modulul $2 

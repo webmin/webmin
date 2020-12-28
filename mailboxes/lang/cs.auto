@@ -1,11 +1,16 @@
+index_return=seznam uživatelů
 index_system6=Poštovní server: Exim
 index_system5=Poštovní server: Qmail+VPopMail
 index_system4=Poštovní server: Qmail+LDAP
+
 mail_fromfilter=Vytvořte filtr podle odesílatele
 mail_tofilter=Vytvořte filtr podle příjemce
 mail_subfilter=Vytvořte filtr podle předmětu
+
 mail_specialsync=Synchronizovat speciální
+
 view_nobody=Tato zpráva nemá obsah těla.
+
 reply_dsn=Požádat o oznámení o stavu čtení?
 reply_del=Vyžádat si oznámení o stavu doručení?
 reply_aboot=Přidat příjemce do adresáře?
@@ -20,8 +25,10 @@ reply_addattach=Přidat pole přílohy.
 reply_addssattach=Přidejte pole přílohy na straně serveru.
 reply_html0=Napište text
 reply_html1=Vytvořte HTML
+
 search_msg6=Výsledky hledání $1 v poli $2
 search_attach=Musí mít přílohy?
+
 left_mail=Pošta
 left_search=Vyhledávání:
 left_folders=Správa složek

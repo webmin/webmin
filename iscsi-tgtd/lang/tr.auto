@@ -2,6 +2,7 @@ check_econfigset=İSCSI TGTd yapılandırma dosyası ayarlanmadı!
 check_econfig=$1 iSCSI TGTd yapılandırma dosyası sisteminizde bulunamadı.
 check_etgtadm=$1 iSCSI TGTd yönetim komutu sisteminizde bulunamadı.
 check_einit=$1 önyükleme eylemi mevcut değil
+
 index_title=iSCSI TGTd
 index_clink=Belki yüklü değil veya <a href='$1'>modül yapılandırmanız</a> yanlış.
 index_stop=İSCSI TGTd'yi durdurun
@@ -24,8 +25,10 @@ index_users=İzin verilen kullanıcılar
 index_size=Toplam boyut
 index_noluns=Yok
 index_nousers=Hiç
+
 dtargets_err=Hedefler silinemedi
 dtargets_enone=Hiçbiri seçilmedi!
+
 target_title1=İSCSI Hedefi Oluştur
 target_title2=İSCSI Hedefini Düzenle
 target_header=iSCSI paylaşılan cihaz seçenekleri
@@ -74,11 +77,13 @@ target_direct=Doğrudan cihaza erişim
 target_cache=Önbellek cihaza yazıyor mu?
 target_eaddr=İzin verilen geçersiz IP adresi
 target_eaname=Geçersiz izin verilen başlatıcı adı
+
 start_err=İSCSI TGTd başlatılamadı
 stop_err=İSCSI TGTd durdurulamadı
 restart_err=İSCSI TGTd yeniden başlatılamadı
 atboot_err=Önyükleme sırasında etkinleştirilemedi
 atboot_einit=$1 başlangıç betiği mevcut değil
+
 log_create_target=$1 hedefi oluşturuldu
 log_delete_target=$1 hedefi silindi
 log_modify_target=Değiştirilmiş hedef $1 
@@ -89,6 +94,7 @@ log_restart=İSCSI sunucusu yeniden başlatıldı
 log_atboot=Önyükleme zamanında iSCSI sunucusu etkinleştirildi
 log_delboot=İSCSI sunucusu önyükleme sırasında devre dışı bırakıldı
 log_manual=Manuel olarak düzenlenen yapılandırma dosyası
+
 manual_title=Yapılandırma Dosyasını Düzenle
 manual_file=Düzenlenecek dosyayı seçin:
 manual_ok=Açık

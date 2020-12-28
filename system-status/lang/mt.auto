@@ -44,6 +44,7 @@ right_upsec=Aġġornamenti ta ’pakkett $1 huma disponibbli, li minnhom $2 huma
 right_recollect=Aġġorna l-informazzjoni tas-sistema
 right_vvirtualmin=Verżjoni Virtualmin
 right_vvm2=Verżjoni Cloudmin
+
 acl_show=Informazzjoni tas-sistema biex turi
 acl_showall=Kollox
 acl_showsel=Magħżula biss ..

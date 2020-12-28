@@ -2,6 +2,7 @@ index_title=Klijent i poslužitelj NIS-a
 index_return=Izbornik NIS
 index_enis=Čini se da vaš uređaj nema instaliranu podršku za NIS klijent ili poslužitelj.
 index_enis2=Upotrebljavat će se samo značajke za usluge klijenta ovog modula.
+
 client_title=NIS klijent
 client_header=Konfiguracija NIS klijenta
 client_domain=NIS domena
@@ -17,10 +18,12 @@ client_eserver='$1' nije valjano ime poslužitelja
 client_eypwhich=nije uspjelo vezivanje za domenu NIS
 client_ehosts="$1" nije u datoteci host
 client_enis=Čini se da vaš uređaj nema instaliranu podršku za NIS klijenta.
+
 switch_title=Klijentske usluge
 switch_service=Servis
 switch_srcs=Izvori podataka
 switch_return=usluge za klijente
+
 order_=&nbsp;
 order_nisplus=NIS +
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Heziod
 order_ldap=LDAP
 order_user=Korisnički pisači
 order_xfn=XFN
+
 server_title=NIS Server
 server_header=Opcije NIS servera
 server_boot=Želite li omogućiti NIS poslužitelj?
@@ -65,6 +69,7 @@ server_solaris=Napomena - na Solarisu, domene klijenta i poslužitelja NIS uvije
 server_edir=Nevažeća mapa izvornih datoteka
 server_epwdir=Nevažeća mapa izvornih datoteka zaporke
 server_enis=Čini se da vaš uređaj nema instaliranu podršku za NIS poslužitelj.
+
 tables_title=NIS tablice
 tables_switch=Uređivanje NIS tablice :
 tables_header=$1 NIS tablica od $2 
@@ -81,6 +86,7 @@ tables_search=traži
 tables_nomatch=Nijedna evidencija ne odgovara vašoj pretraživanju
 tables_build=Ponovno izgradite NIS tablice
 tables_buildmsg=Kliknite ovaj gumb za ponovnu izgradnju baza podataka NIS iz podataka tablice. Ako ste napravili neke izmjene, morat ćete to učiniti kako biste ih učinili dostupnima NIS klijentima.
+
 desc_aliases=Aliasi za sendmail
 desc_mail=Aliasi za sendmail
 desc_hosts=Adresa domaćina
@@ -116,6 +122,7 @@ desc_printers=Pisači
 desc_ipnodes=IP čvorovi
 desc_timezone=Vremenske zone
 desc_locale=lokalizacije
+
 hosts_title=Adresa domaćina
 hosts_ip=IP adresa
 hosts_name=Ime računala
@@ -124,6 +131,7 @@ hosts_err=Spremanje domaćina nije uspjelo
 hosts_eip=Nedostaje ili nije važeća IP adresa
 hosts_ename=Nedostaje ili nevaljano ime računala
 hosts_aliases=nadimci
+
 group_name=Grupno ime
 group_gid=ID grupe
 group_members=Članovi grupe
@@ -134,6 +142,7 @@ group_none=Nije potrebna lozinka
 group_encrypted=Unaprijed šifrirana lozinka
 group_clear=Normalna lozinka
 group_err=Spremanje grupe nije uspjelo
+
 passwd_name=Korisničko ime
 passwd_uid=User ID
 passwd_real=Pravo ime
@@ -171,6 +180,7 @@ passwd_emax=Nevažeći maksimalni broj dana
 passwd_emin=Nevažeći minimalni broj dana
 passwd_einactive=Nevažeći broj neaktivnih dana
 passwd_eexpiry=Nevažeći datum isteka
+
 services_name=Naziv usluge
 services_proto=Protokol
 services_port=Luka
@@ -179,6 +189,7 @@ services_header=Opcije internetske usluge
 services_err=Spremanje usluge nije uspjelo
 services_ename=Nedostaje ili nevažeće ime usluge
 services_eport=Nedostaje ili nevažeći port
+
 protocols_name=Naziv protokola
 protocols_number=Broj
 protocols_aliases=nadimci
@@ -187,6 +198,7 @@ protocols_header=Opcije mrežnog protokola
 protocols_err=Spremanje protokola nije uspjelo
 protocols_ename=Nedostaje ili nevaljano ime
 protocols_enumber=Nedostaje ili nevažeći broj
+
 netgroup_name=Naziv mreže
 netgroup_members=članovi
 netgroup_title=Mrežna grupa
@@ -201,6 +213,7 @@ netgroup_ename=Nedostaje ili nevažeće ime mrežne grupe
 netgroup_ehost=Nedostaje ili nije važeći domaćin u retku $1 
 netgroup_euser=Nedostaje ili nije važeći korisnik u retku $1 
 netgroup_edom=Nedostaje ili nije važeća NIS domena u retku $1 
+
 ethers_mac=Ethernet adresa
 ethers_ip=IP adresa
 ethers_title=Ethernet adresa
@@ -208,6 +221,7 @@ ethers_header=Opcije Ethernet mapiranja
 ethers_err=Spremanje ethernet adrese nije uspjelo
 ethers_emac=Nevažeća ethernet adresa
 ethers_eip=Nevaljana IP adresa
+
 rpc_name=Naziv programa
 rpc_number=Broj
 rpc_aliases=nadimci
@@ -216,6 +230,7 @@ rpc_header=Pojedinosti o RPC programu
 rpc_err=Spremanje RPC programa nije uspjelo
 rpc_ename=Nedostaje ili nevaljano ime programa
 rpc_enumber=Nedostaje ili nevažeći broj
+
 networks_title=Internet adresa
 networks_ip=IP adresa
 networks_name=Naziv mreže
@@ -224,6 +239,7 @@ networks_err=Spremanje mreže nije uspjelo
 networks_eip=Nedostaje ili nije važeća IP adresa
 networks_ename=Nedostaje ili nevaljano ime
 networks_aliases=nadimci
+
 netmasks_net=Internet adresa
 netmasks_mask=Mrežna maska
 netmasks_title=Mrežna maska
@@ -231,6 +247,7 @@ netmasks_header=Detalji mrežne maske
 netmasks_err=Spremanje mrežne maske nije uspjelo
 netmasks_enet=Nedostaje ili nije važeća mrežna adresa
 netmasks_emask=Nedostaje ili nevažeća mrežna maska
+
 aliases_from=Adresa
 aliases_to=Alias to
 aliases_title=Sendmail Alias
@@ -238,6 +255,7 @@ aliases_header=Pojedinosti o pseudonimu Sendmail
 aliases_err=Spremanje aliasa nije uspjelo
 aliases_efrom=Nedostaje ili nije valjana adresa
 aliases_eto=Nedostaje adrese
+
 security_title=Sigurnost poslužitelja
 security_header=Opcije sigurnosti NIS poslužitelja
 security_ok=Spremite i primijenite
@@ -266,6 +284,7 @@ security_sec_des=Zahtijevajte DES
 security_ehost='$1' nije valjano ime računala
 security_emap='$1' nije važeća tablica NIS-a
 security_efield='$1' nije važeći broj polja
+
 eswitch_title=Usluga uređivanja
 eswitch_egone=Usluga ne postoji!
 eswitch_header=Pojedinosti o usluzi

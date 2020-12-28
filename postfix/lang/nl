@@ -3,6 +3,7 @@ connect_elogin=Mislukt om in te loggen in de database $1 : $2.
 index_title=Postfix Mail Server
 index_epath=De Postfix controle opdracht $1 is niet geinstalleerd op uw systeem. Misschien is uw <a href='$2'>module configuratie</a> niet correct, of is Postfix niet geinstalleerd.
 index_postfix=Postfix
+
 internal_error=Interne Fout
 index_econfig=De Postfix config opdracht $1 bestaat niet. Misschien is uw <a href='$2'>module configuratie</a> niet correct.
 index_esuper=De Postfix supervisor opdracht $1 bestaat niet. Misschien is uw <a href='$2'>module configuratie</a> niet correct.
@@ -12,8 +13,10 @@ index_stopmsg=Klik op deze knop om de Postfix mail server te stoppen. Hiermee st
 index_startmsg=Klik op deze knop om de Postfix mail server te starten. Als dit niet is gedaan zal er geen mail worden afgeleverd aan locale gebruikers van andere systemen, en clients zullen dit systeem niet als mail server kunnen gebruiken.
 index_version=Postfix versie $1
 opts_err=Mislukt om opties op te slaan
+
 check_error=Fout ontdekt tijdens controle van de huidige Postfix configuratie. Wilt u handmatig de Postfix configuratie repareren.
 check_manual=Handmatig de Postfix configuratie file bewerken.
+
 address_rewriting_title=Adres Herschrijven en Masquerading
 address_rewriting_ecannot=U bent niet bevoegd om adres herschrijven en masquerading te bewerken
 aliases_title=Mail Aliassen
@@ -40,9 +43,11 @@ aliases_type5=Auto-antwoord file $1
 aliases_type6=Toevoegen van filter file $1
 aliases_none=Geen
 aliases_delete=Verwijder Geselecteerde Aliassen
+
 postfinger_title=Configuratie Check
 postfinger_show=Bekijk
 postfinger_ecannot=U bent niet bevoegd om de postfix configuratie te controleren
+
 mailclean_title=Schone Mail Wachtrij
 mailclean_ecannot=Geen privileges voor opgeschoonde Mail Wachtrijen
 mailclean_active=Actieve-Wachtrij
@@ -51,6 +56,7 @@ mailclean_deferred=Uitgestelde-Wachtrij
 mailclean_defer=Uitstellen-Wachtrij
 mailclean_all=Alle Wachtrijen
 mailclean_search=Zoek-Argument
+
 aform_type0=Geen
 aform_type1=Email adres
 aform_type2=Adressen in file
@@ -66,6 +72,7 @@ aform_val=Alias naar
 aform_afile=Bewerk..
 aform_return=alias
 aform_cmt=Omschrijving
+
 asave_err=Mislukt om alias op te slaan
 asave_eaddr='$1' is geen geldig adres
 asave_ealready=Een alias voor '$1' bestaat reeds
@@ -76,11 +83,13 @@ asave_etype4='$1' is geen geldig programma of bestaat niet
 asave_etype5=Auto-antwoord file '$1' is niet geldig
 asave_etype4none=Geen programma opgegeven
 asave_etype6=Filter file '$1' is niet geldig
+
 afile_title=Bewerk Adres File
 afile_desc=Gebruik het tekst veld hieronder om de adressen in de file $1 te bewerken.
 afile_efile=U bent niet bevoegd om $1 te bewerken.
 afile_undo=Veranderingen Ongedaan Maken
 afile_ewrite=Mislukt te schrijven naar adressen file : $1
+
 ffile_title=Bewerk Filter File
 ffile_desc=Gebruik het formulier hieronder om filter regels op te zetten in de file $1.
 ffile_efile=U bent niet bevoegd om $1 te bewerken.
@@ -96,6 +105,7 @@ ffile_other=Anders doorsturen naar $1
 ffile_err=Mislukt om filter file op te slaan
 ffile_ematch=Ontbrekende overeenkomst
 ffile_eaction=Ontbrekend doorstuur adres
+
 rfile_title=Bewerk Auto-antwoord File
 rfile_desc=Gebruik het tekstveld hieronder om het auto-antwoord bericht in $1 te bewerken. Het bericht mag de volgende macro's bevatten $SUBJECT, $FROM, $TO, $DATE en $BODY welke zullen worden uitgevoerd indien auto-antwoord word geactiveerd.
 rfile_desc2=U kunt ook de mail kopteksten bepalen die de standaard mail kopteksten zullen vervangen welke gebruikt worden in de auto-antwoord door regels toe te voegen zoals:<br><tt>Van: foo@bar.com</tt><br><tt>Ondewerp: Op vakantie</tt><br>bovenaan het bericht, gescheiden van de body door een enkele lege regel.
@@ -114,11 +124,13 @@ rfile_from=Van: adres voor antwoord
 rfile_auto=Automatisch (gebaseerd op ontvangers adres)
 rfile_efrom=Ontbrekend Van: adres
 rfile_fromdesc=Een Van: adres moet altijd worden gespecificeerd wanneer mogelijk, anders is de automatische methoden niet betrouwbaar.
+
 general_title=Algemene Opties
 general_title_sensible=Meest Gebruikte Algemene Opties
 general_title_others=Andere Algemene Opties
 general_ecannot=U bent niet bevoegd om de Algemene Opties te bewerken
 what_is_it=Wat is dit?
+
 opts_default=Standaard
 opts_none=Niets
 opts_nomap=Geen map gezet
@@ -138,10 +150,12 @@ opts_mail_owner=Mail eigenaar
 opts_default_privs=Standaard rechten van de aflever agent
 opts_inet_interfaces=Netwerk interfaces om mail mee te ontvangen
 opts_all_interfaces=Alles
+
 opts_local_recipient_maps=Afwijzen onbekende locale gebruikers
 opts_no=Nee
 opts_save=Opslaan en Toevoegen
 opts_edir=U bent alleen bevoegd om mappen te specificeren onder $1
+
 opts_allow_percent_hack=Wijzig gebruiker%domein naar gebruiker@domein
 opts_append_at_myorigin=Wijzig "gebruiker" naar "gebruiker@$mydomain"
 opts_append_dot_mydomain=Wijzig "gebruiker@host" naar "gebruiker@host.$mydomain
@@ -151,13 +165,17 @@ opts_swap_bangpath=Wijzig "site!gebruiker" naar "gebruiker@site"
 opts_masquerade_domains=Adres maskering
 opts_masquerade_exceptions=Maskeer uitzonderingen
 index_return=Postfix configuratie
+
 opts_alias_maps=Alias databases gebruikt door de locale aflever agent
 opts_alias_database=Alias databases gemaakt met "newaliases" opdracht
 aliases_warning=Waarschuwing: <ul><li>wanneer het eerste veld niet leeg is, zal de standaard alias-generatie opdracht gebruikt worden om de overeenkomstige databases te maken ; <li>anders zal de Sendmail compatibiliteit opdracht "newaliases" gebruikt worden, dit zal dan het tweede veld van de databases gebruiken.</ul>
+
 aliases_name=Naam
 aliases_value=Alias naar...
+
 new_alias=Maak een nieuwe alias
 new_aliasmsg=Klik op deze knop om een nieuwe alias te maken
+
 local_delivery_ecannot=U bent niet bevoegd om locale aflever opties te bewerken
 local_delivery_title=Locale Aflevering
 opts_local_transport=Naam van de transport voor locale aflevering
@@ -183,6 +201,7 @@ opts_local_destination_recipient_limit=Max aantal ontvangers per locale berichte
 opts_local_destination_recipient_limit_default=Standaard
 opts_prepend_delivered_header=Voorbereiden van een <tt>Afgeleverd-Aan:</tt> wanneer..
 opts_prepend_delivered_header_default=Standaard
+
 resource_title=Algemene Middelen Controle
 resource_ecannot=U bent niet bevoegd de hoofd controle parameters te bewerken
 opts_bounce_size_limit=Max grote van af te ketsen bericht
@@ -202,6 +221,7 @@ opts_qmgr_message_recipient_limit=Max aantal van de in-geheugen ontvangers
 opts_queue_minfree=Minimale vrije ruimte in het wachtrij file systeem
 opts_stale_lock_time=Max tijd nadat het oude slot is vrijgegeven
 opts_transport_retry_time=Tijd in seconden tussen pogingen om contact te maken met een verbroken MDT
+
 opts_always_bcc=Adres dat Bcc ontvangt van ieder bericht
 opts_always_bcc_none=Niets
 opts_daemon_timeout=Timeout voor afhandeling aanvragen
@@ -240,6 +260,7 @@ opts_trigger_timeout=Max tijd om een trigger te zenden naar een deamon
 opts_delay_warning_time=Tijd in uren voordat een waarschuwing word verzonden indien niet afgeleverd
 opts_delay_warning_time_default2=Postfix standaard
 opts_content_filter_default=Niets
+
 smtpd_title=SMTP server opties
 smtpd_ecannot=U bent niet bevoegd de SMTP server opties te wijzigen
 opts_disable_vrfy_command=Uitschakelen SMTP VRFY opdracht
@@ -268,6 +289,7 @@ opts_unknown_address_reject_code=SMTP server reactie op onbekende domein weigeri
 opts_unknown_client_reject_code=SMTP server reactie op onbekende client weigering
 opts_unknown_hostname_reject_code=SMTP server reactie op onbekende hostnaam weigering
 smtpd_nomap=Er is nog geen map voor toegestane adressen voor het doorgeven ingevuld.
+
 smtp_title=SMTP cliënt opties
 smtp_ecannot=U bent niet bevoegd de SMTP cliënt opties te wijzigen
 opts_best_mx_transport=Actie wanneer als beste MX host in de lijst word gezet
@@ -286,6 +308,7 @@ opts_smtp_data_init_timeout=Timeout voor het wachten op antwoord op DATA
 opts_smtp_data_xfer_timeout=Timeout voor het wachten op antwoord om inhoud bericht te versturen
 opts_smtp_data_done_timeout=Timeout op wachten van antwoord om te stoppen "."
 opts_smtp_quit_timeout=Timeout om te wachten op antwoord voor STOPPEN
+
 rate_title=Aflever ratio
 rate_ecannot=U bent niet bevoegd de aflever ratio opties te bewerken
 opts_default_destination_concurrency_limit=Max aantal parallelle afleveringen aan dezelfde bestemming
@@ -296,18 +319,21 @@ opts_maximal_queue_lifetime=Max tijd (dagen) in de wachtrij voordat een bericht 
 opts_minimal_backoff_time=Max tijd (sec) tussen pogingen om een uitgesteld bericht af te leveren
 opts_queue_run_delay=Tijd (sec) tussen scannen van de uitgestelde wachtende
 opts_defer_transports=Transporten die niet moeten worden afgeleverd
+
 debug_title=Debug opties
 debug_ecannot=U bent niet bevoegd om de debug opties te bewerken
 opts_debug_peer_list=Lijst met domein/netwerk patronen waarvoor verbose log is aangezet
 opts_debug_peer_level=Verbose log's niveau wanneer die overeenkomt met de lijst hierboven
 debug_version=Postfix Module voor Webmin - Versie $1
 opts_edebug=Ontbrekende of ongeldige verbose log level - moet een getal zijn groter dan nul
+
 ldap_title=LDAP lookups
 ldap_ecannot=U bent niet bevoegd om de LDAP lookups opties te bewerken
 ldap_non_existent=Het schijnt dat LDAP niet bestaat in uw Postfix systeem
 opts_ldap_lookup_timeout=Timeout voor LDAP database lookups
 opts_ldap_search_base=LDAP database om op te zoeken
 opts_ldap_server_host=LDAP server hostnaam
+
 canonical_title=Canonical Mapping
 canonical_ecannot=U bent niet bevoegd de canonical mapping configuratie te bewerken
 opts_canonical_maps=Adres mapping tabellen om te raadplegen
@@ -321,6 +347,7 @@ canonical_edit_title=Bewerk Canonical Map
 canonical_return_sender=Afzender canonical maps
 canonical_return_recipient=Ontvanger canonical maps
 canonical_return=canonical maps
+
 mapping_name=Naam
 mapping_value=Maps naar...
 mapping_delete=Verwijder Geselecteerde
@@ -344,6 +371,7 @@ map_noname=Ontbrekende of ongeldige mapping naam
 map_cannot=Deze map kan niet worden bewerkt : $1
 map_unknown=Webmin ondersteunt niet het type map $1
 mapping_none=Er zijn nog geen mappings van dit soort gedefinieerd.
+
 virtual_title=Virtuele Domeinen
 virtual_ecannot=U bent niet bevoegd om de domein mapping configuratie te veranderen
 opts_virtual_maps=Domein mapping opzoek tabellen
@@ -351,29 +379,37 @@ opts_virtual_alias_maps=Domein mapping opzoek tabellen
 opts_virtual_alias_domains=Domeinen waarvoor virtuele mapping uitgevoerd moet worden
 virtual_same=Van de domein mapping tabellen
 virtual_return=Virtuele domeinen
+
 transport_title=Transporteer Mappen
 transport_ecannot=U bent niet bevoegd de transport mapping configuratie te wijzigen
 opts_transport_maps=Transport mapping opzoek tabellen
 transport_return=Transporteer mappen
+
 relocated_title=Verplaatste Mapping
 relocated_ecannot=U bent niet bevoegd de verplaatste mapping configuratie te bewerken
 relocated_return=verplaatste mappen
 opts_relocated_maps=Herplaats mapping opzoek tabellen
 opts_content_filter=Email filter voor inhoud
+
 map_click=Klik op een mapping om de eigenschappen te bewerken:
 no_map=(Er is nog geen map gedefinieerd. Definieer eerst een map, dan pas kunt u hem bewerken)
 no_map2=Er is nog geen map gedefinieerd. Definieer eerst een map, dan pas kunt u hem bewerken
+
 stop_efailed=Mislukt om Postfix te stoppen
 stop_ecannot=U bent niet bevoegd om Postfix te stoppen
+
 start_efailed=Mislukt om Postfix te starten
 start_ecannot=U bent niet bevoegd om Postfix te starten
+
 reload_efailed=Mislukt om Postfix te herladen.
 reload_ecannot=U bent niet bevoegd om Postfix te herladen
+
 query_get_efailed=Opvragen mislukt van de Postfix config opdracht voor de huidige waarde van  parameter $1: <tt>$2</tt>
 query_set_efailed=Opvragen mislukt van de Postfix config opdracht om de huidige waarde te zetten van parameter $1 naar $2: <tt>$3</tt>
 regenerate_ecannot=U bent niet bevoegd om de Aliassen te her-genereren
 regenerate_alias_efailed=Her-genereren mislukt van aliassen: <tt>$1</tt>
 regenerate_table_efailed=Her-genereren mislukt van  tabel $1: <tt>$2</tt>
+
 acl_resource=Mag bronnen bewerken?
 acl_aliases=Mag aliassen bewerken?
 acl_aliases_options=Mag aliassen opties bewerken?
@@ -400,6 +436,7 @@ acl_postfinger=Mag postfix configuratie bewerken?
 acl_manual=Mag configuratie file bewerken?
 acl_dir=Toegestane directory voor map files
 acl_bcc=Mag BCC mapping bewerken?
+
 boxes_title=Gebruikers Mailboxen
 boxes_user=Gebruiker
 boxes_size=Mailbox grote
@@ -409,6 +446,7 @@ boxes_sent=Verstuur mail
 boxes_ecannot=U bent niet bevoegd om email te lezen
 boxes_toomany=Er zijn teveel gebruikers op uw systeem om al hun mailboxen in een lijst te zetten.
 boxes_go=Bekijk mail van gebruiker:
+
 mail_title=Gebruikers Email
 mail_from=Van
 mail_date=Datum
@@ -447,6 +485,7 @@ mail_forward=Doorsturen
 mail_rfc=Van regel
 mail_move=Verplaats naar :
 mail_eexists=Bericht bestaat niet langer!
+
 view_title=Lees Email
 view_desc=Bericht $1 in $2
 view_desc2=Bericht $1 voor gebruiker $2
@@ -475,6 +514,7 @@ view_body=Berichten tekst
 view_afile=Bijlage naam
 view_atype=Bijlage type
 view_asize=File grote
+
 compose_title=Composeer Email
 reply_title=Antwoord naar Email
 forward_title=Doorsturen Email
@@ -485,6 +525,7 @@ reply_mailforward=Doorsturen berichten
 reply_attach2=Cliënt en server-zijde Bijlagen
 reply_send=Verstuur Mail
 reply_ecannot=U bent niet bevoegd om mail te versturen als deze gebruiker
+
 send_err=Mislukt om mail te sturen
 send_eto=Versturen Aan adres ontbreekt
 send_efrom=Ontbrekend Van Adres
@@ -498,6 +539,7 @@ send_eperms=Gebruiker $1 kan $2 niet lezen
 send_eperms2=U bent niet bevoegd om de file $1 te verzenden
 send_epath=Stuur-mail uitvoerbestand $1 bestaat niet.
 send_ewrapper=Het Postfix sendmail interface programma bestaat niet
+
 search_title=Zoek resultaten
 search_ecannot=U bent niet bevoegd te zoeken in deze gebruikers email
 search_ematch=U moet tekst ingeven waarmee gezocht kan worden.
@@ -505,6 +547,7 @@ search_efield=U moet een zoek argument selecteren.
 search_none=Geen berichten gevonden
 search_results2=$1 mail berichten komen overeen met $2 ..
 search_results3=$1 mail berichten komen niet overeen met $2 ..
+
 match_from=Van: komt overeen
 match_subject=Onderwerp: komt overeen
 match_to=Naar: komt overeen
@@ -522,6 +565,7 @@ match_!date=Datum: komt niet overeen
 match_!body=Body: komt niet overeen
 match_!size=Afmeting is kleiner dan
 match_!headers=Kopteksten komen niet overeen
+
 mailq_title=Mail Wachtrij
 mailq_count=$1 berichten
 mailq_none=Er staan op dit moment geen email's in de wachtrij voor aflevering
@@ -548,15 +592,20 @@ mailq_active=Actieve
 mailq_deferred=Uitgesteld
 mailq_hold=Stop Geselecteerde
 mailq_unhold=Geselecteerde Uit Wacht halen
+
 flushq_title=Spoel Wachtrij
 flushq_desc=Forceer de vorige poging om mail af te leveren met de opdracht $1 ..
+
 qview_title=Wachtrij Berichten
 qview_desc=Van file $1
 qview_headers=Mail kopteksten
 qview_attach=Bijlagen
+
 after_err=Postfix configuratie fout : $1
+
 searchq_title=Wachtrij Zoek Resultaten
 searchq_none=Geen wachtende berichten gevonden.
+
 header_title=Header Controle
 header_ecannot=U bent niet bevoegd om header controle te bewerken
 header_eregexp=De header controle map moet zijn in het formaat <tt>regexp:</tt><i>filename</i>
@@ -575,11 +624,13 @@ header_reject=Weiger (met fout bericht ..)
 header_warn=Log waarschuwing (met bericht ..)
 header_ename=Ongeldige reguliere expressie - het moet lijken op /zoietsalsdit/
 header_return=header controle
+
 body_title=Body Controle
 body_ecannot=U bent niet bevoegd om body controle te bewerken
 body_eregexp=De body controle map moet zijn in het formaat <tt>regexp:</tt><i>filenaam</i>
 opts_body_checks=Berichten body controle tabellen
 body_return=body controle
+
 manual_title=Bewerk Map File
 manual_file=Selecteer een map file om te bewerken:
 manual_change=Verander
@@ -587,9 +638,11 @@ manual_editing=Gebruik het tekstveld hieronder om handmatig de mappings in $1 te
 manual_err=Mislukt om map file op te slaan
 manual_efile=Ongeldige map filenaam!
 manual_ecannot=U bent niet bevoegd om handmatig map files te bewerken
+
 delq_titles=Verwijderen Berichten
 delq_rusure=Weet u zeker dat u de $1 geselecteerde berichten die in de wachtrij staan wilt verwijderen?
 delq_confirm=Verwijder Berichten
+
 master_title=Server Processen
 master_name=Proces naam
 master_enabled=Aangezet?
@@ -630,8 +683,10 @@ master_einet=Een host adres om op te luisteren kan alleen worden gespecificeerd 
 master_ecommand=Ontbrekende server proces opdracht
 master_ewakeup=Ontbrekende of ongeldige wek-tijd
 master_emaxprocs=Ontbrekende of ongeldig maximum aantal processen
+
 delete_err=Mislukt om mappings te verwijderen
 delete_enone=Niets geselecteerd
+
 cmanual_title=Bewerk Config Files
 cmanual_ecannot=U bent niet bevoegd om de Postfix config file te bewerken
 cmanual_ok=Bewerk
@@ -639,10 +694,12 @@ cmanual_efile=Geselecteerde file is geen onderdeel van de Postfix configuratie
 cmanual_file=Bewerk config file:
 cmanual_edata=Niets ingevuld!
 cmanual_err=Mislukt om config file op te slaan
+
 access_return=toegang map tabel
 edit_map_file=Bewerk Map File
 opts_reject_rbl_client=Realtime Zwarte Lijst (RBL) opzoek acties
 opts_check_sender_access=Controleer afzender toegang's map tabel
+
 log_misc=Gewijzigde algemene opties
 log_opts=Gewijzigde adres herschrijving en maskering
 log_aliases=Veranderde aliassen opties
@@ -720,6 +777,7 @@ log_flushq=Gefluste mail wachtrij
 log_backend=Ge-update configuratie file voor map $1
 log_sasl=Gewijzigde SMTP authenticatie en encryptie
 log_client=Gewijzigde SMTP cliënt beperkingen
+
 sasl_title=SMTP Authenticatie En Encryptie
 opts_smtpd_sasl_auth_enable=Aanzetten SASL SMTP authenticatie?
 opts_broken_sasl_auth_clients=Afhandelen van niet-volgzame SMTP clients?
@@ -757,6 +815,7 @@ sasl_nologin=Niets nodig
 sasl_userpass=Login als $1 met wachtwoord $2
 sasl_elogin=Ontbrekende of ongeldige SMTP inlog
 sasl_epass=Ongeldig SMTP wachtwoord
+
 client_title=SMTP Cliënt Restricties
 client_ecannot=U bent niet bevoegd om de SMTP cliënt restricties te bewerken
 client_restrict=Cliënt restricties
@@ -766,6 +825,7 @@ client_other=Andere restricties :
 client_err=Mislukt om cliënt restricties op te slaan
 client_evalue=Ontbrekende waarde voor restrictie $1
 client_return=SMTP cliënt restricties
+
 chooser_title=Selecteer Map Bron
 chooser_header=Map bron $1
 chooser_none=Niets
@@ -821,6 +881,7 @@ chooser_elquery_filter=Ontbrekende wachtrij filter voor map $1
 chooser_elresult_attribute=Ontbrekende of ongeldige benaming voor map $1
 chooser_elbind_dn=Ontbrekende login voor LDAP server voor map $1
 chooser_elbind_pw=Ontbrekend wachtwoord voor LDAP server voor map $1
+
 mysql_ecfile=MySQL configuratie file $1 is niet gevonden
 mysql_elogin=Mislukt in te loggen bij de database $1 : $2.
 mysql_equery=In wachtrij zetten mislukt van tabel $1 : $2
@@ -830,6 +891,7 @@ mysql_eupdate=SQL update mislukt : $1
 mysql_elist=SQL wachtrij mislukte : $1
 mysql_esource=Er is geen MySQL bron met de naam $1 gevonden
 mysql_eneed=De MySQL configuratie parameter $1 is niet gevonden. Webmin heeft dit nodig om uit te zoeken welke tabel en veld in de wachtrij moeten.
+
 ldap_ecfile=LDAP configuratie file $1 is niet gevonden
 ldap_eldapmod=Perl module $1 die nodig is om met de LDAP te communiceren is niet geinstalleerd of te laden
 ldap_eldap=Verbinden mislukt met de LDAP server $1 op poort $2
@@ -840,6 +902,7 @@ ldap_edelete=LDAP verwijderen van $1 mislukt : $2
 ldap_equery=LDAP zoeken van $1 mislukt : $2
 ldap_erename=LDAP hernoemen van $1 naar $2 mislukt : $3
 ldap_emodify=LDAP modificatie van $1 mislukt : $2
+
 bcc_title=BCC Mapping
 bcc_ecannot=U bent niet bevoegd de BCC mappings te bewerken
 opts_sender_bcc_maps=Afzender BCC mapping opzoek tabellen

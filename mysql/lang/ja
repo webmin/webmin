@@ -38,12 +38,15 @@ index_showing=Showing databases matching $1 ..
 index_emsg=The full MySQL error message was : $1
 index_jump=Or edit database:
 index_jumpok=Open
+
 login_err=ログインできませんでした。
 login_ecannot=データベース ログインは設定できません
 login_elogin=管理ログインがありません
 login_epass=管理ユーザ名またはパスワードが不正です
+
 stop_err=データベースを停止できませんでした
 start_err=データベースを起動できませんでした
+
 dbase_title=データベースの編集
 dbase_header=Database tables, indexes and views
 dbase_tables=データベース テーブル
@@ -66,12 +69,14 @@ dbase_index=Index
 dbase_view=View
 dbase_addview=Create View
 dbase_jump=Or edit table:
+
 ddrop_err=データベースを削除できませんでした
 ddrop_title=データベースの削除
 ddrop_rusure=データベース $1 を削除してもよろしいですか？$3 行のデータを含む$2 テーブルは削除されます。
 ddrop_mysql=これはマスター データベースなので、削除すると MySQL サーバが不安定になります。
 ddrop_ok=データベースを削除
 ddrop_empty=テーブル全削除
+
 ddrops_err=Failed to drop databases
 ddrops_title=Drop Databases
 ddrops_rusure=Are you sure you want to drop the $1 selected databases? $2 tables containing $3 rows of data will be deleted.
@@ -80,6 +85,7 @@ ddrops_mysql=Because the master database is selected, dropping it will probably 
 ddrops_ok=Drop Databases
 ddrops_enone=No databases selected
 ddrops_ecannotdb=You are not allowed to drop the database $1
+
 table_title=テーブルの編集
 table_title2=テーブルの作成
 table_header=データベース $2 内のテーブル $1
@@ -125,16 +131,19 @@ table_nextra=追加属性
 table_eautokey=auto-incremenentが設定されたフィールドは主キーでなければなりません。
 table_eauto=自動インクリメントはひとつのフィールドにしか設定できません。
 table_delete=選択したフィールドを削除
+
 tdrop_err=テーブルを削除できませんでした
 tdrop_title=テーブルの削除
 tdrop_rusure=データベース $2内のテーブル $1を削除してもよろしいですか？$3 行のデータが削除されます。
 tdrop_ok=テーブルを削除
+
 tdrops_enone=No objects to drop selected
 tdrops_err=Failed to drop objects
 tdrops_ok=Drop Objects
 tdrops_title=Drop Objects
 tdrops_rusure=Are you sure you want to drop the $1 selected objects in database $2 ? $3 rows of data will be deleted.
 tdrops_rusure2=Are you sure you want to drop the $1 selected objects in database $2 ?
+
 field_title1=フィールドの追加
 field_title2=フィールドの変更
 field_in=データベース $2内のテーブル $1 中
@@ -166,6 +175,7 @@ field_esize='$1' は無効なフィールド サイズです
 field_eenum=列挙型の値が入力されていません
 field_efield='$1' は無効なフィールド名です
 field_ekey=NULLを許可するフィールドは主キーの一部にできません
+
 view_title=テーブル データ
 view_pos=$3の行 $1 から $2
 view_none=このテーブルはデータを含んでいません
@@ -194,6 +204,7 @@ view_download=ダウンロード ..
 view_keep=変更しない
 view_set=ファイル内容をセット..
 view_adv=Advanced Search
+
 users_title=ユーザの許可
 users_user=ユーザ
 users_host=ホスト
@@ -215,6 +226,7 @@ users_sync_sel=特定のホスト
 users_delete=選択したものを削除
 users_derr=Failed to delete users
 users_enone=No users selected
+
 user_title1=ユーザの作成
 user_title2=ユーザの編集
 user_header=MySQL ユーザの詳細
@@ -230,6 +242,7 @@ user_perms=許可
 user_err=ユーザを保存できませんでした
 user_euser=ユーザ名がないか無効です
 user_ehost=ホストの許可がないか無効です
+
 dbs_title=データベースの許可
 dbs_db=データベース
 dbs_user=ユーザ
@@ -245,6 +258,7 @@ dbs_none=なし
 dbs_return=データベースの許可
 dbs_derr=Failed to delete database permissions
 dbs_enone=No databases selected
+
 db_title1=データベースの許可の作成
 db_title2=データベースの許可の編集
 db_header=データベースの許可のオプション
@@ -259,6 +273,7 @@ db_err=データベースの許可を保存できませんでした
 db_euser=ユーザ名がないか無効です
 db_ehost=ホスト名がないか無効です
 db_edb=存在しないか無効なデータベース名です
+
 hosts_title=ホストの許可
 hosts_db=データベース
 hosts_host=ホスト
@@ -270,6 +285,7 @@ hosts_add=新規のホストの許可を作成
 hosts_empty=データベースの許可が定義されていません
 hosts_derr=Failed to delete host permissions
 hosts_enone=No hosts selected
+
 host_title1=ホストの許可の作成
 host_title2=ホストの許可の編集
 host_header=ホストの許可のオプション
@@ -279,6 +295,7 @@ host_sel=Selected
 host_otherdb=Matching pattern
 host_host=ホスト
 host_perms=許可
+
 newdb_title=データベースの作成
 newdb_header=新規のデータベース オプション
 newdb_db=データベース名
@@ -291,6 +308,7 @@ newdb_err=データベースを作成できませんでした
 newdb_edb=データベース名がないか無効です
 newdb_ecannot=データベースを作成できません
 newdb_ecannot2=You are not allowed to create any more databases
+
 exec_title=SQL の実行
 exec_header=データベース $1 で実行する SQL コマンドを入力してください..
 exec_old=または、直前のSQLコマンドを選択 :
@@ -326,6 +344,7 @@ exec_isource=Text file source
 exec_iheader=Text file import options
 exec_created=$1 tables were created.
 exec_inserted=$1 records were inserted.
+
 tprivs_title=テーブルの許可
 tprivs_table=テーブル
 tprivs_db=データベース
@@ -341,6 +360,7 @@ tprivs_return=テーブルの許可
 tprivs_none=なし
 tprivs_derr=Failed to delete table permissions
 tprivs_enone=No tables selected
+
 tpriv_title1=テーブルの許可の作成
 tpriv_title2=テーブルの許可の編集
 tpriv_header=テーブルの許可のオプション
@@ -357,6 +377,7 @@ tpriv_etable=選択されたテーブルはありません
 tpriv_euser=ユーザ名がないか無効です
 tpriv_ehost=ホスト名がないか無効です
 tpriv_edb=Missing or invalid database name
+
 cprivs_title=フィールドの許可
 cprivs_field=フィールド
 cprivs_table=テーブル
@@ -373,6 +394,7 @@ cprivs_return=フィールドの許可
 cprivs_none=なし
 cprivs_derr=Failed to delete field permissions
 cprivs_enone=No fields selected
+
 cpriv_title1=フィールドの許可の作成
 cpriv_title2=フィールドの許可の編集
 cpriv_header=フィールドの許可のオプション
@@ -389,11 +411,13 @@ cpriv_etable=フィールドが選択されていません
 cpriv_euser=ユーザ名がないか無効です
 cpriv_ehost=ホスト名がないか無効です
 cpriv_edb=Missing or invalid database name
+
 esql=SQL $1 が失敗しました: $2
 eparse=データベースの $1 コマンド の出力を解析できません。Perlモジュール $2 と $3 をインストールして下さい。
 edenied=MySQLデータベースにアクセスしていません。
 perms_ecannot=許可を編集できません
 perms_edb=自分のデータベースのみ許可を編集できます
+
 acl_dbs=このユーザが管理できるデータベース
 acl_dall=すべてのデータベース
 acl_dsel=選択..
@@ -413,6 +437,7 @@ acl_edonly=テーブルデータだけを編集可能にしますか?
 acl_bnone=バックアップ不可
 acl_indexes=Can view and manage indexes?
 acl_views=Can view and manage views?
+
 log_start=MySQL サーバを起動しました
 log_stop=MySQL サーバを停止しました
 log_cnf=Changed MySQL server configuration
@@ -476,6 +501,7 @@ log_importupload=アップロードされたファイルからデータがイン
 log_importfile=ファイル $1 からデータがインポートされました。
 log_set=Changed $1 MySQL variables
 log_root=Changed administration password
+
 backup_title=データベースのバックアップ
 backup_title2=Backup All Databases
 backup_edump=MySQL バックアップ プログラム $1がシステムにありませんでした。<a href='$2'>module configuration</a> is incorrect.
@@ -528,15 +554,18 @@ backup_cnone=None
 backup_gzip=Gzip
 backup_bzip2=Bzip2
 backup_eccmd=The selected compression format requires the command $1
+
 import_title=データのインポート
 import_uploadout=アップロードされたファイルからデータをインポートしています ..
 import_fileout=ファイル $1 のデータをインポートしています ..
 import_eupload=アップロードされたインポートファイル名不明
 import_efile=インポートファイル名不明
+
 adv_title=Advanced Search
 adv_and=Find records matching all criteria ..
 adv_or=Find records matching any criteria ..
 adv_ok=Search Now
+
 csv_title=Export CSV File
 csv_header=CSV export options
 csv_dest=Export destination
@@ -557,6 +586,7 @@ csv_done=CSV export to $1 is complete. The resulting file size is $2.
 csv_headers=Include column names in CSV?
 csv_cols=Columns to include in CSV
 csv_ecols=No columns selected
+
 cnf_title=MySQLサーバの設定
 cnf_efile=MySQL設定ファイル $1 は見つかりませんでした。<a href='$2'>モジュール設定</a>で使用している設定ファイルのパスを修正してください。
 cnf_header=MySQL server options
@@ -586,6 +616,7 @@ cnf_esort_buffer=Missing or invalid sort buffer size
 cnf_enet_buffer_length=Missing or invalid network buffer size
 cnf_emyisam_sort_buffer_size=Missing or invalid MyISAM sort buffer size
 cnf_emax_connections=Missing or invalid maximum number of connections
+
 index_title1=Create Index
 index_header1=Index options
 index_name=Index name
@@ -601,11 +632,14 @@ index_ecols=No fields selected
 index_title2=Edit Index
 index_header=Index $1 in database $2
 index_ecannot=You are not allowed to manage indexes
+
 syslog_desc=MySQL error messages
 syslog_logdesc=MySQL queries
+
 fdrop_err=Failed to delete fields
 fdrop_enone=None selected
 fdrop_eall=You cannot delete all fields from a table!
+
 view_title1=Create View
 view_title2=Edit View
 view_header1=View details
@@ -631,6 +665,7 @@ view_cascaded=Underlying views
 view_local=This view only
 view_nocheck=None
 view_ecannot=You are not allowed to manage views
+
 procs_title=データベース接続
 procs_id=ID
 procs_user=ユーザ名
@@ -642,9 +677,11 @@ procs_query=クエリ
 procs_kill=選択した接続を切断
 procs_ecannot=You are not allowed to view database connections
 procs_none=現在はデータベースに接続しているクライアントはありません。
+
 kill_err=Failed to kill database connections
 kill_ecannot=You are not allowed to manage database connections
 kill_enone=None selected
+
 vars_title=MySQLシステム変数
 vars_ecannot=You are not allowed to edit system variables
 vars_name=変数名
@@ -654,6 +691,7 @@ vars_search=マッチした変数を表示:
 vars_ok=検索
 vars_none2=検索でマッチした変数はありません。
 vars_none=No system variables were found!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
@@ -665,7 +703,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=Key options
 compat_no_table_options=Table options
 compat_no_field_options=Field options
+
 config_echarset=Missing or invalid-looking character set
+
 root_title=管理パスワードの変更
 root_header=新しい管理パスワード
 root_user=管理者名

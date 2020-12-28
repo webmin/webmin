@@ -10,6 +10,7 @@ index_range=Générer un rapport pour la plage de dates
 index_view=Afficher le rapport généré
 index_viewdesc=Affichez le dernier rapport généré dans le répertoire $1.
 index_return=index du module
+
 log_title=Source du journal et destination du rapport
 log_header=Fichier journal Squid source et options de rapport généré
 log_access_log=Fichier journal Squid source
@@ -30,6 +31,7 @@ log_elastlog=Numéro manquant ou non
 log_eemail=Adresse e-mail manquante ou non valide
 log_emailx=Programme de messagerie manquant ou inexistant
 log_squidguard_log_path=Fichier journal SquidGuard
+
 style_title=Style de rapport
 style_header=Options de style et de couleur de rapport HTML
 style_title2=Titre du rapport
@@ -54,6 +56,7 @@ style_efont=Nom de police manquant ou invalide
 style_esize=Largeur et hauteur d'image manquantes ou non valides
 style_language=Langue du rapport
 style_charset=Signaler le jeu de caractères
+
 report_title=Options de rapport
 report_header=Rapporter les options de contenu et de génération
 report_resolve_ip=Résoudre les adresses IP?
@@ -131,6 +134,7 @@ report_echar=Les espaces ne sont pas autorisés
 report_estring=Texte de remplacement manquant ou invalide
 report_eselect=Rien de sélectionné
 report_eenter=Rien n'est entré
+
 sched_title=Génération planifiée de rapports
 sched_header=Options de rapports planifiés
 sched_sched=Rapport planifié activé?
@@ -145,9 +149,11 @@ sched_rsel=Ceux d'il y a $1 à $2 jours
 sched_err=Impossible d'enregistrer la génération de rapport planifiée
 sched_erfrom=Il y a un nombre de jours manquant ou non valide
 sched_erto=Il y a plusieurs jours manquants ou non valides
+
 view_title=Rapport Sarg
 view_efile=Nom de fichier non valide!
 view_eopen=Impossible d'ouvrir le fichier de rapport
+
 gen_header=Génération du rapport Sarg à partir du fichier journal Squid $1 et de toutes les versions pivotées ..
 gen_failed=.. Sarg a échoué! Voir la sortie ci-dessus pour plus de détails.
 gen_nothing=.. Sarg a terminé, mais aucun rapport n'a été généré. Voir la sortie ci-dessus pour plus de détails.
@@ -155,6 +161,7 @@ gen_view=Afficher le rapport terminé.
 gen_err=Échec de la génération du rapport
 gen_efrom=Manquant ou invalide du jour
 gen_eto=Manquant ou invalide à ce jour
+
 webmin_log_log=Options de source de journal et de destination de rapport mises à jour
 webmin_log_report=Options de rapport mises à jour
 webmin_log_style=Options de style de rapport mises à jour

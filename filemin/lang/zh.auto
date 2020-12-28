@@ -155,8 +155,10 @@ menu_bookmarks=书签
 notallowed=您无权访问 $1。允许的目录为： $2
 error_upload_emax=上传的文件大于 $1的限制
 extract_etype=不支持的存档文件类型
+
 info_total1=总计： $1个文件和 $2个目录
 info_total2=总计： $1个文件和 $2目录
 info_total3=总计： $1个文件和 $2个目录
 info_total4=总计： $1个文件和 $2个目录
+
 ownership=所有者

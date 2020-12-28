@@ -25,6 +25,7 @@ index_family=Modeļu saime
 index_serial=Sērijas numurs
 index_capacity=Jauda
 index_norm=Normalizēts:
+
 monitor_type=SMART diska pārbaude
 monitor_type2=SSD nolietojums
 monitor_drive=Brauciet pārbaudīt
@@ -40,14 +41,17 @@ monitor_wearlevel=Neveiksmīgi, ja nodiluma līmenis nokrītas zemāk
 monitor_ewearlevel=Nederīgs nodiluma līmeņa procents
 monitor_nowearout=Disks neziņo par SSD nolietojuma indikatoru
 monitor_wornout=Nodiluma līmenis ir samazinājies līdz $1 
+
 short_title=Īss pašpārbaude
 short_doing=Sākas īsa $1 pašpārbaude.
 short_failed=.. neizdevās!
 short_ok=.. pārbaude sākās labi. Rezultātus skatiet piedziņas statusā moduļa galvenajā lapā.
+
 ext_title=Paplašināta pašpārbaude
 ext_doing=Sākot paplašinātu pašpārbaudi $1.
 ext_failed=.. neizdevās!
 ext_ok=.. pārbaude sākās labi. Rezultātus skatiet piedziņas statusā moduļa galvenajā lapā.
+
 data_title=Datu vākšanas pārbaude
 data_doing=Sākas datu bezsaistes vākšana $1.
 data_failed=.. neizdevās!

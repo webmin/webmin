@@ -57,6 +57,7 @@ index_reposdisable=Poista arkistot käytöstä
 index_reposenable=Ota säilytystila käyttöön
 index_reposdelete=Poista arkistot
 index_repoheader=Uudet pakettivaraston vaihtoehdot
+
 update_title=Päivitä paketit
 update_title2=Asenna paketit
 update_enone=Ei paketteja valittu
@@ -94,9 +95,11 @@ update_none=Ei mitään
 update_ops=Rakennetaan täydellinen luettelo paketeista ..
 update_rebootdesc=Yksi asennetuista paketeista vaatii uudelleenkäynnistyksen, jotta se olisi täysin asennettuna.
 update_reboot=Käynnistä uudelleen nyt
+
 sched_title=Ajoitettu päivitys
 sched_yes=Aikataulutettu päivitysten tarkistus on nyt aktiivinen.
 sched_no=Aikataulutettu päivitysten tarkistus on poistettu käytöstä.
+
 log_update=Asennetut $1 päivitetyt paketit
 log_sched=Ajoitetut päivitykset käytössä
 log_unsched=Ajoitetut päivitykset poistettu käytöstä
@@ -108,11 +111,13 @@ log_enable_repo=Aktivoitu pakettivarasto $1
 log_disable_repo=Estetty pakettivarasto $1 
 log_delete_repo=Poistettu pakettivarasto $1 
 log_create_repo=Luotu pakettivarasto $1 
+
 refresh_title=Virkistävät paketit
 refresh_clearing=Pakkausvälimuistien tyhjentäminen ..
 refresh_done=.. valmis
 refresh_available=Saatujen pakettien hakeminen uudelleen ..
 refresh_done3=.. löysi $1 mahdollista päivitystä
+
 view_title=Paketin tiedot
 view_header=Päivitettävät pakettitiedot
 view_name=Paketin nimi
@@ -126,12 +131,14 @@ view_changelog=Vaihtopäivä saatavilla olevaan versioon
 view_software=Hallinnoi pakettia
 view_update=Päivitä paketti
 view_install=Asenna paketti
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)
 system_webmin=Webmin-moduuli
 system_usermin=Usermin-moduuli
 system_tgz=Webmin tai Usermin tar.gz
+
 repos_err_disable=Varastojen poistaminen epäonnistui
 repos_err_enable=Varastojen käyttöönotto epäonnistui
 repos_err_delete=Säilytystilojen poistaminen epäonnistui

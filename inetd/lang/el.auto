@@ -14,6 +14,7 @@ index_search=Εμφάνιση αντιστοιχίσεων υπηρεσιών ε
 index_sok=Αναζήτηση
 index_toomany=Υπάρχουν πάρα πολλές υπηρεσίες Διαδικτύου για προβολή σε αυτήν τη σελίδα.
 index_none=Δεν υπάρχουν υπηρεσίες διαδικτύου που αντιστοιχούν στην αναζήτησή σας.
+
 error_restart=Αποτυχία επανεκκίνησης του Inetd
 error_saverpc=Αποτυχία αποθήκευσης προγράμματος RPC
 error_invalidprgname=Το '$1' δεν είναι έγκυρο όνομα προγράμματος
@@ -43,6 +44,7 @@ error_nameexist=Μια υπηρεσία με όνομα $1 και το πρωτ�
 error_inetservice=Υπάρχει ήδη υπηρεσία διαδικτύου με όνομα $1 και πρωτόκολλο $2 
 error_smfservice=Δεν ήταν δυνατή η ενημέρωση της υπηρεσίας smf με cmd '$1', errorcode $2 
 error_smf_cmdfield=Για smf, το όνομα αρχείου του προγράμματος '$1' πρέπει να ταιριάζει με το πρώτο όρισμα του πεδίου εντολών, δηλ. Να είναι '$2'
+
 editrpc_title1=Δημιουργία προγράμματος RPC
 editrpc_title2=Επεξεργασία προγράμματος RPC
 editrpc_detail=Λεπτομέρειες προγράμματος RPC
@@ -69,6 +71,7 @@ editrpc_execasuser=Εκτέλεση ως χρήστης
 editrpc_max=Μέγ. Ανά λεπτό
 editrpc_default=Προκαθορισμένο
 editrpc_execasgrp=Εκτελέστε ως ομάδα
+
 editserv_title1=Δημιουργία υπηρεσίας Internet
 editserv_title2=Επεξεργασία υπηρεσίας Internet
 editserv_detail=Λεπτομέρειες υπηρεσίας διαδικτύου
@@ -82,6 +85,7 @@ editserv_wrapper=TCP-Wrapper
 editserv_inetd=Εσωτερική σε <tt>inetd</tt>
 editserv_qm=Εντολή μπορεί να μην υπάρχει;
 editserv_ename=Δεν υπάρχει υπηρεσία με αυτό το όνομα και πρωτόκολλο
+
 log_apply=Εφαρμοσμένες αλλαγές
 log_create_serv=Δημιουργήθηκε υπηρεσία $1 
 log_modify_serv=Τροποποιημένη υπηρεσία $1 
@@ -95,6 +99,7 @@ log_delete_serv_l=Διαγράφηκε η υπηρεσία $1 στη θύρα $2
 log_create_prog_l=Δημιουργήθηκε η υπηρεσία $1 στη θύρα $2 για το πρόγραμμα $3 
 log_modify_prog_l=Τροποποιημένη υπηρεσία $1 στη θύρα $2 για το πρόγραμμα $3 
 log_delete_prog_l=Διαγράφηκε υπηρεσία $1 στη θύρα $2 για το πρόγραμμα $3 
+
 log_create_rpc=Δημιουργήθηκε RPC $1 
 log_modify_rpc=Τροποποιημένο RPC $1 
 log_delete_rpc=Διαγράφηκε RPC $1 

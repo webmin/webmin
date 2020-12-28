@@ -19,10 +19,13 @@ index_samba=桑巴
 index_cyrus=IMAP？
 index_users=LDAP用戶
 index_groups=LDAP組
+
 imap_econn=無法連接到IMAP服務器 $1
 imap_elogin=無法以 $2的身份登錄到IMAP服務器 $1 : $3
 conn_eldap_host=在系統上找不到LDAP客戶端配置文件，因此必須在“模塊配置”頁面上設置LDAP服務器。
 conn_elogin=在您的系統上找不到LDAP客戶端配置文件，因此必須在“模塊配置”頁面上設置LDAP登錄。
+conn_efile_open=無法打開LDAP綁定憑證文件：
+
 uedit_cap=用戶能力
 uedit_samba=Samba登錄？
 uedit_cyrus=IMAP服務器登錄？
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=上次密碼更新
 uedit_sambapwdcanchange=密碼可以更改
 uedit_sambabadpasswordcount=錯誤的密碼計數
 uedit_sambaacctflags=帳戶標誌
+
 usave_eadd=無法將用戶添加到LDAP數據庫： $1
 usave_emod=無法修改LDAP數據庫中的用戶： $1
 usave_emoddn=無法重命名LDAP數據庫中的用戶： $1
@@ -66,26 +70,33 @@ usave_eattrdupu=用戶 $1已在使用 $2 $3
 usave_eattrdupg=組 $1已在使用 $2 $3
 usave_ereal=缺少真實姓名
 usave_equota=IMAP配額不足或無效
+
 search_err=在 $2下搜索 $1失敗： $3
+
 gedit_dn=組的LDAP DN
 gedit_return=組詳細信息
 gedit_cap=小組能力
 gedit_samba=桑巴組？
+
 gsave_egone=組不再存在！
 gsave_edelete=無法從LDAP數據庫中刪除組： $1
 gsave_eadd=無法將組添加到LDAP數據庫： $1
 gsave_emod=修改LDAP數據庫中的組失敗： $1
 gsave_emoddn=重命名LDAP數據庫中的組失敗： $1
+
 gdel_group=刪除LDAP組條目 ..
+
 udel_pass=刪除LDAP用戶條目 ..
 udel_book=從通訊錄中刪除 ..
 udel_imap=刪除IMAP文件夾 ..
 udel_warnimap=刪除主目錄時，現有的郵箱將被刪除！
 udel_failed=..失敗了！ ： $1
+
 raw_title=LDAP屬性
 raw_name=屬性名稱
 raw_value=價值觀
 raw_for=對於 $1
+
 batch_samba=為新用戶創建Samba帳戶？
 batch_imap=為新用戶創建IMAP帳戶？
 batch_descafter3=在<b>create</b>和<b>modify</b>行中，可以選擇將包含<i>name</i> = <i>value</i>格式的LDAP屬性的其他字段附加到分配給新用戶或修改過的用戶。

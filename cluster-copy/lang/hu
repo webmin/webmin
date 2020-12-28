@@ -11,6 +11,7 @@ index_when=Yes, $1
 index_act=Action
 index_exec=Execute
 index_delete=Delete Selected Copies
+
 edit_title=Edit Cluster Copy
 create_title=Create Cluster Copy
 edit_header=Cluster copy details
@@ -31,12 +32,14 @@ edit_run=Copy Now
 edit_return=cluster copy
 edit_email=Email output to
 edit_none=Nobody
+
 save_err=Failed to save cluster cron job
 save_efiles=No files to copy entered
 save_edest=Missing destination directory
 save_eservers=No servers to copy to entered
 save_efile=File to copy '$1' is not an absolute path
 save_eemail=Missing or invalid email address
+
 exec_title=Copying Files
 exec_files1=Copying $1 files to selected servers $2 ..
 exec_files2=Copying $1 to selected servers $2 ..
@@ -50,12 +53,15 @@ exec_not=Failed to copy the following files to $1 :
 exec_cmd=Post-copy command output on $1 :
 exec_before=Before-copy command output on $1 :
 exec_on=Failed to run on $1 : $2
+
 log_create=Created copy for $1 to $2 servers
 log_modify=Modified copy for $1 to $2 servers
 log_delete=Deleted copy for $1 to $2 servers
 log_exec=Copied $1 to $2 servers
 log_deletes=Deleted $1 copies
+
 email_subject_succeeded=Cluster copy of $1 succeeded
 email_subject_failed=Cluster copy of $1 failed
+
 delete_err=Failed to delete copies
 delete_enone=None selected

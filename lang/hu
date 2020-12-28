@@ -12,7 +12,9 @@ main_readonly=(Csak-olvasás mód)
 main_return=Vissza --> $1
 main_unused=Nem használt modulok
 main_refreshmods=Modulok frissítése
+
 link_essl=A Net::SSLeay Perl modult szükséges a szerverre telepíteni a HTTPS kapcsolat létrehozásához.
+
 category_servers=Szerverek
 category_hardware=Hardver
 category_system=Rendszer
@@ -21,6 +23,7 @@ category_net=Hálózat
 category_syslet=Sysletek
 category_cluster=Cluster
 category_info=Információ
+
 longcategory_servers=A web, email, FTP és egyéb szerveralkalmazások konfigurálásához használatos modulok
 longcategory_hardware=A nyomtató, disk és egyéb hardverelem konfigurálásához használatos modulok
 longcategory_system=A felhasználók, filerendszerek, időzített (cron) munkák és egyéb rendszerelemek konfigurálásához használatos modulok
@@ -28,11 +31,13 @@ longcategory_webmin=Magának a Webmin konfigurálásához használatos modulok
 longcategory_net=A hálózat és hálózati alkalmazások konfigurálásához használatos modulok
 longcategory_cluster=Egy felületről több szerver kezelésére használatos modulok
 longcategory_info=A rendszer adatait megjelenítő modulok
+
 header_webmin=Webmin főoldal
 header_module=Modul főoldal
 header_help=Súgó...
 header_config=Modul konfigurálás
 header_servers=Webmin szerverek
+
 index=főoldal
 yes=Igen
 no=Nem
@@ -53,11 +58,13 @@ cancel=Mégsem
 helpsearch=Dokumentáció keresése...
 switch_remote_euser=A(z) $1 felhasználó nem létezik.
 programname=Webmin
+
 chooser_title1=Válassz egy file-t
 chooser_title2=Válassz egy könyvtárat
 chooser_dir=A(z) $1 könyvtár
 chooser_ok=OK
 chooser_date=Válassz dátumot
+
 users_title1=Jelöld ki a felhasználókat
 users_title2=Válassz egy felhasználót
 users_sel=Kiválasztott felhasználók
@@ -65,6 +72,7 @@ users_all=Minden felhasználó
 users_ok=OK
 users_cancel=Mégsem
 users_clear=Törlés
+
 groups_title1=Jelöld ki a csoportokat
 groups_title2=Válassz egy csoportot
 groups_all=Minden csoport
@@ -72,6 +80,7 @@ groups_sel=Kiválasztott csoportok
 groups_ok=OK
 groups_cancel=Mégsem
 groups_clear=Törlés
+
 modules_title1=Modulok kiválasztása..
 modules_title2=Modul kiválasztása..
 modules_sel=Kiválasztott modulok
@@ -79,6 +88,7 @@ modules_all=Összes modul
 modules_ok=OK
 modules_cancel=Mégsem
 modules_clear=Törlés
+
 config_ecannot=Nincs jogod konfigurálni ezt a modult
 config_title=Konfiguráció
 config_dir=A(z) "$1" modul számára
@@ -88,6 +98,7 @@ config_eaccess=Nincs hozzáférési jogosultságod ehhez a modulhoz
 config_err=Nem sikerült elmenteni a konfigurációt
 config_nochange=Ne változtasd meg
 config_setto=Állítsd be
+
 help_err=Nem sikerült megjeleníteni a helpet
 help_epath=Nincs beállítva a PATH_INFO változó
 help_efile=Nem sikerült olvasni a(z) $1 file-t
@@ -95,8 +106,10 @@ help_eheader=Hiányzik a &lt;header&gt; rész
 help_einclude=Nem sikerült beilleszteni a(z) $1 file-t
 help_eif=$1 nem sikerült: $2
 help_eexec=$1 nem sikerült: $2
+
 referer_title=Biztonsági riadó
 referer_warn=<b>Figyelem!</b> A Webmin észrevette, hogy a $2 programot a $1 URL-en lévő dokumentumba bújtatott link révén akarják indítani, ami kicsit gyanús, mert nem ezen a Webmin szerveren van. Meglehet, hogy ez valami trükkös kísérlet arra, hogy egy veszélyes program induljon el a szerveren.
+
 session_header=Belépés a Webminbe
 session_mesg=Add meg az azonosítódat és a jelszavadat a $1 Webmin szerverbe való belépéshez
 session_mesg2=Add meg az azonosítódat és a jelszavadat.
@@ -108,9 +121,11 @@ session_failed=Sikertelen belépési kísérlet. Próbáld meg újra!
 session_logout=Kiléptetés végrehajtva. Újabb belépéshez használd az alábbi űrlapot!
 session_timed_out=$1 perces üresjárat után a munkafolyamatot megszakítottam.
 session_save=Megjegyezzem a belépési adataidat?
+
 pam_header=Belépés a Webmin-be
 pam_login=Folytatás
 pam_restart=Újraindítás
+
 acl_root=A file-menüben látható gyökérkönyvtár
 acl_home=Felhasználó home könyvtára
 acl_uedit=A felhasználók menüjében ki szerepeljen?
@@ -134,6 +149,7 @@ acl_rpc=Fogadhat RPC hívásokat?
 acl_rpc2=Csak a <tt>root</tt> vagy <tt>admin</tt>
 acl_rpc1=Igen
 acl_rpc0=Nem
+
 month_1=január
 month_2=Február
 month_3=Március
@@ -146,6 +162,7 @@ month_9=Szeptember
 month_10=Október
 month_11=November
 month_12=December
+
 day_0=Vasárnap
 day_1=Hétfő
 day_2=Kedd
@@ -153,6 +170,7 @@ day_3=Szerda
 day_4=Csütörtök
 day_5=Péntek
 day_6=Szombat
+
 smonth_1=Jan
 smonth_2=Febr
 smonth_3=Márc
@@ -165,6 +183,7 @@ smonth_9=Szept
 smonth_10=Okt
 smonth_11=Nov
 smonth_12=Dec
+
 sday_0=V
 sday_1=H
 sday_2=K
@@ -172,10 +191,13 @@ sday_3=Sze
 sday_4=Cs
 sday_5=P
 sday_6=Szo
+
 emodule=Hozzáférés megtagadva : A(z) $1 nem használhatja a(z) $2 modult
+
 skill_high=Profi
 skill_medium=Haladó
 skill_low=Kezdő
+
 feedback_title=Webmin visszajezés
 feedback_desc=Ez az űrlap lehetőséget nyújt arra, hogy lejelentsd a hibákat illetve megjegyzéseidet eljuttasd a Webmin fejlesztőihez a talált hibákról illetve hiányzó dolgokról. Amikor az Elküld gombra kattintasz, az űrlapba beírt információk a $1 címre fognak eljutni.
 feedback_desc2=Ez a visszajelzés a Usermin fejlesztőihez fog eljutni, nem a szerver adminisztrátorának. Kérlek, hogy visszajelzésedet ezért angol nyelven írd, mégh amost nem is angolul használod a programot.
@@ -204,10 +226,12 @@ feedback_to=Visszajelzés küldése a következő címekre
 feedback_enoto=Egy cím se lett beírva a címzett mezőbe
 feedback_ecannot=Nincs engedélyezve számodra a visszajelzés küldése funkció
 feedback_ecannot2=Nincs engedélyezve számodra a konfigurációk csatolása funkció
+
 progress_nosize=$1 letöltése...
 progress_datan=Fogadott $1 ($2 %)
 progress_data2n=Fogadott $1
 progress_done=... Letöltés befejezve.
+
 password_header=Új jelszó kiválasztása
 password_user=Felhasználó név
 password_old=Jelenlegi jelszó
@@ -215,16 +239,19 @@ password_new1=Új jelszó
 password_new2=Új jelszó újra
 password_ok=Módosít
 password_clear=Törlés
+
 ui_searchok=Keresés
 ui_selall=Összes kijelölése
 ui_selinv=Inverz kijelölés
 ui_edate=Érvénytelen dátum
 ui_etime=Érvénytelen idő
+
 uptracker_title=Feltöltendő fájl
 uptracker_file=Fájlnév
 uptracker_size=Méret
 uptracker_pc=Folyamat
 uptracker_of=$1 / $2
+
 wsearch_title=Keresés $1
 wsearch_modt=Modul
 wsearch_mtitle=Modul neve

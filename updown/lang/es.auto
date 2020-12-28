@@ -7,16 +7,20 @@ index_descfetch=Esta página es para descargar un archivo del sistema que ejecut
 index_email=¿Enviar correo electrónico cuando se realizan las descargas?
 index_emailto=Sí, para abordar
 index_email2=¿Enviar correo electrónico cuando se realizan las cargas?
+
 upload_eemail=Falta la dirección de correo electrónico para notificar
 upload_saving=Guardando el archivo $1 ..
 upload_saved=.. escribió $1 
 upload_unzipping=Extrayendo archivo $1 ..
 upload_unzipdone=.. $1 
+
 download_enone=No se ingresó ninguna URL para descargar
+
 fetch_eexists2=El archivo o directorio no existe
 fetch_eaccess=No tiene permiso para descargar archivos de $1 
 fetch_ezip=No se puede descargar un directorio a menos que esté instalado el comando <tt>zip</tt>
 fetch_eroot=¡El directorio raíz no se puede descargar!
+
 email_downmsg=La siguiente descarga se ha completado :
 email_downurl=URL: $1 
 email_downerr=Mensaje de error: $1 

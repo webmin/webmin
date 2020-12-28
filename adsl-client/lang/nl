@@ -16,6 +16,7 @@ index_cancel=Annuleer Verbinding
 index_canceldesc=De ADSL client probeert op dit moment een verbinding te maken. Klik op deze knop om dit te stoppen met de opdracht $1.
 index_cdemand=Annuleer In Opdracht
 index_cdemanddesc=De ADSL client wacht op dit moment op een opdracht om verbinding te maken. Klik op deze knop om dit te stoppen met de opdracht $1.
+
 index_header=ADSL client configuratie opties
 index_desc=De instellingen hieronder worden toegevoegd aan elke nieuwe ADSL verbinding die word gestart door uw systeem. Indien u dit verandert moet u de verbinding verbreken en opnieuw verbinding om de veranderingen actief te maken.
 index_eth=Ethernet interface
@@ -36,11 +37,13 @@ index_fw_standalone=Voor één host
 index_fw_masquerade=Voor NAT gateway
 index_connect=Tijd om te proberen verbinding te maken
 index_forever=Voor altijd
+
 start_err=Mislukt om de ADSL verbinding te starten
 start_title=Start ADSL
 start_ip=Een ADSL verbinding is tot stand gekomen met IP adres $1.
 start_demand=Omdat de In-Opdracht mode is aangezet, zal uw ADSL verbinding alleen worden gestart in uw opdracht.
 start_bg=De ADSL verbinding is niet gestart in 20 seconden. De ADSL client zal op de achtergrond continu doorgaan met proberen een verbinding te krijgen totdat er een verbinding tot stand is gekomen.
+
 save_err=Mislukt om ADSL configuratie op te slaan
 save_eeth=Ontbrekende of ongeldig lijkende ethernet interface
 save_etimeout=Ontbrekende of ongeldige time-out voor een directe opdracht
@@ -49,10 +52,12 @@ save_econnect=Ontbrekende of ongeldige verbinding time-out
 save_emss=Ontbrekende of ongeldige maximum pakket grote
 save_title=Opslaan Configuratie
 save_desc=Uw ADSL client configuratie is succesvol opgeslagen, maar zal niet worden gebruikt totdat u opnieuw verbind.
+
 stop_err=Mislukt om de ADSL verbinding te stoppen
 stop_title=Uitzetten ADSL
 stop_ok=Uw ADSL verbinding is succesvol gestopt.
 stop_failed=Uw ADSL verbinding is om één of andere reden nog actief !
+
 log_save=Opslaan van client configuratie
 log_stop=Uitzetten ADSL
 log_start=Opgestarte ADSL

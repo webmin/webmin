@@ -57,6 +57,7 @@ index_fmode1=Fișierele de servere virtuale $1
 index_fmode1d=Fișier nou în directorul serverelor virtuale $1
 index_fmode2=Fișier selectat ..
 index_delete=Ștergeți serverele selectate
+
 cvirt_ecannot=Nu aveți voie să creați un server virtual
 cvirt_err=Crearea serverului virtual nu a reușit
 cvirt_eaddr1=Nu a fost introdusă nicio adresă
@@ -70,6 +71,7 @@ cvirt_eroot4=Niciun utilizator definit în configurația Apache
 cvirt_etaken=Există deja un server virtual cu același nume și port
 cvirt_efile=Nu a reușit să scrie la $1 : $2 
 cvirt_emissing=Noul server virtual a fost adăugat la $1, dar acest fișier nu este folosit de Apache. Verificați configurația modulului <a href='$2'></a> și asigurați-vă că „Fișier sau director în care să adăugați servere virtuale” este corect.
+
 etype=Nu aveți voie să editați opțiuni de acest tip
 efailed=Nu a reușit să salvați $1
 apache_apply=Aplica schimbarile
@@ -80,6 +82,7 @@ default_serv=server implicit
 bytes=bytes
 eafter=Verificarea configurației a eșuat: $1 Modificările nu au fost salvate.
 enewline=Valoare caracter nevalid
+
 global_ecannot=Nu aveți voie să editați opțiuni globale
 global_mime=Lista tipurilor MIME globale
 global_mimedesc=Faceți clic pe un tip MIME din lista de mai jos pentru a-l edita sau utilizați linkul din partea de jos a paginii pentru a adăuga un nou tip la listă.
@@ -87,6 +90,7 @@ global_type=Tip
 global_ext=Extensii
 global_add=Adăugați un nou tip MIME.
 global_return=Tipuri MIME
+
 mime_ecannot=Nu aveți voie să editați tipuri de mime
 mime_edit=Editează tipul MIME
 mime_add=Adăugați tipul MIME
@@ -95,6 +99,7 @@ mime_type=Tip MIME
 mime_ext=Extensii
 mime_err=Nu a reușit să salveze tipul MIME
 mime_etype=„$1” nu este un tip MIME valid
+
 virt_ecannot=Nu puteți edita acest server virtual
 virt_eprotocol=Trebuie să selectați cel puțin o versiune de protocol SSL/TLS utilizabilă
 virt_title=Opțiuni server virtual
@@ -121,6 +126,7 @@ virt_path=cale
 virt_return=index de server
 virt_euser=Nu aveți voie să schimbați utilizatorul sau grupul pentru acest server virtual.
 virt_header2=$1 pentru $2
+
 vserv_title=Configurare server virtual
 vserv_virtualmin=Această gazdă virtuală Apache aparține serverului Virtualmin <tt>$1</tt>, deci adresa, portul, directorul de bază și numele de gazdă nu pot fi modificate aici.
 vserv_ecannot=Nu puteți edita adresa acestui server virtual
@@ -140,10 +146,12 @@ vserv_eport=„$1” nu este un port valid
 vserv_eroot=„$1” nu este o rădăcină de document valabilă
 vserv_ename=„$1” nu este un nume de server valid
 vserv_eaddrs=Nu au fost introduse adrese de server virtual
+
 show_title=directivă
 show_edit=Modificați directiva Apache:
 show_these=Editează manual directivele
 show_ok=Editați | ×
+
 manual_configs=Editați fișierele de configurare
 manual_title=Editează directive
 manual_header=Utilizați caseta de text de mai jos pentru a edita manual directivele Apache din $1 care se aplică acestui server virtual, director sau fișiere.
@@ -153,6 +161,7 @@ manual_efile=Fișier de configurare Apache nevalid
 manual_etest=A fost detectată eroarea fișierului de configurare : $1
 manual_editfile=Editați fișierul de configurare:
 manual_switch=Editați | ×
+
 dir_title=Opțiuni per-director
 dir_proxyall=Toate solicitările proxy
 dir_header=Pentru $1 pe $2
@@ -169,6 +178,7 @@ dir_re=Potrivire regexp
 dir_path=cale
 dir_return=index de director
 dir_header2=$1 pentru $2
+
 type_0=Procese și limite
 type_1=Networking și adrese
 type_2=Module Apache
@@ -190,6 +200,7 @@ type_17=Gazde virtuale automate
 type_18=Filtre
 type_19=Limbile
 type_20=Hărți imagine
+
 htaccess_title=Fișiere Opțiuni per-Director
 htaccess_ecannot=Nu puteți edita fișierele htaccess
 htaccess_file=Fișiere cu opțiuni existente
@@ -205,6 +216,7 @@ htaccess_edelete=Nu aveți voie să ștergeți acest fișier cu opțiuni
 htaccess_eempty=Nu a fost introdus niciun director de fișiere de opțiuni
 htaccess_eabsolute=Directorul de fișiere Opțiuni trebuie să fie o cale absolută
 htaccess_err=Eroare la crearea fișierului de opțiuni
+
 htindex_ecannot=Nu aveți voie să editați acest fișier cu opțiuni
 htindex_title=Fișier Opțiuni Per-Director
 htindex_delete=Sterge fisierul
@@ -220,12 +232,14 @@ htindex_path=cale
 htindex_header=Pentru $1
 htindex_header2=$1 pentru fișierul de opțiuni $2
 htindex_return=opțiuni index file
+
 htfile_title=Opțiuni per fișier
 htfile_header=Pentru $1 în $2
 htfile_show=Show Directives
 htfile_edit=Editează directive
 htfile_apply=Opțiuni se aplică la ..
 htfile_header2=$1 pentru $2
+
 reconfig_title=Configurați modulele cunoscute
 reconfig_ecannot=Nu aveți voie să reconfigurați apache
 reconfig_ever=Eroarea de a obține versiunea executabilă a serverului Apache $1. Verificați <a href='$2'>configurația modulului</a> pentru a vă asigura că aceasta este calea corectă.
@@ -233,11 +247,13 @@ reconfig_desc1=Configurația dvs. Apache s-a schimbat sau nu a fost încă exami
 reconfig_desc2=Mai jos este o listă a tuturor modulelor Apache acceptate de Webmin, cu cele instalate în prezent selectate. Dacă utilizați module încărcate dinamic, atunci trebuie să le selectați pe cele care sunt încărcate dinamic.
 reconfig_desc3=Dacă nu sunteți sigur ce module sunt acceptate de Apache în sistemul dvs., trebuie doar să configurați ca Webmin să poată efectua automat modulele acceptate.
 reconfig_ok=Configurare
+
 defines_title=Editează parametrii definiți
 defines_ecannot=Nu aveți voie să editați definițiile httpd
 defines_desc=Când Apache este pornit, parametrii pot fi trecuți cu acesta cu opțiunea <tt>-D</tt> linie de comandă. Deoarece acești parametri pot afecta ce directive sunt utilizate în fișierele de configurare, Webmin trebuie să știe care sunt cele transmise către Apache atunci când este pornit. Introduceți parametrii folosiți pe sistemul dvs. în câmpul de text din dreapta.
 defines_config=Rețineți că următorii parametri definiți sunt deja cunoscuți : $1
 defines_list=Parametri definiți
+
 authu_ecannot=„$1” nu este un fișier text al utilizatorilor permis
 authu_title=Lista de utilizatori
 authu_header=În fișierul $1
@@ -259,6 +275,7 @@ authu_sync=Opțiunile de mai jos vă permit să configurați Webmin pentru a ad�
 authu_screate=Adăugați un utilizator când este adăugat un utilizator Unix
 authu_sdelete=Ștergeți utilizatorul atunci când un utilizator Unix este șters
 authu_smodify=Modificați utilizatorul atunci când un utilizator Unix este schimbat
+
 authg_ecannot=„$1” nu este un fișier text de grupuri permis
 authg_title=Lista grupurilor
 authg_header=În fișierul $1
@@ -276,22 +293,26 @@ authg_err=Nu a reușit să salveze grupul
 authg_euser=Nu a fost introdus niciun nume de grup
 authg_euser2=Numele grupului nu poate conține :
 authg_edup=Există deja un grup numit „$1”
+
 stop_err=Nu a reușit să oprească apache
 stop_ecannot=Nu aveți voie să opriți apache
 stop_epid=Nu a reușit să deschidă fișierul PID $1
 stop_epid2=Fișier PID nevalid $1
 stop_esig=Nu a reușit să trimită SIGTERM la procesarea $1
+
 start_err=Nu a reușit să înceapă apache
 start_ecannot=Nu aveți voie să începeți apache
 start_ecmd=$1 nu a reușit : $2
 start_eunknown=Motiv necunoscut
 start_eafter=Apache nu pare să ruleze
+
 restart_err=Eroare la aplicarea modificărilor
 restart_epid=Nu a reușit să deschidă fișierul PID $1
 restart_epid2=Fișier PID nevalid $1
 restart_esig=Eroare la trimiterea SIGHUP la procesarea $1
 restart_eunknown=Motiv necunoscut
 restart_ecannot=Nu aveți voie să aplicați modificări
+
 acl_virts=Servere virtuale pe care le poate edita acest utilizator
 acl_vall=Toate serverele
 acl_vsel=Selectat ..
@@ -314,6 +335,7 @@ acl_dirs=Directive disponibile Apache disponibile <font size=-1>(Sub rezerva lim
 acl_dirs0=Toate
 acl_dirs1=Numai listate ..
 acl_dirs2=Toate cu excepția celor enumerate ..
+
 core_maxconc=Cereri concomitente maxime
 core_maxkeep=Păstrează maxim pentru fiecare conexiune
 core_maxreq=Cereri maxime pe proces de server
@@ -499,10 +521,12 @@ core_infilter=Aplicați filtre de intrare pentru toate fișierele
 core_outfilter=Aplicați filtre de ieșire pentru toate fișierele
 core_defchar=Set de caractere pentru documente
 core_edefchar=Set de caractere lipsă sau nevalid pentru documente
+
 mod_negotiation_cache=Documente negociate de conținut Cache?
 mod_negotiation_pri=Prioritate lingvistică pentru mai multe vizualizări
 mod_negotiation_def=Mod implicit
 mod_negotiation_epri=Lipsesc prioritățile de limbă
+
 mod_cgi_logname=Jurnal Script CGI
 mod_cgi_none=Nici unul
 mod_cgi_elogname=Fișier de jurnal script script CGI
@@ -512,6 +536,7 @@ mod_cgi_elogsize=Dimensiunea jurnalului CGI trebuie să fie un număr întreg
 mod_cgi_post=Dimensiunea maximă a datelor postate înregistrate
 mod_cgi_epost=Mărimea datelor post trebuie să fie un număr întreg
 mod_cgi_eunder=Jurnalul de scripturi CGI nu se află în directorul permis
+
 mod_alias_from=Din
 mod_alias_to=La
 mod_alias_status=stare
@@ -535,6 +560,7 @@ mod_alias_cgi2=Alias director CGI
 mod_alias_rcgi=Regexp CGI alias director
 mod_alias_rcgi2=regexp CGI alias director
 mod_alias_estatus=„$1” nu este un statut valid
+
 mod_proxy_proxy=Acționați ca server proxy?
 mod_proxy_req=Cereri
 mod_proxy_forw=Transmite
@@ -605,11 +631,13 @@ mod_proxy_timeout=Termenul de depunere a solicitării de procură în câteva se
 mod_proxy_etimeout=Termenul de expirare a solicitării proxy trebuie să fie de câteva secunde
 mod_proxy_via=Set via: anteturi
 mod_proxy_not=Nici unul
+
 mod_log_agent_default=Mod implicit
 mod_log_agent_file=Fişier ..
 mod_log_agent_program=Program ..
 mod_log_agent_log=Fișier jurnal browser
 mod_log_agent_efile=$1 nu este un nume de fișier valid al jurnalului de agent
+
 mod_log_config_common=Formatul de jurnal comun
 mod_log_config_named=Formate de jurnal numite
 mod_log_config_nick=Poreclă
@@ -628,6 +656,7 @@ mod_log_config_enofilprog=Lipsește numele de fișier sau programul de jurnal
 mod_log_config_efilprog=„$1” nu este un nume de fișier sau de program permis
 mod_log_config_eifset=Opțiunea „If set” nu poate fi utilizată cu formatul de jurnal implicit
 mod_log_config_edir=Directorul pentru fișierul jurnal „$1” nu există
+
 mod_log_referer_default=Mod implicit
 mod_log_referer_file=Fişier ..
 mod_log_referer_program=Program ..
@@ -635,7 +664,9 @@ mod_log_referer_log=Fișier jurnal referitor
 mod_log_referer_nolog=Nu înregistrați referințele din
 mod_log_referer_elog=$1 nu este un nume de fișier autentificat
 mod_log_referer_edir=Jurnalul de proceduri nu se află în directorul permis
+
 mod_status_msg=Afișați informații de stare extinse
+
 mod_mime_ext=Extensii
 mod_mime_xtype=Tipuri MIME suplimentare
 mod_mime_mtype=Tip MIME
@@ -668,6 +699,7 @@ mod_mime_outfilter=Filtre de ieșire
 mod_mime_infilter=Filtre de intrare
 mod_mime_filters=Filtre de aplicat
 mod_mime_efext=Nu au fost date extensii pentru filtre (filtre) $1
+
 mod_setenvif_header=Antet
 mod_setenvif_match=Meci
 mod_setenvif_case=Carcasă potrivită
@@ -678,11 +710,13 @@ mod_setenvif_eheader=Antetul cererii nevalide „$1”
 mod_setenvif_eregex=Expresia regulată nevalidă „$1”
 mod_setenvif_evar=Nume variabilă nevalidă „$1”
 mod_setenvif_clear=clar
+
 mod_userdir_default=Mod implicit
 mod_userdir_all=Toți utilizatorii accesibili
 mod_userdir_except=Toți utilizatorii, cu excepția
 mod_userdir_dir=Director WWW utilizator
 mod_userdir_edir=Nu aveți voie să utilizați directorul WWW al utilizatorului specificat
+
 mod_imap_action=Acțiuni privind utilizarea incorectă a imaginilor
 mod_imap_default=Mod implicit
 mod_imap_godefurl=Accesați adresa URL implicită
@@ -702,8 +736,10 @@ mod_imap_refurl=Adresa URL
 mod_imap_url=URL-ul. ..
 mod_imap_defbase=Baza implicită pentru imagemap-uri
 mod_imap_eurl=„$1” nu este o adresă URL validă
+
 mod_speling_autocorr=Corectarea automată a adreselor URL greșite?
 mod_speling_default=Mod implicit
+
 mod_actions_mime=Handler / tip MIME
 mod_actions_cgiurl=URL-ul scriptului CGI
 mod_actions_mimecgi=Acțiuni CGI de tip Handler sau MIME
@@ -713,10 +749,13 @@ mod_actions_httpcgi=Metode HTTP acțiuni CGI
 mod_actions_emime=„$1” nu este un handler valid sau un tip MIME
 mod_actions_ecgi=„$1” nu este un script CGI valid
 mod_actions_enometh=Nicio metodă aleasă pentru scriptul CGI „$1”
+
 mod_include_incl=Procesul include pe fișierele cu bit de execuție?
 mod_include_set=Da și setați data modificată ultima dată
 mod_include_default=Mod implicit
+
 mod_dir_txt=Fișiere index index
+
 mod_autoindex_default=Mod implicit
 mod_autoindex_asc=Ascendent
 mod_autoindex_descend=Descendentă
@@ -725,6 +764,7 @@ mod_autoindex_date=Data
 mod_autoindex_size=mărimea
 mod_autoindex_desc=Descriere
 mod_autoindex_sort=Sortează indexul directorului după
+
 browsermatch_regexp=Regex-ul browserului
 browsermatch_case=Cazul de potrivire?
 browsermatch_var=Setare variabilă
@@ -732,6 +772,7 @@ browsermatch_value=Valoare
 browsermatch_txt=Variabile setate în funcție de tipul browserului
 browsermatch_evar=Nume variabilă nevalidă „$1”
 browsermatch_clear=clar
+
 autoindex_fname=Nume de fișier
 autoindex_mime=Tip MIME
 autoindex_enc=Codare
@@ -785,9 +826,11 @@ autoindex_sicon=Afișați pictogramele fișierului
 autoindex_srules=Afișați &lt;hr&gt; linii
 autoindex_track=Include ETag-uri în antet
 autoindex_version=Sortează după șiruri de versiuni
+
 mod_mime_magic_file=Fișier cu numere magice MIME
 mod_mime_magic_none=Nici unul
 mod_mime_magic_efile=Numele de fișier magic MIME nu este valabil
+
 mod_env_var=Variabil
 mod_env_value=Valoare
 mod_env_pass=A trece prin
@@ -798,6 +841,7 @@ mod_env_passall=Treceți toate variabilele de mediu la CGI
 mod_env_default=Mod implicit
 mod_env_evar=„$1” nu este un nume de variabilă valid
 mod_env_evalue=„$1” nu este o valoare variabilă valabilă
+
 mod_access_order=Comanda de verificare a accesului:
 mod_access_denyallow=Apoi nu permiteți
 mod_access_allowdeny=Permite apoi negă
@@ -820,6 +864,7 @@ mod_access_epip=„$1” nu este o adresă IP parțială validă
 mod_access_emask=„$1” nu este o pereche de rețea / mască netmas validă
 mod_access_ecidr=„$1” nu este o pereche de rețea / CIDR validă
 mod_access_evar=„$1” nu este un nume de variabilă valid
+
 mod_auth_ufile=Fișier text utilizator
 mod_auth_uedit=Editează utilizatorii
 mod_auth_gfile=Grupa fișier text
@@ -830,6 +875,7 @@ mod_auth_eudir=Fișierul text al utilizatorului nu se află în directorul permi
 mod_auth_egdir=Fișierul text de grup nu se află în directorul permis
 mod_auth_eufile=Nume fișier text de utilizator nevalid
 mod_auth_egfile=Numele fișierului text de grup nevalid
+
 mod_auth_dbm_ufile=Fișier DBM utilizator
 mod_auth_dbm_gfile=Grupa fișier DBM
 mod_auth_dbm_pass=Treci de eșecurile în modulul următor?
@@ -840,6 +886,7 @@ mod_auth_dbm_egfile=Nume fișier DBM de grup nevalid
 mod_auth_dbm_type=Tip de bază de date DBM
 mod_auth_dbm_gtype=Tip de bază de date a grupului DBM
 mod_auth_dbm_default=Format implicit DBM
+
 mod_cern_meta_process=Procesarea metafile antetului
 mod_cern_meta_dir=Subdirector pentru metafile antet
 mod_cern_meta_default=Mod implicit
@@ -847,6 +894,7 @@ mod_cern_meta_edir=Numele subdirectorului metafile nevalid
 mod_cern_meta_suffix=Sufixul fișier pentru metafile antet
 mod_cern_meta_default2=Mod implicit
 mod_cern_meta_esuffix=Sufixul metafile nevalide
+
 mod_ssl_enable=Activați SSL?
 mod_ssl_proto=Protocoale SSL
 mod_ssl_cfile=Fișier cu certificat / cheie privată
@@ -874,6 +922,7 @@ mod_ssl_passsc=Executați scriptul $1
 mod_ssl_epassph=Nu a fost introdusă nicio parolă SSL
 mod_ssl_epasssc=Script de parolă SSL lipsă sau nevalid
 mod_ssl_ecerton=Când SSL este activat, trebuie selectat un fișier de certificat
+
 mod_apachessl_notssl=Refuză accesul SSL
 mod_apachessl_forcessl=Forțați accesul SSL / notSSL?
 mod_apachessl_capath=Calea către director cu certificatele autorităților de certificare din
@@ -906,6 +955,7 @@ mod_apachessl_nov2=Dezactivați versiunea 2 SSL
 mod_apachessl_fake=Simulează logon-urile de autentificare de bază ale utilizatorului, folosind numele certificatului
 mod_apachessl_cdnfile=Fișierul cu DN client este verificat
 mod_apachessl_ecdnfile=Fișierul lipsă împotriva DN-ului clientului este verificat
+
 log_global=Opțiuni globale schimbate $1
 log_virtc=Server creat $1
 log_virts=Server reconfigurat $1
@@ -946,8 +996,10 @@ log_stop=Site-ul oprit
 log_apply=Modificări aplicate
 log_manual=Fișier de configurare editat manual $1
 log_virts_delete=$1 serverele virtuale șterse
+
 search_title=Găsiți servere
 search_notfound=Nu s-au găsit servere virtuale potrivite
+
 mod_php_value=Valori de configurare PHP
 mod_php_flag=Steaguri de configurare PHP
 mod_php_admin_value=Valori de configurare a administratorului PHP
@@ -956,6 +1008,7 @@ mod_php_name_header=reglaj
 mod_php_value_header=Valoare
 mod_php_ename=„$1” este un nume nevalid
 mod_php_evalue=„$1” este o valoare nevalidă pentru $2
+
 mod_vhost_alias_root=Rădăcină de gazdă virtuală automată
 mod_vhost_alias_ip=Utilizați adresa IP în loc de nume gazdă?
 mod_vhost_alias_none=Nici unul
@@ -963,12 +1016,14 @@ mod_vhost_alias_script=Cgi-bin virtual gazdă automată
 mod_vhost_alias_eroot=Rădăcina de gazdă virtuală lipsă sau nevalidă
 mod_vhost_alias_eroot2=Directorul rădăcină gazdă virtuală nu este permis
 mod_vhost_alias_escript=Cgi-bin gazdă lipsă sau nevalid
+
 worker_minspare=Fire minime de rezervă
 worker_maxspare=Fire de rezervă maxime
 worker_eminspare=Firele de rezervă minime trebuie să fie un număr întreg
 worker_emaxspare=Firele de rezervă maxime trebuie să fie un număr întreg
 worker_threads=Fire de proces pe copil
 worker_ethreads=Numărul de fire pe proces copil trebuie să fie un număr întreg
+
 perchild_sthreads=Fire inițiale pe procesul copilului
 perchild_esthreads=Numărul de fire pe proces copil trebuie să fie un număr întreg
 perchild_numservers=Numărul proceselor copilului
@@ -984,6 +1039,7 @@ perchild_gid=GID
 perchild_enum=Numărul procesului trebuie să fie un număr întreg zero
 perchild_euid=UID trebuie să fie un număr întreg
 perchild_egid=GID trebuie să fie un număr întreg
+
 cache_enable=Activ?
 cache_type=Magazinul Cache
 cache_disk=Disc
@@ -1004,12 +1060,14 @@ cache_eminos=Dimensiunea minimă a obiectului pentru cache trebuie să fie un nu
 cache_emaxos=Dimensiunea maximă a obiectului pentru cache trebuie să fie un număr de octeți
 cache_maxoc=Obiecte maxime de memorie cache
 cache_emaxoc=Numărul de obiecte din memoria cache trebuie să fie un număr întreg
+
 suexec_su=Execută programe CGI ca
 suexec_none=Utilizator din configurația globală
 suexec_user=Utilizator Unix
 suexec_group=și grupă
 suexec_euser=Utilizator care lipsește sau este nevalid pentru a rula programe CGI ca
 suexec_egroup=Grup lipsit sau invalid pentru a rula programe CGI ca
+
 filter_name=Nume
 filter_intype=Introduceți tipul MIME
 filter_outtype=Ieșire tip MIME
@@ -1019,11 +1077,13 @@ filter_in=Definiții filtru de intrare
 filter_out=Definiții filtru de ieșire
 filter_ename=Nume de filtru nevalid „$1”
 filter_ecmd=Lipsește comanda pentru filtrul „$1”
+
 cdir_err=Nu a reușit să creeze opțiuni per director
 cdir_err2=Nu a reușit să salvați opțiunile pe fiecare director
 cdir_epath=Calea lipsă
 cdir_eproxy=Opțiunile proxy nu pot fi create cu opțiunea regexp de potrivire activată
 cdir_ecannot=Nu aveți voie să creați opțiuni per director pentru calea dată
+
 mod_band_enable=Limitarea lățimii de bandă activată?
 mod_band_bw=Limită (octeți / sec)
 mod_band_client=Pentru clienți
@@ -1042,24 +1102,30 @@ mod_band_epulse=Interval care lipsește sau nu este valabil între pachetele lim
 mod_band_dir=Lățimea de bandă care limitează directorul fișierelor de date
 mod_band_edir=Directorul fișierelor de date cu lățimea de bandă lipsă sau inexistentă
 mod_band_esubdir=Lipsește subdirectorul necesar <tt>$1</tt> din directorul fișierelor de date cu lățimea de bandă
+
 mod_dav_active=WebDAV activat?
 mod_dav_inf=Permiteți cereri DAV PROPFIND de profunzime infinită?
 mod_dav_timeout=Timp minim de DAV în câteva secunde
 mod_dav_etimeout=Lipsește sau nu este valabil intervalul de timp DAV
+
 delete_err=Nu a reușit să ștergeți serverele virtuale
 delete_enone=Nimic selectat
 delete_ecannot=Nu aveți voie să ștergeți serverele
 delete_ecannot2=Nu aveți voie să editați serverul $1
+
 syslog_desc=Jurnal de erori Apache
+
 mod_auth_basic_pass=Treceți eșecurile de conectare de bază la modulul următor?
 mod_auth_basic_prov=Tipuri de fișiere utilizator de autentificare de bază
 mod_auth_basic_file=Fisier text
 mod_auth_basic_dbm=Baza de date DBM
+
 mod_auth_digest_pass=Treceți eșecurile de autentificare în digest la modulul următor?
 mod_auth_digest_prov=Tipuri de fișiere utilizator autentificare digitală
 mod_auth_digest_al=Algoritmul Hashing
 mod_auth_digest_domain=Adrese URL și căi în același domeniu
 mod_auth_digest_edomain=Adrese URL și căi lipsă în același domeniu
+
 mods_title=Configurați modulele Apache
 mods_mod=Modul
 mods_state=Starea curenta

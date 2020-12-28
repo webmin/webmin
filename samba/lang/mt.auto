@@ -6,6 +6,7 @@ index_printershare=sehem tal-istampatur
 index_shareconf=konfigurazzjoni taqsam
 index_version=Verżjoni tas-Samba $1 
 index_samba=Samba
+
 index_sharename=Isem l-Ishma
 index_path=Triq
 index_security=Sigurtà
@@ -42,12 +43,14 @@ index_stopmsg=Ikklikkja din il-buttuna biex tingħalaq is-servers Samba li jaħd
 index_stopmsg_wb=Ikklikkja din il-buttuna biex tingħalaq is-servers Winbind li jaħdmu fis-sistema tiegħek.
 index_einclude=Twissija - Il-fajl tal-konfigurazzjoni Samba tiegħek $1 fih id-direttiva $2 jew $3. Dan jista 'jikkawża Webmin biex timmodifika l-fajl b'mod żbaljat.
 index_delete=Ħassar l-Ishma Magħżula
+
 config_mins=Mins
 config_secs=Seks
 config_bytes=Bytes
 config_never=Qatt
 config_all=Kollha
 config_neither=Ebda
+
 global_title=Konfigurazzjoni Globali
 global_unixnetwork=Netwerking Unix
 global_winnetwork=Netwerking tal-Windows
@@ -60,6 +63,7 @@ global_password=Passwords Ikkriptati
 global_users=Utenti tas-Samba
 global_group=Gruppi Samba
 global_bind=Għażliet ta 'Winbind
+
 error_nosamba=Is-server tas-Samba <tt>$1</tt> ma nstabx. Jew Samba mhuwiex installat fis-sistema tiegħek jew il-konfigurazzjoni <a href="$2">tal-modulu</a> tiegħek mhix korretta.
 error_version=Webmin naqas milli jikseb il-verżjoni tas-server Samba tiegħek eżegwibbli <tt>$1</tt>. Iċċekkja l-<a href="$2">konfigurazzjoni tal-modulu</a> biex tiżgura li din hija t-triq it-tajba.
 error_config=Il-fajl tal-konfigurazzjoni $1 ma nstabx. X'aktarx li Samba ma jiġix installat fis-sistema tiegħek, jew il-konfigurazzjoni <a href="$2">tal-modulu</a> tiegħek mhix korretta.
@@ -67,6 +71,7 @@ error_include=Webmin ma jistax jimmaniġġja l-fajls tal-konfigurazzjoni Samba l
 error_delshare=Naqset milli tħassar is-sehem
 error_delcopy=Is-sehem "$1" jikkopja dan is-sehem
 error_savename=Ma rnexxielux isalva l-ismijiet tal-fajl
+
 convert_title=Ikkonverti Utenti
 convert_msg=Din il-formola jippermettilek tissinkronizza l-lista tal-utenti Unix u Samba. Meta Samba qed juża <a href=$1>passwords kriptati</a>, lista separata ta 'utenti u passwords tintuża minflok il-lista ta' utenti tas-sistema.
 convert_noconv=Tikkonvertix jew tneħħi dawn l-utenti:
@@ -83,6 +88,7 @@ convert_cannot=Utenti Unix ma jistgħux jiġu kkonvertiti għal utenti Samba
 convert_who=Utenti Unix biex jikkonvertu
 convert_who0=Utenti elenkati biss jew meded UID
 convert_who1=Kollha minbarra l-utenti elenkati u l-meded UID
+
 misc_title=Għażliet Varji
 misc_debug=Livell ta 'Debug
 misc_cachecall=Ctt <tt>getwd ()</tt> telefonati?
@@ -96,6 +102,7 @@ misc_chroot=<tt>direttorju chroot ()</tt>
 misc_smbrun=Triq lejn <tt>smbrun</tt>
 misc_clienttime=Kumpens għall-ħin tal-klijent
 misc_readprediction=Aqra tbassir?
+
 net_title=Għażliet tan-Netwerking Unix
 net_idle=Ħin il-ħin qabel ma skonnettja
 net_trustlist=Fiduċja ta 'ospiti/fajl ta' l-utenti
@@ -111,6 +118,7 @@ net_maxpacket=Daqs massimu tal-pakkett
 net_listen=Isma 'l-indirizz
 net_ip=Indirizz IP
 net_socket=Għażliet tas-sokit
+
 passwd_title=Għażliet tal-Password
 passwd_encrypt=Tuża passwords kodifikati?
 passwd_allownull=Ħalli passiliet null?
@@ -124,11 +132,13 @@ passwd_send=Ibgħat
 passwd_map=Immappjar tal-username
 passwd_unixuser=Utenti Unix
 passwd_winuser=Utenti tal-Windows
+
 print_title=Għażliet ta 'stampar
 print_style=Stil tal-istampar Unix
 print_show=Uri l-printers kollha?
 print_printcap=Fajl Printcap
 print_cachetime=Stamp tal-ħin tal-cache tal-istampatur
+
 smb_title=Għażliet ta 'Netwerking tal-Windows
 smb_workgroup=Grupp tax-xogħol
 smb_wins=Mod WINS
@@ -159,14 +169,17 @@ smb_nowhere=Imkien
 smb_fromlist=Mil-lista. ..
 smb_ip=Indirizz IP
 smb_asworkgroup=<b>Bħala Grupp ta 'Ħidma</b> (mhux obbligatorju)
+
 create_title=Oħloq Kopja
 create_msg=Sehem ta 'kopja jiret il-valuri kollha tal-inadempjenza tiegħu mis-sehem li tagħżel. Jekk is-sehem tas-sors jinbidel, hekk ukoll il-kopja.
 create_from=Aqsam biex tikkopja minn:
 create_name=Isem ta 'sehem ġdid:
+
 smbuser_title=Utenti tas-Samba
 smbuser_list=Samba Lista tal-Utenti
 smbuser_nouser=L-ebda utenti tas-Samba ma ġew definiti.
 smbuser_cannot=L-utenti tas-Samba ma jistgħux jiġu elenkati
+
 euser_title=Editja l-Utent tas-Samba
 euser_name=Username
 euser_uid=Unix UID
@@ -185,6 +198,7 @@ euser_locked=Kont huwa msakkra
 euser_nopwrequired=Ebda password meħtieġa
 euser_disable=Kont b'diżabilità
 euser_trust=Kont fiduċjarju tal-post tax-xogħol
+
 fmisc_title=Nuqqasijiet ta 'File Varji
 fmisc_for=Għas-sehem <tt>$1</tt>
 fmisc_lockfile=Tagħmel l-illokkjar tal-fajl?
@@ -202,6 +216,7 @@ fmisc_conncmd=Kmand biex timxi fuq qabbad
 fmisc_disconncmd=Kmand biex timxi fuq skonnettja
 fmisc_rootconn=Kmand biex timxi fuq qabbad <i>bħala għerq</i>
 fmisc_rootdisconn=Kmand biex timxi fuq skonnettja <i>bħala għerq</i>
+
 fname_title1=Default Naming File
 fname_title2=Editja l-Ismijiet tal-Fajl
 fname_option=Għażliet ta 'Nommar ta' File
@@ -216,6 +231,7 @@ fname_hide=Aħbi l-fajls dot?
 fname_archive=Issejvja DOS arkivju bandiera?
 fname_hidden=Issejvja DOS bandiera moħbija?
 fname_system=Issejvja sistema tal-bandiera DOS?
+
 fperm_title1=Nuqqasijiet ta 'Permessi ta' File
 fperm_title2=Editja l-Permessi tal-Fajl
 fperm_option=Għażliet ta 'Permess ta' Fajl
@@ -228,6 +244,7 @@ fperm_link=Ħalli s-simboli barra s-sehem?
 fperm_delro=Tista 'tħassar il-fajls mill-ewwel?
 fperm_forcefile=Forza mod tal-fajl Unix
 fperm_forcedir=Forza fil-modalità tad-direttorju Unix
+
 share_title1=Nuqqasijiet ta 'Share File
 share_title2=Editja Taqsam il-Fajl
 share_title3=Oħloq Share Share
@@ -251,6 +268,7 @@ share_naming=Naming tal-fajl
 share_misc=Għażliet Varji
 share_samedesc1=Nota - dawn is-settings jaffettwaw ukoll in-nuqqasijiet għall-ishma kollha tal-fajl.
 share_samedesc2=Nota - dawn is-settings jaffettwaw ukoll in-nuqqasijiet għall-ishma kollha tal-istampatur.
+
 print_title1=Għażla tal-Printer Defaults
 print_title2=Editja l-Għażliet tal-Printer
 print_option=Għażliet tal-istampatur
@@ -262,6 +280,7 @@ print_delete=Ħassar il-kmand tax-xogħol
 print_pause=Nieqaf il-kmand tax-xogħol
 print_unresume=Ma naqasx il-kmand tax-xogħol
 print_driver=Sewwieq tal-istampatur
+
 pshare_title1=Defaults Share Printer
 pshare_title2=Editja Printer Share
 pshare_title3=Oħloq Share Printer
@@ -270,6 +289,7 @@ pshare_name=Isem l-ishma
 pshare_all=Kollha Jipparteċipaw Printers
 pshare_unixprn=Stampatur Unix
 pshare_spool=Direttorju Spool
+
 sec_index1=Nuqqasijiet tas-Sigurtà
 sec_index2=Editja s-Sigurtà
 sec_writable=Jinkiteb?
@@ -292,6 +312,7 @@ sec_rouser=Aqra biss l-utenti
 sec_rogroup=Aqra biss gruppi
 sec_rwuser=Utenti Aqra/Ikteb
 sec_rwgroup=Il-gruppi aqra/jiktbu
+
 esync_title=Sinkronizzazzjoni tal-Utent
 esync_msg=Webmin jista 'jiġi kkonfigurat b'tali mod li l-bidliet fil-lista tal-utenti Unix jiġu applikati awtomatikament għal-lista tal-utenti tas-Samba. Dan jaħdem biss meta l- <b>Utenti u Gruppi</b> Il-modulu Webmin jintuża biex iżżid, iħassar jew jibdel l-utenti.
 esync_add=Żid utent tas-Samba meta jiġi miżjud utent Unix
@@ -303,6 +324,7 @@ esync_gid=Grupp SID jew RID għal utenti ġodda
 esync_apply=Applika
 esync_cannot=Is-sinkronizzazzjoni tal-utent ma tistax tiġi kkonfigurata
 esync_egid=Grupp SID jew RID nieqes
+
 mkpass_title=Ikkonverti Utenti
 mkpass_convfail=Ma rnexxielux jikkonverti l-utent
 mkpass_msg=Jikkonvertu l-utenti Unix. ..
@@ -315,10 +337,12 @@ mkpass_passfail=Ma rnexxielux jistabbilixxi password
 mkpass_user=Username
 mkpass_action=Azzjoni meħuda
 mkpass_skipcount=L-utenti ta ' $1 ġew skipped għall-konverżjoni.
+
 savecopy_fail=Ma rnexxielux joħloq kopja
 savecopy_global=L-isem "globali" ma jistax jintuża għal sehem
 savecopy_exist=Sehem imsejjaħ '$1' diġà jeżisti
 savecopy_ename=Ma daħal l-ebda isem ta 'sehem
+
 saveuser_fail=Ma rnexxielux isalva l-utent
 saveuser_uid="$1" mhux Unix UID validu
 saveuser_colon=L-isem reali ma jistax ikun fih il-karattru :
@@ -326,10 +350,13 @@ saveuser_home=Id-direttorju domestiku "$1" ma jeżistix
 saveuser_shell=$1 mhijiex qoxra valida
 saveuser_pass=Ma rnexxiex tibdel il-password billi tuża smbpasswd : $1 
 saveuser_ews=L-għażla 'Kont ta' fiduċja tal-Workstation 'ma tistax tkun attivata għal utenti eżistenti
+
 savefmisc_fail=Ma rnexxielux isalva għażliet varji
 savefmisc_number="$1" mhux numru validu ta 'konnessjonijiet
+
 savefperm_fail=Ma rnexxielux isalva permessi tal-fajl
 savefperm_mode="$1" mhux modalità ta 'fajl Unix valida
+
 savefshare_fail=Ma rnexxielux isalva sehem
 savefshare_nopath=Ebda triq mogħtija
 savefshare_exist=Sehem imsejjaħ '$1' diġà jeżisti
@@ -339,6 +366,7 @@ savefshare_owner=Sid nieqes jew invalidu għal direttorju ġdid
 savefshare_group=Grupp nieqes jew invalidu għal direttorju ġdid
 savefshare_perms=Permessi nieqsa jew invalidi għal direttorju ġdid
 savefshare_emkdir=Ma rnexxielux joħloq direttorju : $1 
+
 savemisc_fail=Ma rnexxielux isalva l-għażliet
 savemisc_lockdir=Id-direttorju li fih id-direttorju tal-illokkjar ma jeżistix
 savemisc_logdir=Id-direttorju li fih il-fajl tal-ġurnal ma jeżistix
@@ -347,37 +375,48 @@ savemisc_overlap="$1" mhijiex daqs validu tal-qari li jikkoinċidi
 savemisc_chroot=Id-direttorju chroot "$1" ma jeżistix
 savemisc_smbrun=Il-programm smbrun "$1" ma jeżistix jew ma jistax jiġi eżegwibbli
 savemisc_time="$1" mhix tpaċija tal-ħin valida
+
 savenet_fail=Ma rnexxielux isalva l-għażliet
 savenet_timeout="$1" mhix skadenza ta 'skonnettjar valida
 savenet_ip="$1" mhuwiex byte IP validu
 savenet_keep="$1" m'huwiex intervall ta 'żamma validu
 savenet_maxxmit="$1" mhix daqs massimu validu ta 'pakkett
+
 savepass_fail=Ma rnexxielux isalva l-għażliet
 savepass_nopass=Il-verżjoni tiegħek ta 'Samba ma tappoġġjax il-passwords kodifikati
 savepass_passwd=L-ebda programm ta 'tibdil tal-password ma ngħata
 savepass_level="$1" mhix differenza valida fil-każ tal-password
 savepass_chat=Is-sekwenza tal-bidla tal-password tal-password hija vojta
+
 savepopts_fail=Ma rnexxielux isalva l-għażliet tal-istampatur
 savepopts_number=L-ispazju minimu ħieles għandu jkun numru
+
 saveprint_fail=Ma rnexxielux isalva l-għażliet
 saveprint_printcap=Il-fajl printcap "$1" ma jeżistix
 saveprint_cache="$1" mhix ħin validu fil-cache
+
 savepshare_fail=Ma rnexxielux isalva s-sehem tal-istampatur
 savepshare_exist=Sehem imsejjaħ '$1' diġà jeżisti
 savepshare_name="$1" mhux isem ta 'sehem validu
 savepshare_global=L-isem "globali" ma jistax jintuża għal sehem
+
 savesec_fail=Ma rnexxielux isalva s-sigurtà
+
 savesmb_fail=Ma rnexxielux isalva l-għażliet
 savesmb_size="$1" mhux daqs ta 'diska valida
 savesmb_oslevel="$1" mhix prijorità valida fil-browser ewlieni
 savesmb_server=Trid tidħol server ta 'password
+
 start_err=Naqset milli tibda s-servers tas-Samba
 start_fail=$1 falla
 start_err_wb=Ma rnexxielux jibda s-servers ta 'Winbind
+
 restart_err=Ma rnexxielux jerġa 'jibda s-servers tas-Samba
 restart_err_wb=Ma rnexxielux jerġa 'jibda s-servers ta' Winbind
+
 swats_fail=Ma rnexxielux isalva username
 swats_user=Username SWAT Nieqes
+
 viewu_index=Utenti attwali
 viewu_list=Utenti kurrenti ta ' $1 
 viewu_share=Aqsam
@@ -394,6 +433,7 @@ viewu_ecmd=Il-programm ta 'l-istatus tas-Samba $1 ma jidhirx li huwa installat f
 viewu_kill=Skonnettja l-Utenti magħżula
 viewu_enone=L-ebda utenti magħżula
 viewu_refresh=Actualizza l-paġna.
+
 log_apply=Bidu mill-ġdid tas-servers tas-Samba
 log_apply_wb=Bidu mill-ġdid tas-servers Winbind
 log_stop=Waqfu servers Samba
@@ -435,6 +475,7 @@ log_modify_group=Grupp tas-Samba modifikat $1
 log_delete_group=Grupp tas-Samba mħassar $1 
 log_gsync=Sinkronizzazzjoni tal-grupp Unix ikkonfigurat
 log_manual=Fajl konfigurazzjoni editjat manwalment $1 
+
 swat_title=Login SWAT
 swat_list=Login SWAT
 swat_msg1=Il-username u l-password tal-SWAT attwali tiegħek mhumiex korretti. Uża l-formola hawn taħt biex terġa 'tidħol.
@@ -446,6 +487,7 @@ swat_password=Password
 swat_login=Idħol
 swat_clear=Ċari
 swat_logout=Tluq ta 'l-SWAT
+
 eacl_aviol=Ksur ta 'kontroll ta' aċċess
 eacl_np=M'għandekx permessi
 eacl_papply=terġa 'tibda dan is-servizz
@@ -481,6 +523,7 @@ eacl_pafs=jaċċessa dan il-file share
 eacl_paps=jaċċessa dan is-sehem tal-istampatur
 eacl_pcps=toħloq sehem tal-istampatur
 eacl_pcfs=toħloq sehem tal-fajl
+
 acl_apply=Tista 'tapplika bidliet u twaqqaf Samba?
 acl_view_all_con=Tista 'tara l-konnessjonijiet kollha?
 acl_kill_con=Tista 'tneħħi l-konnessjonijiet?
@@ -527,6 +570,7 @@ acl_maint_groups=Tista 'tara, teditja u żżid gruppi?
 acl_maint_gsync=Tista 'żżomm sinkronizzazzjoni tal-gruppi Unix għal Samba?
 acl_winbind=Tista 'torbot ma' dominji?
 acl_bind=Tista 'taċċessa għażliet ta' winbind?
+
 groups_title=Gruppi Samba
 groups_name=Isem tal-grupp
 groups_unix=Grupp Unix
@@ -542,6 +586,7 @@ groups_return=Lista tal-gruppi
 groups_add=Żid grupp Samba ġdid.
 groups_ecannot=M'għandekx permess tara jew teditja gruppi tas-Samba
 groups_cannot=Gruppi tas-Samba ma jistgħux jiġu elenkati
+
 gedit_title2=Editja Samba Group
 gedit_title1=Oħloq Samba Group
 gedit_header=Dettalji tal-grupp Samba
@@ -554,11 +599,13 @@ gedit_unix=Grupp Unix
 gedit_unixgr=Grupp ..
 gedit_none=Xejn
 gedit_set=Elenkati ..
+
 gsave_err=Ma rnexxielux isalva grupp
 gsave_eunix=Nieqes jew mhux validu l-isem tal-grupp Unix jew GID
 gsave_ename=Isem il-grupp nieqes
 gsave_epriv=Nieqes il-privileġġi tal-grupp
 gsave_elocal=Il-privileġġi jistgħu jiġu stabbiliti biss għal gruppi lokali
+
 gsync_title=Sinkronizzazzjoni tal-Grupp
 gsync_msg=Webmin jista 'jiġi kkonfigurat sabiex il-bidliet fil-lista tal-grupp Unix jiġu applikati awtomatikament għal-lista tal-gruppi tas-Samba. Dan jaħdem biss meta l-<b>Utenti u Gruppi</b> Il-modulu Webmin jintuża biex iżid, iħassar jew jibdel gruppi.
 gsync_add=Żid grupp Samba meta jiġi miżjud grupp Unix
@@ -569,10 +616,12 @@ gsync_type=Tip ta 'gruppi ġodda
 gsync_priv=Privileġġi għal gruppi ġodda (jekk lokali)
 gsync_ecannot=M'għandekx permess tikkonfigura s-sinkronizzazzjoni tal-grupp
 gsync_cannot=Is-sinkronizzazzjoni tal-grupp ma tistax tiġi kkonfigurata
+
 check_user1=$1 : Il-passwords kodifikati mhumiex attivati fuq il-paġna <a href='$2'>Awtentikazzjoni</a>.
 check_user2=$1 : La l-fajl tal-password tas-Samba u lanqas it-triq għall-pdbedit mhumiex stabbiliti fuq il-paġna <a href='$2'>Modulu Configuration</a>.
 check_group1=$1 : Il-gruppi huma appoġġjati biss fil-verżjoni 3 tas-Samba.
 check_group2=$1 : La l-mogħdija lejn smbgroupedit u l-kmandi netti ma huma stabbiliti fuq il-paġna <a href='$2'>Module Configuration</a>.
+
 winbind_title=Jorbot lid-Dominju
 winbind_ecannot=M'għandekx permess jorbot ma 'dominji
 winbind_msg=Din il-formola tista 'tintuża biex torbot is-server Samba tiegħek ma' dominju Windows, tipikament ġestit minn server differenti.
@@ -588,6 +637,7 @@ winbind_edom=Isem tad-dominju nieqes
 winbind_cmd=Jorbot lil dominju bil-kmand $1 ..
 winbind_failed=.. naqas! Ara l-output hawn fuq għar-raġuni għaliex.
 winbind_ok=.. kompluta.
+
 bind_title=Għażliet ta 'Winbind
 bind_ecannot=M'għandekx permess teditja għażliet ta 'winbind
 bind_header=Għażliet li jorbtu d-dominju tal-Windows
@@ -606,9 +656,11 @@ bind_erealm=Isfera tal-Kerberos invalida
 bind_ecache=Nieqes il-ħin jew il-cache mhux validu
 bind_euid=Medda UID invalida - trid tkun bħal 20000-30000
 bind_egid=Medda GID Invalida - trid tkun bħal 20000-30000
+
 manual_title=Editja l-File Config
 manual_desc=Editjar tal-fajl tal-konfigurazzjoni tas-Samba $1 ..
 manual_err=Ma rnexxielux isalva l-fajl tal-konfigurazzjoni
 manual_edata=Ma daħal xejn!
+
 delete_err=Naqset milli tħassar l-ishma
 delete_enone=L-ebda magħżul

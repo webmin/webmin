@@ -30,6 +30,7 @@ index_other_google=Google-hakukone
 index_other_kde=KDE-dokumentaatio
 index_and=Vastaa kaikkia
 index_or=Vastaa mitä tahansa
+
 search_efor=Ei manuaalista sivua etsimään syötettyjä
 search_title=Hakutulokset
 search_desc=Kuvaus
@@ -47,24 +48,32 @@ search_none=$1 vastaavaa dokumentaatiota ei löytynyt.
 search_for=$1 : lle
 search_google=Google-hakutulos
 search_doxfer=Webminin online-dokumentaatio
+
 howto_title=HOWTO-asiakirja
 howto_header=HOWTO-tiedosto tiedosto $1 
 howto_epath=Virheellinen HOWTO-dokumenttipolku
+
 doc_title=Pakkausdokumentaatio
 doc_header=Pakkausdokumentitiedosto $1 
 doc_epath=Virheellinen paketin dokumentointipolku
+
 man_title=Manuaalinen sivu
 man_header=Manuaalinen sivu sivulle $1 ($2)
 man_noentry=Kohdan $1 manuaalista sivua ei ole!
 man_epath=Manuaalinen sivu ei voi olla polku!
+
 kernel_title=Ydindokumentti
 kernel_header=Ydindokumentitiedosto $1 
 kernel_epath=Virheellinen ytimen asiakirjapolku
+
 kde_title=KDE-dokumentaatio
 kde_header=KDE-dokumentitiedosto $1 
 kde_epath=Virheellinen KDE-dokumentointipolku
+
 perl_title=Perl-moduuli
 perl_header=Perl-moduulin $1 dokumentaatio
 perl_emod=Virheellinen Perl-moduulin nimi
+
 acl_allow=Voiko muokata sallittuja hakutyyppejä?
+
 check_ecannot=Et voi muokata sallittuja hakutyyppejä

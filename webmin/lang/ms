@@ -9,6 +9,7 @@ index_restart=Mula semula Webmin
 index_restartmsg=Klik butang ini untuk memulakan semula proses pelayan Webmin. Ini mungkin perlu jika anda baru-baru ini telah menaik taraf Perl.
 index_refresh=Penyegaran Modul
 index_refreshmsg=Semak semula kesemua modul Webmin yang dipasang pada pelayan, dan mengemas kini kegunaan modul yang sebelumnya dalam kategori 'Modul yang tidak digunakan'.
+
 access_title=Kawalan Capaian IP
 access_desc=Pelayan Webmin boleh dikonfigurasikan untuk menafikan atau membenarkan akses hanya dari alamat IP tertentu dengan menggunakan borang ini. Nama hos (seperti foo.bar.com) dan rangkaian IP (seperti 10.254.3.0 atau 10.254.1.0/255.255.255.128 atau 10.254.1.0/25 atau 10.254.1.5-10.254.97.127) juga boleh dimasukkan. Anda harus menghadkan capaian ke pelayan anda dari alamat yang boleh dipercayai, terutamanya jika ia boleh dicapai dari Internet. Jika tidak, sesiapa sahaja yang meneka kata laluan anda akan mempunyai kawalan penuh terhadap sistem anda.
 access_ip=Membernarkan Alamat IP
@@ -31,6 +32,7 @@ access_ecidr6='$1' bukanlah saiz rangkain IPv6 yang sah
 access_ehost=Gagal untuk mencari alamat IP untuk '$1'
 access_eself=Alamat IP terkini anda ($1) akan dinafikan
 access_always=Mendapatkan nama hos pada setiap permintaan?
+
 bind_title=Port dan Alamat
 bind_desc2=Borang ini boleh digunakan untuk menukar nombor port Webmin yang sedang didengar, atau hanya mendengar pada satu alamat IP sahaja pada sistem anda. Anda juga boleh mengkonfigurasi untuk menerima sambungan di pelbagai port, atau mendengar kepada beberapa alamat IP. Nota - pelayar web anda mungkin akan prom anda untuk log masuk semula setelah menukar port atau alamat IP yang diikat.
 bind_header=Alamat IP dan Port
@@ -59,6 +61,7 @@ bind_eipv6=IPv6 tidak boleh diaktifkan melainkan modul Perl $1 dipasang
 bind_redirecting=Mengubah hala ke URL baharu ..
 bind_elsof=Port baharu $1 telah ada dan sedang digunakan oleh proses lain
 bind_eonsystem=Alamat IP $1 tidak aktif pada sistem ini, dan tidak boleh digunakan
+
 log_title=Meng-log
 log_desc=Webmin boleh dikonfigurasikan untuk menulis log popular pelayan web, dalam format fail log CLF standard. Jika meng-log diaktifkan, anda juga boleh memilih merekod sama ada alamat IP atau nama hos, dan berapa kerap fail log akan dibersihkan. Apabila diaktifkan, meng-log akan ditulis kedalam fail $1.
 log_desc2=Apabila meng-log diaktifkan, Webmin juga akan menulis log yang lebih terperinci perihal tindakan pengguna kedalam fail $1. Log ini boleh dilihat dan dianalisis dengan menggunakan modul Webmin Tindakan Log untuk melihat apa yang setiap pengguna Webmin telah lakukan.
@@ -85,6 +88,7 @@ log_perms=Kebenaran untuk fail log
 log_eperms=Hilang atau kebenaran perlapanan tidak sah (seperti 755)
 log_syslog=Juga log ke syslog?
 log_login=Sertakan log masuk dan keluar Webmin dalam log tindakan?
+
 proxy_title=Pelayan Proksi dan Muat turun
 proxy_desc=Jika hos yang Webmin sedang berjalan berada di belakang firewall, anda mungkin perlu untuk menetapkan pelayan proksi untuk digunakan bagi mencapai laman web dan laman web FTP. Modul tertentu, seperti <tt>Pakej Perisian</tt>, akan menggunakan proksi semasa memuat turun fail atau program.
 proxy_header=Pelayan Proksi
@@ -127,6 +131,7 @@ proxy_return=Pelayan proksi dan muat turun
 proxy_tabproxy=Melakukan Proksi
 proxy_tabdown=Memuat turun
 proxy_fallback=Cuba permintaan langsung jika proksi tiada?
+
 ui_title=Antara muka Pengguna
 ui_desc=Borang ini membolehkan anda untuk menyunting pilihan antara muka pengguna yang digunakan oleh kesemua modul. Apabila memasuki warna, setiap warna mestilah ditulis menggunakan sistem RGB standard, di mana setiap nilai adalah nombor hex daripada 00 hingga ff.
 ui_header=Pilihan antara muka pengguna
@@ -175,6 +180,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/yyyy (cth. 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/yyyy (cth. 09/16/2001)
 ui_dateformat_yyyy/mm/dd=yyyy/mm/dd (cth. 2001/09/16)
 ui_ehostnamedisplay=Hilang atau paparan nama hos tidak sah
+
 mods_title=Modul-modul Webmin
 mods_desc1=Modul Webmin boleh ditambah selepas pemasangan dengan menggunakan borang ini. Modul kebiasaanya disediakan dalam bentuk fail <tt>.wbm</tt>, setiap daripadanya boleh mengandungi satu atau lebih modul. Modul juga boleh dipasang dari fail RPM jika disokong oleh sistem operasi anda.
 mods_installsource=Pasang dari
@@ -217,6 +223,7 @@ mods_tabinstall=Pasang
 mods_tabclone=Klon
 mods_tabdelete=Padam
 mods_tabexport=Eksport
+
 install_err1=Gagal untuk memasang modul dari $1
 install_efile=Fail tidak wujud
 install_err2=Gagal untuk memasang modul yang dimuat naik
@@ -250,10 +257,12 @@ install_cat=Dibawah kategori $1.
 install_eneither=RPM tidak mengandungi modul atau tema webmin
 install_err4=Gagal untuk memasang modul standard
 install_emissing=Modul yang dinyatakan tidak wujud
+
 clone_err=Gagal untuk mengklon modul
 clone_elink=symlink telah gagal : $1
 clone_ecopy=Gagal untuk salin konfig : $1
 clone_desc=Klon $1
+
 delete_err=Gagal untuk memadam modul
 delete_edep=Modul $  tidak boleh dipadam, kerana modul $2 bergantung kepadanya
 delete_desc1=$1 (Klon daripada $2)
@@ -265,6 +274,7 @@ delete_rusure2=Adakah anda pasti anda mahu memadam tema $2? $1 kB fail akan dipa
 delete_rusure3=Adakah anda pasti anda mahu memadam klon modul (s) $2?
 delete_acls=Buang dari pengguna dan tetapkan semula tetapan kawalan capaian?
 delete_enone=Tiada modul dipilih
+
 os_title=Persekitaran Sistem Operasi
 os_desc3=Laman ini memaparkan sistem operasi yang dikesan oleh Webmin pada masa pemasangan, dan sistem yang sedang dikesan sekarang. Jika ia berbeza, anda boleh memilih untuk mengemaskini maklumat OS, yang mungkin perlu jika anda ada melakukan naik taraf.
 os_desc2=Anda juga boleh menukar lokasi carian yang digunakan oleh Webmin apabila menjalankan program-program, dan lokasi arkib kongsi yang dibekalkan kepada mana-mana program.
@@ -287,6 +297,7 @@ os_eiversion=Hilang versi dalaman sistem operasi
 os_incorrect=Amaran - Sistem anda sebenarnya menjalankan $1 versi $2.
 os_fix=Kemaskini Sistem Operasi Dikesan
 os_usermin=Juga kemaskini OS Usermin
+
 lang_title=Bahasa
 lang_title2=Bahasa Webmin
 lang_lang=Dipaparkan dalam bahasa
@@ -298,6 +309,7 @@ lang_chardef=Ditentukan oleh bahasa
 lang_charover=Paksa tetapan aksara
 lang_err=Gagal untuk menyimpan bahasa
 lang_echarset=Hilang atau tetapan aksara tersilap pandang
+
 ssl_title=Penyulitan SSL
 ssl_essl=Modul perl Net :: SSLeay tidak ada untuk dipasang pada sistem anda. Untuk memasang arkib OpenSSL dan Net::SSLeay, sila ikuti <a href='$1'>arahan ini</a> dari laman web Webmin itu.
 ssl_cpan=Cara lain, anda boleh gunakan <a href='$1'>muat turun dan pasang</a> pada Webmin bagi modul Perl Net :: SSLeay untuk anda.
@@ -378,6 +390,7 @@ ssl_edownload=Gagal untuk mengekstrak data dari sijil PEM
 ssl_csralready=Lihat kunci yang terkini dan CSR ..
 ssl_already1=Kunci persendirian yang dijanakan sebelum ini :
 ssl_already2=Sijil permintaan menandatangani yang dijanakan sebelum ini :
+
 newkey_err=Gagal untuk mencipta kunci SSL
 newkey_ecn=Hilang atau nama pelayan tidak sah
 newkey_efile=Hilang nama fail kunci
@@ -389,11 +402,13 @@ newkey_ok=Berjaya menjana kunci SSL berikut :
 newkey_esize=Hilang atau saiz kunci tidak sah
 newkey_edays=Hilang atau nombor hari sebelum tamat tidak sah
 newkey_ecountry=Kod negara mestilah 2 abjad
+
 newcsr_err=Gagal untuk mencipta SSL CSR
 newcsr_efile=Hilang nama fail CSR
 newcsr_title=Menjana CSR
 newcsr_ok=Berjaya menjana permintaan sijil SSL berikut :
 newcsr_ok2=CSR ini hendaklah dihantar kepada penguatkuasaan sijil, yang mana mengesahkan sijil. Ia boleh dipasang dengan kunci di atas dengan menggunakan tab <b>Muat naik sijil</b>.
+
 startpage_title=Pilihan Halaman Indeks
 startpage_intro2=Laman ini membolehkan anda mengawal rupa menu utama Webmin. Sesetengah pilihan hanya berkesan apabila menggunakan tema lalai.
 startpage_tabs=Mengkategorikan modul
@@ -407,6 +422,7 @@ startpage_gotonone=&lt;Tiada&gt;
 startpage_gotomodule=Selepas log masuk, terus pergi ke modul
 startpage_webminup=Paparkan kemas kini Webmin pada halaman Sistem Maklumat?
 startpage_moduleup=Paparkan kemas kini modul pada halaman Sistem Maklumat?
+
 upgrade_title=Menaik taraf Webmin
 upgrade_desc=Borang ini membolehkan anda untuk menaik taraf pemasangan Webmin anda kepada versi baharu. Anda boleh memasang dari fail lokal, fail yang dimuat naik atau dari versi terbaru di <a href=http://www.webmin.com/>www.webmin.com</a>. Sama seperti menaik taraf manual, semua tetapan konfigurasi anda dan modul pihak ketiga akan disimpan.
 upgrade_descrpm=Borang ini membolehkan anda untuk menaik taraf pemasangan webmin anda secara keseluruhan kepada versi baharu menggunakan pilihan naik taraf RPM. Anda boleh memasang dari fail RPM tempatan, fail yang dimuat naik atau dari versi terbaharu di <a href=http://www.webmin.com/>www.webmin.com</a>. Sama seperti menaik taraf manual, semua tetapan konfigurasi anda dan modul pihak ketiga akan disimpan.
@@ -470,10 +486,12 @@ upgrade_tabupdate=Kemaskini modul
 upgrade_tabsched=Kemaskini berjadual
 upgrade_src=Menaik taraf Webmin dari
 upgrade_opts=Pilihan menaik taraf
+
 newmod_desc=Apabila Webmin dinaik taraf, mana-mana modul baharu dalam versi terkini akan diberikan kepada satu atau lebih pengguna. Borang ini membolehkan anda untuk menetapkan pengguna yang menerima modul baharu. Tetapan ini akan terpakai apabila menaik taraf pada baris arahan atau menggunakan borang berikut.
 newmod_header=Pemberian modul baharu
 newmod_def=Tingkah laku lalai - berikan modul baharu kepada <tt>root</tt> atau <tt>admin</tt>
 newmod_users=Pemberian modul baharu kepada :
+
 update_desc1=Borang ini membolehkan anda untuk menaik taraf modul Webmin yang dikesan mengandungi pepijat atau lubang keselamatan dari <a href=http://www.webmin.com/updates.html>Kemaskini Webmin</a> atau dari sumber yang lain. Ini akan membandingkan modul yang dipasang dengan yang sedia ada untuk dikemaskini, dan dengan secara automatik memuat turun dan memasang apa-apa modul yang lama.
 update_header1=Kemaskini modul sekarang
 update_header2=Kemaskini modul mengikut jadual
@@ -500,6 +518,7 @@ update_enomodsig=Tidak dapat memuat turun fail tandatangan bagi modul : $1
 update_ebadmodsig=Pemeriksaan tandatangan modul gagal : $1
 update_src=Menaik taraf modul dari
 update_opts=Pilihan kemaskini modul
+
 ca_title=Penguatkuasaan Sijil
 ca_old=Sijil yang sedia ada
 ca_header1=Cipta Sijil CA baharu
@@ -530,6 +549,7 @@ ca_eminiserv=Hanya Sijil klien SSL yang disokong oleh miniserv.
 ca_eversion=Versi modul Perl Net :: SSLeay yang dipasang pada sistem anda tidak menyokong sijil klien SSL.
 ca_essleay=Arahan pentadbiran SSL $1 tidak dijumpai pada sistem anda. Anda mungkin perlu menukar lokasinya dikonfigurasi modul Pengguna Webmin.
 ca_essl=Sijil SSL hanya boleh dikonfigurasi apabila pelayan Web beroperasi dalam mod SSL.
+
 session_title=Pengesahan
 session_desc1=Apabila diaktifkan, masa tamat kata laluan melindungi pelayan Webmin anda dari cubaan serangan tekaan kata laluan dengan menambah kelewatan antara setiap cubaan log masuk yang gagal bagi pengguna yang sama.
 session_header=Log masuk ke Webmin
@@ -579,10 +599,12 @@ session_md5off=Guna penyulitan standard Unix <tt>crypt</tt> untuk kata laluan We
 session_md5on=Guna penyulitan MD5 untuk kata laluan Webmin (membenarkan kata laluan yang panjang)
 session_emd5mod=Penyulitan MD5 tidak boleh digunakan, seperti modul Perl $1 tidak dipasang.
 session_blocklock=Juga sekat pengguna gagal untuk log masuk
+
 assignment_title=Penyusunan Modul
 assignment_header=Tugasan kategori Modul
 assignment_ok=Tukar kategori
 assignment_desc=Borang ini membolehkan anda untuk menetapkan kategori bagi setiap modul yang dipaparkan di bawah pada halaman index Webmin.
+
 categories_title=Sunting Kategori
 categories_header=ID kategori dan penerangan
 categories_desc=Borang ini membolehkan anda untuk menukar nama kategori Webmin yang sedia ada dan mewujudkan yang baru untuk diberikan kepada modul. Pada bahagian atas adalah untuk mengubah penerangan modul yang terbina, manakala bahagian bawah adalah untuk menambah ID kategori baru dan penerangan.
@@ -595,6 +617,7 @@ categories_name=Penerangan dipaparkan
 categories_lang=Sunting kategori pada bahasa:
 categories_langok=Tukar
 categories_custom=Tukar
+
 log_access=Mengubah kawalan capaian IP
 log_bind=Mengubah port dan alamat
 log_log=Menukar pilihan meng-log
@@ -637,6 +660,7 @@ log_delete_webmincron=Memadam fungsi berjadual $1
 log_run_webmincron=Jalankan fungsi berjadual $1
 log_save_webmincron=Mengemaskini fungsi berjadual dalam modul $1
 log_onedelete_webmincron=Memadam fungsi berjadul dalam modul $1
+
 themes_title=Tema Webmin
 themes_desc=Tema mengawal rupa antara muka pengguna Webmin, termasuk ikon, warna, latar belakang dan susun atur halaman. Kotak pilihan di bawah boleh digunakan untuk memilih salah satu daripada tema yang dipasang pada sistem anda.
 themes_sel=Tema semasa :
@@ -652,6 +676,7 @@ themes_taboverlay=Ubah lapisan
 themes_tabinstall=Pasang tema
 themes_tabdelete=Padam tema
 themes_tabexport=Eksport tema
+
 themes_err1=Gagal untuk memasang tema dari $1
 themes_efile=Fail tidak wujud
 themes_err2=Gagal untuk memasang tema yang dimuat naik
@@ -677,9 +702,11 @@ themes_delok=Tema untuk di padam :
 themes_return=Senarai tema
 themes_err4=Gagal untuk mengubah tema lapisan
 themes_eoverlay=Tema lapisan yang dipilih tidak serasi dengan tema global semasa
+
 themes_desc4=Tema yang dipasang boleh dieksport sebagai fail wbt.gz menggunakan borang di bawah. Fail tema kemudiannya boleh dipasang ke sistem lain yang menjalankan Webmin.
 themes_exportmods=Tema untuk dieksport
 themes_exportok=Eksport Tema yang dipilih
+
 referers_title=Perujuk dipercayai
 referers_desc=Laman ini membolehkan anda untuk mengkonfigurasi sokongan pemeriksaan perujuk Webmin, yang digunakan untuk mencegah pautan yang tidak dikehendaki daripada laman web yang lain menyebabkan pelayar anda melakukan perkara-perkara yang berbahaya kepada Webmin. Walau bagaimanapun, jika anda mempunyai pautan ke Webmin dari laman web anda sendiri yang anda tidak mahu diberi amaran mengenainya anda perlu menambah laman tersebut ke dalam senarai di bawah.
 referers_list=Laman web yang dipercayai
@@ -687,6 +714,7 @@ referers_none=Percaya pautan dari perujuk yang tidak diketahui
 referers_referer=Aktifkan memeriksa perujuk?
 referers_err=Gagal untuk menyimpan perujuk
 referers_ehost='$1' tidak sah bagi nama hos yang dipercayai
+
 update_err=Gagal untuk mengemaskini modul
 update_eurl=Hilang atau URL kemaskini tidak sah
 update_title=Mengemaskini modul
@@ -707,6 +735,7 @@ update_rv=Memeriksa modul Webmin dikemaskini dari $1
 update_eemail=Anda mesti masukkan alamat emel jika hanya memaparkan apa yang hendak dikemaskini
 update_subject=Laporan kemaskini modul Webmin
 update_version=Keluaran baharu Webmin (versi $1) kini boleh didapati untuk muat turun. Kemas kini masa hadapan akan dikeluarkan hanya untuk versi terkini.
+
 anon_title=Capaian Modul Anonymous
 anon_desc=Laman ini membolehkan anda untuk memberikan capaian kepada modul Webmin terpilih dan laluan tanpa klien perlu log masuk. Bagi setiap laluan modul yang anda masukkan di bawah (seperti <tt>/custom</tt> atau <tt>/passwd</tt>) anda perlu juga memasukkan nama pengguna Webmin dimana kebenarannya akan digunakan untuk akses kepada modul.
 anon_desc2=Anda perlu berhati-hati apabila memberikan capaian anonymous, kerana tanpa kawalan capaian IP atau memberikan capaian kepada modul yang salah boleh membenarkan penyerang untuk mengambil alih sistem anda.
@@ -715,15 +744,19 @@ anon_user=Pengguna Webmin
 anon_err=Gagal untuk menyimpan capaian anonymous
 anon_eurl='$1' bukanlah lokasi URL yang sah
 anon_euser=Hilang atau pengguna Webmin untuk lokasi URL '$1' tidak sah
+
 enogpg=GnuPG tidak dipasang
+
 standard_failed=Gagal untuk memuat turun senarai modul : $1
 standard_header=Modul standard Webmin
 standard_warn=Amaran - anda tidak menjalankan versi terbaharu Webmin $1, oleh itu modul ini mungkin gagal untuk dipasang.
 standard_eurl=URL modul standard tidak sah
+
 third_failed=Gagal untuk muat turun senarai modul : $1
 third_header=Modul Webmin pihak ketiga
 third_eurl=URL modul pihak ketiga tidak sah
 third_title=Pilih Modul pihak ketiga
+
 lock_title=Pengunci fail
 lock_desc=Secara lalai, Webmin akan mendapatkan kunci dari mana-mana fail yang diubah untuk mengelakkan pengubahsuaian serentak oleh pelbagai proses, yang boleh membawa kepada kerosakan fail. Laman ini membolehkan anda memilih atau nyah-aktifkan pengunci jika ia menyebabkan masalah.
 lock_header=Tetapan pengunci fail
@@ -734,6 +767,7 @@ lock_except=Kunci kesemua fail dan direktori kecuali ..
 lock_err=Gagal untuk menyimpan pengunci fail
 lock_edir='$1' bukan lokasi yang benar
 lock_edirs=Tiada fail atau direktori dimasukkan
+
 ipkey_title1=Cipta kunci SSL
 ipkey_title2=Sunting kunci SSL
 ipkey_header=Butiran IP khusus kunci SSL
@@ -741,6 +775,7 @@ ipkey_err=Gagal untuk menyimpan kunci SSL
 ipkey_eips=Tiada alamat IP yang dimasukkan
 ipkey_eextracas=Tiada fail sijil tambahan yang dimasukkan
 ipkey_eextraca=Fail sijil tambahan $1 tidak wujud
+
 descs_title=Tajuk Modul
 descs_info=Laman ini membolehkan anda untuk menentukan tajuk alternatif untuk modul Webmin, bagi mengubah penerangan standard mereka.
 descs_mod=Modul
@@ -750,11 +785,13 @@ descs_cdesc=Tajuk Klon
 descs_err=Gagal untuk menyimpan tajuk modul
 descs_edesc=Tajuk untuk modul '$1' hilang
 descs_etitle=Tajuk untuk klon '$1' hilang
+
 export_err=Gagal untuk mengeksport modul
 export_ecmd=Hilang arahan yang diperlukan oleh $1
 export_efile=Hilang atau fail eksport tidak sah
 export_done=Berjaya mengeksport modul yang dipilih untuk $1.
 export_title=Eksport modul
+
 advanced_title=Pilihan Lanjutan
 advanced_header=Pilihan lanjutan dan eksperimen
 advanced_temp=Direktori fail sementara
@@ -794,10 +831,13 @@ advanced_egzip=Mampatan gzip tidak boleh diaktifkan melainkan modul perl $1 dipa
 advanced_redir=Format URL untuk pelencongan
 advanced_redir1=Lokasi sahaja
 advanced_redir0=Protokol, hos, port dan lokasi
+
 syslog_errorlog=Log ralat Webmin
+
 clear_title=Bersihkan cache muat turun
 clear_done=Cache Webmin yang mengandungi $1 fail dari $2 URL telah berjaya dibersihkan.
 clear_none=Tiada URL buat masa ini dalam cache muat turun Webmin.
+
 savekey_err=Gagal untuk menyimpan kunci baharu
 savekey_ekey=Hilang atau kunci format PEM tidak sah
 savekey_ecert=Tiada atau sijil format PEM tidak sah
@@ -807,6 +847,7 @@ savekey_title=Muat naik kunci yang sedia ada
 savekey_done2=Kunci SSL yang dibekalkan telah disimpan di dalam $1, dan sijil dalam $2.
 savekey_done=Kunci SSL yang dibekalkan dan sijil telah disimpan di dalam fail $1.
 savekey_done3=Sijil SSL dirantai yang dibekalkan telah disimpan dalam fail $1.
+
 cache_title=URL dicache
 cache_search=Cari URL mengandungi
 cache_ok=Cari
@@ -819,8 +860,10 @@ cache_delete=Keluarkan Terpilih Dari Cache
 cache_err=Gagal untuk mengeluarkan URL yang dicache
 cache_enone=Tiada dipilih
 cache_efile=Nama fail tidak sah
+
 restart_title=Memulakan semula Webmin
 restart_done=Proses pelayan Webmin kini sedang memulakan semula - sila tunggu untuk beberapa saat sebelum meneruskan.
+
 mobile_title=Pilihan Peranti Mudah alih
 mobile_header=Pilihan untuk pelayar mudah alih
 mobile_theme=Tema untuk pelayar mudah alih
@@ -829,6 +872,7 @@ mobile_nosession=Paksa penggunaan pengesahan HTTP?
 mobile_agents=Ejen pengguna tambahan untuk pelayar mudah alih
 mobile_err=Gagal untuk menyimpan pilihan peranti mudah alih
 mobile_prefixes=URL awalan nama hos untuk pelayar mudah alih
+
 blocked_title=Menyekat Hos dan Pengguna
 blocked_type=Jenis
 blocked_who=Nama hos atau nama pengguna
@@ -840,9 +884,11 @@ blocked_host=Hos klien
 blocked_clear=Kosongkan kesemua kotak
 blocked_cleardesc=Klik butang ini untuk membersihkan semua hos terkini dan sekatan pengguna, dengan memulakan semula proses pelayan Webmin.
 blocked_restarting=Proses pelayan Webmin kini memulakan semula untuk membersihkan hos dan pengguna yang disekat - sila tunggu beberapa saat sebelum meneruskan.
+
 refreshmods_title=Segar semula modul-modul
 refreshmods_installed=Memeriksa modul Webmin boleh digunakan ..
 refeshmods_counts=.. $2 dijumpai bersama aplikasi yang dipasang, $1 tidak dipasang.
+
 debug_title=Menyah-pijat Fail Log
 debug_header=Pilihan nyah-pijat fail log Webmin
 debug_enabled=Nyah-pijat log diaktifkan?
@@ -870,6 +916,7 @@ debug_cmd=Baris arahan
 debug_cron=Tugas latar belakang
 debug_inmods=Modul untuk menulis log nyah-pijat untuk
 debug_emodules=Tiada modul dipilih untuk dinyah-pijat
+
 notif_passexpired=Kata laluan Wemin ada telah luput! Anda akan dipaksa untuk menukar pada log masuk yang seterusnya
 notif_passchange=Kata laluan Webmin anda diubah buat kali terakhir pada $1, dan mesti diubah dalam masa $2 hari.
 notif_passlock=Kata laluan Webmin anda diubah buat kali terakhir pada $1, dan akaun anda akan dikunci dalam masa $2 hari jika tidak diubah.
@@ -885,6 +932,7 @@ notify_updatedesc=Masalah diperbetulkan
 notif_updateok=Pasang Kemaskini Sekarang
 notif_reboot=Kemaskini pakej terkini (seperti versi kernel baharu) memerlukan boot semula  untuk memboleh digunakan sepenuhnya.
 notif_rebootok=Boot semula sekarang
+
 status_title=Koleksi Status Latar Belakang
 status_header=Tetapan status tugas koleksi
 status_interval=Kumpul status sistem di latar belakang?
@@ -893,6 +941,7 @@ status_interval0=Setiap
 status_mins=minit
 status_pkgs=Kumpul maklumat pakej yang disediakan?
 status_temp=Kumpul suhu peranti?
+
 sendmail_title=Menghantar Emel
 sendmail_desc=Laman ini mengawal bagaimana Webmin menghantar emel, seperti dari backup berjadual atau pemantauan latar belakang. Ia juga diguna pakai pada modul Baca Mel Pengguna.
 sendmail_header=Pilihan penghantaran mel
@@ -921,12 +970,14 @@ sendmail_subject=Tajuk Mesej
 sendmail_body=Kandungan Mesej
 sendmail_desc2=Borang ini boleh digunakan untuk menghantar emel ujian dengan tetapan di atas, untuk memastikan mel dapat dihantar dengan betul.
 sendmail_send=Hantar emel
+
 testmail_title=Hantar Emel ujian
 testmail_err=Gagal untuk menghantar mesej
 testmail_eto=Tiada alamat destinasi yang dimasukkan
 testmail_sending=Menghantar mesej dari $1 ke $2 ..
 testmail_done=.. mesej yang dihantar. Semak peti mel alamat destinasi untuk memastikan ianya dihantar.
 testmail_failed=.. menghantar gagal : $1
+
 web_title=Pilihan Pelayan Web
 web_header=Pilihan untuk pelayan terbina Webmin
 web_expires=Masa cache pihak klien untuk fail statik
@@ -938,6 +989,7 @@ web_expirespaths=Masa cache bahagian klien pada lokasi URL
 web_expirespath=Lokasi regular expression
 web_expirestime=Masa cache dalam saat
 web_eexpires2=Hilang atau bukan nombor bagi masa cache pihak klien pada baris $1
+
 webmincron_title=Fungsi Berjadual Webmin
 webmincron_emodule=Modul Webmin Tugas Cron tidak dipasang!
 webmincron_module=Modul Webmin
@@ -961,6 +1013,7 @@ webmincron_when1=Masa tertentu
 webmincron_secs=saat
 webmincron_err=Gagal untuk menyim fungsi berjadual
 webmincron_einterval=Selang mesti beberapa saat lebih besar daripada sifar
+
 twofactor_title=Pengesahan Dua-Faktor
 twofactor_header=Pilihan pengesahan dua-faktor
 twofactor_provider=Pembekal pengesahan

@@ -1,6 +1,7 @@
 index_title_v=IPv4 Firewall
 index_title_v6=IPv6 Firewall
 index_evalid=ПРЕДУПРЕЖДЕНИЕ! Ваша текущая конфигурация IPtables недопустима : $1 
+index_no_comment=
 index_unapply2=Сохранить конфигурацию
 index_unapply2desc=Нажмите эту кнопку, чтобы сохранить указанную выше конфигурацию в файле конфигурации постоянного брандмауэра.
 index_firewalld=Похоже, что FirewallD используется для создания брандмауэра вашей системы. Возможно, вам следует использовать вместо этого <a href='$1'>модуль FirewallD</a>.
@@ -17,6 +18,9 @@ index_ipset_size=Размер
 index_ipvxmode=Изменить версию протокола IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
+desc_icmpv6-type=Тип ICMP $1 
+desc_icmpv6-type!=Тип ICMP не $1 
 desc_ctstate=состояние соединения $1 
 desc_ctstate!=состояние соединения не $1 
 desc_physdev-in=входной физический интерфейс $1 
@@ -26,7 +30,9 @@ desc_physdev-out!=выходной физический интерфейс не 
 desc_args--match-set=$2 содержится в наборе IP $1 
 desc_src=источник
 desc_dest=место назначения
+
 redhat_einstalled=Не найдено ни одного загрузочного действия <tt>iptables (6)</tt>, указывающего на то, что в вашей системе не установлен пакет IPtables
+
 edit_state_snat=Исходный NATd
 edit_state_dnat=NATd назначения
 edit_physdevin=Входящий физический интерфейс
@@ -34,9 +40,10 @@ edit_physdevout=Исходящий физический интерфейс
 edit_physdevisin=Пакет входящий по интерфейсу моста
 edit_physdevisout=Пакет исходящий на мостовом интерфейсе
 edit_physdevisbridged=Пакет соединяется
+
 save_ephysdevin=Отсутствующий или неверный входящий физический интерфейс
 save_ephysdevout=Отсутствующий или недействительный исходящий физический интерфейс
+
 log_openports=Открытые порты брандмауэра $1 
+
 add_enone=Нет серверов для добавления выбранных!
-desc_icmpv6-type=Тип ICMP $1 
-desc_icmpv6-type!=Тип ICMP не $1 

@@ -9,12 +9,14 @@ index_all=&lt;Tất cả máy chủ&gt;
 index_group=Thành viên của $1 
 index_clear=Xóa lịch sử
 index_edit=Chỉnh sửa trước
+
 run_title=Chạy lệnh
 run_err=Không thể chạy lệnh
 run_ecmd=Không có lệnh nào được nhập
 run_failed=Không thể chạy trên $1 : $2 
 run_success=Đầu ra từ $1 ..
 run_enone=Không có máy chủ để chạy trên đã chọn
+
 log_clear=Xóa lịch sử lệnh
 log_run=Chạy $1 trên $2 máy chủ
 log_run_l=Chạy $1 trên $2 

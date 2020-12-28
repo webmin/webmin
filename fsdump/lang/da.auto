@@ -23,6 +23,7 @@ index_follow=Efter $1
 index_forcetar=I TAR-format
 index_delete=Slet valgte sikkerhedskopier
 index_nostrftime=Advarsel - nogle backupjob bruger % i deres filnavne, men substitutionssubstitution er ikke aktiveret på siden Modulkonfig.
+
 dump_dir=Katalog til sikkerhedskopi
 dump_dirs=Kataloger til sikkerhedskopiering
 dump_fs=Filsystem
@@ -108,6 +109,7 @@ dump_remount=Remount with <tt>noatime</tt> option under sikkerhedskopiering?
 dump_eftpupdate=Tilføjelse af filer til et eksisterende arkiv er ikke muligt, når du bruger FTP.
 dump_eleveldir=Kun sikkerhedskopier på niveau 0 er tilladt for mapper, der ikke er filsystemmonteringspunkter
 dump_eupdatedir=Filen <tt>/etc/dumpdates</tt> kan kun opdateres for mapper, der er filsystemmonteringspunkter
+
 edit_err=Kunne ikke oprette sikkerhedskopi
 edit_edir=Manglende backup-bibliotek
 edit_efs=Filsystemer af type $1 kan ikke sikkerhedskopieres af dette modul
@@ -132,9 +134,11 @@ edit_tolevel=$1 til $2 (niveau $3)
 edit_special=Backup plan
 edit_when=Hvornår sikkerhedskopieres
 edit_clone=Klon
+
 save_err=Kunne ikke gemme sikkerhedskopien
 save_edir=Manglende eller ugyldig backup-bibliotek
 save_efs=Backup-bibliotek kan ikke ændres til et andet filsystem
+
 backup_title=Backup nu
 backup_desc=Udfører sikkerhedskopiering af $1 til $2 ..
 backup_reverify=.. komplet. Bekræft nu sikkerhedskopi ..
@@ -147,6 +151,7 @@ backup_notape=.. backup overskredet kapaciteten på et enkelt bånd. Skift af b�
 backup_egone=Backup findes ikke!
 backup_bg=Start af backup-proces. Du kan overvåge dens fremskridt i afsnittet <b>Kørelse af sikkerhedskopieringsjob</b> på modulets hovedside og får besked om dets endelige status via e-mail.
 backup_ecannot=Du har ikke tilladelse til at tage backup af dette bibliotek
+
 restore_title=Gendan sikkerhedskopi
 restore_err=Kunne ikke gendanne sikkerhedskopien
 restore_ecommand=Kommandoen $1, der var nødvendig for at gendanne $2 filsystem-sikkerhedskopieringer, blev ikke fundet på dit system. Måske er det ikke installeret i øjeblikket.
@@ -190,6 +195,7 @@ restore_gzip=Fjern komprimering af arkiv?
 restore_keep=Overskriv ikke filer?
 restore_emulti=Gendannelser af flere filer kan ikke udføres fra en båndenhed
 restore_emulti2=Gendannelser af flere filer kan ikke udføres fra en ekstern server
+
 log_create=Oprettet backupkonfiguration til $1 
 log_modify=Ændret backup-konfiguration til $1 
 log_delete=Sletet backup-konfiguration for $1 
@@ -197,13 +203,16 @@ log_backup=Sikkerhedskopieret $1 til $2
 log_bgbackup=Startet sikkerhedskopi af $1 til $2 
 log_restore=Gendannet sikkerhedskopi fra $1 
 log_kill=Termineret sikkerhedskopi for $1 
+
 kill_err=Kunne ikke afslutte sikkerhedskopien
 kill_egone=Kører ikke længere!
 kill_ecannot=Du har ikke tilladelse til at afslutte denne sikkerhedskopi
+
 newtape_err=Kunne ikke signalere nyt bånd
 newtape_egone=Backup kører ikke længere!
 newtape_estatus=Backup venter ikke længere på et nyt bånd
 newtape_ecannot=Du har ikke tilladelse til at administrere denne sikkerhedskopi
+
 acl_edit=Kan oprette og redigere sikkerhedskopier?
 acl_restore=Kan gendanne sikkerhedskopier?
 acl_cmds=Kan redigeres før og efter kommandoer?
@@ -211,8 +220,10 @@ acl_extra=Kan redigere ekstra kommandolinjeparametre?
 acl_dirs=Tilladte mapper til sikkerhedskopier
 acl_all=Alle mapper
 acl_list=Kun opført ..
+
 delete_err=Kunne ikke slette sikkerhedskopier
 delete_enone=Ingen valgt
+
 email_already=Backup kører allerede med PID $1.
 email_ebefore=Før-backup-kommandoen mislykkedes!
 email_verify=Bekræfter sikkerhedskopi ..
@@ -220,5 +231,6 @@ email_eafter=Efter-backup-kommando mislykkedes!
 email_subject=Sikkerhedskopi af $1 på $2 
 email_ok=Sikkerhedskopien lykkedes
 email_failed=Sikkerhedskopiering mislykkedes!
+
 newtape_subject=Tapeændring $1 til sikkerhedskopiering af $2 på $3 
 newtape_body=Sikkerhedskopien af $2 på $3 har nået den maksimale tilladte mængde data på bånd $1. Du bliver nødt til at indlæse et nyt bånd og trykke på linket 'Tape Loaded' i Webmins modul til Filesystem Backup for at sikkerhedskopien kan fortsætte.

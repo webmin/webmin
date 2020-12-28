@@ -55,19 +55,26 @@ index_rotate=Statisztika frissítése
 index_rotatedesc=Kattintson erre a gombra, hogy végrehajtsa a naplózott hálózati forgalom elemzését a mostani időpillanatig, hogy azonnal megtekinthető legyen a riport.
 index_eiptables=Figyelmeztetés! Az Ön IPtables konfigurációjában hiba van: $1. A forgalmi monitorozás kitöröl minden tűzfal szabályt.
 index_return=riport innen
+
 log_setup=Forgalom monitorozás beállítása a(z) $1 interfészre
 log_turnoff=Forgalmi monitorozás kikapcsolása
 log_rotate=Statisztika frissítése
+
 acl_setup=Beállíthatja és letilthatja a monitorozást?
+
 turnoff_ecannot=Önnek nincs joga letiltani a monitorozást
+
 setup_ecannot=Önnek nincs joga engedélyezni a monitorozást
 setup_ezone=Nem találom a Shorewall zónát a kiválasztott interfészhez
+
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=Shorewall
+
 syslog_syslog=Rendszernapló
 syslog_syslog-ng=Rendszernapló-NG
+
 rotate_title=Statisztika frissítése
 rotate_doing=Készítem a naplózott hálózati forgalmat..
 rotate_done=.. rendben.

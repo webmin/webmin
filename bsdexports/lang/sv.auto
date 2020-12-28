@@ -9,9 +9,12 @@ index_apply=Applicera förändringar
 index_applydesc=Klicka på den här knappen för att tillämpa den aktuella filexportkonfigurationen. Detta kommer att göra alla kataloger listade ovan tillgängliga med de angivna alternativen.
 index_return=exportlista
 index_echeck=NFS-servern kan inte användas på det här systemet : $1 
+
 check_ecmd=NFS-serverkommando $1 är inte installerat
+
 delete_err=Det gick inte att ta bort exporten
 delete_enone=Ingen vald
+
 edit_title1=Redigera Export
 edit_title2=Skapa export
 edit_header1=Exportalternativ
@@ -31,6 +34,7 @@ edit_clients=kunder
 edit_hosts=Värdar / netgrupper
 edit_network=Nätverk
 edit_mask=Mask
+
 save_err=Det gick inte att spara export
 save_edir='$1' är inte en katalog eller finns inte
 save_enone=Du måste ange minst en katalog för att exportera
@@ -44,4 +48,5 @@ save_enetwork='$1' är inte ett giltigt nätverk
 save_enetmask='$1' är inte ett giltigt nätmask
 save_esame1=Katalogen <tt>$1</tt> exporteras redan till <tt>$2</tt>. Ditt operativsystem tillåter inte kataloger på samma <i>lokala</i> filsystem att exporteras till samma värd separat
 save_esame2=Katalogen <tt>$1</tt> exporteras redan till <tt>$2</tt>. Ditt operativsystem tillåter inte kataloger på samma <i>lokala</i> filsystem att exporteras till samma nätverk separat
+
 restart_err=Det gick inte att tillämpa ändringar

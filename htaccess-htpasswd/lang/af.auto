@@ -16,6 +16,7 @@ index_digest2=Verteringskodering is in die modulekonfigurasie aangeskakel, maar 
 index_cpan=<a href='$1'>Klik hier</a> om dit nou af te laai en te installeer.
 index_delete=Ontsluit die geselekteerde kaarte
 index_remove=Onbeskerm lêers en verwyder dit
+
 dir_title1=Voeg beskermde gids by
 dir_title2=Bewerk beskermde gids
 dir_header=Beskermde gidsopsies
@@ -60,6 +61,7 @@ dir_delete3=Onbeskerm lêer en verwyder dit
 dir_apache=Wysig Apache-opsies
 dir_efiledir='$1' is 'n gids en kan dus nie as gebruikerslêer gebruik word nie
 dir_egfiledir='$1' is 'n gids en kan dus nie as groeplêers gebruik word nie
+
 edit_title1=Skep gebruiker
 edit_title2=Gebruiker wysig
 edit_header=Gebruikerinligting vir webverifikasie
@@ -71,11 +73,13 @@ edit_pass0=Stel na
 edit_passfrom=Verander van
 edit_passto=na 'n nuwe wagwoord
 edit_dom=Verteer ryk
+
 gedit_title1=Skep 'n groep
 gedit_title2=Groep redigeer
 gedit_header=Webverifikasiegroepbesonderhede
 gedit_group=Groepnaam
 gedit_members=Lede van die groep
+
 save_err=Kon nie gebruiker stoor nie
 save_euser1=Gebruikernaam ontbreek
 save_euser2=Gebruikernaam kan nie die karakter bevat nie
@@ -84,16 +88,19 @@ save_eclash='N Gebruiker met dieselfde naam bestaan reeds
 save_eoldpass=Die ou wagwoord is nie korrek nie
 save_title=Gebruiker is gestoor
 save_edom=Ontbrekende of ongeldige verteringsterrein
+
 gsave_err=Kon nie groep stoor nie
 gsave_egroup1=Groepnaam ontbreek
 gsave_egroup2=Groepnaam kan nie die: karakter of spasies bevat nie
 gsave_eclash=Daar bestaan reeds 'n groep met dieselfde naam
+
 acl_dirs=Toegestane kaarte
 acl_user=Skep.htaccess- en htusers-lêers as Unix-gebruiker
 acl_same=Dieselfde as Webmin-aanmelding
 acl_home=Sluit die tuisgids van Unix-gebruikers in?
 acl_sync=Kan die gebruiker sinchronisasie Unix opstel?
 acl_uonly=Kan beskermde kaarte bygevoeg en verander word?
+
 log_create_dir=Gids $1 bygevoeg
 log_modify_dir=Gewysigde gids $1 
 log_delete_dir=Gids $1 is verwyder
@@ -104,6 +111,7 @@ log_create_group=Groep $1 geskep
 log_modify_group=Gewysigde groep $1 
 log_delete_group=Groep $1 is uitgevee
 log_delete_dirs=$1 -kaarte is uitgevee
+
 search_title=Soek Resultate
 search_err=Soek misluk
 search_edir=Absolute of ongeldige gids om te soek

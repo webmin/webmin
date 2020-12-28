@@ -23,6 +23,7 @@ index_follow=$1 ondoren
 index_forcetar=TAR formatuan
 index_delete=Ezabatu hautatutako segurtasun kopiak
 index_nostrftime=Abisua: babes-lan batzuek % fitxategien izenean erabiltzen dute, baina lanaldi-ordezkapena ez da gaitu Moduloaren Konfigurazio orrian.
+
 dump_dir=Backup egiteko direktorioa
 dump_dirs=Babeskopiak egiteko zuzendariak
 dump_fs=Filesystem
@@ -108,6 +109,7 @@ dump_remount=Erosi <tt>noatime</tt> aukerarekin segurtasun kopian?
 dump_eftpupdate=Fitxategiak lehendik dauden artxiboetan gehitzea ez da posible FTP erabiltzen denean.
 dump_eleveldir=0 mailako babes kopiak baino ez dira onartzen fitxategi sistemen puntu puntuak ez dituzten direktorioetarako
 dump_eupdatedir=<tt>/etc/dumpdates</tt> fitxategia eguneratu daiteke fitxategi sistemaren puntu puntuak dituzten direktorioetarako soilik
+
 edit_err=Ezin izan da backup egin
 edit_edir=Babeskopia direktorio falta da
 edit_efs=$1 motako fitxategi sistemek ezin dute modulu honen babeskopia egin
@@ -132,9 +134,11 @@ edit_tolevel=$1 eta $2 ($3 maila)
 edit_special=Backup egutegia
 edit_when=Noiz babeskopia egin
 edit_clone=Clone
+
 save_err=Ezin izan da backup gordetzea
 save_edir=Backup edo direktorio baliogabea falta da
 save_efs=Backup direktorioa ezin da beste fitxategi sistema batera aldatu
+
 backup_title=Backup Orain
 backup_desc=$1 etik $2 ko segurtasun kopia egiten ari da.
 backup_reverify=.. osatu. Orain egiaztagiria egiaztatzen ..
@@ -147,6 +151,7 @@ backup_notape=.. segurtasun kopiak zinta bakarraren ahalmena gainditu zuen. Zint
 backup_egone=Babeskopia ez da existitzen!
 backup_bg=Atzeko planoaren babes prozesua abiarazten. Moduluaren orrialde nagusiko <b>Egin Backup Lanak</b> atalean bere aurrerapenak kontrolatu ahal izango dituzu eta posta elektroniko bidez jakinaraziko zaio bere egoeraren berri.
 backup_ecannot=Ezin duzu direktorio hau babestu
+
 restore_title=Berrezarri babeskopia
 restore_err=Ezin izan da backup egin
 restore_ecommand=Ez da aurkitu zure sisteman $2 fitxategi-sistemaren segurtasun kopiak berreskuratzeko behar den $1 komandoa. Agian ez dago instalatuta.
@@ -190,6 +195,7 @@ restore_gzip=Deskonprimitu artxiboa?
 restore_keep=Ez dituzu fitxategiak gainidazten?
 restore_emulti=Ezin dira fitxategi anitzeko zaharberritzeak zinta gailu batetik egin
 restore_emulti2=Fitxategi anitzeko zaharberritzeak ezin dira urruneko zerbitzari batetik egin
+
 log_create=$1 erako babeskopia konfiguratua sortu da
 log_modify=$1 erako babeskopia konfiguratua
 log_delete=$1 babeserako konfigurazioa ezabatu da
@@ -197,13 +203,16 @@ log_backup=$1 etik $2 ra babeskopia egin da
 log_bgbackup=$1 eta $2 babesaren kopia abiarazi da
 log_restore=Backup $1 etik zaharberritua
 log_kill=$1 segurtasun kopia amaitu da
+
 kill_err=Ezin izan da babeskopia amaitu
 kill_egone=Jada ez korrika!
 kill_ecannot=Ez duzu baimenik babes kopia hau amaitzeko
+
 newtape_err=Ezin izan da zinta berria seinalatu
 newtape_egone=Backup ez da gehiago exekutatzen!
 newtape_estatus=Babeskopiak jada ez du zinta berriaren zain
 newtape_ecannot=Ez duzu baimenik babes-kopia kudeatzeko
+
 acl_edit=Babeskopiak sortu eta editatu ditzakezu?
 acl_restore=Backupak berreskuratu ditzakezu?
 acl_cmds=Editatu al daiteke komandoak aurretik eta ondoren?
@@ -211,8 +220,10 @@ acl_extra=Komando lerroko parametro gehigarriak edita ditzakezu?
 acl_dirs=Baimendutako babeskopiak egiteko direktorioak
 acl_all=Direktorio guztiak
 acl_list=Zerrenda bakarra ..
+
 delete_err=Ezin izan da segurtasun kopiak ezabatu
 delete_enone=Ez da hautatu
+
 email_already=Babeskopiak PID $1 -ekin abian da dagoeneko.
 email_ebefore=Back-backup komandoak huts egin du!
 email_verify=Babeskopia egiaztatzen ..
@@ -220,5 +231,6 @@ email_eafter=Babeskopia osteko komandoak huts egin du!
 email_subject=$1 -ren babesaren $2 babeskopia
 email_ok=Babeskopiak arrakasta izan du
 email_failed=Babeskopiak huts egin du!
+
 newtape_subject=Zinta aldatu $1 $2 ren $2 babesaren babeserako
 newtape_body=$2 -ren $2 babesaren kopiak $1 ean onartutako gehieneko datu kopurua lortu du. Zinta berri bat kargatu beharko duzu eta 'Zinta kargatu' estekan sartu beharko duzu Webmin-en Filesystem Backup moduluan segurtasun kopiak jarraitzeko.

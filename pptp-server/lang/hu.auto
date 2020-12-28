@@ -10,6 +10,7 @@ index_apply=Alkalmazza a konfigurációt
 index_applydesc=Kattintson erre a gombra a jelenlegi PPTP-kiszolgáló-beállítások alkalmazásához, leállítva és újraindítva a PPTP-kiszolgáló folyamatát. A PPP-beállítások és a PPP-fiókok változásait minden új kapcsolatra mindig alkalmazni kell
 index_return=modul index
 index_epppd=A (z) $1 PPP szerver program nincs telepítve a rendszerére. A PPTP működésétől függ.
+
 conf_title=PPTP szerver opciók
 conf_ecannot=A PPTP-kiszolgáló beállításait nem szabad szerkeszteni
 conf_header=PPTP szerver konfiguráció
@@ -35,6 +36,7 @@ conf_elocalip=A '$1' nem érvényes helyi IP-cím vagy tartomány
 conf_eremoteip=A '$1' nem érvényes távoli IP-cím vagy tartomány
 conf_efrom=Hiányzó vagy érvénytelen IPX hálózat a címből
 conf_eto=Hiányzó vagy érvénytelen IPX hálózat a címhez
+
 options_title=PPP beállítások
 options_ecannot=A PPP beállításait nem szabad szerkeszteni
 options_desc0=A következő PPP lehetőségek $1 -től vonatkoznak az összes bejövő kapcsolatra, amelyeket a rendszer fogad, beleértve a telefonos modemekhez tartozókat is.
@@ -67,6 +69,7 @@ options_mschap=MS-CHAP hitelesítés
 options_mschap-v2=MS-CHAP 2. verzió hitelesítés
 options_chapms=MS-CHAP hitelesítés
 options_chapms-v2=MS-CHAP 2. verzió hitelesítés
+
 secrets_title=PPP számlák
 secrets_ecannot=A PPP-fiókok nem szerkeszthetők
 secrets_return=index
@@ -80,6 +83,7 @@ secrets_sany=BÁRMI
 secrets_create=Hozzon létre új PPP-fiókot.
 secrets_desc=Az ezen az oldalon felsorolt PPP-fiókok a $1 fájlból származnak, amelyet a $3 hitelesítéshez használnak. Csak a (z) $2 szerver adatai jelennek meg, a kimenő kapcsolatok létrehozására szolgáló számlák nem.
 secrets_delete=Törölje a kiválasztott PPP-fiókokat
+
 edit_secret_etitle=A PPP-fiók szerkesztése
 edit_secret_ctitle=Hozzon létre PPP-fiókot
 edit_secret_acc=PPP számla
@@ -99,15 +103,20 @@ edit_secret_alist=Engedélyezze a felsorolt ..
 edit_secret_save=Megment
 edit_secret_del=Töröl
 edit_secret_return=fióklista
+
 save_secret_esave=Nem sikerült menteni a fiókot
 save_secret_enoip=A '$1' nem érvényes cím
+
 stop_err=Nem sikerült leállítani a PPTP szervert
 stop_egone=Már nem fut
 stop_ecannot=A PPTP szervert nem szabad leállítani
+
 start_err=Nem sikerült elindítani a PPTP szervert
 start_ecannot=A PPTP szerver nem indítható el
+
 apply_err=A PPTP-kiszolgáló újraindítása nem sikerült
 apply_ecannot=A PPTP-kiszolgáló nem indítható újra
+
 conns_title=Aktív kapcsolatok
 conns_ecannot=Nem engedélyezi az aktív kapcsolatok kezelését
 conns_desc=Ez az oldal felsorolja a szerverhez jelenleg aktív PPTP-kapcsolatokat. Az egyik erőszakos leválasztásához kattintson az interfész nevére.
@@ -119,9 +128,11 @@ conns_remote=Ügyfél VPN címe
 conns_none=Jelenleg egyetlen PPTP kapcsolat sem aktív.
 conns_unknown=Ismeretlen
 conns_user=Felhasználónév
+
 disc_err=Nem sikerült a leválasztás
 disc_egone=A kapcsolatok már nem aktívak
 disc_ekill=A folyamat már nem fut
+
 log_secret_create=Létrehozta a (z) $1 PPP-fiókot
 log_secret_modify=Módosított $1 PPP-fiók
 log_secret_delete=Törölt $1 PPP-fiók
@@ -132,6 +143,7 @@ log_disc=A leválasztott kliens $1
 log_start=Indított PPTP szerver
 log_stop=Leállított PPTP szerver
 log_apply=Alkalmazott PPTP szerver konfiguráció
+
 acl_conf=Szerkesztheti a konfigurációt?
 acl_options=Szerkesztheti az opciókat?
 acl_secrets=Kezelni tudja a PPTP-fiókokat?

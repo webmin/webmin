@@ -37,6 +37,7 @@ index_addhint=Crea una nuova zona root
 index_version=BIND versione $1
 index_sapply=Applica Modifiche Su:
 index_sapplymsg=Usa questo bottone per far ripartire il server BIND in esecuzione nel server selezionato. Fai questo per attivare zone slave che hai creato nel server.
+
 master_title=Modifica Zona Master
 master_ecannot=Non sei autorizzato a modificare questa zona
 master_manual=Modifica file Record
@@ -98,12 +99,14 @@ master_emip=IP master '$1' invalido
 master_eview=Non sei autorizzato a creare una zona con quella vista
 master_eserial=Il numero di serie deve essere una stringa di cifre
 master_apply=Applica modifiche
+
 delete_title=Cancella Zona
 delete_mesg=Sei sicuro di voler cancellare la zona $1 ? Tutti i record e i file della zona verranno cancellati.
 delete_mesg2=Sei sicuro di voler cancellare la zona root ? Il tuo DNS server potrebbe non essere più in grado di risolvere indirizzi in internet.
 delete_rev=Cancellare i reverse record nelle altre zone ?
 delete_fwd=Cancellare i forward record nelle altre zone ?
 delete_ezone=La zona non è stata trovata nel server slave
+
 mcreate_title=Crea Zona Master
 mcreate_ecannot=Non puoi creare zone master
 mcreate_opts=Opzioni per le nuove zone master
@@ -115,6 +118,7 @@ mcreate_view=Crea vista
 mcreate_file=File Record
 mcreate_auto=Automatico
 mcreate_err=Creazione zona master fallita
+
 slave_title=Modifica Zona Slave
 stub_title=Modifica Stub Zona
 slave_ecannot=Non sei autorizzato a modificare questa zona
@@ -138,6 +142,7 @@ slave_efile2='$1' non è un file record permesso
 slave_mins=minuti
 slave_master_port=porta
 slave_convert=Converti a zona master
+
 screate_title1=Creazione Zona Slave
 screate_title2=Creazione Zona Stub
 screate_ecannot1=Non sei autorizzato a creare zone slave
@@ -150,6 +155,7 @@ screate_rev=Reverse (Indirizzi in nomi)
 screate_dom=Nome dominio / Rete
 screate_err1=Creazione zona slave fallita
 screate_err2=Creazione zona stub fallita
+
 recs_ecannot=Non sei autorizzato a modificare i record di questa zona
 recs_title=$1 Record
 recs_header=In $1
@@ -160,6 +166,7 @@ recs_comment=Commento
 recs_return=tipi di record
 recs_type=Tipo
 recs_vals=Valori
+
 edit_title=Modifica $1
 edit_header=In $1
 edit_edit=Modifica Record di $1
@@ -196,6 +203,7 @@ edit_elabel=La label di '$1' è troppo lunga
 edit_eloc=Latitudine e longitudine mancante
 edit_eweight='$1' non è un valido service weight
 edit_eport='$1' non è un numero di porta valida
+
 edit_etarget='$1' non è un nome server o indirizzo valido
 edit_return=record
 edit_ecname1=Non puoi creare un record nome alias con lo stesso nome di un record già esistente.
@@ -210,14 +218,18 @@ edit_ekey=dati chiave codificata base-64 mancanti o invalidi
 edit_dtitle=Cancella Record
 edit_rusure=Sei sicuro di voler cancellare il record $1 del dominio $2, e ogni eventuale record reverse o forward?
 edit_dok=Si, cancella
+
 text_title=Modifica File Record
 text_undo=Undo
 text_ecannot=Non sei autorizzato a modificare i file con i record
+
 restart_ecannot=Non sei autorizzato a far ripartire BIND
 restart_endc=Comando NDC fallito : $1
 restart_ecmd=Comando di ripartenza fallito : $1
+
 start_ecannot=Non sei autorizzato a far partire BIND
 start_error=Fallita la partenza di BIND : $1
+
 fwd_title=Modifica Zona Forward
 fwd_ecannot=Non sei autorizzato a modificare questa zona
 fwd_opts=Opzioni Zona
@@ -225,6 +237,7 @@ fwd_masters=Server Master
 fwd_forward=Prova altri server?
 fwd_check=Controllo i nomi?
 fwd_err=Salvataggio opzioni fallito
+
 fcreate_title=Creazione Zona Forward
 fcreate_ecannot=Non sei autorizzato a creare zone forward
 fcreate_opts=Opzioni nuova zona forward
@@ -234,6 +247,7 @@ fcreate_rev=Reverse (Indirizzi in nomi)
 fcreate_dom=Nome dominio / Rete
 fcreate_masters=Server Master
 fcreate_err=Creazione zona forward fallita
+
 create_enet='$1' non è una rete valida
 create_edom='$1' non è un nome dominio valido
 create_edom2='$1' deve essere un dominio, non una rete
@@ -243,7 +257,9 @@ create_efile3=Creazione '$1' fallita : $2
 create_efile4=Il file $1 esiste già
 create_emaster='$1' non è un indirizzo master server valido
 create_enone=Devi inserire almeno un master server
+
 boot_err=Download fallito
+
 type_A=Indirizzo
 type_AAAA=Indirizzo IPv6
 type_NS=Name Server
@@ -258,6 +274,7 @@ type_LOC=Locazione
 type_SRV=Indirizzo Service
 type_ALL=Tutti i Tipi di Record
 type_KEY=Chiave Pubblica
+
 edit_A=Indirizzo
 edit_AAAA=Indirizzo IPv6
 edit_NS=Name Server
@@ -271,6 +288,7 @@ edit_PTR=Indirizzo Reverse
 edit_LOC=Locazione
 edit_SRV=Indirizzo Service
 edit_KEY=Chiave Pubblica
+
 recs_A=Indirizzo
 recs_AAAA=Indirizzo IPv6
 recs_NS=Name Server
@@ -285,6 +303,7 @@ recs_LOC=Locazione
 recs_SRV=Indirizzo Service
 recs_ALL=Tutti
 recs_KEY=Chiave Pubblica
+
 value_A1=Indirizzo
 value_NS1=Name Server
 value_CNAME1=Nome Reale
@@ -308,6 +327,7 @@ value_KEY1=Flags
 value_KEY2=Protocollo
 value_KEY3=Algoritmo
 value_KEY4=Chiave
+
 warn=Avviso
 fail=Fallito
 ignore=Ignora
@@ -349,6 +369,7 @@ acl_vall=Tutte le viste
 acl_vsel=Viste selezionate..
 acl_vnsel=Tutte tranne quelle selezionate..
 acl_inview=Zone nella vista &lt;$1&gt;
+
 servers_title=Altri Server DNS
 servers_ip=Indirizzi IP
 servers_bogus=Ignora server errati (bogus)?
@@ -360,6 +381,7 @@ servers_keys=Usa le chiavi DNS
 servers_err=Salvataggio altri server DNS fallito
 servers_eip='$1' non è un indirizzo IP valido
 servers_etrans='$1' non è un numero massimo di trasferimenti valido
+
 logging_title=Logging (generazione log) e Errori
 logging_ecannot=Non sei abilitato alla configurazione logging
 logging_header=Opzioni logging globale e errori
@@ -391,12 +413,14 @@ logging_ename='$1' non è un nome di canale valido
 logging_efile=Nome del file di log mancante
 logging_ever='$1' non è numero di versioni invalido
 logging_esize='$1' non è una dimensione di log valida
+
 acls_title=Access Control List
 acls_ecannot=Non sei abilitato a modificare le ACL globali
 acls_name=Nome ACL
 acls_values=Indirizzi, reti e ACL corrispondenti
 acls_err=Salvataggio ACL fallito
 acls_ename='$1' non è un nome di ACL valido
+
 files_title=File e Directory
 files_ecannot=Non sei autorizzato a configurare i file
 files_header=Opzioni globali file e directory
@@ -406,6 +430,7 @@ files_pid=File con l'ID processo
 files_xfer=Percorso al programma di trasferimento zona
 files_err=Salvataggio opzioni file e directory fallito
 files_efile=Nome file mancante o invalido
+
 forwarding_title=Forwarding e Trasferimenti
 forwarding_ecannot=Non sei autorizzato a modificare le opzioni di forwarding e trasferimento
 forwarding_header=Opzioni globali di forwarding e trasferimento di zona
@@ -420,6 +445,7 @@ forwarding_err=Salvataggio opzioni di forwarding e trasferimento fallito
 forwarding_emins=Tempo massimo di trasferimento mancante o invalido
 forwarding_etrans=Numero massimo di trasferimenti concorrenti mancante o invalido
 forwarding_minutes=minuti
+
 net_title=Indirizzi e Topologia
 net_ecannot=Non sei autorizzato a modificare le opzioni di indirizzi e topologia
 net_header=Opzioni globali indirizzi e topologia
@@ -433,10 +459,12 @@ net_topol=Scelta della topologia del name server
 net_err=Salvataggio opzioni indirizzi della topologia fallito
 net_eport='$1' non è un numero di porta valido
 net_etopology=Nessun indirizzo di topologia inserito
+
 controls_title=Opzioni interfaccia di controllo
 controls_ecannot=Non sei autorizzato a modificare le opzioni di controllo
 controls_header=Opzioni di controllo
 controls_err=Salvataggio opzioni di interfaccia fallito
+
 controls_inet=Porta di accesso internet
 controls_unix=FIFO di accesso Unix
 controls_port=porta
@@ -450,6 +478,7 @@ controls_efile=Nome file FIFO mancante o invalido
 controls_eperms=Permessi del FIFO mancante o invalido
 controls_eowner=UID proprietario del FIFO mancante o invalido
 controls_egroup=GID proprietario del FIFO mancante o invalido
+
 keys_title=Chiavi DNS
 keys_id=ID Chiave
 keys_alg=Algoritmo
@@ -458,6 +487,7 @@ keys_ecannot=Non sei autorizzato a modificare le chiavi DNS
 keys_err=Salvataggio chiavi DNS fallito
 keys_ekey='$1' non è un ID chiave valido
 keys_esecret=Frase segreta codificata base-64 per la chiave $1 mancante o invalida
+
 misc_title=Opzioni varie
 misc_ecannot=Non sei autorizzato a modificare le opzioni varie
 misc_header=Opzioni globali varie
@@ -477,6 +507,7 @@ misc_esize='$1' non è una dimensione valida
 misc_efiles='$1' non è un numero massimo di file aperti valido
 misc_emins='$1' non è un numero di minuti valido
 misc_mins=minuti
+
 zonedef_title=Default per le Zone
 zonedef_msg=Default per nuove zone master
 zonedef_err=Salvataggio dei default per le zone fallito
@@ -489,17 +520,22 @@ zonedef_cslave=Controllo nomi nelle zone slave?
 zonedef_cresponse=Controllo nomi nelle risposte?
 zonedef_notify=Notificare gli slave dei cambiamenti?
 zonedef_email=Indirizzo email di Default
+
 find_title=Cerca Zone
 find_match=Ricerca zone per $1 ..
 find_none=Nessuna zona trovata.
+
 efirst=Prima direttiva errata alla linea $1 in $2
+
 findfree_title=Cerca IP liberi
+
 findfree_desc=Cerca IP liberi
 findfree_nofind=Non sei autorizzato a cercare IP liberi
 findfree_header=In $1
 findfree_sopt=Opzioni di ricerca
 findfree_cf=Considerare nomi host <em>freeXXX</em> come IP liberi?
 findfree_search=Cerca
+
 log_servers=Cambiati altri server DNS
 log_logging=Cambiato logging e errori
 log_acls=Cambiate le ACL
@@ -533,11 +569,14 @@ log_modify_record=Cambiati $1 record $2 nella zona $3
 log_boot=Creati file di configurazione primaria
 log_move=Spostata zona $1
 log_review=Cambiate opzioni della vista per $1
+
 convert_err=Conversione zona fallita
 convert_efile=Deve essere specificato un file con i record prima che una zona slave possa essere convertita ad una master.
+
 whois_title=Informazione WHOIS
 whois_header=Output del comando $1 ..
 whois_ecannot=Non sei autorizzato a cercare informazioni WHOIS
+
 view_title=Visualizza modifiche Client
 view_opts=Visualizza dettagli Client
 view_name=Nome vista
@@ -545,6 +584,7 @@ view_class=Classe record DNS
 view_match=Applica questa vista ai client
 view_recursion=Risoluzioni recursive totali (full recursive lookups) per i client?
 view_ecannot=Non sei autorizzato a modificare questa vista
+
 vcreate_title=Crea Vista Client
 vcreate_match_all=Tutti i client
 vcreate_match_sel=Indirizzi, reti e ACL selezionati
@@ -553,10 +593,12 @@ vcreate_ename=Nome vista mancante o invalido
 vcreate_etaken=Il nome della vista è già stato preso
 vcreate_eclass=Nome classe mancante o invalido
 vcreate_ecannot=Non sei autorizzato a creare viste
+
 hint_title=Modifica Zona Root
 hint_desc=La zona root è usata dal tuo server DNS per contattare i server root in internet, così che possa risolvere i nomi dei domini non gestiti dal tuo server DNS, come <tt>.com</tt> o <tt>.net.au</tt>. A meno che il tuo server DNS non sia per una rete interna o stai facendo forward di tutte le richieste ad un'altro server, non dovresti cancellare questa zona root.
 hint_move=Muovi per vista:
 hint_ecannot=Non sei autorizzato a modificare questa zona root
+
 hcreate_title=Crea Zona Root
 hcreate_desc=La zona root è usata dal tuo server DNS per contattare i server root in internet, così che possa risolvere i nomi dei domini non gestiti dal tuo server DNS, come <tt>.com</tt> o <tt>.net.au</tt>. Se sta usando viste multiple, probabilmente dovrai usare una zona root separata per ogni vista, in modo che tutti i client possano risolvere domini internet in modo corretto.
 hcreate_file=Memorizza i root server nel file
@@ -569,6 +611,7 @@ hcreate_efile='$1' non è un file root accessibile
 hcreate_efile2=Root file mancante o invalido
 mcreate_erecs=Non c'è nessun root file valido
 hcreate_err=Creazione zona root fallita
+
 vdelete_title=Cancellazione Vista
 vdelete_mesg=Sei sicuro di voler cancellare la vista client $1 ? Tutte le zone in questa vista verranno cancellate (con i relativi file di zona) o spostate ad un'altra vista come da tua scelta qui sotto.
 vdelete_mesg2=Sei sicuro di voler cancellare la vista client $1 ?
@@ -576,6 +619,7 @@ vdelete_newview=Zone contenute da questa vista
 vdelete_root=Sposta fuori dalla vista
 vdelete_delete=Cancella completamente
 vdelete_move=Sposta nella vista
+
 gen_title=Generatori di Record
 gen_desc=Questa pagina ti permette di definire i generatori, ognuno dei quali creerà record multipli in questa zona utilizzando un contatore incrementale. Questo serve per delegare parti della zona reverse ad un'altro server.
 gen_range=Spazio

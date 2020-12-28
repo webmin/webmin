@@ -42,6 +42,7 @@ index_lvused=Spazju użat
 index_lvuse=Użat għal
 index_snapof=(Stampa ta ' $1)
 index_thin=Ġabra rqiqa LVM għal $1 LVs
+
 lv_edit=Editja l-Volum Loġiku
 lv_edit_snap=Edit Snapshot
 lv_create=Oħloq Volum Loġiku
@@ -128,6 +129,7 @@ lv_pvfrom=Mexxi blokki mill-volum fiżiku
 lv_pvto=Għall-volum fiżiku
 lv_moveok=Nimxu blokki
 lv_return=Volum loġiku
+
 mkfs_title=Oħloq Sistema tal-Files
 mkfs_desc=Din il-formola jippermettilek tibni sistema ta 'fajls $2 ($1) ġdida fuq volum loġiku $3. Id-data eżistenti kollha għandha titħassar.
 mkfs_header=Għażliet ġodda tas-sistema tal-fajls
@@ -135,6 +137,7 @@ mkfs_err=Ma rnexxielux joħloq sistema ta 'fajls
 mkfs_exec=Twettiq kmand $1 ..
 mkfs_failed=.. kmand falla!
 mkfs_ok=.. kmand komplut.
+
 resize_title=Irdimensiona l-Volum Loġiku
 resize_mesg=Is-sistema ta 'fajls $1 fuq dan il-volum loġiku ma tistax tinbidel mill-ġdid. Jekk iċċekken il-volum loġiku, trid terġa 'toħloq is-sistema tal-fajls, li tħassar id-dejta kollha fiha.
 resize_mesg2=Webmin ma jafx x'tip ta 'sistema ta' fajls huwa fuq dan il-volum loġiku, jekk hemm. Jekk iċċekken il-volum loġiku, trid terġa 'toħloq is-sistema tal-fajls, li tħassar id-dejta kollha fiha.
@@ -142,8 +145,10 @@ resize_fs=Kien hemm żball li jqassam id-daqs tal-fajl $1 fuq dan il-volum loġi
 resize_ok=Irdimensiona l-Volum Loġiku
 resize_emounted=Is-sistema ta 'fajls fuq dan il-volum loġiku ma tistax tinqies mill-ġdid waqt li tkun immuntata
 resize_emounted2=Is-sistema tal-files fuq dan il-volum loġiku ma tistax tiċkien waqt li tkun immuntata
+
 init_title=Attiva LVM
 init_cmd=Imexxi kmand $1 ..
+
 pv_edit=Editja l-Volum Fiżiku
 pv_create=Żid il-Volum Fiżiku
 pv_vg=Fil-grupp tal-volum $1 
@@ -170,6 +175,7 @@ pv_eother=Apparat tad-diska nieqes jew invalidu
 pv_raid=Apparat RAID $1 
 pv_lvs=Allokazzjoni skont volumi loġiċi
 pv_egone=Il-volum fiżiku m'għadux jeżisti!
+
 vg_edit=Editja l-Grupp tal-Volum
 vg_create=Oħloq Grupp tal-Volum
 vg_name=Isem il-grupp tal-volum
@@ -188,11 +194,13 @@ vg_deleteok=Ħassar issa
 vg_ename=Isem il-grupp tal-volum tal-volum nieqes jew invalidu
 vg_epesize=Id-daqs tal-blokka ta 'allokazzjoni nieqsa jew invalida
 vg_egone=Il-grupp tal-volum m'għadux jeżisti!
+
 pvmove_err=Naqset milli tiċċaqlaq volum loġiku
 pvmove_title=Nimxu Volum Loġiku
 pvmove_start=Nimxu volum loġiku $1 minn $2 għal $3 ..
 pvmove_failed=.. Moviment li falla!
 pvmove_done=.. jimxi komplut
+
 thin_title=Oħloq Pool Irqiq
 thin_desc=Pixxina rqiqa hija par LVs li jistgħu jintużaw biex joħolqu LVs addizzjonali li jistgħu jkunu ikbar mill-limiti disponibbli. L-ispazju jiġi kkunsmat biss meta jkun hemm bżonn, aktar milli meta jinħolqu l-LVs fil-pixxina. TWISSIJA - Kull dejta fuq l-LVs magħżula tintilef!
 thin_header=Dettalji ġodda tal-pixxina rqiqa
@@ -204,6 +212,7 @@ thin_err=Ma rnexxielux joħloq pool irqiq
 thin_esame=Iż-żewġ LVs magħżula huma l-istess
 thin_edata=Id-dejta magħżula LV diġà qed tintuża
 thin_emetadata=Il-metadata LV magħżula diġà qed tintuża
+
 log_create_vg=Grupp ta 'volum maħluq $1 
 log_modify_vg=Grupp tal-volum modifikat $1 
 log_delete_vg=Grupp tal-volum imħassar $1 
@@ -216,4 +225,5 @@ log_create_pv=Volum fiżiku miżjud $1 ma 'VG $1
 log_modify_pv=Volum fiżiku modifikat $1 fi VG $2 
 log_delete_pv=Neħħa l-volum fiżiku $1 minn VG $2 
 log_resize_pv=Volum fiżiku daqs $1 f'VG $2 
+
 blocks=blokki

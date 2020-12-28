@@ -23,7 +23,9 @@ index_eip=&lt;未知&gt;
 index_global=全域組態
 index_create=建立虛擬伺服器
 index_version=ProFTPd版本$1
+
 efailed=無法保存$1
+
 type_0=網路選項
 type_1=登入選項
 type_2=檔案和目錄
@@ -31,6 +33,7 @@ type_3=訪問控制
 type_4=雜項
 type_5=使用者和群組
 type_6=驗證
+
 virt_title=虛擬伺服器選項
 virt_header1=對於$1
 virt_header2=對於預設伺服器
@@ -46,6 +49,7 @@ virt_cmds=FTP指令
 virt_return=虛擬伺服器
 virt_virt=組態虛擬伺服器
 virt_edit=編輯目錄
+
 vserv_title=組態虛擬伺服器
 vserv_addr=地址
 vserv_name=伺服器名稱
@@ -54,6 +58,7 @@ vserv_delete=刪除虛擬伺服器
 vserv_eaddr=未輸入位址或無效的位址
 vserv_eport=未輸入埠號或無效的埠號
 vserv_ename=未輸入伺服器名稱
+
 anon_title=匿名稱FTP選項
 anon_header1=在虛擬伺服器$1中
 anon_header2=在預設的伺服器中
@@ -61,6 +66,7 @@ anon_anon=組態匿名稱FTP
 anon_return=匿名稱FTP選項
 anon_header3=對於虛擬伺服器$1中的匿名稱FTP
 anon_header4=對於預設伺服器中的匿名稱FTP
+
 aserv_title=組態匿名稱FTP
 aserv_create=設置匿名稱FTP
 aserv_root=Chroot目錄
@@ -71,6 +77,7 @@ aserv_eroot=未輸入或無效的chroot目錄
 aserv_euser=未輸入或無效的Unix使用者
 aserv_egroup=未輸入或無效的Unix群組
 aserv_desc=沒有為本虛擬伺服器設置的匿名稱FTP。請使用此表來設定初始的組態選項。
+
 dir_title=每個目錄選項
 dir_header2=對於預設伺服器中的目錄$1
 dir_header1=對於虛擬伺服器$2中的目錄$1
@@ -81,6 +88,7 @@ dir_header=每個指令選項
 dir_dir=組態目錄
 dir_header4=對於匿名稱FTP的目錄$1
 dir_header5=全域目錄$1
+
 manual_title=編輯目錄
 manual_header=請使用下面的文字框，手動編輯$1中套用於本伺服器、目錄或指令的ProFTPD目錄。
 manual_configs=編輯組態檔案
@@ -88,6 +96,7 @@ manual_ecannot=您不被允許手動編輯指令
 manual_file=編輯檔案中的指令:
 manual_efile=無效的ProFTPd組態檔案
 manual_etest=偵測到組態檔案錯誤 : $1
+
 limit_title=每個指令選項
 limit_header4=對於目錄$2中的指令$1
 limit_header2=對於預設伺服器中的指令$1
@@ -99,17 +108,20 @@ limit_return=每個指令選項
 limit_header5=對於匿名稱FTP中的指令$1
 limit_header6=對於文件$2中的指令$1
 limit_header7=全域指令$1
+
 lserv_title=組態指令
 lserv_cmd=FTP指令
 lserv_delete=刪除指令組態
 lserv_err=無法保存指令
 lserv_ecmd=未選擇指令
+
 dserv_title=組態目錄
 dserv_dir=目錄路徑
 dserv_err=無法保存目錄
 dserv_edir=未輸入目錄路徑
 dserv_delete=刪除目錄組態
 dserv_eanondir=目錄必須載匿名FTP目錄下
+
 mod_core_type=伺服器類型
 mod_core_inetd=從Inetd運行
 mod_core_stand=獨立的守護程序
@@ -296,6 +308,7 @@ mod_core_duser=拒絕使用者
 mod_core_eip='$1'不是一個有效的IP位址
 mod_core_enet='$1'不是一個有效的網路位址
 mod_core_ehost='$1'不是一個有效的主機名稱
+
 mod_ls_fakegroup=目錄列表中的假群組？
 mod_ls_fakeuser=目錄列表中的假使用者？
 mod_ls_fakemode=目錄列表中的假許可？
@@ -312,6 +325,7 @@ mod_ls_efakeuser=無效或未輸入假使用者
 mod_ls_efakegroup=無效或未輸入假群組
 mod_ls_options=目錄清單選項
 mod_ls_strict=覆寫使用者選項?
+
 mod_auth_chdir=初始登入目錄
 mod_auth_echdir=未輸入或無效的初始目錄
 mod_auth_chroot=Chroot目錄
@@ -325,7 +339,9 @@ mod_auth_egroups=未輸入要chroot的Unix群組
 mod_auth_echroot=未輸入或無效的chroot目錄
 mod_auth_login=如果登入被拒絕，不詢問密碼嗎？
 mod_auth_root=允許以root登入嗎？
+
 mod_site_chmod=允許chmod指令？
+
 mod_unixpw_ufile=預備的Unix密碼檔案
 mod_unixpw_eufile=未輸入或無效的Unix密碼檔案
 mod_unixpw_gfile=預備的Unix群組文件
@@ -333,6 +349,7 @@ mod_unixpw_egfile=未輸入或無效的Unix群組檔案
 mod_unixpw_none=無
 mod_unixpw_pam=每次都將PAM當作authorative？
 mod_unixpw_persist=永久開放密碼文件？
+
 mod_log_syslog=將錯誤記錄至檔案中
 mod_log_sysdef=系統日誌
 mod_log_esyslog=未輸入或無效的日誌檔案
@@ -349,14 +366,18 @@ mod_log_fmt=格式字串
 mod_log_format=自定義日誌格式
 mod_log_enickname=未輸入或無效的格式名稱
 mod_log_efmt=未輸入格式字串
+
 mod_pam_pam=用PAM來驗證？
 mod_pam_config=使使用者PAM服務來驗證
 mod_pam_econfig=未輸入或無效的PAM服務
+
 mod_readme_display=通知使用者相符的readme檔案
 mod_readme_none=無
 mod_readme_edisplay=未輸入readme檔案模式
+
 start_err=啟動FTP伺服器失敗
 start_einetd=您無法在inetd模式中啟動伺服器的防護程式。
+
 ftpaccess_title=每個目錄選項檔案
 ftpaccess_desc=在每個目錄中的一個檔案中（通常稱作<tt>.ftpaccess</tt>）可以指定附加的每個目錄選項。該選項可套
 ftpaccess_create=建立選項檔案
@@ -364,8 +385,10 @@ ftpaccess_find=尋找選項檔案
 ftpaccess_auto=以匿名稱的形式
 ftpaccess_from=從目錄
 ftpaccess_return=選項檔案列表
+
 ftpusers_title=拒絕FTP使用者
 ftpusers_desc=如果在<tt>驗證</tt>圖示下啟動，該檔案$1在下面列出的使用者登入訪問FTP使用者的許可權將會被拒絕。
+
 ftpindex_title=每個目錄選項檔案
 ftpindex_delete=刪除檔案
 ftpindex_opts=每路目錄選項
@@ -375,8 +398,10 @@ ftpindex_addlimit=為..新增每個指令選項
 ftpindex_header2=$2中的$1
 ftpindex_return=每個目錄選項檔案
 ftpindex_header=用於$1
+
 find_err=尋找選項檔案失敗
 find_eanon=沒有在任何虛擬伺服器上設置匿名稱FTP
+
 log_global=變更全域$1選項
 log_ftpusers=變更被拒的FTP使用者
 log_virtc=建立伺服器$1
@@ -410,6 +435,7 @@ log_anonm=手動編輯伺服器$1匿名FTP
 log_anon=在伺服器$2匿名FTP中變更$1
 log_start=啟動proftpd
 log_apply=套用變更
+
 eafter=組態認證失敗 : $1 未儲存變更
 proftpd_apply=套用變更
 proftpd_stop=停止ProFTPd

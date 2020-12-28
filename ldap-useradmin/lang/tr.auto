@@ -19,10 +19,13 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=LDAP Kullanıcıları
 index_groups=LDAP Grupları
+
 imap_econn=$1 IMAP sunucusuna bağlanılamadı
 imap_elogin=$1 IMAP sunucusuna $2 olarak giriş yapılamadı : $3 
 conn_eldap_host=Sisteminizde LDAP istemci yapılandırma dosyası bulunamadı, bu nedenle LDAP sunucusunun Modül Yapılandırma sayfasında ayarlanması gerekir
 conn_elogin=Sisteminizde LDAP istemci yapılandırma dosyası bulunamadı, bu nedenle LDAP oturum açma işlemi Modül Yapılandırma sayfasında ayarlanmalıdır
+conn_efile_open=LDAP bağlama kimlik bilgileri dosyası açılamadı:
+
 uedit_cap=Kullanıcı özellikleri
 uedit_samba=Samba girişi?
 uedit_cyrus=IMAP sunucusu girişi?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=Son Şifre Güncellemesi
 uedit_sambapwdcanchange=Şifre değişebilir
 uedit_sambabadpasswordcount=Hatalı şifre sayısı
 uedit_sambaacctflags=Hesap bayrakları
+
 usave_eadd=LDAP veritabanına kullanıcı eklenemedi : $1 
 usave_emod=LDAP veritabanındaki kullanıcı değiştirilemedi : $1 
 usave_emoddn=LDAP veritabanındaki kullanıcı yeniden adlandırılamadı : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=$1 kullanıcısı $2 $3 kullanıcısını zaten kullanıyor
 usave_eattrdupg=$1 grubu zaten $2 $3 kullanıyor
 usave_ereal=Gerçek ad eksik
 usave_equota=Eksik veya geçersiz IMAP kotası
+
 search_err=$2 altında $1 aranamadı : $3 
+
 gedit_dn=Grubun LDAP DN'si
 gedit_return=grup detayları
 gedit_cap=Grup yetenekleri
 gedit_samba=Samba grubu mu?
+
 gsave_egone=Grup artık mevcut değil!
 gsave_edelete=LDAP veritabanından grup silinemedi : $1 
 gsave_eadd=LDAP veritabanına grup eklenemedi : $1 
 gsave_emod=LDAP veritabanındaki grup değiştirilemedi : $1 
 gsave_emoddn=LDAP veritabanındaki grup yeniden adlandırılamadı : $1 
+
 gdel_group=LDAP grup girişi siliniyor ..
+
 udel_pass=LDAP kullanıcı girişi siliniyor ..
 udel_book=Adres defterinden siliniyor ..
 udel_imap=IMAP klasörü siliniyor ..
 udel_warnimap=Giriş dizini silinirken mevcut posta posta kutusu silinecek!
 udel_failed=.. başarısız oldu!  : $1 
+
 raw_title=LDAP Özellikleri
 raw_name=Özellik adı
 raw_value=Değerler
 raw_for=1 için
+
 batch_samba=Yeni kullanıcılar için Samba hesabı oluşturulsun mu?
 batch_imap=Yeni kullanıcılar için IMAP hesabı oluşturulsun mu?
 batch_descafter3=<b>Oluştur</b> ve <b>değiştir</b> satırlarında, isteğe bağlı olarak <i>ad</i> = <i>değer</i> biçiminde LDAP nitelikleri içeren fazladan alanlar ekleyebilirsiniz. yeni veya değiştirilmiş kullanıcılara atanabilir.

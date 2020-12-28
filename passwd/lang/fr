@@ -5,6 +5,7 @@ index_user=Changer le mot de passe pour l'utilisateur:
 index_euseradmin=Ce module ne peut pas être utilisé car le module Utilisateurs et Groupes n'est pas installé ou n'est pas supporté par votre système.
 index_toomany=Il y a trop d'utilisateurs à afficher sur votre système. Entrer ci-dessous le nom de l'utilisateur dont vous voulez changer le mot de passe ...
 index_none=Vous n'avez accès à aucun utilisateur afin de changer leurs mots de passe.
+
 passwd_title=Changer le mot de passe
 passwd_header=Changement de mot de passe Unix
 passwd_for=Changement du mot de passe de
@@ -23,7 +24,9 @@ passwd_erepeat=Les nouveaux mots de passe ne sont pas identiques
 passwd_ecmd=$1 a échoué : $2
 passwd_ok=Le mot de passe de l'utilisateur $1 a été modifié avec succès. Si c'est votre utilisateur Webmin actuel, vous pouvez avoir à vous authentifier de nouveau.
 passwd_ok2=Le mot de passe de l'utilisateur $1 a été changé avec succès.
+
 log_passwd=Mot de passe de l'utilisateur $1 modifié
+
 acl_repeat=Doit entrer le nouveau mot de passe deux fois ?
 acl_old=Doit entrer l'ancien mot de passe ?
 acl_old_this=Seulement pour les autres utilisateurs

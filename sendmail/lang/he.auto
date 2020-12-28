@@ -11,6 +11,7 @@ index_version2=גרסת Sendmail $1, config $2
 index_xversion=גרסת Sendmail $1 
 index_version=תצורת Sendmail $1 
 index_sendmail=שלח מייל
+
 opts_title=אפשרויות דואר אלקטרוני
 opts_ecannot=אינך רשאי לערוך אפשרויות שלח דואר אלקטרוני
 opts_ds=שלח דואר יוצא באמצעות המארח
@@ -57,6 +58,7 @@ opts_qso=מיין את תור הדואר לפי
 opts_priority=עדיפות
 opts_host=שם מארח
 opts_time=הזמן שקיבל
+
 aliases_title=כינויי דואר
 aliases_ecannot=אינך רשאי לערוך כינויים
 aliases_enofile=שום קובץ כינויים אינו מוגדר בתצורת Sendmail שלך
@@ -73,6 +75,7 @@ aliases_return=רשימת כינוי
 aliases_toomany=יש יותר מדי כיווני דואר במערכת שלך בכדי להציג אותם בדף זה.
 aliases_go=מצא כינויים תואמים:
 aliases_delete=מחק כינויים נבחרים
+
 aform_ecannot=אינך רשאי לערוך כינוי זה
 aform_type0=אף אחד
 aform_type1=כתובת דוא"ל
@@ -90,11 +93,13 @@ aform_val=כינוי ל
 aform_afile=ערוך ..
 aform_return=כינוי
 aform_cmt=תיאור
+
 afile_title=ערוך קובץ כתובת
 afile_desc=השתמש באזור הטקסט שלמטה כדי לערוך את הכתובות בקובץ $1.
 afile_efile=אינך רשאי לערוך $1.
 afile_undo=בטל שינויים
 afile_ewrite=כישלון הכתיבה לקובץ הכתובות : $1 
+
 ffile_title=ערוך את קובץ הסינון
 ffile_desc=השתמש בטופס שלהלן כדי להגדיר כללי סינון בקובץ $1.
 ffile_efile=אינך רשאי לערוך $1.
@@ -110,6 +115,7 @@ ffile_other=אחרת קדימה ל- $1
 ffile_err=שמירת קובץ המסנן נכשלה
 ffile_ematch=משחק חסר
 ffile_eaction=כתובת חסרה
+
 rfile_title=ערוך קובץ להפעלה אוטומטית
 rfile_desc=השתמש באזור הטקסט שלהלן כדי לערוך את הודעת ההרשאה אוטומטית ב- $1. ההודעה עשויה להכיל את המאקרואים $SUBJECT, $FROM, $TO, $DATE ו- $BODY אשר יורחבו כאשר ההפעלה אוטומטית מופעלת.
 rfile_desc2=אתה יכול גם להגדיר כותרות דואר שמוסיפות או מחליפים את ברירות המחדל המשמשות בהגנה אוטומטית על ידי הצבת שורות כמו: <br><tt> מאת: foo@bar.com </tt><br> <tt>נושא: בחופשה</tt> <br> בראש ההודעה, מופרדים מהגוף בשורה אחת ריקה.
@@ -129,6 +135,7 @@ rfile_from=מאת: כתובת לתשובה
 rfile_auto=אוטומטי (מבוסס על כתובת הנמען)
 rfile_efrom=חסר מהכתובת
 rfile_fromdesc=כתובת תמיד צריכה להיות מוגדרת במידת האפשר, מכיוון שהשיטה האוטומטית עשויה להיות לא אמינה.
+
 asave_err=שמירת הכינוי נכשלה
 asave_ecannot2=אינך רשאי לערוך כינויים
 asave_ecannot=אינך רשאי לערוך כינוי זה
@@ -145,9 +152,11 @@ asave_etype5=הקובץ באופן אוטומטי בתיבה '$1' אינו תק�
 asave_etype4none=לא ניתן תוכנית
 asave_etype6=קובץ הסינון '$1' אינו תקף
 asave_esame=אתה רשאי רק ליצור כינוי עם אותו שם בהתחברות לאתר שלך
+
 adelete_err=מחיקת הכינויים נכשלה
 adelete_enone=לא נבחר
 adelete_ecannot=אינך רשאי למחוק את הכינוי $1 
+
 cws_title=דומיינים מקומיים
 cws_ecannot=אינך רשאי לערוך דומיינים מקומיים
 cws_domains=דומיינים המטופלים על ידי שרת זה
@@ -156,6 +165,7 @@ cws_desc2=שים לב שבדרך כלל פשוט לא לכלול דומיין ב
 cws_err=שמירת דומיינים מקומיים נכשלה
 cws_ehost='$1' אינו מארח חוקי או שם תחום
 cws_eip='$1' היא כתובת IP ולא תחום
+
 masq_title=תחום מתחפש
 masq_ecannot=אינך מורשה להגדיר תצפית
 masq_domain=תחפושת כדומיין
@@ -167,12 +177,14 @@ masq_err=שמירת התחום נכשלה
 masq_edomain='$1' אינו תחום חוקי למסווה כמו
 masq_ehost='$1' אינו מארח חוקי או שם תחום
 masq_eip='$1' היא כתובת IP ולא תחום
+
 trusts_title=משתמשים מהימנים
 trusts_ecannot=אינך רשאי לערוך משתמשים מהימנים
 trusts_users=משתמשים מקומיים מהימנים באמצעות Sendmail
 trusts_desc=אם משתמש מקומי מנסה לשלוח דוא"ל, sendmail יאפשר למשתמש לספק כתובת <tt>מאת:</tt> שונה אם המשתמש ברשימה שלהלן. מגבלה זו קיימת כדי למנוע ממשתמשים לזייף דוא"ל באמצעות <tt>מזויפים מ</b> כתובות שמקורם במערכת שלך.
 trusts_err=שמירת משתמשים מהימנים נכשלה
 trusts_euser='$1' אינו משתמש חוקי
+
 virtusers_title=מיפוי כתובות
 virtusers_ecannot=אינך רשאי לערוך מיפוי כתובות
 virtusers_efeature=לתצורת sendmail שלך לא מופעלת תכונת מיפוי הכתובות (<tt>virtuser</tt>). <a href='$1'>לחץ כאן</a> כדי להגדיר תכונות של sendmail.
@@ -190,6 +202,7 @@ virtusers_return=רשימת מיפוי כתובות
 virtusers_toomany=יש יותר מדי מיפוי כתובות במערכת שלך להצגה בדף זה.
 virtusers_go=מצא מיפוי כתובות התואם:
 virtusers_delete=מחק מיפוי כתובות שנבחרו
+
 vform_edit=ערוך מיפוי כתובות
 vform_create=צור מיפוי כתובות
 vform_for=דואר עבור
@@ -206,6 +219,7 @@ vform_err_tempfail=כישלון זמני
 vform_err_protocol=שגיאת פרוטוקול
 vform_end=העבר לסיום
 vform_ecannot=אינך רשאי לערוך מיפוי כתובות זה
+
 vsave_ecannot=אינך רשאי לערוך מיפוי כתובות
 vsave_ecannot2=אינך רשאי לערוך מיפוי כתובות זה
 vsave_emax=אינך רשאי ליצור יותר ממיפוי כתובות של $1 
@@ -221,8 +235,10 @@ vsave_eaddr='$1' אינה כתובת חוקית
 vsave_ecannot4=אינך מורשה ליצור מיפויים לתחומים
 vsave_edomdom=ניתן למפות רק דומיין לתחום אחר
 vsave_ecannot5=אינך מורשה ליצור מיפויים המחזירים שגיאה
+
 vdelete_err=מחיקת מיפוי כתובות נכשלה
 vdelete_ecannot=אינך רשאי למחוק את המיפוי עבור $1 
+
 mailers_title=ניתוב דומיין
 mailers_cannot=אינך רשאי לערוך ניתוב דומיין
 mailers_edirective=אין לקובץ התצורה של sendmail את ההנחיה הדרושה לניתוב דומיינים.
@@ -236,6 +252,7 @@ mailers_delivery=מסירה
 mailers_to=לשלוח ל ..
 mailers_return=רשימת ניתוב תחום
 mailers_delete=מחק נתיבי דומיין שנבחרו
+
 mform_edit=ערוך ניתוב
 mform_create=צור ניתוב
 mform_for=דואר עבור
@@ -259,12 +276,15 @@ mform_procmail=פרוקייל
 mform_mail11=DECnet mail11
 mform_error=שגיאה
 mform_ecannot=אינך רשאי לערוך ניתוב דומיין
+
 msave_ecannot=אינך רשאי לערוך ניתוב דומיין
 msave_err=שמירת ניתוב הדומיין נכשלה
 msave_edomain='$1' אינו מארח או תחום חוקי
 msave_edup=ניתוב דומיין עבור '$1' כבר מוגדר
+
 mdelete_err=מחיקת נתב הדומיין נכשלה
 mdelete_ecannot=אינך מורשה למחוק את המסלול עבור $1 
+
 generics_title=כתובות יוצאות
 generics_cannot=אינך רשאי לערוך כתובות יוצאות
 generics_econfig=לקובץ התצורה של sendmail אין את ההנחיה הדרושה למיפוי כתובות יוצאות.
@@ -278,11 +298,13 @@ generics_return=רשימת מיפוי כתובות
 generics_toomany=יש יותר מדי כתובות יוצאות במערכת שלך בכדי להציג אותן בדף זה.
 generics_go=מצא כתובות יוצאות התואמות:
 generics_delete=מחק כתובות יוצאות שנבחרו
+
 gform_edit=ערוך מיפוי
 gform_create=צור מיפוי
 gform_from=דואר מ
 gform_to=לשנות ל
 gform_ecannot=אינך רשאי לערוך את הכתובת היוצאת הזו
+
 gsave_ecannot=אינך רשאי לערוך כתובות יוצאות
 gsave_ecannot2=אינך רשאי לערוך את הכתובת היוצאת הזו
 gsave_ecannot3=אינך רשאי לשמור את הכתובת היוצאת הזו
@@ -291,8 +313,10 @@ gsave_efrom='$1' אינו חוקי מכתובת
 gsave_ematch=הכתובת מ- אינה תואמת '$1'
 gsave_eto='$1' אינה כתובת חדשה חוקית
 gsave_ealready=מיפוי כתובות יוצאות עבור '$1' כבר קיים
+
 gdelete_err=מחיקת מיפוי כתובות יוצאות נכשלה
 gdelete_ecannot=אינך רשאי למחוק את המיפוי עבור $1 
+
 cgs_title=דומיינים יוצאים
 cgs_ecannot=אינך רשאי לערוך דומיינים יוצאים
 cgs_header=דומיינים של כתובות יוצאות
@@ -300,6 +324,7 @@ cgs_desc=מלבד דואר שנשלח על ידי משתמשים מקומיים,
 cgs_err=שמירת דומיינים יוצאים נכשלה
 cgs_ehost='$1' אינו מארח חוקי או שם תחום
 cgs_eip='$1' היא כתובת IP ולא תחום
+
 domains_title=מיפוי דומיין
 domains_ecannot=אינך רשאי לערוך מיפוי דומיינים
 domains_econfig=לקובץ התצורה של sendmail אין את ההנחיה הדרושה למיפוי תחום.
@@ -310,17 +335,21 @@ domains_from=מהתחום ..
 domains_to=לדומיין ..
 domains_return=רשימת מיפוי תחום
 domains_delete=מחק מיפוי תחומים שנבחרו
+
 dform_edit=ערוך מיפוי
 dform_create=צור מיפוי
 dform_from=מדומיין
 dform_to=לדומיין
 dform_ecannot=אינך רשאי לערוך מיפוי דומיינים
+
 dsave_ecannot=אינך רשאי לערוך מיפוי דומיינים
 dsave_err=שמירת מיפוי הדומיינים נכשלה
 dsave_edomain='$1' אינו שם תחום תקף
 dsave_ealready=מיפוי תחום עבור '$1' כבר קיים
+
 ddelete_err=מחיקת מיפוי תחומים נכשלה
 ddelete_ecannot=אינך רשאי למחוק את המיפוי עבור $1 
+
 access_title=בקרת דואר זבל
 access_ecannot=אינך מורשה להגדיר בקרת זבל
 access_efeature=לתצורת sendmail שלך לא מופעלת תכונת בקרת הספאם (<tt>access_db</tt>). <a href='$1'>לחץ כאן</a> כדי להגדיר תכונות של sendmail.
@@ -333,6 +362,7 @@ access_return=רשימת בקרת דואר זבל
 access_toomany=יש יותר מדי כללי בקרת דואר זבל במערכת שלך בכדי להציג אותם בדף זה.
 access_go=מצא כללי התאמה לבקרת דואר זבל:
 access_delete=מחק כללי בקרת דואר זבל שנבחרו
+
 sform_edit=ערוך כלל בקרת דואר זבל
 sform_create=צור כלל בקרת דואר זבל
 sform_source=מקור דואר
@@ -354,6 +384,7 @@ sform_discard=מחק בשקט
 sform_err=קוד שגיאה
 sform_msg=הודעה
 sform_ecannot=אינך רשאי לערוך כלל בקרת זבל זה
+
 ssave_err=שמירת כלל בקרת הספאם נכשלה
 ssave_etype0='$1' אינה כתובת חוקית
 ssave_etype1='$1' אינה כתובת רשת חוקית
@@ -362,8 +393,10 @@ ssave_etype3='$1' אינו תחום תקף
 ssave_ecode='$1' אינו קוד שגיאת SMTP חוקי
 ssave_ealready=כלל בקרת דואר זבל עבור '$1' קיים כבר
 ssave_ecannot2=אינך רשאי לשמור כלל בקרת זבל זה
+
 sdelete_err=מחיקת כללי בקרת הספאם נכשלה
 sdelete_ecannot=אינך רשאי למחוק את הכלל עבור $1 
+
 relay_title=תחומי ממסר
 relay_ecannot=אינך רשאי לערוך תחומי ממסר
 relay_eversion=רק Sendmail גרסאות 8.9 ומעלה תומכים בתכונה תחומי ממסר.
@@ -372,6 +405,7 @@ relay_desc1=אלא אם כן מותר על פי כללי <a href='$1'>בקרת �
 relay_desc2=אם המערכת שלך משמשת כשער למספר דומיינים שאינם נגישים ישירות מחוץ לרשת שלך (באמצעות התכונה <a href='$1'>ניתוב תחום</a>), יש לרשום כאן את כל אותם תחומים.
 relay_err=שמירת דומיינים ממסר נכשלה
 relay_edomain='$1' אינו שם תחום תקף
+
 mailq_title=תור דואר
 mailq_count=$1 הודעות
 mailq_ecannot=אינך רשאי להציג את תור הדואר
@@ -401,12 +435,15 @@ mailq_search=מצא הודעות בתור היכן
 mailq_quar=בהסגר
 mailq_refresh=רענן תור לדואר
 mailq_refreshdesc=טען מחדש עמוד זה כדי להציג את המצב הנוכחי של תור הדואר.
+
 flushq_title=תור סומק
 flushq_desc=מכריח את ניסיון המסירה של כל ההודעות עם הפקודה $1.
 flushq_desc2=מכריח את ניסיון המסירה של $1 הודעות שנבחרו ..
 flushq_ecannot=אינך רשאי לשטוף את תור הדואר
+
 searchq_title=תוצאות חיפוש בתור
 searchq_none=לא נמצאו הודעות בתור.
+
 delq_err=מחיקת ההודעה נכשלה
 delq_ecannot=אינך רשאי למחוק הודעות
 delq_locked=הקובץ נעול כעת לשליחה
@@ -422,6 +459,7 @@ delq_force=בכוח בכל מקרה למחוק
 delq_ecannot2=אינך יכול למחוק הודעה זו
 delq_rusure=האם אתה בטוח שברצונך למחוק את ההודעות שנבחרו בתור $1 ?
 delq_confirm=מחק הודעות
+
 boxes_title=תיבות דואר של משתמשים
 boxes_user=משתמש
 boxes_size=גודל תיבת דואר
@@ -431,6 +469,7 @@ boxes_sent=שלח מייל
 boxes_ecannot=אינך מורשה לקרוא דוא"ל
 boxes_toomany=יש יותר מדי משתמשים במערכת שלך בכדי לרשום את כל תיבות הדואר שלהם.
 boxes_go=הצגת דואר למשתמש:
+
 mail_title=דוא"ל משתמש
 mail_from=מ
 mail_date=תאריך
@@ -471,6 +510,7 @@ mail_move=לעבור ל:
 mail_copy=העתק אל:
 mail_rfc=מקו
 mail_eexists=ההודעה כבר לא קיימת!
+
 view_title=קרא דוא"ל
 view_desc=הודעה $1 ב- $2 
 view_desc2=הודעה $1 למשתמש $2 
@@ -501,6 +541,7 @@ view_egone=הודעה זו כבר לא קיימת
 view_afile=שם קובץ מצורף
 view_atype=סוג קובץ מצורף
 view_asize=גודל הקובץ
+
 compose_title=כתוב מייל אלקטרוני
 reply_title=תגובה לדוא"ל
 forward_title=העברת דוא"ל
@@ -512,6 +553,7 @@ reply_attach2=קבצים מצורפים בצד הלקוח ושרת
 reply_send=שלח מייל
 reply_ecannot=אינך רשאי לשלוח דואר כמשתמש זה
 reply_body=הודעת טקסט
+
 send_err=שליחת הדואר נכשלה
 send_eto=כתובת חסרה
 send_efrom=כתובת חסרה
@@ -524,6 +566,7 @@ send_eattach=קבצים מצורפים לא יכולים להסתכם בכ- $1 k
 send_eperms=המשתמש $1 לא יכול לקרוא את $2 
 send_eperms2=אינך רשאי לשלוח את הקובץ $1 
 send_epath=ההפעלה של Sendmail $1 אינה קיימת.
+
 delete_title=מחק דואר
 delete_rusure=האם אתה בטוח שברצונך למחוק את $1 ההודעות שנבחרו מ- $2 ? זה עשוי לקחת זמן עד שקובץ דואר גדול. עד לסיום המחיקה, אין לבצע שום פעולה אחרת.
 delete_rusure2=האם אתה בטוח שברצונך למחוק הודעה זו מ- $1 ? זה עשוי לקחת זמן עד שקובץ דואר גדול. עד לסיום המחיקה, אין לבצע שום פעולה אחרת.
@@ -536,6 +579,7 @@ delete_emoveuser=המשתמש להעברת דואר לא קיים
 delete_emovecannot=אינך רשאי להעביר דואר למשתמש שצוין
 delete_emovenone=לא נבחר דואר להזזה
 delete_nobutton=לא לחצו על כפתור
+
 search_title=תוצאות חיפוש
 search_ecannot=אינך רשאי לחפש בדוא"ל של משתמש זה
 search_ematch=עליך להזין טקסט כדי להתאים.
@@ -549,6 +593,7 @@ search_results4=$1 הודעות דואר התואמות לחיפוש שלך ..
 search_local=בתיקיות מקומיות
 search_all=בכל התיקיות
 search_eboolean=אין תמיכה בחיפושים בוליאניים באמצעות 'וגם' וגם 'או'
+
 file_title=ערוך את קובץ Sendmail
 file_desc=השתמש בתיבת הטקסט שלהלן כדי לערוך ידנית את קובץ Sendmail $1.
 file_undo=בטל שינויים
@@ -564,6 +609,7 @@ file_emode=מצב לא ידוע!
 file_err=עריכת הקובץ נכשלה
 file_ealias=פורמט לא חוקי עבור שורת קבצים של כינויים : $1 
 file_etab=פורמט לא חוקי עבור שורת קובץ המפות : $1 
+
 acl_opts=האם ניתן לערוך אפשרויות לשלוח דואר?
 acl_ports=האם ניתן לערוך יציאות רשת?
 acl_cws=האם ניתן לערוך דומיינים מקומיים?
@@ -630,6 +676,7 @@ acl_usersm=משתמשים תואמים
 acl_asame=זהה לשם המשתמש
 acl_usersu=עם UID בטווח
 acl_spam=בקרת דואר זבל שמשתמש זה יכול לערוך
+
 log_opts=אפשרויות שליחת דואר השתנו
 log_ports=שנה יציאות רשת
 log_alias_create=נוצר כינוי $1 
@@ -680,6 +727,7 @@ log_delete_domains=מיפוי תחומים של $1 נמחק
 log_delete_accesses=$1 ערכי בקרת דואר זבל נמחקו
 log_delete_generics=$1 כתובות יוצאות נמחקו
 log_delete_mailers=$1 נתיבי דומיין נמחקו
+
 match_from=מאת: גפרורים
 match_subject=נושא: גפרורים
 match_to=אל: גפרורים
@@ -699,6 +747,7 @@ match_!status=הסטטוס אינו תואם
 match_!body=הגוף לא תואם
 match_!size=גודל הוא פחות מ
 match_!headers=כותרות לא תואמות
+
 features_title=תצורת Sendmail M4
 features_desc=בדף זה מופיעים הערכים הרלוונטיים מקובץ התצורה Sendmail M4 $1, ממנו נבנה קובץ התצורה $2 בפועל.
 features_type=סוג הכניסה
@@ -718,6 +767,7 @@ features_efeatures=ספריית בסיס התצורה של Sendmail M4 $2 לא �
 features_econfig=המיקומים של ספריית הבסיס של Sendmail M4 וקובץ ה- M4 של תצורת M4 טרם נקבעו בתצורת המודול <a href='$1'></a>. אם התקנת את Sendmail מהמקור, אלה אמורים להיות תחת ספריית המקור המקורית.
 features_move=מהלך \ לזוז \ לעבור
 features_manual=ערוך קובץ באופן ידני
+
 feature_add=הוסף כניסה לתצורה
 feature_edit=ערוך את כניסת התצורה
 feature_header=פרטי כניסה לתצורה M4
@@ -738,12 +788,15 @@ feature_emailer=הדואר $1 כבר קיים
 feature_eostype=סוג מערכת ההפעלה מוגדר כבר כ $1 
 feature_manual=ערוך את קובץ M4
 feature_mdesc=הדף מאפשר לערוך ידנית את קובץ התצורה Sendmail M4 $1. היזהר, מכיוון שלא תבוצע בדיקת תחביר בעריכות שלך.
+
 feat_access_db=קובץ בקרת דואר זבל
 feat_virtusertable=מיפוי כתובת
 feat_mailertable=ניתוב דומיין
 feat_genericstable=כתובות יוצאות
 feat_domaintable=מיפוי דומיין
+
 mailer_local=משלוח יוניקס מקומי
+
 build_title=בנה מחדש את תצורת Sendmail
 build_em4=הפקודה $1 הדרושה לבנייה מחדש של קובץ התצורה של Sendmail לא נמצאה במערכת שלך.
 build_ebuild=בניית התצורה נכשלה : $1 
@@ -752,13 +805,16 @@ build_rusure2=שימו לב שאם ביצעתם שינויים ב- Sendmail בד
 build_ok=כן, החלף אותו עכשיו
 build_diff=השינויים הבאים יבוצעו בקובץ התצורה של Sendmail ..
 build_nodiff=קובץ התצורה של sendmail שלך מעודכן כבר.
+
 stop_err=עצירת sendmail נכשלה
 stop_ecannot=אינך מורשה להפסיק את sendmail
 stop_epid=נראה כי Sendmail אינו פועל
 restart_epids=לא ניתן למצוא תהליכי sendmail
 restart_ekill=נכשל איתות תהליכי שליחה : $1 
+
 start_err=התחל sendmail נכשל
 start_ecannot=אינך מורשה להתחיל לשלוח דואר
+
 ports_title=יציאות רשת
 ports_name=שם נמל
 ports_addr=האזן בכתובת

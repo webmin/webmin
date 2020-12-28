@@ -6,6 +6,7 @@ index_printershare=dijeljenje pisača
 index_shareconf=konfiguracija dijeljenja
 index_version=Verzija Samba $1 
 index_samba=Samba
+
 index_sharename=Naziv dijeljenja
 index_path=Staza
 index_security=sigurnosti
@@ -42,12 +43,14 @@ index_stopmsg=Kliknite ovaj gumb kako biste isključili pokrenute Samba posluži
 index_stopmsg_wb=Kliknite ovaj gumb kako biste zatvorili Winbind poslužitelje u vašem sustavu.
 index_einclude=Upozorenje - Vaša Samba konfiguracijska datoteka $1 sadrži direktivu $2 ili $3. To može uzrokovati da Webmin pogrešno izmijeni datoteku.
 index_delete=Brisanje odabranih dionica
+
 config_mins=min
 config_secs=Sek
 config_bytes=bajtova
 config_never=Nikada
 config_all=svi
 config_neither=Ni
+
 global_title=Globalna konfiguracija
 global_unixnetwork=Unix umrežavanje
 global_winnetwork=Windows umrežavanje
@@ -60,6 +63,7 @@ global_password=Šifrirane lozinke
 global_users=Korisnici Sambe
 global_group=Grupe Samba
 global_bind=Mogućnosti Winbind-a
+
 error_nosamba=Izvršni format Samba poslužitelja <tt>$1</tt> nije pronađen. Ili Samba nije instalirana na vašem sustavu ili je vaša <a href="$2">konfiguracija modula</a> netočna.
 error_version=Webmin nije uspio dobiti verziju izvršnog Samba poslužitelja <tt>$1</tt>. Provjerite svoju <a href="$2">konfiguraciju modula</a> da biste bili sigurni da je to ispravan put.
 error_config=Konfiguracijska datoteka $1 nije pronađena. Najvjerojatnije da Samba nije instaliran na vašem sustavu ili je vaša <a href="$2">konfiguracija modula</a> netočna.
@@ -67,6 +71,7 @@ error_include=Webmin ne može upravljati Samba konfiguracijskim datotekama koje 
 error_delshare=Dijeljenje nije uspjelo
 error_delcopy=Udio "$1" kopira iz ove dionice
 error_savename=Spremanje naziva datoteka nije uspjelo
+
 convert_title=Pretvori korisnike
 convert_msg=Ovaj obrazac omogućuje vam sinkronizaciju popisa korisnika Unixa i Sambe. Kada Samba koristi <a href=$1>šifrirane lozinke</a>, umjesto popisa korisnika sustava koristi se zasebni popis korisnika i lozinki.
 convert_noconv=Ne pretvarajte ili uklanjajte ove korisnike:
@@ -83,6 +88,7 @@ convert_cannot=Korisnici Unixa ne mogu se pretvoriti u Samba korisnike
 convert_who=Unix korisnici za pretvorbu
 convert_who0=Samo navedeni korisnici ili UID rasponi
 convert_who1=Svi osim navedenih korisnika i UID rasponi
+
 misc_title=Ostale mogućnosti
 misc_debug=Razina uklanjanja pogrešaka
 misc_cachecall=Predmemorija <tt>getwd ()</tt> poziva?
@@ -96,6 +102,7 @@ misc_chroot=<tt>chroot ()</tt> direktorij
 misc_smbrun=Put do <tt>smbrun</tt>
 misc_clienttime=Odstupanje vremena klijenta
 misc_readprediction=Pročitati predviđanja?
+
 net_title=Opcije umrežavanja Unix-a
 net_idle=Vrijeme mirovanja prije prekida veze
 net_trustlist=Datoteka s pouzdanim domaćinima/korisnicima
@@ -111,6 +118,7 @@ net_maxpacket=Maksimalna veličina paketa
 net_listen=Slušajte na adresi
 net_ip=IP adresa
 net_socket=Opcije utičnice
+
 passwd_title=Opcije lozinke
 passwd_encrypt=Koristite šifrirane lozinke?
 passwd_allownull=Dozvoli null lozinke?
@@ -124,11 +132,13 @@ passwd_send=Poslati
 passwd_map=Mapiranje korisničkih imena
 passwd_unixuser=Korisnici Unixa
 passwd_winuser=Korisnici sustava Windows
+
 print_title=Opcije ispisa
 print_style=Unix stil ispisa
 print_show=Prikaži sve pisače?
 print_printcap=Datoteka kapica za ispis
 print_cachetime=Vrijeme predmemorije statusa pisača
+
 smb_title=Mogućnosti umrežavanja sustava Windows
 smb_workgroup=Radna grupa
 smb_wins=WINS mod
@@ -159,14 +169,17 @@ smb_nowhere=Nigdje
 smb_fromlist=S popisa. ..
 smb_ip=IP adresa
 smb_asworkgroup=<b>Kao radna grupa</b> (izborno)
+
 create_title=Stvori kopiju
 create_msg=Dijeljenje kopiranja naslijedit će sve zadane vrijednosti od odabranog dijeljenja. Ako se izvorni udio promijeni, isto će biti i s kopijom.
 create_from=Podijelite za kopiranje s:
 create_name=Novo ime dijeljenja:
+
 smbuser_title=Korisnici Sambe
 smbuser_list=Popis korisnika Samba
 smbuser_nouser=Nije definiran Samba korisnik.
 smbuser_cannot=Korisnici Sambe ne mogu biti navedeni
+
 euser_title=Uređivanje korisnika Sambe
 euser_name=Korisničko ime
 euser_uid=Unix UID
@@ -185,6 +198,7 @@ euser_locked=Račun je zaključan
 euser_nopwrequired=Nije potrebna lozinka
 euser_disable=Račun onemogućen
 euser_trust=Račun povjerenja radne stanice
+
 fmisc_title=Razne zadane postavke datoteke
 fmisc_for=Za dijeljenje <tt>$1</tt>
 fmisc_lockfile=Način zaključavanja datoteka?
@@ -202,6 +216,7 @@ fmisc_conncmd=Naredba za pokretanje na povezivanju
 fmisc_disconncmd=Naredba za pokretanje na raskidu veze
 fmisc_rootconn=Naredba za pokretanje na povezivanju <i>kao root</i>
 fmisc_rootdisconn=Naredba da se pokrenete s prekida veze <i>kao root</i>
+
 fname_title1=Zadane datoteke su zadane
 fname_title2=Uredi naziv datoteke
 fname_option=Opcije imenovanja datoteka
@@ -216,6 +231,7 @@ fname_hide=Sakriti skrivene datoteke?
 fname_archive=Spremi zastavu arhiva DOS-a?
 fname_hidden=Spremi skrivenu zastavu DOS-a?
 fname_system=Spremite zastavu DOS sustava?
+
 fperm_title1=Zadane postavke dopuštenja datoteka
 fperm_title2=Uređivanje dozvola za datoteke
 fperm_option=Opcije dopuštenja datoteka
@@ -228,6 +244,7 @@ fperm_link=Želite li dopustiti simboličke veze izvan dijeljenja?
 fperm_delro=Mogu li izbrisati datoteke samo za čitanje?
 fperm_forcefile=Prisilite Unix način rada datoteka
 fperm_forcedir=Prisilite način Unix kataloga
+
 share_title1=Zadane postavke dijeljenja datoteke
 share_title2=Uređivanje Dijeljenje datoteka
 share_title3=Stvaranje dijeljenja datoteka
@@ -251,6 +268,7 @@ share_naming=Naziv datoteke
 share_misc=Ostale mogućnosti
 share_samedesc1=Napomena - ove postavke također utječu na zadane postavke za sve dijeljenje datoteka.
 share_samedesc2=Napomena - ove postavke također utječu na zadane vrijednosti za sve dijelove pisača.
+
 print_title1=Zadane postavke pisača
 print_title2=Uredi mogućnosti pisača
 print_option=Opcije pisača
@@ -262,6 +280,7 @@ print_delete=Naredba za brisanje posla
 print_pause=Pauzirajte naredbu posla
 print_unresume=Nepotrebna naredba za posao
 print_driver=Upravljački program pisača
+
 pshare_title1=Zadane vrijednosti dijeljenja pisača
 pshare_title2=Uređivanje udjela pisača
 pshare_title3=Stvorite udjel pisača
@@ -270,6 +289,7 @@ pshare_name=Ime dijeljenja
 pshare_all=Svi pisači dijele
 pshare_unixprn=Unix pisač
 pshare_spool=Imenik kalema
+
 sec_index1=Sigurnosne zadane postavke
 sec_index2=Uredi sigurnost
 sec_writable=Može pisati?
@@ -292,6 +312,7 @@ sec_rouser=Čitaju samo korisnici
 sec_rogroup=Čitajte samo grupe
 sec_rwuser=Korisnici koji čitaju/pišu
 sec_rwgroup=Grupe za čitanje/pisanje
+
 esync_title=Sinkronizacija korisnika
 esync_msg=Webmin se može konfigurirati tako da se promjene na Unix popisu korisnika automatski primjenjuju na Samba popis korisnika. To će raditi samo ako se modul Webmin <b>Korisnici i grupe</b> koristi za dodavanje, brisanje ili promjenu korisnika.
 esync_add=Dodajte Samba korisnika kada se doda Unix korisnik
@@ -303,6 +324,7 @@ esync_gid=Grupirajte SID ili RID za nove korisnike
 esync_apply=primijeniti
 esync_cannot=Sinkronizacija korisnika nije moguće konfigurirati
 esync_egid=Nedostaje SID ili RID grupe
+
 mkpass_title=Pretvori korisnike
 mkpass_convfail=Pretvaranje korisnika nije uspjelo
 mkpass_msg=Pretvaranje korisnika Unixa. ..
@@ -315,10 +337,12 @@ mkpass_passfail=Nije uspjelo postavljanje zaporke
 mkpass_user=Korisničko ime
 mkpass_action=Poduzeta akcija
 mkpass_skipcount=$1 korisnika je preskočeno radi konverzije.
+
 savecopy_fail=Izrada kopije nije uspjela
 savecopy_global=Naziv "globalno" ne može se koristiti za dionicu
 savecopy_exist=Dijeljenje nazvano "$1" već postoji
 savecopy_ename=Nije upisano ime dionice
+
 saveuser_fail=Spremanje korisnika nije uspjelo
 saveuser_uid="$1" nije važeći Unix UID
 saveuser_colon=Pravo ime ne može sadržavati znak :
@@ -326,10 +350,13 @@ saveuser_home=Domaći direktorij '$1' ne postoji
 saveuser_shell=$1 nije važeća ljuska
 saveuser_pass=Promjena lozinke pomoću smbpasswd : $1 nije uspjela
 saveuser_ews=Opcija "Workstation trust account" opcija ne može biti omogućena za postojeće korisnike
+
 savefmisc_fail=Spremanje raznih opcija nije uspjelo
 savefmisc_number='$1' nije važeći broj veza
+
 savefperm_fail=Spremanje dopuštenja datoteka nije uspjelo
 savefperm_mode='$1' nije važeći način rada Unix datoteke
+
 savefshare_fail=Dijeljenje nije uspjelo
 savefshare_nopath=Nije dana staza
 savefshare_exist=Dijeljenje nazvano "$1" već postoji
@@ -339,6 +366,7 @@ savefshare_owner=Nedostaje ili nije važeći vlasnik za novi direktorij
 savefshare_group=Nedostaje ili nije važeća skupina za novi direktorij
 savefshare_perms=Nedostaju ili nevažeća dopuštenja za novi direktorij
 savefshare_emkdir=Nije uspjelo stvaranje direktorija : $1 
+
 savemisc_fail=Spremanje opcija nije uspjelo
 savemisc_lockdir=Imenik koji sadrži direktorij zaključavanja ne postoji
 savemisc_logdir=Imenik koji sadrži datoteku dnevnika ne postoji
@@ -347,37 +375,48 @@ savemisc_overlap='$1' nije važeća veličina čitanja koja se preklapa
 savemisc_chroot=Chroot direktorij '$1' ne postoji
 savemisc_smbrun=Program smbrun '$1' ne postoji ili se ne može izvršiti
 savemisc_time='$1' nije valjano odstupanje vremena
+
 savenet_fail=Spremanje opcija nije uspjelo
 savenet_timeout="$1" nije valjano isteklo vrijeme prekida
 savenet_ip='$1' nije važeći bajt IP-a
 savenet_keep='$1' nije važeći interval održavanja
 savenet_maxxmit='$1' nije važeća maksimalna veličina paketa
+
 savepass_fail=Spremanje opcija nije uspjelo
 savepass_nopass=Vaša inačica Sambe ne podržava šifrirane lozinke
 savepass_passwd=Nije dat program za promjenu lozinke
 savepass_level='$1' nije važeća razlika u slučaju lozinke
 savepass_chat=Slijed chata za promjenu lozinke je prazan
+
 savepopts_fail=Spremanje opcija pisača nije uspjelo
 savepopts_number=Minimalni slobodni prostor mora biti broj
+
 saveprint_fail=Spremanje opcija nije uspjelo
 saveprint_printcap=Datoteka kapica za ispis '$1' ne postoji
 saveprint_cache='$1' nije valjano vrijeme predmemorije
+
 savepshare_fail=Spremanje udjela pisača nije uspjelo
 savepshare_exist=Dijeljenje nazvano "$1" već postoji
 savepshare_name='$1' nije valjano ime dionice
 savepshare_global=Naziv "globalno" ne može se koristiti za dionicu
+
 savesec_fail=Sigurnost nije uspjela
+
 savesmb_fail=Spremanje opcija nije uspjelo
 savesmb_size='$1' nije važeća veličina diska
 savesmb_oslevel='$1' nije važeći prioritet glavnog preglednika
 savesmb_server=Morate unijeti poslužitelj lozinki
+
 start_err=Nije uspio pokretanje Samba poslužitelja
 start_fail=$1 nije uspio
 start_err_wb=Nije uspio pokretanje Winbind poslužitelja
+
 restart_err=Ponovno pokretanje Samba poslužitelja nije uspjelo
 restart_err_wb=Ponovno pokretanje Winbind poslužitelja nije uspjelo
+
 swats_fail=Spremanje korisničkog imena nije uspjelo
 swats_user=Nedostaje SWAT korisničko ime
+
 viewu_index=Trenutni korisnici
 viewu_list=Trenutačni korisnici $1 
 viewu_share=Udio
@@ -394,6 +433,7 @@ viewu_ecmd=Čini se da program Samba statusa $1 nije instaliran na vaš sustav. 
 viewu_kill=Isključite odabrane korisnike
 viewu_enone=Nije odabran nijedan korisnik
 viewu_refresh=Osvježi stranicu.
+
 log_apply=Restartirani Samba poslužitelji
 log_apply_wb=Restarted Winbind poslužitelji
 log_stop=Zaustavljen Samba poslužitelji
@@ -435,6 +475,7 @@ log_modify_group=Izmijenjena Samba grupa $1
 log_delete_group=Izbrisana Samba grupa $1 
 log_gsync=Konfigurirana sinkronizacija Unix grupe
 log_manual=Ručno uređena konfiguracijska datoteka $1 
+
 swat_title=SWAT Prijava
 swat_list=SWAT Prijava
 swat_msg1=Vaše trenutno korisničko ime i zaporka SWAT nisu točni. Upotrijebite donji obrazac za ponovnu prijavu.
@@ -446,6 +487,7 @@ swat_password=Zaporka
 swat_login=Prijaviti se
 swat_clear=Čisto
 swat_logout=Odjava SWAT-a
+
 eacl_aviol=Kršenje kontrole pristupa
 eacl_np=Nemate dopuštenja za
 eacl_papply=ponovno pokrenite ovu uslugu
@@ -481,6 +523,7 @@ eacl_pafs=pristup ovoj zajedničkoj datoteci
 eacl_paps=pristupite ovom udjelu pisača
 eacl_pcps=stvoriti udio pisača
 eacl_pcfs=stvoriti dijeljenje datoteka
+
 acl_apply=Mogu li primijeniti promjene i zaustaviti Sambu?
 acl_view_all_con=Mogu li pregledati sve veze?
 acl_kill_con=Mogu li ukloniti veze?
@@ -527,6 +570,7 @@ acl_maint_groups=Možete li pregledavati, uređivati i dodavati grupe?
 acl_maint_gsync=Može li održavati sinkronizaciju automatske Unix sa Samba skupinama?
 acl_winbind=Može se vezati za domene?
 acl_bind=Mogu li pristupiti winbind opcijama?
+
 groups_title=Grupe Samba
 groups_name=Grupno ime
 groups_unix=Unix grupa
@@ -542,6 +586,7 @@ groups_return=popis grupa
 groups_add=Dodajte novu Samba grupu.
 groups_ecannot=Nije vam dopušteno pregledavanje ili uređivanje Samba grupa
 groups_cannot=Grupe samba ne mogu biti navedene
+
 gedit_title2=Uredite Samba Group
 gedit_title1=Stvorite Samba grupu
 gedit_header=Pojedinosti grupe Samba
@@ -554,11 +599,13 @@ gedit_unix=Unix grupa
 gedit_unixgr=Grup ..
 gedit_none=nijedan
 gedit_set=Popis ..
+
 gsave_err=Spremanje grupe nije uspjelo
 gsave_eunix=Nedostaje ili nevaljano ime grupe Unix ili GID
 gsave_ename=Nedostaje naziv grupe
 gsave_epriv=Nedostaju privilegije grupe
 gsave_elocal=Povlastice se mogu postaviti samo za lokalne grupe
+
 gsync_title=Grupna sinkronizacija
 gsync_msg=Webmin se može konfigurirati tako da se promjene na popisu Unix grupa automatski primjenjuju na popis Samba grupa. To će funkcionirati samo ako se za dodavanje, brisanje ili promjenu grupa koristi <b>Korisnici i grupe</b> Webmin modul.
 gsync_add=Kada se doda Unix grupa, dodajte Samba grupu
@@ -569,10 +616,12 @@ gsync_type=Vrsta novih grupa
 gsync_priv=Privilegije za nove grupe (ako su lokalne)
 gsync_ecannot=Ne možete konfigurirati grupnu sinkronizaciju
 gsync_cannot=Grupna sinkronizacija ne može se konfigurirati
+
 check_user1=$1 : Šifrirane lozinke nisu omogućene na stranici <a href='$2'>Provjera autentičnosti</a>.
 check_user2=$1 : Ni datoteka datoteke lozinke Samba ni put do pdbedita nisu postavljeni na stranici <a href='$2'>Konfiguracija modula</a>.
 check_group1=$1 : Grupe su podržane samo u Samba verziji 3.
 check_group2=$1 : Ni put do smbgroupedit ili neto naredbe nije postavljen na stranici <a href='$2'>Konfiguracija modula</a>.
+
 winbind_title=Vezati za domenu
 winbind_ecannot=Nije vam dopušteno vezanje na domene
 winbind_msg=Ovaj se obrazac može koristiti za vezanje vašeg Samba poslužitelja na Windows domenu, što obično upravlja drugi poslužitelj.
@@ -588,6 +637,7 @@ winbind_edom=Nedostaje naziv domene
 winbind_cmd=Vezivanje na domenu sa naredbom $1 ..
 winbind_failed=.. neuspjeh! Pogledajte izlazni razlog za razlog zašto.
 winbind_ok=.. kompletna.
+
 bind_title=Mogućnosti Winbind-a
 bind_ecannot=Nije vam dopušteno uređivanje winbind opcija
 bind_header=Opcije vezivanja domene za Windows
@@ -606,9 +656,11 @@ bind_erealm=Nevažeće područje Kerberosa
 bind_ecache=Nedostaje ili nevažeće vrijeme predmemorije
 bind_euid=Nevažeći raspon UID-a - mora biti poput 20000-30000
 bind_egid=Nevažeći raspon GID-a - mora biti poput 20000-30000
+
 manual_title=Uredi datoteku za konfiguriranje
 manual_desc=Uređivanje Samba konfiguracijske datoteke $1 ..
 manual_err=Konfiguriranje datoteke nije uspjelo
 manual_edata=Ništa nije ušlo!
+
 delete_err=Dijeljenje nije uspjelo
 delete_enone=Nijedna nije odabrana

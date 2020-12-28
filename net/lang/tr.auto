@@ -3,6 +3,7 @@ index_delete2=Seçili Arayüzleri Sil
 index_delete3=Seçili Arayüzleri Sil ve Uygula
 index_apply2=Seçili Arayüzleri Uygula
 index_vmin=Virtualmin
+
 ifcs_activedesc=Bu tabloda listelenen arabirimler şu anda sistemde etkindir. Çoğu durumda, bunları <b>Önyüklemede Etkinleştirildi</b> sekmesi altında düzenlemeniz gerekir.
 ifcs_bootdesc=Bu tabloda listelenen arabirimler, sistem önyükleme yaptığında etkinleştirilir ve genellikle de şimdi etkin olur.
 ifcs_ip6=IPv6 adresi
@@ -24,10 +25,12 @@ ifcs_linkyes=bağlı
 ifcs_linkno=Bağlantı kesildi
 ifcs_speed=Arayüz hızı
 ifcs_duplex=, $1 dubleks
+
 aifc_eaddress6=$1 satırındaki IPv6 adresi geçerli değil
 aifc_enetmask6=$1 satırındaki IPv6 ağ maskesi, 1 ile 128 arasında bir tam sayı olmalıdır
 aifc_eclash6=$1 satırındaki IPv6 adresi $2 arayüzü tarafından zaten kullanılıyor
 aifc_eaddresses6=IPv6 adresi girilmedi
+
 bifc_act=Önyükleme sırasında etkinleştirilsin mi?
 bifc_bridgeto=Köprüyü arayüze bağlayın
 bifc_nobridge=&lt;Yok&gt;
@@ -38,6 +41,7 @@ bifc_bridgestp=Kapsayan Ağaç Protokolü
 bifc_bridgefd=İleri Gecikme
 bifc_bridgewait=Kullanılabilir olma gecikmesi
 bifc_ebond=Bond arayüzü bir sayı olmalı
+
 bonding_add=Yeni bir yapıştırma arayüzü ekleyin.
 bonding_create=Bağlama Arayüzü Oluştur
 bonding_teamparts=Ekip Ortakları
@@ -49,11 +53,14 @@ bonding_miimon=Mii-İzleme Aralığı
 bonding_miimondesc=(Bağlantı izlemeyi devre dışı bırakmak için boş bırakın)
 bonding_updelay=Updelay
 bonding_downdelay=Downdelay
+
 vlan_add=Vlan Etiketli Arabirim Ekle
 vlan_physical=Fiziksel Cihaz
 vlan_id=Vlan Kimliği
 vlan_create=VLAN Arayüzü Oluşturun
+
 bridge_create=Köprü Arayüzü Oluştur
+
 routes_default6=Varsayılan IPv6 yönlendirici
 routes_gateway6=IPv6 ağ geçidi
 routes_edefault6='$1' geçerli bir IPv6 varsayılan yönlendiricisi değil
@@ -82,9 +89,12 @@ routes_tabboot=Önyükleme zamanı yapılandırması
 routes_tabactive=Aktif yapılandırma
 routes_descactive=Bu bölüm, sistemin yapılandırmış olduğu yolları listeler ve bazı sistemlere etkin yollar eklemenizi veya kaldırmanızı sağlar. Bunu yaparken dikkatli olun, çünkü yanlış değişiklikler Webmin çalıştıran sistemi ağın geri kalanından kesebilir.
 routes_descboot=Bu bölüm, sistem açıldığında veya ağ ayarları tamamen yeniden uygulandığında etkinleştirilen yolları yapılandırmanıza olanak tanır.
+
 dns_dhcp=Ana bilgisayar adı DHCP sunucusu tarafından ayarlandı mı?
+
 hosts_active=Etkin mi?
 hosts_delete=Seçilen Ana Bilgisayar Adreslerini Sil
+
 ipnodes_title=IPv6 Ana Bilgisayar Adresleri
 ipnodes_ip=IPv6 Adresi
 ipnodes_host=Ana bilgisayar adları
@@ -96,6 +106,7 @@ ipnodes_return=IPv6 ana bilgisayar adresleri listesi
 ipnodes_ecannot=IPv6 ana bilgisayar adreslerini düzenleme izniniz yok
 ipnodes_none=Henüz IPv6 ana bilgisayar adresi tanımlanmadı.
 ipnodes_delete=Seçilen IPv6 Ana Bilgisayar Adreslerini Sil
+
 log_create_ipnode=IPv6 ana bilgisayar adresi $1 oluşturuldu
 log_delete_ipnode=IPv6 ana bilgisayar adresi $1 silindi
 log_modify_ipnode=Değiştirilmiş IPv6 ana bilgisayar adresi $1 
@@ -107,16 +118,21 @@ log_apply_bfics=Etkinleştirilen $1 önyükleme zamanı arabirimleri
 log_create_route=$1 için etkin rota oluşturuldu
 log_create_defroute=Aktif varsayılan rota oluşturuldu
 log_delete_routes=$1 etkin rota silindi
+
 acl_hide=Düzenlenemeyen arayüzler gizlensin mi?
 acl_sysinfo=Gösterge Tablosunda kullanılabilir ağ arayüzlerini göster
+
 mod_zones=<tt>$1</tt> bölgesi için sanal arabirim
 mod_virtualmin=Virtualmin sunucusu <tt>$1</tt>
 mod_reseller=Virtualmin satıcısı <tt>$1</tt>
+
 dafics_err=Arabirimler devre dışı bırakılamadı
 daifcs_enone=Hiçbiri seçilmedi
 daifcs_egone=Arayüz artık mevcut değil!
+
 dbifcs_err=Arayüzler silinemedi
 dbifcs_err2=Arabirimler etkinleştirilemedi
+
 hdelete_err=Ana makine adresleri silinemedi
 hdelete_enone=Hiçbiri seçilmedi
 idelete_err=IPv6 ana bilgisayar adresleri silinemedi

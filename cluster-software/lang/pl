@@ -21,6 +21,7 @@ index_thost=Nazwa hosta
 index_tdesc=Opis
 index_tcount=Pakiety
 index_ttype=Typ OS
+
 install_err=Błąd instalacji pakietu
 install_elocal=Nie podano pliku lokalnego
 install_elocal2=`$1` nie istnieje
@@ -37,6 +38,7 @@ install_ok=Zainstalowano
 install_erus=Ten serwer używa innego systemu aktualizacji od głównego serwera ($1 vs $2)
 install_eupdate=Wystąpił błąd podczas instalacji określonych aktualizacji
 install_ealready=Wersja $1 jest już zainstalowana
+
 add_title=Dodaj serwery
 add_msg=Dodawanie $1 ..
 add_gmsg=Dodawanie serwerów w grupie $1 ..
@@ -45,6 +47,7 @@ add_gerr=Nie udało się dodać grupy
 add_echeck=Serwer $1 nie posiada modułu pakietów oprogramowania
 add_esystem=Serwer $1 nie używa tego samego systemu pakietów jak ta maszyna
 add_ok=Dodano $1 z $2 pakietów.
+
 search_title=Wyszukiwanie pakietów
 search_nomatch=Nie znaleziono pakietów pasujących do $1
 search_none=Brak
@@ -56,6 +59,7 @@ search_return=wyniki wyszukiwania
 search_delete=Odinstalowanie wybranych pakietów z:
 search_selall=Zaznacz wszystko
 search_invert=Odwróć zaznaczenie
+
 host_title=Zarządzanie serwerem
 host_header=Szczegóły serwera zarządzania oprogramowaniem
 host_name=Nazwa hosta
@@ -70,6 +74,7 @@ host_count=Zainstalowane pakiety
 host_os=OS dla Webmin
 host_return=szczegóły serwera
 host_system=Pakiet systemu
+
 edit_title=Edytuj pakiet
 edit_details=Szczegóły pakietu z $1
 edit_desc=Opis
@@ -88,6 +93,7 @@ edit_all=&lt;wszystkie hosty&gt;
 edit_donthave=&lt;hosts that don't have it&gt;
 edit_have=&lt;hosty, które go posiadają&gt;
 edit_group=Użytkownicy z $1
+
 list_title=Pliki pakietu
 list_files=Pliki pakietu $1 na $2
 list_path=Ścieżka
@@ -97,6 +103,7 @@ list_type=Typ
 list_size=Rozmiar
 list_status=Stan
 list_ok=OK
+
 refresh_title=Odświeżanie list pakietów
 refresh_header=Odświeżanie list pakietów ze wszystkich serwerów ..
 refresh_header4=Ponowna prośba o listę pakietów od użytkowników z $2 ..
@@ -108,6 +115,7 @@ refresh_4=Odświeżono $1 (bez zmian)
 refresh_done=.. gotowe
 refresh_del=Usunięto $1 z listy serwerów
 refresh_failed=Błąd odświeżania $1 : $2
+
 delete_err=Usuwanie paczki $1 nie powiodło się
 delete_epack=Paczka $1 nie istnieje
 delete_title=Usuwanie pakietów
@@ -120,6 +128,7 @@ delete_error=Nie powiodło się kasowanie z $1 : $2
 delete_success=Usunięto z $1
 delete_done=.. gotowe
 delete_header=Usuwanie paczki $1 ..
+
 do_title=Instalacja pakietu
 do_header=Instalacja $1 na wszystkich hostach ..
 do_header3=Instalacja $1 na wszystkich hostach nie została jeszcze wykonana ..
@@ -140,6 +149,7 @@ do_arch=Architektura
 do_inst=Zainstalowane
 do_none=Żaden
 do_edeleted=Plik instalacyjny został usunięty - wróć do indeksu modułu i spróbuj ponownie.
+
 compare_title=Porównaj pakiety
 compare_desc=Ten formularz może być użyty do porównania pakietów zainstalowanych na dwóch lub większej ilości serwerów i znaleźć różnice w wersjach i dostępnych pakietach.
 compare_hosts=Serwery do porównania
@@ -154,6 +164,7 @@ compare_showall=Pakiety do wyświetlenia
 compare_showall1=Wszystkie
 compare_showall0=Tylko rozbieżności
 compare_got=OK
+
 deletes_err=Nie udało się usunąć pakietów
 deletes_enone=Nie wybrano pakietów
 deletes_title=Usuwanie pakietów

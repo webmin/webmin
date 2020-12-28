@@ -44,6 +44,7 @@ right_upsec=$1 پیکیج اپ ڈیٹ دستیاب ہیں ، جن میں $2 سی
 right_recollect=نظام کی معلومات کو تازہ کریں
 right_vvirtualmin=ورچوئل ورژن
 right_vvm2=کلاؤڈ مائن ورژن
+
 acl_show=ظاہر کرنے کے لئے سسٹم کی معلومات
 acl_showall=سب کچھ
 acl_showsel=صرف منتخب ..

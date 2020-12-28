@@ -8,6 +8,7 @@ index_none=Neboli definované žiadne možnosti zavádzania. Uistite sa, že ste
 index_efile=Súbor ponuky GRUB $1 nebol vo vašom systéme nájdený. Možno GRUB nie je nainštalovaný alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
 index_epath=Spustiteľný súbor GRUB $1 nebol vo vašom systéme nájdený. Možno GRUB nie je nainštalovaný alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
 index_return=zoznam možností
+
 title_add=Pridať možnosť zavádzania
 title_edit=Možnosť Upraviť zavádzanie
 title_header=Podrobnosti o ponuke zavádzacej ponuky
@@ -36,6 +37,7 @@ title_echain=Chýba alebo je neplatný súbor reťazového nakladača
 title_edev=Nepodporované zariadenie root oddielu $1 
 title_einitrd=Chýba počiatočný názov súboru ramdisk
 title_lock=Heslo je zamknuté?
+
 global_title=Globálne možnosti
 global_header=Možnosti globálnej ponuky spustenia
 global_default=Predvolená možnosť zavedenia
@@ -56,12 +58,14 @@ global_edev=Nepodporovaný inštalačný disk/oddiel $1
 global_eother=Chýbajúci alebo neplatný disk/diskový oddiel
 global_epassword=Chýbajúce alebo neplatné bootovacie heslo
 global_epasswordfile=Chýba názov alternatívneho menu
+
 install_title=Nainštalujte GRUB
 install_err=Inštalácia GRUB zlyhala
 install_efind=Súbor ponuky sa nepodarilo nájsť
 install_desc=Inštalácia GRUB na $1 s príkazmi $2 a $3 ..
 install_ok=.. inštalácia je dokončená.
 install_failed=.. inštalácia zlyhala!
+
 log_create_title=Bola vytvorená možnosť zavedenia $1 
 log_delete_title=Bola odstránená možnosť zavádzania $1 
 log_modify_title=Upravená možnosť zavedenia $1 

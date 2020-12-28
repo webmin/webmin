@@ -16,6 +16,7 @@ index_loadname=CPU-Last im Durchschnitt:
 index_loadnums=$1 (1 Minute) , $2 (5 Minuten) , $3 (15 Minuten)
 index_cpuname=CPU Typ
 index_inzone=In Zone $1
+
 pid=Prozess-ID
 owner=Besitzer
 command=Befehl
@@ -27,6 +28,7 @@ nice=Nicelevel
 stime=Gestartet
 sclass=IO scheduling class
 sprio=IO Priorität
+
 search_user=Gesteuert von
 search_match=Übereinstimmung
 search_cpupc=Benutzt mehr als $1% der CPU
@@ -43,6 +45,7 @@ search_sigkill=Kille Prozesse
 search_port=Benutze Port
 search_protocol=Protokoll
 search_ip=Benutze IP-Adresse
+
 run_command=Auszuführender Befehl
 run_submit=Ausführen
 run_mode=Ausführmodus
@@ -56,6 +59,7 @@ run_ecannot=Sie dürfen keine Befehle ausführen
 run_as=Ausführen als Benutzer
 run_euser=Fehlender oder ungültiger Benutzername
 run_euser2=Sie sind nicht berechtigt, Befehle mit dem ausgewählte Benutzer, auszuführen
+
 edit_title=Prozessinformation
 edit_gone=Dieser Prozess läuft nicht mehr
 edit_sub=Unterprozesse
@@ -75,12 +79,15 @@ edit_sigcont=Wiederaufnehmen
 edit_open=Dateien und Verbindungen
 edit_trace=Prozess verfolgen
 edit_return=Prozessdetails
+
 kill_err=Fehler beim Senden von Signal $1 an Prozess $2
 kill_title=Sende Signal
 kill_sent=Gesendet
 kill_ecannot=Sie dürfen diesen Prozess nicht killen
+
 renice_err=Fehler beim Ändern des Nicelevels des Prozesses $1
 renice_ecannot=Sie dürfen den Nice-Level von Prozessen nicht verändern
+
 linux_pri=Priorität
 linux_tty=TTY
 linux_status=Status
@@ -91,25 +98,30 @@ linux_ruser=Echter Benutzer
 linux_rgroup=Echte Gruppe
 linux_pgid=Prozessgruppen-ID
 linux_stime=$stime
+
 linuxstat_R=Läuft
 linuxstat_S=Schläft
 linuxstat_D=Tiefschlaf
 linuxstat_T=Gestoppt
 linuxstat_Z=Zombie
+
 linux_real=Echtzeit
 linux_be=Best effort
 linux_idle=Leerlauf
+
 freebsd_ruser=Echter Benutzer
 freebsd_rgroup=Echte Gruppe
 freebsd_tty=TTY
 freebsd_pgid=Prozessgruppe
 freebsd_stime=$stime
 freebsd_lim=Speichergrenze
+
 hpux_pri=Priorität
 hpux_tty=TTY
 hpux_status=Status
 hpux_wchan=Warten auf
 hpux_stime=$stime
+
 hpuxstat_0=Existiert nicht
 hpuxstat_S=Schläft
 hpuxstat_W=Wartet
@@ -118,7 +130,9 @@ hpuxstat_I=Zwischenstatus
 hpuxstat_Z=Zombie
 hpuxstat_T=Gestoppt
 hpuxstat_G=Wächst
+
 macos_tty=TTY
+
 sysv_group=Gruppe
 sysv_ruser=Echter Benutzer
 sysv_rgroup=Echte Gruppe
@@ -127,12 +141,14 @@ sysv_tty=TTY
 sysv_stime=$stime
 sysv_task=Task-ID
 sysv_zone=Zonenname
+
 log_run="$1" ausgeführt
 log_kill=Sende Signal $1 an Prozess $2
 log_kills=Sende Signal $1 an $2 Prozesse
 log_kill_l=Signal $1 an Prozess $2 gesendet
 log_kills_l=Signal $1 an $2 Prozesse<br>gesendet
 log_renice=Priorität des Prozesses von $2 nach $1 geändert
+
 acl_manage=Bearbeite Prozesse als Benutzer
 acl_manage_def=Momentaner Webmin-Benutzer
 acl_edit=Darf Prozesse killen und den Level verändern?
@@ -142,11 +158,13 @@ acl_who=Kann Prozesse für Benutzer verwalten
 acl_who0=Alle Benutzer
 acl_who1=Aktueller Webmin Benutzer
 acl_who2=Gelistete Benutzer ..
+
 kill_kill=Prozess killen
 kill_term= Terminieren  
 kill_hup=  Neustart   
 kill_stop=    Stop    
 kill_cont=  Fortführen  
+
 open_title=Offene Dateien und Verbindungen
 open_proc=Für Prozess $1 (PID $2)
 open_header1=Offene Dateien
@@ -170,6 +188,7 @@ open_blk=Block speziell
 open_size=Dateigröße
 open_inode=Inode
 open_file=Pfad
+
 trace_title=Prozess verfolgen
 trace_start=Starte Systemcall-Trace für $1 ..
 trace_doing=Systemcall-Trace für $1 :
@@ -180,5 +199,7 @@ trace_syscalls=Systemcall-Trace:
 trace_all=Alle
 trace_sel=Aufgelistete..
 trace_change=Ändern
+
 windows_threads=Threads im Prozess
+
 syslog_dmesg=Kernel Nachrichten

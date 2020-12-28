@@ -2,6 +2,7 @@ check_econfigset=No s'ha establert cap fitxer de configuració iSCSI TGTd!
 check_econfig=No s'ha trobat al sistema el fitxer de configuració $1 de iSCSI TGTd.
 check_etgtadm=No s'ha trobat al sistema l'ordre d'administració $1 de iSCSI TGTd.
 check_einit=L'acció d'engegada $1 no existeix
+
 index_title=iSCSI TGTd
 index_clink=Pot ser que no estigui instal·lat, o bé que la <a href='$1'>configuració del mòdul</a> sigui incorrecta.
 index_stop=Atura iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=Usuaris permesos
 index_size=Mida total
 index_noluns=Cap
 index_nousers=Qualsevol
+
 dtargets_err=No s'han pogut suprimir els objectius.
 dtargets_enone=No n'hi ha cap de seleccionat!
+
 target_title1=Creació d'Objectiu iSCSI
 target_title2=Edició d'Objectiu iSCSI
 target_header=Opcions del dispositiu compartit iSCSI
@@ -74,11 +77,13 @@ target_direct=Accés directe al dispositiu
 target_cache=El cau escriu sobre el dispositiu
 target_eaddr=L'adreça IP permesa és invàlida
 target_eaname=El nom de l'iniciador permès és invàlid
+
 start_err=No s'ha pogut iniciar iSCSI TGTd
 stop_err=No s'ha pogut aturar iSCSI TGTd
 restart_err=No s'ha pogut reiniciar iSCSI TGTd
 atboot_err=No s'ha pogut activar en engegar el sistema
 atboot_einit=El script d'inicialització $1 no existeix
+
 log_create_target=S'ha creat l'objectiu $1
 log_delete_target=S'ha suprimit l'objectiu $1
 log_modify_target=S'ha modificat l'objectiu $1
@@ -89,6 +94,7 @@ log_restart=S'ha reiniciat el servidor iSCSI
 log_atboot=S'ha activat el servidor iSCSI en engegar el sistema
 log_delboot=S'ha desactivat el servidor iSCSI en engegar el sistema
 log_manual=S'ha editat manualment el fitxer de configuració
+
 manual_title=Edició del Fitxer de Configuració
 manual_file=Selecciona el fitxer a editar:
 manual_ok=Obre

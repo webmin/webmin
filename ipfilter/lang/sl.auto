@@ -43,8 +43,10 @@ index_natnone=Še ni določeno nobeno pravilo prevajanja omrežnih naslovov.
 index_nataction=Način NAT
 index_natfrom=Paketi, ki se ujemajo
 index_natto=Prevod
+
 dir_in=Dohodni
 dir_out=Odhodni
+
 action_pass=<font color=#00aa00>Pass</font>
 action_block=<font color=#ff0000>Blokiraj</font>
 action_skip=Preskoči
@@ -57,6 +59,7 @@ action_map=Kartiranje
 action_rdr=Preusmeritev
 action_bimap=Dvosmerno preslikava
 action_map-block=Blokiranje zemljevidov
+
 laction_pass=<font color=#00aa00>Pošlji paket</font>
 laction_block=<font color=#ff0000>Blokiraj paket z ICMP kodo</font>
 laction_log=Paket dnevnika, na ravni
@@ -65,6 +68,7 @@ laction_skip=Preskočite naslednja pravila
 laction_auth=Pooblastilo uporabniškega prostora
 laction_preauth=Preverite predhodno pooblastilo
 laction_call=Pokliči funkcijo jedra
+
 edit_title1=Ustvari pravilo
 edit_title2=Uredi pravilo
 edit_header1=Pravilo ukrepanje
@@ -130,6 +134,7 @@ edit_icmp=Vrsta ICMP
 edit_icmpany=&lt;Vse vrste&gt;
 edit_icmpcode=in kodo
 edit_codeany=&lt;Vsaka koda&gt;
+
 save_err=Pravila ni bilo mogoče shraniti
 save_ehostfrom=Manjkajoče ali neveljavno ime gostitelja vira
 save_ehostto=Manjkajoče ali neveljavno ime gostitelja cilja
@@ -158,11 +163,13 @@ save_eto=Manjkajoči ali neveljaven vmesnik za pošiljanje
 save_etoip=IP naslov je neveljaven
 save_ereplyto=Manjka ali neveljaven vmesnik za odgovor na
 save_ereplytoip=IP naslov je neveljaven
+
 apply_err=Konfiguracije ni bilo mogoče uporabiti
 apply_remote=Napaka od $1 : $2 
 unapply_err=Konfiguracije ni bilo mogoče povrniti
 unapply_ein=Ni bilo mogoče dobiti pravil za vnos
 unapply_eout=Ni bilo mogoče dobiti pravil za izhod
+
 desc_if=Če $1 
 desc_and=in
 desc_always=Nenehno
@@ -196,6 +203,7 @@ desc_rdr=IP naslovi $1 vrata $2
 desc_dport1=pristanišče je $1 
 desc_dport2=vrata so med $1 in $2 
 desc_nattoiface=naslov vmesnika
+
 log_create_rule=Ustvarjeno pravilo $1 
 log_delete_rule=Izbrisano je $1 pravilo
 log_modify_rule=Spremenjeno pravilo $1 
@@ -224,6 +232,7 @@ log_add_host=Dodan je grozdni strežnik $1
 log_add_group=Dodani strežniki grozdov iz skupine $1 
 log_delete_host=Odstranjen je strežnik gruče $1 
 log_delete_group=Odstranjeni so strežniki grozdov $1 
+
 cluster_title=Strežniki požarnega zidu gruč
 cluster_none=V grozdišče požarnega zidu še ni bil dodan noben strežnik.
 cluster_host=Ime gostitelja
@@ -234,6 +243,7 @@ cluster_gadd=Dodajte strežnike v skupino
 cluster_need=Preden lahko tukaj upravljate, morate v modul Webmin Servers Index dodati strežnike z prijavo in geslom.
 cluster_return=grozdni strežniki
 cluster_delete=Odstrani izbrano
+
 add_title=Dodaj strežnike
 add_msg=Dodajanje $1.
 add_gmsg=Dodajanje strežnikov v skupino $1.
@@ -242,6 +252,7 @@ add_gerr=Skupine ni bilo mogoče dodati
 add_echeck=Strežnik $1 nima modula požarnega zidu IPFilter
 add_emissing=Strežniku $1 manjka ukaz požarnega zidu $2 
 add_ok=Dodano je $1 s pravili $2 aktivnega požarnega zidu.
+
 nat_title1=Ustvari NAT pravilo
 nat_title2=Uredi NAT pravilo
 nat_action=Način NAT
@@ -300,4 +311,5 @@ nat_edport2=Manjkajoči ali neveljavni končni izvirnik
 net_erdrip='$1' ni veljaven ciljni IP naslov
 nat_erdrips=Ni vnesenih ciljnih IP-jev
 nat_erdrport=Manjkajoče ali neveljavno ciljno pristanišče
+
 boot_esmf=Storitev SMF $1 ne obstaja ali ni v znanem stanju

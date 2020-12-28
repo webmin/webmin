@@ -15,5 +15,6 @@ edit_special_daily=Καθημερινά (τα μεσάνυχτα)
 edit_special_weekly=Εβδομαδιαία (Κυριακή)
 edit_special_monthly=Μηνιαία (στον 1ο)
 edit_special_yearly=Ετήσια (1η Ιανουαρίου)
+
 log_success=Επιτυχής εκτέλεση <tt>$2</tt> στο <tt>$1</tt>
 log_failure=Δεν ήταν δυνατή η εκτέλεση <tt>$2</tt> στο <tt>$1</tt> : $3 

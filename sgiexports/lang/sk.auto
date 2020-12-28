@@ -7,6 +7,7 @@ index_none=Zatiaľ nebol definovaný žiadny vývoz NFS.
 index_apply=Použiť konfiguráciu
 index_applydesc=Kliknutím na toto tlačidlo aktivujete všetky vyššie uvedené vývozy s nakonfigurovanými možnosťami.
 index_return=zoznam exportov
+
 edit_title1=Vytvoriť export
 edit_title2=Upraviť export
 edit_header=Exportujte podrobnosti
@@ -24,12 +25,14 @@ edit_access=Prístup na vrchol
 edit_all=Všetci hostitelia
 edit_sel=Uvedení hostitelia ..
 edit_none=Žiadni hostitelia
+
 save_err=Export sa nepodarilo uložiť
 save_edir=Chýbajúci alebo neexistujúci adresár na export
 save_eanon=Chýbajúci alebo neplatný užívateľ root
 save_erw=Neboli zadaní žiadni hostitelia na čítanie a zápis
 save_eroot=Neboli zadaní žiadni hostitelia prístupu k koreňovým súborom
 save_eaccess=Neboli zadaní žiadni hostitelia pre pripojenie
+
 log_create_export=Bol vytvorený export $1 
 log_delete_export=Odstránený vývoz $1 
 log_modify_export=Upravený vývoz $1 

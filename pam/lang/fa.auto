@@ -4,6 +4,7 @@ index_desc=شرح
 index_add=یک سرویس PAM جدید اضافه کنید.
 index_return=لیست خدمات
 index_none=هیچ پرونده پیکربندی PAM در فهرست شما در فهرست $1 یافت نشد. شاید PAM پشتیبانی نشود ، یا پیکربندی <a href='$2'>تنظیمات ماژول شما</a> نادرست باشد.
+
 desc_su=تغییر کاربر
 desc_su-l=تعویض کاربر (با ورود)
 desc_login=ورود به سیستم محلی یا راه دور
@@ -87,6 +88,7 @@ desc_common-account=تأیید اعتبار مشترک
 desc_common-auth=احراز هویت رایج
 desc_common-password=تغییر رمز عبور معمول
 desc_common-session=تنظیم جلسه مشترک
+
 edit_title=سرویس PAM را ویرایش کنید
 edit_header=جزئیات سرویس PAM
 edit_name=نام سرویس
@@ -107,6 +109,7 @@ edit_move=حرکت
 edit_return=سرویس PAM
 edit_inc=شامل خدمات$1
 edit_iheader=شامل خدمات PAM است
+
 pam_pwdb.so=تأیید اعتبار رمز عبور یونیکس
 pam_securetty.so=بررسی مطمئن TTY برای ریشه
 pam_nologin.so=بررسی پرونده <tt>/etc/nologin</tt>
@@ -149,6 +152,7 @@ pam_console.so=کنسول فقط بررسی کنید
 pam_xauth.so=احراز هویت X
 pam_stack.so=با سرویس PAM دیگر تماس بگیرید
 pam_foreground.so=تنظیم کنسول
+
 control_requisite=مورد نیاز
 control_required=ضروری
 control_sufficient=کافی است
@@ -157,6 +161,7 @@ control_desc_requisite=تأیید اعتبار بلافاصله در صورت ع
 control_desc_required=در پایان عدم موفقیت در تأیید اعتبار
 control_desc_sufficient=احراز هویت را بلافاصله در موفقیت موفق کنید
 control_desc_optional=موفقیت یا شکست نادیده گرفته می شود
+
 create_title=سرویس PAM ایجاد کنید
 create_header=گزینه های جدید سرویس PAM
 create_name=نام سرویس
@@ -165,6 +170,7 @@ create_mods=ماژول های PAM اولیه
 create_0=هیچ یک
 create_1=تأیید اعتبار یونیکس
 create_2=دسترسی را انکار کنید
+
 mod_edit=ماژول PAM را ویرایش کنید
 mod_create=ماژول PAM را اضافه کنید
 mod_header=گزینه های ماژول PAM
@@ -178,10 +184,12 @@ mod_type_password=تغییر رمز عبور
 mod_control=سطح خرابی
 mod_args=استدلال های ماژول
 mod_err=ذخیره ماژول انجام نشد
+
 pwdb_shadow=از فایل رمز عبور سایه استفاده می کنید؟
 pwdb_nullok=رمزهای عبور تهی را می پذیرید؟
 pwdb_md5=از رمزهای عبور رمزگذاری شده MD5 استفاده می کنید؟
 pwdb_nodelay=تأخیر بعد از ورود ناموفق؟
+
 unix_nullok_secure=آیا گذرواژه های تهی را در TTY های امن قبول می کنید؟
 unix_min=حداقل طول رمز عبور
 unix_nomin=هیچ یک
@@ -190,6 +198,7 @@ unix_nomax=بدون محدودیت
 unix_obscure=از استفاده از رمزهای آسان جلوگیری می کنید؟
 unix_emin=حداقل طول رمز عبور نامشخص است یا نامعتبر است
 unix_emax=حداکثر طول رمز عبور نامشخص است یا نامعتبر است
+
 listfile_item=فایل جستجو برای
 listfile_item_user=نام کاربری
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=محدود کردن بررسی به
 listfile_all=تمام کاربران
 listfile_user=فقط کاربر
 listfile_group=فقط گروه
+
 cracklib_type=اعلان رمز عبور را در سریع تایپ کنید
 cracklib_retry=حداکثر امتحانات قبل از شکست
 cracklib_eretry=تعداد تلاش مجدد یا نامعتبر است
 cracklib_etype=نوع رمز عبور موجود یا نامعتبر است
+
 rhosts_equiv=پرونده <tt>/etc/hosts.equiv</tt> را بخوانید؟
 rhosts_rhosts=پرونده های <tt>.rhosts</tt> کاربران را بخوانید؟
 rhosts_promiscuous=ورود <tt>+</tt> به همه میزبان ها اجازه می دهد؟
 rhosts_suppress=عدم موفقیت در تأیید اعتبار؟
+
 env_var=نام متغیر
 env_def=مقدار پیش فرض
 env_over=رد کردن مقدار
 env_evar=نامهای متغیر نمی توانند دارای فاصله باشند
+
 securetty_ttys=TTY های امن
+
 shells_shells=پوسته های کاربر معتبر
+
 tally_deny=تلاش برای عدم موفقیت قبل از انکار دسترسی
 tally_reset=بازگرداندن موفقیت در موفقیت حساب می شود
 tally_edeny=تعداد تلاش ناموفق یا نامعتبر است
 tally_magic=تعداد شکست در <tt>root</tt> اعمال می شود؟
 tally_root=حساب <tt>root</tt> را می توان رد کرد؟
+
 time_services=خدمات
 time_ttys=TTY ها
 time_users=کاربران
 time_times=زمان دسترسی
 time_info=همه قسمت ها می توانند حاوی مقادیر مختلفی باشند که توسط | جدا شده اند ، و مقادیر می توانند از * به عنوان یک کارت ویزیت استفاده کنند یا! به عنوان منفی
+
 group_services=خدمات
 group_ttys=TTY ها
 group_users=کاربران
 group_times=زمان دسترسی
 group_groups=گروه ها را اضافه کنید
 group_info=همه قسمت ها می توانند حاوی مقادیر مختلفی باشند که توسط | جدا شده اند ، و مقادیر می توانند از * به عنوان یک کارت ویزیت استفاده کنند یا! به عنوان منفی
+
 wheel_group=عضویت در گروه را بررسی کنید
 wheel_group_def=پیش فرض (<tt>چرخ</tt> یا GID 0)
 wheel_trust=اعضای گروه احراز هویت بیشتر را دور می زنند؟
 wheel_deny=به جای اجازه دادن به اعضای گروه ، انکار می کنید؟
 wheel_egroup=نام گروه نامعتبر است یا نامعتبر است
+
 motd_file=پرونده برای نمایش
 motd_file_def=پیش فرض (<tt>/وغیره/motd</tt>)
 motd_efile=نام پرونده موجود نیست یا نامعتبر است
+
 mail_nopen=نمایش اعلان نامه پست الکترونیکی در ورود؟
 mail_close=نمایش اعلان نامه الکترونیکی در هنگام ورود؟
 mail_empty=اطلاع دهید که نامه پستی خالی است؟
 mail_noenv=متغیر محیط MAIL $ تنظیم کنید؟
 mail_dir=فهرست راهنمای حلقه نامه
 mail_edir=پوشه حلقه نامه ناموفق یا نامعتبر است
+
 stack_service=بررسی را به سرویس PAM منتقل کنید
+
 log_pam_create=سرویس PAM ایجاد شد$1
 log_pam_delete=سرویس PAM $1 حذف شد
 log_mod_create=ماژول PAM $1 به سرویس$2 اضافه شد
@@ -262,6 +284,7 @@ log_inc_create=شامل$1 برای خدمات $2 می شود
 log_inc_modify=شامل$1 برای خدمات $2 اصلاح شده است
 log_inc_delete=حذف شده شامل$1 برای سرویس$2 است
 log_incs=به روز شده شامل خدمات $1 است
+
 inc_edit=سرویس شامل را ویرایش کنید
 inc_create=ایجاد سرویس شامل
 inc_header=شامل جزئیات سرویس PAM

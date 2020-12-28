@@ -15,6 +15,7 @@ index_db=Nombre de la base de datos
 index_tables=Mesas
 index_drops=Descartar bases de datos seleccionadas
 index_postgresql=PostgreSQL
+
 index_toomany=Hay demasiadas bases de datos para mostrar. Encuentra bases de datos coincidentes:
 index_search=Buscar
 index_showing=Mostrando bases de datos que coinciden con $1 ..
@@ -28,6 +29,7 @@ index_gist=Árbol de búsqueda de índice generalizado
 index_jump=O edite la base de datos:
 index_jumpok=Abierto
 index_edithosts=Configurar sistemas host permitidos
+
 dbase_header=Tablas de bases de datos, índices, vistas y secuencias.
 dbase_vadd=Crear vista
 dbase_sadd=Crear secuencia
@@ -44,12 +46,15 @@ dbase_jump=Editar tabla:
 dbase_vjump=Editar vista:
 dbase_ijump=Editar índice:
 dbase_sjump=Editar secuencia:
+
 table_eblob=No se necesita tamaño para el campo BLOB $1 
 table_csv=Exportar como CSV
 table_index=Crear índice
 table_delete=Eliminar campos seleccionados
+
 field_err2=Error al guardar el campo
 field_err1=Error al eliminar el campo
+
 exec_old=O seleccione un comando SQL anterior :
 exec_clear=Borrar historia
 exec_header2=Seleccione un archivo de comandos SQL para ejecutar en la base de datos $1 ..
@@ -73,6 +78,7 @@ exec_tabexec=Ejecutar SQL
 exec_tabfile=Ejecuta SQL desde el archivo
 exec_tabimport=Importar archivo de texto
 exec_return=ejecutar formulario SQL
+
 view_refresh=Actualizar
 view_search2=Buscar filas donde el campo $2 $3 $1 
 view_match0=contiene
@@ -98,12 +104,14 @@ view_set=Establecer el contenido del archivo.
 view_warn=Advertencia: cargar archivos y ver el contenido de los campos <tt>text</tt> o <tt>bytea</tt> no funcionará a menos que los módulos Perl $1 y $2 estén instalados y en uso.
 view_adv=Búsqueda Avanzada
 view_sqlrun=Resultados generados por la consulta SQL : $1 
+
 newdb_ecannot2=No está permitido crear más bases de datos.
 newdb_user=Propiedad del usuario
 newdb_encoding=Codificación de juego de caracteres
 newdb_eencoding=Falta la codificación del juego de caracteres
 newdb_template=Base de datos de plantilla
 newdb_notemplate=Ninguna
+
 user_vwarning=ADVERTENCIA: Este usuario de PostgreSQL es el inicio de sesión de administración para el dominio Virtualmin $1. Cambiar cualquier configuración aquí puede causar errores en Virtualmin.
 user_setto=Ajustado a
 user_nochange=No cambies
@@ -115,6 +123,7 @@ user_sync_delete=Elimine un usuario de PostgreSQL cuando se elimine el usuario d
 user_delete=Eliminar seleccionado
 user_derr=Error al eliminar usuarios
 user_enone=Ningún usuario seleccionado
+
 host_header=Detalles de autenticación del cliente PostgreSQL
 host_peer=Par de red
 host_user=Los usuarios
@@ -138,16 +147,20 @@ host_derr=Error al eliminar hosts permitidos
 host_enone=No hay hosts seleccionados
 host_manual=Editar archivo de configuración
 host_manualdesc=Haga clic en este botón para editar manualmente el archivo de configuración de hosts permitidos.
+
 manual_title=Editar archivo de configuración
 manual_err=Error al guardar el archivo de configuración
+
 grant_ns=Esquema
 grant_toomany=Hay demasiados objetos para mostrar. Encuentra objetos que coinciden:
 grant_showing=Mostrando objetos que coinciden con $1 ..
 grant_delete=Restablecer subvenciones seleccionadas
+
 group_memsopts=Todos los usuarios
 group_memsvals=Usuarios en grupo
 group_derr=Error al eliminar grupos
 group_enone=No hay grupos seleccionados
+
 log_dbs_delete=Se descartaron $1 bases de datos
 log_users_delete=$1 usuarios eliminados
 log_groups_delete=$1 grupos eliminados
@@ -170,6 +183,7 @@ log_backup_l=Copia de seguridad de la base de datos $1 en el archivo $2
 log_backup_all=Copia de seguridad de todas las bases de datos
 log_backup_all_l=Copia de seguridad de todas las bases de datos en el archivo $2 
 log_manual=Archivo de configuración de hosts permitidos editado manualmente
+
 acl_max=Sí, como mucho
 acl_backup=Puede crear copias de seguridad?
 acl_restore=Puede restaurar copias de seguridad?
@@ -182,12 +196,16 @@ acl_cmds=¿Se puede editar antes y después de los comandos de respaldo?
 acl_views=¿Puede ver y administrar vistas?
 acl_indexes=¿Puede ver y administrar índices?
 acl_seqs=¿Puede ver y administrar secuencias?
+
 fdrop_enone=Ninguna seleccionada
 fdrop_eall=¡No puede eliminar todos los campos de una tabla!
+
 setup_err=Error al inicializar la base de datos
 setup_ecannot=No tiene permiso para inicializar la base de datos
+
 dbase_bkup=Apoyo
 dbase_rstr=Restaurar
+
 restore_title=Restaurar base de datos
 restore_header=Restaurar opciones de base de datos
 restore_db=Nombre de la base de datos
@@ -210,6 +228,7 @@ restore_tables=Tablas para restaurar
 restore_tables1=Todo en archivo de respaldo
 restore_tables0=Tablas listadas
 restore_failed=Restauración fallida : $1 
+
 backup_title=Base de datos de respaldo
 backup_title2=Copia de seguridad de todas las bases de datos
 backup_header1=Destino de respaldo
@@ -258,17 +277,21 @@ backup_ebefore=¡El comando antes de la copia de seguridad falló!
 backup_cmode=Cuando ejecutar comandos
 backup_cmode1=Antes/después de todas las bases de datos
 backup_cmode0=Antes/después de cada base de datos
+
 r_command=Comando no admitido
+
 adv_title=Búsqueda Avanzada
 adv_and=Encuentra registros que coincidan con todos los criterios.
 adv_or=Encuentra registros que coincidan con cualquier criterio.
 adv_ok=Buscar ahora
+
 tdrops_enone=No hay tablas que descartar seleccionadas
 tdrops_err=Error al descartar tablas
 tdrops_ok=soltar
 tdrops_title=Soltar seleccionado
 tdrops_rusure=¿Está seguro de que desea colocar $1 tablas seleccionadas en la base de datos $2 ? Se eliminarán $3 filas de datos.
 tdrops_rusure2=¿Está seguro de que desea colocar $1 tablas seleccionadas en la base de datos $2 ?
+
 ddrops_err=Error al descartar bases de datos
 ddrops_title=Eliminar bases de datos
 ddrops_rusure=¿Está seguro de que desea eliminar las bases de datos $1 seleccionadas? Se eliminarán $2 tablas que contienen $3 filas de datos.
@@ -276,6 +299,7 @@ ddrops_mysql=Debido a que la base de datos maestra está seleccionada, su caída
 ddrops_ok=Eliminar bases de datos
 ddrops_enone=No hay bases de datos seleccionadas
 ddrops_ecannotdb=No tiene permiso para soltar la base de datos $1 
+
 csv_title=Exportar archivo CSV
 csv_header=Opciones de exportación CSV
 csv_dest=Destino de exportación
@@ -296,6 +320,7 @@ csv_done=La exportación de CSV a $1 ha finalizado. El tamaño del archivo resul
 csv_headers=¿Incluir nombres de columna en CSV?
 csv_cols=Columnas para incluir en CSV
 csv_ecols=No hay columnas seleccionadas
+
 import_title=Datos de importacion
 import_uploadout=Importando datos del archivo cargado.
 import_fileout=Importando datos del archivo $1 ..
@@ -303,6 +328,7 @@ import_eupload=Falta el archivo de importación cargado
 import_efile=Falta el nombre de archivo de importación
 import_done=... creó $1 filas, omitió $2 duplicados.
 import_erow=.. no se encontraron campos en la fila $1 
+
 index_title1=Crear índice
 index_header1=Opciones de índice
 index_name=Nombre del índice
@@ -320,6 +346,7 @@ index_ecols=No hay campos seleccionados
 index_title2=Editar índice
 index_header=Índice $1 en la base de datos $2 
 index_ecannot=No tiene permiso para administrar índices
+
 view_title1=Crear vista
 view_title2=Editar vista
 view_header1=Ver detalles
@@ -334,6 +361,7 @@ view_eclash=Ya existe una vista con el mismo nombre
 view_equery=Falta la consulta SQL
 view_ecols=No se ingresaron nombres de columna
 view_ecannot=No tiene permiso para administrar vistas
+
 seq_title1=Crear secuencia
 seq_title2=Editar secuencia
 seq_header1=Incremento de las opciones de secuencia
@@ -353,5 +381,6 @@ seq_emin=Valor mínimo faltante o no válido
 seq_emax=Valor máximo faltante o no válido
 seq_ecache=Número de valores faltantes o no válidos para almacenar en caché
 seq_ecannot=No tienes permiso para administrar secuencias
+
 dgrant_err=Error al restablecer las subvenciones
 dgrant_enone=No hay objetos seleccionados

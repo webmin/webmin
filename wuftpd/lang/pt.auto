@@ -9,6 +9,7 @@ index_startmsg=Clique neste botão para iniciar o servidor FTP com a configuraç
 index_startmsg2=Clique neste botão para iniciar o servidor FTP com a configuração atual. Você também pode configurar o servidor para ser iniciado automaticamente quando necessário, usando o inetd ou algum programa equivalente.
 index_return=Opções do servidor FTP
 index_version=Versão WU-FTPd $1 
+
 class_title=Usuários e Classes
 class_header=Classes de usuário e opções de usuário
 class_class=Classes de usuários
@@ -31,6 +32,7 @@ class_err=Falha ao salvar classes de usuário
 class_eclass='$1' não é um nome de classe válido
 class_etypes=Nenhum tipo escolhido para a classe '$1'
 class_eaddrs=Nenhum endereço inserido para a classe '$1'
+
 message_title=Mensagens e faixas
 message_header=Mensagens, banners e arquivos LEIA-ME
 message_message=Arquivos de mensagens
@@ -59,6 +61,7 @@ message_eclass=A classe '$1' não existe
 message_ebanner='$1' não é um arquivo de banner de login válido
 message_ehostname=Nome de host ausente ou inválido
 message_eemail=Endereço de e-mail ausente ou inválido
+
 acl_title=Limites e controle de acesso
 acl_header=Limites e opções de controle de acesso
 acl_deny=Negar acesso de
@@ -105,6 +108,7 @@ acl_elmsg='$1' não é um arquivo de mensagem de erro válido
 acl_efbcount='$1' não é um número válido de arquivos ou bytes
 acl_elimit='$1' não é um limite de tempo válido
 acl_efails='$1' não é um número válido de falhas de login
+
 net_title=Trabalho em rede
 net_header=Opções de rede
 net_tcp=Tamanhos de janela TCP
@@ -122,6 +126,7 @@ net_eip='$1' não é um endereço IP válido
 net_enet='$1' não é um endereço de rede válido
 net_ecidr='$1' não é um número válido de bits de rede
 net_eport='$1' não é um número de porta válido
+
 log_title=Exploração madeireira
 log_header=Opções de log
 log_commands=Registre todos os comandos para
@@ -139,6 +144,7 @@ log_syslog=Registro do sistema
 log_xferlog=Arquivo de log XFER
 log_sysxfer=Ambos os destinos
 log_err=Falha ao salvar as opções de log
+
 alias_title=Alias e caminhos
 alias_header=Opções de alias e caminho
 alias_alias=Aliases do diretório do CD
@@ -149,6 +155,7 @@ alias_err=Falha ao salvar aliases e caminhos
 alias_efrom='$1' não é um nome de alias válido
 alias_eto='$1' não é um diretório de alias válido
 alias_ecdpath='$1' não é um diretório de pesquisa de CD válido
+
 anon_title=FTP anônimo
 anon_eftp=Aviso - seu sistema não possui um usuário <tt>ftp</tt> e, portanto, o FTP anônimo provavelmente não está configurado.
 anon_header=Opções de FTP anônimo
@@ -171,6 +178,7 @@ anon_uids=Para usuários Unix
 anon_err=Falha ao salvar opções de FTP anônimas
 anon_edir='$1' não é um diretório válido
 anon_egroup='$1' não é um grupo válido
+
 perm_title=Permissões
 perm_header=Opções de permissão
 perm_perms=Restrições de comando
@@ -192,7 +200,9 @@ perm_err=Falha ao salvar permissões
 perm_echar='$1' não é uma expressão regular de conjunto de caracteres válida
 perm_etypes=Nenhum tipo de usuário selecionado
 perm_emesg='$1' não é um arquivo de mensagem de erro válido
+
 host_title=Controle de acesso ao host
+
 misc_title=Opções diversas
 misc_header=Opções diversas
 misc_lslong=Comando de listagem longa
@@ -213,6 +223,7 @@ misc_elsplain=Comando de listagem simples ausente
 misc_eshutdown=Arquivo de notificação de desligamento ausente
 misc_enice='$1' não é um bom nível válido
 misc_eumask='$1' não é uma umask válida
+
 log_class=Usuários e classes alterados
 log_message=Mensagens e banners alterados
 log_acl=Limites alterados e controle de acesso

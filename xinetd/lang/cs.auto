@@ -25,6 +25,7 @@ index_estart=Příkaz ke spuštění Xinetd $1 neexistuje. Možná není nainsta
 index_noport=Neznámý
 index_enable=Povolit vybrané
 index_disable=Zakázat vybrané
+
 serv_create=Vytvoření internetové služby
 serv_edit=Upravit internetovou službu
 serv_header1=Možnosti sítě služeb
@@ -78,19 +79,24 @@ serv_enice=Chybějící nebo neplatná pěkná úroveň
 serv_ecps0=Chybějící nebo neplatný počet připojení za sekundu
 serv_ecps1=Chybějící nebo neplatné zpoždění
 serv_etimes=Doby přístupu musí být ve formátu HH: MM-HH: MM
+
 sock_stream=Proud
 sock_dgram=Datagram
 sock_raw=Drsný
 sock_seqpacket=Sekvenční datagram
+
 proto_=Výchozí
 proto_ip=IP (internetový protokol)
 proto_tcp=TCP (Transmission Control Protocol)
 proto_udp=UDP (User Datagram Protocol)
+
 restart_err=Nepodařilo se použít změny
 restart_ekill=Nepodařilo se odeslat signál USR2 na PID $1 : $2 
 restart_epid=Už neběží
+
 start_err=Xinetd se nepodařilo spustit
 start_estart=$1 selhalo : $2 
+
 defs_title=Výchozí možnosti
 defs_header=Výchozí možnosti služeb
 defs_log=Režim protokolování Xinetd
@@ -115,6 +121,7 @@ defs_err=Výchozí možnosti se nepodařilo uložit
 defs_efile=Chybějící nebo neplatný název souboru protokolu
 defs_esoft=Chybějící nebo neplatný limit soft
 defs_ehard=Chybějící nebo neplatný pevný limit
+
 log_create_serv=Byla vytvořena služba $2 $1 
 log_modify_serv=Upravená služba $2 $1 
 log_delete_serv=Byla smazána služba $2 $1 
@@ -125,5 +132,6 @@ log_enable=Povoleno služby $1
 log_disable=Zakázáno služby $1 
 log_enable_l=Povolené služby $1 
 log_disable_l=Zakázané služby $1 
+
 config_dirdef=Konfigurační soubor Xinetd
 config_dirto=Nový soubor v adresáři

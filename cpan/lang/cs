@@ -19,6 +19,7 @@ index_upgrade=aktualizovat moduly
 index_recs=Následující moduly Perlu jsou vyžadovány během instalace Webminu :
 index_recsok=Instalovat vybrané moduly
 index_recsgot=Všechny následující moduly Perlu doporučené Webminem jsou nainstalovány : $1
+
 download_err=Chyba při instalaci modulu
 download_elocal=Není zadán lokální soubor
 download_elocal2='$1' neexistuje
@@ -54,6 +55,7 @@ download_missing=Chybějící $1 moduly(ů)
 download_nomissing=Všechny nainstalované
 download_ebuild=Jeden či více modulů Perlu pro svou činnost vyžaduje $1, jinak nebude tento Perl modul nainstalován.
 download_yum=Probíhá instalace modulu Perlu $1 z balíčku $2 ..
+
 install_title=Instalace modulu
 install_untar=Odtarrování souboru s modulem
 install_make=Kompilace modulu
@@ -73,11 +75,13 @@ install_err2=Můžete taktéž instalovat modul z CPAN pomocí příkazu $1
 install_exec=Spouštění $1 ..
 install_efile=Soubor modulu $1 již neexistuje
 install_needunlink=Můžete se pokusit o novou instalaci s novými parametry, pokud se vrátíte na předchozí stránku. Nicméně, <a href='$1'>klepnete-li zde, smažete dočasné soubory s balíčkem</a> a tím uvolníte místo na disku.
+
 cpan_sel=Moduly pod $1 ..
 cpan_title=Vybrat moduly Perlu
 cpan_search=Najít moduly pojmenované
 cpan_match=Moduly obsahující $1 ..
 cpan_none=Žádná shoda nenalezena.
+
 edit_title=Detaily modulu
 edit_header=Informace o modulu
 edit_mod=Název modulu
@@ -94,6 +98,7 @@ edit_method=Instalováno z
 edit_rpm=RPM balíček $1
 edit_debian=Balíček Debianu $1
 edit_manual=Ruční instalace modulu Perl
+
 uninstall_title=Odinstalování modulů
 uninstall_rusure=Skutečně chcete odinstalovat modul Perlu $1 ? Následující soubory budou smazány :
 uninstall_rusure2=Skutečně chcete odinstalovat modul Perlu $1 a submodul(y) $2 ?<br>Následující soubory budou smazány :
@@ -101,7 +106,9 @@ uninstall_ok=Odinstalovat
 uninstall_rpm=Modul bude odstraněn během odinstalování $1 balíčku RPM.
 uninstall_debian=Modul bude odstraněn během odinstalování $1 balíčku Debianu.
 uninstall_err=Chyba při odinstalování modulu
+
 delete_efile=Vadná soubor s balíčkem!
+
 uninstalls_title=Odinstalovat moduly
 uninstalls_err=Chyba při odinstalování modulů
 uninstalls_enone=Nic není vybráno

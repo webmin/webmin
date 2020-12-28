@@ -43,8 +43,10 @@ index_natnone=Inga översättningsregler för nätverksadress har definierats ä
 index_nataction=NAT-läge
 index_natfrom=Paket att matcha
 index_natto=Översättning
+
 dir_in=Inkommande
 dir_out=Utgående
+
 action_pass=<font color=#00aa00>Pass</font>
 action_block=<font color=#ff0000>Blockera</font>
 action_skip=Hoppa
@@ -57,6 +59,7 @@ action_map=kartläggning
 action_rdr=Dirigera om
 action_bimap=Dubbelriktad kartläggning
 action_map-block=Blockera kartläggning
+
 laction_pass=<font color=#00aa00>Pass paket</font>
 laction_block=<font color=#ff0000>Blockera paket med ICMP-kod</font>
 laction_log=Logg paket, på nivå
@@ -65,6 +68,7 @@ laction_skip=Hoppa över nästa regler
 laction_auth=Behörighet för användarutrymme
 laction_preauth=Kontrollera tidigare godkännande
 laction_call=Ring kärnfunktion
+
 edit_title1=Skapa regel
 edit_title2=Redigera regel
 edit_header1=Regelåtgärd
@@ -130,6 +134,7 @@ edit_icmp=ICMP-typ
 edit_icmpany=&lt;Alla typer&gt;
 edit_icmpcode=och kod
 edit_codeany=&lt;Valfri kod&gt;
+
 save_err=Det gick inte att spara regeln
 save_ehostfrom=Saknad eller ogiltig källvärdnamn
 save_ehostto=Saknat eller ogiltigt målvärdnamn
@@ -158,11 +163,13 @@ save_eto=Gränssnitt saknas eller ogiltigt att skicka ut på
 save_etoip=Ogiltig IP-adress att skicka ut på
 save_ereplyto=Gränssnittet saknas eller ogiltigt att svara på
 save_ereplytoip=Ogiltig IP-adress att svara på
+
 apply_err=Det gick inte att tillämpa konfigurationen
 apply_remote=Fel från $1 : $2 
 unapply_err=Det gick inte att återställa konfigurationen
 unapply_ein=Det gick inte att få inregler
 unapply_eout=Det gick inte att få resultatregler
+
 desc_if=Om $1 
 desc_and=och
 desc_always=Alltid
@@ -196,6 +203,7 @@ desc_rdr=IP-adresser $1 port $2
 desc_dport1=porten är $1 
 desc_dport2=porten är mellan $1 och $2 
 desc_nattoiface=gränssnittsadress
+
 log_create_rule=Skapad $1 -regel
 log_delete_rule=$1 -regeln har raderats
 log_modify_rule=Modifierad $1 -regel
@@ -224,6 +232,7 @@ log_add_host=Lade till klusterserver $1
 log_add_group=Lade till klusterserver från grupp $1 
 log_delete_host=Borttagit klustrserver $1 
 log_delete_group=Borttagna $1 -klustrservrar
+
 cluster_title=Cluster Firewall-servrar
 cluster_none=Inga servrar har lagts till i brandväggsklustret än.
 cluster_host=Värdnamn
@@ -234,6 +243,7 @@ cluster_gadd=Lägg till servrar i grupp
 cluster_need=Du måste lägga till servrar med inloggning och lösenord i Webmin Servers Index-modulen innan de kan hanteras här.
 cluster_return=klustrservrar
 cluster_delete=Ta bort valda
+
 add_title=Lägg till servrar
 add_msg=Lägger till $1 ..
 add_gmsg=Lägga till servrar i grupp $1 ..
@@ -242,6 +252,7 @@ add_gerr=Det gick inte att lägga till grupp
 add_echeck=Server $1 har inte IPFilter Firewall-modulen
 add_emissing=Server $1 saknar brandväggskommandot $2 
 add_ok=Lade till $1, med $2 aktiva brandväggsregler.
+
 nat_title1=Skapa NAT-regel
 nat_title2=Redigera NAT-regeln
 nat_action=NAT-läge
@@ -300,4 +311,5 @@ nat_edport2=Saknad eller ogiltig slutande originalport
 net_erdrip='$1' är inte en giltig IP-adress för destinationen
 nat_erdrips=Inga destinations-IP: er anges
 nat_erdrport=Saknar eller ogiltig destinationsport
+
 boot_esmf=SMF-tjänsten $1 finns inte eller är inte i ett känt tillstånd

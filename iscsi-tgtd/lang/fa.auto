@@ -2,6 +2,7 @@ check_econfigset=بدون مجموعه پرونده پیکربندی iSCSI TGTd!
 check_econfig=پرونده پیکربندی iSCSI TGTd $1 در سیستم شما یافت نشد.
 check_etgtadm=فرمان دولت iSCSI TGTd $1 در سیستم شما یافت نشد.
 check_einit=عملکرد راه اندازی$1 وجود ندارد
+
 index_title=iSCSI TGTd
 index_clink=شاید نصب نشده باشد ، یا <a href='$1'>پیکربندی ماژول شما</a> نادرست است.
 index_stop=iSCSI TGTd را متوقف کنید
@@ -24,8 +25,10 @@ index_users=کاربران مجاز
 index_size=اندازه کل
 index_noluns=هیچ یک
 index_nousers=هر
+
 dtargets_err=اهداف حذف نشدند
 dtargets_enone=هیچ کدام انتخاب نشده است!
+
 target_title1=iSCSI Target ایجاد کنید
 target_title2=iSCSI Target را ویرایش کنید
 target_header=iSCSI گزینه های دستگاه به اشتراک گذاشته شده است
@@ -74,11 +77,13 @@ target_direct=دسترسی مستقیم به دستگاه
 target_cache=کش به دستگاه می نویسد؟
 target_eaddr=آدرس IP مجاز نیست
 target_eaname=نام آغازگر مجاز نیست
+
 start_err=iSCSI TGTd شروع نشد
 stop_err=iSCSI TGTd متوقف نشد
 restart_err=راه اندازی مجدد iSCSI TGTd انجام نشد
 atboot_err=فعال کردن در بوت انجام نشد
 atboot_einit=اسکریپت اولیه$1 وجود ندارد
+
 log_create_target=هدف$1 ایجاد شد
 log_delete_target=هدف$1 حذف شد
 log_modify_target=هدف اصلاح شده$1
@@ -89,6 +94,7 @@ log_restart=سرور iSCSI را مجدداً راه اندازی کرد
 log_atboot=سرور iSCSI را در زمان بوت فعال کنید
 log_delboot=سرور iSCSI را غیرفعال کنید
 log_manual=ویرایش دستی پرونده پیکربندی
+
 manual_title=پرونده پیکربندی را ویرایش کنید
 manual_file=پرونده را برای ویرایش انتخاب کنید:
 manual_ok=باز کن

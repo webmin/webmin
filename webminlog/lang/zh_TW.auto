@@ -16,6 +16,7 @@ index_sdesc=動作說明包含
 index_shost=源Webmin服務器
 index_long=顯示完整的動作說明？
 index_global=&lt;不在任何模塊中&gt;
+
 search_webmin=Webmin服務器
 search_none2=沒有動作符合您對動作的搜索
 search_critd=描述包含<tt>$1</tt>
@@ -30,6 +31,7 @@ search_global_baduser=用戶名錯誤
 search_global_badpass=密碼錯誤
 search_global_twofactor=無效的雙重因素令牌
 search_csv=導出為CSV。
+
 view_host=源Webmin服務器
 view_ecannot=您無權查看此日誌條目
 view_rollback2=回滾所選文件
@@ -41,12 +43,14 @@ view_files=文件已更改，命令已運行
 view_raw=原始日誌數據
 view_rawname=參數名稱
 view_rawvalue=參數值
+
 acl_mods=可以查看模塊中的日誌
 acl_all=所有
 acl_sel=在下面選擇 ..
 acl_self=只有自我
 acl_users=可以查看用戶的操作
 acl_rollback=可以回滾動作嗎？
+
 rollback_title=回滾動作
 rollback_rusure=您確定要在執行此操作之前將下面列出的所有文件還原為它們的內容嗎？它們當前包含的任何數據將被以下更改覆蓋：
 rollback_isdir=目錄-不會進行任何更改。
@@ -69,4 +73,5 @@ rollback_modfile=回滾文件 $1的內容。
 rollback_deleted=已刪除文件 $1。
 rollback_nodeleted=跳過的不存在的文件 $1。
 rollback_enone=未選擇文件
+
 log_rollback=在模塊 $2中回滾了操作 $1

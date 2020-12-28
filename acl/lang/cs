@@ -22,6 +22,7 @@ index_unix=Nastavit autentizaci Unix uživatele
 index_sessions=Zobrazit relaci přihlášení
 index_rbac=Nastavit RBAC
 index_delete=Smazat vybrané
+
 edit_title=Editovat Webmin uživatele
 edit_title2=Vytvořit Webmin uživatele
 edit_readonly=Tento uživatel Webminu nemůže být upravován protože je spravován modulem $1. Chcete-li jej přesto upravit, <a href='$2'>klepněte zde</a> - buďte však opatrní, jakékoliv změny mohou být nenávratné!
@@ -89,6 +90,7 @@ edit_ui=Volby pro uživatelské rozhraní
 edit_security=Volby zabezpečení a dalších omezení
 edit_mods=Webmin moduly, které jsou k dispozici
 edit_modsg=Webmin moduly, které jsou k dispozici (navíc z dané skupiny)
+
 save_err=Chyba při ukládání uživatele
 save_ename='$1' není platné jméno uživatele
 save_enamewebmin=Uživatelské jméno 'webmin' je blokováno pro vnitřní užití
@@ -116,10 +118,12 @@ save_eminsize=Chybějící nebo neplatné číslo, určující nejmenší délku
 save_edays=Nejsou vybrány žádné dny k povolení
 save_ehours=Chybějící nebo chybný čas k povolení
 save_ehours2=Počáteční čas k povolení musí předcházet času koncovému
+
 delete_err=Chyba při odstraňování uživatele
 delete_eself=nemůžete smazat sám sebe
 delete_ecannot=Nemáte oprávnění mazat uživatele
 delete_euser=Nemáte oprávnění smazat tohoto uživatele
+
 cert_title=Vyžadovat certifikát
 cert_issue=Ověřit certifikát
 cert_header=Vlastnosti nového certifikátu
@@ -138,6 +142,7 @@ cert_install=Nainstalujte váš certifikát do prohlížeče
 cert_ekey=Nový SSL klíč nebyl vaším prohlížečem přijat - možná nepodporuje SSL certifikáty uživatelů.
 cert_eca=Chyba při nastavování certifikátu: $1
 cert_already=Varování - už jste použil certifikát $1.
+
 acl_title=Nastavení přístupu k modulům
 acl_title2=Pro $1 v $2
 acl_title3=For skupinu $1 v $2
@@ -146,6 +151,7 @@ acl_config=Může měnit nastavení modulu?
 acl_reset=Resetovat na plný přístup
 acl_rbac=Získat nastavení pro přístup z RBAC?
 acl_rbacyes=Ano (přepsat níže uvedená nastavení)
+
 acl_uall=Všichni uživatelé
 acl_uthis=Tento uživatel
 acl_usel=Vybraní uživatelé ..
@@ -183,6 +189,7 @@ acl_theme=Může změnit osobní vzhled?
 acl_ips=Může změnit kontrolu přístupu IP?
 acl_switch=Je možné se přepínat na jiné uživatele?
 acl_times=Je možné změnit povolenou dobu přihlášení?
+
 log_modify=Modifikován Webmin uživatel $1
 log_rename=Přejmenován Webmin uživatel $1 na $2
 log_create=Vytvořen Webmin uživatel $1
@@ -201,6 +208,7 @@ log_delete_groups=Smazány $1 skupiny Webminu
 log_pass=Změněna omezení pro heslo
 log_unix=Změněna autentikace unix uživatele
 log_sync=Změněna synchronizace unix uživatele
+
 gedit_ecannot=Nemáte oprávnění editovat skupiny
 gedit_title=Editovat Webmin skupinu
 gedit_title2=Vytvořit Webmin skupinu
@@ -208,6 +216,7 @@ gedit_group=Název skupiny
 gedit_rights=Přístupová práva Webmin skupiny
 gedit_modules=Moduly člen?
 gedit_members=Členové a skupiny
+
 gdelete_err=Chyba při mazání skupiny
 gdelete_ecannot=Nemáte oprávnění mazat skupiny
 gdelete_euser=Nemůžete smazat vlastní skupinu
@@ -215,10 +224,12 @@ gdelete_esub=Skupiny s vnořenými podskupinami nelze smazat
 gdelete_title=Smazat skupinu
 gdelete_desc=Skutečně chcete smazat skupinu $1 a její členy $2 ?
 gdelete_ok=Smazat skupinu
+
 gsave_err=Chyba při ukládání skupiny
 gsave_ename=Chybný nebo chybějící název skupiny
 gsave_enamewebmin=Název skupiny 'webmin' je blokován pro vnitřní užití
 gsave_edup=Název skupiny již existuje
+
 convert_title=Konvertovat uživatele
 convert_ecannot=Nemáte oprávnění konvertovat Unix uživatele
 convert_nogroups=Ve vašem systému není definována žádná Webmin skupina. Před konverzí uživatelů musíte definovat alespo? jednu skupinu, protože konverovaným uživatelům musí být přidělená přístupová práva.
@@ -242,6 +253,7 @@ convert_exists=$1 již existuje
 convert_invalid=$1 není platné jméno uživatele ve Webminu
 convert_added=$1 byl přidán
 convert_msg=Probíhá konverze Unix uživatelů...
+
 sync_title=Synchronizace Unix uživatele
 sync_desc=Tento formulář umožňuje automatickou synchronizaci Unix uživatelů, kteří byli vytvořeni prostřednictvím Webminu a uživatelů v tomto modulu.
 sync_nogroups=V vašem systému nejsou definovány žádné Webmin skupiny. Musíte vytvořit alespoň jednu skupinu, která bude nastavovat práva vytvářeným uživatelům.
@@ -251,6 +263,7 @@ sync_delete=Smazat odpovídajícího Webmin uživatele v momentě, kdy je Unix u
 sync_group=Přidat nové uživatele do Webmin skupiny
 sync_unix=Nastavit heslo pro nové uživatele v rámci Unix autentikaci.
 sync_ecannot=Nemáte oprávnění konfigurovat synchronizaci uživatele.
+
 unix_title=Autentizace Unix uživatele
 unix_err=Chyba při ukládání Unix autentikace
 unix_desc=Tato stránka umožňuje konfiguraci Webminu tak, aby ověřoval přihlášení proti systémovému seznamu uživatelů a PAM. Toto ověřování může být užitečné v případě, kdy máte velké množství Unix uživatelů, kteří chtějí přístup do Webminu.
@@ -280,26 +293,31 @@ unix_sudo=Povolit uživatel, kteří mohou spustit příkazy pod <tt>sudo</tt> t
 unix_pamany=Zpracovat pouze ta přihlášení, která projdou PAM kontrolou jako $1
 unix_esudo=Příkaz $1 není nainstalován
 unix_esudomod=Modul Perlu $1, nezbytný pro autentikaci <tt>sudo</tt>, není nainstalován
+
 sessions_title=Aktuální relace přihlášení
 sessions_id=ID relace
 sessions_user=Webmin uživatel
 sessions_login=Přihlášen na
 sessions_host=IP adresa
 sessions_lview=Zobrazit logs..
+
 hide_title=skrýt nepoužívané moduly
 hide_desc=Následující moduly budou odstraněny ze seznamu přístupů pro $1, protože  as their corresponding servers nejsou ve vašem systému nainstalován ..
 hide_ok=Ihned skrýt moduly
 hide_none=Není co skrýt - $1 nemá přístup k žádnému modulu whose corresponding servers are not installed on your system.
 hide_desc2=Mějte nap paměti, že tyto moduly nemusí být automaticky k dispozici, pokud nejsou nainstalovány odpovídající servery. Navíc budete muset pro tento modul ručně nastavit práva.
 hide_clone=(Klonovat $1)
+
 switch_euser=Nemáte oprávnění k přepínání uživatele
 switch_eold=Existující relace není nalezena!
+
 rbac_title=Nastavit RBAC
 rbac_desc=RBAC integrace do Webminu nabízí možnost....
 rbac_esolaris=RBAC je momentálně podporován pouze v Solaris, takže nemůže být využit na vašem $1 systému.
 rbac_eperl=Nezbytný modul Perlu $1 pro integraci RBAC není nainstalován. Chdte-li jej nainstalovat, <a href='$2'>klepněte zde</a>.
 rbac_ecpan=Nemáte dostatečné oprávnění pro zobrazení stránky pro správu Perlových modulů v rámci Webminu. Bez tohoto oprávnění nemůžete nainstalovat $1 modul, potřebný pro RBAC integraci.
 rbac_ok=RBAC integrace je ve vašem systému přístupná, takže může být využita pro každého uživatele v rámci stránky pro úpravu uživatelů Webminu.
+
 udeletes_err=Chyba při mazání uživatelů
 udeletes_enone=Nic není vybráno
 udeletes_title=Smazat uživatele
@@ -307,11 +325,13 @@ udeletes_rusure=Jste si jisti, že chcete smazat $1 označených uživatelů? V�
 udeletes_users=Vybraní uživatelé : $1
 udeletes_ok=Smazat uživatele
 udeletes_ereadonly=Jeden z vybraných uživatelů je označen jako needitovatelný
+
 gdeletes_err=Chyba při mazání skupin
 gdeletes_title=Smazat skupiny
 gdeletes_rusure=Jste si jisti, že chcete smazat $1 vybrané skupiny a $2 uživatelů, kteří jsou členové daných skupin? Všechny jejich přístupová práva a detaily budou nenávratně ztracena.
 gdeletes_users=Vybrané skupiny : $1
 gdeletes_ok=Smazat skupiny
+
 pass_title=Omezení pro heslo
 pass_header=Volby pro vynucení Webmin hesla
 pass_minsize=Nejmenší délka hesla
@@ -332,6 +352,7 @@ pass_eminsize=Chybějící nebo neplatné číslo, určující minimální délk
 pass_emaxdays=Chybějící nebo neplatné číslo, určující počet dnů před povinností změny
 pass_elockdays=Chybějící nebo neplatné číslo, určující počet dnů před uzamčením účtu
 pass_eoldblock=Chybějící nebo neplatné číslo, určující počet starých hesel, které nesmějí být využity
+
 cpass_minsize=Musí obsahovat nejméně $1 znaků
 cpass_notre=Odpovídá nepovolené předloze
 cpass_re=Neodpovídá požadované předloze

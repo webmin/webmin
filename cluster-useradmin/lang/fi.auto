@@ -17,6 +17,7 @@ index_tdesc=Kuvaus
 index_tucount=käyttäjät
 index_tgcount=ryhmät
 index_ttype=OS-tyyppi
+
 add_title=Lisää palvelimia
 add_msg=Lisätään $1 ..
 add_gmsg=Palvelimien lisääminen ryhmään $1 ..
@@ -26,6 +27,7 @@ add_echeck=Palvelimella $1 ei ole käyttäjiä ja ryhmiä -moduulia
 add_epft=Palvelin $1 ei käytä samaa käyttäjätiedostomuotoa kuin tämä isäntä
 add_egft=Palvelin $1 ei käytä samaa ryhmätiedostomuotoa kuin tämä isäntä
 add_ok=Lisätty $1 $2 käyttäjillä ja $3 ryhmillä.
+
 host_title=Hallittu palvelin
 host_header=Ohjelmiston hallinnoimat palvelimen yksityiskohdat
 host_name=Isäntänimi
@@ -34,8 +36,7 @@ host_delete=Poista hallinnoidusta luettelosta
 host_refresh=Päivitä käyttäjät ja ryhmät
 host_users=käyttäjien lukumäärä
 host_groups=Ryhmien lukumäärä
-host_ulist=Palvelimen käyttäjät
-host_glist=Ryhmät palvelimella
+
 host_return=palvelimen yksityiskohdat
 refresh_title=Päivitä käyttäjät ja ryhmät
 refresh_header=Käyttäjä- ja ryhmäluetteloiden uudelleenpyyntö kaikilta palvelimilta ..
@@ -49,6 +50,7 @@ refresh_gdel=poista $1 ryhmää
 refresh_done=.. valmis
 refresh_del=Poistettu $1 palvelinluettelosta
 refresh_failed= $1 : $2 päivitys epäonnistui
+
 uedit_host=Tiedot $1 : ltä
 uedit_leave=Älä muuta
 uedit_set=Asetettu
@@ -66,6 +68,7 @@ uedit_servers=Palvelimet, joilla luodaan
 uedit_all=&lt;kaikki isännät&gt;
 uedit_donthave=&lt;isännät, joilla ei ole häntä&gt;
 uedit_group=$1 : n jäsenet
+
 usave_einuse=Käyttäjä, jolla on sama nimi, on jo olemassa $1 : ssä
 usave_esecgid=Toissijaista ryhmää $1 ei ole olemassa
 usave_con=Luodaan $1 : lle.
@@ -88,16 +91,20 @@ usave_header=Luodaan käyttäjä $1 kaikissa isäntissä ..
 usave_header5=Luodaan käyttäjä $1 $2 : een.
 usave_header4=Käyttäjän $1 luominen ryhmän $2 jäsenille.
 usave_header3=Luodaan käyttäjä $1 isäntiin, joilla ei ole häntä ..
+
 search_hosts=isännät
+
 udel_on=Poistetaan kohdasta $1 ..
 udel_servs=Poista kotihakemisto, jos sitä on
 udel_others=Poistetaanko käyttäjä muista moduuleista?
 udel_dothers=Poistetaan muista moduuleista ..
 udel_gone=Käyttäjää ei enää ole.
 udel_failed=Käyttäjän poistaminen epäonnistui : $1 
+
 gdel_on=Poistetaan kohdasta $1 ..
 gdel_gone=Käyttäjää ei enää ole.
 gdel_failed=Ryhmän : $1 poistaminen epäonnistui
+
 gsave_create=Lisätään ryhmätiedosto merkintää ..
 gsave_con=Luodaan $1 : lle.
 gsave_euser=Käyttäjää $1 ei ole olemassa
@@ -110,10 +117,12 @@ gsave_header=Ryhmän $1 luominen kaikille koneille ..
 gsave_header5=Ryhmän $1 luominen $2 : lle.
 gsave_header4=Ryhmän $1 luominen ryhmän $2 jäsenille.
 gsave_header3=Ryhmän $1 luominen isäntissä, joilla ei ole sitä ..
+
 gedit_host=Tiedot $1 : ltä
 gedit_add=Lisää käyttäjiä
 gedit_del=Poista käyttäjät
 gedit_donthave=&lt;isännät, joilla ei ole sitä&gt;
+
 sync_title=Synkronoi palvelimet
 sync_desc=Tämän lomakkeen avulla voit luoda käyttäjiä ja ryhmiä palvelimilla, joilla niitä ei tällä hetkellä ole, jotta tilit voidaan synkronoida kaikkien klusterisi palvelimien kanssa.
 sync_hosts=Synkronoitavat palvelimet
@@ -141,6 +150,7 @@ sync_test=Näytä vain mitä tehdään?
 sync_makehome=Luoko kotihakemistoja?
 sync_copy=Kopioidaanko tiedostot kotihakemistoon?
 sync_others=Luo käyttäjä muihin moduuleihin?
+
 log_create_user=Luotu käyttäjä $1 
 log_delete_user=Poistettu käyttäjä $1 
 log_modify_user=Muokattu käyttäjä $1 

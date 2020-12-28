@@ -42,6 +42,7 @@ index_lvused=Izmantotā vieta
 index_lvuse=Izmanto
 index_snapof=($1 momentuzņēmums)
 index_thin=LVM plānais baseins $1 LV
+
 lv_edit=Rediģēt loģisko apjomu
 lv_edit_snap=Rediģēt momentuzņēmumu
 lv_create=Izveidot loģisko apjomu
@@ -128,6 +129,7 @@ lv_pvfrom=Pārvietot blokus no fiziskā skaļuma
 lv_pvto=Uz fizisko tilpumu
 lv_moveok=Pārvietot blokus
 lv_return=loģiskais skaļums
+
 mkfs_title=Izveidot failu sistēmu
 mkfs_desc=Šī forma ļauj izveidot jaunu faila sistēmu $2 ($1) loģiskajā sējumā $3. Visi esošie dati tiks izdzēsti.
 mkfs_header=Jaunas failu sistēmas opcijas
@@ -135,6 +137,7 @@ mkfs_err=Neizdevās izveidot failu sistēmu
 mkfs_exec=Izpilda komandu $1.
 mkfs_failed=.. komanda neizdevās!
 mkfs_ok=.. komanda pabeigta.
+
 resize_title=Loģiskā apjoma mainīšana
 resize_mesg=Šajā loģiskajā sējumā esošās faila sistēmas $1 izmēru nevar mainīt. Ja maināt loģiskā apjoma lielumu, jums ir atkārtoti jāizveido failu sistēma, kas izdzēsīs visus tajā esošos datus.
 resize_mesg2=Webmin nezina, kāda veida failu sistēma ir šajā loģiskajā sējumā, ja tāds ir. Ja maināt loģiskā apjoma lielumu, jums ir atkārtoti jāizveido failu sistēma, kas izdzēsīs visus tajā esošos datus.
@@ -142,8 +145,10 @@ resize_fs=Izmainot lielumu $1 failu sistēmai šajā loģiskajā sējumā, radā
 resize_ok=Loģiskā apjoma mainīšana
 resize_emounted=Šajā loģiskajā sējumā esošo failu sistēmas izmēru nevar mainīt, kamēr tā ir uzstādīta
 resize_emounted2=Šajā loģiskajā sējumā esošo failu sistēmu nevar saraut, kamēr tā ir uzstādīta
+
 init_title=Aktivizējiet LVM
 init_cmd=Darbojas komanda $1.
+
 pv_edit=Rediģēt fizisko apjomu
 pv_create=Pievienojiet fizisko apjomu
 pv_vg=Sējumu grupā $1 
@@ -170,6 +175,7 @@ pv_eother=Trūkst vai nav derīga diska ierīce
 pv_raid=RAID ierīce $1 
 pv_lvs=Sadalījums pēc loģiskiem apjomiem
 pv_egone=Fiziskais apjoms vairs nepastāv!
+
 vg_edit=Rediģēt apjoma grupu
 vg_create=Izveidot apjoma grupu
 vg_name=Apjoma grupas nosaukums
@@ -188,11 +194,13 @@ vg_deleteok=Dzēst tūlīt
 vg_ename=Trūkst vai nav derīgs apjoma grupas nosaukums
 vg_epesize=Trūkst vai nav derīgs piešķīruma bloka lielums
 vg_egone=Apjoma grupa vairs nepastāv!
+
 pvmove_err=Neizdevās pārvietot loģisko skaļumu
 pvmove_title=Pārvietot loģisko skaļumu
 pvmove_start=Loģiskā skaļuma $1 pārvietošana no $2 uz $3.
 pvmove_failed=.. pārvietot neizdevās!
 pvmove_done=.. pārvietot pabeigts
+
 thin_title=Izveidojiet plānu baseinu
 thin_desc=Plāns baseins ir LV pāris, ko var izmantot, lai izveidotu papildu LV, kas var būt lielāki par pieejamajiem paplašinājumiem. Vietas patērē tikai pēc nepieciešamības, nevis tad, kad tiek izveidotas LV baseina iekšpusē. BRĪDINĀJUMS - visi dati par atlasītajām LV tiks zaudēti!
 thin_header=Jaunas plānas baseina detaļas
@@ -204,6 +212,7 @@ thin_err=Neizdevās izveidot plānu baseinu
 thin_esame=Abas atlasītās LV ir vienādas
 thin_edata=Atlasītie dati LV jau tiek izmantoti
 thin_emetadata=Atlasītie metadati LV jau tiek izmantoti
+
 log_create_vg=Izveidota apjoma grupa $1 
 log_modify_vg=Pārveidota apjoma grupa $1 
 log_delete_vg=Dzēsta apjoma grupa $1 
@@ -216,4 +225,5 @@ log_create_pv=Pievienots fiziskajam apjomam $1 VG $1
 log_modify_pv=Modificēts fiziskais tilpums $1 VG $2 
 log_delete_pv=Noņemts fiziskais tilpums $1 no VG $2 
 log_resize_pv=Fiziskā tilpuma $1 mainīts VG $2 
+
 blocks=bloki

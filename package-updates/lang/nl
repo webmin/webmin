@@ -44,6 +44,7 @@ index_count=$1 overeenkomende pakketten gevonden ..
 index_search=Vind pakketten overeenkomend met :
 index_searchok=Zoek
 index_clear=Toon Alles
+
 update_title=Update Pakketten
 update_pkg=Nu $1 aan het updaten ..
 update_pkg2=Nu $1 aan het installeren ..
@@ -79,18 +80,22 @@ update_none=Geen
 update_ops=Complete lijst met updates opbouwen ..
 update_rebootdesc=1 van de ge-update pakketten heeft een reboot nodig voor volledige verwerking.
 update_reboot=Reboot Nu
+
 sched_title=Geplande Update
 sched_yes=Geplande update controle is nu actief.
 sched_no=Geplande update controle is uitgeschakeld.
+
 log_update=$1 update pakket(ten) geinstalleerd
 log_sched=Vooraf geplande updates aanzetten
 log_unsched=Vooraf geplande updates uitzetten
 log_refresh=Beschikbare pakketten die ververst zijn
+
 refresh_title=Verversen Pakketten
 refresh_clearing=Opruimen van pakket cache ..
 refresh_done=.. klaar
 refresh_available=Opnieuw ophalen van beschikbare pakketten ..
 refresh_done3=.. $1 mogelijke update gevonden
+
 view_title=Pakket Details
 view_header=Pakket informatie die geupdaten kan worden
 view_name=Pakket naam
@@ -104,6 +109,7 @@ view_changelog=Overzicht voor beschikbare versie
 view_software=Beheer Pakket
 view_update=Update pakket
 view_install=Installeer pakket
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)

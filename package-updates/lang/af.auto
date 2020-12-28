@@ -57,6 +57,7 @@ index_reposdisable=Skakel bewaarplekke uit
 index_reposenable=Aktiveer bewaarplekke
 index_reposdelete=Vee bewaarplekke uit
 index_repoheader=Nuwe pakketopsies
+
 update_title=Pas pakkette op
 update_title2=Installeer pakkette
 update_enone=Geen pakkette is gekies nie
@@ -94,9 +95,11 @@ update_none=Geen
 update_ops=Bou 'n volledige lys pakkette ..
 update_rebootdesc=Een van die geïnstalleerde pakkette benodig 'n herlaai om volledig toegepas te word.
 update_reboot=Herbegin nou
+
 sched_title=Geplande opdatering
 sched_yes=Geplande kontrole vir opdaterings is nou aktief.
 sched_no=Geplande kontrole vir opdaterings is gedeaktiveer.
+
 log_update=$1 opgedateerde pakkette geïnstalleer
 log_sched=Geskeduleerde opdaterings geaktiveer
 log_unsched=Geskeduleerde opdaterings is uitgeskakel
@@ -108,11 +111,13 @@ log_enable_repo=Pakketbewaarplek $1 geaktiveer
 log_disable_repo=Pakketbewaarplek $1 gedeaktiveer
 log_delete_repo=Pakketbewaarplek $1 is uitgevee
 log_create_repo=Pakketbewaarplek $1 geskep
+
 refresh_title=Verfrissende pakkette
 refresh_clearing=Wis pakketpakkette uit
 refresh_done=.. klaar
 refresh_available=Haal beskikbare pakkette weer in ..
 refresh_done3=.. het $1 moontlike opdaterings gevind
+
 view_title=Pakketbesonderhede
 view_header=Opdaterbare pakketinligting
 view_name=Pakketnaam
@@ -126,12 +131,14 @@ view_changelog=Changelog vir beskikbare weergawe
 view_software=Bestuur pakket
 view_update=Opdateringspakket
 view_install=Installeer pakket
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)
 system_webmin=Webmin module
 system_usermin=Gebruikermodule
 system_tgz=Webmin of Usermin tar.gz
+
 repos_err_disable=Kon nie bewaarplekke uitskakel nie
 repos_err_enable=Kon nie bewaarplekke inskakel nie
 repos_err_delete=Kon nie bewaarplekke uitvee nie

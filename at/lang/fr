@@ -18,6 +18,7 @@ index_amode0=Tous les utilisateurs Unix
 index_amode1=Seulement la liste ci-dessous
 index_amode2=Tous, sauf la liste ci-dessous
 index_delete=Annuler les commandes sélectionnées
+
 edit_title=Commande programmée
 edit_cmd=Script complet à exécuter
 edit_shortcmd=Commande à exécuter
@@ -27,6 +28,7 @@ edit_run=Exécuter maintenant
 edit_ejob=La commande programmée n'existe plus !
 edit_ecannot=Vous n'êtes pas autorisé à modifier cette commande programmée
 edit_showfull=Montrer le script complet.
+
 create_err=Impossible de créer la commande programmée
 create_euser=Nom d'utilisateur manquant ou invalide
 create_edate=Date ou heure manquante ou invalide
@@ -35,19 +37,24 @@ create_efuture=La date et l'heure sont passées
 create_edir=Répertoire manquant ou invalide
 create_ecannot=Vous n'êtes pas autorisé à créer des commandes programmées pour cet utilisateur
 create_eallow=L'utilisateur indiqué n'est pas autorisé à exécuter une commande programmée
+
 delete_err=Impossible d'annuler la commande
 delete_egone=Commande déjà exécutée ou supprimée
+
 acl_users=Peut modifier des commandes programmées pour
 acl_all=Tous les utilisateurs
 acl_this=Utilisateur Webmin actuel
 acl_only=Seulement les utilisateurs
 acl_except=Tous les utilisateurs sauf
 acl_allow=Peut éditer les utilisateurs autorisés pour At ?
+
 run_title=Exécution de la commande
 run_output=Sortie de la commande programmée...
 run_none=Aucune sortie générée
+
 allow_err=Echec lors de la sauvegarde des utilisateurs autorisés
 allow_ecannot=Vous n'avez pas les droits nécessaires pour gérer les utilisateurs autorisés
 allow_eusers=Aucun utilisateur entré
+
 deletes_err=Echec lors de l'annulation des commandes
 deletes_enone=Aucune sélection

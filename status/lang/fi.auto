@@ -19,6 +19,7 @@ index_refsel=Päivitä valittu
 index_group=$1 : n jäsenet
 index_tmpls=Muokkaa sähköpostimalleja
 index_tmplsdesc=Tarkastele ja muokkaa malleja, joita käytetään rakennettavien sähköpostiviestien rakentamiseen, kun seuratut palvelut menevät.
+
 type_apache=Apache-verkkopalvelin
 type_inetd=Internet ja RPC-palvelin
 type_xinetd=Laajennettu Internet-palvelin
@@ -73,8 +74,10 @@ type_alive=Elävä järjestelmä
 type_rssh=Etä SSH
 type_slapd=LDAP-palvelin
 type_ldap=LDAP-yhteys
+
 mon_create=Luo näyttö
 mon_edit=Muokkaa näyttöä
+mon_virtualmin=Varoitus! Tämä näyttö on liitetty Virtualmin-verkkotunnukseen $1, joten sitä ei pitäisi muokata tai poistaa täällä.
 mon_header=Monitorin yksityiskohdat
 mon_header2=Komennot ajaa
 mon_header3=Valvotut palveluvaihtoehdot
@@ -138,6 +141,7 @@ mon_changes0=Näytä kaikki tapahtumatyypit
 mon_changes1=Näytä vain muutokset
 mon_all=Näytä kaikki historialliset tapahtumat
 mon_nochanges=Tilanmuutoksia ei tapahtunut viimeisissä $1 historiallisissa tapahtumissa.
+
 sched_title=Ajoitettu seuranta
 sched_header=Ajoitetut taustavalvontavaihtoehdot
 sched_mode=Ajoitettu tarkistus käytössä?
@@ -184,16 +188,19 @@ sched_subject0=Ei mitään (hälytys on kehossa)
 sched_subject1=Hälytysteksti (jätä runko tyhjäksi)
 sched_subject2=Muokattu teksti
 sched_esubject=Puuttuu tekstiviestin aihe
+
 up_since=Ylöspäin vuodesta $1 
 depends_mod=Moduulia $1 ei ole asennettu järjestelmään
 depends_os=Moduulia $1 ei tueta järjestelmässäsi
 depends_remote=Palvelin $2 ei tue moduulia $1 
+
 tcp_host=Isäntä, johon voi muodostaa yhteyden
 tcp_port=Portti, johon haluat muodostaa yhteyden
 tcp_alarm=Yhteyden aikakatkaisu
 tcp_ehost=Puuttuva tai virheellinen isäntänimi
 tcp_eport=Puuttuva tai virheellinen porttinumero
 tcp_ealarm=Puuttuva tai virheellinen yhteyden aikakatkaisu
+
 http_url=Pyydettävä URL-osoite
 http_alarm=Yhteyden aikakatkaisu
 http_eurl=Puuttuva tai virheellinen URL-osoite
@@ -208,11 +215,13 @@ http_regexp=Sivun on vastattava säädöksiä
 http_eregexp=Sivulle ei annettu säännöllistä lauseketta
 http_none2=Älä vastaa
 http_ehead=HEAD-pyyntömenetelmää ei voida käyttää säännöllisen lausekkeen tarkistamisessa
+
 ping_host=Isäntä pingille
 ping_wait=Aika odottaa vastausta
 ping_ehost=Puuttuva tai virheellinen isäntänimi
 ping_ewait=Puuttuva tai virheellinen odotusaika
 ping_econfig=Ping-komentoa ei ole määritetty moduulin kokoonpanossa
+
 proc_pid=Ajo PID: llä $1 
 proc_cmd=Komento tarkistaa
 proc_not=Epäonnistu, jos prosessi on
@@ -224,6 +233,7 @@ proc_ethresh=Puuttuva tai virheellinen prosessien lukumäärä
 proc_asuser=Käynnissä kuin käyttäjä
 proc_anyuser=Mikä tahansa käyttäjä
 proc_easuser=Käyttäjä prosessin suorittamiseksi sellaisena kuin sitä ei ole
+
 exec_cmd=Komento suorittaa
 exec_mode=Poistu tilan tarkistuksesta
 exec_mode0=Monitorin epäonnistuminen, jos komento epäonnistuu
@@ -235,6 +245,7 @@ exec_noregexp=Älä tarkista
 exec_remode=Regexp-tarkistus
 exec_remode0=Epäonnistuu, jos lähtö ei vastaa
 exec_remode1=Epäonnistuu, jos lähtö vastaa
+
 file_file=Tarkistettava tiedosto, hakemisto tai malli
 file_test=Suorita testi
 file_test_0=On oltava olemassa
@@ -253,6 +264,7 @@ file_group=Tiedostoryhmän on oltava
 file_nocheck=Mitä tahansa
 file_perms=Oktaalilupien on oltava
 file_eperm=Tiedostot, joilla on vääriä oikeuksia : $1 
+
 traffic_iface=Valvontalaite
 traffic_bytes=Suurin tavu sekunnissa
 traffic_dir=Suunta seurata
@@ -262,6 +274,7 @@ traffic_dir2=Vain lähtevät
 traffic_desc=Tämä näyttö seuraa valitun käyttöliittymän verkkoliikennettä ja näyttää monitorin alaspäin, jos liikenne ylittää alla olevan tavujen lukumäärän sekunnissa. Tämä toimii todella hyvin vain, jos ajoitettu valvonta on otettu käyttöön lyhyellä aikavälillä, kuten joka 5. minuutti.
 traffic_eifaces=Käyttöjärjestelmässäsi ei ole/proc/net/dev-tiedostoa
 traffic_ebytes=Puuttuva tai virheellinen tavujen määrä sekunnissa
+
 space_fs=Tarkistettava tiedostojärjestelmä
 space_min2=Vähintään vapaa tila
 space_mode0=Absoluuttinen koko
@@ -277,6 +290,7 @@ space_ierr=Vain $1 juontaa ilmaiseksi
 space_merr=Vain $1 tilaa ilmaiseksi
 space_perr=Vain $1% ilmaiseksi
 space_dferr=Tiedostojärjestelmän koon saaminen epäonnistui
+
 load_time=Lataa keskimääräinen tarkistaa
 load_1=1 minuutti
 load_5=5 minuuttia
@@ -285,6 +299,7 @@ load_max=Suurin kuorman keskiarvo
 load_emax=Puuttuva tai virheellinen enimmäiskuormituskeskiarvo
 load_ecmd=<tt>Käyntiaika</tt> -komentoa ei löydy järjestelmästäsi
 load_efmt=<tt>Käyttöönotto</tt> -komennon tulosta ei voitu jäsentää
+
 log_create=Luotu näyttö $1 
 log_modify=Muokattu näyttö $1 
 log_delete=Poistettu näyttö $1 
@@ -295,10 +310,14 @@ log_tmpl_modify=Muokattu sähköpostimalli $1
 log_tmpl_delete=Poistettu sähköpostimalli $1 
 log_tmpl_deletes=Poistetut $1 sähköpostimallit
 log_refresh=Päivitetty näytön tilat
+
 acl_edit=Voiko muokata ja luoda näyttöjä?
 acl_sched=Voiko muuttaa aikataulutettua seurantaa?
+
 change_file=Valvottava tiedosto tai hakemisto (epäonnistuu, jos sitä muutetaan)
+
 jabber_eparser=Perl-moduulia $1 ei ole asennettu järjestelmään.
+
 memory_min2=Pienin vapaa todellinen muisti
 memory_emin=Puuttuva tai virheellinen määrä ilmaista todellista muistia
 memory_eproc=Webmin ei osaa tarkistaa vapaata muistia käyttöjärjestelmässäsi
@@ -308,7 +327,9 @@ memory_freelow=Vain $1 todellinen muisti
 memory_freelowswap=Vain $1 virtuaalimuisti vapaa
 memory_minswap=Vähintään vapaa virtuaalimuisti
 memory_eminswap=Puuttuva tai virheellinen ilmaisen virtuaalimuistin määrä
+
 proftpd_etype=Tätä näyttöä ei voi käyttää, kun ProFTPD: tä käytetään erillään
+
 mailserver_to=Lähetä sähköpostia osoitteeseen
 mailserver_timeout=Aikakatkaisu ja aikaväli
 mailserver_units_0=sekuntia
@@ -316,22 +337,28 @@ mailserver_units_1=Pöytäkirja
 mailserver_units_2=tuntia
 mailserver_units_3=päivää
 mailserver_desc=Alla olevan osoitteen on oltava automaattivastaaja, joka vastaa lähdeosoitteeseen samalla Aihe: -rivillä.
+
 oldfile_file=Valvottava tiedosto (epäonnistuu, jos sitä ei muuteta)
 oldfile_diff=Epäonnistua, jos sitä ei ole muutettu
 oldfile_secs=sekuntia
+
 raid_device=RAID-laite
 raid_edevice=RAID-laitetta ei ole valittu
 raid_bad=Virheellinen levy havaittu
 raid_resync=Tällä hetkellä uusitaan
 raid_notfound=RAID-laitetta $1 ei löydy
 raid_other=Muut ..
+
 iface_iface=Rajapinta tarkistettavaksi
+
 init_action=Toimenpide tarkistaa
 init_eaction=Toimintoa ei ole valittu
+
 refresh_title=Päivitä tila
 refresh_doing=Kaikkien näyttöjen tilan päivittäminen ..
 refresh_doing2=Päivitetään valitun $1 näytön tila ..
 refresh_done=.. valmis.
+
 sensors_name=Anturi tarkistaa
 sensors_value=Epäonnistui, kun
 sensors_value0=Järjestelmä ilmoittaa varoituksesta
@@ -342,6 +369,7 @@ sensors_none=Järjestelmässä ei havaittu antureita. Saatat joutua suorittamaan
 sensors_cur=$1 (tällä hetkellä $2 $3)
 sensors_emin=Puuttuva tai virheellinen minimiarvo
 sensors_emax=Puuttuva tai virheellinen maksimiarvo
+
 nut_ups=NUT UPS tarkistaa
 nut_name=Ominaisuus tarkistaa
 nut_value=Epäonnistui, kun
@@ -352,6 +380,7 @@ nut_eups=Ei USP: tä tarkistettavaksi
 nut_cur=$1 (tällä hetkellä $2)
 nut_emin=Puuttuva tai virheellinen minimiarvo
 nut_emax=Puuttuva tai virheellinen maksimiarvo
+
 mailq_system=Sähköpostipalvelin
 mailq_qmailadmin=qmail
 mailq_postfix=postfix
@@ -360,6 +389,7 @@ mailq_size=Suurin postijonon koko
 mailq_esize=Puuttuva tai virheellinen jonon enimmäiskoko
 mailq_toomany=Alas - $1 viestiä jonossa
 mailq_ok=Ylös - $1 viestiä jonossa
+
 dns_server=DNS-palvelin
 dns_host=Haettava isäntänimi
 dns_address=Odotettu IP-osoite
@@ -367,6 +397,7 @@ dns_eserver=Puuttuva tai virheellinen DNS-palvelin
 dns_ehost=Puuttuva tai virheellisesti näyttävä isäntänimi etsinnästä
 dns_eaddress=Puuttuva tai virheellinen odotettu IP-osoite
 dns_ecmds=<tt>nslookup</tt> - tai <tt>dig</tt> -komentoja ei ole asennettu järjestelmään
+
 monitor_sub_down=$1 alas $2 : een
 monitor_pager_down=$1 : "$2" on alhaalla $3 
 monitor_snmp_down= $1:$2 
@@ -398,8 +429,10 @@ monitor_run1=Käynnissä $1 $2 : lla ..
 monitor_run2=Käynnissä $1 ..
 monitor_runerr=$1 : n suorittaminen $2 : $3 epäonnistui
 monitor_email_stat=Nykyinen tila: $1 
+
 deletes_egone=Yhtä valituista näytöistä ei enää ole
 deletes_enone=Mitään näyttöä ei ole valittu
+
 ftp_host=FTP-palvelimen isäntä
 ftp_port=FTP-portti
 ftp_user=Kirjaudu sisään käyttäjänä
@@ -416,6 +449,7 @@ ftp_econn=TLS FTP-yhteys epäonnistui
 ftp_econn2=TLS FTP-yhteys epäonnistui : $1 
 ftp_elogin=TLS FTP -kirjautuminen epäonnistui : $1 
 ftp_etlsfile=TLS FTP -lataus epäonnistui : $1 
+
 query_driver=SQL-tietokantatyyppi
 query_db=Tietokannan nimi
 query_host=Tietokantapalvelimen isäntä
@@ -436,9 +470,12 @@ query_elogin=Sisäänkirjautuminen epäonnistui : $1
 query_eprepare=SQL-virhe : $1 
 query_eexecute=SQL epäonnistui : $1 
 query_ewrong=Väärä tulos : $1 
+
 consume_rate=Suurin kulutusnopeus (sekunnissa)
 consume_high=Kulutusaste on $1 / sekunti
+
 alive_up=Ylös kohti $1 
+
 rssh_host=SSH-palvelimen isäntä
 rssh_ruser=Kirjaudu sisään käyttäjänä
 rssh_rpass=Kirjaudu salasanalla
@@ -454,6 +491,7 @@ rssh_error=SSH-virhe
 rssh_haspass=Salasana
 rssh_port=SSH-palvelimen portti
 rssh_eport=Puuttuva tai virheellinen porttinumero
+
 tmpls_title=Sähköpostimallit
 tmpls_ecannot=Et voi muokata sähköpostipohjia
 tmpls_none=Sähköpostipohjia ei ole vielä määritetty. Kaikki hälytykset lähetetään Webmin-oletusviesteillä.
@@ -462,6 +500,7 @@ tmpls_email=Sähköpostiviesti
 tmpls_add=Lisää uusi sähköpostimalli.
 tmpls_return=mallilista
 tmpls_delete=Poista valitut mallit
+
 tmpl_title1=Luo sähköpostimalli
 tmpl_title2=Muokkaa sähköpostimallia
 tmpl_header=Hälytyspostimallin viestit
@@ -486,9 +525,11 @@ tmpl_esms=Puuttuu tekstiviesti
 tmpl_esnmp=SNMP-viesti puuttuu
 tmpl_err2=Sähköpostimallin poistaminen epäonnistui
 tmpl_eusers=Sitä käyttävät seuraavat monitorit : $1 
+
 dtmpls_err=Mallien poistaminen epäonnistui
 dtmpls_enone=Mitään ei ole valittu
 dtmpls_eusers=$1 on seuraavien näyttöjen käytössä : $2 
+
 sslcert_src=Varmenteen sijainti
 sslcert_url=HTTPS URL-osoitteesta
 sslcert_file=Tiedostosta palvelimella
@@ -506,18 +547,21 @@ sslcert_eend=Ei kelpaa $1 jälkeen
 sslcert_left=Ylös - $1 päivää vanhenemiseen
 sslcert_ematch=Isäntänimi $1 ei vastaa sertifikaattia $2 
 sslcert_emismatch=Varmenteen isäntänimen tarkistusta voidaan käyttää vain tarkistettaessa URL-osoitetta
+
 du_dir=Valvottu hakemisto
 du_max=Enimmäiskoko
 du_edir=Puuttuva tai ei-absoluuttinen hakemistopolku
 du_emax=Puuttuva tai ei-numeerinen enimmäiskoko
 du_over=Koko on $1 
 du_under=Koko on vain $1 
+
 ldap_edriver=Perl-moduulia $1 ei ole asennettu
 ldap_host=LDAP-palvelimen isäntänimi
 ldap_port=LDAP-palvelimen portti
 ldap_ssl=Käytätkö SSL-yhteyttä?
 ldap_user=LDAP-palvelimen kirjautuminen
 ldap_pass=LDAP-palvelimen salasana
+
 info_desc=Järjestelmämonitori
 info_last=Nykyinen tila
 info_title=Järjestelmän ja palvelimen tila

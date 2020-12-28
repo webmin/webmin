@@ -15,5 +15,6 @@ edit_special_daily=Tutti i giorni (a mezzanotte)
 edit_special_weekly=Settimanale (domenica)
 edit_special_monthly=Mensile (il 1)
 edit_special_yearly=Annuale (1 gennaio)
+
 log_success=<tt>$2</tt> eseguito correttamente in <tt>$1</tt>
 log_failure=Impossibile eseguire <tt>$2</tt> in <tt>$1</tt> : $3 

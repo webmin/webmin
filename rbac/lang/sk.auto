@@ -1,5 +1,6 @@
 index_euser=Vo vašom systéme sa nenašiel konfiguračný súbor RBAC $1. Možno RBAC nie je nainštalovaný alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
 index_return=index modulu
+
 users_title=Atribúty používateľa
 users_user=užívateľské meno
 users_profiles=Udelené profily
@@ -10,6 +11,7 @@ users_return=zoznam atribútov používateľa
 users_type=typ
 users_role=úloha
 users_project=projekt
+
 user_title1=Vytvorte atribúty používateľa
 user_title2=Upraviť atribúty používateľa
 user_header=Atribúty pridelené užívateľovi Unixu
@@ -35,6 +37,7 @@ user_eauth=$1 nie je platná autorizácia
 user_ecannot=Nemáte povolenie upravovať tohto používateľa
 user_erole=Nemáte oprávnenie priradiť rolu '$1'
 user_eprof=Nemáte povolenie priradiť profil „$1“
+
 auths_title=povolenie
 auths_name=Názov autorizácie
 auths_desc=popis
@@ -42,8 +45,10 @@ auths_none=Zatiaľ neboli definované žiadne oprávnenia.
 auths_add=Pridajte novú autorizáciu.
 auths_return=zoznam oprávnení
 auths_ecannot=Nemáte oprávnenie upravovať autorizácie
+
 authc_name=povolenie
 authc_desc=popis
+
 auth_title1=Vytvorte autorizáciu
 auth_title2=Upraviť autorizáciu
 auth_header=Podrobnosti o oprávnení na autorizáciu
@@ -57,6 +62,7 @@ auth_edesc=Neplatný dlhý popis
 auth_eclash=Autorizácia s rovnakým názvom už existuje
 auth_einuseu=Toto oprávnenie používa používateľ $1, a preto ho nemožno odstrániť
 auth_einusep=Toto oprávnenie sa používa v profile $1, a preto ho nemožno odstrániť
+
 profs_title=profily
 profs_name=Názov profilu
 profs_desc=popis
@@ -65,6 +71,7 @@ profs_none=Zatiaľ neboli definované žiadne profily.
 profs_add=Pridajte nový profil.
 profs_return=zoznam profilov
 profs_ecannot=Nemáte oprávnenie upravovať profily
+
 prof_title1=Vytvoriť profil
 prof_title2=Upraviť profil
 prof_header=Podrobnosti profilu autorizácie
@@ -81,6 +88,7 @@ prof_einuseu=Tento profil používa používateľ $1, a preto ho nemožno odstr�
 prof_einusep=Tento profil sa používa v profile $1, a preto ho nemožno odstrániť
 prof_einusee=Tento profil obsahuje $1 profily vykonávania, a preto ho nemožno odstrániť
 prof_none=Nie sú k dispozícii žiadne profily
+
 execs_title=Realizačné profily
 execs_name=Profile
 execs_policy=Bezpečnostná politika
@@ -92,6 +100,7 @@ execs_none=Zatiaľ neboli definované žiadne profily vykonávania.
 execs_add=Pridajte nový profil vykonávania.
 execs_return=zoznam realizačných profilov
 execs_ecannot=Nemáte oprávnenie upravovať profily vykonávania
+
 exec_title1=Vytvorte profil vykonávania
 exec_title2=Upraviť profil vykonávania
 exec_header=Podrobnosti profilu vykonávania
@@ -113,6 +122,7 @@ exec_erruid=Chýbajúci alebo neplatný používateľ na spustenie ako
 exec_errgid=Chýbajúca alebo neplatná skupina na spustenie ako
 exec_erreuid=Chýbajúci alebo neplatný efektívny používateľ na spustenie ako
 exec_erregid=Chýbajúca alebo neplatná efektívna skupina na spustenie ako
+
 policy_title=Systémové politiky
 policy_header=Nastavenia globálnej systémovej politiky
 policy_auths=Autorizácie pre všetkých používateľov
@@ -126,16 +136,20 @@ policy_err=Uloženie systémových politík zlyhalo
 policy_eallow=Nie sú vybrané žiadne algoritmy, ktoré by umožňovali výber
 policy_eclash=Algoritmus, ktorý povolí aj odmietne, nie je možné vybrať súčasne
 policy_ecannot=Nemáte oprávnenie upravovať systémové pravidlá
+
 attr_none=Nie sú definované žiadne atribúty používateľov
 attr_nonenormal=Nie sú definovaní žiadni používatelia Unixu
 attr_nonerole=Nie sú definované žiadne dostupné úlohy
+
 help_epath=Neplatná cesta k súboru pomocníka!
 help_link=(Pomoc..)
+
 crypt___unix__=Unixová krypta
 crypt_1=BSD MD5
 crypt_2a=Flowfish BSD
 crypt_md5=Sun MD5
 crypt_rot13=ROT13
+
 log_create_user=Vytvorili sa atribúty používateľa pre $1 
 log_modify_user=Upravené atribúty používateľa pre $1 
 log_delete_user=Odstránené atribúty používateľa pre $1 
@@ -152,6 +166,7 @@ log_create_project=Vytvorený projekt $1
 log_modify_project=Upravený projekt $1 
 log_delete_project=Odstránený projekt $1 
 log_policy=Zmenené systémové pravidlá
+
 acl_roles=Môžete upravovať úlohy?
 acl_users=Môžete upravovať atribúty používateľa?
 acl_roleassign=Môže priradiť roly
@@ -166,6 +181,7 @@ acl_profs=Môžete upravovať profily?
 acl_ro=Zobraziť iba
 acl_execs=Môžete upravovať profily vykonávania?
 acl_projects=Môžete upravovať projekty?
+
 projects_title=projekty
 projects_name=názov
 projects_id=ID
@@ -184,6 +200,7 @@ projects_exceptusers=Všetci používatelia okrem $1
 projects_exceptgroups=Všetky skupiny okrem $1 
 projects_onlyusers=Iba $1 
 projects_onlygroups=Iba $1 
+
 project_title1=Vytvoriť projekt
 project_title2=Upraviť projekt
 project_header=Podrobnosti projektu a členovia
@@ -219,6 +236,7 @@ project_egroupscannot=Nie sú vybrané žiadne skupiny na vylúčenie
 project_elimit=Chýba alebo je neplatný limit v riadku $1 
 project_epool=Chýba alebo je neplatný názov fondu projektu
 project_erss=Chýba alebo je neplatná maximálna pamäť
+
 prctl_title=Kontroly zdrojov
 prctl_ok=Zobraziť limity pre:
 prctl_mode0=Spracovať s ID

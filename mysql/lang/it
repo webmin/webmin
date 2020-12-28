@@ -34,12 +34,15 @@ index_showing=Mostro i database che corrispondono a $1:
 index_emsg=Il messaggio d'errore completo è: $1
 index_jump=O modifica il database:
 index_jumpok=Apri
+
 login_err=Login non riuscito
 login_ecannot=Non sei autorizzato a configurare il login al database
 login_elogin=Login amministratore mancante
 login_epass=Nome utente amministratore o password errati
+
 stop_err=Fallimento nel fermare il database
 start_err=Fallimento nel far partire il database
+
 dbase_title=Modifica Database
 dbase_tables=Tabelle Database
 dbase_add=Crea una nuova tabella
@@ -60,12 +63,14 @@ dbase_index=Indice
 dbase_view=Vista
 dbase_addview=Crea vista
 dbase_jump=O modifica la tabella:
+
 ddrop_err=Eliminazione database non riuscita
 ddrop_title=Elimina Database
 ddrop_rusure=Sei sicuro di voler eliminare il database $1 ? $2 tabelle contenenti $3 righe di dati verranno eliminate.
 ddrop_mysql=Questo è il database master. Eliminandolo probabilmente renderai il tuo MySQL server inutilizzabile!
 ddrop_ok=Elimina Database
 ddrop_empty=Elimina solamente tutte le tabelle
+
 ddrops_err=Eliminazione del database non riuscita
 ddrops_title=Elimina database
 ddrops_rusure=Sei sicuro di voler eliminare il database $1 selezionato? $2 tabelle contenenti $3 righe saranno eliminate.
@@ -74,6 +79,7 @@ ddrops_mysql=A causa del fatto che il database principale è selezionato, la sua
 ddrops_ok=Elimina database
 ddrops_enone=Nessun database selezionato
 ddrops_ecannotdb=Non hai i permessi per eliminare il database $1
+
 table_title=Modifica Tabella
 table_title2=Crea Tabella
 table_header=Tabella $1 nel database $2
@@ -117,16 +123,19 @@ table_nextra=Con attributi Extra
 table_eautokey=Il campo autoincrementante deve essere la chiave primaria
 table_eauto=Solamente un campo può essere autoincrementante
 table_delete=Elimina i campi selezionati
+
 tdrop_err=Eliminazione tabella non riuscita
 tdrop_title=Elimina Tabella
 tdrop_rusure=Sei sicuro di voler eliminare la tabella $1 dal database $2 ? Verranno eliminate $3 righe di dati.
 tdrop_ok=Elimina Tabella
+
 tdrops_enone=Nessun oggetto selezionato da eliminare
 tdrops_err=Eliminazione dell'oggetto non riuscita
 tdrops_ok=Elimina oggetti
 tdrops_title=Elimina oggetti
 tdrops_rusure=Sei sicuro di voler eliminare i $1 oggetti selezionati nel database $2? $3 righe saranno eliminate.
 tdrops_rusure2=Sei sicuro di voler eliminare i $1 oggetti selezionati nel database $2?
+
 field_title1=Aggiungi Campo
 field_title2=Modifica Campo
 field_in=Nella tabella $1 del database $2
@@ -153,6 +162,7 @@ field_esize='$1' non è una dimensione di campo valida
 field_eenum=Nessun valore elencato inserito
 field_efield='$1' non è un nome di campo valido
 field_ekey=Campi che possono essere null non posso far parte della chiave primaria
+
 view_title=Contenuto Tabella
 view_pos=Righe dalla $1 alla $2 di $3
 view_none=Questa tabella non contiene dati
@@ -181,6 +191,7 @@ view_download=Download..
 view_keep=Non modificare
 view_set=Setta al contenuto del file..
 view_adv=Ricerca avanzata
+
 users_title=Permessi agli Utenti
 users_user=Utente
 users_host=Host
@@ -202,6 +213,7 @@ users_sync_sel=Host specifico
 users_delete=Elimina selezionati
 users_derr=Eliminazione utente non riuscita
 users_enone=Nessun utente selezionato
+
 user_title1=Creazione Utente
 user_title2=Modifica Utente
 user_header=Dettagli utente MySQL
@@ -217,6 +229,7 @@ user_perms=Permessi
 user_err=Salvataggio utente non riuscito
 user_euser=Nome utente mancante o invalido
 user_ehost=Host autorizzato(i) mancante o invalido
+
 dbs_title=Permessi sul database
 dbs_db=Database
 dbs_user=Utente
@@ -232,6 +245,7 @@ dbs_none=Nessuno
 dbs_return=permessi sul database
 dbs_derr=Eliminazione dei permessi sul database non riuscita
 dbs_enone=Nessun database selezionato
+
 db_title1=Crea permessi sul database
 db_title2=Modifica i permessi sul database
 db_header=Opzioni permesso database
@@ -246,6 +260,7 @@ db_err=Salvataggio dei permessi sul database non riuscito
 db_euser=Nome utente mancante o invalido
 db_ehost=Nome host mancante o invalido
 db_edb=Nome database mancante o invalido
+
 hosts_title=Permessi Host
 hosts_db=Database
 hosts_host=Host
@@ -257,6 +272,7 @@ hosts_add=Crea nuovi permessi host
 hosts_empty=Nessun permesso host definito
 hosts_derr=Eliminazione dei permessi dell'host non riuscita
 hosts_enone=Nessun host selezionato
+
 host_title1=Crea permessi host
 host_title2=Modifica i permessi host
 host_header=Opzioni permessi host
@@ -264,6 +280,7 @@ host_db=Database
 host_any=Qualunque
 host_host=Host
 host_perms=Permessi
+
 newdb_title=Creazione Database
 newdb_header=Opzioni nuovo database
 newdb_db=Nome database
@@ -275,6 +292,7 @@ newdb_err=Creazione database non riuscita
 newdb_edb=Nome database mancante o invalido
 newdb_ecannot=Non sei autorizzato a creare database
 newdb_ecannot2=Non hai i permessi per creare un database
+
 exec_title=Esegui SQL
 exec_header=Inserisci il comando SQL da eseguire nel database ..
 exec_old=Oppure seleziona un comando SQL precedente :
@@ -302,6 +320,7 @@ exec_edit=Modifica i precedenti
 exec_format=Formato file
 exec_ecompress=Il file SQL è compresso, ma il programma $1 necessario a decomprimerlo non è installato.
 exec_ecompress2=Decompressione non riuscita: $1
+
 tprivs_title=Permessi sulle tabelle
 tprivs_table=Tabella
 tprivs_db=Database
@@ -317,6 +336,7 @@ tprivs_return=permessi sulla tabella
 tprivs_none=Nessuno
 tprivs_derr=Eliminazione dei permessi sulla tabella non riuscita
 tprivs_enone=Nessuna tabella selezionata
+
 tpriv_title1=Crea permessi sulla tabella
 tpriv_title2=Modifica i permessi sulla tabella
 tpriv_header=Opzioni per i permessi sulla tabella
@@ -332,6 +352,7 @@ tpriv_err=Salvataggio dei permessi sulla tabella non riuscito
 tpriv_etable=Nessuna tabella selezionata
 tpriv_euser=Nome utente mancante o invalido
 tpriv_ehost=Host mancante o invalido
+
 cprivs_title=Permessi sul campo
 cprivs_field=Campo
 cprivs_table=Tabella
@@ -347,6 +368,7 @@ cprivs_return=permessi sul campo
 cprivs_none=Nessuno
 cprivs_derr=Eliminazione dei permessi sul campo non riuscita
 cprivs_enone=Nessun campo selezionato
+
 cpriv_title1=Crea permessi sul campo
 cpriv_title2=Modifica i permessi sul campo
 cpriv_header=Opzioni per i permessi sui campi
@@ -362,11 +384,13 @@ cpriv_err=Salvataggio dei permessi sul campo non riuscito
 cpriv_etable=Nessun campo selezionato
 cpriv_euser=Nome utente mancante o invalido
 cpriv_ehost=Host mancante o invalido
+
 esql=SQL $1 non riuscito : $2
 eparse=Webmin non può controllare l'output del comando $1 per via di alcuni tipi di dato del tuo database. Per risolvere questo problema devi installare i moduli Perl $2 e $3.
 edenied=Non sei autorizzato ad accedere a questo database MySQL
 perms_ecannot=Non sei autorizzato a modificare i permessi
 perms_edb=Sei autorizzato a modificare solamente i permessi dei tuoi database.
+
 acl_dbs=Database che questo utente può gestire
 acl_dall=Tutti i database
 acl_dsel=Selezionati:
@@ -386,6 +410,7 @@ acl_edonly=Può modificare i dati nelle tabella?
 acl_bnone=Non autorizzare i backup
 acl_indexes=Può visualizzare e gestire gli indici?
 acl_views=Può visualizzare e gestire le viste?
+
 log_start=Fatto partire server MySQL
 log_stop=Fermato server MySQL
 log_cnf=Configurazione del server MySQL modificata
@@ -447,6 +472,7 @@ log_execupload=Eseguiti comandi SQL dal file trasferito
 log_execfile=Eseguiti comandi SQL dal file $1
 log_importupload=Importati dati dal file trasferito
 log_importfile=Importati dati dal file $1
+
 backup_title=Backup Database
 backup_title2=Effettua il backup di tutti i database
 backup_edump=Il programma di backup per MySQL $1 non è stato trovato nel tuo sistema. Forse la <a href='$2'>configurazione del modulo</a> è errata.
@@ -497,15 +523,18 @@ backup_options=Struttura dell'informazione da escludere
 backup_compress=Formato di compressione
 backup_cnone=Nessuno
 backup_eccmd=Il formato di compressione selezionato richiede il comando $1
+
 import_title=Importazione Dati
 import_uploadout=Importazione dati da file trasferito ..
 import_fileout=Importazione dati da file $1 ..
 import_eupload=File trasferito per l'importazione mancante
 import_efile=Nome del file per l'importazione mancante
+
 adv_title=Ricerca avanzata
 adv_and=Trova i record che corrispondono a tutti i criteri:
 adv_or=Trova i record che corrispondono uno qualunque tra i criteri:
 adv_ok=Cerca adesso
+
 csv_title=Esporta in un file CSV
 csv_header=Opzioni di esportazione in CSV
 csv_dest=Destinazione dell'esportazione
@@ -524,6 +553,7 @@ csv_done=Esportazione CSV in $1 completata. Il file risultante ha una dimensione
 csv_headers=Includere i nomi delle colonne nel CSV?
 csv_cols=Colonne da includere nel file CSV
 csv_ecols=Nessuna colonna selezionata
+
 cnf_title=Configurazione del server MySQL
 cnf_efile=Il file di configurazione di MySQL $1 non è stato trovato nel tuo sistema.<br>
 cnf_header=Opzioni del server MySQL
@@ -548,6 +578,7 @@ cnf_emax_allowed_packet=Dimensione massima del pacchetto mancante o non valida
 cnf_enet_buffer_length=Dimensione del buffer di rete mancante o non valida
 cnf_emyisam_sort_buffer_size=Dimensione del buffer di ordinamento MyISAM mancante o non valida
 cnf_emax_connections=Numero massimo di connessioni mancante o non valido
+
 index_title1=Crea indice
 index_header1=Opzioni indice
 index_name=Nome indice
@@ -561,11 +592,14 @@ index_ecols=Nessun campo selezionato
 index_title2=Modifica indice
 index_header=Indice $1 nel database $2
 index_ecannot=Non hai i permessi per gestire gli indici
+
 syslog_desc=Messaggi di errore di MySQL
 syslog_logdesc=Query MySQL
+
 fdrop_err=Eliminazione dei campi non riuscita
 fdrop_enone=Nessuna selezione
 fdrop_eall=Non puoi eliminare tutti i campi da una tabella!
+
 view_title1=Crea vista
 view_title2=Modifica vista
 view_header1=Vedi i dettagli
@@ -588,6 +622,7 @@ view_equery=Query SQL mancante
 view_local=Solo questa vista
 view_nocheck=Nessuno
 view_ecannot=Non hai i permessi per gestire le viste
+
 procs_title=Connessioni al database
 procs_user=Nome utente
 procs_host=Host client
@@ -596,14 +631,17 @@ procs_query=Query in esecuzione
 procs_kill=Interrompi le connessioni selezionate
 procs_ecannot=Non hai i permessi per visualizzare le connessioni al database
 procs_none=Non ci sono connessioni al database al momento.
+
 kill_err=Interruzione delle connessioni al database non riuscita
 kill_ecannot=Non hai i permessi per gestire le connessioni al database
 kill_enone=Nessuna selezione
+
 vars_title=Variabili di sistema di MySQL
 vars_ecannot=Non hai i permessi per modificare le variabili di sistema
 vars_name=Nome variabile
 vars_value=Valore corrente
 vars_edit=Modifica selezionati
+
 compat_no_key_options=Opzioni chiave
 compat_no_table_options=Opzioni tabella
 compat_no_field_options=Opzioni campo

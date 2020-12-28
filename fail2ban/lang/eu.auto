@@ -12,10 +12,12 @@ index_restart=Berrabiarazi Fail2Ban zerbitzaria
 index_restartdesc=Egin klik botoi honetan uneko konfigurazioa Fail2Ban zerbitzaria berrabiarazteko.
 index_return=moduluaren aurkibidea
 index_header=Fail2Ban modulua
+
 check_edir=$1 konfigurazio direktorioa ez da existitzen
 check_econf=$1 -eko $2 konfigurazio fitxategia ez da existitzen
 check_eclient=$1 bezeroaren komandoa ez da aurkitu
 check_eserver=Ez da zerbitzariaren $1 komandoa aurkitu
+
 filters_title=Egin iragazkiak
 filters_name=Iragazkiaren izena
 filters_re=Adierazpen erregularra
@@ -25,6 +27,7 @@ filters_return=iragazkien zerrenda
 filters_derr=Ezin izan da iragazkiak ezabatu
 filters_enone=Ez da hautatu
 filters_einuse=$1 iragazkia ezin da ezabatu kartzelek erabiltzen duten moduan : $2 
+
 filter_title1=Sortu iragazkia
 filter_title2=Editatu iragazkia
 filter_desc=Erabili <i>&lt;HOST&gt;</i> ohiko adierazpenetan ostalari izena edo IP helbidea agertu behar diren.
@@ -39,6 +42,7 @@ filter_ename=Iragazkiaren izen falta edo baliogabea
 filter_eclash=Iragazki izena dagoeneko erabiltzen ari da
 filter_efail=Ez da sartu adierazpenarekin bat egiteko ohiko adierazpenik
 filter_einuse=Iragazki hau ezin da ezabatu kartzelek erabiltzen baitute : $1 
+
 actions_title=Partiduen ekintzak
 actions_name=Ekintzaren izena
 actions_ban=Debekatzeko agindua
@@ -48,6 +52,7 @@ actions_return=ekintzen zerrenda
 actions_derr=Ezin izan dira ekintzak ezabatu
 actions_enone=Ez da hautatu
 actions_einuse=$1 ekintza ezin da ezabatu kartzelek erabiltzen duten moduan : $2 
+
 action_title1=Sortu Partiduen Ekintza
 action_title2=Editatu Partidaren ekintza
 action_header=Lotu ekintzaren xehetasunak
@@ -64,6 +69,7 @@ action_ban=IP debekatzeko agindua
 action_unban=IP bat debekatzeko agindua
 action_desc=<i>&lt;ip&gt;</i> IP helbidea debekatuta egongo da.
 action_einuse=Ekintza hau ezin da ezabatu kartzelek erabiltzen duten moduan : $1 
+
 jails_title=Iragazkiaren ekintza kartzelak
 jails_add=Gehitu kartzela berria.
 jails_name=Espetxearen izena
@@ -76,6 +82,7 @@ jails_defdesc=Editatu lehen aipatutako kartzela guztietan aplikatzen diren ezarp
 jails_return=espetxeen zerrenda
 jails_derr=Ezin izan dira kartzelak ezabatu
 jails_enone=Ez da hautatu
+
 jail_title1=Kartzela sortu
 jail_title2=Kartzela editatu
 jail_header=Iragazi ekintza kartzelako xehetasunak
@@ -115,13 +122,16 @@ jail_banaction=Aplikatu beharreko ekintza lehenetsia
 jail_defprotocol=Ekintzen protokolo lehenetsia
 jail_edestemail=Falta edo jakinarazpen helbide elektroniko lehenetsia falta da
 jail_eignoreip=IP helbidea baliogabea da jaramonik egin gabe
+
 jaildef_title=Lehenetsitako kartzelen aukerak
 jaildef_header=Espetxe guztientzako lehenespenak
 jaildef_err=Ezin izan da kartzela-aukera lehenetsiak gorde
 jaildef_egone=Ez da DEFAULT espetxerik aurkitu!
+
 start_err=Huts egin du zerbitzaria abiaraztean
 stop_err=Ezin izan da zerbitzaria gelditu
 restart_err=Ezin izan da zerbitzaria berrabiarazi
+
 log_create_filter=$1 iragazkia sortu da
 log_update_filter=$1 iragazkia aldatu da
 log_delete_filter=$1 iragazkia ezabatu da
@@ -139,6 +149,7 @@ log_atboot=Fail2Ban gaituta dago abiaraztean
 log_delboot=Desgaituta Fail2Ban abioan
 log_manual=$1 konfigurazio fitxategia editatua
 log_jaildef=Aldatutako kartzela-aukera lehenetsiak
+
 config_title=Konfigurazio globala
 config_edef=Ez da Definizioaren atalik aurkitu fitxategian.
 config_header=Konfiguratu Fail2Ban-en ezarpenak
@@ -151,10 +162,12 @@ config_socket=Zerbitzariarekin komunikatzeko socket
 config_err=Huts egin du konfigurazio globala gordetzean
 config_elogtarget=Erregistroak idazteko fitxategiak bide absolutua izan behar du
 config_esocket=Socket fitxategiak bide absolutua izan behar du
+
 manual_title=Editatu Konfiguratu fitxategiak
 manual_desc=Editatu beharreko fitxategia:
 manual_ok=Ados
 manual_efile=Hautatutako fitxategia ez da Fail2Ban konfigurazioaren barruan!
 manual_err=Ezin izan da konfigurazio fitxategia editatu
 manual_edata=Ez da konfiguratutako fitxategiaren edukia sartu
+
 syslog_logtarget=Fail2Ban ekintzaren erregistroa

@@ -39,7 +39,9 @@ index_thost=Nama hos
 index_tdesc=Penerangan
 index_tver=Versi
 index_ttype=Jenis OS
+
 this_server=pelayan ini
+
 add_title=Tambah Pelayan
 add_msg=Menambah $1 ..
 add_gmsg=Menambah pelayan dalam kumpulan $1 ..
@@ -49,6 +51,7 @@ add_echeck=Server $1 tidak mempunyai modul konfigurasi Usermin
 add_echeck2=Server $1 tidak mempunyai modul Pengguna Usermin
 add_eversion=Pelayan $1 tidak menjalankan versi Usermin $2 atau lebih tinggi.
 add_ok=Menambah $1 dengan $2 modul dan $3 tema.
+
 refresh_title=Segarkan Senarai Modul dan Tema
 refresh_header=Minta semula modul dan senarai tema dari semua pelayan ..
 refresh_header4=Minta semula modul dan senarai tema dari ahli $2 ..
@@ -64,6 +67,7 @@ refresh_g2=Dikeluarkan $1 kumpulan.
 refresh_done=.. selesai
 refresh_del=Dihapus $1 dari senarai pelayan
 refresh_failed=Gagal menyegarkan $1 : $2 
+
 host_title=Pelayan Terurus
 host_header=Butiran pelayan Usermin yang dikendalikan
 host_name=Nama hos
@@ -81,6 +85,7 @@ host_header_u=Pengguna Usermin
 host_header_g=Kumpulan Usermin
 host_return=butiran pelayan
 host_version2=Versi
+
 edit_title_mod=Edit Modul
 edit_title_theme=Edit Tema
 edit_header_mod=Butiran modul Usermin dari $1 
@@ -103,6 +108,7 @@ edit_codes=Dari ujian $1
 edit_acl=Edit ACL untuk
 edit_uacl=Pengguna $1 pada $2 
 edit_gacl=Kumpulan $1 pada $2 
+
 install_err=Gagal memasang modul
 install_title=Pasang Modul
 install_elocal=Tiada fail tempatan yang diberikan
@@ -123,6 +129,7 @@ do_failed=Gagal memasang pada $1 : $2
 do_success_mod=Modul terpasang $2 pada $1 
 do_success_theme=Tema dipasang $2 pada $1 
 do_done=.. selesai
+
 delete_err=Gagal memadam modul $1 
 delete_epack=Modul $1 tidak wujud
 delete_title=Padamkan Modul
@@ -140,6 +147,7 @@ delete_edepends=Modul (s) $1 bergantung kepadanya.
 delete_egone=Modul tidak wujud lagi
 delete_esuccess=Berhasil dipadamkan dari $1 : $2 
 delete_acls=Buang dari pengguna dan tetapkan semula tetapan kawalan akses?
+
 user_title1=Buat Pengguna Usermin
 user_header1=Butiran pengguna Usermin baru
 user_name=Nama pengguna
@@ -198,11 +206,13 @@ user_all=&lt;semua tuan rumah&gt;
 user_donthave=&lt;host yang tidak memilikinya&gt;
 user_have=&lt;host yang memilikinya&gt;
 user_ofgroup=Ahli $1 
+
 udelete_title=Padam Pengguna
 udelete_doing=Memadam pengguna $1 dari semua tuan rumah ..
 udelete_success=Berhasil dipadamkan dari $1 
 udelete_failed=Gagal memadam dari $1 : $2 
 udelete_done=.. selesai
+
 group_title1=Buat Kumpulan
 group_header1=Butiran kumpulan Usermin baru
 group_name=Nama kumpulan
@@ -230,6 +240,7 @@ group_failed2=Gagal mengemas kini kumpulan pada $1 : $2
 group_return=butiran kumpulan
 group_nomems=Tiada ahli
 group_servers=Pelayan (s) untuk membuat
+
 gdelete_title=Padamkan Kumpulan
 gdelete_desc=Adakah anda pasti mahu memadamkan kumpulan $1 dan pengguna penggunanya $2 dari semua tuan rumah?
 gdelete_ok=Padamkan Kumpulan
@@ -238,6 +249,7 @@ gdelete_success=Berhasil dipadamkan dari $1
 gdelete_failed=Gagal memadam dari $1 : $2 
 gdelete_done=.. selesai
 gdelete_esub=Kumpulan ini mempunyai subkumpulan $1, dan tidak boleh dipadamkan.
+
 acl_title=Kawalan Akses Modul
 acl_title2=Untuk pengguna $1 dalam $2 pada $3 
 acl_title3=Untuk kumpulan $1 dalam $2 pada $3 
@@ -256,6 +268,7 @@ acl_doing2=Menetapkan kawalan akses untuk $1 pada $2 ..
 acl_success=Berjaya menetapkan kawalan akses pada $1 
 acl_failed=Gagal menetapkan kawalan akses pada $1 : $2 
 acl_done=.. selesai
+
 sync_title=Menyegerakkan Pelayan
 sync_desc=Borang ini membolehkan anda untuk mencipta pengguna dan kumpulan Usermin pada pelayan yang saat ini tidak mempunyai mereka, untuk membawa penyegerakan akaun di semua pelayan dalam kumpulan anda.
 sync_hosts=Pelayan untuk menyegerakkan
@@ -279,6 +292,7 @@ sync_gcreate=Menambah kumpulan Usermin $1 ..
 sync_acl=Menyalin fail ACL untuk $1 ..
 sync_test=Hanya tunjukkan apa yang akan dilakukan?
 sync_restart=Mulakan semula Usermin ..
+
 upgrade_title=Tingkatkan Usermin
 upgrade_header=Meningkatkan Usermin pada semua tuan rumah ..
 upgrade_header2=Meningkatkan Usermin pada $1 ..
@@ -297,6 +311,7 @@ upgrade_failed=Gagal memasang pada $1 : $2
 upgrade_done=.. selesai
 upgrade_efast=Hanya pelayan yang menggunakan mod RPC yang cepat boleh dinaik taraf
 upgrade_ereconn=Gagal menyambung semula ke Usermin selepas naik taraf!  : $1 
+
 update_title=Kemas kini Modul
 update_header=Mengemas kini modul semua tuan rumah ..
 update_header5=Mengemas kini modul pada $2 ..

@@ -12,6 +12,7 @@ index_eprog=Is-server NFS eżegwibbli ma nstabx fis-sistema tiegħek. Il-pakkett
 index_delete=Ħassar Esportazzjonijiet magħżula
 index_disable=Iddiżattiva l-Għażla
 index_enable=Attiv magħżula
+
 edit_title=Editja Esportazzjoni
 create_title=Oħloq Esportazzjoni
 edit_details=Dettalji tal-esportazzjoni
@@ -65,6 +66,7 @@ edit_sec_krb5i=Integrità Kerberos
 edit_sec_krb5p=Il-privatezza ta 'Kerberos
 edit_sec_lipkey=LIPKEY
 edit_sec_spkm=SPKM
+
 save_err=Ma rnexxielux jiffranka l-esportazzjoni
 save_edir=Direttorju '$1' ma jeżistix
 save_epfs=Il-passaġġ tal-psewdossistema ta 'fajls "$1" ma jidhirx bħala mogħdija assoluta
@@ -78,6 +80,7 @@ save_pfs="$1" huwa diġà esportat bħala direttorju
 save_create_dir=Ma nistax noħolqu d-direttorju '$1'
 save_eanonuid=Username ta 'aċċess anonimu mhux validu
 save_eanongid=Isem tal-grupp ta 'aċċess anonimu mhux validu
+
 exports_webnfs=Klijenti WebNFS
 exports_ngroup=Netgroup $1 
 exports_net=Netwerk $1 
@@ -85,6 +88,7 @@ exports_all=Kulħadd
 exports_hosts=Ospitanti $1 
 exports_host=Ospitanti $1 
 exports_gss=Netwerk awtentikat: $1 
+
 log_modify=Esportazzjoni NFS modifikata $1 
 log_modify_l=Esportazzjoni NFS modifikata $1 sa $2 
 log_delete=Esportazzjoni NFS imħassra $1 

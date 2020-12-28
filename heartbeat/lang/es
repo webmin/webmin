@@ -5,6 +5,7 @@ index_start=Arrancar Monitor Heartbeat
 index_startmsg=Haz click en este botón para arrancar el proceso del monitor de Heartbeat. Esto activará el servicio automático de no-fallo en tu sistema con la configuración en curso.
 index_apply=Aplicar Cambios
 index_applymsg=Haz click en este botón para forzar que el proceso de monitor Heartbeat en ejecución recarge la configuración en curso.
+
 conf_title=Opciones de Configuración
 conf_header=Opciones de configuración de Heartbeat
 conf_baud=Velocidad en baudios para puerto serial
@@ -30,6 +31,7 @@ conf_ethisnode=Esta máquina $1 no está en la lista de máquinas en grupo
 conf_elogfile=Nombre de archivo de diario falta o es inválido
 conf_einitdead=Tiempo muertpo inicial falta o es inválido
 conf_einitdead2=El tiempo muerto inicial debe de ser al menos dos veces el tiempo antes que un nodo se considere muerto
+
 res_title=Recursos de Grupo
 res_node=Nodo Primario
 res_ips=Direcciones IP
@@ -38,6 +40,7 @@ res_none=Ninguno
 res_nores=No se han definido recursos de grupo en tu sistema.
 res_add=Añadir un recurso de grupo
 res_return=lista de recursos
+
 node_create=Añadir Recurso de Grupo
 node_edit=Editar Recurso de Grupo
 node_header=Detalles de recurso de grupo
@@ -54,6 +57,7 @@ node_enone=Nodo primario falta o es inválido
 node_eip='$1' no es una dirección IP válida
 node_ecidr='$1' no es un CIDR válido
 node_ebroad='$1' no es una dirección de difusión válida
+
 auth_title=Claves de Autenticación
 auth_header=Autenticación de nodo de grupo
 auth_mode=Modo de autenticación
@@ -63,6 +67,8 @@ auth_md5=MD5 con clave de acceso
 auth_err=No pude salvar claves de autenticación
 auth_emd5=Clave de acceso MD5 falta o es inválida
 auth_esha1=Clave de acceso SHA1 falta o es inválida
+
 start_err=No pude arrancar heartbeat
+
 apply_err=No pude aplicar cambios
 apply_epid=El proceso ya no se está ejecutando

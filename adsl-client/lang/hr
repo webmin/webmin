@@ -16,6 +16,7 @@ index_cancel=Prekini Vezu
 index_canceldesc=ADSl klijent trenutno pokušava uspostaviti vezu. Kliknite na ovu tipku da bi ste zaustavili pokušaj s naredbom $1.
 index_cdemand=Prekini Na-Zahtjev
 index_cdemanddesc=ADSL klijent trenutno čeka na vezu na zahtjev. Kliknite na ovu tipku da bi ste ga zaustavili naredbom $1.
+
 index_header=ADSL opcije postavki klijenta
 index_desc=Naredne postavke dodaj novim ASDL vezama započetim na sustavu. Ako ih izmjenite, veza mora biti prekinuta i ponovno uspostavljena da bi promjene imale učinak.
 index_eth=Ethernet sučelje
@@ -36,11 +37,13 @@ index_fw_standalone=Za pojedinačni host
 index_fw_masquerade=Za NAT ulaz
 index_connect=Vrijeme pokušaja uspostave veze
 index_forever=Zauvijek
+
 start_err=Neuspjelo uspostavljanje ADSL veze
 start_title=Uspostavi ADSL
 start_ip=ADSL veza je uspostavljena s IP $1 adresom.
 start_demand=Uspostava veze na zahtjev je onemogućena, zato će Vaša ADSL veza biti uspostavljena jedino onda kada to bude potrebno.
 start_bg=ADSL veza nije započeta unutar 20 sekundi. ADSL klijent nastavit pokušavati uspostaviti vezu u pozadini dok ne uspije.
+
 save_err=Neuspjeli pokušaj da se sačuva ADSL konfiguracija
 save_eeth=Nepostojeće ili neispravnog izgleda ethernet sučelje
 save_etimeout=Nepostojeće ili neispravno vrijeme prekida na zahtjev
@@ -49,10 +52,12 @@ save_econnect=Nepostojeće ili neispravno vrijeme prekida veze
 save_emss=Nepostojeći ili neispravan maksimum veličine paketa
 save_title=Sačuvaj Konfiguracij
 save_desc=Vas ADSL klijent postavke su uspiješno sačuvane, ali neće biti korištene do ponovne uspostave veze.
+
 stop_err=Neuspjeli pokušaj prekida ADSL veze
 stop_title=Prekini ADSL
 stop_ok=Vaša ADSL veza uspješno je prekinuta.
 stop_failed=Vaša ADSL veza je još uvijek aktivna iz nekog razloga!
+
 log_save=Postavke klijenta sačuvane
 log_stop=Ugašen ADSL
 log_start=Pokrenut ADSL

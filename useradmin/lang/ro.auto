@@ -51,11 +51,13 @@ index_mass=Ștergeți utilizatorii selectați
 index_mass2=Dezactivare selectat
 index_mass3=Activați selectat
 index_gmass=Ștergeți grupuri selectate
+
 search_title=rezultatele cautarii
 search_notfound=Nu s-au găsit utilizatori potriviți
 search_found=S-au găsit $1 utilizatori potriviți ..
 search_gnotfound=Nu s-au găsit grupuri potrivite
 search_gfound=Găsite $1 grupuri potrivite ..
+
 uedit_title=Editare utilizator
 uedit_title2=Creaza utilizator
 uedit_details=Detalii despre utilizator
@@ -133,6 +135,7 @@ uedit_uid_calc=Calculat
 uedit_disabled=Conectare temporară dezactivată
 uedit_sys=Defectiune de sistem
 uedit_clone=Utilizator clonă
+
 usave_err=Nu a reușit salvarea utilizatorului
 usave_eedit=Nu puteți edita acest utilizator
 usave_ecreate=Nu puteți crea utilizatori noi
@@ -186,6 +189,7 @@ usave_epasswd_same=Parola conține sau este identică cu numele de utilizator
 usave_epasswd_mindays=Parola a fost schimbată cu $1 zile în urmă
 usave_epasswd_cmd=Comanda de validare a parolei a eșuat
 usave_eothers=Utilizatorul a fost salvat cu succes, dar a apărut o eroare într-un alt modul : $1
+
 gedit_title=Editează grupul
 gedit_title2=Creați grup
 gedit_details=Detalii grup
@@ -208,6 +212,7 @@ gedit_selu=Utilizatori în grup
 gedit_pri=Membrii grupului primar
 gedit_prinone=Niciun utilizator nu are acest grup ca principal
 gedit_clone=Grup Clonă
+
 gsave_err=Nu a reușit să salveze grupul
 gsave_eedit=Nu puteți edita acest grup
 gsave_ecreate=Nu puteți crea grupuri noi
@@ -224,6 +229,7 @@ usave_egidused=Grupul $1 utilizează deja GID $2
 gsave_egidused2=GID este deja în uz
 usave_efromroot=Nu puteți muta directorul de acasă din /
 usave_etoroot=Nu puteți muta directorul de acasă în /
+
 logins_title=Logare înregistrate
 logins_head=Logare înregistrate pentru $1
 logins_from=Autentificare de la
@@ -236,6 +242,7 @@ logins_none=Nu au fost înregistrate autentificări
 logins_elist=Nu aveți voie să listați autentificările
 logins_elistu=Nu aveți voie să listați conectările pentru „$1”
 logins_local=Local
+
 udel_title=Ștergeți utilizator
 udel_err=Nu a reușit ștergerea utilizatorului
 udel_enum=Număr de utilizator nevalid
@@ -258,6 +265,7 @@ udel_del2=Ștergeți directorul utilizator și acasă
 udel_others=AVERTIZARE! Directorul principal $1 conține $2 fișiere deținute de alți utilizatori.
 udel_dothers=Ștergeți utilizatorul din alte module?
 udel_root=Avertizare! Dacă utilizatorul root este șters, este posibil să nu vă puteți administra sistemul în viitor.
+
 gdel_title=Ștergeți grupul
 gdel_err=Nu a reușit ștergerea grupului
 gdel_eroot=Nu aveți voie să ștergeți grupuri de sistem (cele cu un GID mai mic sau egal cu 10).
@@ -271,6 +279,7 @@ gdel_sure=Sigur doriți să ștergeți grupul $1?
 gdel_del=Ștergeți grupul
 gdel_dothers=Ștergeți grupul din alte module?
 gdel_other=Ștergerea din alte module ..
+
 many_title=Creați mai mulți utilizatori
 many_desc=Acest formular vă permite să creați mulți utilizatori simultan, fie dintr-un fișier text încărcat, fie local. Fiecare linie din fișier specifică un utilizator în următorul format:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -294,6 +303,7 @@ many_eshell=Shell incorect la linia $1 : $2
 many_emkdir=Nu a reușit să creeze directorul principal $1 : $2 
 many_egtaken=Numele grupului folosit deja la linia $1 : $2 
 many_ok=Utilizator creat $1
+
 acl_uedit=Utilizatori Unix care pot fi editați
 acl_uedit_all=Toți utilizatorii
 acl_uedit_none=Fără utilizatori
@@ -353,6 +363,7 @@ acl_udelete=Pot șterge utilizatorii?
 acl_gdelete=Se pot șterge grupuri?
 acl_urename=Pot redenumi utilizatorii?
 acl_grename=Poate redenumi grupuri?
+
 log_urename=Redenumit utilizator $1 în $2
 log_umodify=Utilizator modificat $1
 log_ucreate=Utilizator creat $1
@@ -371,6 +382,7 @@ log_ugbatch=Fișierul de grup încărcat executat
 log_ugbatch_l=Fișierul de grup încărcat executat ($1 creat, $2 modificat, $3 șters)
 log_delete_users=S-au șters utilizatorii $1
 log_delete_groups=Grupurile $1 șterse
+
 batch_title=Executați fișierul de lot
 batch_ecannot=Nu puteți utiliza formularul de fișier lot
 batch_desc=Acest formular vă permite să creați, să modificați sau să ștergeți mulți utilizatori simultan dintr-un fișier text încărcat sau local. Fiecare linie din fișier specifică o acțiune de efectuat, în funcție de primul său câmp. Formate de linie sunt :
@@ -429,12 +441,14 @@ batch_eexpire=Ziua de expirare nevalidă pe linia $1 : $2
 batch_echange=Ziua de schimbare a parolei nevalide pe linia $1 : $2 
 batch_instr=Instrucțiuni și formatul lotului
 batch_header=Opțiuni de creare, actualizare și ștergere a lotului
+
 who_title=Utilizatori conectați
 who_user=Utilizator Unix
 who_tty=TTY
 who_when=Autentificat la
 who_from=Conectat de la
 who_none=În prezent, niciun utilizator nu este conectat.
+
 export_title=Exportați fișierul în lot
 export_desc=Acest formular vă permite să creați un fișier de lot care conține unii sau toți utilizatorii disponibili pe sistem. Fișierul poate fi utilizat pe pagina Execute Batch File din alt sistem pentru a re-crea utilizatorii exportați, presupunând că acesta folosește formatul de fișier lot selectat.
 export_header=Opțiuni de exportare a utilizatorilor în lot
@@ -455,6 +469,7 @@ export_done=Exportați cu succes $1 către fișierul $2 ($3).
 export_pft=Formatul de fișier pentru lot
 export_who=Utilizatori pentru a exporta
 export_ecannot=Nu aveți voie să exportați utilizatori
+
 gexport_title=Exportați fișierul de loturi pentru grupuri
 gexport_desc=Acest formular vă permite să creați un fișier de lot care conține unele sau toate grupurile disponibile pe sistem. Fișierul poate fi utilizat pe pagina Execute Group Batch File din alt sistem pentru a crea din nou grupurile exportate.
 gexport_header=Opțiuni de export pentru grupuri de lot
@@ -463,6 +478,7 @@ gexport_ecannot=Nu aveți voie să exportați grupuri
 gexport_err=Eroare la exportul fișierului lot de grup
 gexport_egid=Primul GID nu este valid
 gexport_egid2=Al doilea GID este nevalid
+
 pft_0=Doar fișier <tt>passwd</tt> clasic
 pft_1=Fișierul BSD <tt>master.passwd</tt>
 pft_2=Fișierele standard <tt>passwd</tt> și <tt>shadow</tt>
@@ -470,6 +486,7 @@ pft_3=Unixware <tt>passwd</tt> fișier
 pft_4=Fișiere AIX <tt>passwd</tt> și <tt>securitate</tt>
 pft_5=OpenServer <tt>passwd</tt> și scurte fișiere <tt>shadow</tt>
 pft_6=Baza de date MacOS NetInfo
+
 umass_title=Ștergeți utilizatorii
 umass_err=Nu a reușit să ștergeți utilizatorii
 umass_sure=Sigur doriți să ștergeți $1 utilizatorii selectați? Directorii lor de acasă conțin fișiere $2.
@@ -481,6 +498,7 @@ umass_del1=Ștergeți utilizatorii
 umass_del2=Ștergeți utilizatorii și directorii de acasă
 umass_eroot=Nu aveți voie să ștergeți utilizatorii sistemului (cei cu un UID mai mic sau egal cu 10).
 umass_doing=Ștergerea utilizatorului $1 ..
+
 gmass_title=Ștergeți grupuri
 gmass_err=Nu a reușit ștergerea grupurilor
 gmass_sure=Sigur doriți să ștergeți grupurile selectate $1?
@@ -490,16 +508,19 @@ gmass_del=Ștergeți grupuri
 gmass_eroot=Nu aveți voie să ștergeți grupuri de sistem (cele cu un GID mai mic sau egal cu 10).
 gmass_doing=Ștergerea grupului $1 ..
 gmass_eprimary=Grupul $1 nu poate fi șters, deoarece este grupul principal de utilizatori $2.
+
 dmass_title=Dezactivați utilizatorii
 dmass_sure=Sigur doriți să dezactivați utilizatorii selectați $1? Acestea pot fi reactivate ulterior fără pierderea parolelor sau a datelor lor.
 dmass_dis=Dezactivați utilizatorii
 dmass_pass=Blocarea temporară a parolei ..
 dmass_doing=Dezactivarea utilizatorului $1 ..
 dmass_already=.. deja dezactivat!
+
 emass_title=Activați utilizatorii
 emass_pass=Deblocarea parolei ..
 emass_doing=Activarea utilizatorului $1 ..
 emass_already=.. deja activat!
+
 gbatch_title=Executați fișierul de lot de grup
 gbatch_ecannot=Nu puteți utiliza formularul de fișier pentru loturi de grup
 gbatch_desc=Acest formular vă permite să creați, să modificați sau să ștergeți multe grupuri simultan dintr-un fișier text încărcat sau local. Fiecare linie din fișier specifică o acțiune de efectuat, în funcție de primul său câmp. Formate de linie sunt :

@@ -10,8 +10,10 @@ index_onadd=Unix ユーザが追加されたときにサーバに PPP アカウ�
 index_onchange=Unix ユーザが変更されたときにサーバに PPP アカウントを変更
 index_ondelete=Unix ユーザが削除されたときにPPP アカウントを削除
 index_apply=適用
+
 secrets_title=PPP アカウント
 secrets_return=インデックス
+
 edit_secret_etitle=PPP アカウントの編集
 edit_secret_ctitle=PPP アカウントの作成
 edit_secret_acc=PPP アカウント
@@ -31,8 +33,10 @@ edit_secret_alist=リストされたアドレスを許可..
 edit_secret_save=保存
 edit_secret_del=削除
 edit_secret_return=アカウント リスト
+
 save_secret_esave=アカウントを保存できませんでした
 save_secret_enoip='$1' は無効なアドレスです
+
 log_create=PPP ユーザ $1 を作成しました
 log_modify=PPP ユーザ $1 を変更しました
 log_delete=PPP ユーザ $1 を削除しました

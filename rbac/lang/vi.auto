@@ -1,5 +1,6 @@
 index_euser=Không tìm thấy tệp cấu hình RBAC $1 trên hệ thống của bạn. Có thể RBAC chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> không chính xác.
 index_return=chỉ số mô-đun
+
 users_title=Thuộc tính người dùng
 users_user=tên tài khoản
 users_profiles=Hồ sơ được cấp
@@ -10,6 +11,7 @@ users_return=danh sách thuộc tính người dùng
 users_type=Kiểu
 users_role=Vai trò
 users_project=Dự án
+
 user_title1=Tạo thuộc tính người dùng
 user_title2=Chỉnh sửa thuộc tính người dùng
 user_header=Các thuộc tính được cấp cho người dùng Unix
@@ -35,6 +37,7 @@ user_eauth='$1' không phải là ủy quyền hợp lệ
 user_ecannot=Bạn không được phép chỉnh sửa người dùng này
 user_erole=Bạn không được phép gán vai trò '$1'
 user_eprof=Bạn không được phép gán hồ sơ '$1'
+
 auths_title=Ủy quyền
 auths_name=Tên ủy quyền
 auths_desc=Sự miêu tả
@@ -42,8 +45,10 @@ auths_none=Không có ủy quyền đã được xác định nào.
 auths_add=Thêm một ủy quyền mới.
 auths_return=danh sách ủy quyền
 auths_ecannot=Bạn không được phép chỉnh sửa ủy quyền
+
 authc_name=Ủy quyền
 authc_desc=Sự miêu tả
+
 auth_title1=Tạo ủy quyền
 auth_title2=Chỉnh sửa ủy quyền
 auth_header=Chi tiết đặc quyền ủy quyền
@@ -57,6 +62,7 @@ auth_edesc=Mô tả dài không hợp lệ
 auth_eclash=Một ủy quyền có cùng tên đã tồn tại
 auth_einuseu=Ủy quyền này được sử dụng bởi người dùng $1 và do đó không thể xóa được
 auth_einusep=Ủy quyền này được sử dụng bởi hồ sơ $1 và do đó không thể xóa
+
 profs_title=Hồ sơ
 profs_name=Tên hồ sơ
 profs_desc=Sự miêu tả
@@ -65,6 +71,7 @@ profs_none=Không có hồ sơ đã được xác định.
 profs_add=Thêm một hồ sơ mới.
 profs_return=danh sách hồ sơ
 profs_ecannot=Bạn không được phép chỉnh sửa hồ sơ
+
 prof_title1=Tạo hồ sơ
 prof_title2=Chỉnh sửa hồ sơ
 prof_header=Chi tiết hồ sơ ủy quyền
@@ -81,6 +88,7 @@ prof_einuseu=Hồ sơ này được sử dụng bởi người dùng $1 và do �
 prof_einusep=Hồ sơ này được sử dụng bởi hồ sơ $1 và vì vậy không thể xóa
 prof_einusee=Hồ sơ này có $1 hồ sơ thực hiện liên quan và do đó không thể xóa
 prof_none=Không có hồ sơ có sẵn
+
 execs_title=Hồ sơ thực hiện
 execs_name=Hồ sơ
 execs_policy=Chính sách bảo mật
@@ -92,6 +100,7 @@ execs_none=Không có hồ sơ thực hiện đã được xác định.
 execs_add=Thêm một hồ sơ thực hiện mới.
 execs_return=danh sách hồ sơ thực hiện
 execs_ecannot=Bạn không được phép chỉnh sửa hồ sơ thực hiện
+
 exec_title1=Tạo hồ sơ thực thi
 exec_title2=Chỉnh sửa hồ sơ thực thi
 exec_header=Chi tiết hồ sơ thực hiện
@@ -113,6 +122,7 @@ exec_erruid=Người dùng bị thiếu hoặc không hợp lệ để chạy nh
 exec_errgid=Nhóm thiếu hoặc không hợp lệ để chạy như
 exec_erreuid=Thiếu hoặc không hợp lệ người dùng hiệu quả để chạy như
 exec_erregid=Nhóm thiếu hoặc không hiệu quả để chạy như
+
 policy_title=Chính sách hệ thống
 policy_header=Cài đặt chính sách hệ thống toàn cầu
 policy_auths=Ủy quyền cho tất cả người dùng
@@ -126,16 +136,20 @@ policy_err=Không thể lưu chính sách hệ thống
 policy_eallow=Không có thuật toán cho phép chọn
 policy_eclash=Thuật toán cho phép và không dùng cả hai không thể được chọn cùng một lúc
 policy_ecannot=Bạn không được phép chỉnh sửa chính sách hệ thống
+
 attr_none=Không có thuộc tính người dùng được xác định
 attr_nonenormal=Không có người dùng Unix được xác định
 attr_nonerole=Không có vai trò khả dụng được xác định
+
 help_epath=Đường dẫn tệp trợ giúp không hợp lệ!
 help_link=(Cứu giúp..)
+
 crypt___unix__=Mật mã Unix
 crypt_1=BSD MD5
 crypt_2a=Dòng chảy BSD
 crypt_md5=CN MD5
 crypt_rot13=ROT13
+
 log_create_user=Đã tạo thuộc tính người dùng cho $1 
 log_modify_user=Thuộc tính người dùng được sửa đổi cho $1 
 log_delete_user=Đã xóa thuộc tính người dùng cho $1 
@@ -152,6 +166,7 @@ log_create_project=Tạo dự án $1
 log_modify_project=Dự án đã sửa đổi $1 
 log_delete_project=Đã xóa dự án $1 
 log_policy=Thay đổi chính sách hệ thống
+
 acl_roles=Có thể chỉnh sửa vai trò?
 acl_users=Có thể chỉnh sửa thuộc tính người dùng?
 acl_roleassign=Có thể phân công vai trò
@@ -166,6 +181,7 @@ acl_profs=Có thể chỉnh sửa hồ sơ?
 acl_ro=Chỉ xem
 acl_execs=Có thể chỉnh sửa hồ sơ thực hiện?
 acl_projects=Có thể chỉnh sửa dự án?
+
 projects_title=Dự án
 projects_name=Tên
 projects_id=TÔI
@@ -184,6 +200,7 @@ projects_exceptusers=Tất cả người dùng ngoại trừ $1
 projects_exceptgroups=Tất cả các nhóm trừ $1 
 projects_onlyusers=Chỉ 1
 projects_onlygroups=Chỉ 1
+
 project_title1=Tạo dự án
 project_title2=Chỉnh sửa dự án
 project_header=Chi tiết dự án và thành viên
@@ -219,6 +236,7 @@ project_egroupscannot=Không có nhóm để loại trừ được chọn
 project_elimit=Giới hạn thiếu hoặc không hợp lệ trong hàng $1 
 project_epool=Tên nhóm dự án bị thiếu hoặc không hợp lệ
 project_erss=Bộ nhớ tối đa bị thiếu hoặc không hợp lệ
+
 prctl_title=Kiểm soát tài nguyên
 prctl_ok=Hiển thị giới hạn cho:
 prctl_mode0=Xử lý với ID

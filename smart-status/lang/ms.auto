@@ -25,6 +25,7 @@ index_family=Keluarga model
 index_serial=Nombor siri
 index_capacity=Kapasiti
 index_norm=Dirangka:
+
 monitor_type=Cek SMART Drive
 monitor_type2=SSD Wearout
 monitor_drive=Pandu untuk memeriksa
@@ -40,14 +41,17 @@ monitor_wearlevel=Gagal jika tahap memakai jatuh di bawah
 monitor_ewearlevel=Peratusan paras haus tidak sah
 monitor_nowearout=Drive tidak melaporkan penunjuk pemakaian SSD
 monitor_wornout=Tahap pakai telah jatuh ke $1 
+
 short_title=Ujian Diri Ringkas
 short_doing=Memulakan ujian diri pendek $1 ..
 short_failed=.. gagal!
 short_ok=.. ujian bermula OK. Lihat status pemacu pada halaman utama modul untuk keputusan.
+
 ext_title=Ujian Sendiri Lanjutan
 ext_doing=Memulakan ujian diri diperpanjang $1 ..
 ext_failed=.. gagal!
 ext_ok=.. ujian bermula OK. Lihat status pemacu pada halaman utama modul untuk keputusan.
+
 data_title=Ujian Pengumpulan Data
 data_doing=Memulakan pengambilan data luar talian pada $1 ..
 data_failed=.. gagal!

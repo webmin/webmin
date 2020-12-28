@@ -11,6 +11,7 @@ index_when=Taip, $1
 index_act=Veiksmas
 index_exec=Vykdyti
 index_delete=Ištrinti pasirinktas kopijas
+
 edit_title=Redaguoti klasterio kopiją
 create_title=Sukurti klasterio kopiją
 edit_header=Informacija apie klasterio kopiją
@@ -31,12 +32,14 @@ edit_run=Kopijuoti dabar
 edit_return=klasterio kopija
 edit_email=El. Pašto išvestis į
 edit_none=Niekas
+
 save_err=Nepavyko išsaugoti klasterio crono darbo
 save_efiles=Įvestų failų nėra
 save_edest=Trūksta tikslo katalogo
 save_eservers=Nėra serverių, į kuriuos reikia nukopijuoti
 save_efile=„$1“ kopijuoti skirtas failas nėra absoliutus kelias
 save_eemail=Trūksta arba netinkamas el. Pašto adresas
+
 exec_title=Kopijuoti failus
 exec_files1=Kopijuojami $1 failai į pasirinktus serverius $2.
 exec_files2=Kopijuojama $1 į pasirinktus serverius $2 ..
@@ -50,12 +53,15 @@ exec_not=Nepavyko nukopijuoti šių failų į $1  :
 exec_cmd=Po kopijavimo išvesties $1  :
 exec_before=Prieš kopijuodami komandos išvestį $1  :
 exec_on=Nepavyko paleisti $1 : $2 
+
 log_create=Sukurta kopija $1 iki $2 serveriams
 log_modify=Modifikuota kopija $1 iki $2 serveriams
 log_delete=Ištrinta kopija, skirta $1 - $2 serveriams
 log_exec=Nukopijuota $1 į $2 serverius
 log_deletes=Ištrinta $1 kopija
+
 email_subject_succeeded=$1 kopijos kopija pavyko
 email_subject_failed=Nepavyko surinkti $1 kopijos kopijos
+
 delete_err=Nepavyko ištrinti kopijų
 delete_enone=Nepasirinkta

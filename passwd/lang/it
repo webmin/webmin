@@ -5,6 +5,7 @@ index_user=Cambia password per l'utente:
 index_euseradmin=Questo modulo non può essere usato perchè il modulo Utenti e Gruppi non è installato o supportato dal tuo sistema.
 index_toomany=Nel tuo sistema ci sono troppi utenti da mostrare. Inserisci il nome dell'utente di cui vuoi cambiare la password sotto..
 index_none=Non hai accesso a nessun utente per cambiare le loro password
+
 passwd_title=Cambio password
 passwd_header=Cambio password utenti Unix
 passwd_for=Cambio password per
@@ -23,7 +24,9 @@ passwd_erepeat=Le nuove password non corrispondono
 passwd_ecmd=$1 fallito : $2
 passwd_ok=La password per l'utente $1 è stata cambiata con successo. Se l'utente sei tu, dovrai accedere nuovamente a Webmin.
 passwd_ok2=La password per l'utente $1 è stata cambiata con successo.
+
 log_passwd=Password cambiata per l'utente $1
+
 acl_repeat=La password deve essere reinserita?
 acl_old=La vecchia password deve essere reinserita?
 acl_old_this=Solo per altri utenti

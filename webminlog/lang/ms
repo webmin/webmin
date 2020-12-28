@@ -30,6 +30,7 @@ index_sdesc=Penerangan tindakan mengandungi
 index_shost=Sumber Pelayan Webmin
 index_long=Paparkan penerangan penuh tindakan?
 index_global=&lt;Tiada dalam modul&gt;
+
 search_title=Keputusan Carian
 search_date=Tarikh
 search_time=Masa
@@ -56,6 +57,7 @@ search_global=Tiada
 search_global_login=Telah log masuk ke dalam Webmin
 search_global_logout=Telah log keluar dari Webmin
 search_csv=Eskport sebagai CSV.
+
 view_title=Butiran Tindakan
 view_header=Butiran tidan yang telah  dilog $1
 view_action=Penerangan
@@ -89,11 +91,13 @@ view_files=Fail berubah dan jalankan arahan
 view_raw=Data log mentah
 view_rawname=Nama parameter
 view_rawvalue=Nilai parameter
+
 acl_mods=Boleh melihat log dalam modul
 acl_all=Semua
 acl_sel=Dipilih di bawah ..
 acl_users=Boleh melihat tindakan oleh pengguna
 acl_rollback=Boleh mengundurkan tindakan?
+
 rollback_title=Mengundurkan Tindakan
 rollback_rusure=Adakah anda pasti anda mahu kembalikan semua fail-fail yang disenaraikan di bawah kepada kandungan mereka sebelum tindakan ini diambil? Mana-mana data terkini akan diubah oleh perubahan berikut:
 rollback_isdir=Direktori - tiada perubahan akan dibuat.
@@ -116,4 +120,5 @@ rollback_modfile=Mengundurkan semula kandungan fail $1.
 rollback_deleted=Fail dipadam $1.
 rollback_nodeleted=Melangkau fail tidak wujud $1.
 rollback_enone=Tiada fail dipilih
+
 log_rollback=Mengundurkan semula tindakan $1 pada modul $2

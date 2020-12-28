@@ -44,6 +44,7 @@ right_upsec=Na voljo so posodobitve paketa $1, od katerih so $2 varnostne posodo
 right_recollect=Osvežite podatke o sistemu
 right_vvirtualmin=Virtualmin različica
 right_vvm2=Različica Cloudmin
+
 acl_show=Sistemske informacije za prikaz
 acl_showall=Vse
 acl_showsel=Samo izbrano ..

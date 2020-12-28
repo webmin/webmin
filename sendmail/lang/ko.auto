@@ -2,6 +2,7 @@ index_version2=Sendmail 버전 $1, 구성 $2
 index_xversion=Sendmail 버전 $1 
 index_version=Sendmail 설정 $1 
 index_sendmail=메일을 보내다
+
 opts_gecos=사용자의 실명으로 메일을 수락 하시겠습니까?
 opts_hops=최대 메일 홉 수
 opts_daemon=SMTP 포트 옵션
@@ -12,16 +13,20 @@ opts_qso=메일 대기열을 기준으로 정렬
 opts_priority=우선 순위
 opts_host=호스트 이름
 opts_time=받은 시간
+
 aliases_enofile=Sendmail 구성에 별명 파일이 정의되어 있지 않습니다
 aliases_type6=필터 파일 $1 적용
 aliases_toomany=시스템에이 페이지에 표시 할 메일 별명이 너무 많습니다.
 aliases_go=일치하는 별명 찾기 :
 aliases_delete=선택된 별칭 삭제
+
 aform_ecannot=이 별칭을 편집 할 수 없습니다
 aform_type6=필터 파일 적용
 aform_file=별명 파일에 추가
 aform_cmt=기술
+
 afile_ewrite=주소 파일에 쓰지 못했습니다  : $1 
+
 ffile_title=필터 파일 편집
 ffile_desc=$1 파일에서 필터 규칙을 설정하려면 아래 양식을 사용하십시오.
 ffile_efile=$1 을 (를) 편집 할 수 없습니다.
@@ -37,6 +42,7 @@ ffile_other=그렇지 않으면 $1 로 전달
 ffile_err=필터 파일을 저장하지 못했습니다
 ffile_ematch=일치하지 않는 항목
 ffile_eaction=전달 주소가 없습니다.
+
 rfile_desc2=<br><tt> 보낸 사람 : foo@bar.com </tt><tt> 제목 : 휴일에 </tt><br> 메시지 상단에 단일 빈 줄로 본문과 구분됩니다.
 rfile_replies=메일 루프를 방지하기 위해 회신을 추적 하시겠습니까?
 rfile_none=아니
@@ -52,60 +58,81 @@ rfile_from=보낸 사람 : 회신 주소
 rfile_auto=자동 (수신자 주소 기준)
 rfile_efrom=발신인 : 주소
 rfile_fromdesc=자동 방법이 신뢰할 수 없으므로 From : 주소는 가능한 한 항상 지정해야합니다.
+
 asave_etype6=필터 파일 '$1'이 (가) 유효하지 않습니다
 asave_esame=당신은 당신의 webmin 로그인과 동일한 이름으로 별칭을 만들 수 있습니다
+
 adelete_err=별칭을 삭제하지 못했습니다.
 adelete_enone=선택된 사항 없음
 adelete_ecannot=별칭 $1 을 (를) 삭제할 수 없습니다
+
 masq_ndomains=가장하지 않는 도메인
+
 virtusers_efeature=sendmail 구성에 주소 매핑 (<tt>virtuser</tt>) 기능이 활성화되어 있지 않습니다. sendmail 기능을 설정하려면 <a href='$1'>여기를 클릭</a>하십시오.
 virtusers_createfile=또는이 기능을 사용하도록 설정 한 경우 <a href='$1'>여기를 클릭</a>하여 파일을 만드십시오.
 virtusers_cmt=기술
 virtusers_toomany=시스템에이 페이지에 표시 할 주소 매핑이 너무 많습니다.
 virtusers_go=일치하는 주소 매핑 찾기 :
 virtusers_delete=선택된 주소 매핑 삭제
+
 vform_cmt=기술
 vform_err_unavailable=없는
 vform_err_tempfail=일시적인 실패
 vform_err_protocol=프로토콜 오류
+
 vsave_esame=사용자 이름에 대한 주소 매핑 만 만들 수 있습니다
+
 vdelete_err=주소 매핑을 삭제하지 못했습니다.
 vdelete_ecannot=$1 에 대한 매핑을 삭제할 수 없습니다
+
 mailers_efeature=sendmail 구성에 도메인 라우팅 (<tt>mailertable</tt>) 기능이 활성화되어 있지 않습니다. sendmail 기능을 설정하려면 <a href='$1'>여기를 클릭</a>하십시오.
 mailers_desc3=또한 각 도메인에 대한 <a href='$1'>릴레이 도메인</a> 목록에 항목이 있어야합니다.
 mailers_delete=선택된 도메인 경로 삭제
+
 mform_host2=호스트 또는 도메인
 mform_domain2=도메인의 모든 호스트
 mform_domain3=도메인과 모든 호스트
+
 mdelete_err=도메인 라우터를 삭제하지 못했습니다.
 mdelete_ecannot=$1 의 경로를 삭제할 수 없습니다
+
 generics_efeature=sendmail 구성에 발신 주소 매핑 (<tt>일반</tt>) 기능이 활성화되어 있지 않습니다. sendmail 기능을 설정하려면 <a href='$1'>여기를 클릭</a>하십시오.
 generics_toomany=시스템에이 페이지에 표시 할 발신 주소가 너무 많습니다.
 generics_go=일치하는 발신 주소 찾기 :
 generics_delete=선택한 발신 주소 삭제
+
 gsave_ecannot3=이 발신 주소를 저장할 수 없습니다
 gsave_ealready='$1'에 대한 발신 주소 매핑이 이미 존재합니다
+
 gdelete_err=발신 주소 매핑을 삭제하지 못했습니다.
 gdelete_ecannot=$1 에 대한 매핑을 삭제할 수 없습니다
+
 domains_efeature=sendmail 구성에 도메인 매핑 (<tt>도메인 테이블</tt>) 기능이 활성화되어 있지 않습니다. sendmail 기능을 설정하려면 <a href='$1'>여기를 클릭</a>하십시오.
 domains_delete=선택된 도메인 매핑 삭제
+
 dsave_ealready='$1'에 대한 도메인 매핑이 이미 존재합니다
+
 ddelete_err=도메인 매핑을 삭제하지 못했습니다.
 ddelete_ecannot=$1 에 대한 매핑을 삭제할 수 없습니다
+
 access_efeature=sendmail 구성에 스팸 제어 (<tt>access_db</tt>) 기능이 활성화되어 있지 않습니다. sendmail 기능을 설정하려면 <a href='$1'>여기를 클릭</a>하십시오.
 access_toomany=시스템에이 페이지에 표시 할 스팸 제어 규칙이 너무 많습니다.
 access_go=일치하는 스팸 제어 규칙 찾기 :
 access_delete=선택된 스팸 제어 규칙 삭제
+
 sform_tag=에 대항
 sform_tag_=모두
 sform_tag_from=보낸 사람 : 주소
 sform_tag_to=받는 사람 : 주소
 sform_tag_connect=연결 정보
 sform_tag_spam=스팸 정보
+
 ssave_ealready='$1'에 대한 스팸 제어 규칙이 이미 존재합니다
 ssave_ecannot2=이 스팸 제어 규칙을 저장할 수 없습니다
+
 sdelete_err=스팸 제어 규칙을 삭제하지 못했습니다.
 sdelete_ecannot=$1 에 대한 규칙을 삭제할 수 없습니다
+
 mailq_count=$1 메시지
 mailq_cc=참조
 mailq_subject=제목
@@ -120,17 +147,22 @@ mailq_search=대기중인 메시지 찾기
 mailq_quar=검역소
 mailq_refresh=메일 대기열 새로 고침
 mailq_refreshdesc=메일 큐의 현재 상태를 표시하려면이 페이지를 다시로드하십시오.
+
 flushq_desc2=선택한 $1 개의 메시지 전달을 시도했습니다.
 flushq_ecannot=메일 대기열을 비울 수 없습니다
+
 searchq_title=대기열 검색 결과
 searchq_none=대기중인 메시지가 없습니다.
+
 delq_titles=메시지 삭제
 delq_force=어쨌든 강제 삭제
 delq_ecannot2=이 메시지를 삭제할 수 없습니다
 delq_rusure=선택한 $1 개의 대기열에있는 메시지를 삭제 하시겠습니까?
 delq_confirm=메시지 삭제
+
 boxes_toomany=시스템에 모든 사서함을 나열하기에는 사용자가 너무 많습니다.
 boxes_go=사용자 메일보기 :
+
 mail_for2=사용자 $1 의 경우
 mail_euserexists=이 유닉스 사용자는 존재하지 않습니다
 mail_mark=로 표시 :
@@ -142,6 +174,7 @@ mail_move=이동 :
 mail_copy=에게 복사:
 mail_rfc=라인에서
 mail_eexists=더 이상 메시지가 없습니다!
+
 view_desc2=사용자 $2 에 대한 메시지 $1 
 view_desc3=$1 메시지
 view_body=메시지 텍스트
@@ -160,10 +193,13 @@ view_egone=이 메시지는 더 이상 존재하지 않습니다
 view_afile=첨부 파일 이름
 view_atype=첨부 파일 유형
 view_asize=파일 크기
+
 enew_title=이메일 수정
 reply_mailforward=전달 된 메시지
 reply_body=메시지 텍스트
+
 send_epath=Sendmail 실행 파일 $1 이 (가) 없습니다.
+
 delete_title=메일 삭제
 delete_rusure=$2 에서 선택한 $1 개의 메시지를 삭제 하시겠습니까? 대용량 메일 파일의 경우 시간이 다소 걸릴 수 있습니다. 삭제가 완료 될 때까지 다른 조치를 수행하지 않아야합니다.
 delete_rusure2=$1 에서이 메시지를 삭제 하시겠습니까? 대용량 메일 파일의 경우 시간이 다소 걸릴 수 있습니다. 삭제가 완료 될 때까지 다른 조치를 수행하지 않아야합니다.
@@ -174,6 +210,7 @@ delete_emoveuser=메일을 이동할 사용자가 존재하지 않습니다
 delete_emovecannot=지정된 사용자에게 메일을 이동할 수 없습니다
 delete_emovenone=이동할 메일이 선택되지 않았습니다
 delete_nobutton=버튼을 클릭하지 않았습니다
+
 search_efield=검색 유형을 선택해야합니다.
 search_ewhat=$1 행에 입력 한 내용과 일치하는 텍스트가 없습니다.
 search_enone=검색 기준을 입력하지 않았습니다
@@ -183,9 +220,11 @@ search_results4=검색어와 일치하는 $1 개의 메일 메시지 ..
 search_local=로컬 폴더에서
 search_all=모든 폴더에서
 search_eboolean='and'및 'or'를 모두 사용하는 부울 검색은 지원되지 않습니다
+
 file_ecannot=이 파일을 편집 할 수 없습니다
 file_ealias=별칭 파일 줄의 형식이 잘못되었습니다  : $1 
 file_etab=맵 파일 행의 형식이 잘못되었습니다  : $1 
+
 acl_ports=네트워크 포트를 편집 할 수 있습니까?
 acl_manual=파일을 수동으로 편집 할 수 있습니까?
 acl_flushq=메일 대기열을 비울 수 있습니까?
@@ -207,6 +246,7 @@ acl_usersm=일치하는 사용자
 acl_asame=사용자 이름과 동일
 acl_usersu=범위에 UID 사용
 acl_spam=이 사용자가 편집 할 수있는 스팸 제어 주소
+
 log_ports=네트워크 포트 변경
 log_movemail=$1 메시지를 $2 에서 $3 (으)로 이동했습니다.
 log_feature_create=M4 항목 $1 추가
@@ -220,6 +260,7 @@ log_delete_domains=$1 도메인 매핑이 삭제되었습니다.
 log_delete_accesses=스팸 컨트롤 $1 개를 삭제했습니다.
 log_delete_generics=발신 주소 $1 이 (가) 삭제되었습니다.
 log_delete_mailers=$1 도메인 경로를 삭제했습니다.
+
 match_status=상태 일치
 match_headers=헤더 일치
 match_=-----------------
@@ -232,6 +273,7 @@ match_!status=상태가 일치하지 않습니다
 match_!body=본문이 일치하지 않습니다
 match_!size=크기가
 match_!headers=헤더가 일치하지 않습니다
+
 features_title=Sendmail M4 구성
 features_desc=이 페이지에는 실제 구성 파일 $2 이 (가) 작성되는 Sendmail M4 구성 파일 $1 의 관련 항목이 나열되어 있습니다.
 features_type=참가 유형
@@ -251,6 +293,7 @@ features_efeatures=Sendmail M4 구성 기본 디렉토리 $2 이 (가) 시스템
 features_econfig=Sendmail M4 기본 디렉토리 및 M4 구성 파일의 위치는 아직 <a href='$1'>모듈 구성</a>에 설정되어 있지 않습니다. 소스에서 Sendmail을 설치 한 경우 원래 소스 디렉토리 아래에 있어야합니다.
 features_move=움직임
 features_manual=수동으로 파일 편집
+
 feature_add=구성 항목 추가
 feature_edit=구성 항목 편집
 feature_header=M4 구성 항목 세부 사항
@@ -271,12 +314,15 @@ feature_emailer=메일러 $1 이 (가) 이미 존재합니다
 feature_eostype=OS 유형이 이미 $1 (으)로 정의되어 있습니다
 feature_manual=M4 파일 편집
 feature_mdesc=이 페이지에서는 Sendmail M4 구성 파일 $1 을 수동으로 편집 할 수 있습니다. 편집시 구문 검사가 수행되지 않으므로주의하십시오.
+
 feat_access_db=스팸 제어 파일
 feat_virtusertable=주소 매핑
 feat_mailertable=도메인 라우팅
 feat_genericstable=발신 주소
 feat_domaintable=도메인 매핑
+
 mailer_local=현지 유닉스 배달
+
 build_title=Sendmail 구성 재 구축
 build_em4=시스템에서 Sendmail 구성 파일을 다시 작성하는 데 필요한 $1 명령을 찾을 수 없습니다.
 build_ebuild=구성을 구축하지 못했습니다  : $1 
@@ -285,13 +331,16 @@ build_rusure2=Sendmail Options 페이지에서 Sendmail을 변경 한 경우, �
 build_ok=예, 지금 교체하십시오
 build_diff=Sendmail 구성 파일이 다음과 같이 변경됩니다.
 build_nodiff=sendmail 구성 파일이 이미 최신 상태입니다.
+
 stop_err=sendmail을 중지하지 못했습니다
 stop_ecannot=sendmail을 중지 할 수 없습니다
 stop_epid=Sendmail이 실행되지 않는 것 같습니다
 restart_epids=sendmail 프로세스를 찾을 수 없습니다
 restart_ekill=sendmail 프로세스에 신호를 보내지 못했습니다  : $1 
+
 start_err=sendmail을 시작하지 못했습니다
 start_ecannot=sendmail을 시작할 수 없습니다
+
 ports_title=네트워크 포트
 ports_name=포트 이름
 ports_addr=주소 듣기

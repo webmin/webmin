@@ -57,6 +57,7 @@ index_reposdisable=리포지토리 비활성화
 index_reposenable=리포지토리 활성화
 index_reposdelete=리포지토리 삭제
 index_repoheader=새로운 패키지 저장소 옵션
+
 update_title=패키지 업데이트
 update_title2=패키지 설치
 update_enone=선택된 패키지가 없습니다
@@ -94,9 +95,11 @@ update_none=없음
 update_ops=전체 패키지 목록 작성 ..
 update_rebootdesc=설치된 패키지 중 하나를 재부팅하려면 완전히 재부팅해야합니다.
 update_reboot=지금 재부팅하세요
+
 sched_title=예약 업데이트
 sched_yes=업데이트 예약 확인이 활성화되었습니다.
 sched_no=업데이트 예약 확인이 비활성화되었습니다.
+
 log_update=$1 업데이트 패키지 설치
 log_sched=예약 업데이트 활성화
 log_unsched=비활성화 된 예약 업데이트
@@ -108,11 +111,13 @@ log_enable_repo=활성화 된 패키지 저장소 $1
 log_disable_repo=비활성화 된 패키지 저장소 $1 
 log_delete_repo=삭제 된 패키지 저장소 $1 
 log_create_repo=패키지 저장소 $1 을 (를) 생성했습니다.
+
 refresh_title=상쾌한 패키지
 refresh_clearing=패키지 캐시 지우기 ..
 refresh_done=.. 완료
 refresh_available=사용 가능한 패키지 다시 가져 오기 ..
 refresh_done3=.. $1 개의 가능한 업데이트를 찾았습니다.
+
 view_title=패키지 세부 사항
 view_header=업데이트 가능한 패키지 정보
 view_name=패키지 이름
@@ -126,12 +131,14 @@ view_changelog=사용 가능한 버전에 대한 변경 로그
 view_software=패키지 관리
 view_update=패키지 업데이트
 view_install=패키지 설치
+
 system_yum=YUM
 system_apt=적절한
 system_csw=CSW (Blastwave)
 system_webmin=Webmin 모듈
 system_usermin=Usermin 모듈
 system_tgz=Webmin 또는 Usermin tar.gz
+
 repos_err_disable=리포지토리를 비활성화하지 못했습니다.
 repos_err_enable=리포지토리를 활성화하지 못했습니다.
 repos_err_delete=리포지토리를 삭제하지 못했습니다.

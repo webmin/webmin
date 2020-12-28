@@ -29,12 +29,14 @@ index_fd=Configurare fișier Daemon
 index_groups=Configurarea grupului Bacula
 index_actions=Acțiuni de rezervă și restaurare
 index_ocmin=Contribuit de <a href=$2 target=_new>Linmin</a> </a>
+
 connect_emysql=Nu a putut încărca driverul DBI al bazei de date $1 
 connect_elogin=Eroare la autentificarea la baza de date $1:$2.
 connect_equery=Baza de date $1 nu pare a conține tabele Bacula.
 connect_equery2=Acest lucru se poate întâmpla deoarece modulul SQLite Perl instalat este prea nou și nu acceptă formatul de bază SQLite mai vechi folosit de Bacula.
 connect_equery3=Baza de date $1 nu pare a conține tabele de grup OC Bacula.
 esql=Eroare SQL : $1 
+
 check_edir=Directorul de configurare Bacula $1 nu a fost găsit în sistemul dvs.
 check_ebacula=Comanda de control Bacula $1 nu a fost găsită.
 check_econsole=Comanda consolei Bacula $1 nu a fost găsită.
@@ -43,12 +45,14 @@ check_eclient=Acest sistem pare a fi mai degrabă un <a href='$2'>client Bacula<
 check_econfigs=Nu s-au găsit fișiere de configurare Bacula în $1 
 check_eservers=Nu au fost definite grupuri de server Webmin
 check_engmod=Modulul grupuri OpenCountry Bacula nu este instalat
+
 proc_bacula-sd=Daemon de stocare
 proc_bacula-fd=Demon de fișier
 proc_bacula-dir=Daemon director Bacula
 proc_bareos-sd=Daemon de stocare
 proc_bareos-fd=Demon de fișier
 proc_bareos-dir=Daemon director Bacula
+
 stop_err=Nu a reușit să oprească Bacula
 start_err=Nu a reușit să pornească Bacula
 start_einit=Nu a fost găsit un script inițial pentru $1 
@@ -57,6 +61,7 @@ restart_err=Nu a putut reîncepe Bacula
 apply_err=Eroare la aplicarea configurației
 apply_failed=A fost detectată o eroare de configurare
 apply_problem=Eroare la aplicarea configurației : $1 
+
 jobs_title=Locuri de muncă de rezervă
 jobs_none=Nu s-au definit încă lucrări de rezervă.
 jobs_name=Numele locului de munca
@@ -69,6 +74,7 @@ jobs_add=Adăugați o nouă lucrare de rezervă.
 jobs_delete=Ștergeți lucrări selectate
 jobs_return=lista locurilor de muncă
 jobs_derr=Nu a reușit să ștergeți lucrările
+
 filesets_title=Seturi de fișiere
 filesets_none=Nu au fost definite încă seturi de fișiere de rezervă.
 filesets_name=Numele setului de fișiere
@@ -78,6 +84,7 @@ filesets_delete=Ștergeți seturi de fișiere selectate
 filesets_return=lista seturilor de fișiere
 filesets_derr=Nu a reușit să ștergeți seturile de fișiere
 filesets_ednone=Nimic selectat
+
 fileset_title1=Creați set de fișiere
 fileset_title2=Editează setul de fișiere
 fileset_header=Detalii despre setul de fișiere de rezervă
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;Nivel de compresie implicit&gt;
 fileset_lzo=Compresie LZO
 fileset_gzip=Nivel Gzip $1 
 fileset_onefs=Limitați backup-ul la un sistem de fișiere?
+
 clients_title=Clienți de rezervă
 clients_none=Nu au fost definiți încă clienți de rezervă.
 clients_name=Numele clientului
@@ -106,6 +114,7 @@ clients_add=Adăugați un nou client de rezervă.
 clients_delete=Ștergeți clienții selectați
 clients_return=lista clientilor
 clients_derr=Nu a reușit să ștergeți clienții
+
 client_title1=Creați Client Backup
 client_title2=Editează Backup Client
 client_header=Detalii despre clientul care trebuie să fie efectuat
@@ -128,6 +137,7 @@ client_efileret=Perioada de păstrare a fișierului lipsește sau este nevalidă
 client_ejobret=O perioadă de păstrare a unui loc de muncă lipsă sau nevalidă
 client_echild=Acest client nu poate fi șters deoarece este utilizat de $1 
 client_status=Afișează starea
+
 job_title1=Creați job de rezervă
 job_title2=Editați Job Backup
 job_header=Datele postului de rezervă
@@ -156,6 +166,7 @@ job_before=Comandă înainte de muncă
 job_after=Comandă după slujbă
 job_cbefore=Comanda înainte de job (pe client)
 job_cafter=Comandă după job (pe client)
+
 schedules_title=Planificări de rezervă
 schedules_none=Nu au fost definite încă planificări de rezervă.
 schedules_name=Numele programului
@@ -164,6 +175,7 @@ schedules_add=Adăugați un nou program de rezervă.
 schedules_delete=Ștergeți programele selectate
 schedules_return=lista programelor
 schedules_derr=Nu a reușit să ștergeți programele
+
 schedule_title1=Creați program de rezervă
 schedule_title2=Editează programul de rezervă
 schedule_header=Detalii despre programul de rezervă
@@ -177,6 +189,7 @@ schedule_ename=Numele programului lipsă sau nevalid
 schedule_eclash=Există deja un program cu același nume
 schedule_etimes=Lipsește timpii de rezervă din rândul $1 
 schedule_echild=Acest program nu poate fi șters deoarece este utilizat de $1 
+
 backup_title=Rulați Jobul de rezervă
 backup_header=Datele postului de rezervă
 backup_job=Loc de muncă pentru a alerga
@@ -191,11 +204,13 @@ backup_running=.. lucrarea de rezervă se execută. După finalizare, rezultatel
 backup_running2=.. lucrarea de rezervă a fost începută în fundal.
 backup_done=.. backup completat.
 backup_failed=.. backup-ul nu s-a finalizat cu succes. Verificați mesajul de eroare de mai sus pentru detalii.
+
 gbackup_title=Rulați Jobul de Backup Group Bacula
 gbackup_run=Pornirea jobului de rezervă $1 la $2 clienți ..
 gbackup_on=Se execută o copie de rezervă pentru clientul $1  :
 gbackup_header=Detalii despre jobul de rezervă al grupului Bacula
 gbackup_jd=$1 (set de fișiere $2 pentru grupul $3)
+
 dirstatus_title=Statutul directorului
 dirstatus_sched=Lucrări de rezervă programate
 dirstatus_name=Numele locului de munca
@@ -216,12 +231,14 @@ dirstatus_status2=stare
 dirstatus_donenone=Nu s-au executat lucrări de rezervă.
 dirstatus_cancel=Anulați lucrările selectate
 dirstatus_refresh=Lista de actualizare
+
 clientstatus_title=Starea clientului
 clientstatus_err=Nu a reușit să preia starea de la $1 : $2 
 clientstatus_msg=Stare de la $1 : $2 
 clientstatus_show=Afișează starea clientului:
 clientstatus_ok=O.K
 clientstatus_on=$1 (pe $2)
+
 storages_title=Demoni de depozitare
 storages_none=Nu au fost definite încă daemoni de stocare.
 storages_name=Numele de stocare
@@ -232,6 +249,7 @@ storages_add=Adăugați un nou demon de stocare.
 storages_delete=Ștergeți demoni de stocare selectați
 storages_return=lista de demoni de depozitare
 storages_derr=Nu a reușit să ștergeți demoni de stocare
+
 storage_title1=Creați Daemon de stocare
 storage_title2=Editați Daemon de stocare
 storage_header=Detalii despre daemon de stocare la distanță
@@ -255,6 +273,7 @@ storage_emedia=Numele de tip media lipsesc
 storage_emaxjobs=Lipsesc joburi concomitente maxime
 storage_echild=Acest client nu poate fi șters deoarece este utilizat de $1 
 storage_status=Afișează starea
+
 devices_title=Dispozitive de stocare
 devices_none=Nu au fost definite încă dispozitive de stocare.
 devices_name=Nume dispozitiv
@@ -264,6 +283,7 @@ devices_add=Adăugați un dispozitiv de stocare nou.
 devices_delete=Ștergeți dispozitivele de stocare selectate
 devices_return=lista dispozitivelor de stocare
 devices_derr=Nu a reușit să ștergeți dispozitivele de stocare
+
 device_title1=Creați dispozitiv de stocare
 device_title2=Editează dispozitivul de stocare
 device_header=Detalii despre dispozitivul de stocare a fișierelor
@@ -282,11 +302,13 @@ device_eclash=Există deja un dispozitiv de stocare cu același nume
 device_emedia=Numele de tip media lipsesc
 device_edevice=Dispozitiv sau director de arhivă lipsă sau nevalid
 device_echild=Acest client nu poate fi șters deoarece este utilizat de $1 
+
 storagestatus_title=Starea Daemon de stocare
 storagestatus_err=Nu a reușit să preia starea de la $1 : $2 
 storagestatus_msg=Stare de la $1 : $2 
 storagestatus_show=Afișează starea demonului de stocare:
 storagestatus_ok=O.K
+
 label_title=Volumul etichetei
 label_header=Detalii despre volum pe etichetă
 label_storage=Daemon de stocare pe etichetă
@@ -302,6 +324,7 @@ label_done=.. etichetarea de succes.
 label_epool=.. nu am putut găsi piscina!
 label_err=Eticheta a eșuat
 label_elabel=Nu a fost introdusă nicio etichetă
+
 pools_title=Piscine de volum
 pools_none=Nu s-au definit încă grupuri de volum.
 pools_name=Numele piscinei
@@ -311,6 +334,7 @@ pools_add=Adăugați un nou grup de volum.
 pools_delete=Ștergeți grupurile de volum selectate
 pools_return=lista grupurilor de volum
 pools_derr=Nu a reușit să ștergeți grupurile de volum
+
 pool_title1=Creați pool de volum
 pool_title2=Editează volumul de volum
 pool_header=Detalii despre grupul de volum de rezervă
@@ -332,6 +356,7 @@ pool_ereten=Perioada de retenție lipsă sau nevalidă
 pool_status=Show Volumes
 pool_autolabel=Etichetați automat prefixul volumelor
 pool_maxvolsize=Dimensiunea maximă a volumului (de ex. 5G pentru 5 gigabytes)
+
 poolstatus_title=Volume în piscină
 poolstatus_show=Afișați volume în piscină:
 poolstatus_ok=O.K
@@ -345,9 +370,11 @@ poolstatus_status=Modul de rezervă
 poolstatus_none=În prezent nu există volume în acest grup de rezervă.
 poolstatus_never=Nu
 poolstatus_delete=Ștergeți volumele selectate
+
 dvolumes_err=Nu a reușit ștergerea volumelor
 dvolumes_enone=Nimic selectat
 dvolumes_ebacula=Eroare Bacula : $1 
+
 mount_title=Se montează sau se demontează
 mount_header=Opțiuni de montare sau de montare pentru depozitare
 mount_storage=Dispozitiv de stocare
@@ -365,8 +392,10 @@ unmount_failed=.. un-mount a eșuat! Consultați mesajul de eroare de mai sus pe
 mount_return=formă de montare
 mount_err=Montajul dispozitivului de stocare nu a reușit
 mount_eslot=Număr de slot lipsă sau nevalid
+
 cancel_err=Nu a reușit anularea lucrărilor
 cancel_enone=Nimic selectat
+
 gjobs_title=Locuri de munca Backup Group Bacula
 gjobs_none=Nu s-au definit încă lucrări de rezervă ale grupului Bacula.
 gjobs_add=Adăugați o nouă lucrare de rezervă a grupului Bacula.
@@ -374,10 +403,12 @@ gjobs_delete=Ștergeți lucrări selectate
 gjobs_return=lista de locuri de muncă din grupul Bacula
 gjobs_derr=Nu a reușit să ștergeți lucrările grupului Bacula
 gjobs_client=Grupul Bacula la backup
+
 gjob_title1=Creați Job Job Backup Group Bacula
 gjob_title2=Editați Jobul de Backup Group Bacula
 gjob_header=Detalii despre jobul de rezervă al grupului Bacula
 gjob_client=Grupul Bacula la backup
+
 groups_title=Grupuri Bacula
 groups_none=Încă nu au fost selectate grupuri Bacula pentru backup de către Bacula.
 groups_name=Numele Grupului
@@ -391,6 +422,7 @@ groups_derr=Nu a reușit ștergerea grupurilor
 groups_noadd=Nu există grupuri Bacula care să fie selectate pentru copii de rezervă.
 groups_info=$1 ($2 membri)
 groups_already=Toate grupele Bacula au fost deja adăugate.
+
 group_title1=Creați Grupul Bacula
 group_title2=Editează Grupul Bacula
 group_header=Detalii despre grupul Bacula pentru a fi susținut
@@ -401,11 +433,13 @@ group_port=Port Bacula FD
 group_err=Nu a reușit să salveze grupul Bacula
 group_eclash=Există deja un grup cu același nume
 group_members=Gazde în grupul Bacula
+
 sync_title=Sincronizarea grupului Bacula
 sync_header=Opțiuni de sincronizare automată a clientului grupului Bacula
 sync_sched=Sincronizați la program?
 sync_schedyes=Da, la orele selectate mai jos ..
 sync_err=Nu a putut salva sincronizarea grupului Bacula
+
 log_create_client=Client de rezervă creat 1
 log_modify_client=Client de rezervă modificat $1 
 log_delete_client=Clientul de rezervă $1 a fost șters
@@ -464,6 +498,7 @@ log_director=Configurația globală a directorului Bacula a fost salvată
 log_file=Configurarea demonului de fișier Bacula salvat
 log_storagec=Configurarea daemonului de stocare Bacula salvat
 log_fixpass=Parola fixă a programului consolei Bacula
+
 director_title=Configurare director
 director_header=Opțiuni de director global Bacula
 director_name=Numele directorului
@@ -477,6 +512,7 @@ director_ename=Numele directorului lipsă sau nevalid
 director_eport=Număr de port lipsă sau nevalid
 director_ejobs=Lipsește sau nu este valabil un număr de lucrări concurente
 director_edir=Directorul de lucru lipsă sau inexistent
+
 tls_enable=Activați criptarea TLS?
 tls_require=Acceptați numai conexiunile TLS?
 tls_verify=Verificați clienții TLS?
@@ -488,6 +524,7 @@ tls_ecert=Fișierul de certificare TLS care lipsește sau nu există
 tls_ekey=Fișierul cheie TLS lipsă sau inexistent
 tls_ecacert=Fișierul de certificare TLS CA lipsit sau inexistent
 tls_ecerts=Pentru ca TLS să fie activat, trebuie specificate fișierele de certificat, cheie și CA
+
 file_title=Configurare fișier Daemon
 file_header=Opțiuni demoni de fișier Bacula
 file_name=Numele demonului de fișier
@@ -500,6 +537,7 @@ file_ename=Lipsește sau nu este valabil numele demonului de fișier
 file_eport=Număr de port lipsă sau nevalid
 file_ejobs=Lipsește sau nu este valabil un număr de lucrări concurente
 file_edir=Directorul de lucru lipsă sau inexistent
+
 fdirectors_title=File Daemon Director
 fdirectors_none=Nu s-au definit încă niciun director.
 fdirectors_name=Numele directorului
@@ -508,6 +546,7 @@ fdirectors_add=Adăugați un nou director.
 fdirectors_delete=Ștergeți directorii selectați
 fdirectors_return=lista directorilor
 fdirectors_derr=Nu a reușit ștergerea directorilor
+
 fdirector_title1=Creați fișier Daemon Director
 fdirector_title2=Editează fișier Daemon Director
 fdirector_header=Detalii despre controlul directorului de la distanță
@@ -519,6 +558,7 @@ fdirector_err=Nu a reușit să salveze directorul daemon fișier
 fdirector_ename=Lipsește numele directorului
 fdirector_eclash=Un director cu același nume există deja
 fdirector_epass=Parcă lipsește
+
 sdirectors_title=Directorii Daemon de stocare
 sdirectors_none=Nu s-au definit încă niciun director.
 sdirectors_name=Numele directorului
@@ -527,6 +567,7 @@ sdirectors_add=Adăugați un nou director.
 sdirectors_delete=Ștergeți directorii selectați
 sdirectors_return=lista directorilor
 sdirectors_derr=Nu a reușit ștergerea directorilor
+
 sdirector_title1=Creați directorul Daemon de stocare
 sdirector_title2=Editați Daemon Director
 sdirector_header=Detalii despre controlul directorului de la distanță
@@ -538,6 +579,7 @@ sdirector_err=Nu a reușit să salveze directorul daemonului de stocare
 sdirector_ename=Lipsește numele directorului
 sdirector_eclash=Un director cu același nume există deja
 sdirector_epass=Parcă lipsește
+
 storagec_title=Configurare Daemon de stocare
 storagec_header=Opțiuni de demoni de stocare Bacula
 storagec_name=Numele Daemon
@@ -550,6 +592,7 @@ storagec_ename=Lipsește sau nu este valabil numele demonului de stocare
 storagec_eport=Număr de port lipsă sau nevalid
 storagec_ejobs=Lipsește sau nu este valabil un număr de lucrări concurente
 storagec_edir=Directorul de lucru lipsă sau inexistent
+
 chooser_title=Selectați Schedule
 chooser_monthsh=Luni de executat
 chooser_months=Lunile anului
@@ -574,11 +617,13 @@ chooser_emonthsrange=Luna selectată trebuie să fie contiguă
 chooser_eweekdaysrange=Zilele săptămânilor selectate trebuie să fie contigue
 chooser_eweekdaynumsrange=Numerele din zilele săptămânii selectate trebuie să fie contigue
 chooser_edaysrange=Zilele selectate ale lunii trebuie să fie contigua
+
 weekdaynum_1=Primul
 weekdaynum_2=Al doilea
 weekdaynum_3=Al treilea
 weekdaynum_4=Al patrulea
 weekdaynum_5=a cincea
+
 restore_title=Restaurați backup
 restore_title2=Restaurați backup la Grupul Bacula
 restore_title3=Restaurați Backup Group Bacula

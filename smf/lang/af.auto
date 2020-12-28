@@ -180,6 +180,7 @@ whats_this_NSTATE=Die volgende toestand van die diens, nuttig wanneer die diens 
 whats_this_SCOPE=Die omvangnaam van die diensinstansie. Kyk: smf (5). Kyk: svcs (1).
 whats_this_STIME=Die tyd (indien vandag) of die datum waarop die diens die huidige status betree het. Kyk: smf (5). Kyk: svcs (1).
 whats_this_Select=Kyk hier na die lys dienste wat u wil inskakel/deaktiveer/verfris ens.
+
 whats_this_service_detail=Spesifiseer/wysig inligting oor die topdiens hier: diensnaam, weergawe nommer, bundelnaam vir manifes en stabiliteit. Kyk: smf (5). Kyk: svccfg (1M). Kyk: diensbondel (4).
 whats_this_bundle_name=Naam van diensbundel in manifes. Verskeie dienste kan saamgevoeg word in die een manifes, maar die naam hier is nie belangrik nie. Vir dienste wat reeds bestaan, sal dit ingestel wees om uit te voer, want dit is wat svccfg doen wanneer dit 'n manifes vanaf die SMF-bewaarplek uitvoer. Kyk: svccfg (1M). Kyk: diensbondel (4).
 whats_this_service_name=Naam van diens. Konvensie is om die formaat [general_service_category]/[name] te gebruik. Kategorieë wat reeds aangebied is, sluit in toepassings (hoërvlak-toepassings), mylpaal (versamelings van ander dienste, soos naamdienste), platform (platformspesifieke dienste), stelsel (Solaris-stelseldienste), toestel (toestel-spesifieke dienste), netwerk (netwerk-/internetdienste) en werfbeskrywings. U kan natuurlik ook u eie kategorie spesifiseer, maar die meeste dienste moet gemaklik in een van die bogenoemde inpas. Kyk: smf (5).

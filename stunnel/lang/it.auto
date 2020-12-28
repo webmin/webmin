@@ -21,6 +21,7 @@ index_eversion=La versione di STunnel installata sul tuo sistema è $1, ma quest
 index_conf=Dal file di configurazione $1 
 index_noconf=Nessun file di configurazione!
 index_delete=Elimina i tunnel selezionati
+
 edit_title=Modifica tunnel SSL
 create_title=Crea tunnel SSL
 edit_header1=Opzioni della sorgente del tunnel
@@ -47,6 +48,7 @@ edit_tcpw=Nome wrapper TCP
 edit_auto=Automatico
 edit_iface=Indirizzo sorgente in uscita
 edit_type=Correre da
+
 save_err=Impossibile salvare il tunnel SSL
 save_enclash=Il nome del servizio $2 è già utilizzato sulla porta $1.
 save_einetd=Esiste già un servizio inetd chiamato $1.
@@ -61,6 +63,7 @@ save_etcpw=Nome wrapper TCP mancante o non valido
 save_eiface=Indirizzo sorgente in uscita mancante o non valido
 save_exinetd=Esiste già un servizio xinetd chiamato $1 
 save_export=La porta $1 è già utilizzata dal servizio xinetd $2 
+
 log_apply=Modifiche applicate
 log_create=Tunnel SSL creato $1 
 log_delete=Tunnel SSL eliminato $1 

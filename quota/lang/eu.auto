@@ -1,4 +1,5 @@
 quota_unlimited=Mugarik gabe
+
 acl_fss=Erabiltzaile honek editatu dezakeen fitxategi-sistemak
 acl_fall=Fitxategi sistema guztiak
 acl_fsel=Hautatutako ..
@@ -24,9 +25,11 @@ acl_maxblocks=Eman daitekeen gehieneko blokearen kuota
 acl_maxfiles=Eman daitekeen gehieneko fitxategien kuota
 acl_unlimited=Mugarik gabe
 acl_email=Konfigura daiteke posta elektronikoko jakinarazpenak?
+
 activate_eallow=Ezin duzu fitxategi-sistema honetako kuotak gaitu edo desgaitu
 activate_eon=Huts egin du kuotak aktibatzeak
 activate_eoff=Huts egin du kuotak desaktibatzeko
+
 check_title=Begiratu kuotak
 check_return=$1 zerrenda
 check_ecannot=Ezin duzu kuota egiaztatu fitxategi-sistema honetan
@@ -34,11 +37,13 @@ check_running=<tt>quotacheck</tt> komandoa exekutatzen ari da <tt>$1</tt> blokea
 check_done=... Egina.
 check_rgroup=taldeko
 check_ruser=erabiltzaile
+
 cgroup_efail=Ezin izan da kupoak kopiatu
 cgroup_ecannot=Ezin dituzu kuotak kopiatu
 cgroup_egallow=Ezin duzu talde honen kuotak kopiatu
 cgroup_enogroup=Ez dago taldean kopiatzeko
 cgroup_eallowto=Ezin duzu kuotak '$1' kopiatzea baimendu
+
 cgform_title=Kopiatu kuotak
 cgform_return=taldeko kuota
 cgform_ecannot=Ezin dituzu kuotak kopiatu
@@ -48,11 +53,13 @@ cgform_all=Zure sistemako talde guztiak
 cgform_select=Hautatutako taldeak
 cgform_contain=Erabiltzaileak dituzten taldeak
 cgform_doit=Copy
+
 cuser_efail=Ezin izan da kupoak kopiatu
 cuser_ecannot=Ezin dituzu kuotak kopiatu
 cuser_euallow=Ez duzu baimenik erabiltzaile honen kuotak kopiatzeko
 cuser_enouser=Ez dago erabiltzaileak kopiatzeko
 cuser_eallowto=Ezin duzu kuotak '$1' kopiatzea baimendu
+
 cuform_title=Kopiatu kuotak
 cuform_return=erabiltzaile kuota
 cuform_ecannot=Ezin dituzu kuotak kopiatu
@@ -62,6 +69,7 @@ cuform_all=Zure sistemako erabiltzaile guztiak
 cuform_select=Aukeratutako erabiltzaileak
 cuform_members=Aukeratutako taldeetako kideak
 cuform_doit=Copy
+
 egroup_title=Editatu Taldearen Kuota
 egroup_freturn=fitxategi sistemen zerrenda
 egroup_greturn=taldeen zerrenda
@@ -80,6 +88,7 @@ egroup_hflimit=Fitxategi gogorra Muga
 egroup_update=eguneratzearen
 egroup_listall=Zerrendatu kuota guztiak
 egroup_listalldesc=Egin klik botoi honetan talde honek disko kuotak dituen fitxategi sistema guztien zerrenda bistaratzeko, estekak editatzeko.
+
 euser_title=Erabiltzaileen kuota aldatu
 euser_freturn=fitxategi sistemen zerrenda
 euser_ureturn=erabiltzaileen zerrenda
@@ -102,6 +111,7 @@ euser_hflimit=Fitxategiaren muga gogorra
 euser_update=eguneratzearen
 euser_listall=Zerrendatu kuota guztiak
 euser_listalldesc=Egin klik botoi honetan erabiltzaile honek disko kuotak dituen fitxategi sistemen zerrenda bistaratzeko, estekak lotzeko.
+
 gfilesys_title=Taldearen kuotak
 gfilesys_return=fitxategi sistemen zerrenda
 gfilesys_ecannot=Ezin duzu '$1' -ko kuotarik editatu
@@ -120,6 +130,7 @@ gfilesys_copy=Kopiatu kuotak
 gfilesys_editdesc=Ikusi eta editatu talde honetarako kuotak orain kuotarik ez duen beste fitxategi-sisteman.
 gfilesys_copydesc=Kopiatu talde honentzako kuoten mugak fitxategi-sistema guztietako talde batzuei edo beste batzuei.
 gfilesys_enone=Ez da talde izenik sartu
+
 ggracef_title=Grace Times
 ggracef_return=taldeen zerrenda
 ggracef_ecannot=Ezin duzu graziaren garaia editatu fitxategi-sistema honetan
@@ -128,9 +139,11 @@ ggracef_graces=Taldearen Grazia aldiz <tt>$1</tt>
 ggracef_block=Blokearen kuotarako
 ggracef_file=Fitxategien kuotarako
 ggracef_update=eguneratzearen
+
 ggraces_esave=Ezin izan da grazia aldiz aurreztu
 ggraces_eedit=Ezin duzu graziaren garaia editatu fitxategi-sistema honetan
 ggraces_enumber='$1' ez da zenbakia
+
 index_quser=Erabiltzaileen kuotak
 index_qgroup=Taldeko kuotak
 index_qboth=Erabiltzaile eta talde kuotak
@@ -154,6 +167,7 @@ index_egroup=Editatu taldeko kuotak:
 index_egroupdesc=Sartu edo hautatu talde bat eta egin klik botoi honetan fitxategien sistema guztietan bere kuotak ikusteko.
 index_nosupport=Inongo fitxategi sistemarik ez du kuotak onartzen.
 index_mountmod=Fitxategi-sistemako kuotak gaitu ditzakezu <a href='$1'>Disko eta sareko fitxategi sistemak</a> moduluan.
+
 lgroups_failed=Huts egin du taldeen zerrendak
 lgroups_tablist=Taldeen zerrenda
 lgroups_eallow=Ezin duzu fitxategi-sisteman kuotak editatu
@@ -182,13 +196,17 @@ lgroups_tofixed=Helbidea 1
 lgroups_emailheader=Kuotara gerturatzen diren taldeei posta elektronikoa
 lgroups_email=Bidali mezu elektronikoak taldeei?
 lgroups_tovirt=Virtualmin domeinuaren jabea
+
 sgroup_egroup=Ezin duzu talde honetarako kuotak editatu
 sgroup_efs=Ezin duzu fitxategi-sisteman kuotak editatu
+
 ssync_ecannot=Ezin duzu fitxategi-sistema honetarako kuota lehenetsia ezarri
+
 suser_euser=Ez duzu baimenik erabiltzaile honentzako kuotak editatzeko
 suser_efs=Ezin duzu fitxategi-sisteman kuotak editatu
 suser_emaxblocks=Ezin duzu $1 etik gorako bloke mugak eman
 suser_emaxfiles=Ezin duzu $1 etik gorako fitxategien mugak eman
+
 ufilesys_title=Erabiltzaileen kuotak
 ufilesys_return=fitxategi sistemen zerrenda
 ufilesys_ecannot=Ezin duzu '$1' -ko kuotarik editatu
@@ -208,6 +226,7 @@ ufilesys_copydesc=Fitxategi-sistema guztietan erabiltzaile honen kopia-mugak kop
 ufilesys_copy=Kopiatu kuotak
 ufilesys_grace=Grace
 ufilesys_enone=Ez da erabiltzaile izenik sartu
+
 ugracef_title=Grace Times
 ugracef_return=erabiltzaileen zerrenda
 ugracef_ecannot=Ezin duzu graziaren garaia editatu fitxategi-sistema honetan
@@ -216,9 +235,11 @@ ugracef_graces=Erabiltzailearen grazia aldiz <tt>$1</tt>
 ugracef_block=Blokearen kuotarako
 ugracef_file=Fitxategien kuotarako
 ugracef_update=eguneratzearen
+
 ugraces_esave=Ezin izan da grazia aldiz aurreztu
 ugraces_eedit=Ezin duzu graziaren garaia editatu fitxategi-sistema honetan
 ugraces_enumber='$1' ez da zenbakia
+
 lusers_failed=Ezin izan da erabiltzaileen zerrenda
 lusers_tablist=Erabiltzaileen zerrenda
 lusers_tabdefault=Lehenetsitako kuotak
@@ -264,12 +285,14 @@ lusers_from=Noiz: helbide elektronikoa lortzeko
 lusers_mass=Eguneratu hautatutako erabiltzaileak
 lusers_cc=Bidali mezu elektronikoa ere
 lusers_nocc=Inork
+
 grace_seconds=seconds
 grace_minutes=Minutu
 grace_hours=Orduak
 grace_days=egunak
 grace_weeks=Asteak
 grace_months=hilabeteak
+
 log_activate_u=Erabiltzaileen kuotak $1 gaituta
 log_activate_g=Gaitutako talde kuotak $1 ean
 log_activate_ug=Erabiltzaile eta talde kuotak gaituta $1 
@@ -287,6 +310,7 @@ log_check=Kuotak $1 ean egiaztatu dira
 log_copy_u=$1 erabiltzailearen kopiak
 log_copy_g=Kopiatutako $1 taldeko kuotak
 log_support=Gaitutako kuotaren laguntza $1 erako
+
 email_err=Huts egin du posta elektronikoaren aukerak gordetzean
 email_ecannot=Ezin duzu posta elektronikoko aukerak aldatu
 email_einterval=Falta edo tarte baliogabea
@@ -299,6 +323,7 @@ gemail_msg=Fitxategi-sisteman $1 taldeko diskoaren erabilera baimendu den kuotar
 email_subject=Disko kuota gainditu da
 gemail_subject=Disko kuota gainditu da
 email_eto=Helmuga helbide elektronikoa falta da
+
 umass_title=Eguneratu erabiltzaile-kuotak
 umass_header=Kuota aldaketak hautatutako erabiltzaileei aplikatzeko
 umass_sblocks=Bloke bigunen muga
@@ -315,6 +340,7 @@ umass_esfiles=Fitxategi leunaren muga falta edo baliogabea da
 umass_ehfiles=Fitxategi gogorraren muga falta edo baliogabea da
 umass_count=Beheko aldaketak hautatutako $1 erabiltzaileei aplikatuko zaizkie.
 umass_err=Ezin izan da erabiltzaileen kuotak eguneratu
+
 gmass_title=Eguneratu taldeko kuotak
 gmass_header=Kuota aldaketak hautatutako taldeei aplikatzeko
 gmass_count=Beheko aldaketak hautatutako $1 taldeei aplikatuko zaizkie

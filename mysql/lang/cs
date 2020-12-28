@@ -38,12 +38,15 @@ index_showing=Databáze vyhovující $1 ...
 index_emsg=Plné znění MySQL chyby bylo: $1
 index_jump=Nebo editovat databázi
 index_jumpok=Otevřít
+
 login_err=Neuspěšné přihlášení
 login_ecannot=Nejste oprávněn konfigurovat přístup do databáze
 login_elogin=Chybné administrační jméno
 login_epass=Špatné administrační jméno nebo heslo
+
 stop_err=Neuspěšné ukončení databáze
 start_err=Neuspěšné spuštění databáze
+
 dbase_title=Editace databáze
 dbase_tables=Tabulky databáze
 dbase_add=Vytvořit novou tabulku
@@ -65,12 +68,14 @@ dbase_index=Index
 dbase_view=Pohled
 dbase_addview=Vytvořit pohled
 dbase_jump=Nebo editovat tabulku:
+
 ddrop_err=Neúspěšné vypuštění databáze
 ddrop_title=Vypuštění databáze
 ddrop_rusure=Jste si jisti, že chcete vypustit databázi $1 ? $2 tabulek obsahuje $3 řádků dat, která budou smazána.
 ddrop_mysql=Protože je to hlavní databáze, její vypuštění bude pravděpodobně znamenat, ze váš  MySQL server bude nepoužitelný!!!
 ddrop_ok=Vypustit databázi
 ddrop_empty=Pouze smazat všechny tabulky
+
 ddrops_err=Nepodařilo se vypustit databázi
 ddrops_title=Vypustit databáze
 ddrops_rusure=Jste si jistý, že chcete vypustit $1 databází? $2 tabulek obsahuje $3 řádek dat: bude smazáno.
@@ -79,6 +84,7 @@ ddrops_mysql=Vypuštěním této databáze učiníte pravděpodobně váš serve
 ddrops_ok=Vypustit databáze
 ddrops_enone=Není vybrána žádná databáze
 ddrops_ecannotdb=Nemáte oprávnění vypustit databázi $1
+
 table_title=Editace tabulky
 table_title2=Vytvoření tabulky
 table_header=Tabulka $1 v databázi $2
@@ -124,16 +130,19 @@ table_nextra=Extra označeno
 table_eautokey=Auto-incremenent sloupec musí být taktéž primárním klíčem
 table_eauto=Pouze jeden sloupce může mít atribut auto-increment
 table_delete=Smazat vybrané pole
+
 tdrop_err=Neúspěšné zrušení tabulky
 tdrop_title=Zrušit tabulku
 tdrop_rusure=Jste si jisti, že chcete zrušit tabulku $1 v databázi $2 ? $3 řádků dat bude smazáno.
 tdrop_ok=Zrušit tabulku
+
 tdrops_enone=Nezvoleny objekty na vypuštění
 tdrops_err=Nepodařilo se vypustit objekty
 tdrops_ok=Vypustit objekty
 tdrops_title=Vypustit objekty
 tdrops_rusure=Jste si jistý, že chcete vypustit $1 vybraných objektů v databázi $2? $3 záznamů bude smazáno.
 tdrops_rusure2=Jste si jistý, že chcete vypustit $1 vybraných objektů v databází $2?
+
 field_title1=Přidat sloupec
 field_title2=Změnit sloupec
 field_in=v tabulce $1 v databázi $2
@@ -161,6 +170,7 @@ field_esize='$1' není platná šířka sloupce
 field_eenum=Nebyly vloženy žádné numerické hodnoty
 field_efield='$1' není platný název sloupce
 field_ekey=Sloupec, který nemá povolenu NULL nemůže být součástí primárního klíče
+
 view_title=Data tabulky
 view_pos=Řádky $1 do $2 z $3
 view_none=Tato tabulka neobsahuje data
@@ -189,6 +199,7 @@ view_download=Download ...
 view_keep=Ponecháno beze změny
 view_set=Nastavit na obsahy souborů ...
 view_adv=Pokročilé vyhledávání
+
 users_title=Oprávnění uživatelů
 users_user=Uživatel
 users_host=Hostitel
@@ -210,6 +221,7 @@ users_sync_sel=Specifický host
 users_delete=Smazat vybrané
 users_derr=Nepodařilo se smazat uživatele
 users_enone=Nezvoleni uživatelé
+
 user_title1=Vytvoření uživatele
 user_title2=Editace uživatele
 user_header=MySQL uživatelovy detaily
@@ -225,6 +237,7 @@ user_perms=Oprávnění
 user_err=Neúspěšné uložení uživatele
 user_euser=Chybějící nebo neplatné uživatelské jméno
 user_ehost=Chybějící nebo neplatný hostitel
+
 dbs_title=Oprávnění k databázi
 dbs_db=Databáze
 dbs_user=Uživatel
@@ -240,6 +253,7 @@ dbs_none=žádné
 dbs_return=Oprávnění k databázi
 dbs_derr=Nepodařilo se vymazat práva databází
 dbs_enone=Není vybrána žádná databáze
+
 db_title1=Vytvoření oprávnění k databázi
 db_title2=Editace oprávnění k databázi
 db_header=Databáze oprávnění nastavení
@@ -254,6 +268,7 @@ db_err=Neúspěšné uložení databáze oprávnění
 db_euser=Chybějící nebo neplatné uživatelské jméno
 db_ehost=Chybějící nebo neplatný hostitel
 db_edb=Chybějící nebo neplatné jméno databáze
+
 hosts_title=Oprávnění hostitelů
 hosts_db=Databáze
 hosts_host=Hostitelé
@@ -265,6 +280,7 @@ hosts_add=Vytvořit nové hostitelské oprávnění
 hosts_empty=Žádné hostitelské oprávnění není definováno
 hosts_derr=Nepodařilo se smazat práva hosta
 hosts_enone=Není vybrán žádný host
+
 host_title1=Vytvoření nového hostitelského oprávnění
 host_title2=Editace hostitelského oprávnění
 host_header=Nastavení hostitelského oprávnění
@@ -274,6 +290,7 @@ host_sel=Vybrané
 host_otherdb=Odpovídající vzoru
 host_host=Hostitelé
 host_perms=Oprávnění
+
 newdb_title=Vytvoření databáze
 newdb_header=Nová databáze
 newdb_db=Jméno databáze
@@ -286,6 +303,7 @@ newdb_err=Neúspěšné vytvoření databáze
 newdb_edb=Chybějící nebo neplatné jméno databáze
 newdb_ecannot=Nemáte povoleno vytvořit databázi
 newdb_ecannot2=Nemáte oprávnění vytvářet další databáze
+
 exec_title=Provést SQL
 exec_header=Vložit SQL příkaz pro provedení na databázi $1 ..
 exec_old=Nebo vybrat předchozí SQL příkaz :
@@ -319,6 +337,7 @@ exec_tabfile=Spustit SQL ze souboru
 exec_tabimport=Importovat textový soubor
 exec_isource=Zdroj textového souboru
 exec_iheader=Volby pro import textového souboru
+
 tprivs_title=Oprávnění přístupu k tabulkám
 tprivs_table=Tabulka
 tprivs_db=Databáze
@@ -334,6 +353,7 @@ tprivs_return=oprávnění k tabulkám
 tprivs_none=žádné
 tprivs_derr=Nepodařilo se smazat práva tabulek
 tprivs_enone=Nezvolena tabulka
+
 tpriv_title1=Vytvořit oprávnění k tabulce
 tpriv_title2=Editace oprávnění k tabulce
 tpriv_header=Nastavení oprávnění k tabulce
@@ -350,6 +370,7 @@ tpriv_etable=Žádná tabulka není vybraná
 tpriv_euser=Chybějící nebo neplatné uživatelské jméno
 tpriv_ehost=Chybějící nebo neplatný hostitel
 tpriv_edb=Chybějící nebo neplatný název databáze
+
 cprivs_title=Oprávnění ke sloupcům
 cprivs_field=Sloupec
 cprivs_table=Tabulka
@@ -366,6 +387,7 @@ cprivs_return=oprávnění ke sloupcům
 cprivs_none=Nic
 cprivs_derr=Nepodařilo se smazat práva pole
 cprivs_enone=Nevybral jste žádné pole
+
 cpriv_title1=Vytvoření oprávnění ke sloupcům
 cpriv_title2=Editace oprávnění ke sloupcům
 cpriv_header=Nastavení oprávnění ke sloupcům
@@ -382,11 +404,13 @@ cpriv_etable=Žádné sloupce nejsou vybrány
 cpriv_euser=Chybějící nebo neplatné uživatelské jméno
 cpriv_ehost=Chybějící nebo neplatný hostitel
 cpriv_edb=Chybějící nebo neplatný název databáze
+
 esql=SQL $1 neúspěšný : $2
 eparse=Webmin nemůže rozebrat výstup z příkazu $1 v důsledku existujících dat ve vaší databázi. Je potřeba nainstalovat $2 a $3 Perl moduly pro odstranění tohoto problému.
 edenied=Nemáte přístup k této MySQL databázi
 perms_ecannot=Nejste oprávněni editovat oprávnění
 perms_edb=Máte oprávnění editovat práva pouze u vašií vlastní databáze
+
 acl_dbs=Tento uživatel může databázi spravovat
 acl_dall=Všechny databáze
 acl_dsel=Vybrané..
@@ -406,6 +430,7 @@ acl_edonly=Editovat pouze data v tabulkách?
 acl_bnone=Zakázat zálohy
 acl_indexes=Možno prohlížet a spravovat indexy?
 acl_views=Možno prohlížet  a spravovat pohledy?
+
 log_start=MySQL server spuštěn
 log_stop=MySQL server zastaven
 log_cnf=Konfigurace MySQL serveru změněna
@@ -468,6 +493,7 @@ log_execfile=Spuštěny SQL příkazy ze souboru $1
 log_importupload=Importována data ze stáhnutého souboru
 log_importfile=Importována data ze souboru $1
 log_set=Změněna $1 proměnná MySQL
+
 backup_title=Záloha databáze
 backup_title2=Zálohovat všechny databáze
 backup_edump=Ve vašem systému nebyl nalezen MySQL zálohovací program. Je možné, že vaše <a href='$2'>konfigurace modulu</a> není v pořádku.
@@ -520,15 +546,18 @@ backup_cnone=Źádný
 backup_gzip=Gzip
 backup_bzip2=Bzip2
 backup_eccmd=Vybraný formát komprese vyžaduje příkaz $1
+
 import_title=Import dat
 import_uploadout=Importují se data ze stahovaného souboru ..
 import_fileout=Importují se data ze souboru $1 ..
 import_eupload=Chybějící stahovaný soubor pro import
 import_efile=Chybějící název souobru pro import
+
 adv_title=Pokročilé vyhledávání
 adv_and=Nalézt záznamy odpovídající všem kritériím
 adv_or=Nalézt záznamy odpovídající všem kritériím
 adv_ok=Prohledat
+
 csv_title=Exprotovat CSV soubor
 csv_header=Volby exportu CSV
 csv_dest=Místo exportu
@@ -549,6 +578,7 @@ csv_done=Export CSV do $1 je kompletní. Velikost výsledného souboru je $2.
 csv_headers=Zahrnout jména sloupců do CSV
 csv_cols=Sloupce zahrnuté v CSV
 csv_ecols=Nebyly vybrány žádné řádky
+
 cnf_title=Konfigurace serveru MySQL
 cnf_efile=Konfigurační soubor MySQL $1 nebyl na vašem systému nalezen. Pro správné nastavení použijte <a href='$2'>Konfiguraci modulu</a>.
 cnf_header=Nastavení MySQL serveru
@@ -578,6 +608,7 @@ cnf_esort_buffer=Chybějící nebo neplatná velikost sort buffer.
 cnf_enet_buffer_length=Chybějící nebo neplatná velikost síťového bufferu.
 cnf_emyisam_sort_buffer_size=Chybějící nebo neplatná velikost MyISAM sort buffer
 cnf_emax_connections=Chybějící nebo neplatné maximum počtu spojení.
+
 index_title1=Vytvořit Index
 index_header1=Volby indexu
 index_name=Jméno indexu
@@ -593,11 +624,14 @@ index_ecols=NEjsou vybrány žádné pole
 index_title2=Upravit index
 index_header=Index $1 v databázi $2
 index_ecannot=Nemáte oprávnění spravovat indexy
+
 syslog_desc=MySQL chybová hlášení
 syslog_logdesc=MySQL dotazy
+
 fdrop_err=Nepodařilo se smazat pole
 fdrop_enone=Nic nevybráno
 fdrop_eall=Nemůžete smazat všechna pole z tabulky!
+
 view_title1=Vytvořit pohled
 view_title2=Upravit pohled
 view_header1=Ukázat detaily
@@ -623,6 +657,7 @@ view_cascaded=Pohledy
 view_local=Jen tento pohled
 view_nocheck=Žádný
 view_ecannot=Nemáte oprávnění na spravování pohledů
+
 procs_title=Databázová spojení
 procs_id=ID
 procs_user=Uživatelské jméno
@@ -634,9 +669,11 @@ procs_query=Probíhá dotaz
 procs_kill=Zničit vybrané spojení
 procs_ecannot=Nemáte oprávnění k prohlížení databázových spojení
 procs_none=Nyní nejsou žádné další klientské databázová spojení.
+
 kill_err=Nepodařilo se zničit databázová spojení
 kill_ecannot=Nejste oprávněn spravovat databázová spojení
 kill_enone=Nezvoleno nic
+
 vars_title=MySQL systémové proměnné
 vars_ecannot=Nemáte oprávnění upravovat systémoví proměnné
 vars_name=Jméno proměnné
@@ -646,6 +683,7 @@ vars_search=Zobrazit proměnné, které vyhovují:
 vars_ok=Hledat
 vars_none2=Žádné systémové proměnné nevyhovují podmínce hledání.
 vars_none=Nebyly nalezeny žádné systémové proměnné!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQK 4.0
@@ -657,4 +695,5 @@ compat_maxdb=MaxDB
 compat_no_key_options=Klíčové volby
 compat_no_table_options=Volby tabulek
 compat_no_field_options=Pole voleb
+
 config_echarset=Chybějící nebo neplatná znaková sada

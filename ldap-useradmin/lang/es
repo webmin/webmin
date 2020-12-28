@@ -14,9 +14,11 @@ index_return=lista usuarios
 index_egsearch=Fallo en la búsqueda de grupos bajo $1 : $2
 index_samba=¿Samba?
 index_cyrus=¿IMAP?
+
 imap_econn=Fallo al conectar a servidor IMAP $1
 imap_elogin=Fallo en login a servidor IMAP $1 como $2 : $3
 conn_elogin=Fallo al enlazar al servidor LDAP $1 como $2 : $3
+
 uedit_cap=Capacidades de Usuario
 uedit_samba=¿Login Samba?
 uedit_cyrus=¿Login servidor IMAP?
@@ -28,6 +30,7 @@ uedit_firstname=Nombre
 uedit_lastname=Apellidos
 uedit_raw=Atributos LDAP
 uedit_return=detalles de usuario
+
 usave_eadd=Fallo al añadir usuario a BBDD de LDAP : $1
 usave_emod=Fallo al modificar usuario en BBDD de LDAP : $1
 usave_emoddn=Fallo al renombrar usuario en BBDD de LDAP : $1
@@ -46,23 +49,30 @@ usave_emodbookdn=Fallo al renombrar entrada en libreta de direcciones : $1
 usave_egone=¡El usuario ya no existe!
 usave_ex86=Este módulo no se puede utilizar para configurar la contraseña de un usuario Samba de un sistema no Intel, dado que depende de un programa compilado para x86.
 usave_esamba=Este módulo no se puede utilizar para configurar un usuario Samba, ya que el módulo de Compartición de Archivos Windows Samba no está instalado
+
 search_err=La búsqueda de $1 en $2 falló : $3
+
 gedit_dn=LDAP DN de Grupo
 gedit_return=detalles de grupo
 gedit_cap=Capacidades de grupo
 gedit_samba=¿Grupo Samba?
+
 gsave_egone=¡El grupo ya no existe!
 gsave_edelete=Fallo al borrar grupo de la BBDD de LDAP : $1
 gsave_eadd=Fallo al añadir grupo a la BBDD de LDAP : $1
 gsave_emod=Fallo al modificar grupo en la BBDD de LDAP : $1
 gsave_emoddn=Fallo al renombrar grupo en la BBDD de LDAP : $1
+
 gdel_group=Borrando entrada de grupo LDAP ..
+
 udel_pass=Borrando entrada de usuario LDAP ..
 udel_book=Borrando de la libreta de direcciones ..
 udel_imap=Borrando carpeta IMAP ..
 udel_warnimap=¡El buzón de correo existente será borrado cuando se borre el directorio home!
+
 raw_title=Atributos LDAP
 raw_name=Nombre de atributo
 raw_value=Valores
 raw_for=Para $1
+
 batch_samba=¿Crear cuenta Samba para los nuevos usuarios?

@@ -9,6 +9,7 @@ index_start=Ξεκινήστε το Syslog-NG
 index_startdesc=Κάντε κλικ σε αυτό το κουμπί για να ξεκινήσετε τον δαίμονα Syslog-NG, χρησιμοποιώντας την τρέχουσα διαμόρφωση.
 index_return=δείκτη μονάδας
 index_version=Syslog-NG $1 
+
 options_title=Επιλογές καταγραφής
 options_header=Επιλογές για όλα τα αρχεία καταγραφής
 options_secs=δευτερολέπτων
@@ -55,6 +56,7 @@ options_esync=Έλλειψη ή μη έγκυρος αριθμός μηνυμά�
 options_estats=Λείπει ή μη αριθμητικός χρόνος αναμονής μεταξύ μηνυμάτων στατιστικών
 options_elog_fifo_size=Έλλειψη ή μη έγκυρος αριθμός μηνυμάτων σε buffer
 options_elog_msg_size=Λείπει ή μη αριθμητικό μέγεθος μέγιστου μηνύματος καταγραφής
+
 destinations_title=Προορισμοί καταγραφής
 destinations_name=Όνομα προορισμού
 destinations_type=Γράφω σε
@@ -77,6 +79,7 @@ destinations_add=Προσθέστε έναν νέο προορισμό κατα�
 destinations_return=τους προορισμούς καταγραφής
 destinations_desc=Μητρώο άλλης ενότητας
 destinations_cmd=Έξοδος από $1 
+
 destination_header=Επιλογές προορισμού καταγραφής
 destination_title1=Δημιουργία προορισμού καταγραφής
 destination_title2=Επεξεργασία προορισμού καταγραφής
@@ -117,17 +120,22 @@ destination_enet_localip=Λανθασμένη ή μη έγκυρη τοπική 
 destination_enet_localport=Λείπει ή μη έγκυρος αριθμός τοπικής θύρας
 destination_enet_host=Λείπει ή δεν είναι έγκυρος κεντρικός υπολογιστής ή διεύθυνση διακομιστή Syslog
 destination_eunix=Λείπει το όνομα της υποδοχής Unix
+
 ddelete_err=Αποτυχία κατάργησης προορισμών
 ddelete_enone=Δεν έχει επιλεγεί
 ddelete_eused=Ο προορισμός $1 δεν μπορεί να διαγραφεί, καθώς χρησιμοποιείται από ένα στόχο καταγραφής
+
 sdelete_err=Αποτυχία διαγραφής πηγών
 sdelete_enone=Δεν έχει επιλεγεί
 sdelete_eused=Η πηγή αρχείου $1 δεν μπορεί να διαγραφεί, καθώς χρησιμοποιείται από ένα αρχείο καταγραφής
+
 fdelete_err=Η κατάργηση των φίλτρων απέτυχε
 fdelete_enone=Δεν έχει επιλεγεί
 fdelete_eused=Το φίλτρο καταγραφής $1 δεν μπορεί να διαγραφεί, καθώς χρησιμοποιείται από ένα αρχείο καταγραφής
+
 ldelete_err=Αποτυχία κατάργησης στόχων καταγραφής
 ldelete_enone=Δεν έχει επιλεγεί
+
 filters_title=Φίλτρα καταγραφής
 filters_name=Όνομα φίλτρου
 filters_desc=Συνθήκες
@@ -144,6 +152,7 @@ filters_program=πρόγραμμα <tt>$1</tt>
 filters_match=αντιστοιχεί "$1"
 filters_host=από το όνομα του κεντρικού υπολογιστή <tt>$1</tt>
 filters_netmask=από τον αποστολέα <tt>$1</tt>
+
 filter_title1=Δημιουργία φίλτρου καταγραφής
 filter_title2=Επεξεργασία φίλτρου καταγραφής
 filter_header=Καταγραφή λεπτομερειών προδιαγραφών φίλτρου
@@ -169,6 +178,7 @@ filter_enet=Λείπει ή μη έγκυρη διεύθυνση IP δικτύο
 filter_emask=Απουσία ή μη έγκυρη μάσκα δικτύου
 filter_ebool=Σφάλμα στη σύνθετη έκφραση
 filter_egone=Το φίλτρο δεν υπάρχει πλέον!
+
 logs_title=Στόχοι καταγραφής
 logs_source=Πηγές
 logs_filter=Φίλτρα
@@ -177,6 +187,7 @@ logs_add=Προσθέστε νέο στόχο αρχείου καταγραφή�
 logs_delete=Διαγραφή επιλεγμένων στόχων καταγραφής
 logs_return=τους στόχους καταγραφής
 logs_none=Κανένας
+
 log_title1=Δημιουργία στόχου καταγραφής
 log_title2=Επεξεργασία στόχου καταγραφής
 log_header=Επιλογή προέλευσης, φίλτρου και προορισμού
@@ -190,6 +201,7 @@ log_flags=Επιλογές στόχων
 log_egone=Ο στόχος αρχείου καταγραφής δεν υπάρχει πλέον!
 log_err=Αποτυχία αποθήκευσης στόχου καταγραφής
 log_esource=Δεν έχουν επιλεγεί πηγές
+
 sources_title=Πηγές καταγραφής
 sources_none=Δεν έχουν οριστεί ακόμα πηγές!
 sources_add=Προσθέστε μια νέα πηγή αρχείου καταγραφής.
@@ -207,6 +219,7 @@ sources_typen=Ρεύμα ηλίου
 sources_typenw=Διακομιστή Syslog
 sources_return=πηγές αρχείων καταγραφής
 sources_none2=Κανένας
+
 source_title1=Δημιουργία πηγής αρχείου καταγραφής
 source_title2=Επεξεργασία προέλευσης πρωτοκόλλου
 source_header=Επιλογές πηγής αρχείου καταγραφής
@@ -243,15 +256,20 @@ source_door=Όνομα αρχείου θυρών
 source_esun_streams_name=Λείπει ή μη έγκυρο όνομα αρχείου ροής ηλίου
 source_edoor=Λείπει ή δεν είναι έγκυρο το όνομα του αρχείου Sun
 source_transport=Πρωτόκολλο δικτύου
+
 view_title=Προβολή Logfile
 view_header=Τελευταίες $1 γραμμές $2 
 view_empty=Το αρχείο καταγραφής είναι κενό
 view_refresh=Φρεσκάρω
 view_filter=Εμφάνιση μόνο γραμμών με κείμενο $1 
+
 apply_err=Αποτυχία εφαρμογής διαμόρφωσης
 apply_egone=Δεν τρεχω!
+
 start_err=Δεν ήταν δυνατή η εκκίνηση του διακομιστή Syslog-NG
+
 stop_err=Αποτυχία διακοπής του διακομιστή Syslog-NG
+
 log_create_destination=Δημιουργήθηκε προορισμός καταγραφής $1 
 log_modify_destination=Τροποποιημένος προορισμός καταγραφής $1 
 log_delete_destination=Διαγράφηκε προορισμός μητρώου $1 

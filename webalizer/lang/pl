@@ -26,6 +26,7 @@ index_when=Tak, $1
 index_webalizer=Webalizer
 index_enable=Włącz harmonogram
 index_disable=Wyłącz harmonogram
+
 edit_title1=Dodaj plik dziennika
 edit_title2=Edytuj plik dziennika
 edit_header=Opcje raportu pliku dziennika
@@ -49,12 +50,14 @@ edit_cmode0=Użyj globalnych opcji
 edit_cmode1=Własne opcje
 edit_cmode2=Inny plik konfiguracyjny ..
 edit_clear=Wyczyścić plik(i) dziennika po wykonaniu harmonogramu raportu?
+
 gen_title=Generowanie raportu
 gen_header=Uruchamianie Webalizera w celu wygenerowania raportu z $1 ..
 gen_done=.. gotowe
 gen_failed=.. Błąd webalizera! Więcej szczegółów poniżej.
 gen_nothing=.. Webalizer zakończył pracę, ale nie wygenerował raportu. Poniżej więcej szczegółów.
 gen_view=Wyświetl kompletne raporty.
+
 save_err=Błąd zapisywania logu do pliku
 save_efile=Plik dziennika nie został wprowadzony lub nie istnieje
 save_ecfile=Brakujący lub nie istniejący inny plik konfiguracji
@@ -64,12 +67,14 @@ save_ewuser=Żaden użytkownik Unixa o nazwie $1 nie istnieje
 save_ehost=Brakująca lub błędna nazwa hosta witryny
 save_etitle=Brak tytułu raportu
 save_ecannot=Możesz tylko generować raporty dla logów $1
+
 view_epath=Nieprawidłowe PATH_INFO
 view_efile=Błędna nazwa pliku raportu
 view_elog=Błędny plik dziennika
 view_ecannot=Nie masz uprawnień do wyświetlenia tego raportu
 view_eopen=Otwarcie pliku raportu nie powiodło się
 view_title=Wyświetl Raport
+
 global_title=Globalne opcje webalizera
 global_title2=Opcje raportu Webalizera
 global_for=Dla pliku dziennika $1
@@ -130,6 +135,7 @@ global_includesite=Klienci nie ignorowani
 global_includereferrer=Odnośniki nie ignorowane
 global_includeuser=Użytkownicy nie ignorowani
 global_includeagent=Przeglądarki nie ignorowane
+
 global_err=Niepowodzenie zapisywania opcji Webalizera
 global_ereport=Brakujący prefiks tytułu raportu
 global_ehost=Brakująca lub błędna nazwa hosta
@@ -139,6 +145,7 @@ global_etable=Brakujący lub błędny rozmiar dla tabeli '$1'
 global_ehistory=Brakująca lub błędna nazwa pliku historii
 global_ecurrent=Brakująca lub nieprawidłowa nazwa przyrostowego pliku
 global_ecache=Brakująca lub błędna nazwa pliku dla cache DNS
+
 log_create_log=Utworzono raport dla $1
 log_modify_log=Zmodyfikowano raport dla $1
 log_delete_log=Usunięto raport dla $1
@@ -147,6 +154,7 @@ log_global=Zmodyfikowano globalne opcje Webalizera
 log_global2=Zmodyfikowano opcje Webalizera dla $1
 log_enable_logs=Włączono harmonogram w $1 logach
 log_disable_logs=Wyłączono harmonogram w $1 logach
+
 acl_view=Może wyświetlać istniejące raporty?
 acl_global=Może edytować globalne opcje webalizera?
 acl_dir=Zezwalaj tylko na przeglądanie i edytowanie raportów dla dziennika pod

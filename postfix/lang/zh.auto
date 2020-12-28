@@ -1,11 +1,14 @@
 connect_emysql=无法加载数据库驱动程序$1
 connect_elogin=无法登录数据库$1:$2。
 index_postfix=后缀
+
 index_esuper=Postfix主管命令$1不存在。也许您的<a href='$2'>模块配置</a>不正确。
 index_reload=重新加载配置
 index_reloadmsg=单击此按钮以使Postfix重新读取其所有配置文件。如果Postfix配置文件已被手动修改，这将很有用。
 index_version=Postfix版本$1
+
 check_manual=手动编辑Postfix配置文件。
+
 aliases_failed_delete=删除别名失败：$1
 aliases_click=单击任何别名以编辑其属性：
 aliases_addr=别名来自
@@ -18,9 +21,11 @@ aliases_type5=自动回复文件$1
 aliases_type6=应用过滤器文件$1
 aliases_none=没有
 aliases_delete=删除所选别名
+
 postfinger_title=配置检查
 postfinger_show=节目
 postfinger_ecannot=您无权检查Postfix配置
+
 mailclean_title=清理MailQueue
 mailclean_ecannot=没有权限清理MailQueues
 mailclean_active=活动队列
@@ -29,6 +34,7 @@ mailclean_deferred=延迟队列
 mailclean_defer=延迟队列
 mailclean_all=所有队列
 mailclean_search=搜索字符串
+
 aform_type0=没有
 aform_type1=电子邮件地址
 aform_type2=文件中的地址
@@ -44,6 +50,7 @@ aform_val=别名
 aform_afile=编辑 ..
 aform_return=别名
 aform_cmt=描述
+
 asave_err=无法保存别名
 asave_eaddr=“$1”不是有效地址
 asave_ealready=“$1”的别名已存在
@@ -54,11 +61,13 @@ asave_etype4='$1'不是有效程序或不存在
 asave_etype5=自动回复文件'$1'无效
 asave_etype4none=没有提供程序
 asave_etype6=筛选器文件“$1”无效
+
 afile_title=编辑地址文件
 afile_desc=使用下面的文本区域编辑文件$1中的地址。
 afile_efile=您不允许编辑$1。
 afile_undo=取消更改
 afile_ewrite=无法写入地址文件：$1
+
 ffile_title=编辑过滤文件
 ffile_desc=使用下面的表格在文件$1中设置过滤规则。
 ffile_efile=您不允许编辑$1。
@@ -74,6 +83,7 @@ ffile_other=否则转发到$1
 ffile_err=无法保存过滤器文件
 ffile_ematch=缺少比赛
 ffile_eaction=缺少转寄地址
+
 rfile_title=编辑自动回复文件
 rfile_desc=使用下面的文本区域编辑$1中的自动回复消息。该消息可能包含宏$ SUBJECT，$ FROM，$ TO，$ DATE和$ BODY，这些宏将在激活自动回复后扩展。
 rfile_desc2=您还可以通过添加如下行来设置添加或替换自动回复中使用的默认邮件标题：<br><tt>发件人：foo@bar.com </tt><br> <tt>主题：节假日<消息顶部的/tt><br>，与正文之间用一个空行分隔。
@@ -92,29 +102,38 @@ rfile_from=发件人：答复地址
 rfile_auto=自动（根据收件人的地址）
 rfile_efrom=缺少发件人：地址
 rfile_fromdesc=尽可能始终指定发件人：地址，因为自动方法可能不可靠。
+
 opts_nomap=未设置地图
 opts_setmap=地图规格
 opts_notify_classes_sel=在下面选择
+
 opts_edir=只允许在$1下指定地图文件。
+
 opts_mailbox_size_limit=邮箱的最大大小
+
 opts_mynetworks_style=自动局域网
 opts_mynetworks_subnet=相同的IP子网
 opts_mynetworks_class=同一网络类
 opts_mynetworks_host=仅本地机器
 opts_delay_warning_time_default2=后缀默认
 opts_content_filter_default=没有
+
 opts_relay_recipient_maps=映射允许中继的地址
 smtpd_nomap=尚未输入允许中继的地址的映射。
 smtpd_nomap2=尚未输入限制发件人地址的地图。
 smtpd_map=允许中继的地址
 smtpd_map2=发件人地址限制
+
 opts_smtp_use_tls=使用TLS进行SMTP连接
 opts_smtp_sasl_security_options=SASL安全选项
+
 debug_version=Webmin的Postfix模块-版本$1
 opts_edebug=详细记录级别缺失或无效-必须是大于零的数字
+
 canonical_return_sender=发件人规范地图
 canonical_return_recipient=收件人规范图
 canonical_return=规范地图
+
 mapping_delete=删除所选
 mapping_cmt=描述
 mapping_ecannot=仅允许您在$1下编辑地图
@@ -129,25 +148,42 @@ mapping_toomany=有$1映射条目，超过了$2的显示限制。
 mapping_find=显示匹配的映射：
 mapping_search=搜索
 mapping_match=匹配<tt>$1</tt>的映射文件条目。
+
 opts_virtual_alias_maps=域映射查找表
 opts_virtual_alias_domains=要为其执行虚拟映射的域
 virtual_same=来自域映射表
 virtual_return=虚拟域
+
 transport_return=运输地图
+
+sni_title=证书映射
+sni_ecannot=不允许编辑证书映射配置
+opts_sni_maps=证书映射查找表
+sni_return=证书图
+sni_dom=主机名
+sni_certs=证书文件
+
 relocated_return=搬迁的地图
 opts_content_filter=电子邮件内容过滤器
+
 no_map2=当前未定义地图。首先定义地图，然后可以对其进行编辑。
+
 stop_efailed=无法停止Postfix
 stop_ecannot=您不允许停止Postfix
+
 start_efailed=无法启动Postfix
 start_ecannot=您无权启动Postfix
+
 reload_efailed=无法重新加载Postfix
 reload_ecannot=您不允许重新加载Postfix
+
 query_get_efailed=无法查询Postfix配置命令以获取参数$1的当前值：<tt>$2</tt>
 query_set_efailed=无法查询Postfix config命令以将参数$1的当前值设置为$2：<tt>$3</tt>
 regenerate_ecannot=您无权重新生成别名
+
 regenerate_alias_efailed=无法重新生成别名：<tt>$1</tt>
 regenerate_table_efailed=无法重新生成表$1：<tt>$2</tt>
+
 acl_resource=可以编辑资源吗？
 acl_aliases=可以编辑别名吗？
 acl_aliases_options=可以编辑别名选项吗？
@@ -156,6 +192,7 @@ acl_address_rewriting=可以编辑地址重写吗？
 acl_canonical=可以编辑规范吗？
 acl_virtual=可以编辑虚拟吗？
 acl_transport=可以编辑运输方式吗？
+acl_sni=可以编辑证书吗？
 acl_relocated=可以编辑重定位吗？
 acl_header=可以编辑标题检查吗？
 acl_local_delivery=可以编辑本地递送吗？
@@ -174,6 +211,7 @@ acl_postfinger=可以检查后缀配置吗？
 acl_manual=可以编辑配置文件吗？
 acl_dir=地图文件的允许目录
 acl_bcc=可以编辑密件抄送映射吗？
+
 boxes_title=用户邮箱
 boxes_user=用户
 boxes_size=邮箱大小
@@ -183,6 +221,7 @@ boxes_sent=发送邮件
 boxes_ecannot=您不可以阅读电子邮件
 boxes_toomany=您的系统上有太多用户无法列出所有邮箱。
 boxes_go=查看用户的邮件：
+
 mail_title=用户电子邮件
 mail_from=从
 mail_date=日期
@@ -221,6 +260,7 @@ mail_forward=向前
 mail_rfc=从线
 mail_move=搬去：
 mail_eexists=讯息已不存在！
+
 view_title=阅读电邮
 view_desc=$2中的消息$1
 view_desc2=给用户$2的消息$1
@@ -249,6 +289,7 @@ view_body=讯息文字
 view_afile=附件名称
 view_atype=附件类型
 view_asize=文件大小
+
 compose_title=编写邮件
 reply_title=回覆电邮
 forward_title=转发邮件
@@ -259,6 +300,7 @@ reply_mailforward=转发邮件
 reply_attach2=客户端和服务器端附件
 reply_send=发邮件
 reply_ecannot=您不允许以该用户身份发送邮件
+
 send_err=发送邮件失败
 send_eto=缺少地址
 send_efrom=缺少寄件人地址
@@ -272,6 +314,7 @@ send_eperms=用户$1无法读取$2
 send_eperms2=您不可以发送文件$1
 send_epath=Sendmail可执行文件$1不存在。
 send_ewrapper=Postfix sendmail接口程序不存在
+
 search_title=搜索结果
 search_ecannot=您无权搜索此用户的电子邮件
 search_ematch=您必须输入要匹配的文本。
@@ -279,6 +322,7 @@ search_efield=您必须选择搜索类型。
 search_none=找不到消息。
 search_results2=匹配$2的$1邮件消息。
 search_results3=$1邮件与$2不匹配。
+
 match_from=来自：比赛
 match_subject=主题：比赛
 match_to=到：比赛
@@ -296,6 +340,7 @@ match_!date=日期：不符
 match_!body=身体不匹配
 match_!size=尺寸小于
 match_!headers=标头不匹配
+
 mailq_title=邮件队列
 mailq_count=$1消息
 mailq_none=当前没有任何邮件要排队传递
@@ -324,15 +369,20 @@ mailq_active=活性
 mailq_deferred=递延
 mailq_hold=保留选定
 mailq_unhold=取消选择
+
 flushq_title=冲洗队列
 flushq_desc=使用命令$1强制尝试发送邮件。
+
 qview_title=排队的消息
 qview_desc=来自文件$1
 qview_headers=邮件标题
 qview_attach=附件
+
 after_err=Postfix配置错误：$1
+
 searchq_title=队列搜索结果
 searchq_none=找不到排队的消息。
+
 header_title=标头检查
 header_ecannot=您无权编辑标题检查
 header_eregexp=标头检查映射必须采用<tt>regexp：</tt> <i>filename</i>格式
@@ -351,15 +401,18 @@ header_reject=拒绝（带有错误消息..）
 header_warn=记录警告（带有消息..）
 header_ename=无效的正则表达式-必须类似于/ something /
 header_return=标头检查
+
 body_title=身体检查
 body_ecannot=您无权编辑身体检查
 body_eregexp=正文检查映射必须采用<tt>regexp：</tt> <i>文件名</i>格式
 opts_body_checks=邮件正文检查表
 body_return=身体检查
+
 dependent_title=发件人相关的传输映射
 dependent_ecannot=不允许编辑依赖于发件人的传输映射
 dependent_eregexp=发件人相关的传输映射必须采用<tt>regexp：</tt> <i>文件名</i>格式
 dependent_return=发件人相关的传输映射
+
 manual_title=编辑地图文件
 manual_file=选择要编辑的地图文件：
 manual_change=更改
@@ -367,9 +420,11 @@ manual_editing=使用下面的文本框手动编辑$1中的映射。请注意，
 manual_err=保存地图文件失败
 manual_efile=无效的地图文件名！
 manual_ecannot=您无权手动编辑地图文件
+
 delq_titles=删除讯息
 delq_rusure=您确定要删除$1选定的排队消息吗？
 delq_confirm=删除讯息
+
 master_title=服务器进程
 master_name=工艺名称
 master_enabled=已启用？
@@ -410,8 +465,10 @@ master_einet=只能为Internet进程指定要监听的主机地址
 master_ecommand=缺少服务器进程命令
 master_ewakeup=缺少或无效的唤醒时间
 master_emaxprocs=最大进程数缺失或无效
+
 delete_err=删除映射失败
 delete_enone=未选择
+
 cmanual_title=编辑配置文件
 cmanual_ecannot=您无权编辑Postfix配置文件
 cmanual_ok=编辑
@@ -419,10 +476,12 @@ cmanual_efile=所选文件不属于Postfix配置
 cmanual_file=编辑配置文件：
 cmanual_edata=什么都没输入！
 cmanual_err=保存配置文件失败
+
 access_return=访问地图表
 edit_map_file=编辑地图文件
 opts_reject_rbl_client=实时黑名单（RBL）查找
 opts_check_sender_access=检查发件人访问映射表
+
 log_misc=常规选项已更改
 log_opts=更改地址重写和伪装
 log_aliases=别名更改
@@ -430,6 +489,7 @@ log_canonical=更改规范映射选项
 log_virtual=更改的虚拟域选项
 log_bcc=更改的密件抄送地图选项
 log_transport=更改了传输映射选项
+log_sni=更改证书映射选项
 log_dependent=更改了发件人相关的地址选项
 log_relocated=更改了重定位映射选项
 log_header=更改标题检查选项
@@ -507,6 +567,7 @@ log_sender_dependent_default_transport_maps_modify=修改的发件人相关地�
 log_sender_dependent_default_transport_maps_delete=已删除依赖于发件人的地址$1
 log_delete_sender_dependent_default_transport_mapss=删除的$1发送者相关地址
 log_manual_sender_dependent_default_transport_mapss=在$1中手动编辑的依赖于发件人的地址
+
 sasl_title=SMTP身份验证和加密
 opts_smtpd_sasl_auth_enable=需要SASL SMTP认证？
 opts_smtp_sasl_auth_enable=使用SASL SMTP身份验证？
@@ -553,6 +614,7 @@ sasl_nologin=不需要
 sasl_userpass=使用密码$2以$1登录
 sasl_elogin=SMTP登录丢失或无效（不允许使用空格或冒号）
 sasl_epass=无效的SMTP密码（不允许使用空格）
+
 client_title=SMTP客户端限制
 client_ecannot=您无权编辑SMTP客户端限制
 client_restrict=客户限制
@@ -562,6 +624,7 @@ client_other=其他限制：
 client_err=无法保存客户端限制
 client_evalue=缺少限制值$1
 client_return=SMTP客户端限制
+
 chooser_title=选择地图来源
 chooser_header=映射源$1
 chooser_none=没有
@@ -617,6 +680,7 @@ chooser_elquery_filter=映射$1的查询过滤器丢失
 chooser_elresult_attribute=映射$1的结果属性名称丢失或无效
 chooser_elbind_dn=映射$1的LDAP服务器缺少登录名
 chooser_elbind_pw=映射$1的LDAP服务器缺少密码
+
 mysql_ecfile=找不到MySQL配置文件$1
 mysql_ecfile2=在MySQL配置文件$1中找不到表
 mysql_edriver=无法加载数据库驱动程序$1
@@ -628,6 +692,7 @@ mysql_eupdate=SQL更新失败：$1
 mysql_elist=SQL查询失败：$1
 mysql_esource=找不到名为$1的MySQL源
 mysql_eneed=找不到MySQL配置参数$1。 Webmin需要它来确定要查询的表和字段。
+
 ldap_ecfile=找不到LDAP配置文件$1
 ldap_eldapmod=与LDAP通信所需的Perl模块$1未安装或不可加载
 ldap_eldap=无法在端口$2上连接到LDAP服务器$1
@@ -638,6 +703,7 @@ ldap_edelete=LDAP删除$1失败：$2
 ldap_equery=LDAP搜索$1失败：$2
 ldap_erename=LDAP重命名$1到$2失败：$3
 ldap_emodify=LDAP修改$1失败：$2
+
 bcc_title=密件抄送映射
 bcc_ecannot=您无权编辑BCC映射
 opts_sender_bcc_maps=发件人BCC映射查找表

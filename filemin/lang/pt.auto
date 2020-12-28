@@ -155,8 +155,10 @@ menu_bookmarks=Favoritos
 notallowed=Você não tem permissão para acessar $1. Os diretórios permitidos são : $2 
 error_upload_emax=O arquivo enviado é maior que o limite de $1 
 extract_etype=Tipo de arquivo não suportado
+
 info_total1=Total: arquivo $1 e diretório $2 
 info_total2=Total: $1 arquivos e $2 diretório
 info_total3=Total: $1 arquivo e $2 diretórios
 info_total4=Total: $1 arquivos e $2 diretórios
+
 ownership=Proprietário

@@ -30,6 +30,7 @@ index_return=lista de zonas
 index_ezones=Nenhuma zona FirewallD encontrada!
 index_none=Esta zona ainda não possui portas ou serviços permitidos.
 index_ifaces=Aplique regras às interfaces:
+
 port_edit=Editar porta
 port_create=Adicionar porta
 port_header=Opções de porta permitidas
@@ -45,11 +46,13 @@ port_eport=Número ou nome da porta ausente ou inválida
 port_eportlow=Porta baixa deve ser um número
 port_eporthigh=Porta alta deve ser um número
 port_eportrange=A porta baixa deve estar abaixo da porta alta
+
 serv_edit=Serviço de edição
 serv_create=Adicionar serviço
 serv_header=Opções de serviço permitidas
 serv_name=Serviço para permitir
 serv_err=Falha ao salvar o serviço
+
 forward_edit=Editar para a frente
 forward_create=Criar Encaminhamento
 forward_header=Opções de encaminhamento de porta
@@ -61,10 +64,13 @@ forward_dstaddr=Endereço de destino
 forward_dstlocal=Este sistema
 forward_edstaddr=Endereço de destino IPv4 inválido
 forward_eneither=É necessário inserir um endereço ou porta de destino ou ambos.
+
 check_ecmd=O comando de controle FirewallD $1 não foi encontrado no seu sistema
+
 delete_err=Falha ao excluir regras
 delete_enone=Nenhum selecionado!
 delete_edel=Falha na remoção de $1 : $2 
+
 zone_title=Criar zona
 zone_header=Novas opções de zona
 zone_name=Nome da zona
@@ -77,12 +83,16 @@ zone_mode4=Portas usadas para hospedagem virtual
 zone_err=Falha ao criar zona
 zone_ename=Nome de zona ausente ou inválido
 zone_eclash=Já existe uma zona com o mesmo nome
+
 delzone_title=Excluir zona
 delzone_err=Falha ao excluir a zona
 delzone_edefault=A zona padrão não pode ser removida
 delzone_rusure=Tem certeza de que deseja excluir a zona $1, que contém $2 portas e $3 serviços?
+
 defzone_err=Falha ao tornar a zona o padrão
+
 restart_err=Falha ao aplicar a configuração
+
 stop_err=Falha ao parar o FirewallD
 start_err=Falha ao iniciar o FirewallD
 log_stop=Firewall ParadoD

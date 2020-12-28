@@ -64,12 +64,14 @@ index_match1=dauka
 index_match2=partiduak
 index_dhcpd=ISC DHCPd
 index_delete=Ezabatu Hautatuta
+
 butt_save=Save
 butt_eco=Editatu bezeroaren aukerak
 butt_vco=Ikusi bezeroaren aukerak
 butt_del=Ezabatu
 butt_create=Sortu
 butt_leases=Errentamenduen zerrenda
+
 esub_crheader=Sortu azpimarra
 esub_edheader=Editatu azpisarea
 esub_tabhdr=Azpi-azaleko xehetasunak
@@ -83,12 +85,14 @@ esub_groups=Taldeak azpiatal honetan zuzenean
 esub_pools=Helbideen igerilekuak
 esub_pool=$1 igerilekua
 esub_poolnone=Ez da helbide-multzoak zehaztu
+
 esub_pooladd=Gehitu helbide-multzoa.
 esub_none=Bat ere ez
 esub_return=azpisareen zerrenda
 esub_retshar=sare partekatua
 esub_desc=Azpiatalen deskribapena
 esub_fopeer=Failover Peer
+
 esh_crheader=Sortu partekatutako sarea
 esh_eheader=Editatu sare partekatua
 esh_tabhdr=Sarearen xehetasun partekatuak
@@ -99,6 +103,7 @@ esh_subn=Sare partekatu honetan sareko sareak
 esh_return=azpisareen zerrenda
 esh_pools=Partekatutako sarearen helbide-igerilekuak
 esh_desc=Sarearen deskribapen partekatua
+
 ehost_crheader=Sortu ostalaria
 ehost_eheader=Editatu ostalaria
 ehost_tabhdr=Ostalariaren xehetasunak
@@ -119,6 +124,7 @@ ehost_retgroup=taldeko
 ehost_retsubn=azpisare
 ehost_retshar=sare partekatua
 ehost_desc=Ostalariaren deskribapena
+
 egroup_crheader=Sortu ostalari taldea
 egroup_eheader=Editatu ostalari taldea
 egroup_tblhdr=Taldearen xehetasunak
@@ -129,6 +135,7 @@ egroup_return=ostalarien zerrenda
 egroup_retsubn=azpisare
 egroup_retshar=sare partekatua
 egroup_desc=Taldearen deskribapena
+
 default=Default
 secs=secs
 none=Bat ere ez
@@ -157,20 +164,24 @@ listl_pc=ehunekoa
 listl_err=Huts egin du ezabatutako errentamenduak
 listl_enone=Ez da hautatu
 listl_refresh=Eguneratu zerrenda
+
 restart_errmsg1=Ezin izan da dhcpd berrabiarazi
 restart_errmsg2=Ezin izan da seinalea prozesatu
 start_failstart=Huts egin du dhcpd abiaraztean
 restart_conftext=$1 inguruko lerroak $2 inguruan :
+
 sgroup_faildel=Ezin izan da taldea ezabatu
 sgroup_failsave=Huts egin du taldea gordetzean
 sgroup_invassign=atal okerrari esleitutako taldea
 sgroup_echanged=Konfigurazio fitxategiaren edukia aldatu da. Saiatu berriro.
+
 shost_faildel=Ezin izan da ostalaria ezabatu
 shost_failsave=Huts egin du ostalaria gordetzean
 shost_invalidhn=ez da baliozko ostalariaren izena
 shost_invalidhwa='$1' ez da baliozko $2 helbide
 shost_invalidaddr='$1' ostalari izen edo IP helbide baliogabea dauka
 shost_invassign=ostalaria atal okerrari esleituta
+
 sopt_failsave=Huts egin du bezeroaren aukerak gordetzean
 sopt_invalidip=ez da baliozko IP helbide bat
 sopt_invalidint=ez da zenbaki oso bat
@@ -180,10 +191,12 @@ sopt_ednum='$1' ez da baliozko aukera kopurua
 sopt_edtype='$1' ez da baliozko aukera mota bat
 sopt_ecval='$1' aukera pertsonalizatuaren balioa falta da
 sopt_ecip='$1' aukera pertsonalizatuaren balioa IP helbide bat izan behar du
+
 sshared_faildel=Ezin izan da sare partekatua ezabatu
 sshared_failsave=Huts egin du sare partekatua gordetzean
 sshared_invalidsname=Sare partekatutako izen falta edo baliogabea.
 sshared_nosubnet='$1' sare partekatuak ez du azpiatalik.
+
 ssub_faildel=Huts egin du azpiarrea ezabatzeak
 ssub_failsave=Huts egin du azpiarra gordetzean
 ssub_invalidsubaddr=ez da azpidatzi bidezko helbidea
@@ -191,6 +204,7 @@ ssub_invalidnmask=ez da baliozko sareko sareko maskara
 ssub_invalidipr=ez da baliozko barruti IP helbide bat
 ssub_nosubnet='$1' sare partekatuak ez du azpiatalik.
 ssub_invalidfopeer=ez da baliozko failover parekoa
+
 plib_deflt=Errentamendu-denbora lehenetsia
 plib_bfname=Abiarazi fitxategiaren izena
 plib_maxlt=Errentamendu-denbora maximoa
@@ -244,6 +258,7 @@ plib_eexpr=DHCP konfigurazioaren atal honek $1 adierazpen zuzentaraua dauka, eta
 plib_auth_subnet=Zerbitzaria baimena da azpiatal honetarako?
 plib_auth_shared-network=Zerbitzaria partekatua da partekatutako sare honetarako?
 plib_auth_global=Zerbitzaria baimendua da azpimarka guztietarako?
+
 eopt_header=Bezeroaren Aukerak
 eopt_subtitle=$1 azpisarearentzat
 eopt_returnsub=azpisare
@@ -289,6 +304,7 @@ eopt_slpa=SLP direktorio agenteen IPak
 eopt_slpaips=IP hauek bakarrik?
 eopt_slps=SLP zerbitzuaren esparrua
 eopt_slpsonly=Esparru hau bakarrik?
+
 log_apply=Aplikatutako aldaketak
 log_start=DHCP zerbitzaria abiarazi da
 log_stop=DHCP zerbitzaria geldituta
@@ -311,6 +327,7 @@ log_options_group=$1 ostalari taldeentzako aukerak aldatu
 log_delete_lease=$1 eko errentamendua ezabatu da
 log_delete_subnets=$1 azpimarrak eta sare partekatuak ezabatu dira
 log_delete_hosts=$1 ostalari eta ostalari taldeak ezabatu dira
+
 keys_edit=Editatu TSIG gakoa
 keys_create=TSIG gakoak sortu dituzte
 keys_title=DNS gakoak
@@ -321,12 +338,14 @@ keys_ecannot=Ezin duzu DNS gakoak editatu
 keys_err=Huts egin du DNS gakoak gordetzean
 keys_ekey='$1' ez da baliozko gako ID bat
 keys_esecret=Baseko 64 kode sekretu falta edo baliogabea da $1 gakoarentzat
+
 pool_edit=Editatu helbide-multzoa
 pool_create=Helbide-multzoa sortu
 pool_header=Helbide igerilekuaren aukerak
 pool_allow=Bezeroak baimendu
 pool_deny=Bezeroak ukatzeko
 pool_return=azpisare
+
 cdel_header=Abisua
 cdel_shared1=sare partekatua
 cdel_shared2=sare partekatua
@@ -344,6 +363,7 @@ cdel_txt=$1 '$2' ezabatzeak ere bere edukia ezabatuko du:
 cdel_confirm=Nahi al duzu $1 hau ezabatu nahi duzula?
 cdel_eunknown=Akats ezezaguna
 cdel_return=ostalari eta sareen zerrenda
+
 eacl_aviol=Sarbide kontrola urratzea
 eacl_np=Ez duzu baimenik
 eacl_pdh=ezabatu ostalaria
@@ -369,6 +389,7 @@ eacl_pdl=ezabatu errentamenduak
 eacl_psl=ikusi errentamenduak
 eacl_pglob=aukera globala editatu
 eacl_papply=zerbitzu hau berrabiarazi
+
 acl_apply=Aldaketak aplika ditzakezu?
 acl_r_leases=Ikusi ahal alokairuak?
 acl_w_leases=Errentamenduak kendu al ditzake?
@@ -398,9 +419,11 @@ acl_err=Errorea ACL zerrenda gordetzean
 acl_ernow=Objektu mota batzuetarako ACL globaletan idazketa sarbidea gaitu nahi baduzu objektu mota honetarako irakurketa sarbidea gaitu behar duzu.
 acl_normal=normal
 acl_paranoic=paranoic
+
 iface_title=Sareko interfazea
 iface_desc=DHCP zerbitzariak IP helbideak bakarrik eslei ditzake azpian aukeratutako interfazeetako batekin konektatuta dauden sareetan. Definitutako azpimarka guztien sare interfazea sartu behar da. Ez badira hautatzen, DHCP zerbitzaria automatikoki aurkitzen saiatuko da.
 iface_listen=Entzun interfazeetan
+
 lookup_ehost=Ez dago izen, IP helbidea edo MAC helbidea duen ostalaririk
 lookup_ehostname=Ez da ostalariaren izena, IP helbidea edo MAC helbidea idatzi
 lookup_egroup=Ez dago $1 izenarekin edo domeinuaren izenik duen talderik
@@ -409,6 +432,7 @@ lookup_esubnet=Ez dago helbide edo helbide/netmask $1 azpisarerik
 lookup_esubnetname=Ez da azpiataleko helbide edo helbide/netmaskorik sartu
 lookup_eshared=Ez dago $1 izenarekin partekatutako sarerik
 lookup_esharedname=Ez da sare partekatutako izenik sartu
+
 zone_key=DNS guneak
 index_addzone=Gehitu DNS zona berri bat.
 index_zone=Zone
@@ -424,16 +448,21 @@ zone_faildel=Ezin izan da eremua ezabatu
 zone_failsave=Huts egin du zona gordetzean
 zone_tsigkey=TSIG gakoa
 zone_ecannot=Ezin duzu DNS guneak editatu
+
 plib_clientupdates=Bezeroek beren erregistroak eguneratu ditzakete?
+
 text_title=dhcpd.conf
 text_editor=Testu editorea
 text_return=menu nagusia
 text_undo=desegin
 text_ecannot=Ezin duzu konfigurazio fitxategia editatu
+
 index_buttetext=Eskuz editatu konfigurazioa
 index_text=Editatu konfigurazio fitxategia eskuz testua
+
 stop_err=Ezin izan da DHCP zerbitzaria gelditu
 stop_ekill=Korrika ez!
+
 sdelete_err=Ezin izan da sare-sareak eta sare partekatuak ezabatu
 sdelete_enone=Ez da hautatu
 sdelete_title=Ezabatu azpimarrak eta sare partekatuak
@@ -441,6 +470,7 @@ sdelete_rusure1=Ziur zaude $1 hautatutako azpimarrak eta $2 sare partekatuak eza
 sdelete_rusure2=Ziur hautatutako $1 azpimarrak ezabatu nahi dituzula? Azpi-sareetako beste edozein objektu ere galduko dira.
 sdelete_rusure3=Ziur hautatutako $2 sareak ezabatu nahi duzula? Sareko azpimarketak edo bestelako objektuak ere galduko dira.
 sdelete_ok=Ezabatu orain
+
 hdelete_err=Ezin izan da ostalariak eta taldeak ezabatu
 hdelete_enone=Ez da hautatu
 hdelete_title=Ezabatu ostalariak eta taldeak

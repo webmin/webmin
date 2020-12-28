@@ -12,6 +12,7 @@ index_ereq_resource_cmd=اسکریپتی برای درخواست منابع از
 index_version=نسخه ضربان قلب$1
 index_noversion=هشدار - نسخه ضربان قلب نصب شده بر روی سیستم شما به طور خودکار قابل شناسایی نیست. باید آن را در صفحه <a href='$1'>پیکربندی ماژول</a> تنظیم کنید.
 index_status=وضعیت ضربان قلب
+
 conf_title=گزینه های پیکربندی
 conf_header=گزینه های پیکربندی ضربان قلب
 conf_serials=پورت های ضربان قلب سریال
@@ -54,6 +55,7 @@ conf_auto_on=$ {conf_enabled
 conf_auto_off=$ {conf_disabled
 conf_auto_legacy=حالت میراث
 conf_auto_=$ {پیش فرض
+
 res_title=منابع خوشه ای
 res_node=گره اصلی
 res_ips=آدرس های IP
@@ -67,6 +69,7 @@ res_getserv=منبع را بدست آورید
 res_hbdown=ضربان قلب پایین
 res_up=بالا
 res_down=پایین
+
 node_create=منبع خوشه را اضافه کنید
 node_edit=منبع خوشه را ویرایش کنید
 node_header=جزئیات منابع خوشه
@@ -83,6 +86,7 @@ node_enone=گره اصلی وجود ندارد یا نامعتبر است
 node_eip='$1' یک آدرس IP معتبر نیست
 node_ecidr='$1' یک CIDR معتبر نیست
 node_ebroad='$1' یک آدرس پخش معتبر نیست
+
 auth_title=کلیدهای تأیید اعتبار
 auth_header=احراز هویت گره خوشه ای
 auth_mode=حالت تأیید اعتبار
@@ -92,6 +96,8 @@ auth_md5=MD5 با رمز عبور
 auth_err=ذخیره کلیدهای تأیید انجام نشد
 auth_emd5=گذرواژه MD5 وجود ندارد یا نامعتبر است
 auth_esha1=گذرواژه SHA1 نامعتبر است یا نامعتبر است
+
 start_err=ضربان قلب شروع نشد
+
 apply_err=اعمال تغییرات انجام نشد
 apply_epid=فرآیند دیگر در حال اجرا نیست

@@ -6,6 +6,7 @@ index_stop=Waqqaf il-Proċessi QMail
 index_stopmsg=Ikklikkja din il-buttuna biex twaqqaf il-proċessi QMail fl-isfond responsabbli biex iwassal posta bil-kju. Mingħajr dawn il-proċessi, il-posta mhix ser tintbagħat minn jew imwassla lis-sistema tiegħek kif suppost.
 index_start=Ibda l-Proċessi QMail
 index_startmsg=Ikklikkja din il-buttuna biex tibda l-isfond tal-proċessi QMail responsabbli biex iwassal posta bil-kju. Mingħajr dawn il-proċessi, il-posta mhix ser tintbagħat minn jew imwassla lis-sistema tiegħek kif suppost.
+
 opts_title=Għażliet QMail
 opts_me=Isem lokali lokali
 opts_helo=Isem ospitanti għal SMTP HELO
@@ -24,6 +25,7 @@ opts_etoremote=Żmien ta 'rispons SMTP invalidu ħiereġ
 opts_ebytes=Daqs massimu massimu mhux validu
 opts_etimeout=L-iskadenza tad-dejta SMTP mhix valida
 opts_elocalip=Kunjom host lokali tal-indirizz IP mhux validu
+
 aliases_title=Aliases tal-Mail
 aliases_addr=Indirizz
 aliases_to=Psewdonimu ..
@@ -38,6 +40,7 @@ aliases_return=lista tal-alias
 aliases_toomany=Hemm wisq alias tal-posta fis-sistema tiegħek biex jintwerew f'din il-paġna.
 aliases_go=Sib psewdonimi li jaqblu:
 aliases_delete=Ħassar Aliases Magħżula
+
 aform_type0=Xejn
 aform_type1=Indirizz tal-Email
 aform_type2=Direttorju tal-posta
@@ -52,6 +55,7 @@ aform_val=Psewdonimu
 aform_afile=Editja ..
 aform_novirt=&lt;L-oqsma kollha&gt;
 aform_return=psewdonimu
+
 asave_err=Naqset milli ssalva alias
 asave_eaddr="$1" mhuwiex indirizz validu
 asave_ealready=Diġà jeżisti alias għal '$1'
@@ -62,13 +66,16 @@ asave_etype4="$1" mhux programm validu jew ma jeżistix
 asave_etype5=Fajl awtomatikament "$1" mhux validu
 asave_etype4none=L-ebda programm mogħti
 asave_etype6=Fajl tal-filtru "$1" mhux validu
+
 adelete_err=Ma rnexxielux iħassar il-psewdonimu
 adelete_enone=L-ebda magħżul
+
 locals_title=Dominji Lokali
 locals_domains=Dominji lokali għal dan is-server
 locals_desc=Qmail se taċċetta għall-kunsinna lill-utenti lokali l-imejl għad-dominji u l-isem tal-host elenkati fil-kaxxa tat-test fuq ix-xellug. Jekk trid li s-server tal-posta elettronika tiegħek jittratta oqsma tal-email multipli, dawn għandhom jiġu elenkati kollha f'din il-formola.
 locals_only=L-isem lokali biss $1 
 locals_sel=Dominji elenkati hawn taħt ..
+
 rcpts_title=Dominji Aċċettati
 rcpts_domains=Oqsma aċċettati lokali u relay
 rcpts_all=Kull dominju
@@ -76,9 +83,11 @@ rcpts_sel=Dominji elenkati hawn taħt ..
 rcpts_desc=Qmail se taċċetta għat-trażmissjoni jew il-kunsinna lokali biss il-posta lill-dominji u l-hostnames elenkati fil-kaxxa ta 'test fuq ix-xellug. Tista 'wkoll tidħol wildcards li jaqblu mal-ospiti kollha f'domin bħal <tt>.foo.com</tt>. Jekk trid li s-server tal-posta tiegħek jirrelew l-email għall-klijenti, trid taċċetta l-posta minn kwalunkwe dominju.
 rcpts_domains2=Oqsma lokali u relay addizzjonali
 rcpts_desc2=Jekk għandek numru kbir ta 'dominji aċċettati, dawk inqas użati għandhom jiddaħħlu f'din il-kaxxa ta' test. B'mod ġenerali, l-ewwel 50 dominju permess tiegħek għandhom jiddaħħlu fil-kaxxa ta 'test ta' fuq, u l-bqija f'din il-waħda.
+
 bads_title=Indirizzi miċħuda
 bads_addresses=Indirizzi elettroniċi rifjutati
 bads_desc=QMail jirrifjuta posta biex iwassal jew jibgħat mill-ebda indirizzi elenkati fil-kaxxa ta 'test fuq ix-xellug, li għandha tiddaħħal bħala <tt>username @ domainname</tt>. Jekk trid tirrifjuta l-posta minn dominju sħiħ, din għandha tiddaħħal bħala <tt>@domainname</tt>.
+
 routes_title=Routing tad-Dominju
 routes_toomany=Hemm wisq rotot ta 'dominju fis-sistema tiegħek biex jintwerew f'din il-paġna.
 routes_go=Sib rotot ta 'dominju li jaqblu:
@@ -88,19 +97,24 @@ routes_direct=Iwassal direttament
 routes_defroute=Iwassal il-posta l-oħra ħierġa kollha permezz ta ':
 routes_return=rotot tad-dominju
 routes_delete=Ħassar ir-Rotot tad-Dominju magħżula
+
 rform_edit=Edit Rotta tad-Dominju
 rform_create=Oħloq Rotta ta 'Dominju
 rform_from=Mail għall-host jew dominju
 rform_to=Ibgħat permezz ta 'server SMTP
 rform_port=Port SMTP
+
 rsave_err=Ma rnexxielux isalva rotta tad-dominju
 rsave_efrom="$1" mhux isem ta 'dominju validu
 rsave_eto="$1" mhuwiex server SMTP validu
 rsave_eport="$1" mhux numru tal-port validu
+
 rdelete_err=Naqset milli tħassar ir-rotot tad-dominju
+
 percents_title=% Dominji tal-Indirizz
 percents_domains=Dominji li jappoġġjaw % indirizzi
 percents_desc=QMail se jaċċetta email bl-indirizzi fil-format <tt>user%firstdomain@seconddomain</tt> jekk it-<tt>seconddomain</tt> huwa elenkat fil-kaxxa ta ’test fuq ix-xellug. Messaġġi f'dan il-format imbagħad jintbagħtu lil <tt>user@firstdomain</tt> minn dan is-server tal-posta.
+
 virts_title=Immappjar Virtwali
 virts_toomany=Hemm wisq mappings virtwali fis-sistema tiegħek biex jintwerew f'din il-paġna.
 virts_go=Sib mappings virtwali li jaqblu:
@@ -111,6 +125,7 @@ virts_none=Mhux virtwali
 virts_desc=L-immappjar virtwali jintuża mill-QMail biex jimmaniġġa l-email lil dominji differenti fuq is-server tiegħek, billi jibgħat test minn qabel lill-parti tal-utent tal-indirizz tal-email qabel aktar proċessar. Tista 'tużahom biex tissettja dominji tal-posta virtwali billi toħloq immappjar virtwali ġdid għal dominju, u mbagħad tuża l-paġna <a href='$1'>Mail Aliases</a> biex toħloq aliases f'dak id-dominju.
 virts_return=mappings virtwali
 virts_delete=Ħassar il-Mapep Maġġuri Virtwali magħżula
+
 vform_edit=Editja Immappjar Virtwali
 vform_create=Oħloq Immappjar Virtwali
 vform_from=Mail għall-indirizz
@@ -121,13 +136,17 @@ vform_to=Ippreferi għall-username
 vform_none=Xejn
 vform_prepend=Prefiss speċifikat
 vform_auto=Prefiss magħżul awtomatikament
+
 vsave_err=Ma rnexxielux isalva l-immappjar virtwali
 vsave_edomain="$1" mhux dominju tal-email validu
 vsave_euser="$1" mhux isem ta 'l-email validu
 vsave_eprepend="$1" mhux prefiss tal-immappjar validu
 vsave_eboth=Ma tistax tagħżel kemm 'Kwalunkwe indirizz li ma jaqbilx ma' mapping virtwali ieħor 'u' Xejn '
+
 vdelete_err=Naqset milli tħassar il-mappings virtwali
+
 stop_err=il-qmail-send process ma jibqax għaddej
+
 log_stop=Waqqfu l-proċessi QMail
 log_start=Bdew il-proċessi QMail
 log_opts=Inbidlet l-għażliet QMail
@@ -158,6 +177,7 @@ log_delete_assigns=Utenti tal-posta $1 imħassra
 log_delmail=Mħassra $1 messaġġi minn $2 
 log_movemail=Tmexxa messaġġi $1 minn $2 għal $3 
 log_send=Intbagħat il-posta lil $1 
+
 rfile_title=Editja l-Fajl Autoreply
 rfile_desc=Uża l-erja tat-test hawn taħt biex teditja l-messaġġ awtomatiku f ' $1. Il-messaġġ jista 'jkun fih il-makros $ SUBJETT, $ MINN, $ TO, $ DATA u $ BODY li se jitwessgħu meta l-autoreply ikun attivat.
 rfile_desc2=Tista 'wkoll tissettja intestaturi tal-posta li jżidu ma' jew jibdlu n-nuqqasijiet użati fl-autoreply billi tpoġġi linji bħal: <br><tt> Minn: foo@bar.com </tt><br> <tt>Suġġett: Fil-vaganza</tt> <br> fil-quċċata tal-messaġġ, separat mill-ġisem b'linja vojta waħda.
@@ -176,6 +196,7 @@ rfile_from=Minn: indirizz għat-tweġiba
 rfile_auto=Awtomatika (ibbażata fuq l-indirizz tar-riċevitur)
 rfile_efrom=Nieqes Minn: indirizz
 rfile_fromdesc=A Minn: l-indirizz għandu dejjem ikun speċifikat fejn possibbli, billi l-metodu awtomatiku jista 'ma jkunx ta' min joqgħod fuqu.
+
 ffile_title=Editja l-File File
 ffile_desc=Uża l-formola hawn taħt biex tissettja r-regoli tal-filtru fil-fajl $1.
 ffile_efile=Mhux permess li jeditja $1.
@@ -191,6 +212,7 @@ ffile_other=Inkella 'l quddiem għal $1
 ffile_err=Ma rnexxielux isalva fajl tal-filtru
 ffile_ematch=Partita nieqsa
 ffile_eaction=Indirizz ta 'trasmissjoni nieqsa
+
 queue_title=Kju tal-Mail
 queue_count=$1 messaġġi
 queue_none=Bħalissa m'hemm l-ebda messaġġ bil-posta għall-kunsinna
@@ -206,10 +228,12 @@ queue_all=Agħżel kollox
 queue_invert=Inverti l-għażla
 queue_refresh=Aġġorna Kju tal-Mail
 queue_refreshdesc=Reload din il-paġna biex turi l-istat attwali tal-kju tal-posta.
+
 qview_title=Messaġġ fil-kju
 qview_desc=Mill-fajl $1 
 qview_headers=Intestaturi tal-posta
 qview_attach=Mehmużin
+
 assigns_title=Assenjazzjonijiet ta 'Utenti ta' Mail
 assigns_return=inkarigi ta 'utenti tal-posta
 assigns_toomany=Hemm wisq utenti ta 'posta fis-sistema tiegħek biex jintwerew f'din il-paġna.
@@ -221,6 +245,7 @@ assigns_gid=GID
 assigns_home=Direttorju tad-dar
 assigns_desc=L-assenjazzjonijiet tal-utent tal-posta jippermettulek toħloq kaxxi tal-posta għall-utenti li mhumiex definiti fil-lista tal-utenti Unix. Kull inkarigu jibgħat posta għal username magħżul jew mudell ta 'username, daqslikieku kienet qed tintbagħat lill-kaxxa postali ta' utent Unix reali.
 assigns_delete=Ħassar l-Utenti tal-Mail Magħżula
+
 sform_edit=Editja l-utent tal-posta
 sform_create=Oħloq utent tal-posta
 sform_address=Username tal-indirizz
@@ -230,15 +255,19 @@ sform_user=Utent Unix
 sform_uid=UID
 sform_gid=GID
 sform_home=Direttorju tad-dar
+
 ssave_err=Ma rnexxielux isalva lill-utent tal-posta
 ssave_eaddress=Username tal-indirizz nieqes jew invalidu
 ssave_euser=Utent Unix nieqes jew invalidu
 ssave_euid=UID nieqes jew invalidu
 ssave_egid=GID nieqes jew invalidu
 ssave_ehome=Direttorju tad-dar nieqes jew invalidu
+
 sdelete_err=Naqset milli tħassar l-utenti tal-posta
+
 delete_egone=Messaġġ fil-kju ma għadux jeżisti
 delete_ebogus=Isem tal-kju mhux validu
+
 boxes_title=Kaxxi tal-posta tal-utenti
 boxes_user=Utent
 boxes_size=Daqs tal-kaxxa tal-posta
@@ -248,6 +277,7 @@ boxes_sent=Intbagħat il-posta
 boxes_ecannot=M'għandekx permess taqra email
 boxes_toomany=Hemm wisq utenti fis-sistema tiegħek biex jelenka l-kaxxi tal-posta kollha tagħhom.
 boxes_go=Ara l-posta elettronika għall-utent:
+
 mail_title=Email tal-Utent
 mail_from=Minn
 mail_date=Data
@@ -286,6 +316,7 @@ mail_forward=’Il quddiem
 mail_rfc=Mil-linja
 mail_move=Nimxu lejn:
 mail_eexists=Messaġġ m'għadux jeżisti!
+
 view_title=Aqra l-Email
 view_desc=Messaġġ $1 f' $2 
 view_desc2=Messaġġ $1 għall-utent $2 
@@ -309,6 +340,7 @@ view_mark1=Aqra
 view_mark2=Speċjali
 view_return=Email oriġinali
 view_sub=Mehmuż Email
+
 compose_title=Ikteb Email
 reply_title=Irrispondi għall-Email
 forward_title=Ibgħat Email
@@ -319,6 +351,7 @@ reply_mailforward=Messaġġi mibgħuta
 reply_attach2=Mehmużin min-naħa tal-Klijent u tas-server
 reply_send=Ibgħat Mail
 reply_ecannot=M'għandekx permess tibgħat posta bħala dan l-utent
+
 send_err=Naqset milli tibgħat il-posta
 send_eto=Nieqes Biex tindirizza
 send_efrom=Nieqes mill-indirizz
@@ -331,6 +364,7 @@ send_eattach=L-aċċessorji ma jistgħux jammontaw għal aktar minn $1 kB fid-da
 send_eperms=L-utent $1 ma jistax jaqra $2 
 send_eperms2=M'għandekx permess tibgħat fajl $1 
 send_epath=Sendmail eżegwibbli $1 ma jeżistix.
+
 delete_title=Ħassar Mail
 delete_rusure=Int żgur li trid tħassar il-messaġġi magħżula $1 minn $2 ? Dan jista 'jieħu ftit taż-żmien għal fajl kbir tal-posta. Sakemm it-tħassir ikun intemm, l-ebda azzjoni oħra ma għandha titwettaq.
 delete_rusure2=Int żgur li trid tħassar dan il-messaġġ minn $1 ? Dan jista 'jieħu ftit taż-żmien għal fajl kbir tal-posta. Sakemm it-tħassir ikun intemm, l-ebda azzjoni oħra ma għandha titwettaq.
@@ -339,6 +373,7 @@ delete_ecannot=Issa int permess li tħassar il-posta minn dan l-utent
 delete_enone=L-ebda posta magħżula biex titħassar
 delete_emnone=L-ebda posta magħżula biex timmarka
 delete_nobutton=Mingħajr ebda buttuna
+
 search_title=Riżultati tat-Tiftix
 search_ecannot=M'għandekx permess tfittex l-email ta 'dan l-utent
 search_ematch=Trid tidħol test biex taqbel ma '.
@@ -346,6 +381,7 @@ search_efield=Trid tagħżel tip ta ’tfittxija.
 search_none=Ma nstab l-ebda messaġġ.
 search_results2=$1 messaġġi li jaqblu ma ' $2.
 search_results3=$1 messaġġi li ma jaqblux ma ' $2 ..
+
 match_from=Minn: logħbiet
 match_subject=Suġġett: taqbiliet
 match_to=Għal: taqbiliet
@@ -363,6 +399,7 @@ match_!date=Data: ma taqbilx
 match_!body=Korp ma jaqbilx
 match_!size=Id-daqs huwa inqas minn
 match_!headers=Intestaturi ma jaqblux
+
 delq_titles=Tħassir ta 'Messaġġi
 delq_rusure=Int żgur li trid tħassar il-messaġġi fil-kju magħżula $1 ?
 delq_confirm=Ħassar Messaġġi

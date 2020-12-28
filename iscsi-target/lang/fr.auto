@@ -1,6 +1,7 @@
 check_econfig=Le fichier de configuration cible iSCSI $1 est introuvable sur votre système.
 check_eietadm=La commande d'administration cible iSCSI $1 est introuvable sur votre système.
 check_einit=L'action de démarrage $1 n'existe pas
+
 index_title=Cible iSCSI
 index_clink=Il n'est peut-être pas installé ou la configuration de votre <a href='$1'>module</a> est incorrecte.
 index_stop=Arrêter la cible iSCSI
@@ -22,8 +23,10 @@ index_noluns=Aucun
 index_nousers=Tout
 index_nullio=Disque RAM de $1 secteurs
 index_size=Taille totale
+
 dtargets_err=Impossible de supprimer les cibles
 dtargets_enone=Aucune sélection!
+
 target_title1=Créer une cible iSCSI
 target_title2=Modifier la cible iSCSI
 target_header=Options de périphérique partagé iSCSI
@@ -68,11 +71,13 @@ target_noalias=Aucun
 target_hdigest=Somme de contrôle de l'en-tête
 target_ddigest=Somme de contrôle des données
 target_nodigest=Aucun
+
 auth_title=Paramètres d'authentification
 auth_header=Options d'authentification par défaut pour toutes les cibles
 auth_iuser=Authentification par les clients
 auth_ouser=Authentification auprès des clients
 auth_err=Échec de l'enregistrement des paramètres d'authentification
+
 conn_title=Paramètres de connexion
 conn_header=Options de connexion par défaut pour toutes les cibles
 conn_sessions=Nombre maximal de sessions simultanées
@@ -91,6 +96,7 @@ conn_emaxrecv=Longueur de segment de réception maximale manquante ou non numér
 conn_emaxxmit=Longueur de segment de transmission maximale manquante ou non numérique
 conn_emaxburst=Taille maximale de rafale client manquante ou non numérique
 conn_efirstburst=Taille maximale des données client non sollicitées manquantes ou non numériques
+
 timeout_title=Paramètres de délai
 timeout_header=Options de délai d'expiration du client
 timeout_nopi=Intervalle entre les pings en cas d'inactivité
@@ -98,6 +104,7 @@ timeout_nopinone=Ne jamais cingler
 timeout_secs=secondes
 timeout_nopt=Temps d'attente pour la réponse ping
 timeout_noptnone=Identique au temps de ping
+
 addr_title=Adresse et port du serveur
 addr_header=Options de mise en réseau du serveur iSCSI
 addr_addr=Écouter sur l'adresse IP
@@ -110,18 +117,21 @@ addr_err=Impossible d'enregistrer l'adresse du serveur
 addr_eaddr=L'adresse à écouter doit être une adresse IP
 addr_eport=Le port à écouter doit être un nombre
 addr_edebug=Le niveau de débogage doit être un nombre
+
 initiators_title=Adresses client autorisées
 initiators_none=Aucune adresse client autorisée n'a encore été définie. Aucun client ne pourra se connecter.
 initiators_ips=Clients autorisés
 initiators_title1=Ajouter des adresses client autorisées
 initiators_title2=Modifier les adresses client autorisées
 initiators_header=Clients iSCSI autorisés pour la cible
+
 targets_title=Adresses de serveur autorisées
 targets_none=Aucune adresse de serveur autorisée n'a encore été définie. Aucun client ne pourra se connecter.
 targets_ips=Interfaces serveur autorisées
 targets_title1=Ajouter des adresses de serveur autorisées
 targets_title2=Modifier les adresses de serveur autorisées
 targets_header=Interface de serveur iSCSI autorisée pour la cible
+
 allow_target=Nom cible
 allow_move=Bouge toi
 allow_delete=Supprimer sélectionnée
@@ -133,17 +143,21 @@ allow_return=cibles et adresses autorisées
 allow_err=Impossible d'enregistrer les adresses autorisées
 allow_eaddr=L'adresse $1 n'est pas valide. Il doit s'agir d'une adresse IPv4, d'un réseau/masque IPv4 ou d'une adresse IPv6 entre crochets.
 allow_eaddrs=Aucune adresse à autoriser saisie
+
 dallow_err=Impossible de supprimer les adresses autorisées
 dallow_enone=Aucune sélection
+
 manual_title=Modifier le fichier de configuration
 manual_desc=Utilisez la zone de texte ci-dessous pour modifier le fichier de configuration du serveur iSCSI $1. Attention, aucune validation ne sera effectuée sur votre saisie!
 manual_err=Impossible d'enregistrer le fichier de configuration
 manual_edata=Aucun contenu saisi!
+
 start_err=Impossible de démarrer le serveur iSCSI
 stop_err=Impossible d'arrêter le serveur iSCSI
 restart_err=Impossible de redémarrer le serveur iSCSI
 atboot_err=Échec de l'activation au démarrage
 atboot_einit=Le script d'initialisation $1 n'existe pas
+
 log_create_target=Cible créée $1 
 log_delete_target=Cible supprimée $1 
 log_modify_target=Cible modifiée $1 

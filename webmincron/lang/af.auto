@@ -15,5 +15,6 @@ edit_special_daily=Daagliks (om middernag)
 edit_special_weekly=Weekliks (op Sondag)
 edit_special_monthly=Maandeliks (op die 1ste)
 edit_special_yearly=Jaarliks (op 1 Januarie)
+
 log_success=<tt>$2</tt> in <tt>$1</tt> suksesvol geloop
 log_failure=Kon nie <tt>$2</tt> in <tt>$1</tt> voer nie : $3 

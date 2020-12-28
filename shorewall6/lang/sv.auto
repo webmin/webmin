@@ -19,6 +19,7 @@ index_dump=Visa dumpning
 index_dumpdesc=Klicka på den här knappen för att se Shorewall-spårningsinformation från kommandot <tt>shorewall6</tt>.
 index_check=Kontrollera brandväggen
 index_checkdesc=Klicka på den här knappen för att Shorewall ska validera din brandväggskonfiguration med kommandot <tt>shorewall6</tt>.
+
 list_move=Flytta
 list_add=Lägg till
 list_auto=Automatisk
@@ -30,6 +31,7 @@ list_manual=Redigera fil manuellt
 list_manualdesc=Klicka på den här knappen för att manuellt redigera Shorewall-filen $1, där posterna ovan är lagrade.
 list_ecannot=Du får inte redigera denna Shorewall-tabell.
 list_delete=Radera valda
+
 restart_err=Det gick inte att tillämpa konfigurationen
 refresh_err=Det gick inte att uppdatera konfigurationen
 start_err=Det gick inte att starta brandväggen
@@ -41,6 +43,7 @@ check_title=Kontrollera brandväggen
 check_ok=.. din brandväggskonfiguration ser OK ut.
 check_failed=.. ett fel hittades i din brandväggskonfiguration!
 check_cmd=Kontrollerar konfiguration ..
+
 zones_title=Nätverkszoner
 zones_desc=Zonerna som listas på denna sida representerar olika nätverk som kan nås från ditt system. Men inmatningarna här har inte någon effekt på brandväggen - utan definierar bara zonnamn och beskrivningar.
 zones_add=Lägg till en ny nätverkszon.
@@ -72,6 +75,7 @@ zones_firewall=Brandväggssystem
 zones_eopts=Ogiltiga zonalternativ
 zones_eopts_in=Ogiltiga zoninkomster
 zones_eopts_out=Ogiltiga zonutgående alternativ
+
 policy_title=Standardpolicyer
 policy_desc=På denna sida kan du konfigurera standardåtgärderna för trafik mellan olika brandväggzoner. De kan åsidosättas för vissa värdar eller typer av trafik på sidan Firewall-regler.
 policy_add=Lägg till en ny standardpolicy.
@@ -92,6 +96,7 @@ policy_ulog=Logga till ULOG
 policy_efw=&lt;Firewall&gt; kan väljas för både käll- och destinationszoner
 policy_elimit=Saknat eller ogiltigt trafikbegränsningsnummer
 policy_eburst=Saknat eller ogiltigt antal trafikskador
+
 rules_title=Brandväggsregler
 rules_desc=Denna tabell visar undantag från standardpolicyn för vissa typer av trafik, källor eller destinationer. Den valda åtgärden kommer att tillämpas på paket som matchar de valda kriterierna istället för standard.
 rules_add=Lägg till en ny brandväggsregel.
@@ -138,6 +143,7 @@ rules_eaction=Ingen åtgärd vald
 rules_macro=Makrohandlingsparameter
 rules_none2=Ingen
 rules_emacro=Makroparameter saknas eller ogiltig
+
 tos_title=Typer av tjänster
 tos_desc=Denna sida definierar IP-tjänsttyper för specifika typer av trafik, som kan användas för att höja eller sänka sina prioriteringar.
 tos_add=Lägg till en ny typ av tjänst.
@@ -156,6 +162,7 @@ tos_edit=Redigera typ av tjänst
 tos_create=Skapa typ av tjänst
 tos_header=Typ av serviceinformation
 tos_err=Det gick inte att spara typ av tjänst
+
 interfaces_title=Nätverksgränssnitt
 interfaces_desc=Var och en av nätverksgränssnitten på ditt system som du vill att Shorewall ska hantera ska listas på den här sidan och kopplas till den zon som den är ansluten till. Loopback-gränssnittet <tt>lo</tt> får aldrig listas.
 interfaces_add=Lägg till ett nytt nätverksgränssnitt.
@@ -171,6 +178,7 @@ interfaces_header=Nätverksgränssnittdetaljer
 interfaces_err=Det gick inte att spara nätverksgränssnittet
 interfaces_eiface=Saknas eller ogiltigt gränssnittsnamn
 interfaces_ebroad=Saknad eller ogiltig sändningsadress
+
 masq_title=Masquerading
 masq_desc=Poster på den här sidan skapar översättning av nätverksadresser för trafik som dirigeras mellan något nätverk och ett visst gränssnitt.
 masq_add=Lägg till en ny maskeradregel.
@@ -201,6 +209,7 @@ masq_emnete=Lista över tomma undantagsnätverk
 masq_esnat=Ogiltig SNAT IP-adress
 masq_eports=Saknad eller ogiltig komma-separat lista över portar
 masq_eipsec=Saknade IPsec-alternativ
+
 nat_title=Statisk NAT
 nat_desc=De statiska nätverksadressöversättningsposterna i denna tabell kan användas för att ställa in en 1-1-korrespondens mellan en extern adress på din brandvägg och en RFC1918-adress på en maskin bakom din brandvägg. Statisk NAT används ofta för att tillåta anslutningar till en intern server utanför ditt nätverk.
 nat_add=Lägg till en ny statisk NAT-post.
@@ -219,6 +228,7 @@ nat_local=Aktiv för brandväggssystem?
 nat_eext=Ogiltig extern IP-adress
 nat_eint=Ogiltig intern IP-adress
 nat_evirt=Ogiltigt virtuellt gränssnittsnummer
+
 proxyndp_title=Proxy NDP
 proxyndp_desc=På denna sida kan du konfigurera ditt system för att besvara NDP-förfrågningar för andra IP-adresser än sina egna, så att det kan vidarebefordra paket till dessa adresser till deras verkliga destinationer.
 proxyndp_add=Lägg till en ny proxy-NDP-adress.
@@ -235,6 +245,7 @@ proxyndp_err=Det gick inte att spara proxy-NDP
 proxyndp_have=Rutt till värd finns?
 proxyndp_eaddr=Saknad eller ogiltig adress till NDP
 proxyndp_pers=Lämna vägen även när brandväggen stannade?
+
 routestopped_title=När stoppad
 routestopped_desc=När Shorewall stoppas kommer den som standard att avvisa åtkomst från alla värdar. På denna sida kan du definiera värdar eller nätverk som fortfarande är tillgängliga.
 routestopped_add=Lägg till en ny stoppad adress.
@@ -250,6 +261,7 @@ routestopped_err=Det gick inte att spara stoppad adress
 routestopped_eaddr=Inga adresser angivna
 routestopped_all=Alla adresser
 routestopped_list=Listade adresser och nätverk ..
+
 tunnels_title=VPN-tunnlar
 tunnels_desc=Den här sidan visar VPN-tunnlar som passerar din brandvägg och måste därför tillåtas av Shorewall-konfigurationen.
 tunnels_add=Lägg till en ny VPN-tunnel.
@@ -282,6 +294,7 @@ tunnels_generic_l=Generiskt för protokoll. ..
 tunnels_gsel=Listade zoner
 tunnels_eopenvpn=Ogiltigt portnummer för OpenVPN-tunneln
 tunnels_egeneric=Protokoll eller protokoll saknas: port för generisk tunnel
+
 hosts_title=Zonvärdar
 hosts_desc=Denna sida visar värdar och nätverk som är en del av vissa zoner. Du behöver i allmänhet inte göra några ändringar i denna lista.
 hosts_add=Lägg till en ny zonvärd.
@@ -301,8 +314,10 @@ hosts_ip=Adress eller nätverk $1
 hosts_mac=MAC-adress $1 
 hosts_ipset=IP-inställning $1 
 hosts_any=Varje värd
+
 edit_before=Innan post $1 
 edit_after=Efter post $1 
+
 blacklist_title=Svartlista värdar
 blacklist_desc=Denna sida visar värdar och tjänster som kommer att blockeras om trafik från dem anländer till ett gränssnitt med alternativet <b>svartlista</b>.
 blacklist_add=Lägg till en ny värd för svartlista.
@@ -325,6 +340,7 @@ blacklist_eproto=Protokoll saknas eller ogiltigt
 blacklist_eports=Ogiltigt portnummer eller kommaseparerad lista över portar
 blacklist_eports2=Portar kan endast specificeras för TCP- och UDP-protokollen
 blacklist_return=svartlista värdar
+
 providers_title=Ytterligare routingleverantörer
 providers_desc=Den här sidan definierar ytterligare routingtabeller. Dessa behövs om du har anslutningar till mer än en ISP eller flera anslutningar till samma ISP, eller kör Squid som en transparent proxy på en annan värd än brandväggen.
 providers_add=Lägg till en ny routingleverantör.
@@ -359,17 +375,21 @@ providers_enumber=Saknat eller ogiltigt leverantörsnummer
 providers_emark=Saknat eller ogiltigt leverantörsmärkenummer
 providers_edup=Leverantör saknas för att kopiera
 providers_egateway=Saknad eller ogiltig gateway
+
 manual_desc=Detta formulär kan användas för att manuellt redigera Shorewall-filen $1. Var försiktig, eftersom ingen syntaxskontroll görs på ändringarna.
 manual_reset=Ångra
 manual_err=Det gick inte att spara tabellfilen
 manual_efile=Ogiltigt tabellnamn!
 manual_edata=Inget tabellfil har skrivits in.
+
 acl_nochange=Kan applicera, stoppa och starta Shorewall-konfiguration?
 acl_files=Tillgängliga Shorewall-bord
 acl_all=Allt
 acl_sel=Valt nedan ..
+
 delete_err=Det gick inte att radera rader
 delete_enone=Inga rader har valts
+
 opts_routeback=Acceptera trafik tillbaka till värd
 opts_source=Tillåt från värd till valfri destination
 opts_dest=Låt värd från valfri källa
@@ -386,12 +406,14 @@ opts_proxyndp=Aktivera proxy-NDP
 opts_ndp_filter=Svara bara på NDP-förfrågningar för IP-gränssnitt
 opts_detectnets=Taylor zon för att inkludera endast dirigerade värdar
 opts_upnp=Byt om paket via UPNP
+
 opts_dhcp=Gränssnittet använder DHCP
 opts_forward=Ställ in vidarebefordran
 opts_ignore=Ignorera upp/ner-händelser
 opts_optional=Gränssnittet är valfritt
 opts_required=Gränssnitt krävs
 opts_bridge=Gränssnittet är en bro
+
 comment_add=Lägg till en ny kommentar.
 comment_edit=Redigera kommentar
 comment_create=Skapa kommentar
@@ -399,6 +421,7 @@ comment_header=Tabellkommentarer
 comment_msg=Meddelande
 comment_err=Det gick inte att spara kommentar
 comment_enone=Inget meddelande har matats in
+
 log_create_table=Lagt till posten i $1 -tabellen
 log_modify_table=Ändrad post i tabellen $1 
 log_delete_table=Radering av posten från tabellen $1 
@@ -414,6 +437,7 @@ log_start=Startad brandvägg
 log_refresh=Uppdaterad brandvägg
 log_restart=Omstartad brandvägg
 log_clear=Rensad brandvägg
+
 shorewall_conf_title=Masterkonfigurationsfil
 shorewall_conf_desc=På denna sida kan du konfigurera de globala konfigurationsvariablerna. OBS! Ändra ordning på variabler här rekommenderas inte om du vill bevara den relativa positionen för kommentarer i konfigurationsfilen.
 shorewall_conf_add=Lägg till en ny konfigurationsvariabel.
@@ -427,6 +451,7 @@ shorewall_conf_create=Skapa konfigurationsvariabel
 shorewall_conf_header=Detaljer för konfigurationsvariabel
 shorewall_conf_err=Det gick inte att spara konfigurationsvariabel
 shorewall_conf_varname=Ogiltigt variabelns namn (måste vara ett giltigt skalvariabelnamn)
+
 params_title=Anpassade parametrar
 params_desc=På den här sidan kan du konfigurera Shorewalls anpassade parametrar. OBS! Ändra ordning på parametrar här rekommenderas inte om du vill bevara den relativa positionen för kommentarer i konfigurationsfilen.
 params_add=Lägg till en ny anpassad parameter.

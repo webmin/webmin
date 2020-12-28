@@ -10,6 +10,7 @@ index_hosts=מארחים
 index_cmd=פקודה
 index_delete=מחק את הנבחר
 index_none=אף אחד
+
 edit_title1allow=צור אפשר כלל
 edit_title2allow=ערוך אפשר הכלל
 edit_title1deny=צור כלל דחה
@@ -22,9 +23,11 @@ edit_hosts=מארחים מרוחקים
 edit_hostsexcept=למעט מארחים
 edit_cmd=פקודות מעטפת
 edit_efound=הדמון '$1' לא נמצא בתצורת xinetd.
+
 save_errtitle=שגיאה בשמירת כלל
 save_ehost=קלט מארח מכיל תווים רעים
 save_ecmd=קלט הפקודה מכיל תווים רעים
 save_eservice=שמות הדמון מכילים תווים רעים
+
 del_errtitle=שגיאה במחיקת כללים
 del_enone=לא סומנו כללים למחיקה

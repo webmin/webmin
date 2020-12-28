@@ -1,22 +1,33 @@
 index_root=Kořen dokumentu
 index_return2=globální konfigurace
+
 cvirt_eroot4=V konfiguraci Apache není definován žádný uživatel
+
 enewline=Neplatný znak v hodnotě
+
 virt_eprotocol=Musíte vybrat alespoň jednu použitelnou verzi protokolu SSL/TLS
+
 vserv_virtualmin=Tento virtuální počítač Apache patří k serveru Virtualmin <tt>$1</tt>, takže zde nelze změnit adresu, port, základní adresář a název hostitele.
 vserv_root=Kořen dokumentu
+
 dir_proxyall=Všechny žádosti o proxy
+
 htaccess_eempty=Nebyl zadán žádný adresář souboru voleb
 htaccess_eabsolute=Adresář souborů voleb musí být absolutní cestou
 htaccess_err=Nepodařilo se vytvořit soubor voleb
+
 core_portname=Protokol
 core_protoany=&lt;Any&gt;
 core_eduplisten=Adresa pro poslech $1 je uvedena dvakrát
 core_minor=Pouze menší verze
+
 mod_alias_alias2=alias dokumentu
 mod_alias_regexp2=alias dokumentu regexp
+
 mod_proxy_seconds=sekundy
+
 mod_log_config_ifset=Pokud je nastaveno
+
 mod_ssl_cafile=Soubor certifikačních autorit
 mod_ssl_ecafile=Chybí soubor klíčů certifikačních autorit
 mod_ssl_passnone=Dosud nenastaveno

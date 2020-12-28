@@ -8,6 +8,7 @@ index_none=V tomto systéme sa momentálne neexportujú žiadne adresáre.
 index_apply=Aplikovať zmeny
 index_applydesc=Kliknutím na toto tlačidlo použijete aktuálnu konfiguráciu zdieľania súborov. Tým sa sprístupnia všetky vyššie uvedené adresáre so špecifikovanými možnosťami.
 index_return=zoznam akcií
+
 edit_title1=Upraviť zdieľanie
 edit_title2=Vytvoriť zdieľanie
 edit_header1=Zdieľajte podrobnosti
@@ -30,6 +31,7 @@ edit_anon1=Bez prístupu
 edit_aclok=Povoliť zoznamy prístupových práv?
 edit_public=Zdieľať WebNFS?
 edit_index=Indexový súbor WebNFS
+
 save_err=Zdieľanie zlyhalo
 save_edirectory='$1' nie je platný názov adresára
 save_edirectory2=Adresár '$1' neexistuje
@@ -38,13 +40,18 @@ save_ero=Neuvedli ste žiadnych hostiteľov, s ktorými by ste mohli zdieľať i
 save_eroot=Neuvedli ste žiadnych hostiteľov, s ktorými by ste zdieľali root
 save_ealready=Adresár '$1' sa už zdieľa
 save_ehost=Hostiteľ '$1' neexistuje
+
 log_modify=Upravený podiel NFS $1 
 log_rename=Zmenený podiel NFS $1 na $2 
 log_create=Vytvorený podiel NFS $1 
 log_delete=Odstránený podiel NFS $1 
 log_apply=Použité zmeny
+
 acl_view=Môžete upravovať zdieľané súbory NFS?
+
 ecannot=Nemáte oprávnenie spravovať zdieľané zložky NFS
+
 delete_err=Zdieľania sa nepodarilo odstrániť
 delete_enone=Žiadne vybraté
+
 restart_err=Nepodarilo sa uplatniť zmeny

@@ -64,12 +64,14 @@ index_match1=yra
 index_match2=degtukai
 index_dhcpd=ISC DHCPd
 index_delete=Išštrinti pasirinktus
+
 butt_save=Sutaupyti
 butt_eco=Redaguoti kliento parinktis
 butt_vco=Peržiūrėti kliento parinktis
 butt_del=Ištrinti
 butt_create=Sukurti
 butt_leases=Sąskaitų nuoma
+
 esub_crheader=Sukurti potinklį
 esub_edheader=Redaguoti potinklį
 esub_tabhdr=Informacija apie potinklio tinklą
@@ -83,12 +85,14 @@ esub_groups=Grupės tiesiogiai šiame potinklyje
 esub_pools=Potinklio adresų fondai
 esub_pool=Baseinas $1 
 esub_poolnone=Nebuvo apibrėžti adresų fondai
+
 esub_pooladd=Pridėkite adresų fondą.
 esub_none=Nė vienas
 esub_return=potinklio sąrašas
 esub_retshar=bendras tinklas
 esub_desc=Potinklio aprašymas
 esub_fopeer=„Failover Peer“
+
 esh_crheader=Sukurti bendrą tinklą
 esh_eheader=Redaguoti bendrą tinklą
 esh_tabhdr=Bendra tinklo informacija
@@ -99,6 +103,7 @@ esh_subn=Šio bendro tinklo potinkliai
 esh_return=potinklio sąrašas
 esh_pools=Bendro tinklo adresų fondai
 esh_desc=Bendras tinklo aprašymas
+
 ehost_crheader=Sukurti pagrindinį kompiuterį
 ehost_eheader=Redaguoti pagrindinį kompiuterį
 ehost_tabhdr=Informacija apie pagrindinį kompiuterį
@@ -119,6 +124,7 @@ ehost_retgroup=grupė
 ehost_retsubn=potinklis
 ehost_retshar=bendras tinklas
 ehost_desc=Pagrindinio kompiuterio aprašymas
+
 egroup_crheader=Sukurti pagrindinę grupę
 egroup_eheader=Redaguoti pagrindinę grupę
 egroup_tblhdr=Informacija apie grupę
@@ -129,6 +135,7 @@ egroup_return=priimančiųjų sąrašas
 egroup_retsubn=potinklis
 egroup_retshar=bendras tinklas
 egroup_desc=Grupės aprašymas
+
 default=Numatytas
 secs=sek
 none=Nė vienas
@@ -157,20 +164,24 @@ listl_pc=Procentas
 listl_err=Nepavyko ištrinti nuomos
 listl_enone=Nepasirinkta
 listl_refresh=Atnaujinti sąrašą
+
 restart_errmsg1=Nepavyko iš naujo paleisti dhcpd
 restart_errmsg2=Nepavyko signalizuoti apie procesą
 start_failstart=Nepavyko paleisti dhcpd
 restart_conftext=Linijos aplink $1 $2  :
+
 sgroup_faildel=Nepavyko ištrinti grupės
 sgroup_failsave=Nepavyko išsaugoti grupės
 sgroup_invassign=grupė priskirta netinkamam skyriui
 sgroup_echanged=Konfigūracijos failo turinys buvo pakeistas. Bandyk iš naujo.
+
 shost_faildel=Nepavyko ištrinti pagrindinio kompiuterio
 shost_failsave=Nepavyko išsaugoti pagrindinio kompiuterio
 shost_invalidhn=nėra teisingas pagrindinio kompiuterio vardas
 shost_invalidhwa=„$1“ nėra teisingas $2 adresas
 shost_invalidaddr=„$1“ yra neteisingas pagrindinio kompiuterio vardas arba IP adresas
 shost_invassign=priskiriamas netinkamam skyriui
+
 sopt_failsave=Nepavyko išsaugoti kliento parinkčių
 sopt_invalidip=yra neteisingas IP adresas
 sopt_invalidint=nėra sveikas skaičius
@@ -180,10 +191,12 @@ sopt_ednum=„$1“ nėra galiojantis pasirinkimo numeris
 sopt_edtype=„$1“ nėra tinkamas parinkties tipas
 sopt_ecval=Trūksta pasirinktinės parinkties „$1“ vertės
 sopt_ecip=Pasirinktinės parinkties „$1“ vertė turi būti IP adresas
+
 sshared_faildel=Nepavyko ištrinti bendro tinklo
 sshared_failsave=Nepavyko išsaugoti bendro tinklo
 sshared_invalidsname=Trūksta arba netinkamas bendro tinklo pavadinimas.
 sshared_nosubnet=Bendrame tinkle „$1“ nėra jokio potinklio.
+
 ssub_faildel=Nepavyko ištrinti potinklio
 ssub_failsave=Nepavyko išsaugoti potinklio
 ssub_invalidsubaddr=netinkamas potinklio adresas
@@ -191,6 +204,7 @@ ssub_invalidnmask=negalioja tinkle
 ssub_invalidipr=yra neteisingas diapazono IP adresas
 ssub_nosubnet=Bendrame tinkle „$1“ nėra jokio potinklio.
 ssub_invalidfopeer=nėra tinkamas perpardavimo partneris
+
 plib_deflt=Numatytasis nuomos laikas
 plib_bfname=Įkėlimo failo vardas
 plib_maxlt=Maksimalus nuomos laikas
@@ -244,6 +258,7 @@ plib_eexpr=Šiame DHCP konfigūracijos skyriuje yra išraiškos direktyva $1, ku
 plib_auth_subnet=Serveris yra autoritetingas šiam potinkliui?
 plib_auth_shared-network=Serveris yra autoritetingas šiam bendrinamam tinklui?
 plib_auth_global=Serveris yra autoritetingas visiems potinkliams?
+
 eopt_header=Kliento parinktys
 eopt_subtitle=$1 potinkliui
 eopt_returnsub=potinklis
@@ -289,6 +304,7 @@ eopt_slpa=SLP katalogų agento IP
 eopt_slpaips=Tik šie IP?
 eopt_slps=SLP paslaugų apimtis
 eopt_slpsonly=Tik ši sritis?
+
 log_apply=Taikomi pakeitimai
 log_start=Paleistas DHCP serveris
 log_stop=Sustabdytas DHCP serveris
@@ -311,6 +327,7 @@ log_options_group=Modifikuotos $1 prieglobos grupės parinktys
 log_delete_lease=Panaikinta $1 nuoma
 log_delete_subnets=Ištrinti $1 potinkliai ir bendri tinklai
 log_delete_hosts=Ištrinta $1 prieglobos ir priimančiosios grupės
+
 keys_edit=Redaguoti TSIG raktą
 keys_create=Sukurti TSIG raktai
 keys_title=DNS raktai
@@ -321,12 +338,14 @@ keys_ecannot=Jums neleidžiama redaguoti DNS raktų
 keys_err=Nepavyko išsaugoti DNS raktų
 keys_ekey=„$1“ nėra galiojantis rakto ID
 keys_esecret=Trūksta arba netinkama „64 pagrindinio kodo paslaptis“
+
 pool_edit=Redaguoti adresų fondą
 pool_create=Sukurtas adresų fondas
 pool_header=Adresų fondo parinktys
 pool_allow=Klientai leisti
 pool_deny=Klientai paneigti
 pool_return=potinklis
+
 cdel_header=Įspėjimas
 cdel_shared1=bendras tinklas
 cdel_shared2=bendras tinklas
@@ -344,6 +363,7 @@ cdel_txt=Ištrynus $1 „$2“, bus ištrintas ir jo turinys:
 cdel_confirm=Ar tikrai norite ištrinti šį $1 ?
 cdel_eunknown=Nežinoma klaida
 cdel_return=pagrindinio kompiuterio ir tinklo sąrašas
+
 eacl_aviol=Prieigos kontrolės pažeidimas
 eacl_np=Neturite leidimų
 eacl_pdh=ištrinti pagrindinį kompiuterį
@@ -369,6 +389,7 @@ eacl_pdl=išbraukti nuomos sutartis
 eacl_psl=peržiūrėti nuomą
 eacl_pglob=redaguoti visuotines parinktis
 eacl_papply=iš naujo paleiskite šią paslaugą
+
 acl_apply=Ar galima pritaikyti pakeitimus?
 acl_r_leases=Ar galite peržiūrėti nuomos sutartis?
 acl_w_leases=Ar galima nuomos sutartis pašalinti?
@@ -398,9 +419,11 @@ acl_err=Išsaugant ACL sąrašą įvyko klaida
 acl_ernow=Jei norite įjungti rašymo prieigą prie kai kurių objektų tipų visuotiniuose ACL, taip pat turite įjungti šio objekto tipo skaitymo prieigą.
 acl_normal=normalus
 acl_paranoic=paranoja
+
 iface_title=Tinklo sąsaja
 iface_desc=DHCP serveris gali priskirti IP adresus tik tinklams, prijungtiems prie vienos iš toliau nurodytų sąsajų. Turi būti įtraukta visų apibrėžtų potinklių tinklo sąsaja. Jei nė vienas nepasirinktas, DHCP serveris bandys jį rasti automatiškai.
 iface_listen=Klausykite sąsajose
+
 lookup_ehost=Nėra pagrindinio kompiuterio, kurio vardas, IP arba MAC adresas $1 yra
 lookup_ehostname=Neįvestas pagrindinis kompiuterio vardas, IP adresas arba MAC adresas
 lookup_egroup=Nėra grupės su vardu ar domeno pavadinimu $1 
@@ -409,6 +432,7 @@ lookup_esubnet=Nėra potinklio, kuriame būtų nurodytas adresas arba adresas/ne
 lookup_esubnetname=Neįvestas potinklio adresas ar adresas/tinklo maskavimas
 lookup_eshared=Nėra bendro tinklo, kurio vardas $1, tinklo
 lookup_esharedname=Neįvestas bendras tinklo pavadinimas
+
 zone_key=DNS zonos
 index_addzone=Pridėkite naują DNS zoną.
 index_zone=Zona
@@ -424,16 +448,21 @@ zone_faildel=Nepavyko ištrinti zonos
 zone_failsave=Nepavyko išsaugoti zonos
 zone_tsigkey=TSIG raktas
 zone_ecannot=Jums neleidžiama redaguoti DNS zonų
+
 plib_clientupdates=Ar klientai gali atnaujinti savo įrašus?
+
 text_title=dhcpd.conf
 text_editor=Teksto redaktorius
 text_return=Pagrindinis meniu
 text_undo=anuliuoti
 text_ecannot=Jums neleidžiama redaguoti konfigūracijos failo
+
 index_buttetext=Rankiniu būdu redaguoti konfigūraciją
 index_text=Redaguoti konfigūracijos failą rankiniu būdu
+
 stop_err=Nepavyko sustabdyti DHCP serverio
 stop_ekill=Nebėga!
+
 sdelete_err=Nepavyko ištrinti potinklių ir bendrų tinklų
 sdelete_enone=Nepasirinkta
 sdelete_title=Ištrinkite potinklius ir bendrus tinklus
@@ -441,6 +470,7 @@ sdelete_rusure1=Ar tikrai norite ištrinti $1 pasirinktus potinklius ir $2 bendr
 sdelete_rusure2=Ar tikrai norite ištrinti $1 pasirinktus potinklius? Taip pat bus prarasti visi kiti potinklio objektai.
 sdelete_rusure3=Ar tikrai norite ištrinti $2 pasirinktus bendrinamus tinklus? Taip pat bus prarasti visi potinkliai ar kiti tinklų objektai.
 sdelete_ok=Ištrinti dabar
+
 hdelete_err=Nepavyko ištrinti prieglobos ir grupių
 hdelete_enone=Nepasirinkta
 hdelete_title=Ištrinkite prieglobas ir grupes

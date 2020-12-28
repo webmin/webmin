@@ -12,6 +12,7 @@ index_stopmsg=Seleziona il pulsante per fermare il processo di stampa.
 index_start=Inizia lo Scheduling
 index_startmsg=Seleziona il pulsante per iniziare il processo di stampa. 
 index_return=lista stampante
+
 edit_eedit=Non sei autorizzato a modificare la stampante
 edit_eadd=Non sei autorizzato ad aggiungere stampanti
 edit_add=Crea una Stampante
@@ -51,7 +52,9 @@ edit_wgroup=Gruppo di Lavoro
 edit_hpnp=Server remoto HPNP
 edit_port=Porta
 edit_driver=Driver della Stampante
+
 blocks=blocchi
+
 save_err=Errore nel salvataggio della stampante
 save_eadd=Non sei autorizzato ad aggiungere stampanti
 save_eedit=on sei autorizzato a modificare questa stampante
@@ -66,6 +69,7 @@ save_efile='$1' non esiste
 save_erhost=L'host remoto '$1' non esiste
 save_erqueue='$1' non e' un nome valido di coda remota di stampa
 save_eremote=Il driver non puo' essere usato con una stampante remota Unix
+
 jobs_title=Processi di Stampa
 jobs_header=Processi di Stampa in $1
 jobs_id=ID Processo
@@ -76,15 +80,20 @@ jobs_file=Nome del file
 jobs_cancel=Seleziona l'ID del processo per eliminarlo
 jobs_cancelview=Seleziona l'ID del processo per eliminarlo, o seleziona la 
 jobs_none=Nessun processo di stampa in $1
+
 cancel_ecannot=Non sei autorizzato ad eliminare i processi di stampa
 cancel_err=Errore nella cancellazione del processo di stampa
 cancel_egone=Il processo di stampa $1 non esiste
+
 view_ecannot=Non puoi vedere questo processo di stampa
 view_egone=Questo processo di stampa non esiste
+
 start_ecannot=Non sei autorizzato a far partire lo scheduler
 start_err=Errore nell'esecuzione dello scheduler
+
 stop_ecannot=Non sei autorizzato a bloccare lo scheduler
 stop_err=Errore nel bloccare lo scheduler
+
 webmin_none=Nessuno
 webmin_nonemsg=Stampante Postscript o di testo
 webmin_remotemsg=Stampante remota
@@ -95,6 +104,7 @@ webmin_uniprint=Driver Uniprint
 webmin_edrivers=Errore nell'utilizzare il driver da $1. I driver Webmin 
 webmin_egs=Il comando $1 non e' stato trovato. I driver Webmin della 
 webmin_edriver='$1' non esiste
+
 caldera_none=Nessuno
 caldera_nonemsg=Stampante remota o di tipo raw
 caldera_prog=Programma
@@ -108,6 +118,7 @@ caldera_uniprint=Driver Uniprint
 caldera_eprog='$1' non esiste
 caldera_edriver=Driver della stampante non selezionato
 caldera_eres=Nessuna risoluzione selezionata
+
 redhat_none=Nessuno
 redhat_nonemsg=Stampante Postscript o di testo
 redhat_prog=Programma
@@ -125,6 +136,7 @@ redhat_edriver=Driver della stampante non selezionato
 redhat_ehmargin=Margine sinistro/destro errato o invalido
 redhat_evmargin=Margine superiore/inferiore errato o invalido
 redhat_eres=Nessuna risoluzione selezionata
+
 acl_printers=Stampanti che questo utente puo' configurare
 acl_add=Puo' aggiungere nuove stampanti?
 acl_cancel=Puo' vedere o annullare i processi della stampante ?

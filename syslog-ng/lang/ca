@@ -9,6 +9,7 @@ index_start=Inicia Syslog-NG
 index_startdesc=Fes clic sobre aquest botó per iniciar el dimoni Syslog-NG utilitzant la configuració actual.
 index_return=a l'índex de mòduls
 index_version=Syslog-NG $1
+
 options_title=Opcions de Registre
 options_header=Opcions de tots els fitxers de registre
 options_secs=segons
@@ -55,6 +56,7 @@ options_esync=Hi falta el nombre de missatges a posar en cau abans d'escriure o 
 options_estats=Hi falta el temps d'espera entre missatges estadístics o bé no és numèric
 options_elog_fifo_size=Hi falta el nombre de missatges a posar en buffer o bé és un número invàlid
 options_elog_msg_size=Hi falta la mida màxima dels missatges de registre o bé no és numèrica
+
 destinations_title=Destinacions dels Registres
 destinations_name=Nom de la destinació
 destinations_type=Escriu a
@@ -77,6 +79,7 @@ destinations_add=Afegeix una nova destinació de registres.
 destinations_return=a les destinacions de registres
 destinations_desc=Registre d'un altre mòdul
 destinations_cmd=Sortida de $1
+
 destination_header=Opcions de destinació dels registres
 destination_title1=Creació de Destinació de Registre
 destination_title2=Edició de Destinació de Registre
@@ -117,17 +120,22 @@ destination_enet_localip=Hi falta l'adreça IP local o bé és invàlida
 destination_enet_localport=Hi falta el número de port local o bé és invàlid
 destination_enet_host=Hi falta l'adreça o host servidor o bé és invàlid
 destination_eunix=Hi falta el nom del sòcol Unix
+
 ddelete_err=No s'han pogut suprimir les destinacions
 ddelete_enone=No has seleccionat cap destinació
 ddelete_eused=La destinació $1 no es pot suprimir, ja que és utilitzada per l'objectiu d'un registre
+
 sdelete_err=No s'han pogut suprimir els orígens
 sdelete_enone=No has seleccionat cap origen
 sdelete_eused=L'origen de registres $1 no es pot suprimir, ja que és utilitzat per l'objectiu d'un registre
+
 fdelete_err=No s'han pogut suprimir els filtres
 fdelete_enone=No has seleccionat cap filtre
 fdelete_eused=El filtre de registres $1 no es pot suprimir, ja que és utilitzat per l'objectiu d'un registre
+
 ldelete_err=No s'han pogut suprimir els objectius dels registres
 ldelete_enone=No has seleccionat cap objectiu
+
 filters_title=Filtres de Registres
 filters_name=Nom del filtre
 filters_desc=Condicions
@@ -144,6 +152,7 @@ filters_program=programa <tt>$1</tt>
 filters_match=coincideix amb "$1"
 filters_host=del nom de host <tt>$1</tt>
 filters_netmask=del remitent <tt>$1</tt>
+
 filter_title1=Creació de Filtre de Registres
 filter_title2=Edició de Filtre de Registres
 filter_header=Detalls de l'especificació del filtre de registres
@@ -169,6 +178,7 @@ filter_enet=Hi falta l'adreça IP de xarxa o bé és invàlida
 filter_emask=Hi falta la màscara de subxarxa o bé és invàlida
 filter_ebool=Error en l'expressió complexa
 filter_egone=El filtre ja no existeix!
+
 logs_title=Objectius de Registre
 logs_source=Orígens
 logs_filter=Filtres
@@ -177,6 +187,7 @@ logs_add=Afegeix un nou objectiu de registre.
 logs_delete=Suprimeix els Objectius de Registre Seleccionats
 logs_return=als objectius de registre
 logs_none=Cap
+
 log_title1=Creació d'Objectiu de Registre
 log_title2=Edició d'Objectiu de Registre
 log_header=Seleccions d'origen, filtre i destinació del registre
@@ -190,6 +201,7 @@ log_flags=Opcions de l'objectiu
 log_egone=L'objectiu de registre ja no existeix!
 log_err=No s'ha pogut desar l'objectiu de registre
 log_esource=No has seleccionat cap origen
+
 sources_title=Orígens de Registre
 sources_none=Encara no s'ha definit cap origen!
 sources_add=Afegeix un nou origen de registre.
@@ -207,6 +219,7 @@ sources_typen=Stream de Sun
 sources_typenw=Servidor Syslog
 sources_return=als orígens de registre
 sources_none2=Cap
+
 source_title1=Creació d'Origen de Registre
 source_title2=Edició d'Origen de Registre
 source_header=Opcions de l'origen de registre
@@ -243,15 +256,20 @@ source_door=Nom de fitxer porta
 source_esun_streams_name=Hi falta el nom del fitxer de stream de Sun o bé és invàlid
 source_edoor=Hi falta el nom del fitxer de porta de streams Sun o bé és invàlid
 source_transport=Protocol de xarxa
+
 view_title=Visualització de Fitxer de Registre
 view_header=Les darreres $1 línies de $2
 view_empty=El fitxer de registre està buit
 view_refresh=Refresca
 view_filter=Mostra només les línies amb el text $1
+
 apply_err=No s'ha pogut aplicar la configuració
 apply_egone=No està en execució!
+
 start_err=No s'ha pogut iniciar el servidor Syslog-NG
+
 stop_err=No s'ha pogut aturar el servidor Syslog-NG
+
 log_create_destination=S'ha creat la destinació de registre $1
 log_modify_destination=S'ha modificat la destinació de registre $1
 log_delete_destination=S'ha suprimit la destinació de registre $1

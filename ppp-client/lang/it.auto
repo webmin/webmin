@@ -24,13 +24,16 @@ index_out=L'output da $1 era
 index_boot=Connetti all'avvio con:
 index_noboot=&lt;Non connettere&gt;
 index_bootdesc=Modificare questa opzione per controllare se la connessione PPP selezionata viene avviata all'avvio o meno.
+
 init_title=Rileva configurazione
 init_cmd=Rilevamento di un modem collegato con il comando $1 ..
 init_done=.. fatto
 init_modems=I modem sono configurati su $1 e $2.
 init_modem=È stato rilevato un modem su $1.
 init_none=Nessun modem rilevato!
+
 device_serial=porta seriale $1 
+
 connect_title=Stabilire la connessione
 connect_cmd=Tentativo di stabilire una connessione con il comando $1 ..
 connect_failed=.. connessione fallita! Vedere l'output sopra per il motivo.
@@ -40,12 +43,14 @@ connect_dns=Utilizzo della configurazione DNS assegnata a PPP.
 connect_dns2=La configurazione DNS assegnata da PPP è stata impostata.
 connect_dnsto=Timeout in attesa della configurazione DNS assegnata da PPP.
 connect_dnsdown=Sembra che la connessione non sia riuscita durante l'attesa della configurazione DNS assegnata a PPP.
+
 disc_title=Chiudi PPP
 disc_err=Impossibile chiudere la connessione PPP
 disc_edown=Già disconnesso
 disc_ok1=La connessione PPP stabilita con $2 è stata chiusa correttamente.
 disc_ok2=La tua connessione PPP è stata chiusa con successo.
 disc_dns=Vecchia configurazione DNS ripristinata.
+
 edit_title1=Aggiungi ISP Dialer
 edit_title2=Modifica dialer ISP
 edit_ddesc=Queste impostazioni predefinite si applicheranno alle connessioni effettuate utilizzando qualsiasi altro dialer.
@@ -76,6 +81,7 @@ edit_idle=Timeout di inattività (in secondi)
 edit_def=Dalle impostazioni predefinite
 edit_inherits=Eredita impostazioni
 edit_from=Dal dialer ..
+
 save_err=Impossibile salvare il dialer
 save_err2=Impossibile eliminare il dialer
 save_ename=Nome del dialer mancante o non valido
@@ -88,6 +94,7 @@ save_edial=Numero di tentativi di composizione mancanti o non validi
 save_eidle=Timeout inattivo mancante o non valido
 save_einherits=Questo dialer non può essere eliminato perché '$1' eredita le impostazioni da esso.
 save_eclash=Un dialer con lo stesso nome esiste già
+
 log_create=Creato $1 
 log_update=$1 aggiornato
 log_delete=$1 eliminato

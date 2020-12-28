@@ -25,12 +25,15 @@ index_up=Start Verbinding:
 index_updesc=Selecteer een verbinding uit de lijst naast deze knop, en klik erop om onmiddellijk uit te voeren.
 index_nopol=Er is geen netwerk beleid gevonden - misschien is uw <a href='$1'>netwerk configuratie</a> niet correct.
 index_import=Importeer verbinding van file.
+
 stop_err=Mislukt om de IPsec server te stoppen
 start_err=Mislukt om de IPsec server te starten
 restart_err=Mislukt om IPsec server te herstarten
 start_elog=De volgende fouten zijn gelogd : $1
+
 newkey_err=Mislukt om sleutel te genereren
 newkey_ehost=Ontbrekende of ongeldige hostnaam
+
 edit_title1=Maak Verbinding
 edit_title2=Bewerk Verbinding
 edit_header=IPsec VPN verbinding details
@@ -101,6 +104,7 @@ edit_unit_s=seconden
 edit_unit_m=minuten
 edit_unit_h=uren
 edit_unit_d=dagen
+
 config_title=Server Configuratie
 config_header=Globale VPN server instellingen
 config_ifaces=Netwerk interfaces voor IPsec
@@ -118,6 +122,7 @@ config_nat=Aanzetten NAT traversal?
 config_err=Mislukt om server configuratie op te slaan
 config_eri=De echte interface '$1' komt meer dan 1 keer voor in de lijst
 config_enone=Er zijn geen netwerk interfaces gespecificeerd
+
 showkey_title=Bekijk Publieke Sleutel
 showkey_desc1=De publieke RSA sleutel die hieronder getoond word moet worden gekopieerd in de configuratie van het andere systeem die verbinding maakt met dit systeem, in de sectie gerelateerd aan deze host.
 showkey_desc2=De waardes die hieronder getoond worden kunnen worden gebruikt om een DNS SLEUTEL record te maken voor deze host, zodat andere systemen die verbinding maken de publieke sleutel kunnen gebruiken.
@@ -125,6 +130,7 @@ showkey_flags=Vlaggen
 showkey_proto=Protocol
 showkey_alg=Algoritme
 showkey_key=Sleutel data
+
 policy_desc_block=Geblokkeerde Netwerken
 policy_desc_clear=Opschonen Netwerk Verkeer
 policy_desc_private=Versleutelde Netwerken
@@ -145,6 +151,7 @@ policy_mask=Voorvoegsel
 policy_err=Mislukt om netwerken op te slaan
 policy_enet=Ongeldig netwerk IP adres op rij $2
 policy_emask=Ongeldige prefix lengte op rij $2
+
 save_err=Mislukt om verbinding op te slaan
 save_ename=Ontbrekende of ongeldige verbindingsnaam
 save_ekeying=Ontbrekende of ongeldige aantal sleutel herpogingen
@@ -164,6 +171,7 @@ save_eleftcert=Ontbrekende of ongeldige locale server certificaat
 save_erightcert=Ontbrekende of ongeldige remote server certificaat
 save_ekeylife=Ontbrekende of ongeldige verbindings tijd om in leven te blijven
 save_eikelifetime=Ontbrekende of ongeldige sleutel kanaal tijd om in leven te blijven
+
 log_create_conn=Maak verbinding $1
 log_delete_conn=Verwijderde verbinding $1
 log_modify_conn=Gemodificeerde verbinding $1
@@ -182,8 +190,10 @@ log_delete_secret=Verwijderde geheime sleutel van $1
 log_create_secret_nn=Geheime sleutel aangemaakt voor alle host
 log_modify_secret_nn=Geheime sleutel gemodificeerd van alle host
 log_delete_secret_nn=Verwijderde geheime sleutel van alle host
+
 up_title=Start Verbinding
 up_cmd=Start de verbinding met de opdracht $1 ..
+
 export_title=Exporteer Configuratie
 export_desc=Dit formulier kan gebruikt worden om de configuratie file sectie te exporteren voor verbinding $1, zodat het makkelijk geïmporteerd kan worden op de server aan de andere kant.
 export_print=Laat configuratie in browser zien
@@ -193,11 +203,13 @@ export_err=Exporteren configuratie mislukt
 export_efile=Ontbrekende filenaam
 export_esave=Mislukt schrijven naar file : $1
 export_done=Geëxporteerde configuratie voor verbinding $1 naar $2 ($3 bytes).
+
 import_title=Importeer Configuratie
 import_desc=Dit formulier kan gebruikt worden om de configuratie file sectie te importeren voor een verbinding, zoals die gemaakt is door de module export optie op een ander systeem.
 import_upload=Import van ge-uploaden file ..
 import_file=Importeren van server-zijde file ..
 import_ok=Importeer Nu
+
 import_err=Mislukt om de configuratie te importeren
 import_eupload=Geen file geselecteerd om te uploaden
 import_efile=Geen server-zijde file ingevuld
@@ -207,6 +219,7 @@ import_eclash=Een verbinding met de naam $1 bestaat reeds.
 import_done1=Succesvol de nieuwe IPsec verbinding $1 toegevoegd.
 import_done2=Succesvol de IPsec verbinding $1 geupdate.
 import_over=Bestaande verbinding overschrijven met dezelfde naam?
+
 secrets_title=Geheime Sleutel
 secrets_none=Er zijn geen geheime sleutels gevonden!
 secrets_name=Geheim voor
@@ -220,6 +233,7 @@ secrets_mod=Modules $1
 secrets_newpsk=Maak nieuwe gedeelde geheime sleutel.
 secrets_newrsa=Maak nieuwe RSA sleutel.
 secrets_return=geheime sleutel lijst
+
 secret_title1=Maak Geheime Sleutel
 secret_title2=Bewerk Geheime Sleutel
 secret_header=Geheime sleutel details

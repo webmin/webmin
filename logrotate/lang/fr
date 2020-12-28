@@ -19,10 +19,12 @@ index_force=Forcer la rotation du journal
 index_forcedesc=Forcer la rotation immédiate de tous les fichiers journaux même s'il n'est pas encore temps de le faire.
 index_logrotate=Logrotate
 index_delete=Supprimer les rotations de journaux sélectionnées
+
 period_daily=Quotidienne
 period_weekly=Hebdomadaire
 period_monthly=Mensuelle
 period_never=Jamais
+
 edit_title1=Modifier le fichier journal
 edit_title2=Créer un fichier journal
 edit_header=Détails du fichier journal après rotation
@@ -57,8 +59,10 @@ edit_post=Commandes à exécuter après la rotation
 edit_pre=Commandes à exécuter avant la rotation
 edit_sharedscripts=Exécuter les scripts une seule fois pour tous les fichiers?
 edit_now=Faire la rotation maintenant
+
 global_title=Options globales
 global_header=Options par défaut de tous les fichiers journaux
+
 save_err=Échec de la sauvegarde du journal
 save_efile=Le nom du fichier journal manque ou est invalide
 save_esize=La taille maximale manque ou est invalide
@@ -74,6 +78,7 @@ save_emailto=L'adresse courriel manque pour l'envoi des journaux
 save_eerrors=L'adresse courriel manque pour les messages d'erreur
 save_epre=Le script pré-rotation ne peut contenir de ligne <tt>endscript</tt> ou <tt>endrotate</tt>
 save_epost=Le script post-rotation ne peut contenir de ligne <tt>endscript</tt> ou <tt>endrotate</tt>
+
 log_modify_sched=Tâche Cron de rotation du journal modifiée
 log_create_sched=Tâche Cron pour effectuer la rotation du journal crée
 log_delete_sched=Supprimé la tâche Cron de rotation du journal
@@ -82,6 +87,7 @@ log_create=Rotation du fichier journal $1 ajoutée
 log_modify=Rotation du fichier journal $1 modifiée
 log_delete=Rotation du fichier journal $1 supprimée
 log_delete_logs=Supprimé la rotation des fichiers journaux $1
+
 sched_title=Calendrier de rotation de journal
 sched_desc=Pour que les rotations de journaux configurées avec ce module soient effectuées, la commande $1 doit être exécutée régulièrement par Cron (ordinairement chaque jour).
 sched_runparts=La commande de rotation de journal est actuellement exécutée par le script $1 $2 et ne peut être ajustée.
@@ -90,10 +96,12 @@ sched_disabled=Désactivée
 sched_enabled=Activée au heures suivantes ..
 sched_save=Mettre à jour la tâche Cron
 sched_err=Échec à la sauvegarde du calendrier de rotation
+
 force_title=Forcer la rotation du journal
 force_doing=Rotation immédiate de tous les fichiers journaux ..
 force_doingone=Rotation immédiate d'un fichier journal ..
 force_done=.. fait.
 force_failed=.. Échec! Examinez la sortie ci-dessus pour en trouver la raison.
+
 delete_err=Échec de suppression des journaux
 delete_enone=Aucun sélectionné

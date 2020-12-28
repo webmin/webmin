@@ -4,6 +4,7 @@ index_return=kullanıcı listesi
 index_user=Bu kullanıcının parolasını değiştir:
 index_euseradmin=Kullanıcılar ve Gruplar modülü kurulmamış ya da sisteminiz tarafından desteklenmediğinden dolayı bu modül kullanılamaz
 index_toomany=Sisteminizde gösterilemeyecek kadar çok kullanıcı var. Parolsını değiştirmek istediğiniz kullanıcıyı aşağıya giriniz..
+
 passwd_title=Parola Değiştir
 passwd_header=Unix kullanıcı parolası değiştiriliyor
 passwd_for=Kullanıcı
@@ -22,7 +23,9 @@ passwd_erepeat=Yeni parolaları aynı değil
 passwd_ecmd=$1 'de hata oluştu : $2
 passwd_ok=$1 kullanıcısının parolası başarı ile değiştirildi. Eğer sizin parolanız değiştirildi ise tekrar giriş yapmanız istenecektir.
 passwd_ok2=$1 kullanıcının parolası başarı ile değiştirildi.
+
 log_passwd=$1 kullanıcısının parolası değiştirildi
+
 acl_repeat=Yeni parolayı yeniden girmeli mi*
 acl_old=Eski parolayı girmeli mi?
 acl_old_this=Sadece diğer kullanıcılar için

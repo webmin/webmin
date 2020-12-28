@@ -11,6 +11,7 @@ index_when=Da, $1
 index_act=Acțiune
 index_exec=A executa
 index_delete=Ștergeți copiile selectate
+
 edit_title=Editează copiere cluster
 create_title=Creați copiere cluster
 edit_header=Detalii de copiere a clusterului
@@ -31,12 +32,14 @@ edit_run=Copiați acum
 edit_return=copie cluster
 edit_email=Ieșire prin e-mail către
 edit_none=Nimeni
+
 save_err=Nu a reușit să salvați lucrarea cron de cluster
 save_efiles=Nu au fost introduse fișiere de copiat
 save_edest=Lipsește directorul destinație
 save_eservers=Nu există servere pe care să le copieze
 save_efile=Fișierul pentru a copia „$1” nu este o cale absolută
 save_eemail=Adresa de e-mail lipsă sau nevalidă
+
 exec_title=Copiere fișiere
 exec_files1=Copierea fișierelor $1 pe serverele selectate $2.
 exec_files2=Copierea $1 pe serverele selectate $2.
@@ -50,12 +53,15 @@ exec_not=Nu a reușit să copieze următoarele fișiere pe $1  :
 exec_cmd=Rezultatul comenzii post-copiere pe $1  :
 exec_before=Ieșirea comenzii înainte de copiere pe $1  :
 exec_on=Nu a putut fi executat pe $1 : $2 
+
 log_create=Copie creată pentru serverele $1 la $2 
 log_modify=Copie modificată pentru serverele $1 la $2 
 log_delete=Copie ștersă pentru serverele $1 la $2 
 log_exec=Copiate serverele $1 la $2 
 log_deletes=Copii $1 șterse
+
 email_subject_succeeded=Copia clusterului $1 a reușit
 email_subject_failed=Copia clusterului din $1 a eșuat
+
 delete_err=Nu a reușit ștergerea copiilor
 delete_enone=Nimic selectat

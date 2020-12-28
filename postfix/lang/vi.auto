@@ -3,6 +3,7 @@ connect_elogin=Không thể đăng nhập vào cơ sở dữ liệu $1:$2.
 index_title=Máy chủ bưu điện
 index_epath=Lệnh điều khiển Postfix $1 không được cài đặt trên hệ thống của bạn. Có thể <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác hoặc Postfix chưa được cài đặt.
 index_postfix=Hậu tố
+
 internal_error=Lỗi bên trong
 index_econfig=Lệnh cấu hình Postfix $1 không tồn tại. Có thể <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
 index_esuper=Lệnh giám sát Postfix $1 không tồn tại. Có thể <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
@@ -14,8 +15,10 @@ index_startmsg=Nhấp vào nút này để bắt đầu máy chủ thư Postfix.
 index_reloadmsg=Nhấp vào nút này để Postfix đọc lại tất cả các tệp cấu hình của nó. Điều này có thể hữu ích nếu các tệp cấu hình Postfix đã được sửa đổi bằng tay.
 index_version=Phiên bản hậu tố $1
 opts_err=Không thể lưu tùy chọn
+
 check_error=Lỗi trong khi kiểm tra cấu hình Postfix hiện tại. Vui lòng sửa thủ công cấu hình Postfix.
 check_manual=Chỉnh sửa thủ công tệp cấu hình Postfix.
+
 address_rewriting_title=Địa chỉ Viết lại và Masquerading
 address_rewriting_ecannot=Bạn không được phép chỉnh sửa địa chỉ viết lại và giả mạo
 aliases_title=Bí danh thư
@@ -42,9 +45,11 @@ aliases_type5=Tệp tự động $1
 aliases_type6=Áp dụng tệp bộ lọc $1
 aliases_none=không ai
 aliases_delete=Xóa các bí danh đã chọn
+
 postfinger_title=Kiểm tra cấu hình
 postfinger_show=Chỉ
 postfinger_ecannot=Bạn không được phép kiểm tra cấu hình Postfix
+
 mailclean_title=Làm sạch MailQueue
 mailclean_ecannot=Không có đặc quyền để làm sạch MailQueues
 mailclean_active=Hàng đợi hoạt động
@@ -53,6 +58,7 @@ mailclean_deferred=Trì hoãn-xếp hàng
 mailclean_defer=Trì hoãn-xếp hàng
 mailclean_all=Tất cả hàng đợi
 mailclean_search=Chuỗi tìm kiếm
+
 aform_type0=không ai
 aform_type1=Địa chỉ email
 aform_type2=Địa chỉ trong tập tin
@@ -68,6 +74,7 @@ aform_val=Bí danh để
 aform_afile=Biên tập ..
 aform_return=bí danh
 aform_cmt=Sự miêu tả
+
 asave_err=Không thể lưu bí danh
 asave_eaddr='$1' không phải là địa chỉ hợp lệ
 asave_ealready=Một bí danh cho '$1' đã tồn tại
@@ -78,11 +85,13 @@ asave_etype4='$1' không phải là chương trình hợp lệ hoặc không t�
 asave_etype5=Tệp tự động '$1' không hợp lệ
 asave_etype4none=Không có chương trình nào
 asave_etype6=Tệp bộ lọc '$1' không hợp lệ
+
 afile_title=Chỉnh sửa tập tin địa chỉ
 afile_desc=Sử dụng vùng văn bản bên dưới để chỉnh sửa các địa chỉ trong tệp $1.
 afile_efile=Bạn không được phép chỉnh sửa $1.
 afile_undo=Hoàn tác thay đổi
 afile_ewrite=Không thể ghi vào tệp địa chỉ : $1
+
 ffile_title=Chỉnh sửa tập tin bộ lọc
 ffile_desc=Sử dụng biểu mẫu bên dưới để thiết lập quy tắc bộ lọc trong tệp $1.
 ffile_efile=Bạn không được phép chỉnh sửa $1.
@@ -98,6 +107,7 @@ ffile_other=Nếu không, chuyển tiếp tới $1
 ffile_err=Không thể lưu tệp bộ lọc
 ffile_ematch=Trận đấu mất tích
 ffile_eaction=Thiếu địa chỉ chuyển tiếp
+
 rfile_title=Chỉnh sửa tập tin tự động
 rfile_desc=Sử dụng vùng văn bản bên dưới để chỉnh sửa thông báo tự động trong $1. Thông báo có thể chứa các macro $ SUB DỰ ÁN, $ TỪ, $ TO, $ DATE và $ BODY sẽ được mở rộng khi tính năng tự động được kích hoạt.
 rfile_desc2=Bạn cũng có thể đặt tiêu đề thư thêm hoặc thay thế các mặc định được sử dụng trong tự động trả lời bằng cách đặt các dòng như: <br><tt> Từ: foo@bar.com </tt><br> <tt>Chủ đề: Vào ngày lễ</tt> <br> ở đầu tin nhắn, được phân tách khỏi phần thân bằng một dòng trống duy nhất.
@@ -116,11 +126,13 @@ rfile_from=Từ: địa chỉ để trả lời
 rfile_auto=Tự động (dựa trên địa chỉ người nhận)
 rfile_efrom=Thiếu từ: địa chỉ
 rfile_fromdesc=Địa chỉ From: phải luôn được chỉ định khi có thể, vì phương thức tự động có thể không đáng tin cậy.
+
 general_title=Tùy chọn chung
 general_title_sensible=Tùy chọn chung hữu ích nhất
 general_title_others=Tùy chọn chung khác
 general_ecannot=Bạn không được phép chỉnh sửa Tùy chọn chung
 what_is_it=Nó là gì?
+
 opts_default=Mặc định
 opts_none=không ai
 opts_nomap=Không có bản đồ
@@ -140,10 +152,12 @@ opts_mail_owner=Chủ thư
 opts_default_privs=Quyền mặc định của đại lý giao hàng
 opts_inet_interfaces=Giao diện mạng để nhận thư
 opts_all_interfaces=Tất cả
+
 opts_local_recipient_maps=Từ chối người dùng địa phương không xác định
 opts_no=Không
 opts_save=Lưu và áp dụng
 opts_edir=Bạn chỉ được phép chỉ định các tệp bản đồ trong $1
+
 opts_allow_percent_hack=Viết lại "user%domain" thành "user@domain"
 opts_append_at_myorigin=Viết lại "người dùng" thành "người dùng@$mydomain"
 opts_append_dot_mydomain=Viết lại "user@host" thành "user@host.$mydomain"
@@ -153,13 +167,17 @@ opts_swap_bangpath=Viết lại "trang web! Người dùng" thành "người dù
 opts_masquerade_domains=Địa chỉ hóa trang
 opts_masquerade_exceptions=Ngoại lệ
 index_return=Cấu hình hậu tố
+
 opts_alias_maps=Cơ sở dữ liệu bí danh được sử dụng bởi các đại lý giao hàng địa phương
 opts_alias_database=Cơ sở dữ liệu bí danh được xây dựng bởi lệnh "newaliases"
 aliases_warning=Cảnh báo: <ul><li> khi trường đầu tiên không trống, lệnh tạo bí danh Postfix mặc định được sử dụng để xây dựng cơ sở dữ liệu tương ứng; <li>khác, lệnh tương thích Sendmail "newaliases" được sử dụng, điều này sẽ sử dụng cơ sở dữ liệu của trường thứ hai.</ul>
+
 aliases_name=Tên
 aliases_value=Bí danh cho. ..
+
 new_alias=Tạo một bí danh mới
 new_aliasmsg=Nhấn vào nút này để tạo một bí danh mới
+
 local_delivery_ecannot=Bạn không được phép chỉnh sửa tùy chọn giao hàng địa phương
 local_delivery_title=Giao hàng tận nơi
 opts_local_transport=Tên của vận chuyển cho giao hàng địa phương
@@ -185,6 +203,7 @@ opts_local_destination_recipient_limit=Số lượng người nhận tối đa t
 opts_local_destination_recipient_limit_default=Mặc định
 opts_prepend_delivered_header=Chuẩn bị <tt>Đã gửi:</tt> khi. ..
 opts_prepend_delivered_header_default=Mặc định
+
 resource_title=Kiểm soát tài nguyên chung
 resource_ecannot=Bạn không được phép chỉnh sửa các tham số kiểm soát tài nguyên
 opts_bounce_size_limit=Kích thước tối đa của tin nhắn bị trả lại
@@ -204,6 +223,7 @@ opts_qmgr_message_recipient_limit=Số lượng người nhận trong bộ nhớ
 opts_queue_minfree=Không gian trống tối thiểu trong hệ thống tệp xếp hàng
 opts_stale_lock_time=Thời gian tối đa sau đó khóa cũ được phát hành
 opts_transport_retry_time=Thời gian tính bằng giây giữa các lần thử liên hệ với MDT bị hỏng
+
 opts_always_bcc=Địa chỉ nhận bcc của mỗi tin nhắn
 opts_always_bcc_none=không ai
 opts_daemon_timeout=Hết thời gian xử lý yêu cầu
@@ -242,6 +262,7 @@ opts_trigger_timeout=Thời gian tối đa để gửi một kích hoạt cho m�
 opts_delay_warning_time=Thời gian tính bằng giờ trước khi gửi cảnh báo không giao hàng
 opts_delay_warning_time_default2=Hậu tố mặc định
 opts_content_filter_default=không ai
+
 smtpd_title=Tùy chọn máy chủ SMTP
 smtpd_ecannot=Bạn không được phép chỉnh sửa các tùy chọn máy chủ SMTP
 opts_disable_vrfy_command=Vô hiệu hóa lệnh SMTP VRFY
@@ -273,6 +294,7 @@ smtpd_nomap=Không có bản đồ cho các địa chỉ được phép chuyển
 smtpd_nomap2=Không có bản đồ cho các hạn chế về địa chỉ người gửi đã được nhập vào.
 smtpd_map=Địa chỉ được phép chuyển tiếp
 smtpd_map2=Hạn chế về địa chỉ người gửi
+
 smtp_title=Tùy chọn máy khách SMTP
 smtp_ecannot=Bạn không được phép chỉnh sửa các tùy chọn máy khách SMTP
 opts_best_mx_transport=Hành động khi được liệt kê là máy chủ MX tốt nhất
@@ -293,6 +315,7 @@ opts_smtp_data_done_timeout=Hết thời gian chờ đợi câu trả lời kế
 opts_smtp_quit_timeout=Hết thời gian chờ đợi câu trả lời cho QUIT
 opts_smtp_use_tls=Sử dụng TLS cho các kết nối SMTP
 opts_smtp_sasl_security_options=Tùy chọn bảo mật SASL
+
 rate_title=Giá giao hàng
 rate_ecannot=Bạn không được phép chỉnh sửa các tùy chọn giá giao hàng
 opts_default_destination_concurrency_limit=Số lượng giao hàng song song tối đa đến cùng một đích
@@ -303,18 +326,21 @@ opts_maximal_queue_lifetime=Thời gian tối đa (ngày) trong hàng đợi tr�
 opts_minimal_backoff_time=Thời gian tối thiểu (giây) giữa các lần thử gửi tin nhắn bị hoãn
 opts_queue_run_delay=Thời gian (giây) giữa việc quét hàng đợi
 opts_defer_transports=Vận tải không nên giao
+
 debug_title=Tính năng sửa lỗi
 debug_ecannot=Bạn không được phép chỉnh sửa các tính năng sửa lỗi
 opts_debug_peer_list=Danh sách các mẫu miền / mạng cho phép ghi nhật ký chi tiết
 opts_debug_peer_level=Mức ghi nhật ký dài khi khớp với danh sách trên
 debug_version=Mô-đun Postfix cho Webmin - Phiên bản $1
 opts_edebug=Mức ghi nhật ký chi tiết bị thiếu hoặc không hợp lệ - phải là một số lớn hơn 0
+
 ldap_title=Tra cứu LDAP
 ldap_ecannot=Bạn không được phép chỉnh sửa các tùy chọn tra cứu LDAP
 ldap_non_existent=Dường như LDAP không tồn tại trong hệ thống Postfix của bạn
 opts_ldap_lookup_timeout=Hết thời gian tra cứu cơ sở dữ liệu LDAP
 opts_ldap_search_base=Cơ sở dữ liệu LDAP để tìm kiếm
 opts_ldap_server_host=Tên máy chủ LDAP
+
 canonical_title=Bản đồ Canonical
 canonical_ecannot=Bạn không được phép chỉnh sửa cấu hình ánh xạ chuẩn
 opts_canonical_maps=Bảng tra cứu ánh xạ địa chỉ
@@ -328,6 +354,7 @@ canonical_edit_title=Chỉnh sửa bản đồ Canonical
 canonical_return_sender=người gửi bản đồ kinh điển
 canonical_return_recipient=người nhận bản đồ kinh điển
 canonical_return=bản đồ kinh điển
+
 mapping_name=Tên
 mapping_value=Bản đồ đến. ..
 mapping_delete=Xóa đã chọn
@@ -355,6 +382,7 @@ mapping_toomany=Có các mục nhập bản đồ $1, vượt quá giới hạn 
 mapping_find=Hiển thị ánh xạ phù hợp:
 mapping_search=Tìm kiếm
 mapping_match=Các mục nhập tệp bản đồ khớp với <tt>$1</tt> ..
+
 virtual_title=Miền ảo
 virtual_ecannot=Bạn không được phép chỉnh sửa cấu hình ánh xạ miền ảo
 opts_virtual_maps=Bảng tra cứu ánh xạ tên miền
@@ -362,29 +390,44 @@ opts_virtual_alias_maps=Bảng tra cứu ánh xạ tên miền
 opts_virtual_alias_domains=Tên miền để thực hiện ánh xạ ảo cho
 virtual_same=Từ các bảng ánh xạ tên miền
 virtual_return=tên miền ảo
+
 transport_title=Bản đồ giao thông
 transport_ecannot=Bạn không được phép chỉnh sửa cấu hình ánh xạ vận chuyển
 opts_transport_maps=Bảng tra cứu bản đồ vận chuyển
 transport_return=bản đồ giao thông
+
+sni_title=Ánh xạ chứng chỉ
+sni_ecannot=Bạn không được phép chỉnh sửa cấu hình ánh xạ chứng chỉ
+opts_sni_maps=Bảng tra cứu ánh xạ chứng chỉ
+sni_return=bản đồ chứng chỉ
+sni_dom=Tên máy chủ
+sni_certs=Tệp chứng chỉ
+
 relocated_title=Di dời bản đồ
 relocated_ecannot=Bạn không được phép chỉnh sửa cấu hình ánh xạ di dời
 relocated_return=bản đồ di dời
 opts_relocated_maps=Di chuyển bảng tra cứu ánh xạ
 opts_content_filter=Bộ lọc nội dung email
+
 map_click=Nhấp vào bất kỳ ánh xạ để chỉnh sửa thuộc tính của nó:
 no_map=(Hiện tại không có bản đồ nào được xác định. Xác định bản đồ trước, sau đó bạn có thể chỉnh sửa bản đồ)
 no_map2=Không có bản đồ hiện đang được xác định. Xác định bản đồ trước, sau đó bạn có thể chỉnh sửa nó.
+
 stop_efailed=Không thể dừng Postfix
 stop_ecannot=Bạn không được phép dừng Postfix
+
 start_efailed=Không thể bắt đầu Postfix
 start_ecannot=Bạn không được phép bắt đầu Postfix
+
 reload_efailed=Không thể tải lại Postfix
 reload_ecannot=Bạn không được phép tải lại Postfix
+
 query_get_efailed=Không thể truy vấn lệnh cấu hình Postfix để nhận giá trị hiện tại của tham số $1: <tt>$2</tt>
 query_set_efailed=Không thể truy vấn lệnh cấu hình Postfix để đặt giá trị hiện tại của tham số $1 thành $2: <tt>$3</tt>
 regenerate_ecannot=Bạn không được phép tạo lại các Bí danh
 regenerate_alias_efailed=Không thể tạo lại bí danh: <tt>$1</tt>
 regenerate_table_efailed=Không thể tạo lại bảng $1: <tt>$2</tt>
+
 acl_resource=Có thể chỉnh sửa tài nguyên?
 acl_aliases=Có thể chỉnh sửa bí danh?
 acl_aliases_options=Có thể chỉnh sửa tùy chọn bí danh?
@@ -393,6 +436,7 @@ acl_address_rewriting=Có thể chỉnh sửa địa chỉ viết lại?
 acl_canonical=Có thể chỉnh sửa kinh điển?
 acl_virtual=Có thể chỉnh sửa ảo?
 acl_transport=Có thể chỉnh sửa giao thông?
+acl_sni=Có thể chỉnh sửa chứng chỉ?
 acl_relocated=Có thể chỉnh sửa di dời?
 acl_header=Có thể chỉnh sửa kiểm tra tiêu đề?
 acl_local_delivery=Có thể chỉnh sửa giao hàng địa phương?
@@ -411,6 +455,7 @@ acl_postfinger=Có thể kiểm tra cấu hình postfix?
 acl_manual=Có thể chỉnh sửa tập tin cấu hình?
 acl_dir=Thư mục được phép cho các tập tin bản đồ
 acl_bcc=Có thể chỉnh sửa ánh xạ BCC?
+
 boxes_title=Hộp thư người dùng
 boxes_user=Người sử dụng
 boxes_size=Kích thước hộp thư
@@ -420,6 +465,7 @@ boxes_sent=Gửi mail
 boxes_ecannot=Bạn không được phép đọc email
 boxes_toomany=Có quá nhiều người dùng trên hệ thống của bạn để liệt kê tất cả các hộp thư của họ.
 boxes_go=Xem thư cho người dùng:
+
 mail_title=Email người dùng
 mail_from=Từ
 mail_date=Ngày
@@ -458,6 +504,7 @@ mail_forward=Ở đằng trước
 mail_rfc=Từ dòng
 mail_move=Chuyển tới:
 mail_eexists=Tin nhắn không còn tồn tại!
+
 view_title=Đọc mail
 view_desc=Tin nhắn $1 trong $2
 view_desc2=Tin nhắn $1 cho người dùng $2
@@ -486,6 +533,7 @@ view_body=Tin nhắn văn bản
 view_afile=Tên tập tin đính kèm
 view_atype=Kiểu đính kèm
 view_asize=Kích thước tập tin
+
 compose_title=Soạn email
 reply_title=Trả lời email
 forward_title=Chuyển tiếp email
@@ -496,6 +544,7 @@ reply_mailforward=Tin nhắn chuyển tiếp
 reply_attach2=Tệp đính kèm phía máy khách và máy chủ
 reply_send=Gửi thư
 reply_ecannot=Bạn không được phép gửi thư như người dùng này
+
 send_err=Không thể gửi thư
 send_eto=Thiếu địa chỉ
 send_efrom=Thiếu từ địa chỉ
@@ -509,6 +558,7 @@ send_eperms=Người dùng $1 không thể đọc $2
 send_eperms2=Bạn không được phép gửi tệp $1
 send_epath=Sendmail thực thi $1 không tồn tại.
 send_ewrapper=Chương trình giao diện sendmail Postfix không tồn tại
+
 search_title=kết quả tìm kiếm
 search_ecannot=Bạn không được phép tìm kiếm email của người dùng này
 search_ematch=Bạn phải nhập văn bản để phù hợp với.
@@ -516,6 +566,7 @@ search_efield=Bạn phải chọn một loại tìm kiếm.
 search_none=Không tìm thấy thư nào.
 search_results2=$1 thư khớp với $2 ..
 search_results3=$1 thư không khớp với $2 ..
+
 match_from=Từ: trận đấu
 match_subject=Chủ đề: trận đấu
 match_to=Tới: trận đấu
@@ -533,6 +584,7 @@ match_!date=Ngày: không khớp
 match_!body=Cơ thể không phù hợp
 match_!size=Kích thước nhỏ hơn
 match_!headers=Tiêu đề không khớp
+
 mailq_title=Hàng đợi thư
 mailq_count=tin nhắn $1
 mailq_none=Không có thư hiện đang được xếp hàng để gửi
@@ -561,15 +613,20 @@ mailq_active=Hoạt động
 mailq_deferred=Hoãn lại
 mailq_hold=Giữ lựa chọn
 mailq_unhold=Bỏ chọn
+
 flushq_title=Hàng đợi
 flushq_desc=Buộc gửi thư đã cố gắng bằng lệnh $1 ..
+
 qview_title=Tin nhắn xếp hàng
 qview_desc=Từ tệp $1
 qview_headers=Tiêu đề thư
 qview_attach=Tài liệu đính kèm
+
 after_err=Lỗi cấu hình hậu tố : $1
+
 searchq_title=Kết quả tìm kiếm hàng đợi
 searchq_none=Không tìm thấy tin nhắn xếp hàng.
+
 header_title=Kiểm tra tiêu đề
 header_ecannot=Bạn không được phép chỉnh sửa kiểm tra tiêu đề
 header_eregexp=Bản đồ kiểm tra tiêu đề phải ở định dạng <tt>regapi:</tt> <i>tên tệp</i>
@@ -588,15 +645,18 @@ header_reject=Từ chối (với thông báo lỗi..)
 header_warn=Đăng nhập cảnh báo (có tin nhắn..)
 header_ename=Biểu thức chính quy không hợp lệ - phải giống như / cái gì đó /
 header_return=kiểm tra tiêu đề
+
 body_title=Kiểm tra cơ thể
 body_ecannot=Bạn không được phép chỉnh sửa kiểm tra cơ thể
 body_eregexp=Bản đồ kiểm tra cơ thể phải ở định dạng <tt>regapi:</tt> <i>tên tệp</i>
 opts_body_checks=Bảng kiểm tra nội dung thư
 body_return=kiểm tra cơ thể
+
 dependent_title=Ánh xạ giao thông phụ thuộc người gửi
 dependent_ecannot=Bạn không được phép chỉnh sửa ánh xạ vận chuyển phụ thuộc của người gửi
 dependent_eregexp=Bản đồ vận chuyển phụ thuộc của người gửi phải ở định dạng <tt>regapi:</tt> <i>tên tệp</i>
 dependent_return=ánh xạ vận chuyển phụ thuộc người gửi
+
 manual_title=Chỉnh sửa tập tin bản đồ
 manual_file=Chọn một tệp bản đồ để chỉnh sửa:
 manual_change=Thay đổi
@@ -604,9 +664,11 @@ manual_editing=Sử dụng hộp văn bản bên dưới để chỉnh sửa th�
 manual_err=Không thể lưu tệp bản đồ
 manual_efile=Tên tệp bản đồ không hợp lệ!
 manual_ecannot=Bạn không được phép chỉnh sửa thủ công các tệp bản đồ
+
 delq_titles=Xóa tin nhắn
 delq_rusure=Bạn có chắc chắn muốn xóa $1 các tin nhắn được xếp hàng đã chọn không?
 delq_confirm=Xóa tin nhắn
+
 master_title=Quy trình máy chủ
 master_name=Tên quy trình
 master_enabled=Đã bật?
@@ -647,8 +709,10 @@ master_einet=Một địa chỉ máy chủ để nghe chỉ có thể được c
 master_ecommand=Thiếu lệnh xử lý máy chủ
 master_ewakeup=Thời gian thức dậy bị mất hoặc không hợp lệ
 master_emaxprocs=Thiếu hoặc không hợp lệ số lượng quá trình
+
 delete_err=Không thể xóa ánh xạ
 delete_enone=Không được chọn
+
 cmanual_title=Chỉnh sửa tập tin cấu hình
 cmanual_ecannot=Bạn không được phép chỉnh sửa tập tin cấu hình Postfix
 cmanual_ok=Biên tập
@@ -656,10 +720,12 @@ cmanual_efile=Tệp được chọn không phải là một phần của cấu h
 cmanual_file=Chỉnh sửa tập tin cấu hình:
 cmanual_edata=Không có gì vào!
 cmanual_err=Không thể lưu tập tin cấu hình
+
 access_return=truy cập bảng bản đồ
 edit_map_file=Chỉnh sửa tập tin bản đồ
 opts_reject_rbl_client=Tra cứu danh sách đen thời gian thực (RBL)
 opts_check_sender_access=Kiểm tra bảng bản đồ truy cập của người gửi
+
 log_misc=Thay đổi tùy chọn chung
 log_opts=Thay đổi địa chỉ viết lại và giả mạo
 log_aliases=Thay đổi tùy chọn bí danh
@@ -667,6 +733,7 @@ log_canonical=Thay đổi tùy chọn ánh xạ chính tắc
 log_virtual=Thay đổi tùy chọn miền ảo
 log_bcc=Thay đổi tùy chọn bản đồ BCC
 log_transport=Thay đổi tùy chọn ánh xạ giao thông
+log_sni=Thay đổi tùy chọn ánh xạ chứng chỉ
 log_dependent=Thay đổi tùy chọn địa chỉ người gửi
 log_relocated=Thay đổi tùy chọn ánh xạ di dời
 log_header=Thay đổi tùy chọn kiểm tra tiêu đề
@@ -744,6 +811,7 @@ log_sender_dependent_default_transport_maps_modify=Địa chỉ phụ thuộc ng
 log_sender_dependent_default_transport_maps_delete=Đã xóa địa chỉ phụ thuộc người gửi $1
 log_delete_sender_dependent_default_transport_mapss=Đã xóa $1 địa chỉ phụ thuộc người gửi
 log_manual_sender_dependent_default_transport_mapss=Địa chỉ phụ thuộc người gửi được chỉnh sửa thủ công trong $1
+
 sasl_title=Xác thực và mã hóa SMTP
 opts_smtpd_sasl_auth_enable=Yêu cầu xác thực SASL SMTP?
 opts_smtp_sasl_auth_enable=Sử dụng xác thực SASL SMTP?
@@ -790,6 +858,7 @@ sasl_nologin=Không cần thiết
 sasl_userpass=Đăng nhập với tên $1 bằng mật khẩu $2
 sasl_elogin=Thiếu hoặc không hợp lệ đăng nhập SMTP (không cho phép dấu cách hoặc dấu hai chấm)
 sasl_epass=Mật khẩu SMTP không hợp lệ (không có khoảng trắng được phép)
+
 client_title=Hạn chế ứng dụng khách SMTP
 client_ecannot=Bạn không được phép chỉnh sửa các hạn chế của máy khách SMTP
 client_restrict=Hạn chế của khách hàng
@@ -799,6 +868,7 @@ client_other=Những hạn chế khác :
 client_err=Không thể lưu các hạn chế của khách hàng
 client_evalue=Thiếu giá trị cho hạn chế $1
 client_return=Hạn chế ứng dụng khách SMTP
+
 chooser_title=Chọn nguồn bản đồ
 chooser_header=Nguồn bản đồ $1
 chooser_none=không ai
@@ -854,6 +924,7 @@ chooser_elquery_filter=Thiếu bộ lọc truy vấn cho bản đồ $1
 chooser_elresult_attribute=Tên thuộc tính kết quả bị thiếu hoặc không hợp lệ cho bản đồ $1
 chooser_elbind_dn=Thiếu đăng nhập cho máy chủ LDAP cho bản đồ $1
 chooser_elbind_pw=Thiếu mật khẩu cho máy chủ LDAP cho bản đồ $1
+
 mysql_ecfile=Không tìm thấy tệp cấu hình MySQL $1
 mysql_ecfile2=Không thể tìm thấy bảng trong tệp cấu hình MySQL $1
 mysql_edriver=Không thể tải trình điều khiển cơ sở dữ liệu $1
@@ -865,6 +936,7 @@ mysql_eupdate=Cập nhật SQL không thành công : $1
 mysql_elist=Truy vấn SQL không thành công : $1
 mysql_esource=Không tìm thấy nguồn MySQL có tên $1
 mysql_eneed=Tham số cấu hình MySQL $1 không tìm thấy. Webmin cần điều này để tìm ra bảng và trường nào cần truy vấn.
+
 ldap_ecfile=Không tìm thấy tệp cấu hình LDAP $1
 ldap_eldapmod=Mô-đun Perl $1 cần thiết để giao tiếp với LDAP không được cài đặt hoặc không tải được
 ldap_eldap=Không thể kết nối với máy chủ LDAP $1 trên cổng $2
@@ -875,6 +947,7 @@ ldap_edelete=Xóa LDAP của $1 không thành công : $2
 ldap_equery=Tìm kiếm LDAP của $1 không thành công : $2
 ldap_erename=Đổi tên LDAP của $1 thành $2 không thành công : $3
 ldap_emodify=Sửa đổi LDAP của $1 không thành công : $2
+
 bcc_title=Ánh xạ BCC
 bcc_ecannot=Bạn không được phép chỉnh sửa ánh xạ BCC
 opts_sender_bcc_maps=Bảng tra cứu ánh xạ BCC của người gửi

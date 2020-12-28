@@ -43,8 +43,10 @@ index_natnone=尚未定義網絡地址轉換規則。
 index_nataction=NAT模式
 index_natfrom=匹配的數據包
 index_natto=翻譯
+
 dir_in=傳入
 dir_out=外向
+
 action_pass=<font color=＃00aa00>通過</font>
 action_block=<font color=＃ff0000>阻止</font>
 action_skip=跳躍
@@ -57,6 +59,7 @@ action_map=製圖
 action_rdr=重新導向
 action_bimap=雙向映射
 action_map-block=塊映射
+
 laction_pass=<font color=＃00aa00>密碼包</font>
 laction_block=<font color=＃ff0000>帶有ICMP代碼的封包</font>
 laction_log=日誌包，級別
@@ -65,6 +68,7 @@ laction_skip=跳過下一個規則
 laction_auth=用戶空間授權
 laction_preauth=檢查以前的授權
 laction_call=調用內核函數
+
 edit_title1=建立規則
 edit_title2=編輯規則
 edit_header1=規則動作
@@ -130,6 +134,7 @@ edit_icmp=ICMP類型
 edit_icmpany=&lt;任何類型&gt;
 edit_icmpcode=和代碼
 edit_codeany=&lt;任何代碼&gt;
+
 save_err=保存規則失敗
 save_ehostfrom=源主機名缺失或無效
 save_ehostto=目的地主機名缺失或無效
@@ -158,11 +163,13 @@ save_eto=缺少或無效的接口繼續發送
 save_etoip=要發送的IP地址無效
 save_ereplyto=缺少或無效的界面以進行回复
 save_ereplytoip=無效的IP位址回覆
+
 apply_err=應用配置失敗
 apply_remote=來自 $1的錯誤： $2
 unapply_err=還原配置失敗
 unapply_ein=無法獲取輸入規則
 unapply_eout=無法獲取輸出規則
+
 desc_if=如果是 $1
 desc_and=和
 desc_always=總是
@@ -196,6 +203,7 @@ desc_rdr=IP地址 $1端口 $2
 desc_dport1=端口為 $1
 desc_dport2=端口在 $1和 $2之間
 desc_nattoiface=接口地址
+
 log_create_rule=已創建 $1規則
 log_delete_rule=已刪除 $1規則
 log_modify_rule=修改的 $1規則
@@ -224,6 +232,7 @@ log_add_host=添加了群集服務器 $1
 log_add_group=從組 $1添加了群集服務器
 log_delete_host=刪除了群集服務器 $1
 log_delete_group=刪除了 $1個群集服務器
+
 cluster_title=群集防火牆服務器
 cluster_none=尚未將任何服務器添加到防火牆群集。
 cluster_host=主機名
@@ -234,6 +243,7 @@ cluster_gadd=在組中添加服務器
 cluster_need=您必須先在Webmin服務器索引模塊中添加具有登錄名和密碼的服務器，然後才能在此處對其進行管理。
 cluster_return=集群服務器
 cluster_delete=刪除選定
+
 add_title=添加服務器
 add_msg=正在添加 $1 ..
 add_gmsg=將服務器添加到組 $1 ..
@@ -242,6 +252,7 @@ add_gerr=添加群組失敗
 add_echeck=服務器 $1沒有IPFilter防火牆模塊
 add_emissing=服務器 $1缺少防火牆命令 $2
 add_ok=添加了 $1，其中有 $2有效的防火牆規則。
+
 nat_title1=創建NAT規則
 nat_title2=編輯NAT規則
 nat_action=NAT模式
@@ -300,4 +311,5 @@ nat_edport2=末尾原始端口丟失或無效
 net_erdrip=“$1”不是有效的目標IP地址
 nat_erdrips=沒有輸入目標IP
 nat_erdrport=目標端口丟失或無效
+
 boot_esmf=SMF服務 $1不存在或處於未知狀態

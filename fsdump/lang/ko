@@ -23,6 +23,7 @@ index_follow=$1 후
 index_forcetar=TAR 형식 사용
 index_delete=선택된 백업 삭제
 index_nostrftime=경고 - 어떤 백업 작업이 파일 이름으로 % 를 사용하지만, 모듈 설정 페이지에서 strftime 치환이 설정되어 있지 않습니다.
+
 dump_dir=백업할 디렉토리
 dump_dirs=백업할 디렉토리
 dump_fs=파일 시스템
@@ -96,6 +97,7 @@ dump_emulti2=다중-파일 백업은 원격 서버에 할 수 없습니다.
 dump_ermt=<tt>rmt</tt> 프로그램의 경로가 없거나 유효하지 않습니다.
 dump_reverify=백업 후에 유효성 검사를 위하여 테스트 복구를 시도 하겠습니까?
 dump_remount=백업시 <tt>noatime</tt> 옵션으로 재 마운트 하겠습니까?
+
 edit_err=백업 생성 실패
 edit_edir=백업 디렉토리가 없습니다.
 edit_efs=이 모듈에서 $1 형식의 파일시스템은 백업할 수 없습니다.
@@ -116,9 +118,11 @@ edit_restore=복구 ..
 edit_to=$1 에서 $2 로
 edit_tolevel=$1 에서 $2 로 (레벨 $3)
 edit_special=백업 스케쥴
+
 save_err=백업 저장 실패
 save_edir=백업 디렉토리가 없거나 유효하지 않습니다.
 save_efs=다른 파일 시스템으로 백업 디렉토리를 변경할 수 없습니다.
+
 backup_title=백업 시작
 backup_desc=백업 진행 $1 중 $2 ..
 backup_reverify=.. 완료. 이제 백업 유효성 검사를 합니다 ..
@@ -131,6 +135,7 @@ backup_notape=.. 백업이 하나의 테이프 사용량을 초과했습니다. 
 backup_egone=백업이 존재하지 않습니다!
 backup_bg=백그라운드 작업으로 백업 진행이 시작되었습니다. 모듈 메인 페이지의 <b>백업 작업 실행</b> 섹션에서 이 작업을 모니터 할 수 있으며, 최종 상태를 이메일로 공지 받을 수 있습니다.
 backup_ecannot=이 디렉토리는 백업을 허락하지 않습니다.
+
 restore_title=백업 복구
 restore_err=백업 복구 실패
 restore_ecommand=$2 파일 시스템 백업을 복구하기 위해 필요한 $1 명령을 시스템에서 찾을 수 없습니다. 아마 현재 설치 되어 있지 않은 것으로 추측이 됩니다.
@@ -168,19 +173,23 @@ restore_gzip=아파이브의 압축을 해제하겠습니까?
 restore_keep=파일을 덮어 씌우지 않겠습니까?
 restore_emulti=테이프 장치로 부터 분할된 파일로 복구할 수 없습니다.
 restore_emulti2=원격 서버로 부터 분할된 파일 복구를 할 수 없습니다.
+
 log_create=$1에 대한 백업 설정 생성
 log_modify=$1에 대한 백업 설정 변경
 log_delete=$1에 대한 백업 설정 삭제
 log_backup=$1을 $2로 백업
 log_bgbackup=$1을 $2로 백업 시작
 log_restore=$1 에서 백업 복구
+
 kill_err=백업 중지 실패
 kill_egone=더이상 실행중이지 않습니다.
 kill_ecannot=이 백업을 중지할 권한이 엇습니다.
+
 newtape_err=새로운 테이프 신호가 실패했습니다.
 newtape_egone=백업은 더이상 실행중이지 않습니다!
 newtape_estatus=백업은 더이상 새로운 테이프 장치를 위해 대기하지 않습니다.
 newtape_ecannot=이 백업을 관리할 권한이 없습니다.
+
 acl_edit=백업을 생성하고 편집하겠습니까?
 acl_restore=백업을 복구하겠습니까?
 acl_cmds=명령 실행전이나 후에 편집하겠습니까?
@@ -188,8 +197,10 @@ acl_extra=추가 명령행 파라미터를 편집하겠습니까?
 acl_dirs=백업을 허락할 디렉토리
 acl_all=모든 디렉토리
 acl_list=리스팅된 것만 ..
+
 delete_err=백업 삭제 실패
 delete_enone=선택된 것이 없습니다.
+
 email_already=백업이 PID $1 로 이미 진행 중입니다.
 email_ebefore=백업전 명령 실패
 email_verify=백업 확인 ..
@@ -197,5 +208,6 @@ email_eafter=백업후 명령 실패
 email_subject=$2 의 $1 백업
 email_ok=백업 성공
 email_failed=백업 실패
+
 newtape_subject=$3 의 $2 백업을 위해 $1 테이프 장치를 고체합니다.
 newtape_body=$3의 $2 백업 작업 중 테이프의 용량이 꽉 찼습니다. 새로운 테이프 장치로 교체한 후에 백업을 계속 진행하기 위하여 웹민의 파일시스템 백업 모듈에서 '테이프 로드' 링크를 클릭 하십시오.

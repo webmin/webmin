@@ -15,5 +15,6 @@ edit_special_daily=Щодня (опівночі)
 edit_special_weekly=Щотижня (у неділю)
 edit_special_monthly=Щомісяця (1-го)
 edit_special_yearly=Щорічно (1 січня)
+
 log_success=<tt>$2</tt> в <tt>$1</tt>
 log_failure=Не вдалося запустити <tt>$2</tt> у <tt>$1</tt> : $3 

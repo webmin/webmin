@@ -9,6 +9,7 @@ index_start=Iniciar Syslog-NG
 index_startdesc=Clique neste botão para iniciar o daemon Syslog-NG, usando a configuração atual.
 index_return=índice do módulo
 index_version=Syslog-NG $1 
+
 options_title=Opções de registro
 options_header=Opções para todos os arquivos de log
 options_secs=segundos
@@ -55,6 +56,7 @@ options_esync=Número de mensagens ausente ou inválido para armazenar em buffer
 options_estats=Tempo ausente ou não numérico para aguardar entre mensagens estatísticas
 options_elog_fifo_size=Número de mensagens ausente ou inválido para armazenar em buffer
 options_elog_msg_size=Tamanho máximo de mensagem de log ausente ou não numérico
+
 destinations_title=Destinos de registro
 destinations_name=Nome do destino
 destinations_type=Escrever para
@@ -77,6 +79,7 @@ destinations_add=Adicione um novo destino de log.
 destinations_return=destinos de log
 destinations_desc=Log de outro módulo
 destinations_cmd=Saída de $1 
+
 destination_header=Opções de destino de log
 destination_title1=Criar destino de log
 destination_title2=Editar destino do log
@@ -117,17 +120,22 @@ destination_enet_localip=Endereço IP local ausente ou inválido
 destination_enet_localport=Número da porta local ausente ou inválida
 destination_enet_host=Endereço ou host do servidor Syslog inválido ou ausente
 destination_eunix=Nome do soquete Unix ausente
+
 ddelete_err=Falha ao excluir destinos
 ddelete_enone=Nenhum selecionado
 ddelete_eused=O destino $1 não pode ser excluído, pois é usado por um destino de log
+
 sdelete_err=Falha ao excluir fontes
 sdelete_enone=Nenhum selecionado
 sdelete_eused=A fonte de log $1 não pode ser excluída, pois é usada por um destino de log
+
 fdelete_err=Falha ao excluir filtros
 fdelete_enone=Nenhum selecionado
 fdelete_eused=O filtro de log $1 não pode ser excluído, pois é usado por um destino de log
+
 ldelete_err=Falha ao excluir destinos de log
 ldelete_enone=Nenhum selecionado
+
 filters_title=Filtros de registro
 filters_name=Nome do filtro
 filters_desc=Condições
@@ -144,6 +152,7 @@ filters_program=programa <tt>$1</tt>
 filters_match=corresponde a "$1"
 filters_host=do nome do host <tt>$1</tt>
 filters_netmask=do remetente <tt>$1</tt>
+
 filter_title1=Criar filtro de log
 filter_title2=Editar filtro de log
 filter_header=Detalhes da especificação do filtro de log
@@ -169,6 +178,7 @@ filter_enet=Endereço IP de rede ausente ou inválido
 filter_emask=Máscara de rede ausente ou inválida
 filter_ebool=Erro na expressão complexa
 filter_egone=O filtro não existe mais!
+
 logs_title=Destinos de log
 logs_source=Fontes
 logs_filter=Filtros
@@ -177,6 +187,7 @@ logs_add=Adicione um novo destino de log.
 logs_delete=Excluir destinos de log selecionados
 logs_return=destinos de log
 logs_none=Nenhum
+
 log_title1=Criar destino de log
 log_title2=Editar destino do log
 log_header=Seleções de origem, filtro e destino de log
@@ -190,6 +201,7 @@ log_flags=Opções de destino
 log_egone=O destino do log não existe mais!
 log_err=Falha ao salvar o destino do log
 log_esource=Nenhuma fonte selecionada
+
 sources_title=Origens de log
 sources_none=Nenhuma fonte foi definida ainda!
 sources_add=Adicione uma nova fonte de log.
@@ -207,6 +219,7 @@ sources_typen=Fluxo do sol
 sources_typenw=Servidor syslog
 sources_return=fontes de log
 sources_none2=Nenhum
+
 source_title1=Criar origem de log
 source_title2=Editar origem do log
 source_header=Opções de origem de log
@@ -243,15 +256,20 @@ source_door=Nome do arquivo da porta
 source_esun_streams_name=Nome do arquivo de fluxos Sun ausente ou inválido
 source_edoor=Nome do arquivo da porta de fluxos Sun ausente ou inválido
 source_transport=Protocolo de rede
+
 view_title=Exibir arquivo de log
 view_header=Últimas $1 linhas de $2 
 view_empty=O arquivo de log está vazio
 view_refresh=Atualizar
 view_filter=Mostrar apenas linhas com o texto $1 
+
 apply_err=Falha ao aplicar a configuração
 apply_egone=Não está funcionando!
+
 start_err=Falha ao iniciar o servidor Syslog-NG
+
 stop_err=Falha ao parar o servidor Syslog-NG
+
 log_create_destination=Destino de log criado $1 
 log_modify_destination=Destino de log modificado $1 
 log_delete_destination=$1 destino de log excluído

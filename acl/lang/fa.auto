@@ -3,6 +3,7 @@ index_twofactor=احراز هویت دو عاملی
 index_joingroup=افزودن به گروه:
 index_eulist=Failed to list users : $1
 index_eglist=Failed to list groups : $1
+
 edit_title3=کاربر وبمین ایمن ایجاد کنید
 edit_readonly=This Webmin user should not be edited as it is managed by the $1 module. <a href='$2'>Click here</a> to bypass this warning and edit the user anyway - but beware that any manual changes may be over-written!
 edit_cloneof=کلونینگ کاربر وبمین
@@ -46,6 +47,7 @@ edit_safe=سطح امتیاز
 edit_safe0=بدون محدودیت
 edit_safe1=فقط ماژول های ایمن
 edit_unsafe=تنظیم مجدد در نامحدود
+
 save_eunixname=The username '$1' is not a Unix user, and so cannot be used in safe mode
 save_eoverlay=روکش موضوع نمی تواند انتخاب شود مگر اینکه موضوع باشد
 save_epass=Password is not valid : $1
@@ -55,12 +57,16 @@ save_edays=هیچ روز اجازه انتخاب وجود ندارد
 save_ehours=بارهای نامعتبر یا نامعتبر است
 save_ehours2=زمان شروع اجازه باید قبل از پایان باشد
 save_etemp=The option to force a password change at next login cannot be used unless <a href='$1'>prompting users to enter new passwords</a> is enabled
+
 delete_eanonuser=این کاربر برای دسترسی به ماژول ناشناس استفاده می شود
+
 cert_etempdir=پرونده گواهی نامعتبر است
+
 acl_egroup=شما مجاز به ویرایش ACL های گروهی نیستید
 acl_times=آیا می توان بار ورود به سیستم مجاز را تغییر داد؟
 acl_pass=آیا می توانید محدودیت های رمز عبور را تغییر دهید؟
 acl_sql=آیا می توان پایگاه داده کاربر و گروه را پیکربندی کرد؟
+
 log_delete_users=Deleted $1 Webmin users
 log_delete_groups=Deleted $1 Webmin groups
 log_joingroup=Added $1 Webmin users to group $2
@@ -70,15 +76,20 @@ log_sync=همگام سازی کاربر یونیکس تغییر کرده است
 log_sql=بانک اطلاعاتی کاربر و گروه تغییر یافت
 log_twofactor=Enrolled user $1 with two-factor provider $2
 log_onefactor=Dis-enrolled user $1 for two-factor authentication
+
 gedit_desc=توضیحات گروه
 gedit_egone=گروه منتخب دیگر وجود ندارد!
+
 gsave_edesc=توضیحات نامعتبر - کاراکتر مجاز نیست
+
 convert_sync2=همگام سازی رمز عبور با کاربر یونیکس در آینده؟
 convert_user=کاربر یونیکس
 convert_action=اقدامی انجام شد
 convert_done=$1 users converted, $2 invalid, $3 already exist, $4 excluded.
 convert_users=کاربران برای تبدیل
+
 sync_when=چه موقع همگام سازی
+
 unix_err=ذخیره احراز هویت یونیکس انجام نشد
 unix_sel=به کاربران Unix که در زیر ذکر شده اجازه دهید وارد شوید..
 unix_mode=اجازه
@@ -97,6 +108,7 @@ unix_esudo=The $1 command is not installed
 unix_esudomod=The Perl module $1 needed for <tt>sudo</tt> authentication is not installed
 unix_header=تنظیمات تأیید اعتبار کاربر یونیکس
 unix_utable=کاربران مجاز Unix
+
 sessions_host=آدرس آی پی
 sessions_actions=اقدامات..
 sessions_logouts=همچنین جلسات ورود به سیستم را نشان دهید..
@@ -105,8 +117,11 @@ sessions_this=این ورود
 sessions_in=وارد شده
 sessions_out=خارج شد
 sessions_kill=قطع شدن..
+
 logins_title=ورود به وب اخیر
+
 rbac_ecpan=You do not have access to Webmin's Perl Modules page in order to install the necessary $1 module for RBAC integration.
+
 udeletes_err=کاربران حذف نشدند
 udeletes_jerr=افزودن کاربران به گروه انجام نشد
 udeletes_enone=هیچ یک انتخاب نشده است
@@ -115,11 +130,13 @@ udeletes_rusure=Are you sure you want to delete the $1 selected users? All of th
 udeletes_users=Selected users: $1
 udeletes_ok=حذف کاربران
 udeletes_ereadonly=یکی از کاربران انتخاب شده به عنوان غیر قابل ویرایش مشخص شده است
+
 gdeletes_err=حذف گروه ها انجام نشد
 gdeletes_title=حذف گروه ها
 gdeletes_rusure=Are you sure you want to delete the $1 selected groups, and the $2 users they contain? All of their access control settings and user details will be lost.
 gdeletes_users=Selected groups: $1
 gdeletes_ok=حذف گروه ها
+
 pass_title=محدودیت های رمز عبور
 pass_ecannot=شما مجاز به ویرایش محدودیت های رمز عبور نیستید
 pass_header=گزینه های اجرای رمز عبور وبمین
@@ -142,6 +159,7 @@ pass_eminsize=حداقل طول رمز عبور وجود ندارد یا غیر 
 pass_emaxdays=تعداد روزهای قبل یا تغییر تعداد غیر عددی
 pass_elockdays=تعداد روزهای قبل از قفل شدن شماره یا تعداد غیر عددی موجود است
 pass_eoldblock=تعداد رمزهای قدیمی برای رد یا غیر عددی وجود ندارد
+
 cpass_minsize=Must be at least $1 letters long
 cpass_notre=با الگوی مجاز مجاز مطابقت دارد
 cpass_re=با الگوی مورد نیاز مطابقت ندارد
@@ -149,6 +167,7 @@ cpass_name=دارای نام کاربری است
 cpass_dict=یک کلمه فرهنگ لغت است
 cpass_spellcmd=Neither the $1 or $2 commands needed to check for dictionary words is installed
 cpass_old=رمزهای عبور قدیمی قابل استفاده مجدد نیستند
+
 sql_title=بانک اطلاعاتی کاربر و گروه
 sql_ecannot=شما مجاز به پیکربندی بانک اطلاعاتی کاربر و گروه نیستید
 sql_header=گزینه های با پس زمینه پایگاه داده برای کاربران و گروه ها
@@ -191,21 +210,25 @@ sql_dnerr=User and group database settings are valid, but the LDAP DN needed by 
 sql_dnerr2=بر روی دکمه <b>ایجاد DN</b> زیر کلیک کنید تا به صورت خودکار ایجاد شود ، یا آن را به صورت دستی به سرور LDAP خود اضافه کنید.
 sql_makedn=ایجاد DN
 sql_schema=دانلود طرحواره LDAP
+
 make_title=جداول کاربری و گروهی ایجاد کنید
 make_err=جداول کاربر و گروه انجام نشد
 make_exec=Executing SQL $1 ..
 make_failed=.. creation failed : $1
 make_done=.. انجام شده
 make_still=Some problems were found even after table creation : $1
+
 makedn_title=LDAP DN ایجاد کنید
 makedn_eoc=هیچ کلاس شیء ساختاری یافت نشد!
 makedn_exec=Creating parent DN $1 ..
 makedn_failed=.. creation failed : $1
 makedn_done=.. انجام شده
 makedn_still=Some problems were found even after DN creation : $1
+
 schema_title=دانلود طرحواره LDAP
 schema_desc=قبل از اینکه وبمین بتواند از یک سرور LDAP برای ذخیره کاربران و گروه ها استفاده کند ، برای استفاده از طرح زیر باید پیکربندی شود. این به طور معمول می تواند با ذخیره کردن تعریف طرحواره در <tt>/etc/ldap/schema</tt> یا <tt>/etc/openldap/schema</tt> به عنوان <tt>webmin.schema</tt> انجام شود ، سپس پیکربندی سرور برای بارگیری آن پرونده طرحواره.
 schema_download=Download schema file : <a href=$1>$1</a>
+
 twofactor_err=تنظیم احراز هویت دو عاملی انجام نشد
 twofactor_euser=کاربر وبمین شما یافت نشد!
 twofactor_title=احراز هویت دو عاملی

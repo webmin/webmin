@@ -155,8 +155,10 @@ menu_bookmarks=Grāmatzīmes
 notallowed=Jums nav atļauts piekļūt $1. Atļautie direktoriji ir : $2 
 error_upload_emax=Augšupielādētais fails ir lielāks par $1 ierobežojumu
 extract_etype=Neatbalstīts arhīva faila tips
+
 info_total1=Kopā: $1 fails un $2 direktorijs
 info_total2=Kopā: $1 faili un $2 direktorijs
 info_total3=Kopā: $1 fails un $2 direktoriji
 info_total4=Kopā: $1 faili un $2 direktoriji
+
 ownership=Īpašnieks

@@ -32,6 +32,7 @@ index_man=Editja Manwal il-Konfigurazzjoni
 index_mandesc=Editja direttament il-fajl tal-konfigurazzjoni Procmail primarju, biex toħloq ir-regoli, il-varjabbli u l-blokki tiegħek stess.
 index_ecmd=Il-programm Procmail $1 ma nstabx fis-sistema tiegħek. Jew mhix installata, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
 index_delete=Ħassar l-Azzjonijiet Magħżula
+
 edit_title2=Azzjoni Editja
 edit_title1=Oħloq Azzjoni
 edit_header1=Dettalji ta 'azzjoni ta' kunsinna
@@ -67,6 +68,7 @@ edit_none=Xejn
 edit_lock=Fajl speċifiku
 edit_ctype=Tip ta 'kondizzjoni
 edit_cvalue=Espressjoni jew kmand regolari
+
 save_err=Ma rnexxielux isalva azzjoni
 save_eaction_0=Fajl nieqes biex jehmeż miegħu
 save_eaction_1=Nieqes il-fowlder MH biex tikteb
@@ -79,6 +81,7 @@ save_elockfile=Nieqes l-isem tal-fajl tal-illokkjar
 save_esize=Daqs tal-posta nieqes jew invalidu għall-kundizzjoni $1 
 save_ere=Nieqes espressjoni regolari għall-kundizzjoni $1 
 save_eshell=Kmand nieqes għall-kundizzjoni $1 
+
 env_title1=Oħloq Varjabbli
 env_title2=Editja Varjabbli
 env_header=Procmail ambjent varjabbli
@@ -86,15 +89,19 @@ env_name=Isem varjabbli
 env_value=Valur
 env_err=Ma rnexxielux isalva varjabbli
 env_ename=Isem varjabbli nieqes jew invalidu
+
 inc_title1=Żid Inkludi Fajl
 inc_title2=Edit Inkludi Fajl
 inc_header=Inkluż fajl tar-regoli tal-prokmail
 inc_inc=Inkluż fajl
 inc_einc=L-ebda fajl jinkludi mdaħħal
+
 config_eline=Linja mhux magħrufa $1 f' $2 : $3 
+
 manual_title=Konfigurazzjoni Editja
 manual_desc=Din il-paġna tista 'tintuża biex tibdel manwalment il-fajl tal-konfigurazzjoni ta' Procmail $1. Oqgħod attent, għax ma ssir l-ebda verifika tas-sintassi.
 manual_edata=L-ebda data ma ġiet ipprovduta mill-browser tiegħek!
+
 log_create_rec=Riċetta maħluqa għal $1 
 log_delete_rec=Riċetta mħassra għal $1 
 log_modify_rec=Riċetta modifikata għal $1 
@@ -114,7 +121,9 @@ log_delete_inc=Imħassar jinkludi fajl $1
 log_manual=Konfigurazzjoni editjata manwalment
 log_up=Tmexxa dħul 'il fuq
 log_down=Tmexxa dħul 'l isfel
+
 delete_err=Ma rnexxielhomx iħassru l-azzjonijiet
 delete_enone=L-ebda magħżul
+
 check_epostfix=Procmail mhux attivat fil-konfigurazzjoni Postfix tiegħek. Il-fajl tal-konfigurazzjoni <tt>$2</tt> għandu jkollu l-għażla <tt>$1</tt> issettjata fuq <tt>$3</tt>.
 check_esendmail=Sendmail mhux stabbilit biex juża Procmail għal kunsinna lokali. Dan jista 'jiġi kkonfigurat fil-modulu <a href='$1'>Sendmail Mail Server ta' Webmin</a>.

@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Skripta za zahtevanje virov iz drugega vozlišča ($1) v
 index_version=Različica srčnega utripa $1 
 index_noversion=Opozorilo - Različice Heartbeat, nameščene v vašem sistemu, ni bilo mogoče samodejno zaznati. Nastavite ga na strani <a href='$1'>konfiguracija modula</a>.
 index_status=Status srčnega utripa
+
 conf_title=Možnosti konfiguracije
 conf_header=Možnosti konfiguracije srčnega utripa
 conf_serials=Serijska vrata
@@ -54,6 +55,7 @@ conf_auto_on=$ {conf_enabled}
 conf_auto_off=$ {conf_disabled}
 conf_auto_legacy=Starejši način
 conf_auto_=$ {default}
+
 res_title=Viri grozdov
 res_node=Primarno vozlišče
 res_ips=IP naslovi
@@ -67,6 +69,7 @@ res_getserv=Pridobite vir
 res_hbdown=Srčni utrip
 res_up=GOR
 res_down=DOL
+
 node_create=Dodaj vir grozdov
 node_edit=Urejanje virov grozdov
 node_header=Podrobnosti o grozdu
@@ -83,6 +86,7 @@ node_enone=Manjkajoče ali neveljavno primarno vozlišče
 node_eip='$1' ni veljaven naslov IP
 node_ecidr='$1' ni veljaven CIDR
 node_ebroad='$1' ni veljaven naslov oddaje
+
 auth_title=Ključi za preverjanje pristnosti
 auth_header=Preverjanje pristnosti vozlišč grozdov
 auth_mode=Način preverjanja pristnosti
@@ -92,6 +96,8 @@ auth_md5=MD5 z geslom
 auth_err=Ni bilo mogoče shraniti ključev za preverjanje pristnosti
 auth_emd5=Manjkajoče ali neveljavno geslo MD5
 auth_esha1=Manjkajoče ali neveljavno geslo SHA1
+
 start_err=Zagon srčnega utripa ni uspel
+
 apply_err=Sprememb ni bilo mogoče uporabiti
 apply_epid=Proces se ne izvaja več

@@ -9,6 +9,7 @@ index_start=Syslog-NGを起動します
 index_startdesc=このボタンをクリックして、現在の構成を使用してSyslog-NGデーモンを起動します。
 index_return=モジュールインデックス
 index_version=Syslog-NG $1
+
 options_title=ロギングオプション
 options_header=すべてのログファイルのオプション
 options_secs=秒
@@ -55,6 +56,7 @@ options_esync=書き込み前にバッファするメッセージの数が欠落
 options_estats=統計メッセージ間で待機する時間がないか、数値ではありません
 options_elog_fifo_size=バッファリングするメッセージが欠落しているか無効です
 options_elog_msg_size=ログメッセージの最大サイズの欠落または非数値
+
 destinations_title=ログ宛先
 destinations_name=宛先名
 destinations_type=に書き込む
@@ -77,6 +79,7 @@ destinations_add=新しいログ宛先を追加します。
 destinations_return=ログ宛先
 destinations_desc=他のモジュールのログ
 destinations_cmd=$1からの出力
+
 destination_header=ログ宛先オプション
 destination_title1=ログ宛先の作成
 destination_title2=ログ宛先の編集
@@ -117,17 +120,22 @@ destination_enet_localip=ローカルIPアドレスが見つからないか無�
 destination_enet_localport=ローカルポート番号が欠落しているか無効です
 destination_enet_host=Syslogサーバーのホストまたはアドレスが欠落しているか無効です
 destination_eunix=Unixソケット名がありません
+
 ddelete_err=宛先を削除できませんでした
 ddelete_enone=何も選択されていません
 ddelete_eused=宛先 $1はログターゲットで使用されているため、削除できません
+
 sdelete_err=ソースを削除できませんでした
 sdelete_enone=何も選択されていません
 sdelete_eused=ログソース $1はログターゲットで使用されているため、削除できません
+
 fdelete_err=フィルターを削除できませんでした
 fdelete_enone=何も選択されていません
 fdelete_eused=ログフィルター $1はログターゲットで使用されているため、削除できません
+
 ldelete_err=ログターゲットを削除できませんでした
 ldelete_enone=何も選択されていません
+
 filters_title=ログフィルター
 filters_name=フィルター名
 filters_desc=条件
@@ -144,6 +152,7 @@ filters_program=プログラム<tt>$1</tt>
 filters_match=「$1」に一致
 filters_host=ホスト名<tt>$1</tt>から
 filters_netmask=送信者<tt>$1</tt>から
+
 filter_title1=ログフィルターの作成
 filter_title2=ログフィルターの編集
 filter_header=ログフィルター仕様の詳細
@@ -169,6 +178,7 @@ filter_enet=ネットワークIPアドレスが欠落しているか無効です
 filter_emask=ネットマスクが欠落しているか無効です
 filter_ebool=複雑な式のエラー
 filter_egone=フィルターはもう存在しません！
+
 logs_title=ログターゲット
 logs_source=ソース
 logs_filter=フィルター
@@ -177,6 +187,7 @@ logs_add=新しいログターゲットを追加します。
 logs_delete=選択したログターゲットを削除する
 logs_return=ログターゲット
 logs_none=なし
+
 log_title1=ログターゲットの作成
 log_title2=ログターゲットの編集
 log_header=ログのソース、フィルター、および宛先の選択
@@ -190,6 +201,7 @@ log_flags=ターゲットオプション
 log_egone=ログターゲットはもう存在しません！
 log_err=ログターゲットを保存できませんでした
 log_esource=ソースが選択されていません
+
 sources_title=ログソース
 sources_none=ソースはまだ定義されていません！
 sources_add=新しいログソースを追加します。
@@ -207,6 +219,7 @@ sources_typen=太陽の流れ
 sources_typenw=syslogサーバー
 sources_return=ログソース
 sources_none2=なし
+
 source_title1=ログソースを作成する
 source_title2=ログソースの編集
 source_header=ログソースオプション
@@ -243,15 +256,20 @@ source_door=ドアのファイル名
 source_esun_streams_name=Sunストリームのファイル名が欠落しているか無効です
 source_edoor=Sunストリームドアファイル名が欠落しているか無効です
 source_transport=ネットワークプロトコル
+
 view_title=ログファイルを表示
 view_header=$2の最後の $1行
 view_empty=ログファイルが空です
 view_refresh=リフレッシュ
 view_filter=テキスト $1の行のみを表示
+
 apply_err=構成を適用できませんでした
 apply_egone=走っていない！
+
 start_err=Syslog-NGサーバーの起動に失敗しました
+
 stop_err=Syslog-NGサーバーの停止に失敗しました
+
 log_create_destination=ログ宛先 $1を作成しました
 log_modify_destination=変更されたログの宛先 $1
 log_delete_destination=ログの宛先 $1を削除しました

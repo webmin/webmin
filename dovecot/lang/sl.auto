@@ -11,11 +11,13 @@ index_boot=Začeti ob zagonu?
 index_bootdesc=Spremenite to nastavitev, da omogočite ali onemogočite zagon strežnika Dovecot ob zagonu sistema.
 index_return=kazalo modula
 index_version=Različica $1
+
 stop_err=Ni bilo mogoče ustaviti Dovecota
 stop_erunning=Ne teče več
 start_err=Ni bilo mogoče zagnati Dovecota
 start_eprotos=Na strani <b>Omrežje in protokoli</b> niso izbrani nobeni protokoli
 apply_err=Konfiguracije ni bilo mogoče uporabiti
+
 net_title=Mreženje in protokoli
 net_header=Možnosti omrežja Dovecot in protokola za pošto
 net_protocols=Vročite poštne protokole
@@ -42,8 +44,11 @@ net_eimaps_listen=Neveljaven IP naslov za povezave IMAP SSL
 net_epop3s_listen=Neveljaven IP naslov za povezave POP3 SSL
 net_elisten=Neveljaven IP naslov za povezave, ki niso SSL
 net_essl_listen=Neveljaven IP naslov za povezave SSL
+
 imap_title=Možnosti IMAP
+
 pop3_title=Možnosti POP3
+
 ssl_title=Konfiguracija SSL
 ssl_header=Možnosti načina IMAP in POP3 SSL
 ssl_key=Datoteka zasebnega ključa SSL
@@ -61,7 +66,9 @@ ssl_ecert=Manjkajoča ali neobstoječa datoteka s potrdilom
 ssl_eca=Manjkajoča ali neobstoječa datoteka s potrdilom stranke CA
 ssl_eregen=Interval regeneracije manjkajočega ali neštevilčnega parametra
 ssl_epass=Geslo datoteke s ključem SSL ni vneseno
+
 misc_title=Druge možnosti
+
 login_title=Možnosti uporabnika in prijave
 login_header=Možnosti preverjanja pristnosti in prijave uporabnika
 login_fuid=Najmanjši veljaven UID
@@ -117,6 +124,7 @@ login_procs=Največji postopki prijave
 login_count=Začetni postopki prijave
 login_eprocs=Manjkajoče ali neveljavno največje število prijavnih procesov
 login_ecount=Manjkajoče ali neveljavno začetno število prijavnih procesov
+
 mail_title=Datoteke po pošti
 mail_header=Lokacija pošte in možnosti branja
 mail_env=Lokacija datoteke za pošto
@@ -169,6 +177,7 @@ mail_eindexmode=Lokacije datotek indeksa ni mogoče nastaviti, če se samodejno 
 mail_econtrolmode=Položaja nadzornih datotek ni mogoče nastaviti, če se samodejno zazna lokacija poštne datoteke
 mail_eindex=Manjkajoča ali neveljavna absolutna pot za indeksne datoteke
 mail_econtrol=Manjkajoča ali neveljavna absolutna pot za nadzorne datoteke
+
 log_net=Spremenjena omrežja in protokoli
 log_login=Spremenjene možnosti uporabnika in prijave
 log_mail=Spremenjene datoteke s pošto
@@ -179,6 +188,7 @@ log_stop=Ustavil strežnik Dovecot
 log_bootup=Omogočeno Dovecot ob zagonu
 log_bootdown=Onemogočen Dovecot ob zagonu
 log_manual=Ročno urejena konfiguracijska datoteka $1
+
 manual_title=Uredi konfiguriranje datotek
 manual_editsel=Uredite konfiguracijsko datoteko Dovecot
 manual_err=Konfiguracijske datoteke ni bilo mogoče shraniti

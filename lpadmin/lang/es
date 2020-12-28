@@ -16,6 +16,7 @@ index_startmsg=Haz click en este botón para arrancar el proceso del planificado
 index_restart=Rearrancar Planificador
 index_restartmsg=Haz click en este botón para rearrancar el proceso del planificador de impresión. Esto forzará la aplicación de la configuración en curso.
 index_return=Lista de impresoras
+
 edit_eedit=No estás autorizado a editar esta impresora
 edit_eadd=No estás autorizado a añadir impresoras
 edit_add=Crear Impresora
@@ -59,7 +60,9 @@ edit_direct=Conexión TCP directa
 edit_dport=Puerto
 edit_driver=Controlador de Impresora
 edit_check=¿Reviso si el servidor remoto está activo?
+
 blocks=bloques
+
 save_err=Error al salvar impresora
 save_eadd=No estás autorizado a añadir impresoras
 save_eedit=No estás autorizado a editar esta impresora
@@ -76,6 +79,7 @@ save_erqueue='$1' no es un nombre de cola remota válido
 save_eremote=Los controladores no pueden ser usados con impresoras Unix remotas
 save_edhost=La máquina directa '$1' no existe
 save_edport=Puerto directo falta o es inválido
+
 jobs_title=Tareas de impresión
 jobs_header=Imprimir tareas en $1
 jobs_id=ID de Tarea
@@ -89,17 +93,23 @@ jobs_none=No hay tareas de impresión en $1
 jobs_all=Cancelar todas las tareas de impresión
 jobs_bytes=octetos
 jobs_test=Imprimir Página de Prueba
+
 cancel_ecannot=No estás autorizado a cancelar tareas de impresión
 cancel_err=Error al cancelar tarea de impresión
 cancel_egone=La tarea de impresión $1 ya no existe
+
 view_ecannot=No puedes ver esta tarea de impresión
 view_egone=Esta tarea de impresión ya no existe
+
 start_ecannot=No estás autorizado a arrancar el planificador
 start_err=Error al arrancar planificador
+
 stop_ecannot=No estás autorizado a parar el planificador
 stop_err=Error al parar planificador
+
 restart_ecannot=No estás autorizado a rearrancar el planificador de impresión
 restart_err=No pude rearrancar el planificador de impresión
+
 webmin_none=Ninguno
 webmin_nonemsg=Impresora Postscript o de texto
 webmin_remotemsg=Impresora remota
@@ -110,6 +120,7 @@ webmin_uniprint=Controlador Uniprint
 webmin_edrivers=Error al obtener los controladores desde $1. Los controladores de impresoras de Webmin que utilicen ghostscript no estarán disponibles
 webmin_egs=El comando $1 no fue encontrado. Los controladores de impresora de Webmin que utilicen ghostscript no estarán disponibles
 webmin_edriver='$1' no existe
+
 caldera_none=Ninguno
 caldera_nonemsg=Impresora remota o sin buffer
 caldera_prog=Programa
@@ -123,6 +134,7 @@ caldera_uniprint=Controlador Uniprint
 caldera_eprog='$1' no existe
 caldera_edriver=No se ha seleccionado controlador de impresora
 caldera_eres=No se ha seleccionado resolución
+
 redhat_none=Ninguno
 redhat_nonemsg=Impresora postscript o de texto
 redhat_prog=Programa
@@ -141,6 +153,7 @@ redhat_ehmargin=Márgen derecho/izquierdo falta o es inválido
 redhat_evmargin=Márgen superior/inferior falta o es inválido
 redhat_eres=No se ha seleccionado resolución
 redhat_printer2=Model y conductor de impresora
+
 suse_none=Ninguna
 suse_nonemsg=Impresora postscript o de texto
 suse_prog=Programa
@@ -157,7 +170,9 @@ suse_extra=Opciones extra de ghostscript
 suse_yast2=Conductor de YAST2
 suse_edriver=No se ha selecciona tipo de impresora
 suse_eres=Resuloción falta o es inválida
+
 estop=No pude parar lpd: $1
+
 acl_printers=Impresoras que este usuario puede configurar
 acl_add=¿Puedo añadir impresoras nuevas?
 acl_cancel=¿Puedo ver y cancelar tareas de impresión?
@@ -171,6 +186,7 @@ acl_test=¿Puedo imprimir páginas de prueba?
 acl_user=Gestionar tareas de impresión propiedad de
 acl_user_all=Todos los usuarios
 acl_user_this=Usuario actual de Webmin
+
 log_stop=Parado Gestor de impresión
 log_start=Arrancado gestor de impresión
 log_restart=Rearrancado planificador de impresión
@@ -182,27 +198,35 @@ log_delete=Borrada impresora $1 en $2
 log_create_l=Creada $3 impresora $1 en $2
 log_modify_l=Modificada $3 impresora $1 en $2
 log_delete_l=Borrada $3 impresora $1 en $2
+
 linux_paralel=Puerto Paralelo $1
 linux_serial=Puerto Serial $1 (COM$1)
 linux_null=Dispositivo Nulo
 linux_usb=Impresora USB $1
+
 freebsd_paralel=Puerto Paralelo
 freebsd_serial=Puerto Serial $1 (COM$1)
+
 openbsd_paralel=Puerto Paralelo
 openbsd_serial=Puerto Serial $1 (COM$1)
+
 unixware_paralel=Puerto Paralelo $1
 unixware_serial=Puerto Serial $1
 unixware_null=Dispositivo Nulo
+
 hpux_paralel=Paralelo $1
 hpux_serial=Serial $1
 hpux_null=Dispositivo Nulo
+
 lprng_paralel=Puerto Paralelo $1
 lprng_serial=Puerto Serial $1 (COM$1)
 lprng_null=Dispositivo Nulo
+
 solaris_paralel=Puerto Paralelo
 solaris_uparalel=Puerto Paralelo Ultra 5/10
 solaris_serial=Puerto Serial $1
 solaris_null=Dispositivo Nulo
+
 test_title=Imprimir Página de Prueba
 test_ecannot=No estás autorizado a imprimir páginas de prueba
 test_desc=Este formulario te permite imprimir una página de prueba en la impresora $1. Selecciona el tipo de página que deseas imprimir:
@@ -214,6 +238,7 @@ test_print=Imprimir página
 test_exec=Imprimiendo página de prueba con el comando $1...
 test_failed=... ¡Falló el comando!
 test_ok=... comando completado.
+
 cups_none=Ninguno
 cups_nonemsg=Impresora remota o directa
 cups_prog=Programa

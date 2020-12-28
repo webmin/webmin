@@ -24,6 +24,7 @@ index_style=Druckersystem: $1
 index_cluster=Cluster Server
 index_clusterdesc=Klicken Sie auf diese Schaltfläche, um zusätzliche Webmin Server einzurichten, auf denen Druckern erstellt, aktualisiert und gelöscht werden können.
 index_delete=Lösche ausgewählte Drucker
+
 style_solaris=Solaris
 style_linux=Linux LPR
 style_freebsd=FreeBSD LPR
@@ -33,6 +34,7 @@ style_unixware=UnixWare
 style_cups=CUPS
 style_irix=IRIX
 style_aix=AIX
+
 edit_eedit=Sie haben keine Berechtigung, diesen Drucker zu bearbeiten
 edit_eadd=Sie haben keine Berechtigung, Drucker hinzuzufügen
 edit_add=Drucker installieren
@@ -76,7 +78,9 @@ edit_direct=Direkte TCP-Verbindung
 edit_dport=Anschluss
 edit_driver=Druckertreiber
 edit_check=Test, ob entfernter Server aktiv ist?
+
 blocks=Blocks
+
 save_err=Fehler beim Speichern des Druckers
 save_eadd=Sie haben keine Berechtigung, Drucker hinzuzufügen
 save_eedit=Sie haben keine Berechtigung, diesen Drucker zu bearbeiten
@@ -98,6 +102,7 @@ save_evalid=Das Drucksystem erlaubt nicht diesen Drucker
 save_errslave=Drucker erzeugte OK auf diesem System, aber die folgenden Fehler sind auf dem Cluster System aufgetreten : $1
 save_egone=Kein Drucker mit Name '$1' wurde gefunden
 save_errdelslave=Drucker löschte OK auf diesem System, aber die folgenden Fehler sind auf dem Cluster System aufgetreten : $1
+
 jobs_title=Druckaufträge
 jobs_header=Druckaufträge auf $1
 jobs_id=Auftrags-ID
@@ -114,17 +119,23 @@ jobs_test=Testseite drucken
 jobs_cancelsel=Breche ausgewählte Jobs ab
 jobs_on=Auf Drucker $1
 jobs_return=Liste an Druckjobs
+
 cancel_ecannot=Sie haben keine Berechtigung, Druckaufträge abzubrechen
 cancel_err=Fehler beim Abbrechen des Druckauftrags
 cancel_egone=Druckauftrag $1 existiert nicht länger
+
 view_ecannot=Sie können diesen Durckauftrag nicht einsehen
 view_egone=Dieser Druckauftrag existiert nicht mehr
+
 start_ecannot=Sie haben keine Berechtigung, die Druck-Verwaltung zu starten
 start_err=Fehler beim Starten der Druck-Verwaltung
+
 stop_ecannot=Sie haben keine Berechtigung, die Druck-Verwaltung zu stoppen
 stop_err=Fehler beim Stoppen der Druck-Verwaltung
+
 restart_ecannot=Sie sind nicht berechtigt den Scheduler neu zu starten
 restart_err=Der Scheduler konnte nicht neu gestartet werden
+
 webmin_none=Keiner
 webmin_nonemsg=Postscript oder Text Drucker
 webmin_remotemsg=Ferner Drucker
@@ -135,6 +146,7 @@ webmin_uniprint=Uniprint Treiber
 webmin_edrivers=Fehler beim holen der Treiber von $1. Webmin Treiber, die Ghostscript benutzen, sind nicht verfügbar
 webmin_egs=Das Kommando $1 wurde nicht gefunden. Webmin Treiber, die Ghostscript benutzen, sind nicht verfügbar
 webmin_edriver='$1' existiert nicht
+
 caldera_none=Keiner
 caldera_nonemsg=Ferner oder RAW Drucker
 caldera_prog=Programm
@@ -148,6 +160,7 @@ caldera_uniprint=Uniprint Treiber
 caldera_eprog='$1' existiert nicht
 caldera_edriver=Es wurde kein Treiber gewählt
 caldera_eres=Es wurde keine Auflösung gewählt
+
 redhat_none=Keine
 redhat_nonemsg=Postscript- oder Textdrucker
 redhat_prog=Programm
@@ -166,6 +179,7 @@ redhat_ehmargin=Fehlender oder ungültiger rechter/linker Rand
 redhat_evmargin=Fehlender oder ungültiger oberer/unterer Rand
 redhat_eres=Es wurde keine Auflösung gewählt
 redhat_printer2=Druckermodell und Treiber
+
 suse_none=Keiner
 suse_nonemsg=Postscript oder Text Drucker
 suse_prog=Programm
@@ -182,7 +196,9 @@ suse_extra=Extra Ghostscript Optionen
 suse_yast2=YAST2 Treiber
 suse_edriver=Kein Drucker Typ gewählt
 suse_eres=Fehlende oder ungültige Auflösung
+
 estop=Stoppen von lpd : $1 gescheitert
+
 acl_printers=Drucker, die dieser Benutzer konfigurieren darf
 acl_add=Darf neue Drucker hinzufügen?
 acl_cancel=Darf Druckaufträge einsehen und abbrechen?
@@ -198,6 +214,7 @@ acl_user_all=Alle Benutzer
 acl_user_this=Derzeitiger Webmin Benutzer
 acl_delete=Kann Drucker löschen?
 acl_cluster=Kann Drucker Cluster verwalten?
+
 log_stop=Drucker Scheduler gestoppt
 log_start=Drucker Scheduler gestartet
 log_restart=Drucker Scheduler neu gestartet
@@ -210,37 +227,45 @@ log_delete=Drucker $1 auf $2 gelöscht
 log_create_l=$3 Drucker $1 auf $2 angelegt
 log_modify_l=$3 Drucker $1 auf $2 geändert
 log_delete_l=$3 Drucker $1 auf $2 gelöscht
+
 linux_paralel=Parallele Schnittstelle $1
 linux_serial=Serielle Schnittstelle $1 (COM$1)
 linux_null=Kein Gerät
 linux_usb=USB Drucker $1
 linux_ecmd=Der Befehl $1 wurde nicht auf Ihrem System gefunden, welches aufzeigt, dass das  Linux-Drucksystem nicht installiert ist.
 linux_espool=Das Spool-Verzeichnis $1 existiert nicht auf Ihrem System, welches aufzeigt, dass das Linux-Drucksystem nicht installiert ist.
+
 freebsd_paralel=Parallele Schnittstelle
 freebsd_serial=Serielle Schnittstelle $1 (COM$1)
 freebsd_ecmd=Der Befehl $1 wurde nicht auf Ihrem System gefunden, welches aufzeigt, dass das FreeBSD-Drucksystem nicht installiert ist.
 freebsd_espool=Das Spool-Verzeichnis $1 existiert nicht auf Ihrem System gefunden, welches aufzeigt, dass das FreeBSD-Drucksystem nicht installiert ist.
+
 openbsd_paralel=Parallele Schnittstelle
 openbsd_serial=Serielle Schnittstelle $1 (COM$1)
+
 unixware_paralel=Parallele Schnittstelle $1
 unixware_serial=Serielle Schnittstelle $1
 unixware_null=Kein Gerät
 unixware_ecmd=Der Befehl $1 wurde nicht auf Ihrem System gefunden, welches aufzeigt, dass das UnixWare Drucksystem nicht installiert ist.
+
 hpux_paralel=Parallele Schnittstelle $1
 hpux_serial=Seriell $1
 hpux_null=kein Gerät
 hpux_ecmd=Das Spool-Verzeichnis $1 existiert nicht auf Ihrem System gefunden, welches aufzeigt, dass das HPUX-Drucksystem nicht installiert ist.
 hpux_eiface=Das Schnittstellen Skript Verzeichnis $1 existiert nicht auf Ihrem System, welches aufzeigt, dass das HPUX-Drucksystem nicht installiert ist.
+
 lprng_paralel=Parallele Schnittstelle $1
 lprng_serial=Serielle Schnittstelle $1 (COM$1)
 lprng_null=Kein Gerät
 lprng_ecmd=Der Befehl $1 wurde nicht auf Ihrem System, welches aufzeigt, dass das LPRng-Drucksystem nicht installiert ist.
 lprng_espool=Das Spool-Verzeichnis $1 existiert nicht auf Ihrem System, welches aufzeigt, dass das LPRng-Drucksystem nicht installiert ist.
+
 solaris_paralel=Parallele Schnittstelle
 solaris_uparalel=Ultra 5/10 Parallele Schnittstelle
 solaris_serial=Serielle Schnittstelle  $1
 solaris_null=kein Gerät
 solaris_ecmd=Der Befehl $1 wurde nicht auf Ihrem System gefunden, welches aufzeigt, dass das Solaris Drucksystem nicht installiert ist.
+
 test_title=Drucke Testseite
 test_ecannot=Sie sind nicht berechtigt die Testseite zu drucken
 test_desc=Diese Maske erlaubt Ihnen eine Testseite auf Drucker $1 zu drucken. Wählen Sie den Typ :
@@ -252,6 +277,7 @@ test_print=Drucke Seite
 test_exec=Drucke Testseite mit Kommando $1 ..
 test_failed=.. Kommando fehlgeschlagen!
 test_ok=.. Kommando beendet.
+
 cups_none=Keiner
 cups_nonemsg=Ferner oder RAW Drucker
 cups_prog=Programm
@@ -259,11 +285,14 @@ cups_driver=CUPS Treiber
 cups_eprog='$1' ist kein gültiges Programm
 cups_opts=Optionen für $1
 cups_ecmd=Der Befehl $1 wurde nicht auf Ihrem System gefunden, welches aufzeigt, dass das CUPS-Drucksystem nicht installiert ist.
+
 irix_ecmd=Der Befehl $1 wurde nicht auf Ihrem System gefunden, welches aufzeigt, dass das IRIX-Drucksystem nicht installiert ist.
 irix_eiface=Das Schnittstellen Skript Verzeichnis $1 existiert nicht auf Ihrem System, welches aufzeigt, dass das IRIX-Drucksystem nicht installiert ist.
+
 aix_port=Printer Port $1
 aix_edesc=Ungültige Beschreibung - nur Buchstaben und Zahlen sind erlaubt, und keine Leerzeichen
 aix_ecmd=Der AIX-Drucker-Server $1 wurde nicht gefunden. Vielleicht ist es nicht installiert oder ein anderes Druck-System ist im Einsatz.
+
 cluster_title=Cluster Drucker Server
 cluster_none=Keine Server an den Drucker-Cluster wurde bisher hinzugefügt.
 cluster_host=Hostname
@@ -275,6 +304,7 @@ cluster_need=Sie müssen Server mit einem Login und Passwort in das Webmin-Serve
 cluster_return=Cluster Server
 cluster_delete=Lösche Ausgewähltes
 cluster_ecannot=Es ist Ihnen nicht erlaubt den Cluster Druckserver zu verwalten
+
 add_title=Füge Server hinzu
 add_msg=Hinzufügen $1 ..
 add_gmsg=Füge Server in Gruppe $1 hinzu ..

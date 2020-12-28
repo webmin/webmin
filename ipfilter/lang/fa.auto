@@ -43,8 +43,10 @@ index_natnone=هنوز هیچ قانون ترجمه آدرس آدرس تعریف
 index_nataction=حالت NAT
 index_natfrom=بسته ها برای مطابقت
 index_natto=ترجمه
+
 dir_in=ورودی
 dir_out=برونگرا
+
 action_pass=<font color=#00aa00>عبور</font>
 action_block=<font color=#ff0000>بلاک</font>
 action_skip=پرش
@@ -57,6 +59,7 @@ action_map=نقشه برداری
 action_rdr=تغییر مسیر
 action_bimap=نقشه برداری دو طرفه
 action_map-block=نقشه برداری بلوک
+
 laction_pass=<font color=#00aa00>بسته بسته</font>
 laction_block=<font color=#ff0000>بسته بسته ، با کد ICMP</font>
 laction_log=بسته ورود به سیستم ، در سطح
@@ -65,6 +68,7 @@ laction_skip=از قوانین بعدی پرش کنید
 laction_auth=مجوز فضای کاربر
 laction_preauth=مجوز قبلی را بررسی کنید
 laction_call=عملکرد هسته را فراخوانی کنید
+
 edit_title1=ایجاد قانون
 edit_title2=قانون را ویرایش کنید
 edit_header1=عمل قانون
@@ -130,6 +134,7 @@ edit_icmp=نوع ICMP
 edit_icmpany=&lt;هر نوع&gt;
 edit_icmpcode=و کد
 edit_codeany=&lt;هر کد&gt;
+
 save_err=قانون را نجات داد
 save_ehostfrom=نام میزبان منبع نامعتبر یا نامعتبر است
 save_ehostto=نام میزبان مقصد از بین رفته یا نامعتبر است
@@ -158,11 +163,13 @@ save_eto=رابط کاربری موجود نیست یا نامعتبر است
 save_etoip=آدرس IP نامعتبر است
 save_ereplyto=برای پاسخ دادن به رابط موجود ، نامعتبر یا نامعتبر است
 save_ereplytoip=آدرس IP نامعتبر است برای پاسخ دادن به
+
 apply_err=پیکربندی انجام نشد
 apply_remote=خطا از $1 : $2 
 unapply_err=بازگرداندن پیکربندی انجام نشد
 unapply_ein=دریافت قوانین ورودی انجام نشد
 unapply_eout=قوانین خروجی انجام نشد
+
 desc_if=اگر$1
 desc_and=و
 desc_always=همیشه
@@ -196,6 +203,7 @@ desc_rdr=آدرس IP $1 پورت$2
 desc_dport1=پورت $1 است
 desc_dport2=پورت بین$1 تا$2 است
 desc_nattoiface=آدرس رابط
+
 log_create_rule=قانون$1 ایجاد شده است
 log_delete_rule=قانون$1 حذف شد
 log_modify_rule=قانون$1 اصلاح شده است
@@ -224,6 +232,7 @@ log_add_host=سرور خوشه$1 اضافه شد
 log_add_group=سرورهای خوشه ای از گروه$1 اضافه شد
 log_delete_host=سرور خوشه$1 حذف شد
 log_delete_group=$1 سرورهای خوشه برداشته شد
+
 cluster_title=سرورهای فایروال خوشه ای
 cluster_none=هنوز هیچ سرور به خوشه فایروال اضافه نشده است.
 cluster_host=نام میزبان
@@ -234,6 +243,7 @@ cluster_gadd=سرورها را به صورت گروه اضافه کنید
 cluster_need=قبل از اینکه در اینجا مدیریت شود باید سرورهایی را با ورود به سیستم و رمز عبور در ماژول Webmin Servers Index اضافه کنید.
 cluster_return=سرورهای خوشه
 cluster_delete=حذف انتخاب شده
+
 add_title=اضافه کردن سرورها
 add_msg=افزودن$1 ..
 add_gmsg=افزودن سرورها به گروه$1 ..
@@ -242,6 +252,7 @@ add_gerr=افزودن گروه انجام نشد
 add_echeck=سرور$1 ماژول فایروال IPFilter را ندارد
 add_emissing=سرور$1 فرمان فایروال$2 را ندارد
 add_ok=با$2 قوانین فایروال فعال$1 اضافه شد.
+
 nat_title1=قانون NAT ایجاد کنید
 nat_title2=قانون NAT را ویرایش کنید
 nat_action=حالت NAT
@@ -300,4 +311,5 @@ nat_edport2=خاتمه یا نامعتبر بودن درگاه اصلی
 net_erdrip='$1' یک آدرس IP معتبر نیست
 nat_erdrips=هیچ IP مقصد وارد نشده است
 nat_erdrport=بندر مقصد وجود ندارد یا نامعتبر است
+
 boot_esmf=سرویس SMF $1 وجود ندارد یا در حالت شناخته شده نیست

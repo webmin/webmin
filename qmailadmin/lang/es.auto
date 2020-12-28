@@ -1,10 +1,16 @@
 aliases_delete=Eliminar alias seleccionados
+
 adelete_err=Error al eliminar alias
 adelete_enone=Ninguna seleccionada
+
 routes_delete=Eliminar rutas de dominio seleccionadas
+
 rdelete_err=Error al eliminar rutas de dominio
+
 virts_delete=Eliminar asignaciones virtuales seleccionadas
+
 vdelete_err=Error al eliminar asignaciones virtuales
+
 log_delete_aliases=$1 alias eliminados
 log_delete_virts=Se eliminaron $1 asignaciones virtuales
 log_delete_routes=Rutas $1 eliminadas
@@ -12,6 +18,7 @@ log_delete_assigns=$1 usuarios de correo eliminados
 log_delmail=Mensajes $1 eliminados de $2 
 log_movemail=Se movieron $1 mensajes de $2 a $3 
 log_send=Correo enviado a $1 
+
 rfile_desc2=También puede establecer encabezados de correo que agreguen o reemplacen los valores predeterminados utilizados en la respuesta automática colocando líneas como: <br><tt> De: foo@bar.com </tt><br> <tt>Asunto: En vacaciones</tt> <br> en la parte superior del mensaje, separados del cuerpo por una sola línea en blanco.
 rfile_replies=¿Rastrear respuestas para evitar bucles de correo?
 rfile_none=No
@@ -26,16 +33,22 @@ rfile_from=De: dirección para respuesta
 rfile_auto=Automático (según la dirección del destinatario)
 rfile_efrom=Falta de: dirección
 rfile_fromdesc=Siempre se debe especificar una dirección De: siempre que sea posible, ya que el método automático puede no ser confiable.
+
 queue_count=$1 mensajes
 queue_refresh=Actualizar la cola de correo
 queue_refreshdesc=Vuelva a cargar esta página para mostrar el estado actual de la cola de correo.
+
 qview_title=Mensaje en cola
 qview_desc=Del archivo $1 
 qview_headers=Encabezados de correo
 qview_attach=Archivos adjuntos
+
 assigns_delete=Eliminar usuarios de correo seleccionados
+
 sdelete_err=Error al eliminar usuarios de correo
+
 delete_ebogus=Nombre de archivo de cola no válido
+
 boxes_user=Usuario
 boxes_size=Tamaño del buzón
 boxes_none=Sin correo
@@ -44,6 +57,7 @@ boxes_sent=Correo enviado
 boxes_ecannot=No tienes permiso para leer correos electrónicos
 boxes_toomany=Hay demasiados usuarios en su sistema para enumerar todos sus buzones.
 boxes_go=Ver correo para el usuario:
+
 mail_title=Email del usuario
 mail_from=Desde
 mail_date=Fecha
@@ -82,6 +96,7 @@ mail_forward=Adelante
 mail_rfc=De la línea
 mail_move=Mover a:
 mail_eexists=¡El mensaje ya no existe!
+
 view_desc2=Mensaje $1 para el usuario $2 
 view_desc3=Mensaje $1 
 view_sent=Mensaje $1 en la lista de correo enviado
@@ -101,6 +116,7 @@ view_mark1=Leer
 view_mark2=Especial
 view_return=correo original
 view_sub=Correo adjunto
+
 compose_title=Escribir correo
 reply_title=Responder a un correo electrónico
 forward_title=Redirigir correo
@@ -111,6 +127,7 @@ reply_mailforward=Mensajes reenviados
 reply_attach2=Adjuntos del lado del cliente y del servidor
 reply_send=Enviar correo
 reply_ecannot=No tienes permiso para enviar correos como este usuario
+
 send_err=Error al enviar correo
 send_eto=Falta a la dirección
 send_efrom=Dirección de falta
@@ -123,6 +140,7 @@ send_eattach=Los archivos adjuntos no pueden sumar más de $1 kB de tamaño.
 send_eperms=El usuario $1 no puede leer $2 
 send_eperms2=No tiene permiso para enviar el archivo $1 
 send_epath=El ejecutable de Sendmail $1 no existe.
+
 delete_title=Eliminar correo
 delete_rusure=¿Está seguro de que desea eliminar los mensajes seleccionados $1 de $2 ? Esto puede tomar algún tiempo para un archivo de correo grande. Hasta que la eliminación haya finalizado, no se debe realizar ninguna otra acción.
 delete_rusure2=¿Seguro que quieres eliminar este mensaje de $1 ? Esto puede tomar algún tiempo para un archivo de correo grande. Hasta que la eliminación haya finalizado, no se debe realizar ninguna otra acción.
@@ -131,6 +149,7 @@ delete_ecannot=Ahora puede borrar el correo de este usuario
 delete_enone=Ningún correo seleccionado para eliminar
 delete_emnone=Ningún correo seleccionado para marcar
 delete_nobutton=No se hizo clic en ningún botón
+
 search_title=Resultados de la búsqueda
 search_ecannot=No tiene permitido buscar el correo electrónico de este usuario
 search_ematch=Debes ingresar texto para comparar.
@@ -138,6 +157,7 @@ search_efield=Debes seleccionar un tipo de búsqueda.
 search_none=No se han encontrado mensajes.
 search_results2=$1 mensajes de correo que coinciden con $2 ..
 search_results3=$1 mensajes de correo no coinciden con $2 ..
+
 match_from=De: partidos
 match_subject=Asunto: partidos
 match_to=Para: coincidencias
@@ -155,6 +175,7 @@ match_!date=Fecha: no coincide
 match_!body=El cuerpo no coincide
 match_!size=El tamaño es menor que
 match_!headers=Los encabezados no coinciden
+
 delq_titles=Eliminar mensajes
 delq_rusure=¿Está seguro de que desea eliminar los mensajes en cola seleccionados $1 ?
 delq_confirm=Eliminar mensajes

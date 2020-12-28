@@ -16,6 +16,7 @@ index_startmsg=点击此按钮以启动本服务器上的fetchmail守护程序�
 index_stopmsg=点击此按钮以停止当前以用户$1的身份运行的fetchmai守护程序。系统不再每$2秒钟就自动下载一次邮件。
 index_efetchmail=未找到fetchmail程序$1。可能您的系统中未安装fetchmail，或者您的<a href='$2'>模块配置</a>有误。
 index_none=没有Unix用户安装<tt>.fetchmailrc</tt> 文件。
+
 poll_create=新增服务器
 poll_edit=编辑服务器
 poll_header=邮件服务器选项
@@ -49,16 +50,20 @@ poll_preconnect=在连接前要执行的命令
 poll_postconnect=在连接后要执行的命令
 poll_ecannot=您没有编辑本用户fetchmail配置的权限
 poll_efile=只有本用户fetchmail配置文件可以编辑
+
 stop_err=无法停止fetchmail
 start_err=无法启动fetchmail
 start_einterval=未输入的查看时间间隔或无效的查看时间间隔
+
 check_title=查看服务器
 check_exec=用命令$1在服务器上查看邮件..
 check_ok=..查看完毕。
 check_failed=..查看失败！
+
 global_title=默认设置
 global_header=所有服务器的默认设置
 global_err=无法保存默认设置
+
 log_create_poll_file=在文件$2中新增服务器$1
 log_modify_poll_file=在文件$2中修改服务器$1
 log_delete_poll_file=在文件$2中删除服务器$1
@@ -74,6 +79,7 @@ log_global_user=更改用户$1的全局设置
 log_global_file=更改在文件$1中的全局设置
 log_start=启动fetchmail守护程序
 log_stop=停止fetchmail守护程序
+
 acl_users=可以编辑fetchmail配置为
 acl_all=所有用户
 acl_this=当前webmin用户

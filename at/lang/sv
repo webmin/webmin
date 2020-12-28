@@ -18,6 +18,7 @@ index_amode1=Endast listade användare ..
 index_amode2=Alla utom listade användare ..
 index_delete=Ångra valt kommando
 index_noat=$1 Kommandot kunde inte hittas, Antagligen är det inte installerat eller så finns det inte på detta operativ.
+
 edit_title=Schemalagt Kommando
 edit_cmd=Hela skriptet att exekvera
 edit_shortcmd=Kommando att utföra
@@ -27,6 +28,7 @@ edit_run=Kör Nu
 edit_ejob=Schemalagt kommando existerar inte längre!
 edit_ecannot=Du är inte tillåten att ändra detta schemalagda kommando
 edit_showfull=Visa hela skriptet
+
 create_err=Misslyckades att skapa schemalagd kommando
 create_euser=Saknad eller felaktig användar namn
 create_edate=Saknad eller felaktig datum eller tid
@@ -35,19 +37,24 @@ create_efuture=Datum och tid är inte i dåtid
 create_edir=Saknad eller felaktig directory
 create_ecannot=Du är inte tillåten att skapa schemalagda kommandon för denna användare
 create_eallow=Specificerad användare är inte tillåten att köra schemalagda kommandon
+
 delete_err=Misslyckades att ångra kommando
 delete_egone=Kommando körs redan eller borttagen
+
 acl_users=Kan ändra Schemalagda Kommandon för
 acl_all=Alla användare
 acl_this=Nuvarande Webmin användare
 acl_only=Endast användare
 acl_except=Alla utom användare
 acl_allow=Kan ändra tillåtna AT användare?
+
 run_title=Körande kommando
 run_output=Utmatning från schemalagt kommando ..
 run_none=Ingen utmatning genererad
+
 allow_err=Misslyckades att spara tillåtna användare
 allow_ecannot=Du är inte tillåten att hantera tillåtna användare
 allow_eusers=Inga användare inskrivna
+
 deletes_err=Misslyckades att ångra kommando
 deletes_enone=Ingen vald

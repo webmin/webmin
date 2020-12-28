@@ -16,6 +16,7 @@ index_add=Izveidojiet jaunu datu bāzi.
 index_users=Lietotājs, grupas un atļaujas
 index_return=datu bāzu saraksts
 index_esql=PostgreSQL klienta programma $1 jūsu sistēmā netika atrasta. Varbūt PostgreSQL nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+
 index_ehba=PostgreSQL resursdatora konfigurācijas fails $1 jūsu sistēmā netika atrasts. Varbūt PostgreSQL nav inicializēts vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 index_superuser=PostgreSQL klienta programmu psql nevarēja izpildīt jūsu sistēmā. Varbūt PostgreSQL nav instalēts, vai jūsu <a href='$1'>moduļa konfigurācija</a> ir nepareiza.
 index_eversion=Jūsu sistēmas PostgreSQL datu bāze ir versija $1, bet Webmin atbalsta tikai versijas $2 un jaunākas.
@@ -48,10 +49,12 @@ index_gist=Ģeneralizētais indeksa meklēšanas koks
 index_jump=Vai arī rediģēt datu bāzi:
 index_jumpok=Atvērt
 index_edithosts=Konfigurējiet atļautās resursdatora sistēmas
+
 login_err=Pieslēgšanās neizdevās
 login_ecannot=Jums nav atļauts konfigurēt pieteikšanos datu bāzē
 login_elogin=Trūkst pieteikšanās administrācijā
 login_epass=Nepareizs administrācijas lietotājvārds vai parole
+
 dbase_title=Rediģēt datu bāzi
 dbase_noconn=Šī datu bāze pašlaik nepieņem savienojumus, tāpēc tajā nevar veikt nekādas darbības.
 dbase_header=Datu bāzes tabulas, indeksi, skati un secības
@@ -78,6 +81,7 @@ dbase_jump=Rediģēt tabulu:
 dbase_vjump=Rediģēt skatu:
 dbase_ijump=Rediģēt indeksu:
 dbase_sjump=Rediģēt secību:
+
 table_title=Rediģēt tabulu
 table_title2=Izveidot tabulu
 table_opts=Lauka iespējas
@@ -105,6 +109,7 @@ table_eblob=Laukā BLOB $1 nav nepieciešams lielums
 table_csv=Eksportēt kā CSV
 table_index=Izveidot indeksu
 table_delete=Dzēst atlasītos laukus
+
 field_title1=Pievienot lauku
 field_title2=Modificēt lauku
 field_in=$1 tabulā datu bāzē $2 
@@ -123,6 +128,7 @@ field_esize=Lauks “$1” nav derīgs
 field_eenum=Neviena uzskaitītā vērtība nav ievadīta
 field_efield=Lauks “$1” nav derīgs
 field_ekey=Lauki, kas atļauj nulles, nevar būt primārās atslēgas daļa
+
 exec_title=Izpildiet SQL
 exec_header=Ievadiet SQL komandu, lai izpildītu datu bāzē $1.
 exec_old=Vai arī atlasiet iepriekšējo SQL komandu :
@@ -152,21 +158,25 @@ exec_tabexec=Izpildiet SQL
 exec_tabfile=Palaidiet SQL no faila
 exec_tabimport=Importēt teksta failu
 exec_return=izpildīt SQL formu
+
 stop_err=Neizdevās apturēt datu bāzes serveri
 stop_epidfile=Neizdevās atvērt PID failu $1 
 stop_ekill=Neizdevās nogalināt procesu $1 : $2 
 stop_ecannot=Jums nav atļauts apturēt datu bāzes serveri
 start_err=Neizdevās palaist datu bāzes serveri
 start_ecannot=Jums nav atļauts iedarbināt datu bāzes serveri
+
 ddrop_err=Neizdevās nomest datu bāzi
 ddrop_title=Pilienu datu bāze
 ddrop_rusure=Vai tiešām vēlaties nomest datu bāzi $1 ? Tiks izdzēstas $2 tabulas, kurās ir $3 datu rindas.
 ddrop_mysql=Tā kā šī ir galvenā datu bāze, tās nomešana, iespējams, padarīs jūsu PostgreSQL serveri nelietojamu!
 ddrop_ok=Pilienu datu bāze
+
 tdrop_err=Neizdevās nomest galdu
 tdrop_title=Drop Table
 tdrop_rusure=Vai tiešām vēlaties nometiet tabulu $1 datu bāzē $2 ? Tiks izdzēstas $3 datu rindas.
 tdrop_ok=Drop Table
+
 view_title=Tabulas dati
 view_pos=$1 līdz $2 rinda no $3 
 view_none=Šajā tabulā nav datu
@@ -201,6 +211,7 @@ view_set=Iestatīt faila saturam ..
 view_warn=Brīdinājums - failu augšupielāde un <tt>teksta</tt> vai <tt>bytea</tt> lauku apskatīšana un to satura apskatīšana, visticamāk, nedarbosies, ja vien nebūs instalēti un izmantoti moduļi $1 un $2 Perl.
 view_adv=Izvērstā meklēšana
 view_sqlrun=SQL vaicājuma radītie rezultāti : $1 
+
 newdb_title=Izveidot datu bāzi
 newdb_header=Jaunas datu bāzes iespējas
 newdb_db=Datu bāzes nosaukums
@@ -215,6 +226,7 @@ newdb_encoding=Rakstzīmju kopas kodējums
 newdb_eencoding=Trūkst rakstzīmju kopas kodējuma
 newdb_template=Veidņu datu bāze
 newdb_notemplate=Nav
+
 user_title=PostgreSQL lietotāji
 user_vwarning=BRĪDINĀJUMS: Šis PostgreSQL lietotājs ir Virtualmin domēna $1 administrēšanas pieteikšanās. Mainot šeit jebkurus iestatījumus, Virtualmin var rasties kļūdas.
 user_ecannot=Jums nav atļauts rediģēt lietotājus
@@ -244,6 +256,7 @@ user_sync_delete=Izdzēsiet PostgreSQL lietotāju, kad tiek izdzēsts atbilstoš
 user_delete=Dzēst atlasīto
 user_derr=Neizdevās izdzēst lietotājus
 user_enone=Nav atlasīts neviens lietotājs
+
 host_ecannot=Jums nav atļauts rediģēt atļautos resursus
 host_title=Atļautie mitinātāji
 host_desc=Kad klients izveido savienojumu ar datu bāzi, turpmāk uzskaitītie resursdatori tiek apstrādāti secībā, līdz viens sakrīt un klientam tiek atļauts vai noraidīts.
@@ -299,8 +312,10 @@ host_derr=Neizdevās izdzēst atļautos resursdatorus
 host_enone=Nav atlasīts neviens saimnieks
 host_manual=Rediģēt konfigurācijas failu
 host_manualdesc=Noklikšķiniet uz šīs pogas, lai manuāli rediģētu atļauto mitinātāju konfigurācijas failu.
+
 manual_title=Rediģēt konfigurācijas failu
 manual_err=Neizdevās saglabāt konfigurācijas failu
+
 grant_title=Piešķirtās privilēģijas
 grant_tvi=Objekts
 grant_type=Veids
@@ -328,6 +343,7 @@ grant_none=Nav tabulas, skatu, secību vai indeksu, lai piešķirtu privilēģij
 grant_toomany=Parādīšanai ir pārāk daudz objektu. Atrodiet objektus, kas atbilst:
 grant_showing=Rāda objektus, kas atbilst $1 ..
 grant_delete=Atiestatīt atlasītās dotācijas
+
 group_title=PostgreSQL grupas
 group_ecannot=Jums nav atļauts rediģēt grupas
 group_name=Grupas nosaukums
@@ -347,6 +363,7 @@ group_etaken=Grupas nosaukums jau tiek izmantots
 group_none=Pašlaik nav nevienas PostgreSQL grupas.
 group_derr=Neizdevās izdzēst grupas
 group_enone=Nav atlasīta neviena grupa
+
 esql=SQL $1 neizdevās : $2 
 log_start=Startēja PostgreSQL serveris
 log_stop=Apturēts PostgreSQL serveris
@@ -403,6 +420,7 @@ log_backup_l=Dublēta datu bāze $1 failā $2
 log_backup_all=Kopēja visas datu bāzes
 log_backup_all_l=Visu datu bāzu dublējums failā $2 
 log_manual=Manuāli rediģēts atļauto mitinātāju konfigurācijas fails
+
 acl_dbs=Datu bāzes, kuras šis lietotājs var pārvaldīt
 acl_dbscannot=Šī piekļuves kontrole stāsies spēkā pēc PostgreSQL datu bāzes servera palaišanas.
 acl_dall=Visas datu bāzes
@@ -423,13 +441,17 @@ acl_cmds=Vai var rediģēt pirms un pēc rezerves komandām?
 acl_views=Vai var skatīt un pārvaldīt skatus?
 acl_indexes=Vai var apskatīt un pārvaldīt indeksus?
 acl_seqs=Vai var apskatīt un pārvaldīt sekvences?
+
 fdrop_err=Neizdevās izdzēst laukus
 fdrop_enone=Nav atlasīts
 fdrop_eall=No tabulas nevar izdzēst visus laukus!
+
 setup_err=Neizdevās inicializēt datu bāzi
 setup_ecannot=Jums nav atļauts inicializēt datu bāzi
+
 dbase_bkup=Rezerves
 dbase_rstr=Atjaunot
+
 restore_title=Atjaunot datu bāzi
 restore_header=Atjaunot datu bāzes iespējas
 restore_db=Datu bāzes nosaukums
@@ -452,6 +474,7 @@ restore_tables=Atjaunojamās tabulas
 restore_tables1=Viss rezerves failā
 restore_tables0=Saraksta tabulas
 restore_failed=Atjaunot neizdevās : $1 
+
 backup_title=Rezerves datu bāze
 backup_title2=Dublēt visas datu bāzes
 backup_header1=Rezerves mērķis
@@ -500,17 +523,21 @@ backup_ebefore=Pirms dublēšanas komanda neizdevās!
 backup_cmode=Kad palaist komandas
 backup_cmode1=Pirms/pēc visām datu bāzēm
 backup_cmode0=Pirms/pēc katras datu bāzes
+
 r_command=Komanda netiek atbalstīta
+
 adv_title=Izvērstā meklēšana
 adv_and=Atrodiet ierakstus, kas atbilst visiem kritērijiem.
 adv_or=Atrodiet ierakstus, kas atbilst visiem kritērijiem ..
 adv_ok=Meklēt tagad
+
 tdrops_enone=Nav atlasīta neviena tabula (s)
 tdrops_err=Neizdevās nomest tabulu (-as)
 tdrops_ok=Piliens
 tdrops_title=Piliens atlasīts
 tdrops_rusure=Vai tiešām vēlaties nomest $1 atlasīto tabulu (-as) datu bāzē $2 ? Tiks izdzēstas $3 datu rindas.
 tdrops_rusure2=Vai tiešām vēlaties nomest $1 atlasīto tabulu (-as) datu bāzē $2 ?
+
 ddrops_err=Neizdevās nomest datu bāzes
 ddrops_title=Pilienu datu bāzes
 ddrops_rusure=Vai tiešām vēlaties nomest atlasītās datu bāzes $1 ? Tiks izdzēstas $2 tabulas, kurās ir $3 datu rindas.
@@ -518,6 +545,7 @@ ddrops_mysql=Tā kā galvenā datu bāze ir atlasīta, nometot to, iespējams, j
 ddrops_ok=Pilienu datu bāzes
 ddrops_enone=Neviena datu bāze nav atlasīta
 ddrops_ecannotdb=Jums nav atļauts nomest datu bāzi $1 
+
 csv_title=Eksportēt CSV failu
 csv_header=CSV eksporta iespējas
 csv_dest=Eksporta galamērķis
@@ -538,6 +566,7 @@ csv_done=CSV eksportēšana uz $1 ir pabeigta. Iegūtais faila lielums ir $2.
 csv_headers=Vai CSV iekļaut kolonnu nosaukumus?
 csv_cols=Kolonnas, kas jāiekļauj CSV
 csv_ecols=Neviena kolonna nav atlasīta
+
 import_title=Importēt datus
 import_uploadout=Datu importēšana no augšupielādēta faila.
 import_fileout=Datu importēšana no faila $1.
@@ -545,6 +574,7 @@ import_eupload=Trūkst augšupielādēta importēšanas faila
 import_efile=Trūkst importēšanas faila nosaukuma
 import_done=.. izveidoja $1 rindas, izlaida $2 dublikātus.
 import_erow=.. $1 rindā nav atrasts neviens lauks
+
 index_title1=Izveidot indeksu
 index_header1=Indeksa opcijas
 index_name=Indeksa nosaukums
@@ -562,6 +592,7 @@ index_ecols=Nav atlasīts neviens lauks
 index_title2=Rediģēt indeksu
 index_header=Indekss $1 datu bāzē $2 
 index_ecannot=Jums nav atļauts pārvaldīt indeksus
+
 view_title1=Izveidot skatu
 view_title2=Rediģēt skatu
 view_header1=Skatīt detaļas
@@ -576,6 +607,7 @@ view_eclash=Skats ar tādu pašu nosaukumu jau pastāv
 view_equery=Trūkst SQL vaicājuma
 view_ecols=Nav ievadīti kolonnu nosaukumi
 view_ecannot=Jums nav atļauts pārvaldīt skatus
+
 seq_title1=Izveidot secību
 seq_title2=Rediģēt secību
 seq_header1=Sērijas iespēju palielināšana
@@ -595,5 +627,6 @@ seq_emin=Trūkst vai nav derīga minimālā vērtība
 seq_emax=Trūkst vai nav derīga maksimālā vērtība
 seq_ecache=Trūkst vai nav derīgs kešatmiņas vērtību skaits
 seq_ecannot=Jums nav atļauts pārvaldīt sekvences
+
 dgrant_err=Neizdevās atiestatīt dotācijas
 dgrant_enone=Nav atlasīts neviens objekts

@@ -15,7 +15,9 @@ index_use=Felhaszn lva
 index_free=Szabad
 index_format=Ez a lemez nem format lt
 index_return=Lemez lista
+
 edit_ecannot=nnek nincs joga szerkeszteni ezt a lemezt
+
 edit_title=PartĄci˘ szerkesztse
 edit_header=A partĄci˘ rszletezse
 edit_location=Elhelyezkeds
@@ -56,6 +58,7 @@ edit_tunedesc2=n nem tudja hangolni a file rendszert ezen a partĄci˘n, mert 
 edit_tunedesc3=n nem tudja hangolni a file rendszert ezen a partĄci˘n, mert ez jelenleg csatlakoztatva van.Elszr haszn lja a <a href=/mount/>file rendszer modult</a> hogy lecsatlakoztassa.
 edit_tunedesc4=n nem tudja hangolni a file rendszert ezen a partĄci˘n, mert ezen nincs file rendszer.
 edit_tunedesc5=n nem tudja hangolni a file rendszert ezen a partĄci˘n, mert csak az <tt>UFS</tt> File rendszereket lehet hangolni.
+
 save_ecannot=nnek nincs joga szerkeszteni ezt a lemezt
 save_edelete=Nem lehet trlni a partĄci˘
 save_esave=Nem lehet menteni a partĄci˘
@@ -64,6 +67,7 @@ save_eend='$1' nem val˘s befejez cilinder
 save_estartmin=A kezd cilindernek nagyobbnak kell lenni mint nulla
 save_eendmax=A befejez cilindernek kisebbnek kell lenni mint $1
 save_estartend=A kezd cilindernek kisebbnek kell lenni, mint a befejez cilindernek
+
 newfs_title=File rendszer ltrehoz sa
 newfs_ecannot=nnek nincs joga form zni ezt a lemezt
 newfs_desc=Az als˘ gombra kattintva ez az oldal felpĄt egy Łj $1 -t a $2 eszkzn. Az sszes adat ezen a partĄci˘ vgleg trlve lesz.
@@ -89,6 +93,7 @@ newfs_err=Nem lehet ltrehozni a file rendszert
 newfs_exec=Futtatom a  $1 parancsot..
 newfs_failed=.. parancs hib s!
 newfs_ok=.. parancs rendben.
+
 fsck_title=File rendszer javĄt sa
 fsck_ecannot=nnek nincs joga javĄtani ezt a lemez
 fsck_desc=A <b>JavĄt s</b> gombra kattintva ellenrizve s opcion lisan javĄtva lesz a(z) $1 a(z) $2 -n. Az ellenrzsi s  javĄt si szintet az n v laszt sa befoly solja.
@@ -106,6 +111,7 @@ fsck_37=A processz le lett  llĄtva az ellenrzs sor n
 fsck_39=javĄthatatlan hib t tal ltam!
 fsck_40=nem tal ltam hib t
 fsck_unknown=ismeretlen hiba
+
 tunefs_title=File rendszer hangol s
 tunefs_ecannot=nnek nincs joga ezt a lemez hangolni
 tunefs_desc=Ezen az oldalon nnek lehetsge van be llĄtani bizonyos paramtereket a(z) $1 a(z) $2 -n. A m r meglv file -ok ezen a file rendszer nem lesznek megrong lva.
@@ -122,6 +128,7 @@ tunefs_err=Nem lehet hangolni a file rendszert
 tunefs_exec=Futtatom a $1  parancsot..
 tunefs_failed=.. parancs hib s!
 tunefs_ok=.. parancs rendben.
+
 select_device=SCSI kontroller $1 cl $2 eszkz $3
 select_idedevice=IDE eszkz $1
 select_part=SCSI kontroller $1 cl $2 egysg $3 partĄci˘ $4
@@ -131,8 +138,10 @@ esun=A partĄci˘s csak Sun hardveren m˘dosĄthat˘
 emounted=A lemeznek csatlakoztatott partĄci˘(i) van(nak)
 elast=Az utols˘ partĄci˘t nem lehet elt volĄtani
 eformat=<tt>format</tt> nem tal l semmilyen lemezt!
+
 fstype_ufs=Solaris Unix file rendszer
 fstype_unknown=Ismeretlen file rendszer
+
 acl_disks=A lemezeket ez a felhaszn l˘ tudja partĄcion lni s form zni
 acl_dall=sszes lemez
 acl_dsel=Kiv lasztott..

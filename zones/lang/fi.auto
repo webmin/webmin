@@ -4,6 +4,7 @@ index_none=Ei vyöhykkeitä ole vielä määritelty.
 index_add=Lisää uusi vyöhyke.
 index_return=vyöhykeluettelo
 index_zones=Nykyiset vyöhykkeet
+
 edit_title=Muokkaa vyöhykettä
 edit_common=Yleinen vyöhykemääritys
 edit_name=Vyöhykkeen nimi
@@ -57,20 +58,26 @@ edit_attrnone=Ei yleisiä määritteitä ole vielä määritelty.
 edit_attradd=Lisää uusi yleinen attribuutti.
 edit_webmin=Avaa Webmin
 edit_brand=Brändi
+
 ui_cancel=Peruuttaa
+
 save_err=Alueen tallentaminen epäonnistui
 save_epool=Puuttuva tai virheellinen allas
 save_ewebmin=Webmin ei ole käynnissä tällä vyöhykkeellä
+
 reboot_title=Käynnistä uudelleen
 reboot_rusure=Haluatko varmasti käynnistää vyöhykkeen $1 uudelleen? Kaikki sen sisällä käynnissä olevat prosessit käynnistetään uudelleen.
 reboot_err=Vyöhykkeen uudelleenkäynnistys epäonnistui
 reboot_doing=Käynnistetään nyt vyöhyke ..
+
 reboot_failed=.. epäonnistui :
 reboot_ok=.. saattaa loppuun.
+
 halt_title=Sammutusalue
 halt_rusure=Haluatko varmasti sulkea vyöhykkeen $1 ? Kaikki sen sisällä käynnissä olevat prosessit keskeytetään.
 halt_err=Sammutusalueen epäonnistuminen
 halt_doing=Sulje nyt vyöhyke ..
+
 boot_title=Käynnistysvyöhyke
 boot_err=Käynnistysvyöhyke epäonnistui
 boot_doing=Käynnistetään nyt vyöhyke ..
@@ -78,10 +85,12 @@ delete_title=Poista vyöhyke
 delete_rusure=Haluatko varmasti poistaa vyöhykkeen $1 ? Kaikki sen yksityisissä tiedostojärjestelmissä olevat tiedostot menetetään.
 delete_err=Vyöhykkeen poistaminen epäonnistui
 delete_doing=Poistetaan nyt vyöhyke ..
+
 uninstall_title=Poista järjestelmän asennus
 uninstall_rusure=Haluatko varmasti poistaa järjestelmän ohjelmiston asennuksen alueelta $1 ? Kaikki sen yksityisissä tiedostojärjestelmissä olevat tiedostot menetetään.
 uninstall_err=Järjestelmäohjelmiston asennuksen purkaminen alueelta epäonnistui
 uninstall_doing=Poista nyt järjestelmän asennus alueelta ..
+
 install_title=Asenna järjestelmä
 install_doing=Nyt asennetaan järjestelmä vyöhykkeelle ..
 net_title1=Luo verkkorajapinta
@@ -96,6 +105,7 @@ net_enetmask=Virheellinen verkkomaski
 net_eaddress=Virheellinen IP-osoite
 net_egone=Käyttöliittymää ei enää ole!
 net_eclash=Verkkorajapinta, jolla on sama IP-osoite, on jo olemassa tällä vyöhykkeellä
+
 pkg_title1=Lisää pakettihakemisto
 pkg_title2=Muokkaa pakettihakemistoa
 pkg_header=Peritetyt pakettihakemistotiedot
@@ -107,6 +117,7 @@ pkg_eclash=Pakettihakemisto on jo olemassa tässä vyöhykkeessä
 pkg_inherit=Perii paketit globaalilta alueelta
 pkg_inherit_yes=Kyllä (harva juurivyöhyke)
 pkg_inherit_no=Ei (koko juurivyöhyke)
+
 fs_title1=Luo tiedostojärjestelmä
 fs_title2=Muokkaa tiedostojärjestelmää
 fs_header=Tiedostojärjestelmän lisätiedot
@@ -128,6 +139,7 @@ fs_eoptions=Virheelliset asennusvaihtoehdot (täytyy olla pilkuilla erotettu lue
 fs_egone=Tiedostojärjestelmää ei enää ole!
 fs_mount=Asenna luomisen jälkeen?
 fs_eclash=Samaa hakemistoa käyttävä tiedostojärjestelmä on jo olemassa tällä vyöhykkeellä
+
 rctl_title1=Luo resurssien hallinta
 rctl_title2=Muokkaa resurssienhallintaa
 rctl_header=Resurssienhallinnan tyyppi ja rajoitukset
@@ -148,6 +160,7 @@ rctl_elimit=Ei numero
 rctl_eaction=Ei riviä 1 valittua signaalia
 rctl_evalues=Rajoja ei ole annettu
 rctl_eclash=Samalla resurssilla on jo ohjaus tällä vyöhykkeellä
+
 attr_title1=Luo yleinen attribuutti
 attr_title2=Muokkaa yleistä ominaisuutta
 attr_header=Yleiset vyöhykeominaisuustiedot
@@ -165,6 +178,7 @@ attr_euint=Arvo ei ole positiivinen kokonaisluku
 attr_eboolean=Arvo ei ole 'totta' tai 'vääriä'
 attr_egone=Ominaisuutta ei enää ole!
 attr_eclash=Tässä vyöhykkeessä on jo samanniminen attribuutti
+
 status_running=Running
 status_installed=pysähtynyt
 status_configured=Ei asennettu
@@ -172,13 +186,16 @@ status_incomplete=Asennetaan
 status_ready=Valmis
 status_down=Alas
 status_shutting_down=sammutetaan
+
 list_name=Vyöhykkeen nimi
 list_id=Tunnusnumero
 list_path=Vyöhykehakemisto
 list_status=Tila
 list_actions=Toiminnot
+
 zone_in=Alueella $1 
 pool_none=Ei mitään
+
 create_title=Luo vyöhyke
 create_header=Uuden vyöhykkeen yksityiskohdat
 create_path=Zone-tiedostohakemisto
@@ -239,6 +256,7 @@ create_erouter=Puuttuva tai virheellinen oletusreitittimen IP-osoite
 create_removingpkgs=perinnöllisten pakettihakemistojen poistaminen. ..
 create_brand=Brändi
 create_brandmsg=Brändäysalue
+
 log_create_zone=Luotu alue 1
 log_delete_zone=Poistettu vyöhyke $1 
 log_save_zone=Muokattu kokoonpano vyöhykkeelle $1 
@@ -262,6 +280,7 @@ log_delete_rctl=Poistettu resurssin hallinta alueelta $2
 log_create_attr=Luotu yleinen määrite $1 vyöhykkeelle $2 
 log_modify_attr=Muokattu yleinen ominaisuus $1 vyöhykkeellä $2 
 log_delete_attr=Poistettu yleinen määrite $1 alueelta $2 
+
 webmin_eperl=Perlia ei ole asennettu osoitteeseen $1 
 webmin_eroot=Hakemistoa $1 ei ole tai se ei sisällä Webmin.
 webmin_title=Asenna Webmin

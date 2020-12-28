@@ -12,6 +12,7 @@ index_eprog=Die uitvoerbare NFS-bediener is nie op u stelsel gevind nie. Dit lyk
 index_delete=Vee geselekteerde uitvoere uit
 index_disable=Deaktiveer gekies
 index_enable=Aktiveer geselekteerde
+
 edit_title=Wysig Uitvoer
 create_title=Skep uitvoer
 edit_details=Voer besonderhede uit
@@ -65,6 +66,7 @@ edit_sec_krb5i=Kerberos integriteit
 edit_sec_krb5p=Kerberos-privaatheid
 edit_sec_lipkey=LIPKEY
 edit_sec_spkm=SPKM
+
 save_err=Kon nie uitvoer stoor nie
 save_edir=Gids '$1' bestaan nie
 save_epfs=Pseudo-lêerstelsel pad '$1' lyk nie soos 'n absolute pad nie
@@ -78,6 +80,7 @@ save_pfs='$1' word reeds as 'n gids uitgevoer
 save_create_dir=Kan nie die gids '$1' skep nie
 save_eanonuid=Ongeldige anonieme toegangsnaam
 save_eanongid=Ongeldige naam van die anonieme toegangsgroep
+
 exports_webnfs=WebNFS kliënte
 exports_ngroup=NETGroup $1 
 exports_net=Network $1 
@@ -85,6 +88,7 @@ exports_all=almal
 exports_hosts=Gashere $1 
 exports_host=Host $1 
 exports_gss=Gemagtigde netwerk: $1 
+
 log_modify=Gewysigde NFS-uitvoer $1 
 log_modify_l=Gewysigde NFS-uitvoer $1 tot $2 
 log_delete=NFS-uitvoer $1 is uitgevee

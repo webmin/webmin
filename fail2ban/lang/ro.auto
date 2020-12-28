@@ -12,10 +12,12 @@ index_restart=Reporniți Fail2Ban Server
 index_restartdesc=Faceți clic pe acest buton pentru a aplica configurația curentă prin repornirea serverului Fail2Ban.
 index_return=indexul modulului
 index_header=Modul Fail2Ban
+
 check_edir=Directorul de configurare $1 nu există
 check_econf=Fișierul de configurare $2 în $1 nu există
 check_eclient=Comanda client $1 nu a fost găsită
 check_eserver=Comanda serverului $1 nu a fost găsită
+
 filters_title=Filtre jurnal
 filters_name=Numele filtrului
 filters_re=Expresie uzuala
@@ -25,6 +27,7 @@ filters_return=lista filtrelor
 filters_derr=Nu au reușit ștergerea filtrelor
 filters_enone=Nimic selectat
 filters_einuse=Filtrul $1 nu poate fi șters, deoarece este folosit de închisori : $2 
+
 filter_title1=Creați filtru
 filter_title2=Editează filtrul
 filter_desc=Utilizați <i>&lt;HOST&gt;</i> în expresii obișnuite în care ar trebui să apară un nume de gazdă sau o adresă IP.
@@ -39,6 +42,7 @@ filter_ename=Numele filtrului lipsă sau nevalid
 filter_eclash=Numele filtrului este deja utilizat
 filter_efail=Nu a fost introdusă nicio expresie obișnuită care să se potrivească
 filter_einuse=Acest filtru nu poate fi șters, deoarece este folosit de închisori : $1 
+
 actions_title=Acțiuni de potrivire
 actions_name=Numele acțiunii
 actions_ban=Comanda Ban
@@ -48,6 +52,7 @@ actions_return=lista acțiunilor
 actions_derr=Eroare la ștergerea acțiunilor
 actions_enone=Nimic selectat
 actions_einuse=Acțiunea $1 nu poate fi ștearsă, deoarece este folosită de închisori : $2 
+
 action_title1=Creați acțiune de potrivire
 action_title2=Editați Acțiunea de potrivire
 action_header=Potriviți detaliile acțiunii
@@ -64,6 +69,7 @@ action_ban=Comanda de interzicere a unui IP
 action_unban=Comanda de dez-interzicere a unui IP
 action_desc=<i>&lt;ip&gt;</i> va fi înlocuit cu adresa IP interzisă.
 action_einuse=Această acțiune nu poate fi ștearsă, deoarece este folosită de închisori : $1 
+
 jails_title=Filtrele de acțiune ale filtrului
 jails_add=Adăugați o nouă închisoare.
 jails_name=Numele închisorii
@@ -76,6 +82,7 @@ jails_defdesc=Editați setările și limitele implicite care se aplică tuturor 
 jails_return=lista închisorilor
 jails_derr=Nu a reușit ștergerea închisorilor
 jails_enone=Nimic selectat
+
 jail_title1=Creați temnița
 jail_title2=Editează închisoarea
 jail_header=Filtru detalii despre închisoare
@@ -115,13 +122,16 @@ jail_banaction=Acțiune implicită de aplicat
 jail_defprotocol=Protocol implicit pentru acțiuni
 jail_edestemail=Adresa de e-mail de notificare implicită lipsă sau nevalidă
 jail_eignoreip=Adresa IP nevalidă de ignorat
+
 jaildef_title=Opțiuni implicite pentru închisoare
 jaildef_header=Implicit pentru toate închisorile
 jaildef_err=Nu a reușit să salvați opțiunile implicite pentru închisoare
 jaildef_egone=Nici o închisoare DEFAULT găsită!
+
 start_err=Eroare la pornirea serverului
 stop_err=Nu a reușit oprirea serverului
 restart_err=Eroare la repornirea serverului
+
 log_create_filter=Filtrul creat $1 
 log_update_filter=Filtru modificat $1 
 log_delete_filter=Filtru șters $1 
@@ -139,6 +149,7 @@ log_atboot=Activat Fail2Ban la momentul de pornire
 log_delboot=Dezactivat Fail2Ban la momentul de pornire
 log_manual=Fișierul de configurare modificat $1 
 log_jaildef=Opțiuni implicite modificate pentru închisoare
+
 config_title=Configurare globală
 config_edef=Nu a fost găsită o secțiune de definiție în fișierul de configurare!
 config_header=Configurați setările pentru Fail2Ban
@@ -151,10 +162,12 @@ config_socket=Socket pentru comunicare cu serverul
 config_err=Nu a reușit să salveze configurația globală
 config_elogtarget=Fișierul pentru a scrie jurnalele trebuie să fie o cale absolută
 config_esocket=Fișierul socket trebuie să fie o cale absolută
+
 manual_title=Editați fișierele de configurare
 manual_desc=Fișier de editat:
 manual_ok=O.K
 manual_efile=Fișierul selectat nu face parte din configurația Fail2Ban!
 manual_err=Eroare la editarea fișierului de configurare
 manual_edata=Nu a fost introdus conținutul fișierului de configurare
+
 syslog_logtarget=Jurnalul de acțiuni Fail2Ban

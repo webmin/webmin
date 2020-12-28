@@ -10,6 +10,7 @@ index_hosts=Gostitelji
 index_cmd=Ukaz
 index_delete=Izbriši izbrano
 index_none=noben
+
 edit_title1allow=Ustvari dovoljenje pravila
 edit_title2allow=Uredi dovoli pravilo
 edit_title1deny=Ustvari pravilo za zavrnitev
@@ -22,9 +23,11 @@ edit_hosts=Oddaljeni gostitelji
 edit_hostsexcept=Razen gostiteljev
 edit_cmd=Ukazi lupine
 edit_efound=Daemona "$1" ni bilo mogoče najti v konfiguraciji xinetd.
+
 save_errtitle=Napaka pri shranjevanju
 save_ehost=Vhod gostitelja vsebuje slabe znake
 save_ecmd=Vnos ukaza vsebuje slabe znake
 save_eservice=Imena demonov vsebujejo slabe znake
+
 del_errtitle=Napaka pri brisanju pravil
 del_enone=Za brisanje ni nobenih pravil

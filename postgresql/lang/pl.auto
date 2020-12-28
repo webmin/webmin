@@ -14,6 +14,7 @@ index_sch=(Ze schematami)
 index_db=Nazwa bazy danych
 index_drops=Upuść wybrane bazy danych
 index_postgresql=PostgreSQL
+
 index_toomany=Istnieje zbyt wiele baz danych do wyświetlenia. Znajdź pasujące bazy danych:
 index_search=Szukaj
 index_showing=Pokazuję bazy danych pasujące do $1 ..
@@ -25,6 +26,7 @@ index_hash=Haszysz
 index_gist=Uogólnione drzewo wyszukiwania indeksu
 index_jump=Lub edytuj bazę danych:
 index_edithosts=Skonfiguruj dozwolone systemy hosta
+
 dbase_noconn=Ta baza danych obecnie nie przyjmuje połączeń, więc nie można w niej wykonywać żadnych działań.
 dbase_header=Tabele, indeksy, widoki i sekwencje baz danych
 dbase_vadd=Utwórz widok
@@ -42,13 +44,16 @@ dbase_jump=Edytuj tabelę:
 dbase_vjump=Edytuj widok:
 dbase_ijump=Edytuj indeks:
 dbase_sjump=Edytuj sekwencję:
+
 table_fielddrop=Upuść pole
 table_eblob=Rozmiar pola BLOB $1 nie jest wymagany
 table_csv=Eksportuj jako CSV
 table_index=Utwórz indeks
 table_delete=Usuń wybrane pola
+
 field_err2=Nie udało się zapisać pola
 field_err1=Nie udało się usunąć pola
+
 exec_old=Lub wybierz poprzednie polecenie SQL :
 exec_clear=Czysta historia
 exec_header2=Wybierz plik poleceń SQL do wykonania w bazie danych $1 ..
@@ -72,8 +77,10 @@ exec_tabexec=Wykonaj SQL
 exec_tabfile=Uruchom SQL z pliku
 exec_tabimport=Importuj plik tekstowy
 exec_return=wykonaj formularz SQL
+
 stop_ecannot=Nie możesz zatrzymać serwera bazy danych
 start_ecannot=Nie możesz uruchomić serwera bazy danych
+
 view_refresh=Odświeżać
 view_search2=Wyszukaj wiersze, w których pole $2 $3 $1 
 view_match0=zawiera
@@ -99,12 +106,14 @@ view_set=Ustaw na zawartość pliku ..
 view_warn=Ostrzeżenie - wczytywanie plików i przeglądanie zawartości pól <tt>text</tt> lub <tt>bytea</tt> jest mało prawdopodobne, chyba że moduły Perla $1 i $2 są zainstalowane i używane.
 view_adv=zaawansowane wyszukiwanie
 view_sqlrun=Wyniki wygenerowane przez zapytanie SQL : $1 
+
 newdb_ecannot2=Nie możesz tworzyć więcej baz danych
 newdb_user=Należy do użytkownika
 newdb_encoding=Kodowanie zestawu znaków
 newdb_eencoding=Brak kodowania zestawu znaków
 newdb_template=Baza danych szablonów
 newdb_notemplate=Żaden
+
 user_vwarning=OSTRZEŻENIE: Ten użytkownik PostgreSQL jest loginem administracyjnym dla domeny Virtualmin $1. Zmiana dowolnych ustawień tutaj może powodować błędy w Virtualmin.
 user_setto=Ustawić
 user_nochange=Nie zmieniaj się
@@ -116,6 +125,7 @@ user_sync_delete=Usuń użytkownika PostgreSQL po usunięciu pasującego użytko
 user_delete=Usuń wybrane
 user_derr=Nie udało się usunąć użytkowników
 user_enone=Nie wybrano użytkowników
+
 host_desc=Gdy klient łączy się z bazą danych, hosty wymienione poniżej są przetwarzane w kolejności, dopóki jeden nie pasuje, a klient jest dozwolony lub odrzucony.
 host_header=Szczegóły uwierzytelnienia klienta PostgreSQL
 host_peer=Sieć równorzędna
@@ -141,16 +151,20 @@ host_derr=Nie udało się usunąć dozwolonych hostów
 host_enone=Nie wybrano hostów
 host_manual=Edytuj plik konfiguracji
 host_manualdesc=Kliknij ten przycisk, aby ręcznie edytować plik konfiguracji dozwolonych hostów.
+
 manual_title=Edytuj plik konfiguracji
 manual_err=Nie udało się zapisać pliku konfiguracyjnego
+
 grant_ns=Schemat
 grant_toomany=Istnieje zbyt wiele obiektów do wyświetlenia. Znajdź pasujące obiekty:
 grant_showing=Pokazuje obiekty pasujące $1 ..
 grant_delete=Zresetuj wybrane granty
+
 group_memsopts=Wszyscy użytkownicy
 group_memsvals=Użytkownicy w grupie
 group_derr=Nie udało się usunąć grup
 group_enone=Nie wybrano grup
+
 log_dbs_delete=Usunięto $1 baz danych
 log_users_delete=Usunięto $1 użytkowników
 log_groups_delete=Usunięto $1 grup
@@ -176,6 +190,7 @@ log_backup_l=Utworzono kopię zapasową bazy danych $1 do pliku $2
 log_backup_all=Utworzono kopię zapasową wszystkich baz danych
 log_backup_all_l=Utworzono kopię zapasową wszystkich baz danych do pliku $2 
 log_manual=Ręcznie edytowany plik konfiguracyjny dozwolonych hostów
+
 acl_max=Tak, co najwyżej
 acl_restore=Czy można przywrócić kopie zapasowe?
 acl_login=Zaloguj się do MySQL as
@@ -187,13 +202,17 @@ acl_cmds=Czy można edytować przed i po poleceniach tworzenia kopii zapasowych?
 acl_views=Czy można wyświetlać widoki i zarządzać nimi?
 acl_indexes=Czy mogę przeglądać indeksy i zarządzać nimi?
 acl_seqs=Czy można przeglądać i zarządzać sekwencjami?
+
 fdrop_err=Nie udało się usunąć pól
 fdrop_enone=Nie wybrano
 fdrop_eall=Nie możesz usunąć wszystkich pól z tabeli!
+
 setup_err=Nie można zainicjować bazy danych
 setup_ecannot=Nie możesz zainicjować bazy danych
+
 dbase_bkup=Utworzyć kopię zapasową
 dbase_rstr=Przywracać
+
 restore_title=Przywróć bazę danych
 restore_header=Przywróć opcje bazy danych
 restore_db=Nazwa bazy danych
@@ -216,6 +235,7 @@ restore_tables=Tabele do przywrócenia
 restore_tables1=Wszystko w pliku kopii zapasowej
 restore_tables0=Wymienione tabele
 restore_failed=Przywracanie nie powiodło się : $1 
+
 backup_title=Zapasowa baza danych
 backup_title2=Utwórz kopię zapasową wszystkich baz danych
 backup_header1=Miejsce docelowe kopii zapasowej
@@ -264,17 +284,21 @@ backup_ebefore=Komenda przed utworzeniem kopii zapasowej nie powiodła się!
 backup_cmode=Kiedy uruchamiać polecenia
 backup_cmode1=Przed/po wszystkich bazach danych
 backup_cmode0=Przed/po każdej bazie danych
+
 r_command=Polecenie nieobsługiwane
+
 adv_title=zaawansowane wyszukiwanie
 adv_and=Znajdź rekordy spełniające wszystkie kryteria ..
 adv_or=Znajdź rekordy spełniające dowolne kryteria ..
 adv_ok=Wyszukaj teraz
+
 tdrops_enone=Nie wybrano żadnych tabel do usunięcia
 tdrops_err=Nie udało się usunąć tabel (y)
 tdrops_ok=Upuszczać
 tdrops_title=Upuść wybrane
 tdrops_rusure=Czy na pewno chcesz upuścić $1 wybranych tabel w bazie danych $2 ? $3 wiersze danych zostaną usunięte.
 tdrops_rusure2=Czy na pewno chcesz upuścić $1 wybranych tabel w bazie danych $2 ?
+
 ddrops_err=Nie udało się usunąć baz danych
 ddrops_title=Upuść bazy danych
 ddrops_rusure=Czy na pewno chcesz usunąć $1 wybranych baz danych? $2 tabele zawierające $3 wiersze danych zostaną usunięte.
@@ -282,6 +306,7 @@ ddrops_mysql=Ponieważ wybrana jest główna baza danych, jej upuszczenie prawdo
 ddrops_ok=Upuść bazy danych
 ddrops_enone=Nie wybrano baz danych
 ddrops_ecannotdb=Nie możesz upuścić bazy danych $1 
+
 csv_title=Eksportuj plik CSV
 csv_header=Opcje eksportu CSV
 csv_dest=Eksportuj miejsce docelowe
@@ -302,6 +327,7 @@ csv_done=Eksport CSV do $1 został zakończony. Wynikowy rozmiar pliku to $2.
 csv_headers=Czy uwzględnić nazwy kolumn w CSV?
 csv_cols=Kolumny do uwzględnienia w CSV
 csv_ecols=Nie wybrano żadnych kolumn
+
 import_title=Zaimportować dane
 import_uploadout=Importowanie danych z przesłanego pliku ..
 import_fileout=Importowanie danych z pliku $1 ..
@@ -309,6 +335,7 @@ import_eupload=Brak przesłanego pliku importu
 import_efile=Brak nazwy pliku importu
 import_done=.. utworzono $1 wierszy, pominięto $2 duplikatów.
 import_erow=.. nie znaleziono pól w wierszu $1 
+
 index_title1=Utwórz indeks
 index_header1=Opcje indeksu
 index_name=Nazwa indeksu
@@ -326,6 +353,7 @@ index_ecols=Nie wybrano żadnych pól
 index_title2=Edytuj indeks
 index_header=Indeks $1 w bazie danych $2 
 index_ecannot=Nie możesz zarządzać indeksami
+
 view_title1=Utwórz widok
 view_title2=Edytuj widok
 view_header1=Pokaż szczegóły
@@ -340,6 +368,7 @@ view_eclash=Widok o tej samej nazwie już istnieje
 view_equery=Brak zapytania SQL
 view_ecols=Nie wprowadzono nazw kolumn
 view_ecannot=Nie możesz zarządzać widokami
+
 seq_title1=Utwórz sekwencję
 seq_title2=Edytuj sekwencję
 seq_header1=Zwiększanie opcji sekwencji
@@ -359,5 +388,6 @@ seq_emin=Brakująca lub nieprawidłowa wartość minimalna
 seq_emax=Brakująca lub nieprawidłowa wartość maksymalna
 seq_ecache=Brakująca lub niepoprawna liczba wartości do buforowania
 seq_ecannot=Nie możesz zarządzać sekwencjami
+
 dgrant_err=Nie można zresetować dotacji
 dgrant_enone=Nie wybrano żadnych obiektów

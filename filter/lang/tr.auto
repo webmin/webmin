@@ -45,6 +45,7 @@ index_ondate=tarih
 index_charset=Mesaj karakter kümesini otomatik yanıtla
 index_subject=Mesaj konusunu otomatik olarak yanıtla
 index_nowebmin=Bu modül yalnızca Usermin'de kullanım içindir. Webmin'de görünürse, kullandığınız tema eksiktir.
+
 edit_title1=Filtre Oluştur
 edit_title2=Filtreyi Düzenle
 edit_header1=Filtre durumu
@@ -71,6 +72,7 @@ edit_amode7=Adlı yeni klasöre kaydet
 edit_nobounce=Geri dönen iletilerin iletilmesini bastırın
 edit_apply=Eşleşen E-postayı Klasörde Göster:
 edit_move=Klasördeki E-postaya Uygula:
+
 save_err=Filtre kaydedilemedi
 save_egone=Filtre artık mevcut değil!
 save_econdheader=Eksik veya geçersiz e-posta başlığı
@@ -89,8 +91,10 @@ save_enewfolder3=Aynı ada sahip bir klasör zaten var
 save_estart=Geçersiz otomatik başlangıç tarihi
 save_eend=Otomatik yeniden bitiş tarihi geçersiz
 save_echarset=Eksik veya geçersiz otomatik kaydetme karakter kümesi
+
 delete_err=Filtreler silinemedi
 delete_enone=Hiçbiri seçilmedi
+
 aliases_type1=Adres $1 
 aliases_type2=$1 dosyasındaki adresler
 aliases_type3=$1 dosyası
@@ -101,6 +105,7 @@ aliases_your=Posta kutunuz
 aliases_delete=Postayı sil
 aliases_other=$1 kullanıcısının posta kutusu
 aliases_auto=$1 mesajıyla otomatik yanıtlayıcı
+
 auto_title=E-posta Otomatik Yanıt
 auto_header=Otomatik e-posta yanıtı seçenekleri
 auto_enabled=Otomatik yanıt etkin mi?
@@ -111,12 +116,14 @@ auto_charsetdef=Mevcut dilden
 auto_charsetother=Diğer karakter seti
 auto_period=Yanıtlar arasındaki minimum aralık
 auto_err=Otomatik yanıt kaydedilemedi
+
 forward_title=E-posta Yönlendir
 forward_header=E-posta yönlendirme seçenekleri
 forward_enabled=E-posta yönlendirme etkin mi?
 forward_to=Adreslere yönlendir
 forward_cont=Ayrıca normal teslim?
 forward_err=E-posta yönlendirme kaydedilemedi
+
 move_err=Filtre uygulanamadı
 move_esrc=$1 kaynak klasörü mevcut değil!
 move_edest=$1 hedef klasörü mevcut değil!

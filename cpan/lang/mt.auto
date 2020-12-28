@@ -28,6 +28,7 @@ index_tabinstall=Installa modulu
 index_tabsuggest=Moduli suġġeriti
 index_allmods2=Moduli nieqsa użati minn Webmin
 index_wantmods=Moduli biex tinstalla
+
 download_err=Naqset milli tinstalla l-modulu
 download_elocal=L-ebda fajl lokali mogħti
 download_elocal2="$1" ma jeżistix
@@ -65,6 +66,7 @@ download_ebuild=Wieħed jew aktar mill-moduli Perl jeħtieġ li jinbena $1, iżd
 download_yum=Installazzjoni tal-modulu Perl $1 mill-pakkett $2 ..
 download_missingok=Moduli nieqsa minn CPAN
 download_fallback=Xi moduli naqsu milli jinstallaw mill-pakketti, jippruvaw installazzjoni minn sors minflok ..
+
 install_title=Installa Modulu
 install_untar=Fajl modulu li ma jwettaqx
 install_make=Modulu tal-kumpilazzjoni
@@ -84,11 +86,13 @@ install_err2=Tista 'wkoll tinstalla l-modulu minn CPAN bil-kmand $1.
 install_exec=Eżekuzzjoni ta ' $1 ..
 install_efile=Il-modulu ta 'fajl $1 m'għadux jeżisti
 install_needunlink=Tista 'tipprova tinstalla mill-ġdid billi tmur lura fil-paġna ta' qabel u tagħżel għażliet differenti. Inkella, <a href='$1'>ikklikkja hawn biex tħassar il-fajls tal-pakkett temporanju</a> sabiex tiffranka l-ispazju tad-diska.
+
 cpan_sel=Moduli taħt $1 ..
 cpan_title=Agħżel il-modulu Perl
 cpan_search=Sib moduli msemmija
 cpan_match=Moduli li jaqblu ma ' $1 ..
 cpan_none=Ma nstabu l-ebda taqbiliet.
+
 edit_title=Dettalji tal-Modulu
 edit_header=Modulu ta 'informazzjoni
 edit_mod=Isem il-Modulu
@@ -105,6 +109,7 @@ edit_method=Installat minn
 edit_rpm=Pakkett RPM $1 
 edit_debian=Pakkett Debian $1 
 edit_manual=Installa modulu Perl manwali
+
 uninstall_title=Uninstall Module
 uninstall_rusure=Int żgur li trid tinstalla l-modulu Perl $1 ? Il-fajls li ġejjin se jitħassru :
 uninstall_rusure2=Int żgur li trid tinstalla l-modulu Perl $1 u s-sottodulju (i) $2 ? <br> Il-fajls li ġejjin se jitħassru :
@@ -112,7 +117,9 @@ uninstall_ok=Uninstall Issa
 uninstall_rpm=Il-modulu jitneħħa billi tinstalla l-pakkett $1 RPM.
 uninstall_debian=Il-modulu jitneħħa billi tinstalla l-pakkett Debian $1.
 uninstall_err=Naqset milli tinstalla l-modulu
+
 delete_efile=Fajl tal-pakkett mhux validu!
+
 uninstalls_title=Uninstall Modules
 uninstalls_err=Ma rnexxielux jinstalla moduli
 uninstalls_enone=L-ebda magħżul

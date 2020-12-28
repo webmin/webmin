@@ -16,6 +16,7 @@ index_digest2=Digest-kryptering er aktiveret i modulkonfigurationen, men $1 -kom
 index_cpan=<a href='$1'>Klik her</a> for at downloade og installere det nu.
 index_delete=Fjern beskyttelsen af valgte mapper
 index_remove=Fjern beskyttelse og fjern filer
+
 dir_title1=Tilføj beskyttet telefonbog
 dir_title2=Rediger Protected Directory
 dir_header=Beskyttede biblioteksindstillinger
@@ -60,6 +61,7 @@ dir_delete3=Fjern beskyttelse og fjern fil
 dir_apache=Rediger Apache-indstillinger
 dir_efiledir='$1' er et bibliotek, og kan derfor ikke bruges som en brugerfil
 dir_egfiledir='$1' er et bibliotek, og kan derfor ikke bruges som en gruppefil
+
 edit_title1=Opret bruger
 edit_title2=Rediger bruger
 edit_header=Brugeroplysninger om webgodkendelse
@@ -71,11 +73,13 @@ edit_pass0=Indstillet til
 edit_passfrom=Skift fra
 edit_passto=til nyt kodeord
 edit_dom=Fordøjelsesområdet
+
 gedit_title1=Opret gruppe
 gedit_title2=Rediger gruppe
 gedit_header=Webautentificeringsgruppedetaljer
 gedit_group=Gruppe navn
 gedit_members=Medlemmer af gruppen
+
 save_err=Kunne ikke gemme brugeren
 save_euser1=Manglende brugernavn
 save_euser2=Brugernavn kan ikke indeholde tegnet:
@@ -84,16 +88,19 @@ save_eclash=En bruger med samme navn findes allerede
 save_eoldpass=Det gamle kodeord er ikke korrekt
 save_title=Bruger gemt
 save_edom=Manglende eller ugyldig fordøjelsesrealme
+
 gsave_err=Gruppen blev ikke gemt
 gsave_egroup1=Manglende gruppens navn
 gsave_egroup2=Gruppenavnet kan ikke indeholde: tegn eller mellemrum
 gsave_eclash=En gruppe med samme navn findes allerede
+
 acl_dirs=Tilladte mapper
 acl_user=Opret.htaccess- og htusers-filer som Unix-bruger
 acl_same=Samme som Webmin-login
 acl_home=Inkluder Unix-brugerens hjemmekatalog?
 acl_sync=Kan opsætning af Unix brugersynkronisering?
 acl_uonly=Kan tilføje og ændre beskyttede mapper?
+
 log_create_dir=Tilføjet mappe $1 
 log_modify_dir=Ændret bibliotek $1 
 log_delete_dir=Slet mappe $1 
@@ -104,6 +111,7 @@ log_create_group=Oprettet gruppe $1
 log_modify_group=Ændret gruppe $1 
 log_delete_group=Slettet gruppe $1 
 log_delete_dirs=Slet $1 mapper
+
 search_title=Søgeresultater
 search_err=Søgning mislykkedes
 search_edir=Manglende eller ugyldig absolut katalog til søgning

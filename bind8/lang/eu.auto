@@ -65,6 +65,7 @@ index_checkconfig=Ziurtatu chroot direktorioa <a href='$1'>moduluaren konfiguraz
 index_eexpired=Abisua: Honako zonek DNSSEC sinadura iraungita dute : $1
 index_eexpired_conf=Sinadura automatikoa berriro gaitu behar da $1 orrian.
 index_eexpired_mod=Erabili $1 modulua DNSSEC ezgaitzeko domeinu horietarako, edo egiaztatu zergatik sinatu huts egiten duen.
+
 master_title=Editatu zona nagusia
 master_inview=$1 ikusita $2 
 master_ecannot=Ezin duzu zona hau editatu
@@ -146,6 +147,7 @@ master_defttl=Erregistroen bizitzeko denbora lehenetsia
 master_edefttl='$1' ez da erregistroen denbora bizitzeko balio lehenetsia
 master_esoagone=Ez da SOA erregistrorik aurkitu!
 master_einclude=Ez da txantiloi fitxategi gehigarririk existitzen
+
 delete_title=Ezabatu zona
 delete_mesg=Ziur $1 zona ezabatu nahi duzula? Erregistro guztiak eta zona fitxategia ezabatuko dira.
 delete_mesg2=Ziur erroko zona ezabatu nahi duzula? Baliteke zure DNS zerbitzariak ezin izango dituela Interneten helbideak bilatzeko.
@@ -157,6 +159,7 @@ delete_errslave=Zona nagusiak ez du ondo ezabatu, baina ondorengo akatsak gertat
 delete_ezone=Zonaldea ez da esklabo zerbitzarian aurkitu
 delete_vwarn=Eremu hau Virtualmin $1 domeinuarekin lotzen da eta, beraz, ez da hemen ezabatu behar!
 delete_vwarn2=Zonalde hau Virtualmin domeinuarekin $1 eta beste $2 rekin dago lotuta, eta, beraz, ez da hemen ezabatu behar!
+
 mcreate_title=Sortu Master gunea
 mcreate_ecannot=Ezin duzu zona maisurik sortu
 mcreate_opts=Eremu maisu aukera berriak
@@ -171,6 +174,7 @@ mcreate_auto=automatikoa
 mcreate_err=Huts egin du zona nagusia sortzerakoan
 mcreate_ednssecsize=Ezin izan da gakoen tamaina kalkulatu : $1
 mcreate_ednssec=Diskoen sorrerak arrakasta izan du, baina DNSSECek huts egin du : $1
+
 slave_title=Editatu Esklabuen eremua
 stub_title=Editatu Stub Zone
 slave_ecannot=Ezin duzu zona hau editatu
@@ -202,6 +206,7 @@ slave_applymsg2=Egin klik botoi honetan eremua zerbitzari nagusitik berriro tran
 slave_last=Azken transferentzia : $1
 slave_never=Inoiz ez
 slave_xfer=Proba-eremuen transferentzia
+
 screate_title1=Sortu Esklabuen eremua
 screate_title2=Sortu Stub Zone
 screate_ecannot1=Ez zaizu baimendutako esklabutza gunerik sortzea
@@ -214,6 +219,7 @@ screate_rev=Alderantzikatua (Izenei helbideak)
 screate_dom=Domeinu izena / Sarea
 screate_err1=Huts egin du esklabuen zona sortzerakoan
 screate_err2=Huts egin du stub zona sortzerakoan
+
 recs_ecannot=Ezin duzu zona honetako erregistroak editatu
 recs_ecannottype=Ezin duzu mota honetako erregistroak editatu
 recs_title=$1 Erregistroak
@@ -231,6 +237,7 @@ recs_drev=Alderantzikatuak ere ezabatu nahi dituzu?
 recs_none=Domeinuak ez du $1 erregistrorik oraindik.
 recs_nosearch=Ez dago erregistrorik zure bilaketarekin.
 recs_needsearch=Sartu bilaketa bat datozen erregistroak aurkitzeko.
+
 edit_title=Editatu $1
 edit_header=$1 at
 edit_edit=Editatu $1 Grabazioa
@@ -306,6 +313,7 @@ edit_edmarcpct=Mezuen portzentajea 0 eta 100 bitartekoa izan behar da
 edit_edmarcrua=Agregatuaren feedback helbidea falta da
 edit_edmarcruf=Auzitegiko informazioaren helbidea falta da
 edit_ecaavalue2=Falta den edo baliogabearen itxura duen domeinu izena
+
 text_title=Editatu Espedienteen Fitxategia
 text_title2=Ikusi Erregistroak
 text_desc3=Inprimaki honek DNS erregistroaren fitxategia eskuz editatu ahal izango duzu $1. Ez du sintaxi egiaztapenik egingo Webmin-ek.
@@ -315,6 +323,7 @@ text_ecannot=Ezin duzu erregistroko fitxategiak editatu
 text_none=Hala ere, fitxategia une honetan hutsik dago, zona oraindik zerbitzari nagusitik transferitu ez delako.
 text_soa=Serie zenbakia automatikoki handitu
 text_rawformat=Eremu hau formatu binario gordinean dago eta, beraz, ezin da testu gisa bistaratu.
+
 restart_err=Ezin izan dira aldaketak aplikatu
 restart_ecannot=Ezin duzu BIND berrabiarazi
 restart_epidfile=Ezin izan da BIND PID aurkitu $1
@@ -323,10 +332,12 @@ restart_erunning2=BIND ez dirudi esklabo zerbitzariaren gainean exekutatzen ari 
 restart_endc=NDC komandoak huts egin du : $1
 restart_ecmd=Berrabiarazi komandoak huts egin du : $1
 restart_eversion=$1 esklabo zerbitzariak ez du Webmin bertsioa $2 edo hortik gorako exekutatzen.
+
 start_ecannot=Ezin duzu BIND abiarazi
 start_error=Huts egin du BIND abiaraztean : $1
 stop_epid=BIND ez da exekutatzen
 stop_ecannot=Ezin duzu BIND gelditu
+
 fwd_title=Editatu Forward Zone
 fwd_ecannot=Ezin duzu zona hau editatu
 fwd_opts=Zona Aukerak
@@ -335,12 +346,14 @@ fwd_forward=Probatu beste zerbitzari batzuk?
 fwd_check=Izenak egiaztatu?
 fwd_err=Ezin izan da aukerak gordetzea
 fwd_delmsg=Egin klik botoi honetan zona hau zure DNS zerbitzaria ezabatzeko. Bertan dauden erregistroak ebazpen prozesu normala erabiliz aztertuko dira.
+
 delegation_title=Editatu Ordezkaritza gunea
 delegation_ecannot=Ezin duzu zona hau editatu
 delegation_opts=Zona Aukerak
 delegation_err=Ezin izan da aukerak gordetzea
 delegation_noopts=Ordezkaritza-zonek ez dute aukerarik.
 delegation_delmsg=Egin klik botoi honetan zona hau zure DNS zerbitzaria ezabatzeko. BIND-ek aitortuko ditu NSn bertan dituen erregistro motak.
+
 fcreate_title=Sortu Aurrerako eremua
 fcreate_ecannot=Ez duzu baimenik gabeko zonak sortzeko
 fcreate_opts=Aurrera egiteko zona berriak
@@ -350,10 +363,12 @@ fcreate_rev=Alderantzikatua (Izenei helbideak)
 fcreate_dom=Domeinu izena / Sarea
 fcreate_masters=Zerbitzari maisuak
 fcreate_err=Huts egin du aurrera eremua sortzerakoan
+
 dcreate_title=Sortu Ordezkaritza soilik duen gunea
 dcreate_ecannot=Ez zaizu baimenik delegazio zonak sortzea
 dcreate_opts=Ordezkaritza gune berriak
 dcreate_err=Ezin izan da delegazio gunea sortu
+
 create_enet='$1' ez da baliozko sare bat
 create_edom='$1' ez da baliozko domeinu izena
 create_edom2='$1' domeinua izan behar da, eta ez sarea
@@ -363,9 +378,11 @@ create_efile3=Huts egin du '$1' sortzean : $2
 create_efile4=$1 fitxategia lehendik dago
 create_emaster='$1' ez da baliozko zerbitzariaren helbide nagusia
 create_enone=Gutxienez zerbitzari nagusi bat sartu behar duzu
+
 boot_err=Deskargak huts egin du
 boot_egzip=Erro eremuaren fitxategia konprimituta dago, baina <tt>gzip</tt> komandoa ez dago zure sisteman instalatuta!
 boot_egzip2=Erro eremuaren fitxategiaren konpresioak huts egin du : $1
+
 type_A=Helbidea
 type_AAAA=IPv6 helbidea
 type_NS=Izen Zerbitzaria
@@ -386,6 +403,7 @@ type_SRV=Zerbitzuaren helbidea
 type_ALL=Erregistro mota guztiak
 type_KEY=Gako publikoa
 type_CAA=Ziurtagiri Agintaritza
+
 edit_A=Helbidea
 edit_AAAA=IPv6 helbidea
 edit_NS=Izen Zerbitzaria
@@ -405,6 +423,7 @@ edit_NSEC3PARAM=DNSSEC parametroak
 edit_TLSA=SSL ziurtagiria
 edit_SSHFP=SSH gako publikoa
 edit_CAA=Ziurtagiri Agintaritza
+
 recs_defttl=Lehenetsitako TTL
 recs_A=Helbidea
 recs_AAAA=IPv6 helbidea
@@ -427,6 +446,7 @@ recs_TLSA=SSL ziurtagiria
 recs_SSHFP=SSH gako publikoa
 recs_CAA=Ziurtagiri Agintaritza
 recs_delete=Ezabatu Hautatuta
+
 value_A1=Helbidea
 value_AAAA1=IPv6 helbidea
 value_NS1=Izen Zerbitzaria
@@ -503,6 +523,7 @@ value_CAA3=CA domeinu izena
 value_caa_issue=Domeinu bakarreko ziurtagiria
 value_caa_issuewild=Wildcard cert
 value_caa_iodef=Politika urratzeko URLa
+
 tlsa_usage0=Ziurtagiriaren agintaritza
 tlsa_usage1=Amaierako entitatea
 tlsa_usage2=Fidatu aingura
@@ -512,12 +533,14 @@ tlsa_selector1=Gako publikoen informazioa
 tlsa_match0=Edukirik gabekoa
 tlsa_match1=SHA-256 hash
 tlsa_match2=SHA-512 hash
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 warn=Abisatu
 fail=Fail
 ignore=Ez ikusi
@@ -531,6 +554,7 @@ listed=Zerrendatu ..
 eip='$1' ez da baliozko IP helbide bat
 eport='$1' ez da baliozko ataka-zenbakia
 eipacl='$1' ez da baliozko IP helbidea edo ACL izena
+
 acl_zones=Erabiltzaile honek edita ditzakeen domeinuak
 acl_zall=Zonalde guztiak
 acl_zsel=Aukeratutako zonak ..
@@ -575,6 +599,7 @@ acl_ztypes_master=Maisu
 acl_ztypes_slave=Slave / zirriborroa
 acl_ztypes_delegation=Ordezkaritza
 acl_ztypes_forward=Aurrera
+
 servers_title=Beste DNS zerbitzari batzuk
 servers_ip=IP helbidea
 servers_bogus=Ezikusi zerbitzari okerra?
@@ -586,6 +611,7 @@ servers_keys=Erabili DNS gakoak
 servers_err=Huts egin du DNS zerbitzariak gordetzean
 servers_eip='$1' ez da baliozko IP helbide bat
 servers_etrans='$1' ez da baliozko gehienezko transferentzi kopurua
+
 logging_title=Logging eta akatsak
 logging_ecannot=Ezin duzu erregistroa konfiguratu
 logging_header=Logging eta akatsen aukera globala
@@ -624,6 +650,7 @@ logging_efile=Fitxategiaren erregistroaren izena falta da
 logging_efile2=Log fitxategiaren izenak bide absolutua izan behar du
 logging_ever='$1' ez da baliozko bertsio kopurua
 logging_esize='$1' ez da baliozko erregistro-tamaina
+
 acls_title=Sarbide kontrol zerrendak
 acls_ecannot=Ezin duzu akl globalak editatu
 acls_name=ACL Izena
@@ -631,6 +658,7 @@ acls_values=Helbideak, sareak eta ACL lotzea
 acls_err=Huts egin du sarbide kontrol zerrendak gordetzean
 acls_ename='$1' ez da baliozko ACL izena
 acls_eline=IP helbide bakoitza aparteko lerro batean sartu behar da ACL '$1'
+
 files_title=Fitxategiak eta Direktorioak
 files_ecannot=Ezin duzu fitxategiak konfiguratu
 files_header=Fitxategi eta direktorio globalen aukerak
@@ -640,6 +668,7 @@ files_pid=Prozesuaren ID fitxategia
 files_xfer=Bide-eremua transferitzeko programa
 files_err=Ezin izan da fitxategiak eta direktorio aukerak gorde
 files_efile=Fitxategi-izen falta edo baliogabea
+
 forwarding_title=Birbidalketa eta transferentziak
 forwarding_ecannot=Ezin duzu birbidaltzeko eta transferitzeko aukerak editatu
 forwarding_header=Birbidaliketa globala eta zona transferitzeko aukerak
@@ -658,6 +687,7 @@ forwarding_etrans=Gehienak edo baliogabeak diren aldi baterako transferentzia ba
 forwarding_minutes=minutu
 forwarding_ip=IP helbidea
 forwarding_port=Port
+
 net_title=Helbideak eta Topologia
 net_ecannot=Ezin duzu helbide eta topologia aukerak editatu
 net_header=Helbide globala eta topologia aukerak
@@ -683,6 +713,7 @@ net_taddrdef=IP estuena
 net_etport=Ezin da zehaztu helbiderik gabeko transferentziaren ataka
 net_eaddr='$1' ez da baliozko IPv4 helbide bat
 net_eaddr6='$1' ez da baliozko IPv6 helbide bat
+
 controls_title=Kontrolatu interfazearen aukerak
 controls_ecannot=Ezin duzu kontrol aukerak editatu
 controls_header=Kontrol aukerak
@@ -704,6 +735,7 @@ controls_eunixpath=FIFO fitxategi-bide falta edo baliogabea
 controls_eunixperm=Falta diren edo zortzi fitxategi baimen baliogabeak
 controls_eunixowner=Fitxategiaren jabea edo falta da
 controls_eunixgroup=Fitxategi-talde falta edo baliogabea
+
 controls_inet=Interneterako sarbidea
 controls_unix=Unix FIFO sarbidea
 controls_port=portu
@@ -717,6 +749,7 @@ controls_efile=FIFO fitxategi-izen falta edo baliogabea
 controls_eperms=FIFO baimen falta edo baliogabea
 controls_eowner=FIFO jabearen UID falta edo baliogabea
 controls_egroup=FIFO jabea falta edo baliogabea da
+
 keys_title=DNS gakoak
 keys_id=Giltza IDa
 keys_alg=Algorithm
@@ -725,6 +758,7 @@ keys_ecannot=Ezin duzu DNS gakoak editatu
 keys_err=Huts egin du DNS gakoak gordetzean
 keys_ekey='$1' ez da baliozko gako ID bat
 keys_esecret=Base-64 kodetutako sekretu falta edo baliogabea gako $1
+
 misc_title=Askotariko aukerak
 misc_ecannot=Ezin duzu askotariko aukerak editatu
 misc_header=Hainbat aukera global
@@ -744,6 +778,7 @@ misc_esize='$1' ez da baliozko tamaina
 misc_efiles='$1' ez da baliozko irekitako gehienezko fitxategi kopurua
 misc_emins='$1' ez da baliozko minutu kopurua
 misc_mins=mins
+
 zonedef_title=Zona lehenetsiak
 zonedef_msg=Lehenetsitako zona berrien lehenespenak
 zonedef_err=Huts egin du zona lehenetsiak gordetzean
@@ -767,10 +802,13 @@ zonedef_size=Hasierako teklaren tamaina
 zonedef_single=Sortu beharreko gako kopurua
 zonedef_two=Zona giltza eta gako-sinadura gakoa
 zonedef_one=Zona-tekla soilik
+
 find_title=Aurkitu zonak
 find_match=$1 bat datozen zonak ..
 find_none=Ez da zonarik aurkitu
+
 efirst=$1 lerroko lehen zuzendaritza txarra $2
+
 findfree_title=Aurkitu doako IPak
 findfree_desc=Aurkitu doako IPak
 findfree_nofind=Ezin dituzu IP doakoak bilatu
@@ -782,8 +820,10 @@ findfree_cf=Demagun <em>freeXXX</em> ostalariaren izenak IP doan?
 findfree_search=Search
 findfree_msg=$1 doako IP helbideak aurkitu dira
 findfree_msg2=(horietatik $1 <i>freeXXX</i> bezalakoak dira, $2 <i>freemac</i> bezalakoak dira)
+
 free_title=Doako IP helbideak
 free_ip=IP helbidea
+
 log_servers=Beste DNS zerbitzari batzuk aldatu dira
 log_logging=Logging eta akatsak aldatu dira
 log_acls=Sarbideen kontrol zerrendak aldatu dira
@@ -840,14 +880,17 @@ log_sign=DNSSEC sinadura eguneratuak $1 zonarako
 log_resign=DNSSEC gakoa berriro sinatu $1
 log_trusted=DNSSEC egiaztapena aldatu da
 log_dnssec=Aldatu DNSSEC gakoen sinadura berriro
+
 convert_err=Huts egin du zona bihurtzerakoan
 convert_efile=Erregistroen fitxategia zehaztu behar da esklabuen zona maisu bihurtu aurretik.
 convert_efilesize=Erregistroak $1 ez dago edo hutsik dago
 convert_ebinary=Ez dago instalatuta testu-formatuko maisu bihurtzeko esklabu bitar gunetik bihurtzeko behar den komandoa
 convert_ecompile=Testu formatuaren bihurketa huts egin du : $1
+
 whois_title=WHOIS informazioa
 whois_header=$1 komandoaren irteera ..
 whois_ecannot=Ezin duzu WHOISen informazioa bilatu
+
 view_title=Editatu bezeroen ikuspegia
 view_opts=Bezeroak ikusteko xehetasunak
 view_opts2=Aukerak ikusteko zonentzako aukerak
@@ -858,6 +901,7 @@ view_recursion=Egin bezeroen bilaketa errekurtsibo osoak?
 view_ecannot=Ezin duzu ikuspegi hau editatu
 view_delete=Ikusi Ezabatu
 view_deletemsg=Egin klik botoi honetan ikuspegia ezabatzeko. Aukera izango duzu beste ikuspegi batera dauzkan zonak mugitzeko edo horiek ezabatzeko.
+
 vcreate_title=Sortu bezeroaren ikuspegia
 vcreate_match_all=Bezero guztiak
 vcreate_match_sel=Zerrendatutako helbideak, sareak eta ACLak ..
@@ -866,6 +910,7 @@ vcreate_ename=Ikusitako izen falta edo baliogabea
 vcreate_etaken=Ikusi izena dagoeneko hartu da
 vcreate_eclass=Klaseko izen falta edo baliogabea
 vcreate_ecannot=Ez duzu biderik sortzerik
+
 hint_title=Editatu Erro eremua
 hint_desc=Erro-gunea zure DNS zerbitzariak erabiltzen du Interneten root zerbitzariak harremanetan jartzeko, DNS zerbitzariak kudeatzen ez dituen domeinuetan izenak konpon ditzan, <tt>.com</tt> edo <tt>.net bezala. au</tt>. Zure DNS zerbitzaria barne sare batean erabiltzeko edo kontsulta guztiak beste zerbitzari batera birbidaltzen ez badituzu, ez zenuke root area hau ezabatu behar.
 hint_move=Mugitu ikusteko:
@@ -874,6 +919,7 @@ hint_refetch=Berriro deskargatu erro izenak
 hint_refetchdesc=Egin klik botoi honetan Webmin root area fitxategia berriro deskargatzeko Internic FTP zerbitzarian.
 hint_delete=Ezabatu Erro eremua
 hint_deletedesc=Egin klik botoi honetan erro zona hau kentzeko. Hori gabe, zure izen-zerbitzariak ezingo ditu Interneten domeinuak ebatzi bigarren mailakoa denerako.
+
 hcreate_title=Sortu Erro eremua
 hcreate_desc=Erro-gunea zure DNS zerbitzariak erabiltzen du Interneten root zerbitzariak harremanetan jartzeko, DNS zerbitzariak kudeatzen ez dituen domeinuetan izenak konpon ditzan, <tt>.com</tt> edo <tt>.net bezala. au</tt>. Ikuspegi anitz erabiltzen ari bazara, baliteke ikuspegi bakoitzean bereizketa erroko zona bat izatea bezero guztiek Interneteko domeinuak behar bezala konpondu ditzaten.
 hcreate_header=Erro eremuaren xehetasunak
@@ -887,6 +933,7 @@ hcreate_efile='$1' ez da onartzen erro fitxategi bat
 hcreate_efile2=Erro fitxategi falta edo baliogabea
 mcreate_erecs=Ez da baliozko lehendik dagoen root zone fitxategia
 hcreate_err=Ezin izan da erro eremua sortu
+
 vdelete_title=Ikusi Ezabatu
 vdelete_mesg=Ziur bezeroaren ikuspegia ezabatu nahi duzula $1? Ikuspegi honetako zona guztiak ezabatu egingo dira (beren zona fitxategiekin batera) edo beheko aukeraren arabera beste ikuspegi batera eramango dira.
 vdelete_mesg2=Ziur bezeroaren ikuspegia ezabatu nahi duzula $1?
@@ -894,6 +941,7 @@ vdelete_newview=Ikuspegi honetako zonak
 vdelete_root=Erabil itzazu ikuspegietatik
 vdelete_delete=Ezabatu erabat
 vdelete_move=Mugitu ikusteko
+
 gen_title=Disko sorgailuak
 gen_desc=Orrialde honek sorgailuak definitzeko aukera ematen du, eta horietako bakoitzak erregistro anitzak sortuko ditu zona horretan, kontagailu inkremental bat erabiliz. Alderantzizko eremuko atalak beste zerbitzari batean delegatzeko erabilgarria izan daiteke.
 gen_range=Range
@@ -913,7 +961,9 @@ gen_evalue=$1 sorgailuaren ostalari-eredu falta edo baliogabea
 gen_title2=Sortutako Erregistroak
 gen_raw=Konfiguratu fitxategiaren lerroa
 gen_ecannot=Ezin duzu erregistro sorgailurik editatu
+
 refetch_err=Ezin izan da erroa deskargatu berriro deskargatzea
+
 slaves_title=Kluster Esklavi Zerbitzariak
 slaves_none=Oraindik ez da zerbitzaririk gehitu DNS klusterra.
 slaves_host=hostname
@@ -941,6 +991,7 @@ slaves_sec=Sortu bigarren mailako esklabo lokalean sortzean?
 slaves_name=Izena NS erregistrorako
 slaves_same=Ostalariaren izen bera
 slaves_header=Kluster esklabo zerbitzariaren aukerak
+
 add_title=Gehitu zerbitzariak
 add_msg=$1 gehituz ..
 add_gmsg=Zerbitzariak gehitzea $1 taldean.
@@ -958,6 +1009,7 @@ add_createok=Ezarri $1 $2 esklabu eremu berriak.
 add_ename=NS erregistroaren izen falta edo baliogabea
 add_egname=Ezin da NS erregistroaren izena zehaztu talde bat gehitzean
 add_emyip=Ezin izan da sistema honen IP helbidea landu. <b>Lehenetsitako zerbitzari IParen IPa zehaztu beharko zenuke urruneko esklabuen zonentzako</b> moduluen konfigurazio orrian.
+
 mass_title=Sortu Zonaldeak Batch fitxategitik
 mass_desc=Orrialde honek hainbat zona sor ditzakezu aldi berean kargatutako edo zerbitzariaren alboko testu fitxategi batetik. Fitxategiaren lerro bakoitzak formatu hau eduki behar du: <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p> <i>Motaren</i> bat izan behar <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> edo <tt>forward</tt>. Fitxategiaren <i>izena</i> aukerakoa da eta falta bada automatikoki kalkulatuko da. <i>IP maisuak</i> esklabuen guneetarako soilik eman behar dira.
 mass_local=Tokiko batch fitxategia
@@ -989,6 +1041,7 @@ mass_emips=IP helbide nagusiak falta dira
 mass_addedslaves=Gehitu da $1 zerbitzari esklaboei ongi.
 mass_eonslave=Esklabo zerbitzarietan sortutako akatsak gertatu dira : $1
 mass_eviewcannot=Ezin duzu ikuspegirik gehitu zonalde honetara
+
 massdelete_title=Ezabatu zonak
 massdelete_rusure=Ziur $1 hautatutako zonak ezabatu nahi dituzula? ($2)
 massdelete_ok=Ezabatu orain
@@ -998,6 +1051,7 @@ massdelete_slaves=$1 eremua ezabatzea zerbitzari esklaboetatik ..
 massdelete_failed=.. esklabo batzuek huts egin zuten :
 massdelete_vwarn=Zenbait zona Virtualmin $1 domeinuarekin lotzen dira eta, beraz, ez da hemen ezabatu behar!
 massdelete_vwarn2=Zonalde batzuk Virtualmin domeinuarekin $1 eta beste $2 rekin daude lotuta, eta, beraz, ez da hemen ezabatu behar!
+
 rndc_title=Ezarpena RNDC
 rndc_desc=Orrialde hau BIND RNDC programak kontrolatzeko konfiguratzeko erabil daiteke, zona indibidualak berritu ahal izateko, BINDen berrabiapen osoa egin beharrik izan gabe.
 rndc_desc2=RNDC dagoeneko behar bezala konfiguratuta dagoela dirudi, beraz, seguruenik ez duzu inprimaki hau erabili beharrik.
@@ -1008,11 +1062,13 @@ rndc_ok=Bai, konfiguratu RNDC
 rndc_err=Huts egin du RNDC konfiguratzean
 rndc_ekey=Ezin izan da gakoa aurkitu rndc.conf-en
 rndc_esecret=Ezin izan da aurkitu sekretua rndc.conf-en
+
 drecs_err=Ezin izan dira erregistroak ezabatu
 drecs_enone=Ez da hautatu
 drecs_title=Ezabatu Erregistroak
 drecs_rusure=Ziur $1 hautatutako erregistroak ezabatu nahi dituzula $2?
 drecs_ok=Ezabatu orain
+
 manual_title=Editatu Konfigurazio fitxategia
 manual_ecannot=Ezin duzu BIND konfigurazio fitxategia editatu
 manual_ok=Editatu
@@ -1020,7 +1076,9 @@ manual_efile=Hautatutako fitxategia ez da BIND konfigurazioaren parte
 manual_file=Editatu konfigurazio fitxategia:
 manual_edata=Ez da ezer sartu!
 manual_err=Ezin izan da konfiguratu fitxategia gordetzean
+
 syslog_desc=BIND DNS zerbitzariaren mezuak
+
 umass_err=Huts egin du zonak eguneratzean
 umass_enone=Ez da hautatu
 umass_title=Eguneratu Erregistroak Zonetan
@@ -1039,6 +1097,7 @@ umass_done=.. eguneratu $1 bat datozen erregistroak $2.
 umass_none=.. ez da bat datorren erregistrorik $1 ez da eguneratzeko aurkitu.
 umass_egone=Zona ez da existitzen
 emass_emx='$1' ez da posta zerbitzariaren lehentasunezko zenbakia eta ondoren ostalari izen baliozkoa da
+
 rdmass_err=Ezin izan da erregistroak ezabatu zonetan
 rdmass_enone=Ez da hautatu
 rdmass_title=Ezabatu Erregistroak Zonetan
@@ -1055,6 +1114,7 @@ rdmass_done=.. $1 bat datozen erregistroak $2 ezabatu ditu.
 rdmass_none=.. ez da bat datorren erregistrorik $1 ezabatzeko.
 rdmass_ok=Ezabatu Erregistroak
 rdmass_sel=Erregistro izendatuak
+
 rmass_err=Ezin izan da erregistroak gehitu
 rmass_enone=Ez da hautatu
 rmass_title=Gehitu Erregistroa Zonalei
@@ -1074,18 +1134,22 @@ rmass_esign=.. bukatuta, baina saioak huts egin du : $1
 rmass_eclash=.. izen bera eta balio bera duen erregistroa $1 badago.
 rmass_eclash2=.. izen bera eta balio bera duen erregistroa $1 badago.
 rmass_clash=Sortu erregistroa dagoeneko badago?
+
 check_title=Egiaztatu Erregistroak
 check_ecannot=Ezin duzu erregistroak egiaztatu
 check_errs=Ondorengo akatsak aurkitu dira $1 erregistroko fitxategian.
 check_allok=Ez da akatsik aurkitu $1 erregistroko fitxategian.
+
 ncheck_title=Begiratu BIND Config
 ncheck_ecannot=Ezin duzu BIND konfigurazioa egiaztatu
 ncheck_errs=Hurrengo akatsak BIND konfigurazio fitxategian aurkitu dira $1 edo erreferentziako zona fitxategietan.
 ncheck_allok=Ez da akatsik aurkitu BIND konfigurazio fitxategian $1 edo aipatutako zona fitxategietan.
+
 links_restart=Aplikatu konfigurazioa
 links_stop=Gelditu BIND
 links_start=Hasi BIND
 links_apply=Aplikatu gunea
+
 dnssec_title=DNSSEC gakoen sinadura
 dnssec_ecannot=Ezin duzu DNSSEC konfiguratu
 dnssec_header=Gako berriz sinatzeko aukerak
@@ -1096,6 +1160,7 @@ dnssec_secs=segundutan
 dnssec_desc=DNSSEC-rekin sinatutako zonek normalean bi gako dituzte: zona gakoa berriro sortu eta sinatu behar den gakoa, eta etengabeko sinadura gakoa. Orrialde honi esker, Webmin konfiguratu dezakezu berriro sinatzeko aukera hori automatikoki burutzeko.
 dnssec_err=Huts egin du DNSSEC gakoen sinadura gordetzean
 dnssec_eperiod=Falta diren edo baliogabeko egun kopurua berriro seinaleen artean
+
 dnssectools_title=DNSSEC-Tresnak Automatizatzea
 dt_conf_title=DNSSEC-Tresnak Automatizatzea
 dt_enable_title=DNSSEC-Tresnak Automatizatzea
@@ -1160,6 +1225,7 @@ dt_status_inKSKroll=KSK erroldan
 dt_status_inZSKroll=ZSK erroldan
 dt_status_signed=Sinatutako
 dt_status_unsigned=Sinatu gabeko
+
 zonekey_title=Konfiguratu DNSSEC gakoa
 zonekey_desc=Zona honek ez du DNSSEC sinatzeko gako bat oraindik. Inprimaki hau erabil dezakezu Webmin-ek sortu ahal izateko, zona hori konpontzen duten bezeroak DNSren aurkako erasoen aurka babesteko.
 zonekey_header=DNSSEC gako-aukera berriak
@@ -1193,9 +1259,12 @@ zonekey_sign=Zeinu eremua
 zonekey_signdesc=Berehala berriro sinatu zona hau, beraz, eskuz egindako erregistroetan aldaketak sinatzen diren erregistroetan sartuko dira.
 zonekey_resign=Berriro sinatu gunea
 zonekey_resigndesc=Sortu zona berria sinatzeko gako bat, sinatu zonako gako nagusiarekin eta berriro sinatu erregistro guztiak.
+
 sign_err=Ezin izan da zona sinatu
 sign_emsg=Erregistroen aldaketaren ondoren DNSSEC sinatzeak huts egin du : $1
+
 resign_err=Ezin izan da zona berriro sinatu
+
 trusted_title=DNSSEC egiaztatzea
 trusted_ecannot=Ezin duzu DNSSEC egiaztapena konfiguratu
 trusted_esupport=BIND bertsioak ez du DNSSEC egiaztapena onartzen
@@ -1230,6 +1299,7 @@ trusted_setup=DNSSECek Interneten sinatutako zona gehienak egiaztatzeko erabilga
 trusted_ok=Konfiguratu DLV eta gaitu DNSSEC egiaztapena
 trusted_warning=Kontuz! Zure BIND DNSSEC bezeroaren konfigurazioak 2017ko urrian geldituko ez diren gako zaharkituak ditu. Edo erabili <a href='$1'>BIND DNSSEC Egiaztapen orria</a> konfigurazioa doitzeko, edo egin klik beheko botoian.
 trusted_fix=Konpondu DNSSEC konfigurazioa
+
 xfer_title=Proba-eremuen transferentzia
 xfer_doing=$1 etatik esklabuen lekualdaketa probatzea.
 xfer_failed=.. from $1: Huts egin du : $2

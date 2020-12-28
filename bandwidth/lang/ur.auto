@@ -57,20 +57,27 @@ index_rotate=اعداد و شمار کو اپ ڈیٹ کریں
 index_rotatedesc=موجودہ وقت تک تمام لاگ ان نیٹ ورک ٹریفک پر کارروائی کرنے کے لئے اس بٹن پر کلک کریں ، تاکہ اسے اطلاع دہندگی کے ل immediately فورا available دستیاب ہوجائے۔
 index_eiptables=انتباہ - آپ کے IPtables تشکیل میں ایک خرابی ہے:$1۔ بینڈوتھ مانیٹرنگ مرتب کرنے سے فائر وال کے تمام قواعد مٹ جائیں گے۔
 index_return=رپورٹ فارم
+
 log_setup=انٹرفیس$1 پر بینڈوڈتھ مانیٹرنگ سیٹ اپ کریں
 log_turnoff=غیر فعال بینڈوتھ کی نگرانی
 log_rotate=تازہ ترین اعدادوشمار
+
 acl_setup=کیا نگرانی کو سیٹ اپ اور غیر فعال کر سکتا ہے؟
+
 turnoff_ecannot=آپ کو مانیٹرنگ کو غیر فعال کرنے کی اجازت نہیں ہے
+
 setup_ecannot=آپ کو نگرانی کے قابل بنانے کی اجازت نہیں ہے
 setup_eiface=لاپتہ یا غلط انٹرفیس کا نام
 setup_ezone=منتخب انٹرفیس کے لئے شوروالہ زون تلاش کرنے میں ناکام
+
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=آئی پی فلٹر
 system_shorewall=شوروالہ
+
 syslog_syslog=سیسلاگ
 syslog_syslog-ng=سیسلاگ۔ این جی
+
 rotate_title=اعداد و شمار کو اپ ڈیٹ کرنا
 rotate_doing=لاگ ان نیٹ ورک ٹریفک پر کاروائی ..
 rotate_done=.. ہو گیا

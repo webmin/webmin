@@ -15,6 +15,7 @@ index_use=Gebruikt
 index_free=Vrij
 index_format=Deze harddisk is niet geformatteerd
 index_return=harddisk lijst
+
 edit_ecannot=U bent niet bevoegd deze harddisk te bewerken
 edit_title=Bewerk Partitie
 edit_header=Partitie Details
@@ -56,6 +57,7 @@ edit_tunedesc2=U kunt het filesysteem niet afstemmen op deze partitie omdat het 
 edit_tunedesc3=U kunt het filesysteem niet afstemmen op deze partitie omdat het nog gemount is. Gebruik de <a href=/mount/>filesystemen module</a> om het eerst te unmounten.
 edit_tunedesc4=U kunt het filesysteem niet afstemmen op deze partitie omdat het nog geen filesysteem heeft.
 edit_tunedesc5=U kunt het filesysteem niet afstemmen op deze partitie omdat alleen <tt>UFS</tt> filesystemen kunnen worden afgestemd.
+
 save_ecannot=U bent niet bevoegd om deze harddisk te bewerken
 save_edelete=Mislukt om de partitie te verwijderen
 save_esave=Mislukt om de partitie op te slaan
@@ -64,6 +66,7 @@ save_eend='$1' is geen geldige eind cilinder
 save_estartmin=De start cilinder moet > 0 zijn
 save_eendmax=De eind cilinder moet < $1 zijn
 save_estartend=De start cilinder moet minder zijn dat de eind cilinder
+
 newfs_title=Filesysteem Aanmaken
 newfs_ecannot=U bent niet bevoegd om deze harddisk te formatteren
 newfs_desc=Als u klikt op de knop onderaan dit formulier word er een nieuw $1 gemaakt op apparaat $2. Alle data op deze partitie word permanent gewist.
@@ -89,6 +92,7 @@ newfs_err=Mislukt om filesysteem aan te maken
 newfs_exec=Uitvoeren van opdracht $1 ..
 newfs_failed=.. opdracht mislukte!
 newfs_ok=.. opdracht compleet.
+
 fsck_title=Repareer Filesysteem
 fsck_ecannot=U bent niet bevoegd om deze harddisk te repareren
 fsck_desc=Als u klikt op de <b>Repareer</b> knop word er een controle en optionele reparatie uitgevoerd op $1 van $2. Het niveau van controle en reparatie word bepaald door uw keuze hieronder.
@@ -106,6 +110,7 @@ fsck_37=proces gestopt tijdens controle
 fsck_39=niet repareerbare fouten gevonden!
 fsck_40=Geen fouten gedetecteerd
 fsck_unknown=onbekende fout
+
 tunefs_title=Filesysteem Afstemmen
 tunefs_ecannot=U bent niet bevoegd deze harddisk af te stemmen
 tunefs_desc=Met dit formulier kunt u diverse parameters instellen van de $1 op $2. Bestaande files op dit filesysteem lopen geen gevaar om gewist of gewijzigd te worden.
@@ -122,6 +127,7 @@ tunefs_err=Mislukt om filesysteem af te stemmen
 tunefs_exec=Uitvoeren van opdracht $1 ..
 tunefs_failed=.. opdracht mislukte!
 tunefs_ok=.. opdracht is compleet.
+
 select_device=SCSI controller $1 doel $2 unit $3
 select_idedevice=IDE apparaat $1
 select_part=SCSI controller $1 doel $2 unit $3 partitie $4
@@ -131,10 +137,13 @@ esun=Partities kunnen alleen worden gemodificeerd op Sun hardware
 emounted=Harddisk heeft gemounte partities
 elast=De laatste partitie kan niet worden verwijderd
 eformat=<tt>format</tt> vond geen enkele harddisk!
+
 fstype_ufs=Solaris Unix Filesysteem
 fstype_unknown=Onbekend Filesysteem
+
 acl_disks=Harddisks waar deze gebruiker partitie's op kan maken en kan formatteren
 acl_dall=Alle harddisken
 acl_dsel=Geselecteerde..
 acl_view=Mag harddisken en partities bewerken?
+
 ecannot=U bent niet bevoegd om partities te bewerken

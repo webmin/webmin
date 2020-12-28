@@ -15,6 +15,7 @@ index_return=szerverek listája
 index_refresh=Csomag listák frissítése
 index_down=Minden szerver újratöltse a csomagot
 this_server=Aktuális szerver
+
 install_err=Nem lehet telepíteni a csomagot
 install_elocal=Nem lett helyi file megadva
 install_elocal2='$1' nem létezik
@@ -27,10 +28,12 @@ install_title=Csomag telepítése
 install_header=Csomag telepítése
 install_packs=Telepített csomagok
 install_ok=Telepítés
+
 add_err=Nem lehet hozzáadni a szervert
 add_gerr=Nem lehet hozzáadni a csoportot
 add_echeck=A(z) $1 szervernek nincs szoftver csomag modulja
 add_esystem=A(z) $1 szerver nem ugyanazt a csomagrendszert használja mint ez a gép.
+
 search_title=Csomag keresés
 search_nomatch=Nincs ilyen csomag $1
 search_none=Semmi
@@ -39,6 +42,7 @@ search_class=Osztály
 search_pack=Csomag
 search_match=$1 megegyező csomag
 search_return=keresési eredmény
+
 host_title=Szerver vezérlés
 host_header=Szoftver vezérelt szerver részletei
 host_name=Hoszt neve
@@ -50,6 +54,7 @@ host_close=Összes zárva
 host_all=Minden csomag
 host_count=Telepített csomagok
 host_os=OS a Webminből
+
 edit_title=Csomag szerkesztése
 edit_details=Csomag részletei a $1 szerveren
 edit_desc=Meghatározás
@@ -65,6 +70,7 @@ edit_uninst=Eltávolítás innen:
 edit_return=csomag részletei
 edit_hosts=Telepítve a hoszton
 edit_all=&lt;minden hoszt&gt;
+
 list_title=Csomag file-jai
 list_files=Fil-ok a(z) $1 csomagból a(z) $2 szerveren
 list_path=Útvonal
@@ -74,6 +80,7 @@ list_type=Típus
 list_size=Méret
 list_status=Státusz
 list_ok=OK
+
 refresh_title=Csomag lista frissítése
 refresh_header=Minden szerverről a csomaglista újrakérése ..
 refresh_1=Frissülve $1 (hozzáadva $2 , eltávolítva $3)
@@ -82,6 +89,7 @@ refresh_3=Frissülve $1 (eltávolítva $2)
 refresh_4=Frissülve $1 (nincs változás)
 refresh_done=.. rendben
 refresh_del=Eltávolítva $1 a szerverlistából
+
 delete_err=Nem lehet törölni a(z) $1 csomagot
 delete_epack=A(z) $1 csomag nem létezik
 delete_title=csomag törlése
@@ -92,6 +100,7 @@ delete_error=Nen lehet törölni $1 : $2
 delete_success=Letörölve $1 -ról(röl).
 delete_done=.. rendben
 delete_header=Törlöm a $1 csomagot ..
+
 do_title=Csomag telepítése
 do_header=Telepítem a(z) $1 az összes hoszton ..
 do_done=.. rendben

@@ -12,6 +12,7 @@ index_eaccess=Ei oikeutta päästä hakemistoihin.
 index_search=Etsi suojatut hakemistot:
 index_cpan=<a href='$1'>Klikkaa tätä</a> ladataksesi ja asentaaksesi sen nyt.
 index_delete=Suojaamattomat valitut hakemistot
+
 dir_title1=Lisää suojattu hakemisto
 dir_title2=Muokkaa suojattua hakemistoa
 dir_header=Suojatun hakemiston asetukset
@@ -45,6 +46,7 @@ dir_requireg=Vain ryhmien jäsenet ..
 dir_erequire_user=Sallittavia käyttäjiä ei syötetty
 dir_erequire_group=Sallittavia ryhmiä ei valittu
 dir_delete=Poista suojaus
+
 edit_title1=Uusi käyttäjä
 edit_title2=Muokkaa käyttäjää
 edit_header=Web autentikoinnin käyttäjätiedot
@@ -56,11 +58,13 @@ edit_pass0=Aseta
 edit_passfrom=Muuta
 edit_passto=uusi salasana
 edit_dom=Suojausalue
+
 gedit_title1=Uusi ryhmä
 gedit_title2=Muokkaa ryhmää
 gedit_header=Web autentikoinnin ryhmän tiedot
 gedit_group=Ryhmän nimi
 gedit_members=Ryhmän jäsenet
+
 save_err=Käyttäjän tallennus epäonnistui
 save_euser1=Puuttuva käyttäjänimi
 save_euser2=Käyttäjänimi ei voi sisältää : merkkiä
@@ -69,15 +73,18 @@ save_eclash=Samanniminen käyttäjä on jo olemassa
 save_eoldpass=Vanha salasana on väärin
 save_title=Käyttäjä tallennettu
 save_edom=Puuttuva tai virheellinen suojausalue
+
 gsave_err=Ryhmän tallennus epäonnistui
 gsave_egroup1=Ryhmän nimi puuttuu.
 gsave_egroup2=Ryhmän nimi ei voi sisältää : merkkiä tai välilyöntiä
 gsave_eclash=Samanniminen ryhmä on jo olemassa
+
 acl_dirs=Sallitut hakemistot
 acl_user=Luo .htaccess ja htusers tiedostot Unix käyttäjänä
 acl_same=Sama kuin Webmin tunnus
 acl_home=Mukaanlue Unix käyttäjän kotihakemisto?
 acl_sync=Voi
+
 log_create_dir=Lisätty hakemisto $1
 log_modify_dir=Muokattu hakemistoa $1
 log_delete_dir=Poistettu hakemisto $1
@@ -88,6 +95,7 @@ log_create_group=Luotu ryhmä $1
 log_modify_group=Muokattu ryhmää $1
 log_delete_group=Poistettu ryhmä $1
 log_delete_dirs=Poistettu $1 hakemistoa
+
 search_title=Hakutulokset
 search_err=Haku epäonnistui
 search_edir=Puuttuva tai virheellinen haku hakemisto

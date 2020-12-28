@@ -7,6 +7,7 @@ index_dsize=Total storlek
 index_dmodel=Märke och modellera
 index_dparts=skivor
 index_return=lista över diskar
+
 disk_title=Redigera disk
 disk_egone=Disk finns inte längre!
 disk_no=Skiva
@@ -31,9 +32,11 @@ disk_return=skivdetaljer och lista över skivor
 disk_add=Skapa en ny bit.
 disk_smart=Visa SMART-status
 disk_smartdesc=Visa den aktuella statusen för den här enheten som upptäcks av SMART och kontrollera om det finns skivfel.
+
 select_device=$1 enhet $2 
 select_slice=$1 enhet $2 skiva $3 
 select_part=$1 enhet $2 skiva $3 partition $4 
+
 slice_title=Redigera skiva
 slice_egone=Valt segment finns inte!
 slice_ssize=Skivstorlek
@@ -58,6 +61,7 @@ slice_return=skivdetaljer och lista över partitioner
 slice_err=Det gick inte att ändra segmentet
 slice_header=Skiva detaljer
 slice_suse=Direkt använt av
+
 dslice_title=Radera skiva
 dslice_rusure=Är du säker på att du vill ta bort segmentet $1 ? Eventuella partitioner och filsystem i den kommer också att raderas.
 dslice_warn=Varning - den här biten används för närvarande av : $1 
@@ -65,6 +69,7 @@ dslice_confirm=Radera nu
 dslice_deleting=Tar bort skiva $1 ..
 dslice_failed=.. borttagning misslyckades : $1 
 dslice_done=.. Gjort
+
 nslice_title=Skapa skiva
 nslice_header=Nya skivdetaljer
 nslice_number=Skivnummer
@@ -86,6 +91,7 @@ nslice_done=.. skiva tillagd
 nslice_parting=Skapa standardpartitioner i skiva $1 på $2.
 nslice_pfailed=.. Skapandet av partition misslyckades : $1 
 nslice_pdone=..partition tillagd
+
 npart_title=Skapa partition
 npart_header=Nya partitionsdetaljer
 npart_letter=Skiljebrev
@@ -98,6 +104,7 @@ npart_emax=Avslutningsblock kan inte vara större än skivstorleken på $1 block
 npart_creating=Skapar partition $1 på $2.
 npart_failed=.. Skapandet av partition misslyckades : $1 
 npart_done=..partition tillagd
+
 part_title=Redigera partition
 part_egone=Partition finns inte längre!
 part_header=Partitionsinformation
@@ -124,6 +131,7 @@ part_newmount2=Montera partition
 part_mountmsg=Montera den här enheten i en ny katalog på ditt system så att den kan användas för att lagra filer. Ett filsystem måste redan ha skapats på enheten.
 part_mountmsg2=Montera den här enheten som virtuellt minne på ditt system för att öka mängden tillgängligt minne.
 part_cannotedit=Denna partition kan inte ändras eftersom den för närvarande används.
+
 dpart_title=Radera partition
 dpart_rusure=Är du säker på att du vill ta bort partitionen $1 ? Eventuella filsystem i det kommer också att raderas.
 dpart_warn=Varning - denna partition används för närvarande av $1 
@@ -131,6 +139,7 @@ dpart_confirm=Radera nu
 dpart_deleting=Tar bort partition $1 ..
 dpart_failed=.. borttagning misslyckades : $1 
 dpart_done=.. Gjort
+
 newfs_title=Skapa filsystem
 newfs_header=Nya filsystemdetaljer
 newfs_free=Utrymme att reservera för rot
@@ -145,11 +154,13 @@ newfs_elabel=Saknas eller ogiltig etikett
 newfs_creating=Skapar filsystem på $1 ..
 newfs_failed=.. skapelsen misslyckades!
 newfs_done=.. skapad framgångsrikt
+
 fsck_title=Kontrollera filsystem
 fsck_err=Det gick inte att kontrollera filsystemet
 fsck_checking=Kontrollerar filsystemet på $1 ..
 fsck_failed=.. kontrollen misslyckades!
 fsck_done=.. kontroll avslutad utan att några fel hittades
+
 log_create_slice=Skapade skiva $1 
 log_delete_slice=Raderad skiva $1 
 log_modify_slice=Modifierad skiva $1 

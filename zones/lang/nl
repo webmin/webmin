@@ -4,6 +4,7 @@ index_none=Er zijn nog geen zones gedefinieerd.
 index_add=Nieuwe zone toevoegen.
 index_return=zone lijst
 index_zones=Bestaande Zones
+
 edit_title=Bewerk Zone
 edit_common=Algemene zone configuratie
 edit_name=Zone naam
@@ -57,20 +58,26 @@ edit_attrnone=Er zijn nog geen algemene attributen gedefinieerd.
 edit_attradd=Een nieuwe algemene attribuut toevoegen.
 edit_webmin=Open Webmin
 edit_brand=Merk
+
 ui_cancel=Annuleer
+
 save_err=Zone opslaan is mislukt
 save_epool=Ontbrekende of ongeldige pool
 save_ewebmin=Webmin is niet aan het werk in deze zone
+
 reboot_title=Reboot Zone
 reboot_rusure=Weet u zeker dat u de zone $1 wilt rebooten? Alle processen die erin werken worden herstart.
 reboot_err=Rebooten van zone mislukt
 reboot_doing=Nu zone aan het rebooten ..
+
 reboot_failed=.. mislukt :
 reboot_ok=.. compleet.
+
 halt_title=Zone Uitschakelen
 halt_rusure=Weet u zeker dat u de zone $1 wilt uitschakelen? Alle processen die erin werken worden herstart.
 halt_err=Mislukt om zone uit te schakelen
 halt_doing=Nu zone aan het uitschakelen ..
+
 boot_title=Booten van Zone
 boot_err=Booten van zone mislukte
 boot_doing=Nu zone aan het booten..
@@ -78,10 +85,12 @@ delete_title=Verwijder Zone
 delete_rusure=Weet u zeker dat u de zone $1 wilt verwijderen? Alle files die in het prive filesysteem zitten zullen verloren gaan.
 delete_err=Mislukt om zone te verwijderen
 delete_doing=Nu zone aan het verwijderen ..
+
 uninstall_title=De-Installeer Systeem
 uninstall_rusure=Weet u zeker dat u de systeem software van zone $1 wilt de-installeren? Alle files die in het prive filesysteem zitten zullen verloren gaan.
 uninstall_err=De-installeren van systeem software van zone mislukt
 uninstall_doing=Nu systeem software aan het de-installeren van zone ..
+
 install_title=Installeer Systeem
 install_doing=Nu systeem aan het installeren in zone ..
 net_title1=Netwerk Interface Aanmaken
@@ -96,6 +105,7 @@ net_enetmask=Ongeldige netmask
 net_eaddress=Ongeldig IP adres
 net_egone=Interface bestaat niet langer!
 net_eclash=Een netwerk interface met hetzelfde IP adres bestaat reeds in deze zone
+
 pkg_title1=Pakket Directory Toevoegen
 pkg_title2=Bewerk Pakket Directory
 pkg_header=Overgenomen pakket directory details
@@ -107,6 +117,7 @@ pkg_eclash=De pakket directory bestaat reeds in deze zone
 pkg_inherit=Overgenomen pakket van globale zone
 pkg_inherit_yes=Ja (gedeeltelijke root zone)
 pkg_inherit_no=Nee (gehele root zone)
+
 fs_title1=Filesysteem Aanmaken
 fs_title2=Filesysteem Bewerken
 fs_header=Extra filesysteem details
@@ -128,6 +139,7 @@ fs_eoptions=Ongeldige mount opties (moet een komma gescheiden lijst zijn zoals r
 fs_egone=Filesysteem bestaat niet langer!
 fs_mount=Mount na het aanmaken?
 fs_eclash=Een filesysteem die dezelfde directory gebruikt bestaat reeds in deze zone
+
 rctl_title1=Bron Controle Aanmaken
 rctl_title2=Bron Controle Bewerken
 rctl_header=Bron controle type en limieten
@@ -148,6 +160,7 @@ rctl_elimit=Niet een nummer
 rctl_eaction=Geen signaal geselecteerd in rij $1
 rctl_evalues=Geen limieten ingevuld
 rctl_eclash=Een controle voor dezelfde bron bestaat reeds in deze zone
+
 attr_title1=Algemene Attributen Aanmaken
 attr_title2=Algemene Attributen Bewerken
 attr_header=Algemene zone attributen details
@@ -165,6 +178,7 @@ attr_euint=Waarde is niet een positief geheel getal
 attr_eboolean=Waarde is niet 'waar' of 'valse'
 attr_egone=Attributen bestaan niet langer!
 attr_eclash=Een attribuut met dezelfde naam bestaat reeds in deze zone
+
 status_running=Werkend
 status_installed=Gestopt
 status_configured=Niet Geinstalleerd
@@ -172,13 +186,16 @@ status_incomplete=Word Geinstalleerd
 status_ready=Klaar
 status_down=Uit
 status_shutting_down=Uitschakelen
+
 list_name=Zone naam
 list_id=ID Nr.
 list_path=Zone directory
 list_status=Status
 list_actions=Acties
+
 zone_in=In zone $1
 pool_none=Geen
+
 create_title=Zone Aanmaken
 create_header=Nieuwe zone details
 create_path=Zone files directory
@@ -239,6 +256,7 @@ create_erouter=Ontbrekende of ongeldige standaard router IP adres
 create_removingpkgs=verwijderen van overgenomen pakketten directory's ...
 create_brand=Merk
 create_brandmsg=Merken zone
+
 log_create_zone=Aangemaakte zone $1
 log_delete_zone=Verwijderde zone $1
 log_save_zone=Gemodificeerde configuratie voor zone $1
@@ -262,6 +280,7 @@ log_delete_rctl=Verwijderde bron controle voor $1 in zone $2
 log_create_attr=Aangemaakte algemene attributen $1 in zone $2
 log_modify_attr=Gemodificeerde algemene attributen $1 in zone $2
 log_delete_attr=Verwijderde algemene attributen $1 in zone $2
+
 webmin_eperl=Perl is niet geinstalleerd op $1
 webmin_eroot=De directory $1 bestaat niet of heeft geen Webmin.
 webmin_title=Installeer Webmin

@@ -12,6 +12,7 @@ index_checkconfig=Ujistěte se, že je adresář chroot správně nastaven na st
 index_eexpired=Upozornění: Následující zóny vypršely podpisy DNSSEC : $1
 index_eexpired_conf=Automatické podepisování by mělo být znovu povoleno na stránce $1.
 index_eexpired_mod=Pomocí modulu $1 zakažte pro tyto domény DNSSEC nebo zkontrolujte, proč se nepodepisuje podpis.
+
 master_inview=$1 v zobrazení $2 
 master_egone=Zóna $1 v žádném pohledu neexistuje
 master_egone2=Zóna $1 neexistuje!
@@ -23,18 +24,23 @@ master_movedesc=Přesune tuto zónu do jiného zobrazení a přitom zachová vš
 master_applymsg2=Klepnutím na toto tlačítko použijete změny pouze pro tuto zónu. Toto bude fungovat, pouze pokud byly změny provedeny pro celý server alespoň jednou od vytvoření zóny.
 master_esoagone=Nebyl nalezen žádný záznam SOA!
 master_einclude=Další soubor šablony neexistuje
+
 delete_mesg3=Opravdu chcete odstranit zónu $1?
 delete_vwarn=Tato zóna je přidružena k doméně Virtualmin $1, a proto by zde neměla být odstraněna!
 delete_vwarn2=Tato zóna je spojena s doménou Virtualmin $1 a $2 dalšími, a proto by zde neměla být odstraněna!
+
 mcreate_dnssec_tools_enable=Povolte DNSSEC pomocí nástrojů DNSSEC
 mcreate_ednssecsize=Nepodařilo se vypočítat velikost klíče : $1
 mcreate_ednssec=Vytvoření záznamu bylo úspěšné, ale DNSSEC selhal : $1
+
 slave_convertdesc=Klepnutím na toto tlačítko převedete tuto podřízenou zónu na master se všemi záznamy, které byly naposledy přeneseny z původního master systému.
 slave_applymsg2=Klepnutím na toto tlačítko vynutíte opětovný přenos zóny z hlavního serveru, aby získala všechny nejnovější záznamy.
 slave_xfer=Přenos testovací zóny
+
 recs_none=Doména zatím nemá žádné záznamy $1.
 recs_nosearch=Vyhledávacímu dotazu neodpovídají žádné záznamy.
 recs_needsearch=Zadejte hledání a vyhledejte odpovídající záznamy.
+
 edit_canon=Úplné kanonické jméno
 edit_egone=Vybraný záznam již neexistuje!
 edit_eusage='$1' není platné číslo použití TLSA
@@ -55,29 +61,37 @@ edit_edmarcpct=Procento zpráv musí být celé číslo mezi 0 a 100
 edit_edmarcrua=Chybějící souhrnná zpětná adresa
 edit_edmarcruf=Chybějící forenzní informační adresa
 edit_ecaavalue2=Chybějící nebo neplatně vypadající název domény
+
 text_desc3=Tento formulář umožňuje ručně upravit soubor záznamů DNS $1. Webmin nebude provádět žádnou kontrolu syntaxe.
 text_soa=Automatické zvyšování sériového čísla
 text_rawformat=Tato zóna je v surovém binárním formátu, a proto ji nelze zobrazit jako text.
+
 fwd_delmsg=Klepnutím na toto tlačítko odstraníte tuto zónu ze serveru DNS. Záznamy v něm budou poté vyhledány pomocí procesu normálního rozlišení.
+
 delegation_delmsg=Klepnutím na toto tlačítko odstraníte tuto zónu ze serveru DNS. Typy záznamů v něm jiné než NS pak BIND rozpozná.
+
 boot_egzip=Soubor kořenové zóny je komprimovaný, ale příkaz <tt>gzip</tt> není na vašem systému nainstalován!
 boot_egzip2=Dekomprimace souboru kořenové zóny selhala : $1
+
 type_NSEC3PARAM=Parametry DNSSEC
 type_TLSA=SSL certifikát
 type_SSHFP=Veřejný klíč SSH
 type_DMARC=DMARC
 type_CAA=Certifikační autorita
+
 edit_DMARC=DMARC
 edit_NSEC3PARAM=Parametry DNSSEC
 edit_TLSA=SSL certifikát
 edit_SSHFP=Veřejný klíč SSH
 edit_CAA=Certifikační autorita
+
 recs_defttl=Výchozí TTL
 recs_DMARC=DMARC
 recs_NSEC3PARAM=Parametry DNSSEC
 recs_TLSA=SSL certifikát
 recs_SSHFP=Veřejný klíč SSH
 recs_CAA=Certifikační autorita
+
 value_AAAA1=Adresa IPv6
 value_TLSA1=Použití certifikátu
 value_TLSA2=Výběr certifikátu
@@ -116,6 +130,7 @@ value_CAA3=Název domény CA
 value_caa_issue=Osvědčení o jedné doméně
 value_caa_issuewild=Zástupný certifikát
 value_caa_iodef=Adresa URL pro porušení zásad
+
 tlsa_usage0=Certifikační autorita
 tlsa_usage1=Konečná entita
 tlsa_usage2=Důvěrná kotva
@@ -125,15 +140,18 @@ tlsa_selector1=Informace o veřejném klíči
 tlsa_match0=Neobsahovaný obsah
 tlsa_match1=SHA-256 hashed
 tlsa_match2=SHA-512 hashed
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 acl_inviews=Zobrazení, ve kterých může uživatel upravovat domény
 acl_toplevel=Mimo jakýkoli výhled
 acl_dnssec=Lze nakonfigurovat DNSSEC pro zóny?
+
 logging_catsdesc=Tato tabulka určuje, které kategorie zpráv se zapisují do kanálů protokolování, jak je definováno na druhé kartě.
 logging_chansdesc=V této tabulce jsou uvedeny protokolovací kanály, což jsou soubory nebo jiné cíle, do kterých lze zprávy přihlásit. První čtyři jsou výchozí hodnoty zabudované do BIND a nelze je změnit.
 logging_stderr=Standardní chybový výstup
@@ -141,9 +159,12 @@ logging_pcat2=Kategorie protokolu?
 logging_psev2=Závažnost protokolu?
 logging_ptime2=Čas přihlášení?
 logging_efile2=Název souboru protokolu musí být absolutní cestou
+
 acls_eline=Každá adresa IP musí být zadána na samostatném řádku pro ACL '$1'
+
 forwarding_out=Maximální souběžné přenosy odchozí zóny
 forwarding_per_ns=Maximální souběžné příchozí přenosy na server
+
 net_ip=IP adresa
 net_taddr=Zdrojová adresa IPv4 pro přenosy
 net_tport=Zdrojový port IPv4 pro přenosy
@@ -153,6 +174,7 @@ net_taddrdef=Nejbližší IP
 net_etport=Port zdroje přenosu nelze zadat bez adresy
 net_eaddr='$1' není platná adresa IPv4
 net_eaddr6='$1' není platná adresa IPv6
+
 zonedef_dnssec=Vytvořit klíč DNSSEC a podepsat nové zóny?
 zonedef_dnssec_dt=Automatizovat všechny operace DNSSEC (ignorovat další nastavení níže)?
 zonedef_dne=Používání autentizovaného odmítnutí existence
@@ -161,11 +183,14 @@ zonedef_size=Počáteční velikost klíče
 zonedef_single=Počet klíčů k vytvoření
 zonedef_two=Klíč zóny a klíč podepisování klíče
 zonedef_one=Pouze klíč zóny
+
 findfree_fromip=Z IP adresy
 findfree_toip=Na IP adresu
 findfree_msg=Nalezeno $1 bezplatných IP adres
 findfree_msg2=(z nichž $1 jsou jako <i>freeXXX</i>, $2 jako <i>freemac</i>)
+
 free_ip=IP adresa
+
 log_update_zones=Aktualizované záznamy v zónách $1
 log_rdelete_zones=Odstraněné záznamy v zónách $1
 log_zonekeyon=Povoleno DNSSEC pro zónu $1
@@ -174,27 +199,36 @@ log_sign=Aktualizované podpisy DNSSEC pro zónu $1
 log_resign=Znovu podepsaný klíč DNSSEC pro zónu $1
 log_trusted=Změněné ověření DNSSEC
 log_dnssec=Změňte opětovné podepsání klíče DNSSEC
+
 convert_efilesize=Záznam souboru $1 neexistuje nebo je prázdný
 convert_ebinary=Příkaz potřebný k převodu z binární podřízené zóny na předlohu textového formátu není nainstalován
 convert_ecompile=Převod binárního do textového formátu se nezdařil : $1
+
 view_opts2=Možnosti pro zobrazené zóny
 view_delete=Smazat pohled
 view_deletemsg=Klepnutím na toto tlačítko zobrazení odstraníte. Budete mít na výběr z přesunutých zón, které obsahuje, do jiného zobrazení nebo je také odstraníte.
+
 hint_refetchdesc=Klepnutím na toto tlačítko Webmin znovu stáhne soubor kořenové zóny ze zdroje na interním FTP serveru.
 hint_delete=Odstranit kořenovou zónu
 hint_deletedesc=Klepnutím na toto tlačítko odstraníte tuto kořenovou zónu. Bez něj nebude váš jmenný server schopen přeložit domény na Internetu jiné než ty, pro které je sekundární.
+
 hcreate_header=Podrobnosti o kořenové zóně
+
 slaves_ok=Přidat nyní
 slaves_group=Ve skupině &lt;$1&gt;
 slaves_sameview=Zobrazit se stejným názvem
 slaves_header=Možnosti serveru clusteru slave
+
 add_eversion2=Server $1 není spuštěn Webmin verze $2 nebo vyšší, což je nutné pro přidání zón do více než jednoho pohledu
 add_eipaddr=Server $1 má místo názvu hostitele IP adresu
+
 mass_elocal=Chybějící nebo neexistující dávkový soubor
 mass_elocalcannot=Není dovoleno používat vybraný dávkový soubor
 massdelete_vwarn=Některé zóny jsou spojeny s doménou Virtualmin $1, a proto by zde neměly být odstraněny!
 massdelete_vwarn2=Některé zóny jsou spojeny s doménou Virtualmin $1 a $2 dalšími, a proto by zde neměly být odstraněny!
+
 umass_any=Aktualizujte <b>všechny</b> záznamy
+
 rdmass_err=Odstranění záznamů v zónách se nezdařilo
 rdmass_enone=Nebyl vybrán žádný
 rdmass_title=Odstranit záznamy v zónách
@@ -208,34 +242,42 @@ rdmass_vsel=Záznamy s hodnotou
 rdmass_doing=Mazání záznamů v zóně $1 ..
 rdmass_ename=Nebyl zadán žádný název záznamu k odstranění
 rdmass_done=.. smazáno $1 odpovídající záznamy z $2.
+
 rdmass_none=.. nebyly nalezeny žádné odpovídající záznamy z $1 k odstranění.
 rdmass_ok=Smazat záznamy
 rdmass_sel=Záznamy pojmenované
+
 rmass_name2=(Zadejte název domény <tt>@</tt>)
 rmass_esign=.. hotovo, ale podpis selhal : $1
 rmass_eclash2=.. záznam se stejným názvem a stejnou hodnotou $1 již existuje.
+
 check_title=Zkontrolujte záznamy
 check_ecannot=Není dovoleno kontrolovat záznamy
 check_errs=V souboru záznamů $1 byly nalezeny následující chyby.
 check_allok=V souboru záznamů $1 nebyly nalezeny žádné chyby.
+
 ncheck_title=Zkontrolujte BIND Config
 ncheck_ecannot=Není dovoleno zkontrolovat konfiguraci BIND
 ncheck_errs=V konfiguračním souboru BIND $1 nebo v referenčních zónách byly nalezeny následující chyby.
 ncheck_allok=Nebyly nalezeny žádné chyby v konfiguračním souboru BIND $1 nebo v odkazovaných souborech zóny.
+
 links_restart=Použít konfiguraci
 links_stop=Zastavte BIND
 links_start=Začněte BIND
 links_apply=Použít zónu
+
 dnssec_title=Opětovné podepsání klíče DNSSEC
 dnssec_ecannot=Není dovoleno konfigurovat DNSSEC
 dnssec_header=Klíčové možnosti opětovného podpisu
 dnssec_enabled=Automatické opětovné podepsání klíče povoleno?
 dnssec_period=Období mezi opětovnými znameními?
 dnssec_days=dny
+
 dnssec_secs=sekundy
 dnssec_desc=Zóny podepsané pomocí DNSSEC mají obvykle dva klíče - klíč zóny, který musí být znovu generován a podepsán pravidelně, a klíč podpisu klíče, který zůstává konstantní. Tato stránka umožňuje nakonfigurovat Webmin tak, aby toto opětovné podepisování prováděl automaticky.
 dnssec_err=Opětovné podepsání klíče DNSSEC se nezdařilo
 dnssec_eperiod=Chybějící nebo neplatný počet dní mezi opětovnými znameními
+
 dnssectools_title=Automatizace nástrojů DNSSEC
 dt_conf_title=Automatizace nástrojů DNSSEC
 dt_enable_title=Automatizace nástrojů DNSSEC
@@ -300,6 +342,7 @@ dt_status_inKSKroll=V KSK Roll
 dt_status_inZSKroll=V ZSK Roll
 dt_status_signed=Podepsaný
 dt_status_unsigned=Nepodepsaný
+
 zonekey_title=Nastavení klíče DNSSEC
 zonekey_desc=Tato zóna zatím nepodepisuje podpisový klíč DNSSEC. Pomocí tohoto formuláře můžete vytvořit webmin, takže klienti, kteří řeší tuto zónu, jsou chráněni před útoky spoofingu DNS.
 zonekey_header=Nové možnosti klíče DNSSEC
@@ -333,9 +376,12 @@ zonekey_sign=Zóna sign
 zonekey_signdesc=Okamžitě znovu podepište tuto zónu tak, aby všechny změny ručně provedených záznamů byly zahrnuty do podpisových záznamů.
 zonekey_resign=Znovu podepsat zónu
 zonekey_resigndesc=Vytvořte nový podpisový klíč zóny, podepište jej hlavním klíčem zóny a znovu podepište všechny záznamy.
+
 sign_err=Nepodařilo se podepsat zónu
 sign_emsg=Podepisování DNSSEC po neúspěšné změně záznamů : $1
+
 resign_err=Nepodařilo se znovu podepsat zónu
+
 trusted_title=Ověření DNSSEC
 trusted_ecannot=Není dovoleno konfigurovat ověřování DNSSEC
 trusted_esupport=Verze BIND nepodporuje ověření DNSSEC
@@ -370,6 +416,7 @@ trusted_setup=Aby byl DNSSEC užitečný při ověřování většiny podepsaný
 trusted_ok=Nastavit DLV a povolit ověření DNSSEC
 trusted_warning=Varování! Konfigurace klienta BIND DNSSEC obsahuje zastaralé klíče, které přestanou fungovat v říjnu 2017. Chcete-li upravit konfiguraci, použijte <a href='$1'>stránku BIND DNSSEC Verification</a> nebo klikněte na tlačítko níže.
 trusted_fix=Opravte konfiguraci DNSSEC
+
 xfer_title=Přenos testovací zóny
 xfer_doing=Testování přenosu slave zóny z $1 ..
 xfer_failed=.. z $1: Selhalo : $2

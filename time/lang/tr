@@ -9,6 +9,7 @@ index_sync=Senkronize Et ve Uygula
 index_hardware2=Donanım zamanını da belirle
 index_tzheader=Zaman Dilimi
 index_tz=Zaman dilimini değiştir
+
 action_save=Kaydet
 action_apply=Uygula
 action_sync=Sistem saatini donanım saati ile eşitle
@@ -16,6 +17,7 @@ action_sync_s=Donanım saatini sistem saati ile eşitle
 action_timeserver_sys=Sistem saatini ayarla
 action_timeserver_hw=Donanım saatini senkronize et
 action_savezone=Zaman dilimini değiştir
+
 acl_sys=Kullanıcı sistem saatini düzenleyebilsin mi?
 acl_hw=Kullanıcı donanım saatini düzenleyebilsin mi?
 acl_timezone=Kullanıcı zaman dilini belirleyebilir mi?
@@ -24,17 +26,21 @@ acl_no=Hayır
 acl_error=Sistem zamanı modülüne erişim izininiz var, fakat sistem ya da donanım saatini düzenlemek için izininiz yoktur
 acl_nosys=Sistem saatini düzenlemek için izininiz yoktur
 acl_nohw=Donanım saatini düzenlemek için izininiz yoktur
+
 sys_title=Sistem Saati
 hw_title=Donanım Saati
+
 day=Gün
 month=Ay
 date=Tarih
 hour=Saat
 year=Yıl
+
 error_cnf=Hata : $1 komutu bulunamadı
 error_hw=Donanım saati bu şekilde ayarlanamaz : $1
 error_sync=Sistem zamanı ile senkronize edilemedi : $1
 error_ediff=Zaman sunucusu ile yerel zaman arasındaki fark çok büyük : $1 gün
+
 log_set_date=Sistem zamanı $1 yapıldı
 log_set_hwclock=Donanım saati $1 yapıldı
 log_remote_date=Sistem zamanı $2'den alındı
@@ -44,6 +50,7 @@ log_remote_hwclock_l=Donanım saati $1, $2'den alındı
 log_sync=Sistem zamanı donanım saati ile eş zamanlandı
 log_sync_s=Donanım saati sistem zamanı ile eş zamaanlandı
 log_timezone=Zaman dilimi $1 olarak değiştirildi
+
 timezone_err=Zaman diliminin kaydedilmesinde hata oluştu
 timezone_ecannot=Zaman dilimini değiştirmek için izininiz yoktur
 timezone_enone=Bölge seçilmedi

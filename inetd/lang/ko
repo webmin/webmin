@@ -9,6 +9,7 @@ index_rpc=RPC 프로그램
 index_newrpc=새 RPC 프로그램 작성
 index_apply=변경 내용 적용
 index_applymsg=이 단추를 누르면 실행 중인 <tt>inetd</tt> 프로세스에 SIGHUP 신호를 보내서 현재 구성이 적용됩니다.
+
 error_restart=Inetd를 다시 시작하지 못했습니다
 error_saverpc=RPC 프로그램을 저장하지 못했습니다
 error_invalidprgname='$1'은(는) 유효한 프로그램 이름이 아닙니다
@@ -34,6 +35,7 @@ error_childnum=분 당 최대 수가 지정된 경우 하위 프로세스의 수
 error_serviceexist=포트 $1과 프로토콜 $2을(를) 사용하고있는 서비스가 이미 존재합니다.
 error_nameexist=이미 다른 서비스에서 이름 $1/프로토콜 $2을(를) 사용하고 있습니다
 error_inetservice=이미 다른 인터넷 서비스에서 이름 $1/프로토콜 $2을(를) 사용하고 있습니다
+
 editrpc_title1=RPC 프로그램 작성
 editrpc_title2=RPC 프로그램 편집
 editrpc_detail=RPC 프로그램 세부 정보
@@ -56,6 +58,7 @@ editrpc_execasuser=사용자로서 실행
 editrpc_max=분 당 최대 수
 editrpc_default=기본값
 editrpc_execasgrp=그룹으로서 실행
+
 editserv_title1=인터넷 서비스 작성
 editserv_title2=인터넷 서비스 편집
 editserv_detail=인터넷 서비스 세부 정보
@@ -67,6 +70,7 @@ editserv_maxchild=최대 하위 프로세스
 editserv_execlogin=로그인 클래스로 실행
 editserv_wrapper=TCP 래퍼
 editserv_inetd=Internal to <tt>inetd</tt>
+
 log_apply=변경 내용 적용됨
 log_create_serv=서비스 $1 작성됨
 log_modify_serv=서비스 $1 수정됨
@@ -80,6 +84,7 @@ log_delete_serv_l=포트 $2에서 서비스 $1 삭제됨
 log_create_prog_l=포트 $2에서 프로그램 $3의 서비스 $1 작성됨
 log_modify_prog_l=포트 $2에서 프로그램 $3의 서비스 $1 수정됨
 log_delete_prog_l=포트 $2에서 프로그램 $3의 서비스 $1 삭제됨
+
 log_create_rpc=RPC $1 작성됨
 log_modify_rpc=RPC $1 수정됨
 log_delete_rpc=RPC $1 삭제됨

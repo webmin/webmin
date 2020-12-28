@@ -3,6 +3,7 @@ index_twofactor=Dvofaktorska provjera autentičnosti
 index_joingroup=Dodaj u grupu:
 index_eulist=Nije uspjelo popis korisnika: $1 
 index_eglist=Nije uspjelo popis grupa: $1 
+
 edit_title3=Stvorite sigurnog korisnika Webmin-a
 edit_cloneof=Kloniranje korisnika Webmin-a
 edit_twofactor=Dvofaktorska vrsta autentifikacije
@@ -25,29 +26,40 @@ edit_safe=Razina privilegija
 edit_safe0=Neograničen
 edit_safe1=Samo sigurni moduli
 edit_unsafe=Ponovno postavite na neograničeno
+
 save_eunixname=Korisničko ime '$1' nije Unix korisnik i zato ga nije moguće koristiti u sigurnom načinu rada
 save_eoverlay=Prekrivanje teme ne može se odabrati ako nije tema
 save_etemp=Opcija prisiljavanja promjene lozinke pri sljedećoj prijavi ne može se koristiti ako nije omogućen <a href='$1'>pozivanje korisnika da unose nove lozinke</a>
+
 delete_eanonuser=Ovaj korisnik se koristi za anonimni pristup modulu
+
 cert_etempdir=Nevažeća datoteka certifikata
+
 acl_pass=Mogu li promijeniti ograničenja zaporke?
 acl_sql=Mogu li konfigurirati korisničku i grupnu bazu podataka?
+
 log_joingroup=Dodana $1 korisnici webminova u grupu $2 
 log_sql=Izmijenjena korisnička i grupna baza podataka
 log_twofactor=Registrirani korisnik $1 s davateljem s dva faktora $2 
 log_onefactor=Zabranjen korisnik $1 za dvofaktorsku provjeru autentičnosti
+
 gedit_desc=Opis grupe
 gedit_egone=Odabrana skupina više ne postoji!
+
 gsave_edesc=Nevažeći opis - znak: nije dopušten
+
 convert_sync2=Sinkronizirati lozinku s Unix korisnikom u budućnosti?
 convert_user=Unix korisnik
 convert_action=Poduzeta akcija
 convert_done= $1 korisnici su pretvorili, $2 nevaljani, $3 već postoje, $4 isključeno.
 convert_users=Korisnici koji žele pretvoriti
+
 sync_when=Kada se sinkronizirati
+
 unix_restrict2=Dodatna ograničenja
 unix_header=Unix postavke provjere autentičnosti korisnika
 unix_utable=Dopušteni Unix korisnici
+
 sessions_actions=Akcije..
 sessions_logouts=Prikaži i odjavljene sesije..
 sessions_state=država
@@ -55,10 +67,14 @@ sessions_this=Ova prijava
 sessions_in=Prijavljeni
 sessions_out=Odjavljen
 sessions_kill=Prekid veze..
+
 logins_title=Najnovije Webmin prijave
+
 udeletes_jerr=Dodavanje korisnika u grupu nije uspjelo
+
 pass_ecannot=Nije vam dopušteno uređivanje ograničenja zaporke
 pass_regdesc=Čitav opis za redovit izraz
+
 sql_title=Korisnička i grupna baza podataka
 sql_ecannot=Nije vam dopušteno konfiguriranje korisničke i grupne baze podataka
 sql_header=Opcije za povratnu bazu podataka za korisnike i grupe
@@ -101,21 +117,25 @@ sql_dnerr=Postavke baze podataka korisnika i grupa su važeće, ali nedostaje LD
 sql_dnerr2=Kliknite gumb <b>Kreiraj DN</b> dolje da biste ga automatski napravili ili ga dodajte na svoj LDAP poslužitelj ručno.
 sql_makedn=Stvorite DN
 sql_schema=Preuzmite LDAP shemu
+
 make_title=Stvaranje tablica korisnika i grupa
 make_err=Nije uspjelo stvaranje tablica korisnika i grupa
 make_exec=Izvođenje SQL $1..
 make_failed=.. stvaranje nije uspjelo: $1 
 make_done=.. gotovo
 make_still=Neki problemi pronađeni su i nakon stvaranja tablice: $1 
+
 makedn_title=Stvorite LDAP DN
 makedn_eoc=Nisu pronađene klase strukturnih objekata!
 makedn_exec=Izrada nadređenog DN $1..
 makedn_failed=.. stvaranje nije uspjelo: $1 
 makedn_done=.. gotovo
 makedn_still=Neki problemi pronađeni su i nakon stvaranja DN-a: $1 
+
 schema_title=Preuzmite LDAP shemu
 schema_desc=Prije nego što Webmin može koristiti LDAP poslužitelj za pohranu korisnika i grupa, mora biti konfiguriran za upotrebu dolje navedene sheme. To se obično može učiniti spremanjem definicije sheme u <tt>/etc/ldap/schema</tt> ili <tt>/etc/openldap/schema</tt> kao <tt>webmin.schema</tt>, zatim konfiguriranje poslužitelja za učitavanje datoteke sheme.
 schema_download=Preuzmite datoteku sheme: <a href=$1>$1</a>
+
 twofactor_err=Nije uspjelo postavljanje dvofaktorske provjere identiteta
 twofactor_euser=Vaš Webmin korisnik nije pronađen!
 twofactor_title=Dvofaktorska provjera autentičnosti

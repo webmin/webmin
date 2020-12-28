@@ -18,10 +18,12 @@ index_return=lista de archivos de bitácora
 index_force=Forzar Rotación Log
 index_forcedesc=Forzar la rotación inmediata de todos los archivos de log, incluso si aún no es hora.
 index_logrotate=Logrotate
+
 period_daily=Diariamente
 period_weekly=Semanalmente
 period_monthly=Mensualmente
 period_never=Nunca
+
 edit_title1=Editar Archivo de Bitácora
 edit_title2=Crear Archivo de Bitácora
 edit_header=Detalles de archivo de bitácora rotado
@@ -57,8 +59,10 @@ edit_pre=Comandos a ejecutar antes de rotación
 edit_default=$default ($1)
 edit_sharedscripts=¿Ejecutar scripts sólo una vez para todos los archivos?
 edit_now=Rotar Ahora
+
 global_title=Opciones Globales
 global_header=Opciones por defecto para todos los archivos de bitácora
+
 save_err=Fallo al salvar bitácora
 save_efile=Nombre de archivo de bitácora no ingresado o no válido
 save_esize=Tamaño máximo no ingresado o no válido
@@ -74,6 +78,7 @@ save_emailto=Dirección de correo electrónico para archivos de bitácora rotado
 save_eerrors=Derección de correo electrónico para mensajes de error no ingresada
 save_epre=El script pre-rotación no puede contener una línea <tt>endscript</tt> ni <tt>endrotate</tt>
 save_epost=El script post-rotación no puede contener una línea <tt>endscript</tt> ni <tt>endrotate</tt>
+
 log_modify_sched=Cambiado trabajo de rotación de archivos de bitácora del Cron
 log_create_sched=Creado trabajo de rotación de archivos de bitácora del Cron
 log_delete_sched=Borrado trabajo de rotación de archivos de bitácora del Cron
@@ -81,6 +86,7 @@ log_global=Modificadas opciones globales
 log_create=Agregada rotación para archivo de bitácora $1
 log_modify=Modificada rotación para archivo de bitácora $1
 log_delete=Borrada rotación para archivo de bitácora $1
+
 sched_title=Calendario de Rotación de Bitácora
 sched_desc=Para que la rotación de bitácoras configurada usando este módulo sea ejecutada, el comando $1 debe ser corrido regularmente (usualmente diariamente) por el Cron.
 sched_runparts=Actualmente, el comando de rotación de bitácoras está siendo corrido por el script $1 $2, y no puede ser ajustado.
@@ -89,6 +95,7 @@ sched_disabled=Deshabilitado
 sched_enabled=Habilitado, en las horas de abajo ..
 sched_save=Actualizar Trabajos del Cron
 sched_err=Fallo al grabar calendario de rotación
+
 force_title=Forzar Rotación Log
 force_doing=Forzando la rotación inmediata de todos los archivos de log ..
 force_doingone=Forzando la rotación inmediata de un archivo de log ..

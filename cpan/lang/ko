@@ -24,6 +24,7 @@ index_none=시스템에서 설치된 모듈을 찾을 수 없습니다.
 index_tabmods=존재하는 모듈
 index_tabinstall=모듈 설치
 index_tabsuggest=제안하는 모듈
+
 download_err=모듈을 설치하지 못했습니다
 download_elocal=로컬 파일을 지정하지 않았습니다
 download_elocal2='$1'이(가) 존재하지 않습니다
@@ -59,6 +60,7 @@ download_missing=$1 모듈이 지정되지 않았습니다.
 download_nomissing=모두 설치
 download_ebuild=빌드하는데 하나 또는 그 이상의 펄 모듈이 $1을 필요로 합니다. 이 펄 모듈은 설치되지 않았습니다.
 download_yum=$2 패키지에서 $1 펄 모듈을 설치 ..
+
 install_title=모듈 설치
 install_untar=모듈 파일(tar)을 푸는 중
 install_make=모듈 컴파일 중
@@ -78,11 +80,13 @@ install_err2=또한, $1 명령으로 CPAN에서 모듈을 설치할 수 있습�
 install_exec=$1 실행 중..
 install_efile=모듈 파일 $1이(가) 존재하지 않습니다.
 install_needunlink=설치 중에, 이전페이지로 이동하여 다른 옵션을 선택하고 다시 설치를 시도하고 있습니다. 그렇지 않다면 디스크에 저장하기 위하여 <a href='$1'>임시 패키지 파일 삭제를 위하여 여기를 클릭</a>하십시오.
+
 cpan_sel=$1 아래의 모듈..
 cpan_title=펄 모듈 선택
 cpan_search=찾을 모듈 이름
 cpan_match=$1와(과) 일차하는 모듈 ..
 cpan_none=일치하는 모듈을 찾을 수 없음.
+
 edit_title=모듈 세부 정보
 edit_header=모듈 정보
 edit_mod=모듈 이름
@@ -99,6 +103,7 @@ edit_method=설치 방법 :
 edit_rpm=$1 RPM 패키지
 edit_debian=$1 데비안 패키지
 edit_manual=수동으로 펄 모듈 설치
+
 uninstall_title=모듈 삭제
 uninstall_rusure=$1 펄 모듈을 삭제하겠습니까? 다음의 파일들이 삭제 됩니다 :
 uninstall_rusure2=$1 펄 모듈과 $2 하위모듈을 삭제하겠습니까? 다음의 파일들이 삭제 됩니다 :
@@ -106,7 +111,9 @@ uninstall_ok=지금 제거
 uninstall_rpm=$1 RPM 패키지 제거로 이 모듈은 삭제됩니다.
 uninstall_debian=$1 데비안 패키지 제거로 이 모듈은 삭제됩니다.
 uninstall_err=모듈 제거 실패
+
 delete_efile=유효하지 않은 패키지 파일!
+
 uninstalls_title=모듈 삭제
 uninstalls_err=모듈 삭제 실패
 uninstalls_enone=선택된 것이 없음

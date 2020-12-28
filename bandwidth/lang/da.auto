@@ -57,20 +57,27 @@ index_rotate=Opdater statistik
 index_rotatedesc=Klik på denne knap for at behandle al logget netværkstrafik op til det aktuelle tidspunkt, hvilket gør den straks tilgængelig til rapportering.
 index_eiptables=Advarsel - Din IPtables-konfiguration har en fejl: $1. Opsætning af båndbreddeovervågning retter alle firewall-regler.
 index_return=rapportformular
+
 log_setup=Opsætning af båndbreddeovervågning på interface $1 
 log_turnoff=Deaktiveret båndbreddeovervågning
 log_rotate=Opdateret statistik
+
 acl_setup=Kan opsætning og deaktivering af overvågning?
+
 turnoff_ecannot=Du har ikke tilladelse til at deaktivere overvågning
+
 setup_ecannot=Du har ikke tilladelse til at aktivere overvågning
 setup_eiface=Manglende eller ugyldigt interfacenavn
 setup_ezone=Kunne ikke finde Shorewall-zone til den valgte grænseflade
+
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=ipfilter
 system_shorewall=shorewall
+
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=Opdatering af statistik
 rotate_doing=Behandler logget netværkstrafik ..
 rotate_done=.. Færdig.

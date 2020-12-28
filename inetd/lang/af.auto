@@ -14,6 +14,7 @@ index_search=Vertoon dienste wat ooreenstem:
 index_sok=Soek
 index_toomany=Daar is te veel internetdienste om op hierdie bladsy te vertoon.
 index_none=Geen internetdienste pas by u soektog nie.
+
 error_restart=Kon nie Inetd herbegin nie
 error_saverpc=Kon nie die RPC-program stoor nie
 error_invalidprgname='$1' is nie 'n geldige programnaam nie
@@ -43,6 +44,7 @@ error_nameexist='N Diens met die naam $1 en protokol $2 bestaan reeds
 error_inetservice='N Internetdiens met die naam $1 en protokol $2 bestaan reeds
 error_smfservice=Kon nie smf-diens met cmd '$1', foutkode $2 opdateer nie
 error_smf_cmdfield=Vir smf moet die lêernaam van die program '$1' ooreenstem met die eerste argument van die opdragveld, dit wil sê '$2'
+
 editrpc_title1=Skep RPC-program
 editrpc_title2=Wysig RPC-program
 editrpc_detail=RPC-programbesonderhede
@@ -69,6 +71,7 @@ editrpc_execasuser=Voer as gebruiker uit
 editrpc_max=Maksimum per minuut
 editrpc_default=verstek
 editrpc_execasgrp=Uit te voer as groep
+
 editserv_title1=Skep internetdiens
 editserv_title2=Redigeer internetdiens
 editserv_detail=Internetdiensbesonderhede
@@ -82,6 +85,7 @@ editserv_wrapper=TCP-wrapper
 editserv_inetd=Intern vir <tt>inetd</tt>
 editserv_qm=Opdrag bestaan dalk nie?
 editserv_ename=Geen diens met daardie naam en protokol bestaan nie
+
 log_apply=Toegepaste wysigings
 log_create_serv=Geskep diens $1 
 log_modify_serv=Gewysigde diens $1 
@@ -95,6 +99,7 @@ log_delete_serv_l=Diens $1 op hawe $2 is uitgevee
 log_create_prog_l=Geskep diens $1 op hawe $2 vir program $3 
 log_modify_prog_l=Gewysigde diens $1 op hawe $2 vir program $3 
 log_delete_prog_l=Diens $1 op hawe $2 vir program $3 is uitgevee
+
 log_create_rpc=RPC $1 geskep
 log_modify_rpc=Gewysigde RPC $1 
 log_delete_rpc=RPC $1 is uitgevee

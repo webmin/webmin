@@ -17,8 +17,10 @@ index_header2=Politiques et options générales
 index_up=Établir la Connexion
 index_updesc=Sélectionnez une connexion dans la liste déroulante et cliquez sur le bouton pour essayer d'établir une connexion immédiate.
 index_import=Importer une connexion à partir d'un fichier.
+
 stop_err=Échec lors de l'arrêt du serveur IPsec
 start_err=Le démarrage du serveur IPsec a échoué
+
 edit_title1=Création d'une Connexion
 edit_title2=Edition de Connexion
 edit_header=Détails de la connexion VPN IPsec
@@ -65,15 +67,18 @@ edit_unit_s=secs
 edit_unit_m=mins
 edit_unit_h=heures
 edit_unit_d=jours
+
 config_title=Configuration du Serveur
 config_header=Paramètres généraux du serveur VPN
 config_ifaces=Interfaces réseau pour IPsec
 config_ifaces0=Par défaut
 config_ifaces1=Aucun
+
 showkey_title=Afficher la Clé Publique
 showkey_proto=Protocole
 showkey_alg=Algorithme
 showkey_key=Données de la clé
+
 policy_desc_block=Réseaux Bloqués
 policy_desc_clear=Réseaux à Trafic en Clair
 policy_desc_private=Réseaux Cryptés
@@ -88,14 +93,19 @@ policy_mode1=Tous les réseaux
 policy_mode2=Les réseaux listés ...
 policy_net=Adresse réseau
 policy_mask=Préfixe
+
 up_title=Établissement de Connexion
 up_cmd=Établissement de connexion avec la commande $1 ...
+
 export_title=Exportation de Configuration
 export_print=Afficher la configuration dans le navigateur
 export_save=Sauvegarder la configuration dans un fichier ...
 export_ok=Exporter Maintenant
+
 import_title=Importation de Configuration
+
 import_err=Échec d'importation de la configuration
+
 secrets_title=Clés Confidentielles
 secrets_none=Aucune clé secrète n'a été trouvée!
 secrets_name=Secret pour
@@ -109,6 +119,7 @@ secrets_mod=Modulus $1
 secrets_newpsk=Créer une nouvelle clé secrète partagée.
 secrets_newrsa=Créer une nouvelle clé RSA.
 secrets_return=la liste des clés secrètes
+
 secret_title1=Création d'une Clé Confidentielle
 secret_title2=Edition de la Clé Confidentielle
 secret_header=Détails de la clé secrète

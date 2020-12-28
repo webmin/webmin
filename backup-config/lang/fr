@@ -16,6 +16,7 @@ index_now2=Effectuer la restauration maintenant
 index_apply=Appliquer les configurations ?
 index_jobs=Sauvegardes programmées
 index_tabsched=Sauvegardes planifiées
+
 edit_title1=Création d'une sauvegarde programmée
 edit_title2=Édition d'une sauvegarde programmée
 edit_header=Options des sauvegardes programmées
@@ -29,8 +30,10 @@ edit_mods=Modules à sauvegarder
 edit_dest=Destination de la sauvegarde
 edit_mods2=Modules à restaurer
 edit_dest2=Effectuer la restauration à partir de
+
 save_err=Impossible d'enregistrer la sauvegarde
 save_emods=aucun module sélectionné
+
 backup_mode0=Fichier local
 backup_mode1=Serveur FTP
 backup_mode2=Serveur SSH
@@ -46,6 +49,7 @@ backup_egunzip=La sauvegarde est compressée, mais <tt>gunzip</tt> n'est pas ins
 backup_euntar=Impossible de désarchiver avec TAR : $1
 backup_enone2=Aucun des fichiers du module sélectionné n'est dans la savegarde
 backup_epre2=Restauration du module $1 refusée : $2
+
 backup_err=Impossible d'effectuer la sauvegarde
 backup_edest=Fichier local absolu manquant ou invalide
 backup_eserver1=Serveur FTP manquant ou invalide
@@ -58,15 +62,18 @@ backup_title=Configuration d'une sauvegarde
 backup_doing=Démarrage de la sauvegarde des fichiers de configuration du module dans $1 en cours...
 backup_failed=.. Impossible ! $1
 backup_done=.. Effectuée. La taille finale de la sauvegarde était $1, contenant $2 fichiers.
+
 restore_err=Impossible d'effectuer la restauration
 restore_title=Restauration d'une configuration
 restore_doing=Démarrage de la restauration des fichiers de configuration du module à partir de $1 en cours...
 restore_failed=.. impossible ! $1
 restore_done=.. effectuée. $1 fichiers ont été restaurés.
+
 nice_ftp=$2 de $1 via FTP
 nice_ssh=$2 de $1 via SSH
 nice_upload=fichier déposé sur le serveur
 nice_download=navigateur
+
 log_backup=Sauvegardé $1 modules dans $2
 log_restore=Restauré $1 modules à partir de $2
 log_create_backup=Créé une sauvegarde de $1 modules dans $2

@@ -7,6 +7,7 @@ index_dsize=全体の大きさ
 index_dmodel=作成とモデル化
 index_dparts=スライス数
 index_return=ディスクのリスト
+
 disk_title=ディスクを編集
 disk_egone=ディスクはもう存在しません！
 disk_no=スライス
@@ -31,9 +32,11 @@ disk_return=ディスクの詳細とスライスのリスト
 disk_add=新しいスライスを作成します。
 disk_smart=SMARTステータスを表示
 disk_smartdesc=SMARTによって検出されたこのドライブの現在のステータスを表示し、ディスクエラーをチェックします。
+
 select_device=$1デバイス $2
 select_slice=$1デバイス $2スライス $3
 select_part=$1デバイス $2スライス $3パーティション $4
+
 slice_title=スライスを編集
 slice_egone=選択したスライスは存在しません！
 slice_ssize=スライスサイズ
@@ -58,6 +61,7 @@ slice_return=スライスの詳細とパーティションのリスト
 slice_err=スライスの変更に失敗しました
 slice_header=スライスの詳細
 slice_suse=直接使用
+
 dslice_title=スライスを削除
 dslice_rusure=スライス $1を削除してもよろしいですか？その中のパーティションとファイルシステムも削除されます。
 dslice_warn=警告-このスライスは現在 $1によって使用されています
@@ -65,6 +69,7 @@ dslice_confirm=今すぐ削除
 dslice_deleting=スライス $1を削除しています ..
 dslice_failed=..削除に失敗しました： $1
 dslice_done=..完了
+
 nslice_title=スライスを作成
 nslice_header=新しいスライスの詳細
 nslice_number=スライス番号
@@ -86,6 +91,7 @@ nslice_done=..スライスが追加されました
 nslice_parting=$2のスライス $1にデフォルトパーティションを作成します。
 nslice_pfailed=..パーティションの作成に失敗しました： $1
 nslice_pdone=..パーティションが追加されました
+
 npart_title=パーティションを作成
 npart_header=新しいパーティションの詳細
 npart_letter=パーティションレター
@@ -98,6 +104,7 @@ npart_emax=終了ブロックは、 $1ブロックのスライスサイズより
 npart_creating=$2にパーティション $1を作成しています ..
 npart_failed=..パーティションの作成に失敗しました： $1
 npart_done=..パーティションが追加されました
+
 part_title=パーティションを編集
 part_egone=パーティションはもう存在しません！
 part_header=パーティションの詳細
@@ -124,6 +131,7 @@ part_newmount2=パーティションのマウント
 part_mountmsg=このデバイスをシステムの新しいディレクトリにマウントして、ファイルの保存に使用できるようにします。デバイス上にファイルシステムがすでに作成されている必要があります。
 part_mountmsg2=このデバイスを仮想メモリとしてシステムにマウントして、使用可能なメモリ量を増やします。
 part_cannotedit=このパーティションは現在使用中のため、変更できません。
+
 dpart_title=パーティションを削除
 dpart_rusure=パーティション $1を削除してもよろしいですか？その中のファイルシステムもすべて削除されます。
 dpart_warn=警告-このパーティションは現在 $1によって使用されています
@@ -131,6 +139,7 @@ dpart_confirm=今すぐ削除
 dpart_deleting=パーティション $1を削除しています ..
 dpart_failed=..削除に失敗しました： $1
 dpart_done=..完了
+
 newfs_title=ファイルシステムを作成する
 newfs_header=新しいファイルシステムの詳細
 newfs_free=ルート用に予約するスペース
@@ -145,11 +154,13 @@ newfs_elabel=ラベルが欠落しているか無効です
 newfs_creating=$1にファイルシステムを作成しています ..
 newfs_failed=..作成に失敗しました！
 newfs_done=..正常に作成されました
+
 fsck_title=ファイルシステムを確認する
 fsck_err=ファイルシステムを確認できませんでした
 fsck_checking=$1のファイルシステムを確認しています ..
 fsck_failed=..チェックに失敗しました！
 fsck_done=..エラーが検出されずに完了したチェック
+
 log_create_slice=スライス $1を作成しました
 log_delete_slice=スライス $1を削除しました
 log_modify_slice=変更されたスライス $1

@@ -9,7 +9,9 @@ main_none=Non hai accesso a nessun modulo Webmin
 main_skill=Skill level
 main_readonly=(Modalità sola lettura)
 main_return=Torna a $1
+
 link_essl=Il modulo Net::SSLeay Perl, richiesto per le connessioni HTTPS, non è installato nel sistema
+
 category_servers=Server
 category_hardware=Hardware
 category_system=Sistema
@@ -18,6 +20,7 @@ category_net=Rete
 category_syslet=Syslet
 category_cluster=Cluster
 category_info=Informazioni
+
 longcategory_servers=Moduli per la configurazione web, email, FTP ed altri server
 longcategory_hardware=Moduli per configurazioen stampanti, dischi ed altro hardware
 longcategory_system=Moduli per impostazioni utente, filesystem, cron jobs ed altre impostazioni del sistema
@@ -25,11 +28,13 @@ longcategory_webmin=Moduli per la configurazione di Webmin
 longcategory_net=Moduli per la configurazione della rete e dei servizi di rete
 longcategory_cluster=Moduli per gestire server multipli da una singola interfaccia
 longcategory_info=Moduli per visualizzare informazioni sul sistema
+
 header_webmin=Indice Webmin
 header_module=Indice modulo
 header_help=Aiuto
 header_config=Configurazione del modulo
 header_servers=Server Webmin
+
 index=pagina principale del modulo
 yes=Si
 no=No
@@ -55,12 +60,14 @@ cancel=Annulla
 helpsearch=Cerca documentazione
 switch_remote_euser=L'utente $1 non esiste
 programname=Webmin
+
 chooser_title1=Scegli file:
 chooser_title2=Scegli directory:
 chooser_dir=Directory di $1
 chooser_ok=Ok
 chooser_date=Scegli data
 chooser_eopen=Elencazione non riuscita: $1
+
 users_title1=Seleziona utenti:
 users_title2=Seleziona utente:
 users_sel=Utenti selezionati
@@ -68,6 +75,7 @@ users_all=Tutti gli utenti
 users_ok=Ok
 users_cancel=Annulla
 users_clear=Pulisci
+
 groups_title1=Scegli gruppi:
 groups_title2=Scegli gruppo:
 groups_all=Tutti i gruppi
@@ -75,6 +83,7 @@ groups_sel=Gruppi selezionati
 groups_ok=Ok
 groups_cancel=Annulla
 groups_clear=Pulisci
+
 modules_title1=Seleziona moduli:
 modules_title2=Seleziona modulo:
 modules_sel=Moduli selezionati
@@ -82,6 +91,7 @@ modules_all=Tutti i moduli
 modules_ok=Ok
 modules_cancel=Annulla
 modules_clear=Pulisci
+
 config_ecannot=Non hai i permessi per configurare questo modulo
 config_title=Configurazione
 config_dir=Per il modulo $1
@@ -92,6 +102,7 @@ config_err=Saltavaggio della configurazione non riuscito
 config_nochange=Non cambiare
 config_setto=Imposta a:
 config_ewebmin=Parametri del tipo 14 funzionano solo in Webmin
+
 help_err=Visualizzazione dell'help non riuscita
 help_epath=Percorso dell'errore mancante non corretto
 help_efile=Lettura del file help $1 non riuscita
@@ -99,12 +110,14 @@ help_eheader=Sezione  &lt;header&gt; mancante
 help_einclude=Inclusione di $1 non riuscita
 help_eif=$1 non riuscito : $2
 help_eexec=$1 non riuscito : $2
+
 referer_title=Allarme di sicurezza
 referer_warn=<b>ATTENZIONE!</b> Webmin ha ricevuto richiesta per il programma $2 dal referer $1, il quale sembra esterno a questo server. Potrebbe trattarsi di un tentativo di esecuzione di codice dannoso. Contattare l'amministratore.
 referer_warn_unknown=<b>ATTENZIONE!</b> Webmin ha ricevuto richiesta per il programma $1 è da un referer sconosciuto, il quale sembra esterno a questo server. Potrebbe trattarsi di un tentativo di esecuzione di codice dannoso. Contattare l'amministratore.
 referer_fix1=Se questo è un link legittimo puoi permettere i link da questo URL come segue: <ul><li>Connettiti a  Webmin normalmente.<li>Vai al modulo <b>Configurazione di Webmin</b>.<li>Clicca sull'icona relativa ai Referenti affidabili.<li>Inserisci il nome host $1 nel campo <b>Siti web affidabili</b> e clicca su <b>Salva</b>.</ul>
 referer_fix2=In alternativa è possibile configurare Webmin per accettare questi link utilizzando la linea di comando, procedendo nel modo seguente: <ul><li>Collegati come <tt>root</tt>, e apri il file <tt>/etc/webmin/config</tt>.<li>Aggiungi la linea <tt>referers=$1</tt> alla fine del file o, se la linea <tt>referers</tt> è già esistente, aggiungi <tt>$1</tt> ad essa.<li>Salva il file.</ul>
 referer_fix2u=In alternativa è possibile configurare Webmin per accettare link da referenti sconosciuti utilizzando la linea di comando, procedendo nel modo seguente: <ul><li>Collegati come <tt>root</tt>, e apri il file <tt>/etc/webmin/config</tt>.<li>Trova la linea contenente <tt>referers_none=1</tt> e rimuovila o commentala.<li>Salva il file.</ul>
+
 session_header=Login a Webmin
 session_mesg=Inserisci nome utente e password per il login al server Webmin su $1
 session_mesg2=Inserisci nome utente e password per il login
@@ -116,11 +129,13 @@ session_failed=Errore di login. Reinserire dati.
 session_logout=Logout eseguito. Per entrare di nuovo usare questo form.
 session_timed_out=La sessione è scaduta dopo $1 minuti di inattività
 session_save=Ricorda login permanentemente
+
 pam_header=Login a Webmin
 pam_mesg=Rispondi alla domanda per il login al server Webmin su $1.
 pam_mesg2=Rispondi alla domanda per il login
 pam_login=Continua
 pam_restart=Riavvia
+
 acl_root=Directory root per il selettore dei file:
 acl_otherdirs=Altre directory visibili nel selettore dei file
 acl_nodot=Nascondi le estensioni nel selettore dei file?
@@ -149,6 +164,7 @@ acl_rpc1=Si
 acl_rpc0=No
 acl_fileunix=Sfoglia i file come utente Unix
 acl_sameunix=Lo stesso login di Webmin
+
 month_1=Gennaio
 month_2=Febbraio
 month_3=Marzo
@@ -161,6 +177,7 @@ month_9=Settembre
 month_10=Ottobre
 month_11=Novembre
 month_12=Dicembre
+
 day_0=Domenica
 day_1=Lunedì
 day_2=Martedì
@@ -168,6 +185,7 @@ day_3=Mercoledì
 day_4=Giovedì
 day_5=Venerdì
 day_6=Sabato
+
 smonth_1=Gen
 smonth_2=Feb
 smonth_3=Mar
@@ -180,6 +198,7 @@ smonth_9=Set
 smonth_10=Ott
 smonth_11=Nov
 smonth_12=Dic
+
 sday_0=Do
 sday_1=Lu
 sday_2=Ma
@@ -187,11 +206,14 @@ sday_3=Me
 sday_4=Gi
 sday_5=Ve
 sday_6=Sa
+
 emodule=Accesso negato: l'utente $1 non è autorizzato ad usare il modulo $2
 emodulecheck=Il modulo $1 non è disponibile nel tuo sistema
+
 skill_high=Esperto
 skill_medium=Intermedio
 skill_low=Inesperto
+
 feedback_title=Segnalazione a Webmin
 feedback_desc=Questo form ti permette di inviare segnalazioni o bugs agli sviluppatori Webmin con riferimento ai problemi riscontrati nell'utilizzo. Al click le informazioni sottostanti saranno inviate a $1.
 feedback_desc2=Questa segnalazione sarà inviata agli sviluppatori Webmin, non al tuo system administrator, ISP o fornitore hosting. Si raccomanda pertanto di compilare la segnalazione in inglese.
@@ -220,12 +242,15 @@ feedback_to=Invia segnalazione agli indirizzi
 feedback_enoto=Non hai specificato l'indirizzo al quale inviare la segnalazione
 feedback_ecannot=Non hai i permessi per invare la  segnalazione
 feedback_ecannot2=Non hai i permessi per inviare la segnalazione con file di configurazione
+
 progress_nosize=Downloading $1 ...
 progress_done=...download completato.
 progress_incache=Trovato $1 nella cache:
+
 readparse_cdheader=Header Content-Disposition mancante
 readparse_enc=Attesa codifica form-data, ma ricevuta codifica normale
 readparse_max=Ecceduta la dimensione massima di $1 bytes
+
 password_expired=La tua password è scaduta, devi sceglierne una nuova
 password_header=Scegli nuova password
 password_user=Nome utente
@@ -243,6 +268,7 @@ password_enew2=Le nuove password non corrispondono
 password_epam=Errore PAM : $1
 password_emodpam=Il modulo Authen::PAM perl richiesto per il cambio password non è installato!
 password_enewpass=La nuova password non è consentita: $1
+
 ui_mandatory=Campo obbligatorio
 ui_checkmandatory=Non è stato selezionato nulla
 ui_errors=Diversi errori riscontrati:
@@ -256,7 +282,9 @@ ui_edate=Data errata
 ui_etime=Orario non valido
 ui_paging=Elenco righe da $1 a $2 di $3
 ui_rowlabel=$2 in riga $1 :
+
 header_statusmsg=$1 collegato a $2 $3 su $4 ($5)
+
 uptracker_title=Caricamento del file
 uptracker_file=Nome file
 uptracker_size=Dimensione
@@ -264,6 +292,7 @@ uptracker_pc=Avanzamento
 uptracker_eid=Nessun ID di upload specificato
 uptracker_eid2=L'ID di upoad non è valido!
 uptracker_of=$1 di $2
+
 wsearch_title=Cerca $1
 wsearch_modt=Modulo
 wsearch_mtitle=Nome modulo

@@ -28,6 +28,7 @@ index_tabinstall=Cài đặt mô-đun
 index_tabsuggest=Mô-đun đề xuất
 index_allmods2=Thiếu các mô-đun được sử dụng bởi Webmin
 index_wantmods=Các mô-đun để cài đặt
+
 download_err=Không thể cài đặt mô-đun
 download_elocal=Không có tệp cục bộ nào
 download_elocal2='$1' không tồn tại
@@ -65,6 +66,7 @@ download_ebuild=Một hoặc nhiều mô-đun Perl cần xây dựng $1, nhưng 
 download_yum=Cài đặt mô-đun Perl $1 từ gói $2 ..
 download_missingok=Các mô-đun bị thiếu từ CPAN
 download_fallback=Một số mô-đun không cài đặt được từ các gói, thay vào đó hãy thử cài đặt từ nguồn ..
+
 install_title=Cài đặt mô-đun
 install_untar=Unarring tập tin mô-đun
 install_make=Mô đun biên dịch
@@ -84,11 +86,13 @@ install_err2=Bạn cũng có thể cài đặt mô-đun từ CPAN bằng lệnh 
 install_exec=Đang thực hiện $1 ..
 install_efile=Tệp mô-đun $1 không còn tồn tại
 install_needunlink=Bạn có thể cố gắng cài đặt lại bằng cách quay lại trang trước và chọn các tùy chọn khác nhau. Mặt khác, <a href='$1'>nhấp vào đây để xóa các tệp gói tạm thời</a> để tiết kiệm dung lượng ổ đĩa.
+
 cpan_sel=Các mô-đun dưới $1 ..
 cpan_title=Chọn mô-đun Perl
 cpan_search=Tìm mô-đun có tên
 cpan_match=Các mô-đun khớp với $1 ..
 cpan_none=Lọc kết quả tìm thấy.
+
 edit_title=Chi tiết mô-đun
 edit_header=Thông tin mô-đun
 edit_mod=Tên mô-đun
@@ -105,6 +109,7 @@ edit_method=Được cài đặt từ
 edit_rpm=Gói RPM $1 
 edit_debian=Gói Debian $1 
 edit_manual=Hướng dẫn cài đặt mô-đun Perl
+
 uninstall_title=Gỡ cài đặt Module
 uninstall_rusure=Bạn có chắc chắn muốn gỡ cài đặt mô-đun Perl $1 không? Các tập tin sau sẽ bị xóa :
 uninstall_rusure2=Bạn có chắc chắn muốn gỡ cài đặt mô-đun Perl $1 và mô hình con $2 không? <br> Các tệp sau sẽ bị xóa :
@@ -112,7 +117,9 @@ uninstall_ok=Gỡ cài đặt ngay
 uninstall_rpm=Mô-đun sẽ bị xóa bằng cách không cài đặt gói $1 RPM.
 uninstall_debian=Mô-đun sẽ bị xóa bằng cách không cài đặt gói $1 Debian.
 uninstall_err=Không thể gỡ cài đặt mô-đun
+
 delete_efile=Tập tin gói không hợp lệ!
+
 uninstalls_title=Gỡ cài đặt mô-đun
 uninstalls_err=Không thể gỡ cài đặt mô-đun
 uninstalls_enone=Không được chọn

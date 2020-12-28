@@ -57,20 +57,27 @@ index_rotate=تحديث الإحصائيات
 index_rotatedesc=انقر فوق هذا الزر لمعالجة كافة حركة مرور الشبكة المسجلة حتى الوقت الحالي ، مما يجعلها متاحة على الفور لإعداد التقارير.
 index_eiptables=تحذير - خطأ في تكوين IPtables:$1. سيؤدي إعداد مراقبة النطاق الترددي إلى محو جميع قواعد جدار الحماية.
 index_return=نموذج تقرير
+
 log_setup=إعداد مراقبة عرض النطاق الترددي على الواجهة$1
 log_turnoff=مراقبة عرض النطاق الترددي المعطل
 log_rotate=إحصائيات محدثة
+
 acl_setup=يمكن إعداد وتعطيل المراقبة؟
+
 turnoff_ecannot=لا يسمح لك بتعطيل المراقبة
+
 setup_ecannot=لا يسمح لك بتمكين المراقبة
 setup_eiface=اسم واجهة مفقود أو غير صالح
 setup_ezone=فشل في العثور على منطقة Shorewall للواجهة المحددة
+
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=عامل تصفية IPFilter
 system_shorewall=Shorewall
+
 syslog_syslog=سجل النظام
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=تحديث الإحصائيات
 rotate_doing=معالجة حركة مرور الشبكة المسجلة ..
 rotate_done=.. فعله.

@@ -20,6 +20,7 @@ index_nostrftime=تحذير - تستخدم بعض مهام النسخ الاحت
 index_tabsched=النسخ الاحتياطية المجدولة
 index_tabbackup=النسخ الاحتياطي الآن
 index_tabrestore=استعادة الآن
+
 edit_title1=إنشاء نسخة احتياطية مجدولة
 edit_title2=تحرير النسخ الاحتياطي المجدولة
 edit_header=خيارات النسخ الاحتياطي المجدولة
@@ -44,9 +45,11 @@ edit_return=نموذج احتياطي
 edit_other=ملفات أخرى مدرجة ..
 edit_pre=أمر النسخ الاحتياطي المسبق
 edit_post=أمر ما بعد النسخ الاحتياطي
+
 save_err=فشل حفظ النسخة الاحتياطية
 save_emods=لم يتم تحديد وحدات نمطية
 save_ewebmin=لم يتم تحديد تكوين ملفات webmin ولا خادم
+
 backup_mode0=ملف محلي
 backup_mode1=خادم FTP
 backup_mode2=خادم SSH
@@ -63,6 +66,7 @@ backup_egunzip=تم ضغط النسخة الاحتياطية ، ولكن <tt>gun
 backup_euntar=فشل UN-TAR: $1
 backup_enone2=لا يوجد أي من الملفات الخاصة بالوحدات النمطية المحددة في النسخة الاحتياطية
 backup_epre2=تم رفض استعادة الوحدة النمطية $1: $2
+
 backup_err=فشل النسخ الاحتياطي
 backup_edest=ملف محلي مطلق مفقود أو غير صالح
 backup_eserver1=خادم FTP مفقود أو غير صالح
@@ -78,6 +82,7 @@ backup_title=تكوين النسخ الاحتياطي
 backup_doing=بدء النسخ الاحتياطي لتكوين ملفات الوحدة النمطية إلى $1 ..
 backup_failed=.. فشل! $1
 backup_done=.. كاملة. كان حجم النسخة الاحتياطية النهائية $1 ، ويحتوي على $2 ملفات.
+
 restore_err=فشلت عملية الاستعادة
 restore_emods=لا توجد وحدات نمطية أو ملفات أخرى محددة
 restore_title=استعادة التكوين
@@ -86,22 +91,26 @@ restore_testing=استخراج محتويات النسخ الاحتياطي من
 restore_failed=.. فشل! $1
 restore_done=.. كاملة. تمت استعادة ملفات $1.
 restore_done2=.. الملفات الموجودة في النسخة الاحتياطية هي:
+
 nice_ftp=$2 على $1 عبر FTP
 nice_ftpp=$2 على $1 port $3 عبر FTP
 nice_ssh=$2 على $1 عبر SSH
 nice_sshp=$2 على $1 port $3 عبر SSH
 nice_upload=الملف الذي تم تحميله
 nice_download=المتصفح
+
 log_backup=تمت النسخ الاحتياطي لوحدات $1 إلى $2
 log_restore=وحدات $1 مستعادة من $2
 log_create_backup=تم إنشاء نسخة احتياطية من وحدات $1 إلى $2
 log_modify_backup=تم تعديل النسخة الاحتياطية من وحدات $1 إلى $2
 log_delete_backup=حذف نسخة احتياطية من وحدات $1 إلى $2
 log_run_backup=تنفيذ نسخة احتياطية من وحدات $1 إلى $2
+
 run_title=تكوينات النسخ الاحتياطي
 run_doing=بدء النسخ الاحتياطي لوحدات $1 إلى $2 ..
 run_ok=.. اكتمل النسخ الاحتياطي بنجاح.
 run_failed=.. فشل النسخ الاحتياطي! انظر رسالة الخطأ أعلاه لسبب.
+
 email_mods=النسخ الاحتياطي للوحدات النمطية:
 email_failed=إلى $1 فشل:
 email_ok=إلى $1 نجحت.

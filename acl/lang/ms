@@ -26,6 +26,7 @@ index_delete=Padam yang dipilih
 index_joingroup=Tambah ke Grup
 index_eulist=Gagal untuk menyenaraikan pengguna : $1
 index_eglist=Gagal untuk menyenaraikan grup : $1
+
 edit_title=Ubah Pengguna Webmin
 edit_title2=Cipta Pengguna Webmin
 edit_readonly=Pengguna Webmin ini tidak boleh diubah kerana ia diuruskan oleh modul $1. <a href='$2'>Klik di sini / a> untuk memintas amaran ini dan mengubah pengguna  - tetapi berhati-hati bahawa sebarang perubahan akan kekal!
@@ -109,6 +110,7 @@ edit_proto_mysql=pangkalan data MySQL
 edit_proto_postgresql=pangkalan data PostgreSQL
 edit_proto_ldap=pelayan LDAP
 edit_proto_=Fail setempat
+
 save_err=Gagal untuk menyimpan pengguna
 save_ename='$'1 bukanlah nama pengguna yang sah
 save_enamewebmin=Nama pengguna 'webmin' dikhaskan untuk kegunaan dalaman
@@ -138,10 +140,12 @@ save_edays=Tiada hari yang boleh dipilih
 save_ehours=Hilang atau masa membernarkan tidak sah
 save_ehours2=Masa mula untuk membernakan mesti sebelum masa akhir
 save_etemp=Pilihan untuk memaksa perubahan kata laluan di log masuk dibahagian depan tidak boleh digunakan melainkan <a href='$1'>mendorong pengguna untuk memasukkan kata laluan baharu</a> diaktifkan
+
 delete_err=Gagal untuk memadam pengguna
 delete_eself=Anda tidak boleh memadam diri anda sendiri
 delete_ecannot=Anda tidak dibenarkan untuk memadam pengguna
 delete_euser=Anda tidak boleh memadam diri anda sendiri
+
 cert_title=Permintaan Sijil
 cert_issue=Pasang sijil anda ke dalam pelayar
 cert_header=Butiran sijil baharu
@@ -161,6 +165,7 @@ cert_ekey=Kunci SSL yang baharu tidak dihantar oleh pelayar anda - mungkin ia ti
 cert_eca=Gagal untuk menyediakan sijil kuat kuasa : $1
 cert_already=Amaran - anda telah menggunakan sijil $1.
 cert_etempdir=Fail sijil tidak sah
+
 acl_title=Kawalan Capaian Modul
 acl_title2=Bagi $1 pada $2
 acl_title3=Bagi grup $1 pada $2
@@ -169,6 +174,7 @@ acl_config=Boleh ubah konfigurasi modul?
 acl_reset=Tetapkan semula ke Capaian Penuh
 acl_rbac=Dapatkan tetapan capaian kawalan dari RBAC?
 acl_rbacyes=Ya (tukar tetapan di bawah)
+
 acl_uall=Kesemua pengguna
 acl_uthis=Pengguna yang boleh diubah
 acl_usel=Pengguna terpilih ..
@@ -208,6 +214,7 @@ acl_switch=Boleh menukar kepada pengguna lain?
 acl_times=Boleh menukar tempoh log masuk yang dibenarkan?
 acl_pass=Boleh menukar sekatan kata laluan?
 acl_sql=Boleh konfigurasi pangkalan data bagi pengguna dan grup?
+
 log_modify=Pengguna Webmin $1 diubah
 log_rename=Menamakan pengguna Webmin $1 kepada $2
 log_create=Pengguna Webmin $1 dicipta
@@ -230,6 +237,7 @@ log_sync=Diubah penyegerakan pengguna unix
 log_sql=Pangkalan data pengguna dan grup diubah
 log_twofactor=Menetap pengguna $1 dengan pembekal dua-faktor $2
 log_onefactor=Pengguna $1 dikeluarkan dari pengesahan dua-faktor
+
 gedit_ecannot=Anda tidak dibenarkan untuk mengubah grup
 gedit_title=Ubah grup Webmin
 gedit_title2=Cipta grup Webmin
@@ -239,6 +247,7 @@ gedit_modules=Module ahli
 gedit_members=Ahli pengguna dan grup
 gedit_desc=Penerangan Grup
 gedit_egone=Grup yang dipilih sudah tidak wujud!
+
 gdelete_err=Gagal untuk memadam grup
 gdelete_ecannot=Anda tidak dibenar untuk memadam grup
 gdelete_euser=Anda tidak boleh memadam grup anda sendiri
@@ -246,11 +255,13 @@ gdelete_esub=Grup yang mempunyai grup kecil yang tidak boleh dipadamkan
 gdelete_title=Padam Grup
 gdelete_desc=Adakah anda pasti mahu memadam grup $1 dan pengguna ahli $2 ?
 gdelete_ok=Padam Grup
+
 gsave_err=Gagal untuk menyimpan grup
 gsave_ename=Nama grup hilang atau tidak sah
 gsave_enamewebmin=Nama grup 'webmin' telah dilanggan untuk kegunaan dalaman
 gsave_edup=Nama grup telah digunakan
 gsave_edesc=Keterangan tidak sah - Karakter : tidak dibenarkan
+
 convert_title=Tukar Pengguna
 convert_ecannot=Anda tidak dibenarkan untuk menukar Pengguna Unix
 convert_nogroups=Tiada grup bagi Webmin yang telah ditetapkan pada sistem anda. Sekurang-kurangnya satu grup perlu diwujudkan sebelum menukar untuk menentukan kebenaran bagi pengguna yang akan ditukar.
@@ -279,6 +290,7 @@ convert_user=Pengguna Unix
 convert_action=Tindakan diambil
 convert_done=$1 pengguna ditukar, $2 tidak sah, $3 sudah wujud, $4 dikecualikan.
 convert_users=Pengguna untuk ditukar
+
 sync_title=Penyegerakan pengguna Unix
 sync_desc=Borang ini membolehkan anda untuk menetapkan penyegerakan automatik pengguna Unix yang dicipta melalui Webmin dan pengguna di dalam modul ini.
 sync_nogroups=Tidak ada grup Webmin yang telah ditentukan pada sistem anda. Sekurang-kurangnya satu grup mesti diwujudkan untuk menetapkan capaian kepada pengguna yang dicipta.
@@ -289,6 +301,7 @@ sync_delete=Padam padanan pengguna Webmin apabila pengguna Unix dipadam.
 sync_group=Berikan pengguna baharu kepada grup Webmin
 sync_unix=Tetapkan kata laluan untuk pengguna baharu untuk pengesahan Unix.
 sync_ecannot=Anda tidak dibenarkan untuk mengkonfigurasi penyegerakan pengguna.
+
 unix_title=Pengesahan Pengguna Unix
 unix_err=Gagal untuk menyimpan pengesahan Unix
 unix_desc=Laman ini membolehkan anda untuk menetapkan Webmin untuk mengesahkan cubaan log masuk terhadap senarai pengguna sistem dan PAM. Ini amat berguna jika anda mempunyai sejumlah besar pengguna Unix yang sedia ada dan ingin memberi capaian kepada Webmin.
@@ -321,26 +334,31 @@ unix_esudo=Arahan $1 tidak dipasang
 unix_esudomod=Modul Perl $1 diperlukan untuk pengesahan <tt>sudo</tt> tidak dipasang
 unix_header=Tetapan pengesahan pengguna Unix
 unix_utable=Pengguna Unix yang dibenarkan
+
 sessions_title=Sesi log masuk terkini
 sessions_id=ID Sesi
 sessions_user=Pengguna Webmin
 sessions_login=Telah log masuk di
 sessions_host=Alamat IP
 sessions_lview=Lihat log..
+
 hide_title=Sorok Modul-modul yang tidak digunakan
 hide_desc=Modul-modul yang berikut akan dibuang dari senarai akses modul untuk $1 kerana pelayan mereka tidak dipasang pada sistem anda ..
 hide_ok=Sorok Modul-modul Sekarang
 hide_none=Tiada apa untuk disorokkan - $1 tiada akses pada mana mana modul yang pelayannya tidak dipasang pada sistem anda.
 hide_desc2=Sebagai peringatan modul-modul berikut tidak akan muncul secara automatik jika pelayan dipasang. Anda perlu menetap akses secara manual menggunakan modul ini.
 hide_clone={Klon $1}
+
 switch_euser=Anda tidak dibenarkan untuk menukar kepada pengguna ini
 switch_eold=Sesi sedia ada tidak dijumpai!
+
 rbac_title=Tetapan RBAC
 rbac_desc=Integrasi RBAC Webmin menyediakan satu cara untuk modul pengguna dan kebenaran ACL ditentukan daripada (Peranan Berasakan Kawalan Capaian) pangkalan data RBAC, dan bukannya dari fail konfigurasi Webmin sendiri. Apabila sokongan RBAC diaktifkan pada mana-mana pengguna yang pilihan dipilih sebagai <b>semua modul dan Acls dikawal oleh RBAC</b> akan mempunyai keupayaan yang ditentukan oleh RBAC dan bukannya tetapan kawalan capaian oleh Webmin sendiri.
 rbac_esolaris=RBAC hanya disokong pada Solaris buat masa ini, oleh itu ia tidak boleh digunakan pada sistem $1 ini.
 rbac_eperl=Modul Perl $1 yang diperlukan untuk integrasi RBAC tidak dipasang. <a href='$2'> Klik di sini</a> untuk memasangnya sekarang.
 rbac_ecpan=Anda tidak mempunyai akses ke laman Modul Perl Webmin untuk memasang modul yang berkaitan dengan $1 bagi integrasi RBAC
 rbac_ok=Integrasi RBAC boleh didapati pada sistem ini, dan boleh diaktifkan pada setiap pengguna pada Sunting Webmin Laman pengguna.
+
 udeletes_err=Gagal untuk memadam pengguna
 udeletes_enone=Tiada dipilih
 udeletes_title=Padam Pengguna
@@ -348,11 +366,13 @@ udeletes_rusure=Adakah anda pasti untuk memadam $1 pengguna terpilih? Semua teta
 udeletes_users=Pengguna dipilih : $1
 udeletes_ok=Padam Pengguna
 udeletes_ereadonly=Salah satu pengguna yang dipilih ditandakan sebagai tidak boleh disunting
+
 gdeletes_err=Gagal untuk memadam grup
 gdeletes_title=Padam Grup
 gdeletes_rusure=Adakah anda pasti mahu memadam $1 grup yang dipilih, dan mempunyai pengguna $2? Semua tetapan akses kawalan dan maklumat pengguna akan hilang.
 gdeletes_users=Grup terpilih: $1
 gdeletes_ok=Padam Grup
+
 pass_title=Penguatkuasaan kata laluan
 pass_ecannot=Anda tidak dibenarkan untuk mengubah sekatan kata laluan
 pass_header=Pilihan-pilihan penguatkuasaan kata laluan Webmin
@@ -375,6 +395,7 @@ pass_eminsize=Hilang atau panjang kata laluan kurang dari minimum
 pass_emaxdays=Hilang atau kurang sehari sebelum bertukar
 pass_elockdays=Hilang atau kurang sehari sebelum akaun dikunci
 pass_eoldblock=Hilang atau kurang dari kata laluan lama untuk ditolak
+
 cpass_minsize=Mesti sekurang-kurangnya $1 huruf
 cpass_notre=Sepadan dengan corak yang dibenarkan
 cpass_re=Tidak sepadan dengan corak yang diperlukan
@@ -382,6 +403,7 @@ cpass_name=Mengandungi nama pengguna
 cpass_dict=Adalah perkataan yang ada dalam kamus
 cpass_spellcmd=Sama ada $1 atau  2 arahan yang diperlukan untuk memeriksa perkataan kamus yang telah dipasang
 cpass_old=Kata laluan lama tidak boleh digunakan semula
+
 sql_title=Pengguna dan Grup Pangkalan Data
 sql_ecannot=Anda tidak dibenarkan untuk mengkonfigurasi pangkalan data pengguna dan grup
 sql_header=Pilihan pangkalan data proses belakang untuk pengguna dan grup
@@ -424,21 +446,25 @@ sql_dnerr=Tetapan pangkalan data Pengguna dan grup tidak sah, tetapi LDAP DN yan
 sql_dnerr2=Klik butang <b>Cipta DN</b> dibawah untuk mencipta secara automatik, atau tambah pada pelayan LDAP anda secara manual.
 sql_makedn=Cipta DN
 sql_schema=Muat turun Skema LDAP
+
 make_title=Cipta jadual Pengguna dan Grup
 make_err=Gagal untuk mencipta jadual pengguna dan grup
 make_exec=Menjalankan SQL $1
 make_failed=.. ciptaan gagal : $1
 make_done=.. siap
 make_still=Beberapa masalah ditemui walaupun selepas jadual dicipta : $1
+
 makedn_title=Cipta DN LDAP
 makedn_eoc=Tiada kelas objek struktur dijumpai!
 makedn_exec=Mencipta DN induk $1
 makedn_failed=.. ciptaan gagal : $1
 makedn_done=.. selesai
 makedn_still=Beberapa masalah ditemui walaupun selepas ciptaan DN : $1
+
 schema_title=Muat turun skema LDAP
 schema_desc=Sebelum webmin menggunakan pelayan LDAP untul menyimpan pengguna dan grup, ia mesti dikonfigurasikan untuk menggunakan skema dibawah. Ini biasanya boleh dilakukan dengan menyimpan definisi skema dalam <tt>/etc/ldap/schema</tt> atau <tt>/etc/openldap/schema</tt> sebagai <tt>webmin.schema</tt>, kemudian konfigurasikan pelayan untuk memuatkan fail skema.
 schema_download=Muat turun fail skema : <a href=$1>$1</a>
+
 twofactor_err=Gagal untuk persediaan pengesahan dua-faktor
 twofactor_euser=Pengguna Webmin anda tidak dijumpai!
 twofactor_title=Pengesahan Dua-Faktor

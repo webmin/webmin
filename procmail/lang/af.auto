@@ -32,6 +32,7 @@ index_man=Opstel van die hand wysig
 index_mandesc=Redigeer die primêre Procmail-konfigurasielêer direk om u eie reëls, veranderlikes en blokke te skep.
 index_ecmd=Die Procmail-program $1 is nie op u stelsel gevind nie. Óf dit is nie geïnstalleer nie, óf die <a href='$2'>module-opstelling</a> is verkeerd.
 index_delete=Vee geselekteerde aksies uit
+
 edit_title2=Wysig aksie
 edit_title1=Skep aksie
 edit_header1=Besonderhede oor afleweringsaksies
@@ -67,6 +68,7 @@ edit_none=Geen
 edit_lock=Spesifieke lêer
 edit_ctype=Toestand tipe
 edit_cvalue=Gereelde uitdrukking of opdrag
+
 save_err=Kon nie aksie stoor nie
 save_eaction_0=Lêer ontbreek om aan te heg
 save_eaction_1=MH-gids ontbreek om aan te skryf
@@ -79,6 +81,7 @@ save_elockfile=Die slotlêernaam ontbreek
 save_esize=E-posgrootte ontbreek of ongeldig vir voorwaarde $1 
 save_ere=Gereelde uitdrukking vir toestand $1 ontbreek
 save_eshell=Ontbrekende opdrag vir voorwaarde $1 
+
 env_title1=Skep veranderlike
 env_title2=Wysig veranderlike
 env_header=Procmail-omgewingsveranderlike
@@ -86,15 +89,19 @@ env_name=Veranderlike naam
 env_value=waarde
 env_err=Die veranderlike kon nie gestoor word nie
 env_ename=Naam of veranderlike veranderlike ontbreek
+
 inc_title1=Voeg lêer in
 inc_title2=Wysig sluit lêer in
 inc_header=Procmail-reëls lêer ingesluit
 inc_inc=Ingesluit lêer
 inc_einc=Geen lêer is ingevoer nie
+
 config_eline=Onbekende lyn $1 in $2 : $3 
+
 manual_title=Redigeer konfigurasie
 manual_desc=Hierdie bladsy kan gebruik word om die Procmail-konfigurasielêer $1 met die hand te wysig. Wees versigtig, aangesien geen sintaksis-kontrolering gedoen word nie.
 manual_edata=Geen data is deur u blaaier verskaf nie!
+
 log_create_rec=Skep resep tot $1 
 log_delete_rec=Resep na $1 verwyder
 log_modify_rec=Gewysigde resep na $1 
@@ -114,7 +121,9 @@ log_delete_inc=Sluit lêer $1 uit
 log_manual=Handmatig geredigeerde konfigurasie
 log_up='N Inskrywing opgeskuif
 log_down=Het 'n inskrywing verwyder
+
 delete_err=Kon nie handelinge uitvee nie
 delete_enone=Geen gekies nie
+
 check_epostfix=Procmail is nie in u Postfix-konfigurasie aangeskakel nie. Die konfigurasielêer <tt>$2</tt> moet die opsie <tt>$1</tt> ingestel hê op <tt>$3</tt>.
 check_esendmail=Sendmail is nie opgestel om Procmail vir plaaslike aflewering te gebruik nie. Dit kan in die module <a href='$1'>Sendmail Mail Server</a> in Webmin opgestel word.

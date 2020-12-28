@@ -39,7 +39,9 @@ index_thost=Hostnaam
 index_tdesc=Omschrijving
 index_tver=Versie
 index_ttype=OS type
+
 this_server=deze server
+
 add_title=Servers Toevoegen
 add_msg=Toevoegen van $1 ..
 add_gmsg=Toevoegen van servers aan groep $1
@@ -49,6 +51,7 @@ add_echeck=De Webmin configuratie module is niet geinstalleerd op server $1
 add_echeck2=De Webmin Gebruikers module is niet geinstalleerd op server $1
 add_eversion=Server $1 maakt geen gebruik van Webmin versie $2 of hoger.
 add_ok=$1 toegevoegd met $2 modules, $3 thema's, $4 gebruikers en $5 groepen.
+
 refresh_title=Ververs Module en Gebruikers Lijsten
 refresh_header=Opnieuw opvragen van module, gebruikers en groepen lijsten van alle servers ..
 refresh_header4=Opnieuw opvragen van module, gebruikers en groepen lijsten van leden van $2 ..
@@ -64,6 +67,7 @@ refresh_g2=$1 groepen verwijderd
 refresh_done=.. voltooid
 refresh_del=$1 verwijderd uit server lijst
 refresh_failed=Fout bij het verversen van $1 : $2
+
 host_title=Beheerde Server
 host_header=Beheer Webmin server details
 host_name=Hostnaam
@@ -81,6 +85,7 @@ host_header_u=Webmin gebruikers
 host_header_g=Webmin groepen
 host_return=server details
 host_version2=Versie
+
 edit_title_mod=Bewerk Module
 edit_title_theme=Bewerk Thema
 edit_header_mod=Webmin module details van $1
@@ -104,6 +109,7 @@ edit_acl=Bewerk ACL voor
 edit_uacl=Gebruiker $1 op $2
 edit_gacl=Groep $1 op $2
 edit_config=Bewerk configuratie op
+
 install_err=Fout bij het installeren van module
 install_title=Installeer Module
 install_elocal=Geen locale file opgegeven
@@ -124,6 +130,7 @@ do_failed=Fout bij het installeren op $1: $2
 do_success_mod=Module $2 geïnstalleerd op $1
 do_success_theme=Thema $2 geïnstalleerd op $1
 do_done=.. voltooid
+
 delete_err=Fout bij het verwijderen van module $1
 delete_epack=De module $1 bestaat niet
 delete_title=Verwijder Module
@@ -141,6 +148,7 @@ delete_edepends=Module(s) $1 zijn hiervan afhankelijk.
 delete_egone=Module bestaat niet meer
 delete_esuccess=Succesvol verwijderd van $1 : $2
 delete_acls=Verwijderen van gebruikers en toegangs controle resetten?
+
 user_title1=Webmin Gebruiker Aanmaken
 user_header1=Nieuwe Webmin gebruiker details
 user_name=Gebruikersnaam
@@ -200,11 +208,13 @@ user_all=&lt;alle hosts&gt;
 user_donthave=&lt;hosts die dit niet hebben&gt;
 user_have=&lt;hosts die dit hebben&gt;
 user_ofgroup=Leden van $1
+
 udelete_title=Verwijder Gebruiker
 udelete_doing=Bezig met verwijderen van gebruiker $1 van alle hosts ..
 udelete_success=Succesvol verwijderd van $1
 udelete_failed=Fout bij het verwijderen van $1 : $2
 udelete_done=.. voltooid
+
 group_title1=Groep Aanmaken
 group_header1=Details nieuwe Webmin groep
 group_name=Groep naam
@@ -232,6 +242,7 @@ group_failed2=Fout bij het aanmaken van groep op $1 : $2
 group_return=groep details
 group_nomems=Geen leden
 group_servers=Server(s) om op aan te maken
+
 gdelete_title=Verwijder Groep
 gdelete_desc=Weet u zeker dat u de groep $1 en alle leden $2 wilt verwijderen van alle hosts?
 gdelete_ok=Verwijder Groep
@@ -240,6 +251,7 @@ gdelete_success=Succesvol verwijderd van $1
 gdelete_failed=Fout bij het verwijderen van $1 : $2
 gdelete_done=.. voltooid
 gdelete_esub=Deze groep heeft de subgroepen $1, en kan dus niet worden verwijderd.
+
 acl_title=Module Toegangs Controle
 acl_title2=Voor gebruiker $1 in $2 op $3
 acl_title3=Voor groep $1 in $2 op $3
@@ -258,6 +270,7 @@ acl_doing2=Bezig met instellen van toegangscontrole voor $1 op $2 ..
 acl_success=Toegangscontrole op $1 succesvol ingesteld
 acl_failed=Fout bij het instellen van toegangscontrole op $1: $2
 acl_done=.. klaar
+
 sync_title=Synchroniseer Servers
 sync_desc=Dit formulier laat u Webmin gebruikers en groepen aanmaken op servers waarop deze nog niet bestaan, om accounts te synchroniseren tussen alle servers in uw cluster.
 sync_hosts=Te synchroniseren servers
@@ -281,6 +294,7 @@ sync_gcreate=Bezig met toevoegen van Webmin groep $1 ..
 sync_acl=Kopieer ACL bestanden voor $1 ..
 sync_test=Alleen weergeven wat er gedaan zou worden?
 sync_restart=Herstarten Webmin ..
+
 upgrade_title=Webmin Upgraden
 upgrade_header=Upgraden van Webmin op alle hosts ..
 upgrade_header2=Upgraden van Webmin op $1 ..
@@ -299,6 +313,7 @@ upgrade_failed=Fout bij het installeren op $1 : $2
 upgrade_done=.. voltooid
 upgrade_efast=Alleen servers die gebruik maken van de snelle RPC mode kunnen worden ge-upgrade
 upgrade_ereconn=Fout bij het opnieuw verbinden met Webmin na de upgrade! : $1
+
 update_title=Modules Updaten
 update_header=Bijwerken van modules op alle hosts ..
 update_header5=Bijwerken van modules op $2 ..
@@ -306,6 +321,7 @@ update_header4=Bijwerken van modules op leden van $2 ..
 update_onhost=Resultaat van het updaten op $1 ..
 update_failed=.. updaten mislukte : $1
 update_none=.. geen updates gevonden.
+
 config_title=Bewerk Module Configuratie
 config_enone=Geen hosts gevonden waarop de module is geinstalleerd
 config_ethis=Module is niet geinstalleerd op deze server

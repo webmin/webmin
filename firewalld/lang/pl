@@ -28,6 +28,7 @@ index_return=listy stref
 index_ezones=Nie znaleziono stref FirewallD!
 index_none=Ta strefa nie ma jeszcze żadnych dozwolonych portów lub usług.
 index_ifaces=Zastosuj reguły do interfejsów:
+
 port_edit=Edycja portu
 port_create=Dodawanie portu
 port_header=Opcje dozwolonego portu
@@ -42,15 +43,19 @@ port_eport=Brakujący lub nieprawidłowy numer lub nazwa portu
 port_eportlow=Niższy port musi być liczbą
 port_eporthigh=Wyższy port musi być liczbą
 port_eportrange=Niższy port musi być niższy niż wyższy port
+
 serv_edit=Edytuj usługę
 serv_create=Dodaj usługę
 serv_header=Opcje dozwolonej usługi
 serv_name=Dozwolona usługa
 serv_err=Błąd zapisywania usługi
+
 check_ecmd=Polecenie kontroli FirewallD $1 nie istnieje w twoim systemie
+
 delete_err=Błąd usuwania reguł
 delete_enone=Nic nie wybrano!
 delete_edel=Kasowanie $1 nie powiodło się : $2
+
 zone_title=Tworzenie strefy
 zone_header=Opcje nowej strefy
 zone_name=Nazwa strefy
@@ -63,12 +68,16 @@ zone_mode4=Porty używane do wirtualnego hostingu
 zone_err=Błąd tworzenia strefy
 zone_ename=Błędna lub nieprawidłowa nazwa strefy
 zone_eclash=Strefa o takiej samej nazwie już istnieje
+
 delzone_title=Usuwanie strefy
 delzone_err=Błąd usuwania strefy
 delzone_edefault=Domyślna strefa nie może być usunięta
 delzone_rusure=Czy na pewno chcesz usunąć strefę $1, która zawiera $2 porty i $3 usługi?
+
 defzone_err=Błąd tworzenia strefy jako domyślna
+
 restart_err=Zastosowanie konfiguracji nie powiodło się
+
 stop_err=Błąd zatrzymywania FirewallD
 start_err=Błąd uruchamiania FirewallD
 log_stop=Zatrzymano FirewallD

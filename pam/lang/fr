@@ -4,6 +4,7 @@ index_desc=Description
 index_add=Ajouter un nouveau service PAM.
 index_return=liste des services
 index_none=Aucun fichier de configuration PAM n'a été trouvé sur votre système dans le répertoire $1. Peut-être que PAM n'est pas supporté, ou que votre <a href='$2'>configuration des modules</a> est incorrecte.
+
 desc_su=Changement d'utilisateur
 desc_login=Connexion locale ou distante
 desc_samba=Serveur de fichiers pour Windows Samba
@@ -61,6 +62,7 @@ desc_printconf-gui=Outil de configuration d'imprimante de Redhat
 desc_rhn_register=Enregistrement au Redhat Network
 desc_system-auth=Authentification commune
 desc_cups=Impression CUPS
+
 edit_title=Édition d'un service PAM
 edit_header=Détails du service PAM
 edit_name=Service:
@@ -77,6 +79,7 @@ edit_none=Aucun module PAM spécifié pour cette étape.
 edit_delete=Supprimer ce service PAM.
 edit_move=déplacer
 edit_return=Service PAM
+
 pam_pwdb.so=authentification des mots de passe Unix
 pam_securetty.so=vérification des TTY sûrs pour le super-utilisateur
 pam_nologin.so=vérification du fichier <tt>/etc/nologin</tt>
@@ -118,6 +121,7 @@ pam_desgold.so=DESGold smartcard authentication
 pam_console.so=vérification pour la console uniquement
 pam_xauth.so=authentification X
 pam_stack.so=Appeler un autre service PAM
+
 control_requisite=requis
 control_required=nécessaire
 control_sufficient=suffisant
@@ -126,6 +130,7 @@ control_desc_requisite=échec immédiat de l'authentification en cas d'échec
 control_desc_required=échec de l'authentification à la fin en cas d'échec
 control_desc_sufficient=réussite immédiate de l'authentification en cas de réussite
 control_desc_optional=réussite ou échec indifférents
+
 create_title=Création d'un service PAM
 create_header=Options du nouveau service PAM
 create_name=Nom du service
@@ -134,6 +139,7 @@ create_mods=Modules PAM initiaux
 create_0=Aucun
 create_1=Authentification Unix
 create_2=Interdire tous les accès
+
 mod_edit=Édition d'un module PAM
 mod_create=Ajout d'un module PAM
 mod_header=Options du module PAM
@@ -147,10 +153,12 @@ mod_type_password=changement de mot de passe
 mod_control=Niveau d'exigence:
 mod_args=Arguments pour le module
 mod_err=Échec de la sauvegarde du module
+
 pwdb_shadow=Utiliser les <em>shadow password</em>?
 pwdb_nullok=Accepter des mots de passe vides?
 pwdb_md5=Utiliser des mots de passes chiffrés par MD5?
 pwdb_nodelay=Attendre après l'échec d'une connexion?
+
 listfile_item=Chercher:
 listfile_item_user=utilisateur
 listfile_item_tty=TTY
@@ -167,51 +175,64 @@ listfile_apply=Limiter la vérification à:
 listfile_all=Tous les utilisateurs
 listfile_user=Uniquement l'utilisateur
 listfile_group=Uniquement le groupe
+
 cracklib_type=Password type in prompt
 cracklib_retry=Maximum retries before failure
 cracklib_eretry=Missing or invalid number of retries
 cracklib_etype=Missing or invalid password type
+
 rhosts_equiv=Lire le fichier <tt>/etc/hosts.equiv</tt>?
 rhosts_rhosts=Lire le fichier <tt>.rhosts</tt> de l'utilisateur?
 rhosts_promiscuous=Une entrée avec <tt>+</tt> autorise tous les hôtes?
 rhosts_suppress=Garder une trace des authentifications qui échouent?
+
 env_var=Nom de la variable
 env_def=Valeur par défaut
 env_over=Override value
 env_evar=Les noms de variables ne peuvent pas contenir d'espaces.
+
 securetty_ttys=TTY sûrs:
+
 shells_shells=Shells valides pour un utilisateur:
+
 tally_deny=Nombre d'échecs avant d'interdire l'accès:
 tally_reset=Remettre à zéro le compteur d'échecs en cas de réussite?
 tally_edeny=Le nombre d'échecs avant interdiction de l'accès est manquant ou invalide.
 tally_magic=Compter le nombre d'échecs pour <tt>root</tt>?
 tally_root=Peut interdire l'accès au compte <tt>root</tt>?
+
 time_services=Services
 time_ttys=TTY
 time_users=Utilisateurs
 time_times=Dates d'accès
 time_info=Les champs peuvent contenir plusieurs valeurs séparées par |, et les valeurs peuvent contenir * pour signifier "n'importe quoi" ou ! comme négation.
+
 group_services=Services
 group_ttys=TTY
 group_users=Utilisateurs
 group_times=Dates d'accès
 group_groups=Ajouter des groupes
 group_info=Les champs peuvent contenir plusieurs valeurs séparées par |, et les valeurs peuvent contenir * pour signifier "n'importe quoi" ou ! comme négation.
+
 wheel_group=Vérifier l'appartenance au groupe:
 wheel_group_def=défaut (<tt>wheel</tt> ou GID 0)
 wheel_trust=Les membres du groupe évitent les autres authentifications?
 wheel_deny=Interdit les membres du groupe au lieu de les autoriser?
 wheel_egroup=Nom de groupe manquant ou invalide.
+
 motd_file=Fichier à afficher:
 motd_file_def=défaut (<tt>/etc/motd</tt>)
 motd_efile=Nom de fichier manquant ou invalide.
+
 mail_nopen=Annoncer les nouveaux messages à de la connexion?
 mail_close=Annoncer les nouveaux messages à de la déconnexion?
 mail_empty=Annoncer que le fichier de courrier est vide?
 mail_noenv=Définir la variable d'environnement <tt>$MAIL</tt>?
 mail_dir=Répertoire de stockage du courrier électronique:
 mail_edir=Répertoire de stockage du courrier électronique manquant ou invalide.
+
 stack_service=Transmettre la vérification au service PAM
+
 log_pam_create=Service PAM $1 créé
 log_pam_delete=Service PAM $1 supprimé
 log_mod_create=Module PAM $1 ajouté au service $2

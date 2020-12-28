@@ -15,6 +15,7 @@ index_sha1=모듈 설정에서 SAH1 알고리즘이 활성화 되어 있지만, 
 index_digest2=모듈 설정에서 Digest 알고리즘이 활성화 되어 있으나, 필요한 $1 명령 또는 $2 펄 모듈이 설치되어 있지 않습니다.
 index_cpan=지금 다운로드 받아 설치를 하려면 <a href='$1'>여기를 클릭</a> 하십시오.
 index_delete=선택된 디랙토리 보호 해제
+
 dir_title1=디렉토리 보호 추가
 dir_title2=디렉토리 보호 수정
 dir_header=디렉토리 보호 옵션
@@ -57,6 +58,7 @@ dir_delete=보호 해제
 dir_delete2=보호 해제 후, 파일 삭제
 dir_delete3=보호 해제 후, 파일 삭제
 dir_apache=아파치 Options 수정
+
 edit_title1=사용자 생성
 edit_title2=사용자 편집
 edit_header=웹 인증 사용자 상세사항
@@ -68,11 +70,13 @@ edit_pass0=설정
 edit_passfrom=변경 :
 edit_passto=새 암호
 edit_dom=Digest realm
+
 gedit_title1=그룹 생성
 gedit_title2=그룹 편집
 gedit_header=웹 인증 그룹 상세사항
 gedit_group=그룹 이름
 gedit_members=그룹 멤버
+
 save_err=사용자 저장 실패
 save_euser1=사용자 이름이 지정되지 않았습니다.
 save_euser2=사용자 이름에 ':' 문자를 사용할 수 없습니다.
@@ -81,16 +85,19 @@ save_eclash=동일한 이름을 가진 사용자가 이미 존재합니다.
 save_eoldpass=이전 암호와 맞지 않습니다.
 save_title=사용자 저장
 save_edom=digest realm을 지정하지 않았거나 유효하지 않습니다.
+
 gsave_err=그룹 저장 실패
 gsave_egroup1=그룹이름이 지정되지 않았습니다.
 gsave_egroup2=그룹 이름에 ':' 문자나 공백문자를 사용할 수 없습니다.
 gsave_eclash=동일한 이름을 가진 그룹이 이미 존재합니다.
+
 acl_dirs=허가된 디렉토리
 acl_user=유닉스 사용자로 .htacess 와 htusers 파일을 생성
 acl_same=Webmin 로그인과 동일하게
 acl_home=유닉스 사용자 홈 디렉토리 포함?
 acl_sync=유닉스 서버 동기화 설정을 하겠습니까?
 acl_uonly=디렉토리 보호를 추가 또는 변경 하겠습니까?
+
 log_create_dir=$1 디렉토리 추가
 log_modify_dir=$1 디렉토리 수정
 log_delete_dir=$1 디렉토리 삭제
@@ -101,6 +108,7 @@ log_create_group=$1 그룹 생성
 log_modify_group=$1 그룹 수정
 log_delete_group=$1 그룹 삭제
 log_delete_dirs=$1 디렉토리 삭제
+
 search_title=결과 검색
 search_err=검색 실패
 search_edir=검색할 절대경로 디렉토리가 지정되지 않았거나 유효하지 않습니다.

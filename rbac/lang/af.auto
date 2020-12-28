@@ -1,5 +1,6 @@
 index_euser=Die RBAC-konfigurasielêer $1 is nie op u stelsel gevind nie. Miskien is RBAC nie geïnstalleer nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
 index_return=module-indeks
+
 users_title=Gebruikerskenmerke
 users_user=Gebruikersnaam
 users_profiles=Toegeken profiele
@@ -10,6 +11,7 @@ users_return=lys van gebruikerskenmerke
 users_type=tipe
 users_role=Rol
 users_project=projek
+
 user_title1=Skep gebruikerskenmerke
 user_title2=Wysig gebruikerskenmerke
 user_header=Kenmerke toegeken aan Unix-gebruiker
@@ -35,6 +37,7 @@ user_eauth='$1' is nie 'n geldige magtiging nie
 user_ecannot=U mag nie hierdie gebruiker wysig nie
 user_erole=U mag nie die '$1' rol toewys nie
 user_eprof=U mag nie die profiel '$1' toewys nie
+
 auths_title=magtigings
 auths_name=Magtigingsnaam
 auths_desc=beskrywing
@@ -42,8 +45,10 @@ auths_none=Geen magtigings is nog gedefinieër nie.
 auths_add=Voeg 'n nuwe magtiging by.
 auths_return=magtigingslys
 auths_ecannot=U mag nie magtigings wysig nie
+
 authc_name=Magtiging
 authc_desc=beskrywing
+
 auth_title1=Skep magtiging
 auth_title2=Magtiging wysig
 auth_header=Besonderhede van magtigingsvoorregte
@@ -57,6 +62,7 @@ auth_edesc=Ongeldige lang beskrywing
 auth_eclash='N Magtiging met dieselfde naam bestaan reeds
 auth_einuseu=Hierdie magtiging word deur gebruiker $1 gebruik, en kan dus nie uitgevee word nie
 auth_einusep=Hierdie magtiging word deur profiel $1 gebruik en kan dus nie uitgevee word nie
+
 profs_title=profiele
 profs_name=Profielnaam
 profs_desc=beskrywing
@@ -65,6 +71,7 @@ profs_none=Geen profiele is nog gedefinieër nie.
 profs_add=Voeg 'n nuwe profiel by.
 profs_return=profiele lys
 profs_ecannot=U mag nie profiele redigeer nie
+
 prof_title1=Skep profiel
 prof_title2=Wysig profiel
 prof_header=Besonderhede oor magtigingsprofiel
@@ -81,6 +88,7 @@ prof_einuseu=Hierdie profiel word deur gebruiker $1 gebruik, en kan dus nie uitg
 prof_einusep=Hierdie profiel word deur profiel $1 gebruik, en kan dus nie uitgevee word nie
 prof_einusee=Hierdie profiel het $1 verwante uitvoeringsprofiele, en kan dus nie uitgevee word nie
 prof_none=Geen beskikbare profiele nie
+
 execs_title=Uitvoeringsprofiele
 execs_name=profiel
 execs_policy=Veiligheidsbeleid
@@ -92,6 +100,7 @@ execs_none=Geen uitvoeringsprofiele is nog gedefinieër nie.
 execs_add=Voeg 'n nuwe uitvoeringsprofiel by.
 execs_return=lys van uitvoeringsprofiele
 execs_ecannot=U mag nie uitvoeringsprofiele redigeer nie
+
 exec_title1=Skep uitvoeringsprofiel
 exec_title2=Redigeer uitvoeringsprofiel
 exec_header=Besonderhede van die uitvoeringsprofiel
@@ -113,6 +122,7 @@ exec_erruid=Gebruiker ontbreek of ongeldig om te hardloop as
 exec_errgid=Ontbrekende of ongeldige groep om te hardloop as
 exec_erreuid=Ontbrekende of ongeldige effektiewe gebruiker om te hardloop as
 exec_erregid=Effektiewe groep ontbreek of ongeldig om te hardloop as
+
 policy_title=Stelselbeleide
 policy_header=Wêreldstelselbeleidsinstellings
 policy_auths=Magtigings vir alle gebruikers
@@ -126,16 +136,20 @@ policy_err=Stoorbeleide kon nie gestoor word nie
 policy_eallow=Geen algoritmes wat gekies kan word nie
 policy_eclash=Algoritme om toe te laat en te verlaag kan nie albei gelyktydig gekies word nie
 policy_ecannot=U mag nie die stelselbeleide wysig nie
+
 attr_none=Geen gebruikerskenmerke is gedefinieër nie
 attr_nonenormal=Geen Unix-gebruikers gedefinieër nie
 attr_nonerole=Geen beskikbare rolle word gedefinieer nie
+
 help_epath=Ongeldige hulplêerpad!
 help_link=(Hulp..)
+
 crypt___unix__=Unix-kript
 crypt_1=BSD MD5
 crypt_2a=BSD Flowfish
 crypt_md5=Son MD5
 crypt_rot13=ROT13
+
 log_create_user=Gebruikerskenmerke vir $1 geskep
 log_modify_user=Gewysigde gebruikerskenmerke vir $1 
 log_delete_user=Gebruikerkenmerke vir $1 is uitgevee
@@ -152,6 +166,7 @@ log_create_project=Projek $1 geskep
 log_modify_project=Gewysigde projek $1 
 log_delete_project=Projek $1 is uitgevee
 log_policy=Veranderde stelselbeleide
+
 acl_roles=Kan rolle gewysig word?
 acl_users=Kan gebruikerskenmerke verander?
 acl_roleassign=Kan rolle toeken
@@ -166,6 +181,7 @@ acl_profs=Kan profiele gewysig word?
 acl_ro=Kyk slegs
 acl_execs=Kan uitvoeringsprofiele verander?
 acl_projects=Kan projekte gewysig word?
+
 projects_title=projekte
 projects_name=naam
 projects_id=ID
@@ -184,6 +200,7 @@ projects_exceptusers=Alle gebruikers behalwe $1
 projects_exceptgroups=Alle groepe behalwe $1 
 projects_onlyusers=Slegs $1 
 projects_onlygroups=Slegs $1 
+
 project_title1=Skep projek
 project_title2=Projek wysig
 project_header=Projekbesonderhede en lede
@@ -219,6 +236,7 @@ project_egroupscannot=Geen groepe om geselekteerde uit te sluit nie
 project_elimit=Ontbrekende of ongeldige limiet in ry $1 
 project_epool=Ontbrekende of ongeldige projekpoelnaam
 project_erss=Maksimum geheue ontbreek of ongeldig
+
 prctl_title=Hulpbronbeheer
 prctl_ok=Wys perke vir:
 prctl_mode0=Verwerk met ID

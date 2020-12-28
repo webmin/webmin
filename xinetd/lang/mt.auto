@@ -25,6 +25,7 @@ index_estart=Il-kmand biex tibda Xinetd $1 ma jeżistix. Forsi mhuwiex installat
 index_noport=Mhux magħruf
 index_enable=Attiv magħżula
 index_disable=Iddiżattiva l-Għażla
+
 serv_create=Oħloq Servizz tal-Internet
 serv_edit=Editja Servizz tal-Internet
 serv_header1=Għażliet ta 'netwerk ta' servizz
@@ -78,19 +79,24 @@ serv_enice=Nies sbieħ nieqsa jew invalidi
 serv_ecps0=Numru ta 'konnessjonijiet nieqsa jew invalidi fis-sekonda
 serv_ecps1=Dewmien nieqes jew invalidu
 serv_etimes=Il-ħinijiet ta 'aċċess għandhom ikunu fil-format HH: MM-HH: MM
+
 sock_stream=Nixxiegħa
 sock_dgram=Datagramma
 sock_raw=Nej
 sock_seqpacket=Datagramma sekwenzjali
+
 proto_=Default
 proto_ip=IP (Protokoll tal-Internet)
 proto_tcp=TCP (Protokoll tal-Kontroll tat-Trasmissjoni)
 proto_udp=UDP (Protokoll ta 'Datagramma ta' l-Utent)
+
 restart_err=Ma rnexxielux japplika tibdil
 restart_ekill=Naqas milli jibgħat is-sinjal USR2 lill-PID $1 : $2 
 restart_epid=Ma għadux għaddej
+
 start_err=Naqas milli jibda xinetd
 start_estart=$1 falla : $2 
+
 defs_title=Għażliet Default
 defs_header=Għażliet awtomatiċi għas-servizzi
 defs_log=Xinetd mod tal-qtugħ
@@ -115,6 +121,7 @@ defs_err=Ma rnexxielux isalva l-għażliet default
 defs_efile=Isem tal-fajl tal-ġurnal nieqes jew invalidu
 defs_esoft=Limitu artab nieqes jew invalidu
 defs_ehard=Limitu iebes jew nieqes jew invalidu
+
 log_create_serv=$2 Servizz maħluq $1 
 log_modify_serv=Servizz immodifikat $2 $1 
 log_delete_serv=Servizz imħassar $2 $1 
@@ -125,5 +132,6 @@ log_enable=Is-servizzi $1 attivati
 log_disable=Servizzi b'diżabilità $1 
 log_enable_l=Servizzi attivati $1 
 log_disable_l=Servizzi b'diżabilità $1 
+
 config_dirdef=Xinetd file file
 config_dirto=Fajl ġdid fid-direttorju

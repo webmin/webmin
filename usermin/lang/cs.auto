@@ -1,13 +1,18 @@
 index_eroot=Konfigurační adresář Usermin $1 existuje, ale kořenový adresář programu $2, na který odkazuje, ne! Měli byste ručně stáhnout a znovu nainstalovat Usermin.
+
 session_authmode=Metoda ověřování
+
 ssl_savekey=Tento formulář umožňuje nahrát existující soukromý klíč SSL certifikátu ve formátu PEM a certifikát, který váš server Usermin použije.
 ssl_copycert=Kopírovat certifikát z Webmin
 ssl_copycertdesc=Zkopírujte certifikát SSL, soukromý klíč, certifikát CA a další nastavení, která webmin používá.
+
 ui_hnm0=Skutečné jméno hostitele
 ui_hnm1=Název hostitele z adresy URL
 ui_hnm2=Název domény z adresy URL
 ui_hnm3=Jiné jméno ..
+
 log_copycert=Zkopírováno nastavení SSL z Webmin
+
 copycert_err=Nastavení protokolu SSL z Webmin se nezdařilo
 copycert_essl=SSL není povoleno
 copycert_ekeyfile=Ve Webminu není nastaven žádný soubor soukromého klíče

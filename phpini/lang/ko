@@ -9,14 +9,18 @@ index_edit=관리
 index_manual=수동 편집
 index_anyfile=다른 PHP 설정 파일 수정:
 index_return=설정 파일
+
 file_global=주 PHP 설정
+
 manual_title=설정 수동 편집
 manual_desc=이 페이지에서 PHP 설정을 수동으로 편집할 수 있습니다. 이 작업은 문법 오류나 변경 사항이 확실한지 아주 주의 깊게 확인을 해야 합니다.
 manual_err=설정 파일 편집 실패
 manual_edata=변경 사항이 없습니다.
+
 list_title=PHP 설정 관리
 list_ecannot=이 PHP 설정 파일을 관리할 권한이 없습니다.
 list_return=PHP 설정
+
 vars_title=PHP 변수
 vars_header=PHP 변수 생성과 쿼우트 옵션
 vars_magic=입력된 모든 변수를 쿼우트
@@ -25,6 +29,7 @@ vars_register=입력된 모든 파라미터를 글로별 변수로 전환
 vars_args=명령행 파라미터를 글로벌 변수로 전환
 vars_long=<tt>HTTP_GET_VARS</tt>와 같은 이전 스타일의 배열을 생성
 vars_err=PHP 변수 설정 저장 실패
+
 dirs_title=디렉토리 설정
 dirs_header=PHP 스크립트/확장 디렉토리 설정
 dirs_include=include 파일을 찾을 디렉토리
@@ -36,6 +41,7 @@ dirs_err=디렉토리 설정 저장 실패
 dirs_eincs=include 파일을 찾을 디렉토리가 입력되지 않았습니다.
 dirs_eutmp=임시 파일 디렉토리가 설정되지 않았거나 올바르지 않습니다.
 dirs_eext=PHP 확장 디렉토리가 지정되지 않았습니다.
+
 db_title=데이터베이스 설정
 db_header1=MySQL 데이터베이스 연결 설정
 db_persist=지속적인(persistent) 데이터베이스 연결 사용
@@ -54,6 +60,7 @@ db_emaxlinks=최대 연결 수가 설정되지 않았거나 올바르지 않습�
 db_etimeout=연결 시간 만료가 설정되지 않았거나 올바르지 않습니다.
 db_ehost=MySQL 기본 서버가 설정되지 않았거나 올바르지 않습니다.
 db_eport=MySQL 기본 포트가 설정되지 않았거나 올바르지 않습니다.
+
 session_title=세션 옵션
 session_header=PHP 세션 트래킹 옵션
 session_handler=세션 스토리지 매커니즘
@@ -69,6 +76,7 @@ session_maxlife=최대 세션 만료 시간
 session_epath=세션 파일 저장 디렉토리가 설정되지 않았거나 올바르지 않습니다.
 session_elife=쿠키 만료 시간이 설정되지 않았거나 올바르지 않습니다.
 session_emaxlife=최대 세션 만료 시간이 설정되지 않았거나 올바르지 않습니다.
+
 safe_title=안전 모드 옵션
 safe_header=안전모드 파일 접근 옵션
 safe_on=안전 모드 사용
@@ -81,6 +89,7 @@ safe_err=안전 모드 옵션 저장 실패
 safe_einclude=include 파일을 찾을 디렉토리가 설정되지 않았거나 올바르지 않습니다.
 safe_eexec=프로그램이 실행될 디렉토리가 설정이 되어 있지 않거나 올바르지 않습니다.
 safe_ebasedir=PHP가 실행될 디렉토리가 설정되지 않았거나 올바르지 않습니다.
+
 limits_title=리소스 제한
 limits_header=메모리/전송 제한 옵션
 limits_mem=최대 메모리 할당
@@ -94,6 +103,7 @@ limits_epost=최대 HTTP POST 크기가 설정되지 않았거나 올바르지 �
 limits_eupload=최대 파일 업로드 크기가 설정되지 않았거나 올바르지 않습니다.
 limits_eexec=최대 실행 시간이 설정되지 않았거나 올바르지 않습니다.
 limits_einput=최대 입력 파싱 시간이 설정되지 않았거나 올바르지 않습니다.
+
 errors_title=에러 로그
 errors_header=에러 메시지 출력과 로그 옵션
 errors_display=에러 메시지 출력
@@ -124,6 +134,7 @@ errors_err=에러 로그 저장 실패
 errors_ereporting=입력된 에러 유형 설명이 없습니다.
 errors_emaxlen=최대 로그 크기가 설정되지 않았거나 올바르지 않습니다.
 errors_efile=에러 로그 파일이 지정되지 않았습니다.
+
 misc_title=기타 설정
 misc_header=기타 PHP 설정
 misc_short=&lt;?로 PHP 스크립트 시작 허가
@@ -140,6 +151,7 @@ misc_esmtp=SMTP 서버가 지정되지 않았거나 찾을 수 없습니다.
 misc_esmtp_port=SMTP 포트가 지정되지 않았거나 숫자가 아닙니다.
 misc_esendmail=메일 전송을 위한 명령이 유효하지 않습니다.
 misc_esendmail2=메일 전송을 위한 명령이 지정되지 않았습니다.
+
 log_manual=$1 파일 수동 편집
 log_vars=$1의 PHP 변수 변경
 log_dirs=$1의 디렉토리 설정 변경
@@ -149,6 +161,7 @@ log_safe=$1의 안전 모드 옵션 변경
 log_limits=$1의 리소스 제한 변경
 log_errors=$!의 에러 로그 변경
 log_misc=$1의 기타 설정 변경
+
 acl_global=주 PHP 설정을 수정하겠습니까?
 acl_anyfile=어떤 파일이든 PHP 설정으로 간주하고 편집
 acl_manual=설정 파일을 수동으로 편집하겠습니까?

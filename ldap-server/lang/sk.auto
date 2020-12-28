@@ -16,6 +16,7 @@ index_setupdesc=Databáza vášho servera LDAP zatiaľ neobsahuje koreňovú DN 
 index_setup=Vytvorte koreňový DN
 index_permsdesc=Dátový adresár servera LDAP $1 obsahuje súbory, ktoré nevlastní správny užívateľ $2, čo znamená, že je nepravdepodobné, že sa správne spustí. Webmin to však môže vyriešiť kliknutím na tlačidlo nižšie.
 index_perms=Oprava vlastníctva
+
 connect_eserver=Server LDAP $1 neexistuje
 connect_euser=Žiadny používateľ sa neprihlásil tak, ako bol nakonfigurovaný
 connect_epass=Nebolo nakonfigurované žiadne heslo na prihlásenie
@@ -28,6 +29,7 @@ connect_eldap=Nepodarilo sa pripojiť k serveru LDAP $1 na porte $2
 connect_essl=Nepodarilo sa spustiť šifrovanie TLS so serverom LDAP $1 : $2 
 connect_elogin=Nepodarilo sa prihlásiť na server LDAP $1 ako $2 : $3 
 connect_cpan=Môžete mať <tt>$1</tt> Perl modul <a href='$2'>automaticky nainštalovaný</a> z CPAN.
+
 slapd_title=Konfigurácia servera OpenLDAP
 ldif_title=Konfigurácia servera OpenLDAP
 slapd_header=Možnosti globálneho servera LDAP
@@ -76,6 +78,7 @@ slapd_protos=Pripojenia LDAP na prijatie
 slapd_ldap=LDAP v sieti
 slapd_ldaps=LDAP cez SSL
 slapd_ldapi=Súbor soketu Unix
+
 schema_title=Spravovať schému
 schema_file=názov
 schema_desc=popis
@@ -93,6 +96,7 @@ schema_edesc=Táto stránka vám umožňuje manuálne upraviť súbor schémy LD
 schema_return=zoznam schém
 schema_emove=Nepodarilo sa nájsť súbor schém na presunutie!
 schema_ecannot=Nemáte oprávnenie spravovať schému LDAP
+
 acl_title=LDAP Kontrola prístupu
 acl_ecannot=Nemáte povolenie nakonfigurovať riadenie prístupu LDAP
 acl_what=objektov
@@ -103,6 +107,7 @@ acl_none=Zatiaľ neboli definované žiadne pravidlá kontroly prístupu. Všetk
 acl_delete=Odstrániť vybrané pravidlá
 acl_add=Pridajte nové pravidlo riadenia prístupu.
 acl_return=pravidlá kontroly prístupu
+
 browser_title=Prehliadať databázu
 browser_econn=Prehliadač LDAP nie je možné použiť : $1 
 browser_ecannot=Nemáte povolenie prehľadávať databázu LDAP
@@ -136,24 +141,30 @@ browser_nomatch=Vášmu vyhľadávaniu pre $1 nezodpovedali žiadne objekty.
 browser_search=Nájsť zodpovedajúce objekty :
 browser_search2=Zobrazujú sa zodpovedajúce objekty :
 browser_sok=Vyhľadávanie
+
 save_err=Atribút sa nepodarilo zmeniť
 save_ebase=Nepodarilo sa načítať objekt $1 z databázy
 save_emodify=Úprava LDAP $2 v $1 zlyhala : $3 
 save_enone=Neboli zadané žiadne hodnoty
+
 add_err=Nepodarilo sa pridať atribút
 add_eadd=Chýba alebo je neplatný názov atribútu
 add_evalue=Chýba hodnota
 add_emodify=Pridanie LDAP $2 do $1 zlyhalo : $3 
+
 delete_err=Atribúty sa nepodarilo odstrániť
 delete_enone=Žiadne vybraté
 delete_emodify=Odstránenie LDAP $2 z $1 zlyhalo : $3 
+
 sdelete_err=Nepodarilo sa odstrániť objekty
 sdelete_edn=Objekt $1 nebol nájdený
 sdelete_edel=Odstránenie LDAP z $1 zlyhalo : $2 
+
 rename_err=Nepodarilo sa premenovať objekt
 rename_eget=Nepodarilo sa nájsť objekt s DN $1 
 rename_enew=Zdá sa, že nový názov nie je platný
 rename_erename=Zlyhanie protokolu LDAP do $2 z $1 zlyhalo : $3 
+
 oadd_title=Vytvorenie objektu
 oadd_header=Nové podrobnosti o objekte LDAP
 oadd_base=Nadradený objekt DN
@@ -170,6 +181,7 @@ oadd_eget2=Nepodarilo sa skontrolovať stret s $1 : $2
 oadd_eclash=Objekt s DN $1 už existuje
 oadd_eadd=Pridanie LDAP $1 zlyhalo : $2 
 oadd_err=Nepodarilo sa vytvoriť nový objekt
+
 create_title=Vytvorte strom
 create_ecannot=Nemáte povolenie vytvárať nový strom
 create_desc=Táto stránka poskytla pohodlný spôsob vytvorenia DN, ktorý bude základom nového stromu v databáze. Môže tiež vytvoriť príklad užívateľského alebo e-mailového aliasu pod stromom ako šablónu pre svoje vlastné objekty.
@@ -191,18 +203,23 @@ create_done=.. hotový
 create_doingex=Vytvára sa vzorový objekt s DN $1 ..
 create_edoingex=.. zlyhalo: $1. Strom však stále môžete používať.
 create_eoc=Nepodarilo sa nájsť vhodnú triedu objektov pre nový DN
+
 eunknown=Neznáma chyba
+
 apply_err=Nepodarilo sa použiť konfiguráciu
 apply_ecmd=$1 zlyhalo : $2 
 apply_ecannot=Nemáte povolenie použiť konfiguráciu
+
 stop_err=Zastavenie servera LDAP zlyhalo
 stop_ecmd=$1 zlyhalo : $2 
 stop_egone=Už nebeží!
 stop_ekill=Proces zabitia zlyhal : $1 
 stop_ecannot=Nemáte povolenie zastaviť server LDAP
+
 start_err=Nepodarilo sa spustiť server LDAP
 start_ecmd=$1 zlyhalo : $2 
 start_ecannot=Nemáte povolenie na spustenie servera LDAP
+
 log_create_dn=Vytvorený objekt $1 
 log_delete_dn=Odstránený objekt $1 
 log_rename_dn=Premenovaný objekt $1 
@@ -234,6 +251,7 @@ log_up_access=Pravidlo riadenia prístupu bolo posunuté o $1
 log_down_access=Pravidlo riadenia prístupu bolo posunuté o $1 
 log_delete_accesses=Odstránené pravidlá prístupu $1 
 log_all=všetky objekty
+
 gencert_title=Vygenerujte certifikát SSL
 gencert_header=Nové podrobnosti o certifikáte SSL
 gencert_create=Vytvorte certifikát
@@ -245,7 +263,9 @@ gencert_dir=adresár
 gencert_err=Nepodarilo sa vygenerovať certifikát
 gencert_edest=Cieľový adresár neexistuje
 gencert_epath=Súbory certifikátov a kľúčov v konfigurácii servera LDAP musia byť absolútnymi cestami
+
 perms_err=Vlastníctvo súboru sa nepodarilo opraviť
+
 acl_slapd=Môžete nakonfigurovať server LDAP?
 acl_ldif=Môžete nakonfigurovať server LDAP?
 acl_schema=Dokážete spravovať schému?
@@ -254,6 +274,7 @@ acl_browser=Môže prehľadávať a upravovať databázu?
 acl_create=Dokážete vytvoriť nový strom?
 acl_start=Môže spustiť a zastaviť server LDAP?
 acl_apply=Je možné aplikovať zmeny konfigurácie?
+
 access_desc=$2 po $1 
 access_self=sám
 access_users=overených používateľov
@@ -273,6 +294,7 @@ access_lcompare=porovnať
 access_lsearch=Vyhľadávanie
 access_lread=Čítať
 access_lwrite=write
+
 eacl_title1=Vytvorte pravidlo riadenia prístupu
 eacl_title2=Upraviť pravidlo riadenia prístupu
 eacl_header=Podrobnosti pravidla riadenia prístupu k LDAP

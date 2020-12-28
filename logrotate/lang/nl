@@ -19,11 +19,13 @@ index_force=Forceer Log Rotatie
 index_forcedesc=Forceer de onmiddelijk rotatie van alle log files, zelfs als het nog geen tijd is.
 index_logrotate=Logrotate
 index_delete=Verwijder Geselecteerde Log Rotaties
+
 period_daily=Dagelijks
 period_weekly=Wekelijks
 period_monthly=Maandelijks
 period_never=Nooit
 period_bytes=bytes
+
 edit_title1=Bewerk Log File
 edit_title2=Maak Log File
 edit_header=Geroteerde log file details
@@ -59,8 +61,10 @@ edit_pre=Opdrachten om uit te voeren voor de rotatie
 edit_default=Standaard ($1)
 edit_sharedscripts=Scripts maar één keer uitvoeren voor alle files?
 edit_now=Rotate Nu
+
 global_title=Globale Opties
 global_header=Standaard opties voor alle log files
+
 save_err=Mislukt om log op te slaan
 save_efile=Ontbrekende of ongeldige log filenaam
 save_esize=Ontbrekende of ongeldige maximum grote
@@ -76,6 +80,7 @@ save_emailto=Ontbrekend email adres voor geroteerde logs
 save_eerrors=Ontbrekend email adres voor fout berichten
 save_epre=Het Pre-rotatie script kan geen <tt>eindscript</tt> of <tt>eindrotatie</tt> regel bevatten
 save_epost=Het Post-rotatie script kan geen <tt>eindscript</tt> of <tt>eindrotatie</tt> regel bevatten
+
 log_modify_sched=Veranderde log rotatie Cron job
 log_create_sched=Bewerk log rotatie Cron job
 log_delete_sched=Verwijder log rotatie Cron job
@@ -84,6 +89,7 @@ log_create=Toegevoegde rotatie voor log file $1
 log_modify=Gemodificeerde rotatie voor log file $1
 log_delete=Verwijder rotatie voor log file $1
 log_delete_logs=Verwijder rotatie voor $1 log files
+
 sched_title=Geplande Log Rotatie
 sched_desc=Om met gebruik van deze geconfigureerde log rotatie module te werken moet de opdracht $1 regelmatig (normaal gesproken dagelijks) uitgevoerd worden door Cron.
 sched_runparts=Op dit moment word de log rotatie uitgevoerd door het script $1 $2, en kan niet verandert worden.
@@ -92,10 +98,12 @@ sched_disabled=Uitgeschakeld
 sched_enabled=Aangezet op de tijden hieronder ..
 sched_save=Update Cron Job
 sched_err=Mislukt om de geplande rotatie op te slaan
+
 force_title=Forceer Log Rotation
 force_doing=Forceer onmiddelijk de rotatie van alle log files ..
 force_doingone=Forceer onmiddelijk de rotatie van één log files ..
 force_done=.. klaar.
 force_failed=.. mislukt! Bekijk het resultaat hierboven om welke reden.
+
 delete_err=Mislukt om logs te verwijderen
 delete_enone=Niets geselecteerd

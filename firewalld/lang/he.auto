@@ -30,6 +30,7 @@ index_return=רשימת אזורים
 index_ezones=לא נמצאו אזורי FirewallD!
 index_none=לאזור זה אין עדיין יציאות ושירותים המותרים.
 index_ifaces=החלת כללים על ממשקים:
+
 port_edit=ערוך נמל
 port_create=הוסף נמל
 port_header=אפשרויות יציאה מותרות
@@ -45,11 +46,13 @@ port_eport=מספר או שם יציאה חסר או לא חוקי
 port_eportlow=היציאה הנמוכה חייבת להיות מספר
 port_eporthigh=יציאה גבוהה חייבת להיות מספר
 port_eportrange=היציאה הנמוכה חייבת להיות מתחת ליציאה הגבוהה
+
 serv_edit=שירות עריכה
 serv_create=הוסף שירות
 serv_header=אפשרויות שירות מותרות
 serv_name=שירות לאפשר
 serv_err=שמירת השירות נכשלה
+
 forward_edit=ערוך קדימה
 forward_create=צור קדימה
 forward_header=אפשרויות העברת נמל
@@ -61,10 +64,13 @@ forward_dstaddr=כתובת יעד
 forward_dstlocal=המערכת הזאת
 forward_edstaddr=כתובת יעד לא חוקית של IPv4
 forward_eneither=יש להזין כתובת או יציאת יעד או שניהם
+
 check_ecmd=פקודת הפקד של FirewallD $1 לא נמצאה במערכת שלך
+
 delete_err=מחיקת כללים נכשלה
 delete_enone=לא נבחר!
 delete_edel=הסרת $1 נכשלה : $2 
+
 zone_title=צור אזור
 zone_header=אפשרויות אזור חדשות
 zone_name=שם אזור
@@ -77,12 +83,16 @@ zone_mode4=יציאות המשמשות לאירוח וירטואלי
 zone_err=יצירת אזור לא נכשלה
 zone_ename=שם אזור חסר או לא חוקי
 zone_eclash=אזור עם אותו שם כבר קיים
+
 delzone_title=מחק אזור
 delzone_err=מחיקת האזור נכשלה
 delzone_edefault=לא ניתן להסיר את אזור ברירת המחדל
 delzone_rusure=האם אתה בטוח שברצונך למחוק את האזור $1 המכיל $2 יציאות ושירותי $3 ?
+
 defzone_err=הפיכת אזור לברירת המחדל נכשלה
+
 restart_err=החלת התצורה נכשלה
+
 stop_err=עצירת FirewallD נכשלה
 start_err=הפעלת FirewallD נכשלה
 log_stop=חומת האש הפסיק

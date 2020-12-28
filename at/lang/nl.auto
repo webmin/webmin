@@ -5,9 +5,11 @@ index_start=Start Scheduled Commands Server
 index_startdesc=Start het <tt>atd</tt> -achtergrondserverproces dat geplande opdrachten uitvoert. Dit is vereist om opdrachten op de opgegeven tijden uit te voeren.
 index_boot=Server starten bij opstarten?
 index_bootdesc=Wijzig deze instelling om het starten van de server met geplande opdrachten tijdens het opstarten van het systeem in of uit te schakelen.
+
 log_stop=Geplande commandoserver gestopt
 log_start=Gestart geplande commandoserver
 log_bootup=Ingeschakelde server met geplande opdrachten bij opstarten
 log_bootdown=Uitgeschakelde server met geplande opdrachten bij opstarten
+
 stop_err=De server kan niet worden gestopt
 start_err=Kan server niet starten

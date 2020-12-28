@@ -10,6 +10,7 @@ index_range=Generer rapport for datointerval
 index_view=Se genereret rapport
 index_viewdesc=Se den senest genererede rapport i biblioteket $1.
 index_return=modul indeks
+
 log_title=Logkilde og rapportdestination
 log_header=Kilde blæksprutte-logfil og genererede rapportindstillinger
 log_access_log=Kilde blæksprutte-logfil
@@ -30,6 +31,7 @@ log_elastlog=Mangler eller ikke et tal
 log_eemail=Manglende eller ugyldig e-mail-adresse
 log_emailx=Manglende eller ikke-eksisterende postprogram
 log_squidguard_log_path=SquidGuard-logfil
+
 style_title=Rapportstil
 style_header=HTML-rapportstil og farveindstillinger
 style_title2=Rapporttitel
@@ -54,6 +56,7 @@ style_efont=Manglende eller ugyldigt fontnavn
 style_esize=Manglende eller ugyldig billedbredde og højde
 style_language=Rapporter sprog
 style_charset=Rapporter tegnsæt
+
 report_title=Rapportindstillinger
 report_header=Rapporter indhold og genereringsindstillinger
 report_resolve_ip=Vil du løse IP-adresser?
@@ -134,6 +137,7 @@ report_echar=Rum er ikke tilladt
 report_estring=Manglende eller ugyldig erstatningstekst
 report_eselect=Intet valgt
 report_eenter=Intet indtastet
+
 sched_title=Genereret planlagt rapport
 sched_header=Planlagte rapporteringsmuligheder
 sched_sched=Planlagt rapport aktiveret?
@@ -148,9 +152,11 @@ sched_rsel=Dem fra $1 til $2 dage siden
 sched_err=Kunne ikke gemme planlagt rapportgenerering
 sched_erfrom=Manglende eller ugyldigt startnummer for dage siden
 sched_erto=Manglende eller ugyldigt slutnummer for dage siden
+
 view_title=Sarg-rapport
 view_efile=Ugyldigt filnavn!
 view_eopen=Kunne ikke åbne rapportfil
+
 gen_title=Generer rapport
 gen_header=Genererer nu Sarg-rapport fra Squid-logfil $1 og alle roterede versioner ..
 gen_done=.. Færdig
@@ -160,6 +166,7 @@ gen_view=Se afsluttet rapport.
 gen_err=Rapporten blev ikke genereret
 gen_efrom=Manglende eller ugyldig fra dagen
 gen_eto=Manglende eller ugyldig i dag
+
 webmin_log_log=Opdateret logkilde og rapportdestinationindstillinger
 webmin_log_report=Opdaterede rapportindstillinger
 webmin_log_style=Opdaterede indstillinger for rapportstil

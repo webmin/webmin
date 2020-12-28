@@ -1,4 +1,5 @@
 index_vmin=Virtualmin
+
 ifcs_ip6=IPv6 adresa
 ifcs_badd=Přidejte nový most.
 ifcs_auto6=Z objevu IPv6
@@ -17,10 +18,12 @@ ifcs_linkyes=Připojeno
 ifcs_linkno=Odpojeno
 ifcs_speed=Rychlost rozhraní
 ifcs_duplex=, $1 duplex
+
 aifc_eaddress6=Adresa IPv6 v řádku $1 není platná
 aifc_enetmask6=Síťová maska IPv6 v řádku $1 musí být celé číslo mezi 1 a 128
 aifc_eclash6=Adresa IPv6 v řádku $1 je již používána rozhraním $2 
 aifc_eaddresses6=Nebyly zadány žádné adresy IPv6
+
 bifc_act=Aktivovat při spuštění?
 bifc_bridgeto=Připojte most k rozhraní
 bifc_nobridge=&lt;Žádné&gt;
@@ -31,12 +34,16 @@ bifc_bridgestp=Protokol Spanning Tree
 bifc_bridgefd=Zpoždění vpřed
 bifc_bridgewait=Zpoždění se stane dostupným
 bifc_ebond=Bond rozhraní musí být číslo
+
 bonding_teampartsdesc=Rozdělte partnery s mezerami, např. "eth2 eth4"
 bonding_primary=Primární rozhraní
 bonding_primarydesc=Lze použít pouze u režimů teamback s aktivním zálohováním, vyvážením nebo vyvážením
 bonding_miimondesc=(Chcete-li zakázat sledování odkazů, ponechte prázdné.)
+
 vlan_id=Vlan ID
+
 bridge_create=Vytvořit Bridge Bridge
+
 routes_default6=Výchozí router IPv6
 routes_gateway6=IPv6 brána
 routes_edefault6='$1' není platný výchozí router IPv6
@@ -48,11 +55,16 @@ routes_tabboot=Konfigurace spouštěcího času
 routes_tabactive=Aktivní konfigurace
 routes_descactive=Tato část obsahuje seznam tras, které systém aktuálně nakonfiguroval, a umožňuje vám přidat nebo odebrat aktivní trasy v některých systémech. Dělejte to opatrně, protože nesprávné změny mohou přerušit provoz systému Webmin ze zbytku sítě.
 routes_descboot=Tato část umožňuje konfigurovat trasy, které se aktivují při spuštění systému nebo při opětovném použití síťových nastavení.
+
 hosts_active=Povoleno?
+
 ipnodes_none=Zatím nebyly definovány žádné adresy hostitelů IPv6.
 ipnodes_delete=Odstranění vybraných adres hostitele IPv6
+
 log_delete_ipnodes=Byly odstraněny adresy hostitele IPv6 $1 
+
 acl_sysinfo=Zobrazit dostupná síťová rozhraní na hlavním panelu
+
 hdelete_err=Odstranění adres hostitele se nezdařilo
 hdelete_enone=Nebyl vybrán žádný
 idelete_err=Odstranění adres hostitele IPv6 se nezdařilo

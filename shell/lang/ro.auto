@@ -8,9 +8,11 @@ index_pok=Executați comanda anterioară
 index_edit=Editează anterior
 index_trunced=Producția totală de $2 a fost trunchiată la $1.
 index_timedout=Comanda a fost încheiată după rularea timp de $1 secunde.
+
 acl_user=Execută comenzi ca utilizator
 acl_user_def=Utilizator curent Webmin
 acl_shellenv=Utilizați mediul utilizator selectat?
 acl_chroot=Selecționează în director
+
 log_run=Comanda Ran $1
 log_clear=Istoric de comandă șters

@@ -23,6 +23,7 @@ index_follow=După $1
 index_forcetar=În format TAR
 index_delete=Ștergeți copii de rezervă selectate
 index_nostrftime=Avertisment - unele joburi de rezervă folosesc % în numele lor de fișiere, dar substituirea strftime nu este activată pe pagina Modul Config.
+
 dump_dir=Director la backup
 dump_dirs=Directoare la backup
 dump_fs=Sistemul de fișiere
@@ -108,6 +109,7 @@ dump_remount=Remontați cu opțiunea <tt>noatime</tt> în timpul backup-ului?
 dump_eftpupdate=Adăugarea fișierelor într-o arhivă existentă nu este posibilă atunci când utilizați FTP.
 dump_eleveldir=Sunt permise doar copii de rezervă de nivel 0 pentru directoarele care nu sunt puncte de montare a sistemului de fișiere
 dump_eupdatedir=Fișierul <tt>/etc/dumpdates</tt> poate fi actualizat numai pentru directoarele care sunt puncte de montare a sistemului de fișiere
+
 edit_err=Crearea de rezervă nu a reușit
 edit_edir=Lipsește directorul de rezervă
 edit_efs=Sistemele de fișiere de tipul $1 nu pot fi protejate de acest modul
@@ -132,9 +134,11 @@ edit_tolevel=$1 la $2 (nivel $3)
 edit_special=Program de backup
 edit_when=Când să faceți backup
 edit_clone=Clone
+
 save_err=Nu a reușit salvarea copiei de rezervă
 save_edir=Directorul de rezervă lipsă sau nevalid
 save_efs=Directorul de rezervă nu se poate schimba într-un sistem de fișiere diferit
+
 backup_title=Backup acum
 backup_desc=Efectuarea copiilor de rezervă de la $1 la $2.
 backup_reverify=.. complet. Verificând acum backup-ul ..
@@ -147,6 +151,7 @@ backup_notape=.. backup a depășit capacitatea unei singure benzi. Schimbarea b
 backup_egone=Backup-ul nu există!
 backup_bg=Începerea procesului de rezervă de fundal. Puteți monitoriza progresul său în secțiunea <b>Execuție Lucrări de rezervă</b> din pagina principală a modulului și va fi înștiințat despre starea finală prin e-mail.
 backup_ecannot=Nu aveți voie să faceți backup pentru acest director
+
 restore_title=Restaurați backup
 restore_err=Eroare la restaurarea copiei de rezervă
 restore_ecommand=Comanda $1 necesară pentru a restabili copii de rezervă ale sistemului de fișiere $2 nu a fost găsită pe sistemul tău. Poate că nu este instalat în prezent.
@@ -190,6 +195,7 @@ restore_gzip=Deconectați arhiva?
 restore_keep=Nu suprascrieți fișierele?
 restore_emulti=Restaurările cu mai multe fișiere nu pot fi făcute de pe un dispozitiv cu bandă
 restore_emulti2=Restaurările cu mai multe fișiere nu pot fi făcute de pe un server de la distanță
+
 log_create=Configurare de rezervă creată pentru $1 
 log_modify=Configurare de rezervă modificată pentru $1 
 log_delete=Confecțiune de rezervă eliminată pentru $1 
@@ -197,13 +203,16 @@ log_backup=S-a făcut o copie de rezervă de la 1 la $2
 log_bgbackup=A început o copie de rezervă de la $1 la $2 
 log_restore=S-a restaurat backup-ul de la $1 
 log_kill=Backup terminat pentru $1 
+
 kill_err=Nu a reușit să încheie backup-ul
 kill_egone=Nu mai alerga!
 kill_ecannot=Nu aveți voie să încheiați această copie de rezervă
+
 newtape_err=Nu a reușit să semnalizeze o bandă nouă
 newtape_egone=Backup-ul nu mai rulează!
 newtape_estatus=Backup-ul nu mai așteaptă o bandă nouă
 newtape_ecannot=Nu aveți voie să gestionați această copie de rezervă
+
 acl_edit=Poate crea și edita copii de rezervă?
 acl_restore=Se pot restaura copii de rezervă?
 acl_cmds=Poate edita înainte și după comenzi?
@@ -211,8 +220,10 @@ acl_extra=Poate edita parametri suplimentari ai liniei de comandă?
 acl_dirs=Directoare permise pentru copii de rezervă
 acl_all=Toate directoarele
 acl_list=Numai listate ..
+
 delete_err=Nu a reușit să ștergeți copiile de siguranță
 delete_enone=Nimic selectat
+
 email_already=Backup-ul se execută deja cu PID $1.
 email_ebefore=Comanda înainte de backup a eșuat!
 email_verify=Verificarea copiei de rezervă ..
@@ -220,5 +231,6 @@ email_eafter=Comanda după rezervă a eșuat!
 email_subject=Copie de rezervă de la $1 pe $2 
 email_ok=Backup-ul a reușit
 email_failed=Backup-ul a eșuat!
+
 newtape_subject=Modificare bandă $1 pentru copie de rezervă de $2 pe $3 
 newtape_body=Copia de rezervă a $2 pe $3 a atins cantitatea maximă de date permisă pe banda $1. Va trebui să încărcați o bandă nouă și să apăsați pe linkul „Încărcată cu bandă” din modulul Backup Filesystem Webmin pentru ca copia de rezervă să continue.

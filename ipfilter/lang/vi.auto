@@ -43,8 +43,10 @@ index_natnone=Không có quy tắc dịch địa chỉ mạng đã được xác
 index_nataction=Chế độ NAT
 index_natfrom=Gói phù hợp
 index_natto=Dịch
+
 dir_in=Mới đến
 dir_out=Hướng ngoaị
+
 action_pass=<font color=#00aa00>Đạt</font>
 action_block=<font color=#ff0000>Chặn</font>
 action_skip=Nhảy
@@ -57,6 +59,7 @@ action_map=Lập bản đồ
 action_rdr=Chuyển hướng
 action_bimap=Ánh xạ hai chiều
 action_map-block=Lập bản đồ khối
+
 laction_pass=<font color=#00aa00>Truyền gói</font>
 laction_block=<font color=#ff0000>Chặn gói, với mã ICMP</font>
 laction_log=Đăng nhập gói, ở cấp
@@ -65,6 +68,7 @@ laction_skip=Bỏ qua các quy tắc tiếp theo
 laction_auth=Ủy quyền không gian người dùng
 laction_preauth=Kiểm tra ủy quyền trước
 laction_call=Gọi hàm kernel
+
 edit_title1=Tạo quy tắc
 edit_title2=Chỉnh sửa quy tắc
 edit_header1=Quy tắc hành động
@@ -130,6 +134,7 @@ edit_icmp=Loại ICMP
 edit_icmpany=&lt;Mọi loại&gt;
 edit_icmpcode=và mã
 edit_codeany=&lt;Bất kỳ mã nào&gt;
+
 save_err=Không thể lưu quy tắc
 save_ehostfrom=Tên máy chủ nguồn bị thiếu hoặc không hợp lệ
 save_ehostto=Tên máy chủ đích bị thiếu hoặc không hợp lệ
@@ -158,11 +163,13 @@ save_eto=Giao diện bị thiếu hoặc không hợp lệ để gửi đi
 save_etoip=Địa chỉ IP không hợp lệ để gửi đi
 save_ereplyto=Giao diện bị thiếu hoặc không hợp lệ để trả lời
 save_ereplytoip=Địa chỉ IP không hợp lệ để trả lời
+
 apply_err=Không thể áp dụng cấu hình
 apply_remote=Lỗi từ $1 : $2 
 unapply_err=Không thể hoàn nguyên cấu hình
 unapply_ein=Không thể lấy quy tắc đầu vào
 unapply_eout=Không thể lấy quy tắc đầu ra
+
 desc_if=Nếu $1 
 desc_and=và
 desc_always=Luôn luôn
@@ -196,6 +203,7 @@ desc_rdr=Địa chỉ IP $1 cổng $2
 desc_dport1=cổng là $1 
 desc_dport2=cổng nằm giữa $1 và $2 
 desc_nattoiface=địa chỉ giao diện
+
 log_create_rule=Tạo quy tắc $1 
 log_delete_rule=Đã xóa quy tắc $1 
 log_modify_rule=Đã sửa đổi quy tắc $1 
@@ -224,6 +232,7 @@ log_add_host=Đã thêm máy chủ cụm $1
 log_add_group=Đã thêm máy chủ cụm từ nhóm $1 
 log_delete_host=Đã xóa máy chủ cụm $1 
 log_delete_group=Đã xóa $1 cụm máy chủ
+
 cluster_title=Máy chủ tường lửa cụm
 cluster_none=Chưa có máy chủ nào được thêm vào cụm tường lửa.
 cluster_host=Tên máy chủ
@@ -234,6 +243,7 @@ cluster_gadd=Thêm máy chủ trong nhóm
 cluster_need=Bạn phải thêm các máy chủ có thông tin đăng nhập và mật khẩu trong mô-đun Chỉ mục Máy chủ Webmin trước khi chúng có thể được quản lý tại đây.
 cluster_return=máy chủ cụm
 cluster_delete=Bỏ đã chọn
+
 add_title=Thêm máy chủ
 add_msg=Thêm $1 ..
 add_gmsg=Thêm máy chủ trong nhóm $1 ..
@@ -242,6 +252,7 @@ add_gerr=Không thể thêm nhóm
 add_echeck=Máy chủ $1 không có mô-đun Tường lửa IPFilter
 add_emissing=Máy chủ $1 thiếu lệnh tường lửa $2 
 add_ok=Đã thêm $1, với $2 quy tắc tường lửa hoạt động.
+
 nat_title1=Tạo quy tắc NAT
 nat_title2=Chỉnh sửa quy tắc NAT
 nat_action=Chế độ NAT
@@ -300,4 +311,5 @@ nat_edport2=Cổng gốc bị thiếu hoặc không hợp lệ
 net_erdrip='$1' không phải là địa chỉ IP đích hợp lệ
 nat_erdrips=Không có IP đích nào được nhập
 nat_erdrport=Cổng đích bị thiếu hoặc không hợp lệ
+
 boot_esmf=Dịch vụ SMF $1 không tồn tại hoặc không ở trạng thái đã biết

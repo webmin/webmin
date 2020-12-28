@@ -25,6 +25,7 @@ index_family=Modell család
 index_serial=Sorozatszám
 index_capacity=Kapacitás
 index_norm=normalizálódott:
+
 monitor_type=SMART meghajtó ellenőrzése
 monitor_type2=SSD kopás
 monitor_drive=Menjen ellenőrizni
@@ -40,14 +41,17 @@ monitor_wearlevel=Nem sikerül, ha a kopási szint alá esik
 monitor_ewearlevel=Érvénytelen kopási szint
 monitor_nowearout=A meghajtó nem jelent SSD kopásjelzőt
 monitor_wornout=A kopás szintje $1 -re csökkent
+
 short_title=Rövid önteszt
 short_doing=$1 önellenőrzés indítása ..
 short_failed=.. nem sikerült!
 short_ok=.. A teszt rendben indult. Az eredményeket lásd a meghajtó állapotát a modul főoldalán.
+
 ext_title=Bővített önteszt
 ext_doing=$1 kibővített önteszt indítása ..
 ext_failed=.. nem sikerült!
 ext_ok=.. A teszt rendben indult. Az eredményeket lásd a meghajtó állapotát a modul főoldalán.
+
 data_title=Adatgyűjtési teszt
 data_doing=Az offline adatgyűjtés megkezdése a $1 -en.
 data_failed=.. nem sikerült!

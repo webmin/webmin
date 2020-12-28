@@ -5,6 +5,7 @@ index_ereq_resource_cmd=A rendszerben nem található a forrás igénylésére s
 index_version=$1 szívverés
 index_noversion=Figyelem! A rendszerre telepített Heartbeat verzióját nem lehetett automatikusan felismerni. A <a href='$1'>modul konfigurációja</a> oldalon kell beállítania.
 index_status=Szívverés állapota
+
 conf_serials=Soros szívverés portok
 conf_bcasts=Ethernet pulzus interfészek
 conf_mcast=Multicast szívveréses eszköz
@@ -37,6 +38,7 @@ conf_auto_on=$ {Conf_enabled}
 conf_auto_off=$ {Conf_disabled}
 conf_auto_legacy=Régi mód
 conf_auto_=$ {} Alapértelmezett
+
 res_title=Klaszter erőforrások
 res_node=Elsődleges csomópont
 res_ips=IP címek
@@ -50,4 +52,5 @@ res_getserv=Get Resource
 res_hbdown=Szívverés
 res_up=FEL
 res_down=LE
+
 node_create=Adjon hozzá fürt erőforrást

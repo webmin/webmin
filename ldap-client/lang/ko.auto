@@ -14,6 +14,7 @@ index_restart=LDAP 클라이언트 데몬 재시작
 index_restartdesc=로컬 LDAP 클라이언트 디먼을 다시 시작하여 현재 구성을 적용하십시오.
 index_atboot=부팅시 LDAP 클라이언트 시작
 index_atbootdesc=시스템 부팅시 LDAP 클라이언트 데몬의 시작 여부를 변경합니다.
+
 server_title=LDAP 서버 구성
 server_header=LDAP 서버 및 로그인 옵션
 server_host=LDAP 서버 호스트 이름
@@ -51,6 +52,7 @@ server_etimelimit=연결 시간 제한이 없거나 잘못되었습니다
 server_ecacert=누락되거나 잘못된 CA 인증서 파일
 server_euport=서버 $1 에 대한 포트가 없거나 유효하지 않습니다
 server_euri=입력 한 LDAP 서버가 없습니다
+
 base_title=LDAP 검색 기반
 base_header=LDAP 디렉토리 검색 위치
 base_base=글로벌 검색 기반
@@ -86,6 +88,7 @@ base_enetmasks=넷 마스크 이름에 대한 누락 된 기본
 base_ealiases=이메일 별칭을위한 누락 된 기본
 base_enetgroup=넷 그룹을위한 누락 된 기본
 base_etimelimit=검색 시간 제한이 없거나 잘못되었습니다
+
 pam_title=인증 옵션
 pam_header=PAM 인증 및 비밀번호 설정
 pam_filter=추가 LDAP 필터
@@ -106,10 +109,12 @@ pam_efilter=추가 LDAP 필터가 없습니다.
 pam_elogin=사용자 이름에 대한 LDAP 속성이 없거나 잘못되었습니다
 pam_egroupdn=LDAP 그룹이 없어서
 pam_emember=그룹 구성원에 대한 LDAP 속성이 없거나 유효하지 않습니다
+
 switch_title=LDAP를 사용하는 서비스
 switch_service=서비스
 switch_srcs=데이터 소스
 switch_return=LDAP를 사용하는 서비스
+
 ldap_emodule=LDAP 서버와 통신하는 데 필요한 $1 Perl 모듈이 설치되지 않았습니다. Webmin을 다운로드하여 지금 설치하려면 <a href='$2'>여기를 클릭</a>하십시오.
 ldap_emodule2=LDAP 서버와 통신하는 데 필요한 $1 Perl 모듈이 설치되지 않았습니다.
 ldap_econf=시스템에서 LDAP 클라이언트 구성 파일 $1 을 (를) 찾을 수 없습니다
@@ -119,6 +124,7 @@ ldap_elogin=$2 (으)로 LDAP 서버 $1 에 바인딩하지 못했습니다  : $3
 ldap_anon=익명
 ldap_eparse=LDAP 서버 URI $1 을 (를) 구문 분석 할 수 없습니다.
 ldap_etls=TLS 모드로 전환하지 못했습니다  : $1 
+
 browser_title=LDAP 브라우저
 browser_econn=LDAP 브라우저를 사용할 수 없습니다  : $1 
 browser_base=브라우징 :
@@ -129,6 +135,7 @@ browser_attrs=객체 속성
 browser_parent=부모 찾아보기
 browser_none=없음
 browser_sel=확인
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=사용자 프린터
 order_xfn=XFN
 order_mdns4=멀티 캐스트 DNS
 order_mdns4_minimal=멀티 캐스트 DNS (최소)
+
 desc_aliases=Sendmail 별칭
 desc_mail=Sendmail 별칭
 desc_hosts=호스트 주소
@@ -177,6 +185,7 @@ desc_printers=프린터
 desc_ipnodes=IP 노드
 desc_timezone=시간대
 desc_locale=로케일
+
 eswitch_title=서비스 편집
 eswitch_egone=서비스가 존재하지 않습니다!
 eswitch_header=서비스 내용
@@ -196,6 +205,7 @@ eswitch_continue=검색 계속
 eswitch_none=없음
 eswitch_err=서비스를 저장하지 못했습니다
 eswitch_enone=선택된 소스가 없습니다!
+
 log_server=수정 된 LDAP 서버 구성
 log_base=수정 된 LDAP 검색 기준
 log_pam=수정 된 인증 옵션
@@ -205,6 +215,7 @@ log_delboot=부팅시 비활성화 된 LDAP 클라이언트 데몬
 log_start=시작된 LDAP 클라이언트 데몬
 log_stop=중지 된 LDAP 클라이언트 데몬
 log_restart=LDAP 클라이언트 데몬 재시작
+
 check_title=LDAP 구성 확인
 check_base=사용자를위한 LDAP 기반 찾기 ..
 check_ebase=.. 클라이언트 구성에서 찾을 수 없습니다!

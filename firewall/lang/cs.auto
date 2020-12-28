@@ -1,6 +1,7 @@
 index_title_v=Firewall IPv4
 index_title_v6=Firewall IPv6
 index_evalid=VAROVÁNÍ! Vaše aktuální konfigurace IPtables je neplatná : $1 
+index_no_comment=
 index_crename=Přejmenovat řetězec
 index_cmovesel=Přesunout vybrané
 index_unapply2=Uložit konfiguraci
@@ -19,6 +20,9 @@ index_ipset_size=Velikost
 index_ipvxmode=Změnit verzi protokolu IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
+desc_icmpv6-type=Typ ICMP je $1 
+desc_icmpv6-type!=Typ ICMP není $1 
 desc_ctstate=stav připojení je $1 
 desc_ctstate!=stav připojení není $1 
 desc_physdev-in=vstupní fyzické rozhraní je $1 
@@ -28,7 +32,9 @@ desc_physdev-out!=výstupní fyzické rozhraní není $1
 desc_args--match-set=$2 je obsaženo v sadě IP $1 
 desc_src=zdroj
 desc_dest=destinace
+
 redhat_einstalled=Nebyla nalezena žádná spouštěcí akce <tt>iptables (6)</tt>, což naznačuje, že balíček IPtables není na vašem systému nainstalován.
+
 edit_state_untracked=Nesledováno
 edit_state_snat=Zdroj NATd
 edit_state_dnat=Cílový NATd
@@ -37,18 +43,23 @@ edit_physdevout=Odchozí fyzické rozhraní
 edit_physdevisin=Příchozí paket na rozhraní mostu
 edit_physdevisout=Odchozí paket na rozhraní mostu
 edit_physdevisbridged=Paket je přemostěn
+
 save_ephysdevin=Chybějící nebo neplatné příchozí fyzické rozhraní
 save_ephysdevout=Chybějící nebo neplatné odchozí fyzické rozhraní
+
 log_rename_chain=Přejmenovaný řetězec $1 v tabulce $2 
 log_movesel_chain=Pravidla $3 byla přesunuta z řetězce $1 v tabulce $2 
 log_openports=Otevřené porty brány firewall $1 
+
 add_enone=Nebyly vybrány žádné servery, které chcete přidat!
+
 move_title=Přesunout pravidla
 move_count=Vybraná pravidla
 move_chain=Aktuální změna
 move_dest=Cílový řetězec
 move_ok=Přesuňte se
 move_header=Pravidla přesunout možnosti
+
 rename_title=Přejmenovat řetězec
 rename_count=Pravidla v řetězci
 rename_chain=Aktuální jméno
@@ -58,5 +69,3 @@ rename_header=Řetězce přejmenovat možnosti
 rename_adjust=Upravit další pravidla, která přeskočí do tohoto řetězce?
 rename_none=Žádný
 rename_ecannot=Není dovoleno přejmenovat řetězce
-desc_icmpv6-type=Typ ICMP je $1 
-desc_icmpv6-type!=Typ ICMP není $1 

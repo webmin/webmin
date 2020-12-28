@@ -39,7 +39,9 @@ index_thost=Värdnamn
 index_tdesc=Beskrivning
 index_tver=Version
 index_ttype=OS-typ
+
 this_server=den här servern
+
 add_title=Lägg till servrar
 add_msg=Lägger till $1 ..
 add_gmsg=Lägga till servrar i grupp $1 ..
@@ -49,6 +51,7 @@ add_echeck=Server $1 har inte konfigurationsmodulen Usermin
 add_echeck2=Servern $1 har inte modulen Usermin-användare
 add_eversion=Servern $1 kör inte Usermin version $2 eller högre.
 add_ok=Lade till $1 med $2 moduler och $3 teman.
+
 refresh_title=Uppdatera modul- och temalistor
 refresh_header=Begär om modul- och temalistor från alla servrar ..
 refresh_header4=Begär om modul- och temalistor från medlemmar i $2 ..
@@ -64,6 +67,7 @@ refresh_g2=Borttagit $1 grupper.
 refresh_done=.. Gjort
 refresh_del=Borttagen $1 från serverlistan
 refresh_failed=Det gick inte att uppdatera $1 : $2 
+
 host_title=Hanterad server
 host_header=Hanterade Usermin-serverdetaljer
 host_name=Värdnamn
@@ -81,6 +85,7 @@ host_header_u=Usermin användare
 host_header_g=Usermin grupper
 host_return=serverinformation
 host_version2=Version
+
 edit_title_mod=Redigera modul
 edit_title_theme=Redigera tema
 edit_header_mod=Information om Usermin-modulen från $1 
@@ -103,6 +108,7 @@ edit_codes=Från test $1
 edit_acl=Redigera ACL för
 edit_uacl=Användare $1 på $2 
 edit_gacl=Grupp $1 på $2 
+
 install_err=Det gick inte att installera modulen
 install_title=Installera modul
 install_elocal=Ingen lokal fil anges
@@ -123,6 +129,7 @@ do_failed=Det gick inte att installera på $1 : $2
 do_success_mod=Installerad modul $2 på $1 
 do_success_theme=Installerat tema $2 på $1 
 do_done=.. Gjort
+
 delete_err=Det gick inte att ta bort modul $1 
 delete_epack=Modulen $1 finns inte
 delete_title=Radera modul
@@ -140,6 +147,7 @@ delete_edepends=Modul (er) $1 beror på den.
 delete_egone=Modulen finns inte längre
 delete_esuccess=Raderades från $1 : $2 
 delete_acls=Ta bort från användare och återställa inställningar för åtkomstkontroll?
+
 user_title1=Skapa Usermin-användare
 user_header1=Ny användarinformation för Usermin
 user_name=Användarnamn
@@ -198,11 +206,13 @@ user_all=&lt;alla värdar&gt;
 user_donthave=&lt;värdar som inte har det&gt;
 user_have=&lt;värdar som har det&gt;
 user_ofgroup=Medlemmar av $1 
+
 udelete_title=Radera användare
 udelete_doing=Tar bort användare $1 från alla värdar ..
 udelete_success=Raderades från $1 
 udelete_failed=Det gick inte att ta bort från $1 : $2 
 udelete_done=.. Gjort
+
 group_title1=Skapa grupp
 group_header1=Nya Usermin-gruppdetaljer
 group_name=Grupp namn
@@ -230,6 +240,7 @@ group_failed2=Det gick inte att uppdatera gruppen på $1 : $2
 group_return=gruppinformation
 group_nomems=Inga medlemmar
 group_servers=Server (er) att skapa på
+
 gdelete_title=Radera grupp
 gdelete_desc=Är du säker på att du vill ta bort gruppen $1 och dess medlemsanvändare $2 från alla värdar?
 gdelete_ok=Radera grupp
@@ -238,6 +249,7 @@ gdelete_success=Raderades från $1
 gdelete_failed=Det gick inte att ta bort från $1 : $2 
 gdelete_done=.. Gjort
 gdelete_esub=Denna grupp har undergrupper $1 och kan därför inte raderas.
+
 acl_title=Modulåtkomstkontroll
 acl_title2=För användare $1 i $2 på $3 
 acl_title3=För grupp $1 i $2 på $3 
@@ -256,6 +268,7 @@ acl_doing2=Ställer in åtkomstkontroll för $1 på $2 ..
 acl_success=Ställ in åtkomstkontroll på $1 
 acl_failed=Det gick inte att ställa in åtkomstkontroll på $1 : $2 
 acl_done=.. Gjort
+
 sync_title=Synkronisera servrar
 sync_desc=Detta formulär låter dig skapa Usermin-användare och grupper på servrar som för närvarande inte har dem, för att få konton synkroniserade på alla servrar i ditt kluster.
 sync_hosts=Servrar att synkronisera
@@ -279,6 +292,7 @@ sync_gcreate=Lägger till Usermin-grupp $1 ..
 sync_acl=Kopierar ACL-filer för $1 ..
 sync_test=Visa bara vad som skulle göras?
 sync_restart=Starta om Usermin ..
+
 upgrade_title=Uppgradera Usermin
 upgrade_header=Uppgradera Usermin på alla värdar ..
 upgrade_header2=Uppgradera Usermin på $1 ..
@@ -297,6 +311,7 @@ upgrade_failed=Det gick inte att installera på $1 : $2
 upgrade_done=.. Gjort
 upgrade_efast=Endast servrar som använder snabbt RPC-läge kan uppgraderas
 upgrade_ereconn=Det gick inte att ansluta till Usermin efter uppgradering!  : $1 
+
 update_title=Uppdatera moduler
 update_header=Uppdaterar moduler alla värdar ..
 update_header5=Uppdatering av moduler på $2 ..

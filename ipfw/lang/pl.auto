@@ -25,6 +25,7 @@ index_resetdesc=Kliknij ten przycisk, aby wyczyścić wszystkie istniejące regu
 index_cluster=Serwery klastrowe
 index_clusterdesc=Kliknij ten przycisk, aby skonfigurować dodatkowe serwery Webmin, na które konfiguracja zapory zostanie automatycznie skopiowana.
 index_return=reguły zapory ogniowej
+
 index_num=Num
 index_action=Akcja
 index_desc=Stan
@@ -37,6 +38,7 @@ index_delete=Usuń wybrane
 index_existing=Webmin wykrył aktualnie używane reguły zapory $1 IPFW, które nie są zapisane w pliku $2. Te reguły zostały prawdopodobnie skonfigurowane ze skryptu, którego ten moduł nie wie, jak czytać i edytować. <p> Jeśli chcesz użyć tego modułu do zarządzania zaporą IPFW, kliknij przycisk poniżej, aby przekonwertować istniejące reguły na plik zapisu, a następnie wyłącz istniejący skrypt zapory.
 index_saveex=Zapisz reguły zapory
 index_headerex=Istniejąca konfiguracja zapory
+
 action_allow=<font color=#00aa00>Zezwól</font>
 action_deny=<font color=#ff0000>Upuść</font>
 action_reject=<font color=#ff4400>Odrzuć</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Upuść pakiet</font>
 laction_reject=<font color=#ff4400>Zwróć odrzucenie ICMP</font>
 laction_reset=<font color=#ff4400>Zresetuj połączenie TCP</font>
 laction_skipto=Przejdź do zasady
+
 edit_title1=Stwórz zasadę
 edit_title2=Edytuj regułę $1 
 edit_header1=Reguła działania
@@ -114,6 +117,7 @@ edit_src-addr=Z adresu źródłowego
 edit_src-port=Z portu źródłowego ..
 edit_dst-addr=Do adresu docelowego ..
 edit_dst-port=Do portu docelowego ..
+
 save_err=Nie udało się zapisać reguły
 save_enum=Brakujący lub nieprawidłowy numer reguły
 save_eskipto=Brakujący lub nieprawidłowy numer reguły do pominięcia
@@ -144,7 +148,9 @@ save_etcpflags=Flagi TCP można określić tylko, jeśli protokołem jest TCP
 save_elimit=Brakujący lub nieprawidłowy maksymalny limit
 save_edstport=Brakujący lub nieprawidłowy port docelowy
 save_esrcport=Brakujący lub nieprawidłowy port źródłowy
+
 apply_err=Nie można zastosować konfiguracji
+
 desc_if=Jeśli $1 
 desc_and=i
 desc_always=Zawsze
@@ -191,6 +197,7 @@ desc_where=gdzie $1
 desc_all=dla wszystkich pakietów
 desc_in=pakiet przychodzi
 desc_out=pakiet jest wychodzący
+
 log_create_rule=Utworzono regułę $1 
 log_delete_rule=Usunięto regułę $1 
 log_modify_rule=Zmodyfikowano regułę $1 
@@ -206,6 +213,7 @@ log_convert=Przekształcone aktywne reguły zapory
 log_setup=Przeprowadzono wstępną konfigurację zapory
 log_unapply=Cofnięta konfiguracja zapory
 log_delsel=Usunięte reguły $1 
+
 cluster_title=Cluster Firewall Servers
 cluster_none=Do klastra zapory ogniowej nie dodano jeszcze serwerów.
 cluster_host=Nazwa hosta
@@ -216,6 +224,7 @@ cluster_gadd=Dodaj serwery w grupie
 cluster_need=Musisz dodać serwery z loginem i hasłem do modułu Webmin Servers Index, zanim będzie można nimi tutaj zarządzać.
 cluster_return=serwery klastrowe
 cluster_delete=Usuń zaznaczone
+
 add_title=Dodaj serwery
 add_msg=Dodawanie $1 ..
 add_gmsg=Dodawanie serwerów w grupie $1 ..

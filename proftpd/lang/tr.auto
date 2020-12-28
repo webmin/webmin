@@ -27,7 +27,9 @@ index_global=Global Yapılandırma
 index_create=Sanal sunucu oluştur
 index_version=ProFTPd sürümü $1 
 index_proftpd=proftpd
+
 efailed=$1 kaydedilemedi
+
 type_0=Ağ Seçenekleri
 type_1=Günlük Seçenekleri
 type_2=Dosyalar ve Dizinler
@@ -35,6 +37,7 @@ type_3=Giriş kontrolu
 type_4=Çeşitli
 type_5=Kullanıcı ve Grup
 type_6=Kimlik Doğrulama
+
 virt_title=Sanal Sunucu Seçenekleri
 virt_header1=1 için
 virt_header2=Varsayılan sunucu için
@@ -50,6 +53,7 @@ virt_cmds=FTP komutları
 virt_return=sanal sunucu
 virt_virt=Sanal Sunucuyu Yapılandırma
 virt_edit=Direktifleri Düzenle
+
 vserv_title=Sanal Sunucuyu Yapılandırma
 vserv_addr=Adres
 vserv_name=Sunucu adı
@@ -58,6 +62,7 @@ vserv_delete=Sanal sunucuyu sil
 vserv_eaddr=Eksik veya geçersiz adres
 vserv_eport=Eksik veya geçersiz bağlantı noktası numarası
 vserv_ename=Eksik sunucu adı
+
 anon_title=Anonim FTP Seçenekleri
 anon_header1=$1 sanal sunucusunda
 anon_header2=Varsayılan sunucuda
@@ -65,6 +70,7 @@ anon_anon=Anonim FTP'yi Yapılandırma
 anon_return=anonim FTP seçenekleri
 anon_header3=$1 sanal sunucusunda anonim FTP için
 anon_header4=Varsayılan sunucuda anonim FTP için
+
 aserv_title=Anonim FTP'yi Yapılandırma
 aserv_create=Anonim FTP Kurulumu
 aserv_root=Dizine sınırla
@@ -75,6 +81,7 @@ aserv_eroot=Eksik veya geçersiz chroot dizini
 aserv_euser=Eksik veya geçersiz Unix kullanıcısı
 aserv_egroup=Eksik veya geçersiz Unix grubu
 aserv_desc=Bu sanal sunucu için anonim FTP henüz kurulmadı. İlk yapılandırma seçeneklerini ayarlamak için bu formu kullanın.
+
 dir_title=Dizin Başına Seçenekler
 dir_header2=Varsayılan sunucudaki $1 dizini için
 dir_header1=$2 sanal sunucusundaki $1 dizini için
@@ -85,6 +92,7 @@ dir_header=Komut başına seçenekler
 dir_dir=Dizini Yapılandır
 dir_header4=Anonim FTP'deki $1 dizini için
 dir_header5=Global olarak $1 dizini için
+
 manual_title=Direktifleri Düzenle
 manual_header=Bu sanal sunucu, dizin veya komutlar için geçerli olan $1 içindeki ProFTPD yönergelerini el ile düzenlemek için aşağıdaki metin kutusunu kullanın.
 manual_configs=Yapılandırma Dosyalarını Düzenle
@@ -92,6 +100,7 @@ manual_ecannot=Direktifleri manuel olarak düzenleme izniniz yok
 manual_file=Dosyadaki Yönergeleri Düzenle:
 manual_efile=Geçersiz ProFTPd yapılandırma dosyası
 manual_etest=Yapılandırma dosyası hatası algılandı : $1 
+
 limit_title=Komut Başına Seçenekler
 limit_header4=$2 dizinindeki $1 komutları için
 limit_header2=Varsayılan sunucudaki $1 komutları için
@@ -103,17 +112,20 @@ limit_return=komut başına seçenekler
 limit_header5=Anonim FTP'deki $1 komutları için
 limit_header6=$2 dosyasındaki $1 komutları için
 limit_header7=Global olarak $1 komutları için
+
 lserv_title=Komutları Yapılandırma
 lserv_cmd=FTP komutları
 lserv_delete=Komutları sil yapılandırma
 lserv_err=Komutlar kaydedilemedi
 lserv_ecmd=Seçili komut yok
+
 dserv_title=Dizini Yapılandır
 dserv_dir=Klasör yolu
 dserv_err=Dizin kaydedilemedi
 dserv_edir=Eksik dizin yolu
 dserv_delete=Dizin yapılandırmasını sil
 dserv_eanondir=Dizin anonim FTP dizininin altında olmalıdır
+
 mod_core_type=Sunucu tipi
 mod_core_inetd=Inetd'den Çalıştır
 mod_core_stand=Bağımsız daemon
@@ -301,6 +313,7 @@ mod_core_duser=Kullanıcıları reddet
 mod_core_eip='$1' geçerli bir IP adresi değil
 mod_core_enet='$1' geçerli bir ağ adresi değil
 mod_core_ehost='$1' geçerli bir ana makine adı değil
+
 mod_ls_fakegroup=Dizin listelerinde sahte grup mu?
 mod_ls_fakeuser=Dizin listelerinde sahte kullanıcı mısınız?
 mod_ls_fakemode=Dizin listelerinde sahte izinler
@@ -317,6 +330,7 @@ mod_ls_efakeuser=Eksik veya geçersiz sahte kullanıcı
 mod_ls_efakegroup=Eksik veya geçersiz sahte grup
 mod_ls_options=Dizin listesi seçenekleri
 mod_ls_strict=Kullanıcı seçenekleri geçersiz kılsın mı?
+
 mod_auth_chdir=İlk giriş dizini
 mod_auth_echdir=Eksik veya geçersiz başlangıç dizini
 mod_auth_chroot=Kullanıcıları dizinlerle sınırla
@@ -330,7 +344,9 @@ mod_auth_egroups=Chroot için Unix grubu girilmedi
 mod_auth_echroot=Eksik veya geçersiz chroot dizini
 mod_auth_login=Giriş reddedilirse şifre istemiyor musunuz?
 mod_auth_root=Root ile giriş yapılmasına izin verilsin mi?
+
 mod_site_chmod=Chmod komutuna izin verilsin mi?
+
 mod_unixpw_ufile=Alternatif Unix şifre dosyası
 mod_unixpw_eufile=Eksik veya geçersiz Unix şifre dosyası
 mod_unixpw_gfile=Alternatif Unix grup dosyası
@@ -338,6 +354,7 @@ mod_unixpw_egfile=Eksik veya geçersiz Unix grup dosyası
 mod_unixpw_none=Yok
 mod_unixpw_pam=PAM'ı her zaman yetkili olarak mı değerlendiriyorsunuz?
 mod_unixpw_persist=Şifre dosyası sürekli açık tutulsun mu?
+
 mod_log_syslog=Hataları dosyaya kaydedin
 mod_log_sysdef=Sistem günlüğü
 mod_log_esyslog=Eksik veya geçersiz günlük dosyası
@@ -354,19 +371,25 @@ mod_log_fmt=Dizeyi biçimlendir
 mod_log_format=Özel günlük biçimleri
 mod_log_enickname=Eksik veya geçersiz biçim adı
 mod_log_efmt=Biçim dizesi eksik
+
 mod_pam_pam=Kimlik doğrulaması için PAM kullanılsın mı?
 mod_pam_config=PAM hizmetini kullanarak kimlik doğrulaması yapma
 mod_pam_econfig=Eksik veya geçersiz PAM hizmeti
+
 mod_readme_display=Benioku dosyalarını eşleştiren kullanıcıyı bilgilendir
 mod_readme_none=Yok
 mod_readme_edisplay=Benioku dosyaları kalıbı eksik
+
 start_err=FTP sunucusu başlatılamadı
 start_einetd=İnetd modundayken sunucu arka plan programını başlatamazsınız.
+
 stop_err=FTP sunucusu durdurulamadı
 stop_einetd=İnetd modundayken sunucu arka plan programını durduramazsınız.
 stop_erun=Koşmak yok
+
 apply_err=FTP yapılandırması uygulanamadı
 apply_egone=Artık koşmuyor
+
 ftpaccess_title=Dizin Başına Seçenek Dosyaları
 ftpaccess_desc=Her klasördeki bir dosyada (genellikle <tt>.ftpaccess</tt> denir) dizin başına ek seçenekler belirtilebilir. Seçenekler, başka bir seçenek dosyası tarafından geçersiz kılınmadıkça, bu dizindeki tüm dosyalar ve tüm alt dizinler için geçerlidir.
 ftpaccess_create=Seçenekler Dosyası Oluştur
@@ -374,8 +397,10 @@ ftpaccess_find=Seçenek Dosyalarını Bul
 ftpaccess_auto=İsimsiz olarak
 ftpaccess_from=Dizinden
 ftpaccess_return=seçenekler dosya listesi
+
 ftpusers_title=Reddedilen FTP Kullanıcıları
 ftpusers_desc=<tt>Kimlik Doğrulama</tt> simgesi altında etkinleştirilirse, $1 dosyasından aşağıda listelenen kullanıcıların FTP kullanıcısına oturum açma erişimi reddedilir.
+
 ftpindex_title=Dizin Başına Seçenek Dosyası
 ftpindex_delete=Dosyayı sil
 ftpindex_opts=Dizin Başına Seçenekler
@@ -385,8 +410,10 @@ ftpindex_addlimit=İçin komut başına seçenekler ekle ..
 ftpindex_header2=$2 içinde $1 
 ftpindex_return=dizin başına seçenekler dosyası
 ftpindex_header=1 için
+
 find_err=Seçenek dosyaları bulunamadı
 find_eanon=Anonim FTP herhangi bir sanal sunucuda ayarlanmamış
+
 log_global=Değişen global $1 seçenekleri
 log_ftpusers=Reddedilen FTP kullanıcıları değişti
 log_virtc=$1 sunucusu oluşturuldu
@@ -420,6 +447,7 @@ log_anonm=$1 sunucusu için elle düzenlenmiş anonim FTP
 log_anon=$2 sunucusu için anonim FTP'de $1 değiştirildi
 log_start=Başlatılan proftpd
 log_apply=Uygulanan değişiklikler
+
 eafter=Yapılandırma doğrulaması başarısız oldu: $1 Değişiklikler kaydedilmedi.
 proftpd_apply=Değişiklikleri uygula
 proftpd_stop=ProFTPd'yi durdur

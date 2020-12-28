@@ -57,6 +57,7 @@ index_reposdisable=Deaktiver lagre
 index_reposenable=Aktivér lagre
 index_reposdelete=Slet arkiver
 index_repoheader=Nye indstillinger for pakkeopbevaring
+
 update_title=Opdater pakker
 update_title2=Installer pakker
 update_enone=Ingen pakker valgt
@@ -94,9 +95,11 @@ update_none=Ingen
 update_ops=Opbygning af komplette liste over pakker ..
 update_rebootdesc=En af de installerede pakker kræver, at en genstart anvendes fuldt ud.
 update_reboot=Genstart nu
+
 sched_title=Planlagt opdatering
 sched_yes=Planlagt kontrol for opdateringer er nu aktiv.
 sched_no=Planlagt kontrol for opdateringer er deaktiveret.
+
 log_update=Installerede $1 opdaterede pakker
 log_sched=Aktiverede planlagte opdateringer
 log_unsched=Deaktiverede planlagte opdateringer
@@ -108,11 +111,13 @@ log_enable_repo=Aktiveret pakkeopbevaring $1
 log_disable_repo=Deaktiveret pakkeopbevaring $1 
 log_delete_repo=Slettet pakkeopbevaring $1 
 log_create_repo=Oprettet pakkeopbevaring $1 
+
 refresh_title=Forfriskende pakker
 refresh_clearing=Rydning af cache-pakker ..
 refresh_done=.. Færdig
 refresh_available=Genhentning af tilgængelige pakker ..
 refresh_done3=.. fundet $1 mulige opdateringer
+
 view_title=Pakkeoplysninger
 view_header=Opdaterbare pakkeoplysninger
 view_name=Pakkenavn
@@ -126,12 +131,14 @@ view_changelog=Changelog til tilgængelig version
 view_software=Administrer pakke
 view_update=Opdater pakke
 view_install=Installer pakken
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)
 system_webmin=Webmin-modul
 system_usermin=Usermin-modul
 system_tgz=Webmin eller Usermin tar.gz
+
 repos_err_disable=Kunne ikke deaktivere lagre
 repos_err_enable=Kunne ikke aktivere lagre
 repos_err_delete=Kunne ikke slette lagre

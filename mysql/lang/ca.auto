@@ -1,10 +1,16 @@
 table_delete=Suprimeix els camps seleccionats
+
 view_refresh=Actualització
 view_go=Va
+
 user_locked=Bloquejat
+
 tprivs_drusure=Esteu segur que voleu suprimir els permisos de la taula MySQL seleccionats $1 ?
+
 cnf_table_open_cache=Taules per a la memòria cau
+
 syslog_desc2=Missatge d'error MySQL
+
 mysqlpass_err=Mode segur MySQL
 mysqlpass_esafecmd=No s'ha trobat l'ordre $1 necessària per iniciar MySQL amb l'autenticació desactivada
 mysqlpass_eshutdown=Error en apagar : $1 

@@ -15,6 +15,7 @@ index_use=Uża
 index_free=Ħielsa
 index_format=Din id-diska mhix ifformattjata
 index_return=Lista tad-diski
+
 edit_ecannot=M'għandekx permess teditja din id-diska
 edit_title=Editja d-diviżorju
 edit_header=Dettalji tad-Diviżjoni
@@ -56,6 +57,7 @@ edit_tunedesc2=Ma tistax tixgħel is-sistema ta 'fajls fuq din il-partizzjoni g�
 edit_tunedesc3=Ma tistax taffordja s-sistema tal-fajls fuq din il-partizzjoni għaliex bħalissa hija mmuntata. Uża l-modulu <a href=/mount/>filesystems</a> biex tneħħiha mill-ewwel.
 edit_tunedesc4=Ma tistax tixgħel is-sistema ta 'fajls fuq din il-partizzjoni minħabba li m'għandhiex sistema ta' fajls.
 edit_tunedesc5=Ma tistax taffordja s-sistema tal-fajls fuq din il-partizzjoni minħabba li <tt>UFS</tt> filesystems biss jistgħu jiġu sintonizzati.
+
 save_ecannot=M'għandekx permess teditja din id-diska
 save_edelete=Naqset milli tħassar il-partizzjoni
 save_esave=Ma rnexxielux isalva l-qasma
@@ -64,6 +66,7 @@ save_eend="$1" mhix ċilindru li jispiċċa validu
 save_estartmin=Iċ-ċilindru tal-bidu għandu jkun> 0
 save_eendmax=Iċ-ċilindru tat-tmiem għandu jkun < $1 
 save_estartend=Iċ-ċilindru tal-bidu għandu jkun inqas mit-tmiem
+
 newfs_title=Oħloq Sistema tal-Files
 newfs_ecannot=M’intix permess li tifformata din id-diska
 newfs_desc=Meta tikklikkja l-buttuna fin-naħa ta ’isfel ta’ din il-formola tibni $1 ġdid fuq it-tagħmir $2. Id-data kollha dwar din il-partizzjoni se titħassar b'mod permanenti.
@@ -89,6 +92,7 @@ newfs_err=Ma rnexxielux joħloq sistema ta 'fajls
 newfs_exec=Twettiq kmand $1 ..
 newfs_failed=.. kmand falla!
 newfs_ok=.. kmand komplut.
+
 fsck_title=Tiswija tas-Sistema tal-Files
 fsck_ecannot=M’intix permess li ssewwi din id-diska
 fsck_desc=Meta tikklikkja fuq il-buttuna <b>Tiswija</b> se tiċċekkja u tiswija b'għażla fuq $1 fuq $2. Il-livell ta ’verifika u tiswija huwa determinat bl-għażla tiegħek hawn taħt.
@@ -106,6 +110,7 @@ fsck_37=proċess maqtul waqt l-iċċekkjar
 fsck_39=skoperti żbalji mhux korrettivi!
 fsck_40=ma nstab l-ebda żball
 fsck_unknown=Żball mhux magħruf
+
 tunefs_title=Sintonizza l-Filesystem
 tunefs_ecannot=M'għandekx permess tixgħel din id-diska
 tunefs_desc=Din il-formola tippermetti li taġġusta diversi parametri ta ' $1 fuq $2. Fajls eżistenti f'dan is-sistema ta 'fajls ma jiġux imħassra.
@@ -122,6 +127,7 @@ tunefs_err=Ma rnexxielhiex tirranġa s-sistema tal-fajls
 tunefs_exec=Twettiq kmand $1 ..
 tunefs_failed=.. kmand falla!
 tunefs_ok=.. kmand komplut.
+
 select_device=Kontrollur SCSI $1 fil-mira $2 unità $3 
 select_idedevice=Apparat IDE $1 
 select_part=Kontrollur SCSI $1 fil-mira $2 unità $3 partizzjoni $4 
@@ -131,10 +137,13 @@ esun=Il-ħitan jistgħu jiġu modifikati biss fuq il-ħardwer Sun
 emounted=Id-diska għandha diviżorji mmuntati
 elast=L-aħħar partizzjoni ma tistax titneħħa
 eformat=<tt>Format</tt> ma sibt l-ebda diska!
+
 fstype_ufs=Solaris Unix Filesystem
 fstype_unknown=Sistema ta 'Fajls mhux magħrufa
+
 acl_disks=Diski ta 'dan l-utent jistgħu jaqsmu u jifformaw
 acl_dall=Id-diski kollha
 acl_dsel=Magħżula ..
 acl_view=Tista 'teditja d-diski u d-diviżorji?
+
 ecannot=M'għandekx permess teditja d-diviżorji

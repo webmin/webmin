@@ -3,6 +3,7 @@ connect_elogin=Kirjautuminen tietokantaan epäonnistui $1:$2.
 index_title=Postfix-postipalvelin
 index_epath=Postfix-ohjauskomentoa $1 ei ole asennettu järjestelmään. Ehkä <a href='$2'>moduulin kokoonpano</a> on väärä tai Postfix-tiedostoa ei ole asennettu.
 index_postfix=postfix
+
 internal_error=Sisäinen virhe
 index_econfig=Postfix-asetuskomentoa $1 ei ole. Ehkä <a href='$2'>moduulin kokoonpano</a> on väärä.
 index_esuper=Postfix-valvojan komentoa $1 ei ole. Ehkä <a href='$2'>moduulin kokoonpano</a> on väärä.
@@ -14,8 +15,10 @@ index_startmsg=Napsauta tätä painiketta, kun haluat käynnistää Postfix-post
 index_reloadmsg=Napsauta tätä painiketta, jos haluat Postfixin lukevan uudelleen kaikki sen asetustiedostot. Tästä voi olla hyötyä, jos Postfix-määritystiedostot on muokattu manuaalisesti.
 index_version=Postfix-versio $1
 opts_err=Asetusten tallentaminen epäonnistui
+
 check_error=Virhe tarkistettaessa nykyistä Postfix-määritystä. Korjaa Postfix-määritykset manuaalisesti.
 check_manual=Muokkaa Postfix-määritystiedostoa manuaalisesti.
+
 address_rewriting_title=Osoitteen uudelleenkirjoittaminen ja naamiointi
 address_rewriting_ecannot=Et voi muokata osoitteen uudelleenkirjoittamista ja naamiointia
 aliases_title=Postin aliakset
@@ -42,9 +45,11 @@ aliases_type5=Vastaa tiedosto $1
 aliases_type6=Käytä suodatustiedostoa $1
 aliases_none=Ei mitään
 aliases_delete=Poista valitut aliakset
+
 postfinger_title=Kokoonpanon tarkistus
 postfinger_show=Näytä
 postfinger_ecannot=Et voi tarkistaa Postfix-määritystä
+
 mailclean_title=Puhdista MailQueue
 mailclean_ecannot=Ei oikeuksia MailQueen puhdistamiseen
 mailclean_active=Aktiivinen-jonoon
@@ -53,6 +58,7 @@ mailclean_deferred=Laskennallinen-Jono
 mailclean_defer=Lykkää-Jono
 mailclean_all=Kaikki jonot
 mailclean_search=Haku-String
+
 aform_type0=Ei mitään
 aform_type1=Sähköpostiosoite
 aform_type2=Tiedostossa olevat osoitteet
@@ -68,6 +74,7 @@ aform_val=Alias
 aform_afile=Muokata ..
 aform_return=alias
 aform_cmt=Kuvaus
+
 asave_err=Aliaksen tallentaminen epäonnistui
 asave_eaddr='$1' ei ole kelvollinen osoite
 asave_ealready=Alias nimelle '$1' on jo olemassa
@@ -78,11 +85,13 @@ asave_etype4='$1' ei ole kelvollinen ohjelma tai sitä ei ole olemassa
 asave_etype5=Automaattivastaustiedosto '$1' ei kelpaa
 asave_etype4none=Ohjelmaa ei ole annettu
 asave_etype6=Suodata tiedosto '$1' ei kelpaa
+
 afile_title=Muokkaa osoitetiedostoa
 afile_desc=Muokkaa alla olevan tekstialueen avulla tiedostojen $1 osoitteita.
 afile_efile=Et voi muokata $1.
 afile_undo=Peru muutokset
 afile_ewrite=Osoitetiedostoon kirjoittaminen epäonnistui : $1
+
 ffile_title=Muokkaa suodatustiedostoa
 ffile_desc=Asenna alla olevan lomakkeen suodatussäännöt tiedostoon $1.
 ffile_efile=Et voi muokata $1.
@@ -98,6 +107,7 @@ ffile_other=Muutoin siirrä $1
 ffile_err=Suodatustiedoston tallentaminen epäonnistui
 ffile_ematch=Puuttuu ottelu
 ffile_eaction=Puuttuva edelleenlähetysosoite
+
 rfile_title=Muokkaa automaattisen vastauksen tiedostoa
 rfile_desc=Muokkaa alla olevan tekstialueen avulla automaattisen vastauksen viestiä $1. Viesti voi sisältää makroja $SUBJECT, $FROM, $TO, $DATE ja $BODY, joita laajennetaan, kun automaattinen vastaus aktivoidaan.
 rfile_desc2=Voit myös asettaa posti otsikot, jotka lisäävät tai korvaavat automaattisessa vastauksessa käytetyt oletusasetukset asettamalla rivit kuten: <br><tt> Lähettäjä: foo@bar.com </tt><br> <tt>Aihe: lomalla</tt> <br> viestin yläosassa, erotettuna rungosta yhdellä tyhjellä rivillä.
@@ -116,11 +126,13 @@ rfile_from=Lähettäjä: vastausosoite
 rfile_auto=Automaattinen (perustuu vastaanottajan osoitteeseen)
 rfile_efrom=Puuttuu: osoite
 rfile_fromdesc=Alkaen: Osoite on aina määritettävä, kun mahdollista, koska automaattinen menetelmä ei ehkä ole luotettava.
+
 general_title=Yleiset vaihtoehdot
 general_title_sensible=Hyödyllisimmät yleiset vaihtoehdot
 general_title_others=Muut yleiset vaihtoehdot
 general_ecannot=Et voi muokata yleisiä asetuksia
 what_is_it=Mikä se on?
+
 opts_default=oletusarvo
 opts_none=Ei mitään
 opts_nomap=Ei karttaa
@@ -140,10 +152,12 @@ opts_mail_owner=Postin omistaja
 opts_default_privs=Jakelijan oletusoikeudet
 opts_inet_interfaces=Verkkoliitännät sähköpostin vastaanottamiseen
 opts_all_interfaces=Kaikki
+
 opts_local_recipient_maps=Hylkää tuntemattomat paikalliset käyttäjät
 opts_no=Ei
 opts_save=Tallenna ja käytä
 opts_edir=Voit määrittää karttatiedostot vain kohdassa $1
+
 opts_allow_percent_hack=Kirjoita "käyttäjä%domain" uudelleen "user@domain"
 opts_append_at_myorigin=Kirjoita "käyttäjä" uudelleen "käyttäjä @ $ -verkkotunnus"
 opts_append_dot_mydomain=Kirjoita "user@host" uudelleen käyttäjäksi "user@host.$ verkkotunnus"
@@ -153,13 +167,17 @@ opts_swap_bangpath=Kirjoita "site! User" uudelleen "user @ site"
 opts_masquerade_domains=Osoitteen naamiointi
 opts_masquerade_exceptions=Naamiointi poikkeukset
 index_return=Postfix-määritykset
+
 opts_alias_maps=Paikallisen toimitusagentin käyttämät aliastietokannat
 opts_alias_database="Newaliases" -komennon rakentamat aliastietokannat
 aliases_warning=Varoitus: <ul><li> kun ensimmäinen kenttä ei ole tyhjä, Postfix-oletusasetusten generointikomentoa käytetään vastaavien tietokantojen luomiseen; <li>muuten käytetään Sendmail-yhteensopivuuskomentoa "newaliases", tämä käyttää toisen kentän tietokantoja.</ul>
+
 aliases_name=Nimi
 aliases_value=Alias to. ..
+
 new_alias=Luo uusi alias
 new_aliasmsg=Napsauta tätä painiketta, jos haluat luoda uuden aliaksen
+
 local_delivery_ecannot=Et voi muokata paikallisia toimitusvaihtoehtoja
 local_delivery_title=Paikallinen toimitus
 opts_local_transport=Paikallisten toimitusten kuljetusnimi
@@ -185,6 +203,7 @@ opts_local_destination_recipient_limit=Vastaanottajien enimmäismäärä paikall
 opts_local_destination_recipient_limit_default=oletusarvo
 opts_prepend_delivered_header=Lisää <tt>toimitettu:</tt>, kun. ..
 opts_prepend_delivered_header_default=oletusarvo
+
 resource_title=Resurssien yleinen hallinta
 resource_ecannot=Resurssien hallintaparametreja ei voi muokata
 opts_bounce_size_limit=Palautetun viestin enimmäiskoko
@@ -204,6 +223,7 @@ opts_qmgr_message_recipient_limit=Muistissa olevien vastaanottajien enimmäismä
 opts_queue_minfree=Minimi vapaa tila jonotiedostojärjestelmässä
 opts_stale_lock_time=Enimmäisaika, jonka jälkeen tunkkainen lukitus vapautetaan
 opts_transport_retry_time=Aika sekunneissa, jolloin yritetään ottaa yhteys rikkoutuneeseen MDT: hen
+
 opts_always_bcc=Osoite, joka vastaanottaa piilokopion jokaisesta viestistä
 opts_always_bcc_none=Ei mitään
 opts_daemon_timeout=Pyyntöjen käsittelyn aikakatkaisu
@@ -242,6 +262,7 @@ opts_trigger_timeout=Enimmäisaika liipaisimen lähettämiseen daemonille
 opts_delay_warning_time=Aika tunneissa ennen varoituksen lähettämistä toimittamatta jättämisestä
 opts_delay_warning_time_default2=Postfix-oletus
 opts_content_filter_default=Ei mitään
+
 smtpd_title=SMTP-palvelimen asetukset
 smtpd_ecannot=Sinulla ei ole oikeutta muokata SMTP-palvelimen asetuksia
 opts_disable_vrfy_command=Poista SMTP VRFY -komento käytöstä
@@ -273,6 +294,7 @@ smtpd_nomap=Uudelleenlähetysten sallittujen osoitteiden karttaa ei ole vielä a
 smtpd_nomap2=Lähettäjäosoitteiden rajoituksia koskevaa karttaa ei ole vielä annettu.
 smtpd_map=Sallitut osoitteet välitykseen
 smtpd_map2=Lähettäjien osoitteiden rajoitukset
+
 smtp_title=SMTP-asiakasasetukset
 smtp_ecannot=Sinulla ei ole oikeutta muokata SMTP-asiakasasetuksia
 opts_best_mx_transport=Toimi, kun se luetellaan parhaana MX-isäntänä
@@ -293,6 +315,7 @@ opts_smtp_data_done_timeout=Aikakatkaisu odotettaessa vastausta "" loppuun.
 opts_smtp_quit_timeout=Aikakatkaisu odotettaessa vastausta QUIT
 opts_smtp_use_tls=Käytä TLS: tä SMTP-yhteyksiin
 opts_smtp_sasl_security_options=SASL-tietoturvavaihtoehdot
+
 rate_title=Toimitushinnat
 rate_ecannot=Et voi muokata toimitushintoja
 opts_default_destination_concurrency_limit=Enimmäismäärä samanaikaisia toimituksia samaan määränpäähän
@@ -303,18 +326,21 @@ opts_maximal_queue_lifetime=Enimmäisaika (päivinä) jonossa ennen viestin läh
 opts_minimal_backoff_time=Minimi aika (sekunteina) lykkätyn viestin lähettämisyritysten välillä
 opts_queue_run_delay=Aika (sekunteina) siirretyn jonon skannaamisen välillä
 opts_defer_transports=Kuljetukset, joita ei tule toimittaa
+
 debug_title=Vianmääritysominaisuudet
 debug_ecannot=Et voi muokata virheenkorjausominaisuuksia
 opts_debug_peer_list=Luettelo verkkotunnuksen / verkon malleista, joille verbose log on käytössä
 opts_debug_peer_level=Verbose-kirjaustaso täsmääessäsi yllä olevaa luetteloa
 debug_version=Postfix-moduuli Webminille - Versio $1
 opts_edebug=Puuttuva tai virheellinen monisanistamistaso - arvon on oltava suurempi kuin nolla
+
 ldap_title=LDAP-haut
 ldap_ecannot=Et voi muokata LDAP-hakuvaihtoehtoja
 ldap_non_existent=Vaikuttaa siltä, että LDAP: tä ei ole olemassa Postfix-järjestelmässäsi
 opts_ldap_lookup_timeout=Aikakatkaisu LDAP-tietokantahakuille
 opts_ldap_search_base=LDAP-tietokanta haettavaksi
 opts_ldap_server_host=LDAP-palvelimen isäntänimi
+
 canonical_title=Kaanoninen kartoitus
 canonical_ecannot=Et voi muokata kanonista kartoitusmääritystä
 opts_canonical_maps=Osoitekarttahakutaulut
@@ -328,6 +354,7 @@ canonical_edit_title=Muokkaa Canonical-karttaa
 canonical_return_sender=lähettäjän kanoniset kartat
 canonical_return_recipient=vastaanottajan kanoniset kartat
 canonical_return=kanoniset kartat
+
 mapping_name=Nimi
 mapping_value=Kartat. ..
 mapping_delete=Poista valitut
@@ -355,6 +382,7 @@ mapping_toomany=Karttatietueita on $1, mikä on $2 näyttörajan yläpuolella.
 mapping_find=Näytä vastaavat:
 mapping_search=Hae
 mapping_match=Karttadatiedostot, jotka vastaavat <tt>$1</tt> ..
+
 virtual_title=Virtuaaliverkkotunnukset
 virtual_ecannot=Sinulla ei ole oikeutta muokata virtuaalisten verkkotunnusten kartoitusmäärityksiä
 opts_virtual_maps=Verkkotunnuksen kartoitushakutaulut
@@ -362,29 +390,44 @@ opts_virtual_alias_maps=Verkkotunnuksen kartoitushakutaulut
 opts_virtual_alias_domains=Verkkotunnukset, jotka suorittavat virtuaalisen kartoituksen
 virtual_same=Verkkotunnuksen kartoitustaulukoista
 virtual_return=virtuaaliset verkkotunnukset
+
 transport_title=Kuljetuskartta
 transport_ecannot=Sinulla ei ole oikeutta muokata kuljetuskarttoja
 opts_transport_maps=Kuljetuskarttojen hakutaulut
 transport_return=kuljetuskartat
+
+sni_title=Varmenteen kartoitus
+sni_ecannot=Et voi muokata varmenteiden yhdistämismäärityksiä
+opts_sni_maps=Varmenteiden kartoitushakutaulukot
+sni_return=sertifikaattikartat
+sni_dom=Isäntänimi
+sni_certs=Varmennetiedostot
+
 relocated_title=Sijoita uudelleen
 relocated_ecannot=Et voi muokata siirrettyä kartoitusmääritystä
 relocated_return=uudelleensijoitetut kartat
 opts_relocated_maps=Sijoita uudelleen kartoitushakutaulukoihin
 opts_content_filter=Sähköpostisisältösuodatin
+
 map_click=Napsauta mitä tahansa karttaa muokataksesi sen ominaisuuksia:
 no_map=(Karttaa ei tällä hetkellä määritetä. Määritä ensin kartta, niin voit muokata sitä)
 no_map2=Karttaa ei ole tällä hetkellä määritelty. Määritä ensin kartta, niin voit muokata sitä.
+
 stop_efailed=Postfixin lopettaminen epäonnistui
 stop_ecannot=Sinulla ei ole oikeutta pysäyttää Postfix-ohjelmaa
+
 start_efailed=Postfixin käynnistäminen epäonnistui
 start_ecannot=Et voi käynnistää Postfixiä
+
 reload_efailed=Postfixin lataus epäonnistui
 reload_ecannot=Postfixiä ei saa ladata uudelleen
+
 query_get_efailed=Postfix-konfigurointikomennon kysely epäonnistui parametrin $1 nykyisen arvon saamiseksi: <tt>$2</tt>
 query_set_efailed=Postfix-konfigurointikomennon kysely epäonnistui parametrin $1 nykyisen arvon asettamiseksi arvoksi $2: <tt>$3</tt>
 regenerate_ecannot=Et voi uudistaa aliaksia
 regenerate_alias_efailed=Aliasten luominen epäonnistui: <tt>$1</tt>
 regenerate_table_efailed=Taulukon $1 uusiminen epäonnistui: <tt>$2</tt>
+
 acl_resource=Voiko resursseja muokata?
 acl_aliases=Voiko muokata aliaksia?
 acl_aliases_options=Voiko muokata aliaksiasetuksia?
@@ -393,6 +436,7 @@ acl_address_rewriting=Voiko osoitteen uudelleenkirjoitusta muokata?
 acl_canonical=Voiko muokata kanonista?
 acl_virtual=Voiko muokata virtuaalista?
 acl_transport=Voiko muokata kuljetusta?
+acl_sni=Voiko varmenteita muokata?
 acl_relocated=Voiko muokata siirtää?
 acl_header=Voiko muokata otsikkotarkistuksia?
 acl_local_delivery=Voiko muokata paikallista toimitusta?
@@ -411,6 +455,7 @@ acl_postfinger=Voiko tarkistaa postfix-kokoonpanon?
 acl_manual=Voiko muokata konfigurointitiedostoa?
 acl_dir=Sallittu hakemisto karttatiedostoille
 acl_bcc=Voiko BCC-kartoitusta muokata?
+
 boxes_title=Käyttäjän postilaatikot
 boxes_user=käyttäjä
 boxes_size=Postilaatikon koko
@@ -420,6 +465,7 @@ boxes_sent=Lähetetty posti
 boxes_ecannot=Et saa lukea sähköpostia
 boxes_toomany=Järjestelmässäsi on liian monta käyttäjää luetteloimaan kaikki heidän postilaatikkonsa.
 boxes_go=Näytä käyttäjän posti:
+
 mail_title=Käyttäjän sähköposti
 mail_from=alkaen
 mail_date=Päivämäärä
@@ -458,6 +504,7 @@ mail_forward=Eteenpäin
 mail_rfc=Linjalta
 mail_move=Muuttaa:
 mail_eexists=Viestiä ei enää ole!
+
 view_title=Lue sähköposti
 view_desc=Viesti $1 $2
 view_desc2=Viesti $1 käyttäjälle $2
@@ -486,6 +533,7 @@ view_body=Viestin teksti
 view_afile=Liitteen nimi
 view_atype=Liitetyyppi
 view_asize=Tiedoston koko
+
 compose_title=Kirjoita sähköposti
 reply_title=Vastaa sähköpostiin
 forward_title=Lähetä edelleen
@@ -496,6 +544,7 @@ reply_mailforward=Välitetyt viestit
 reply_attach2=Asiakas- ja palvelinpuolen liitteet
 reply_send=Lähetä postia
 reply_ecannot=Sinulla ei ole oikeutta lähettää postia tällä käyttäjällä
+
 send_err=Postin lähettäminen epäonnistui
 send_eto=Puuttuu osoite
 send_efrom=Puuttuu osoitteesta
@@ -509,6 +558,7 @@ send_eperms=Käyttäjä $1 ei voi lukea $2
 send_eperms2=Et voi lähettää tiedostoa $1
 send_epath=Sendmail-suoritettavaa $1 -linkkiä ei ole.
 send_ewrapper=Postfix sendmail -liitäntäohjelmaa ei ole
+
 search_title=Hakutulokset
 search_ecannot=Et voi tehdä hakuja tämän käyttäjän sähköpostista
 search_ematch=Sinun on kirjoitettava teksti, jota haluat verrata.
@@ -516,6 +566,7 @@ search_efield=Sinun on valittava hakutyyppi.
 search_none=Viestejä ei löytynyt.
 search_results2=$1 sähköpostiviestit, jotka vastaavat $2 ..
 search_results3=$1 sähköpostiviestit, jotka eivät vastaa $2 ..
+
 match_from=Alkaen: ottelut
 match_subject=Aihe: ottelut
 match_to=Vastaanottaja: ottelut
@@ -533,6 +584,7 @@ match_!date=Päivämäärä: ei vastaa
 match_!body=Runko ei vastaa
 match_!size=Koko on alle
 match_!headers=Otsikot eivät täsmää
+
 mailq_title=Postijono
 mailq_count=$1 viestejä
 mailq_none=Ei postitusviestejä ole tällä hetkellä jonossa toimitusta varten
@@ -561,15 +613,20 @@ mailq_active=aktiivinen
 mailq_deferred=Laskennalliset
 mailq_hold=Pidä valittuna
 mailq_unhold=Poista pito valittuna
+
 flushq_title=Huuhtelujono
 flushq_desc=Postitusyrityksen pakottaminen komennolla $1 ..
+
 qview_title=Jonossa oleva viesti
 qview_desc=Tiedostosta $1
 qview_headers=Postin otsikot
 qview_attach=Liitteet
+
 after_err=Postfix-määritysvirhe : $1
+
 searchq_title=Jonohaun tulokset
 searchq_none=Jonossa olevia viestejä ei löytynyt.
+
 header_title=Otsikkotarkastukset
 header_ecannot=Et voi muokata otsikkotarkistuksia
 header_eregexp=Otsikkotarkistuskartan on oltava muodossa <tt>uusittu :</tt> <i>tiedostonimi</i>
@@ -588,15 +645,18 @@ header_reject=Hylkää (virheilmoituksella..)
 header_warn=Lokin varoitus (viesti..)
 header_ename=Virheellinen säännöllinen lauseke - sen on oltava kuin / jotain /
 header_return=otsikkotarkastukset
+
 body_title=Kehon tarkistukset
 body_ecannot=Sinulla ei ole oikeutta muokata ruumiintarkastuksia
 body_eregexp=Runko tarkistaa kartan on oltava muodossa <tt>uusittu :</tt> <i>tiedostonimi</i>
 opts_body_checks=Viestin rungon tarkistuspöydät
 body_return=kehon tarkistukset
+
 dependent_title=Lähettäjäriippuvainen kuljetuskartta
 dependent_ecannot=Sinulla ei ole oikeutta muokata lähettäjästä riippuvia kuljetuskarttoja
 dependent_eregexp=Lähettäjäriippuvaisen kuljetuskartan on oltava muodossa <tt>uudelleensyöttö :</tt> <i>tiedostonimi</i>
 dependent_return=lähettäjäriippuvaiset kuljetuskartat
+
 manual_title=Muokkaa karttatiedostoa
 manual_file=Valitse muokattava karttatiedosto:
 manual_change=Muuttaa
@@ -604,9 +664,11 @@ manual_editing=Käytä alla olevaa tekstikenttää muokataksesi manuaalisesti $1
 manual_err=Karttatiedoston tallentaminen epäonnistui
 manual_efile=Virheellinen karttatiedoston nimi!
 manual_ecannot=Et voi muokata karttatiedostoja manuaalisesti
+
 delq_titles=Viestien poistaminen
 delq_rusure=Haluatko varmasti poistaa $1 valitut jonossa olevat viestit?
 delq_confirm=Poista viestit
+
 master_title=Palvelinprosessit
 master_name=Prosessin nimi
 master_enabled=Käytössä?
@@ -647,8 +709,10 @@ master_einet=Kuunnettava isäntäosoite voidaan määrittää vain Internet-pros
 master_ecommand=Puuttuva palvelinkäsittelykomento
 master_ewakeup=Puuttuva tai virheellinen herätysaika
 master_emaxprocs=Puuttuva tai virheellinen enimmäismäärä prosesseja
+
 delete_err=Kartoitukset epäonnistuivat
 delete_enone=Mitään ei ole valittu
+
 cmanual_title=Muokkaa asetustiedostoja
 cmanual_ecannot=Postfix-määritystiedostoa ei saa muokata
 cmanual_ok=Muokata
@@ -656,10 +720,12 @@ cmanual_efile=Valittu tiedosto ei ole osa Postfix-määritystä
 cmanual_file=Muokkaa asetustiedostoa:
 cmanual_edata=Mikään ei tullut sisään!
 cmanual_err=Konfigurointitiedoston tallentaminen epäonnistui
+
 access_return=pääsykarttataulukko
 edit_map_file=Muokkaa karttatiedostoa
 opts_reject_rbl_client=Realtime Black Lists (RBL) -haut
 opts_check_sender_access=Tarkista lähettäjän pääsykarttataulukko
+
 log_misc=Vaihdetut yleiset vaihtoehdot
 log_opts=Muutettu osoitteen uudelleenkirjoittaminen ja naamiointi
 log_aliases=Muutettu aliaksiasetuksia
@@ -667,6 +733,7 @@ log_canonical=Kaanonisten karttavaihtoehtojen muuttaminen
 log_virtual=Muutetut virtuaalisen verkkotunnuksen asetukset
 log_bcc=BCC-kartan vaihtoehdot muuttuneet
 log_transport=Muutetut kuljetuskarttavaihtoehdot
+log_sni=Muuta varmenteen kartoitusasetuksia
 log_dependent=Muutettu lähettäjäriippuvaiset osoiteasetukset
 log_relocated=Muutetut uudelleensijoituskarttavaihtoehdot
 log_header=Muutetut otsikon tarkistusasetukset
@@ -744,6 +811,7 @@ log_sender_dependent_default_transport_maps_modify=Muokattu lähettäjäriippuva
 log_sender_dependent_default_transport_maps_delete=Poistettu lähettäjäriippuva osoite $1
 log_delete_sender_dependent_default_transport_mapss=Poistettu $1 lähettäjäriippuvaiset osoitteet
 log_manual_sender_dependent_default_transport_mapss=Lähettäjäriippuvat osoitteet käsin muokattu $1
+
 sasl_title=SMTP-todennus ja salaus
 opts_smtpd_sasl_auth_enable=Vaativatko SASL SMTP -todennus?
 opts_smtp_sasl_auth_enable=Käytätkö SASL SMTP -todennusta?
@@ -790,6 +858,7 @@ sasl_nologin=Mitään ei tarvita
 sasl_userpass=Kirjaudu sisään nimellä $1 salasanalla $2
 sasl_elogin=Puuttuva tai virheellinen SMTP-kirjautuminen (välilyöntejä tai kaksoispisteitä ei sallita)
 sasl_epass=Virheellinen SMTP-salasana (välilyöntejä ei sallita)
+
 client_title=SMTP-asiakasrajoitukset
 client_ecannot=Sinulla ei ole oikeutta muokata SMTP-asiakasrajoituksia
 client_restrict=Asiakasrajoitukset
@@ -799,6 +868,7 @@ client_other=Muut rajoitukset :
 client_err=Asiakasrajoitusten tallentaminen epäonnistui
 client_evalue=Rajoituksesta puuttuu arvo $1
 client_return=SMTP-asiakasrajoitukset
+
 chooser_title=Valitse Kartta lähde
 chooser_header=Kartta lähde $1
 chooser_none=Ei mitään
@@ -854,6 +924,7 @@ chooser_elquery_filter=Puuttuu kyselynsuodatin kartalle $1
 chooser_elresult_attribute=Puuttuva tai virheellinen tulosmääritteen nimi kartalle $1
 chooser_elbind_dn=LDAP-palvelimen kirjautumistiedot puuttuvat kartta $1
 chooser_elbind_pw=Puuttuu LDAP-palvelimen salasana kartalla $1
+
 mysql_ecfile=MySQL-määritystiedostoa $1 ei löytynyt
 mysql_ecfile2=Taulua ei löytynyt MySQL-määritystiedostosta $1
 mysql_edriver=Tietokanta-ohjaimen $1 lataus epäonnistui
@@ -865,6 +936,7 @@ mysql_eupdate=SQL-päivitys epäonnistui : $1
 mysql_elist=SQL-kysely epäonnistui : $1
 mysql_esource=MySQL-lähdettä, nimeltään $1, ei löytynyt
 mysql_eneed=MySQL-määritysparametria $1 ei löytynyt. Webmin tarvitsee tämän selvittääkseen mitkä taulukot ja kentät kysytään.
+
 ldap_ecfile=LDAP-määritystiedostoa $1 ei löytynyt
 ldap_eldapmod=Perl-moduulia $1, jota tarvitaan kommunikoimaan LDAP: n kanssa, ei ole asennettu tai sitä ei voi ladata
 ldap_eldap=Yhdistäminen LDAP-palvelimeen $1 portissa $2 epäonnistui.
@@ -875,6 +947,7 @@ ldap_edelete=$1: n LDAP-poisto epäonnistui : $2
 ldap_equery=$1 LDAP-haku epäonnistui : $2
 ldap_erename=$1 LDAP-uudelleennimeäminen $2 epäonnistui : $3
 ldap_emodify=$1: n LDAP-muokkaus epäonnistui : $2
+
 bcc_title=BCC-kartoitus
 bcc_ecannot=Et voi muokata BCC-kartoituksia
 opts_sender_bcc_maps=Lähettäjä BCC kartoitushakutaulukoita

@@ -4,6 +4,7 @@ index_none=尚未定义区域。
 index_add=添加一个新区域。
 index_return=区域清单
 index_zones=现有区域
+
 edit_title=编辑区
 edit_common=常规区域配置
 edit_name=区域名称
@@ -57,20 +58,26 @@ edit_attrnone=尚未定义任何通用属性。
 edit_attradd=添加一个新的通用属性。
 edit_webmin=打开Webmin
 edit_brand=牌
+
 ui_cancel=取消
+
 save_err=保存区域失败
 save_epool=池丢失或无效
 save_ewebmin=Webmin不在此区域中运行
+
 reboot_title=重启区
 reboot_rusure=您确定要重新启动区域 $1吗？在其中运行的所有进程将重新启动。
 reboot_err=无法重新启动区域
 reboot_doing=现在重新启动区域 ..
+
 reboot_failed=..失败：
 reboot_ok=..完成。
+
 halt_title=关机区
 halt_rusure=您确定要关闭区域 $1吗？在其中运行的所有进程都将停止。
 halt_err=无法关闭区域
 halt_doing=现在关闭区域 ..
+
 boot_title=引导区
 boot_err=无法启动区域
 boot_doing=现在正在启动区域 ..
@@ -78,10 +85,12 @@ delete_title=删除区域
 delete_rusure=您确定要删除区域 $1吗？其专用文件系统中的所有文件都将丢失。
 delete_err=删除区域失败
 delete_doing=现在删除区域 ..
+
 uninstall_title=卸载系统
 uninstall_rusure=您确定要从 $1区域中卸载系统软件吗？其专用文件系统中的所有文件都将丢失。
 uninstall_err=无法从区域中卸载系统软件
 uninstall_doing=现在从区域..卸载系统
+
 install_title=安装系统
 install_doing=现在将系统安装到区域中。
 net_title1=创建网络接口
@@ -96,6 +105,7 @@ net_enetmask=无效的网络掩码
 net_eaddress=IP地址无效
 net_egone=接口不再存在！
 net_eclash=具有相同IP地址的网络接口已在此区域中存在
+
 pkg_title1=添加软件包目录
 pkg_title2=编辑软件包目录
 pkg_header=继承的软件包目录详细信息
@@ -107,6 +117,7 @@ pkg_eclash=软件包目录已存在于此区域中
 pkg_inherit=从全局区域继承包
 pkg_inherit_yes=是（根区域稀疏）
 pkg_inherit_no=否（整个根区）
+
 fs_title1=创建文件系统
 fs_title2=编辑文件系统
 fs_header=其他文件系统详细信息
@@ -128,6 +139,7 @@ fs_eoptions=无效的安装选项（必须是逗号分隔的列表，例如ro，
 fs_egone=文件系统不再存在！
 fs_mount=创建后挂载？
 fs_eclash=使用相同目录的文件系统已存在于该区域中
+
 rctl_title1=创建资源控制
 rctl_title2=编辑资源控制
 rctl_header=资源控制类型和限制
@@ -148,6 +160,7 @@ rctl_elimit=没有数字
 rctl_eaction=$1行中未选择信号
 rctl_evalues=没有输入限制
 rctl_eclash=该区域中已经存在用于同一资源的控件
+
 attr_title1=创建通用属性
 attr_title2=编辑通用属性
 attr_header=通用区域属性详细信息
@@ -165,6 +178,7 @@ attr_euint=值不是正整数
 attr_eboolean=值不是'true'或'false'
 attr_egone=属性不再存在！
 attr_eclash=该区域中已经存在具有相同名称的属性
+
 status_running=跑步
 status_installed=暂停
 status_configured=未安装
@@ -172,13 +186,16 @@ status_incomplete=正在安装
 status_ready=准备
 status_down=下
 status_shutting_down=关机
+
 list_name=区域名称
 list_id=证件号码。
 list_path=区域目录
 list_status=状态
 list_actions=动作
+
 zone_in=在 $1区域中
 pool_none=没有
+
 create_title=建立专区
 create_header=新区域详细信息
 create_path=区域文件目录
@@ -239,6 +256,7 @@ create_erouter=缺少或无效的默认路由器IP地址
 create_removingpkgs=删除继承的软件包目录. ..
 create_brand=牌
 create_brandmsg=品牌专区
+
 log_create_zone=创建的区域 $1
 log_delete_zone=区域 $1已删除
 log_save_zone=区域 $1的修改的配置
@@ -262,6 +280,7 @@ log_delete_rctl=已删除区域 $2中 $1的资源控制
 log_create_attr=在区域 $2中创建了通用属性 $1
 log_modify_attr=区域 $2中已修改的通用属性 $1
 log_delete_attr=在区域 $2中删除了通用属性 $1
+
 webmin_eperl=未在 $1上安装Perl
 webmin_eroot=目录 $1不存在或不包含Webmin。
 webmin_title=安装Webmin

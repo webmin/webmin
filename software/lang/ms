@@ -16,6 +16,7 @@ index_all=Semua Pakej
 index_return=indeks modul
 index_treturn=pokok pakej
 index_tree=Pokok Pakej
+
 search_title=Carian Pakej
 search_nomatch=Tiada pakej sepadan $1
 search_none=Tiada
@@ -28,6 +29,7 @@ search_esearch=Anda tidak masukkan apa-apa untuk dicari!
 search_delete=Nyah-pasang pakej pilihan
 search_selall=Pilih Semua
 search_invert=Pilihan songsang
+
 edit_title=Sunting Pakej
 edit_details=Perincian Pakej
 edit_desc=Huraian
@@ -42,6 +44,7 @@ edit_list=Senarai Fail
 edit_uninst=Nyah-pasang
 edit_return=perincian pakej
 edit_egone=Pakej tidak lagi dipasang
+
 list_title=Fail Pakej
 list_files=Fail untuk Pakej $1
 list_path=Lokasi
@@ -53,6 +56,7 @@ list_status=Status
 list_ok=OK
 list_view=(Lihat)
 list_eview=Gagal membuka $1 : $2
+
 delete_err=Gagal untuk membuang pakej $1
 delete_epack=Pakej $1 tidak wujud
 delete_title=Padam Pakej
@@ -61,6 +65,7 @@ delete_ok=Padam
 delete_nodeps=Abaikan kebergantungan?
 delete_noscripts=Langkau skrip nyah-pasang?
 delete_efile=Fail sementara tidak sah untuk dipadam
+
 file_title=Maklumat Fail
 file_notfound=Tiada maklumat tentang $1
 file_path=Lokasi
@@ -74,6 +79,7 @@ file_pack=Pakej
 file_class=Kelas
 file_desc=Huraian
 file_none=Tiada
+
 install_err=Gagal untuk memasang pakej
 install_elocal=Tiada fail tempatan diberi
 install_elocal2='$' tidak wujud
@@ -86,6 +92,7 @@ install_title=Pasang Pakej
 install_header=Pasang pakej
 install_packs=Pakej yang akan dipasang
 install_ok=Pasang
+
 do_err=Gagal untuk memasang pakej $1
 do_title=Pasang Pakej
 do_efailed=Pemasangan telah gagal : $1
@@ -102,10 +109,12 @@ do_arch=Senibina
 do_inst=Telah pasang
 do_none=Tiada
 do_files=Fail Pakej
+
 pkgadd_root=Direktori root
 pkgadd_eroot=Direktori root '$1' tidak wujud
 pkgadd_unknown=Tidak diketahui
 pkgadd_manager=Pengurus Pakej SystemV
+
 rpm_upgrade=Naiktaraf pakej?
 rpm_replacepkgs=Tindan pakej?
 rpm_nodeps=Abaikan kebergantungan?
@@ -120,22 +129,26 @@ rpm_eroot=Direktori root '$1' tidak wujud
 rpm_search=Cari rpmfind.net untuk:
 rpm_none=Tiada pakej yang sepadan dengan carian anda.
 rpm_find=Cari rpmfind.net ..
+
 bsd_unknown=Tidak tahu
 bsd_scripts=Laksanakan skrip pra dan pasca pemasangan?
 bsd_force=Paksa pemasangan jika pra-syarat hilang?
 bsd_manager=Pengurus Pakej $1
+
 slack_unclass=Lain
 slack_unknown=Tidak tahu
 slack_missing=Hilang
 slack_root=Direktori root
 slack_eroot=Direktori root hilang atau tidak sah
 slack_manager=Pengurus Pakej Slackware
+
 debian_unknown=Tidak tahu
 debian_depends=Abaikan masalah kebergantungan?
 debian_conflicts=Abaikan konflik pakej?
 debian_overwrite=Tindan fail daripada pakej lain?
 debian_downgrade=Ganti pakej baharu dengan yang lama?
 debian_manager=DPKG Debian
+
 log_install_package=Pasang pakej $1
 log_install_apt_l=Memasang pakej $1 dari APT
 log_install_apt=Memasang $2 pakej dari APT
@@ -144,6 +157,7 @@ log_check_apt=Menaik taraf $2 pakej dari APT
 log_delete=Nyah-pasang pakej $1
 log_deletes_l=Nyah-pasang pakej $1
 log_deletes=Nyah-pasang $1 pakej
+
 rhn_input=Pakej daripada Rangkaian Redhat (RHN)
 rhn_find=Cari RHN ..
 rhn_install=Pemasangan pakej dengan arahan $1 ..
@@ -169,6 +183,7 @@ rhn_none=Nyah-aktif
 rhn_eproxy=Pelayan proksi hilang atau tidak sah
 rhn_skip=Langkau pemadanan pakej
 rhn_nonefound=Tiada pakej untuk dikemaskini.
+
 apt_input=Pakej dari APT
 apt_install=Pemasangan pakej dengan arahan $1 ..
 apt_ok=.. pemasangan selesai.
@@ -191,6 +206,7 @@ apt_upgradefailed=.. naik taraf gagal!
 apt_upgradeok=.. naik taraf selesai.
 apt_search=Cari pakej yang sepadan :
 apt_find=Cari APT ..
+
 yum_input=Pakej dari Yum
 yum_install=Pemasangan pakej dengan arahan $1 ..
 yum_ok=.. pemasangan selesai.
@@ -206,6 +222,7 @@ yum_upgrade=Naiktaraf Semua Pakej
 yum_upgradedesc=Naiktaraf semua pakej dengan arasahn $1 ..
 yum_upgradefailed=.. naiktaraf gagal!
 yum_upgradeok=.. naiktaraf selesai.
+
 rpm_missing=Hilang
 rpm_checkfail=Gagal memeriksa $1
 rpm_md5=MD5
@@ -217,6 +234,7 @@ rpm_user=pemilikan penggguna
 rpm_perm=kebenaran
 rpm_group=pemilik grup
 rpm_erpm=RPM $1 tidak ditemui : $2
+
 soft_reg=Fail Biasa
 soft_dir=Direktori
 soft_spec=Fail Istimewa
@@ -228,6 +246,7 @@ soft_euncompress=Fail dimampatkan, tetapi arahan <tt>uncompress</tt> tidak dijum
 soft_euncmsg=Gagal untuk menyahmampatkan fail : $1
 soft_egzip=Fail telah di'gzip'kan, tetapi arahan gzip tidak dijumpai pada sistem anda.
 soft_egzmsg=Gagal untuk meng'gunzip'kan fail : $1
+
 aix_unknown=Tidak diketahui
 aix_device=Peranti INPUT / direktori untuk perisian
 aix_software=PERISIAN untuk dipasang
@@ -245,6 +264,7 @@ aix_accept=Terima lesen perjanjian baharu?
 aix_license=Pratonton perjanjian LESEN baharu?
 aix_clean=Bersihkan pemasangan yang gagal?
 aix_manager=Pengurus Pakej AIX
+
 emerge_input=Daripada repositori Portage
 emerge_find=Cari ..
 emerge_install=Pemasangan pakej dengan arahan $1 ..
@@ -258,6 +278,7 @@ emerge_desc=Huraian
 emerge_none=Tiada pakej yang sepadan dengan carian anda.
 emerge_noreplace=Ganti pakej sedia ada?
 emerge_onlydeps=Hanya pasang kebergantungan?
+
 cygwin_fmissing=Fail telah hilang
 cygwin_lmissing=Fail di mana titik pautan hilang
 cygwin_estat=Gagal untuk stat fail: $1
@@ -265,6 +286,7 @@ cygwin_elread=Gagal membaca symlink: $1
 cygwin_elstat=Gagal untuk stat symlink: $1
 cygwin_pkgexists=Pakej $1 sudah ada.
 cygwin_warnuse=Amaran: Ini bukanlah antara muka rasmi untuk menguruskan perisian Cygwin. Guna atas risiko sendiri.
+
 deletes_err=Gagal untuk memadam pakej
 deletes_enone=Tiada pakej dipilih
 deletes_title=Padam Pakej

@@ -9,6 +9,7 @@ index_restart=Uruchom ponownie Webmina
 index_restartmsg=Kliknij aby uruchomić ponownie Webmina. Może to być konieczne jeśli ostatnio aktualizowałeś Perla.
 index_refresh=Odśwież moduły
 index_refreshmsg=Szukaj zainstalowanych modułów serwerów i aktualizuj te, które znajdują się w kategorii 'Nie-używane moduły'.
+
 access_title=Kontrola dostępu IP
 access_desc=Za pomocą tej strony Webmin może być skonfigurowany tak, by zakazać lub zezwolić na dostęp spod określonych adresów IP. Można wprowadzać nazwy komputerów (jak foo.bar.com) i sieci IP (jak 10.254.3.0 czy 10.254.1.0/255.255.255.128). Powinieneś ograniczyć dostęp jedynie do "zaufanych" adresów, szczególnie jeżeli sieć jest dostępna z Internetu. W przeciwnym wypadku ktoś kto zgadnie lub podsłucha hasło będzie w stanie przejąć kontrolę nad komputerem.
 access_ip=Dozwolone adresy IP
@@ -32,6 +33,7 @@ access_ehost=Nie udało sie znaleźć addresu IP '$1'
 access_eself=Twój aktualny adres IP ($1) zostałby zabroniony
 access_always=Nazwy hosta na każde żądanie?
 access_trust=Ufaj zdalnemu adresowi IP dostarczonemu przez proxy?
+
 bind_title=Porty i adresy
 bind_desc2=Ten formularz może być użyty do zmiany portu, na którym nasłuchuje Webmin albo ustawienia go tak, aby nasłuchiwał tylko na jednym adresie IP. Możesz także skonfigurować go tak, aby akceptował połączenia na wielu portach lub nasłuchiwał na wybranych adresach IP.
 bind_header=Adres i port TCP/IP
@@ -60,6 +62,7 @@ bind_eipv6=IPv6 nie może zostać włączony chyba, że $1 moduł Perla jest zai
 bind_redirecting=Przekierowuję do nowego URL ..
 bind_elsof=Nowy port $1 jest już w użyciu przez inny proces
 bind_eonsystem=Adres IP $1 nie jest aktywny na tym systemie i nie może zostać użyty
+
 log_title=Logi
 log_desc=Webmin może zapisywać dziennik (logi) w tandardowym formacie CLF. Jeżeli włączysz logi, możesz zadecydować jakie informacje mają się w nim znaleźć, oraz jak często logi mają być czyszczone. Logi są zapisywane do pliku $1.
 log_desc2=Gdy zapis logów jest włączony Webmin będzie również tworzył bardziej szczegółowy log działań użytkownika w pliku $1. Log ten można przeglądać i analizować przy pomocy modułu <tt>Logi Webmina</tt>, aby zobaczyć dokładnie, co zrobili poszczególni użytkownicy Webmina.
@@ -86,6 +89,7 @@ log_perms=Uprawnienia dla plików logów
 log_eperms=Brakujące lub niewłaściwe uprawnienia ósemkowe (np 755)
 log_syslog=Twórz logi także w syslog
 log_login=Dołączać do logów informacje o logowaniach i wylogowaniach?
+
 proxy_title=Serwer proxy
 proxy_desc=Jeżeli komputer, na którym używasz Webmina jest umieszczony za firewallem, niektóre moduły Webmina dla dostępu do WWW i FTP mogą wymagać zdefiniowania proxy serwera.
 proxy_header=Serwery proxy
@@ -128,6 +132,7 @@ proxy_return=serwery proxy i pobrania
 proxy_tabproxy=Połączenie przez proxy
 proxy_tabdown=Pobieranie
 proxy_fallback=Próbować zapytań bezpośrednich w przypadku wyłączenia proxy?
+
 ui_title=Interfejs użytkownika
 ui_desc=Za pomocą tego formularza możesz zmienić opcje interfejsu użytkownika używanego przez moduły. Każdy z wprowadzonych kolorów musi być określony przy użyciu standardowego systemu RGB, gdzie każda z wartości jest liczbą szesnastkową z zakresu od 00 do ff.
 ui_header=Opcje interfejsu użytkownika
@@ -176,6 +181,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/rrrr (np 16/09/2010)
 ui_dateformat_mm/dd/yyyy=mm/dd/yyyy (np. 09/16/2010)
 ui_dateformat_yyyy/mm/dd=yyyy/mm/dd (np. 2010/09/16)
 ui_ehostnamedisplay=Brakująca lub nieprawidłowo wyświetlana nazwy hosta
+
 mods_title=Moduły Webmina
 mods_desc1=Moduły Webmina mogą być dodane po instalacji przy użyciu formularza po prawej. Moduły są zazwyczaj rozprowadzane jako pliki <tt>.wbm</tt>, z których każdy zawiera jeden lub więcej modułów. Moduły można również zainstalować z plików RPM, jeśli system operacyjny je obsługuje.
 mods_installsource=Zainstaluj z
@@ -218,6 +224,7 @@ mods_tabinstall=Zainstaluj
 mods_tabclone=Klonuj
 mods_tabdelete=Usuń
 mods_tabexport=Eksportuj
+
 install_err1=Nie udało się zainstalować modułu z $1
 install_efile=Plik nie istnieje
 install_err2=Nie udało się zainstalować dołączonego modułu
@@ -251,10 +258,12 @@ install_cat=W kategorii $1.
 install_eneither=Plik RPM nie zawiera modułu ani skórki Webmina
 install_err4=Nie udało się zainstalować modułu standardowego
 install_emissing=Wybrany moduł nie istnieje
+
 clone_err=Nie udało się skopiować modułu
 clone_elink=dowiązanie się nie powiodło : $1
 clone_ecopy=nie udało się skopiować konfiguracji : $1
 clone_desc=Kopia $1
+
 delete_err=Nie udało się usunąć modułów
 delete_edep=Moduł $1 nie może być skasowany, bo moduł $2 jest od niego zależny.
 delete_desc1=$1 (Kopia $2)
@@ -266,6 +275,7 @@ delete_rusure2=Czy jesteś pewien, że chcesz usunąć skórkę $2 ? $1 kB plik�
 delete_rusure3=Czy jesteś pewien, że chcesz usunąć klony modułu $2 ?
 delete_acls=Usunąć z użytkowników i zresetować ustawienia kontroli dostępu?
 delete_enone=Nie wybrano żadnego modułu
+
 os_title=System operacyjny
 os_desc3=Ta strona pokazuje informacje o systemie operacyjnym wykrytym przez Webmina podczas instalacji oraz system, wykrywany w chwili obecnej. Jeśli te systemy się różnią, możesz zdecydować o aktualizacji informacji, co może być konieczne jeśli ostatnio aktualizowałeś swój system.
 os_desc2=Możesz również zmienić ścieżkę przeszukiwania używaną przez Webmina przy uruchamianiu programów oraz ścieżkę do bibliotek współdzielonych przekazywaną do każdego programu.
@@ -288,6 +298,7 @@ os_eiversion=Brakująca wersja wewnętrznego systemu operacyjnego
 os_incorrect=Uwaga - Twój system obecnie używa $1 w wersji $2.
 os_fix=Aktualizuj wykryty system operacyjny
 os_usermin=Aktualizuj także OS Usermina
+
 lang_title=Język
 lang_title2=Język Webmina
 lang_lang=Wyświetlaj w języku
@@ -299,6 +310,7 @@ lang_chardef=Określony przez język
 lang_charover=Wymuś zestaw znaków
 lang_err=Nie udało się zapisać języka
 lang_echarset=Niewłaściwie wyglądający lub brakujący zestaw znaków
+
 ssl_title=Szyfrowanie SSL
 ssl_essl=Moduł Perla Net:SSLeay nie jest zainstalowany w Twoim systemie.Aby zainstalować bibliotekę OpenSSL i moduł Net::SSLeay zapoznaj się z <a href='$1'>instrukcją</a> na stronie Webmina.
 ssl_cpan=Możesz użyć Webmina aby <a href='$1'>pobrać i zainstalować</a> wymagany moduł Perla Net::SSLeay
@@ -380,6 +392,7 @@ ssl_edownload=Wyodrębnianie danych PEM z certyfikatu nie powiodło się
 ssl_csralready=Zobacz najnowszy klucz i CSR ..
 ssl_already1=Wcześniej wygenerowany klucz prywatny :
 ssl_already2=Wcześniej wygenerowane żądanie podpisania certyfikatu :
+
 newkey_err=Nie udało się utworzyć klucza SSL
 newkey_ecn=Brakująca lub niewłaściwa nazwa serwera
 newkey_efile=Brakująca nazwa pliku klucza
@@ -391,11 +404,13 @@ newkey_ok=Pomyślnie wygenerowano poniższy klucz SSL.
 newkey_esize=Brakujący lub niewłaściwy rozmiar klucza
 newkey_edays=Brakująca lub niewłaściwa liczba dni przed wygaśnięciem
 newkey_ecountry=Kod kraju musi być dwuliterowy
+
 newcsr_err=Tworzenie SSL CSR nie powiodło się
 newcsr_efile=Brak nazwy pliku CSR
 newcsr_title=Generuj CSR
 newcsr_ok=Pomyślnie wygenerowano następujące żądania certyfikatu SSL:
 newcsr_ok2=Ten CSR musi być wysłany do podpisania, w celu uzyskania podpisanego certyfikatu. Może być on zainstalowany używając zakładki <b>Wyślij certyfikat</b>.
+
 startpage_title=Opcje strony startowej
 startpage_intro2=Ta strona pozwala kontrolować wygląd głównego menu Webmina. Niektóre opcje mogą być działać jedynie wtedy, gdy używana będzie domyślna skórka.
 startpage_tabs=Klasyfikować moduły?
@@ -409,6 +424,7 @@ startpage_gotonone=&lt;Brak&gt;
 startpage_gotomodule=Zawsze po zalogowaniu przechodź do modułu
 startpage_webminup=Pokazywać aktualizacje Webmina na stronie Informacje o systemie?
 startpage_moduleup=Pokazywać aktualizacje modułów na stronie Informacje o systemie?
+
 upgrade_title=Aktualizuj Webmina
 upgrade_desc=Nie udało się zaktualizować całej instalacji Webmina do nowej wersji. Możesz zainstalować z pliku lokalnego, z pliku dołączonego lub najnowszą wersję z <a href=http://www.webmin.com/>www.webmin.com</a>. Podobnie jak przy ręcznej aktualizacji, wszystkie Twoje ustawienia i obce moduły zostaną zachowane.
 upgrade_descrpm=Za pomocą tego formularza możesz wykonać aktualizację całej Twojej instalacji Webmina do nowej wersji z wykorzystaniem opcji "upgrade" RPM-a. Możesz zainstalować z lokalnego pliku RPM, z pliku dołączonego lub najnowszą wersję z <a href=http://www.webmin.com/>www.webmin.com</a>. Podobnie jak przy ręcznej aktualizacji, wszystkie Twoje ustawienia i obce moduły zostaną zachowane.
@@ -473,10 +489,12 @@ upgrade_tabupdate=Aktualizuj moduły
 upgrade_tabsched=Zaplanowana aktualizacja
 upgrade_src=Aktualizuj Webmina z
 upgrade_opts=Opcje aktualizacji
+
 newmod_desc=Podczas aktualizacji Webmina, każdy nowy moduł w nowej wersji będzie przydzielony do jednego lub więcej użytkowników. Ten formularz pozwala na określenie użytkowników, którzy otrzymają nowe moduły. To ustawienie będzie brane pod uwagę podczas aktualizacji z wiersza poleceń lub przy użyciu formularza powyżej.
 newmod_header=Przydziały nowych modułów
 newmod_def=Zachowanie domyślne - przydziel nowe moduły do <tt>roota</tt> lub <tt>admina</tt>
 newmod_users=Przydziel nowe moduły do :
+
 update_desc1=Za pomocą tego formularza możesz zaktualizować ze strony <a href=http://www.webmin.com/updates.html>Webmin Updates</a> lub z innego źródła te moduły Webmina, o których wiadomo, że zawierają błędy lub dziury związane z bezpieczeństwem. Wykonane zostanie porównanie obecnie zainstalowanych modułów z dostępnymi dla aktualizacji oraz, opcjonalnie, automatyczne pobranie i instalacja wszelkich nieaktualnych modułów.
 update_header1=Aktualizuj moduły teraz
 update_header2=Aktualizuj moduły regularnie
@@ -503,6 +521,7 @@ update_enomodsig=Nie można pobrać pliku sygnatury dla modułu : $1
 update_ebadmodsig=Sprawdzanie sygnatury modułu nie powiodło się : $1
 update_src=Aktualizuj moduły z
 update_opts=Opcje aktualizacji modułu
+
 ca_title=Centrum autoryzacji
 ca_old=Istniejący certyfikat
 ca_header1=Utwórz nowy certyfikat tego CA
@@ -533,6 +552,7 @@ ca_eminiserv=Certyfikaty klienta SSL są obsługiwane wyłącznie przez miniserv
 ca_eversion=Zainstalowana w Twoim systemie wersja modułu Net::SSLeay Perla nie obsługuje certyfikatów SSL po stronie klienta.
 ca_essleay=Program administracyjny SSL $1 nie został znaleziony w Twoim systemie. Być może musisz zmienić ścieżkę w konfiguracji modułu Użytkownicy Webmina.
 ca_essl=Autoryzację SSL można włączyć jedynie, gdy serwer WWW działa w trybie SSL.
+
 session_title=Autoryzacja
 session_desc1=Włączenie chroni przed atakami metodą "prób i błędów" poprzez zwiększanie odstępu czasu pomiędzy kolejnymi nieudanymi próbami zalogowania tego samego użytkownika.
 session_header=Opcje autoryzacji i sesji
@@ -594,10 +614,12 @@ session_md5off=Używaj standardowego szyfrowania Unix <tt>crypt</tt> dla haseł 
 session_md5on=Używaj szyfrowania MD5 dla haseł Webmina (pozwala na długie hasła)
 session_emd5mod=Szyfrowanie MD5 nie może zostać użyte ponieważ moduł Perla $1 jest niezainstalowany.
 session_blocklock=Zablokuj użytkowników z nieudanymi próbami logowania
+
 assignment_title=Przeklasyfikowanie modułów
 assignment_header=Kategoryzacja modułów
 assignment_ok=Zmień kategorie
 assignment_desc=Za pomocą tego formularza możesz określić, wśród modułów jakiej kategorii będzie dany moduł wyświetlany na stronie indeksowej Webmina.
+
 categories_title=Zmień kategorie
 categories_header=Identyfikator i opis kategorii
 categories_desc=Za pomocą tego formularza możesz zmienić nazwy istniejących kategorii Webmina oraz utworzyć nowe, aby przypisać do nich moduły. Górna część tabeli służy do zmiany opisu wbudowanych kategorii, podczas gdy dolna służy do dodawania nowych identyfikatorów i opisów kategorii.
@@ -610,6 +632,7 @@ categories_name=Wyświetlany opis
 categories_lang=Edytuj kategorie w języku:
 categories_langok=Zmień
 categories_custom=Niestandardowa
+
 log_access=Zmieniono kontrolę dostępu wg IP
 log_bind=Zmieniono port i adres
 log_log=Zmieniono opcje logów
@@ -652,6 +675,7 @@ log_delete_webmincron=Usunięto zaplanowaną funkcję $1
 log_run_webmincron=Wykonano zaplanowany harmonogram $1
 log_save_webmincron=Zaktualizowano harmonogram funkcji w module $1
 log_onedelete_webmincron=Usunięto harmonogram funkcji w module $1
+
 themes_title=Motywy Webmina
 themes_desc=Motywy określają wygląd interfejsu użytkownika Webmina włączając w to ikony, kolory, tła i być może strony opcji. Za pomocą poniższego pola wyboru można wybrać jeden z zainstalowanych w systemie motywów.
 themes_sel=Bieżący motyw :
@@ -667,6 +691,7 @@ themes_taboverlay=Zmień nakładkę
 themes_tabinstall=Instaluj motyw
 themes_tabdelete=Usuń motywy
 themes_tabexport=Eksportuj motywy
+
 themes_err1=Nie udało się zainstalować motywu z $1
 themes_efile=Plik nie istnieje
 themes_err2=Nie udało się zainstalować przesłanego motywu
@@ -692,9 +717,11 @@ themes_delok=Motyw do usunięcia :
 themes_return=lista motywów
 themes_err4=Zmiana nakładki nie powiodła się
 themes_eoverlay=Wybrana nakładka jest niekompatybilna z aktualnym motywem
+
 themes_desc4=Zainstalowane motywy mogą być eksportowane jako plik wbt.gz. Plik motywu może być na innym systemie używającym Webmina.
 themes_exportmods=Motywy do wyeksportowania
 themes_exportok=Eksportuj wybrane motywy
+
 referers_title=Zaufane odsyłacze
 referers_desc=Za pomocą tej strony możesz skonfigurować sprawdzanie odsyłaczy do Webmina w celu uniknięcia złośliwych odwołań z innych witryn oszukujących Twoją przeglądarkę i wykorzystujących Webmina do niebezpiecznych działań. Jednakże, jeśli posiadasz odwołania do Webmina na swoich własnych witrynach, o których nie chcesz być ostrzegany, powinieneś dodać te witryny do poniższej listy.
 referers_list=Zaufane witryny
@@ -703,6 +730,7 @@ referers_none2=OSTRZEŻENIE: To otworzy twój system na ataki XSS!
 referers_referer=Włączone sprawdzanie odsyłaczy?
 referers_err=Nie udało się zapisać odsyłaczy
 referers_ehost='$1' nie jest prawidłową nazwą zaufanego hosta
+
 update_err=Nie udało się zaktualizować modułów
 update_eurl=Nie podany lub niepoprawny URL aktualizacji
 update_title=Aktualizacja modułów
@@ -723,6 +751,7 @@ update_rv=Sprawdzanie, czy pod $1 nie ma zaktualizowanych modułów Webmina
 update_eemail=Jeśli chcesz jedynie zobaczyć co powinno być zaktualizowane, musisz podać adres e-mail.
 update_subject=Zawiadomienie o aktualizacji modułów Webmina
 update_version=Nowa wersja Webmina ($1) jest dostępna do pobrania. Przyszłe aktualizacje będą wydawane wyłącznie dla ostatniej wersji.
+
 anon_title=Dostęp anonimowy do modułu
 anon_desc=Ta strona pozwala przydzielać dostęp do wybranych modułów i ścieżek Webmina bez konieczności logowania się klientów. Dla każdej ścieżki modułu, którą wprowadzisz poniżej (na przykład <tt>/custom</tt> or <tt>/passwd</tt>) musisz też wprowadzić nazwę użytkownika Webmina, którego uprawnienia będą używane do dostępu do modułu.
 anon_desc2=Musisz być BARDZO ostrożny pozwalając na dostęp anonimowy, ponieważ niewystarczająca kontrola dostępu na podstawie IP lub pozwolenie na dostęp do niewłaściwego modułu może pozwolić atakującemu na przejęcie Twojego systemu.
@@ -731,15 +760,19 @@ anon_user=Użytkownik Webmina
 anon_err=Nie udało się zapisać dostępu anonimowego
 anon_eurl='$1' nie jest prawidłowym adresem URL
 anon_euser=Brakujący lub niewłaściwy użytkownik Webmina dla adresu URL '$1'
+
 enogpg=GnuPG nie jest zainstalowany
+
 standard_failed=Nie udało się pobrać listy modułów : $1
 standard_header=Standardowe moduły Webmina
 standard_warn=Ostrzeżenie - nie używasz najnowszej wersji $1 Webmina, więc tych modułów prawdopodobnie nie uda się zainstalować.
 standard_eurl=Nieprawidłowy URL modułów standardowych
+
 third_failed=Pobieranie listy modułów : $1 nie powiodło się
 third_header=Moduły osób trzecich
 third_eurl=Nieprawidłowy URL modułów osób trzecich
 third_title=Wybierz moduł osób trzecich
+
 lock_title=Blokowanie plików
 lock_desc=Domyślnie Webmin stosuje blokadę każdego pliku, który modyfikuje w celu uniknięcia równoległych modyfikacji przez wiele procesów, co mogłoby doprowadzić do uszkodzenia pliku. Ta strona pozwala wybiórczo lub całkowicie wyłączyć blokowanie jeśli powoduje ono problemy.
 lock_header=Ustawienia blokowania plików
@@ -750,6 +783,7 @@ lock_except=Zablokuj wszystkie pliki i katalogi z wyjątkiem ..
 lock_err=Nie udało się zapisać blokady pliku
 lock_edir='$1' nie jest ścieżką absolutną
 lock_edirs=Nie wprowadzono plików ani katalogów
+
 ipkey_title1=Twórz klucz SSL
 ipkey_title2=Edytuj klucz SSL
 ipkey_header=Szczegóły klucza SSL specyficzne dla IP
@@ -757,6 +791,7 @@ ipkey_err=Nie udało się zapisać klucza SSL
 ipkey_eips=Nie wprowadzono adresu IP
 ipkey_eextracas=Nie wprowadzono żadnych dodatkowych plików certyfikatu
 ipkey_eextraca=Dodatkowy plik certyfikatu $1 nie istnieje
+
 descs_title=Tytuły modułów
 descs_info=Ta strona pozwala na określenie własnych tytułów dla modułów Webmnina, które zastąpią ich standardowe tytuły.
 descs_mod=Moduł
@@ -766,11 +801,13 @@ descs_cdesc=Klonuj tytuł
 descs_err=Nie udało się zapisać tytułów modułów
 descs_edesc=Brakuje tytułu dla modułu '$1'
 descs_etitle=Brak tytułu dla klonu '$1'
+
 export_err=Nie udało się wyeksportować modułów
 export_ecmd=Brakujące polecenie $1
 export_efile=Brakujący lub niewłaściwy plik eksportu
 export_done=Pomyślnie wyeksportowano wybrany moduł do $1.
 export_title=Eksportuj moduły
+
 advanced_title=Opcje zaawansowane
 advanced_header=Opcje zaawansowane i eksperymentalne
 advanced_temp=Katalog plików tymczasowych
@@ -810,10 +847,13 @@ advanced_egzip=Kompresja Gzip nie może zostać włączona chyba, że moduł Per
 advanced_redir=Format URL przekierowań
 advanced_redir1=Tylko Ścieżka
 advanced_redir0=Protokół, host, port i ścieżka
+
 syslog_errorlog=Log błędów Webmina
+
 clear_title=Wyczyść cache pobierania
 clear_done=Pamięć podręczna Webmina zawierająca $1 plików z $1 adresów URL została pomyślnie wyczyszczona.
 clear_none=Obecnie nie ma adresów URL w pamięci podręcznej pobierania Webmina
+
 savekey_err=Nie udało się zapisać nowego klucza
 savekey_ekey=Brakujący lub niewłaściwy klucz w formacie PEM
 savekey_ecert=Brakujący lub nieprawidłowy certyfikat w formacie PEM
@@ -823,6 +863,7 @@ savekey_title=Dodaj istniejący klucz
 savekey_done2=Dostarczony klucz SSL został zapisany do $1 a certyfikat do $2.
 savekey_done=Dostarczony klucz SSL i certyfikat zostały zapisane do pliku $1.
 savekey_done3=Dostarczony certyfikat łańcuchowy SSL został zapisany w pliku $1.
+
 cache_title=Adresy URL w cache'u
 cache_search=Znajdź adresy URL zawierające:
 cache_ok=Szukaj
@@ -835,8 +876,10 @@ cache_delete=Usuń wybrane z cache'u
 cache_err=Nie udało się usunąć z cache'u adresów URL
 cache_enone=Niczego nie wybrano
 cache_efile=Niewłaściwa nazwa pliku
+
 restart_title=Ponowne uruchamianie Webmina
 restart_done=Serwer webmina uruchamia się ponownie - poczekaj kilka sekund.
+
 mobile_title=Opcje urządzenia mobilnego
 mobile_header=Opcje dla przeglądarek mobilnych
 mobile_theme=Skórka dla urządzeń mobilnych
@@ -845,6 +888,7 @@ mobile_nosession=Wymuszaj autentykację HTTP
 mobile_agents=Dodatkowe UserAgent'y dla przeglądarek mobilnych
 mobile_err=Nie udało się zapisać opcje urządzenia mobilnego
 mobile_prefixes=Prefiksy URL nazwy hosta dla przeglądarek mobilnych
+
 blocked_title=Zablokowane komputery i użytkownicy
 blocked_type=Typ
 blocked_who=Nazwa komputera lub nazwa użytkownika
@@ -856,9 +900,11 @@ blocked_host=Komputer klienta
 blocked_clear=Wyczyść wszystkie bloki
 blocked_cleardesc=Kliknij ten przycisk aby wyczyścić blokowania komputerów i użytkowników, przez ponowne uruchomienie serwera Webmina.
 blocked_restarting=Serwer Webmina jest teraz uruchamiany ponownie aby wyczyścić blokowane komputery i użytkowników - poczekaj kilka sekund.
+
 refreshmods_title=Odśwież moduły
 refreshmods_installed=Sprawdzanie używalnych modułów Webmina ..
 refeshmods_counts=.. znaleziono $2 zainstalowanych aplikacji, $1 jest niezainstalowanych.
+
 debug_title=Plik logu dla debugowania
 debug_header=Opcje pliku debugowania Webmina
 debug_enabled=Włączyć logowanie debugowania?
@@ -886,6 +932,7 @@ debug_cmd=Wiersz poleceń
 debug_cron=Zadania w tle
 debug_inmods=Moduły, dla których zapisywać log debugowania
 debug_emodules=Nie wybrano modułów do debugowania
+
 notif_passexpired=Twoje hasło do Webmina wygasło! Będziesz musiał je zmienić podczas następnego logowania.
 notif_passchange=Twoje hasło do Webmina było ostatnio zmieniane $1 i musi zostać zmienione w ciągu $2 dni.
 notif_passlock=Twoje hasło do Webmina było zmieniane $1, twoje konto zostanie zablokowane w ciągu $2 dni jeśli nie zostanie ono zmienione.
@@ -901,6 +948,7 @@ notify_updatedesc=Naprawia problem
 notif_updateok=Zainstaluj aktualizacje teraz
 notif_reboot=Najnowsze aktualizacje pakietów (takie jak nowa wersja jądra) wymaga ponownego uruchomienia, aby mogły zostać w pełni zastosowane.
 notif_rebootok=Uruchom ponownie teraz
+
 status_title=Zbieranie statystyk
 status_header=Ustawienia zadania zbierania statystyk
 status_interval=Zbierać statystyki systemu w tle?
@@ -912,6 +960,7 @@ status_temp=Zbierać temperaturę dysku?
 status_units=Jednostki temperatury
 status_celsius=Celsjusza
 status_fahrenheit=Fahrenheita
+
 sendmail_title=Wysyłanie poczty
 sendmail_desc=Ta strona kontroluje jak Webmin wysyła e-maile takie jak w wyniku zaplanowanych kopii bezpieczeństwa czy monitorowania w tle. Działa też na e-maile wysyłane przy użyciu modułu Czytaj maile użytkownika.
 sendmail_header=Opcje wysyłania e-maili
@@ -944,12 +993,14 @@ sendmail_subject=Temat wiadomości
 sendmail_body=Wiadomość zawiera
 sendmail_desc2=Ten formularz może zostać użyty do wysłania e-maila testowego w celu sprawdzenia powyższej konfiguracji.
 sendmail_send=Wyślij e-mail
+
 testmail_title=Wyślij testowy e-mail
 testmail_err=Niepowodzenie wysyłania wiadomości testowej
 testmail_eto=Nie wpisano adresu docelowego
 testmail_sending=Wysyłanie wiadomości od $1 do $ ..
 testmail_done=,, wiadomość wysłana. Sprawdź, czy wiadomość została dostarczona poprawnie.
 testmail_failed=.. wysyłanie nie powiodło się : $1
+
 web_title=Opcje serwera www
 web_header=Opcje wbudowanego serwera www Webmina
 web_expires=Czas przechowywania w pamięci podręcznej po stronie klienta plików dla plików statycznych
@@ -961,6 +1012,7 @@ web_expirespaths=Czas przechowywania w pamięci podręcznej po stronie klienta d
 web_expirespath=Wyrażenie regularne dla URL
 web_expirestime=Czas przechowywania w pamięci podręcznej w sekundach
 web_eexpires2=Nie podano lub nie jest liczbą czas przechowywania w pamięci podręcznej po stronie klienta w wierszu $1
+
 webmincron_title=Zaplanowane funkcje Webmina
 webmincron_emodule=Moduł zadań Crona Webmina nie jest zainstalowany!
 webmincron_module=Moduł Webmina
@@ -984,6 +1036,7 @@ webmincron_when1=Dokładną ilość razy
 webmincron_secs=sekund
 webmincron_err=Błąd zapisywania zaplanowanej funkcji
 webmincron_einterval=Przedział sekund musi być liczbą większa od zera
+
 twofactor_title=Dwustopniowe uwierzytelnianie
 twofactor_header=Opcje dwustopniowego uwierzytelniania
 twofactor_provider=Dostawca uwierzytelniania

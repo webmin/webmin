@@ -57,20 +57,27 @@ index_rotate=Actualizarea statisticilor
 index_rotatedesc=Faceți clic pe acest buton pentru a procesa tot traficul de rețea înregistrat până la ora curentă, făcându-l imediat disponibil pentru raportare.
 index_eiptables=Avertisment - configurația dvs. IPtables are o eroare: $1. Configurarea monitorizării lățimii de bandă va șterge toate regulile firewall-ului.
 index_return=formular de raport
+
 log_setup=Configurarea monitorizării lățimii de bandă pe interfața $1 
 log_turnoff=Monitorizarea lățimii de bandă dezactivată
 log_rotate=Statistici actualizate
+
 acl_setup=Poate configura și dezactiva monitorizarea?
+
 turnoff_ecannot=Nu aveți voie să dezactivați monitorizarea
+
 setup_ecannot=Nu aveți voie să activați monitorizarea
 setup_eiface=Numele interfeței lipsește sau nu este valabil
 setup_ezone=Nu a putut găsi zona Shorewall pentru interfața selectată
+
 system_firewall=iptables
 system_ipfw=ipfw
 system_ipfilter=ipfilter
 system_shorewall=Shorewall
+
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=Actualizarea statisticilor
 rotate_doing=Prelucrarea traficului de rețea înregistrat ..
 rotate_done=.. Terminat.

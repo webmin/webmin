@@ -1,22 +1,28 @@
 access_elibwrap=$1 Perlモジュールがインストールされていないため、TCPラッパーを使用したIPアクセス制御は使用できません。
 access_libwrapcpan=<a href='$1'>ここをクリック</a>して、不足しているPerlモジュールをWebminに自動的にインストールさせます。
+
 access_eip6=「$1」は完全なIPv6またはネットワークアドレスではありません
 access_ecidr8=IPv6ネットワークサイズ「$1」は8で割り切れる必要があります
 access_trust=プロキシが提供するリモートIPアドレスを信頼しますか？
+
 bind_firewall=ファイアウォールで新しいポートを開きますか？
 bind_eipv6=$1 Perlモジュールがインストールされていない場合、IPv6を有効にできません
 bind_redirecting=新しいURLへのリダイレクト ..
 bind_elsof=新しいポート$1はすでに別のプロセスで使用されています
 bind_eonsystem=IPアドレス$1はこのシステムでアクティブではないため、使用できません
+
 log_global=&lt;グローバルアクション&gt;
 log_sched=スケジュールされた機能を記録しますか？
 log_login=アクションログにWebminログインとログアウトを含めますか？
 log_email=記録されたアクションをメールで送信する
 log_emailnone=送信しない
 log_inmodsemail=のアクションのメールを送信する
+
 ui_nice_size_type=バイナリ測定単位を使用する（KB、MB、GBではなく、KiB、MiB、GiB）
 ui_showhost=ページタイトルにホスト名を追加しますか？
+
 mods_checksig=ダウンロードしたモジュールの署名ファイルを確認しますか？
+
 ssl_honorcipherorder=サーバー定義の暗号順序の使用を強制しますか？
 ssl_extracasnone=このIPアドレスにはなし
 ssl_ekey2=SSL秘密鍵ファイル$1にはPEM形式の鍵が含まれていません
@@ -52,18 +58,26 @@ ssl_letsnotrenew=手動でのみ更新する
 ssl_staging=サーバーを暗号化しましょう
 ssl_staging0=リアル
 ssl_staging1=ステージング（テストのみ）
+
 newkey_ecns=サーバー名が入力されていません
+
 newcsr_ok=次のSSL証明書リクエストが正常に生成されました：
 newcsr_ok2=このCSRは、署名された証明書を返す署名機関に送信する必要があります。これは、<b>証明書のアップロード</b>タブを使用して上記のキーでインストールできます。
+
 upgrade_eportage=Portageパッケージからインストールした場合、Webminのアップグレード機能は現在動作しません。代わりにPortageツールを使用してアップグレードしてください。
+
 update_checksig=非Webminリポジトリの署名を確認する
+
 ca_alt=追加のドメイン
+
 session_syslog3=<tt>syslog</tt>にエラーを記録しますか？
 session_ip=セッションを同じクライアントIPアドレスに制限しますか？
 session_pamend=PAMステータスを他のモジュールに渡しますか？
 session_sha512=SHA512暗号化を使用する
 session_esha512mod=Perl $1モジュールがインストールされていないため、SHA512暗号化は使用できません。
+
 categories_custom=カスタム
+
 log_debug=デバッグログファイルオプションの変更
 log_delete_webmincron=$1スケジュール機能を削除しました
 log_run_webmincron=$1スケジュールされた関数を実行しました
@@ -72,13 +86,18 @@ log_onedelete_webmincron=モジュール$1のスケジュールされた関数�
 log_letsencrypt=Let's Encryptに新しいSSL証明書を要求しました
 log_letsencryptdns=$1のDNSレコードを暗号化しよう
 log_letsencryptcleanup=$1のDNSレコードの暗号化を削除しました
+
 themes_overdesc=オーバーレイは、色、背景、アイコンを変更することにより、テーマの外観を変更します。レイアウトは変更されません。
+
 themes_ok2=テーマオーバーレイが正常に変更されました.. Webminインデックスページにリダイレクトされます。
 themes_eoverlay=選択したオーバーレイは現在のグローバルテーマと互換性がありません
+
 ipkey_ips2=IPアドレスとホスト名の場合
 ipkey_eip2=「$1」は有効なIPアドレスまたはホスト名ではありません
 ipkey_eextraca=追加の証明書ファイル$1は存在しません
+
 descs_etitle=クローン '$1'のタイトルがありません
+
 advanced_precache=事前キャッシュするテキストファイル？
 advanced_precache2=シェルパターンに一致するファイル$1
 advanced_eprecache=事前キャッシュするシェルパターンのリストがありません
@@ -93,14 +112,18 @@ advanced_listdir=インデックスファイルなしでディレクトリをリ
 advanced_headers=追加のHTTPヘッダー
 advanced_eheader=ヘッダーは、<tt>Header：Value</tt>のような形式にする必要があります
 advanced_sortconfigs=キーでソートされた構成ファイルを保存しますか？
+
 savekey_echain=PEM形式のチェーン証明書が欠落しているか無効です
 savekey_done3=提供された連鎖SSL証明書は、ファイル$1に保存されています。
+
 debug_modules=デバッグをモジュールに制限する
 debug_inmods=デバッグログを書き込むモジュール
 debug_emodules=選択したモジュールに対してデバッグするモジュールはありません
+
 notif_upgrade=Webminバージョン$1が利用可能になりましたが、バージョン$2を実行しています。
 notif_updatemsg=Webminモジュールの更新に続く$1が利用可能になりました ..
 notif_reboot=最近のパッケージの更新（新しいカーネルバージョンなど）を完全に適用するには再起動が必要です。
+
 sendmail_desc=このページは、スケジュールされたバックアップやバックグラウンド監視などから、Webminが電子メールを送信する方法を制御します。また、Read User Mailモジュールを使用して送信される電子メールにも影響します。
 sendmail_port=SMTPポート
 sendmail_ssl0=暗号化しない
@@ -114,9 +137,12 @@ sendmail_url=電子メールで使用するためのWebminURL
 sendmail_url_def=デフォルト（$1）
 sendmail_url_custom=カスタムURL
 sendmail_eurl=カスタムURLがないか無効です
+
 testmail_done=..メッセージが送信されました。宛先アドレスのメールボックスをチェックして、実際に配信されたことを確認します。
+
 webmincron_none=Webminスケジュール機能はまだ作成されていません。これらは通常、ユーザーではなく、他のモジュールによって作成されます。
 webmincron_einterval=間隔はゼロより大きい秒数である必要があります
+
 twofactor_apikey=Authy APIキー
 twofactor_test=プロバイダーのテストモードを使用しますか？
 twofactor_desc=2要素認証により、Webminユーザーは、ログイン時に追加の認証デバイス（ワンタイムパスコードジェネレーターなど）を使用できるようになります。このページで有効にしたユーザーは、選択した認証プロバイダーに個別に登録する必要があります。
@@ -139,6 +165,7 @@ twofactor_qrcode=Google認証システムアプリでシークレットコード
 twofactor_etotpid=無効なTOPT base32エンコードシークレット
 twofactor_esecret=秘密鍵は正確に16文字の長さで、文字と数字のみを含む必要があります
 twofactor_esession=セッションベース認証がアクティブでない限り、二要素認証は使用できません
+
 letsencrypt_title=証明書リクエストを暗号化しましょう
 letsencrypt_err=証明書を要求できませんでした
 letsencrypt_ecmds=Let's Encrypt clientコマンド<tt>certbot</tt>も<tt>python</tt>コマンドもシステムで見つかりませんでした
@@ -172,5 +199,6 @@ letsencrypt_ecsr=CSRの生成に失敗しました：$1
 letsencrypt_ekeygen=秘密鍵の生成に失敗しました：$1
 letsencrypt_enative=ネイティブのLet's Encryptクライアント（certbot）はこのシステムで以前に使用されたものであり、将来のすべての証明書要求に使用する必要があります
 letsencrypt_eacmedns=公式のLet's EncryptクライアントのみがDNSベースの検証をサポートします
+
 announce_hide=このお知らせを非表示
 alert_hide=アラートを非表示

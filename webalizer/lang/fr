@@ -24,6 +24,7 @@ index_egetversion=Impossible d'obtenir la version de Webalizer avec la commande 
 index_when=Oui, $1
 index_webalizer=Webalizer
 index_enable=Planifier la sélection
+
 edit_title1=Ajouter un fichier de logs
 edit_title2=Editer un fichier de logs
 edit_header=Options du rapport de fichiers de logs
@@ -47,12 +48,14 @@ edit_cmode0=Utiliser les options globales
 edit_cmode1=Options personnalisées
 edit_cmode2=Autre fichier de configuration ..
 edit_clear=Vider les fichiers logs après la génération du rapport planifié?
+
 gen_title=Génération du rapport
 gen_header=Exécution de Webalizer pour générer le rapport de $1 ..
 gen_done=.. fait
 gen_failed=.. Webalizer a échoué! Regardez les sorties pour plus de détails.
 gen_nothing=.. Webalizez est terminé, mais aucun rapport n'a été généré. Regardez les sorties pour plus de détails.
 gen_view=Voir le rapport complet
+
 save_err=Impossible de sauver le fichier de logs
 save_efile=Le fichier de logs n'a pas été rentré ou n'existe pas
 save_ecfile=L'autre fichier de configuration n'existe pas ou est manquant
@@ -62,12 +65,14 @@ save_ewuser=L'utilisateur Unix appelé $1 n'existe pas
 save_ehost=L'hostname du site web est invalide ou manquant
 save_etitle=Titre du rapport manquant
 save_ecannot=Vous n'êtes pas autorisé à générer des rapports de logs dans $1
+
 view_epath=PATH_INFO invalide
 view_efile=Nom de fichier du rapport invalide
 view_elog=Fichier de logs invalide
 view_ecannot=Vous n'êtes pas autorisé à voir ce rapport
 view_eopen=Impossible d'ouvrir le fichier du rapport
 view_title=Voir le rapport
+
 global_title=Options globales de Webalizer
 global_title2=Options du rapport de Webalizer
 global_for=Pour le fichier de logs $1
@@ -126,6 +131,7 @@ global_includesite=Clients à ne pas ignorer
 global_includereferrer=Référents à ne pas ignorer
 global_includeuser=Utilisateurs à ne pas ignorer
 global_includeagent=Navigateurs à ne pas ignorer
+
 global_err=Impossible de sauver les options Webalizer
 global_ereport=Préfix du titre du rapport manquant
 global_ehost=Hostname invalide ou manquant
@@ -135,12 +141,14 @@ global_etable=Taille pour la table '$1' manquante ou invalide
 global_ehistory=Fichier d'historique manquant ou invalide
 global_ecurrent=Fichier incrémental manquant ou invalide
 global_ecache=Fichier de cache DNS manquant ou invalide
+
 log_create_log=Création du rapport pour $1
 log_modify_log=Modification du rapport pour $1
 log_delete_log=Suppression du rapport pour $1
 log_generate_log=Génération du rapport pour $1
 log_global=Modification des options globales de Webalizer
 log_global2=Modification des options Webalizer pour $1
+
 acl_view=Peut uniquement voir les rapports existants?
 acl_global=Peut editer les options globales de Webalizer?
 acl_dir=Peut seulement éditer et voir les rapports de logs sous

@@ -25,6 +25,7 @@ index_echeckupdate=Сістэма абнаўленняў не выяўлена!
 index_filter=Фільтр пакетаў
 index_filterclear=Ачысціць фільтр
 index_filtered=Адлюстраванне <tt>$1</tt> пакетаў з <tt>$2</tt>
+
 search_title=Пошук пакетаў
 search_nomatch=Ні адзін пакет не адпавядаў $1 
 search_none=Не
@@ -37,6 +38,7 @@ search_esearch=Вы нічога не ўвялі для пошуку!
 search_delete=Выдаліце выбраныя пакеты
 search_selall=Абраць усё
 search_invert=Інвертаваць выбар
+
 edit_title=Рэдагаваць пакет
 edit_details=Падрабязнасці пакета
 edit_desc=Апісанне
@@ -53,6 +55,7 @@ edit_uninst=Выдаліць
 edit_uninstdesc=Выдаліце гэты пакет са сваёй сістэмы.
 edit_return=дэталі пакета
 edit_egone=Пакет больш не ўсталёўваецца
+
 list_title=Файлы пакетаў
 list_files=Файлы для пакета $1 
 list_path=Шлях
@@ -64,6 +67,7 @@ list_status=Статус
 list_ok=добра
 list_view=(Прагляд)
 list_eview=Не атрымалася адкрыць $1 : $2 
+
 delete_err=Не атрымалася выдаліць пакет $1 
 delete_epack=Пакет $1 не існуе
 delete_title=Выдаліць пакет
@@ -75,6 +79,7 @@ delete_noscripts=Прапусціць выдаленне сцэнарыяў?
 delete_efile=Несапраўдны часовы файл для выдалення
 delete_purge=Файлы канфігурацыі чысткі?
 delete_depstoo=Выдалены таксама нявыкарыстаныя залежнасці?
+
 file_title=Інфармацыя пра файл
 file_notfound=Інфармацыя пра $1 адсутнічае
 file_path=Шлях
@@ -88,6 +93,7 @@ file_pack=Пакет
 file_class=Клас
 file_desc=Апісанне
 file_none=Не
+
 install_err=Не атрымалася ўсталяваць пакет
 install_elocal=Лакальны файл не дадзены
 install_elocal2='$1' не існуе
@@ -101,6 +107,7 @@ install_title=Усталюйце пакет
 install_header=Усталюйце пакет
 install_packs=Пакет (ы) для ўстаноўкі
 install_ok=Усталюйце
+
 do_err=Не атрымалася ўсталяваць пакет $1 
 do_title=Усталюйце пакет
 do_efailed=Не атрымалася ўсталяваць : $1 
@@ -117,10 +124,12 @@ do_arch=Архітэктура
 do_inst=Устаноўлены
 do_none=Не
 do_files=Файлы пакетаў
+
 pkgadd_root=Каранёвая дырэкторыя
 pkgadd_eroot=Каранёвага каталога '$1' не існуе
 pkgadd_unknown=Невядома
 pkgadd_manager=Сістэма V менеджэр пакетаў
+
 rpm_upgrade=Абнавіць пакет?
 rpm_replacepkgs=Перапісаць пакет?
 rpm_nodeps=Ігнараваць залежнасці?
@@ -138,10 +147,12 @@ rpm_find=Пошук rpmfind.net ..
 rpm_findrpm=Імя файла пакета
 rpm_finddistro=Размеркаванне
 rpm_finddesc=Апісанне
+
 bsd_unknown=Невядома
 bsd_scripts=Выканаць сцэнарыі папярэдняй і пасля ўстаноўкі?
 bsd_force=Прымусіць усталяваць, калі адсутнічаюць перадумовы?
 bsd_manager=$1 Менеджэр пакетаў
+
 slack_unclass=Іншыя
 slack_unknown=Невядома
 slack_missing=Зніклі без вестак
@@ -149,12 +160,14 @@ slack_root=Каранёвая дырэкторыя
 slack_eroot=Адсутнічае альбо недапушчальны каранёвы каталог
 slack_manager=Дыспетчар пакетаў Slackware
 slack_edir=Адсутнічае каталог Slackware $1 
+
 debian_unknown=Невядома
 debian_depends=Ігнараваць праблемы з залежнасцю?
 debian_conflicts=Ігнараваць канфлікты пакетаў?
 debian_overwrite=Запісаць файлы з іншых пакетаў?
 debian_downgrade=Замяніць новы пакет на стары?
 debian_manager=Debian DPKG
+
 log_install_package=Устаноўлены пакет $1 
 log_install_apt_l=Устаноўлены пакет (ы) $1 ад APT
 log_install_apt=Устаноўлена $2 пакетаў з APT
@@ -173,6 +186,7 @@ log_upgrade_yum_l=Абноўлены пакет (ы) $1 ад YUM
 log_upgrade_yum=Абноўлены пакет (ы) $2 з YUM
 log_check_rhn_l=Абноўлены пакет (ы) $1 ад Redhat Network
 log_check_rhn=Абноўлены пакет (ы) $2 з Redhat Network
+
 rhn_input=Пакет ад Redhat Network
 rhn_find=Пошук RHN ..
 rhn_install=Усталяванне пакетаў з камандай $1.
@@ -200,6 +214,7 @@ rhn_eproxy=Адсутнічае альбо недапушчальны прокс
 rhn_skip=Прапусціць адпаведныя пакеты
 rhn_nonefound=Пакет не даступны для абнаўлення.
 rhn_name=Redhat Network
+
 apt_input=Пакет ад APT
 apt_install=Усталяванне пакетаў з камандай $1.
 apt_ok=.. ўстаноўка завершана.
@@ -229,6 +244,7 @@ apt_repo_url=Базавы URL рэпазітара
 apt_repo_path=Кампаненты шляху распаўсюджвання
 apt_repo_eurl=Адсутнічае альбо несапраўдны выгляд базавага URL
 apt_repo_epath=Адсутнічае шлях распаўсюджвання
+
 yum_input=Пакет ад YUM
 yum_install=Усталяванне пакетаў з камандай $1.
 yum_ok=.. ўстаноўка завершана.
@@ -259,6 +275,7 @@ yum_repo_ename=Адсутнічае назва сховішча
 yum_repo_eurl=Адсутнічае альбо недапушчальны URL рэпазітара
 yum_repo_egpg=Файл cert GPG адсутнічае альбо не існуе
 yum_repo_efile=Файл сховішча ўжо існуе!
+
 urpmi_name=URPMI
 urpmi_input=Пакет ад URPMI
 urpmi_find=Прагляд URPMI ..
@@ -273,6 +290,7 @@ urpmi_upgradeok=.. поўны.
 urpmi_install=Усталяванне пакетаў з камандай $1.
 urpmi_ok=.. ўстаноўка завершана.
 urpmi_failed=.. ўстаноўка не атрымалася!
+
 rpm_missing=Зніклі без вестак
 rpm_checkfail=Не атрымалася праверыць $1 
 rpm_md5=MD5
@@ -284,6 +302,7 @@ rpm_user=уласнасць карыстальніка
 rpm_perm=дазволаў
 rpm_group=уласнасць групы
 rpm_erpm=RPM $1 не знойдзены : $2 
+
 soft_reg=Звычайны файл
 soft_dir=Даведнік
 soft_spec=Спецыяльны файл
@@ -295,6 +314,7 @@ soft_euncompress=Файл сціскаецца, але каманда <tt>рас
 soft_euncmsg=Не атрымалася распакаваць файл : $1 
 soft_egzip=Файл gzipped, але каманда gzip не знойдзена ў вашай сістэме.
 soft_egzmsg=Не атрымалася загрузіць файл : $1 
+
 aix_unknown=Невядома
 aix_device=INPUT прылада / каталог праграмнага забеспячэння
 aix_software=Праграмнае забеспячэнне для ўстаноўкі
@@ -312,6 +332,7 @@ aix_accept=Прымаць новыя ліцэнзійныя пагадненні
 aix_license=Папярэдні прагляд новых пагадненняў па ліцэнзіі?
 aix_clean=Памылка ўстаноўкі ачысткі?
 aix_manager=Дыспетчар пакетаў AIX
+
 emerge_input=З сховішча Portage
 emerge_find=Пошук ..
 emerge_install=Усталяванне пакета з камандай $1.
@@ -327,6 +348,7 @@ emerge_noreplace=Замяніць існуючыя пакеты?
 emerge_onlydeps=Усталёўваць толькі залежнасці?
 emerge_title=Пошук Portage
 emerge_name=Валока
+
 cygwin_fmissing=Файл адсутнічае
 cygwin_lmissing=Файл, да якога спасылаюцца пункты, адсутнічае
 cygwin_estat=Не атрымалася зарэгістраваць файл: $1 
@@ -336,6 +358,7 @@ cygwin_badpostscript=Папярэджанне: падобны сцэнар не 
 cygwin_pkgexists=Пакет $1 ужо існуе.
 cygwin_warnuse=Папярэджанне: Гэта не афіцыйны інтэрфейс для кіравання праграмным забеспячэннем Cygwin. Выкарыстоўвайце на свой страх і рызыку.
 cygwin_edb=Адсутнічае база дадзеных пакетаў Cygwin $1 
+
 deletes_err=Не атрымалася выдаліць пакеты
 deletes_enone=Пакеты не абраны
 deletes_title=Выдаліць пакеты
@@ -346,6 +369,7 @@ deletes_failed2=Выдаленне не атрымалася : $1
 deletes_success2=.. выдаленне завершана.
 deletes_rusure=Вы ўпэўнены, што хочаце выдаліць пакеты $1 ?
 deletes_ok=Выдаліце іх усіх
+
 csw_input=Пакет ад CSW
 csw_install=Усталяванне пакетаў з камандай $1.
 csw_ok=.. ўстаноўка завершана.
@@ -360,20 +384,24 @@ csw_name=CSW
 csw_form=Абнаўленне пакетаў
 csw_upgrade=Абнавіце ўсе ўсталяваныя пакеты
 csw_updatedesc=Абнаўленне ўсіх усталяваных пакетаў з дапамогай каманды $1.
+
 missing_msg=Пакет $1 можа быць аўтаматычна ўсталяваны Webmin з дапамогай $2.
 missing_now=Ўсталяваць зараз
+
 find_title=Пошук пакета
 find_search=Знайдзіце адпаведныя пакеты:
 find_name=Імя
 find_version=Версія
 find_desc=Апісанне
 find_none=Ніякіх пакетаў, якія адпавядаюць вашаму пошуку, не знойдзены.
+
 msi_users=Зрабіце даступнае новае прыкладанне для
 msi_users0=Ніхто
 msi_users1=Бягучы карыстальнік
 msi_users2=Усе карыстальнікі
 msi_missing=Не існуе
 msi_size=Няправільны памер
+
 hpux_create_target_path=Стварыць мэтавы шлях?
 hpux_mount_all_filesystems=Змантаваць усе файлавыя сістэмы?
 hpux_reinstall=Пераусталяваць?
@@ -389,6 +417,7 @@ hpux_enforce_dependencies=Замацаваць залежнасць?
 hpux_enforce_scripts=Выконваць сцэнарыі?
 hpux_enforce_dsa=Выканаць аналіз дыскавай прасторы?
 hpux_root=Каранёвая дырэкторыя
+
 ports_install=Ўстаноўка партоў FreeBSD $1 ..
 ports_failed=.. некаторыя парты не змаглі
 ports_ok=.. ўстаноўка завершана
@@ -399,18 +428,22 @@ ports_form=Абнаўленне базы партоў
 ports_apply=Спампаваць апошні здымак
 ports_upgrade=Загрузка здымкаў партоў
 ports_running=Запуск каманды $1.
+
 pkg_install=Ўстаноўка пакетаў FreeBSD $1 ..
 pkg_failed=.. некаторыя пакеты не змаглі
 pkg_ok=.. ўстаноўка завершана
 pkg_find=Пошук pkgng
 pkg_input=Пакет ад pkgng
+
 pkgsrc_install=Ўстаноўка пакетаў pkgsrc $1.
 pkgsrc_failed=.. некаторыя пакеты не змаглі
 pkgsrc_ok=.. ўстаноўка завершана
 pkgsrc_find=Пошук pkgng
 pkgsrc_input=Пакет ад pkgsrc
+
 log_IPKG_update=Абноўленая база дадзеных IPKG
 log_IPKG_upgrade=Абноўлены ўсталяваныя пакеты IPKG
+
 IPKG_name=IPKG
 IPKG_input=Пакет ад IPKG
 IPKG_find=Прагляд IPKG ..

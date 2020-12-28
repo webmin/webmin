@@ -19,11 +19,13 @@ index_force=Vrtenje dnevnika sil
 index_forcedesc=Prisilite takojšnjo rotacijo vseh datotek dnevnika, tudi če še ni čas.
 index_logrotate=Logrotate
 index_delete=Izbrišite izbrane rotacije dnevnika
+
 period_daily=Vsakodnevno
 period_weekly=Tedensko
 period_monthly=Mesečno
 period_never=Nikoli
 period_bytes=bajti
+
 edit_title1=Uredi datoteko dnevnika
 edit_title2=Ustvari datoteko dnevnika
 edit_header=Podrobnosti zavrtenih datotek dnevnika
@@ -62,8 +64,10 @@ edit_pre=Ukazi za zagon pred vrtenjem
 edit_default=Privzeto ($1)
 edit_sharedscripts=Za vse datoteke enkrat zaženite skripte?
 edit_now=Zavrtite zdaj
+
 global_title=Globalne možnosti
 global_header=Privzete možnosti za vse datoteke dnevnika
+
 save_err=Dnevnika ni bilo mogoče shraniti
 save_efile=Manjkajoče ali neveljavno ime datoteke dnevnika
 save_esize=Manjkajoča ali neveljavna največja velikost
@@ -81,6 +85,7 @@ save_eerrors=Manjka e-poštni naslov za sporočila o napaki
 save_epre=Skripta pred vrtenjem ne sme vsebovati vrstice <tt>endcript</tt> ali <tt>endrotate</tt>
 save_epost=Skripta po vrtenju ne sme vsebovati vrstice <tt>končnega skripta</tt> ali <tt>potrditve</tt>
 save_enofiles=Vnešena ni nobena datoteka
+
 log_modify_sched=Spremenjeno vrtenje dnevnika Cron opravilo
 log_create_sched=Ustvarjeno vrtenje dnevnika Cron
 log_delete_sched=Izbrisano vrtenje dnevnika Cron opravilo
@@ -89,6 +94,7 @@ log_create=Za datoteko dnevnika $1 je dodano vrtenje
 log_modify=Spremenjeno vrtenje datoteke dnevnika $1 
 log_delete=Izbrisano vrtenje datoteke dnevnika $1 
 log_delete_logs=Izbrisana rotacija za $1 datoteke datotek
+
 sched_title=Načrt vrtenja dnevnika
 sched_desc=Za izvedbo vrtenja dnevnika, ki je konfigurirano s tem modulom, mora Cron uvesti v običajnem urniku (običajno vsak dan) v rednem urniku.
 sched_runparts=Trenutno se ukaz vrtenja dnevnika izvaja iz skripta $1 $2 in ga ni mogoče prilagoditi.
@@ -98,10 +104,12 @@ sched_enabled=Omogočeno, včasih spodaj ..
 sched_save=Posodobite Cron Job
 sched_err=Urnika vrtenja ni bilo mogoče shraniti
 sched_when=Časi, ki tečejo
+
 force_title=Vrtenje dnevnika sil
 force_doing=Prisiljanje takojšnje zasuke vseh datotek dnevnika ..
 force_doingone=Prisiljanje takojšnjega vrtenja ene datoteke dnevnika ..
 force_done=.. Končano.
 force_failed=.. ni uspelo! Glej zgornji izid za razlog.
+
 delete_err=Brisanja dnevnikov ni bilo mogoče
 delete_enone=Izbrana ni nobena

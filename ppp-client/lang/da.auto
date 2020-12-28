@@ -24,13 +24,16 @@ index_out=Outputet fra $1 var
 index_boot=Opret forbindelse ved opstart med:
 index_noboot=&lt;Tilslut ikke&gt;
 index_bootdesc=Skift denne mulighed for at kontrollere, om den valgte PPP-forbindelse startes ved starttidspunktet eller ej.
+
 init_title=Registrer konfiguration
 init_cmd=Registrering af et tilsluttet modem med kommandoen $1.
 init_done=.. Færdig
 init_modems=Modemer er konfigureret på $1 og $2.
 init_modem=Et modem blev detekteret på $1.
 init_none=Ingen modemer blev fundet!
+
 device_serial=seriel port $1 
+
 connect_title=Opret forbindelse
 connect_cmd=Forsøger at oprette en forbindelse med kommandoen $1.
 connect_failed=.. forbindelsen mislykkedes! Se output ovenfor for grunden til.
@@ -40,12 +43,14 @@ connect_dns=Brug af PPP-tildelt DNS-konfiguration.
 connect_dns2=PPP-tildelt DNS-konfiguration er indstillet.
 connect_dnsto=Timeout, der venter på den PPP-tildelte DNS-konfiguration.
 connect_dnsdown=Forbindelsen ser ud til at være mislykket, mens du venter på PPP-tildelt DNS-konfiguration.
+
 disc_title=Luk PPP
 disc_err=Kunne ikke lukke PPP-forbindelsen
 disc_edown=Allerede frakoblet
 disc_ok1=Din PPP-forbindelse, der blev oprettet ved hjælp af $2, blev med succes lukket.
 disc_ok2=Din PPP-forbindelse blev lukket.
 disc_dns=Gendannet gammel DNS-konfiguration.
+
 edit_title1=Tilføj ISP Dialer
 edit_title2=Rediger ISP Dialer
 edit_ddesc=Disse standardindstillinger gælder for forbindelser, der er oprettet ved hjælp af en hvilken som helst anden opkaldsnummer.
@@ -76,6 +81,7 @@ edit_idle=Idle-timeout (i sekunder)
 edit_def=Fra standardindstillinger
 edit_inherits=Arv indstillinger
 edit_from=Fra dialer ..
+
 save_err=Kunne ikke gemme opkaldsnummeret
 save_err2=Kunne ikke slette opkaldsnummeret
 save_ename=Manglende eller ugyldigt opkaldsnavn
@@ -88,6 +94,7 @@ save_edial=Manglende eller ugyldigt antal opkaldsforsøg
 save_eidle=Manglende eller ugyldig inaktiv timeout
 save_einherits=Denne dialer kan ikke slettes, fordi '$1' arver indstillingerne fra den.
 save_eclash=En dialer med samme navn findes allerede
+
 log_create=Oprettet $1 
 log_update=Opdateret $1 
 log_delete=Slettet $1 

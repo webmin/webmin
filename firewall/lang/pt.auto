@@ -16,6 +16,7 @@ index_chain=Cadeia $1
 index_action=Açao
 index_desc=Condição
 index_comm=Comente
+index_no_comment=
 index_move=Mover
 index_none=Não há regras definidas para esta cadeia.
 index_policy=Defina a ação padrão como:
@@ -88,6 +89,7 @@ index_ipset_size=Tamanho
 index_ipvxmode=Alterar a versão do protocolo IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=protocolo é $1 
 desc_p!=protocolo não é $1 
 desc_s=a fonte é $1 
@@ -114,6 +116,8 @@ desc_tcp-option=pacote usa a opção TCP $1
 desc_tcp-option!=pacote não usa a opção TCP $1 
 desc_icmp-type=O tipo de ICMP é $1 
 desc_icmp-type!=O tipo de ICMP não é $1 
+desc_icmpv6-type=O tipo de ICMP é $1 
+desc_icmpv6-type!=O tipo de ICMP não é $1 
 desc_mac-source=o endereço Ethernet é $1 
 desc_mac-source!=o endereço Ethernet não é $1 
 desc_limit=taxa é menor que $1 
@@ -146,10 +150,15 @@ desc_always=Sempre
 desc_args--match-set=$2 está contido no conjunto de IP $1 
 desc_src=fonte
 desc_dest=destino
+
 redhat_einstalled=Nenhuma ação de inicialização <tt>iptables (6)</tt> foi encontrada, indicando que o pacote IPtables não está instalado no seu sistema
 redhat_eoutput=Ocorreu um erro ao obter o status de tabelas de IP do comando $1. Provavelmente, isso indica que seu sistema foi configurado para usar IPchains em vez de IPtables.
+
 gentoo_escript=O script de inicialização do Gentoo IPtables $1 não foi encontrado no seu sistema.
+
 eiptables=Tabelas IP desconhecidas salvam a linha do arquivo : $1 
+eip6tables=As tabelas ip6 desconhecidas salvam a linha do arquivo : $1 
+
 edit_title1=Adicionar regra
 edit_title2=Editar regra
 edit_title3=Regra de clone
@@ -218,6 +227,7 @@ edit_physdevout=Interface física de saída
 edit_physdevisin=Pacote recebido na interface de ponte
 edit_physdevisout=Saída de pacotes na interface de ponte
 edit_physdevisbridged=Pacote está sendo ponte
+
 save_err=Falha ao salvar regra
 save_echain=Cadeia ausente ou inválida para executar
 save_esource=Endereço ou rede de origem ausente ou inválida
@@ -262,23 +272,28 @@ save_estates=Nenhum estado de conexão selecionado
 save_ecanjump=Você não tem permissão para usar esta ação
 save_ephysdevin=Interface física de entrada ausente ou inválida
 save_ephysdevout=Interface física de saída ausente ou inválida
+
 delete_title=Excluir cadeia
 delete_rusure=Tem certeza de que deseja excluir a cadeia $1 ? $2 regras dentro dele serão excluídas.
 delete_ok=Excluir agora
 delete_ecannot=Você não tem permissão para excluir cadeias
+
 clear_title=Cadeia clara
 clear_rusure=Tem certeza de que deseja excluir todas as regras $2 da cadeia $1 ?
 clear_ecannot=Você não tem permissão para limpar cadeias
+
 new_err=Falha ao criar cadeia
 new_ename=Nome de cadeia ausente ou inválido
 new_etaken=Já existe uma cadeia com esse nome
 new_ecannot=Você não tem permissão para criar cadeias
+
 apply_err=Falha ao aplicar a configuração
 apply_ecannot=Você não tem permissão para aplicar a configuração
 apply_remote=Erro de $1 : $2 
 unapply_err=Falha ao reverter a configuração
 unapply_ecannot=Você não tem permissão para reverter a configuração
 bootup_ecannot=Você não tem permissão para ativar ou desativar o firewall na inicialização
+
 log_create_rule=Regra adicionada à cadeia $1 na tabela $2 
 log_modify_rule=Regra modificada na cadeia $1 na tabela $2 
 log_delete_rule=Regra excluída na cadeia $1 na tabela $2 
@@ -301,8 +316,10 @@ log_add_group=Servidores de cluster adicionados do grupo $1
 log_delete_host=Servidor de cluster removido $1 
 log_delete_group=$1 servidores de cluster removidos
 log_openports=Portas de firewall abertas $1 
+
 setup_eiface=Nenhuma interface de rede externa inserida
 setup_ecannot=Você não tem permissão para configurar o firewall
+
 acl_tables=Tabelas IP permitidas
 acl_apply=Pode aplicar a configuração?
 acl_unapply=Pode cancelar a aplicação da configuração?
@@ -314,9 +331,11 @@ acl_jall=Todos
 acl_newchain=Pode criar novas cadeias?
 acl_delchain=Pode excluir ou limpar cadeias?
 acl_policy=Pode alterar a política padrão?
+
 etable=Você não tem permissão para editar esta tabela de IP
 ejump=Você não tem permissão para editar esta regra
 ecluster=Você não tem permissão para gerenciar o cluster de firewall
+
 cluster_title=Servidores de firewall de cluster
 cluster_none=Nenhum servidor foi adicionado ao cluster de firewall ainda.
 cluster_host=nome de anfitrião
@@ -327,6 +346,7 @@ cluster_gadd=Adicionar servidores no grupo
 cluster_need=Você deve adicionar servidores com login e senha no módulo Webmin Servers Index antes que possam ser gerenciados aqui.
 cluster_return=servidores de cluster
 cluster_delete=Remover Selecionado
+
 add_title=Adicionar servidores
 add_msg=Adicionando $1 ..
 add_gmsg=Adicionando servidores no grupo $1 ..
@@ -336,13 +356,16 @@ add_echeck=O servidor $1 não possui o módulo Linux Firewall
 add_emissing=O servidor $1 está ausente no comando de firewall $2 
 add_ok=Adicionado $1, com $2 regras de firewall ativas.
 add_enone=Nenhum servidor para adicionar selecionado!
+
 policy_ecannot=Você não tem permissão para alterar a política padrão para esta cadeia
+
 move_title=Regras de movimentação
 move_count=Regras selecionadas
 move_chain=Mudança atual
 move_dest=Cadeia de destino
 move_ok=Mexa-se agora
 move_header=Opções de movimentação de regras
+
 rename_title=Renomear cadeia
 rename_count=Regras em cadeia
 rename_chain=Nome atual
@@ -352,6 +375,3 @@ rename_header=Opções de renomeação de cadeia
 rename_adjust=Modificar outras regras que saltam para essa cadeia?
 rename_none=Nenhum
 rename_ecannot=Você não tem permissão para renomear cadeias
-desc_icmpv6-type=O tipo de ICMP é $1 
-desc_icmpv6-type!=O tipo de ICMP não é $1 
-eip6tables=As tabelas ip6 desconhecidas salvam a linha do arquivo : $1 

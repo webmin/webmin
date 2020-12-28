@@ -37,6 +37,7 @@ index_restart=Configuratie Toevoegen
 index_restartdesc=Klik op deze knop om de huidige Squid configuratie te activeren
 index_iptables=Poort Omleiding Instellen
 index_squid=Squid Proxy Server
+
 buttsave=Opslaan
 buttdel=Verwijder
 buttcreat=Maak
@@ -46,6 +47,7 @@ default=Standaard
 none=Geen
 on=Aan
 off=Uit
+
 acl_header1=Maak ACL
 acl_header2=Bewerk ACL
 acl_name=ACL Naam
@@ -100,6 +102,7 @@ acl_file=ACL waardes opslaan in file
 acl_nofile=Squid configuratie
 acl_infile=Aparte file
 acl_keep=De bestaande inhoud van de file gebruiken?
+
 aclsave_failsave=Mislukt om ACL op te slaan
 aclsave_faildel=Mislukt om ACL te verwijderen
 aclsave_epr=Deze ACL word gebruikt door een proxy beperking
@@ -119,11 +122,13 @@ aclsave_eemin=Ongeldig eind minuut
 aclsave_efile=U bent niet bevoegd om te schrijven naar de ACL file '$1'
 aclsave_enofile=Geen ACL filenaam ingevuld
 aclsave_ealready=ACL file bestaat reeds
+
 cach_ecannot=U bent niet bevoegd om toegang te krijgen tot de cache manager statistieken
 cach_err=Fout
 cach_nfound=Het Squid cache manager programma <tt>$1</tt> is niet gevonden op uw systeem. Misschien is uw <a href=/config.cgi?$2 >module configuratie</a> niet correct.
 cach_return=squid index
 cach_esame=Het <b>Squid cachemgr.cgi uitvoerbestand</b> is ingesteld naar Webmin's cachemgr.cgi programma, en niet naar degene die word ondersteund door Squid.
+
 chown_header=Verander Eigenaarschap
 chown_stop=Stoppen van squid ...
 chown_done=.. Klaar
@@ -131,6 +136,7 @@ chown_chown=Verander eigenaarschap ..
 chown_restart=Herstarten Squid ...
 chown_failrestart=Mislukt om Squid te herstarten ..
 chown_return=squid index
+
 clear_ecannot=U bent niet bevoegd om cache op te ruimen en opnieuw op te bouwen
 clear_header=Opruimen en Cache Opnieuw Opbouwen
 clear_msgclear=Weet u zeker dat u de Squid cache wilt opschonen en opnieuw wilt aanmaken? Dit zal <b>alle</b> files in uw cache verwijderen en uw Squid server herstarten.
@@ -144,6 +150,7 @@ clear_failrestart=Herstarten Squid mislukt ..
 clear_return=squid index
 clear_url=Verwijder 1 URL van cache :
 clear_ok=Verwijder
+
 eacl_ecannot=U bent niet bevoegd om de toegangs controle te bewerken
 eacl_header=Toegangs Controle
 eacl_acls=Toegangs controle lijst
@@ -160,8 +167,10 @@ eacl_nopr=Geen proxy beperkingen gedefinieerd
 eacl_addpr=Toevoegen van proxy beperkingen.
 eacl_noprr=Geen proxy antwoord beperkingen gedefinieerd
 eacl_addprr=Toevoegen proxy antwoord beperkingen.
+
 eacl_replypr=Antwoord proxy beperkingen
 eacl_replynopr=Geen antwoord proxy beperkingen gedefinieerd
+
 eacl_icpr=ICP beperkingen
 eacl_noicpr=Geen ICP beperkingen gedefinieerd
 eacl_addicpr=Toevoegen van ICP beperkingen
@@ -178,6 +187,7 @@ eacl_eclass=Geen programma class geselecteerd
 eacl_cname=Type naam
 eacl_file=Van file $1
 eacl_hdelete=Verwijder Geselecteerde Beperkingen
+
 eadm_ecannot=U bent niet bevoegd om administratieve opties te bewerken.
 eadm_header=Administratieve Opties
 eadm_aao=Administratieve en Bekendmaking Opties
@@ -204,6 +214,7 @@ eadm_caf=Cache aankondiging file
 eadm_annp=Aankondigings periode
 eadm_buttsave=Opslaan
 eadm_return=squid index
+
 eauth_ecannot=U bent niet bevoegd om de proxy authenticatie te bewerken.
 eauth_header=Proxy Authenticatie
 eauth_aopt=Authenticatie Opties
@@ -217,6 +228,7 @@ eauth_pusers=Proxy Gebruikers
 eauth_nopusers=Er zijn nog geen proxy gebruikers op dit moment gedefinieerd
 eauth_addpuser=Voeg een nieuwe proxy gebruiker toe
 eauth_return=squid index
+
 ec_ecannot=U bent niet bevoegd om cache opties te bewerken
 ec_header=Cache Opties
 ec_cro=Cache en Aanvraag Opties
@@ -271,6 +283,7 @@ ec_return=squid index
 ec_maxreplies=Maximum antwoorden body grote
 ec_maxrn=Grote (kB)
 ec_maxracls=Voor aanvragen overeenkomend met ACLs (laar leeg voor alles)
+
 ech_header=Maak Cache Host
 ech_header1=Bewerk Cache Host
 ech_cho=Cache Host Opties
@@ -314,6 +327,7 @@ ech_origin=Behandel host als originele server?
 ech_force=Forceer Host: header naar
 ech_same=Onverandert
 ech_ssl=Verbinden met gebruik van SSL?
+
 eicp_ecannot=U bent niet bevoegd om andere cache's te bewerken
 eicp_header=Andere cache's
 eicp_opcs=Andere proxy cache servers
@@ -351,6 +365,7 @@ eicp_ttype=Type
 eicp_tpport=Proxy poort
 eicp_tiport=ICP poort
 eicp_delete=Verwijder Geselecteerde Cache's
+
 elogs_ecannot=U bent niet bevoegd het loggen te bewerken
 elogs_header=Loggen
 elogs_lalo=Loggen en Logfile Opties
@@ -383,6 +398,7 @@ elogs_aacls=Alleen loggen voor ACLs
 elogs_notset=Niet ingesteld
 elogs_dont=Niet loggen
 elogs_file=File $1
+
 emem_ecannot=U bent niet bevoegd om geheugen gebruik te bewerken
 emem_dheader=Geheugen en Harddisk Gebruik
 emem_header=Geheugen Gebruik
@@ -408,6 +424,7 @@ emem_lfuda=Dynamisch meest gebruikt
 emem_hlru=Meest gebruikte heap
 emem_return=squid index
 emem_mrp=Geheugen vervangings policy
+
 emisc_ecannot=U bent niet bevoegd om extra opties te bewerken
 emisc_header=Extra Opties
 emisc_mo=Extra Opties
@@ -444,6 +461,7 @@ emisc_wccpin=WCCP Inkomende Adres
 emisc_wccpout=WCCP Uitgaande Adres
 emisc_none=Geen
 emisc_virtual=Virtueel
+
 eports_ecannot=U bent niet bevoegd om poorten en netwerken te bewerken
 eports_header=Poorten en Netwerken
 eports_pano=Poorten en Netwerk Opties
@@ -468,6 +486,7 @@ eports_sel=In de lijst hieronder ..
 eports_unc=SSL grof uitschakelen?
 eports_checkhost=Valideer hostnamen in URLs?
 eports_underscore=Liggend streepje ( _ ) toestaan in hostnamen?
+
 eprogs_ecannot=U bent niet bevoegd om het help programma te bewerken
 eprogs_header=Helper Programma's
 eprogs_chpo=Cache Help Programma Opties
@@ -492,6 +511,7 @@ eprogs_ttl=Authenticatie cache tijd
 eprogs_aittl=Authenticatie van IP cache tijd
 eprogs_realm=Authenticatie realm
 eprogs_return=squid index
+
 euser_header=Maak Proxy Gebruiker
 euser_header1=Bewerk Proxy Gebruiker
 euser_pud=Proxy Gebruiker Details
@@ -500,6 +520,7 @@ euser_p=Wachtwoord
 euser_u1=Onverandert
 euser_e=Aangezet?
 euser_return=gebruikers lijst
+
 ahttp_header=Maak Proxy Beperking
 ahttp_header1=Bewerk Proxy Beperking
 ahttp_pr=Proxy Beperking
@@ -509,10 +530,13 @@ ahttp_d=Weiger
 ahttp_ma=Overeenkomend met ACLs
 ahttp_dma=Komt niet overeen met ACLs
 ahttp_return=ACL lijst
+
 ahttp_replyheader=Maak Proxy Antwoord Beperking
 ahttp_replyheader1=Bewerk Proxy Antwoord Beperking
 ahttp_replypr=Proxy Antwoord Beperking
+
 sahttp_ftspr=Mislukt om proxy antwoord beperkingen op te slaan
+
 aicp_header=Maak ICP Beperking
 aicp_header1=Bewerk  ICP Beperking
 aicp_ir=ICP Beperking
@@ -522,7 +546,9 @@ aicp_d=Weiger
 aicp_ma=Overeenkomend met ACLs
 aicp_dma=Komt niet overeen met ACLs
 aicp_return=ACL lijst
+
 saicp_ftsir=Mislukt om ICP beperkingen op te slaan
+
 icache_ecannot=U bent niet bevoegd de cache te initialiseren
 icache_ftic=Mislukt om cache te initialiseren
 icache_ymcautrsa=U moet een gebruiker kiezen om Squid te gebruiken als
@@ -530,7 +556,9 @@ icache_euser=Gebruiker om met Squid te werken bestaat niet
 icache_itscwtc=Initialiseer de Squid cache met de opdracht <tt>$1</tt> ..
 icache_return=squid index
 icache_title=Initialiseer Cache
+
 restart_ftrs=Mislukt om Squid te herconfigureren
+
 sadmin_ftsao=Mislukt om administratieve opties op te slaan
 sadmin_header=Verander Eigenaarschap
 sadmin_msg1=U heeft de gebruiker of groep die Squid gebruiken gewijzigd. U moet nu de eigenaarschap van alle cache en log files updaten en Squid herstarten anders hebben de wijzigingen geen effect.
@@ -540,10 +568,12 @@ sadmin_inavea='$1' is geldig email adres
 sadmin_inavh='$1' is geldige hostnaam
 sadmin_inavap='$1' is geldige aankondigings periode
 sadmin_inavp='$1' is geen geldige poort
+
 sauth_ftsao=Mislukt om authenticatie opties op te slaan
 sauth_iomuf=Ongeldige of ontbrekende gebruikers filenaam
 sauth_iomd=Ongeldig of ontbrekend domein
 sauth_msg1=Uw Squid versie is niet gecompiled met ondersteuning voor proxy authenticatie
+
 scache_ftsco=Mislukt om cache opties op te slaan
 scache_emsg0=U moet minimaal 1 cache directory invullen
 scache_emsg1=De cache directory '$1' bestaat niet
@@ -561,14 +591,17 @@ scache_emsg12='$1' is geen geldige directory grote
 scache_emsg13='$1' is geen geldige host
 scache_emsg14='$1' is geen geldige poort
 scache_emaxrs=Ongeldige maximum body grote in rij $1
+
 schost_ftsc=Mislukt om cache op te slaan
 schost_emsg1='$1' is geen geldige cache hostnaam
 schost_emsg2=$1' is geen geldige proxy poort
 schost_emsg3='$1' is geen geldige ICP poort
 schost_emsg4=$1' is geen geldige time-to-live
 schost_emsg5='$1' is geen geldige weging
+
 sicp_ftsco=Mislukt om cache opties op te slaan
 sicp_emsg1='$1' is geen geldige time-out
+
 slogs_ftslo=Mislukt om log opties op te slaan
 slogs_emsg1='$1' is geen absolute filenaam
 slogs_emsg2='$1' is geen geldige filenaam
@@ -578,20 +611,24 @@ slogs_emsg5='$1' is geen geldig debug optie lijst
 slogs_efname=Ongeldige formaat naam in rij $1
 slogs_effmt=Ontbrekend log formaat in rij $1
 slogs_eafile=Ontbrekende of ongeldige log file in rij $1
+
 smem_ftsmo=Mislukt om geheugen opties op te slaan
 smem_emsg1='$1' is geen geldig cache grote
 smem_emsg2='$1' is geen geldig hoog-water merk
 smem_emsg3='$1' is geen geldig laag-water merk
 smem_emsg4='$1' is geen geldige object grote
+
 smisc_ftso=Mislukt om opties op te slaan
 smisc_emsg1='$1' is geen geldig aantal rotaties
 smisc_emsg2='$1' is geen geldig domein
 smisc_emsg3='$1' is geen geldige proxy
 smisc_emsg4='$1' is geen geldig aantal hops
+
 sport_ftspo=Mislukt om poort opties op te slaan
 sport_emsg1='$1' is geen geldig poort nummer
 sport_emsg2='$1' is geen geldig adres
 sport_emsg3='$1' is geen geldige buffer grote
+
 sprog_ftshpo=Mislukt om helper programma opties op te slaan
 sprog_emsg1=Ontbrekende FTP opties
 sprog_emsg2='$1' is geen geldig programma
@@ -602,19 +639,23 @@ sprog_emsg6='$1' is geen geldige kolom breedte
 sprog_emsg7=Geen DNS servers ingevuld
 sprog_emsg8='$1' is geen geldig IP adres
 sprog_emsg9='$1' is geen geldige cache tijd
+
 suser_ftsu=Mislukt om gebruiker op te slaan
 suser_emsg1=Ongeldige of ontbrekende gebruikersnaam
 suser_etaken=Gebruikersnaam is reeds in gebruik
+
 start_ftsq=Mislukt om Squid te starten
 start_ecannot=U bent niet bevoegd om Squid te starten
 stop_ftsq=Mislukt om Squid te stoppen
 stop_ecannot=U bent niet bevoegd om Squid te stoppen
+
 calamaris_ecannot=U heeft geen toegang tot Calamaris log analyse
 calamaris_title=Calamaris Log Analyse
 calamaris_last=Limiteer analyse tot de laatste $1 regels van de logs ..
 calamaris_eprog=Het Calamaris uitvoerbestand $1 is niet gevonden. Misschien is het nog niet geinstalleerd of uw <a href='$2'>module configuratie</a> is niet correct.
 calamaris_elogs=De log directory $1 bevat geen enkele <tt>access.log</tt> files. Misschien heeft Squid nog niet gewerkt, of uw <a href='$2'>module configuratie</a> is niet correct.
 calamaris_gen=Rapport gegenereerd op $1
+
 lib_emsg1='$1' is geen geldig IP adres
 lib_seconds=seconden
 lib_minutes=minuten
@@ -662,6 +703,7 @@ lib_aclmuip=Max Gebruiker IP
 lib_buttac=Veranderingen Toevoegen
 lib_buttss=Stop Squid
 lib_buttss1=Start Squid
+
 log_ports=Veranderde poorten en netwerk opties
 log_icp=Andere cache opties verandert
 log_mem=Veranderde geheugen gebruik opties
@@ -716,25 +758,31 @@ log_pools_delete=Verwijdert $1 vertraging poelen
 log_delay_create=ACL toegevoegd voor vertragings poel $1
 log_delay_modify=ACL gemodificeerd voor vertragings poel $1
 log_delay_delete=ACL verwijdert voor vertragings poel $1
+
 log_delay_move=ACL verplaatst voor vertragings poel $1
 log_refresh_create=Gemaakte verversings regel voor $1
 log_refresh_modify=Gemodificeerde verversings regel voor $1
 log_refresh_delete=Verwijderde verversings regel voor $1
+
 log_refresh_move=Verplaatste verversings regel voor $1
 log_refreshes_delete=Verwijdert $1 verversings regel
 log_iptables=Update poort doorstuur instelling
 log_purge=Verwijderde URL $1 van cache
 log_cachemgr=Veranderde cache manager wachtwoorden
+
 acl_root=Root directory voor ACL files
 acl_sections=Toegestane configuratie pagina's
 acl_start=Mag Squid starten en stoppen?
 acl_restart=Mag Squid configuratie toevoegen?
+
 always_create=Maak een Directe Ophaal
 always_edit=Bewerk Directe Ophaal
 always_header=Directe Ophaal aanvraag overeenkomend met ACLs
+
 never_create=Maak Indirecte Fetch
 never_edit=Bewerk Indirecte Fetch
 never_header=Nooit direct een fetch aanvraag uitvoeren overeenkomend met ACLs
+
 delay_title=Vertraging Poel' s
 delay_add=Nieuwe vertragings poel toevoegen
 delay_num=Aantal
@@ -784,11 +832,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=MB
+
 dpool_err=Mislukt om vertragings poels te verwijderen
 dpool_enone=Niets geselecteerd
+
 apool_header=Toevoegen Vertraging Poel ACL
 apool_header1=Bewerk Vertraging Poel ACL
 apool_pr=Vertraging Poel ACL
+
 authparam_title=Authenticatie Programma's
 authparam_header=Externe authenticatie programma opties
 authparam_ttl=Tijd waarmee wachtwoorden ge-cached worden
@@ -828,6 +879,7 @@ ext_ecache=Ontbrekende of ongeldige cache grote
 ext_eprogram=Er is een ongeldig programma pad ingevuld
 ext_eclash=Een extern programma met dezelfde naam bestaat reeds
 ext_eused=Dit externe programma is in gebruik door een ACL
+
 header_title=Header Toegang Controle
 header_none=Er zijn nog geen header toegang controle regels gedefinieerd.
 header_name=HTTP header
@@ -847,6 +899,7 @@ header_err=Mislukt om header toegang controle regel op te slaan
 header_ename=Ontbrekende of ongeldige header naam
 header_request_header_access=Aanvraag Headers
 header_reply_header_access=Antwoord Headers
+
 refresh_title=Ververs Regels
 refresh_none=Er zijn nog geen verversings regels gedefinieerd.
 refresh_re=Reguliere expressie
@@ -873,6 +926,7 @@ refresh_epc=Ontbrekende of ongeldige leeftijd percentage
 refresh_delete=Verwijder Geselecteerde Verversings Regels
 drefresh_err=Mislukt om de verversing's regels op te slaan
 drefesh_enone=Niets geselecteerd
+
 iptables_title=Poort Omleiding Instellen
 iptables_inst0=De IPtabel firewall opdracht die nodig is om poort doorsturen op te zetten lijkt niet geinstalleerd te zijn op uw systeem. Bekijk de <a href='$1'>Linux Firewall</a> module voor meer details.
 iptables_inst1=De <a href='$1'>Linux Firewall</a> module lijkt niet volledig te zijn opgezet op uw systeem. Deze module maakt hiervan gebruik om Frox poort doorsturen op te zetten.
@@ -885,17 +939,22 @@ iptables_enet=Ontbrekende of ongeldig netwerk adres (moet lijken op 192.168.1.0/
 iptables_eiface=Ontbrekende of ongeldige netwerk interface
 iptables_eapply=Toevoegen firewall mislukte : $1
 iptables_eapply2=Toevoegen Squid mislukte : $1
+
 syslog_cache=Squid cache log
 syslog_store=Squid object opslag log
+
 purge_err=Mislukt om URL op te ruimen van cache
 purge_title=Opruimen URL in Cache
 purge_doing=Opruimen URL $1 ..
 purge_done=.. klaar.
 purge_failed=.. mislukt! Bekijk het fouten bericht hierboven waarom.
+
 dhttp_err=Mislukt om proxy beperkingen op te slaan
 dhttp_enone=Niets geselecteerd
+
 dicp_err=Mislukt om ICP beperkingen op te slaan
 dicp_enone=Niets geselecteerd
+
 cachemgr_title=Cache Manager Wachtwoorden
 cachemgr_ecannot=U bent niet bevoegd om de cache manager met wachtwoorden te bewerken
 cachemgr_def1=Geen wachtwoord nodig

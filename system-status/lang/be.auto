@@ -44,6 +44,7 @@ right_upsec=Даступныя абнаўленні пакета $1, з якіх
 right_recollect=Абнавіць інфармацыю пра сістэму
 right_vvirtualmin=Версія Virtualmin
 right_vvm2=Версія Cloudmin
+
 acl_show=Сістэмная інфармацыя для паказу
 acl_showall=Усё
 acl_showsel=Выбрана толькі ..

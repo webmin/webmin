@@ -10,6 +10,7 @@ index_range=Generiere Bericht für Datumsbereich
 index_view=Zeige generieren Bericht
 index_viewdesc=Zeige den zuletzt generierten Bericht im Verzeichnis $1 an.
 index_return=Modulindex
+
 log_title=Logge Quelle und Report-Ziel
 log_header=Quelle Squid Log-Datei und generierte Bericht-Optionen
 log_access_log=Quell Squid Log Datei
@@ -30,6 +31,7 @@ log_elastlog=Fehlend oder keine Nummer
 log_eemail=Fehlende oder ungültige aussehende E-Mail-Adresse
 log_emailx=Fehlendes oder nicht vorhandenes Mail-Programm
 log_squidguard_log_path=SquidGuard Log Datei
+
 style_title=Berichtstil
 style_header=HTML-Report-Stil-und Farboptionen
 style_title2=Berichttitel
@@ -54,6 +56,7 @@ style_efont=Fehlende oder ungültige Schriftart
 style_esize=Fehlende oder ungültige Bildbreite und -höhe
 style_language=Berichtssprache
 style_charset=Bericht Zeichensatz
+
 report_title=Berichtoptionen
 report_header=Berichte Inhalt und Generierungsoptionen
 report_resolve_ip=Löse IP-Adressen auf?
@@ -134,6 +137,7 @@ report_echar=Leerzeichen sind nicht erlaubt
 report_estring=Fehlender oder ungültiger Ersetzungstext
 report_eselect=Nichts ausgewählt
 report_eenter=Nichts eingegeben
+
 sched_title=Geplante Bericht Generation
 sched_header=Geplante Reporting-Optionen
 sched_sched=Geplanten Bericht aktiviert?
@@ -148,9 +152,11 @@ sched_rsel=Jene von $1 bis $2 Tage
 sched_err=Konnte geplanten Bericht Generation nicht speichern
 sched_erfrom=Fehlende oder ungültige Startnummer Tagen
 sched_erto=Fehlende oder ungültige endende Anzahl von Tagen
+
 view_title=Sarg Bericht
 view_efile=Ungültiger Dateiname!
 view_eopen=Fehlgeschlagen Bericht Datei zu öffnen
+
 gen_title=Generiere Bericht
 gen_header=Erzeuge jetzt Sarg Bericht von Squid Log-Datei $1 und alle rotierenden Versionen ..
 gen_done=...fertig
@@ -160,6 +166,7 @@ gen_view=Zeige kompletten Bericht.
 gen_err=Der Bericht konnte nicht generiert werden
 gen_efrom=Fehlender oder ungültiger Starttag
 gen_eto=Fehlender oder ungültiger Tag
+
 webmin_log_log=Log-Quelle und Bericht Zieloptionen aktualisiert
 webmin_log_report=Bericht Optionen aktualisiert
 webmin_log_style=Bericht Style-Optionen aktualisiert

@@ -49,6 +49,7 @@ index_sadd=Utwórz nową usługę systemd
 index_always=Zawsze
 index_ladd=Tworzenie nowego agenta launchd.
 index_lname=Nazwa agenta
+
 edit_title=Zmień akcję
 create_title=Utwórz akcję
 edit_ecannot=Nie masz uprawnień do zmiany akcji
@@ -82,6 +83,7 @@ edit_statusnow=Pokaż stan
 edit_return=akcji
 edit_status=Działa obecnie?
 edit_unknown=Nieznany
+
 save_err=Nie udało się zachować akcji
 save_ecannot=Nie masz uprawnień do poprawiania akcji startowych
 save_ealready=Akcja o nazwie '$1' już istnieje
@@ -90,6 +92,7 @@ save_ename=Nazwa akcji jest niepoprawna lub nie istnieje
 save_eclash=Akcja z taką nazwą już istnieje
 save_escript=Nie wprowadzono skryptu akcji
 save_estartcmd=Brakujące polecenie uruchamiania
+
 ss_ecannot=Nie masz prawa uruchamiać ani zatrzymywać akcji
 ss_start=Uruchom akcję
 ss_stop=Zatrzymaj akcję
@@ -100,21 +103,25 @@ ss_exec=Wykonywanie $1 ..
 ss_doingstart=Uruchamianie akcji $1 ..
 ss_doingstop=Zatrzymywanie akcji $1 ..
 ss_doingstatus=Uzyskiwanie stanu akcji $1 ..
+
 shutdown_ecannot=Nie masz prawa zatrzymać systemu
 shutdown_title=Zatrzymaj
 shutdown_rusure=Czy na pewno chcesz zatrzymać system komendą $1 ?
 shutdown_ok=Zatrzymanie systemu
 shutdown_exec=Zatrzymywanie systemu komendą $1 ..
+
 reboot_ecannot=Nie masz prawa restartować systemu
 reboot_title=Restart
 reboot_rusure=Czy na pewno chcesz zrestartowac system komendą $1 ?
 reboot_ok=Restart systemu
 reboot_exec=Restart systemu komendą $1 ..
+
 acl_script=Może poprawiać skrypt startujący?
 acl_actions=Może poprawiać, tworzyć i usuwać akcje?
 acl_runonly=Tylko uruchom
 acl_reboot=Może restartować system?
 acl_shutdown=Może zamknąć system?
+
 log_rename=Zmieniono nazwę $1 na $2
 log_modify=Zmodyfikowano akcję $1
 log_create=Utworzono akcję $1
@@ -134,6 +141,7 @@ log_massrestart=Uruchomiono ponownie akcje $1
 log_massenable=Włączono akcje $1
 log_massdisable=Wyłączono akcje $1
 log_telinit=Zmieniono runlevel $1
+
 edit_hostconfig_startup=Skrypt $1 jest uruchamiany podczas startu systemu, o ile ta akcja jest włączona. Możesz go zmodyfikować poniżej
 edit_hostconfig_plist=Plik $1 ustawia pewne parametry odnoszące się do skryptu startowego. Możesz go zmodyfikować poniżej
 edit_hostconfig_new=Utwórz nową akcję
@@ -145,6 +153,7 @@ edit_hostconfig_array=Pola $1, $2, i&nbap;$3 są polami tablicowymi i&nbap;mogą
 edit_hostconfig_further=Po utworzeniu nowej akcji startowej, zostaniesz przekierowany na stronę umożliwiającą zmianę skryptu startowego i listy parametrów, jeśli trzeba.
 edit_hostconfig_hostconfig=Plik $1 steruje ogólnosystemowymi usługami i demonami, które są uruchamiane podczas startu systemu. Możesz go zmodyfikować pomiżej.
 edit_hostconfig_title=Zmień Hostconfig
+
 mass_enone=Nie wybrano akcji
 mass_enone2=Nie wybrano usług
 mass_start=Uruchamianie akcji
@@ -165,9 +174,11 @@ mass_udisable=Wyłączanie usługi $1 przy uruchamianiu.
 mass_ustarting=Uruchamianie usługi $1 ..
 mass_ustopping=Zatrzymywanie usługi $1 ..
 mass_urestarting=Restartowanie usługi $1 ..
+
 change_err=Nie masz uprawnień do zmiany poziomu pracy (Runlevel)
 change_title=Zmiana poziomu pracy (Runlevel)
 change_cmd=Zmienianie na runlevel $1 poleceniem $2. Może to zając trochę czasu, a Webmin może być niedostępny po zmianie.
+
 mode_init=SysV init
 mode_osx=MacOS
 mode_local=Pojedynczy skrypt boot
@@ -176,6 +187,7 @@ mode_rc=Skrypty RC FreeBSD
 mode_upstart=Upstart
 mode_systemd=Systemd
 mode_launchd=LaunchD
+
 upstart_title1=Tworzenie usługi upstart
 upstart_title2=Edycja usługi upstart
 upstart_egone=Usługa już nie istnieje!~
@@ -199,6 +211,7 @@ upstart_eserver=Nie wpisano polecenia serwera
 upstart_eserver2=Polecenie serwera nie istnieje
 upstart_eserver3=Tylko jedno polecenie serwera może być wpisane
 upstart_return=usługi upstart
+
 systemd_title1=Tworzenie usługi Systemd
 systemd_title2=Edycja usługi Systemd
 systemd_egone=Usługa już nie istnieje!
@@ -221,6 +234,7 @@ systemd_edesc=Brakujący opis usługi
 systemd_return=usługi systemd
 systemd_econf=Nie wprowadzono konfiguracji Systemd
 systemd_estart=Brakujące polecenie do uruchomienia przy starcie
+
 launchd_title1=Tworzenie agenta launchd
 launchd_title2=Edycja agenta launchd
 launchd_egone=Agent już nie istnieje

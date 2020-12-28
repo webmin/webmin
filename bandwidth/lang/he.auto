@@ -57,20 +57,27 @@ index_rotate=עדכן נתונים סטטיסטיים
 index_rotatedesc=לחץ על כפתור זה כדי לעבד את כל תעבורת הרשת הרשומה עד לשעה הנוכחית, מה שהופך אותה לזמינה מיידית לדיווח.
 index_eiptables=אזהרה - לתצורת ה- IPtables שלך יש שגיאה: $1. הגדרת ניטור רוחב פס תנקה את כל כללי חומת האש.
 index_return=דיווח מ
+
 log_setup=הגדרת ניטור רוחב פס בממשק $1 
 log_turnoff=ניטור רוחב פס מושבת
 log_rotate=סטטיסטיקה מעודכנת
+
 acl_setup=האם ניתן להתקין ולהשבית ניטור?
+
 turnoff_ecannot=אינך רשאי להשבית את הניטור
+
 setup_ecannot=אינך רשאי להפעיל ניטור
 setup_eiface=שם ממשק חסר או לא חוקי
 setup_ezone=לא מצא את אזור Shorewall עבור הממשק שנבחר
+
 system_firewall=טבלאות IP
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=קיר החוף
+
 syslog_syslog=סיסלוג
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=עדכון סטטיסטיקות
 rotate_doing=מעבד תנועה ברשת רשומה ..
 rotate_done=.. בוצע.

@@ -3,8 +3,10 @@ index_clink=Forse non è installato o la <a href='$1'>configurazione del modulo<
 index_return=indice del modulo
 index_atboot=Inizia all'avvio?
 index_atbootdesc=Modificare questa opzione per controllare se il client iSCSI è avviato all'avvio o meno. Ciò è necessario per il montaggio automatico dei filesystem montati dai server iSCSI.
+
 check_econfig=Il file di configurazione del client iSCSI $1 non è stato trovato sul tuo sistema.
 check_eiscsiadm=Il programma di amministrazione client iSCSI $1 non è stato trovato sul tuo sistema.
+
 auth_title=Opzioni di autenticazione
 auth_header=Autenticazione client e server iSCSI
 auth_name=Nome dell'iniziatore del sistema locale
@@ -29,6 +31,7 @@ auth_edpassword=Password di rilevamento mancante per il server
 auth_edusername_in=Nome utente di individuazione mancante per il client
 auth_edpassword_in=Password di rilevamento mancante per il client
 auth_egen=Impossibile generare un nuovo nome!
+
 timeout_title=Timeout iSCSI
 timeout_header=Opzioni di timeout del client iSCSI
 timeout_timeout=Tempo di attesa prima di fallire i comandi SCSI
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Tempo mancante o non numerico per attendere il ping pr
 timeout_eabort_timeout=Tempo mancante o non numerico per attendere l'interruzione della risposta prima di fallire
 timeout_elu_reset_timeout=Tempo mancante o non numerico per attendere la risposta dell'unità logica prima di fallire
 timeout_etgt_reset_timeout=Tempo mancante o non numerico per attendere la risposta del target prima di fallire
+
 iscsi_title=Opzioni iSCSI
 iscsi_header=Altre opzioni iSCSI
 iscsi_startup=Connetti sessioni all'avvio?
@@ -62,6 +66,7 @@ iscsi_err=Impossibile salvare le opzioni iSCSI
 iscsi_eretry=Numero mancante o non numerico di volte per riprovare l'accesso
 iscsi_ecmds=Comandi massimi mancanti o non numerici in coda per sessione
 iscsi_equeue=Comandi massimi mancanti o non numerici in coda per dispositivo
+
 ifaces_title=Interfacce iSCSI
 ifaces_elist=Elenco interfacce non riuscito : $1 
 ifaces_name=Nome dell'interfaccia
@@ -78,11 +83,13 @@ ifaces_hwaddress=Indirizzo MAC
 ifaces_ifacename=Interfaccia sorgente
 ifaces_ipaddressdef=Automatico
 ifaces_notset=Automatico
+
 iadd_err=Impossibile aggiungere l'interfaccia
 iadd_eclash=Un'interfaccia denominata $1 esiste già
 iadd_eipaddress=Indirizzo IP di origine mancante o non valido
 iadd_ehwaddress=Indirizzo MAC mancante o non valido
 iadd_ename=Il nome dell'interfaccia è mancante o contiene caratteri non validi
+
 difaces_err=Rimozione delle interfacce non riuscita
 difaces_enone=Nessuno selezionato
 difaces_edelete=Rimozione dell'interfaccia $1 non riuscita : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Rimuovi interfacce
 difaces_target=target iSCSI
 difaces_ip=server iSCSI
 difaces_users=Alcune connessioni che utilizzano queste interfacce sono attualmente attive e non funzioneranno quando le interfacce vengono rimosse :
+
 conns_title=Connessioni iSCSI
 conns_elist=Elenco delle connessioni non riuscito : $1 
 conns_ip=IP del server
@@ -113,6 +121,7 @@ conns_return=elenco di connessioni
 conns_iface=interfaccia iSCSI
 conns_ifacedef=Scegli automaticamente
 conns_ifaceerr=Impossibile recuperare le interfacce : $1 
+
 add_title=Aggiungi connessione iSCSI
 add_err=Impossibile aggiungere la connessione iSCSI
 add_ehost=Nome host mancante o non risolvibile
@@ -129,6 +138,7 @@ add_on=$1 su $2
 add_auth=Accedi al server
 add_auth1=Usa il metodo di autenticazione predefinito
 add_auth0=Accedi come $2 con password $3 utilizzando il metodo $1 
+
 dconns_err=Impossibile disconnettere le connessioni
 dconns_enone=Nessuno selezionato
 dconns_edelete=Rimozione della destinazione $2 dall'host $1 non riuscita : $3 
@@ -142,6 +152,7 @@ dconns_use=Usato da
 dconns_size=Dimensione della partizione
 dconns_confirm=Rimuovi connessioni
 dconns_unused=non usato
+
 vconn_title=Connessione iSCSI
 vconn_egone=La connessione selezionata non esiste più!
 vconn_header=Dettagli sulla connessione iSCSI
@@ -160,8 +171,10 @@ vconn_device3=Nome costante del dispositivo
 vconn_delete=Disconnetti connessione
 vconn_users=Utenti attuali
 vconn_size=Dimensione del disco
+
 atboot_err=Impossibile abilitare all'avvio
 atboot_einit=Non esiste alcuna azione di avvio denominata $1 
+
 log_auth=Opzioni di autenticazione salvate
 log_timeout=Opzioni di timeout salvate
 log_iscsi=Opzioni iSCSI salvate

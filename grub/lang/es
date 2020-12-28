@@ -8,6 +8,7 @@ index_none=No se han definido opciones de arranque. Asegúrese que agregó al me
 index_efile=El archivo $1 del menú de GRUB no fué encontrado en su sistema. Quizás GRUB no está instalado, o la <a href='$2'>configuración del módulo</a> es incorrecta.
 index_epath=El ejecutable de GRUB $1 no fué encontrado en su sistema. Quizás GRUB no está instalado, o la <a href='$2'>configuración del módulo</a> es incorrecta.
 index_return=lista de opciones
+
 title_add=Agregar Opción de Arranque
 title_edit=Editar Opción de Arranque
 title_header=Detalles de opciones del menú de arranque
@@ -33,6 +34,7 @@ title_echain=Archivo chainloader no ingresado o no válido
 title_edev=Dispositivo de partición raíz $1 no soportado
 title_einitrd=Nombre de archivo de ramdisk inicial no ingresado
 title_lock=¿Contraseña bloqueada?
+
 global_title=Opciones Globales
 global_header=Opciones globales del menú de arranque
 global_default=Opciones de arranque por defecto
@@ -53,6 +55,7 @@ global_edev=Disco/partición instalada $1 no soportada
 global_eother=Disco/partición no ingresada o no válida
 global_epassword=Contraseña de arranque no ingresada o no válida
 global_epasswordfile=Nombre de archivo de menú alternativo no ingresado
+
 install_title=Instalar GRUB
 install_err=Fallo al instalar GRUB
 install_efind=No se puede encontrar el archivo de menú

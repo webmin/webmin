@@ -21,6 +21,7 @@ index_dscsi=SCSI设备 $1控制器 $2
 index_draid=RAID级别 $1
 index_dparts=隔断
 index_none2=在该系统上找不到磁盘。
+
 megabytes=兆字节
 select_newide=IDE控制器 $1总线 $2磁盘 $3
 select_snewide=IDE控制器 $1总线 $2磁盘 $3分区 $5
@@ -30,6 +31,7 @@ select_promise=承诺RAID驱动器 $1
 select_ppart=承诺RAID驱动器 $1分区 $2
 select_nvme=NVME SSD $1驱动器 $2
 select_nvmepart=NVME SSD $1驱动器 $2分区 $3
+
 edit_of=的
 edit_mountiscsi=iSCSI共享设备 $1
 edit_name=分区名称
@@ -39,22 +41,30 @@ edit_newmount2=挂载分区
 edit_mountas=如
 edit_mountmsg=将该分区挂载到系统上的新目录中，以便可以用于存储文件。必须已经在分区上创建了文件系统。
 edit_mountmsg2=将此分区挂载为系统上的虚拟内存，以增加可用内存量。
+
 msdos_F_other=其他 ..
+
 jfs_s=日志大小
 jfs_c=检查坏块？
+
 btrfs_l=叶大小
 btrfs_n=节点大小
 btrfs_s=部门规模
+
 fatx_none=没有选项可用于FATX文件系统。
+
 blink_title=识别驱动器
 blink_desc=驱动器的活动指示灯现在将点亮六十次
 blink_back=回去
+
 fs_ext4=新的Linux本机
 fs_jfs=IBM Journalling
 fs_btrfs=BTR
+
 delete_title=删除分区
 delete_rusure=您确定要删除 $1（$2）吗？此分区上的数据可能会永远丢失。
 delete_ok=立即删除
+
 disk_title=编辑磁盘分区
 disk_egone=磁盘不再存在！
 disk_no=数
@@ -75,11 +85,13 @@ disk_table=<b>分区表格式：</b> $1
 disk_notable=<b>分区表格式：</b>未创建
 disk_needtable=没有分区表就无法创建任何分区。
 disk_return=分区列表
+
 relabel_title=擦分区
 relabel_warn=您确定要通过重写磁盘标签擦除 $1（$2）上的所有分区吗？所有现有的数据和文件系统都将丢失！
 relabel_parts=现有分区
 relabel_noparts=尚未建立
 relabel_table=分区表格式
 relabel_ok=擦拭和重新贴标签
+
 table_msdos=MS-DOS（标准分区格式）
 table_gpt=GPT（用于2T或更大的磁盘）

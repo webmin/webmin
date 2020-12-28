@@ -8,8 +8,10 @@ index_delete=Verwijder Geselecteerde Exports
 index_apply=Wijzigingen Toevoegen
 index_applydesc=Klik op deze knop om de huidige file exports configuratie toe te voegen. Hierdoor worden alle directories in de lijst hierboven beschikbaar met de gespecificeerde opties.
 index_return=export lijst
+
 delete_err=Mislukt om exports te verwijderen
 delete_enone=Niets geselecteerd
+
 edit_title1=Export Bewerken
 edit_title2=Export Aanmaken
 edit_header1=Export opties
@@ -29,6 +31,7 @@ edit_clients=Clients
 edit_hosts=Hosts / netgroepen
 edit_network=Netwerk
 edit_mask=Mask
+
 save_err=Mislukt om export op te slaan
 save_edir='$1' is geen directory of bestaat niet
 save_enone=U moet op zijn minst 1 directory invullen om te exporteren
@@ -42,4 +45,5 @@ save_enetwork='$1' is geen geldig netwerk
 save_enetmask='$1' is geen geldige netmask
 save_esame1=De directory <tt>$1</tt> is reeds geexporteerd naar <tt>$2</tt>. Uw besturing systeem staat niet toe dat directory's op hetzelfde <i>locale</i> filesysteem apart worden geexporteerd naar dezelfde host
 save_esame2=De directory <tt>$1</tt> is reeds geexporteerd naar <tt>$2</tt>. Uw besturing systeem staat niet toe dat directory's op hetzelfde <i>locale</i> filesysteem apart worden geexporteerd naar hetzelfde netwerk
+
 restart_err=Mislukt om wijzigingen toe te voegen

@@ -4,6 +4,7 @@ index_none=Der er endnu ikke defineret nogen zoner.
 index_add=Tilføj en ny zone.
 index_return=zoneliste
 index_zones=Eksisterende zoner
+
 edit_title=Rediger zone
 edit_common=Generel zonekonfiguration
 edit_name=Zone navn
@@ -57,20 +58,26 @@ edit_attrnone=Der er endnu ikke defineret nogen generiske attributter.
 edit_attradd=Tilføj en ny generisk attribut.
 edit_webmin=Åbn Webmin
 edit_brand=Brand
+
 ui_cancel=Afbestille
+
 save_err=Kunne ikke gemme zone
 save_epool=Manglende eller ugyldig pool
 save_ewebmin=Webmin kører ikke i denne zone
+
 reboot_title=Genstart zone
 reboot_rusure=Er du sikker på, at du vil genstarte zonen $1 ? Alle processer, der kører deri, genstartes.
 reboot_err=Kunne ikke genstarte zone
 reboot_doing=Genstart nu zone ..
+
 reboot_failed=.. mislykkedes  :
 reboot_ok=.. komplet.
+
 halt_title=Lukningszone
 halt_rusure=Er du sikker på, at du vil lukke zonen $1 ned? Alle processer, der kører deri, stoppes.
 halt_err=Kunne ikke lukke zone
 halt_doing=Lukker nu zone ..
+
 boot_title=Opstartszone
 boot_err=Kunne ikke starte op-zone
 boot_doing=Nu starter zone op ..
@@ -78,10 +85,12 @@ delete_title=Slet zone
 delete_rusure=Er du sikker på, at du vil slette zonen $1 ? Alle filer inden for dets private filsystemer vil gå tabt.
 delete_err=Zonet kunne ikke slettes
 delete_doing=Slet nu zone ..
+
 uninstall_title=Fjern installationen
 uninstall_rusure=Er du sikker på, at du vil afinstallere systemsoftwaren fra zone $1 ? Alle filer inden for dets private filsystemer vil gå tabt.
 uninstall_err=Kunne ikke afinstallere systemsoftware fra zone
 uninstall_doing=Afinstaller nu systemet fra zone ..
+
 install_title=Installer system
 install_doing=Nu installerer systemet i zone ..
 net_title1=Opret netværksgrænseflade
@@ -96,6 +105,7 @@ net_enetmask=Ugyldig netmaske
 net_eaddress=Ugyldig IP-adresse
 net_egone=Interface findes ikke længere!
 net_eclash=En netværksgrænseflade med den samme IP-adresse findes allerede i denne zone
+
 pkg_title1=Tilføj pakkeoversigt
 pkg_title2=Rediger pakkeoversigt
 pkg_header=I arvede pakkevejledningsoplysninger
@@ -107,6 +117,7 @@ pkg_eclash=Pakkemappen findes allerede i denne zone
 pkg_inherit=Arv pakker fra den globale zone
 pkg_inherit_yes=Ja (sparse rodzone)
 pkg_inherit_no=Nej (hele rodzone)
+
 fs_title1=Opret filsystem
 fs_title2=Rediger filsystem
 fs_header=Yderligere filsystemoplysninger
@@ -128,6 +139,7 @@ fs_eoptions=Ugyldige monteringsindstillinger (skal være en kommasepareret liste
 fs_egone=Filsystem findes ikke længere!
 fs_mount=Mount efter oprettelse?
 fs_eclash=Et filsystem, der bruger det samme bibliotek, findes allerede i denne zone
+
 rctl_title1=Opret ressourcekontrol
 rctl_title2=Rediger ressourcekontrol
 rctl_header=Ressourcekontroltype og -grænser
@@ -148,6 +160,7 @@ rctl_elimit=Ikke et tal
 rctl_eaction=Intet signal valgt i række $1 
 rctl_evalues=Ingen angivne grænser
 rctl_eclash=En kontrol for den samme ressource findes allerede i denne zone
+
 attr_title1=Opret generisk attribut
 attr_title2=Rediger generisk attribut
 attr_header=Generiske zoneattributdetaljer
@@ -165,6 +178,7 @@ attr_euint=Værdi er ikke et positivt heltal
 attr_eboolean=Værdien er ikke 'sand' eller 'falsk'
 attr_egone=Attribut findes ikke længere!
 attr_eclash=En attribut med samme navn findes allerede i denne zone
+
 status_running=Løb
 status_installed=stoppet
 status_configured=Ikke installeret
@@ -172,13 +186,16 @@ status_incomplete=At blive installeret
 status_ready=Parat
 status_down=ned
 status_shutting_down=Lukker ned
+
 list_name=Zone navn
 list_id=ID nr.
 list_path=Zone katalog
 list_status=status
 list_actions=Handlinger
+
 zone_in=I zone $1 
 pool_none=Ingen
+
 create_title=Opret zone
 create_header=Nye zonedetaljer
 create_path=Zone filer bibliotek
@@ -239,6 +256,7 @@ create_erouter=Manglende eller ugyldig standard router IP-adresse
 create_removingpkgs=fjerner arvelige pakkevejviser. ..
 create_brand=Brand
 create_brandmsg=Branding zone
+
 log_create_zone=Oprettet zone $1 
 log_delete_zone=Zonet $1 er slettet
 log_save_zone=Ændret konfiguration for zone $1 
@@ -262,6 +280,7 @@ log_delete_rctl=Slettet ressourcekontrol for $1 i zone $2
 log_create_attr=Oprettet generisk attribut $1 i zone $2 
 log_modify_attr=Ændret generisk attribut $1 i zone $2 
 log_delete_attr=Slet generisk attribut $1 i zone $2 
+
 webmin_eperl=Perl er ikke installeret på $1 
 webmin_eroot=Kataloget $1 findes ikke eller indeholder ikke Webmin.
 webmin_title=Installer Webmin

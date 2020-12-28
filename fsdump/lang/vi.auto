@@ -23,6 +23,7 @@ index_follow=Sau $1
 index_forcetar=Ở định dạng TAR
 index_delete=Xóa các bản sao lưu được chọn
 index_nostrftime=Cảnh báo - một số công việc sao lưu sử dụng % trong tên tệp của chúng, nhưng thay thế strftime không được bật trên trang Cấu hình mô-đun.
+
 dump_dir=Thư mục để sao lưu
 dump_dirs=Thư mục để sao lưu
 dump_fs=Hệ thống tập tin
@@ -108,6 +109,7 @@ dump_remount=Kết nối với tùy chọn <tt>noatime</tt> trong khi sao lưu?
 dump_eftpupdate=Không thể thêm tệp vào kho lưu trữ hiện có khi sử dụng FTP.
 dump_eleveldir=Chỉ cho phép sao lưu mức 0 cho các thư mục không phải là điểm gắn kết hệ thống tập tin
 dump_eupdatedir=Tệp <tt>/etc/dumpdates</tt> chỉ có thể được cập nhật cho các thư mục là điểm gắn kết hệ thống tệp
+
 edit_err=Không thể tạo bản sao lưu
 edit_edir=Thiếu thư mục sao lưu
 edit_efs=Hệ thống tập tin loại $1 không thể được sao lưu bởi mô-đun này
@@ -132,9 +134,11 @@ edit_tolevel=$1 đến $2 (cấp $3)
 edit_special=Lịch trình sao lưu
 edit_when=Khi nào cần sao lưu
 edit_clone=Bản sao
+
 save_err=Không thể lưu bản sao lưu
 save_edir=Thư mục sao lưu bị thiếu hoặc không hợp lệ
 save_efs=Thư mục sao lưu không thể thay đổi thành một hệ thống tập tin khác
+
 backup_title=Sao lưu ngay
 backup_desc=Thực hiện sao lưu $1 đến $2 ..
 backup_reverify=.. hoàn thành. Hiện đang xác minh sao lưu ..
@@ -147,6 +151,7 @@ backup_notape=.. sao lưu vượt quá khả năng của một băng duy nhất.
 backup_egone=Sao lưu không tồn tại!
 backup_bg=Bắt đầu quá trình sao lưu nền. Bạn có thể theo dõi tiến trình của nó trong phần <b>Chạy công việc sao lưu</b> trên trang chính của mô-đun và sẽ được thông báo về trạng thái cuối cùng của nó qua email.
 backup_ecannot=Bạn không được phép sao lưu thư mục này
+
 restore_title=Khôi phục lại bản sao lưu
 restore_err=Không thể khôi phục bản sao lưu
 restore_ecommand=Lệnh $1 cần thiết để khôi phục $2 sao lưu hệ thống tập tin không được tìm thấy trên hệ thống của bạn. Có lẽ nó hiện chưa được cài đặt.
@@ -190,6 +195,7 @@ restore_gzip=Giải nén lưu trữ?
 restore_keep=Đừng ghi đè tập tin?
 restore_emulti=Khôi phục nhiều tập tin không thể được thực hiện từ một thiết bị băng
 restore_emulti2=Khôi phục nhiều tập tin không thể được thực hiện từ một máy chủ từ xa
+
 log_create=Tạo cấu hình sao lưu cho $1 
 log_modify=Cấu hình sao lưu đã sửa đổi cho $1 
 log_delete=Đã xóa cấu hình sao lưu cho $1 
@@ -197,13 +203,16 @@ log_backup=Đã sao lưu $1 đến $2
 log_bgbackup=Bắt đầu sao lưu $1 đến $2 
 log_restore=Đã khôi phục bản sao lưu từ $1 
 log_kill=Sao lưu kết thúc cho $1 
+
 kill_err=Không thể chấm dứt sao lưu
 kill_egone=Không còn chạy!
 kill_ecannot=Bạn không được phép chấm dứt sao lưu này
+
 newtape_err=Không thể báo hiệu băng mới
 newtape_egone=Sao lưu không còn chạy!
 newtape_estatus=Sao lưu không còn chờ đợi một băng mới
 newtape_ecannot=Bạn không được phép quản lý bản sao lưu này
+
 acl_edit=Có thể tạo và chỉnh sửa bản sao lưu?
 acl_restore=Có thể khôi phục bản sao lưu?
 acl_cmds=Có thể chỉnh sửa các lệnh trước và sau?
@@ -211,8 +220,10 @@ acl_extra=Có thể chỉnh sửa các tham số dòng lệnh bổ sung?
 acl_dirs=Thư mục được phép sao lưu
 acl_all=Tất cả các thư mục
 acl_list=Chỉ được liệt kê ..
+
 delete_err=Không thể xóa bản sao lưu
 delete_enone=Không được chọn
+
 email_already=Sao lưu đã chạy với PID $1.
 email_ebefore=Lệnh trước khi sao lưu thất bại!
 email_verify=Xác minh sao lưu ..
@@ -220,5 +231,6 @@ email_eafter=Lệnh sau khi sao lưu thất bại!
 email_subject=Sao lưu $1 trên $2 
 email_ok=Sao lưu thành công
 email_failed=Sao lưu thất bại!
+
 newtape_subject=Thay đổi băng $1 để sao lưu $2 trên $3 
 newtape_body=Việc sao lưu $2 trên $3 đã đạt đến lượng dữ liệu tối đa được phép trên băng $1. Bạn sẽ cần tải một băng mới và nhấn vào liên kết 'Băng đã tải' trong mô-đun Sao lưu hệ thống tập tin của Webmin để sao lưu tiếp tục.

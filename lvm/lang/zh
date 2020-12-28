@@ -13,6 +13,7 @@ index_addsnap=创建一个新的快照。
 index_return=卷组
 index_init=这可能是因为逻辑卷管理（LVM）尚未启动。点击<a href='$1'>现在启动</a>以查看所有的卷组。
 index_eversion=Webmin只支持逻辑卷管理（LVM）1.0或更高版本。您的系统中的$1显示的版本为：$2
+
 lv_edit=编辑逻辑卷
 lv_edit_snap=编辑快照
 lv_create=创建逻辑卷
@@ -57,6 +58,7 @@ lv_mkfsdesc=选择一种文件系统类型，并点击此按钮在本逻辑卷�
 lv_toobig=新的卷大小是$1块（每$2个），但是卷组中仅有$3可用空间。
 lv_snapof=逻辑卷的快照
 lv_nosnap=无法确定！
+
 mkfs_title=创建文件系统
 mkfs_desc=您可以用该表在逻辑卷$3上创建一个新的$2 ($1)文件系统。所有现有的数据将会被删除。
 mkfs_header=新的文件系统选项
@@ -64,13 +66,16 @@ mkfs_err=创建文件系统选项失败
 mkfs_exec=执行命令$1 ..
 mkfs_failed=..命令失败！
 mkfs_ok=..命令完成。
+
 resize_title=调整逻辑卷的大小
 resize_mesg=无法调整该逻辑卷上的$1文件系统的大小。如果要调整该逻辑卷的大小，您必须重新创建这个文件系统----这样做将会删除该逻辑卷上的所有数据。
 resize_mesg2=Webmin无从知晓此逻辑卷上的文件系统类型（如果有的话）。如果您调整逻辑卷的大小，您必须重新创建文件系统---这样做将会删除其中的所有数据。
 resize_fs=在调整该逻辑卷上的$1文件系统时出现一个错误：$2，如果仅调整该逻辑卷的大小，您必须重新创建该文件系统----这样做将会删除其中的所有数据。
 resize_ok=调整逻辑卷的大小
+
 init_title=启动LVM
 init_cmd=执行命令$1 ..
+
 pv_edit=编辑物理卷
 pv_create=新增至卷组
 pv_vg=在卷组$1中
@@ -89,6 +94,7 @@ pv_rusure=您确定要从卷组中移除物理卷装置 $1？这样做将会将�
 pv_deleteok=移除卷
 pv_eother=未输入或无效的磁盘装置
 pv_raid=RAID 装置 $1
+
 vg_edit=编辑卷组
 vg_create=创建卷组
 vg_name=卷组名称
@@ -105,6 +111,7 @@ vg_cannot=因为该卷组仍包含$1逻辑卷，所以无法将其删除。
 vg_deleteok=立刻删除
 vg_ename=未输入或无效的卷组名
 vg_epesize=未输入或无效的分配块大小
+
 log_create_vg=创建卷组$1
 log_modify_vg=修改卷组$1
 log_delete_vg=删除卷组$1

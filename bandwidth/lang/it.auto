@@ -57,20 +57,27 @@ index_rotate=Aggiorna statistiche
 index_rotatedesc=Fare clic su questo pulsante per elaborare tutto il traffico di rete registrato fino all'ora corrente, rendendolo immediatamente disponibile per i rapporti.
 index_eiptables=Avviso: la configurazione della tua IPtables ha un errore: $1. L'impostazione del monitoraggio della larghezza di banda cancella tutte le regole del firewall.
 index_return=modulo di rapporto
+
 log_setup=Impostazione del monitoraggio della larghezza di banda sull'interfaccia $1 
 log_turnoff=Monitoraggio della larghezza di banda disabilitato
 log_rotate=Statistiche aggiornate
+
 acl_setup=È possibile impostare e disabilitare il monitoraggio?
+
 turnoff_ecannot=Non è consentito disabilitare il monitoraggio
+
 setup_ecannot=Non è consentito abilitare il monitoraggio
 setup_eiface=Nome dell'interfaccia mancante o non valido
 setup_ezone=Impossibile trovare la zona Shorewall per l'interfaccia selezionata
+
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=Shorewall
+
 syslog_syslog=syslog
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=Aggiornamento delle statistiche
 rotate_doing=Elaborazione del traffico di rete registrato.
 rotate_done=.. fatto.

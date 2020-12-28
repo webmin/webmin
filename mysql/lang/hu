@@ -33,12 +33,15 @@ index_mysql=MySQL kliens program
 index_toomany=Túl sok adatbázis lett megjelenítve. Keresse az adatbázist, ami megfelel a kritériumoknak:
 index_search=Keresés
 index_showing=Adatbázisok megjelenítése ami megfelel a $1 ..
+
 login_err=Belépés sikertelen
 login_ecannot=Önnek nincs engedélyezve az adatbázis konfigurálás
 login_elogin=Hibás adminisztrátori felhasználói név
 login_epass=Hibás adminisztrátori felhasználói név vagy jelszó
+
 stop_err=Nem lehet leállítani az adatbázist
 start_err=Nem lehet indítani az adatbázist
+
 dbase_title=Adatbázis szerkesztése
 dbase_tables=Adatbázis táblái
 dbase_add=Új tábla
@@ -54,12 +57,14 @@ dbase_cols=Mezők
 dbase_delete=Kiválasztott táblák eldobása
 dbase_showing=Táblák megjelenítése, ami megfelel a $1 -nek...
 dbase_toomany=Túl sok tábla került megjelenítésre. Adatbázisok keresése, amelyek egyeznek:
+
 ddrop_err=Nem sikerült eldobni az adatbázist
 ddrop_title=Adatbázis eldobása
 ddrop_rusure=Biztos benne, hogy el szeretné dobni a(z) $1 nevű adatbázist? $2 tábla és $3 oszlop összes adata törölve lesz.
 ddrop_mysql=Mivel ez a mester adatbázis, ha eldobja akkor az Ön MySQL szerver használhatattlan lesz!
 ddrop_ok=Adatbázis eldobása
 ddrop_empty=Töröld le az összes táblát
+
 ddrops_err=Nem sikerült a táblák eldobása
 ddrops_title=Adatbázisok eldobása
 ddrops_rusure=Biztos Ön benne, hogy el akarja dobni a kiválasztott adatbázisokat? A $2 táblák $3 adatsort tartalmaznak, amelyek törlésre kerülnek.
@@ -67,6 +72,7 @@ ddrops_mysql=A mester adatbázis lett kiválasztva eldobásra, ez a MySQL szerve
 ddrops_ok=Adatbázisok eldobása
 ddrops_enone=Nem lettek adatbázisok kiválasztva
 ddrops_ecannotdb=Önnek nincs joga a $1 adatbázist eldobni
+
 table_title=Tábla szerkesztése
 table_title2=Tábla létrehozás
 table_header=$1 tábla a $2 adatbázisból
@@ -112,11 +118,13 @@ tdrop_err=Nem sikerült eldobni a táblát
 tdrop_title=Tábla eldobása
 tdrop_rusure=Biztos Ön abban, hogy el akarja dobni a(z) $1 táblát a(z) $2 adatbázisból? $3 oszlop adatai törlődni fognak.
 tdrop_ok=Tábla eldobása
+
 tdrops_enone=Nem lett tábla megadva az eldobáshoz
 tdrops_err=Sikertelen tábla eldobás
 tdrops_ok=Táblák eldobása
 tdrops_title=Tábla eldobása
 tdrops_rusure=Biztos Ön abba, hogy eldobla a $1 kiválasztott táblát a $2 adatbázisból? $3 sornyi adat törlődik.
+
 field_title1=Mező hozzáadása
 field_title2=Mező módosítása
 field_in=$1 táblában a $2 adatbázisban
@@ -144,6 +152,7 @@ field_esize='$1' nem valós mezőhossz
 field_eenum=Nincs enumerált érték megadva
 field_efield='$1' nem valós mezőnév
 field_ekey=A mező(k) amelyek tartalmazhatnak nullát nem lehetnek részei az elsődleges kulcsnak!
+
 view_title=Tábla adatok
 view_pos=Sor $1 -tól/től $2 -ig a $3
 view_none=Ez a tábla nem tartalmaz adatokat
@@ -169,6 +178,7 @@ view_download=Letöltés..
 view_keep=Hagyd változatlanul
 view_set=A file tartalmának beállítása...
 view_adv=Összetett keresés
+
 users_title=Felhasználói jogok
 users_user=Felhasználó
 users_host=Gazdagépek
@@ -190,6 +200,7 @@ users_sync_sel=Hoszt megadása
 users_delete=Kiválasztott törlése
 users_derr=Nem sikerült a felhasználó törlése
 users_enone=Nem lett felhasználó kiválasztva
+
 user_title1=Felhasználó létrehozása
 user_title2=Felhasználó szerkesztése
 user_header=MySQL felhasználó adatai
@@ -205,6 +216,7 @@ user_perms=Jogosultság
 user_err=Nem lehet menteni a felhasználót
 user_euser=Rossz vagy érvénytelen felhasználói név
 user_ehost=Rossz vagy érvénytelen gazdagép(ek) engedélyezés
+
 dbs_title=Adatbázis jogosultságok
 dbs_db=Adatbázisok
 dbs_user=Felhasználó
@@ -220,6 +232,7 @@ dbs_none=Egyikse
 dbs_return=Adatbázis jogosultság
 dbs_derr=Nem sikerült az adatbázis jogosultság törlése
 dbs_enone=Nem lettek adatbázisok kiválasztva
+
 db_title1=Adatbázis jogosultság létrehozása
 db_title2=Adatbázis jogosultság szerkesztése
 db_header=adatbázis jogosultság beállításai
@@ -234,6 +247,7 @@ db_err=Nem lehet menteni az adatbázis jogosultságokat
 db_euser=Rossz vagy érvénytelen felhasználói név
 db_ehost=Rossz vagy érvénytelen gazdagépnév
 db_edb=Rossz vagy érvénytelen adatbázis név
+
 hosts_title=Gazdagép jogosultság
 hosts_db=Adatbázisok
 hosts_host=Gazdagépek
@@ -245,6 +259,7 @@ hosts_add=Új gazdagép létrehozása
 hosts_empty=Nincs gazdagép jogosultság definiálva
 hosts_derr=Nem sikerült a host jogosultságát törölni
 hosts_enone=Nem lett kiválasztva host
+
 host_title1=Gazdagép jogosultság létrehozása
 host_title2=Gazdagép jogosultság szerkesztése
 host_header=Gazdagép jogosultság beállításai
@@ -252,6 +267,7 @@ host_db=Adatbázisok
 host_any=Bárhonnan
 host_host=Gazdagépek
 host_perms=Jogosultságok
+
 newdb_title=Új adatbázis létrehozása
 newdb_header=Új adatbázis beállításai
 newdb_db=Adatbázis neve
@@ -263,6 +279,7 @@ newdb_err=Nem lehet létrehozni a táblát
 newdb_edb=Rossz vagy érvénytelen adatbázis név
 newdb_ecannot=Önnek nincs jogosultsága adatbázist létrehozni
 newdb_ecannot2=Önnek nincs engedélyezve adatbázis létrehozás
+
 exec_title=SQL parancs futtatása
 exec_header=Adja meg az SQL parancsot melyet a $1 adatbázison futtatni akar..
 exec_old=Vagy válassza ki az előző SQL parancsot
@@ -287,6 +304,7 @@ exec_delete=először az adatok törlése a táblában?
 exec_filename=File -ből
 exec_ignore=Átugorja a duplikált sorokat?
 exec_edit=Előző szerkesztése
+
 tprivs_title=Tábla jogosultság
 tprivs_table=Tábla
 tprivs_db=Adatbázis
@@ -302,6 +320,7 @@ tprivs_return=Tábla jogosultság
 tprivs_none=Nincs
 tprivs_derr=Nem sikerült a tábla jogosultságát törölni
 tprivs_enone=Nem lett tábla kiválasztva
+
 tpriv_title1=Tábla jogosultság létrehozása
 tpriv_title2=Tábla jogosultság szerkesztése
 tpriv_header=Tábla jogosultság beállításai
@@ -317,6 +336,7 @@ tpriv_err=Nem lehet menteni a tábla jogosultságot
 tpriv_etable=Nincs tábla kiválasztva
 tpriv_euser=Rossz vagy érvénytelen felhasználói név
 tpriv_ehost=Rossz vagy érvénytelen gazdagép
+
 cprivs_title=Mező jogosultságok
 cprivs_field=Mező
 cprivs_table=Tábla
@@ -332,6 +352,7 @@ cprivs_return=mező jogosultság
 cprivs_none=Nincs
 cprivs_derr=Nem sikerült a mező jogosultság törlése
 cprivs_enone=Nem lett mező kiválaszva
+
 cpriv_title1=Mező jogosultság létrehozása
 cpriv_title2=Mező jogosultság szerkesztése
 cpriv_header=Mező jogosultság beállításai
@@ -347,11 +368,13 @@ cpriv_err=Nem lehet elmenteni a mező jogosultságokat
 cpriv_etable=Nincs mező kijelölve
 cpriv_euser=Rossz vagy érvénytelen felhasználói név
 cpriv_ehost=Rossz vagy érvénytelen gazdagép
+
 esql=SQL parancs $1 hibás : $2
 eparse=A webmin nem tudta értelmezni a $1 parancsot, az adat természetéből kifolyólag az adatbázisban. Önnek installálni kellene a $2 és a $3 Perl modulokat, hogy ezt a problémát megoldja.
 edenied=Önnek nincs joga a MySQL adatbázishoz
 perms_ecannot=Önnek nincs engedélyezve hogy szerkessze a jogosultságokat
 perms_edb=Önnek csak a saját adatbázisának a jogait van joga szerkszeszteni
+
 acl_dbs=Az adatbázisokat ez a felhasználó tudja managelni
 acl_dall=Összes adatbázist
 acl_dsel=Kiválasztott..
@@ -369,6 +392,7 @@ acl_user=felhasználói név
 acl_pass=jelszó
 acl_edonly=Csak a tábla adatokat szerkesztheti?
 acl_bnone=Mentés tiltva
+
 log_start=MySQL szerver indítva
 log_stop=MySQL szerver leállítva
 log_db_create=$1 adatbázis létrehozva
@@ -380,6 +404,7 @@ log_cprivs_delete=A $1 mező jogosultságának törlése
 log_users_delete=Törölve $1 felhasználó
 log_table_create=$1 tábla létrehozva a(z) $2 adatbázisban
 log_table_delete=$1 tábla eldobva a(z) $2 adatbázisból
+
 log_tables_delete=$1 táblák eldoba a $2 adatbázisból
 log_field_create=Hozzáadva $1 $4 mező a(z) $2 a(z) $3 adatbázishoz
 log_field_modify=Módosítva $1 $4 mező a(z) $2 a(z) $3 adatbázishoz
@@ -420,6 +445,7 @@ log_execupload=SQL parancs futtatása feltöltött file -ból
 log_execfile=SQL parancs futtatása a $1 file -ból
 log_importupload=Importált adat feltöltött file -ból
 log_importfile=Importált adat a $1 file -ból
+
 backup_title=Másolat készítése az adatatbázisra
 backup_title2=Másolat készítése minden adatatbázisra
 backup_edump=A MySQL másolati programját nem találom a rendszerben. Talán a <a href='$2'>modul konfigurációd</a> hibás.
@@ -455,15 +481,18 @@ backup_alltables=Minden táblát
 backup_seltables=Kiválasztott táblák..
 backup_etables=Nem lett kiválasztva tábla a másolat készítéshet
 backup_cnone=Nem
+
 import_title=Adat importálás
 import_uploadout=Importálom az adatokat a feltöltött file -ból ..
 import_fileout=Importálom az adatokat a $1 -ből ..
 import_eupload=Hibás feltöltött import filenév
 import_efile=Hibás ipmort filenév
+
 adv_title=Összetett keresés
 adv_and=Rekord keresése, ami megfelel minden kritériumnak...
 adv_or=Rekord keresése, ami megfelel bármelyik kritériumnak...
 adv_ok=Keresés most
+
 csv_title=CSV export file
 csv_header=CSV exportálási opciók
 csv_dest=Export célkönyvtár
@@ -482,4 +511,5 @@ csv_ebuser=Önnek nincs  joga exportálni a file -t
 csv_ewhere=Hibás <tt>where</tt> klauza
 csv_done=A CVS export a $1 -be sikerült. A keletkezett file mérete $2.
 csv_headers=Oszlop nevek megjelenjenek a CSV -ben?
+
 cnf_all=Összes

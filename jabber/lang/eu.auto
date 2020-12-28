@@ -17,6 +17,7 @@ index_restartmsg=Egin klik botoi honetan uneko konfigurazioa geldiarazteko eta o
 index_comments=Abisua: zure Jabber konfigurazio fitxategiak $1 du iruzkinak, eta ezabatu egingo dira konfigurazio aldaketa modulu hau erabiliz gero.
 index_return=Jabber menua
 index_version=Jabber $1 bertsioa
+
 general_title=Aukera Orokorrak
 general_header=Jabber zerbitzari globalaren aukerak
 general_host=Zure zerbitzariaren ostalariaren izena
@@ -32,6 +33,7 @@ general_eelogfmt=Falta da akatsen erregistro formatua
 general_erlog=Falta edo trafiko erregistroaren fitxategi baliogabea
 general_erlogfmt=Trafikoko erregistroaren formatua falta da
 general_epidfile=Falta ID edo prozesua ID fitxategia falta
+
 messages_title=Mezuak
 messages_header=Jabber zerbitzariaren mezua bezeroentzat
 messages_wsubject=Ongi etorri mezuaren gaia
@@ -44,6 +46,7 @@ messages_vcard2jud=Bidali vCard Jabber erabiltzailearen direktoriora?
 messages_err=Huts egin du mezuak gordetzean
 messages_evcard=VCard XML baliogabea : $1 
 messages_etag=Server vCard XML ez da &lt;vCard&gt; ekin hasten
+
 modules_title=Jabber moduluak
 modules_desc=Jarraian agertzen diren moduluak Jabber saioko kudeatzaileak jasotako mezuak prozesatzeko erabiltzen dira. Zerrendan ari zaren hori badakizu soilik aldatu beharko zenuke zerrenda hau.
 modules_header=Jabber zerbitzariaren saio kudeatzailearen moduluak
@@ -52,6 +55,7 @@ modules_so=Liburutegi partekatua
 modules_err=Huts egin du Jabber moduluak gordetzean
 modules_emod='$1' ez da baliozko moduluaren izena
 modules_eso="$1" liburutegi partekatua ez dago
+
 karma_title=Karma Trafiko Kontrola
 karma_header=Trafiko tasak kontrolatzeko aukerak
 karma_rate=Gehiegizko konexioen manipulazioa
@@ -80,6 +84,7 @@ karma_epenalty=Zigorraren epea falta edo baliogabea
 karma_erestore=Falta diren edo baliogabeko leheneratze epeak
 karma_epoints=Konexio kopurua falta edo baliogabea da
 karma_etime=Falta denbora edo baliogabea da
+
 ips_title=IP Sarbide Kontrola
 ips_header=Jabber zerbitzariaren IP sarbide kontrola
 ips_allow=Bezeroaren IPak baimendu
@@ -89,10 +94,12 @@ ips_none=Bat ere ez
 ips_sel=Zerrendatutako helbideak/netmasks ..
 ips_err=Huts egin du IP sarbide kontrola gordetzean
 ips_eaddr='$1' ez da baliozko IP helbide edo IP helbide/netmask
+
 file_title=Editatu Konfigurazio fitxategia
 file_desc=Erabili beheko formularioa Jabber konfigurazio fitxategia zuzenean editatzeko. XML konfigurazio formatua ulertzen baduzu bakarrik egin beharko da.
 file_header=Editatu Jabber konfigurazio fitxategia
 file_err=Ezin izan da konfiguratu fitxategia gordetzean
+
 admin_title=Erabiltzaile administratiboak
 admin_header=Zerbitzariaren administrazio erabiltzaileak
 admin_read=Irakurri sarbide administratzaileak
@@ -100,11 +107,13 @@ admin_write=Idatzi sarbide administratzaileak
 admin_reply=Autoreply administratzaileentzako mezuak?
 admin_rsubject=Egite automatikoko gaia
 admin_rbody=Autoreply mezua
+
 filter_title=Erabiltzaile iragazkiak
 filter_header=Erabiltzaile iragazkien baimenak
 filter_max=Gehienezko iragazkiaren arauak
 filter_conds=Baimendu iragazkiaren baldintzak
 filter_acts=Baimendu iragazki ekintzak
+
 restart_err=Ezin izan dira aldaketak aplikatu
 stop_err=Huts egin du Jabber gelditzeko
 stop_epid=Ezin izan da Jabber prozesua aurkitu

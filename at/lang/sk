@@ -16,6 +16,7 @@ index_amode=Povolení užívatelia
 index_amode0=Všetci užívatelia
 index_amode1=Iba zobrazení užívatelia
 index_amode2=Všetci okrem zobrazených užívateľov...
+
 edit_title=Plánovaný príkaz
 edit_cmd=Celý skript pre spustenie
 edit_header=Podrobnosti plánovaného príkazu
@@ -23,6 +24,7 @@ edit_delete=Zrušiť tento príkaz
 edit_run=Spustiť teraz
 edit_ejob=Plánovaný príkaz už neexistuje!
 edit_ecannot=Nemáte oprávnenie upraviť tento plánovaný príkaz
+
 create_err=Zlyhalo vytvorenie plánovaného príkazu
 create_euser=Chybný alebo chýbajúci užívateľ
 create_edate=Chybný alebo chýbajúci dátum alebo čas
@@ -31,17 +33,21 @@ create_efuture=Dátum a čas je v minulosti
 create_edir=Chybný alebo chýbajúci adresár
 create_ecannot=Nemáte oprávnenie na plánovanie príkazov pre tohoto užívateľa
 create_eallow=Zadaný užívateľ nemá oprávnenie spúšťať plánované príkazy
+
 delete_err=Zlyhalo prerušenie príkazu
 delete_egone=Príkaz už prebehol alebo bol odstránený
+
 acl_users=Môže meniť plánované príkazy pre
 acl_all=Všetci užívatelia
 acl_this=Súčasný Webmin užívateľ
 acl_only=Iba užívatelia
 acl_except=Všetci okrem užívateľov
 acl_allow=Môže upraviť užívateľov používajúcich príkaz AT?
+
 run_title=Spúšťam príkaz
 run_output=Výstup z plánovaného príkazu..
 run_none=Žiadny výstup z programu nebol zobrazený
+
 allow_err=Zlyhalo uloženie povolených užívateľov
 allow_ecannot=Nemáte oprávnenie upraviť zoznam povolených užívateľov
 allow_eusers=Neboli zadaní užívatelia

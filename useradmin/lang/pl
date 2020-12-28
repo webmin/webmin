@@ -51,11 +51,13 @@ index_mass=Usuń wybranych użytkowników
 index_mass2=Wyłącz wybrane
 index_mass3=Włącz wybrane
 index_gmass=Usuń wybrane grupy
+
 search_title=Wyniki poszukiwania
 search_notfound=Nie znaleziono odpowiednich użytkowników
 search_found=Znaleziono $1 pasujących użytkowników ..
 search_gnotfound=Nie znaleziono odpowiednich grup
 search_gfound=Znaleziono $1 pasujących grup ..
+
 uedit_title=Zmień użytkownika
 uedit_title2=Utwórz użytkownika
 uedit_details=Dane użytkownika
@@ -132,6 +134,7 @@ uedit_uid_def=Automatyczne
 uedit_uid_calc=Obliczone
 uedit_disabled=Logowanie tymczasowo wyłączone
 uedit_sys=Domyślne systemowe
+
 usave_err=Nie udało sie zachować użytkownika
 usave_eedit=Nie masz uprawnień do modyfikacji tego użytkownika
 usave_ecreate=Nie masz uprawnień do tworzenia nowych użytkowników
@@ -181,6 +184,7 @@ usave_epasswd_same=Hasło zawiera lub jest takie samo jak nazwa użytkownika
 usave_epasswd_mindays=Hasło zostało zmienione mniej niż $1 dni temu
 usave_epasswd_cmd=Niepowodzenie polecenia walidacji hasła
 usave_eothers=Użytkownik został zapisany, ale wystąpił błąd w innym module : $1
+
 gedit_title=Zmień grupę
 gedit_title2=Utwórz grupę
 gedit_details=Dane grupy
@@ -202,6 +206,7 @@ gedit_allu=Wszyscy użytkownicy
 gedit_selu=Użytkowników w grupie
 gedit_pri=Grupa podstawowa członków
 gedit_prinone=Żaden z użytkowników nie ma tej grupy jako podstawowej
+
 gsave_err=Nie udało się zachować grupy
 gsave_eedit=Nie masz uprawnień do modyfikacji tej grupy
 gsave_ecreate=Nie masz uprawnień do tworzenia nowych grup
@@ -217,6 +222,7 @@ usave_egidused=Grupa $1 już posiada GID $2
 gsave_egidused2=Ten GID już jest używany
 usave_efromroot=Nie masz uprawnień do zmiany katalogu domowego z / na inny
 usave_etoroot=Nie masz uprawnień do zmiany katalogu domowego na /
+
 logins_title=Zapamiętane logowania
 logins_head=Zapamiętane logowania użytkownika $1
 logins_from=Logowanie z
@@ -229,6 +235,7 @@ logins_none=Nie zapamiętano logowań
 logins_elist=Nie masz uprawnień do przeglądania logowań
 logins_elistu=Nie masz uprawnień do przeglądania logowań użytkownika '$1'
 logins_local=Lokalnie
+
 udel_title=Usuń użytkownika
 udel_err=Nie udało się usunąć użytkownika
 udel_enum=Nieprawidłowy numer użytkownika
@@ -249,6 +256,7 @@ udel_del2=Usuń użytkownika i katalog domowy
 udel_others=UWAGA! Katalog domowy $1 zawiera pliki, których właścicielami są inni użytkownicy. Liczba takich plików: $2.
 udel_dothers=Usunąć użytkownika z innych modułów?
 udel_root=Uwaga! Jeśli zostanie usunięty użytkownik root, możesz utracić możliwość administrowania systemem w przyszłości.
+
 gdel_title=Skasuj grupę
 gdel_err=Nie udało się skasować grupy
 gdel_enum=Błędny numer grupy
@@ -261,6 +269,7 @@ gdel_sure=Czy na pewno chcesz skasować grupę $1 ?
 gdel_del=Skasuj grupę
 gdel_dothers=Usunąć grupę w innych modułach?
 gdel_other=Usuwanie z innych modułów ..
+
 many_title=Utwórz wielu użytkowników
 many_desc=Za pomocą tego formularza możesz utworzyć wielu użytkowników jednocześnie na podstawie przesłanego lub lokalnego pliku tekstowego. Każda linia pliku określa jednego użytkownika wg następującego formatu:
 many_desc2=nazwa:hasło:uid:gid:nazwa_rzecz:kat_domowy:powłoka:min:max:ostrz:blok:ważność
@@ -284,6 +293,7 @@ many_eshell=Niepoprawna powłoka w linii $1 : $2
 many_emkdir=nie udało się utworzyć katalogu domowego $1 : $2
 many_egtaken=Nazwa grupy jest już używana w linii $1 : $2
 many_ok=Utworzono użytkownika $1
+
 acl_uedit=Użytkownicy uniksowi, których można modyfikować
 acl_uedit_all=Wszyscy
 acl_uedit_none=Żaden
@@ -343,6 +353,7 @@ acl_udelete=Może usuwać użytkowników?
 acl_gdelete=Może usuwać grupy?
 acl_urename=Może zmieniać nazwy użytkowników?
 acl_grename=Może zmieniać nazwy grup?
+
 log_urename=Przemianowano użytkownika $1 na $2
 log_umodify=Zmieniono użytkownika $1
 log_ucreate=Utworzono użytkownika $1
@@ -361,6 +372,7 @@ log_ugbatch=Wykonano wysłany plik batch grupy
 log_ugbatch_l=Wykonano wysłany plik batch grupy ($1 utworzono, $2 zmodyfikowano, $3 usunięto)
 log_delete_users=Usunięto $1 użytkowników
 log_delete_groups=Usunięto $1 gup
+
 batch_title=Uruchom plik wsadowy
 batch_ecannot=Nie możesz użyć formularza pliku wsadowego
 batch_desc=Ten formularz pozwoli Ci utworzyć, zmienić lub usunąć wielu użytkowników jednocześnie na podstawie przesłanego lub lokalnego pliku tekstowego. Każda linia tego pliku określa pojedyńczą operację, której rodzaj jest określany na podstawie pierwszego pola. Linie mogą być postaci :
@@ -419,12 +431,14 @@ batch_eexpire=Błędna data ważności w linii $1 : $2
 batch_echange=Błędna ilość dni do zmiany hasła w linii $1 : $2
 batch_instr=Instrukcje i format pliku wsadowego
 batch_header=Opcje wsadowego tworzenia, aktualizacji i usuwania użytkownika
+
 who_title=Zalogowani użytkownicy
 who_user=Użytkownik Unix
 who_tty=TTY
 who_when=Zalogowany na
 who_from=Zalogowany z
 who_none=Brak użytkowników aktualnie zalogowanych.
+
 export_title=Eksport pliku wsadowego
 export_desc=Ten formularz pozwala na tworzenie pliku wsadowego zawierającego niektórych lub wszystkich dostępnych użytkowników systemu. Plik może być użyty na stronie Utwórz, zmień lub usuń użytkowników za pomocą pliku wsadowego na innym systemie w celu utworzenia wyeksportowanych użytkowników.
 export_header=Opcje eksportu wsadowego użytkownika
@@ -445,6 +459,7 @@ export_done=Pomyślnie wyeksportowano $1 użytkowników do pliku $2 ($3).
 export_pft=Format pliku wsadowego
 export_who=Użytkownicy do eksportu
 export_ecannot=Nie masz uprawnień do eksportu użytkowników
+
 gexport_title=Eksport grup do pliku wsadowego
 gexport_header=Opcje eksportu wsadowego grup
 gexport_who=Grupy do eksportu
@@ -452,6 +467,7 @@ gexport_ecannot=Nie masz uprawnień do eksportu grup
 gexport_err=Błąd eksportowania pliku wsadowego grup
 gexport_egid=Błędny pierwszy zakres GID
 gexport_egid2=Błędny drugi zakres GID
+
 pft_0=Tylko klasyczny plik <tt>passwd</tt>
 pft_1=Plik BSD <tt>master.passwd</tt>
 pft_2=Standardowe pliki <tt>passwd</tt> i <tt>shadow</tt>
@@ -459,6 +475,7 @@ pft_3=Plik Unixware <tt>passwd</tt>
 pft_4=Pliki AIX <tt>passwd</tt> i <tt>security</tt>
 pft_5=Pliki OpenServer <tt>passwd</tt> i short <tt>shadow</tt>
 pft_6=Baza danych MacOS NetInfo
+
 umass_title=Usuwanie użytkowników
 umass_err=Błąd usuwania użytkowników
 umass_sure=Czy na pewno chcesz usunąć $1 wybranych użytkowników? Ich katalogi domowe zawierają $2 plików.
@@ -469,6 +486,7 @@ umass_enone=Nie wybrano użytkowników
 umass_del1=Usuń użytkowników
 umass_del2=Usuń użytkowników i katalogi domowe
 umass_doing=Usuwanie użytkownika $1 ..
+
 gmass_title=Usuwanie grup
 gmass_err=Błąd usuwania grup
 gmass_sure=Czy jesteś pewny, że chcesz usunąć $1 wybranych grup?
@@ -477,16 +495,19 @@ gmass_enone=Nie wybrano grup
 gmass_del=Usuń grupy
 gmass_doing=Usuwanie grupy $1 ..
 gmass_eprimary=Grupa $1 nie może zostać usunięta, ponieważ jest to podstawowa grupa dla użytkownika $2.
+
 dmass_title=Wyłączanie użytkowników
 dmass_sure=Czy na pewno chcesz wyłączyć $1 wybranych użytkowników? Mogą być oni później ponownie włączeni bez utraty danych i haseł.
 dmass_dis=Wyłącz użytkowików
 dmass_pass=Tymczasowe blokowanie hasła ..
 dmass_doing=Wyłączanie użytkowników $1 ..
 dmass_already=.. już wyłączony!
+
 emass_title=Włączanie użytkowników
 emass_pass=Odblokowywanie hasła ..
 emass_doing=Włączanie użytkownika $1 ..
 emass_already=.. już włączony!
+
 gbatch_title=Wykonanie pliku wsadowego grupy
 gbatch_ecannot=Nie możesz używać formularza wsadowego grup
 gbatch_desc=Ten formularz pozwala na tworzenie, modyfikowanie lub usuwanie wielu grup jednocześnie za pomocą wysłanego pliku lub tekstu. Każda linia w pliku określa akcję do wykonania. Format linii to:

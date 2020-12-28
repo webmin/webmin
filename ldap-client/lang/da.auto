@@ -14,6 +14,7 @@ index_restart=Genstart LDAP Client Daemon
 index_restartdesc=Anvend den aktuelle konfiguration ved at genstarte den lokale LDAP-klientdemon.
 index_atboot=Start LDAP-klient ved opstart
 index_atbootdesc=Ændrer, om LDAP-klientdemonen startes, når systemet starter op eller ej.
+
 server_title=LDAP-serverkonfiguration
 server_header=LDAP-server og loginindstillinger
 server_host=LDAP-server hostnavne
@@ -51,6 +52,7 @@ server_etimelimit=Manglende eller ugyldig tidsforbindelse for forbindelse
 server_ecacert=Manglende eller ugyldig CA-certifikatfil
 server_euport=Manglende eller ugyldig port til server $1 
 server_euri=Ingen LDAP-servere er indtastet
+
 base_title=LDAP-søgebaser
 base_header=LDAP-katalogsøgningsplaceringer
 base_base=Globale søgebase
@@ -86,6 +88,7 @@ base_enetmasks=Manglende base til netmaskenavne
 base_ealiases=Manglende base for e-mail-aliaser
 base_enetgroup=Manglende base for netgrupper
 base_etimelimit=Manglende eller ugyldig søgetidsgrænse
+
 pam_title=Autentificeringsindstillinger
 pam_header=PAM-godkendelse og adgangskodeindstillinger
 pam_filter=Yderligere LDAP-filter
@@ -106,10 +109,12 @@ pam_efilter=Mangler yderligere LDAP-filter
 pam_elogin=Manglende eller ugyldig LDAP-attribut til brugernavn
 pam_egroupdn=Manglende LDAP-gruppe til at tvinge medlemskab af
 pam_emember=Manglende eller ugyldig LDAP-attribut for gruppemedlemmer
+
 switch_title=Tjenester ved hjælp af LDAP
 switch_service=Service
 switch_srcs=Data kilder
 switch_return=tjenester, der bruger LDAP
+
 ldap_emodule=Modulet $1 Perl, der er nødvendigt for at tale med LDAP-serveren, er ikke installeret. <a href='$2'>Klik her</a> for at få Webmin til at downloade og installere det nu.
 ldap_emodule2=Modulet $1 Perl, der er nødvendigt for at tale med LDAP-serveren, er ikke installeret.
 ldap_econf=LDAP-klientkonfigurationsfilen $1 blev ikke fundet på dit system
@@ -119,6 +124,7 @@ ldap_elogin=Kunne ikke binde til LDAP-server $1 som $2 : $3
 ldap_anon=anonym
 ldap_eparse=Kunne ikke analysere LDAP-serveren URI $1 
 ldap_etls=Kunne ikke skifte til TLS-tilstand : $1 
+
 browser_title=LDAP-browser
 browser_econn=LDAP-browseren kan ikke bruges : $1 
 browser_base=Browsing:
@@ -129,6 +135,7 @@ browser_attrs=Objektattributter
 browser_parent=Gennemse forældre
 browser_none=Ingen
 browser_sel=Okay
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Brugerprintere
 order_xfn=XFN
 order_mdns4=Multicast DNS
 order_mdns4_minimal=Multicast DNS (minimal)
+
 desc_aliases=Sendmail aliaser
 desc_mail=Sendmail aliaser
 desc_hosts=Værtsadresser
@@ -177,6 +185,7 @@ desc_printers=Printere
 desc_ipnodes=IP-noder
 desc_timezone=Tidszoner
 desc_locale=locales
+
 eswitch_title=Rediger service
 eswitch_egone=Service findes ikke!
 eswitch_header=Serviceoplysninger
@@ -196,6 +205,7 @@ eswitch_continue=Fortsæt søgning
 eswitch_none=Ingen
 eswitch_err=Kunne ikke gemme tjenesten
 eswitch_enone=Ingen kilder valgt!
+
 log_server=Ændret LDAP-serverkonfiguration
 log_base=Ændrede LDAP-søgebaser
 log_pam=Ændrede indstillinger for godkendelse
@@ -205,6 +215,7 @@ log_delboot=Deaktiveret LDAP-klientdemon ved starttidspunktet
 log_start=Startet LDAP-klientdemon
 log_stop=Stopet LDAP-klientdemon
 log_restart=Genstartet LDAP-klientdemon
+
 check_title=Validerer LDAP-konfiguration
 check_base=Finder LDAP-base til brugere ..
 check_ebase=.. ingen baseret fundet i klientkonfiguration!

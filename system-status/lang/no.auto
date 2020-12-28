@@ -1,5 +1,0 @@
-right_used3=$2 brukt, $3 hurtigbufret, $1 totalt
-right_fsfull=Advarsel! Filsystemet $2 montert på $1 har ingen ledig diskplass!
-right_fsnearly=Advarsel! Filsystemet $2 montert på $1 har bare $3 ledig diskplass
-right_ifsfull=Advarsel! Filsystemet montert på $1 har ingen gratis inoder av $2 !
-right_ifsnearly=Advarsel! Filsystemet montert på $1 har bare $3 gratis inoder av $2 

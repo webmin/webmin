@@ -2,6 +2,7 @@ check_econfigset=Keine iSCSI TGTd-Konfigurationsdatei!
 check_econfig=Die iSCSI-TGTd-Konfigurationsdatei $1 wurde nicht auf Ihrem System gefunden.
 check_etgtadm=Der iSCSI-TGTd-Verwaltungsbefehl $1 wurde nicht auf Ihrem System gefunden.
 check_einit=Systemstart Aktion $1 existiert nicht
+
 index_title=iSCSI TGTd
 index_clink=Vielleicht ist es nicht installiert ist, oder Ihr <a href='$1'>Modulkonfiguration</a> ist falsch.
 index_stop=Stoppe iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=Erlaubte Benutzer
 index_size=Gesamtgröße
 index_noluns=Kein
 index_nousers=Jeder
+
 dtargets_err=Fehlgeschlagen Ziele zu löschen
 dtargets_enone=Nichts ausgewählt!
+
 target_title1=Erstelle iSCSI Ziel
 target_title2=Editiere iSCSI Ziel
 target_header=iSCSI gemeinsamen Geräteoptionen
@@ -74,11 +77,13 @@ target_direct=Direkter Geräte-Zugriff
 target_cache=Schreibe Cache auf Gerät?
 target_eaddr=Ungültig erlaubte IP-Adresse
 target_eaname=Ungültig erlaubter Initiator-Name
+
 start_err=Fehlgeschlagen iSCSI TGTd zu starten
 stop_err=Fehlgeschlagen iSCSI TGTd zu stoppen
 restart_err=Fehlgeschlagen iSCSI TGTd neu zu starten
 atboot_err=Fehlgeschlagen beim booten zu aktivieren
 atboot_einit=Init-Skript $1 existiert nicht
+
 log_create_target=Ziel $1 erstellt
 log_delete_target=Ziel $1 gelöscht
 log_modify_target=Ziel $1 modifiziert
@@ -89,6 +94,7 @@ log_restart=iSCSI Server neu gestartet
 log_atboot=iSCSI Server beim booten aktiviert
 log_delboot=iSCSI Server beim booten deaktiviert
 log_manual=Manuell editierte Konfigurationsdatei
+
 manual_title=Editiere Konfigurationsdatei
 manual_file=Wähle Datei zum editieren:
 manual_ok=Öffne

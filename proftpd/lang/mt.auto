@@ -27,7 +27,9 @@ index_global=Konfigurazzjoni Globali
 index_create=Oħloq server virtwali
 index_version=Verżjoni ProFTPd $1 
 index_proftpd=ProFTPd
+
 efailed=Ma rnexxielux jiffranka $1 
+
 type_0=Għażliet ta 'Netwerking
 type_1=Għażliet ta 'qtugħ
 type_2=Fajls u Direttorji
@@ -35,6 +37,7 @@ type_3=Kontroll tal-Aċċess
 type_4=Diversi
 type_5=Utent u Grupp
 type_6=Awtentikazzjoni
+
 virt_title=Għażliet ta 'Server Virtwali
 virt_header1=Għal $1 
 virt_header2=Għal server default
@@ -50,6 +53,7 @@ virt_cmds=Kmandi FTP
 virt_return=server virtwali
 virt_virt=Ikkonfigura server virtwali
 virt_edit=Editja Direttivi
+
 vserv_title=Ikkonfigura server virtwali
 vserv_addr=Indirizz
 vserv_name=Isem tas-server
@@ -58,6 +62,7 @@ vserv_delete=Ħassar server virtwali
 vserv_eaddr=Indirizz nieqes jew invalidu
 vserv_eport=Numru tal-port nieqes jew invalidu
 vserv_ename=Isem tas-server nieqes
+
 anon_title=Għażliet FTP anonimi
 anon_header1=Fis-server virtwali $1 
 anon_header2=Server default
@@ -65,6 +70,7 @@ anon_anon=Kkonfigurat l-FTP anonimu
 anon_return=għażliet FTP anonimi
 anon_header3=Għal FTP anonimi fis-server virtwali $1 
 anon_header4=Għal FTP anonimu fis-server default
+
 aserv_title=Kkonfigurat l-FTP anonimu
 aserv_create=Twaqqif ta 'FTP Anonimu
 aserv_root=Limitu għad-direttorju
@@ -75,6 +81,7 @@ aserv_eroot=Direttorju tal-chroot nieqes jew invalidu
 aserv_euser=Utent Unix nieqes jew invalidu
 aserv_egroup=Grupp Unix nieqes jew invalidu
 aserv_desc=L-FTP anonimu għadu ma ġiex stabbilit għal dan is-server virtwali. Uża din il-formola biex tistabbilixxi l-għażliet tal-konfigurazzjoni inizjali.
+
 dir_title=Għażliet Per-Direttorju
 dir_header2=Għad-direttorju $1 fis-server default
 dir_header1=Għad-direttorju $1 fis-server virtwali $2 
@@ -85,6 +92,7 @@ dir_header=Għażliet ta 'kull kmand
 dir_dir=Ikkonfigura Direttorju
 dir_header4=Għad-direttorju $1 f'FTP anonimu
 dir_header5=Għad-direttorju $1 globalment
+
 manual_title=Editja Direttivi
 manual_header=Uża l-kaxxa tat-test hawn taħt biex teditja manwalment id-direttivi ta 'ProFTPD f' $1 li japplikaw għal dan is-server virtwali, direttorju jew kmandi.
 manual_configs=Editja l-Iskedi tal-Konfigurazzjoni
@@ -92,6 +100,7 @@ manual_ecannot=M'għandekx permess teditja d-direttivi manwalment
 manual_file=Editja d-Direttivi fil-Fajl:
 manual_efile=Fajl tal-konfigurazzjoni ProFTPd mhux validu
 manual_etest=Żball tal-fajl ta 'konfigurazzjoni misjub : $1 
+
 limit_title=Għażliet ta 'Per-Kmand
 limit_header4=Għall-kmandi $1 fid-direttorju $2 
 limit_header2=Għall-kmandi $1 fis-server default
@@ -103,17 +112,20 @@ limit_return=għażliet għal kull kmand
 limit_header5=Għall-kmandi $1 f'FTP anonimi
 limit_header6=Għall-kmandi $1 fil-fajl $2 
 limit_header7=Għall-kmandi $1 globalment
+
 lserv_title=Ikkonfigura l-Kmandi
 lserv_cmd=Kmandi FTP
 lserv_delete=Ħassar il-kmandi konfigurati
 lserv_err=Ma rnexxielux isalva l-kmandi
 lserv_ecmd=L-ebda kmandi magħżula
+
 dserv_title=Ikkonfigura Direttorju
 dserv_dir=Triq tad-Direttorju
 dserv_err=Ma rnexxielux isalva direttorju
 dserv_edir=It-triq tad-direttorju nieqsa
 dserv_delete=Ħassar il-konfigurazzjoni tad-direttorju
 dserv_eanondir=Id-Direttorju għandu jkun taħt id-direttorju FTP anonimu
+
 mod_core_type=Tip ta 'server
 mod_core_inetd=Mexxi minn Inetd
 mod_core_stand=Daemon waħdu
@@ -301,6 +313,7 @@ mod_core_duser=Iċħad lill-utenti
 mod_core_eip="$1" mhuwiex indirizz IP validu
 mod_core_enet="$1" mhuwiex indirizz validu tan-netwerk
 mod_core_ehost="$1" mhuwiex isem tal-host validu
+
 mod_ls_fakegroup=Grupp falz fl-elenki tad-direttorji?
 mod_ls_fakeuser=Utenti foloz fil-listi tad-direttorju?
 mod_ls_fakemode=Permessi foloz fil-listi tad-direttorju
@@ -317,6 +330,7 @@ mod_ls_efakeuser=Utent foloz nieqes jew invalidu
 mod_ls_efakegroup=Grupp foloz nieqes jew invalidu
 mod_ls_options=Għażliet tal-lista tad-Direttorju
 mod_ls_strict=Twarrab l-għażliet ta 'l-utent?
+
 mod_auth_chdir=Direttorju inizjali tal-login
 mod_auth_echdir=Direttorju inizjali nieqes jew invalidu
 mod_auth_chroot=Illimita l-utenti għad-direttorji
@@ -330,7 +344,9 @@ mod_auth_egroups=L-ebda grupp Unix għal chroot ma daħal
 mod_auth_echroot=Direttorju tal-chroot nieqes jew invalidu
 mod_auth_login=Ma titlobx password jekk l-login jiġi miċħud?
 mod_auth_root=Ħalli d-dħul minn għeruq?
+
 mod_site_chmod=Ħalli kmand chmod?
+
 mod_unixpw_ufile=Fajl tal-password Unix Alternattiv
 mod_unixpw_eufile=Fajl tal-password Unix nieqes jew invalidu
 mod_unixpw_gfile=Fajl tal-grupp Unix Alternattiv
@@ -338,6 +354,7 @@ mod_unixpw_egfile=Fajl tal-grupp Unix nieqes jew invalidu
 mod_unixpw_none=Xejn
 mod_unixpw_pam=Dejjem ittrattat il-PAM bħala awtorerattiv?
 mod_unixpw_persist=Żomm il-fajl tal-password miftuħ b'mod persistenti?
+
 mod_log_syslog=Żbalji tal-log fil-fajl
 mod_log_sysdef=Ġurnal tas-Sistema
 mod_log_esyslog=Fajl tal-ġurnal nieqes jew invalidu
@@ -354,19 +371,25 @@ mod_log_fmt=Ifforma l-ispag
 mod_log_format=Formati ta 'log personalizzati
 mod_log_enickname=Isem tal-format nieqes jew invalidu
 mod_log_efmt=Format nieqes tal-istring
+
 mod_pam_pam=Uża PAM għall-awtentikazzjoni?
 mod_pam_config=Awtentika billi tuża servizz PAM
 mod_pam_econfig=Servizz PAM nieqes jew invalidu
+
 mod_readme_display=Avża lill-utent dwar l-allinjament ta 'fajls readme
 mod_readme_none=Xejn
 mod_readme_edisplay=Nieqes il-mudell ta 'fajls readme
+
 start_err=Naqset milli tibda server FTP
 start_einetd=Ma tistax tibda d-daemon tas-server meta tkun fil-mod inetd.
+
 stop_err=Ma rnexxiex twaqqaf server FTP
 stop_einetd=Ma tistax twaqqaf id-daemon tas-server meta tkun fil-mod inetd.
 stop_erun=Mhux għaddej
+
 apply_err=Ma rnexxielux japplika l-konfigurazzjoni FTP
 apply_egone=Ma għadux għaddej
+
 ftpaccess_title=Fajls Għażliet Per-Direttorju
 ftpaccess_desc=Għażliet addizzjonali għal kull direttorju jistgħu jiġu speċifikati f'fajl (normalment imsejjaħ <tt>.ftpaccess</tt>) f'kull direttorju. L-għażliet japplikaw għall-fajls kollha f'dak id-direttorju u kwalunkwe sotto-direttorju, sakemm ma jiġix imwarrab minn fajl ta 'għażliet oħra.
 ftpaccess_create=Oħloq File File
@@ -374,8 +397,10 @@ ftpaccess_find=Sib Għażliet ta 'Fajls
 ftpaccess_auto=Taħt anonimu
 ftpaccess_from=Minn direttorju
 ftpaccess_return=lista ta 'fajls ta' għażliet
+
 ftpusers_title=Utenti FTP miċħuda
 ftpusers_desc=Jekk ikun attivat taħt l-ikona <tt>Awtentikazzjoni</tt>, l-utenti elenkati hawn taħt mill-fajl $1 jiġi mċaħħad mill-aċċess tal-login għall-utent FTP.
+
 ftpindex_title=Fajl ta 'Għażliet Per-Direttorju
 ftpindex_delete=Ħassar fajl
 ftpindex_opts=Għażliet Per-Direttorju
@@ -385,8 +410,10 @@ ftpindex_addlimit=Żid għażliet għal kull kmand għal ..
 ftpindex_header2=$1 f' $2 
 ftpindex_return=fajl b'għażliet ta 'direttorju
 ftpindex_header=Għal $1 
+
 find_err=Naqset milli ssib fajls ta 'għażliet
 find_eanon=FTP anonimu m'huwa installat fl-ebda server virtwali
+
 log_global=Bidla $1 f'għażliet globali
 log_ftpusers=L-utenti FTP miċħuda nbidlu
 log_virtc=Server maħluq $1 
@@ -420,6 +447,7 @@ log_anonm=Editjat manwalment FTP anonimu għas-server $1
 log_anon=Inbidel $1 f'FTP anonimu għas-server $2 
 log_start=Beda proftpd
 log_apply=Bidliet applikati
+
 eafter=Verifika tal-konfigurazzjoni naqset: $1 Il-bidliet ma ġewx salvati.
 proftpd_apply=Applika l-Bidliet
 proftpd_stop=Waqqaf ProFTPd

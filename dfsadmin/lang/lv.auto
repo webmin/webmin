@@ -8,6 +8,7 @@ index_none=Pašlaik šajā sistēmā netiek eksportēti direktoriji.
 index_apply=Lietot izmaiņas
 index_applydesc=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējo failu koplietošanas konfigurāciju. Tādējādi visi iepriekš uzskaitītie direktoriji būs pieejami ar norādītajām opcijām.
 index_return=akciju saraksts
+
 edit_title1=Rediģēt kopīgot
 edit_title2=Izveidot kopīgošanu
 edit_header1=Kopīgojiet informāciju
@@ -30,6 +31,7 @@ edit_anon1=Nav piekļuves
 edit_aclok=Vai atļaut ACL?
 edit_public=WebNFS daļa?
 edit_index=WebNFS indeksa fails
+
 save_err=Neizdevās saglabāt kopīgošanu
 save_edirectory='$1' nav derīgs direktorija nosaukums
 save_edirectory2=Mape '$1' neeksistē
@@ -38,13 +40,18 @@ save_ero=Jūs neesat uzskaitījis nevienu saimnieku, ar kuru kopīgot tikai las�
 save_eroot=Jūs neesat uzskaitījis nevienu saimnieku, ar kuru koplietot saknes
 save_ealready=Mape “$1” jau tiek koplietota
 save_ehost=Resursdators '$1' neeksistē
+
 log_modify=Pārveidota NFS daļa $1 
 log_rename=Mainīta NFS daļa no $1 līdz $2 
 log_create=Izveidota NFS daļa $1 
 log_delete=Dzēsta NFS daļa $1 
 log_apply=Lietotās izmaiņas
+
 acl_view=Vai var rediģēt NFS akcijas?
+
 ecannot=Jums nav atļauts pārvaldīt NFS akcijas
+
 delete_err=Neizdevās izdzēst kopīgošanu
 delete_enone=Nav atlasīts
+
 restart_err=Neizdevās piemērot izmaiņas

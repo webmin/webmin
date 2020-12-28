@@ -8,6 +8,7 @@ index_apply=Genomför ändringar
 index_applymsg=Tryck på denna knapp för att använda dessa filexporteringsinställningar. Detta kommer att göra de ovan listade katalogerna tillgängliga med de inställningar du har angivit.
 index_return=exporteringslista
 index_eprog=Den exekverbara NFS-serverfilen fanns inte på ditt system. NFS-paketet verkar inte vara installerat.
+
 edit_title=Ändra exportering
 create_title=Lägg till exportering
 edit_details=Uppgifter om exportering
@@ -36,6 +37,7 @@ edit_gids=Lita inte på GID
 edit_anonuid=Behandla icke betrodda användare som
 edit_default=Standard
 edit_anongid=Behandla icke betrodda grupper som
+
 save_err=Det gick inte att spara exportering
 save_edir=Katalogen '$1' finns inte
 save_enetgroup=Nätgruppen finns inte eller är inte en giltig nätgrupp

@@ -8,6 +8,7 @@ index_none=Neapibrėžtos jokios įkrovos parinktys. Prieš diegdami grubą, bū
 index_efile=Jūsų sistemoje nerastas GRUB meniu failas $1. Galbūt GRUB neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
 index_epath=GRUB vykdomasis $1 jūsų sistemoje nerastas. Galbūt GRUB neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
 index_return=parinkčių sąrašas
+
 title_add=Pridėti įkrovos parinktį
 title_edit=Redaguoti įkrovos parinktį
 title_header=„Boot“ meniu parinkties informacija
@@ -36,6 +37,7 @@ title_echain=Trūksta arba netinkamas grandinės įkėlimo failas
 title_edev=Nepalaikomas šakninio skaidinio įrenginys $1 
 title_einitrd=Trūksta pradinio „ramdisk“ failo pavadinimo
 title_lock=Slaptažodis užrakintas?
+
 global_title=Visuotinės parinktys
 global_header=Visuotinės įkrovos meniu parinktys
 global_default=Numatytoji įkrovos parinktis
@@ -56,12 +58,14 @@ global_edev=Nepalaikomas įdiegimo diskas/skaidinys $1
 global_eother=Trūksta arba netinkamas diskas/skaidinys
 global_epassword=Trūksta arba netinkamas įkrovos slaptažodis
 global_epasswordfile=Trūksta alternatyvaus meniu failo pavadinimo
+
 install_title=Įdiekite GRUB
 install_err=Nepavyko įdiegti GRUB
 install_efind=Nepavyko rasti meniu failo
 install_desc=GRUB diegimas $1 komandomis $2 ir $3 ..
 install_ok=.. įdiegti baigta.
 install_failed=.. įdiegti nepavyko!
+
 log_create_title=Sukurta įkrovos parinktis $1 
 log_delete_title=Ištrinta įkrovos parinktis $1 
 log_modify_title=Modifikuota įkrovos parinktis $1 

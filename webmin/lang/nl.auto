@@ -1,16 +1,22 @@
 access_ecidr6='$1' is geen geldige IPv6-netwerkgrootte
 access_ecidr8=IPv6-netwerkgrootte '$1' moet deelbaar zijn door 8
 access_trust=Vertrouwen op afstand IP-adres verstrekt door proxy's?
+
 bind_elsof=Nieuwe poort $1 wordt al door een ander proces gebruikt
 bind_eonsystem=Het IP-adres $1 is niet actief op dit systeem en kan dus niet worden gebruikt
+
 log_global=&lt;Wereldwijde acties&gt;
 log_sched=Geplande functies loggen?
 log_email=Stuur geregistreerde acties via e-mail naar
 log_emailnone=Niet verzenden
 log_inmodsemail=Stuur e-mail voor acties in
+
 ui_nice_size_type=Gebruik binaire maateenheden (KiB, MiB, GiB in plaats van KB, MB, GB)
+
 mods_checksig=Controleer het handtekeningbestand voor gedownloade modules?
+
 os_usermin=Update ook Usermin OS
+
 ssl_deny=Te weigeren SSL-protocolversies
 ssl_compression=Gecomprimeerde SSL-verbindingen toestaan?
 ssl_honorcipherorder=Gebruik van door de server gedefinieerde codeervolgorde forceren?
@@ -23,6 +29,7 @@ ssl_tablets=Laten we coderen
 ssl_letsdesc=Let's Encrypt is een gratis, geautomatiseerde en open certificaatautoriteit die kan worden gebruikt om een SSL-certificaat te genereren voor gebruik door Webmin.
 ssl_letserr=Helaas kan Let's Encrypt niet op uw systeem worden gebruikt: $1.
 ssl_letserr2=U kunt ook de pagina <a href='$1'>moduleconfiguratie</a> controleren om te controleren of u het juiste pad gebruikt naar de opdracht <tt>letsencrypt</tt>.
+
 ssl_letsdesc2=Deze pagina kan worden gebruikt om een nieuw certificaat aan te vragen, dat een ander certificaat overschrijft dat momenteel in Webmin is geconfigureerd. De Let's Encrypt-service vereist echter dat uw eigendom van het certificaatdomein wordt gevalideerd door te controleren of dit systeem de website voor het domein host. Dit doet u door een klein tijdelijk bestand in de documentenmap van de website te plaatsen.
 ssl_letsheader=Opties voor nieuw SSL-certificaat
 ssl_letsdoms=Hostnamen voor certificaat
@@ -39,13 +46,18 @@ ssl_letsnotrenew=Alleen handmatig vernieuwen
 ssl_staging=Laten we de server versleutelen
 ssl_staging0=echt
 ssl_staging1=Staging (alleen test)
+
 newkey_ecns=Geen servernamen ingevoerd
+
 upgrade_eportage=De upgrade-functie van Webmin werkt momenteel niet wanneer u hebt geïnstalleerd vanuit een Portage-pakket. Voer in plaats daarvan een upgrade uit met de Portage-tools.
 upgrade_src=Webmin upgraden van
 upgrade_opts=Upgrade opties
+
 update_src=Modules upgraden van
 update_opts=Module update opties
+
 ca_alt=Aanvullende domeinen
+
 session_ptimeout=Time-outs voor wachtwoorden
 session_pblock=Mislukte inlogblokken
 session_syslog3=Logboekfouten in <tt>syslog</tt>?
@@ -60,7 +72,9 @@ session_banner=Pre-login banner
 session_md5=Webmin wachtwoord hashing-formaat
 session_sha512=Gebruik SHA512-codering
 session_esha512mod=SHA512-codering kan niet worden gebruikt, omdat de module Perl $1 niet is geïnstalleerd.
+
 categories_custom=Op maat
+
 log_twofactor=Twee-factor authenticatie-opties gewijzigd
 log_delete_webmincron=Geplande $1 geplande functies verwijderd
 log_run_webmincron=Ran $1 geplande functies
@@ -69,9 +83,12 @@ log_onedelete_webmincron=Geplande functie verwijderd in module $1
 log_letsencrypt=Gevraagd nieuw SSL-certificaat van Let's Encrypt
 log_letsencryptdns=Gemaakt Laten we DNS-record coderen voor $1
 log_letsencryptcleanup=Verwijderd Laten we DNS-record coderen voor $1
+
 referers_none2=WAARSCHUWING: Dit stelt uw systeem open voor XSS-aanvallen!
+
 ipkey_ips2=Voor IP-adressen en hostnamen
 ipkey_eip2='$1' is geen geldig IP-adres of hostnaam
+
 advanced_redir=URL-indeling voor omleidingen
 advanced_redir1=Alleen pad
 advanced_redir0=Protocol, host, poort en pad
@@ -79,11 +96,14 @@ advanced_listdir=Lijst met mappen zonder indexbestand?
 advanced_headers=Extra HTTP-headers
 advanced_eheader=Kopteksten moeten worden opgemaakt zoals <tt>Koptekst: waarde</tt>
 advanced_sortconfigs=Configuratiebestanden opslaan gesorteerd op sleutels?
+
 notif_reboot=Recente pakketupdates (zoals een nieuwe kernelversie) vereisen een herstart om volledig te worden toegepast.
 notif_rebootok=Herstart nu
+
 status_units=Eenheden voor temperaturen
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+
 sendmail_port=SMTP-poort
 sendmail_portdef=Gebruik standaardpoort
 sendmail_portsel=Gebruik poortnummer
@@ -103,12 +123,14 @@ sendmail_url=Webmin-URL voor gebruik in e-mail
 sendmail_url_def=Standaard ($1)
 sendmail_url_custom=Eigen URL
 sendmail_eurl=Ontbrekende of ongeldige aangepaste URL
+
 testmail_title=Stuur test e-mail
 testmail_err=Verzenden van testbericht mislukt
 testmail_eto=Geen bestemmingsadres ingevoerd
 testmail_sending=Bericht verzenden van $1 naar $2 ..
 testmail_done=.. bericht verzonden. Controleer de mailbox van het bestemmingsadres om te controleren of het daadwerkelijk is afgeleverd.
 testmail_failed=.. verzenden mislukt : $1
+
 webmincron_title=Geplande Webmin-functies
 webmincron_emodule=De Webmin Cron Jobs-module is niet geïnstalleerd!
 webmincron_module=Webmin-module
@@ -132,6 +154,7 @@ webmincron_when1=Specifieke tijden
 webmincron_secs=seconden
 webmincron_err=Kan de geplande functie niet opslaan
 webmincron_einterval=Interval moet een aantal seconden groter dan nul zijn
+
 twofactor_title=Twee-factor authenticatie
 twofactor_header=Twee-factor authenticatie-opties
 twofactor_provider=Authenticatie provider
@@ -170,6 +193,7 @@ twofactor_secret1=Willekeurig gegenereerd
 twofactor_secret0=Gebruik een sleutel van 16 tekens
 twofactor_esecret=De geheime sleutel moet exact 16 tekens lang zijn en mag alleen letters en cijfers bevatten
 twofactor_esession=Tweefactorauthenticatie kan niet worden gebruikt tenzij op sessie gebaseerde authenticatie actief is
+
 letsencrypt_title=Laten we het certificaatverzoek coderen
 letsencrypt_err=Aanvraag certificaat mislukt
 letsencrypt_ecmds=Noch de opdracht Let's Encrypt client <tt>certbot</tt> of de opdracht <tt>python</tt> zijn op uw systeem gevonden
@@ -203,5 +227,6 @@ letsencrypt_ecsr=Kan CSR niet genereren : $1
 letsencrypt_ekeygen=Kan privésleutel niet genereren : $1
 letsencrypt_enative=De native Let's Encrypt-client (certbot) werd eerder op dit systeem gebruikt en moet worden gebruikt voor alle toekomstige certificaataanvragen
 letsencrypt_eacmedns=Alleen de officiële Let's Encrypt-client ondersteunt DNS-validatie
+
 announce_hide=Deze aankondiging verbergen
 alert_hide=Melding verbergen

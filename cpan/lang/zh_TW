@@ -14,6 +14,7 @@ index_ftp=從 ftp 或 http 網址
 index_installok=安裝
 index_return=模組清單
 index_pversion=Perl版本$1
+
 download_err=安裝模組失敗
 download_elocal=沒有選擇本地檔案
 download_elocal2=檔案'$1' 不存在
@@ -46,6 +47,7 @@ download_emodname=沒有輸入要安裝模組
 download_need=尋找遺失的預載檔案
 download_missing=無效的$1模組
 download_nomissing=所有安裝的
+
 install_title=安裝模組
 install_untar=解開tar檔模組中
 install_make=編譯模組中
@@ -65,11 +67,13 @@ install_err2=您也可以從CPAN用指令$1來安裝模組
 install_exec=執行 $1 ..
 install_efile=模組檔案 $1並不存在
 install_needunlink=您可以嘗試回到上一頁選取不同選項再安裝一次，不然<a href='$1'>按這刪除暫存檔</a>節省磁碟空間。
+
 cpan_sel=模組在 $1之下 ..
 cpan_title=選取Perl 模組
 cpan_search=找尋模組名稱叫做
 cpan_match=模組符合 $1 ..
 cpan_none=沒有符合的
+
 edit_title=模組內容
 edit_header=模組資訊
 edit_mod=模組名稱
@@ -82,8 +86,10 @@ edit_none=無可用的
 edit_return=模組內容
 edit_uninstall=解除安裝模組和子模組
 edit_upgrade=從CPAN升級模組
+
 uninstall_title=解除安裝模組
 uninstall_rusure=您確定現在要解除安裝Perl模組$1 ? 下列檔案將會移除：
 uninstall_rusure2=您確定要解除安裝Perl $1與其子模組$2?<br>下列檔案將會刪除:
 uninstall_ok=現在解除安裝
+
 delete_efile=錯誤的套件檔!

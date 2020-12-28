@@ -8,6 +8,7 @@ index_none=Inga startalternativ har definierats. Se till att du lägger till min
 index_efile=GRUB-menyfilen $1 hittades inte på ditt system. Kanske är GRUB inte installerad, eller <a href='$2'>modulkonfiguration</a> är felaktig.
 index_epath=GRUB-körbara $1 hittades inte på ditt system. Kanske är GRUB inte installerad, eller <a href='$2'>modulkonfiguration</a> är felaktig.
 index_return=alternativlista
+
 title_add=Lägg till startalternativ
 title_edit=Redigera startalternativ
 title_header=Detaljer om Boot-menyalternativet
@@ -36,6 +37,7 @@ title_echain=Saknad eller ogiltig chainloader-fil
 title_edev=Ostödd rootpartitionsenhet $1 
 title_einitrd=Det ursprungliga filnamnet för ramdisk saknas
 title_lock=Lösenord låst?
+
 global_title=Globala alternativ
 global_header=Globala startmenyalternativ
 global_default=Standard startalternativ
@@ -56,12 +58,14 @@ global_edev=Ostödd installationsdisk/partition $1
 global_eother=Saknas eller ogiltig disk/partition
 global_epassword=Saknar eller ogiltigt startlösenord
 global_epasswordfile=Saknar menyn filnamn
+
 install_title=Installera GRUB
 install_err=Det gick inte att installera GRUB
 install_efind=Det gick inte att hitta menyfilen
 install_desc=Installera GRUB på $1 med kommandon $2 och $3.
 install_ok=.. installera komplett.
 install_failed=.. installation misslyckades!
+
 log_create_title=Skapat startalternativ $1 
 log_delete_title=Raderat startalternativ $1 
 log_modify_title=Modifierat startalternativ $1 

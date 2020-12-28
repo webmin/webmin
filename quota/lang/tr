@@ -1,4 +1,5 @@
 quota_unlimited=Limitsiz
+
 acl_fss=Düzenleyebileceği dosya sistemleri
 acl_fall=Bütün dosya sistemleri
 acl_fsel=Seçililer..
@@ -23,9 +24,11 @@ acl_maxblocks=Maksimum izin verebileceği blok kotası
 acl_maxfiles=Maksimum izin verebileceği dosya kotası
 acl_unlimited=Limitsiz
 acl_email=Eposta bildirilerini düzenleyebilir mi?
+
 activate_eallow=Bu dosya sistemindeki kotaları açıp kapamak için izininiz yoktur
 activate_eon=Kotaların aktif hale getirilmesinde hata oluştu
 activate_eoff=Kotaların kapatılmasında hata oluştu
+
 check_title=Kotaları kontrol et
 check_return=$1 listesi
 check_ecannot=Bu dosya sistemindeki kotaları kontrol ettiremezsiniz
@@ -33,11 +36,13 @@ check_running=<tt>quotacheck</tt> komutu şimdi <tt>$1</tt>'deki dosya ve blok k
 check_done=... Tamamlandı.
 check_rgroup=grup
 check_ruser=kullanıcı
+
 cgroup_efail=Kotaların kopyalanmasında hata oluştu
 cgroup_ecannot=Kotaları kopyalayamazsınız
 cgroup_egallow=Bu grubun kotalarını kopyalamak için izininiz yoktur
 cgroup_enogroup=Kopyalanacak grup yok
 cgroup_eallowto='$1''e kotaları kopyalamak için izininiz yoktur
+
 cgform_title=Kotaları Kopyala
 cgform_return=grup kotası
 cgform_ecannot=Kotaları kopyalayamazsınız
@@ -47,11 +52,13 @@ cgform_all=Sistemdeki bütün gruplar
 cgform_select=Seçili gruplar
 cgform_contain=Bu kullanıcıları içeren gruplar
 cgform_doit=Kopyala
+
 cuser_efail=Kotaların kopyalanmasında hata oluştu
 cuser_ecannot=Kotaları kopyalayamazsınız
 cuser_euallow=Bu kullanıcının kotalarını kopyalamak için izininiz yoktur
 cuser_enouser=Kopyalanacak kullanıcı yok
 cuser_eallowto='$1'e kotaları kopyalamak için izininiz yoktur
+
 cuform_title=Kotaları Kopyala
 cuform_return=kullanıcı kotası
 cuform_ecannot=Kotaları kopyalayamazsınız
@@ -61,6 +68,7 @@ cuform_all=Sistemdeki bütün kullanıcılar
 cuform_select=Seçili kullanıcılar
 cuform_members=Seçili grubun üyeleri
 cuform_doit=Kopyala
+
 egroup_title=Kota Düzenle
 egroup_freturn=dosya sistemi listesi
 egroup_greturn=grup listesi
@@ -78,6 +86,7 @@ egroup_sflimit=Soft Dosya Limiti
 egroup_hflimit=Hard Dosya Limiti
 egroup_update=Güncelle
 egroup_listall=Bütün kotaları listele
+
 euser_title=Kota Düzenle
 euser_freturn=dosya sistemi listesi
 euser_ureturn=kullanıcı listesi
@@ -99,6 +108,7 @@ euser_sflimit=Soft Dosya Limiti
 euser_hflimit=Hard Dosya Limiti
 euser_update=Güncelle
 euser_listall=Bütün Kotaları Listele
+
 gfilesys_title=Grup Kotaları
 gfilesys_return=dosya sistemi listesi
 gfilesys_ecannot='$1' için kotaları düzenleyemezsiniz
@@ -114,6 +124,7 @@ gfilesys_hard=Hard Limit
 gfilesys_nogquota=<tt>$1</tt> grubu herhangi bir dosya sisteminde kotaya sahip değil
 gfilesys_edit=Kota Düzenle:
 gfilesys_copy=Kotaları Kopyala
+
 ggracef_title=Gecikme Zamanları
 ggracef_return=grup listesi
 ggracef_ecannot=Bu dosya sistemindeki gecikme zamanlarını düzenleyemezsiniz.
@@ -122,9 +133,11 @@ ggracef_graces=<tt>$1</tt> için Grup Gecikme Zamanları
 ggracef_block=Blok kotası için
 ggracef_file=Dosya kotası için
 ggracef_update=Güncelle
+
 ggraces_esave=Gecikme zamanlarının kaydedilmesinde hata oluştu
 ggraces_eedit=Bu dosya sistemindeki gecikme zamanlarını düzenleyemezsiniz
 ggraces_enumber='$1' bir numara değildir
+
 index_quser=Kullanıcı Kotaları
 index_qgroup=Grup Kotaları
 index_qboth=Kullanıcı ve Grup Kotaları
@@ -144,6 +157,7 @@ index_euser=Kullanıcı Kotalarını Düzenle:
 index_egroup=Grup Kotalarını Düzenle:
 index_nosupport=Yerel dosya sisteminde desteklenen kota yok
 index_mountmod=<a href='$1'>Disk ve Ağ Dosyasistemleri</a> modülü ile bir dosya sisteminde kotaları aktif hale getirebilirsiniz
+
 lgroups_failed=Grupların listelenmesinde hata oluştu
 lgroups_eallow=Bu dosya sisteminde kotaları düzenlemek için izininiz yoktur
 lgroups_title=Dosya sistemi kotaları
@@ -164,13 +178,17 @@ lgroups_grace=Gecikme Zamanlarını Düzenle
 lgroups_check=Kotaları Kontrol Et
 lgroups_info=Webmin yeni bir Unix grubu oluşturulduğunda bu dosya sistemindeki kotalarını otomatik olarak belirlemek için yapılandırıldı. Bu özellik sadece $1 Webmin modülü ile grup eklendiğinde çalışacaktır.
 lgroups_newgroup=Yeni Grup Kotaları
+
 sgroup_egroup=Bu grubun kotaları değiştirmek için izininiz yoktur
 sgroup_efs=Bu dosya sistemindeki kotaları değiştirmek için izininiz yoktur.
+
 ssync_ecannot=Bu dosya sisteminde öntanımlı kotayı belirleyemezsiniz
+
 suser_euser=Bu kullanıcının kotalarını değiştirmek için izininiz yoktur
 suser_efs=Bu dosya sistemindeki kotaları değiştirmek için izininiz yoktur.
 suser_emaxblocks=$1 'in üzerinde blok limiti belirleyemezsiniz
 suser_emaxfiles=$1 'in üzerinde dosya limiti belirleyemezsiniz
+
 ufilesys_title=Kullanıcı Kotaları
 ufilesys_return=dosya sistemleri listesi
 ufilesys_ecannot='$1' için kotaları düzenleyemezsiniz
@@ -187,6 +205,7 @@ ufilesys_nouquota=<tt>$1</tt> kullanıcısı bu dosya sisteminde herhangi bir ko
 ufilesys_edit=Buradaki Kotaları Düzenle:
 ufilesys_copy=Kotaları Kopyala
 ufilesys_grace=Gecikme süresi
+
 ugracef_title=Gecikme Zamanları
 ugracef_return=kullanıcı listesi
 ugracef_ecannot=Bu dosya sistemindeki gecikme sürelerini değiştiremezsiniz
@@ -195,9 +214,11 @@ ugracef_graces=<tt>$1</tt> için Kullanıcı Gecikme Süreleri
 ugracef_block=Blok kotaları için
 ugracef_file=Dosya kotaları için
 ugracef_update=Güncelle
+
 ugraces_esave=Gecikme sürelerinin kaydedilmesinde hata oluştu
 ugraces_eedit=Bu dosya sistemindeki gecikme sürelerini değiştiremezsiniz
 ugraces_enumber='$1' bir sayı değildir
+
 lusers_failed=Kullanıcıların listelenmesinde hata oluştu
 lusers_eallow=Bu dosya sistemindeki kotaları düzenlemek için izininiz yoktur
 lusers_title=Dosya sistemi kotaları
@@ -234,12 +255,14 @@ lusers_hours=saat
 lusers_ltype=Limit tipi
 lusers_percent=Kullanım oranına ulaştığında uyar
 lusers_domain=Kullanıcı adresleri için alan adı
+
 grace_seconds=Saniye
 grace_minutes=Dakika
 grace_hours=Saat
 grace_days=Gün
 grace_weeks=Hafta
 grace_months=Ay
+
 log_activate_u=$1'de kullanıcı kotaları aktif hale getirildi
 log_activate_g=$1'de grup kotaları aktif hale getirildi
 log_activate_ug=$1'de kullanıcı ve grup kotaları aktif hale getirildi
@@ -254,6 +277,7 @@ log_grace_g=$1'de grup gecikme zamanları değiştirildi
 log_check=$1'de kotalar kontrol edildi
 log_copy_u=Kullanıcı $1'in kotaları kopyalandı
 log_copy_g=Grup $1'in kotaları kopyalandı
+
 email_err=Eposta seçeneklerinin kaydedilmesinde hata oluştu
 email_ecannot=Eposta seçeneklerini değiştirmek için izininiz yoktur
 email_einterval=Eksik ya da geçersiz aralık

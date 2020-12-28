@@ -11,10 +11,12 @@ index_boot=¿Iniciar en arranque?
 index_bootdesc=Cambie esta configuración para habilitar o deshabilitar el inicio del servidor Dovecot durante el arranque del sistema.
 index_return=índice del módulo
 index_version=Versión $1
+
 stop_err=Fallo al parar Dovecot
 stop_erunning=Ya no está en ejecución
 start_err=Fallo al lanzar Dovecot
 apply_err=Fallo al aplicar configuración
+
 net_title=Red y Protocolos
 net_header=Opciones de red y protocolo de correo de Dovecot
 net_protocols=Protocolos de entrega de correo
@@ -36,8 +38,11 @@ net_eimap_listen=Dirección IP para conexiones IMAP no válida
 net_epop3_listen=Dirección IP para conexiones POP3 no válida
 net_eimaps_listen=Dirección IP para conexiones SSL IMAP no válida
 net_epop3s_listen=Dirección IP para conexiones SSL POP3 no válida
+
 imap_title=Opciones IMAP
+
 pop3_title=Opciones POP3
+
 ssl_title=Configuración SSL
 ssl_header=Opciones de modo SSL de IMAP y POP3
 ssl_key=Archivo de clave privada SSL
@@ -50,7 +55,9 @@ ssl_err=Fallo al salvar configuración SSL
 ssl_ekey=Archivo de clave privada falta o no existe
 ssl_ecert=Archivo de certificado falta o no existe
 ssl_eregen=Intervalo de regeneración de parámetro falta o no es numérico
+
 misc_title=Otras Opciones
+
 login_title=Opciones de Usuario y Login
 login_header=Opciones de autenticación de usuario y de login
 login_fuid=Mínimo UID válido
@@ -93,6 +100,7 @@ login_ehome=Falta directorio home
 login_eldap=Archivo de configuración de LDAP falta o no existe
 login_epgsql=Archivo de configuración de PostgresSQL falta o no existe
 login_eppam=Servicio PAM falta o no válido
+
 mail_title=Archivos de Correo
 mail_header=Opciones de lectura y localización de correo
 mail_env=Localización de archivo de correo
@@ -114,6 +122,7 @@ mail_eenv=Localización de correo falta o parece no válida
 mail_echeck=Número de segundos entre chequeos falta o es no numérico
 mail_eidle=Número de segundos entre chequeos cuando está en reposo (idle) falta o no numérico
 mail_eumask=Máscara octas de cuatro dígitos falta o no es válida
+
 log_net=Cambiados Parámetros y Protocolos de Red
 log_login=Cambiadas Opciones de Usuario y Login
 log_mail=Cambiados Archivos de Correo

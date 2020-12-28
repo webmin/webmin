@@ -21,6 +21,7 @@ index_thost=主機名
 index_tdesc=描述
 index_tcount=配套
 index_ttype=操作系統類型
+
 install_err=無法安裝軟件包
 install_elocal=沒有提供本地文件
 install_elocal2=“$1”不存在
@@ -37,6 +38,7 @@ install_ok=安裝
 install_erus=該服務器使用與主服務器不同的更新系統（$1與 $2）
 install_eupdate=安裝指定的更新時發生錯誤
 install_ealready=版本 $1已安裝
+
 add_title=添加服務器
 add_msg=正在添加 $1 ..
 add_gmsg=將服務器添加到組 $1 ..
@@ -45,6 +47,7 @@ add_gerr=添加群組失敗
 add_echeck=服務器 $1沒有軟件包模塊
 add_esystem=服務器 $1使用的機器與該計算機的軟件包系統不同
 add_ok=已向 $1添加了 $2軟件包。
+
 search_title=套餐搜索
 search_nomatch=沒有與 $1相符的軟件包
 search_none=沒有
@@ -56,6 +59,7 @@ search_return=搜索結果
 search_delete=從以下位置卸載選定的軟件包：
 search_selall=全選
 search_invert=反轉選擇
+
 host_title=受管服務器
 host_header=軟件管理的服務器詳細信息
 host_name=主機名
@@ -70,6 +74,7 @@ host_count=已安裝套件
 host_os=Webmin的操作系統
 host_return=服務器詳細信息
 host_system=包裝系統
+
 edit_title=編輯包
 edit_details=來自 $1的軟件包詳細信息
 edit_desc=描述
@@ -88,6 +93,7 @@ edit_all=&lt;所有主機&gt;
 edit_donthave=&lt;沒有主機的主機&gt;
 edit_have=&lt;擁有它的主機&gt;
 edit_group=$1的成員
+
 list_title=打包文件
 list_files=$2上的軟件包 $1的文件
 list_path=路徑
@@ -97,6 +103,7 @@ list_type=類型
 list_size=尺寸
 list_status=狀態
 list_ok=好
+
 refresh_title=刷新包裝清單
 refresh_header=從所有服務器重新請求軟件包列表。
 refresh_header4=從 $2的成員重新請求軟件包列表。
@@ -108,6 +115,7 @@ refresh_4=刷新 $1（無更改）
 refresh_done=..完成
 refresh_del=已從服務器列表中刪除 $1
 refresh_failed=無法刷新 $1 : $2
+
 delete_err=無法刪除軟件包 $1
 delete_epack=軟件包 $1不存在
 delete_title=刪除包裹
@@ -120,6 +128,7 @@ delete_error=無法從 $1刪除： $2
 delete_success=已從 $1刪除。
 delete_done=..完成
 delete_header=刪除軟件包 $1 ..
+
 do_title=安裝套件
 do_header=在所有主機上安裝 $1 ..
 do_header3=在尚未安裝 $1的主機上安裝 ..
@@ -140,6 +149,7 @@ do_arch=建築
 do_inst=已安裝
 do_none=沒有
 do_edeleted=安裝文件已刪除-返回模塊索引，然後重試。
+
 compare_title=比較套餐
 compare_desc=該表格可用於比較安裝在兩個或更多服務器上的軟件包，並查找可用版本或軟件包之間的任何差異。
 compare_hosts=服務器比較
@@ -154,6 +164,7 @@ compare_showall=套餐展示
 compare_showall1=所有
 compare_showall0=只有不匹配
 compare_got=好
+
 deletes_err=無法刪除軟件包
 deletes_enone=未選擇包
 deletes_title=刪除包裹

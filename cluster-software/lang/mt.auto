@@ -21,6 +21,7 @@ index_thost=L-isem tal-host
 index_tdesc=Deskrizzjoni
 index_tcount=Pakketti
 index_ttype=Tip ta ’sistema operattiva
+
 install_err=Ma rnexxielux jinstalla l-pakkett
 install_elocal=L-ebda fajl lokali mogħti
 install_elocal2="$1" ma jeżistix
@@ -37,6 +38,7 @@ install_ok=Installa
 install_erus=Dan is-server juża sistema ta ’aġġornament differenti għas-server kaptan ($1 kontra $2)
 install_eupdate=Sar żball fl-installazzjoni tal-aġġornamenti speċifikati
 install_ealready=Il-verżjoni $1 hija diġà installata
+
 add_title=Żid is-Servers
 add_msg=Żieda ta ' $1 ..
 add_gmsg=Żieda ta 'servers fil-grupp $1 ..
@@ -45,6 +47,7 @@ add_gerr=Naqset milli żżid grupp
 add_echeck=Server $1 m'għandux il-modulu tal-pakketti tas-softwer
 add_esystem=Is-server $1 mhux qed juża l-istess sistema ta ’pakkett bħal din il-magna
 add_ok=Miżjud $1 ma 'pakketti $2.
+
 search_title=Fittex Pakkett
 search_nomatch=L-ebda pakketti ma jaqblu ma ' $1 
 search_none=Xejn
@@ -56,6 +59,7 @@ search_return=riżultati tat-tfittxija
 search_delete=Uninstall Pakketti Magħżula minn:
 search_selall=Agħżel kollox
 search_invert=Inverti l-għażla
+
 host_title=Server Immexxi
 host_header=Dettalji tas-server ġestiti b’software
 host_name=L-isem tal-host
@@ -70,6 +74,7 @@ host_count=Pakketti installati
 host_os=OS minn Webmin
 host_return=dettalji tas-server
 host_system=Pakkett tas-sistema
+
 edit_title=Editja Pakkett
 edit_details=Dettalji tal-Pakkett minn $1 
 edit_desc=Deskrizzjoni
@@ -88,6 +93,7 @@ edit_all=&lt;l-ospiti kollha&gt;
 edit_donthave=&lt;ospiti li m'għandhomx&gt;
 edit_have=&lt;ospiti li għandhom dan&gt;
 edit_group=Membri ta ' $1 
+
 list_title=Fajls tal-Pakkett
 list_files=Fajls għall-Pakkett $1 fuq $2 
 list_path=Triq
@@ -97,6 +103,7 @@ list_type=Tip
 list_size=Daqs
 list_status=Status
 list_ok=kollox sew
+
 refresh_title=Aġġorna l-Listi tal-Pakketti
 refresh_header=Li titlob mill-ġdid il-listi tal-pakketti mis-servers kollha ..
 refresh_header4=Li jerġgħu jitolbu listi tal-pakketti minn membri ta ' $2 ..
@@ -108,6 +115,7 @@ refresh_4=$1 aġġornat (l-ebda tibdil)
 refresh_done=.. sar
 refresh_del=Tneħħa $1 mil-lista tas-server
 refresh_failed=Naqset milli tiffriska $1 : $2 
+
 delete_err=Ma rnexxielux jitħassar il-pakkett $1 
 delete_epack=Il-pakkett $1 ma jeżistix
 delete_title=Ħassar il-Pakkett
@@ -120,6 +128,7 @@ delete_error=Ma rnexxielux jitħassar minn $1 : $2
 delete_success=Imħassar minn $1.
 delete_done=.. sar
 delete_header=Tħassar il-pakkett $1 ..
+
 do_title=Installa l-Pakkett
 do_header=Installazzjoni ta ' $1 fuq l-ospiti kollha ..
 do_header3=Installazzjoni ta ' $1 fuq ospiti li għadhom mhumiex.
@@ -140,6 +149,7 @@ do_arch=Arkitettura
 do_inst=Installat
 do_none=Xejn
 do_edeleted=Fajl Installa ġie mħassar - terġa 'lura għall-indiċi tal-modulu u erġa' pprova.
+
 compare_title=Qabbel il-Pakketti
 compare_desc=Din il-formola tista 'tintuża biex tqabbel il-pakketti installati fuq żewġ servers jew aktar, u ssib xi diskrepanzi bejn il-verżjonijiet jew il-pakketti disponibbli.
 compare_hosts=Servers li jqabblu
@@ -154,6 +164,7 @@ compare_showall=Pakketti li juru
 compare_showall1=Kollha
 compare_showall0=Nuqqasijiet ta ’qbil
 compare_got=kollox sew
+
 deletes_err=Naqset milli tħassar il-pakketti
 deletes_enone=L-ebda pakketti magħżula
 deletes_title=Ħassar il-Pakketti

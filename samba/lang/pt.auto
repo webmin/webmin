@@ -6,6 +6,7 @@ index_printershare=compartilhamento de impressora
 index_shareconf=compartilhar configuração
 index_version=Versão do Samba $1 
 index_samba=Samba
+
 index_sharename=Nome da parte
 index_path=Caminho
 index_security=Segurança
@@ -42,12 +43,14 @@ index_stopmsg=Clique neste botão para desligar os servidores Samba em execuçã
 index_stopmsg_wb=Clique neste botão para desligar os servidores Winbind em execução no seu sistema.
 index_einclude=Aviso - O arquivo de configuração do Samba $1 contém a diretiva $2 ou $3. Isso pode fazer com que o Webmin modifique o arquivo incorretamente.
 index_delete=Excluir compartilhamentos selecionados
+
 config_mins=Mins
 config_secs=Segundos
 config_bytes=Bytes
 config_never=Nunca
 config_all=Todos
 config_neither=Nem
+
 global_title=Configuração Global
 global_unixnetwork=Rede Unix
 global_winnetwork=Rede do Windows
@@ -60,6 +63,7 @@ global_password=Senhas criptografadas
 global_users=Usuários do Samba
 global_group=Grupos de Samba
 global_bind=Opções do Winbind
+
 error_nosamba=O executável do servidor Samba <tt>$1</tt> não foi encontrado. O Samba não está instalado no seu sistema ou sua <a href="$2">configuração do módulo</a> está incorreta.
 error_version=O Webmin falhou ao obter a versão do seu servidor Samba executável <tt>$1</tt>. Verifique sua <a href="$2">configuração do módulo</a> para garantir que este seja o caminho correto.
 error_config=O arquivo de configuração $1 não foi encontrado. Provavelmente, o Samba não está instalado no seu sistema ou sua <a href="$2">configuração do módulo</a> está incorreta.
@@ -67,6 +71,7 @@ error_include=O Webmin não pode manipular arquivos de configuração do Samba q
 error_delshare=Falha ao excluir o compartilhamento
 error_delcopy=O compartilhamento '$1' copia deste compartilhamento
 error_savename=Falha ao salvar a nomeação de arquivo
+
 convert_title=Converter usuários
 convert_msg=Este formulário permite sincronizar a lista de usuários Unix e Samba. Quando o Samba está usando <a href=$1>senhas criptografadas</a>, uma lista separada de usuários e senhas é usada em vez da lista de usuários do sistema.
 convert_noconv=Não converta ou remova esses usuários:
@@ -83,6 +88,7 @@ convert_cannot=Usuários Unix não podem ser convertidos em usuários Samba
 convert_who=Usuários Unix para converter
 convert_who0=Somente usuários listados ou intervalos de UID
 convert_who1=Todos, exceto usuários listados e intervalos de UID
+
 misc_title=Opções diversas
 misc_debug=Nível de depuração
 misc_cachecall=Armazenar em cache <tt>getwd ()</tt> chamadas?
@@ -96,6 +102,7 @@ misc_chroot=Diretório <tt>chroot ()</tt>
 misc_smbrun=Caminho para <tt>smbrun</tt>
 misc_clienttime=Deslocamento de tempo do cliente
 misc_readprediction=Ler previsão?
+
 net_title=Opções de rede Unix
 net_idle=Tempo ocioso antes de desconectar
 net_trustlist=Arquivo de hosts/usuários confiáveis
@@ -111,6 +118,7 @@ net_maxpacket=Tamanho máximo do pacote
 net_listen=Ouvir no endereço
 net_ip=endereço de IP
 net_socket=Opções de soquete
+
 passwd_title=Opções de senha
 passwd_encrypt=Use senhas criptografadas?
 passwd_allownull=Permitir senhas nulas?
@@ -124,11 +132,13 @@ passwd_send=Mandar
 passwd_map=Mapeamento de nome de usuário
 passwd_unixuser=Usuários Unix
 passwd_winuser=Usuários do Windows
+
 print_title=Opções de impressão
 print_style=Estilo de impressão Unix
 print_show=Mostrar todas as impressoras?
 print_printcap=Arquivo Printcap
 print_cachetime=Tempo de cache do status da impressora
+
 smb_title=Opções de rede do Windows
 smb_workgroup=Grupo de trabalho
 smb_wins=Modo WINS
@@ -159,14 +169,17 @@ smb_nowhere=Lugar algum
 smb_fromlist=Da lista. ..
 smb_ip=Endereço de IP
 smb_asworkgroup=<b>Como grupo de trabalho</b> (opcional)
+
 create_title=Criar cópia
 create_msg=Um compartilhamento de cópia herdará todos os seus valores padrão do compartilhamento que você escolher. Se o compartilhamento de origem for alterado, a cópia também será alterada.
 create_from=Compartilhar para copiar de:
 create_name=Novo nome de compartilhamento:
+
 smbuser_title=Usuários do Samba
 smbuser_list=Lista de Usuários do Samba
 smbuser_nouser=Nenhum usuário do Samba definido.
 smbuser_cannot=Usuários do Samba não podem ser listados
+
 euser_title=Editar usuário do Samba
 euser_name=Nome do usuário
 euser_uid=UID do Unix
@@ -185,6 +198,7 @@ euser_locked=A conta está bloqueada
 euser_nopwrequired=Nenhuma senha necessária
 euser_disable=Conta desativada
 euser_trust=Conta confiável da estação de trabalho
+
 fmisc_title=Padrões de arquivo diversos
 fmisc_for=Para compartilhar <tt>$1</tt>
 fmisc_lockfile=Bloquear arquivos?
@@ -202,6 +216,7 @@ fmisc_conncmd=Comando para executar na conexão
 fmisc_disconncmd=Comando para executar ao desconectar
 fmisc_rootconn=Comando para executar ao conectar <i>como root</i>
 fmisc_rootdisconn=Comando para executar ao desconectar <i>como root</i>
+
 fname_title1=Padrões de nomeação de arquivos
 fname_title2=Editar nomeação de arquivo
 fname_option=Opções de nomeação de arquivos
@@ -216,6 +231,7 @@ fname_hide=Ocultar arquivos de ponto?
 fname_archive=Salvar sinalizador de arquivo DOS?
 fname_hidden=Salvar sinalizador oculto do DOS?
 fname_system=Salvar sinalizador do sistema DOS?
+
 fperm_title1=Padrões de permissões de arquivo
 fperm_title2=Editar permissões de arquivo
 fperm_option=Opções de permissão de arquivo
@@ -228,6 +244,7 @@ fperm_link=Permitir links simbólicos fora do compartilhamento?
 fperm_delro=Pode excluir arquivos somente leitura?
 fperm_forcefile=Forçar modo de arquivo Unix
 fperm_forcedir=Forçar modo de diretório Unix
+
 share_title1=Padrões de compartilhamento de arquivo
 share_title2=Editar compartilhamento de arquivo
 share_title3=Criar compartilhamento de arquivo
@@ -251,6 +268,7 @@ share_naming=Nomeação de arquivo
 share_misc=Opções diversas
 share_samedesc1=Nota - essas configurações também afetam os padrões de todos os compartilhamentos de arquivos.
 share_samedesc2=Nota - essas configurações também afetam os padrões de todos os compartilhamentos da impressora.
+
 print_title1=Padrões das opções da impressora
 print_title2=Editar opções da impressora
 print_option=Opções da impressora
@@ -262,6 +280,7 @@ print_delete=Comando Excluir trabalho
 print_pause=Pausar comando do trabalho
 print_unresume=Reiniciar comando do trabalho
 print_driver=Driver de impressora
+
 pshare_title1=Padrões de compartilhamento de impressora
 pshare_title2=Editar compartilhamento de impressora
 pshare_title3=Criar compartilhamento de impressora
@@ -270,6 +289,7 @@ pshare_name=Compartilhar nome
 pshare_all=Todas as impressoras compartilham
 pshare_unixprn=Impressora Unix
 pshare_spool=Diretório de spool
+
 sec_index1=Padrões de segurança
 sec_index2=Editar segurança
 sec_writable=Gravável?
@@ -292,6 +312,7 @@ sec_rouser=Usuários somente leitura
 sec_rogroup=Grupos somente leitura
 sec_rwuser=Usuários de leitura/gravação
 sec_rwgroup=Grupos de leitura/gravação
+
 esync_title=Sincronização de Usuário
 esync_msg=O Webmin pode ser configurado para que as alterações na lista de usuários do Unix sejam automaticamente aplicadas à lista de usuários do Samba. Isso funcionará apenas quando o módulo <b>Usuários e grupos</b> Webmin for usado para adicionar, excluir ou alterar usuários.
 esync_add=Adicione um usuário Samba quando um usuário Unix for adicionado
@@ -303,6 +324,7 @@ esync_gid=SID ou RID do grupo para novos usuários
 esync_apply=Aplique
 esync_cannot=A sincronização do usuário não pode ser configurada
 esync_egid=SID ou RID do grupo ausente
+
 mkpass_title=Converter usuários
 mkpass_convfail=Falha ao converter usuário
 mkpass_msg=Convertendo usuários do Unix. ..
@@ -315,10 +337,12 @@ mkpass_passfail=Falha ao definir a senha
 mkpass_user=Nome do usuário
 mkpass_action=Medida tomada
 mkpass_skipcount=$1 usuários foram ignorados para conversão.
+
 savecopy_fail=Falha ao criar cópia
 savecopy_global=O nome 'global' não pode ser usado para um compartilhamento
 savecopy_exist=Já existe um compartilhamento chamado '$1'
 savecopy_ename=Nenhum nome de compartilhamento digitado
+
 saveuser_fail=Falha ao salvar o usuário
 saveuser_uid='$1' não é um UID Unix válido
 saveuser_colon=Nome real não pode conter o caractere :
@@ -326,10 +350,13 @@ saveuser_home=O diretório inicial '$1' não existe
 saveuser_shell=$1 não é um shell válido
 saveuser_pass=Falha ao alterar a senha usando smbpasswd : $1 
 saveuser_ews=A opção 'Conta confiável da estação de trabalho' não pode ser ativada para usuários existentes
+
 savefmisc_fail=Falha ao salvar opções diversas
 savefmisc_number='$1' não é um número válido de conexões
+
 savefperm_fail=Falha ao salvar permissões de arquivo
 savefperm_mode='$1' não é um modo de arquivo Unix válido
+
 savefshare_fail=Falha ao salvar o compartilhamento
 savefshare_nopath=Nenhum caminho indicado
 savefshare_exist=Já existe um compartilhamento chamado '$1'
@@ -339,6 +366,7 @@ savefshare_owner=Proprietário ausente ou inválido para o novo diretório
 savefshare_group=Grupo ausente ou inválido para o novo diretório
 savefshare_perms=Permissões ausentes ou inválidas para o novo diretório
 savefshare_emkdir=Falha ao criar o diretório : $1 
+
 savemisc_fail=Falha ao salvar opções
 savemisc_lockdir=O diretório que contém o diretório de bloqueio não existe
 savemisc_logdir=O diretório que contém o arquivo de log não existe
@@ -347,37 +375,48 @@ savemisc_overlap='$1' não é um tamanho de leitura sobreposto válido
 savemisc_chroot=O diretório chroot '$1' não existe
 savemisc_smbrun=O programa smbrun '$1' não existe ou não é executável
 savemisc_time='$1' não é um deslocamento válido
+
 savenet_fail=Falha ao salvar opções
 savenet_timeout='$1' não é um tempo limite de desconexão válido
 savenet_ip='$1' não é um byte IP válido
 savenet_keep='$1' não é um intervalo válido de permanência ativa
 savenet_maxxmit='$1' não é um tamanho máximo de pacote válido
+
 savepass_fail=Falha ao salvar opções
 savepass_nopass=Sua versão do Samba não suporta senhas criptografadas
 savepass_passwd=Nenhum programa de alteração de senha fornecido
 savepass_level='$1' não é uma diferença de maiúsculas e minúsculas válida para senha
 savepass_chat=A sequência de bate-papo de alteração de senha está vazia
+
 savepopts_fail=Falha ao salvar as opções da impressora
 savepopts_number=O espaço livre mínimo deve ser um número
+
 saveprint_fail=Falha ao salvar opções
 saveprint_printcap=O arquivo printcap '$1' não existe
 saveprint_cache='$1' não é um tempo de cache válido
+
 savepshare_fail=Falha ao salvar o compartilhamento da impressora
 savepshare_exist=Já existe um compartilhamento chamado '$1'
 savepshare_name='$1' não é um nome de compartilhamento válido
 savepshare_global=O nome 'global' não pode ser usado para um compartilhamento
+
 savesec_fail=Falha ao salvar a segurança
+
 savesmb_fail=Falha ao salvar opções
 savesmb_size='$1' não é um tamanho de disco válido
 savesmb_oslevel='$1' não é uma prioridade válida do navegador principal
 savesmb_server=Você deve inserir um servidor de senhas
+
 start_err=Falha ao iniciar os servidores Samba
 start_fail=$1 falhou
 start_err_wb=Falha ao iniciar servidores Winbind
+
 restart_err=Falha ao reiniciar os servidores Samba
 restart_err_wb=Falha ao reiniciar os servidores Winbind
+
 swats_fail=Falha ao salvar o nome de usuário
 swats_user=Nome de usuário SWAT ausente
+
 viewu_index=Usuários atuais
 viewu_list=Usuários atuais de $1 
 viewu_share=Compartilhar
@@ -394,6 +433,7 @@ viewu_ecmd=O programa de status do Samba $1 não parece estar instalado no seu s
 viewu_kill=Desconectar usuários selecionados
 viewu_enone=Nenhum usuário selecionado
 viewu_refresh=Atualizar a página.
+
 log_apply=Servidores Samba reiniciados
 log_apply_wb=Servidores Winbind reiniciados
 log_stop=Servidores Samba parados
@@ -435,6 +475,7 @@ log_modify_group=Grupo Samba modificado $1
 log_delete_group=Grupo de samba excluído $1 
 log_gsync=Sincronização de grupo Unix configurada
 log_manual=Arquivo de configuração editado manualmente $1 
+
 swat_title=Login SWAT
 swat_list=Login SWAT
 swat_msg1=Seu nome de usuário e senha SWAT atuais estão incorretos. Use o formulário abaixo para fazer login novamente.
@@ -446,6 +487,7 @@ swat_password=Senha
 swat_login=Conecte-se
 swat_clear=Claro
 swat_logout=Sair do SWAT
+
 eacl_aviol=Violação de controle de acesso
 eacl_np=Você não tem permissão para
 eacl_papply=reinicie este serviço
@@ -481,6 +523,7 @@ eacl_pafs=acessar este compartilhamento de arquivo
 eacl_paps=acessar este compartilhamento de impressora
 eacl_pcps=criar compartilhamento de impressora
 eacl_pcfs=criar compartilhamento de arquivo
+
 acl_apply=Pode aplicar alterações e interromper o Samba?
 acl_view_all_con=Pode visualizar todas as conexões?
 acl_kill_con=Pode remover conexões?
@@ -527,6 +570,7 @@ acl_maint_groups=Pode visualizar, editar e adicionar grupos?
 acl_maint_gsync=Pode manter a sincronização automática de grupos Unix para Samba?
 acl_winbind=Pode se vincular a domínios?
 acl_bind=Pode acessar as opções do winbind?
+
 groups_title=Grupos de Samba
 groups_name=Nome do grupo
 groups_unix=Grupo Unix
@@ -542,6 +586,7 @@ groups_return=lista de grupos
 groups_add=Adicione um novo grupo Samba.
 groups_ecannot=Você não tem permissão para visualizar ou editar grupos do Samba
 groups_cannot=Grupos de samba não podem ser listados
+
 gedit_title2=Editar grupo Samba
 gedit_title1=Criar grupo Samba
 gedit_header=Detalhes do grupo Samba
@@ -554,11 +599,13 @@ gedit_unix=Grupo Unix
 gedit_unixgr=Grupo ..
 gedit_none=Nenhum
 gedit_set=Listado ..
+
 gsave_err=Falha ao salvar o grupo
 gsave_eunix=Nome do grupo Unix ou GID ausente ou inválido
 gsave_ename=Nome do grupo ausente
 gsave_epriv=Privilégios de grupo ausentes
 gsave_elocal=Privilégios podem ser definidos apenas para grupos locais
+
 gsync_title=Sincronização de grupo
 gsync_msg=O Webmin pode ser configurado para que as alterações na lista de grupos do Unix sejam automaticamente aplicadas à lista de grupos do Samba. Isso funcionará apenas quando o módulo <b>Usuários e grupos</b> Webmin for usado para adicionar, excluir ou alterar grupos.
 gsync_add=Adicione um grupo Samba quando um grupo Unix for adicionado
@@ -569,10 +616,12 @@ gsync_type=Tipo de novos grupos
 gsync_priv=Privilégios para novos grupos (se local)
 gsync_ecannot=Você não tem permissão para configurar a sincronização de grupo
 gsync_cannot=A sincronização de grupo não pode ser configurada
+
 check_user1=$1 : senhas criptografadas não estão ativadas na página <a href='$2'>Autenticação</a>.
 check_user2=$1 : nem o arquivo de senha do Samba nem o caminho para o pdbedit estão definidos na página <a href='$2'>Configuração do módulo</a>.
 check_group1=$1 : Grupos são suportados apenas no Samba versão 3.
 check_group2=$1 : nem o caminho para os comandos smbgroupedit ou net está definido na página <a href='$2'>Configuração do módulo</a>.
+
 winbind_title=Vincular ao domínio
 winbind_ecannot=Você não tem permissão para vincular a domínios
 winbind_msg=Este formulário pode ser usado para vincular seu servidor Samba a um domínio do Windows, geralmente gerenciado por um servidor diferente.
@@ -588,6 +637,7 @@ winbind_edom=Nome de domínio ausente
 winbind_cmd=Vinculação ao domínio com o comando $1 ..
 winbind_failed=.. falhou! Veja a saída acima para o motivo.
 winbind_ok=.. completo.
+
 bind_title=Opções do Winbind
 bind_ecannot=Você não tem permissão para editar opções do winbind
 bind_header=Opções de associação de domínio do Windows
@@ -606,9 +656,11 @@ bind_erealm=Região Kerberos inválida
 bind_ecache=Tempo de cache ausente ou inválido
 bind_euid=Intervalo de UID inválido - deve ser como 20000-30000
 bind_egid=Intervalo GID inválido - deve ser como 20000-30000
+
 manual_title=Editar arquivo de configuração
 manual_desc=Editando o arquivo de configuração do Samba $1 ..
 manual_err=Falha ao salvar o arquivo de configuração
 manual_edata=Nada entrou!
+
 delete_err=Falha ao excluir compartilhamentos
 delete_enone=Nenhum selecionado

@@ -16,11 +16,14 @@ index_esame=Die Usermin-konfigurasiegids $1 wat op die <a href='$2'>modulekonfig
 index_eroot=Die Usermin-konfigurasiegids $1 bestaan, maar die programwortelmandjie $2 waarna dit verwys, doen dit nie! U moet Usermin met die hand aflaai en dit weer installeer.
 index_restart=Herbegin Usermin
 index_restartmsg=Klik op hierdie knoppie om die Usermin-bedienerproses weer te begin. Dit kan nodig wees as u Perl onlangs opgegradeer het.
+
 access_title=IP-toegangsbeheer
 access_desc=Die Usermin-bediener kan gekonfigureer word om slegs toegang tot sekere IP-adresse te weier of toe te laat deur hierdie vorm te gebruik. Gasheername (soos foo.bar.com) en IP-netwerke (soos 10.254.3.0 of 10.254.1.0/255.255.255.128 of 10.254.1.0/25 of 10.254.1.5-10.254.97.127) kan ook ingevoer word. U moet toegang tot u bediener tot betroubare adresse beperk, veral as dit vanaf die internet toeganklik is. Andersins, sal elkeen wat u wagwoord raai volledige beheer oor u stelsel hê.
+
 bind_title=Hawens en adresse
 bind_desc2=Hierdie vorm kan gebruik word om die poortnommer waarop Usermin luister te verander, of dit slegs op 'n enkele IP-adres op u stelsel te laat luister. U kan dit ook opstel om verbindings op verskeie poorte te aanvaar, of om op verskillende IP-adresse te luister. Let wel - u webblaaier sal u moontlik weer vra om aan te meld nadat u die hawe of die binding adres verander het.
 bind_erestart=Daar is 'n fout tydens die begin van Usermin met die nuwe adres- en poortinstellings : $1 
+
 mods_title=Usermin-modules
 umods_title=Usermin-modules
 mods_desc1=Usermin-modules kan na installasie bygevoeg word deur die vorm regs te gebruik. Modules word gewoonlik versprei in <tt>.wbm</tt> lêers, wat elk een of meer modules kan bevat. Modules kan ook vanaf RPM-lêers geïnstalleer word as dit deur u bestuurstelsel ondersteun word.
@@ -41,15 +44,18 @@ mods_desc3=Bestaande modules kan uit die vorm hieronder verwyder word. Sodra 'n 
 mods_delete=Vee modules uit
 mods_deleteok=Vee geselekteerde modules uit
 mods_desc4=Geïnstalleerde modules kan uitgevoer word as 'n wbm.gz-lêer met behulp van die onderstaande vorm. 'N Modulelêer kan dan geïnstalleer word op 'n ander stelsel met Usermin.
+
 os_title=Bedryfstelsel en omgewing
 os_desc3=Hierdie bladsy vertoon die bedryfstelsel wat deur Usermin op die installeringstyd bespeur is, en die stelsel wat tans opgespoor word. As dit van mekaar verskil, kan u kies om Usermin se OS-inligting by te werk, wat nodig mag wees as u onlangs opgegradeer het.
 os_desc2=U kan ook die soekpad wat Usermin gebruik tydens die bestuur van programme verander, en die gedeelde biblioteekkad na enige programme deurgaan.
 os_usermin=Bedryfstelsel volgens Usermin
 os_iusermin=Interne OS-kode wat deur Usermin gebruik word
 os_update=Werk Usermin op om die bespeurde OS te gebruik
+
 lang_title=Taal
 lang_title2=Usermin taal
 lang_intro=Op hierdie bladsy kan u kies watter taal Usermin sal gebruik om titels, aanwysings en boodskappe te vertoon
+
 session_title=verifikasie
 session_desc1=As dit aangeskakel is, beskerm wagwoordtye u Usermin-bediener teen aanvalle met brute krag-wagwoorde deur 'n voortdurende uitbreiding van die vertraging tussen elke mislukte aanmeldpoging vir dieselfde gebruiker by te voeg.
 session_desc2=As sessieverifikasie ingeskakel is, word Usermin se sessies deur elke gebruikers wat aangemeld is, nagesien, wat die gebruikers van die gebruikers kan laat outomaties afmeld. Let daarop dat die inskakeling of deaktivering van sessieverklaring alle gebruikers kan dwing om weer aan te meld.
@@ -73,6 +79,7 @@ session_blank=Vra gebruikers met 'n leë wagwoord om by die eerste aanmelding ee
 session_homedir=Skep ontbrekende tuisgidse na aanmelding?
 session_homedir_perms=Toestemmings vir nuwe gids
 session_ehomedir_perms=Ontbrekende of ongeldige toestemming vir die oktale tuisgids
+
 themes_title=Usermin-temas
 themes_desc=Temas beheer die voorkoms van die Usermin-gebruikerskoppelvlak, insluitend ikone, kleure, agtergronde en moontlik die uitleg van bladsye. Die keusevak hieronder kan gebruik word om een van die temas te kies wat op u stelsel geïnstalleer is, wat die standaard vir Usermin-gebruikers sal wees.
 themes_sel=Huidige tema :
@@ -101,7 +108,9 @@ themes_eirpm=RPM-installasie het misluk : $1
 themes_ok=Tema suksesvol verander.. met verwysing na die Webmin-indeksbladsy.
 themes_delete=Hierdie vorm kan gebruik word om een van die temas te verwyder wat op u stelsel geïnstalleer is en wat nie tans gebruik word nie.
 themes_delok=Tema om uit te vee :
+
 themes_desc4=Geïnstalleerde temas kan as 'n wbt.gz-lêer uitgevoer word deur die vorm hieronder te gebruik. 'N Temalêer kan dan geïnstalleer word op 'n ander stelsel wat Usermin gebruik.
+
 configs_ecannot=U mag nie hierdie module opstel nie
 configs_title=Usermin module konfigurasie
 configs_header=Opstelbare modules
@@ -115,8 +124,10 @@ configs_global=Globale modulekonfigurasie
 configs_globaldesc=Die instellings in hierdie vorm is van toepassing op alle gebruikers van die module, en stel gewoonlik opsies in verband met die programme en lêers wat dit gebruik.
 configs_user=Standaardgebruikervoorkeure
 configs_userdesc=Die instellings in hierdie vorm definieer die standaardinstellings vir voorkeure wat deur die gebruiker verander kan word vir hierdie module. Tensy u anders spesifiseer, kan dit deur individuele gebruikers te veel gebruik word.
+
 acl_title=Beskikbare modules
 acl_desc=Gebruik hierdie bladsy om te kies watter geïnstalleerde Usermin-modules sigbaar is vir gebruikers.
+
 ssl_title=SSL-kodering
 ssl_desc1=Die gasheer waarop Usermin werk, blyk die SSLeay Perl-module te hê. Hiermee ondersteun Usermin SSL-gekodeerde kommunikasie tussen u blaaier en die bediener. As gebruikers toegang tot u Usermin-bediener via die internet verkry, moet u beslis oorweeg om SSL te gebruik om te voorkom dat 'n aanvaller hul wagwoorde vaslê.
 ssl_desc2=Waarskuwing - skakel net SSL-ondersteuning aan as u 'n blaaier het wat SSL ondersteun, en daar is geen firewall wat <tt>https</tt> versoeke tussen u blaaier en die Usermin-gasheer blokkeer nie.
@@ -125,18 +136,23 @@ ssl_hole=Aangesien u tans die standaard Usermin SSL-sleutel gebruik waarop almal
 ssl_savekey=Met hierdie vorm kan u 'n SSL-privaat sleutel en sertifikaat van PEM-formaat oplaai wat u Usermin-bediener kan gebruik.
 ssl_copycert=Kopieer sertifikaat vanaf Webmin
 ssl_copycertdesc=Kopieer die SSL-sertifikaat, privaat sleutel, CA-sertifikaat en ander instellings wat Webmin gebruik.
+
 ca_email=E-pos adres
 ca_ou=Departement
 ca_o=organisasie
 ca_sp=staat
 ca_c=Landelike kode
+
 newkey_ok=Die volgende SSL-sleutel vir Usermin is suksesvol gegenereer.
+
 stop_err=Kon nie Usermin stop nie
 stop_ekill=Kon nie die proses doodmaak nie : $1 
 stop_efile=Al gestop
 stop_ecannot=U mag nie Usermin stop nie
+
 start_err=Kon nie Usermin begin nie
 start_ecannot=U mag nie Usermin begin nie
+
 users_title=Toegestane gebruikers en groepe
 users_desc=Usermin kan gekonfigureer word om te beperk watter unix gebruikers en groepe mag aanmeld met behulp van hierdie vorm. Om alle primêre lede van 'n unix-groep te spesifiseer, voer <tt>@groepnaam</tt> in die lys in.
 users_desc2=Om 'n reeks UID's te pas, voer <tt>start-end</tt>, <tt>start-</tt> of <tt>-end</tt> in die lys in.
@@ -150,10 +166,12 @@ users_euser='$1' is nie 'n geldige gebruikersnaam nie
 users_egroup='$1' is nie 'n geldige groepnaam nie
 users_shells=Weier gebruikers wie se skulpe nie in lêers is nie
 users_eshells=Ontbrekende of nie-bestaande skulpe lêer
+
 defacl_title=Opsies vir toegangsbeheer
 defacl_desc=Op hierdie bladsy kan u verskillende toegangsbeheeropsies instel wat van toepassing is op Usermin-modules en gebruikers. Hierdie opsies is soortgelyk aan dié in die Global ACL vir elke gebruiker in die Webmin Users-module.
 defacl_header=Toegangsbeheeropsies vir Usermin-gebruikers
 defacl_err=Kon nie toegangsbeheeropsies stoor nie
+
 install_err1=Kon nie die module vanaf $1 installeer nie
 install_efile=Lêer bestaan nie
 install_err2=Kon nie opgelaaide module installeer nie
@@ -180,6 +198,7 @@ install_erpm=Nie 'n Usermin-module of tema RPM nie
 install_eirpm=RPM-installasie het misluk : $1 
 install_cat=Onder kategorie $1.
 install_eneither=RPM bevat nie 'n usermin-module of -tema nie
+
 delete_err=Modules kon nie verwyder word nie
 delete_edep=Module $1 kan nie uitgevee word nie, aangesien die module $2 daarvan afhang
 delete_desc1=$1 (kloon van $2)
@@ -189,6 +208,7 @@ delete_msg=Die volgende modules is suksesvol uit u Usermin-installasie geskrap :
 delete_rusure=Is u seker dat u die module (s) $2 wil uitvee? $1 kB lêers sal vir ewig uitgevee word.
 delete_rusure2=Is u seker dat u die tema $2 wil uitvee? $1 kB lêers sal vir ewig uitgevee word.
 delete_enone=Geen modules gekies nie
+
 ui_title=Gebruikerskoppelvlak
 ui_desc=Met hierdie vorm kan u die gebruikerskoppelvlak-opsies wat deur alle Usermin-modules gebruik word, wysig.
 ui_header=Gebruikerskoppelvlak-opsies
@@ -230,6 +250,7 @@ ui_hnm1=Gasheernaam vanaf URL
 ui_hnm2=Domeinnaam vanaf URL
 ui_hnm3=Ander naam ..
 ui_tabs=Kategoriseer modules?
+
 upgrade_title=Opgradeer Usermin
 upgrade_title2=Installeer Usermin
 upgrade_desc=Met hierdie vorm kan u u volledige Usermin-installasie na 'n nuwe weergawe opgradeer. U kan vanaf 'n plaaslike lêer, 'n opgelaaide lêer of vanaf die nuutste weergawe installeer op <a href=http://www.usermin.com/>www.usermin.com</a>. Net soos met 'n handmatige opgradering, sal al u instellings en derdeparty-modules gehou word.
@@ -263,6 +284,7 @@ upgrade_done=.. opgradering voltooi.
 upgrade_failed=.. opgradering misluk!
 upgrade_updates=Daar is $1 opdaterings vir hierdie nuwe weergawe van Usermin. <a href='$2'>Klik hier</a> om dit outomaties af te laai en te installeer.
 upgrade_eupdates=Kon nie die lys van opdaterings aflaai nie : $1 
+
 update_desc1=Met hierdie vorm kan u Usermin-modules opgradeer wat gevind is dat dit foute of sekuriteitsgate bevat vanaf die <a href=http://www.usermin.com/uupdates.html>Usermin Updates</a> -bladsy of vanaf 'n ander bron. Dit sal die modules wat tans geïnstalleer is, vergelyk met dié wat beskikbaar is vir opdatering, en outomaties enige outomatiese modules aflaai en installeer.
 update_header1=Opdatering van modules nou
 update_header2=Opdateer modules op skedule
@@ -279,10 +301,12 @@ update_sched=Opdateer modules by $1 : 00 elke $2 dae
 update_none=Geen Usermin-opdaterings vir hierdie weergawe nie.
 update_failed=Kon nie module installeer : $1 
 update_desc2=Hierdie vorm is vir die skedulering van die outomatiese opdatering van Usermin-modules wat foute of sekuriteitsgate bevat vanaf die <a href=http://www.usermin.com/uupdates.html>Usermin Updates</a> -bladsy of vanaf 'n ander bron. Alhoewel hierdie diens nuttig is, moet u dit versigtig gebruik, want dit kan aanvallers in staat stel om u stelsel oor te neem as die opdateringsbediener ooit in die gedrang was.
+
 assignment_title=Modules herdeel
 assignment_header=Module-opdragte
 assignment_ok=Verander kategorieë
 assignment_desc=Met hierdie vorm kan u instel watter kategorie elke module op die Usermin-indeksbladsy vertoon.
+
 categories_title=Wysig kategorieë
 categories_header=Kategorie-ID en beskrywings
 categories_desc=Met hierdie vorm kan u die bestaande Usermin-kategorieë hernoem en nuwes skep om aan modules toe te ken. Die boonste deel van die tabel is om die beskrywings van die ingeboude kategorieë te verander, terwyl die onderste deel is om nuwe kategorie-ID's en -beskrywings by te voeg.
@@ -292,6 +316,7 @@ categories_edesc=Ontbrekende beskrywing vir $1
 categories_ecat=Kategorie ID $1 is reeds geneem
 categories_code=ID
 categories_name=Vertoon beskrywing
+
 log_access=Veranderde IP-toegangsbeheer
 log_bind=Poort en adres verander
 log_log=Verander logopsies
@@ -327,6 +352,7 @@ log_restrict_create=Beperking vir $1 geskep
 log_restrict_modify=Gewysigde beperking vir $1 
 log_restrict_delete=Beperking vir $1 uitgevee
 log_restrict_move=Beperking vir $1 verskuif
+
 log_all=alle gebruikers
 log_group=groep $1 
 log_switch=Oorskakel na Usermin-gebruiker $1 
@@ -334,6 +360,7 @@ log_logout=Die outomatiese afmeldtye is verander
 log_dav=Verander DAV-bedienerinstellings
 log_advanced=Gevorderde opsies verander
 log_mobile=Verander opsies vir mobiele toestelle
+
 update_err=Kon nie modules opdateer nie
 update_eurl=URL of ontbrekende opdatering ontbreek
 update_title=Modules opdateer
@@ -352,6 +379,7 @@ update_rv=Kyk na bygewerkte Usermin-modules vanaf $1
 update_eemail=U moet 'n e-posadres invul as u slegs wys wat opgedateer sal word.
 update_subject=Usermin-modules se verslag word bygewerk
 update_version='N Nuwe weergawe van Usermin (weergawe $1) is nou beskikbaar om af te laai. Toekomstige opdaterings sal slegs vir die nuutste weergawe vrygestel word.
+
 restrict_title=Modulebeperkings
 restrict_desc=Op hierdie bladsy kan u bepaal watter Usermin-modules beskikbaar is vir verskillende gebruikers en groepe. Alle toevoegings en afleidings van die module in die lys is van toepassing, nie net die eerste een wat by elke gebruiker pas nie. <br>Modules wat nie op die<a href='$1'> beskikbare modules </a> gekies is nie, sal nooit beskikbaar wees vir gebruikers, selfs al word hulle hier gekies.
 restrict_who=Gebruiker van die gebruiker
@@ -384,6 +412,7 @@ restrict_egroup=Groepnaam ontbreek of ongeldig
 restrict_efile=Ontbrekende, nie-bestaande of nie-absolute gebruikers- en groeplêers
 restrict_move=skuif
 bootup_ecannot=U mag nie die opstart instel nie
+
 acl_icons=Toelaatbare konfigurasiebladsye
 acl_mods=Kan modules opstel
 acl_all=Alle modules
@@ -391,10 +420,12 @@ acl_sel=Hier onder gekies ..
 acl_stop=Kan Usermin stop en begin?
 acl_bootup=Kan die konfigurasie vanaf die opstartyd begin?
 acl_ecannot=U mag nie hierdie bladsy gebruik nie
+
 clone_err=Kon nie die module kloon nie
 clone_elink=symlink misluk : $1 
 clone_ecopy=Kon nie konfigurasie kopieer nie : $1 
 clone_desc=Kloon van $1 
+
 sessions_title=Huidige aanmeldingsessies
 sessions_desc=Die huidige Usermin-sessie-aanmeldings word hieronder gelys. Om 'n bestaande sessie te kanselleer en die gebruiker te dwing om weer aan te meld, klik op die sessie-ID.
 sessions_id=Sessie ID
@@ -404,12 +435,15 @@ sessions_login=Meld aan by
 sessions_none=Geen gebruikers is tans by Usermin aangemeld nie.
 sessions_switch=Skakel oor na Usermin-gebruiker:
 sessions_ok=skakelaar
+
 referers_title=Vertroude verwysers
 referers_desc=Op hierdie bladsy kan u die ondersteuning van Usermin se verwysingskonfigurasie instel, wat gebruik word om kwaadwillige skakels van ander webwerwe te voorkom wat u gebruikers se blaaiers mislei om gevaarlike dinge met Usermin te doen. As u egter van u eie webwerwe skakels na Usermin het, waaroor u nie gewaarsku wil word nie, moet u hierdie webwerwe by die lys hieronder voeg.
+
 anon_title=Anonieme module-toegang
 anon_desc=Op hierdie bladsy kan u toegang gee tot geselekteerde Usermin-modules en -paadjies sonder dat kliënte hoef aan te meld. Vir elke modulepad wat u hieronder invoer (soos / opdragte of / changepass), moet u ook die naam invoer van 'n Unix-gebruiker wie se toestemming gebruik sal word vir toegang tot die module.
 anon_user=Unix-gebruiker
 anon_euser=Unix-gebruiker ontbreek of ongeldig vir URL-pad '$1'
+
 logout_title=Outomatiese afmeldtye
 logout_desc=Hierdie bladsy kan gebruik word om verskillende uitlogtye vir verskillende Usermin-gebruikers op te stel. Die time-out moet binne enkele minute ingevoer word, en 'n time-out van nul beteken dat sessies vir bypassende gebruikers nooit outomaties afgemeld word nie.
 logout_type=tipe
@@ -424,6 +458,7 @@ logout_egroup=Ontbrekende of ongeldige groep in ry $1
 logout_efile=Lêer ontbreek of bestaan nie in ry $1 nie
 logout_etime=Ontbreek of ongeldige time-out in ry $1 
 logout_ecannot=U mag nie afmeldtye opstel nie
+
 dav_title=DAV-bediener
 dav_header=DAV-bedieneropsies
 dav_path=DAV geaktiveer?
@@ -444,16 +479,22 @@ dav_users=Gebruikers wat DAV kan gebruik
 dav_users1=Alle gebruikers
 dav_users0=Gebruikers en groepe hieronder gelys.
 dav_eusers=Geen gebruikers het ingeskryf nie
+
 syslog_errorlog=Gebruikersfoutlogboek
+
 descs_title=Module-titels
 descs_info=Op hierdie bladsy kan u alternatiewe titels vir Usermin-modules spesifiseer om hul standaardbeskrywings te ignoreer.
+
 advanced_title=Gevorderde opsies
 advanced_pass=Maak wagwoord beskikbaar vir Usermin-programme? <br><font size=-1> (Werk nie wanneer sessieverifikasie aangeskakel is nie) </font>
+
 blocked_title=Geblokkeerde gashere en gebruikers
 blocked_none=Geen gashere of gebruikers word tans deur Usermin geblokkeer nie.
 blocked_user=Gebruiker van die gebruiker
 blocked_cleardesc=Klik op hierdie knoppie om alle huidige gasheer- en gebruikersblokke uit te vee deur die Usermin-bedienerproses weer te begin.
+
 mobile_title=Opsies vir mobiele toestelle
+
 copycert_err=Kon nie SSL-instellings vanaf Webmin kopieer nie
 copycert_essl=SSL is nie geaktiveer nie
 copycert_ekeyfile=Geen privaat sleutellêer is in Webmin opgestel nie

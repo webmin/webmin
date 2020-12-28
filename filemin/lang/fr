@@ -155,8 +155,10 @@ menu_bookmarks=Signets
 notallowed=Vous n'êtes pas autorisé à accéder à $1. Les répertoires autorisés sont : $2
 error_upload_emax=Le fichier téléchargé est supérieur à la limite de $1
 extract_etype=Type de fichier d'archive non pris en charge
+
 info_total1=Total: fichier $1 et répertoire $2
 info_total2=Total: $1 fichiers et répertoire $2
 info_total3=Total: $1 fichier et $2 répertoires
 info_total4=Total: $1 fichiers et $2 répertoires
+
 ownership=Propriétaire

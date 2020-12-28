@@ -19,6 +19,7 @@ index_nostrftime=Upozornenie - niektoré zálohovacie úlohy používajú % v ic
 index_tabsched=Naplánované zálohy
 index_tabbackup=Zálohovať teraz
 index_tabrestore=Obnoviť teraz
+
 edit_title1=Vytvoriť plánovanú zálohu
 edit_title2=Upraviť plánovanú zálohu
 edit_header=Nastavenia plánovanej zálohy
@@ -38,9 +39,11 @@ edit_nofiles=Serverové konfiguračné súbory
 edit_run=Uložiť a zazálohovať teraz
 edit_return=zálohovací formulár
 edit_other=Ostatné zobrazené súbory ..
+
 save_err=Zlyhalo uloženie zálohy
 save_emods=Neboli vybrané žiadne moduly
 save_ewebmin=Neboli vybrané ani Webminovské ani serverové konfiguračné súbory
+
 backup_mode0=Lokálny súbor
 backup_mode1=FTP server
 backup_mode2=SSH server
@@ -57,6 +60,7 @@ backup_egunzip=Záloha je komprimovaná, ale nie je nainštalovaný <tt>gunzip</
 backup_euntar=Výber z TARu zlyhal : $1
 backup_enone2=Žiadny zo súborov vybraných modulov nie je v zálohe
 backup_epre2=Modul $1 zrušil obnovu : $2
+
 backup_err=Zálohovanie zlyhalo
 backup_edest=Chybný alebo chýbajúci lokálny súbor
 backup_eserver1=Chybný alebo chýbajúci FTP server
@@ -72,27 +76,32 @@ backup_title=Záloha konfigurácie
 backup_doing=Začínam zálohovať konfiguračné súbory modulov do $1 ..
 backup_failed=.. zlyhalo! $1
 backup_done=.. hotovo. Celková veľkosť zálohy je $1 a obsahuje $2 súborov.
+
 restore_err=Obnova zlyhala
 restore_title=Konfigurácia obnovy
 restore_doing=Začínam obnovu konfigurácie modulov z $1 ..
 restore_failed=.. zlyhalo! $1
 restore_done=.. dokončené. $1 súborov bolo obnovených.
+
 nice_ftp=$2 na $1 cez FTP
 nice_ftpp=$2 na $1 port $3 cez FTP
 nice_ssh=$2 na $1 cez SSH
 nice_sshp=$2 na $1 port $3 cez SSH
 nice_upload=nahrané súbory
 nice_download=prehliadač
+
 log_backup=Zálohované $1 moduly do $2
 log_restore=Obnovené $1 moduly z $2
 log_create_backup=Vytvorená záloha $1 modulov do $2
 log_modify_backup=Modifikovaná záloha $1 modulov v $2
 log_delete_backup=Zmazaná záloha $1 modulov v $2
 log_run_backup=Vykonaná záloha $1 modulov do $2
+
 run_title=Konfigurácia záloh
 run_doing=Spúšťam zálohu $1 modulov do $2 ..
 run_ok=.. záloha skončila úspešne.
 run_failed=.. záloha neúspešná! Vyššie je zobrazená aj chybová hláška prečo záloha nebola úspešná.
+
 email_mods=Záloha modulov :
 email_failed=na $1 chyba :
 email_ok=na $1 horové.

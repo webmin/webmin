@@ -11,11 +11,13 @@ index_boot=البدء في التمهيد؟
 index_bootdesc=قم بتغيير هذا الإعداد لتمكين أو تعطيل بدء تشغيل خادم Dovecot في وقت تشغيل النظام.
 index_return=مؤشر الوحدة
 index_version=Version $1
+
 stop_err=فشل في إيقاف Dovecot
 stop_erunning=لم يعد يعمل
 start_err=فشل في بدء تشغيل Dovecot
 start_eprotos=No protocols selected on the <b>Networking and Protocols</b> page
 apply_err=فشل في تطبيق التكوين
+
 net_title=الشبكات والبروتوكولات
 net_header=Dovecot الشبكات وخيارات بروتوكول البريد
 net_protocols=خدمة بروتوكولات البريد
@@ -42,8 +44,11 @@ net_eimaps_listen=عنوان IP غير صالح لاتصالات IMAP SSL
 net_epop3s_listen=عنوان IP غير صالح لاتصالات POP3 SSL
 net_elisten=عنوان IP غير صالح للاتصالات غير SSL
 net_essl_listen=عنوان IP غير صالح لاتصالات SSL
+
 imap_title=خيارات IMAP
+
 pop3_title=خيارات POP3
+
 ssl_title=تكوين SSL
 ssl_header=خيارات وضع IMAP و POP3 SSL
 ssl_key=SSL ملف المفتاح الخاص
@@ -61,7 +66,9 @@ ssl_ecert=ملف الشهادة مفقود أو غير موجود
 ssl_eca=ملف شهادة المرجع المصدق للعميل مفقود أو غير موجود
 ssl_eregen=فاصل تجديد المعلمة مفقود أو غير رقمي
 ssl_epass=لم يتم إدخال كلمة مرور ملف مفتاح SSL
+
 misc_title=خيارات أخرى
+
 login_title=خيارات المستخدم وتسجيل الدخول
 login_header=مصادقة المستخدم وخيارات تسجيل الدخول
 login_fuid=الحد الأدنى صالح UID
@@ -117,6 +124,7 @@ login_procs=عمليات تسجيل الدخول القصوى
 login_count=عمليات تسجيل الدخول الأولية
 login_eprocs=مفقود أو غير صالح أقصى عدد عمليات تسجيل الدخول
 login_ecount=عدد أولي مفقود أو غير صالح لعمليات تسجيل الدخول
+
 mail_title=ملفات البريد
 mail_header=موقع البريد وخيارات القراءة
 mail_env=موقع ملف البريد
@@ -169,6 +177,7 @@ mail_eindexmode=لا يمكن تعيين موقع ملفات الفهرس عند
 mail_econtrolmode=لا يمكن تعيين موقع ملفات التحكم عند اكتشاف موقع ملف البريد تلقائيًا
 mail_eindex=المسار المطلق مفقود أو غير صالح لملفات الفهرس
 mail_econtrol=المسار المطلق مفقود أو غير صالح لملفات التحكم
+
 log_net=تغيير الشبكات والبروتوكولات
 log_login=تم تغيير خيارات المستخدم وتسجيل الدخول
 log_mail=تغيير ملفات البريد
@@ -179,6 +188,7 @@ log_stop=توقف خادم Dovecot
 log_bootup=تمكين Dovecot في وقت التمهيد
 log_bootdown=تعطيل Dovecot في وقت التمهيد
 log_manual=Manually edited config file $1
+
 manual_title=تحرير ملفات التكوين
 manual_editsel=تحرير ملف التكوين Dovecot
 manual_err=فشل في حفظ ملف التكوين

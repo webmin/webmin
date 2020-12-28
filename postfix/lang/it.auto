@@ -3,6 +3,7 @@ connect_elogin=Accesso al database non riuscito $1:$2.
 index_title=Postfix Mail Server
 index_epath=Il comando di controllo Postfix $1 non è installato sul tuo sistema. Forse la tua <a href='$2'>configurazione del modulo</a> non è corretta o Postfix non è installato.
 index_postfix=Postfix
+
 internal_error=Errore interno
 index_econfig=Il comando di configurazione Postfix $1 non esiste. Forse la tua <a href='$2'>configurazione del modulo</a> non è corretta.
 index_esuper=Il comando supervisore Postfix $1 non esiste. Forse la tua <a href='$2'>configurazione del modulo</a> non è corretta.
@@ -14,8 +15,10 @@ index_startmsg=Fare clic su questo pulsante per avviare il server di posta Postf
 index_reloadmsg=Fare clic su questo pulsante per fare in modo che Postfix rileggi tutti i suoi file di configurazione. Ciò può essere utile se i file di configurazione di Postfix sono stati modificati manualmente.
 index_version=Versione Postfix $1
 opts_err=Impossibile salvare le opzioni
+
 check_error=Errore durante il controllo della configurazione corrente di Postfix. Correggi manualmente la configurazione di Postfix.
 check_manual=Modifica manualmente il file di configurazione di Postfix.
+
 address_rewriting_title=Riscrittura e mascheramento degli indirizzi
 address_rewriting_ecannot=Non è consentito modificare la riscrittura e il mascheramento degli indirizzi
 aliases_title=Alias di posta
@@ -42,9 +45,11 @@ aliases_type5=File di autoreply $1
 aliases_type6=Applica il file filtro $1
 aliases_none=Nessuna
 aliases_delete=Elimina alias selezionati
+
 postfinger_title=Verifica della configurazione
 postfinger_show=Mostrare
 postfinger_ecannot=Non puoi controllare la configurazione di Postfix
+
 mailclean_title=Pulisci MailQueue
 mailclean_ecannot=Nessun privilegio per pulire MailQueues
 mailclean_active=Active-coda
@@ -53,6 +58,7 @@ mailclean_deferred=Differite Coda
 mailclean_defer=Rinvia-Queue
 mailclean_all=Tutte le code
 mailclean_search=Stringa di ricerca
+
 aform_type0=Nessuna
 aform_type1=Indirizzo email
 aform_type2=Indirizzi nel file
@@ -68,6 +74,7 @@ aform_val=Alias a
 aform_afile=Modificare ..
 aform_return=alias
 aform_cmt=Descrizione
+
 asave_err=Impossibile salvare l'alias
 asave_eaddr='$1' non è un indirizzo valido
 asave_ealready=Esiste già un alias per "$1"
@@ -78,11 +85,13 @@ asave_etype4='$1' non è un programma valido o non esiste
 asave_etype5=Il file di risposta automatica "$1" non è valido
 asave_etype4none=Nessun programma fornito
 asave_etype6=Il file di filtro '$1' non è valido
+
 afile_title=Modifica file indirizzo
 afile_desc=Utilizzare l'area di testo seguente per modificare gli indirizzi nel file $1.
 afile_efile=Non puoi modificare $1.
 afile_undo=Cancella i cambiamenti
 afile_ewrite=Impossibile scrivere nel file degli indirizzi : $1
+
 ffile_title=Modifica file filtro
 ffile_desc=Utilizzare il modulo seguente per impostare le regole di filtro nel file $1.
 ffile_efile=Non puoi modificare $1.
@@ -98,6 +107,7 @@ ffile_other=Altrimenti inoltra a $1
 ffile_err=Impossibile salvare il file del filtro
 ffile_ematch=Partita mancante
 ffile_eaction=Indirizzo di inoltro mancante
+
 rfile_title=Modifica file Autoreply
 rfile_desc=Utilizzare l'area di testo seguente per modificare il messaggio di risposta automatica in $1. Il messaggio può contenere le macro $SUBJECT, $FROM, $TO, $DATE e $BODY che verranno espanse quando viene attivata la risposta automatica.
 rfile_desc2=Puoi anche impostare intestazioni di posta che aggiungono o sostituiscono i valori predefiniti utilizzati nell'autoreply inserendo righe come: <br><tt> Da: foo@bar.com </tt><br> <tt>Oggetto: In vacanza</tt> <br> nella parte superiore del messaggio, separato dal corpo da un'unica riga vuota.
@@ -116,11 +126,13 @@ rfile_from=Da: indirizzo per la risposta
 rfile_auto=Automatico (basato sull'indirizzo del destinatario)
 rfile_efrom=Mancante da: indirizzo
 rfile_fromdesc=Un indirizzo Da: deve essere sempre specificato ove possibile, poiché il metodo automatico potrebbe non essere affidabile.
+
 general_title=Opzioni generali
 general_title_sensible=Opzioni generali più utili
 general_title_others=Altre opzioni generali
 general_ecannot=Non puoi modificare le Opzioni generali
 what_is_it=Che cos'è?
+
 opts_default=Predefinito
 opts_none=Nessuna
 opts_nomap=Nessuna mappa impostata
@@ -140,10 +152,12 @@ opts_mail_owner=Proprietario della posta
 opts_default_privs=Diritti predefiniti dell'agente di consegna
 opts_inet_interfaces=Interfacce di rete per la ricezione di posta
 opts_all_interfaces=Tutti
+
 opts_local_recipient_maps=Rifiuta utenti locali sconosciuti
 opts_no=No
 opts_save=Salva e applica
 opts_edir=Puoi specificare i file delle mappe solo in $1
+
 opts_allow_percent_hack=Riscrivi "utente%dominio" su "utente@dominio"
 opts_append_at_myorigin=Riscrivi "utente" in "utente @ $ miodominio"
 opts_append_dot_mydomain=Riscrivi "user@host" su "user@host.$mydomain"
@@ -153,13 +167,17 @@ opts_swap_bangpath=Riscrivi "site! User" in "user @ site"
 opts_masquerade_domains=Indirizzo mascherato
 opts_masquerade_exceptions=Eccezioni in maschera
 index_return=Configurazione Postfix
+
 opts_alias_maps=Database alias utilizzati dall'agente di consegna locale
 opts_alias_database=Database alias creati dal comando "newaliases"
 aliases_warning=Avvertenza: <ul><li> quando il primo campo non è vuoto, il comando di generazione degli alias Postfix predefinito viene utilizzato per costruire i database corrispondenti; <li>altrimenti viene utilizzato il comando di compatibilità "newalias" di Sendmail, che utilizzerà i database del secondo campo.</ul>
+
 aliases_name=Nome
 aliases_value=Alias a. ..
+
 new_alias=Crea un nuovo alias
 new_aliasmsg=Fare clic su questo pulsante per creare un nuovo alias
+
 local_delivery_ecannot=Non è consentito modificare le opzioni di consegna locale
 local_delivery_title=Consegna locale
 opts_local_transport=Nome del trasporto per consegne locali
@@ -185,6 +203,7 @@ opts_local_destination_recipient_limit=Numero massimo di destinatari per consegn
 opts_local_destination_recipient_limit_default=Predefinito
 opts_prepend_delivered_header=Prepend a <tt>Delivered-To:</tt> quando. ..
 opts_prepend_delivered_header_default=Predefinito
+
 resource_title=Controllo generale delle risorse
 resource_ecannot=Non è consentito modificare i parametri di controllo delle risorse
 opts_bounce_size_limit=Dimensione massima del messaggio rimbalzato
@@ -204,6 +223,7 @@ opts_qmgr_message_recipient_limit=Numero massimo di destinatari in memoria
 opts_queue_minfree=Spazio libero minimo nel file system della coda
 opts_stale_lock_time=Tempo massimo dopo il quale viene rilasciato il blocco non aggiornato
 opts_transport_retry_time=Tempo in secondi tra i tentativi di contattare un MDT rotto
+
 opts_always_bcc=Indirizzo che riceve ccn di ciascun messaggio
 opts_always_bcc_none=Nessuna
 opts_daemon_timeout=Timeout sulle richieste di gestione
@@ -242,6 +262,7 @@ opts_trigger_timeout=Tempo massimo per inviare un trigger a un demone
 opts_delay_warning_time=Tempo in ore prima dell'invio di un avviso per mancata consegna
 opts_delay_warning_time_default2=Postfix predefinito
 opts_content_filter_default=Nessuna
+
 smtpd_title=Opzioni del server SMTP
 smtpd_ecannot=Non è consentito modificare le opzioni del server SMTP
 opts_disable_vrfy_command=Disabilita il comando SMTP VRFY
@@ -273,6 +294,7 @@ smtpd_nomap=Non è stata ancora inserita una mappa per gli indirizzi consentiti 
 smtpd_nomap2=Non è stata ancora inserita una mappa per le restrizioni sugli indirizzi del mittente.
 smtpd_map=Indirizzi consentiti per l'inoltro
 smtpd_map2=Restrizioni agli indirizzi del mittente
+
 smtp_title=Opzioni client SMTP
 smtp_ecannot=Non è consentito modificare le opzioni del client SMTP
 opts_best_mx_transport=Azione quando elencato come miglior host MX
@@ -293,6 +315,7 @@ opts_smtp_data_done_timeout=Timeout in attesa di risposta alla fine "."
 opts_smtp_quit_timeout=Timeout in attesa di risposta a QUIT
 opts_smtp_use_tls=Utilizzare TLS per connessioni SMTP
 opts_smtp_sasl_security_options=Opzioni di sicurezza SASL
+
 rate_title=Tariffe di consegna
 rate_ecannot=Non è consentito modificare le opzioni relative alle tariffe di consegna
 opts_default_destination_concurrency_limit=Numero massimo di consegne parallele alla stessa destinazione
@@ -303,18 +326,21 @@ opts_maximal_queue_lifetime=Tempo massimo (giorni) in coda prima che il messaggi
 opts_minimal_backoff_time=Tempo minimo (secondi) tra i tentativi di recapitare un messaggio differito
 opts_queue_run_delay=Tempo (secondi) tra la scansione della coda differita
 opts_defer_transports=Trasporti che non devono essere consegnati
+
 debug_title=Funzionalità di debug
 debug_ecannot=Non è consentito modificare le funzionalità di debug
 opts_debug_peer_list=Elenco di modelli di dominio / rete per i quali è abilitato il registro dettagliato
 opts_debug_peer_level=Livello di registrazione dettagliato quando corrisponde all'elenco precedente
 debug_version=Modulo Postfix per Webmin - Versione $1
 opts_edebug=Livello di registrazione dettagliato mancante o non valido - deve essere un numero maggiore di zero
+
 ldap_title=Ricerche LDAP
 ldap_ecannot=Non è consentito modificare le opzioni di ricerca LDAP
 ldap_non_existent=Sembra che LDAP sia inesistente nel tuo sistema Postfix
 opts_ldap_lookup_timeout=Timeout per le ricerche nel database LDAP
 opts_ldap_search_base=Database LDAP da cercare
 opts_ldap_server_host=Nome host del server LDAP
+
 canonical_title=Mappatura canonica
 canonical_ecannot=Non è consentito modificare la configurazione della mappatura canonica
 opts_canonical_maps=Tabelle di ricerca della mappatura degli indirizzi
@@ -328,6 +354,7 @@ canonical_edit_title=Modifica mappa canonica
 canonical_return_sender=mappe canoniche del mittente
 canonical_return_recipient=mappe canoniche del destinatario
 canonical_return=mappe canoniche
+
 mapping_name=Nome
 mapping_value=Mappe per. ..
 mapping_delete=Elimina selezionato
@@ -355,6 +382,7 @@ mapping_toomany=Ci sono $1 voci della mappa, che è al di sopra del limite di vi
 mapping_find=Mostra corrispondenza mappature:
 mapping_search=Ricerca
 mapping_match=Voci del file della mappa corrispondenti a <tt>$1</tt> ..
+
 virtual_title=Domini virtuali
 virtual_ecannot=Non è consentito modificare la configurazione del mapping dei domini virtuali
 opts_virtual_maps=Tabelle di ricerca della mappatura del dominio
@@ -362,29 +390,44 @@ opts_virtual_alias_maps=Tabelle di ricerca della mappatura del dominio
 opts_virtual_alias_domains=Domini per i quali eseguire il mapping virtuale
 virtual_same=Dalle tabelle di mappatura del dominio
 virtual_return=domini virtuali
+
 transport_title=Mappatura dei trasporti
 transport_ecannot=Non è consentito modificare la configurazione della mappatura del trasporto
 opts_transport_maps=Tabelle di ricerca della mappatura dei trasporti
 transport_return=mappe di trasporto
+
+sni_title=Mappatura dei certificati
+sni_ecannot=Non è consentito modificare la configurazione della mappatura del certificato
+opts_sni_maps=Tabelle di ricerca della mappatura dei certificati
+sni_return=mappe dei certificati
+sni_dom=Nome host
+sni_certs=File di certificato
+
 relocated_title=Mappatura trasferita
 relocated_ecannot=Non è consentito modificare la configurazione del mapping trasferito
 relocated_return=mappe trasferite
 opts_relocated_maps=Tabelle di ricerca del mapping riposizionate
 opts_content_filter=Filtro contenuto e-mail
+
 map_click=Fai clic su qualsiasi mapping per modificarne le proprietà:
 no_map=(Nessuna mappa è attualmente definita. Definire prima una mappa, quindi è possibile modificarla)
 no_map2=Nessuna mappa è attualmente definita. Definisci prima una mappa, quindi puoi modificarla.
+
 stop_efailed=Impossibile arrestare Postfix
 stop_ecannot=Non è consentito interrompere Postfix
+
 start_efailed=Impossibile avviare Postfix
 start_ecannot=Non è consentito avviare Postfix
+
 reload_efailed=Impossibile ricaricare Postfix
 reload_ecannot=Non è consentito ricaricare Postfix
+
 query_get_efailed=Impossibile eseguire la query del comando di configurazione Postfix per ottenere il valore corrente del parametro $1: <tt>$2</tt>
 query_set_efailed=Impossibile eseguire la query del comando di configurazione Postfix per impostare il valore corrente del parametro $1 su $2: <tt>$3</tt>
 regenerate_ecannot=Non è consentito rigenerare gli alias
 regenerate_alias_efailed=Impossibile rigenerare gli alias: <tt>$1</tt>
 regenerate_table_efailed=Impossibile rigenerare la tabella $1: <tt>$2</tt>
+
 acl_resource=Puoi modificare le risorse?
 acl_aliases=Puoi modificare gli alias?
 acl_aliases_options=È possibile modificare le opzioni degli alias?
@@ -393,6 +436,7 @@ acl_address_rewriting=È possibile modificare la riscrittura degli indirizzi?
 acl_canonical=Puoi modificare canonico?
 acl_virtual=Puoi modificare virtuale?
 acl_transport=È possibile modificare il trasporto?
+acl_sni=Può modificare i certificati?
 acl_relocated=È possibile modificare il trasferimento?
 acl_header=È possibile modificare i controlli delle intestazioni?
 acl_local_delivery=È possibile modificare la consegna locale?
@@ -411,6 +455,7 @@ acl_postfinger=È possibile verificare la configurazione postfix?
 acl_manual=È possibile modificare il file di configurazione?
 acl_dir=Directory consentita per i file delle mappe
 acl_bcc=È possibile modificare il mapping BCC?
+
 boxes_title=Cassette postali dell'utente
 boxes_user=Utente
 boxes_size=Dimensione della cassetta postale
@@ -420,6 +465,7 @@ boxes_sent=Posta inviata
 boxes_ecannot=Non ti è permesso leggere l'email
 boxes_toomany=Esistono troppi utenti sul sistema per elencare tutte le loro cassette postali.
 boxes_go=Visualizza la posta per l'utente:
+
 mail_title=Email dell'utente
 mail_from=A partire dal
 mail_date=Data
@@ -458,6 +504,7 @@ mail_forward=Inoltrare
 mail_rfc=Dalla linea
 mail_move=Sposta in:
 mail_eexists=Il messaggio non esiste più!
+
 view_title=Leggi l'email
 view_desc=Messaggio $1 in $2
 view_desc2=Messaggio $1 per l'utente $2
@@ -486,6 +533,7 @@ view_body=Messaggio di testo
 view_afile=Nome dell'allegato
 view_atype=Tipo di allegato
 view_asize=Dimensione del file
+
 compose_title=Componi email
 reply_title=Rispondi a e-mail
 forward_title=Inoltra email
@@ -496,6 +544,7 @@ reply_mailforward=Messaggi inoltrati
 reply_attach2=Allegati lato client e server
 reply_send=Inviare una mail
 reply_ecannot=Non sei autorizzato a inviare posta come questo utente
+
 send_err=Impossibile inviare la posta
 send_eto=Indirizzo mancante
 send_efrom=Indirizzo mancante
@@ -509,6 +558,7 @@ send_eperms=L'utente $1 non può leggere $2
 send_eperms2=Non puoi inviare il file $1
 send_epath=L'eseguibile di Sendmail $1 non esiste.
 send_ewrapper=Il programma di interfaccia di sendmail Postfix non esiste
+
 search_title=risultati di ricerca
 search_ecannot=Non è consentito eseguire ricerche nell'email di questo utente
 search_ematch=È necessario inserire il testo da abbinare.
@@ -516,6 +566,7 @@ search_efield=Devi selezionare un tipo di ricerca.
 search_none=Nessun messaggio trovato.
 search_results2=$1 messaggi di posta corrispondenti a $2 ..
 search_results3=$1 messaggi di posta non corrispondenti $2 ..
+
 match_from=Da: partite
 match_subject=Oggetto: partite
 match_to=A: partite
@@ -533,6 +584,7 @@ match_!date=Data: non corrisponde
 match_!body=Il corpo non corrisponde
 match_!size=La dimensione è inferiore a
 match_!headers=Le intestazioni non corrispondono
+
 mailq_title=Coda di posta
 mailq_count=$1 messaggi
 mailq_none=Nessun messaggio di posta è attualmente in coda per la consegna
@@ -561,15 +613,20 @@ mailq_active=Attivo
 mailq_deferred=differite
 mailq_hold=Mantieni selezionato
 mailq_unhold=Non trattenuto selezionato
+
 flushq_title=Coda di scarico
 flushq_desc=Forzare il tentativo di consegna della posta con il comando $1 ..
+
 qview_title=Messaggio in coda
 qview_desc=Dal file $1
 qview_headers=Intestazioni di posta
 qview_attach=allegati
+
 after_err=Errore di configurazione Postfix : $1
+
 searchq_title=Risultati della ricerca in coda
 searchq_none=Nessun messaggio in coda trovato.
+
 header_title=Controlli di intestazione
 header_ecannot=Non è consentito modificare i controlli delle intestazioni
 header_eregexp=La mappa dei controlli di intestazione deve essere nel formato <tt>regexp:</tt> <i>nomefile</i>
@@ -588,15 +645,18 @@ header_reject=Rifiuta (con messaggio di errore..)
 header_warn=Avviso registro (con messaggio..)
 header_ename=Espressione regolare non valida - deve essere come / qualcosa /
 header_return=controlli di intestazione
+
 body_title=Controlli del corpo
 body_ecannot=Non è consentito modificare i controlli del corpo
 body_eregexp=La mappa dei controlli del corpo deve essere nel formato <tt>regexp:</tt> <i>nomefile</i>
 opts_body_checks=Tabelle di controllo del corpo del messaggio
 body_return=controlli del corpo
+
 dependent_title=Mappatura del trasporto dipendente dal mittente
 dependent_ecannot=Non è consentito modificare i mapping di trasporto dipendenti dal mittente
 dependent_eregexp=La mappa dei trasporti dipendente dal mittente deve essere nel formato <tt>regexp:</tt> <i>nome file</i>
 dependent_return=mappature di trasporto dipendenti dal mittente
+
 manual_title=Modifica file mappa
 manual_file=Seleziona un file della mappa da modificare:
 manual_change=Modificare
@@ -604,9 +664,11 @@ manual_editing=Utilizzare la casella di testo seguente per modificare manualment
 manual_err=Impossibile salvare il file della mappa
 manual_efile=Nome file mappa non valido!
 manual_ecannot=Non è consentito modificare manualmente i file della mappa
+
 delq_titles=Eliminazione di messaggi
 delq_rusure=Sei sicuro di voler eliminare i $1 messaggi in coda selezionati?
 delq_confirm=Elimina messaggi
+
 master_title=Processi del server
 master_name=Nome del processo
 master_enabled=Abilitato?
@@ -647,8 +709,10 @@ master_einet=Un indirizzo host su cui ascoltare può essere specificato solo per
 master_ecommand=Comando di processo del server mancante
 master_ewakeup=Tempo di sveglia mancante o non valido
 master_emaxprocs=Numero massimo di processi mancante o non valido
+
 delete_err=Impossibile eliminare i mapping
 delete_enone=Nessuno selezionato
+
 cmanual_title=Modifica file di configurazione
 cmanual_ecannot=Non puoi modificare il file di configurazione di Postfix
 cmanual_ok=modificare
@@ -656,10 +720,12 @@ cmanual_efile=Il file selezionato non fa parte della configurazione di Postfix
 cmanual_file=Modifica file di configurazione:
 cmanual_edata=Non è entrato niente!
 cmanual_err=Impossibile salvare il file di configurazione
+
 access_return=tabella di accesso mappa
 edit_map_file=Modifica file mappa
 opts_reject_rbl_client=Ricerche in Black List (RBL) in tempo reale
 opts_check_sender_access=Controlla la tabella della mappa di accesso del mittente
+
 log_misc=Opzioni generali modificate
 log_opts=Indirizzo riscritto e mascherato modificato
 log_aliases=Opzioni di alias modificate
@@ -667,6 +733,7 @@ log_canonical=Modifica delle opzioni di mappatura canonica
 log_virtual=Opzioni del dominio virtuale modificate
 log_bcc=Opzioni mappa CCN modificate
 log_transport=Opzioni di mappatura del trasporto modificate
+log_sni=Modifica le opzioni di mappatura del certificato
 log_dependent=Modificate le opzioni dell'indirizzo dipendente dal mittente
 log_relocated=Modificate le opzioni di mappatura del trasferimento
 log_header=Opzioni di controllo dell'intestazione modificate
@@ -744,6 +811,7 @@ log_sender_dependent_default_transport_maps_modify=Indirizzo dipendente dal mitt
 log_sender_dependent_default_transport_maps_delete=Indirizzo dipendente dal mittente eliminato $1
 log_delete_sender_dependent_default_transport_mapss=Eliminati $1 indirizzi dipendenti dal mittente
 log_manual_sender_dependent_default_transport_mapss=Indirizzi dipendenti dal mittente modificati manualmente in $1
+
 sasl_title=Autenticazione e crittografia SMTP
 opts_smtpd_sasl_auth_enable=Richiede l'autenticazione SMTP SASL?
 opts_smtp_sasl_auth_enable=Utilizzare l'autenticazione SMTP SASL?
@@ -790,6 +858,7 @@ sasl_nologin=Nessuno necessario
 sasl_userpass=Accedi come $1 con password $2
 sasl_elogin=Accesso SMTP mancante o non valido (non sono ammessi spazi o due punti)
 sasl_epass=Password SMTP non valida (nessuno spazio consentito)
+
 client_title=Restrizioni client SMTP
 client_ecannot=Non è consentito modificare le restrizioni del client SMTP
 client_restrict=Restrizioni del cliente
@@ -799,6 +868,7 @@ client_other=Altre restrizioni :
 client_err=Impossibile salvare le restrizioni client
 client_evalue=Valore mancante per restrizione $1
 client_return=Restrizioni client SMTP
+
 chooser_title=Seleziona Sorgente mappa
 chooser_header=Fonte mappa $1
 chooser_none=Nessuna
@@ -854,6 +924,7 @@ chooser_elquery_filter=Filtro query mancante per la mappa $1
 chooser_elresult_attribute=Nome dell'attributo risultato mancante o non valido per la mappa $1
 chooser_elbind_dn=Accesso mancante per il server LDAP per la mappa $1
 chooser_elbind_pw=Password mancante per il server LDAP per la mappa $1
+
 mysql_ecfile=Il file di configurazione di MySQL $1 non è stato trovato
 mysql_ecfile2=Impossibile trovare la tabella nel file di configurazione di MySQL $1
 mysql_edriver=Impossibile caricare il driver del database $1
@@ -865,6 +936,7 @@ mysql_eupdate=Aggiornamento SQL non riuscito : $1
 mysql_elist=Query SQL non riuscita : $1
 mysql_esource=Non è stata trovata alcuna fonte MySQL denominata $1
 mysql_eneed=Il parametro di configurazione MySQL $1 non è stato trovato. Webmin ne ha bisogno per capire quale tabella e quali campi interrogare.
+
 ldap_ecfile=Il file di configurazione LDAP $1 non è stato trovato
 ldap_eldapmod=Il modulo Perl $1 necessario per comunicare con LDAP non è installato o non è caricabile
 ldap_eldap=Impossibile connettersi al server LDAP $1 sulla porta $2
@@ -875,6 +947,7 @@ ldap_edelete=Eliminazione LDAP di $1 non riuscita : $2
 ldap_equery=Ricerca LDAP di $1 non riuscita : $2
 ldap_erename=Rinomina LDAP da $1 a $2 non riuscita : $3
 ldap_emodify=Modifica LDAP di $1 non riuscita : $2
+
 bcc_title=Mappatura BCC
 bcc_ecannot=Non è consentito modificare i mapping BCC
 opts_sender_bcc_maps=Tabelle di ricerca del mapping BCC del mittente

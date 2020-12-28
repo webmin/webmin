@@ -3,6 +3,7 @@ index_style=Tiskový systém: $1
 index_cluster=Clusterové servery
 index_clusterdesc=Klepnutím na toto tlačítko nastavíte další servery Webmin, na kterých budou vytvořeny, aktualizovány a odstraněny tiskárny.
 index_delete=Odstranit vybrané tiskárny
+
 style_solaris=Solaris
 style_linux=Linux LPR
 style_freebsd=FreeBSD LPR
@@ -12,20 +13,26 @@ style_unixware=UnixWare
 style_cups=CUPS
 style_irix=IRIX
 style_aix=AIX
+
 save_erport=Vzdálený port '$1' není platný
 save_evalid=Tiskový systém tuto tiskárnu nepovolil
 save_errslave=Tiskárna vytvořila v tomto systému OK, ale v clusterových systémech se vyskytly následující chyby : $1 
 save_egone=Nebyla nalezena žádná tiskárna s názvem '$1'
 save_errdelslave=Tiskárna odstranila OK v tomto systému, ale u clusterových systémů došlo k následujícím chybám : $1 
+
 jobs_cancelsel=Zrušit vybrané úlohy
 jobs_on=Na tiskárně $1 
 jobs_return=seznam tiskových úloh
+
 acl_delete=Lze odstranit tiskárny?
 acl_cluster=Lze spravovat klastr tiskárny?
+
 log_cancel_sel=Zrušeno $2 tiskových úloh na $1 
+
 aix_port=Port tiskárny $1 
 aix_edesc=Neplatný popis - jsou povolena pouze písmena a čísla, bez mezer
 aix_ecmd=Tiskový server AIX $1 nebyl nalezen. Možná není nainstalován nebo se používá jiný tiskový systém.
+
 cluster_title=Clusterové tiskové servery
 cluster_none=Do clusteru tiskáren zatím nebyly přidány žádné servery.
 cluster_host=Název hostitele
@@ -37,6 +44,7 @@ cluster_need=Než je budete moci spravovat zde, musíte do modulu Webmin Servers
 cluster_return=clusterové servery
 cluster_delete=Odstranit vybrané
 cluster_ecannot=Není dovoleno spravovat servery klastrových tiskáren
+
 add_title=Přidat servery
 add_msg=Přidává se $1 ..
 add_gmsg=Přidávání serverů do skupiny $1 ..

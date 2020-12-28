@@ -22,6 +22,7 @@ index_auto=Sib awtomatikament is-Servers
 index_automsg=Ikklikkja din il-buttuna biex tissettja l-iskoperta awtomatika perjodika ta 'servers tal-Webmin ġodda fuq in-netwerk tiegħek.
 index_search=Uri tqabbil ta 'servers:
 index_ok=Fittex
+
 edit_title=Editja Server
 create_title=Server Reġistru
 edit_details=Dettalji tas-server
@@ -57,6 +58,7 @@ edit_baduser=Id-dħul miċħad
 edit_invalid=L-utent ma jistax jagħmel RPC
 edit_version=Tmexxi Webmin $1 
 edit_same=Disponibbli biss mhux fil-mod tal-awtentikazzjoni tas-sessjoni, u meta l-password issir disponibbli għall-programmi Webmin.
+
 save_err=Ma rnexxielux isalva s-server
 save_ehost=Name host nieqes jew invalidu
 save_ehost2=Ospitanti ma jeżistix
@@ -67,6 +69,7 @@ save_epass=Password nieqsa
 save_egroup=Isem il-grupp nieqes
 save_elogin=Login jew password mhux validi għall-host
 save_egroup2=Isem tal-grupp ġdid invalidu
+
 find_title=Sib Servers
 find_new=Jinstab server ġdid f ' $1 
 find_but=Jinstab server ġdid f ' $1, iżda l-awtentikazzjoni naqset : $2 
@@ -81,16 +84,20 @@ find_ecannot=M'għandekx permess issib servers
 find_scanning=Skennjar għal servers fin-netwerk $1 ..
 find_broading=Xandir għal servers fuq indirizzi $1 ..
 find_eport=Numru tal-port nieqes jew invalidu
+
 log_modify=Server modifikat $1 
 log_create=Server reġistrat $1 
 log_delete=Server imħassar $1 
 log_find=Server misjub $1 
 log_deletes=Server imħassar $1 
+
 link_elogin=Naqas mill-login għal $1 bħala $2 
 link_ecannot=M'għandekx permess tuża dan is-server
 link_essl=M'għandekx il-librerija perl Net::SSLeay installata
 link_eautologin=Login jew password mhux validi għal $1. <a href='$2'>Ikklikkja hawn</a> biex terġa 'tipprova.
+
 lib_other=Oħrajn
+
 acl_edit=Jista 'jeditja servers?
 acl_find=Tista 'ssib servers?
 acl_servers=Jista 'juża servers
@@ -102,6 +109,7 @@ acl_forcefast=Se tmexxi l-modalità RPC veloċi għal default?
 acl_forcetype=Se jġiegħel it-tip tal-OS inadempjenti?
 acl_forcelink=Se jġiegħel it-tip ta 'l-login jiġi awtomatikament?
 acl_links=Tista 'tikkonnettja ma' servers?
+
 login_title=Idħol fis-Server
 login_desc=Int trid tipprovdi username u password biex tidħol fis-server Webmin $1.
 login_header=Awtentikazzjoni tal-Webmin
@@ -109,13 +117,16 @@ login_user=Username
 login_pass=Password
 login_login=Idħol
 login_esame=L-għażla li tuża l-istess login bħal dan is-server tista 'tintuża biss meta ma tkunx fil-modalità ta' awtentikazzjoni tas-sessjoni, u meta l-password issir disponibbli għall-programmi Webmin.
+
 this_server=dan is-server
+
 delete_err=Naqset milli tħassar is-servers
 delete_enone=L-ebda magħżul
 delete_ecannot=M'għandekx permess tħassar is-servers
 delete_title=Ħassar is-Servers
 delete_rusure=Int żgur li trid tneħħi s-servers magħżula $1 ?
 delete_confirm=Ħassar issa
+
 auto_title=Sib awtomatikament is-Servers
 auto_header=Għażliet awtomatiċi għar-reġistrazzjoni tas-server
 auto_sched=Iċċekkja għal servers ġodda?
@@ -141,8 +152,10 @@ auto_smtp=Ibgħat permezz ta 'server SMTP
 auto_self=Din is-sistema
 auto_esmtp=Server SMTP nieqes jew invalidu
 auto_findself=Irreġistra din is-sistema wkoll?
+
 config_deftype=Tip ta 'sistema awtomatiku
 config_typeauto=Awtomatiku
+
 email_regsubject=Sistema reġistrata $1 
 email_reg=Is-sistema $1 ġiet reġistrata awtomatikament.
 email_unregsubject=Sistema $1 mhux reġistrata

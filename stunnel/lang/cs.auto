@@ -3,4 +3,5 @@ index_eversion=Verze STunnel nainstalovaná ve vašem systému je $1, ale tento 
 index_conf=Z konfiguračního souboru $1 
 index_noconf=Žádný konfigurační soubor!
 index_delete=Smazat vybrané tunely
+
 log_delete_stunnels=Smazáno $1 SSL tunelů

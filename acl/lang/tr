@@ -20,6 +20,7 @@ index_modgroups=$1 grubunun modülleri
 index_sync=Unix kullanıcı senkronizasyonunu yapılandır
 index_unix=Unix kullanıcı onaylamasını yapılandır
 index_sessions=Oturumları göster
+
 edit_title=Webmin Kullanıcısının Özelliklerini Değiştir
 edit_title2=Webmin Kullanıcısı Oluştur
 edit_rights=Webmin yeni kullanıcı izinleri
@@ -62,6 +63,7 @@ edit_hide=Kullanılmayanı Gizle
 edit_switch=Kullanıcıya Geçiş Yap
 edit_return=Webmin kullanıcısı
 edit_return2=Webmin grubu
+
 save_err=Kullanıcı kayıtları kaydedilirken hata oluştu.
 save_ename='$1' doğru bir kullanıcı adı değildir. (valid=doğru)
 save_enamewebmin='webmin' kullanıcı adı program içi kullanım için ayırılmıştır
@@ -83,10 +85,12 @@ save_enet='$1' geçerli bir ağ adresi değildir
 save_emask='$1' geçerli bir ağ maskesi değildir
 save_eip='$1' tam bir IP ya da ağ adresi değildir
 save_ehost='$1' IP adresi bulunamadı
+
 delete_err=Kullanıcının silinmesinde hata oluştu
 delete_eself=Kendi kullanıcınızı silemezsiniz
 delete_ecannot=Kullanıcı silmenize izin verilmemiştir
 delete_euser=Bu kullanıcıyı silmenize izin verilmemiştir
+
 cert_title=Gerekli Sertifika
 cert_issue=Sertifika Başlığı
 cert_header=Yeni Sertifika Detayları
@@ -105,12 +109,14 @@ cert_install=Sertifikayı tarayıcı içine kurunuz
 cert_ekey=Yeni SSL anahtarı tarayıcınıza yerleştirilemedi.Tarayıcınız SSL istemci sertifikalarını desteklemiyor olabilir.
 cert_eca=Sertifikanın onaylama kurulumunda hata oluştu
 cert_already=Uyarı- $1 sertifikasını her zaman kullanmaktasınız
+
 acl_title=Modül Erişim Kontrolü
 acl_title2=$2'de $1 için
 acl_title3=$2 'deki $1 grubu için
 acl_options=$1 Erişim Kontrol Seçenekleri
 acl_config=Modül ayarlarını düzenleyebilsin mi?
 acl_reset=Tam Erişim Ver
+
 acl_uall=Bütün kullanıcılar
 acl_uthis=Bu kullanıcı
 acl_usel=Seçili kullanıcılar ..
@@ -147,6 +153,7 @@ acl_cats=Kategorilemeyi değiştirebilir mi?
 acl_theme=Kişisel temasını değiştirebilir mi?
 acl_ips=IP erişim kontrolünü değiştirebilir mi?
 acl_switch=Diğer kullanıcılara geçiş yapabilir mi?
+
 log_modify=Webmin kullanıcısı $1 değiştirildi.
 log_rename=Webmin kullanıcısı $1, $2 olarak yeniden adlandırıldı.
 log_create=Webmin kullanıcısı $1 oluşturuldu.
@@ -160,12 +167,14 @@ log_rename_g=Webmin grubu $1 , $2 olarak yeniden adlandırıldı
 log_create_g=Webmin grubu $1 oluşturuldu
 log_delete_g=Webmin grubu $1 silindi
 log_switch=Webmin kullanıcısı $1'e geçiş yapıldı
+
 gedit_ecannot=Grupları düzenlemek için izininiz yoktur
 gedit_title=Webmin Grubu Düzenle
 gedit_title2=Webmin Grubu Oluştur
 gedit_group=Grup adı
 gedit_rights=Webmin grup erişim hakları
 gedit_modules=Üye modülleri
+
 gdelete_err=Grup silinirken hata oluştu
 gdelete_ecannot=Grup silmek için izininiz yoktur
 gdelete_euser=Kendi grubunuzu silemezsiniz
@@ -173,10 +182,12 @@ gdelete_esub=Alt gruba sahip gruplar silinemez
 gdelete_title=Grup Sil
 gdelete_desc=$1 grubunu ve üyeleri olan $2 kullanıcılarını silmek istediğinizden emin misiniz?
 gdelete_ok=Grup Sil
+
 gsave_err=Grubun kaydedilmesinde hata oluştu
 gsave_ename=Eksik ya da geçersiz grup adı
 gsave_enamewebmin=Grup adı 'webmin' program içinde kullanılmak için ayırılmıştır.
 gsave_edup=Aynı isimde bir grup zaten mevcut
+
 convert_title=Kullanıcıları Dönüştür
 convert_ecannot=Unix kullanıcılarını dönüştürmek için izininiz yoktur
 convert_nogroups=Sisteminizde tanımlı bir Webmin grubu yok. Oluşturulacak kullanıcılara yeni haklarını tanımlamak için dönüştürme işleminzden önce en az bir adet grup oluşturulmalıdır.
@@ -200,6 +211,7 @@ convert_exists=$1 zaten var
 convert_invalid=$1 geçerli bir Webmin kullanıcı adı değildir
 convert_added=$1 eklendi
 convert_msg=Unix kullanıcıları dönüştürülüyor...
+
 sync_title=Unix Kullanıcı Onaylaması
 sync_desc=Bu form bu modül içerisinden oluşturulan Unix kullanıcıları ile Webmin kullanıcıları arasında otomatik senkronizasyonu yapılandırmanıza izin verir.
 sync_nogroups=Sisteminizde herhangi bir Webmin grubu tanımlanmadı. Oluşturulan kullanıcıların izinlerinin belirlenmesi için en az bir grup oluşturulmalıdır.
@@ -209,6 +221,7 @@ sync_delete=Bir Unix kullanıcısı silindiğinde aynı isimdeki Webmin kullanı
 sync_group=Yeni kullanıcıları Webmin grubuna ata
 sync_unix=Unix onaylaması yapacak yeni kullanıcılar için parola belirleyiniz.
 sync_ecannot=Kullanıcı senkronizasyonunu yapılandırmak için izininiz yoktur
+
 unix_title=Unix Kullanıcı Onaylaması
 unix_desc=Bu sayfa Webmin'e girişlerde sistem kullanıcı listesi ve PAM dışında bir kontrol sağlamanıza olanak tanır. Eğer Webmin'e giriş yapmasını istediğiniz çok sayıda Unix kullanıcısı varsa bu sayfa faydalı olabilir.
 unix_def=Sadece Webmin kullanıcılarının giriş yapmasına izin ver
@@ -223,16 +236,19 @@ unix_euser='$1' geçerli bir kullanıcı adı değil
 unix_egroup='$1' geçerli bir grup adı değil
 unix_shells=Kabuğu, shells dosyasında olmayan kullanıcılara izin verme
 unix_eshells=Eksik ya da geçersiz shells dosyası
+
 sessions_title=Mevcut Oturumlar
 sessions_id=Oturum ID
 sessions_user=Webmin kullanıcısı
 sessions_login=Giriş saati
 sessions_lview=Kayıtları göster..
+
 hide_title=Kullanılmayan Modülleri Gizle
 hide_desc=Aşağıdaki modüller ilgili sunucular sisteminizde kurulu olmadığından modül erişim listesinden silinecektir ..
 hide_ok=Modülleri Şimdi Gizle
 hide_none=Gizlenecek birşey yok - $1 sisteminizde kurulmayan sunucularla ilgili modüllerin hiçbirine erişim izini yoktur.
 hide_desc2=İlgili sunucular sisteminize daha sonradan kurulursa modüller otomatik olarak ortaya çıkmayacaktır. Bu modülü kullanarak elle erişim izini vermeniz gerekmektedir.
 hide_clone=(Klon $1)
+
 switch_euser=Bu kullanıcıya geçiş yapmak için izininiz yoktur
 switch_eold=Mevcut oturumları bulunamadı!

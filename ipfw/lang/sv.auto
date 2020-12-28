@@ -25,6 +25,7 @@ index_resetdesc=Klicka på den här knappen för att rensa alla befintliga brand
 index_cluster=Cluster-servrar
 index_clusterdesc=Klicka på den här knappen för att ställa in ytterligare webmin-servrar som brandväggskonfigurationen kommer att kopieras automatiskt till.
 index_return=brandväggsregler
+
 index_num=Num
 index_action=Verkan
 index_desc=Tillstånd
@@ -37,6 +38,7 @@ index_delete=Radera valda
 index_existing=Webmin har upptäckt $1 IPFW-brandväggsregler som för närvarande används, och som inte registreras i filen $2. Dessa regler inställdes antagligen från ett skript, som den här modulen inte vet hur man läser och redigerar. <p> Om du vill använda den här modulen för att hantera din IPFW-brandvägg, klicka på knappen nedan för att konvertera de befintliga reglerna till en sparfil och inaktivera sedan ditt befintliga brandväggsskript.
 index_saveex=Spara brandväggsregler
 index_headerex=Befintlig brandväggskonfiguration
+
 action_allow=<font color=#00aa00>Tillåt</font>
 action_deny=<font color=#ff0000>Släpp</font>
 action_reject=<font color=#ff4400>Avvisa</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Släpp paket</font>
 laction_reject=<font color=#ff4400>Returnera ICMP-avslag</font>
 laction_reset=<font color=#ff4400>Återställ TCP-anslutning</font>
 laction_skipto=Hoppa till regel
+
 edit_title1=Skapa regel
 edit_title2=Redigera regel $1 
 edit_header1=Regelåtgärd
@@ -114,6 +117,7 @@ edit_src-addr=Från källadress. ..
 edit_src-port=Från källa port ..
 edit_dst-addr=Till destinationsadress ..
 edit_dst-port=Till destinationshamn ..
+
 save_err=Det gick inte att spara regeln
 save_enum=Regelnummer saknas eller ogiltigt
 save_eskipto=Regelnummer saknas eller ogiltigt att hoppa till
@@ -144,7 +148,9 @@ save_etcpflags=TCP-flaggor kan endast specificeras om protokollet är TCP
 save_elimit=Saknas eller ogiltig maximal gräns
 save_edstport=Saknar eller ogiltig destinationsport
 save_esrcport=Saknad eller ogiltig källport
+
 apply_err=Det gick inte att tillämpa konfigurationen
+
 desc_if=Om $1 
 desc_and=och
 desc_always=Alltid
@@ -191,6 +197,7 @@ desc_where=där $1
 desc_all=för alla paket
 desc_in=paketet kommer in
 desc_out=paketet är utgående
+
 log_create_rule=Skapad $1 -regel
 log_delete_rule=$1 -regeln har raderats
 log_modify_rule=Modifierad $1 -regel
@@ -206,6 +213,7 @@ log_convert=Konverterade aktiva brandväggsregler
 log_setup=Utfört den första brandväggsinställningen
 log_unapply=Återställd brandväggskonfiguration
 log_delsel=$1 -regler har tagits bort
+
 cluster_title=Cluster Firewall-servrar
 cluster_none=Inga servrar har lagts till i brandväggsklustret än.
 cluster_host=Värdnamn
@@ -216,6 +224,7 @@ cluster_gadd=Lägg till servrar i grupp
 cluster_need=Du måste lägga till servrar med inloggning och lösenord i Webmin Servers Index-modulen innan de kan hanteras här.
 cluster_return=klustrservrar
 cluster_delete=Ta bort valda
+
 add_title=Lägg till servrar
 add_msg=Lägger till $1 ..
 add_gmsg=Lägga till servrar i grupp $1 ..

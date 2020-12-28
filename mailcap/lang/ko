@@ -9,6 +9,7 @@ index_disable=선택된 것을 주석 처리
 index_enable=선택된 것의 주석 제거
 index_enabled=활성화 (주설 처리 안된 상태)?
 index_return=프로그램 리스트
+
 edit_title1=MIME 타입 프로그램 생성
 edit_title2=MIME 타입 프로그램 수정
 edit_header=MIME 타입 연결 프로그램 상세사항
@@ -21,18 +22,21 @@ edit_test=테스트 명령
 edit_none=없음 (항상 프로그램 사용)
 edit_term=터미널에 결과를 출력하겠습니까?
 edit_desc=MIME 타입 설명
+
 save_err=MIME 타입 프로그램을 저장하는데 실패했습니다.
 save_etype=MIME 타입이 지정되지 않았거나 유효하지 않습니다.
 save_eprogram=연결 프로그램이 지정되지 않았습니다.
 save_eclash=이미 존재하는 입력된 MIME 타입을 위한 프로그램 주석 제거
 save_etest=테스트 명령이 지정되지 않았거나 유효하지 않습니다.
 save_edesc=유효하지 않은 MIME 타입 설명
+
 delete_err=MIME 타입 프로그램 삭제 실패
 disable_err=MIME 타입 프로그램을 주석처리 하는데 실패했습니다.
 disable_eclash=이미 존재하는 $1을 위한 MIME 타입 프로그램 주석 처리
 enable_err=MIME 타입 프로그램의 주석을 제거 하는데 실패했습니다.
 enable_eclash=이미 존재하는 $1을 위한 MIME 타입 프로그램 주석 제거
 delete_enone=선택된 것이 없음
+
 log_delete_mailcap=$1을 위한 MIME 타입 프로그램 삭제
 log_create_mailcap=$1을 위한 MIME 타입 프로그램 생성
 log_modify_mailcap=$1을 위한 MIME 타입 프로그램 편집

@@ -32,6 +32,7 @@ index_man=Eskuz editatu konfigurazioa
 index_mandesc=Zuzenean Procmail konfigurazio fitxategia zuzenean editatu, zure arauak, aldagaiak eta blokeak sortzeko.
 index_ecmd=Procmail programa $1 ez da zure sisteman aurkitu. Ez dago instalatuta, edo <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 index_delete=Ezabatu hautatutako ekintzak
+
 edit_title2=Editatu Ekintza
 edit_title1=Sortu Ekintza
 edit_header1=Bidalketa ekintzaren xehetasunak
@@ -67,6 +68,7 @@ edit_none=Bat ere ez
 edit_lock=Fitxategi espezifikoa
 edit_ctype=Baldintza mota
 edit_cvalue=Adierazpen edo aginte erregularrak
+
 save_err=Ezin izan da ekintza gorde
 save_eaction_0=Erantsitako fitxategia falta da
 save_eaction_1=Idatzi beharreko MH karpeta falta da
@@ -79,6 +81,7 @@ save_elockfile=Falta da blokeoaren fitxategiaren izena
 save_esize=$1 baldintzaren posta elektronikoko tamaina falta edo baliogabea
 save_ere=$1 baldintza adierazpen arrunta falta da
 save_eshell=Komandoa falta da $1 baldintzarako
+
 env_title1=Sortu aldagaia
 env_title2=Editatu aldagaia
 env_header=Procmail inguruaren aldagaia
@@ -86,15 +89,19 @@ env_name=Izena aldakorra
 env_value=Balio
 env_err=Huts egin du aldagaia gordetzean
 env_ename=Aldagai izen falta edo baliogabea
+
 inc_title1=Gehitu Sartu Fitxategia
 inc_title2=Editatu Sartu Fitxategia
 inc_header=Proklamazio arauen fitxategia barne
 inc_inc=Sartutako fitxategia
 inc_einc=Ez da fitxategia sartu
+
 config_eline=$1 lerro ezezaguna $2 an : $3 
+
 manual_title=Editatu konfigurazioa
 manual_desc=Orrialde hau Procmail konfigurazio fitxategia $1 eskuz editatzeko erabil daiteke. Kontuz ibili, ez baita sintaxi egiaztapenik egingo.
 manual_edata=Ez da zure arakatzailerik daturik eman!
+
 log_create_rec=Errezeta $1 sortu da
 log_delete_rec=$1 errezeta ezabatu da
 log_modify_rec=Errezeta aldatu $1 -era
@@ -114,7 +121,9 @@ log_delete_inc=Ezabatuta, $1 fitxategia dago
 log_manual=Eskuz editatutako konfigurazioa
 log_up=Sarrera bat aldatu zen
 log_down=Sarrera bat behera mugitu zen
+
 delete_err=Ezin izan dira ekintzak ezabatu
 delete_enone=Ez da hautatu
+
 check_epostfix=Procmail ez dago gaituta Postfix konfigurazioan. <tt>$2</tt> konfigurazio fitxategiak <tt>$1</tt> aukera ezarri behar du <tt>$3</tt>.
 check_esendmail=Sendmail ez dago konfiguratuta Procmail erabiltzeko lokala bidaltzeko. Webmin <a href='$1'>Sendmail Mail Server</a> moduluan konfigura daiteke.

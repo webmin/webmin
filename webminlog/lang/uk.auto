@@ -16,6 +16,7 @@ index_sdesc=Опис дії містить
 index_shost=Вихідний сервер Webmin
 index_long=Показати повні описи дій?
 index_global=&lt;Ні в якому модулі&gt;
+
 search_webmin=Веб-сервер
 search_none2=Жодна дія не відповідає вашому пошуку дій
 search_critd=де опис містить <tt>$1</tt>
@@ -30,6 +31,7 @@ search_global_baduser=Неправильне ім’я користувача
 search_global_badpass=Неправильний пароль
 search_global_twofactor=Недійсний двофакторний маркер
 search_csv=Експорт як CSV
+
 view_host=Вихідний сервер Webmin
 view_ecannot=Вам заборонено переглядати цю запис у журналі
 view_rollback2=Відкликані вибрані файли
@@ -41,12 +43,14 @@ view_files=Файли змінені і команди запущені
 view_raw=Сирі дані журналу
 view_rawname=Назва параметра
 view_rawvalue=Значення параметра
+
 acl_mods=Можна переглядати журнали в модулях
 acl_all=Усі
 acl_sel=Вибрано нижче ..
 acl_self=Тільки я
 acl_users=Можна переглядати дії користувачів
 acl_rollback=Чи можете відмовити дії?
+
 rollback_title=Відкатна дія
 rollback_rusure=Ви впевнені, що хочете повернути всі перелічені нижче файли до їх вмісту до того, як буде здійснено цю дію? Будь-які дані, які вони наразі містять, будуть замінені такими змінами :
 rollback_isdir=Каталог - жодних змін не буде.
@@ -69,4 +73,5 @@ rollback_modfile=Зворотний вміст файлу $1.
 rollback_deleted=Видалений файл $1.
 rollback_nodeleted=Пропущений неіснуючий файл $1.
 rollback_enone=Файлів не вибрано
+
 log_rollback=Відкат назад дії $1 у модулі $2 

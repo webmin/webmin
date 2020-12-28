@@ -45,6 +45,7 @@ index_ondate=Dátum
 index_charset=Znaková sada autoreply správy
 index_subject=Predmet správy automaticky
 index_nowebmin=Tento modul je určený iba na použitie v Usermine. Ak je viditeľná v aplikácii Webmin, téma, ktorú používate, je neúplná.
+
 edit_title1=Vytvorte filter
 edit_title2=Upraviť filter
 edit_header1=Podmienka pre filter
@@ -71,6 +72,7 @@ edit_amode7=Uložiť do nového priečinka s názvom
 edit_nobounce=Potlačiť preposielanie správ o odchodoch
 edit_apply=Zobraziť zodpovedajúci e-mail v priečinku:
 edit_move=Použiť na e-mail v priečinku:
+
 save_err=Uloženie filtra zlyhalo
 save_egone=Filter už neexistuje!
 save_econdheader=Chýbajúca alebo neplatná hlavička e-mailu
@@ -89,8 +91,10 @@ save_enewfolder3=Priečinok s rovnakým názvom už existuje
 save_estart=Neplatný dátum automatického spustenia
 save_eend=Neplatný dátum ukončenia autoreply
 save_echarset=Chýbajúca alebo neplatná autoreply súbor znakov
+
 delete_err=Filtre sa nepodarilo odstrániť
 delete_enone=Žiadne vybraté
+
 aliases_type1=Adresa 1
 aliases_type2=Adresy v súbore $1 
 aliases_type3=Súbor $1 
@@ -101,6 +105,7 @@ aliases_your=Vaša poštová schránka
 aliases_delete=Odstrániť poštu
 aliases_other=Poštová schránka používateľa $1 
 aliases_auto=Automatická odpoveď so správou $1 
+
 auto_title=Automatická odpoveď e-mailom
 auto_header=Možnosti automatickej odpovede na e-mail
 auto_enabled=Automatická odpoveď povolená?
@@ -111,12 +116,14 @@ auto_charsetdef=Z aktuálneho jazyka
 auto_charsetother=Ďalšia znaková sada
 auto_period=Minimálny interval medzi odpoveďami
 auto_err=Automatickú odpoveď sa nepodarilo uložiť
+
 forward_title=Poslať ďalej e-mailom
 forward_header=Možnosti posielania e-mailov
 forward_enabled=Preposielanie e-mailov je povolené?
 forward_to=Poslať ďalej na adresy
 forward_cont=Dodávať tiež normálne?
 forward_err=Uloženie presmerovania e-mailov zlyhalo
+
 move_err=Nepodarilo sa použiť filter
 move_esrc=Zdrojový priečinok $1 neexistuje!
 move_edest=Cieľový priečinok $1 neexistuje!

@@ -29,6 +29,7 @@ index_ok=Vyhľadávanie
 index_searchres=Cron pracovných miest zodpovedá $1 ..
 index_reset=Obnoviť vyhľadávanie.
 index_econfigcheck=Vo vašom systéme nie je možné spravovať úlohy Cron, pretože konfigurácia modulu nie je platná : $1 
+
 edit_title=Upraviť úlohu Cron
 edit_ecannot=Pre tohto používateľa nemáte povolenie upravovať úlohy cron
 edit_details=Podrobnosti úlohy
@@ -59,6 +60,7 @@ lcedit_special_weekly=týždenne (v nedeľu)
 lcedit_special_monthly=mesačne (1.)
 lcedit_special_yearly=ročne (1. januára)
 lcedit_special_reboot=keď systém topánky
+
 save_err=Uloženie úlohy cron zlyhalo
 save_ecmd=Nezadali ste príkaz na vykonanie
 save_euser=Musíte vybrať používateľa
@@ -68,6 +70,7 @@ save_ecannot=Nemáte oprávnenie vytvárať ani upravovať úlohy cron pre '$1'
 save_enone=Nevybrali ste žiadne $1 na vykonanie
 save_ecannot2=Nemáte oprávnenie vytvárať úlohy cron
 save_eidx=Úloha Cron bola úspešne uložená, ale nemožno ju spustiť, pretože sa nenašla!
+
 allow_title=Riadenie prístupu k Cronu
 allow_desc=Tento formulár vám umožňuje riadiť, ktorí používatelia môžu vytvárať a spúšťať úlohy cron.
 allow_ecannot=Nemôžete ovládať prístup používateľov k cronu
@@ -76,6 +79,7 @@ allow_all2=Odmietnuť všetkých používateľov okrem root
 allow_all3=Povoliť všetkých používateľov
 allow_allow=Povoliť iba registrovaným používateľom
 allow_deny=Odmietnuť iba registrovaných používateľov
+
 env_title1=Upraviť premennú prostredia
 env_title2=Vytvorte premennú prostredia
 env_name=Názov premennej
@@ -91,11 +95,13 @@ env_where2=Presunúť premennú prostredia
 env_top=Pred všetkými úlohami Cron pre používateľa
 env_bot=Po všetkých úlohách spoločnosti Cron
 env_leave=Aktuálna pozícia
+
 exec_title=Vykonajte úlohu Cron
 exec_ecannot=Pre tohto používateľa nemáte povolenie vykonávať úlohy cron
 exec_cmd=Výstup z príkazu $1 ..
 exec_cmdbg=Spustenie príkazu $1 ako proces na pozadí.
 exec_none=Nebol vygenerovaný žiadny výstup
+
 acl_users=Môže editovať cron úlohy pre
 acl_this=Aktuálny užívateľ webminu
 acl_control=Môže ovládať užívateľský prístup do Cronu?
@@ -108,6 +114,7 @@ acl_move=Dokážete presunúť úlohy spoločnosti Cron?
 acl_kill=Môžu ukončiť úlohy spoločnosti Cron?
 acl_hourly=Obmedziť počet pracovných miest najviac na hodinové?
 acl_hourlydef=Podľa nastavenia v module Config
+
 log_modify=Upravená úloha Cron pre $1 
 log_modify_l=Upravená úloha Cron „$2“ pre $1 
 log_create=Vytvorená úloha Cron pre $1 
@@ -125,7 +132,9 @@ log_move=Úloha Cron bola presunutá o $1
 log_crons_delete=Počet odstránených pracovných miest: $1 Cron
 log_crons_disable=Zakázané $1 úlohy Cron
 log_crons_enable=Povolené úlohy $1 Cron
+
 ecopy=V novej konfigurácii Cron bola zistená chyba: $1 $2 
+
 when_min=každú minútu
 when_hour=každú hodinu o $1 za hodinu
 when_day=každý deň na $2:$1 
@@ -134,6 +143,7 @@ when_weekday=každé $3 na $2:$1
 when_cron=v čase cron $1 
 when_interval=každých $1 sekúnd
 when_boot=v čase spustenia
+
 ucwhen_min=Každú minútu
 ucwhen_hour=Každú hodinu o $1 za hodinu
 ucwhen_day=Každý deň v $2:$1 
@@ -142,8 +152,10 @@ ucwhen_weekday=Každé $3 na $2:$1
 ucwhen_cron=V čase cronov $1 
 ucwhen_interval=Každé $1 sekundy
 ucwhen_boot=V čase spustenia
+
 move_err=Úlohu Cron sa nepodarilo presunúť
 move_etype=Túto úlohu nie je možné presunúť
+
 kill_err=Ukončenie úlohy Cron zlyhalo
 kill_ecannot=Túto úlohu nemôžete ukončiť
 kill_egone=Už nebeží
@@ -152,13 +164,16 @@ kill_title=Ukončiť prácu Cron
 kill_rusure=Naozaj chcete ukončiť proces $1 pomocou PID $2 ?
 kill_rusure2=Naozaj chcete ukončiť proces $1 pomocou PID $2 a všetkých jeho čiastkových procesov?
 kill_ok=Áno, ukončiť to
+
 range_all=Beží v ľubovoľný deň
 range_start=Spustiť iba od $1 
 range_end=do $1 
 range_estart=Chýbajúci alebo neplatný dátum začatia v rozsahu na spustenie
 range_eend=Chýbajúci alebo neplatný dátum ukončenia v rozsahu na spustenie
+
 delete_err=Úlohy Cron sa nepodarilo odstrániť
 delete_enone=Žiadne vybraté
+
 manual_title=Ručné úpravy úloh Cron
 manual_edit=Súbor Cron na úpravu:
 manual_ok=editovať

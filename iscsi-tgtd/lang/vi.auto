@@ -2,6 +2,7 @@ check_econfigset=Không có tập tin cấu hình iSCSI TGTd!
 check_econfig=Không tìm thấy tệp cấu hình iSCSI TGTd $1 trên hệ thống của bạn.
 check_etgtadm=Không tìm thấy lệnh quản trị iSCSI TGTd $1 trên hệ thống của bạn.
 check_einit=Hành động khởi động $1 không tồn tại
+
 index_title=iSCSI TGTd
 index_clink=Có thể nó chưa được cài đặt hoặc cấu hình mô-đun <a href='$1'></a> của bạn không chính xác.
 index_stop=Dừng iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=Người dùng được phép
 index_size=Tổng kích thước
 index_noluns=không ai
 index_nousers=Bất kì
+
 dtargets_err=Không thể xóa mục tiêu
 dtargets_enone=Không có lựa chọn!
+
 target_title1=Tạo mục tiêu iSCSI
 target_title2=Chỉnh sửa mục tiêu iSCSI
 target_header=tùy chọn thiết bị chia sẻ iSCSI
@@ -74,11 +77,13 @@ target_direct=Truy cập thiết bị trực tiếp
 target_cache=Cache ghi vào thiết bị?
 target_eaddr=Địa chỉ IP được phép không hợp lệ
 target_eaname=Tên người khởi tạo được phép không hợp lệ
+
 start_err=Không thể khởi động iSCSI TGTd
 stop_err=Không thể dừng iSCSI TGTd
 restart_err=Không thể khởi động lại iSCSI TGTd
 atboot_err=Không thể bật khi khởi động
 atboot_einit=Tập lệnh ban đầu $1 không tồn tại
+
 log_create_target=Đã tạo mục tiêu $1 
 log_delete_target=Đã xóa mục tiêu $1 
 log_modify_target=Mục tiêu đã sửa đổi $1 
@@ -89,6 +94,7 @@ log_restart=Khởi động lại máy chủ iSCSI
 log_atboot=Đã bật máy chủ iSCSI khi khởi động
 log_delboot=Máy chủ iSCSI bị vô hiệu hóa khi khởi động
 log_manual=Chỉnh sửa tập tin cấu hình
+
 manual_title=Chỉnh sửa tập tin cấu hình
 manual_file=Chọn tệp để chỉnh sửa:
 manual_ok=Mở

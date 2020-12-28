@@ -12,7 +12,9 @@ main_readonly=(Mod baca sahaja)
 main_return=Kembali kepada $1
 main_unused=Modul yang tidak digunakan
 main_refreshmods=Penyegaran Modul
+
 link_essl=Modul Perl Net::SSLeay yang diperlukan untuk membuat sambungan HTTPS tidak dipasang dalam sistem anda.
+
 category_servers=Pelayan
 category_hardware=Perkakasan
 category_system=Sistem
@@ -21,6 +23,7 @@ category_net=Rangkaian
 category_syslet=Syslets
 category_cluster=Kluster
 category_info=Maklumat
+
 longcategory_servers=Modul-modul untuk mengkonfigurasikan web, email, FTP dan pelayan lain
 longcategory_hardware=Modul-modul untuk pencetak, disk dan penetapan perkakasan lain
 longcategory_system=Modul-modul untuk pengguna, fail sistem, Tugas Cron dan lain-lain tetapan.
@@ -28,11 +31,13 @@ longcategory_webmin=Modul-modul untuk mengkonfigurasi Webmin sendiri
 longcategory_net=Modul-modul untuk mengkkonfigurasikan rangkaian serta servis rangkaian
 longcategory_cluster=Modul-modul yang dapat manguruskan beberapa pelayan daripada antara muka tunggal
 longcategory_info=Modul-modul yang memaparkan maklumat perihal sistem anda
+
 header_webmin=Indeks Webmin
 header_module=Indeks Modul
 header_help=Bantuan..
 header_config=Konfig Modul
 header_servers=Pelayan Webmin
+
 index=indeks
 yes=Ya
 no=Tidak
@@ -62,12 +67,14 @@ euserdbacl=Gagal untuk mendapatkan ACL pengguna : $1
 euserdbacl2=Gagal untuk mengemas kini ACL pengguna : $1
 egroupdbacl=Gagal untuk dapatkan ACL grup : $1
 egroupdbacl2=Gagal untuk mengemas kini ACL grup : $1
+
 chooser_title1=Pilih Fail..
 chooser_title2=Pilih Kategori..
 chooser_dir=Direktori daripada $1
 chooser_ok=Ok
 chooser_date=Pilih Tarikh
 chooser_eopen=Penyenaraian telah gagal : $ 1
+
 users_title1=Pilih Pengguna..
 users_title2=Pilih Pengguna..
 users_sel=Pengguna Dipilih
@@ -75,6 +82,7 @@ users_all=Semua Pengguna
 users_ok=Ok
 users_cancel=Batal
 users_clear=Lapang
+
 groups_title1=Pilih Grup-grup..
 groups_title2=Pilih Grup..
 groups_all=Semua Grup
@@ -82,6 +90,7 @@ groups_sel=Grup Dipilih
 groups_ok=Ok
 groups_cancel=Batal
 groups_clear=Lapang
+
 modules_title1=Pilih modul-modul..
 modules_title2=Pilih modul..
 modules_sel=Modul terpilih
@@ -89,6 +98,7 @@ modules_all=Kesemua modul
 modules_ok=Ok
 modules_cancel=Batal
 modules_clear=Lapang
+
 config_ecannot=Anda tidak dibenarkan untuk mengkonfigurasikan modul ini
 config_title=Konfigurasi
 config_dir=Untuk modul $1
@@ -99,6 +109,7 @@ config_err=Gagal untuk menyimpan konfigurasi
 config_nochange=Jangan ubah
 config_setto=Set kepada
 config_ewebmin=Parameter jenis 14 hanya berfungsi dengan Webmin
+
 help_err=Gagal untuk memaparkan bantuan
 help_epath=Hilang atau lokasi bantuan yang tidak sah
 help_efile=Gagal untuk membaca fail bantuan $1
@@ -106,12 +117,14 @@ help_eheader=Seksyen &lt;header&gt; hilang
 help_einclude=Gagal untuk menyertakan $1
 help_eif=$1 telah gagal : $2
 help_eexec=$1 gagal : $2
+
 referer_title=Amaran Keselamatan
 referer_warn=<b>Amaran!</b> Webmin telah mengesan program $2 yang telah dipautkan daripada URL $1, yang mana dipaparkan diluar pelayan Webmin. Ini mungkin cubaan untuk mengelirukan pelayan anda untuk melaksanakan arahan yang bahaya.
 referer_warn_unknown=<b>Amaram!</b> Webmin mengesan yang program $1 telah dipautkan kepada URL asing, dimana diluar pelayan Webmin. Ini mungkin cubaan untuk mengelirukan pelayan anda untuk melaksanakan arahan yang bahaya.
 referer_fix1=Jika ini adalah pautan yang sah, anda boleh benarkan pautan dari URL ini seperti berikut :<ul><li>Log masuk ke Webmin seperti biasa</li><li>Buka modul <b>Konfigurasi Webmin</b></li><li>Klik pada Perujuk ikon dipercayai.</li><li> Masukkan nama hos $1 ke dalam medan <b>laman web dipercayai</b>, dan klik <b>Simpan</b>.</li></ul>
 referer_fix2=Cara lain, anda boleh mengkonfigurasi Webmin untuk membenarkan pautan ini dengan menggunakan arahan consol : <ul><li>Log masuk sebagai <tt>root</tt>, dan sunting fail <tt>/etc/webmin/config</tt>.</li><li>Tambah <tt>referers=$1</tt> pada baris akhir, atau jika baris <tt>referers</tt> sudah wujud tambah <tt>$1</tt> padanya.</li><li>Simpan fail tersebut.</li></ul>
 referer_fix2u=Cara lain, anda boleh mengkonfigurasi Webmin untuk membenarkan pautan tidak dikenali dengan : <ul><li>Log masuk sebagai <tt>root</tt>, dan sunting fail <tt>/etc/webmin/config</tt>.</li><li>Cari baris <tt>referers_none=1</tt> dan ubahkan kepada <tt>referers_none=0</tt>.</li><li>Simpan fail tersebut.</li></ul>
+
 session_header=Log masuk ke Webmin
 session_mesg=Anda perlu menaip nama dan kata laluan untuk log masuk ke dalam pelayan Webmin pada $1.
 session_mesg2=Anda perlu memasukkan nama dan kata laluan untuk log masuk.
@@ -125,11 +138,13 @@ session_twofailed=Pengesahan dua-faktor telah gagal : $1
 session_logout=Log keluar berjaya. Gunakan borang dibawah untuk log masuk kembali.
 session_timed_out=Sessi tamat tempoh selepas $1 minit tidak aktif.
 session_save=Ingat log masuk selamanya?
+
 pam_header=Log masuk ke Webmin
 pam_mesg=Anda perlu menjawab soalan di bawah untuk log masuk ke pelayan Webmin di $1.
 pam_mesg2=Anda perlu menjawab soalan di bawah untuk log masuk.
 pam_login=Teruskan
 pam_restart=Semula
+
 acl_root=Direktori root untuk pemilih fail
 acl_otherdirs=Direktori lain boleh dilihat dalam pemilih fail
 acl_nodot=Menyembunyikan fail titik dalam pemilih fail?
@@ -162,6 +177,7 @@ acl_negative=Beri kebenaran modul baharu kepada pengguna?
 acl_fileunix=Lihat fail sebagai pengguna Unix
 acl_sameunix=Sama seperti log masuk Webmin
 acl_webminsearch=Paparkan medan carian Webmin?
+
 month_1=Januari
 month_2=Februari
 month_3=Mac
@@ -174,6 +190,7 @@ month_9=September
 month_10=Oktober
 month_11=November
 month_12=Disember
+
 day_0=Ahad
 day_1=Isnin
 day_2=Selasa
@@ -181,6 +198,7 @@ day_3=Rabu
 day_4=Khamis
 day_5=Jumaat
 day_6=Sabtu
+
 smonth_1=Jan
 smonth_2=Feb
 smonth_3=Mac
@@ -193,6 +211,7 @@ smonth_9=Sep
 smonth_10=Okt
 smonth_11=Nov
 smonth_12=Dis
+
 sday_0=Ah
 sday_1=Is
 sday_2=Se
@@ -200,12 +219,15 @@ sday_3=Ra
 sday_4=Kh
 sday_5=Ju
 sday_6=Sa
+
 emodule=Capaian dinafi : Pengguna $1 tidak dibenar untuk menggunakan modul $2
 emodulecheck=Modul $1 tiada dalam sistem anda
 elock_tries2=Gagal untuk mengunci fail $1 selepas $2 minit. Ralat terdahulu adalah : $3
+
 skill_high=Pakar
 skill_medium=Pertengahan
 skill_low=Novis
+
 feedback_title=Maklum balas Webmin
 feedback_desc=Borang ini membenarkan anda melapor pepijat atau membuat cadangan kepada pembangun Webmin berkenaan sebarang masalah atau kehilangan sifat yang ditemui. Apabila butang Hantar diklik, perincian yang diisi di dalam borang akan diemelkan kepada $1.
 feedback_desc2=Maklum balas ini akan dihantar kepada pembangun Usermin, bukan pentadbir sistem, ISP atau syarikat hosting anda. Sila tulis maklumbalas anda dalam Bahasa Inggeris, walaupun ketika ini anda melarikan Webmin dalam Bahasa Malaysia.
@@ -234,15 +256,18 @@ feedback_to=Hantar maklum balas kepada alamat-alamat
 feedback_enoto=Tiada sebarang alamat yang dimasukkan bagi menghantar maklumbalas
 feedback_ecannot=Anda tidak dibenar menghantar maklum balas
 feedback_ecannot2=Anda tidak dibenar untuk menghantar maklum balas yang mengandungi fail konfigurasi
+
 progress_size2=Muat turun $1 ($2) ..
 progress_nosize=Muat turun $1 ..
 progress_datan=Menerima $1 ($2 %)
 progress_data2n=Menerima $1
 progress_done=.. Muat turun selesai.
 progress_incache=Jumpa $1 dalam cache ..
+
 readparse_cdheader=Kepala Content-Disposition hilang
 readparse_enc=Menjangkakan pengekodan form-data, tetapi menerima pengekodan biasa
 readparse_max=Data melebihi saiz maksima $1 bait
+
 password_expired=Kata laluan anda luput, dan perlu dibuat semula.
 password_temp=Anda mesti memilih kata laluan baharu untuk menggantikan log masuk sementara anda.
 password_header=Pilih Kata laluan Baharu
@@ -261,6 +286,7 @@ password_enew2=Kata laluan baharu anda tidak sepadan
 password_epam=Ralat PAM : $1
 password_emodpam=Perl modul  Authen::PAM diperlukan untuk melakukan perubahan kata laluan tidak dipasang!
 password_enewpass=Kata laluan baharu tidak dibenarkan : $1
+
 ui_mandatory=Medan ini adalah wajib
 ui_checkmandatory=Tiada apa yang dipilih
 ui_errors=Pelbagai ralat telah dikesan :
@@ -275,7 +301,9 @@ ui_etime=Masa tidak sah
 ui_paging=Memaparkan baris $1 ke $2 $3
 ui_rowlabel=$2 dalam baris $1 :
 ui_filterbox=Taip untuk tapis..
+
 header_statusmsg=$1 telah log ke $2 $3 pada $4 ($5)
+
 uptracker_title=Memuat nail fail
 uptracker_file=Nama fail
 uptracker_size=Saiz
@@ -283,6 +311,7 @@ uptracker_pc=Kemajuan
 uptracker_eid=Tiada ID muat naik yang khusus
 uptracker_eid2=ID muat naik tidak sah!
 uptracker_of=$1 daripada $2
+
 wsearch_title=Carian $1
 wsearch_modt=Modul
 wsearch_mtitle=Nama modul
@@ -310,6 +339,7 @@ wsearch_hmod=Modul
 wsearch_moddir=Lokasi URL /$1/
 wsearch_searching=Carian untuk $1 . .
 wsearch_found=Jumpa $1 hasil :
+
 sql_emysqldriver=Gagal untuk memuatkan pemacu perisian MySQL DBI
 sql_emysqlconnect=Gagal untuk menyambung kepada pangkalan data MySQL : $1
 sql_epostgresqldriver=Gagal untuk memuatkan pemacu perisian PostgreSQL DBI

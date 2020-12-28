@@ -1,5 +1,6 @@
 index_euser=Ve vašem systému nebyl nalezen konfigurační soubor RBAC $1. Možná není nainstalován RBAC nebo je nesprávná konfigurace modulu <a href='$2'></a>.
 index_return=index modulu
+
 users_title=Atributy uživatele
 users_user=Uživatelské jméno
 users_profiles=Udělené profily
@@ -10,6 +11,7 @@ users_return=seznam uživatelských atributů
 users_type=Typ
 users_role=Role
 users_project=Projekt
+
 user_title1=Vytvořit uživatelské atributy
 user_title2=Upravit uživatelské atributy
 user_header=Atributy udělené uživateli Unixu
@@ -35,6 +37,7 @@ user_eauth='$1' není platná autorizace
 user_ecannot=Nemáte oprávnění upravovat tohoto uživatele
 user_erole=Není dovoleno přiřadit roli '$1'
 user_eprof=Nemáte oprávnění přiřadit profil '$1'
+
 auths_title=Oprávnění
 auths_name=Jméno autorizace
 auths_desc=Popis
@@ -42,8 +45,10 @@ auths_none=Dosud nebyla definována žádná oprávnění.
 auths_add=Přidejte novou autorizaci.
 auths_return=seznam oprávnění
 auths_ecannot=Nemáte oprávnění upravovat oprávnění
+
 authc_name=Oprávnění
 authc_desc=Popis
+
 auth_title1=Vytvořit autorizaci
 auth_title2=Upravit autorizaci
 auth_header=Podrobnosti oprávnění oprávnění
@@ -57,6 +62,7 @@ auth_edesc=Neplatný dlouhý popis
 auth_eclash=Autorizace se stejným názvem již existuje
 auth_einuseu=Toto oprávnění používá uživatel $1, a proto jej nelze odstranit
 auth_einusep=Toto oprávnění používá profil $1, a proto jej nelze odstranit
+
 profs_title=Profily
 profs_name=Jméno profilu
 profs_desc=Popis
@@ -65,6 +71,7 @@ profs_none=Dosud nebyly definovány žádné profily.
 profs_add=Přidejte nový profil.
 profs_return=seznam profilů
 profs_ecannot=Nemáte oprávnění upravovat profily
+
 prof_title1=Vytvořit profil
 prof_title2=Upravit profil
 prof_header=Podrobnosti o profilu autorizace
@@ -81,6 +88,7 @@ prof_einuseu=Tento profil používá uživatel $1, a proto jej nelze odstranit
 prof_einusep=Tento profil je používán profilem $1, a proto jej nelze odstranit
 prof_einusee=Tento profil obsahuje $1 profily provádění, a proto jej nelze odstranit
 prof_none=Nejsou k dispozici žádné profily
+
 execs_title=Realizační profily
 execs_name=Profil
 execs_policy=Pravidla bezpečnosti
@@ -92,6 +100,7 @@ execs_none=Dosud nebyly definovány žádné profily provádění.
 execs_add=Přidejte nový prováděcí profil.
 execs_return=seznam prováděcích profilů
 execs_ecannot=Není dovoleno upravovat profily provádění
+
 exec_title1=Vytvořte profil spuštění
 exec_title2=Upravit prováděcí profil
 exec_header=Podrobnosti profilu provádění
@@ -113,6 +122,7 @@ exec_erruid=Chybějící nebo neplatný uživatel pro spuštění jako
 exec_errgid=Chybějící nebo neplatná skupina pro spuštění jako
 exec_erreuid=Chybějící nebo neplatný efektivní uživatel, který může fungovat jako
 exec_erregid=Chybějící nebo neplatná efektivní skupina pro spuštění jako
+
 policy_title=Systémové zásady
 policy_header=Globální nastavení systémových zásad
 policy_auths=Oprávnění pro všechny uživatele
@@ -126,16 +136,20 @@ policy_err=Uložení systémových zásad se nezdařilo
 policy_eallow=Nebyly vybrány žádné algoritmy
 policy_eclash=Algoritmus, který povolí a odmítne, nelze vybrat současně
 policy_ecannot=Není dovoleno upravovat systémové zásady
+
 attr_none=Nejsou definovány žádné uživatelské atributy
 attr_nonenormal=Nejsou definováni žádní uživatelé Unixu
 attr_nonerole=Nejsou definovány žádné dostupné role
+
 help_epath=Neplatná cesta k souboru nápovědy!
 help_link=(Pomoc..)
+
 crypt___unix__=Unixová krypta
 crypt_1=BSD MD5
 crypt_2a=BSD Flowfish
 crypt_md5=Sun MD5
 crypt_rot13=ROT13
+
 log_create_user=Byly vytvořeny uživatelské atributy pro $1 
 log_modify_user=Upravené atributy uživatele pro $1 
 log_delete_user=Odstraněné atributy uživatele pro $1 
@@ -152,6 +166,7 @@ log_create_project=Vytvořený projekt $1
 log_modify_project=Upravený projekt $1 
 log_delete_project=Smazaný projekt $1 
 log_policy=Změněné systémové zásady
+
 acl_roles=Lze editovat role?
 acl_users=Lze upravovat atributy uživatele?
 acl_roleassign=Lze přiřadit role
@@ -166,6 +181,7 @@ acl_profs=Lze upravovat profily?
 acl_ro=Zobrazit pouze
 acl_execs=Lze upravit prováděcí profily?
 acl_projects=Lze upravovat projekty?
+
 projects_title=Projekty
 projects_name=název
 projects_id=ID
@@ -184,6 +200,7 @@ projects_exceptusers=Všichni uživatelé kromě $1
 projects_exceptgroups=Všechny skupiny kromě $1 
 projects_onlyusers=Pouze 1
 projects_onlygroups=Pouze 1
+
 project_title1=Vytvořit projekt
 project_title2=Upravit projekt
 project_header=Podrobnosti projektu a členové
@@ -219,6 +236,7 @@ project_egroupscannot=Nebyly vybrány žádné skupiny, které by bylo možné v
 project_elimit=Chybějící nebo neplatný limit v řádku $1 
 project_epool=Chybějící nebo neplatný název fondu projektu
 project_erss=Chybějící nebo neplatná maximální paměť
+
 prctl_title=Řízení zdrojů
 prctl_ok=Zobrazit limity pro:
 prctl_mode0=Zpracování s ID

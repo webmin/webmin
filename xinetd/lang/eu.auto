@@ -25,6 +25,7 @@ index_estart=Xinetd $1 abiarazteko komandoa ez da existitzen. Agian ez dago inst
 index_noport=ezezaguna
 index_enable=Gaitu hautatua
 index_disable=Desgaitu hautatua
+
 serv_create=Sortu Interneteko zerbitzua
 serv_edit=Editatu Interneteko zerbitzua
 serv_header1=Zerbitzuaren sareko aukerak
@@ -78,19 +79,24 @@ serv_enice=Maila polita edo falta da
 serv_ecps0=Segundoko konexio kopurua falta edo baliogabea
 serv_ecps1=Atzerapen falta edo baliogabea
 serv_etimes=Sarbide orduak HH formatuan egon behar dira: MM-HH: MM
+
 sock_stream=Stream
 sock_dgram=Datagram
 sock_raw=Raw
 sock_seqpacket=Datagrama sekuentziala
+
 proto_=Default
 proto_ip=IP (Interneteko protokoloa)
 proto_tcp=TCP (Transmisio Kontrol Protokoloa)
 proto_udp=UDP (Erabiltzailearen Datagramaren Protokoloa)
+
 restart_err=Ezin izan dira aldaketak aplikatu
 restart_ekill=Huts egin du USR2 seinalea PID $1 : $2 ra bidaltzean
 restart_epid=Jada ez da martxan
+
 start_err=Huts egin du xinetd abiaraztean
 start_estart=$1 huts egin du : $2 
+
 defs_title=Lehenetsitako aukerak
 defs_header=Zerbitzuen aukera lehenetsiak
 defs_log=Xinetd erregistratzeko modua
@@ -115,6 +121,7 @@ defs_err=Huts egin du aukera lehenetsiak gordetzean
 defs_efile=Falta fitxategiaren izena edo falta da
 defs_esoft=Mota bigun falta edo baliogabea da
 defs_ehard=Muga gogorra falta edo baliogabea da
+
 log_create_serv=$2 zerbitzua $1 sortu da
 log_modify_serv=$2 zerbitzua $1 aldatua
 log_delete_serv=$2 zerbitzua $1 ezabatu da
@@ -125,5 +132,6 @@ log_enable=$1 zerbitzuak gaituta
 log_disable=$1 zerbitzu ezgaituak
 log_enable_l=Gaitutako zerbitzuak $1 
 log_disable_l=Ezgaitutako zerbitzuak $1 
+
 config_dirdef=Xinetd konfigurazio fitxategia
 config_dirto=Fitxategi berria direktorioan

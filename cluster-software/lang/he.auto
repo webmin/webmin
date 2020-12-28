@@ -21,6 +21,7 @@ index_thost=שם מארח
 index_tdesc=תיאור
 index_tcount=חבילות
 index_ttype=סוג מערכת הפעלה
+
 install_err=התקנת החבילה נכשלה
 install_elocal=לא ניתן קובץ מקומי
 install_elocal2='$1' אינו קיים
@@ -37,6 +38,7 @@ install_ok=להתקין
 install_erus=שרת זה משתמש במערכת עדכונים שונה לשרת הראשי ($1 לעומת $2)
 install_eupdate=אירעה שגיאה בהתקנת העדכונים שצוינו
 install_ealready=גרסה $1 כבר מותקנת
+
 add_title=הוסף שרתים
 add_msg=מוסיף $1 ..
 add_gmsg=הוספת שרתים בקבוצה $1 ..
@@ -45,6 +47,7 @@ add_gerr=הוספת קבוצה נכשלה
 add_echeck=לשרת $1 אין מודול חבילות התוכנה
 add_esystem=שרת $1 אינו משתמש באותה מערכת חבילה של מכונה זו
 add_ok=נוספו $1 עם $2 חבילות.
+
 search_title=חיפוש חבילות
 search_nomatch=אין חבילות תואמות $1 
 search_none=אף אחד
@@ -56,6 +59,7 @@ search_return=תוצאות חיפוש
 search_delete=הסר התקנת חבילות נבחרות מ:
 search_selall=בחר הכל
 search_invert=בחירה הפוך
+
 host_title=שרת מנוהל
 host_header=פרטי שרת מנוהלים בתוכנה
 host_name=שם מארח
@@ -70,6 +74,7 @@ host_count=חבילות מותקנות
 host_os=מערכת הפעלה מ- Webmin
 host_return=פרטי שרת
 host_system=מערכת חבילות
+
 edit_title=ערוך את החבילה
 edit_details=פרטי חבילה מ- $1 
 edit_desc=תיאור
@@ -88,6 +93,7 @@ edit_all=&lt;כל המארחים&gt;
 edit_donthave=&lt;מארחים שאין להם את זה&gt;
 edit_have=&lt;מארחים שיש להם את זה&gt;
 edit_group=חברים ב- $1 
+
 list_title=קבצי חבילה
 list_files=קבצים לחבילה $1 על $2 
 list_path=נתיב
@@ -97,6 +103,7 @@ list_type=סוג
 list_size=גודל
 list_status=סטטוס
 list_ok=בסדר
+
 refresh_title=רענן רשימות חבילות
 refresh_header=מבקש מחדש רשימות חבילות מכל השרתים ..
 refresh_header4=מבקש מחדש רשימות חבילה מחברים ב- $2.
@@ -108,6 +115,7 @@ refresh_4=רענן $1 (ללא שינויים)
 refresh_done=.. בוצע
 refresh_del=$1 הוסר מרשימת השרתים
 refresh_failed=רענון $1 : $2 נכשל
+
 delete_err=מחיקת החבילה $1 נכשלה
 delete_epack=החבילה $1 אינה קיימת
 delete_title=מחק את החבילה
@@ -120,6 +128,7 @@ delete_error=מחיקת $1 : $2 נכשלה
 delete_success=נמחק מ- $1.
 delete_done=.. בוצע
 delete_header=מוחק את החבילה $1 ..
+
 do_title=התקן את החבילה
 do_header=מתקין $1 על כל המארחים ..
 do_header3=מתקין $1 על מארחים שעדיין אין להם ..
@@ -140,6 +149,7 @@ do_arch=ארכיטקטורה
 do_inst=מותקן
 do_none=אף אחד
 do_edeleted=קובץ ההתקנה נמחק - חזור לאינדקס המודול ונסה שוב.
+
 compare_title=השווה חבילות
 compare_desc=ניתן להשתמש בטופס זה כדי להשוות את החבילות המותקנות בשני שרתים או יותר, ולמצוא אי התאמות בין גרסאות או חבילות זמינות.
 compare_hosts=שרתים להשוואה
@@ -154,6 +164,7 @@ compare_showall=חבילות להראות
 compare_showall1=את כל
 compare_showall0=רק חוסר התאמה
 compare_got=בסדר
+
 deletes_err=מחיקת החבילות נכשלה
 deletes_enone=לא נבחרו חבילות
 deletes_title=מחק חבילות

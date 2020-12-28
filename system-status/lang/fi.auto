@@ -44,6 +44,7 @@ right_upsec=$1 pakettipäivityksiä on saatavana, joista $2 ovat tietoturvapäiv
 right_recollect=Päivitä järjestelmätiedot
 right_vvirtualmin=Virtualmin-versio
 right_vvm2=Cloudmin-versio
+
 acl_show=Näytettävät järjestelmätiedot
 acl_showall=Kaikki
 acl_showsel=Vain valittu ..

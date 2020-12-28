@@ -69,6 +69,7 @@ index_reset=Reset Firewall
 index_resetdesc=Click this button to clear all existing firewall rules and set up new rules for a basic initial configuration.
 index_cluster=Cluster Servers
 index_clusterdesc=Click this button to set up additional Webmin servers to which the firewall configuration will be automatically copied.
+
 desc_p=protocol is $1
 desc_p!=protocol is not $1
 desc_s=source is $1
@@ -122,9 +123,14 @@ desc_physdev-out!=output physical interface is not $1
 desc_conds=If $1
 desc_and=and
 desc_always=Always
+
 redhat_eoutput=An error occured getting IPtables status from the command $1. This probably indicates that your system has been configured to use IPchains instead of IPtables.
+
 gentoo_escript=The Gentoo IPtables startup script $1 was not found on your system.
+
 eiptables=Unknown IPtables save file line : $1
+eip6tables=Unknown ip6tables save file line : $1
+
 edit_title1=Add Rule
 edit_title2=Edit Rule
 edit_title3=Clone Rule
@@ -191,6 +197,7 @@ edit_physdevout=Outgoing physical interface
 edit_physdevisin=Packet incoming on bridge interface
 edit_physdevisout=Packet outgoing on bridge interface
 edit_physdevisbridged=Packet is being bridged
+
 save_err=Failed to save rule
 save_echain=Missing or invalid chain to run
 save_esource=Missing or invalid source address or network
@@ -235,23 +242,28 @@ save_estates=No connection states selected
 save_ecanjump=You are not allowed to use this action
 save_ephysdevin=Missing or invalid incoming physical interface
 save_ephysdevout=Missing or invalid outgoing physical interface
+
 delete_title=Delete Chain
 delete_rusure=Are you sure you want to delete the chain $1 ? $2 rules within it will be deleted.
 delete_ok=Delete Now
 delete_ecannot=You are not allowed to delete chains
+
 clear_title=Clear Chain
 clear_rusure=Are you sure you want to delete all $2 rules from chain $1 ?
 clear_ecannot=You are not allowed to clear chains
+
 new_err=Failed to create chain
 new_ename=Missing or invalid chain name
 new_etaken=A chain with this name already exists
 new_ecannot=You are not allowed to create chains
+
 apply_err=Failed to apply configuration
 apply_ecannot=You are not allowed to apply the configuration
 apply_remote=Error from $1 : $2
 unapply_err=Failed to revert configuration
 unapply_ecannot=You are not allowed to revert the configuration
 bootup_ecannot=You are not allowed to enable or disable the firewall at bootup
+
 log_create_rule=Added rule to chain $1 in table $2
 log_modify_rule=Modified rule in chain $1 in table $2
 log_delete_rule=Deleted rule in chain $1 in table $2
@@ -274,8 +286,10 @@ log_add_group=Added cluster servers from group $1
 log_delete_host=Removed cluster server $1
 log_delete_group=Removed $1 cluster servers
 log_openports=Opened firewall ports $1
+
 setup_eiface=No external network interface entered
 setup_ecannot=You are not allowed to setup the firewall
+
 acl_tables=Allowed IPtables
 acl_apply=Can apply configuration?
 acl_unapply=Can un-apply configuration?
@@ -287,9 +301,11 @@ acl_jall=All
 acl_newchain=Can create new chains?
 acl_delchain=Can delete or clear chains?
 acl_policy=Can change default policy?
+
 etable=You are not allowed to edit this IPtable
 ejump=You are not allowed to edit this rule
 ecluster=You are not allowed to manage the firewall cluster
+
 cluster_title=Cluster Firewall Servers
 cluster_none=No servers have been added to the firewall cluster yet.
 cluster_host=Hostname
@@ -300,6 +316,7 @@ cluster_gadd=Add servers in group
 cluster_need=You must add servers with a login and password in the Webmin Servers Index module before they can be managed here.
 cluster_return=cluster servers
 cluster_delete=Remove Selected
+
 add_title=Add Servers
 add_msg=Adding $1 ..
 add_gmsg=Adding servers in group $1 ..
@@ -308,13 +325,16 @@ add_gerr=Failed to add group
 add_echeck=Server $1 does not have the Linux Firewall module
 add_emissing=Server $1 is missing the firewall command $2
 add_ok=Added $1, with $2 active firewall rules.
+
 policy_ecannot=You are not allowed to change the default policy for this chain
+
 move_title=Move Rules
 move_count=Rules selected
 move_chain=Current change
 move_dest=Destination chain
 move_ok=Move Now
 move_header=Rule move options
+
 rename_title=Rename Chain
 rename_count=Rules in chain
 rename_chain=Current name
@@ -324,4 +344,3 @@ rename_header=Chain rename options
 rename_adjust=Modify other rules that jump to this chain?
 rename_none=None
 rename_ecannot=You are not allowed to rename chains
-eip6tables=Unknown ip6tables save file line : $1

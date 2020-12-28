@@ -43,8 +43,10 @@ index_natnone=Nie zdefiniowano jeszcze reguł translacji adresów sieciowych.
 index_nataction=Tryb NAT
 index_natfrom=Pakiety pasujące
 index_natto=Tłumaczenie
+
 dir_in=Przychodzący
 dir_out=Towarzyski
+
 action_pass=<font color=#00aa00>Przekaż</font>
 action_block=<font color=#ff0000>Blokuj</font>
 action_skip=Pominąć
@@ -57,6 +59,7 @@ action_map=Mapowanie
 action_rdr=Przeadresować
 action_bimap=Mapowanie dwukierunkowe
 action_map-block=Blokuj mapowanie
+
 laction_pass=<font color=#00aa00>Przekaż pakiet</font>
 laction_block=<font color=#ff0000>Blokuj pakiet z kodem ICMP</font>
 laction_log=Pakiet dziennika, na poziomie
@@ -65,6 +68,7 @@ laction_skip=Pomiń kolejne zasady
 laction_auth=Autoryzacja przestrzeni użytkownika
 laction_preauth=Sprawdź poprzednią autoryzację
 laction_call=Wywołaj funkcję jądra
+
 edit_title1=Stwórz zasadę
 edit_title2=Edytuj regułę
 edit_header1=Reguła działania
@@ -130,6 +134,7 @@ edit_icmp=Typ ICMP
 edit_icmpany=&lt;Dowolny typ&gt;
 edit_icmpcode=i kod
 edit_codeany=&lt;Dowolny kod&gt;
+
 save_err=Nie udało się zapisać reguły
 save_ehostfrom=Brakująca lub nieprawidłowa nazwa hosta źródłowego
 save_ehostto=Brakująca lub niepoprawna docelowa nazwa hosta
@@ -158,11 +163,13 @@ save_eto=Brakujący lub nieprawidłowy interfejs do wysłania
 save_etoip=Nieprawidłowy adres IP do wysłania
 save_ereplyto=Brakujący lub nieprawidłowy interfejs do udzielenia odpowiedzi
 save_ereplytoip=Nieprawidłowy adres IP, na który należy odpowiedzieć
+
 apply_err=Nie można zastosować konfiguracji
 apply_remote=Błąd z $1 : $2 
 unapply_err=Nie można przywrócić konfiguracji
 unapply_ein=Nie udało się pobrać reguł wprowadzania
 unapply_eout=Nie udało się pobrać reguł wyjściowych
+
 desc_if=Jeśli $1 
 desc_and=i
 desc_always=Zawsze
@@ -196,6 +203,7 @@ desc_rdr=Adresy IP $1 port $2
 desc_dport1=port to $1 
 desc_dport2=port znajduje się między $1 a $2 
 desc_nattoiface=adres interfejsu
+
 log_create_rule=Utworzono regułę $1 
 log_delete_rule=Usunięto regułę $1 
 log_modify_rule=Zmodyfikowano regułę $1 
@@ -224,6 +232,7 @@ log_add_host=Dodano serwer klastrowy $1
 log_add_group=Dodano serwery klastra z grupy $1 
 log_delete_host=Usunięto serwer klastrowy $1 
 log_delete_group=Usunięto $1 serwerów klastra
+
 cluster_title=Cluster Firewall Servers
 cluster_none=Do klastra zapory ogniowej nie dodano jeszcze serwerów.
 cluster_host=Nazwa hosta
@@ -234,6 +243,7 @@ cluster_gadd=Dodaj serwery w grupie
 cluster_need=Musisz dodać serwery z loginem i hasłem do modułu Webmin Servers Index, zanim będzie można nimi tutaj zarządzać.
 cluster_return=serwery klastrowe
 cluster_delete=Usuń zaznaczone
+
 add_title=Dodaj serwery
 add_msg=Dodawanie $1 ..
 add_gmsg=Dodawanie serwerów w grupie $1 ..
@@ -242,6 +252,7 @@ add_gerr=Nie udało się dodać grupy
 add_echeck=Serwer $1 nie ma modułu zapory IPFilter
 add_emissing=Na serwerze $1 brakuje polecenia zapory $2 
 add_ok=Dodano $1 z $2 aktywnymi regułami zapory.
+
 nat_title1=Utwórz regułę NAT
 nat_title2=Edytuj regułę NAT
 nat_action=Tryb NAT
@@ -300,4 +311,5 @@ nat_edport2=Brakujący lub nieprawidłowy kończący się oryginalny port
 net_erdrip=„$1” nie jest prawidłowym docelowym adresem IP
 nat_erdrips=Nie wprowadzono docelowych adresów IP
 nat_erdrport=Brakujący lub nieprawidłowy port docelowy
+
 boot_esmf=Usługa SMF $1 nie istnieje lub nie jest w znanym stanie

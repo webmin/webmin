@@ -42,6 +42,7 @@ index_lvused=Wykorzystane miejsce
 index_lvuse=Używany do
 index_snapof=(Migawka $1)
 index_thin=Cienka pula LVM dla $1 LV
+
 lv_edit=Edytuj wolumin logiczny
 lv_edit_snap=Edytuj migawkę
 lv_create=Utwórz wolumin logiczny
@@ -128,6 +129,7 @@ lv_pvfrom=Przenieś bloki z woluminu fizycznego
 lv_pvto=Do objętości fizycznej
 lv_moveok=Przenieś bloki
 lv_return=wolumin logiczny
+
 mkfs_title=Utwórz system plików
 mkfs_desc=Ten formularz umożliwia zbudowanie nowego systemu plików $2 ($1) na woluminie logicznym $3. Wszystkie istniejące dane zostaną usunięte.
 mkfs_header=Nowe opcje systemu plików
@@ -135,6 +137,7 @@ mkfs_err=Nie udało się utworzyć systemu plików
 mkfs_exec=Wykonanie polecenia $1 ..
 mkfs_failed=.. polecenie nie powiodło się!
 mkfs_ok=.. polecenie zakończone.
+
 resize_title=Zmień rozmiar woluminu logicznego
 resize_mesg=Nie można zmienić rozmiaru systemu plików $1 w tym woluminie logicznym. Jeśli zmienisz rozmiar woluminu logicznego, musisz ponownie utworzyć system plików, który usunie wszystkie zawarte w nim dane.
 resize_mesg2=Webmin nie wie, jaki rodzaj systemu plików znajduje się na tym woluminie logicznym, jeśli taki istnieje. Jeśli zmienisz rozmiar woluminu logicznego, musisz ponownie utworzyć system plików, który usunie wszystkie zawarte w nim dane.
@@ -142,8 +145,10 @@ resize_fs=Wystąpił błąd podczas zmiany rozmiaru systemu plików $1 na tym wo
 resize_ok=Zmień rozmiar woluminu logicznego
 resize_emounted=Nie można zmienić rozmiaru systemu plików w tym woluminie logicznym, gdy jest on podłączony
 resize_emounted2=System plików w tym woluminie logicznym nie może zostać zmniejszony, gdy jest podłączony
+
 init_title=Aktywuj LVM
 init_cmd=Uruchamianie polecenia $1 ..
+
 pv_edit=Edytuj wolumin fizyczny
 pv_create=Dodaj objętość fizyczną
 pv_vg=W grupie woluminów $1 
@@ -170,6 +175,7 @@ pv_eother=Brakujące lub nieprawidłowe urządzenie dyskowe
 pv_raid=Urządzenie RAID $1 
 pv_lvs=Alokacja według woluminów logicznych
 pv_egone=Objętość fizyczna już nie istnieje!
+
 vg_edit=Edytuj grupę woluminów
 vg_create=Utwórz grupę woluminów
 vg_name=Nazwa grupy woluminów
@@ -188,11 +194,13 @@ vg_deleteok=Usuń teraz
 vg_ename=Brakująca lub nieprawidłowa nazwa grupy woluminów
 vg_epesize=Brakujący lub nieprawidłowy rozmiar bloku alokacji
 vg_egone=Grupa woluminów już nie istnieje!
+
 pvmove_err=Nie udało się przenieść woluminu logicznego
 pvmove_title=Przenieś wolumin logiczny
 pvmove_start=Przenoszenie woluminu logicznego $1 z $2 do $3 ..
 pvmove_failed=.. ruch nie powiódł się!
 pvmove_done=.. ruch zakończony
+
 thin_title=Utwórz cienką pulę
 thin_desc=Cienka pula to para LV, które można wykorzystać do stworzenia dodatkowych LV, które mogą być większe niż dostępne zakresy. Miejsce jest zużywane tylko wtedy, gdy jest potrzebne, a nie podczas tworzenia LV w puli. OSTRZEŻENIE - Wszelkie dane dotyczące wybranych LV zostaną utracone!
 thin_header=Nowe szczegóły cienkiego basenu
@@ -204,6 +212,7 @@ thin_err=Nie udało się utworzyć cienkiej puli
 thin_esame=Oba wybrane LV są takie same
 thin_edata=Wybrane dane LV są już w użyciu
 thin_emetadata=Wybrane metadane LV są już w użyciu
+
 log_create_vg=Utworzono grupę woluminów $1 
 log_modify_vg=Zmodyfikowana grupa woluminów $1 
 log_delete_vg=Usunięto grupę woluminów $1 
@@ -216,4 +225,5 @@ log_create_pv=Dodano objętość fizyczną $1 do VG $1
 log_modify_pv=Zmodyfikowana objętość fizyczna $1 w VG $2 
 log_delete_pv=Usunięto wolumin fizyczny $1 z VG $2 
 log_resize_pv=Zmiana rozmiaru objętości fizycznej $1 w VG $2 
+
 blocks=Bloki

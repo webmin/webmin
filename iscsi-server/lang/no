@@ -1,5 +1,6 @@
 check_etargets=iSCSI tjener konfigurasjonsfilen $1 ble ikke funnet på systemet ditt.
 check_eserver=Tjenerprogrammet $1 for iSCSI ble ikke funnet på systemet ditt.
+
 index_title=iSCSI tjener
 index_clink=Kanskje den ikke er installert eller så er <a href='$1'>modulkonfigurasjonen</a> feil.
 index_stop=Stopp iSCSI tjener
@@ -11,6 +12,7 @@ index_restartdesc=Klikk på denne knappen for å ta i bruk gjeldende konfigurasj
 index_atboot=Start ved oppstart?
 index_atbootdesc=Endre denne innstillingen for å kontrollere hvorvidt iSCSI tjeneren startes ved systemets oppstart eller ikke. Dersom den ikke er startes ved oppstart for øyeblikket vil det bli opprettet et nytt init-script.
 index_return=modul indeks
+
 extents_title=Enheter som skal deles
 extents_none=Det er ikke oppprettet noen enheter for deling enda.
 extents_name=Enhetsnavn
@@ -25,6 +27,7 @@ extents_denone=Ingen valgt
 extents_einuse=Enhet $1 kan ikke slettes, siden den brukes av : $2
 extents_drusure=Er du sikker på at du ønsker å fjerne følgende enheter : $1? Innholdet vil bli beholdt, men de vil ikke lenger være tilgjengelige for iSCSI klienter.
 extents_sure=Slett enheter
+
 extent_create=Opprett enhet som skal deles
 extent_edit=Rediger enhet som skal deles
 extent_egone=Enhet som skal deles, $1, finnes ikke!
@@ -50,6 +53,7 @@ extent_estart=Start på extent må være et tall
 extent_esize=Størrelse på extent må være et tall
 extent_esizemax=Slutt på extent kan ikke være større enn enhetsstørrelsen på $1
 extent_einuse=Denne enheten kan ikke slettes, siden den er i bruk av : $1
+
 devices_title=Enhetskombinasjoner
 devices_none=Ingen enhetskombinasjoner er opprettet enda.
 devices_name=Kombinasjon navn
@@ -65,6 +69,7 @@ devices_denone=Ingen valgt
 devices_einuse=Kombinasjonen $1 kan ikke slettes, siden den er i bruk av : $2
 devices_drusure=Er du sikker på at du ønsker å fjerne følgende enhetskombinasjoner : $1? men de vil ikke lenger være tilgjengelige for iSCSI klienter.
 devices_sure=Slett enhetskombinasjoner
+
 device_create=Opprett enhets kombinasjon
 device_edit=Rediger enhetskombinasjon
 device_egone=Enhetskombinasjon $1 finnes ikke!
@@ -81,6 +86,7 @@ device_sure=Slett enhetskombinasjon
 device_einuse=Denne enhetskombinasjonen kan ikke slettes, siden den brukes av : $1
 device_eextents=Ingen medlemsenheter valgt
 device_eself=En av de valgte medlemsenhetene inneholder denne enheten!
+
 targets_title=Delings-mål
 targets_none=Ingen delings-mål er opprettet enda.
 targets_name=Mål-navn
@@ -96,6 +102,7 @@ targets_derr=Kunne ikke slette delings-mål
 targets_denone=Ingen valgt
 targets_drusure=Er du sikker på at du ønsker å fjerne følgende delingsmål : $1? Ingen data vil gå tapt, men de vil ikke lenger være tilgjengelige for iSCSI-klienter.
 targets_sure=Slett delings-mål
+
 target_create=Opprett delings-mål
 target_edit=Rediger delings-mål
 target_egone=Delings-mål $1 finnes ikke!
@@ -112,6 +119,7 @@ target_rusure=Er du sikker på at du ønsker å slette delings-mål $1? Ingen da
 target_sure=Slett mål
 target_enetwork=Manglende eller ugyldig nettverk å dele med
 target_emask=Manglende eller ugyldig nettmaske å dele med
+
 opts_title=iSCSI tjener innstillinger
 opts_header=Innstillinger for alle iSCSI mål
 opts_ip4=Godta IPv4 tilkoblinger
@@ -124,10 +132,12 @@ opts_err=Kunne ikke lagre innstillinger
 opts_ename=Manglende eller ugyldig navn - bare bokstaver, tall, bindestrek, punktum og understrek er tillatt.
 opts_eport=Manglende eller ikke-numerisk portnummer
 opts_esess=Manglende eller ikke-numerisk maks sesjoner
+
 manual_title=Rediger konfigurasjonsfil
 manual_desc=Bruk tekstboksen nedenfor til å redigere iSCSI-tjener konfigurasjonsfilen $1. Vær forsiktig, siden det ikke utføres noen gyldighets- eller syntakssjekk på endringene dine!
 manual_err=Kunne ikke lagre konfigurasjonsfil
 manual_edata=Ikke noe innhold angitt!
+
 users_title=iSCSI autentisering
 users_none=Ingen iSCSI brukere er opprettet enda. Klienter vil kunne får tilgang til delte enheter uten autentisering.
 users_add=Legg til ny iSCSI bruker.
@@ -135,6 +145,7 @@ users_delete=Slett valgte brukere
 users_name=Brukernavn
 users_mode=Autentiseringsmetode
 users_return=liste med brukere
+
 user_create=Opprett iSCSI bruker
 user_edit=Rediger iSCSI bruker
 user_header=iSCSI brukerdetaljer
@@ -145,13 +156,16 @@ user_egone=Bruker finnes ikke lenger!
 user_err=Kunne ikke lagre iSCSI bruker
 user_euser=Manglende eller ugyldig brukernavn - mellomrom og kolon er ikke tillatt
 user_epass=Manglende eller ugyldig passord - mellomrom og kolon er ikke tillatt
+
 desc_extent=Enhet som skal dele $1
 desc_device=Enhets kombinasjon $1
 desc_target=Deler mål $1
+
 start_err=Kunne ikke starte iSCSI tjener
 stop_err=Kunne ikke stoppe iSCSI tjener
 restart_err=Kunne ikke omstarte iSCSI tjener
 atboot_err=Kunne ikke aktivere ved oppstart
+
 log_create_extent=Opprettet enhet for deling $1
 log_modify_extent=Oppdaterte enhet for deling $1
 log_delete_extent=Slettet enhet for deling $1

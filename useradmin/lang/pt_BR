@@ -42,11 +42,13 @@ index_mass=Remover Usuários Selecionados
 index_mass2=Desabilitar Selecionados
 index_mass3=Habilitar Selecionados
 index_gmass=Remover Grupos Selecionados
+
 search_title=Resultados da Procura
 search_notfound=Nenhum usuário encontrado
 search_found=Foram encontrados $1 usuários com os termos de busca ..
 search_gnotfound=Nenhum grupo encontrado
 search_gfound=Foram encontrados $1 grupos com os termos de busca ..
+
 uedit_title=Editar Usuário
 uedit_title2=Criar Usuário
 uedit_details=Detalhes do Usuário
@@ -122,6 +124,7 @@ uedit_uid_def=Automático
 uedit_uid_calc=Calculado
 uedit_disabled=Conexão temporariamente desabilitada
 uedit_sys=Padrão do sistema
+
 usave_err=Erro ao salvar usuário
 usave_eedit=Você não pode editar este usuário
 usave_ecreate=Você não pode criar novos usuários
@@ -172,6 +175,7 @@ usave_epasswd_re=Senha não pode ter a expressão regular $1
 usave_epasswd_dict=Senha é uma palavra de dicionário
 usave_epasswd_same=A senha contém o nome do usuário
 usave_eothers=O nome de usuário foi gravado com sucesso, mas ocorreu um erro em outro módulo: $1
+
 gedit_title=Editar Grupo
 gedit_title2=Criar Grupo
 gedit_details=Detalhes do Grupo
@@ -191,6 +195,7 @@ gedit_allu=Todos os usuários
 gedit_selu=Usuários no grupo
 gedit_pri=Membros primários do grupo
 gedit_prinone=Nenhum usuário tem este grupo como seu grupo primário
+
 gsave_err=Erro ao salvar grupo
 gsave_eedit=Você não pode editar este grupo
 gsave_ecreate=Você não pode criar novos grupos
@@ -207,6 +212,7 @@ usave_egidused=O grupo $1 já está usando o GID $2
 gsave_egidused2=GID já está sendo usado
 usave_efromroot=Você não pode mudar o diretório inicial de /
 usave_etoroot=Você não pode mudar o diretório inicial para /
+
 logins_title=Logins Registrados
 logins_head=Logins registrados de $1
 logins_from=Login De
@@ -219,6 +225,7 @@ logins_none=Não há logins registrados
 logins_elist=Você não tem permissão para listar logins
 logins_elistu=Você não tem permissão para listar logins para '$1'
 logins_local=Local
+
 udel_title=Remover Usuário
 udel_err=Erro ao remover usuário
 udel_enum=Número de usuário inválido
@@ -240,6 +247,7 @@ udel_del2=Remover Usuário e Diretório Inicial
 udel_others=ATENÇÃO! O diretório inicial $1 contém $2 arquivos pertencentes a outros usuários
 udel_dothers=Remover usuário de outros módulos?
 udel_root=Atenção! Se o usuário root for removido você pode não conseguir administrar seu sistema no futuro.
+
 gdel_title=Remover Grupo
 gdel_err=Erro ao remover grupo
 gdel_eroot=Você não tem permissão para remover grupos do sistema (aqueles com GID igual ou menor que 10).
@@ -253,6 +261,7 @@ gdel_sure=Tem certeza de que quer remover o grupo $1 ?
 gdel_del=Remover Grupo
 gdel_dothers=Remover grupo em outros módulos?
 gdel_other=Removendo dos outros módulos ..
+
 many_title=Crie Múltiplos Usuários
 many_desc=Este formulário permite que você crie vários usuários de uma vez a partir de um arquivo texto enviado ou local.  Cada linha do arquivo especifica um usário no seguinte formato:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -276,6 +285,7 @@ many_eshell=Shell inválida na linha $1 : $2
 many_emkdir=Não consegui criar diretório inicial $1 : $2
 many_egtaken=Nome de grupo já em uso na linha $1 : $2
 many_ok=Usuário $1 criado
+
 acl_uedit=Usuários do Unix que podem ser editados
 acl_uedit_all=Todos os usuários
 acl_uedit_none=Nenhum usuário
@@ -335,6 +345,7 @@ acl_udelete=Pode remover usuários?
 acl_gdelete=Pode remover grupos?
 acl_urename=Pode renomear usuários?
 acl_grename=Pode renomear grupos?
+
 log_urename=Usuário $1 renomeado para $2
 log_umodify=Usuário $1 modificado
 log_ucreate=Usuário $1 criado
@@ -351,6 +362,7 @@ log_gbatch=Foi executado o arquivo batch de grupo $1
 log_gbatch_l=Foi executado o arquivo batch de grupo $1 ($2 criados, $3 modificados, $4 removidos)
 log_ugbatch=Foi executado o arquivo batch de grupo enviado para o servidor
 log_ugbatch_l=Foi executado o arquivo batch de grupo enviado para o servidor ($2 criados, $3 modificados, $4 removidos)
+
 batch_title=Executar arquivo batch
 batch_ecannot=Você não pode usar o formulário de arquivo batch
 batch_desc=Este formulário permite que você crie, modifique ou remova vários usuários de uma vez a partir de um arquivo texto local ou um arquivo enviado.  Cada linha do arquivo especifica uma ação, dependendo do seu primeiro campo.  O formato das linhas é o seguinte:
@@ -409,12 +421,14 @@ batch_eexpire=Data de expiração inválida na linha $1: $2
 batch_echange=Data de troca de senha inválida na linha $1: $2
 batch_instr=Instruções e formato batch
 batch_header=Opções de criação, atualização e remoção de usuário batch
+
 who_title=Usuários Conectados
 who_user=Usuário Unix
 who_tty=TTY
 who_when=Conectado em
 who_from=Conectado de
 who_none=Nenhum usuário está conectado no momento.
+
 export_title=Exportar Arquivo Batch
 export_desc=Esta página permite que você crie um arquivo batch que contém alguns ou todos os usuários disponíveis no sistema. Este arquivo pode ser usado na página Executar Arquivo Batch de outro sistema para recriar os usuários exportados, desde que use o formato batch selecionado.
 export_header=Opções de exportação de usuários batch
@@ -435,6 +449,7 @@ export_done=$1 usuários foram exportados para o arquivo $2 ($3) com sucesso.
 export_pft=Formato de arquivo batch
 export_who=Usuários para exportar
 export_ecannot=Você não tem permissão para exportar usuários
+
 gexport_title=Arquivo Batch de Exportação de Grupos
 gexport_desc=Esta página permite criar um arquivo batch que contém alguns ou todos os grupos disponíveis no sistema. O arquivo pode ser usado na página de Executar Arquivo Batch de Grupos de outro sistema para recriar os grupos exportados.
 gexport_header=Opções de exportação de grupos por batch
@@ -443,6 +458,7 @@ gexport_ecannot=Você não tem permissão para exportar grupos
 gexport_err=Falha ao exportar arquivo batch de grupos
 gexport_egid=O primeiro GID do intervalo é inválido
 gexport_egid2=O segundo GID do intervalo é inválido
+
 pft_0=Somente arquivo <tt>passwd</tt> clássico
 pft_1=Arquivo <tt>master.passwd</tt> BSD
 pft_2=Arquivos <tt>passwd</tt> e <tt>shadow</tt> padrão
@@ -450,6 +466,7 @@ pft_3=Arquivo de <tt>passwd</tt> Unixware
 pft_4=Arquivos <tt>passwd</tt> e <tt>security</tt> AIX
 pft_5=Arquivos <tt>passwd</tt> e <tt>shadow/tt> curto OpenServer
 pft_6=Base de dados MacOS NetInfo
+
 umass_title=Remover Usuários
 umass_err=Erro ao remover usuários
 umass_sure=Você tem certeza de que deseja remover os $1 usuários selecionados? Seus diretórios home contêm $2 de arquivos.
@@ -460,6 +477,7 @@ umass_del1=Remover Usuários
 umass_del2=Remover Usuários e Diretórios Home
 umass_eroot=Você não tem permissão para remover usuários do sistema (aqueles com UID igual ou menor que 10).
 umass_doing=Removendo usuário $1 ..
+
 gmass_title=Remover Grupos
 gmass_err=Erro ao remover grupos
 gmass_sure=Você tem certeza de que deseja remover os $1 grupos selecionados?
@@ -469,16 +487,19 @@ gmass_del=Remover Grupos
 gmass_eroot=Você não tem permissão para remover grupos do sistema (aqueles com GID igual ou menor que 10).
 gmass_doing=Removendo grupo $1 ..
 gmass_eprimary=O grupo $1 não pode ser removido, pois ele é o grupo primário do usuário $2.
+
 dmass_title=Desabilitar Usuários
 dmass_sure=Você tem certeza de que deseja desabilitar os $1 usuários selecionados? Eles podem ser reabilitados depois sem que suas senhas e arquivos sejam perdidos.
 dmass_dis=Desabilitar Usuários
 dmass_pass=Travando a senha temporariamente ..
 dmass_doing=Desabilitando usuário $1 ..
 dmass_already=.. já está desabilitado!
+
 emass_title=Habilitar Usuários
 emass_pass=Destravando a senha ;;
 emass_doing=Habilitando usuário $1 ..
 emass_already=.. já está habilitado!
+
 gbatch_title=Executar Arquivo Batch de Grupos
 gbatch_ecannot=Você não pode usar o formulário de arquivo batch de grupo
 gbatch_desc=Esta página permite criar, modificar ou remover vários grupos de uma vez usando um arquivo local ou remoto. Cada linha no arquivo especifica uma ação a ser tomada, dependendo do seu primeiro campo: Os formatos de linha são:

@@ -5,27 +5,39 @@ index_actions=Művelet
 index_edit=Beállítás
 index_manual=Kézi szerkesztés
 index_return=Konfigurációs fájlok
+
 file_global=Globális PHP konfiguráció
+
 manual_title=Konfiguráció kézi szerkesztése
+
 list_title=PHP konfiguráció szerkesztése
 list_return=PHP konfiguráció
+
 vars_title=PHP változók
+
 dirs_title=Könyvtár beállítások
 dirs_below=Alábbiakban:
 dirs_ext=Könyvtár kiterjesztések
+
 db_title=Adatbázis beállítások
 db_unlimited=Korlátlan
 db_s=s
+
 session_title=Session beállítások
 session_files=Fájlok
 session_forever=Örökké
+
 safe_title=Csökkentett mód beállításai
+
 limits_title=Erőforrások korlátozása
+
 errors_title=Hibanaplózás
 errors_none=Nincs
 errors_other=Egyéb fájl $1
 errors_unlimited=Korlátlan
+
 misc_title=Egyéb beállítások
 misc_none=Nincs
+
 acl_global=Módosíthatja a globális PHP konfigurációt?
 acl_anyfile=Módosíthatja az összes PHP konfigurációs fájlt?

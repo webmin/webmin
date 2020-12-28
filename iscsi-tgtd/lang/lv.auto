@@ -2,6 +2,7 @@ check_econfigset=Nav iestatīts iSCSI TGTd konfigurācijas fails!
 check_econfig=ISCSI TGTd konfigurācijas fails $1 jūsu sistēmā netika atrasts.
 check_etgtadm=ISCSI TGTd administrēšanas komanda $1 jūsu sistēmā netika atrasta.
 check_einit=Bootup action $1 neeksistē
+
 index_title=iSCSI TGTd
 index_clink=Varbūt tas nav instalēts vai jūsu <a href='$1'>moduļa konfigurācija</a> ir nepareiza.
 index_stop=Pārtrauciet iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=Atļautie lietotāji
 index_size=Kopējais lielums
 index_noluns=Nav
 index_nousers=Jebkurš
+
 dtargets_err=Neizdevās izdzēst mērķus
 dtargets_enone=Neviens nav atlasīts!
+
 target_title1=Izveidojiet iSCSI mērķi
 target_title2=Rediģēt iSCSI mērķi
 target_header=iSCSI koplietotās ierīces opcijas
@@ -74,11 +77,13 @@ target_direct=Tieša piekļuve ierīcei
 target_cache=Kešatmiņu raksta ierīcē?
 target_eaddr=Nederīga atļautā IP adrese
 target_eaname=Nederīgs atļautais iniciatora vārds
+
 start_err=Neizdevās palaist iSCSI TGTd
 stop_err=Neizdevās apturēt iSCSI TGTd
 restart_err=Neizdevās restartēt iSCSI TGTd
 atboot_err=Neizdevās iespējot sāknēšanas laikā
 atboot_einit=Init skripts $1 neeksistē
+
 log_create_target=Izveidots mērķis $1 
 log_delete_target=Dzēsts mērķis $1 
 log_modify_target=Pārveidots mērķis $1 
@@ -89,6 +94,7 @@ log_restart=Restartēts iSCSI serveris
 log_atboot=Iespējot iSCSI serveri sāknēšanas laikā
 log_delboot=Atspējots iSCSI serveris sāknēšanas laikā
 log_manual=Manuāli rediģēts konfigurācijas fails
+
 manual_title=Rediģēt konfigurācijas failu
 manual_file=Atlasiet rediģējamo failu:
 manual_ok=Atvērt

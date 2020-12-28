@@ -7,6 +7,7 @@ index_db=Nome del database
 index_tables=tabelle
 index_drops=Elimina database selezionati
 index_postgresql=PostgreSQL
+
 index_toomany=Ci sono troppi database da visualizzare. Trova database corrispondenti:
 index_search=Ricerca
 index_showing=Mostra database corrispondenti $1 ..
@@ -20,6 +21,7 @@ index_gist=Albero di ricerca indice generalizzato
 index_jump=O modifica il database:
 index_jumpok=Aperto
 index_edithosts=Configurare i sistemi host consentiti
+
 dbase_header=Tabelle, indici, viste e sequenze del database
 dbase_vadd=Crea vista
 dbase_sadd=Crea sequenza
@@ -36,12 +38,15 @@ dbase_jump=Modifica tabella:
 dbase_vjump=Modifica vista:
 dbase_ijump=Modifica indice:
 dbase_sjump=Modifica sequenza:
+
 table_eblob=Non è necessaria alcuna dimensione per il campo BLOB $1 
 table_csv=Esporta come CSV
 table_index=Crea indice
 table_delete=Elimina i campi selezionati
+
 field_err2=Impossibile salvare il campo
 field_err1=Impossibile eliminare il campo
+
 exec_old=Oppure seleziona un comando SQL precedente :
 exec_clear=Cancellare la cronologia
 exec_import=Tabella in cui importare i dati
@@ -57,6 +62,7 @@ exec_tabexec=Esegui SQL
 exec_tabfile=Esegui SQL dal file
 exec_tabimport=Importa file di testo
 exec_return=eseguire il modulo SQL
+
 view_refresh=ricaricare
 view_match4=più grande di
 view_match5=meno di
@@ -67,18 +73,21 @@ view_sortreset=Ripristina ordinamento
 view_go=Partire
 view_adv=Ricerca Avanzata
 view_sqlrun=Risultati generati dalla query SQL : $1 
+
 newdb_ecannot2=Non è consentito creare altri database
 newdb_user=Di proprietà dell'utente
 newdb_encoding=Codifica del set di caratteri
 newdb_eencoding=Codifica del set di caratteri mancante
 newdb_template=Database dei modelli
 newdb_notemplate=Nessuna
+
 user_vwarning=ATTENZIONE: questo utente PostgreSQL è il login di amministrazione per il dominio Virtualmin $1. La modifica di qualsiasi impostazione qui può causare errori in Virtualmin.
 user_setto=Impostato
 user_syncwhen=Quando sincronizzare
 user_delete=Elimina selezionato
 user_derr=Impossibile eliminare gli utenti
 user_enone=Nessun utente selezionato
+
 host_peer=Peer di rete
 host_identarg0=Non utilizzare alcuna mappa utente
 host_identarg1=Gli utenti PostgreSQL e Unix sono uguali
@@ -90,16 +99,20 @@ host_derr=Impossibile eliminare gli host consentiti
 host_enone=Nessun host selezionato
 host_manual=Modifica file di configurazione
 host_manualdesc=Fare clic su questo pulsante per modificare manualmente il file di configurazione degli host consentiti.
+
 manual_title=Modifica file di configurazione
 manual_err=Impossibile salvare il file di configurazione
+
 grant_ns=Schema
 grant_toomany=Ci sono troppi oggetti da visualizzare. Trova oggetti corrispondenti:
 grant_showing=Visualizzazione degli oggetti corrispondenti a $1 ..
 grant_delete=Reimposta sovvenzioni selezionate
+
 group_memsopts=Tutti gli utenti
 group_memsvals=Utenti nel gruppo
 group_derr=Impossibile eliminare i gruppi
 group_enone=Nessun gruppo selezionato
+
 log_dbs_delete=Database $1 eliminati
 log_users_delete=$1 utenti eliminati
 log_groups_delete=$1 gruppi eliminati
@@ -121,13 +134,16 @@ log_backup_l=Backup del database $1 nel file $2
 log_backup_all=Backup di tutti i database
 log_backup_all_l=Eseguito il backup di tutti i database nel file $2 
 log_manual=File di configurazione degli host consentiti modificato manualmente
+
 acl_max=Sì, al massimo
 acl_cmds=È possibile modificare i comandi di backup prima e dopo?
 acl_views=È possibile visualizzare e gestire le visualizzazioni?
 acl_indexes=È possibile visualizzare e gestire gli indici?
 acl_seqs=È possibile visualizzare e gestire le sequenze?
+
 fdrop_enone=Nessuno selezionato
 fdrop_eall=Non puoi eliminare tutti i campi da una tabella!
+
 restore_src=Ripristina da
 restore_src0=File sul server $1 
 restore_src1=File caricato $1 
@@ -135,6 +151,7 @@ restore_tables=Tabelle da ripristinare
 restore_tables1=Tutto nel file di backup
 restore_tables0=Tabelle elencate
 restore_failed=Ripristino non riuscito : $1 
+
 backup_title2=Backup di tutti i database
 backup_header1=Destinazione di backup
 backup_header2=Altre opzioni di backup
@@ -154,16 +171,19 @@ backup_ebefore=Comando prima del backup non riuscito!
 backup_cmode=Quando eseguire i comandi
 backup_cmode1=Prima/dopo tutti i database
 backup_cmode0=Prima/dopo ogni database
+
 adv_title=Ricerca Avanzata
 adv_and=Trova i record corrispondenti a tutti i criteri ..
 adv_or=Trova i record corrispondenti a qualsiasi criterio ..
 adv_ok=Cerca ora
+
 tdrops_enone=Nessuna tabella da eliminare selezionata
 tdrops_err=Impossibile eliminare le tabelle
 tdrops_ok=Far cadere
 tdrops_title=Elimina selezione
 tdrops_rusure=Sei sicuro di voler eliminare $1 tabella / e selezionata / e nel database $2 ? $3 righe di dati verranno eliminate.
 tdrops_rusure2=Sei sicuro di voler eliminare $1 tabella / e selezionata / e nel database $2 ?
+
 ddrops_err=Impossibile eliminare i database
 ddrops_title=Elimina database
 ddrops_rusure=Sei sicuro di voler eliminare i database selezionati $1 ? $2 tabelle contenenti $3 righe di dati verranno eliminate.
@@ -171,6 +191,7 @@ ddrops_mysql=Poiché il database principale è selezionato, la sua caduta render
 ddrops_ok=Elimina database
 ddrops_enone=Nessun database selezionato
 ddrops_ecannotdb=Non è consentito eliminare il database $1 
+
 csv_title=Esporta file CSV
 csv_header=Opzioni di esportazione CSV
 csv_dest=Destinazione di esportazione
@@ -191,6 +212,7 @@ csv_done=L'esportazione CSV in $1 è completa. La dimensione del file risultante
 csv_headers=Includere i nomi delle colonne in CSV?
 csv_cols=Colonne da includere in CSV
 csv_ecols=Nessuna colonna selezionata
+
 import_title=Importa dati
 import_uploadout=Importazione di dati dal file caricato.
 import_fileout=Importazione di dati dal file $1 ..
@@ -198,6 +220,7 @@ import_eupload=File di importazione caricato mancante
 import_efile=Nome file di importazione mancante
 import_done=.. creato $1 righe, ignorato $2 duplicati.
 import_erow=.. nessun campo trovato nella riga $1 
+
 index_title1=Crea indice
 index_header1=Opzioni dell'indice
 index_name=Nome dell'indice
@@ -215,6 +238,7 @@ index_ecols=Nessun campo selezionato
 index_title2=Modifica indice
 index_header=Indice $1 nel database $2 
 index_ecannot=Non sei autorizzato a gestire gli indici
+
 view_title1=Crea vista
 view_title2=Modifica vista
 view_header1=Visualizza dettagli
@@ -229,6 +253,7 @@ view_eclash=Una vista con lo stesso nome esiste già
 view_equery=Query SQL mancante
 view_ecols=Nessun nome di colonna inserito
 view_ecannot=Non puoi gestire le visualizzazioni
+
 seq_title1=Crea sequenza
 seq_title2=Modifica sequenza
 seq_header1=Opzioni di sequenza incrementali
@@ -248,5 +273,6 @@ seq_emin=Valore minimo mancante o non valido
 seq_emax=Valore massimo mancante o non valido
 seq_ecache=Numero di valori mancanti o non validi da memorizzare nella cache
 seq_ecannot=Non ti è permesso gestire le sequenze
+
 dgrant_err=Impossibile reimpostare le sovvenzioni
 dgrant_enone=Nessun oggetto selezionato

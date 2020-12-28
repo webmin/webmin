@@ -57,20 +57,27 @@ index_rotate=Aktualizácia štatistík
 index_rotatedesc=Kliknutím na toto tlačidlo spracujete všetku zaznamenanú sieťovú komunikáciu až do aktuálneho času a okamžite ju sprístupníte na nahlasovanie.
 index_eiptables=Varovanie - Vo vašej konfigurácii IPtables sa vyskytla chyba: $1. Nastavením monitorovania šírky pásma sa vymažú všetky pravidlá brány firewall.
 index_return=formulár správy
+
 log_setup=Nastavenie monitorovania šírky pásma na rozhraní $1 
 log_turnoff=Monitorovanie zakázanej šírky pásma
 log_rotate=Aktualizované štatistiky
+
 acl_setup=Je možné nastaviť a zakázať monitorovanie?
+
 turnoff_ecannot=Nemáte povolenie zakázať monitorovanie
+
 setup_ecannot=Nemáte povolenie na sledovanie
 setup_eiface=Chýba alebo je neplatný názov rozhrania
 setup_ezone=Nepodarilo sa nájsť zónu Shorewall pre vybrané rozhranie
+
 system_firewall=iptables
 system_ipfw=ipfw
 system_ipfilter=IPFilter
 system_shorewall=Shorewall
+
 syslog_syslog=syslog
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=Aktualizácia štatistík
 rotate_doing=Spracováva sa protokolovaná sieťová prevádzka.
 rotate_done=.. hotový.

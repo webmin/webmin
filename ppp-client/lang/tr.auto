@@ -24,13 +24,16 @@ index_out=$1 'den çıktı
 index_boot=Önyükleme sırasında bağlan:
 index_noboot=&lt;Bağlanma&gt;
 index_bootdesc=Seçilen PPP bağlantısının önyükleme zamanında başlatılıp başlatılmayacağını denetlemek için bu seçeneği değiştirin.
+
 init_title=Yapılandırmayı Algıla
 init_cmd=Bağlı modemi $1 komutu ile algılama.
 init_done=.. bitti
 init_modems=Modemler $1 ve $2 üzerinde yapılandırılmış.
 init_modem=$1 üzerinde bir modem algılandı.
 init_none=Modem bulunamadı!
+
 device_serial=seri bağlantı noktası $1 
+
 connect_title=Bağlantı Kur
 connect_cmd=$1 komutu ile bağlantı kurulmaya çalışılıyor.
 connect_failed=.. bağlantı başarısız! Nedeni için yukarıdaki çıktıya bakın.
@@ -40,12 +43,14 @@ connect_dns=PPP tarafından atanan DNS yapılandırmasını kullanma.
 connect_dns2=PPP tarafından atanan DNS yapılandırması ayarlandı.
 connect_dnsto=PPP tarafından atanan DNS yapılandırmasını bekleyen zaman aşımı.
 connect_dnsdown=PPP tarafından atanan DNS yapılandırmasını beklerken bağlantı başarısız olmuş gibi görünüyor.
+
 disc_title=PPP'yi Kapat
 disc_err=PPP bağlantısı kapatılamadı
 disc_edown=Zaten bağlantısı kesildi
 disc_ok1=$2 kullanılarak yapılan PPP bağlantınız başarıyla kapatıldı.
 disc_ok2=PPP bağlantınız başarıyla kapatıldı.
 disc_dns=Eski DNS yapılandırması geri yüklendi.
+
 edit_title1=ISS Çevirici Ekleme
 edit_title2=ISS Çeviricisini Düzenle
 edit_ddesc=Bu varsayılan ayarlar başka bir çevirici kullanılarak yapılan bağlantılar için geçerlidir.
@@ -76,6 +81,7 @@ edit_idle=Boşta kalma zaman aşımı (saniye cinsinden)
 edit_def=Varsayılan ayarlardan
 edit_inherits=Ayarları devral
 edit_from=Numara çeviriciden ..
+
 save_err=Numara çevirici kaydedilemedi
 save_err2=Çevirici silinemedi
 save_ename=Eksik veya geçersiz çevirici adı
@@ -88,6 +94,7 @@ save_edial=Eksik veya geçersiz arama denemesi sayısı
 save_eidle=Eksik veya geçersiz boşta kalma zaman aşımı
 save_einherits='$1' ayarları ondan devraldığından bu çevirici silinemiyor.
 save_eclash=Aynı ada sahip bir çevirici zaten var
+
 log_create=$1 oluşturuldu
 log_update=$1 güncellendi
 log_delete=$1 silindi

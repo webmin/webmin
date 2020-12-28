@@ -19,6 +19,7 @@ index_dump=Mostra discarica
 index_dumpdesc=Fare clic su questo pulsante per visualizzare le informazioni sulla traccia Shorewall dal comando <tt>dump shorewall</tt>.
 index_check=Controlla il firewall
 index_checkdesc=Fare clic su questo pulsante per fare in modo che Shorewall convalidi la configurazione del firewall con il comando <tt>shorewall check</tt>.
+
 list_move=Mossa
 list_add=Inserisci
 list_auto=Automatico
@@ -30,6 +31,7 @@ list_manual=Modifica manualmente il file
 list_manualdesc=Fare clic su questo pulsante per modificare manualmente il file Shorewall $1, in cui sono archiviate le voci precedenti.
 list_ecannot=Non puoi modificare questa tabella di Shorewall.
 list_delete=Elimina selezionato
+
 restart_err=Impossibile applicare la configurazione
 refresh_err=Aggiornamento della configurazione non riuscito
 start_err=Impossibile avviare il firewall
@@ -41,6 +43,7 @@ check_title=Controlla il firewall
 check_ok=.. la configurazione del tuo firewall sembra a posto.
 check_failed=.. è stato trovato un errore nella configurazione del tuo firewall!
 check_cmd=Verifica della configurazione ..
+
 zones_title=Zone di rete
 zones_desc=Le zone elencate in questa pagina rappresentano reti diverse raggiungibili dal tuo sistema. Tuttavia, le voci qui non hanno alcun effetto sul firewall, ma definiscono semplicemente i nomi e le descrizioni delle zone.
 zones_add=Aggiungi una nuova zona di rete.
@@ -69,6 +72,7 @@ zones_firewall=Sistema di firewall
 zones_eopts=Opzioni di zona non valide
 zones_eopts_in=Opzioni in entrata zona non valide
 zones_eopts_out=Opzioni in uscita zona non valide
+
 policy_title=Politiche predefinite
 policy_desc=Questa pagina consente di configurare le azioni predefinite per il traffico tra diverse zone del firewall. Possono essere sovrascritti per determinati host o tipi di traffico nella pagina Regole del firewall.
 policy_add=Aggiungi una nuova politica predefinita.
@@ -89,6 +93,7 @@ policy_ulog=Accedi a ULOG
 policy_efw=&lt;Firewall&gt; può essere selezionato sia per la zona di origine che per quella di destinazione
 policy_elimit=Numero limite di traffico mancante o non valido
 policy_eburst=Numero di scoppio del traffico mancante o non valido
+
 rules_title=Regole del firewall
 rules_desc=Questa tabella elenca le eccezioni ai criteri predefiniti per determinati tipi di traffico, fonti o destinazioni. L'azione scelta verrà applicata ai pacchetti che corrispondono ai criteri scelti invece che ai valori predefiniti.
 rules_add=Aggiungi una nuova regola firewall.
@@ -135,6 +140,7 @@ rules_eaction=Nessuna azione selezionata
 rules_macro=Parametro di azione macro
 rules_none2=Nessuna
 rules_emacro=Parametro macro mancante o non valido
+
 tos_title=Tipi di servizi
 tos_desc=Questa pagina definisce i tipi di servizi IP per particolari tipi di traffico, che possono essere utilizzati per aumentare o ridurre le loro priorità.
 tos_add=Aggiungi un nuovo tipo di servizio.
@@ -153,6 +159,7 @@ tos_edit=Modifica il tipo di servizio
 tos_create=Crea il tipo di servizio
 tos_header=Tipo di dettagli del servizio
 tos_err=Impossibile salvare il tipo di servizio
+
 interfaces_title=Interfacce di rete
 interfaces_desc=Ciascuna delle interfacce di rete sul sistema che si desidera gestire con Shorewall deve essere elencata in questa pagina e associata alla zona a cui è connessa. L'interfaccia di loopback <tt>lo</tt> non deve mai essere elencata.
 interfaces_add=Aggiungi una nuova interfaccia di rete.
@@ -169,6 +176,7 @@ interfaces_header=Dettagli dell'interfaccia di rete
 interfaces_err=Impossibile salvare l'interfaccia di rete
 interfaces_eiface=Nome dell'interfaccia mancante o non valido
 interfaces_ebroad=Indirizzo di trasmissione mancante o non valido
+
 masq_title=Il mascheramento
 masq_desc=Le voci in questa pagina impostano la traduzione dell'indirizzo di rete per il traffico instradato tra alcune reti e una particolare interfaccia.
 masq_add=Aggiungi una nuova regola di mascheramento.
@@ -199,6 +207,7 @@ masq_emnete=Elenco di reti di eccezioni vuoto
 masq_esnat=Indirizzo IP SNAT non valido
 masq_eports=Elenco di porte separato da virgole mancante o non valido
 masq_eipsec=Opzioni IPsec mancanti
+
 nat_title=NAT statico
 nat_desc=Le voci di traduzione degli indirizzi di rete statici in questa tabella possono essere utilizzate per impostare una corrispondenza 1-1 tra un indirizzo esterno sul firewall e un indirizzo RFC1918 di una macchina dietro il firewall. Il NAT statico viene spesso utilizzato per consentire connessioni a un server interno dall'esterno della rete.
 nat_add=Aggiungi una nuova voce NAT statica.
@@ -217,6 +226,7 @@ nat_local=Attivo per il sistema firewall?
 nat_eext=Indirizzo IP esterno non valido
 nat_eint=Indirizzo IP interno non valido
 nat_evirt=Numero di interfaccia virtuale non valido
+
 proxyarp_title=Proxy ARP
 proxyarp_desc=Questa pagina consente di configurare il sistema in modo che risponda alle richieste ARP per indirizzi IP diversi dai propri, in modo da poter inoltrare i pacchetti a tali indirizzi verso le loro destinazioni reali.
 proxyarp_add=Aggiungi un nuovo indirizzo ARP proxy.
@@ -233,6 +243,7 @@ proxyarp_err=Impossibile salvare l'ARP proxy
 proxyarp_have=Il percorso verso l'host esiste?
 proxyarp_eaddr=Indirizzo ARP mancante o non valido
 proxyarp_pers=Lascia il percorso anche quando il firewall è stato arrestato?
+
 routestopped_title=Quando fermato
 routestopped_desc=Per impostazione predefinita, quando Shorewall viene arrestato, negherà l'accesso da tutti gli host. Questa pagina consente di definire host o reti che saranno comunque accessibili.
 routestopped_add=Aggiungi un nuovo indirizzo interrotto.
@@ -248,6 +259,7 @@ routestopped_err=Impossibile salvare l'indirizzo interrotto
 routestopped_eaddr=Nessun indirizzo inserito
 routestopped_all=Tutti gli indirizzi
 routestopped_list=Indirizzi e reti elencati.
+
 tunnels_title=Tunnel VPN
 tunnels_desc=Questa pagina elenca i tunnel VPN che attraversano il firewall e quindi devono essere consentiti dalla configurazione di Shorewall.
 tunnels_add=Aggiungi un nuovo tunnel VPN.
@@ -278,6 +290,7 @@ tunnels_generic_l=Generico, per protocollo ..
 tunnels_gsel=Zone elencate
 tunnels_eopenvpn=Numero di porta non valido per il tunnel OpenVPN
 tunnels_egeneric=Protocollo o protocollo mancante: porta per tunnel generico
+
 hosts_title=Host di zona
 hosts_desc=Questa pagina elenca host e reti che fanno parte di zone particolari. In genere non è necessario apportare modifiche a questo elenco.
 hosts_add=Aggiungi un nuovo host di zona.
@@ -297,8 +310,10 @@ hosts_ip=Indirizzo o rete $1
 hosts_mac=Indirizzo MAC $1 
 hosts_ipset=IP impostato $1 
 hosts_any=Qualsiasi host
+
 edit_before=Prima dell'entrata $1 
 edit_after=Dopo l'ingresso $1 
+
 blacklist_title=Host nella lista nera
 blacklist_desc=Questa pagina elenca host e servizi che verranno bloccati se il traffico da loro arriva su un'interfaccia con l'opzione <b>lista nera</b> impostata.
 blacklist_add=Aggiungi un nuovo host lista nera.
@@ -321,6 +336,7 @@ blacklist_eproto=Protocollo mancante o non valido
 blacklist_eports=Numero di porta non valido o elenco di porte separato da virgole
 blacklist_eports2=Le porte possono essere specificate solo per i protocolli TCP e UDP
 blacklist_return=host nella lista nera
+
 providers_title=Provider di routing aggiuntivi
 providers_desc=Questa pagina definisce ulteriori tabelle di routing. Sono necessari se si dispone di connessioni a più di un ISP o più connessioni allo stesso ISP o si esegue Squid come proxy trasparente su un host diverso dal firewall.
 providers_add=Aggiungi un nuovo provider di routing.
@@ -353,6 +369,7 @@ providers_emark=Numero contrassegno del provider mancante o non valido
 providers_edup=Provider mancante da duplicare
 providers_egateway=Gateway mancante o non valido
 providers_return=elenco di provider di routing
+
 route_rules_title=Regole di routing
 route_rules_desc=La pagina controlla quale traffico viene instradato ai provider definiti nella pagina Provider di routing aggiuntivi.
 route_rules_ip=Indirizzo IP, rete o interfaccia
@@ -378,17 +395,21 @@ route_rules_emark=Il contrassegno del pacchetto deve essere in formato numerico 
 route_rules_return=elenco di regole di routing
 route_rules_edit=Modifica regola di routing
 route_rules_create=Crea regola di routing
+
 manual_desc=Questo modulo può essere utilizzato per modificare manualmente il file Shorewall $1. Fare attenzione, poiché non verrà eseguito alcun controllo della sintassi sulle modifiche.
 manual_reset=Disfare
 manual_err=Impossibile salvare il file della tabella
 manual_efile=Nome tabella non valido!
 manual_edata=Nessun contenuto del file di tabella inserito.
+
 acl_nochange=È possibile applicare, arrestare e avviare la configurazione di Shorewall?
 acl_files=Tabelle Shorewall disponibili
 acl_all=Tutti
 acl_sel=Selezionato sotto. ..
+
 delete_err=Impossibile eliminare le righe
 delete_enone=Nessuna riga selezionata
+
 opts_routeback=Accetta il traffico di ritorno all'host
 opts_source=Consenti dall'host a qualsiasi destinazione
 opts_dest=Consenti di ospitare da qualsiasi fonte
@@ -406,6 +427,7 @@ opts_proxyarp=Abilita proxy ARP
 opts_arp_filter=Rispondi solo alle richieste ARP per l'interfaccia IP
 opts_detectnets=Zona di Taylor per includere solo host indirizzati
 opts_upnp=Rimappare i pacchetti tramite UPNP
+
 comment_add=Aggiungi un nuovo commento
 comment_edit=Modifica commento
 comment_create=Crea commento
@@ -413,6 +435,7 @@ comment_header=Dettagli commento tabella
 comment_msg=Messaggio
 comment_err=Impossibile salvare il commento
 comment_enone=Nessun messaggio inserito
+
 log_create_table=Aggiunta voce alla tabella $1 
 log_modify_table=Voce modificata nella tabella $1 
 log_delete_table=Voce eliminata dalla tabella $1 
@@ -428,6 +451,7 @@ log_start=Firewall avviato
 log_refresh=Firewall aggiornato
 log_restart=Firewall riavviato
 log_clear=Firewall cancellato
+
 shorewall_conf_title=File di configurazione principale
 shorewall_conf_desc=Questa pagina consente di configurare le variabili di configurazione globali. NOTA: la modifica dell'ordine delle variabili qui non è consigliata se si desidera conservare la posizione relativa dei commenti nel file di configurazione.
 shorewall_conf_add=Aggiungi una nuova variabile di configurazione.
@@ -441,6 +465,7 @@ shorewall_conf_create=Crea variabile di configurazione
 shorewall_conf_header=Dettagli della variabile di configurazione
 shorewall_conf_err=Impossibile salvare la variabile di configurazione
 shorewall_conf_varname=Nome variabile non valido (deve essere un nome variabile shell valido)
+
 params_title=Parametri personalizzati
 params_desc=Questa pagina consente di configurare i parametri personalizzati di Shorewall. NOTA: la modifica dell'ordine dei parametri qui non è consigliata se si desidera preservare la posizione relativa dei commenti nel file di configurazione.
 params_add=Aggiungi un nuovo parametro personalizzato.

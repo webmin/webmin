@@ -24,13 +24,16 @@ index_out=Išvestis iš $1 buvo
 index_boot=Prijunkite įkrovos metu su:
 index_noboot=&lt;Nesijungti&gt;
 index_bootdesc=Pakeiskite šią parinktį, norėdami kontroliuoti, ar pasirinktas PPP ryšys pradedamas įkrovos metu, ar ne.
+
 init_title=Aptikti konfigūraciją
 init_cmd=Aptiktas prijungtas modemas su komanda $1.
 init_done=.. padaryta
 init_modems=Modemai sukonfigūruoti $1 ir $2.
 init_modem=$1 buvo aptiktas modemas.
 init_none=Nebuvo aptikta jokių modemų!
+
 device_serial=nuoseklusis prievadas $1 
+
 connect_title=Užmegzkite ryšį
 connect_cmd=Bandoma užmegzti ryšį su komanda $1.
 connect_failed=.. Nepavyko prisijungti! Norėdami sužinoti priežastį, skaitykite aukščiau pateiktą išvestį.
@@ -40,12 +43,14 @@ connect_dns=Naudojant PPP priskirtą DNS konfigūraciją.
 connect_dns2=Nustatyta PPP priskirta DNS konfigūracija.
 connect_dnsto=Laikas, laukiantis PPP priskirtos DNS konfigūracijos.
 connect_dnsdown=Atrodo, kad laukti PPP priskirtos DNS konfigūracijos nepavyko.
+
 disc_title=Išjungti PPP
 disc_err=Nepavyko išjungti PPP ryšio
 disc_edown=Jau atjungtas
 disc_ok1=Jūsų PPP ryšys, užmegztas naudojant $2, buvo sėkmingai nutrauktas.
 disc_ok2=Jūsų PPP ryšys buvo sėkmingai išjungtas.
 disc_dns=Atkurta sena DNS konfigūracija.
+
 edit_title1=Pridėti ISP rinkiklį
 edit_title2=Redaguoti IPT rinkiklį
 edit_ddesc=Šie numatytieji nustatymai bus taikomi ryšiams, sukurtiems naudojant bet kurį kitą rinkiklį.
@@ -76,6 +81,7 @@ edit_idle=Tuščiosios eigos laikas (sekundėmis)
 edit_def=Iš numatytųjų nustatymų
 edit_inherits=Paveldėjimo nustatymai
 edit_from=Iš rinkiklio ..
+
 save_err=Nepavyko išsaugoti rinkiklio
 save_err2=Nepavyko ištrinti rinkiklio
 save_ename=Trūksta arba netinkamas rinkėjo vardas
@@ -88,6 +94,7 @@ save_edial=Trūksta arba netinkamas rinkimo bandymų skaičius
 save_eidle=Trūksta arba netinkamas tuščiosios eigos laikas
 save_einherits=Šio rinkiklio negalima ištrinti, nes „$1“ paveldi iš jo nustatymus.
 save_eclash=Dialeris tuo pačiu pavadinimu jau yra
+
 log_create=Sukurta $1 
 log_update=Atnaujinta $1 
 log_delete=Ištrinta $1 

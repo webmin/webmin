@@ -40,6 +40,7 @@ index_descfetch=Denne side er til download af en fil fra systemet, der kører We
 index_email=Send e-mail, når downloads er gjort?
 index_emailto=Ja, til adresse
 index_email2=Vil du sende e-mail, når uploads er færdig?
+
 upload_title=Upload filer
 upload_err=Kunne ikke uploade filer
 upload_edir=Manglende mappe, der skal uploades til
@@ -63,6 +64,7 @@ upload_saving=Gemmer fil $1 ..
 upload_saved=.. skrev $1 
 upload_unzipping=Udtræk fil $1 ..
 upload_unzipdone=.. $1 
+
 download_err=Kunne ikke gemme download
 download_enone=Der er ikke angivet nogen URL-adresser til download
 download_eurl='$1' er ikke en gyldig URL
@@ -74,9 +76,11 @@ download_failed=Download mislykkedes : $1
 download_eaccess=Du har ikke tilladelse til at downloade filer til $1 
 download_eucannot=Du har ikke tilladelse til at downloade filer som bruger $1 
 download_egcannot=Den valgte gruppe indeholder ikke den valgte bruger
+
 cancel_err=Kunne ikke annullere downloads
 cancel_enone=Ingen valgt
 cancel_ecannot=Du har ikke tilladelse til at annullere downloads til bruger $1 
+
 log_cancel=Annulleret $1 download (er)
 log_upload_l=Uploadede fil (er) $1 
 log_upload=Uploadet $1 fil (er)
@@ -84,6 +88,7 @@ log_download_l=Downloadede URL (er) $1
 log_download=Downloadede $1 URL (r)
 log_sdownload_l=Planlagt download af URL (r) $1 
 log_sdownload=Planlagt download af $1 URL (r)
+
 acl_users=Kan uploade og downloade filer som brugere
 acl_all=Alle brugere
 acl_this=Nuværende Webmin-bruger
@@ -98,6 +103,7 @@ acl_max=Maksimal uploadstørrelse
 acl_unlim=Ubegrænset
 acl_b=bytes
 acl_fetch=Kan du downloade filer til pc?
+
 fetch_err=Kunne ikke downloade filen
 fetch_ecannot=Du har ikke tilladelse til at downloade filer til en pc
 fetch_efile=Intet filnavn er indtastet
@@ -106,6 +112,7 @@ fetch_eopen=Kunne ikke åbne filen : $1
 fetch_eaccess=Du har ikke tilladelse til at downloade filer fra $1 
 fetch_ezip=Et bibliotek kan ikke downloades, medmindre kommandoen <tt>zip</tt> er installeret
 fetch_eroot=Rootmappen kan ikke downloades!
+
 email_downmsg=Følgende download er afsluttet :
 email_downurl=URL: $1 
 email_downerr=Fejlmeddelelse: $1 

@@ -10,6 +10,7 @@ index_range=Generați raport pentru intervalul de date
 index_view=Vizualizați raportul generat
 index_viewdesc=Vizualizați raportul generat cel mai recent în directorul $1.
 index_return=indexul modulului
+
 log_title=Sursa jurnalului și destinația raportului
 log_header=Fișierul jurnal Sursa Squid și opțiuni de raport generate
 log_access_log=Fișier jurnal Squid sursă
@@ -30,6 +31,7 @@ log_elastlog=Lipsește sau nu un număr
 log_eemail=Adresa de e-mail lipsă sau cu aspect nevalid
 log_emailx=Program de e-mail lipsă sau inexistent
 log_squidguard_log_path=Fișier jurnal SquidGuard
+
 style_title=Stil raport
 style_header=Opțiuni de stil și de raport HTML
 style_title2=Titlul raportului
@@ -54,6 +56,7 @@ style_efont=Lipsește sau nu este valabil numele fontului
 style_esize=Lățimea și înălțimea imaginii lipsă sau nevalidă
 style_language=Limba raportului
 style_charset=Raport set de caractere
+
 report_title=Opțiuni de raportare
 report_header=Raportează conținut și opțiuni de generare
 report_resolve_ip=Rezolvați adresele IP?
@@ -134,6 +137,7 @@ report_echar=Spațiile nu sunt permise
 report_estring=Text de înlocuire lipsit sau nevalid
 report_eselect=Nimic selectat
 report_eenter=Nu a intrat nimic
+
 sched_title=Generarea raportului programat
 sched_header=Opțiuni de raportare programate
 sched_sched=Raport programat activat?
@@ -148,9 +152,11 @@ sched_rsel=Cele de la $1 la acum $2 zile
 sched_err=Nu a reușit să salveze generarea de raport programată
 sched_erfrom=Începând cu numărul de zile de început sau nevalide
 sched_erto=Numărul de sfârșit care lipsește sau este nevalid este acum
+
 view_title=Raport Sarg
 view_efile=Nume invalid!
 view_eopen=Nu a putut deschide fișierul de raport
+
 gen_title=Generează raport
 gen_header=Acum se generează raportul Sarg din fișierul jurnal Squid $1 și toate versiunile rotite ..
 gen_done=.. Terminat
@@ -160,6 +166,7 @@ gen_view=Vizualizați raportul completat.
 gen_err=Eroare la generarea raportului
 gen_efrom=Lipsește sau este invalid din zi
 gen_eto=Lipsește sau este nevalid pentru azi
+
 webmin_log_log=Opțiunile actualizate ale sursei de jurnal și ale destinației raportului
 webmin_log_report=Opțiuni de raport actualizate
 webmin_log_style=Opțiuni de stil de raport actualizate

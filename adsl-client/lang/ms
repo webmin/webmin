@@ -16,6 +16,7 @@ index_cancel=Batal Sambungan
 index_canceldesc=Klien ADSL sedang cuba untuk mewujudkan sambungan. Klik butang ini untuk membatalkan percubaan dengan perintah $1.
 index_cdemand=Batal Atas-Permintaan
 index_cdemanddesc=Klien ADSL sedang menunggu sambungan atas permintaan. Klik butang ini untuk berhenti dengan arahan $1.
+
 index_header=Pilihan konfigurasi klien ADSL
 index_desc=Tetapan di bawah terpakai bagi semua sambungan ADSL baharu yang dimulakan oleh sistem anda. Jika anda menukar, sambungan perlu ditutup dan dimula semula untuk pengubahsuaian terpakai serta merta.
 index_eth=Antaramuka Ethernet
@@ -36,11 +37,13 @@ index_fw_standalone=Untuk hos tunggal
 index_fw_masquerade=Untuk NAT gateway
 index_connect=Masa untuk cuba sambungan bagi
 index_forever=selama-lamanya
+
 start_err=Gagal untuk memulakan sambungan ADSL
 start_title=Mulakan ADSL
 start_ip=Sambungan ADSL telah berjaya dengan alamat IP $1.
 start_demand=Kerana menyambung mod atas permintaan diaktifkan, sambungan ADSL anda hanya akan bermula apabila diperlukan.
 start_bg=Sambungan ADSL tidak dimulakan dalam masa 20 saat. Klien ADSL akan terus cuba untuk menyambung di latar belakang sehingga berjaya.
+
 save_err=Gagal untuk menyimpan konfigurasi ADSL
 save_eeth=Hilang atau tidak sah carian antaramuka ethernet
 save_etimeout=Tiada atau tidak sah masa tamat atas permintaan
@@ -49,10 +52,12 @@ save_econnect=Hilang atau tidak sah masa tamat sambungan
 save_emss=Tiada atau tidak sah maksimum saiz paket
 save_title=Simpan Konfigurasi
 save_desc=Konfigurasi klien ADSL anda telah berjaya disimpan, tetapi tidak akan digunakan sehingga anda menyambung semula.
+
 stop_err=Gagal untuk menutup sambungan ADSL
 stop_title=Menutup ADSL
 stop_ok=Sambungan ADSL anda telah berjaya ditutup.
 stop_failed=Sambungan ADSL anda masih aktif atas sebab-sebab tertentu!
+
 log_save=Konfigurasi klien disimpan
 log_stop=Menutup ADSL
 log_start=Memulakan ADSL

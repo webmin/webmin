@@ -19,6 +19,7 @@ index_refsel=ریفریش منتخب
 index_group=$1 کے ممبران
 index_tmpls=ای میل کے سانچوں میں ترمیم کریں
 index_tmplsdesc=نگرانی کی خدمات کم ہونے پر بھیجے گئے ای میل پیغامات کی تعمیر کے لئے استعمال کیے جانے والے ٹیمپلیٹس دیکھیں اور ان میں ترمیم کریں۔
+
 type_apache=اپاچی ویبسرور
 type_inetd=انٹرنیٹ اور آر پی سی سرور
 type_xinetd=توسیعی انٹرنیٹ سرور
@@ -73,8 +74,10 @@ type_alive=زندہ نظام
 type_rssh=ریموٹ SSH
 type_slapd=ایل ڈی اے پی سرور
 type_ldap=ایل ڈی اے پی کنکشن
+
 mon_create=مانیٹر بنائیں
 mon_edit=مانیٹر میں ترمیم کریں
+mon_virtualmin=انتباہ! یہ مانیٹر ورچوئل مین ڈومین$1 کے ساتھ وابستہ ہے ، اور اس لئے یہاں ترمیم یا حذف نہیں ہونا چاہئے۔
 mon_header=تفصیلات مانیٹر کریں
 mon_header2=چلانے کے لئے حکم دیتا ہے
 mon_header3=نگرانی کی خدمات کے اختیارات
@@ -138,6 +141,7 @@ mon_changes0=واقعہ کی ہر قسم دکھائیں
 mon_changes1=صرف تبدیلیاں دکھائیں
 mon_all=تمام تاریخی واقعات دکھائیں
 mon_nochanges=پچھلے$1 تاریخی واقعات میں کوئی حیثیت تبدیل نہیں ہوئی۔
+
 sched_title=شیڈول مانیٹرنگ
 sched_header=شیڈول پس منظر کی نگرانی کے اختیارات
 sched_mode=شیڈول چیکنگ اہل ہے؟
@@ -184,16 +188,19 @@ sched_subject0=کوئی نہیں (انتباہ جسم میں ہے)
 sched_subject1=انتباہی متن (جسم کو خالی چھوڑ دیں)
 sched_subject2=اپنی مرضی کے متن
 sched_esubject=گمشدہ SMS پیغام کا مضمون
+
 up_since=$1 کے بعد سے
 depends_mod=ماڈیول$1 آپ کے سسٹم پر انسٹال نہیں ہے
 depends_os=ماڈیول$1 آپ کے سسٹم پر معاون نہیں ہے
 depends_remote=ماڈیول$1 سرور$2 پر تعاون یافتہ نہیں ہے
+
 tcp_host=سے رابطہ کرنے کے لئے میزبان
 tcp_port=سے منسلک کرنے کے لئے بندرگاہ
 tcp_alarm=رابطے کا وقت ختم
 tcp_ehost=لاپتہ یا غلط میزبان نام
 tcp_eport=گمشدہ یا غلط پورٹ نمبر
 tcp_ealarm=گمشدہ یا غلط کنکشن کا وقت ختم ہوگیا
+
 http_url=درخواست کرنے کے لئے یو آر ایل
 http_alarm=رابطے کا وقت ختم
 http_eurl=گمشدہ یا غلط URL
@@ -208,11 +215,13 @@ http_regexp=صفحہ regexp سے ملنا چاہئے
 http_eregexp=صفحہ کیلئے میچ کیلئے باقاعدہ اظہار نہیں کیا گیا
 http_none2=مماثل نہیں ہے
 http_ehead=باقاعدگی سے اظہار کی جانچ پڑتال کرتے وقت ہیڈ درخواست کا طریقہ استعمال نہیں کیا جاسکتا
+
 ping_host=پنگ میں میزبان
 ping_wait=جواب کا انتظار کرنے کا وقت
 ping_ehost=لاپتہ یا غلط میزبان نام
 ping_ewait=گمشدہ یا غلط وقت کا انتظار کرنا
 ping_econfig=ماڈیول تشکیل میں کوئی پنگ کمانڈ متعین نہیں کیا گیا ہے
+
 proc_pid=PIDs $1 کے ساتھ چل رہا ہے
 proc_cmd=چیک کرنے کا حکم
 proc_not=اگر عمل ہے تو ناکام
@@ -224,6 +233,7 @@ proc_ethresh=عمل کی گمشدہ یا غلط تعداد
 proc_asuser=بطور صارف چل رہا ہے
 proc_anyuser=کوئی بھی صارف
 proc_easuser=اس عمل کو چلانے کے لئے صارف موجود نہیں ہے
+
 exec_cmd=چلانے کا حکم
 exec_mode=اسٹیٹس چیک سے باہر نکلیں
 exec_mode0=اگر کمانڈ ناکام ہو تو مانیٹر ناکام
@@ -235,6 +245,7 @@ exec_noregexp=چیک نہیں کرو
 exec_remode=Regexp چیک
 exec_remode0=اگر پیداوار میں میچ نہیں ہوتا ہے تو ناکام
 exec_remode1=اگر پیداوار میں میچ ہوتا ہے تو ناکام
+
 file_file=فائل ، ڈائریکٹری یا پیٹرن چیک کرنے کے لئے
 file_test=کارکردگی کا مظاہرہ کرنے کے لئے ٹیسٹ
 file_test_0=موجود ہونا ضروری ہے
@@ -253,6 +264,7 @@ file_group=فائل گروپ ہونا چاہئے
 file_nocheck=کچھ بھی
 file_perms=آکٹیکل اجازتیاں ہونی چاہئیں
 file_eperm=غلط اجازتوں والی فائلیں :$1
+
 traffic_iface=انٹرفیس مانیٹر کرنے کے لئے
 traffic_bytes=زیادہ سے زیادہ بائٹس/سیکنڈ
 traffic_dir=مانیٹر کرنے کی ہدایت
@@ -262,6 +274,7 @@ traffic_dir2=صرف جانے والا
 traffic_desc=یہ مانیٹر ایک منتخب انٹرفیس پر نیٹ ورک ٹریفک کا ٹریک رکھتا ہے ، اور مانیٹر کو اسی طرح دکھاتا ہے اگر ٹریفک نیچے داخل ہونے والے بائٹس کی تعداد سے زیادہ ہو۔ اگر صرف 5 منٹ کی طرح مختصر وقفہ پر شیڈول مانیٹرنگ قابل ہوجائے تو یہ واقعی بہتر کام کرتا ہے۔
 traffic_eifaces=آپ کے آپریٹنگ سسٹم میں ایک/پرو/نیٹ/دیو فائل نہیں ہے
 traffic_ebytes=بائٹس/سیکنڈ کی گمشدہ یا غلط تعداد
+
 space_fs=فائل سسٹم چیک کرنے کے ل
 space_min2=کم از کم خالی جگہ
 space_mode0=مکمل سائز
@@ -277,6 +290,7 @@ space_ierr=صرف$1 انوڈس مفت
 space_merr=صرف$1 جگہ خالی
 space_perr=صرف$1٪ مفت
 space_dferr=فائل سسٹم کا سائز حاصل کرنے میں ناکام
+
 load_time=اوسطا چیک کریں
 load_1=1 منٹ
 load_5=5 منٹ
@@ -285,6 +299,7 @@ load_max=زیادہ سے زیادہ لوڈ اوسط
 load_emax=لاپتہ یا غلط زیادہ سے زیادہ بوجھ اوسط
 load_ecmd=The <tt>uptime</tt> command was not found on your system
 load_efmt=The output of the <tt>uptime</tt> command could not be parsed
+
 log_create=مانیٹر$1 بنایا
 log_modify=نظر ثانی شدہ$1
 log_delete=حذف شدہ مانیٹر$1
@@ -295,10 +310,14 @@ log_tmpl_modify=ترمیم شدہ ای میل ٹیمپلیٹ$1
 log_tmpl_delete=حذف شدہ ای میل کے سانچے$1
 log_tmpl_deletes=$1 ای میل کے سانچوں کو حذف کردیا گیا
 log_refresh=تازہ کاری کی نگرانی کے حالات
+
 acl_edit=کیا مانیٹر میں ترمیم اور تشکیل دے سکتے ہیں؟
 acl_sched=کیا شیڈول مانیٹرنگ کو تبدیل کیا جاسکتا ہے؟
+
 change_file=فائل یا ڈائریکٹری مانیٹر کرنے کے لئے (اگر تبدیل ہوجائے تو ناکام ہوجائیں)
+
 jabber_eparser=پرل ماڈیول$1 آپ کے سسٹم پر انسٹال نہیں ہے۔
+
 memory_min2=کم از کم مفت اصلی میموری
 memory_emin=مفت اصلی میموری کی گمشدگی یا غلط مقدار
 memory_eproc=آپ کے آپریٹنگ سسٹم پر فری میموری کو کس طرح چیک کرنا Webmin نہیں جانتا ہے
@@ -308,7 +327,9 @@ memory_freelow=صرف$1 اصلی میموری سے پاک
 memory_freelowswap=صرف$1 ورچوئل میموری مفت
 memory_minswap=کم از کم مفت ورچوئل میموری
 memory_eminswap=مفت ورچوئل میموری کی گمشدگی یا غلط مقدار
+
 proftpd_etype=جب پرو ایف ٹی پی ڈی اسٹینڈ اکیلے چلتا ہے تو یہ مانیٹر استعمال نہیں کیا جاسکتا ہے
+
 mailserver_to=ایڈریس پر ای میل بھیجیں
 mailserver_timeout=ٹائم آؤٹ اور وقفہ
 mailserver_units_0=سیکنڈ
@@ -316,22 +337,28 @@ mailserver_units_1=منٹ
 mailserver_units_2=اوقات
 mailserver_units_3=دن
 mailserver_desc=نیچے دیئے گئے پتے میں خودکار جواب دہندگان ہونا ضروری ہے جو اسی مضمون: لائن کے ذریعہ ماخذ کے پتے پر جواب دے۔
+
 oldfile_file=نگرانی کے لئے فائل (اگر نہیں بدلا تو ناکام)
 oldfile_diff=کے لئے نہیں بدلا تو ناکام
 oldfile_secs=سیکنڈ
+
 raid_device=RAID ڈیوائس
 raid_edevice=کوئی RAID آلہ منتخب نہیں کیا گیا ہے
 raid_bad=خراب ڈسک کا پتہ چلا
 raid_resync=فی الحال دوبارہ ترتیب دے رہا ہے
 raid_notfound=RAID آلہ$1 نہیں ملا
 raid_other=دیگر ..
+
 iface_iface=انٹرفیس چیک کرنے کے لئے
+
 init_action=چیک کرنے کے لئے ایکشن
 init_eaction=کوئی عمل منتخب نہیں کیا گیا
+
 refresh_title=ریفریش اسٹیٹس
 refresh_doing=تمام مانیٹروں کی حیثیت کو تازہ دم کرنا۔
 refresh_doing2=$1 منتخب کردہ مانیٹر کی حیثیت کو تازہ دم کر رہا ہے ..
 refresh_done=.. ہو گیا۔
+
 sensors_name=سینسر چیک کرنے کے لئے
 sensors_value=جب ناکام
 sensors_value0=سسٹم انتباہ کی طرف اشارہ کرتا ہے
@@ -342,6 +369,7 @@ sensors_none=No sensors were detected on your system. You may need to run the <t
 sensors_cur=$1 (فی الحال$2 $3)
 sensors_emin=لاپتہ یا کم سے کم قیمت
 sensors_emax=لاپتہ یا زیادہ سے زیادہ قیمت غلط ہے
+
 nut_ups=چیک کرنے کے لئے NUT UPS
 nut_name=چیک کرنے کے لئے خصوصیت
 nut_value=جب ناکام
@@ -352,6 +380,7 @@ nut_eups=چیک کرنے کے لئے کوئی یو ایس پی داخل نہیں
 nut_cur=$1 (فی الحال$2)
 nut_emin=لاپتہ یا کم سے کم قیمت
 nut_emax=لاپتہ یا زیادہ سے زیادہ قیمت غلط ہے
+
 mailq_system=میل سرور
 mailq_qmailadmin=قمل
 mailq_postfix=پوسٹ فکس
@@ -360,6 +389,7 @@ mailq_size=زیادہ سے زیادہ میل قطار سائز
 mailq_esize=زیادہ سے زیادہ قطار کا سائز غائب یا غلط
 mailq_toomany=نیچے -$1 پیغامات قطار میں کھڑے ہیں
 mailq_ok=اوپر -$1 پیغامات قطار میں ہیں
+
 dns_server=DNS سرور
 dns_host=تلاش کرنے کے لئے میزبان نام
 dns_address=متوقع IP پتہ
@@ -367,6 +397,7 @@ dns_eserver=گمشدہ یا غلط DNS سرور
 dns_ehost=تلاش کرنے کیلئے نامعلوم یا غلط نظر آنے والا میزبان نام
 dns_eaddress=لاپتہ یا توقع شدہ IP پتہ
 dns_ecmds=Neither the <tt>nslookup</tt> or <tt>dig</tt> commands are installed on your system
+
 monitor_sub_down=$1 نیچے$2 پر
 monitor_pager_down=$1: "$2"$3 نیچے ہے
 monitor_snmp_down= $1:$2 
@@ -398,8 +429,10 @@ monitor_run1=$2 پر$1 چل رہا ہے ..
 monitor_run2=چل رہا ہے$1 ..
 monitor_runerr= $2 : $3 پر$1 چلانے میں ناکام
 monitor_email_stat=موجودہ حیثیت:$1
+
 deletes_egone=منتخب کردہ مانیٹر میں سے ایک اب موجود نہیں ہے
 deletes_enone=کوئی مانیٹر منتخب نہیں کیا گیا
+
 ftp_host=ایف ٹی پی سرور میزبان
 ftp_port=ایف ٹی پی پورٹ
 ftp_user=بطور صارف لاگ ان ہوں
@@ -416,6 +449,7 @@ ftp_econn=TLS FTP کنکشن ناکام ہوگیا
 ftp_econn2=TLS FTP کنکشن ناکام ہوگیا :$1
 ftp_elogin=TLS FTP لاگ ان ناکام ہوگیا :$1
 ftp_etlsfile=TLS FTP ڈاؤن لوڈ ناکام ہوگیا :$1
+
 query_driver=ایس کیو ایل ڈیٹا بیس کی قسم
 query_db=ڈیٹا بیس کا نام
 query_host=ڈیٹا بیس سرور میزبان
@@ -436,9 +470,12 @@ query_elogin=لاگ ان ناکام ہوگیا :$1
 query_eprepare=SQL کی خرابی :$1
 query_eexecute=SQL ناکام :$1
 query_ewrong=غلط نتیجہ :$1
+
 consume_rate=زیادہ سے زیادہ کھپت کی شرح (فی سیکنڈ)
 consume_high=استعمال کی شرح$1 / سیکنڈ ہے
+
 alive_up=$1 کے لئے
+
 rssh_host=SSH سرور ہوسٹ
 rssh_ruser=بطور صارف لاگ ان ہوں
 rssh_rpass=پاس ورڈ کے ساتھ لاگ ان کریں
@@ -454,6 +491,7 @@ rssh_error=SSH کی خرابی
 rssh_haspass=پاس ورڈ
 rssh_port=SSH سرور پورٹ
 rssh_eport=گمشدہ یا غلط پورٹ نمبر
+
 tmpls_title=ای میل کے سانچوں
 tmpls_ecannot=آپ کو ای میل کے سانچوں میں ترمیم کرنے کی اجازت نہیں ہے
 tmpls_none=ابھی تک کسی ای میل کے سانچوں کی تعریف نہیں کی گئی ہے۔ تمام انتباہات Webmin ڈیفالٹ پیغامات کا استعمال کرتے ہوئے بھیجے جائیں گے۔
@@ -462,6 +500,7 @@ tmpls_email=ای میل پیغام
 tmpls_add=ایک نیا ای میل ٹیمپلیٹ شامل کریں۔
 tmpls_return=ٹیمپلیٹس کی فہرست
 tmpls_delete=منتخب کردہ ٹیمپلیٹس کو حذف کریں
+
 tmpl_title1=ای میل ٹیمپلیٹ بنائیں
 tmpl_title2=ای میل سانچہ میں ترمیم کریں
 tmpl_header=الرٹ ای میل ٹیمپلیٹ پیغامات
@@ -486,9 +525,11 @@ tmpl_esms=گمشدہ ایس ایم ایس میسج
 tmpl_esnmp=گمشدہ SNMP پیغام
 tmpl_err2=ای میل کے سانچے کو حذف کرنے میں ناکام
 tmpl_eusers=یہ مندرجہ ذیل مانیٹر کے استعمال میں ہے :$1
+
 dtmpls_err=ٹیمپلیٹس کو حذف کرنے میں ناکام
 dtmpls_enone=کوئی بھی منتخب نہیں ہوا
 dtmpls_eusers=$1 مندرجہ ذیل مانیٹر کے استعمال میں ہے :$2
+
 sslcert_src=سند کا مقام
 sslcert_url=HTTPS URL سے
 sslcert_file=سرور پر فائل سے
@@ -506,18 +547,21 @@ sslcert_eend=$1 کے بعد درست نہیں ہے
 sslcert_left=ختم -$1 دن ختم ہونے تک
 sslcert_ematch=میزبان نام$1 سرٹیفکیٹ$2 سے مماثل نہیں ہے
 sslcert_emismatch=سرٹیفکیٹ کی میزبان نام کی جانچ صرف اس وقت استعمال کی جاسکتی ہے جب کسی URL کی جانچ پڑتال کی جا.
+
 du_dir=مانیٹر کرنے کے لئے ڈائرکٹری
 du_max=زیادہ سے زیادہ سائز
 du_edir=غائب یا غیر مطلق ڈائریکٹری کا راستہ
 du_emax=زیادہ سے زیادہ سائز غائب یا غیر عددی
 du_over=سائز$1 ہے
 du_under=سائز صرف$1 ہے
+
 ldap_edriver=پرل ماڈیول$1 انسٹال نہیں ہے
 ldap_host=LDAP سرور ہوسٹ نام
 ldap_port=LDAP سرور پورٹ
 ldap_ssl=ایس ایس ایل کنکشن استعمال کریں؟
 ldap_user=LDAP سرور لاگ ان
 ldap_pass=LDAP سرور کا پاس ورڈ
+
 info_desc=سسٹم مانیٹر
 info_last=موجودہ صورت حال
 info_title=سسٹم اور سرور کی حیثیت

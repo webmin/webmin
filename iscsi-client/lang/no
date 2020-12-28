@@ -3,8 +3,10 @@ index_clink=Kanskje den ikke er installert, eller så er <a href='$1'>modulkonfi
 index_return=modul indeks
 index_atboot=Start ved oppstart?
 index_atbootdesc=Endre denne innstillingen for å kontrollere hvorvidt iSCSI klienten startes når systemet starter opp. Dette er påkrevd for at filsystemer som monteres fra iSCSI tjenere skal kunne monteres automatisk.
+
 check_econfig=iSCSI klient konfigurasjonsfilen $1 ble ikke funnet på systemet ditt.
 check_eiscsiadm=iSCSI klient administrasjonsprogrammet $1 ble ikke funnet på systemet ditt.
+
 auth_title=Innstillinger for autentisering
 auth_header=iSCSI klient og tjener autentisering
 auth_name=Lokalt system initiator navn
@@ -29,6 +31,7 @@ auth_edpassword=Manglende oppdagingspassord for tjener
 auth_edusername_in=Manglende oppdagingsbrukernavn for klient
 auth_edpassword_in=Manglende oppdagingspassord for klient
 auth_egen=Kunne ikke generere nytt navn!
+
 timeout_title=iSCSI Tidsavbrudd
 timeout_header=Innstillinger for tidsavbrudd for iSCSI klient
 timeout_timeout=Ventetid før iSCSI kommandoer feiles
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Manglende eller ikke-numerisk ventetid på ping før f
 timeout_eabort_timeout=Manglende eller ikke-numerisk ventetid på avbruddssvar før feiling
 timeout_elu_reset_timeout=Manglende eller ikke-numerisk ventetid på svar fra logisk enhet før feiling
 timeout_etgt_reset_timeout=Manglende eller ikke-numerisk ventetid på svar fra mål før feiling
+
 iscsi_title=iSCSI innstillinger
 iscsi_header=Andre iSCSI innstillinger
 iscsi_startup=Koble opp sesjoner ved oppstart?
@@ -62,6 +66,7 @@ iscsi_err=Kunne ikke lagre iSCSI innstillinger
 iscsi_eretry=Manglende eller ikke-numerisk antall ganger innlogging skal forsøkes på nytt
 iscsi_ecmds=Manglende eller ikke-numerisk maks kommandoer køet per sesjon
 iscsi_equeue=Manglende eller ikke-numerisk maks kommandoer køet per enhet
+
 ifaces_title=iSCSI grensesnitt
 ifaces_elist=Kunne ikke liste grensesnitt : $1
 ifaces_name=Grensesnitt navn
@@ -78,11 +83,13 @@ ifaces_hwaddress=MAC adresse
 ifaces_ifacename=Kilde grensesnitt
 ifaces_ipaddressdef=Automatisk
 ifaces_notset=Automatisk
+
 iadd_err=Kunne ikke legge til grensesnitt
 iadd_eclash=Et grensesnitt med navn $1 finnes allerede
 iadd_eipaddress=Manglende eller ugyldig kilde IP adresse
 iadd_ehwaddress=Manglende eller ugyldig MAC adresse
 iadd_ename=Grensesnitt navn mangler eller inneholder ugyldige tegn
+
 difaces_err=Kunne ikke fjerne grensesnitt
 difaces_enone=Ingen valgt
 difaces_edelete=Fjerning av grensesnitt $1 feilet : $2
@@ -93,6 +100,7 @@ difaces_confirm=Fjern grensesnitt
 difaces_target=iSCSI mål
 difaces_ip=iSCSI tjener
 difaces_users=Noen tilkoblinger som bruker disse grensesnittene er aktive, og vil ikke lenger virke dersom grensesnittene fjernes :
+
 conns_title=iSCSI tilkoblinger
 conns_elist=Kunne ikke liste tilkoblinger : $1
 conns_ip=Tjener IP
@@ -113,6 +121,7 @@ conns_return=liste med tilkoblinger
 conns_iface=iSCSI grensesnitt
 conns_ifacedef=Velg automatisk
 conns_ifaceerr=Kunne ikke hente grensesnitt : $1
+
 add_title=Ny iSCSI tilkobling
 add_err=Kunne ikke legge til iSCSI tilkobling
 add_ehost=Manglende eller ikke-oppslagbart vertsnavn
@@ -129,6 +138,7 @@ add_on=$1 på $2
 add_auth=Logg inn på tjener
 add_auth1=Bruk standard autentiseringsmetode
 add_auth0=Logg inn som $2 med passord $3 vha. metode $1
+
 dconns_err=Kunne ikke koble fra tilkoblinger
 dconns_enone=Ingen valgt
 dconns_edelete=Fjerning av mål $2 fra vert $1 feilet : $3
@@ -142,6 +152,7 @@ dconns_use=Brukt av
 dconns_size=Partisjonsstørrelse
 dconns_confirm=Fjern tilkoblinger
 dconns_unused=Ubrukt
+
 vconn_title=iSCSI tilkobling
 vconn_egone=Valgt tilkobling finnes ikke lenger!
 vconn_header=Detaljer for iSCSI tilkobling
@@ -160,8 +171,10 @@ vconn_device3=Konstant enhetsnavn
 vconn_delete=Koble fra tilkobling
 vconn_users=Aktive brukere
 vconn_size=Disk størrelse
+
 atboot_err=Kunne aktivere ved oppstart
 atboot_einit=Finner ingen oppstartshandling med navn $1
+
 log_auth=Lagre innstillinger for autentisering
 log_timeout=Lagret innstillinger for tidsavbrudd
 log_iscsi=Lagret iSCSI innstillinger

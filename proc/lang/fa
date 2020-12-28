@@ -9,6 +9,7 @@ index_zone=منطقه
 index_run=اجرا..
 index_return=فهرست پردازشها
 index_inzone=در منطقه $1
+
 pid= شماره مشخصه پردازش 
 owner= مالک
 command=فرمان
@@ -18,6 +19,7 @@ parent=پردازش پدر
 runtime=زمان‌اجرا
 nice=اولويت مطلوب 
 stime= زمان‌آغاز
+
 search_user=مالک
 search_match=منطبق با
 search_cpupc= استفاده بيش از $1 % ازCPU
@@ -33,6 +35,7 @@ search_sigkill= پردازش کشته شده
 search_port= استفاده از درگاه
 search_protocol= قرارداد
 search_ip=استفاده کننده از آدرس IP
+
 run_command= فرمان جهت اجرا
 run_submit= اجرا
 run_mode= حالت اجرا
@@ -43,6 +46,7 @@ run_title= برونداد فرمان
 run_output=برونداد از $1..
 run_none= عدم ايجاد برونداد
 run_ecannot= شما مجاز به اجراي فرمانات نميباشيد 
+
 edit_title= اطلاعات پردازش 
 edit_gone= اين پردازش هنوز اجرا نشده‌است
 edit_sub= زير پردازش‌ها
@@ -60,12 +64,15 @@ edit_sigcont= از سر گرفتن
 edit_open= پرونده‌ها و اتصال‌ها
 edit_trace= رديابي پردازش 
 edit_return= جزئيات پردازش
+
 kill_err=عدم موفقيت در ارسال علامت 1$ به پردازش 2$ 
 kill_title= ارسال نشانه
 kill_sent= ارسال شد
 kill_ecannot= شما مجاز به کشتن پردازشها نميباشيد.
+
 renice_err=عدم موفقيت در تغيير اولويت مطلوب پردازش
 renice_ecannot=شما مجاز به تغيير اولويت مطلوب پردازشها نميباشيد.
+
 linux_pri= اولويت
 linux_tty= TTY
 linux_status= وضعيت
@@ -76,22 +83,26 @@ linux_ruser= کاربر حقيقي
 linux_rgroup= گروه حقيقي
 linux_pgid= شماره مشخصه گروه پردازش
 linux_stime=$stime
+
 linuxstat_R= در حال اجرا
 linuxstat_S=در حال خوابيدن
 linuxstat_D=خواب عميق
 linuxstat_T= متوقف شده
 linuxstat_Z= يتيم
+
 freebsd_ruser= کاربر حقيقي
 freebsd_rgroup= گروه حقيقي
 freebsd_tty= TTY
 freebsd_pgid= گروه پردازش
 freebsd_stime= $stime
 freebsd_lim= ميزان حافظه
+
 hpux_pri= اولويت
 hpux_tty= TTY
 hpux_status= وضعيت
 hpux_wchan= در حال انتظار براي
 hpux_stime= $stime
+
 hpuxstat_0= وجود ندارد
 hpuxstat_S=در حال خوابيدن
 hpuxstat_W= در حال انتظار
@@ -100,7 +111,9 @@ hpuxstat_I=متوسط
 hpuxstat_Z= يتيم
 hpuxstat_T= متوقف‌شده
 hpuxstat_G=در حال رشد 
+
 macos_tty= TTY
+
 sysv_group= گروه
 sysv_ruser= کاربر حقيقي
 sysv_rgroup= گروه حقيقي
@@ -109,20 +122,24 @@ sysv_tty= TTY
 sysv_stime=$stime
 sysv_task= شماره مشخصه وظيفه 
 sysv_zone= نام منطقه 
+
 log_run= فرمان $1 اجرا شده است.
 log_kill=علامت $1 براي پردازش $2 ارسال شد. 
 log_kills=علامت $1 به پردازشهاي $2 ارسال شود. 
 log_kill_l=علامت $1 به پردازش $2 ارسال شد. 
 log_kills_l=علامت $1 به پردازشهاي $2 ارسال شد.
+
 acl_manage= مديريت پردازش به عنوان کاربر
 acl_manage_def= کاربر وب‌مين جاري
 acl_edit=آيا ميتوان پردازشها را کشته و اولويت مطلوب آنها را تغيير داد؟
 acl_run= اجراي فرمانات
 acl_only=آيا تنها ميتوان پردازش متعلق به خود را ديد؟
+
 kill_kill= کشتن پردازش
 kill_term= پايان‌يافتن  
 kill_hup=  آغاز‌مجدد    kill_stop=    توقف    
 kill_cont=  ادامه  
+
 open_title= باز‌نمودن پرونده‌ها و اتصال‌ها 
 open_proc= براي پردازش $1 (شماره مشخصه پردازش $2) 
 open_header1= پرونده‌هاي بازشده 
@@ -146,6 +163,7 @@ open_blk= بلوک خاص
 open_size= اندازه پرونده
 open_inode=شماره پرونده
 open_file= مسير
+
 trace_title= رديابي پردازش
 trace_start=آغاز رديابي فراخوانيهاي سيستم براي $1..
 trace_doing=رديابي فراخوانيهاي سيستم براي $1:

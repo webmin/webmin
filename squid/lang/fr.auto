@@ -14,6 +14,7 @@ index_restartdesc=Cliquez sur ce bouton pour activer la configuration actuelle d
 index_iptables=Configuration de la redirection de port
 index_squid=Squid Proxy Server
 index_manual=Modifier les fichiers de configuration
+
 manual_title=Modifier les fichiers de configuration
 manual_file=Sélectionnez un fichier de configuration à modifier:
 manual_change=Changement
@@ -21,6 +22,7 @@ manual_editing=Utilisez la zone de texte ci-dessous pour modifier manuellement l
 manual_err=Impossible d'enregistrer le fichier de configuration
 manual_efile=Nom de fichier de configuration non valide!
 manual_ecannot=Vous n'êtes pas autorisé à modifier manuellement les fichiers de configuration
+
 acl_eusersall=Tous les utilisateurs
 acl_euserssel=Seuls ceux listés ..
 acl_nodns=Désactiver les recherches?
@@ -34,16 +36,22 @@ acl_extargs=Arguments supplémentaires
 acl_file=Stocker les valeurs ACL dans un fichier
 acl_infile=Fichier séparé
 acl_keep=Utilisez-vous simplement le contenu existant du fichier?
+
 aclsave_enofile=Aucun nom de fichier ACL entré
 aclsave_ealready=Le fichier ACL existe déjà
+
 cach_ecannot=Vous n'êtes pas autorisé à accéder aux statistiques du gestionnaire de cache
 cach_esame=L'exécutable <b>Squid cachemgr.cgi</b> est défini sur le programme cachemgr.cgi de Webmin, et non sur celui fourni par Squid.
+
 clear_url=Supprimer une URL du cache:
+
 eacl_ecannot=Vous n'êtes pas autorisé à modifier le contrôle d'accès
 eacl_noprr=Aucune restriction de réponse proxy définie
 eacl_addprr=Ajouter une restriction de réponse proxy.
+
 eacl_replypr=Répondre aux restrictions du proxy
 eacl_replynopr=Aucune restriction de proxy de réponse définie
+
 eacl_ext=Programmes ACL externes
 eacl_ename=Nom du cours
 eacl_format=Format d'entrée
@@ -54,8 +62,11 @@ eacl_eclass=Aucune classe de programme sélectionnée
 eacl_cname=Tapez le nom
 eacl_file=À partir du fichier $1
 eacl_hdelete=Supprimer les restrictions sélectionnées
+
 eadm_ecannot=Vous n'êtes pas autorisé à modifier les options d'administration
+
 eauth_ecannot=Vous n'êtes pas autorisé à modifier l'authentification proxy
+
 ec_ecannot=Vous n'êtes pas autorisé à modifier les options de cache
 ec_opts=Les options
 ec_coss=COÛTS
@@ -63,6 +74,7 @@ ec_gap=Écart maximal de lecture anticipée pour le client
 ec_maxreplies=Tailles maximales du corps de réponse
 ec_maxrn=Taille (ko)
 ec_maxracls=Pour les demandes correspondant aux ACL (laisser vide pour tous)
+
 ech_siq2=Rejeter les requêtes ICP?
 ech_pass=Transmettre l'authentification client à ce cache
 ech_upass=Transmettez la connexion client avec le mot de passe:
@@ -75,14 +87,17 @@ ech_origin=Traiter l'hôte comme un serveur d'origine?
 ech_force=Forcer l'hôte: l'en-tête à
 ech_same=Inchangé
 ech_ssl=Se connecter en utilisant SSL?
+
 eicp_ecannot=Vous n'êtes pas autorisé à modifier d'autres caches
 eicp_thost=Nom d'hôte
 eicp_ttype=Type
 eicp_tpport=Port proxy
 eicp_tiport=Port ICP
 eicp_delete=Supprimer les caches sélectionnés
+
 elogs_ecannot=Vous n'êtes pas autorisé à modifier la journalisation
 elogs_none=Aucun
+
 elogs_logformat=Formats des journaux d'accès
 elogs_fname=Nom du format
 elogs_ffmt=Définition du format
@@ -96,7 +111,9 @@ elogs_notset=Pas encore défini
 elogs_dont=Ne vous connectez pas
 elogs_file=Fichier $1
 elogs_squid=Calmar standard
+
 emem_ecannot=Vous n'êtes pas autorisé à modifier l'utilisation de la mémoire
+
 emisc_ecannot=Vous n'êtes pas autorisé à modifier diverses options
 emisc_hash=Vous n'avez qu'un seul serveur HTTP Accel?
 emisc_wccprtr=Adresse du routeur WCCP
@@ -104,6 +121,7 @@ emisc_wccpin=Adresse entrante WCCP
 emisc_wccpout=Adresse sortante du WCCP
 emisc_none=Aucun
 emisc_virtual=Virtuel
+
 eports_ecannot=Vous n'êtes pas autorisé à modifier les ports et la mise en réseau
 eports_ssl=Adresses et ports SSL
 eports_opts=Options pour le port
@@ -113,6 +131,7 @@ eports_unc=Les fermetures SSL impures?
 eports_checkhost=Valider les noms d'hôtes dans les URL?
 eports_underscore=Autoriser le soulignement dans les noms d'hôtes?
 eports_all=Tout
+
 eprogs_ecannot=Vous n'êtes pas autorisé à modifier les programmes d'assistance
 eprogs_sppe=Programme Ping activé?
 eprogs_startup=Programmes à démarrer initialement
@@ -122,26 +141,37 @@ eprogs_capweb=Webmin par défaut
 eprogs_ttl=Temps de cache d'authentification
 eprogs_aittl=Authentifier l'heure du cache IP
 eprogs_realm=Domaine d'authentification
+
 euser_e=Activée?
+
 ahttp_replyheader=Créer une restriction de réponse proxy
 ahttp_replyheader1=Modifier la restriction de réponse proxy
 ahttp_replypr=Restriction de réponse par proxy
+
 icache_ecannot=Vous n'êtes pas autorisé à initialiser le cache
 icache_euser=L'utilisateur pour exécuter Squid comme n'existe pas
+
 scache_emaxrs=Taille maximale du corps non valide dans la ligne $1
+
 slogs_efname=Nom de format non valide dans la ligne $1
 slogs_effmt=Format de journal manquant dans la ligne $1
 slogs_eafile=Fichier journal manquant ou non valide dans la ligne $1
+
 sprog_emsg9='$1' n'est pas une heure de cache valide
 sprog_emsg10='$1' n'est pas un TTL valide
 sprog_echildren=Le nombre de programmes doit être supérieur à zéro
+
 suser_etaken=Nom d'utilisateur est déjà utilisé
+
 start_ecannot=Vous n'êtes pas autorisé à démarrer Squid
+
 calamaris_ecannot=Vous n'êtes pas autorisé à accéder à l'analyse des journaux de Calamaris
+
 lib_aclrpmt=Type de réponse MIME
 lib_aclrur=RFC931 Regexp utilisateur
 lib_aclext=Programme externe
 lib_aclmuip=IP utilisateur max.
+
 log_authparam=Options de programme d'authentification modifiées
 log_https_delete=Suppression des restrictions de proxy $1
 log_headeracc_create=Règle d'accès à l'en-tête créée
@@ -158,16 +188,20 @@ log_pools_delete=Pools de retards $1 supprimés
 log_delay_create=ACL ajoutée pour le pool de délais $1
 log_delay_modify=ACL modifiée pour le pool de retards $1
 log_delay_delete=ACL supprimée pour le pool de délais $1
+
 log_delay_move=ACL déplacée pour le pool de retards $1
 log_refresh_create=Règle d'actualisation créée pour $1
 log_refresh_modify=Règle d'actualisation modifiée pour $1
 log_refresh_delete=Règle d'actualisation supprimée pour $1
+
 log_refresh_move=Règle d'actualisation déplacée pour $1
 log_refreshes_delete=Suppression des $1 règles de rafraîchissement
 log_iptables=Configuration de redirection de port mise à jour
 log_purge=URL supprimée $1 du cache
 log_cachemgr=Mots de passe du gestionnaire de cache modifiés
+
 acl_sections=Pages de configuration autorisées
+
 delay_title=Pools de retard
 delay_add=Ajoutez un nouveau pool de délais.
 delay_num=Nombre
@@ -217,11 +251,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=MB
+
 dpool_err=Impossible de supprimer les pools de retards
 dpool_enone=Aucune sélection
+
 apool_header=Ajouter une liste de contrôle différée ACL
 apool_header1=Modifier la liste de contrôle d'accès du pool de délais
 apool_pr=ACL de la piscine de retard
+
 authparam_header=Options du programme d'authentification externe
 authparam_ttl=Temps de mise en cache des mots de passe pour
 authparam_ipttl=Il est temps de lier l'utilisateur à une adresse IP pour
@@ -262,6 +299,7 @@ ext_ecache=Taille du cache manquante ou non valide
 ext_eprogram=Un chemin de programme non valide a été entré
 ext_eclash=Un type de programme externe portant le même nom existe déjà
 ext_eused=Ce programme externe est utilisé par une ACL
+
 header_title=Contrôle d'accès aux en-têtes
 header_none=Aucune règle de contrôle d'accès d'en-tête n'a encore été définie.
 header_act=action
@@ -280,6 +318,7 @@ header_err=Impossible d'enregistrer la règle de contrôle d'accès d'en-tête
 header_ename=Nom d'en-tête manquant ou invalide
 header_request_header_access=En-têtes de demande
 header_reply_header_access=En-têtes de réponse
+
 refresh_title=Actualiser les règles
 refresh_none=Aucune règle de rafraîchissement n'a encore été définie.
 refresh_re=Expression régulière
@@ -306,6 +345,7 @@ refresh_epc=Pourcentage d'âge manquant ou invalide
 refresh_delete=Supprimer les règles d'actualisation sélectionnées
 drefresh_err=Impossible de supprimer les règles d'actualisation
 drefesh_enone=Aucune sélection
+
 iptables_title=Configuration de la redirection de port
 iptables_inst0=Les commandes de pare-feu IPtables nécessaires pour configurer la redirection de port ne semblent pas être installées sur votre système. Voir le module <a href='$1'>Pare-feu Linux</a> pour plus de détails.
 iptables_inst1=Le module <a href='$1'>Pare-feu Linux</a> ne semble pas avoir été entièrement configuré sur votre système. Ce module utilise celui-ci pour configurer la redirection de port Frox.
@@ -319,18 +359,23 @@ iptables_enet=Adresse réseau manquante ou invalide (devrait être comme 192.168
 iptables_eiface=Interface réseau manquante ou invalide
 iptables_eapply=Échec de l'application du pare-feu : $1
 iptables_eapply2=Échec de l'application Squid : $1
+
 syslog_access=Journal d'accès à Squid
 syslog_cache=Journal de mise en cache de Squid
 syslog_store=Journal du magasin d'objets Squid
+
 purge_err=Impossible de supprimer l'URL du cache
 purge_title=Effacer l'URL en cache
 purge_doing=Effacement de l'URL $1 ..
 purge_done=.. terminé.
 purge_failed=.. échoué! Voir le message d'erreur ci-dessus pour la raison.
+
 dhttp_err=Impossible de supprimer les restrictions de proxy
 dhttp_enone=Aucune sélection
+
 dicp_err=Impossible de supprimer les restrictions ICP
 dicp_enone=Aucune sélection
+
 cachemgr_title=Mots de passe du gestionnaire de cache
 cachemgr_ecannot=Vous n'êtes pas autorisé à modifier les mots de passe du gestionnaire de cache
 cachemgr_def0=Mots de passe et actions spécifiés ci-dessous.

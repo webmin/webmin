@@ -10,6 +10,7 @@ index_refsel=Uppdatera vald
 index_group=Medlemmar av $1 
 index_tmpls=Redigera e-postmallar
 index_tmplsdesc=Visa och redigera mallar som används för att konstruera e-postmeddelanden som skickas när övervakade tjänster går ner.
+
 type_sslcert=SSL-certifikat
 type_ftp=Fjärr-FTP-tjänst
 type_fail2ban=Fail2Ban-server
@@ -46,6 +47,8 @@ type_alive=Levande system
 type_rssh=Fjärr SSH
 type_slapd=LDAP-server
 type_ldap=LDAP-anslutning
+
+mon_virtualmin=Varning! Denna bildskärm är associerad med Virtualmin-domänen $1 och bör därför inte redigeras eller tas bort här.
 mon_header2=Kommandon att köra
 mon_header3=Övervakade servicealternativ
 mon_remotes2=Kör på värdar och grupper
@@ -93,6 +96,7 @@ mon_changes0=Visa varje händelsetyp
 mon_changes1=Visa endast ändringar
 mon_all=Visa alla historiska händelser
 mon_nochanges=Inga statusförändringar skedde under de senaste historiska händelserna i $1.
+
 sched_pager=Sidstatusrapport till nummer
 sched_none=Skicka inte e-post
 sched_pnone=Skicka inte sidor
@@ -119,6 +123,7 @@ sched_subject0=Inget (varning finns i kroppen)
 sched_subject1=Varningstext (lämna kroppen tom)
 sched_subject2=Anpassad text
 sched_esubject=Ämnet saknas SMS-meddelande
+
 http_login=Logga in som
 http_none=Autentisera inte
 http_user=Användarnamn
@@ -129,8 +134,10 @@ http_regexp=Sidan måste matcha regexp
 http_eregexp=Inget regelbundet uttryck för inmatad sida
 http_none2=Stämmer inte
 http_ehead=Metoden HEAD-begäran kan inte användas när du söker efter ett reguljärt uttryck
+
 ping_wait=Dags att vänta på svar
 ping_ewait=Saknad eller ogiltig väntetid
+
 proc_not=Misslyckas om processen är
 proc_not0=Springer inte
 proc_not1=Löpning
@@ -139,6 +146,7 @@ proc_ethresh=Det saknas eller ogiltigt antal processer
 proc_asuser=Kör som användare
 proc_anyuser=Varje användare
 proc_easuser=Användare för processen att köra som inte finns
+
 exec_mode=Avsluta statuskontroll
 exec_mode0=Fail monitor om kommandot misslyckas
 exec_mode1=Fail monitor om kommandot lyckas
@@ -148,6 +156,7 @@ exec_noregexp=Kontrollera inte
 exec_remode=Regexp-kontroll
 exec_remode0=Misslyckas om utgången inte matchar
 exec_remode1=Misslyckas om utmatningen inte matchar
+
 file_file=Fil, katalog eller mönster som ska kontrolleras
 file_test=Test för att utföra
 file_test_0=Måste existera
@@ -166,6 +175,7 @@ file_group=Filgruppen måste vara
 file_nocheck=Något
 file_perms=Oktala behörigheter måste vara
 file_eperm=Filer med felaktiga behörigheter : $1 
+
 traffic_iface=Gränssnitt att övervaka
 traffic_bytes=Maximala byte/sekund
 traffic_dir=Riktning att övervaka
@@ -175,6 +185,7 @@ traffic_dir2=Endast utgående
 traffic_desc=Denna bildskärm håller reda på nätverkstrafik i ett valt gränssnitt och visar skärmen som nere om trafiken överstiger antalet byte per sekund som anges nedan. Detta fungerar bara bra om schemalagd övervakning är aktiverad vid inställd till ett kort intervall, som var 5: e minut.
 traffic_eifaces=Ditt operativsystem har inte en/proc/net/dev-fil
 traffic_ebytes=Saknas eller ogiltigt antal byte/sekund
+
 space_fs=Filsystem att kontrollera
 space_min2=Minsta lediga utrymme
 space_mode0=Absolut storlek
@@ -190,6 +201,7 @@ space_ierr=Endast $1 inoder gratis
 space_merr=Endast $1 utrymme gratis
 space_perr=Endast $1% gratis
 space_dferr=Det gick inte att få filsystemstorlek
+
 load_time=Belastningsmedelvärde för att kontrollera
 load_1=1 minut
 load_5=5 minuter
@@ -198,6 +210,7 @@ load_max=Maximalt belastningsmedelvärde
 load_emax=Saknas eller ogiltig maximal belastningsgenomsnitt
 load_ecmd=Kommandot <tt>upptid</tt> hittades inte i ditt system
 load_efmt=Utgången från kommandot <tt>upptid</tt> kunde inte analyseras
+
 log_create=Skapad bildskärm $1 
 log_modify=Modifierad bildskärm $1 
 log_delete=Raderad bildskärm $1 
@@ -208,10 +221,14 @@ log_tmpl_modify=Ändrad e-postmall $1
 log_tmpl_delete=E-postmall $1 har tagits bort
 log_tmpl_deletes=$1 e-postmallar har tagits bort
 log_refresh=Uppdaterade monitorstatus
+
 acl_edit=Kan redigera och skapa bildskärmar?
 acl_sched=Kan ändra planerad övervakning?
+
 change_file=Fil eller katalog som ska övervakas (misslyckas om den ändras)
+
 jabber_eparser=Perl-modulen $1 är inte installerad på ditt system.
+
 memory_min2=Minsta gratis riktiga minne
 memory_emin=Saknas eller ogiltig mängd gratis verkligt minne
 memory_eproc=Webmin vet inte hur man kontrollerar ledigt minne på ditt operativsystem
@@ -221,7 +238,9 @@ memory_freelow=Endast $1 riktigt minne fritt
 memory_freelowswap=Endast $1 virtuellt minne gratis
 memory_minswap=Minsta gratis virtuella minne
 memory_eminswap=Saknas eller ogiltig mängd gratis virtuellt minne
+
 proftpd_etype=Denna bildskärm kan inte användas när ProFTPD körs fristående
+
 mailserver_to=Skicka e-post till adress
 mailserver_timeout=Timeout och intervall
 mailserver_units_0=sekunder
@@ -229,22 +248,28 @@ mailserver_units_1=Minuter
 mailserver_units_2=timmar
 mailserver_units_3=dagar
 mailserver_desc=Adressen nedan måste vara en autosvar som svarar på källadressen med samma ämne: rad.
+
 oldfile_file=Fil för att övervaka (misslyckas om den inte ändras)
 oldfile_diff=Misslyckas om det inte ändras för
 oldfile_secs=sek
+
 raid_device=RAID-enhet
 raid_edevice=Ingen RAID-enhet vald
 raid_bad=Dålig disk upptäckt
 raid_resync=För närvarande synkroniseras
 raid_notfound=RAID-enhet $1 hittades inte
 raid_other=Övrig ..
+
 iface_iface=Gränssnitt att kontrollera
+
 init_action=Åtgärd för att kontrollera
 init_eaction=Ingen åtgärd vald
+
 refresh_title=Uppdatera status
 refresh_doing=Uppdatera status för alla bildskärmar ..
 refresh_doing2=Uppdatera status för $1 valda bildskärmar ..
 refresh_done=.. Gjort.
+
 sensors_name=Sensor att kontrollera
 sensors_value=Misslyckades när
 sensors_value0=Systemet indikerar varning
@@ -255,6 +280,7 @@ sensors_none=Inga sensorer upptäcktes på ditt system. Du kan behöva köra kom
 sensors_cur=$1 (för närvarande $2 $3)
 sensors_emin=Saknas eller ogiltigt minimivärde
 sensors_emax=Det maximala värdet saknas eller ogiltigt
+
 nut_ups=NUT UPS för att kontrollera
 nut_name=Attribut till kontroll
 nut_value=Misslyckades när
@@ -265,6 +291,7 @@ nut_eups=Ingen USP att kontrollera angav
 nut_cur=$1 (för närvarande $2)
 nut_emin=Saknas eller ogiltigt minimivärde
 nut_emax=Det maximala värdet saknas eller ogiltigt
+
 mailq_system=Mejl server
 mailq_qmailadmin=qmail
 mailq_postfix=postfix
@@ -273,6 +300,7 @@ mailq_size=Maximal postköstorlek
 mailq_esize=Den maximala köstorleken saknas eller ogiltig
 mailq_toomany=Ner - $1 meddelanden i kö
 mailq_ok=Upp - $1 meddelanden i kö
+
 dns_server=DNS-server
 dns_host=Värdnamn för uppslagning
 dns_address=Förväntad IP-adress
@@ -280,6 +308,7 @@ dns_eserver=Saknad eller ogiltig DNS-server
 dns_ehost=Saknat eller ogiltigt ser värdnamn för uppslagning
 dns_eaddress=Saknad eller ogiltig förväntad IP-adress
 dns_ecmds=Varken kommandona <tt>nslookup</tt> eller <tt>dig</tt> är installerade på ditt system
+
 monitor_sub_down=$1 ner på $2 
 monitor_pager_down=$1 : "$2" är nedåt $3 
 monitor_snmp_down= $1:$2 
@@ -311,8 +340,10 @@ monitor_run1=Kör $1 på $2 ..
 monitor_run2=Kör $1 ..
 monitor_runerr=Det gick inte att köra $1 på $2 : $3 
 monitor_email_stat=Nuvarande status: $1 
+
 deletes_egone=En av de valda bildskärmarna finns inte längre
 deletes_enone=Inga bildskärmar valda
+
 ftp_host=FTP-servervärd
 ftp_port=FTP-port
 ftp_user=Logga in som användare
@@ -329,6 +360,7 @@ ftp_econn=TLS FTP-anslutning misslyckades
 ftp_econn2=TLS FTP-anslutning misslyckades : $1 
 ftp_elogin=TLS FTP-inloggning misslyckades : $1 
 ftp_etlsfile=Nedladdning av TLS FTP misslyckades : $1 
+
 query_driver=SQL-databasstyp
 query_db=Databas namn
 query_host=Databasserver
@@ -349,9 +381,12 @@ query_elogin=Inloggning misslyckades : $1
 query_eprepare=SQL-fel : $1 
 query_eexecute=SQL misslyckades : $1 
 query_ewrong=Felaktigt resultat : $1 
+
 consume_rate=Maximal förbrukningshastighet (per sekund)
 consume_high=Förbrukningsgraden är $1 / sekund
+
 alive_up=Upp för $1 
+
 rssh_host=SSH-servervärd
 rssh_ruser=Logga in som användare
 rssh_rpass=Logga in med lösenord
@@ -367,6 +402,7 @@ rssh_error=SSH-fel
 rssh_haspass=Lösenord
 rssh_port=SSH-serverport
 rssh_eport=Portnummer saknas eller ogiltigt
+
 tmpls_title=E-postmallar
 tmpls_ecannot=Du får inte redigera e-postmallar
 tmpls_none=Inga e-postmallar har definierats än. Alla varningar skickas med standardmeddelandena i Webmin.
@@ -375,6 +411,7 @@ tmpls_email=E-postmeddelande
 tmpls_add=Lägg till en ny e-postmall.
 tmpls_return=mallar lista
 tmpls_delete=Radera valda mallar
+
 tmpl_title1=Skapa e-postmall
 tmpl_title2=Redigera e-postmall
 tmpl_header=Varningar e-postmallmeddelanden
@@ -399,9 +436,11 @@ tmpl_esms=SMS-meddelande saknas
 tmpl_esnmp=SNMP-meddelande saknas
 tmpl_err2=Det gick inte att ta bort e-postmallen
 tmpl_eusers=Den används av följande bildskärmar : $1 
+
 dtmpls_err=Det gick inte att ta bort mallar
 dtmpls_enone=Ingen vald
 dtmpls_eusers=$1 används av följande bildskärmar : $2 
+
 sslcert_src=Certifikatplats
 sslcert_url=Från HTTPS URL
 sslcert_file=Från fil på server
@@ -419,18 +458,21 @@ sslcert_eend=Inte giltigt efter $1
 sslcert_left=Upp - $1 dagar fram till utgången
 sslcert_ematch=Värdnamn $1 stämmer inte med certifikat $2 
 sslcert_emismatch=Kontroll av certifikatvärdnamn kan endast användas när du kontrollerar en URL
+
 du_dir=Katalog som ska övervakas
 du_max=Maximal storlek
 du_edir=Saknad eller icke-absolut katalogväg
 du_emax=Maximal storlek saknas eller icke-numeriskt
 du_over=Storlek är $1 
 du_under=Storleken är bara $1 
+
 ldap_edriver=Perl-modulen $1 är inte installerad
 ldap_host=LDAP-serverns värdnamn
 ldap_port=LDAP-serverport
 ldap_ssl=Använd SSL-anslutning?
 ldap_user=LDAP-serverinloggning
 ldap_pass=LDAP-serverlösenord
+
 info_desc=Systemmonitor
 info_last=Nuvarande status
 info_title=System- och serverstatus

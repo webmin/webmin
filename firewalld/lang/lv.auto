@@ -30,6 +30,7 @@ index_return=zonu saraksts
 index_ezones=Neviena FirewallD zona nav atrasta.
 index_none=Šajā zonā vēl nav nevienas atļautas ostas vai pakalpojuma.
 index_ifaces=Pielietojiet noteikumus saskarnēm:
+
 port_edit=Rediģēt ostu
 port_create=Pievienot ostu
 port_header=Atļautās porta iespējas
@@ -45,11 +46,13 @@ port_eport=Trūkst vai nav derīgs porta numurs vai nosaukums
 port_eportlow=Zemam portam jābūt skaitlim
 port_eporthigh=Augstajam portam jābūt skaitlim
 port_eportrange=Zemai ostai jābūt zemāk par augsto ostu
+
 serv_edit=Rediģēšanas pakalpojums
 serv_create=Pievienot pakalpojumu
 serv_header=Atļautās pakalpojumu iespējas
 serv_name=Pakalpojums atļaut
 serv_err=Neizdevās saglabāt pakalpojumu
+
 forward_edit=Rediģēt uz priekšu
 forward_create=Izveidot uz priekšu
 forward_header=Ostas pāradresācijas iespējas
@@ -61,10 +64,13 @@ forward_dstaddr=Galamērķa adrese
 forward_dstlocal=Šī sistēma
 forward_edstaddr=Nederīga IPv4 adresāta adrese
 forward_eneither=Jāievada mērķa adrese vai osta, vai arī abi
+
 check_ecmd=FirewallD vadības komanda $1 jūsu sistēmā netika atrasta
+
 delete_err=Neizdevās izdzēst kārtulas
 delete_enone=Neviens nav atlasīts!
 delete_edel=$1 noņemšana neizdevās : $2 
+
 zone_title=Izveidot zonu
 zone_header=Jaunas zonas iespējas
 zone_name=Zonas nosaukums
@@ -77,12 +83,16 @@ zone_mode4=Ostas, ko izmanto virtuālajai mitināšanai
 zone_err=Neizdevās izveidot zonu
 zone_ename=Trūkst vai nav derīgs zonas nosaukums
 zone_eclash=Zona ar tādu pašu nosaukumu jau pastāv
+
 delzone_title=Dzēst zonu
 delzone_err=Neizdevās izdzēst zonu
 delzone_edefault=Noklusējuma zonu nevar noņemt
 delzone_rusure=Vai tiešām vēlaties izdzēst zonu $1, kurā ir $2 porti un $3 pakalpojumi?
+
 defzone_err=Neizdevās padarīt zonu par noklusējuma
+
 restart_err=Neizdevās piemērot konfigurāciju
+
 stop_err=Neizdevās apturēt FirewallD
 start_err=Neizdevās palaist FirewallD
 log_stop=Pārtraukta FirewallD

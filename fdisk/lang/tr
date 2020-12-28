@@ -22,6 +22,7 @@ index_hdparm=IDE parametrelerini değiştir
 index_use=Kullanılan
 index_free=Boş
 index_return=disk listesi
+
 bytes=byte
 megabytes=megabyte
 extended=Uzatılmış
@@ -43,6 +44,7 @@ select_smart=Compaq Smart Array $1 drive $2
 select_smartpart=Compaq Smart Array $1 drive $2 partition $3
 select_promise=Promise RAID drive $1
 select_ppart=Promise RAID drive $1 partition $2
+
 edit_title=Bölümü Değiştir
 create_title=Bölüm Oluştur
 edit_ecannot=Bu diski değiştirmenize izin verilmedi
@@ -81,6 +83,7 @@ edit_none=Hiçbiri
 edit_newmount=Disk Bölümünü Mount Et
 edit_mountas=olarak
 edit_mountmsg=Bir disk bölümünü dosya saklama amaçlı olarak kullanmak için sisteminizde bir dizine mount edilmelidir. Bu bölümde dosya sistemi daha önceden oluşturulmuş olmalıdır.
+
 mkfs_title=Yeni Dosya Sistemi
 mkfs_ecannot=Bu diskte yeni dosya sistei oluşturmanız izin verilmedi
 mkfs_desc1=Yeni bir $1 dosya sistemini $1 aygıtı oluşturmak için formun üzerindeki butonu tiklayiniz. Bu bölümdeki bütün bilgiler silinecektir.
@@ -91,6 +94,7 @@ mkfs_err=Dosya sistemi oluşturulmasında hata oluştu
 mkfs_exec=$1 komutu çalıştırılıyor ..
 mkfs_failed=.. komutu oluşturuldu!
 mkfs_ok=.. komut tamamlandı.
+
 fsck_title=Dosya Sistemini Tamir Et
 fsck_ecannot=Bu diski kontrol etmenize izin verilmedi
 fsck_desc1=<tt>Dosya Sistemini Tamir Et</tt> butonu tıklandığında belirtilen dosya sistemi tamir için kontrol edilmeye başlanacaktır. Eğer dosya sistemi hasarlı değilse hiçbir değişiklik yapılmayacaktır
@@ -103,6 +107,7 @@ fsck_err3=hata bulundu ve düzeltildi - makine yeniden başlatılmalı
 fsck_err4=hata bulundu ama DÜZELTİLEMEDİ
 fsck_err16=komut satırı hatası
 fsck_unknown=bilinmeyen dönüş kodu $1
+
 tunefs_title=Dosya Sistemi Düzenleme
 tunefs_ecannot=Bu dosya sitemini ayarlamak için izininiz yoktur
 tunefs_desc=Bu form bağlanılan dosya sisteminin çeşitli parametrelierini değiştirmek için kullanılır.Bu dosya sisteminde varolan dosyalar etkilenmemiş olmalıdır
@@ -124,10 +129,12 @@ tunefs_err=Dosya sistemi ayarlamada hata oluştu
 tunefs_exec=$1 komutu çalıştırılıyor..
 tunefs_failed=.. komutunda hata oluştu
 tunefs_ok=.. komutu tamamlandı
+
 reboot_title=Yeniden Başlat
 reboot_msg=Yeniden Başlatılıyor ..
 reboot_ok=Şimdi Yeniden Başlat
 reboot_why=$1'deki disk bölüm tablosunu değiştirdiniz.Bu değişikliklerin aktif hale gelmesi için sistemin yeniden başlatılması gerekiyor.
+
 save_err=Disk bölümünün kaydedilmesinde hata oluştu
 save_ecannot=Bu diski düzenlemek için izininiz yoktur
 save_estart='$1' geçerli bir başlangıç silindiri değildir
@@ -136,6 +143,7 @@ save_emin=Başlangıç silindiri >= $1 olmalıdır
 save_emax=Bitiş silindiri <= $1 olmalıdır
 save_eminmax=Başlangıç silindirinin numarası son silindir numarasından daha küçük olmalıdır
 save_eoverlap=$1 'de üstüste binme tespit edildi ($2 to $3)
+
 ext2_b=Blok boyutu
 ext2_f=Parça boyutu
 ext2_i=Düğüm başına byte
@@ -143,6 +151,7 @@ ext2_m=Ayıtılmış bloklar
 ext2_g=Grup başına blok
 ext2_c=Kötü bloklar sınansın mı?
 ext3_j=Journal dosya boyutu
+
 msdos_ff=FAT'lerin sayısı
 msdos_F=FAT boyutu
 msdos_i=Boyut ID'si
@@ -150,20 +159,26 @@ msdos_n=Boyut ismi
 msdos_r=Kök girişleri
 msdos_s=Cluster boyutu
 msdos_c=Kötü bloklar sınansın mı?
+
 minix_n=Dosya ismi uzunluğu
 minix_i=Düğümlerin sayısı
 minix_b=Blok sayısı
 minix_c=Kötü bloklar sınansın mı?
+
 reiserfs_force=Dosya sistemi oluşturulmasını zorla
 reiserfs_hash=Hash function
+
 xfs_force=Dosya sistemi oluşturulmasını zorla
 xfs_b=Blok boyutu
+
 jfs_s=Log boyutu
 jfs_c=Disk hataları kontrol edilsin mi?
+
 acl_disks=Bu kullanıcı diskleri bölebilir ve biçimlendirebilir
 acl_dall=Bütün diskler
 acl_dsel=Seçililer.
 acl_view=Düzenlenemeyen diskler görüntülensin mi?
+
 hdparm_title=IDE parametrelerini düzenle
 hdparm_on=Açık
 hdparm_off=Kapalı
@@ -192,6 +207,7 @@ hdparm_performing=Yapılıyor
 hdparm_buf1=Tampon önbelleği :
 hdparm_buf2=Ön belleğe alınan:
 hdparm_speedres=Hız testi sonuçları
+
 log_modify=$1 değiştirildi
 log_create=$1 oluşturuldu
 log_delete=$1 silindi
@@ -199,6 +215,7 @@ log_mkfs=$2'de $1 dosya sistemi oluşturuldu
 log_tunefs=$2'de $1 dosya sistemi düzenlendi
 log_fsck=$2'de $1 dosya sistemi tamir edildi
 log_hdparm=$1 için IDE parametreleri değiştirildi
+
 fs_ext2=Linux Native
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -207,6 +224,7 @@ fs_reiserfs=ReiserFS
 fs_ext3=New Linux Native
 fs_xfs=SGI
 fs_jfs=IBM Journalling
+
 delete_title=Disk Bölümü Sil
 delete_rusure=$1 ( $2 )'i silmek istediğinizden emin misiniz ? Bu disk bölümdeki veri geri getirilemeyecek şekilde kaybedilebilir.
 delete_ok=Şimdi Sil

@@ -23,7 +23,9 @@ index_eip=&lt;Unknown&gt;
 index_global=全局配置
 index_create=创建虚拟服务器
 index_version=ProFTPd版本$1
+
 efailed=无法保存$1
+
 type_0=网络选项
 type_1=登录选项
 type_2=文件和目录
@@ -31,6 +33,7 @@ type_3=访问控制
 type_4=杂项
 type_5=用户和组
 type_6=验证
+
 virt_title=虚拟服务器选项
 virt_header1=对于$1
 virt_header2=对于默认服务器
@@ -46,6 +49,7 @@ virt_cmds=FTP命令
 virt_return=虚拟服务器
 virt_virt=配置虚拟服务器
 virt_edit=编辑目录
+
 vserv_title=配置虚拟服务器
 vserv_addr=地址
 vserv_name=服务器名称
@@ -54,6 +58,7 @@ vserv_delete=删除虚拟服务器
 vserv_eaddr=未输入地址或无效的地址
 vserv_eport=未输入端口号或无效的端口号
 vserv_ename=未输入服务器名称
+
 anon_title=匿名FTP选项
 anon_header1=在虚拟服务器$1中
 anon_header2=在默认的服务器中
@@ -61,6 +66,7 @@ anon_anon=配置匿名FTP
 anon_return=匿名FTP选项
 anon_header3=对于虚拟服务器$1中的匿名FTP
 anon_header4=对于默认服务器中的匿名FTP
+
 aserv_title=配置匿名FTP
 aserv_create=设置匿名FTP
 aserv_root=Chroot目录
@@ -71,6 +77,7 @@ aserv_eroot=未输入或无效的chroot目录
 aserv_euser=未输入或无效的Unix用户
 aserv_egroup=未输入或无效的Unix组
 aserv_desc=没有为本虚拟服务器设置的匿名FTP。请使用此表来设定初始的配置选项。
+
 dir_title=每个目录选项
 dir_header2=对于默认服务器中的目录$1
 dir_header1=对于虚拟服务器$2中的目录$1
@@ -80,8 +87,10 @@ dir_header3=$2中的$1选项
 dir_header=每个命令选项
 dir_dir=配置目录
 dir_header4=对于匿名FTP的目录$1
+
 manual_title=编辑目录
 manual_header=请使用下面的文字框，手工编辑$1中应用于本服务器、目录或命令的ProFTPD目录。
+
 limit_title=每个命令选项
 limit_header4=对于目录$2中的命令$1
 limit_header2=对于默认服务器中的命令$1
@@ -92,16 +101,19 @@ limit_header3=命令$2的$1选项
 limit_return=每个命令选项
 limit_header5=对于匿名FTP中的命令$1
 limit_header6=对于文件$2中的命令$1
+
 lserv_title=配置命令
 lserv_cmd=FTP命令
 lserv_delete=删除命令配置
 lserv_err=无法保存命令
 lserv_ecmd=未选择命令
+
 dserv_title=配置目录
 dserv_dir=目录路径
 dserv_err=无法保存目录
 dserv_edir=未输入目录路径
 dserv_delete=删除目录配置
+
 mod_core_type=服务器类型
 mod_core_inetd=从Inetd运行
 mod_core_stand=独立的守护进程
@@ -284,6 +296,7 @@ mod_core_duser=拒绝用户
 mod_core_eip='$1'不是一个有效的IP地址
 mod_core_enet='$1'不是一个有效的网络地址
 mod_core_ehost='$1'不是一个有效的主机名
+
 mod_ls_fakegroup=目录列表中的假组？
 mod_ls_fakeuser=目录列表中的假用户？
 mod_ls_fakemode=目录列表中的假许可？
@@ -292,6 +305,7 @@ mod_ls_efakemode=假许可必须是八进制的
 mod_ls_dotfiles=在列表中显示以'.'开头的文件？
 mod_ls_ls=附加的ls选项
 mod_ls_els=未输入附加的ls选项
+
 mod_auth_chdir=初始登录目录
 mod_auth_echdir=未输入或无效的初始目录
 mod_auth_chroot=Chroot目录
@@ -303,7 +317,9 @@ mod_auth_egroups=未输入要chroot的Unix组
 mod_auth_echroot=未输入或无效的chroot目录
 mod_auth_login=如果登录被拒绝，不询问口令吗？
 mod_auth_root=允许以root登录吗？
+
 mod_site_chmod=允许chmod命令？
+
 mod_unixpw_ufile=预备的Unix口令文件
 mod_unixpw_eufile=未输入或无效的Unix口令文件
 mod_unixpw_gfile=预备的Unix组文件
@@ -311,6 +327,7 @@ mod_unixpw_egfile=未输入或无效的Unix组文件
 mod_unixpw_none=无
 mod_unixpw_pam=每次都将PAM当作authorative？
 mod_unixpw_persist=永久开放口令文件？
+
 mod_log_syslog=将错误记录至文件中
 mod_log_sysdef=系统日志
 mod_log_esyslog=未输入或无效的日志文件
@@ -327,14 +344,18 @@ mod_log_fmt=格式字符串
 mod_log_format=自定义日志格式
 mod_log_enickname=未输入或无效的格式名
 mod_log_efmt=未输入格式字符串
+
 mod_pam_pam=用PAM来验证？
 mod_pam_config=使用户PAM服务来验证
 mod_pam_econfig=未输入或无效的PAM服务
+
 mod_readme_display=通知用户匹配的readme文件
 mod_readme_none=无
 mod_readme_edisplay=未输入readme文件模式
+
 start_err=启动FTP服务器失败
 start_einetd=您无法在inetd模式中启动服务器的守护程序。
+
 ftpaccess_title=每个目录选项文件
 ftpaccess_desc=在每个目录中的一个文件中（通常称作<tt>.ftpaccess</tt>）可以指定附加的每个目录选项。该选项可应用至此目录和其子目录下的所有文件，除非它被其他的选项文件覆盖。
 ftpaccess_create=创建选项文件
@@ -342,8 +363,10 @@ ftpaccess_find=寻找选项文件
 ftpaccess_auto=以匿名的形式
 ftpaccess_from=从目录
 ftpaccess_return=选项文件列表
+
 ftpusers_title=拒绝FTP用户
 ftpusers_desc=如果在<tt>验证</tt>图标下启动，该文件$1在下面列出的用户登录访问FTP用户的权限将会被拒绝。
+
 ftpindex_title=每个目录选项文件
 ftpindex_delete=删除文件
 ftpindex_opts=每路目录选项
@@ -353,8 +376,10 @@ ftpindex_addlimit=为..新增每个命令选项
 ftpindex_header2=$2中的$1
 ftpindex_return=每个目录选项文件
 ftpindex_header=用于$1
+
 find_err=寻找选项文件失败
 find_eanon=没有在任何虚拟服务器上设置匿名FTP
+
 log_global=更改全局$1选项
 log_ftpusers=更改被拒的FTP用户
 log_virtc=创建服务器$1

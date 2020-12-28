@@ -44,6 +44,7 @@ right_upsec=$2 paket güncelleştirmesi mevcut; bunlardan $2 'si güvenlik günc
 right_recollect=Sistem bilgilerini yenile
 right_vvirtualmin=Virtualmin sürümü
 right_vvm2=Cloudmin sürümü
+
 acl_show=Gösterilecek sistem bilgileri
 acl_showall=her şey
 acl_showsel=Sadece seçili ..

@@ -4,26 +4,39 @@ index_restart_wb=Redémarrez les serveurs Winbind
 index_restartmsg_wb=Cliquez sur ce bouton pour redémarrer les serveurs Winbind en cours d'exécution sur votre système.
 index_stop_wb=Arrêter les serveurs Winbind
 index_stopmsg_wb=Cliquez sur ce bouton pour arrêter les serveurs Winbind en cours d'exécution sur votre système.
+
 convert_who=Utilisateurs Unix à convertir
 convert_who0=Uniquement les utilisateurs répertoriés ou les plages UID
 convert_who1=Tout sauf les utilisateurs répertoriés et les plages UID
+
 net_ip=adresse IP
+
 smb_master_auto=Automatique
 smb_server=Serveur de mot de passe
+
 euser_locked=Le compte est verrouillé
+
 mkpass_added=Ajoutée
 mkpass_user=Nom d'utilisateur
 mkpass_action=Action prise
 mkpass_skipcount=$1 utilisateurs ont été ignorés pour la conversion.
+
 savefshare_group=Groupe manquant ou invalide pour le nouveau répertoire
+
 savefshare_perms=Autorisations manquantes ou non valides pour le nouveau répertoire
 savefshare_emkdir=Impossible de créer le répertoire : $1 
+
 start_err_wb=Impossible de démarrer les serveurs Winbind
+
 restart_err=Impossible de redémarrer les serveurs Samba
 restart_err_wb=Impossible de redémarrer les serveurs Winbind
+
 viewu_refresh=Rafraîchir la page.
+
 log_apply_wb=Serveurs Winbind redémarrés
 log_stop_wb=Serveurs Winbind arrêtés
 log_start_wb=Serveurs Winbind démarrés
+
 acl_bind=Peut accéder aux options de winbind?
+
 bind_defaultdomain=Toujours utiliser le domaine par défaut?

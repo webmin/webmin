@@ -40,6 +40,7 @@ index_descfetch=Questa pagina serve per scaricare un file dal sistema su cui è 
 index_email=Manda una mail quando tutti i downloads sono completati?
 index_emailto=Si, all'indirizzo
 index_email2=Manda una mail quando tutti gli uploads sono completati?
+
 upload_title=Upload File
 upload_err=Impossibile fare l'upload dei file
 upload_edir=Directory di destinazione dell'upload inesistente
@@ -63,6 +64,7 @@ upload_saving=Salvataggio file in corso $1 ..
 upload_saved=.. scrivi $1
 upload_unzipping=Estrazione file in corso $1 ..
 upload_unzipdone=.. $1
+
 download_err=Impossibile salvare il download
 download_enone=Nessun URL inserito per il download
 download_eurl='$1' non è un URL valido
@@ -74,9 +76,11 @@ download_failed=Download non riuscito: $1
 download_eaccess=Non hai i permessi per scaricare file su $1
 download_eucannot=Non hai i permessi per scaricare file come utente $1
 download_egcannot=Il gruppo selezionato non contiene l'utente selezionato
+
 cancel_err=Annullamento dei download non riuscito
 cancel_enone=Nessuna selezione
 cancel_ecannot=Non hai i permessi per annullare i download per l'utente $1
+
 log_cancel=Download di $1 annullato
 log_upload_l=File $1 uploadato
 log_upload=Uploadato $1 file
@@ -84,6 +88,7 @@ log_download_l=Scaricato/i URL $1
 log_download=Scaricato/i $1 URL
 log_sdownload_l=Programmato/i il download di URL $1
 log_sdownload=Programmato/i il download di $1 URL
+
 acl_users=Può effettuare l'upload ed il download di file come utente
 acl_all=Tutti gli utenti
 acl_this=Utente Webmin corrente
@@ -98,6 +103,7 @@ acl_max=Dimensione massima per l'upload
 acl_unlim=Illimitato
 acl_b=byte
 acl_fetch=Può effettuare il download dei file sul PC?
+
 fetch_err=Download del file non riuscito
 fetch_ecannot=Non hai i permessi per effettuare il download di file sul PC
 fetch_efile=Nessun nome di file inserito
@@ -106,6 +112,7 @@ fetch_eopen=Apertura del file $1 non riuscita
 fetch_eaccess=Non hai i permessi per effettuare il download di file da $1
 fetch_ezip=Una cartella non può essere scaricata finchè non è installato il comando <tt>zip</tt>
 fetch_eroot=La cartella root non può essere scaricata!
+
 email_downmsg=Il seguente download è stato completato :
 email_downurl=URL: $1
 email_downerr=Messaggio di errore: $1

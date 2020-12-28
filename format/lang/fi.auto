@@ -15,6 +15,7 @@ index_use=Käyttää
 index_free=Vapaa
 index_format=Tätä levyä ei ole alustettu
 index_return=levyluettelo
+
 edit_ecannot=Sinulla ei ole oikeutta muokata tätä levyä
 edit_title=Muokkaa osiota
 edit_header=Osion yksityiskohdat
@@ -56,6 +57,7 @@ edit_tunedesc2=Et voi virittää tämän osion tiedostojärjestelmää, koska si
 edit_tunedesc3=Et voi virittää tämän osion tiedostojärjestelmää, koska se on asennettu tällä hetkellä. Irrota ensin <a href=/mount/>tiedostojärjestelmämoduuli</a>.
 edit_tunedesc4=Et voi virittää tämän osion tiedostojärjestelmää, koska siinä ei ole tiedostojärjestelmää.
 edit_tunedesc5=Et voi virittää tämän osion tiedostojärjestelmää, koska vain <tt>UFS</tt> tiedostojärjestelmät voidaan virittää.
+
 save_ecannot=Sinulla ei ole oikeutta muokata tätä levyä
 save_edelete=Osion poistaminen epäonnistui
 save_esave=Osion tallentaminen epäonnistui
@@ -64,6 +66,7 @@ save_eend='$1' ei ole kelvollinen loppupyörä
 save_estartmin=Käynnistyssylinterin on oltava> 0
 save_eendmax=Päätepullon on oltava < $1 
 save_estartend=Lähtösylinterin on oltava pienempi kuin pääty
+
 newfs_title=Luo tiedostojärjestelmä
 newfs_ecannot=Sinulla ei ole oikeutta muotoilla tätä levyä
 newfs_desc=Napsauttamalla tämän lomakkeen alaosassa olevaa painiketta, rakennetaan uusi $1 laitteelle $2. Kaikki tämän osion tiedot poistetaan pysyvästi.
@@ -89,6 +92,7 @@ newfs_err=Tiedostojärjestelmän luominen epäonnistui
 newfs_exec=Suoritetaan komento $1 ..
 newfs_failed=.. komento epäonnistui!
 newfs_ok=.. komento valmis.
+
 fsck_title=Korjaa tiedostojärjestelmä
 fsck_ecannot=Et voi korjata tätä levyä
 fsck_desc=Napsauttamalla <b>Korjaa</b> -painiketta tarkistetaan ja valinnaisesti korjataan $1 $2 : ssa. Tarkastus- ja korjaustaso määräytyy alla olevan valintasi mukaan.
@@ -106,6 +110,7 @@ fsck_37=prosessi tapettiin tarkistuksen aikana
 fsck_39=havaitut korjaamattomat virheet!
 fsck_40=virheitä ei havaittu
 fsck_unknown=Tuntematon virhe
+
 tunefs_title=Viritä tiedostojärjestelmä
 tunefs_ecannot=Sinulla ei ole oikeutta virittää tätä levyä
 tunefs_desc=Tämän lomakkeen avulla voit säätää $1 : n parametreja $2 : ssa. Tämän tiedostojärjestelmän olemassa oleville tiedostoille ei aiheudu vahinkoa.
@@ -122,6 +127,7 @@ tunefs_err=Tiedostojärjestelmän viritys epäonnistui
 tunefs_exec=Suoritetaan komento $1 ..
 tunefs_failed=.. komento epäonnistui!
 tunefs_ok=.. komento valmis.
+
 select_device=SCSI-ohjain $1 tavoite $2 yksikkö $3 
 select_idedevice=IDE-laite $1 
 select_part=SCSI-ohjain $1 tavoite $2 yksikkö $3 osio $4 
@@ -131,10 +137,13 @@ esun=Osioita voidaan muokata vain Sun-laitteilla
 emounted=Levyllä on asennetut osiot
 elast=Viimeistä osiota ei voi poistaa
 eformat=<tt>muoto</tt> ei löytänyt levyjä!
+
 fstype_ufs=Solaris Unix-tiedostojärjestelmä
 fstype_unknown=Tuntematon tiedostojärjestelmä
+
 acl_disks=Levyt, jotka tämä käyttäjä voi osioida ja alustaa
 acl_dall=Kaikki levyt
 acl_dsel=Valitut ..
 acl_view=Voiko levyjä ja osioita muokata?
+
 ecannot=Et voi muokata osioita

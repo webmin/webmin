@@ -19,6 +19,7 @@ index_dump=Wys dump
 index_dumpdesc=Klik op hierdie knoppie om inligting oor die Shorewall-opsporing van die <tt>shorewall6 dump</tt> -opdrag te sien.
 index_check=Gaan die firewall na
 index_checkdesc=Klik op hierdie knoppie om Shorewall jou firewall-opstelling te bevestig met die opdrag <tt>shorewall6</tt>.
+
 list_move=skuif
 list_add=Voeg
 list_auto=outomatiese
@@ -30,6 +31,7 @@ list_manual=Redigeer lêer handmatig
 list_manualdesc=Klik op hierdie knoppie om die Shorewall-lêer $1, waarin bogenoemde inskrywings gestoor is, met die hand te wysig.
 list_ecannot=U mag nie hierdie Shorewall-tabel wysig nie.
 list_delete=Verwyder geselekteerde
+
 restart_err=Kon nie konfigurasie toepas nie
 refresh_err=Kon nie die konfigurasie herlaai nie
 start_err=Kon nie firewall begin nie
@@ -41,6 +43,7 @@ check_title=Gaan die firewall na
 check_ok=.. u firewall-konfigurasie lyk OK.
 check_failed=.. daar is 'n fout in u firewall-konfigurasie gevind!
 check_cmd=Kontroleer konfigurasie ..
+
 zones_title=Netwerksones
 zones_desc=Die sones wat op hierdie bladsy gelys word, verteenwoordig verskillende netwerke wat vanaf u stelsel bereik kan word. Die inskrywings hier het egter geen effek op die firewall nie - dit definieer eerder sone name en beskrywings.
 zones_add=Voeg 'n nuwe netwerksone by.
@@ -72,6 +75,7 @@ zones_firewall=Firewall stelsel
 zones_eopts=Ongeldige sone-opsies
 zones_eopts_in=Ongeldige inkomende opsies vir sone
 zones_eopts_out=Ongeldige uitgawe van sone
+
 policy_title=Verstekbeleide
 policy_desc=Op hierdie bladsy kan u die verstekaksies vir verkeer tussen verskillende firewall-sones opstel. Dit kan op die Firewall-reëls-bladsy oorheers word vir spesifieke leërskare of soorte verkeer.
 policy_add=Voeg 'n nuwe standaardbeleid by.
@@ -92,6 +96,7 @@ policy_ulog=Teken in op ULOG
 policy_efw=&lt;Firewall&gt; kan gekies word vir beide die bron- en bestemmingsones
 policy_elimit=Ontbrekende of ongeldige verkeersbeperkingsnommer
 policy_eburst=Ontbrekende of ongeldige nommer van verkeersbars
+
 rules_title=Firewall-reëls
 rules_desc=Hierdie tabel bevat 'n lys van uitsonderings op die standaardbeleide vir sekere soorte verkeer, bronne of bestemmings. Die gekose handeling sal toegepas word op pakkies wat ooreenstem met die gekose kriteria in plaas van die standaard.
 rules_add=Voeg 'n nuwe firewall-reël by.
@@ -138,6 +143,7 @@ rules_eaction=Geen aksie gekies nie
 rules_macro=Makro-aksie-parameter
 rules_none2=Geen
 rules_emacro=Makro-parameter ontbreek of ongeldig
+
 tos_title=Tipes diens
 tos_desc=Hierdie bladsy definieer tipes IP-dienste vir spesifieke soorte verkeer, wat gebruik kan word om hul prioriteite te verhoog of te verlaag.
 tos_add=Voeg 'n nuwe soort diens by.
@@ -156,6 +162,7 @@ tos_edit=Wysig tipe diens
 tos_create=Skep tipe diens
 tos_header=Tipe diensbesonderhede
 tos_err=Kon nie die tipe diens stoor nie
+
 interfaces_title=Netwerk-koppelvlakke
 interfaces_desc=Elk van die netwerk-koppelvlakke op u stelsel wat u wil hê dat Shorewall moet bestuur, moet op hierdie bladsy gelys word en gekoppel wees aan die sone waaraan dit gekoppel is. Die loopback-koppelvlak <tt>lo</tt> moet nooit gelys word nie.
 interfaces_add=Voeg 'n nuwe netwerk koppelvlak by.
@@ -171,6 +178,7 @@ interfaces_header=Netwerk koppelvlak besonderhede
 interfaces_err=Kon nie netwerk koppelvlak stoor nie
 interfaces_eiface=Ontbrekende of ongeldige koppelvlaknaam
 interfaces_ebroad=Ontbrekende of ongeldige uitsendingadres
+
 masq_title=vermom
 masq_desc=Inskrywings op hierdie bladsy stel netwerkadresvertaling op vir verkeer wat tussen een of ander netwerk en 'n spesifieke koppelvlak gestuur word.
 masq_add=Voeg 'n nuwe reël vir maskerade by.
@@ -201,6 +209,7 @@ masq_emnete=Lys met uitsonderingsnetwerke
 masq_esnat=Ongeldige SNAT IP-adres
 masq_eports=Ontbrekende of ongeldige komma-aparte lys met poorte
 masq_eipsec=IPsec-opsies ontbreek
+
 nat_title=Statiese NAT
 nat_desc=Die statistiese inskrywings vir statiese netwerkadres in hierdie tabel kan gebruik word om 'n 1-1-korrespondensie op te stel tussen 'n eksterne adres op u firewall en 'n RFC1918-adres van 'n masjien agter u firewall. Statiese NAT word dikwels gebruik om verbindings met 'n interne bediener buite u netwerk toe te laat.
 nat_add=Voeg 'n nuwe statiese NAT-inskrywing by.
@@ -219,6 +228,7 @@ nat_local=Aktief vir die firewallstelsel?
 nat_eext=Ongeldige eksterne IP-adres
 nat_eint=Ongeldige interne IP-adres
 nat_evirt=Ongeldige virtuele koppelvlaknommer
+
 proxyndp_title=Volmagende NDP
 proxyndp_desc=Op hierdie bladsy kan u u stelsel instel om NDP-versoeke vir ander IP-adresse te beantwoord, behalwe sy eie, sodat dit pakkies na daardie adresse kan stuur na hul regte bestemmings.
 proxyndp_add=Voeg 'n nuwe volmag-NDP-adres by.
@@ -235,6 +245,7 @@ proxyndp_err=Kon nie die instaanbediener-NDP stoor nie
 proxyndp_have=Roete na gasheer bestaan?
 proxyndp_eaddr=Ontbrekende of ongeldige adres aan NDP
 proxyndp_pers=Verlaat die roete, selfs as die firewall gestop is?
+
 routestopped_title=Wanneer gestop
 routestopped_desc=As Shorewall gestop word, sal dit toegang deur alle leërskare geweier word. Op hierdie bladsy kan u leërskare of netwerke definieer wat steeds toeganklik sal wees.
 routestopped_add=Voeg 'n nuwe gestopte adres by.
@@ -250,6 +261,7 @@ routestopped_err=Kon nie gestopte adres stoor nie
 routestopped_eaddr=Geen adresse ingevoer nie
 routestopped_all=Alle adresse
 routestopped_list=Geadresseerde adresse en netwerke ..
+
 tunnels_title=VPN-tonnels
 tunnels_desc=Hierdie bladsy bevat VPN-tonnels wat deur u firewall gaan, en dit moet deur die Shorewall-konfigurasie toegelaat word.
 tunnels_add=Voeg 'n nuwe VPN-tonnel by.
@@ -282,6 +294,7 @@ tunnels_generic_l=Generies, vir protokol ..
 tunnels_gsel=Genoteerde sones
 tunnels_eopenvpn=Ongeldige poortnommer vir die OpenVPN-tonnel
 tunnels_egeneric=Protokol of protokol ontbreek: poort vir generiese tonnel
+
 hosts_title=Sone-gashere
 hosts_desc=Hierdie bladsy lys leërskare en netwerke wat deel uitmaak van spesifieke sones. U hoef meestal geen veranderinge aan hierdie lys aan te bring nie.
 hosts_add=Voeg 'n nuwe sone gasheer by.
@@ -301,8 +314,10 @@ hosts_ip=Adres of netwerk $1
 hosts_mac=MAC-adres $1 
 hosts_ipset=IP-stel $1 
 hosts_any=Enige gasheer
+
 edit_before=Voor inskrywing $1 
 edit_after=Na inskrywing $1 
+
 blacklist_title=Swartlys-gashere
 blacklist_desc=Hierdie bladsy bevat 'n lys van leërskare en dienste wat geblokkeer sal word as die verkeer van hulle af kom op 'n koppelvlak met die opsie <b>swartlys</b>.
 blacklist_add=Voeg 'n nuwe gasheer vir swartlys by.
@@ -325,6 +340,7 @@ blacklist_eproto=Protokol ontbreek of ongeldig
 blacklist_eports=Ongeldige poortnommer of komma-geskeide lys met poorte
 blacklist_eports2=Porte kan slegs gespesifiseer word vir die TCP- en UDP-protokolle
 blacklist_return=swartlys gashere
+
 providers_title=Bykomende roeteverskaffers
 providers_desc=Hierdie bladsy definieer addisionele routingtabelle. Dit is nodig as u verbindings het met meer as een ISP of verskeie verbindings met dieselfde ISP, of die inkvis as 'n deursigtige instaanbediener op 'n ander gasheer as die firewall gebruik.
 providers_add=Voeg 'n nuwe verskaffer aan.
@@ -359,17 +375,21 @@ providers_enumber=Nommer of ongeldige verskaffernommer
 providers_emark=Ontbrekende of ongeldige verskaffermerknommer
 providers_edup=Verskaffer ontbreek om te dupliseer
 providers_egateway=Ontbrekende of ongeldige poort
+
 manual_desc=Hierdie vorm kan gebruik word om die Shorewall-lêer $1 met die hand te wysig. Wees versigtig, aangesien daar nie 'n sintaksis-ondersoek gedoen word na die veranderinge nie.
 manual_reset=ongedaan
 manual_err=Kon nie die tabellêer stoor nie
 manual_efile=Ongeldige tabelnaam!
 manual_edata=Geen tabellêerinhoud is ingevoer nie.
+
 acl_nochange=Kan Shorewall-konfigurasie aansoek doen, stop en begin?
 acl_files=Beskikbare Shorewall-tafels
 acl_all=Almal
 acl_sel=Hier onder gekies ..
+
 delete_err=Kon nie rye uitvee nie
 delete_enone=Geen rye is gekies nie
+
 opts_routeback=Aanvaar die verkeer terug na die gasheer
 opts_source=Laat die gasheer toe na enige bestemming
 opts_dest=Laat dit vanaf enige bron huisves
@@ -386,12 +406,14 @@ opts_proxyndp=Aktiveer instaanbediener-NDP
 opts_ndp_filter=Reageer slegs op NDP-versoeke vir koppelvlak-IP
 opts_detectnets=Taylor-sone om slegs aangestuurde gashere in te sluit
 opts_upnp=Pak die pakkette via UPNP op
+
 opts_dhcp=Die koppelvlak gebruik DHCP
 opts_forward=Stel aanstuur
 opts_ignore=Ignoreer op/af-gebeure
 opts_optional=Die koppelvlak is opsioneel
 opts_required=Koppelvlak word benodig
 opts_bridge=Die koppelvlak is 'n brug
+
 comment_add=Voeg 'n nuwe opmerking by.
 comment_edit=Wys kommentaar
 comment_create=Skep kommentaar
@@ -399,6 +421,7 @@ comment_header=Tabel kommentaar besonderhede
 comment_msg=boodskap
 comment_err=Kon nie opmerking stoor nie
 comment_enone=Geen boodskap is ingevoer nie
+
 log_create_table=Toegang tot die $1 -tabel gevoeg
 log_modify_table=Gewysigde inskrywing in die $1 tabel
 log_delete_table=Inskrywing van die $1 -tabel is verwyder
@@ -414,6 +437,7 @@ log_start=Firewall begin
 log_refresh=Verfris firewall
 log_restart=Herlaai van die firewall
 log_clear=Firewall skoongemaak
+
 shorewall_conf_title=Meester konfigurasie lêer
 shorewall_conf_desc=Op hierdie bladsy kan u die globale konfigurasieveranderlikes opstel. OPMERKING: Om die volgorde van veranderlikes hier te verander, word nie aanbeveel as u die relatiewe posisie van kommentaar in die konfigurasielêer wil behou nie.
 shorewall_conf_add=Voeg 'n nuwe konfigurasieveranderlike by.
@@ -427,6 +451,7 @@ shorewall_conf_create=Skep konfigurasieveranderlike
 shorewall_conf_header=Besonderhede van die konfigurasieveranderlike
 shorewall_conf_err=Kon nie die konfigurasieveranderlike stoor nie
 shorewall_conf_varname=Ongeldige veranderlike naam (moet 'n geldige naam van die shell-veranderlike wees)
+
 params_title=Pasgemaakte parameters
 params_desc=Op hierdie bladsy kan u die aangepaste parameters van Shorewall opstel. OPMERKING: Om die volgorde van parameters hier te verander, word nie aanbeveel as u die relatiewe posisie van kommentaar in die konfigurasielêer wil behou nie.
 params_add=Voeg 'n nuwe pasgemaakte parameter by.

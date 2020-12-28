@@ -1,5 +1,6 @@
 check_etargets=iSCSIサーバー構成ファイル $1がシステムで見つかりませんでした。
 check_eserver=iSCSIサーバープログラム $1がシステムで見つかりませんでした。
+
 index_title=iSCSIサーバー
 index_clink=インストールされていないか、<a href='$1'>モジュール設定</a>が正しくない可能性があります。
 index_stop=iSCSIサーバーを停止する
@@ -11,6 +12,7 @@ index_restartdesc=iSCSIサーバーを再起動して現在の構成を適用す
 index_atboot=起動時に開始しますか？
 index_atbootdesc=このオプションを変更して、iSCSIサーバーをブート時に起動するかどうかを制御します。現在起動時に起動されておらず、[はい]が選択されている場合、新しいinitスクリプトが作成されます。
 index_return=モジュールインデックス
+
 extents_title=共有するデバイス
 extents_none=共有するデバイスはまだ作成されていません。
 extents_name=装置名
@@ -25,6 +27,7 @@ extents_denone=何も選択されていません
 extents_einuse=デバイス $1は使用中のため、削除できません： $2
 extents_drusure=次のデバイスを削除してもよろしいですか： $1？それらの内容は保持されますが、iSCSIクライアントはアクセスできなくなります。
 extents_sure=デバイスを削除する
+
 extent_create=共有するデバイスを作成
 extent_edit=共有するデバイスを編集
 extent_egone=$1を共有するデバイスが存在しません！
@@ -50,6 +53,7 @@ extent_estart=エクステントの開始は数字でなければなりません
 extent_esize=エクステントのサイズは数値でなければなりません
 extent_esizemax=エクステントの終わりは、デバイスサイズ $1より大きくできません
 extent_einuse=このデバイスは使用中のため、削除できません： $1
+
 devices_title=デバイスの組み合わせ
 devices_none=デバイスの組み合わせはまだ作成されていません。
 devices_name=組み合わせ名
@@ -65,6 +69,7 @@ devices_denone=何も選択されていません
 devices_einuse=組み合わせ $1は、 $2で使用されているため、削除できません
 devices_drusure=次のデバイスの組み合わせを削除してもよろしいですか： $1？それらの内容は保持されますが、iSCSIクライアントはアクセスできなくなります。
 devices_sure=デバイスの組み合わせを削除する
+
 device_create=デバイスの組み合わせを作成
 device_edit=デバイスの組み合わせを編集
 device_egone=デバイスの組み合わせ $1は存在しません！
@@ -81,6 +86,7 @@ device_sure=デバイスの組み合わせを削除
 device_einuse=このデバイスの組み合わせは、 $1で使用されているため、削除できません
 device_eextents=メンバーデバイスが選択されていません
 device_eself=選択したメンバーデバイスの1つにこのデバイスが含まれています！
+
 targets_title=ターゲットを共有する
 targets_none=共有ターゲットはまだ作成されていません。
 targets_name=ターゲット名
@@ -96,6 +102,7 @@ targets_derr=共有ターゲットを削除できませんでした
 targets_denone=何も選択されていません
 targets_drusure=次の共有ターゲットを削除してもよろしいですか： $1データは失われませんが、iSCSIクライアントからはアクセスできなくなります。
 targets_sure=共有ターゲットを削除
+
 target_create=共有ターゲットを作成する
 target_edit=共有ターゲットを編集
 target_egone=共有ターゲット $1は存在しません！
@@ -112,6 +119,7 @@ target_rusure=共有ターゲット $1を削除してもよろしいですか？
 target_sure=ターゲットを削除
 target_enetwork=共有するネットワークが見つからないか無効です
 target_emask=共有するネットマスクがないか無効です
+
 opts_title=iSCSIサーバーオプション
 opts_header=すべてのiSCSIターゲットのオプション
 opts_ip4=IPv4接続を受け入れる
@@ -124,10 +132,12 @@ opts_err=オプションを保存できませんでした
 opts_ename=名前の欠落または無効-文字、数字、ダッシュ、ドット、アンダースコアのみが許可されます
 opts_eport=ポート番号が欠落しているか、数値ではありません
 opts_esess=最大セッション数の欠落または非数値
+
 manual_title=構成ファイルの編集
 manual_desc=次のテキストボックスを使用して、iSCSIサーバー構成ファイル $1を編集します。入力に対して検証は行われないため、注意してください！
 manual_err=構成ファイルを保存できませんでした
 manual_edata=内容が入力されていません！
+
 users_title=iSCSI認証
 users_none=iSCSIユーザーはまだ作成されていません。クライアントは、認証なしで共有デバイスにアクセスできます。
 users_add=新しいiSCSIユーザーを追加します。
@@ -135,6 +145,7 @@ users_delete=選択したユーザーを削除
 users_name=ユーザー名
 users_mode=認証方法
 users_return=ユーザーのリスト
+
 user_create=iSCSIユーザーを作成する
 user_edit=iSCSIユーザーの編集
 user_header=iSCSIユーザーの詳細
@@ -145,13 +156,16 @@ user_egone=ユーザーはもういません！
 user_err=iSCSIユーザーを保存できませんでした
 user_euser=ユーザー名がないか無効です-スペースとコロンは使用できません
 user_epass=パスワードがないか、無効です-スペースとコロンは使用できません
+
 desc_extent=$1を共有するデバイス
 desc_device=デバイスの組み合わせ $1
 desc_target=共有ターゲット $1
+
 start_err=iSCSIサーバーの起動に失敗しました
 stop_err=iSCSIサーバーの停止に失敗しました
 restart_err=iSCSIサーバーの再起動に失敗しました
 atboot_err=起動時に有効にできませんでした
+
 log_create_extent=$1を共有するデバイスを作成しました
 log_modify_extent=$1を共有するようにデバイスを更新しました
 log_delete_extent=共有するデバイスを削除しました $1

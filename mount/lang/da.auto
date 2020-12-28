@@ -12,6 +12,7 @@ index_return=liste over filsystemer
 index_none=Du har ikke adgang til nogen monterede filsystemer.
 index_mount2=Monter med adgangskode:
 index_root=Root-filsystem
+
 edit_title=Rediger montering
 create_title=Opret montering
 edit_err=Kunne ikke redigere mount
@@ -58,6 +59,7 @@ edit_ecannot=Du har ikke tilladelse til at redigere dette filsystem
 edit_ecannot2=Det er ikke tilladt at tilføje nye filsystemer
 edit_3_or_lower=3 (eller lavere)
 edit_advanced=Avanceret tilstand
+
 save_err=Kunne ikke gemme monteringen
 save_edir='$1' er ikke et bibliotek
 save_edirname='$1' er ikke et gyldigt katalognavn
@@ -74,8 +76,10 @@ save_apply=Anvend til permanent liste
 save_fapply=Tving afmontering
 save_eremount=Remount mislykkedes : $1
 save_enone=Du valgte ikke at gemme eller montere
+
 swap_err=Kunne ikke oprette swap-fil
 swap_esize='$1' er ikke en gyldig størrelse
+
 nfs_server=Vælg NFS Server ..
 nfs_select=Vælg en NFS-server, du vil montere fra ..
 nfs_ip=IP-adresse
@@ -87,6 +91,7 @@ nfs_seldir=Vælg et NFS-bibliotek, der skal monteres ..
 nfs_seldirv4=For en NFSv4-holder skal du vælge '/'
 nfs_dir=Vejviser
 nfs_clients=Kunder
+
 smb_choose=Vælg CIFS Server ..
 smb_elist=Kunne ikke hente serverlisten fra $1. Måske tillader serveren ikke browsing
 smb_eworkgroup=Der er ikke indstillet nogen arbejdsgruppe på siden Module Config
@@ -103,6 +108,7 @@ smb_sel2=Vælg en del, der skal monteres ..
 smb_share=Del
 smb_comment=Kommentar
 smb_noshares=Der er ingen tilgængelige fildele på serveren $1
+
 solaris_scsidev=SCSI-controller $1 mål $2 enhed $3 partition $4
 solaris_idedev=IDE-controller $1 drive $2 partition $3
 solaris_mddev=RAID-enhed $1
@@ -240,6 +246,7 @@ solaris_efstyp2=Kunne ikke kontrollere filsystemtype : $1
 solaris_ecachedir='$1' er ikke et gyldigt cache-bibliotek
 solaris_efmode='$1' er ikke en gyldig oktal filtilstand
 solaris_edmode='$1' er ikke en gyldig oktal katalogtilstand
+
 linux_eamd=AMD mislykkedes
 linux_eauto=Automount failed : $1
 linux_esmbconn=Det lykkedes ikke at oprette forbindelse til serveren
@@ -361,6 +368,7 @@ linux_noenforce=Ja, men håndhæv ikke
 linux_df=Inkluder reserverede blokke i filsystemstørrelse?
 linux_noatime=Undgår du at opdatere de sidste adgangstider?
 linux_netdev=Vent til netværksgrænseflader er op?
+linux_nofail=Fortsæt boot, selvom monteringen mislykkes?
 linux_ecname=Manglende eller ugyldigt klientnetbios navn
 linux_emname=Manglende eller ugyldig serverværtsnavn eller IP-adresse
 linux_bind=Original katalog
@@ -386,6 +394,7 @@ linux_nounix=Deaktiver CIFS Unix-udvidelser?
 linux_noserverino=Generer inodenumre på klientsiden?
 linux_cvers=CIFS version
 linux_ecvers=CIFS-version skal være et nummer
+
 log_mount=Monteret $3
 log_mount_l=Monteret $2 $1 på $3
 log_umount=Umonteret $3
@@ -399,7 +408,9 @@ log_modify_l=Ændret $2 mount $1 på $3
 log_delete=Slettet montering $3
 log_delete_l=Slettet $2 mount $1 på $3
 log_swap=Oprettet swap-fil $1
+
 unmount_err=Kunne ikke fjerne montering af $1
+
 mount_err=Kunne ikke montere $1
 irix_nhost=NFS Hostname
 irix_ndir=NFS Directory
@@ -430,6 +441,7 @@ irix_rock=Brug Rock Ridge-udvidelser?
 irix_nofsck=Tjek filsystemet ved opstart?
 irix_auto=Automounter kilde
 irix_automap=Kortfil
+
 irix_ehost=Værten '$1' findes ikke
 irix_eloss=Værten '$1' er nede
 irix_eshowmount=Værten '$1' understøtter ikke NFS
@@ -447,9 +459,11 @@ irix_efstyp2=Kunne ikke hente filsystemtype $1 : $2
 irix_efstyp=Filtypetypen på $1 er $2, ikke $3
 irix_eautomap=Automounter-kortfil '$1' findes ikke
 irix_eauthmap2=Manglende eller ugyldig automounter-kortfil
+
 irix_devroot=Rodpartition
 irix_devswap=Skift partition
 irix_autohosts=Al NFS-eksport
+
 acl_only=Tillad kun montering og afmontering?
 acl_fs=Filsystemer, der kan redigeres
 acl_types=Filsystemtyper, der kan bruges
@@ -462,8 +476,10 @@ acl_hide=Skjul ikke-redigerbare filsystemer?
 acl_simple=Vis enkel monteringsform?
 acl_simopts=Vis forenklede filsystemindstillinger?
 acl_browse=Vis fil og del søgeknapper?
+
 egcc=Den GCC- eller CC-kompilator, der er nødvendig for at bygge et program til liste af monterede filsystemer på dit system, er ikke tilgængelig.
 ecompile=Der opstod en fejl ved opbygning af et program til liste af monterede filsystemer på dit system : $1
+
 freebsd_eaddr=Manglende eller ugyldig serveradresse
 freebsd_eworkgroup=Manglende eller ugyldig arbejdsgruppe
 freebsd_ide=IDE-harddisk
@@ -477,8 +493,10 @@ freebsd_idedev=IDE-enhed $1, skive $2, partition $3
 freebsd_scsidev=SCSI-enhed $1, skive $2, partition $3
 freebsd_edevpath=Andet udstyr skal være en absolut sti, som <tt>/dev/cdrom</tt>
 freebsd_edevfile=Enhedsfilen '$1' findes ikke
+
 cswap_file=Swap-filen $1 findes ikke.
 cswap_size=Opret og monter en swap-fil med størrelse
+
 acl_sysinfo=Vis tilgængelige diskdata på Dashboard?
 sysinfo_total=Total
 sysinfo_dev=Enheds-id

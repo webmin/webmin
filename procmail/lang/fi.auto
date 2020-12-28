@@ -32,6 +32,7 @@ index_man=Muokkaa kokoonpanoa manuaalisesti
 index_mandesc=Muokkaa suoraan ensisijaista Procmail-asetustiedostoa omien sääntöjen, muuttujien ja lohkojen luomiseksi.
 index_ecmd=Procmail-ohjelmaa $1 ei löydy järjestelmästäsi. Joko sitä ei ole asennettu, tai <a href='$2'>moduulin kokoonpano</a> on väärä.
 index_delete=Poista valitut toiminnot
+
 edit_title2=Muokkaa toimintoa
 edit_title1=Luo toiminta
 edit_header1=Toimituksen yksityiskohdat
@@ -67,6 +68,7 @@ edit_none=Ei mitään
 edit_lock=Erityinen tiedosto
 edit_ctype=Elin tyyppi
 edit_cvalue=Säännöllinen lauseke tai komento
+
 save_err=Toiminnan tallentaminen epäonnistui
 save_eaction_0=Liitettävä tiedosto puuttuu
 save_eaction_1=Puuttuu MH-kansio, johon kirjoittaa
@@ -79,6 +81,7 @@ save_elockfile=Puuttuva lukitustiedoston nimi
 save_esize=Puuttuva tai virheellinen sähköpostikoko ehto $1 : lle
 save_ere=Ehdosta $1 puuttuu säännöllinen lauseke
 save_eshell=Kommentti puuttuu ehdolta $1 
+
 env_title1=Luo muuttuja
 env_title2=Muokkaa muuttujaa
 env_header=Procmail-ympäristömuuttuja
@@ -86,15 +89,19 @@ env_name=Muuttujan nimi
 env_value=Arvo
 env_err=Muuttujan tallentaminen epäonnistui
 env_ename=Puuttuva tai virheellinen muuttujan nimi
+
 inc_title1=Lisää Sisällytä tiedosto
 inc_title2=Muokkaa Sisällytä tiedosto
 inc_header=Mukana procmail-sääntötiedosto
 inc_inc=Mukana tiedosto
 inc_einc=Ei sisällä annettua tiedostoa
+
 config_eline=Tuntematon rivi $1 $2 : ssa : $3 
+
 manual_title=Muokkaa kokoonpanoa
 manual_desc=Tätä sivua voidaan käyttää Procmail-määritystiedoston $1 manuaaliseen muokkaamiseen. Ole varovainen, koska syntaksitarkistusta ei tehdä.
 manual_edata=Selaimesi ei toimittanut tietoja!
+
 log_create_rec=Luotu resepti $1 : een
 log_delete_rec=Poistettu resepti kohteelle $1 
 log_modify_rec=Muokattu resepti $1 : ksi
@@ -114,7 +121,9 @@ log_delete_inc=Poistettu sisältää tiedoston $1
 log_manual=Kokoonpano käsin muokattu
 log_up=Siirretty merkintä ylöspäin
 log_down=Siirretty merkintä alas
+
 delete_err=Toimintojen poistaminen epäonnistui
 delete_enone=Mitään ei ole valittu
+
 check_epostfix=Procmail ei ole käytössä Postfix-määrityksissä. Konfiguraatiotiedostossa <tt>$2</tt> on oltava <tt>$1</tt> -asetuksen arvoksi asetettu <tt>$3</tt>.
 check_esendmail=Sendmailia ei ole määritetty käyttämään Procmailia paikallisiin toimituksiin. Tämä voidaan määrittää Webminin <a href='$1'>Sendmail Mail Server</a> -moduulissa.

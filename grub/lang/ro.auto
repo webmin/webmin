@@ -8,6 +8,7 @@ index_none=Nu au fost definite opțiuni de pornire. Asigurați-vă că adăugaț
 index_efile=Fișierul de meniu GRUB $1 nu a fost găsit în sistemul dvs. Poate GRUB nu este instalat, sau configurația modulului <a href='$2'></a> este incorectă.
 index_epath=Sistemul executabil GRUB $1 nu a fost găsit în sistemul dvs. Poate GRUB nu este instalat, sau configurația modulului <a href='$2'></a> este incorectă.
 index_return=lista de opțiuni
+
 title_add=Adăugați opțiunea de pornire
 title_edit=Editează opțiunea de pornire
 title_header=Detalii despre opțiunea meniu de pornire
@@ -36,6 +37,7 @@ title_echain=Fișierul de încărcare a lanțului lipsă sau nevalid
 title_edev=Dispozitiv de partajare rădăcină neacceptat $1 
 title_einitrd=Lipsesc numele de fișier ramdisk inițial
 title_lock=Parola blocat?
+
 global_title=Opțiuni globale
 global_header=Opțiuni globale de meniu de pornire
 global_default=Opțiune implicită de pornire
@@ -56,12 +58,14 @@ global_edev=Discul de instalare/partiția neacceptată $1
 global_eother=Discul/partiția lipsă sau nevalidă
 global_epassword=Parola de pornire lipsă sau nevalidă
 global_epasswordfile=Lipsește numele fișierului din meniul alternativ
+
 install_title=Instalați GRUB
 install_err=Instalarea GRUB nu a reușit
 install_efind=Nu s-a putut găsi fișierul de meniu
 install_desc=Instalarea GRUB pe $1 cu comenzile $2 și $3 ..
 install_ok=.. instalare completă.
 install_failed=.. instalarea nu a reușit!
+
 log_create_title=Opțiunea de pornire creată $1 
 log_delete_title=Opțiunea de pornire ștersă $1 
 log_modify_title=Opțiunea de pornire modificată $1 

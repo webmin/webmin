@@ -8,6 +8,7 @@ index_none=Es wurden bisher keine Boot-Optionen definiert. Stellen Sie sicher, d
 index_efile=Die GRUB-Menü-Datei $1 wurde nicht auf Ihrem System gefunden. Entweder ist GRUB nicht installiert, oder die <a href='$2'>Modulkonfiguration</a> ist falsch.
 index_epath=Die ausführbare GRUB-Datei $1 wurde nicht auf Ihrem System gefunden. Entweder ist GRUB nicht installiert, oder die <a href='$2'>Modulkonfiguration</a> ist falsch.
 index_return=Optionenliste
+
 title_add=Eine Boot-Option hinzufügen
 title_edit=Bearbeite Boot-Optionen
 title_header=Eigenschaften der Boot-Menü-Optionen
@@ -36,6 +37,7 @@ title_echain=Fehlende oder ungültige Chainloader-Datei
 title_edev=Nicht unterstütztes Root-Partitions-Gerät $1
 title_einitrd=Fehlender Dateiname der initialen Ramdisk
 title_lock=Passwort gesichert?
+
 global_title=Globale Optionen
 global_header=Globale Boot-Menü-Optionen
 global_default=Standard Boot-Optionen
@@ -56,12 +58,14 @@ global_edev=Nicht unterstützte Festplatte/Partition $1
 global_eother=Fehlende oder ungültige Festplatte/Partition
 global_epassword=Fehlendes oder ungültige Boot-Passwort
 global_epasswordfile=Fehlender Dateiname für das Alternativ-Menü
+
 install_title=Installiere GRUB
 install_err=Konnte GRUB nicht installieren
 install_efind=Konnte die Menü-Datei nicht finden
 install_desc=Installiere GRUB auf $1 mit Kommando $2 und $3 ..
 install_ok=.. Installation komplett.
 install_failed=.. Installation fehlgeschlagen!
+
 log_create_title=Erstellte Bootoptionen $1
 log_delete_title=Gelöschte Bootoptionen $1
 log_modify_title=Modifizierte Bootoptionen $1

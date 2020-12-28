@@ -25,6 +25,7 @@ index_family=Famiglia modello
 index_serial=Numero di serie
 index_capacity=Capacità
 index_norm=normalizzato:
+
 monitor_type=SMART Drive Check
 monitor_type2=Wearout SSD
 monitor_drive=Guidare per controllare
@@ -40,14 +41,17 @@ monitor_wearlevel=Fallire se il livello di usura scende al di sotto
 monitor_ewearlevel=Percentuale del livello di usura non valida
 monitor_nowearout=L'unità non segnala un indicatore di usura SSD
 monitor_wornout=Il livello di usura è sceso a $1 
+
 short_title=Autotest breve
 short_doing=Avvio di un breve autotest di $1 ..
 short_failed=.. fallito!
 short_ok=.. test iniziato OK. Vedere lo stato dell'unità sulla pagina principale del modulo per i risultati.
+
 ext_title=Autotest esteso
 ext_doing=Avvio dell'autotest esteso di $1 ..
 ext_failed=.. fallito!
 ext_ok=.. test iniziato OK. Vedere lo stato dell'unità sulla pagina principale del modulo per i risultati.
+
 data_title=Test di raccolta dati
 data_doing=Avvio della raccolta dati offline su $1 ..
 data_failed=.. fallito!

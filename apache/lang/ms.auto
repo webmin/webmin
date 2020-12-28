@@ -1,40 +1,52 @@
 cvirt_eroot4=Tiada Pengguna ditakrifkan dalam konfigurasi Apache
+
 enewline=Nilai watak tidak sah
+
 virt_eprotocol=Anda mesti memilih sekurang-kurangnya satu versi protokol SSL/TLS yang boleh digunakan
 virt_euser=Anda tidak dibenarkan menukar pengguna atau kumpulan untuk pelayan maya ini.
+
 vserv_virtualmin=Hos maya Apache milik pelayan Virtualmin <tt>$1</tt>, jadi alamat, port, direktori asas dan nama hos tidak boleh diubah di sini.
+
 show_title=Arahan
 show_edit=Edit arahan Apache:
 show_these=Arahan arahan secara manual
 show_ok=Edit
+
 type_0=Proses dan Had
 type_1=Rangkaian dan Alamat
 type_10=Aliases dan Redirects
+
 reconfig_ever=Gagal mendapatkan versi pelayan Apache yang boleh dilaksanakan $1. Semak konfigurasi modul <a href='$2'></a> untuk memastikan ini adalah jalan yang betul.
 reconfig_desc1=Konfigurasi Apache anda telah berubah, atau belum diperiksa oleh Webmin. Di bawah adalah senarai semua modul Apache yang disokong oleh Webmin, dengan yang dipasang pada masa ini. Anda boleh memilih atau memilih modul jika senarai tidak betul.
 reconfig_desc2=Di bawah adalah senarai semua modul Apache yang disokong oleh Webmin, dengan yang dipasang pada masa ini. Jika anda menggunakan modul yang dimuatkan secara dinamik maka anda mungkin perlu memilih yang dimuat secara dinamik.
 reconfig_desc3=Jika anda tidak pasti modul mana yang disokong oleh Apache pada sistem anda, hanya Konfigurasikan sebagai Webmin biasanya boleh menyelesaikan modul yang disokong secara automatik.
+
 stop_err=Gagal menghentikan apache
 stop_ecannot=Anda tidak dibenarkan menghentikan apache
 stop_epid=Gagal membuka fail PID $1
 stop_epid2=Fail PID tidak sah $1
 stop_esig=Gagal menghantar SIGTERM untuk memproses $1
+
 start_err=Gagal memulakan apache
 start_ecannot=Anda tidak dibenarkan memulakan apache
 start_ecmd=$1 gagal : $2
 start_eunknown=Sebab tidak diketahui
 start_eafter=Apache tidak kelihatan berjalan
+
 restart_err=Gagal menggunakan perubahan
 restart_epid=Gagal membuka fail PID $1
 restart_epid2=Fail PID tidak sah $1
 restart_esig=Gagal menghantar SIGHUP untuk memproses $1
 restart_eunknown=Sebab tidak diketahui
+
 core_portname=Protokol
 core_protoany=&lt;Any&gt;
 core_eduplisten=Dengar alamat $1 disenaraikan dua kali
+
 mod_negotiation_cache=Dokumen-dokumen yang dirundingkan kandungan cache?
 mod_negotiation_pri=Keutamaan bahasa untuk pelbagai tontonan
 mod_negotiation_epri=Keutamaan bahasa yang hilang
+
 mod_cgi_logname=Log Skrip CGI
 mod_cgi_elogname=Fail log skrip CGI tidak sah
 mod_cgi_logsize=Saiz log CGI maksimum
@@ -42,6 +54,7 @@ mod_cgi_elogsize=Saiz log CGI mestilah integer
 mod_cgi_post=Saiz data pos maksimum log
 mod_cgi_epost=Saiz data pos mesti integer
 mod_cgi_eunder=Log skrip CGI tidak berada di bawah direktori yang dibenarkan
+
 mod_proxy_proxy=Bertindak sebagai pelayan proksi?
 mod_proxy_req=Permintaan
 mod_proxy_forw=Teruskan ke
@@ -109,8 +122,10 @@ mod_proxy_timeout=Masa tamat permintaan proksi dalam beberapa saat
 mod_proxy_etimeout=Masa tunggu permintaan proksi mestilah beberapa saat
 mod_proxy_via=Tetapkan Melalui: pengepala
 mod_proxy_not=Tiada
+
 mod_log_agent_log=Fail log penyemak imbas
 mod_log_agent_efile=$1 bukan nama fail log ejen yang sah
+
 mod_log_config_common=Format Log biasa
 mod_log_config_named=Dinamakan format log
 mod_log_config_nick=Nama samaran
@@ -120,10 +135,13 @@ mod_log_config_enofilprog=Nama fail log masuk atau program
 mod_log_config_efilprog='$1' bukan nama fail log atau program yang dibenarkan
 mod_log_config_eifset=Pilihan 'set' tidak boleh digunakan dengan format log lalai
 mod_log_config_edir=Direktori fail log '$1' tidak wujud
+
 mod_log_referer_nolog=Jangan log rujukan dari
 mod_log_referer_elog=$1 bukan nama fail log perujuk yang sah
 mod_log_referer_edir=log rujukan tidak berada di bawah direktori yang dibenarkan
+
 mod_status_msg=Paparkan maklumat status lanjutan
+
 mod_mime_ext=Pelanjutan
 mod_mime_xtype=Jenis MIME tambahan
 mod_mime_mtype=Jenis MIME
@@ -131,6 +149,7 @@ mod_mime_chandl=Penangan kandungan
 mod_mime_defmime=Rawat semua fail sebagai jenis MIME
 mod_mime_real=Jenis sebenar
 mod_mime_etype=Jenis MIME tidak sah
+
 mod_mime_pass=Lulus semua fail ke pengendali
 mod_mime_file=Fail jenis MIME
 mod_mime_ignhand=Abaikan pengendali untuk sambungan
@@ -146,6 +165,7 @@ mod_mime_outfilter=Penapis output
 mod_mime_infilter=Penapis input
 mod_mime_filters=Penapis untuk memohon
 mod_mime_efext=Tiada sambungan yang diberikan untuk penapis $1
+
 mod_setenvif_header=Kepala
 mod_setenvif_match=Perlawanan
 mod_setenvif_case=Kes pertandingan
@@ -156,24 +176,33 @@ mod_setenvif_eheader=Tajuk permintaan tidak sah '$1'
 mod_setenvif_eregex=Ungkapan biasa tidak sah '$1'
 mod_setenvif_evar=Nama pembolehubah tidak sah '$1'
 mod_setenvif_clear=Jelas
+
 mod_userdir_all=Semua pengguna boleh diakses
 mod_userdir_edir=Anda tidak dibenarkan menggunakan direktori WWW pengguna yang ditentukan
+
 mod_speling_autocorr=URL salah ditulis secara automatik?
 mod_speling_default=Lalai
+
 mod_dir_txt=Fail indeks direktori
+
 mod_mime_magic_file=Fail nombor sihir MIME
 mod_mime_magic_efile=Nama fail nombor ajaib MIME
+
 mod_env_cgivar=Pembolehubah persekitaran untuk skrip CGI
+
 mod_auth_pass=Lulus kegagalan ke modul seterusnya?
 mod_auth_eudir=Fail teks pengguna tidak di bawah direktori yang dibenarkan
 mod_auth_egdir=Fail teks kumpulan tidak berada di bawah direktori yang dibenarkan
+
 mod_auth_dbm_pass=Lulus kegagalan ke modul seterusnya?
 mod_auth_dbm_gpass=Keluarkan kegagalan kumpulan ke modul seterusnya?
+
 mod_cern_meta_process=Metafiles header proses
 mod_cern_meta_dir=Subdirektori untuk metafilo header
 mod_cern_meta_edir=Nama subdirektori metafile tidak sah
 mod_cern_meta_suffix=Akhiran fail untuk metafiles header
 mod_cern_meta_esuffix=Akhiran metafile tidak sah
+
 mod_ssl_enable=Dayakan SSL?
 mod_ssl_cfile=Fail utama sijil / peribadi
 mod_ssl_ecfile=Fail sijil / kunci utama peribadi
@@ -198,23 +227,28 @@ mod_ssl_passsc=Keluarkan skrip $1
 mod_ssl_epassph=Kata laluan SSL tidak dimasukkan
 mod_ssl_epasssc=Skrip kata laluan SSL yang hilang atau tidak sah
 mod_ssl_ecerton=Apabila SSL diaktifkan, fail sijil mesti dipilih
+
 mod_apachessl_requiredcifher=Suite Cipher yang boleh digunakan oleh perundingan SSL
 mod_apachessl_requirecifher=Suite cipher yang diperlukan, yang digunakan selepas sambungan ditubuhkan untuk mengesahkan cipher
 mod_apachessl_usecrl=Periksa sijil klien terhadap CRL yang sesuai (dalam SSLCACerificatePath)
 mod_apachessl_ramdomfilepc=Fail / Socket untuk memuat beberapa rawak (setiap sambungan)
+
 search_title=Cari Pelayan
 search_notfound=Tiada pelayan maya yang sepadan ditemui
+
 mod_php_value=Nilai Konfigurasi PHP
 mod_php_flag=Flags Configuration PHP
 mod_php_admin_value=Nilai-nilai Konfigurasi Admin PHP
 mod_php_admin_flag=Flags Configuration Admin Admin
 mod_php_evalue='$1' adalah nilai tidak sah untuk $2
+
 mod_vhost_alias_root=Akar hos awalan automatik
 mod_vhost_alias_ip=Gunakan alamat IP bukan nama hos?
 mod_vhost_alias_script=Hos maya automatik cgi-bin
 mod_vhost_alias_eroot=Root host maya atau tidak sah
 mod_vhost_alias_eroot2=Direktori root host virtual tidak dibenarkan
 mod_vhost_alias_escript=Cgi-bin hos maya yang hilang atau tidak sah
+
 perchild_sthreads=Benang awal setiap proses kanak-kanak
 perchild_esthreads=Bilangan benang setiap proses kanak-kanak mestilah integer
 perchild_numservers=Bilangan proses kanak-kanak
@@ -225,12 +259,14 @@ perchild_assign=Mengikat maya ke proses kanak-kanak
 perchild_assignug=Dengan UID $1 dan GID $2
 perchild_child=Tugas proses UID kanak-kanak
 perchild_enum=Nombor proses mestilah integer bukan sifar
+
 suexec_su=Jalankan program CGI sebagai
 suexec_none=Pengguna dari konfigurasi global
 suexec_user=Pengguna Unix
 suexec_group=dan kumpulan
 suexec_euser=Pengguna yang hilang atau tidak sah untuk menjalankan program CGI sebagai
 suexec_egroup=Kumpulan yang hilang atau tidak sah untuk menjalankan program CGI sebagai
+
 mod_band_enable=Had pembatas jalur dibolehkan?
 mod_band_eclient=IP atau rangkaian klien yang hilang atau tidak sah untuk had lebar jalur '$1'
 mod_band_sizelimit=Had lebar jalur saiz fail
@@ -242,18 +278,23 @@ mod_band_epulse=Selang atau tidak sah antara paket terhad
 mod_band_dir=Bandwidth membataskan fail fail data
 mod_band_edir=Direktori file bandwidth data yang hilang atau tidak wujud
 mod_band_esubdir=Kehilangan subdirektori yang diperlukan <tt>$1</tt> di bawah direktori fail data bandwidth
+
 mod_dav_active=WebDAV diaktifkan?
 mod_dav_inf=Membenarkan kedalaman DAV PROPFIND yang tidak terhingga?
 mod_dav_timeout=Masa tamat DAV minima dalam beberapa saat
 mod_dav_etimeout=Masa tamat DAV hilang atau tidak sah
+
 syslog_desc=Log ralat ralat Apache
+
 mod_auth_basic_pass=Lulus kegagalan log masuk asas ke modul seterusnya?
 mod_auth_basic_prov=Jenis fail pengguna pengguna masuk utama
+
 mod_auth_digest_pass=Pas fail kegagalan login ke modul seterusnya?
 mod_auth_digest_prov=Jenis fail pengguna pengguna masuk
 mod_auth_digest_al=Algoritma Hashing
 mod_auth_digest_domain=URL dan laluan dalam domain yang sama
 mod_auth_digest_edomain=URL dan laluan yang tiada dalam domain yang sama
+
 mods_title=Konfigurasi Modul Apache
 mods_state=Keadaan sekarang
 mods_available=Tersedia untuk pemasangan

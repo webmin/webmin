@@ -10,6 +10,7 @@ index_apply=Anvend konfiguration
 index_applydesc=Klik på denne knap for at anvende de aktuelle PPTP-serverindstillinger ved at stoppe og genstarte PPTP-serverprocessen. Ændringer i PPP-indstillinger og PPP-konti vil altid være gældende for eventuelle nye forbindelser
 index_return=modul indeks
 index_epppd=PPP-serverprogrammet $1 er ikke installeret på dit system. PPTP afhænger af, om den fungerer.
+
 conf_title=PPTP-serverindstillinger
 conf_ecannot=Du har ikke tilladelse til at redigere PPTP-serverindstillinger
 conf_header=PPTP-serverkonfiguration
@@ -35,6 +36,7 @@ conf_elocalip='$1' er ikke en gyldig lokal IP-adresse eller interval
 conf_eremoteip='$1' er ikke en gyldig ekstern IP-adresse eller interval
 conf_efrom=Manglende eller ugyldigt IPX-netværk fra adresse
 conf_eto=Manglende eller ugyldigt IPX-netværk til adresse
+
 options_title=PPP-indstillinger
 options_ecannot=Du har ikke tilladelse til at redigere PPP-indstillinger
 options_desc0=PPP-indstillingerne nedenfor fra $1 gælder for ALLE indgående forbindelser, der modtages af dit system, inklusive dem til opkaldsmodemer.
@@ -67,6 +69,7 @@ options_mschap=MS-CHAP-godkendelse
 options_mschap-v2=MS-CHAP version 2-godkendelse
 options_chapms=MS-CHAP-godkendelse
 options_chapms-v2=MS-CHAP version 2-godkendelse
+
 secrets_title=PPP-konti
 secrets_ecannot=Du har ikke tilladelse til at redigere PPP-konti
 secrets_return=indeks
@@ -80,6 +83,7 @@ secrets_sany=NOGEN
 secrets_create=Opret ny PPP-konto.
 secrets_desc=PPP-konti, der er anført på denne side, er taget fra filen $1, der bruges til godkendelse af $3. Kun dem til din server $2 vises, ikke konti for oprettelse af udgående forbindelser.
 secrets_delete=Slet valgte PPP-konti
+
 edit_secret_etitle=Rediger PPP-konto
 edit_secret_ctitle=Opret PPP-konto
 edit_secret_acc=PPP-konto
@@ -99,15 +103,20 @@ edit_secret_alist=Tillad listet ..
 edit_secret_save=Gemme
 edit_secret_del=Slet
 edit_secret_return=kontoliste
+
 save_secret_esave=Kunne ikke gemme konto
 save_secret_enoip='$1' er ikke en gyldig adresse
+
 stop_err=Kunne ikke stoppe PPTP-server
 stop_egone=Kører ikke længere
 stop_ecannot=Du har ikke tilladelse til at stoppe PPTP-serveren
+
 start_err=Kunne ikke starte PPTP-server
 start_ecannot=Du har ikke tilladelse til at starte PPTP-serveren
+
 apply_err=Kunne ikke genstarte PPTP-serveren
 apply_ecannot=Du har ikke tilladelse til at genstarte PPTP-serveren
+
 conns_title=Aktive forbindelser
 conns_ecannot=Du har ikke tilladelse til at administrere aktive forbindelser
 conns_desc=Denne side viser de aktuelt aktive PPTP-forbindelser til din server. Klik på dets interface interface for at tvinge frakoblet en.
@@ -119,9 +128,11 @@ conns_remote=Klient-VPN-adresse
 conns_none=Ingen PPTP-forbindelser ser ud til at være aktive på dette tidspunkt.
 conns_unknown=Ukendt
 conns_user=Brugernavn
+
 disc_err=Kunne ikke afbryde forbindelsen
 disc_egone=Forbindelser er ikke længere aktive
 disc_ekill=Processen kører ikke længere
+
 log_secret_create=Oprettet PPP-konto $1 
 log_secret_modify=Ændret PPP-konto $1 
 log_secret_delete=Slet PPP-konto $1 
@@ -132,6 +143,7 @@ log_disc=Frakoblet klient $1
 log_start=Startet PPTP-server
 log_stop=Stopet PPTP-server
 log_apply=Anvendt PPTP-serverkonfiguration
+
 acl_conf=Kan redigere konfiguration?
 acl_options=Kan redigeringsindstillinger?
 acl_secrets=Kan administrere PPTP-konti?

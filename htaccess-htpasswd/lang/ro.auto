@@ -16,6 +16,7 @@ index_digest2=Criptarea digitală este activată în configurația modulului, da
 index_cpan=<a href='$1'>Faceți clic aici</a> pentru a-l descărca și instala acum.
 index_delete=Dezprotejează directoarele selectate
 index_remove=Dezprotejați și eliminați fișierele
+
 dir_title1=Adăugați directorul protejat
 dir_title2=Editează directorul protejat
 dir_header=Opțiuni de director protejate
@@ -60,6 +61,7 @@ dir_delete3=Dezprotejați și eliminați fișierul
 dir_apache=Editează Opțiuni Apache
 dir_efiledir=„$1” este un director, deci nu poate fi folosit ca fișier de utilizatori
 dir_egfiledir=„$1” este un director, deci nu poate fi folosit ca fișier de grupuri
+
 edit_title1=Creaza utilizator
 edit_title2=Editare utilizator
 edit_header=Detalii despre utilizator autentificare web
@@ -71,11 +73,13 @@ edit_pass0=Setat la
 edit_passfrom=Schimbă din
 edit_passto=la noua parolă
 edit_dom=Tărâmul Digest
+
 gedit_title1=Creați grup
 gedit_title2=Editează grupul
 gedit_header=Detaliile grupului de autentificare web
 gedit_group=Numele Grupului
 gedit_members=Membrii grupului
+
 save_err=Nu a reușit salvarea utilizatorului
 save_euser1=Numele de utilizator lipsește
 save_euser2=Nume utilizator nu poate conține caracterul:
@@ -84,16 +88,19 @@ save_eclash=Un utilizator cu același nume există deja
 save_eoldpass=Parola veche nu este corectă
 save_title=Salvat de utilizator
 save_edom=Tărâmul de digestie lipsă sau invalid
+
 gsave_err=Nu a reușit să salveze grupul
 gsave_egroup1=Lipsește numele grupului
 gsave_egroup2=Numele grupului nu poate conține: caracter sau spații
 gsave_eclash=Există deja un grup cu același nume
+
 acl_dirs=Directoare permise
 acl_user=Creați fișiere.htaccess și htusers ca utilizator Unix
 acl_same=La fel ca autentificarea Webmin
 acl_home=Includeți directorul de origine al utilizatorului Unix?
 acl_sync=Poate configura sincronizarea utilizatorului Unix?
 acl_uonly=Poate adăuga și modifica directoarele protejate?
+
 log_create_dir=Se adaugă directorul $1 
 log_modify_dir=Director modificat $1 
 log_delete_dir=Directorul șters $1 
@@ -104,6 +111,7 @@ log_create_group=Grupul creat $1
 log_modify_group=Grup modificat $1 
 log_delete_group=Grupul șters $1 
 log_delete_dirs=Directoare $1 șterse
+
 search_title=rezultatele cautarii
 search_err=Căutarea a eșuat
 search_edir=Directorul absolut lipsit sau nevalid este căutat

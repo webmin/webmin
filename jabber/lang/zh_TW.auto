@@ -17,6 +17,7 @@ index_restartmsg=單擊此按鈕可通過停止然後重新啟動Jabber服務器
 index_comments=警告-您的Jabber配置文件 $1包含註釋，如果使用此模塊進行任何配置更改，這些註釋將被刪除。
 index_return=Jabber菜單
 index_version=Jabber版本 $1
+
 general_title=常規選項
 general_header=全局Jabber服務器選項
 general_host=您服務器的主機名
@@ -32,6 +33,7 @@ general_eelogfmt=缺少錯誤日誌格式
 general_erlog=流量日誌文件丟失或無效
 general_erlogfmt=缺少流量日誌格式
 general_epidfile=缺少或無效的進程ID文件
+
 messages_title=留言內容
 messages_header=客戶端的Jabber服務器消息
 messages_wsubject=歡迎留言主題
@@ -44,6 +46,7 @@ messages_vcard2jud=將vCard發送到Jabber用戶目錄？
 messages_err=保存消息失敗
 messages_evcard=無效的vCard XML： $1
 messages_etag=服務器vCard XML不能以&lt;vCard&gt;開頭
+
 modules_title=Jabber模塊
 modules_desc=下面列出的模塊用於處理Jabber會話管理器收到的消息。僅當您知道自己在做什麼時，才應更改此列表。
 modules_header=Jabber服務器會話管理器模塊
@@ -52,6 +55,7 @@ modules_so=共享庫
 modules_err=保存Jabber模塊失敗
 modules_emod='$1'不是有效的模塊名稱
 modules_eso=共享庫“$1”不存在
+
 karma_title=因果交通管制
 karma_header=流量控制選項
 karma_rate=過多的連接處理
@@ -80,6 +84,7 @@ karma_epenalty=罰款期限無效或無效
 karma_erestore=缺少或無效的還原時間
 karma_epoints=連接數丟失或無效
 karma_etime=缺少或無效的封鎖時間
+
 ips_title=IP訪問控制
 ips_header=Jabber服務器IP訪問控制
 ips_allow=允許的客戶端IP
@@ -89,10 +94,12 @@ ips_none=沒有
 ips_sel=列出的地址/網絡掩碼 ..
 ips_err=保存IP訪問控制失敗
 ips_eaddr='$1'不是有效的IP地址或IP地址/網絡掩碼
+
 file_title=編輯配置文件
 file_desc=使用下面的表格直接編輯Jabber配置文件。僅當您了解XML配置格式時，才應該這樣做。
 file_header=編輯Jabber配置文件
 file_err=保存配置文件失敗
+
 admin_title=行政用戶
 admin_header=服務器管理用戶
 admin_read=閱讀權限管理員
@@ -100,11 +107,13 @@ admin_write=寫訪問管理員
 admin_reply=自動回复管理員消息？
 admin_rsubject=自動回覆主題
 admin_rbody=自動回覆訊息
+
 filter_title=用戶過濾器
 filter_header=用戶過濾器權限
 filter_max=最大過濾規則
 filter_conds=允許的過濾條件
 filter_acts=允許的過濾器操作
+
 restart_err=無法應用更改
 stop_err=無法阻止賈伯
 stop_epid=找不到Jabber進程

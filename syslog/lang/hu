@@ -10,6 +10,7 @@ index_pipe=A $1 csővezeték
 index_pipe2=A $1 program bemenete
 index_host=A $1 számítógép
 index_all=Minden felhasználó
+
 index_users=$1 felhasználó(k)
 index_add=Új napló létrehozása
 index_return=a rendszernaplókhoz
@@ -19,6 +20,7 @@ index_start=A <tt>syslogd</tt> indítása
 index_startmsg=Nyomd meg ezt a gombot, hogy elinduljon a $1 syslog szerver! Amíg a démon nem fut, addig nem történik semmilyen naplózás.
 all=Bármelyik
 restart_ekill=Nem sikerült jelzést küldeni a $1 processznek: $2
+
 edit_title=Rendszernapló módosítása
 create_title=Új rendszernapló
 edit_header1=A naplóadatok rendeltetési helye
@@ -44,10 +46,12 @@ edit_pdir3=Minden, kivéve...
 edit_none=Egyik sem
 edit_view=A logfile megtekintése
 edit_tag=Mely programtól származó naplóadatok kerülnek ide?
+
 view_title=Egy logfile megtekintése
 view_header=A $2 file utolsó $1 sora
 view_empty=A logfile üres
 view_refresh=Frissítés
+
 save_err=Nem sikerült elmenteni
 save_efile=A '$1' file nem nyitható meg: $2
 save_epipe=A '$1' csővezeték nem írható
@@ -58,6 +62,7 @@ save_euser=Nincs '$1' azonosítójú felhasználó
 save_efacils=A kategória nem volt megadva
 save_esel=Nincsenek megadva a naplózandó üzenetfajták
 save_epri=Nincs megadva a prioritás
+
 log_modify=$1 felé irányuló naplózás módosítása
 log_create=$1 felé irányuló naplózás elindítása
 log_delete=$1 felé irányuló naplózás megszüntetése

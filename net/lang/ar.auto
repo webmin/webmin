@@ -7,6 +7,7 @@ index_delete2=حذف واجهات مختارة
 index_delete3=حذف وتطبيق واجهات مختارة
 index_apply2=تطبيق واجهات مختارة
 index_vmin=Virtualmin
+
 ifcs_title=واجهات الشبكة
 ifcs_now=نشط الان
 ifcs_activedesc=الواجهات المدرجة في هذا الجدول نشطة حاليًا على النظام. في معظم الحالات ، يجب عليك تحريرها ضمن علامة التبويب <b>تم التنشيط عند التمهيد</b>.
@@ -55,6 +56,7 @@ ifcs_linkyes=متصلة
 ifcs_linkno=انقطع الاتصال
 ifcs_speed=سرعة واجهة
 ifcs_duplex=،$1 مزدوج
+
 aifc_create=إنشاء واجهة نشطة
 aifc_edit=تحرير واجهة نشطة
 aifc_desc1=معلمات واجهة نشطة
@@ -79,6 +81,7 @@ aifc_eaddress6=عنوان IPv6 في الصف$1 غير صالح
 aifc_enetmask6=يجب أن يكون قناع الشبكة IPv6 في الصف$1 عددًا صحيحًا بين 1 و 128
 aifc_eclash6=عنوان IPv6 في الصف$1 قيد الاستخدام بالفعل بواسطة الواجهة$2
 aifc_eaddresses6=لم يتم إدخال عناوين IPv6
+
 bifc_create=إنشاء واجهة تمهيد
 bifc_act=تنشيط في التمهيد؟
 bifc_edit=تحرير واجهة التمهيد
@@ -110,6 +113,7 @@ bifc_bridgestp=بروتوكول شجرة الامتداد
 bifc_bridgefd=تأخير إلى الأمام
 bifc_bridgewait=تأخير أن تصبح متاحة
 bifc_ebond=يجب أن تكون واجهة السندات رقمًا
+
 bonding_add=إضافة واجهة الترابط جديدة.
 bonding_create=إنشاء واجهة الترابط
 bonding_teamparts=شركاء الفريق
@@ -121,11 +125,14 @@ bonding_miimon=مي الرصد الفاصل
 bonding_miimondesc=(اتركه فارغًا لتعطيل مراقبة الارتباط)
 bonding_updelay=التحديث
 bonding_downdelay=Downdelay
+
 vlan_add=إضافة شبكة محلية ظاهرية معلم
 vlan_physical=الجهاز المادي
 vlan_id=معرف شبكة محلية ظاهرية
 vlan_create=إنشاء واجهة VLAN
+
 bridge_create=إنشاء واجهة جسر
+
 routes_title=التوجيه والبوابات
 routes_boot=تم تنشيط تهيئة التوجيه في <i>وقت التمهيد</i>
 routes_now=تكوين التوجيه مفعل الآن
@@ -194,6 +201,7 @@ routes_tabboot=وقت التمهيد التكوين
 routes_tabactive=التكوين النشط
 routes_descactive=يسرد هذا القسم الطرق التي قام النظام بتكوينها حاليًا ، ويسمح لك بإضافة أو إزالة المسارات النشطة على بعض الأنظمة. كن حذرًا عند القيام بذلك ، حيث قد تؤدي التغييرات غير الصحيحة إلى إيقاف تشغيل النظام Webmin عن بقية الشبكة.
 routes_descboot=يسمح لك هذا القسم بتكوين المسارات التي يتم تنشيطها عند بدء تشغيل النظام ، أو عند إعادة تطبيق إعدادات الشبكة بالكامل.
+
 dns_title=اسم المضيف وعميل DNS
 dns_options=خيارات عميل DNS
 dns_hostname=اسم المضيف
@@ -211,6 +219,7 @@ dns_edomain="$1" ليس اسم نطاق صالحًا
 dns_esearch=لا مجالات للبحث معين
 dns_hoststoo=تحديث اسم المضيف في عناوين المضيف إذا تغيرت؟
 dns_dhcp=يتم تعيين اسم المضيف من قبل خادم DHCP؟
+
 hosts_title=عناوين المضيف
 hosts_active=ممكن؟
 hosts_ip=عنوان IP
@@ -222,6 +231,7 @@ hosts_detail=المضيف والعناوين
 hosts_return=قائمة عناوين المضيف
 hosts_ecannot=غير مسموح لك بتحرير عناوين المضيف
 hosts_delete=حذف عناوين المضيف المحددة
+
 ipnodes_title=عناوين IPv6 المضيف
 ipnodes_ip=عنوان IPv6
 ipnodes_host=أسماء المضيفين
@@ -233,6 +243,7 @@ ipnodes_return=قائمة عناوين المضيف IPv6
 ipnodes_ecannot=غير مسموح لك بتحرير عناوين مضيف IPv6
 ipnodes_none=لم يتم تحديد عناوين مضيف IPv6 بعد.
 ipnodes_delete=حذف عناوين مضيف IPv6 المحددة
+
 log_create_host=عنوان المضيف الذي تم إنشاؤه$1
 log_delete_host=عنوان المضيف المحذوف$1
 log_modify_host=عنوان المضيف المعدل$1
@@ -256,6 +267,7 @@ log_apply_bfics=تنشيط$1 واجهات وقت التمهيد
 log_create_route=تم إنشاء مسار نشط لـ$1
 log_create_defroute=تم إنشاء المسار الافتراضي النشط
 log_delete_routes=تم حذف المسارات النشطة$1
+
 acl_ifcs=يمكن تحرير واجهات الشبكة؟
 acl_routes=يمكن تعديل التوجيه والعبارات؟
 acl_dns=يمكن تعديل إعدادات عميل DNS؟
@@ -273,6 +285,7 @@ acl_virt=يمكن إضافة واجهات افتراضية؟
 acl_delete=يمكن حذف واجهات؟
 acl_hide=إخفاء واجهات غير قابلة للتحرير؟
 acl_sysinfo=إظهار واجهات الشبكة المتاحة على لوحة المعلومات
+
 interfaces_title1=اختيار واجهات. ..
 interfaces_all=جميع واجهات. ..
 interfaces_sel=واجهات مختارة
@@ -280,7 +293,9 @@ interfaces_ok=حسنا
 interfaces_cancel=إلغاء
 interfaces_clear=واضح
 interfaces_title2=اختر المستخدم. ..
+
 apply_ecannot=غير مسموح لك بتطبيق التكوين
+
 mod_egone=واجهة لم تعد نشطة!
 mod_title=واجهة نشطة
 mod_desc=يتم استخدام الواجهة$1 لـ$2 ، وبالتالي لا يمكن إدارتها باستخدام هذه الوحدة.
@@ -292,6 +307,7 @@ mod_pptpc=اتصال PPTP$1
 mod_zones=واجهة افتراضية للمنطقة <tt>$1</tt>
 mod_virtualmin=خادم Virtualmin <tt>$1</tt>
 mod_reseller=موزع Virtualmin <tt>$1</tt>
+
 range_edit=تحرير نطاق العنوان
 range_create=إنشاء نطاق العنوان
 range_header=خيارات واجهة نطاق العنوان
@@ -307,13 +323,17 @@ range_eend=عنوان IP مفقود أو غير صالح
 range_enum=رقم الواجهة الظاهري الأول مفقود أو غير رقمي
 range_eclass=يجب أن تكون عناوين البداية والنهاية داخل نفس شبكة الفئة C
 range_ebefore=يجب أن يكون عنوان النهاية أعلى من عنوان البداية
+
 chooser_any=&lt;أي&gt;
 chooser_other=آخر ..
+
 dafics_err=فشل في إلغاء تنشيط الواجهات
 daifcs_enone=لا شيء محدد
 daifcs_egone=واجهة لم تعد موجودة!
+
 dbifcs_err=فشل في حذف الواجهات
 dbifcs_err2=فشل في تنشيط واجهات
+
 hdelete_err=فشل في حذف عناوين المضيف
 hdelete_enone=لا شيء محدد
 idelete_err=فشل في حذف عناوين مضيف IPv6

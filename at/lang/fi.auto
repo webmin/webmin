@@ -26,6 +26,7 @@ index_start=Käynnistä ajoitetut komentopalvelimet
 index_startdesc=Käynnistä <tt>atd</tt> -palvelinprosessi, joka suorittaa ajoitetut komennot. Tätä vaaditaan, jotta komennot voidaan suorittaa määrättyinä aikoina.
 index_boot=Käynnistetäänkö palvelin käynnistettäessä?
 index_bootdesc=Muuta tätä asetusta, jos haluat ottaa ajastetun komentopalvelimen käynnistämisen käyttöön tai poistaa sen käytöstä järjestelmän käynnistyksen yhteydessä.
+
 edit_title=Ajoitettu komento
 edit_cmd=Täysi suoritettava komentosarja
 edit_shortcmd=Komento suorittaa
@@ -35,6 +36,7 @@ edit_run=Juokse nyt
 edit_ejob=Ajoitettua komentoa ei enää ole!
 edit_ecannot=Et voi muokata tätä ajoitettua komentoa
 edit_showfull=Näytä koko kirjoitus.
+
 create_err=Aikataulu-komennon luonti epäonnistui
 create_euser=Puuttuva tai virheellinen käyttäjänimi
 create_edate=Puuttuva tai virheellinen päivämäärä tai aika
@@ -43,22 +45,28 @@ create_efuture=Päivämäärä ja aika ovat menneitä
 create_edir=Puuttuva tai virheellinen hakemisto
 create_ecannot=Et voi luoda ajoitettuja komentoja tälle käyttäjälle
 create_eallow=Määritetty käyttäjä ei saa suorittaa ajoitettuja komentoja
+
 delete_err=Komennon peruuttaminen epäonnistui
 delete_egone=Komento on jo suoritettu tai poistettu
+
 acl_users=Voi muokata ajoitettuja komentoja
 acl_all=Kaikki käyttäjät
 acl_this=Nykyinen Webmin-käyttäjä
 acl_only=Vain käyttäjät
 acl_except=Kaikki paitsi käyttäjät
 acl_allow=Voiko muokata sallittua käyttäjille?
+
 run_title=Käynnissä komento
 run_output=Tulos ajoitetusta komennosta ..
 run_none=Tulostusta ei generoitu
+
 allow_err=Sallittujen käyttäjien tallentaminen epäonnistui
 allow_ecannot=Et voi hallita sallittuja käyttäjiä
 allow_eusers=Ei käyttäjiä
+
 deletes_err=Komentojen peruuttaminen epäonnistui
 deletes_enone=Mitään ei ole valittu
+
 log_allow=Muutettu sallittuja käyttäjiä
 log_create_job=Luotu komento $1 : lle
 log_delete_job=Peruutettu ajoitettu komento kohteelle $1 
@@ -68,5 +76,6 @@ log_stop=Ajastettujen komentojen palvelin pysäytetty
 log_start=Aloitettu ajoitetut komentopalvelimet
 log_bootup=Ota ajoitetut komentopalvelimet käyttöön käynnistyksen yhteydessä
 log_bootdown=Poistettu ajoitetut komentopalvelimet käynnistyksen yhteydessä
+
 stop_err=Palvelimen pysäyttäminen epäonnistui
 start_err=Palvelimen käynnistäminen epäonnistui

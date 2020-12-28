@@ -16,6 +16,7 @@ index_digest2=在模块配置中启用了摘要加密，但是未安装所需的
 index_cpan=<a href='$1'>单击此处</a>立即下载并安装。
 index_delete=取消保护所选目录
 index_remove=取消保护和删除文件
+
 dir_title1=添加受保护的目录
 dir_title2=编辑受保护的目录
 dir_header=受保护的目录选项
@@ -60,6 +61,7 @@ dir_delete3=取消保护并删除文件
 dir_apache=编辑Apache选项
 dir_efiledir='$1'是目录，因此不能用作用户文件
 dir_egfiledir='$1'是目录，因此不能用作组文件
+
 edit_title1=创建用户
 edit_title2=编辑用户
 edit_header=Web身份验证用户详细信息
@@ -71,11 +73,13 @@ edit_pass0=调成
 edit_passfrom=从
 edit_passto=到新密码
 edit_dom=摘要领域
+
 gedit_title1=创建组
 gedit_title2=编辑组
 gedit_header=Web验证组详细信息
 gedit_group=组的名字
 gedit_members=组成员
+
 save_err=保存用户失败
 save_euser1=用户名丢失
 save_euser2=用户名不能包含：字符
@@ -84,16 +88,19 @@ save_eclash=具有相同名称的用户已存在
 save_eoldpass=旧密码不正确
 save_title=用户已保存
 save_edom=摘要域缺失或无效
+
 gsave_err=无法保存组
 gsave_egroup1=团体名称缺失
 gsave_egroup2=组名不能包含：字符或空格
 gsave_eclash=具有相同名称的组已存在
+
 acl_dirs=允许的目录
 acl_user=以Unix用户身份创建.htaccess和htusers文件
 acl_same=与Webmin登录相同
 acl_home=包括Unix用户的主目录吗？
 acl_sync=可以设置Unix用户同步吗？
 acl_uonly=可以添加和更改受保护的目录吗？
+
 log_create_dir=已添加目录 $1
 log_modify_dir=修改后的目录 $1
 log_delete_dir=目录 $1已删除
@@ -104,6 +111,7 @@ log_create_group=已创建组 $1
 log_modify_group=修改后的组 $1
 log_delete_group=已删除组 $1
 log_delete_dirs=已删除 $1目录
+
 search_title=搜索结果
 search_err=搜索失败
 search_edir=绝对目录缺失或无效

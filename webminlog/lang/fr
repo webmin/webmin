@@ -16,6 +16,7 @@ index_fall=Qui ont modifié n'importe quel fichier
 index_file=Ce fichier modifié
 index_wall=À partir de n'importe quel serveur Webmin
 index_whost=À partir du serveur
+
 search_title=Résultats d'une recherche
 search_date=Date
 search_time=Heure
@@ -36,6 +37,7 @@ search_critt2=le $1
 search_config=Changé la configuration du module
 search_etime=Heure de début ou de fin invalide
 search_err=La recherche a échoué
+
 view_title=Détails d'une action
 view_header=Détails de l'action enregistrée dans le journal $1
 view_action=Description
@@ -62,11 +64,13 @@ view_type_rename=Renommé $1 en $2
 view_ecannot=Vous n'êtes pas autorisé à voir cet élément du journal
 view_return=aux détails des actions
 view_input=Saisie pour la commande
+
 acl_mods=Peut voir les journaux dans les modules
 acl_all=Tous
 acl_sel=Sélectionnés ci-dessous...
 acl_users=Peut voir les actions effectuées par les utilisateurs
 acl_rollback=Peut reprendre des actions ?
+
 rollback_title=Action de reprise
 rollback_rusure=Êtes-vous sûr de vouloir faire revenir tous les fichiers répertoriés ci-dessous au contenu qu'ils avaient avant d'effectuer cette action ? Toutes les données qu'ils contiennent actuellement seront écrasées par les changements suivants :
 rollback_isdir=Un répertoire - aucun changement ne sera effectué.

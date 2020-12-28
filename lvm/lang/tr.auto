@@ -42,6 +42,7 @@ index_lvused=Kullanılan alan
 index_lvuse=İçin kullanılır
 index_snapof=($1 'in anlık görüntüsü)
 index_thin=$1 LV için LVM ince havuz
+
 lv_edit=Mantıksal Hacmi Düzenle
 lv_edit_snap=Anlık Görüntüyü Düzenle
 lv_create=Mantıksal Birim Oluşturma
@@ -128,6 +129,7 @@ lv_pvfrom=Blokları fiziksel hacimden taşıma
 lv_pvto=Fiziksel hacme
 lv_moveok=Blokları Taşı
 lv_return=mantıksal hacim
+
 mkfs_title=Dosya Sistemi Oluştur
 mkfs_desc=Bu form, $3 mantıksal biriminde yeni bir $2 ($1) dosya sistemi oluşturmanıza olanak tanır. Mevcut tüm veriler silinecektir.
 mkfs_header=Yeni dosya sistemi seçenekleri
@@ -135,6 +137,7 @@ mkfs_err=Dosya sistemi oluşturulamadı
 mkfs_exec=$1 komutu çalıştırılıyor.
 mkfs_failed=.. komut başarısız!
 mkfs_ok=.. komut tamamlandı.
+
 resize_title=Mantıksal Hacmi Yeniden Boyutlandır
 resize_mesg=Bu mantıksal birimdeki $1 dosya sistemi yeniden boyutlandırılamaz. Mantıksal birimi yeniden boyutlandırırsanız, içindeki tüm verileri silecek dosya sistemini yeniden oluşturmanız gerekir.
 resize_mesg2=Webmin, varsa, bu mantıksal birimde ne tür bir dosya sistemi olduğunu bilmiyor. Mantıksal birimi yeniden boyutlandırırsanız, içindeki tüm verileri silecek dosya sistemini yeniden oluşturmanız gerekir.
@@ -142,8 +145,10 @@ resize_fs=Bu mantıksal birimde $1 dosya sistemini yeniden boyutlandırırken bi
 resize_ok=Mantıksal Hacmi Yeniden Boyutlandır
 resize_emounted=Bu mantıksal birimdeki dosya sistemi, takılıyken yeniden boyutlandırılamaz
 resize_emounted2=Bu mantıksal birimdeki dosya sistemi takılıyken küçülemez
+
 init_title=LVM'yi etkinleştir
 init_cmd=$1 çalıştırılıyor.
+
 pv_edit=Fiziksel Hacmi Düzenle
 pv_create=Fiziksel Hacim Ekle
 pv_vg=$1 hacim grubunda
@@ -170,6 +175,7 @@ pv_eother=Eksik veya geçersiz disk aygıtı
 pv_raid=RAID cihazı $1 
 pv_lvs=Mantıksal hacimlere göre tahsis
 pv_egone=Fiziksel hacim artık mevcut değil!
+
 vg_edit=Birim Grubunu Düzenle
 vg_create=Birim Grubu Oluştur
 vg_name=Birim grubu adı
@@ -188,11 +194,13 @@ vg_deleteok=Şimdi sil
 vg_ename=Birim grubu adı eksik veya geçersiz
 vg_epesize=Eksik veya geçersiz ayırma bloğu boyutu
 vg_egone=Cilt grubu artık mevcut değil!
+
 pvmove_err=Mantıksal birim taşınamadı
 pvmove_title=Mantıksal Hacmi Taşıma
 pvmove_start=$1 mantıksal hacmi $2 'den $3 'e taşınıyor.
 pvmove_failed=.. taşıma başarısız!
 pvmove_done=.. hareket tamamlandı
+
 thin_title=İnce Havuz Oluştur
 thin_desc=İnce bir havuz, mevcut uzantılardan daha büyük olabilecek ilave LV'ler oluşturmak için kullanılabilen bir çift LV'dur. Alan, havuz içindeki LV'ler yaratıldığında değil, yalnızca gerektiğinde tüketilir. UYARI - Seçilen LV'lerdeki tüm veriler kaybolacaktır!
 thin_header=Yeni ince havuz detayları
@@ -204,6 +212,7 @@ thin_err=İnce havuz oluşturulamadı
 thin_esame=Seçilen her iki LV de aynı
 thin_edata=Seçilen veri LV zaten kullanılıyor
 thin_emetadata=Seçilen meta veri LV zaten kullanılıyor
+
 log_create_vg=$1 oluşturulan cilt grubu
 log_modify_vg=Değiştirilmiş hacim grubu $1 
 log_delete_vg=$1 silinen hacim grubu
@@ -216,4 +225,5 @@ log_create_pv=$1 VG $1 'e fiziksel hacim eklendi
 log_modify_pv=VG $2 'de değiştirilmiş fiziksel hacim $1 
 log_delete_pv=$1 VG $2 'den fiziksel hacim kaldırıldı
 log_resize_pv=$2 VG $2 'de fiziksel hacim yeniden boyutlandırıldı
+
 blocks=bloklar

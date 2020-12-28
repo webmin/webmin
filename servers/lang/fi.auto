@@ -22,6 +22,7 @@ index_auto=Etsi palvelimet automaattisesti
 index_automsg=Napsauta tätä painiketta, kun haluat määrittää verkkoosi uusien Webmin-palvelimien automaattisen määräaikaisen etsimisen.
 index_search=Näytä palvelimet, jotka vastaavat:
 index_ok=Hae
+
 edit_title=Muokkaa palvelinta
 create_title=Rekisteröi palvelin
 edit_details=Palvelimen tiedot
@@ -57,6 +58,7 @@ edit_baduser=Sisäänkirjautuminen hylätty
 edit_invalid=Käyttäjä ei voi tehdä RPC: tä
 edit_version=Käynnissä Webmin $1 
 edit_same=Saatavilla vain ei istunnon todennustilassa ja kun salasana on asetettu Webmin-ohjelmien saataville.
+
 save_err=Palvelimen tallennus epäonnistui
 save_ehost=Puuttuva tai virheellinen isäntänimi
 save_ehost2=Isäntää ei ole olemassa
@@ -67,6 +69,7 @@ save_epass=Puuttuu salasana
 save_egroup=Puuttuu ryhmän nimi
 save_elogin=Virheellinen kirjautumistunnus tai salasana isäntään
 save_egroup2=Virheellinen uusi ryhmän nimi
+
 find_title=Etsi palvelimia
 find_new=Löytyi uusi palvelin kohdasta $1 
 find_but=Löytyi uusi palvelin kohdasta $1, mutta todennus epäonnistui : $2 
@@ -81,16 +84,20 @@ find_ecannot=Et saa löytää palvelimia
 find_scanning=Skannataan verkon $1 palvelimia.
 find_broading=Lähetys palvelimille osoitteissa $1 ..
 find_eport=Puuttuva tai virheellinen porttinumero
+
 log_modify=Muokattu palvelin $1 
 log_create=Rekisteröity palvelin $1 
 log_delete=Poistettu palvelin $1 
 log_find=Löytyi palvelin $1 
 log_deletes=Poistettu $1 palvelinta
+
 link_elogin=Sisäänkirjautuminen $1 : een epäonnistui $2 : na
 link_ecannot=Et voi käyttää tätä palvelinta
 link_essl=Perl Net::SSLeay -kirjastoa ei ole asennettu
 link_eautologin=Virheellinen käyttäjänimi tai salasana $1 : lle. <a href='$2'>Napsauta tätä</a> yrittääksesi uudelleen.
+
 lib_other=muut
+
 acl_edit=Voiko palvelimia muokata?
 acl_find=Löydätkö palvelimet?
 acl_servers=Voi käyttää palvelimia
@@ -102,6 +109,7 @@ acl_forcefast=Pakotako nopea RPC-tila oletukseen?
 acl_forcetype=Pakota OS-tyyppi oletukseksi?
 acl_forcelink=Pakotako kirjautumistyyppi oletukseen?
 acl_links=Voiko muodostaa yhteyden palvelimiin?
+
 login_title=Kirjaudu palvelimelle
 login_desc=Sinun on annettava käyttäjänimi ja salasana kirjautuaksesi sisään Webmin-palvelimeen $1.
 login_header=Webmin-todennus
@@ -109,13 +117,16 @@ login_user=Käyttäjätunnus
 login_pass=Salasana
 login_login=Kirjaudu sisään
 login_esame=Mahdollisuutta käyttää samaa sisäänkirjautumista kuin tämä palvelin voidaan käyttää vain, kun et ole istunnon todennusmoodissa ja kun salasana on asetettu Webmin-ohjelmien saataville.
+
 this_server=tämä palvelin
+
 delete_err=Palvelimien poistaminen epäonnistui
 delete_enone=Mitään ei ole valittu
 delete_ecannot=Et voi poistaa palvelimia
 delete_title=Poista palvelimet
 delete_rusure=Haluatko varmasti poistaa valitut $1 palvelimet?
 delete_confirm=Poista nyt
+
 auto_title=Etsi palvelimet automaattisesti
 auto_header=Automaattiset palvelimen rekisteröintivaihtoehdot
 auto_sched=Etsitkö uusia palvelimia?
@@ -141,8 +152,10 @@ auto_smtp=Lähetä SMTP-palvelimen kautta
 auto_self=Tämä järjestelmä
 auto_esmtp=Puuttuva tai virheellinen SMTP-palvelin
 auto_findself=Rekisteröitkö myös tämän järjestelmän?
+
 config_deftype=Oletusjärjestelmätyyppi
 config_typeauto=Automaattinen
+
 email_regsubject=Järjestelmä $1 rekisteröity
 email_reg=Järjestelmä $1 on rekisteröity automaattisesti.
 email_unregsubject=Järjestelmä $1 rekisteröimätön

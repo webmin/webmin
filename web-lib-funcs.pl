@@ -127,57 +127,100 @@ $main::read_file_cache_time{$realfile} = $st[9];
 return $rv;
 }
 
-=head2 write_file(file, &hash, [join-char], [sort])
+=head2 write_file(file, &data-hash, [join-char], [sort], [sorted-by], [sorted-by-preserved])
 
 Write out the contents of a hash as name=value lines. The parameters are :
 
 =item file - Full path to write to
 
-=item hash - A hash reference containing names and values to output
+=item data-hash - A hash reference containing names and values to output
 
 =item join-char - If given, names and values are separated by this instead of =
 
 =item sort - If given, passed hash reference will be sorted by its keys
 
-=item sortedby - If given, hash reference that is being saved will be sorted by the keys of sortby hashref
+=item sorted-by - If given, hash reference that is being saved will be sorted by the keys of sorted-by hashref
+
+=item sorted-by-sectioning-preserved - If sorted-by is used, then preserve the sectioning (line-breaks) as in hash reference
 
 =cut
 sub write_file
 {
+my ($file, 
+    $data_hash,
+    $join_char,
+    $sort,
+    $sorted_by,
+    $sorted_by_sectioning_preserved) = @_;
 my (%old, @order);
-my $join = defined($_[2]) ? $_[2] : "=";
-my $realfile = &translate_filename($_[0]);
-&read_file($_[4] || $_[0], \%old, \@order);
-&open_tempfile(ARFILE, ">$_[0]");
-if ($_[3] || $gconfig{'sortconfigs'}) {
-	foreach $k (sort keys %{$_[1]}) {
-		(print ARFILE $k,$join,$_[1]->{$k},"\n") ||
-			&error(&text("efilewrite", $realfile, $!));
-		
-	    }
-	}
+my $join = defined($join_char) ? $join_char : "=";
+my $realfile = &translate_filename($file);
+&read_file($sorted_by || $file, \%old, \@order);
+&open_tempfile(ARFILE, ">$file");
+if ($sort || $gconfig{'sortconfigs'}) {
+    foreach $k (sort keys %{$data_hash}) {
+        (print ARFILE $k,$join,$data_hash->{$k},"\n") ||
+            &error(&text("efilewrite", $realfile, $!));
+        
+        }
+    }
 else {
-	my %done;
-	foreach $k (@order) {
-		if (exists($_[1]->{$k}) && !$done{$k}++) {
-			(print ARFILE $k,$join,$_[1]->{$k},"\n") ||
-				&error(&text("efilewrite", $realfile, $!));
-			}
-		}
-	foreach $k (keys %{$_[1]}) {
-		if (!exists($old{$k}) && !$done{$k}++) {
-			(print ARFILE $k,$join,$_[1]->{$k},"\n") ||
-				&error(&text("efilewrite", $realfile, $!));
-			}
-	    }
-	}
+    my %done;
+    foreach $k (@order) {
+        if (exists($data_hash->{$k}) && !$done{$k}++) {
+            (print ARFILE $k,$join,$data_hash->{$k},"\n") ||
+                &error(&text("efilewrite", $realfile, $!));
+            }
+        }
+    foreach $k (keys %{$data_hash}) {
+        if (!exists($old{$k}) && !$done{$k}++) {
+            (print ARFILE $k,$join,$data_hash->{$k},"\n") ||
+                &error(&text("efilewrite", $realfile, $!));
+            }
+        }
+    }
 &close_tempfile(ARFILE);
 if (defined($main::read_file_cache{$realfile})) {
-	%{$main::read_file_cache{$realfile}} = %{$_[1]};
-	}
+    %{$main::read_file_cache{$realfile}} = %{$data_hash};
+    }
 if (defined($main::read_file_missing{$realfile})) {
-	$main::read_file_missing{$realfile} = 0;
-	}
+    $main::read_file_missing{$realfile} = 0;
+    }
+
+if ($sorted_by && $sorted_by_sectioning_preserved) {
+    my $target = read_file_contents($file);
+    my $model = read_file_contents($sorted_by);
+    my @lines;
+    my @blocks;
+    my @block;
+
+    # Build blocks of line's key separated with a new line break
+    @lines = ($model =~ m/(.*?)$join|(^\s*$)/gm);
+    for (my $line = 0; $line < scalar(@lines) - 1; $line += 2) {
+        if ($lines[$line] =~ /\S+/) {
+            push(@block, $lines[$line]);
+            }
+        else {
+            push(@blocks, [@block]);
+            @block = ();
+            }
+        }
+    for (my $block = 0; $block <= scalar(@blocks) - 1; $block++) {
+        foreach my $line (reverse @{$blocks[$block]}) {
+            if (
+                # Go to another block immediately
+                # if new line already exists
+                $target =~ /(\Q$line\E)$join.*?(\r?\n|\r\n?)+$/m ||
+
+                # Add new line to the last element of
+                # the block and go to another block
+                $target =~ s/(\Q$line\E)$join(.*)/$1=$2\n/) {
+                last;
+                }
+            }
+        }
+    write_file_contents($file, $target);
+    }
 }
 
 =head2 html_escape(string)

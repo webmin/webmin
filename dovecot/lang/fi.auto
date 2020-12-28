@@ -11,11 +11,13 @@ index_boot=Aloita käynnistyessä?
 index_bootdesc=Muuta tätä asetusta ottaaksesi käyttöön tai poistaaksesi käytöstä Dovecot-palvelimen käynnistyksen järjestelmän käynnistyksen aikana.
 index_return=moduulihakemisto
 index_version=Versio $1
+
 stop_err=Dovecotin pysäyttäminen epäonnistui
 stop_erunning=Ei enää juokse
 start_err=Dovecotin käynnistäminen epäonnistui
 start_eprotos=<b>Verkottuminen ja protokollat</b> -sivulla ei ole valittu yhtään protokollaa
 apply_err=Asetusten määrittäminen epäonnistui
+
 net_title=Verkottuminen ja protokollat
 net_header=Dovecot-verkko- ja postiprotokollan vaihtoehdot
 net_protocols=Tarjoa postiprotokollia
@@ -42,8 +44,11 @@ net_eimaps_listen=Virheellinen IP-osoite IMAP SSL -yhteyksille
 net_epop3s_listen=Virheellinen IP-osoite POP3 SSL -yhteyksille
 net_elisten=Virheellinen IP-osoite muille kuin SSL-yhteyksille
 net_essl_listen=Virheellinen IP-osoite SSL-yhteyksille
+
 imap_title=IMAP-asetukset
+
 pop3_title=POP3-asetukset
+
 ssl_title=SSL-määritykset
 ssl_header=IMAP- ja POP3-SSL-tilan vaihtoehdot
 ssl_key=SSL-yksityisen avaintiedoston
@@ -61,7 +66,9 @@ ssl_ecert=Puuttuu tai ei ole varmennetiedostoa
 ssl_eca=Puuttuva tai olematon asiakkaan CA-varmennetiedosto
 ssl_eregen=Puuttuva tai ei-numeerinen parametrien palautusväli
 ssl_epass=SSL-avaintiedoston salasanaa ei annettu
+
 misc_title=Muita vaihtoehtoja
+
 login_title=Käyttäjän ja kirjautumisen asetukset
 login_header=Käyttäjän todennus ja kirjautumisasetukset
 login_fuid=Pienin voimassa oleva UID
@@ -117,6 +124,7 @@ login_procs=Suurin sisäänkirjautumisprosessi
 login_count=Alkuperäiset kirjautumisprosessit
 login_eprocs=Sisäänkirjautumisprosessien enimmäismäärä puuttuu tai on virheellinen
 login_ecount=Sisäänkirjautumisprosessien alkuperäinen numero puuttuu tai on virheellinen
+
 mail_title=Postitiedostot
 mail_header=Postin sijainti ja lukuvaihtoehdot
 mail_env=Postitiedoston sijainti
@@ -169,6 +177,7 @@ mail_eindexmode=Hakemistotiedostojen sijaintia ei voida asettaa, kun postitiedos
 mail_econtrolmode=Ohjaustiedostojen sijaintia ei voida asettaa, kun postitiedoston sijainti tunnistetaan automaattisesti
 mail_eindex=Puuttuva tai virheellinen hakemistotiedostojen absoluuttinen polku
 mail_econtrol=Puuttuva tai virheellinen ohjaustiedostojen absoluuttinen polku
+
 log_net=Muutettu verkottuminen ja protokollat
 log_login=Muutetut käyttäjän ja kirjautumisen asetukset
 log_mail=Muutetut postitiedostot
@@ -179,6 +188,7 @@ log_stop=Pysäytetty Dovecot-palvelin
 log_bootup=Käytössä Dovecot käynnistyksen yhteydessä
 log_bootdown=Poistettu käytöstä Dovecot käynnistyshetkellä
 log_manual=Manuaalisesti muokattu asetustiedosto $1
+
 manual_title=Muokkaa asetustiedostoja
 manual_editsel=Muokkaa Dovecot-määritystiedostoa
 manual_err=Konfigurointitiedoston tallentaminen epäonnistui

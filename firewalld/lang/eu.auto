@@ -30,6 +30,7 @@ index_return=guneen zerrenda
 index_ezones=Ez da FirewallD gunerik aurkitu!
 index_none=Zona honek ez du oraindik baimendutako portu edo zerbitzurik.
 index_ifaces=Aplikatu arauak interfazeei:
+
 port_edit=Editatu Portua
 port_create=Gehitu portua
 port_header=Baimendutako portuko aukerak
@@ -45,11 +46,13 @@ port_eport=Ataka edo izen falta edo baliogabea
 port_eportlow=Portu baxua kopurua izan behar da
 port_eporthigh=Portu altuak zenbaki bat izan behar du
 port_eportrange=Portu baxua portu altuaren azpitik egon behar du
+
 serv_edit=Editatu Zerbitzua
 serv_create=Gehitu zerbitzua
 serv_header=Baimendutako zerbitzuaren aukerak
 serv_name=Baimendu zerbitzua
 serv_err=Huts egin du zerbitzua gordetzean
+
 forward_edit=Editatu Aurrera
 forward_create=Sortu Aurrera
 forward_header=Portuen birbidaltzeko aukerak
@@ -61,10 +64,13 @@ forward_dstaddr=Helmuga helbidea
 forward_dstlocal=Sistema hau
 forward_edstaddr=IPv4 helmuga baliogabea
 forward_eneither=Helmuga helbidea edo portua edo biak sartu behar dira
+
 check_ecmd=Ez da FirewallD kontrol-komandoa $1 zure sisteman aurkitu
+
 delete_err=Ezin izan dira arauak ezabatu
 delete_enone=Ez da hautatu!
 delete_edel=$1 kentzeak huts egin du : $2 
+
 zone_title=Sortu Zona
 zone_header=Zonako aukera berriak
 zone_name=Zonaren izena
@@ -77,12 +83,16 @@ zone_mode4=Ostatu birtualerako erabilitako portuak
 zone_err=Ezin izan da sortu gunea
 zone_ename=Zonaren izen falta edo baliogabea
 zone_eclash=Izen berdina duen zona dago lehendik
+
 delzone_title=Ezabatu zona
 delzone_err=Ezin izan da eremua ezabatu
 delzone_edefault=Ezin da zona lehenetsia kendu
 delzone_rusure=Ziur al zaude $2 ataka eta $3 zerbitzu biltzen dituen $1 zona ezabatu nahi duzula?
+
 defzone_err=Ezin izan da eremua lehenetsi
+
 restart_err=Ezin izan da konfigurazioa aplikatu
+
 stop_err=Huts egin du FirewallD gelditzeko
 start_err=Huts egin du FirewallD abiaraztean
 log_stop=FirewallD geldituta

@@ -57,20 +57,27 @@ index_rotate=Atnaujinkite statistiką
 index_rotatedesc=Spustelėkite šį mygtuką, kad apdorotumėte visą prisijungusį tinklo srautą iki dabartinio laiko, kad jis būtų nedelsiant prieinamas ataskaitoms.
 index_eiptables=Įspėjimas - jūsų IPtable konfigūracijoje yra klaida: $1. Nustačius pralaidumo stebėjimą, bus pašalintos visos ugniasienės taisyklės.
 index_return=ataskaitos forma
+
 log_setup=Nustatykite pralaidumo stebėjimą sąsajoje $1 
 log_turnoff=Išjungtas pralaidumo stebėjimas
 log_rotate=Atnaujinta statistika
+
 acl_setup=Ar galima nustatyti ir išjungti stebėjimą?
+
 turnoff_ecannot=Jums neleidžiama išjungti stebėjimo
+
 setup_ecannot=Jums neleidžiama įjungti stebėjimo
 setup_eiface=Trūksta arba netinkamas sąsajos pavadinimas
 setup_ezone=Nepavyko rasti pasirinktos sąsajos „Shorewall“ zonos
+
 system_firewall=IP lentelės
 system_ipfw=IPFW
 system_ipfilter=„IPFilter“
 system_shorewall=Shorewall
+
 syslog_syslog=„Syslog“
 syslog_syslog-ng=„Syslog-NG“
+
 rotate_title=Statistikos atnaujinimas
 rotate_doing=Apdorojamas prisijungęs tinklo srautas.
 rotate_done=.. padaryta.

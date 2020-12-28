@@ -11,11 +11,13 @@ index_boot=Pradėti nuo įkrovos?
 index_bootdesc=Pakeiskite šį nustatymą, jei norite įjungti arba išjungti „Dovecot“ serverio paleidimą sistemos įkrovos metu.
 index_return=modulio rodyklė
 index_version=$1 versija
+
 stop_err=Nepavyko sustabdyti Dovecot
 stop_erunning=Daugiau nebėga
 start_err=Nepavyko paleisti „Dovecot“
 start_eprotos=Puslapyje <b>Tinklų kūrimas ir protokolai</b> nepasirinkta nė vieno protokolo
 apply_err=Nepavyko pritaikyti konfigūracijos
+
 net_title=Tinklų kūrimas ir protokolai
 net_header=„Dovecot“ tinklo ir pašto protokolo parinktys
 net_protocols=Pateikite pašto protokolus
@@ -42,8 +44,11 @@ net_eimaps_listen=Netinkamas IMAP SSL jungčių IP adresas
 net_epop3s_listen=Neteisingas POP3 SSL jungčių IP adresas
 net_elisten=Neteisingas ne SSL jungčių IP adresas
 net_essl_listen=Netinkamas SSL jungčių IP adresas
+
 imap_title=IMAP parinktys
+
 pop3_title=POP3 parinktys
+
 ssl_title=SSL konfigūracija
 ssl_header=IMAP ir POP3 SSL režimų parinktys
 ssl_key=SSL privataus rakto failas
@@ -61,7 +66,9 @@ ssl_ecert=Nėra sertifikato failo arba jo nėra
 ssl_eca=Nėra arba nėra kliento CA sertifikato failo
 ssl_eregen=Trūksta arba neskaitinis parametrų atkūrimo intervalas
 ssl_epass=Neįvestas SSL rakto failo slaptažodis
+
 misc_title=Kitos parinktys
+
 login_title=Vartotojo ir prisijungimo parinktys
 login_header=Vartotojo autentifikavimo ir prisijungimo parinktys
 login_fuid=Mažiausias galiojantis UID
@@ -117,6 +124,7 @@ login_procs=Maksimalūs prisijungimo procesai
 login_count=Pradiniai prisijungimo procesai
 login_eprocs=Trūksta arba netinkamas didžiausias prisijungimo procesų skaičius
 login_ecount=Trūksta arba netinkamas pradinis prisijungimo procesų skaičius
+
 mail_title=Pašto failai
 mail_header=Pašto vieta ir skaitymo parinktys
 mail_env=Pašto failo vieta
@@ -169,6 +177,7 @@ mail_eindexmode=Indekso failų vietos negalima nustatyti, kai pašto failo vieta
 mail_econtrolmode=Valdymo failų vietos negalima nustatyti, kai pašto failo vieta aptinkama automatiškai
 mail_eindex=Trūksta arba netinkamas absoliutus indekso failų kelias
 mail_econtrol=Trūksta arba netinkamas absoliutus kontrolės failų kelias
+
 log_net=Pakeisti tinklai ir protokolai
 log_login=Pakeistos vartotojo ir prisijungimo parinktys
 log_mail=Pakeisti pašto failai
@@ -179,6 +188,7 @@ log_stop=Sustabdytas „Dovecot“ serveris
 log_bootup=Įjungta „Dovecot“ įkrovos metu
 log_bootdown=Išjungta „Dovecot“ įkrovos metu
 log_manual=Rankiniu būdu redaguotas konfigūracijos failas $1
+
 manual_title=Redaguoti konfigūravimo failus
 manual_editsel=Redaguoti „Dovecot“ konfigūracijos failą
 manual_err=Nepavyko išsaugoti konfigūracijos failo

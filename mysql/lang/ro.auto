@@ -45,12 +45,15 @@ index_showing=Se afișează baze de date care se potrivesc cu $1 ..
 index_emsg=Mesajul complet de eroare MySQL a fost : $1 
 index_jump=Sau editați baza de date:
 index_jumpok=Deschis
+
 login_err=Autentificare esuata
 login_ecannot=Nu aveți voie să configurați autentificarea bazei de date
 login_elogin=Lipsește autentificarea la administrare
 login_epass=Numele de utilizator sau parola de administrare incorectă
+
 stop_err=Nu a reușit oprirea bazei de date
 start_err=Eroare la pornirea bazei de date
+
 dbase_title=Editează baza de date
 dbase_header=Tabele de baze de date, indexuri și vizualizări
 dbase_tables=Tabele de baze de date
@@ -81,6 +84,7 @@ dbase_type=Tip
 dbase_typetable=Tabelul 1)
 dbase_typeindex=Index
 dbase_typeview=Vedere
+
 ddrop_err=Nu a reușit să renunțe la baza de date
 ddrop_title=Baza de date
 ddrop_rusure=Sigur doriți să renunțați la baza de date $1 ? $2 tabele care conțin $3 rânduri de date vor fi șterse.
@@ -89,6 +93,7 @@ ddrop_mysql=Deoarece aceasta este baza de date master, eliminarea va face probab
 ddrop_ok=Baza de date
 ddrop_empty=Ștergeți doar toate tabelele
 ddrop_empty2=Ștergeți toate tabelele
+
 ddrops_err=Nu a reușit să renunțe la bazele de date
 ddrops_title=Bază de baze de date
 ddrops_rusure=Sigur doriți să renunțați la bazele de date selectate $1 ? $2 tabele care conțin $3 rânduri de date vor fi șterse.
@@ -97,6 +102,7 @@ ddrops_mysql=Deoarece baza de date master este selectată, eliminarea va face pr
 ddrops_ok=Bază de baze de date
 ddrops_enone=Nu au fost selectate baze de date
 ddrops_ecannotdb=Nu aveți voie să renunțați la baza de date $1 
+
 table_title=Editează tabelul
 table_title2=Creare tabel
 table_header=Tabelul $1 în baza de date $2 
@@ -142,16 +148,19 @@ table_nextra=Extra atribuit
 table_eautokey=Câmpul auto-creștere trebuie să fie, de asemenea, o cheie primară
 table_eauto=Doar un câmp poate fi automatizat
 table_delete=Ștergeți câmpurile selectate
+
 tdrop_err=Nu a reușit să renunțe la tabel
 tdrop_title=Tabelul cu picături
 tdrop_rusure=Sigur doriți să renunțați la tabelul $1 din baza de date $2 ? $3 rânduri de date vor fi șterse.
 tdrop_ok=Tabelul cu picături
+
 tdrops_enone=Nu a fost selectată nicio tabelă
 tdrops_err=Nu a reușit să renunțe la tabelul (tabelele)
 tdrops_ok=cădere brusca
 tdrops_title=Picătură selectată
 tdrops_rusure=Sigur doriți să renunțați la tabelele selectate $1 din baza de date $2 ? $3 rânduri de date vor fi șterse.
 tdrops_rusure2=Sigur doriți să renunțați la tabelele selectate $1 din baza de date $2 ?
+
 field_title1=Adaugă câmp
 field_title2=Modificați câmpul
 field_in=În tabelul $1 în baza de date $2 
@@ -185,6 +194,7 @@ field_esize=„$1” nu este o dimensiune de câmp valabilă
 field_eenum=Nu au fost introduse valori enumerate
 field_efield=„$1” nu este un nume de câmp valid
 field_ekey=Câmpurile care permit nulurile nu pot face parte din cheia primară
+
 view_title=Date din tabel
 view_pos=Rândurile $1 la $2 din $3 
 view_none=Acest tabel nu conține date.
@@ -219,6 +229,7 @@ view_keep=Lăsați neschimbate
 view_set=Setați la conținutul fișierului ..
 view_adv=Cautare Avansata
 view_sqlrun=Rezultate generate de interogarea SQL : $1 
+
 users_title=Permisiunile utilizatorului
 users_user=Utilizator
 users_host=gazdele
@@ -245,6 +256,7 @@ users_ssl=Certificat
 users_dtitle=Ștergeți Permisele utilizatorului
 users_drusure=Sigur doriți să ștergeți permisiunile de utilizator MySQL selectate $1 ?
 users_dok=Ștergeți utilizatorii
+
 user_title1=Creaza utilizator
 user_title2=Editare utilizator
 user_header=Detalii despre utilizator MySQL
@@ -308,6 +320,7 @@ user_emax_user_connections=Conectarea maximă simultană trebuie să fie un num�
 user_emax_connections=Conexiunile maxime pe oră trebuie să fie un număr
 user_emax_updates=Actualizările maxime pe oră trebuie să fie un număr
 user_emax_questions=Întrebările maxime pe oră trebuie să fie un număr
+
 dbs_title=Permisiunile bazei de date
 dbs_db=Baze de date
 dbs_user=Utilizator
@@ -326,6 +339,7 @@ dbs_enone=Nu au fost selectate baze de date
 dbs_dtitle=Ștergeți permisiunile bazei de date
 dbs_drusure=Sunteți sigur că doriți să ștergeți permisiunile de bază de date MySQL selectate $1 ?
 dbs_dok=Ștergeți Permisiunile
+
 db_title1=Creați permisiunile bazei de date
 db_title2=Editați Permisiunile bazei de date
 db_header=Opțiuni de autorizare a bazei de date
@@ -340,6 +354,7 @@ db_err=Nu a reușit să salveze permisiunile bazei de date
 db_euser=Nume de utilizator lipsă sau nevalid
 db_ehost=Numele de gazdă lipsă sau nevalid
 db_edb=Numele bazei de date lipsă sau nevalid
+
 hosts_title=Permisii de gazdă
 hosts_db=Baze de date
 hosts_host=gazdele
@@ -355,6 +370,7 @@ hosts_dtitle=Ștergeți Permisiunile de gazdă
 hosts_drusure=Sigur doriți să ștergeți permisiunile de gazdă MySQL selectate $1 ?
 hosts_dok=Ștergeți Permisiunile
 hosts_return=permisiuni de gazdă
+
 host_title1=Creați Permisii de gazdă
 host_title2=Editați Permisiunile de gazdă
 host_header=Opțiuni de permisiuni de gazdă
@@ -364,6 +380,7 @@ host_sel=Selectat
 host_otherdb=Model de potrivire
 host_host=gazdele
 host_perms=Permisiuni
+
 newdb_title=Creați baza de date
 newdb_header=Noi opțiuni de bază de date
 newdb_db=Numele bazei de date
@@ -377,6 +394,7 @@ newdb_err=Crearea bazei de date nu a reușit
 newdb_edb=Numele bazei de date lipsă sau nevalid
 newdb_ecannot=Nu aveți voie să creați baze de date
 newdb_ecannot2=Nu aveți voie să creați mai multe baze de date
+
 exec_title=Executați SQL
 exec_header=Introduceți o comandă SQL de executat pe baza de date $1 ..
 exec_old=Sau selectați o comandă SQL anterioară :
@@ -413,6 +431,7 @@ exec_iheader=Opțiuni de importare fișiere text
 exec_created=$1 tabele au fost create.
 exec_inserted=$1 înregistrări au fost inserate.
 exec_cs=Set de caractere pentru date
+
 tprivs_title=Permisiunile tabelului
 tprivs_table=Masa
 tprivs_db=Bază de date
@@ -431,6 +450,7 @@ tprivs_enone=Nu au fost selectate tabele
 tprivs_dtitle=Ștergeți Permisiunile tabelelor
 tprivs_drusure=Sigur doriți să ștergeți permisiunile din tabelul MySQL selectate $1 ?
 tprivs_dok=Ștergeți Permisiunile
+
 tpriv_title1=Creați permisiunile de tabel
 tpriv_title2=Editați Permisiunile tabelului
 tpriv_header=Opțiuni de permisiune de tabel
@@ -447,6 +467,7 @@ tpriv_etable=Nu a fost selectat un tabel
 tpriv_euser=Nume de utilizator lipsă sau nevalid
 tpriv_ehost=Gazda lipsă sau nevalidă
 tpriv_edb=Numele bazei de date lipsă sau nevalid
+
 cprivs_title=Permisiuni de câmp
 cprivs_field=Camp
 cprivs_table=Masa
@@ -466,6 +487,7 @@ cprivs_enone=Nu sunt selectate câmpuri
 cprivs_dtitle=Ștergeți Permisiunile coloanelor
 cprivs_drusure=Sigur doriți să ștergeți permisiunile de coloană MySQL selectate $1 ?
 cprivs_dok=Ștergeți Permisiunile
+
 cpriv_title1=Creați Permisii de câmp
 cpriv_title2=Editați Permisiunile de câmp
 cpriv_header=Opțiunile permisiunii de câmp
@@ -482,11 +504,13 @@ cpriv_etable=Nu a fost selectat un tabel
 cpriv_euser=Nume de utilizator lipsă sau nevalid
 cpriv_ehost=Gazda lipsă sau nevalidă
 cpriv_edb=Numele bazei de date lipsă sau nevalid
+
 esql=SQL $1 a eșuat : $2 
 eparse=Webmin nu poate analiza ieșirea din comanda $1 datorită naturii datelor din baza de date. Pentru a rezolva această problemă, va trebui să instalați modulele $2 și $3 Perl.
 edenied=Nu aveți acces la această bază de date MySQL
 perms_ecannot=Nu aveți voie să editați permisiunile
 perms_edb=Aveți dreptul să editați permisiunile pentru bazele de date proprii
+
 acl_dbs=Baze de date pe care le poate administra acest utilizator
 acl_dall=Toate bazele de date
 acl_dsel=Selectat ..
@@ -507,6 +531,7 @@ acl_bnone=Nu permiteți copiile de siguranță
 acl_indexes=Poate vizualiza și gestiona indexuri?
 acl_views=Poate vizualiza și gestiona vizualizările?
 acl_files=Poate executa SQL din fișiere locale?
+
 log_start=A început serverul MySQL
 log_stop=Serverul MySQL oprit
 log_cnf=Modificată configurația serverului MySQL
@@ -571,6 +596,7 @@ log_importfile=Date importate din fișierul $1
 log_set=Modificate $1 variabile MySQL
 log_root=Parola de administrare modificată
 log_manual=Fișier de configurare editat manual
+
 backup_title=Baza de date de rezervă
 backup_title2=Backup Toate bazele de date
 backup_edump=Programul de rezervă MySQL $1 nu a fost găsit în sistemul dvs. Poate că configurația modulului <a href='$2'></a> este incorectă.
@@ -649,15 +675,18 @@ backup_bodyspace=Mărimea sistemului de fișiere: $1 Spațiu liber : $2
 backup_bodyall=toate
 backup_edownloadall=Se poate descărca o singură copie de rezervă a bazei de date
 backup_edownloadsave=Modul de descărcare nu poate fi utilizat pentru copii de rezervă programate
+
 import_title=Importați date
 import_uploadout=Importarea datelor din fișierul încărcat ..
 import_fileout=Importarea datelor din fișierul $1 ..
 import_eupload=Lipsește fișierul de import încărcat
 import_efile=Lipsește numele fișierului la import
+
 adv_title=Cautare Avansata
 adv_and=Găsiți înregistrări care corespund tuturor criteriilor ..
 adv_or=Găsiți înregistrări care corespund oricăror criterii ..
 adv_ok=Cauta acum
+
 csv_title=Exportați fișierul CSV
 csv_header=Opțiuni de export CSV
 csv_dest=Destinația exportului
@@ -678,6 +707,7 @@ csv_done=Exportul CSV către $1 este complet. Mărimea fișierului rezultat este
 csv_headers=Includeți nume de coloană în CSV?
 csv_cols=Coloane care trebuie incluse în CSV
 csv_ecols=Nu au fost selectate coloane
+
 cnf_title=Configurare server MySQL
 cnf_efile=Fișierul de configurare MySQL $1 nu a fost găsit în sistemul dvs. Este posibil să fie nevoie să ajustați configurația modulului <a href='$2'></a> pentru a utiliza calea corectă.
 cnf_header=Opțiuni server MySQL
@@ -719,11 +749,13 @@ cnf_restart=Salvați și reporniți MySQL
 cnf_fpt=Fișier separat pentru fiecare tabel InnoDB?
 cnf_ilt=Interval de blocare InnoDB (în câteva secunde)
 cnf_eilt=Timpul de blocare InnoDB trebuie să fie un număr întreg
+
 manual_title=Editați fișierele de configurare
 manual_file=Editați fișierul de configurare:
 manual_ok=O.K
 manual_efile=Fișier de configurare nevalid!
 manual_err=Nu a reușit să salvați fișierul de configurare
+
 index_title1=Creați index
 index_header1=Opțiuni index
 index_name=Numele indexului
@@ -739,12 +771,15 @@ index_ecols=Nu sunt selectate câmpuri
 index_title2=Editează indexul
 index_header=Index $1 în baza de date $2 
 index_ecannot=Nu aveți voie să gestionați indexuri
+
 syslog_desc=Mesaje de eroare MySQL
 syslog_desc2=Mesaj de eroare MySQL
 syslog_logdesc=Interogări MySQL
+
 fdrop_err=Nu a reușit ștergerea câmpurilor
 fdrop_enone=Nimic selectat
 fdrop_eall=Nu puteți șterge toate câmpurile dintr-un tabel!
+
 view_title1=Creare vizualizare
 view_title2=Editează vizualizarea
 view_header1=Vezi detalii
@@ -770,6 +805,7 @@ view_cascaded=Vederi subiacente
 view_local=Numai această vizualizare
 view_nocheck=Nici unul
 view_ecannot=Nu aveți voie să gestionați vizualizări
+
 procs_title=Conexiuni de baze de date
 procs_id=ID-ul
 procs_user=Nume de utilizator
@@ -781,9 +817,11 @@ procs_query=Se rulează interogarea
 procs_kill=Omoară conexiunile selectate
 procs_ecannot=Nu aveți voie să vizualizați conexiunile la baza de date
 procs_none=În acest moment nu există alte conexiuni cu clientul de bază de date.
+
 kill_err=Nu a reușit să omoare conexiunile la baza de date
 kill_ecannot=Nu aveți voie să gestionați conexiunile la baza de date
 kill_enone=Nimic selectat
+
 vars_title=Variabile de sistem MySQL
 vars_desc=Avertisment - Variabilele setate pe această pagină vor fi resetate la valorile lor implicite atunci când MySQL este repornit. Setările permanente trebuie făcute pe pagina <a href='$1'>Configurarea serverului MySQL</a>.
 vars_ecannot=Nu aveți voie să editați variabile de sistem
@@ -794,6 +832,7 @@ vars_search=Afișează potrivirea variabilelor:
 vars_ok=Căutare
 vars_none2=Nicio variabilă de sistem nu se potrivește căutării tale.
 vars_none=Nu au fost găsite variabile de sistem!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
@@ -805,7 +844,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=Opțiuni cheie
 compat_no_table_options=Opțiuni de tabel
 compat_no_field_options=Opțiuni de câmp
+
 config_echarset=Set de caractere lipsă sau cu aspect nevalid
+
 root_title=Schimbați parola de administrare
 root_header=Parolă nouă de administrare
 root_user=Logare de administrare
@@ -818,6 +859,7 @@ root_epass1=Nu a fost introdusă o parolă nouă
 root_epass2=parolele nu se potrivesc
 root_none=Fără parolă!
 root_auto=Automat (de obicei <tt>root</tt>)
+
 mysqlpass_err=Mod sigur MySQL
 mysqlpass_esafecmd=Comanda $1 necesară pentru a porni MySQL cu autentificare dezactivată nu a fost găsită
 mysqlpass_eshutdown=Închiderea a eșuat : $1 

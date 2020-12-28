@@ -57,6 +57,7 @@ index_reposdisable=Vô hiệu hóa kho
 index_reposenable=Kích hoạt kho
 index_reposdelete=Xóa kho
 index_repoheader=Tùy chọn kho lưu trữ gói mới
+
 update_title=Cập nhật các gói
 update_title2=Cài đặt gói
 update_enone=Không có gói nào được chọn
@@ -94,9 +95,11 @@ update_none=không ai
 update_ops=Xây dựng danh sách đầy đủ các gói ..
 update_rebootdesc=Một trong những gói được cài đặt yêu cầu khởi động lại để được áp dụng đầy đủ.
 update_reboot=Khởi động lại ngay
+
 sched_title=Cập nhật theo lịch trình
 sched_yes=Kiểm tra theo lịch trình để cập nhật hiện đang hoạt động.
 sched_no=Kiểm tra theo lịch trình để cập nhật đã bị vô hiệu hóa.
+
 log_update=Đã cài đặt $1 gói cập nhật
 log_sched=Đã bật cập nhật theo lịch trình
 log_unsched=Vô hiệu hóa cập nhật theo lịch trình
@@ -108,11 +111,13 @@ log_enable_repo=Kho lưu trữ gói kích hoạt $1
 log_disable_repo=Kho lưu trữ gói bị vô hiệu hóa $1 
 log_delete_repo=Đã xóa kho lưu trữ gói $1 
 log_create_repo=Đã tạo kho lưu trữ gói $1 
+
 refresh_title=Gói làm mới
 refresh_clearing=Xóa bộ nhớ cache gói ..
 refresh_done=.. làm xong
 refresh_available=Tìm nạp lại các gói có sẵn ..
 refresh_done3=.. đã tìm thấy $1 cập nhật có thể
+
 view_title=Chi tiết gói
 view_header=Thông tin gói cập nhật
 view_name=Tên gói hàng
@@ -126,12 +131,14 @@ view_changelog=Thay đổi cho phiên bản có sẵn
 view_software=Quản lý gói
 view_update=Cập nhật gói
 view_install=Cài đặt gói
+
 system_yum=YUM
 system_apt=ĐÚNG CÁCH
 system_csw=CSW (Vụ nổ)
 system_webmin=Mô-đun Webmin
 system_usermin=Mô-đun Usermin
 system_tgz=Webmin hoặc Usermin tar.gz
+
 repos_err_disable=Không thể vô hiệu hóa kho
 repos_err_enable=Không thể kích hoạt kho
 repos_err_delete=Không thể xóa kho

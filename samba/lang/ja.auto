@@ -1,4 +1,5 @@
 index_samba=サンバ
+
 index_start_wb=Winbindサーバーを起動する
 index_startmsg_wb=Winbindサーバーはシステムで実行されていないようです。
 index_restart_wb=Winbindサーバーを再起動します
@@ -7,36 +8,49 @@ index_stop_wb=Winbindサーバーを停止する
 index_stopmsg_wb=このボタンをクリックして、システムで実行中のWinbindサーバーをシャットダウンします。
 index_einclude=警告-Samba構成ファイル $1には $2または $3ディレクティブが含まれています。これにより、Webminがファイルを誤って変更する可能性があります。
 index_delete=選択した共有を削除
+
 global_bind=Winbindオプション
+
 convert_who=変換するUnixユーザー
 convert_who0=リストされたユーザーまたはUID範囲のみ
 convert_who1=リストされたユーザーとUID範囲を除くすべて
+
 net_ip=IPアドレス
+
 smb_descriptionnone=なし
 smb_master_auto=自動
 smb_server=パスワードサーバー
 smb_ads=アクティブディレクトリ
+
 euser_noexpire=パスワードは期限切れになることはありません
 euser_locked=アカウントはロックされています
+
 share_owner=所有者で作成
 share_createperms=権限で作成
 share_group=グループで作成
+
 esync_gid=新しいユーザーのグループSIDまたはRID
 esync_egid=グループSIDまたはRIDがありません
+
 mkpass_added=追加しました
 mkpass_user=ユーザー名
 mkpass_action=実行されたアクション
 mkpass_skipcount=$1ユーザーは変換のためにスキップされました。
+
 savefshare_owner=新しいディレクトリの所有者が見つからないか無効です
 savefshare_group=新しいディレクトリのグループが見つからないか無効です
 savefshare_perms=新しいディレクトリの権限がないか、無効です
 savefshare_emkdir=ディレクトリの作成に失敗しました： $1
+
 start_err_wb=Winbindサーバーの起動に失敗しました
+
 restart_err=Sambaサーバーの再起動に失敗しました
 restart_err_wb=Winbindサーバーの再起動に失敗しました
+
 viewu_kill=選択したユーザーを切断する
 viewu_enone=ユーザーが選択されていません
 viewu_refresh=ページの更新。
+
 log_apply_wb=再起動されたWinbindサーバー
 log_stop_wb=停止したWinbindサーバー
 log_start_wb=Winbindサーバーを起動しました
@@ -45,7 +59,9 @@ log_skills=共有 $2から $1プロセスを切断しました
 log_delete_shares=$1の共有を削除しました
 log_bind=Winbindオプションを変更する
 log_manual=手動で編集された構成ファイル $1
+
 acl_bind=winbindオプションにアクセスできますか？
+
 winbind_ecannot=ドメインへのバインドは許可されていません
 winbind_msg=このフォームは、SambaサーバーをWindowsドメインにバインドするために使用できます。Windowsドメインは通常、別のサーバーによって管理されます。
 winbind_header=Windowsドメインにバインドする
@@ -58,6 +74,7 @@ winbind_edom=ドメイン名がありません
 winbind_cmd=コマンド $1..を使用したドメインへのバインド
 winbind_failed=..失敗しました！その理由については、上記の出力を参照してください。
 winbind_ok=..完了。
+
 bind_title=Winbindオプション
 bind_ecannot=winbindオプションを編集することはできません
 bind_header=Windowsドメインバインドオプション
@@ -74,9 +91,11 @@ bind_erealm=無効なKerberosレルム
 bind_ecache=キャッシュ時間が欠落しているか無効です
 bind_euid=無効なUID範囲-20000〜30000のようにする必要があります
 bind_egid=無効なGID範囲-20000〜30000のようにする必要があります
+
 manual_title=構成ファイルの編集
 manual_desc=Samba構成ファイル $1を編集しています。
 manual_err=構成ファイルを保存できませんでした
 manual_edata=何も入っていません！
+
 delete_err=共有を削除できませんでした
 delete_enone=何も選択されていません

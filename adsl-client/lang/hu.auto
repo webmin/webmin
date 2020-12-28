@@ -16,6 +16,7 @@ index_cancel=Mégsem a kapcsolatot
 index_canceldesc=Az ADSL-ügyfél jelenleg próbál kapcsolatot létesíteni. Kattintson erre a gombra, hogy megszakítsa a kísérletet a $1 paranccsal.
 index_cdemand=Megszünteti az igényt
 index_cdemanddesc=Az ADSL kliens jelenleg igény szerinti csatlakozási kérelmet vár. Kattintson erre a gombra a $1 parancs leállításához.
+
 index_header=ADSL ügyfélkonfigurációs beállítások
 index_desc=Az alábbi beállítások vonatkoznak a rendszer által indított új ADSL-kapcsolatokra. Ha megváltoztatja őket, a módosítások érvénybe lépéséhez a kapcsolatot le kell állítani és újra kell indítani.
 index_eth=Ethernet interfész
@@ -36,11 +37,13 @@ index_fw_standalone=Egyedüli házigazda számára
 index_fw_masquerade=NAT átjáróhoz
 index_connect=Ideje megpróbálni a kapcsolatot
 index_forever=Örökké
+
 start_err=Az ADSL kapcsolat elindítása nem sikerült
 start_title=Indítsa el az ADSL-t
 start_ip=Létrehozott egy ADSL kapcsolatot $1 IP-címmel.
 start_demand=Mivel az igény szerinti csatlakozás mód engedélyezve van, az ADSL-kapcsolat csak akkor indul el, ha szükséges.
 start_bg=Az ADSL kapcsolat 20 másodpercen belül nem indult el. Az ADSL-ügyfél sikeres sikerességéig továbbra is megpróbálja csatlakozni a háttérben.
+
 save_err=Az ADSL-konfiguráció mentése nem sikerült
 save_eeth=Hiányzó vagy érvénytelen külső Ethernet interfész
 save_etimeout=Hiányzó vagy érvénytelen igény szerinti időtúllépés
@@ -49,10 +52,12 @@ save_econnect=Hiányzó vagy érvénytelen csatlakozási időtúllépés
 save_emss=Hiányzik vagy érvénytelen a maximális csomagméret
 save_title=Konfiguráció mentése
 save_desc=Az ADSL-ügyfélkonfiguráció sikeresen mentésre került, de addig nem fogja használni, amíg újra nem csatlakozik.
+
 stop_err=Nem sikerült leállítani az ADSL kapcsolatot
 stop_title=Az ADSL leállítása
 stop_ok=Az ADSL-kapcsolat sikeresen leállt.
 stop_failed=ADSL-kapcsolata valamilyen oknál fogva továbbra is aktív!
+
 log_save=Mentett ügyfélkonfiguráció
 log_stop=Kapcsolja ki az ADSL-t
 log_start=Az ADSL elindítása

@@ -30,6 +30,7 @@ index_sdesc=Actie omschrijving bevat
 index_shost=Bron Webmin server
 index_long=Toon de volledige actie omschrijvingen?
 index_global=&lt;In geen enkele module&gt;
+
 search_title=Zoek Resultaten
 search_date=Datum
 search_time=Tijd
@@ -56,6 +57,7 @@ search_global=Geen
 search_global_login=Ingelogd in Webmin
 search_global_logout=Uitgelogd bij Webmin
 search_csv=Exporteer als CVS.
+
 view_title=Actie Details
 view_header=Details van gelogde actie $1
 view_action=Omschrijving
@@ -89,11 +91,13 @@ view_files=Files gewijzigd en opdrachten uitgevoerd
 view_raw=Raw log data
 view_rawname=Parameter naam
 view_rawvalue=Parameter waarde
+
 acl_mods=Mag log's bekijken in modules
 acl_all=Alles
 acl_sel=Geselecteerde hieronder ..
 acl_users=Mag acties bekijken per gebruiker
 acl_rollback=Mag acties terug draaien?
+
 rollback_title=Herstel actie
 rollback_rusure=Bent u er zeker van dat u de inhoud van de files wilt terug zetten zoals die waren voor de laatste actie? Alle data die er nu in staat word overschreven door de volgende veranderingen:
 rollback_isdir=Een directory - er word niets gewijzigt.
@@ -116,4 +120,5 @@ rollback_modfile=Herstel inhoud van file $1.
 rollback_deleted=Verwijder file $1.
 rollback_nodeleted=Niet bestaande file $1 is overgeslagen.
 rollback_enone=Geen files geselecteerd
+
 log_rollback=Herstel actie $1 in module $2

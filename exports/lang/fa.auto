@@ -12,6 +12,7 @@ index_eprog=عملکرد سرور NFS روی سیستم شما یافت نشد. 
 index_delete=صادرات منتخب را حذف کنید
 index_disable=غیرفعال شده انتخاب شده است
 index_enable=انتخاب را فعال کنید
+
 edit_title=صادرات را ویرایش کنید
 create_title=صادرات ایجاد کنید
 edit_details=جزئیات صادرات
@@ -65,6 +66,7 @@ edit_sec_krb5i=یکپارچگی کربروس
 edit_sec_krb5p=حریم خصوصی Kerberos
 edit_sec_lipkey=LIPKEY
 edit_sec_spkm=SPKM
+
 save_err=ذخیره صادرات انجام نشد
 save_edir=فهرست "$1" وجود ندارد
 save_epfs=مسیر شبه پرونده "$1" به نظر نمی رسد مسیری مطلق باشد
@@ -78,6 +80,7 @@ save_pfs='$1' قبلاً به عنوان دایرکتوری صادر می شود
 save_create_dir=دایرکتوری "$1" ایجاد نشد
 save_eanonuid=نام کاربری دسترسی ناشناس نامعتبر است
 save_eanongid=نام گروه دسترسی ناشناس نامعتبر است
+
 exports_webnfs=مشتریان WebNFS
 exports_ngroup=گروه$1
 exports_net=شبکه$1
@@ -85,6 +88,7 @@ exports_all=هر کس
 exports_hosts=میزبان$1
 exports_host=میزبان$1
 exports_gss=شبکه معتبر:$1
+
 log_modify=صادرات NFS $1 اصلاح شده
 log_modify_l=صادرات NFS $1 تا$2 صادر شده است
 log_delete=صادرات NFS $1 حذف شد

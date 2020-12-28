@@ -39,7 +39,9 @@ index_thost=L-isem tal-host
 index_tdesc=Deskrizzjoni
 index_tver=Verżjoni
 index_ttype=Tip ta ’sistema operattiva
+
 this_server=dan is-server
+
 add_title=Żid is-Servers
 add_msg=Żieda ta ' $1 ..
 add_gmsg=Żieda ta 'servers fil-grupp $1 ..
@@ -49,6 +51,7 @@ add_echeck=Server $1 m'għandux il-modulu ta 'konfigurazzjoni Usermin
 add_echeck2=Server $1 m'għandux il-modulu Usermin User
 add_eversion=Is-server $1 mhux qed jibda jaħdem il-verżjoni Usermin $2 jew aktar.
 add_ok=Miżjud $1 ma ' $2 moduli u $3 temi.
+
 refresh_title=Aġġorna l-Modulu u l-Listi tat-Tema
 refresh_header=Re-talba modulu u temi listi mis-servers kollha ..
 refresh_header4=Re-talba modulu u temi listi mill-membri ta ' $2 ..
@@ -64,6 +67,7 @@ refresh_g2=Tneħħew $1 gruppi.
 refresh_done=.. sar
 refresh_del=Tneħħa $1 mil-lista tas-server
 refresh_failed=Naqset milli tiffriska $1 : $2 
+
 host_title=Server Immexxi
 host_header=Dettalji tas-server Usermin Immexxi
 host_name=L-isem tal-host
@@ -81,6 +85,7 @@ host_header_u=Utenti usermin
 host_header_g=Gruppi Usermin
 host_return=dettalji tas-server
 host_version2=Verżjoni
+
 edit_title_mod=Modulu Editja
 edit_title_theme=Editja Tema
 edit_header_mod=Dettalji tal-modulu Usermin minn $1 
@@ -103,6 +108,7 @@ edit_codes=Mit-test $1
 edit_acl=Editja ACL għal
 edit_uacl=Utent $1 fuq $2 
 edit_gacl=Grupp $1 fuq $2 
+
 install_err=Naqset milli tinstalla l-modulu
 install_title=Installa Modulu
 install_elocal=L-ebda fajl lokali mogħti
@@ -123,6 +129,7 @@ do_failed=Ma rnexxiex tinstalla fuq $1 : $2
 do_success_mod=Modulu installat $2 fuq $1 
 do_success_theme=Tema installata $2 fuq $1 
 do_done=.. sar
+
 delete_err=Ma rnexxielux jitħassar il-modulu $1 
 delete_epack=Il-modulu $1 ma jeżistix
 delete_title=Ħassar il-Modulu
@@ -140,6 +147,7 @@ delete_edepends=Modulu (i) $1 jiddependu minnu.
 delete_egone=Il-Modulu m'għadux jeżisti
 delete_esuccess=Imħassar b'suċċess minn $1 : $2 
 delete_acls=Neħħi mill-utenti u Irrisettja l-issettjar tal-kontroll tal-aċċess?
+
 user_title1=Oħloq Usermin User
 user_header1=Dettalji ta 'l-utent Usermin Ġdid
 user_name=Username
@@ -198,11 +206,13 @@ user_all=&lt;l-ospiti kollha&gt;
 user_donthave=&lt;ospiti li m'għandhomx&gt;
 user_have=&lt;ospiti li għandhom dan&gt;
 user_ofgroup=Membri ta ' $1 
+
 udelete_title=Ħassar l-Utent
 udelete_doing=Tħassar l-utent $1 mill-ospiti kollha ..
 udelete_success=Imħassar b'suċċess minn $1 
 udelete_failed=Ma rnexxielux jitħassar minn $1 : $2 
 udelete_done=.. sar
+
 group_title1=Oħloq Grupp
 group_header1=Dettalji ġodda tal-grupp Usermin
 group_name=Isem tal-grupp
@@ -230,6 +240,7 @@ group_failed2=Ma rnexxielux jaġġorna l-grupp fuq $1 : $2
 group_return=dettalji tal-grupp
 group_nomems=L-ebda membru
 group_servers=Server (i) li joħolqu fuq
+
 gdelete_title=Ħassar Grupp
 gdelete_desc=Int żgur li trid tħassar il-grupp $1 u l-utenti membri tiegħu $2 mill-ospiti kollha?
 gdelete_ok=Ħassar Grupp
@@ -238,6 +249,7 @@ gdelete_success=Imħassar b'suċċess minn $1
 gdelete_failed=Ma rnexxielux jitħassar minn $1 : $2 
 gdelete_done=.. sar
 gdelete_esub=Dan il-grupp għandu subgrupp $1, u għalhekk ma jistax jitħassar.
+
 acl_title=Modulu ta 'Kontroll ta' l-Aċċess
 acl_title2=Għall-utent $1 f' $2 fuq $3 
 acl_title3=Għall-grupp $1 f' $2 fuq $3 
@@ -256,6 +268,7 @@ acl_doing2=Twaqqif ta 'kontroll ta' aċċess għal $1 fuq $2 ..
 acl_success=Issettja b'suċċess il-kontroll tal-aċċess fuq $1 
 acl_failed=Naqset milli tissettja l-kontroll tal-aċċess fuq $1 : $2 
 acl_done=.. sar
+
 sync_title=Issinkronizza Servers
 sync_desc=Din il-formola tippermetti li toħloq utenti u gruppi ta 'Usermin fuq servers li bħalissa m'għandhomx, sabiex iġġib il-kontijiet f'sinkronizzazzjoni bejn is-servers kollha tal-cluster tiegħek.
 sync_hosts=Servers li jissinkronizzaw
@@ -279,6 +292,7 @@ sync_gcreate=Iż-żieda tal-grupp Usermin $1 ..
 sync_acl=Ikkopja fajls ACL għal $1 ..
 sync_test=Juri biss x’għandu jsir?
 sync_restart=Terga ’jibda l-Usermin ..
+
 upgrade_title=Aġġorna Usermin
 upgrade_header=Aġġornament ta 'Usermin fuq l-ospiti kollha ..
 upgrade_header2=Aġġornament ta 'Usermin fuq $1 ..
@@ -297,6 +311,7 @@ upgrade_failed=Ma rnexxiex tinstalla fuq $1 : $2
 upgrade_done=.. sar
 upgrade_efast=Servers biss li jużaw il-mod RPC veloċi jistgħu jiġu aġġornati
 upgrade_ereconn=Naqset milli terġa 'tikkonnettja ma' Usermin wara l-aġġornament!  : $1 
+
 update_title=Moduli ta 'Aġġornament
 update_header=Aġġornament tal-moduli tal-ospiti kollha ..
 update_header5=Aġġornament tal-moduli fuq $2 ..

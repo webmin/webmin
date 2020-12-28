@@ -11,6 +11,7 @@ index_return=listy usług
 index_refsel=Odśwież wybrane
 index_tmpls=Edytuj szablon e-mail
 index_tmplsdesc=Wyświetl i edytuj szablon używany do wysyłania raportów monitorowania.
+
 type_apache=Serwera WWW Apache
 type_inetd=Serwera internetowego i RPC
 type_xinetd=Rozszerzonego serwera internetowego
@@ -61,6 +62,7 @@ type_alive=Działanie systemu
 type_rssh=Zdalny SSH
 type_slapd=Serwer LDAP
 type_ldap=Połączenie LDAP
+
 mon_create=Utwórz monitorowanie
 mon_edit=Zmień monitorowanie
 mon_header=Dane monitorowania
@@ -115,6 +117,7 @@ mon_hwhen=Sprawdź datę
 mon_hold=Stary stan
 mon_hnew=Nowy stan
 mon_hvalue=Wartość
+
 sched_title=Monitorowanie okresowe
 sched_header=Opcje okresowego monitorowania w tle
 sched_mode=Włączone sprawdzanie okresowe?
@@ -141,16 +144,19 @@ sched_eoffset=Brakujące lub niepoprawne przesunięcie
 sched_ehours=Nie wybrano godzin monitorowania
 sched_edays=Nie wybrano dni monitorowania
 sched_ecannot=Nie masz uprawnień do zmiany monitorowania okresowego
+
 up_since=Działa od $1
 depends_mod=W systemie nie jest zainstalowany moduł $1
 depends_os=Twój system nie obsługuje modułu $1
 depends_remote=Serwer $2 nie obsługuje modułu $1
+
 tcp_host=Połączenie z hostem
 tcp_port=Połączenie z portem
 tcp_alarm=Czas przeterminowania połączenia
 tcp_ehost=Nie podana lub niepoprawna nazwa hosta
 tcp_eport=Nie podany lub niepoprawny numer portu
 tcp_ealarm=Nie podany lub niepoprawny czas przeterminowania
+
 http_url=Żądany URL
 http_alarm=Czas przeterminowania połączenia
 http_eurl=Nie podany lub niepoprawny URL
@@ -159,11 +165,13 @@ http_login=Zaloguj jako
 http_user=Nazwa użytkownika
 http_pass=hasło
 http_none2=Nie pasuje
+
 ping_host=Pingowany host
 ping_wait=Czas oczekiwania na odpowiedź
 ping_ehost=Nie podana lub niepoprawna nazwa hosta
 ping_ewait=Nie podany lub niepoprawny czas oczekiwania
 ping_econfig=Nie podano polecenia pingującego w konfiguracji modułu
+
 proc_pid=Działa z numerem PID $1
 proc_cmd=Sprawdzane polecenie
 proc_not=Błąd jeżeli proces jest
@@ -172,8 +180,10 @@ proc_not1=Uruchomiony
 proc_ecmd=Nie podano polecenia
 proc_asuser=Uruchomiono jako użytkownik
 proc_anyuser=Dowolny użytkownik
+
 exec_cmd=Polecenie, którego kod zakończenia sprawdzać
 exec_ecmd=Nie podano polecenia
+
 file_file=Sprawdzany plik
 file_test=Wykonywany test
 file_test_0=Plik musi istnieć
@@ -183,6 +193,7 @@ file_test_3=Plik musi być mniejszy niż
 file_bytes=bajtów
 file_efile=Nie podano nazwy sprawdzanego pliku
 file_esize=Niewłaściwy rozmiar pliku
+
 traffic_iface=Monitorowany interfejs
 traffic_bytes=Maksymalna liczba bajtów/sekundę
 traffic_dir=Monitorowany kierunek
@@ -192,12 +203,14 @@ traffic_dir2=Tylko wychodzący
 traffic_desc=To monitorowanie śledzi ruch w sieci na wybranym interfejsie oraz pokazuje monitorowanie jako wyłączone, gdy ruch przekracza zadaną wartość podaną poniżej. Działa to poprawnie jedynie, gdy monitorowanie okresowe jest włączone i ustawione na krótki okres czasu, jak np. 5 minut.
 traffic_eifaces=W systemie nie ma pliku /proc/net/dev
 traffic_ebytes=Nie podana lub nieporawna liczba bajtów/sekundę
+
 space_fs=Sprawdzany system plików
 space_desc=Wolne $1
 space_nofs=System plików nie zamontowany
 space_other=Inne..
 space_emin=Nie podana lub niepoprawna ilość wolnego miejsca
 space_eother=Nie podany lub niepoprawny system plików
+
 load_time=Sprawdzać średnie obciążenie z okresu
 load_1=1 minuta
 load_5=5 minut
@@ -206,6 +219,7 @@ load_max=Maksymalne średnie obciążenie
 load_emax=Nie podane lub nie poprawne maksymalne średnie obciążenie
 load_ecmd=W systemie nie znaleziono polecenia <tt>uptime</tt>
 load_efmt=Nie udało się przetworzyć wyniku polecenia <tt>uptime</tt>
+
 log_create=Utworzono monitorowanie $1
 log_modify=Zmieniono monitorowanie $1
 log_delete=Usunięto monitorowanie $1
@@ -216,31 +230,42 @@ log_tmpl_modify=Zmodyfikowano szablon e-mail $1
 log_tmpl_delete=Usunięto szablon e-mail $1
 log_tmpl_deletes=Usunięto $1 szablon e-mail
 log_refresh=Odświeżono stan monitorów
+
 acl_edit=Może zmieniać i tworzyć monitorowania?
 acl_sched=Może zmieniać monitorowania okresowe?
+
 change_file=Plik lub katalog do monitorowania (błąd jeżeli się zmieni)
+
 jabber_eparser=Moduł Perl $1 nie jest zainstalowany na twoim systemie.
+
 memory_free2=$1 wolnej prawdziwej pamięci
 memory_freeswap=$1 wolnej wirtualnej pamięci
 memory_freelow=Tylko $1 wolnej prawdziwej pamięci
 memory_freelowswap=Tylko $1 wolnej wirtualnej pamięci
+
 mailserver_timeout=Timeout i interwał
 mailserver_units_0=Sekund
 mailserver_units_1=Minut
 mailserver_units_2=Godzin
 mailserver_units_3=Dni
+
 oldfile_secs=sek
+
 raid_other=Inne..
+
 nut_cur=$1 (aktualnie$2)
+
 mailq_system=Serwer mailowy
 mailq_qmailadmin=Qmail
 mailq_postfix=Postfix
 mailq_sendmail=Sendmail
 mailq_toomany=Nie działa - $1 wiadomości w kolejce
 mailq_ok=Działą  - $1 wiadomości w kolejce
+
 dns_server=Serwer DNS
 dns_address=Spodziewany adres IP
 dns_eaddress=Brakujący lub nieprawidłowy spodziewany adres IP
+
 monitor_sub_down=$1 nie działa na $2
 monitor_pager_down=$1: "$2" nie działa $3
 monitor_snmp_down=$1: $2
@@ -265,12 +290,15 @@ monitor_sub3=Monitor usługi : $1 usług
 monitor_run1=Uruchamianie $1 na $2 ..
 monitor_run2=Uruchamianie $1 ..
 monitor_runerr=Błąd uruchamiania $1 na $2 : $3
+
 deletes_egone=Jeden lub więcej z wybranych monitorów już nie istnieje
 deletes_enone=Nie wybrano monitorowania
+
 ftp_host=Host serwera FTP
 ftp_port=Port FTP
 ftp_pass=Z hasłem
 ftp_none=Brak (tylko zaloguj)
+
 query_driver=Typ bazy danych SQL
 query_db=Nazwa bazy danych
 query_local=Ten serwer
@@ -279,9 +307,12 @@ query_epass=Nieprawidłowe hasło
 query_elogin=Błąd logowania : $1
 query_eprepare=Błąd SQL : $1
 query_eexecute=Błąd SQL : $1
+
 consume_rate=Maksymalny stopień użycia (na sekundę)
 consume_high=Stopień użycia jest $1 / sekundę
+
 alive_up=Działa od $1
+
 tmpls_title=Szablony e-mail
 tmpls_ecannot=Nie masz uprawnień do edycji szablonu e-mail
 tmpls_none=Nie zdefiniowano jeszcze żadnego szablonu. Wszystkie powiadomienia zostaną wysłane przy użyciu domyślnej wiadomości Webmina.
@@ -290,6 +321,7 @@ tmpls_email=Wiadomość e-mail
 tmpls_add=Dodaj nowy szablon e-mail
 tmpls_return=listy szablonów
 tmpls_delete=Usuń wybrane szablony
+
 tmpl_title1=Utwórz szablon e-mail
 tmpl_title2=Edytuj szablon e-mail
 tmpl_sms=Wiadomość SMS
@@ -298,7 +330,9 @@ tmpl_sms0=Własna wiadomość poniżej ..
 tmpl_snmp=Wiadomość na Pager
 tmpl_subs_date=Aktualna data
 tmpl_subs_time=Aktualny czas
+
 dtmpls_enone=Nic nie wybrano
+
 ldap_edriver=Moduł Perl $1 nie jest zainstalowany
 ldap_host=Nazwa hosta serwera LDAP
 ldap_port=Port serwera LDAP

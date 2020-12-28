@@ -24,6 +24,7 @@ index_showing=Visar databaser som matchar $1 ..
 index_emsg=Det fulla MySQL-felmeddelandet var : $1 
 index_jump=Eller redigera databasen:
 index_jumpok=Öppen
+
 dbase_header=Databastabeller, index och vyer
 dbase_empty=Tom databas
 dbase_none2=Inga tabeller matchade din sökning.
@@ -42,9 +43,11 @@ dbase_type=Typ
 dbase_typetable=Bord 1)
 dbase_typeindex=Index
 dbase_typeview=Se
+
 ddrop_rusure2=Är du säker på att du vill tömma databasen $1 ? $2 tabeller som innehåller $3 rader med data kommer att raderas.
 ddrop_empty=Ta bara bort alla tabeller
 ddrop_empty2=Radera alla tabeller
+
 ddrops_err=Det gick inte att släppa databaser
 ddrops_title=Släpp databaser
 ddrops_rusure=Är du säker på att du vill släppa de valda databaserna $1 ? $2 tabeller som innehåller $3 rader med data kommer att raderas.
@@ -53,6 +56,7 @@ ddrops_mysql=Eftersom huvuddatabasen är vald, kommer det att förmodligen göra
 ddrops_ok=Släpp databaser
 ddrops_enone=Inga databaser valda
 ddrops_ecannotdb=Du får inte släppa databasen $1 
+
 table_csv=Exportera som CSV
 table_index=Skapa index
 table_copy2=Kopiera fält från databasen
@@ -70,12 +74,14 @@ table_nextra=Extra tillskrivna
 table_eautokey=Det automatisk inkremenenta fältet måste också vara en primär nyckel
 table_eauto=Endast ett fält kan öka automatiskt
 table_delete=Radera valda fält
+
 tdrops_enone=Inga tabeller / tabeller att släppa valda
 tdrops_err=Det gick inte att släppa tabellerna
 tdrops_ok=Släppa
 tdrops_title=Drop vald
 tdrops_rusure=Är du säker på att du vill släppa $1 valda tabeller / tabeller i databasen $2 ? $3 rader med data kommer att raderas.
 tdrops_rusure2=Är du säker på att du vill släppa $1 valda tabeller / tabeller i databasen $2 ?
+
 field_typewarn=Varning! Ändring av typ kan leda till dataförlust
 field_current=Aktuell tid
 field_defval=Värde
@@ -85,6 +91,7 @@ field_defempty=Tom sträng
 field_defleave=Ändra inte
 field_dmode0=Ingen
 field_dmode1=Null
+
 view_refresh=Uppdatera
 view_search2=Sök efter rader där fält $2 $3 $1 
 view_match0=innehåller
@@ -105,6 +112,7 @@ view_keep=Lämna oförändrat
 view_set=Ställ in på filens innehåll ..
 view_adv=avancerad sökning
 view_sqlrun=Resultat genererade av SQL-fråga : $1 
+
 users_sync=Alternativen nedan konfigurerar synkronisering mellan Unix-användare som skapats via Webmin och MySQL-användare.
 users_syncwhen=När du ska synkronisera
 users_sync_create=Lägg till en ny MySQL-användare när en Unix-användare läggs till
@@ -121,6 +129,7 @@ users_ssl=Certifikat
 users_dtitle=Radera användarrättigheter
 users_drusure=Är du säker på att du vill ta bort de $1 valda MySQL-användarrättigheterna?
 users_dok=Radera användare
+
 user_vwarning=VARNING: Denna MySQL-användare är administrationsinloggningen för Virtualmin-domänen $1. Ändring av inställningar här kan orsaka fel i Virtualmin.
 user_locked=Låst
 user_priv_select=Välj tabelldata
@@ -169,24 +178,29 @@ user_emax_user_connections=Maximal samtidiga inloggningar måste vara ett nummer
 user_emax_connections=Maximala anslutningar per timme måste vara ett nummer
 user_emax_updates=Maximala uppdateringar per timme måste vara ett nummer
 user_emax_questions=Maximala frågor per timme måste vara ett nummer
+
 dbs_derr=Det gick inte att ta bort databasbehörigheter
 dbs_enone=Inga databaser valda
 dbs_dtitle=Radera databasbehörigheter
 dbs_drusure=Är du säker på att du vill ta bort de $1 valda MySQL-databasbehörigheterna?
 dbs_dok=Radera behörigheter
+
 hosts_derr=Det gick inte att ta bort värdbehörigheter
 hosts_enone=Inga värdar valda
 hosts_dtitle=Radera värdbehörigheter
 hosts_drusure=Är du säker på att du vill ta bort de $1 valda MySQL-värdbehörigheterna?
 hosts_dok=Radera behörigheter
 hosts_return=värdbehörigheter
+
 host_sel=Vald
 host_otherdb=Matchande mönster
+
 newdb_tname=Som heter
 newdb_charset=Teckenuppsättning
 newdb_collation=Samlingsorder
 newdb_str=med fält nedan
 newdb_ecannot2=Du får inte skapa fler databaser
+
 exec_old=Eller välj ett tidigare SQL-kommando :
 exec_clear=Rensa historik
 exec_header2a=Detta kan också användas för att återställa en MySQL-säkerhetskopia, som bara är en fil med SQL-kommandon.
@@ -209,21 +223,27 @@ exec_iheader=Alternativ för textfilimport
 exec_created=$1 tabeller skapades.
 exec_inserted=$1 poster infördes.
 exec_cs=Teckenuppsättning för data
+
 tprivs_derr=Det gick inte att ta bort tabellbehörigheter
 tprivs_enone=Inga tabeller valda
 tprivs_dtitle=Ta bort tabellbehörigheter
 tprivs_drusure=Är du säker på att du vill ta bort de $1 markerade MySQL-tabellbehörigheterna?
 tprivs_dok=Radera behörigheter
+
 tpriv_edb=Saknat eller ogiltigt databasnamn
+
 cprivs_add2=Lägg till nya behörigheter :
 cprivs_derr=Det gick inte att ta bort fältbehörigheter
 cprivs_enone=Inga fält valda
 cprivs_dtitle=Radera kolumnbehörigheter
 cprivs_drusure=Är du säker på att du vill ta bort de $1 valda MySQL-kolumnbehörigheterna?
 cprivs_dok=Radera behörigheter
+
 cpriv_edb=Saknat eller ogiltigt databasnamn
+
 eparse=Webmin kan inte analysera utgången från kommandot $1 på grund av datatypen i din databas. Du måste installera $2 och $3 Perl-modulerna för att lösa problemet.
 edenied=Du har inte tillgång till den här MySQL-databasen
+
 acl_max=Ja, som mest
 acl_bpath=Katalog för säkerhetskopia
 acl_buser=Skriv backup som Unix-användare
@@ -232,6 +252,7 @@ acl_bnone=Avvisa säkerhetskopior
 acl_indexes=Kan visa och hantera index?
 acl_views=Kan visa och hantera vyer?
 acl_files=Kan köras SQL från lokala filer?
+
 log_cnf=Ändrad MySQL-serverkonfiguration
 log_kill=Dödade $1 -databasanslutningar
 log_vars=Modifierade $1 systemvariabler
@@ -255,6 +276,7 @@ log_importfile=Importerade data från fil $1
 log_set=Ändrade $1 MySQL-variabler
 log_root=Ändrat administrationslösenord
 log_manual=Manuell redigerad konfigurationsfil
+
 backup_title2=Säkerhetskopiera alla databaser
 backup_desc3=Detta formulär låter dig säkerhetskopiera alla databaser som filer med SQL-uppgifter. För att återställa en säkerhetskopia kan du använda Execute SQL-formuläret för att köra kommandona i en av filerna.
 backup_desc2=Säkerhetskopian kan utföras omedelbart eller automatiskt enligt ett valt schema.
@@ -320,15 +342,18 @@ backup_bodyspace=Filsystemstorlek: $1 Ledigt utrymme : $2
 backup_bodyall=Allt
 backup_edownloadall=Endast en databasbackup kan laddas ner
 backup_edownloadsave=Nedladdningsläget kan inte användas för schemalagda säkerhetskopior
+
 import_title=Importera data
 import_uploadout=Importerar data från uppladdad fil ..
 import_fileout=Importerar data från fil $1 ..
 import_eupload=Saknad importerad importfil
 import_efile=Saknar importfilnamn
+
 adv_title=avancerad sökning
 adv_and=Hitta poster som matchar alla kriterier ..
 adv_or=Hitta poster som matchar alla kriterier ..
 adv_ok=Sök nu
+
 csv_title=Exportera CSV-fil
 csv_header=CSV-exportalternativ
 csv_dest=Exportera destination
@@ -349,6 +374,7 @@ csv_done=CSV-export till $1 är klar. Den resulterande filstorleken är $2.
 csv_headers=Inkludera kolumnnamn i CSV?
 csv_cols=Kolumner som ska inkluderas i CSV
 csv_ecols=Inga kolumner har valts
+
 cnf_title=MySQL Server Configuration
 cnf_efile=MySQL-konfigurationsfilen $1 hittades inte på ditt system. Du kan behöva justera <a href='$2'>modulkonfiguration</a> för att använda rätt sökväg.
 cnf_header=MySQL-serveralternativ
@@ -390,11 +416,13 @@ cnf_restart=Spara och starta om MySQL
 cnf_fpt=Separat fil för varje InnoDB-bord?
 cnf_ilt=InnoDB-låstid (i sekunder)
 cnf_eilt=InnoDB-låset måste vara ett heltal
+
 manual_title=Redigera konfigurationsfiler
 manual_file=Redigera konfigurationsfil:
 manual_ok=OK
 manual_efile=Ogiltig konfigurationsfil!
 manual_err=Det gick inte att spara konfigurationsfilen
+
 index_title1=Skapa index
 index_header1=Indexalternativ
 index_name=Indexnamn
@@ -410,12 +438,15 @@ index_ecols=Inga fält valda
 index_title2=Redigera index
 index_header=Index $1 i databasen $2 
 index_ecannot=Du får inte hantera index
+
 syslog_desc=MySQL-felmeddelanden
 syslog_desc2=MySQL felmeddelande
 syslog_logdesc=MySQL-frågor
+
 fdrop_err=Det gick inte att ta bort fält
 fdrop_enone=Ingen vald
 fdrop_eall=Du kan inte ta bort alla fält från en tabell!
+
 view_title1=Skapa vy
 view_title2=Redigera vy
 view_header1=Visa detaljer
@@ -441,6 +472,7 @@ view_cascaded=Underliggande åsikter
 view_local=Endast denna vy
 view_nocheck=Ingen
 view_ecannot=Du får inte hantera vyer
+
 procs_title=Databasanslutningar
 procs_id=ID
 procs_user=Användarnamn
@@ -452,9 +484,11 @@ procs_query=Kör fråga
 procs_kill=Döda valda anslutningar
 procs_ecannot=Du får inte se databasanslutningar
 procs_none=Det finns inga andra databasklientanslutningar just nu.
+
 kill_err=Det gick inte att döda databasanslutningar
 kill_ecannot=Du får inte hantera databasanslutningar
 kill_enone=Ingen vald
+
 vars_title=MySQL-systemvariabler
 vars_desc=Varning - Variabler som ställs in på denna sida återställs till standardvärdena när MySQL startas om. Permanenta inställningar måste göras på sidan <a href='$1'>MySQL Server Configuration</a>.
 vars_ecannot=Du får inte redigera systemvariabler
@@ -465,6 +499,7 @@ vars_search=Visa variabler som matchar:
 vars_ok=Sök
 vars_none2=Inga systemvariabler matchade din sökning.
 vars_none=Inga systemvariabler hittades!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
@@ -476,7 +511,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=Viktiga alternativ
 compat_no_table_options=Tabellalternativ
 compat_no_field_options=Fältalternativ
+
 config_echarset=Teckenuppsättning saknas eller ogiltigt
+
 root_title=Ändra administrationslösenord
 root_header=Nytt administrationslösenord
 root_user=Administrationsinloggning
@@ -489,6 +526,7 @@ root_epass1=Inget nytt lösenord har angetts
 root_epass2=Lösenorden matchar inte
 root_none=Inget lösenord!
 root_auto=Automatisk (vanligtvis <tt>root</tt>)
+
 mysqlpass_err=MySQL säkert läge
 mysqlpass_esafecmd=Kommandot $1 som behövs för att starta MySQL med inaktiverad autentisering hittades inte
 mysqlpass_eshutdown=Stängningen misslyckades : $1 

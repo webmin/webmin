@@ -43,8 +43,10 @@ index_natnone=No network address translation rules have been defined yet.
 index_nataction=NAT Modus
 index_natfrom=Packets to match
 index_natto=Übersetzung
+
 dir_in=Einkommend
 dir_out=Ausgehend
+
 action_pass=<font color=#00aa00>Pass</font>
 action_block=<font color=#ff0000>Blockieren</font>
 action_skip=Auslassen
@@ -57,6 +59,7 @@ action_map=Mapping
 action_rdr=Umleiten
 action_bimap=Bidirectional Mapping
 action_map-block=Blockiere mapping
+
 laction_pass=<font color=#00aa00>Pass packet</font>
 laction_block=<font color=#ff0000>Blockiere Paket mit ICMP Code</font>
 laction_log=Logge Paket bei Level
@@ -65,6 +68,7 @@ laction_skip=Überspringe nächste Regeln
 laction_auth=User-space authorization
 laction_preauth=Check previous authorization
 laction_call=Call kernel function
+
 edit_title1=Erstelle Regel
 edit_title2=Editiere Regel
 edit_header1=Regel Aktion
@@ -130,6 +134,7 @@ edit_icmp=ICMP Typ
 edit_icmpany=&lt;Jeder Typ&gt;
 edit_icmpcode=und Code
 edit_codeany=&lt;Jeder Code&gt;
+
 save_err=Fehlgeschlagen Regel zu speichern
 save_ehostfrom=Fehlender oder ungültiger Quell-Hostname
 save_ehostto=Fehlende oder ungültige Ziel Hostname
@@ -158,11 +163,13 @@ save_eto=Fehlende oder ungültige Schnittstelle zu senden an
 save_etoip=Ungültige IP-Adresse zu senden an
 save_ereplyto=Fehlende oder ungültige Schnittstelle um darauf zu antworten
 save_ereplytoip=Ungültige IP-Adresse um darauf zu antworten
+
 apply_err=Fehlgeschlagen Konfiguration anzuwenden
 apply_remote=Fehler von $1 : S2
 unapply_err=Konnte Konfiguration nicht wiederherstellen
 unapply_ein=Failed to get input rules
 unapply_eout=Failed to get output rules
+
 desc_if=Wenn $1
 desc_and=und
 desc_always=Immer
@@ -196,6 +203,7 @@ desc_rdr=IP-Adresse $1 Port $2
 desc_dport1=Port ist $1
 desc_dport2=Port liegt zwischen $1 und $2
 desc_nattoiface=Schnittstellenadresse
+
 log_create_rule=$1 Regel erstellt
 log_create_nat=$1 NAT Regel erstellt
 log_modify_nat=NAT-Regel $1 geändert
@@ -208,6 +216,7 @@ log_delsel=Regel $1 gelöscht
 log_delselnat=NAT-Regel $1 gelöscht
 log_add_host=Cluster-Server $1 hinzugefügt
 log_add_group=Cluster-Server aus der Gruppe $1 hinzugefügt
+
 cluster_title=Cluster Firewall Server
 cluster_none=Keine Server wurden dem Firewall-Cluster bisher hinzugefügt.
 cluster_host=Hostname
@@ -218,6 +227,7 @@ cluster_gadd=Füge Server in Gruppe zu
 cluster_need=Sie müssen Server mit einem Benutzernamen und Kennwort in der Webmin-Server Index-Modul hinzufügen, bevor sie hier verwaltet werden können.
 cluster_return=Cluster Server
 cluster_delete=Entferne ausgewähltes
+
 add_title=Server hinzuzufügen
 add_msg=Hinzufügen $1 ..
 add_gmsg=Füge Server in der Gruppe $1 hinzu ..
@@ -226,6 +236,7 @@ add_gerr=Fehlgeschlagen Gruppe hinzuzufügen
 add_echeck=Server $1 hat kein IPFilter Firewall Modul
 add_emissing=Server $1 fehlt der Firewall Befehl $2
 add_ok=$1 mit $2 aktiven Firewall-Regeln hinzugefügt.
+
 nat_title1=Erstelle NAT Regel
 nat_title2=Editiere NAT Regel
 nat_action=NAT Modus
@@ -284,4 +295,5 @@ nat_edport2=Fehlender oder ungültiger endender original Port
 net_erdrip='$1' ist keine gültige Ziel-IP-Adresse
 nat_erdrips=Keine Ziel-IPs eingegeben
 nat_erdrport=Fehlender oder ungültiger Ziel-Port
+
 boot_esmf=Der SMF Dienst $1 existiert nicht oder hat keinen bekannten Status

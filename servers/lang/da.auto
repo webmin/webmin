@@ -22,6 +22,7 @@ index_auto=Find servere automatisk
 index_automsg=Klik på denne knap for at konfigurere den automatiske periodiske opdagelse af nye Webmin-servere på dit netværk.
 index_search=Vis servere, der matcher:
 index_ok=Søg
+
 edit_title=Rediger server
 create_title=Registrer server
 edit_details=Serverdetaljer
@@ -57,6 +58,7 @@ edit_baduser=Login afvist
 edit_invalid=Brugeren kan ikke gøre RPC
 edit_version=Kører Webmin $1 
 edit_same=Kun tilgængelig ikke i sessiongodkendelsestilstand, og når adgangskoden stilles til rådighed for Webmin-programmer.
+
 save_err=Kunne ikke gemme serveren
 save_ehost=Manglende eller ugyldigt værtsnavn
 save_ehost2=Vært findes ikke
@@ -67,6 +69,7 @@ save_epass=Manglende adgangskode
 save_egroup=Manglende gruppens navn
 save_elogin=Ugyldigt login eller adgangskode til vært
 save_egroup2=Ugyldigt nyt gruppenavn
+
 find_title=Find servere
 find_new=Fundet ny server på $1 
 find_but=Fundet ny server på $1, men godkendelsen mislykkedes : $2 
@@ -81,16 +84,20 @@ find_ecannot=Du må ikke finde servere
 find_scanning=Scanning efter servere i netværk $1 ..
 find_broading=Broadcasting for servere på adresser $1 ..
 find_eport=Manglende eller ugyldigt portnummer
+
 log_modify=Ændret server $1 
 log_create=Registreret server $1 
 log_delete=Slet server $1 
 log_find=Fundet server $1 
 log_deletes=Slet $1 -servere
+
 link_elogin=Kunne ikke logge ind på $1 som $2 
 link_ecannot=Du har ikke tilladelse til at bruge denne server
 link_essl=Du har ikke det perl Net::SSLeay-bibliotek installeret
 link_eautologin=Ugyldig login eller adgangskode til $1. <a href='$2'>Klik her</a> for at prøve igen.
+
 lib_other=Andet
+
 acl_edit=Kan redigere servere?
 acl_find=Kan du finde servere?
 acl_servers=Kan bruge servere
@@ -102,6 +109,7 @@ acl_forcefast=Tvinge hurtig RPC-tilstand til standard?
 acl_forcetype=Tvinge OS-typen til standard?
 acl_forcelink=Tvinges login-typen til standard?
 acl_links=Kan oprette forbindelse til servere?
+
 login_title=Login til server
 login_desc=Du skal angive et brugernavn og en adgangskode for at logge ind på Webmin-serveren $1.
 login_header=Webmin-godkendelse
@@ -109,13 +117,16 @@ login_user=Brugernavn
 login_pass=Adgangskode
 login_login=Log på
 login_esame=Muligheden for at bruge den samme login som denne server kan kun bruges, når den ikke er i sessiongodkendelsestilstand, og når adgangskoden stilles til rådighed for Webmin-programmer.
+
 this_server=denne server
+
 delete_err=Kunne ikke slette servere
 delete_enone=Ingen valgt
 delete_ecannot=Du har ikke tilladelse til at slette servere
 delete_title=Slet servere
 delete_rusure=Er du sikker på, at du vil fjerne de $1 valgte servere?
 delete_confirm=Slet nu
+
 auto_title=Find servere automatisk
 auto_header=Automatiske serverregistreringsindstillinger
 auto_sched=Kontroller, om der er nye servere?
@@ -141,8 +152,10 @@ auto_smtp=Send via SMTP-server
 auto_self=Dette system
 auto_esmtp=Manglende eller ugyldig SMTP-server
 auto_findself=Registrer dette system også?
+
 config_deftype=Standard systemtype
 config_typeauto=Automatisk
+
 email_regsubject=System $1 registreret
 email_reg=Systemet $1 er automatisk registreret.
 email_unregsubject=System $1 ikke-registreret

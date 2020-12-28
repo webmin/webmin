@@ -8,6 +8,7 @@ index_none=Jelenleg nem exportál könyvtárakat ezen a rendszeren.
 index_apply=Módosítások elfogadása
 index_applydesc=Kattintson erre a gombra az aktuális fájlmegosztási konfiguráció alkalmazásához. Ez a fent felsorolt összes könyvtárat elérhetővé teszi a megadott lehetőségekkel.
 index_return=részvények listája
+
 edit_title1=Szerkesztés Megosztás
 edit_title2=Hozz létre
 edit_header1=Részletek megosztása
@@ -30,6 +31,7 @@ edit_anon1=Nincs hozzáférés
 edit_aclok=Engedélyezi az ACL-eket?
 edit_public=WebNFS megosztás?
 edit_index=WebNFS indexfájl
+
 save_err=A megosztás mentése nem sikerült
 save_edirectory=A '$1' nem érvényes könyvtárnév
 save_edirectory2=A '$1' könyvtár nem létezik
@@ -38,8 +40,12 @@ save_ero=Nem listázott egyetlen olyan gazdagépet sem, amelyekkel csak olvashat
 save_eroot=Nem listázott egyetlen olyan gazdagépet sem, amelyekkel megoszthatná a gyökérnököt
 save_ealready=A '$1' könyvtár már meg van osztva
 save_ehost=A (z) '$1' gazdagép nem létezik
+
 acl_view=Szerkesztheti az NFS megosztásait?
+
 ecannot=Nem engedélyezi az NFS megosztások kezelését
+
 delete_err=A megosztás törlése nem sikerült
 delete_enone=Egy sincs kiválasztva
+
 restart_err=Nem sikerült alkalmazni a módosításokat

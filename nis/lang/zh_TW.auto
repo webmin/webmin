@@ -1,11 +1,16 @@
 index_enis2=僅此模塊的客戶服務功能可用。
+
 client_enis=您的計算機似乎未安裝NIS客戶端支持。
+
 switch_srcs=數據源
 switch_return=客戶服務
+
 desc_auto.home=自動掛載機首頁
 desc_auto.master=自動掛載器貼圖
 desc_auto.local=本地自動掛載器
+
 security_domain=NIS域
+
 eswitch_title=編輯服務
 eswitch_egone=服務不存在！
 eswitch_header=服務詳情

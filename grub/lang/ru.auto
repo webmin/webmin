@@ -2,7 +2,9 @@ title_noverify=Не монтируйте и не проверяйте разде
 title_modules=Дополнительные модули
 title_none1=Никто
 title_none2=(пункт меню без загрузки)
+
 global_forever=Ждать вечно
+
 log_create_title=Создан параметр загрузки $1 
 log_delete_title=Удалена опция загрузки $1 
 log_modify_title=Модифицированная опция загрузки $1 

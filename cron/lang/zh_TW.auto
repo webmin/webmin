@@ -23,6 +23,7 @@ index_ok=搜索
 index_searchres=與 $1..相匹配的Cron作業
 index_reset=重置搜索。
 index_econfigcheck=Cron作業無法在您的系統上管理，因為模塊配置無效： $1
+
 edit_next=下次運行時間
 edit_comment=描述
 edit_range=執行日期範圍
@@ -43,8 +44,10 @@ lcedit_special_weekly=每週（星期日）
 lcedit_special_monthly=每月（1日）
 lcedit_special_yearly=每年（1月1日）
 lcedit_special_reboot=系統啟動時
+
 save_ecannot2=您無權創建Cron作業
 save_eidx=Cron作業已成功保存，但由於找不到而無法運行！
+
 env_title1=編輯環境變量
 env_title2=創建環境變量
 env_user=對於用戶
@@ -57,7 +60,9 @@ env_where2=移動環境變量
 env_top=用戶的所有Cron作業之前
 env_bot=在所有Cron工作之後
 env_leave=當前位置
+
 exec_cmdbg=運行命令 $1作為後台進程。
+
 acl_command=可以查看和編輯Cron命令嗎？
 acl_uid=UID在範圍內的用戶
 acl_gid=具有主要組的用戶
@@ -67,6 +72,7 @@ acl_move=可以移動Cron職位嗎？
 acl_kill=可以終止Cron工作嗎？
 acl_hourly=將工作限制在每小時以下？
 acl_hourlydef=如在模塊配置中設置
+
 log_kill=$1的Cron作業已終止
 log_kill_l=已終止 $1的Cron作業“$2”
 log_env_create=為 $1創建了環境變量
@@ -76,7 +82,9 @@ log_move=已將Cron作業移至 $1
 log_crons_delete=已刪除 $1個Cron作業
 log_crons_disable=已停用 $1個Cron作業
 log_crons_enable=已啟用 $1個Cron作業
+
 ecopy=在新的Cron配置中檢測到錯誤： $1 $2
+
 when_min=每一分鐘
 when_hour=每小時每小時 $1
 when_day=每天 $2:$1
@@ -85,6 +93,7 @@ when_weekday=每 $3，在 $2:$1
 when_cron=在cron時間 $1
 when_interval=每 $1秒
 when_boot=在啟動時
+
 ucwhen_min=每一分鐘
 ucwhen_hour=每小時的 $1每小時
 ucwhen_day=每天 $2:$1
@@ -93,8 +102,10 @@ ucwhen_weekday=$2處的每個 $3:$1
 ucwhen_cron=Cron時間 $1
 ucwhen_interval=每 $1秒
 ucwhen_boot=在啟動時
+
 move_err=無法移動Cron工作
 move_etype=這項工作無法轉移
+
 kill_err=無法終止Cron作業
 kill_ecannot=您無權終止此工作
 kill_egone=不再運行
@@ -103,13 +114,16 @@ kill_title=終止Cron Job
 kill_rusure=您確定要使用PID $2終止進程 $1嗎？
 kill_rusure2=您確定要用PID $2終止進程 $1及其所有子進程嗎？
 kill_ok=是的，終止它
+
 range_all=在任何日期運行
 range_start=僅從 $1運行
 range_end=至 $1
 range_estart=開始範圍內缺少或無效的開始日期
 range_eend=結束日期缺少或無效的運行日期
+
 delete_err=無法刪除Cron作業
 delete_enone=未選擇
+
 manual_title=手動編輯Cron作業
 manual_edit=Cron文件進行編輯：
 manual_ok=編輯

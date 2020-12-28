@@ -16,6 +16,7 @@ index_setupdesc=LDAP sunucunuzun veritabanı henüz $1 kök DN'sini içermiyor, 
 index_setup=Kök DN Oluşturma
 index_permsdesc=$1 LDAP sunucusu veri dizini, doğru $2 kullanıcısına ait olmayan dosyalar içeriyor; Ancak, Webmin aşağıdaki düğmeyi tıklayarak bunu sizin için düzeltebilir.
 index_perms=Sahipliği Düzelt
+
 connect_eserver=$1 LDAP sunucusu mevcut değil
 connect_euser=Hiçbir kullanıcı yapılandırılmış olarak oturum açmış
 connect_epass=Giriş yapmak için şifre yapılandırılmadı
@@ -28,6 +29,7 @@ connect_eldap=$2 bağlantı noktasından $1 LDAP sunucusuna bağlanılamadı
 connect_essl= $1 : $2 LDAP sunucusuyla TLS şifrelemesi başlatılamadı
 connect_elogin=$1 LDAP sunucusuna $2 olarak giriş yapılamadı : $3 
 connect_cpan=CPAN'dan <tt>$1</tt> Perl modülünün <a href='$2'>otomatik olarak kurulu</a> olmasını sağlayabilirsiniz.
+
 slapd_title=OpenLDAP Sunucu Yapılandırması
 ldif_title=OpenLDAP Sunucu Yapılandırması
 slapd_header=Global LDAP sunucusu seçenekleri
@@ -76,6 +78,7 @@ slapd_protos=Kabul edilecek LDAP bağlantıları
 slapd_ldap=Ağ üzerinden LDAP
 slapd_ldaps=SSL üzerinden LDAP
 slapd_ldapi=Unix soket dosyası
+
 schema_title=Şemayı Yönet
 schema_file=ad
 schema_desc=Açıklama
@@ -93,6 +96,7 @@ schema_edesc=Bu sayfa bir LDAP şema dosyasını manuel olarak düzenlemenizi sa
 schema_return=şema listesi
 schema_emove=Taşınacak şema dosyası bulunamadı!
 schema_ecannot=LDAP şemasını yönetmenize izin verilmiyor
+
 acl_title=LDAP Erişim Kontrolü
 acl_ecannot=LDAP erişim kontrolünü yapılandırma izniniz yok
 acl_what=Nesneler
@@ -103,6 +107,7 @@ acl_none=Henüz hiçbir erişim kontrol kuralı tanımlanmadı. LDAP veritabanı
 acl_delete=Seçilen Kuralları Sil
 acl_add=Yeni bir erişim denetimi kuralı ekleyin.
 acl_return=erişim kontrol kuralları
+
 browser_title=Veritabanına Gözat
 browser_econn=LDAP tarayıcısı kullanılamıyor : $1 
 browser_ecannot=LDAP veritabanına göz atmanıza izin verilmiyor
@@ -136,24 +141,30 @@ browser_nomatch=$1 için aramanızla eşleşen nesne yok.
 browser_search=Eşleşen nesneleri bulun :
 browser_search2=Eşleşen nesneler gösteriliyor :
 browser_sok=Arama
+
 save_err=Özellik değiştirilemedi
 save_ebase=$1 nesnesi veritabanından getirilemedi
 save_emodify=$1 içinde $2 LDAP değişikliği başarısız oldu : $3 
 save_enone=Hiçbir değer girilmedi
+
 add_err=Özellik eklenemedi
 add_eadd=Eksik veya geçersiz özellik adı
 add_evalue=Eksik değer
 add_emodify=$2 'ye $1 LDAP eklenemedi : $3 
+
 delete_err=Özellikler kaldırılamadı
 delete_enone=Hiçbiri seçilmedi
 delete_emodify=$1 'den $2 LDAP silinemedi : $3 
+
 sdelete_err=Nesneler silinemedi
 sdelete_edn=$1 nesnesi bulunamadı
 sdelete_edel=$1 LDAP silinemedi : $2 
+
 rename_err=Nesne yeniden adlandırılamadı
 rename_eget=$1 DN değerine sahip nesne bulunamadı
 rename_enew=Yeni ad geçerli görünmüyor
 rename_erename=$1 'den $2 'ye kadar LDAP newdn başarısız oldu : $3 
+
 oadd_title=Nesne Oluştur
 oadd_header=Yeni LDAP nesnesi ayrıntıları
 oadd_base=Üst nesne DN
@@ -170,6 +181,7 @@ oadd_eget2= $1 : $2 ile çakışma kontrol edilemedi
 oadd_eclash=$1 DN'si olan bir nesne zaten var
 oadd_eadd=$1 LDAP eklenemedi : $2 
 oadd_err=Yeni nesne oluşturulamadı
+
 create_title=Ağaç Oluştur
 create_ecannot=Yeni bir ağaç oluşturmanıza izin verilmiyor
 create_desc=Bu sayfa, veritabanında yeni bir ağacın temeli olacak DN oluşturmak için uygun bir yol sağladı. Ayrıca, kendi nesneleriniz için şablon olarak ağacın altında örnek bir kullanıcı veya e-posta takma adı oluşturabilir.
@@ -191,18 +203,23 @@ create_done=.. bitti
 create_doingex=$1 DN ile örnek nesne oluşturma.
 create_edoingex=.. başarısız oldu: $1. Ancak ağaç hala kullanılabilir.
 create_eoc=Yeni DN için uygun bir nesne sınıfı bulunamadı
+
 eunknown=Bilinmeyen hata
+
 apply_err=Yapılandırma uygulanamadı
 apply_ecmd=$1 başarısız oldu : $2 
 apply_ecannot=Yapılandırmayı uygulama izniniz yok
+
 stop_err=LDAP sunucusu durdurulamadı
 stop_ecmd=$1 başarısız oldu : $2 
 stop_egone=Artık koşmuyor!
 stop_ekill=Öldürme işlemi başarısız oldu : $1 
 stop_ecannot=LDAP sunucusunu durdurmanıza izin verilmiyor
+
 start_err=LDAP sunucusu başlatılamadı
 start_ecmd=$1 başarısız oldu : $2 
 start_ecannot=LDAP sunucusunu başlatma izniniz yok
+
 log_create_dn=$1 oluşturulan nesne
 log_delete_dn=$1 silinen nesne
 log_rename_dn=$1 nesnesi yeniden adlandırıldı
@@ -234,6 +251,7 @@ log_up_access=$1 için erişim kontrolü kuralı yukarı taşındı
 log_down_access=$1 için erişim kontrol kuralı taşındı
 log_delete_accesses=$1 erişim kontrol kuralı silindi
 log_all=tüm nesneler
+
 gencert_title=SSL Sertifikası Oluştur
 gencert_header=Yeni SSL sertifikası ayrıntıları
 gencert_create=Sertifika Oluştur
@@ -245,7 +263,9 @@ gencert_dir=rehber
 gencert_err=Sertifika oluşturulamadı
 gencert_edest=Hedef dizin mevcut değil
 gencert_epath=LDAP sunucusu yapılandırmasındaki sertifika ve anahtar dosyaları mutlak yol olmalıdır
+
 perms_err=Dosya sahipliği düzeltilemedi
+
 acl_slapd=LDAP sunucusunu yapılandırabilir mi?
 acl_ldif=LDAP sunucusunu yapılandırabilir mi?
 acl_schema=Şemayı yönetebilir mi?
@@ -254,6 +274,7 @@ acl_browser=Veritabanına göz atabilir ve düzenleyebilir mi?
 acl_create=Yeni ağaç oluşturabilir mi?
 acl_start=LDAP sunucusunu başlatabilir ve durdurabilir mi?
 acl_apply=Yapılandırma değişikliklerini uygulayabilir mi?
+
 access_desc=$2 x $1 
 access_self=öz
 access_users=kimliği doğrulanmış kullanıcılar
@@ -273,6 +294,7 @@ access_lcompare=Karşılaştırmak
 access_lsearch=Arama
 access_lread=Okuma
 access_lwrite=Yazmak
+
 eacl_title1=Erişim Denetimi Kuralı Oluştur
 eacl_title2=Erişim Kontrol Kuralını Düzenle
 eacl_header=LDAP veritabanı erişim kontrolü kuralı ayrıntıları

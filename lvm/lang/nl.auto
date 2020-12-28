@@ -2,6 +2,7 @@ index_addlv3=Maak een dunne pool in <tt>$1</tt>.
 index_return2=fysieke volumes
 index_return3=logische volumes
 index_thin=LVM dunne pool voor $1 LV's
+
 lv_thin=Maak een dunne laag in het zwembad
 lv_thin2=Dun ingericht in zwembad
 lv_nothin=Geen (maak als gewone LV)
@@ -20,11 +21,13 @@ lv_pvfrom=Verplaats blokken van fysiek volume
 lv_pvto=Om fysiek volume
 lv_moveok=Verplaats blokken
 lv_return=logisch volume
+
 pvmove_err=Kan logisch volume niet verplaatsen
 pvmove_title=Verplaats logisch volume
 pvmove_start=Logisch volume $1 verplaatsen van $2 naar $3 ..
 pvmove_failed=.. verplaatsen is mislukt!
 pvmove_done=.. verplaats je volledig
+
 thin_title=Maak een dunne pool
 thin_desc=Een dunne pool is een paar LV's die kunnen worden gebruikt om extra LV's te maken die groter kunnen zijn dan de beschikbare omvang. Ruimte wordt alleen verbruikt wanneer dat nodig is, in plaats van wanneer de LV's in het zwembad worden gecreëerd. WAARSCHUWING - Alle gegevens op de geselecteerde LV's gaan verloren!
 thin_header=Nieuwe dunne zwembaddetails
@@ -36,4 +39,5 @@ thin_err=Kan geen dunne pool maken
 thin_esame=Beide geselecteerde LV's zijn hetzelfde
 thin_edata=De geselecteerde data LV is al in gebruik
 thin_emetadata=De geselecteerde metadata LV is al in gebruik
+
 log_rollback_lv=Momentopname $1 teruggedraaid

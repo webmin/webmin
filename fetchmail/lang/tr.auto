@@ -25,6 +25,7 @@ index_header=Fetchmail yapılandırmaları olan kullanıcılar
 index_search=Şunun için Fetchmail yapılandırmasını göster:
 index_show=Göstermek
 index_toomany=Sisteminizde görüntülenemeyecek kadar çok kullanıcı var.
+
 poll_create=Sunucu ekle
 poll_edit=Sunucuyu Düzenle
 poll_header=Posta sunucusu seçenekleri
@@ -64,18 +65,22 @@ poll_ecannot=Bu kullanıcının fetchmail yapılandırmasını düzenleme iznini
 poll_efile=Yalnızca kullanıcıların fetchmail yapılandırma dosyaları düzenlenebilir
 poll_eusername=Kullanıcı yok!
 poll_foruser=$1 kullanıcısı için
+
 stop_err=Fetchmail durdurulamadı
 stop_ecannot=Fetchmail'i durdurmanıza izin verilmiyor
 start_err=Fetchmail başlatılamadı
 start_einterval=Eksik veya geçersiz kontrol aralığı
 start_ecannot=Fetchmail'i başlatma izniniz yok
+
 check_title=Sunucuları Kontrol Etme
 check_exec=$1 komutu ile sunuculardaki postaları kontrol etme.
 check_ok=.. kontrol tamamlandı.
 check_failed=.. kontrol başarısız!
+
 global_title=Varsayılan ayarları
 global_header=Tüm sunucular için varsayılan ayarlar
 global_err=Varsayılan ayarlar kaydedilemedi
+
 log_create_poll_file=$2 dosyasına $1 sunucusu eklendi
 log_modify_poll_file=$2 dosyasında değiştirilmiş sunucu $1 
 log_delete_poll_file=$2 dosyasındaki $1 sunucusu silindi
@@ -94,6 +99,7 @@ log_stop=Fetchmail arka plan programı durduruldu
 log_create_cron=Zamanlanmış kontrol etkinleştirildi
 log_update_cron=Değiştirilmiş planlı kontrol
 log_delete_cron=Devre dışı bırakılmış programlı denetim
+
 acl_users=İçin fetchmail yapılandırma düzenleyebilir
 acl_all=Tüm kullanıcılar
 acl_this=Geçerli webmin kullanıcısı
@@ -101,6 +107,7 @@ acl_only=Sadece kullanıcılar
 acl_except=Kullanıcılar hariç tümü
 acl_cron=Zamanlanmış denetimi yapılandırabilir mi?
 acl_daemon=Fetchmail arka plan programını yapılandırabilir mi?
+
 cron_title=Zamanlanmış Kontrol
 cron_desc=Bu sayfa, Fetchmail yapılandırmanızdaki posta sunucularını düzenli bir programda kontrol etmek için bir Cron işini etkinleştirmek veya devre dışı bırakmak için kullanılabilir. Önyükleme zamanında yeniden başlatılmasına gerek olmadığından Fetchmail arka plan programını çalıştırmaktan daha üstün bir Cron işi kullanmak.
 cron_header=Zamanlanmış Fetchmail ayarları
@@ -119,8 +126,10 @@ cron_email=Eksik veya geçersiz e-posta adresi
 cron_euser=Eksik veya geçersiz Unix kullanıcısı
 cron_errors=Sadece bir hata oluşursa çıktı?
 cron_ecannot2=Zamanlanmış kontrolü yapılandırmanıza izin verilmiyor
+
 user_title=Fetchmail Yapılandırması
 user_header=$1 kullanıcısı için
 user_return=kullanıcının yapılandırması
+
 email_ok=Fetchmail çıktısı
 email_failed=Fetchmail hatası

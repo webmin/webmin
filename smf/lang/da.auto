@@ -180,6 +180,7 @@ whats_this_NSTATE=Den næste tilstand af tjenesten, nyttig når tjenesten skifte
 whats_this_SCOPE=Omfangsnavnet på serviceinstansen. Se: smf (5). Se: svcs (1).
 whats_this_STIME=Tiden (hvis i dag) eller dato, hvor tjenesten indtastede den aktuelle tilstand. Se: smf (5). Se: svcs (1).
 whats_this_Select=Kontroller listen over tjenester, du vil aktivere/deaktivere/opdatere osv. Her.
+
 whats_this_service_detail=Specificer/rediger information om topniveautjeneste her: servicenavn, versionnummer, bundtnavn for manifest og stabilitet. Se: smf (5). Se: svccfg (1M). Se: service_bundle (4).
 whats_this_bundle_name=Navn på servicepakke i manifest. Flere tjenester kan samles i en manifest, men navnet her er ikke vigtigt. For allerede eksisterende tjenester vil det blive indstillet til at eksportere, da det er, hvad svccfg gør, når det eksporterer et manifest fra SMF-depotet. Se: svccfg (1M). Se: service_bundle (4).
 whats_this_service_name=Tjenestens navn. Konvention er at bruge formatet [general_service_category]/[name]. Kategorier, der allerede leveres, inkluderer applikationer (applikationer på højere niveau), milepæl (samlinger af andre tjenester, såsom navnetjenester), platform (platformspecifikke tjenester), system (Solaris-systemtjenester), enhed (enhedsspecifikke tjenester), netværk (netværk/internettjenester) og site (særskilte beskrivelser). Du kan selvfølgelig også specificere din egen kategori, men de fleste tjenester skal passe komfortabelt i et af ovenstående. Se: smf (5).

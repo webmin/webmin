@@ -19,10 +19,13 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=Používatelia LDAP
 index_groups=Skupiny LDAP
+
 imap_econn=Nepodarilo sa pripojiť k serveru IMAP $1 
 imap_elogin=Nepodarilo sa prihlásiť na server IMAP $1 ako $2 : $3 
 conn_eldap_host=Vo vašom systéme nebol nájdený žiadny konfiguračný súbor klienta LDAP, takže server LDAP musí byť nastavený na stránke Konfigurácia modulu
 conn_elogin=Vo vašom systéme sa nenašiel žiadny konfiguračný súbor klienta LDAP, takže prihlasovacie meno LDAP musí byť nastavené na stránke Konfigurácia modulu
+conn_efile_open=Súbor poverení LDAP väzby sa nepodarilo otvoriť:
+
 uedit_cap=Možnosti používateľa
 uedit_samba=Prihlasovacie meno Samby?
 uedit_cyrus=Prihlasovacie meno na server IMAP?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=Posledná aktualizácia hesla
 uedit_sambapwdcanchange=Heslo sa môže zmeniť
 uedit_sambabadpasswordcount=Nesprávny počet hesiel
 uedit_sambaacctflags=Príznaky účtu
+
 usave_eadd=Nepodarilo sa pridať používateľa do databázy LDAP : $1 
 usave_emod=Nepodarilo sa zmeniť používateľa v databáze LDAP : $1 
 usave_emoddn=Nepodarilo sa premenovať používateľa v databáze LDAP : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=Používateľ $1 už používa $2 $3
 usave_eattrdupg=Skupina $1 už používa $2 $3 
 usave_ereal=Chýba skutočné meno
 usave_equota=Chýbajúca alebo neplatná kvóta IMAP
+
 search_err=Vyhľadávanie $1 pod $2 zlyhalo : $3 
+
 gedit_dn=Skupina LDAP DN
 gedit_return=podrobnosti o skupine
 gedit_cap=Skupinové schopnosti
 gedit_samba=Samba skupina?
+
 gsave_egone=Skupina už neexistuje!
 gsave_edelete=Nepodarilo sa odstrániť skupinu z databázy LDAP : $1 
 gsave_eadd=Nepodarilo sa pridať skupinu do databázy LDAP : $1 
 gsave_emod=Nepodarilo sa zmeniť skupinu v databáze LDAP : $1 
 gsave_emoddn=Nepodarilo sa premenovať skupinu v databáze LDAP : $1 
+
 gdel_group=Odstraňuje sa položka skupiny LDAP.
+
 udel_pass=Odstraňuje sa položka používateľa LDAP.
 udel_book=Odstraňuje sa z adresára.
 udel_imap=Odstraňuje sa priečinok IMAP.
 udel_warnimap=Pri odstraňovaní domovského adresára sa odstráni existujúca poštová schránka!
 udel_failed=.. zlyhalo!  : $1 
+
 raw_title=Atribúty LDAP
 raw_name=Názov atribútu
 raw_value=hodnoty
 raw_for=Pre $1 
+
 batch_samba=Vytvoriť účet Samba pre nových používateľov?
 batch_imap=Vytvoriť účet IMAP pre nových používateľov?
 batch_descafter3=V riadkoch <b>vytvoriť</b> a <b>upravovať</b> môžete voliteľne pripojiť ďalšie polia obsahujúce atribúty LDAP vo formáte <i>name</i> = <i>value</i>, aby byť priradený novým alebo zmeneným používateľom.

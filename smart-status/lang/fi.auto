@@ -25,6 +25,7 @@ index_family=Malliperhe
 index_serial=Sarjanumero
 index_capacity=kapasiteetti
 index_norm=normalisoituneet:
+
 monitor_type=SMART-aseman tarkistus
 monitor_type2=SSD kuluminen
 monitor_drive=Aja tarkistamaan
@@ -40,14 +41,17 @@ monitor_wearlevel=Epäonnistuu, jos kulutustaso laskee alle
 monitor_ewearlevel=Virheellinen kulutusprosentti
 monitor_nowearout=Asema ei ilmoita SSD-kulumisen osoitinta
 monitor_wornout=Kulutustaso on laskenut $1 : een
+
 short_title=Lyhyt itsetesti
 short_doing=Aloitetaan lyhyt itsetesti, $1.
 short_failed=.. epäonnistui!
 short_ok=..testi alkoi OK. Katso tulokset moduulin pääsivulta moduulin pääsivulta.
+
 ext_title=Laajennettu itsetesti
 ext_doing=Aloitetaan laajennettu itsetesti $1 : llä.
 ext_failed=.. epäonnistui!
 ext_ok=..testi alkoi OK. Katso tulokset moduulin pääsivulta moduulin pääsivulta.
+
 data_title=Tiedonkeruutesti
 data_doing=Aloitetaan offline-tiedonkeruu $1 : llä.
 data_failed=.. epäonnistui!

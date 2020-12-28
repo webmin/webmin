@@ -57,20 +57,27 @@ index_rotate=Update Statistieken
 index_rotatedesc=Klik op deze knop om al het gelogde netwerk verkeer tot op dit moment uit te werken, en het onmiddellijk beschikbaar te maken voor een rapport.
 index_eiptables=Waarschuwing - Uw IPtables configuratie heeft een fout : $1. Het opzetten van de bandbreedte monitor zal alle firewall regels wissen.
 index_return=rapport formulier
+
 log_setup=Bandbreedte monitoring instellen op interface $1
 log_turnoff=Uitschakelen bandbreedte monitoring
 log_rotate=Ge-update statistieken
+
 acl_setup=Mag de monitor uitschakelen en instellingen maken?
+
 turnoff_ecannot=U bent niet bevoegd om het monitoren uit te zetten
+
 setup_ecannot=U bent niet bevoegd om Monitoring aan te zetten
 setup_eiface=Ontbrekende of ongeldige interface naam
 setup_ezone=Mislukt om Shorewall zone te vinden voor de geselecteerde interface
+
 system_firewall=IPtabellen
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=Shorewall
+
 syslog_syslog=Systeemlog
 syslog_syslog-ng=Systeemlog-NG
+
 rotate_title=Updaten statistieken
 rotate_doing=Uitwerken van gelogd netwerk verkeer ..
 rotate_done=.. klaar.

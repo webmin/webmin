@@ -14,6 +14,7 @@ index_restart=Restartējiet LDAP klienta dēmonu
 index_restartdesc=Pielietojiet pašreizējo konfigurāciju, restartējot vietējo LDAP klienta dēmonu.
 index_atboot=Sāciet LDAP klientu sāknēšanas brīdī
 index_atbootdesc=Maina to, vai LDAP klienta dēmons tiek palaists, kad sistēma tiek sāknēta vai nē.
+
 server_title=LDAP servera konfigurācija
 server_header=LDAP servera un pieteikšanās iespējas
 server_host=LDAP servera resursdatori
@@ -51,6 +52,7 @@ server_etimelimit=Trūkst vai nav derīgs savienojuma laika ierobežojums
 server_ecacert=Trūkst vai nav derīgs CA sertifikāta fails
 server_euport=Trūkst vai nav derīgs servera $1 ports
 server_euri=Nav ievadīts neviens LDAP serveris
+
 base_title=LDAP meklēšanas bāzes
 base_header=LDAP direktoriju meklēšanas vietas
 base_base=Globālā meklēšanas bāze
@@ -86,6 +88,7 @@ base_enetmasks=Trūkst tīkla masku vārdu bāzes
 base_ealiases=Trūkst e-pasta aizstājvārdu bāzes
 base_enetgroup=Trūkst tīkla grupu bāzes
 base_etimelimit=Trūkst vai nav derīgs meklēšanas termiņš
+
 pam_title=Autentifikācijas iespējas
 pam_header=PAM autentifikācijas un paroles iestatījumi
 pam_filter=Papildu LDAP filtrs
@@ -106,10 +109,12 @@ pam_efilter=Trūkst papildu LDAP filtra
 pam_elogin=Trūkst vai nav derīgs lietotājvārda LDAP atribūts
 pam_egroupdn=Trūkst LDAP grupas, lai piespiestu dalību
 pam_emember=Trūkst vai nav derīgs LDAP atribūts grupas dalībniekiem
+
 switch_title=Pakalpojumi, kas izmanto LDAP
 switch_service=apkalpošana
 switch_srcs=Datu avoti
 switch_return=pakalpojumus, izmantojot LDAP
+
 ldap_emodule=Nav instalēts modulis $1 Perl, kas nepieciešams sarunai ar LDAP serveri. <a href='$2'>Noklikšķiniet šeit</a>, lai Webmin lejupielādētu un instalētu to tūlīt.
 ldap_emodule2=Nav instalēts modulis $1 Perl, kas nepieciešams sarunai ar LDAP serveri.
 ldap_econf=Jūsu sistēmā netika atrasts LDAP klienta konfigurācijas fails $1 
@@ -119,6 +124,7 @@ ldap_elogin=Neizdevās saistīties ar LDAP serveri $1 kā $2 : $3
 ldap_anon=Anonīms
 ldap_eparse=Nevarēja parsēt LDAP servera URI $1 
 ldap_etls=Neizdevās pārslēgties uz TLS režīmu : $1 
+
 browser_title=LDAP pārlūks
 browser_econn=LDAP pārlūku nevar izmantot : $1 
 browser_base=Pārlūkošana:
@@ -129,6 +135,7 @@ browser_attrs=Objekta atribūti
 browser_parent=Pārlūkot vecāku
 browser_none=Nav
 browser_sel=labi
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Lietotāju printeri
 order_xfn=XFN
 order_mdns4=Multicast DNS
 order_mdns4_minimal=Multicast DNS (minimāls)
+
 desc_aliases=Sendmail aizstājvārdi
 desc_mail=Sendmail aizstājvārdi
 desc_hosts=Resursdatora adreses
@@ -177,6 +185,7 @@ desc_printers=Printeri
 desc_ipnodes=IP mezgli
 desc_timezone=Laika zonas
 desc_locale=Locales
+
 eswitch_title=Rediģēšanas pakalpojums
 eswitch_egone=Pakalpojums neeksistē!
 eswitch_header=Informācija par pakalpojumu
@@ -196,6 +205,7 @@ eswitch_continue=Turpiniet meklēšanu
 eswitch_none=Nav
 eswitch_err=Neizdevās saglabāt pakalpojumu
 eswitch_enone=Nav izvēlēts neviens avots.
+
 log_server=Modificēta LDAP servera konfigurācija
 log_base=Modificētas LDAP meklēšanas bāzes
 log_pam=Pārveidotas autentifikācijas iespējas
@@ -205,6 +215,7 @@ log_delboot=Atspējots LDAP klienta dēmons sāknēšanas laikā
 log_start=Sākās LDAP klienta dēmons
 log_stop=Apturēts LDAP klienta dēmons
 log_restart=Restartēts LDAP klienta dēmons
+
 check_title=LDAP konfigurācijas pārbaude
 check_base=LDAP bāzes atrašana lietotājiem ..
 check_ebase=.. klienta konfigurācijā nav atrasts!

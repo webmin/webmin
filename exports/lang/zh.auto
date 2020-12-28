@@ -2,6 +2,7 @@ index_add4=添加一个新的NFSv4导出。
 index_delete=删除选定的导出
 index_disable=禁用选择
 index_enable=启用选定
+
 edit_vers=NFS版本
 edit_nfs_vers=NFS版本
 edit_pfs=要导出的NFSv4伪文件系统
@@ -27,10 +28,13 @@ edit_sec_krb5i=Kerberos完整性
 edit_sec_krb5p=Kerberos隐私
 edit_sec_lipkey=利比
 edit_sec_spkm=知识管理
+
 save_epfs=伪文件系统路径'$1'看起来不像绝对路径
 save_pfs='$1'已经作为目录导出
 save_create_dir=无法创建目录“$1”
 save_eanonuid=无效的匿名访问用户名
 save_eanongid=无效的匿名访问组名称
+
 exports_gss=经过身份验证的网络： $1
+
 log_delete_exports=已删除 $1 NFS导出

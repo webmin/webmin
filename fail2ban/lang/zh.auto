@@ -12,10 +12,12 @@ index_restart=重新启动Fail2Ban服务器
 index_restartdesc=单击此按钮可通过重新启动Fail2Ban服务器来应用当前配置。
 index_return=模块索引
 index_header=Fail2Ban模块
+
 check_edir=配置目录 $1不存在
 check_econf=$1中的配置文件 $2不存在
 check_eclient=找不到客户端命令 $1
 check_eserver=找不到服务器命令 $1
+
 filters_title=日志过滤器
 filters_name=筛选器名称
 filters_re=正则表达式
@@ -25,6 +27,7 @@ filters_return=过滤器列表
 filters_derr=删除过滤器失败
 filters_enone=未选择
 filters_einuse=筛选器 $1无法删除，因为它已被监狱使用： $2
+
 filter_title1=创建过滤器
 filter_title2=编辑过滤器
 filter_desc=在应显示主机名或IP地址的正则表达式中使用<i>&lt;HOST&gt;</i>。
@@ -39,6 +42,7 @@ filter_ename=过滤器名称缺失或无效
 filter_eclash=过滤器名称已被使用
 filter_efail=没有正则表达式匹配输入
 filter_einuse=该过滤器无法删除，因为它已被监狱使用： $1
+
 actions_title=比赛动作
 actions_name=动作名称
 actions_ban=禁止命令
@@ -48,6 +52,7 @@ actions_return=行动清单
 actions_derr=删除动作失败
 actions_enone=未选择
 actions_einuse=操作 $1无法删除，因为它已被监狱使用： $2
+
 action_title1=创建匹配动作
 action_title2=编辑比赛动作
 action_header=比赛动作详细资料
@@ -64,6 +69,7 @@ action_ban=禁止IP的命令
 action_unban=取消IP禁令的命令
 action_desc=<i>&lt;ip&gt;</i>将替换为被禁止的IP地址。
 action_einuse=该操作无法删除，因为它已被监狱使用： $1
+
 jails_title=筛选动作监狱
 jails_add=添加一个新的监狱。
 jails_name=监狱名称
@@ -76,6 +82,7 @@ jails_defdesc=编辑适用于上面列出的所有监狱的默认设置和限制
 jails_return=监狱名单
 jails_derr=删除监狱失败
 jails_enone=未选择
+
 jail_title1=创建监狱
 jail_title2=编辑监狱
 jail_header=过滤动作监狱详细信息
@@ -115,13 +122,16 @@ jail_banaction=适用的默认操作
 jail_defprotocol=操作的默认协议
 jail_edestemail=默认通知电子邮件地址缺失或无效
 jail_eignoreip=无效的IP地址可忽略
+
 jaildef_title=默认监狱选项
 jaildef_header=所有监狱的默认值
 jaildef_err=无法保存默认监狱选项
 jaildef_egone=找不到默认监狱！
+
 start_err=无法启动服务器
 stop_err=无法停止服务器
 restart_err=重启服务器失败
+
 log_create_filter=已创建过滤器 $1
 log_update_filter=修改的过滤器 $1
 log_delete_filter=删除的过滤器 $1
@@ -139,6 +149,7 @@ log_atboot=在启动时启用Fail2Ban
 log_delboot=引导时禁用Fail2Ban
 log_manual=编辑的配置文件 $1
 log_jaildef=修改后的默认监狱选项
+
 config_title=全局配置
 config_edef=在配置文件中找不到“定义”部分！
 config_header=Fail2Ban的配置设置
@@ -151,10 +162,12 @@ config_socket=与服务器通讯的套接字
 config_err=保存全局配置失败
 config_elogtarget=要写入日志的文件必须是绝对路径
 config_esocket=套接字文件必须是绝对路径
+
 manual_title=编辑配置文件
 manual_desc=修改文件：
 manual_ok=好
 manual_efile=所选文件不属于Fail2Ban配置！
 manual_err=编辑配置文件失败
 manual_edata=没有输入配置文件内容
+
 syslog_logtarget=Fail2Ban操作日志

@@ -25,6 +25,7 @@ index_resetdesc=このボタンをクリックして、既存のすべてのフ�
 index_cluster=クラスターサーバー
 index_clusterdesc=このボタンをクリックして、ファイアウォール構成が自動的にコピーされる追加のWebminサーバーをセットアップします。
 index_return=ファイアウォール規則
+
 index_num=数
 index_action=アクション
 index_desc=調子
@@ -37,6 +38,7 @@ index_delete=選択を削除します
 index_existing=Webminは、現在使用中の $1 IPFWファイアウォールルールを検出しましたが、これらはファイル $2に記録されていません。これらのルールはおそらくスクリプトから設定されたものであり、このモジュールは読み取りおよび編集方法を認識していません。<p>このモジュールを使用してIPFWファイアウォールを管理する場合は、下のボタンをクリックして既存のルールを保存ファイルに変換します。 、既存のファイアウォールスクリプトを無効にします。
 index_saveex=ファイアウォールルールを保存する
 index_headerex=既存のファイアウォール構成
+
 action_allow=<font color=＃00aa00>許可</font>
 action_deny=<font color=＃ff0000>ドロップ</font>
 action_reject=<font color=＃ff4400>拒否</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=＃ff0000>ドロップパケット</font>
 laction_reject=<font color=＃ff4400>ICMP拒否を返す</font>
 laction_reset=<font color=＃ff4400>TCP接続をリセット</font>
 laction_skipto=ルールにスキップ
+
 edit_title1=ルールを作成
 edit_title2=ルール $1を編集
 edit_header1=ルールアクション
@@ -114,6 +117,7 @@ edit_src-addr=送信元アドレス ..
 edit_src-port=送信元ポートから
 edit_dst-addr=宛先アドレス
 edit_dst-port=宛先ポートへ ..
+
 save_err=ルールを保存できませんでした
 save_enum=ルール番号が欠落しているか無効です
 save_eskipto=スキップするルール番号がないか無効です
@@ -144,7 +148,9 @@ save_etcpflags=TCPフラグは、プロトコルがTCPの場合にのみ指定�
 save_elimit=最大制限がないか、無効です
 save_edstport=宛先ポートが欠落しているか無効です
 save_esrcport=ソースポートが欠落しているか無効です
+
 apply_err=構成を適用できませんでした
+
 desc_if=$1の場合
 desc_and=そして
 desc_always=常に
@@ -191,6 +197,7 @@ desc_where=ここで、 $1
 desc_all=すべてのパケットに対して
 desc_in=パケットが着信しています
 desc_out=パケットは発信しています
+
 log_create_rule=$1ルールを作成しました
 log_delete_rule=$1ルールを削除しました
 log_modify_rule=変更された $1ルール
@@ -206,6 +213,7 @@ log_convert=変換されたアクティブファイアウォールルール
 log_setup=ファイアウォールの初期セットアップを実行しました
 log_unapply=ファイアウォール構成を元に戻しました
 log_delsel=$1ルールを削除しました
+
 cluster_title=クラスターファイアウォールサーバー
 cluster_none=ファイアウォールクラスターにサーバーがまだ追加されていません。
 cluster_host=ホスト名
@@ -216,6 +224,7 @@ cluster_gadd=グループにサーバーを追加
 cluster_need=ここで管理するには、Webmin Servers Indexモジュールでログインとパスワードを使用してサーバーを追加する必要があります。
 cluster_return=クラスタサーバー
 cluster_delete=削除選択
+
 add_title=サーバーを追加する
 add_msg=$1を追加します ..
 add_gmsg=グループ $1にサーバーを追加します ..

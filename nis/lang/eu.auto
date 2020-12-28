@@ -2,6 +2,7 @@ index_title=NIS Bezeroa eta Zerbitzaria
 index_return=NIS menua
 index_enis=Ez dirudi zure makinak NIS bezeroa edo zerbitzariaren laguntza instalatuta duenik.
 index_enis2=Modulu honen bezeroaren zerbitzuen funtzioa soilik erabilgarri izango da.
+
 client_title=NIS bezeroa
 client_header=NIS bezeroaren konfigurazioa
 client_domain=NIS domeinua
@@ -17,10 +18,12 @@ client_eserver='$1' ez da baliozko zerbitzariaren izena
 client_eypwhich=Ezin izan da NIS domeinuarekin lotu
 client_ehosts='$1' ez dago ostalarien fitxategian
 client_enis=Ez dirudi zure makinak NIS bezeroaren laguntza instalatuta duenik.
+
 switch_title=Bezeroentzako zerbitzuak
 switch_service=zerbitzua
 switch_srcs=Datu iturriak
 switch_return=bezeroentzako zerbitzuak
+
 order_=&nbsp;
 order_nisplus=NIS +
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Hesiodoren
 order_ldap=LDAP
 order_user=Erabiltzaile inprimagailuak
 order_xfn=XFN
+
 server_title=NIS zerbitzaria
 server_header=NIS zerbitzariaren aukerak
 server_boot=NIS zerbitzaria gaitu?
@@ -65,6 +69,7 @@ server_solaris=Oharra - Solaris-en, bezero eta zerbitzariaren NIS domeinuak beti
 server_edir=Iturri iturri direktorio baliogabea
 server_epwdir=Pasahitzen iturburu iturrien direktorio baliogabea
 server_enis=Ez dirudi zure makinak NIS zerbitzariaren laguntza instalatuta duenik.
+
 tables_title=NIS taulak
 tables_switch=Editatu NIS taula :
 tables_header=$1 NIS taula $2 tik
@@ -81,6 +86,7 @@ tables_search=Search
 tables_nomatch=Ez dago erregistrorik zure bilaketarekin
 tables_build=Eraiki NIS taulak
 tables_buildmsg=Egin klik botoi honetan NIS datu-baseak taulako datuetatik birsortzeko. Aldaketarik egin baduzu, hau egin beharko duzu NIS bezeroen eskura jartzeko.
+
 desc_aliases=Sendmail aliasak
 desc_mail=Sendmail aliasak
 desc_hosts=Ostalariaren helbideak
@@ -116,6 +122,7 @@ desc_printers=Inprimagailuak
 desc_ipnodes=IP nodoak
 desc_timezone=ordutegi-eremuen
 desc_locale=locales
+
 hosts_title=Ostalariaren helbidea
 hosts_ip=IP helbidea
 hosts_name=hostname
@@ -124,6 +131,7 @@ hosts_err=Huts egin du ostalaria gordetzean
 hosts_eip=IP helbide falta edo baliogabea
 hosts_ename=Ostalari-izen falta edo baliogabea
 hosts_aliases=ezizenak
+
 group_name=Taldearen izena
 group_gid=Taldearen IDa
 group_members=Taldekideak
@@ -134,6 +142,7 @@ group_none=Ez da pasahitzik behar
 group_encrypted=Aurrez enkriptatutako pasahitza
 group_clear=Pasahitz normala
 group_err=Huts egin du taldea gordetzean
+
 passwd_name=Erabiltzaile izena
 passwd_uid=Erabiltzaile IDa
 passwd_real=Benetako izena
@@ -171,6 +180,7 @@ passwd_emax=Gehienezko egun kopurua baliogabea
 passwd_emin=Egun gutxieneko kopurua baliogabea
 passwd_einactive=Egun baliogabeen kopurua
 passwd_eexpiry=Iraungitze data baliogabea
+
 services_name=Zerbitzuaren izena
 services_proto=protokoloa
 services_port=Port
@@ -179,6 +189,7 @@ services_header=Inetd sareko zerbitzuaren aukerak
 services_err=Huts egin du zerbitzua gordetzean
 services_ename=Zerbitzuaren izena falta da edo baliogabea
 services_eport=Ataka falta edo baliogabea
+
 protocols_name=Protokoloaren izena
 protocols_number=zenbakia
 protocols_aliases=ezizenak
@@ -187,6 +198,7 @@ protocols_header=Sareko protokolo aukerak
 protocols_err=Ezin izan da protokoloa gorde
 protocols_ename=Izen falta edo baliogabea
 protocols_enumber=Zenbaki falta edo baliogabea
+
 netgroup_name=Sarearen izena
 netgroup_members=Bazkideek
 netgroup_title=Sare Taldea
@@ -201,6 +213,7 @@ netgroup_ename=Falta den edo talde baliogabearen izena falta da
 netgroup_ehost=$1 errenkadan ostalari falta edo baliogabea
 netgroup_euser=Erabiltzaile falta edo baliogabea $1 errenkadan
 netgroup_edom=NIS domeinu falta edo baliogabea da 1. lerroan
+
 ethers_mac=Ethernet helbidea
 ethers_ip=IP helbidea
 ethers_title=Ethernet helbidea
@@ -208,6 +221,7 @@ ethers_header=Ethernet mapak egiteko aukerak
 ethers_err=Huts egin du Ethernet helbidea gordetzean
 ethers_emac=Ethernet helbide baliogabea
 ethers_eip=IP helbide baliogabea
+
 rpc_name=Programaren izena
 rpc_number=zenbakia
 rpc_aliases=ezizenak
@@ -216,6 +230,7 @@ rpc_header=RPC programaren xehetasunak
 rpc_err=Huts egin du RPC programa gordetzean
 rpc_ename=Programaren izen falta edo baliogabea
 rpc_enumber=Zenbaki falta edo baliogabea
+
 networks_title=Sarearen helbidea
 networks_ip=IP helbidea
 networks_name=Sarearen izena
@@ -224,6 +239,7 @@ networks_err=Huts egin du sarea gordetzean
 networks_eip=IP helbide falta edo baliogabea
 networks_ename=Izen falta edo baliogabea
 networks_aliases=ezizenak
+
 netmasks_net=Sarearen helbidea
 netmasks_mask=Sare-maskara
 netmasks_title=Sare-maskara
@@ -231,6 +247,7 @@ netmasks_header=Sarearen maskararen xehetasunak
 netmasks_err=Huts egin du netmaska gordetzean
 netmasks_enet=Sareko helbidea falta edo baliogabea
 netmasks_emask=Netmaskaren falta edo baliogabea
+
 aliases_from=Helbidea
 aliases_to=Alias to
 aliases_title=Sendmail Alias
@@ -238,6 +255,7 @@ aliases_header=Sendmail ezizenen xehetasunak
 aliases_err=Huts egin du ezizena gordetzean
 aliases_efrom=Helbide falta edo baliogabea
 aliases_eto=Helbideak ez dira falta
+
 security_title=Zerbitzariaren segurtasuna
 security_header=NIS zerbitzariaren segurtasun aukerak
 security_ok=Gorde eta aplikatu
@@ -266,6 +284,7 @@ security_sec_des=Eskatu DES
 security_ehost='$1' ez da baliozko ostalari izena
 security_emap='$1' ez da baliozko NIS taula
 security_efield='$1' ez da baliozko eremu kopurua
+
 eswitch_title=Editatu Zerbitzua
 eswitch_egone=Zerbitzua ez da existitzen!
 eswitch_header=Zerbitzuaren xehetasunak

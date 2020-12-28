@@ -24,8 +24,10 @@ all=すべて
 index_view=表示..
 index_viewfile=表示するログファイル:
 index_viewok=表示
+
 restart_ekill=syslog プロセス $1 に信号を送れませんでした: $2
 restart_ecannot=syslogを再起動する権限がありません
+
 start_ecannot=syslogを開始する権限がありません
 edit_title=システム ログの編集
 create_title=システム ログの追加
@@ -56,11 +58,13 @@ edit_tag=プログラムのみ
 edit_return=ログの詳細
 edit_ecannot=ログ設定を編集する権限がありません
 edit_ecannot2=このログを編集する権限がありません
+
 view_title=ログファイルの表示
 view_header=$2の最終 $1 行
 view_empty=ログ ファイルは空です
 view_refresh=更新
 view_filter=$1 を含む行だけを表示
+
 save_err=ログを保存できませんでした
 save_efile='$1' は無効なファイル名です: $2
 save_epipe='$1' は無効な名前付きパイプです
@@ -80,11 +84,13 @@ save_ecannot5=このログを変更する権限がありません
 save_ecannot6=You are not allowed to view arbitrary logs
 save_ecannot7=You are not allowed to view this extra log
 save_emissing=Missing log file to view
+
 log_modify=$1 へのログを変更しました
 log_create=$1 にログを追加しました
 log_delete=$1 へのログを削除しました
 log_apply=変更を適用しました
 log_start=ロギングサーバが開始しました
+
 desc_sysmesg=システム メッセージ
 desc_mail=メール ログ
 desc_auth=認証ログ
@@ -93,6 +99,7 @@ desc_news=NNTP ニュースのログ
 desc_uucp=UUCP ログ
 desc_debug=メッセージのデバッグ
 desc_cron=Cron ジョブのログ
+
 acl_noedit=ログの閲覧のみ許可しますか?
 acl_any=Can view any file as a log?
 acl_logs=ログファイルの閲覧と設定を許可する

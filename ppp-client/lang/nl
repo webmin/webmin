@@ -24,13 +24,16 @@ index_out=Het resultaat van $1 was
 index_boot=Verbind tijdens booten met:
 index_noboot=&lt;Niet verbinden&gt;
 index_bootdesc=Verander deze optie om ervoor te zorgen dat de geselecteerde PPP verbinding word gestart tijdens booten of niet.
+
 init_title=Detecteer Configuratie
 init_cmd=Detecteer een verbonden modem met de opdracht $1 ..
 init_done=.. klaar
 init_modems=Modems zijn geconfigureerd op $1 en $2
 init_modem=Een modem is gedetecteerd op $1
 init_none=Geen modems zijn gedetecteerd
+
 device_serial=serieele poort $1
+
 connect_title=Tot stand brengen Verbinding
 connect_cmd=Probeer een verbinding te maken met de opdracht $1 ..
 connect_failed=.. verbinding mislukt! bekijk het resultaat hierboven waarom.
@@ -40,12 +43,14 @@ connect_dns=Gebruik PPP-toegewezen DNS configuratie.
 connect_dns2=PPP-toegewezen DNS configuratie is ingesteld.
 connect_dnsto=Timeout bij het wachten op de PPP-toegewezen DNS configuratie.
 connect_dnsdown=Verbinding lijkt te zijn mislukt tijdens het wachten op de PPP-toegewezen DNS configuratie.
+
 disc_title=Afsluiten PPP
 disc_err=Mislukt om PPP verbinding af te sluiten
 disc_edown=Reeds verbroken
 disc_ok1=Uw PPP verbinding die gebruik maakt van $2 is succesvol afgesloten.
 disc_ok2=Uw PPP verbinding is succesvol afgesloten.
 disc_dns=Herstelde oude DNS configuratie.
+
 edit_title1=Toevoegen ISP Inbeller
 edit_title2=Bewerk ISP Inbeller
 edit_ddesc=Deze standaard instellingen zullen worden toegevoegt aan verbindingen gemaakt door een andere inbeller.
@@ -76,6 +81,7 @@ edit_idle=Idle timeout (in seconden)
 edit_def=Van standaard instellingen
 edit_inherits=Instellingen overnemen
 edit_from=Van inbeller ..
+
 save_err=Mislukt om inbeller op te slaan
 save_err2=Mislukt om inbeller te verwijderen
 save_ename=Ontbrekende of ongeldige inbel naam
@@ -88,6 +94,7 @@ save_edial=Ontbrekende of ongeldige aantal inbel pogingen
 save_eidle=Ontbrekende of ongeldige idle timeout
 save_einherits=Deze inbeller kan niet verwijdert worden omdat '$1' instellingen aan het overnemen is.
 save_eclash=Een inbeller met dezelfde naam bestaat reeds
+
 log_create=Gemaakt $1
 log_update=Geupdate $1
 log_delete=Verwijdert $1

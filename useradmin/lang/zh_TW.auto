@@ -27,8 +27,10 @@ index_mass=刪除所選用戶
 index_mass2=禁用選擇
 index_mass3=啟用選定
 index_gmass=刪除選定的組
+
 search_found=找到$1匹配用戶 ..
 search_gfound=找到$1匹配組 ..
+
 gid=組
 gidnum=組號
 uedit_manual=目錄
@@ -46,6 +48,7 @@ uedit_uid_calc=已計算
 uedit_disabled=暫時停用登錄
 uedit_sys=系統默認
 uedit_clone=克隆用戶
+
 usave_elength=用戶名不能超過$1個字母
 usave_ere=用戶名與regexp $1不匹配
 usave_ealluid=所有允許的UID已分配
@@ -59,6 +62,7 @@ usave_epasswd_same=密碼包含或與用戶名相同
 usave_epasswd_mindays=密碼更改的天數少於$1天
 usave_epasswd_cmd=密碼驗證命令失敗
 usave_eothers=用戶已成功保存，但在另一個模塊中發生錯誤：$1
+
 gedit_desc=描述
 gedit_oneperline=（每行一個）
 gedit_egone=選定的組不再存在！
@@ -71,18 +75,22 @@ gedit_selu=組中的用戶
 gedit_pri=主要小組成員
 gedit_prinone=沒有用戶將此群組作為主要群組
 gedit_clone=克隆組
+
 gsave_elength=組名不能超過$1字母
 gsave_eallgid=所有允許的GID已分配
 gsave_eothers=該組已成功保存，但是在另一個模塊中發生了錯誤：$1
 gsave_egidused2=GID已被使用
+
 udel_enum=無效的用戶號碼
 udel_eroot=不允許刪除系統用戶（UID小於或等於10的用戶）。
 udel_ugroupother=在其他模塊中刪除此用戶的組。
 udel_failed=..失敗了！ ：$1
+
 gdel_eroot=不允許刪除系統組（GID小於或等於10的系統組）。
 gdel_enum=組號無效
 gdel_dothers=刪除其他模塊中的組？
 gdel_other=正在從其他模塊中刪除 ..
+
 acl_uedit_gid=具有GID範圍的用戶
 acl_uedit_re=與regexp匹配的用戶
 acl_uuid=可以更改現有用戶的UID
@@ -108,6 +116,7 @@ acl_udelete=可以刪除用戶嗎？
 acl_gdelete=可以刪除群組嗎？
 acl_urename=可以重命名用戶嗎？
 acl_grename=可以重命名組嗎？
+
 log_urename=將用戶$1重命名為$2
 log_umodify=修改後的用戶$1
 log_ucreate=創建的用戶$1
@@ -126,6 +135,7 @@ log_ugbatch=執行上傳的組批處理文件
 log_ugbatch_l=執行上傳的組批處理文件（已創建$1，已修改$2，已刪除$3）
 log_delete_users=刪除的$1用戶
 log_delete_groups=刪除的$1組
+
 batch_desc6=<b>create</b>:username:passwd:uid:gid:realname:homedir:shell:class:change:expire<p><b>modify</b>:oldusername:username:passwd:uid:gid:realname:homedir:shell:class:change:expire<p><b>delete</b>:username
 batch_source=批處理數據源
 batch_source0=上傳文件
@@ -145,6 +155,7 @@ batch_eexpire=$1上的無效到期日：$2
 batch_echange=$1上的無效密碼更改日：$2
 batch_instr=說明和批處理格式
 batch_header=批量用戶創建，更新和刪除選項
+
 export_title=導出批處理文件
 export_desc=使用此表單，您可以創建一個批處理文件，其中包含系統上的部分或全部可用用戶。假定文件使用選定的批處理文件格式，則可以在另一個系統的“執行批處理文件”頁面上使用該文件來重新創建導出的用戶。
 export_header=批處理用戶導出選項
@@ -165,6 +176,7 @@ export_done=將$1用戶成功導出到文件$2（$3）。
 export_pft=批處理文件格式
 export_who=用戶導出
 export_ecannot=您不允許導出用戶
+
 gexport_title=導出組批處理文件
 gexport_desc=此表單使您可以創建包含系統上某些或所有可用組的批處理文件。可以在另一個系統上的“執行組批處理文件”頁面上使用該文件來重新創建導出的組。
 gexport_header=批處理組導出選項
@@ -173,6 +185,7 @@ gexport_ecannot=您不允許導出組
 gexport_err=導出組批處理文件失敗
 gexport_egid=範圍內的第一個GID無效
 gexport_egid2=範圍內的第二個GID無效
+
 pft_0=僅經典<tt>passwd</tt>文件
 pft_1=BSD <tt>master.passwd</tt>文件
 pft_2=標準<tt>passwd</tt>和<tt>shadow</tt>文件
@@ -180,6 +193,7 @@ pft_3=Unixware <tt>passwd</tt>文件
 pft_4=AIX <tt>passwd</tt>和<tt>security</tt>文件
 pft_5=OpenServer <tt>passwd</tt>和短<tt>shadow</tt>文件
 pft_6=MacOS NetInfo數據庫
+
 umass_title=刪除用戶
 umass_err=刪除用戶失敗
 umass_sure=您確定要刪除$1所選用戶嗎？他們的主目錄包含文件的$2。
@@ -191,6 +205,7 @@ umass_del1=刪除用戶
 umass_del2=刪除用戶和主目錄
 umass_eroot=不允許刪除系統用戶（UID小於或等於10的用戶）。
 umass_doing=刪除用戶$1 ..
+
 gmass_title=刪除群組
 gmass_err=刪除群組失敗
 gmass_sure=您確定要刪除$1選定的組嗎？
@@ -200,16 +215,19 @@ gmass_del=刪除群組
 gmass_eroot=不允許刪除系統組（GID小於或等於10的系統組）。
 gmass_doing=刪除組$1 ..
 gmass_eprimary=組$1無法刪除，因為它是用戶$2的主要組。
+
 dmass_title=禁用用戶
 dmass_sure=您確定要禁用$1所選用戶嗎？以後可以重新啟用它們，而不會丟失密碼或數據。
 dmass_dis=禁用用戶
 dmass_pass=暫時鎖定密碼 ..
 dmass_doing=禁用用戶$1 ..
 dmass_already=..已經被禁用！
+
 emass_title=啟用用戶
 emass_pass=解鎖密碼 ..
 emass_doing=啟用用戶$1 ..
 emass_already=..已經啟用！
+
 gbatch_title=執行組批處理文件
 gbatch_ecannot=您不能使用組批處理文件格式
 gbatch_desc=通過此表單，您可以一次從上載或本地文本文件中創建，修改或刪除多個組。文件中的每一行都根據其第一個字段指定要執行的操作。行格式為：

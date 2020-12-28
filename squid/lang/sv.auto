@@ -6,6 +6,7 @@ index_refresh=Uppdatera regler
 index_cachemgr=Cache Manager-lösenord
 index_squidver=Kommandot <tt>$1</tt> returnerade :
 index_version=Bläckfiskversion $1
+
 index_stop=Sluta bläckfisken
 index_stopdesc=Klicka på den här knappen för att stoppa den pågående Squid-proxyservern. När klienter som har stoppats kommer inte att kunna göra webb- eller FTP-förfrågningar.
 index_start=Starta bläckfisk
@@ -15,6 +16,7 @@ index_restartdesc=Klicka på den här knappen för att aktivera den nuvarande bl
 index_iptables=Port Redirection Setup
 index_squid=Squid Proxy Server
 index_manual=Redigera konfigurationsfiler
+
 manual_title=Redigera konfigurationsfiler
 manual_file=Välj en konfigurationsfil som ska redigeras:
 manual_change=Förändra
@@ -22,6 +24,7 @@ manual_editing=Använd textrutan nedan för att manuellt redigera konfiggarna i 
 manual_err=Det gick inte att spara konfigurationsfilen
 manual_efile=Ogiltigt konfigurationsfilnamn!
 manual_ecannot=Du får inte redigera konfigurationsfiler manuellt
+
 acl_eusersall=Alla användare
 acl_euserssel=Endast de listade ..
 acl_nodns=Inaktivera sökningar?
@@ -36,18 +39,24 @@ acl_file=Lagra ACL-värden i filen
 acl_nofile=Bläckfiskkonfiguration
 acl_infile=Separat fil
 acl_keep=Vill du bara använda befintligt innehåll i filen?
+
 aclsave_enofile=Inget ACL-filnamn har angetts
 aclsave_ealready=ACL-fil finns redan
+
 cach_ecannot=Du får inte komma åt statistik för cachemanager
 cach_esame=<b>Squid cachemgr.cgi körbar</b> är inställd på Webmins cachemgr.cgi-program, inte det som levereras av Squid.
+
 clear_ecannot=Du får inte rensa och bygga om cachen
 clear_url=Ta bort en URL från cache:
 clear_ok=Ta bort
+
 eacl_ecannot=Du får inte redigera åtkomstkontroll
 eacl_noprr=Inga proxysvarbegränsningar definierade
 eacl_addprr=Lägg till proxysvarbegränsning.
+
 eacl_replypr=Svara på proxybegränsningar
 eacl_replynopr=Inga svarsproxybegränsningar definierade
+
 eacl_ext=Externa ACL-program
 eacl_ename=Klassnamn
 eacl_format=Inmatningsformat
@@ -58,8 +67,11 @@ eacl_eclass=Ingen programklass vald
 eacl_cname=Skriv namn
 eacl_file=Från fil $1
 eacl_hdelete=Radera valda begränsningar
+
 eadm_ecannot=Du får inte redigera administrativa alternativ
+
 eauth_ecannot=Du får inte redigera proxyverifiering
+
 ec_ecannot=Du får inte redigera cache-alternativ
 ec_opts=alternativ
 ec_coss=COSS
@@ -67,6 +79,7 @@ ec_gap=Maximal klientläsningsklyftan
 ec_maxreplies=Maximala svarstorlekar
 ec_maxrn=Storlek (kB)
 ec_maxracls=För förfrågningar som matchar ACL: er (lämnas tomma för alla)
+
 ech_siq2=Avvisa ICP-frågor?
 ech_pass=Vidarebefordra klientautentisering till den här cachen
 ech_upass=Vidarebefordra kundinloggning med lösenord:
@@ -79,12 +92,14 @@ ech_origin=Behandla värd som ursprungsserver?
 ech_force=Tvinga värd: rubrik till
 ech_same=Oförändrad
 ech_ssl=Ansluta med SSL?
+
 eicp_ecannot=Du får inte redigera andra cacheminne
 eicp_thost=Värdnamn
 eicp_ttype=Typ
 eicp_tpport=Proxy-port
 eicp_tiport=ICP-port
 eicp_delete=Radera valda cacheminne
+
 elogs_ecannot=Du får inte redigera loggning
 elogs_none=Ingen
 elogs_logformat=Åtkomstloggformat
@@ -100,7 +115,9 @@ elogs_notset=Inte inställd
 elogs_dont=Logga inte in
 elogs_file=Fil $1
 elogs_squid=Bläckfisk standard
+
 emem_ecannot=Du får inte redigera minnesanvändning
+
 emisc_ecannot=Du får inte redigera diverse alternativ
 emisc_hash=Har du bara en HTTP Accel-server?
 emisc_wccprtr=WCCP-routeradress
@@ -108,6 +125,7 @@ emisc_wccpin=WCCP Inkommande adress
 emisc_wccpout=WCCP utgående adress
 emisc_none=Ingen
 emisc_virtual=Virtuell
+
 eports_ecannot=Du får inte redigera portar och nätverk
 eports_ssl=SSL-adresser och portar
 eports_opts=Alternativ för port
@@ -117,6 +135,7 @@ eports_unc=Gör orena SSL-avstängningar?
 eports_checkhost=Validera värdnamn i URL: er?
 eports_underscore=Tillåt understruk i värdnamn?
 eports_all=Allt
+
 eprogs_ecannot=Du får inte redigera hjälpprogram
 eprogs_sppe=Ping-program aktiverat?
 eprogs_startup=Program som börjar initialt
@@ -126,27 +145,38 @@ eprogs_capweb=Webmin standard
 eprogs_ttl=Autentiseringscache-tid
 eprogs_aittl=Autentisera IP-cache-tid
 eprogs_realm=Autentiseringsområde
+
 euser_e=Aktiverad?
+
 ahttp_replyheader=Skapa proxysvarbegränsning
 ahttp_replyheader1=Redigera begränsning för proxysvar
 ahttp_replypr=Proxy Svar Begränsning
+
 icache_ecannot=Du får inte initialisera cachen
 icache_euser=Användare för att köra Squid som inte finns
+
 scache_emaxrs=Ogiltig maximal kroppsstorlek i rad $1
+
 slogs_efname=Ogiltigt formatnamn i rad $1
 slogs_effmt=Saknar loggformat i rad $1
 slogs_eafile=Saknad eller ogiltig loggfil i rad $1
+
 sprog_emsg9='$1' är inte en giltig cachetid
 sprog_emsg10='$1' är inte en giltig TTL
 sprog_echildren=Antalet program måste vara ett nummer större än noll
+
 suser_etaken=Användarnamnet används redan
+
 start_ecannot=Du får inte starta bläckfisk
 stop_ecannot=Du får inte stoppa bläckfisken
+
 calamaris_ecannot=Du får inte komma åt Calamaris-logganalys
+
 lib_aclrpmt=Svara MIME-typ
 lib_aclrur=RFC931 Användarreg
 lib_aclext=Externt program
 lib_aclmuip=Max användar-IP
+
 log_authparam=Ändrade alternativ för autentiseringsprogram
 log_https_delete=Raderade $1 proxybegränsningar
 log_headeracc_create=Skapad rubrikåtkomstregel
@@ -163,18 +193,22 @@ log_pools_delete=Raderade $1 förseningspooler
 log_delay_create=Lade till ACL för fördröjningspool $1
 log_delay_modify=Modifierad ACL för fördröjningspool $1
 log_delay_delete=Raderad ACL för fördröjningspool $1
+
 log_delay_move=Flyttade ACL för fördröjningspool $1
 log_refresh_create=Skapad uppdateringsregel för $1
 log_refresh_modify=Modifierad uppdateringsregel för $1
 log_refresh_delete=Raderad uppdateringsregel för $1
+
 log_refresh_move=Flyttad uppdateringsregel för $1
 log_refreshes_delete=Raderade $1 uppdateringsregler
 log_iptables=Uppdaterad inställning av portomdirigering
 log_purge=Borttagen URL $1 från cache
 log_cachemgr=Ändrade cachemanagerlösenord
+
 acl_sections=Tillåtna konfigurationssidor
 acl_start=Kan starta och stoppa bläckfisk?
 acl_restart=Kan applicera Squid-konfiguration?
+
 delay_title=Försena pooler
 delay_add=Lägg till en ny fördröjningspool.
 delay_num=siffra
@@ -224,11 +258,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=MB
+
 dpool_err=Det gick inte att ta bort fördröjningspooler
 dpool_enone=Ingen vald
+
 apool_header=Lägg till Delay Pool ACL
 apool_header1=Redigera Delay Pool ACL
 apool_pr=Fördröj pool ACL
+
 authparam_title=Autentiseringsprogram
 authparam_header=Alternativ för externt autentiseringsprogram
 authparam_ttl=Dags att cache-lösenord för
@@ -271,6 +308,7 @@ ext_ecache=Saknad eller ogiltig cachestorlek
 ext_eprogram=En ogiltig programväg angavs
 ext_eclash=En extern programtyp med samma namn finns redan
 ext_eused=Detta externa program används av en ACL
+
 header_title=Åtkomstkontroll för huvud
 header_none=Inga regler för kontroll av huvudåtkomst har definierats än.
 header_name=HTTP-rubrik
@@ -290,6 +328,7 @@ header_err=Det gick inte att spara regeln för åtkomstkontroll för rubriker
 header_ename=Saknat eller ogiltigt rubriknamn
 header_request_header_access=Begär rubriker
 header_reply_header_access=Svara rubriker
+
 refresh_title=Uppdatera regler
 refresh_none=Inga uppdateringsregler har definierats än.
 refresh_re=Vanligt uttryck
@@ -316,6 +355,7 @@ refresh_epc=Åldersprocent saknas eller ogiltig
 refresh_delete=Radera valda uppdateringsregler
 drefresh_err=Det gick inte att ta bort uppdateringsreglerna
 drefesh_enone=Ingen vald
+
 iptables_title=Port Redirection Setup
 iptables_inst0=IPtables-brandväggskommandon som behövs för att ställa in omdirigering av port verkar inte vara installerade på ditt system. Se modulen <a href='$1'>Linux Firewall</a> för mer information.
 iptables_inst1=Modulen <a href='$1'>Linux Firewall</a> verkar inte ha konfigurerats fullt ut på ditt system. Den här modulen använder den för att ställa in omdirigering av Frox-porten.
@@ -330,18 +370,23 @@ iptables_enet=Saknad eller ogiltig nätverksadress (bör vara som 192.168.1.0/24
 iptables_eiface=Saknat eller ogiltigt nätverksgränssnitt
 iptables_eapply=Använd brandvägg misslyckades : $1
 iptables_eapply2=Apply Squid failed : $1
+
 syslog_access=Bläckfiskåtkomstlogg
 syslog_cache=Bläckfisk cachelogg
 syslog_store=Logg för bläckfiskobjekt
+
 purge_err=Det gick inte att rensa URL från cache
 purge_title=Rensa cache-URL
 purge_doing=Rensar URL $1 ..
 purge_done=.. Gjort.
 purge_failed=.. misslyckades! Se felmeddelandet ovan för anledningen.
+
 dhttp_err=Det gick inte att ta bort proxybegränsningar
 dhttp_enone=Ingen vald
+
 dicp_err=Det gick inte att ta bort ICP-begränsningar
 dicp_enone=Ingen vald
+
 cachemgr_title=Cache Manager-lösenord
 cachemgr_ecannot=Du får inte redigera lösenord för cachemanager
 cachemgr_def1=Inga lösenord krävs

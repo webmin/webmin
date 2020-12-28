@@ -30,6 +30,7 @@ index_return=구역 목록
 index_ezones=FirewallD 영역이 없습니다!
 index_none=이 영역에는 아직 허용 된 포트 나 서비스가 없습니다.
 index_ifaces=인터페이스에 규칙을 적용하십시오.
+
 port_edit=포트 편집
 port_create=포트 추가
 port_header=허용되는 포트 옵션
@@ -45,11 +46,13 @@ port_eport=포트 번호 또는 이름이 없거나 잘못되었습니다
 port_eportlow=낮은 포트는 숫자 여야합니다
 port_eporthigh=높은 포트는 숫자 여야합니다
 port_eportrange=낮은 포트는 높은 포트 아래에 있어야합니다
+
 serv_edit=서비스 편집
 serv_create=서비스 추가
 serv_header=허용되는 서비스 옵션
 serv_name=허용하는 서비스
 serv_err=서비스를 저장하지 못했습니다
+
 forward_edit=앞으로 편집
 forward_create=앞으로 만들기
 forward_header=포트 포워딩 옵션
@@ -61,10 +64,13 @@ forward_dstaddr=목적지 주소
 forward_dstlocal=이 시스템
 forward_edstaddr=잘못된 IPv4 대상 주소
 forward_eneither=목적지 주소 또는 포트 또는 둘 다 입력해야합니다
+
 check_ecmd=시스템에서 FirewallD 제어 명령 $1 을 (를) 찾을 수 없습니다
+
 delete_err=규칙을 삭제하지 못했습니다.
 delete_enone=선택하지 않았습니다!
 delete_edel=$1 제거 실패  : $2 
+
 zone_title=영역 만들기
 zone_header=새로운 영역 옵션
 zone_name=구역 이름
@@ -77,12 +83,16 @@ zone_mode4=가상 호스팅에 사용되는 포트
 zone_err=영역을 만들지 못했습니다
 zone_ename=존 이름이 없거나 유효하지 않습니다
 zone_eclash=이름이 같은 영역이 이미 존재합니다
+
 delzone_title=영역 삭제
 delzone_err=영역을 삭제하지 못했습니다
 delzone_edefault=기본 영역은 제거 할 수 없습니다
 delzone_rusure=$2 포트와 $3 서비스가 포함 된 $1 영역을 삭제 하시겠습니까?
+
 defzone_err=영역을 기본값으로 설정하지 못했습니다
+
 restart_err=구성을 적용하지 못했습니다
+
 stop_err=FirewallD를 중지하지 못했습니다
 start_err=FirewallD를 시작하지 못했습니다
 log_stop=방화벽 중지

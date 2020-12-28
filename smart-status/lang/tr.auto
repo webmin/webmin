@@ -25,6 +25,7 @@ index_family=Model ailesi
 index_serial=Seri numarası
 index_capacity=Kapasite
 index_norm=normalize:
+
 monitor_type=SMART Sürücü Kontrolü
 monitor_type2=SSD Wearout
 monitor_drive=Kontrol etmek için sür
@@ -40,14 +41,17 @@ monitor_wearlevel=Aşınma seviyesi altına düşerse başarısız olur
 monitor_ewearlevel=Geçersiz aşınma seviyesi yüzdesi
 monitor_nowearout=Sürücü bir SSD zayıflama göstergesi bildirmiyor
 monitor_wornout=Aşınma seviyesi $1 'e düştü
+
 short_title=Kısa Öz Test
 short_doing=$1 kısa öz testi başlatılıyor.
 short_failed=.. başarısız oldu!
 short_ok=.. test tamamlandı. Sonuçlar için modülün ana sayfasındaki sürücü durumuna bakın.
+
 ext_title=Genişletilmiş Otomatik Test
 ext_doing=$1 genişletilmiş kendi kendini testine başlanıyor.
 ext_failed=.. başarısız oldu!
 ext_ok=.. test tamamlandı. Sonuçlar için modülün ana sayfasındaki sürücü durumuna bakın.
+
 data_title=Veri Toplama Testi
 data_doing=$1 üzerinde çevrimdışı veri toplama başlatılıyor.
 data_failed=.. başarısız oldu!

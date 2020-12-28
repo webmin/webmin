@@ -26,6 +26,7 @@ index_none=Nessun modulo Perl trovato nel tuo sistema.
 index_tabmods=Moduli esistenti
 index_tabinstall=Installa modulo
 index_tabsuggest=Moduli suggeriti
+
 download_err=Installazione del modulo non riuscita
 download_elocal=Nessun file locale specificato
 download_elocal2='$1' non esiste
@@ -62,6 +63,7 @@ download_nomissing=Tutto installato
 download_ebuild=Uno o più moduli Perl necessitano il build di $1, ma questo modulo non è installato.
 download_yum=Sto installando il modulo Perl $1 dal pacchetto $2...
 download_missingok=Modulo mancante presso CPAN
+
 install_title=Installa il modulo
 install_untar=Decompressione del file del modulo
 install_make=Compilazione del modulo in corso
@@ -81,11 +83,13 @@ install_err2=Puoi anche installare il modulo da CPAN con il comando $1.
 install_exec=Eseguo $1...
 install_efile=Il file del modulo $1 non esiste più
 install_needunlink=Puoi provare ad installare nuovamente tornando alla pagina precedente e selezionando opzioni differenti. Altrimenti <a href='$1'>clicca qui per eliminare i file temporanei</a> per recuperare spazio su disco.
+
 cpan_sel=Moduli sotto $1:
 cpan_title=Seleziona il modulo Perl
 cpan_search=Trova i moduli chiamati
 cpan_match=Moduli corrispondenti a $1:
 cpan_none=Nessuna corrispondenza trovata.
+
 edit_title=Dettagli modulo
 edit_header=Informazioni sul modulo
 edit_mod=Nome modulo
@@ -102,6 +106,7 @@ edit_method=Installato da
 edit_rpm=Pacchetto RPM $1
 edit_debian=Pacchetto Debian $1
 edit_manual=Installazione manuale del modulo Perl
+
 uninstall_title=Disinstalla modulo
 uninstall_rusure=Sei sicuro di voler disinstallare il modulo Perl $1? I seguenti file saranno eliminati:
 uninstall_rusure2=Sei sicuro di voler disinstallare il modulo Perl $1 e i sottomoduli $2?<br>I seguenti file saranno eliminati:
@@ -109,7 +114,9 @@ uninstall_ok=Disinstalla adesso
 uninstall_rpm=Il modulo sarà rimosso disinstallando il pacchetto RPM $1
 uninstall_debian=Il modulo sarà rimosso disinstallando il pacchetto Debian $1.
 uninstall_err=Disinstallazione del modulo non riuscita
+
 delete_efile=Pacchetto non valido!
+
 uninstalls_title=Disinstalla modulo
 uninstalls_err=Disinstallazione dei moduli non riuscita
 uninstalls_enone=Nessuna selezione

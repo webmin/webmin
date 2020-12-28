@@ -9,9 +9,12 @@ index_apply=应用更改
 index_applydesc=单击此按钮以应用当前文件导出配置。这将使上面列出的所有目录都具有指定的选项。
 index_return=出口清单
 index_echeck=NFS服务器不能在此系统上使用： $1
+
 check_ecmd=未安装NFS服务器命令 $1
+
 delete_err=无法删除导出
 delete_enone=未选择
+
 edit_title1=编辑导出
 edit_title2=创建导出
 edit_header1=导出选项
@@ -31,6 +34,7 @@ edit_clients=客户群
 edit_hosts=主机/网络组
 edit_network=网络
 edit_mask=面具
+
 save_err=无法保存导出
 save_edir='$1'不是目录或不存在
 save_enone=您必须至少输入一个目录才能导出
@@ -44,4 +48,5 @@ save_enetwork=“$1”不是有效的网络
 save_enetmask='$1'不是有效的网络掩码
 save_esame1=目录<tt>$1</tt>已被导出到<tt>$2</tt>。您的操作系统不允许将同一<i>local</i>文件系统上的目录分别导出到同一主机
 save_esame2=目录<tt>$1</tt>已被导出到<tt>$2</tt>。您的操作系统不允许将同一<i>local</i>文件系统上的目录分别导出到同一网络
+
 restart_err=无法应用更改

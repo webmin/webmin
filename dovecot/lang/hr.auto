@@ -4,10 +4,12 @@ index_stopdesc=Isključite pokrenuti Dovecot IMAP / POP3 postupak na poslužitel
 index_startdesc=Pokrenite Dovecot IMAP / POP3 poslužiteljski postupak kako bi korisnici mogli preuzeti svoju e-poštu.
 index_applydesc=Aktivirajte trenutnu Dovecot konfiguraciju zaustavljanjem i ponovnim pokretanjem procesa na poslužitelju.
 index_bootdesc=Promijenite ovu postavku kako biste omogućili ili onemogućili pokretanje Dovecot poslužitelja u vrijeme dizanja sustava.
+
 stop_err=Zaustavljanje nije uspjelo u Dovecotu
 stop_erunning=Nema više trčanja
 start_err=Nije uspio pokrenuti Dovecot
 start_eprotos=Nijedan protokol nije odabran na stranici <b>Umrežavanje i protokoli</b>
+
 net_title=Umrežavanje i protokoli
 net_header=Opcije protokola za umrežavanje i protokola pošte
 net_protocols=Poslužujte protokole pošte
@@ -34,7 +36,9 @@ net_eimaps_listen=Nevažeća IP adresa za IMAP SSL veze
 net_epop3s_listen=Nevaljana IP adresa za POP3 SSL veze
 net_elisten=Nevaljana IP adresa za non-SSL veze
 net_essl_listen=Nevaljana IP adresa za SSL veze
+
 pop3_title=Opcije POP3
+
 ssl_title=Konfiguracija SSL-a
 ssl_header=Opcije načina IMAP i POP3 SSL
 ssl_key=Datoteka SSL privatnog ključa
@@ -52,7 +56,9 @@ ssl_ecert=Nedostaje ili ne postoji datoteka certifikata
 ssl_eca=Nedostaje ili ne postoji datoteka sa certifikatom klijenta
 ssl_eregen=Interval regeneracije koji nedostaje ili nije numerički
 ssl_epass=Nije unesena lozinka datoteke SSL ključeva
+
 misc_title=Druge opcije
+
 login_title=Opcije korisnika i prijave
 login_header=Opcije autentifikacije korisnika i prijave
 login_fuid=Minimalni važeći UID
@@ -102,6 +108,7 @@ login_procs=Maksimalni procesi prijave
 login_count=Početni postupci prijave
 login_eprocs=Manjkajući ili nevažeći maksimalni broj postupaka prijave
 login_ecount=Nedostaje ili nije važeći početni broj postupaka prijave
+
 mail_title=Datoteke za poštu
 mail_header=Lokacija pošte i mogućnosti čitanja
 mail_env=Lokacija datoteke e-pošte
@@ -154,11 +161,13 @@ mail_eindexmode=Položaj datoteka indeksa nije moguće podesiti kada se lokacija
 mail_econtrolmode=Položaj kontrolnih datoteka ne može se postaviti ako se automatski prepozna lokacija datoteke e-pošte
 mail_eindex=Nedostaje ili nije važeći apsolutni put indeksnih datoteka
 mail_econtrol=Nedostaje ili nije važeći apsolutni put za upravljačke datoteke
+
 log_net=Izmijenjeno umrežavanje i protokoli
 log_ssl=Izmijenjena SSL konfiguracija
 log_start=Pokrenut poslužitelj Dovecot
 log_stop=Zaustavljen Dovecot Server
 log_manual=Ručno uređena konfiguracijska datoteka $1
+
 manual_title=Uređivanje datoteka za konfiguriranje
 manual_editsel=Uredite Dovecot konfiguracijsku datoteku
 manual_err=Konfiguriranje datoteke nije uspjelo

@@ -16,6 +16,7 @@ index_setupdesc=Baza podatkov strežnika LDAP še ne vsebuje korenskega DN $1, k
 index_setup=Ustvari korenski DN
 index_permsdesc=Podatkovni imenik strežnika LDAP $1 vsebuje datoteke, ki niso v lasti pravilnega uporabnika $2, kar pomeni, da je malo verjetno, da bi se pravilno zagnal. Vendar lahko Webmin to odpravi za vas s klikom na spodnji gumb.
 index_perms=Popravi lastništvo
+
 connect_eserver=Strežnik LDAP $1 ne obstaja
 connect_euser=Ni uporabnika, ki bi se prijavil, kot je bilo konfigurirano
 connect_epass=Nobeno geslo za prijavo ni nastavljeno
@@ -28,6 +29,7 @@ connect_eldap=Povezave s strežnikom LDAP $1 na vratih $2 ni bilo mogoče
 connect_essl=Šifriranja TLS ni bilo mogoče zagnati s strežnikom LDAP $1 : $2 
 connect_elogin=Prijava na strežnik LDAP $1 ni bila uspešna kot $2 : $3 
 connect_cpan=Lahko vam je <tt>$1</tt> Perl modul <a href='$2'>samodejno nameščen</a> iz CPAN-a.
+
 slapd_title=Konfiguracija strežnika OpenLDAP
 ldif_title=Konfiguracija strežnika OpenLDAP
 slapd_header=Možnosti globalnega strežnika LDAP
@@ -76,6 +78,7 @@ slapd_protos=LDAP povezave sprejeti
 slapd_ldap=LDAP prek omrežja
 slapd_ldaps=LDAP prek SSL
 slapd_ldapi=Unix datoteka vtičnice
+
 schema_title=Upravljajte shemo
 schema_file=Ime
 schema_desc=Opis
@@ -93,6 +96,7 @@ schema_edesc=Ta stran vam omogoča ročno urejanje datoteke sheme LDAP. To je tr
 schema_return=seznam shem
 schema_emove=Ni mogoče najti datoteke sheme za premikanje!
 schema_ecannot=Ni vam dovoljeno upravljati sheme LDAP
+
 acl_title=LDAP nadzor dostopa
 acl_ecannot=Ni vam dovoljeno konfigurirati nadzora dostopa LDAP
 acl_what=Predmeti
@@ -103,6 +107,7 @@ acl_none=Še ni določeno nobeno pravilo o nadzoru dostopa. Vsi predmeti v bazi 
 acl_delete=Izbrišite izbrana pravila
 acl_add=Dodajte novo pravilo nadzora dostopa.
 acl_return=pravila za nadzor dostopa
+
 browser_title=Brskanje po zbirki podatkov
 browser_econn=Brskalnika LDAP ni mogoče uporabiti : $1 
 browser_ecannot=Ne morete brskati po LDAP bazi
@@ -136,24 +141,30 @@ browser_nomatch=Noben predmet se ni ujemal z iskanjem $1.
 browser_search=Poiščite ujemanje predmetov :
 browser_search2=Prikaz predmetov, ki se ujemajo :
 browser_sok=Iskanje
+
 save_err=Atributa ni bilo mogoče spremeniti
 save_ebase=Objekta $1 iz baze podatkov ni bilo mogoče pridobiti
 save_emodify=Sprememba LDAP $2 v $1 ni uspela : $3 
 save_enone=Vnesene vrednosti niso bile
+
 add_err=Atributa ni bilo mogoče dodati
 add_eadd=Manjkajoče ali neveljavno ime atributa
 add_evalue=Manjka vrednost
 add_emodify=Dodatek LDAP od $2 do $1 ni uspel : $3 
+
 delete_err=Odstranjevanja atributov ni uspelo
 delete_enone=Izbrana ni nobena
 delete_emodify=Izbrisa LDAP $2 iz $1 ni uspela : $3 
+
 sdelete_err=Izbris predmetov ni uspel
 sdelete_edn=Objekta $1 ni bilo mogoče najti
 sdelete_edel=Izbrisa LDAP $1 ni uspela : $2 
+
 rename_err=Objekta ni bilo mogoče preimenovati
 rename_eget=Ni mogoče najti predmeta z DN $1 
 rename_enew=Zdi se, da novo ime ni veljavno
 rename_erename=LDAP newdn do $2 od $1 ni uspel : $3 
+
 oadd_title=Ustvari objekt
 oadd_header=Nove podrobnosti predmeta LDAP
 oadd_base=Nadrejeni objekt DN
@@ -170,6 +181,7 @@ oadd_eget2=Ni bilo mogoče preveriti spopada s $1 : $2
 oadd_eclash=Predmet z DN $1 že obstaja
 oadd_eadd=Dodatek LDAP $1 ni uspel : $2 
 oadd_err=Ni bilo mogoče ustvariti novega predmeta
+
 create_title=Ustvari drevo
 create_ecannot=Ni vam dovoljeno ustvariti novega drevesa
 create_desc=Ta stran je ponudila priročen način za ustvarjanje DN-ja, ki bo osnova novega drevesa v bazi podatkov. Prav tako lahko ustvari primer uporabnika ali vzdevek e-pošte pod drevesom kot predlogo za svoje predmete.
@@ -191,18 +203,23 @@ create_done=.. Končano
 create_doingex=Ustvarjanje primera predmeta z DN $1 ..
 create_edoingex=.. ni uspelo: $1. Vendar se drevo še vedno lahko uporablja.
 create_eoc=Za novi DN ni bilo mogoče najti ustreznega razreda predmeta
+
 eunknown=Neznana napaka
+
 apply_err=Konfiguracije ni bilo mogoče uporabiti
 apply_ecmd=$1 ni uspelo : $2 
 apply_ecannot=Konfiguracije ne morete uporabiti
+
 stop_err=Zaustavitve strežnika LDAP ni uspelo
 stop_ecmd=$1 ni uspelo : $2 
 stop_egone=Ne teče več!
 stop_ekill=Postopek ubijanja ni uspel : $1 
 stop_ecannot=Ne morete ustaviti strežnika LDAP
+
 start_err=Zagon strežnika LDAP ni uspel
 start_ecmd=$1 ni uspelo : $2 
 start_ecannot=Ni vam dovoljeno zagnati strežnika LDAP
+
 log_create_dn=Ustvarjen objekt $1 
 log_delete_dn=Izbrisan predmet $1 
 log_rename_dn=Preimenovani objekt $1 
@@ -234,6 +251,7 @@ log_up_access=Pravilo nadzora dostopa premaknjeno za $1
 log_down_access=Premaknjeno pravilo za nadzor dostopa navzdol za $1 
 log_delete_accesses=Izbrisana so pravila za nadzor dostopa $1 
 log_all=vsi predmeti
+
 gencert_title=Ustvari SSL potrdilo
 gencert_header=Nove podrobnosti SSL potrdila
 gencert_create=Ustvari potrdilo
@@ -245,7 +263,9 @@ gencert_dir=Imenik
 gencert_err=Ni bilo mogoče ustvariti potrdila
 gencert_edest=Ciljni imenik ne obstaja
 gencert_epath=Datoteke potrdil in ključev v konfiguraciji strežnika LDAP morajo biti absolutne poti
+
 perms_err=Lastništva datoteke ni bilo mogoče popraviti
+
 acl_slapd=Ali lahko konfigurirate strežnik LDAP?
 acl_ldif=Ali lahko konfigurirate strežnik LDAP?
 acl_schema=Ali lahko upravljate s shemo?
@@ -254,6 +274,7 @@ acl_browser=Ali lahko brskate in urejate bazo?
 acl_create=Ali lahko ustvarite novo drevo?
 acl_start=Ali lahko zažene in ustavi strežnik LDAP?
 acl_apply=Ali lahko uporabite spremembe konfiguracije?
+
 access_desc=$2 za $1 
 access_self=jaz
 access_users=pristnih uporabnikov
@@ -273,6 +294,7 @@ access_lcompare=Primerjaj
 access_lsearch=Iskanje
 access_lread=Preberi
 access_lwrite=Pišite
+
 eacl_title1=Ustvari pravilo nadzora dostopa
 eacl_title2=Urejanje pravila nadzora dostopa
 eacl_header=Podrobnosti pravila o nadzoru dostopa do baze podatkov LDAP

@@ -24,8 +24,10 @@ all=الكل
 index_view=رأي ..
 index_viewfile=عرض ملف السجل:
 index_viewok=رأي
+
 restart_ekill=فشل في الإشارة إلى عملية syslog $1 : $2 
 restart_ecannot=غير مسموح لك بإعادة تشغيل سجل النظام
+
 start_ecannot=غير مسموح لك ببدء تشغيل syslog
 edit_title=تحرير سجل النظام
 create_title=إضافة سجل النظام
@@ -56,11 +58,13 @@ edit_tag=فقط للبرنامج
 edit_return=تفاصيل السجل
 edit_ecannot=غير مسموح لك بتحرير إعدادات السجل
 edit_ecannot2=غير مسموح لك بتحرير هذا السجل
+
 view_title=عرض ملف السجل
 view_header=خطوط$1 الأخيرة من$2
 view_empty=ملف السجل فارغ
 view_refresh=تحديث
 view_filter=إظهار الخطوط ذات النص $1 فقط
+
 save_err=فشل في حفظ السجل
 save_efile="$1" ليس اسم ملف صالح :$2
 save_epipe="$1" ليس توجيه إخراج صالحًا
@@ -80,11 +84,13 @@ save_ecannot5=غير مسموح لك بتعديل هذا السجل
 save_ecannot6=غير مسموح لك بمشاهدة السجلات التعسفية
 save_ecannot7=غير مسموح لك بمشاهدة هذا السجل الإضافي
 save_emissing=ملف السجل مفقود لعرضه
+
 log_modify=سجل معدّل إلى$1
 log_create=سجل مضاف إلى$1
 log_delete=سجل محذوف إلى$1
 log_apply=التغييرات المطبقة
 log_start=بدأ خادم التسجيل
+
 desc_sysmesg=رسائل النظام
 desc_mail=سجل الإلكتروني
 desc_auth=سجل المصادقة
@@ -93,6 +99,7 @@ desc_news=سجل أخبار NNTP
 desc_uucp=سجل UUCP
 desc_debug=تصحيح الرسائل
 desc_cron=سجل العمل كرون
+
 acl_noedit=يمكن فقط عرض السجلات؟
 acl_any=يمكن عرض أي ملف كسجل؟
 acl_logs=يمكن عرض وتكوين ملفات السجل

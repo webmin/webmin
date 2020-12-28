@@ -13,6 +13,7 @@ index_applydesc=Kliknite ovaj gumb da biste primijenili trenutnu konfiguraciju S
 index_cpan=Budući da je SpamAssassin modul Perl, možete ga automatski instalirati i pomoću Webminovog <a href='$2'>Perl modula</a> da biste preuzeli $1 iz CPAN-a.
 index_spamassassin=SpamAssassin
 index_ecannot=Nije vam dopušteno upravljanje spamAssassin konfiguracijskom datotekom $1 
+
 white_title=Dopuštene i uskraćene adrese
 white_desc=Tablice na ovoj stranici omogućuju vam da odredite From: i To: adrese e-pošte koje su uvijek ili nikada kategorizirane kao neželjena pošta. Sva druga poruka e-pošte obrađivat će se kao uobičajena pravila SpamAssassina. Sve adrese e-pošte mogu sadržavati zamjenske znakove, poput *@foo.com ili *.foo.com da odgovaraju cijelim domenama.
 white_from=Pošiljatelji se nikad ne klasificiraju kao neželjeni sadržaj
@@ -44,6 +45,7 @@ white_tabham=Dopuštene adrese
 white_tabspam=Odbijene adrese
 white_tabsome=Odredišne adrese
 white_tabimport=Uvezi adrese
+
 score_title=Klasifikacija neželjene pošte
 score_desc=SpamAssassin dodijeli ocjenu svakoj poruci na temelju njenog sadržaja i zaglavlja. Opcije na ovoj stranici određuju rezultat iznad kojeg se poruka smatra neželjenom snagom i neke od metoda pomoću kojih se izračunava ta ocjena.
 score_header=Opcije klasifikacije neželjene poruke
@@ -77,6 +79,7 @@ score_emxdelay=Nedostaju ili nevažeće sekunde za čekanje između MX čekova
 score_etimeout=Nedostaju ili nevažeće sekunde za čekanje na RBL upite
 score_ereceived=Nedostaje ili nevažeći broj primljenih: zaglavlja provjeriti s RBL
 score_bayes=Koristite Bayesov klasifikator učenja?
+
 report_title=Izmjena poruke
 report_desc=Opcije na ovoj stranici kontroliraju izmjene koje SpamAssassin unosi u zaglavlja i tijelo svih poruka koje analizira i promjene koje unese u one klasificirane kao neželjene poruke.
 report_header=Analizirane i mogućnosti izmjene neželjene poruke
@@ -109,6 +112,7 @@ report_addspam=spam
 report_addham=šunka
 report_addall=svi
 report_eaddheader=Nedostaje ili nije valjano dodatno zaglavlje za dodavanje $1 
+
 user_title=Ostale korisničke mogućnosti
 user_desc=Opcije na ovoj stranici uglavnom su povezane s putovima i postavkama koje SpamAssassin koristi za vanjske identifikacijske pakete neželjene pošte Razor, DCC i Pyzor. Možete također reći SpamAssassinu da li će moći izvoditi DNS pretrage ili ne.
 user_header=Razne opcije na razini korisnika
@@ -131,6 +135,7 @@ user_err=Spremanje korisničkih opcija nije uspjelo
 user_etimeout="$1" nije valjano isteklo vrijeme
 user_epath='$1' nije valjan put klijentskog programa
 user_emax='$1' nije valjano odbrojavanje
+
 header_title=Testovi zaglavlja i tijela
 header_desc=Ova vam stranica omogućuje definiranje dodatnih testova koje će SpamAssassin primijeniti na e-poštu na temelju zaglavlja poruka, sadržaja tijela, URL-ova koji se nalaze u tijelu ili kombinacije drugih testova. Na vama je dodijeljeno ime svakog testa, ali obično je nešto poput CONTAINS_FOO. Stvarni rezultat koji SpamAssassin dodaje porukama koje odgovaraju ispitivanju može se postaviti unosom vlastitih ili ugrađenih testnih imena u tablice pri dnu stranice.
 header_switch=Prebacite se na jednostavan način ..
@@ -164,6 +169,7 @@ header_eeval='$1' nije valjana evaluacijska funkcija
 header_eheader="$1" nije valjano zaglavlje e-pošte
 header_eregexp='$1' nije važeći regularni izraz (mora biti poput / izraz /)
 header_emeta=Nedostaje testni izraz za test "$1"
+
 priv_title=Razne privilegirane opcije
 priv_desc=Opcije na ovom mogu se postaviti samo globalno, a ne u konfiguracijskim datotekama pojedinih korisnika. Oni upravljaju putovima do različitih konfiguracijskih datoteka i datoteke za prijavu.
 priv_header=Razne postavke na razini privilegija
@@ -183,6 +189,7 @@ priv_eargs='$1' nije valjan popis argumenata
 priv_emscore='$1' nije valjana najviša ocjena fraze
 priv_ephrase="$1" nije valjana dvodelna neželjena fraza
 priv_escore=Nedostaje ili nevažeća ocjena za neželjenu frazu '$1'
+
 usually=Obično $1 
 ecannot=Nije vam dopušteno koristiti ovu stranicu
 setup_title=Postavljanje Procmail za SpamAssassin
@@ -202,11 +209,13 @@ setup_drop1=Korisnik Unix primatelja
 setup_drop0=<tt>root</tt> korisnika
 setup_ok=Postavljanje Procmail za SpamAssassin
 setup_email=Proslijedi na adresu e-pošte
+
 setup_err=Nije uspjelo postavljanje SpamAssassin-a
 setup_efile=Nedostaje ili nije važeća datoteka mbox formata
 setup_emaildir=Nedostaje ili je nevažeći imenik e-pošte Qmail
 setup_emhdir=Nedostaje ili nije valjan direktorij MH pošte
 setup_eemail=Nedostaje ili nevažeća adresa e-pošte
+
 log_white=Izmijenjene su dozvoljene i odbijene adrese
 log_score=Izmijenjena klasifikacija neželjene pošte
 log_report=Izmijenjena izmjena poruke
@@ -217,12 +226,14 @@ log_setup=Postavljanje Procmail za SpamAssassin
 log_procmail=Izmijenjena konfiguracija Procmail-a
 log_import=Uvezene $1 dopuštene adrese
 log_manual=Ručno uređena konfiguracijska datoteka
+
 import_title=Uvozne adrese
 import_err=Uvoz adresa nije uspio
 import_efile=Nema odabrane datoteke za uvoz
 import_enone=U datoteci nisu pronađene adrese e-pošte
 import_ok1=U datoteci je pronađeno $2 adrese e-pošte, od kojih je $1 nova i dodane na sve dodijeljene popise adresa.
 import_ok2=U datoteci su pronađene $1 adrese e-pošte, ali sve su bile na popisu dopuštenih adresa.
+
 mail_title=Neželjena pošta
 mail_desc=Na ovoj se stranici nalaze poruke koje su klasificirane kao neželjene pošte i čekaju se neke akcije. Poruke koje su pogrešno identificirane mogu se premjestiti u mapu Primljeno, dok se one koje su stvarno neželjene pošte mogu izbrisati.
 mail_level=Postići
@@ -240,10 +251,13 @@ mail_will=Automatsko osvježavanje u $1 minuti
 mail_wills=Automatsko osvježavanje u $1 sekundi
 mail_delall=Izbriši svu neželjenu poštu
 mail_search3=Potražite gornji rezultat:
+
 process_eclean=Došlo je do pogreške prilikom uklanjanja zaglavlja SpamAssassin iz ove e-pošte
 process_ereport=Nije uspjelo prijavljivanje e-pošte SpamAssassin : $1 
+
 apply_err=Primjena promjena nije uspjela
 apply_none=Nisu pronađeni procesi SpamAssassin demona!
+
 acl_avail=Korisniku su dostupne ikone
 acl_file=SpamAssassin konfiguracijsku datoteku za uređivanje
 acl_filedef=Globalna konfiguracijska datoteka
@@ -251,8 +265,10 @@ acl_awl=Dopušteno korisnicima za uređivanje automatskog popisa
 acl_awl0=Svi korisnici
 acl_awl1=Samo navedeni korisnici $1 
 acl_awl2=Samo članovi grupa $1 
+
 search_escore=Nedostaje ili je nevažeća ocjena neželjene pošte
 search_results5=$1 poruke e-pošte s ocjenom neželjene pošte na ili iznad $2 ..
+
 razor_title=Postavljanje detektor neželjene pošte
 razor_desc=Vipul's Razor je kolaborativni sustav otkrivanja i prijavljivanja neželjene pošte koji može poboljšati klasifikaciju neželjene pošte koja se šalje na vašu adresu. No, prije upotrebe morate se registrirati za Razor račun, pomoću donjeg obrasca.
 razor_user=Korisničko ime brijača
@@ -267,6 +283,7 @@ razor_epass=Nedostaje lozinka
 razor_doing=Sada se pokušava registrirati i postaviti Razor ..
 razor_done=.. gotovo.
 razor_failed=.. neuspjeh! Pogledajte izlaz za pogrešku iznad za razlog.
+
 amavisd_title=Dostava neželjene pošte Amavisd
 amavisd_desc=Obrazac se može koristiti za promjenu Amavisd konfiguracije koja određuje što se događa s porukama klasificiranim kao neželjene pošte.
 amavis_ok=Promijenite Amavisd isporuku
@@ -304,9 +321,11 @@ amavis_quarantine_today=Neželjena pošta u karanteni danas (24h)
 amavis_quarantine_week=Neželjena pošta u karanteni ovaj tjedan (7 dana)
 amavis_quarantine_month=Neželjena pošta u karanteni ovog mjeseca (30 dana)
 amavis_quarantine_total=Ukupni broj neželjene pošte u karanteni
+
 procmail_title=Dostava neželjene pošte Procmail
 procmail_ok=Promijenite isporuku za Procmail
 procmail_desc=Obrazac se može koristiti za promjenu konfiguracije Procmail koja određuje što se događa s porukama klasificiranim kao neželjene pošte.
+
 simple_title=Testovi zaglavlja i tijela
 simple_desc=Ova vam stranica omogućuje definiranje dodatnih testova koje će SpamAssassin primijeniti na e-poštu na temelju zaglavlja poruka, sadržaja tijela i URL-ova koji se nalaze u tijelu. Na vama je dodijeljeno ime svakog testa, ali obično je nešto poput CONTAINS_FOO.
 simple_switch=Prebacite se na napredni način ..
@@ -317,8 +336,10 @@ simple_regexp=Usklađivanje izraza
 simple_score=Rezultat za primjenu
 simple_describe=Opis
 simple_err=Spremanje testova poruka nije uspjelo
+
 before_ecmd=Naredba prije spremanja nije uspjela : $1 
 after_ecmd=Naredba nakon spremanja nije uspjela : $1 
+
 connect_emysql=Nije uspio učitavanje pogonitelja baze podataka $1 
 connect_elogin=Prijavljivanje u bazu podataka $1:$2 nije uspjelo.
 connect_equery=Baza $1 ne sadrži tablicu s preferencijama $2 
@@ -326,9 +347,11 @@ connect_eldapmod=Perl modul $1 potreban za komunikaciju s LDAP-om nije instalira
 connect_eldap=Nije uspjelo povezivanje s LDAP serverom $1 na priključku $2 
 connect_eldaplogin=Prijava za LDAP poslužitelj $1 nije uspjela kao $2 : $3 
 connect_ebase=LDAP baza DN $1 nije valjana : $2 
+
 eldap=Operacija LDAP nije uspjela : $1 
 esql=SQL nije uspio : $1 
 ldap_euser=Nije moguće pronaći korisnički LDAP objekt za $1 
+
 db_title=SQL i LDAP baze podataka
 db_header=Opcije baze podataka za konfiguraciju
 db_dsn=Spremite korisničke konfiguracije u
@@ -364,6 +387,7 @@ db_eldapport=Nedostaje ili neispravan broj priključka LDAP poslužitelja
 db_eldapdn=Nedostaje ili neispravna baza DN - nisu dopušteni razmaci
 db_eldapattr=Nedostaje ili je nevažeći atribut SpamAssassin
 db_eldapuid=Nedostaje ili nije važeći atribut korisničkog imena
+
 awl_title=Upravljajte automatskim popisima
 awl_search=Popis za pretraživanje za:
 awl_ok=traži
@@ -389,6 +413,7 @@ awl_deleteone=Očistite automatsku listu
 awl_deleteonedesc=Uklonite sve unose s automatskog popisa za korisnika $1.
 awl_deleteall=Očistite sve automatske popise
 awl_deletealldesc=Uklonite sve unose automatskog popisa za sve korisnike u sustavu.
+
 dawl_err=Brisanje s automatskog popisa nije uspjelo
 dawl_eopen=Popis nije moguće otvoriti
 dawl_enone=Nije odabrana nijedna adresa za brisanje
@@ -396,6 +421,7 @@ dawl_ecannot=Nije vam dopušteno upravljanje automatskim popisima za ovaj korisn
 dawl_doing=Brisanje automatskih popisa za sve korisnike ..
 dawl_done=.. izbrisali su $2 unosa od $1 korisnika.
 dawl_title=Obrišite sve automatske popisa dopuštenih
+
 manual_title=Uređivanje konfiguriranja datoteka
 manual_file=Uređivanje konfiguracijske datoteke:
 manual_ok=u redu

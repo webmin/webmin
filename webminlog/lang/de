@@ -30,6 +30,7 @@ index_sdesc=Aktionsbeschreibung beinhaltet
 index_shost=Quell Webmin Server
 index_long=Zeige volle Aktionsbeschreibungen?
 index_global=&lt;Nicht in einem Modul&gt;
+
 search_title=Suchergebnisse
 search_date=Datum
 search_time=Zeit
@@ -63,6 +64,7 @@ search_global_baduser=Ungültiger Benutzername
 search_global_badpass=Ungültiges Passwort
 search_global_twofactor=Ungültiger Zwei-Faktor-Token
 search_csv=Exportieren als CSV.
+
 view_title=Ereignisdetails
 view_header=Details des aufgezeichneten Ereignisses in $1
 view_action=Beschreibung
@@ -96,12 +98,14 @@ view_files=Dateien geändert und Befehle ausgeführt
 view_raw=Raw Log Daten
 view_rawname=Parameter Name
 view_rawvalue=Parameter Wert
+
 acl_mods=Darf Logs in Modulen ansehen
 acl_all=Alle
 acl_sel=Unten ausgewählte ..
 acl_self=Nur Selbst
 acl_users=Darf Aktionen nach Benutzern auswählen
 acl_rollback=Darf Aktionen komplett rückgängig machen?
+
 rollback_title=Zurückschreib-Aktion
 rollback_rusure=Sind Sie sicher, daß Sie alle aufgelisteten Dateien mit dem vorherigem Inhalt überschreiben wollen? Alle Daten, die diese momentan haben, werden durch diese ersetzt :
 rollback_isdir=Ein Verzeichnis - keine Änderungen werden vorgenommen.
@@ -124,4 +128,5 @@ rollback_modfile=Inhalt der Datei $1 zurückgeschrieben.
 rollback_deleted=Gelöschte Datei $1.
 rollback_nodeleted=Nicht-existente Datei $1 ausgelassen.
 rollback_enone=Keine Dateien ausgewählt
+
 log_rollback=Zurück gerollte Aktion $1 in Modul $2

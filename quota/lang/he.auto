@@ -1,4 +1,5 @@
 quota_unlimited=ללא הגבלה
+
 acl_fss=מערכות קבצים שמשתמש זה יכול לערוך
 acl_fall=כל מערכות הקבצים
 acl_fsel=נבחר ..
@@ -24,9 +25,11 @@ acl_maxblocks=מכסת חסימת מקסימלית שניתנה למענק
 acl_maxfiles=מכסת קבצים ניתנת למקסימום
 acl_unlimited=ללא הגבלה
 acl_email=האם ניתן להגדיר התראות דוא"ל?
+
 activate_eallow=אינך רשאי להפעיל או לבטל מכסות במערכת קבצים זו
 activate_eon=נכשל בהפעלת מכסות
 activate_eoff=נכשלה כיבוי המכסות
+
 check_title=בדוק מכסות
 check_return=רשימת $1 
 check_ecannot=אינך יכול לבדוק מכסות במערכת קבצים זו
@@ -34,11 +37,13 @@ check_running=הפקודה <tt>ציטוט</em> מופעלת כעת כדי לבד
 check_done=... בוצע.
 check_rgroup=קבוצה
 check_ruser=משתמש
+
 cgroup_efail=העתקת מכסות נכשלה
 cgroup_ecannot=אינך יכול להעתיק מכסות
 cgroup_egallow=אינך רשאי להעתיק את המכסות של קבוצה זו
 cgroup_enogroup=אין קבוצות להעתקה אליהם
 cgroup_eallowto=אינך רשאי להעתיק מכסות ל- '$1'.
+
 cgform_title=העתק מכסות
 cgform_return=מכסה קבוצתית
 cgform_ecannot=אינך יכול להעתיק מכסות
@@ -48,11 +53,13 @@ cgform_all=כל הקבוצות במערכת שלך
 cgform_select=קבוצות שנבחרו
 cgform_contain=קבוצות המכילות משתמשים
 cgform_doit=עותק
+
 cuser_efail=העתקת מכסות נכשלה
 cuser_ecannot=אינך יכול להעתיק מכסות
 cuser_euallow=אינך רשאי להעתיק את המכסות של משתמש זה
 cuser_enouser=אין משתמשים להעתיק אליהם
 cuser_eallowto=אינך רשאי להעתיק מכסות ל- '$1'.
+
 cuform_title=העתק מכסות
 cuform_return=מכסת משתמשים
 cuform_ecannot=אינך יכול להעתיק מכסות
@@ -62,6 +69,7 @@ cuform_all=כל המשתמשים במערכת שלך
 cuform_select=משתמשים שנבחרו
 cuform_members=חברים בקבוצות נבחרות
 cuform_doit=עותק
+
 egroup_title=ערוך מכסת קבוצות
 egroup_freturn=רשימת מערכות הקבצים
 egroup_greturn=רשימת קבוצות
@@ -80,6 +88,7 @@ egroup_hflimit=הגבלת קובץ קשיח
 egroup_update=עדכון
 egroup_listall=רשימת כל המכסות
 egroup_listalldesc=לחץ על כפתור זה כדי להציג רשימה של כל מערכות הקבצים בהן יש לקבוצה זו מכסות דיסק, עם קישורים לעריכתן.
+
 euser_title=ערוך מכסת משתמשים
 euser_freturn=רשימת מערכות הקבצים
 euser_ureturn=רשימת משתמש
@@ -102,6 +111,7 @@ euser_hflimit=הגבלת קובץ קשה
 euser_update=עדכון
 euser_listall=רשימת כל המכסות
 euser_listalldesc=לחץ על כפתור זה כדי להציג רשימה של כל מערכות הקבצים בהן יש למשתמש זה מכסות דיסק, עם קישורים לעריכתן.
+
 gfilesys_title=מכסות קבוצתיות
 gfilesys_return=רשימת מערכות הקבצים
 gfilesys_ecannot=אינך יכול לערוך מכסות עבור '$1'
@@ -120,6 +130,7 @@ gfilesys_copy=העתק מכסות
 gfilesys_editdesc=צפה וערוך את המכסות לקבוצה זו במערכת קבצים אחרת שאין לה מכסות כרגע.
 gfilesys_copydesc=העתק מגבלות מכסות עבור קבוצה זו בכל מערכות הקבצים לקבוצה או לכל הקבוצות האחרות.
 gfilesys_enone=לא הוזן שם קבוצה
+
 ggracef_title=גרייס טיימס
 ggracef_return=רשימת קבוצות
 ggracef_ecannot=אינך יכול לערוך זמני חסד במערכת קבצים זו
@@ -128,9 +139,11 @@ ggracef_graces=טיימס גרייס קבוצתי עבור <tt>$1</tt>
 ggracef_block=למכסת חסימות
 ggracef_file=למכסת קבצים
 ggracef_update=עדכון
+
 ggraces_esave=נכשל בשמירת זמני החסד
 ggraces_eedit=אינך יכול לערוך זמני חסד במערכת קבצים זו
 ggraces_enumber='$1' אינו מספר
+
 index_quser=מכסות משתמשים
 index_qgroup=מכסות קבוצתיות
 index_qboth=מכסות משתמשים וקבוצות
@@ -154,6 +167,7 @@ index_egroup=ערוך מכסות קבוצתיות:
 index_egroupdesc=הכנס או בחר קבוצה ולחץ על כפתור זה כדי להציג את המכסות שלה בכל מערכות הקבצים.
 index_nosupport=אף מערכות קבצים מקומיות אינן יכולות לתמוך במכסות.
 index_mountmod=באפשרותך לאפשר מכסות עבור מערכת קבצים במודול <a href='$1'>מערכות דיסק קבצי רשת</a>.
+
 lgroups_failed=רשימת הקבוצות נכשלה
 lgroups_tablist=רשימת קבוצות
 lgroups_eallow=אינך רשאי לערוך מכסות במערכת קבצים זו
@@ -182,13 +196,17 @@ lgroups_tofixed=כתובת 1
 lgroups_emailheader=שלח דוא"ל לקבוצות המתקרבות למכסה
 lgroups_email=לשלוח דוא"ל לקבוצות?
 lgroups_tovirt=בעל תחום Virtualmin
+
 sgroup_egroup=אינך רשאי לערוך מכסות עבור קבוצה זו
 sgroup_efs=אינך רשאי לערוך מכסות במערכת קבצים זו
+
 ssync_ecannot=אינך יכול להגדיר את מכסת ברירת המחדל עבור מערכת קבצים זו
+
 suser_euser=אינך רשאי לערוך מכסות למשתמש זה
 suser_efs=אינך רשאי לערוך מכסות במערכת קבצים זו
 suser_emaxblocks=אינך רשאי להעניק מגבלות חסימות מעל $1 
 suser_emaxfiles=אינך רשאי להעניק מגבלות קבצים מעל $1 
+
 ufilesys_title=מכסות משתמשים
 ufilesys_return=רשימת מערכות הקבצים
 ufilesys_ecannot=אינך יכול לערוך מכסות עבור '$1'
@@ -208,6 +226,7 @@ ufilesys_copydesc=העתק מגבלות מכסות למשתמש זה בכל מע
 ufilesys_copy=העתק מכסות
 ufilesys_grace=חן
 ufilesys_enone=לא הוזן שם משתמש
+
 ugracef_title=גרייס טיימס
 ugracef_return=רשימת משתמש
 ugracef_ecannot=אינך יכול לערוך זמני חסד במערכת קבצים זו
@@ -216,9 +235,11 @@ ugracef_graces=טיימס משתמש עבור <tt>$1</tt>
 ugracef_block=למכסת חסימות
 ugracef_file=למכסת קבצים
 ugracef_update=עדכון
+
 ugraces_esave=נכשל בשמירת זמני החסד
 ugraces_eedit=אינך יכול לערוך זמני חסד במערכת קבצים זו
 ugraces_enumber='$1' אינו מספר
+
 lusers_failed=רישום המשתמשים נכשל
 lusers_tablist=רשימת משתמש
 lusers_tabdefault=מכסות ברירת מחדל
@@ -264,12 +285,14 @@ lusers_from=מאת: כתובת למייל
 lusers_mass=עדכן משתמשים שנבחרו
 lusers_cc=שלחו גם דוא"ל אל
 lusers_nocc=אף אחד
+
 grace_seconds=שניות
 grace_minutes=דקות
 grace_hours=שעה (ות
 grace_days=ימים
 grace_weeks=שבועות
 grace_months=חודשים
+
 log_activate_u=מכסות משתמשים מופעלות ב- $1 
 log_activate_g=מכסות קבוצתיות מופעלות ב- $1 
 log_activate_ug=מכסות משתמשים וקבוצות מופעלים ב- $1 
@@ -287,6 +310,7 @@ log_check=מכסות שנבדקו ב- $1
 log_copy_u=מכסות המשתמש $1 שהועתקו
 log_copy_g=המכסות של הקבוצה $1 שהועתקו
 log_support=תמיכה במכסה מופעלת עבור $1 
+
 email_err=שמירת אפשרויות הדוא"ל נכשלה
 email_ecannot=אינך רשאי לשנות אפשרויות דוא"ל
 email_einterval=מרווח חסר או לא חוקי
@@ -299,6 +323,7 @@ gemail_msg=השימוש בדיסק בקבוצה $1 במערכת הקבצים $2 
 email_subject=מכסת הדיסק חרגה
 gemail_subject=מכסת הדיסק חרגה
 email_eto=כתובת דוא"ל יעד חסרה
+
 umass_title=עדכן מכסות משתמשים
 umass_header=שינויים במכסה יחולו על משתמשים שנבחרו
 umass_sblocks=גבול בלוקים רך
@@ -315,6 +340,7 @@ umass_esfiles=מגבלת קבצים רכים חסרה או לא חוקית
 umass_ehfiles=מגבלת קבצים קשיחים חסרה או לא חוקית
 umass_count=השינויים להלן יחולו על $1 משתמשים שנבחרו ..
 umass_err=עדכון מכסות המשתמשים נכשל
+
 gmass_title=עדכן מכסות קבוצתיות
 gmass_header=שינויים במכסה לחלות על קבוצות שנבחרו
 gmass_count=השינויים להלן יחולו על $1 קבוצות שנבחרו ..

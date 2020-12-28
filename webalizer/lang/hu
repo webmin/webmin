@@ -24,6 +24,7 @@ index_egetversion=Nem sikerült a Webalizer verzióját lekérdeznem a következ
 index_when=Igen, $1
 index_webalizer=Webalizer
 index_enable=Kiválasztott ütemezés
+
 edit_title1=Naplófájl hozzáadása
 edit_title2=Naplófájl szerkesztése
 edit_header=Naplófájl riport beállításai
@@ -47,12 +48,14 @@ edit_cmode0=Globális beállítások használata
 edit_cmode1=Egyéni beállítások
 edit_cmode2=Más konfigurációs fájl..
 edit_clear=Naplófájl törlése az ütemezett riport után?
+
 gen_title=Riport készítése
 gen_header=Futtatom a Webalizer-t riport készítéshez a $1 -ből ..
 gen_done=.. rendben
 gen_failed=.. webalizer hibázott! Ellenőrizze a kimenetet a részletek miatt.
 gen_nothing=.. A Webalizer befejezte a munkát, de nem készült riport. Ellenőrizze a kimenetet a részletek miatt.
 gen_view=A teljes riport megtekintése
+
 save_err=Nem sikerült elmenteni a naplófájlt
 save_efile=A napló filet nem lehet elérni vagy nem létezik
 save_ecfile=Hibás vagy nem létezőmásik konfigurációs file
@@ -62,12 +65,14 @@ save_ewuser=Nincs $1 nevü Unix felhasználó
 save_ehost=Nem létező vagy érvénytelen weboldal hosztnév
 save_etitle=Hibás riport fejléc
 save_ecannot=Önnek nincs engedélyezve hogy riportot generáljon a naplóból $1 alatt
+
 view_epath=Érvénytelen PATH_INFO
 view_efile=Hibás riport fájlnév
 view_elog=Hibás naplófájl
 view_ecannot=Önnek nincs joga megnézni ezt a riportot
 view_eopen=Nem tudom megnyitni a riport fájlt
 view_title=Riport megtekintése
+
 global_title=Globális Webalizer beállítások
 global_title2=webalizer Riport beállítások
 global_for=A $1 naplófájlhoz
@@ -128,6 +133,7 @@ global_includesite=Kliensek, amelyeket nem kell tiltani
 global_includereferrer=Hivatkozások, amelyeket nem kell tiltani
 global_includeuser=Felhasználók, amelyeket nem kell tiltani
 global_includeagent=Böngészők, amelyeket nem kell tiltani
+
 global_err=Nem sikerült menteni a Webalizer beállításokat
 global_ereport=Hibás riport fejléc előtag
 global_ehost=Nem létező vagy hibás hosztnév
@@ -137,12 +143,14 @@ global_etable=Hibás vagy érvénytelen méret megadása a '$1' táblának
 global_ehistory=Nem létező vagy hibás történeti filenév
 global_ecurrent=Nem létező vagy hibás incrementáló filenév
 global_ecache=Nem létező vagy hibás DNS cache filenév
+
 log_create_log=Elkészült riport a $1 -hoz
 log_modify_log=Módosult a riport a $12 -hoz
 log_delete_log=Törölt riport a $1 -hoz
 log_generate_log=Generált riport a $1 -hoz
 log_global=Módosult a globális Webalizer beállítások
 log_global2=Módosult a webalizer beállítások a $1 -hoz
+
 acl_view=Csak létező riportokat lehet megnézni?
 acl_global=Szerkeszthetőek legyenek a globális webalizer opciók?
 acl_dir=Csak megnézési és szerkesztési lehetőség a riportoknak a naplóban ez alatt

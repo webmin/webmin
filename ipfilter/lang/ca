@@ -43,8 +43,10 @@ index_natnone=Encara no s'ha definit cap regla de traducció d'adreces de xarxa 
 index_nataction=Mode NAT
 index_natfrom=Paquets que han de coincidir
 index_natto=Traducció
+
 dir_in=D'entrada
 dir_out=De sortida
+
 action_pass=<font color=#00aa00>Pas</font>
 action_block=<font color=#ff0000>Bloc</font>
 action_skip=Omet
@@ -57,6 +59,7 @@ action_map=Mapejat
 action_rdr=Redirecció
 action_bimap=Mapejat Bidireccional
 action_map-block=Bloqueja el mapejat
+
 laction_pass=<font color=#00aa00>Passa el paquet</font>
 laction_block=<font color=#ff0000>Paquet de bloc, amb codi ICMP</font>
 laction_log=Registra el paquet, al nivell
@@ -65,6 +68,7 @@ laction_skip=Omet les regles següents
 laction_auth=Autorització d'espai d'usuari
 laction_preauth=Comprova l'autorització anterior
 laction_call=Crida funció de nucli
+
 edit_title1=Creació de Regla
 edit_title2=Edició de Regla
 edit_header1=Acció de la regla
@@ -130,6 +134,7 @@ edit_icmp=Tipus ICMP
 edit_icmpany=&lt;Qualsevol tipus&gt;
 edit_icmpcode=i codi
 edit_codeany=&lt;Qualsevol codi&gt;
+
 save_err=No s'ha pogut desar la regla
 save_ehostfrom=Hi falta el nom de host origen o bé és invàlid
 save_ehostto=Hi falta el nom de host destí o bé és invàlid
@@ -158,11 +163,13 @@ save_eto=Hi falta la interfície de sortida o bé és invàlida
 save_etoip=L'adreça IP de sortida és invàlida
 save_ereplyto=Hi falta la interfície de resposta o bé és invàlida
 save_ereplytoip=L'adreça IP de resposta és invàlida
+
 apply_err=No s'ha pogut aplicar la configuració
 apply_remote=Error de $1: $2
 unapply_err=No s'ha pogut revertir la configuració
 unapply_ein=No s'han pogut obtenir les regles d'entrada
 unapply_eout=No s'han pogut obtenir les regles de sortida
+
 desc_if=Si $1
 desc_and=i
 desc_always=Sempre
@@ -196,6 +203,7 @@ desc_rdr=Adreces IP $1 port $2
 desc_dport1=el port és $1
 desc_dport2=el port està entre $1 i $2
 desc_nattoiface=adreça de la interfície
+
 log_create_rule=S'ha creat la regla $1
 log_delete_rule=S'ha suprimit la regla $1
 log_modify_rule=S'ha modificat la regla $1
@@ -224,6 +232,7 @@ log_add_host=S'ha afegit el servidor de clúster $1
 log_add_group=S'han afegit els servidors de clúster del grup $1
 log_delete_host=S'ha eliminat el servidor de clúster $1
 log_delete_group=S'han eliminat $1 servidors de clúster
+
 cluster_title=Servidors Tallafoc de Clúster
 cluster_none=Encara no s'ha afegit cap servidor al clúster del tallafoc.
 cluster_host=Nom de host
@@ -234,6 +243,7 @@ cluster_gadd=Afegeix els servidors del grup
 cluster_need=Has d'afegir els servidors amb un usuari i una contrasenya al mòdul d'Índex de Servidors Webmin abans de poder gestionar-los aquí.
 cluster_return=als servidors de clúster
 cluster_delete=Elimina els Seleccionats
+
 add_title=Addició de Servidors
 add_msg=S'està afegint $1...
 add_gmsg=S'està afegint els servidors del grup $1...
@@ -242,6 +252,7 @@ add_gerr=No s'ha pogut afegir el grup
 add_echeck=El servidor $1 no té el mòdul de Tallafoc IPFilter
 add_emissing=El servidor $1 no té l'ordre $2 del tallafoc
 add_ok=S'ha afegit $1, amb $2 regles del tallafoc actives.
+
 nat_title1=Creació de regla NAT
 nat_title2=Edició de regla NAT
 nat_action=Mode NAT
@@ -300,4 +311,5 @@ nat_edport2=Hi falta el port final original o bé és invàlid
 net_erdrip='$1' no és una adreça IP de destinació vàlida
 nat_erdrips=No has introduït cap IP de destinació
 nat_erdrport=Hi falta el port de destinació o bé és invàlid
+
 boot_esmf=El servei SMF $1 ja no existeix o bé no està en un estat conegut

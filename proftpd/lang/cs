@@ -23,7 +23,9 @@ index_eip=&lt;Neznámý&gt;
 index_global=Globální konfigurace
 index_create=Vytvořit virtuální server
 index_version=ProFTPd verze $1
+
 efailed=Chyba při ukládání $1
+
 type_0=Nastavení sítí
 type_1=Nastavení Loggování
 type_2=Soubory a adresáře
@@ -31,6 +33,7 @@ type_3=Kontrola přístupu
 type_4=Ostatní
 type_5=Uživatel a skupina
 type_6=Autentikace
+
 virt_title=Nastavení virtuálního serveru
 virt_header1=Pro $1
 virt_header2=Pro výchozí server
@@ -46,6 +49,7 @@ virt_cmds=FTP příkazy
 virt_return=virtuální server
 virt_virt=Konfigurovat virtuální server
 virt_edit=Editovat direktivy
+
 vserv_title=Konfigurovat virtuální server
 vserv_addr=Adresa
 vserv_name=Jméno serveru
@@ -54,6 +58,7 @@ vserv_delete=Smazat virtuální server
 vserv_eaddr=Delete virtual serverá adresa
 vserv_eport=Delete virtual serveré číslo portu
 vserv_ename=Chybějící jméno serveru
+
 anon_title=Nastavení anonymního FTP
 anon_header1=Na virtuálním serveru $1
 anon_header2=Na výchozím serveru
@@ -61,6 +66,7 @@ anon_anon=Konfigurovat anonymní FTP
 anon_return=Nastavení anonymního FTP
 anon_header3=Pro anonymní FTP na virtuálním serveru $1
 anon_header4=Pro anonymní FTP na výchozím serveru
+
 aserv_title=Konfigurace anonymního FTP
 aserv_create=Nastavit anonymní FTP
 aserv_root=Omezení na adresář
@@ -71,6 +77,7 @@ aserv_eroot=Chybějící nebo nesprávný chroot adresář
 aserv_euser=Chybějící nebo nesprávný Unix uživatel
 aserv_egroup=Chybějící nebo nesprávný Unix skupina
 aserv_desc=Anonymní FTP dosud nebyl pro tento virtuální server nastaven. Použitím tohoto formuláře nastavíte počáteční konfigurační možnosti.
+
 dir_title=Nastavení Per-Directory
 dir_header2=Pro adresář $1 na výchozím serveru
 dir_header1=Pro adresář $1 na virtuálním serveru $2
@@ -80,12 +87,14 @@ dir_header3=$1 nastavení na $2
 dir_header=Nastavení Per-command
 dir_dir=Konfigurovat adresář
 dir_header4=Pro adresář $1 v anonymním FTP
+
 manual_title=Editovat direktivy
 manual_header=Použít níže uvedený text box pro ruční editování ProFTPD direktiv na $1, které jsou aploďkovány na tento virtuální server, adresář nebo příkazy
 manual_configs=Editovat konfigurační soubory
 manual_ecannot=Nemáte oprávnění ručně editovat direktivy
 manual_file=Editovat direktivy v souboru:
 manual_efile=Neplatný ProFTPd konfigurační soubor
+
 limit_title=Nastavení Per-Command
 limit_header4=Pro příkazy $1 v adresáři $2
 limit_header2=Pro příkazy $1 na výchozím serveru
@@ -96,16 +105,19 @@ limit_header3=$1 nastavení pro příkazy $2
 limit_return=per-command nastavení
 limit_header5=Pro příkazy $1 na anonymním FTP
 limit_header6=Pro příkazy $1 v souboru $2
+
 lserv_title=Konfigurovat příkazy
 lserv_cmd=FTP příkazy
 lserv_delete=Smazat konfigurace příkazů
 lserv_err=Chaba při ukládání příkazů
 lserv_ecmd=NNejsou vybrány žádné příkazy
+
 dserv_title=Konfigurovat adresář
 dserv_dir=Cesta k adresáři
 dserv_err=Chyba při ukládání adresáře
 dserv_edir=Chybějící cesta k adresáři
 dserv_delete=Smazat konfiguraci adresáře
+
 mod_core_type=Typ serveru
 mod_core_inetd=Bežet pod Inetd
 mod_core_stand=Stand-alone démon
@@ -288,6 +300,7 @@ mod_core_duser=Zakázat uživatele
 mod_core_eip='$1' není platná IP adresa
 mod_core_enet='$1' není platná síťová adresa
 mod_core_ehost='$1' není platné jméno hosta
+
 mod_ls_fakegroup=Falšovat skupinu ve výpisu adresáře?
 mod_ls_fakeuser=Falšovat uživatele ve výpisu adresáře?
 mod_ls_fakemode=Falšovat práva ve výpisu adresáře
@@ -302,6 +315,7 @@ mod_ls_fakeasgroup=Ano, jako skupina ..
 mod_ls_fakesamegroup=Připojená skupina
 mod_ls_efakeuser=Chybějící nebo nesprávný falešný uživatel
 mod_ls_efakegroup=Chybějící nebo nesprávná falešná skupina
+
 mod_auth_chdir=Počáteční přihlašovací adresář
 mod_auth_echdir=Chybějící nebo nesprávný počáteční adresář
 mod_auth_chroot=Omezit uživatele v adresářích
@@ -315,7 +329,9 @@ mod_auth_egroups=Nebyla vložeya žádné Unix skupiny pro chroot
 mod_auth_echroot=Chybějící nebo nesprávný chroot adresář
 mod_auth_login=Neptat se na heslo, pokud je přihlášení neúspěšné?
 mod_auth_root=Povolit přihlášení uživateli root?
+
 mod_site_chmod=Povolit příkaz chmod?
+
 mod_unixpw_ufile=Přepsat soubor Unix hesel
 mod_unixpw_eufile=Chybějící nebo nesprávn souobor Unix hesel
 mod_unixpw_gfile=Vystřídat soubor Unix skupin
@@ -323,6 +339,7 @@ mod_unixpw_egfile=Chybějící nebo nesprávný soubor Unix skupin
 mod_unixpw_none=Nic
 mod_unixpw_pam=Vždy považovat PAM jako autoritativní?
 mod_unixpw_persist=Neustále ponechat soubor hesel otevřený?
+
 mod_log_syslog=Logovat chyby do souboru
 mod_log_sysdef=Systemový log
 mod_log_esyslog=Chybějící nebo nesprávný log soubor
@@ -339,14 +356,18 @@ mod_log_fmt=Formátovací řetězec
 mod_log_format=Vlastní log formáty
 mod_log_enickname=Chybějící nebo nesprávný název formátu
 mod_log_efmt=Chybějící formátovací řetězec
+
 mod_pam_pam=Použít PAM pro autentikaci?
 mod_pam_config=Autentikovat pomocí služby PAM
 mod_pam_econfig=Chybějící nebo nesprávná PAM služba
+
 mod_readme_display=Uvědomit uživatele o souborech, které vyhovují
 mod_readme_none=Nic
 mod_readme_edisplay=Chybějící model readme souborů
+
 start_err=Chyba při spuštění FTP serveru
 start_einetd=Nemůžete spustit démona server, protože je v inetd módu.
+
 ftpaccess_title=Soubory nastavení Per-Directory
 ftpaccess_desc=Přídavná per-directory nastavení mohou být specifikována v souboru (obvykle nazvaná <tt>.ftpaccess</tt>) v každém adresáři. Tato nastavení paltí pro všechny soubory daného adresáře a vnořených podadresářů, dokud není přepsán jiným souborem nastavení.
 ftpaccess_create=Vytvořit soubor nastavení
@@ -354,8 +375,10 @@ ftpaccess_find=Najít soubory nastavení
 ftpaccess_auto=Pod anonymním
 ftpaccess_from=Od adresáře
 ftpaccess_return=seznam souborů nastavení
+
 ftpusers_title=Nepovolení FTP uživatelé
 ftpusers_desc=Je-li to povoleno pod ikonou <tt>Autentikace</tt>, níže uvedení uživatelé ze souboru $1nebudou mít přístup jako FTP uživatel.
+
 ftpindex_title=Soubor nastavení Per-Directory
 ftpindex_delete=Smazat soubor
 ftpindex_opts=Per-Directory nastavení
@@ -365,8 +388,10 @@ ftpindex_addlimit=Přidat per-command nastavení pro ..
 ftpindex_header2=$1 v $2
 ftpindex_return=soubor per-directory nastavení
 ftpindex_header=Pro $1
+
 find_err=Chyba při hledání souborů nastavení
 find_eanon=Anonymní FTP není nastaven na žádném virtuálním serveru
+
 log_global=Změněna globální $1 nastavení
 log_ftpusers=Změněni nepovolení FTP uživatelé
 log_virtc=Vytvořen server $1

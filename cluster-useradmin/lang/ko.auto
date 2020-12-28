@@ -17,6 +17,7 @@ index_tdesc=기술
 index_tucount=사용자
 index_tgcount=여러 떼
 index_ttype=OS 유형
+
 add_title=서버 추가
 add_msg=$1 추가 중 ..
 add_gmsg=$1 그룹에 서버 추가
@@ -26,6 +27,7 @@ add_echeck=$1 서버에 사용자 및 그룹 모듈이 없습니다
 add_epft=서버 $1 이 (가)이 호스트와 동일한 사용자 파일 형식을 사용하지 않습니다
 add_egft=$1 서버가이 호스트와 동일한 그룹 파일 형식을 사용하지 않습니다
 add_ok=$2 사용자 및 $3 그룹에 $1 을 (를) 추가했습니다.
+
 host_title=관리 서버
 host_header=소프트웨어 관리 서버 세부 사항
 host_name=호스트 이름
@@ -34,8 +36,7 @@ host_delete=관리 목록에서 제거
 host_refresh=사용자 및 그룹 새로 고침
 host_users=사용자 수
 host_groups=그룹 수
-host_ulist=서버의 사용자
-host_glist=서버의 그룹
+
 host_return=서버 세부 사항
 refresh_title=사용자 및 그룹 새로 고침
 refresh_header=모든 서버에서 사용자 및 그룹 목록 요청
@@ -49,6 +50,7 @@ refresh_gdel=$1 그룹 제거
 refresh_done=.. 완료
 refresh_del=서버 목록에서 $1 을 제거했습니다.
 refresh_failed=$1 을 (를) 새로 고치지 못했습니다  : $2 
+
 uedit_host=$1 의 세부 정보
 uedit_leave=변경하지 마십시오
 uedit_set=로 설정
@@ -66,6 +68,7 @@ uedit_servers=작성할 서버
 uedit_all=&lt;모든 호스트&gt;
 uedit_donthave=&lt;그가없는 호스트&gt;
 uedit_group=$1 의 회원
+
 usave_einuse=같은 이름의 사용자가 이미 $1 에 존재합니다
 usave_esecgid=보조 그룹 $1 이 (가) 없습니다
 usave_con=$1 에서 작성 중입니다 ..
@@ -88,16 +91,20 @@ usave_header=모든 호스트에서 사용자 $1 을 (를) 작성 중입니다.
 usave_header5=$2 에서 사용자 $1 을 (를) 작성 중입니다 ..
 usave_header4=그룹 $2 의 멤버에서 사용자 $1 을 (를) 작성 중입니다 ..
 usave_header3=자신이없는 호스트에서 사용자 $1 을 (를) 작성하는 중입니다.
+
 search_hosts=호스트
+
 udel_on=$1 에서 삭제 중입니다.
 udel_servs=존재하는 경우 홈 디렉토리 삭제
 udel_others=다른 모듈에서 사용자를 삭제 하시겠습니까?
 udel_dothers=다른 모듈에서 삭제 ..
 udel_gone=사용자가 더 이상 존재하지 않습니다.
 udel_failed=사용자를 삭제하지 못했습니다  : $1 
+
 gdel_on=$1 에서 삭제 중입니다.
 gdel_gone=사용자가 더 이상 존재하지 않습니다.
 gdel_failed=그룹을 삭제하지 못했습니다  : $1 
+
 gsave_create=그룹 파일 항목 추가하기 ..
 gsave_con=$1 에서 작성 중입니다 ..
 gsave_euser=사용자 $1 이 존재하지 않습니다
@@ -110,10 +117,12 @@ gsave_header=모든 호스트에서 $1 그룹을 만드는 중입니다.
 gsave_header5=$2 에 $1 그룹을 만드는 중입니다.
 gsave_header4=$2 그룹의 구성원에 $1 그룹을 작성하는 중입니다.
 gsave_header3=그룹이없는 호스트에서 그룹 $1 을 (를) 작성 중입니다.
+
 gedit_host=$1 의 세부 정보
 gedit_add=사용자 추가
 gedit_del=사용자 제거
 gedit_donthave=&lt;없는 호스트&gt;
+
 sync_title=서버 동기화
 sync_desc=이 양식을 사용하면 현재 클러스터가없는 서버에서 사용자 및 그룹을 작성하여 클러스터의 모든 서버에서 계정을 동기화 할 수 있습니다.
 sync_hosts=동기화 할 서버
@@ -141,6 +150,7 @@ sync_test=수행 할 작업 만 표시 하시겠습니까?
 sync_makehome=홈 디렉토리를 만드시겠습니까?
 sync_copy=파일을 홈 디렉토리로 복사 하시겠습니까?
 sync_others=다른 모듈에서 사용자를 만드시겠습니까?
+
 log_create_user=생성 된 사용자 $1 
 log_delete_user=삭제 된 사용자 $1 
 log_modify_user=수정 된 사용자 $1 

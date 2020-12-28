@@ -3,11 +3,14 @@ index_return=Configuració d'OpenSLP
 index_eslpd=No s'ha trobat al sistema el dimoni $1 d'OpenSLP. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_econf=No s'ha trobat al sistema el fitxer de configuració $1 d'OpenSLP. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_version=OpenSLP versió $1
+
 slp_apply=Aplica els Canvis
 slp_stop=Atura OpenSLP
+
 snda_title=Abast Estàtic i DA
 snda_useScopes=Llista estàtica d'Abasts
 snda_DAAddresses=Llista estàtica d'Agents de Directori (DA)
+
 netcfg_title=Configuració de Xarxa
 netcfg_isBroadcastOnly=Força l'ús de retransmissions en lloc de multiemissió
 netcfg_passiveDADetection=Utilitza detecció passiva de DA
@@ -23,20 +26,25 @@ netcfg_unicastMaximumWait=Temps d'espera màxima entre peticions monoemissió (e
 netcfg_randomWaitBound=Valor màxim per a tots els paràmetres d'espera aleatoris (en mil·lisegons)
 netcfg_MTU=Mida del paquet MTU (en bytes)
 netcfg_interfaces=Adreces IP de les interfícies que el DA/SA ha d'escoltar
+
 dacfg_title=Configuració de DA
 dacfg_isDA=Funciona només com a DA (Llegiu la guia d'usuaris abans de canviar això)
+
 log_title=Rastreig i Registre
 log_traceDATraffic=Mostra els missatges de trànsit DA
 log_traceMsg=Mostra els missatges de detall de SLP
 log_traceDrop=Mostra la informació de missatges omesos de SLP
 log_traceReg=Mostra la informació d'enregistrament i desenregistrament de DA i SA
+
 error_open=Error en obrir el fitxer
 error_flock_on=Error en crear el bloqueig del fitxer
 error_flock_off=Error en destruir el bloqueig del fitxer
 error_hup=Error en reiniciar OpenSLP amb PID
+
 index_start=Inicia OpenSLP
 index_startmsg=Fes clic sobre aquest botó per iniciar el dimoni d'OpenSL al sistema.
 index_stop=Atura OpenSLP
 index_stopmsg=Fes clic sobre aquest botó per aturar el dimoni d'OpenSLP del sistema.
+
 stop_err=No s'ha pogut aturar OpenSLP
 start_err=No s'ha pogut iniciar OpenSLP

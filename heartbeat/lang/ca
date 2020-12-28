@@ -11,6 +11,7 @@ index_ereq_resource_cmd=No s'ha trobat al sistema el script per demanar recursos
 index_version=Heartbeat versió $1
 index_noversion=Atenció - No s'ha pogut detectar automàticament la versió de Heartbeat instal·lada al sistema. L'hauries de configurar a la pàgina de <a href='$1'>configuració del mòdul</a>.
 index_status=Estat de Heartbeat
+
 conf_title=Opcions de Configuració
 conf_header=Opcions de configuració de heartbeat
 conf_baud=Bauds del port sèrie
@@ -51,6 +52,7 @@ conf_auto_on=${conf_enabled}
 conf_auto_off=${conf_disabled}
 conf_auto_legacy=Mode original
 conf_auto_=${default}
+
 res_title=Recursos del Clúster
 res_node=Node Primari
 res_ips=Adreces IP
@@ -64,6 +66,7 @@ res_getserv=Obtingues Recurs
 res_hbdown=Heartbeat desactivat
 res_up=ACTIVAT
 res_down=DESACTIVAT
+
 node_create=Addició de Recurs de Clúster
 node_edit=Edició de recurs de Clúster
 node_header=Detalls del recurs de clúster
@@ -80,6 +83,7 @@ node_enone=Hi falta el node primari o bé és invàlid
 node_eip='$1' no és una adreça IP vàlida
 node_ecidr='$1' no és un CIDR vàlid
 node_ebroad='$1' no és una adreça de retransmissió vàlida
+
 auth_title=Claus d'Autenticació
 auth_header=Autenticació de node del clúster
 auth_mode=Mode d'autenticació
@@ -89,6 +93,8 @@ auth_md5=MD5 amb contrasenya
 auth_err=No s'han pogut desar les claus d'autenticació
 auth_emd5=Hi falta la contrasenya MD5 o bé és invàlida
 auth_esha1=Hi falta la contrasenya SHA1 o bé és invàlida
+
 start_err=No s'ha pogut iniciar heartbeat
+
 apply_err=No s'han pogut aplicar els canvis
 apply_epid=El procés ja no està en execució

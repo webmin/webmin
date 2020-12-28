@@ -6,6 +6,7 @@ index_printershare=inprimagailua partekatzea
 index_shareconf=partekatzeko konfigurazioa
 index_version=Samba $1 bertsioa
 index_samba=Samba
+
 index_sharename=Partekatu izena
 index_path=Path
 index_security=Segurtasuna
@@ -42,12 +43,14 @@ index_stopmsg=Egin klik botoi honetan zure sisteman Samba zerbitzariak martxan j
 index_stopmsg_wb=Egin klik botoi honetan zure sisteman Winbind zerbitzariak martxan jartzeko.
 index_einclude=Abisua - $1 Samba konfigurazio fitxategiak $2 edo $3 zuzentaraua ditu. Horrek Webmin-ek fitxategia gaizki aldatzea eragin dezake.
 index_delete=Ezabatu hautatutako akzioak
+
 config_mins=mins
 config_secs=secs
 config_bytes=bytes
 config_never=Inoiz ez
 config_all=guztiak
 config_neither=Ezta
+
 global_title=Konfigurazio globala
 global_unixnetwork=Unix Sarea
 global_winnetwork=Windows Sarea
@@ -60,6 +63,7 @@ global_password=Zifratutako pasahitzak
 global_users=Samba erabiltzaileak
 global_group=Samba Taldeak
 global_bind=Winbind aukerak
+
 error_nosamba=Ez da aurkitu <tt>$1</tt> Samba zerbitzaria exekutagarria. Bai Samba ez dago zure sisteman instalatuta edo zure <a href="$2">moduluaren konfigurazioa</a> okerra da.
 error_version=Webmin-ek Samba zerbitzariaren bertsioa ezin izan zuen lortu <tt>$1</tt>. Egiaztatu <a href="$2">moduluaren konfigurazioa</a> ziurtatzeko bide egokia dela.
 error_config=Ez da $1 konfigurazio fitxategia aurkitu. Seguruenik Samba ez dago zure sisteman instalatuta edo zure <a href="$2">moduluaren konfigurazioa</a> okerra da.
@@ -67,6 +71,7 @@ error_include=Webminak ezin du <tt>config</tt> edo <tt></tt> zuzentarauak erabil
 error_delshare=Ezin izan da partekatzea ezabatu
 error_delcopy='$1' kuota partekatutako kopiak
 error_savename=Ezin izan da fitxategien izena gordetzean
+
 convert_title=Erabiltzaileak bihurtu
 convert_msg=Inprimaki honek Unix eta Samba erabiltzaileen zerrenda sinkronizatzeko aukera ematen du. Samba <a href=$1>enkriptatutako pasahitzak</a> erabiltzen ari denean, erabiltzaileen eta pasahitzen zerrenda banandua erabiltzen da sistemako erabiltzaileen zerrendaren ordez.
 convert_noconv=Ez bihurtu erabiltzaile horiek ez kendu:
@@ -83,6 +88,7 @@ convert_cannot=Unix erabiltzaileak ezin dira Samba erabiltzaile bihurtu
 convert_who=Unix erabiltzaileak bihurtzeko
 convert_who0=Zerrendatutako erabiltzaileak edo UID barrutiak soilik
 convert_who1=Zerrendatutako erabiltzaileak eta UID barrutiak izan ezik
+
 misc_title=Askotariko aukerak
 misc_debug=Arazketa maila
 misc_cachecall=Cache <tt>getwd ()</tt> deiak?
@@ -96,6 +102,7 @@ misc_chroot=<tt>chroot ()</tt> direktorioa
 misc_smbrun=<tt>smbrun</tt> bidea
 misc_clienttime=Bezeroaren denbora konpentsazioa
 misc_readprediction=Irakurri iragarpena?
+
 net_title=Unix sareko aukerak
 net_idle=Desaktibatu aurretik, denbora inaktiboan
 net_trustlist=Konfiantzazko ostalari/erabiltzaileen fitxategia
@@ -111,6 +118,7 @@ net_maxpacket=Gehienezko paketearen tamaina
 net_listen=Helbidea entzun
 net_ip=IP helbidea
 net_socket=Socket aukerak
+
 passwd_title=Pasahitz aukerak
 passwd_encrypt=Erabili enkriptatutako pasahitzak?
 passwd_allownull=Pasahitz nuluak onartzea?
@@ -124,11 +132,13 @@ passwd_send=Bidali
 passwd_map=Erabiltzaileen mapa
 passwd_unixuser=Unix erabiltzaileak
 passwd_winuser=Windows erabiltzaileak
+
 print_title=Inprimatzeko aukerak
 print_style=Unix inprimatzeko estiloa
 print_show=Erakutsi inprimagailu guztiak?
 print_printcap=Printcap fitxategia
 print_cachetime=Inprimagailuaren egoera cache-denbora
+
 smb_title=Windows sareen aukerak
 smb_workgroup=lantalde
 smb_wins=WINS modua
@@ -159,14 +169,17 @@ smb_nowhere=Nowhere
 smb_fromlist=Zerrendatik. ..
 smb_ip=IP helbidea
 smb_asworkgroup=<b>Lan-talde gisa</b> (aukerakoa)
+
 create_title=Sortu Kopiatu
 create_msg=Kopiatutako akzio batek bere balio lehenetsi guztiak heredatuko ditu aukeratutako partaidetzatik. Iturriaren partekatzea aldatzen bada, kopia ere egingo da.
 create_from=Partekatu hauetatik kopiatzeko:
 create_name=Partekatu izen berria:
+
 smbuser_title=Samba erabiltzaileak
 smbuser_list=Samba erabiltzaile zerrenda
 smbuser_nouser=Ez da Samba erabiltzaile zehaztu.
 smbuser_cannot=Samba erabiltzaileak ezin dira zerrendatu
+
 euser_title=Editatu Samba erabiltzailea
 euser_name=Erabiltzaile izena
 euser_uid=Unix UID
@@ -185,6 +198,7 @@ euser_locked=Kontua blokeatuta dago
 euser_nopwrequired=Ez da pasahitzik behar
 euser_disable=Kontua desgaituta dago
 euser_trust=Lantokiko fidagarritasun kontua
+
 fmisc_title=Hainbat fitxategi lehenetsiak
 fmisc_for=<tt>$1</tt> partekatzeko
 fmisc_lockfile=Fitxategia blokeatzea al da?
@@ -202,6 +216,7 @@ fmisc_conncmd=Konektatzeko exekutatzeko agindua
 fmisc_disconncmd=Deskonektatzeko exekutatzeko agindua
 fmisc_rootconn=<i>root</i> konektatzeko exekutatzeko agindua
 fmisc_rootdisconn=<i>root</i> deskonektatzeko exekutatzeko agindua
+
 fname_title1=Fitxategiak izendatzeko lehenetsiak
 fname_title2=Editatu fitxategien izena
 fname_option=Fitxategiak izendatzeko aukerak
@@ -216,6 +231,7 @@ fname_hide=Ezkutatu puntu fitxategiak?
 fname_archive=Gorde DOS artxiboko bandera?
 fname_hidden=Gorde DOS ezkutuko bandera?
 fname_system=Gorde DOS sistemaren bandera?
+
 fperm_title1=Fitxategien baimenak lehenetsiak
 fperm_title2=Editatu Fitxategien Baimenak
 fperm_option=Fitxategien baimena
@@ -228,6 +244,7 @@ fperm_link=Sinbolak partekatzea baimendu nahi duzu?
 fperm_delro=Irakurri daitezke fitxategiak ezabatu?
 fperm_forcefile=Behartu Unix fitxategi modua
 fperm_forcedir=Force Unix direktorio moduan
+
 share_title1=Fitxategiaren partekatze lehenetsiak
 share_title2=Editatu Fitxategia Partekatu
 share_title3=Sortu Fitxategiak Partekatu
@@ -251,6 +268,7 @@ share_naming=Fitxategiaren izena
 share_misc=Askotariko aukerak
 share_samedesc1=Oharra: ezarpen hauek fitxategi-partekatze guztietako lehenetsiak ere eragiten dituzte.
 share_samedesc2=Oharra: ezarpen horiek inprimagailu partekatze guztientzako lehenetsiak ere eragiten dituzte.
+
 print_title1=Inprimagailuaren aukera lehenetsiak
 print_title2=Editatu inprimagailuaren aukerak
 print_option=Inprimagailuaren aukerak
@@ -262,6 +280,7 @@ print_delete=Ezabatu lan-komandoa
 print_pause=Lanerako komandoa eten
 print_unresume=Lan-agindua ez du onartu
 print_driver=Inprimagailu gidaria
+
 pshare_title1=Inprimagailua Partekatu lehenetsiak
 pshare_title2=Editatu inprimagailua partekatzea
 pshare_title3=Sortu inprimagailu partekatu
@@ -270,6 +289,7 @@ pshare_name=Partekatu izena
 pshare_all=Inprimagailu guztiek partekatzen dute
 pshare_unixprn=Unix inprimagailua
 pshare_spool=Spool direktorioa
+
 sec_index1=Segurtasun lehenetsiak
 sec_index2=Editatu segurtasuna
 sec_writable=Writable?
@@ -292,6 +312,7 @@ sec_rouser=Irakurri erabiltzaileak bakarrik
 sec_rogroup=Irakurri taldeak bakarrik
 sec_rwuser=Irakurri/idatzi erabiltzaileak
 sec_rwgroup=Irakurri/idatzi taldeak
+
 esync_title=Erabiltzailearen sinkronizazioa
 esync_msg=Webmin konfigura daiteke Unix erabiltzailearen zerrendako aldaketak Samba erabiltzaile zerrendara automatikoki aplikatzeko. Honek bakarrik funtzionatuko du <b>Erabiltzaileak eta Taldeak</b> Webmin modulua erabiltzaileak gehitzeko, ezabatzeko edo aldatzeko erabiltzen denean.
 esync_add=Gehitu Samba erabiltzaile bat Unix erabiltzaile bat gehitzen denean
@@ -303,6 +324,7 @@ esync_gid=Talde SID edo RID erabiltzaile berrientzako
 esync_apply=aplikatu
 esync_cannot=Erabiltzailearen sinkronizazioa ezin da konfiguratu
 esync_egid=SID edo RID talde falta
+
 mkpass_title=Erabiltzaileak bihurtu
 mkpass_convfail=Huts egin du erabiltzaileak bihurtzerakoan
 mkpass_msg=Unix erabiltzaileak bihurtzea. ..
@@ -315,10 +337,12 @@ mkpass_passfail=Huts egin du pasahitza ezartzerakoan
 mkpass_user=Erabiltzaile izena
 mkpass_action=Egindako ekintza
 mkpass_skipcount=$1 erabiltzaile saltatu ziren bihurketa egiteko.
+
 savecopy_fail=Ezin izan da kopia sortu
 savecopy_global='Global' izena ezin da partekatu partekatzerakoan
 savecopy_exist="$1" izeneko kuota badago
 savecopy_ename=Ez da inongo partekatutako izenik sartu
+
 saveuser_fail=Huts egin du erabiltzailea gordetzean
 saveuser_uid='$1' ez da baliozko Unix UID bat
 saveuser_colon=Benetako izenak ezin du pertsonaiarik eduki :
@@ -326,10 +350,13 @@ saveuser_home=Ez dago '$1' etxeko direktorio bat
 saveuser_shell=$1 ez da baliozko maskorra
 saveuser_pass=Huts egin du pasahitza aldatzerakoan smbpasswd erabiliz : $1 
 saveuser_ews='Laneko konfiantza kontua' aukera ezin da gaituta dauden erabiltzaileentzat
+
 savefmisc_fail=Huts egin du hainbat aukera gordetzerakoan
 savefmisc_number='$1' ez da baliozko konexio kopurua
+
 savefperm_fail=Ezin izan da fitxategien baimenak gorde
 savefperm_mode='$1' ez da baliozko Unix fitxategi modua
+
 savefshare_fail=Ezin izan da partekatu gordetzea
 savefshare_nopath=Ez da bide eman
 savefshare_exist="$1" izeneko kuota badago
@@ -339,6 +366,7 @@ savefshare_owner=Jabea falta edo baliogabea da direktorio berriarentzat
 savefshare_group=Direktorio berria lortzeko talde falta edo baliogabea
 savefshare_perms=Direktorio berriaren baimen falta edo baliogabea
 savefshare_emkdir=Huts egin du direktorio bat sortzean : $1 
+
 savemisc_fail=Ezin izan da aukerak gordetzea
 savemisc_lockdir=Ez dago blokeo direktorioaren direktoriorik
 savemisc_logdir=Ez da egunkariaren fitxategia duen direktoriorik existitzen
@@ -347,37 +375,48 @@ savemisc_overlap='$1' ez da irakurtzeko neurri gainjarriko balio batek
 savemisc_chroot=Ez da existitzen '$1' chroot direktorioa
 savemisc_smbrun='$1' smbrun programa ez dago edo ezin da gauzatu
 savemisc_time='$1' ez da baliozko denbora desplazamendu bat
+
 savenet_fail=Ezin izan da aukerak gordetzea
 savenet_timeout='$1' ez da deskonektatzeko denbora iraungitzeko baliozkoa
 savenet_ip='$1' ez da baliozko IP byte bat
 savenet_keep='$1' ez da baliozko mantendu-tarte bat
 savenet_maxxmit='$1' ez da baliozko paketeen gehienezko tamaina
+
 savepass_fail=Ezin izan da aukerak gordetzea
 savepass_nopass=Samba-ren zure bertsioak ez ditu pasahitz enkriptatuak onartzen
 savepass_passwd=Ez da pasahitza aldatzeko programarik eman
 savepass_level='$1' ez da baliozko pasahitzaren kasuetako aldea
 savepass_chat=Aldatu pasahitz berriketen sekuentzia hutsik dago
+
 savepopts_fail=Huts egin du inprimagailuaren aukerak gordetzean
 savepopts_number=Gutxieneko doako espazioa kopurua izan behar da
+
 saveprint_fail=Ezin izan da aukerak gordetzea
 saveprint_printcap=Ez dago "$1" printcap fitxategia
 saveprint_cache='$1' ez da baliozko cache-denbora
+
 savepshare_fail=Huts egin du inprimagailu partekatzea gordetzean
 savepshare_exist="$1" izeneko kuota badago
 savepshare_name='$1' ez da baliozko partekatutako izena
 savepshare_global='Global' izena ezin da partekatu partekatzerakoan
+
 savesec_fail=Huts egin du segurtasuna gordetzean
+
 savesmb_fail=Ezin izan da aukerak gordetzea
 savesmb_size='$1' ez da baliozko diskoaren tamaina
 savesmb_oslevel='$1' ez da baliozko arakatzailearen maisu-lehentasuna
 savesmb_server=Pasahitz zerbitzaria sartu behar duzu
+
 start_err=Huts egin du Samba zerbitzariak abiaraztean
 start_fail=$1 huts egin du
 start_err_wb=Huts egin du Winbind zerbitzariak abiaraztean
+
 restart_err=Huts egin du Samba zerbitzariak berrabiaraztean
 restart_err_wb=Ezin izan da Winbind zerbitzariak berrabiarazi
+
 swats_fail=Huts egin du erabiltzaile izena gordetzean
 swats_user=SWAT erabiltzaile izena falta da
+
 viewu_index=Uneko erabiltzaileak
 viewu_list=$1 egungo erabiltzaileak
 viewu_share=Share
@@ -394,6 +433,7 @@ viewu_ecmd=Ez dirudi Samba egoera programa $1 zure sisteman instalatuta dagoenik
 viewu_kill=Deskonektatu hautatutako erabiltzaileak
 viewu_enone=Ez da erabiltzaile aukeratu
 viewu_refresh=Eguneratu orria.
+
 log_apply=Samba zerbitzariak berrabiarazi dira
 log_apply_wb=Winbind zerbitzariak berrabiarazi dira
 log_stop=Samba zerbitzariak gelditu dira
@@ -435,6 +475,7 @@ log_modify_group=$1 Samba taldea aldatu du
 log_delete_group=$1 Samba taldea ezabatu da
 log_gsync=Unix taldeko sinkronizazio konfiguratua
 log_manual=Eskuz editatutako $1 konfigurazio fitxategia
+
 swat_title=SWAT Saioa
 swat_list=SWAT Saioa
 swat_msg1=Oraingo SWAT erabiltzaile izena eta pasahitza okerrak dira. Erabili beheko formularioa berriro saioa hasteko.
@@ -446,6 +487,7 @@ swat_password=Pasahitza
 swat_login=Saioa hasi
 swat_clear=Garbitu
 swat_logout=SWAT-en saioa
+
 eacl_aviol=Sarbide kontrola urratzea
 eacl_np=Ez duzu baimenik
 eacl_papply=zerbitzu hau berrabiarazi
@@ -481,6 +523,7 @@ eacl_pafs=sartu fitxategi partekatze honetara
 eacl_paps=sartu inprimagailu partekatu honetara
 eacl_pcps=inprimagailu partekatzea sortu
 eacl_pcfs=fitxategiak partekatu
+
 acl_apply=Aldaketak aplikatu eta Samba gelditu al daiteke?
 acl_view_all_con=Ikusi konexio guztiak?
 acl_kill_con=Konexioak kendu ditzakezu?
@@ -527,6 +570,7 @@ acl_maint_groups=Taldeak ikusi, editatu eta gehitu al ditzake?
 acl_maint_gsync=Mantendu al daiteke auto-Unix Samba taldeekin sinkronizatzea?
 acl_winbind=Lotu al daiteke domeinuetara?
 acl_bind=Sar daiteke winbind aukerak?
+
 groups_title=Samba Taldeak
 groups_name=Taldearen izena
 groups_unix=Unix taldea
@@ -542,6 +586,7 @@ groups_return=taldeen zerrenda
 groups_add=Gehitu Samba talde berria.
 groups_ecannot=Ezin duzu Samba taldeak ikusi edo editatu
 groups_cannot=Samba taldeak ezin dira zerrendatu
+
 gedit_title2=Editatu Samba taldea
 gedit_title1=Sortu Samba taldea
 gedit_header=Samba taldearen xehetasunak
@@ -554,11 +599,13 @@ gedit_unix=Unix taldea
 gedit_unixgr=Taldea ..
 gedit_none=Bat ere ez
 gedit_set=Zerrendatu ..
+
 gsave_err=Huts egin du taldea gordetzean
 gsave_eunix=Falta edo baliogabea Unix taldearen izena edo GID
 gsave_ename=Taldearen izena falta da
 gsave_epriv=Talde pribilegioak falta dira
 gsave_elocal=Pribilegioak tokiko taldeentzat bakarrik ezar daitezke
+
 gsync_title=Taldearen sinkronizazioa
 gsync_msg=Webmin konfigura daiteke Unix taldeko zerrendako aldaketak Samba taldeen zerrendan automatikoki aplikatzeko. Honek funtzionatuko du <b>Erabiltzaileak eta Taldeak</b> Webmin modulua taldeak gehitzeko, ezabatzeko edo aldatzeko erabiltzen denean.
 gsync_add=Gehitu Samba talde bat Unix talde bat gehitzen denean
@@ -569,10 +616,12 @@ gsync_type=Talde berri mota
 gsync_priv=Talde berrientzako pribilegioak (tokikoa bada)
 gsync_ecannot=Ezin duzu taldeko sinkronizazioa konfiguratu
 gsync_cannot=Taldearen sinkronizazioa ezin da konfiguratu
+
 check_user1=$1 : Zifratutako pasahitzak ez dira gaitzen <a href='$2'>Autentifikazio</a> orrian.
 check_user2=$1 : Ez dute Samba pasahitz fitxategia edo pdbedit-en bidea <a href='$2'>Moduluen Konfigurazioa</a> orrian ez da ezarri.
 check_group1=$1 : Taldeak Samba 3. bertsioan bakarrik onartzen dira.
 check_group2=$1 : ez smbgroupedit edo net komandoetarako bidea ez dago <a href='$2'>Moduluen Konfigurazioa</a> orrian.
+
 winbind_title=Lotu domeinura
 winbind_ecannot=Ezin duzu domeinuei lotu
 winbind_msg=Inprimaki hau zure Samba zerbitzaria Windows domeinu batera lotzeko erabil daiteke, normalean beste zerbitzari batek kudeatzen duena.
@@ -588,6 +637,7 @@ winbind_edom=Domeinu izena falta da
 winbind_cmd=$1 domeinura lotu.
 winbind_failed=.. huts egin du! Ikusi goiko irteera zergatik dagoen.
 winbind_ok=.. osatu.
+
 bind_title=Winbind aukerak
 bind_ecannot=Ezin duzu winbind aukerak editatu
 bind_header=Windows domeinua lotzeko aukerak
@@ -606,9 +656,11 @@ bind_erealm=Kerberos eremua baliogabea
 bind_ecache=Falta da edo cache denbora baliogabea
 bind_euid=UID barruti baliogabea - 20000-30000 bezalakoa izan behar du
 bind_egid=GID barruti baliogabea - 20000-30000 bezalakoa izan behar du
+
 manual_title=Editatu Konfigurazio fitxategia
 manual_desc=Samba konfigurazio fitxategia editatzen $1 ..
 manual_err=Ezin izan da konfiguratu fitxategia gordetzean
 manual_edata=Ez da ezer sartu!
+
 delete_err=Ezin izan da akzioak ezabatu
 delete_enone=Ez da hautatu

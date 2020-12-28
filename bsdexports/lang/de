@@ -9,9 +9,12 @@ index_apply=Änderungen anwenden
 index_applydesc=Klicken Sie auf diese Schaltfläche, um die aktuelle Datei Export Konfiguration anzuwenden. Dies wird alle obig aufgelisteten Verzeichnisse mit den angegebenen Optionen verfügbar machen.
 index_return=Export Liste
 index_echeck=Der NFS-Server kann auf diesem System nicht verwendet werden : $1
+
 check_ecmd=NFS-Server Befehl $1 ist nicht installiert
+
 delete_err=Fehlgeschlagen Exports zu löschen
 delete_enone=Nicht ausgewählt
+
 edit_title1=Editiere Export
 edit_title2=Erstelle Export
 edit_header1=Export Optionen
@@ -31,6 +34,7 @@ edit_clients=Clients
 edit_hosts=Hosts / Netzgruppen
 edit_network=Netzwerk
 edit_mask=Maske
+
 save_err=Fehlgeschlagen Export zu speichern
 save_edir='$1' ist kein Verzeichnis oder existiert nicht
 save_enone=Sie müssen mindestens ein Verzeichnis zu exportieren eingeben
@@ -44,4 +48,5 @@ save_enetwork='$1' ist kein gültiges Netzwerk
 save_enetmask='$1' ist keine gültige Netzmaske
 save_esame1=Das Verzeichnis <tt>$1</tt> ist bereits in <tt>$2</tt> exportiert. Ihr Betriebssystem erlaubt keine Verzeichnisse auf dem gleichen <i>lokalen</i> Dateisystem auf dem gleichen separaten Host zu exportiert
 save_esame2=Das Verzeichnis <tt>$1</tt> ist bereits in <tt>$2</tt> exportiert. Ihr Betriebssystem erlaubt keine Verzeichnisse auf dem gleichen <i>lokalem</i> Dateisystem auf dem gleichen Netzwerk separat zu exportieren
+
 restart_err=Fehlgeschlagen Änderungen anzuwenden

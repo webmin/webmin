@@ -10,6 +10,7 @@ index_apply=Aplicați configurare
 index_applydesc=Faceți clic pe acest buton pentru a aplica opțiunile serverului PPTP curente prin oprirea și reluarea procesului serverului PPTP. Modificările la opțiunile PPP și la conturile PPP vor fi întotdeauna aplicabile oricărei conexiuni noi
 index_return=indexul modulului
 index_epppd=Programul serverului PPP $1 nu este instalat pe sistemul dvs. PPTP depinde de acesta să funcționeze.
+
 conf_title=Opțiuni server PPTP
 conf_ecannot=Nu aveți voie să editați opțiunile serverului PPTP
 conf_header=Configurația serverului PPTP
@@ -35,6 +36,7 @@ conf_elocalip=„$1” nu este o adresă sau un interval IP local valabil
 conf_eremoteip=„$1” nu este o adresă sau o distanță IP valabilă la distanță
 conf_efrom=Rețeaua IPX lipsă sau nevalidă de la adresă
 conf_eto=Rețeaua IPX care lipsește sau este nevalidă
+
 options_title=Opțiuni PPP
 options_ecannot=Nu aveți voie să editați opțiunile PPP
 options_desc0=Opțiunile PPP de mai jos de la $1 se aplică TUTUROR conexiunilor primite de sistemul dvs., inclusiv celor pentru modemuri de apelare.
@@ -67,6 +69,7 @@ options_mschap=Autentificare MS-CHAP
 options_mschap-v2=Autentificare MS-CHAP versiunea 2
 options_chapms=Autentificare MS-CHAP
 options_chapms-v2=Autentificare MS-CHAP versiunea 2
+
 secrets_title=Conturi PPP
 secrets_ecannot=Nu aveți voie să editați conturi PPP
 secrets_return=index
@@ -80,6 +83,7 @@ secrets_sany=ORICE
 secrets_create=Creați un cont PPP nou.
 secrets_desc=Conturile PPP enumerate în această pagină sunt preluate din fișierul $1, care este utilizat pentru autentificarea $3. Sunt afișate doar cele pentru serverul dvs. $2, nu conturi pentru realizarea conexiunilor de ieșire.
 secrets_delete=Ștergeți conturile PPP selectate
+
 edit_secret_etitle=Editați contul PPP
 edit_secret_ctitle=Creați cont PPP
 edit_secret_acc=Cont PPP
@@ -99,15 +103,20 @@ edit_secret_alist=Permite listarea ..
 edit_secret_save=salva
 edit_secret_del=Șterge
 edit_secret_return=lista de conturi
+
 save_secret_esave=Nu a putut salva contul
 save_secret_enoip=„$1” nu este o adresă validă
+
 stop_err=Nu a putut opri serverul PPTP
 stop_egone=Nu mai alerga
 stop_ecannot=Nu aveți voie să opriți serverul PPTP
+
 start_err=Eșecul la pornirea serverului PPTP
 start_ecannot=Nu aveți voie să porniți serverul PPTP
+
 apply_err=Eroare la reluarea serverului PPTP
 apply_ecannot=Nu aveți voie să reporniți serverul PPTP
+
 conns_title=Conexiuni active
 conns_ecannot=Nu aveți voie să gestionați conexiuni active
 conns_desc=Această pagină listează conexiunile PPTP active la serverul dumneavoastră. Pentru a deconecta cu forța, faceți clic pe numele interfeței sale.
@@ -119,9 +128,11 @@ conns_remote=Adresa VPN a clientului
 conns_none=Nu există conexiuni PPTP active în acest moment.
 conns_unknown=Necunoscut
 conns_user=Nume de utilizator
+
 disc_err=Eroare la deconectare
 disc_egone=Conexiunile nu mai sunt active
 disc_ekill=Procesul nu mai rulează
+
 log_secret_create=Cont PPP creat $1 
 log_secret_modify=Cont PPP modificat $1 
 log_secret_delete=Contul PPP șters $1 
@@ -132,6 +143,7 @@ log_disc=Client deconectat $1
 log_start=A început serverul PPTP
 log_stop=Server PPTP oprit
 log_apply=Configurarea serverului PPTP aplicat
+
 acl_conf=Poate edita configurația?
 acl_options=Poți edita opțiuni?
 acl_secrets=Poate gestiona conturile PPTP?

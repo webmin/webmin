@@ -20,6 +20,7 @@ index_d1=$1
 index_dlang=jezik, v katerem so prikazani moduli
 index_dtheme=tema, ki nadzira videz Webmina
 index_dpass=geslo, s katerim ste se prijavili
+
 change_title=Spreminjanje nastavitev
 change_user=Spreminjanje prijave v Webmin ..
 change_done=.. Končano
@@ -30,6 +31,7 @@ change_epass2=Nova gesla se ne ujemajo
 change_epass=Novo geslo ni veljavno : $1 
 change_eoverlay=Prekrivanja teme ne morete izbrati, razen če izberete tudi temo uporabniškega vmesnika
 change_eoverlay2=Prebrano prekrivanje teme ni združljivo z izbrano temo uporabniškega vmesnika
+
 acl_lang=Ali lahko spremenite jezik?
 acl_theme=Ali lahko spremenite temo?
 acl_pass=Ali lahko spremenite geslo (če je nastavljeno v Webminu)?

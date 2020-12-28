@@ -57,6 +57,7 @@ index_reposdisable=Išjungti saugyklas
 index_reposenable=Įgalinti saugyklas
 index_reposdelete=Ištrinti saugyklas
 index_repoheader=Naujos paketų saugyklos parinktys
+
 update_title=Atnaujinkite paketus
 update_title2=Įdiekite paketus
 update_enone=Nepasirinktas paketas
@@ -94,9 +95,11 @@ update_none=Nė vienas
 update_ops=Kuriamas visas pakuočių sąrašas ..
 update_rebootdesc=Norint įdiegti vieną iš įdiegtų paketų, reikia visiškai paleisti.
 update_reboot=Perkrauti dabar
+
 sched_title=Suplanuotas atnaujinimas
 sched_yes=Suplanuotas atnaujinimų tikrinimas dabar aktyvus.
 sched_no=Suplanuotas atnaujinimų tikrinimas buvo išjungtas.
+
 log_update=Įdiegti $1 atnaujinti paketai
 log_sched=Įgalinti suplanuoti atnaujinimai
 log_unsched=Išjungti suplanuoti atnaujinimai
@@ -108,11 +111,13 @@ log_enable_repo=Įgalinta paketų saugykla $1
 log_disable_repo=Neleidžiama paketų saugykla $1 
 log_delete_repo=Ištrinta paketų saugykla $1 
 log_create_repo=Sukurtas paketų saugykla $1 
+
 refresh_title=Gaivieji paketai
 refresh_clearing=Išvalomos pakuotės talpyklos ..
 refresh_done=.. padaryta
 refresh_available=Iš naujo gaukite turimus paketus ..
 refresh_done3=.. rasta $1 galimų atnaujinimų
+
 view_title=Informacija apie paketą
 view_header=Atnaujinama paketo informacija
 view_name=Pakuotės pavadinimas
@@ -126,12 +131,14 @@ view_changelog=Galimos versijos pakeitimų žurnalas
 view_software=Tvarkyti paketą
 view_update=Atnaujinkite paketą
 view_install=Įdiekite paketą
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW („Blastwave“)
 system_webmin=„Webmin“ modulis
 system_usermin=„Usermin“ modulis
 system_tgz=„Webmin“ arba „Usermin tar.gz“
+
 repos_err_disable=Nepavyko išjungti saugyklų
 repos_err_enable=Nepavyko įgalinti saugyklų
 repos_err_delete=Nepavyko ištrinti saugyklų

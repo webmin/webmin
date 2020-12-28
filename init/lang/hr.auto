@@ -52,6 +52,7 @@ index_sadd=Stvorite novu sustavsku uslugu.
 index_always=Stalno
 index_ladd=Stvorite novi agent za pokretanje.
 index_lname=Ime agenta
+
 edit_title=Uredi radnju
 create_title=Stvorite akciju
 edit_ecannot=Nije vam dopušteno uređivanje akcija pokretanja
@@ -85,6 +86,7 @@ edit_statusnow=Prikaži status
 edit_return=radnja
 edit_status=Započeli sada?
 edit_unknown=Nepoznata
+
 save_err=Spremanje radnje nije uspjelo
 save_ecannot=Nije vam dopušteno uređivanje akcija pokretanja
 save_ealready=Akcija nazvana "$1" već postoji
@@ -93,6 +95,7 @@ save_ename=Nedostaje ili nevažeće ime radnje
 save_eclash=Radnja s istim nazivom već postoji
 save_escript=Nije unešena nijedna skripta radnje
 save_estartcmd=Nedostaje naredba za pokretanje
+
 ss_ecannot=Nije vam dopušteno pokretati ili zaustavljati akcije pokretanja
 ss_start=Pokrenite akciju
 ss_stop=Zaustavite akciju
@@ -103,21 +106,25 @@ ss_exec=Izvršavanje $1 ..
 ss_doingstart=Početna akcija $1.
 ss_doingstop=Zaustavljanje akcije $1 ..
 ss_doingstatus=Zahtjev za status radnje $1 ..
+
 shutdown_ecannot=Nije vam dopušteno gašenje sustava
 shutdown_title=Ugasiti
 shutdown_rusure=Jeste li sigurni da želite isključiti sustav naredbom $1 ?
 shutdown_ok=Sustav isključivanja
 shutdown_exec=Isključivanje naredbom $1 ..
+
 reboot_ecannot=Nije vam dopušteno ponovno pokretanje sustava
 reboot_title=Ponovno podizanje sustava
 reboot_rusure=Jeste li sigurni da želite ponovno pokrenuti sustav pomoću naredbe $1 ?
 reboot_ok=Ponovno podizanje sustava
 reboot_exec=Ponovno pokretanje sa naredbom $1 ..
+
 acl_script=Može li urediti skriptu za pokretanje?
 acl_actions=Mogu li pokretati, uređivati, stvarati i brisati akcije?
 acl_runonly=Samo trči
 acl_reboot=Može li ponovno pokrenuti sustav?
 acl_shutdown=Može li zatvoriti sustav?
+
 log_rename=Preimenovana radnja $1 do $2 
 log_modify=Izmijenjeno djelovanje $1 
 log_create=Stvorena radnja $1 
@@ -138,6 +145,7 @@ log_massrestart=Restartirane akcije $1
 log_massenable=Omogućene akcije $1 
 log_massdisable=Onemogućene akcije $1 
 log_telinit=Prebačeno na razinu tekućine $1 
+
 edit_hostconfig_startup=Skripta $1 se pokreće u vrijeme dizanja sustava ako je ova radnja aktivna. Možete ga urediti u nastavku
 edit_hostconfig_plist=Datoteka $1 postavlja određene parametre u odnosu na skriptu za pokretanje. Možete ga urediti u nastavku
 edit_hostconfig_new=Stvorite novu radnju
@@ -149,6 +157,7 @@ edit_hostconfig_array=Polja $1, $2 i $3 su polja polja i mogu sadržavati više 
 edit_hostconfig_further=Nakon stvaranja nove radnje pokretanja, bit ćete preusmjereni na stranicu na kojoj po potrebi možete ugađati početnu skriptu i popis parametara.
 edit_hostconfig_hostconfig=Datoteka $1 kontrolira usluge i demone širom sustava koji se pokreću pri dizanju sustava. Možete ga urediti u nastavku
 edit_hostconfig_title=Uredite Hostconfig
+
 mass_enone=Nije odabrana nijedna radnja
 mass_enone2=Nije odabrana nijedna usluga
 mass_start=Pokretanje akcija
@@ -169,9 +178,11 @@ mass_udisable=Onemogućavanje usluge $1 u vrijeme pokretanja.
 mass_ustarting=Pokretanje usluge $1.
 mass_ustopping=Zaustavljanje usluge $1.
 mass_urestarting=Ponovno pokretanje usluge $1 ..
+
 change_err=Ne smijete mijenjati razine rada
 change_title=Prebacite razinu rada
 change_cmd=Prelazak na razinu tekućine $1 pomoću naredbe $2. To može potrajati neko vrijeme, a Webmin možda neće biti dostupan nakon prebacivanja.
+
 mode_init=SysV init
 mode_osx=MacOS
 mode_local=Skripta s jednim pokretanjem
@@ -180,6 +191,7 @@ mode_rc=FreeBSD RC skripte
 mode_upstart=Laktaš
 mode_systemd=Systemd
 mode_launchd=LaunchD
+
 upstart_title1=Stvorite uslugu nadogradnje
 upstart_title2=Uređivanje usluge Pokretanje
 upstart_egone=Usluga više ne postoji!
@@ -204,6 +216,7 @@ upstart_eserver=Nije unešena naredba poslužitelja
 upstart_eserver2=Naredba poslužitelja ne postoji
 upstart_eserver3=Može se unijeti samo jedna naredba poslužitelja
 upstart_return=početna usluga
+
 systemd_title1=Stvorite Systemd Service
 systemd_title2=Uređivanje Systemd usluge
 systemd_egone=Usluga više ne postoji!
@@ -227,6 +240,7 @@ systemd_edesc=Nedostaje opis usluge
 systemd_return=sistemska usluga
 systemd_econf=Nije upisana konfiguracija sustava
 systemd_estart=Nedostaju naredbe za pokretanje
+
 launchd_title1=Stvorite pokretački agent
 launchd_title2=Uređivanje pokretačkog agenta
 launchd_egone=Agenta više nema!
@@ -247,4 +261,5 @@ launchd_eclash=Agent s istim imenom već postoji
 launchd_return=pokretač
 launchd_econf=Nije pokrenuta konfiguracija pokretanja
 launchd_estart=Nedostaje naredba poslužitelja
+
 syslog_journalctl=Zapisnici sustava SystemD

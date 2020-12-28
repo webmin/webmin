@@ -16,6 +16,7 @@ index_cancel=Zrušiť pripojenie
 index_canceldesc=Klient ADSL sa momentálne pokúša nadviazať spojenie. Kliknutím na toto tlačidlo zrušíte pokus pomocou príkazu $1.
 index_cdemand=Zrušiť na požiadanie
 index_cdemanddesc=Klient ADSL momentálne čaká na požiadavku na pripojenie. Kliknutím na toto tlačidlo ho zastavíte pomocou ovládacieho prvku $1.
+
 index_header=Možnosti konfigurácie klienta ADSL
 index_desc=Nižšie uvedené nastavenia platia pre každé nové pripojenie ADSL spustené vaším systémom. Ak ich zmeníte, pripojenie sa musí vypnúť a znova spustiť, aby sa zmeny prejavili.
 index_eth=Ethernetové rozhranie
@@ -36,11 +37,13 @@ index_fw_standalone=Pre jedného hostiteľa
 index_fw_masquerade=Pre bránu NAT
 index_connect=Čas na pokus o pripojenie
 index_forever=navždy
+
 start_err=Nepodarilo sa spustiť pripojenie ADSL
 start_title=Spustite ADSL
 start_ip=Vytvorilo sa pripojenie ADSL s adresou IP $1.
 start_demand=Pretože je povolený režim pripojenia na požiadanie, vaše pripojenie ADSL sa začne iba v prípade potreby.
 start_bg=Pripojenie ADSL sa nezačalo do 20 sekúnd. Klient ADSL sa bude naďalej pokúšať pripojiť na pozadí, až kým nebude úspešný.
+
 save_err=Nepodarilo sa uložiť konfiguráciu ADSL
 save_eeth=Chýbajúce alebo zle vyzerajúce ethernetové rozhranie
 save_etimeout=Chýbajúci alebo neplatný časový limit na požiadanie
@@ -49,10 +52,12 @@ save_econnect=Chýbajúci alebo neplatný časový limit pripojenia
 save_emss=Chýbajúca alebo neplatná maximálna veľkosť paketu
 save_title=Uložiť konfiguráciu
 save_desc=Vaša konfigurácia klienta ADSL bola úspešne uložená, ale nebude sa používať, kým sa znova nepripojíte.
+
 stop_err=Nepodarilo sa ukončiť pripojenie ADSL
 stop_title=Vypnite ADSL
 stop_ok=Vaše pripojenie ADSL bolo úspešne ukončené.
 stop_failed=Vaše pripojenie ADSL je z nejakého dôvodu stále aktívne!
+
 log_save=Uložená konfigurácia klienta
 log_stop=Vypnite službu ADSL
 log_start=Spustené ADSL

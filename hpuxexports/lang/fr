@@ -8,6 +8,7 @@ index_apply=Appliquer tous Changements
 index_applymsg=Cliquer sur ce bouton pour appliquer la configuration.  Ceci va mettre tous répertoires listés disponibles avec les options spécifiées.
 index_return=liste des partages
 index_eprog=L'exécutable du serveur NFS n'a pas été trouvé sur votre système.  Le composant NFS ne semble pas avoir été installé.
+
 edit_title=Éditer un Partage
 create_title=Créer un Partage
 edit_details=Détails du partage
@@ -36,6 +37,7 @@ edit_gids=Ne pas faire confiance aux GID
 edit_anonuid=Les usagers insécure sont traités comme
 edit_default=Défaut
 edit_anongid=Les groupes insécure sont traités comme
+
 save_err=Impossible d'enregistrer le partage
 save_edir=Le répertoire $1 n'existe pas
 save_enetgroup=Groupe de réseau manquant ou invalide

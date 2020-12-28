@@ -9,6 +9,7 @@ index_rpc=Programmes RPC
 index_newrpc=Créer un nouveau programme RPC
 index_apply=Mettre à jour
 index_applymsg=Cliquer sur ce bouton pour prendre en compte la configuration courante en envoyant un signal <tt>SIGHUP</tt> au processus <tt>inetd</tt> en cours.
+
 error_restart=Impossible de redémarrer <tt>inetd</tt>
 error_saverpc=Impossible de créer le programme RPC
 error_invalidprgname='$1' n'est pas un nom de programme valide
@@ -34,6 +35,7 @@ error_childnum=Il faut spécifier un nombre de processus fils si le maximum d'ex
 error_serviceexist=Un service utilisant le port $1 et le protocole $2 existe déjà
 error_nameexist=Un service du nom de $1 et utilisant le protocole $2 existe déjà
 error_inetservice=Un service internet du nom de $1 et utilisant le protocole $2 existe déjà
+
 editrpc_title1=Création d'un programme RPC
 editrpc_title2=Modification d'un programme RPC
 editrpc_detail=Details du programme RPC
@@ -56,6 +58,7 @@ editrpc_execasuser=Exécute en tant qu'utilisateur
 editrpc_max=Maximum par minute
 editrpc_default=Défaut
 editrpc_execasgrp=Exécute en tant que groupe
+
 editserv_title1=Création d'un service internet
 editserv_title2=Modification d'un service internet
 editserv_detail=Détails du service internet
@@ -67,6 +70,7 @@ editserv_maxchild=Nombre maximum de processus fils
 editserv_execlogin=Exécute en tant que classe de connexion
 editserv_wrapper=TCP-Wrapper
 editserv_inetd=Interne à <tt>inetd</tt>
+
 log_apply=Changements effectués
 log_create_serv=Création du service $1
 log_modify_serv=Modification du service $1
@@ -80,6 +84,7 @@ log_delete_serv_l=Suppression du service $1 sur le port $2
 log_create_prog_l=Création du service $1 sur le port $2 pour le programme $3
 log_modify_prog_l=Modification du service $1 sur le port $2 pour le programme $3
 log_delete_prog_l=Suppression du service $1 sur le port $2 pour le programme $3
+
 log_create_rpc=Création du RPC $1
 log_modify_rpc=Modification du RPC $1
 log_delete_rpc=Suppression RPC $1

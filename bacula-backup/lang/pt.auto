@@ -29,12 +29,14 @@ index_fd=Configuração de Daemon de Arquivo
 index_groups=Configuração do Grupo Bacula
 index_actions=Ações de backup e restauração
 index_ocmin=Contribuição de <a href=$2 target=_new>Linmin</a> </a>
+
 connect_emysql=Falha ao carregar o driver DBI do banco de dados $1 
 connect_elogin=Falha ao fazer login no banco de dados $1:$2.
 connect_equery=O banco de dados $1 não parece conter tabelas Bacula.
 connect_equery2=Isso pode ocorrer porque o módulo SQLite Perl instalado é muito novo e não suporta o formato de banco de dados SQLite mais antigo usado pelo Bacula.
 connect_equery3=O banco de dados $1 não parece conter tabelas de grupo do OC Bacula.
 esql=Erro SQL : $1 
+
 check_edir=O diretório de configuração do Bacula $1 não foi encontrado no seu sistema.
 check_ebacula=O comando de controle Bacula $1 não foi encontrado.
 check_econsole=O comando do console Bacula $1 não foi encontrado.
@@ -43,12 +45,14 @@ check_eclient=Este sistema parece ser um <a href='$2'>cliente Bacula</a> e não 
 check_econfigs=Nenhum arquivo de configuração do Bacula foi encontrado em $1 
 check_eservers=Nenhum grupo de servidores Webmin foi definido
 check_engmod=O módulo de grupos OpenCountry Bacula não está instalado
+
 proc_bacula-sd=Daemon de armazenamento
 proc_bacula-fd=Daemon de arquivo
 proc_bacula-dir=Daemon Bacula Director
 proc_bareos-sd=Daemon de armazenamento
 proc_bareos-fd=Daemon de arquivo
 proc_bareos-dir=Daemon Bacula Director
+
 stop_err=Falha ao parar o Bacula
 start_err=Falha ao iniciar o Bacula
 start_einit=Nenhum script init encontrado para $1 
@@ -57,6 +61,7 @@ restart_err=Falha ao reiniciar o Bacula
 apply_err=Falha ao aplicar a configuração
 apply_failed=Um erro de configuração foi detectado
 apply_problem=Falha ao aplicar a configuração : $1 
+
 jobs_title=Trabalhos de backup
 jobs_none=Nenhuma tarefa de backup foi definida ainda.
 jobs_name=Nome do trabalho
@@ -69,6 +74,7 @@ jobs_add=Adicione um novo trabalho de backup.
 jobs_delete=Excluir trabalhos selecionados
 jobs_return=lista de trabalhos
 jobs_derr=Falha ao excluir trabalhos
+
 filesets_title=Conjuntos de arquivos
 filesets_none=Nenhum conjunto de arquivos de backup foi definido ainda.
 filesets_name=Nome do conjunto de arquivos
@@ -78,6 +84,7 @@ filesets_delete=Excluir conjuntos de arquivos selecionados
 filesets_return=lista de conjuntos de arquivos
 filesets_derr=Falha ao excluir conjuntos de arquivos
 filesets_ednone=Nenhum selecionado
+
 fileset_title1=Criar conjunto de arquivos
 fileset_title2=Editar conjunto de arquivos
 fileset_header=Detalhes do conjunto de arquivos de backup
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;Nível de compactação padrão&gt;
 fileset_lzo=Compressão LZO
 fileset_gzip=Nível de gzip $1 
 fileset_onefs=Limitar o backup a um sistema de arquivos?
+
 clients_title=Clientes de backup
 clients_none=Nenhum cliente de backup foi definido ainda.
 clients_name=Nome do cliente
@@ -106,6 +114,7 @@ clients_add=Adicione um novo cliente de backup.
 clients_delete=Excluir clientes selecionados
 clients_return=lista de clientes
 clients_derr=Falha ao excluir clientes
+
 client_title1=Criar cliente de backup
 client_title2=Editar cliente de backup
 client_header=Detalhes do cliente para backup
@@ -128,6 +137,7 @@ client_efileret=Período de retenção de arquivo ausente ou inválido
 client_ejobret=Período de retenção de trabalho ausente ou inválido
 client_echild=Este cliente não pode ser excluído, pois é usado por $1 
 client_status=Mostrar status
+
 job_title1=Criar tarefa de backup
 job_title2=Editar tarefa de backup
 job_header=Detalhes da tarefa de backup
@@ -156,6 +166,7 @@ job_before=Comando antes do trabalho
 job_after=Comando após trabalho
 job_cbefore=Comando antes do trabalho (no cliente)
 job_cafter=Comando após trabalho (no cliente)
+
 schedules_title=Agendamentos de backup
 schedules_none=Ainda não foram definidos agendamentos de backup.
 schedules_name=Nome do agendamento
@@ -164,6 +175,7 @@ schedules_add=Adicione um novo agendamento de backup.
 schedules_delete=Excluir agendas selecionadas
 schedules_return=lista de horários
 schedules_derr=Falha ao excluir agendas
+
 schedule_title1=Criar agendamento de backup
 schedule_title2=Editar agendamento de backup
 schedule_header=Detalhes da programação de backup
@@ -177,6 +189,7 @@ schedule_ename=Nome de agendamento ausente ou inválido
 schedule_eclash=Já existe uma programação com o mesmo nome
 schedule_etimes=Tempos de backup ausentes na linha $1 
 schedule_echild=Este agendamento não pode ser excluído, pois é usado por $1 
+
 backup_title=Executar trabalho de backup
 backup_header=Detalhes da tarefa de backup
 backup_job=Trabalho a ser executado
@@ -191,11 +204,13 @@ backup_running=.. o trabalho de backup está em execução agora. Quando complet
 backup_running2=.. o trabalho de backup foi iniciado em segundo plano.
 backup_done=.. backup completo.
 backup_failed=.. o backup não foi concluído com sucesso. Verifique a mensagem de erro acima para obter detalhes.
+
 gbackup_title=Executar tarefa de backup do grupo Bacula
 gbackup_run=Iniciando o trabalho de backup $1 em $2 clientes.
 gbackup_on=Executando trabalho de backup no cliente $1  :
 gbackup_header=Detalhes da tarefa de backup do grupo Bacula
 gbackup_jd=$1 (conjunto de arquivos $2 no grupo $3)
+
 dirstatus_title=Status do diretor
 dirstatus_sched=Tarefas de backup agendadas
 dirstatus_name=Nome do trabalho
@@ -216,12 +231,14 @@ dirstatus_status2=Status
 dirstatus_donenone=Nenhuma tarefa de backup foi executada.
 dirstatus_cancel=Cancelar trabalhos selecionados
 dirstatus_refresh=Atualizar lista
+
 clientstatus_title=Status do cliente
 clientstatus_err=Falha ao buscar o status de $1 : $2 
 clientstatus_msg=Status de $1 : $2 
 clientstatus_show=Mostrar status do cliente:
 clientstatus_ok=Está bem
 clientstatus_on=$1 (em $2)
+
 storages_title=Daemons de armazenamento
 storages_none=Nenhum daemons de armazenamento foi definido ainda.
 storages_name=Nome de armazenamento
@@ -232,6 +249,7 @@ storages_add=Adicione um novo daemon de armazenamento.
 storages_delete=Excluir daemons de armazenamento selecionados
 storages_return=lista de daemons de armazenamento
 storages_derr=Falha ao excluir daemons de armazenamento
+
 storage_title1=Criar daemon de armazenamento
 storage_title2=Editar Daemon de Armazenamento
 storage_header=Detalhes do daemon de armazenamento remoto
@@ -255,6 +273,7 @@ storage_emedia=Nome do tipo de mídia ausente
 storage_emaxjobs=Falta o máximo de trabalhos simultâneos
 storage_echild=Este cliente não pode ser excluído, pois é usado por $1 
 storage_status=Mostrar status
+
 devices_title=Dispositivos de armazenamento
 devices_none=Nenhum dispositivo de armazenamento foi definido ainda.
 devices_name=Nome do dispositivo
@@ -264,6 +283,7 @@ devices_add=Adicione um novo dispositivo de armazenamento.
 devices_delete=Excluir dispositivos de armazenamento selecionados
 devices_return=lista de dispositivos de armazenamento
 devices_derr=Falha ao excluir dispositivos de armazenamento
+
 device_title1=Criar dispositivo de armazenamento
 device_title2=Editar dispositivo de armazenamento
 device_header=Detalhes do dispositivo de armazenamento de arquivos
@@ -282,11 +302,13 @@ device_eclash=Já existe um dispositivo de armazenamento com o mesmo nome
 device_emedia=Nome do tipo de mídia ausente
 device_edevice=Dispositivo ou diretório de arquivamento ausente ou inválido
 device_echild=Este cliente não pode ser excluído, pois é usado por $1 
+
 storagestatus_title=Status do Daemon de Armazenamento
 storagestatus_err=Falha ao buscar o status de $1 : $2 
 storagestatus_msg=Status de $1 : $2 
 storagestatus_show=Mostrar status do daemon de armazenamento:
 storagestatus_ok=Está bem
+
 label_title=Volume da etiqueta
 label_header=Detalhes do volume a rotular
 label_storage=Daemon de armazenamento para rotular
@@ -302,6 +324,7 @@ label_done=.. rotulagem bem sucedida.
 label_epool=.. não foi possível encontrar piscina!
 label_err=Falha na etiqueta
 label_elabel=Nenhuma etiqueta inserida
+
 pools_title=Conjuntos de volumes
 pools_none=Nenhum conjunto de volumes foi definido ainda.
 pools_name=Nome do pool
@@ -311,6 +334,7 @@ pools_add=Adicione um novo conjunto de volumes.
 pools_delete=Excluir conjuntos de volumes selecionados
 pools_return=lista de conjuntos de volumes
 pools_derr=Falha ao excluir conjuntos de volumes
+
 pool_title1=Criar conjunto de volumes
 pool_title2=Editar conjunto de volumes
 pool_header=Detalhes do conjunto de volumes de backup
@@ -332,6 +356,7 @@ pool_ereten=Período de retenção ausente ou inválido
 pool_status=Mostrar Volumes
 pool_autolabel=Etiquetar automaticamente o prefixo dos volumes
 pool_maxvolsize=Tamanho máximo do volume (por exemplo, 5G por 5 Gigabytes)
+
 poolstatus_title=Volumes na piscina
 poolstatus_show=Mostrar volumes no conjunto:
 poolstatus_ok=Está bem
@@ -345,9 +370,11 @@ poolstatus_status=Modo de backup
 poolstatus_none=Atualmente, não há volumes neste pool de backup.
 poolstatus_never=Nunca
 poolstatus_delete=Excluir volumes selecionados
+
 dvolumes_err=Falha ao excluir volumes
 dvolumes_enone=Nenhum selecionado
 dvolumes_ebacula=Erro de Bacula : $1 
+
 mount_title=Montar ou desmontar
 mount_header=Opções de montagem ou desmontagem de armazenamento
 mount_storage=Dispositivo de armazenamento
@@ -365,8 +392,10 @@ unmount_failed=.. desmontar falhou! Veja a mensagem de erro acima pelo motivo.
 mount_return=forma de montagem
 mount_err=Falha ao montar o dispositivo de armazenamento
 mount_eslot=Número de slot ausente ou inválido
+
 cancel_err=Falha ao cancelar trabalhos
 cancel_enone=Nenhum selecionado
+
 gjobs_title=Trabalhos de backup do Bacula Group
 gjobs_none=Nenhuma tarefa de backup do grupo Bacula foi definida ainda.
 gjobs_add=Adicione uma nova tarefa de backup do grupo Bacula.
@@ -374,10 +403,12 @@ gjobs_delete=Excluir trabalhos selecionados
 gjobs_return=lista de trabalhos do grupo Bacula
 gjobs_derr=Falha ao excluir trabalhos do grupo Bacula
 gjobs_client=Grupo Bacula para backup
+
 gjob_title1=Criar tarefa de backup do grupo Bacula
 gjob_title2=Editar tarefa de backup do grupo Bacula
 gjob_header=Detalhes da tarefa de backup do grupo Bacula
 gjob_client=Grupo Bacula para backup
+
 groups_title=Grupos Bacula
 groups_none=Nenhum grupo Bacula foi selecionado para backup pelo Bacula ainda.
 groups_name=Nome do grupo
@@ -391,6 +422,7 @@ groups_derr=Falha ao excluir grupos
 groups_noadd=Não existem grupos Bacula para serem selecionados para backups.
 groups_info=$1 ($2 membros)
 groups_already=Todos os grupos Bacula já foram adicionados.
+
 group_title1=Criar grupo Bacula
 group_title2=Editar grupo Bacula
 group_header=Detalhes do grupo Bacula a ser copiado
@@ -401,11 +433,13 @@ group_port=Porta Bacula FD
 group_err=Falha ao salvar o grupo Bacula
 group_eclash=Um grupo com o mesmo nome já existe
 group_members=Anfitriões no grupo Bacula
+
 sync_title=Sincronização do grupo Bacula
 sync_header=Opções de sincronização automática do cliente do grupo Bacula
 sync_sched=Sincronizar no horário?
 sync_schedyes=Sim, nos horários selecionados abaixo ..
 sync_err=Falha ao salvar a sincronização do grupo Bacula
+
 log_create_client=Cliente de backup criado $1 
 log_modify_client=Cliente de backup modificado $1 
 log_delete_client=Cliente de backup excluído $1 
@@ -464,6 +498,7 @@ log_director=Configuração global do diretor Bacula salva
 log_file=Configuração do daemon de arquivos Bacula salva
 log_storagec=Configuração do daemon de armazenamento Bacula salva
 log_fixpass=Corrigida a senha do programa do console Bacula
+
 director_title=Configuração do diretor
 director_header=Opções globais do diretor Bacula
 director_name=Nome do diretor
@@ -477,6 +512,7 @@ director_ename=Nome de diretor ausente ou inválido
 director_eport=Número de porta ausente ou inválido
 director_ejobs=Número ausente ou inválido de trabalhos simultâneos
 director_edir=Diretório de trabalho ausente ou inexistente
+
 tls_enable=Ativar criptografia TLS?
 tls_require=Aceitar apenas conexões TLS?
 tls_verify=Verificar clientes TLS?
@@ -488,6 +524,7 @@ tls_ecert=Arquivo de certificado TLS ausente ou inexistente
 tls_ekey=Arquivo de chave TLS ausente ou inexistente
 tls_ecacert=Arquivo de certificado TLS CA ausente ou inexistente
 tls_ecerts=Para que o TLS seja ativado, os arquivos de certificado, chave e CA devem ser especificados
+
 file_title=Configuração de Daemon de Arquivo
 file_header=Opções do daemon de arquivo Bacula
 file_name=Nome do daemon de arquivo
@@ -500,6 +537,7 @@ file_ename=Nome do daemon de arquivo ausente ou inválido
 file_eport=Número de porta ausente ou inválido
 file_ejobs=Número ausente ou inválido de trabalhos simultâneos
 file_edir=Diretório de trabalho ausente ou inexistente
+
 fdirectors_title=Diretores de Daemon de Arquivos
 fdirectors_none=Nenhum diretor foi definido ainda.
 fdirectors_name=Nome do diretor
@@ -508,6 +546,7 @@ fdirectors_add=Adicione um novo diretor.
 fdirectors_delete=Excluir diretores selecionados
 fdirectors_return=lista de diretores
 fdirectors_derr=Falha ao excluir diretores
+
 fdirector_title1=Criar diretor de daemon de arquivo
 fdirector_title2=Editar arquivo Daemon Director
 fdirector_header=Detalhes do controle do diretor remoto
@@ -519,6 +558,7 @@ fdirector_err=Falha ao salvar o diretório do daemon de arquivos
 fdirector_ename=Nome do diretor ausente
 fdirector_eclash=Já existe um diretor com o mesmo nome
 fdirector_epass=Senha ausente
+
 sdirectors_title=Diretores do Daemon de Armazenamento
 sdirectors_none=Nenhum diretor foi definido ainda.
 sdirectors_name=Nome do diretor
@@ -527,6 +567,7 @@ sdirectors_add=Adicione um novo diretor.
 sdirectors_delete=Excluir diretores selecionados
 sdirectors_return=lista de diretores
 sdirectors_derr=Falha ao excluir diretores
+
 sdirector_title1=Criar diretor de daemon de armazenamento
 sdirector_title2=Editar diretor de daemon de armazenamento
 sdirector_header=Detalhes do controle do diretor remoto
@@ -538,6 +579,7 @@ sdirector_err=Falha ao salvar o diretor do daemon de armazenamento
 sdirector_ename=Nome do diretor ausente
 sdirector_eclash=Já existe um diretor com o mesmo nome
 sdirector_epass=Senha ausente
+
 storagec_title=Configuração do Daemon de Armazenamento
 storagec_header=Opções do daemon de armazenamento Bacula
 storagec_name=Nome do daemon
@@ -550,6 +592,7 @@ storagec_ename=Nome do daemon de armazenamento ausente ou inválido
 storagec_eport=Número de porta ausente ou inválido
 storagec_ejobs=Número ausente ou inválido de trabalhos simultâneos
 storagec_edir=Diretório de trabalho ausente ou inexistente
+
 chooser_title=Selecionar agendamento
 chooser_monthsh=Meses para executar
 chooser_months=Meses do ano
@@ -574,11 +617,13 @@ chooser_emonthsrange=Os meses selecionados devem ser contíguos
 chooser_eweekdaysrange=Os dias da semana selecionados devem ser contíguos
 chooser_eweekdaynumsrange=Os números dos dias da semana selecionados devem ser contíguos
 chooser_edaysrange=Os dias do mês selecionados devem ser contíguos
+
 weekdaynum_1=Primeiro
 weekdaynum_2=Segundo
 weekdaynum_3=Terceiro
 weekdaynum_4=Quarto
 weekdaynum_5=Quinto
+
 restore_title=Restaurar backup
 restore_title2=Restaurar backup para o grupo Bacula
 restore_title3=Restaurar backup do grupo Bacula

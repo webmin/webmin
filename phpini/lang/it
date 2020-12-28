@@ -9,16 +9,21 @@ index_edit=Modifica
 index_manual=Modifica manualmente
 index_anyfile=Modifica gli altri file di configurazione di PHP:
 index_return=file di configurazione
+
 file_global=Configurazione globale di PHP
+
 manual_title=Modifica la configurazione manualmente
 manual_desc=Questa pagina può essere usata per la modifica manuale di un file di configurazione di PHP. Questa operazione deve essere fatta con molta attenzione in quanto in questa sede non verrà effettuato alcun controllo sulla validità delle modifiche effettuate.
 manual_err=Modifica del file di configurazione non riuscita
 manual_edata=Nessun nuovo contenuto inserito
+
 list_title=Modifica la configurazione di PHP
 list_ecannot=Non hai i permessi per modificare questo file di configurazione di PHP
 list_return=Configurazione di PHP
+
 vars_title=Variabili PHP
 vars_err=Salvataggio delle impostazioni per le variabili PHP non riuscito
+
 dirs_title=Impostazioni della directory
 dirs_header=Impostazioni per la directory degli script PHP e delle estensioni
 dirs_include=Directory in cui cercare i file da includere
@@ -29,6 +34,7 @@ dirs_utmp=Directory temporanea per i file inviati
 dirs_err=Salvataggio delle impostazioni della directory non riuscito
 dirs_eutmp=Directory per i file temporanei mancante o non valida
 dirs_eext=Directory delle estensioni mancante
+
 db_title=Impostazioni database
 db_header1=Impostazioni di connessione a MySQL
 db_persist=Permetti le connessioni persistenti al database?
@@ -47,6 +53,7 @@ db_emaxlinks=Numero massimo di connessioni totali mancante o non valido
 db_etimeout=Timeout di connessione mancante o non valido
 db_ehost=Server MySQL predefinito mancante o non valido
 db_eport=Porta predefinita del server MySQL mancante o non valida
+
 session_title=Opzioni di sessione
 session_header=Opzioni per il tracciamento della sessione
 session_files=File
@@ -61,12 +68,15 @@ session_maxlife=Durata massima della sessione
 session_epath=Directory per i file di sessione mancante o non valida
 session_elife=Durata dei cookie mancante o non valida
 session_emaxlife=Durata massima della sessione mancante o non valida
+
 safe_title=Opzioni per la modalità sicura
+
 limits_title=Limiti alle risorse
 limits_upload=Dimensione massima dei file per l'invio
 limits_err=Salvataggio dei limiti alle risorse non riuscito
 limits_emem=Allocazione massima della memoria mancante o non valida
 limits_eupload=Dimensione massima dei file per l'invio mancante o non valida
+
 errors_title=Registrazione degli errori
 errors_header=Opzioni di visualizzazione e registrazione degli errori
 errors_display=Visualizzare i messaggi di errore?
@@ -96,6 +106,7 @@ errors_err=Salvataggio delle opzioni di registrazione degli errori non riuscita
 errors_ereporting=Nessuna espressione per il tipo di errore inserita
 errors_emaxlen=Dimensione massima degli errori registrati mancante o non valida
 errors_efile=File per il registro degli errori mancante
+
 misc_title=Altre impostazioni
 misc_header=Configurazioni varie di PHP
 misc_asp=Permettere i tag &lt;% %&gt;?
@@ -108,12 +119,14 @@ misc_esmtp=Server SMTP mancante o non risolvibile
 misc_esmtp_port=Porta SMTP mancante o non numerica
 misc_esendmail=Comando per l'invio della posta non valido
 misc_esendmail2=Comando per l'invio della posta mancante
+
 log_manual=Modifica manualmente il file $1
 log_dirs=Impostazioni per la directory modificate in $1
 log_db=Impostazioni per il database modificate in $1
 log_limits=Limiti alle risorse modificati in $1
 log_errors=Registrazione degli errori modificata in $1
 log_misc=Altre impostazioni modificate in $1
+
 acl_global=Può modificare la configurazione globale di PHP?
 acl_anyfile=Può modificare i file di configurazione di PHP?
 acl_manual=Può modificare manualmente i file di configurazione?

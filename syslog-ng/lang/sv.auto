@@ -9,6 +9,7 @@ index_start=Starta Syslog-NG
 index_startdesc=Klicka på den här knappen för att starta Syslog-NG-demonen med den aktuella konfigurationen.
 index_return=modulindex
 index_version=Syslog-NG $1 
+
 options_title=Loggningsalternativ
 options_header=Alternativ för alla loggfiler
 options_secs=sekunder
@@ -55,6 +56,7 @@ options_esync=Det saknas eller ogiltigt antal meddelanden som ska buffras innan 
 options_estats=Saknas eller inte-numerisk tid att vänta mellan statistikmeddelanden
 options_elog_fifo_size=Det saknas eller ogiltigt antal meddelanden till bufferten
 options_elog_msg_size=Saknad eller icke-numerisk maximal loggmeddelandestorlek
+
 destinations_title=Logga destinationer
 destinations_name=Destinationsnamn
 destinations_type=Skriva till
@@ -77,6 +79,7 @@ destinations_add=Lägg till en ny loggdestination.
 destinations_return=logga destinationer
 destinations_desc=Övrig moduls logg
 destinations_cmd=Utgång från $1 
+
 destination_header=Logga destinationsalternativ
 destination_title1=Skapa loggdestination
 destination_title2=Redigera loggdestination
@@ -117,17 +120,22 @@ destination_enet_localip=Lokal IP-adress saknas eller ogiltig
 destination_enet_localport=Lokalt portnummer saknas eller ogiltigt
 destination_enet_host=Saknad eller ogiltig Syslog-servervärd eller adress
 destination_eunix=Saknar Unix-socket-namn
+
 ddelete_err=Det gick inte att ta bort destinationer
 ddelete_enone=Ingen vald
 ddelete_eused=Destinationen $1 kan inte raderas, eftersom den används av ett loggmål
+
 sdelete_err=Det gick inte att ta bort källor
 sdelete_enone=Ingen vald
 sdelete_eused=Loggkällan $1 kan inte raderas, eftersom den används av ett loggmål
+
 fdelete_err=Det gick inte att ta bort filter
 fdelete_enone=Ingen vald
 fdelete_eused=Loggfiltret $1 kan inte raderas, eftersom det används av ett loggmål
+
 ldelete_err=Det gick inte att ta bort loggmål
 ldelete_enone=Ingen vald
+
 filters_title=Loggfilter
 filters_name=Filternamn
 filters_desc=Betingelser
@@ -144,6 +152,7 @@ filters_program=program <tt>$1</tt>
 filters_match=matchar "$1"
 filters_host=från värdnamn <tt>$1</tt>
 filters_netmask=från avsändaren <tt>$1</tt>
+
 filter_title1=Skapa logfilter
 filter_title2=Redigera loggfilter
 filter_header=Specifikationer för loggfilter
@@ -169,6 +178,7 @@ filter_enet=Saknad eller ogiltig nätverks IP-adress
 filter_emask=Netmask saknas eller ogiltig
 filter_ebool=Fel i komplexa uttryck
 filter_egone=Filter finns inte längre!
+
 logs_title=Loggmål
 logs_source=källor
 logs_filter=filter
@@ -177,6 +187,7 @@ logs_add=Lägg till ett nytt loggmål.
 logs_delete=Radera valda loggmål
 logs_return=logga mål
 logs_none=Ingen
+
 log_title1=Skapa loggmål
 log_title2=Redigera loggmål
 log_header=Logga källa, filter och destinationsval
@@ -190,6 +201,7 @@ log_flags=Målalternativ
 log_egone=Loggmålet finns inte längre!
 log_err=Det gick inte att spara loggmålet
 log_esource=Inga källor valda
+
 sources_title=Logga källor
 sources_none=Inga källor har definierats än!
 sources_add=Lägg till en ny loggkälla.
@@ -207,6 +219,7 @@ sources_typen=Solström
 sources_typenw=Syslog-server
 sources_return=logga källor
 sources_none2=Ingen
+
 source_title1=Skapa loggkälla
 source_title2=Redigera loggkälla
 source_header=Loggkällalternativ
@@ -243,15 +256,20 @@ source_door=Dörrfilnamn
 source_esun_streams_name=Saknad eller ogiltig filnamn på Sun streams
 source_edoor=Saknad eller ogiltig Sun strömmar dörrfilnamn
 source_transport=Nätverksprotokoll
+
 view_title=Visa Logfile
 view_header=Sista $1 rader av $2 
 view_empty=Loggfilen är tom
 view_refresh=Uppdatera
 view_filter=Visa bara rader med text $1 
+
 apply_err=Det gick inte att tillämpa konfigurationen
 apply_egone=Springer inte!
+
 start_err=Det gick inte att starta Syslog-NG-servern
+
 stop_err=Det gick inte att stoppa Syslog-NG-servern
+
 log_create_destination=Skapad logdestination $1 
 log_modify_destination=Ändrad logdestination $1 
 log_delete_destination=Raderad logdestination $1 

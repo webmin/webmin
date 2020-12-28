@@ -9,6 +9,7 @@ index_auto=Automaticky najít servery
 index_automsg=Klepnutím na toto tlačítko nastavíte automatické periodické zjišťování nových serverů Webmin ve vaší síti.
 index_search=Zobrazit odpovídající servery:
 index_ok=Vyhledávání
+
 edit_realhost=Skutečné jméno hostitele
 edit_portnone=Žádná sada
 edit_checkssl=Zkontrolovat vzdálený certifikát SSL?
@@ -19,9 +20,11 @@ edit_lpass=Heslo pro vzdálený server
 edit_baduser=Přihlášení odmítnuto
 edit_invalid=Uživatel nemůže provádět RPC
 edit_same=K dispozici pouze v režimu autentizace relace a když je heslo dostupné pro programy Webmin.
+
 save_ehost2=Hostitel neexistuje
 save_eport2=Pokud je vybrán typ odkazu s přihlašovacím jménem, musí být zadán port
 save_egroup2=Neplatný nový název skupiny
+
 find_but=Nový server byl nalezen na $1, ale ověření se nezdařilo : $2 
 find_already2=Našel se známý hostitel serveru na adrese $1 
 find_skip=Ignorování serveru na $1 
@@ -29,14 +32,18 @@ find_eiface=Nelze najít rozhraní pro skenování
 find_scanning=Hledání serverů v síti $1 ..
 find_broading=Vysílání pro servery na adresách $1 ..
 find_eport=Chybějící nebo neplatné číslo portu
+
 log_deletes=Smazané servery $1 
+
 link_eautologin=Neplatné přihlašovací jméno nebo heslo pro $1. <a href='$2'>Klikněte sem</a> a zkuste to znovu.
+
 acl_auto=Lze nastavit automatickou detekci serverů?
 acl_add=Lze zaregistrovat nové servery?
 acl_forcefast=Vynutit rychlý režim RPC na výchozí hodnotu?
 acl_forcetype=Vynutit typ operačního systému na výchozí?
 acl_forcelink=Vynutit výchozí přihlašovací typ?
 acl_links=Můžete se připojit k serverům?
+
 login_title=Přihlaste se na server
 login_desc=Pro přihlášení k serveru Webmin $1 musíte zadat uživatelské jméno a heslo.
 login_header=Webmin autentizace
@@ -44,13 +51,16 @@ login_user=Uživatelské jméno
 login_pass=Heslo
 login_login=Přihlásit se
 login_esame=Možnost použít stejné přihlášení jako tento server lze použít pouze v případě, že není v režimu autentizace relace a když je heslo zpřístupněno programům Webmin.
+
 this_server=tento server
+
 delete_err=Odstranění serverů se nezdařilo
 delete_enone=Nebyl vybrán žádný
 delete_ecannot=Není dovoleno mazat servery
 delete_title=Odstranit servery
 delete_rusure=Opravdu chcete odebrat vybrané servery $1 ?
 delete_confirm=Smazat
+
 auto_title=Automaticky najít servery
 auto_header=Možnosti automatické registrace serveru
 auto_sched=Vyhledat nové servery?
@@ -76,8 +86,10 @@ auto_smtp=Odeslat přes SMTP server
 auto_self=Tento systém
 auto_esmtp=Chybějící nebo neplatný server SMTP
 auto_findself=Registrovat také tento systém?
+
 config_deftype=Výchozí typ systému
 config_typeauto=Automatický
+
 email_regsubject=Systém $1 byl zaregistrován
 email_reg=Systém $1 byl automaticky zaregistrován.
 email_unregsubject=Systém $1 není zaregistrován

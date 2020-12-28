@@ -14,6 +14,7 @@ index_search=خدمات ڈسپلے ملاپ:
 index_sok=تلاش کریں
 index_toomany=اس صفحے پر ظاہر کرنے کے لئے بہت ساری انٹرنیٹ خدمات موجود ہیں۔
 index_none=کوئی انٹرنیٹ خدمات آپ کی تلاش سے مماثل نہیں ہیں۔
+
 error_restart=Inetd کو دوبارہ شروع کرنے میں ناکام
 error_saverpc=آر پی سی پروگرام کو بچانے میں ناکام
 error_invalidprgname='$1' ایک درست پروگرام نام نہیں ہے
@@ -43,6 +44,7 @@ error_nameexist=نام$1 اور پروٹوکول$2 والی خدمت پہلے ہ
 error_inetservice=$1 نام اور پروٹوکول$2 والی انٹرنیٹ سروس پہلے ہی موجود ہے
 error_smfservice=cmd '$1' ، غلطی کوڈ$2 کے ساتھ smf سروس کو اپ ڈیٹ کرنے میں ناکام
 error_smf_cmdfield=ایس ایم ایف کے لئے ، پروگرام '$1' کے فائل نام کو کمانڈ فیلڈ کی پہلی دلیل سے ملنا چاہئے ، یعنی '$2' ہونا چاہئے
+
 editrpc_title1=آر پی سی پروگرام بنائیں
 editrpc_title2=آر پی سی پروگرام میں ترمیم کریں
 editrpc_detail=آر پی سی پروگرام کی تفصیلات
@@ -69,6 +71,7 @@ editrpc_execasuser=بطور صارف پھانسی دیں
 editrpc_max=زیادہ سے زیادہ منٹ
 editrpc_default=پہلے سے طے شدہ
 editrpc_execasgrp=بطور گروپ عمل کریں
+
 editserv_title1=انٹرنیٹ سروس بنائیں
 editserv_title2=انٹرنیٹ سروس میں ترمیم کریں
 editserv_detail=انٹرنیٹ سروس کی تفصیلات
@@ -82,6 +85,7 @@ editserv_wrapper=ٹی سی پی-ریپر
 editserv_inetd=Internal to <tt>inetd</tt>
 editserv_qm=حکم موجود نہیں ہوسکتا ہے؟
 editserv_ename=اس نام اور پروٹوکول کے ساتھ کوئی خدمت موجود نہیں ہے
+
 log_apply=لاگو تبدیلیاں
 log_create_serv=سروس$1 تشکیل دی گئی
 log_modify_serv=ترمیم شدہ خدمت$1
@@ -95,6 +99,7 @@ log_delete_serv_l=پورٹ$2 پر سروس$1 کو حذف کردیا گیا
 log_create_prog_l=پروگرام$3 کے لئے پورٹ$2 پر سروس$1 بنائی
 log_modify_prog_l=پروگرام$3 کیلئے پورٹ$2 پر سروس$1 میں ترمیم کی گئی ہے
 log_delete_prog_l=پروگرام$3 کیلئے پورٹ$2 پر سروس$1 کو حذف کردیا گیا
+
 log_create_rpc=RPC $1 تشکیل دیا گیا
 log_modify_rpc=ترمیم شدہ RPC$1
 log_delete_rpc=حذف شدہ RPC$1

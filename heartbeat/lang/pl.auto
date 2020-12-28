@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Skrypt żądający zasobów z drugiego węzła ($1) nie 
 index_version=Wersja pulsu $1 
 index_noversion=Ostrzeżenie - nie można automatycznie wykryć wersji Heartbeat zainstalowanej w systemie. Powinieneś to ustawić na stronie <a href='$1'>konfiguracji modułu</a>.
 index_status=Status bicia serca
+
 conf_title=Opcje konfiguracji
 conf_header=Opcje konfiguracji pulsu
 conf_serials=Szeregowe porty pulsu
@@ -54,6 +55,7 @@ conf_auto_on=$ {conf_enabled}
 conf_auto_off=$ {conf_disabled}
 conf_auto_legacy=Tryb starszej wersji
 conf_auto_=$ {default}
+
 res_title=Zasoby klastra
 res_node=Węzeł podstawowy
 res_ips=Adresy IP
@@ -67,6 +69,7 @@ res_getserv=Zdobądź zasób
 res_hbdown=Bicie serca w dół
 res_up=W GÓRĘ
 res_down=NA DÓŁ
+
 node_create=Dodaj zasób klastra
 node_edit=Edytuj zasób klastra
 node_header=Szczegóły zasobów klastra
@@ -83,6 +86,7 @@ node_enone=Brakujący lub nieprawidłowy węzeł główny
 node_eip=„$1” nie jest prawidłowym adresem IP
 node_ecidr=„$1” nie jest prawidłowym CIDR
 node_ebroad=„$1” nie jest prawidłowym adresem rozgłoszeniowym
+
 auth_title=Klucze uwierzytelniające
 auth_header=Uwierzytelnianie węzła klastra
 auth_mode=Tryb uwierzytelniania
@@ -92,6 +96,8 @@ auth_md5=MD5 z hasłem
 auth_err=Nie udało się zapisać kluczy uwierzytelniających
 auth_emd5=Brakujące lub nieprawidłowe hasło MD5
 auth_esha1=Brakujące lub nieprawidłowe hasło SHA1
+
 start_err=Nie udało się uruchomić pulsu
+
 apply_err=Nie udało się zastosować zmian
 apply_epid=Proces nie jest już uruchomiony

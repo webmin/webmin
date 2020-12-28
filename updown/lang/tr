@@ -27,6 +27,7 @@ index_imm=Hemen
 index_asuser=Bu kullanıcı ile
 index_zip=ZIP ya da TAR dosyaları açılsın mı?
 index_zipyes=Evet, sonra sil
+
 upload_title=Dosya Yükle
 upload_err=Dosyaların yüklenmesinde hata oluştu
 upload_edir=Yüklenecek dizin girilmemiş
@@ -45,6 +46,7 @@ upload_eextract=, açılamadı : $1
 upload_extracted=, ve dosyalar açıldı ..
 upload_deleted=, ve arşiv silinmeden önce dosyalar açıldı ..
 upload_notcomp=ZIP ya da TAR dosyası değil
+
 download_err=İndirilen dosyanın kaydedilmesinde hata oluştu
 download_eurl='$1' geçerli bir URL değil
 download_edate=Geçersiz tarih ya da saat
@@ -55,9 +57,11 @@ download_failed=İndirmede hata oluştu : $1
 download_eaccess=Dosyaları $1 'e indirmek için izininiz yoktur
 download_eucannot=$1 kullanıcısı ile dosya indirmek için izininiz yoktur
 download_egcannot=Seçili grup seçili kullanıcıyı içermiyor
+
 cancel_err=İndirmenin iptalinde hata oluştu
 cancel_enone=Hiçbirşey seçilmedi
 cancel_ecannot=$1 kullanıcısının indirmelerini iptal etmek için izininiz yoktur
+
 log_cancel=$1 indirme iptal edildi
 log_upload_l=$1 dosyaları yüklendi
 log_upload=$1 dosya yüklendi
@@ -65,6 +69,7 @@ log_download_l=$1 URL'leri indirildi
 log_download=$1 URL indirildi
 log_sdownload_l=$1 URL'lerinin indirilmesi zamanlandırıldı
 log_sdownload=$1 URL'nin indirilmesi zamanlandırıldı
+
 acl_users=Dosyaları hangi kullanıcı haklarıyla indirip yükleyebilsin
 acl_all=Bütün kullanıcılar
 acl_this=Mevcut Webmin kullanıcısı

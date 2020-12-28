@@ -17,6 +17,7 @@ index_restartmsg=برای اعمال تنظیمات فعلی با توقف و س
 index_comments=هشدار - پرونده پیکربندی Jabber $1 شما حاوی نظرات است که در صورت ایجاد هرگونه تغییر تنظیمات با استفاده از این ماژول حذف می شود.
 index_return=منوی جابر
 index_version=نسخه Jabber$1
+
 general_title=گزینه های عمومی
 general_header=گزینه های سرور جهانی Jabber
 general_host=نام میزبان سرور شما
@@ -32,6 +33,7 @@ general_eelogfmt=قالب ثبت خطا وجود ندارد
 general_erlog=پرونده ورود به سیستم ترافیک وجود ندارد یا نامعتبر است
 general_erlogfmt=قالب ورود به سیستم ترافیک وجود ندارد
 general_epidfile=پرونده شناسه فرآیند موجود یا نامعتبر است
+
 messages_title=پیام ها
 messages_header=پیام سرور Jabber برای مشتریان
 messages_wsubject=موضوع پیام خوش آمدید
@@ -44,6 +46,7 @@ messages_vcard2jud=کارت ویزیت را به دایرکتوری کاربر J
 messages_err=ذخیره پیام ها انجام نشد
 messages_evcard=کارت ویزیت نامعتبر XML :$1
 messages_etag=سرور vCard XML با &lt;vCard&gt; شروع نمی شود
+
 modules_title=ماژول های Jabber
 modules_desc=ماژول های ذکر شده در زیر برای پردازش پیام های دریافت شده توسط مدیر جلسه جابر استفاده می شود. شما فقط باید بدانید که اگر می دانید چه کاری انجام می دهید.
 modules_header=ماژول های مدیر جلسه سرور Jabber
@@ -52,6 +55,7 @@ modules_so=کتابخانه مشترک
 modules_err=ذخیره ماژول های Jabber انجام نشد
 modules_emod="$1" نام ماژول معتبری نیست
 modules_eso=کتابخانه مشترک "$1" وجود ندارد
+
 karma_title=کنترل ترافیک کارما
 karma_header=گزینه های کنترل نرخ ترافیک
 karma_rate=دست زدن به اتصال بیش از حد
@@ -80,6 +84,7 @@ karma_epenalty=دوره مجازات نامشخص یا نامعتبر است
 karma_erestore=دوره های بازگردانی نامعتبر یا نامعتبر است
 karma_epoints=تعداد اتصالات موجود یا نامعتبر است
 karma_etime=زمان مسدود یا نامعتبر است برای مسدود کردن
+
 ips_title=کنترل دسترسی IP
 ips_header=کنترل دسترسی IP سرور Jabber
 ips_allow=IP مجاز مشتری
@@ -89,10 +94,12 @@ ips_none=هیچ یک
 ips_sel=آدرس های لیست شده/netmasks ..
 ips_err=کنترل دسترسی IP ذخیره نشد
 ips_eaddr='$1' یک آدرس IP معتبر یا آدرس IP/netmask نیست
+
 file_title=پیکربندی پرونده را ویرایش کنید
 file_desc=برای ویرایش مستقیم فایل پیکربندی Jabber از فرم زیر استفاده کنید. این کار فقط در صورت انجام فرمت پیکربندی XML انجام می شود.
 file_header=پرونده پیکربندی Jabber را ویرایش کنید
 file_err=ذخیره پرونده پیکربندی انجام نشد
+
 admin_title=کاربران اداری
 admin_header=کاربران سرور مدیریت
 admin_read=مدیریت دسترسی را بخوانید
@@ -100,11 +107,13 @@ admin_write=مدیریت دسترسی را بنویسید
 admin_reply=به طور خودکار برای پیام های سرپرست؟
 admin_rsubject=موضوع به صورت خودکار
 admin_rbody=پیام به صورت خودکار
+
 filter_title=فیلترهای کاربر
 filter_header=مجوزهای فیلتر کاربر
 filter_max=حداکثر قوانین فیلتر
 filter_conds=شرایط فیلتر مجاز
 filter_acts=اقدامات فیلتر مجاز
+
 restart_err=اعمال تغییرات انجام نشد
 stop_err=نتوانست جلوی جابر را بگیرد
 stop_epid=فرایند Jabber یافت نشد

@@ -42,6 +42,7 @@ index_lvused=사용 된 공간
 index_lvuse=사용
 index_snapof=($1 의 스냅 샷)
 index_thin=$1 LV에 대한 LVM 씬 풀
+
 lv_edit=논리 볼륨 편집
 lv_edit_snap=스냅 샷 편집
 lv_create=논리 볼륨 생성
@@ -128,6 +129,7 @@ lv_pvfrom=물리 볼륨에서 블록 이동
 lv_pvto=물리량에
 lv_moveok=블록 이동
 lv_return=논리적 볼륨
+
 mkfs_title=파일 시스템 생성
 mkfs_desc=이 형식을 사용하면 논리 볼륨 $3 에 새 $2 ($1) 파일 시스템을 만들 수 있습니다. 기존의 모든 데이터가 지워집니다.
 mkfs_header=새로운 파일 시스템 옵션
@@ -135,6 +137,7 @@ mkfs_err=파일 시스템을 생성하지 못했습니다
 mkfs_exec=명령 $1 실행 중 ..
 mkfs_failed=.. 명령이 실패했습니다!
 mkfs_ok=.. 명령이 완료되었습니다.
+
 resize_title=논리 볼륨 크기 조정
 resize_mesg=이 논리 볼륨의 $1 파일 시스템 크기를 조정할 수 없습니다. 논리 볼륨의 크기를 조정하면 파일 시스템을 다시 작성해야합니다. 그러면 파일 시스템의 모든 데이터가 지워집니다.
 resize_mesg2=Webmin은이 논리 볼륨에 어떤 종류의 파일 시스템이 있는지 알 수 없습니다. 논리 볼륨의 크기를 조정하면 파일 시스템을 다시 작성해야합니다. 그러면 파일 시스템의 모든 데이터가 지워집니다.
@@ -142,8 +145,10 @@ resize_fs=이 논리 볼륨에서 $1 파일 시스템의 크기를 조정하는 
 resize_ok=논리 볼륨 크기 조정
 resize_emounted=이 논리 볼륨의 파일 시스템은 마운트되어있는 동안 크기를 조정할 수 없습니다
 resize_emounted2=이 논리 볼륨의 파일 시스템은 마운트되어있는 동안 축소 할 수 없습니다
+
 init_title=LVM 활성화
 init_cmd=$1 명령을 실행 중입니다.
+
 pv_edit=물리 볼륨 편집
 pv_create=물리 볼륨 추가
 pv_vg=볼륨 그룹 $1 에서
@@ -170,6 +175,7 @@ pv_eother=디스크 장치가 없거나 유효하지 않습니다
 pv_raid=RAID 장치 $1 
 pv_lvs=논리 볼륨에 의한 할당
 pv_egone=물리 볼륨이 더 이상 존재하지 않습니다!
+
 vg_edit=볼륨 그룹 편집
 vg_create=볼륨 그룹 생성
 vg_name=볼륨 그룹 이름
@@ -188,11 +194,13 @@ vg_deleteok=지금 삭제
 vg_ename=볼륨 그룹 이름이 없거나 유효하지 않습니다
 vg_epesize=할당 블록 크기가 없거나 잘못되었습니다
 vg_egone=볼륨 그룹이 더 이상 존재하지 않습니다!
+
 pvmove_err=논리 볼륨을 이동하지 못했습니다
 pvmove_title=논리 볼륨 이동
 pvmove_start=논리 볼륨 $1 을 (를) $2 에서 $3 (으)로 이동 중입니다.
 pvmove_failed=.. 이동 실패!
 pvmove_done=.. 이동 완료
+
 thin_title=씬 풀 생성
 thin_desc=씬 풀은 사용 가능한 범위보다 더 큰 추가 LV를 생성하는 데 사용할 수있는 한 쌍의 LV입니다. 공간은 풀 내부의 LV가 생성 될 때가 아니라 필요할 때만 사용됩니다. 경고-선택한 LV의 모든 데이터가 손실됩니다!
 thin_header=새로운 씬 풀 세부 사항
@@ -204,6 +212,7 @@ thin_err=씬 풀을 생성하지 못했습니다.
 thin_esame=선택된 LV는 동일
 thin_edata=선택한 데이터 LV가 이미 사용 중입니다
 thin_emetadata=선택한 메타 데이터 LV가 이미 사용 중입니다
+
 log_create_vg=볼륨 그룹 $1 을 (를) 생성했습니다.
 log_modify_vg=수정 된 볼륨 그룹 $1 
 log_delete_vg=삭제 된 볼륨 그룹 $1 
@@ -216,4 +225,5 @@ log_create_pv=VG $1 에 물리 볼륨 $1 을 (를) 추가했습니다.
 log_modify_pv=VG $2 에서 수정 된 물리 볼륨 $1 
 log_delete_pv=VG $2 에서 물리 볼륨 $1 을 (를) 제거했습니다.
 log_resize_pv=VG $2 에서 크기 조정 된 물리 볼륨 $1 
+
 blocks=블록

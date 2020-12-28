@@ -16,6 +16,7 @@ index_chain=Ķēde $1
 index_action=Darbība
 index_desc=Stāvoklis
 index_comm=Komentārs
+index_no_comment=
 index_move=Kustēties
 index_none=Šai ķēdei nav definēti noteikumi.
 index_policy=Iestatīt noklusējuma darbību uz:
@@ -88,6 +89,7 @@ index_ipset_size=Izmērs
 index_ipvxmode=Mainīt IP protokola versiju:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=protokols ir $1 
 desc_p!=protokols nav $1 
 desc_s=avots ir $1 
@@ -114,6 +116,8 @@ desc_tcp-option=pakete izmanto TCP iespēju $1
 desc_tcp-option!=pakete neizmanto TCP iespēju $1 
 desc_icmp-type=ICMP tips ir $1 
 desc_icmp-type!=ICMP tips nav $1 
+desc_icmpv6-type=ICMP tips ir $1 
+desc_icmpv6-type!=ICMP tips nav $1 
 desc_mac-source=Ethernet adrese ir $1 
 desc_mac-source!=Ethernet adrese nav $1 
 desc_limit=likme ir mazāka par $1 
@@ -146,10 +150,15 @@ desc_always=Vienmēr
 desc_args--match-set=$2 ir ietverts IP komplektā $1 
 desc_src=avots
 desc_dest=galapunkts
+
 redhat_einstalled=Netika atrasta <tt>iptables (6)</tt> sāknēšanas darbība, norādot, ka jūsu sistēmā nav instalēta pakete IPtables.
 redhat_eoutput=Kļūda, iegūstot IPtable statusu no komandas $1, radās. Tas, iespējams, norāda, ka jūsu sistēma ir konfigurēta tā, lai IPtable vietā izmantotu IPchains.
+
 gentoo_escript=Gentoo IPtables starta skripts $1 jūsu sistēmā netika atrasts.
+
 eiptables=Nezināma IPtable saglabā faila līniju : $1 
+eip6tables=Nezināma ip6table saglabā faila līniju : $1 
+
 edit_title1=Pievienojiet noteikumu
 edit_title2=Rediģēt kārtulu
 edit_title3=Klona noteikums
@@ -218,6 +227,7 @@ edit_physdevout=Izejošais fiziskais interfeiss
 edit_physdevisin=Ienākošās paketes tilta saskarnē
 edit_physdevisout=Pakešu izeja uz tilta saskarni
 edit_physdevisbridged=Pakete tiek savienota
+
 save_err=Neizdevās saglabāt kārtulu
 save_echain=Trūkst vai nav derīga ķēde
 save_esource=Trūkst vai nav derīga avota adrese vai tīkls
@@ -262,23 +272,28 @@ save_estates=Nav atlasīts neviens savienojuma stāvoklis
 save_ecanjump=Jums nav atļauts izmantot šo darbību
 save_ephysdevin=Trūkst vai nav derīga ienākošā fiziskā saskarne
 save_ephysdevout=Trūkst vai nav derīga izejošā fiziskā saskarne
+
 delete_title=Dzēst ķēdi
 delete_rusure=Vai tiešām vēlaties izdzēst ķēdi $1 ? $2 tajā esošie noteikumi tiks dzēsti.
 delete_ok=Dzēst tūlīt
 delete_ecannot=Jums nav atļauts dzēst ķēdes
+
 clear_title=Notīrīt ķēdi
 clear_rusure=Vai tiešām vēlaties izdzēst visus $2 noteikumus no ķēdes $1 ?
 clear_ecannot=Jums nav atļauts notīrīt ķēdes
+
 new_err=Neizdevās izveidot ķēdi
 new_ename=Trūkst vai nav derīgs ķēdes nosaukums
 new_etaken=Ķēde ar šo vārdu jau pastāv
 new_ecannot=Jums nav atļauts veidot ķēdes
+
 apply_err=Neizdevās piemērot konfigurāciju
 apply_ecannot=Jums nav atļauts lietot konfigurāciju
 apply_remote=Kļūda no $1 : $2 
 unapply_err=Neizdevās atjaunot konfigurāciju
 unapply_ecannot=Jums nav atļauts atgriezt konfigurāciju
 bootup_ecannot=Sāknēšanas laikā jums nav atļauts iespējot vai atspējot ugunsmūri
+
 log_create_rule=Pievienots noteikums ķēdei $1 tabulā $2 
 log_modify_rule=Modificēts noteikums ķēdē $1 tabulā $2 
 log_delete_rule=Izdzēsts noteikums $1 tabulā $1 
@@ -301,8 +316,10 @@ log_add_group=Pievienoti klastera serveri no grupas $1
 log_delete_host=Noņemts klastera serveris $1 
 log_delete_group=Noņemti $1 klasteru serveri
 log_openports=Atvērtie ugunsmūra porti $1 
+
 setup_eiface=Nav ievadīts ārējais tīkla interfeiss
 setup_ecannot=Jums nav atļauts iestatīt ugunsmūri
+
 acl_tables=Atļautās IP tabulas
 acl_apply=Vai var lietot konfigurāciju?
 acl_unapply=Vai var atsaukt konfigurācijas izmantošanu?
@@ -314,9 +331,11 @@ acl_jall=Visi
 acl_newchain=Vai var izveidot jaunas ķēdes?
 acl_delchain=Vai ķēdes var izdzēst vai notīrīt?
 acl_policy=Vai var mainīt noklusējuma politiku?
+
 etable=Jums nav atļauts rediģēt šo IPtable
 ejump=Jums nav atļauts rediģēt šo noteikumu
 ecluster=Jums nav atļauts pārvaldīt ugunsmūra klasteru
+
 cluster_title=Klasteru ugunsmūra serveri
 cluster_none=Ugunsmūra klasterim vēl nav pievienoti serveri.
 cluster_host=Resursdatora nosaukums
@@ -327,6 +346,7 @@ cluster_gadd=Pievienojiet serverus grupai
 cluster_need=Webmin serveru indeksa modulī jāpievieno serveri ar pieteikumvārdu un paroli, pirms tos šeit var pārvaldīt.
 cluster_return=klasteru serveri
 cluster_delete=Noņemt atlasīto
+
 add_title=Pievienot serverus
 add_msg=Notiek $1 pievienošana.
 add_gmsg=Serveru pievienošana grupā $1.
@@ -336,13 +356,16 @@ add_echeck=Serverim $1 nav Linux ugunsmūra moduļa
 add_emissing=Serverim $1 trūkst ugunsmūra komandas $2 
 add_ok=Pievienots $1 ar $2 aktīviem ugunsmūra noteikumiem.
 add_enone=Nav serveru, kurus pievienot atlasītajiem!
+
 policy_ecannot=Jums nav atļauts mainīt šīs ķēdes noklusējuma politiku
+
 move_title=Pārvietot noteikumus
 move_count=Atlasīti noteikumi
 move_chain=Pašreizējās izmaiņas
 move_dest=Galamērķa ķēde
 move_ok=Pārvietot tagad
 move_header=Kārtulas pārvietošanas iespējas
+
 rename_title=Pārdēvēt ķēdi
 rename_count=Noteikumi ķēdē
 rename_chain=Pašreizējais vārds
@@ -352,6 +375,3 @@ rename_header=Ķēdes pārdēvēšanas iespējas
 rename_adjust=Vai mainīt citus noteikumus, kas pāriet uz šo ķēdi?
 rename_none=Nav
 rename_ecannot=Jums nav atļauts pārdēvēt ķēdes
-desc_icmpv6-type=ICMP tips ir $1 
-desc_icmpv6-type!=ICMP tips nav $1 
-eip6tables=Nezināma ip6table saglabā faila līniju : $1 

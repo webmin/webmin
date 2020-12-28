@@ -2,6 +2,7 @@ check_econfigset=ไม่มีชุดไฟล์การกำหนดค
 check_econfig=ไม่พบไฟล์การกำหนดค่า iSCSI TGTd บนระบบของคุณ
 check_etgtadm=ไม่พบคำสั่งการดูแลระบบ iSCSI TGTd บนระบบของคุณ
 check_einit=การกระทำการเริ่มระบบ $1 ไม่มีอยู่
+
 index_title=iSCSI TGTd
 index_clink=อาจไม่ได้ติดตั้งไว้หรือ <a href='$1'>การกำหนดค่าโมดูล</a> ของคุณไม่ถูกต้อง
 index_stop=หยุด iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=ผู้ใช้ที่อนุญาต
 index_size=ขนาดทั้งหมด
 index_noluns=ไม่มี
 index_nousers=ใด
+
 dtargets_err=การลบเป้าหมายล้มเหลว
 dtargets_enone=ไม่ได้เลือก!
+
 target_title1=สร้างเป้าหมาย iSCSI
 target_title2=แก้ไขเป้าหมาย iSCSI
 target_header=ตัวเลือกอุปกรณ์ที่ใช้ร่วมกันของ iSCSI
@@ -74,11 +77,13 @@ target_direct=การเข้าถึงอุปกรณ์โดยตร
 target_cache=แคชเขียนไปยังอุปกรณ์หรือไม่
 target_eaddr=ที่อยู่ IP ที่อนุญาตไม่ถูกต้อง
 target_eaname=ชื่อผู้เริ่มต้นที่ได้รับอนุญาตไม่ถูกต้อง
+
 start_err=ไม่สามารถเริ่ม iSCSI TGTd
 stop_err=ไม่สามารถหยุด iSCSI TGTd
 restart_err=ไม่สามารถรีสตาร์ท iSCSI TGTd ได้
 atboot_err=ไม่สามารถเปิดใช้งานเมื่อบูต
 atboot_einit=สคริปต์เริ่มต้น $1 ไม่มีอยู่
+
 log_create_target=สร้างเป้าหมาย $1 แล้ว
 log_delete_target=ลบเป้าหมาย $1 แล้ว
 log_modify_target=แก้ไขเป้าหมาย $1 แล้ว
@@ -89,6 +94,7 @@ log_restart=รีสตาร์ทเซิร์ฟเวอร์ iSCSI
 log_atboot=เปิดใช้งานเซิร์ฟเวอร์ iSCSI ในเวลาบูต
 log_delboot=ปิดใช้งานเซิร์ฟเวอร์ iSCSI ในเวลาบูต
 log_manual=ไฟล์การกำหนดค่าที่แก้ไขด้วยตนเอง
+
 manual_title=แก้ไขไฟล์การกำหนดค่า
 manual_file=เลือกไฟล์ที่จะแก้ไข:
 manual_ok=เปิด

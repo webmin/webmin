@@ -7,6 +7,7 @@ index_applymsg=Bu butonu tıklayarak mevcut yapılandırmayı uygulayabilirsiniz
 index_start=Sunucuyu Başlat
 index_startmsg=Bu butonu tıklayarak FTP sunucunu mevcut yapılandırma ile başlatabilirsiniz. FTP sunucunuzun açılışta otomatik olarak başlamasını istiyorsanız <a href='$1'>Internet Servisleri</a> modülünü kullanmalısınız.
 index_return=FTP sunucusu seçenekleri
+
 class_title=Kullanıcı ve Sınıflar
 class_header=Kullanıcı sınıfları ve kullanıcı seçenekleri
 class_class=Kullanıcı sınıfları
@@ -29,6 +30,7 @@ class_err=Kullanıcı sınıflarının kaydedilmesinde hata oluştu
 class_eclass='$1' geçerli bir sınıf ismi değil
 class_etypes='$1' sınıfı için tip seçilmedi
 class_eaddrs='$1' sınıfı için adres girilmedi
+
 message_title=Mesajlar ve Giriş Başlığı
 message_header=Mesajlar, giriş başlıkları ve README dosyaları
 message_message=Mesaj dosyaları
@@ -57,6 +59,7 @@ message_eclass=Sınıf '$1' mevcut değildir
 message_ebanner='$1' geçerli bir giriş başlığı dosyası değildir
 message_ehostname=Kayıp ya da yanlış makine adı
 message_eemail=Kayıp ya da yanlış e-posta adresi
+
 acl_title=Limitler ve Giriş Kontrolü
 acl_header=Limiler ve giriş kontrol seçenekleri
 acl_deny=Buradan girişleri kabul etme
@@ -103,6 +106,7 @@ acl_elmsg='$1' geçerli bir hata mesaj dosyası değildir
 acl_efbcount='$1' geçerli bir dosya  ya da byte sayısı değildir
 acl_elimit='$1' geçerli bir zaman limiti değildir
 acl_efails='$1' geçerli bir giriş başarsızlığı sayısı değildir
+
 net_title=Ağ
 net_header=Ağ Seçenekleri
 net_tcp=TCP window boyutu
@@ -120,6 +124,7 @@ net_eip='$1' geçerli bir IP adresi değildir
 net_enet='$1' geçerli bir ağ adresi değildir
 net_ecidr='$1' geçerli bir network bits numarası değildir
 net_eport='$1' geçerli bir port numarası değildir
+
 log_title=Kayıt Tutma
 log_header=Kayıt Tutma Seçenekleri
 log_commands=Bütün komutlar için kayıt tut
@@ -136,6 +141,7 @@ log_to=Transferleri kayıt tut
 log_syslog=Sistem kaydı
 log_xferlog=XFER kayıt dosyası
 log_err=Kayıt tutma seçeneklerinin kaydedilmesinde hata oluştu
+
 alias_title=Takma İsimler ve Yollar
 alias_header=Takma isim ve yol seçenekleri
 alias_alias=CD dizin takma isimleri
@@ -146,6 +152,7 @@ alias_err=Takma isim ve yolların kaydedilmesinde hata oluştu
 alias_efrom='$1' geçerli bir takma isim değildir
 alias_eto='$1' geçerli bir takma isim dizini değildir
 alias_ecdpath='$1' geçerli bir CD arama dizini değildir
+
 anon_title=Anonymous FTP
 anon_eftp=Uyarı! - sisteminiz bir <tt>ftp</tt> kullanıcısına sahip değil, ve anonymous FTP büyük olasılıkla yapılandırılmadı
 anon_header=Anonymous FTP seçenekleri
@@ -168,6 +175,7 @@ anon_uids=Unix kullanıcıları için
 anon_err=Anonymous FTP seçeneklerinin kaydedilmesinde hata oluştu
 anon_edir='$1' geçerli bir dizin değildir
 anon_egroup='$1' geçerli bir grup değildir
+
 perm_title=İzinler
 perm_header=İzin Seçenekleri
 perm_perms=Komut kısıtlamaları
@@ -189,7 +197,9 @@ perm_err=İzinlerin kaydedilmesinde hata oluştu
 perm_echar='$1' düzenleme ifadelerini oluşturmak için geçerli bir karakter değildir
 perm_etypes=Kullanıcı tipleri seçilmedi
 perm_emesg='$1' geçerli bir hata mesajı değildir
+
 host_title=Makine Giriş Kontrolü
+
 misc_title=Çeşitli Seçenekler
 misc_header=Çerşitli seçenekler
 misc_lslong=Uzun listeme komutu
@@ -210,6 +220,7 @@ misc_elsplain=Açık listeleme komutu bulunamadı
 misc_eshutdown=Kapatma bildirim dosyası bulunamadı
 misc_enice='$1' geçerli bir iyileştirme seviyesi değildir
 misc_eumask='$1' geçerli bir umask değildir
+
 log_class=Kullanıcı ve sınıfları değiştirildi
 log_message=Mesaj ve başlıklar değiştirildi
 log_acl=Limitler ve giriş kontrolü değiştirildi

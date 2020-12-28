@@ -9,6 +9,7 @@ index_rpc=RPC-program
 index_newrpc=Lägg till ett RPC-program
 index_apply=Utför ändringarna
 index_applymsg=Tryck på denna knapp för att använda dessa inställningar genom att en SIGHUP-signal skickas till den <tt>inetd</tt>-process som körs just nu.
+
 error_restart=Det gick inte att starta om Inetd
 error_saverpc=Det gick inte att spara RPC-program
 error_invalidprgname='$1' är inte ett giltigt programnamn
@@ -34,6 +35,7 @@ error_childnum=Om du har angivit ett maximum per minut måste du också ange ett
 error_serviceexist=Det finns redan en tjänst som använder port $1 och protokoll $2
 error_nameexist=Det finns redan en tjänst med namnet $1 och som använder protokoll $2
 error_inetservice=Det finns redan en internettjänst med namnet $1 och som använder protokoll $2
+
 editrpc_title1=Lägg till ett RPC-program
 editrpc_title2=Ändra RPC-program
 editrpc_detail=Uppgifter om RPC-program
@@ -56,6 +58,7 @@ editrpc_execasuser=Kör som användare
 editrpc_max=Max per minut
 editrpc_default=Standard
 editrpc_execasgrp=Kör som grupp
+
 editserv_title1=Lägg till internettjänst
 editserv_title2=Ändra internettjänst
 editserv_detail=Uppgifter om internettjänst
@@ -67,6 +70,7 @@ editserv_maxchild=Maximalt antal underprocesser
 editserv_execlogin=Kör som inloggningsklass
 editserv_wrapper=TCP-Wrapper
 editserv_inetd=Internt till <tt>inetd</tt>
+
 log_apply=Tog ändringarna i drift
 log_create_serv=Skapade tjänsten $1
 log_modify_serv=Modifierade tjänsten $1
@@ -80,6 +84,7 @@ log_delete_serv_l=Tog bort tjänsten $1 på port $2
 log_create_prog_l=Skapade tjänsten $1 på port $2 för program $3
 log_modify_prog_l=Modifierade tjänsten $1 på port $2 för program $3
 log_delete_prog_l=Tog bort tjänsten $1 på port $2 för program $3
+
 log_create_rpc=Skapade RPC $1
 log_modify_rpc=Modifierade RPC $1
 log_delete_rpc=Tog bort RPC $1

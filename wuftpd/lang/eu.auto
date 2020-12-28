@@ -9,6 +9,7 @@ index_startmsg=Egin klik botoi honetan FTP zerbitzaria uneko konfigurazioarekin 
 index_startmsg2=Egin klik botoi honetan FTP zerbitzaria uneko konfigurazioarekin hasteko. Inetd edo antzeko programaren bat erabiliz, zerbitzaria automatikoki abiaraz dezakezu.
 index_return=FTP zerbitzariaren aukerak
 index_version=WU-FTPd $1 bertsioa
+
 class_title=Erabiltzaileak eta klaseak
 class_header=Erabiltzaile klaseak eta erabiltzailearen aukerak
 class_class=Erabiltzaile klaseak
@@ -31,6 +32,7 @@ class_err=Ezin izan da erabiltzaile klaseak gordetzea lortu
 class_eclass='$1' ez da baliozko klase izena
 class_etypes=Ez da "$1" klaseko mota aukeratu
 class_eaddrs=Ez da helbideik sartu '$1' klaserako.
+
 message_title=Mezuak eta pankartak
 message_header=Mezuak, pankartak eta README fitxategiak
 message_message=Mezu fitxategiak
@@ -59,6 +61,7 @@ message_eclass=Ez da '$1' klasea existitzen
 message_ebanner='$1' ez da baliozko saioa hasteko fitxategirik
 message_ehostname=Ostalari-izen falta edo baliogabea
 message_eemail=Helbide elektroniko falta edo baliogabea
+
 acl_title=Mugak eta Sarbide Kontrol
 acl_header=Mugak eta sarbide kontrol aukerak
 acl_deny=Sarbidea ukatu
@@ -105,6 +108,7 @@ acl_elmsg='$1' ez da baliozko akatsen fitxategi bat
 acl_efbcount='$1' ez da baliozko fitxategi edo byte kopurua
 acl_elimit='$1' ez da baliozko denbora muga
 acl_efails='$1' ez da saioa hasteko hutsegite baliozko kopurua
+
 net_title=Sare
 net_header=Sareko aukerak
 net_tcp=TCP leihoen tamainak
@@ -122,6 +126,7 @@ net_eip='$1' ez da baliozko IP helbide bat
 net_enet='$1' ez da baliozko sareko helbidea
 net_ecidr='$1' ez da baliozko sare-bit kopurua
 net_eport='$1' ez da baliozko ataka-zenbakia
+
 log_title=Saio
 log_header=Egiteko aukerak
 log_commands=Eguneratu komando guztiak
@@ -139,6 +144,7 @@ log_syslog=Sistemaren erregistroa
 log_xferlog=XFER log fitxategia
 log_sysxfer=Bi helmugak
 log_err=Huts egin du erregistratzeko aukerak gordetzean
+
 alias_title=Alias eta Bideak
 alias_header=Alias eta bide aukerak
 alias_alias=CD direktorioen ezizenak
@@ -149,6 +155,7 @@ alias_err=Huts egin du ezizenak eta bideak gordetzean
 alias_efrom='$1' ez da baliozko ezizenen izena
 alias_eto='$1' ez da baliozko ezizenen direktorio bat
 alias_ecdpath='$1' ez da baliozko CD bilaketa direktorio bat
+
 anon_title=FTP anonimoak
 anon_eftp=Abisua: zure sistemak ez du <tt>ftp</tt> erabiltzailerik, eta, beraz, FTP anonimoa ez da konfiguratuta.
 anon_header=FTP aukera anonimoak
@@ -171,6 +178,7 @@ anon_uids=Unix erabiltzaileentzat
 anon_err=Ezin izan da FTP aukera anonimoak gorde
 anon_edir='$1' ez da baliozko direktorio bat
 anon_egroup='$1' ez da baliozko taldea
+
 perm_title=Baimenak
 perm_header=Baimen aukerak
 perm_perms=Komandoaren murrizketak
@@ -192,7 +200,9 @@ perm_err=Huts egin du baimenak gordetzean
 perm_echar='$1' ez da baliozko karaktere multzoen ohiko adierazpen bat
 perm_etypes=Ez da erabiltzaile motarik aukeratu
 perm_emesg='$1' ez da baliozko akatsen fitxategi bat
+
 host_title=Ostalariaren sarbide kontrola
+
 misc_title=Askotariko aukerak
 misc_header=Askotariko aukerak
 misc_lslong=Zerrenda luzeko komandoa
@@ -213,6 +223,7 @@ misc_elsplain=Zerrendatze arruntaren agindua falta da
 misc_eshutdown=Falta da itxiera jakinarazpen fitxategia
 misc_enice='$1' ez da baliozko maila polita
 misc_eumask='$1' ez da baliozko mezu elektronikoa
+
 log_class=Aldatutako erabiltzaileak eta klaseak
 log_message=Aldatutako mezuak eta pankartak
 log_acl=Mugatutako aldaketak eta sarbide kontrola

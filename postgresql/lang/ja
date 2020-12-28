@@ -15,6 +15,7 @@ index_add=新規データベースを作成
 index_users=ユーザ オプション
 index_return=データベース リスト
 index_esql=PostgreSQL クライアント プログラム $1がシステムにありませんでした。PostgreSQL がインストールされていないか、 <a href='$2'>module configuration</a> is incorrect.
+
 index_ehba=PostgreSQL ホスト設定 ファイル $1 がシステムにありませんでした。PostgreSQL がインストールされていないか、 <a href='$2'>module configuration</a> is incorrect.
 index_superuser=psqlコマンドが実行できませんでした。PostgreSQL がインストールされていないか、 <a href='$1'>module configuration</a> is incorrect.
 index_eversion=システムの PostgreSQL データベースはバージョン $1 ですが、Webmin はバージョン $2 以降のみをサポートします。
@@ -45,10 +46,12 @@ index_hash=Hash
 index_gist=Generalized Index Search Tree
 index_jump=Or edit database:
 index_jumpok=Open
+
 login_err=ログインできませんでした。
 login_ecannot=データベース ログインは設定できません
 login_elogin=管理ログインがありません
 login_epass=管理ユーザ名またはパスワードが不正です
+
 dbase_title=データベースの編集
 dbase_noconn=このデータベースは現在コネクトできませんので、操作は無効です。
 dbase_header=Database tables, indexes, views and sequences
@@ -72,6 +75,7 @@ dbase_index=Index
 dbase_view=View
 dbase_seq=Sequence
 dbase_jump=Or edit table:
+
 table_title=テーブルの編集
 table_title2=テーブルの作成
 table_opts=フィールド オプション
@@ -116,6 +120,7 @@ field_esize='$1' は無効なフィールド サイズです
 field_eenum=列挙型の値が入力されていません
 field_efield='$1' は無効なフィールド名です
 field_ekey=NULLを許可するフィールドは主キーの一部にできません
+
 exec_title=SQL の実行
 exec_header=データベース $1 で実行する SQL コマンドを入力してください..
 exec_exec=実行
@@ -138,21 +143,25 @@ exec_filename=From filename
 exec_ignore=Ignore duplicate rows?
 exec_edit=Edit Previous
 exec_format=File format
+
 stop_err=データベース サーバを停止できませんでした
 stop_epidfile=PID ファイル $1 を開けませんでした
 stop_ekill=プロセス $1 を kill できませんでした: $2
 stop_ecannot=データベースサーバ停止が許可されていません。
 start_err=データベース サーバを起動できませんでした
 start_ecannot=データベースサーバ起動が許可されていません。
+
 ddrop_err=データベースを削除できませんでした
 ddrop_title=データベースの削除
 ddrop_rusure=データベース $1 を削除してもよろしいですか？$3 行のデータを含む$2 テーブルは削除されます。
 ddrop_mysql=これはマスター データベースなので、削除すると PostgreSQL サーバが不安定になります。
 ddrop_ok=データベースの削除
+
 tdrop_err=テーブルを削除できませんでした
 tdrop_title=テーブルの削除
 tdrop_rusure=データベース $2内のテーブル $1を削除してもよろしいですか？$3 行のデータが削除されます。
 tdrop_ok=テーブルの削除
+
 view_title=テーブル データ
 view_pos=$3の行 $1 から $2
 view_none=このテーブルはデータを含んでいません
@@ -182,6 +191,7 @@ view_keep=変更しない
 view_set=ファイル内容をセット..
 view_warn=警告 - <tt>text</tt>または<tt>bytea</tt>型フィールドへのアップロード・データセット・閲覧は、Perlモジュール $1 と $2 なしではうまくいかないかもしれません。
 view_adv=Advanced Search
+
 newdb_title=データベースの作成
 newdb_header=新規のデータベース オプション
 newdb_db=データベース名
@@ -194,6 +204,7 @@ newdb_epath=データベースのパスがありません
 newdb_user=Owned by user
 newdb_encoding=Character set encoding
 newdb_eencoding=Missing character set encoding
+
 user_title=PostgreSQL ユーザ
 user_ecannot=ユーザを編集できません
 user_name=ユーザ名
@@ -221,6 +232,7 @@ user_sync_delete=マッチするUnixユーザが削除されたら、PostgreSQL�
 user_delete=選択したものを削除
 user_derr=Failed to delete users
 user_enone=No users selected
+
 host_ecannot=ホストを編集できません
 host_title=許可されたホスト
 host_desc=クライアントがデータベースに接続するとき、ホストはリストの順番にマッチするまで処理され、クライアントの許可・不許可が決定されます。
@@ -270,6 +282,7 @@ host_ssl=SSL接続しますか ?
 host_viassl=SSLを使用
 host_derr=Failed to delete allowed hosts
 host_enone=No hosts selected
+
 grant_title=認可された権限
 grant_tvi=オブジェクト
 grant_type=種類
@@ -297,6 +310,7 @@ grant_none=認められた許可にはテーブル、表示、シーケンスま
 grant_toomany=There are too many objects to display. Find objects matching:
 grant_showing=Showing objects matching $1 ..
 grant_delete=選択した権限をリセット
+
 group_title=PostgreSQL グループ
 group_ecannot=グループを編集できません
 group_name=グループ名
@@ -314,6 +328,7 @@ group_etaken=グループ名はすでに使用されています
 group_none=PostgreSQL グループは現在存在しません
 group_derr=Failed to delete groups
 group_enone=No groups selected
+
 esql=SQL $1 が失敗しました: $2
 log_start=PostgreSQL サーバを起動しました
 log_stop=PostgreSQL サーバを停止しました
@@ -325,6 +340,7 @@ log_groups_delete=Deleted $1 groups
 log_hosts_delete=Deleted $1 allowed hosts
 log_table_create=データベース $2 内にテーブル $1 を作成しました
 log_table_delete=テーブル $1 をデータベース $2 から削除しました
+
 log_view_create=Created view $1 in database $2
 log_view_modify=Modified view $1 in database $2
 log_view_delete=Dropped view $1 from database $2
@@ -368,6 +384,7 @@ log_backup=Backed up database $1
 log_backup_l=Backed up database $1 to file $2
 log_backup_all=Backed up all databases
 log_backup_all_l=Backed up all databases to file $2
+
 acl_dbs=このユーザが管理できるデータベース
 acl_dbscannot=この項目はデータベースを起動後に選択可能となります
 acl_dall=すべてのデータベース
@@ -388,11 +405,15 @@ acl_cmds=Can edit before and after backup commands?
 acl_views=Can view and manage views?
 acl_indexes=Can view and manage indexes?
 acl_seqs=Can view and manage sequences?
+
 fdrop_err=フィールド削除のエラー
+
 setup_err=データベース初期化に失敗しました。
 setup_ecannot=データベース初期化が許可されていません。
+
 dbase_bkup=データベースの退避
 dbase_rstr=データベースの復旧
+
 restore_title=データベースの復旧
 restore_header=データベース復旧 オプション
 restore_db=データベース名
@@ -412,6 +433,7 @@ restore_ecannot=データベースを復旧できません
 restore_only=テーブルはそのままで、データのみリストアしますか ?
 restore_clean=テーブルをリストアする前に削除しますか ?
 restore_failed=Restore failed : $1
+
 backup_title=データベースの退避
 backup_title2=Backup All Databases
 backup_header1=Backup destination
@@ -460,17 +482,21 @@ backup_ebefore=Before-backup command failed!
 backup_cmode=When to run commands
 backup_cmode1=Before/after all databases
 backup_cmode0=Before/after each database
+
 r_command=要求されたコマンドは制限されています
+
 adv_title=Advanced Search
 adv_and=Find records matching all criteria ..
 adv_or=Find records matching any criteria ..
 adv_ok=Search Now
+
 tdrops_enone=No objects to drop selected
 tdrops_err=Failed to drop objects
 tdrops_ok=Drop Objects
 tdrops_title=Drop Objects
 tdrops_rusure=Are you sure you want to drop the $1 selected objects in database $2 ? $3 rows of data will be deleted.
 tdrops_rusure2=Are you sure you want to drop the $1 selected objects in database $2 ?
+
 ddrops_err=Failed to drop databases
 ddrops_title=Drop Databases
 ddrops_rusure=Are you sure you want to drop the $1 selected databases? $2 tables containing $3 rows of data will be deleted.
@@ -478,6 +504,7 @@ ddrops_mysql=Because the master database is selected, dropping it will probably 
 ddrops_ok=Drop Databases
 ddrops_enone=No databases selected
 ddrops_ecannotdb=You are not allowed to drop the database $1
+
 csv_title=Export CSV File
 csv_header=CSV export options
 csv_dest=Export destination
@@ -498,6 +525,7 @@ csv_done=CSV export to $1 is complete. The resulting file size is $2.
 csv_headers=Include column names in CSV?
 csv_cols=Columns to include in CSV
 csv_ecols=No columns selected
+
 import_title=Import Data
 import_uploadout=Importing data from uploaded file ..
 import_fileout=Importing data from file $1 ..
@@ -505,6 +533,7 @@ import_eupload=Missing uploaded import file
 import_efile=Missing import filename
 import_done=.. created $1 rows, skipped $2 duplicates.
 import_erow=.. no fields found in row $1
+
 index_title1=Create Index
 index_header1=Index options
 index_name=Index name
@@ -522,6 +551,7 @@ index_ecols=No fields selected
 index_title2=Edit Index
 index_header=Index $1 in database $2
 index_ecannot=You are not allowed to manage indexes
+
 view_title1=Create View
 view_title2=Edit View
 view_header1=View details
@@ -536,6 +566,7 @@ view_eclash=A view with the same name already exists
 view_equery=Missing SQL query
 view_ecols=No column names entered
 view_ecannot=You are not allowed to manage views
+
 seq_title1=Create Sequence
 seq_title2=Edit Sequence
 seq_header1=Incrementing sequence options
@@ -555,5 +586,6 @@ seq_emin=Missing or invalid minimum value
 seq_emax=Missing or invalid maximum value
 seq_ecache=Missing or invalid number of values to cache
 seq_ecannot=You are not allowed to manage sequences
+
 dgrant_err=Failed to reset grants
 dgrant_enone=No objects selected

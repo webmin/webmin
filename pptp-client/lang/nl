@@ -18,10 +18,12 @@ index_version=PPPd versie $1
 index_boot=Verbinden tijdens booten :
 index_noboot=&lt;Niet verbinden&gt;
 index_bootdesc=Verander deze optie om te configureren of de geselecteerde PPTP VPN verbinding word gestart tijdens booten of niet.
+
 disc_err=Mislukt om de tunnel te verbreken
 disc_egone=Niet langer actief
 disc_ekill=Mislukt op het pppd proces te stoppen
 disc_done=Tunnel $1 is succesvol verbroken.
+
 conn_err=Mislukt te verbinden met de tunnel
 conn_egone=Tunnel bestaat niet langer
 cone_ealready=Reeds verbonden
@@ -32,6 +34,7 @@ conn_ok=.. verbinding is succesvol geactiveerd en gebruikt interface $1. Uw loca
 conn_timeout=.. verbinding mislukt! Controleer het log bericht hieronder voor meer informatie.
 conn_routes=Routes toevoegen met de opdrachten ..
 conn_mppe=Het MPPE protocol voor VPN encryptie vereist een PPP deamon en kernel ondersteuning. Echter de fouten hierboven suggereren dan één of beide niet beschikbaar zijn op uw systeem. Wanneer de PPTP server geen MPPE nodig heeft, probeert u dan alle opties uit te zetten die hiermee gerelateerd zijn op de <a href='$1'>globale PPP opties</a> pagina.
+
 edit_title1=Toevoegen PPTP Tunnel
 edit_title2=Bewerk PPTP Tunnel
 edit_header=PPTP VPN tunnel opties
@@ -60,6 +63,7 @@ edit_file=PPP opties file
 edit_none=Niets
 edit_global=Standaard globale file
 edit_ofile=Andere file ..
+
 save_err=Mislukt om de tunnel op te slaan
 save_ename=Ontbrekende tunnel naam
 save_eserver=Ontbrekende of ongeldige server om mee te verbinden
@@ -75,6 +79,7 @@ save_egw2=Ongeldige gateway voor host in route $1
 save_erename=Mislukt om de tunnel file te hernoemen
 save_eclash=Een tunnel of PPP peer met dezelfde naam bestaat reeds
 save_efile=Ontbrekende of ongeldige PPP opties file
+
 opts_title=Globale PPP Opties
 opts_desc=De instellingen hieronder zijn genomen van $1, en zullen toegevoegd worden aan alle tunnels die zijn ingesteld om de standaard globale PPP opties file te gebruiken.
 opts_header=PPP opties voor alle tunnels
@@ -84,6 +89,7 @@ opts_err=Mislukt om de globale PPP opties op te slaan
 opts_emtu=Ontbrekende of ongeldige maximum verzend grote van pakket
 opts_emru=Ontbrekende of ongeldige maximum ontvangst grote van pakket
 opts_msdesc=Met de opties hieronder zet u de MPPE encryptie aan die gebruikt word door Windows VPN servers. Echter hiervoor heeft MPPE ondersteuning nodig in zowel PPP daemon als de kernel die gebruikt word door uw systeem.
+
 mppe_mppe-40=Gebruik 40-bit MPPE encryptie?
 mppe_mppe-128=Gebruik 128-bit MPPE encryptie?
 mppe_mppe-stateless=Aanzetten zonder status MPPE mode?
@@ -95,6 +101,7 @@ mppe_d1=Toegestaan
 mppe_mppe-stateful=Aanzetten volledige status MPPE mode?
 mppe_old=Waarschuwing - De oude stijl MPPE richtlijnen $1 zijn gevonden in uw configuratie file, echter uw PPP deamon ondersteund alleen nieuwe stijl richtlijnen.
 mppe_new=Waarschuwing - De nieuwe stijl MPPE richtlijnen $1 zijn gevonden in uw configuratie file, echter uw PPP deamon ondersteund alleen oude stijl richtlijnen.
+
 log_create=Gemaakte PPTP tunnel $1
 log_update=Gemodificeerde PPTP tunnel $1
 log_delete=Verwijderde PPTP tunnel $1

@@ -4,6 +4,7 @@ index_return=Lista de Usuários
 index_user=Alterar senha para usuário:
 index_euseradmin=Este módulo não pode ser usado porque os módulos Usuário
 index_toomany=There are too many users to display on your system. Enter the name of the user whose password you want to change below..
+
 passwd_title=Alterar Senha
 passwd_header=Alterando senha do usuário unix
 passwd_for=Alterando senha para
@@ -19,7 +20,9 @@ passwd_eold=Senha antiga incorreta
 passwd_erepeat=As senhas novas não são iguais
 passwd_ecmd=$1 falhou : $2
 passwd_ok=Senha do usuário $1 alterada com sucesso. Se este é o usuário Webmin corrente, você deve logar novamente.
+
 log_passwd=Senha para o usuário $1 alterada.
+
 acl_repeat=Deve entrar com a confirmação de senha?
 acl_old=Deve informar a senha antiga?
 acl_old_this=Somente para outros usuários

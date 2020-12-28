@@ -2,6 +2,7 @@ index_title=NIS πελάτη και διακομιστή
 index_return=NIS μενού
 index_enis=Το μηχάνημά σας δεν φαίνεται να έχει εγκατεστημένη υποστήριξη NIS πελάτη ή διακομιστή.
 index_enis2=Μόνο η λειτουργία υπηρεσιών πελάτη αυτής της ενότητας θα είναι χρησιμοποιήσιμη.
+
 client_title=Πελάτη NIS
 client_header=Διαμόρφωση πελάτη NIS
 client_domain=Τομέα NIS
@@ -17,10 +18,12 @@ client_eserver=Το '$1' δεν είναι έγκυρο όνομα διακομ�
 client_eypwhich=απέτυχε να δεσμευτεί σε τομέα NIS
 client_ehosts=Το '$1' δεν βρίσκεται στο αρχείο hosts
 client_enis=Το μηχάνημά σας δεν φαίνεται να έχει εγκατεστημένη υποστήριξη πελάτη NIS.
+
 switch_title=Υπηρεσίες Πελατών
 switch_service=Υπηρεσία
 switch_srcs=Πηγές δεδομένων
 switch_return=υπηρεσίες πελατών
+
 order_=&nbsp;
 order_nisplus=NIS +
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Ησιόδος
 order_ldap=LDAP
 order_user=Εκτυπωτές χρηστών
 order_xfn=XFN
+
 server_title=NIS Server
 server_header=Επιλογές διακομιστή NIS
 server_boot=Ενεργοποίηση διακομιστή NIS;
@@ -65,6 +69,7 @@ server_solaris=Σημείωση - στο Solaris, οι τομείς NIS του �
 server_edir=Μη έγκυρος κατάλογος αρχείων προέλευσης
 server_epwdir=Μη έγκυρος κατάλογος αρχείων προέλευσης κωδικού πρόσβασης
 server_enis=Το μηχάνημά σας δεν φαίνεται να έχει εγκατεστημένη υποστήριξη διακομιστή NIS.
+
 tables_title=Πίνακες NIS
 tables_switch=Επεξεργασία πίνακα NIS :
 tables_header=$1 πίνακας NIS από $2 
@@ -81,6 +86,7 @@ tables_search=Αναζήτηση
 tables_nomatch=Δεν υπάρχουν καταχωρίσεις που αντιστοιχούν στην αναζήτησή σας
 tables_build=Επανακατασκευάστε πίνακες NIS
 tables_buildmsg=Κάντε κλικ σε αυτό το κουμπί για να δημιουργήσετε εκ νέου τις βάσεις δεδομένων NIS από τα δεδομένα πίνακα. Εάν έχετε κάνει οποιεσδήποτε αλλαγές, θα πρέπει να το κάνετε αυτό για να τις διαθέσετε σε πελάτες NIS.
+
 desc_aliases=Τα ψευδώνυμα Sendmail
 desc_mail=Τα ψευδώνυμα Sendmail
 desc_hosts=Διευθύνσεις κεντρικού υπολογιστή
@@ -116,6 +122,7 @@ desc_printers=Εκτυπωτές
 desc_ipnodes=IP κόμβους
 desc_timezone=Ζώνες ώρας
 desc_locale=Locales
+
 hosts_title=Διεύθυνση υποδοχής
 hosts_ip=διεύθυνση IP
 hosts_name=Όνομα κεντρικού υπολογιστή
@@ -124,6 +131,7 @@ hosts_err=Αποτυχία αποθήκευσης κεντρικού υπολο�
 hosts_eip=Λείπει ή μη έγκυρη διεύθυνση IP
 hosts_ename=Λείπει ή μη έγκυρο όνομα κεντρικού υπολογιστή
 hosts_aliases=Ψευδώνυμα
+
 group_name=Ονομα ομάδας
 group_gid=Αναγνωριστικό ομάδας
 group_members=Μέλη ομάδας
@@ -134,6 +142,7 @@ group_none=Δεν απαιτείται κωδικός πρόσβασης
 group_encrypted=Προ-κρυπτογραφημένος κωδικός πρόσβασης
 group_clear=Κανονικός κωδικός πρόσβασης
 group_err=Αποτυχία αποθήκευσης ομάδας
+
 passwd_name=Όνομα χρήστη
 passwd_uid=ταυτότητα χρήστη
 passwd_real=Το πραγματικό του όνομα
@@ -171,6 +180,7 @@ passwd_emax=Μη έγκυρος αριθμός ημερών
 passwd_emin=Μη έγκυρος ελάχιστος αριθμός ημερών
 passwd_einactive=Μη έγκυρος αριθμός μη ενεργών ημερών
 passwd_eexpiry=Μη έγκυρη ημερομηνία λήξης
+
 services_name=Ονομα Υπηρεσίας
 services_proto=Πρωτόκολλο
 services_port=Λιμάνι
@@ -179,6 +189,7 @@ services_header=Επιλογές υπηρεσιών δικτύου Inetd
 services_err=Αποτυχία αποθήκευσης υπηρεσίας
 services_ename=Λείπει ή μη έγκυρο όνομα υπηρεσίας
 services_eport=Λείπει ή μη έγκυρη θύρα
+
 protocols_name=Όνομα πρωτοκόλλου
 protocols_number=Αριθμός
 protocols_aliases=Ψευδώνυμα
@@ -187,6 +198,7 @@ protocols_header=Επιλογές πρωτοκόλλου δικτύου
 protocols_err=Αποτυχία αποθήκευσης πρωτοκόλλου
 protocols_ename=Λείπει ή μη έγκυρο όνομα
 protocols_enumber=Έλλειψη ή μη έγκυρος αριθμός
+
 netgroup_name=Όνομα Netgroup
 netgroup_members=Μέλη
 netgroup_title=Ομάδα δικτύου
@@ -201,6 +213,7 @@ netgroup_ename=Λείπει ή μη έγκυρο όνομα netgroup
 netgroup_ehost=Έλλειψη ή μη έγκυρος κεντρικός υπολογιστής στη σειρά $1 
 netgroup_euser=Έλλειψη ή μη έγκυρος χρήστης στη σειρά $1 
 netgroup_edom=Λανθασμένος ή μη έγκυρος τομέας NIS στη σειρά $1 
+
 ethers_mac=Διεύθυνση Ethernet
 ethers_ip=διεύθυνση IP
 ethers_title=Διεύθυνση Ethernet
@@ -208,6 +221,7 @@ ethers_header=Επιλογές χαρτογράφησης Ethernet
 ethers_err=Αποτυχία αποθήκευσης της διεύθυνσης Ethernet
 ethers_emac=Μη έγκυρη διεύθυνση ethernet
 ethers_eip=Μη έγκυρη διεύθυνση IP
+
 rpc_name=Όνομα προγράμματος
 rpc_number=Αριθμός
 rpc_aliases=Ψευδώνυμα
@@ -216,6 +230,7 @@ rpc_header=Λεπτομέρειες προγράμματος RPC
 rpc_err=Αποτυχία αποθήκευσης προγράμματος RPC
 rpc_ename=Λείπει ή μη έγκυρο όνομα προγράμματος
 rpc_enumber=Έλλειψη ή μη έγκυρος αριθμός
+
 networks_title=Διεύθυνση δικτύου
 networks_ip=διεύθυνση IP
 networks_name=Ονομα δικτύου
@@ -224,6 +239,7 @@ networks_err=Αποτυχία αποθήκευσης δικτύου
 networks_eip=Λείπει ή μη έγκυρη διεύθυνση IP
 networks_ename=Λείπει ή μη έγκυρο όνομα
 networks_aliases=Ψευδώνυμα
+
 netmasks_net=Διεύθυνση δικτύου
 netmasks_mask=Μάσκα δικτύου
 netmasks_title=Μάσκα δικτύου
@@ -231,6 +247,7 @@ netmasks_header=Στοιχεία μάσκας δικτύου
 netmasks_err=Αποτυχία αποθήκευσης της μάσκας δικτύου
 netmasks_enet=Λείπει ή μη έγκυρη διεύθυνση δικτύου
 netmasks_emask=Απουσία ή μη έγκυρη μάσκα δικτύου
+
 aliases_from=Διεύθυνση
 aliases_to=Το άλμπουμ στο
 aliases_title=Αποστολή Alias
@@ -238,6 +255,7 @@ aliases_header=Sendmail ψευδώνυμο λεπτομέρειες
 aliases_err=Αποτυχία αποθήκευσης ψευδώνυμου
 aliases_efrom=Λείπει ή μη έγκυρη διεύθυνση
 aliases_eto=Λείπει στις διευθύνσεις
+
 security_title=Ασφάλεια διακομιστή
 security_header=Επιλογές ασφάλειας διακομιστή NIS
 security_ok=Αποθήκευση και Εφαρμογή
@@ -266,6 +284,7 @@ security_sec_des=Απαιτήστε DES
 security_ehost=Το '$1' δεν είναι έγκυρο όνομα κεντρικού υπολογιστή
 security_emap=Το '$1' δεν είναι έγκυρος πίνακας NIS
 security_efield=Το '$1' δεν είναι έγκυρος αριθμός πεδίου
+
 eswitch_title=Επεξεργασία υπηρεσίας
 eswitch_egone=Δεν υπάρχει υπηρεσία!
 eswitch_header=Λεπτομέρειες υπηρεσίας

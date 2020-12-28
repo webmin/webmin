@@ -14,10 +14,12 @@ index_apply=platiť
 index_return=Index PPP
 index_none=Nemáte prístup k žiadnym funkciám tohto modulu.
 index_delete=Odstrániť vybrané účty
+
 secrets_title=Účty PPP
 secrets_return=index
 secrets_none=Zatiaľ neboli vytvorené žiadne účty PPP.
 secrets_ecannot=Nemáte oprávnenie upravovať účty PPP
+
 edit_secret_etitle=Upraviť účet PPP
 edit_secret_ctitle=Vytvorte si účet PPP
 edit_secret_acc=Účet PPP
@@ -37,8 +39,10 @@ edit_secret_alist=Povoliť uvedené ..
 edit_secret_save=Uložiť
 edit_secret_del=delete
 edit_secret_return=zoznam účtov
+
 save_secret_esave=Nepodarilo sa uložiť účet
 save_secret_enoip='$1' nie je platná adresa
+
 log_create=Vytvorený účet PPP $1 
 log_modify=Upravený účet PPP $1 
 log_delete=Odstránený účet PPP $1 
@@ -54,6 +58,7 @@ log_dialin_move=Identifikačné číslo presunutého volajúceho $1
 log_mgetty_create=Bol vytvorený sériový port $1 
 log_mgetty_modify=Upravený sériový port $1 
 log_mgetty_delete=Vymazaný sériový port $1 
+
 options_title=Možnosti PPP
 options_serial=Pre sériový port $1 
 options_dev=Pre zariadenie $1 
@@ -84,6 +89,7 @@ options_idle=Nečinný čas pred odpojením
 options_idle_def=nikdy
 options_eidle=Chýbajúci alebo neplatný čas nečinnosti
 options_ecannot=Nemáte oprávnenie upravovať možnosti PPP
+
 mgetty_title=Konfigurácia sériového portu
 mgetty_ecmd=Príkaz $1 sa vo vašom systéme nenašiel. Tento program je potrebný na spracovanie prihlásení cez sériový port cez modem alebo priame pripojenie.
 mgetty_desc=Aby váš server umožnil prihlásenie na sériový port prostredníctvom modemu alebo priameho pripojenia, musí byť uvedený nižšie. Keď do tohto zoznamu pridáte port, program $1 bude nakonfigurovaný tak, aby odpovedal na pripojenia modemu a zobrazoval výzvu na prihlásenie.
@@ -125,6 +131,7 @@ mgetty_apply=Použiť konfiguráciu
 mgetty_applydesc=Kliknutím na toto tlačidlo použijete aktuálnu konfiguráciu sériového portu spustením príkazu $1 a zabitím všetkých procesov Mgetty.
 mgetty_applyerr=Nepodarilo sa použiť konfiguráciu
 mgetty_ecannot=Nemáte oprávnenie upravovať konfigurácie sériového portu
+
 dialin_title=Prístup k ID volajúceho
 dialin_desc=Táto stránka vám umožňuje nakonfigurovať Mgetty tak, aby povolil alebo zakázal dialin prístup na základe telefónneho čísla volajúceho. Keď prichádza hovor, prvý záznam v zozname, ktorý sa zhoduje s telefónnym číslom, určí, či je hovor prijatý alebo nie.
 dialin_efile=Vo vašom systéme sa nenašiel súbor na riadenie prístupu ID volajúceho Mgetty $1. Možno nie je Mgetty nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
@@ -145,9 +152,12 @@ dialin_move=sťahovať
 dialin_err=Nepodarilo sa uložiť identifikačné číslo volajúceho
 dialin_enumber=Chýbajúce alebo neplatné telefónne číslo
 dialin_ecannot=Nemáte oprávnenie upravovať prístup k ID volajúceho
+
 acl_pages=Dostupné stránky
 acl_direct=Prejsť priamo na jednu stránku?
+
 sync_ecannot=Nemáte dovolené upravovať možnosti synchronizácie unix-ppp
 sync_title=Synchronizácia používateľov
+
 delete_err=Účty sa nepodarilo odstrániť
 delete_enone=Žiadne vybraté

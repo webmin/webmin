@@ -52,6 +52,7 @@ index_sadd=Luo uusi järjestelmäpalvelu.
 index_always=Aina
 index_ladd=Luo uusi käynnistetty agentti.
 index_lname=Agentin nimi
+
 edit_title=Muokkaa toimintoa
 create_title=Luo toiminta
 edit_ecannot=Et voi muokata käynnistystoimintoja
@@ -85,6 +86,7 @@ edit_statusnow=Näytä tila
 edit_return=toiminta
 edit_status=Aloititko nyt?
 edit_unknown=Tuntematon
+
 save_err=Toiminnan tallentaminen epäonnistui
 save_ecannot=Et voi muokata käynnistystoimintoja
 save_ealready='$1' -niminen toiminto on jo olemassa
@@ -93,6 +95,7 @@ save_ename=Puuttuva tai virheellinen toiminimi
 save_eclash=Samalla nimellä toiminto on jo olemassa
 save_escript=Toimintaskriptiä ei annettu
 save_estartcmd=Puuttuva käynnistyskomento
+
 ss_ecannot=Et voi käynnistää tai lopettaa käynnistystoimintoja
 ss_start=Aloita toiminta
 ss_stop=Lopeta toiminta
@@ -103,21 +106,25 @@ ss_exec=Suoritetaan $1 ..
 ss_doingstart=Aloitetaan toiminto $1 ..
 ss_doingstop=Toiminnan $1 lopettaminen ..
 ss_doingstatus=Toiminnan tilan pyytäminen $1 ..
+
 shutdown_ecannot=Järjestelmää ei saa sammuttaa
 shutdown_title=Sammuttaa
 shutdown_rusure=Haluatko varmasti sammuttaa järjestelmän komennolla $1 ?
 shutdown_ok=Sammutusjärjestelmä
 shutdown_exec=Sammutetaan komennolla $1 ..
+
 reboot_ecannot=Järjestelmää ei saa käynnistää uudelleen
 reboot_title=reboot
 reboot_rusure=Haluatko varmasti käynnistää järjestelmän uudelleen komennolla $1 ?
 reboot_ok=Käynnistä järjestelmä uudelleen
 reboot_exec=Käynnistetään uudelleen komennolla $1 ..
+
 acl_script=Voiko muokata käynnistysohjelmaa?
 acl_actions=Voiko suorittaa, muokata, luoda ja poistaa toimintoja?
 acl_runonly=Vain juokse
 acl_reboot=Voiko järjestelmän käynnistää uudelleen?
 acl_shutdown=Voiko järjestelmän sammuttaa?
+
 log_rename=Nimeä toiminto $1 - $2 
 log_modify=Muokattu toiminto $1 
 log_create=Luotu toiminto $1 
@@ -138,6 +145,7 @@ log_massrestart=Käynnistetyt toimet $1
 log_massenable=Aktivoidut toiminnot $1 
 log_massdisable=Pois käytöstä $1 
 log_telinit=Vaihdettiin tasolle $1 
+
 edit_hostconfig_startup=Komentosarja $1 suoritetaan järjestelmän käynnistyksen aikana, jos tämä toiminto on aktiivinen. Voit muokata sitä alla
 edit_hostconfig_plist=Tiedosto $1 asettaa tietyt parametrit käynnistysohjelman suhteen. Voit muokata sitä alla
 edit_hostconfig_new=Luo uusi toiminto
@@ -149,6 +157,7 @@ edit_hostconfig_array=Kentät $1, $2 ja $3 ovat taulukkokentät ja voivat sisäl
 edit_hostconfig_further=Kun olet luonut uuden käynnistystoiminnon, sinut ohjataan edelleen sivulle, jolla voit tarvittaessa säätää käynnistysohjelmaa ja parametriluetteloa.
 edit_hostconfig_hostconfig=Tiedosto $1 ohjaa järjestelmän laajuisia palveluita ja demonit, jotka käynnistetään järjestelmän käynnistyessä. Voit muokata sitä alla
 edit_hostconfig_title=Muokkaa hostconfigia
+
 mass_enone=Toimintoja ei ole valittu
 mass_enone2=Palveluita ei ole valittu
 mass_start=Käynnistystoimet
@@ -169,9 +178,11 @@ mass_udisable=Palvelun $1 poistaminen käytöstä käynnistyksen yhteydessä.
 mass_ustarting=Palvelun aloittaminen $1 ..
 mass_ustopping=Palvelun lopettaminen $1 ..
 mass_urestarting=Palvelun $1 käynnistäminen uudelleen ..
+
 change_err=Et voi vaihtaa ajotasoja
 change_title=Vaihda Runlevel
 change_cmd=Siirtyminen ajotasoon $1 komennolla $2. Tämä voi viedä jonkin aikaa, ja Webmin ei ehkä ole enää käytettävissä vaihdon jälkeen.
+
 mode_init=SysV init
 mode_osx=Mac käyttöjärjestelmä
 mode_local=Yhden käynnistyksen käsikirjoitus
@@ -180,6 +191,7 @@ mode_rc=FreeBSD RC-skriptit
 mode_upstart=Nousukas
 mode_systemd=Systemd
 mode_launchd=launchd
+
 upstart_title1=Luo aloituspalvelu
 upstart_title2=Muokkaa aloituspalvelua
 upstart_egone=Palvelua ei enää ole!
@@ -204,6 +216,7 @@ upstart_eserver=Palvelinkomentoa ei annettu
 upstart_eserver2=Palvelinkomentoa ei ole
 upstart_eserver3=Vain yksi palvelinkomento voidaan antaa
 upstart_return=nouseva palvelu
+
 systemd_title1=Luo järjestelmäpalvelu
 systemd_title2=Muokkaa järjestelmäpalvelua
 systemd_egone=Palvelua ei enää ole!
@@ -227,6 +240,7 @@ systemd_edesc=Puuttuva palvelukuvaus
 systemd_return=järjestelmällinen palvelu
 systemd_econf=Järjestelmäkokoonpanoa ei annettu
 systemd_estart=Komentot puuttuvat käynnistyksen yhteydessä
+
 launchd_title1=Luo käynnistetty agentti
 launchd_title2=Muokkaa käynnistettyä agenttia
 launchd_egone=Agenttia ei enää ole!
@@ -247,4 +261,5 @@ launchd_eclash=Agentti, jolla on sama nimi, on jo olemassa
 launchd_return=käynnistetty agentti
 launchd_econf=Käynnistysmääritystä ei annettu
 launchd_estart=Puuttuva palvelinkomento
+
 syslog_journalctl=SystemD-lokit

@@ -1,4 +1,5 @@
 index_screate=إنشاء مستخدم آمن جديد.
+
 edit_title=تحرير Webmin المستخدم
 edit_title2=إنشاء مستخدم Webmin
 edit_title3=إنشاء آمنة Webmin المستخدم
@@ -85,6 +86,7 @@ edit_safe=مستوى الامتياز
 edit_safe0=مطلق
 edit_safe1=وحدات آمنة فقط
 edit_unsafe=إعادة التعيين إلى غير المقيد
+
 save_err=فشل في حفظ المستخدم
 save_ename='$1' is not a valid username
 save_eunixname=The username '$1' is not a Unix user, and so cannot be used in safe mode
@@ -115,10 +117,12 @@ save_edays=لا أيام للسماح المحدد
 save_ehours=أوقات مفقودة أو غير صالحة للسماح بها
 save_ehours2=يجب أن يكون وقت البدء للسماح قبل النهاية
 save_etemp=The option to force a password change at next login cannot be used unless <a href='$1'>prompting users to enter new passwords</a> is enabled
+
 cert_title=طلب شهادة
 cert_msg=يسمح لك هذا النموذج بطلب شهادة عميل SSL والتي سيتم استخدامها في المستقبل لمنحك حق الوصول إلى Webmin بدلاً من اسم المستخدم وكلمة المرور الخاصة بك. هذا أكثر أمانًا ، ولكن نظرًا لأن المصادقة تلقائية ، فلن تتمكن من التبديل إلى مستخدم مختلف عند استخدام الشهادة.
 cert_ou=قسم
 cert_ekey=لم يقدم متصفحك مفتاح SSL جديدًا - ربما لا يدعم شهادات عميل SSL.
+
 log_modify=Modified Webmin user $1
 log_rename=Renamed Webmin user $1 to $2
 log_create=Created Webmin user $1
@@ -141,6 +145,7 @@ log_sync=تغيير تزامن المستخدم يونيكس
 log_sql=تم تغيير قاعدة بيانات المستخدم والمجموعة
 log_twofactor=Enrolled user $1 with two-factor provider $2
 log_onefactor=Dis-enrolled user $1 for two-factor authentication
+
 gedit_ecannot=غير مسموح لك بتحرير المجموعات
 gedit_title=تحرير Webmin Group
 gedit_title2=إنشاء مجموعة Webmin
@@ -150,18 +155,22 @@ gedit_modules=وحدات الأعضاء
 gedit_members=الأعضاء والمجموعات الأعضاء
 gedit_desc=وصف المجموعة
 gedit_egone=المجموعة المختارة لم تعد موجودة!
+
 gdelete_err=فشل في حذف المجموعة
 gdelete_ecannot=غير مسموح لك بحذف المجموعات
 gdelete_euser=لا يمكنك حذف مجموعتك الخاصة
+
 gdelete_esub=لا يمكن حذف المجموعات ذات المجموعات الفرعية
 gdelete_title=حذف المجموعة
 gdelete_desc=Are you sure you want to delete the group $1 and its member users $2 ?
 gdelete_ok=حذف المجموعة
+
 gsave_err=فشل في حفظ المجموعة
 gsave_ename=اسم المجموعة مفقود أو غير صالح
 gsave_enamewebmin=اسم المجموعة "webmin" محجوز للاستخدام الداخلي
 gsave_edup=اسم المجموعة قيد الاستخدام بالفعل
 gsave_edesc=وصف غير صالح - الحرف: غير مسموح به
+
 convert_title=تحويل المستخدمين
 convert_ecannot=غير مسموح لك بتحويل مستخدم Unix
 convert_desc=يسمح لك هذا النموذج بتحويل مستخدمي Unix الحاليين إلى مستخدمي Webmin. سيتم تحديد أذونات كل مستخدم Webmin جديد بواسطة المجموعة المحددة أدناه.
@@ -183,6 +192,7 @@ convert_user=مستخدم يونيكس
 convert_action=تم اتخاذ فعل
 convert_done=$1 users converted, $2 invalid, $3 already exist, $4 excluded.
 convert_users=المستخدمين لتحويل
+
 sync_title=يونكس تزامن المستخدم
 sync_desc=يتيح لك هذا النموذج تكوين المزامنة التلقائية لمستخدمي يونكس التي تم إنشاؤها من خلال Webmin والمستخدمين في هذه الوحدة.
 sync_when=متى تزامن
@@ -192,6 +202,7 @@ sync_delete=حذف مستخدم Webmin المطابق عند حذف مستخدم
 sync_group=تعيين مستخدمين جدد لمجموعة Webmin
 sync_unix=تعيين كلمة مرور للمستخدمين الجدد لمصادقة يونكس.
 sync_ecannot=غير مسموح لك بتكوين مزامنة المستخدم.
+
 unix_err=فشل في حفظ مصادقة يونكس
 unix_desc=تسمح لك هذه الصفحة بتكوين Webmin للتحقق من محاولات تسجيل الدخول مقابل قائمة مستخدمي النظام و PAM. قد يكون ذلك مفيدًا إذا كان لديك عدد كبير من مستخدمي Unix الحاليين الذين تريد منحهم حق الوصول إلى Webmin.
 unix_def=السماح فقط لمستخدمي Webmin بتسجيل الدخول
@@ -219,6 +230,7 @@ unix_pamany=Treat logins that only pass PAM validation as $1
 unix_esudo=The $1 command is not installed
 unix_esudomod=The Perl module $1 needed for <tt>sudo</tt> authentication is not installed
 unix_header=يونيكس إعدادات مصادقة المستخدم
+
 sessions_title=جلسات تسجيل الدخول الحالية
 sessions_id=معرف جلسة العمل
 sessions_user=Webmin المستخدم
@@ -232,20 +244,25 @@ sessions_this=هذا تسجيل الدخول
 sessions_in=تسجيل الدخول
 sessions_out=تسجيل الخروج
 sessions_kill=قطع الاتصال..
+
 logins_title=تسجيلات Webmin الأخيرة
+
 hide_title=إخفاء الوحدات غير المستخدمة
 hide_desc=The following modules will be removed from the module access list for $1 as their corresponding servers are not installed on your system ..
 hide_ok=إخفاء الوحدات النمطية الآن
 hide_none=Nothing to hide - $1 does not have access to any modules whose corresponding servers are not installed on your system.
 hide_desc2=كن على علم بأن هذه الوحدات لن تظهر تلقائيًا في حالة تثبيت الخوادم المقابلة. ستحتاج إلى منح حق الوصول يدويًا باستخدام هذه الوحدة.
 hide_clone=(Clone $1)
+
 switch_euser=غير مسموح لك بالتبديل إلى هذا المستخدم
 switch_eold=الجلسة الحالية غير موجودة!
+
 rbac_title=إعداد RBAC
 rbac_esolaris=RBAC is only supported on Solaris at the moment, and so cannot be used on this $1 system.
 rbac_eperl=The Perl module $1 needed for RBAC integration is not installed. <a href='$2'>Click here</a> to have it installed now.
 rbac_ecpan=You do not have access to Webmin's Perl Modules page in order to install the necessary $1 module for RBAC integration.
 rbac_ok=يتوفر تكامل RBAC على هذا النظام ، ويمكن تمكينه لكل مستخدم على صفحة تحرير مستخدم الويب.
+
 udeletes_err=فشل في حذف المستخدمين
 udeletes_jerr=أخفق إضافة مستخدمين إلى المجموعة
 udeletes_enone=لا شيء محدد
@@ -254,11 +271,13 @@ udeletes_rusure=Are you sure you want to delete the $1 selected users? All of th
 udeletes_users=Selected users: $1
 udeletes_ok=حذف المستخدمين
 udeletes_ereadonly=تم تمييز أحد المستخدمين المحددين على أنه غير قابل للتحرير
+
 gdeletes_err=فشل في حذف المجموعات
 gdeletes_title=حذف المجموعات
 gdeletes_rusure=Are you sure you want to delete the $1 selected groups, and the $2 users they contain? All of their access control settings and user details will be lost.
 gdeletes_users=Selected groups: $1
 gdeletes_ok=حذف المجموعات
+
 pass_title=قيود كلمة المرور
 pass_ecannot=غير مسموح لك بتحرير قيود كلمة المرور
 pass_header=خيارات تنفيذ كلمة مرور Webmin
@@ -281,6 +300,7 @@ pass_eminsize=الحد الأدنى لطول كلمة المرور المفقو�
 pass_emaxdays=عدد الأيام المفقودة أو غير العددية قبل التغيير
 pass_elockdays=عدد الأيام المفقودة أو غير الرقمية قبل قفل الحساب
 pass_eoldblock=عدد كلمات المرور القديمة أو غير العددية التي يجب رفضها
+
 cpass_minsize=Must be at least $1 letters long
 cpass_notre=يطابق نمط غير مسموح به
 cpass_re=لا يطابق النمط المطلوب
@@ -288,6 +308,7 @@ cpass_name=يحتوي على اسم المستخدم
 cpass_dict=هي كلمة القاموس
 cpass_spellcmd=Neither the $1 or $2 commands needed to check for dictionary words is installed
 cpass_old=لا يمكن إعادة استخدام كلمات المرور القديمة
+
 sql_title=قاعدة بيانات المستخدم والمجموعة
 sql_ecannot=غير مسموح لك بتكوين قاعدة بيانات المستخدم والمجموعة
 sql_header=خيارات لقاعدة البيانات الخلفية للمستخدمين والمجموعات

@@ -21,6 +21,7 @@ index_eversion=De versie van STunnel geinstalleerd op uw systeem is $1, maar dez
 index_conf=Van de config file $1
 index_noconf=Geen configuratie file!
 index_delete=Verwijder Geselecteerde Tunnels
+
 edit_title=Bewerk SSL Tunnel
 create_title=SSL Tunnel Aanmaken
 edit_header1=Tunnel bron opties
@@ -47,6 +48,7 @@ edit_tcpw=TCP-wrappers naam
 edit_auto=Automatisch
 edit_iface=Uitgaand bron adres
 edit_type=Uitvoeren van
+
 save_err=Mislukt om SSL tunnel op te slaan
 save_enclash=De service met de naam $2 word al gebruikt op poort $1.
 save_einetd=Er is al een inetd service met de naam $1.
@@ -61,6 +63,7 @@ save_etcpw=Ontbrekende of ongeldige TCP-wrappers naam
 save_eiface=Ontbrekende of ongeldige uitgaand bron adres
 save_exinetd=Er is al een xinetd service met de naam $1
 save_export=De poort $1 word al gebruikt door xinetd service $2
+
 log_apply=Veranderingen Toegevoegd
 log_create=Gemaakte SSL tunnel $1
 log_delete=Verwijderde SSL tunnel $1

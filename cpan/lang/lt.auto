@@ -28,6 +28,7 @@ index_tabinstall=Įdiekite modulį
 index_tabsuggest=Siūlomi moduliai
 index_allmods2=Trūksta „Webmin“ naudojamų modulių
 index_wantmods=Įdiegti moduliai
+
 download_err=Nepavyko įdiegti modulio
 download_elocal=Vietinė byla nepateikta
 download_elocal2=„$1“ neegzistuoja
@@ -65,6 +66,7 @@ download_ebuild=Vienam ar daugiau „Perl“ modulių reikia sukurti $1, tačiau
 download_yum=„Perl“ modulio $1 diegimas iš $2 paketo.
 download_missingok=CPAN nėra modulių
 download_fallback=Kai kurių modulių nepavyko įdiegti iš paketų, vietoje to buvo bandoma įdiegti iš šaltinio ..
+
 install_title=Įdiekite modulį
 install_untar=Nenukreiptas modulio failas
 install_make=Kompiliavimo modulis
@@ -84,11 +86,13 @@ install_err2=Taip pat modulį galite įdiegti iš CPAN naudodami komandą $1.
 install_exec=Vykdoma $1 ..
 install_efile=Modulio failas $1 neegzistuoja
 install_needunlink=Galite pabandyti įdiegti dar kartą, grįždami į ankstesnį puslapį ir pasirinkę skirtingas parinktis. Kitu atveju <a href='$1'>spustelėkite čia, norėdami ištrinti laikinus paketo failus</a>, kad sutaupytumėte vietos diske.
+
 cpan_sel=Moduliai iki $1 ..
 cpan_title=Pasirinkite „Perl“ modulį
 cpan_search=Raskite modulius, pavadintus
 cpan_match=Moduliai, atitinkantys $1 ..
 cpan_none=Nerasta atitikmenų.
+
 edit_title=Informacija apie modulį
 edit_header=Informacija apie modulį
 edit_mod=Modulio pavadinimas
@@ -105,6 +109,7 @@ edit_method=Įdiegta nuo
 edit_rpm=RPM paketas $1 
 edit_debian=„Debian“ paketas $1 
 edit_manual=Neautomatinis „Perl“ modulio diegimas
+
 uninstall_title=Pašalinkite modulį
 uninstall_rusure=Ar tikrai norite pašalinti „Perl“ modulį $1 ? Bus ištrinti šie failai :
 uninstall_rusure2=Ar tikrai norite pašalinti „Perl“ modulį $1 ir jo modulį (-ius) $2 ? <br> Šie failai bus ištrinti :
@@ -112,7 +117,9 @@ uninstall_ok=Pašalinkite dabar
 uninstall_rpm=Modulis bus pašalintas pašalinus „ $1 RPM“ paketo įdiegimą.
 uninstall_debian=Modulis bus pašalintas pašalinus „ $1 Debian“ paketo įdiegimą.
 uninstall_err=Nepavyko pašalinti modulio
+
 delete_efile=Netinkamas paketo failas!
+
 uninstalls_title=Pašalinkite modulius
 uninstalls_err=Nepavyko pašalinti modulių
 uninstalls_enone=Nepasirinkta

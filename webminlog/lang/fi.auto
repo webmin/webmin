@@ -30,6 +30,7 @@ index_sdesc=Toiminnan kuvaus sisältää
 index_shost=Lähde Webmin -palvelin
 index_long=Näytä kaikki toimintakuvaukset?
 index_global=&lt;Ei missään moduulissa&gt;
+
 search_title=Hakutulokset
 search_date=Päivämäärä
 search_time=Aika
@@ -63,6 +64,7 @@ search_global_baduser=Väärä käyttäjänimi
 search_global_badpass=Väärä salasana
 search_global_twofactor=Virheellinen kaksisuuntainen merkki
 search_csv=Vie CSV-muodossa.
+
 view_title=Toiminnan yksityiskohdat
 view_header=Tiedot kirjautuneesta toiminnosta $1 
 view_action=Kuvaus
@@ -96,12 +98,14 @@ view_files=Tiedostot vaihdetaan ja komennot suoritetaan
 view_raw=Raaka lokitiedot
 view_rawname=Parametrin nimi
 view_rawvalue=Parametrin arvo
+
 acl_mods=Voi tarkastella lokit moduuleissa
 acl_all=Kaikki
 acl_sel=Valittu alla ..
 acl_self=Vain minä
 acl_users=Voi tarkastella käyttäjien toimia
 acl_rollback=Voiko toimia peruuttaa?
+
 rollback_title=Palautustoiminto
 rollback_rusure=Haluatko varmasti palauttaa kaikkien alla lueteltujen tiedostojen sisältö ennen tämän toimenpiteen toteuttamista? Seuraavat muutokset korvaavat kaikki ne tiedot, jotka ne tällä hetkellä sisältävät :
 rollback_isdir=Hakemisto - muutosta ei tehdä.
@@ -124,4 +128,5 @@ rollback_modfile=Tiedoston $1 peruutettu sisältö.
 rollback_deleted=Poistettu tiedosto $1.
 rollback_nodeleted=Ohitettu olematon tiedosto $1.
 rollback_enone=Ei tiedostoja valittu
+
 log_rollback=Kierrätystoiminto $1 moduulissa $2 

@@ -8,6 +8,7 @@ index_refresh=Yenileme Kuralları
 index_cachemgr=Önbellek Yöneticisi Parolaları
 index_squidver=<tt>$1</tt> komutu şunu döndürdü :
 index_version=Kalamar sürümü $1
+
 index_stop=Kalamar Durdur
 index_stopdesc=Çalışan Squid proxy sunucusunu durdurmak için bu düğmeyi tıklatın. Durdurulduktan sonra, bunu kullanan istemciler web veya FTP istekleri yapamaz.
 index_start=Squid'i Başlat
@@ -17,6 +18,7 @@ index_restartdesc=Mevcut Squid yapılandırmasını etkinleştirmek için bu dü
 index_iptables=Bağlantı Noktası Yeniden Yönlendirme Kurulumu
 index_squid=Kalamar Proxy Sunucusu
 index_manual=Yapılandırma Dosyalarını Düzenle
+
 manual_title=Yapılandırma Dosyalarını Düzenle
 manual_file=Düzenlemek için bir yapılandırma dosyası seçin:
 manual_change=Değişiklik
@@ -24,6 +26,7 @@ manual_editing=$1 içindeki yapılandırmaları manuel olarak düzenlemek için 
 manual_err=Yapılandırma dosyası kaydedilemedi
 manual_efile=Geçersiz yapılandırma dosya adı!
 manual_ecannot=Yapılandırma dosyalarını elle düzenlemenize izin verilmiyor
+
 acl_eusers=Harici Kimlik Doğrulama Kullanıcıları
 acl_eusersall=Tüm kullanıcılar
 acl_euserssel=Sadece listelenenler ..
@@ -43,19 +46,25 @@ acl_file=ACL değerlerini dosyada sakla
 acl_nofile=Kalamar yapılandırması
 acl_infile=Ayrı dosya
 acl_keep=Sadece dosyanın mevcut içeriğini kullan?
+
 aclsave_enofile=ACL dosya adı girilmedi
 aclsave_ealready=ACL dosyası zaten var
+
 cach_ecannot=Önbellek yöneticisi istatistiklerine erişim izniniz yok
 cach_esame=<b>Squid cachemgr.cgi yürütülebilir</b>, Squid tarafından sağlanan programa değil, Webmin'in cachemgr.cgi programına ayarlanmıştır.
+
 clear_ecannot=Önbelleği temizleme ve yeniden oluşturma izniniz yok
 clear_msgclear2=Bu Webmin sunucusuyla iletişim kurmak için bu önbelleği kullanmadığınızdan emin olmalısınız, aksi takdirde önbellek kapatıldığında bağlantınız kesilir.
 clear_url=Bir URL'yi önbellekten kaldır:
 clear_ok=Kaldırmak
+
 eacl_ecannot=Erişim kontrolünü düzenleme izniniz yok
 eacl_noprr=Proxy yanıt kısıtlaması tanımlanmadı
 eacl_addprr=Proxy yanıtı kısıtlaması ekleyin.
+
 eacl_replypr=Proxy kısıtlamalarını yanıtla
 eacl_replynopr=Yanıt proxy kısıtlaması tanımlanmadı
+
 eacl_ext=Harici ACL programları
 eacl_ename=Sınıf adı
 eacl_format=Giriş biçimi
@@ -66,10 +75,13 @@ eacl_eclass=Hiçbir program sınıfı seçilmedi
 eacl_cname=Tür adı
 eacl_file=$1 dosyasından
 eacl_hdelete=Seçilen Kısıtlamaları Sil
+
 eadm_ecannot=Yönetici seçeneklerini düzenleme izniniz yok
 eadm_haliases=Diğer önbellek DNS adları
+
 eauth_ecannot=Proxy kimlik doğrulamasını düzenleme izniniz yok
 eauth_nmsgaccess=Doğru ACL'lerle proxy sunucunuza erişim, $1 dosyasından alınan, aşağıda listelenen kullanıcılarla sınırlı olabilir. Bir kullanıcıyı ekledikten, sildikten veya değiştirdikten sonra değişikliğin geçerli olması için Değişiklikleri Uygula bağlantısını kullanmanız gerekir.
+
 ec_ecannot=Önbellek seçeneklerini düzenleme izniniz yok
 ec_opts=Seçenekler
 ec_diskd=DISKD
@@ -78,6 +90,7 @@ ec_gap=Maksimum istemci okuma aralığı
 ec_maxreplies=Maksimum cevap gövdesi boyutları
 ec_maxrn=Boyut (kB)
 ec_maxracls=EKL'lerle eşleşen istekler için (herkes için boş bırakın)
+
 ech_siq2=ICP sorguları reddedilsin mi?
 ech_pass=İstemci kimlik doğrulamasını bu önbelleğe aktar
 ech_upass=Müşteri girişini şifre ile iletin:
@@ -90,6 +103,7 @@ ech_origin=Ana makine başlangıç sunucusu olarak mı değerlendiriliyor?
 ech_force=Ana Makineyi Zorla: başlık
 ech_same=değişmemiş
 ech_ssl=SSL kullanarak bağlanılsın mı?
+
 eicp_ecannot=Diğer önbellekleri düzenleme izniniz yok
 eicp_always=Doğrudan getirilecek EKL'ler
 eicp_noalways=Hiçbir doğrudan getirme ACL'si tanımlanmadı.
@@ -102,6 +116,7 @@ eicp_ttype=tip
 eicp_tpport=Proxy bağlantı noktası
 eicp_tiport=ICP bağlantı noktası
 eicp_delete=Seçilen Önbellekleri Sil
+
 elogs_ecannot=Günlüğü düzenleme izniniz yok
 elogs_none=Yok
 elogs_logformat=Erişim günlüğü formatları
@@ -117,6 +132,7 @@ elogs_notset=Belirlenmedi
 elogs_dont=Giriş yapma
 elogs_file=$1 dosyası
 elogs_squid=Kalamar standardı
+
 emem_ecannot=Bellek kullanımını düzenleme izniniz yok
 emem_dheader=Bellek ve Disk Kullanımı
 emem_crp=Disk değiştirme politikası
@@ -125,6 +141,7 @@ emem_gdsf=Açgözlü-çift boyutlu frekans
 emem_lfuda=Dinamik en az kullanılan
 emem_hlru=En az kullanılan yığın
 emem_mrp=Bellek değiştirme politikası
+
 emisc_ecannot=Çeşitli seçenekleri düzenleme izniniz yok
 emisc_hash=Yalnızca tek bir HTTP Accel sunucunuz mu var?
 emisc_wccprtr=WCCP Yönlendirici Adresi
@@ -132,6 +149,7 @@ emisc_wccpin=WCCP Gelen Adresi
 emisc_wccpout=WCCP Giden Adresi
 emisc_none=Yok
 emisc_virtual=Gerçek
+
 eports_ecannot=Bağlantı noktalarını ve ağları düzenlemenize izin verilmiyor
 eports_ssl=SSL adresleri ve bağlantı noktaları
 eports_opts=Bağlantı noktası seçenekleri
@@ -141,6 +159,7 @@ eports_unc=Temiz olmayan SSL kapatmaları var mı?
 eports_checkhost=URL'lerde ana makine adları doğrulansın mı?
 eports_underscore=Ana makine adlarında alt çizgiye izin verilsin mi?
 eports_all=Herşey
+
 eprogs_ecannot=Yardımcı programları düzenleme izniniz yok
 eprogs_sppe=Ping programı etkin mi?
 eprogs_startup=Başlangıçta başlayacak programlar
@@ -150,29 +169,39 @@ eprogs_capweb=Webmin varsayılanı
 eprogs_ttl=Kimlik doğrulama önbellek süresi
 eprogs_aittl=IP önbellek zamanını doğrulama
 eprogs_realm=Kimlik doğrulama alanı
+
 euser_e=Etkin mi?
+
 ahttp_replyheader=Proxy Yanıt Kısıtlaması Oluştur
 ahttp_replyheader1=Proxy Yanıt Kısıtlamasını Düzenle
 ahttp_replypr=Proxy Yanıt Kısıtlaması
+
 icache_ecannot=Önbelleği başlatma izniniz yok
 icache_euser=Squid'i var olmadığı şekilde çalıştıracak kullanıcı
 icache_title=Önbelleği Başlat
+
 scache_emaxrs=$1 satırındaki geçersiz maksimum gövde boyutu
+
 slogs_efname=$1 satırında geçersiz biçim adı
 slogs_effmt=$1 satırında eksik günlük biçimi
 slogs_eafile=$1 satırında eksik veya geçersiz günlük dosyası
+
 sprog_emsg9='$1' geçerli bir önbellek süresi değil
 sprog_emsg10='$1' geçerli bir TTL değil
 sprog_echildren=Program sayısı sıfırdan büyük bir sayı olmalıdır
+
 suser_etaken=Kullanıcı adı zaten kullanımda
+
 start_ecannot=Kalamar başlatamazsın
 stop_ecannot=Kalamar'ı durdurmanıza izin verilmiyor
+
 calamaris_ecannot=Calamaris günlük analizine erişim izniniz yok
 calamaris_title=Kalamar Kütük Analizi
 calamaris_last=Analizleri son $1 günlük satırına sınırlar.
 calamaris_eprog=Calamaris yürütülebilir $1 bulunamadı. Belki sisteminize yüklenmemiş veya <a href='$2'>modül yapılandırmanız</a> yanlış.
 calamaris_elogs=$1 günlük dizini <tt>access.log</tt> dosyası içermiyor. Belki kalamar henüz çalıştırılmamış veya <a href='$2'>modül yapılandırmanız</a> yanlış.
 calamaris_gen=$1 üzerinde oluşturulan rapor
+
 lib_aclrmt=MIME Türü İste
 lib_aclrpmt=Yanıtla MIME Türü
 lib_aclarp=Ethernet Adresi
@@ -180,6 +209,7 @@ lib_aclear=Harici Kimlik Doğrulama Normal İfadesi
 lib_aclrur=RFC931 Kullanıcı Düzenli İfadesi
 lib_aclext=Harici Program
 lib_aclmuip=Maksimum Kullanıcı IP'si
+
 log_authparam=Değiştirilmiş kimlik doğrulama programı seçenekleri
 log_https_delete=$1 proxy kısıtlamaları silindi
 log_headeracc_create=Üstbilgi erişim kuralı oluşturuldu
@@ -204,24 +234,30 @@ log_pools_delete=$1 gecikme havuzu silindi
 log_delay_create=Gecikme havuzu için ACL eklendi $1
 log_delay_modify=Gecikme havuzu için değiştirilmiş ACL $1
 log_delay_delete=Gecikme havuzu için ACL silindi $1
+
 log_delay_move=Gecikme havuzu için ACL taşındı $1
 log_refresh_create=$1 için yenileme kuralı oluşturuldu
 log_refresh_modify=$1 için yenileme yenileme kuralı
 log_refresh_delete=$1 için yenileme kuralı silindi
+
 log_refresh_move=$1 için yenileme kuralı taşındı
 log_refreshes_delete=$1 yenileme kurallarını sildi
 log_iptables=Güncellenmiş bağlantı noktası yeniden yönlendirme kurulumu
 log_purge=URL $1 önbellekten kaldırıldı
 log_cachemgr=Değişen önbellek yöneticisi şifreleri
+
 acl_sections=İzin verilen yapılandırma sayfaları
 acl_start=Squid'i başlatabilir ve durdurabilir mi?
 acl_restart=Kalamar konfigürasyonu uygulayabilir mi?
+
 always_create=Doğrudan Getirme Oluştur
 always_edit=Doğrudan Getirmeyi Düzenle
 always_header=ACL'lerle eşleşen istekleri doğrudan getir
+
 never_create=Dolaylı Getirme Oluştur
 never_edit=Dolaylı Getirmeyi Düzenle
 never_header=ACL'lerle eşleşen istekleri asla doğrudan getirmeyin
+
 delay_title=Gecikme Havuzları
 delay_add=Yeni bir gecikme havuzu ekleyin.
 delay_num=Numara
@@ -271,11 +307,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=MB
+
 dpool_err=Gecikme havuzları silinemedi
 dpool_enone=Hiçbiri seçilmedi
+
 apool_header=Gecikme Havuzu ACL Ekle
 apool_header1=Gecikme Havuzu ACL'sini Düzenle
 apool_pr=Gecikme havuzu ACL
+
 authparam_title=Kimlik Doğrulama Programları
 authparam_header=Harici kimlik doğrulama programı seçenekleri
 authparam_ttl=İçin şifreleri önbelleğe alma zamanı
@@ -318,6 +357,7 @@ ext_ecache=Eksik veya geçersiz önbellek boyutu
 ext_eprogram=Geçersiz bir program yolu girildi
 ext_eclash=Aynı ada sahip harici bir program türü zaten var
 ext_eused=Bu harici program bir ACL tarafından kullanılıyor
+
 header_title=Başlık Erişim Kontrolü
 header_none=Henüz hiçbir başlık erişim kontrolü kuralı tanımlanmadı.
 header_name=HTTP başlığı
@@ -337,6 +377,7 @@ header_err=Üstbilgi erişim denetimi kuralı kaydedilemedi
 header_ename=Eksik veya geçersiz başlık adı
 header_request_header_access=Üstbilgi İste
 header_reply_header_access=Başlıkları Yanıtla
+
 refresh_title=Yenileme Kuralları
 refresh_none=Henüz bir yenileme kuralı tanımlanmadı.
 refresh_re=Düzenli ifade
@@ -363,6 +404,7 @@ refresh_epc=Eksik veya geçersiz yaş yüzdesi
 refresh_delete=Seçilen Yenileme Kurallarını Sil
 drefresh_err=Yenileme kuralları silinemedi
 drefesh_enone=Hiçbiri seçilmedi
+
 iptables_title=Bağlantı Noktası Yeniden Yönlendirme Kurulumu
 iptables_inst0=Bağlantı noktası yeniden yönlendirmesini ayarlamak için gereken IPtables güvenlik duvarı komutları sisteminizde yüklü görünmüyor. Daha fazla ayrıntı için <a href='$1'>Linux Güvenlik Duvarı</a> modülüne bakın.
 iptables_inst1=<a href='$1'>Linux Güvenlik Duvarı</a> modülünün sisteminizde tam olarak kurulu olmadığı görülüyor. Bu modül, Frox bağlantı noktası yeniden yönlendirmesini ayarlamak için bu modülü kullanır.
@@ -377,18 +419,23 @@ iptables_enet=Eksik veya geçersiz ağ adresi (192.168.1.0/24 gibi olmalıdır)
 iptables_eiface=Eksik veya geçersiz ağ arayüzü
 iptables_eapply=Güvenlik duvarı uygulanamadı : $1
 iptables_eapply2=Squid uygulanma başarısız oldu : $1
+
 syslog_access=Kalamar erişim günlüğü
 syslog_cache=Kalamar önbellek günlüğü
 syslog_store=Kalamar nesne deposu günlüğü
+
 purge_err=URL önbellekten silinemedi
 purge_title=Önbelleğe Alınmış URL'yi Temizle
 purge_doing=URL siliniyor $1 ..
 purge_done=.. bitti.
 purge_failed=.. başarısız oldu! Nedeni için yukarıdaki hata mesajına bakın.
+
 dhttp_err=Proxy kısıtlamaları silinemedi
 dhttp_enone=Hiçbiri seçilmedi
+
 dicp_err=ICP kısıtlamaları silinemedi
 dicp_enone=Hiçbiri seçilmedi
+
 cachemgr_title=Önbellek Yöneticisi Parolaları
 cachemgr_ecannot=Önbellek yöneticisi şifrelerini düzenleme izniniz yok
 cachemgr_def1=Şifre gerekmez

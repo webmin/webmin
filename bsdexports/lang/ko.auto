@@ -9,9 +9,12 @@ index_apply=변경 승인
 index_applydesc=현재 파일 내보내기 구성을 적용하려면이 버튼을 클릭하십시오. 이렇게하면 위에 나열된 모든 디렉토리를 지정된 옵션으로 사용할 수 있습니다.
 index_return=수출 목록
 index_echeck=이 시스템에서 NFS 서버를 사용할 수 없습니다  : $1 
+
 check_ecmd=NFS 서버 명령 $1 이 (가) 설치되지 않았습니다
+
 delete_err=내보내기를 삭제하지 못했습니다
 delete_enone=선택된 사항 없음
+
 edit_title1=내보내기 편집
 edit_title2=내보내기 만들기
 edit_header1=내보내기 옵션
@@ -31,6 +34,7 @@ edit_clients=고객
 edit_hosts=호스트 / 넷 그룹
 edit_network=회로망
 edit_mask=마스크
+
 save_err=내보내기를 저장하지 못했습니다
 save_edir='$1'은 (는) 디렉토리가 아니거나 존재하지 않습니다
 save_enone=내보낼 디렉토리를 하나 이상 입력해야합니다
@@ -44,4 +48,5 @@ save_enetwork='$1'은 (는) 유효한 네트워크가 아닙니다
 save_enetmask='$1'은 (는) 유효한 넷 마스크가 아닙니다.
 save_esame1=<tt>$1</tt> 디렉토리가 이미 <tt>$2</tt>로 내보내지고 있습니다. 운영 체제에서는 동일한 <i>local</i> 파일 시스템의 디렉토리를 동일한 호스트로 별도로 내보낼 수 없습니다
 save_esame2=<tt>$1</tt> 디렉토리가 이미 <tt>$2</tt>로 내보내지고 있습니다. 운영 체제에서는 동일한 <i>local</i> 파일 시스템의 디렉토리를 동일한 네트워크로 별도로 내보낼 수 없습니다
+
 restart_err=변경 사항을 적용하지 못했습니다

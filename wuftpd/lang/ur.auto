@@ -9,6 +9,7 @@ index_startmsg=Click this button to start the FTP server with the current config
 index_startmsg2=موجودہ ترتیب کے ساتھ FTP سرور شروع کرنے کے لئے اس بٹن پر کلک کریں۔ جب آپ inetd یا کچھ مساوی پروگرام کا استعمال کرتے ہوئے ضرورت ہو تو سرور کو خود بخود شروع کرنے کے لئے بھی تشکیل دے سکتے ہیں۔
 index_return=ایف ٹی پی سرور کے اختیارات
 index_version=WU-FTPd ورژن$1
+
 class_title=صارفین اور طبقات
 class_header=صارف کلاس اور صارف کے اختیارات
 class_class=صارف کی کلاسیں
@@ -31,6 +32,7 @@ class_err=صارف کی کلاسوں کو بچانے میں ناکام
 class_eclass='$1' درست کلاس کا نام نہیں ہے
 class_etypes=کلاس '$1' کیلئے کسی بھی قسم کا انتخاب نہیں کیا گیا ہے
 class_eaddrs=کلاس '$1' کیلئے کوئی پتہ درج نہیں کیا گیا
+
 message_title=پیغامات اور بینرز
 message_header=پیغامات ، بینرز اور README فائلیں
 message_message=پیغام کی فائلیں
@@ -59,6 +61,7 @@ message_eclass=کلاس '$1' موجود نہیں ہے
 message_ebanner='$1' ایک درست لاگ ان بینر فائل نہیں ہے
 message_ehostname=لاپتہ یا غلط میزبان نام
 message_eemail=لاپتہ یا غلط ای میل پتہ
+
 acl_title=حدود اور رسائ کنٹرول
 acl_header=حدود اور رسائی کے اختیارات
 acl_deny=تک رسائی سے انکار کریں
@@ -105,6 +108,7 @@ acl_elmsg='$1' درست غلطی والے پیغام کی فائل نہیں ہے
 acl_efbcount='$1' فائلوں یا بائٹس کی ایک درست تعداد نہیں ہے
 acl_elimit='$1' ایک درست وقت کی حد نہیں ہے
 acl_efails='$1' لاگ ان میں ناکامیوں کی ایک درست تعداد نہیں ہے
+
 net_title=نیٹ ورکنگ
 net_header=نیٹ ورکنگ کے اختیارات
 net_tcp=ٹی سی پی ونڈو سائز
@@ -122,6 +126,7 @@ net_eip='$1' درست IP ایڈریس نہیں ہے
 net_enet='$1' ایک درست نیٹ ورک ایڈریس نہیں ہے
 net_ecidr='$1' نیٹ ورک بٹس کی ایک درست تعداد نہیں ہے
 net_eport='$1' ایک درست پورٹ نمبر نہیں ہے
+
 log_title=لاگنگ
 log_header=لاگنگ کے اختیارات
 log_commands=کے لئے تمام احکامات لاگ ان کریں
@@ -139,6 +144,7 @@ log_syslog=سسٹم لاگ
 log_xferlog=XFER لاگ فائل
 log_sysxfer=دونوں منزلیں
 log_err=لاگنگ کے اختیارات کو بچانے میں ناکام
+
 alias_title=عرفی اور راستے
 alias_header=عرف اور راستے کے اختیارات
 alias_alias=CD ڈائریکٹری عرفی نام
@@ -149,6 +155,7 @@ alias_err=عرفی نام اور راستے بچانے میں ناکام
 alias_efrom='$1' درست عرف نام نہیں ہے
 alias_eto='$1' درست عرف ڈائریکٹری نہیں ہے
 alias_ecdpath='$1' درست سی ڈی سرچ ڈائرکٹری نہیں ہے
+
 anon_title=گمنام ایف ٹی پی
 anon_eftp=Warning - your system does not have an <tt>ftp</tt> user, and thus anonymous FTP is probably not configured.
 anon_header=گمنام ایف ٹی پی کے اختیارات
@@ -171,6 +178,7 @@ anon_uids=یونکس صارفین کے لئے
 anon_err=گمنام FTP اختیارات کو بچانے میں ناکام
 anon_edir='$1' درست ڈائریکٹری نہیں ہے
 anon_egroup='$1' درست گروپ نہیں ہے
+
 perm_title=اجازت
 perm_header=اجازت کے اختیارات
 perm_perms=کمانڈ پابندیاں
@@ -192,7 +200,9 @@ perm_err=اجازتیں محفوظ کرنے میں ناکام
 perm_echar='$1' مستند اظہار کا ایک درست کردار نہیں ہے
 perm_etypes=صارف کی قسمیں منتخب نہیں کی گئیں
 perm_emesg='$1' درست غلطی والے پیغام کی فائل نہیں ہے
+
 host_title=میزبان رسائی کنٹرول
+
 misc_title=متفرق اختیارات
 misc_header=متفرق اختیارات
 misc_lslong=لسٹ لسٹنگ کمانڈ
@@ -213,6 +223,7 @@ misc_elsplain=سادہ فہرست سازی کمانڈ غائب ہے
 misc_eshutdown=گمشدہ شٹ ڈاؤن نوٹیفکیشن فائل
 misc_enice='$1' ایک عمدہ اچھ.ی سطح نہیں ہے
 misc_eumask='$1' درست عماسک نہیں ہے
+
 log_class=صارف اور کلاس تبدیل کردیئے گئے
 log_message=بدلے ہوئے پیغامات اور بینرز
 log_acl=تبدیل کردہ حدود اور رسائی کنٹرول

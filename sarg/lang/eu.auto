@@ -10,6 +10,7 @@ index_range=Sortu txostena data-barrutirako
 index_view=Ikusi Sortutako Txostena
 index_viewdesc=Ikusi berriki sortutako txostena $1 direktorioan.
 index_return=moduluaren aurkibidea
+
 log_title=Eguneratu iturriaren eta txostenaren helmuga
 log_header=Source Squid log fitxategia eta sortutako txosten aukerak
 log_access_log=Iturburu Squid log fitxategia
@@ -30,6 +31,7 @@ log_elastlog=Zenbaki bat falta edo ez
 log_eemail=Falta den edo baliogabearen itxura duen helbide elektronikoa
 log_emailx=Falta den edo ez dagoen posta programa
 log_squidguard_log_path=SquidGuard log fitxategia
+
 style_title=Txostenaren estiloa
 style_header=HTML txostenaren estiloa eta kolore aukerak
 style_title2=Txostenaren izenburua
@@ -54,6 +56,7 @@ style_efont=Letraren izen falta edo baliogabea
 style_esize=Irudiaren zabalera eta altuera falta edo baliogabea
 style_language=Txostena hizkuntza
 style_charset=Txosten karaktere multzoa
+
 report_title=Txostena Aukerak
 report_header=Edukiaren eta belaunaldien aukeraren berri ematea
 report_resolve_ip=Ebatzi IP helbideak?
@@ -134,6 +137,7 @@ report_echar=Ez dira espazioak onartzen
 report_estring=Ordezko testua falta edo baliogabea da
 report_eselect=Ezer ez da hautatuta
 report_eenter=Ez da ezer sartu
+
 sched_title=Aurreikusitako txostenaren sorrera
 sched_header=Programatutako berri emateko aukerak
 sched_sched=Programatutako txostena gaituta dago?
@@ -148,9 +152,11 @@ sched_rsel=Duela 2 egun $1 etik $2 ra bitartekoak
 sched_err=Ezin izan da aurreikusitako txostena sortu gordetzea
 sched_erfrom=Falta zen edo baliogabea duela egun kopurua
 sched_erto=Falta zen edo baliogabea duela egun kopurua
+
 view_title=Sarg txostena
 view_efile=Fitxategi-izen baliogabea!
 view_eopen=Ezin izan da txostenaren fitxategia ireki
+
 gen_title=Sortu Txostena
 gen_header=Orain Sarg txostena sortzen 1 Squid log fitxategiaren $1 eta biratutako bertsio guztiak ..
 gen_done=.. egin
@@ -160,6 +166,7 @@ gen_view=Ikusi osatutako txostena.
 gen_err=Ezin izan da txostena sortu
 gen_efrom=Falta da edo baliogabea egunetik
 gen_eto=Egun falta edo baliogabea
+
 webmin_log_log=Eguneratu erregistro iturria eta txostena helmuga aukerak
 webmin_log_report=Eguneratutako txosten aukerak
 webmin_log_style=Txostenaren estilo eguneratutako aukerak

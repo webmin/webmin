@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Skriptiä resurssien pyytämiseksi toiselta solmulta ($1
 index_version=Sykeversio $1 
 index_noversion=Varoitus - Järjestelmään asennettua Heartbeat-versiota ei voitu tunnistaa automaattisesti. Sinun tulisi asettaa se <a href='$1'>moduulin kokoonpano</a> -sivulle.
 index_status=Sydämen syke
+
 conf_title=Kokoonpanoasetukset
 conf_header=Sydämen sykeasetukset
 conf_serials=Sarjallinen sykeportti
@@ -54,6 +55,7 @@ conf_auto_on=$ {Conf_enabled}
 conf_auto_off=$ {Conf_disabled}
 conf_auto_legacy=Vanha tila
 conf_auto_=$ {Default}
+
 res_title=Ryhmäresurssit
 res_node=Ensisijainen solmu
 res_ips=IP-osoitteet
@@ -67,6 +69,7 @@ res_getserv=Hanki resurssi
 res_hbdown=Sydämen syke
 res_up=UP
 res_down=ALAS
+
 node_create=Lisää klusterresurssi
 node_edit=Muokkaa klusterijärjestelmää
 node_header=Ryhmäresurssin yksityiskohdat
@@ -83,6 +86,7 @@ node_enone=Puuttuva tai virheellinen ensisijainen solmu
 node_eip='$1' ei ole kelvollinen IP-osoite
 node_ecidr='$1' ei ole kelvollinen CIDR
 node_ebroad='$1' ei ole kelvollinen lähetysosoite
+
 auth_title=Todennusnäppäimet
 auth_header=Klusterisolmun todennus
 auth_mode=Todennustila
@@ -92,6 +96,8 @@ auth_md5=MD5 salasanalla
 auth_err=Todennusavainten tallennus epäonnistui
 auth_emd5=Puuttuva tai virheellinen MD5-salasana
 auth_esha1=Puuttuva tai virheellinen SHA1-salasana
+
 start_err=Sydämen sykkeen aloittaminen epäonnistui
+
 apply_err=Muutosten asettaminen epäonnistui
 apply_epid=Prosessi ei ole enää käynnissä

@@ -9,6 +9,7 @@ index_startmsg=Wybierz by wystartować serwer FTP z aktualną konfiguracją. Za
 index_startmsg2=Naciśnij ten przycisk aby uruchomić serwer FTP z bierzącą konfiguracją. Możesz również skonfigurować serwer tak, aby był uruchamiany automatycznie w razie potrzeby poprzez <tt>inetd</tt> lub podobny program.
 index_return=Opcje serwera FTP
 index_version=WU-FTPd wersja $1
+
 class_title=Użytkownicy i klasy
 class_header=Klasy i opcje użytkowników
 class_class=Klasy użytkowników
@@ -31,6 +32,7 @@ class_err=Nie udało się zachować pliku klas
 class_eclass='$1' nie jest poprawną nazwą klasy
 class_etypes=Typy dla klasy '$1' nie zostały określone
 class_eaddrs=Nie zostały wprowadzone adresy dla klasy '$1'
+
 message_title=Komunikaty
 message_header=Komunikaty i zbiory README
 message_message=Zbiory komunikatów
@@ -59,6 +61,7 @@ message_eclass=Klasa '$1' nie istnieje
 message_ebanner='$1' nie jest poprawnym zbiorem
 message_ehostname=Niepoprawna nazwa komputera
 message_eemail=Niepoprawny adres pocztowy
+
 acl_title=Limity i kontrola dostępu
 acl_header=Limity i kontrola dostępu
 acl_deny=Zabroń dostępu
@@ -105,6 +108,7 @@ acl_elmsg='$1' nie jest poprawnym zbiorem komunikatu błędu
 acl_efbcount='$1' nie jest poprawną liczbą zbiorów lub bajtów
 acl_elimit='$1' nie jest poprawnym limitem czasu
 acl_efails='$1' nie jest poprawną liczbą prób logowania
+
 net_title=Opcje sieci
 net_header=Opcje sieci
 net_tcp=Rozmiar okna TCP
@@ -122,6 +126,7 @@ net_eip='$1' nie jest poprawnym adresem IP
 net_enet='$1' nie jest poprawnym adresem sieci
 net_ecidr='$1' nie jest poprawną liczbą bitów
 net_eport='$1' nie jest poprawnym numerem portu
+
 log_title=Logowanie
 log_header=Opcje logowania
 log_commands=Loguj wszystkie komendy
@@ -139,6 +144,7 @@ log_syslog=Log systemowy
 log_xferlog=Log transmisji
 log_sysxfer=Obydwa miejsca docelowe
 log_err=Nie udało się zachować opcji logowania
+
 alias_title=Aliasy i ścieżki
 alias_header=Aliasy i ścieżki
 alias_alias=Aliasy katalogów dla CD
@@ -149,6 +155,7 @@ alias_err=Nie udało się zachować opcji aliasów
 alias_efrom='$1' nie jest poprawną nazwą aliasu
 alias_eto='$1' nie jest poprawnym katalogiem
 alias_ecdpath='$1' nie jest poprawnym katalogiem CD
+
 anon_title=Anonimowe FTP
 anon_eftp=Uwaga - Twój system nie zawiera użytkownika <tt>ftp</tt>, prawdopodobnie anonimowe FTP nie jest skonfigurowane.
 anon_header=Anonimowe FTP
@@ -171,6 +178,7 @@ anon_uids=Dla użytkowników Uniksa
 anon_err=Nie udało się zachować opcji anonimowego FTP
 anon_edir='$1' nie jest poprawnym katalogiem
 anon_egroup='$1' nie jest poprawną grupą
+
 perm_title=Uprawnienia
 perm_header=Uprawnienia
 perm_perms=Ograniczenia komend
@@ -192,7 +200,9 @@ perm_err=Nie udało się zachować uprawnień
 perm_echar='$1' nie jest poprawnym wyrażeniem regularnym opisującym zbiór znaków
 perm_etypes=Nie wybrano typów wżytkowników
 perm_emesg='$1' nie jest poprawnym zbiorem błędu
+
 host_title=Kontrola dostępu komputerów
+
 misc_title=Opcje różne
 misc_header=Opcje różne
 misc_lslong=Komenda pełnego listingu
@@ -213,6 +223,7 @@ misc_elsplain=Brak komendy listingu
 misc_eshutdown=Brak zbioru informacji o zamykaniu systemu
 misc_enice='$1' nie jest poprawnym poziomem "nice"
 misc_eumask='$1' nie jest poprawną umaską
+
 log_class=Zmieniono użytkowników i klasy
 log_message=Zmieniono komunikaty
 log_acl=Zmieniono limity i kontrolę dostępu

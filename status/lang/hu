@@ -19,6 +19,7 @@ index_refsel=Refresh Selected
 index_group=Members of $1
 index_tmpls=Edit Email Templates
 index_tmplsdesc=View and edit templates used to construct email messages sent when monitored services go down.
+
 type_apache=Apache Webserver
 type_inetd=Internet and RPC Server
 type_xinetd=Extended Internet Server
@@ -69,6 +70,7 @@ type_dns=DNS Lookup
 type_query=SQL Query
 type_alive=Alive System
 type_rssh=Remote SSH
+
 mon_create=Create Monitor
 mon_edit=Edit Monitor
 mon_header=Monitor details
@@ -124,6 +126,7 @@ mon_members=$1 members
 mon_enoremote=No hosts or groups to run on selected
 mon_tmpl=Template for messages
 mon_notmpl=None (use Webmin defaults)
+
 sched_title=Scheduled Monitoring
 sched_header=Scheduled background monitoring options
 sched_mode=Scheduled checking enabled?
@@ -165,16 +168,19 @@ sched_smscarrier=Phone on carrier
 sched_smsnumber=with number
 sched_esmsnumber=Missing or non-numeric SMS number
 sched_esmsname=Missing or invalid-looking SMS number
+
 up_since=Up since $1
 depends_mod=The module $1 is not installed on your system
 depends_os=The module $1 is not supported on your system
 depends_remote=The module $1 is not supported on server $2
+
 tcp_host=Host to connect to
 tcp_port=Port to connect to
 tcp_alarm=Connection timeout
 tcp_ehost=Missing or invalid hostname
 tcp_eport=Missing or invalid port number
 tcp_ealarm=Missing or invalid connection timeout
+
 http_url=URL to request
 http_alarm=Connection timeout
 http_eurl=Missing or invalid URL
@@ -189,11 +195,13 @@ http_regexp=Page must match regexp
 http_eregexp=No regular expression for page to match entered
 http_none2=Don't match
 http_ehead=The HEAD request method cannot be used when checking for a regular expression
+
 ping_host=Host to ping
 ping_wait=Time to wait for response
 ping_ehost=Missing or invalid hostname
 ping_ewait=Missing or invalid wait time
 ping_econfig=No ping command has been set in Module Config
+
 proc_pid=Running with PIDs $1
 proc_cmd=Command to check for
 proc_not=Fail if process is
@@ -205,8 +213,10 @@ proc_ethresh=Missing or invalid number of processes
 proc_asuser=Running as user
 proc_anyuser=Any user
 proc_easuser=User for process to run as does not exist
+
 exec_cmd=Command to check exit status of
 exec_ecmd=Missing command
+
 file_file=File, directory or pattern to check
 file_test=Test to perform
 file_test_0=Must exist
@@ -218,6 +228,7 @@ file_efile=Missing file or directory name to check
 file_esize=Invalid file size
 file_elarge=Files too large : $1
 file_esmall=Files too small : $1
+
 traffic_iface=Interface to monitor
 traffic_bytes=Maximum bytes/second
 traffic_dir=Direction to monitor
@@ -227,6 +238,7 @@ traffic_dir2=Outgoing only
 traffic_desc=This monitor keeps track of network traffic on a selected interface, and displays the monitor as down if the traffic exceeds the number of bytes per second entered below. This only really works well if scheduled monitoring is enabled at set to a short interval, like every 5 minutes.
 traffic_eifaces=Your operating system does not have a /proc/net/dev file
 traffic_ebytes=Missing or invalid number of bytes/second
+
 space_fs=Filesystem to check
 space_min2=Minimum free space
 space_mode0=Absolute size
@@ -242,6 +254,7 @@ space_ierr=Only $1 inodes free
 space_merr=Only $1 space free
 space_perr=Only $1% free
 space_dferr=Failed to get filesystem size
+
 load_time=Load average to check
 load_1=1 minute
 load_5=5 minute
@@ -250,6 +263,7 @@ load_max=Maximum load average
 load_emax=Missing or invalid maximum load average
 load_ecmd=The <tt>uptime</tt> command was not found on your system
 load_efmt=The output of the <tt>uptime</tt> command could not be parsed
+
 log_create=Created monitor $1
 log_modify=Modified monitor $1
 log_delete=Deleted monitor $1
@@ -260,10 +274,14 @@ log_tmpl_modify=Modified email template $1
 log_tmpl_delete=Deleted email template $1
 log_tmpl_deletes=Deleted $1 email templates
 log_refresh=Refreshed monitor statuses
+
 acl_edit=Can edit and create monitors?
 acl_sched=Can change scheduled monitoring?
+
 change_file=File or directory to monitor (fail if changed)
+
 jabber_eparser=The Perl module $1 is not installed on your system.
+
 memory_min2=Minimum free real memory
 memory_emin=Missing or invalid amount of free real memory
 memory_eproc=Webmin does not know how to check free memory on your operating system
@@ -273,7 +291,9 @@ memory_freelow=Only $1 real memory free
 memory_freelowswap=Only $1 virtual memory free
 memory_minswap=Minimum free virtual memory
 memory_eminswap=Missing or invalid amount of free virtual memory
+
 proftpd_etype=This monitor cannot be used when ProFTPD is run stand-alone
+
 mailserver_to=Send email to address
 mailserver_timeout=Timeout and interval
 mailserver_units_0=Seconds
@@ -281,20 +301,25 @@ mailserver_units_1=Minutes
 mailserver_units_2=Hours
 mailserver_units_3=Days
 mailserver_desc=The address below must be an autoresponder that replies to the source address with the same Subject: line.
+
 oldfile_file=File to monitor (fail if not changed)
 oldfile_diff=Fail if not changed for
 oldfile_secs=secs
+
 raid_device=RAID device
 raid_edevice=No RAID device selected
 raid_bad=Bad disk detected
 raid_resync=Currently resyncing
 raid_notfound=RAID device $1 not found
 raid_other=Other..
+
 iface_iface=Interface to check
+
 refresh_title=Refresh Status
 refresh_doing=Refreshing the status of all monitors ..
 refresh_doing2=Refreshing the status of $1 selected monitors ..
 refresh_done=.. done.
+
 sensors_name=Sensor to check
 sensors_value=Failed when
 sensors_value0=System indicates warning
@@ -305,6 +330,7 @@ sensors_none=No sensors were detected on your system. You may need to run the <t
 sensors_cur=$1 (currently $2 $3)
 sensors_emin=Missing or invalid minimum value
 sensors_emax=Missing or invalid maximum value
+
 nut_ups=NUT UPS to check
 nut_name=Attribute to check
 nut_value=Failed when
@@ -315,6 +341,7 @@ nut_eups=No USP to check entered
 nut_cur=$1 (currently $2)
 nut_emin=Missing or invalid minimum value
 nut_emax=Missing or invalid maximum value
+
 mailq_system=Mail server
 mailq_qmailadmin=Qmail
 mailq_postfix=Postfix
@@ -323,6 +350,7 @@ mailq_size=Maximum mail queue size
 mailq_esize=Missing or invalid maximum queue size
 mailq_toomany=Down - $1 messages queued
 mailq_ok=Up - $1 messages queued
+
 dns_server=DNS server
 dns_host=Hostname to lookup
 dns_address=Expected IP address
@@ -330,6 +358,7 @@ dns_eserver=Missing or invalid DNS server
 dns_ehost=Missing or invalid-looking hostname to lookup
 dns_eaddress=Missing or invalid expected IP address
 dns_ecmds=Neither the <tt>nslookup</tt> or <tt>dig</tt> commands are installed on your system
+
 monitor_sub_down=$1 down on $2
 monitor_pager_down=$1: "$2" is down $3
 monitor_snmp_down=$1: $2
@@ -360,8 +389,10 @@ monitor_sub3=Service monitor : $1 services
 monitor_run1=Running $1 on $2 ..
 monitor_run2=Running $1 ..
 monitor_runerr=Failed to run $1 on $2 : $3
+
 deletes_egone=One of the selected monitors no longer exists
 deletes_enone=No monitors selected
+
 ftp_host=FTP server host
 ftp_port=FTP port
 ftp_user=Login as user
@@ -378,6 +409,7 @@ ftp_econn=TLS FTP connection failed
 ftp_econn2=TLS FTP connection failed : $1
 ftp_elogin=TLS FTP login failed : $1
 ftp_etlsfile=TLS FTP download failed : $1
+
 query_driver=SQL database type
 query_db=Database name
 query_host=Database server host
@@ -398,9 +430,12 @@ query_elogin=Login failed : $1
 query_eprepare=SQL error : $1
 query_eexecute=SQL failed : $1
 query_ewrong=Incorrect result : $1
+
 consume_rate=Maximum consumption rate (per second)
 consume_high=Consumption rate is $1 / second
+
 alive_up=Up for $1
+
 rssh_host=SSH server host
 rssh_ruser=Login as user
 rssh_rpass=Login with password
@@ -416,6 +451,7 @@ rssh_error=SSH error
 rssh_haspass=Password
 rssh_port=SSH server port
 rssh_eport=Missing or invalid port number
+
 tmpls_title=Email Templates
 tmpls_ecannot=You are not allowed to edit email templates
 tmpls_none=No email templates have been defined yet. All alerts will be sent using the Webmin default messages.
@@ -424,6 +460,7 @@ tmpls_email=Email message
 tmpls_add=Add a new email template.
 tmpls_return=templates list
 tmpls_delete=Delete Selected Templates
+
 tmpl_title1=Create Email Template
 tmpl_title2=Edit Email Template
 tmpl_header=Alert email template messages
@@ -448,9 +485,11 @@ tmpl_esms=Missing SMS message
 tmpl_esnmp=Missing SNMP message
 tmpl_err2=Failed to delete email template
 tmpl_eusers=It is in use by the following monitors : $1
+
 dtmpls_err=Failed to delete templates
 dtmpls_enone=None selected
 dtmpls_eusers=$1 is in use by the following monitors : $2
+
 sslcert_src=Certificate location
 sslcert_url=From HTTPS URL
 sslcert_file=From file on server
@@ -467,6 +506,7 @@ sslcert_eend=Not valid after $1
 sslcert_left=Up - $1 days until expiry
 sslcert_ematch=Hostname $1 does not match certificate $2
 sslcert_emismatch=Certificate hostname checking can only be used when checking a URL
+
 du_dir=Directory to monitor
 du_max=Maximum size
 du_edir=Missing or non-absolute directory path

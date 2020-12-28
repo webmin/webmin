@@ -10,6 +10,7 @@ index_apply=Käytä määritystä
 index_applydesc=Napsauta tätä painiketta, jos haluat käyttää nykyisiä PPTP-palvelinvaihtoehtoja pysäyttämällä ja käynnistämällä PPTP-palvelinprosessin uudelleen. PPP-asetusten ja PPP-tilien muutokset koskevat aina uusia yhteyksiä
 index_return=moduulihakemisto
 index_epppd=PPP-palvelinohjelmaa $1 ei ole asennettu järjestelmään. PPTP riippuu sen toiminnasta.
+
 conf_title=PPTP-palvelimen asetukset
 conf_ecannot=Et voi muokata PPTP-palvelimen asetuksia
 conf_header=PPTP-palvelimen määritykset
@@ -35,6 +36,7 @@ conf_elocalip='$1' ei ole kelvollinen paikallinen IP-osoite tai alue
 conf_eremoteip='$1' ei ole kelvollinen etä-IP-osoite tai alue
 conf_efrom=Puuttuva tai virheellinen IPX-verkko osoitteesta
 conf_eto=Puuttuva tai virheellinen IPX-verkko osoitteeseen
+
 options_title=PPP-asetukset
 options_ecannot=Et voi muokata PPP-asetuksia
 options_desc0=Alla olevat PPP-asetukset kohdasta $1 koskevat kaikkia järjestelmän vastaanottamia saapuvia yhteyksiä, mukaan lukien yhteys modeemiin.
@@ -67,6 +69,7 @@ options_mschap=MS-CHAP-todennus
 options_mschap-v2=MS-CHAP-version 2 todennus
 options_chapms=MS-CHAP-todennus
 options_chapms-v2=MS-CHAP-version 2 todennus
+
 secrets_title=PPP-tilit
 secrets_ecannot=Et voi muokata PPP-tilejä
 secrets_return=indeksi
@@ -80,6 +83,7 @@ secrets_sany=MINKÄ TAHANSA
 secrets_create=Luo uusi PPP-tili.
 secrets_desc=Tällä sivulla luetellut PPP-tilit on otettu tiedostosta $1, jota käytetään todennukseen $3. Vain palvelimesi $2 ne näkyvät, ei tilejä lähtevien yhteyksien luomiseksi.
 secrets_delete=Poista valitut PPP-tilit
+
 edit_secret_etitle=Muokkaa PPP-tiliä
 edit_secret_ctitle=Luo PPP-tili
 edit_secret_acc=PPP-tili
@@ -99,15 +103,20 @@ edit_secret_alist=Salli listattu ..
 edit_secret_save=Tallentaa
 edit_secret_del=Poistaa
 edit_secret_return=tililuettelo
+
 save_secret_esave=Tilin tallentaminen epäonnistui
 save_secret_enoip='$1' ei ole kelvollinen osoite
+
 stop_err=PPTP-palvelimen pysäyttäminen epäonnistui
 stop_egone=Ei enää juokse
 stop_ecannot=Et voi pysäyttää PPTP-palvelinta
+
 start_err=PPTP-palvelimen käynnistäminen epäonnistui
 start_ecannot=Sinulla ei ole oikeutta käynnistää PPTP-palvelinta
+
 apply_err=PPTP-palvelimen uudelleen käynnistäminen epäonnistui
 apply_ecannot=Et voi käynnistää PPTP-palvelinta uudelleen
+
 conns_title=Aktiiviset yhteydet
 conns_ecannot=Et voi hallita aktiivisia yhteyksiä
 conns_desc=Tällä sivulla luetellaan palvelimellesi tällä hetkellä aktiiviset PPTP-yhteydet. Irrota yhteys pakkauksesta napsauttamalla sen käyttöliittymän nimeä.
@@ -119,9 +128,11 @@ conns_remote=Asiakkaan VPN-osoite
 conns_none=Mikään PPTP-yhteys ei näytä olevan aktiivinen tällä hetkellä.
 conns_unknown=Tuntematon
 conns_user=Käyttäjätunnus
+
 disc_err=Yhteyden katkaiseminen epäonnistui
 disc_egone=Yhteydet eivät ole enää aktiivisia
 disc_ekill=Prosessi ei ole enää käynnissä
+
 log_secret_create=Luotu PPP-tili $1 
 log_secret_modify=Muokattu PPP-tili $1 
 log_secret_delete=Poistettu PPP-tili $1 
@@ -132,6 +143,7 @@ log_disc=Yhteys katkaistu $1
 log_start=Käynnistettiin PPTP-palvelin
 log_stop=Pysäytetty PPTP-palvelin
 log_apply=Käytetty PPTP-palvelimen määritys
+
 acl_conf=Voiko muokata kokoonpanoa?
 acl_options=Voiko asetuksia muokata?
 acl_secrets=Pystyykö hallitsemaan PPTP-tilejä?

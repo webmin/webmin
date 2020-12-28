@@ -42,6 +42,7 @@ index_rdesc=설명
 index_rboot=부팅시 실행
 index_radd=새 동작 생성
 index_unknown=알 수 없음
+
 edit_title=동작 편집
 create_title=동작 작성
 edit_ecannot=부팅 동작을 편집할 수 없습니다
@@ -74,6 +75,7 @@ edit_statusnow=상태 표시
 edit_return=동작
 edit_status=현재 실행 중 여부
 edit_unknown=알 수 없음
+
 save_err=동작을 저장하지 못했습니다
 save_ecannot=부팅 동작을 편집할 수 없습니다
 save_ealready=동작 '$1'이 이미 있습니다
@@ -82,6 +84,7 @@ save_ename=동작 이름이 지정되지 않았거나 올바르지 않습니다.
 save_eclash=동일한 이름의 동작이 이미 존재합니다.
 save_escript=동작 스크립트를 입력하지 않았습니다.
 save_estartcmd=Bootup 명령이 지정되지 않았습니다.
+
 ss_ecannot=부팅 동작을 실행하거나 중지할 수 없습니다
 ss_start=동작 실행
 ss_stop=동작 중지
@@ -92,21 +95,25 @@ ss_exec=$1 실행 중..
 ss_doingstart=$1 동작 실행 ..
 ss_doingstop=$1 동작 정지 ..
 ss_doingstatus=$1 동작 상태 요청 ..
+
 shutdown_ecannot=시스템을 종료할 수 없습니다
 shutdown_title=종료
 shutdown_rusure=명령 $1을(를) 사용하여 시스템을 종료하시겠습니까?
 shutdown_ok=시스템 종료
 shutdown_exec=명령 $1을(를) 사용하여 종료 중..
+
 reboot_ecannot=시스템을 재부팅할 수 없습니다
 reboot_title=재부팅
 reboot_rusure=명령 $1을(를) 사용하여 시스템을 재부팅하시겠습니까?
 reboot_ok=시스템 재부팅
 reboot_exec=명령 $1을(를) 사용하여 재부팅 중..
+
 acl_script=부팅 스크립트를 편집할 수 있습니까?
 acl_actions=동작을 편집, 작성 및 삭제할 수 있습니까?
 acl_runonly=오직 실행
 acl_reboot=시스템을 재부팅할 수 있습니까?
 acl_shutdown=시스템을 종료할 수 있습니까?
+
 log_rename=동작 이름이 $1에서 $2(으)로 바뀜
 log_modify=동작 $1 수정됨
 log_create=동작 $1 작성됨
@@ -123,6 +130,7 @@ log_massrestart=$1 동작 재실행
 log_massenable=$1 동작 활성화
 log_massdisable=$1 동작 비 활성화
 log_telinit=실행 레벨 $1(으)로 변경
+
 edit_hostconfig_startup=이 동작이 활성화 되어 있다면 시스템 부팅시에 $1 스크립트가 실행됩니다. 아래에서 수정할 수 있습니다.
 edit_hostconfig_plist=$1 파일에서 부트 스크립트가 잘 작동할 수 있도록 하는 매개 변수를 설정할 수 있습니다. 하단의 설정에서 수정할 수 있습니다.
 edit_hostconfig_new=새 동작 만들기
@@ -134,6 +142,7 @@ edit_hostconfig_array=$1, $2, $3 필드는 배열 필드이며, 하나 이상의
 edit_hostconfig_further=새 시작 동작을 생성한 후, 필요하다면 시작 스크립트와 파라미터를 설정할 수 있는 페이지로 이동할 수 있습니다.
 edit_hostconfig_hostconfig=$1 파일에서 시스템 전반적인 서비스와 데몬을 부팅시에 실행되도록 조절할 수 있습니다. 하단에서 수정할 수 있습니다.
 edit_hostconfig_title=호스트 설정 수정
+
 mass_enone=선택된 동작이 없습니다.
 mass_enone2=선택된 서비스가 없습니다.
 mass_start=동작 실행
@@ -146,6 +155,7 @@ mass_starting=$1 동작 실행 ..
 mass_stopping=$1 동작 정지 ..
 mass_failed=.. 실패!
 mass_ok=.. 완료
+
 change_err=실행 레벨 변경 권한이 없습니다.
 change_title=실행 레벨 변경
 change_cmd=$2 명령을 실행하여 $1 실행 레벨로 변경할 수 있습니다. 이 작업은 어느정도의 시간이 소요되며, 변경 이 후에 Webmin이 잠시동안 작동하지 않을 수 있습니다.

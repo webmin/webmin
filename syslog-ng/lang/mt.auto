@@ -9,6 +9,7 @@ index_start=Ibda Syslog-NG
 index_startdesc=Ikklikkja din il-buttuna biex tibda d-daemon Syslog-NG, billi tuża l-konfigurazzjoni attwali.
 index_return=indiċi tal-modulu
 index_version=Syslog-NG $1 
+
 options_title=Għażliet ta 'qtugħ
 options_header=Għażliet għall-fajls tal-ġurnal kollha
 options_secs=sekondi
@@ -55,6 +56,7 @@ options_esync=Numru ta 'messaġġi nieqsa jew invalidi għall-buffer qabel ma ji
 options_estats=Nieqes il-ħin jew mhux numeriku li wieħed jistenna bejn il-messaġġi tal-istatistika
 options_elog_fifo_size=Numru ta 'messaġġi nieqsa jew invalidi għall-buffer
 options_elog_msg_size=Id-daqs massimu tal-messaġġ log nieqes jew mhux numeriku
+
 destinations_title=Destinazzjonijiet tal-Log
 destinations_name=Isem tad-destinazzjoni
 destinations_type=Ikteb lil
@@ -77,6 +79,7 @@ destinations_add=Żid destinazzjoni log ġdida.
 destinations_return=destinazzjonijiet tal-log
 destinations_desc=Log tal-modulu l-ieħor
 destinations_cmd=Ħruġ minn $1 
+
 destination_header=Idħol id-destinazzjoni tal-għażliet
 destination_title1=Oħloq Destinazzjoni Log
 destination_title2=Edit Id-Destinazzjoni tal-Ġurnal
@@ -117,17 +120,22 @@ destination_enet_localip=Indirizz IP lokali nieqes jew invalidu
 destination_enet_localport=Numru tal-port lokali nieqes jew invalidu
 destination_enet_host=Ospitanti jew indirizz tas-server Syslog nieqes jew invalidi
 destination_eunix=Isem is-sokit Unix Nieqes
+
 ddelete_err=Naqset milli tħassar id-destinazzjonijiet
 ddelete_enone=L-ebda magħżul
 ddelete_eused=Id-destinazzjoni $1 ma tistax titħassar, billi tintuża minn log log
+
 sdelete_err=Naqset milli tħassar is-sorsi
 sdelete_enone=L-ebda magħżul
 sdelete_eused=Is-sors tal-log $1 ma jistax jitħassar peress li jintuża minn log log
+
 fdelete_err=Naqset milli tħassar il-filtri
 fdelete_enone=L-ebda magħżul
 fdelete_eused=Il-filtru tal-ġurnal $1 ma jistax jitħassar għax jintuża minn mira log
+
 ldelete_err=Ma rnexxielhiex tħassar il-miri tal-log
 ldelete_enone=L-ebda magħżul
+
 filters_title=Iffiltra Filtri
 filters_name=Iffiltra l-isem
 filters_desc=Kundizzjonijiet
@@ -144,6 +152,7 @@ filters_program=programm <tt>$1</tt>
 filters_match=jaqbel ma '"$1"
 filters_host=minn hostname <tt>$1</tt>
 filters_netmask=mill-mittent <tt>$1</tt>
+
 filter_title1=Oħloq Iffiltra tal-Ġurnal
 filter_title2=Editja l-Iffiltru tal-Ġurnal
 filter_header=Iddettalja l-ispeċifikazzjoni tal-filtru
@@ -169,6 +178,7 @@ filter_enet=Indirizz IP tan-netwerk nieqes jew invalidu
 filter_emask=Netmask nieqes jew invalidu
 filter_ebool=Żball fl-espressjoni kumplessa
 filter_egone=Iffiltra ma għadhiex teżisti!
+
 logs_title=Idħol fil-Miri
 logs_source=Sorsi
 logs_filter=Filtri
@@ -177,6 +187,7 @@ logs_add=Żid mira tal-log ġdida.
 logs_delete=Ħassar il-Miri tal-Ġurnal magħżula
 logs_return=Idħol fil-miri
 logs_none=Xejn
+
 log_title1=Oħloq Log Target
 log_title2=Editja l-Mira tal-Ġurnal
 log_header=Log sors, filtru u selezzjonijiet ta 'destinazzjoni
@@ -190,6 +201,7 @@ log_flags=Għażliet fil-mira
 log_egone=Log fil-mira m'għadux jeżisti!
 log_err=Naqset milli ssalva l-mira tal-log
 log_esource=L-ebda sorsi magħżula
+
 sources_title=Sorsi tal-Ġurnal
 sources_none=Ma ġew definiti l-ebda sorsi!
 sources_add=Żid sors tal-ġurnal ġdid.
@@ -207,6 +219,7 @@ sources_typen=Nixxiegħa tax-xemx
 sources_typenw=Syslog server
 sources_return=sorsi tal-log
 sources_none2=Xejn
+
 source_title1=Oħloq Log Source
 source_title2=Editja Sors tal-Ġurnal
 source_header=Għażliet tas-sors tal-ġurnal
@@ -243,15 +256,20 @@ source_door=Isem tal-fajl tal-bibien
 source_esun_streams_name=Isem il-fajl Stream Sun nieqes jew invalidu
 source_edoor=Nieqes jew invalidu l-isem tal-fajl tal-bieb tan-nixxiegħa
 source_transport=Protokoll tan-netwerk
+
 view_title=Ara Logfile
 view_header=L-aħħar $1 linji ta ' $2 
 view_empty=Il-fajl tal-ġurnal huwa vojt
 view_refresh=Aġġorna
 view_filter=Uri biss linji bit-test $1 
+
 apply_err=Ma rnexxielux japplika l-konfigurazzjoni
 apply_egone=Mhux għaddej!
+
 start_err=Ma rnexxielux jibda s-server Syslog-NG
+
 stop_err=Ma rnexxielux iwaqqaf is-server Syslog-NG
+
 log_create_destination=Destinazzjoni ta 'log maħluqa ta' $1 
 log_modify_destination=Destinazzjoni modifikata tal-log $1 
 log_delete_destination=Destinazzjoni tal-log imħassra $1 

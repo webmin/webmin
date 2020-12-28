@@ -9,6 +9,7 @@ index_restart=Khởi động lại Webmin
 index_restartmsg=Nhấp vào nút này để bắt đầu lại quy trình máy chủ Webmin. Điều này có thể cần thiết nếu gần đây bạn đã nâng cấp Perl.
 index_refresh=Làm mới mô-đun
 index_refreshmsg=Kiểm tra lại tất cả các mô-đun Webmin cho các máy chủ đã cài đặt và cập nhật các mô-đun xuất hiện trong danh mục 'Mô-đun không sử dụng'.
+
 access_title=Kiểm soát truy cập IP
 access_desc=Máy chủ Webmin có thể được cấu hình để từ chối hoặc chỉ cho phép truy cập từ một số địa chỉ IP nhất định bằng biểu mẫu này. Tên máy chủ (như foo.bar.com) và mạng IP (như 10.254.3.0 hoặc 10.254.1.0/255.255.255.128 hoặc 10.254.1.0/25 hoặc 10.254.1.5-10.254.97.127) cũng có thể được nhập. Bạn nên giới hạn quyền truy cập vào máy chủ của mình đến các địa chỉ đáng tin cậy, đặc biệt nếu có thể truy cập từ Internet. Nếu không, bất cứ ai đoán mật khẩu của bạn sẽ có toàn quyền kiểm soát hệ thống của bạn.
 access_ip=Địa chỉ IP được phép
@@ -33,6 +34,7 @@ access_ehost=Không thể tìm địa chỉ IP cho '$1'
 access_eself=Địa chỉ IP hiện tại của bạn ($1) sẽ bị từ chối
 access_always=Giải quyết tên máy chủ theo mọi yêu cầu?
 access_trust=Tin tưởng địa chỉ IP từ xa được cung cấp bởi proxy?
+
 bind_title=Cổng và địa chỉ
 bind_desc2=Biểu mẫu này có thể được sử dụng để thay đổi số cổng mà Webmin nghe hoặc chỉ nghe trên một địa chỉ IP duy nhất trên hệ thống của bạn. Bạn cũng có thể định cấu hình nó để chấp nhận kết nối trên nhiều cổng hoặc để nghe trên một số địa chỉ IP. Lưu ý - trình duyệt web của bạn có thể nhắc bạn đăng nhập lại sau khi thay đổi cổng hoặc địa chỉ ràng buộc.
 bind_header=Địa chỉ IP và cổng
@@ -61,6 +63,7 @@ bind_eipv6=IPv6 không thể được bật trừ khi cài đặt $1 Perl đư�
 bind_redirecting=Chuyển hướng đến URL mới ..
 bind_elsof=Cổng mới $1 đã được sử dụng bởi một quy trình khác
 bind_eonsystem=Địa chỉ IP $1 không hoạt động trên hệ thống này và vì vậy không thể sử dụng
+
 log_title=Ghi nhật ký
 log_desc=Webmin có thể được cấu hình để viết nhật ký các lần truy cập máy chủ web, ở định dạng tệp nhật ký CLF tiêu chuẩn. Nếu đăng nhập được bật, bạn cũng có thể chọn xem địa chỉ IP hoặc tên máy chủ được ghi lại và tần suất xóa tệp nhật ký. Khi được bật, nhật ký được ghi vào tệp $1.
 log_desc2=Khi đăng nhập được bật, Webmin cũng sẽ ghi nhật ký chi tiết hơn về hành động của người dùng vào tệp $1. Nhật ký này có thể được xem và phân tích với mô-đun Nhật ký hành động Webmin để xem chính xác những gì mỗi người dùng Webmin đã và đang làm.
@@ -92,6 +95,7 @@ log_login=Bao gồm thông tin đăng nhập Webmin và đăng xuất trong nh�
 log_email=Gửi hành động đăng nhập qua email đến
 log_emailnone=Đừng gửi
 log_inmodsemail=Gửi email cho các hành động trong
+
 proxy_title=Máy chủ proxy và tải xuống
 proxy_desc=Nếu máy chủ lưu trữ Webmin chạy phía sau một loại tường lửa nào đó, bạn có thể cần phải đặt máy chủ proxy để sử dụng để truy cập các trang web và FTP. Một số mô-đun, chẳng hạn như <tt>Gói phần mềm</tt>, sẽ sử dụng các proxy này khi tải xuống tệp hoặc chương trình.
 proxy_header=Máy chủ proxy
@@ -134,6 +138,7 @@ proxy_return=máy chủ proxy và tải xuống
 proxy_tabproxy=Proxy
 proxy_tabdown=Đang tải xuống
 proxy_fallback=Hãy thử yêu cầu trực tiếp nếu proxy bị sập?
+
 ui_title=Giao diện người dùng
 ui_desc=Biểu mẫu này cho phép bạn chỉnh sửa các tùy chọn giao diện người dùng được sử dụng bởi tất cả các mô-đun. Khi nhập màu, mỗi màu phải được chỉ định bằng hệ thống RGB tiêu chuẩn, trong đó mỗi giá trị là một số hex từ 00 đến ff.
 ui_header=Tùy chọn giao diện người dùng
@@ -183,6 +188,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/yyyy (tức là 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/yyyy (tức là ngày 16/9/2001)
 ui_dateformat_yyyy/mm/dd=yyyy/mm/dd (tức là 2001/09/16)
 ui_ehostnamedisplay=Tên máy chủ hiển thị bị thiếu hoặc không hợp lệ
+
 mods_title=Mô-đun Webmin
 mods_desc1=Các mô-đun Webmin có thể được thêm vào sau khi cài đặt bằng cách sử dụng biểu mẫu bên phải. Các mô-đun thường được phân phối trong các tệp <tt>.wbm</tt>, mỗi mô-đun có thể chứa một hoặc nhiều mô-đun. Các mô-đun cũng có thể được cài đặt từ các tệp RPM nếu được hệ điều hành của bạn hỗ trợ.
 mods_installsource=Cài đặt từ
@@ -226,6 +232,7 @@ mods_tabinstall=Tải về
 mods_tabclone=Bản sao
 mods_tabdelete=Xóa bỏ
 mods_tabexport=Xuất khẩu
+
 install_err1=Không thể cài đặt mô-đun từ $1
 install_efile=Tập tin không tồn tại
 install_err2=Không thể cài đặt mô-đun tải lên
@@ -259,10 +266,12 @@ install_cat=Trong danh mục $1.
 install_eneither=RPM không chứa mô-đun hoặc chủ đề webmin
 install_err4=Không thể cài đặt mô-đun chuẩn
 install_emissing=Mô-đun được chỉ định không tồn tại
+
 clone_err=Không thể sao chép mô-đun
 clone_elink=symlink không thành công : $1
 clone_ecopy=không thể sao chép cấu hình : $1
 clone_desc=Bản sao của $1
+
 delete_err=Không thể xóa các mô-đun
 delete_edep=Không thể xóa mô-đun $1 vì mô-đun $2 phụ thuộc vào nó
 delete_desc1=$1 (Bản sao của $2)
@@ -274,6 +283,7 @@ delete_rusure2=Bạn có chắc chắn muốn xóa chủ đề $2? $1 kB của c
 delete_rusure3=Bạn có chắc chắn muốn xóa (các) bản sao mô-đun $2?
 delete_acls=Xóa khỏi người dùng và thiết lập lại cài đặt kiểm soát truy cập?
 delete_enone=Không có mô-đun được chọn
+
 os_title=Hệ điều hành và môi trường
 os_desc3=Trang này hiển thị hệ điều hành được Webmin phát hiện khi cài đặt và hệ thống hiện được phát hiện. Nếu chúng khác nhau, bạn có thể chọn cập nhật thông tin HĐH của Webmin, điều này có thể cần thiết nếu bạn đã nâng cấp gần đây.
 os_desc2=Bạn cũng có thể thay đổi đường dẫn tìm kiếm được sử dụng bởi Webmin khi chạy các chương trình và đường dẫn thư viện dùng chung được chuyển đến bất kỳ chương trình nào.
@@ -296,6 +306,7 @@ os_eiversion=Thiếu phiên bản hệ điều hành nội bộ
 os_incorrect=Cảnh báo - Hệ thống của bạn thực sự đang chạy $1 phiên bản $2.
 os_fix=Cập nhật hệ điều hành được phát hiện
 os_usermin=Đồng thời cập nhật hệ điều hành Usermin
+
 lang_title=Ngôn ngữ
 lang_title2=Ngôn ngữ webmin
 lang_lang=Hiển thị bằng ngôn ngữ
@@ -307,6 +318,7 @@ lang_chardef=Xác định theo ngôn ngữ
 lang_charover=Bộ ký tự lực
 lang_err=Không thể lưu ngôn ngữ
 lang_echarset=Bộ ký tự bị thiếu hoặc không hợp lệ
+
 ssl_title=Mã hóa SSL
 ssl_essl=Mô-đun Net::SSLeay perl dường như không được cài đặt trên hệ thống của bạn. Để cài đặt thư viện OpenSSL và Net::SSLeay, hãy làm theo <a href='$1'>các hướng dẫn này</a> từ trang web Webmin.
 ssl_cpan=Thay phiên, bạn có thể tải xuống và cài đặt Webmin <a href='$1'>và cài đặt</a> mô-đun Net::SSLeay Perl cần thiết cho bạn.
@@ -412,6 +424,7 @@ ssl_letsnotrenew=Chỉ gia hạn thủ công
 ssl_staging=Hãy mã hóa máy chủ
 ssl_staging0=Thực tế
 ssl_staging1=Dàn dựng (chỉ thử nghiệm)
+
 newkey_err=Không thể tạo khóa SSL
 newkey_ecn=Tên máy chủ bị thiếu hoặc không hợp lệ
 newkey_ecns=Không có tên máy chủ được nhập
@@ -424,11 +437,13 @@ newkey_ok=Tạo thành công khóa SSL sau :
 newkey_esize=Kích thước khóa bị thiếu hoặc không hợp lệ
 newkey_edays=Thiếu hoặc không hợp lệ số ngày trước khi hết hạn
 newkey_ecountry=Mã quốc gia phải có hai chữ cái
+
 newcsr_err=Không thể tạo SSL CSR
 newcsr_efile=Thiếu tên tệp CSR
 newcsr_title=Tạo CSR
 newcsr_ok=Tạo thành công yêu cầu chứng chỉ SSL sau :
 newcsr_ok2=CSR này phải được gửi đến cơ quan ký, người sẽ trả lại chứng chỉ đã ký. Điều này có thể được cài đặt bằng khóa ở trên bằng cách sử dụng tab <b>Tải lên chứng chỉ</b>.
+
 startpage_title=Tùy chọn trang chỉ mục
 startpage_intro2=Trang này cho phép bạn kiểm soát sự xuất hiện của menu Webmin chính. Một số tùy chọn chỉ có thể có hiệu lực khi sử dụng chủ đề mặc định.
 startpage_tabs=Phân loại mô-đun?
@@ -442,6 +457,7 @@ startpage_gotonone=&lt;Không&gt;
 startpage_gotomodule=Sau khi đăng nhập, luôn luôn đi đến mô-đun
 startpage_webminup=Hiển thị cập nhật Webmin trên trang Thông tin hệ thống?
 startpage_moduleup=Hiển thị cập nhật mô-đun trên trang Thông tin hệ thống?
+
 upgrade_title=Nâng cấp Webmin
 upgrade_desc=Biểu mẫu này cho phép bạn nâng cấp toàn bộ cài đặt Webmin của bạn lên phiên bản mới. Bạn có thể cài đặt từ một tệp cục bộ, một tệp được tải lên hoặc từ phiên bản mới nhất tại <a href=http://www.webmin.com/>www.webmin.com</a>. Giống như nâng cấp thủ công, tất cả các cài đặt cấu hình và mô-đun của bên thứ ba sẽ được giữ nguyên.
 upgrade_descrpm=Biểu mẫu này cho phép bạn nâng cấp toàn bộ cài đặt webmin của mình lên phiên bản mới bằng tùy chọn nâng cấp của RPM. Bạn có thể cài đặt từ tệp RPM cục bộ, tệp đã tải lên hoặc từ phiên bản mới nhất tại <a href=http://www.webmin.com/>www.webmin.com</a>. Giống như nâng cấp thủ công, tất cả các cài đặt cấu hình và mô-đun của bên thứ ba sẽ được giữ nguyên.
@@ -506,10 +522,12 @@ upgrade_tabupdate=Cập nhật các mô-đun
 upgrade_tabsched=Cập nhật theo lịch trình
 upgrade_src=Nâng cấp Webmin từ
 upgrade_opts=Nâng cấp tùy chọn
+
 newmod_desc=Khi Webmin được nâng cấp, mọi mô-đun mới trong phiên bản mới sẽ được cấp cho một hoặc nhiều người dùng. Biểu mẫu này cho phép bạn đặt người dùng nhận mô-đun mới. Cài đặt này sẽ được áp dụng khi nâng cấp tại dòng lệnh hoặc sử dụng mẫu ở trên.
 newmod_header=Tài trợ mô-đun mới
 newmod_def=Hành vi mặc định - cấp các mô-đun mới cho <tt>root</tt> hoặc <tt>admin</tt>
 newmod_users=Cấp các mô-đun mới cho :
+
 update_desc1=Biểu mẫu này cho phép bạn nâng cấp các mô-đun Webmin đã được tìm thấy có chứa lỗi hoặc lỗ hổng bảo mật từ trang <a href=http://www.webmin.com/updates.html>Cập nhật Webmin</a> hoặc từ một nguồn khác. Điều này sẽ so sánh các mô-đun hiện được cài đặt với các mô-đun có sẵn để cập nhật và tùy chọn tự động tải xuống và cài đặt bất kỳ mô-đun nào đã lỗi thời.
 update_header1=Cập nhật các mô-đun ngay bây giờ
 update_header2=Cập nhật các mô-đun theo lịch trình
@@ -536,6 +554,7 @@ update_enomodsig=Không thể tải xuống tệp chữ ký cho mô-đun : $1
 update_ebadmodsig=Kiểm tra chữ ký mô-đun không thành công : $1
 update_src=Nâng cấp các mô-đun từ
 update_opts=Tùy chọn cập nhật mô-đun
+
 ca_title=Cơ quan cấp chứng chỉ
 ca_old=Giấy chứng nhận hiện có
 ca_header1=Tạo chứng chỉ CA mới
@@ -567,6 +586,7 @@ ca_eminiserv=Chứng chỉ ứng dụng khách SSL chỉ được hỗ trợ the
 ca_eversion=Phiên bản của mô-đun Perl Net::SSLeay được cài đặt trên hệ thống của bạn không hỗ trợ chứng chỉ ứng dụng khách SSL.
 ca_essleay=Lệnh quản trị SSL $1 không được tìm thấy trên hệ thống của bạn. Bạn có thể cần thay đổi đường dẫn trong cấu hình mô-đun Người dùng Webmin.
 ca_essl=Chứng nhận SSL chỉ có thể được thiết lập khi máy chủ web đang chạy ở chế độ SSL.
+
 session_title=Xác thực
 session_desc1=Khi được bật, thời gian chờ mật khẩu sẽ bảo vệ máy chủ Webmin của bạn khỏi các cuộc tấn công bẻ khóa mật khẩu mạnh mẽ bằng cách thêm độ trễ mở rộng liên tục giữa mỗi lần đăng nhập thất bại cho cùng một người dùng.
 session_header=Tùy chọn xác thực và phiên
@@ -630,10 +650,12 @@ session_sha512=Sử dụng mã hóa SHA512
 session_emd5mod=Mã hóa MD5 không thể được sử dụng, vì mô-đun Perl $1 chưa được cài đặt.
 session_esha512mod=Mã hóa SHA512 không thể được sử dụng, vì mô-đun Perl $1 chưa được cài đặt.
 session_blocklock=Cũng khóa người dùng với thông tin đăng nhập thất bại
+
 assignment_title=Tái chỉ định mô-đun
 assignment_header=Bài tập thể loại
 assignment_ok=Thay đổi danh mục
 assignment_desc=Biểu mẫu này cho phép bạn định cấu hình danh mục mà mỗi mô-đun được hiển thị bên dưới trang chỉ mục Webmin.
+
 categories_title=Chỉnh sửa danh mục
 categories_header=ID danh mục và mô tả
 categories_desc=Biểu mẫu này cho phép bạn đổi tên các danh mục Webmin hiện có và tạo các danh mục mới để gán mô-đun cho. Phần trên cùng của bảng là để thay đổi các mô tả của các danh mục tích hợp, trong khi phần dưới cùng là để thêm các ID và mô tả danh mục mới.
@@ -646,6 +668,7 @@ categories_name=Mô tả hiển thị
 categories_lang=Chỉnh sửa danh mục bằng ngôn ngữ:
 categories_langok=Thay đổi
 categories_custom=Tập quán
+
 log_access=Thay đổi kiểm soát truy cập IP
 log_bind=Thay đổi cổng và địa chỉ
 log_log=Thay đổi đăng nhập tùy chọn
@@ -691,6 +714,7 @@ log_onedelete_webmincron=Đã xóa chức năng theo lịch trình trong mô-đu
 log_letsencrypt=Yêu cầu chứng chỉ SSL mới từ Let Encrypt
 log_letsencryptdns=Đã tạo Hãy mã hóa bản ghi DNS cho $1
 log_letsencryptcleanup=Đã xóa Bản ghi DNS được mã hóa cho $1
+
 themes_title=Chủ đề Webmin
 themes_desc=Chủ đề kiểm soát sự xuất hiện của giao diện người dùng Webmin, bao gồm các biểu tượng, màu sắc, hình nền và bố cục của các trang. Hộp chọn bên dưới có thể được sử dụng để chọn một trong các chủ đề được cài đặt trên hệ thống của bạn.
 themes_sel=Chủ đề hiện tại :
@@ -706,6 +730,7 @@ themes_taboverlay=Thay đổi lớp phủ
 themes_tabinstall=Cài đặt chủ đề
 themes_tabdelete=Xóa chủ đề
 themes_tabexport=Xuất chủ đề
+
 themes_err1=Không thể cài đặt chủ đề từ $1
 themes_efile=Tập tin không tồn tại
 themes_err2=Không thể cài đặt chủ đề đã tải lên
@@ -731,9 +756,11 @@ themes_delok=Chủ đề cần xóa :
 themes_return=danh sách chủ đề
 themes_err4=Không thể thay đổi chủ đề lớp phủ
 themes_eoverlay=Lớp phủ được chọn không tương thích với chủ đề toàn cầu hiện tại
+
 themes_desc4=Các chủ đề đã cài đặt có thể được xuất dưới dạng tệp wbt.gz bằng cách sử dụng mẫu dưới đây. Một tệp chủ đề sau đó có thể được cài đặt vào một hệ thống khác đang chạy Webmin.
 themes_exportmods=Chủ đề để xuất
 themes_exportok=Xuất chủ đề đã chọn
+
 referers_title=Người giới thiệu đáng tin cậy
 referers_desc=Trang này cho phép bạn định cấu hình hỗ trợ kiểm tra người giới thiệu của Webmin, được sử dụng để ngăn các liên kết độc hại từ các trang web khác lừa trình duyệt của bạn thực hiện những điều nguy hiểm với Webmin. Tuy nhiên, nếu bạn có các liên kết đến Webmin từ các trang web của riêng bạn mà bạn không muốn được cảnh báo về bạn, hãy thêm các trang web đó vào danh sách bên dưới.
 referers_list=Trang web đáng tin cậy
@@ -742,6 +769,7 @@ referers_none2=CẢNH BÁO: Điều này mở hệ thống của bạn lên tớ
 referers_referer=Kiểm tra giới thiệu cho phép?
 referers_err=Không thể lưu người giới thiệu
 referers_ehost='$1' không phải là tên máy chủ đáng tin cậy hợp lệ
+
 update_err=Không thể cập nhật các mô-đun
 update_eurl=URL cập nhật bị thiếu hoặc không hợp lệ
 update_title=Cập nhật các mô-đun
@@ -762,6 +790,7 @@ update_rv=Kiểm tra các mô-đun Webmin được cập nhật từ $1
 update_eemail=Bạn phải nhập địa chỉ email nếu chỉ hiển thị những gì sẽ được cập nhật.
 update_subject=Báo cáo cập nhật mô-đun Webmin
 update_version=Bản phát hành mới của Webmin (phiên bản $1) hiện có sẵn để tải xuống. Bản cập nhật trong tương lai sẽ chỉ được phát hành cho phiên bản mới nhất.
+
 anon_title=Truy cập mô-đun ẩn danh
 anon_desc=Trang này cho phép bạn cấp quyền truy cập vào các mô-đun và đường dẫn Webmin đã chọn mà không cần khách hàng đăng nhập. Đối với mỗi đường dẫn mô-đun mà bạn nhập bên dưới (chẳng hạn như <tt>/custom</tt> hoặc <tt>/passwd</tt>), bạn cũng phải nhập tên của người dùng Webmin có quyền sẽ được sử dụng để truy cập vào mô-đun.
 anon_desc2=Bạn nên RẤT cẩn thận khi cấp quyền truy cập ẩn danh, vì không đủ điều khiển truy cập IP hoặc cấp quyền truy cập vào mô-đun sai có thể cho phép kẻ tấn công chiếm quyền hệ thống của bạn.
@@ -770,15 +799,19 @@ anon_user=Người dùng webmin
 anon_err=Không thể lưu quyền truy cập ẩn danh
 anon_eurl='$1' không phải là đường dẫn URL hợp lệ
 anon_euser=Người dùng Webmin bị thiếu hoặc không hợp lệ cho đường dẫn URL '$1'
+
 enogpg=GnuPG chưa được cài đặt
+
 standard_failed=Không thể tải xuống danh sách mô-đun : $1
 standard_header=Các mô-đun Webmin tiêu chuẩn
 standard_warn=Cảnh báo - bạn không chạy phiên bản Webmin mới nhất $1, vì vậy các mô-đun này có thể sẽ không cài đặt được.
 standard_eurl=URL mô-đun chuẩn không hợp lệ
+
 third_failed=Không thể tải xuống danh sách mô-đun : $1
 third_header=Các mô-đun Webmin của bên thứ ba
 third_eurl=URL mô-đun bên thứ ba không hợp lệ
 third_title=Chọn mô-đun của bên thứ ba
+
 lock_title=Khóa tệp
 lock_desc=Theo mặc định, Webmin sẽ có được một khóa trên bất kỳ tệp nào mà nó sửa đổi để ngăn sửa đổi đồng thời bởi nhiều quy trình, điều này có thể dẫn đến hỏng tệp. Trang này cho phép bạn vô hiệu hóa có chọn lọc hoặc hoàn toàn khóa nếu nó gây ra sự cố.
 lock_header=Cài đặt khóa tập tin
@@ -789,6 +822,7 @@ lock_except=Khóa tất cả các tệp và thư mục ngoại trừ ..
 lock_err=Không thể lưu khóa tập tin
 lock_edir='$1' không phải là một con đường tuyệt đối
 lock_edirs=Không có tập tin hoặc thư mục được nhập
+
 ipkey_title1=Tạo khóa SSL
 ipkey_title2=Chỉnh sửa khóa SSL
 ipkey_header=Chi tiết khóa SSL dành riêng cho IP
@@ -798,6 +832,7 @@ ipkey_eip2='$1' không phải là địa chỉ IP hoặc tên máy chủ hợp l
 ipkey_eips=Không có địa chỉ IP nào được nhập
 ipkey_eextracas=Không có tệp chứng chỉ bổ sung nào được nhập
 ipkey_eextraca=Tệp chứng chỉ bổ sung $1 không tồn tại
+
 descs_title=Tiêu đề mô-đun
 descs_info=Trang này cho phép bạn chỉ định các tiêu đề thay thế cho các mô-đun Webmin, để ghi đè các mô tả chuẩn của chúng.
 descs_mod=Mô-đun
@@ -807,11 +842,13 @@ descs_cdesc=Tiêu đề bản sao
 descs_err=Không thể lưu tiêu đề mô-đun
 descs_edesc=Thiếu tiêu đề cho mô-đun '$1'
 descs_etitle=Thiếu tiêu đề cho bản sao '$1'
+
 export_err=Không thể xuất mô-đun
 export_ecmd=Thiếu lệnh cần thiết $1
 export_efile=Tệp xuất bị thiếu hoặc không hợp lệ
 export_done=Đã xuất thành công các mô-đun đã chọn sang $1.
 export_title=Mô-đun xuất khẩu
+
 advanced_title=Tùy chọn nâng cao
 advanced_header=Tùy chọn nâng cao và thử nghiệm
 advanced_temp=Thư mục tập tin tạm thời
@@ -855,10 +892,13 @@ advanced_listdir=Liệt kê các thư mục không có tệp chỉ mục?
 advanced_headers=Tiêu đề HTTP thêm
 advanced_eheader=Các tiêu đề phải được định dạng như <tt>Tiêu đề: Giá trị</tt>
 advanced_sortconfigs=Lưu tập tin cấu hình được sắp xếp theo các phím của nó?
+
 syslog_errorlog=Nhật ký lỗi webmin
+
 clear_title=Xóa bộ nhớ cache
 clear_done=Bộ đệm Webmin chứa $1 của các tệp từ $2 URL đã được xóa thành công.
 clear_none=Hiện tại không có URL nào trong bộ đệm tải xuống của Webmin.
+
 savekey_err=Không thể lưu khóa mới
 savekey_ekey=Khóa định dạng PEM bị thiếu hoặc không hợp lệ
 savekey_ecert=Chứng chỉ định dạng PEM bị thiếu hoặc không hợp lệ
@@ -868,6 +908,7 @@ savekey_title=Tải lên khóa hiện có
 savekey_done2=Khóa SSL được cung cấp đã được lưu trong $1 và chứng chỉ trong $2.
 savekey_done=Khóa và chứng chỉ SSL được cung cấp đã được lưu trong tệp $1.
 savekey_done3=Chứng chỉ SSL chuỗi được cung cấp đã được lưu trong tệp $1.
+
 cache_title=URL được lưu trong bộ nhớ cache
 cache_search=Tìm URL có chứa:
 cache_ok=Tìm kiếm
@@ -880,8 +921,10 @@ cache_delete=Flush được chọn từ Cache
 cache_err=Không thể xóa các URL được lưu trong bộ nhớ cache
 cache_enone=Không được chọn
 cache_efile=Tên tệp không hợp lệ
+
 restart_title=Khởi động lại Webmin
 restart_done=Quá trình máy chủ Webmin hiện đang khởi động lại - vui lòng đợi trong vài giây trước khi tiếp tục.
+
 mobile_title=Tùy chọn thiết bị di động
 mobile_header=Tùy chọn cho trình duyệt di động
 mobile_theme=Chủ đề cho trình duyệt di động
@@ -890,6 +933,7 @@ mobile_nosession=Buộc sử dụng xác thực HTTP?
 mobile_agents=Tác nhân người dùng bổ sung cho trình duyệt di động
 mobile_err=Không thể lưu tùy chọn thiết bị di động
 mobile_prefixes=Tiền tố tên máy chủ URL cho trình duyệt di động
+
 blocked_title=Máy chủ và người dùng bị chặn
 blocked_type=Kiểu
 blocked_who=Tên máy chủ hoặc tên người dùng
@@ -901,9 +945,11 @@ blocked_host=Máy chủ
 blocked_clear=Xóa tất cả các khối
 blocked_cleardesc=Nhấp vào nút này để xóa tất cả các khối máy chủ và người dùng hiện tại, bằng cách khởi động lại quy trình máy chủ Webmin.
 blocked_restarting=Quá trình máy chủ Webmin hiện đang khởi động lại để xóa các máy chủ và người dùng bị chặn - vui lòng đợi trong vài giây trước khi tiếp tục.
+
 refreshmods_title=Làm mới mô-đun
 refreshmods_installed=Kiểm tra các mô-đun Webmin có thể sử dụng ..
 refeshmods_counts=.. đã tìm thấy $2 với các ứng dụng đã cài đặt, $1 chưa được cài đặt.
+
 debug_title=Nhật ký gỡ lỗi
 debug_header=Tùy chọn tệp nhật ký gỡ lỗi Webmin
 debug_enabled=Nhật ký gỡ lỗi được kích hoạt?
@@ -931,6 +977,7 @@ debug_cmd=Dòng lệnh
 debug_cron=Công việc nền
 debug_inmods=Các mô-đun để viết nhật ký gỡ lỗi cho
 debug_emodules=Không có mô-đun để gỡ lỗi cho lựa chọn
+
 notif_passexpired=Mật khẩu Webmin của bạn đã hết hạn! Bạn sẽ buộc phải thay đổi nó trong lần đăng nhập tiếp theo.
 notif_passchange=Mật khẩu Webmin của bạn được thay đổi lần cuối vào $1 và phải được thay đổi trong $2 ngày.
 notif_passlock=Mật khẩu Webmin của bạn được thay đổi lần cuối vào $1 và tài khoản của bạn sẽ bị khóa trong $2 ngày nếu không thay đổi.
@@ -946,6 +993,7 @@ notify_updatedesc=Khắc phục sự cố
 notif_updateok=Cài đặt bản cập nhật ngay
 notif_reboot=Các bản cập nhật gói gần đây (như phiên bản kernel mới) yêu cầu khởi động lại để được áp dụng đầy đủ.
 notif_rebootok=Khởi động lại ngay
+
 status_title=Bộ sưu tập trạng thái nền
 status_header=Cài đặt công việc thu thập trạng thái
 status_interval=Thu thập trạng thái hệ thống trong nền?
@@ -957,6 +1005,7 @@ status_temp=Thu thập nhiệt độ ổ đĩa?
 status_units=Đơn vị cho nhiệt độ
 status_celsius=Độ
 status_fahrenheit=độ F
+
 sendmail_title=Gửi email
 sendmail_desc=Trang này kiểm soát cách Webmin gửi email, chẳng hạn như từ các bản sao lưu theo lịch hoặc theo dõi nền. Nó cũng ảnh hưởng đến email được gửi bằng mô-đun Đọc thư người dùng.
 sendmail_header=Tùy chọn gửi thư
@@ -997,12 +1046,14 @@ sendmail_url=URL Webmin để sử dụng trong email
 sendmail_url_def=Mặc định ($1)
 sendmail_url_custom=URL tùy chỉnh
 sendmail_eurl=URL tùy chỉnh bị thiếu hoặc không hợp lệ
+
 testmail_title=Gửi email kiểm tra
 testmail_err=Không thể gửi tin nhắn kiểm tra
 testmail_eto=Không có địa chỉ đích được nhập
 testmail_sending=Gửi tin nhắn từ $1 đến $2 ..
 testmail_done=.. tin nhắn đã gửi. Kiểm tra hộp thư của địa chỉ đích để đảm bảo rằng nó thực sự đã được gửi.
 testmail_failed=.. gửi thất bại : $1
+
 web_title=Tùy chọn máy chủ web
 web_header=Tùy chọn cho máy chủ web tích hợp của Webmin
 web_expires=Thời gian bộ đệm phía máy khách cho các tệp tĩnh
@@ -1014,6 +1065,7 @@ web_expirespaths=Thời gian bộ đệm phía máy khách dựa trên đường
 web_expirespath=Đường dẫn biểu thức chính quy
 web_expirestime=Thời gian lưu trữ tính bằng giây
 web_eexpires2=Thời gian bộ đệm phía máy khách bị thiếu hoặc không phải là số trong hàng $1
+
 webmincron_title=Các chức năng được lên lịch của Webmin
 webmincron_emodule=Mô-đun Công việc Webmin Cron chưa được cài đặt!
 webmincron_module=Mô-đun Webmin
@@ -1037,6 +1089,7 @@ webmincron_when1=Thời gian cụ thể
 webmincron_secs=giây
 webmincron_err=Không thể lưu chức năng theo lịch trình
 webmincron_einterval=Khoảng thời gian phải là một số giây lớn hơn 0
+
 twofactor_title=Xác thực hai yếu tố
 twofactor_header=Tùy chọn xác thực hai yếu tố
 twofactor_provider=Nhà cung cấp xác thực
@@ -1075,6 +1128,7 @@ twofactor_secret1=Tạo ngẫu nhiên
 twofactor_secret0=Sử dụng khóa 16 ký tự
 twofactor_esecret=Khóa bí mật phải dài chính xác 16 ký tự và chỉ chứa các chữ cái và số
 twofactor_esession=Xác thực hai yếu tố không thể được sử dụng trừ khi xác thực dựa trên phiên được kích hoạt
+
 letsencrypt_title=Hãy mã hóa yêu cầu chứng chỉ
 letsencrypt_err=Không thể yêu cầu chứng chỉ
 letsencrypt_ecmds=Cả lệnh máy khách Let Encrypt <tt>certbot</tt> hoặc lệnh <tt>python</tt> đều không được tìm thấy trên hệ thống của bạn
@@ -1108,5 +1162,6 @@ letsencrypt_ecsr=Không thể tạo CSR : $1
 letsencrypt_ekeygen=Không thể tạo khóa riêng : $1
 letsencrypt_enative=Ứng dụng khách Encrypt gốc (certbot) đã được sử dụng trước đây trên hệ thống này và phải được sử dụng cho tất cả các yêu cầu chứng chỉ trong tương lai
 letsencrypt_eacmedns=Chỉ ứng dụng khách Encrypt chính thức mới hỗ trợ xác thực dựa trên DNS
+
 announce_hide=Ẩn thông báo này
 alert_hide=Ẩn thông báo

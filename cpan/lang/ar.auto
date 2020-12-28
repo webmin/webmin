@@ -28,6 +28,7 @@ index_tabinstall=تثبيت الوحدة النمطية
 index_tabsuggest=الوحدات المقترحة
 index_allmods2=الوحدات المفقودة المستخدمة من قبل Webmin
 index_wantmods=وحدات للتثبيت
+
 download_err=فشل في تثبيت الوحدة النمطية
 download_elocal=لا ملف محلي معين
 download_elocal2="$1" غير موجود
@@ -65,6 +66,7 @@ download_ebuild=تحتاج وحدة أو أكثر من وحدات Perl إلى إ
 download_yum=تثبيت الوحدة النمطية Perl $1 من الحزمة$2 ..
 download_missingok=الوحدات المفقودة من CPAN
 download_fallback=فشلت بعض الوحدات النمطية في التثبيت من الحزم ، جربت التثبيت من المصدر بدلاً من ذلك ..
+
 install_title=تثبيت الوحدة النمطية
 install_untar=ملف الوحدة النمطية untarring
 install_make=تجميع الوحدة النمطية
@@ -84,11 +86,13 @@ install_err2=يمكنك أيضًا تثبيت الوحدة النمطية من C
 install_exec=جاري تنفيذ$1 ..
 install_efile=لم يعد ملف الوحدة النمطية$1 موجودًا
 install_needunlink=يمكنك محاولة التثبيت مرة أخرى بالرجوع إلى الصفحة السابقة وتحديد خيارات مختلفة. بخلاف ذلك ، <a href='$1'>انقر هنا لحذف ملفات الحزمة المؤقتة</a> لتوفير مساحة على القرص.
+
 cpan_sel=الوحدات النمطية أقل من$1 ..
 cpan_title=حدد وحدة Perl
 cpan_search=ابحث عن الوحدات المسماة
 cpan_match=وحدات مطابقة$1 ..
 cpan_none=لم يتم العثور على تطابق.
+
 edit_title=تفاصيل الوحدة
 edit_header=معلومات الوحدة
 edit_mod=اسم وحدة
@@ -105,6 +109,7 @@ edit_method=تم التثبيت من
 edit_rpm=حزمة RPM$1
 edit_debian=حزمة دبيان$1
 edit_manual=تثبيت وحدة Perl يدويًا
+
 uninstall_title=إلغاء تثبيت الوحدة النمطية
 uninstall_rusure=هل أنت متأكد من أنك تريد إلغاء تثبيت وحدة Perl النمطية$1؟ سيتم حذف الملفات التالية :
 uninstall_rusure2=هل تريد بالتأكيد إلغاء تثبيت الوحدة النمطية Perl $1 والوحدة الفرعية (الوحدات) الفرعية$2؟ <br> سيتم حذف الملفات التالية :
@@ -112,7 +117,9 @@ uninstall_ok=إلغاء التثبيت الآن
 uninstall_rpm=ستتم إزالة الوحدة النمطية عن طريق إلغاء تثبيت حزمة$1 RPM.
 uninstall_debian=ستتم إزالة الوحدة عن طريق إلغاء تثبيت حزمة دبيان$1.
 uninstall_err=فشل في إلغاء تثبيت الوحدة النمطية
+
 delete_efile=ملف حزمة غير صالح!
+
 uninstalls_title=إلغاء تثبيت الوحدات النمطية
 uninstalls_err=فشل في إلغاء تثبيت الوحدات النمطية
 uninstalls_enone=لا شيء محدد

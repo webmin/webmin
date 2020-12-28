@@ -12,10 +12,12 @@ index_restart=Käynnistä Fail2Ban-palvelin uudelleen
 index_restartdesc=Napsauta tätä painiketta, kun haluat käyttää nykyistä määritystä käynnistämällä Fail2Ban-palvelin uudelleen.
 index_return=moduulihakemisto
 index_header=Fail2Ban-moduuli
+
 check_edir=Kokoonpanohakemistoa $1 ei ole
 check_econf=Konfiguraatiotiedostoa $2 $1 : ssä ei ole
 check_eclient=Asiakaskomentoa $1 ei löytynyt
 check_eserver=Palvelinkomentoa $1 ei löytynyt
+
 filters_title=Lokisuodattimet
 filters_name=Suodattimen nimi
 filters_re=Tavallinen ilme
@@ -25,6 +27,7 @@ filters_return=luettelo suodattimista
 filters_derr=Suodattimien poistaminen epäonnistui
 filters_enone=Mitään ei ole valittu
 filters_einuse=Suodatinta $1 ei voi poistaa, koska vankilat käyttävät sitä : $2 
+
 filter_title1=Luo suodatin
 filter_title2=Muokkaa suodatinta
 filter_desc=Käytä <i>&lt;HOST&gt;</i> säännöllisissä lausekkeissa, joissa isäntänimen tai IP-osoitteen pitäisi näkyä.
@@ -39,6 +42,7 @@ filter_ename=Puuttuva tai virheellinen suodattimen nimi
 filter_eclash=Suodattimen nimi on jo käytössä
 filter_efail=Ei säännöllistä lauseketta vastaavaa varten
 filter_einuse=Tätä suodatinta ei voi poistaa, koska vankilat käyttävät sitä : $1 
+
 actions_title=Ottelutoimet
 actions_name=Toiminnan nimi
 actions_ban=Ban-komento
@@ -48,6 +52,7 @@ actions_return=luettelo toimista
 actions_derr=Toimintojen poistaminen epäonnistui
 actions_enone=Mitään ei ole valittu
 actions_einuse=Toimintoa $1 ei voi poistaa, koska vankilat käyttävät sitä : $2 
+
 action_title1=Luo hakutoiminto
 action_title2=Muokkaa hakutoimintoa
 action_header=Ottelun toiminnan yksityiskohdat
@@ -64,6 +69,7 @@ action_ban=Komento estää IP
 action_unban=Komento estää IP: n kieltäminen
 action_desc=<i>&lt;ip&gt;</i> korvataan IP-osoitteella, joka kielletään.
 action_einuse=Tätä toimintoa ei voi poistaa, koska vankilat käyttävät sitä : $1 
+
 jails_title=Suodata toimintakynnet
 jails_add=Lisää uusi vankila.
 jails_name=Vankilan nimi
@@ -76,6 +82,7 @@ jails_defdesc=Muokkaa oletusasetuksia ja rajoituksia, jotka koskevat kaikkia yll
 jails_return=vankiloluettelo
 jails_derr=Vankiloiden poistaminen epäonnistui
 jails_enone=Mitään ei ole valittu
+
 jail_title1=Luo vankila
 jail_title2=Muokkaa vankilaa
 jail_header=Suodata toimintavankilan yksityiskohdat
@@ -115,13 +122,16 @@ jail_banaction=Käytettävä oletustoiminto
 jail_defprotocol=Toimintojen oletusprotokolla
 jail_edestemail=Puuttuva tai virheellinen oletusilmoitus-sähköpostiosoite
 jail_eignoreip=Virheellinen IP-osoite sivuuttaa
+
 jaildef_title=Vankilan oletusasetukset
 jaildef_header=Kaikkien vankiloiden oletusasetukset
 jaildef_err=Oletusvankilavaihtoehtojen tallentaminen epäonnistui
 jaildef_egone=DEFAULT-vankilaa ei löytynyt!
+
 start_err=Palvelimen käynnistäminen epäonnistui
 stop_err=Palvelimen pysäyttäminen epäonnistui
 restart_err=Palvelimen uudelleenkäynnistys epäonnistui
+
 log_create_filter=Luotu suodatin $1 
 log_update_filter=Muokattu suodatin $1 
 log_delete_filter=Poistettu suodatin $1 
@@ -139,6 +149,7 @@ log_atboot=Aktivoinut Fail2Ban käynnistyshetkellä
 log_delboot=Poistettu käytöstä Fail2Ban käynnistyshetkellä
 log_manual=Muokattu määritystiedosto $1 
 log_jaildef=Muutetut vankilavaihtoehdot
+
 config_title=Globaali kokoonpano
 config_edef=Konfiguraatiotiedostossa ei löytynyt määritelmäosaa!
 config_header=Määritä Fail2Ban-asetukset
@@ -151,10 +162,12 @@ config_socket=Pistorasia kommunikointiin palvelimen kanssa
 config_err=Globaalin kokoonpanon tallentaminen epäonnistui
 config_elogtarget=Lokitiedoston on oltava absoluuttinen polku
 config_esocket=Socket-tiedoston on oltava absoluuttinen polku
+
 manual_title=Muokkaa asetustiedostoja
 manual_desc=Muokattava tiedosto:
 manual_ok=kunnossa
 manual_efile=Valittu tiedosto ei ole osa Fail2Ban-määritystä!
 manual_err=Konfiguraatiotiedoston muokkaaminen epäonnistui
 manual_edata=Konfigurointitiedoston sisältöä ei ole annettu
+
 syslog_logtarget=Fail2Ban-toimintaloki

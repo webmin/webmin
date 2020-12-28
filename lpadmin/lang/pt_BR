@@ -24,6 +24,7 @@ index_style=Sistema de impressão: $1
 index_cluster=Servidores de Cluster
 index_clusterdesc=Clique neste botão para definir servidores adicionais do Webmin na qual as impressoras serão criadas, atualizadas e apagadas.
 index_delete=Apagar Impressoras Selecionadas
+
 style_solaris=Solaris
 style_linux=LPR Linux
 style_freebsd=LPR FreeBSD
@@ -33,6 +34,7 @@ style_unixware=UnixWare
 style_cups=CUPS
 style_irix=IRIX
 style_aix=AIX
+
 edit_eedit=Você não está autorizado a editar esta impressora
 edit_eadd=Você não está autorizado a adicionar impressoras
 edit_add=Criar Impressora
@@ -76,7 +78,9 @@ edit_direct=Conexão direta TCP
 edit_dport=Porta
 edit_driver=Driver da impressora
 edit_check=Verificar se o servidor remoto está no ar?
+
 blocks=blocos
+
 save_err=Erro ao salvar impressora
 save_eadd=Você não está autorizado a adicionar impressoras
 save_eedit=Você não está autorizado a editar esta impressora
@@ -98,6 +102,7 @@ save_evalid=O sistema de impressão não autorizou esta impressão
 save_errslave=Impressora criada com sucesso no sistema, mas os seguintes erros ocorreram no sistema de cluster : $1
 save_egone=Nenhuma impressora '$1' foi encontrada
 save_errdelslave=Impressora apagada com sucesso no sistema, mas os seguintes erros ocorreram no sistema cluster : $1
+
 jobs_title=Trabalhos de Impressão
 jobs_header=Trabalhos de impressão em $1
 jobs_id=ID do trabalho
@@ -114,17 +119,23 @@ jobs_test=Imprimir Página de Teste
 jobs_cancelsel=Cancelar Trabalhos Selecionados
 jobs_on=Na impressora $1
 jobs_return=lista de trabalhos de impressão
+
 cancel_ecannot=Você não está autorizado a cancelar trabalhos de impressão
 cancel_err=Erro ao cancelar a trabalho de impressão
 cancel_egone=O trabalho de impressão $1 não existe mais
+
 view_ecannot=Você não pode visualizar teste trabalho de impressão
 view_egone=Este trabalho de impressão não existe mais
+
 start_ecannot=Você não está autorizado a iniciar o agendador
 start_err=Erro ao iniciar o agendador
+
 stop_ecannot=Você não está autorizado a parar o agendador
 stop_err=Erro ao parar o agendador
+
 restart_ecannot=Você não está autorizado a reiniciar o agendador
 restart_err=Falhou ao reiniciar o agendador
+
 webmin_none=Nenhum
 webmin_nonemsg=Impressora postscript ou de texto
 webmin_remotemsg=Impressora remota
@@ -135,6 +146,7 @@ webmin_uniprint=Driver Uniprint
 webmin_edrivers=Erro ao obter drivers de $1. Os drivers de impressão do Webmin que utilizem ghostscript não estarão disponíveis
 webmin_egs=O comando $1 não foi encontrado. Os drivers de impressão do Webmin que utilizarem ghostscript não estarão disponíveis
 webmin_edriver='$1' não existe
+
 caldera_none=Nenhum
 caldera_nonemsg=Impressora remota ou sem buffer
 caldera_prog=Programa
@@ -148,6 +160,7 @@ caldera_uniprint=Driver de uni-impressão
 caldera_eprog='$1' não existe
 caldera_edriver=Nenhuma driver de impressora selecionado
 caldera_eres=Não selecionada nenhuma resolução
+
 redhat_none=Nenhum
 redhat_nonemsg=Impressora postscript ou de texto
 redhat_prog=Programa
@@ -166,6 +179,7 @@ redhat_ehmargin=Margem direita/esquerda inválida ou faltando
 redhat_evmargin=Margem superior/inferior inválida ou faltando
 redhat_eres=Nenhuma resolução selecionada
 redhat_printer2=Modelo de impressora e driver
+
 suse_none=Nenhum
 suse_nonemsg=Postscript ou impressão de texto
 suse_prog=Programa
@@ -182,7 +196,9 @@ suse_extra=Opções extras do ghostscript
 suse_yast2=Driver YAST2
 suse_edriver=Nenhum tipo de impressora selecionado
 suse_eres=Resolução inválida ou faltando
+
 estop=Falhou ao parar lpd : $1
+
 acl_printers=Impressoras que este utilizador pode configurar
 acl_add=Pode adicionar novas impressoras?
 acl_cancel=Pode cancelar tarefas de impressão?
@@ -198,6 +214,7 @@ acl_user_all=Todos os usuários
 acl_user_this=Usuário atual do Webmin
 acl_delete=Pode apagar impressoras?
 acl_cluster=Pode gerenciar impressoras em cluster?
+
 log_stop=Agendador de impressão parado
 log_start=Agendador de impressão iniciado
 log_restart=Agendador de impressão reiniciado
@@ -210,37 +227,45 @@ log_delete=Impressora $1 em $2 apagada
 log_create_l=$3 impressoras $1 criadas em $2
 log_modify_l=$3 impressoras $1 modificadas em $2
 log_delete_l=$3 impressoras $1 apagadas em $2
+
 linux_paralel=Porta Paralela $1
 linux_serial=Porta Serial $1 (COM$1)
 linux_null=Dispositivo Vazio
 linux_usb=Impressora USB $1
 linux_ecmd=O comando $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão do Linux não está instalado.
 linux_espool=O diretório de spool $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão do Linux não está instalado.
+
 freebsd_paralel=Porta Paralela
 freebsd_serial=Porta Serial $1 (COM$1)
 freebsd_ecmd=O comando $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão do FreeBSD não está instalado.
 freebsd_espool=O diretório de spool $1 não existe no seu sistemam, o que indica que o sistema de impressão do FreeBSD não está instalado.
+
 openbsd_paralel=Porta Paralela
 openbsd_serial=Porta Serial $1 (COM$1)
+
 unixware_paralel=Porta Paralela $1
 unixware_serial=Porta Serial $1
 unixware_null=Dispositivo Nulo
 unixware_ecmd=O comando $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão UnixWare não está instalado.
+
 hpux_paralel=Paralela $1
 hpux_serial=Serial $1
 hpux_null=Dispositivo Vazio
 hpux_ecmd=O comando $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão HPUX não está instalado.
 hpux_eiface=O diretório de scripts de interface $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão HPUX não está instalado.
+
 lprng_paralel=Porta Paralela $1
 lprng_serial=Porta Serial $1 (COM$1)
 lprng_null=Dispositivo Vazio
 lprng_ecmd=O comando $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão LPRng não está instalado.
 lprng_espool=O diretório de spoll $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão LPRng não está instalado.
+
 solaris_paralel=Porta Paralela
 solaris_uparalel=Porta Paralela Ultra 5/10
 solaris_serial=Porta Serial $1
 solaris_null=Dispositivo Vazio
 solaris_ecmd=O comando $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão do Solaris não está instalado.
+
 test_title=Imprimir Página de Teste
 test_ecannot=Você não está autorizado a imprimir páginas de teste
 test_desc=Este formulário permite imprimir uma página de teste para a impressora $1. Selecione o tipo de página que você deseja imprimir :
@@ -252,6 +277,7 @@ test_print=Imprimir página
 test_exec=Imprimindo página de teste com o comando $1 ..
 test_failed=.. comando falhou!
 test_ok=.. comando completo.
+
 cups_none=Nenhum
 cups_nonemsg=Remoto ou impressora bruta
 cups_prog=Programa
@@ -259,11 +285,14 @@ cups_driver=Driver do CUPS
 cups_eprog='$1' não é um programa válido
 cups_opts=Opções para $1
 cups_ecmd=O comando $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão CUPS não está instalado.
+
 irix_ecmd=O comando $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão IRIX não está instalado.
 irix_eiface=O diretório de scripts de interface $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão IRIX não está instalado.
+
 aix_port=Porta da impressora $1
 aix_edesc=Descrição inválida - somente letras e números são permitidos, e sem espaços
 aix_ecmd=O servidor de impressão AIX $1 não foi encontrado. Talvez ele não esteja instalado, ou outro sistema de impressão está em uso.
+
 cluster_title=Servidores de Impressão em Cluster
 cluster_none=Nenhum servidor foi adicionado ao cluster de impressão ainda.
 cluster_host=Nome do computador
@@ -275,6 +304,7 @@ cluster_need=Você deve adicionar servidores com um nome de usuário e senha no 
 cluster_return=servidores de cluster
 cluster_delete=Remover Selecionado
 cluster_ecannot=Você não está autorizado a gerenciar o cluster de servidores de impressão
+
 add_title=Adicionar Servidores
 add_msg=Adicionando $1 ..
 add_gmsg=Adicionando servidores no grupo $1 ..

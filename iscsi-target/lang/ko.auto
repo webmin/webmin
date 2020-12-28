@@ -1,6 +1,7 @@
 check_econfig=시스템에서 iSCSI 대상 구성 파일 $1 을 (를) 찾을 수 없습니다.
 check_eietadm=시스템에서 iSCSI 대상 관리 명령 $1 을 (를) 찾을 수 없습니다.
 check_einit=부팅 동작 $1 이 (가) 없습니다
+
 index_title=iSCSI 대상
 index_clink=설치되지 않았거나 <a href='$1'>모듈 구성</a>이 잘못되었을 수 있습니다.
 index_stop=iSCSI 대상 중지
@@ -22,8 +23,10 @@ index_noluns=없음
 index_nousers=어떤
 index_nullio=$1 섹터의 RAM 디스크
 index_size=총합 크기
+
 dtargets_err=대상을 삭제하지 못했습니다.
 dtargets_enone=선택하지 않았습니다!
+
 target_title1=iSCSI 대상 생성
 target_title2=iSCSI 대상 편집
 target_header=iSCSI 공유 장치 옵션
@@ -68,11 +71,13 @@ target_noalias=없음
 target_hdigest=헤더 체크섬
 target_ddigest=데이터 체크섬
 target_nodigest=없음
+
 auth_title=인증 설정
 auth_header=모든 대상에 대한 기본 인증 옵션
 auth_iuser=클라이언트에 의한 인증
 auth_ouser=클라이언트 인증
 auth_err=인증 설정을 저장하지 못했습니다
+
 conn_title=연결 설정
 conn_header=모든 대상에 대한 기본 연결 옵션
 conn_sessions=최대 동시 세션
@@ -91,6 +96,7 @@ conn_emaxrecv=최대 수신 세그먼트 길이가 없거나 숫자가 아님
 conn_emaxxmit=최대 전송 세그먼트 길이가 없거나 숫자가 아님
 conn_emaxburst=최대 또는 클라이언트가 아닌 최대 클라이언트 버스트 크기
 conn_efirstburst=최대 또는 클라이언트가 아닌 최대 클라이언트 원치 않는 데이터 크기가 없거나
+
 timeout_title=타임 아웃 설정
 timeout_header=클라이언트 타임 아웃 옵션
 timeout_nopi=유휴 상태 일 때 핑 간격
@@ -98,6 +104,7 @@ timeout_nopinone=절대 핑
 timeout_secs=초
 timeout_nopt=핑 응답을 기다리는 시간
 timeout_noptnone=핑 시간과 동일
+
 addr_title=서버 주소 및 포트
 addr_header=iSCSI 서버 네트워킹 옵션
 addr_addr=IP 주소 청취
@@ -110,18 +117,21 @@ addr_err=서버 주소를 저장하지 못했습니다
 addr_eaddr=수신 할 주소는 IP 주소 여야합니다
 addr_eport=수신 포트는 숫자 여야합니다
 addr_edebug=디버그 수준은 숫자 여야합니다
+
 initiators_title=허용 된 클라이언트 주소
 initiators_none=허용 된 클라이언트 주소가 아직 정의되지 않았습니다. 어떤 클라이언트도 연결할 수 없습니다.
 initiators_ips=허용 된 고객
 initiators_title1=허용 된 클라이언트 주소 추가
 initiators_title2=허용 된 클라이언트 주소 편집
 initiators_header=대상에 허용 된 iSCSI 클라이언트
+
 targets_title=허용 된 서버 주소
 targets_none=허용 된 서버 주소가 아직 정의되지 않았습니다. 어떤 클라이언트도 연결할 수 없습니다.
 targets_ips=허용 된 서버 인터페이스
 targets_title1=허용 된 서버 주소 추가
 targets_title2=허용 된 서버 주소 편집
 targets_header=대상에 허용되는 iSCSI 서버 인터페이스
+
 allow_target=대상 이름
 allow_move=움직임
 allow_delete=선택된 것을 지워 라
@@ -133,17 +143,21 @@ allow_return=허용 된 목표 및 주소
 allow_err=허용 된 주소를 저장하지 못했습니다
 allow_eaddr=주소 $1 이 (가) 유효하지 않습니다. IPv4 주소, IPv4 네트워크/마스크 또는 대괄호 안에있는 IPv6 주소 여야합니다.
 allow_eaddrs=입력 할 주소가 없습니다
+
 dallow_err=허용 된 주소를 삭제하지 못했습니다.
 dallow_enone=선택된 사항 없음
+
 manual_title=구성 파일 편집
 manual_desc=아래 텍스트 상자를 사용하여 iSCSI 서버 구성 파일 $1 을 (를) 편집하십시오. 입력에 대한 유효성 검사가 수행되지 않으므로주의하십시오!
 manual_err=구성 파일을 저장하지 못했습니다
 manual_edata=내용이 입력되지 않았습니다!
+
 start_err=iSCSI 서버를 시작하지 못했습니다
 stop_err=iSCSI 서버를 중지하지 못했습니다
 restart_err=iSCSI 서버를 다시 시작하지 못했습니다
 atboot_err=부팅시 활성화하지 못했습니다
 atboot_einit=초기화 스크립트 $1 이 (가) 없습니다
+
 log_create_target=생성 된 목표 $1 
 log_delete_target=삭제 된 대상 $1 
 log_modify_target=수정 된 목표 $1 

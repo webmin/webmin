@@ -22,9 +22,11 @@ index_nmatches=不匹配
 index_contains=包含
 index_ncontains=未包含
 index_who=当前登录的用户
+
 search_title=搜索结果
 search_notfound=未找到匹配的用户
 search_gnotfound=未找到匹配的组
+
 uedit_title=编辑用户
 uedit_title2=创建用户
 uedit_details=用户细节
@@ -85,6 +87,7 @@ uedit_admchg=用户必须选择新密码
 uedit_nocheck=不检查口令限制
 uedit_cothers=在其它模块创建用户？
 uedit_mothers=在其它模块修改用户？
+
 usave_err=保存用户失败
 usave_eedit=您无权编辑该用户
 usave_ecreate=您无权创建新用户
@@ -120,6 +123,7 @@ usave_emove=移动用户主目录 $1 失败
 usave_emkdir=未能创建用户主目录:$1
 usave_echown=未能改变目录$1的所有权
 usave_echmod=未能改变用户主目录的用户所有权:$1
+
 gedit_title=编辑组
 gedit_title2=创建组
 gedit_details=组明细
@@ -130,6 +134,7 @@ gedit_homedirs=用户主目录
 gedit_allfiles=所有文件
 gedit_ecreate=您无权创建新组
 gedit_eedit=您无权编辑这个组
+
 gsave_err=保存组失败
 gsave_eedit=您无权编辑本组
 gsave_ecreate=您无权创建新组
@@ -141,6 +146,7 @@ usave_ehigid=GID 一定要小于等于$1
 usave_egidused=组 $1 已经使用 GID $2
 usave_efromroot=您无权从 / 移动用户主目录
 usave_etoroot=您无权把用户主目录移动到 /
+
 logins_title=已经记录的登录
 logins_head=$1 的已经记录的登录
 logins_from=登录自
@@ -153,6 +159,7 @@ logins_none=没有登录记录
 logins_elist=您无权列出登录
 logins_elistu=您无权为 '$1' 列出登录
 logins_local=本地
+
 udel_title=删除用户
 udel_err=删除用户失败
 udel_euser=您无权删除本用户
@@ -169,6 +176,7 @@ udel_sure2=确认删除用户 $1 ？
 udel_del1=删除用户
 udel_del2=删除用户和用户主目录
 udel_others=警告! 用户主目录 $1包含 $2 个属于其他用户的文件。
+
 gdel_title=删除组
 gdel_err=删除组失败
 gdel_egroup=您无权删除该组
@@ -178,6 +186,7 @@ gdel_done=.. 完成
 gdel_eprimary=这是用户 $1 的主组
 gdel_sure=确认删除组 $1？
 gdel_del=删除组
+
 many_title=创建多用户
 many_desc=可以利用这个表格从上载的或本地的文本文件一次创建多个用户。文件中每一行以下列格式指定一个用户：
 many_desc2=用户名:口令:用户id:组id:真实名称:用户主目录:shell:分:最大:警告:非使用:过期
@@ -200,6 +209,7 @@ many_ehome=无效的用户主目录在行 $1 : $2
 many_eshell=无效的shell在行 $1 : $2
 many_emkdir=创建用户目录 $1 : $2 时失败
 many_ok=已创建用户 $1
+
 acl_uedit=可编辑的 Unix 用户
 acl_uedit_all=所有用户
 acl_uedit_none=没有用户
@@ -232,6 +242,7 @@ acl_lnone=没有用户
 acl_lall=所有用户
 acl_epeopt=是否可以编辑口令过期选项？
 acl_egp=是否可以编辑组口令？
+
 log_urename=将用户 $1 改名为 $2
 log_umodify=已更新用户 $1
 log_ucreate=已创建用户 $1

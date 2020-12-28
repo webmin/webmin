@@ -16,12 +16,14 @@ index_d1=$1
 index_dlang=modüllerin gösterileceği dili
 index_dtheme=Webmin arayüzünde kullanılan temayı
 index_dpass=girişte kullanacağınız dili
+
 change_title=Ayarlar Değiştiriliyor
 change_user=Webmin giriş parolası değiştiriliyor ..
 change_done=.. tamamlandı
 change_restart=Webmin yeniden başlatılıyor ..
 change_redirect=Ana sayfaya yönlendiriliyor ..
 change_ecolon=Parolanız : karakterini içermemelidir
+
 acl_lang=Dili değiştirebilir mi?
 acl_theme=Temayı değiştirebilir mi?
 acl_pass=Parolayı değiştirebilir mi (Webmin'de girildiğinde) ?

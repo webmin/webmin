@@ -17,6 +17,7 @@ index_restartmsg=Klicken Sie auf diese Schaltfläche, um die aktuelle Konfigurat
 index_comments=Warnung - Ihr Jabber Konfigurationsdatei $1 enthält Kommentare, die entfernt werden, wenn Änderungen an der Konfiguration mit diesem Modul vorgenommen werden.
 index_return=Jabber Menü
 index_version=Jabber Version $1
+
 general_title=Allgemeine Optionen
 general_header=Allgemeine Jabber Server Optionen
 general_host=Ihr Server Hostname
@@ -32,6 +33,7 @@ general_eelogfmt=Fehlendes Fehler Log Format
 general_erlog=Fehlende oder ungültige Traffic Log Datei
 general_erlogfmt=Fehlendes Traffic Log Format
 general_epidfile=Fehlende oder ungültige Prozess ID Datei
+
 messages_title=Nachrichten
 messages_header=Jabber-Server Nachricht für Clients
 messages_wsubject=Betreff der Willkommensnachricht
@@ -44,6 +46,7 @@ messages_vcard2jud=Sende vCard zum Jabber Benutzerverzeichnis?
 messages_err=Fehlgeschlagen Nachrichten zu speichern
 messages_evcard=Ungültige vCard XML : $1
 messages_etag=Server vCard XML beginnt nicht mit &lt;vCard&gt;
+
 modules_title=Jabber Module
 modules_desc=Die unten aufgelisteten Module werden verwendet um Nachrichten von der Jabber Session-Manager zu empfangen. Sie sollten diese Liste nur ändern, wenn du weißt was du tust.
 modules_header=Jabber-Server Session-Manager-Module
@@ -52,6 +55,7 @@ modules_so=Shared library
 modules_err=Fehlgeschlagen Jabber Module zu speichern
 modules_emod='$1' ist kein gültiger Modulname
 modules_eso=Shared library '$1' existiert nicht
+
 karma_title=Karma Traffic Kontrolle
 karma_header=Traffic-Rate Steuerungsoptionen
 karma_rate=Übermäßige Verbindungssteuerung
@@ -80,6 +84,7 @@ karma_epenalty=Fehlende oder ungültige Strafzeiten
 karma_erestore=Fehlende oder ungültige wiederhergestellte Perioden
 karma_epoints=Fehlende oder ungültige Anzahl an Verbindungen
 karma_etime=Fehlende oder ungültige Zeit, um zu blockieren für
+
 ips_title=IP Zugriffskontrolle
 ips_header=Jabber Server IP Zugriffskontrolle
 ips_allow=Erlaubte Client IPs
@@ -89,10 +94,12 @@ ips_none=Nichts
 ips_sel=Lauschende Adressen/Netzmasken ..
 ips_err=Fehlgeschlagen IP Zugriffskontrolle zu speichern
 ips_eaddr='$1' ist keine gültige IP-Adresse oder IP-Adresse/Netzmaske
+
 file_title=Editiere Konfigurationsdatei
 file_desc=Benutzen Sie das Formular unten, um die Jabber-Konfigurationsdatei direkt zu bearbeiten. Dies sollte nur geschehen, wenn Sie das XML-Konfiguration-Format verstehen.
 file_header=Editiere Jabber Konfigurationsdatei
 file_err=Fehlgeschlagen Konfigurationsdatei zu speichern
+
 admin_title=Adminstrative Benutzer
 admin_header=Server Adminstrationsbenutzer
 admin_read=Lese Zugriff der admins
@@ -100,11 +107,13 @@ admin_write=Schreib Zugriff der admins
 admin_reply=Autoreply zu Admin Nachrichten?
 admin_rsubject=Autoreply Betreff
 admin_rbody=Autoreply Nachricht
+
 filter_title=Benutzerfilter
 filter_header=Benutzer Filter-Rechte
 filter_max=Maximale Filter Regeln
 filter_conds=Erlaubte Filter Bedingungen
 filter_acts=Erlaubte Filter-Aktionen
+
 restart_err=Fehlgeschlagen Änderungen anzuwenden
 stop_err=Fehlgeschlagen Jabber zu stoppen
 stop_epid=Fehlgeschlagen Jabber Prozess zu finden

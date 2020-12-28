@@ -5,6 +5,7 @@ index_user=Spremeni geslo za uporabnika:
 index_euseradmin=Tega modula ni mogoče uporabiti, ker modul Uporabniki in skupine ni nameščen ali ne podpira vašega sistema.
 index_toomany=V vašem sistemu je prikazanih preveč uporabnikov. Spodaj vnesite ime uporabnika, katerega geslo želite spremeniti.
 index_none=Nimate dostopa do uporabnikov, da bi spremenili svoja gesla.
+
 passwd_title=Spremeni geslo
 passwd_header=Spreminjanje uporabniškega gesla Unix
 passwd_for=Spreminjanje gesla za
@@ -23,7 +24,9 @@ passwd_erepeat=Nova gesla niso enaka
 passwd_ecmd=$1 ni uspelo : $2 
 passwd_ok=Geslo za uporabnika $1 je bilo uspešno spremenjeno. Če je to vaš trenutni uporabnik Webmin, boste morda prisiljeni ponovno prijaviti se.
 passwd_ok2=Geslo za uporabnika $1 je bilo uspešno spremenjeno.
+
 log_passwd=Spremenjeno geslo za uporabnika $1 
+
 acl_repeat=Ali morate znova vnesti novo geslo?
 acl_self=Vedno dovolite spreminjanje lastnega gesla?
 acl_old=Morate vnesti staro geslo?

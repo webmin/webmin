@@ -19,6 +19,7 @@ index_dump=ダンプを表示
 index_dumpdesc=このボタンをクリックして、<tt>shorewall6 dump</tt>コマンドからのShorewallトレース情報を表示します。
 index_check=ファイアウォールを確認する
 index_checkdesc=このボタンをクリックして、Shorewallが<tt>shorewall6 check</tt>コマンドを使用してファイアウォール構成を検証するようにします。
+
 list_move=移動する
 list_add=追加
 list_auto=自動
@@ -30,6 +31,7 @@ list_manual=ファイルを手動で編集する
 list_manualdesc=このボタンをクリックして、上記のエントリが保存されているShorewallファイル $1を手動で編集します。
 list_ecannot=このShorewallテーブルを編集することはできません。
 list_delete=選択を削除します
+
 restart_err=構成を適用できませんでした
 refresh_err=構成を更新できませんでした
 start_err=ファイアウォールを開始できませんでした
@@ -41,6 +43,7 @@ check_title=ファイアウォールを確認する
 check_ok=..ファイアウォールの構成は正常に見えます。
 check_failed=..ファイアウォール設定でエラーが見つかりました！
 check_cmd=設定の確認 ..
+
 zones_title=ネットワークゾーン
 zones_desc=このページにリストされているゾーンは、システムから到達可能なさまざまなネットワークを表しています。ただし、ここのエントリは実際にはファイアウォールに影響を与えません。代わりに、ゾーン名と説明を定義するだけです。
 zones_add=新しいネットワークゾーンを追加します。
@@ -72,6 +75,7 @@ zones_firewall=ファイアウォールシステム
 zones_eopts=無効なゾーンオプション
 zones_eopts_in=無効なゾーン着信オプション
 zones_eopts_out=無効なゾーン発信オプション
+
 policy_title=デフォルトポリシー
 policy_desc=このページでは、異なるファイアウォールゾーン間のトラフィックのデフォルトアクションを設定できます。 [ファイアウォールルール]ページで、特定のホストまたはトラフィックの種類に対してオーバーライドできます。
 policy_add=新しいデフォルトポリシーを追加します。
@@ -92,6 +96,7 @@ policy_ulog=ULOGにログ
 policy_efw=&lt;ファイアウォール&gt;は、ソースゾーンと宛先ゾーンの両方に選択できます
 policy_elimit=トラフィック制限数がないか、無効です
 policy_eburst=トラフィックバースト番号が欠落しているか無効です
+
 rules_title=ファイアウォールルール
 rules_desc=次の表は、特定の種類のトラフィック、送信元、または送信先に対するデフォルトポリシーの例外を示しています。選択したアクションは、デフォルトではなく、選択した条件に一致するパケットに適用されます。
 rules_add=新しいファイアウォールルールを追加します。
@@ -138,6 +143,7 @@ rules_eaction=アクションが選択されていません
 rules_macro=マクロアクションパラメータ
 rules_none2=なし
 rules_emacro=マクロパラメータが見つからないか無効です
+
 tos_title=サービスの種類
 tos_desc=このページでは、特定の種類のトラフィックのIPサービスタイプを定義します。これを使用して、優先順位を上げたり下げたりできます。
 tos_add=新しいタイプのサービスを追加します。
@@ -156,6 +162,7 @@ tos_edit=サービスタイプの編集
 tos_create=サービスタイプの作成
 tos_header=サービスの種類の詳細
 tos_err=サービスの種類を保存できませんでした
+
 interfaces_title=ネットワークインターフェース
 interfaces_desc=Shorewallで管理するシステム上の各ネットワークインターフェイスは、このページにリストされ、接続先のゾーンに関連付けられている必要があります。ループバックインターフェイス<tt>lo</tt>をリストすることはできません。
 interfaces_add=新しいネットワークインターフェイスを追加します。
@@ -171,6 +178,7 @@ interfaces_header=ネットワークインターフェイスの詳細
 interfaces_err=ネットワークインターフェイスを保存できませんでした
 interfaces_eiface=インターフェース名が欠落しているか無効です
 interfaces_ebroad=ブロードキャストアドレスが欠落しているか無効です
+
 masq_title=マスカレーディング
 masq_desc=このページのエントリは、あるネットワークと特定のインターフェイス間でルーティングされるトラフィックのネットワークアドレス変換を設定します。
 masq_add=新しいマスカレードルールを追加します。
@@ -201,6 +209,7 @@ masq_emnete=空の例外ネットワークリスト
 masq_esnat=無効なSNAT IPアドレス
 masq_eports=ポートの欠落または無効なコンマ区切りリスト
 masq_eipsec=IPsecオプションがありません
+
 nat_title=静的NAT
 nat_desc=この表の静的ネットワークアドレス変換エントリを使用して、ファイアウォールの外部アドレスとファイアウォールの背後にあるマシンのRFC1918アドレスとの1-1対応を設定できます。静的NATは、多くの場合、ネットワークの外部から内部サーバーへの接続を許可するために使用されます。
 nat_add=新しい静的NATエントリを追加します。
@@ -219,6 +228,7 @@ nat_local=ファイアウォールシステムに対してアクティブです�
 nat_eext=無効な外部IPアドレス
 nat_eint=無効な内部IPアドレス
 nat_evirt=無効な仮想インターフェイス番号
+
 proxyndp_title=プロキシNDP
 proxyndp_desc=このページでは、自分のシステム以外のIPアドレスに対するNDP要求に応答するようにシステムを構成できるため、それらのアドレスにパケットを実際の宛先に転送できます。
 proxyndp_add=新しいプロキシNDPアドレスを追加します。
@@ -235,6 +245,7 @@ proxyndp_err=プロキシNDPを保存できませんでした
 proxyndp_have=ホストへのルートが存在しますか？
 proxyndp_eaddr=NDPの住所がないか無効です
 proxyndp_pers=ファイアウォールが停止してもルートを離れますか？
+
 routestopped_title=停止したとき
 routestopped_desc=デフォルトでは、Shorewallが停止すると、すべてのホストからのアクセスが拒否されます。このページでは、引き続きアクセス可能なホストまたはネットワークを定義できます。
 routestopped_add=新しい停止アドレスを追加します。
@@ -250,6 +261,7 @@ routestopped_err=停止したアドレスを保存できませんでした
 routestopped_eaddr=アドレスが入力されていません
 routestopped_all=すべての住所
 routestopped_list=リストされたアドレスとネットワーク ..
+
 tunnels_title=VPNトンネル
 tunnels_desc=このページには、ファイアウォールを通過するVPNトンネルがリストされているため、Shorewall構成で許可する必要があります。
 tunnels_add=新しいVPNトンネルを追加します。
@@ -282,6 +294,7 @@ tunnels_generic_l=汎用、プロトコル用 ..
 tunnels_gsel=リストされたゾーン
 tunnels_eopenvpn=OpenVPNトンネルの無効なポート番号
 tunnels_egeneric=汎用トンネルのプロトコルまたはプロトコル：ポートがありません
+
 hosts_title=ゾーンホスト
 hosts_desc=このページには、特定のゾーンの一部であるホストとネットワークがリストされます。通常、このリストに変更を加える必要はありません。
 hosts_add=新しいゾーンホストを追加します。
@@ -301,8 +314,10 @@ hosts_ip=アドレスまたはネットワーク $1
 hosts_mac=MACアドレス $1
 hosts_ipset=IPセット $1
 hosts_any=任意のホスト
+
 edit_before=エントリ $1の前
 edit_after=エントリ後 $1
+
 blacklist_title=ブラックリストホスト
 blacklist_desc=このページには、<b>ブラックリスト</b>オプションが設定されたインターフェースにトラフィックが到着した場合にブロックされるホストとサービスが一覧表示されます。
 blacklist_add=新しいブラックリストホストを追加します。
@@ -325,6 +340,7 @@ blacklist_eproto=プロトコルが欠落しているか無効です
 blacklist_eports=無効なポート番号またはポートのコンマ区切りリスト
 blacklist_eports2=ポートはTCPおよびUDPプロトコルにのみ指定できます
 blacklist_return=ブラックリストホスト
+
 providers_title=追加のルーティングプロバイダー
 providers_desc=このページでは、追加のルーティングテーブルを定義します。これらは、複数のISPへの接続または同じISPへの複数の接続がある場合、またはファイアウォール以外のホストで透過プロキシとしてSquidを実行する場合に必要です。
 providers_add=新しいルーティングプロバイダーを追加します。
@@ -359,17 +375,21 @@ providers_enumber=プロバイダー番号がないか、無効です
 providers_emark=プロバイダーマーク番号が欠落しているか無効です
 providers_edup=重複するプロバイダーがありません
 providers_egateway=ゲートウェイが見つからないか無効です
+
 manual_desc=このフォームを使用して、Shorewallファイル $1を手動で編集できます。変更に対して構文チェックは行われないため、注意してください。
 manual_reset=元に戻す
 manual_err=テーブルファイルを保存できませんでした
 manual_efile=無効なテーブル名！
 manual_edata=テーブルファイルの内容が入力されていません。
+
 acl_nochange=Shorewall構成を適用、停止、および開始できますか？
 acl_files=利用可能なショアウォールテーブル
 acl_all=すべて
 acl_sel=以下で選択 ..
+
 delete_err=行を削除できませんでした
 delete_enone=行が選択されていません
+
 opts_routeback=ホストへのトラフィックを受け入れる
 opts_source=ホストから任意の宛先への許可
 opts_dest=あらゆるソースからのホストを許可
@@ -386,12 +406,14 @@ opts_proxyndp=プロキシNDPを有効にする
 opts_ndp_filter=インターフェイスIPのNDP要求にのみ応答する
 opts_detectnets=ルーティングされたホストのみを含めるテイラーゾーン
 opts_upnp=UPNPを介したパケットの再マッピング
+
 opts_dhcp=インターフェイスはDHCPを使用します
 opts_forward=転送を設定する
 opts_ignore=アップ/ダウンイベントを無視する
 opts_optional=インターフェイスはオプションです
 opts_required=インターフェイスが必要です
 opts_bridge=インターフェースはブリッジです
+
 comment_add=新しいコメントを追加します。
 comment_edit=コメントを編集
 comment_create=コメントを作成
@@ -399,6 +421,7 @@ comment_header=テーブルコメントの詳細
 comment_msg=メッセージ
 comment_err=コメントを保存できませんでした
 comment_enone=メッセージが入力されていません
+
 log_create_table=$1テーブルにエントリを追加しました
 log_modify_table=$1テーブルの変更されたエントリ
 log_delete_table=$1テーブルからエントリを削除しました
@@ -414,6 +437,7 @@ log_start=ファイアウォールを開始しました
 log_refresh=更新されたファイアウォール
 log_restart=再起動されたファイアウォール
 log_clear=ファイアウォールをクリアしました
+
 shorewall_conf_title=マスター構成ファイル
 shorewall_conf_desc=このページでは、グローバル構成変数を構成できます。注：構成ファイル内のコメントの相対的な位置を保持する場合は、ここで変数の順序を変更することはお勧めしません。
 shorewall_conf_add=新しい構成変数を追加します。
@@ -427,6 +451,7 @@ shorewall_conf_create=構成変数を作成する
 shorewall_conf_header=構成変数の詳細
 shorewall_conf_err=構成変数を保存できませんでした
 shorewall_conf_varname=無効な変数名（有効なシェル変数名でなければなりません）
+
 params_title=カスタムパラメーター
 params_desc=このページでは、Shorewallのカスタムパラメータを設定できます。注：構成ファイル内のコメントの相対的な位置を保持する場合は、ここでパラメーターの順序を変更することはお勧めしません。
 params_add=新しいカスタムパラメータを追加します。

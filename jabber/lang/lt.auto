@@ -17,6 +17,7 @@ index_restartmsg=Spustelėkite šį mygtuką, norėdami pritaikyti dabartinę ko
 index_comments=Įspėjimas - jūsų „Jabber“ konfigūracijos faile $1 yra komentarų, kurie bus pašalinti, jei naudojant šį modulį bus atlikti kokie nors konfigūracijos pakeitimai.
 index_return=„Jabber“ meniu
 index_version=„Jabber“ versija 1
+
 general_title=Bendrosios parinktys
 general_header=Visuotinės „Jabber“ serverio parinktys
 general_host=Jūsų serverio pagrindinis vardas
@@ -32,6 +33,7 @@ general_eelogfmt=Trūksta klaidų žurnalo formato
 general_erlog=Trūksta arba netinkamas eismo žurnalo failas
 general_erlogfmt=Trūksta eismo žurnalo formato
 general_epidfile=Trūksta arba netinkamas proceso ID failas
+
 messages_title=Žinutės
 messages_header=„Jabber“ serverio pranešimas klientams
 messages_wsubject=Sveikinimo pranešimo tema
@@ -44,6 +46,7 @@ messages_vcard2jud=Siųsti „vCard“ į „Jabber“ vartotojo katalogą?
 messages_err=Nepavyko išsaugoti pranešimų
 messages_evcard=Neteisingas „vCard“ XML : $1 
 messages_etag=„Server vCard XML“ neprasideda &lt;vCard&gt;
+
 modules_title=„Jabber“ moduliai
 modules_desc=Žemiau išvardyti moduliai yra naudojami „Jabber“ sesijų tvarkytojo gautiems pranešimams apdoroti. Šį sąrašą turėtumėte pakeisti tik tada, kai žinote, ką darote.
 modules_header=„Jabber“ serverio sesijos tvarkyklės moduliai
@@ -52,6 +55,7 @@ modules_so=Bendra biblioteka
 modules_err=Nepavyko išsaugoti „Jabber“ modulių
 modules_emod='$1' nėra teisingas modulio pavadinimas
 modules_eso=Bendros bibliotekos „$1“ nėra
+
 karma_title=„Karma“ eismo valdymas
 karma_header=Srauto greičio valdymo parinktys
 karma_rate=Per didelis jungčių valdymas
@@ -80,6 +84,7 @@ karma_epenalty=Trūksta arba netinkami baudos laikotarpiai
 karma_erestore=Trūksta arba netinkami atkūrimo laikotarpiai
 karma_epoints=Trūksta arba netinkamas jungčių skaičius
 karma_etime=Trūksta arba netinkamas laikas blokuoti
+
 ips_title=IP prieigos kontrolė
 ips_header=„Jabber“ serverio IP prieigos kontrolė
 ips_allow=Leidžiami kliento IP
@@ -89,10 +94,12 @@ ips_none=Nė vienas
 ips_sel=Nurodyti adresai/tinklo maskuokliai ..
 ips_err=Nepavyko išsaugoti IP prieigos valdymo
 ips_eaddr=„$1“ nėra galiojantis IP adresas arba IP adresas/tinklo maskavimas
+
 file_title=Redaguoti konfigūracijos failą
 file_desc=Norėdami tiesiogiai redaguoti „Jabber“ konfigūracijos failą, naudokite žemiau esančią formą. Tai turėtų būti daroma tik tada, jei suprantate XML konfigūracijos formatą.
 file_header=Redaguoti „Jabber“ konfigūracijos failą
 file_err=Nepavyko išsaugoti konfigūracijos failo
+
 admin_title=Administravimo vartotojai
 admin_header=Serverio administravimo vartotojai
 admin_read=Skaitykite prieigos administratorius
@@ -100,11 +107,13 @@ admin_write=Rašykite prieigos administratorius
 admin_reply=Automatiškai atsakyti į administratoriaus pranešimus?
 admin_rsubject=Automatiškai atsakyti subjektas
 admin_rbody=Automatinio atsakymo pranešimas
+
 filter_title=Vartotojo filtrai
 filter_header=Vartotojo filtrų leidimai
 filter_max=Maksimalios filtrų taisyklės
 filter_conds=Leidžiamos filtrų sąlygos
 filter_acts=Leidžiami filtro veiksmai
+
 restart_err=Nepavyko pritaikyti pakeitimų
 stop_err=Nepavyko sustabdyti Jabberio
 stop_epid=Nepavyko rasti „Jabber“ proceso

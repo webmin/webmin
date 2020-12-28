@@ -26,7 +26,9 @@ index_global=글로벌 설정
 index_create=가상 서버 작성
 index_version=ProFTPd 버전 $1
 index_proftpd=ProFTPd
+
 efailed=$1을 저장할 수 없습니다.
+
 type_0=네트워크 옵션
 type_1=로그 옵션
 type_2=파일과 디렉토리
@@ -34,6 +36,7 @@ type_3=접근 제어
 type_4=그 외
 type_5=유저와 그룹
 type_6=인증
+
 virt_title=가상 서버 옵션
 virt_header1=$1용
 virt_header2=기본 서버 용
@@ -49,6 +52,7 @@ virt_cmds=FTP 명령
 virt_return=가상 서버
 virt_virt=가상 서버 설정
 virt_edit=지시자 편집
+
 vserv_title=가상 서버 설정
 vserv_addr=주소
 vserv_name=서버 이름
@@ -57,6 +61,7 @@ vserv_delete=가상 서버 삭제
 vserv_eaddr=주소가 지정되지 않았거나 유효하지 않습니다.
 vserv_eport=포토 번호가 지정되지 않았거나 유효하지 않습니다.
 vserv_ename=서버 이름이 지정되지 않았습니다.
+
 anon_title=익명 FTP 옵션
 anon_header1=가상 서버 $1의 옵션
 anon_header2=기본 서버의 옵션
@@ -64,6 +69,7 @@ anon_anon=익명 FTP 설정
 anon_return=익명 FTP 옵션
 anon_header3=가상 서버 $1의 익명 FTP
 anon_header4=기본 서버의 익명 FTP
+
 aserv_title=익명 FTP 설정
 aserv_create=익명 FTP의 셋업
 aserv_root=디렉토리 제한
@@ -74,6 +80,7 @@ aserv_eroot=chroot 디렉토리가 지정이 되지 않았거나 유효하지 �
 aserv_euser=유닉스 유저가 지정되지 않았거나 유효하지 않습니다.
 aserv_egroup=유닉스 그룹이 지정되지 않았거나 유효하지 않습니다.
 aserv_desc=이 가상 서버에는, 아직 익명 FTP가 셋업 되어 있지 않습니다. 이 폼을 사용하여 초기설정 하십시오.
+
 dir_title=디렉토리별 옵션
 dir_header2=기본 서버의 디렉토리 $1
 dir_header1=가상 서버 $2의 디렉토리 $1
@@ -84,6 +91,7 @@ dir_header=명령별 옵션
 dir_dir=디렉토리 설정
 dir_header4=익명 FTP의 디렉토리 $1
 dir_header5=공통 디렉토리 $1
+
 manual_title=지시자 편집
 manual_header=이 가상 서버, 디렉토리 또는 명령을 적용하기 위하여 $1의 ProFTPD 지시자를 수동으로 편집하려면 아래의 텍스트 박스를 사용하십시오.
 manual_configs=설정 파일 편집
@@ -91,6 +99,7 @@ manual_ecannot=수동으로 지시자를 편집할 권한이 없습니다.
 manual_file=파일의 지시자 편집:
 manual_efile=유효하지 않은 ProFTPd 설정 파일
 manual_etest=설정 파일 에러 감지 : $1
+
 limit_title=명령별 옵션
 limit_header4=디렉토리 $2의 명령 $1
 limit_header2=기본 서버의 명령 $1
@@ -102,17 +111,20 @@ limit_return=명령별 옵션
 limit_header5=익명 FTP의 명령 $1
 limit_header6=파일 $2의 명령 $1
 limit_header7=공통 명령 $1
+
 lserv_title=명령 설정
 lserv_cmd=FTP 명령
 lserv_delete=명령 설정 삭제
 lserv_err=명령 저장에 실패했습니다.
 lserv_ecmd=선택된 명령이 없습니다.
+
 dserv_title=디렉토리 설정
 dserv_dir=디렉토리 경로
 dserv_err=디렉토리 저장 실패
 dserv_edir=디렉토리경로가 지정되지 않았습니다.
 dserv_delete=디렉토리 설정 삭제
 dserv_eanondir=디렉토리는 익명 FTP 디렉토리 아래에 있어야 합니다.
+
 mod_core_type=서버 타입
 mod_core_inetd=Inetd로 실행
 mod_core_stand=독립 실행형 데몬
@@ -299,6 +311,7 @@ mod_core_duser=거부할 유저
 mod_core_eip=IP 주소 '$1'은(는) 유효하지 않습니다.
 mod_core_enet='$1'은(는) 유효한 네트워크 주소가 아닙니다.
 mod_core_ehost=호스트이름 '$1'은(는) 올바르지 않습니다
+
 mod_ls_fakegroup=디렉토리 리스팅에 Fake 그룹을 사용하겠습니까?
 mod_ls_fakeuser=디렉토리 리스팅에 Fake 유저를 사용하겠습니까?
 mod_ls_fakemode=디렉토리 리스팅에 Fake 권한을 사용하겠습니까?
@@ -315,6 +328,7 @@ mod_ls_efakeuser=Fake 유저가 지정되지 않았거나 유효하지 않습니
 mod_ls_efakegroup=fake 그룹이 지정되지 않았거나 유효하지 않습니다.
 mod_ls_options=디렉토리 리스트 옵션
 mod_ls_strict=유저 옵션을 덮어쓰겠습니까?
+
 mod_auth_chdir=로그인 직후 위치할 디렉토리
 mod_auth_echdir=로그인 직후 위치할 디렉토리가 지정되지 않았거나 유효하지 않습니다.
 mod_auth_chroot=디렉토리에 제한할 유저
@@ -328,7 +342,9 @@ mod_auth_egroups=chroot를 위한 유닉스 그룹이 입력되지 않았습니�
 mod_auth_echroot=chroot 디렉토리가 지정되지 않았거나 유효하지 않습니다.
 mod_auth_login=로그인이 거부되었을 경우 암호를 묻지 않겠습니까?
 mod_auth_root=root 로그인을 허가합니까?
+
 mod_site_chmod=chmod 명령을 허가하겠습니까?
+
 mod_unixpw_ufile=대체 유닉스 패스워드 파일
 mod_unixpw_eufile=유닉스 패스워드 파일이 지정되지 않았거나 유효하지 않습니다.
 mod_unixpw_gfile=대체 유닉스 그룹 파일
@@ -336,6 +352,7 @@ mod_unixpw_egfile=유닉스 그룹 파일이 지정되지 않았거나 유효하
 mod_unixpw_none=없음
 mod_unixpw_pam=항상 인증에 PAM을 사용하겠습니까?
 mod_unixpw_persist=패스워드 파일을 오픈한 채로 유지하겠습니까?
+
 mod_log_syslog=에러 로그 파일
 mod_log_sysdef=시스템 로그
 mod_log_esyslog=로그 파일이 지정되지 않았거나 유효하지 않습니다.
@@ -352,19 +369,25 @@ mod_log_fmt=형식 문자열
 mod_log_format=사용자 로그 형식
 mod_log_enickname=형식 이름이 지정되지 않았거나 유효하지 않습니다.
 mod_log_efmt=형식 문자열이 지정되지 않았습니다
+
 mod_pam_pam=인증에 PAM을 사용하겠습니까?
 mod_pam_config=PAM 서비스를 이용한 인증
 mod_pam_econfig=PAM 서비스가 지정되지 않았거나 유효하지 않습니다.
+
 mod_readme_display=일치하는 readme 파일의 유저에게 통지
 mod_readme_none=없음
 mod_readme_edisplay=readme 파일 형식이 지정되지 않았습니다.
+
 start_err=FTP 서버 시작 실패
 start_einetd=inetd 모드에서는 서버 데몬을 시작할 수 없습니다.
+
 stop_err=FTP 서버 정지 실패
 stop_einetd=inetd 모드에서는 서버 데몬을 정지할 수 없습니다.
 stop_erun=실행중이 아닙니다.
+
 apply_err=FTP 설정 적용 실패
 apply_egone=더이상 실행중이지 않습니다.
+
 ftpaccess_title=디렉토리별 옵션 파일
 ftpaccess_desc=추가적인 디렉토리별 옵션을 각 디렉토리의 <tt>.ftpaccess</tt> 파일에 설정할 수 있습니다. 옵션은 다른 옵션파일에 의해 설정이 덮어쓰이기 전까지 이 디렉토리와 서브 디렉토리의 모든 파일에 적용 됩니다.
 ftpaccess_create=옵션 파일 생성
@@ -372,8 +395,10 @@ ftpaccess_find=옵션 파일 찾기
 ftpaccess_auto=익명에서
 ftpaccess_from=디렉토리로부터
 ftpaccess_return=옵션 파일 리스트
+
 ftpusers_title=거부시킬 FTP 유저
 ftpusers_desc=<tt>인증</tt> 아이콘에서 허가할 경우, $1 파일에 기록된 아래의 유저 리스트들은 FTP 유저로 로그인 접속을 거부 됩니다.
+
 ftpindex_title=디렉토리별 옵션 파일
 ftpindex_delete=파일 삭제
 ftpindex_opts=디렉토리별 옵션
@@ -383,8 +408,10 @@ ftpindex_addlimit=명령별 옵션 추가 ..
 ftpindex_header2=$2 의 $1
 ftpindex_return=디렉토리별 옵션 파일
 ftpindex_header=$1 용
+
 find_err=옵션 파일을 찾지 못했습니다.
 find_eanon=어떤 가상 서버에도 익명 FTP 가 설정 되어 있지 않습니다.
+
 log_global=$1 글로번 옵션 변경
 log_ftpusers=FTP 유저 거부 변경
 log_virtc=$1 서버 생성
@@ -418,6 +445,7 @@ log_anonm=$1 서버의 익명 FTP 수동 편집
 log_anon=$2서버의 익명 FTP를 $1로 변경
 log_start=proftpd 시작
 log_apply=변경 사항 적용
+
 eafter=설정 검사 실패: $1 변경 사항이 저장되지 못했습니다.
 proftpd_apply=설정 적용
 proftpd_stop=ProFTPd 정지

@@ -27,6 +27,7 @@ index_tabmods=Bestaande modules
 index_tabinstall=Installeer module
 index_tabsuggest=Voorgestelde modules
 index_wantmods=Modules om te installeren
+
 download_err=Installeren van de module is mislukt
 download_elocal=Geen lokale file opgegeven
 download_elocal2='$1' bestaat niet
@@ -63,6 +64,7 @@ download_nomissing=Alles geinstalleerd
 download_ebuild=Één of meer van de Perl modules heeft $1 nodig om te worden gecompileerd, echter deze Perl module is niet geinstalleerd.
 download_yum=Installeer Perl module $1 van pakket $2 ..
 download_missingok=Ontbrekende modules van CPAN
+
 install_title=Installeer Module
 install_untar=Untar de module file
 install_make=Compileren van module
@@ -82,11 +84,13 @@ install_err2=U kunt de module ook installeren vanaf CPAN met de opdracht $1.
 install_exec=Uitvoeren van $1 ..
 install_efile=Module bestand $1 bestaat niet meer
 install_needunlink=U kunt nogmaals proberen de module te installeren door terug te gaan naar de vorige pagina en andere opties te selecteren. Anders kunt u <a href='$1'>hier klikken om de tijdelijke pakket files de verwijderen</a> om schijfruimte te besparen.
+
 cpan_sel=Modules onder $1 ..
 cpan_title=Selecteer Perl module
 cpan_search=Zoek modules met de naam
 cpan_match=Modules die overeenkomen met $1 ..
 cpan_none=Geen overeenkomsten gevonden.
+
 edit_title=Module Details
 edit_header=Module informatie
 edit_mod=Module naam
@@ -103,6 +107,7 @@ edit_method=Geïnstalleerd van
 edit_rpm=RPM pakket $1
 edit_debian=Debian pakket $1
 edit_manual=Handmatige Perl module installatie
+
 uninstall_title=Module De-installeren
 uninstall_rusure=Weet u zeker dat u de Perl module $1 wilt verwijderen? De volgende bestanden zullen worden verwijderd:
 uninstall_rusure2=Weet u zeker dat u de Perl module $1 en submodule's wilt verwijderen? <br>De volgende bestanden zullen worden verwijderd :
@@ -110,7 +115,9 @@ uninstall_ok=Nu de-installeren
 uninstall_rpm=De module kan worden verwijderd door het RPM pakket $1 te de-installeren.
 uninstall_debian=De module wordt verwijderd door het Debian pakket $1 te de-installeren.
 uninstall_err=Fout bij het de-installeren van module
+
 delete_efile=Ongeldige pakket file!
+
 uninstalls_title=De-installeer Modules
 uninstalls_err=Mislukt om modules te de-installeren
 uninstalls_enone=Niets geselecteerd

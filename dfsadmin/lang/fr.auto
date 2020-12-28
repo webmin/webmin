@@ -8,6 +8,7 @@ index_none=Aucun répertoire n'est actuellement exporté sur ce système.
 index_apply=Appliquer les modifications
 index_applydesc=Cliquez sur ce bouton pour appliquer la configuration actuelle de partage de fichiers. Cela rendra tous les répertoires répertoriés ci-dessus disponibles avec les options spécifiées.
 index_return=liste d'actions
+
 edit_title1=Modifier le partage
 edit_title2=Créer Partager
 edit_header1=Partager les détails
@@ -30,6 +31,7 @@ edit_anon1=Pas d'accès
 edit_aclok=Autoriser les ACL?
 edit_public=Partage WebNFS?
 edit_index=Fichier d'index WebNFS
+
 save_err=Échec de l'enregistrement du partage
 save_edirectory='$1' n'est pas un nom de répertoire valide
 save_edirectory2=Le répertoire '$1' n'existe pas
@@ -38,8 +40,12 @@ save_ero=Vous n'avez répertorié aucun hôte avec lequel partager en lecture se
 save_eroot=Vous n'avez répertorié aucun hôte avec lequel partager la racine
 save_ealready=Le répertoire '$1' est déjà partagé
 save_ehost=L'hôte '$1' n'existe pas
+
 acl_view=Peut modifier les partages NFS?
+
 ecannot=Vous n'êtes pas autorisé à gérer les partages NFS
+
 delete_err=Impossible de supprimer les partages
 delete_enone=Aucune sélection
+
 restart_err=Échec de l'application des modifications

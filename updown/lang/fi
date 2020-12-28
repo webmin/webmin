@@ -31,6 +31,7 @@ index_header3=Lataa tiedosto palvelimelta PC:lle
 index_fetch=Ladattava tiedosto
 index_ok2=Lataa
 index_show=Näytä selaimessa jos mahdollista
+
 upload_title=Lähetä tiedostot
 upload_err=Lähetys epäonnistui
 upload_edir=Puuttuva lähetyshakmisto
@@ -49,6 +50,7 @@ upload_eextract=, purkaminen epäonnistui : $1
 upload_extracted=, ja purettiin tiedostot ..
 upload_deleted=, ja purettiin tiedostot ennen arkiston tuhoamista
 upload_notcomp=Ei ZIP- tai TAR-tiedosto
+
 download_err=Latauksen tallennus epäonnistui
 download_enone=Ei annettu URL:ia
 download_eurl='$1' on virhellinen URL
@@ -60,9 +62,11 @@ download_failed=Lataus epäonnistui : $1
 download_eaccess=Ei oikeuksia ladata tiedostoja tänne $1
 download_eucannot=Käyttäjällä $1 ei okeuksia ladata tiedostoja
 download_egcannot=Valittu ryhmä ei sisällä valittua käyttäjää
+
 cancel_err=Latauksen keskeytys epäonnistui
 cancel_enone=Ei valittu
 cancel_ecannot=Sinulla ei ole oikeutta keskeyttää käyttäjän $1 latauksia
+
 log_cancel=$1 latausta keskeytetty
 log_upload_l=Lähetetty tiedostot $1
 log_upload=Lähetetty $1 tiedostoa
@@ -70,6 +74,7 @@ log_download_l=Ladattu URL $1
 log_download=Ladattu $1 URL:ia
 log_sdownload_l=URL:n lataus ajoitettu $1
 log_sdownload=$1 URL:n lataus ajoitettu
+
 acl_users=Saa lähettää ja ladata tiedostoja käyttäjinä
 acl_all=Kaikki käyttäjät
 acl_this=Nykyinen Webmin-käyttäjä
@@ -84,6 +89,7 @@ acl_max=Maksimi lähetyskoko
 acl_unlim=Rajoittamaton
 acl_b=tavua
 acl_fetch=Saa ladata tiedostoja PC:lle
+
 fetch_err=Tiedoston lataus epäonnistui
 fetch_ecannot=Ei oikeuksia ladata tiedostoja PC:lle
 fetch_efile=Tiedostonimeä ei annettu

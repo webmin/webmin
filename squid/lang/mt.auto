@@ -38,6 +38,7 @@ index_restartdesc=Ikklikkja din il-buttuna biex tattiva l-konfigurazzjoni attwal
 index_iptables=Twaqqif ta 'direzzjoni mill-ġdid tal-port
 index_squid=Server Proxy Klamari
 index_manual=Editja l-Fajls ta 'Konfigurazzjoni
+
 manual_title=Editja l-Fajls ta 'Konfigurazzjoni
 manual_file=Agħżel fajl konfigurazzjoni biex teditja:
 manual_change=Ibdel
@@ -45,6 +46,7 @@ manual_editing=Uża l-kaxxa tat-test hawn taħt biex teditja manwalment il-konfi
 manual_err=Ma rnexxielux isalva l-fajl tal-konfigurazzjoni
 manual_efile=Isem tal-fajl konfigurazzjoni mhux validu!
 manual_ecannot=M'għandekx permess teditja manwalment fajls ta 'konfigurazzjoni
+
 buttsave=Issejvja
 buttdel=Ħassar
 buttcreat=Oħloq
@@ -54,6 +56,7 @@ default=Default
 none=Xejn
 on=Fuq
 off=Off
+
 acl_header1=Oħloq ACL
 acl_header2=Editja ACL
 acl_name=Isem ACL
@@ -109,6 +112,7 @@ acl_file=Aħżen il-valuri ACL fil-fajl
 acl_nofile=Konfigurazzjoni tal-Klamari
 acl_infile=Fajl separat
 acl_keep=Just tuża l-kontenut eżistenti tal-fajl?
+
 aclsave_failsave=Ma rnexxielux isalva ACL
 aclsave_faildel=Ma rnexxielux jitħassar ACL
 aclsave_epr=Dan l-ACL qed jintuża minn restrizzjoni ta ’prokura
@@ -128,11 +132,13 @@ aclsave_eemin=Minimu li jispiċċa mhux validu
 aclsave_efile=M'għandekx permess tikteb fil-fajl ACL "$1"
 aclsave_enofile=L-ebda isem tal-fajl ACL ma daħal
 aclsave_ealready=Fajl ACL diġà jeżisti
+
 cach_ecannot=M'għandekx permess taċċessa l-istatistiċi tal-maniġer tal-cache
 cach_err=Żball
 cach_nfound=Il-programm tal-maniġer tal-cache tal-klamari <tt>$1</tt> ma nstabx fis-sistema tiegħek. Forsi <a href=/config.cgi?$2>il-konfigurazzjoni tal-modulu</a> mhix korretta.
 cach_return=Indiċi tal-klamar
 cach_esame=Il- <b>klamat cachemgr.cgi eżegwibbli</b> huwa stabbilit għall-programm cachemgr.cgi ta 'Webmin, mhux dak fornut mill-Klamari.
+
 chown_header=Ibdel is-Sjieda
 chown_stop=Waqfien tal-klamari. ..
 chown_done=.. Magħmul
@@ -140,6 +146,7 @@ chown_chown=Nibdlu s-sjieda. ..
 chown_restart=Klamar mill-ġdid. ..
 chown_failrestart=Ma rnexxielux jerġa ’jibda Klamar ..
 chown_return=Indiċi tal-klamar
+
 clear_ecannot=M'għandekx permess tnaddaf u tibni mill-ġdid il-cache
 clear_header=Ċara u Ibni mill-ġdid il-Cache
 clear_msgclear=Int żgur li trid tnaddaf u tibni mill-ġdid il-cache tal-Klamari tiegħek? Dan se jħassar <b>kollha</b> l-fajls li għandek cache u jerġa 'jibda s-server tal-Klamari tiegħek.
@@ -153,6 +160,7 @@ clear_failrestart=Ma rnexxielux jerġa ’jibda Klamar ..
 clear_return=Indiċi tal-klamar
 clear_url=Neħħi URL wieħed mill-cache:
 clear_ok=Neħħi
+
 eacl_ecannot=M'għandekx permess teditja l-kontroll tal-aċċess
 eacl_header=Kontroll tal-Aċċess
 eacl_acls=Il-listi tal-kontroll tal-aċċess
@@ -169,8 +177,10 @@ eacl_nopr=Ma ġew definiti l-ebda restrizzjonijiet ta 'prokura.
 eacl_addpr=Żid restrizzjoni tal-prokura.
 eacl_noprr=L-ebda restrizzjoni ta 'tweġiba għall-prokura ma ġiet definita
 eacl_addprr=Żid restrizzjoni tat-tweġiba bi prokura.
+
 eacl_replypr=Irrispondi r-restrizzjonijiet tal-prokura
 eacl_replynopr=L-ebda restrizzjoni ta ’prokura ta’ tweġiba ma ġiet iddefinita
+
 eacl_icpr=Restrizzjonijiet tal-ICP
 eacl_noicpr=L-ebda restrizzjoni ICP ma ġiet definita
 eacl_addicpr=Żid restrizzjoni ICP.
@@ -187,6 +197,7 @@ eacl_eclass=L-ebda klassi tal-programm magħżula
 eacl_cname=L-isem tat-tip
 eacl_file=Mill-fajl $1
 eacl_hdelete=Ħassar ir-Restrizzjonijiet magħżula
+
 eadm_ecannot=M'għandekx permess teditja għażliet amministrattivi
 eadm_header=Għażliet Amministrattivi
 eadm_aao=Għażliet Amministrattivi u ta 'Tħabbar
@@ -213,6 +224,7 @@ eadm_caf=Cache iħabbar fajl
 eadm_annp=Perjodu ta 'tħabbira
 eadm_buttsave=Issejvja
 eadm_return=Indiċi tal-klamar
+
 eauth_ecannot=M'għandekx permess teditja l-awtentikazzjoni tal-prokura
 eauth_header=Awtentikazzjoni tal-Proxy
 eauth_aopt=Għażliet ta 'Awtentikazzjoni
@@ -226,6 +238,7 @@ eauth_pusers=Utenti Proxy
 eauth_nopusers=L-ebda utenti tal-prokura ma huma definiti bħalissa.
 eauth_addpuser=Żid utent proxy ġdid.
 eauth_return=Indiċi tal-klamar
+
 ec_ecannot=M'għandekx permess teditja l-għażliet tal-cache
 ec_header=Għażliet tal-Cache
 ec_cro=Għażliet fil-Caching u Talba
@@ -280,6 +293,7 @@ ec_return=Indiċi tal-klamar
 ec_maxreplies=Daqsijiet massimi tal-korp ta ’tweġiba
 ec_maxrn=Daqs (kB)
 ec_maxracls=Għal talbiet li jaqblu mal-ACLs (ħalli vojta għal kulħadd)
+
 ech_header=Oħloq Ospitanti tal-Cache
 ech_header1=Editja l-Ospitanti tal-Cache
 ech_cho=Għażliet ta 'Ospitanti Cache
@@ -324,6 +338,7 @@ ech_origin=Ittratta ospitanti bħala server ta 'oriġini?
 ech_force=Forza Ospitanti: l-intestatura
 ech_same=Mhux mibdula
 ech_ssl=Qabbad billi tuża SSL?
+
 eicp_ecannot=M’intix permess li teditja caches oħra
 eicp_header=Caches oħra
 eicp_opcs=Servers oħrajn tal-cache proxy
@@ -361,6 +376,7 @@ eicp_ttype=Tip
 eicp_tpport=Port tal-prokura
 eicp_tiport=Port ICP
 eicp_delete=Ħassar il-Caches magħżula
+
 elogs_ecannot=M'għandekx permess teditja l-qtugħ
 elogs_header=Qtugħ
 elogs_lalo=Għażliet ta 'qtugħ u logfile
@@ -394,6 +410,7 @@ elogs_notset=Mhux imwaqqaf
 elogs_dont=M'għandekx idħol
 elogs_file=Fajl $1
 elogs_squid=Klamari standard
+
 emem_ecannot=M'għandekx permess teditja l-użu tal-memorja
 emem_dheader=Użu tal-Memorja u Disk
 emem_header=Użu tal-Memorja
@@ -419,6 +436,7 @@ emem_lfuda=Dinamika l-inqas użata ta 'spiss
 emem_hlru=Għaqqad l-inqas użat ta ’spiss
 emem_return=Indiċi tal-klamar
 emem_mrp=Politika ta ’sostituzzjoni tal-memorja
+
 emisc_ecannot=M'għandekx permess teditja għażliet varji
 emisc_header=Għażliet Varji
 emisc_mo=Għażliet Varji
@@ -455,6 +473,7 @@ emisc_wccpin=Indirizz tad-Dħul WCCP
 emisc_wccpout=Indirizz ħiereġ tal-WCCP
 emisc_none=Xejn
 emisc_virtual=Virtwali
+
 eports_ecannot=M’intix permess li teditja portijiet u netwerking
 eports_header=Portijiet u Netwerking
 eports_pano=Portijiet u Għażliet ta 'Netwerking
@@ -480,6 +499,7 @@ eports_unc=Għeluq ta 'SSL mhux nadif?
 eports_checkhost=Tivvalida l-hostnames fl-URLs?
 eports_underscore=Tippermetti li jkun enfasizzat l-ismijiet tal-host?
 eports_all=Kollha
+
 eprogs_ecannot=M'għandekx permess teditja programmi helper
 eprogs_header=Programmi Helper
 eprogs_chpo=Għażliet ta 'Programm ta' Cache Helper
@@ -508,6 +528,7 @@ eprogs_ttl=Ħin tal-cache tal-Awtentikazzjoni
 eprogs_aittl=Awtentika l-ħin tal-cache tal-IP
 eprogs_realm=Isfera tal-Awtentikazzjoni
 eprogs_return=Indiċi tal-klamar
+
 euser_header=Oħloq Utent Proxy
 euser_header1=Editja l-Utent Proxy
 euser_pud=Dettalji tal-Utent Proxy
@@ -516,6 +537,7 @@ euser_p=Password
 euser_u1=Mhux mibdula
 euser_e=Abilitata?
 euser_return=lista tal-utenti
+
 ahttp_header=Oħloq Restrizzjoni tal-Proxy
 ahttp_header1=Editja Restrizzjoni tal-Proxy
 ahttp_pr=Restrizzjoni tal-Proxy
@@ -525,10 +547,13 @@ ahttp_d=Iċħad
 ahttp_ma=Qabbel ACLs
 ahttp_dma=Ma taqbilx ma 'ACLs
 ahttp_return=Lista ACL
+
 ahttp_replyheader=Oħloq Restrizzjoni ta 'Risposta bi Proxy
 ahttp_replyheader1=Editja Restrizzjoni ta ’Risposta Proxy
 ahttp_replypr=Restrizzjoni bi tweġiba bi prokura
+
 sahttp_ftspr=Naqset milli ssalva restrizzjoni tat-tweġiba bi prokura
+
 aicp_header=Oħloq Restrizzjoni ICP
 aicp_header1=Editja r-Restrizzjoni ICP
 aicp_ir=Restrizzjoni ICP
@@ -538,7 +563,9 @@ aicp_d=Iċħad
 aicp_ma=Qabbel ACLs
 aicp_dma=Ma taqbilx ma 'ACLs
 aicp_return=Lista ACL
+
 saicp_ftsir=Naqset milli ssalva r-restrizzjoni tal-ICP
+
 icache_ecannot=M'għandekx permess inizjalizzazzjoni tal-cache
 icache_ftic=Ma rnexxilux inizjalizza l-cache
 icache_ymcautrsa=Trid tagħżel utent biex imexxi l-Klamari bħala
@@ -546,7 +573,9 @@ icache_euser=Utent li jmexxi klamari peress li ma jeżistix
 icache_itscwtc=Inizjalizza l-cache tal-Klamari bil-kmand <tt>$1</tt> ..
 icache_return=Indiċi tal-klamar
 icache_title=Inizjalizza Cache
+
 restart_ftrs=Ma rnexxielux jikkonfigura l-klamari
+
 sadmin_ftsao=Ma rnexxielux isalva l-għażliet amministrattivi
 sadmin_header=Ibdel is-Sjieda
 sadmin_msg1=Int biddilt l-utent jew il-grupp li timxi bħala Klamari. Sabiex dan jidħol fis-seħħ sewwa, is-sjieda tal-fajls tal-cache u tal-ġurnal kollha għandhom jiġu aġġornati u l-Klamari terġa 'tinbeda.
@@ -556,10 +585,12 @@ sadmin_inavea="$1" mhuwiex indirizz elettroniku validu
 sadmin_inavh="$1" mhux hostname validu
 sadmin_inavap="$1" m'huwiex perjodu ta 'tħabbira validu
 sadmin_inavp="$1" mhux port validu
+
 sauth_ftsao=Ma rnexxielux isalva l-għażliet ta ’awtentikazzjoni
 sauth_iomuf=Utenti tal-fajl mhux validi jew nieqsa
 sauth_iomd=Dominju invalidu jew nieqes
 sauth_msg1=Il-verżjoni tiegħek ta 'Klamari ma ġietx ikkumpilata b'appoġġ għall-awtentikazzjoni tal-prokura
+
 scache_ftsco=Ma rnexxielux isalva l-għażliet tal-cache
 scache_emsg0=Trid tidħol mill-inqas direttorju tal-cache wieħed
 scache_emsg1=Id-direttorju tal-cache "$1" ma jeżistix
@@ -577,14 +608,17 @@ scache_emsg12="$1" mhux daqs ta 'direttorju validu
 scache_emsg13="$1" mhix ospitanti validu
 scache_emsg14="$1" mhux port validu
 scache_emaxrs=Daqs massimu tal-ġisem mhux validu fir-ringiela $1
+
 schost_ftsc=Ma rnexxielux isalva l-cache
 schost_emsg1="$1" mhux isem tal-host cache validu
 schost_emsg2="$1" mhuwiex port ta 'prokura validu
 schost_emsg3="$1" mhux port ICP validu
 schost_emsg4="$1" mhuwiex żmien validu għall-għajxien
 schost_emsg5="$1" mhux ippeżar validu
+
 sicp_ftsco=Ma rnexxielux isalva l-għażliet tal-cache
 sicp_emsg1="$1" mhix limitu ta 'żmien validu
+
 slogs_ftslo=Ma rnexxielux isalva l-għażliet tal-qtugħ
 slogs_emsg1="$1" mhux isem tal-fajl assolut
 slogs_emsg2="$1" mhux isem tal-fajl validu
@@ -594,20 +628,24 @@ slogs_emsg5="$1" mhix lista valida ta 'għażliet ta' debug
 slogs_efname=Isem tal-format mhux validu fir-ringiela $1
 slogs_effmt=Nieqes il-format tal-ġurnal fir-ringiela $1
 slogs_eafile=Fajl tal-ġurnal nieqes jew invalidu fir-ringiela $1
+
 smem_ftsmo=Ma rnexxielux isalva l-għażliet tal-memorja
 smem_emsg1="$1" mhijiex daqs validu tal-cache
 smem_emsg2="$1" mhijiex marka valida fl-ilma għoli
 smem_emsg3="$1" mhijiex marka valida ta 'ilma baxx
 smem_emsg4="$1" mhux daqs ta 'oġġett validu
+
 smisc_ftso=Ma rnexxielux isalva l-għażliet
 smisc_emsg1="$1" mhux numru validu ta 'rotazzjonijiet
 smisc_emsg2="$1" mhux dominju validu
 smisc_emsg3="$1" mhux prokura valida
 smisc_emsg4="$1" mhux numru validu ta 'ħops
+
 sport_ftspo=Ma rnexxielux isalva l-għażliet tal-port
 sport_emsg1="$1" mhux numru tal-port validu
 sport_emsg2="$1" mhuwiex indirizz validu
 sport_emsg3="$1" m'huwiex daqs buffer validu
+
 sprog_ftshpo=Ma rnexxielux isalva l-għażliet tal-programm tal-għajnuna
 sprog_emsg1=Għażliet FTP nieqsa
 sprog_emsg2="$1" mhuwiex programm validu
@@ -620,19 +658,23 @@ sprog_emsg8="$1" mhuwiex indirizz IP validu
 sprog_emsg9="$1" mhix ħin validu fil-cache
 sprog_emsg10="$1" mhuwiex TTL validu
 sprog_echildren=In-numru ta 'programmi għandu jkun numru ikbar minn żero
+
 suser_ftsu=Ma rnexxielux isalva l-utent
 suser_emsg1=Username mhux validu jew nieqes
 suser_etaken=Username huwa diġà fl-użu
+
 start_ftsq=Naqset milli tibda l-Klamar
 start_ecannot=M'għandekx permess tibda Klamari
 stop_ftsq=Naqset milli twaqqaf il-Klamar
 stop_ecannot=M'għandekx permess twaqqaf il-Klamari
+
 calamaris_ecannot=M'għandekx permess taċċessa l-analiżi tal-log ta 'Calamaris
 calamaris_title=Analiżi tal-Log Calamaris
 calamaris_last=Li tillimita l-analiżi għall-aħħar $1 linji ta 'zkuk ..
 calamaris_eprog=Il-calamaris eżegwibbli $1 ma nstabx. Forsi mhuwiex installat fis-sistema tiegħek, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
 calamaris_elogs=Id-direttorju tal-ġurnal $1 ma fih l-ebda fajl <tt>access.log</tt>. Forsi l-klamar għadhom ma ġewx immexxija jew inkella l-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
 calamaris_gen=Rapport iġġenerat fuq $1
+
 lib_emsg1="$1" mhuwiex indirizz IP validu
 lib_seconds=sekondi
 lib_minutes=minuti
@@ -680,6 +722,7 @@ lib_aclmuip=IP Utent massimu
 lib_buttac=Applika l-Bidliet
 lib_buttss=Waqqaf il-Klamari
 lib_buttss1=Ibda Klamar
+
 log_ports=Portijiet mibdula u għażliet ta 'netwerking
 log_icp=Inbidlu għażliet oħra tal-cache
 log_mem=Inbidlet l-użu tal-memorja
@@ -734,25 +777,31 @@ log_pools_delete=Imħassra $1 ġabra ta 'dewmien
 log_delay_create=Miżjud ACL għall-ġabra ta 'dewmien $1
 log_delay_modify=ACL modifikat għal pool ta 'dewmien $1
 log_delay_delete=ACL imħassar għal ġabra ta 'dewmien $1
+
 log_delay_move=Imċaqlaq ACL għall-ġabra ta 'dewmien $1
 log_refresh_create=Regola ta 'riffriskjar maħluqa għal $1
 log_refresh_modify=Regola ta 'riffriskja modifikata għal $1
 log_refresh_delete=Ir-regola mħassra ta 'aġġornament għal $1
+
 log_refresh_move=Imċaqlaq ir-regola ta 'riffriskar għal $1
 log_refreshes_delete=$1 imħassar ir-regoli li jġedded
 log_iptables=Configurazzjoni aġġornata ta 'direzzjoni mill-ġdid tal-port
 log_purge=Imneħħi URL $1 mill-cache
 log_cachemgr=Passwords tal-maniġer tal-cache mibdula
+
 acl_root=Direttorju tal-għeruq għall-fajls ACL
 acl_sections=Paġni ta 'konfigurazzjoni permessi
 acl_start=Tista 'tibda u tieqaf il-Klamar?
 acl_restart=Tista 'tapplika l-konfigurazzjoni tal-Klamari?
+
 always_create=Oħloq Fetch Dirett
 always_edit=Edit Direct Fetch
 always_header=Iġib direttament talbiet għal ACLs li jaqblu
+
 never_create=Oħloq Fetch Indirett
 never_edit=Edit Fetch Indirett
 never_header=Qatt ma twettaq direttament it-talbiet li jaqblu mal-ACLs
+
 delay_title=Djar tal-Pixxini
 delay_add=Żid ġabra ta 'dewmien ġdida.
 delay_num=Numru
@@ -802,11 +851,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=MB
+
 dpool_err=Ma rnexxielux jitħassar il-pixxini ta 'dewmien
 dpool_enone=L-ebda magħżul
+
 apool_header=Żid id-Dewmien ACL Pool
 apool_header1=Editja ACL Pool Dewmien
 apool_pr=Dewmien pool ACL
+
 authparam_title=Programmi ta 'Awtentikazzjoni
 authparam_header=Għażliet ta 'programmi ta' awtentikazzjoni esterna
 authparam_ttl=Żmien għall-passerija fil-cache
@@ -849,6 +901,7 @@ ext_ecache=Id-daqs tal-cache nieqes jew invalidu
 ext_eprogram=Tniżżlet passaġġ tal-programm invalidu
 ext_eclash=Diġa jeżisti tip ta ’programm estern bl-istess isem
 ext_eused=Dan il-programm estern qed jintuża minn ACL
+
 header_title=Kontroll tal-Aċċess għall-Intestatura
 header_none=L-ebda regoli ta 'kontroll ta' aċċess għall-intestatura ma ġew definiti s'issa.
 header_name=Intestatura HTTP
@@ -868,6 +921,7 @@ header_err=Naqset milli ssalva r-regola tal-kontroll tal-aċċess tal-intestatur
 header_ename=Isem tal-intestatura nieqes jew invalidu
 header_request_header_access=Intestatura tal-Intestaturi
 header_reply_header_access=Intestati tal-Intestatura
+
 refresh_title=Regoli ta ’Aġġornament
 refresh_none=Ma ġew definiti l-ebda regoli ta 'riffriskar.
 refresh_re=Espressjoni regolari
@@ -894,6 +948,7 @@ refresh_epc=Perċentwali ta 'età nieqsa jew invalida
 refresh_delete=Ħassar ir-Regoli ta 'Refresh magħżula
 drefresh_err=Ma rnexxilhiex tħassar ir-regoli ta ’riġim
 drefesh_enone=L-ebda magħżul
+
 iptables_title=Twaqqif ta 'direzzjoni mill-ġdid tal-port
 iptables_inst0=Il-kmandi tal-firewall IPtables meħtieġa biex tissettja d-direzzjoni mill-ġdid tal-port ma jidhrux li huma installati fis-sistema tiegħek. Ara l-modulu <a href='$1'>Linux Firewall</a> għal aktar dettalji.
 iptables_inst1=Il-modulu <a href='$1'>Linux Firewall</a> ma jidhirx li ġie ssettjat kompletament fis-sistema tiegħek. Dan il-modulu jagħmel użu minn dak li jwaqqaf id-direzzjoni mill-ġdid tal-port Frox.
@@ -908,18 +963,23 @@ iptables_enet=Indirizz tan-netwerk nieqes jew invalidu (għandu jkun bħal 192.1
 iptables_eiface=Interfaċċja tan-netwerk nieqsa jew invalida
 iptables_eapply=Applika firewall fallew : $1
 iptables_eapply2=Applika Klamar li falla : $1
+
 syslog_access=Log tal-aċċess għall-Klamari
 syslog_cache=Zkuk tal-kaxex tal-klamari
 syslog_store=Klamar li jaħżen l-oġġett taz-zkuk
+
 purge_err=Naqset milli tikklerja URL mill-cache
 purge_title=URL Cached ċar
 purge_doing=Tneħħija tal-URL $1 ..
 purge_done=.. sar.
 purge_failed=.. naqas! Ara l-messaġġ ta 'żball ta' hawn fuq għar-raġuni għaliex.
+
 dhttp_err=Ma rnexxielhiex tħassar ir-restrizzjonijiet tal-prokura
 dhttp_enone=L-ebda magħżul
+
 dicp_err=Ma rnexxielhiex tħassar ir-restrizzjonijiet tal-ICP
 dicp_enone=L-ebda magħżul
+
 cachemgr_title=Passwords tal-Maniġer tal-Cache
 cachemgr_ecannot=M'għandekx permess teditja l-passwords tal-maniġer tal-cache
 cachemgr_def1=Ebda passwords meħtieġa

@@ -17,6 +17,7 @@ index_tdesc=Beskrivning
 index_tucount=användare
 index_tgcount=grupper
 index_ttype=OS-typ
+
 add_title=Lägg till servrar
 add_msg=Lägger till $1 ..
 add_gmsg=Lägga till servrar i grupp $1 ..
@@ -26,6 +27,7 @@ add_echeck=Servern $1 har inte modulen användare och grupper
 add_epft=Servern $1 använder inte samma användarfilformat som denna värd
 add_egft=Servern $1 använder inte samma gruppfilformat som denna värd
 add_ok=Lade till $1 med $2 användare och $3 grupper.
+
 host_title=Hanterad server
 host_header=Mjukvarahanterad serverinformation
 host_name=Värdnamn
@@ -34,8 +36,7 @@ host_delete=Ta bort från hanterad lista
 host_refresh=Uppdatera användare och grupper
 host_users=Antal användare
 host_groups=Antal grupper
-host_ulist=Användare på servern
-host_glist=Grupper på servern
+
 host_return=serverinformation
 refresh_title=Uppdatera användare och grupper
 refresh_header=Begär om användar- och grupplistor från alla servrar igen.
@@ -49,6 +50,7 @@ refresh_gdel=ta bort $1 -grupper
 refresh_done=.. Gjort
 refresh_del=Borttagen $1 från serverlistan
 refresh_failed=Det gick inte att uppdatera $1 : $2 
+
 uedit_host=Detaljer från $1 
 uedit_leave=Ändra inte
 uedit_set=Satt till
@@ -66,6 +68,7 @@ uedit_servers=Server (er) att skapa på
 uedit_all=&lt;alla värdar&gt;
 uedit_donthave=&lt;värdar som inte har honom&gt;
 uedit_group=Medlemmar av $1 
+
 usave_einuse=En användare med samma namn finns redan på $1 
 usave_esecgid=Sekundärgrupp $1 existerar inte
 usave_con=Skapar på $1 ..
@@ -88,16 +91,20 @@ usave_header=Skapar användare $1 på alla värdar ..
 usave_header5=Skapar användare $1 på $2 ..
 usave_header4=Skapar användare $1 på medlemmar i grupp $2 ..
 usave_header3=Skapar användare $1 på värdar som inte har honom ..
+
 search_hosts=värdar
+
 udel_on=Ta bort från $1 ..
 udel_servs=Radera hemkatalogen om den finns
 udel_others=Radera användare i andra moduler?
 udel_dothers=Ta bort i andra moduler ..
 udel_gone=Användaren finns inte längre.
 udel_failed=Det gick inte att ta bort användare : $1 
+
 gdel_on=Ta bort från $1 ..
 gdel_gone=Användaren finns inte längre.
 gdel_failed=Det gick inte att ta bort gruppen : $1 
+
 gsave_create=Lägger till gruppfilpost. ..
 gsave_con=Skapar på $1 ..
 gsave_euser=Användare $1 finns inte
@@ -110,10 +117,12 @@ gsave_header=Skapar grupp $1 på alla värdar ..
 gsave_header5=Skapar grupp $1 på $2 ..
 gsave_header4=Skapa grupp $1 på medlemmar i grupp $2.
 gsave_header3=Skapar grupp $1 på värdar som inte har den ..
+
 gedit_host=Detaljer från $1 
 gedit_add=Lägg till användare
 gedit_del=Ta bort användare
 gedit_donthave=&lt;värdar som inte har det&gt;
+
 sync_title=Synkronisera servrar
 sync_desc=Det här formuläret låter dig skapa användare och grupper på servrar som för närvarande inte har dem för att synkronisera konton över alla servrar i ditt kluster.
 sync_hosts=Servrar att synkronisera
@@ -141,6 +150,7 @@ sync_test=Visa bara vad som skulle göras?
 sync_makehome=Skapa hemkataloger?
 sync_copy=Kopiera filer till hemkatalogen?
 sync_others=Skapa användare i andra moduler?
+
 log_create_user=Skapad användare $1 
 log_delete_user=Raderad användare $1 
 log_modify_user=Ändrad användare $1 

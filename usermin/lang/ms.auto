@@ -16,10 +16,13 @@ index_esame=Direktori konfigurasi Usermin $1 ditetapkan pada halaman konfigurasi
 index_eroot=Direktori konfigurasi Usermin $1 ada, tetapi direktori akar program $2 yang merujuk kepada tidak! Anda harus memuat turun dan memasang semula Usermin secara manual.
 index_restart=Restart Usermin
 index_restartmsg=Klik butang ini untuk memulakan semula proses pelayan Usermin. Ini mungkin perlu jika anda baru-baru ini dinaikkan Perl.
+
 access_desc=Pelayan Usermin boleh dikonfigurasikan untuk menafikan atau membenarkan akses hanya dari alamat IP tertentu menggunakan borang ini. Nama hos (seperti foo.bar.com) dan rangkaian IP (seperti 10.254.3.0 atau 10.254.1.0/255.255.255.128 atau 10.254.1.0/25 atau 10.254.1.5-10.254.97.127) juga boleh dimasukkan. Anda harus mengehadkan akses ke pelayan anda ke alamat yang dipercayai, terutamanya jika boleh diakses dari Internet. Jika tidak, sesiapa yang meneka kata laluan anda akan mempunyai kawalan penuh terhadap sistem anda.
+
 bind_title=Pelabuhan dan Alamat
 bind_desc2=Borang ini boleh digunakan untuk menukar nombor port yang Usermin mendengarkan, atau dengar hanya satu alamat IP pada sistem anda. Anda juga boleh mengkonfigurasinya untuk menerima sambungan pada beberapa port, atau untuk mendengar beberapa alamat IP. Perhatikan - penyemak imbas web anda boleh meminta anda untuk log masuk semula selepas menukar port atau alamat yang mengikat.
 bind_erestart=Ralat berlaku bermula Usermin dengan alamat dan tetapan pelabuhan baru : $1 
+
 mods_title=Modul Usermin
 umods_title=Modul Usermin
 mods_desc1=Modul Usermin boleh ditambah selepas pemasangan dengan menggunakan borang di sebelah kanan. Modul biasanya diedarkan dalam fail <tt>.wbm</tt>, masing-masing boleh mengandungi satu atau lebih modul. Modul juga boleh dipasang dari fail RPM jika disokong oleh sistem operasi anda.
@@ -40,15 +43,18 @@ mods_desc3=Modul sedia ada boleh dipadam dengan menggunakan borang di bawah. Sek
 mods_delete=Padam Modul
 mods_deleteok=Padam Modul Terpilih
 mods_desc4=Modul yang dipasang boleh dieksport sebagai fail wbm.gz menggunakan borang di bawah. Fail modul boleh dipasang ke sistem lain yang menggunakan Usermin.
+
 os_title=Sistem Operasi dan Alam Sekitar
 os_desc3=Halaman ini memaparkan sistem operasi yang dikesan oleh Usermin pada masa memasang, dan sistem yang kini dikesan. Jika mereka berbeza, anda boleh memilih untuk memiliki maklumat OS Usermin yang dikemas kini, yang mungkin perlu jika anda baru dinaik taraf.
 os_desc2=Anda juga boleh menukar laluan carian yang digunakan oleh Usermin semasa menjalankan program, dan laluan pustaka yang dikongsi diteruskan ke mana-mana program.
 os_usermin=Sistem pengendalian mengikut Usermin
 os_iusermin=Kod OS dalaman yang digunakan oleh Usermin
 os_update=Kemas kini Usermin untuk menggunakan OS yang dikesan
+
 lang_title=Bahasa
 lang_title2=Usermin Language
 lang_intro=Halaman ini membolehkan anda memilih bahasa mana yang Usermin akan digunakan untuk memaparkan tajuk, arahan dan mesej
+
 session_title=Pengesahan
 session_desc1=Apabila diaktifkan, masa lalai kata laluan melindungi pelayan Usermin daripada serangan perengkuh kata laluan kasar dengan menambahkan kelewatan yang terus berkembang antara setiap cubaan log masuk yang gagal untuk pengguna yang sama.
 session_desc2=Apabila pengesahan sesi didayakan, setiap sesi pengguna log masuk akan dijejaki oleh Usermin, membolehkan pengguna terbiar secara automatik dilogkan. Ketahui bahawa pengaktifan sesi yang membolehkan atau melumpuhkan boleh memaksa semua pengguna untuk masuk semula.
@@ -72,6 +78,7 @@ session_blank=Pengguna yang cepat dengan kata laluan kosong untuk memilih satu p
 session_homedir=Buat direktori rumah yang hilang selepas masuk?
 session_homedir_perms=Kebenaran untuk direktori baru
 session_ehomedir_perms=Keizinan direktori rumah kosong atau tidak sah
+
 themes_title=Tema Usermin
 themes_desc=Tema mengawal penampilan antara muka pengguna Usermin, termasuk ikon, warna, latar belakang dan mungkin susun atur halaman. Kotak pilihan di bawah boleh digunakan untuk memilih salah satu tema yang dipasang pada sistem anda yang akan menjadi lalai untuk pengguna Usermin.
 themes_sel=Tema semasa :
@@ -100,7 +107,9 @@ themes_eirpm=Pemasangan RPM gagal : $1
 themes_ok=Tema berjaya berjaya.. mengalihkan ke halaman indeks Webmin.
 themes_delete=Borang ini boleh digunakan untuk memadam salah satu tema yang dipasang pada sistem anda yang tidak digunakan saat ini.
 themes_delok=Tema untuk memadam :
+
 themes_desc4=Tema yang dipasang boleh dieksport sebagai fail wbt.gz menggunakan borang di bawah. Fail tema kemudian boleh dipasang ke sistem lain yang menjalankan Usermin.
+
 configs_ecannot=Anda tidak dibenarkan untuk mengkonfigurasi modul ini
 configs_title=Konfigurasi Modul Usermin
 configs_header=Modul yang boleh dikonfigurasikan
@@ -114,8 +123,10 @@ configs_global=Konfigurasi modul global
 configs_globaldesc=Tetapan dalam borang ini digunakan untuk semua pengguna modul, dan biasanya menetapkan pilihan yang berkaitan dengan program dan fail yang digunakannya.
 configs_user=Keutamaan pengguna lalai
 configs_userdesc=Tetapan dalam bentuk ini menentukan lalai untuk keutamaan yang boleh diedit pengguna untuk modul ini. Melainkan jika anda menyatakan sebaliknya, mereka boleh ditunggangi oleh pengguna individu.
+
 acl_title=Modul yang tersedia
 acl_desc=Gunakan halaman ini untuk memilih modul Usermin yang dipasang untuk pengguna.
+
 ssl_title=Penyulitan SSL
 ssl_desc1=Hos di mana Usermin sedang berjalan nampaknya telah dipasang modul SSLeay Perl. Menggunakan ini, Usermin menyokong komunikasi yang disulitkan SSL antara pelayar dan pelayan anda. Jika pengguna mengakses pelayan Usermin anda melalui Internet, maka anda harus mempertimbangkan menggunakan SSL untuk menghalang penyerang menangkap kata laluan mereka.
 ssl_desc2=Amaran - hanya menghidupkan sokongan SSL jika anda mempunyai penyemak imbas yang menyokong SSL, dan tidak ada firewall yang menyekat permintaan <tt>https</tt> antara pelayar anda dan hos Usermin.
@@ -124,18 +135,23 @@ ssl_hole=Kerana anda sedang menggunakan kekunci Usermin SSL lalai yang semua ora
 ssl_savekey=Borang ini membolehkan anda memuat naik kunci dan sijil peribadi PEM format PEM sedia ada untuk digunakan oleh pelayan Usermin anda.
 ssl_copycert=Salin Sijil Dari Webmin
 ssl_copycertdesc=Salin sijil SSL, kunci persendirian, pensijilan CA dan tetapan lain yang Webmin gunakan.
+
 ca_email=Alamat emel
 ca_ou=Jabatan
 ca_o=Pertubuhan
 ca_sp=Negeri
 ca_c=Kod negara
+
 newkey_ok=Berhasil menghasilkan kunci SSL berikut untuk Usermin.
+
 stop_err=Gagal menghentikan Usermin
 stop_ekill=Gagal membunuh proses : $1 
 stop_efile=Sudah berhenti
 stop_ecannot=Anda tidak dibenarkan menghentikan Usermin
+
 start_err=Gagal memulakan Usermin
 start_ecannot=Anda tidak dibenarkan untuk memulakan Usermin
+
 users_desc=Usermin boleh dikonfigurasikan untuk mengehadkan pengguna dan kumpulan unix dibenarkan masuk, menggunakan borang ini. Untuk menentukan semua ahli utama kumpulan unix, masukkan <tt>@groupname</tt> ke dalam senarai.
 users_desc2=Untuk memadankan pelbagai UIDs, masukkan <tt>start-end</tt>, <tt>start -</tt> atau <tt>-end</tt> ke dalam senarai.
 users_all=Benarkan semua pengguna
@@ -145,10 +161,12 @@ users_err=Gagal mengemas kini senarai pengguna
 users_euser='$1' bukan nama pengguna yang sah
 users_egroup='$1' bukan nama kumpulan yang sah
 users_eshells=Fail cengkerang yang hilang atau tidak wujud
+
 defacl_title=Pilihan Kawalan Akses
 defacl_desc=Halaman ini membolehkan anda mengkonfigurasi pelbagai pilihan kawalan akses yang digunakan untuk modul Usermin dan pengguna. Pilihan ini sama dengan yang ada di Global ACL untuk setiap pengguna dalam modul Pengguna Webmin.
 defacl_header=Pilihan kawalan akses untuk pengguna Usermin
 defacl_err=Gagal menyimpan pilihan kawalan akses
+
 install_err1=Gagal memasang modul dari $1 
 install_efile=Fail tidak wujud
 install_err2=Gagal memasang modul yang dimuat naik
@@ -175,6 +193,7 @@ install_erpm=Bukan modul Usermin atau RPM tema
 install_eirpm=Pemasangan RPM gagal : $1 
 install_cat=Di bawah kategori $1.
 install_eneither=RPM tidak mengandungi modul atau tema usermin
+
 delete_err=Gagal memadamkan modul
 delete_edep=Modul $1 tidak dapat dipadamkan, kerana modul $2 bergantung padanya
 delete_desc1=$1 (Klon $2)
@@ -184,6 +203,7 @@ delete_msg=Modul berikut telah berjaya dipadamkan dari pemasangan Usermin anda :
 delete_rusure=Adakah anda pasti mahu memadam modul (s) $2 ? $1 kB fail akan dipadam selama-lamanya.
 delete_rusure2=Adakah anda pasti mahu memadamkan tema $2 ? $1 kB fail akan dipadam selama-lamanya.
 delete_enone=Tiada modul yang dipilih
+
 ui_title=Antaramuka pengguna
 ui_desc=Borang ini membolehkan anda mengedit pilihan antara muka pengguna yang digunakan oleh semua modul Usermin.
 ui_header=Pilihan antara muka pengguna
@@ -225,6 +245,7 @@ ui_hnm1=Nama hos dari URL
 ui_hnm2=Nama domain dari URL
 ui_hnm3=Nama lain ..
 ui_tabs=Categorikan modul?
+
 upgrade_title=Tingkatkan Usermin
 upgrade_title2=Pasang Usermin
 upgrade_desc=Borang ini membolehkan anda menaik taraf keseluruhan pemasangan Usermin ke versi baru. Anda boleh memasang dari fail setempat, fail yang dimuat naik atau dari versi terkini di <a href=http://www.usermin.com/>www.usermin.com</a>. Sama seperti peningkatan manual, semua tetapan konfigurasi dan modul pihak ketiga akan disimpan.
@@ -258,6 +279,7 @@ upgrade_done=.. menaik taraf lengkap.
 upgrade_failed=.. naik taraf gagal!
 upgrade_updates=Terdapat $1 kemas kini untuk versi baru Usermin ini. <a href='$2'>Klik di sini</a> untuk memuat turun dan memasangnya secara automatik sekarang.
 upgrade_eupdates=Gagal memuat turun senarai kemas kini : $1 
+
 update_desc1=Borang ini membolehkan anda menaik taraf modul Usermin yang didapati mengandungi pepijat atau lubang keselamatan dari halaman <a href=http://www.usermin.com/uupdates.html>Kemas Kini Usermin</a> atau dari sumber lain. Ini akan membandingkan modul yang dipasang sekarang dengan yang tersedia untuk kemas kini, dan secara automatik memuat turun dan memasang sebarang modul yang sudah lapuk.
 update_header1=Kemas kini modul sekarang
 update_header2=Kemas kini modul mengikut jadual
@@ -274,10 +296,12 @@ update_sched=Kemas kini modul pada $1 :00 setiap $2 hari
 update_none=Tiada kemas kini Usermin untuk versi ini.
 update_failed=Gagal memasang modul : $1 
 update_desc2=Borang ini adalah untuk penjadualan kemas kini automatik modul Usermin yang mengandungi pepijat atau lubang keselamatan dari laman <a href=http://www.usermin.com/uupdates.html>Kemas Kini Usermin</a> atau dari sumber lain. Walaupun perkhidmatan ini berguna, anda harus berhati-hati menggunakannya kerana ia mungkin membenarkan penyerang untuk mengambil alih sistem anda jika pelayan kemas kini pernah dikompromi.
+
 assignment_title=Menetapkan semula Modul
 assignment_header=Tugasan kategori modul
 assignment_ok=Tukar Kategori
 assignment_desc=Borang ini membolehkan anda mengkonfigurasi kategori yang setiap modul dipaparkan di bawah pada halaman indeks Usermin.
+
 categories_title=Edit Kategori
 categories_header=ID dan deskripsi kategori
 categories_desc=Borang ini membolehkan anda menamakan semula kategori Usermin yang ada dan membuat yang baru untuk menyerahkan modul kepada. Bahagian atas meja adalah untuk menukar deskripsi kategori terbina dalam, manakala bahagian bawah adalah untuk menambah ID kategori dan deskripsi baru.
@@ -287,6 +311,7 @@ categories_edesc=Keterangan hilang untuk $1
 categories_ecat=Kategori ID $1 sudah diambil
 categories_code=ID
 categories_name=Penerangan yang dipamerkan
+
 log_access=Kawalan akses IP yang diubah
 log_bind=Pelabuhan dan alamat berubah
 log_log=Pilihan pembalakan berubah
@@ -322,6 +347,7 @@ log_restrict_create=Pembatasan yang dibuat untuk $1
 log_restrict_modify=Sekatan yang diubahsuai untuk $1 
 log_restrict_delete=Sekatan dihapuskan untuk $1 
 log_restrict_move=Sekatan bergerak untuk $1 
+
 log_all=semua pengguna
 log_group=kumpulan $1 
 log_switch=Beralih kepada pengguna Usermin $1 
@@ -329,6 +355,7 @@ log_logout=Masa auto logout berubah
 log_dav=Tetapan pelayan DAV yang berubah
 log_advanced=Mengubah pilihan lanjutan
 log_mobile=Pilihan peranti mudah alih yang diubah
+
 update_err=Gagal mengemas kini modul
 update_eurl=URL kemas kini yang hilang atau tidak sah
 update_title=Kemas kini Modul
@@ -347,6 +374,7 @@ update_rv=Memeriksa modul Usermin dikemas kini daripada $1
 update_eemail=Anda mesti memasukkan alamat e-mel jika hanya menunjukkan apa yang akan dikemas kini.
 update_subject=Laporan kemas kini modul Usermin
 update_version=Siaran baru Usermin (versi $1) kini boleh dimuat turun. Kemas kini masa depan akan dikeluarkan hanya untuk versi terkini.
+
 restrict_title=Sekatan Modul
 restrict_desc=Halaman ini membolehkan anda mengawal modul Usermin yang mana yang tersedia untuk pengguna dan kumpulan yang berbeza. Semua penambahan dan substraksi modul dalam senarai terpakai, bukan hanya yang pertama untuk dipadankan dengan setiap pengguna. <br>Modul yang tidak dipilih pada halaman<a href='$1'> yang tersedia </a> tidak akan tersedia untuk pengguna, walaupun mereka dipilih di sini.
 restrict_who=Pengguna Usermin
@@ -379,16 +407,19 @@ restrict_egroup=Nama kumpulan yang hilang atau tidak sah
 restrict_efile=Fail pengguna dan kumpulan kumpulan yang hilang, tidak wujud atau tidak mutlak
 restrict_move=Pindah
 bootup_ecannot=Anda tidak dibenarkan untuk mengkonfigurasi bootup
+
 acl_icons=Halaman konfigurasi yang dibenarkan
 acl_mods=Boleh mengkonfigurasi modul
 acl_sel=Dipilih di bawah ..
 acl_stop=Boleh berhenti dan mula Usermin?
 acl_bootup=Bolehkah konfigurasi bermula pada masa boot?
 acl_ecannot=Anda tidak dibenarkan menggunakan halaman ini
+
 clone_err=Gagal melampirkan modul
 clone_elink=symlink gagal : $1 
 clone_ecopy=gagal menyalin konfigurasi : $1 
 clone_desc=Klon $1 
+
 sessions_title=Sesi Masuk Semasa
 sessions_desc=Masuk sesi Usermin semasa disenaraikan di bawah. Untuk membatalkan sesi yang ada dan memaksa pengguna untuk log masuk sekali lagi, klik pada ID sesi mereka.
 sessions_id=ID sesi
@@ -398,12 +429,15 @@ sessions_login=Log masuk di
 sessions_none=Tiada pengguna yang sedang log masuk ke Usermin.
 sessions_switch=Beralih kepada pengguna Usermin:
 sessions_ok=Tukar
+
 referers_title=Perujuk yang Dipercayai
 referers_desc=Halaman ini membolehkan anda mengkonfigurasi sokongan pemeriksa perujuk Usermin, yang digunakan untuk menghalang pautan berniat jahat dari laman web lain yang mengesan pelayar pengguna anda melakukan perkara berbahaya dengan Usermin. Walau bagaimanapun, jika anda mempunyai pautan ke Usermin dari laman web anda sendiri yang anda tidak mahu diperingatkan tentang anda harus menambah laman tersebut ke senarai di bawah.
+
 anon_title=Akses Modul tanpa nama
 anon_desc=Halaman ini membolehkan anda memberi akses kepada modul dan laluan Usermin terpilih tanpa pelanggan yang perlu log masuk. Untuk setiap laluan modul yang anda masukkan di bawah (seperti / perintah atau / changepass), anda juga mesti memasukkan nama pengguna Unix yang keizinannya akan digunakan untuk akses ke modul.
 anon_user=Pengguna Unix
 anon_euser=Pengguna Unix yang hilang atau tidak sah untuk laluan URL '$1'
+
 logout_title=Auto-Logout Times
 logout_desc=Halaman ini boleh digunakan untuk mengkonfigurasi masa logout tidak aktif yang berbeza untuk pengguna Usermin yang berbeza. Masa tamat mesti dimasukkan dalam beberapa minit, dan tamat masa sifar bermakna sesi bagi pengguna yang sepadan tidak akan dilog masuk secara automatik.
 logout_type=Taipkan
@@ -418,6 +452,7 @@ logout_egroup=Kumpulan hilang atau tidak sah dalam baris $1
 logout_efile=Fail yang hilang atau tidak wujud dalam baris $1 
 logout_etime=Masa tamat yang hilang atau tidak sah dalam baris $1 
 logout_ecannot=Anda tidak dibenarkan untuk mengkonfigurasi masa logout
+
 dav_title=DAV Server
 dav_header=Pilihan pelayan DAV
 dav_path=DAV diaktifkan?
@@ -438,16 +473,22 @@ dav_users=Pengguna yang boleh menggunakan DAV
 dav_users1=Semua pengguna
 dav_users0=Pengguna dan kumpulan disenaraikan di bawah ..
 dav_eusers=Tiada pengguna yang dimasukkan
+
 syslog_errorlog=Log ralat ralat Usermin
+
 descs_title=Judul Modul
 descs_info=Halaman ini membolehkan anda menentukan tajuk alternatif untuk modul Usermin, untuk mengatasi penerangan standard mereka.
+
 advanced_title=Pilihan Lanjutan
 advanced_pass=Buat kata laluan yang tersedia untuk program Usermin? <br><font size=-1> (Tidak berfungsi apabila pengesahan sesi diaktifkan) </font>
+
 blocked_title=Hos dan Pengguna yang disekat
 blocked_none=Tiada tuan rumah atau pengguna yang kini disekat oleh Usermin.
 blocked_user=Pengguna Usermin
 blocked_cleardesc=Klik butang ini untuk mengosongkan semua hos semasa dan pengguna, dengan memulakan semula proses pelayan Usermin.
+
 mobile_title=Pilihan Peranti Mudah Alih
+
 copycert_err=Gagal menyalin tetapan SSL dari Webmin
 copycert_essl=SSL tidak didayakan
 copycert_ekeyfile=Tiada fail kunci peribadi ditetapkan di Webmin

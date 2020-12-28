@@ -16,6 +16,7 @@ index_amode=Usuarios a los que autorizar
 index_amode0=Todos los usuarios Unix
 index_amode1=Sólo los usuarios listados ..
 index_amode2=Todos excepto los usuarios listados ..
+
 edit_title=Comando programado
 edit_cmd=Script completo a ejecutar
 edit_header=Detalles de comando programado
@@ -23,6 +24,7 @@ edit_delete=Cancelar este comando
 edit_run=Ejecutar Ahora
 edit_ejob=¡El comando planificado ya no existe!
 edit_ecannot=No está autorizado a editar este comando programado
+
 create_err=Fallo al crear el comando programado
 create_euser=Nombre de usuario no ingresado o no válido
 create_edate=Fecha u hora no ingresada o no válida
@@ -31,17 +33,21 @@ create_efuture=Fecha y hora ya pasadas
 create_edir=Directorio no ingresado o no válido
 create_ecannot=No está autorizado a crear comandos programados para este usuario
 create_eallow=El usuario especificado no está autorizado a ejecutar comandos planificados
+
 delete_err=Fallo al cancelar el comando
 delete_egone=El comando ya se ejecutó o eliminó
+
 acl_users=Puede editar comandos programados para
 acl_all=Todos los usuarios
 acl_this=Usuario actual Webmin
 acl_only=Solo usuarios
 acl_except=Todos excepto los usuarios
 acl_allow=¿Puede editar los usuarios autorizados?
+
 run_title=Ejecutando Comando
 run_output=Salida del comando planificado ..
 run_none=No se generó salida
+
 allow_err=Fallo al salvar usuarios autorizados
 allow_ecannot=No está autorizado a configurar los usuarios autorizados
 allow_eusers=No se introdujeron usuarios

@@ -1,5 +1,6 @@
 check_etargets=Konfiguracijska datoteka iSCSI poslužitelja $1 nije pronađena u vašem sustavu.
 check_eserver=Program iSCSI poslužitelja $1 nije pronađen u vašem sustavu.
+
 index_title=iSCSI poslužitelj
 index_clink=Možda nije instaliran ili je vaša <a href='$1'>konfiguracija modula</a> netočna.
 index_stop=Zaustavi iSCSI poslužitelj
@@ -11,6 +12,7 @@ index_restartdesc=Kliknite ovaj gumb kako biste primijenili trenutnu konfiguraci
 index_atboot=Započeti pri pokretanju?
 index_atbootdesc=Promijenite ovu opciju za kontrolu da li se iSCSI poslužitelj pokreće u vrijeme pokretanja sustava ili ne. Ako se trenutno ne pokreće pri pokretanju i odabran je Da, stvorit će se nova init skripta.
 index_return=indeks modula
+
 extents_title=Uređaji za dijeljenje
 extents_none=Još nije stvoren nijedan uređaj za dijeljenje.
 extents_name=Naziv uređaja
@@ -25,6 +27,7 @@ extents_denone=Nijedna nije odabrana
 extents_einuse=Uređaj $1 ne može se izbrisati jer ga koristi : $2 
 extents_drusure=Jeste li sigurni da želite ukloniti sljedeće uređaje: $1 ? Njihovi će se sadržaji sačuvati, ali više neće biti dostupni iSCSI klijentima.
 extents_sure=Brisanje uređaja
+
 extent_create=Stvorite uređaj za dijeljenje
 extent_edit=Uredite uređaj za dijeljenje
 extent_egone=Uređaj za dijeljenje $1 ne postoji!
@@ -50,6 +53,7 @@ extent_estart=Početak mjere mora biti broj
 extent_esize=Veličina mjere mora biti broj
 extent_esizemax=Kraj mjere ne može biti veći od veličine uređaja $1 
 extent_einuse=Uređaj se ne može izbrisati jer ga koristi : $1 
+
 devices_title=Kombinacije uređaja
 devices_none=Još nisu stvorene kombinacije uređaja.
 devices_name=Naziv kombinacije
@@ -65,6 +69,7 @@ devices_denone=Nijedna nije odabrana
 devices_einuse=Kombinacija $1 ne može se izbrisati jer je u upotrebi : $2 
 devices_drusure=Jeste li sigurni da želite ukloniti sljedeće kombinacije uređaja: $1 ? Njihovi će se sadržaji sačuvati, ali više neće biti dostupni iSCSI klijentima.
 devices_sure=Izbrišite kombinacije uređaja
+
 device_create=Stvorite kombinaciju uređaja
 device_edit=Uređivanje kombinacije uređaja
 device_egone=Kombinacija uređaja $1 ne postoji!
@@ -81,6 +86,7 @@ device_sure=Izbrišite kombinaciju uređaja
 device_einuse=Ovu kombinaciju uređaja nije moguće izbrisati jer je koristi : $1 
 device_eextents=Nije odabran nijedan uređaj član
 device_eself=Jedan od odabranih članova uređaja sadrži ovaj uređaj!
+
 targets_title=Dijeljenje ciljeva
 targets_none=Još nisu stvoreni ciljevi dijeljenja.
 targets_name=Naziv cilja
@@ -96,6 +102,7 @@ targets_derr=Brisanje ciljeva dijeljenja nije uspjelo
 targets_denone=Nijedna nije odabrana
 targets_drusure=Jeste li sigurni da želite ukloniti sljedeće ciljeve dijeljenja: $1 ? Nema podataka neće biti izgubljeni, ali oni više neće biti dostupni iSCSI klijentima.
 targets_sure=Izbrišite ciljeve dijeljenja
+
 target_create=Stvaranje ciljeva dijeljenja
 target_edit=Uređivanje ciljeva dijeljenja
 target_egone=Cilj dijeljenja $1 ne postoji!
@@ -112,6 +119,7 @@ target_rusure=Jeste li sigurni da želite izbrisati cilj dijeljenja $1 ? Podaci 
 target_sure=Brisanje cilja
 target_enetwork=Nedostaje ili nije važeća mreža za dijeljenje
 target_emask=Nedostaje ili nevažeća mrežna maska za dijeljenje
+
 opts_title=Opcije iSCSI poslužitelja
 opts_header=Opcije za sve iSCSI ciljeve
 opts_ip4=Prihvatite IPv4 veze
@@ -124,10 +132,12 @@ opts_err=Spremanje opcija nije uspjelo
 opts_ename=Nedostaje ili nevaljano ime - dopuštena su samo slova, brojevi, crtica, točka i podvlaka
 opts_eport=Nedostaje ili ne numerički broj porta
 opts_esess=Nedostajuće ili nebrojane maksimalne sesije
+
 manual_title=Uređivanje konfiguracijske datoteke
 manual_desc=Upotrijebite tekstualni okvir u nastavku za uređivanje konfiguracijske datoteke poslužitelja iSCSI $1. Budite oprezni jer neće biti izvršena provjera valjanosti na vašem unosu!
 manual_err=Spremanje konfiguracijske datoteke nije uspjelo
 manual_edata=Sadržaj nije unesen!
+
 users_title=iSCSI provjera autentičnosti
 users_none=Još nije stvoren korisnik iSCSI. Klijenti će moći pristupiti zajedničkim uređajima bez autentičnosti.
 users_add=Dodajte novog iSCSI korisnika.
@@ -135,6 +145,7 @@ users_delete=Izbriši odabrane korisnike
 users_name=Korisničko ime
 users_mode=Način provjere autentičnosti
 users_return=popis korisnika
+
 user_create=Stvori iSCSI korisnika
 user_edit=Uređivanje iSCSI korisnika
 user_header=pojedinosti o iSCSI
@@ -145,13 +156,16 @@ user_egone=Korisnik više ne postoji!
 user_err=Spremanje korisnika iSCSI nije uspjelo
 user_euser=Nedostajeće ili nevažeće korisničko ime - razmaci i koloni nisu dopušteni
 user_epass=Nedostajuća ili nevaljana lozinka - razmaci i koloni nisu dopušteni
+
 desc_extent=Uređaj za dijeljenje $1 
 desc_device=Kombinacija uređaja $1 
 desc_target=Dijeljenje cilja $1 
+
 start_err=Nije uspio pokretanje iSCSI poslužitelja
 stop_err=Zaustavljanje poslužitelja iSCSI nije uspjelo
 restart_err=Ponovno pokretanje iSCSI poslužitelja nije uspjelo
 atboot_err=Nije omogućeno pri pokretanju
+
 log_create_extent=Napravljen je uređaj za dijeljenje $1 
 log_modify_extent=Ažurirano za dijeljenje $1 
 log_delete_extent=Izbrisan je uređaj za dijeljenje $1 

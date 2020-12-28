@@ -11,6 +11,7 @@ index_when=Evet, $1
 index_act=Aksiyon
 index_exec=gerçekleştirmek
 index_delete=Seçilen Kopyaları Sil
+
 edit_title=Küme Kopyasını Düzenle
 create_title=Küme Kopyası Oluştur
 edit_header=Küme kopya ayrıntıları
@@ -31,12 +32,14 @@ edit_run=Şimdi Kopyala
 edit_return=küme kopyası
 edit_email=Adresine e-posta çıktısı gönder
 edit_none=Kimse
+
 save_err=Küme cron işi kaydedilemedi
 save_efiles=Kopyalanacak dosya girilmedi
 save_edest=Hedef dizin eksik
 save_eservers=Girilecek kopyalanacak sunucu yok
 save_efile='$1' kopyalanacak dosya mutlak bir yol değil
 save_eemail=Eksik veya geçersiz e-posta adresi
+
 exec_title=Dosyalar kopyalanıyor
 exec_files1=$1 dosya seçilen sunuculara $2 kopyalanıyor ..
 exec_files2=$1 seçilen sunuculara $2 kopyalanıyor ..
@@ -50,12 +53,15 @@ exec_not=Aşağıdaki dosyalar $1 klasörüne kopyalanamadı :
 exec_cmd=$1 üzerinde kopyalama sonrası komut çıktısı :
 exec_before=$1 üzerinde kopyalama öncesi komut çıkışı :
 exec_on= $1 : $2 üzerinde çalıştırılamadı
+
 log_create=$1 - $2 sunucuları için kopya oluşturuldu
 log_modify=$1 - $2 sunucuları için değiştirilmiş kopya
 log_delete=$1 - $2 sunucuları için silinen kopya
 log_exec=$1 ila $2 sunucu kopyalandı
 log_deletes=$1 kopya silindi
+
 email_subject_succeeded=$1 kümenin kopyası başarılı oldu
 email_subject_failed=$1 kümesinin kopyası başarısız oldu
+
 delete_err=Kopyalar silinemedi
 delete_enone=Hiçbiri seçilmedi

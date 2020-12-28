@@ -9,6 +9,7 @@ index_start=Begin Syslog-NG
 index_startdesc=Klik op hierdie knoppie om die Syslog-NG-dememon te begin met behulp van die huidige konfigurasie.
 index_return=module-indeks
 index_version=Syslog-NG $1 
+
 options_title=Aanmeldingsopsies
 options_header=Opsies vir alle loglêers
 options_secs=sekondes
@@ -55,6 +56,7 @@ options_esync=Ontbrekende of ongeldige aantal boodskappe wat gebuffer moet word 
 options_estats=Tyd of nie-numeriese tyd om te wag tussen statistiekboodskappe
 options_elog_fifo_size=Ontbrekende of ongeldige aantal boodskappe na die buffer
 options_elog_msg_size=Maksimum of nie-numeriese maksimum logboodskapgrootte
+
 destinations_title=Teken bestemmings aan
 destinations_name=Bestemmingsnaam
 destinations_type=Skryf na
@@ -77,6 +79,7 @@ destinations_add=Voeg 'n nuwe logbestemming by.
 destinations_return=aanteken bestemmings
 destinations_desc=Ander module se log
 destinations_cmd=Afvoer vanaf $1 
+
 destination_header=Teken bestemmingsopsies aan
 destination_title1=Skep logbestemming
 destination_title2=Redigeer logbestemming
@@ -117,17 +120,22 @@ destination_enet_localip=Plaaslike IP-adres ontbreek of ongeldig
 destination_enet_localport=Plaaslike poortnommer ontbreek of ongeldig
 destination_enet_host=Syslog-bediener se gasheer of adres ontbreek of ongeldig
 destination_eunix=Unix-soknaam ontbreek
+
 ddelete_err=Kon nie bestemmings uitvee nie
 ddelete_enone=Geen gekies nie
 ddelete_eused=Die bestemming $1 kan nie uitgevee word nie, aangesien dit deur 'n logteiken gebruik word
+
 sdelete_err=Kon nie bronne uitvee nie
 sdelete_enone=Geen gekies nie
 sdelete_eused=Die logbron $1 kan nie uitgevee word nie, aangesien dit deur 'n logteiken gebruik word
+
 fdelete_err=Kon nie filters uitvee nie
 fdelete_enone=Geen gekies nie
 fdelete_eused=Die logfilter $1 kan nie uitgevee word nie, aangesien dit deur 'n logteiken gebruik word
+
 ldelete_err=Kon nie log-teikens uitvee nie
 ldelete_enone=Geen gekies nie
+
 filters_title=Tekenfilters
 filters_name=Filternaam
 filters_desc=voorwaardes
@@ -144,6 +152,7 @@ filters_program=program <tt>$1</tt>
 filters_match=pas by "$1"
 filters_host=vanaf gasheernaam <tt>$1</tt>
 filters_netmask=van sender <tt>$1</tt>
+
 filter_title1=Skep logfilter
 filter_title2=Redigeer logfilter
 filter_header=Besonderhede van die logfilter spesifikasie
@@ -169,6 +178,7 @@ filter_enet=Ontbrekende of ongeldige netwerk-IP-adres
 filter_emask=Netmasker ontbreek of ongeldig
 filter_ebool=Fout in ingewikkelde uitdrukking
 filter_egone=Filter bestaan nie meer nie!
+
 logs_title=Teken teikens
 logs_source=Bronne
 logs_filter=filters
@@ -177,6 +187,7 @@ logs_add=Voeg 'n nuwe logteiken by.
 logs_delete=Vee geselekteerde logteikens uit
 logs_return=teken teikens
 logs_none=Geen
+
 log_title1=Skep logteiken
 log_title2=Redigeer logteiken
 log_header=Teken die bron-, filter- en bestemmingskeuse aan
@@ -190,6 +201,7 @@ log_flags=Doelopsies
 log_egone=Teken teiken bestaan nie meer nie!
 log_err=Kon nie die logteiken stoor nie
 log_esource=Geen bronne is gekies nie
+
 sources_title=Teken bronne
 sources_none=Geen bronne is nog gedefinieer nie!
 sources_add=Voeg 'n nuwe logbron by.
@@ -207,6 +219,7 @@ sources_typen=Sonstroom
 sources_typenw=Syslog-bediener
 sources_return=log bronne
 sources_none2=Geen
+
 source_title1=Skep logbron
 source_title2=Redigeer logbron
 source_header=Teken bronopsies aan
@@ -243,15 +256,20 @@ source_door=Deurlêernaam
 source_esun_streams_name=Sonstrome-lêernaam ontbreek of ongeldig
 source_edoor=Ontbrekende of ongeldige Sun-strome deurlêernaam
 source_transport=Netwerkprotokol
+
 view_title=Kyk na Logfile
 view_header=Laaste $1 reëls van $2 
 view_empty=Die loglêer is leeg
 view_refresh=Verfris
 view_filter=Toon slegs reëls met teks $1 
+
 apply_err=Kon nie konfigurasie toepas nie
 apply_egone=Nie hardloop nie!
+
 start_err=Kon nie Syslog-NG-bediener begin nie
+
 stop_err=Kon nie Syslog-NG-bediener stop nie
+
 log_create_destination=Logbestemming $1 geskep
 log_modify_destination=Gewysigde logbestemming $1 
 log_delete_destination=Logbestemming $1 is uitgevee

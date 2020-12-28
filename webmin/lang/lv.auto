@@ -9,6 +9,7 @@ index_restart=Restartējiet Webmin
 index_restartmsg=Noklikšķiniet uz šīs pogas, lai atsāktu Webmin servera procesu. Tas var būt nepieciešams, ja nesen esat jauninājis Perl.
 index_refresh=Atsvaidziniet moduļus
 index_refreshmsg=Pārbaudiet visus Webmin moduļus instalētajiem serveriem un atjauniniet tos, kas parādās kategorijā Neizmantotie moduļi.
+
 access_title=IP piekļuves kontrole
 access_desc=Webmin serveri var konfigurēt, lai liegtu piekļuvi vai atļautu piekļuvi tikai no noteiktām IP adresēm, izmantojot šo veidlapu. Var ievadīt arī resursdatorus (piemēram, foo.bar.com) un IP tīklus (piemēram, 10.254.3.0 vai 10.254.1.0/255.255.255.128 vai 10.254.1.0/25 vai 10.254.1.5-10.254.97.127). Jums vajadzētu ierobežot piekļuvi serverim ar uzticamām adresēm, it īpaši, ja tas ir pieejams no interneta. Pretējā gadījumā ikviens, kurš uzminēs jūsu paroli, pilnībā kontrolēs jūsu sistēmu.
 access_ip=Atļautās IP adreses
@@ -33,6 +34,7 @@ access_ehost=Neizdevās atrast '$1' IP adresi
 access_eself=Jūsu pašreizējā IP adrese ($1) tiktu noraidīta
 access_always=Vai atrisināt saimniekdatoru nosaukumus katrā pieprasījumā?
 access_trust=Vai uzticat starpniekserveri nodrošinātajai attālajai IP adresei?
+
 bind_title=Ostas un adreses
 bind_desc2=Šo veidlapu var izmantot, lai mainītu porta numuru, kuru klausās Webmin, vai liktu to klausīties tikai vienā jūsu sistēmas IP adresē. Varat arī konfigurēt tā, lai tas pieņemtu savienojumus vairākos portos vai klausītos vairākās IP adresēs. Piezīme - pēc porta vai saistošās adreses maiņas jūsu tīmekļa pārlūks var pamudināt jūs atkal pieteikties.
 bind_header=IP adreses un porti
@@ -61,6 +63,7 @@ bind_eipv6=IPv6 nevar iespējot, ja nav instalēts modulis $1 Perl
 bind_redirecting=Novirzīšana uz jaunu URL ..
 bind_elsof=Jauns ports $1 jau tiek izmantots citā procesā
 bind_eonsystem=IP adrese $1 šajā sistēmā nav aktīva, tāpēc to nevar izmantot
+
 log_title=Mežizstrāde
 log_desc=Webmin var konfigurēt rakstīt tīmekļa servera triecienu žurnālu standarta CLF žurnāla faila formātā. Ja reģistrēšana ir iespējota, varat arī izvēlēties, vai tiek ierakstītas IP adreses vai resursdatoru nosaukumi un cik bieži žurnāla fails tiek notīrīts. Pēc ieslēgšanas žurnāli tiek ierakstīti failā $1.
 log_desc2=Ja reģistrēšana ir iespējota, Webmin arī failā $1 ierakstīs detalizētāku lietotāja darbību žurnālu. Šo žurnālu var apskatīt un analizēt ar Webmin darbību žurnāla moduli, lai precīzi redzētu, ko dara katrs Webmin lietotājs.
@@ -92,6 +95,7 @@ log_login=Vai darbības žurnālā iekļaut Webmin pieteikšanās un atteikšano
 log_email=Nosūtiet reģistrētās darbības pa e-pastu uz
 log_emailnone=Nesūtiet
 log_inmodsemail=Nosūtīt e-pastu darbībām
+
 proxy_title=Starpniekserveri un lejupielādes
 proxy_desc=Ja resursdators, kurā darbojas Webmin, atrodas aiz kāda veida ugunsmūra, jums, iespējams, būs jāiestata starpniekserveris, lai to izmantotu tīmekļa un FTP vietnēm. Atsevišķi moduļi, piemēram, <tt>programmatūras pakotnes</tt>, izmantos šos starpniekserverus, lejupielādējot failus vai programmas.
 proxy_header=Starpniekserveri
@@ -134,6 +138,7 @@ proxy_return=starpniekserveri un lejupielādes
 proxy_tabproxy=Starpniekserveris
 proxy_tabdown=Lejupielāde
 proxy_fallback=Izmēģiniet tiešo pieprasījumu, ja starpniekservera nav?
+
 ui_title=Lietotāja interfeiss
 ui_desc=Šī forma ļauj rediģēt lietotāja moduļa opcijas, kuras izmanto visi moduļi. Ievadot krāsas, katra no tām jāprecizē, izmantojot parasto RGB sistēmu, kur katra vērtība ir heksa skaitlis no 00 līdz ff.
 ui_header=Lietotāja interfeisa opcijas
@@ -183,6 +188,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/gggg (ti, 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/gggg (ti, 2001.09.16.)
 ui_dateformat_yyyy/mm/dd=gggg/mm/dd (ti, 2001/09/16)
 ui_ehostnamedisplay=Trūkst vai nav derīgs displeja resursdatora nosaukums
+
 mods_title=Webmin moduļi
 mods_desc1=Webmin moduļus var pievienot pēc instalēšanas, izmantojot veidlapu labajā pusē. Moduļi parasti tiek izplatīti <tt>.wbm</tt> failos, no kuriem katrs var saturēt vienu vai vairākus moduļus. Moduļus var instalēt arī no RPM failiem, ja jūsu operētājsistēma tos atbalsta.
 mods_installsource=Instalēt no
@@ -226,6 +232,7 @@ mods_tabinstall=Uzstādīt
 mods_tabclone=Klons
 mods_tabdelete=Dzēst
 mods_tabexport=Eksportēt
+
 install_err1=Neizdevās instalēt moduli no $1
 install_efile=Fails neeksistē
 install_err2=Neizdevās instalēt augšupielādēto moduli
@@ -259,10 +266,12 @@ install_cat=Zem kategorijas $1.
 install_eneither=RPM nav Webmin moduļa vai motīva
 install_err4=Neizdevās instalēt standarta moduli
 install_emissing=Norādītais modulis neeksistē
+
 clone_err=Neizdevās klonēt moduli
 clone_elink=neizdevās izveidot saiti : $1
 clone_ecopy=neizdevās nokopēt konfigurāciju : $1
 clone_desc=$1 klons
+
 delete_err=Neizdevās izdzēst moduļus
 delete_edep=Moduli $1 nevar izdzēst, jo modulis $2 ir atkarīgs no tā
 delete_desc1=$1 ($2 klons)
@@ -274,6 +283,7 @@ delete_rusure2=Vai tiešām vēlaties izdzēst tēmu $2? $1 kB faili tiks izdzē
 delete_rusure3=Vai tiešām vēlaties izdzēst moduļa klonus $2?
 delete_acls=Vai noņemt no lietotājiem un atiestatīt piekļuves kontroles iestatījumus?
 delete_enone=Nav atlasīts neviens modulis
+
 os_title=Operētājsistēma un vide
 os_desc3=Šajā lapā tiek parādīta operētājsistēma, ko Webmin atklāja instalēšanas laikā, un sistēma, kas šobrīd ir atklāta. Ja tie atšķiras, varat izvēlēties atjaunināt Webmin OS informāciju, kas var būt nepieciešama, ja nesen esat jauninājis.
 os_desc2=Varat arī mainīt Webmin izmantoto meklēšanas ceļu, palaižot programmas, un koplietotās bibliotēkas ceļš tika nodots jebkurai programmai.
@@ -296,6 +306,7 @@ os_eiversion=Trūkst iekšējās operētājsistēmas versijas
 os_incorrect=Brīdinājums - jūsu sistēmā faktiski darbojas $1 versija $2.
 os_fix=Atjauniniet noteikto operētājsistēmu
 os_usermin=Atjauniniet arī Usermin OS
+
 lang_title=Valoda
 lang_title2=Webmin valoda
 lang_lang=Displejs valodā
@@ -307,6 +318,7 @@ lang_chardef=Nosaka pēc valodas
 lang_charover=Piespiest rakstzīmju kopu
 lang_err=Neizdevās saglabāt valodu
 lang_echarset=Trūkst vai nederīga izskata rakstzīmju kopa
+
 ssl_title=SSL šifrēšana
 ssl_essl=Šķiet, ka Net::SSLeay perl modulis nav instalēts jūsu sistēmā. Lai instalētu OpenSSL bibliotēku un Net::SSLeay, izpildiet <a href='$1'>šos norādījumus</a> no Webmin vietnes.
 ssl_cpan=Pārmaiņus jūs varat Webmin <a href='$1'>lejupielādēt un instalēt</a> jums nepieciešamo Net::SSLeay Perl moduli.
@@ -412,6 +424,7 @@ ssl_letsnotrenew=Atjaunot tikai manuāli
 ssl_staging=Šifrēsim serveri
 ssl_staging0=Īsts
 ssl_staging1=Pakāpeniska (tikai pārbaude)
+
 newkey_err=Neizdevās izveidot SSL atslēgu
 newkey_ecn=Trūkst vai nav derīgs servera nosaukums
 newkey_ecns=Nav ievadīts neviens servera nosaukums
@@ -424,11 +437,13 @@ newkey_ok=Veiksmīgi ģenerēta šāda SSL atslēga :
 newkey_esize=Trūkst vai nav derīgs atslēgas lielums
 newkey_edays=Trūkst vai nav derīgs dienu skaits pirms derīguma termiņa beigām
 newkey_ecountry=Valsts kodam jābūt diviem burtiem
+
 newcsr_err=Neizdevās izveidot SSL CSR
 newcsr_efile=Trūkst CSR faila nosaukuma
 newcsr_title=Ģenerēt CSR
 newcsr_ok=Veiksmīgi ģenerēts šāds SSL sertifikāta pieprasījums :
 newcsr_ok2=Šī CSR jānosūta parakstītājai iestādei, kas atgriezīs parakstītu sertifikātu. To var instalēt, izmantojot taustiņu iepriekš, izmantojot cilni <b>Augšupielādēt sertifikātu</b>.
+
 startpage_title=Indeksa lapas opcijas
 startpage_intro2=Šī lapa ļauj jums kontrolēt Webmin galvenās izvēlnes izskatu. Dažas opcijas var būt efektīvas tikai tad, ja tiek izmantota noklusējuma tēma.
 startpage_tabs=Kategorizēt moduļus?
@@ -442,6 +457,7 @@ startpage_gotonone=&lt;Nav&gt;
 startpage_gotomodule=Pēc pieteikšanās vienmēr dodieties uz moduli
 startpage_webminup=Rādīt Webmin atjauninājumus sistēmas informācijas lapā?
 startpage_moduleup=Rādīt moduļu atjauninājumus lapā Sistēmas informācija?
+
 upgrade_title=Jauniniet Webmin
 upgrade_desc=Šī forma ļauj jaunināt visu Webmin instalāciju uz jaunu versiju. Instalēt var no vietēja faila, augšupielādēta faila vai no jaunākās versijas vietnē <a href=http://www.webmin.com/>www.webmin.com</a>. Tāpat kā manuāla jaunināšana, visi jūsu konfigurācijas iestatījumi un trešo pušu moduļi tiks saglabāti.
 upgrade_descrpm=Šī veidlapa ļauj jaunināt visu Webmin instalāciju uz jaunu versiju, izmantojot RPM jaunināšanas opciju. Instalēt var no vietējā RPM faila, augšupielādēta faila vai no jaunākās versijas vietnē <a href=http://www.webmin.com/>www.webmin.com</a>. Tāpat kā manuāla jaunināšana, visi jūsu konfigurācijas iestatījumi un trešo pušu moduļi tiks saglabāti.
@@ -506,10 +522,12 @@ upgrade_tabupdate=Atjauniniet moduļus
 upgrade_tabsched=Plānotais atjauninājums
 upgrade_src=Jauniniet Webmin no
 upgrade_opts=Jaunināšanas iespējas
+
 newmod_desc=Pēc Webmin jaunināšanas visi jaunie moduļi jaunajā versijā tiks piešķirti vienam vai vairākiem lietotājiem. Šī forma ļauj iestatīt lietotājus, kuri saņem jaunus moduļus. Šis iestatījums tiks piemērots, veicot jaunināšanu komandrindā vai izmantojot iepriekš esošo veidlapu.
 newmod_header=Jaunas moduļa dotācijas
 newmod_def=Noklusējuma darbība - piešķiriet jaunus moduļus <tt>saknei</tt> vai <tt>administratoram</tt>
 newmod_users=Piešķiriet jaunus moduļus :
+
 update_desc1=Šī veidlapa ļauj jaunināt Webmin moduļus, kas <a href=http://www.webmin.com/updates.html>Webmin atjauninājumi</a> lapā vai no cita avota satur kļūdas vai drošības nepilnības. Tādējādi tiks salīdzināti pašlaik instalētie moduļi ar atjaunināšanai pieejamajiem moduļiem un pēc izvēles automātiski lejupielādēti un instalēti visi novecojuši moduļi.
 update_header1=Atjauniniet moduļus tūlīt
 update_header2=Atjauniniet moduļus pēc grafika
@@ -536,6 +554,7 @@ update_enomodsig=Nevarēja lejupielādēt moduļa paraksta failu : $1
 update_ebadmodsig=Moduļa paraksta pārbaude neizdevās : $1
 update_src=Jaunināšanas moduļi no
 update_opts=Moduļu atjaunināšanas iespējas
+
 ca_title=Sertifikātu iestāde
 ca_old=Esošais sertifikāts
 ca_header1=Izveidojiet jaunu SI sertifikātu
@@ -567,6 +586,7 @@ ca_eminiserv=SSL klienta sertifikāti tiek atbalstīti tikai zem miniserv.
 ca_eversion=Jūsu sistēmā instalētā moduļa Perl Net::SSLeay versija neatbalsta SSL klienta sertifikātus.
 ca_essleay=Jūsu sistēmā netika atrasta SSL administrēšanas komanda $1. Jums, iespējams, būs jāmaina ceļš Webmin lietotāju moduļa konfigurācijā.
 ca_essl=SSL sertifikāciju var iestatīt tikai tad, kad tīmekļa serveris darbojas SSL režīmā.
+
 session_title=Autentifikācija
 session_desc1=Ja iespējota, paroles noildze aizsargā jūsu Webmin serveri no brutāla spēka paroles krekinga uzbrukumiem, pievienojot nepārtraukti pieaugošu kavēšanos starp katru neveiksmīgu pieteikšanos vienam un tam pašam lietotājam.
 session_header=Autentifikācijas un sesijas iespējas
@@ -630,10 +650,12 @@ session_sha512=Izmantojiet SHA512 šifrēšanu
 session_emd5mod=MD5 šifrēšanu nevar izmantot, jo Perl $1 modulis nav instalēts.
 session_esha512mod=SHA512 šifrēšanu nevar izmantot, jo Perl $1 modulis nav instalēts.
 session_blocklock=Bloķēt arī lietotājus ar neveiksmīgiem pieteikumiem
+
 assignment_title=Pārdaliet moduļus
 assignment_header=Moduļu kategoriju piešķiršana
 assignment_ok=Mainīt kategorijas
 assignment_desc=Šī forma ļauj jums konfigurēt, kura kategorija katrs modulis tiek parādīts Webmin indeksa lapā.
+
 categories_title=Rediģēt kategorijas
 categories_header=Kategorijas ID un apraksti
 categories_desc=Šī forma ļauj pārdēvēt esošās Webmin kategorijas un izveidot jaunas, kurām piešķirt moduļus. Tabulas augšējā daļa ir paredzēta iebūvēto kategoriju aprakstu mainīšanai, bet apakšējā - jaunu kategoriju ID un aprakstu pievienošanai.
@@ -646,6 +668,7 @@ categories_name=Parādītais apraksts
 categories_lang=Rediģēt kategorijas valodā:
 categories_langok=Pārmaiņas
 categories_custom=Pielāgots
+
 log_access=Mainīta IP piekļuves kontrole
 log_bind=Mainīta osta un adrese
 log_log=Mainītas reģistrēšanas iespējas
@@ -691,6 +714,7 @@ log_onedelete_webmincron=Izdzēsta ieplānotā funkcija modulī $1
 log_letsencrypt=Pieprasīja jaunu SSL sertifikātu no vietnes Encrypt
 log_letsencryptdns=Izveidots šifrēsim DNS ierakstu $1
 log_letsencryptcleanup=Noņemts šifrēsim DNS ierakstu $1
+
 themes_title=Webmin motīvi
 themes_desc=Motīvi kontrolē Webmin lietotāja interfeisa izskatu, ieskaitot ikonas, krāsas, fonu un lapu izkārtojumu. Zemāk esošo izvēles rūtiņu var izmantot, lai izvēlētos kādu no jūsu sistēmā instalētajiem motīviem.
 themes_sel=Pašreizējā tēma :
@@ -706,6 +730,7 @@ themes_taboverlay=Mainīt pārklājumu
 themes_tabinstall=Instalēt motīvu
 themes_tabdelete=Dzēst motīvus
 themes_tabexport=Motīvu eksportēšana
+
 themes_err1=Neizdevās instalēt motīvu no $1
 themes_efile=Fails neeksistē
 themes_err2=Neizdevās instalēt augšupielādēto motīvu
@@ -731,9 +756,11 @@ themes_delok=Dzēstā tēma :
 themes_return=tēmu saraksts
 themes_err4=Neizdevās mainīt pārklājuma tēmu
 themes_eoverlay=Atlasītā pārklājums nav saderīgs ar pašreizējo globālo tēmu
+
 themes_desc4=Instalētās motīvas var eksportēt kā wbt.gz failu, izmantojot zemāk esošo veidlapu. Pēc tam motīva failu var instalēt citā sistēmā, kurā darbojas Webmin.
 themes_exportmods=Motīvi eksportēšanai
 themes_exportok=Eksportēt atlasītās motīvas
+
 referers_title=Uzticamie novirzītāji
 referers_desc=Šī lapa ļauj jums konfigurēt Webmin atsauču pārbaudes atbalstu, kas tiek izmantots, lai novērstu ļaunprātīgas saites no citām vietnēm, kas liek jūsu pārlūkprogrammai veikt bīstamas darbības ar Webmin. Tomēr, ja jums ir saites uz Webmin no jūsu vietnēm, kuras jūs nevēlaties brīdināt, pievienojiet šīs vietnes zemāk esošajam sarakstam.
 referers_list=Uzticamas vietnes
@@ -742,6 +769,7 @@ referers_none2=BRĪDINĀJUMS: Tādējādi jūsu sistēma tiek atvērta XSS uzbru
 referers_referer=Vai novirzītāja pārbaude ir iespējota?
 referers_err=Neizdevās saglabāt referentus
 referers_ehost='$1' nav derīgs uzticamais resursdatora nosaukums
+
 update_err=Neizdevās atjaunināt moduļus
 update_eurl=Trūkst vai nav derīgs atjaunināšanas URL
 update_title=Atjauniniet moduļus
@@ -762,6 +790,7 @@ update_rv=Tiek meklēti atjauninātie Webmin moduļi no $1
 update_eemail=Jums jāievada e-pasta adrese, ja tiek parādīta tikai tā, kas tiks atjaunināta.
 update_subject=Webmin moduļu atjaunināšanas ziņojums
 update_version=Tagad ir pieejams lejupielādei jauns Webmin izlaidums (versija $1). Turpmākie atjauninājumi tiks izlaisti tikai jaunākajai versijai.
+
 anon_title=Piekļuve anonīmam modulim
 anon_desc=Šī lapa ļauj jums piešķirt piekļuvi atlasītajiem Webmin moduļiem un ceļiem bez klientiem pieteikties. Katram moduļa ceļam, kuru ievadāt zemāk (piemēram, <tt>/custom</tt> vai <tt>/passwd</tt>), jums jāievada arī tā Webmin lietotāja vārds, kura atļaujas tiks izmantotas piekļuvei modulis.
 anon_desc2=Piešķirot anonīmu piekļuvi, jums jābūt ļoti uzmanīgam, jo nepietiekamas IP piekļuves vadīklas vai piekļuves piešķiršana nepareizam modulim var ļaut uzbrucējiem pārņemt jūsu sistēmu.
@@ -770,15 +799,19 @@ anon_user=Webmin lietotājs
 anon_err=Neizdevās saglabāt anonīmu piekļuvi
 anon_eurl=“$1” nav derīgs URL ceļš
 anon_euser=Trūkst vai nav derīgs Webmin lietotājs URL ceļam '$1'
+
 enogpg=GnuPG nav instalēts
+
 standard_failed=Neizdevās lejupielādēt moduļu sarakstu : $1
 standard_header=Webmin standarta moduļi
 standard_warn=Brīdinājums - jūs nedarbināt jaunāko Webmin versiju $1, tāpēc šos moduļus, iespējams, neizdosies instalēt.
 standard_eurl=Nederīgs standarta moduļu URL
+
 third_failed=Neizdevās lejupielādēt moduļu sarakstu : $1
 third_header=Trešās puses Webmin moduļi
 third_eurl=Nederīgs trešo personu moduļu URL
 third_title=Atlasiet Trešās puses modulis
+
 lock_title=Failu bloķēšana
 lock_desc=Pēc noklusējuma Webmin iegūs bloķēšanu visiem failiem, kurus tas modificē, lai novērstu vairāku procesu vienlaicīgu modificēšanu, kas varētu izraisīt failu sabojāšanu. Šī lapa ļauj selektīvi vai pilnībā atspējot bloķēšanu, ja tā rada problēmas.
 lock_header=Failu bloķēšanas iestatījumi
@@ -789,6 +822,7 @@ lock_except=Bloķējiet visus failus un direktorijus, izņemot ..
 lock_err=Neizdevās saglabāt faila bloķēšanu
 lock_edir='$1' nav absolūts ceļš
 lock_edirs=Nav ievadīts neviens fails vai direktorijs
+
 ipkey_title1=Izveidot SSL atslēgu
 ipkey_title2=Rediģēt SSL atslēgu
 ipkey_header=IP specifiska SSL atslēgas informācija
@@ -798,6 +832,7 @@ ipkey_eip2=“$1” nav derīga IP adrese vai resursdatora nosaukums
 ipkey_eips=Nav ievadītas IP adreses
 ipkey_eextracas=Nav ievadīti papildu sertifikātu faili
 ipkey_eextraca=Papildu sertifikāta fails $1 neeksistē
+
 descs_title=Moduļu nosaukumi
 descs_info=Šī lapa ļauj jums norādīt Webmin moduļu alternatīvos nosaukumus, lai ignorētu to standarta aprakstus.
 descs_mod=Modulis
@@ -807,11 +842,13 @@ descs_cdesc=Klona nosaukums
 descs_err=Neizdevās saglabāt moduļu nosaukumus
 descs_edesc=Trūkst moduļa '$1' nosaukuma
 descs_etitle=Trūkst klona '$1' nosaukuma
+
 export_err=Neizdevās eksportēt moduļus
 export_ecmd=Trūkst vajadzīgās komandas $1
 export_efile=Trūkst vai nav derīgs eksporta fails
 export_done=Atlasītos moduļus veiksmīgi eksportēja uz $1.
 export_title=Eksporta moduļi
+
 advanced_title=Pielāgota opcija
 advanced_header=Uzlabotas un eksperimentālas iespējas
 advanced_temp=Pagaidu failu direktorijs
@@ -855,10 +892,13 @@ advanced_listdir=Sarakstu direktorijas bez indeksa faila?
 advanced_headers=Papildu HTTP galvenes
 advanced_eheader=Galvenes jāformatē, piemēram, <tt>Header: Value</tt>
 advanced_sortconfigs=Vai saglabāt konfigurācijas failus, kas sakārtoti pēc tā taustiņiem?
+
 syslog_errorlog=Webmin kļūdu žurnāls
+
 clear_title=Notīrīt lejupielādes kešatmiņu
 clear_done=Webmin kešatmiņa, kas satur $1 failus no $2 URL, ir veiksmīgi notīrīta.
 clear_none=Webmin lejupielādes kešatmiņā pašlaik nav neviena vietrāža URL.
+
 savekey_err=Neizdevās saglabāt jauno atslēgu
 savekey_ekey=Trūkst vai nav derīga PEM formāta atslēga
 savekey_ecert=Trūkst vai nav derīgs PEM formāta sertifikāts
@@ -868,6 +908,7 @@ savekey_title=Augšupielādējiet esošo atslēgu
 savekey_done2=Piegādātā SSL atslēga ir saglabāta $1, bet sertifikāts - $2.
 savekey_done=Piegādātā SSL atslēga un sertifikāts ir saglabāti failā $1.
 savekey_done3=Piegādātais ķēdes SSL sertifikāts ir saglabāts failā $1.
+
 cache_title=Kešatmiņā saglabāti URL
 cache_search=Atrodiet vietrāžus URL, kas satur:
 cache_ok=Meklēt
@@ -880,8 +921,10 @@ cache_delete=Flush atlasīts no kešatmiņas
 cache_err=Neizdevās iztīrīt kešatmiņā saglabātos URL
 cache_enone=Nav atlasīts
 cache_efile=Nederīgs faila nosaukums
+
 restart_title=Restartējot Webmin
 restart_done=Webmin servera process tagad tiek restartēts - pirms turpināšanas, lūdzu, pagaidiet dažas sekundes.
+
 mobile_title=Mobilās ierīces opcijas
 mobile_header=Opcijas mobilajām pārlūkprogrammām
 mobile_theme=Tēma mobilajām pārlūkprogrammām
@@ -890,6 +933,7 @@ mobile_nosession=Vai piespiest izmantot HTTP autentifikāciju?
 mobile_agents=Papildu lietotāju aģenti mobilajām pārlūkprogrammām
 mobile_err=Neizdevās saglabāt mobilās ierīces opcijas
 mobile_prefixes=URL resursdatora nosaukuma prefiksi mobilajām pārlūkprogrammām
+
 blocked_title=Bloķētie resursdatori un lietotāji
 blocked_type=Veids
 blocked_who=Resursdatora nosaukums vai lietotājvārds
@@ -901,9 +945,11 @@ blocked_host=Klienta resursdators
 blocked_clear=Notīrīt visus blokus
 blocked_cleardesc=Noklikšķiniet uz šīs pogas, lai notīrītu visus pašreizējos resursdatoru un lietotāju bloķēšanu, restartējot Webmin servera procesu.
 blocked_restarting=Webmin servera process tagad tiek atsākts, lai notīrītu bloķētos resursdatorus un lietotājus - pirms turpināšanas, lūdzu, pagaidiet dažas sekundes.
+
 refreshmods_title=Atsvaidziniet moduļus
 refreshmods_installed=Tiek pārbaudīti izmantojamie Webmin moduļi.
 refeshmods_counts=.. atrasta $2 ar instalētām lietojumprogrammām, $1 nav instalēta.
+
 debug_title=Atkļūdošanas žurnālfails
 debug_header=Webmin atkļūdošanas žurnāla faila opcijas
 debug_enabled=Atkļūdošanas žurnāls ir iespējots?
@@ -931,6 +977,7 @@ debug_cmd=Komandrinda
 debug_cron=Pamatinformācijas darbi
 debug_inmods=Moduļi atkļūdošanas žurnālu rakstīšanai
 debug_emodules=Atlasītajiem moduļiem nav atkļūdošanas
+
 notif_passexpired=Jūsu Webmin parolei ir beidzies derīguma termiņš! Nākamajā pieteikšanās reizē jūs to būsit spiests mainīt.
 notif_passchange=Jūsu Webmin parole pēdējo reizi tika mainīta $1, un tā ir jāmaina $2 dienās.
 notif_passlock=Jūsu Webmin parole pēdējo reizi tika mainīta $1, un, ja tā netiks mainīta, jūsu konts tiks bloķēts $2 dienās.
@@ -946,6 +993,7 @@ notify_updatedesc=Novērš problēmu
 notif_updateok=Instalējiet atjauninājumus tūlīt
 notif_reboot=Nesenie pakotnes atjauninājumi (piemēram, jauna kodola versija) pilnībā jāpielieto no jauna.
 notif_rebootok=Restartēt tagad
+
 status_title=Fona statusa kolekcija
 status_header=Statusa savākšanas darba iestatījumi
 status_interval=Savākt sistēmas statusu fonā?
@@ -957,6 +1005,7 @@ status_temp=Savāc piedziņas temperatūru?
 status_units=Temperatūras vienības
 status_celsius=Pēc Celsija
 status_fahrenheit=Farenheits
+
 sendmail_title=Sūtīt e-pastu
 sendmail_desc=Šī lapa kontrolē to, kā Webmin sūta e-pastu, piemēram, no plānotajām dublējumkopijām vai fona uzraudzības. Tas ietekmē arī e-pastu, kas nosūtīts, izmantojot moduli Lasīt lietotāja pastu.
 sendmail_header=Pasta sūtīšanas iespējas
@@ -997,12 +1046,14 @@ sendmail_url=Webmin URL izmantošanai e-pastā
 sendmail_url_def=Noklusējums ($1)
 sendmail_url_custom=Pielāgots URL
 sendmail_eurl=Pielāgots URL nav norādīts vai nav derīgs
+
 testmail_title=Nosūtīt testa e-pastu
 testmail_err=Neizdevās nosūtīt testa ziņojumu
 testmail_eto=Nav ievadīta adresāta adrese
 testmail_sending=Notiek ziņojuma nosūtīšana no $1 uz $2.
 testmail_done=.. ziņa nosūtīta. Pārbaudiet adresāta adreses pastkasti, lai pārliecinātos, ka tā tiešām ir piegādāta.
 testmail_failed=.. nosūtīšana neizdevās : $1
+
 web_title=Web servera opcijas
 web_header=Webmin iebūvētā tīmekļa servera iespējas
 web_expires=Statiskās datnes klienta puses kešatmiņas laiks
@@ -1014,6 +1065,7 @@ web_expirespaths=Klienta puses kešatmiņas laiki, pamatojoties uz URL ceļu
 web_expirespath=Ceļa regulārā izteiksme
 web_expirestime=Kešatmiņas laiks sekundēs
 web_eexpires2=Trūkst vai nav skaitliskas klienta puses kešatmiņas laika rindā $1
+
 webmincron_title=Webmin plānotās funkcijas
 webmincron_emodule=Webmin Cron Jobs modulis nav instalēts!
 webmincron_module=Webmin modulis
@@ -1037,6 +1089,7 @@ webmincron_when1=Konkrēti laiki
 webmincron_secs=sekundes
 webmincron_err=Neizdevās saglabāt ieplānoto funkciju
 webmincron_einterval=Intervālam jābūt sekunžu skaitam, kas lielāks par nulli
+
 twofactor_title=Divfaktoru autentifikācija
 twofactor_header=Divfaktoru autentifikācijas iespējas
 twofactor_provider=Autentifikācijas nodrošinātājs
@@ -1075,6 +1128,7 @@ twofactor_secret1=Ģenerēts nejauši
 twofactor_secret0=Izmantojiet 16 rakstzīmju taustiņu
 twofactor_esecret=Slepenajai atslēgai jābūt tieši 16 rakstzīmju garai, un tajā jābūt tikai burtiem un cipariem
 twofactor_esession=Divfaktoru autentifikāciju nevar izmantot, ja nav aktivizēta uz sesiju balstīta autentifikācija
+
 letsencrypt_title=Šifrēsim sertifikāta pieprasījumu
 letsencrypt_err=Neizdevās pieprasīt sertifikātu
 letsencrypt_ecmds=Jūsu sistēmā netika atrasta komanda “Šifrēsim klientu <tt>certbot</tt> vai komanda <tt>python</tt>
@@ -1108,5 +1162,6 @@ letsencrypt_ecsr=Neizdevās ģenerēt CSR : $1
 letsencrypt_ekeygen=Neizdevās ģenerēt privātu atslēgu : $1
 letsencrypt_enative=Vietējais klientu šifrēšanas klients (certbot) iepriekš tika izmantots šajā sistēmā, un tas ir jāizmanto visiem turpmākajiem sertifikātu pieprasījumiem
 letsencrypt_eacmedns=Tikai uz oficiālu klientu šifrēšanas klientu tiek atbalstīta uz DNS balstīta validācija
+
 announce_hide=Slēpt šo sludinājumu
 alert_hide=Slēpt brīdinājumu

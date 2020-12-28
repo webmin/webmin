@@ -22,6 +22,7 @@ index_unix=Unixユーザ認証設定
 index_sessions=ログインセッションを見る
 index_rbac=RBACの設定
 index_delete=選択したものを削除
+
 edit_title=Webminユーザの編集
 edit_title2=Webminユーザの作成
 edit_readonly=このWebminユーザーは$1モジュールによって管理されているため、編集しないでください。 <a href='$2'>ここをクリック</a>してこの警告をバイパスし、ユーザーを編集してください。ただし、手動による変更は上書きされる可能性があることに注意してください。
@@ -91,6 +92,7 @@ edit_ui=ユーザインターフェイス設定
 edit_security=セキュリティと制限オプション
 edit_mods=使用可能な Webmin モジュール
 edit_modsg=利用可能なWebminモジュール（グループのモジュールに加えて）
+
 save_err=ユーザを保存できませんでした
 save_ename='$1'は有効なユーザ名ではありません
 save_enamewebmin=ユーザ名 'webmin' は内部使用のため予約されています
@@ -118,10 +120,12 @@ save_eminsize=パスワードの最小の長さがないか、数値ではあり
 save_edays=選択できる日はありません
 save_ehours=許可する時間がないか無効です
 save_ehours2=許可する開始時間は終了前にする必要があります
+
 delete_err=ユーザを削除できませんでした
 delete_eself=自分自身を削除することはできません
 delete_ecannot=ユーザを削除する許可がありません
 delete_euser=このユーザを削除する許可がありません
+
 cert_title=証明書の要求
 cert_issue=証明書の発行
 cert_header=新しい証明書の詳細
@@ -140,6 +144,7 @@ cert_install=ブラウザに証明書をインストールする
 cert_ekey=ご使用のブラウザから新しいSSLキーは送信されませんでした - ブラウザがSSLクライアント証明書をサポートしていない可能性があります。
 cert_eca=証明書の権限を設定できませんでした : $1
 cert_already=警告 - すでに証明書$1を使用しています。
+
 acl_title=モジュールのアクセス制御
 acl_title2=$2における$1
 acl_title3=$2におけるグループ$1
@@ -148,6 +153,7 @@ acl_config=モジュール設定の編集を許可しますか?
 acl_reset=フルアクセスに再設定する
 acl_rbac=RBACからアクセス制御設定を取得しますか？
 acl_rbacyes=はい（以下の設定を上書きします）
+
 acl_uall=すべてのユーザ
 acl_uthis=このユーザ
 acl_usel=選択したユーザ..
@@ -185,6 +191,7 @@ acl_theme=パーソナルテーマの変更を許可しますか?
 acl_ips=IPアクセス制御の変更を行えるようにしますか?
 acl_switch=他のユーザーに切り替えることはできますか？
 acl_times=許可されたログイン時間を変更できますか？
+
 log_modify=Webminユーザ$1を修正しました
 log_rename=Webminユーザ$1の名前を$2に変更しました
 log_create=Webminユーザ$1を作成しました
@@ -203,6 +210,7 @@ log_delete_groups=$1のWebminグループを削除しました
 log_pass=パスワード制限の変更
 log_unix=UNIXユーザー認証の変更
 log_sync=UNIXユーザー同期の変更
+
 gedit_ecannot=グループを編集する許可がありません
 gedit_title=Webminの編集
 gedit_title2=Webminグループの作成
@@ -210,6 +218,7 @@ gedit_group=グループ名
 gedit_rights=Webminグループのアクセス権
 gedit_modules=メンバーのモジュール
 gedit_members=メンバーのユーザーとグループ
+
 gdelete_err=グループを削除できませんでした
 gdelete_ecannot=グループを削除する許可がありません
 gdelete_euser=自分自身のグループは削除できません
@@ -217,10 +226,12 @@ gdelete_esub=サブグループのあるグループは削除できません
 gdelete_title=グループの削除
 gdelete_desc=グループ$1とそのメンバーユーザ$2を削除してもよろしいですか?
 gdelete_ok=グループの削除
+
 gsave_err=グループを保存できませんでした
 gsave_ename=グループ名が存在しないか、無効です
 gsave_enamewebmin=グループ名 'webmin' は内部用に予約されています
 gsave_edup=そのグループ名はすでに存在します
+
 convert_title=ユーザの変換
 convert_ecannot=Unixユーザの変換を行う権限がありません
 convert_nogroups=ご使用のシステム上に定義されたWebminグループはありません。変換されたユーザの許可を定義するには、変換前に最低1つのグループを作成する必要があります。
@@ -244,6 +255,7 @@ convert_exists=$1 はすでに存在します
 convert_invalid=$1は有効なWebminユーザ名ではありません
 convert_added=$1 が追加されました
 convert_msg=Unixユーザを変換中...
+
 sync_title=Unixユーザ同期
 sync_desc=このフォームではWebminで作成したUnixユーザとこのモジュール内のユーザの自動同期の設定を行います
 sync_nogroups=システムにWebminグループが定義されていません。作成されるユーザのアクセス権設定のために少なくとも１つ以上のグループが作成されている必要があります
@@ -253,6 +265,7 @@ sync_delete=Unixユーザが削除されたら対応するWebminユーザを削�
 sync_group=新しいユーザをWebminグループに割り当てる
 sync_unix=新規ユーザーのパスワードをUnix認証に設定します。
 sync_ecannot=ユーザ同期を設定する権限がありません
+
 unix_title=Unixユーザ認証
 unix_err=Unix ユーザ認証の保存に失敗しました
 unix_desc=このページではWebminへのログインをシステムのユーザリストとPAMで確認するための設定を行います。膨大な数のUnixユーザが存在するシステムにWebminへのアクセス権を与えるのに役立つでしょう
@@ -282,26 +295,31 @@ unix_sudo=<tt>sudo</tt>を介してすべてのコマンドを実行できるユ
 unix_pamany=PAM検証のみを通過するログインを$1として扱います
 unix_esudo=$1 コマンドはインストールされていません
 unix_esudomod=<tt>sudo</tt> 認証には Perl モジュール $1 が必要です
+
 sessions_title=現在のログインセッション
 sessions_id=セッション ID
 sessions_user=Webmin ユーザ
 sessions_login=ログインした時間
 sessions_host=IP アドレス
 sessions_lview=ログを見る...
+
 hide_title=使用されていないモジュールを隠す
 hide_desc=以下のモジュールはシステムに対応するサーバがインストールされていないため $1 のモジュールアクセスリストから削除されます...
 hide_ok=モジュールを隠す
 hide_none=$1は他の対応するサーバがインストールされていないモジュールからアクセスが無いため隠しませんでした
 hide_desc2=これらのモジュールは対応するサーバがインストールされても自動で再度有効になりません。このモジュールを使い手動で再設定する必要があります
 hide_clone=($1を複製する)
+
 switch_euser=このユーザーに切り替えることはできません
 switch_eold=既存のセッションが見つかりません！
+
 rbac_title=RBACの設定
 rbac_desc=WebminのRBAC統合は、Webminの独自の構成ファイルではなく、RBAC（Role Based Access Control）データベースからユーザーモジュールとACL権限を決定する方法を提供します。 RBACサポートを有効にすると、<b> $edit_rbacdeny1 </b>オプションが選択されているユーザーは、Webmin自体のアクセス制御設定ではなく、RBACによって機能が決定されます。
 rbac_esolaris=現在、RBACはSolarisでのみサポートされているため、この$1システムでは使用できません。
 rbac_eperl=RBAC統合に必要なPerlモジュール$1がインストールされていません。 <a href='$2'>ここをクリック</a>して、今すぐインストールしてください。
 rbac_ecpan=RBAC統合に必要な$1モジュールをインストールするために、WebminのPerlモジュールページにアクセスできません。
 rbac_ok=RBAC統合はこのシステムで利用可能であり、[Webminユーザーの編集]ページでユーザーごとに有効にすることができます。
+
 udeletes_err=ユーザーを削除できませんでした
 udeletes_enone=何も選択されていません
 udeletes_title=ユーザーを削除
@@ -309,11 +327,13 @@ udeletes_rusure=選択した$1人のユーザーを削除してもよろしい�
 udeletes_users=選択したユーザー：$1
 udeletes_ok=ユーザーを削除
 udeletes_ereadonly=選択したユーザーの1人が編集不可としてマークされています
+
 gdeletes_err=グループを削除できませんでした
 gdeletes_title=グループを削除
 gdeletes_rusure=選択した$1グループとそのグループに含まれる$ 2ユーザーを削除してもよろしいですか？ アクセス制御の設定とユーザーの詳細はすべて失われます。
 gdeletes_users=選択したグループ：$1
 gdeletes_ok=グループを削除
+
 pass_title=パスワード制限
 pass_header=Webmin パスワード実施オプション
 pass_minsize=最小パスワード長
@@ -335,6 +355,7 @@ pass_eminsize=パスワードの最小の長さがないか、数値ではあり
 pass_emaxdays=変更前の日数がないか、数値ではありません
 pass_elockdays=アカウントがロックされるまでの日数がないか、数値ではありません
 pass_eoldblock=拒否する古いパスワードの数が不足している、または数値ではない
+
 cpass_minsize=少なくとも$1文字にする必要があります
 cpass_notre=許可されていないパターンに一致します
 cpass_re=必要なパターンと一致しません

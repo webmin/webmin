@@ -30,6 +30,7 @@ index_return=liste over zoner
 index_ezones=Der blev ikke fundet nogen FirewallD-zoner!
 index_none=Denne zone har endnu ikke tilladte porte eller tjenester.
 index_ifaces=Anvend regler på grænseflader:
+
 port_edit=Rediger port
 port_create=Tilføj port
 port_header=Tilladte portindstillinger
@@ -45,11 +46,13 @@ port_eport=Manglende eller ugyldigt portnummer eller navn
 port_eportlow=Lav port skal være et tal
 port_eporthigh=Høj port skal være et tal
 port_eportrange=Lav port skal være under den høje port
+
 serv_edit=Rediger service
 serv_create=Tilføj service
 serv_header=Tilladte servicemuligheder
 serv_name=Service tillader
 serv_err=Kunne ikke gemme tjenesten
+
 forward_edit=Rediger frem
 forward_create=Opret fremad
 forward_header=Indstillinger for portvideresendelse
@@ -61,10 +64,13 @@ forward_dstaddr=Destinationsadresse
 forward_dstlocal=Dette system
 forward_edstaddr=Ugyldig IPv4-destinationsadresse
 forward_eneither=Enten skal der indtastes en destinationsadresse eller port eller begge dele
+
 check_ecmd=FirewallD-kontrolkommandoen $1 blev ikke fundet på dit system
+
 delete_err=Kunne ikke slette regler
 delete_enone=Ingen valgt!
 delete_edel=Fjernelse af $1 mislykkedes : $2 
+
 zone_title=Opret zone
 zone_header=Nye zonemuligheder
 zone_name=Zone navn
@@ -77,12 +83,16 @@ zone_mode4=Porte brugt til virtuel hosting
 zone_err=Kunne ikke oprette zone
 zone_ename=Manglende eller ugyldigt zonnavn
 zone_eclash=En zone med samme navn findes allerede
+
 delzone_title=Slet zone
 delzone_err=Zonet kunne ikke slettes
 delzone_edefault=Standardzonen kan ikke fjernes
 delzone_rusure=Er du sikker på, at du vil slette zonen $1, der indeholder $2 -porte og $3 -tjenester?
+
 defzone_err=Kunne ikke gøre zone som standard
+
 restart_err=Kunne ikke anvende konfiguration
+
 stop_err=Kunne ikke stoppe FirewallD
 start_err=Kunne ikke starte FirewallD
 log_stop=Stopet firewallD

@@ -16,6 +16,7 @@ index_chain=Kedja $1
 index_action=Verkan
 index_desc=Tillstånd
 index_comm=Kommentar
+index_no_comment=
 index_move=Flytta
 index_none=Det finns inga regler definierade för denna kedja.
 index_policy=Ställ in standardåtgärd till:
@@ -88,6 +89,7 @@ index_ipset_size=Storlek
 index_ipvxmode=Ändra IP-protokollversion:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=protokollet är $1 
 desc_p!=protokollet är inte $1 
 desc_s=källa är $1 
@@ -114,6 +116,8 @@ desc_tcp-option=paketet använder TCP-alternativ $1
 desc_tcp-option!=paketet använder inte TCP-alternativ $1 
 desc_icmp-type=ICMP-typen är $1 
 desc_icmp-type!=ICMP-typen är inte $1 
+desc_icmpv6-type=ICMP-typen är $1 
+desc_icmpv6-type!=ICMP-typen är inte $1 
 desc_mac-source=Ethernet-adressen är $1 
 desc_mac-source!=Ethernet-adressen är inte $1 
 desc_limit=är mindre än $1 
@@ -146,10 +150,15 @@ desc_always=Alltid
 desc_args--match-set=$2 finns i IP-set $1 
 desc_src=källa
 desc_dest=destination
+
 redhat_einstalled=Inga <tt>iptables (6)</tt> uppstartsåtgärd hittades, vilket indikerar att IPtables-paketet inte är installerat på ditt system
 redhat_eoutput=Ett fel inträffade med att få IPtables-status från kommandot $1. Detta indikerar antagligen att ditt system har konfigurerats för att använda IP-kedjor istället för IP-tabeller.
+
 gentoo_escript=Gentoo IPtables-startskriptet $1 hittades inte på ditt system.
+
 eiptables=Okända IPtables sparar filrad : $1 
+eip6tables=Okända ip6-tabeller sparar filrad : $1 
+
 edit_title1=Lägg till regel
 edit_title2=Redigera regel
 edit_title3=Klonregel
@@ -218,6 +227,7 @@ edit_physdevout=Utgående fysiskt gränssnitt
 edit_physdevisin=Paketet kommer in på brogränssnittet
 edit_physdevisout=Paketet går ut på bridge-gränssnittet
 edit_physdevisbridged=Paket överbryggas
+
 save_err=Det gick inte att spara regeln
 save_echain=Saknas eller ogiltig kedja att köra
 save_esource=Saknad eller ogiltig källadress eller nätverk
@@ -262,23 +272,28 @@ save_estates=Inga anslutningsstatus har valts
 save_ecanjump=Du får inte använda den här åtgärden
 save_ephysdevin=Saknande eller ogiltigt inkommande fysiskt gränssnitt
 save_ephysdevout=Saknas eller ogiltigt utgående fysiskt gränssnitt
+
 delete_title=Radera kedja
 delete_rusure=Är du säker på att du vill ta bort kedjan $1 ? $2 regler inom det kommer att raderas.
 delete_ok=Radera nu
 delete_ecannot=Du får inte ta bort kedjor
+
 clear_title=Rensa kedja
 clear_rusure=Är du säker på att du vill ta bort alla $2 -regler från kedja $1 ?
 clear_ecannot=Du får inte rensa kedjor
+
 new_err=Det gick inte att skapa kedja
 new_ename=Saknas eller ogiltigt kedjanamn
 new_etaken=Det finns redan en kedja med det här namnet
 new_ecannot=Du får inte skapa kedjor
+
 apply_err=Det gick inte att tillämpa konfigurationen
 apply_ecannot=Du får inte tillämpa konfigurationen
 apply_remote=Fel från $1 : $2 
 unapply_err=Det gick inte att återställa konfigurationen
 unapply_ecannot=Du får inte återställa konfigurationen
 bootup_ecannot=Du får inte aktivera eller inaktivera brandväggen vid uppstart
+
 log_create_rule=Tillagd regel till kedja $1 i tabell $2 
 log_modify_rule=Ändrad regel i kedja $1 i tabell $2 
 log_delete_rule=Raderad regel i kedja $1 i tabell $2 
@@ -301,8 +316,10 @@ log_add_group=Lade till klusterserver från grupp $1
 log_delete_host=Borttagit klustrserver $1 
 log_delete_group=Borttagna $1 -klustrservrar
 log_openports=Öppnade brandväggsportar $1 
+
 setup_eiface=Inget externt nätverksgränssnitt anges
 setup_ecannot=Du får inte konfigurera brandväggen
+
 acl_tables=Tillåtna IP-tabeller
 acl_apply=Kan tillämpas konfiguration?
 acl_unapply=Kan avinstallera konfiguration?
@@ -314,9 +331,11 @@ acl_jall=Allt
 acl_newchain=Kan skapa nya kedjor?
 acl_delchain=Kan radera eller rensa kedjor?
 acl_policy=Kan ändra standardpolicy?
+
 etable=Du får inte redigera denna IP-tabell
 ejump=Du får inte redigera denna regel
 ecluster=Du får inte hantera brandväggskluster
+
 cluster_title=Cluster Firewall-servrar
 cluster_none=Inga servrar har lagts till i brandväggsklustret än.
 cluster_host=Värdnamn
@@ -327,6 +346,7 @@ cluster_gadd=Lägg till servrar i grupp
 cluster_need=Du måste lägga till servrar med inloggning och lösenord i Webmin Servers Index-modulen innan de kan hanteras här.
 cluster_return=klustrservrar
 cluster_delete=Ta bort valda
+
 add_title=Lägg till servrar
 add_msg=Lägger till $1 ..
 add_gmsg=Lägga till servrar i grupp $1 ..
@@ -336,13 +356,16 @@ add_echeck=Server $1 har inte Linux Firewall-modulen
 add_emissing=Server $1 saknar brandväggskommandot $2 
 add_ok=Lade till $1, med $2 aktiva brandväggsregler.
 add_enone=Inga servrar att lägga till valda!
+
 policy_ecannot=Du får inte ändra standardpolicyn för den här kedjan
+
 move_title=Flytta regler
 move_count=Regler valda
 move_chain=Nuvarande förändring
 move_dest=Destinationskedja
 move_ok=Flytta nu
 move_header=Alternativ för regelflyttning
+
 rename_title=Byt namn på kedja
 rename_count=Regler i kedjan
 rename_chain=Nuvarande namn
@@ -352,6 +375,3 @@ rename_header=Alternativ för kedjan att byta namn
 rename_adjust=Vill du ändra andra regler som hoppar till den här kedjan?
 rename_none=Ingen
 rename_ecannot=Du får inte byta namn på kedjor
-desc_icmpv6-type=ICMP-typen är $1 
-desc_icmpv6-type!=ICMP-typen är inte $1 
-eip6tables=Okända ip6-tabeller sparar filrad : $1 

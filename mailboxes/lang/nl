@@ -19,6 +19,7 @@ index_eperl=De Perl module $1 die nodig is voor de geselecteerde SMTP authentica
 index_file=Lees Email in File :
 index_nousers=Geen gebruikers gevonden!
 index_nousersmail=Geen gebruikers met email gevonden.
+
 mail_title=Gebruikers Email
 mail_from=Van
 mail_date=Datum
@@ -75,6 +76,7 @@ mail_fromfilter=Maak een filter met afzender
 mail_tofilter=Maak een filter met ontvanger
 mail_subfilter=Maak een filter met onderwerp
 mail_unknown=Onbekend
+
 mail_sign=Onderteken met sleutel
 mail_nosign=&lt;Niet ondertekenen&gt;
 mail_crypt=Encryptie voor
@@ -108,6 +110,7 @@ mail_esystem=Er ontstond een fout om contact te maken met het email systeem : $1
 mail_selread=Selecteer lezen.
 mail_selunread=Selecteer ongelezen.
 mail_selspecial=Selecteer speciaal.
+
 view_title=Lees Email
 view_desc=Bericht $1 in $2
 view_desc2=Bericht $1 voor gebruiker $2
@@ -149,6 +152,7 @@ view_sub=Email Bijlagen
 view_sub2=Email bijlagen van <i>$1</i>
 view_egone=Dit bericht bestaat niet langer
 view_eugone=Deze gebruiker bestaat niet langer
+
 view_gnupg=GnuPG handtekening verificatie
 view_gnupg_0=Handtekening van $1 is geldig.
 view_gnupg_1=Handtekening van $1 is geldig, maar vertrouwen's keten kon niet worden vastgesteld.
@@ -185,7 +189,9 @@ view_images=Laat plaatjes zien
 view_raw=Bekijk raw berichten
 view_aall=Sla alle bijlagen op als ZIP.
 view_aslideshow=Laat alle plaatjes zien.
+
 compose_title=Composeer Email
+
 reply_title=Beantwoord de Email
 forward_title=Email Doorsturen
 enew_title=Bewerk Email
@@ -215,9 +221,11 @@ reply_addattach=Bijlagen veld toevoegen.
 reply_addssattach=Server-zijde bijlagen veld toevoegen.
 reply_html0=Composeer tekst
 reply_html1=Composeer HTML
+
 reply_spell=Controleer op spelfouten?
 reply_draft=Opslaan als Ontwerp
 reply_save=Bewerk en Opslaan
+
 send_err=Mislukt om email te versturen
 send_eto=Ontbrekend Naar adres
 send_efrom=Ontbrekend Van adres
@@ -234,6 +242,7 @@ send_eperms2=U bent niet bevoegd om de file $1 te versturen
 send_epath=Sendmail uitvoerbestand $1 bestaat niet
 send_efile=Mislukt om volgende bijlagen te lezen $1 : $2
 send_done=.. klaar.
+
 send_epass=U kunt een bericht niet ondertekenen omdat uw passphrase nog niet is ingesteld in de GnuPG module.
 send_esign=Ondertekenen mislukt van bericht : $1
 send_ekey=Kan sleutel niet vinden van email adres $1
@@ -245,6 +254,7 @@ send_espell=De volgende spelfouten zijn gevonden in uw bericht ..
 send_draft=Email naar $1 opgeslagen in ontwerp folder.
 send_drafting=Email opslaan naar $1 in ontwerp folder ..
 send_eattachsize=De email bijlages zijn groter dan de maximum toegestane grote van $1 bytes
+
 delete_title=Verwijder Email
 delete_rusure=Weet u zeker dat u de $1 geselecteerde berichten van $2 wilt verwijderen? Voor een grote email file kan dit enige tijd duren. Totdat het verwijderen afgerond is moet u geen andere acties uitvoeren.
 delete_rusure2=Weet u zeker dat u het bericht van $1 wilt verwijderen? Voor een grote email file kan dit enige tijd duren. Totdat het verwijderen afgerond is moet u geen andere acties uitvoeren.
@@ -267,6 +277,7 @@ delete_nobutton=Niet op knop geklikt
 delete_ereport=Mislukt om te rapporteren als spam : $1
 delete_errc=Mislukt om email te kopieren
 delete_errm=Mislukt om email te verplaatsen
+
 confirm_title=Bevestig verwijderen
 confirm_warn=Weet u zeker dat u de $1 geselecteerde berichten wilt verwijderen uit deze folder?
 confirm_warnf=Weet u zeker dat u de $1 geselecteerde berichten wilt verwijderen van de folder <b>$2</b>?
@@ -276,6 +287,7 @@ confirm_warn4=Totdat dit bericht is verwijdert moet u geen andere acties uitvoer
 confirm_ok=Verwijder Nu
 confirm_warnall=Weet u zeker dat u alle berichten wilt verwijderen uit deze folder?
 confirm_warnallf=Weet u zeker dat u alle berichten wilt verwijderen uit de folder <b>$1</b>?
+
 search_title=Zoek Resultaten
 search_ecannot=U bent niet bevoegt te zoeken in deze gebruiker zijn email
 search_ematch=U moet overeenkomstige tekst invoeren.
@@ -303,16 +315,19 @@ search_nolatest=Alles in folder
 search_latestnum=Alleen de laatste
 search_elatest=Ontbrekende of ongeldige aantal berichten om te zoeken
 search_withstatus=, met status $1
+
 folder_inbox=Inbox
 folder_sent=Verstuur email
 folder_drafts=Ontwerpen
 folder_trash=Vuilnis
+
 detach_err=Mislukt file eraf te halen
 detach_edir=Geen file of directory ingevuld om op te slaan
 detach_eopen=Mislukt te openen $1 : $2
 detach_ewrite=Mislukt te schrijven naar $1 : $2
 detach_title=File Verwijderen
 detach_ok=Schreef bijlage naar de server-zijde file $1 ($2).
+
 sform_title=Geavanceerd Zoeken
 sform_header=Geavanceerde email zoek opties
 sform_andmode=Criteria mode
@@ -337,6 +352,7 @@ sform_headers=iedere koptekst
 sform_allmsg=Gehele bericht
 sform_size=bericht  grote
 sform_return=geavanceerd zoeken van
+
 find_enone=Uw zoekopdracht heeft geen overeenkomende gebruikers gevonden
 find_title=Zoek resultaten
 find_results=Gebruikers zoeken die overeenkomen met $1 ..
@@ -349,6 +365,7 @@ find_incount=Email's
 find_sentcount=Verstuur
 find_fcount=Folders
 find_in=$1 in $2
+
 acl_none=Niets
 acl_same=Gebruiker met dezelfde naam
 acl_all=Alles
@@ -374,12 +391,15 @@ acl_usersu=Met UID in reeks
 acl_sec=Inclusief secundaire groepen?
 acl_dir=Mag email files in directory lezen
 acl_dirauto=Beslis automatisch (overal wanneer alle gebruikers zichtbaar zijn, anders nergens)
+
 log_delmail=Verwijderde $1 berichten van $2
 log_movemail=Verplaatste $1 berichten van $2 naar $3
 log_copymail=Gekopieerd $1 berichten van $2 naar $3
 log_send=Verstuur email naar $1
 log_read=Lees email voor $1
+
 emodified=Deze folder is gemodificeerd sinds u hem de laatste keer bekeken heeft! Keer terug naar de <a href='$1'>email lijst</a> en probeer het opnieuw.
+
 razor_title=Rapporteren Als Spam
 razor_title2=Rapporteren Als Ham
 razor_report=Rapporteer dit bericht aan Razor en andere SpamAssassin spam-blok databases ..
@@ -389,14 +409,18 @@ razor_done=.. klaar
 razor_err=..mislukt! Bekijk het fout bericht hierboven waarom.
 razor_moved=.. klaar, en verplaatst naar de folder $1.
 razor_deleted=.. klaar, en de verwijderde berichten ook.
+
 ham_title=Rapporteer Als Ham
 ham_report=Rapporteer dit bericht zijnde Niet-spam aan Razor en andere SpamAssassin databases ..
+
 black_title=Negeer Afzender
 black_done=Toegevoegd email adres $1 aan SpamAssassin's negeer adressen lijst.
 black_already=Het email adres $1 staat reeds in de SpamAssassin's negeer adressen lijst.
+
 white_title=Toegestane Afzender
 white_done=Voeg het email adres $1 toe aan SpamAssassin's toegestane adressen lijst.
 white_already=Het email adres $1 staat reeds in de SpamAssassin's toegestane adressen lijst.
+
 ldap_emod=Ontbrekende Perl module $1 die nodig is voor verbinden met LDAP
 ldap_econn=Mislukt te verbinden met de LDAP server $1 poort $2
 ldap_elogin=Bind is mislukt met de LDAP server $1 als $2 : $3
@@ -404,9 +428,11 @@ ldap_ehost=Geen LDAP server ingesteld in de module configuratie
 ldap_eport=Geen geldige LDAP server poort ingesteld in de module configuratie
 ldap_euser=Geen LDAP login ingesteld in de module configuratie
 ldap_ebase=Geen LDAP basis DN gezet in de module configuratie
+
 delall_title=Verwijder Alle Email
 delall_rusure=Weet u zeker dat u alle email wilt verwijderen van $1? $2 berichten in totaal $3 zulle voorgoed verwijdert worden.
 delall_ok=Verwijder Nu
+
 slide_title=Bijlage Plaatjes
 slide_prev=Vorige
 slide_next=Volgende

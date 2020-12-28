@@ -1,6 +1,7 @@
 index_title=NIS 客戶端和伺服器
 index_return=NIS 選單
 index_enis=您的機器似乎沒有安裝 NIS 客戶端或伺服器的支援。
+
 client_title=NIS 客戶端
 client_header=NIS 客戶端組態設定
 client_domain=NIS 網域
@@ -15,8 +16,10 @@ client_edomain=遺失或無效的網域名稱
 client_eserver='$1' 不是一個有效的伺服器名稱
 client_eypwhich=無法連結至 NIS 網域
 client_ehosts='$1' 不在 hosts 檔裏
+
 switch_title=客戶端服務
 switch_service=服務
+
 order_= 
 order_nisplus=NIS+
 order_nis=NIS
@@ -28,6 +31,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=使用者印表機
 order_xfn=XFN
+
 server_title=NIS 伺服器
 server_header=NIS 伺服器選項
 server_boot=啟用 NIS 伺服器？
@@ -61,6 +65,7 @@ server_solaris=註：在 Solaris 上，客戶端和伺服器 NIS 網域一定相
 server_edir=無效的原始檔案目錄
 server_epwdir=無效的密碼原始檔案目錄
 server_enis=您的機器似乎沒有安裝 NIS 伺服器支援。
+
 tables_title=NIS 表格
 tables_switch=編輯 NIS 表格 :
 tables_header=$1 NIS 表格，源自 $2
@@ -77,6 +82,7 @@ tables_search=搜尋
 tables_nomatch=您的搜尋找不到任何相符的紀錄
 tables_build=重建 NIS 表格
 tables_buildmsg=按此按鈕可以藉著表格資料以重建 NIS 資料庫。如果您作了任何變更，您需要這樣重建 NIS 資料庫，NIS 客戶端才能接收這些變更。
+
 desc_aliases=Sendmail 別名
 desc_mail=Sendmail 別名
 desc_hosts=主機位址
@@ -109,6 +115,7 @@ desc_printers=印表機
 desc_ipnodes=IP 節點
 desc_timezone=時區
 desc_locale=語系
+
 hosts_title=主機位址
 hosts_ip=IP 位址
 hosts_name=主機名
@@ -117,6 +124,7 @@ hosts_err=無法儲存主機
 hosts_eip=遺失或無效的 IP 位址
 hosts_ename=遺失或無效的主機名
 hosts_aliases=別名
+
 group_name=群組名稱
 group_gid=群組編號
 group_members=群組成員
@@ -127,6 +135,7 @@ group_none=不需要密碼
 group_encrypted=已編碼的密碼
 group_clear=純文字密碼
 group_err=無法儲存群組
+
 passwd_name=使用者名稱
 passwd_uid=使用者編號
 passwd_real=真實姓名
@@ -164,6 +173,7 @@ passwd_emax=無效的最大天數
 passwd_emin=無效的最小天數
 passwd_einactive=無效的未使用天數
 passwd_eexpiry=無效的過期日期
+
 services_name=服務名稱
 services_proto=通訊協定
 services_port=連接埠
@@ -172,6 +182,7 @@ services_header=Inetd 網路服務選項
 services_err=無法儲存服務
 services_ename=遺失或無效的服務名稱
 services_eport=遺失或無效的連接埠
+
 protocols_name=通訊協定名稱
 protocols_number=編號
 protocols_aliases=別名
@@ -180,6 +191,7 @@ protocols_header=網路通訊協定選項
 protocols_err=無法儲存通訊協定
 protocols_ename=遺失或無效的名稱
 protocols_enumber=遺失或無效的編號
+
 netgroup_name=Netgroup 名稱
 netgroup_members=成員
 netgroup_title=網路群組
@@ -194,6 +206,7 @@ netgroup_ename=遺失或無效的 netgroup 名稱
 netgroup_ehost=第 $1 行的主機遺失或無效
 netgroup_euser=第 $1 行的使用者遺失或無效
 netgroup_edom=第 $1 行的 NIS 網域遺失或無效
+
 ethers_mac=乙太網位址
 ethers_ip=IP 位址
 ethers_title=乙太網位址
@@ -201,6 +214,7 @@ ethers_header=乙太網 mapping 選項
 ethers_err=無法儲存乙太網位址
 ethers_emac=無效的乙太網位址
 ethers_eip=無效的 IP 位址
+
 rpc_name=程式名
 rpc_number=編號
 rpc_aliases=別名
@@ -209,6 +223,7 @@ rpc_header=RPC 程式詳細資料
 rpc_err=無法儲存 RPC 程式
 rpc_ename=遺失或無效的程式名
 rpc_enumber=遺失或無效的編號
+
 networks_title=網路位址
 networks_ip=IP 位址
 networks_name=網路名稱
@@ -217,6 +232,7 @@ networks_err=無法儲存網路
 networks_eip=遺失或無效的 IP 位址
 networks_ename=遺失或無效的姓名
 networks_aliases=別名
+
 netmasks_net=網路位址
 netmasks_mask=網路遮罩
 netmasks_title=網路遮罩
@@ -224,6 +240,7 @@ netmasks_header=網路遮罩詳細資料
 netmasks_err=無法儲存網路遮罩
 netmasks_enet=遺失或無效的網路位址
 netmasks_emask=遺失或無效的網路遮罩
+
 aliases_from=位址
 aliases_to=Alias to
 aliases_title=Sendmail 別名
@@ -231,6 +248,7 @@ aliases_header=Sendmail 別名詳細資料
 aliases_err=無法儲存別名
 aliases_efrom=遺失或無效的位址
 aliases_eto=遺失的 to 位址
+
 security_title=伺服器安全
 security_header=NIS 伺服器安全選項
 security_ok=儲存及套用

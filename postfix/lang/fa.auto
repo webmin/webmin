@@ -3,6 +3,7 @@ connect_elogin=Failed to login to the database $1 : $2.
 index_title=Postfix Server Mail
 index_epath=The Postfix control command $1 is not installed on your system. Maybe your <a href='$2'>module configuration</a> is incorrect, or Postfix is not installed.
 index_postfix=پسوند
+
 internal_error=خطای داخلی
 index_econfig=The Postfix config command $1 does not exist. Maybe your <a href='$2'>module configuration</a> is incorrect.
 index_esuper=The Postfix supervisor command $1 does not exist. Maybe your <a href='$2'>module configuration</a> is incorrect.
@@ -14,8 +15,10 @@ index_startmsg=برای شروع سرویس دهنده پست الکترونیک
 index_reloadmsg=روی این دکمه کلیک کنید تا Postfix دوباره پرونده های پیکربندی آن را دوباره بخواند. اگر فایلهای پیکربندی Postfix به صورت دستی تغییر یافته باشند ، می تواند مفید باشد.
 index_version=Postfix version $1
 opts_err=گزینه ها ذخیره نشدند
+
 check_error=هنگام بررسی پیکربندی Postfix فعلی ، خطایی رخ داد. لطفا پیکربندی Postfix را بصورت دستی اصلاح کنید.
 check_manual=پرونده پیکربندی Postfix را به صورت دستی ویرایش کنید.
+
 address_rewriting_title=بازنویسی آدرس و نقاب سازی
 address_rewriting_ecannot=شما مجاز به ویرایش بازنویسی آدرس و نقاب درستی نیستید
 aliases_title=نام مستعارهای ایمیل
@@ -42,9 +45,11 @@ aliases_type5=Autoreply file $1
 aliases_type6=Apply filter file $1
 aliases_none=هیچ یک
 aliases_delete=نام مستعار انتخاب شده را حذف کنید
+
 postfinger_title=بررسی پیکربندی
 postfinger_show=نشان دادن
 postfinger_ecannot=شما مجاز به بررسی پیکربندی Postfix نیستید
+
 mailclean_title=MailQueue را تمیز کنید
 mailclean_ecannot=هیچ مزیتی برای تمیز کردن MailQueues نیست
 mailclean_active=صف فعال
@@ -53,6 +58,7 @@ mailclean_deferred=تعویق-صف
 mailclean_defer=به تعویق افتادن
 mailclean_all=همه صف ها
 mailclean_search=جستجو-رشته
+
 aform_type0=هیچ یک
 aform_type1=آدرس ایمیل
 aform_type2=آدرس های موجود در پرونده
@@ -68,6 +74,7 @@ aform_val=نام مستعار
 aform_afile=ویرایش ..
 aform_return=نام مستعار
 aform_cmt=شرح
+
 asave_err=ذخیره نام مستعار انجام نشد
 asave_eaddr='$1' is not a valid address
 asave_ealready=An alias for '$1' already exists
@@ -78,11 +85,13 @@ asave_etype4='$1' is not a valid program or does not exist
 asave_etype5=Autoreply file '$1' is not valid
 asave_etype4none=هیچ برنامه ای داده نشده
 asave_etype6=Filter file '$1' is not valid
+
 afile_title=پرونده آدرس را ویرایش کنید
 afile_desc=Use the text area below to edit the addresses in the file $1.
 afile_efile=You are not allowed to edit $1.
 afile_undo=واگرد تغییر
 afile_ewrite=Failed to write to addresses file : $1
+
 ffile_title=پرونده فیلتر را ویرایش کنید
 ffile_desc=Use the form below to setup filter rules in the file $1.
 ffile_efile=You are not allowed to edit $1.
@@ -98,6 +107,7 @@ ffile_other=Otherwise forward to $1
 ffile_err=ذخیره فیلتر فیلتر انجام نشد
 ffile_ematch=مسابقه وجود ندارد
 ffile_eaction=آدرس حمل و نقل وجود ندارد
+
 rfile_title=File Autoreply File را ویرایش کنید
 rfile_desc=Use the text area below to edit the autoreply message in $1. The message may contain the macros $SUBJECT, $FROM, $TO, $DATE and $BODY which will be expanded when the autoreply is activated.
 rfile_desc2=You can also set mail headers that add to or replace the defaults used in the autoreply by putting lines like:<br><tt>From: foo@bar.com</tt><br><tt>Subject: On holiday</tt><br>at the top of the message, separated from the body by a single blank line.
@@ -116,11 +126,13 @@ rfile_from=از: آدرس برای پاسخ
 rfile_auto=خودکار (بر اساس آدرس گیرنده)
 rfile_efrom=گمشده از: آدرس
 rfile_fromdesc=آدرس از: باید همیشه در صورت امکان مشخص شود زیرا ممکن است روش اتوماتیک قابل اعتماد نباشد.
+
 general_title=گزینه های عمومی
 general_title_sensible=گزینه های مفید عمومی
 general_title_others=سایر گزینه های عمومی
 general_ecannot=شما مجاز به ویرایش گزینه های عمومی نیستید
 what_is_it=چیست؟
+
 opts_default=پیش فرض
 opts_none=هیچ یک
 opts_nomap=نقشه تنظیم نشده است
@@ -140,10 +152,12 @@ opts_mail_owner=صاحب نامه
 opts_default_privs=حقوق پیش فرض نماینده تحویل
 opts_inet_interfaces=رابط های شبکه برای دریافت نامه
 opts_all_interfaces=همه
+
 opts_local_recipient_maps=کاربران محلی ناشناس را رد کنید
 opts_no=نه
 opts_save=ذخیره و اعمال شود
 opts_edir=You are only allowed to specify map files under $1
+
 opts_allow_percent_hack=بازنویسی "domain٪user" به "domain@user"
 opts_append_at_myorigin=بازنویسی "کاربر" به "user@$mydomain"
 opts_append_dot_mydomain=بازنویسی "user@host" به "user@host.$mydomain"
@@ -153,13 +167,17 @@ opts_swap_bangpath=بازنویسی "سایت! کاربر" به "user @ site"
 opts_masquerade_domains=خطاب به آدرس
 opts_masquerade_exceptions=ماسک استثنائات
 index_return=پیکربندی پسوند
+
 opts_alias_maps=بانکهای اطلاعاتی نام مستعار استفاده شده توسط نماینده محلی
 opts_alias_database=بانک اطلاعاتی Alias توسط فرمان "newaliases" ساخته شده است
 aliases_warning=Warning: <ul><li>when the first field is not empty, the default Postfix aliases-generation command is used to build up the corresponding databases ; <li>else the Sendmail compatibility command &quot;newaliases&quot; is used, this will use the second field's databases.</ul>
+
 aliases_name=نام
 aliases_value=نام مستعار برای. ..
+
 new_alias=یک نام مستعار جدید ایجاد کنید
 new_aliasmsg=برای ایجاد یک نام مستعار جدید روی این دکمه کلیک کنید
+
 local_delivery_ecannot=شما مجاز به ویرایش گزینه های تحویل محلی نیستید
 local_delivery_title=تحویل محلی
 opts_local_transport=نام حمل و نقل برای تحویل های محلی
@@ -185,6 +203,7 @@ opts_local_destination_recipient_limit=حداکثر تعداد گیرندگان 
 opts_local_destination_recipient_limit_default=پیش فرض
 opts_prepend_delivered_header=Prepend a <tt>Delivered-To:</tt> when...
 opts_prepend_delivered_header_default=پیش فرض
+
 resource_title=کنترل منابع عمومی
 resource_ecannot=شما مجاز به ویرایش پارامترهای کنترل منابع نیستید
 opts_bounce_size_limit=حداکثر اندازه پیام belled
@@ -204,6 +223,7 @@ opts_qmgr_message_recipient_limit=حداکثر تعداد گیرنده های ح
 opts_queue_minfree=حداقل فضای خالی در سیستم فایل صف
 opts_stale_lock_time=حداکثر زمان پس از آن قفل بیشه آزاد می شود
 opts_transport_retry_time=در چند ثانیه بین تلاش برای تماس با MDT شکسته
+
 opts_always_bcc=آدرسی که bcc از هر پیام را دریافت می کند
 opts_always_bcc_none=هیچ یک
 opts_daemon_timeout=زمان تحویل درخواست ها
@@ -242,6 +262,7 @@ opts_trigger_timeout=حداکثر زمان برای ارسال یک ماشه ب�
 opts_delay_warning_time=ساعت ها قبل از ارسال هشدار برای عدم تحویل
 opts_delay_warning_time_default2=پیش فرض پس زمینه
 opts_content_filter_default=هیچ یک
+
 smtpd_title=گزینه های سرور SMTP
 smtpd_ecannot=شما مجاز به ویرایش گزینه های سرور SMTP نیست
 opts_disable_vrfy_command=دستور SMTP VRFY را غیرفعال کنید
@@ -273,6 +294,7 @@ smtpd_nomap=هنوز نقشه ای برای آدرس های مجاز برای ا
 smtpd_nomap2=هنوز هیچ نقشه ای برای محدودیت در آدرس های فرستنده وارد نشده است.
 smtpd_map=آدرس های مجاز برای انتقال
 smtpd_map2=محدودیت در آدرس های فرستنده
+
 smtp_title=گزینه های مشتری SMTP
 smtp_ecannot=شما مجاز به ویرایش گزینه های مشتری SMTP نیستید
 opts_best_mx_transport=اقدام هنگام لیست به عنوان بهترین میزبان MX
@@ -293,6 +315,7 @@ opts_smtp_data_done_timeout=اتمام زمان انتظار برای پاسخ �
 opts_smtp_quit_timeout=زمان انتظار برای پاسخ به QUIT
 opts_smtp_use_tls=برای اتصالات SMTP از TLS استفاده کنید
 opts_smtp_sasl_security_options=گزینه های امنیتی SASL
+
 rate_title=نرخ تحویل
 rate_ecannot=شما مجاز به ویرایش گزینه های نرخ تحویل نیستید
 opts_default_destination_concurrency_limit=حداکثر تعداد تحویل های موازی به همان مقصد
@@ -303,18 +326,21 @@ opts_maximal_queue_lifetime=حداکثر زمان (روزها) در صف قبل 
 opts_minimal_backoff_time=حداقل زمان (ثانیه) بین تلاش برای ارسال پیام معوق
 opts_queue_run_delay=زمان (ثانیه) بین اسکن صف معوق
 opts_defer_transports=حمل و نقل که نباید تحویل داده شود
+
 debug_title=ویژگی های اشکال زدایی
 debug_ecannot=شما مجاز به ویرایش ویژگی های اشکال زدایی نیستید
 opts_debug_peer_list=لیست الگوهای دامنه / شبکه ای که برای آن ورود به سیستم فعال است
 opts_debug_peer_level=هنگام مطابقت با لیست بالا ، سطح ورود به سیستم را علامت بزنید
 debug_version=Postfix Module for Webmin - Version $1
 opts_edebug=سطح ورود به سیستم یا عدم اعتبار نامشخص است - باید عددی بزرگتر از صفر باشد
+
 ldap_title=جستجوی LDAP
 ldap_ecannot=شما مجاز به ویرایش گزینه های جستجوی LDAP نیستید
 ldap_non_existent=به نظر می رسد که LDAP در سیستم Postfix شما وجود ندارد
 opts_ldap_lookup_timeout=پایان یافتن برای جستجوی پایگاه داده LDAP
 opts_ldap_search_base=پایگاه داده LDAP برای جستجو
 opts_ldap_server_host=نام میزبان سرور LDAP
+
 canonical_title=نقشه برداری متعارف
 canonical_ecannot=شما مجاز به ویرایش پیکربندی نقشه برداری متعارف نیستید
 opts_canonical_maps=جداول جستجوی نقشه برداری آدرس
@@ -328,6 +354,7 @@ canonical_edit_title=نقشه کانونی را ویرایش کنید
 canonical_return_sender=نقشه های متعارف فرستنده
 canonical_return_recipient=نقشه های متعارف گیرنده
 canonical_return=نقشه های متعارف
+
 mapping_name=نام
 mapping_value=نقشه ها به. ..
 mapping_delete=انتخاب شده را پاک کن
@@ -355,6 +382,7 @@ mapping_toomany=There are $1 map entries, which is above the display limit of $2
 mapping_find=نمایش تطبیق نگاشت ها:
 mapping_search=جستجو کردن
 mapping_match=Map file entries matching <tt>$1</tt> ..
+
 virtual_title=دامنه های مجازی
 virtual_ecannot=شما مجاز به ویرایش پیکربندی نقشه برداری دامنه های مجازی نیستید
 opts_virtual_maps=جداول جستجوی نقشه برداری دامنه
@@ -362,29 +390,44 @@ opts_virtual_alias_maps=جداول جستجوی نقشه برداری دامنه
 opts_virtual_alias_domains=دامنه هایی برای انجام نقشه برداری مجازی برای
 virtual_same=از جداول نقشه برداری دامنه
 virtual_return=دامنه های مجازی
+
 transport_title=نقشه برداری حمل و نقل
 transport_ecannot=شما مجاز به ویرایش پیکربندی نقشه برداری حمل و نقل نیست
 opts_transport_maps=جداول جستجوی نقشه برداری حمل و نقل
 transport_return=نقشه حمل و نقل
+
+sni_title=نقشه برداری گواهی
+sni_ecannot=شما مجاز به ویرایش پیکربندی نقشه برداری گواهی نیستید
+opts_sni_maps=جداول جستجوی نقشه برداری گواهی
+sni_return=نقشه های گواهی
+sni_dom=نام میزبان
+sni_certs=پرونده های گواهی
+
 relocated_title=نقشه برداری جابجا شده
 relocated_ecannot=شما مجاز به ویرایش پیکربندی نقشه برداری مجدد نیستید
 relocated_return=نقشه های جابجایی شده
 opts_relocated_maps=جداول جستجوی نقشه برداری مجدد
 opts_content_filter=فیلتر محتوای ایمیل
+
 map_click=برای ویرایش خصوصیات آن روی هر نقشه برداری کلیک کنید:
 no_map=(در حال حاضر هیچ نقشه مشخص نشده است. ابتدا یک نقشه را تعیین کنید ، سپس می توانید آن را ویرایش کنید)
 no_map2=در حال حاضر هیچ نقشه مشخص نشده است. ابتدا یک نقشه تعریف کنید ، سپس می توانید آنرا ویرایش کنید.
+
 stop_efailed=متوقف نشد
 stop_ecannot=شما مجاز نیستید Postfix را متوقف کنید
+
 start_efailed=Postfix شروع نشد
 start_ecannot=شما مجاز به شروع Postfix نیستید
+
 reload_efailed=بارگیری مجدد Postfix انجام نشد
 reload_ecannot=شما مجاز به بارگیری مجدد Postfix نیست
+
 query_get_efailed=Failed to query Postfix config command to get the current value of parameter $1: <tt>$2</tt>
 query_set_efailed=Failed to query Postfix config command to set the current value of parameter $1 to $2: <tt>$3</tt>
 regenerate_ecannot=شما مجاز به تولید مثل Aliases نیستید
 regenerate_alias_efailed=Failed to regenerate aliases: <tt>$1</tt>
 regenerate_table_efailed=Failed to regenerate table $1: <tt>$2</tt>
+
 acl_resource=آیا می توانید منابع را ویرایش کنید؟
 acl_aliases=آیا می توانید مستعارها را ویرایش کنید؟
 acl_aliases_options=آیا می توانید گزینه های مستعار را ویرایش کنید؟
@@ -393,6 +436,7 @@ acl_address_rewriting=می توانید بازنویسی آدرس را ویرا�
 acl_canonical=آیا می توان کانونی را ویرایش کرد؟
 acl_virtual=آیا می توانید مجازی ویرایش کنید؟
 acl_transport=آیا می توانید حمل و نقل را ویرایش کنید؟
+acl_sni=آیا می توان گواهی ها را ویرایش کرد؟
 acl_relocated=آیا می توانید نقل مکان کرد؟
 acl_header=آیا می توانید چک های هدر را ویرایش کنید؟
 acl_local_delivery=آیا می توانید تحویل محلی را ویرایش کنید؟
@@ -411,6 +455,7 @@ acl_postfinger=آیا می توانید پیکربندی postfix را بررسی
 acl_manual=آیا می توانید پرونده پیکربندی را ویرایش کنید؟
 acl_dir=فهرست مجاز برای پرونده های نقشه
 acl_bcc=آیا می توانید نقشه برداری BCC را ویرایش کنید؟
+
 boxes_title=صندوق های پستی کاربر
 boxes_user=کاربر
 boxes_size=اندازه صندوق پستی
@@ -420,6 +465,7 @@ boxes_sent=نامه ارسال شده
 boxes_ecannot=شما مجاز به خواندن ایمیل نیستید
 boxes_toomany=کاربران زیادی در سیستم شما برای لیست کردن صندوق های پستی آنها وجود دارد.
 boxes_go=مشاهده نامه برای کاربر:
+
 mail_title=ایمیل کاربر
 mail_from=از جانب
 mail_date=تاریخ
@@ -458,6 +504,7 @@ mail_forward=رو به جلو
 mail_rfc=از خط
 mail_move=انتقال به:
 mail_eexists=پیام دیگر وجود ندارد!
+
 view_title=ایمیل را بخوانید
 view_desc=Message $1 in $2
 view_desc2=Message $1 for user $2
@@ -486,6 +533,7 @@ view_body=متن پیام
 view_afile=نام پیوست
 view_atype=نوع پیوست
 view_asize=حجم فایل
+
 compose_title=نوشتن ایمیل
 reply_title=پاسخ به ایمیل
 forward_title=ارسال ایمیل
@@ -496,6 +544,7 @@ reply_mailforward=پیام های ارسال شده
 reply_attach2=پیوست های مشتری و سرور
 reply_send=ارسال ایمیل
 reply_ecannot=شما مجاز به ارسال نامه به عنوان این کاربر نیستید
+
 send_err=ارسال نامه انجام نشد
 send_eto=برای آدرس دهی وجود ندارد
 send_efrom=آدرس موجود نیست
@@ -509,6 +558,7 @@ send_eperms=User $1 cannot read $2
 send_eperms2=You are not allowed to send file $1
 send_epath=Sendmail executable $1 does not exist.
 send_ewrapper=برنامه رابط کاربری ارسال پست الکترونیکی وجود ندارد
+
 search_title=نتایج جستجو
 search_ecannot=شما مجاز به جستجوی ایمیل این کاربر نیستید
 search_ematch=شما باید متن را وارد کنید تا با آن مطابقت داشته باشید.
@@ -516,6 +566,7 @@ search_efield=شما باید یک نوع جستجو را انتخاب کنید.
 search_none=پیامی یافت نشد
 search_results2=$1 mail messages matching $2 ..
 search_results3=$1 mail messages not matching $2 ..
+
 match_from=از: مسابقات
 match_subject=موضوع: مسابقات
 match_to=به: مسابقات
@@ -533,6 +584,7 @@ match_!date=تاریخ: مطابقت ندارد
 match_!body=بدن مطابقت ندارد
 match_!size=اندازه کمتر از
 match_!headers=هدرها مطابقت ندارند
+
 mailq_title=صف نامه
 mailq_count=$1 messages
 mailq_none=هیچ پیام پستی در حال حاضر برای تحویل صف نشده است
@@ -561,15 +613,20 @@ mailq_active=فعال
 mailq_deferred=به تعویق افتاد
 mailq_hold=انتخاب را نگه دارید
 mailq_unhold=انتخاب را نگه دارید
+
 flushq_title=Flush Queue
 flushq_desc=Forcing the attempted delivery of mail with the command $1 ..
+
 qview_title=پیام صف
 qview_desc=From file $1
 qview_headers=هدرهای ایمیل
 qview_attach=پیوست ها
+
 after_err=Postfix configuration error : $1
+
 searchq_title=نتایج جستجوی صف
 searchq_none=هیچ پیام صف یافت نشد.
+
 header_title=چک های هدر
 header_ecannot=شما مجاز به ویرایش چک های سربرگ نیستید
 header_eregexp=The header checks map must be in the format <tt>regexp:</tt><i>filename</i>
@@ -588,15 +645,18 @@ header_reject=رد (با پیام خطا..)
 header_warn=هشدار ورود به سیستم (با پیام..)
 header_ename=بیان منظم نامعتبر - باید مانند / چیزی باشد /
 header_return=چک های هدر
+
 body_title=چک های بدن
 body_ecannot=شما مجاز به ویرایش چک های بدن نیستید
 body_eregexp=The body checks map must be in the format <tt>regexp:</tt><i>filename</i>
 opts_body_checks=جداول بررسی بدن پیام
 body_return=چک های بدن
+
 dependent_title=نقشه برداری حمل و نقل وابسته به فرستنده
 dependent_ecannot=شما مجاز به ویرایش نقشه های حمل و نقل وابسته به فرستنده نیستید
 dependent_eregexp=The sender dependent transports map must be in the format <tt>regexp:</tt><i>filename</i>
 dependent_return=ÙÙØ´Ù‌ÙØ§Û Ø­ÙÙ Ù ÙÙÙ ÙØ§Ø¨Ø³ØªÙ Ø¨Ù ÙØ±Ø³ØªÙØ¯Ù
+
 manual_title=پرونده نقشه را ویرایش کنید
 manual_file=یک فایل نقشه را برای ویرایش انتخاب کنید:
 manual_change=تغییر دادن
@@ -604,9 +664,11 @@ manual_editing=Use the text box below to manually edit the mappings in $1. Be ca
 manual_err=ذخیره فایل نقشه انجام نشد
 manual_efile=نام پرونده نامعتبر است!
 manual_ecannot=شما مجاز به ویرایش دستی فایل های نقشه نیست
+
 delq_titles=حذف پیام ها
 delq_rusure=Are you sure you want to delete the $1 selected queued messages?
 delq_confirm=پیام ها را حذف کنید
+
 master_title=فرآیندهای سرور
 master_name=نام فرآیند
 master_enabled=فعال شده است؟
@@ -647,8 +709,10 @@ master_einet=آدرس میزبان برای گوش دادن فقط برای فر
 master_ecommand=دستور فرآیند سرور وجود ندارد
 master_ewakeup=زمان بیدار یا نامعتبر است
 master_emaxprocs=تعداد پردازش حداکثر یا نامعتبر است
+
 delete_err=حذف نقشه ها انجام نشد
 delete_enone=هیچ یک انتخاب نشده است
+
 cmanual_title=پیکربندی پرونده ها را ویرایش کنید
 cmanual_ecannot=شما مجاز به ویرایش پرونده پیکربندی Postfix نیستید
 cmanual_ok=ویرایش کنید
@@ -656,10 +720,12 @@ cmanual_efile=پرونده انتخاب شده بخشی از پیکربندی Po
 cmanual_file=ویرایش پرونده پیکربندی:
 cmanual_edata=هیچ چیز وارد نشده است!
 cmanual_err=ذخیره پرونده پیکربندی انجام نشد
+
 access_return=جدول نقشه دسترسی
 edit_map_file=پرونده نقشه را ویرایش کنید
 opts_reject_rbl_client=لیست سیاه Realtime (RBL)
 opts_check_sender_access=جدول نقشه دسترسی فرستنده را بررسی کنید
+
 log_misc=گزینه های کلی تغییر یافته است
 log_opts=بازنویسی آدرس و تغییر چهره تغییر یافته است
 log_aliases=گزینه های مستعار تغییر کرده است
@@ -667,6 +733,7 @@ log_canonical=گزینه های نقشه برداری متعارف را تغیی
 log_virtual=گزینه های دامنه مجازی تغییر یافته است
 log_bcc=گزینه های نقشه BCC تغییر کرده است
 log_transport=گزینه های نقشه برداری حمل و نقل تغییر یافته است
+log_sni=گزینه های نقشه برداری گواهی را تغییر دهید
 log_dependent=گزینه های آدرس وابسته به فرستنده تغییر یافته است
 log_relocated=گزینه های نقشه برداری جابجایی تغییر یافته است
 log_header=گزینه های بررسی سرصفحه تغییر یافته است
@@ -744,6 +811,7 @@ log_sender_dependent_default_transport_maps_modify=Modified sender dependent add
 log_sender_dependent_default_transport_maps_delete=Deleted sender dependent address $1
 log_delete_sender_dependent_default_transport_mapss=Deleted $1 sender dependent addresses
 log_manual_sender_dependent_default_transport_mapss=Manually edited sender dependent addresses in $1
+
 sasl_title=احراز هویت و رمزگذاری SMTP
 opts_smtpd_sasl_auth_enable=آیا احتیاج به احراز هویت SASL SMTP دارید؟
 opts_smtp_sasl_auth_enable=از احراز هویت SASL SMTP استفاده می کنید؟
@@ -790,6 +858,7 @@ sasl_nologin=هیچ مورد نیاز نیست
 sasl_userpass=Login as $1 with password $2
 sasl_elogin=ورود SMTP ناموفق یا نامعتبر است (هیچ فضایی یا ستون مجاز نیست)
 sasl_epass=گذرواژه SMTP نامعتبر است (هیچ فضایی مجاز نیست)
+
 client_title=محدودیت های مشتری SMTP
 client_ecannot=شما مجاز به ویرایش محدودیت های مشتری SMTP نیستید
 client_restrict=محدودیت مشتری
@@ -799,6 +868,7 @@ client_other=سایر محدودیت ها :
 client_err=محدودیت های مشتری ذخیره نشد
 client_evalue=Missing value for restriction $1
 client_return=محدودیت های مشتری SMTP
+
 chooser_title=منبع نقشه را انتخاب کنید
 chooser_header=Map source $1
 chooser_none=هیچ یک
@@ -854,6 +924,7 @@ chooser_elquery_filter=Missing query filter for map $1
 chooser_elresult_attribute=Missing or invalid result attribute name for map $1
 chooser_elbind_dn=Missing login for LDAP server for map $1
 chooser_elbind_pw=Missing password for LDAP server for map $1
+
 mysql_ecfile=MySQL configuration file $1 was not found
 mysql_ecfile2=Could not find table in MySQL configuration file $1
 mysql_edriver=Failed to load the database driver $1
@@ -865,6 +936,7 @@ mysql_eupdate=SQL update failed : $1
 mysql_elist=SQL query failed : $1
 mysql_esource=No MySQL source named $1 was found
 mysql_eneed=The MySQL configuration parameter $1 was not found. Webmin needs this to figure out which table and fields to query.
+
 ldap_ecfile=LDAP configuration file $1 was not found
 ldap_eldapmod=Perl module $1 needed to communicate with LDAP is not installed or not loadable
 ldap_eldap=Failed to connect to LDAP server $1 on port $2
@@ -875,6 +947,7 @@ ldap_edelete=LDAP delete of $1 failed : $2
 ldap_equery=LDAP search of $1 failed : $2
 ldap_erename=LDAP rename of $1 to $2 failed : $3
 ldap_emodify=LDAP modify of $1 failed : $2
+
 bcc_title=نقشه برداری BCC
 bcc_ecannot=شما مجاز به ویرایش نگاشتهای BCC نیستید
 opts_sender_bcc_maps=جداول جستجوی نقشه برداری فرستنده BCC

@@ -42,6 +42,7 @@ index_lvused=Brugt plads
 index_lvuse=Anvendes til
 index_snapof=(Snapshot af $1)
 index_thin=LVM tynd pool til $1 LV'er
+
 lv_edit=Rediger logisk lydstyrke
 lv_edit_snap=Rediger snapshot
 lv_create=Opret logisk lydstyrke
@@ -128,6 +129,7 @@ lv_pvfrom=Flyt blokke fra fysisk lydstyrke
 lv_pvto=Til fysisk volumen
 lv_moveok=Flyt blokke
 lv_return=logisk lydstyrke
+
 mkfs_title=Opret filsystem
 mkfs_desc=Denne formular giver dig mulighed for at opbygge et nyt $2 ($1) filsystem på logisk volumen $3. Alle eksisterende data slettes.
 mkfs_header=Nye filsystemindstillinger
@@ -135,6 +137,7 @@ mkfs_err=Kunne ikke oprette filsystem
 mkfs_exec=Udfører kommando $1 ..
 mkfs_failed=.. kommandoen mislykkedes!
 mkfs_ok=.. kommandoen fuldført.
+
 resize_title=Ændre størrelse på logisk lydstyrke
 resize_mesg=Filsystemet $1 på denne logiske lydstyrke kan ikke ændres. Hvis du ændrer størrelse på den logiske lydstyrke, skal du genoprette filsystemet, som sletter alle data i det.
 resize_mesg2=Webmin ved ikke, hvilken slags filsystem der findes på denne logiske lydstyrke, hvis nogen. Hvis du ændrer størrelse på den logiske lydstyrke, skal du genoprette filsystemet, som sletter alle data i det.
@@ -142,8 +145,10 @@ resize_fs=Der opstod en fejl ved ændring af størrelsen på $1 -filsystemet på
 resize_ok=Ændre størrelse på logisk lydstyrke
 resize_emounted=Filsystemet på denne logiske lydstyrke kan ikke ændres størrelse, mens det er monteret
 resize_emounted2=Filsystemet på denne logiske lydstyrke kan ikke krympes, mens det er monteret
+
 init_title=Aktivér LVM
 init_cmd=Kører kommando $1 ..
+
 pv_edit=Rediger fysisk lydstyrke
 pv_create=Tilføj fysisk lydstyrke
 pv_vg=I volumengruppe $1 
@@ -170,6 +175,7 @@ pv_eother=Manglende eller ugyldig diskenhed
 pv_raid=RAID-enhed $1 
 pv_lvs=Tildeling efter logiske bind
 pv_egone=Fysisk lydstyrke findes ikke længere!
+
 vg_edit=Rediger lydstyrke gruppe
 vg_create=Opret lydgruppe
 vg_name=Volume gruppe navn
@@ -188,11 +194,13 @@ vg_deleteok=Slet nu
 vg_ename=Manglende eller ugyldig lydstyrkenavn
 vg_epesize=Manglende eller ugyldig tildelingsblokstørrelse
 vg_egone=Volumengruppe findes ikke længere!
+
 pvmove_err=Kunne ikke flytte den logiske lydstyrke
 pvmove_title=Flyt logisk lydstyrke
 pvmove_start=Flytning af logisk volumen $1 fra $2 til $3.
 pvmove_failed=.. flytning mislykkedes!
 pvmove_done=.. flyt komplet
+
 thin_title=Opret tynd pool
 thin_desc=En tynd pool er et par LV'er, der kan bruges til at oprette yderligere LV'er, der kan være større end de tilgængelige omfang. Plads forbruges kun efter behov snarere end når LV'erne inde i poolen oprettes. ADVARSEL - Alle data om de valgte LV'er vil gå tabt!
 thin_header=Nye tynde pooldetaljer
@@ -204,6 +212,7 @@ thin_err=Kunne ikke oprette tynd pool
 thin_esame=Begge valgte LV'er er de samme
 thin_edata=De valgte data LV er allerede i brug
 thin_emetadata=De valgte metadata LV er allerede i brug
+
 log_create_vg=Oprettet volumengruppe $1 
 log_modify_vg=Ændret volumengruppe $1 
 log_delete_vg=Slettet volumengruppe $1 
@@ -216,4 +225,5 @@ log_create_pv=Tilføjet fysisk lydstyrke $1 til VG $1
 log_modify_pv=Ændret fysisk volumen $1 i VG $2 
 log_delete_pv=Fjernet fysisk volumen $1 fra VG $2 
 log_resize_pv=Ændret størrelse på fysisk volumen $1 i VG $2 
+
 blocks=blokke

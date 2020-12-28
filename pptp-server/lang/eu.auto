@@ -10,6 +10,7 @@ index_apply=Aplikatu konfigurazioa
 index_applydesc=Egin klik botoi honetan uneko PPTP zerbitzariaren aukerak aplikatzeko PPTP zerbitzariaren prozesua geldituz eta berriro martxan jarriz. PPP aukeren eta PPP kontuen aldaketak aplikatuko dira konexio berri guztietan
 index_return=moduluaren aurkibidea
 index_epppd=$1 PPP zerbitzariaren programa ez dago zure sisteman instalatuta. PPTP funtzionamenduaren araberakoa da.
+
 conf_title=PPTP zerbitzariaren aukerak
 conf_ecannot=Ezin duzu PPTP zerbitzariaren aukerak editatu
 conf_header=PPTP zerbitzariaren konfigurazioa
@@ -35,6 +36,7 @@ conf_elocalip='$1' ez da baliozko IP helbide edo barruti lokal bat
 conf_eremoteip='$1' ez da baliozko urruneko IP helbide edo barrutia
 conf_efrom=Helbideko IPX sare falta edo baliogabea
 conf_eto=Helbidea zuzentzeko IPX sare falta edo baliogabea
+
 options_title=PPP Aukerak
 options_ecannot=Ezin duzu PPP aukerak editatu
 options_desc0=$1 etik beherako PPP aukerak zure sistemak jasotzen dituen sarrerako konexio guztiei aplikatzen zaizkie, baita markatzeko modemak ere.
@@ -67,6 +69,7 @@ options_mschap=MS-CHAP autentifikazioa
 options_mschap-v2=MS-CHAP 2. bertsioa autentifikazioa
 options_chapms=MS-CHAP autentifikazioa
 options_chapms-v2=MS-CHAP 2. bertsioa autentifikazioa
+
 secrets_title=PPP kontuak
 secrets_ecannot=Ezin duzu PPP kontuak editatu
 secrets_return=indizea
@@ -80,6 +83,7 @@ secrets_sany=INOLAKO
 secrets_create=Sortu PPP kontu berria.
 secrets_desc=Orrialde honetan agertzen diren PPP kontuak $1 fitxategitik hartuak dira, $3 autentifikaziorako erabiltzen direnak. $2 zerbitzariarentzako bakarrik agertzen dira, ez irteerak konexioak egiteko kontuak.
 secrets_delete=Ezabatu hautatutako PPP kontuak
+
 edit_secret_etitle=Editatu PPP kontua
 edit_secret_ctitle=Sortu PPP kontua
 edit_secret_acc=PPP kontua
@@ -99,15 +103,20 @@ edit_secret_alist=Baimendu zerrendatuta ..
 edit_secret_save=Save
 edit_secret_del=Ezabatu
 edit_secret_return=kontu zerrenda
+
 save_secret_esave=Ezin izan da kontua gorde
 save_secret_enoip='$1' ez da baliozko helbide bat
+
 stop_err=Ezin izan da PPTP zerbitzaria gelditu
 stop_egone=Jada ez da martxan
 stop_ecannot=Ezin duzu PPTP zerbitzaria gelditu
+
 start_err=Huts egin du PPTP zerbitzaria abiaraztean
 start_ecannot=Ezin duzu PPTP zerbitzaria abiarazi
+
 apply_err=Huts egin du PPTP zerbitzaria berriro abiaraztean
 apply_ecannot=Ezin duzu PPTP zerbitzaria berriro hasi
+
 conns_title=Konexio aktiboak
 conns_ecannot=Ezin duzu konexio aktiboak kudeatu
 conns_desc=Orrialde honetan une honetan PPTP konexioak zure zerbitzariarekin zerrendatzen dira. Bat desbideratzeko, egin klik haren interfazearen izenean.
@@ -119,9 +128,11 @@ conns_remote=Bezeroaren VPN helbidea
 conns_none=Momentuz ez da PPTP konexiorik aktibatuta egongo.
 conns_unknown=ezezaguna
 conns_user=Erabiltzaile izena
+
 disc_err=Ezin izan da deskonektatu
 disc_egone=Konexioak ez dago aktibo
 disc_ekill=Prozesua ez da exekutatzen
+
 log_secret_create=$1 PPP kontua sortu da
 log_secret_modify=$1 aldatutako PPP kontua
 log_secret_delete=$1 PPP kontua ezabatu da
@@ -132,6 +143,7 @@ log_disc=Konektatutako bezero $1
 log_start=PPTP zerbitzaria hasi da
 log_stop=PPTP zerbitzaria gelditu da
 log_apply=PPTP zerbitzariaren konfigurazioa aplikatu da
+
 acl_conf=Ezin duzu konfigurazioa editatu?
 acl_options=Aukerak editatu al ditzake?
 acl_secrets=Kudeatu al ditzake PPTP kontuak?

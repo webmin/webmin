@@ -3,11 +3,13 @@ index_none=Du har inte konfigurerat någon RAID-disk.
 index_add=Lägg till RAID-disk på nivå:
 index_return=RAID-diskar
 index_emdstat=RAID-statusfilen $1 finns inte på ditt system. Din kärna stödjer förmodligen inte RAID.
+
 linear=Sammanfogad (linjärt)
 raid0=Striped (RAID0)
 raid1=Speglad (RAID1)
 raid4=Paritet (RAID4)
 raid5=Redundant (RAID5)
+
 create_title=Skapa RAID-disk
 create_header=Inställningar för RAID-disk
 create_device=Diskfil
@@ -27,6 +29,7 @@ create_edisks=Du har inte angivit några partitioner
 create_edisks2=Minst 2 partitioner måste anges för spegling
 create_espare=Reservpartition $1 får inte vara en RAID-partition också
 create_epdisk=Paritetspartitionen får inte vara en RAID-partition också
+
 view_title=RAID-disk
 view_header=Inställningar för RAID-disk
 view_device=Diskfil
@@ -46,16 +49,19 @@ view_size=Användbart utrymme
 view_resync=Andel resync utförd
 view_down=(Nere)
 view_cannot=Denna RAID-disk kan inte ändras eftersom den är monterad.
+
 mkfs_title=Skapa filsystem
 mkfs_options=Inställningar för nytt Linux-filsystem
 mkfs_err=Det gick inte att bygga filsystemet
 mkfs_exec=Utför kommando $1 ...
 mkfs_failed=... kommandot gick inte att utföra.
 mkfs_ok=... kommandot utfört.
+
 emkraid=<tt>mkraid</tt> misslyckades: $1
 eraidstop=<tt>raidstop</tt> misslyckades: $1
 eraidstart=<tt>raidstart</tt> misslyckades: $1
 eforce=Du måste tvinga fram initialisering av denna RAID-disk: $1
+
 log_create=Lade till $1 raid-disk $2
 log_stop=Deaktiverade raid-disk $1
 log_start=Aktiverade raid-disk $1

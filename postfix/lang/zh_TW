@@ -1,5 +1,6 @@
 index_title=Postfix 郵件程式
 index_epath=Postfix 控制指令 $1 沒有安裝在您的系統上. 可能是您的<a href='$2'>模組組態</a>有錯誤, 或是 Postfix 尚未被安裝.
+
 internal_error=內部錯誤
 index_econfig=找不到 Postfix 組態指令 $1. 可能是您的<a href='$2'>模組組態</a>有錯誤.
 index_stop=停止 Postfix
@@ -7,7 +8,9 @@ index_start=啟動 Postfix
 index_stopmsg=按下這個按鈕以停止 Postfix 郵件伺服器. 這將停止其他系統寄送郵件給本地端的使用者, 並且防止客戶端以這個系統為郵件伺服器遞送郵件.
 index_startmsg=按下這個按鈕以啟動 Postfix 郵件伺服器. 在這個動作被完成前, 郵件將無法被遞送到本地端系統上的使用者, 客戶端有無法以這個系統作為郵件伺服器.
 opts_err=無法儲存選項
+
 check_error=當檢查目前Postfix組態設定時發生錯誤，請手動修復Postfix組態設定。
+
 address_rewriting_title=位址重寫與偽裝
 address_rewriting_ecannot=您不被允許編輯位址重寫或偽裝
 aliases_title=郵件別名
@@ -24,11 +27,13 @@ alias_save_err=無法儲存別名
 alias_delete_create=您是否要賒除您目前建立的別名!?
 delete_alias=刪除別名
 aliases_click=點選任一別名來編輯屬性:
+
 general_title=一般選項
 general_title_sensible=最有用的一般選項
 general_title_others=其他一般選項
 general_ecannot=您不被允許編輯一般選項
 what_is_it=這是什麼?
+
 opts_default=預設值
 opts_none=無
 opts_relayhost=遞送外送郵件經由主機
@@ -45,9 +50,11 @@ opts_mail_owner=郵件擁有者
 opts_default_privs=預設的遞送代理器權力
 opts_inet_interfaces=接收郵件的網路介面
 opts_all_interfaces=全部
+
 opts_local_recipient_maps=拒絕未知的本地端使用者
 opts_no=否
 opts_save=儲存並套用
+
 opts_allow_percent_hack=寫 "user%domain" 成 "user@domain"
 opts_append_at_myorigin=重寫 "user" 成 "user@$mydomain"
 opts_append_dot_mydomain=重寫 "user@host" 成 "user@host.$mydomain"
@@ -57,13 +64,17 @@ opts_swap_bangpath=重寫 "site!user" 成 "user@site"
 opts_masquerade_domains=地址偽裝
 opts_masquerade_exceptions=偽裝的例外
 index_return=Postfix 組態
+
 opts_alias_maps=本地端遞送代理器使用的別名資料庫
 opts_alias_database=別名資料庫由指令 "newaliases" 建立
 aliases_warning=警告: <ul><li>當第一個欄位不是空白時, 預設的 Postfix 別名產生指令會被於產生對應的資料庫; <li>否則將執行 Sendmail 相容的命令 "newaliases", 這將使用在第二個欄位的資料庫.</ul>
+
 aliases_name=名稱
 aliases_value=別名為...
+
 new_alias=建立新的別名
 new_aliasmsg=按下這個按鈕以建立新的別名
+
 local_delivery_ecannot=您不被允許編輯本地端遞送選項
 local_delivery_title=本地端遞送
 opts_local_transport=本地端遞送的傳送者名稱
@@ -89,6 +100,7 @@ opts_local_destination_recipient_limit=每個本地端收訊息遞送的作最�
 opts_local_destination_recipient_limit_default=預設值
 opts_prepend_delivered_header=預設的 <tt>遞送到:</tt> 當...
 opts_prepend_delivered_header_default=預設值
+
 resource_title=一般資源控制
 resource_ecannot=您不被允許編輯資源控制參數
 opts_bounce_size_limit=退回訊息的最大大小
@@ -107,6 +119,7 @@ opts_qmgr_message_recipient_limit=記憶體中收件人的最大數量
 opts_queue_minfree=佇列檔案系統的最小保留空間
 opts_stale_lock_time=鎖定釋放的等待時間
 opts_transport_retry_time=連接中斷的 MDT 嘗試間隔時間
+
 opts_always_bcc=每個訊息隱藏副本的接收位址
 opts_always_bcc_none=無
 opts_daemon_timeout=處理要求的逾時值
@@ -139,6 +152,7 @@ opts_relocated_maps_default=預設值 (關閉)
 opts_sun_mailtool_compatibility=在郵件信箱上檔案關閉核心鎖定
 opts_trigger_timeout=送出信號給守護器的最大時間
 opts_delay_warning_time=遞送未遞送的警告前之等待時間
+
 smtpd_title=SMTP 伺服器選項
 smtpd_ecannot=您不被允許編輯 SMTP 伺服器選項
 opts_disable_vrfy_command=關閉 SMTP VRFY 指令
@@ -165,6 +179,7 @@ opts_relay_domains_reject_code=禁止中繼的 SMTP 伺服器回應
 opts_unknown_address_reject_code=拒絕未知網域的 SMTP 伺服器回應
 opts_unknown_client_reject_code=拒絕未知客戶端的 SMTP 伺服器回應
 opts_unknown_hostname_reject_code=拒絕未知主機名稱的 SMTP 伺服器回應
+
 smtp_title=SMTP 客戶端選項
 smtp_ecannot=您不被允許編輯 SMTP 客戶端選項
 opts_best_mx_transport=當列出為最佳 MX 主機時的動作
@@ -183,6 +198,7 @@ opts_smtp_data_init_timeout=等待 DATA 回應的逾時值
 opts_smtp_data_xfer_timeout=等待傳輸信息本體回應的逾時值
 opts_smtp_data_done_timeout=等待結束的 "." 回應的逾時值
 opts_smtp_quit_timeout=等待 QUIT 回應的逾時值
+
 rate_title=遞送速率
 rate_ecannot=您不被允許編輯遞送速率選項
 opts_default_destination_concurrency_limit=最大遞送到相同目標的最大的平行處理數量
@@ -193,17 +209,20 @@ opts_maximal_queue_lifetime=無法寄達訊息在佇列中的最大等待時間 
 opts_minimal_backoff_time=遞送不同訊息間的最小等待時間 (秒)
 opts_queue_run_delay=掃描不同佇列間的等待時間 (秒)
 opts_defer_transports=不應該遞送時的傳送器
+
 debug_title=除錯功能
 debug_ecannot=您不被允許編輯除錯功能
 opts_debug_peer_list=啟動冗長紀錄等級的 網域/網路 樣式列表
 opts_debug_peer_level=冗長的紀錄等級當符合上面的列表
 debug_version=Webmin的Postfix模組 - 版本 $1
+
 ldap_title=LDAP 查詢
 ldap_ecannot=您不被允許編輯 LDAP 查詢選項
 ldap_non_existent=LDAP 似乎不存在於您的 Postfix 系統
 opts_ldap_lookup_timeout=LDAP 資料庫查詢的逾時值
 opts_ldap_search_base=要搜尋的 LDAP 資料庫
 opts_ldap_server_host=LDAP 伺服器名稱
+
 canonical_title=主要的對應表
 canonical_ecannot=您不被允許編輯主要的對應表組態
 opts_canonical_maps=位址對應查詢表
@@ -214,6 +233,7 @@ edit_recipient_canonical_maps=編輯主要收件人對應表
 edit_sender_canonical_maps=編輯主要寄件人對應表
 edit_canonical_maps_general=按下其中之一的按鍵以編輯主要對應表
 canonical_edit_title=編輯一個主要對應表
+
 mapping_name=名稱
 mapping_value=對應到...
 new_mapping=新對應
@@ -228,27 +248,35 @@ map_delete_create=無法刪除您剛建立的對應表
 maps_internal_error=對應: 內部錯誤
 maps_cant_write=無法寫入
 help_map_format=我因該使用哪一個格式?
+
 virtual_title=虛擬網域
 virtual_ecannot=您不被允許編輯虛擬網域對應組態
 opts_virtual_maps=網域對應查詢表
+
 transport_title=傳輸對應表
 transport_ecannot=您不被允許編輯傳輸對應表組態
 opts_transport_maps=傳輸對應查詢表
+
 relocated_title=重新定位對應表
 relocated_ecannot=您不被允許編輯主要的對應表組態
 opts_relocated_maps=重新定位對應查詢表
+
 map_click=按下任何的對應表以編輯它的內容:
 no_map=(目前沒有定義的對應表. 請先定義一個對應表m 然後您才能編輯之)
 no_map2=沒有定義對應檔案，請先定義對應，然後才能編輯
+
 stop_efailed=停止Postfix失敗
 stop_ecannot=您不被允許停止Postfix
+
 reload_efailed=重讀Postfix失敗
 reload_ecannot=您不被允許重讀Postfix
+
 query_get_efailed=Postfix組態指令查詢目前變數$1失敗: <tt>$2</tt>
 query_set_efailed=Postfix組態指令設定目前變數$1為 $2失敗: <tt>$3</tt>
 regenerate_ecannot=您不被允許重建別名
 regenerate_alias_efailed=重建別名失敗: <tt>$1</tt>
 regenerate_table_efailed=重建表格 $1失敗: <tt>$2</tt>
+
 acl_resource=可以編輯資源?
 acl_aliases=可以編輯別名?
 acl_aliases_options=可以編輯別名選項?
@@ -265,6 +293,7 @@ acl_rate=可以編輯遞送速率?
 acl_debug=可以編輯除錯功能?
 acl_ldap=可以編輯ldap?
 acl_startstop=可以啟動和停止postfix?
+
 boxes_title=使用者信箱
 boxes_user=使用者名稱
 boxes_size=信箱大小
@@ -274,6 +303,7 @@ boxes_sent=傳送郵件
 boxes_ecannot=您不被允許讀取電子郵件
 boxes_toomany=在系統上郵件信箱清單中太多使用者
 boxes_go=檢視使用者郵件:
+
 mail_title=使用者電子郵件
 mail_from=寄件人
 mail_date=日期
@@ -310,6 +340,7 @@ mail_mark1=已讀
 mail_mark2=特別
 mail_forward=轉寄
 mail_rfc=從列
+
 view_title=讀取電子郵件
 view_desc=郵件 $1 在 $2
 view_desc2=使用者 $2的訊息 $1
@@ -333,6 +364,7 @@ view_mark1=已讀
 view_mark2=特別 
 view_return=原始郵件
 view_sub=附加郵件
+
 compose_title=寫作電子郵件
 reply_title=回覆到電子郵件
 forward_title=轉寄到電子郵件
@@ -343,6 +375,7 @@ reply_mailforward=轉送訊息
 reply_attach2=附件夾帶
 reply_send=送出
 reply_ecannot=您不被允許以這個使用者名稱送出郵件
+
 send_err=郵件送出失敗
 send_eto=遺失收件人郵件位址
 send_efrom=遺失寄件人郵件位址
@@ -356,12 +389,14 @@ send_eperms=使用者 $1 無法讀取 $2
 send_eperms2=您不被允許傳送檔案 $1
 send_epath=Sendmail 執行 $1不存在 
 send_ewrapper=Postfix sendmail介面程式不存在
+
 search_title=搜尋結果
 search_ecannot=您不被允許搜尋這個使用者的郵件
 search_ematch=您必須輸入搜尋的條件
 search_none=找不到符合的郵件.
 search_results2=$1 郵件訊息符合 $2 ..
 search_results3=$1 郵件訊息不符合 $2 ..
+
 match_from=來源: 符合 
 match_subject=主旨: 符合
 match_to=To: 符合
@@ -376,4 +411,5 @@ match_!cc=Cc: 不符合
 match_!date=日期: 不符合
 match_!body=內文不符合
 match_!size=大小小於
+
 delete_enone=沒有選擇要刪除的郵件

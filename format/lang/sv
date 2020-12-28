@@ -15,7 +15,9 @@ index_use=Använt
 index_free=Ledigt
 index_format=Den här disken är inte formaterad
 index_return=disklista
+
 edit_ecannot=Du får inte ändra något för den här disken
+
 edit_title=Ändra partition
 edit_header=Uppgifter om partition
 edit_location=Plats
@@ -56,6 +58,7 @@ edit_tunedesc2=Det går inte att trimma filsystemet på denna partition eftersom
 edit_tunedesc3=Det går inte att trimma filsystemet på denna partition eftersom den just nu monsteras av en klient. Använd <a href=/mount/>filsystemsmodulen</a> för att montera av den först.
 edit_tunedesc4=Det går inte att trimma filsystemet på denna partition eftersom den inte har något.
 edit_tunedesc5=Det går inte att trimma filsystemet på denna partition eftersom endast <tt>UFS</tt>-filsystem kan trimmas.
+
 save_ecannot=Du får inte ändra något för denna disk
 save_edelete=Det gick inte att ta bort partitionen
 save_esave=Det gick inte att spara partitionen
@@ -64,6 +67,7 @@ save_eend='$1' är inte en giltig slutcylinder
 save_estartmin=Startcylindern måste vara > 0
 save_eendmax=Slutcylindern måste vara < $1
 save_estartend=Startcylindern måste ha ett lägre värde än slutcylindern
+
 newfs_title=Skapa filsystem
 newfs_ecannot=Du får inte formatera denna disk
 newfs_desc=Skapa en ny $1 på disk $2 genom att trycka på knappen längst ned. Alla data på denna partition kommer att raderas permanent.
@@ -89,6 +93,7 @@ newfs_err=Det gick inte att skapa filsystem
 newfs_exec=Utför kommando $1 ...
 newfs_failed=... det gick inte!
 newfs_ok=... klart.
+
 fsck_title=Reparera filsystem
 fsck_ecannot=Du får inte reparera denna disk
 fsck_desc=Om du trycker på knappen <b>Reparera</b> kommer $1 på $2 att kontrolleras och repareras. Ange nivå för kontroll och reparation nedan.
@@ -106,6 +111,7 @@ fsck_37=processen slogs ihjäl under kontrollen
 fsck_39=hittade fel som inte går att rätta till!
 fsck_40=inga fel hittades
 fsck_unknown=okänt fel
+
 tunefs_title=Trimma filsystem
 tunefs_ecannot=Du får inte trimma denna disk
 tunefs_desc=Med detta formulär kan du justera diverse parametrar för $1 på $2. Befintliga filer på detta filsystem kommer inte att påverkas.
@@ -122,6 +128,7 @@ tunefs_err=Det gick inte att trimma filsystemet
 tunefs_exec=Utför kommando $1 ...
 tunefs_failed=... det gick inte!
 tunefs_ok=... klart.
+
 select_device=SCSI-kontroller $1 mål $2 disk $3
 select_idedevice=IDE-disk $1
 select_part=SCSI-kontroller $1 mål $2 disk $3 partition $4
@@ -131,8 +138,10 @@ esun=Partitioner kan endast modifieras på Sun-hårdvara
 emounted=Disken har monterade partitioner
 elast=Den sista partitionen får inte tas bort
 eformat=<tt>format</tt> hittade inga diskar!
+
 fstype_ufs=Solaris Unix-filsystem
 fstype_unknown=Okänt filsystem
+
 acl_disks=Diskar som denna användare får partitionera och formatera
 acl_dall=Alla diskar
 acl_dsel=Angivna ...

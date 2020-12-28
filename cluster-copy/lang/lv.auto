@@ -11,6 +11,7 @@ index_when=Jā, $1
 index_act=Darbība
 index_exec=Izpildīt
 index_delete=Dzēst atlasītos eksemplārus
+
 edit_title=Rediģēt kopu kopiju
 create_title=Izveidot kopu kopiju
 edit_header=Informācija par kopas kopiju
@@ -31,12 +32,14 @@ edit_run=Kopēt tūlīt
 edit_return=kopas kopija
 edit_email=E-pasta izvade uz
 edit_none=Neviens
+
 save_err=Neizdevās saglabāt kopas cron darbu
 save_efiles=Nav ievadīts neviens kopējamais fails
 save_edest=Trūkst mērķa direktorija
 save_eservers=Nav serveru, no kuriem iekopēt
 save_efile=Fails kopēšanai “$1” nav absolūts ceļš
 save_eemail=Trūkst vai nav derīga e-pasta adrese
+
 exec_title=Failu kopēšana
 exec_files1=$1 failu kopēšana uz atlasītajiem serveriem $2.
 exec_files2=Notiek $1 kopēšana atlasītajos serveros $2.
@@ -50,12 +53,15 @@ exec_not=Neizdevās nokopēt šādus failus uz $1  :
 exec_cmd=Komandas pēckopija izvade $1  :
 exec_before=Komandas pirms kopēšanas izvade $1  :
 exec_on=Neizdevās palaist $1 : $2 
+
 log_create=Izveidota kopija $1 līdz $2 serveriem
 log_modify=Modificēta kopija $1 līdz $2 serveriem
 log_delete=Izdzēsta kopija $1 līdz $2 serveriem
 log_exec=Kopēti serveri $1 uz $2 
 log_deletes=Izdzēsti $1 eksemplāri
+
 email_subject_succeeded=$1 kopijas kopija izdevās
 email_subject_failed=$1 kopas kopija neizdevās
+
 delete_err=Neizdevās izdzēst kopijas
 delete_enone=Nav atlasīts

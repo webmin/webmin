@@ -21,13 +21,19 @@ index_match1=포함
 index_match2=성냥
 index_dhcpd=ISC DHCPd
 index_delete=선택된 것을 지워 라
+
 butt_leases=임대 목록
+
 esub_desc=서브넷 설명
 esub_fopeer=장애 조치 피어
+
 esh_pools=공유 네트워크의 주소 풀
 esh_desc=공유 네트워크 설명
+
 ehost_desc=호스트 설명
+
 egroup_desc=그룹 설명
+
 listl_network=네트워크 $1 / $2 에서
 listl_lfnotcont2=DHCPd 임대 파일 <tt>$1</tt>에 현재 활성 상태 인 임대가 없습니다.
 listl_unknown=알 수 없는
@@ -40,14 +46,19 @@ listl_used=할당
 listl_pc=백분율
 listl_err=임대를 삭제하지 못했습니다.
 listl_enone=선택된 사항 없음
+
 listl_refresh=새로 고침 목록
+
 restart_conftext=$2 의 $1 주위 줄  :
+
 sopt_edname='$1'은 (는) 유효한 옵션 이름이 아닙니다.
 sopt_ednum='$1'은 (는) 유효한 옵션 번호가 아닙니다.
 sopt_edtype='$1'은 (는) 유효한 옵션 유형이 아닙니다
 sopt_ecval=맞춤 옵션 '$1'에 대한 값이 없습니다.
 sopt_ecip=사용자 정의 옵션 '$1'의 값은 IP 주소 여야합니다.
+
 ssub_invalidfopeer=유효한 장애 조치 피어가 아닙니다.
+
 plib_toffset=시간 오프셋
 plib_serverid=DHCP 서버 식별자
 plib_ddnsupstyle=동적 DNS 업데이트 스타일
@@ -62,6 +73,7 @@ plib_eexpr=DHCP 구성의이 섹션에는 Webmin이 안전하게 편집 할 수�
 plib_auth_subnet=서버가이 서브넷에 대해 권한이 있습니까?
 plib_auth_shared-network=서버가이 공유 네트워크에 대해 권한이 있습니까?
 plib_auth_global=서버는 모든 서브넷에 대해 권한이 있습니까?
+
 eopt_domsearch=검색 할 DNS 도메인
 eopt_toffset=시간 오프셋
 eopt_cname=이름
@@ -73,9 +85,11 @@ eopt_slpa=SLP 디렉토리 에이전트 IP
 eopt_slpaips=이 IP 만?
 eopt_slps=SLP 서비스 범위
 eopt_slpsonly=이 범위 만?
+
 log_stop=중지 된 DHCP 서버
 log_delete_subnets=$1 개의 서브넷 및 공유 네트워크를 삭제했습니다.
 log_delete_hosts=$1 개의 호스트 및 호스트 그룹을 삭제했습니다.
+
 keys_edit=TSIG 키 편집
 keys_create=생성 된 TSIG 키
 keys_title=DNS 키
@@ -86,14 +100,18 @@ keys_ecannot=DNS 키를 편집 할 수 없습니다
 keys_err=DNS 키를 저장하지 못했습니다
 keys_ekey='$1'은 (는) 유효한 키 ID가 아닙니다.
 keys_esecret=키 $1 의 base-64로 인코딩 된 비밀이 없거나 잘못되었습니다.
+
 eacl_uniqh=하드웨어 주소가 중복 된 호스트 생성
 eacl_uniqi=중복 IP 주소로 호스트 생성
+
 acl_zones=동적 DNS 영역을 편집 할 수 있습니까?
 acl_per_grp_acls=그룹 별 ACL을 사용 하시겠습니까?
 acl_per_sha_acls=공유 네트워크 ACL을 사용 하시겠습니까?
+
 iface_title=네트워크 인터페이스
 iface_desc=DHCP 서버는 아래 선택된 인터페이스 중 하나에 연결된 네트워크에서만 IP 주소를 할당 할 수 있습니다. 정의 된 모든 서브넷에 대한 네트워크 인터페이스가 포함되어야합니다. 아무것도 선택하지 않으면 DHCP 서버는 자동으로 서버를 찾으려고 시도합니다.
 iface_listen=인터페이스 청취
+
 lookup_ehost=이름, IP 주소 또는 MAC 주소가 $1 인 호스트가 없습니다
 lookup_ehostname=호스트 이름, IP 주소 또는 MAC 주소가 입력되지 않았습니다
 lookup_egroup=이름 또는 도메인 이름이 $1 인 그룹이 없습니다.
@@ -102,6 +120,7 @@ lookup_esubnet=주소 또는 주소/넷 마스크가 $1 인 서브넷이 없습�
 lookup_esubnetname=서브넷 주소 또는 주소/넷 마스크가 입력되지 않았습니다
 lookup_eshared=이름이 $1 인 공유 네트워크가 없습니다.
 lookup_esharedname=공유 네트워크 이름이 입력되지 않았습니다
+
 zone_key=DNS 영역
 index_addzone=새로운 DNS 영역을 추가하십시오.
 index_zone=존
@@ -117,16 +136,21 @@ zone_faildel=영역을 삭제하지 못했습니다
 zone_failsave=영역을 저장하지 못했습니다
 zone_tsigkey=TSIG 키
 zone_ecannot=DNS 영역을 편집 할 수 없습니다
+
 plib_clientupdates=고객이 자신의 기록을 업데이트 할 수 있습니까?
+
 text_title=dhcpd.conf
 text_editor=텍스트 에디터
 text_return=메인 메뉴
 text_undo=실행 취소
 text_ecannot=구성 파일을 편집 할 수 없습니다
+
 index_buttetext=수동 구성 편집
 index_text=구성 파일을 수동으로 편집 텍스트
+
 stop_err=DHCP 서버를 중지하지 못했습니다
 stop_ekill=달리 지마!
+
 sdelete_err=서브넷 및 공유 네트워크를 삭제하지 못했습니다.
 sdelete_enone=선택된 사항 없음
 sdelete_title=서브넷 및 공유 네트워크 삭제
@@ -134,6 +158,7 @@ sdelete_rusure1=선택한 $1 개의 서브넷과 $2 개의 공유 네트워크�
 sdelete_rusure2=선택한 $1 개의 서브넷을 삭제 하시겠습니까? 서브넷 내의 다른 개체도 손실됩니다.
 sdelete_rusure3=선택한 $2 개의 공유 네트워크를 삭제 하시겠습니까? 네트워크 내의 모든 서브넷 또는 기타 개체도 손실됩니다.
 sdelete_ok=지금 삭제
+
 hdelete_err=호스트 및 그룹을 삭제하지 못했습니다.
 hdelete_enone=선택된 사항 없음
 hdelete_title=호스트 및 그룹 삭제

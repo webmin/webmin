@@ -2,6 +2,7 @@ index_used=Használt
 index_none=Nincs hozzáférése egyetlen csatolt fájlrendszerhez sem.
 index_mount2=Szerelés jelszóval:
 index_root=Gyökér fájlrendszer
+
 edit_usage=Lemez használat
 edit_comm_opt=Általános szerelési lehetőségek
 edit_ext_opt=ext2 / ext3 specifikus opciók
@@ -25,11 +26,15 @@ edit_ecannot=Ez a fájlrendszer nem szerkeszthető
 edit_ecannot2=Nem szabad új fájlrendszereket hozzáadni
 edit_3_or_lower=3 (vagy alacsonyabb)
 edit_advanced=Haladó szint
+
 save_force=A $1 telepítését nem lehetett eltávolítani, mivel a csatlakozás jelenleg használatban van. Kényszerített leválasztás megkísérléséhez kattintson az alábbi gombra
 save_fapply=Kihúzza a szerelést
+
 nfs_seldirv4=NFSv4 csatlakoztatáshoz válassza a '/' lehetőséget
+
 smb_eworkgroup=Nincs beállítva munkacsoport a Module Config oldalon
 smb_emaster=A $1 munkacsoporthoz nem található böngészőmester
+
 solaris_idedev=IDE vezérlő $1 meghajtó $2 partíció $3
 solaris_dvd=DVD
 solaris_lvm=LVM eszköz
@@ -40,6 +45,7 @@ solaris_hfs=HFS eszköz
 solaris_immed=Azonnal
 solaris_defer=halasztott
 solaris_largebsize=Használ nagy méretű blokkot?
+
 linux_raid=RAID eszköz
 linux_rdev=RAID eszköz $1
 linux_lvm=LVM logikai kötet
@@ -73,6 +79,7 @@ linux_noenforce=Igen, de ne hajtja végre
 linux_df=Belefoglalni a fenntartott blokkokat a fájlrendszer méretébe?
 linux_noatime=Kerülje az utolsó hozzáférési idők frissítését?
 linux_netdev=Várja meg, amíg a hálózati felületek fel vannak állítva?
+linux_nofail=Folytatja az indítást akkor is, ha a csatlakoztatás sikertelen
 linux_ecname=Hiányzó vagy érvénytelen kliens netbios név
 linux_emname=Hiányzó vagy érvénytelen szerver gazdagépnév vagy IP-cím
 linux_bind=Eredeti könyvtár
@@ -98,6 +105,7 @@ linux_nounix=Letiltja a CIFS Unix kiterjesztéseket?
 linux_noserverino=Inode számokat generál az ügyféloldalon?
 linux_cvers=CIFS verzió
 linux_ecvers=A CIFS verziónak számnak kell lennie
+
 log_mount=Beillesztett $3
 log_mount_l=Beillesztett $2 $1 a $3
 log_umount=Nem szerelt $3
@@ -111,7 +119,9 @@ log_modify_l=Módosított $2 mount $1 on $3
 log_delete=Törölt mount $3
 log_delete_l=Törölt $2 mount $1 a $3
 log_swap=Létrehozott swap fájlt $1
+
 unmount_err=A $1 leválasztása nem sikerült
+
 mount_err=A (z) $1 telepítése nem sikerült
 irix_nhost=NFS gazdagépnév
 irix_ndir=NFS könyvtár
@@ -142,6 +152,7 @@ irix_rock=Használsz Rock Ridge kiterjesztéseket?
 irix_nofsck=Ellenőrizze a fájlrendszert indításkor?
 irix_auto=Automounter forrás
 irix_automap=Térképfájl
+
 irix_ehost=A (z) '$1' gazdagép nem létezik
 irix_eloss=A (z) '$1' gazdagép nem működik
 irix_eshowmount=Az '$1' gazdagép nem támogatja az NFS-t
@@ -159,9 +170,11 @@ irix_efstyp2=Nem sikerült beolvasni a $1 fájlrendszertípust : $2
 irix_efstyp=A $1 fájlrendszer típusa $2, nem $3
 irix_eautomap=Az '$1' Automounter térképfájl nem létezik
 irix_eauthmap2=Hiányzó vagy érvénytelen automaounter térképfájl
+
 irix_devroot=Gyökérpartíció
 irix_devswap=Cserélje ki a partíciót
 irix_autohosts=Az összes NFS-export
+
 acl_only=Csak a felszerelést és leszerelést engedélyezi?
 acl_fs=Szerkeszthető fájlrendszerek
 acl_types=Használható fájlrendszer-típusok
@@ -174,8 +187,10 @@ acl_hide=Elrejti a nem szerkeszthető fájlrendszereket?
 acl_simple=Megjeleníti az egyszerű szerelési űrlapot?
 acl_simopts=Megjeleníti az egyszerűsített fájlrendszer-beállításokat?
 acl_browse=Megjeleníti a fájlt és megosztja a böngésző gombokat?
+
 egcc=A rendszerre szerelt fájlrendszerek felsorolására szolgáló program létrehozásához szükséges GCC vagy CC fordító nem érhető el.
 ecompile=Hiba történt a program összeállításakor a rendszerre szerelt fájlrendszerek felsorolására : $1
+
 freebsd_eaddr=Hiányzó vagy érvénytelen szervercím
 freebsd_eworkgroup=Hiányzó vagy érvénytelen munkacsoport
 freebsd_ide=IDE merevlemez
@@ -189,8 +204,10 @@ freebsd_idedev=IDE eszköz $1, szelet $2, partíció $3
 freebsd_scsidev=SCSI eszköz $1, szelet $2, partíció $3
 freebsd_edevpath=Más eszköznek abszolút útvonalon kell lennie, például a <tt>/dev/cdrom</tt>
 freebsd_edevfile=Az '$1' eszközfájl nem létezik
+
 cswap_file=A $1 cserefájl nem létezik.
 cswap_size=Hozzon létre és csatlakoztasson méretű cserefájlt
+
 acl_sysinfo=Megjeleníti a rendelkezésre álló lemezeket az irányítópulton?
 sysinfo_total=Teljes
 sysinfo_dev=Eszköz azonosító

@@ -7,6 +7,7 @@ index_dsize=Daqs totali
 index_dmodel=Għamla u mudell
 index_dparts=Flieli
 index_return=lista tad-diski
+
 disk_title=Editja Disk
 disk_egone=Id-diska ma teżistix!
 disk_no=Porzjon
@@ -31,9 +32,11 @@ disk_return=Dettalji tad-diska u lista ta 'flieli
 disk_add=Oħloq porzjon ġdid.
 disk_smart=Uri l-Istat SMART
 disk_smartdesc=Uri l-istat kurrenti ta 'dan is-sewqan kif innutat minn SMART, u iċċekkjah għal żbalji fid-diska.
+
 select_device=$1 apparat $2 
 select_slice=$1 apparat $2 porzjon $3 
 select_part=$1 apparat $2 porzjon $3 partizzjoni $4 
+
 slice_title=Editja Slice
 slice_egone=Porzjon magħżul ma jeżistix!
 slice_ssize=Daqs tal-porzjon
@@ -58,6 +61,7 @@ slice_return=Dettalji tal-porzjon u lista tad-diviżorji
 slice_err=Naqset milli timmodifika porzjon
 slice_header=Dettalji tal-porzjon
 slice_suse=Użat direttament minn
+
 dslice_title=Ħassar Slice
 dslice_rusure=Int żgur li trid tħassar il-porzjon $1 ? Kwalunkwe diviżorji u sistemi ta 'fajls fi ħdanha jitħassru wkoll.
 dslice_warn=Twissija - din il-porzjon bħalissa hija użata minn : $1 
@@ -65,6 +69,7 @@ dslice_confirm=Ħassar issa
 dslice_deleting=It-tħassir ta 'porzjon $1 ..
 dslice_failed=.. it-tħassir falla : $1 
 dslice_done=.. sar
+
 nslice_title=Oħloq Slice
 nslice_header=Dettalji ġodda tal-porzjon
 nslice_number=Numru porzjon
@@ -86,6 +91,7 @@ nslice_done=.. porzjon miżjud
 nslice_parting=Oħloq diviżorji default f'porzjon $1 fuq $2 ..
 nslice_pfailed=.. Il-ħolqien tal-partizzjoni falla : $1 
 nslice_pdone=.. Partizzjoni miżjuda
+
 npart_title=Oħloq Partition
 npart_header=Dettalji ġodda tal-partizzjoni
 npart_letter=Ittra ta 'partizzjoni
@@ -98,6 +104,7 @@ npart_emax=Blokk li jispiċċa ma jistax ikun ikbar mid-daqs tal-porzjon ta ' $1
 npart_creating=Ħolqien tal-partizzjoni $1 fuq $2 ..
 npart_failed=.. Il-ħolqien tal-partizzjoni falla : $1 
 npart_done=.. Partizzjoni miżjuda
+
 part_title=Editja d-diviżorju
 part_egone=Il-qasma ma għadhiex teżisti!
 part_header=Dettalji tal-qasma
@@ -124,6 +131,7 @@ part_newmount2=Partizzjoni tal-Muntanja
 part_mountmsg=Immonta dan it-tagħmir fuq direttorju ġdid fis-sistema tiegħek, sabiex ikun jista 'jintuża biex jaħżen fajls. Sistema ta 'fajls trid tkun diġà ġiet maħluqa fuq l-apparat.
 part_mountmsg2=Immonta dan it-tagħmir bħala memorja virtwali fis-sistema tiegħek, biex iżżid l-ammont ta 'memorja disponibbli.
 part_cannotedit=Din il-partizzjoni ma tistax tiġi modifikata peress li tinsab attwalment.
+
 dpart_title=Ħassar Partition
 dpart_rusure=Int żgur li trid tħassar il-partizzjoni $1 ? Kull sistema ta 'fajls fi ħdanha għandha wkoll titħassar.
 dpart_warn=Twissija - din il-partizzjoni bħalissa qed tintuża minn $1 
@@ -131,6 +139,7 @@ dpart_confirm=Ħassar issa
 dpart_deleting=It-tħassir tal-partizzjoni $1 ..
 dpart_failed=.. it-tħassir falla : $1 
 dpart_done=.. sar
+
 newfs_title=Oħloq Sistema tal-Files
 newfs_header=Dettalji ta 'filesystem ġodda
 newfs_free=Spazju biex tirriżerva għall-għerq
@@ -145,11 +154,13 @@ newfs_elabel=Tikketta nieqsa jew invalida
 newfs_creating=Ħolqien ta 'filesystem fuq $1 ..
 newfs_failed=.. il-ħolqien falla!
 newfs_done=.. maħluqa b'suċċess
+
 fsck_title=Iċċekkja l-Filesystem
 fsck_err=Ma rnexxiex tiċċekkja s-sistema tal-files
 fsck_checking=Iċċekkja l-filesystem fuq $1 ..
 fsck_failed=.. verifika falla!
 fsck_done=.. kontroll komplut bl-ebda żbalji misjuba
+
 log_create_slice=Porzjon maħluq $1 
 log_delete_slice=Porzjon imħassar $1 
 log_modify_slice=Porzjon modifikat $1 

@@ -1,6 +1,7 @@
 index_screate=Maak een nieuwe veilige gebruiker.
 index_twofactor=Twee-factor authenticatie
 index_joingroup=Aan groep toevoegen:
+
 edit_title3=Maak een veilige webmingebruiker aan
 edit_twofactor=Twee-factor authenticatietype
 edit_twofactorprov=Gebruik provider $1 met ID $2 
@@ -11,20 +12,28 @@ edit_safe=Privilege niveau
 edit_safe0=onbeperkt
 edit_safe1=Alleen veilige modules
 edit_unsafe=Reset naar onbeperkt
+
 save_eunixname=De gebruikersnaam '$1' is geen Unix-gebruiker en kan dus niet in de veilige modus worden gebruikt
+
 delete_eanonuser=Deze gebruiker wordt gebruikt voor anonieme moduletoegang
+
 cert_etempdir=Ongeldig certificaatbestand
+
 log_joingroup= $1 Webmin-gebruikers toegevoegd aan $2 
 log_twofactor=Ingeschreven gebruiker $1 bij two-factor provider $2 
 log_onefactor=Uitgeschreven gebruiker $1 voor tweefactorauthenticatie
+
 convert_sync2=Wachtwoord synchroniseren met Unix-gebruiker in de toekomst?
 convert_user=Unix-gebruiker
 convert_action=Maatregelen die zijn genomen
 convert_users=Gebruikers om te zetten
+
 sync_when=Wanneer synchroniseren
+
 unix_restrict2=Aanvullende beperkingen
 unix_header=Unix-instellingen voor gebruikersauthenticatie
 unix_utable=Toegestane Unix-gebruikers
+
 sessions_actions=Acties..
 sessions_logouts=Toon ook uitgelogde sessies..
 sessions_state=Staat
@@ -32,8 +41,11 @@ sessions_this=Deze login
 sessions_in=Ingelogd
 sessions_out=Uitgelogd
 sessions_kill=Verbinding verbreken..
+
 logins_title=Recente Webmin-aanmeldingen
+
 udeletes_jerr=Kan gebruikers niet toevoegen aan groep
+
 twofactor_err=Kan tweefactorauthenticatie niet instellen
 twofactor_euser=Uw Webmin-gebruiker is niet gevonden!
 twofactor_title=Twee-factor authenticatie

@@ -36,6 +36,7 @@ index_dscsi=Zařízení SCSI $1 řadič $2
 index_draid=RAID úroveň $1
 index_dparts=Oddíly
 index_none2=V systému nebyl nalezen žádný disk.
+
 bytes=bytů
 megabytes=megabytů
 extended=Rozšířený
@@ -57,6 +58,7 @@ select_smart=Compaq Smart pole $1 jednotka $2
 select_smartpart=Compaq Smart pole $1 jednotka $2 oddíl $3
 select_promise=Přidělený RAID disk $1
 select_ppart=Přidělený RAID disk $1 oddíl $2
+
 edit_title=Editace oddílu
 create_title=Vytvoření oddílu
 edit_ecannot=Nemáte oprávnění editovat tento disk
@@ -98,6 +100,7 @@ edit_newmount2=Připojit oddíl:
 edit_mountas=jako
 edit_mountmsg=Připojit tento oddíl k novému adresáři ve vašem systému tak, aby mohl být použít jako další zásobník souborů. Souborový sysém musí být v daném oddíle již vytvořen.
 edit_mountmsg2=Připojit tento oddíl jako virtuální paměť vašeho systému tak, aby byla k dispozici větší kapacita paměti.
+
 mkfs_title=Nový souborový systém
 mkfs_ecannot=Nemáte oprávnění vybudovat na tomto disku nový souborový systém
 mkfs_desc1=Klepnutím na tlačítko v dolní části tohoto formuláře bude vybudován nový $1 souborový systém na zařízení $2. Všachna data v tomto oddílu budou nenávratně vymazána.
@@ -108,6 +111,7 @@ mkfs_err=Chyba při vytváření souborového systému
 mkfs_exec=Pobíhá spouštění příkazu $1 ..
 mkfs_failed=.. příkaz byl neúspěšný!
 mkfs_ok=.. příkaz byl úspěšně dokončen.
+
 fsck_title=Oprava souborového systému
 fsck_ecannot=Nemáte oprávnění fsck tohoto disku
 fsck_desc1=Klepnutím na tlačítko <tt>Opravit souborový systém</tt> se pokusíte opravit poškozené $1 souborové systémy na $2 přimountovaného na $3. Pokud není souborový systém poškozene, nebudou provedeny žádné změny.
@@ -120,6 +124,7 @@ fsck_err3=chyby byly nalezeny a odstraněny - je potřeba provés reboot
 fsck_err4=chyby byly nalezeny, avšak NEBYLY odstraněny
 fsck_err16=cchyba řádkového příkazu
 fsck_unknown=navrácen neznámý kód $1
+
 tunefs_title=Vyladění souborového systému
 tunefs_ecannot=Nemáte oprávnění vyladit tento systém
 tunefs_desc=Tento formulář umožňuje přidat rozdílné parametry pro $1souborový systém na $2 přimountovaného na $3. Existující soubory tohto souborového systému nebudou touto činností nijak ovlivněny.
@@ -141,10 +146,12 @@ tunefs_err=Chyba při vylaďování souborového systému
 tunefs_exec=Spouští se příkaz $1 ..
 tunefs_failed=... příkaz byl neúspěšný!
 tunefs_ok=.. příkaz byl úspěšně dokončen.
+
 reboot_title=Rebootování
 reboot_msg=Rebootovat ihned ..
 reboot_ok=Rebootovat
 reboot_why=Změnil jste tabulku s rozdělením oddílů na $1. Chcete-li, aby byly změny aplikovány, musíte váš systém rebootovat.
+
 save_err=Chyba při ukládání oddílu
 save_ecannot=Nemáte oprávnění editovat tento disk
 save_estart='$1' není platný počáteční cylinder
@@ -153,6 +160,7 @@ save_emin=Počáteční cylinder musí být roven nebo větší než $1
 save_emax=Koncový cylinder musí být roven nebo menší než $1
 save_eminmax=Počáteční cylinder musí být rvětší než koncový cylinder
 save_eoverlap=Byly detekovány přestu v oddílu $1 ($2 do $3)
+
 ext2_b=Velikost bloku
 ext2_f=Velikost fragmetu
 ext2_i=Bytů na inode
@@ -160,6 +168,7 @@ ext2_m=Rezervované bloky
 ext2_g=Bloky na skupinu
 ext2_c=Kontrolovat vadné bloky?
 ext3_j=Velikost journal souboru
+
 msdos_ff=Počet FATs
 msdos_F=Velikost FAT
 msdos_F_other=Jiný..
@@ -168,21 +177,28 @@ msdos_n=Název svazku
 msdos_r=Kořenový zápis
 msdos_s=Velikost clusteru
 msdos_c=Kontrolovat vadné bloky?
+
 minix_n=Délka jména souboru
 minix_i=Počet inodů
 minix_b=Počet bloků
 minix_c=Kontrolovat vadné bloky?
+
 reiserfs_force=Potvrdit vytvoření souborového systému
 reiserfs_hash=Hash funkce
+
 xfs_force=Potvrdit vytvoření souborového systému
 xfs_b=Velikost bloku
+
 jfs_s=Velikost logu
 jfs_c=Kontrolovat vadné bloky?
+
 fatx_none=Pro FATX souborový systém nejsou k dispozici žádné volby.
+
 acl_disks=Disky, u kterých může tento uživatel vytvořit oddíl a formátovat
 acl_dall=Všechny disky
 acl_dsel=Vybrané..
 acl_view=Může si zobrazit needitovatelné disky?
+
 hdparm_title=Editace IDE Parameterů
 hdparm_on=Zapnuta
 hdparm_off=Vypnuta
@@ -211,6 +227,7 @@ hdparm_performing=Provádí se
 hdparm_buf1=Buffer cache:
 hdparm_buf2=Buffered:
 hdparm_speedres=Výsldky testu rychlosti
+
 log_modify=Modifikován $1
 log_create=Vytvořen $1
 log_delete=Smazán $1
@@ -218,6 +235,7 @@ log_mkfs=Vytvořen $1 souborový systém na $2
 log_tunefs=Vyladěn $1 souborový systém na $2
 log_fsck=Opraven $1 souborový systém na $2
 log_hdparm=Modifikovány IDE parametetry pro $1
+
 fs_ext2=Linux Native
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -226,9 +244,11 @@ fs_reiserfs=ReiserFS
 fs_ext3=New Linux Native
 fs_xfs=SGI
 fs_jfs=IBM Journalling
+
 delete_title=Smazat oddíl
 delete_rusure=Skutečně chcete smazat $1 ( $2 ) ? Data v tomto oddílu mohou být navždy ztracena.
 delete_ok=Smazat
+
 disk_title=Upravit oddíly disku
 disk_egone=Disk již neexistuje!
 disk_no=Číslo

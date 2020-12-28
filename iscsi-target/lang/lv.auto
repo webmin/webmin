@@ -1,6 +1,7 @@
 check_econfig=ISCSI mērķa konfigurācijas fails $1 jūsu sistēmā netika atrasts.
 check_eietadm=ISCSI mērķa administrēšanas komanda $1 jūsu sistēmā netika atrasta.
 check_einit=Bootup action $1 neeksistē
+
 index_title=iSCSI mērķis
 index_clink=Varbūt tas nav instalēts vai jūsu <a href='$1'>moduļa konfigurācija</a> ir nepareiza.
 index_stop=Apturiet iSCSI Target
@@ -22,8 +23,10 @@ index_noluns=Nav
 index_nousers=Jebkurš
 index_nullio=$1 sektoru RAM disks
 index_size=Kopējais lielums
+
 dtargets_err=Neizdevās izdzēst mērķus
 dtargets_enone=Neviens nav atlasīts!
+
 target_title1=Izveidojiet iSCSI mērķi
 target_title2=Rediģēt iSCSI mērķi
 target_header=iSCSI koplietotās ierīces opcijas
@@ -68,11 +71,13 @@ target_noalias=Nav
 target_hdigest=Galvenes kontrolsumma
 target_ddigest=Datu kontrolsumma
 target_nodigest=Nav
+
 auth_title=Autentifikācijas iestatījumi
 auth_header=Noklusējuma autentifikācijas opcijas visiem mērķiem
 auth_iuser=Klientu autentifikācija
 auth_ouser=Autentifikācija klientiem
 auth_err=Neizdevās saglabāt autentifikācijas iestatījumus
+
 conn_title=Savienojuma iestatījumi
 conn_header=Noklusējuma savienojuma opcijas visiem mērķiem
 conn_sessions=Maksimālais vienlaicīgu sesiju skaits
@@ -91,6 +96,7 @@ conn_emaxrecv=Trūkst vai nav skaitliska maksimālā saņemšanas segmenta garum
 conn_emaxxmit=Trūkst vai nav skaitliska maksimālā pārraides segmenta garuma
 conn_emaxburst=Trūkst vai nav skaitliska klienta maksimālā sērijas lieluma
 conn_efirstburst=Trūkst vai nav skaitlisks maksimālais klienta nepieprasīto datu lielums
+
 timeout_title=Taimauta iestatījumi
 timeout_header=Klienta noildzes iespējas
 timeout_nopi=Intervāls starp tabuliem, kad tas ir dīkstāvē
@@ -98,6 +104,7 @@ timeout_nopinone=Nekad ping
 timeout_secs=sekundes
 timeout_nopt=Laiks gaidīt ping atbildi
 timeout_noptnone=Tas pats, kas ping laiks
+
 addr_title=Servera adrese un ports
 addr_header=iSCSI servera tīkla iespējas
 addr_addr=Klausieties, izmantojot IP adresi
@@ -110,18 +117,21 @@ addr_err=Neizdevās saglabāt servera adresi
 addr_eaddr=Klausīšanās adresei jābūt IP adresei
 addr_eport=Portam, kurā klausīties, jābūt skaitlim
 addr_edebug=Atkļūdošanas līmenim jābūt skaitlim
+
 initiators_title=Atļautās klientu adreses
 initiators_none=Pagaidām nav definēta neviena atļautā klienta adrese. Neviens klients nevarēs izveidot savienojumu.
 initiators_ips=Atļautie klienti
 initiators_title1=Pievienojiet atļautās klientu adreses
 initiators_title2=Rediģēt atļautās klientu adreses
 initiators_header=Atļautie iSCSI klienti mērķim
+
 targets_title=Atļautās servera adreses
 targets_none=Pagaidām nav definēta atļautā servera adrese. Neviens klients nevarēs izveidot savienojumu.
 targets_ips=Atļautās servera saskarnes
 targets_title1=Pievienojiet atļautās servera adreses
 targets_title2=Rediģēt atļautās servera adreses
 targets_header=Atļautais iSCSI servera interfeiss mērķim
+
 allow_target=Mērķa vārds
 allow_move=Kustēties
 allow_delete=Dzēst atlasīto
@@ -133,17 +143,21 @@ allow_return=atļautie mērķi un adreses
 allow_err=Neizdevās saglabāt atļautās adreses
 allow_eaddr=Adrese $1 nav derīga. Tai jābūt vai nu IPv4 adresei, IPv4 tīklam/maskai, vai IPv6 adresei kvadrātiekavās.
 allow_eaddrs=Nav adreses, kuras atļaut ievadīt
+
 dallow_err=Neizdevās izdzēst atļautās adreses
 dallow_enone=Nav atlasīts
+
 manual_title=Rediģēt konfigurācijas failu
 manual_desc=Izmantojiet zemāk esošo tekstlodziņu, lai rediģētu iSCSI servera konfigurācijas failu $1. Esiet piesardzīgs, jo jūsu ieguldījums netiks pārbaudīts!
 manual_err=Neizdevās saglabāt konfigurācijas failu
 manual_edata=Nav ievadīts saturs!
+
 start_err=Neizdevās palaist iSCSI serveri
 stop_err=Neizdevās apturēt iSCSI serveri
 restart_err=Neizdevās restartēt iSCSI serveri
 atboot_err=Neizdevās iespējot sāknēšanas laikā
 atboot_einit=Init skripts $1 neeksistē
+
 log_create_target=Izveidots mērķis $1 
 log_delete_target=Dzēsts mērķis $1 
 log_modify_target=Pārveidots mērķis $1 

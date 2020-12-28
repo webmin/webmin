@@ -21,6 +21,7 @@ index_start=Xinetd indítása
 index_startmsg=Kattintson a gombra, hogy a Xinetd szerver az aktuális konfigurációval induljon.
 index_econf=A Xinetd konfigurációs file $1 nem létezik. Talán nincs installálva, vagy az Ön <a href='$2'>modul konfigurációja</a> hibás.
 index_noport=Ismeretlen
+
 serv_create=Internet Szolgáltatás létrehozása
 serv_edit=Internet Szolgátatás szerkesztése
 serv_header1=Szolgáltatás hálózati beállításai
@@ -74,18 +75,23 @@ serv_enice=Hibás vagy érvénytelen nice szint
 serv_ecps0=Hibás vagy érvénytelen szám a csatlakozás per másodpercnél
 serv_ecps1=Hibás vagy érvénytelen szünetelés
 serv_etimes=Hozzáférési idő formátuma kötelezően ÓÓ:PP-ÓÓ:PP
+
 sock_stream=Stream
 sock_dgram=Datagram
 sock_raw=Raw
 sock_seqpacket=Szekvenciális datagram
+
 proto_=Általános
 proto_ip=IP (Internet protokol)
 proto_tcp=TCP (Transmission Control protokol)
 proto_udp=UDP (User Datagram protokol)
+
 restart_err=A változtatás érvénybelépése hibás
 restart_ekill=Nem lehet HUP szingált küldeni a PID $1 : $2
+
 start_err=Nem lehet elindítani a Xinetd
 start_estart=$1 hibás : $2
+
 defs_title=Általános beállítások
 defs_header=Általános beállítások a szolgáltatásokhoz
 defs_log=Xinetd naplózási módja
@@ -110,6 +116,7 @@ defs_err=Nem lehet menteni az általános beállítások
 defs_efile=Hibás vagy érvénytelen log filenév
 defs_esoft=Hibás vagy érvénytelen egyszerű limitáció
 defs_ehard=Hibás vagy érvénytelen kemény limitáció
+
 log_create_serv=Létrehozva $2 szolgáltatás $1
 log_modify_serv=Módosított $2 szolgáltatás $1
 log_delete_serv=Törölt $2 szolgáltatás $1

@@ -16,6 +16,7 @@ index_digest2=Dijetalno šifriranje omogućeno je u konfiguraciji modula, ali na
 index_cpan=<a href='$1'>Kliknite ovdje</a> za preuzimanje i instaliranje odmah.
 index_delete=Poništi zaštitu odabranih direktorija
 index_remove=Uklonite zaštitu i uklonite datoteke
+
 dir_title1=Dodajte zaštićeni direktorij
 dir_title2=Uredi zaštićeni imenik
 dir_header=Zaštićene opcije direktorija
@@ -60,6 +61,7 @@ dir_delete3=Uklonite zaštitu i uklonite datoteku
 dir_apache=Uređivanje Apache mogućnosti
 dir_efiledir='$1' je direktorij i zato se ne može koristiti kao korisnička datoteka
 dir_egfiledir='$1' je direktorij, pa se ne može koristiti kao skupinska datoteka
+
 edit_title1=Stvori korisnika
 edit_title2=Uređivanje korisnika
 edit_header=Pojedinosti o korisniku web autentifikacije
@@ -71,11 +73,13 @@ edit_pass0=Postavljen
 edit_passfrom=Promjena iz
 edit_passto=na novu lozinku
 edit_dom=Digest kraljevstvo
+
 gedit_title1=Napraviti grupu
 gedit_title2=Uredi grupu
 gedit_header=Pojedinosti o grupi za web-provjeru autentičnosti
 gedit_group=Grupno ime
 gedit_members=Članovi grupe
+
 save_err=Spremanje korisnika nije uspjelo
 save_euser1=Nedostaje korisničko ime
 save_euser2=Korisničko ime ne može sadržavati: znak
@@ -84,16 +88,19 @@ save_eclash=Korisnik s istim imenom već postoji
 save_eoldpass=Stara lozinka nije točna
 save_title=Korisnik spremljen
 save_edom=Nedostaje ili nije valjano područje probave
+
 gsave_err=Spremanje grupe nije uspjelo
 gsave_egroup1=Nedostaje naziv grupe
 gsave_egroup2=Naziv grupe ne može sadržavati: znak ili razmake
 gsave_eclash=Grupa s istim nazivom već postoji
+
 acl_dirs=Dopušteni direktoriji
 acl_user=Stvorite.htaccess i htusers datoteke kao Unix korisnik
 acl_same=Isto kao i Webmin prijava
 acl_home=Uključiti Unixov kućni imenik?
 acl_sync=Može li se postaviti Unix sinkronizacija korisnika?
 acl_uonly=Mogu li dodavati i mijenjati zaštićene direktorije?
+
 log_create_dir=Dodan je direktorij $1 
 log_modify_dir=Izmijenjeni imenik $1 
 log_delete_dir=Izbrisan je direktorij $1 
@@ -104,6 +111,7 @@ log_create_group=Stvorena grupa $1
 log_modify_group=Izmijenjena grupa $1 
 log_delete_group=Izbrisana grupa $1 
 log_delete_dirs=Izbrisani $1 direktorij
+
 search_title=Rezultati pretraživanja
 search_err=Pretraživanje nije uspjelo
 search_edir=Nedostaje ili nije važeći apsolutni direktorij za pretraživanje

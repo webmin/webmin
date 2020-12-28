@@ -31,11 +31,13 @@ index_mass=Slet valgte brugere
 index_mass2=Deaktiver valgte
 index_mass3=Aktiver valgte
 index_gmass=Slet valgte grupper
+
 search_title=Søge resultater
 search_notfound=Ingen matchedne brugere fundet
 search_found=Fandt $1 matchende brugere ..
 search_gnotfound=Ingen matchende grupper fundet
 search_gfound=Fandt $1 matchende grupper ..
+
 uedit_title=Rediger bruger
 uedit_title2=Opret bruger
 uedit_details=Brugerdetaljer
@@ -106,6 +108,7 @@ uedit_forcechange=Gennemtving skift efter næste log ind?
 uedit_uid_def=Automatisk
 uedit_uid_calc=Beregnet
 uedit_disabled=Log ind midlertidigt deaktiveret
+
 usave_err=Kunne ikke gemme bruger
 usave_eedit=Du kan ikke redigere denne bruge
 usave_ecreate=Du kan ikke oprette nye brugere
@@ -154,6 +157,7 @@ usave_epasswd_re=Adgangskode matcher ikke regexp $1
 usave_epasswd_dict=Adgangskode er et ordbogsord
 usave_epasswd_same=Adgangskode indeholder eller er det samme som brugernavn
 usave_eothers=Brugeren blev gemt, men en fejl opstod i et andet modul : $1
+
 gedit_title=Rediger grupper
 gedit_title2=Opret gruppe
 gedit_details=Gruppedetaljer
@@ -168,6 +172,7 @@ gedit_cothers=Opret gruppe i andre moduler?
 gedit_mothers=Ændre gruppe i andre moduler?
 gedit_gid_calc=Beregnet
 gedit_gid_def=Automatisk
+
 gsave_err=Kunne ikke gemme gruppe
 gsave_eedit=Du kan ikke redigere denne gruppe
 gsave_ecreate=Du kan ikke oprette nye grupper
@@ -183,6 +188,7 @@ usave_ehigid=GID skal være mindre eller lig med $1
 usave_egidused=Gruppe $1 bruger allerede GID $2
 usave_efromroot=Du kan ikke flytte hjemmemappen fra /
 usave_etoroot=Du kan ikke flytte hjemmemappen til /
+
 logins_title=Registrerede log ind
 logins_head=Registrede log ind tir $1
 logins_from=Log ind fra
@@ -195,6 +201,7 @@ logins_none=Ingen log ind registreret
 logins_elist=Du har ikke tilladelse til at liste log ind
 logins_elistu=Du har ikke tilladelse til at liste log ind for '$1'
 logins_local=Lokal
+
 udel_title=Slet bruger
 udel_err=Kunne ikke slette brugere
 udel_enum=Ugyldigt bruger nummer
@@ -216,6 +223,7 @@ udel_del2=Slet brugere og hjemmemappe
 udel_others=ADVARSEL! Hjemmemappe $1 indeholder $2 filer ejet af andre brugere.
 udel_dothers=Slet bruger i andre moduler?
 udel_root=Advarsel! Hvis rod brugeren bliver slettet, er du måske ikke i stand til at administrere dit system i fremtiden.
+
 gdel_title=Slet gruppe
 gdel_err=Kunne ikke slette gruppe
 gdel_eroot=Du har ikke tilladelse til at slette systemgrupper (dem med GID under eller lig med 10).
@@ -229,6 +237,7 @@ gdel_sure=Er du sikker på at du vil slette gruppen $1 ?
 gdel_del=Slet gruppe
 gdel_dothers=Slet gruppe i andre moduler?
 gdel_other=Sletter fra andre moduler ..
+
 many_title=Opret multiple brugere
 many_desc=Denne form giver dig mulighed for at oprette mange brugere på engang enten fra en oploadet eller lokal tekstfil. Hver linje i filen specificerer en bruger i det følgende format ;
 many_desc2=brugernavn:adgangskode:uid:gid:rigtigt_navn:hjemmemappe:skal:min:maks:advar:inaktiv:udløb
@@ -252,6 +261,7 @@ many_eshell=Ugyldig skal i linje $1 : $2
 many_emkdir=Kunne ikke oprette hjemmemappen $1 : $2
 many_egtaken=Gruppenavn er allerede i brug i linje $1 : $2
 many_ok=Oprettede brugere $1
+
 acl_uedit=Unix brugere der kan redigeres
 acl_uedit_all=Alle brugere
 acl_uedit_none=Ingen brugere
@@ -311,6 +321,7 @@ acl_udelete=Kan slette brugere?
 acl_gdelete=Kan slette grupper?
 acl_urename=Kan omdøbe brugere?
 acl_grename=Kan omdøbe grupper?
+
 log_urename=Omdøbte bruger $1 til $2
 log_umodify=Redigerede bruger $1
 log_ucreate=Oprettede bruger $1
@@ -323,6 +334,7 @@ log_batch=Udfør batchfil $1
 log_batch_l=Udfør batchfil $1 ($2 created, $3 modified, $4 deleted)
 log_ubatch=Udførte oploadet batchfil
 log_ubatch_l=Udførte oploadet batchfil ($1 created, $2 modified, $3 deletede)
+
 batch_title=Udfør batch fil
 batch_ecannot=Du kan ikke bruger batch fil formen
 batch_desc=Denne form giver dig mulighed for at oprette, redigere eller slette mange bruger på en gang via en oploaded eller lokal textfil. Hver linje i filen angiver en given handling der skal udføres afhængig af dets første felt. Linje formaterne er:
@@ -373,12 +385,14 @@ batch_edaccess=Du har ikke ttilladelse til at slette brugeren i linje $1 : $2
 batch_crypt=Adgangskoder er allerede krypterede?
 batch_return=batch form
 batch_eother=Men en fejl opstod i et andet modul : $1
+
 who_title=Brugere logget ind
 who_user=Unix bruger
 who_tty=TTY
 who_when=Logged ind
 who_from=Logget ind fra
 who_none=Ingen brugere er pt logget ind
+
 export_title=Eksport batchfil
 export_desc=Denne form giver dig mulighed for at oprette en batch fil indeholdende nogle eller alle tilgængelige brugere på dit system. Filen kan bruges til på siden Eksporter batchfil på et andet system til at regenerere de eksporterede brugere, forudsat at det bruger det valgte batchfil format.
 export_to=Batchfil destination
@@ -392,6 +406,7 @@ export_eopen=Kunne ikke åbne outputfil : $1
 export_done=Eksporterede $1 brugere til filen $2 ($3).
 export_pft=Batchfil format
 export_who=Brugere der skal eksporteres
+
 pft_0=Kun klassisk <tt>adgangskode</tt> fil
 pft_1=BSD <tt>master.adgangskode</tt> fil
 pft_2=Standard <tt>adgangskode</tt> og <tt>skygge</tt> filer
@@ -399,6 +414,7 @@ pft_3=Unixware <tt> adgangskode</tt> fil
 pft_4=AIX <tt>adgangskode</tt> og <tt>sikkerheds</tt> filer
 pft_5=OpenServer <tt>adgangskode</tt> og kort <tt>skygge</tt> filer
 pft_6=MacOS NetInfo database
+
 umass_title=Slet brugere
 umass_err=Kunne ikke slette brugere
 umass_sure=Er du sikker på at du vil slette de $1 valgte brugere? Deres hjemmemapper indeholder $2 filer.
@@ -408,6 +424,7 @@ umass_del1=Slet brugere
 umass_del2=Slet brugere og hjemmemapper
 umass_eroot=Du har ikke tilladelse til at slette systembrugere (dem med UID lavere eller lig med 10).
 umass_doing=Sletter bruger $1 ..
+
 gmass_title=Slet grupper
 gmass_err=Kunne ikke slette grupper
 gmass_sure=Er du sikker på at du vil slette de $1 valgte grupper?
@@ -417,12 +434,14 @@ gmass_del=Slet grupper
 gmass_eroot=Du har ikke tilladelse til at slette systemgrupper (dem med GID under eller lig med 10).
 gmass_doing=Sletter gruppe $1 ..
 gmass_eprimary=Gruppen $1 kan ikke slettes, da det er den primære gruppe for bruger $2.
+
 dmass_title=Deaktiver brugere
 dmass_sure=Er du sikker på at du vil deaktivere de $1 valgte brugere? De kan re-aktiveres senere uden tab af adgangskoder eller data.
 dmass_dis=Deaktiver brugere
 dmass_pass=Midlertidig låse adgangskode
 dmass_doing=Deaktivere bruger $1 ..
 dmass_already=.. allerede deaktiveret
+
 emass_title=Aktiver brugere
 emass_pass=Låser adgangskode op ..
 emass_doing=Aktiverer bruger $1 ..

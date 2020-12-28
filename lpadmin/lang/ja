@@ -16,6 +16,7 @@ index_startmsg=実行中のプリント スケジューラ プロセスを開始
 index_restart=スケジューラを再開
 index_restartmsg=プリント スケジューラ プロセスを再開するにはこのボタンをクリックしてください。これは、現在の印刷設定の適用を強制します。
 index_return=プリンタ リスト
+
 edit_eedit=このプリンタを編集する許可がありません
 edit_eadd=プリンタを追加する許可がありません
 edit_add=プリンタを作成
@@ -59,7 +60,9 @@ edit_direct=ダイレクト TCP 接続
 edit_dport=ポート
 edit_driver=プリンタ ドライバ
 edit_check=リモート サーバが実行中か確認しますか？ 
+
 blocks=ブロック
+
 save_err=プリンタを保存できませんでした
 save_eadd=プリンタを追加する許可がありません
 save_eedit=このプリンタを編集する許可がありません
@@ -76,6 +79,7 @@ save_erqueue='$1' は無効なリモート キュー名です
 save_eremote=ドライバはリモート Unix プリンタで使用できません
 save_edhost=ホスト '$1' は存在しません
 save_edport=ダイレクト ポートがないか無効です
+
 jobs_title=プリント ジョブ
 jobs_header=$1 のプリント ジョブ
 jobs_id=ジョブ ID
@@ -89,17 +93,23 @@ jobs_none=$1 のプリント ジョブはありません
 jobs_all=すべてのプリント ジョブをキャンセル
 jobs_bytes=バイト
 jobs_test=テスト ページを印刷
+
 cancel_ecannot=プリント ジョブをキャンセルする許可がありません
 cancel_err=プリント ジョブをキャンセルできませんでした
 cancel_egone=プリント ジョブ $1 はすでに存在しません
+
 view_ecannot=このプリント ジョブは表示できません
 view_egone=このプリント ジョブはすでに存在しません
+
 start_ecannot=スケジューラを開始する許可がありません
 start_err=スケジューラを開始できませんでした
+
 stop_ecannot=スケジューラを停止する許可がありません
 stop_err=スケジューラを停止できませんでした
+
 restart_ecannot=スケジューラを再開する許可がありません
 restart_err=スケジューラを再開できませんでした
+
 webmin_none=なし
 webmin_nonemsg=ポストスクリプトまたはテキスト プリンタ
 webmin_remotemsg=リモート プリンタ
@@ -110,6 +120,7 @@ webmin_uniprint=Uniprint ドライバ
 webmin_edrivers=$1 からドライバを取得できませんでした。ghostscript を使用する Webmin プリンタ ドライバは使用できません。
 webmin_egs=コマンド $1 が見つかりません。ghostscript を使用する Webmin プリンタ ドライバは使用できません。
 webmin_edriver='$1' は存在しません
+
 caldera_none=なし
 caldera_nonemsg=リモートまたは raw プリンタ
 caldera_prog=プログラム
@@ -123,6 +134,7 @@ caldera_uniprint=Uniprint ドライバ
 caldera_eprog='$1' は存在しません
 caldera_edriver=プリンタ ドライバが選択されていません
 caldera_eres=解像度が選択されていません
+
 redhat_none=なし
 redhat_nonemsg=ポストスクリプトまたはテキスト プリンタ
 redhat_prog=プログラム
@@ -141,6 +153,7 @@ redhat_ehmargin=右/左 マージンがないか無効です
 redhat_evmargin=上/下 マージンがないか無効です
 redhat_eres=解像度が選択されていません
 redhat_printer2=プリンタ モデルとドライバ
+
 suse_none=なし
 suse_nonemsg=ポストスクリプトまたはテキスト プリンタ
 suse_prog=プログラム
@@ -157,7 +170,9 @@ suse_extra=追加 ghostscript オプション
 suse_yast2=YAST2 ドライバ
 suse_edriver=プリンタの種類が選択されていません
 suse_eres=解像度がないか無効です
+
 estop=lpd を停止できませんでした: $1
+
 acl_printers=このユーザが設定できるプリンタ
 acl_add=新規のプリンタを追加可能にしますか？
 acl_cancel=プリント ジョブをキャンセル可能にしますか？
@@ -168,6 +183,7 @@ acl_pall=すべてのプリンタ
 acl_psel=選択..
 acl_view=設定不可能なプリンタを表示しますか？
 acl_test=テスト ページを印刷可能にしますか？
+
 log_stop=プリント スケジューラを停止しました
 log_start=プリント スケジューラを開始しました
 log_restart=プリント スケジューラを再開しました
@@ -179,27 +195,35 @@ log_delete=$2 上の $1プリンタを削除しました
 log_create_l=$2 上に$3プリンタ $1 を作成しました
 log_modify_l=$2上の $3プリンタ $1を変更しました
 log_delete_l=$2上の $3プリンタ $1を削除しました
+
 linux_paralel=パラレル ポート $1
 linux_serial=シリアル ポート $1 (COM$1)
 linux_null=Null デバイス
 linux_usb=USB プリンタ $1
+
 freebsd_paralel=パラレル ポート
 freebsd_serial=シリアル ポート $1 (COM$1)
+
 openbsd_paralel=パラレル ポート
 openbsd_serial=シリアル ポート $1 (COM$1)
+
 unixware_paralel=パラレル ポート $1
 unixware_serial=シリアル ポート $1
 unixware_null=Null デバイス
+
 hpux_paralel=パラレル $1
 hpux_serial=シリアル  $1
 hpux_null=Null デバイス
+
 lprng_paralel=パラレル ポート $1
 lprng_serial=シリアル ポート $1 (COM$1)
 lprng_null=Null デバイス
+
 solaris_paralel=パラレル ポート
 solaris_uparalel=Ultra 5/10 パラレル ポート
 solaris_serial=シリアル ポート $1
 solaris_null=Null デバイス
+
 test_title=テスト ページを印刷
 test_ecannot=テスト ページを印刷する許可がありません
 test_desc=プリンタ $1 のテスト ページを印刷可能にします。印刷するページの種類を選択してください:
@@ -211,6 +235,7 @@ test_print=印刷ページ
 test_exec=コマンド $1 でテスト ページを印刷中..
 test_failed=.. コマンドが失敗しました。
 test_ok=.. コマンドを完了しました。
+
 cups_none=なし
 cups_nonemsg=リモートまたは raw プリンタ
 cups_prog=プログラム

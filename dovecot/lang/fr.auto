@@ -8,11 +8,13 @@ index_applydesc=Activez la configuration actuelle de Dovecot en arrêtant et en 
 index_bootdesc=Modifiez ce paramètre pour activer ou désactiver le démarrage du serveur Dovecot au démarrage du système.
 index_return=index du module
 index_version=Version $1
+
 stop_err=Impossible d'arrêter Dovecot
 stop_erunning=Ne fonctionne plus
 start_err=Impossible de démarrer Dovecot
 start_eprotos=Aucun protocole sélectionné sur la page <b>Réseaux et protocoles</b>
 apply_err=Impossible d'appliquer la configuration
+
 net_title=Réseaux et protocoles
 net_header=Options de mise en réseau et de protocole de messagerie Dovecot
 net_protocols=Servir des protocoles de messagerie
@@ -37,7 +39,9 @@ net_eimaps_listen=Adresse IP non valide pour les connexions SSL IMAP
 net_epop3s_listen=Adresse IP non valide pour les connexions SSL POP3
 net_elisten=Adresse IP non valide pour les connexions non SSL
 net_essl_listen=Adresse IP non valide pour les connexions SSL
+
 pop3_title=Options POP3
+
 ssl_header=Options des modes SSL IMAP et POP3
 ssl_key=Fichier de clé privée SSL
 ssl_cert=Fichier de certificat SSL
@@ -53,6 +57,7 @@ ssl_ecert=Fichier de certificat manquant ou inexistant
 ssl_eca=Fichier de certificat d'autorité de certification client manquant ou inexistant
 ssl_eregen=Intervalle de régénération des paramètres manquant ou non numérique
 ssl_epass=Aucun mot de passe de fichier de clé SSL entré
+
 login_title=Options d'utilisateur et de connexion
 login_header=Authentification des utilisateurs et options de connexion
 login_fuid=UID valide minimum
@@ -108,6 +113,7 @@ login_procs=Processus de connexion maximum
 login_count=Processus de connexion initiale
 login_eprocs=Nombre maximal de processus de connexion manquant ou non valide
 login_ecount=Nombre initial de processus de connexion manquant ou non valide
+
 mail_title=Fichiers courrier
 mail_header=Emplacement du courrier et options de lecture
 mail_env=Emplacement du fichier courrier
@@ -160,6 +166,7 @@ mail_eindexmode=L'emplacement des fichiers d'index ne peut pas être défini lor
 mail_econtrolmode=L'emplacement des fichiers de contrôle ne peut pas être défini lorsque l'emplacement du fichier courrier est détecté automatiquement
 mail_eindex=Chemin absolu manquant ou non valide pour les fichiers d'index
 mail_econtrol=Chemin absolu manquant ou non valide pour les fichiers de contrôle
+
 log_net=Réseaux et protocoles modifiés
 log_login=Options d'utilisateur et de connexion modifiées
 log_mail=Fichiers courrier modifiés
@@ -170,6 +177,7 @@ log_stop=Serveur Dovecot arrêté
 log_bootup=Dovecot activé au démarrage
 log_bootdown=Dovecot désactivé au démarrage
 log_manual=Fichier de configuration modifié manuellement $1
+
 manual_editsel=Modifier le fichier de configuration Dovecot
 manual_err=Impossible d'enregistrer le fichier de configuration
 manual_edata=Rien n'est entré!

@@ -41,6 +41,7 @@ index_lvused=Espai utilitzat
 index_lvuse=Utilitzat per a
 index_snapof=(Instantània de $1)
 index_thin=Pool prim LVM per als VLs de $1
+
 lv_edit=Edita Volum Lògic
 lv_edit_snap=Edita la instantània
 lv_create=Crea un Volum Lògic
@@ -127,6 +128,7 @@ lv_pvfrom=Desplaça blocs del volum físic
 lv_pvto=Al volum físic
 lv_moveok=Desplaça els Blocs
 lv_return=al volum lògic
+
 mkfs_title=Creació de Sistema de Fitxers
 mkfs_desc=Aquest formulari permet crear un nou sistema de fitxers $2 ($1) a volum lògic $3. Totes les dades existents s'esborraran.
 mkfs_header=Opció del nou sistema de fitxers
@@ -134,6 +136,7 @@ mkfs_err=No s'ha pogut crear el sistema de fitxers
 mkfs_exec=S'està executant l'ordre $1...
 mkfs_failed=...l'ordre ha fallat!
 mkfs_ok=...l'ordre s'ha completat.
+
 resize_title=Canvi de Mida de Volum Lògic
 resize_mesg=No es pot canviar la mida del sistema de fitxers $1 d'aquest volum lògic. Si canvies la mida del volum lògic, has de tornar a crear el sistema de fitxers, cosa que n'esborrarà totes les dades.
 resize_mesg2=Webmin no sap quina mena de sistema de fitxers hi ha en aquest volum lògic, si és que n'hi ha. Si canvies la mida del volum lògic, has de tornar a crear el sistema de fitxers, cosa que n'esborrarà totes les dades.
@@ -141,8 +144,10 @@ resize_fs=Hi ha hagut un error en canviar la mida del sistema de fitxers $1 d'aq
 resize_ok=Canvia la Mida del Volum Lògic
 resize_emounted=El sistema de fitxers d'aquest volum lògic no es pot canviar de mida mentre està muntat
 resize_emounted2=El sistema de fitxers d'aquest volum lògic no es pot encongir de mida mentre està muntat
+
 init_title=Activació de LVM
 init_cmd=S'està executant l'ordre $1...
+
 pv_edit=Edita el Volum Físic
 pv_create=Afegeix un Volum Físic
 pv_vg=Al grup de volums $1
@@ -169,6 +174,7 @@ pv_eother=Hi falta el dispositiu e disc o bé és invàlid
 pv_raid=Dispositiu RAID $1
 pv_lvs=Allotjament dels volums lògics
 pv_egone=El volum físic ja no existeix!
+
 vg_edit=Edita el Grup de Volums
 vg_create=Crea un Grup de Volums
 vg_name=Nom del grup de volums
@@ -187,11 +193,13 @@ vg_deleteok=Suprimeix-lo Ara
 vg_ename=Hi falta el nom del grup de volums o bé és invàlid
 vg_epesize=Hi falta la mida del bloc d'allotjament o bé és invàlid
 vg_egone=El grup de volums ja no existeix!
+
 pvmove_err=No s'ha pogut desplaçar el volum lògic
 pvmove_title=Desplaça el Volum Lògic
 pvmove_start=S'està desplaçant el volum lògic $1 de $2 a $3...
 pvmove_failed=...el desplaçament ha fallat!
 pvmove_done=...desplaçament completat
+
 thin_title=Creació de Pool Prim
 thin_desc=UN pool prim és un aparella de VLs que es pot utilitzar per crear VLs addicionals que poden ser més grans que l'espai disponible. L'espai només es consumeix quan es necessita, en lloc de fer-ho quan es creen els VLs dins del pool. ATENCIÓ - Es perdran totes les dades dels VLs seleccionats!
 thin_header=Detalls del nou pool prim
@@ -203,6 +211,7 @@ thin_err=No s'ha pogut crear el pool prim
 thin_esame=Els dos LVs seleccionats són el mateix
 thin_edata=El VL de dades seleccionat ja està en ús
 thin_emetadata=El VL de metadades seleccionat ja està en ús
+
 log_create_vg=S'ha creat el grup de volums $1
 log_modify_vg=S'ha modificat el grup de volums $1
 log_delete_vg=S'ha suprimit el grup de volums $1
@@ -215,4 +224,5 @@ log_create_pv=S'ha afegit el volum físic $1 al GV $1
 log_modify_pv=S'ha modificat el volum físic $1 del GV $2
 log_delete_pv=S'ha tret el volum físic $1 del GV $2
 log_resize_pv=S'ha canviat la mida del volum físic $1 al GV $2
+
 blocks=blocs

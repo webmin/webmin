@@ -16,6 +16,7 @@ index_sdesc=アクションの説明が含まれています
 index_shost=ソースWebminサーバー
 index_long=アクションの説明をすべて表示しますか？
 index_global=&lt;どのモジュールにも含まれない&gt;
+
 search_webmin=Webminサーバー
 search_none2=アクションの検索に一致するアクションはありません
 search_critd=説明には<tt>$1</tt>が含まれます
@@ -30,6 +31,7 @@ search_global_baduser=悪いユーザー名
 search_global_badpass=悪いパスワード
 search_global_twofactor=無効な2要素トークン
 search_csv=CSVとしてエクスポートします。
+
 view_host=ソースWebminサーバー
 view_ecannot=このログエントリの表示は許可されていません
 view_rollback2=選択したファイルをロールバックする
@@ -41,12 +43,14 @@ view_files=変更されたファイルとコマンドの実行
 view_raw=生ログデータ
 view_rawname=パラメータ名
 view_rawvalue=パラメータ値
+
 acl_mods=モジュールでログを表示できます
 acl_all=すべて
 acl_sel=以下から選択 ..
 acl_self=自己のみ
 acl_users=ユーザーによるアクションを表示できます
 acl_rollback=アクションをロールバックできますか？
+
 rollback_title=ロールバックアクション
 rollback_rusure=このアクションが実行される前に、以下にリストされているすべてのファイルをコンテンツに戻してもよろしいですか？現在含まれているデータは、次の変更によって上書きされます。
 rollback_isdir=ディレクトリ-変更は行われません。
@@ -69,4 +73,5 @@ rollback_modfile=ファイル $1の内容をロールバックしました。
 rollback_deleted=ファイル $1を削除しました。
 rollback_nodeleted=存在しないファイル $1をスキップしました。
 rollback_enone=ファイルが選択されていません
+
 log_rollback=モジュール $2のアクション $1をロールバックしました

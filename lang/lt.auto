@@ -2,8 +2,11 @@ main_title3=„Webmin“ $1 ($2)
 main_readonly=(Tik skaitymo režimas)
 main_unused=Nenaudojami moduliai
 main_refreshmods=Atnaujinkite modulius
+
 link_essl=„Net::SSLeay Perl“ modulis, reikalingas HTTPS ryšiams užmegzti, jūsų sistemoje neįdiegtas.
+
 category_=Įrankiai
+
 longcategory_servers=Tinklo, el. Pašto, FTP ir kitų serverių konfigūravimo moduliai
 longcategory_hardware=Spausdintuvo, disko ir kitos aparatinės įrangos konfigūravimo moduliai
 longcategory_system=Moduliai vartotojams, failų sistemos, „Cron“ darbai ir kiti sistemos parametrai
@@ -12,6 +15,7 @@ longcategory_net=Tinklo ir tinklo paslaugų konfigūravimo moduliai
 longcategory_cluster=Moduliai, galintys valdyti kelis serverius iš vienos sąsajos
 longcategory_info=Moduliai, rodantys informaciją apie jūsų sistemą
 longcategory_=Moduliai, atliekantys kitas įvairias užduotis
+
 error_previous=Ankstesnis puslapis
 error_stack=Skambinkite „Stack Trace“
 error_file=Byla
@@ -25,8 +29,10 @@ euserdbacl=Nepavyko gauti vartotojo ACL : $1
 euserdbacl2=Nepavyko atnaujinti vartotojo ACL : $1
 egroupdbacl=Nepavyko gauti grupės ACL : $1
 egroupdbacl2=Nepavyko atnaujinti grupės ACL : $1
+
 chooser_date=Pasirinkite datą
 chooser_eopen=Įrašyti nepavyko : $1
+
 modules_title1=Pasirinkite modulius ..
 modules_title2=Pasirinkite modulį ..
 modules_sel=Pasirinkti moduliai
@@ -34,19 +40,24 @@ modules_all=Visi moduliai
 modules_ok=Gerai
 modules_cancel=Atšaukti
 modules_clear=Aišku
+
 config_emodule=Modulio nėra
 config_ewebmin=14 parametrų tipas veikia tik „Webmin“
+
 referer_fix1=If this is a legitimate link, you can allow links from this URL as follows :<ul><li>Login to Webmin normally.</li><li>Go to the <b>Webmin Configuration</b> module.</li><li>Click on the Trusted Referrers icon.</li><li>Enter the hostname $1 into the <b>Trusted websites</b> field, and click <b>Save</b></li>.</ul>
 referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.</li><li>Save the file.</li></ul>
 referer_fix3u=Įsitikinkite, kad jūsų naršyklė sukonfigūruota siuntimo informacijai siųsti, kad ją galėtų patikrinti „Webmin“.
 referer_fix2u=Alternately, you can configure Webmin to allow links from unknown referers by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Find the line <tt>referers_none=1</tt> and change it to <tt>referers_none=0</tt>.</li><li>Save the file.</li></ul><p></p>WARNING - this has the side effect of opening your system up to reflected XSS attacks and so is not recommended!
+
 session_twofactor=Dviejų faktorių ženklas
 session_twofailed=Dviejų veiksnių autentifikavimas nepavyko : $1
+
 pam_header=Prisijunkite prie „Webmin“
 pam_mesg=Norėdami prisijungti prie „Webmin“ serverio naudodami $1, turite atsakyti į žemiau pateiktą klausimą.
 pam_mesg2=Norėdami prisijungti, turite atsakyti į žemiau pateiktą klausimą.
 pam_login=Tęsti
 pam_restart=Perkrauti
+
 acl_otherdirs=Kiti matomi katalogai failų parinkiklyje
 acl_nodot=Slėpti taškų failus failų parinkiklyje?
 acl_feedback3=Taip, su konfigūracijos failais
@@ -56,15 +67,19 @@ acl_negative=Suteikti vartotojui naujų modulio leidimų?
 acl_fileunix=Naršykite failus kaip „Unix“ vartotojas
 acl_sameunix=Tas pats, kas prisijungti prie „Webmin“
 acl_webminsearch=Rodyti „Webmin“ paieškos lauką?
+
 emodulecheck=$1 modulis jūsų sistemoje negalimas
 elock_tries2=Nepavyko užrakinti failo $1 po $2 minučių. Paskutinė klaida buvo : $3
+
 progress_size2=Atsisiunčiama $1 ($2) ..
 progress_datan=Gauta $1 ($2 %)
 progress_data2n=Gauta $1
 progress_incache=Rasta $1 talpykloje.
+
 readparse_cdheader=Trūksta turinio dispozicijos antraštės
 readparse_enc=Laukė formos duomenų kodavimo, tačiau gavo normalų kodavimą
 readparse_max=Duomenys viršijo maksimalų $1 baitų dydį
+
 password_expired=Jūsų slaptažodžio galiojimo laikas pasibaigė, todėl reikia pasirinkti naują.
 password_temp=Norėdami pakeisti laikiną prisijungimą, turite pasirinkti naują slaptažodį.
 password_header=Pasirinkite Naujas slaptažodis
@@ -83,6 +98,7 @@ password_enew2=Nauji slaptažodžiai nesutampa
 password_epam=PAM klaida : $1
 password_emodpam=„Authen::PAM perl“ modulis, reikalingas slaptažodžio pakeitimams, neįdiegtas!
 password_enewpass=Naujas slaptažodis neleidžiamas : $1
+
 ui_mandatory=Šis laukas yra privalomas
 ui_checkmandatory=Nieko nebuvo pasirinkta
 ui_errors=Rastos kelios klaidos :
@@ -97,7 +113,9 @@ ui_etime=Neteisingas laikas
 ui_paging=Rodomos eilutės $1 į $2 iš $3
 ui_rowlabel=$2 eilutėje $1 :
 ui_filterbox=Įveskite filtrą ..
+
 header_statusmsg=$1 prisijungęs prie $2 $3 $4 ($5)
+
 uptracker_title=Įkeliamas failas
 uptracker_file=Failo pavadinimas
 uptracker_size=Dydis
@@ -105,6 +123,7 @@ uptracker_pc=Progresas
 uptracker_eid=Nenurodytas įkėlimo ID
 uptracker_eid2=Įkėlimo ID neteisingas!
 uptracker_of=$1 iš $2
+
 wsearch_title=Ieškokite $1
 wsearch_modt=Modulis
 wsearch_mtitle=Modulio pavadinimas
@@ -132,6 +151,7 @@ wsearch_hmod=Modulis
 wsearch_moddir=URL kelias /$1/
 wsearch_searching=Ieškoma $1 ..
 wsearch_found=rasti $1 rezultatai :
+
 sql_emysqldriver=Nepavyko įkelti „MySQL DBI“ tvarkyklės
 sql_emysqlconnect=Nepavyko prisijungti prie „MySQL“ duomenų bazės : $1
 sql_epostgresqldriver=Nepavyko įkelti PostgreSQL DBI tvarkyklės
@@ -140,6 +160,7 @@ sql_eldapdriver=Nepavyko įkelti LDAP perl modulio
 sql_eldapconnect=Nepavyko prisijungti prie LDAP serverio $1
 sql_eldaptls=Nepavyko pradėti LDS TLS šifravimo : $1
 sql_eldaplogin=Nepavyko prisijungti prie LDAP serverio kaip $1 : $2 
+
 log_email_subject=„Webmin“ veiksmas $1
 log_email_global=„Webmin“ globalus veiksmas
 log_email_desc=Šį el. Laišką „Webmin“ atsiuntė atsakydama į vartotojo veiksmus.
@@ -151,6 +172,7 @@ log_email_user=Atlieka vartotojas: $1
 log_email_script=„Webmin“ scenarijus: $1
 log_email_session=Sesijos ID: $1
 log_email_remote=Kliento adresas: $1
+
 nice_size_PB=PB
 nice_size_PiB=PiB
 nice_size_TB=TB
@@ -162,7 +184,9 @@ nice_size_MiB=MiB
 nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=baitų
+
 langauto_include=Įtraukite mašininius vertimus
+
 file_truncated_message=atnešė $1 duomenų, sutrumpino $2 iš $3 
 file_truncated_message_head=atnešė $1 duomenų pradžią, sutrumpino $2 iš $3 
 file_truncated_message_tail=parsivežta duomenų pabaigos pabaiga $1, sutrumpinta $2 iš $3 

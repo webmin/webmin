@@ -10,6 +10,7 @@ index_apply=Applica configurazione
 index_applydesc=Fare clic su questo pulsante per applicare le opzioni correnti del server PPTP arrestando e riavviando il processo del server PPTP. Le modifiche alle opzioni PPP e agli account PPP verranno sempre applicate a tutte le nuove connessioni
 index_return=indice del modulo
 index_epppd=Il programma server PPP $1 non è installato sul tuo sistema. Il PPTP dipende da esso per funzionare.
+
 conf_title=Opzioni del server PPTP
 conf_ecannot=Non è consentito modificare le opzioni del server PPTP
 conf_header=Configurazione del server PPTP
@@ -35,6 +36,7 @@ conf_elocalip='$1' non è un indirizzo o intervallo IP locale valido
 conf_eremoteip='$1' non è un indirizzo o intervallo IP remoto valido
 conf_efrom=Rete IPX mancante o non valida dall'indirizzo
 conf_eto=Rete IPX mancante o non valida da indirizzare
+
 options_title=Opzioni PPP
 options_ecannot=Non puoi modificare le opzioni PPP
 options_desc0=Le opzioni PPP riportate di seguito da $1 si applicano a TUTTE le connessioni in entrata ricevute dal sistema, comprese quelle ai modem dialup.
@@ -67,6 +69,7 @@ options_mschap=Autenticazione MS-CHAP
 options_mschap-v2=Autenticazione MS-CHAP versione 2
 options_chapms=Autenticazione MS-CHAP
 options_chapms-v2=Autenticazione MS-CHAP versione 2
+
 secrets_title=Conti PPP
 secrets_ecannot=Non sei autorizzato a modificare gli account PPP
 secrets_return=indice
@@ -80,6 +83,7 @@ secrets_sany=QUALUNQUE
 secrets_create=Crea un nuovo account PPP.
 secrets_desc=Gli account PPP elencati in questa pagina sono presi dal file $1, utilizzato per l'autenticazione $3. Vengono visualizzati solo quelli per il tuo server $2, non gli account per effettuare connessioni in uscita.
 secrets_delete=Elimina gli account PPP selezionati
+
 edit_secret_etitle=Modifica account PPP
 edit_secret_ctitle=Crea un account PPP
 edit_secret_acc=Conto PPP
@@ -99,15 +103,20 @@ edit_secret_alist=Consentiti elencati ..
 edit_secret_save=Salva
 edit_secret_del=Elimina
 edit_secret_return=elenco dei conti
+
 save_secret_esave=Impossibile salvare l'account
 save_secret_enoip='$1' non è un indirizzo valido
+
 stop_err=Impossibile arrestare il server PPTP
 stop_egone=Non più in esecuzione
 stop_ecannot=Non è consentito arrestare il server PPTP
+
 start_err=Impossibile avviare il server PPTP
 start_ecannot=Non è consentito avviare il server PPTP
+
 apply_err=Impossibile riavviare il server PPTP
 apply_ecannot=Non è consentito riavviare il server PPTP
+
 conns_title=Connessioni attive
 conns_ecannot=Non è consentito gestire connessioni attive
 conns_desc=Questa pagina elenca le connessioni PPTP attualmente attive al tuo server. Per disconnetterlo forzatamente, fai clic sul nome della sua interfaccia.
@@ -119,9 +128,11 @@ conns_remote=Indirizzo VPN client
 conns_none=Nessuna connessione PPTP sembra essere attiva in questo momento.
 conns_unknown=Sconosciuto
 conns_user=Nome utente
+
 disc_err=Impossibile disconnettersi
 disc_egone=Le connessioni non sono più attive
 disc_ekill=Il processo non è più in esecuzione
+
 log_secret_create=Account PPP creato $1 
 log_secret_modify=Account PPP modificato $1 
 log_secret_delete=Account PPP eliminato $1 
@@ -132,6 +143,7 @@ log_disc=Client disconnesso $1
 log_start=Server PPTP avviato
 log_stop=Server PPTP arrestato
 log_apply=Configurazione del server PPTP applicata
+
 acl_conf=Puoi modificare la configurazione?
 acl_options=Puoi modificare le opzioni?
 acl_secrets=È possibile gestire account PPTP?

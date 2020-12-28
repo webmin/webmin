@@ -17,6 +17,7 @@ index_tabsync=Čas sinhronizacije strežnika
 index_desctime=Ta obrazec je namenjen spreminjanju trenutnega časa sistema, ki ga uporabljajo vsi tekoči procesi. V operacijskih sistemih, ki imajo ločeno strojno uro, ga lahko uporabite tudi za nastavitev.
 index_desczone=Ta obrazec vam omogoča, da nastavite privzeti časovni pas sistema, ki se uporablja za pretvorbo sistemskega časa v človeško berljiv format in odmik.
 index_descsync=Ta obrazec je namenjen konfiguriranju sistema za samodejno sinhronizacijo časa z oddaljenim strežnikom. Sinhronizacija bo izvedena s protokolom Unix <tt>time</tt> ali NTP, odvisno od tega, kateri ukazi so nameščeni in kaj oddaljeni sistem podpira.
+
 action_save=Shrani
 action_apply=Prijavite se
 action_sync=Nastavite sistemski čas glede na čas strojne opreme
@@ -24,6 +25,7 @@ action_sync_s=Nastavite čas strojne opreme glede na sistemski čas
 action_timeserver_sys=Čas sinhronizacije sistema
 action_timeserver_hw=Čas strojne sinhronizacije
 action_savezone=Spremeni časovni pas
+
 acl_sys=Uporabnik lahko ureja sistemski čas?
 acl_hw=Uporabnik lahko ureja čas strojne opreme?
 acl_timezone=Uporabnik lahko nastavi časovni pas?
@@ -34,8 +36,10 @@ acl_error=Imate dostop do sistemskega časovnega modula, vendar ne morete urejat
 acl_nosys=Sistemskega časa vam ni dovoljeno urejati
 acl_nohw=Časa strojne opreme vam ni dovoljeno urejati
 acl_nontp=Sinhronizacija s časovnim strežnikom vam ni dovoljena
+
 sys_title=Sistemski čas
 hw_title=Čas strojne opreme
+
 day=Dan
 month=Mesec
 date=Datum
@@ -43,12 +47,14 @@ hour=Ura
 year=Leto
 minute=Minuta
 second=Drugič
+
 error_cnf=Napaka: $1 ukaza ni bilo mogoče najti
 error_hw=Časa strojne opreme ni mogoče nastaviti : $1 
 error_sync=Ni mogoče sinhronizirati s sistemskim časom : $1 
 error_ediff=Časovni strežnik, ki se razlikuje od lokalnega časa, je prevelik: $1 dni
 error_entp=Čas sinhronizacije NTP ni uspel : $1 
 error_etimeserver=Ni časi strežniki za sinhronizacijo z vneseno
+
 log_set_date=Nastavite sistemski čas na $1 
 log_set_hwclock=Nastavite strojno uro na $1 
 log_remote_date=Pridobljen sistemski čas od $2 
@@ -58,6 +64,7 @@ log_remote_hwclock_l=Pridobljen čas strojne opreme $1 od $2
 log_sync=Sinhroniziran sistemski čas s časom strojne opreme
 log_sync_s=Sinhroniziran čas strojne opreme s sistemskim časom
 log_timezone=Časovni pas je spremenjen v $1 
+
 timezone_err=Časovnega pasu ni bilo mogoče shraniti
 timezone_ecannot=Ne morete spremeniti časovnega pasu
 timezone_enone=Izbrana ni nobena cona

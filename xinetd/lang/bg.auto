@@ -25,6 +25,7 @@ index_estart=Командата за стартиране на Xinetd $1 не с
 index_noport=неизвестен
 index_enable=Активиране на избраните
 index_disable=Деактивиране на избраните
+
 serv_create=Създайте Интернет услуга
 serv_edit=Редактиране на Интернет услуга
 serv_header1=Опции за сервизна мрежа
@@ -78,19 +79,24 @@ serv_enice=Липсващо или невалидно хубаво ниво
 serv_ecps0=Липсващ или невалиден брой връзки в секунда
 serv_ecps1=Липсва или невалидно забавяне
 serv_etimes=Времето за достъп трябва да бъде във формат HH: MM-HH: MM
+
 sock_stream=поток
 sock_dgram=Datagram
 sock_raw=суров
 sock_seqpacket=Последователна дейтаграма
+
 proto_=По подразбиране
 proto_ip=IP (Интернет протокол)
 proto_tcp=TCP (протокол за контрол на предаването)
 proto_udp=UDP (User Datagram Protocol)
+
 restart_err=Промените не бяха приложени
 restart_ekill=Неуспешно изпращане на USR2 сигнал до PID $1 : $2 
 restart_epid=Вече не тичам
+
 start_err=Неуспешно стартиране на xinetd
 start_estart=$1 не успя : $2 
+
 defs_title=Опции по подразбиране
 defs_header=Опции по подразбиране за услуги
 defs_log=Режим на регистрация на Xinetd
@@ -115,6 +121,7 @@ defs_err=Неуспешно запазване на опциите по подр
 defs_efile=Липсващо или невалидно име на лог файл
 defs_esoft=Липсваща или невалидна мека граница
 defs_ehard=Липсва или невалиден твърд лимит
+
 log_create_serv=Създадена е услуга $2 $1 
 log_modify_serv=Променена $2 услуга $1 
 log_delete_serv=Изтрита услуга $2 $1 
@@ -125,5 +132,6 @@ log_enable=Активирани услуги $1
 log_disable=Деактивирани услуги $1 
 log_enable_l=Активирани услуги $1 
 log_disable_l=Услуги с увреждания $1 
+
 config_dirdef=Конфигурационен файл на Xinetd
 config_dirto=Нов файл в директория

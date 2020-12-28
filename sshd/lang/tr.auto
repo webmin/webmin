@@ -16,8 +16,10 @@ index_type=SSH anahtar türü:
 index_rsa1=RSA (SSH v1 için)
 index_rsa=RSA (SSH v2 için)
 index_dsa=DSA (SSH v2 için)
+
 bits=bit
 secs=saniye
+
 users_title=Kimlik Doğrulama
 users_header=Giriş ve kimlik doğrulama seçenekleri
 users_expire=Kullanıcıyı uyarmak için hesabın sona ermesinden günler önce
@@ -54,6 +56,7 @@ users_eauthkeys=Eksik veya geçersiz görünümlü yetkili anahtarlar dosyası
 users_maxauthtries=Bağlantı başına maksimum giriş denemesi
 users_emaxauthtries=Bağlantı başına eksik veya sayısal olmayan oturum açma denemesi
 users_chal=Sınama yanıtı kimlik doğrulaması kullanılsın mı?
+
 net_title=Ağ
 net_header=Ağ seçenekleri
 net_port=Limanda dinle
@@ -91,6 +94,7 @@ net_eprots=En az bir protokol seçmelisiniz
 net_eladdress='$1', dinlemek için geçerli bir adres değil
 net_elport='$1' geçerli bir bağlantı noktası değil
 net_elisten2=Dinlenecek adres girilmedi
+
 access_title=Giriş kontrolu
 access_header=Ağ ve giriş erişim kontrolü seçenekleri
 access_allowu=Yalnızca kullanıcılara izin ver
@@ -108,6 +112,7 @@ access_eallowg=Girilecek grup yok
 access_edenyg=Girilecek reddedilecek grup yok
 access_eallowh=Girilecek izin verilen ana bilgisayar yok
 access_edenyh=Reddedilecek ana bilgisayar yok
+
 misc_title=Çeşitli Seçenekler
 misc_header=Diğer çeşitli SSH sunucusu seçenekleri
 misc_x11=X11 bağlantı yönlendirmesine izin verilsin mi?
@@ -131,14 +136,17 @@ misc_eumask=Eksik veya geçersiz 4 basamaklı sekizli umask
 misc_ebits=Eksik veya geçersiz sunucu anahtarı boyutu
 misc_eregen=Eksik veya geçersiz anahtar yenileme aralığı
 misc_epid=Eksik PID dosya yolu
+
 start_err=SSH sunucusu başlatılamadı
 apply_epid=Koşmak yok
+
 hosts_title=İstemci Ana Bilgisayar Seçenekleri
 hosts_header=SSH İstemci Ana Bilgisayarları
 hosts_none=Hiçbir istemci ana bilgisayar seçeneği tanımlanmadı. Tüm SSH istemci oturum açma işlemleri varsayılan ayarları kullanır.
 hosts_all=Tüm Sunucular
 hosts_add=İstemci ana bilgisayarı için seçenekler ekleyin.
 hosts_return=istemci ana bilgisayar listesi
+
 host_create=Ana Makine Seçenekleri Ekle
 host_edit=Ana Makine Seçeneklerini Düzenle
 host_header=SSH ana bilgisayarı için istemci seçenekleri
@@ -194,6 +202,7 @@ host_eprots=En az bir protokol seçmelisiniz
 host_proxy=Bağlantı proxy komutu
 host_proxy_def=Yok
 host_eproxy=Eksik veya geçersiz görünümlü bağlantı proxy komutu
+
 log_users=Değiştirilmiş kimlik doğrulama seçenekleri
 log_net=Değişen ağ seçenekleri
 log_access=Değişen erişim kontrolü
@@ -208,6 +217,7 @@ log_stop=SSH sunucusu durduruldu
 log_start=SSH sunucusu başlatıldı
 log_apply=Uygulamalı yapılandırma
 log_manual=Yapılandırma dosyasını el ile düzenleme $1
+
 sync_title=Kullanıcı SSH Anahtarı Kurulumu
 sync_desc=Bu sayfa, sisteminizde oluşturulan yeni Unix kullanıcıları için otomatik SSH kurulumunu yapılandırmanıza olanak tanır. Yapılandırılırsa, yeni kullanıcıların SSH'yi kullanmadan önce <tt>ssh-keygen</tt> çalıştırması gerekmez.
 sync_create=Yeni Unix kullanıcıları için SSH anahtarı kurulsun mu?
@@ -216,9 +226,11 @@ sync_pass=Anahtar parolası olarak parola kullanılsın mı?
 sync_gnupg=Yeni Unix kullanıcıları için GNUPG anahtarını ayarlayın.
 sync_type=Anahtar türü
 sync_auto=&lt;Otomatik&gt;
+
 keys_title=Ana Bilgisayar SSH Anahtarları
 keys_desc=Bu sayfa, bu ana bilgisayarın SSH anahtarlarını görüntülemenizi sağlar.
 keys_none=SSHD yapılandırmanızda herhangi bir HostKey girişi bulunamadı.
+
 manual_title=Yapılandırma Dosyalarını Düzenle
 manual_ecannot=SSH sunucusu yapılandırma dosyasını düzenlemenize izin verilmiyor
 manual_ok=Düzenle
@@ -226,5 +238,6 @@ manual_efile=Seçilen dosya SSH sunucusu yapılandırmasının bir parçası de�
 manual_file=Yapılandırma dosyasını düzenle:
 manual_edata=Hiçbir şey girmedi!
 manual_err=Yapılandırma dosyası kaydedilemedi
+
 dknown_err=Bilinen ana makineler silinemedi
 dknown_enone=Hiçbiri seçilmedi

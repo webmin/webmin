@@ -15,6 +15,7 @@ index_actform=Forme
 index_actrun=Courir
 index_actsql=Forme
 index_acted=Ouvert
+
 edit_title=Éditer une Commande
 create_title=Créer une Commande
 edit_ecannot=Vous n'êtes pas autorisé à éditer une commande
@@ -66,6 +67,7 @@ edit_format4=Téléchargez si possible
 edit_servers=Éxécuter sur les serveurs Webmin
 edit_this=Ce serveur
 edit_clone=Cloner
+
 save_err=Impossible d'enregistrer la commande
 save_ecannot=Vous n'êtes pas autorisé à éditer une commande
 save_ecmd=Aucune commande entrée
@@ -78,6 +80,7 @@ save_eusermin=Les Commandes éxécutées sur d'autres serveurs ne peuvent l'êtr
 save_eformat=Type MIME de sortie non valide
 save_eopts=Fichier d'options manquant pour le paramètre $1
 save_eopts2=Le fichier d'options ou la valeur par défaut du paramètre $1 ne peut pas contenir :
+
 run_err=Impossible d'exécuter cette commande
 run_ecannot=Vous n'êtes pas autorisé à exécuter cette commande
 run_euser=Usager absent ou invalide
@@ -94,6 +97,7 @@ run_eupload=Aucun fichier à télécharger sélectionné
 run_emust=Valeur manquante pour le paramètre '$1'
 run_timeout=Commande terminée après $1 secondes d'attente.
 run_failed=La commande a échoué avec l'état de sortie $1
+
 log_modify=Commande $1 modifiée
 log_create=Commande $1 créée
 log_delete=Commande $1 supprimée
@@ -102,11 +106,13 @@ log_modify_edit=Editeur de fichier $1 modifié
 log_create_edit=Editeur de fichier $1 créé
 log_delete_edit=Editeur de fichier $1 supprimé
 log_save_edit=Fichier $1 sauvé
+
 acl_cmds=Commandes que cet utilisateur peut lancer
 acl_call=Toutes les commandes
 acl_csel=Sélectionnées ...
 acl_cexcept=Toutes sauf la sélection ...
 acl_edit=Peut créer et éditer des commandes ?
+
 file_ecannot=Vous n'avez pas le droit d'éditer des fichiers
 fcreate_title=Créer un éditeur de fichier
 fedit_title=Editer un éditeur de fichier
@@ -130,6 +136,7 @@ file_egroup=Nom de groupe manquant ou invalide
 file_eperms=Permissions octales manquantes ou invalides
 file_envs=Substituer les variables d'environnement dans le fichier?
 file_id=ID Éditeur
+
 view_err=Echec de l'édition du fichier
 view_ecannot=Vous n'avez pas le droit d'éditer ce fichier
 view_title=Editer un fichier
@@ -138,10 +145,12 @@ view_header=Modification du fichier $1
 view_ebeforeedit=La commande avant modification a échoué : $1
 view_ebefore=Échec de la commande avant l'enregistrement : $1
 view_eafter=Échec de la commande après l'enregistrement : $1
+
 form_ecannot=Vous n'êtes pas autorisé à lancer cette commande
 form_title=Exécuter une commande
 form_exec=Exécuter
 form_edit=Modifier
+
 sql_title1=Créer une requête SQL
 sql_title2=Modifer une requête SQL
 sql_header=Détails de la requête SQL
@@ -157,6 +166,7 @@ sql_err=Enregistrement de la requête SQL échoué
 sql_esql=Aucun SQL entré
 sql_ehost=Hôte serveur de base de données manquant ou invalide
 sql_edb=nom de base de données manquant ou invalide
+
 srun_title=Éxécuter une requête SQL
 srun_err=Échec lors de l'éxécution de la requête SQL
 srun_edriver=Impossible de charger le pilote DBI

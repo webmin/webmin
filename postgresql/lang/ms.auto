@@ -16,6 +16,7 @@ index_add=Buat pangkalan data baru.
 index_users=Pengguna, Kumpulan dan Kebenaran
 index_return=senarai pangkalan data
 index_esql=Program klien PostgreSQL $1 tidak dijumpai pada sistem anda. Mungkin PostgreSQL tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
+
 index_ehba=Fail konfigurasi hos PostgreSQL $1 tidak dijumpai pada sistem anda. Mungkin PostgreSQL belum dimulakan, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
 index_superuser=PSql program klien PostgreSQL tidak dapat dilaksanakan pada sistem anda. Mungkin PostgreSQL tidak dipasang, atau konfigurasi modul <a href='$1'>anda</a> tidak betul.
 index_eversion=Pangkalan data PostgreSQL pada sistem anda adalah versi $1, tetapi Webmin hanya menyokong versi $2 dan ke atas.
@@ -48,10 +49,12 @@ index_gist=Tree Search Indeks Umum
 index_jump=Atau edit pangkalan data:
 index_jumpok=Buka
 index_edithosts=Konfigurasi Sistem Host yang Dibenarkan
+
 login_err=Daftar masuk gagal
 login_ecannot=Anda tidak dibenarkan untuk mengkonfigurasi pangkalan data pangkalan data
 login_elogin=Log masuk pentadbiran yang tiada
 login_epass=Nama pengguna atau kata laluan pentadbiran yang tidak betul
+
 dbase_title=Edit Pangkalan Data
 dbase_noconn=Pangkalan data ini saat ini tidak menerima sambungan, jadi tidak ada tindakan yang dapat dilakukan di dalamnya.
 dbase_header=Jadual pangkalan data, indeks, pandangan dan urutan
@@ -78,6 +81,7 @@ dbase_jump=Edit jadual:
 dbase_vjump=Edit pandangan:
 dbase_ijump=Edit indeks:
 dbase_sjump=Edit urutan:
+
 table_title=Edit Jadual
 table_title2=Buat Jadual
 table_opts=Pilihan bidang
@@ -105,6 +109,7 @@ table_eblob=Tiada saiz diperlukan untuk medan BLOB $1
 table_csv=Eksport sebagai CSV
 table_index=Buat Indeks
 table_delete=Padamkan Medan yang Dipilih
+
 field_title1=Tambah Medan
 field_title2=Ubah Suai Bidang
 field_in=Dalam jadual $1 dalam pangkalan data $2 
@@ -123,6 +128,7 @@ field_esize='$1' bukan saiz medan yang sah
 field_eenum=Tiada nilai yang dinyatakan
 field_efield='$1' bukan nama medan yang sah
 field_ekey=Bidang yang membenarkan nol tidak boleh menjadi sebahagian daripada kunci utama
+
 exec_title=Jalankan SQL
 exec_header=Masukkan arahan SQL untuk melaksanakan pada pangkalan data $1 ..
 exec_old=Atau pilih arahan SQL terdahulu :
@@ -152,21 +158,25 @@ exec_tabexec=Jalankan SQL
 exec_tabfile=Jalankan SQL dari fail
 exec_tabimport=Import fail teks
 exec_return=laksanakan borang SQL
+
 stop_err=Gagal menghentikan pelayan pangkalan data
 stop_epidfile=Gagal membuka fail PID $1 
 stop_ekill=Gagal membunuh proses $1 : $2 
 stop_ecannot=Anda tidak dibenarkan untuk menghentikan pelayan pangkalan data
 start_err=Gagal memulakan pelayan pangkalan data
 start_ecannot=Anda tidak dibenarkan memulakan pelayan pangkalan data
+
 ddrop_err=Gagal untuk menurunkan pangkalan data
 ddrop_title=Drop Database
 ddrop_rusure=Adakah anda pasti mahu menurunkan pangkalan data $1 ? $2 jadual yang mengandungi $3 baris data akan dipadamkan.
 ddrop_mysql=Kerana ini pangkalan data induk, menjatuhkannya mungkin akan membuat pelayan PostgreSQL anda tidak dapat digunakan!
 ddrop_ok=Drop Database
+
 tdrop_err=Gagal menggugurkan jadual
 tdrop_title=Drop Table
 tdrop_rusure=Adakah anda pasti mahu menjatuhkan jadual $1 dalam pangkalan data $2 ? $3 baris data akan dipadamkan.
 tdrop_ok=Drop Table
+
 view_title=Data Jadual
 view_pos=Baris $1 hingga $2 daripada $3 
 view_none=Jadual ini tidak mengandungi data
@@ -201,6 +211,7 @@ view_set=Tetapkan pada kandungan fail ..
 view_warn=Amaran - memuat naik fail ke dalam dan melihat kandungan medan <tt>teks</tt> atau <tt> bytea </tt> tidak mungkin berfungsi kecuali modul $1 dan $2 Perl dipasang dan digunakan.
 view_adv=carian terperinci
 view_sqlrun=Keputusan yang dihasilkan oleh pertanyaan SQL : $1 
+
 newdb_title=Buat Pangkalan Data
 newdb_header=Pilihan pangkalan data baru
 newdb_db=Nama pangkalan data
@@ -215,6 +226,7 @@ newdb_encoding=Pengekodan watak set
 newdb_eencoding=Pengekodan set aksara yang hilang
 newdb_template=Pangkalan data template
 newdb_notemplate=Tiada
+
 user_title=Pengguna PostgreSQL
 user_vwarning=AMARAN: Pengguna PostgreSQL ini adalah login pentadbiran untuk domain Virtualmin $1. Menukar sebarang tetapan di sini boleh menyebabkan ralat di Virtualmin.
 user_ecannot=Anda tidak dibenarkan mengedit pengguna
@@ -244,6 +256,7 @@ user_sync_delete=Padam pengguna PostgreSQL apabila pengguna Unix yang sepadan di
 user_delete=Padam Dipilih
 user_derr=Gagal memadamkan pengguna
 user_enone=Tiada pengguna yang dipilih
+
 host_ecannot=Anda tidak dibenarkan menyunting tuan rumah yang dibenarkan
 host_title=Tuan Rumah yang Dibenarkan
 host_desc=Apabila pelanggan menyambung ke pangkalan data, tuan rumah yang disenaraikan di bawah ini diproses supaya satu perlawanan dan klien dibenarkan atau dinafikan.
@@ -299,8 +312,10 @@ host_derr=Gagal memadamkan tuan rumah yang dibenarkan
 host_enone=Tiada tuan rumah yang dipilih
 host_manual=Edit Fail Config
 host_manualdesc=Klik butang ini untuk mengedit fail konfigurasi hos yang dibenarkan secara manual.
+
 manual_title=Edit Fail Config
 manual_err=Gagal menyimpan fail konfigurasi
+
 grant_title=Diberi Keistimewaan
 grant_tvi=Objek
 grant_type=Taipkan
@@ -328,6 +343,7 @@ grant_none=Tiada jadual, pandangan, urutan atau indeks wujud untuk memberi keist
 grant_toomany=Terdapat terlalu banyak objek untuk dipaparkan. Mencari objek yang sepadan:
 grant_showing=Menunjukkan objek yang hampir sama $1 ..
 grant_delete=Tetapkan Semula Geran Terpilih
+
 group_title=Kumpulan PostgreSQL
 group_ecannot=Anda tidak dibenarkan mengedit kumpulan
 group_name=Nama kumpulan
@@ -347,6 +363,7 @@ group_etaken=Nama kumpulan sudah digunakan
 group_none=Tiada kumpulan PostgreSQL yang ada sekarang.
 group_derr=Gagal memadam kumpulan
 group_enone=Tiada kumpulan dipilih
+
 esql=SQL $1 gagal : $2 
 log_start=Memulakan pelayan PostgreSQL
 log_stop=Berhenti pelayan PostgreSQL
@@ -403,6 +420,7 @@ log_backup_l=Pangkalan data sokongan $1 ke fail $2
 log_backup_all=Menyandarkan semua pangkalan data
 log_backup_all_l=Menyandarkan semua pangkalan data ke fail $2 
 log_manual=Dihantar secara manual fail tuan rumah penyemak yang dibenarkan
+
 acl_dbs=Pangkalan data pengguna ini boleh dikendalikan
 acl_dbscannot=Kawalan akses ini akan menjadi berkesan, selepas memulakan pelayan pangkalan data PostgreSQL.
 acl_dall=Semua pangkalan data
@@ -423,13 +441,17 @@ acl_cmds=Boleh mengedit sebelum dan selepas arahan sandaran?
 acl_views=Boleh melihat dan mengurus pandangan?
 acl_indexes=Boleh melihat dan mengurus indeks?
 acl_seqs=Boleh melihat dan mengurus urutan?
+
 fdrop_err=Gagal memadamkan medan
 fdrop_enone=Tiada yang dipilih
 fdrop_eall=Anda tidak boleh memadam semua medan dari jadual!
+
 setup_err=Gagal menginisialkan pangkalan data
 setup_ecannot=Anda tidak dibenarkan untuk memulakan pangkalan data
+
 dbase_bkup=Sandaran
 dbase_rstr=Pulihkan
+
 restore_title=Pulihkan pangkalan data
 restore_header=Pulihkan pilihan pangkalan data
 restore_db=Nama pangkalan data
@@ -452,6 +474,7 @@ restore_tables=Jadual untuk dipulihkan
 restore_tables1=Semua dalam fail sandaran
 restore_tables0=Jadual yang disenaraikan
 restore_failed=Pemulihan gagal : $1 
+
 backup_title=Pangkalan Data Cadangan
 backup_title2=Sandaran Semua Pangkalan Data
 backup_header1=Destinasi cadangan
@@ -500,17 +523,21 @@ backup_ebefore=Arahan sebelum sandaran gagal!
 backup_cmode=Bila hendak menjalankan perintah
 backup_cmode1=Sebelum/selepas semua pangkalan data
 backup_cmode0=Sebelum/selepas setiap pangkalan data
+
 r_command=Command tidak disokong
+
 adv_title=carian terperinci
 adv_and=Cari rekod yang sepadan dengan semua kriteria ..
 adv_or=Cari rekod yang sepadan dengan mana-mana kriteria ..
 adv_ok=Cari Sekarang
+
 tdrops_enone=Tiada jadual untuk jatuh dipilih
 tdrops_err=Gagal melepaskan jadual (s)
 tdrops_ok=Drop
 tdrops_title=Drop dipilih
 tdrops_rusure=Adakah anda pasti mahu menjatuhkan $1 jadual yang dipilih dalam pangkalan data $2 ? $3 baris data akan dipadamkan.
 tdrops_rusure2=Adakah anda pasti mahu menjatuhkan $1 jadual yang dipilih dalam pangkalan data $2 ?
+
 ddrops_err=Gagal untuk menggugurkan pangkalan data
 ddrops_title=Drop Databases
 ddrops_rusure=Adakah anda pasti mahu menggugurkan pangkalan data terpilih $1 ? $2 jadual yang mengandungi $3 baris data akan dipadamkan.
@@ -518,6 +545,7 @@ ddrops_mysql=Kerana database induk dipilih, menjatuhkannya mungkin akan membuat 
 ddrops_ok=Drop Databases
 ddrops_enone=Tiada pangkalan data yang dipilih
 ddrops_ecannotdb=Anda tidak dibenarkan menjatuhkan pangkalan data $1 
+
 csv_title=Fail CSV Eksport
 csv_header=Pilihan eksport CSV
 csv_dest=Destinasi eksport
@@ -538,6 +566,7 @@ csv_done=Eksport CSV ke $1 selesai. Saiz fail yang terhasil ialah $2.
 csv_headers=Sertakan nama lajur dalam CSV?
 csv_cols=Lajur untuk disertakan dalam CSV
 csv_ecols=Tiada lajur dipilih
+
 import_title=Import Data
 import_uploadout=Mengimport data dari fail yang dimuat naik ..
 import_fileout=Mengimport data dari fail $1 ..
@@ -545,6 +574,7 @@ import_eupload=Fail import yang dimuat naik
 import_efile=Tiada nama fail import
 import_done=.. dicipta $1 baris, dilangkau $2 pendua.
 import_erow=.. tiada medan yang dijumpai dalam baris $1 
+
 index_title1=Buat Indeks
 index_header1=Pilihan Indeks
 index_name=Nama indeks
@@ -562,6 +592,7 @@ index_ecols=Tiada medan dipilih
 index_title2=Edit Indeks
 index_header=Indeks $1 dalam pangkalan data $2 
 index_ecannot=Anda tidak dibenarkan menguruskan indeks
+
 view_title1=Buat Lihat
 view_title2=Edit Paparan
 view_header1=Lihat butiran
@@ -576,6 +607,7 @@ view_eclash=Pandangan dengan nama yang sama sudah wujud
 view_equery=Tiada pertanyaan SQL
 view_ecols=Tiada nama lajur yang dimasukkan
 view_ecannot=Anda tidak dibenarkan mengurus pandangan
+
 seq_title1=Buat urutan
 seq_title2=Edit Urutan
 seq_header1=Pilihan urutan tambahan
@@ -595,5 +627,6 @@ seq_emin=Nilai minima atau tidak sah
 seq_emax=Nilai maksima yang hilang atau tidak sah
 seq_ecache=Bilangan nilai yang hilang atau tidak sah ke cache
 seq_ecannot=Anda tidak dibenarkan untuk menguruskan urutan
+
 dgrant_err=Gagal menetapkan semula geran
 dgrant_enone=Tiada objek yang dipilih

@@ -16,6 +16,7 @@ index_setupdesc=Id-database tas-server LDAP tiegħek għadha ma contientx l-għe
 index_setup=Oħloq DN Għerq
 index_permsdesc=Id-direttorju tad-dejta tas-server LDAP $1 fih fajls mhux il-proprjetà tal-utent korrett $2, li jfisser li mhux probabbli li tibda sew. Madankollu, Webmin jista 'jirranġa dan għalik billi tikklikkja l-buttuna hawn taħt.
 index_perms=Waħħal is-Sjieda
+
 connect_eserver=Is-server LDAP $1 ma jeżistix
 connect_euser=L-ebda utent ma jkollok login kif ġie kkonfigurat
 connect_epass=L-ebda password għall-login ma ġiet ikkonfigurata
@@ -28,6 +29,7 @@ connect_eldap=Naqset milli tikkonnettja mas-server LDAP $1 fuq il-port $2
 connect_essl=Naqset milli tibda encryption TLS mas-server LDAP $1 : $2 
 connect_elogin=Naqset milli tidħol mas-server LDAP $1 bħala $2 : $3 
 connect_cpan=Jista 'jkollok il-<tt>$1</tt> Modulu Perl <a href='$2'>installat awtomatikament</a> minn CPAN.
+
 slapd_title=Konfigurazzjoni tas-Server OpenLDAP
 ldif_title=Konfigurazzjoni tas-Server OpenLDAP
 slapd_header=Għażliet ta 'server LDAP globali
@@ -76,6 +78,7 @@ slapd_protos=Konnessjonijiet LDAP li jaċċettaw
 slapd_ldap=LDAP fuq netwerk
 slapd_ldaps=LDAP fuq SSL
 slapd_ldapi=Fajl sokit Unix
+
 schema_title=Immaniġġja l-Iskema
 schema_file=Isem
 schema_desc=Deskrizzjoni
@@ -93,6 +96,7 @@ schema_edesc=Din il-paġna jippermettilek teditja manwalment fajl ta 'skema LDAP
 schema_return=lista tal-iskemi
 schema_emove=Ma stajtx issib skema ta 'fajl li tiċċaqlaq!
 schema_ecannot=M'għandekx permess timmaniġġja l-iskema LDAP
+
 acl_title=Kontroll tal-Aċċess LDAP
 acl_ecannot=M'għandekx permess tikkonfigura kontroll tal-aċċess LDAP
 acl_what=Oġġetti
@@ -103,6 +107,7 @@ acl_none=L-ebda regoli ta 'kontroll tal-aċċess ma ġew definiti s'issa. L-oġ�
 acl_delete=Ħassar ir-Regoli Magħżula
 acl_add=Żid regola ġdida tal-kontroll tal-aċċess.
 acl_return=regoli ta 'kontroll ta' aċċess
+
 browser_title=Fittex fid-Dejtabejż
 browser_econn=Il-browser LDAP ma jistax jintuża : $1 
 browser_ecannot=M'għandekx permess tibbrawżja d-database LDAP
@@ -136,24 +141,30 @@ browser_nomatch=Ebda oġġetti jaqblu mat-tfittxija tiegħek għal $1.
 browser_search=Sib oġġetti li jaqblu :
 browser_search2=Li juru oġġetti li jaqblu :
 browser_sok=Fittex
+
 save_err=Naqset milli tbiddel l-attribut
 save_ebase=Ma setgħetx iġġib oġġett $1 mid-database
 save_emodify=Il-modifika LDAP ta ' $2 f' $1 falliet : $3 
 save_enone=L-ebda valuri ma ddaħħlu
+
 add_err=Naqset milli żżid attribut
 add_eadd=Isem tal-attribut nieqes jew invalidu
 add_evalue=Valur nieqes
 add_emodify=Żieda LDAP ta ' $2 sa $1 fallew : $3 
+
 delete_err=Naqset milli tneħħi l-attributi
 delete_enone=L-ebda magħżul
 delete_emodify=Tħassir LDAP ta ' $2 minn $1 fallut : $3 
+
 sdelete_err=Naqset milli tħassar l-oġġetti
 sdelete_edn=L-oġġett $1 ma nstabx
 sdelete_edel=Tħassir LDAP ta ' $1 falla : $2 
+
 rename_err=Ma rnexxielux isemmi l-oġġett
 rename_eget=Ma setgħetx issib oġġett b'DN $1 
 rename_enew=Isem ġdid ma jidhirx li huwa validu
 rename_erename=LDAP newdn għal $2 minn $1 falla : $3 
+
 oadd_title=Oħloq Oġġett
 oadd_header=Dettalji ġodda dwar l-oġġett LDAP
 oadd_base=Oġġett ġenitur DN
@@ -170,6 +181,7 @@ oadd_eget2=Ma rnexxielux jikkontrolla t-tlaqliq ma ' $1 : $2
 oadd_eclash=Oġġett bid-DN $1 diġà jeżisti
 oadd_eadd=Żieda LDAP ta ' $1 falliet : $2 
 oadd_err=Ma rnexxielux joħloq oġġett ġdid
+
 create_title=Oħloq Siġra
 create_ecannot=M'għandekx permess toħloq siġra ġdida
 create_desc=Din il-paġna pprovdiet mod konvenjenti biex toħloq DN li se jkun il-bażi ta 'siġra ġdida fid-database. Jista 'wkoll joħloq eżempju ta' utent jew email tal-alias taħt is-siġra, bħala mudell għall-oġġetti tiegħek stess.
@@ -191,18 +203,23 @@ create_done=.. ghamel
 create_doingex=Ħolqien ta 'eżempju ta' oġġett b'DN $1 ..
 create_edoingex=.. Falla: $1. Madankollu, is-siġra xorta tista 'tintuża.
 create_eoc=Ma setgħetx issib klassi ta 'oġġett adattat għad-DN il-ġdid
+
 eunknown=Żball mhux magħruf
+
 apply_err=Ma rnexxielux japplika l-konfigurazzjoni
 apply_ecmd=$1 falla : $2 
 apply_ecannot=M'għandekx permess tapplika l-konfigurazzjoni
+
 stop_err=Ma rnexxielux iwaqqaf server LDAP
 stop_ecmd=$1 falla : $2 
 stop_egone=Ma għadux għaddej!
 stop_ekill=Proċess ta 'qtil falla : $1 
 stop_ecannot=M'għandekx permess twaqqaf is-server LDAP
+
 start_err=Ma rnexxielux jibda s-server LDAP
 start_ecmd=$1 falla : $2 
 start_ecannot=M'għandekx permess tibda s-server LDAP
+
 log_create_dn=Oġġett maħluq $1 
 log_delete_dn=Oġġett imħassar $1 
 log_rename_dn=Oġġett li semmieh $1 
@@ -234,6 +251,7 @@ log_up_access=Ġejt ir-regola tal-kontroll tal-aċċess għal $1
 log_down_access=Tnaqqas ir-regola tal-kontroll ta 'l-aċċess għal $1 
 log_delete_accesses=Regoli mħassra ta 'kontroll ta' aċċess $1 
 log_all=l-oġġetti kollha
+
 gencert_title=Iġġenera Ċertifikat SSL
 gencert_header=Dettalji ta 'ċertifikat SSL ġdid
 gencert_create=Oħloq Ċertifikat
@@ -245,7 +263,9 @@ gencert_dir=Direttorju
 gencert_err=Naqas milli jiġġenera ċertifikat
 gencert_edest=Direttorju tad-destinazzjoni ma jeżistix
 gencert_epath=Iċ-ċertifikat u l-fajls ewlenin fil-konfigurazzjoni tas-server LDAP għandhom ikunu mogħdijiet assoluti
+
 perms_err=Ma rnexxielux jiffissa s-sjieda tal-fajl
+
 acl_slapd=Tista 'tikkonfigura server LDAP?
 acl_ldif=Tista 'tikkonfigura server LDAP?
 acl_schema=Tista 'tmexxi l-iskema?
@@ -254,6 +274,7 @@ acl_browser=Tista 'tibbrawżja u teditja database?
 acl_create=Tista 'toħloq siġra ġdida?
 acl_start=Tista 'tibda u twaqqaf server LDAP?
 acl_apply=Tista 'tapplika bidliet fil-konfigurazzjoni?
+
 access_desc=$2 minn $1 
 access_self=awto
 access_users=Utenti awtentikati
@@ -273,6 +294,7 @@ access_lcompare=Qabbel
 access_lsearch=Fittex
 access_lread=Aqra
 access_lwrite=Ikteb
+
 eacl_title1=Oħloq Regola tal-Kontroll tal-Aċċess
 eacl_title2=Editja r-Regola tal-Kontroll tal-Aċċess
 eacl_header=Dettalji dwar ir-regola ta 'kontroll ta' aċċess għal database LDAP

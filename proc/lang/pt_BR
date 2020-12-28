@@ -14,6 +14,7 @@ index_loadname=Médias de carga da CPU:
 index_loadnums=$1 (1 minuto) , $2 (5 minutos) , $3 (15 minutos)
 index_cpuname=Tipo de CPU:
 index_inzone=Na zona $1
+
 pid=ID
 owner=Proprietário
 command=Comando
@@ -25,6 +26,7 @@ nice=Nível de NICE
 stime=Iniciado
 sclass=Classe de agendamento de IO
 sprio=Prioridade de IO
+
 search_user=Proprietário
 search_match=Com o termo de busca
 search_cpupc=Usando mais de $1% da CPU
@@ -41,6 +43,7 @@ search_sigkill=Matar processo
 search_port=Usando a porta
 search_protocol=protocolo
 search_ip=Usando o endereço IP
+
 run_command=Comando para executar
 run_submit=Executar
 run_mode=Modo de execução
@@ -54,6 +57,7 @@ run_ecannot=Você não tem permissão para executar comandos
 run_as=Executar como usuário
 run_euser=Nome de usuário inválido ou não preenchido
 run_euser2=Você não tem permissão para executar comandos como o usuário selecionado
+
 edit_title=Informação de Processos
 edit_gone=Este processo está inativo
 edit_sub=Subprocessos
@@ -73,12 +77,15 @@ edit_sigcont=Continuar
 edit_open=Arquivos e Conexões
 edit_trace=Rastrear Processo
 edit_return=detalhes do processo
+
 kill_err=erro ao enviar o sinal $1 para o processo $2
 kill_title=Enviar Sinal
 kill_sent=enviado
 kill_ecannot=Você não tem permissão para matar processos
+
 renice_err=Erro ao usar a função ?renice? no processo $1
 renice_ecannot=Você não tem permissão para usar o comando ?renice? em processos
+
 linux_pri=Prioridade
 linux_tty=TTY
 linux_status=Situação
@@ -89,25 +96,30 @@ linux_ruser=Usuário real
 linux_rgroup=Grupo real
 linux_pgid=ID do processo de grupo
 linux_stime=$stime
+
 linuxstat_R=Em execução
 linuxstat_S=Dormindo
 linuxstat_D=Sono profundo
 linuxstat_T=Parado
 linuxstat_Z=Zumbi
+
 linux_real=Tempo real
 linux_be=Melhor esforço
 linux_idle=Ocioso
+
 freebsd_ruser=Usuário real
 freebsd_rgroup=Grupo real
 freebsd_tty=TTY
 freebsd_pgid=Grupo do processo
 freebsd_stime=$stime
 freebsd_lim=Limite de memória
+
 hpux_pri=Prioridade
 hpux_tty=TTY
 hpux_status=Situação
 hpux_wchan=Esperando por
 hpux_stime=$stime
+
 hpuxstat_0=Inexistente
 hpuxstat_S=Dormindo
 hpuxstat_W=Esperando
@@ -116,7 +128,9 @@ hpuxstat_I=Intermediário
 hpuxstat_Z=Zumbi
 hpuxstat_T=Parado
 hpuxstat_G=Crescendo
+
 macos_tty=TTY
+
 sysv_group=Grupo
 sysv_ruser=Usuário real
 sysv_rgroup=Grupo real
@@ -125,12 +139,14 @@ sysv_tty=TTY
 sysv_stime=$stime
 sysv_task=ID da tarefa
 sysv_zone=Nome da zona
+
 log_run=O comando '$1' foi executado
 log_kill=O sinal $1 foi enviado para o processo $2
 log_kills=Enviar o sinal $1 para o processo $2
 log_kill_l=O sinal $1 foi enviado para o processo $2
 log_kills_l=O sinal $1 foi enviado para os processos<br>$2
 log_renice=A prioridade do processo $2 foi alterada para $1
+
 acl_manage=Gerenciar processos como usuário
 acl_manage_def=Usuário Webmin atual
 acl_edit=Pode matar e usar o comando ?renive? em processos?
@@ -140,11 +156,13 @@ acl_who=Pode gerenciar processos para usuários
 acl_who0=Todos os usuários
 acl_who1=Usuário Webmin atual
 acl_who2=Usuários listados ..
+
 kill_kill=Matar Processo
 kill_term= Interromper  
 kill_hup=  Reiniciar   
 kill_stop=    Parar    
 kill_cont=  Continuar  
+
 open_title=Abrir Arquivos e Conexões
 open_proc=Para o processo $1 (PID $2)
 open_header1=Abrir arquivos
@@ -168,6 +186,7 @@ open_blk=Especial de bloco
 open_size=Tamanho do arquivo
 open_inode=Nó
 open_file=Caminho
+
 trace_title=Rastrear Processo
 trace_start=Iniciar acompanhamento do sistema para $1 ..
 trace_doing=Acompanhamento do sistema para $1:
@@ -178,5 +197,7 @@ trace_syscalls=Acompanhar chamadas do sistema:
 trace_all=Todas
 trace_sel=Listadas..
 trace_change=Alterar
+
 windows_threads=Linhas de execução no processo
+
 syslog_dmesg=Mensagens de kernel

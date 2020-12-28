@@ -14,6 +14,7 @@ index_restart=Znova zaženite odjemalca LDAP Daemon
 index_restartdesc=Uporabite trenutno konfiguracijo s ponovnim zagonom lokalnega demona odjemalca LDAP.
 index_atboot=Zaženite odjemalca LDAP ob zagonu
 index_atbootdesc=Spremeni se, ali se demon odjemalca LDAP zažene, ko se sistem zažene ali ne.
+
 server_title=Konfiguracija strežnika LDAP
 server_header=Možnosti strežnika LDAP in prijave
 server_host=Imena gostiteljev LDAP
@@ -51,6 +52,7 @@ server_etimelimit=Manjkajoča ali neveljavna časovna omejitev povezave
 server_ecacert=Manjkajoča ali neveljavna datoteka s potrdilom CA
 server_euport=Manjkajoča ali neveljavna vrata za strežnik $1 
 server_euri=Ni vnesenih strežnikov LDAP
+
 base_title=Iskalne baze LDAP
 base_header=Lokacije iskanja v imeniku LDAP
 base_base=Globalna baza iskanja
@@ -86,6 +88,7 @@ base_enetmasks=Manjka baza za imena mrežnih mask
 base_ealiases=Manjka osnova za vzdevke e-pošte
 base_enetgroup=Manjka osnova za mreže
 base_etimelimit=Manjkajoča ali neveljavna omejitev časa iskanja
+
 pam_title=Možnosti preverjanja pristnosti
 pam_header=Nastavitve pristnosti PAM in gesla
 pam_filter=Dodatni LDAP filter
@@ -106,10 +109,12 @@ pam_efilter=Manjka dodatni filter LDAP
 pam_elogin=Manjka ali neveljaven atribut LDAP za uporabniško ime
 pam_egroupdn=Manjka skupina LDAP, ki bi prisilila članstvo v
 pam_emember=Manjka ali neveljaven atribut LDAP za člane skupine
+
 switch_title=Storitve, ki uporabljajo LDAP
 switch_service=Storitev
 switch_srcs=Viri podatkov
 switch_return=storitve, ki uporabljajo LDAP
+
 ldap_emodule=$1 Perl modul, potreben za pogovor s strežnikom LDAP, ni nameščen. <a href='$2'>Kliknite tukaj</a>, če želite Webmin prenesti in ga namestiti zdaj.
 ldap_emodule2=$1 Perl modul, potreben za pogovor s strežnikom LDAP, ni nameščen.
 ldap_econf=Konfiguracijske datoteke odjemalca LDAP $1 v vašem sistemu ni bilo mogoče najti
@@ -119,6 +124,7 @@ ldap_elogin=Ni bilo mogoče povezati na LDAP strežnik $1 kot $2 : $3
 ldap_anon=anonimen
 ldap_eparse=Ni bilo mogoče razčleniti URI strežnika LDAP $1 
 ldap_etls=Preklopa na način TLS ni uspelo : $1 
+
 browser_title=Brskalnik LDAP
 browser_econn=Brskalnika LDAP ni mogoče uporabiti : $1 
 browser_base=Brskanje:
@@ -129,6 +135,7 @@ browser_attrs=Atributi predmeta
 browser_parent=Prebrskaj starš
 browser_none=Noben
 browser_sel=v redu
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Uporabniški tiskalniki
 order_xfn=XFN
 order_mdns4=Multicast DNS
 order_mdns4_minimal=Multicast DNS (minimalno)
+
 desc_aliases=Vzdevki Sendmail
 desc_mail=Vzdevki Sendmail
 desc_hosts=Naslovi gostiteljev
@@ -177,6 +185,7 @@ desc_printers=Tiskalniki
 desc_ipnodes=IP vozlišča
 desc_timezone=Časovni pasovi
 desc_locale=Lokale
+
 eswitch_title=Storitev urejanja
 eswitch_egone=Storitev ne obstaja!
 eswitch_header=Podrobnosti o storitvi
@@ -196,6 +205,7 @@ eswitch_continue=Nadaljujte z iskanjem
 eswitch_none=Noben
 eswitch_err=Storitve ni bilo mogoče shraniti
 eswitch_enone=Nobenih virov ni izbranih!
+
 log_server=Spremenjena konfiguracija strežnika LDAP
 log_base=Spremenjene iskalne baze LDAP
 log_pam=Spremenjene možnosti preverjanja pristnosti
@@ -205,6 +215,7 @@ log_delboot=Onemogočen demon odjemalca LDAP ob zagonu
 log_start=Začetek demona odjemalca LDAP
 log_stop=Zaustavljen demon stranke LDAP
 log_restart=Ponovni demon stranke odjemalca LDAP
+
 check_title=Preverjanje konfiguracije LDAP
 check_base=Iskanje baze LDAP za uporabnike ..
 check_ebase=.. v konfiguraciji odjemalca ni mogoče najti!

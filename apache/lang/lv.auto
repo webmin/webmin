@@ -57,6 +57,7 @@ index_fmode1=Virtuālo serveru fails $1
 index_fmode1d=Jauns fails virtuālo serveru direktorijā $1
 index_fmode2=Atlasītais fails ..
 index_delete=Dzēst atlasītos serverus
+
 cvirt_ecannot=Jums nav atļauts izveidot virtuālu serveri
 cvirt_err=Neizdevās izveidot virtuālo serveri
 cvirt_eaddr1=Nav ievadīta adrese
@@ -70,6 +71,7 @@ cvirt_eroot4=Apache konfigurācijā nav definēts neviens lietotājs
 cvirt_etaken=Virtuālais serveris ar tādu pašu nosaukumu un portu jau pastāv
 cvirt_efile=Neizdevās uzrakstīt $1 : $2 
 cvirt_emissing=Jaunais virtuālais serveris tika pievienots $1, taču Apache šo failu neizmanto. Pārbaudiet <a href='$2'>moduļa konfigurāciju</a> un pārliecinieties, vai 'Fails vai direktorijs, lai virtuālajiem serveriem pievienotu' ir pareizs.
+
 etype=Jums nav atļauts rediģēt šāda veida opcijas
 efailed=Neizdevās saglabāt $1
 apache_apply=Lietot izmaiņas
@@ -80,6 +82,7 @@ default_serv=noklusējuma serveris
 bytes=baiti
 eafter=Konfigurācijas pārbaude neizdevās: $1 Izmaiņas nav saglabātas.
 enewline=Nederīga rakstzīme vērtībā
+
 global_ecannot=Jums nav atļauts rediģēt globālās iespējas
 global_mime=Globālais MIME tipu saraksts
 global_mimedesc=Noklikšķiniet uz MIME veida no zemāk esošā saraksta, lai to rediģētu, vai izmantojiet saiti lapas apakšā, lai sarakstam pievienotu jaunu veidu.
@@ -87,6 +90,7 @@ global_type=Veids
 global_ext=Paplašinājumi
 global_add=Pievienojiet jaunu MIME veidu.
 global_return=MIME veidi
+
 mime_ecannot=Jums nav atļauts rediģēt mīmikas veidus
 mime_edit=Rediģēt MIME veidu
 mime_add=Pievienojiet MIME veidu
@@ -95,6 +99,7 @@ mime_type=MIME tips
 mime_ext=Paplašinājumi
 mime_err=Neizdevās saglabāt MIME veidu
 mime_etype='$1' nav derīgs MIME tips
+
 virt_ecannot=Šo virtuālo serveri nevar rediģēt
 virt_eprotocol=Jums jāizvēlas vismaz viena izmantojamā SSL/TLS protokola versija
 virt_title=Virtuālā servera opcijas
@@ -121,6 +126,7 @@ virt_path=Ceļš
 virt_return=servera indekss
 virt_euser=Jums nav atļauts mainīt šī virtuālā servera lietotāju vai grupu.
 virt_header2=$1 $2
+
 vserv_title=Virtuālā servera konfigurācija
 vserv_virtualmin=Šis Apache virtuālais resursdators pieder Virtualmin serverim <tt>$1</tt>, tāpēc adresi, portu, bāzes direktoriju un resursdatora nosaukumu šeit nevar mainīt.
 vserv_ecannot=Jūs nevarat rediģēt šī virtuālā servera adresi
@@ -140,10 +146,12 @@ vserv_eport='$1' nav derīgs ports
 vserv_eroot='$1' nav derīga dokumenta sakne
 vserv_ename='$1' nav derīgs servera nosaukums
 vserv_eaddrs=Nav ievadītas virtuālā servera adreses
+
 show_title=Direktīvas
 show_edit=Rediģēt Apache direktīvu:
 show_these=Manuāli rediģēt direktīvas
 show_ok=Rediģēt
+
 manual_configs=Rediģēt konfigurācijas failus
 manual_title=Rediģēt direktīvas
 manual_header=Izmantojiet zemāk esošo tekstlodziņu, lai manuāli rediģētu $1 Apache direktīvas, kas attiecas uz šo virtuālo serveri, direktoriju vai failiem.
@@ -153,6 +161,7 @@ manual_efile=Nederīgs Apache konfigurācijas fails
 manual_etest=Konstatēta faila kļūda : $1
 manual_editfile=Rediģēt konfigurācijas failu:
 manual_switch=Rediģēt
+
 dir_title=Opcijas direktorijā
 dir_proxyall=Visi starpniekservera pieprasījumi
 dir_header=$1 vietnē $2
@@ -169,6 +178,7 @@ dir_re=Atbilst regexp
 dir_path=Ceļš
 dir_return=direktoriju indekss
 dir_header2=$1 $2
+
 type_0=Procesi un ierobežojumi
 type_1=Tīklošana un adreses
 type_2=Apache moduļi
@@ -190,6 +200,7 @@ type_17=Automātiski virtuālie saimnieki
 type_18=Filtri
 type_19=Valodas
 type_20=Attēlu kartes
+
 htaccess_title=Failu direktorija opcijās
 htaccess_ecannot=Htaccess failus nevar rediģēt
 htaccess_file=Esošo opciju faili
@@ -205,6 +216,7 @@ htaccess_edelete=Jums nav atļauts izdzēst šo opciju failu
 htaccess_eempty=Nav ievadīts opciju faila direktorijs
 htaccess_eabsolute=Opciju faila direktorijai jābūt absolūtam ceļam
 htaccess_err=Neizdevās izveidot opciju failu
+
 htindex_ecannot=Jums nav atļauts rediģēt šo opciju failu
 htindex_title=Katra direktorija opciju fails
 htindex_delete=Izdzēst failu
@@ -220,12 +232,14 @@ htindex_path=Ceļš
 htindex_header=$1
 htindex_header2=$1 opciju failam $2
 htindex_return=opciju faila indekss
+
 htfile_title=Iespējas katram failam
 htfile_header=$1 $2
 htfile_show=Rādīt direktīvas
 htfile_edit=Rediģēt direktīvas
 htfile_apply=Iespējas attiecas uz ..
 htfile_header2=$1 $2
+
 reconfig_title=Pārkonfigurējiet zināmos moduļus
 reconfig_ecannot=Jums nav atļauts pārveidot afišu
 reconfig_ever=Neizdevās iegūt Apache servera versiju, kas ir izpildāma $1. Pārbaudiet <a href='$2'>moduļa konfigurāciju</a>, lai pārliecinātos, ka tas ir pareizais ceļš.
@@ -233,11 +247,13 @@ reconfig_desc1=Jūsu Apache konfigurācija ir mainīta vai Webmin to vēl nav p�
 reconfig_desc2=Zemāk ir saraksts ar visiem Apache moduļiem, kurus atbalsta Webmin, ar pašlaik atlasītajiem moduļiem. Ja jūs izmantojat dinamiski ielādētus moduļus, jums, iespējams, būs jāizvēlas tie, kas tiek ielādēti dinamiski.
 reconfig_desc3=Ja neesat pārliecināts, kurus moduļus jūsu sistēmā atbalsta Apache, vienkārši konfigurējiet, jo Webmin parasti var automātiski izstrādāt atbalstītos moduļus.
 reconfig_ok=Konfigurēt
+
 defines_title=Rediģēt definētos parametrus
 defines_ecannot=Jums nav atļauts rediģēt httpd definīcijas
 defines_desc=Sākot Apache, parametrus tam var nodot, izmantojot komandrindas opciju <tt>-D</tt>. Tā kā šie parametri var ietekmēt to, kuras direktīvas tiek izmantotas jūsu konfigurācijas failos, Webmin jāzina, kuras no tām tiek nodotas Apache, kad tā tiek startēta. Labajā pusē esošajā teksta laukā ievadiet sistēmā izmantotos parametrus.
 defines_config=Ņemiet vērā, ka šādi definētie parametri jau ir zināmi : $1
 defines_list=Noteikti parametri
+
 authu_ecannot='$1' nav atļauts teksta fails lietotājiem
 authu_title=Lietotāju saraksts
 authu_header=Failā $1
@@ -259,6 +275,7 @@ authu_sync=Tālāk sniegtās iespējas ļauj konfigurēt Webmin automātiski pie
 authu_screate=Pievienojiet lietotāju, kad tiek pievienots Unix lietotājs
 authu_sdelete=Dzēsiet lietotāju, kad tiek izdzēsts Unix lietotājs
 authu_smodify=Mainiet lietotāju, kad tiek mainīts Unix lietotājs
+
 authg_ecannot='$1' nav atļauts grupu teksta fails
 authg_title=Grupu saraksts
 authg_header=Failā $1
@@ -276,22 +293,26 @@ authg_err=Neizdevās saglabāt grupu
 authg_euser=Nav ievadīts grupas nosaukums
 authg_euser2=Grupas nosaukumā nedrīkst būt :
 authg_edup=Grupa ar nosaukumu '$1' jau pastāv
+
 stop_err=Neizdevās pārtraukt afišu
 stop_ecannot=Jums nav atļauts pārtraukt afišu
 stop_epid=Neizdevās atvērt PID failu $1
 stop_epid2=Nederīgs PID fails $1
 stop_esig=Neizdevās nosūtīt SIGTERM, lai apstrādātu $1
+
 start_err=Neizdevās sākt afišēt
 start_ecannot=Jums nav atļauts sākt afišēt
 start_ecmd=$1 neizdevās : $2
 start_eunknown=Nezināms iemesls
 start_eafter=Apache, šķiet, nedarbojas
+
 restart_err=Neizdevās piemērot izmaiņas
 restart_epid=Neizdevās atvērt PID failu $1
 restart_epid2=Nederīgs PID fails $1
 restart_esig=Neizdevās nosūtīt SIGHUP apstrādei $1
 restart_eunknown=Nezināms iemesls
 restart_ecannot=Jums nav atļauts veikt izmaiņas
+
 acl_virts=Virtuālie serveri, kurus šis lietotājs var rediģēt
 acl_vall=Visi serveri
 acl_vsel=Atlasīts ..
@@ -314,6 +335,7 @@ acl_dirs=Pieejamas Apache direktīvas <br><font size=-1> (ievērojot iepriekšmi
 acl_dirs0=Visi
 acl_dirs1=Tikai uzskaitīti ..
 acl_dirs2=Visi, izņemot uzskaitītos ..
+
 core_maxconc=Maksimālais vienlaicīgo pieprasījumu skaits
 core_maxkeep=Maksimālais atlikumu skaits vienā savienojumā
 core_maxreq=Maksimālais pieprasījumu skaits vienā servera procesā
@@ -499,10 +521,12 @@ core_infilter=Visiem failiem izmantojiet ievades filtrus
 core_outfilter=Visiem failiem izmantojiet izvades filtrus
 core_defchar=Rakstzīmju kopa dokumentiem
 core_edefchar=Trūkst vai nav derīga dokumentu rakstzīmju kopa
+
 mod_negotiation_cache=Kešatmiņā saturētie dokumenti?
 mod_negotiation_pri=Valodas prioritāte vairākiem skatiem
 mod_negotiation_def=Noklusējums
 mod_negotiation_epri=Trūkst valodas prioritāšu
+
 mod_cgi_logname=CGI skriptu žurnāls
 mod_cgi_none=Nav
 mod_cgi_elogname=Nederīgs CGI skripta žurnāla fails
@@ -512,6 +536,7 @@ mod_cgi_elogsize=CGI žurnāla lielumam jābūt skaitlim
 mod_cgi_post=Maksimālais reģistrēto ziņu lielums
 mod_cgi_epost=Ziņu datu lielumam jābūt veselam skaitlim
 mod_cgi_eunder=CGI skriptu žurnāls neatrodas atļautajā direktorijā
+
 mod_alias_from=No plkst
 mod_alias_to=Uz
 mod_alias_status=Statuss
@@ -535,6 +560,7 @@ mod_alias_cgi2=CGI direktorija aizstājvārds
 mod_alias_rcgi=Regexp CGI direktorija pseidonīmi
 mod_alias_rcgi2=CEG direktorija aizstājvārds
 mod_alias_estatus='$1' nav derīgs statuss
+
 mod_proxy_proxy=Darbojas kā starpniekserveris?
 mod_proxy_req=Pieprasījumi
 mod_proxy_forw=Pārsūtīt
@@ -605,11 +631,13 @@ mod_proxy_timeout=Starpniekservera pieprasījuma noildze sekundēs
 mod_proxy_etimeout=Starpniekservera pieprasījuma noildzei jābūt sekunžu skaitam
 mod_proxy_via=Iestatīt Via: galvenes
 mod_proxy_not=Nav
+
 mod_log_agent_default=Noklusējums
 mod_log_agent_file=Datne ..
 mod_log_agent_program=Programma ..
 mod_log_agent_log=Pārlūka žurnāla fails
 mod_log_agent_efile=$1 nav derīgs aģenta žurnāla faila nosaukums
+
 mod_log_config_common=Kopīgais žurnāla formāts
 mod_log_config_named=Nosaukti žurnālu formāti
 mod_log_config_nick=Segvārds
@@ -628,6 +656,7 @@ mod_log_config_enofilprog=Trūkst žurnāla faila nosaukuma vai programmas
 mod_log_config_efilprog='$1' nav atļauts žurnāla faila nosaukums vai programma
 mod_log_config_eifset=Iespēju 'Ja iestatīts' nevar izmantot ar noklusējuma žurnāla formātu
 mod_log_config_edir=Žurnāla faila '$1' direktorijs neeksistē
+
 mod_log_referer_default=Noklusējums
 mod_log_referer_file=Datne ..
 mod_log_referer_program=Programma ..
@@ -635,7 +664,9 @@ mod_log_referer_log=Atsaucēja žurnālfails
 mod_log_referer_nolog=Neierakstiet atsauces no
 mod_log_referer_elog=$1 nav derīgs atsauces žurnāla faila nosaukums
 mod_log_referer_edir=atsauces žurnāls neatrodas atļautajā direktorijā
+
 mod_status_msg=Parādīt paplašinātu statusa informāciju
+
 mod_mime_ext=Paplašinājumi
 mod_mime_xtype=Papildu MIME veidi
 mod_mime_mtype=MIME tips
@@ -668,6 +699,7 @@ mod_mime_outfilter=Izejas filtri
 mod_mime_infilter=Ievades filtri
 mod_mime_filters=Lietojamie filtri
 mod_mime_efext=Filtram (-iem) $1 nav piešķirti paplašinājumi
+
 mod_setenvif_header=Galvene
 mod_setenvif_match=Sakritība
 mod_setenvif_case=Mača lieta
@@ -678,11 +710,13 @@ mod_setenvif_eheader=Nederīga pieprasījuma galvene '$1'
 mod_setenvif_eregex=Nederīga regulārā izteiksme '$1'
 mod_setenvif_evar=Nederīgs mainīgā nosaukums '$1'
 mod_setenvif_clear=Skaidrs
+
 mod_userdir_default=Noklusējums
 mod_userdir_all=Visi lietotāji ir pieejami
 mod_userdir_except=Visi lietotāji, izņemot
 mod_userdir_dir=Lietotāja WWW direktorijs
 mod_userdir_edir=Jums nav atļauts izmantot norādīto lietotāja WWW direktoriju
+
 mod_imap_action=Rīcība ar nepareizu attēlu karšu izmantošanu
 mod_imap_default=Noklusējums
 mod_imap_godefurl=Doties uz noklusējuma URL
@@ -702,8 +736,10 @@ mod_imap_refurl=Novirzošais URL
 mod_imap_url=URL. ..
 mod_imap_defbase=Noklusējuma bāze attēlu kartēm
 mod_imap_eurl=“$1” nav derīgs URL
+
 mod_speling_autocorr=Vai automātiski izlabot nepareizi uzrakstītus URL?
 mod_speling_default=Noklusējums
+
 mod_actions_mime=Apdarinātājs / MIME tips
 mod_actions_cgiurl=CGI skripta URL
 mod_actions_mimecgi=Apdarinātāja vai MIME tipa CGI darbības
@@ -713,10 +749,13 @@ mod_actions_httpcgi=HTTP metodes CGI darbības
 mod_actions_emime='$1' nav derīgs apstrādātājs vai MIME tips
 mod_actions_ecgi='$1' nav derīgs CGI skripts
 mod_actions_enometh=CGI skriptam '$1' nav izvēlēta neviena metode
+
 mod_include_incl=Process iekļauj failus ar izpildes bitu?
 mod_include_set=Jā un iestatiet pēdējās modifikācijas datumu
 mod_include_default=Noklusējums
+
 mod_dir_txt=Direktoriju indeksa faili
+
 mod_autoindex_default=Noklusējums
 mod_autoindex_asc=Augoši
 mod_autoindex_descend=Dilstošā secībā
@@ -725,6 +764,7 @@ mod_autoindex_date=Datums
 mod_autoindex_size=Izmērs
 mod_autoindex_desc=Apraksts
 mod_autoindex_sort=Kārtot direktoriju indeksu pēc
+
 browsermatch_regexp=Pārlūka regex
 browsermatch_case=Mača lieta?
 browsermatch_var=Iestatīt mainīgo
@@ -732,6 +772,7 @@ browsermatch_value=Vērtība
 browsermatch_txt=Mainīgie tiek iestatīti atkarībā no pārlūka veida
 browsermatch_evar=Nederīgs mainīgā nosaukums '$1'
 browsermatch_clear=Skaidrs
+
 autoindex_fname=Faila nosaukums
 autoindex_mime=MIME tips
 autoindex_enc=Kodēšana
@@ -785,9 +826,11 @@ autoindex_sicon=Rādīt failu ikonas
 autoindex_srules=Rādīt &lt;hr&gt; līnijas
 autoindex_track=Iekļaujiet ETags galvenē
 autoindex_version=Kārtot pēc versiju virknēm
+
 mod_mime_magic_file=Maģisko numuru fails MIME
 mod_mime_magic_none=Nav
 mod_mime_magic_efile=Nederīgs MIME maģisko numuru faila nosaukums
+
 mod_env_var=Mainīgs
 mod_env_value=Vērtība
 mod_env_pass=Iet cauri
@@ -798,6 +841,7 @@ mod_env_passall=Visi vides mainīgie jānodod CGI
 mod_env_default=Noklusējums
 mod_env_evar='$1' nav derīgs mainīgā nosaukums
 mod_env_evalue='$1' nav derīga mainīgā vērtība
+
 mod_access_order=Piekļuves pārbaudes kārtība:
 mod_access_denyallow=Tad noliedz
 mod_access_allowdeny=Ļauj, tad noliedz
@@ -820,6 +864,7 @@ mod_access_epip=“$1” nav derīga daļēja IP adrese
 mod_access_emask='$1' nav derīgs tīkla / tīkla maskas pāris
 mod_access_ecidr=“$1” nav derīgs tīkla / CIDR pāris
 mod_access_evar='$1' nav derīgs mainīgā nosaukums
+
 mod_auth_ufile=Lietotāja teksta fails
 mod_auth_uedit=Rediģēt lietotājus
 mod_auth_gfile=Grupēt teksta failu
@@ -830,6 +875,7 @@ mod_auth_eudir=Lietotāja teksta fails neatrodas atļautajā direktorijā
 mod_auth_egdir=Grupas teksta fails neatrodas atļautajā direktorijā
 mod_auth_eufile=Nederīgs lietotāja teksta faila nosaukums
 mod_auth_egfile=Nederīgs grupas teksta faila nosaukums
+
 mod_auth_dbm_ufile=Lietotāja DBM fails
 mod_auth_dbm_gfile=Grupas DBM fails
 mod_auth_dbm_pass=Vai nodot neveiksmes nākamajam modulim?
@@ -840,6 +886,7 @@ mod_auth_dbm_egfile=Nederīgs grupas DBM faila nosaukums
 mod_auth_dbm_type=DBM datu bāzes tips
 mod_auth_dbm_gtype=DBM grupas datu bāzes tips
 mod_auth_dbm_default=Noklusējuma DBM formāts
+
 mod_cern_meta_process=Procesa galvenes metafaili
 mod_cern_meta_dir=Apakšdirektorijs galvenes metafailiem
 mod_cern_meta_default=Noklusējums
@@ -847,6 +894,7 @@ mod_cern_meta_edir=Nederīgs metafaila apakšdirektorijas nosaukums
 mod_cern_meta_suffix=Galvenes metafailu faila piedēklis
 mod_cern_meta_default2=Noklusējums
 mod_cern_meta_esuffix=Nederīgs metafaila piedēklis
+
 mod_ssl_enable=Vai iespējot SSL?
 mod_ssl_proto=SSL protokoli
 mod_ssl_cfile=Sertifikāta / privātās atslēgas fails
@@ -874,6 +922,7 @@ mod_ssl_passsc=Izpildiet skriptu $1
 mod_ssl_epassph=Nav ievadīta SSL parole
 mod_ssl_epasssc=Trūkst vai nav derīgs SSL paroles skripts
 mod_ssl_ecerton=Kad SSL ir iespējots, ir jāizvēlas sertifikāta fails
+
 mod_apachessl_notssl=Liegt piekļuvi SSL
 mod_apachessl_forcessl=Vai piespiest SSL / notSSL piekļuvi?
 mod_apachessl_capath=Ceļš direktorijai ar sertifikācijas iestāžu sertifikātiem
@@ -906,6 +955,7 @@ mod_apachessl_nov2=Atspējot SSL 2. versiju
 mod_apachessl_fake=Simulē lietotāja pamata autentifikācijas pieteikšanās, izmantojot sertifikāta nosaukumu
 mod_apachessl_cdnfile=Tiek pārbaudīts fails pret klienta DN
 mod_apachessl_ecdnfile=Tiek pārbaudīts, vai trūkst faila pret klienta DN
+
 log_global=Mainītas globālās $1 opcijas
 log_virtc=Izveidots serveris $1
 log_virts=Pārkonfigurēts serveris $1
@@ -946,8 +996,10 @@ log_stop=Apturēts tīmekļa serveris
 log_apply=Lietotās izmaiņas
 log_manual=Manuāli rediģēts konfigurācijas fails $1
 log_virts_delete=Izdzēsti $1 virtuālie serveri
+
 search_title=Atrodiet serverus
 search_notfound=Nav atrasts neviens atbilstošs virtuālais serveris
+
 mod_php_value=PHP konfigurācijas vērtības
 mod_php_flag=PHP konfigurācijas karodziņi
 mod_php_admin_value=PHP administratora konfigurācijas vērtības
@@ -956,6 +1008,7 @@ mod_php_name_header=Iestatīšana
 mod_php_value_header=Vērtība
 mod_php_ename='$1' nav derīgs nosaukums
 mod_php_evalue='$1' ir nederīga vērtība $2
+
 mod_vhost_alias_root=Automātiska virtuālā resursdatora sakne
 mod_vhost_alias_ip=Vai resursdatora nosaukuma vietā izmantot IP adresi?
 mod_vhost_alias_none=Nav
@@ -963,12 +1016,14 @@ mod_vhost_alias_script=Automātiska virtuālā resursdatora cgi-bin
 mod_vhost_alias_eroot=Trūkst vai nav derīga virtuālā resursdatora sakne
 mod_vhost_alias_eroot2=Virtuālā resursdatora saknes direktorija nav atļauta
 mod_vhost_alias_escript=Trūkst vai nav derīga virtuālā resursdatora cgi-bin
+
 worker_minspare=Minimālais rezerves vītņu skaits
 worker_maxspare=Maksimālais rezerves vītņu skaits
 worker_eminspare=Minimālajam rezerves pavedienam jābūt veselam skaitlim
 worker_emaxspare=Maksimālajam rezerves pavedienam jābūt veselam skaitlim
 worker_threads=Vītnes vienam bērnam
 worker_ethreads=Vītņu skaitam vienā bērna procesā jābūt veselam skaitlim
+
 perchild_sthreads=Sākotnējie pavedieni uz vienu bērnu procesu
 perchild_esthreads=Vītņu skaitam vienā bērna procesā jābūt veselam skaitlim
 perchild_numservers=Bērnu procesu skaits
@@ -984,6 +1039,7 @@ perchild_gid=GID
 perchild_enum=Procesa numuram jābūt skaitlim, kas nav nulle
 perchild_euid=UID ir jābūt veselam skaitlim
 perchild_egid=GID ir jābūt veselam skaitlim
+
 cache_enable=Aktīvs?
 cache_type=Kešatmiņas veikals
 cache_disk=Disks
@@ -1004,12 +1060,14 @@ cache_eminos=Minimālajam kešatmiņas objekta lielumam jābūt baitu skaitam
 cache_emaxos=Kešatmiņas maksimālajam objekta lielumam jābūt baitu skaitam
 cache_maxoc=Kešatmiņā saglabāto objektu maksimālais skaits atmiņā
 cache_emaxoc=Kešatmiņā saglabājamo objektu skaitam jābūt veselam skaitlim
+
 suexec_su=Palaidiet CGI programmas kā
 suexec_none=Lietotājs no globālās konfigurācijas
 suexec_user=Unix lietotājs
 suexec_group=un grupa
 suexec_euser=Trūkst vai nav derīgs lietotājs CGI programmu darbināšanai kā
 suexec_egroup=Trūkst vai nav derīga grupa CGI programmu darbināšanai kā
+
 filter_name=Vārds
 filter_intype=Ievadiet MIME veidu
 filter_outtype=Izejas MIME tips
@@ -1019,11 +1077,13 @@ filter_in=Ievades filtru definīcijas
 filter_out=Izejas filtru definīcijas
 filter_ename=Nederīgs filtra nosaukums '$1'
 filter_ecmd=Trūkst komandas filtram “$1”
+
 cdir_err=Neizdevās izveidot katra direktorija opcijas
 cdir_err2=Neizdevās saglabāt viena direktorija opcijas
 cdir_epath=Trūkst ceļa
 cdir_eproxy=Starpniekservera opcijas nevar izveidot, ja ir iespējota atbilstības regexp opcija
 cdir_ecannot=Dotajam ceļam jums nav atļauts izveidot katra direktorija opcijas
+
 mod_band_enable=Joslas platuma ierobežošana ir iespējota?
 mod_band_bw=Ierobežojums (baiti / sek)
 mod_band_client=Klientiem
@@ -1042,24 +1102,30 @@ mod_band_epulse=Trūkst vai nav derīgs intervāls starp ierobežotām paketēm
 mod_band_dir=Joslas platumu ierobežojošo datu failu direktorija
 mod_band_edir=Trūkst vai neeksistē joslas platuma datu failu direktorija
 mod_band_esubdir=Trūkst nepieciešamās apakšdirektorijas <tt>$1</tt> joslas platuma datu failu direktorijā
+
 mod_dav_active=WebDAV iespējots?
 mod_dav_inf=Vai atļaut bezgalīgu dziļumu DAV PROPFIND pieprasījumiem?
 mod_dav_timeout=Minimālais DAV taimauts sekundēs
 mod_dav_etimeout=Trūkst vai nav derīgs DAV taimauts
+
 delete_err=Neizdevās izdzēst virtuālos serverus
 delete_enone=Nav atlasīts
 delete_ecannot=Jums nav atļauts dzēst serverus
 delete_ecannot2=Jums nav atļauts rediģēt serveri $1
+
 syslog_desc=Apache kļūdu žurnāls
+
 mod_auth_basic_pass=Vai nodot pamata pieteikšanās kļūdas nākamajam modulim?
 mod_auth_basic_prov=Pamata pieteikšanās lietotāja failu tipi
 mod_auth_basic_file=Teksta fails
 mod_auth_basic_dbm=DBM datu bāze
+
 mod_auth_digest_pass=Vai sagremot pieteikšanās kļūdas nākamajam modulim?
 mod_auth_digest_prov=Digest pieteikumvārdu lietotāju tipi
 mod_auth_digest_al=Sajaukšanas algoritms
 mod_auth_digest_domain=URL un ceļi tajā pašā domēnā
 mod_auth_digest_edomain=Trūkst vietrāžu URL un ceļu tajā pašā domēnā
+
 mods_title=Konfigurējiet Apache moduļus
 mods_mod=Modulis
 mods_state=Pašreizējais stāvoklis

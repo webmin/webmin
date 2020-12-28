@@ -21,6 +21,7 @@ index_eversion=Версията на STunnel, инсталирана на ваш
 index_conf=От конфигурационния файл $1 
 index_noconf=Няма конфигурационен файл!
 index_delete=Изтриване на избраните тунели
+
 edit_title=Редактиране на SSL тунел
 create_title=Създайте SSL тунел
 edit_header1=Опции за източник на тунел
@@ -47,6 +48,7 @@ edit_tcpw=Име на TCP-опаковки
 edit_auto=автоматичен
 edit_iface=Адрес на изходящия източник
 edit_type=Бягам от
+
 save_err=SSL тунелът не можа да бъде запазен
 save_enclash=Името на услугата $2 вече се използва на порт $1.
 save_einetd=Вече има inetd услуга, наречена $1.
@@ -61,6 +63,7 @@ save_etcpw=Липсващо или невалидно име на TCP-опако
 save_eiface=Липсващ или невалиден изходящ адрес на източника
 save_exinetd=Вече има xinetd услуга, наречена $1 
 save_export=Портът $1 вече се използва от xinetd услугата $2 
+
 log_apply=Приложени промени
 log_create=Създаден SSL тунел $1 
 log_delete=Изтрит SSL тунел $1 

@@ -8,11 +8,14 @@ index_sadd=새로운 시스템 서비스를 작성하십시오.
 index_always=항상
 index_ladd=새로 시작한 에이전트를 작성하십시오.
 index_lname=에이전트 이름
+
 edit_reloadnow2=구성 파일 다시 읽기
+
 log_restart=재시작 된 작업 $1 
 log_condrestart=조건부로 재시작 된 작업 $1 
 log_reload=재로드 된 작업 $1 
 log_status=작업 $1 의 페치 상태
+
 mass_ustart=서비스 시작
 mass_urestart=서비스 재시작
 mass_ustop=서비스 중지
@@ -21,6 +24,7 @@ mass_udisable=부팅시 서비스 $1 을 (를) 비활성화합니다.
 mass_ustarting=서비스 $1 시작 중 ..
 mass_ustopping=서비스 $1 중지 중 ..
 mass_urestarting=서비스 $1 다시 시작
+
 mode_init=SysV 초기화
 mode_osx=맥 OS
 mode_local=단일 부팅 스크립트
@@ -29,6 +33,7 @@ mode_rc=FreeBSD RC 스크립트
 mode_upstart=건방진 녀석
 mode_systemd=체계화
 mode_launchd=발사
+
 upstart_title1=가동 서비스 시작
 upstart_title2=시작 서비스 편집
 upstart_egone=더 이상 서비스가 존재하지 않습니다!
@@ -53,6 +58,7 @@ upstart_eserver=서버 명령이 입력되지 않았습니다
 upstart_eserver2=서버 명령이 존재하지 않습니다
 upstart_eserver3=하나의 서버 명령 만 입력 할 수 있습니다
 upstart_return=신생 서비스
+
 systemd_title1=체계적인 서비스 만들기
 systemd_title2=체계화 된 서비스 편집
 systemd_egone=더 이상 서비스가 존재하지 않습니다!
@@ -76,6 +82,7 @@ systemd_edesc=누락 된 서비스 설명
 systemd_return=체계적인 서비스
 systemd_econf=시스템 구성이 입력되지 않았습니다
 systemd_estart=시작할 때 실행할 명령이 없습니다.
+
 launchd_title1=시작된 에이전트 생성
 launchd_title2=시작된 에이전트 편집
 launchd_egone=요원이 더 이상 존재하지 않습니다!
@@ -96,4 +103,5 @@ launchd_eclash=이름이 같은 에이전트가 이미 존재합니다
 launchd_return=에이전트 시작
 launchd_econf=실행 된 구성이 입력되지 않았습니다
 launchd_estart=서버 명령 누락
+
 syslog_journalctl=SystemD 로그

@@ -9,17 +9,21 @@ index_edit=Verwalten
 index_manual=Manuell editieren
 index_anyfile=Editiere andere PHP Konfigurationsdatei:
 index_return=Konfigurationsdateien
+
 file_global=Globale PHP Konfiguration
 file_eread=Fehlgeschlagen zu lesen $1 : $2
+
 manual_title=Manuelles Editieren der Konfiguration
 manual_desc=Diese Seite kann verwendet werden, um manuell eine PHP-Konfigurationsdatei zu bearbeiten. Dies sollte sorgfältig durchgeführt werden, da keine Syntax oder anderer Gültigkeitskontrolle auf die Änderungen durchgeführt werden.
 manual_err=Konfigurationsdatei editieren fehlgeschlagen
 manual_edata=Kein neuer Inhalt eingegeben
+
 list_title=Verwalte PHP Konfiguration
 list_ecannot=Sie sind nicht berechtigt, diese PHP-Konfigurationsdatei zu verwalten
 list_return=PHP Konfiguration
 list_format_ini=INI-Format
 list_format_fpm=FPM-Format
+
 vars_title=PHP Variablen
 vars_header=PHP-Variable Erstellung und Zitat Optionen
 vars_magic=Quote all input variables?
@@ -28,6 +32,7 @@ vars_register=Turn all input into global variables?
 vars_args=Turn command-line parameters into global variables?
 vars_long=Erstelle alten Stil Arrays wie <tt>HTTP_GET_VARS</tt>?
 vars_err=Fehlgeschlagen PHP Variable Einstellungen zu speichern
+
 dirs_title=Verzeichniseinstellungen
 dirs_header=PHP-Skript und Erweiterungs-Verzeichniseinstellungen
 dirs_include=Suchverzeichnisse für 'includes'
@@ -39,6 +44,7 @@ dirs_err=Fehlgeschlagen Verzeichnis Einstellungen zu speichern
 dirs_eincs=Kein  'include' Suchverzeichnisse eingegeben
 dirs_eutmp=Fehlendes oder ungültiges temporäre Dateien Verzeichnis
 dirs_eext=Fehlendes Extensions-Verzeichnis
+
 db_title=Datenbankeinstellungen
 db_header1=MySQL Datenbank Verbindungseinstellungen
 db_persist=Erlauben dauerhafte Datenbank-Verbindungen?
@@ -57,6 +63,7 @@ db_emaxlinks=Fehlende oder ungültige maximale Anzahl an gesamten Verbindungen
 db_etimeout=Fehlendes oder ungültiges Verbindungs-Timeout
 db_ehost=Fehlender oder ungültiger MySQL Server Host
 db_eport=Fehlender oder ungültiger Standard MySQL Server Port
+
 session_title=Session Optionen
 session_header=Optionen für PHP Session Tracking
 session_handler=Session storage mechanism
@@ -72,6 +79,7 @@ session_maxlife=Maximale Session Lebenszeit
 session_epath=Missing or invalid directory for session files
 session_elife=Fehlende oder ungültige Cookie Lebensdauer
 session_emaxlife=Fehlende oder ungültige maximale Session Lebensdauer
+
 safe_title=Optionen des sicheren Modus
 safe_header=Sicherer Dateizugriff-Modus-Optionen
 safe_on=Aktiviere sicheren Modus?
@@ -84,6 +92,7 @@ safe_err=Fehler abgesicherten Modus Optionen zu speichern
 safe_einclude=Missing or invalid allowed directory for included files
 safe_eexec=Fehlendes oder ungültiges erlaubte Verzeichnis für auszuführende Programme
 safe_ebasedir=Fehlendes oder ungültiges Verzeichnis für Datei-Operationen
+
 limits_title=Ressourcenlimits
 limits_header=Speicher und Übertragungslimit Optionen
 limits_mem=Maximale Speicher Allokation
@@ -97,6 +106,7 @@ limits_epost=Fehlende oder ungültige maximale HTTP-POST-Größe
 limits_eupload=Fehlende oder ungültige maximale Dateiuploadgröße
 limits_eexec=Fehlende oder ungültige maximale Ausführungszeit
 limits_einput=Fehlende oder ungültige maximale 'input parsing time'
+
 errors_title=Fehler Logging
 errors_header=Fehlermeldung und Protokollierungsoptionen
 errors_display=Zeige Fehlermeldungen?
@@ -127,6 +137,7 @@ errors_err=Fehlgeschlagen Fehlerprotokollierung zu speichern
 errors_ereporting=Keinen Fehlertyp Ausdruck eingegeben
 errors_emaxlen=Fehlende oder ungültige maximale Größe der protokollierten Fehler
 errors_efile=Fehlende Fehlerprotokolldatei
+
 misc_title=Andere Einstellungen
 misc_header=Verschiedene andere PHP-Einstellungen
 misc_short=Erlaube PHP-Skripte, beginnend mit &lt;? ?
@@ -147,12 +158,14 @@ misc_include=Allow opening of remote Includes?
 misc_path=CGI Fix Pfad Info?
 misc_timezone=PHP Zeitzone
 misc_charset=Standardzeichensatz
+
 log_manual=Datei $1 manuell editiert
 log_vars=Ändere PHP Variablen in $1
 log_dirs=Verzeichnis Einstellungen in $1 geändert
 log_db=Datenbank Einstellungen in $1 geändert
 log_session=Session Optionen in $1 geändert
 log_misc=Andere Einstellungen in $1 geändert
+
 acl_global=Kann globale PHP Konfiguration editieren?
 acl_anyfile=Kann jede Datei als PHP Konfiguration editieren?
 acl_manual=Kann manuell Konfigurationsdateien editieren?

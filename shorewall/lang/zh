@@ -17,6 +17,7 @@ index_status=显示状态
 index_statusdesc=点击这个按钮显示Shorewall已定义的规则表.
 index_check=检查防火墙
 index_checkdesc=点击这个按钮检查您的配置是否正确.
+
 list_move=移动
 list_add=增加
 list_auto=自动
@@ -27,6 +28,7 @@ list_other=其他..
 list_manual=手工修改配置文件
 list_manualdesc=点击这个按钮手工修改配置文件 $1.
 list_ecannot=不允许修改Shorewall定义表.
+
 restart_err=应用配置失败
 refresh_err=刷新配置失败
 start_err=启动防火墙失败
@@ -37,6 +39,7 @@ check_title=检查防火墙
 check_ok=.. 您现在的配置看上去没有问题.
 check_failed=.. 您当前的配置有一些错误!
 check_cmd=正在检查 ..
+
 zones_title=网络区域
 zones_desc=这个区域描述您的系统可以连接到的不同的网络. 当然，这只是个名称，对防火墙没有任何效果，它们只是定义默认区域名称和细节描述.
 zones_add=增加一个网络区域.
@@ -53,6 +56,7 @@ zones_eid=丢失或错误的网络区域ID
 zones_efwid=网络区域ID $FW 和 fw 是被保留的名称
 zones_ename=丢失或错误的显示名称
 zones_edesc=丢失网络区域描述
+
 policy_title=默认策略
 policy_desc=这里允许您配置不同防火墙区域之间的默认通信动作."防火墙规则"将以此为基础.
 policy_add=增加一个默认策略
@@ -73,6 +77,7 @@ policy_ulog=记录日志到ULOG
 policy_efw=&lt;防火墙&gt; 无法选择来源或者目标区域
 policy_elimit=丢失或错误的流量限制编号
 policy_eburst=失或错误的突发流量限制编号
+
 rules_title=防火墙规则
 rules_desc=这个表列出了"默认策略"以外特定的传输类型、来源、目标地址，这里添加的控制动作将会替代匹配的默认策略.
 rules_add=增加一个防火墙规则
@@ -115,6 +120,7 @@ rules_rate=流量限制语法
 rules_norate=不限制
 rules_set=应用用户设置规则
 rules_noset=全部用户
+
 tos_title=服务类型
 tos_desc=这个页面定义了特定传输类型中的IP服务类型,用来提高或者降低它们的优先权.
 tos_add=增加一个新服务类型
@@ -132,6 +138,7 @@ tos_edit=编辑服务类型
 tos_create=新建服务类型
 tos_header=服务类型细节
 tos_err=保存服务类型失败
+
 interfaces_title=网卡界面
 interfaces_desc=Shorewall将管理系统上的每个网卡界面和对应的区域和连接.本地环回设备<tt>lo</tt>被保留，不能加入列表中.
 interfaces_add=新建一个网卡界面
@@ -148,6 +155,7 @@ interfaces_header=网卡界面细节
 interfaces_err=保存网卡界面失败
 interfaces_eiface=丢失或错误的网卡名
 interfaces_ebroad=丢失或错误的广播地址
+
 masq_title=Masq转发
 masq_desc=这里设置不同网络间的通信路由.一个常见的用途是用来实现局域网共享上网.
 masq_add=新建Masq转发规则
@@ -171,6 +179,7 @@ masq_enet=丢失或错误的网卡输出目标
 masq_emnet=丢失或错误的转发子网地址
 masq_emnete=空的禁止的网络列表
 masq_esnat=错误的SNAT IP地址
+
 nat_title=静态NAT
 nat_desc=这个表中设置静态网络地址翻译，用来将您内部网络中的地址翻译成外部地址，通常用来实现由内部网络中的服务器向外部提供服务
 nat_add=新建一个静态NAT条目
@@ -189,6 +198,7 @@ nat_local=应用到防火墙系统?
 nat_eext=错误的外部IP地址
 nat_eint=错误的内部IP地址
 nat_evirt=错误的虚拟网卡号
+
 proxyarp_title=ARP代理
 proxyarp_desc=允许系统应答系统IP地址以外的ARP请求.
 proxyarp_add=新建一个ARP代理地址
@@ -205,6 +215,7 @@ proxyarp_err=保存ARP代理失败
 proxyarp_have=路由到其他存在的主机吗？
 proxyarp_eaddr=丢失或错误的地址
 proxyarp_pers=当防火墙停止时总是允许路由吗？
+
 routestopped_title=关闭规则
 routestopped_desc=Shorewall默认在关闭时阻塞所有访问. 这个页面定义了在Shorewall关闭以后允许访问的主机和网络.
 routestopped_add=新建一个地址
@@ -219,6 +230,7 @@ routestopped_err=保存地址失败
 routestopped_eaddr=没有填加地址
 routestopped_all=所有地址
 routestopped_list=地址和网络列表 ..
+
 tunnels_title=VPN 通道
 tunnels_desc=这个页面列出了允许穿过防火墙的VPN通道, 它们必须在Shorewall设置中被允许.
 tunnels_add=增加一个VPN通道
@@ -249,6 +261,7 @@ tunnels_generic_l=一般, 对协议..
 tunnels_gsel=区域列表
 tunnels_eopenvpn=错误的OpenVPN通道端口号
 tunnels_egeneric=丢失一般通道的协议或协议:端口
+
 hosts_title=区域主机
 hosts_desc=特殊区域部分的主机和网络. 您一般不需要修改这个列表.
 hosts_add=增加一个新的区域主机
@@ -263,8 +276,10 @@ hosts_create=新建区域主机
 hosts_err=保存区域主机失败
 hosts_header=区域主机细节
 hosts_routestopped=当防火墙关闭后提供路由？
+
 edit_before=之前条目 $1
 edit_after=之后条目 $1
+
 blacklist_title=黑名单主机
 blacklist_desc=这里添加的主机和服务端口将被阻塞.
 blacklist_add=添加一个黑名单主机
@@ -285,6 +300,7 @@ blacklist_eproto=丢失或错误的协议
 blacklist_eports=错误的端口号或端口间的分隔错误
 blacklist_eports2=端口集仅能指定为TCP和UDP协议
 blacklist_return=黑名单主机
+
 providers_title=多线路路由设置
 providers_desc=这个页面定义多线路路由表. 当您具有连接到多个ISP的线路或者连接到同一个ISP的多条线路才可以使用。
 providers_add=添加一个路由线路.
@@ -316,11 +332,13 @@ providers_enumber=丢失或错误的线路名称编号
 providers_emark=丢失或错误的线路标记编号
 providers_edup=丢失合并速率的线路
 providers_egateway=丢失或错误的网关
+
 manual_desc=这个表单用来手工编辑Shorewall配置文件 $1. 请小心，不会进行语法检查.
 manual_reset=取消
 manual_err=保存表文件失败
 manual_efile=错误的表名!
 manual_edata=没有表文件被加入.
+
 acl_nochange=能够启动、停止或者应用Shorewall配置吗?
 acl_files=可用的Shorewall表
 acl_all=所有

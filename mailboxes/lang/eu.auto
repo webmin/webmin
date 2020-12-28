@@ -2,6 +2,7 @@ index_title=Irakurri Erabiltzailearen posta
 index_none=Ez duzu baimenik sistema honetako erabiltzaileentzako posta elektronikoa irakurtzeko.
 index_header=Erabiltzaileen postontziak
 index_empty=Ez dago posta
+index_return=erabiltzaile zerrenda
 index_esystem=Ez da onartzen zure sisteman posta elektronikoko zerbitzaririk (Exim, Qmail, Postfix eta Sendmail). <a href='$1'>moduluaren konfigurazioa</a> doitu beharko duzu posta zerbitzaria eta seguru asko posta bideak eskuz konfiguratzeko.
 index_esystem2=<a href='$1'>moduluaren konfigurazioan ezarritako posta-zerbitzaria</a> ez da zure sisteman aurkitu. Konfigurazioa doitu beharko duzu zerbitzari egokia erabiltzeko.
 index_esystem3=Errore bat gertatu da <a href='$1'> moduluaren konfigurazioan ezarritako posta-sistemarekin harremanetan: $2.
@@ -19,6 +20,7 @@ index_eperl=Hautatutako SMTP autentifikazio moduan beharrezkoa den Perl modulua 
 index_file=Irakurri Posta Fitxategian edo Maildir-en:
 index_nousers=Ez da erabiltzailerik aurkitu!
 index_nousersmail=Ez da mezu elektronikorik aurkitu erabiltzaileak.
+
 mail_title=Erabiltzailearen helbide elektronikoa
 mail_from=aurrera
 mail_date=data
@@ -75,6 +77,7 @@ mail_fromfilter=Sortu iragazkia igorlearen arabera
 mail_tofilter=Sortu iragazkia hartzailearen arabera
 mail_subfilter=Sortu iragazkia gaiaren arabera
 mail_unknown=ezezaguna
+
 mail_sign=Saioa hasi teklarekin
 mail_nosign=&lt;Ez sinatu&gt;
 mail_crypt=Enkriptatu
@@ -109,6 +112,7 @@ mail_selread=Hautatu irakurri.
 mail_selunread=Hautatu irakurri gabe.
 mail_selspecial=Hautatu berezia.
 mail_specialsync=Sinkronizazio berezia
+
 view_title=Irakurri posta elektronikoa
 view_desc=$1 mezua $2 zerbitzuan
 view_desc2=Mezua $1 erabiltzailearentzako $2
@@ -150,6 +154,7 @@ view_sub=Erantsitako posta elektronikoa
 view_sub2=$1 -ko erantsitako mezu elektronikoa
 view_egone=Mezu hau ez dago jada
 view_eugone=Erabiltzaile hau ez da existitzen
+
 view_gnupg=GnuPG sinadura egiaztatzea
 view_gnupg_0=$1-k sinadura baliozkoa da.
 view_gnupg_1=$1-ren sinadura baliozkoa da, baina ezin da konfiantza-katea ezarri.
@@ -186,7 +191,9 @@ view_images=Erakutsi irudiak
 view_raw=Ikusi mezu gordinak
 view_aall=Gorde eranskin guztiak ZIP gisa.
 view_aslideshow=Erakutsi irudi guztiak
+
 compose_title=Idatzi posta elektronikoa
+
 reply_title=Erantzun Posta elektronikora
 forward_title=Birbidali posta elektronikoa
 enew_title=Editatu helbide elektronikoa
@@ -216,9 +223,11 @@ reply_addattach=Gehitu eranskineko eremua.
 reply_addssattach=Gehitu zerbitzariaren alboko eranskineko eremua.
 reply_html0=Idatzi testua
 reply_html1=HTML konposatu
+
 reply_spell=Egiaztatu ortografia akatsak?
 reply_draft=Gorde zirriborro gisa
 reply_save=Gorde eta editatu
+
 send_err=Ezin izan da posta bidaltzean huts egin
 send_eto=Falta helbidean
 send_efrom=Helbidea ez da falta
@@ -235,6 +244,7 @@ send_eperms2=Ezin duzu $1 fitxategia bidali
 send_epath=Sendmail exekutagarria $1 ez dago.
 send_efile=Ezin izan da eranskina irakurri $1 : $2 
 send_done=.. egin.
+
 send_epass=Ezin duzu mezu bat sinatu zure pasahitza oraindik ez dagoelako konfiguratuta GnuPG moduluan.
 send_esign=Ezin izan da mezua sinatu : $1
 send_ekey=Ezin izan da giltza aurkitu helbide elektronikoa $1
@@ -246,6 +256,7 @@ send_espell=Ortografiako akatsak aurkitu dira zure mezuan ..
 send_draft=Posta $1 (e) ra bidali ezazu zirriborroen karpetan.
 send_drafting=Mezuak gordetzea $1 posta-zirriborroen karpetan.
 send_eattachsize=Posta eranskinak $1 byte-ren gehienezko tamaina gainditu zuen
+
 delete_title=Ezabatu Posta
 delete_rusure=Ziur zaude $1 hautatutako mezuak $2 ezabatu nahi dituzula? Baliteke denbora pixka bat igortzea posta elektronikoko fitxategi handi baterako. Ezabatzea amaitu arte, ez da beste ekintzarik egin behar.
 delete_rusure2=Ziur mezu hau $1-tik ezabatu nahi duzula? Baliteke denbora pixka bat igortzea posta elektronikoko fitxategi handi baterako. Ezabatzea amaitu arte, ez da beste ekintzarik egin behar.
@@ -268,6 +279,7 @@ delete_nobutton=Ez da botoia sakatu
 delete_ereport=Ezin izan da spam gisa salatu : $1
 delete_errc=Ezin izan da mezu elektronikoa kopiatu
 delete_errm=Ezin izan da mezua mugitu
+
 confirm_title=Berretsi Ezabatu
 confirm_warn=Ziur al zaude $1 hautatutako mezuak karpeta honetatik ezabatu nahi dituzula?
 confirm_warnf=Ziur al zaude hautatutako $1 mezuak karpetatik <b>$2</b> ezabatu nahi dituzula?
@@ -277,6 +289,7 @@ confirm_warn4=Ezabatzea amaitu arte, ez da beste ekintzarik egin behar.
 confirm_ok=Ezabatu orain
 confirm_warnall=Ziur al zaude karpeta honetako mezu guztiak ezabatu nahi dituzula?
 confirm_warnallf=Ziur <b>$1</b> karpetaren mezu guztiak ezabatu nahi dituzula?
+
 search_title=Bilaketaren emaitzak
 search_ecannot=Ez duzu baimenik erabiltzaile honen mezu elektronikoa bilatzeko
 search_ematch=Testua sartu behar duzu aurka egiteko.
@@ -305,16 +318,19 @@ search_nolatest=Guztiak karpetan
 search_latestnum=Azkena bakarrik
 search_elatest=Bilatu beharreko mezu kopuru falta edo baliogabea
 search_withstatus=, egoera $1 egoerarekin
+
 folder_inbox=Sarrerako ontzia
 folder_sent=Bidalitako mezuak
 folder_drafts=Turkiarrak
 folder_trash=Trash
+
 detach_err=Ezin izan da fitxategia desblokeatu
 detach_edir=Ez da sartu edo gordetzeko fitxategirik edo direktoriorik
 detach_eopen=Ezin izan da ireki $1 : $2 
 detach_ewrite=Ezin izan da $1 idazlean idatzi : $2
 detach_title=Xehetasun fitxategia
 detach_ok=Idatzi eranskina zerbitzariaren alboko fitxategian $1 ($2).
+
 sform_title=Bilaketa aurreratua
 sform_header=Posta elektronikoa bilatzeko aukera aurreratuak
 sform_andmode=Irizpide modua
@@ -339,6 +355,7 @@ sform_headers=edozein goiburu
 sform_allmsg=mezu osoa
 sform_size=mezuen tamaina
 sform_return=bilaketa-formulario aurreratua
+
 find_enone=Ez da zure bilaketarekin bat egiten duten erabiltzaileak aurkitu
 find_title=Bilaketaren emaitzak
 find_results=$1 bilaketarekin bat datozen erabiltzaileak.
@@ -351,6 +368,7 @@ find_incount=postak
 find_sentcount=bidalia
 find_fcount=Karpetak
 find_in=$1 in $2
+
 acl_none=Bat ere ez
 acl_same=Izen bereko erabiltzailea
 acl_all=guztiak
@@ -376,12 +394,15 @@ acl_usersu=UID barrutian
 acl_sec=Bigarren mailako taldeak sartu?
 acl_dir=Irakur ditzakezu posta fitxategiak direktorio batean
 acl_dirauto=Erabaki automatikoki (edozein lekutan erabiltzaile guztiak ikusgai badaude, beste inon ez)
+
 log_delmail=$2 mezuen $2 mezuak ezabatu dira
 log_movemail=$1 mezuak $2 tik $3 ra mugitu ziren
 log_copymail=$2 $3 mezuen kopiatuak
 log_send=$1 helbidera bidali da posta
 log_read=Irakurri posta elektronikoari $1 mezuak
+
 emodified=Karpeta aldatu da azken aldiz ikusi zenetik! Itzuli <a href='$1'>posta-zerrendara</a> eta saiatu berriro.
+
 razor_title=Spam gisa salatzea
 razor_title2=Ham Hamar bezela salatzea
 razor_report=Mezu hau Razor-i eta SpamAssassin spam-ak blokeatzen dituzten datu-baseei jakinaraztea ..
@@ -391,14 +412,18 @@ razor_done=.. egin
 razor_err=.. huts egin du! Ikusi goiko errore mezua zergatik dagoen.
 razor_moved=.. egin, eta karpeta $1 karpetara aldatu da.
 razor_deleted=.. egin, eta ezabatu mezua ere.
+
 ham_title=Ham Hamar bezela salatzea
 ham_report=Mezu hau ez-spam gisa Razor eta beste SpamAssassin datu baseei jakinaraztea ..
+
 black_title=Bidaltzailea ukatzen
 black_done=$1 helbide elektronikoa SpamAssassin-ek ukatutako helbide zerrendara gehitu.
 black_already=$1 helbide elektronikoa SpamAssassin-ek ukatutako helbideen zerrendan dago jada.
+
 white_title=Bidaltzailea onartzen
 white_done=$1 helbide elektronikoa gehitu dio SpamAssassin-ek onartutako helbideen zerrendari.
 white_already=$1 helbide elektronikoa SpamAssassin-ek onartutako helbideen zerrendan dago jada.
+
 ldap_emod=Perl modulua falta da $1 LDAPera konektatzeko
 ldap_econn=Ezin izan da LDAP zerbitzarira konektatu $1 portu $2
 ldap_elogin=Ezin izan da LDAP zerbitzariarekin lotu $1 gisa $2 gisa : $3
@@ -406,12 +431,15 @@ ldap_ehost=Ez da LDAP zerbitzaririk ezarri moduluen konfigurazioan
 ldap_eport=Ez dago baliozko LDAP zerbitzariaren ataririk moduluen konfigurazioan
 ldap_euser=Modulu konfigurazioan ez da LDAP saioa hasi
 ldap_ebase=Ez da LDAP baseko DN ezarri moduluen konfigurazioan
+
 delall_title=Ezabatu mezu guztiak
 delall_rusure=Ziur mezu elektroniko guztia ezabatu nahi duzula $1-tik? $2 mezuak, guztira, $3 mezuak betiko ezabatuko dira.
 delall_ok=Ezabatu orain
+
 slide_title=Erantsitako irudiak
 slide_prev=aurreko
 slide_next=hurrengo
+
 left_mail=Mail
 left_search=Search:
 left_folders=Kudeatu karpetak

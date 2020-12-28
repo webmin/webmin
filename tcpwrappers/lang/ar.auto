@@ -10,6 +10,7 @@ index_hosts=تستضيف
 index_cmd=أمر
 index_delete=احذف المختار
 index_none=لا شيء
+
 edit_title1allow=إنشاء قاعدة السماح
 edit_title2allow=تحرير قاعدة السماح
 edit_title1deny=إنشاء قاعدة الرفض
@@ -22,9 +23,11 @@ edit_hosts=المضيفون البعيدون
 edit_hostsexcept=باستثناء المضيفين
 edit_cmd=أوامر Shell
 edit_efound=لم يتم العثور على Daemon '$1' في تكوين xinetd.
+
 save_errtitle=خطأ في حفظ القاعدة
 save_ehost=يحتوي إدخال المضيف على أحرف سيئة
 save_ecmd=يحتوي إدخال الأمر على أحرف سيئة
 save_eservice=تحتوي أسماء البرنامج الخفي على أحرف سيئة
+
 del_errtitle=خطأ في حذف القواعد
 del_enone=لا توجد قواعد ملحوظة للحذف

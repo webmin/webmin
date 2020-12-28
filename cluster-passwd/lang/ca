@@ -1,6 +1,7 @@
 index_title=Canvi de Contrasenyes en Clústers
 index_noservers=No s'ha definit cap servidor per gestionar-ne els usuaris al mòdul <a href=$1>Usuaris i Grups de Clúster</a>.
 index_hosts=Tots els canvis de contrasenya fets utilitzant aquest mòdul es faran a tots els hosts de $1 gestionats pel mòdul d'Usuaris i Grups de Clúster.
+
 passwd_err=No s'ha pogut canviar la contrasenya
 passwd_title=Canvi de la Contrasenya
 passwd_on=S'està canviant la contrasenya a $1...

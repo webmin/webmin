@@ -8,6 +8,7 @@ index_none=現在、このシステムにエクスポートされているディ
 index_apply=変更を適用
 index_applydesc=このボタンをクリックして、現在のファイル共有構成を適用します。これにより、上記のすべてのディレクトリが指定されたオプションで利用可能になります。
 index_return=株式のリスト
+
 edit_title1=共有を編集
 edit_title2=共有を作成
 edit_header1=共有の詳細
@@ -30,6 +31,7 @@ edit_anon1=アクセスなし
 edit_aclok=ACLを許可しますか？
 edit_public=WebNFS共有？
 edit_index=WebNFSインデックスファイル
+
 save_err=共有を保存できませんでした
 save_edirectory=「$1」は有効なディレクトリ名ではありません
 save_edirectory2=ディレクトリ '$1'は存在しません
@@ -38,8 +40,12 @@ save_ero=読み取り専用で共有するホストをリストしませんで�
 save_eroot=ルートを共有するホストをリストしませんでした
 save_ealready=ディレクトリ「$1」はすでに共有されています
 save_ehost=ホスト '$1'は存在しません
+
 acl_view=NFS共有を編集できますか？
+
 ecannot=NFS共有を管理することは許可されていません
+
 delete_err=共有を削除できませんでした
 delete_enone=何も選択されていません
+
 restart_err=変更を適用できませんでした

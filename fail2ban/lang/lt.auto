@@ -12,10 +12,12 @@ index_restart=Iš naujo paleiskite „Fail2Ban“ serverį
 index_restartdesc=Spustelėkite šį mygtuką, norėdami pritaikyti dabartinę konfigūraciją iš naujo paleisdami „Fail2Ban“ serverį.
 index_return=modulio rodyklė
 index_header=„Fail2Ban“ modulis
+
 check_edir=$1 konfigūracijos katalogo nėra
 check_econf=$1 konfigūracijos failo nėra
 check_eclient=Kliento komanda $1 nerasta
 check_eserver=Serverio komanda $1 nerasta
+
 filters_title=Rąstų filtrai
 filters_name=Filtro pavadinimas
 filters_re=Įprasta išraiška
@@ -25,6 +27,7 @@ filters_return=filtrų sąrašas
 filters_derr=Nepavyko ištrinti filtrų
 filters_enone=Nepasirinkta
 filters_einuse=Filtras $1 negali būti ištrintas, nes jį naudoja kalėjimai : $2 
+
 filter_title1=Sukurti filtrą
 filter_title2=Redaguoti filtrą
 filter_desc=Naudokite <i>&lt;HOST&gt;</i> įprastomis išraiškomis, kur turėtų būti rodomas pagrindinio kompiuterio vardas arba IP adresas.
@@ -39,6 +42,7 @@ filter_ename=Trūksta arba netinkamas filtro pavadinimas
 filter_eclash=Filtro vardas jau naudojamas
 filter_efail=Neįvesta jokia reguliari išraiška
 filter_einuse=Šio filtro negalima ištrinti, nes jį naudoja kalėjimai : $1 
+
 actions_title=Rungtynių veiksmai
 actions_name=Veiksmo pavadinimas
 actions_ban=Uždrausti komandą
@@ -48,6 +52,7 @@ actions_return=veiksmų sąrašas
 actions_derr=Nepavyko ištrinti veiksmų
 actions_enone=Nepasirinkta
 actions_einuse=Veiksmo $1 negalima ištrinti, nes jį naudoja kalėjimai : $2 
+
 action_title1=Sukurti rungtynių veiksmą
 action_title2=Redaguoti rungtynių veiksmą
 action_header=Suderinkite veiksmo informaciją
@@ -64,6 +69,7 @@ action_ban=Komanda uždrausti IP
 action_unban=Komanda panaikinti IP uždraudimą
 action_desc=<i>&lt;ip&gt;</i> bus pakeistas uždraustu IP adresu.
 action_einuse=Šio veiksmo negalima ištrinti, nes jį naudoja kalėjimai : $1 
+
 jails_title=Filtruokite veiksmų žaizdas
 jails_add=Pridėkite naują kalėjimą.
 jails_name=Kalėjimo vardas
@@ -76,6 +82,7 @@ jails_defdesc=Redaguokite numatytuosius parametrus ir apribojimus, kurie taikomi
 jails_return=kalėjimų sąrašas
 jails_derr=Nepavyko ištrinti kalėjimų
 jails_enone=Nepasirinkta
+
 jail_title1=Sukurti kalėjimą
 jail_title2=Redaguoti kalėjimą
 jail_header=Filtruokite informaciją apie veiksmo kalėjimą
@@ -115,13 +122,16 @@ jail_banaction=Taikomas numatytasis veiksmas
 jail_defprotocol=Numatytasis veiksmų protokolas
 jail_edestemail=Trūksta arba netinkamas numatytasis pranešimo el. Pašto adresas
 jail_eignoreip=Netinkamas IP adresas, kurį reikia ignoruoti
+
 jaildef_title=Numatytosios kalėjimo parinktys
 jaildef_header=Visų kalėjimų numatytieji nustatymai
 jaildef_err=Nepavyko išsaugoti numatytųjų kalėjimo parinkčių
 jaildef_egone=Nerasta DEFAULT kalėjimo!
+
 start_err=Nepavyko paleisti serverio
 stop_err=Nepavyko sustabdyti serverio
 restart_err=Nepavyko paleisti serverio iš naujo
+
 log_create_filter=Sukurtas filtras $1 
 log_update_filter=Modifikuotas filtras $1 
 log_delete_filter=Ištrintas $1 filtras
@@ -139,6 +149,7 @@ log_atboot=Įgalinta „Fail2Ban“ įkrovos metu
 log_delboot=Išjungta „Fail2Ban“ įkrovos metu
 log_manual=Redaguotas konfigūracijos failas $1 
 log_jaildef=Modifikuotos numatytosios kalėjimo parinktys
+
 config_title=Visuotinė konfigūracija
 config_edef=Konfigūracijos faile nerasta apibrėžimo skyriaus!
 config_header=Konfigūruoti „Fail2Ban“ parametrus
@@ -151,10 +162,12 @@ config_socket=Lizdas ryšiui su serveriu
 config_err=Nepavyko išsaugoti visuotinės konfigūracijos
 config_elogtarget=Failas, į kurį reikia įrašyti žurnalus, turi būti absoliutus kelias
 config_esocket=Lizdo failas turi būti absoliutus kelias
+
 manual_title=Redaguoti konfigūravimo failus
 manual_desc=Redaguoti failas:
 manual_ok=Gerai
 manual_efile=Pasirinktas failas nėra „Fail2Ban“ konfigūracijos dalis!
 manual_err=Nepavyko redaguoti konfigūracijos failo
 manual_edata=Neįvestas konfigūracijos failo turinys
+
 syslog_logtarget=„Fail2Ban“ veiksmų žurnalas

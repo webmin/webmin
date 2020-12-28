@@ -13,6 +13,7 @@ index_os=Sunucu tipi
 index_group=Grup
 index_none=Kayıt edilen sunucu yok
 index_logout=çıkış
+
 edit_title=Sunucu Düzenle
 create_title=Sunucu Kaydet
 edit_details=Sunucu Ayrıntıları
@@ -41,6 +42,7 @@ edit_failed=Bağlanmada hata oluştu
 edit_baduser=Giriş reddedildi
 edit_invalid=Kullanıcı RPC yapamaz
 edit_version=Webmin $1 çalışıyor
+
 save_err=Sunucunun kaydedilmesinde hata oluştu
 save_ehost=Kayıp ya da yanlış makine adı
 save_eport=Eksik ya da yanlış port
@@ -48,6 +50,7 @@ save_euser=Kullanıcı adı girilmemiş
 save_epass=Parola girilmemiş
 save_egroup=Eksik grup adı
 save_elogin=Makine için geçersiz kullanıcı ya da parola
+
 find_title=Sunucu Ara
 find_new=$1'de yeni sunucu bulundur
 find_already=$1'de bilinen sunucu bulundu
@@ -57,24 +60,30 @@ find_none=Taramada yeni sunucu bulunamadı
 find_ecannot=Sunucu aramak için izininiz yoktur
 find_scanning=$1 ağında sunucular taranıyor ..
 find_broading=$1 adreslerinde sunucular için yayın yapılıyor ..
+
 log_modify=$1 sunucusu değiştirildi
 log_create=$1 sunucusu kaydedildi
 log_delete=$1 sunucusu silindi
 log_find=$1 sunucusu bulundu
+
 link_elogin=$1 'e $2 olarak girişte hata oluştu
 link_ecannot=Bu sunucuyu kullanmak için izininiz yoktur
 link_essl=Sisteminizde Net::SSLeay perl kütüphanesi kurulmamış
 link_eautologin=$1 için geçersiz kullanıcı adı ve parola. <a href='$2'>Burayı tıklayarak</a> tekrar deneyiniz.
+
 lib_other=Diğer
+
 acl_edit=Sunucuları düzenleyebilir mi?
 acl_find=Sunucu aratabilir mi?
 acl_servers=Kullanabileceği sunucular
 acl_sall=Bütün Sunucular
 acl_ssel=Seçililer
+
 login_title=Sunucuya Giriş
 login_desc=Webmin sunucusu $1 'e giriş yapmak için bir kullanıcı adı ve parola tanımlamalalısınız.
 login_header=Webmin onaylaması
 login_user=Kullanıcı adı
 login_pass=Parola
 login_login=Giriş
+
 this_server=bu sunucu

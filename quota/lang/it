@@ -1,4 +1,5 @@
 quota_unlimited=Illimitato
+
 acl_fss=I filesystem che questo utente può modificare
 acl_fall=Tutti i filesystem
 acl_fsel=Selezionato..
@@ -23,9 +24,11 @@ acl_maxblocks=Massima dimensione di quota garantita
 acl_maxfiles=Massimo numero di file garantiti
 acl_unlimited=Illimitato
 acl_email=Permetti la configurazione delle notifiche email?
+
 activate_eallow=Non sei abilitato ad attivare o disattivare le quote su questo filesystem
 activate_eon=Impossibile abilitare le quote
 activate_eoff=Impossibile disabilitare le quote
+
 check_title=Esamina quote
 check_return=lista $1
 check_ecannot=Non puoi esaminare le quote su questo filesystem
@@ -33,11 +36,13 @@ check_running=Il comando <tt>quotacheck</tt> si sta apprestando ad esaminare lo 
 check_done=... Completato.
 check_rgroup=gruppo
 check_ruser=utente
+
 cgroup_efail=Impossibile copiare le quote
 cgroup_ecannot=Non puoi copiare le quote
 cgroup_egallow=Non sei abilitato a copiare le quote per questo gruppo
 cgroup_enogroup=Nessun gruppo verso cui copiare
 cgroup_eallowto=Non sei abilitato a copiare le quote verso '$1'
+
 cgform_title=Copia le quote
 cgform_return=quota del gruppo
 cgform_ecannot=Tu non puoi copiare le quote
@@ -47,11 +52,13 @@ cgform_all=Tutti i gruppi sul tuo sistema
 cgform_select=Gruppi selezionati
 cgform_contain=Gruppi contenenti gli utenti
 cgform_doit=Copia
+
 cuser_efail=Impossibile copiare le quote
 cuser_ecannot=Non puoi copiare le quote
 cuser_euallow=Non sei abilitato a copiare le quote di questo utente
 cuser_enouser=Nessun utente verso cui copiare
 cuser_eallowto=Non sei abilitato a copiare le quote verso '$1'
+
 cuform_title=Copia le quote
 cuform_return=quota dell'utente
 cuform_ecannot=Non puoi copiare le quote
@@ -61,6 +68,7 @@ cuform_all=Tutti gli utenti sul tuo sistema
 cuform_select=Utenti selezionati
 cuform_members=Membri dei gruppi selezionati
 cuform_doit=Copia
+
 egroup_title=Modifica Quota
 egroup_freturn=lista dei filesystem
 egroup_greturn=lista dei gruppi
@@ -78,6 +86,7 @@ egroup_sflimit=Limite Soft file
 egroup_hflimit=Limite Hard file
 egroup_update=Aggiorna
 egroup_listall=Elenca tutte le quote
+
 euser_title=Modifica Quota
 euser_freturn=lista dei filesystem
 euser_ureturn=lista utenti
@@ -99,6 +108,7 @@ euser_sflimit=Limite Soft file
 euser_hflimit=Limite Hard file
 euser_update=Aggiorna
 euser_listall=Elenca tutte le quote
+
 gfilesys_title=Quote dei gruppi
 gfilesys_return=lista filesystem
 gfilesys_ecannot=Non puoi modificare le quote per '$1'
@@ -114,6 +124,7 @@ gfilesys_hard=Limite Hard
 gfilesys_nogquota=Il gruppo <tt>$1</tt> non ha quote su nessun filesystem
 gfilesys_edit=Modifica quota su:
 gfilesys_copy=Copia le Quote
+
 ggracef_title=Tempi di dilazione
 ggracef_return=lista gruppi
 ggracef_ecannot=Non puoi modificare i tempi di dilazione su questo filesystem
@@ -122,9 +133,11 @@ ggracef_graces=Tempi di dilazione di gruppo per <tt>$1</tt>
 ggracef_block=Per quota di blocchi
 ggracef_file=Per quota di file
 ggracef_update=Aggiorna
+
 ggraces_esave=Impossibile salvare i tempi di dilazione
 ggraces_eedit=Non puoi modificare i tempi di dilazione su questo filesystem
 ggraces_enumber='$1' non è un numero
+
 index_quser=Quote Utenti
 index_qgroup=Quote Gruppi
 index_qboth=Quote per Utenti e Gruppi
@@ -144,6 +157,7 @@ index_euser=Modifica le quote per utenti:
 index_egroup=Modifica le quote per gruppi:
 index_nosupport=Nessun filesystem può supportare le quote
 index_mountmod=Tu puoi attivare le quote per un filesystem nel modulo <a href='$1'>Disk and Network Filesystems</a>
+
 lgroups_failed=Impossibile elencare i gruppi
 lgroups_eallow=Non sei abilitato a modificare le quote su questo filesystem
 lgroups_title=Quote Filesystem
@@ -164,13 +178,17 @@ lgroups_grace=Modifica Tempi di Dilazione
 lgroups_check=Esamina Quote
 lgroups_info=Webmin può essere configurato per fissare automaticamente le quote su questo filesystem quando è creato un nuovo gruppo Unix. Questo funziona solo quando viene utilizzato il modulo Webmin $1 per creare i gruppi.
 lgroups_newgroup=Nuove quote gruppi
+
 sgroup_egroup=Non sei abilitato a modificare le quote per questo gruppo
 sgroup_efs=Non sei abilitato a modificare le quote su questo filesystem
+
 ssync_ecannot=Non puoi stabilire la quota predefinita per questo filesystem
+
 suser_euser=Non sei abilitato a modificare le quote per questo utente
 suser_efs=Non sei abilitato a modificare le quote su questo filesystem
 suser_emaxblocks=Tu non sei abilitato a garantire limite per blocchi al di sopra di $1
 suser_emaxfiles=Non sei abilitato a garantire limiti per file al di sopra di $1
+
 ufilesys_title=Quote utente
 ufilesys_return=lista filesystem
 ufilesys_ecannot=Non puoi modificare le quote per '$1'
@@ -187,6 +205,7 @@ ufilesys_nouquota=L'utente <tt>$1</tt> non ha quote su nessun filesystem
 ufilesys_edit=Modifica quota su:
 ufilesys_copy=Copia Quote
 ufilesys_grace=Dilazione
+
 ugracef_title=Tempi di dilazione
 ugracef_return=lista utenti
 ugracef_ecannot=Non puoi modificare i tempi di dilazione su questo filesystem
@@ -195,9 +214,11 @@ ugracef_graces=Tempi di dilazione utente per <tt>$1</tt>
 ugracef_block=Per quota blocchi
 ugracef_file=Per quota file
 ugracef_update=Aggiorna
+
 ugraces_esave=Impossibile salvare i tempi di dilazione
 ugraces_eedit=Non puoi modificare i tempi di dilazione su questo filesystem
 ugraces_enumber='$1' non è un numero
+
 lusers_failed=Impossibile elencare gli utenti
 lusers_eallow=Non sei abilitato a modificare le quote su questo filesystem
 lusers_title=Quote Filesystem
@@ -235,12 +256,14 @@ lusers_ltype=Tipo di limite
 lusers_percent=Avvisa quando l'utilizzo raggiunge
 lusers_domain=Dominio per indirizzi utente
 lusers_from=Indirizzo From: per email
+
 grace_seconds=Secondi
 grace_minutes=Minuti
 grace_hours=Ore
 grace_days=Giorni
 grace_weeks=Settimane
 grace_months=Mesi
+
 log_activate_u=Quote utente attivate su $1
 log_activate_g=Quote gruppo attivate su $1
 log_activate_ug=Quote utente e gruppo attivate su $1
@@ -255,6 +278,7 @@ log_grace_g=Tempi di dilazione gruppo cambiati su $1
 log_check=Quote esaminate su $1
 log_copy_u=Quote dell'utente $1 copiate
 log_copy_g=Quote del gruppo $1 copiate
+
 email_err=Impossibile salvare le opzioni email
 email_ecannot=Non sei abilitato a modificare le opzioni email
 email_einterval=Intervallo mancante o non valido

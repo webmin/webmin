@@ -1,5 +1,6 @@
 index_euser=Le fichier de configuration RBAC $1 est introuvable sur votre système. Peut-être que RBAC n'est pas installé ou que la <a href='$2'>configuration du module</a> est incorrecte.
 index_return=index du module
+
 users_title=Attributs utilisateur
 users_user=Nom d'utilisateur
 users_profiles=Profils accordés
@@ -10,6 +11,7 @@ users_return=liste des attributs utilisateur
 users_type=Type
 users_role=Rôle
 users_project=Projet
+
 user_title1=Créer des attributs utilisateur
 user_title2=Modifier les attributs utilisateur
 user_header=Attributs accordés à l'utilisateur Unix
@@ -35,6 +37,7 @@ user_eauth='$1' n'est pas une autorisation valide
 user_ecannot=Vous n'êtes pas autorisé à modifier cet utilisateur
 user_erole=Vous n'êtes pas autorisé à attribuer le rôle «$1»
 user_eprof=Vous n'êtes pas autorisé à attribuer le profil '$1'
+
 auths_title=Autorisations
 auths_name=Nom de l'autorisation
 auths_desc=La description
@@ -42,8 +45,10 @@ auths_none=Aucune autorisation n'a encore été définie.
 auths_add=Ajoutez une nouvelle autorisation.
 auths_return=liste des autorisations
 auths_ecannot=Vous n'êtes pas autorisé à modifier les autorisations
+
 authc_name=Autorisation
 authc_desc=La description
+
 auth_title1=Créer une autorisation
 auth_title2=Modifier l'autorisation
 auth_header=Détails du privilège d'autorisation
@@ -57,6 +62,7 @@ auth_edesc=Description longue non valide
 auth_eclash=Une autorisation portant le même nom existe déjà
 auth_einuseu=Cette autorisation est en cours d'utilisation par l'utilisateur $1 et ne peut donc pas être supprimée
 auth_einusep=Cette autorisation est utilisée par le profil $1 et ne peut donc pas être supprimée
+
 profs_title=Profils
 profs_name=Nom de profil
 profs_desc=La description
@@ -65,6 +71,7 @@ profs_none=Aucun profil n'a encore été défini.
 profs_add=Ajoutez un nouveau profil.
 profs_return=liste des profils
 profs_ecannot=Vous n'êtes pas autorisé à modifier les profils
+
 prof_title1=Créer un profil
 prof_title2=Editer le profil
 prof_header=Détails du profil d'autorisation
@@ -81,6 +88,7 @@ prof_einuseu=Ce profil est utilisé par l'utilisateur $1 et ne peut donc pas êt
 prof_einusep=Ce profil est utilisé par le profil $1 et ne peut donc pas être supprimé
 prof_einusee=Ce profil a $1 profils d'exécution liés et ne peut donc pas être supprimé
 prof_none=Aucun profil disponible
+
 execs_title=Profils d'exécution
 execs_name=Profil
 execs_policy=Politique de sécurité
@@ -92,6 +100,7 @@ execs_none=Aucun profil d'exécution n'a encore été défini.
 execs_add=Ajoutez un nouveau profil d'exécution.
 execs_return=liste des profils d'exécution
 execs_ecannot=Vous n'êtes pas autorisé à modifier les profils d'exécution
+
 exec_title1=Créer un profil d'exécution
 exec_title2=Modifier le profil d'exécution
 exec_header=Détails du profil d'exécution
@@ -113,6 +122,7 @@ exec_erruid=Utilisateur manquant ou non valide pour s'exécuter en tant que
 exec_errgid=Groupe manquant ou non valide pour s'exécuter en tant que
 exec_erreuid=Utilisateur effectif manquant ou non valide pour s'exécuter en tant que
 exec_erregid=Groupe effectif manquant ou invalide pour s'exécuter en tant que
+
 policy_title=Stratégies système
 policy_header=Paramètres de stratégie système globale
 policy_auths=Autorisations pour tous les utilisateurs
@@ -126,16 +136,20 @@ policy_err=Échec de l'enregistrement des stratégies système
 policy_eallow=Aucun algorithme à autoriser sélectionné
 policy_eclash=L'algorithme pour autoriser et déconseiller ne peut pas être sélectionné en même temps
 policy_ecannot=Vous n'êtes pas autorisé à modifier les stratégies système
+
 attr_none=Aucun attribut utilisateur défini
 attr_nonenormal=Aucun utilisateur Unix défini
 attr_nonerole=Aucun rôle disponible défini
+
 help_epath=Chemin d'accès au fichier d'aide non valide!
 help_link=(Aidez-moi..)
+
 crypt___unix__=Crypte Unix
 crypt_1=BSD MD5
 crypt_2a=BSD Flowfish
 crypt_md5=Sun MD5
 crypt_rot13=ROT13
+
 log_create_user=Attributs utilisateur créés pour $1 
 log_modify_user=Attributs utilisateur modifiés pour $1 
 log_delete_user=Attributs utilisateur supprimés pour $1 
@@ -152,6 +166,7 @@ log_create_project=Projet créé $1
 log_modify_project=Projet modifié $1 
 log_delete_project=Projet supprimé $1 
 log_policy=Stratégies système modifiées
+
 acl_roles=Peut modifier des rôles?
 acl_users=Peut modifier les attributs utilisateur?
 acl_roleassign=Peut attribuer des rôles
@@ -166,6 +181,7 @@ acl_profs=Peut modifier des profils?
 acl_ro=Voir seulement
 acl_execs=Peut modifier les profils d'exécution?
 acl_projects=Peut éditer des projets?
+
 projects_title=Projets
 projects_name=Nom
 projects_id=Identifiant
@@ -184,6 +200,7 @@ projects_exceptusers=Tous les utilisateurs sauf $1
 projects_exceptgroups=Tous les groupes sauf $1 
 projects_onlyusers=Seulement 1
 projects_onlygroups=Seulement 1
+
 project_title1=Créer un projet
 project_title2=Modifier le projet
 project_header=Détails du projet et membres
@@ -219,6 +236,7 @@ project_egroupscannot=Aucun groupe à exclure sélectionné
 project_elimit=Limite manquante ou non valide dans la ligne $1 
 project_epool=Nom de pool de projets manquant ou non valide
 project_erss=Mémoire maximale manquante ou invalide
+
 prctl_title=Contrôles des ressources
 prctl_ok=Afficher les limites pour:
 prctl_mode0=Processus avec ID

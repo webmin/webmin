@@ -41,23 +41,28 @@ index_match1=contém
 index_match2=partidas
 index_dhcpd=ISC DHCPd
 index_delete=Excluir selecionado
+
 butt_vco=Exibir opções do cliente
 butt_leases=Listar arrendamentos
+
 esub_hosts=Hosts diretamente nesta sub-rede
 esub_groups=Grupos diretamente nesta sub-rede
 esub_pools=Pools de endereços para sub-rede
 esub_pool=Pool $1 
 esub_poolnone=Nenhum conjunto de endereços definido
+
 esub_pooladd=Adicione um pool de endereços.
 esub_none=Nenhum
 esub_retshar=rede compartilhada
 esub_desc=Descrição da sub-rede
 esub_fopeer=Ponto de Failover
+
 esh_hosts=Hospeda diretamente nesta rede compartilhada
 esh_groups=Grupos diretamente nesta rede compartilhada
 esh_subn=Sub-redes nesta rede compartilhada
 esh_pools=Pools de endereços para rede compartilhada
 esh_desc=Descrição de rede compartilhada
+
 ehost_nojavascr=Parece que seu navegador não suporta javascript. Agora você deve escolher a posição correta na lista abaixo.
 ehost_assign=Host atribuído a
 ehost_toplevel=Nível superior
@@ -72,10 +77,12 @@ ehost_retgroup=grupo
 ehost_retsubn=sub-rede
 ehost_retshar=rede compartilhada
 ehost_desc=Descrição do host
+
 egroup_assign=Grupo atribuído a
 egroup_retsubn=sub-rede
 egroup_retshar=rede compartilhada
 egroup_desc=Descrição do grupo
+
 listl_network=Na rede $1 / $2 
 listl_lfnotcont2=O arquivo de concessão DHCPd <tt>$1</tt> não contém nenhuma concessão ativa no momento.
 listl_all=Listar todas as concessões ativas e expiradas
@@ -91,19 +98,26 @@ listl_pc=Percentagem
 listl_err=Falha ao excluir concessões
 listl_enone=Nenhum selecionado
 listl_refresh=Atualizar lista
+
 restart_conftext=Linhas em torno de $1 em $2  :
+
 sgroup_invassign=grupo atribuído a uma seção incorreta
 sgroup_echanged=O conteúdo do arquivo de configuração foi alterado. Tente novamente.
+
 shost_invalidaddr='$1' contém um nome de host ou endereço IP inválido
 shost_invassign=host atribuído a uma seção incorreta
+
 sopt_edname='$1' não é um nome de opção válido
 sopt_ednum='$1' não é um número de opção válido
 sopt_edtype='$1' não é um tipo de opção válido
 sopt_ecval=Valor ausente para a opção personalizada '$1'
 sopt_ecip=O valor da opção personalizada '$1' deve ser um endereço IP
+
 sshared_nosubnet=A rede compartilhada '$1' não contém nenhuma sub-rede.
+
 ssub_nosubnet=A rede compartilhada '$1' não contém nenhuma sub-rede.
 ssub_invalidfopeer=não é um par de failover válido
+
 plib_invaliddom=$1 não é um nome de domínio válido
 plib_toffset=Deslocamento de tempo
 plib_serverid=Identificador do servidor DHCP
@@ -124,6 +138,7 @@ plib_eexpr=Esta seção da configuração do DHCP contém a diretiva de express�
 plib_auth_subnet=O servidor é autoritário para esta sub-rede?
 plib_auth_shared-network=O servidor é autoritário para esta rede compartilhada?
 plib_auth_global=O servidor é autoritário para todas as sub-redes?
+
 eopt_returnshsub=rede compartilhada
 eopt_returngroup=grupo anfitrião
 eopt_domsearch=Domínios DNS a serem pesquisados
@@ -140,6 +155,7 @@ eopt_slpa=IPs do agente de diretório SLP
 eopt_slpaips=Somente esses IPs?
 eopt_slps=Escopo de serviço SLP
 eopt_slpsonly=Somente este escopo?
+
 log_apply=Alterações aplicadas
 log_start=Servidor DHCP iniciado
 log_stop=Servidor DHCP parado
@@ -162,6 +178,7 @@ log_options_group=Opções modificadas para o grupo de $1 hosts
 log_delete_lease=Concessão excluída para $1 
 log_delete_subnets=$1 sub-redes e redes compartilhadas excluídas
 log_delete_hosts=$1 hosts e grupos de hosts excluídos
+
 keys_edit=Editar chave TSIG
 keys_create=Chaves TSIG criadas
 keys_title=Chaves DNS
@@ -172,12 +189,14 @@ keys_ecannot=Você não tem permissão para editar chaves DNS
 keys_err=Falha ao salvar as chaves DNS
 keys_ekey='$1' não é um ID de chave válido
 keys_esecret=Segredo codificado em base 64 ausente ou inválido para a chave $1 
+
 pool_edit=Editar pool de endereços
 pool_create=Pool de endereços criado
 pool_header=Opções de pool de endereços
 pool_allow=Clientes para permitir
 pool_deny=Clientes a negar
 pool_return=sub-rede
+
 cdel_header=Atenção
 cdel_shared1=rede compartilhada
 cdel_shared2=rede compartilhada
@@ -195,6 +214,7 @@ cdel_txt=Excluir $1 '$2' também excluirá seu conteúdo:
 cdel_confirm=Deseja realmente excluir este $1 ?
 cdel_eunknown=Erro desconhecido
 cdel_return=lista de host e rede
+
 eacl_aviol=Violação de controle de acesso
 eacl_np=Você não tem permissão para
 eacl_pdh=excluir host
@@ -220,6 +240,7 @@ eacl_pdl=excluir concessões
 eacl_psl=ver concessões
 eacl_pglob=editar opções globais
 eacl_papply=reinicie este serviço
+
 acl_apply=Pode aplicar alterações?
 acl_r_leases=Pode visualizar concessões?
 acl_w_leases=Pode remover concessões?
@@ -249,9 +270,11 @@ acl_err=Erro ao salvar a lista ACL
 acl_ernow=Se você deseja ativar o acesso de gravação em ACLs globais para algum tipo de objeto, também deve ativar o acesso de leitura para esse tipo de objeto.
 acl_normal=normal
 acl_paranoic=paranóico
+
 iface_title=Interface de Rede
 iface_desc=O servidor DHCP pode atribuir apenas endereços IP em redes conectadas a uma das interfaces selecionadas abaixo. A interface de rede para todas as sub-redes definidas deve ser incluída. Se nenhum estiver selecionado, o servidor DHCP tentará encontrar um automaticamente.
 iface_listen=Ouça nas interfaces
+
 lookup_ehost=Não existe host com o nome, endereço IP ou endereço MAC $1 
 lookup_ehostname=Nenhum nome de host, endereço IP ou endereço MAC digitado
 lookup_egroup=Não existe nenhum grupo com o nome ou nome de domínio $1 
@@ -260,6 +283,7 @@ lookup_esubnet=Não existe nenhuma sub-rede com o endereço ou endereço/máscar
 lookup_esubnetname=Nenhum endereço de sub-rede ou endereço/máscara de rede digitado
 lookup_eshared=Não existe uma rede compartilhada com o nome $1 
 lookup_esharedname=Nenhum nome de rede compartilhado digitado
+
 zone_key=Zonas DNS
 index_addzone=Adicione uma nova zona DNS.
 index_zone=Zona
@@ -275,16 +299,21 @@ zone_faildel=Falha ao excluir a zona
 zone_failsave=Falha ao salvar a zona
 zone_tsigkey=Chave TSIG
 zone_ecannot=Você não tem permissão para editar zonas DNS
+
 plib_clientupdates=Os clientes podem atualizar seus próprios registros?
+
 text_title=dhcpd.conf
 text_editor=Editor de texto
 text_return=menu principal
 text_undo=desfazer
 text_ecannot=Você não tem permissão para editar o arquivo de configuração
+
 index_buttetext=Editar manualmente a configuração
 index_text=Editar arquivo de configuração manualmente
+
 stop_err=Falha ao parar o servidor DHCP
 stop_ekill=Não está funcionando!
+
 sdelete_err=Falha ao excluir sub-redes e redes compartilhadas
 sdelete_enone=Nenhum selecionado
 sdelete_title=Excluir sub-redes e redes compartilhadas
@@ -292,6 +321,7 @@ sdelete_rusure1=Tem certeza de que deseja excluir as $1 sub-redes selecionadas e
 sdelete_rusure2=Tem certeza de que deseja excluir as sub-redes $1 selecionadas? Quaisquer outros objetos nas sub-redes também serão perdidos.
 sdelete_rusure3=Tem certeza de que deseja excluir as $2 redes compartilhadas selecionadas? Quaisquer sub-redes ou outros objetos nas redes também serão perdidos.
 sdelete_ok=Excluir agora
+
 hdelete_err=Falha ao excluir hosts e grupos
 hdelete_enone=Nenhum selecionado
 hdelete_title=Excluir hosts e grupos

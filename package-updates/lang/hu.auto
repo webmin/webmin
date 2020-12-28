@@ -11,10 +11,12 @@ index_reposdisable=Tárolók letiltása
 index_reposenable=Lerakatok engedélyezése
 index_reposdelete=Törölje a tárolókat
 index_repoheader=Új csomagtároló lehetőségek
+
 update_title2=Telepítse a csomagokat
 update_enone=Nincs kiválasztva csomag
 update_rebootdesc=Az egyik telepített csomag újraindítást igényel a teljes telepítéshez.
 update_reboot=Indítsa újra most
+
 log_enable_repos=Engedélyezve a $1 csomag tárolói
 log_disable_repos=Letiltva a (z) $1 csomag tárolói
 log_delete_repos=Törölték a (z) $1 csomag adattárakat
@@ -22,6 +24,7 @@ log_enable_repo=Engedélyezve a (z) $1 csomagleraktár
 log_disable_repo=$1 letiltott csomagtár
 log_delete_repo=Törölt csomagtár ($1)
 log_create_repo=Létrehozva csomagtár ($1)
+
 repos_err_disable=Az adattárak letiltása nem sikerült
 repos_err_enable=Az adattárak engedélyezése nem sikerült
 repos_err_delete=A tárolók törlése nem sikerült

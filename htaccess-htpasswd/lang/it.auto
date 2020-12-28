@@ -16,6 +16,7 @@ index_digest2=La crittografia digest è abilitata nella configurazione del modul
 index_cpan=<a href='$1'>Fai clic qui</a> per scaricarlo e installarlo ora.
 index_delete=Annulla protezione delle directory selezionate
 index_remove=Annulla protezione e rimozione dei file
+
 dir_title1=Aggiungi directory protetta
 dir_title2=Modifica directory protetta
 dir_header=Opzioni di directory protette
@@ -60,6 +61,7 @@ dir_delete3=Annulla protezione e rimozione file
 dir_apache=Modifica le opzioni di Apache
 dir_efiledir='$1' è una directory, quindi non può essere utilizzata come file degli utenti
 dir_egfiledir='$1' è una directory, quindi non può essere utilizzata come file di gruppi
+
 edit_title1=Creare un utente
 edit_title2=Modifica utente
 edit_header=Dettagli dell'utente per l'autenticazione Web
@@ -71,11 +73,13 @@ edit_pass0=Impostato
 edit_passfrom=Cambio da
 edit_passto=alla nuova password
 edit_dom=Regno digest
+
 gedit_title1=Creare un gruppo
 gedit_title2=Modifica gruppo
 gedit_header=Dettagli del gruppo di autenticazione Web
 gedit_group=Nome del gruppo
 gedit_members=Membri del gruppo
+
 save_err=Impossibile salvare l'utente
 save_euser1=Nome utente mancante
 save_euser2=Il nome utente non può contenere il carattere:
@@ -84,16 +88,19 @@ save_eclash=Un utente con lo stesso nome esiste già
 save_eoldpass=La vecchia password non è corretta
 save_title=Utente salvato
 save_edom=Reame digest mancante o non valido
+
 gsave_err=Impossibile salvare il gruppo
 gsave_egroup1=Nome del gruppo mancante
 gsave_egroup2=Il nome del gruppo non può contenere: carattere o spazi
 gsave_eclash=Un gruppo con lo stesso nome esiste già
+
 acl_dirs=Directory consentite
 acl_user=Crea file.htaccess e htusers come utente Unix
 acl_same=Come per l'accesso Webmin
 acl_home=Includere la home directory dell'utente Unix?
 acl_sync=È possibile configurare la sincronizzazione utente Unix?
 acl_uonly=È possibile aggiungere e modificare directory protette?
+
 log_create_dir=Directory aggiunta $1 
 log_modify_dir=Directory modificata $1 
 log_delete_dir=Directory eliminata $1 
@@ -104,6 +111,7 @@ log_create_group=Gruppo creato $1
 log_modify_group=Gruppo modificato $1 
 log_delete_group=Gruppo eliminato $1 
 log_delete_dirs=$1 directory eliminate
+
 search_title=risultati di ricerca
 search_err=Ricerca fallita
 search_edir=Directory assoluta mancante o non valida da cercare

@@ -7,6 +7,7 @@ index_cpu=CPU
 index_search=Procurar
 index_run=Executar..
 index_return=lista de processos
+
 pid=ID do processo
 owner=Propriatário
 command=Comando
@@ -15,6 +16,7 @@ size=Tamanho
 parent=Processo de origem
 runtime=Tempo de Execução
 nice=Nivel de prioridade (Nice)
+
 search_user=Propriedade de
 search_match=Igual a
 search_fs=Utilizando o sistema de ficheiros
@@ -23,6 +25,7 @@ search_submit=Procurar
 search_none=Não foram encontrados processos correspondentes.
 search_kill=Enviar Sinal
 search_return=formulário de procura
+
 run_command=Comando para executar
 run_submit=Executar
 run_mode=Modo de execução
@@ -32,15 +35,19 @@ run_input=Entrada de parâmetros para o comando
 run_title=Saída de Resultados do Comando
 run_output=Saída de resultados de $1 ..
 run_none=Não foi gerada nenhuma saída de resultados
+
 edit_title=Informação do Processo
 edit_gone=Este processo já não se encontra em execução
 edit_sub=Sub-processos
 edit_kill=Enviar Sinal
 edit_change=Alterar
+
 kill_err=Erro ao enviar o sinal $1 para o processo $2
 kill_title=Enviar Sinal
 kill_sent=enviado
+
 renice_err=Erro no renice do processo $1
+
 linux_pri=Prioridade
 linux_tty=TTY
 linux_status=Estado
@@ -50,20 +57,24 @@ linux_group=Grupo
 linux_ruser=Utilizador real
 linux_rgroup=Grupo real
 linux_pgid=ID do grupo do processo
+
 linuxstat_R=A correr
 linuxstat_S=A dormir
 linuxstat_D=Sono Profundo
 linuxstat_T=Parado
 linuxstat_Z=Zombie
+
 freebsd_ruser=Utilizador real
 freebsd_rgroup=Grupo real
 freebsd_tty=TTY
 freebsd_pgid=Grupo do process
 freebsd_lim=Limite de memória
+
 hpux_pri=Prioridade
 hpux_tty=TTY
 hpux_status=Estado
 hpux_wchan=À espera de
+
 hpuxstat_0=Inexistente
 hpuxstat_S=A Dormir
 hpuxstat_W=Em Espera
@@ -72,7 +83,9 @@ hpuxstat_I=Intermediário
 hpuxstat_Z=Zombie
 hpuxstat_T=Parado
 hpuxstat_G=Em desenvolvimento
+
 macos_tty=TTY
+
 sysv_group=Grupo
 sysv_ruser=Utilizador real
 sysv_rgroup=Grupo real

@@ -29,12 +29,14 @@ index_fd=파일 데몬 구성
 index_groups=Bacula 그룹 구성
 index_actions=백업 및 복원 작업
 index_ocmin=<a href=$2 target=_new>Linmin</a> </a>
+
 connect_emysql=데이터베이스 DBI 드라이버 $1 을 (를)로드하지 못했습니다.
 connect_elogin=$1 데이터베이스에 로그인하지 못했습니다 : $2.
 connect_equery=$1 데이터베이스에 Bacula 테이블이 포함되어 있지 않습니다.
 connect_equery2=설치된 SQLite Perl 모듈이 너무 새 버전이고 Bacula에서 사용하는 이전 SQLite 데이터베이스 형식을 지원하지 않기 때문일 수 있습니다.
 connect_equery3=$1 데이터베이스에 OC Bacula 그룹 테이블이 포함되어 있지 않습니다.
 esql=SQL 오류  : $1 
+
 check_edir=시스템에서 Bacula 구성 디렉토리 $1 을 (를) 찾을 수 없습니다.
 check_ebacula=Bacula 제어 명령 $1 을 (를) 찾을 수 없습니다.
 check_econsole=Bacula 콘솔 명령 $1 을 (를) 찾을 수 없습니다.
@@ -43,12 +45,14 @@ check_eclient=이 시스템은 감독이 아닌 <a href='$2'>Bacula 고객</a> �
 check_econfigs=$1 에 Bacula 구성 파일이 없습니다.
 check_eservers=Webmin 서버 그룹이 정의되지 않았습니다
 check_engmod=OpenCountry Bacula 그룹 모듈이 설치되지 않았습니다
+
 proc_bacula-sd=스토리지 데몬
 proc_bacula-fd=파일 데몬
 proc_bacula-dir=Bacula Director 데몬
 proc_bareos-sd=스토리지 데몬
 proc_bareos-fd=파일 데몬
 proc_bareos-dir=Bacula Director 데몬
+
 stop_err=Bacula를 멈추지 못했습니다
 start_err=Bacula를 시작하지 못했습니다
 start_einit=$1 에 대한 초기화 스크립트를 찾을 수 없습니다
@@ -57,6 +61,7 @@ restart_err=Bacula를 다시 시작하지 못했습니다
 apply_err=구성을 적용하지 못했습니다
 apply_failed=구성 오류가 감지되었습니다
 apply_problem=구성을 적용하지 못했습니다  : $1 
+
 jobs_title=백업 작업
 jobs_none=아직 백업 작업이 정의되지 않았습니다.
 jobs_name=직업 이름
@@ -69,6 +74,7 @@ jobs_add=새 백업 작업을 추가하십시오.
 jobs_delete=선택된 작업 삭제
 jobs_return=직업 목록
 jobs_derr=작업을 삭제하지 못했습니다.
+
 filesets_title=파일 세트
 filesets_none=아직 백업 파일 세트가 정의되지 않았습니다.
 filesets_name=파일 세트 이름
@@ -78,6 +84,7 @@ filesets_delete=선택된 파일 세트 삭제
 filesets_return=파일 세트 목록
 filesets_derr=파일 세트를 삭제하지 못했습니다.
 filesets_ednone=선택된 사항 없음
+
 fileset_title1=파일 세트 작성
 fileset_title2=파일 세트 편집
 fileset_header=백업 파일 세트 세부 사항
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;기본 압축 수준&gt;
 fileset_lzo=LZO 압축
 fileset_gzip=Gzip 수준 $1 
 fileset_onefs=하나의 파일 시스템으로 백업을 제한 하시겠습니까?
+
 clients_title=백업 클라이언트
 clients_none=아직 백업 클라이언트가 정의되지 않았습니다.
 clients_name=고객 이름
@@ -106,6 +114,7 @@ clients_add=새 백업 클라이언트를 추가하십시오.
 clients_delete=선택된 클라이언트 삭제
 clients_return=고객 목록
 clients_derr=클라이언트를 삭제하지 못했습니다.
+
 client_title1=백업 클라이언트 생성
 client_title2=백업 클라이언트 편집
 client_header=백업 할 클라이언트의 세부 사항
@@ -128,6 +137,7 @@ client_efileret=누락되거나 유효하지 않은 파일 보존 기간
 client_ejobret=직업 보유 기간이 없거나 유효하지 않음
 client_echild=이 클라이언트는 $1 에 의해 사용되므로 삭제할 수 없습니다
 client_status=상태 표시
+
 job_title1=백업 작업 생성
 job_title2=백업 작업 편집
 job_header=백업 작업 세부 사항
@@ -156,6 +166,7 @@ job_before=작업 전 명령
 job_after=퇴근 후 명령
 job_cbefore=작업 전 명령 (클라이언트에서)
 job_cafter=작업 후 명령 (클라이언트에서)
+
 schedules_title=백업 일정
 schedules_none=백업 일정이 아직 정의되지 않았습니다.
 schedules_name=스케줄 이름
@@ -164,6 +175,7 @@ schedules_add=새 백업 일정을 추가하십시오.
 schedules_delete=선택된 스케줄 삭제
 schedules_return=일정 목록
 schedules_derr=일정을 삭제하지 못했습니다.
+
 schedule_title1=백업 일정 생성
 schedule_title2=백업 일정 편집
 schedule_header=백업 스케줄 세부 사항
@@ -177,6 +189,7 @@ schedule_ename=일정 이름이 없거나 잘못되었습니다
 schedule_eclash=같은 이름의 스케줄이 이미 존재합니다
 schedule_etimes=$1 행에 백업 시간이 없습니다.
 schedule_echild=이 일정은 $1 에서 사용되므로 삭제할 수 없습니다.
+
 backup_title=백업 작업 실행
 backup_header=백업 작업 세부 사항
 backup_job=실행할 작업
@@ -191,11 +204,13 @@ backup_running=.. 백업 작업이 지금 실행 중입니다. 완료되면 아�
 backup_running2=.. 백업 작업이 백그라운드에서 시작되었습니다.
 backup_done=.. 백업이 완료되었습니다.
 backup_failed=.. 백업이 완료되지 않았습니다. 자세한 내용은 위의 오류 메시지를 확인하십시오.
+
 gbackup_title=Bacula Group 백업 작업 실행
 gbackup_run=$2 클라이언트에서 백업 작업 $1 을 (를) 시작합니다.
 gbackup_on=클라이언트 $1 에서 백업 작업 실행 중  :
 gbackup_header=Bacula 그룹 백업 작업 세부 사항
 gbackup_jd=$1 (그룹 $3 의 파일 세트 $2)
+
 dirstatus_title=이사 현황
 dirstatus_sched=예약 된 백업 작업
 dirstatus_name=직업 이름
@@ -216,12 +231,14 @@ dirstatus_status2=상태
 dirstatus_donenone=백업 작업이 실행되지 않았습니다.
 dirstatus_cancel=선택한 작업 취소
 dirstatus_refresh=새로 고침 목록
+
 clientstatus_title=고객 상태
 clientstatus_err=$1 에서 상태를 가져 오지 못했습니다  : $2 
 clientstatus_msg=$1 상태  : $2 
 clientstatus_show=고객 상태 표시 :
 clientstatus_ok=확인
 clientstatus_on=$1 ($2 에)
+
 storages_title=스토리지 데몬
 storages_none=스토리지 디먼이 아직 정의되지 않았습니다.
 storages_name=저장소 이름
@@ -232,6 +249,7 @@ storages_add=새 스토리지 데몬을 추가하십시오.
 storages_delete=선택된 스토리지 데몬 삭제
 storages_return=스토리지 데몬 목록
 storages_derr=스토리지 데몬을 삭제하지 못했습니다.
+
 storage_title1=스토리지 데몬 생성
 storage_title2=스토리지 데몬 편집
 storage_header=원격 스토리지 데몬의 세부 사항
@@ -255,6 +273,7 @@ storage_emedia=누락 된 미디어 유형 이름
 storage_emaxjobs=최대 동시 작업 누락
 storage_echild=이 클라이언트는 $1 에 의해 사용되므로 삭제할 수 없습니다
 storage_status=상태 표시
+
 devices_title=저장 장치
 devices_none=저장 장치가 아직 정의되지 않았습니다.
 devices_name=장치 이름
@@ -264,6 +283,7 @@ devices_add=새 저장 장치를 추가하십시오.
 devices_delete=선택된 저장 장치 삭제
 devices_return=저장 장치 목록
 devices_derr=저장 장치를 삭제하지 못했습니다
+
 device_title1=저장 장치 생성
 device_title2=저장 장치 편집
 device_header=파일 저장 장치의 세부 사항
@@ -282,11 +302,13 @@ device_eclash=같은 이름의 저장 장치가 이미 존재합니다
 device_emedia=누락 된 미디어 유형 이름
 device_edevice=아카이브 장치 또는 디렉토리가 없거나 유효하지 않습니다
 device_echild=이 클라이언트는 $1 에 의해 사용되므로 삭제할 수 없습니다
+
 storagestatus_title=스토리지 데몬 상태
 storagestatus_err=$1 에서 상태를 가져 오지 못했습니다  : $2 
 storagestatus_msg=$1 상태  : $2 
 storagestatus_show=스토리지 데몬 상태 표시 :
 storagestatus_ok=확인
+
 label_title=라벨 볼륨
 label_header=라벨링 할 볼륨의 세부 사항
 label_storage=레이블링 할 스토리지 데몬
@@ -302,6 +324,7 @@ label_done=.. 라벨링 성공.
 label_epool=.. 수영장을 찾을 수 없습니다!
 label_err=라벨 실패
 label_elabel=라벨이 입력되지 않았습니다
+
 pools_title=볼륨 풀
 pools_none=아직 볼륨 풀이 정의되지 않았습니다.
 pools_name=풀 이름
@@ -311,6 +334,7 @@ pools_add=새 볼륨 풀을 추가하십시오.
 pools_delete=선택된 볼륨 풀 삭제
 pools_return=볼륨 풀 목록
 pools_derr=볼륨 풀을 삭제하지 못했습니다.
+
 pool_title1=볼륨 풀 생성
 pool_title2=볼륨 풀 편집
 pool_header=백업 볼륨 풀의 세부 사항
@@ -332,6 +356,7 @@ pool_ereten=보관 기간이 없거나 유효하지 않음
 pool_status=볼륨 표시
 pool_autolabel=볼륨 접두사 자동 레이블링
 pool_maxvolsize=최대 볼륨 크기 (예 : 5 기가 바이트의 경우 5G)
+
 poolstatus_title=풀의 볼륨
 poolstatus_show=풀에 볼륨 표시 :
 poolstatus_ok=확인
@@ -345,9 +370,11 @@ poolstatus_status=백업 모드
 poolstatus_none=현재이 백업 풀에 볼륨이 없습니다.
 poolstatus_never=못
 poolstatus_delete=선택된 볼륨 삭제
+
 dvolumes_err=볼륨을 삭제하지 못했습니다
 dvolumes_enone=선택된 사항 없음
 dvolumes_ebacula=Bacula error  : $1 
+
 mount_title=마운트 또는 마운트 해제
 mount_header=스토리지 마운트 또는 마운트 해제 옵션
 mount_storage=저장 장치
@@ -365,8 +392,10 @@ unmount_failed=.. 마운트 해제에 실패했습니다! 이유는 위의 오�
 mount_return=마운트 형태
 mount_err=저장 장치를 마운트하지 못했습니다
 mount_eslot=슬롯 번호가 없거나 유효하지 않습니다
+
 cancel_err=작업을 취소하지 못했습니다
 cancel_enone=선택된 사항 없음
+
 gjobs_title=Bacula Group 백업 작업
 gjobs_none=Bacula 그룹 백업 작업이 아직 정의되지 않았습니다.
 gjobs_add=새로운 Bacula 그룹 백업 작업을 추가하십시오.
@@ -374,10 +403,12 @@ gjobs_delete=선택된 작업 삭제
 gjobs_return=Bacula 그룹 작업 목록
 gjobs_derr=Bacula 그룹 작업을 삭제하지 못했습니다.
 gjobs_client=백업 할 Bacula 그룹
+
 gjob_title1=Bacula 그룹 백업 작업 생성
 gjob_title2=Bacula 그룹 백업 작업 편집
 gjob_header=Bacula 그룹 백업 작업 세부 사항
 gjob_client=백업 할 Bacula 그룹
+
 groups_title=바큘라 그룹
 groups_none=Bacula에서 아직 백업 할 Bacula 그룹을 선택하지 않았습니다.
 groups_name=그룹 이름
@@ -391,6 +422,7 @@ groups_derr=그룹을 삭제하지 못했습니다.
 groups_noadd=백업 할 Bacula 그룹이 없습니다.
 groups_info=$1 ($2 회원)
 groups_already=모든 Bacula 그룹이 이미 추가되었습니다.
+
 group_title1=Bacula Group 만들기
 group_title2=Bacula 그룹 편집
 group_header=백업 할 Bacula 그룹의 세부 사항
@@ -401,11 +433,13 @@ group_port=Bacula FD 포트
 group_err=Bacula 그룹을 저장하지 못했습니다
 group_eclash=같은 이름의 그룹이 이미 존재합니다
 group_members=Bacula 그룹의 호스트
+
 sync_title=바큘라 그룹 동기화
 sync_header=자동 Bacula 그룹 클라이언트 동기화 옵션
 sync_sched=일정에 맞춰 동기화 하시겠습니까?
 sync_schedyes=예, 아래 선택된 시간에 ..
 sync_err=Bacula 그룹 동기화를 저장하지 못했습니다
+
 log_create_client=백업 클라이언트 $1 을 (를) 생성했습니다.
 log_modify_client=수정 된 백업 클라이언트 $1 
 log_delete_client=백업 클라이언트 $1 을 (를) 삭제했습니다.
@@ -464,6 +498,7 @@ log_director=글로벌 Bacula 디렉터 구성 저장
 log_file=저장된 Bacula 파일 데몬 구성
 log_storagec=저장된 Bacula 스토리지 데몬 구성
 log_fixpass=고정 Bacula 콘솔 프로그램 비밀번호
+
 director_title=디렉터 구성
 director_header=글로벌 Bacula 디렉터 옵션
 director_name=감독 명
@@ -477,6 +512,7 @@ director_ename=이사 이름이 없거나 잘못되었습니다
 director_eport=포트 번호가 없거나 유효하지 않습니다
 director_ejobs=동시 작업 수가 없거나 유효하지 않습니다
 director_edir=누락되었거나 존재하지 않는 작업 디렉토리
+
 tls_enable=TLS 암호화를 사용 하시겠습니까?
 tls_require=TLS 연결 만 수락 하시겠습니까?
 tls_verify=TLS 클라이언트를 확인 하시겠습니까?
@@ -488,6 +524,7 @@ tls_ecert=없거나 존재하지 않는 TLS 인증서 파일
 tls_ekey=없거나 존재하지 않는 TLS 키 파일
 tls_ecacert=존재하지 않거나 존재하지 않는 TLS CA 인증서 파일
 tls_ecerts=TLS를 사용하려면 인증서, 키 및 CA 파일을 지정해야합니다.
+
 file_title=파일 데몬 구성
 file_header=Bacula 파일 데몬 옵션
 file_name=파일 데몬 이름
@@ -500,6 +537,7 @@ file_ename=누락되었거나 잘못된 파일 데몬 이름
 file_eport=포트 번호가 없거나 유효하지 않습니다
 file_ejobs=동시 작업 수가 없거나 유효하지 않습니다
 file_edir=누락되었거나 존재하지 않는 작업 디렉토리
+
 fdirectors_title=파일 데몬 디렉터
 fdirectors_none=아직 정의 된 감독이 없습니다.
 fdirectors_name=감독 명
@@ -508,6 +546,7 @@ fdirectors_add=새로운 감독을 추가하십시오.
 fdirectors_delete=선택된 감독 삭제
 fdirectors_return=이사 목록
 fdirectors_derr=감독을 삭제하지 못했습니다.
+
 fdirector_title1=파일 데몬 디렉터 생성
 fdirector_title2=파일 데몬 디렉터 편집
 fdirector_header=리모트 디렉터 제어 세부 사항
@@ -519,6 +558,7 @@ fdirector_err=파일 데몬 디렉터를 저장하지 못했습니다
 fdirector_ename=감독 명 누락
 fdirector_eclash=같은 이름의 감독이 이미 존재합니다
 fdirector_epass=비밀번호가 누락되었습니다
+
 sdirectors_title=스토리지 데몬 디렉터
 sdirectors_none=아직 정의 된 감독이 없습니다.
 sdirectors_name=감독 명
@@ -527,6 +567,7 @@ sdirectors_add=새로운 감독을 추가하십시오.
 sdirectors_delete=선택된 감독 삭제
 sdirectors_return=이사 목록
 sdirectors_derr=감독을 삭제하지 못했습니다.
+
 sdirector_title1=스토리지 데몬 디렉터 생성
 sdirector_title2=스토리지 데몬 디렉터 편집
 sdirector_header=리모트 디렉터 제어 세부 사항
@@ -538,6 +579,7 @@ sdirector_err=스토리지 디먼 디렉터를 저장하지 못했습니다.
 sdirector_ename=감독 명 누락
 sdirector_eclash=같은 이름의 감독이 이미 존재합니다
 sdirector_epass=비밀번호가 누락되었습니다
+
 storagec_title=스토리지 데몬 구성
 storagec_header=Bacula 스토리지 데몬 옵션
 storagec_name=데몬 이름
@@ -550,6 +592,7 @@ storagec_ename=스토리지 데몬 이름이 없거나 유효하지 않습니다
 storagec_eport=포트 번호가 없거나 유효하지 않습니다
 storagec_ejobs=동시 작업 수가 없거나 유효하지 않습니다
 storagec_edir=누락되었거나 존재하지 않는 작업 디렉토리
+
 chooser_title=일정 선택
 chooser_monthsh=실행할 개월
 chooser_months=년의 달
@@ -574,11 +617,13 @@ chooser_emonthsrange=선택한 달은 연속적이어야합니다
 chooser_eweekdaysrange=선택된 평일은 연속적이어야합니다
 chooser_eweekdaynumsrange=선택된 평일 수는 연속적이어야합니다
 chooser_edaysrange=해당 월의 선택된 요일은 연속적이어야합니다.
+
 weekdaynum_1=먼저
 weekdaynum_2=둘째
 weekdaynum_3=제삼
 weekdaynum_4=네번째
 weekdaynum_5=다섯째
+
 restore_title=백업 복원
 restore_title2=Bacula 그룹으로 백업 복원
 restore_title3=Bacula Group 백업 복원

@@ -65,6 +65,7 @@ index_checkconfig=Provjerite je li chroot direktorij pravilno postavljen na stra
 index_eexpired=Upozorenje: Sljedeće su zone istekle DNSSEC potpise : $1
 index_eexpired_conf=Automatsko potpisivanje treba ponovo omogućiti na stranici $1.
 index_eexpired_mod=Koristite modul $1 da biste onemogućili DNSSEC za ove domene ili provjerili zašto potpisivanje ne uspijeva.
+
 master_title=Uredi glavnu zonu
 master_inview=$1 u pogledu $2 
 master_ecannot=Nije vam dopušteno uređivanje ove zone
@@ -146,6 +147,7 @@ master_defttl=Zadano vrijeme za snimanje uživo
 master_edefttl="$1" nije valjano zadano vrijeme za izradu zapisa
 master_esoagone=Nije pronađen SOA zapis!
 master_einclude=Dodatna datoteka predloška ne postoji
+
 delete_title=Izbriši zonu
 delete_mesg=Jeste li sigurni da želite izbrisati zonu $1? Svi zapisi i zonska datoteka bit će izbrisani.
 delete_mesg2=Jeste li sigurni da želite izbrisati korijensku zonu? Vaš DNS poslužitelj više neće moći pretraživati adrese na internetu.
@@ -157,6 +159,7 @@ delete_errslave=Glavna zona izbrisana je U redu, ali na robovima se desile sljed
 delete_ezone=Zona nije pronađena na slave serveru
 delete_vwarn=Ova zona povezana je s Virtualmin domenom $1 i stoga je ovdje ne biste trebali brisati!
 delete_vwarn2=Ova zona povezana je s Virtualmin domenom $1 i $2 drugima, i stoga ih ovdje ne treba brisati!
+
 mcreate_title=Stvorite glavnu zonu
 mcreate_ecannot=Ne možete stvoriti master zone
 mcreate_opts=Nove opcije glavne zone
@@ -171,6 +174,7 @@ mcreate_auto=Automatski
 mcreate_err=Nije uspjelo stvaranje glavne zone
 mcreate_ednssecsize=Proračun veličine ključa nije uspio : $1
 mcreate_ednssec=Stvaranje zapisa uspjelo je, ali DNSSEC nije uspio : $1
+
 slave_title=Uredi podređenu zonu
 stub_title=Uređivanje Stub Zone
 slave_ecannot=Nije vam dopušteno uređivanje ove zone
@@ -202,6 +206,7 @@ slave_applymsg2=Kliknite ovaj gumb da biste izvršili ponovni prijenos zone s gl
 slave_last=Posljednji prijenos : $1
 slave_never=Nikada
 slave_xfer=Prijenos testne zone
+
 screate_title1=Stvorite robovsku zonu
 screate_title2=Stvorite Stub Zone
 screate_ecannot1=Nije vam dopušteno stvaranje zona robova
@@ -214,6 +219,7 @@ screate_rev=Obrnuto (adrese u imenima)
 screate_dom=Naziv domene / mreža
 screate_err1=Nije uspjelo stvaranje podređene zone
 screate_err2=Nije uspjelo stvaranje zone uboda
+
 recs_ecannot=Nije vam dopušteno uređivanje zapisa u ovoj zoni
 recs_ecannottype=Nije vam dopušteno uređivanje zapisa ove vrste
 recs_title=$1 Zapisi
@@ -231,6 +237,7 @@ recs_drev=Želite li i izbrisati obrnuto?
 recs_none=Domena još uvijek nema zapise $1.
 recs_nosearch=Nijedna se evidencija ne podudara s vašom pretragom.
 recs_needsearch=Unesite pretraživanje da biste pronašli odgovarajuće zapise.
+
 edit_title=Uredite $1
 edit_header=U $1
 edit_edit=Uredi $1 Snimi
@@ -306,6 +313,7 @@ edit_edmarcpct=Postotak poruka mora biti cijeli broj između 0 i 100
 edit_edmarcrua=Nedostaje zbirna adresa za povratne informacije
 edit_edmarcruf=Nedostaje adresa forenzičkih podataka
 edit_ecaavalue2=Nedostaje ili neispravno ime domene
+
 text_title=Uređivanje datoteke zapisa
 text_title2=Pogledajte datoteku zapisa
 text_desc3=Ovaj obrazac omogućuje vam ručno uređivanje datoteke DNS zapisa $1. Webmin neće provjeriti sintaksu.
@@ -315,6 +323,7 @@ text_ecannot=Nije vam dopušteno uređivanje zapisa
 text_none=Međutim, datoteka je trenutno prazna, vjerojatno zato što zona još nije prenesena s glavnog poslužitelja.
 text_soa=Automatski povećajte serijski broj
 text_rawformat=Zona je u binarnom formatu i ne može se prikazati kao tekst.
+
 restart_err=Primjena promjena nije uspjela
 restart_ecannot=Nije vam dopušteno ponovno pokretanje BIND-a
 restart_epidfile=Ne mogu pronaći BIND PID u $1
@@ -323,10 +332,12 @@ restart_erunning2=Čini se da se BIND ne pokreće na podređenom poslužitelju $
 restart_endc=Naredba NDC nije uspjela : $1
 restart_ecmd=Naredba za ponovno pokretanje nije uspjela : $1
 restart_eversion=Slave poslužitelj $1 ne pokreće verziju Webmin $2 ili novije verzije.
+
 start_ecannot=Nije vam dopušteno pokrenuti BIND
 start_error=Nije uspjelo pokretanje BIND : $1
 stop_epid=BIND se ne pokreće
 stop_ecannot=Ne smijete zaustaviti BIND
+
 fwd_title=Uređivanje zone naprijed
 fwd_ecannot=Nije vam dopušteno uređivanje ove zone
 fwd_opts=Opcije zona
@@ -335,12 +346,14 @@ fwd_forward=Isprobati druge poslužitelje?
 fwd_check=Provjerite imena?
 fwd_err=Spremanje opcija nije uspjelo
 fwd_delmsg=Kliknite ovaj gumb da biste izbrisali ovu zonu s vašeg DNS poslužitelja. Zapisi u njemu će se pregledavati pomoću normalnog postupka razlučivanja.
+
 delegation_title=Uredi zonu delegiranja
 delegation_ecannot=Nije vam dopušteno uređivanje ove zone
 delegation_opts=Opcije zona
 delegation_err=Spremanje opcija nije uspjelo
 delegation_noopts=Zone delegiranja nemaju mogućnosti konfiguriranja.
 delegation_delmsg=Kliknite ovaj gumb da biste izbrisali ovu zonu s vašeg DNS poslužitelja. BIND će prepoznati vrste zapisa u njemu osim NS-a.
+
 fcreate_title=Stvorite unaprijed zonu
 fcreate_ecannot=Nije vam dopušteno stvaranje zona prema naprijed
 fcreate_opts=Nove opcije zone naprijed
@@ -350,10 +363,12 @@ fcreate_rev=Obrnuto (adrese u imenima)
 fcreate_dom=Naziv domene / mreža
 fcreate_masters=Glavni poslužitelji
 fcreate_err=Nije uspjelo stvaranje napredne zone
+
 dcreate_title=Stvorite zonu samo za delegaciju
 dcreate_ecannot=Nije vam dopušteno stvaranje zona delegiranja
 dcreate_opts=Nove mogućnosti delegiranja zona
 dcreate_err=Nije uspjelo stvaranje zone delegiranja
+
 create_enet='$1' nije važeća mreža
 create_edom='$1' nije valjano ime domene
 create_edom2='$1' mora biti domena, a ne mreža
@@ -363,9 +378,11 @@ create_efile3=Nije uspjelo stvaranje '$1' : $2
 create_efile4=Datoteka $1 već postoji
 create_emaster="$1" nije važeća adresa glavnog poslužitelja
 create_enone=Morate unijeti barem jedan glavni poslužitelj
+
 boot_err=Preuzimanje nije uspjelo
 boot_egzip=Datoteka korijenske zone je komprimirana, ali naredba <tt>gzip</tt> nije instalirana na vašem sustavu!
 boot_egzip2=Nekompresija datoteke korijenske zone nije uspjela : $1
+
 type_A=Adresa
 type_AAAA=IPv6 adresa
 type_NS=Poslužitelj imena
@@ -386,6 +403,7 @@ type_SRV=Adresa usluge
 type_ALL=Sve vrste zapisa
 type_KEY=Javni ključ
 type_CAA=Tijelo za certifikate
+
 edit_A=Adresa
 edit_AAAA=IPv6 adresa
 edit_NS=Poslužitelj imena
@@ -405,6 +423,7 @@ edit_NSEC3PARAM=DNSSEC parametri
 edit_TLSA=SSL potvrda
 edit_SSHFP=SSH javni ključ
 edit_CAA=Tijelo za certifikate
+
 recs_defttl=Zadani TTL
 recs_A=Adresa
 recs_AAAA=IPv6 adresa
@@ -427,6 +446,7 @@ recs_TLSA=SSL potvrda
 recs_SSHFP=SSH javni ključ
 recs_CAA=Tijelo za certifikate
 recs_delete=Obriši odabrano
+
 value_A1=Adresa
 value_AAAA1=IPv6 adresa
 value_NS1=Poslužitelj imena
@@ -503,6 +523,7 @@ value_CAA3=Naziv domene CA
 value_caa_issue=Cert jednog domena
 value_caa_issuewild=Wildcard cert
 value_caa_iodef=URL za kršenje pravila
+
 tlsa_usage0=Tijelo za ovjeru
 tlsa_usage1=Krajnji entitet
 tlsa_usage2=Pouzdajte se sidro
@@ -512,12 +533,14 @@ tlsa_selector1=Informacije o javnom ključu
 tlsa_match0=Nezaštićen sadržaj
 tlsa_match1=SHA-256 hashe
 tlsa_match2=SHA-512 hashe
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 warn=Upozoriti
 fail=Iznevjeriti
 ignore=Zanemariti
@@ -531,6 +554,7 @@ listed=Popis ..
 eip='$1' nije valjana IP adresa
 eport='$1' nije važeći broj priključka
 eipacl='$1' nije valjana IP adresa ili ACL ime
+
 acl_zones=Domene koje ovaj korisnik može uređivati
 acl_zall=Sve zone
 acl_zsel=Odabrane zone ..
@@ -575,6 +599,7 @@ acl_ztypes_master=Ovladati; majstorski
 acl_ztypes_slave=Slave / dopuniti
 acl_ztypes_delegation=delegacija
 acl_ztypes_forward=Naprijed
+
 servers_title=Ostali DNS poslužitelji
 servers_ip=IP adresa
 servers_bogus=Zanemariti lažni poslužitelj?
@@ -586,6 +611,7 @@ servers_keys=Upotrijebite DNS tipke
 servers_err=Spremanje ostalih DNS poslužitelja nije uspjelo
 servers_eip='$1' nije valjana IP adresa
 servers_etrans="$1" nije važeći broj maksimalnih transfera
+
 logging_title=Zapisivanje i pogreške
 logging_ecannot=Ne možete konfigurirati zapisnik
 logging_header=Opcije globalne zapisivanja i pogreške
@@ -624,6 +650,7 @@ logging_efile=Nedostaje naziv datoteke dnevnika
 logging_efile2=Naziv datoteke dnevnika mora biti apsolutni put
 logging_ever='$1' nije važeći broj inačica
 logging_esize='$1' nije važeća veličina dnevnika
+
 acls_title=Liste za kontrolu pristupa
 acls_ecannot=Nije vam dopušteno uređivanje globalnih acls
 acls_name=ACL Naziv
@@ -631,6 +658,7 @@ acls_values=Odgovarajuće adrese, mreže i ACL-ovi
 acls_err=Spremanje popisa za kontrolu pristupa nije uspjelo
 acls_ename='$1' nije valjano ACL ime
 acls_eline=Svaka IP adresa mora biti upisana u zasebnom retku za ACL '$1'
+
 files_title=Datoteke i mape
 files_ecannot=Nije vam dopušteno konfigurirati datoteke
 files_header=Opcije datoteka i direktorija
@@ -640,6 +668,7 @@ files_pid=Datoteka ID-a obrade
 files_xfer=Program prijenosa zone do zone
 files_err=Spremanje datoteka i opcija u direktoriju nije uspjelo
 files_efile=Nedostaje ili nevažeće ime datoteke
+
 forwarding_title=Prosljeđivanje i transferi
 forwarding_ecannot=Nije vam dopušteno uređivanje opcija za prosljeđivanje i prijenos
 forwarding_header=Opcije prosljeđivanja i prijenosa zona
@@ -658,6 +687,7 @@ forwarding_etrans=Nedostaju ili nevažeći maksimalni istodobni transferi
 forwarding_minutes=minuta
 forwarding_ip=IP adresa
 forwarding_port=Luka
+
 net_title=Adrese i topologija
 net_ecannot=Nije vam dopušteno uređivanje adresa i opcija topologije
 net_header=Opcije adrese i topologije
@@ -683,6 +713,7 @@ net_taddrdef=Najbliži IP
 net_etport=Prilaz izvora prijenosa ne može se odrediti bez adrese
 net_eaddr='$1' nije valjana IPv4 adresa
 net_eaddr6='$1' nije valjana IPv6 adresa
+
 controls_title=Opcije upravljačkog sučelja
 controls_ecannot=Nije vam dopušteno uređivanje kontrolnih opcija
 controls_header=Opcije upravljanja
@@ -704,6 +735,7 @@ controls_eunixpath=Nedostaje ili nije važeći FIFO put datoteke
 controls_eunixperm=Nedostaju ili nevažeća dozvola oktalne datoteke
 controls_eunixowner=Nedostaje ili je nevažeći vlasnik datoteke
 controls_eunixgroup=Nedostaje ili nije važeća skupina datoteka
+
 controls_inet=Pristup internetu
 controls_unix=Unix FIFO pristup
 controls_port=luka
@@ -717,6 +749,7 @@ controls_efile=Nedostaje ili nije valjano FIFO naziv datoteke
 controls_eperms=Nedostaju ili nevažeća FIFO dopuštenja
 controls_eowner=Nedostaje ili nije važeći UID vlasnika FIFO
 controls_egroup=Nedostaje ili nije valjan GID vlasnika FIFO
+
 keys_title=DNS ključevi
 keys_id=ID ključa
 keys_alg=Algoritam
@@ -725,6 +758,7 @@ keys_ecannot=Nije vam dopušteno uređivanje DNS ključeva
 keys_err=Spremanje DNS ključeva nije uspjelo
 keys_ekey='$1' nije važeći ID ključa
 keys_esecret=Nedostaje ili nevažeća tajna kodirana na bazi 64, za ključ $1
+
 misc_title=Ostale mogućnosti
 misc_ecannot=Nije vam dopušteno uređivanje raznih opcija
 misc_header=Razne globalne mogućnosti
@@ -744,6 +778,7 @@ misc_esize='$1' nije važeća veličina
 misc_efiles="$1" nije važeći broj maksimalno otvorenih datoteka
 misc_emins="$1" nije važeći broj minuta
 misc_mins=min
+
 zonedef_title=Zone zadane vrijednosti
 zonedef_msg=Zadane postavke za nove glavne zone
 zonedef_err=Spremanje zadanih postavki nije uspjelo
@@ -767,10 +802,13 @@ zonedef_size=Početna veličina ključa
 zonedef_single=Broj tipki za stvaranje
 zonedef_two=Ključ zone i tipka za potpis
 zonedef_one=Samo ključ zone
+
 find_title=Pronađite zone
 find_match=Podudaraju zone $1.
 find_none=Nije pronađena nijedna zona.
+
 efirst=Loša prva direktiva u retku $1 u $2
+
 findfree_title=Pronađite besplatne IP adrese
 findfree_desc=Pronađite besplatne IP adrese
 findfree_nofind=Ne možete tražiti besplatne IP adrese
@@ -782,8 +820,10 @@ findfree_cf=Smatrate li <em>freeXXX</em> imena hosta kao besplatne IP adrese?
 findfree_search=traži
 findfree_msg=Pronađena je $1 besplatna IP adresa
 findfree_msg2=(od kojih je $1 poput <i>freeXXX</i>, $2 kao <i>freemac</i>)
+
 free_title=Besplatne IP adrese
 free_ip=IP adresa
+
 log_servers=Promijenjeni su drugi DNS poslužitelji
 log_logging=Izmijenjena prijava i pogreške
 log_acls=Izmijenjeni su popisi za kontrolu pristupa
@@ -840,14 +880,17 @@ log_sign=Ažurirano DNSSEC potpise za zonu $1
 log_resign=Ponovno potpisan DNSSEC ključ za zonu $1
 log_trusted=Izmijenjena potvrda DNSSEC-a
 log_dnssec=Promijenite DNSSEC ključ ponovno potpisivanje
+
 convert_err=Nije uspjelo pretvoriti zonu
 convert_efile=Datoteka zapisa mora biti specificirana prije nego što se podređena zona može pretvoriti u master.
 convert_efilesize=Datoteka zapisa $1 ne postoji ili je prazna
 convert_ebinary=Naredba potrebna za pretvorbu iz binarnog podređenog područja u master tekst teksta nije instalirana
 convert_ecompile=Konverzija formata binarnog u tekst nije uspjela : $1
+
 whois_title=Informacije WHOIS-a
 whois_header=Izlaz iz naredbe $1.
 whois_ecannot=Nije vam dopušteno traženje WHOIS podataka
+
 view_title=Uređivanje pogleda klijenta
 view_opts=Pojedinosti o klijentu
 view_opts2=Opcije za prikazane zone
@@ -858,6 +901,7 @@ view_recursion=Izvode li cjelovite rekurzivne pretrage za klijente?
 view_ecannot=Nije vam dopušteno uređivanje ovog pogleda
 view_delete=Izbriši prikaz
 view_deletemsg=Kliknite ovaj gumb za brisanje prikaza. Imat ćete izbor pokretnih zona koje sadrži u drugi prikaz ili ćete ih izbrisati.
+
 vcreate_title=Stvaranje prikaza klijenta
 vcreate_match_all=Svi klijenti
 vcreate_match_sel=Navedene adrese, mreže i ACL-ovi ..
@@ -866,6 +910,7 @@ vcreate_ename=Nedostaje ili nevažeće ime vlasničkog pregleda
 vcreate_etaken=Ime pogleda već je zauzeto
 vcreate_eclass=Nedostaje ili nevažeće ime klase
 vcreate_ecannot=Nije vam dopušteno stvaranje pogleda
+
 hint_title=Uređivanje korijenske zone
 hint_desc=Korijensku zonu vaš DNS poslužitelj koristi za kontaktiranje korijenskih poslužitelja na internetu kako bi mogao razriješiti imena u domenama kojima vaš DNS poslužitelj ne upravlja, poput <tt>.com</tt> ili <tt>.net. au</tt>. Ako vaš DNS poslužitelj nije za upotrebu u internoj mreži ili prosljeđujete sve upite na drugi poslužitelj, ne biste trebali izbrisati ovu korijensku zonu.
 hint_move=Premjesti za pregled:
@@ -874,6 +919,7 @@ hint_refetch=Ponovno preuzmite Root Nameservers
 hint_refetchdesc=Kliknite ovaj gumb kako bi Webmin ponovno preuzeo datoteku korijenske zone iz izvora na Internic FTP poslužitelju.
 hint_delete=Izbriši korijensku zonu
 hint_deletedesc=Kliknite ovaj gumb da biste uklonili ovu korijensku zonu. Bez njega, vaš server imena neće moći riješiti domene na Internetu osim onih za koje je sekundarni.
+
 hcreate_title=Stvorite korijensku zonu
 hcreate_desc=Korijensku zonu vaš DNS poslužitelj koristi za kontaktiranje korijenskih poslužitelja na internetu kako bi mogao razriješiti imena u domenama kojima vaš DNS poslužitelj ne upravlja, poput <tt>.com</tt> ili <tt>.net. au</tt>. Ako koristite više prikaza, možda će vam trebati zasebna korijenska zona za svaki prikaz da bi svi klijenti mogli ispravno riješiti internetske domene.
 hcreate_header=Pojedinosti o korijenskoj zoni
@@ -887,6 +933,7 @@ hcreate_efile='$1' nije dopuštena korijenska datoteka
 hcreate_efile2=Nedostaje ili nije važeća korijenska datoteka
 mcreate_erecs=Nevažeća postojeća datoteka korijenske zone
 hcreate_err=Nije uspjelo stvaranje korijenske zone
+
 vdelete_title=Izbriši prikaz
 vdelete_mesg=Jeste li sigurni da želite izbrisati prikaz klijenta $1? Sve zone u ovom prikazu bit će ili izbrisane (zajedno s njihovim zonskim datotekama) ili premještene u drugi prikaz, ovisno o odabiru u nastavku.
 vdelete_mesg2=Jeste li sigurni da želite izbrisati prikaz klijenta $1?
@@ -894,6 +941,7 @@ vdelete_newview=Zone unutar ovog prikaza
 vdelete_root=Maknite se od pogleda
 vdelete_delete=Izbriši u potpunosti
 vdelete_move=Pomicanje za pregled
+
 gen_title=Generatori zapisa
 gen_desc=Ova stranica omogućuje vam definiranje generatora, od kojih će svaki stvoriti više zapisa u ovoj zoni pomoću brojača povećavanja. Ovo može biti korisno za delegiranje dijelova obrnute zone na drugi poslužitelj.
 gen_range=opseg
@@ -913,7 +961,9 @@ gen_evalue=Nedostaje ili nije važeći uzorak imena računala za generator $1
 gen_title2=Generirani zapisi
 gen_raw=Konfigurirajte liniju datoteka
 gen_ecannot=Nije vam dopušteno uređivanje generatora zapisa
+
 refetch_err=Ponovno preuzimanje korijenske zone nije uspjelo
+
 slaves_title=Poslužitelji klase klastera
 slaves_none=Još nije dodan poslužitelj u grupi DNS.
 slaves_host=Ime računala
@@ -941,6 +991,7 @@ slaves_sec=Stvaranje sekundarnog u robovu pri lokalnom stvaranju?
 slaves_name=Naziv za NS zapis
 slaves_same=Isto kao i ime računala
 slaves_header=Opcije poslužitelja klaster slave
+
 add_title=Dodajte poslužitelje
 add_msg=Dodavanje $1 ..
 add_gmsg=Dodavanje poslužitelja u grupi $1.
@@ -958,6 +1009,7 @@ add_createok=Postavite $1 s $2 novim podređenim zonama.
 add_ename=Nedostaje ili neispravno ime zapisa NS
 add_egname=Naziv zapisa NS-a ne može se odrediti prilikom dodavanja grupe
 add_emyip=IP adresa ovog sustava nije uspjela. Trebali biste postaviti <b>zadani IP glavnog poslužitelja za udaljene podređene zone</b> na stranici Konfiguriranje modula.
+
 mass_title=Stvorite zone iz zbirne datoteke
 mass_desc=Ova vam stranica omogućuje da stvorite više zona odjednom iz prenesene tekstualne datoteke na strani poslužitelja. Svaki redak u datoteci mora imati sljedeći format: <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p> <i>Vrsta</i> mora biti <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> ili <tt>forward</tt>. Naziv <i>datoteke</i> nije obavezan, a automatski će se izračunati ako nedostaje. Glavni <i>IP-ovi</i> moraju se dati samo za podređene zone.
 mass_local=Lokalna skupna datoteka
@@ -989,6 +1041,7 @@ mass_emips=Nedostaje glavna IP adresa
 mass_addedslaves=Dodano $1 podređenim poslužiteljima U redu.
 mass_eonslave=Došlo je do pogreške stvorenih na podređenim poslužiteljima : $1
 mass_eviewcannot=Nije vam dopušteno dodavanje zona ovom prikazu
+
 massdelete_title=Izbriši zone
 massdelete_rusure=Jeste li sigurni da želite izbrisati odabranu zonu $1? ($2)
 massdelete_ok=Izbriši sada
@@ -998,6 +1051,7 @@ massdelete_slaves=Brisanje zone $1 s podređenih poslužitelja ..
 massdelete_failed=.. neki robovi nisu uspjeli :
 massdelete_vwarn=Neke zone su povezane s Virtualmin domenom $1, pa ih ovdje ne treba brisati!
 massdelete_vwarn2=Neke zone su povezane s Virtualmin domenom $1 i $2, i stoga ih ovdje ne treba brisati!
+
 rndc_title=Postavljanje RNDC
 rndc_desc=Ova se stranica može koristiti za postavljanje BIND-a za kontrolu pomoću RNDC programa, tako da se pojedine zone mogu osvježiti bez potrebe za ponovnim ponovnim pokretanjem BIND-a.
 rndc_desc2=Čini se da se RNDC već ispravno postavlja, tako da vjerojatno ne trebate koristiti ovaj obrazac.
@@ -1008,11 +1062,13 @@ rndc_ok=Da, postavi RNDC
 rndc_err=Nije uspjelo postavljanje RNDC-a
 rndc_ekey=Nije moguće pronaći ključ u rndc.conf
 rndc_esecret=Ne mogu pronaći tajnu u rndc.conf
+
 drecs_err=Brisanje zapisa nije uspjelo
 drecs_enone=Nijedna nije odabrana
 drecs_title=Izbriši zapise
 drecs_rusure=Jeste li sigurni da želite izbrisati $1 odabrane zapise iz $2?
 drecs_ok=Izbriši sada
+
 manual_title=Uredi datoteku za konfiguriranje
 manual_ecannot=Nije vam dopušteno uređivanje BIND konfiguracijske datoteke
 manual_ok=Uredi
@@ -1020,7 +1076,9 @@ manual_efile=Odabrana datoteka nije dio BIND konfiguracije
 manual_file=Uređivanje konfiguracijske datoteke:
 manual_edata=Ništa nije ušlo!
 manual_err=Konfiguriranje datoteke nije uspjelo
+
 syslog_desc=Poruke poslužitelja BIND
+
 umass_err=Ažuriranje zona nije uspjelo
 umass_enone=Nijedna nije odabrana
 umass_title=Ažurirajte zapise u zonama
@@ -1039,6 +1097,7 @@ umass_done=.. ažurirano $1 podudaranje zapisa iz $2.
 umass_none=.. nema pronađenih zapisa iz $1 za ažuriranje pronađeno.
 umass_egone=Zona ne postoji
 emass_emx='$1' nije broj prioriteta poslužitelja e-pošte koji slijedi važeće ime računala
+
 rdmass_err=Brisanje zapisa u zonama nije uspjelo
 rdmass_enone=Nijedna nije odabrana
 rdmass_title=Brisanje zapisa u zonama
@@ -1055,6 +1114,7 @@ rdmass_done=.. izbrisao $1 podudaranje zapisa iz $2.
 rdmass_none=.. nema pronađenih zapisa iz $1 za brisanje pronađenih.
 rdmass_ok=Izbriši zapise
 rdmass_sel=Zapisi nazvani
+
 rmass_err=Dodavanje zapisa nije uspjelo
 rmass_enone=Nijedna nije odabrana
 rmass_title=Dodaj zapis u zone
@@ -1074,18 +1134,22 @@ rmass_esign=.. gotov, ali potpisivanje nije uspjelo : $1
 rmass_eclash=.. zapis s istim imenom i vrijednošću $1 već postoji.
 rmass_eclash2=.. zapis s istim imenom i istom vrijednošću $1 već postoji.
 rmass_clash=Kreirajte čak i ako zapis već postoji?
+
 check_title=Provjerite zapise
 check_ecannot=Nije vam dopušteno provjeravati zapise
 check_errs=Sljedeće pogreške pronađene su u datoteci zapisa $1.
 check_allok=U datoteci zapisa $1 nisu pronađene pogreške.
+
 ncheck_title=Označite BIND Config
 ncheck_ecannot=Nije vam dopušteno provjeriti BIND konfiguraciju
 ncheck_errs=Sljedeće pogreške pronađene su u konfiguracijskoj datoteci BIND $1 ili u referenciranim zonama.
 ncheck_allok=Nisu pronađene pogreške u konfiguracijskoj datoteci BIND $1 ili referenciranim zonskim datotekama.
+
 links_restart=Primijeni konfiguraciju
 links_stop=Zaustavi BIND
 links_start=Pokrenite BIND
 links_apply=Primjena zone
+
 dnssec_title=DNSSEC ponovno prijavljivanje ključa
 dnssec_ecannot=Nije vam dopušteno konfigurirati DNSSEC
 dnssec_header=Ključne mogućnosti ponovnog potpisivanja
@@ -1096,6 +1160,7 @@ dnssec_secs=sekundi
 dnssec_desc=Zone potpisane s DNSSEC obično imaju dvije tipke - zonsku tipku koja se mora ponovno generirati i redovito potpisati te tipku za potpisivanje tipki koja ostaje konstantna. Ova stranica omogućuje vam da konfigurirate Webmin za automatsko izvršavanje ovog ponovnog potpisivanja.
 dnssec_err=Spremanje DNSSEC ključa nije uspjelo spremiti
 dnssec_eperiod=Nedostaje ili nevažeći broj dana između ponovnih znakova
+
 dnssectools_title=Automatizacija DNSSEC-alata
 dt_conf_title=Automatizacija DNSSEC-alata
 dt_enable_title=Automatizacija DNSSEC-alata
@@ -1160,6 +1225,7 @@ dt_status_inKSKroll=U KSK Rollu
 dt_status_inZSKroll=U ZSK Rollu
 dt_status_signed=Potpisan
 dt_status_unsigned=Nepotpisan
+
 zonekey_title=Postavljanje DNSSEC ključa
 zonekey_desc=Ova zona još nema ključ za potpis DNSSEC. Možete pomoću ovog obrasca stvoriti Webmin da ga stvori tako da klijenti koji rješavaju ovu zonu budu zaštićeni od napada DNS-a.
 zonekey_header=Nove opcije DNSSEC tipki
@@ -1193,9 +1259,12 @@ zonekey_sign=Zona prijava
 zonekey_signdesc=Odmah ponovno potpisite ovu zonu, tako da će se sve promjene zapisa ručno unijeti u zapise o potpisivanju.
 zonekey_resign=Ponovno prijavi zonu
 zonekey_resigndesc=Generirajte novi ključ za potpisivanje zona, potpišite ga glavnim ključem zone i ponovno potpisite sve zapise.
+
 sign_err=Zona za potpis nije uspjela
 sign_emsg=DNSSEC potpisivanje nakon neuspjele promjene zapisa : $1
+
 resign_err=Ponovno prijavljivanje zone nije uspjelo
+
 trusted_title=DNSSEC provjera
 trusted_ecannot=Nije vam dopušteno konfigurirati provjeru DNSSEC-a
 trusted_esupport=Vaša verzija BIND ne podržava DNSSEC provjeru
@@ -1230,6 +1299,7 @@ trusted_setup=Da bi DNSSEC bio koristan za provjeru većine potpisanih zona na I
 trusted_ok=Postavljanje DLV-a i Omogući provjeru DNSSEC-a
 trusted_warning=Upozorenje! Vaša konfiguracija BIND DNSSEC klijenta sadrži zastarjele ključeve koji će prestati raditi u listopadu 2017. Ili koristite <a href='$1'>stranicu BIND DNSSEC Verification</a> za podešavanje konfiguracije ili kliknite donji gumb.
 trusted_fix=Popravite DNSSEC konfiguraciju
+
 xfer_title=Prijenos testne zone
 xfer_doing=Testiranje prijenosa podređene zone iz $1.
 xfer_failed=.. od $1: nije uspjelo : $2

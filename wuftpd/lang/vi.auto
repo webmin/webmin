@@ -9,6 +9,7 @@ index_startmsg=Nhấp vào nút này để khởi động máy chủ FTP với c
 index_startmsg2=Nhấp vào nút này để khởi động máy chủ FTP với cấu hình hiện tại. Bạn cũng có thể định cấu hình máy chủ để được khởi động tự động khi cần sử dụng inetd hoặc một số chương trình tương đương.
 index_return=Tùy chọn máy chủ FTP
 index_version=Phiên bản WU-FTPd $1 
+
 class_title=Người dùng và lớp học
 class_header=Các lớp người dùng và tùy chọn người dùng
 class_class=Lớp người dùng
@@ -31,6 +32,7 @@ class_err=Không thể lưu các lớp người dùng
 class_eclass='$1' không phải là tên lớp hợp lệ
 class_etypes=Không có loại nào được chọn cho lớp '$1'
 class_eaddrs=Không có địa chỉ nào được nhập cho lớp '$1'
+
 message_title=Tin nhắn và biểu ngữ
 message_header=Tin nhắn, biểu ngữ và tập tin README
 message_message=Tập tin
@@ -59,6 +61,7 @@ message_eclass=Lớp '$1' không tồn tại
 message_ebanner='$1' không phải là tệp biểu ngữ đăng nhập hợp lệ
 message_ehostname=Tên máy chủ bị thiếu hoặc không hợp lệ
 message_eemail=Địa chỉ email bị thiếu hoặc không hợp lệ
+
 acl_title=Giới hạn và kiểm soát truy cập
 acl_header=Giới hạn và tùy chọn kiểm soát truy cập
 acl_deny=Từ chối truy cập từ
@@ -105,6 +108,7 @@ acl_elmsg='$1' không phải là tệp thông báo lỗi hợp lệ
 acl_efbcount='$1' không phải là số tệp hoặc byte hợp lệ
 acl_elimit='$1' không phải là giới hạn thời gian hợp lệ
 acl_efails='$1' không phải là số lần đăng nhập thất bại hợp lệ
+
 net_title=Mạng
 net_header=Tùy chọn kết nối mạng
 net_tcp=Kích thước cửa sổ TCP
@@ -122,6 +126,7 @@ net_eip='$1' không phải là địa chỉ IP hợp lệ
 net_enet='$1' không phải là địa chỉ mạng hợp lệ
 net_ecidr='$1' không phải là số bit mạng hợp lệ
 net_eport='$1' không phải là số cổng hợp lệ
+
 log_title=Ghi nhật ký
 log_header=Tùy chọn đăng nhập
 log_commands=Đăng nhập tất cả các lệnh cho
@@ -139,6 +144,7 @@ log_syslog=Nhật ký hệ thống
 log_xferlog=Tệp nhật ký XFER
 log_sysxfer=Cả hai điểm đến
 log_err=Không thể lưu tùy chọn đăng nhập
+
 alias_title=Bí danh và đường dẫn
 alias_header=Tùy chọn bí danh và đường dẫn
 alias_alias=Bí danh thư mục CD
@@ -149,6 +155,7 @@ alias_err=Không thể lưu bí danh và đường dẫn
 alias_efrom='$1' không phải là tên bí danh hợp lệ
 alias_eto='$1' không phải là thư mục bí danh hợp lệ
 alias_ecdpath='$1' không phải là thư mục tìm kiếm CD hợp lệ
+
 anon_title=FTP ẩn danh
 anon_eftp=Cảnh báo - hệ thống của bạn không có người dùng <tt>ftp</tt> và do đó FTP ẩn danh có thể không được định cấu hình.
 anon_header=Tùy chọn FTP ẩn danh
@@ -171,6 +178,7 @@ anon_uids=Dành cho người dùng Unix
 anon_err=Không thể lưu tùy chọn FTP ẩn danh
 anon_edir='$1' không phải là thư mục hợp lệ
 anon_egroup='$1' không phải là nhóm hợp lệ
+
 perm_title=Quyền
 perm_header=Tùy chọn cho phép
 perm_perms=Lệnh hạn chế
@@ -192,7 +200,9 @@ perm_err=Không thể lưu quyền
 perm_echar='$1' không phải là một ký tự hợp lệ biểu thức chính quy
 perm_etypes=Không có loại người dùng nào được chọn
 perm_emesg='$1' không phải là tệp thông báo lỗi hợp lệ
+
 host_title=Kiểm soát truy cập máy chủ
+
 misc_title=sự lựa chọn hỗn hợp
 misc_header=Sự lựa chọn hỗn hợp
 misc_lslong=Lệnh liệt kê dài
@@ -213,6 +223,7 @@ misc_elsplain=Thiếu lệnh liệt kê đơn giản
 misc_eshutdown=Thiếu tập tin thông báo tắt máy
 misc_enice='$1' không phải là mức tốt đẹp hợp lệ
 misc_eumask='$1' không phải là một ô hợp lệ
+
 log_class=Người dùng và lớp đã thay đổi
 log_message=Thay đổi tin nhắn và biểu ngữ
 log_acl=Thay đổi giới hạn và kiểm soát truy cập

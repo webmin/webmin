@@ -2,6 +2,7 @@ index_title=NIS-asiakas ja palvelin
 index_return=NIS-valikko
 index_enis=Laitteessasi ei näytä olevan NIS-asiakas- tai palvelintukea asennettuna.
 index_enis2=Vain tämän moduulin asiakaspalvelutoiminto on käyttökelpoinen.
+
 client_title=NIS-asiakas
 client_header=NIS-asiakasmääritykset
 client_domain=NIS-verkkotunnus
@@ -17,10 +18,12 @@ client_eserver='$1' ei ole kelvollinen palvelimen nimi
 client_eypwhich=epäonnistui sitoutua NIS-verkkotunnukseen
 client_ehosts='$1' ei ole isäntätiedostossa
 client_enis=Laitteessasi ei näytä olevan NIS-asiakastukea asennettuna.
+
 switch_title=Asiakaspalvelut
 switch_service=palvelu
 switch_srcs=Tietolähteet
 switch_return=asiakaspalvelut
+
 order_=&nbsp;
 order_nisplus=NIS +
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Hesiodos
 order_ldap=LDAP
 order_user=Käyttäjätulostimet
 order_xfn=XFN
+
 server_title=NIS-palvelin
 server_header=NIS-palvelimen asetukset
 server_boot=Ota NIS-palvelin käyttöön?
@@ -65,6 +69,7 @@ server_solaris=Huomaa - Solaris-sovelluksessa asiakkaan ja palvelimen NIS-verkko
 server_edir=Virheellinen lähdetiedostohakemisto
 server_epwdir=Virheellinen salasanan lähdetiedostohakemisto
 server_enis=Laitteessasi ei näytä olevan NIS-palvelintukea asennettuna.
+
 tables_title=NIS-taulukot
 tables_switch=Muokkaa NIS-taulukkoa :
 tables_header=$1 NIS-taulukko $2 : sta
@@ -81,6 +86,7 @@ tables_search=Hae
 tables_nomatch=Mikään tietue ei vastannut hakuasi
 tables_build=Rakenna NIS-taulukot uudelleen
 tables_buildmsg=Napsauta tätä painiketta, kun haluat rakentaa NIS-tietokannat uudelleen taulukkotiedoista. Jos olet tehnyt muutoksia, sinun on tehtävä se tehdäksesi ne NIS-asiakkaiden saataville.
+
 desc_aliases=Sendmail-aliakset
 desc_mail=Sendmail-aliakset
 desc_hosts=Isäntäosoitteet
@@ -116,6 +122,7 @@ desc_printers=Tulostimet
 desc_ipnodes=IP-solmut
 desc_timezone=Aikavyöhykkeet
 desc_locale=locales
+
 hosts_title=Isäntäosoite
 hosts_ip=IP-osoite
 hosts_name=hostname
@@ -124,6 +131,7 @@ hosts_err=Isännän tallentaminen epäonnistui
 hosts_eip=Puuttuva tai virheellinen IP-osoite
 hosts_ename=Puuttuva tai virheellinen isäntänimi
 hosts_aliases=aliakset
+
 group_name=Ryhmän nimi
 group_gid=Ryhmän tunnus
 group_members=Ryhmän jäsenet
@@ -134,6 +142,7 @@ group_none=Salasanaa ei vaadita
 group_encrypted=Esisalattu salasana
 group_clear=Normaali salasana
 group_err=Ryhmän tallentaminen epäonnistui
+
 passwd_name=Käyttäjätunnus
 passwd_uid=käyttäjätunnus
 passwd_real=Oikea nimi
@@ -171,6 +180,7 @@ passwd_emax=Virheellinen enimmäismäärä päiviä
 passwd_emin=Virheellinen vähimmäispäivien lukumäärä
 passwd_einactive=Virheellinen lukumäärä passiivisia päiviä
 passwd_eexpiry=Virheellinen viimeinen käyttöpäivämäärä
+
 services_name=Palvelun nimi
 services_proto=protokolla
 services_port=portti
@@ -179,6 +189,7 @@ services_header=Inetd-verkkopalvelun vaihtoehdot
 services_err=Palvelun tallentaminen epäonnistui
 services_ename=Puuttuva tai virheellinen palvelun nimi
 services_eport=Puuttuva tai virheellinen portti
+
 protocols_name=Protokollan nimi
 protocols_number=Määrä
 protocols_aliases=aliakset
@@ -187,6 +198,7 @@ protocols_header=Verkkoprotokollan asetukset
 protocols_err=Protokollan tallentaminen epäonnistui
 protocols_ename=Puuttuva tai virheellinen nimi
 protocols_enumber=Puuttuva tai virheellinen numero
+
 netgroup_name=Verkon ryhmän nimi
 netgroup_members=Jäsenet
 netgroup_title=Verkostoryhmä
@@ -201,6 +213,7 @@ netgroup_ename=Puuttuva tai virheellinen verkkoryhmän nimi
 netgroup_ehost=Puuttuva tai virheellinen isäntä rivillä $1 
 netgroup_euser=Puuttuva tai virheellinen käyttäjä rivillä $1 
 netgroup_edom=Puuttuva tai virheellinen NIS-verkkotunnus rivillä $1 
+
 ethers_mac=Ethernet-osoite
 ethers_ip=IP-osoite
 ethers_title=Ethernet-osoite
@@ -208,6 +221,7 @@ ethers_header=Ethernet-kartoitusvaihtoehdot
 ethers_err=Ethernet-osoitteen tallentaminen epäonnistui
 ethers_emac=Virheellinen ethernet-osoite
 ethers_eip=Virheellinen IP-osoite
+
 rpc_name=Ohjelman nimi
 rpc_number=Määrä
 rpc_aliases=aliakset
@@ -216,6 +230,7 @@ rpc_header=RPC-ohjelman yksityiskohdat
 rpc_err=RPC-ohjelman tallentaminen epäonnistui
 rpc_ename=Puuttuva tai virheellinen ohjelman nimi
 rpc_enumber=Puuttuva tai virheellinen numero
+
 networks_title=Verkko-osoite
 networks_ip=IP-osoite
 networks_name=Verkon nimi
@@ -224,6 +239,7 @@ networks_err=Verkon tallentaminen epäonnistui
 networks_eip=Puuttuva tai virheellinen IP-osoite
 networks_ename=Puuttuva tai virheellinen nimi
 networks_aliases=aliakset
+
 netmasks_net=Verkko-osoite
 netmasks_mask=verkkopeite
 netmasks_title=verkkopeite
@@ -231,6 +247,7 @@ netmasks_header=Verkon peite yksityiskohdat
 netmasks_err=Verkon peitteen tallentaminen epäonnistui
 netmasks_enet=Puuttuva tai virheellinen verkko-osoite
 netmasks_emask=Puuttuva tai virheellinen verkkomaski
+
 aliases_from=Osoite
 aliases_to=Alias
 aliases_title=Sendmail Alias
@@ -238,6 +255,7 @@ aliases_header=Sendmail-aliaksen tiedot
 aliases_err=Aliaksen tallentaminen epäonnistui
 aliases_efrom=Puuttuva tai virheellinen osoite
 aliases_eto=Puuttuu osoitteista
+
 security_title=Palvelimen suojaus
 security_header=NIS-palvelimen suojausasetukset
 security_ok=Tallenna ja käytä
@@ -266,6 +284,7 @@ security_sec_des=Vaadi DES
 security_ehost='$1' ei ole kelvollinen isäntänimi
 security_emap='$1' ei ole kelvollinen NIS-taulukko
 security_efield='$1' ei ole kelvollinen kentän numero
+
 eswitch_title=Muokkaa palvelua
 eswitch_egone=Palvelua ei ole!
 eswitch_header=Palvelun yksityiskohdat

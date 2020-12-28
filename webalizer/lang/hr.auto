@@ -13,8 +13,10 @@ index_eversion=Naredba Webalizer $1 na vašem sustavu je verzija $2, ali ovaj mo
 index_egetversion=Nije uspjelo nabaviti verziju Webalizer-a sa naredbom $1 : $2 
 index_enable=Raspored je odabran
 index_disable=Izabran je raspored zakazivanja
+
 edit_sched=Planirana izrada izvještaja
 edit_cmode1=Prilagođene opcije
+
 save_err=Spremanje datoteke dnevnika nije uspjelo
 save_efile=Datoteka dnevnika nije unesena ili ne postoji
 save_ecfile=Nedostaje ili ne postoji druga konfiguracijska datoteka
@@ -23,11 +25,13 @@ save_euser=Nedostaje ili nije važeći korisnik koji bi pokrenuo webalizer kao
 save_ewuser=Ne postoji Unixov korisnik zvan $1 
 save_ehost=Nedostaje ili nevažeće ime računala
 save_ecannot=Dopušteno vam je generiranje izvješća samo za zapise ispod $1 
+
 view_epath=Nevažeća PATH_INFO
 view_efile=Nevažeće ime datoteke izvješća
 view_elog=Nevažeća datoteka dnevnika
 view_ecannot=Nije vam dopušteno pregledati ovo izvješće
 view_eopen=Otvaranje datoteke izvještaja nije uspjelo
+
 global_title=Opcije za globalni webalizer
 global_title2=Opcije izvještaja webalizer-a
 global_first=Trenutno nisu postavljene mogućnosti za ovu datoteku dnevnika, što znači da će se umjesto nje koristiti globalne opcije. Kad se ovaj obrazac pohrani, izvješća generirana za ovaj zapisnik odsad će upotrebljavati postavke odabrane na ovoj stranici.
@@ -53,11 +57,13 @@ global_includesite=Klijenti ne zanemaruju
 global_includereferrer=Reference koje ne treba zanemariti
 global_includeuser=Korisnici koje ne smiju ignorirati
 global_includeagent=Preglednici koje ne treba zanemariti
+
 log_modify_log=Izmijenjeno izvještavanje za $1 
 log_generate_log=Generirano izvješće za $1 
 log_global=Izmijenjene globalne opcije Webalizer-a
 log_global2=Izmijenjene opcije Webalizer za $1 
 log_enable_logs=Planirano izvještavanje o $1 zapisnicima
 log_disable_logs=Odgođeno izvještavanje o $1 zapisnicima
+
 acl_global=Mogu li urediti globalne opcije webalizer-a?
 acl_dir=Dopustite samo pregledavanje i uređivanje izvješća za zapise pod

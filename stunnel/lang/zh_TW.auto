@@ -21,6 +21,7 @@ index_eversion=您的系統上安裝的STunnel的版本為 $1，但是此模塊�
 index_conf=從配置文件 $1
 index_noconf=沒有配置文件！
 index_delete=刪除選定的隧道
+
 edit_title=編輯SSL隧道
 create_title=創建SSL隧道
 edit_header1=隧道源選項
@@ -47,6 +48,7 @@ edit_tcpw=TCP封裝器名稱
 edit_auto=自動
 edit_iface=外發源地址
 edit_type=逃離
+
 save_err=無法保存SSL隧道
 save_enclash=服務名稱 $2已在端口 $1上使用。
 save_einetd=已經有一個名為 $1的inetd服務。
@@ -61,6 +63,7 @@ save_etcpw=缺少或無效的TCP-包裝器名稱
 save_eiface=缺少或無效的傳出源地址
 save_exinetd=已經有一個名為 $1的xinetd服務
 save_export=xinetd服務 $2已使用端口 $1
+
 log_apply=應用變更
 log_create=已創建SSL隧道 $1
 log_delete=已刪除SSL隧道 $1

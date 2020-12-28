@@ -10,6 +10,7 @@ index_hosts=Hos
 index_cmd=Arahan
 index_delete=Padam yang dipilih
 index_none=tiada
+
 edit_title1allow=Cipta Peraturan Membenarkan
 edit_title2allow=Sunting Peraturan Membenarkan
 edit_title1deny=Cipta Peraturan Menyekat
@@ -22,9 +23,11 @@ edit_hosts=Hos capaian jauh
 edit_hostsexcept=Kecuali hos
 edit_cmd=Arahan Shell
 edit_efound=Daemon '$1' tidak dijumpai pada konfigurasi xinted.
+
 save_errtitle=Ralat ketika menyimpan peraturan
 save_ehost=Hos yang dimasukkan mengandungi aksara yang tidak baik
 save_ecmd=Arahan yang dimasukkan mengandungi aksara yang tidak baik
 save_eservice=Nama Daemon mengandungi aksara yang tidak baik
+
 del_errtitle=Ralat pada peraturan padam
 del_enone=Ada peraturan ditandakan untuk dipadam

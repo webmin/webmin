@@ -57,20 +57,27 @@ index_rotate=Statistiken aktualisieren
 index_rotatedesc=Klicken Sie diesen Button um die bisherigen Daten des Netzwerktraffics sofort zu analysieren und diese Daten für weitere Reports zur Verfügung zu stellen.
 index_eiptables=Warnung - Ihre IPtables-Konfiguration hat einen Fehler : $1. Das Einrichten der Überwachung wird alle vorhandenen Regeln löschen!
 index_return=Report-Form
+
 log_setup=Richte Bandbreitenmessung für die Schnittstelle $1 ein
 log_turnoff=Bandbreitenmessung abgeschaltet
 log_rotate=Aktualisierte Statistiken
+
 acl_setup=Darf Monitoring einrichten und abschalten?
+
 turnoff_ecannot=Sie dürfen das Monitoring nicht deaktivieren
+
 setup_ecannot=Sie dürfen das Monitoring nicht aktivieren
 setup_eiface=Fehlender oder ungültiger Schnittstellenname
 setup_ezone=Fehler beim Auffinden der Shorewall-Zone für die ausgewählte Schnittstelle
+
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=Shorewall
+
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=Aktualisiere Statistiken
 rotate_doing=Bearbeite gespeicherten Netzwerktraffic ..
 rotate_done=.. erledigt.

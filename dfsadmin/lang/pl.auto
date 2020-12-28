@@ -8,6 +8,7 @@ index_none=W tym systemie nie są obecnie eksportowane żadne katalogi.
 index_apply=Zatwierdź zmiany
 index_applydesc=Kliknij ten przycisk, aby zastosować bieżącą konfigurację udostępniania plików. Dzięki temu wszystkie wyżej wymienione katalogi będą dostępne z określonymi opcjami.
 index_return=lista akcji
+
 edit_title1=Edytuj udział
 edit_title2=Utwórz udział
 edit_header1=Udostępnij szczegóły
@@ -30,6 +31,7 @@ edit_anon1=Brak dostępu
 edit_aclok=Zezwolić na listy ACL?
 edit_public=Udostępnianie WebNFS?
 edit_index=Plik indeksu WebNFS
+
 save_err=Nie udało się zapisać udziału
 save_edirectory=„$1” nie jest prawidłową nazwą katalogu
 save_edirectory2=Katalog „$1” nie istnieje
@@ -38,8 +40,12 @@ save_ero=Nie wymieniono żadnych hostów, z którymi można by udostępniać tyl
 save_eroot=Nie wymieniono żadnych hostów, z którymi można współdzielić root
 save_ealready=Katalog „$1” jest już udostępniany
 save_ehost=Host „$1” nie istnieje
+
 acl_view=Czy można edytować udziały NFS?
+
 ecannot=Nie możesz zarządzać udziałami NFS
+
 delete_err=Nie udało się usunąć udziałów
 delete_enone=Nie wybrano
+
 restart_err=Nie udało się zastosować zmian

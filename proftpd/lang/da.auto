@@ -27,7 +27,9 @@ index_global=Global konfiguration
 index_create=Opret virtuel server
 index_version=ProFTPd version $1 
 index_proftpd=proftpd
+
 efailed=Kunne ikke gemme $1 
+
 type_0=Netværksindstillinger
 type_1=Logningsindstillinger
 type_2=Filer og mapper
@@ -35,6 +37,7 @@ type_3=Adgangskontrol
 type_4=Diverse
 type_5=Bruger og gruppe
 type_6=Godkendelse
+
 virt_title=Valg af virtuel server
 virt_header1=For $1 
 virt_header2=Til standardserver
@@ -50,6 +53,7 @@ virt_cmds=FTP-kommandoer
 virt_return=virtuel server
 virt_virt=Konfigurer virtuel server
 virt_edit=Rediger direktiver
+
 vserv_title=Konfigurer virtuel server
 vserv_addr=Adresse
 vserv_name=Server navn
@@ -58,6 +62,7 @@ vserv_delete=Slet virtuel server
 vserv_eaddr=Manglende eller ugyldig adresse
 vserv_eport=Manglende eller ugyldigt portnummer
 vserv_ename=Manglende servernavn
+
 anon_title=Anonyme FTP-indstillinger
 anon_header1=I virtuel server $1 
 anon_header2=Som standard server
@@ -65,6 +70,7 @@ anon_anon=Konfigurer anonym FTP
 anon_return=anonyme FTP-indstillinger
 anon_header3=For anonym FTP i virtuel server $1 
 anon_header4=For anonym FTP i standardserveren
+
 aserv_title=Konfigurer anonym FTP
 aserv_create=Opsætning af anonym FTP
 aserv_root=Begræns til katalog
@@ -75,6 +81,7 @@ aserv_eroot=Manglende eller ugyldigt chroot-bibliotek
 aserv_euser=Manglende eller ugyldig Unix-bruger
 aserv_egroup=Manglende eller ugyldig Unix-gruppe
 aserv_desc=Anonym FTP er endnu ikke konfigureret til denne virtuelle server. Brug denne formular til at indstille de indledende konfigurationsindstillinger.
+
 dir_title=Valg pr. Telefonbog
 dir_header2=For bibliotek $1 i standardserveren
 dir_header1=For bibliotek $1 i virtuel server $2 
@@ -85,6 +92,7 @@ dir_header=Valgmuligheder pr. Kommando
 dir_dir=Konfigurer bibliotek
 dir_header4=For katalog $1 i anonym FTP
 dir_header5=For bibliotek $1 globalt
+
 manual_title=Rediger direktiver
 manual_header=Brug tekstfeltet nedenfor til manuelt at redigere ProFTPD-direktiverne i $1, der gælder for denne virtuelle server, bibliotek eller kommandoer.
 manual_configs=Rediger konfigurationsfiler
@@ -92,6 +100,7 @@ manual_ecannot=Du har ikke tilladelse til manuelt at redigere direktiver
 manual_file=Rediger direktiver i fil:
 manual_efile=Ugyldig ProFTPd-konfigurationsfil
 manual_etest=Konfigurationsfil fejl opdaget : $1 
+
 limit_title=Funktioner pr. Kommando
 limit_header4=For kommandoer $1 i bibliotek $2 
 limit_header2=For kommandoer $1 i standardserveren
@@ -103,17 +112,20 @@ limit_return=per-kommando indstillinger
 limit_header5=For kommandoer $1 i anonym FTP
 limit_header6=For kommandoer $1 i fil $2 
 limit_header7=For kommandoer $1 globalt
+
 lserv_title=Konfigurer kommandoer
 lserv_cmd=FTP-kommandoer
 lserv_delete=Slet kommandokonfigur
 lserv_err=Kunne ikke gemme kommandoer
 lserv_ecmd=Ingen kommandoer valgt
+
 dserv_title=Konfigurer bibliotek
 dserv_dir=Katalogsti
 dserv_err=Kunne ikke gemme kataloget
 dserv_edir=Manglende katalogsti
 dserv_delete=Slet mappekonfiguration
 dserv_eanondir=Directory skal være under det anonyme FTP-bibliotek
+
 mod_core_type=Servertype
 mod_core_inetd=Kør fra Inetd
 mod_core_stand=Fristående demon
@@ -301,6 +313,7 @@ mod_core_duser=Nægt brugere
 mod_core_eip='$1' er ikke en gyldig IP-adresse
 mod_core_enet='$1' er ikke en gyldig netværksadresse
 mod_core_ehost='$1' er ikke et gyldigt værtsnavn
+
 mod_ls_fakegroup=Falske grupper i biblioteksfortegnelser?
 mod_ls_fakeuser=Falske bruger i biblioteksfortegnelser?
 mod_ls_fakemode=Falske tilladelser i biblioteksfortegnelser
@@ -317,6 +330,7 @@ mod_ls_efakeuser=Manglende eller ugyldig falsk bruger
 mod_ls_efakegroup=Manglende eller ugyldig falsk gruppe
 mod_ls_options=Indstillinger for adresselister
 mod_ls_strict=Tilsidesætter brugerindstillinger?
+
 mod_auth_chdir=Første login-bibliotek
 mod_auth_echdir=Manglende eller ugyldig startkatalog
 mod_auth_chroot=Begræns brugere til mapper
@@ -330,7 +344,9 @@ mod_auth_egroups=Der er ikke indtastet Unix-grupper til chroot
 mod_auth_echroot=Manglende eller ugyldigt chroot-bibliotek
 mod_auth_login=Spørg ikke om adgangskode, hvis login nægtes?
 mod_auth_root=Tillad login via root?
+
 mod_site_chmod=Tillad chmod-kommando?
+
 mod_unixpw_ufile=Alternativ Unix-adgangskodefil
 mod_unixpw_eufile=Manglende eller ugyldig Unix-adgangskodefil
 mod_unixpw_gfile=Alternativ Unix-gruppefil
@@ -338,6 +354,7 @@ mod_unixpw_egfile=Manglende eller ugyldig Unix-gruppefil
 mod_unixpw_none=Ingen
 mod_unixpw_pam=Behandler du altid PAM som autoritativ?
 mod_unixpw_persist=Hold adgangskodefilen åben vedvarende?
+
 mod_log_syslog=Logfejl til fil
 mod_log_sysdef=Systemlog
 mod_log_esyslog=Manglende eller ugyldig logfil
@@ -354,19 +371,25 @@ mod_log_fmt=Formater streng
 mod_log_format=Tilpassede logformater
 mod_log_enickname=Manglende eller ugyldigt formatnavn
 mod_log_efmt=Manglende formatstreng
+
 mod_pam_pam=Brug PAM til godkendelse?
 mod_pam_config=Godkend ved hjælp af PAM-tjenesten
 mod_pam_econfig=Manglende eller ugyldig PAM-service
+
 mod_readme_display=Underret brugeren om readme-filer, der matcher
 mod_readme_none=Ingen
 mod_readme_edisplay=Manglende readme-filer mønster
+
 start_err=Kunne ikke starte FTP-server
 start_einetd=Du kan ikke starte serverdemonen, når du er i inetd-tilstand.
+
 stop_err=Kunne ikke stoppe FTP-server
 stop_einetd=Du kan ikke stoppe serverdemonen, når du er i inetd-tilstand.
 stop_erun=Kører ikke
+
 apply_err=Kunne ikke anvende FTP-konfiguration
 apply_egone=Kører ikke længere
+
 ftpaccess_title=Valgfiler per telefonbog
 ftpaccess_desc=Yderligere indstillinger per katalog kan specificeres i en fil (normalt kaldet <tt>.ftpaccess</tt>) i hvert bibliotek. Valgmulighederne gælder for alle filer i det bibliotek og eventuelle undermapper, medmindre de tilsidesættes af en anden indstillingsfil.
 ftpaccess_create=Opret indstillingsfil
@@ -374,8 +397,10 @@ ftpaccess_find=Find indstillingsfiler
 ftpaccess_auto=Under anonym
 ftpaccess_from=Fra bibliotek
 ftpaccess_return=liste over indstillinger fil
+
 ftpusers_title=Nægtede FTP-brugere
 ftpusers_desc=Hvis det er aktiveret under <tt>Autentificering</tt> ikonet, nægtes de brugere, der er anført nedenfor fra filen $1, loginadgang til FTP-brugeren.
+
 ftpindex_title=Per-Directory-indstillingsfil
 ftpindex_delete=Slet fil
 ftpindex_opts=Valg pr. Telefonbog
@@ -385,8 +410,10 @@ ftpindex_addlimit=Tilføj valgmuligheder per kommando for ..
 ftpindex_header2=$1 i $2 
 ftpindex_return=pr. katalogindstillingsfil
 ftpindex_header=For $1 
+
 find_err=Kunne ikke finde indstillingsfiler
 find_eanon=Anonym FTP er ikke opsat på nogen virtuel server
+
 log_global=Ændrede globale $1 indstillinger
 log_ftpusers=Ændrede afviste FTP-brugere
 log_virtc=Oprettet server $1 
@@ -420,6 +447,7 @@ log_anonm=Manuel redigeret anonym FTP til server $1
 log_anon=Ændret $1 i anonym FTP for server $2 
 log_start=Begyndt proftpd
 log_apply=Anvendte ændringer
+
 eafter=Konfigurationsverifikation mislykkedes: $1 Ændringer er ikke blevet gemt.
 proftpd_apply=Anvend ændringer
 proftpd_stop=Stop ProFTPd

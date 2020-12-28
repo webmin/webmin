@@ -24,6 +24,7 @@ cvirt_eaddr2='$1' geçerli bir adres değildir
 cvirt_eport='$1' geçerli bir port değildir
 cvirt_ename='$1' geçerli bir sunucu adı değildir
 cvirt_eroot2=Dizinin oluşturulmasinda hata oluştu '$1' : $2
+
 etype=Bu tip seçenekleri düzenlemek için izininiz yoktur
 efailed=$1 'e kaydedilirken hata oluştu
 apache_apply=Değişiklikleri Uygula
@@ -31,12 +32,14 @@ apache_stop=Apache'yi Durdur
 apache_start=Apache'yi Başlat
 auth_return=erişim kontrolü
 default_serv=öntanımlı sunucu
+
 global_ecannot=Genel seçenekleri düzenlemek için izininiz yoktur
 global_mime=Genel MIME tipleri listesi
 global_type=Tip
 global_ext=Uzantılar
 global_add=Yeni bir MIME tipi ekle
 global_return=MIME tipleri
+
 mime_ecannot=MIME tiplerini degiştirmek için izininiz yoktur
 mime_edit=MIME Tipini Düzenle
 mime_add=Yeni Bir MIME Tipi Ekle
@@ -45,6 +48,7 @@ mime_type=MIME Tipi
 mime_ext=Uzantılar
 mime_err=MIME tipinin kaydedilmesinde hata oluştu
 mime_etype='$1' geçerli bir MIME tipi değildir
+
 virt_ecannot=Bu sanal sunucuyu düzenleyemezsiniz
 virt_title=Sanal Sunucu Seçenekleri
 virt_header=$1 icin
@@ -56,6 +60,7 @@ virt_path=Yol
 virt_return=sunucu indeksi
 virt_euser=Bu sanal sunucunun kullanıcı ya da gruplarını değiştirmek için izininiz yoktur.
 virt_header2=$2 için $1
+
 vserv_title=Sanal Sunucu Yapılandırması
 vserv_ecannot=Bu sanal sunucunun adres özelliklerini düzenleyemezsiniz
 vserv_addr=Adres
@@ -70,16 +75,20 @@ vserv_eaddr2='$1' geçerli bir adres değildir
 vserv_eport='$1' geçerli bir port değildir
 vserv_eroot='$1' geçerli bir kök dokumani değildir
 vserv_ename='$1' geçerli bir sunucu ismi değildir
+
 show_title=Komutlar
 show_edit=Apache Komutlarını Düzenle:
 show_these=Komutları elle düzenle
 show_ok=Düzenle
+
 manual_title=Komutları Düzenle
 manual_header=Bu sanal sunucu, dizin ya da dosyalara uygulanacak olan $1'deki Apache komutlarını düzenlemek için aşağıdaki metin kutusunu kullanabilirsiniz
+
 dir_title=Dizin Başına Seçenekler
 dir_show=Komutları göster
 dir_type=Tip
 dir_return=dizin indexi
+
 type_0=İşlemler ve Sınırlar
 type_1=Ağ ve Adresler
 type_2=Apache Modülleri
@@ -97,6 +106,7 @@ type_13=Proxy
 type_14=SSL Seçenekleri
 type_15=Perl
 type_16=PHP
+
 htaccess_title=Dizin Başına Seçenekler Dosyası
 htaccess_ecannot=htaccess dosyalarını düzenleyemezsiniz
 htaccess_create=Seçenek Dosyası Oluştur
@@ -107,9 +117,11 @@ htaccess_return=seçenekler dosyası listesi
 htaccess_edir='$1' geçerli bir dizin ismi degildir
 htaccess_ecreate=Bu seçenekler dosyasını oluşturmak için izininiz yoktur
 htaccess_edelete=Bu seçenek dosyasını silmek için izininiz yoktur
+
 htindex_ecannot=Bu seçenek dosyasının içeriğini düzenlemek izininiz yoktur
 htindex_title=Dizin Başına Seçenekler
 htindex_delete=Dosyayı Sil
+
 htindex_show=Komutları Göster
 htindex_opts=Dizin Başına Seçenekler
 htindex_file=Dosya Başına Yapılandırma
@@ -118,16 +130,20 @@ htindex_path=Yol
 htindex_header=$1 için
 htindex_header2=Seçenek dosyası $2 için $1
 htindex_return=seçenekler dosyası indeksi
+
 htfile_title=Dosya Başına Seçenekler
 htfile_show=Komutları Göster
 htfile_edit=Komutları Düzenle
+
 reconfig_title=Bilinen Modülleri Tekrar Tapılandır
 reconfig_ecannot=Apache'yi tekrar yapılandırmak için izininiz yoktur.
 reconfig_ever=Apache sunucusu çalıştırılabilirinin sürümünün alınmasında hata oluştu. Doğru dosyanın kontrol edilip edilmediğini<a href='$1'>modül yapılandırmasından</a> kontrol edebilirsiniz.
 reconfig_ok=Yapılandır
+
 defines_title=Tanımlanmış Parametreleri Düzenle
 defines_ecannot=Httpd tanımlarını değiştirmek için izininiz yoktur
 defines_config=Not: Aşağıdaki tanımlı parametreler zaten biliniyor : $1
+
 authu_ecannot='$1' izin verilmiş grup metin dosyası değildir
 authu_title=Kullanıcı Listesi
 authu_header=$1 dosyasında
@@ -149,6 +165,7 @@ authu_sync=Bu seçenek ile Webmin'in, <tt>Kullanıcılar ve Gruplar</tt> modül�
 authu_screate=Bir Unix kullanıcısı eklendiğinde kullanıcı ekle
 authu_sdelete=Bir Unix kullanıcısı silindiğinde kullanıcıyı sil
 authu_smodify=Bir Unix kullanıcısı değiştirildiğinde kullanıcıyı değiştir
+
 authg_ecannot='$1' izin verilmiş bir grup metin dosyası değil.
 authg_title=Grup Listesi
 authg_header=$1 dosyasında
@@ -165,20 +182,24 @@ authg_err=Grubun kaydedilmesinde hata oluştu
 authg_euser=Grup ismi girilmedi
 authg_euser2=Grup ismi : karakterini içeremez
 authg_edup='$1' grubu zaten mevcut
+
 stop_err=Apache'nin durdurulmasında hata oluştu
 stop_ecannot=Apache'yi durdurmak için izininiz yoktur
 stop_epid=PID dosyası $1'in açılmasında hata oluştu
 stop_epid2=Geçersiz PID dosyası $1
 stop_esig=$1 işlemine SIGTERM gönderilirken hata oluştu
+
 start_err=Apache'nin başlatılmasında hata oluştu
 start_ecannot=Apache'yi başlatmak için izininiz yoktur
 start_ecmd=$1'de hata oluştu : $2
 start_eunknown=Bilinmeyen sebep
+
 restart_err=Değişikliklerin uygulanmasında hata oluştu
 restart_epid=PID dosyası $1 açılırken hata oluştu
 restart_epid2=Geçersiz PID dosyası $1
 restart_esig=$1 işlemine SIGHUP gonderilirken hata oluştu
 restart_eunknown=Bilinmeyen sebep
+
 acl_virts=Bu kullanıcının düzenleyebileceği sanan sunucular
 acl_global=Genel seçenekleri düzenleyebilsin mi?
 acl_htaccess=Sadece .htaccess
@@ -191,6 +212,7 @@ acl_dir=Dosyaları bu dizine sınırla
 acl_types=Ulaşabileceği komut tipleri
 acl_all=Bütün
 acl_sel=Seçililer..
+
 core_maxconc=Aynı andaki maksimum istek sayısı
 core_maxreq=Sunucu işlemi başına en çok işlem sayısı
 core_initial=Sunucunun başlangıçtaki işlem sayısı
@@ -322,7 +344,9 @@ core_groups=Sadece bu gruplar
 core_allusers=Bütün geçerli kullanıcılar
 core_none=Hiçbiri
 core_all=Hepsi
+
 mod_negotiation_epri=Dil öncelikleri bulunamadı
+
 mod_cgi_logname=CGI Script kaydı
 mod_cgi_none=Hiçbiri
 mod_cgi_elogname=Geçersiz CGI script kayıt dosyası
@@ -331,6 +355,7 @@ mod_cgi_elogsize=CGI kayıt boyutu bir tamsayı olmalıdır
 mod_cgi_post=Maksimum kaydı tutulacak post veri boyutu
 mod_cgi_epost=Post bilgi boyutu bir tamsayı olmalıdır.
 mod_cgi_eunder=CGI script kaydı izin verilen dizinin altında değildir
+
 mod_alias_efrom='$1' geçerli bir $2 değildir
 mod_alias_edest='$1' geçerli bir $2 hedefi değildir
 mod_alias_alias=Döküman dizin takma adları
@@ -342,6 +367,7 @@ mod_alias_predir=Kalıcı URL yönlendirmeleri
 mod_alias_cgi=CGI dizini takma adları
 mod_alias_rcgi=Düzenli ifadele CGI dizini takma adları
 mod_alias_estatus='$1' geçerli bir durum değildir
+
 mod_proxy_proxy=Proxy sunucusu olarak davransın mı?
 mod_proxy_req=İstekler
 mod_proxy_forw=Yönlendir
@@ -389,10 +415,12 @@ mod_proxy_enetbit='$1' geçerli bir ağ/bit çifti değildir
 mod_proxy_eunder=cache dizini izin verilen dizinin altında değildir
 mod_proxy_rurl=Uzak URL
 mod_proxy_lurl=Yerel URL yolu
+
 mod_log_agent_file=Dosya..
 mod_log_agent_program=Program..
 mod_log_agent_log=Tarayıcı kayıt dosyası
 mod_log_agent_efile=$1 geçerli bir gizli kayıt dosya adı değil
+
 mod_log_config_common=Yaygın Kayıt Biçimi
 mod_log_config_named=İsimlendirilmiş kayıt formatları
 mod_log_config_nick=Takma ad
@@ -408,13 +436,16 @@ mod_log_config_eformat=$1 için kayıt biçimi girilmedi
 mod_log_config_enofilprog=Kayıt dosyası ya da programı bulunamadı
 mod_log_config_efilprog='$1' geçerli bir kayıt dosyası ya da programı değildir
 mod_log_config_eifset='Kurulduysa' seçeneği öntanımlı kayıt biçimi ile birlikte kullanılamaz.
+
 mod_log_referer_file=Dosya..
 mod_log_referer_program=Program..
 mod_log_referer_log=Yönlendirici kayıt dosyası
 mod_log_referer_nolog=Buradan gelen referansları kayıt tutma
 mod_log_referer_elog=$1 geçerli bir yönlendirici kayıt dosya ismi ismi değildir
 mod_log_referer_edir=Yönlendirici kaydı izin verilen dizinin altında değildir
+
 mod_status_msg=Uzatılmış durum bilgilerini görüntüle
+
 mod_mime_ext=Uzantılar
 mod_mime_xtype=Ekstra MIME tipleri
 mod_mime_mtype=MIME tipi
@@ -436,6 +467,7 @@ mod_mime_handler=Handler
 mod_mime_enc=Şifreleme
 mod_mime_lang=Dil
 mod_mime_chars=Karakter Seti
+
 mod_setenvif_header=Başlık
 mod_setenvif_match=Eşleştir
 mod_setenvif_var=Değişken
@@ -445,9 +477,11 @@ mod_setenvif_eheader=Geçersiz istek başlığı '$1'
 mod_setenvif_eregex=Geçersiz düzenleme ifadesi '$1'
 mod_setenvif_evar=Geçersiz değişken ismi '$1'
 mod_setenvif_clear=Temizle
+
 mod_userdir_all=Tüm kullanıcılar erişebilir
 mod_userdir_except=Bu kullanıcılar hariç
 mod_userdir_dir=Kullanıcı WWW dizini
+
 mod_imap_action=Imagemap'lerin yanlış kullanılımındaki eylem
 mod_imap_godefurl=Öntanımlı URL'ye git
 mod_imap_form=Biçimlendirilmiş menüyü göster
@@ -465,7 +499,9 @@ mod_imap_refurl=Referring URL
 mod_imap_url=URL...
 mod_imap_defbase=Imagemap'ler için öntanımlı taban
 mod_imap_eurl='$1' geçerli bir URL değildir
+
 mod_speling_autocorr=Tamamlanmamış URL'leri otomatik olarak tamamla?
+
 mod_actions_mime=Handler / MIME tipi
 mod_actions_cgiurl=CGI script URL'si
 mod_actions_mimecgi=Handler ya da MIME tipi CGI işlemleri
@@ -475,9 +511,12 @@ mod_actions_httpcgi=HTTP metodu CGI eylemleri
 mod_actions_emime='$1' geçerli bir handler ya da MIME tipi değildir
 mod_actions_ecgi='$1' geçerli bir CGI script'i değildir
 mod_actions_enometh=CGI script'i '$1' için bir metod seçilmedi
+
 mod_include_incl=İşlem dosyalara çalıştırılabilir biti eklesin mi?
 mod_include_set=Evet ve son değiştirilme tarihini uygula
+
 mod_dir_txt=Dizin indeks dosyaları
+
 mod_autoindex_asc=Aşağıya doğru (a->z)
 mod_autoindex_descend=Yukarı doğru (z->a)
 mod_autoindex_name=İsim
@@ -485,12 +524,14 @@ mod_autoindex_date=Tarih
 mod_autoindex_size=Boyut
 mod_autoindex_desc=Açıklama
 mod_autoindex_sort=Dizin indeksini bu şekilde sırala
+
 browsermatch_regexp=Tarayıcı düzenli ifadesi
 browsermatch_var=Değişkeni gir
 browsermatch_value=Değer
 browsermatch_txt=Değişkenler tarayıcı tipine göre belirlenmelidir
 browsermatch_evar=Geçersiz değişken ismi '$1'
 browsermatch_clear=Temizle
+
 autoindex_fname=Dosya adı
 autoindex_mime=MIME tipi
 autoindex_enc=Şifreleme
@@ -529,9 +570,11 @@ autoindex_enodesc=$1 dosyası için açıklama bulunamadı
 autoindex_enofile='$1' açıklaması için dosya bulunamadı
 autoindex_eiconsize='$1' geçerli bir simge boyutu değildir
 autoindex_ewidth='$1' geçerli bir genişlik değildir
+
 mod_mime_magic_file=MIME magic numaraları dosyası
 mod_mime_magic_none=Hiçbiri
 mod_mime_magic_efile=Geçersiz MIME magic numaraları dosyası
+
 mod_env_var=Değişken
 mod_env_value=Değer
 mod_env_pass=Doğrudan geç
@@ -541,6 +584,7 @@ mod_env_cgivar=CGI script'leri için çevresel değişkenler
 mod_env_passall=CGI'lar için bütün çevresel değişkenleri geç
 mod_env_evar='$1' geçerli bir değişken ismi değildir
 mod_env_evalue='$1' geçerli bir değişken değeri değildir
+
 mod_access_order=Erişim kontrol sıralaması:
 mod_access_denyallow=İzin verilenden verilmeye
 mod_access_allowdeny=İzin verilmeyenden verilene
@@ -560,6 +604,7 @@ mod_access_epip='$1' geçerli bir parçalı IP adresi değildir
 mod_access_emask='$1' geçerli bir ağ/ağ_maskesi çifti değildir
 mod_access_ecidr='$1' geçerli bir ağ/CIDR çifti değildir
 mod_access_evar='$1' geçerli bir değişken ismi değildir
+
 mod_auth_ufile=Kullanıcı metin dosyası
 mod_auth_uedit=Kullanıcıları düzenle
 mod_auth_gfile=Grup metin dosyası
@@ -570,17 +615,20 @@ mod_auth_eudir=Kullanıcı metin dosyası izin verilen dizinin altında değildi
 mod_auth_egdir=Grup metin dosyası izin verilen dizinin altında değildir.
 mod_auth_eufile=Geçersiz kullanıcı metin dosyası adı
 mod_auth_egfile=Geçersiz grup metin dosyası adı
+
 mod_auth_dbm_ufile=Kullanıcı DBM dosyası
 mod_auth_dbm_gfile=Grup DBM dosyası
 mod_auth_dbm_pass=Hatadan sonra diğer modül denensin mi?
 mod_auth_dbm_auth=DBM dosyası onaylaması
 mod_auth_dbm_eufile=Geçersiz kullanıcı DBM dosyası adı
 mod_auth_dbm_egfile=Geçersiz grup DBM dosyası adı
+
 mod_cern_meta_process=İşlem başlığı meta dosyaları
 mod_cern_meta_dir=Başlık meta dosyaları için alt dizin
 mod_cern_meta_edir=Geçersiz meta dosyası alt dizin ismi
 mod_cern_meta_suffix=Başlık meta dosyaları için dosya son eki
 mod_cern_meta_esuffix=Geçersiz meta dosyası son eki
+
 mod_ssl_proto=SSL Protokolleri
 mod_ssl_cfile=Sertifika/anahtar dosyası
 mod_ssl_ecfile=Sertifika/anahtar dosyası bulunamadı
@@ -596,6 +644,7 @@ mod_ssl_ecdepth=Sertifika derinliği bir tam sayı olmalıdır
 mod_ssl_log=SSL kayıt dosyası
 mod_ssl_elog=SSL kayıt dosyası bulunamadı
 mod_ssl_onlyssl=Sadece SSL girişine izin ver
+
 log_global=Genel $1 seçenekleri değiştirildi
 log_virtc=$1 sunucusu oluşturuldu
 log_virts=$1 sunucusu yeniden yapılandırıldı

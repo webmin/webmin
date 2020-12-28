@@ -3,6 +3,7 @@ connect_elogin=Ezin izan da $1:$2.
 index_title=Postfix Mail Server
 index_epath=Postfix kontrol-komandoa $1 ez dago zure sisteman instalatuta. Agian zure <a href='$2'>moduluaren konfigurazioa</a> okerra da edo Postfix ez dago instalatuta.
 index_postfix=Postfix
+
 internal_error=Barruko errorea
 index_econfig=Postfix config komandoa $1 ez da existitzen. Agian zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 index_esuper=Postfix gainbegiratzailearen komandoa $1 ez da existitzen. Agian zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
@@ -14,8 +15,10 @@ index_startmsg=Egin klik botoi honetan Postfix posta zerbitzaria abiarazteko. Ho
 index_reloadmsg=Egin klik botoi honetan Postfix bere konfigurazio fitxategi guztiak berriro irakurtzeko. Hau erabilgarria izan daiteke Postfixaren konfigurazio fitxategiak eskuz aldatu badira.
 index_version=Postfix bertsioa $1
 opts_err=Ezin izan da aukerak gordetzea
+
 check_error=Errorea gertatu da Postfix uneko konfigurazioa egiaztatzean. Mesedez eskuz konpondu Postfixaren konfigurazioa.
 check_manual=Editatu eskuz Postfix konfigurazio fitxategia.
+
 address_rewriting_title=Helbidea Berridazketa eta Maskaratzea
 address_rewriting_ecannot=Ezin duzu helbideen berridazketa eta maskaraderik editatu
 aliases_title=Posta ezizena
@@ -42,9 +45,11 @@ aliases_type5=Autoreply fitxategia $1
 aliases_type6=Aplikatu iragazkiaren fitxategia $1
 aliases_none=Bat ere ez
 aliases_delete=Ezabatu hautatutako ezizenak
+
 postfinger_title=Konfigurazio egiaztapena
 postfinger_show=Show
 postfinger_ecannot=Ez duzu baimenik Postfix konfigurazioa egiaztatzeko
+
 mailclean_title=Garbitu MailQueue
 mailclean_ecannot=MailQueues garbitzeko pribilegioik ez
 mailclean_active=Aktiboak-Queue
@@ -53,6 +58,7 @@ mailclean_deferred=Atzeratuta-Queue
 mailclean_defer=Atzeratu-Queue
 mailclean_all=Ilara guztiak
 mailclean_search=Search-katea
+
 aform_type0=Bat ere ez
 aform_type1=Posta elektroniko helbidea
 aform_type2=Helbideak fitxategian
@@ -68,6 +74,7 @@ aform_val=Alias to
 aform_afile=Editatu ..
 aform_return=alias
 aform_cmt=deskribapena
+
 asave_err=Huts egin du ezizena gordetzean
 asave_eaddr='$1' ez da baliozko helbide bat
 asave_ealready=Lehendik dago '$1' ezizena
@@ -78,11 +85,13 @@ asave_etype4='$1' ez da baliozko programa edo ez da existitzen
 asave_etype5=Ez da baliozko autoreply '$1' fitxategia
 asave_etype4none=Ez da programarik eman
 asave_etype6="$1" iragazkiaren fitxategia ez da baliozkoa
+
 afile_title=Editatu helbide-fitxategia
 afile_desc=Erabili beheko testu-eremua $1 fitxategiaren helbideak editatzeko.
 afile_efile=Ezin duzu $1 editatu.
 afile_undo=Aldaketak desegin
 afile_ewrite=Huts egin du helbideen fitxategian idazteak : $1
+
 ffile_title=Editatu iragazkiaren fitxategia
 ffile_desc=Erabili beheko formularioa iragazkiaren arauak konfiguratzeko $1 fitxategian.
 ffile_efile=Ezin duzu $1 editatu.
@@ -98,6 +107,7 @@ ffile_other=Bestela, aurrera $1
 ffile_err=Ezin izan da iragazkiaren fitxategia gorde
 ffile_ematch=Partida falta da
 ffile_eaction=Ez dago birbidaltzearen helbidea
+
 rfile_title=Editatu automatikoki fitxategia
 rfile_desc=Erabili beheko testu-eremua $1 in automatikoki bidaltzeko mezua editatzeko. Mezuak $SUBJECT, $FROM, $TO, $DATE eta $BODY makroak izan ditzake, automatikoki hornitzen denean aktibatuko direnak.
 rfile_desc2=Autoreplantean erabilitako lehenetsiak gehitu edo ordezkatu nahi dituzten posta-goiburuak ere ezar ditzakezu, honela lerroak jarriz: <br><tt> From: foo@bar.com </tt><br> <tt>Asunto: Oporretan</tt> <br> mezuaren goiko aldean, gorputzetik marra zuri bakar batez bereizita.
@@ -116,11 +126,13 @@ rfile_from=Noiz: erantzuteko helbidea
 rfile_auto=Automatikoa (hartzailearen helbidean oinarrituta)
 rfile_efrom=Falta da: helbidea
 rfile_fromdesc=A From: helbidea beti zehaztu behar da posible den heinean, metodo automatikoa fidagarria ez baita.
+
 general_title=Aukera Orokorrak
 general_title_sensible=Aukera orokor erabilgarrienak
 general_title_others=Beste Aukera Orokor batzuk
 general_ecannot=Ezin duzu Aukera Orokorrak editatu
 what_is_it=Zer da hori?
+
 opts_default=Default
 opts_none=Bat ere ez
 opts_nomap=Ez da maparik ezarri
@@ -140,10 +152,12 @@ opts_mail_owner=Posta jabea
 opts_default_privs=Entrega-agentearen eskubide lehenetsiak
 opts_inet_interfaces=Posta jasotzeko sare-interfazeak
 opts_all_interfaces=guztiak
+
 opts_local_recipient_maps=Erabiltzaile lokal ezezagunak baztertu
 opts_no=Ez
 opts_save=Gorde eta aplikatu
 opts_edir=$1 azpian mapako fitxategiak zehaztea baino ez duzu baimentzen
+
 opts_allow_percent_hack=Idatzi "user%domain" erabiltzaileari "erabiltzaile@domain"
 opts_append_at_myorigin=Idatzi "erabiltzailea" "erabiltzaile@$mydomain" -era
 opts_append_dot_mydomain=Idatzi "user@host" erabiltzaileari "user@host.$mydomain"
@@ -153,13 +167,17 @@ opts_swap_bangpath=Idatzi "site! User" eta "user @ site"
 opts_masquerade_domains=Helbidea maskaratzea
 opts_masquerade_exceptions=Maskaradaren salbuespenak
 index_return=Postfixaren konfigurazioa
+
 opts_alias_maps=Tokiko entrega agenteak erabiltzen dituen alias datu-baseak
 opts_alias_database="Newaliases" komandoak eraikitako alias datu-baseak
 aliases_warning=Abisua: <ul><li> Lehen eremua hutsik ez dagoenean, Postfix alias sortzeko sarrerako komando lehenetsia dagozkien datu baseak eraikitzeko erabiltzen da; <li>Bestela Sendmailen bateragarritasun komandoa "newaliases" erabiltzen da, bigarren eremuko datu baseak erabiliko dira.</ul>
+
 aliases_name=izena
 aliases_value=Alias. ..
+
 new_alias=Sortu ezizen berria
 new_aliasmsg=Egin klik botoi honetan ezizen berri bat sortzeko
+
 local_delivery_ecannot=Ezin duzu tokiko entrega aukerak editatu
 local_delivery_title=Tokiko Bidalketa
 opts_local_transport=Tokiko bidalkuntzen garraioaren izena
@@ -185,6 +203,7 @@ opts_local_destination_recipient_limit=Hartzaile kopurua, mezu lokala bidaltzeko
 opts_local_destination_recipient_limit_default=Default
 opts_prepend_delivered_header=Aurretik <tt>Entregatu-ra:</tt> denean. ..
 opts_prepend_delivered_header_default=Default
+
 resource_title=Baliabideen kontrol orokorra
 resource_ecannot=Ezin duzu baliabideen kontrol parametroak editatu
 opts_bounce_size_limit=Erreboteatutako mezuaren tamaina
@@ -204,6 +223,7 @@ opts_qmgr_message_recipient_limit=Memoria-hartzaileen gehienezko kopurua
 opts_queue_minfree=Min espazio librea ilaran fitxategi sisteman
 opts_stale_lock_time=Gehieneko denbora blokeo zaharkitua askatu da
 opts_transport_retry_time=Denbora segundo batzuetan hautsitako MDT batekin harremanetan saiatzeko
+
 opts_always_bcc=Mezu bakoitzaren CSC jasotzen duen helbidea
 opts_always_bcc_none=Bat ere ez
 opts_daemon_timeout=Eskaerak kudeatzeko denbora-muga
@@ -242,6 +262,7 @@ opts_trigger_timeout=Denbora maximoa deabru bati aktibatzeko
 opts_delay_warning_time=Bidali gabe abisua bidali baino ordu batzuk lehenago
 opts_delay_warning_time_default2=Postfix lehenetsia
 opts_content_filter_default=Bat ere ez
+
 smtpd_title=SMTP zerbitzariaren aukerak
 smtpd_ecannot=Ezin duzu SMTP zerbitzariaren aukerak editatu
 opts_disable_vrfy_command=Desgaitu SMTP VRFY komandoa
@@ -273,6 +294,7 @@ smtpd_nomap=Oraindik ez da erreproduzitzeko baimendutako helbideen maparik sartu
 smtpd_nomap2=Oraindik ez da sartu igorleen helbideei buruzko murrizketen maparik.
 smtpd_map=Helbideak errelebatzeko
 smtpd_map2=Igorleen helbideetan mugak
+
 smtp_title=SMTP bezeroaren aukerak
 smtp_ecannot=Ezin duzu SMTP bezeroaren aukerak editatu
 opts_best_mx_transport=Ekintza MX ostalari onena bezala zerrendatuta dagoenean
@@ -293,6 +315,7 @@ opts_smtp_data_done_timeout=Erantzunari amaiera emateko itxaroten duen denbora "
 opts_smtp_quit_timeout=QUIT erantzunaren zain gelditzea
 opts_smtp_use_tls=Erabili TLS SMTP konexioetarako
 opts_smtp_sasl_security_options=SASL segurtasun aukerak
+
 rate_title=Bidalketa-tasak
 rate_ecannot=Ezin duzu entrega tasen aukerak editatu
 opts_default_destination_concurrency_limit=Helmuga berdinera bidalitako paralelo kopurua
@@ -303,18 +326,21 @@ opts_maximal_queue_lifetime=Mezuak ezabatu aurretik ilaran denbora (egun) gehien
 opts_minimal_backoff_time=Geroztutako mezu bat igortzeko saiakeraren arteko denbora minimoak (segunduak)
 opts_queue_run_delay=Atzeratutako ilaran eskaneatzearen arteko denbora (segundotan)
 opts_defer_transports=Entregatu behar ez diren garraioak
+
 debug_title=Arazketa-ezaugarriak
 debug_ecannot=Ezin duzu arazketa eginbideak editatu
 opts_debug_peer_list=Verbose log gaituta dauden domeinu / sare ereduen zerrenda
 opts_debug_peer_level=Aurreko zerrendarekin bat egitean, egiaztatzeko erregistro maila
 debug_version=Webminerako Postfix modulua - $1 bertsioa
 opts_edebug=Falta den edo baliogabeko hitzezko erregistratzeko maila zero baino handiagoa izan behar du
+
 ldap_title=LDAP bilaketak
 ldap_ecannot=Ezin duzu LDAP bilaketa aukerak editatu
 ldap_non_existent=Badirudi LDAP ez dela existitzen zure Postfix sisteman
 opts_ldap_lookup_timeout=LDAP datu-basearen bilaketetarako denbora-muga
 opts_ldap_search_base=LDAP datu-basea bilatzeko
 opts_ldap_server_host=LDAP zerbitzariaren ostalariaren izena
+
 canonical_title=Mapaketa Kanonikoa
 canonical_ecannot=Ezin duzu kartografiaren konfigurazio kanonikoa editatu
 opts_canonical_maps=Helbideen mapak bilatzeko mahaiak
@@ -328,6 +354,7 @@ canonical_edit_title=Editatu Mapa Canonikoa
 canonical_return_sender=igorlearen mapa kanonikoak
 canonical_return_recipient=hartzaileen mapa kanonikoak
 canonical_return=mapa kanonikoak
+
 mapping_name=izena
 mapping_value=Mapak. ..
 mapping_delete=Ezabatu Hautatuta
@@ -355,6 +382,7 @@ mapping_toomany=$1 maparen sarrerak daude, hau da, $2 bistaratzeko mugaren gaine
 mapping_find=Erakutsi bat datozen mapak:
 mapping_search=Search
 mapping_match=Mapako fitxategien sarrerak <tt>$1</tt>.
+
 virtual_title=Domeinu Birtualak
 virtual_ecannot=Ezin duzu domeinu birtualen mapen konfigurazioa editatu
 opts_virtual_maps=Domeinu-mapen bilaketa-taulak
@@ -362,29 +390,44 @@ opts_virtual_alias_maps=Domeinu-mapen bilaketa-taulak
 opts_virtual_alias_domains=Domeinuak mapetarako birtuala egiteko
 virtual_same=Domeinu-mapen tauletatik
 virtual_return=domeinu birtualak
+
 transport_title=Garraioaren kartografia
 transport_ecannot=Ezin duzu garraioaren mapen konfigurazioa editatu
 opts_transport_maps=Garraiatu mapen bilaketa-mahaiak
 transport_return=garraio-mapak
+
+sni_title=Ziurtagirien Kartografia
+sni_ecannot=Ez duzu baimenik ziurtagirien mapen konfigurazioa editatzeko
+opts_sni_maps=Ziurtagirien mapen bilaketa taulak
+sni_return=ziurtagirien mapak
+sni_dom=Ostalari izena
+sni_certs=Ziurtagirien fitxategiak
+
 relocated_title=Mapak lekuz aldatzea
 relocated_ecannot=Ezin duzu lekuz aldatu maparen konfigurazioa aldatu
 relocated_return=kokatutako mapak
 opts_relocated_maps=Kartografiako mapen bilaketa taula
 opts_content_filter=Posta elektronikoko edukiaren iragazkia
+
 map_click=Egin klik edozein mapatan bere propietateak editatzeko:
 no_map=(Une honetan ez dago maparik definituta. Definitu mapa lehenik eta gero editatu dezakezu)
 no_map2=Ez dago mapa definiturik. Definitu mapa lehenik eta gero editatu ahal izango duzu.
+
 stop_efailed=Ezin izan da Postfix gelditu
 stop_ecannot=Ez duzu baimenik Postfix gelditzeko
+
 start_efailed=Huts egin du Postfix abiaraztean
 start_ecannot=Ezin duzu Postfix abiarazi
+
 reload_efailed=Ezin izan da Postfix kargatu berriro kargatu
 reload_ecannot=Ezin duzu Postfix birkargatu berriro
+
 query_get_efailed=Ezin izan da Postfix konfigurazioaren komandoa kontsultatu $1: <tt>$2</tt>
 query_set_efailed=Huts egin du Postfix config komandoan kontsultatzeak $1 $2: <tt>$3 ></tt>
 regenerate_ecannot=Ezin duzu Alias birsortu birsortzea
 regenerate_alias_efailed=Ezin izan da ezizena birsortu: <tt>$1</tt>
 regenerate_table_efailed=Huts egin du $1: <tt>$2</tt>
+
 acl_resource=Baliabideak editatu al ditzake?
 acl_aliases=Editatu aliasak?
 acl_aliases_options=Editatu aliasen aukerak?
@@ -393,6 +436,7 @@ acl_address_rewriting=Helbideen berridazketa editatu al dezakezu?
 acl_canonical=Editatu dezakezue kanonikoa?
 acl_virtual=Editatu daiteke birtuala?
 acl_transport=Garraia editatu al dezakezu?
+acl_sni=Ziurtagiriak editatu al daitezke?
 acl_relocated=Editatu al daiteke lekuz aldatzea?
 acl_header=Editatu ahal izango duzu goiburu egiaztapenak?
 acl_local_delivery=Tokiko bidalketa editatu al dezakezu?
@@ -411,6 +455,7 @@ acl_postfinger=Konfigurazio postfixaren konfigurazioa egiaztatu dezakezu?
 acl_manual=Ezin al duzu konfiguratu fitxategia?
 acl_dir=Baimendu mapako fitxategien direktorio
 acl_bcc=Editatu dezakezu BCC mapaketa?
+
 boxes_title=Erabiltzaileen postontziak
 boxes_user=Erabiltzaileak
 boxes_size=Postontzien tamaina
@@ -420,6 +465,7 @@ boxes_sent=Bidalitako mezuak
 boxes_ecannot=Ezin duzu mezu elektronikoa irakurri
 boxes_toomany=Erabiltzaile gehiegi daude zure sisteman postontzi guztiak zerrendatzeko.
 boxes_go=Ikusi mezua erabiltzailearentzat:
+
 mail_title=Erabiltzailearen helbide elektronikoa
 mail_from=aurrera
 mail_date=data
@@ -458,6 +504,7 @@ mail_forward=Aurrera
 mail_rfc=Lerrotik
 mail_move=Mugitu:
 mail_eexists=Mezua ez da jada!
+
 view_title=Irakurri posta elektronikoa
 view_desc=$1 mezuan $2
 view_desc2=$1 mezua $2
@@ -486,6 +533,7 @@ view_body=Mezuaren testua
 view_afile=Eranskinaren izena
 view_atype=Eranskin mota
 view_asize=Fitxategiaren tamaina
+
 compose_title=Idatzi posta elektronikoa
 reply_title=Erantzun Posta elektronikora
 forward_title=Birbidali posta elektronikoa
@@ -496,6 +544,7 @@ reply_mailforward=Birbidalitako mezuak
 reply_attach2=Bezeroaren eta zerbitzariaren aldetik eranskinak
 reply_send=Bidali Posta
 reply_ecannot=Erabiltzaile gisa ezin duzu posta elektronikoz bidali
+
 send_err=Ezin izan da posta bidaltzean huts egin
 send_eto=Falta helbidean
 send_efrom=Helbidea ez da falta
@@ -509,6 +558,7 @@ send_eperms=$1 erabiltzaileak ezin du $2 irakurri
 send_eperms2=Ezin duzu $1 fitxategia bidali
 send_epath=Sendmail exekutagarria $1 ez dago.
 send_ewrapper=Postfix sendmail interfazearen programa ez da existitzen
+
 search_title=Bilaketaren emaitzak
 search_ecannot=Ez duzu baimenik erabiltzaile honen mezu elektronikoa bilatzeko
 search_ematch=Testua sartu behar duzu aurka egiteko.
@@ -516,6 +566,7 @@ search_efield=Bilaketa mota bat aukeratu behar duzu.
 search_none=Ez da mezuik aurkitu.
 search_results2=$1 mezuak $2.
 search_results3=$1 ez datozen mezuak $2 ..
+
 match_from=Noiztik: partiduak
 match_subject=Gaia: partiduak
 match_to=Nori: partiduak
@@ -533,6 +584,7 @@ match_!date=Data: ez dator bat
 match_!body=Gorputza ez dator
 match_!size=Neurria baino txikiagoa da
 match_!headers=Goiburuak ez datoz bat
+
 mailq_title=Posta ilara
 mailq_count=$1 mezuak
 mailq_none=Oraindik ez dago posta mezuen ilaran entrega egiteko
@@ -561,15 +613,20 @@ mailq_active=Aktiboak
 mailq_deferred=Atzeratuta
 mailq_hold=Mantendu aukeratua
 mailq_unhold=Ezarri eutsi hautatua
+
 flushq_title=Erraza ilara
 flushq_desc=$1 komandoarekin posta elektronikoa entregatzeko saiakera behartuta ..
+
 qview_title=Ilarako mezua
 qview_desc=$1 fitxategitik
 qview_headers=Posta goiburuak
 qview_attach=eranskinak
+
 after_err=Postfixaren konfigurazio errorea : $1
+
 searchq_title=Ilaren bilaketaren emaitzak
 searchq_none=Ez da ilaran mezurik aurkitu.
+
 header_title=Goiburu egiaztapenak
 header_ecannot=Ezin duzu goiburu kontrolak editatu
 header_eregexp=Goiburu egiaztapenen mapak <tt>regexp:</tt> <i>fitxategi izena</i> formatuan egon behar du.
@@ -588,15 +645,18 @@ header_reject=Ezetsi (errore mezuarekin...)
 header_warn=Abisua erregistratu (mezuarekin..)
 header_ename=Adierazpen erregular baliogabea - bezalako zerbait / zerbait bezalakoa izan behar du
 header_return=goiburuko kontrolak
+
 body_title=Gorputz-egiaztapenak
 body_ecannot=Ezin duzu gorputz-kontrolak editatu
 body_eregexp=Gorputz kontrolen mapak <tt>regexp:</tt> <i>fitxategi izena</i> formatuan egon behar du.
 opts_body_checks=Mezuen gorputza egiaztatzeko taulak
 body_return=gorputzaren kontrolak
+
 dependent_title=Igorlearen menpeko garraioaren mapak
 dependent_ecannot=Ezin duzu igorlearen menpeko garraiatze mapak editatu
 dependent_eregexp=Igorlearen menpeko garraioen mapak <tt>regexp:</tt> <i>fitxategi izena</i> formatuan egon behar du
 dependent_return=igorlearen menpeko garraio-mapak
+
 manual_title=Editatu Map Fitxategia
 manual_file=Aukeratu mapako fitxategia editatzeko:
 manual_change=Aldaketa
@@ -604,9 +664,11 @@ manual_editing=Erabili beheko testu koadroa $1 mapan eskuz editatzeko. Kontuz ib
 manual_err=Ezin izan da maparen fitxategia gorde
 manual_efile=Maparen izen baliogabea!
 manual_ecannot=Ezin duzu mapako fitxategiak eskuz editatu
+
 delq_titles=Mezuak ezabatzen
 delq_rusure=Ziur $1 hautatutako ilarako mezuak ezabatu nahi dituzula?
 delq_confirm=Ezabatu mezuak
+
 master_title=Zerbitzari prozesuak
 master_name=Prozesuaren izena
 master_enabled=Gaituta?
@@ -647,8 +709,10 @@ master_einet=Entzun ahal izateko ostalariaren helbide bat Interneteko prozesueta
 master_ecommand=Zerbitzariaren prozesuaren komando falta da
 master_ewakeup=Falta edo iratzerako denbora baliogabea
 master_emaxprocs=Gehieneko prozesu kopuru falta edo baliogabea
+
 delete_err=Ezin izan da mapak ezabatu
 delete_enone=Ez da hautatu
+
 cmanual_title=Editatu Konfiguratu fitxategiak
 cmanual_ecannot=Ezin duzu Postfix konfigurazio fitxategia editatu
 cmanual_ok=Editatu
@@ -656,10 +720,12 @@ cmanual_efile=Hautatutako fitxategia ez da Postfix konfigurazioaren barruan
 cmanual_file=Editatu konfigurazio fitxategia:
 cmanual_edata=Ez da ezer sartu!
 cmanual_err=Ezin izan da konfiguratu fitxategia gordetzean
+
 access_return=sarbidea maparen taula
 edit_map_file=Editatu Map Fitxategia
 opts_reject_rbl_client=Denbora errealeko Zerrenda Beltzak (RBL) kontsultak
 opts_check_sender_access=Egiaztatu igorlearen sarbide maparen taula
+
 log_misc=Aukera orokorrak aldatu dira
 log_opts=Helbideen berridazketa eta maskaratzea
 log_aliases=Aliasen aukerak aldatu dira
@@ -667,6 +733,7 @@ log_canonical=Mapaketa kanonikoko aukerak aldatzea
 log_virtual=Aldatutako domeinu birtualaren aukerak
 log_bcc=Aldatutako BCC mapa aukerak
 log_transport=Garraio-mapen aukerak aldatu dira
+log_sni=Aldatu ziurtagiriak mapatzeko aukerak
 log_dependent=Aldatutako igorlearen menpeko helbide aukerak
 log_relocated=Aldatu egin dira lekuz aldatzeko mapen aukerak
 log_header=Aldatu goiburua egiaztatzeko aukerak
@@ -744,6 +811,7 @@ log_sender_dependent_default_transport_maps_modify=Bidaltzailearen menpeko helbi
 log_sender_dependent_default_transport_maps_delete=Igorlearen menpeko helbidea $1
 log_delete_sender_dependent_default_transport_mapss=$1 igorlearen menpeko helbideak ezabatu dira
 log_manual_sender_dependent_default_transport_mapss=Eskuz editatu bidaltzailearen menpeko helbideak $1
+
 sasl_title=SMTP autentifikazioa eta zifratzea
 opts_smtpd_sasl_auth_enable=SASL SMTP autentifikazioa behar duzu?
 opts_smtp_sasl_auth_enable=Erabili SASL SMTP autentikazioa?
@@ -790,6 +858,7 @@ sasl_nologin=Ez da beharrezkoa
 sasl_userpass=Sartu $1 pasahitzarekin $2
 sasl_elogin=SMTP saioa edo baliogabea falta da (ez da lekurik edo birik onartzen)
 sasl_epass=SMTP pasahitz baliogabea (espaziorik ez da onartzen)
+
 client_title=SMTP bezeroaren murrizketak
 client_ecannot=Ezin duzu SMTP bezeroen murrizketak editatu
 client_restrict=Bezeroaren murrizketak
@@ -799,6 +868,7 @@ client_other=Beste murrizketa batzuk :
 client_err=Ezin izan da bezeroaren murrizketak gorde
 client_evalue=$1 murrizketarako balioa falta da
 client_return=SMTP bezeroaren murrizketak
+
 chooser_title=Hautatu Mapa Iturria
 chooser_header=Maparen iturria $1
 chooser_none=Bat ere ez
@@ -854,6 +924,7 @@ chooser_elquery_filter=Falta da $1 maparen kontsulta iragazkia
 chooser_elresult_attribute=Emaitza falta edo baliogabearen atributuaren izena $1
 chooser_elbind_dn=LDAP zerbitzarirako saioa falta da $1
 chooser_elbind_pw=LDAP zerbitzariaren pasahitza falta da $1
+
 mysql_ecfile=MySQL konfigurazio fitxategia $1 ez da aurkitu
 mysql_ecfile2=Ezin izan da taula aurkitu MySQL konfigurazio fitxategian $1
 mysql_edriver=Ezin izan da $1 datu-basearen gidaria kargatu
@@ -865,6 +936,7 @@ mysql_eupdate=SQL eguneratzea huts egin da : $1
 mysql_elist=SQL kontsultak huts egin du : $1
 mysql_esource=Ez da $1 izeneko MySQL iturririk aurkitu
 mysql_eneed=MySQL konfigurazioaren parametroa $1 ez da aurkitu. Webmin-ek hau kontsultatu nahi duen zein taula eta eremu zehaztu behar du.
+
 ldap_ecfile=LDAP konfigurazio fitxategia $1 ez da aurkitu
 ldap_eldapmod=LDAPekin komunikatzeko behar den perl modulua $1 ez dago instalatuta edo ez da kargatu
 ldap_eldap=Huts egin du LDAP zerbitzarira konektatzean $1 portuan $2
@@ -875,6 +947,7 @@ ldap_edelete=$1 LDAP ezabatzeak huts egin du : $2
 ldap_equery=LDAP bilaketa $1 huts egin du : $2
 ldap_erename=LDAP-ek $1 to $2 huts egin du : $3
 ldap_emodify=$1 -ko LDAP aldaketak huts egin du : $2
+
 bcc_title=BCC mapaketa
 bcc_ecannot=Ezin duzu BCC mapak editatu
 opts_sender_bcc_maps=Bidaltzailea BCC mapak bilaketa-taulak

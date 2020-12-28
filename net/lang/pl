@@ -7,6 +7,7 @@ index_delete2=Usuń wybrane interfejsy
 index_delete3=Usuń i zastosuj wybrane interfejsy
 index_apply2=Zastosuj wybrane interfejsy
 index_vmin=Virtualmin
+
 ifcs_title=Interfejsy sieciowe
 ifcs_now=Interfejsy aktywne obecnie
 ifcs_activedesc=Interfejsy z poniższej tabli są aktualnie aktywne w systemie. W większości przypadków powinieneś edytować je w zakładce  <b>Interfejsy aktywne podczas startu</b>
@@ -54,6 +55,7 @@ ifcs_linkyes=Połączono
 ifcs_linkno=Rozłączono
 ifcs_speed=Prędkość interfejsu
 ifcs_duplex=, $1 duplex
+
 aifc_create=Utwórz interfejs aktywny
 aifc_edit=Zmień interfejs aktywny
 aifc_desc1=Dane interfejsu aktywnego
@@ -78,6 +80,7 @@ aifc_eaddress6=Adres IPv6 w polu $1 jest nieprawidłowe
 aifc_enetmask6=Maska podsieci w polu $1 musi być liczbą całkowitą między 1, a 128
 aifc_eclash6=Adres IPv6 w polu $1 jest już używany przez interfejs $2
 aifc_eaddresses6=Nie wpisano adresu IPv6
+
 bifc_create=Utwórz interfejs startowy
 bifc_act=Aktywne przy starcie?
 bifc_edit=Zmień interfejs startowy
@@ -106,17 +109,21 @@ bifc_ebridgeto=Musisz wybrać istniejący interfejs Ethernet, aby zmostkować
 bifc_ebridgeto2=Wybrany interfejs do mostkowania, nie może mieć przypisanych adresów
 bifc_ebridge=Interfejs mostkowany musi być liczbą
 bifc_ebond=Interfejs Bond musi być liczbą
+
 bonding_add=Dodaj nowy interfejs bonding
 bonding_create=Tworzenie interfejsu Bonding
 bonding_teamparts=Partnerzy Teaming
 bonding_teampartsdesc=Oddziel partnerów spacjami np. "eth2 eth4"
 bonding_teammode=Tryb Teaming
 bonding_miimon=Interwał Mii-Monitoring
+
 vlan_add=Dodaj interfejs Vlan Tagged
 vlan_physical=Fizyczne urządzenie
 vlan_id=ID Vlan
 vlan_create=Tworzenie interfejsu VLAN
+
 bridge_create=Tworzenie interfejsu mostkowego
+
 routes_title=Routing i bramki
 routes_boot=Konfiguracja routingu przy <i>starcie systemu</i>
 routes_now=Konfiguracja trasowania aktywna
@@ -184,6 +191,7 @@ routes_tabboot=Konfiguracja przy starcie
 routes_tabactive=Konfiguracja aktywna
 routes_descactive=Ta sekcja zawiera listę tras (routes), które są aktualnie skonfigurowane w systemie i pozwala na niektórych systemach na dodawanie lub usuwanie aktywnych tras. Bądź ostrożny, błędna konfiguracja może odciąć Webmina i resztę systemów od sieci.
 routes_descboot=Ta sekcja pozwala na konfiguracje tras (routes), które są aktywne przy uruchamianiu systemu lub gdy ustawienia sieci są ponownie stosowane.
+
 dns_title=Klient DNS
 dns_options=Opcje klienta DNS
 dns_hostname=Nazwa hosta
@@ -201,6 +209,7 @@ dns_edomain='$1' nie jest poprawną nazwą domeny
 dns_esearch=Nie podano domen do szukania
 dns_hoststoo=Aktualizować nazwy hostów w adresach hosta jeżeli się zmieni?
 dns_dhcp=Nazwa hosta jest ustawiona przez serwer DHCP?
+
 hosts_title=Adresy hostów
 hosts_ip=Adres IP
 hosts_host=Nazwy hosta
@@ -211,6 +220,7 @@ hosts_detail=Hosty i adresy
 hosts_return=listy adresów hostów
 hosts_ecannot=Nie masz uprawnień do zmiany adresów hostów
 hosts_delete=Usuń wybrane adresy hosta
+
 ipnodes_title=Adresy IPv6 hosta
 ipnodes_ip=Adresy IPv6
 ipnodes_host=Nazwy hosta
@@ -222,6 +232,7 @@ ipnodes_return=listy adresów IPv6 hosta
 ipnodes_ecannot=Nie masz uprawnień do edycji adresów IPv6 hosta
 ipnodes_none=Brak zdefiniowanych adresów IPv6 hosta.
 ipnodes_delete=Usuń wybrane adresy IPv6 hosta
+
 log_create_host=Utworzono host o adresie $1
 log_delete_host=Skasowano host o adresie $1
 log_modify_host=Zmieniono host o adresie $1
@@ -245,6 +256,7 @@ log_apply_bfics=Aktywowano interfejsy $1 przy starcie systemu
 log_create_route=Utworzono aktywne trasy dla $1
 log_create_defroute=Utworzono domyślnie aktywną trasę
 log_delete_routes=Usunięto aktywną trasę $1
+
 acl_ifcs=Może zmieniać interfejsy sieciowe?
 acl_routes=Może zmieniać routing i bramki?
 acl_dns=Może zmieniać ustawienia klienta DNS?
@@ -261,6 +273,7 @@ acl_up=Może edytować aktywne stany?
 acl_virt=Może dodawać wirtualne interfejsy?
 acl_delete=Może usuwać interfejsy?
 acl_hide=Ukryć nie edytowalne interfejsy?
+
 interfaces_title1=Wybierz interfejs...
 interfaces_all=Wszystkie interfejsy...
 interfaces_sel=Zaznaczone interfejsy
@@ -268,7 +281,9 @@ interfaces_ok=OK
 interfaces_cancel=Anuluj
 interfaces_clear=Wyczyść
 interfaces_title2=Wybierz użytkownika...
+
 apply_ecannot=Nie masz uprawnień do zastosowania konfiguracji
+
 mod_egone=Interfejs nie jest już aktywny!
 mod_title=Aktywny interfejs
 mod_desc=Interfejs $1 jest używany dla $2 i nie może być zarządzany przez ten moduł.
@@ -280,6 +295,7 @@ mod_pptpc=połączenie PPTP $1
 mod_zones=wirtualny interfejs dla strefy <tt>$1</tt>
 mod_virtualmin=serwer Virtualmin <tt>$1</tt>
 mod_reseller=reseller Virtualmin <tt>$1</tt>
+
 range_edit=Edycja zakresu adresu
 range_create=Tworzenie zakresu adresu
 range_header=Opcje zakresu adresu interfejsu
@@ -295,13 +311,17 @@ range_eend=Brakujący lub nieprawidłowy końcowy adres IP
 range_enum=Brakujący lub nienumeryczny numer pierwszego interfejsu wirtualnego
 range_eclass=Początkowy i końcowy adres musi być w tej samej klasie sieci C
 range_ebefore=Końcowy adres musi być większy niż początkowy
+
 chooser_any=&lt;Dowolny&gt;
 chooser_other=Inny..
+
 dafics_err=Błąd dezaktywacji interfejsów
 daifcs_enone=Brak wybranych
 daifcs_egone=Interfejs już nie istnieje!
+
 dbifcs_err=Błąd usuwania interfejsów
 dbifcs_err2=Błąd aktywacji interfejsów
+
 hdelete_err=Błąd usuwania adresów hosta
 hdelete_enone=Nic nie wybrano
 idelete_err=Błąd usuwania adresów IPv6 hosta

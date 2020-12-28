@@ -50,6 +50,7 @@ index_ustatus=Nu uitvoeren?
 index_uadd=Een nieuwe opstart  service aanmaken.
 index_sadd=Een nieuw systemd service aanmaken.
 index_always=Altijd
+
 edit_title=Bewerk Actie
 create_title=Creeer een Actie
 edit_ecannot=U bent niet bevoegd om opstart acties te bewerken
@@ -82,6 +83,7 @@ edit_statusnow=Laat Status zien
 edit_return=actie
 edit_status=Is nu gestart?
 edit_unknown=Onbekend
+
 save_err=Mislukt om actie op te slaan
 save_ecannot=U bent niet bevoegd om opstart acties te bewerken
 save_ealready=Een actie met de naam '$1' bestaat al
@@ -90,6 +92,7 @@ save_ename=ontbrekende of foutieve actie naam
 save_eclash=Een actie met dezelfde naam bestaat al
 save_escript=Geen actie script bevestigd
 save_estartcmd=Ontbrekend opstart opdracht
+
 ss_ecannot=U bent niet bevoegd om opstart acties te stoppen of te starten
 ss_start=Start Actie
 ss_stop=Stop Actie
@@ -100,21 +103,25 @@ ss_exec=Uitvoeren $1 ..
 ss_doingstart=Optart actie $1 ..
 ss_doingstop=Stoppen van actie $1 ..
 ss_doingstatus=Opvragen van de status van actie $1 ..
+
 shutdown_ecannot=U bent niet bevoegd om het systeem uit te schakelen
 shutdown_title=Uitschakelen
 shutdown_rusure=Bent u er zeker van dat u het systeem wilt uitschakelen met de opdracht $1 ?
 shutdown_ok=Uitschakelen Systeem
 shutdown_exec=Uitschakelen met de opdracht $1 ..
+
 reboot_ecannot=U bent niet bevoegd om het systeem te herstarten
 reboot_title=Herstarten
 reboot_rusure=Weet u zeker dat u het systeem wilt herstarten met de opdracht $1 ?
 reboot_ok=Herstarten Systeem
 reboot_exec=Herstarten met de opdracht $1 ..
+
 acl_script=Het opstartscript bewerken?
 acl_actions=Hier kan je acties, starten, veranderen, maken en weggooien?
 acl_runonly=Alleen starten
 acl_reboot=Systeem opnieuw booten?
 acl_shutdown=Het systeem uitzetten?
+
 log_rename=Hernoem actie $1 naar $2
 log_modify=Veranderde acties $1
 log_create=Maak actie $1
@@ -135,6 +142,7 @@ log_massrestart=Herstarten acties $1
 log_massenable=Aanzetten acties $1
 log_massdisable=Uitschakelen acties $1
 log_telinit=Omgeschakelt naar runlevel $1
+
 edit_hostconfig_startup=Het script $1 werkt tijdens het opstarten wanneer deze actie actief is, U kunt dit hieronder bewerken
 edit_hostconfig_plist=De file $1 stelt bepaalde parameters in, maar is onderdanig voor het opstartscript. U kunt dit hieronder bewerken
 edit_hostconfig_new=Nieuwe Actie Aanmaken
@@ -146,6 +154,7 @@ edit_hostconfig_array=De velden $1, $2, en $3 zijn array velden en kunnen meer d
 edit_hostconfig_further=Ne het maken van een nieuwe opstart actie, word u doorgestuurd naar een pagina waar u het opstartscript en de parameters nog kunt tweaken indien nodig
 edit_hostconfig_hostconfig=De file $1 beheerd alle services en deamons van uw systeem die worden gestart tijdens het opstarten van uw systeem. U kunt dit hieronder bewerken
 edit_hostconfig_title=Bewerk Hostconfig
+
 mass_enone=Geen acties geselecteerd
 mass_enone2=Geen services geselecteerd
 mass_start=Starten Acties
@@ -166,9 +175,11 @@ mass_udisable=Service $1 uitschakelen tijdens booten.
 mass_ustarting=Starten van service $1 ..
 mass_ustopping=Stoppen van service $1 ..
 mass_urestarting=Herstarten van service $1 ..
+
 change_err=U bent niet bevoegd om runlevels switchen
 change_title=Switch Runlevel
 change_cmd=Schakel naar runlevel $1 met de opdracht $2. Dit kan even duren, en Webmin kan onbereikbaar zijn na het omschakelen
+
 mode_init=SysV init
 mode_osx=MacOS
 mode_local=Enkel boot script
@@ -176,6 +187,7 @@ mode_win32=Windows services
 mode_rc=FreeBSD RC scripts
 mode_upstart=Opstarten
 mode_systemd=Systemd
+
 upstart_title1=Opstart Service Aanmaken
 upstart_title2=Opstart Service Bewerken
 upstart_egone=Service bestaat niet langer!
@@ -200,6 +212,7 @@ upstart_eserver=Geen server opdracht ingevuld
 upstart_eserver2=Server opdracht bestaat niet
 upstart_eserver3=Er kan maar 1 server opdracht worden ingevuld
 upstart_return=Opstart service
+
 systemd_title1=Systemd Service Aanmaken
 systemd_title2=Systemd Service Bewerken
 systemd_egone=Service bestaat niet langer!

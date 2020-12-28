@@ -3,8 +3,10 @@ index_clink=Galbūt jis neįdiegtas, arba <a href='$1'>modulio konfigūracija</a
 index_return=modulio rodyklė
 index_atboot=Pradėti nuo įkrovos?
 index_atbootdesc=Pakeiskite šią parinktį norėdami valdyti, ar „iSCSI“ klientas paleistas įkrovos metu, ar ne. Tai reikalinga, kad failų sistemos, sumontuotos iš „iSCSI“ serverių, būtų automatiškai sujungiamos.
+
 check_econfig=Jūsų sistemoje nerastas „iSCSI“ kliento konfigūracijos failas $1.
 check_eiscsiadm=„ISCSI“ kliento administravimo programa $1 jūsų sistemoje nerasta.
+
 auth_title=Autentifikavimo parinktys
 auth_header=iSCSI kliento ir serverio autentifikavimas
 auth_name=Vietinės sistemos iniciatoriaus vardas
@@ -29,6 +31,7 @@ auth_edpassword=Trūksta serverio radimo slaptažodžio
 auth_edusername_in=Trūksta kliento vartotojo vardo
 auth_edpassword_in=Trūksta kliento atradimo slaptažodžio
 auth_egen=Nepavyko sugeneruoti naujo vardo!
+
 timeout_title=„iSCSI“ skirtumai
 timeout_header=„iSCSI“ kliento skirtojo laiko parinktys
 timeout_timeout=Laikas laukti, kol nepavyks SCSI komandos
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Trūksta laiko arba neskaičiuojamas laikas laukti pin
 timeout_eabort_timeout=Trūksta arba neskaičiuojamas laikas laukti atsakymo nutraukimo, kol nepavyks
 timeout_elu_reset_timeout=Trūksta laiko arba jis nėra skaitinis laikas laukti loginio vieneto atsakymo, kol nepavyks
 timeout_etgt_reset_timeout=Trūksta laiko arba nėra skaitinių laiko laukti tikslinio atsakymo, kol nepavyks
+
 iscsi_title=iSCSI parinktys
 iscsi_header=Kitos „iSCSI“ parinktys
 iscsi_startup=Prisijunkite sesijas įkrovos metu?
@@ -62,6 +66,7 @@ iscsi_err=Nepavyko išsaugoti „iSCSI“ parinkčių
 iscsi_eretry=Trūksta arba ne skaitinis kartų skaičius, kad galėtumėte dar kartą pabandyti prisijungti
 iscsi_ecmds=Trūksta arba nėra skaitinių maksimalių komandų, einamų į sesiją
 iscsi_equeue=Trūksta ar neskaitmeninių komandų eilių, esančių viename įrenginyje, nėra
+
 ifaces_title=iSCSI sąsajos
 ifaces_elist=Nepavyko išvardyti sąsajų : $1 
 ifaces_name=Sąsajos pavadinimas
@@ -78,11 +83,13 @@ ifaces_hwaddress=MAC adresas
 ifaces_ifacename=Šaltinio sąsaja
 ifaces_ipaddressdef=Automatinis
 ifaces_notset=Automatinis
+
 iadd_err=Nepavyko pridėti sąsajos
 iadd_eclash=Sąsaja pavadinimu $1 jau yra
 iadd_eipaddress=Trūksta arba netinkamas šaltinio IP adresas
 iadd_ehwaddress=Trūksta arba netinkamas MAC adresas
 iadd_ename=Trūksta sąsajos pavadinimo arba jame yra netinkamų simbolių
+
 difaces_err=Nepavyko pašalinti sąsajų
 difaces_enone=Nepasirinkta
 difaces_edelete=Nepavyko pašalinti sąsajos $1 : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Pašalinkite sąsajas
 difaces_target=iSCSI taikinys
 difaces_ip=iSCSI serveris
 difaces_users=Kai kurie ryšiai, naudojantys šias sąsajas, šiuo metu yra aktyvūs ir pašalinus sąsajas, jie neveiks :
+
 conns_title=iSCSI jungtys
 conns_elist=Nepavyko išvardyti jungčių : $1 
 conns_ip=Serverio IP
@@ -113,6 +121,7 @@ conns_return=jungčių sąrašas
 conns_iface=iSCSI sąsaja
 conns_ifacedef=Pasirinkite automatiškai
 conns_ifaceerr=Nepavyko gauti sąsajų : $1 
+
 add_title=Pridėti „iSCSI“ ryšį
 add_err=Nepavyko pridėti „iSCSI“ ryšio
 add_ehost=Trūksta arba neišsprendžiamas pagrindinio kompiuterio vardas
@@ -129,6 +138,7 @@ add_on=$1 $2
 add_auth=Prisijungimas prie serverio
 add_auth1=Naudokite numatytąjį autentifikavimo metodą
 add_auth0=Prisijunkite kaip $2 naudodami slaptažodį $3 naudodami metodą $1 
+
 dconns_err=Nepavyko atjungti jungčių
 dconns_enone=Nepasirinkta
 dconns_edelete=Nepavyko pašalinti tikslo $2 iš kompiuterio $1 : $3 
@@ -142,6 +152,7 @@ dconns_use=Naudojama
 dconns_size=Pertvaros dydis
 dconns_confirm=Pašalinti jungtis
 dconns_unused=Nenaudojamas
+
 vconn_title=„iSCSI“ jungtis
 vconn_egone=Pasirinktas ryšys nebeegzistuoja!
 vconn_header=„iSCSI“ ryšio informacija
@@ -160,8 +171,10 @@ vconn_device3=Pastovus įrenginio pavadinimas
 vconn_delete=Atjunkite ryšį
 vconn_users=Dabartiniai vartotojai
 vconn_size=Disko dydis
+
 atboot_err=Nepavyko įgalinti įkrovos metu
 atboot_einit=Nėra įkrovos veiksmo, pavadinto $1 
+
 log_auth=Išsaugotos autentifikavimo parinktys
 log_timeout=Išsaugotos skirtojo laiko parinktys
 log_iscsi=Išsaugotos „iSCSI“ parinktys

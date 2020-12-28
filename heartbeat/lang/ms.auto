@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Skrip untuk meminta sumber dari nod lain ($1) tidak diju
 index_version=Versi degupan jantung $1 
 index_noversion=Amaran - Versi Heartbeat yang dipasang pada sistem anda tidak dapat dikesan secara automatik. Anda harus menetapkannya pada halaman konfigurasi <a href='$1'></a>.
 index_status=Status degupan jantung
+
 conf_title=Pilihan Konfigurasi
 conf_header=Pilihan konfigurasi jantung
 conf_serials=Pelabuhan denyutan jantung serial
@@ -54,6 +55,7 @@ conf_auto_on=$ {conf_enabled}
 conf_auto_off=$ {conf_disabled}
 conf_auto_legacy=Mod warisan
 conf_auto_=$ {default}
+
 res_title=Sumber Kluster
 res_node=Node Primer
 res_ips=Alamat IP
@@ -67,6 +69,7 @@ res_getserv=Dapatkan Sumber
 res_hbdown=Sentuhan jantung
 res_up=UP
 res_down=DOWN
+
 node_create=Tambah Sumber Kluster
 node_edit=Edit Sumber Kelompok
 node_header=Butiran sumber kluster
@@ -83,6 +86,7 @@ node_enone=Nod utama yang hilang atau tidak sah
 node_eip='$1' bukan alamat IP yang sah
 node_ecidr='$1' bukan CIDR yang sah
 node_ebroad='$1' bukan alamat siaran yang sah
+
 auth_title=Kunci Pengesahan
 auth_header=Pengesahan nod kelompok
 auth_mode=Mod pengesahan
@@ -92,6 +96,8 @@ auth_md5=MD5 dengan kata laluan
 auth_err=Gagal menyimpan kekunci pengesahan
 auth_emd5=Kata laluan MD5 hilang atau tidak sah
 auth_esha1=Kata laluan SHA1 yang hilang atau tidak sah
+
 start_err=Gagal memulakan degupan jantung
+
 apply_err=Gagal menggunakan perubahan
 apply_epid=Proses tidak lagi berjalan

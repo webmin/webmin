@@ -27,6 +27,7 @@ index_ok=Szukaj
 index_searchres=Zadania Cron pasujące do $1 ..
 index_reset=Resetuj wyszukiwanie
 index_econfigcheck=Zadania Cron nie mogą być zarządzane na tym systemie, ponieważ konfiguracja modułu jest nieprawidłowa : $1
+
 edit_title=Zmień zadanie crona
 create_title=Utwórz zadanie crona
 edit_ecannot=Mie masz uprawnień do zmiany zadań crona tego użytkownika
@@ -65,6 +66,7 @@ lcedit_special_weekly=tygodniowo (w niedzielę)
 lcedit_special_monthly=miesięcznie (pierwszego)
 lcedit_special_yearly=rocznie (1 stycznia)
 lcedit_special_reboot=przy starcie systemu
+
 save_err=Nie udało się zachować zadania dla crona
 save_ecmd=Nie podałes polecenia do uruchomienia
 save_euser=Musisz określic użytkownika
@@ -74,6 +76,7 @@ save_ecannot=Nie masz uprawnień do tworzenia ani zmieniania zadań crona dla '$
 save_enone=Nie wybrałeś żadnego $1 do uruchomienia
 save_ecannot2=Nie masz uprawnień do tworzenia zadań Cron
 save_eidx=Zadanie Crona zostało poprawnie zapisane, ale nie może zostać uruchomione ponieważ nie można go znaleźć!
+
 allow_title=Zarządzanie dostępem do crona
 allow_desc=Ten formularz pozwala ci określić, którzy użytkownicy mogą tworzyć i uruchamiać zadania crona
 allow_ecannot=Nie masz uprawnień do określania praw dostepu do crona
@@ -82,6 +85,7 @@ allow_all2=Zabroń wszystkim oprócz roota
 allow_all3=Pozwól wszystkim
 allow_allow=Pozwól tylko wymienionym
 allow_deny=Zabroń tylko wymienionym
+
 env_title1=Edycja zmiennej środowiskowej
 env_title2=Tworzenie zmiennej środowiskowej
 env_name=Nazwa zmiennej
@@ -97,11 +101,13 @@ env_where2=Przesuń zmienną środowiskową
 env_top=Przed wszystkimi zadaniami Crona dla użytkownika
 env_bot=Po wszystkich zadania Crona
 env_leave=Aktualna pozycja
+
 exec_title=Uruchom zadanie crona
 exec_ecannot=Nie masz uprawnień do uruchamiania zadań crona tego użytkownika
 exec_cmd=Wynik polecenia $1 ..
 exec_cmdbg=Uruchomienie polecenia $1 jako proces w tle.
 exec_none=Nie wygenerowano żadnego wyniku
+
 acl_users=Może zmieniać zadania crona dla
 acl_all=Wszystkich użytkowników
 acl_this=Aktualnego użytkownika Webmina
@@ -117,6 +123,7 @@ acl_move=Może przesuwać zadania Cron?
 acl_kill=Może zatrzymywać zadania Cron?
 acl_hourly=Ograniczyć zadania do maksymalnie godziny?
 acl_hourlydef=Tak jak ustawiono w konfiguracji modułu
+
 log_modify=Zmieniono zadanie crona dla $1
 log_modify_l=Zmieniono zadanie crona "$2" dla $1
 log_create=Utworzono zadanie crona dla $1
@@ -134,7 +141,9 @@ log_move=Przesunięto zadanie Cron dla $1
 log_crons_delete=Usunięto $1 zdań Cron
 log_crons_disable=Wyłączono $1 zdań Cron
 log_crons_enable=Włączono $1 zdań Cron
+
 ecopy=Wykryto błąd w nowej konfiguracji Crona : $1 $2
+
 when_min=co minutę
 when_hour=co godzinę, $1 po godzinie
 when_day=co dziennie o $2:$1
@@ -142,6 +151,7 @@ when_month=w dniu $3 co miesiąc o $2:$1
 when_weekday=co $3 o $2:$1
 when_cron=w czasie cron $1
 when_interval=co $1 sekund
+
 ucwhen_min=Co minutę
 ucwhen_hour=Co godzinę, $1 po godzinie
 ucwhen_day=Co dziennie o $2:$1
@@ -149,8 +159,10 @@ ucwhen_month=W dniu $3 co miesiąc o $2:$1
 ucwhen_weekday=Co $3 o $2:$1
 ucwhen_cron=Cron w czasie $1
 ucwhen_interval=Co $1 sekund
+
 move_err=Błąd przenoszenia zadania Cron
 move_etype=To zadanie nie może zostać przesunięte
+
 kill_err=Błąd zakończenia zadania Cron
 kill_ecannot=Nie masz uprawnień do zakończenia zadania
 kill_egone=Nie jest już uruchomione
@@ -159,10 +171,12 @@ kill_title=Kończenie zadania Cron
 kill_rusure=Czy na pewno chcesz zakończyć proces $1 z PID $2?
 kill_rusure2=Czy na pewno chcesz zakończyć proces $1 z PID $2 i wszystkie jego pod procesy?
 kill_ok=Tak, zakończ
+
 range_all=Uruchom w dowolnym terminie
 range_start=Uruchom tylko od $1
 range_end=do $1
 range_estart=Brakujący lub nieprawidłowy początkowy zakres daty do uruchomienia
 range_eend=Brakujący lub nieprawidłowy końcowy zakres daty do uruchomienia
+
 delete_err=Błąd usuwania zadania Cron
 delete_enone=Nic nie wybrano

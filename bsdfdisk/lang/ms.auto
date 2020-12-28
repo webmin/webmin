@@ -7,6 +7,7 @@ index_dsize=Jumlah saiz
 index_dmodel=Buat dan model
 index_dparts=Keping
 index_return=senarai cakera
+
 disk_title=Edit Disk
 disk_egone=Cakera tidak lagi wujud!
 disk_no=Slice
@@ -31,9 +32,11 @@ disk_return=butiran cakera dan senarai keping
 disk_add=Buat sepotong baru.
 disk_smart=Tunjukkan Status SMART
 disk_smartdesc=Tunjukkan status semasa pemacu ini seperti yang dikesan oleh SMART, dan periksa ia untuk kesilapan cakera.
+
 select_device=$1 peranti $2 
 select_slice=$1 peranti $2 slice $3 
 select_part=$1 peranti $2 slice $3 partition $4 
+
 slice_title=Edit Slice
 slice_egone=Kepingan yang dipilih tidak wujud!
 slice_ssize=Saiz keping
@@ -58,6 +61,7 @@ slice_return=butiran slice dan senarai partition
 slice_err=Gagal mengubahsuai keping
 slice_header=Butiran slice
 slice_suse=Terus digunakan oleh
+
 dslice_title=Padamkan Slice
 dslice_rusure=Adakah anda pasti mahu memadamkan slice $1 ? Mana-mana sekatan dan sistem fail di dalamnya juga akan dihapuskan.
 dslice_warn=Amaran - slit ini kini digunakan oleh : $1 
@@ -65,6 +69,7 @@ dslice_confirm=Padamkan Sekarang
 dslice_deleting=Memadam slice $1 ..
 dslice_failed=Pemadaman gagal : $1 
 dslice_done=.. selesai
+
 nslice_title=Buat Slice
 nslice_header=Butiran slaid baru
 nslice_number=Nombor keping
@@ -86,6 +91,7 @@ nslice_done=.. slice ditambah
 nslice_parting=Buat partisyen lalai dalam keping $1 pada $2 ..
 nslice_pfailed=.. penciptaan partition gagal : $1 
 nslice_pdone=.. partition added
+
 npart_title=Buat Partition
 npart_header=Butiran partition baru
 npart_letter=Surat pemisahan
@@ -98,6 +104,7 @@ npart_emax=Blok akhir tidak boleh lebih besar daripada saiz slice $1 blok
 npart_creating=Membuat partition $1 pada $2 ..
 npart_failed=.. penciptaan partition gagal : $1 
 npart_done=.. partition added
+
 part_title=Edit Partition
 part_egone=Pemisahan tidak lagi wujud!
 part_header=Butiran partition
@@ -124,6 +131,7 @@ part_newmount2=Pemisahan Gunung
 part_mountmsg=Pasang peranti ini pada direktori baru pada sistem anda, supaya ia boleh digunakan untuk menyimpan fail. Sistem fail mestilah sudah dibuat pada peranti.
 part_mountmsg2=Gunung peranti ini sebagai memori maya pada sistem anda, untuk meningkatkan jumlah memori yang ada.
 part_cannotedit=Partition ini tidak boleh diubah suai kerana ia sedang digunakan.
+
 dpart_title=Padamkan Partition
 dpart_rusure=Adakah anda pasti mahu memadamkan partition $1 ? Mana-mana sistem fail di dalamnya juga akan dipadamkan.
 dpart_warn=Amaran - partisyen ini kini digunakan oleh $1 
@@ -131,6 +139,7 @@ dpart_confirm=Padamkan Sekarang
 dpart_deleting=Memadam partition $1 ..
 dpart_failed=Pemadaman gagal : $1 
 dpart_done=.. selesai
+
 newfs_title=Buat Filesystem
 newfs_header=Butiran sistem fail baru
 newfs_free=Ruang untuk dirizabkan untuk akar
@@ -145,11 +154,13 @@ newfs_elabel=Label hilang atau tidak sah
 newfs_creating=Membuat sistem fail pada $1 ..
 newfs_failed=.. penciptaan gagal!
 newfs_done=.. berjaya dibuat
+
 fsck_title=Semak Filesystem
 fsck_err=Gagal menyemak sistem fail
 fsck_checking=Memeriksa sistem fail pada $1 ..
 fsck_failed=.. semak gagal!
 fsck_done=.. semak selesai tanpa ralat yang dijumpai
+
 log_create_slice=Slice yang dibuat $1 
 log_delete_slice=Slice dipadam $1 
 log_modify_slice=Reka bentuk slice $1 

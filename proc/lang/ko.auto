@@ -7,19 +7,23 @@ index_loadname=CPU로드 평균 :
 index_loadnums=$1 (1 분), $2 (5 분), $3 (15 분)
 index_cpuname=CPU 유형 :
 index_inzone=영역 $1 에서
+
 stime=시작
 sclass=IO 스케줄링 클래스
 sprio=IO 우선 순위
+
 search_cpupc2=보다 많은 CPU 사용
 search_sigterm=프로세스 종료
 search_sigkill=킬 프로세스
 search_port=포트 사용
 search_protocol=실험 계획안
 search_ip=IP 주소 사용
+
 run_ecannot=명령을 실행할 수 없습니다
 run_as=사용자로 실행
 run_euser=사용자 이름이 없거나 잘못되었습니다
 run_euser2=선택한 사용자로서 명령을 실행할 수 없습니다
+
 edit_subid=신분증
 edit_subcmd=하위 프로세스 명령
 edit_ecannot=프로세스를 편집 할 수 없습니다
@@ -30,18 +34,27 @@ edit_sigcont=이력서
 edit_open=파일과 연결
 edit_trace=추적 프로세스
 edit_return=공정 세부 사항
+
 kill_ecannot=당신은 프로세스를 죽일 수 없습니다
+
 renice_ecannot=프로세스를 다시 사용할 수 없습니다
+
 linux_stime=시작
+
 linux_real=실시간
 linux_be=최고의 노력
 linux_idle=게으른
+
 freebsd_stime=시작
+
 hpux_stime=시작
+
 sysv_stime=시작
 sysv_task=작업 ID
 sysv_zone=구역 이름
+
 log_renice=프로세스 $2 의 우선 순위가 $1 (으)로 변경되었습니다.
+
 acl_manage_def=현재 Webmin 사용자
 acl_edit=프로세스를 죽이고 다시 사용할 수 있습니까?
 acl_run=명령을 실행할 수 있습니까?
@@ -50,6 +63,7 @@ acl_who=사용자 프로세스 관리 가능
 acl_who0=모든 사용자들
 acl_who1=현재 Webmin 사용자
 acl_who2=나열된 사용자 ..
+
 open_title=파일 및 연결 열기
 open_proc=프로세스 $1 (PID $2)의 경우
 open_header1=파일 열기
@@ -73,6 +87,7 @@ open_blk=스페셜 차단
 open_size=파일 크기
 open_inode=이노 드
 open_file=통로
+
 trace_title=추적 프로세스
 trace_start=$1 에 대한 시스템 호출 추적을 시작합니다.
 trace_doing=$1 에 대한 시스템 호출 추적  :
@@ -83,5 +98,7 @@ trace_syscalls=시스템 호출 추적 :
 trace_all=모두
 trace_sel=상장 ..
 trace_change=변화
+
 windows_threads=처리중인 스레드
+
 syslog_dmesg=커널 메시지

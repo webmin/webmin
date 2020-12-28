@@ -21,6 +21,7 @@ index_eversion=Versiunea STunnel instalată pe sistemul dvs. este $1, dar acest 
 index_conf=Din fișierul de configurare $1 
 index_noconf=Fără fișier de configurare!
 index_delete=Ștergeți tunelurile selectate
+
 edit_title=Editează SSL Tunnel
 create_title=Creați tunel SSL
 edit_header1=Opțiuni sursă tunel
@@ -47,6 +48,7 @@ edit_tcpw=Nume TCP-ambalaje
 edit_auto=Automat
 edit_iface=Adresa sursă de ieșire
 edit_type=Fugi de
+
 save_err=Nu a reușit să salveze tunelul SSL
 save_enclash=Numele serviciului $2 este deja utilizat pe portul $1.
 save_einetd=Există deja un serviciu inetd numit $1.
@@ -61,6 +63,7 @@ save_etcpw=Lipsește sau nu este valabil numele TCP-wrappers
 save_eiface=Adresa sursă de ieșire lipsă sau nevalidă
 save_exinetd=Există deja un serviciu xinetd numit $1 
 save_export=Portul $1 este deja utilizat de serviciul xinetd $2 
+
 log_apply=Modificări aplicate
 log_create=Creat tunel SSL $1 
 log_delete=Ștergerea tunelului SSL $1 

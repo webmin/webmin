@@ -12,10 +12,12 @@ index_restart=Restartujte server Fail2Ban
 index_restartdesc=Klepnutím na toto tlačítko použijete aktuální konfiguraci restartováním serveru Fail2Ban.
 index_return=index modulu
 index_header=Fail2Ban modul
+
 check_edir=Konfigurační adresář $1 neexistuje
 check_econf=Konfigurační soubor $2 v $1 neexistuje
 check_eclient=Příkaz klienta $1 nebyl nalezen
 check_eserver=Příkaz serveru $1 nebyl nalezen
+
 filters_title=Filtry protokolu
 filters_name=Název filtru
 filters_re=Regulární výraz
@@ -25,6 +27,7 @@ filters_return=seznam filtrů
 filters_derr=Filtry se nepodařilo smazat
 filters_enone=Nebyl vybrán žádný
 filters_einuse=Filtr $1 nelze odstranit, protože ho používají vězení : $2 
+
 filter_title1=Vytvořit filtr
 filter_title2=Upravit filtr
 filter_desc=Použijte <i>&lt;HOST&gt;</i> v regulárních výrazech, kde by se mělo objevit jméno hostitele nebo IP adresa.
@@ -39,6 +42,7 @@ filter_ename=Chybějící nebo neplatný název filtru
 filter_eclash=Název filtru se již používá
 filter_efail=Nebyl zadán žádný regulární výraz
 filter_einuse=Tento filtr nelze odstranit, protože ho používají vězení : $1 
+
 actions_title=Zápasové akce
 actions_name=Název akce
 actions_ban=Příkaz zakázat
@@ -48,6 +52,7 @@ actions_return=seznam akcí
 actions_derr=Akce se nepodařilo smazat
 actions_enone=Nebyl vybrán žádný
 actions_einuse=Akci $1 nelze odstranit, protože ji používají vězení : $2 
+
 action_title1=Vytvořte akci zápasu
 action_title2=Upravit akci akce
 action_header=Detaily akce zápasu
@@ -64,6 +69,7 @@ action_ban=Příkaz k zákazu IP
 action_unban=Příkaz k zákazu IP
 action_desc=<i>&lt;ip&gt;</i> bude nahrazeno zakázanou IP adresou.
 action_einuse=Tuto akci nelze odstranit, protože ji používají vězení : $1 
+
 jails_title=Filtrovat akce vězení
 jails_add=Přidejte nový vězení.
 jails_name=Jméno vězení
@@ -76,6 +82,7 @@ jails_defdesc=Upravte výchozí nastavení a limity, které se vztahují na vše
 jails_return=seznam vězení
 jails_derr=Odstranění vězení se nezdařilo
 jails_enone=Nebyl vybrán žádný
+
 jail_title1=Vytvořte vězení
 jail_title2=Upravit vězení
 jail_header=Filtrujte podrobnosti o vězení
@@ -115,13 +122,16 @@ jail_banaction=Výchozí akce použít
 jail_defprotocol=Výchozí protokol pro akce
 jail_edestemail=Chybí nebo neplatná výchozí e-mailová adresa pro oznámení
 jail_eignoreip=Neplatná adresa IP, kterou chcete ignorovat
+
 jaildef_title=Výchozí možnosti vězení
 jaildef_header=Výchozí nastavení pro všechny vězení
 jaildef_err=Nepodařilo se uložit výchozí možnosti vězení
 jaildef_egone=Nebyl nalezen žádný výchozí vězení!
+
 start_err=Spuštění serveru se nezdařilo
 stop_err=Zastavení serveru se nezdařilo
 restart_err=Server se nepodařilo restartovat
+
 log_create_filter=Vytvořen filtr $1 
 log_update_filter=Upravený filtr $1 
 log_delete_filter=Smazaný filtr $1 
@@ -139,6 +149,7 @@ log_atboot=Povoleno Fail2Ban v době spuštění
 log_delboot=Zakázáno Fail2Ban v době spuštění
 log_manual=Upravený konfigurační soubor $1 
 log_jaildef=Upravené výchozí možnosti vězení
+
 config_title=Globální konfigurace
 config_edef=V konfiguračním souboru nebyla nalezena žádná definice!
 config_header=Konfigurace nastavení pro Fail2Ban
@@ -151,10 +162,12 @@ config_socket=Zásuvka pro komunikaci se serverem
 config_err=Uložení globální konfigurace se nezdařilo
 config_elogtarget=Soubor pro zápis protokolů musí být absolutní cestou
 config_esocket=Soubor soketu musí být absolutní cestou
+
 manual_title=Upravit konfigurační soubory
 manual_desc=Soubor k úpravě:
 manual_ok=OK
 manual_efile=Vybraný soubor není součástí konfigurace Fail2Ban!
 manual_err=Nepodařilo se upravit konfigurační soubor
 manual_edata=Nebyl zadán žádný obsah konfiguračního souboru
+
 syslog_logtarget=Protokol akcí Fail2Ban

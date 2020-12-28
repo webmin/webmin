@@ -11,6 +11,7 @@ index_dir=Çalıştırılacağı dizin
 index_return=komut listesi
 index_cdate=Şimdiki tarih
 index_ctime=Şimdiki saat
+
 edit_title=Zamanlandırılmış Komut
 edit_cmd=Çalıştırılacak tam betik
 edit_header=Zamanlandırılmış komutun ayrıntıları
@@ -18,6 +19,7 @@ edit_delete=Bu komutu iptal et
 edit_run=Şimdi Çalıştır
 edit_ejob=Zamanlandırılmış komut artık mevcut değil!
 edit_ecannot=Bu zamanlandırılmış komutu düzenlemek için izininiz yoktur
+
 create_err=Zamanlandırılmış komut oluşturulurken hata oluştu
 create_euser=Eksik ya da geçersiz kullanıcı
 create_edate=Eksik ya da geçersiz tarih ya da saat
@@ -25,13 +27,16 @@ create_ecmd=Komut girilmedi
 create_efuture=Tarih ve saat geçmişte
 create_edir=Eksik ya da geçersiz dizin
 create_ecannot=Bu kullanıcı ile zamanlandırılmış komut oluşturmak için izininiz yoktur
+
 delete_err=Komutun iptal edilmesinde hata oluştu
 delete_egone=Komut zaten çalıştı ya da silindi
+
 acl_users=Zamanlandırılmış komutları düzenleyebilir mi
 acl_all=Bütün kullanıcılar
 acl_this=Mevcut Webmin kullanıcısı
 acl_only=Sadece bu kullanıcılar
 acl_except=Bu kullanıcıların dışındakiler
+
 run_title=Çalışan Komut
 run_output=Zamanlandırılmış komutun çıktısı ..
 run_none=Herhangi bir çıktı oluşturulmadı

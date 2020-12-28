@@ -21,6 +21,7 @@ index_dscsi=Urządzenie SCSI $1 kontroler $2
 index_draid=Poziom RAID $1 
 index_dparts=Partycje
 index_none2=W tym systemie nie znaleziono dysków.
+
 megabytes=megabajty
 select_cpq=Compaq RAID $1 dysk $2 
 select_cpart=Compaq RAID $1 dysk $2 partycja $3 
@@ -34,6 +35,7 @@ select_promise=Obiecuj dysk RAID $1
 select_ppart=Obiecuj dysk RAID $1 partycja $2 
 select_nvme=Dysk SSD NVME $1 dysk $2 
 select_nvmepart=NVME SSD $1 dysk $2 partycja $3 
+
 edit_mountlvm=Część grupy objętości LVM $1 
 edit_mountiscsi=Urządzenie współdzielone iSCSI $1 
 edit_name=Nazwa partycji
@@ -45,19 +47,26 @@ edit_newmount2=Mount Partition
 edit_mountas=tak jak
 edit_mountmsg=Zamontuj tę partycję w nowym katalogu w systemie, aby można jej było używać do przechowywania plików. System plików musi być już utworzony na partycji.
 edit_mountmsg2=Zamontuj tę partycję jako pamięć wirtualną w systemie, aby zwiększyć ilość dostępnej pamięci.
+
 msdos_ff=Liczba FAT
 msdos_F_other=Inny ..
+
 xfs_force=Wymuś utworzenie systemu plików
 xfs_b=Rozmiar bloku
+
 jfs_s=Rozmiar kłody
 jfs_c=Sprawdź, czy nie występują złe bloki?
+
 btrfs_l=Rozmiar liścia
 btrfs_n=Rozmiar węzła
 btrfs_s=Rozmiar sektora
+
 fatx_none=Brak dostępnych opcji dla systemów plików FATX.
+
 blink_title=Zidentyfikuj dysk
 blink_desc=Aktywna dioda LED napędu zaświeci się teraz sześćdziesiąt razy
 blink_back=Wróć
+
 fs_ext2=Old Linux Native
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -68,9 +77,11 @@ fs_ext4=Nowy macierzysty Linux
 fs_xfs=SGI
 fs_jfs=IBM Journalling
 fs_btrfs=BTR
+
 delete_title=Usuń partycję
 delete_rusure=Czy na pewno chcesz usunąć $1 ($2)? Dane na tej partycji mogą zostać utracone na zawsze.
 delete_ok=Usuń teraz
+
 disk_title=Edytuj partycje dysku
 disk_egone=Dysk już nie istnieje!
 disk_no=Numer
@@ -91,11 +102,13 @@ disk_table=<b>Format tabeli partycji:</b> $1
 disk_notable=<b>Format tabeli partycji:</b> Nie utworzono
 disk_needtable=Nie można utworzyć żadnych partycji bez tabeli partycji.
 disk_return=lista partycji
+
 relabel_title=Wyczyść partycje
 relabel_warn=Czy na pewno chcesz wyczyścić wszystkie partycje na $1 ($2), ponownie zapisując etykietę dysku? Wszystkie istniejące dane i systemy plików zostaną utracone!
 relabel_parts=Istniejące partycje
 relabel_noparts=Nie utworzono jeszcze
 relabel_table=Format tabeli partycji
 relabel_ok=Przetrzyj i ponownie oznacz etykietą
+
 table_msdos=MS-DOS (standardowy format partycji)
 table_gpt=GPT (dla dysków 2T lub większych)

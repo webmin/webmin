@@ -40,6 +40,7 @@ index_descfetch=Met deze pagina kunt u een file downloaden vanaf het systeem waa
 index_email=Stuur email wanneer downloads klaar zijn?
 index_emailto=Ja, naar adres
 index_email2=Stuur email wanneer uploads klaar zijn?
+
 upload_title=Upload Files
 upload_err=Fout bij het uploaden van bestanden
 upload_edir=Ontbrekende directory om naar te uploaden
@@ -63,6 +64,7 @@ upload_saving=Opslaan van file $1 ..
 upload_saved=.. $1 geschreven
 upload_unzipping=Uitpakken van file $1 ..
 upload_unzipdone=.. $1
+
 download_err=Fout bij het opslaan van de download
 download_enone=Geen URL's ingevuld om van te downloaden
 download_eurl='$1' is geen geldige URL
@@ -74,9 +76,11 @@ download_failed=Downloaden mislukt: $1
 download_eaccess=U bent niet bevoegd om files te downloaden naar $1
 download_eucannot=U bent niet bevoegd om files te downloaden als gebruiker $1
 download_egcannot=De geselecteerde gebruiker is geen lid van de geselecteerde groep
+
 cancel_err=Fout bij het annuleren van de downloads
 cancel_enone=Niets geselecteerd
 cancel_ecannot=U bent niet bevoegd om de download's te annuleren van de gebruiker $1
+
 log_cancel=$1 download(s) geannuleerd
 log_upload_l=file(s) $1 geupload
 log_upload=$1 file(s) geupload
@@ -84,6 +88,7 @@ log_download_l=URL(s) $1 gedownload
 log_download=$1 URL(s) gedownload
 log_sdownload_l=Planning ingesteld voor de download van URL(s) $1
 log_sdownload=Planning ingesteld voor de download van $1 URL(s)
+
 acl_users=Mag files uploaden en downloaden als gebruiker
 acl_all=Alle gebruikers
 acl_this=Huidige Webmin gebruiker
@@ -98,6 +103,7 @@ acl_max=Maximale upload grootte
 acl_unlim=Onbeperkt
 acl_b=bytes
 acl_fetch=Mag bestanden downloaden naar de PC?
+
 fetch_err=Fout bij het downloaden van bestand
 fetch_ecannot=U bent niet bevoegd om bestanden te downloaden naar een PC
 fetch_efile=Geen bestandsnaam opgegeven
@@ -106,6 +112,7 @@ fetch_eopen=Fout bij het openen van bestand : $1
 fetch_eaccess=U bent niet bevoegd om bestanden te downloaden van $1
 fetch_ezip=Een directory kan niet worden gedownload of <tt>Zip</tt> moet geinstalleerd zijn
 fetch_eroot=De root directory kan niet worden gedownload!
+
 email_downmsg=De volgende download is compleet :
 email_downurl=URL: $1
 email_downerr=Fout bericht: $1

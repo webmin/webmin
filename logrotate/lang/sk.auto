@@ -12,7 +12,9 @@ index_force=Vynútiť rotáciu protokolu
 index_forcedesc=Vynútite okamžitú rotáciu všetkých protokolových súborov, aj keď ešte nie je čas.
 index_logrotate=logrotate
 index_delete=Odstránenie vybratých otočení denníka
+
 period_bytes=bajtov
+
 edit_title1=Upravte súbor denníka
 edit_title2=Vytvorte súbor denníka
 edit_header=Podrobnosti o otočenom protokolovom súbore
@@ -46,8 +48,10 @@ edit_pre=Príkazy na spustenie pred rotáciou
 edit_default=Predvolené ($1)
 edit_sharedscripts=Skripty spúšťajte iba raz pre všetky súbory?
 edit_now=Otočiť teraz
+
 global_title=Globálne možnosti
 global_header=Predvolené možnosti pre všetky protokolové súbory
+
 save_efile=Chýba alebo je neplatný názov súboru denníka
 save_esize=Chýbajúca alebo neplatná maximálna veľkosť
 save_eminsize=Chýbajúca alebo neplatná minimálna veľkosť
@@ -64,11 +68,13 @@ save_eerrors=Chýba e-mailová adresa pre chybové správy
 save_epre=Skript predbežnej rotácie nemôže obsahovať riadok <tt>endcript</tt> alebo <tt>endrotate</tt>
 save_epost=Skript po rotácii nemôže obsahovať riadok <tt>endcript</tt> alebo <tt>endrotate</tt>
 save_enofiles=Neboli zadané žiadne súbory na rotáciu
+
 log_modify_sched=Zmenená úloha Cron rotácie protokolu
 log_delete_sched=Odstránená úloha Cron rotácie protokolu
 log_modify=Upravené striedanie pre súbor denníka $1 
 log_delete=Odstránená rotácia pre súbor denníka $1 
 log_delete_logs=Odstránená rotácia pre súbory denníka $1 
+
 sched_title=Plán striedania protokolov
 sched_desc=Aby bolo možné vykonávať rotáciu protokolov pomocou tohto modulu, príkaz $1 musí byť spustený v pravidelnom rozvrhu (zvyčajne denne) pomocou Cron.
 sched_runparts=Momentálne sa príkaz rotácie denníka spúšťa zo skriptu $1 $2 a nedá sa upraviť.
@@ -77,10 +83,12 @@ sched_disabled=invalidný
 sched_enabled=Povolené, niekedy nižšie.
 sched_err=Uloženie plánu striedania zlyhalo
 sched_when=Časy plynúť
+
 force_title=Vynútiť rotáciu protokolu
 force_doing=Vynútenie okamžitej rotácie všetkých protokolových súborov.
 force_doingone=Vynútenie okamžitej rotácie jedného súboru denníka.
 force_done=.. hotový.
 force_failed=.. zlyhalo! Dôvod prečo je uvedený vyššie.
+
 delete_err=Protokoly sa nepodarilo odstrániť
 delete_enone=Žiadne vybraté

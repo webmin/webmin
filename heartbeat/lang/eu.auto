@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Beste nodoari ($1) baliabideak eskatzeko scripta ez da z
 index_version=Bihotz taupadak $1 bertsioa
 index_noversion=Abisua - Ezin da zure sisteman instalatutako Heartbeat-en bertsioa automatikoki hauteman. <a href='$1'>moduluaren konfigurazioa</a> orrian ezarri beharko zenuke.
 index_status=Bihotz taupaden egoera
+
 conf_title=Konfigurazio aukerak
 conf_header=Bihotzeko taupen konfigurazio aukerak
 conf_serials=Bihotzeko taupada portuko serieak
@@ -54,6 +55,7 @@ conf_auto_on=$ {Conf_enabled}
 conf_auto_off=$ {Conf_disabled}
 conf_auto_legacy=Legatu moduan
 conf_auto_=$ {Lehenetsia}
+
 res_title=Klusterreko baliabideak
 res_node=Nodo nagusia
 res_ips=IP helbideak
@@ -67,6 +69,7 @@ res_getserv=Lortu Baliabidea
 res_hbdown=Bihotz taupadak behera
 res_up=arriba
 res_down=DOWN
+
 node_create=Gehitu Klusterraren Baliabidea
 node_edit=Editatu Klusterreko baliabidea
 node_header=Klusterraren baliabideen xehetasunak
@@ -83,6 +86,7 @@ node_enone=Nodo primario falta edo baliogabea
 node_eip='$1' ez da baliozko IP helbide bat
 node_ecidr='$1' ez da baliozko CIDR
 node_ebroad='$1' ez da baliozko emisio-helbide bat
+
 auth_title=Autentifikazio-gakoak
 auth_header=Klusterren nodoen autentikazioa
 auth_mode=Autentifikazio modua
@@ -92,6 +96,8 @@ auth_md5=Pasahitza duen MD5
 auth_err=Ezin izan da autentikazio-gakoak gorde
 auth_emd5=MD5 pasahitz falta edo baliogabea
 auth_esha1=SHA1 pasahitz falta edo baliogabea
+
 start_err=Huts egin du bihotz taupadak sortzen
+
 apply_err=Ezin izan dira aldaketak aplikatu
 apply_epid=Prozesua ez da exekutatzen

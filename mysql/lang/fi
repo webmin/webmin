@@ -1,9 +1,12 @@
 table_key=Avain
 table_index=Luo indeksi
+
 view_title=Taulukkodata
+
 user_all=Anonyymi käyttäjä
 user_any=Mikä tahansa
 user_ehost=Puuttuva tai virheellinen sallittu palvelin
+
 acl_dbs=Tietokannat, joita käyttäjä voi hallita
 acl_dall=Kaikki tietokannat
 acl_dsel=Valittu..
@@ -23,7 +26,9 @@ acl_edonly=Voi vain muokata taulukon tietoja?
 acl_bnone=Estä varmuuskopiot
 acl_indexes=Voi katsella ja muokata indekseja?
 acl_views=Voi katsella ja muokata näkymiä?
+
 adv_ok=Etsi nyt
+
 view_title1=Luo näkymä
 view_title2=Muokkaa näkymää
 view_undefined=Automaattinen

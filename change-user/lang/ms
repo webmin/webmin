@@ -19,6 +19,7 @@ index_d1=$1
 index_dlang=bahasa yang dipaparkan untuk modul
 index_dtheme=tema yang dipaparkan pada kawalan Webmin
 index_dpass=kata laluan yang digunakan untuk log masuk
+
 change_title=Menukar Tetapan
 change_user=Mengubahsuai log masuk Webmin ..
 change_done=.. selesai
@@ -29,6 +30,7 @@ change_epass2=Kata laluan baharu tidak sepadan
 change_epass=Kata laluan baharu tidak sah : $1
 change_eoverlay=Anda tidak boleh memilih lapisan tema kecuali tema UI juga dipilih
 change_eoverlay2=Lapisan tema yang dipilih tidak serasi dengan tema UI sekarang
+
 acl_lang=Boleh ubah bahasa
 acl_theme=Boleh ubah tema?
 acl_pass=Bileh ubah kata laluan (bila ditetapkan dalam Webmin) ?

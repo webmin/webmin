@@ -8,7 +8,9 @@ index_pok=تنفيذ الأمر السابق
 index_edit=تحرير السابق
 index_trunced=تم اقتطاع إجمالي الناتج $2 عند $1.
 index_timedout=تم إنهاء الأمر بعد التشغيل لمدة $1 ثانية واحدة.
+
 acl_user=تنفيذ الأوامر كمستخدم
 acl_user_def=مستخدم Webmin الحالي
+
 log_run=تشغيل أمر $1
 log_clear=مسح سجل الأوامر

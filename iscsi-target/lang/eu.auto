@@ -1,6 +1,7 @@
 check_econfig=Ez da iSCSI xede konfigurazio fitxategia $1 zure sisteman aurkitu.
 check_eietadm=Ez da iSCSI xede administrazioaren $1 komandoa zure sisteman aurkitu.
 check_einit=$1 abiatzeko ekintza ez da existitzen
+
 index_title=iSCSI Xede
 index_clink=Agian ez dago instalatuta edo zure <a href='$1'>moduluaren konfigurazioa</a> okerra da.
 index_stop=Gelditu iSCSI Target
@@ -22,8 +23,10 @@ index_noluns=Bat ere ez
 index_nousers=Edozein
 index_nullio=$1 sektoreko RAM diskoa
 index_size=Tamaina osoa
+
 dtargets_err=Ezin izan dira helburuak ezabatu
 dtargets_enone=Ez da hautatu!
+
 target_title1=Sortu iSCSI Target
 target_title2=Editatu iSCSI Target
 target_header=iSCSI partekatutako gailuaren aukerak
@@ -68,11 +71,13 @@ target_noalias=Bat ere ez
 target_hdigest=Goiburu egiaztagiria
 target_ddigest=Datuen egiaztagiria
 target_nodigest=Bat ere ez
+
 auth_title=Autentifikazio-ezarpenak
 auth_header=Helburu guztientzako autentifikazio aukera lehenetsiak
 auth_iuser=Bezeroen autentifikazioa
 auth_ouser=Bezeroentzako autentikazioa
 auth_err=Ezin izan da autentikazio-ezarpenak gorde
+
 conn_title=Konexio-ezarpenak
 conn_header=Helburu guztientzako konexio aukera lehenetsiak
 conn_sessions=Gehienezko aldi baterako saioak
@@ -91,6 +96,7 @@ conn_emaxrecv=Gehienezko kopurua edo zenbakizko kopurua ez da jasotzen segmentua
 conn_emaxxmit=Falta den edo ez zenbakizko gehienezko segmentuaren luzera
 conn_emaxburst=Bezeroaren gehienezko zenbaki falta edo ez zenbakizko bat
 conn_efirstburst=Galdutako edo ez-zenbakizko gehieneko bezeroari eskatu gabeko datuen tamaina
+
 timeout_title=Denboraren ezarpenak
 timeout_header=Bezeroaren denbora-muga aukerak
 timeout_nopi=Inaktibo dagoenean pings arteko tartea
@@ -98,6 +104,7 @@ timeout_nopinone=Inoiz ez egin ping
 timeout_secs=segundutan
 timeout_nopt=Ordua ping-erantzunaren zain egoteko
 timeout_noptnone=Ping denboraren berdina
+
 addr_title=Zerbitzariaren helbidea eta portua
 addr_header=iSCSI zerbitzariaren sareko aukerak
 addr_addr=Entzun IP helbidean
@@ -110,18 +117,21 @@ addr_err=Huts egin du zerbitzariaren helbidea gordetzean
 addr_eaddr=Entzuteko helbideak IP helbidea izan behar du
 addr_eport=Entzuteko portuak zenbaki bat izan behar du
 addr_edebug=Arazketa maila kopurua izan behar da
+
 initiators_title=Bezeroaren helbideak baimenduta daude
 initiators_none=Oraindik ez da bezeroaren helbiderik zehaztu. Bezeroek ezin izango dute konektatu.
 initiators_ips=Onartutako bezeroak
 initiators_title1=Gehitu baimendutako bezeroaren helbideak
 initiators_title2=Editatu baimendu bezeroaren helbideak
 initiators_header=ISCSI bezeroei xedeetarako baimena eman diete
+
 targets_title=Baimendutako zerbitzariaren helbideak
 targets_none=Oraindik ez da zerbitzariaren helbiderik zehaztu. Bezeroek ezin izango dute konektatu.
 targets_ips=Baimendutako zerbitzariaren interfazeak
 targets_title1=Gehitu baimendutako zerbitzariaren helbideak
 targets_title2=Editatu baimendutako zerbitzariaren helbideak
 targets_header=Helburuko iSCSI zerbitzariaren interfazea onartzen da
+
 allow_target=Xede izena
 allow_move=Mugitu
 allow_delete=Ezabatu Hautatuta
@@ -133,17 +143,21 @@ allow_return=helburuak eta helbideak baimenduta
 allow_err=Ezin izan da helbide baimenduak gorde
 allow_eaddr=$1 helbidea ez da baliozkoa. IPv4 helbidea, IPv4 sarea/maskara edo IPv6 helbidea izan behar du parentesi karratuetan.
 allow_eaddrs=Ez da helbideik sartu
+
 dallow_err=Ezin izan dira baimendutako helbideak ezabatu
 dallow_enone=Ez da hautatu
+
 manual_title=Editatu Konfigurazio fitxategia
 manual_desc=Erabili beheko testu koadroa iSCSI zerbitzariaren $1 konfigurazio fitxategia editatzeko. Kontuz ibili, ez baita inolako balioztapenik egingo zure sarreran!
 manual_err=Ezin izan da konfigurazio fitxategia gordetzean
 manual_edata=Ez da edukirik sartu!
+
 start_err=Ezin izan da iSCSI zerbitzaria abiarazi
 stop_err=Ezin izan da iSCSI zerbitzaria gelditu
 restart_err=Ezin izan da iSCSI zerbitzaria berrabiarazi
 atboot_err=Huts egin du abiaraztean
 atboot_einit=$1 hasierako scripta ez da existitzen
+
 log_create_target=$1 helburu sortua
 log_delete_target=$1 xede ezabatu da
 log_modify_target=$1 helburu aldatua

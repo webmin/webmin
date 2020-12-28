@@ -1,5 +1,6 @@
 check_etargets=Het iSCSI-serverconfiguratiebestand $1 is niet gevonden op uw systeem.
 check_eserver=Het iSCSI-serverprogramma $1 is niet gevonden op uw systeem.
+
 index_title=iSCSI-server
 index_clink=Misschien is het niet geïnstalleerd of is uw <a href='$1'>moduleconfiguratie</a> onjuist.
 index_stop=Stop iSCSI-server
@@ -11,6 +12,7 @@ index_restartdesc=Klik op deze knop om de huidige configuratie toe te passen doo
 index_atboot=Beginnen bij het opstarten?
 index_atbootdesc=Wijzig deze optie om te bepalen of de iSCSI-server tijdens het opstarten wordt gestart of niet. Als het momenteel niet is gestart bij het opstarten en Ja is gekozen, wordt er een nieuw init-script gemaakt.
 index_return=module-index
+
 extents_title=Apparaten om te delen
 extents_none=Er zijn nog geen apparaten gemaakt om te delen.
 extents_name=Toestelnaam
@@ -25,6 +27,7 @@ extents_denone=Geen geselecteerd
 extents_einuse=Apparaat $1 kan niet worden verwijderd omdat het in gebruik is door : $2 
 extents_drusure=Weet u zeker dat u de volgende apparaten wilt verwijderen: $1 ? Hun inhoud blijft behouden, maar is niet langer toegankelijk voor iSCSI-clients.
 extents_sure=Apparaten verwijderen
+
 extent_create=Maak een apparaat om te delen
 extent_edit=Bewerk apparaat om te delen
 extent_egone=Apparaat om $1 te delen bestaat niet!
@@ -50,6 +53,7 @@ extent_estart=Begin van omvang moet een nummer zijn
 extent_esize=Grootte moet een getal zijn
 extent_esizemax=Einde van omvang kan niet groter zijn dan de apparaatgrootte van $1 
 extent_einuse=Dit apparaat kan niet worden verwijderd omdat het in gebruik is door : $1 
+
 devices_title=Apparaatcombinaties
 devices_none=Er zijn nog geen apparaatcombinaties gemaakt.
 devices_name=Combinatienaam
@@ -65,6 +69,7 @@ devices_denone=Geen geselecteerd
 devices_einuse=Combinatie $1 kan niet worden verwijderd, omdat deze wordt gebruikt door : $2 
 devices_drusure=Weet u zeker dat u de volgende apparaatcombinaties wilt verwijderen: $1 ? Hun inhoud blijft behouden, maar is niet langer toegankelijk voor iSCSI-clients.
 devices_sure=Apparaatcombinaties verwijderen
+
 device_create=Maak apparaatcombinatie
 device_edit=Apparaatcombinatie bewerken
 device_egone=Apparaatcombinatie $1 bestaat niet!
@@ -81,6 +86,7 @@ device_sure=Apparaatcombinatie verwijderen
 device_einuse=Deze apparaatcombinatie kan niet worden verwijderd omdat deze in gebruik is door : $1 
 device_eextents=Geen aangesloten apparaten geselecteerd
 device_eself=Een van de geselecteerde aangesloten apparaten bevat dit apparaat!
+
 targets_title=Doelen delen
 targets_none=Er zijn nog geen deeldoelen gemaakt.
 targets_name=Doelnaam
@@ -96,6 +102,7 @@ targets_derr=Kan doelen voor delen niet verwijderen
 targets_denone=Geen geselecteerd
 targets_drusure=Weet u zeker dat u de volgende doelen voor delen wilt verwijderen: $1 ? Er gaan geen gegevens verloren, maar ze zijn niet langer toegankelijk voor iSCSI-clients.
 targets_sure=Gedeelde doelen verwijderen
+
 target_create=Maak doelen voor delen
 target_edit=Bewerk deeltargets
 target_egone=Doel $1 delen bestaat niet!
@@ -112,6 +119,7 @@ target_rusure=Weet u zeker dat u het doel voor delen $1 wilt verwijderen? Er gaa
 target_sure=Doel verwijderen
 target_enetwork=Ontbrekend of ongeldig netwerk om mee te delen
 target_emask=Ontbrekend of ongeldig netmasker om mee te delen
+
 opts_title=iSCSI-serveropties
 opts_header=Opties voor alle iSCSI-doelen
 opts_ip4=Accepteer IPv4-verbindingen
@@ -124,10 +132,12 @@ opts_err=Kan opties niet opslaan
 opts_ename=Ontbrekende of ongeldige naam - alleen letters, cijfers, streepje, punt en onderstrepingsteken zijn toegestaan
 opts_eport=Ontbrekend of niet-numeriek poortnummer
 opts_esess=Ontbrekende of niet-numerieke maximale sessies
+
 manual_title=Configuratiebestand bewerken
 manual_desc=Gebruik het onderstaande tekstvak om het iSCSI-serverconfiguratiebestand $1 te bewerken. Wees voorzichtig, want er zal geen validatie worden uitgevoerd op uw input!
 manual_err=Kan configuratiebestand niet opslaan
 manual_edata=Geen inhoud ingevoerd!
+
 users_title=iSCSI-verificatie
 users_none=Er zijn nog geen iSCSI-gebruikers aangemaakt. Klanten hebben toegang tot gedeelde apparaten zonder authenticatie.
 users_add=Voeg een nieuwe iSCSI-gebruiker toe.
@@ -135,6 +145,7 @@ users_delete=Verwijder geselecteerde gebruikers
 users_name=Gebruikersnaam
 users_mode=Verificatiemethode
 users_return=lijst van gebruikers
+
 user_create=Maak een iSCSI-gebruiker aan
 user_edit=Bewerk iSCSI-gebruiker
 user_header=iSCSI-gebruikersgegevens
@@ -145,13 +156,16 @@ user_egone=Gebruiker bestaat niet meer!
 user_err=Kan iSCSI-gebruiker niet opslaan
 user_euser=Ontbrekende of ongeldige gebruikersnaam - spaties en dubbele punten zijn niet toegestaan
 user_epass=Ontbrekend of ongeldig wachtwoord - spaties en dubbele punten zijn niet toegestaan
+
 desc_extent=Apparaat om $1 te delen
 desc_device=Apparaatcombinatie $1 
 desc_target=Doel $1 delen
+
 start_err=Kan iSCSI-server niet starten
 stop_err=Kan iSCSI-server niet stoppen
 restart_err=Kan iSCSI-server niet opnieuw opstarten
 atboot_err=Kan niet inschakelen bij opstarten
+
 log_create_extent=Apparaat gemaakt om $1 te delen
 log_modify_extent=Apparaat geüpdatet om $1 te delen
 log_delete_extent=Apparaat verwijderd om $1 te delen

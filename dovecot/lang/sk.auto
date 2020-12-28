@@ -11,11 +11,13 @@ index_boot=Začať pri štarte?
 index_bootdesc=Zmeňte toto nastavenie, aby ste povolili alebo zakázali spustenie servera Dovecot v čase spustenia systému.
 index_return=index modulu
 index_version=Verzia $1
+
 stop_err=Nepodarilo sa zastaviť Dovecot
 stop_erunning=Už nebeží
 start_err=Nepodarilo sa spustiť program Dovecot
 start_eprotos=Na stránke <b>Sieť a protokoly</b> neboli vybrané žiadne protokoly
 apply_err=Nepodarilo sa použiť konfiguráciu
+
 net_title=Vytváranie sietí a protokoly
 net_header=Možnosti siete Dovecot a poštového protokolu
 net_protocols=Doručujte poštové protokoly
@@ -42,8 +44,11 @@ net_eimaps_listen=Neplatná adresa IP pre pripojenia IMAP SSL
 net_epop3s_listen=Neplatná adresa IP pre pripojenia SSL POP3
 net_elisten=Neplatná adresa IP pre pripojenia iné ako SSL
 net_essl_listen=Neplatná adresa IP pre pripojenia SSL
+
 imap_title=Možnosti protokolu IMAP
+
 pop3_title=POP3 Možnosti
+
 ssl_title=Konfigurácia SSL
 ssl_header=Možnosti režimu IMAP a POP3 SSL
 ssl_key=Súbor súkromného kľúča SSL
@@ -61,7 +66,9 @@ ssl_ecert=Chýba alebo neexistuje súbor certifikátu
 ssl_eca=Chýba alebo neexistuje súbor certifikátov CA.
 ssl_eregen=Chýbajúci alebo nečíselný interval regenerácie parametrov
 ssl_epass=Nebolo zadané žiadne heslo súboru kľúča SSL
+
 misc_title=Ďalšie možnosti
+
 login_title=Možnosti používateľa a prihlásenia
 login_header=Možnosti overenia a prihlásenia používateľa
 login_fuid=Minimálne platné UID
@@ -117,6 +124,7 @@ login_procs=Maximálne procesy prihlásenia
 login_count=Počiatočné prihlasovacie procesy
 login_eprocs=Chýbajúci alebo neplatný maximálny počet procesov prihlásenia
 login_ecount=Chýba alebo je neplatný počiatočný počet procesov prihlásenia
+
 mail_title=Poštové súbory
 mail_header=Možnosti pošty a možnosti čítania
 mail_env=Umiestnenie poštového súboru
@@ -169,6 +177,7 @@ mail_eindexmode=Umiestnenie indexových súborov nie je možné nastaviť, keď 
 mail_econtrolmode=Umiestnenie kontrolných súborov nie je možné nastaviť, keď sa automaticky zistí umiestnenie poštového súboru
 mail_eindex=Chýbajúca alebo neplatná absolútna cesta k indexovým súborom
 mail_econtrol=Chýbajúca alebo neplatná absolútna cesta pre kontrolné súbory
+
 log_net=Zmenené siete a protokoly
 log_login=Zmenené možnosti používateľa a prihlásenia
 log_mail=Zmenené poštové súbory
@@ -179,6 +188,7 @@ log_stop=Zastavený server Dovecot
 log_bootup=Povolené Dovecot v čase zavádzania
 log_bootdown=Zakázané Dovecot v čase spustenia
 log_manual=Ručne upravený konfiguračný súbor $1
+
 manual_title=Upraviť konfiguračné súbory
 manual_editsel=Upraviť konfiguračný súbor Dovecot
 manual_err=Nepodarilo sa uložiť konfiguračný súbor

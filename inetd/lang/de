@@ -14,6 +14,7 @@ index_search=Anzeige Dienste Übereinstimmung:
 index_sok=Suche
 index_toomany=Es gibt viele Internet-Dienste, um diese auf hier anzuzeigen.
 index_none=Keine Internet-Dienste entsprechen Ihrer Suche.
+
 error_restart=Inetd konnte nicht neu gestartet werden
 error_saverpc=RPC-Programm konnte nicht gespeichert werden
 error_invalidprgname='$1' ist kein gültiger Programmname
@@ -43,6 +44,7 @@ error_nameexist=Ein Service mit dem Namen $1 und dem Protokoll $2 existiert bere
 error_inetservice=Ein Internet-Dienste mit dem Namen $1 und dem Protokoll $2 existiert bereits
 error_smfservice=Konnte den Dienst smf nicht mit der Kommandzeile '$1' aktualisieren. Fehlernummer: $2
 error_smf_cmdfield=Für smf muss der Dateiname des Programmes '$1' dem ersten Argument der Kommandozeile entsprechen, z.B. '$2'
+
 editrpc_title1=Erstelle RPC-Programm
 editrpc_title2=Bearbeite RPC-Programm
 editrpc_detail=RPC-Programm Details
@@ -69,6 +71,7 @@ editrpc_execasuser=Ausführen als Benutzer
 editrpc_max=Maximum pro Minute
 editrpc_default=Vorgabe
 editrpc_execasgrp=Ausführen als Gruppe
+
 editserv_title1=Erstelle Internet-Dienste
 editserv_title2=Bearbeite Internet-Dienste
 editserv_detail=Internet-Dienste Details
@@ -82,6 +85,7 @@ editserv_wrapper=TCP-Wrapper
 editserv_inetd=Intern zu <tt>inetd</tt>
 editserv_qm=Befehl existiert eventuell nicht?
 editserv_ename=Es existiert kein Dienst mit diesem Namen und Protokoll
+
 log_apply=angewendete Änderungen
 log_create_serv=Service $1 erstellt
 log_modify_serv=Dienste $1 geändert
@@ -95,6 +99,7 @@ log_delete_serv_l=Dienste $1 auf Port $2 gelöscht
 log_create_prog_l=Dienste $1 auf Port $2 für Programm $3 erstellt
 log_modify_prog_l=Dienste $1 auf Port $2 für Programm $3 geändert
 log_delete_prog_l=Dienste $1 auf Port $2 für Programm $3 gelöscht
+
 log_create_rpc=RPC $1 erstellt
 log_modify_rpc=RPC $1 geändert
 log_delete_rpc=RPC $1 gelöscht

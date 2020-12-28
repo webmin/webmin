@@ -52,6 +52,7 @@ index_sadd=Tạo một dịch vụ systemd mới.
 index_always=Luôn luôn
 index_ladd=Tạo một tác nhân launchd mới.
 index_lname=Tên đại lý
+
 edit_title=Chỉnh sửa hành động
 create_title=Tạo hành động
 edit_ecannot=Bạn không được phép chỉnh sửa các hành động khởi động
@@ -85,6 +86,7 @@ edit_statusnow=Hiển thị trạng thái
 edit_return=hoạt động
 edit_status=Bắt đầu bây giờ?
 edit_unknown=không xác định
+
 save_err=Không thể lưu hành động
 save_ecannot=Bạn không được phép chỉnh sửa các hành động khởi động
 save_ealready=Một hành động gọi là '$1' đã tồn tại
@@ -93,6 +95,7 @@ save_ename=Tên hành động bị thiếu hoặc không hợp lệ
 save_eclash=Một hành động có cùng tên đã tồn tại
 save_escript=Không có kịch bản hành động nào được nhập
 save_estartcmd=Thiếu lệnh khởi động
+
 ss_ecannot=Bạn không được phép bắt đầu hoặc dừng các hành động khởi động
 ss_start=Bắt đầu hành động
 ss_stop=Dừng hành động
@@ -103,21 +106,25 @@ ss_exec=Đang thực hiện $1 ..
 ss_doingstart=Bắt đầu hành động $1 ..
 ss_doingstop=Dừng hành động $1 ..
 ss_doingstatus=Trạng thái yêu cầu hành động $1 ..
+
 shutdown_ecannot=Bạn không được phép tắt hệ thống
 shutdown_title=Tắt
 shutdown_rusure=Bạn có chắc chắn muốn tắt hệ thống bằng lệnh $1 không?
 shutdown_ok=Hệ thống tắt máy
 shutdown_exec=Tắt với lệnh $1 ..
+
 reboot_ecannot=Bạn không được phép khởi động lại hệ thống
 reboot_title=Khởi động lại
 reboot_rusure=Bạn có chắc chắn muốn khởi động lại hệ thống bằng lệnh $1 không?
 reboot_ok=Hệ thống khởi động lại
 reboot_exec=Khởi động lại bằng lệnh $1 ..
+
 acl_script=Có thể chỉnh sửa tập lệnh khởi động?
 acl_actions=Có thể chạy, chỉnh sửa, tạo và xóa các hành động?
 acl_runonly=Chỉ chạy
 acl_reboot=Có thể khởi động lại hệ thống?
 acl_shutdown=Có thể tắt hệ thống?
+
 log_rename=Đổi tên hành động $1 thành $2 
 log_modify=Hành động sửa đổi $1 
 log_create=Đã tạo hành động $1 
@@ -138,6 +145,7 @@ log_massrestart=Các hành động được khởi động lại $1
 log_massenable=Các hành động được kích hoạt $1 
 log_massdisable=Hành động bị vô hiệu hóa $1 
 log_telinit=Chuyển sang runlevel $1 
+
 edit_hostconfig_startup=Kịch bản $1 được chạy khi khởi động hệ thống nếu hành động này được kích hoạt. Bạn có thể chỉnh sửa nó dưới đây
 edit_hostconfig_plist=Tệp $1 đặt các tham số nhất định đối với tập lệnh khởi động. Bạn có thể chỉnh sửa nó dưới đây
 edit_hostconfig_new=Tạo hành động mới
@@ -149,6 +157,7 @@ edit_hostconfig_array=Các trường $1, $2 và $3 là các trường mảng và
 edit_hostconfig_further=Sau khi tạo hành động khởi động mới, bạn sẽ được chuyển tiếp đến một trang nơi bạn có thể điều chỉnh tập lệnh khởi động và danh sách tham số nếu cần.
 edit_hostconfig_hostconfig=Tệp $1 kiểm soát các dịch vụ và trình nền toàn hệ thống được khởi động khi khởi động hệ thống. Bạn có thể chỉnh sửa nó dưới đây
 edit_hostconfig_title=Chỉnh sửa Hostconfig
+
 mass_enone=Không có hành động nào được chọn
 mass_enone2=Không có dịch vụ được chọn
 mass_start=Hành động bắt đầu
@@ -169,9 +178,11 @@ mass_udisable=Vô hiệu hóa dịch vụ $1 khi khởi động.
 mass_ustarting=Bắt đầu dịch vụ $1 ..
 mass_ustopping=Dừng dịch vụ $1 ..
 mass_urestarting=Khởi động lại dịch vụ $1 ..
+
 change_err=Bạn không được phép chuyển đổi đường băng
 change_title=Chuyển Runlevel
 change_cmd=Chuyển sang runlevel $1 bằng lệnh $2. Điều này có thể mất một chút thời gian và Webmin có thể không còn khả dụng nữa sau khi chuyển đổi.
+
 mode_init=SysV init
 mode_osx=Hệ điều hành Mac
 mode_local=Kịch bản khởi động đơn
@@ -180,6 +191,7 @@ mode_rc=Kịch bản RC FreeBSD
 mode_upstart=Mới bắt đầu
 mode_systemd=Hệ thống
 mode_launchd=Ra mắt
+
 upstart_title1=Tạo dịch vụ mới nhất
 upstart_title2=Chỉnh sửa dịch vụ mới bắt đầu
 upstart_egone=Dịch vụ không còn tồn tại!
@@ -204,6 +216,7 @@ upstart_eserver=Không có lệnh máy chủ nào được nhập
 upstart_eserver2=Lệnh máy chủ không tồn tại
 upstart_eserver3=Chỉ có thể nhập một lệnh máy chủ
 upstart_return=dịch vụ mới nhất
+
 systemd_title1=Tạo dịch vụ Systemd
 systemd_title2=Chỉnh sửa dịch vụ Systemd
 systemd_egone=Dịch vụ không còn tồn tại!
@@ -227,6 +240,7 @@ systemd_edesc=Thiếu mô tả dịch vụ
 systemd_return=dịch vụ hệ thống
 systemd_econf=Không có cấu hình systemd nào được nhập
 systemd_estart=Thiếu lệnh để chạy khi khởi động
+
 launchd_title1=Tạo Launchd Agent
 launchd_title2=Chỉnh sửa Launchd Agent
 launchd_egone=Đại lý không còn tồn tại!
@@ -247,4 +261,5 @@ launchd_eclash=Một tác nhân có cùng tên đã tồn tại
 launchd_return=đại lý phóng
 launchd_econf=Không có cấu hình launchd nào được nhập
 launchd_estart=Thiếu lệnh máy chủ
+
 syslog_journalctl=Nhật ký SystemD

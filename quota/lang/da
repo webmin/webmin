@@ -1,4 +1,5 @@
 quota_unlimited=Ubegrænset
+
 acl_fss=Filsystemer som denne bruger kan redigere
 acl_fall=Alle filsystemer
 acl_fsel=Valgte..
@@ -23,9 +24,11 @@ acl_maxblocks=Maksimal tilladelig blok kvote
 acl_maxfiles=Maksimal tilladelig filkvote
 acl_unlimited=Ubegrænset
 acl_email=Kan opsætte email beskeder?
+
 activate_eallow=Du har ikke tilladelse til at aktivere eller deaktivere kvoter på dette filsystem
 activate_eon=Kunne ikke slå kvoter til
 activate_eoff=Kunne ikke slå kvoter fra
+
 check_title=Tjek Kvoter
 check_return=$1 list
 check_ecannot=Du kan ikke tjekke kvoter på dette filsystem
@@ -33,11 +36,13 @@ check_running=Kommandoen <tt>kvotatjek</tt> køres nu for at tjekke blok of fil 
 check_done=... Færdig.
 check_rgroup=gruppe
 check_ruser=bruger
+
 cgroup_efail=Kunne ikke kopiere kvoter
 cgroup_ecannot=Du kan ikke kopiere kvoter
 cgroup_egallow=Du har ikke tilladelse til at kopiere kvoterne fra denne gruppe
 cgroup_enogroup=Ingen grupper at kopiere til
 cgroup_eallowto=Du har ikke tilladelse til at kopiere kvoter til '$1'
+
 cgform_title=Kopier Kvoter
 cgform_return=gruppekvote
 cgform_ecannot=Du kan ikke kopiere kvoter
@@ -47,11 +52,13 @@ cgform_all=Alle grupper på dit system
 cgform_select=Valgte grupper
 cgform_contain=Grupper indeholdende brugere
 cgform_doit=Kopier
+
 cuser_efail=Kunne ikke kopiere kvoter
 cuser_ecannot=Du kan ikke kopere kvoter
 cuser_euallow=Du har ikke tilladelse til at kopiere kvoterne for denne bruger
 cuser_enouser=Ingen brugere at kopiere til
 cuser_eallowto=Du har ikke tilladelese til at kopiere kvoter til '$1'
+
 cuform_title=Kopier kvoter
 cuform_return=brugerkvote
 cuform_ecannot=Du kan ikke kopere kvoter
@@ -61,6 +68,7 @@ cuform_all=Alle bruger på dit system
 cuform_select=Valgte brugere
 cuform_members=Medlemmer af valgte grupper
 cuform_doit=Kopier
+
 egroup_title=Rediger kvote
 egroup_freturn=filsystem liste
 egroup_greturn=gruppeliste
@@ -78,6 +86,7 @@ egroup_sflimit=Blød filgrænse
 egroup_hflimit=Hård filgrænse
 egroup_update=Opdater
 egroup_listall=List alle kvoter
+
 euser_title=Rediger kvoter
 euser_freturn=filsystem liste
 euser_ureturn=brugerliste
@@ -99,6 +108,7 @@ euser_sflimit=Blød fil grænse
 euser_hflimit=Hård fil grænse
 euser_update=Opdater
 euser_listall=Liste alle kvoter
+
 gfilesys_title=Gruppe kvoter
 gfilesys_return=filsystemsliste
 gfilesys_ecannot=Du kan ikke redigere kvoter for '$1'
@@ -114,6 +124,7 @@ gfilesys_hard=Hård grænse
 gfilesys_nogquota=Gruppe <tt>$1</tt> har ikke kvoter på noget filsystem
 gfilesys_edit=Rediger kvoter på:
 gfilesys_copy=Kopier kvoter
+
 ggracef_title=Tidsfrister
 ggracef_return=gruppeliste
 ggracef_ecannot=Du kan ikke redigere frist tider på dette filsystem
@@ -122,9 +133,11 @@ ggracef_graces=Gruppe frist tider for <tt>$1</tt>
 ggracef_block=For blok kvote
 ggracef_file=For fil kvote
 ggracef_update=Opdater
+
 ggraces_esave=Kunne ikke gemme tidsfrister
 ggraces_eedit=Du kan ikke redigere tidsfrister for dette filsystem
 ggraces_enumber='$1' er ikke et tal
+
 index_quser=Bruger kvoter
 index_qgroup=Gruppe kvoter
 index_qboth=Bruger og gruppe kvoter
@@ -144,6 +157,7 @@ index_euser=Rediger bruger kvoter:
 index_egroup=Rediger gruppe kvoter:
 index_nosupport=Intet lokalt filsystem kan understøtte kvoter.
 index_mountmod=Du kan aktivere kvoter for et filsystem i modulet <a href='$1'>Disk og netværk filsystemer</a>.
+
 lgroups_failed=Kunne ikke liste grupper
 lgroups_eallow=Du har ikke tilladelse til at redigere kvoter på dette filsystem
 lgroups_title=Filsystemskvoter
@@ -171,13 +185,17 @@ lgroups_tofixed=Adresse $1
 lgroups_emailheader=Email til grupper der nærmer sig kvote
 lgroups_email=Send email til gruppe?
 lgroups_tovirt=Virtualmin domæne ejer
+
 sgroup_egroup=Du har ikke tilladelse til at redigere kvoter for denne gruppe
 sgroup_efs=Du har ikke tilladelse til at redigere kvoter på dette filsystem
+
 ssync_ecannot=Du kan ikke sætte standard kvote for dette filsystem
+
 suser_euser=Du har ikke tilladelse til at redigere kvoter for denne bruger
 suser_efs=Du har ikke tilladelse til at redigere kvoter på dette filsystem
 suser_emaxblocks=Du har ikke tilladelse til at give blok størrelse over $1
 suser_emaxfiles=Du har ikke tilladelse til at give filgrænser over $1
+
 ufilesys_title=Bruger kvoter
 ufilesys_return=filsystemsliste
 ufilesys_ecannot=Du kan ikke redigere kvoter for '$1'
@@ -194,6 +212,7 @@ ufilesys_nouquota=Bruger <tt>$1</tt> har ikke kvoter på noget filsystem
 ufilesys_edit=Rediger kvote på:
 ufilesys_copy=Kopier kvoter
 ufilesys_grace=Frist
+
 ugracef_title=Tidsfrister
 ugracef_return=brugerliste
 ugracef_ecannot=Du kan ikke rediger tidsfrister på dette filsystem
@@ -202,9 +221,11 @@ ugracef_graces=Bruger tidsfrister for <tt>$1</tt>
 ugracef_block=For blok kvote
 ugracef_file=For fil kvoter
 ugracef_update=Opdater
+
 ugraces_esave=Kunne ikke gemme tidsfrister
 ugraces_eedit=Du kan ikke redigere tidsfrister på dette filsystem
 ugraces_enumber='$2' er ikke et tal
+
 lusers_failed=Kunne ikke liste brugere
 lusers_eallow=Du har ikke tilladelse til at redigere kvoter på dette filsystem
 lusers_title=Filsystemskvoter
@@ -244,12 +265,14 @@ lusers_domain=Domæne for bruger adresser
 luser_virtualmin=Få domæne fra Virtualmin?
 lusers_from=Fra : adresse for email
 lusers_mass=Opdater valgte brugere
+
 grace_seconds=Sekunder
 grace_minutes=Minutter
 grace_hours=Timer
 grace_days=Dage
 grace_weeks=Uger
 grace_months=Måneder
+
 log_activate_u=Aktiver bruger kvoter på $1
 log_activate_g=Aktiver gruppe kvoter på $1
 log_activate_ug=Aktiver bruger og gruppe kvoter på $1
@@ -266,6 +289,7 @@ log_grace_g=Skiftede gruppe tidsfrister på $1
 log_check=Tjekkede kvoter på $1
 log_copy_u=Kopierede bruger $1's kvoter
 log_copy_g=Kopiered gruppe $1's kvoter
+
 email_err=Kunne ikke gemme email indstillinger
 email_ecannot=Du har ikke tilladelse til at redigere email indstillinger
 email_einterval=Manglende eller ugyldigt interval
@@ -277,6 +301,7 @@ gemail_msg=Disk forbrug for gruppe $1 på filsystem $2 har nået $3% af den\ntil
 email_subject=Diskkvote overskredet
 gemail_subject=Diskkvoter overskredet
 email_eto=Manglende email modtager adresse
+
 umass_title=Opdater bruger kvoter
 umass_header=Kvote ændringer der skal anvendes på valgte brugere
 umass_sblocks=Blød blok grænse
@@ -293,6 +318,7 @@ umass_esfiles=Manglende eller ugyldig blød fil grænse
 umass_ehfiles=Manglende eller ugyldig hård filgrænse
 umass_count=Ændringerne nedenunder vil gælde for $1 brugere ..
 umass_err=Kunne ikke opdatere bruger kvoter
+
 gmass_title=Opdater gruppe kvoter
 gmass_header=Kvoteændringer der skal anvendes på valgte grupper
 gmass_count=Ændringerne nedenunder anvendes på $1 valgte grupper ..

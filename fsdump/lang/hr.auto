@@ -23,6 +23,7 @@ index_follow=Nakon $1
 index_forcetar=U TAR formatu
 index_delete=Izbrišite odabrane sigurnosne kopije
 index_nostrftime=Upozorenje - neki rezervni poslovi koriste % u svojim imenima, ali zamjena strlue-a nije omogućena na stranici Konfiguracija modula.
+
 dump_dir=Imenik za sigurnosnu kopiju
 dump_dirs=Katalozi za izradu sigurnosnih kopija
 dump_fs=Sustav datoteka
@@ -108,6 +109,7 @@ dump_remount=Ponovno upotrijebite opciju <tt>noatime</tt> tijekom sigurnosne kop
 dump_eftpupdate=Dodavanje datoteka u postojeću arhivu nije moguće kada koristite FTP.
 dump_eleveldir=Dopuštene su samo sigurnosne kopije razine 0 za mape koje nisu točke montiranja datotečnog sustava
 dump_eupdatedir=Datoteka <tt>/etc/dumpdates</tt> može se ažurirati samo za direktorije koje su točke montiranja datotečnog sustava
+
 edit_err=Izrada sigurnosne kopije nije uspjela
 edit_edir=Nedostaje direktorij sigurnosne kopije
 edit_efs=Filesni sustavi tipa $1 ne mogu sigurnosno kopirati ovaj modul
@@ -132,9 +134,11 @@ edit_tolevel=$1 do $2 (razina $3)
 edit_special=Rezervni raspored
 edit_when=Kada napraviti sigurnosnu kopiju
 edit_clone=Klon
+
 save_err=Spremanje sigurnosne kopije nije uspjelo
 save_edir=Nedostaje ili je nevažeći direktorij sigurnosne kopije
 save_efs=Rezervna mapa ne može se promijeniti u drugi datotečni sustav
+
 backup_title=Rezervno sada
 backup_desc=Izvođenje sigurnosne kopije od $1 do $2.
 backup_reverify=.. kompletna. Sada provjeravanje sigurnosne kopije ..
@@ -147,6 +151,7 @@ backup_notape=.. sigurnosna kopija premašila je kapacitet jedne trake. Promjena
 backup_egone=Rezervna kopija ne postoji!
 backup_bg=Pokretanje postupka izrade sigurnosne kopije u pozadini. Možete pratiti njegov napredak u odjeljku <b>Pokretanje sigurnosnih kopija</b> na glavnoj stranici modula, a o svom konačnom stanju bit ćete obaviješteni e-poštom.
 backup_ecannot=Nije vam dopušteno sigurnosno kopiranje ovog direktorija
+
 restore_title=Obnoviti povrat
 restore_err=Vraćanje sigurnosne kopije nije uspjelo
 restore_ecommand=Naredba $1 potrebna za vraćanje sigurnosnih kopija sigurnosnog kopiranja $2 nije pronađena u vašem sustavu. Možda trenutno nije instaliran.
@@ -190,6 +195,7 @@ restore_gzip=Poništi arhivu arhive?
 restore_keep=Ne prepisati datoteke?
 restore_emulti=Obnavljanje s više datoteka ne može se obaviti s vrpce
 restore_emulti2=Obnavljanje više datoteka ne može se izvršiti s udaljenog poslužitelja
+
 log_create=Napravljena konfiguracija sigurnosne kopije za $1 
 log_modify=Izmijenjena konfiguracija sigurnosne kopije za $1 
 log_delete=Izbrisana sigurnosna kopija za $1 
@@ -197,13 +203,16 @@ log_backup=Sigurnosno kopiranje $1 do $2
 log_bgbackup=Započeta sigurnosna kopija od $1 do $2 
 log_restore=Vraćena sigurnosna kopija iz $1 
 log_kill=Završeno sigurnosno kopiranje za $1 
+
 kill_err=Zaustavljanje sigurnosne kopije nije uspjelo
 kill_egone=Nema više trčanja!
 kill_ecannot=Nije vam dopušteno prekinuti ovu izradu sigurnosnih kopija
+
 newtape_err=Nije uspjelo signaliziranje nove vrpce
 newtape_egone=Rezervna kopija više ne radi!
 newtape_estatus=Izrada sigurnosne kopije više ne čeka novu vrpcu
 newtape_ecannot=Nije vam dopušteno upravljanje ovom sigurnosnom kopijom
+
 acl_edit=Mogu li stvarati i uređivati sigurnosne kopije?
 acl_restore=Mogu li vratiti sigurnosne kopije?
 acl_cmds=Može li se uređivati prije i poslije naredbi?
@@ -211,8 +220,10 @@ acl_extra=Mogu li uređivati dodatne parametre naredbenog retka?
 acl_dirs=Dopuštene direktorije za izradu sigurnosnih kopija
 acl_all=Svi imenici
 acl_list=Samo na popisu ..
+
 delete_err=Brisanje sigurnosnih kopija nije uspjelo
 delete_enone=Nijedna nije odabrana
+
 email_already=Rezervna kopija već radi s PID $1.
 email_ebefore=Naredba prije sigurnosne kopije nije uspjela!
 email_verify=Provjera sigurnosne kopije ..
@@ -220,5 +231,6 @@ email_eafter=Naredba nakon sigurnosnog kopiranja nije uspjela!
 email_subject=Sigurnosna kopija $1 na $2 
 email_ok=Backup je uspio
 email_failed=Rezervna kopija nije uspjela!
+
 newtape_subject=Promjena trake $1 za izradu sigurnosne kopije $2 na $3 
 newtape_body=Sigurnosna kopija $2 na $3 dosegla je maksimalnu količinu podataka dopuštenih na vrpci $1. Morat ćete umetnuti novu vrpcu i pritisnuti vezu 'Tape Loaded' u Webmin's Filesystem Backup modulu za nastavak izrade sigurnosnih kopija.

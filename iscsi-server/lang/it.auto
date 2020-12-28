@@ -1,5 +1,6 @@
 check_etargets=Il file di configurazione del server iSCSI $1 non è stato trovato sul tuo sistema.
 check_eserver=Il programma server iSCSI $1 non è stato trovato sul tuo sistema.
+
 index_title=Server iSCSI
 index_clink=Forse non è installato o la <a href='$1'>configurazione del modulo</a> non è corretta.
 index_stop=Arresta il server iSCSI
@@ -11,6 +12,7 @@ index_restartdesc=Fare clic su questo pulsante per applicare la configurazione c
 index_atboot=Inizia all'avvio?
 index_atbootdesc=Modificare questa opzione per controllare se il server iSCSI è avviato all'avvio o meno. Se non è attualmente avviato all'avvio e si sceglie Sì, verrà creato un nuovo script init.
 index_return=indice del modulo
+
 extents_title=Dispositivi da condividere
 extents_none=Nessun dispositivo da condividere è stato ancora creato.
 extents_name=Nome del dispositivo
@@ -25,6 +27,7 @@ extents_denone=Nessuno selezionato
 extents_einuse=Il dispositivo $1 non può essere eliminato, poiché è utilizzato da : $2 
 extents_drusure=Sei sicuro di voler rimuovere i seguenti dispositivi: $1 ? I loro contenuti verranno conservati, ma non saranno più accessibili ai client iSCSI.
 extents_sure=Elimina dispositivi
+
 extent_create=Crea dispositivo da condividere
 extent_edit=Modifica dispositivo da condividere
 extent_egone=Il dispositivo da condividere $1 non esiste!
@@ -50,6 +53,7 @@ extent_estart=L'inizio dell'estensione deve essere un numero
 extent_esize=La dimensione dell'estensione deve essere un numero
 extent_esizemax=La fine dell'estensione non può essere maggiore della dimensione del dispositivo di $1 
 extent_einuse=Questo dispositivo non può essere eliminato, poiché è utilizzato da : $1 
+
 devices_title=Combinazioni di dispositivi
 devices_none=Non sono state ancora create combinazioni di dispositivi.
 devices_name=Nome della combinazione
@@ -65,6 +69,7 @@ devices_denone=Nessuno selezionato
 devices_einuse=La combinazione $1 non può essere eliminata, poiché è utilizzata da : $2 
 devices_drusure=Sei sicuro di voler rimuovere le seguenti combinazioni di dispositivi: $1 ? I loro contenuti verranno conservati, ma non saranno più accessibili ai client iSCSI.
 devices_sure=Elimina combinazioni di dispositivi
+
 device_create=Crea combinazione di dispositivi
 device_edit=Modifica combinazione dispositivo
 device_egone=La combinazione di dispositivi $1 non esiste!
@@ -81,6 +86,7 @@ device_sure=Elimina combinazione dispositivo
 device_einuse=Questa combinazione di dispositivi non può essere eliminata, poiché è utilizzata da : $1 
 device_eextents=Nessun dispositivo membro selezionato
 device_eself=Uno dei dispositivi membri selezionati contiene questo dispositivo!
+
 targets_title=Obiettivi di condivisione
 targets_none=Non sono stati ancora creati target di condivisione.
 targets_name=Nome target
@@ -96,6 +102,7 @@ targets_derr=Impossibile eliminare i target di condivisione
 targets_denone=Nessuno selezionato
 targets_drusure=Sei sicuro di voler rimuovere i seguenti target di condivisione: $1 ? Nessun dato andrà perso, ma non sarà più accessibile ai client iSCSI.
 targets_sure=Elimina target di condivisione
+
 target_create=Crea target di condivisione
 target_edit=Modifica target di condivisione
 target_egone=La condivisione dell'obiettivo $1 non esiste!
@@ -112,6 +119,7 @@ target_rusure=Sei sicuro di voler eliminare l'obiettivo di condivisione $1 ? Nes
 target_sure=Elimina destinazione
 target_enetwork=Rete mancante o non valida con cui condividere
 target_emask=Maschera di rete mancante o non valida con cui condividere
+
 opts_title=Opzioni del server iSCSI
 opts_header=Opzioni per tutti i target iSCSI
 opts_ip4=Accetta connessioni IPv4
@@ -124,10 +132,12 @@ opts_err=Impossibile salvare le opzioni
 opts_ename=Nome mancante o non valido: sono consentite solo lettere, numeri, trattino, punto e trattino basso
 opts_eport=Numero di porta mancante o non numerico
 opts_esess=Sessioni massime mancanti o non numeriche
+
 manual_title=Modifica file di configurazione
 manual_desc=Utilizzare la casella di testo seguente per modificare il file di configurazione del server iSCSI $1. Fai attenzione, poiché non verrà eseguita alcuna convalida sul tuo input!
 manual_err=Impossibile salvare il file di configurazione
 manual_edata=Nessun contenuto inserito!
+
 users_title=Autenticazione iSCSI
 users_none=Nessun utente iSCSI è stato ancora creato. I clienti saranno in grado di accedere ai dispositivi condivisi senza autenticarsi.
 users_add=Aggiungi un nuovo utente iSCSI.
@@ -135,6 +145,7 @@ users_delete=Elimina gli utenti selezionati
 users_name=Nome utente
 users_mode=Metodo di autenticazione
 users_return=elenco di utenti
+
 user_create=Crea utente iSCSI
 user_edit=Modifica utente iSCSI
 user_header=Dettagli utente iSCSI
@@ -145,13 +156,16 @@ user_egone=L'utente non esiste più!
 user_err=Impossibile salvare l'utente iSCSI
 user_euser=Nome utente mancante o non valido: spazi e due punti non sono consentiti
 user_epass=Password mancante o non valida: spazi e due punti non sono consentiti
+
 desc_extent=Dispositivo per condividere $1 
 desc_device=Combinazione di dispositivi $1 
 desc_target=Obiettivo di condivisione $1 
+
 start_err=Impossibile avviare il server iSCSI
 stop_err=Impossibile arrestare il server iSCSI
 restart_err=Impossibile riavviare il server iSCSI
 atboot_err=Impossibile abilitare all'avvio
+
 log_create_extent=Dispositivo creato per condividere $1 
 log_modify_extent=Dispositivo aggiornato per condividere $1 
 log_delete_extent=Dispositivo eliminato per condividere $1 

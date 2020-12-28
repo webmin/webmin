@@ -18,10 +18,12 @@ index_version=PPPd-versio $1
 index_boot=Yhdistä käynnistyksen yhteydessä:
 index_noboot=&lt;Älä muodosta yhteyttä&gt;
 index_bootdesc=Vaihda tämä vaihtoehto, jos haluat säätää, käynnistetäänkö valittu PPTP VPN -yhteys käynnistyksen yhteydessä vai ei.
+
 disc_err=Tunnelin irrottaminen epäonnistui
 disc_egone=Ei enää aktiivinen
 disc_ekill=Pppd-prosessin tappaminen epäonnistui
 disc_done=Tunnelin $1 irtaaminen onnistui.
+
 conn_err=Tunnelin yhdistäminen epäonnistui
 conn_egone=Tunnelia ei enää ole
 cone_ealready=Jo yhdistetty
@@ -32,6 +34,7 @@ conn_ok=.. yhteys on aktivoitu käyttöliittymällä $1. Paikallinen osoitteesi 
 conn_timeout=.. yhteys epäonnistui! Tarkista alla olevat lokiviestit, miksi.
 conn_routes=Reittien lisääminen komennoilla ..
 conn_mppe=MPPE-protokolla VPN-salaukselle edellyttää PPP-daemonia ja ytimen tukea. Yllä olevat virheet kuitenkin viittaavat siihen, että yhtä tai molempia ei ole saatavana järjestelmässäsi. Jos PPTP-palvelin ei vaadi MPPE: tä, yritä kytkeä pois kaikki siihen liittyvät asetukset <a href='$1'>yleiset PPP-asetukset</a> -sivulla.
+
 edit_title1=Lisää PPTP-tunneli
 edit_title2=Muokkaa PPTP-tunnelia
 edit_header=PPTP VPN-tunnelin vaihtoehdot
@@ -60,6 +63,7 @@ edit_file=PPP-asetusten tiedosto
 edit_none=Ei mitään
 edit_global=Tavallinen globaali tiedosto
 edit_ofile=Muu tiedosto ..
+
 save_err=Tunnelin tallennus epäonnistui
 save_ename=Puuttuu tunnelin nimi
 save_eserver=Puuttuva tai virheellinen palvelin, johon voi muodostaa yhteyden
@@ -75,6 +79,7 @@ save_egw2=Virheellinen yhdyskäytävä reitittimessä $1
 save_erename=Tunnelitiedoston uudelleennimeäminen epäonnistui
 save_eclash=Saman nimen tunneli tai PPP-vertainen on jo olemassa
 save_efile=Puuttuva tai virheellinen PPP-asetusten tiedosto
+
 opts_title=Globaalit PPP-vaihtoehdot
 opts_desc=Alla olevat asetukset on otettu $1 : stä, ja niitä sovelletaan kaikkiin tunneleihin, jotka on asetettu käyttämään tavallisia yleisiä PPP-valintotiedostoja.
 opts_header=PPP-vaihtoehdot kaikille tunneleille
@@ -84,6 +89,7 @@ opts_err=PPP-asetusten tallentaminen epäonnistui
 opts_emtu=Puuttuva tai virheellinen lähetyspaketin koko
 opts_emru=Puuttuva tai virheellinen vastaanottopaketin enimmäiskoko
 opts_msdesc=Alla olevat vaihtoehdot mahdollistavat MPPE-salauksen, jota Windows VPN -palvelimet käyttävät. MPPE vaatii kuitenkin tukea sekä PPP-daemonissa että käyttöjärjestelmän ytimessä.
+
 mppe_mppe-40=Käytätkö 40-bittistä MPPE-salausta?
 mppe_mppe-128=Käytätkö 128-bittistä MPPE-salausta?
 mppe_mppe-stateless=Ota käyttöön valtioton MPPE-tila?
@@ -95,6 +101,7 @@ mppe_d1=sallittu
 mppe_mppe-stateful=Ota käyttöön tilallinen MPPE-tila?
 mppe_old=Varoitus - Vanhat tyyliset MPPE-direktiivit $1 löytyivät asetustiedostostasi, vaikka PPP-daemonisi tukee uuden tyylin direktiivejä.
 mppe_new=Varoitus - Uuden tyyppiset MPPE-direktiivit $1 löytyivät asetustiedostostasi, vaikka PPP-daemoni tukee vain vanhan tyylin direktiivejä.
+
 log_create=Luotu PPTP-tunneli $1 
 log_update=Muokattu PPTP-tunneli $1 
 log_delete=Poistettu PPTP-tunneli $1 

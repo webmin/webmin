@@ -15,5 +15,6 @@ edit_special_daily=Günlük (gece yarısı)
 edit_special_weekly=Haftalık (Pazar günü)
 edit_special_monthly=Aylık (1. gün)
 edit_special_yearly=Yıllık (1 Ocak'ta)
+
 log_success=<tt>$1</tt> 'de <tt>$2</tt> başarıyla çalıştırıldı
 log_failure=<tt>$1</tt> içinde <tt>$2</tt> çalıştırılamadı : $3 

@@ -10,6 +10,7 @@ index_mysqlstatus=MySQL indító szkript
 index_emsg=A teljes MySQL hibaüzenet a következő volt : $1 
 index_jump=Vagy szerkessze az adatbázist:
 index_jumpok=Nyisd ki
+
 dbase_header=Adatbázis-táblázatok, indexek és nézetek
 dbase_empty=Üres adatbázis
 dbase_none2=Egyik táblázat sem felel meg a keresésnek.
@@ -25,20 +26,26 @@ dbase_type=típus
 dbase_typetable=Asztal 1)
 dbase_typeindex=Index
 dbase_typeview=Kilátás
+
 ddrop_rusure2=Biztos benne, hogy kiüríti a $1 adatbázist? A $2 táblát tartalmazó $2 tábla törlődik.
 ddrop_empty2=Az összes tábla törlése
+
 ddrops_rusure2=Biztos benne, hogy el akarja dobni a $1 kiválasztott adatbázist?
+
 table_index=Index létrehozása
 table_copy2=Másolja a mezőket az adatbázisból
 table_copy2t=és asztal
 table_delete=Törölje a kijelölt mezőket
+
 tdrops_rusure2=Biztosan el akarja dobni a $1 kijelölt táblázatokat a $2 adatbázisban?
+
 field_current=Aktuális idő
 field_defval=Érték
 field_defdef=MySQL alapértelmezés
 field_defnone=Nincs alapértelmezés
 field_defempty=Üres húr
 field_defleave=Ne változtasson
+
 view_refresh=Frissítés
 view_match4=nagyobb, mint
 view_match5=kevesebb, mint
@@ -48,11 +55,13 @@ view_sorthead2=Rendezés $1 szerint, növekvő sorrendben
 view_sortreset=Reset sort
 view_go=Megy
 view_sqlrun=SQL lekérdezés által generált eredmények : $1 
+
 users_syncwhen=Mikor kell szinkronizálni
 users_ssl=Bizonyítvány
 users_dtitle=Felhasználói engedélyek törlése
 users_drusure=Biztosan törli a kiválasztott MySQL $1 felhasználói engedélyeket?
 users_dok=Felhasználók törlése
+
 user_vwarning=FIGYELMEZTETÉS: Ez a MySQL felhasználó az adminisztrációs bejelentkezés a $1 Virtualmin domainhez. A beállítások itt történő megváltoztatása hibákat okozhat a Virtualminban.
 user_locked=Zárt
 user_priv_select=Válassza ki a táblázat adatait
@@ -101,17 +110,22 @@ user_emax_user_connections=A maximális párhuzamos bejelentkezésnek számnak k
 user_emax_connections=A maximális óránkénti kapcsolatnak számnak kell lennie
 user_emax_updates=Az óránkénti legfrissebb frissítéseknek számnak kell lenniük
 user_emax_questions=Az óránkénti maximális lekérdezéseknek számnak kell lenniük
+
 dbs_dtitle=Adatbázis-engedélyek törlése
 dbs_drusure=Biztosan törli a kiválasztott MySQL adatbázis $1 engedélyeket?
 dbs_dok=Engedélyek törlése
+
 hosts_dtitle=Törölje a host engedélyeket
 hosts_drusure=Biztos benne, hogy törli a kiválasztott MySQL gazdagép engedélyeket ($1)?
 hosts_dok=Engedélyek törlése
 hosts_return=host engedélyek
+
 host_sel=Kiválasztott
 host_otherdb=Megfelelő minta
+
 newdb_charset=Karakterkészlet
 newdb_collation=Osztályozási sorrend
+
 exec_header2a=Ez felhasználható egy MySQL biztonsági másolat visszaállítására is, amely csak az SQL parancsok fájlja.
 exec_format=Fájlformátum
 exec_ecompress=Az SQL fájl tömörítve van, de a tömörítéshez szükséges $1 program nincs telepítve.
@@ -124,18 +138,24 @@ exec_iheader=Szöveges fájl importálási lehetőségei
 exec_created=$1 táblák készültek.
 exec_inserted=$1 rekord került beillesztésre.
 exec_cs=Karakterkészlet az adatokhoz
+
 tprivs_dtitle=Táblázat engedélyek törlése
 tprivs_drusure=Biztosan törli a kiválasztott MySQL tábla $1 engedélyeket?
 tprivs_dok=Engedélyek törlése
+
 tpriv_edb=Hiányzó vagy érvénytelen adatbázisnév
+
 cprivs_add2=Új engedélyek hozzáadása :
 cprivs_dtitle=Oszlop engedélyek törlése
 cprivs_drusure=Biztosan törli a $1 kiválasztott MySQL oszlop engedélyeket?
 cprivs_dok=Engedélyek törlése
+
 cpriv_edb=Hiányzó vagy érvénytelen adatbázisnév
+
 acl_indexes=Megtekintheti és kezelheti az indexeket?
 acl_views=Megtekintheti és kezelheti a nézeteket?
 acl_files=Futtatható az SQL helyi fájlokból?
+
 log_cnf=Megváltozott a MySQL szerver konfigurációja
 log_kill=Megölt $1 adatbázis-kapcsolatok
 log_vars=Módosított $1 rendszerváltozók
@@ -149,6 +169,7 @@ log_fields_delete=$1 mezőket törölték a (z) $2 adatbázisból a $3 adatbázi
 log_set=Megváltozott a $1 MySQL változók
 log_root=Megváltozott adminisztrációs jelszó
 log_manual=Kézzel szerkesztett konfigurációs fájl
+
 backup_header1=Biztonsági mentési cél
 backup_header2=Egyéb biztonsági mentési lehetőségek
 backup_header3=Biztonsági menetrend
@@ -192,8 +213,10 @@ backup_bodyspace=Fájlrendszer mérete: $1 Szabad hely : $2
 backup_bodyall=összes
 backup_edownloadall=Csak egyetlen adatbázis biztonsági másolata tölthető le
 backup_edownloadsave=A letöltési mód nem használható ütemezett biztonsági másolatok készítéséhez
+
 csv_cols=A CSV-be beépítendő oszlopok
 csv_ecols=Nincs kiválasztva oszlop
+
 cnf_title=MySQL Server konfiguráció
 cnf_efile=A (z) $1 MySQL konfigurációs fájl nem található a rendszerén. A helyes út használatához előfordulhat, hogy módosítania kell a <a href='$2'>modul konfigurációját</a>.
 cnf_header=MySQL szerver beállításai
@@ -234,11 +257,13 @@ cnf_restart=Mentsd el és indítsd újra a MySQL-t
 cnf_fpt=Különálló fájl az egyes InnoDB táblázatokhoz?
 cnf_ilt=InnoDB zárolási időtúllépés (másodpercben)
 cnf_eilt=Az InnoDB zárolásának időkorlátjának egész számnak kell lennie
+
 manual_title=A Config Files szerkesztése
 manual_file=A konfigurációs fájl szerkesztése:
 manual_ok=rendben
 manual_efile=Érvénytelen konfigurációs fájl!
 manual_err=A konfigurációs fájl mentése nem sikerült
+
 index_title1=Index létrehozása
 index_header1=Index opciók
 index_name=Index név
@@ -254,12 +279,15 @@ index_ecols=Nincs kiválasztva mező
 index_title2=Index szerkesztése
 index_header=$1 index a $2 adatbázisban
 index_ecannot=Nem engedélyezi az indexek kezelését
+
 syslog_desc=MySQL hibaüzenetek
 syslog_desc2=MySQL hibaüzenet
 syslog_logdesc=MySQL lekérdezések
+
 fdrop_err=A mezők törlése nem sikerült
 fdrop_enone=Egy sincs kiválasztva
 fdrop_eall=Nem törölheti az összes mezőt a táblából!
+
 view_title1=Nézet létrehozása
 view_title2=Nézet szerkesztése
 view_header1=Részletek megtekintése
@@ -285,6 +313,7 @@ view_cascaded=Mögöttes nézetek
 view_local=Csak ez a nézet
 view_nocheck=Egyik sem
 view_ecannot=Nem engedélyezi a nézetek kezelését
+
 procs_title=Adatbázis-kapcsolatok
 procs_id=ID
 procs_user=Felhasználónév
@@ -296,9 +325,11 @@ procs_query=Futó lekérdezés
 procs_kill=Öld meg a kiválasztott kapcsolatokat
 procs_ecannot=Az adatbázis-kapcsolatok nem tekinthetők meg
 procs_none=Jelenleg nincs más adatbázis-kliens kapcsolat.
+
 kill_err=Nem sikerült megölni az adatbázis-kapcsolatokat
 kill_ecannot=Nem engedélyezi az adatbázis-kapcsolatok kezelését
 kill_enone=Egy sincs kiválasztva
+
 vars_title=MySQL rendszerváltozók
 vars_desc=Figyelem - Az ezen az oldalon beállított változók alapértelmezett értékeikre állnak vissza, amikor a MySQL újraindul. Az állandó beállításokat a <a href='$1'>MySQL Server Configuration</a> oldalon kell elvégezni.
 vars_ecannot=A rendszerváltozókat nem szabad szerkeszteni
@@ -309,10 +340,12 @@ vars_search=Mutassa a változókat:
 vars_ok=Keresés
 vars_none2=Egyik rendszerváltozó sem felelt meg a keresésnek.
 vars_none=Nem található rendszerváltozó!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
 compat_postgresql=PostgreSQL
+
 compat_oracle=Jóslat
 compat_mssql=Microsoft SQL
 compat_db2=DB2
@@ -320,7 +353,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=Főbb lehetőségek
 compat_no_table_options=Táblázat lehetőségei
 compat_no_field_options=Mező opciók
+
 config_echarset=Hiányzó vagy érvénytelen karakterkészlet
+
 root_title=Adminisztrációs jelszó módosítása
 root_header=Új adminisztrációs jelszó
 root_user=Adminisztráció bejelentkezés
@@ -333,6 +368,7 @@ root_epass1=Nincs megadva új jelszó
 root_epass2=A jelszavak nem egyeznek
 root_none=Nincs jelszó!
 root_auto=Automatikus (általában <tt>gyökér</tt>)
+
 mysqlpass_err=MySQL biztonságos mód
 mysqlpass_esafecmd=A (z) $1 parancs, amely a MySQL elindításához szükséges a hitelesítés letiltásához, nem található
 mysqlpass_eshutdown=A leállítás nem sikerült : $1 

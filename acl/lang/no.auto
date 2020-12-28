@@ -1,7 +1,0 @@
-index_screate=Opprett en ny trygg bruker.
-edit_title3=Lag Safe Webmin-bruker
-edit_safe=Privilegienivå
-edit_safe0=Ubegrenset
-edit_safe1=Bare sikre moduler
-edit_unsafe=Tilbakestill til ubegrenset
-save_eunixname=Brukernavnet '$1' er ikke en Unix-bruker, og kan derfor ikke brukes i sikker modus

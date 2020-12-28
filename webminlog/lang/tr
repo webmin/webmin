@@ -16,6 +16,7 @@ index_fall=Değiştirilen her dosya için
 index_file=Değiştirilen bu dosya için : 
 index_wall=Herhangi bir Webmin sunucudan
 index_whost=Bu sunucudan
+
 search_title=Arama Sonuçları
 search_date=Zaman
 search_time=Saat
@@ -36,6 +37,7 @@ search_critt2=$1'de
 search_config=Modül yapılandırması değiştirildi
 search_etime=Geçersiz başlangıç ya da bitiş zamanı
 search_err=Aramada hata oluştu
+
 view_title=Eylem Ayrıntıları
 view_header=Eylem $1 için kayıt detayları
 view_action=Açıklama
@@ -60,6 +62,7 @@ view_type_mkdir=$1 dizini oluşturuldu
 view_type_rmdir=$1 dizini silindi
 view_type_rename=$1, $2 olarak yeniden adlandırıldı
 view_ecannot=Bu kayıt öğesini görmek için izininiz yoktur
+
 acl_mods=Hangi modüllerin kayıtlarını görebilsin
 acl_all=Hepsi
 acl_sel=Aşağıda seçililer ..

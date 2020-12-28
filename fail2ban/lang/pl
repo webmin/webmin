@@ -11,10 +11,12 @@ index_restart=Restartuj serwer Fail2Ban
 index_restartdesc=Kliknij na ten przycisk, aby zastosować aktualną konfigurację przez ponowne uruchomienie serwera Fail2Ban.
 index_return=indeksu modułu
 index_header=Moduł Fail2Ban
+
 check_edir=Katalog konfiguracji $1 nie istnieje
 check_econf=Plik konfiguracji $1 nie istnieje
 check_eclient=Polecenie klienta $1 nie zostało znalezione
 check_eserver=Polecenie serwera $1 nie zostało znalezione
+
 filters_title=Filtry logów
 filters_name=Nazwa filtra
 filters_re=Wyrażenie regularne
@@ -24,6 +26,7 @@ filters_return=listy filtrów
 filters_derr=Błąd usuwania filtrów
 filters_enone=Noc nie wybrano
 filters_einuse=Filtr $1 nie może zostać usunięty, ponieważ jest używany przez jails: $2
+
 filter_title1=Tworzenie filtra
 filter_title2=Edycja filtra
 filter_desc=<i>&lt;HOST&gt;</i> w wyrażeniu regularnym zostanie zastąpione nazwą hosta lub adresem IP
@@ -38,6 +41,7 @@ filter_ename=Brak nazwy filtra lub jest ona nieprawidłowa
 filter_eclash=Nazwa filtra już jest w użyciu
 filter_efail=Nie wpisano wyrażenia regularngo do dopasowania
 filter_einuse=Filtr nie może zostać usunięty, ponieważ jest używany przez jails: $1
+
 actions_title=Dopasowanie akcji
 actions_name=Nazwa akcji
 actions_ban=Polecenie banowania
@@ -47,6 +51,7 @@ actions_return=listy akcji
 actions_derr=Błąd usuwania akcji
 actions_enone=Nic nie wybrano
 actions_einuse=Akcja $1 nie może zostać usunięta, ponieważ jest używana przez jail : $2
+
 action_title1=Tworzenie dopasowania akcji
 action_title2=Edycja dopasowania akcji
 action_header=Szczegóły dopasowania akcji
@@ -63,6 +68,7 @@ action_ban=Polecenie do banowania IP
 action_unban=Polecenie do odbanowania IP
 action_desc=<i>&lt;ip&gt;</i> zostanie zastąpione banowanym adresem IP.
 action_einuse=Ta akcja nie może zostać usunięta, ponieważ jest używana przez jails : $1
+
 jails_title=Jail - akcje filtra
 jails_add=Dodaj nowe jail.
 jails_name=Nazwa jail
@@ -75,6 +81,7 @@ jails_defdesc=Edytuj domyślne ustawienia i limity, które zostaną zastosowane 
 jails_return=listy jails
 jails_derr=Błąd usuwania jails
 jails_enone=Nie wybrano
+
 jail_title1=Tworzenie Jail
 jail_title2=Edycja Jail
 jail_header=Szczegóły filtra akcji jail
@@ -114,13 +121,16 @@ jail_banaction=Domyślna akcja do zastosowania
 jail_defprotocol=Domyślny protokół dla akcji
 jail_edestemail=Brakujący lub nieprawidłowy domyślny adres e-mail dla powiadomień
 jail_eignoreip=Błędny adres IP do ignorowania
+
 jaildef_title=Domyślne opcje jail
 jaildef_header=Domyślne dla wszystkich jail
 jaildef_err=Błąd zapisu opcji domyślnego jail
 jaildef_egone=Nie znaleziono DOMYŚLNEGO jail!
+
 start_err=Błąd uruchamiania serwera
 stop_err=Błąd zatrzymywania serwera
 restart_err=Błąd restartowania serwera
+
 log_create_filter=Utworzono filtr $1
 log_update_filter=Zmodyfikowano filtr $1
 log_delete_filter=Usunięto filtr $1
@@ -138,6 +148,7 @@ log_atboot=Włączono Fail2Ban przy uruchamianiu
 log_delboot=Wyłączono Fail2Ban przy starcie
 log_manual=Zedytowano plik konfiguracyjny $1
 log_jaildef=Zmodyfikowano domyślne opcje jail
+
 config_title=Globalna konfiguracja
 config_edef=Nie znaleziono sekcji Definition w pliku konfiguracyjnym
 config_header=Ustawienia konfiguracyjne dla Fail2Ban
@@ -150,10 +161,12 @@ config_socket=Socket komunikacji z serwerem
 config_err=Błąd zapisu globalnej konfiguracji
 config_elogtarget=Plik loga musi mieć ścieżkę absolutną
 config_esocket=Plik socket musi mieć ścieżkę absolutną
+
 manual_title=Edytuj pliki konfiguracyjne
 manual_desc=Plik do edycji:
 manual_ok=OK
 manual_efile=Wybrany plik nie jest częścią konfiguracji Fail2Ban!
 manual_err=Błąd edycji pliku konfiguracyjnego
 manual_edata=Nie wpisano treści pliku konfiguracyjnego
+
 syslog_logtarget=Log akcji Fail2Ban

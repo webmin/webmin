@@ -19,10 +19,12 @@ index_force=Provést log rotace
 index_forcedesc=Přimět okamžitou rotaci pro všechny log soubory, pokud již neprobíhá.
 index_logrotate=Logrotate
 index_delete=Smazat vybrané rotace logů
+
 period_daily=Denně
 period_weekly=Týdně
 period_monthly=Měsíčně
 period_never=Nikdy
+
 edit_title1=Upravit log soubor
 edit_title2=Vytvořit log soubor
 edit_header=Detaily pro rotovaný log soubor
@@ -58,8 +60,10 @@ edit_pre=Příkazy, které se spustí před rotaci
 edit_default=$default ($1)
 edit_sharedscripts=Spustit skripty pouze jednou pro všechny soubory?
 edit_now=Ihned zrotovat
+
 global_title=Globální volby
 global_header=Výchozí volby pro všechny log soubory
+
 save_err=Chyba při uložení logu
 save_efile=Chybějící nebo neplatný název souborů logu
 save_esize=Chybějící nebo neplatná maximální velikost
@@ -75,6 +79,7 @@ save_emailto=Chybějící emailová adresa pro rotované logy
 save_eerrors=Chybějící emailová adresa pro chybové zprávy
 save_epre=Skript spouštěný před rotováním nemůže obsahovat řádek <tt>endscript</tt> nebo <tt>endrotate</tt>
 save_epost=Skript spouštěný po rotování nemůže obsahovat řádek <tt>endscript</tt> nebo <tt>endrotate</tt>
+
 log_modify_sched=Změněna Cron úloha pro rotaci logu
 log_create_sched=Vytvořena Cron úloha pro rotaci logu
 log_delete_sched=Smazána Cron úloha pro rotaci logu
@@ -83,6 +88,7 @@ log_create=Přidána rotace pro log soubor $1
 log_modify=Upravena rotace pro log soubor $1
 log_delete=Zmazána rotace pro log soubor $1
 log_delete_logs=Zmazána rotace pro $1 log soubory(ů)
+
 sched_title=Plánovač rotací logů
 sched_desc=Má-li být spuštěna rotace nakonfigurovaná prostřednictvím tohoto modulu, pak musí být příkaz $1 spouštěn jako regulární naplánovaná úloha v Cronu (obvykle denně).
 sched_runparts=Právě teď běží příkaz log rotace prostřednictvím skriptu $1 $2, a tudíž nemůže být nastaven.
@@ -91,10 +97,12 @@ sched_disabled=Nepovoleno
 sched_enabled=Povoleno, v níže uvedených časech ..
 sched_save=Aktualizovat úlohu Cronu
 sched_err=Chyba při uložení plánu rotace
+
 force_title=Provést log rotaci
 force_doing=Právě probíhá rotace pro všechny log soubory ..
 force_doingone=Právě probíhá rotace pro jeden log soubor ..
 force_done=.. hotovo.
 force_failed=.. chybná! Podívejte se na výše uvedený výstup, co bylo příčinou.
+
 delete_err=Chyba při mazání logů
 delete_enone=Nic není vybráno

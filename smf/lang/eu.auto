@@ -180,6 +180,7 @@ whats_this_NSTATE=Zerbitzuaren hurrengo egoera, zerbitzua trantsizioan erabilgar
 whats_this_SCOPE=Zerbitzuaren instantziaren izen-eremua. Ikus: smf (5). Ikus: svcs (1).
 whats_this_STIME=Ordua (gaur bada) edo zerbitzua zerbitzua gaur egungo egoeran sartu zen. Ikus: smf (5). Ikus: svcs (1).
 whats_this_Select=Ikusi hemen gaitu/desgaitu/freskatu nahi dituzun zerbitzuen zerrenda.
+
 whats_this_service_detail=Hemen zehaztu/editatu zerbitzuen inguruko informazioa: zerbitzuaren izena, bertsio zenbakia, agerpen-sortaren izena eta egonkortasuna. Ikus: smf (5). Ikus: svccfg (1M). Ikus: zerbitzua_bundle (4).
 whats_this_bundle_name=Zerbitzu sorta agerikoa da. Zerbitzu anitzak ager daitezke agerpen bakarrean, baina hemen izena ez da garrantzitsua. Dagoeneko dauden zerbitzuei dagokienez, hori da svccfg-k egiten duena, SMF biltegitik agerraldi bat esportatzen duenean. Ikus: svccfg (1M). Ikus: zerbitzua_bundle (4).
 whats_this_service_name=Zerbitzuaren izena. Hitzarmena [general_service_category]/[name] formatua erabiltzea da. Jada hornitutako kategorien artean, aplikazioa (goi mailako aplikazioak), mugarri (beste zerbitzu batzuen bildumak, hala nola izen zerbitzuak), plataforma (plataforma espezifikoko zerbitzuak), sistema (Solaris sistema zerbitzuak), gailua (gailuaren berariazko zerbitzuak), sarea (sarea/Interneteko zerbitzuak) eta gunea (guneen zehaztapen zehatzak). Noski, zeure kategoria ere zehaztu dezakezu, baina zerbitzu gehienak ondoko batean eroso egon beharko lirateke. Ikus: smf (5).

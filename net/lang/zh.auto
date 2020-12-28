@@ -5,6 +5,7 @@ index_delete2=删除所选接口
 index_delete3=删除和应用所选接口
 index_apply2=应用选定的接口
 index_vmin=虚拟分钟
+
 ifcs_activedesc=下表中列出的接口当前在系统上处于活动状态。在大多数情况下，您应该在<b>启动时激活</b>标签下对其进行编辑。
 ifcs_bootdesc=该表中列出的接口将在系统启动时被激活，并且通常现在也将处于活动状态。
 ifcs_ip6=IPv6地址
@@ -32,12 +33,14 @@ ifcs_linkyes=连接的
 ifcs_linkno=断开连接
 ifcs_speed=接口速度
 ifcs_duplex=， $1双工
+
 aifc_evirtmin=虚拟接口号必须至少为 $1
 aifc_eclash=接口 $1已在使用此IP地址
 aifc_eaddress6=第 $1行中的IPv6地址无效
 aifc_enetmask6=第 $1行中的IPv6网络掩码必须是1到128之间的整数
 aifc_eclash6=第 $1行中的IPv6地址已被接口 $2使用
 aifc_eaddresses6=没有输入IPv6地址
+
 bifc_act=在启动时激活？
 bifc_dapply=删除并应用
 bifc_err4=无法停用界面
@@ -53,6 +56,7 @@ bifc_bridgestp=生成树协议
 bifc_bridgefd=转发延迟
 bifc_bridgewait=延迟上市
 bifc_ebond=绑定接口必须为数字
+
 bonding_add=添加一个新的绑定接口。
 bonding_create=创建绑定界面
 bonding_teamparts=团队合作伙伴
@@ -64,11 +68,14 @@ bonding_miimon=Mii监控间隔
 bonding_miimondesc=（留空以禁用链接监视）
 bonding_updelay=上延迟
 bonding_downdelay=下延迟
+
 vlan_add=添加VLAN标记的接口
 vlan_physical=物理设备
 vlan_id=VLAN ID
 vlan_create=创建VLAN接口
+
 bridge_create=创建网桥接口
+
 routes_now=路由配置已激活
 routes_default6=默认的IPv6路由器
 routes_default2=默认路线
@@ -115,6 +122,7 @@ routes_tabboot=启动时间配置
 routes_tabactive=活动配置
 routes_descactive=本节列出了系统当前已配置的路由，并允许您在某些系统上添加或删除活动路由。请小心执行此操作，因为错误的更改可能会使运行Webmin的系统与网络的其余部分断开连接。
 routes_descboot=本部分允许您配置在系统启动或完全重新应用网络设置时激活的路由。
+
 dns_ecannot=您无权编辑DNS客户端设置
 dns_err=保存DNS配置失败
 dns_ehost='$1'不是有效的主机名
@@ -123,9 +131,11 @@ dns_edomain=“$1”不是有效的域名
 dns_esearch=没有提供要搜索的域名
 dns_hoststoo=如果更改了主机地址中的主机名，是否进行更新？
 dns_dhcp=主机名是由DHCP服务器设置的吗？
+
 hosts_active=已启用？
 hosts_ecannot=您无权编辑主机地址
 hosts_delete=删除选定的主机地址
+
 ipnodes_title=IPv6主机地址
 ipnodes_ip=IPv6地址
 ipnodes_host=主机名
@@ -137,6 +147,7 @@ ipnodes_return=IPv6主机地址列表
 ipnodes_ecannot=不允许您编辑IPv6主机地址
 ipnodes_none=尚未定义IPv6主机地址。
 ipnodes_delete=删除选定的IPv6主机地址
+
 log_create_ipnode=创建的IPv6主机地址 $1
 log_delete_ipnode=删除的IPv6主机地址 $1
 log_modify_ipnode=修改后的IPv6主机地址 $1
@@ -149,6 +160,7 @@ log_apply_bfics=激活的 $1引导时间界面
 log_create_route=为 $1创建了活动路线
 log_create_defroute=创建的活动默认路由
 log_delete_routes=已删除 $1个活动路线
+
 acl_ifcs=可以编辑网络接口吗？
 acl_routes=可以编辑路由和网关吗？
 acl_dns=可以编辑DNS客户端设置吗？
@@ -166,6 +178,7 @@ acl_virt=可以添加虚拟接口吗？
 acl_delete=可以删除接口吗？
 acl_hide=隐藏不可编辑的界面？
 acl_sysinfo=在仪表板上显示可用的网络接口
+
 interfaces_title1=选择接口. ..
 interfaces_all=所有接口. ..
 interfaces_sel=选定的接口
@@ -173,7 +186,9 @@ interfaces_ok=好
 interfaces_cancel=取消
 interfaces_clear=明确
 interfaces_title2=选择用户. ..
+
 apply_ecannot=不允许您应用配置
+
 mod_egone=界面不再有效！
 mod_title=活动界面
 mod_desc=$1接口正用于 $2，因此无法使用此模块进行管理。
@@ -185,6 +200,7 @@ mod_pptpc=PPTP连接 $1
 mod_zones=<tt>$1</tt>的虚拟接口
 mod_virtualmin=Virtualmin服务器<tt>$1</tt>
 mod_reseller=Virtualmin经销商<tt>$1</tt>
+
 range_edit=编辑地址范围
 range_create=创建地址范围
 range_header=地址范围接口选项
@@ -200,13 +216,17 @@ range_eend=末尾IP地址丢失或无效
 range_enum=缺少或非数字的第一个虚拟接口号
 range_eclass=起始地址和结束地址必须在同一C类网络内
 range_ebefore=结束地址必须高于起始地址
+
 chooser_any=&lt;任何&gt;
 chooser_other=其他 ..
+
 dafics_err=无法停用接口
 daifcs_enone=未选择
 daifcs_egone=接口不再存在！
+
 dbifcs_err=删除接口失败
 dbifcs_err2=无法激活接口
+
 hdelete_err=删除主机地址失败
 hdelete_enone=未选择
 idelete_err=删除IPv6主机地址失败

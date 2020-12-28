@@ -44,6 +44,7 @@ right_upsec=$1 csomagfrissítés érhető el, ebből $2 biztonsági frissítés
 right_recollect=Frissítse a rendszerinformációkat
 right_vvirtualmin=Virtualmin verzió
 right_vvm2=Cloudmin verzió
+
 acl_show=Megjelenítendő rendszerinformációk
 acl_showall=Minden
 acl_showsel=Csak a kiválasztott ..

@@ -14,6 +14,7 @@ index_restart=Reporniți Demonul client LDAP
 index_restartdesc=Aplicați configurația curentă repornind demonul client local LDAP.
 index_atboot=Porniți clientul LDAP la pornire
 index_atbootdesc=Modifică dacă demonul client LDAP este pornit atunci când sistemul pornește sau nu.
+
 server_title=Configurare server LDAP
 server_header=Opțiuni server și LDAP
 server_host=Numele de host al serverului LDAP
@@ -51,6 +52,7 @@ server_etimelimit=Lipsește sau nu este valabil termenul de conectare
 server_ecacert=Fișierul de certificare CA lipsit sau nevalid
 server_euport=Portul care lipsește sau este nevalid pentru serverul $1 
 server_euri=Nu au fost introduse servere LDAP
+
 base_title=Bazele de căutare LDAP
 base_header=Locații de căutare directoare LDAP
 base_base=Baza globală de căutare
@@ -86,6 +88,7 @@ base_enetmasks=Lipsă baza pentru nume de mască netmasă
 base_ealiases=Lipsă baza pentru aliasuri de e-mail
 base_enetgroup=Baza lipsă pentru grupurile net
 base_etimelimit=Timpul de căutare lipsește sau este nevalid
+
 pam_title=Opțiuni de autentificare
 pam_header=Setări autentificare PAM și parolă
 pam_filter=Filtru LDAP suplimentar
@@ -106,10 +109,12 @@ pam_efilter=Lipsesc filtrul LDAP suplimentar
 pam_elogin=Atributul LDAP lipsit sau nevalid pentru numele de utilizator
 pam_egroupdn=Lipsește grupul LDAP pentru a forța calitatea de membru
 pam_emember=Atributul LDAP lipsă sau nevalid pentru membrii grupului
+
 switch_title=Servicii care utilizează LDAP
 switch_service=Serviciu
 switch_srcs=Surse de date
 switch_return=servicii utilizând LDAP
+
 ldap_emodule=Modulul $1 Perl necesar pentru a vorbi cu serverul LDAP nu este instalat. <a href='$2'>Faceți clic aici</a> pentru a descărca și instala acum Webmin.
 ldap_emodule2=Modulul $1 Perl necesar pentru a vorbi cu serverul LDAP nu este instalat.
 ldap_econf=Fișierul de configurare a clientului LDAP $1 nu a fost găsit în sistemul dvs.
@@ -119,6 +124,7 @@ ldap_elogin=Nu a reușit să se lege la serverul LDAP $1 ca $2 : $3
 ldap_anon=anonim
 ldap_eparse=Nu s-a putut analiza URI-ul serverului LDAP $1 
 ldap_etls=Nu a putut trece la modul TLS : $1 
+
 browser_title=Browserul LDAP
 browser_econn=Navigatorul LDAP nu poate fi utilizat : $1 
 browser_base=Răsfoirea:
@@ -129,6 +135,7 @@ browser_attrs=Atributele obiectului
 browser_parent=Căutați părinte
 browser_none=Nici unul
 browser_sel=O.K
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Imprimante utilizator
 order_xfn=XFN
 order_mdns4=DNS multicast
 order_mdns4_minimal=DNS multicast (minim)
+
 desc_aliases=Alias-uri Sendmail
 desc_mail=Alias-uri Sendmail
 desc_hosts=Adrese de gazdă
@@ -177,6 +185,7 @@ desc_printers=Imprimante
 desc_ipnodes=Noduri IP
 desc_timezone=Fusuri orare
 desc_locale=Localizările
+
 eswitch_title=Editare Serviciu
 eswitch_egone=Serviciul nu există!
 eswitch_header=Detalii despre servicii
@@ -196,6 +205,7 @@ eswitch_continue=Continuați căutarea
 eswitch_none=Nici unul
 eswitch_err=Salvarea serviciului nu a reușit
 eswitch_enone=Nu au fost selectate surse!
+
 log_server=Configurație modificată a serverului LDAP
 log_base=Bazele de căutare LDAP modificate
 log_pam=Opțiuni de autentificare modificate
@@ -205,6 +215,7 @@ log_delboot=Demonizarea clientului LDAP dezactivat la momentul pornirii
 log_start=A început demonul client LDAP
 log_stop=Demonul client LDAP a fost oprit
 log_restart=Demonul client LDAP restartat
+
 check_title=Validarea configurației LDAP
 check_base=Găsirea bazei LDAP pentru utilizatori ..
 check_ebase=.. nici o bază găsită în configurația clientului!

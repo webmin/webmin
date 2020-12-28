@@ -30,6 +30,7 @@ index_sdesc=Opis akcije vsebuje
 index_shost=Izvorni strežnik Webmin
 index_long=Prikaži popolne opise dejanj?
 index_global=&lt;Ni v nobenem modulu&gt;
+
 search_title=Rezultati iskanja
 search_date=Datum
 search_time=Čas
@@ -63,6 +64,7 @@ search_global_baduser=Napačno uporabniško ime
 search_global_badpass=Napačno geslo
 search_global_twofactor=Neveljaven dvafaktorski žeton
 search_csv=Izvozi kot CSV.
+
 view_title=Podrobnosti o akciji
 view_header=Podrobnosti o prijavljenem dejanju $1 
 view_action=Opis
@@ -96,12 +98,14 @@ view_files=Datoteke so se spremenile in ukazi se izvajajo
 view_raw=Surovi podatki dnevnika
 view_rawname=Ime parametra
 view_rawvalue=Vrednost parametra
+
 acl_mods=Lahko si ogledate dnevnike v modulih
 acl_all=Vse
 acl_sel=Izbrano spodaj ..
 acl_self=Samo jaz
 acl_users=Uporabniki si lahko ogledajo dejanja
 acl_rollback=Ali lahko vrnete dejanja?
+
 rollback_title=Povratna akcija
 rollback_rusure=Ali ste prepričani, da želite vrniti vse spodaj naštete datoteke na njihovo vsebino, preden ste izvedli to dejanje? Vsi podatki, ki jih trenutno vsebujejo, bodo prepisani z naslednjimi spremembami :
 rollback_isdir=Imenik - nobenih sprememb ne bo.
@@ -124,4 +128,5 @@ rollback_modfile=Vratna vsebina datoteke $1.
 rollback_deleted=Izbrisana datoteka $1.
 rollback_nodeleted=Preskočena neobstoječa datoteka $1.
 rollback_enone=Nobene datoteke niso izbrane
+
 log_rollback=Vzvratna akcija $1 v modulu $2 

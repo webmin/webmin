@@ -12,7 +12,9 @@ main_readonly=(Lese modus)
 main_return=Gå tilbake til $1
 main_unused=Ubrukte moduler
 main_refreshmods=Oppfrisk moduler
+
 link_essl=Perl-modulen Net::SSLeay som behøves for HTTPS forbindelser er ikke installert på ditt system.
+
 category_servers=Tjenere
 category_hardware=Maskinvare
 category_system=System
@@ -22,6 +24,7 @@ category_syslet=Syslets
 category_cluster=Klynge
 category_info=Informasjon
 category_=Verktøy
+
 longcategory_servers=Moduler for konfigurering av web, e-post, FTP og andre tjenere
 longcategory_hardware=Moduler for skriver, disk og annen maskinvarekonfigurasjon
 longcategory_system=Moduler for brukere, filsystemer, Cron jobber og andre systeminnstillinger
@@ -30,11 +33,13 @@ longcategory_net=Moduler for konfigurering av nettverk og nettverkstjenester
 longcategory_cluster=Moduler som kan vedlikeholde flere Webmin servere fra ett enkelt grensesnitt
 longcategory_info=Moduler som viser informasjon om systemet ditt
 longcategory_=Moduler som utføre andre forskjellige oppgaver
+
 header_webmin=Webmin Index
 header_module=Modulindeks
 header_help=Hjelp ...
 header_config=Modulkonfigurering
 header_servers=Webminservere
+
 index=index
 yes=Ja
 no=Nei
@@ -65,12 +70,14 @@ euserdbacl=Kunne ikke hente bruker ACL : $1
 euserdbacl2=Kunne ikke oppdatere bruker ACL : $1
 egroupdbacl=Kunne ikke hente gruppe ACL : $1
 egroupdbacl2=Kunne ikke oppdatere gruppe ACL : $1
+
 chooser_title1=Velg fil ...
 chooser_title2=Velg katalog ...
 chooser_dir=Katalog for $1
 chooser_ok=OK
 chooser_date=Velg dato
 chooser_eopen=Listing feilet : $1
+
 users_title1=Velg brukere ...
 users_title2=Velg bruker ...
 users_sel=Valgte brukere
@@ -78,6 +85,7 @@ users_all=Alle brukere
 users_ok=OK
 users_cancel=Avbryt
 users_clear=Nullstill
+
 groups_title1=Velg grupper ...
 groups_title2=Velg gruppe ...
 groups_all=Alle grupper
@@ -85,6 +93,7 @@ groups_sel=Valgte grupper
 groups_ok=OK
 groups_cancel=Avbryt
 groups_clear=Nullstill
+
 modules_title1=Velg moduler..
 modules_title2=Velg modul..
 modules_sel=Valgte moduler
@@ -92,6 +101,7 @@ modules_all=Alle moduler
 modules_ok=OK
 modules_cancel=Avbryt
 modules_clear=Nullstill
+
 config_ecannot=Du får ikke lov til å konfigurere denne modulen
 config_title=Konfigurering
 config_dir=For modul $1
@@ -103,6 +113,7 @@ config_err=Kunne ikke lagre konfig
 config_nochange=Ikke endre
 config_setto=Satt til
 config_ewebmin=Parameter type 14 virker bare i Webmin
+
 help_err=Hjelp kunne ikke vises
 help_epath=Manglende eller ugyldige hjelpbane
 help_efile=Kunne ikke lese hjelpfilen for $1
@@ -110,6 +121,7 @@ help_eheader=Seksjon &lt;header&gt; mangler
 help_einclude=Det gick ikke å ta med $1
 help_eif=$1 misslykket : $2
 help_eexec=$1 misslykket : $2
+
 referer_title=Sikkerhetsadvarsel
 referer_warn=<b>Advarsel!</b> Webmin har oppdaget at URL $1 linken til programmet $2, ser ut til å være utenfor Webmin serveren. Dette kan være ett forsøk på å lure din server til å utføre ett farligt kommando.
 referer_warn_unknown=<b>Advarsel!</b> Webmin har oppdaget at programmet $1 ble lenket til fra en ukjent URL, som ser ut til å ligge utenfor Webmin serveren. Dette kan være ett forsøk på å lure din server til å utføre en farlig kommando.
@@ -117,6 +129,7 @@ referer_fix1=Dersom dette er en gyldig lenke, kan du tillate lenker fra denne UR
 referer_fix2=Alternativt kan du konfigurere Webmin til å tillate denne lenken fra kommandolinjen ved å:<ul><li>Logge inn som <tt>root</tt>, og redigere filen <tt>/etc/webmin/config</tt>.<li>Legg til linjen <tt>referers=$1</tt> på slutten, eller dersom en <tt>referers</tt> linje allerede finnes legger du til <tt>$1</tt> til den.<li>Lagre filen.</ul>
 referer_fix3u=Forsikre deg om at nettleseren din er konfigurert til å sende referer-informasjon slik at den kan verifiseres av Webmin
 referer_fix2u=Alternativt kan du konfigurere Webmin til å tillate lenker fra ukjente referenter ved å :<ul><li>Logge inn som <tt>root</tt>, og redigere filen <tt>/etc/webmin/config</tt>.<li>Finn linjen <tt>referers_none=1</tt> og endre den til <tt>referers_none=0</tt>.<li>Lagre filen.</ul>
+
 session_header=Logg inn på Webmin
 session_mesg=Du må oppgi brukernavn og passord for å logge inn på Webmin tjeneren på $1.
 session_mesg2=Du må oppgi brukernavn og passord for å logge inn.
@@ -130,11 +143,13 @@ session_twofailed=To-faktor autentisering feilet : $1
 session_logout=Du er logget ut. Bruk skjemaet nedenfor for å logge inn på nytt.
 session_timed_out=Sesjonen ble tidsavbrutt etter $1 minutter uten aktivitet.
 session_save=Husk innlogging permanent?
+
 pam_header=Logg inn på Webmin
 pam_mesg=Du må svare på spørsmålet nedenfor for å logge inn på Webmin serveren på $1.
 pam_mesg2=Du må svare på spørsmålet nedenfor for å logge inn.
 pam_login=Fortsett
 pam_restart=Omstart
+
 acl_root=Rot-katalog for filvelger
 acl_otherdirs=Andre synlige kataloger i filvelger
 acl_nodot=Skjul dot-filer i filvelger?
@@ -167,6 +182,7 @@ acl_negative=Gi nye modul-tilganger til bruker?
 acl_fileunix=Bla gjennom filer som Unix bruker
 acl_sameunix=Samme som Webmin brukernavn
 acl_webminsearch=Vis Webmin søke-felt?
+
 month_1=Januar
 month_2=Februar
 month_3=Mars
@@ -179,6 +195,7 @@ month_9=September
 month_10=Oktober
 month_11=November
 month_12=Desember
+
 day_0=Søndag
 day_1=Mandag
 day_2=Tirsdag
@@ -186,6 +203,7 @@ day_3=Onsdag
 day_4=Torsdag
 day_5=Fredag
 day_6=Lørdag
+
 smonth_1=Jan
 smonth_2=Feb
 smonth_3=Mar
@@ -198,6 +216,7 @@ smonth_9=Sep
 smonth_10=Okt
 smonth_11=Nov
 smonth_12=Des
+
 sday_0=Sø
 sday_1=Ma
 sday_2=Ti
@@ -205,12 +224,15 @@ sday_3=On
 sday_4=To
 sday_5=Fr
 sday_6=Lø
+
 emodule=Tilgang nektet : Bruker $1 har ikke tilgang til å bruke $2 modulen
 emodulecheck=Modulen $1 er ikke tilgjengelig på ditt system
 elock_tries2=Kunne ikke låse filen $1 etter $2 minutter. Siste feil var : $3
+
 skill_high=Ekspert
 skill_medium=Erfaren
 skill_low=Nybegynner
+
 feedback_title=Webmin tilbakemelding
 feedback_desc=Her kan du rapportere feil, eller komme med forslag til Webmin utviklerne vedrørende problemer eller manglende funksjonalitet. Når du klikker Send-knappen vil opplysningene du har skrevet inn i skjemaet bli sendt til $1.
 feedback_desc2=Denne tilbakemeldingen vil bli sendt til Webmins utvikler, ikke til din systemadministrator eller ISP. Vennligst skriv tilbakemeldingen din på engelsk, selv om du kjører Webmin på et annet språk.
@@ -239,15 +261,18 @@ feedback_to=Send tilbakemelding til adressene
 feedback_enoto=Det var ikke oppgitt noen e-post adresser å sende tilbakemelding til
 feedback_ecannot=Du har ikke lov til å sende tilbakemelding
 feedback_ecannot2=Du har ikke lov til å sende feedback som inneholder konfig-filer
+
 progress_size2=Laster ned $1 ($2) ..
 progress_nosize=Laster ned $1 ..
 progress_datan=Mottatt $1 ($2 %)
 progress_data2n=Mottatt $1
 progress_done=.. nedlasting fullført.
 progress_incache=Funnet $1 i cache ..
+
 readparse_cdheader=Manglende Content-Disposition header
 readparse_enc=Forventet form-data tegnkoding, men mottok normal tegnkoding
 readparse_max=Data overskred maksimumsstørrelse på $1 bytes
+
 password_expired=Passordet ditt er utløpt, og du må velge et nytt.
 password_temp=Du må velge et nytt passord til å erstatte din midlertidige login.
 password_header=Velg nytt passord
@@ -266,6 +291,7 @@ password_enew2=De nye passordene dine stemmer ikke overens
 password_epam=PAM feil : $1
 password_emodpam=Perl-modulen Authen::PAM som er nødvendig for å utføre passordendringer, er ikke installert!
 password_enewpass=Nytt passord er ikke tillatt : $1
+
 ui_mandatory=Dette feltet er obligatorisk
 ui_checkmandatory=Ingenting var valgt
 ui_errors=Flere feil funnet :
@@ -280,7 +306,9 @@ ui_etime=Ugyldig tid
 ui_paging=Viser radene $1 til $2 av $3
 ui_rowlabel=$2 i rad $1 :
 ui_filterbox=Type til filter..
+
 header_statusmsg=$1 logget inn på $2 $3 $4 ($5)
+
 uptracker_title=Laster opp fil
 uptracker_file=Filnavn
 uptracker_size=Størrelse
@@ -288,6 +316,7 @@ uptracker_pc=Fremdrift
 uptracker_eid=Ingen opplastings ID angitt
 uptracker_eid2=Opplastings ID er ugyldig!
 uptracker_of=$1 av $2
+
 wsearch_title=Søk $1
 wsearch_modt=Modul
 wsearch_mtitle=Modul navn
@@ -315,6 +344,7 @@ wsearch_hmod=Modul
 wsearch_moddir=URL sti /$1/
 wsearch_searching=Søker etter $1 . .
 wsearch_found=fant $1 resulatater :
+
 sql_emysqldriver=Kunne ikke laste MySQL DBI driver
 sql_emysqlconnect=Kunne ikke koble til MySQL database : $1
 sql_epostgresqldriver=Kunne ikke laste PostgreSQL DBI driver
@@ -323,6 +353,7 @@ sql_eldapdriver=Kunne ikke laste LDAP perl modul
 sql_eldapconnect=Kunne ikke koble til LDAP tjener $1
 sql_eldaptls=Kunne ikke starte TLS kryptering for LDAP : $1
 sql_eldaplogin=Kunne ikke logge inn på LDAP tjener som $1 : $2
+
 log_email_subject=Webmin handling i  $1
 log_email_global=Webmin global handling
 log_email_desc=Denne meldingen ble sendt av Webmin som svar på en bruker-handling.
@@ -334,6 +365,7 @@ log_email_user=Utført av bruker: $1
 log_email_script=Webmin script: $1
 log_email_session=Sesjon ID: $1
 log_email_remote=Klient adresse: $1
+
 nice_size_PB=PB
 nice_size_PiB=PiB
 nice_size_TB=TB
@@ -345,4 +377,5 @@ nice_size_MiB=MiB
 nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bytes
+
 langauto_include=Ta med maskinoversettelser

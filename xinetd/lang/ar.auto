@@ -25,6 +25,7 @@ index_estart=الأمر لبدء Xinetd $1 غير موجود. ربما لم يت
 index_noport=مجهول
 index_enable=تمكين المحدد
 index_disable=تعطيل المحدد
+
 serv_create=إنشاء خدمة إنترنت
 serv_edit=تحرير خدمة الإنترنت
 serv_header1=خيارات شبكة الخدمة
@@ -78,19 +79,24 @@ serv_enice=مستوى لطيف مفقود أو غير صالح
 serv_ecps0=عدد الاتصالات مفقود أو غير صالح في الثانية
 serv_ecps1=تأخير مفقود أو غير صالح
 serv_etimes=يجب أن تكون أوقات الوصول بالتنسيق HH: MM-HH: MM
+
 sock_stream=مجرى
 sock_dgram=مخطط البيانات
 sock_raw=الخام
 sock_seqpacket=مخطط بيانات متسلسل
+
 proto_=إفتراضي
 proto_ip=IP (بروتوكول الإنترنت)
 proto_tcp=TCP (بروتوكول التحكم في الإرسال)
 proto_udp=UDP (بروتوكول مخطط بيانات المستخدم)
+
 restart_err=فشل في تطبيق التغييرات
 restart_ekill=فشل إرسال إشارة USR2 إلى PID $1 : $2 
 restart_epid=لم يعد يعمل
+
 start_err=فشل في بدء xinetd
 start_estart=فشل $1 : $2 
+
 defs_title=الخيارات الافتراضية
 defs_header=الخيارات الافتراضية للخدمات
 defs_log=وضع تسجيل Xinetd
@@ -115,6 +121,7 @@ defs_err=فشل في حفظ الخيارات الافتراضية
 defs_efile=اسم ملف السجل مفقود أو غير صالح
 defs_esoft=الحد المرن مفقود أو غير صالح
 defs_ehard=الحد الثابت مفقود أو غير صالح
+
 log_create_serv=تم إنشاء خدمة$2 $1
 log_modify_serv=خدمة$2 معدلة$1
 log_delete_serv=تم حذف خدمة$2 $1
@@ -125,5 +132,6 @@ log_enable=تم تمكين خدمات$1
 log_disable=خدمات $1 معطلة
 log_enable_l=الخدمات الممكّنة$1
 log_disable_l=خدمات المعوقين$1
+
 config_dirdef=ملف التكوين Xinetd
 config_dirto=ملف جديد في الدليل

@@ -5,6 +5,7 @@ index_ereq_resource_cmd=El script para solicitar recursos del otro nodo ($1) no 
 index_version=Versión de latido $1 
 index_noversion=Advertencia: no se pudo detectar automáticamente la versión de Heartbeat instalada en su sistema. Debe configurarlo en la página <a href='$1'>configuración del módulo</a>.
 index_status=Estado de los latidos del corazón
+
 conf_serials=Puertos serie de latidos
 conf_bcasts=Interfaces de latido de Ethernet
 conf_mcast=Dispositivo de latido multicast
@@ -22,6 +23,7 @@ conf_auto_on=$ {conf_enabled}
 conf_auto_off=$ {conf_disabled}
 conf_auto_legacy=Modo heredado
 conf_auto_=$ {default}
+
 res_active=Estado del recurso
 res_getserv=Obtener recursos
 res_hbdown=Latido del corazón

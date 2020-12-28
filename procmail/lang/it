@@ -26,6 +26,7 @@ index_return=lista azioni
 index_env=imposta variabile $1 a $2
 index_include=processa  file incluso $1
 index_ecmd=il programma Procmail $1 non trovato sul sistema. Potrebbe non essere installato o il  <a href='$2'>modulo di configurazione</a> è errato
+
 edit_title2=modifica azione
 edit_title1=Create azione
 edit_header1=dettagli azione di consegna
@@ -58,6 +59,7 @@ edit_cmode_gt=il messaggio è maggiore di
 edit_conddesc=affinchè l'azione sotto venga eseguita, tutte le condizioni sotto devono avere riscontro. Se non sono presenti condizioni, l'azione viene eseguita sempre.
 edit_none=Nessuno
 edit_lock=file specifico
+
 save_err=errore nel salvataggio dell'azione
 save_eaction_0=file di accodamento mancante
 save_eaction_1=cartella MH su cui scrivere mancante
@@ -70,6 +72,7 @@ save_elockfile=nome del lock file mancate
 save_esize=dimensione del messaggio non valido o mancante per la condizione $1
 save_ere=regular expression per la condizione  $1 mancante
 save_eshell=comando mancante per la condizione  $1
+
 env_title1=Crea variabile
 env_title2=modifica variabile
 env_header=Procmail variabile di ambiente
@@ -77,15 +80,19 @@ env_name=nome della variabile
 env_value=valore
 env_err=errore nel salvare la variabile 
 env_ename=nome variabile errato o mancante
+
 inc_title1=aggiungi file incluso
 inc_title2=modifica file incluso
 inc_header=file incluso con regole procmail
 inc_inc=file inclusi
 inc_einc=file da includere non inserito
+
 config_eline=linea sconosciuta $1 in $2 : $3
+
 manual_title=modifica configurazione
 manual_desc=questa pagine può essere usata per modificare  manualmente il file di configurazione  Procmail $1. ATTENZIONE: non viene controllata la sintassi dei comandi inseriti.
 manual_edata=nessun dato fornito dal tuo browser!
+
 log_create_rec=creato recipe to $1
 log_delete_rec=eliminato recipe to $1
 log_modify_rec=modificato recipe to $1

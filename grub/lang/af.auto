@@ -8,6 +8,7 @@ index_none=Geen opstartopsies is gedefinieër nie. Maak seker dat u ten minste e
 index_efile=Die GRUB-menu lêer $1 is nie op u stelsel gevind nie. Miskien is GRUB nie geïnstalleer nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
 index_epath=Die GRUB-uitvoerbare $1 is nie op u stelsel gevind nie. Miskien is GRUB nie geïnstalleer nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
 index_return=opsies lys
+
 title_add=Voeg selflaaiposisie by
 title_edit=Wysig selflaaiposisie
 title_header=Besonderhede van die opsie van die opstartmenu
@@ -36,6 +37,7 @@ title_echain=Ontbrekende of ongeldige kettinglaaierlêer
 title_edev=Ongesteunde wortelpartisietoestel $1 
 title_einitrd=Aanvanklike ramdisk-lêernaam ontbreek
 title_lock=Wagwoord gesluit?
+
 global_title=Wêreldwye opsies
 global_header=Wêreldwye opstartmenu-opsies
 global_default=Standaard opstartopsie
@@ -56,12 +58,14 @@ global_edev=Ongesteunde installasie skyf/partisie $1
 global_eother=Ontbrekende of ongeldige skyf/partisie
 global_epassword=Ontbrekende of ongeldige opstartwagwoord ontbreek
 global_epasswordfile=Alternatiewe menu-lêernaam ontbreek
+
 install_title=Installeer GRUB
 install_err=Kon nie GRUB installeer nie
 install_efind=Kon nie die menu-lêer vind nie
 install_desc=Installeer GRUB op $1 met opdragte $2 en $3.
 install_ok=.. installeer voltooi.
 install_failed=.. installering misluk!
+
 log_create_title=Die opstartopsie $1 is geskep
 log_delete_title=Opstelopsie $1 is uitgevee
 log_modify_title=Gewysigde opstartopsie $1 

@@ -22,6 +22,7 @@ index_auto=Găsiți automat servere
 index_automsg=Faceți clic pe acest buton pentru a configura descoperirea periodică automată a noilor servere Webmin în rețeaua dvs.
 index_search=Afișează potrivirea serverelor:
 index_ok=Căutare
+
 edit_title=Editare server
 create_title=Server de înregistrare
 edit_details=Detalii despre server
@@ -57,6 +58,7 @@ edit_baduser=Logare respinsă
 edit_invalid=Utilizatorul nu poate face RPC
 edit_version=Se execută Webmin $1 
 edit_same=Disponibil numai în modul de autentificare a sesiunii și când parola este pusă la dispoziția programelor Webmin.
+
 save_err=Salvarea serverului nu a reușit
 save_ehost=Numele de gazdă lipsă sau nevalid
 save_ehost2=Gazda nu există
@@ -67,6 +69,7 @@ save_epass=Parcă lipsește
 save_egroup=Lipsește numele grupului
 save_elogin=Logare sau parolă nevalide pentru gazdă
 save_egroup2=Nume de grup nou nevalid
+
 find_title=Găsiți servere
 find_new=Găsit server nou la $1 
 find_but=S-a găsit noul server la $1, dar autentificarea a eșuat : $2 
@@ -81,16 +84,20 @@ find_ecannot=Nu aveți voie să găsiți servere
 find_scanning=Scanarea serverelor din rețeaua $1 ..
 find_broading=Difuzarea pentru servere pe adrese $1 ..
 find_eport=Număr de port lipsă sau nevalid
+
 log_modify=Server modificat $1 
 log_create=Serverul înregistrat $1 
 log_delete=Server șters $1 
 log_find=Serverul $1 găsit
 log_deletes=Șters serverele $1 
+
 link_elogin=Nu a reușit autentificarea la $1 ca $2 
 link_ecannot=Nu aveți voie să utilizați acest server
 link_essl=Nu aveți instalată biblioteca perl Net::SSLeay
 link_eautologin=Logare sau parolă nevalide pentru $1. <a href='$2'>Faceți clic aici</a> pentru a încerca din nou.
+
 lib_other=Alte
+
 acl_edit=Pot edita servere?
 acl_find=Puteți găsi servere?
 acl_servers=Poate folosi servere
@@ -102,6 +109,7 @@ acl_forcefast=Forțați modul RPC rapid la implicit?
 acl_forcetype=Forțați tipul de sistem de operare implicit?
 acl_forcelink=Forțați tipul de autentificare în mod implicit?
 acl_links=Se poate conecta la servere?
+
 login_title=Autentificare la server
 login_desc=Trebuie să furnizați un nume de utilizator și o parolă pentru a vă conecta la serverul Webmin $1.
 login_header=Autentificare Webmin
@@ -109,13 +117,16 @@ login_user=Nume de utilizator
 login_pass=Parola
 login_login=Autentificare
 login_esame=Opțiunea de a utiliza aceeași autentificare ca acest server poate fi utilizată numai atunci când nu este în modul de autentificare a sesiunii și când parola este pusă la dispoziția programelor Webmin.
+
 this_server=acest server
+
 delete_err=Nu a reușit să ștergeți serverele
 delete_enone=Nimic selectat
 delete_ecannot=Nu aveți voie să ștergeți serverele
 delete_title=Ștergeți serverele
 delete_rusure=Sigur doriți să eliminați serverele selectate $1 ?
 delete_confirm=Șterge acum
+
 auto_title=Găsiți automat servere
 auto_header=Opțiuni de înregistrare automată a serverului
 auto_sched=Caută noi servere?
@@ -141,8 +152,10 @@ auto_smtp=Trimiteți prin server SMTP
 auto_self=Acest sistem
 auto_esmtp=Serverul SMTP lipsă sau nevalid
 auto_findself=Înregistrați și acest sistem?
+
 config_deftype=Tip de sistem implicit
 config_typeauto=Automat
+
 email_regsubject=Sistemul $1 înregistrat
 email_reg=Sistemul $1 a fost înregistrat automat.
 email_unregsubject=Sistem $1 neînregistrat

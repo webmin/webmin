@@ -16,6 +16,7 @@ index_digest2=Le chiffrement de résumé est activé dans la configuration du mo
 index_cpan=<a href='$1'>Cliquez ici</a> pour le télécharger et l'installer maintenant.
 index_delete=Déprotéger les répertoires sélectionnés
 index_remove=Dé-protéger et supprimer des fichiers
+
 dir_title1=Ajouter un répertoire protégé
 dir_title2=Editer un répertoire protégé
 dir_header=Options du répertoire protégé
@@ -60,6 +61,7 @@ dir_delete3=Dé-protéger et supprimer un fichier
 dir_apache=Editer les Option d'Apache
 dir_efiledir='$1' est un répertoire et ne peut donc pas être utilisé comme fichier utilisateur
 dir_egfiledir='$1' est un répertoire et ne peut donc pas être utilisé comme fichier de groupe
+
 edit_title1=Créer un utilisateur
 edit_title2=Editer un utilisateur
 edit_header=Détails de l'utilisateur dans le fichier
@@ -71,11 +73,13 @@ edit_pass0=Mettre à
 edit_passfrom=Changer de
 edit_passto=vers un nouveau mot de passe
 edit_dom=type de somme de contrôle
+
 gedit_title1=Créer un groupe
 gedit_title2=Modifier un groupe
 gedit_header=Détails d'un groupe d'authentification Web
 gedit_group=Nom du Groupe
 gedit_members=Membres du groupe
+
 save_err=Impossible de sauver l'utilisateur
 save_euser1=Nom d'utilisateur manquant
 save_euser2=Le nom d'utilisateur ne peut pas contenir le caractère :
@@ -84,16 +88,19 @@ save_eclash=Un utilisateur avec le même nom existe déjà
 save_eoldpass=Ancien mot de passe incorrect.
 save_title=Utilisateur sauvé
 save_edom=Type de somme de contrôle manquant ou invalide
+
 gsave_err=Enregistrement du groupe échoué
 gsave_egroup1=Nom du groupe manquant
 gsave_egroup2=Le nom du groupe ne doit contenir ni :, ni espaces
 gsave_eclash=Un groupe de ce nom existe déjà
+
 acl_dirs=Répertoires autorisés
 acl_user=Création du fichier .htaccess et htusers avec l'utilisateur Unix
 acl_same=Comme le login Webmin
 acl_home=Inclure le répertoire principal de l'utilisateur Unix?
 acl_sync=Peut paramétrer la synchronisation des utilisateurs Unix?
 acl_uonly=Peut ajouter et modifier des répertoires protégés?
+
 log_create_dir=Répertoire $1 ajouté
 log_modify_dir=Répertoire $1 modifié
 log_delete_dir=Répertoire $1 supprimé
@@ -104,6 +111,7 @@ log_create_group=Groupe $1 créé
 log_modify_group=Groupe $1 modifié
 log_delete_group=Groupe $1 supprimé
 log_delete_dirs=$1 répertoires supprimés
+
 search_title=Résultats de la recherche
 search_err=Recherche échouée
 search_edir=Répertoire de recherche invalide ou manquant

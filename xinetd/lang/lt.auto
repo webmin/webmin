@@ -25,6 +25,7 @@ index_estart=Komanda paleisti „Xinetd $1 “ neegzistuoja. Galbūt jis neįdie
 index_noport=Nežinoma
 index_enable=Įgalinti pasirinktą
 index_disable=Išjungti pasirinktą
+
 serv_create=Sukurti interneto paslaugą
 serv_edit=Redaguoti interneto paslaugą
 serv_header1=Paslaugų tinklo parinktys
@@ -78,19 +79,24 @@ serv_enice=Trūksta arba netinkamas gražus lygis
 serv_ecps0=Trūksta arba netinkamas jungčių skaičius per sekundę
 serv_ecps1=Trūksta arba netinkamas vėlavimas
 serv_etimes=Prieigos laikas turi būti tokio formato: HH: MM-HH: MM
+
 sock_stream=Srautas
 sock_dgram=Datagrama
 sock_raw=Neapdorotas
 sock_seqpacket=Eilės datagrama
+
 proto_=Numatytas
 proto_ip=IP (interneto protokolas)
 proto_tcp=TCP (perdavimo valdymo protokolas)
 proto_udp=UDP (vartotojo duomenų diagramos protokolas)
+
 restart_err=Nepavyko pritaikyti pakeitimų
 restart_ekill=Nepavyko nusiųsti USR2 signalo į PID $1 : $2 
 restart_epid=Daugiau nebėga
+
 start_err=Nepavyko paleisti xinetd
 start_estart=$1 nepavyko : $2 
+
 defs_title=Numatytosios parinktys
 defs_header=Numatytosios paslaugų parinktys
 defs_log=Xinetd registravimo režimas
@@ -115,6 +121,7 @@ defs_err=Nepavyko išsaugoti numatytųjų parinkčių
 defs_efile=Trūksta arba netinkamas žurnalo failo vardas
 defs_esoft=Trūksta arba neteisinga minkšta riba
 defs_ehard=Trūksta arba netinkama pagrindinė riba
+
 log_create_serv=Sukurta $2 paslauga $1 
 log_modify_serv=Modifikuota $2 paslauga $1 
 log_delete_serv=Ištrinta $2 paslauga $1 
@@ -125,5 +132,6 @@ log_enable=Įgalintos $1 paslaugos
 log_disable=Išjungtos $1 paslaugos
 log_enable_l=Įgalintos paslaugos $1 
 log_disable_l=Paslaugos neįgaliesiems $1 
+
 config_dirdef=Xinetd konfigūracijos failas
 config_dirto=Naujas failas kataloge

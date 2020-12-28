@@ -11,6 +11,7 @@ index_when=Ja, $1
 index_act=Handling
 index_exec=Udfør
 index_delete=Slet valgte kopier
+
 edit_title=Rediger Cluster Copy
 create_title=Opret Cluster Copy
 edit_header=Detaljer om klusterkopi
@@ -31,12 +32,14 @@ edit_run=Kopier nu
 edit_return=klynge kopi
 edit_email=E-mail-output til
 edit_none=Ingen
+
 save_err=Kunne ikke gemme cluster-cron-job
 save_efiles=Der er ikke indtastet nogen filer, der skal kopieres
 save_edest=Manglende destinationsmappe
 save_eservers=Ingen servere at kopiere til indtastet
 save_efile=Fil til at kopiere '$1' er ikke en absolut sti
 save_eemail=Manglende eller ugyldig e-mail-adresse
+
 exec_title=Kopiering af filer
 exec_files1=Kopierer $1 filer til valgte servere $2 ..
 exec_files2=Kopierer $1 til valgte servere $2 ..
@@ -50,12 +53,15 @@ exec_not=Kunne ikke kopiere følgende filer til $1  :
 exec_cmd=Post-kopi kommando output på $1  :
 exec_before=Før-kopi kommando output på $1  :
 exec_on=Kunne ikke køre på $1 : $2 
+
 log_create=Oprettet kopi for serverne $1 til $2 
 log_modify=Ændret kopi for $1 til $2 -servere
 log_delete=Slet kopi for $1 til $2 -servere
 log_exec=Kopierede $1 til $2 servere
 log_deletes=$1 kopier er slettet
+
 email_subject_succeeded=Klyngekopi af $1 lykkedes
 email_subject_failed=Cluster-kopi af $1 mislykkedes
+
 delete_err=Kunne ikke slette kopier
 delete_enone=Ingen valgt

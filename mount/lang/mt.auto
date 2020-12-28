@@ -12,6 +12,7 @@ index_return=Lista tas-sistemi ta 'fajls
 index_none=M'għandekx aċċess għal kwalunkwe sistemi ta 'fajls immuntati.
 index_mount2=Immonta bil-password:
 index_root=Sistema ta 'fajls Root
+
 edit_title=Editja Mount
 create_title=Oħloq Mount
 edit_err=Naqset milli teditja l-impunjazzjoni
@@ -58,6 +59,7 @@ edit_ecannot=M'għandekx permess teditja dan is-sistema ta 'fajls
 edit_ecannot2=M'għandekx permess li żżid sistemi ta 'files ġodda
 edit_3_or_lower=3 (jew inqas)
 edit_advanced=Modalità Avvanzata
+
 save_err=Naqset milli ssalva l-impunjazzjoni
 save_edir="$1" mhix direttorju
 save_edirname="$1" mhux isem tad-direttorju validu
@@ -74,8 +76,10 @@ save_apply=Applika għal-Lista Permanenti
 save_fapply=Forza Un-Mount
 save_eremount=Remount fallut : $1
 save_enone=Int għażilt biex issalva jew tibgħat
+
 swap_err=Ma rnexxielux joħloq fajl tpartit
 swap_esize="$1" mhux daqs validu
+
 nfs_server=Agħżel NFS Server ..
 nfs_select=Agħżel server NFS mill-impunjazzjoni minn ..
 nfs_ip=Indirizz IP
@@ -87,6 +91,7 @@ nfs_seldir=Agħżel direttorju NFS biex timmonta ..
 nfs_seldirv4=Għal immuntar NFSv4, għandek tagħżel '/'
 nfs_dir=Direttorju
 nfs_clients=Klijenti
+
 smb_choose=Agħżel CIFS Server ..
 smb_elist=Ma rnexxiex nikseb lista tas-server minn $1. Forsi s-server ma jippermettix l-ibbrawżjar
 smb_eworkgroup=L-ebda grupp ta ’ħidma ma twaqqaf fuq il-paġna tal-Modulu ta’ Konfigurazzjoni
@@ -103,6 +108,7 @@ smb_sel2=Agħżel sehem biex timmonta ..
 smb_share=Aqsam
 smb_comment=Kumment
 smb_noshares=M'hemmx ishma ta 'fajls disponibbli fis-server $1
+
 solaris_scsidev=Kontrollur SCSI $1 mira $2 unit $3 partizzjoni $4
 solaris_idedev=Kontrollur IDE $1 drive $2 partizzjoni $3
 solaris_mddev=Apparat RAID $1
@@ -240,6 +246,7 @@ solaris_efstyp2=Ma rnexxiex tiċċekkja t-tip tas-sistema tal-fajls : $1
 solaris_ecachedir="$1" mhix direttorju tal-cache validu
 solaris_efmode="$1" mhux modalità ta 'fajl ottali valida
 solaris_edmode="$1" mhux modalità ta 'direttorju ta' ottaal valida
+
 linux_eamd=AMD falliet
 linux_eauto=Falliment awtomatiku : $1
 linux_esmbconn=Naqset milli tikkonnettja mas-server
@@ -361,6 +368,7 @@ linux_noenforce=Iva, imma ma tinfurzax
 linux_df=Tinkludix blokki riservati fid-daqs tas-sistema tal-fajls?
 linux_noatime=Evita li taġġorna l-aħħar ħinijiet ta 'aċċess?
 linux_netdev=Stenna sakemm l-interfejs tan-netwerk jibdew?
+linux_nofail=Kompli ibbutja anke jekk il-muntatura tfalli?
 linux_ecname=Netbios tal-klijent nieqes jew mhux validu
 linux_emname=Isem tas-server jew indirizz IP nieqes jew invalidi
 linux_bind=Direttorju Oriġinali
@@ -386,6 +394,7 @@ linux_nounix=Itfi CIFS Estensjonijiet Unix?
 linux_noserverino=Tiġġenera numri tal-inode fuq in-naħa tal-klijent?
 linux_cvers=Verżjoni CIFS
 linux_ecvers=Il-verżjoni CIFS trid tkun numru
+
 log_mount=Immuntat $3
 log_mount_l=Immuntat $2 $1 fuq $3
 log_umount=Mingħajr $3
@@ -399,7 +408,9 @@ log_modify_l=$2 immontat $1 fuq $3
 log_delete=Imħassar l-immuntar $3
 log_delete_l=Imħassar $2 impunta $1 fuq $3
 log_swap=Fajl swap maħluq $1
+
 unmount_err=Naqset milli tiżżarma $1
+
 mount_err=Naqset milli timmonta $1
 irix_nhost=Hostname NFS
 irix_ndir=Direttorju NFS
@@ -430,6 +441,7 @@ irix_rock=Uża estensjonijiet Rock Ridge?
 irix_nofsck=Iċċekkja s-sistema tal-files waqt l-ibbutjar?
 irix_auto=Sors tal-awtomounter
 irix_automap=Fajl Mappa
+
 irix_ehost=L-ospitant "$1" ma jeżistix
 irix_eloss=L-ospitanti "$1" qed jonqos
 irix_eshowmount=L-ospitant "$1" ma jappoġġjax NFS
@@ -447,9 +459,11 @@ irix_efstyp2=Ma rnexxielux jikseb fileystem type $1 : $2
 irix_efstyp=It-tip ta 'sistema ta' fajls fuq $1 huwa $2, mhux $3
 irix_eautomap=Fajl tal-mappa tal-awtomounter "$1" ma jeżistix
 irix_eauthmap2=Fajl tal-mappa tal-awtomounter nieqes jew invalidu
+
 irix_devroot=Diviżżjoni tal-għeruq
 irix_devswap=Partizzjoni ta 'tpartit
 irix_autohosts=L-esportazzjonijiet kollha tal-NFS
+
 acl_only=Ħalli biss immuntar u żarmar?
 acl_fs=Sistemi ta 'fajls li jistgħu jiġu editjati
 acl_types=Tipi ta 'sistema ta' fajls li jistgħu jintużaw
@@ -462,8 +476,10 @@ acl_hide=Aħbi sistemi ta 'fajls li jistgħu jeditjaw?
 acl_simple=Uri forma ta 'impunjazzjoni sempliċi?
 acl_simopts=Uri għażliet issimplifikati tas-sistema ta 'fajls?
 acl_browse=Uri l-fajl u taqsam il-buttuni tal-ibbrawżjar?
+
 egcc=Il-kompilatur GCC jew CC meħtieġ biex jinbena programm għall-elenkar ta 'sistemi ta' fajls immuntati fis-sistema tiegħek mhux disponibbli.
 ecompile=Ġara żball fil-bini ta 'programm għall-elenkar ta' sistemi ta 'fajls immuntati fis-sistema tiegħek : $1
+
 freebsd_eaddr=Indirizz tas-server nieqes jew invalidu
 freebsd_eworkgroup=Grupp ta ’xogħol nieqes jew invalidu
 freebsd_ide=Hard disk IDE
@@ -477,8 +493,10 @@ freebsd_idedev=Apparat IDE $1, porzjon $2, partizzjoni $3
 freebsd_scsidev=Apparat SCSI $1, porzjon $2, partizzjoni $3
 freebsd_edevpath=Apparat ieħor għandu jkun triq assoluta, bħal <tt>/dev/cdrom</tt>
 freebsd_edevfile=Il-fajl tal-apparat "$1" ma jeżistix
+
 cswap_file=Il-fajl tpartit $1 ma jeżistix.
 cswap_size=Oħloq u impunja fajl ta 'tpartit bid-daqs
+
 acl_sysinfo=Uri d-dejta tad-diska disponibbli fid-Dashboard?
 sysinfo_total=Total
 sysinfo_dev=ID tal-Apparat

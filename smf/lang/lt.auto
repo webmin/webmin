@@ -180,6 +180,7 @@ whats_this_NSTATE=Kita paslaugos būsena, naudinga, kai paslauga pereinama. „-
 whats_this_SCOPE=Paslaugos egzemplioriaus apimties pavadinimas. Žiūrėti: smf (5). Žr.: svcs (1).
 whats_this_STIME=Laikas (jei šiandien) arba data, kai paslauga pateko į dabartinę būseną. Žiūrėti: smf (5). Žr.: svcs (1).
 whats_this_Select=Čia patikrinkite paslaugų, kurias norite įjungti, išjungti, atnaujinti ir tt, sąrašą.
+
 whats_this_service_detail=Čia nurodykite/redaguokite aukščiausio lygio paslaugų informaciją: paslaugos pavadinimas, versijos numeris, manifesto ir stabilumo paketo pavadinimas. Žiūrėti: smf (5). Žr.: svccfg (1M). Žr.: service_bundle (4).
 whats_this_bundle_name=Manifeste esančio paslaugų paketo pavadinimas. Viename manifeste gali būti susietos kelios paslaugos, tačiau vardas čia nėra svarbus. Jau esamas paslaugas bus nustatyta eksportuoti, nes tai daro svccfg, eksportuodama manifestą iš SMF saugyklos. Žr.: svccfg (1M). Žr.: service_bundle (4).
 whats_this_service_name=Tarnybos pavadinimas. Įprasta naudoti formatą [general_service_category]/[name]. Į jau pateiktas kategorijas įeina taikymas (aukštesnio lygio programos), etapas (kitų paslaugų rinkiniai, pavyzdžiui, vardų paslaugos), platforma (platformai būdingos paslaugos), sistema („Solaris“ sistemos paslaugos), įrenginys (konkrečiam įrenginiui skirtos paslaugos), tinklas (tinklo/interneto paslaugos) ir svetainė (specifiniai svetainių aprašymai). Taip pat galite nurodyti savo kurso kategoriją, tačiau dauguma paslaugų turėtų patogiai tilpti į vieną iš aukščiau paminėtų. Žiūrėti: smf (5).

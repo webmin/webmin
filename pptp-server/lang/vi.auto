@@ -10,6 +10,7 @@ index_apply=Áp dụng cấu hình
 index_applydesc=Nhấp vào nút này để áp dụng các tùy chọn máy chủ PPTP hiện tại bằng cách dừng và bắt đầu lại quy trình máy chủ PPTP. Thay đổi đối với các tùy chọn PPP và tài khoản PPP sẽ luôn được áp dụng cho mọi kết nối mới
 index_return=chỉ số mô-đun
 index_epppd=Chương trình máy chủ PPP $1 không được cài đặt trên hệ thống của bạn. PPTP phụ thuộc vào nó để hoạt động.
+
 conf_title=Tùy chọn máy chủ PPTP
 conf_ecannot=Bạn không được phép chỉnh sửa tùy chọn máy chủ PPTP
 conf_header=Cấu hình máy chủ PPTP
@@ -35,6 +36,7 @@ conf_elocalip='$1' không phải là địa chỉ hoặc phạm vi IP cục bộ
 conf_eremoteip='$1' không phải là địa chỉ hoặc phạm vi IP từ xa hợp lệ
 conf_efrom=Mạng IPX bị thiếu hoặc không hợp lệ từ địa chỉ
 conf_eto=Mạng IPX bị thiếu hoặc không hợp lệ để giải quyết
+
 options_title=Tùy chọn PPP
 options_ecannot=Bạn không được phép chỉnh sửa tùy chọn PPP
 options_desc0=Các tùy chọn PPP bên dưới từ $1 áp dụng cho TẤT CẢ các kết nối đến mà hệ thống của bạn nhận được, bao gồm cả các kết nối với modem quay số.
@@ -67,6 +69,7 @@ options_mschap=Xác thực MS-CHAP
 options_mschap-v2=Xác thực MS-CHAP phiên bản 2
 options_chapms=Xác thực MS-CHAP
 options_chapms-v2=Xác thực MS-CHAP phiên bản 2
+
 secrets_title=Tài khoản PPP
 secrets_ecannot=Bạn không được phép chỉnh sửa tài khoản PPP
 secrets_return=mục lục
@@ -80,6 +83,7 @@ secrets_sany=BẤT KÌ
 secrets_create=Tạo tài khoản PPP mới.
 secrets_desc=Các tài khoản PPP được liệt kê trên trang này được lấy từ tệp $1, được sử dụng để xác thực $3. Chỉ những người cho máy chủ của bạn $2 mới được hiển thị, không phải tài khoản để thực hiện kết nối đi.
 secrets_delete=Xóa các tài khoản PPP đã chọn
+
 edit_secret_etitle=Chỉnh sửa tài khoản PPP
 edit_secret_ctitle=Tạo tài khoản PPP
 edit_secret_acc=Tài khoản PPP
@@ -99,15 +103,20 @@ edit_secret_alist=Cho phép liệt kê ..
 edit_secret_save=Tiết kiệm
 edit_secret_del=Xóa bỏ
 edit_secret_return=danh sách tài khoản
+
 save_secret_esave=Không thể lưu tài khoản
 save_secret_enoip='$1' không phải là địa chỉ hợp lệ
+
 stop_err=Không thể dừng máy chủ PPTP
 stop_egone=Không còn chạy
 stop_ecannot=Bạn không được phép dừng máy chủ PPTP
+
 start_err=Không thể khởi động máy chủ PPTP
 start_ecannot=Bạn không được phép khởi động máy chủ PPTP
+
 apply_err=Không thể khởi động lại máy chủ PPTP
 apply_ecannot=Bạn không được phép khởi động lại máy chủ PPTP
+
 conns_title=Kết nối hoạt động
 conns_ecannot=Bạn không được phép quản lý các kết nối hoạt động
 conns_desc=Trang này liệt kê các kết nối PPTP hiện đang hoạt động đến máy chủ của bạn. Để ngắt kết nối một cách cưỡng bức, nhấp vào tên giao diện của nó.
@@ -119,9 +128,11 @@ conns_remote=Địa chỉ VPN của máy khách
 conns_none=Không có kết nối PPTP nào hoạt động vào thời điểm này.
 conns_unknown=không xác định
 conns_user=tên tài khoản
+
 disc_err=Không thể ngắt kết nối
 disc_egone=Kết nối không còn hoạt động
 disc_ekill=Quá trình không còn chạy
+
 log_secret_create=Đã tạo tài khoản PPP $1 
 log_secret_modify=Tài khoản PPP được sửa đổi $1 
 log_secret_delete=Đã xóa tài khoản PPP $1 
@@ -132,6 +143,7 @@ log_disc=Khách hàng bị ngắt kết nối $1
 log_start=Bắt đầu máy chủ PPTP
 log_stop=Máy chủ PPTP đã dừng
 log_apply=Cấu hình máy chủ PPTP được áp dụng
+
 acl_conf=Có thể chỉnh sửa cấu hình?
 acl_options=Có thể chỉnh sửa tùy chọn?
 acl_secrets=Có thể quản lý tài khoản PPTP?

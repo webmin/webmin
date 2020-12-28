@@ -19,6 +19,7 @@ index_esingle=Il file $1 che contiene la lista dei Cron Job non esiste. Verifica
 index_delete=Elimina il Job selezionato
 index_disable=Disabilita il Job selezionato
 index_enable=Abilita il Job selezionato
+
 edit_title=Modifica Cron Job
 create_title=Crea Cron Job
 edit_ecannot=Non sei autorizzato a modificare i Cron Job di questo utente
@@ -56,6 +57,7 @@ lcedit_special_weekly=settimanalmente (la domenica)
 lcedit_special_monthly=con cadenza mensile (il primo giorno)
 lcedit_special_yearly=annualmente (il 1° di gennaio)
 lcedit_special_reboot=all'avvio del sistema
+
 save_err=Salvataggio Cron Job fallito
 save_ecmd=Non hai inserito il comando da eseguire
 save_euser=Devi selezionare un utente
@@ -64,6 +66,7 @@ save_eallow=L'utente '$1' non è autorizzato ad accedere a Cron
 save_ecannot=Non sei autorizzato a creare o modificare Cron Job per '$1'
 save_enone=Non hai scelto nessun $1 da eseguire
 save_ecannot2=Non hai i permessi per creare comandi Cron
+
 allow_title=Controllo Accesso Cron
 allow_desc=Questo form permette di controllare quali utenti possono creare e eseguire Cron Job.
 allow_ecannot=Non puoi controllare l'accesso utenti a Cron
@@ -72,6 +75,7 @@ allow_all2=Nega a tutti gli utenti tranne root
 allow_all3=Permetti a tutti gli utenti
 allow_allow=Permetti solo agli utenti elencati
 allow_deny=Nega solo agli utenti elencati
+
 env_title1=Modifica variabile d'ambiente
 env_title2=Crea variabile d'ambiente
 env_name=Nome Variabile
@@ -87,11 +91,13 @@ env_where2=Sposta variabile d'ambiente
 env_top=Dopo tutti i Cron Job per l'utente
 env_bot=Dopo tutti i comandi Cron
 env_leave=Posizione corrente
+
 exec_title=Esegui Cron Job
 exec_ecannot=Non sei autorizzato ad eseguire cron job per questo utente
 exec_cmd=Output dal comando $1 ...
 exec_cmdbg=Eseguo il comando $1 come processo in background.
 exec_none=Nessun output generato
+
 acl_users=Diritti di modifica dei Cron Job per
 acl_all=Tutti gli utenti
 acl_this=L'utente Webmin corrente
@@ -105,6 +111,7 @@ acl_create=Può creare Cron Job?
 acl_delete=Può eliminare Cron Job?
 acl_move=Può spostare Cron Job?
 acl_kill=Può terminare Cron Job?
+
 log_modify=Cron Job per $1 modificato
 log_modify_l=Cron Job "$2" per $1 modificato
 log_create=Cron Job per $1 creato
@@ -122,21 +129,26 @@ log_move=Cron Job per $1 spostato
 log_crons_delete=Sono stati cancellati $1 Cron Job
 log_crons_disable=Sono stati disabilitati $1 Cron Job
 log_crons_enable=Sono stati abilitati $1 Cron Job
+
 ecopy=È stato individuato un errore nella nuova configurazione di Cron : $1 $2
+
 when_min=ogni minuto
 when_hour=ogni ora $1 minuti dopo l'inizio dell'ora
 when_day=ogni giorno alle ore $2:$1
 when_month=il giorno $3 di ogni mese alle ore $2:$1
 when_weekday=ogni $3 alle ore $2:$1
 when_cron=al Cron Time $1
+
 ucwhen_min=Ogni minuto
 ucwhen_hour=Ogni ora $1 minuti dopo l'inizio dell'ora
 ucwhen_day=Ogni giorno alle ore $2:$1
 ucwhen_month=Il giorno $3 di ogni mese alle ore $2:$1
 ucwhen_weekday=Ogni $3 alle ore $2:$1
 ucwhen_cron=Al Cron Time $1
+
 move_err=Non è stato possibile spostare il comando
 move_etype=Questo comando non può essere spostato
+
 kill_err=Non è stato possibile terminare il Cron Job
 kill_ecannot=Non hai i permessi per terminare questo Job
 kill_egone=Non più in esecuzione
@@ -145,10 +157,12 @@ kill_title=Termina il Cron Job
 kill_rusure=Sei sicuro di voler terminare il processo $1 con PID $2?
 kill_rusure2=Sei sicuro di voler terminare il processo $1 con PID $2, e tutti i suoi sotto-processi?
 kill_ok=Si
+
 range_all=Esegui in qualsiasi data
 range_start=Esegui solo da $1
 range_end=a $1
 range_estart=Data di inizio dell'intervallo mancante o non valida
 range_eend=Data finale dell'intervallo mancante o non valida
+
 delete_err=Cancellazione dei Cron Job non riuscita
 delete_enone=Nessuna selezione

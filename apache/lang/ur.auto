@@ -57,6 +57,7 @@ index_fmode1=Virtual servers file $1
 index_fmode1d=New file under virtual servers directory $1
 index_fmode2=منتخب فائل ..
 index_delete=منتخب سرورز کو حذف کریں
+
 cvirt_ecannot=آپ کو ورچوئل سرور بنانے کی اجازت نہیں ہے
 cvirt_err=ورچوئل سرور بنانے میں ناکام
 cvirt_eaddr1=کوئی پتہ داخل نہیں ہوا
@@ -70,6 +71,7 @@ cvirt_eroot4=اپاچی تشکیل میں کوئی صارف متعین نہیں 
 cvirt_etaken=ایک ہی نام اور بندرگاہ والا ورچوئل سرور پہلے سے موجود ہے
 cvirt_efile=Failed to write to $1 : $2
 cvirt_emissing=The new virtual server was added to $1, but this file is not used by Apache. Check the <a href='$2'>module configuration</a> and make sure the 'File or directory to add virtual servers to' is correct.
+
 etype=آپ کو اس قسم کے اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
 efailed=Failed to save $1
 apache_apply=تبدیلیوں کا اطلاق کریں
@@ -80,6 +82,7 @@ default_serv=پہلے سے طے شدہ سرور
 bytes=بائٹس
 eafter=Configuration verification failed : $1 Changes have not been saved.
 enewline=قدر میں غلط حرف
+
 global_ecannot=آپ کو عالمی اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
 global_mime=عالمی MIME اقسام کی فہرست
 global_mimedesc=اس میں ترمیم کرنے کے لئے نیچے دی گئی فہرست میں سے MIME قسم پر کلک کریں ، یا فہرست میں نئی قسم شامل کرنے کے لئے صفحے کے نیچے دیئے گئے لنک کو استعمال کریں۔
@@ -87,6 +90,7 @@ global_type=ٹائپ کریں
 global_ext=ایکسٹینشنز
 global_add=ایک نئی MIME قسم شامل کریں۔
 global_return=MIME قسمیں
+
 mime_ecannot=آپ کو mime اقسام میں ترمیم کرنے کی اجازت نہیں ہے
 mime_edit=MIME کی قسم میں ترمیم کریں
 mime_add=MIME کی قسم شامل کریں
@@ -95,6 +99,7 @@ mime_type=مائم ٹائپ
 mime_ext=ایکسٹینشنز
 mime_err=MIME قسم بچانے میں ناکام
 mime_etype='$1' is not a valid MIME type
+
 virt_ecannot=آپ اس ورچوئل سرور میں ترمیم نہیں کرسکتے ہیں
 virt_eprotocol=آپ کو کم از کم ایک قابل استعمال SSL/TLS پروٹوکول ورژن کا انتخاب کرنا چاہئے
 virt_title=ورچوئل سرور کے اختیارات
@@ -121,6 +126,7 @@ virt_path=راہ
 virt_return=سرور انڈیکس
 virt_euser=آپ کو اس ورچوئل سرور کے ل. صارف یا گروپ کو تبدیل کرنے کی اجازت نہیں ہے۔
 virt_header2=$1 for $2
+
 vserv_title=ورچوئل سرور کنفیگریشن
 vserv_virtualmin=This Apache virtual host belongs to the Virtualmin server <tt>$1</tt>, so the address, port, base directory and hostname cannot be changed here.
 vserv_ecannot=آپ اس ورچوئل سرور کے پتے میں ترمیم نہیں کرسکتے ہیں
@@ -140,10 +146,12 @@ vserv_eport='$1' is not a valid port
 vserv_eroot='$1' is not a valid document root
 vserv_ename='$1' is not a valid server name
 vserv_eaddrs=کوئی ورچوئل سرور پتے داخل نہیں ہوئے ہیں
+
 show_title=ہدایات
 show_edit=اپاچی کی ہدایت میں ترمیم کریں:
 show_these=دستی طور پر ہدایت میں ترمیم کریں
 show_ok=ترمیم
+
 manual_configs=کنفگ فائلوں میں ترمیم کریں
 manual_title=ہدایات میں ترمیم کریں
 manual_header=Use the text box below to manually edit the Apache directives in $1 that apply to this virtual server, directory or files.
@@ -153,6 +161,7 @@ manual_efile=غلط اپاچی تشکیل فائل
 manual_etest=Configuration file error detected : $1
 manual_editfile=کنفگ فائل میں ترمیم کریں:
 manual_switch=ترمیم
+
 dir_title=فی ڈائرکٹری کے اختیارات
 dir_proxyall=تمام پراکسی درخواستیں
 dir_header=For $1 on $2
@@ -169,6 +178,7 @@ dir_re=میچ regexp
 dir_path=راہ
 dir_return=ڈائریکٹری انڈیکس
 dir_header2=$1 for $2
+
 type_0=عمل اور حدود
 type_1=نیٹ ورکنگ اور پتے
 type_2=اپاچی ماڈیولز
@@ -190,6 +200,7 @@ type_17=خودکار مجازی میزبان
 type_18=فلٹرز
 type_19=زبانیں
 type_20=تصویری نقشہ جات
+
 htaccess_title=فی ڈائریکٹری اختیارات فائلیں
 htaccess_ecannot=آپ htaccess فائلوں میں ترمیم نہیں کرسکتے ہیں
 htaccess_file=موجودہ اختیارات کی فائلیں
@@ -205,6 +216,7 @@ htaccess_edelete=آپ کو اختیارات کی فائل کو حذف کرنے �
 htaccess_eempty=کوئی آپشن فائل ڈائرکٹری داخل نہیں کی گئی
 htaccess_eabsolute=اختیارات فائل ڈائرکٹری ایک مطلق راہ ہونا چاہئے
 htaccess_err=اختیارات کی فائل بنانے میں ناکام
+
 htindex_ecannot=آپ کو اس اختیارات کی فائل میں ترمیم کرنے کی اجازت نہیں ہے
 htindex_title=فی ڈائریکٹری اختیارات فائل
 htindex_delete=فائل کو ڈیلیٹ کریں
@@ -220,12 +232,14 @@ htindex_path=راہ
 htindex_header=For $1
 htindex_header2=$1 for options file $2
 htindex_return=اختیارات فائل انڈیکس
+
 htfile_title=فی فائل کے اختیارات
 htfile_header=For $1 in $2
 htfile_show=ہدایات دکھائیں
 htfile_edit=ہدایات میں ترمیم کریں
 htfile_apply=اختیارات کا اطلاق ..
 htfile_header2=$1 for $2
+
 reconfig_title=معلوم شدہ ماڈیول کو دوبارہ تشکیل دیں
 reconfig_ecannot=آپ کو اپاچی کو دوبارہ تشکیل دینے کی اجازت نہیں ہے
 reconfig_ever=Failed to get the version of Apache server executable $1. Check your <a href='$2'>module configuration</a> to make sure this is the correct path.
@@ -233,11 +247,13 @@ reconfig_desc1=آپا اپاچی کی تشکیل تبدیل ہوگئی ہے ، �
 reconfig_desc2=ذیل میں ویبنائن کے ذریعہ تائید کردہ تمام اپاچی ماڈیولز کی ایک فہرست ہے ، جن میں فی الحال انسٹال کردہ افراد منتخب ہیں۔ اگر آپ متحرک طور پر بھری ہوئی ماڈیولز استعمال کر رہے ہیں تو پھر آپ کو متحرک طور پر بھری ہوئی ماڈلز کو منتخب کرنے کی ضرورت پڑسکتی ہے۔
 reconfig_desc3=اگر آپ کو یقین نہیں ہے کہ آپ کے سسٹم پر اپاچی کے ذریعہ کون سے ماڈیولز کی حمایت کی جاتی ہے ، تو بس تشکیل کریں جیسا کہ Webmin عام طور پر تائید شدہ ماڈیولز کو خود بخود کام کرسکتی ہے۔
 reconfig_ok=تشکیل دیں
+
 defines_title=طے شدہ پیرامیٹرز میں ترمیم کریں
 defines_ecannot=آپ کو HTD Defines میں ترمیم کرنے کی اجازت نہیں ہے
 defines_desc=When Apache is started, parameters can be passed to it with the <tt>-D</tt> command line option. Because these parameters can affect which directives are used in your config files, Webmin needs to know which ones are passed to Apache when it is started up. Enter the parameters used on your system into the text field on the right.
 defines_config=Note that the following defined parameters are already known : $1
 defines_list=متعین پیرامیٹرز
+
 authu_ecannot='$1' is not an allowed users text file
 authu_title=صارف کی فہرست
 authu_header=In file $1
@@ -259,6 +275,7 @@ authu_sync=The options below allow you to configure Webmin to automatically add,
 authu_screate=جب یونکس کا صارف شامل ہوجائے تو صارف شامل کریں
 authu_sdelete=جب یونکس کا صارف حذف ہوجائے تو صارف کو حذف کریں
 authu_smodify=جب یونکس کا صارف تبدیل ہوجائے تو صارف کو تبدیل کریں
+
 authg_ecannot='$1' is not an allowed groups text file
 authg_title=گروپ لسٹ
 authg_header=In file $1
@@ -276,22 +293,26 @@ authg_err=گروپ کو بچانے میں ناکام
 authg_euser=کسی گروپ کا نام درج نہیں کیا گیا
 authg_euser2=گروپ کے نام میں یہ نہیں ہوسکتا ہے :
 authg_edup=A group called '$1' already exists
+
 stop_err=اپاچی روکنے میں ناکام
 stop_ecannot=آپ کو اپاچی روکنے کی اجازت نہیں ہے
 stop_epid=Failed to open PID file $1
 stop_epid2=Invalid PID file $1
 stop_esig=Failed to send SIGTERM to process $1
+
 start_err=اپاچی شروع کرنے میں ناکام
 start_ecannot=آپ کو اپاچی شروع کرنے کی اجازت نہیں ہے
 start_ecmd=$1 failed : $2
 start_eunknown=نامعلوم وجہ
 start_eafter=اپاچی چلتا دکھائی نہیں دیتا
+
 restart_err=تبدیلیاں لاگو کرنے میں ناکام
 restart_epid=Failed to open PID file $1
 restart_epid2=Invalid PID file $1
 restart_esig=Failed to send SIGHUP to process $1
 restart_eunknown=نامعلوم وجہ
 restart_ecannot=آپ کو تبدیلیاں لاگو کرنے کی اجازت نہیں ہے
+
 acl_virts=ورچوئل سرورز جو صارف اس میں ترمیم کرسکتے ہیں
 acl_vall=تمام سرورز
 acl_vsel=منتخب شدہ ..
@@ -314,6 +335,7 @@ acl_dirs=Apache directives available<br><font size=-1>(Subject to types limit ab
 acl_dirs0=سب
 acl_dirs1=صرف درج ..
 acl_dirs2=سوائے درج تمام ..
+
 core_maxconc=زیادہ سے زیادہ سمورتی گذارشات
 core_maxkeep=فی کنکشن زیادہ سے زیادہ رکھوالے
 core_maxreq=فی سرور عمل میں زیادہ سے زیادہ درخواستیں
@@ -499,10 +521,12 @@ core_infilter=تمام فائلوں کے لئے ان پٹ فلٹرز لگائی�
 core_outfilter=تمام فائلوں کے لئے آؤٹ پٹ فلٹرز لگائیں
 core_defchar=دستاویزات کے لئے کیریکٹر سیٹ
 core_edefchar=دستاویزات کے لئے لاپتہ یا غلط کردار سیٹ
+
 mod_negotiation_cache=مواد پر تبادلہ خیال دستاویزات کیشے؟
 mod_negotiation_pri=کثیر نظاروں کیلئے زبان کی ترجیح
 mod_negotiation_def=پہلے سے طے شدہ
 mod_negotiation_epri=زبان کی ترجیحات سے محروم
+
 mod_cgi_logname=CGI اسکرپٹ لاگ
 mod_cgi_none=کوئی نہیں
 mod_cgi_elogname=غلط CGI اسکرپٹ لاگ فائل
@@ -512,6 +536,7 @@ mod_cgi_elogsize=CGI لاگ سائز لازمی طور پر ایک عدد عدد
 mod_cgi_post=زیادہ سے زیادہ لاگ ان پوسٹ ڈیٹا سائز
 mod_cgi_epost=پوسٹ ڈیٹا کا سائز ایک عدد صحیح ہونا چاہئے
 mod_cgi_eunder=CGI اسکرپٹ لاگ اجازت شدہ ڈائرکٹری کے تحت نہیں ہے
+
 mod_alias_from=سے
 mod_alias_to=کرنا
 mod_alias_status=حالت
@@ -535,6 +560,7 @@ mod_alias_cgi2=سی جی آئی ڈائریکٹری عرف
 mod_alias_rcgi=Regexp CGI ڈائریکٹری عرفی نام
 mod_alias_rcgi2=regexp CGI ڈائریکٹری عرف
 mod_alias_estatus='$1' is not a valid status
+
 mod_proxy_proxy=پراکسی سرور کی حیثیت سے کام کریں؟
 mod_proxy_req=درخواستیں
 mod_proxy_forw=آگے بھیجو
@@ -605,11 +631,13 @@ mod_proxy_timeout=پراکسی درخواست سیکنڈ میں ختم ہوگئ�
 mod_proxy_etimeout=پراکسی درخواست کی میعاد متعدد سیکنڈ کا ہونا ضروری ہے
 mod_proxy_via=سیٹ کے ذریعے: ہیڈرز
 mod_proxy_not=کوئی نہیں
+
 mod_log_agent_default=پہلے سے طے شدہ
 mod_log_agent_file=فائل ..
 mod_log_agent_program=پروگرام ..
 mod_log_agent_log=براؤزر لاگ فائل
 mod_log_agent_efile=$1 is not a valid agent log filename
+
 mod_log_config_common=کامن لاگ فارمیٹ
 mod_log_config_named=نامزد لاگ فارمیٹس
 mod_log_config_nick=عرفیت
@@ -628,6 +656,7 @@ mod_log_config_enofilprog=غائب لاگ فائل نام یا پروگرام
 mod_log_config_efilprog='$1' is not an allowed log filename or program
 mod_log_config_eifset='اگر سیٹ' اختیارات پہلے سے طے شدہ لاگ فارمیٹ کے ساتھ استعمال نہیں ہوسکتے ہیں
 mod_log_config_edir=Directory for log file '$1' does not exist
+
 mod_log_referer_default=پہلے سے طے شدہ
 mod_log_referer_file=فائل ..
 mod_log_referer_program=پروگرام ..
@@ -635,7 +664,9 @@ mod_log_referer_log=ریفرر لاگ فائل
 mod_log_referer_nolog=حوالوں سے لاگ ان نہ کریں
 mod_log_referer_elog=$1 is not a valid referer log filename
 mod_log_referer_edir=حوالہ دہندہ لاگ اجازت شدہ ڈائرکٹری کے تحت نہیں ہے
+
 mod_status_msg=درجہ کی توسیع کی معلومات دکھائیں
+
 mod_mime_ext=ایکسٹینشنز
 mod_mime_xtype=اضافی MIME قسمیں
 mod_mime_mtype=MIME قسم
@@ -668,6 +699,7 @@ mod_mime_outfilter=آؤٹ پٹ فلٹرز
 mod_mime_infilter=ان پٹ فلٹرز
 mod_mime_filters=درخواست دینے کے لئے فلٹرز
 mod_mime_efext=No extensions given for filter(s) $1
+
 mod_setenvif_header=ہیڈر
 mod_setenvif_match=میچ
 mod_setenvif_case=میچ کیس
@@ -678,11 +710,13 @@ mod_setenvif_eheader=Invalid request header '$1'
 mod_setenvif_eregex=Invalid regular expression '$1'
 mod_setenvif_evar=Invalid variable name '$1'
 mod_setenvif_clear=صاف
+
 mod_userdir_default=پہلے سے طے شدہ
 mod_userdir_all=قابل استعمال تمام صارفین
 mod_userdir_except=سوائے سارے صارفین
 mod_userdir_dir=صارف WWW ڈائرکٹری
 mod_userdir_edir=آپ کو مخصوص صارف WWW ڈائریکٹری استعمال کرنے کی اجازت نہیں ہے
+
 mod_imap_action=تصویری نقشہ جات کے غلط استعمال پر ایکشن
 mod_imap_default=پہلے سے طے شدہ
 mod_imap_godefurl=ڈیفالٹ یو آر ایل پر جائیں
@@ -702,8 +736,10 @@ mod_imap_refurl=حوالہ دینے والا URL
 mod_imap_url=یو آر ایل. ..
 mod_imap_defbase=تصویری نقشہ جات کے لئے طے شدہ بنیاد
 mod_imap_eurl='$1' is not a valid URL
+
 mod_speling_autocorr=غلط ہجے والے یو آر ایل کو خود بخود درست کریں؟
 mod_speling_default=پہلے سے طے شدہ
+
 mod_actions_mime=ہینڈلر / MIME قسم
 mod_actions_cgiurl=CGI اسکرپٹ یو آر ایل
 mod_actions_mimecgi=ہینڈلر یا MIME ٹائپ CGI اعمال
@@ -713,10 +749,13 @@ mod_actions_httpcgi=HTTP طریقہ CGI کے اعمال
 mod_actions_emime='$1' is not a valid handler or MIME type
 mod_actions_ecgi='$1' is not a valid CGI script
 mod_actions_enometh=No method chosen for CGI script '$1'
+
 mod_include_incl=عمل میں بٹ والی فائلوں پر عمل بھی شامل ہے؟
 mod_include_set=ہاں اور آخری ترمیم شدہ تاریخ طے کریں
 mod_include_default=پہلے سے طے شدہ
+
 mod_dir_txt=ڈائرکٹری انڈیکس فائلیں
+
 mod_autoindex_default=پہلے سے طے شدہ
 mod_autoindex_asc=چڑھنا
 mod_autoindex_descend=نزول
@@ -725,6 +764,7 @@ mod_autoindex_date=تاریخ
 mod_autoindex_size=سائز
 mod_autoindex_desc=تفصیل
 mod_autoindex_sort=بہ ترتیب ڈائریکٹری انڈیکس
+
 browsermatch_regexp=براؤزر ریجیکس
 browsermatch_case=میچ کیس؟
 browsermatch_var=متغیر مقرر کریں
@@ -732,6 +772,7 @@ browsermatch_value=قدر
 browsermatch_txt=متغیرات براؤزر کی قسم پر مبنی ہے
 browsermatch_evar=Invalid variable name '$1'
 browsermatch_clear=صاف
+
 autoindex_fname=فائل کا نام
 autoindex_mime=MIME قسم
 autoindex_enc=انکوڈنگ
@@ -785,9 +826,11 @@ autoindex_sicon=فائل شبیہیں دکھائیں
 autoindex_srules=&lt;hr&gt; لائنیں دکھائیں
 autoindex_track=ہیڈر میں ETags شامل کریں
 autoindex_version=ورژن کے ڈور کے حساب سے ترتیب دیں
+
 mod_mime_magic_file=MIME جادو نمبر فائل
 mod_mime_magic_none=کوئی نہیں
 mod_mime_magic_efile=غلط MIME جادو نمبروں کا فائل نام
+
 mod_env_var=متغیر
 mod_env_value=قدر
 mod_env_pass=کے ذریعے منتقل
@@ -798,6 +841,7 @@ mod_env_passall=ماحول کے تمام متغیرات کو CGIs میں منت�
 mod_env_default=پہلے سے طے شدہ
 mod_env_evar='$1' is not a valid variable name
 mod_env_evalue='$1' is not a valid variable value
+
 mod_access_order=رسائی چیکنگ آرڈر:
 mod_access_denyallow=پھر انکار کریں
 mod_access_allowdeny=اجازت دیں تو انکار کریں
@@ -820,6 +864,7 @@ mod_access_epip='$1' is not a valid partial IP address
 mod_access_emask='$1' is not a valid network/netmask pair
 mod_access_ecidr='$1' is not a valid network/CIDR pair
 mod_access_evar='$1' is not a valid variable name
+
 mod_auth_ufile=صارف کی متن فائل
 mod_auth_uedit=صارفین میں ترمیم کریں
 mod_auth_gfile=گروپ ٹیکسٹ فائل
@@ -830,6 +875,7 @@ mod_auth_eudir=صارف کی ٹیکسٹ فائل اجازت شدہ ڈائرکٹ�
 mod_auth_egdir=گروپ ٹیکسٹ فائل اجازت شدہ ڈائرکٹری کے تحت نہیں ہے
 mod_auth_eufile=غلط ٹیکسٹ فائل نام
 mod_auth_egfile=گروپ ٹیکسٹ فائل کا غلط نام
+
 mod_auth_dbm_ufile=صارف DBM فائل
 mod_auth_dbm_gfile=گروپ DBM فائل
 mod_auth_dbm_pass=اگلے ماڈیول میں ناکامیاں گزریں؟
@@ -840,6 +886,7 @@ mod_auth_dbm_egfile=غلط گروپ DBM فائل کا نام
 mod_auth_dbm_type=ڈی بی ایم ڈیٹا بیس کی قسم
 mod_auth_dbm_gtype=DBM گروپ ڈیٹا بیس کی قسم
 mod_auth_dbm_default=ڈیفالٹ ڈی بی ایم فارمیٹ
+
 mod_cern_meta_process=عمل ہیڈر میٹا فائلز
 mod_cern_meta_dir=ہیڈر میٹا فائلس کے لئے سب ڈائرکٹری
 mod_cern_meta_default=پہلے سے طے شدہ
@@ -847,6 +894,7 @@ mod_cern_meta_edir=غلط میٹا فائل سب ڈائرکٹری نام
 mod_cern_meta_suffix=ہیڈر میٹا فلز کے ل for فائل لاحقہ
 mod_cern_meta_default2=پہلے سے طے شدہ
 mod_cern_meta_esuffix=غلط میٹافائل لاحقہ
+
 mod_ssl_enable=SSL کو فعال کریں؟
 mod_ssl_proto=SSL پروٹوکول
 mod_ssl_cfile=سند / نجی کلیدی فائل
@@ -874,6 +922,7 @@ mod_ssl_passsc=Execute script $1
 mod_ssl_epassph=کوئی ایس ایس ایل پاس ورڈ داخل نہیں کیا گیا
 mod_ssl_epasssc=لاپتہ یا غلط ایس ایس ایل پاس ورڈ اسکرپٹ
 mod_ssl_ecerton=جب SSL فعال ہے ، تو ایک سرٹیفکیٹ فائل کا انتخاب کرنا چاہئے
+
 mod_apachessl_notssl=SSL تک رسائی سے انکار کریں
 mod_apachessl_forcessl=SSL / notSSL رسائی پر مجبور کریں؟
 mod_apachessl_capath=میں سرٹیفیکیشن اتھارٹی کے سرٹیفکیٹ کے ساتھ ڈائریکٹری کا راستہ
@@ -906,6 +955,7 @@ mod_apachessl_nov2=SSL ورژن 2 کو غیر فعال کریں
 mod_apachessl_fake=سرٹیفکیٹ کا نام استعمال کرتے ہوئے صارف کے بنیادی توثیق والے لوگنز کو مصنوعی بناتا ہے
 mod_apachessl_cdnfile=کلائنٹ ڈی این کے خلاف فائل کی جانچ پڑتال کی گئی ہے
 mod_apachessl_ecdnfile=کلائنٹ DN کے خلاف فائل کی گمشدگی کی جانچ پڑتال کی گئی ہے
+
 log_global=Changed global $1 options
 log_virtc=Created server $1
 log_virts=Reconfigured server $1
@@ -946,8 +996,10 @@ log_stop=روکا ہوا ویبسرور
 log_apply=لاگو تبدیلیاں
 log_manual=Manually edited configuration file $1
 log_virts_delete=Deleted $1 virtual servers
+
 search_title=سرورز تلاش کریں
 search_notfound=کوئی مماثل ورچوئل سرور نہیں ملا
+
 mod_php_value=پی ایچ پی کی تشکیل کی قیمتیں
 mod_php_flag=پی ایچ پی کی ترتیب کے جھنڈے
 mod_php_admin_value=پی ایچ پی ایڈمن ترتیب اقدار
@@ -956,6 +1008,7 @@ mod_php_name_header=سیٹنگ
 mod_php_value_header=قدر
 mod_php_ename='$1' is an invalid name
 mod_php_evalue='$1' is an invalid value for $2
+
 mod_vhost_alias_root=خودکار ورچوئل میزبان کی جڑ
 mod_vhost_alias_ip=میزبان نام کے بجائے IP پتہ استعمال کریں؟
 mod_vhost_alias_none=کوئی نہیں
@@ -963,12 +1016,14 @@ mod_vhost_alias_script=خودکار ورچوئل ہوسٹ سی جی بِن
 mod_vhost_alias_eroot=گم شدہ یا غلط مجازی میزبان جڑ
 mod_vhost_alias_eroot2=ورچوئل ہوسٹ روٹ ڈائرکٹری کی اجازت نہیں ہے
 mod_vhost_alias_escript=گمشدہ یا غلط مجازی میزبان cgi-bin
+
 worker_minspare=کم سے کم فالتو دھاگے
 worker_maxspare=زیادہ سے زیادہ اسپیئر تھریڈز
 worker_eminspare=کم سے کم اسپیئر دھاگوں میں ایک عدد اعداد ہونا ضروری ہے
 worker_emaxspare=زیادہ سے زیادہ اسپیئر تھریڈز ایک عدد اعداد ہونا چاہئے
 worker_threads=موضوعات فی بچ processہ عمل
 worker_ethreads=فی بچ processہ عمل کے دھاگوں کی تعداد لازمی طور پر ایک عدد عدد ہونی چاہئے
+
 perchild_sthreads=ابتدائی دھاگے فی بچ child عمل
 perchild_esthreads=فی بچ processہ عمل کے دھاگوں کی تعداد لازمی طور پر ایک عدد عدد ہونی چاہئے
 perchild_numservers=بچوں کے عمل کی تعداد
@@ -984,6 +1039,7 @@ perchild_gid=GID
 perchild_enum=عمل نمبر لازمی طور پر ایک عدد صفر ہونا چاہئے
 perchild_euid=UID لازمی طور پر ایک عدد عدد ہونا چاہئے
 perchild_egid=GID لازمی طور پر ایک عدد صحیح ہونا چاہئے
+
 cache_enable=فعال؟
 cache_type=کیشے اسٹور
 cache_disk=ڈسک
@@ -1004,12 +1060,14 @@ cache_eminos=کیچ سے لے کر کم سے کم آبجیکٹ کا سائز م�
 cache_emaxos=کیشے تک آبجیکٹ کا زیادہ سے زیادہ سائز متعدد بائٹس کا ہونا ضروری ہے
 cache_maxoc=میموری میں کیش کرنے کے لئے زیادہ سے زیادہ اشیاء
 cache_emaxoc=میموری میں کیچ کرنے کے ل objects اشیاء کی تعداد ایک عددی ہونا ضروری ہے
+
 suexec_su=بطور سی جی آئی پروگرام چلائیں
 suexec_none=صارف عالمی تشکیل سے
 suexec_user=یونکس صارف
 suexec_group=اور گروپ
 suexec_euser=بطور CGI پروگرام چلانے کے لئے لاپتہ یا غلط صارف
 suexec_egroup=بطور سی جی آئی پروگرام چلانے کے لئے لاپتہ یا غلط گروپ
+
 filter_name=نام
 filter_intype=ان پٹ MIME ٹائپ کریں
 filter_outtype=آؤٹ پٹ MIME قسم
@@ -1019,11 +1077,13 @@ filter_in=ان پٹ فلٹر تعریفیں
 filter_out=آؤٹ پٹ فلٹر کی تعریفیں
 filter_ename=Invalid filter name '$1'
 filter_ecmd=Missing command for filter '$1'
+
 cdir_err=فی ڈائریکٹری اختیارات بنانے میں ناکام
 cdir_err2=فی ڈائریکٹری کے اختیارات کو بچانے میں ناکام
 cdir_epath=گمشدہ راستہ
 cdir_eproxy=میچ ریج ایکسپ آپشن فعال کے ساتھ پراکسی آپشنز نہیں بنائے جاسکتے ہیں
 cdir_ecannot=آپ کو دیئے ہوئے راستے کے ل per فی ڈائریکٹری اختیارات بنانے کی اجازت نہیں ہے
+
 mod_band_enable=بینڈوتھ محدود کرنے کا اہل؟
 mod_band_bw=حد (بائٹس / سیکنڈ)
 mod_band_client=مؤکلوں کے لئے
@@ -1042,24 +1102,30 @@ mod_band_epulse=محدود پیکٹوں کے مابین غائب یا غلط و�
 mod_band_dir=بینڈوتھ محدود ڈیٹا فائلوں کی ڈائریکٹری
 mod_band_edir=غائب یا غیر لچکدار بینڈوڈتھ ڈیٹا فائلوں کی ڈائرکٹری
 mod_band_esubdir=Missing required subdirectory <tt>$1</tt> under bandwidth data files directory
+
 mod_dav_active=WebDAV فعال ہے؟
 mod_dav_inf=کیا لامحدود گہرائی DAV PROFFIND درخواستوں کی اجازت ہے؟
 mod_dav_timeout=کم سے کم DAV ٹائم آؤٹ سیکنڈ میں
 mod_dav_etimeout=لاپتہ یا غلط DAV ٹائم آؤٹ
+
 delete_err=ورچوئل سرورز کو حذف کرنے میں ناکام
 delete_enone=کوئی بھی منتخب نہیں ہوا
 delete_ecannot=آپ کو سرورز کو حذف کرنے کی اجازت نہیں ہے
 delete_ecannot2=You are not allowed to edit the server $1
+
 syslog_desc=اپاچی غلطی لاگ
+
 mod_auth_basic_pass=بنیادی لاگ ان کی ناکامیوں کو اگلے ماڈیول میں منتقل کریں؟
 mod_auth_basic_prov=بنیادی لاگ ان صارف فائل کی اقسام
 mod_auth_basic_file=ٹیکسٹ فائل
 mod_auth_basic_dbm=ڈی بی ایم ڈیٹا بیس
+
 mod_auth_digest_pass=اگلے ماڈیول میں لاگ ان لاگ ان کی ناکامیوں کو پاس کریں؟
 mod_auth_digest_prov=ڈائجسٹ لاگ ان صارف فائل کی اقسام
 mod_auth_digest_al=ہیگنگ الگورتھم
 mod_auth_digest_domain=اسی ڈومین میں یو آر ایل اور راستے
 mod_auth_digest_edomain=ایک ہی ڈومین میں یو آر ایل اور راستے غائب ہیں
+
 mods_title=اپاچی ماڈیولز تشکیل دیں
 mods_mod=ماڈیول
 mods_state=موجودہ حالت

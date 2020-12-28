@@ -12,10 +12,12 @@ index_tabinstall=Instalar módulo
 index_tabsuggest=Módulos sugeridos
 index_allmods2=Faltan módulos utilizados por Webmin
 index_wantmods=Módulos para instalar
+
 download_ecpangz=La URL $1 no es la lista de módulos de CPAN. Verifique la configuración del módulo.
 download_yum=Instalación del módulo Perl $1 desde el paquete $2 ..
 download_missingok=Módulos que faltan en CPAN
 download_fallback=Algunos módulos no se pudieron instalar desde los paquetes, en su lugar intentaron la instalación desde el origen.
+
 uninstalls_title=Desinstalar módulos
 uninstalls_err=Error al desinstalar módulos
 uninstalls_enone=Ninguna seleccionada

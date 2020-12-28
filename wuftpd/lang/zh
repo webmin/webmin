@@ -8,6 +8,7 @@ index_start=启动服务器
 index_startmsg=单击按扭使用当前的配置启动FTP服务器.也可以配置服务器成为需要时用<a href='$1'>Internet 服务</a>自动启动。
 index_startmsg2=点击此按钮以当前配置启动 FTP 服务器.您也可配置服务器,当需要运行 inetd 以及类似的程序时,使服务器自动启动。
 index_return=FTP服务器选项
+
 class_title=用户和类
 class_header=用户类和用户选项
 class_class=用户类
@@ -30,6 +31,7 @@ class_err=保存用户类失败
 class_eclass=错误的用户类名'$1'
 class_etypes=没有选择类'$1'的类型
 class_eaddrs=没有输入类'$1'的地址
+
 message_title=消息和标题
 message_header=消息、标题和README文件
 message_message=消息文件
@@ -58,6 +60,7 @@ message_eclass=类 '$1'不存在
 message_ebanner=错误的登录标题文件'$1'
 message_ehostname=丢失或错误的主机名
 message_eemail=丢失或错误的邮件地址
+
 acl_title=限制和访问控制
 acl_header=限制和访问控制选项
 acl_deny=禁止访问自
@@ -104,6 +107,7 @@ acl_elmsg=错误消息文件'$1'
 acl_efbcount=错误的文件或字节数'$1'
 acl_elimit=错误的时间限制'$1'
 acl_efails=错误的登录失败数'$1'
+
 net_title=联网
 net_header=联网选项
 net_tcp=TCP 窗口大小
@@ -121,6 +125,7 @@ net_eip=错误的IP地址'$1'
 net_enet=错误的网络地址'$1'
 net_ecidr=错误的网络位'$1'
 net_eport=错误的端口数'$1'
+
 log_title=登录
 log_header=登录选项
 log_commands=记录所有的命令
@@ -137,6 +142,7 @@ log_to=登录传输到
 log_syslog=系统日志
 log_xferlog=XFER 日志文件
 log_err=保存日志选项失败
+
 alias_title=别名和路径
 alias_header=别名和路径选项
 alias_alias=CD 目录别名
@@ -147,6 +153,7 @@ alias_err=保存别名和路径失败
 alias_efrom=错误的别名'$1'
 alias_eto=错误的别名路径'$1'
 alias_ecdpath=错误的CD搜索路径'$1'
+
 anon_title=匿名 FTP
 anon_eftp=警告 - 系统没有一个<tt>ftp</tt> 用户, 因此可能未配置匿名 FTP 用户。
 anon_header=匿名 FTP 选项
@@ -169,6 +176,7 @@ anon_uids=对 Unix 用户
 anon_err=保存匿名FTP选项失败
 anon_edir=错误的路径'$1'
 anon_egroup=错误的组'$1'
+
 perm_title=权限
 perm_header=权限选项
 perm_perms=命令约束
@@ -190,7 +198,9 @@ perm_err=保存权限失败
 perm_echar=错误的字符集正则表达式'$1'
 perm_etypes=没有选择用户类型
 perm_emesg=非法的消息文件'$1'
+
 host_title=主机访问控制
+
 misc_title=杂类选项
 misc_header=杂类选项
 misc_lslong=长列表命令
@@ -211,6 +221,7 @@ misc_elsplain=丢失普通列表命令
 misc_eshutdown=丢失关闭通告文件
 misc_enice=错误的nice级别'$1'
 misc_eumask=错误的unmask'$1'
+
 log_class=改变用户和类
 log_message=改变消息和标题
 log_acl=改变限制和访问控制

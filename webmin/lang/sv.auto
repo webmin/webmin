@@ -7,6 +7,7 @@ index_restart=Starta om Webmin
 index_restartmsg=Klicka på den här knappen för att starta om Webmin-serverprocessen. Detta kan vara nödvändigt om du nyligen har uppgraderat Perl.
 index_refresh=Uppdatera moduler
 index_refreshmsg=Kontrollera alla Webmin-moduler för installerade servrar igen och uppdatera dem som visas i kategorin "Oanvända moduler".
+
 access_libwrap=Kolla också TCP-wrappers <tt>hosts.allow</tt> och <tt>hosts.deny</tt> -filer?
 access_elibwrap=IP-åtkomstkontroll med TCP-omslag är inte tillgänglig eftersom $1 Perl-modulen inte är installerad.
 access_libwrapcpan=<a href='$1'>Klicka här</a> för att Webmin automatiskt ska installera den saknade Perl-modulen.
@@ -15,6 +16,7 @@ access_ecidr8=IPv6-nätverksstorlek '$1' måste delas med 8
 access_ehost=Det gick inte att hitta IP-adressen för '$1'
 access_always=Lös värdnamn på varje begäran?
 access_trust=Lita på fjärr-IP-adress från proxyer?
+
 bind_desc2=Det här formuläret kan användas för att ändra portnumret som Webmin lyssnar på, eller låta det bara lyssna på en enda IP-adress på ditt system. Du kan också konfigurera den för att acceptera anslutningar på flera portar eller lyssna på flera IP-adresser. Obs - din webbläsare kan uppmana dig att logga in igen efter att ha ändrat port eller bindande adress.
 bind_sockets=Lyssna på IP och portar
 bind_firewall=Öppna nya portar på brandväggen?
@@ -40,6 +42,7 @@ bind_eipv6=IPv6 kan inte aktiveras om inte $1 Perl-modulen är installerad
 bind_redirecting=Omdirigerar till ny URL ..
 bind_elsof=Ny port $1 används redan av en annan process
 bind_eonsystem=IP-adressen $1 är inte aktiv i det här systemet och kan därför inte användas
+
 log_status=Loggar aktivt?
 log_clf=Använd kombinerat loggformat (inklusive referent och användaragent)?
 log_clear2=Tydliga loggfiler?
@@ -56,6 +59,7 @@ log_login=Inkludera Webmin-inloggningar och utloggningar i handlingsloggen?
 log_email=Skicka inloggade åtgärder via e-post till
 log_emailnone=Skicka inte
 log_inmodsemail=Skicka e-post för åtgärder i
+
 proxy_user=Användarnamn för proxy
 proxy_pass=Lösenord för proxy
 proxy_ehttp2=HTTP-proxyservern måste anges som en URL, till exempel $1
@@ -90,6 +94,7 @@ proxy_return=proxyservrar och nedladdningar
 proxy_tabproxy=proxy
 proxy_tabdown=Laddar ner
 proxy_fallback=Testa direktförfrågan om proxy är nere?
+
 ui_rgb=<font color=#ff0000>RR</font> <font color=#00ff00>GG</font> <font color=#0000ff>BB</font> hex color
 ui_sysinfo3=Ingenstans
 ui_sysinfo4=I stället för webbläsartitel
@@ -124,6 +129,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/åååå (dvs. 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/åååå (dvs. 09/16/2001)
 ui_dateformat_yyyy/mm/dd=åååå/mm/dd (dvs. 2001/09/16)
 ui_ehostnamedisplay=Saknar eller ogiltigt visningsvärdnamn
+
 mods_installsource=Installera från
 mods_grantto=Ge åtkomst till
 mods_standard=Standardmodul från <a href='$1' target=_new>www.webmin.com</a>
@@ -152,6 +158,7 @@ mods_tabinstall=Installera
 mods_tabclone=Klona
 mods_tabdelete=Radera
 mods_tabexport=Exportera
+
 install_enotar=Kommandot <tt>tar</tt>, som behövs för att extrahera Webmin-moduler, hittades inte på ditt system
 install_eusermin=Modul $1 är för Usermin, inte Webmin
 install_edep2=Modul $1 kräver åtminstone version $3 av modul $2
@@ -164,12 +171,14 @@ install_cat=Under kategori $1.
 install_eneither=RPM innehåller inte en webbminmodul eller ett tema
 install_err4=Det gick inte att installera standardmodulen
 install_emissing=Den angivna modulen finns inte
+
 delete_desc2=$1 i $2 ($3 kB)
 delete_rusure=Är du säker på att du vill ta bort modulerna $2? $1 kB filer kommer att raderas för alltid.
 delete_rusure2=Är du säker på att du vill ta bort temat $2? $1 kB filer kommer att raderas för alltid.
 delete_rusure3=Är du säker på att du vill ta bort modulklon (er) $2?
 delete_acls=Ta bort från användare och återställa inställningar för åtkomstkontroll?
 delete_enone=Inga moduler valda
+
 os_desc3=Den här sidan visar operativsystemet som upptäckts av Webmin vid installationstiden och systemet som för närvarande upptäcks. Om de är olika kan du välja att uppdatera Webmins OS-information, vilket kan vara nödvändigt om du nyligen har uppgraderat.
 os_webmin=Operativsystem enligt Webmin
 os_iwebmin=Intern OS-kod som används av Webmin
@@ -186,12 +195,14 @@ os_eiversion=Saknas intern version av operativsystemet
 os_incorrect=Varning - Ditt system kör $1 version $2.
 os_fix=Uppdatera upptäckt operativsystem
 os_usermin=Uppdatera också Usermin OS
+
 lang_accept=Använd språk som anges av webbläsaren?
 lang_charset=Teckenuppsättning för HTML-sidor
 lang_chardef=Bestäms av språk
 lang_charover=Tvinga teckenuppsättning
 lang_err=Det gick inte att spara språk
 lang_echarset=Teckenuppsättning saknas eller ogiltigt
+
 ssl_essl=Net::SSLeay perl-modulen verkar inte vara installerad på ditt system. För att installera OpenSSL-biblioteket och Net::SSLeay, följ <a href='$1'>dessa instruktioner</a> från Webmin-webbplatsen.
 ssl_cpan=Alternativt kan du låta Webmin <a href='$1'>ladda ner och installera</a> den nödvändiga Net::SSLeay Perl-modulen för dig.
 ssl_emessage=Felmeddelandet från Perl var : $1
@@ -293,6 +304,7 @@ ssl_letsnotrenew=Förny endast manuellt
 ssl_staging=Låt oss kryptera servern
 ssl_staging0=Verklig
 ssl_staging1=Iscensättning (endast test)
+
 newkey_err=Det gick inte att skapa SSL-nyckel
 newkey_ecn=Saknat eller ogiltigt servernamn
 newkey_ecns=Inga servernamn anges
@@ -305,17 +317,20 @@ newkey_ok=Följande SSL-nyckel genererades :
 newkey_esize=Saknad eller ogiltig nyckelstorlek
 newkey_edays=Saknas eller ogiltigt antal dagar före utgången
 newkey_ecountry=Landskoden måste vara två bokstäver
+
 newcsr_err=Det gick inte att skapa SSL CSR
 newcsr_efile=Saknas CSR-filnamn
 newcsr_title=Generera CSR
 newcsr_ok=Följande SSL-certifikatbegäran lyckades genereras :
 newcsr_ok2=Denna CSR måste skickas till en signeringsmyndighet som kommer att returnera ett signerat certifikat. Detta kan installeras med nyckeln ovan med hjälp av fliken <b>Uppladdningscertifikat</b>.
+
 startpage_intro2=På denna sida kan du kontrollera utseendet på huvudmenyn på Webmin. Vissa alternativ kan bara vara effektiva när du använder standardtema.
 startpage_nohost=Visa version, värdnamn och operativsystem i titel?
 startpage_gotonone=&lt;Ingen&gt;
 startpage_gotomodule=Gå alltid till modulen efter inloggning
 startpage_webminup=Visa uppdateringar av Webmin på sidan Systeminformation?
 startpage_moduleup=Visa moduluppdateringar på sidan Systeminformation?
+
 upgrade_descdeb=Detta formulär låter dig uppgradera hela Webmin-installationen till en ny version genom att uppgradera Debian-paketet. Du kan installera från en lokal.deb-fil, en uppladdad fil eller från den senaste versionen på <a href=http://www.webmin.com/>www.webmin.com</a>. Precis som med en manuell uppgradering kommer alla dina konfigurationsinställningar och tredjepartsmoduler att behållas.
 upgrade_descsun-pkg=Detta formulär låter dig uppgradera hela Webmin-installationen till en ny version från Solaris-paketet som levereras av Sun. Du kan installera från en lokal Solaris-paketfil eller en uppladdad fil. De senaste paketen finns på <a href=http://www.sun.com/bigadmin/content/webmin/>http://www.sun.com/bigadmin/content/webmin/</a>. Precis som med en manuell uppgradering kommer alla dina konfigurationsinställningar och tredjepartsmoduler att behållas.
 upgrade_descgentoo=Detta formulär låter dig uppgradera hela Webmin-installationen till en ny version genom att ta bort det nuvarande Gentoo Emerge-paketet och installera en ny. Du kan installera från en lokal Gentoo-paketfil, en uppladdad fil eller från den senaste versionen i Emerge-arkivet. Precis som med en manuell uppgradering kommer alla dina konfigurationsinställningar och tredjepartsmoduler att behållas.
@@ -357,10 +372,12 @@ upgrade_tabupdate=Uppdatera moduler
 upgrade_tabsched=Schemalagd uppdatering
 upgrade_src=Uppgradera Webmin från
 upgrade_opts=Uppgraderingsalternativ
+
 newmod_desc=När Webmin uppgraderas beviljas eventuella nya moduler i den nya versionen till en eller flera användare. Detta formulär låter dig ställa in användare som får nya moduler. Den här inställningen kommer att gälla vid uppgradering på kommandoraden eller med formen ovan.
 newmod_header=Nya modulbidrag
 newmod_def=Standardbeteende - ge nya moduler till <tt>root</tt> eller <tt>admin</tt>
 newmod_users=Ge nya moduler till :
+
 update_desc1=Det här formuläret låter dig uppgradera Webmin-moduler som har visat sig innehålla buggar eller säkerhetshål från sidan <a href=http://www.webmin.com/updates.html>Webmin-uppdateringar</a> eller från en annan källa. Detta kommer att jämföra de för närvarande installerade modulerna med de som är tillgängliga för uppdatering och automatiskt ladda ner och installera alla moduler som är föråldrade.
 update_header1=Uppdatera moduler nu
 update_header2=Uppdatera moduler enligt schema
@@ -387,6 +404,7 @@ update_enomodsig=Det gick inte att ladda ner signaturfilen för modulen : $1
 update_ebadmodsig=Kontroll av modulens signatur misslyckades : $1
 update_src=Uppgradera moduler från
 update_opts=Moduluppdateringsalternativ
+
 ca_alt=Ytterligare domäner
 ca_city=Stad eller ort
 ca_issuer_cn=Emittentens namn
@@ -394,6 +412,7 @@ ca_issuer_o=Emittentorganisation
 ca_issuer_email=Emittentens e-postadress
 ca_type=Certifikattyp
 ca_notafter=Giltig till
+
 session_ptimeout=Lösenord timeouts
 session_pblock=Misslyckade inloggningsblock
 session_blockuser=Blockera användare med mer än $1 misslyckade inloggningar under $2 sekunder.
@@ -440,8 +459,10 @@ session_sha512=Använd SHA512-kryptering
 session_emd5mod=MD5-kryptering kan inte användas, eftersom Perl $1 -modulen inte är installerad.
 session_esha512mod=SHA512-kryptering kan inte användas, eftersom Perl $1 -modulen inte är installerad.
 session_blocklock=Lås också användare med misslyckade inloggningar
+
 assignment_ok=Byt kategorier
 assignment_desc=Detta formulär låter dig konfigurera vilken kategori varje modul visas under på Webmin indexsida.
+
 categories_desc=Det här formuläret låter dig byta namn på befintliga Webmin-kategorier och skapa nya att tilldela moduler till. Den översta delen av tabellen är för att ändra beskrivningarna av de inbyggda kategorierna, medan den nedre delen är för att lägga till nya kategori-ID och beskrivningar.
 categories_ok=Spara kategorier
 categories_err=Det gick inte att spara kategorier
@@ -452,6 +473,7 @@ categories_name=Visad beskrivning
 categories_lang=Redigera kategorier på språk:
 categories_langok=Förändra
 categories_custom=Beställnings
+
 log_osdn=Ändrade nedladdningsalternativ
 log_twofactor=Ändrade alternativ med tvåfaktorautentisering
 log_newkey=Skapat ny SSL-nyckel
@@ -474,6 +496,7 @@ log_onedelete_webmincron=Raderad schemalagd funktion i modulen $1
 log_letsencrypt=Begärde nytt SSL-certifikat från Let's Encrypt
 log_letsencryptdns=Skapade Let's Encrypt DNS-post för $1
 log_letsencryptcleanup=Borttagit låt oss kryptera DNS-post för $1
+
 themes_none=Inget - låt tema bestämma
 themes_overdesc=Överlägg ändrar utseendet på ett tema genom att ändra färger, bakgrunder och ikoner. De ändrar inte layouten.
 themes_overlay=Nuvarande överlägg :
@@ -482,6 +505,7 @@ themes_taboverlay=Ändra överlägg
 themes_tabinstall=Installera tema
 themes_tabdelete=Ta bort teman
 themes_tabexport=Exportera teman
+
 themes_line=$1 i $2 ($3 kB)
 themes_ok2=Temaöverlägg ändras framgångsrikt.. omdirigering till Webmin indexsida.
 themes_delete=Det här formuläret kan användas för att ta bort ett av de teman som är installerade på ditt system som för närvarande inte används.
@@ -489,12 +513,15 @@ themes_delok=Tema att radera :
 themes_return=temalista
 themes_err4=Det gick inte att ändra överläggets tema
 themes_eoverlay=Valt överlägg är inte kompatibelt med det aktuella globala temat
+
 themes_desc4=Installerade teman kan exporteras som en wbt.gz-fil med hjälp av formuläret nedan. En temafil kan sedan installeras på ett annat system som kör Webmin.
 themes_exportmods=Teman att exportera
 themes_exportok=Exportera valda teman
+
 referers_none2=VARNING: Detta öppnar ditt system för XSS-attacker!
 referers_err=Det gick inte att spara referenser
 referers_ehost='$1' är inte ett giltigt betrodd värdnamn
+
 update_err=Det gick inte att uppdatera moduler
 update_eurl=Saknad eller ogiltig uppdateringsadress
 update_title=Uppdatera moduler
@@ -515,6 +542,7 @@ update_rv=Letar efter uppdaterade Webmin-moduler från $1
 update_eemail=Du måste ange en e-postadress om du bara visar vad som skulle uppdateras.
 update_subject=Webmin-moduler uppdaterar rapporten
 update_version=En ny version av Webmin (version $1) är nu tillgänglig för nedladdning. Framtida uppdateringar släpps endast för den senaste versionen.
+
 anon_title=Anonym modulåtkomst
 anon_desc=På denna sida kan du ge åtkomst till utvalda Webmin-moduler och sökvägar utan att klienter behöver logga in. För varje modulväg som du anger nedan (till exempel <tt>/custom</tt> eller <tt>/passwd</tt>) måste du också ange namnet på en Webmin-användare vars behörigheter kommer att användas för åtkomst till modul.
 anon_desc2=Du bör vara mycket försiktig när du tillhandahåller anonym åtkomst, eftersom otillräckliga IP-åtkomstkontroller eller beviljar åtkomst till fel modul kan göra det möjligt för angripare att ta över ditt system.
@@ -523,15 +551,19 @@ anon_user=Webmin-användare
 anon_err=Det gick inte att spara anonym åtkomst
 anon_eurl='$1' är inte en giltig URL-sökväg
 anon_euser=Saknad eller ogiltig Webmin-användare för URL-sökväg '$1'
+
 enogpg=GnuPG är inte installerat
+
 standard_failed=Det gick inte att ladda ner modullistan : $1
 standard_header=Standard Webmin-moduler
 standard_warn=Varning - du kör inte den senaste Webmin-versionen $1, så dessa moduler kommer antagligen inte att installeras.
 standard_eurl=Ogiltig standardmodul-URL
+
 third_failed=Det gick inte att ladda ner modullistan : $1
 third_header=Tredjeparts Webmin-moduler
 third_eurl=Ogiltig URL från tredjepartsmoduler
 third_title=Välj tredjepartsmodul
+
 lock_title=Fillåsning
 lock_desc=Som standard kommer Webmin att få ett lås på alla filer som den modifierar för att förhindra samtidiga ändringar av flera processer, vilket kan leda till filkorruption. På denna sida kan du selektivt eller helt inaktivera låsning om det orsakar problem.
 lock_header=Inställningar för fillåsning
@@ -542,6 +574,7 @@ lock_except=Lås alla filer och kataloger utom. ..
 lock_err=Det gick inte att spara fillåsning
 lock_edir='$1' är inte en absolut väg
 lock_edirs=Inga filer eller kataloger anges
+
 ipkey_title1=Skapa SSL-nyckel
 ipkey_title2=Redigera SSL-nyckel
 ipkey_header=IP-specifika SSL-nyckeldetaljer
@@ -551,6 +584,7 @@ ipkey_eip2='$1' är inte en giltig IP-adress eller värdnamn
 ipkey_eips=Inga IP-adresser angivna
 ipkey_eextracas=Inga ytterligare certifikatfiler anges
 ipkey_eextraca=Ytterligare certifikatfil $1 finns inte
+
 descs_title=Modultitlar
 descs_info=På denna sida kan du ange alternativa titlar för Webmin-moduler för att åsidosätta standardbeskrivningarna.
 descs_mod=Modul
@@ -560,11 +594,13 @@ descs_cdesc=Klon titel
 descs_err=Det gick inte att spara modultitlar
 descs_edesc=Titel saknas för modulen '$1'
 descs_etitle=Titel saknas för klon "$1"
+
 export_err=Det gick inte att exportera moduler
 export_ecmd=Saknas kommando $1
 export_efile=Saknad eller ogiltig exportfil
 export_done=Exporterade de valda modulerna till $1.
 export_title=Exportera moduler
+
 advanced_title=Avancerade alternativ
 advanced_tdd=Rensa temp-filer i icke-standardkatalog?
 advanced_preload=Förbelasta Webmin-funktionsbiblioteket?
@@ -590,10 +626,13 @@ advanced_listdir=Lista kataloger utan en indexfil?
 advanced_headers=Extra HTTP-rubriker
 advanced_eheader=Rubriker måste formateras som <tt>Header: Value</tt>
 advanced_sortconfigs=Spara konfigurationsfiler sorterade efter dess nycklar?
+
 syslog_errorlog=Webmin-fellogg
+
 clear_title=Rensa nedladdningscache
 clear_done=Webmin-cachen som innehåller $1 av filer från $2 URL: er har raderats.
 clear_none=Det finns för närvarande inga webbadresser i Webmin-nedladdningscachen.
+
 savekey_err=Det gick inte att spara ny nyckel
 savekey_ekey=Saknar eller ogiltig PEM-formatnyckel
 savekey_ecert=Saknas eller ogiltigt PEM-formatcertifikat
@@ -603,6 +642,7 @@ savekey_title=Ladda upp befintlig nyckel
 savekey_done2=Den medföljande SSL-nyckeln har sparats i $1 och certifikatet i $2.
 savekey_done=Den medföljande SSL-nyckeln och certifikatet har sparats i filen $1.
 savekey_done3=Det medföljande kedjade SSL-certifikatet har sparats i filen $1.
+
 cache_title=Cachade URL: er
 cache_search=Hitta webbadresser som innehåller:
 cache_ok=Sök
@@ -615,8 +655,10 @@ cache_delete=Spola valt från cache
 cache_err=Det gick inte att spola cachade URL: er
 cache_enone=Ingen vald
 cache_efile=Ogiltigt filnamn
+
 restart_title=Starta om Webmin
 restart_done=Webmin-serverprocessen startar nu om igen - vänta några sekunder innan du fortsätter.
+
 mobile_title=Alternativ för mobila enheter
 mobile_header=Alternativ för mobila webbläsare
 mobile_theme=Tema för mobila webbläsare
@@ -625,6 +667,7 @@ mobile_nosession=Tvinga användning av HTTP-autentisering?
 mobile_agents=Ytterligare användaragenter för mobila webbläsare
 mobile_err=Det gick inte att spara alternativ för mobil enhet
 mobile_prefixes=URL-värdnamnsprefix för mobila webbläsare
+
 blocked_title=Blockerade värdar och användare
 blocked_type=Typ
 blocked_who=Värdnamn eller användarnamn
@@ -636,9 +679,11 @@ blocked_host=Kundvärd
 blocked_clear=Rensa alla block
 blocked_cleardesc=Klicka på den här knappen för att rensa alla aktuella värd- och användarblock genom att starta om Webmin-serverprocessen.
 blocked_restarting=Webmin-serverprocessen startar nu om för att rensa blockerade värdar och användare - vänta några sekunder innan du fortsätter.
+
 refreshmods_title=Uppdatera moduler
 refreshmods_installed=Letar efter användbara Webmin-moduler ..
 refeshmods_counts=.. hittade $2 med installerade applikationer, $1 inte installerat.
+
 debug_title=Debugging Log File
 debug_header=Webmin-felsökningsloggfiler
 debug_enabled=Felsökningslogg aktiverad?
@@ -666,6 +711,7 @@ debug_cmd=Kommandorad
 debug_cron=Bakgrund jobb
 debug_inmods=Moduler att skriva felsökningsloggar för
 debug_emodules=Inga moduler att felsöka för valda
+
 notif_passexpired=Ditt lösenord för Webmin har gått ut! Du kommer att tvingas ändra det vid nästa inloggning.
 notif_passchange=Ditt Webmin-lösenord ändrades senast på $1 och måste ändras under $2 dagar.
 notif_passlock=Ditt lösenord för Webmin ändrades senast $1, och ditt konto kommer att låsas i $2 dagar om det inte ändras.
@@ -681,6 +727,7 @@ notify_updatedesc=Löser problemet
 notif_updateok=Installera uppdateringar nu
 notif_reboot=Nya paketuppdateringar (t.ex. en ny kärnversion) kräver att en omstart ska tillämpas fullt ut.
 notif_rebootok=Starta om nu
+
 status_title=Bakgrundsstatussamling
 status_header=Inställningar för statussamling
 status_interval=Samla systemstatus i bakgrunden?
@@ -692,6 +739,7 @@ status_temp=Samla körtemperaturer?
 status_units=Enheter för temperaturer
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+
 sendmail_title=Skickar e-post
 sendmail_desc=Denna sida styr hur Webmin skickar e-post, till exempel från schemalagda säkerhetskopior eller övervakning av bakgrunden. Det påverkar också e-postmeddelanden som skickas med modulen Read User Mail.
 sendmail_header=Alternativ för e-postsändning
@@ -732,12 +780,14 @@ sendmail_url=Webmin URL för användning i e-post
 sendmail_url_def=Standard ($1)
 sendmail_url_custom=Anpassad URL
 sendmail_eurl=Saknad eller ogiltig anpassad webbadress
+
 testmail_title=Skicka testmeddelande
 testmail_err=Det gick inte att skicka testmeddelandet
 testmail_eto=Ingen destinationsadress anges
 testmail_sending=Skickar meddelande från $1 till $2 ..
 testmail_done=.. meddelande skickat. Kontrollera destinationsadressens postlåda för att se till att den faktiskt levererades.
 testmail_failed=.. sändningen misslyckades : $1
+
 web_title=Webbserveralternativ
 web_header=Alternativ för Webmins inbyggda webbserver
 web_expires=Cachetid på klientsidan för statiska filer
@@ -749,6 +799,7 @@ web_expirespaths=Cachetider på klientsidan baserat på URL-sökväg
 web_expirespath=Sökväg regelbundet uttryck
 web_expirestime=Cache-tid i sekunder
 web_eexpires2=Saknad cache-cache-tid i sak $1
+
 webmincron_title=Webmin schemalagda funktioner
 webmincron_emodule=Webmin Cron Jobs-modulen är inte installerad!
 webmincron_module=Webmin-modul
@@ -772,6 +823,7 @@ webmincron_when1=Specifika tider
 webmincron_secs=sekunder
 webmincron_err=Det gick inte att spara schemalagd funktion
 webmincron_einterval=Intervallet måste vara ett antal sekunder större än noll
+
 twofactor_title=Tvåfaktorautentisering
 twofactor_header=Tvåfaktors autentiseringsalternativ
 twofactor_provider=Verifieringsleverantör
@@ -810,6 +862,7 @@ twofactor_secret1=Genereras slumpmässigt
 twofactor_secret0=Använd en tangent med 16 tecken
 twofactor_esecret=Den hemliga nyckeln måste vara exakt 16 tecken lång och endast innehålla bokstäver och siffror
 twofactor_esession=Tvåfaktorsautentisering kan inte användas om inte sessionbaserad autentisering är aktiv
+
 letsencrypt_title=Låt oss kryptera certifikatbegäran
 letsencrypt_err=Det gick inte att begära certifikat
 letsencrypt_ecmds=Varken kommandot Let's Encrypt-klient <tt>certbot</tt> eller <tt>python</tt> hittades i ditt system
@@ -843,5 +896,6 @@ letsencrypt_ecsr=Det gick inte att generera CSR : $1
 letsencrypt_ekeygen=Det gick inte att generera privat nyckel : $1
 letsencrypt_enative=Den ursprungliga Let's Encrypt-klienten (certbot) användes tidigare i detta system och måste användas för alla framtida certifikatbegäranden
 letsencrypt_eacmedns=Endast den officiella Let's Encrypt-klienten stöder DNS-baserad validering
+
 announce_hide=Dölj detta tillkännagivande
 alert_hide=Dölj varning

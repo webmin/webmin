@@ -11,6 +11,7 @@ index_when=Kyllä, $1
 index_act=Toiminta
 index_exec=Suorittaa
 index_delete=Poista valitut kopiot
+
 edit_title=Muokkaa klusterikopiota
 create_title=Luo klusterikopio
 edit_header=Ryhmän kopion yksityiskohdat
@@ -31,12 +32,14 @@ edit_run=Kopioi nyt
 edit_return=klusterikopio
 edit_email=Sähköpostin lähetys osoitteeseen
 edit_none=ei kukaan
+
 save_err=Klusterin cron-työn tallentaminen epäonnistui
 save_efiles=Ei kopioitavia tiedostoja
 save_edest=Puuttuu kohdehakemisto
 save_eservers=Ei palvelimia kopioitavaksi syötettyihin
 save_efile=Kopioitava tiedosto '$1' ei ole ehdoton polku
 save_eemail=Puuttuva tai virheellinen sähköpostiosoite
+
 exec_title=Kopioi tiedostoja
 exec_files1=Kopioidaan $1 tiedostoja valittuihin palvelimiin $2 ..
 exec_files2=Kopioidaan $1 valittuihin palvelimiin $2 ..
@@ -50,12 +53,15 @@ exec_not=Seuraavien tiedostojen kopiointi epäonnistui $1 : een :
 exec_cmd=Kopioi komennon lähtö $1 : llä :
 exec_before=Komentolähtö ennen kopiointia $1 : llä :
 exec_on= $1:$2  : n suorittaminen epäonnistui
+
 log_create=Luotu kopio $1 - $2 palvelimille
 log_modify=Muokattu kopio $1 - $2 palvelimille
 log_delete=Poistettu kopio $1 - $2 -palvelimille
 log_exec=Kopioitiin $1 palvelimeen $2 
 log_deletes=Poistettu $1 kopiota
+
 email_subject_succeeded=Ryhmän kopio $1 : sta onnistui
 email_subject_failed=Ryhmän kopio $1 epäonnistui
+
 delete_err=Kopioiden poistaminen epäonnistui
 delete_enone=Mitään ei ole valittu

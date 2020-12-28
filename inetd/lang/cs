@@ -10,6 +10,7 @@ index_rpc=RPC Programy
 index_newrpc=Vytvořit nový RPC program
 index_apply=Použít změny
 index_applymsg=Klepnutím na toto tlačítko se projeví změny této konfigurace, bude vyslán signál SIGHUP na bežící proces <tt>inetd</tt>
+
 error_restart=Nepodařilo se restarovat Inetd
 error_saverpc=Nepodařilo se uložit RPC program
 error_invalidprgname='$1' není platným názvem programu
@@ -37,6 +38,7 @@ error_childnum=Jestliže je dáno maximum za minuti, musíte taktéž uvést č�
 error_serviceexist=Služba, využívající port $1 a protokol $2 již existuje
 error_nameexist=Služba s názvem $1 a protokolem $2 již existuje
 error_inetservice=Internetová služba s názvem $1 a protokolem $2 již existuje
+
 editrpc_title1=Vytvořit RPC program
 editrpc_title2=Editovat RPC program
 editrpc_detail=Detaily RPC programu
@@ -59,6 +61,7 @@ editrpc_execasuser=Spustit jako uživatel
 editrpc_max=Maximum za minutu
 editrpc_default=Výchozi
 editrpc_execasgrp=Spustit jako skupina
+
 editserv_title1=Vytvořit internetovou službu
 editserv_title2=Editovat internetovou službu
 editserv_detail=Detaily internetové služby
@@ -72,6 +75,7 @@ editserv_wrapper=TCP-Wrapper
 editserv_inetd=Interně pro <tt>inetd</tt>
 editserv_qm=Vypadá to, že neexistuje příkaz?
 editserv_ename=Neexistuje služba daného jména a protokolu
+
 log_apply=Zapsání změn
 log_create_serv=Vytvořena služba $1
 log_modify_serv=Modifikována služba $1
@@ -85,6 +89,7 @@ log_delete_serv_l=Smazána služba $1 na portu $2
 log_create_prog_l=Vytvořena služba $1 na portu $2 pro program $3
 log_modify_prog_l=Modifikována služba $1 na portu $2 pro program $3
 log_delete_prog_l=Smazána služba $1 na portu $2 pro program $3
+
 log_create_rpc=Vytvořen RPC $1
 log_modify_rpc=Modifikován RPC $1
 log_delete_rpc=Smazán RPC $1

@@ -11,26 +11,37 @@ index_adddir=Consenti l'accesso a questa directory
 index_crnow=Crea ora
 index_return2=configurazione globale
 index_delete=Elimina i server selezionati
+
 cvirt_eroot4=Nessun utente definito nella configurazione di Apache
 cvirt_emissing=Il nuovo server virtuale è stato aggiunto a $1, ma questo file non è utilizzato da Apache. Controlla la <a href='$2'>configurazione del modulo</a> e assicurati che il 'File o la directory in cui aggiungere i server virtuali' sia corretto.
+
 enewline=Carattere non valido nel valore
+
 virt_eprotocol=È necessario selezionare almeno una versione del protocollo SSL/TLS utilizzabile
 virt_opts2=Opzioni del server virtuale
 virt_DirectoryMatch=Directory regexp
 virt_FilesMatch=File regexp
 virt_LocationMatch=Posizione regexp
 virt_ProxyMatch=Proge regexp
+
 vserv_virtualmin=Questo host virtuale Apache appartiene al server Virtualmin <tt>$1</tt>, quindi l'indirizzo, la porta, la directory di base e il nome host non possono essere modificati qui.
+
 manual_editfile=Modifica file di configurazione:
 manual_switch=modificare
+
 dir_proxyall=Tutte le richieste proxy
+
 htaccess_file=File di opzioni esistenti
 htaccess_eempty=Nessuna directory del file delle opzioni inserita
 htaccess_eabsolute=La directory del file delle opzioni deve essere un percorso assoluto
 htaccess_err=Impossibile creare il file delle opzioni
+
 defines_list=Parametri definiti
+
 start_eafter=Apache non sembra essere in esecuzione
+
 restart_ecannot=Non è consentito applicare modifiche
+
 acl_apply=È possibile applicare le modifiche?
 acl_aliasdir=Limita gli alias alla directory
 acl_names=Puoi modificare i nomi dei server?
@@ -38,6 +49,7 @@ acl_dirs=Direttive Apache disponibili <br><font size=-1> (Soggetto al limite di 
 acl_dirs0=Tutti
 acl_dirs1=Solo elencato ..
 acl_dirs2=Tutti tranne quelli elencati. ..
+
 core_portname=Protocollo
 core_protoany=&lt;Any&gt;
 core_eduplisten=L'indirizzo di ascolto $1 è elencato due volte
@@ -46,14 +58,20 @@ core_minor=Solo versione secondaria
 core_eerrordir=La directory per il file di registro degli errori non esiste
 core_fileowner=Corrispondenze del proprietario del file
 core_filegroup=Partite del proprietario del gruppo
+
 mod_alias_edest2=Non puoi utilizzare la destinazione $2 '$1'
+
 mod_proxy_seconds=secondi
 mod_proxy_not=Nessuna
+
 mod_log_config_ifset=Se impostato
 mod_log_config_edir=La directory per il file di registro '$1' non esiste
+
 mod_userdir_edir=Non è consentito utilizzare la directory WWW dell'utente specificata
+
 mod_auth_dbm_gpass=Passare gli errori di gruppo al modulo successivo?
 mod_auth_dbm_gtype=Tipo di database del gruppo DBM
+
 mod_ssl_cafile=File delle autorità di certificazione
 mod_ssl_ecafile=File chiave delle autorità di certificazione mancante
 mod_ssl_pass=Password per chiavi SSL
@@ -64,6 +82,7 @@ mod_ssl_passsc=Eseguire lo script $1
 mod_ssl_epassph=Nessuna password SSL inserita
 mod_ssl_epasssc=Script password SSL mancante o non valido
 mod_ssl_ecerton=Quando SSL è abilitato, è necessario selezionare un file di certificato
+
 mod_apachessl_notssl=Negare l'accesso SSL
 mod_apachessl_forcessl=Forza l'accesso SSL / notSSL?
 mod_apachessl_capath=Percorso della directory con i certificati delle autorità di certificazione in
@@ -96,12 +115,17 @@ mod_apachessl_nov2=Disabilita SSL versione 2
 mod_apachessl_fake=Simula gli accessi di autenticazione di base dell'utente, utilizzando il nome del certificato
 mod_apachessl_cdnfile=Il file sul DN client è selezionato
 mod_apachessl_ecdnfile=Viene verificato il file mancante sul DN client
+
 log_mods=Moduli Apache configurati modificati
 log_virts_delete=Server virtuali $1 eliminati
+
 mod_php_admin_value=Valori di configurazione dell'amministratore di PHP
 mod_php_admin_flag=Flag di configurazione dell'amministratore di PHP
+
 mod_vhost_alias_eroot2=La directory principale dell'host virtuale non è consentita
+
 cdir_ecannot=Non è consentito creare opzioni per directory per il percorso specificato
+
 mod_band_enable=Limitazione della larghezza di banda abilitata?
 mod_band_bw=Limite (byte / sec)
 mod_band_client=Per i clienti
@@ -120,24 +144,30 @@ mod_band_epulse=Intervallo mancante o non valido tra i pacchetti limitati
 mod_band_dir=Directory dei file di dati che limita la larghezza di banda
 mod_band_edir=Directory dei file di dati di larghezza di banda mancante o inesistente
 mod_band_esubdir=Sottodirectory obbligatoria mancante <tt>$1</tt> nella directory dei file di dati della larghezza di banda
+
 mod_dav_active=WebDAV abilitato?
 mod_dav_inf=Consentire infinite richieste DAV PROPFIND?
 mod_dav_timeout=Timeout minimo DAV in secondi
 mod_dav_etimeout=Timeout DAV mancante o non valido
+
 delete_err=Impossibile eliminare i server virtuali
 delete_enone=Nessuno selezionato
 delete_ecannot=Non ti è permesso cancellare i server
 delete_ecannot2=Non puoi modificare il server $1
+
 syslog_desc=Registro errori Apache
+
 mod_auth_basic_pass=Passare gli errori di accesso di base al modulo successivo?
 mod_auth_basic_prov=Tipi di file utente di accesso di base
 mod_auth_basic_file=File di testo
 mod_auth_basic_dbm=Database DBM
+
 mod_auth_digest_pass=Passare errori di accesso digest al modulo successivo?
 mod_auth_digest_prov=Digest digita i tipi di file utente
 mod_auth_digest_al=Algoritmo di hash
 mod_auth_digest_domain=URL e percorsi nello stesso dominio
 mod_auth_digest_edomain=URL e percorsi mancanti nello stesso dominio
+
 mods_title=Configura i moduli Apache
 mods_mod=Modulo
 mods_state=Stato attuale

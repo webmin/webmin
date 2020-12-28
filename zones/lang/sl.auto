@@ -4,6 +4,7 @@ index_none=Nobena cona še ni definirana.
 index_add=Dodajte novo cono.
 index_return=seznam območij
 index_zones=Obstoječe cone
+
 edit_title=Uredi cono
 edit_common=Splošna konfiguracija cone
 edit_name=Ime cone
@@ -57,20 +58,26 @@ edit_attrnone=Splošni atributi še niso definirani.
 edit_attradd=Dodajte nov splošni atribut.
 edit_webmin=Odprite Webmin
 edit_brand=Blagovna znamka
+
 ui_cancel=Prekliči
+
 save_err=Območja ni bilo mogoče shraniti
 save_epool=Manjkajoči ali neveljaven bazen
 save_ewebmin=Webmin se v tem območju ne izvaja
+
 reboot_title=Ponovno zaženite cono
 reboot_rusure=Ali ste prepričani, da želite ponovno zagnati cono $1 ? Vsi procesi, ki se izvajajo znotraj njega, bodo znova zagnani.
 reboot_err=Območja ni bilo mogoče ponovno zagnati
 reboot_doing=Zdaj ponovno zaženite območje ..
+
 reboot_failed=.. ni uspelo :
 reboot_ok=.. dokončana.
+
 halt_title=Cona zaustavitve
 halt_rusure=Ali ste prepričani, da želite zapreti cono $1 ? Vsi procesi, ki se izvajajo znotraj njega, bodo zaustavljeni.
 halt_err=Območje zaustavitve ni bilo mogoče
 halt_doing=Zdaj je območje izklopa.
+
 boot_title=Bootup Cona
 boot_err=Zagon območja ni uspel
 boot_doing=Zdaj škorenj gor območje ..
@@ -78,10 +85,12 @@ delete_title=Zbriši cono
 delete_rusure=Ali ste prepričani, da želite izbrisati cono $1 ? Vse datoteke znotraj njegovih zasebnih datotečnih sistemov bodo izgubljene.
 delete_err=Območja ni bilo mogoče izbrisati
 delete_doing=Zdaj brisanje območja ..
+
 uninstall_title=Odstranite sistem
 uninstall_rusure=Ali ste prepričani, da želite odstraniti sistemsko programsko opremo iz cone $1 ? Vse datoteke znotraj njegovih zasebnih datotečnih sistemov bodo izgubljene.
 uninstall_err=Ni mogoče namestiti sistemske programske opreme z območja
 uninstall_doing=Sedaj odstranite sistem iz cone ..
+
 install_title=Namestite sistem
 install_doing=Zdaj namestite sistem v cono ..
 net_title1=Ustvari omrežni vmesnik
@@ -96,6 +105,7 @@ net_enetmask=Neveljavna omrežna maska
 net_eaddress=Neveljaven naslov IP
 net_egone=Vmesnik ne obstaja več!
 net_eclash=V tej coni že obstaja omrežni vmesnik z istim naslovom IP
+
 pkg_title1=Dodaj imenik paketov
 pkg_title2=Uredi imenik paketov
 pkg_header=Podedovani podatki o imeniku paketov
@@ -107,6 +117,7 @@ pkg_eclash=V tem območju že obstaja imenik paketov
 pkg_inherit=Dedovanje paketov iz globalne cone
 pkg_inherit_yes=Da (redko koreninsko območje)
 pkg_inherit_no=Ne (celotna koreninska cona)
+
 fs_title1=Ustvari datotečni sistem
 fs_title2=Uredi datotečni sistem
 fs_header=Dodatne podrobnosti o datotečnem sistemu
@@ -128,6 +139,7 @@ fs_eoptions=Neveljavne možnosti pritrditve (mora biti seznam, ločen z vejico, 
 fs_egone=Datotečni sistem ne obstaja več!
 fs_mount=Mount po ustvarjanju?
 fs_eclash=V tej coni že obstaja datotečni sistem z istim imenikom
+
 rctl_title1=Ustvari nadzor nad viri
 rctl_title2=Urejanje nadzora virov
 rctl_header=Vrsta in omejitve nadzora virov
@@ -148,6 +160,7 @@ rctl_elimit=Ne številka
 rctl_eaction=V vrstici $1 ni izbran noben signal
 rctl_evalues=Omejitve niso vnesene
 rctl_eclash=V tem območju že obstaja nadzor za isti vir
+
 attr_title1=Ustvari splošne atribute
 attr_title2=Uredi splošni atribut
 attr_header=Podrobnosti o atributih splošne cone
@@ -165,6 +178,7 @@ attr_euint=Vrednost ni pozitivno celo število
 attr_eboolean=Vrednost ni 'res' ali 'false'
 attr_egone=Atributi ne obstajajo več!
 attr_eclash=Atribut z istim imenom že obstaja v tej coni
+
 status_running=Teče
 status_installed=Zaustavljeno
 status_configured=Ni nameščeno
@@ -172,13 +186,16 @@ status_incomplete=Se namesti
 status_ready=Pripravljen
 status_down=Dol
 status_shutting_down=Ugašati
+
 list_name=Ime cone
 list_id=ID številka
 list_path=Imenik območij
 list_status=Stanje
 list_actions=Dejanja
+
 zone_in=V coni $1 
 pool_none=Noben
+
 create_title=Ustvari cono
 create_header=Nove podrobnosti o coni
 create_path=Imenik datotek o conah
@@ -239,6 +256,7 @@ create_erouter=Manjkajoči ali neveljavni privzeti IP naslov usmerjevalnika
 create_removingpkgs=odstranjevanje podedovanih imenikov paketov. ..
 create_brand=Blagovna znamka
 create_brandmsg=Območje blagovne znamke
+
 log_create_zone=Ustvarjeno območje $1 
 log_delete_zone=Izbrisana cona $1 
 log_save_zone=Spremenjena konfiguracija za cono $1 
@@ -262,6 +280,7 @@ log_delete_rctl=Izbrisan nadzor virov za $1 v coni $2
 log_create_attr=Ustvaril generični atribut $1 v coni $2 
 log_modify_attr=Spremenjen splošni atribut $1 v coni $2 
 log_delete_attr=Izbrisan splošni atribut $1 v coni $2 
+
 webmin_eperl=Perl ni nameščen pri $1 
 webmin_eroot=Imenik $1 ne obstaja ali ne vsebuje Webmin-a.
 webmin_title=Namestite Webmin

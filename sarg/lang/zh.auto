@@ -10,6 +10,7 @@ index_range=生成日期范围的报告
 index_view=查看生成的报告
 index_viewdesc=查看目录 $1中最近生成的报告。
 index_return=模块索引
+
 log_title=日志源和报告目标
 log_header=源Squid日志文件和生成的报告选项
 log_access_log=源鱿鱼日志文件
@@ -30,6 +31,7 @@ log_elastlog=缺少数字
 log_eemail=电子邮件地址丢失或外观无效
 log_emailx=邮件程序缺失或不存在
 log_squidguard_log_path=SquidGuard日志文件
+
 style_title=报告样式
 style_header=HTML报告样式和颜色选项
 style_title2=报告标题
@@ -54,6 +56,7 @@ style_efont=字体名称缺失或无效
 style_esize=图像宽度和高度缺失或无效
 style_language=报告语言
 style_charset=报告字符集
+
 report_title=报告选项
 report_header=报告内容和生成选项
 report_resolve_ip=解析IP地址？
@@ -134,6 +137,7 @@ report_echar=不允许有空格
 report_estring=缺少或无效的替换文字
 report_eselect=没有选择
 report_eenter=什么都没输入
+
 sched_title=计划报告生成
 sched_header=预定的报告选项
 sched_sched=启用预定报告？
@@ -148,9 +152,11 @@ sched_rsel=从 $1到 $2天前
 sched_err=无法保存计划的报告生成
 sched_erfrom=起始天数缺失或无效
 sched_erto=结束前天数缺失或无效
+
 view_title=Sarg报告
 view_efile=无效的文件名！
 view_eopen=无法打开报告文件
+
 gen_title=产生报告
 gen_header=现在从Squid日志文件 $1和所有旋转版本生成Sarg报告。
 gen_done=..完成
@@ -160,6 +166,7 @@ gen_view=查看完成的报告。
 gen_err=未能生成报告
 gen_efrom=从一天开始缺少或无效
 gen_eto=今天丢失或无效
+
 webmin_log_log=更新了日志源和报告目标选项
 webmin_log_report=更新的报告选项
 webmin_log_style=更新了报告样式选项

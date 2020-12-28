@@ -14,6 +14,7 @@ index_restart=Κάντε επανεκκίνηση του Daemon του προγ�
 index_restartdesc=Εφαρμόστε την τρέχουσα ρύθμιση παραμέτρων επανεκκινώντας τον τοπικό δαίμονα πελάτη LDAP.
 index_atboot=Ξεκινήστε το πρόγραμμα-πελάτη LDAP κατά την εκκίνηση
 index_atbootdesc=Αλλάζει εάν ο δαίμονας πελάτη LDAP ξεκινά όταν το σύστημα εκκινήσει ή όχι.
+
 server_title=Διαμόρφωση διακομιστή LDAP
 server_header=LDAP server και επιλογές σύνδεσης
 server_host=Τα ονόματα κεντρικών υπολογιστών διακομιστή LDAP
@@ -51,6 +52,7 @@ server_etimelimit=Λείπει ή μη έγκυρο χρονικό όριο σύ
 server_ecacert=Έλλειμμα ή άκυρο αρχείο πιστοποιητικού CA
 server_euport=Λείπει ή μη έγκυρη θύρα για τον διακομιστή $1 
 server_euri=Δεν έχουν εισαχθεί διακομιστές LDAP
+
 base_title=Βάσεις αναζήτησης LDAP
 base_header=Θέσεις αναζήτησης καταλόγου LDAP
 base_base=Παγκόσμια βάση αναζήτησης
@@ -86,6 +88,7 @@ base_enetmasks=Λείπει βάση για ονόματα δικτυώματο�
 base_ealiases=Λείπει βάση για ψευδώνυμα ηλεκτρονικού ταχυδρομείου
 base_enetgroup=Λείπει βάση για netgroups
 base_etimelimit=Λανθασμένο ή μη έγκυρο όριο χρόνου αναζήτησης
+
 pam_title=Επιλογές ελέγχου ταυτότητας
 pam_header=Ρυθμίσεις ελέγχου ταυτότητας PAM και κωδικού πρόσβασης
 pam_filter=Πρόσθετο φίλτρο LDAP
@@ -106,10 +109,12 @@ pam_efilter=Λείπει επιπλέον φίλτρο LDAP
 pam_elogin=Λείπει ή μη έγκυρο χαρακτηριστικό LDAP για το όνομα χρήστη
 pam_egroupdn=Λείπει η ομάδα LDAP για να εξαναγκάσει την ιδιότητα του μέλους
 pam_emember=Λείπει ή μη έγκυρο χαρακτηριστικό LDAP για τα μέλη της ομάδας
+
 switch_title=Υπηρεσίες Χρήση του LDAP
 switch_service=Υπηρεσία
 switch_srcs=Πηγές δεδομένων
 switch_return=υπηρεσιών που χρησιμοποιούν το LDAP
+
 ldap_emodule=Δεν είναι εγκατεστημένη η μονάδα $1 Perl που απαιτείται για να μιλήσετε με το διακομιστή LDAP. <a href='$2'>Κάντε κλικ εδώ</a> για να κάνετε λήψη και εγκατάσταση του Webmin τώρα.
 ldap_emodule2=Δεν είναι εγκατεστημένη η μονάδα $1 Perl που απαιτείται για να μιλήσετε με το διακομιστή LDAP.
 ldap_econf=Το αρχείο διαμόρφωσης πελάτη LDAP $1 δεν βρέθηκε στο σύστημά σας
@@ -119,6 +124,7 @@ ldap_elogin=Αποτυχία δέσμευσης του διακομιστή LDAP
 ldap_anon=Ανώνυμος
 ldap_eparse=Δεν ήταν δυνατή η ανάλυση του διακομιστή LDAP URI $1 
 ldap_etls=Αποτυχία μετάβασης στη λειτουργία TLS : $1 
+
 browser_title=LDAP Browser
 browser_econn=Δεν είναι δυνατή η χρήση του προγράμματος περιήγησης LDAP : $1 
 browser_base=Περιήγηση:
@@ -129,6 +135,7 @@ browser_attrs=Χαρακτηριστικά αντικειμένου
 browser_parent=Περιηγηθείτε στον γονέα
 browser_none=Κανένας
 browser_sel=Εντάξει
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Εκτυπωτές χρηστών
 order_xfn=XFN
 order_mdns4=DNS πολυεκπομπής
 order_mdns4_minimal=DNS πολλαπλής διανομής (ελάχιστο)
+
 desc_aliases=Τα ψευδώνυμα Sendmail
 desc_mail=Τα ψευδώνυμα Sendmail
 desc_hosts=Διευθύνσεις κεντρικού υπολογιστή
@@ -177,6 +185,7 @@ desc_printers=Εκτυπωτές
 desc_ipnodes=IP κόμβους
 desc_timezone=Ζώνες ώρας
 desc_locale=Locales
+
 eswitch_title=Επεξεργασία υπηρεσίας
 eswitch_egone=Δεν υπάρχει υπηρεσία!
 eswitch_header=Λεπτομέρειες υπηρεσίας
@@ -196,6 +205,7 @@ eswitch_continue=Συνεχίστε την αναζήτηση
 eswitch_none=Κανένας
 eswitch_err=Αποτυχία αποθήκευσης υπηρεσίας
 eswitch_enone=Δεν έχουν επιλεγεί πηγές!
+
 log_server=Τροποποιημένη διαμόρφωση διακομιστή LDAP
 log_base=Τροποποιημένες βάσεις αναζήτησης LDAP
 log_pam=Τροποποιημένες επιλογές ελέγχου ταυτότητας
@@ -205,6 +215,7 @@ log_delboot=Απενεργοποιημένος δαίμονας πελάτη LDA
 log_start=Ξεκίνησε ο δαίμονας πελάτη LDAP
 log_stop=Σταμάτησε τον δαίμονα πελάτη LDAP
 log_restart=Επανεκκίνηση του daemon πελάτη LDAP
+
 check_title=Επαλήθευση της ρύθμισης LDAP
 check_base=Εύρεση βάσης LDAP για χρήστες ..
 check_ebase=.. καμία βάση δεν βρέθηκε σε διαμόρφωση πελάτη!

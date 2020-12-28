@@ -9,6 +9,7 @@ index_start=Mulakan Syslog-NG
 index_startdesc=Klik butang ini untuk memulakan daemon Syslog-NG, menggunakan konfigurasi semasa.
 index_return=indeks modul
 index_version=Syslog-NG $1 
+
 options_title=Pilihan Pembalakan
 options_header=Pilihan untuk semua fail log
 options_secs=detik
@@ -55,6 +56,7 @@ options_esync=Bilangan mesej yang hilang atau tidak sah untuk penampan sebelum m
 options_estats=Masa hilang atau bukan nombor untuk menunggu di antara mesej statistik
 options_elog_fifo_size=Bilangan mesej yang hilang atau tidak sah kepada penampan
 options_elog_msg_size=Saiz mesej log maksimum yang hilang atau bukan nombor
+
 destinations_title=Destinasi Log
 destinations_name=Nama destinasi
 destinations_type=Tulis kepada
@@ -77,6 +79,7 @@ destinations_add=Tambah destinasi log baru.
 destinations_return=destinasi log
 destinations_desc=Log modul lain
 destinations_cmd=Output dari $1 
+
 destination_header=Pilihan destinasi log
 destination_title1=Buat Destinasi Log
 destination_title2=Edit Destinasi Log
@@ -117,15 +120,20 @@ destination_enet_localip=Alamat IP tempatan yang hilang atau tidak sah
 destination_enet_localport=Nombor pelabuhan tempatan yang hilang atau tidak sah
 destination_enet_host=Hos atau alamat pelayan Syslog yang hilang atau tidak sah
 destination_eunix=Nama soket Unix yang hilang
+
 ddelete_eused=Destinasi $1 tidak dapat dipadamkan, kerana ia digunakan oleh sasaran log
+
 sdelete_err=Gagal memadamkan sumber
 sdelete_enone=Tiada yang dipilih
 sdelete_eused=Sumber log $1 tidak dapat dipadamkan, kerana ia digunakan oleh sasaran log
+
 fdelete_err=Gagal memadamkan penapis
 fdelete_enone=Tiada yang dipilih
 fdelete_eused=Penapis log $1 tidak dapat dipadamkan, kerana ia digunakan oleh target log
+
 ldelete_err=Gagal memadamkan sasaran log
 ldelete_enone=Tiada yang dipilih
+
 filters_title=Penapis Log
 filters_name=Nama penapis
 filters_desc=Syarat-syarat
@@ -142,6 +150,7 @@ filters_program=program <tt>$1</tt>
 filters_match=perlawanan "$1"
 filters_host=dari nama tuan <tt>$1</tt>
 filters_netmask=dari pengirim <tt>$1</tt>
+
 filter_title1=Buat Penapis Log
 filter_title2=Edit Penapis Log
 filter_header=Butiran spesifikasi penapis log
@@ -167,6 +176,7 @@ filter_enet=Alamat IP rangkaian yang hilang atau tidak sah
 filter_emask=Netmask hilang atau tidak sah
 filter_ebool=Ralat dalam ekspresi kompleks
 filter_egone=Penapis tidak lagi wujud!
+
 logs_title=Sasaran Log
 logs_source=Sumber
 logs_filter=Penapis
@@ -175,6 +185,7 @@ logs_add=Tambah sasaran log baru.
 logs_delete=Padam sasaran log terpilih
 logs_return=sasaran log
 logs_none=Tiada
+
 log_title1=Buat Target Log
 log_title2=Edit Target Log
 log_header=Log sumber, penapis dan pilihan destinasi
@@ -188,6 +199,7 @@ log_flags=Pilihan sasaran
 log_egone=Sasaran log tidak lagi wujud!
 log_err=Gagal menyimpan sasaran log
 log_esource=Tiada sumber yang dipilih
+
 sources_title=Sumber Log
 sources_none=Tiada sumber telah ditakrifkan lagi!
 sources_add=Tambah sumber log baharu.
@@ -205,6 +217,7 @@ sources_typen=Aliran matahari
 sources_typenw=Pelayan Syslog
 sources_return=sumber log
 sources_none2=Tiada
+
 source_title1=Buat Sumber Log
 source_title2=Edit Sumber Log
 source_header=Log pilihan sumber
@@ -241,13 +254,17 @@ source_door=Nama fail pintu
 source_esun_streams_name=Nama fail aliran Sun yang hilang atau tidak sah
 source_edoor=Nama fail pintu aliran matahari yang hilang atau tidak sah
 source_transport=Protokol rangkaian
+
 view_title=Lihat Logfile
 view_header=$1 baris terakhir $2 
 view_empty=Fail log kosong
 view_refresh=Refresh
 view_filter=Hanya tunjukkan baris dengan teks $1 
+
 start_err=Gagal memulakan pelayan Syslog-NG
+
 stop_err=Gagal menghentikan pelayan Syslog-NG
+
 log_create_destination=Destinasi log yang dibuat $1 
 log_modify_destination=Destinasi log diubahsuai $1 
 log_delete_destination=Destinasi log yang dipadam $1 

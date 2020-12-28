@@ -19,6 +19,7 @@ index_refsel=Opdater valgt
 index_group=Medlemmer af $1 
 index_tmpls=Rediger e-mail-skabeloner
 index_tmplsdesc=Se og rediger skabeloner, der bruges til at konstruere e-mail-meddelelser sendt, når overvågede tjenester går ned.
+
 type_apache=Apache-webserver
 type_inetd=Internet og RPC-server
 type_xinetd=Udvidet Internet Server
@@ -73,8 +74,10 @@ type_alive=Alive System
 type_rssh=Fjern SSH
 type_slapd=LDAP-server
 type_ldap=LDAP-forbindelse
+
 mon_create=Opret skærm
 mon_edit=Rediger skærm
+mon_virtualmin=Advarsel! Denne skærm er knyttet til Virtualmin-domænet $1 og bør derfor ikke redigeres eller slettes her.
 mon_header=Overvåg detaljer
 mon_header2=Kommandoer, der skal køres
 mon_header3=Overvågede servicemuligheder
@@ -138,6 +141,7 @@ mon_changes0=Vis hver begivenhedstype
 mon_changes1=Vis kun ændringer
 mon_all=Vis alle historiske begivenheder
 mon_nochanges=Der skete ingen statusændringer i de sidste $1 historiske begivenheder.
+
 sched_title=Planlagt overvågning
 sched_header=Planlagte baggrundsovervågningsmuligheder
 sched_mode=Planlagt kontrol aktiveret?
@@ -184,16 +188,19 @@ sched_subject0=Ingen (alarm er i kroppen)
 sched_subject1=Varseltekst (lad kroppen være tom)
 sched_subject2=Brugerdefineret tekst
 sched_esubject=Manglende SMS-beskedemne
+
 up_since=Op siden $1 
 depends_mod=Modulet $1 er ikke installeret på dit system
 depends_os=Modulet $1 understøttes ikke på dit system
 depends_remote=Modulet $1 understøttes ikke på server $2 
+
 tcp_host=Vært at oprette forbindelse til
 tcp_port=Havn at oprette forbindelse til
 tcp_alarm=Forbindelse timeout
 tcp_ehost=Manglende eller ugyldigt værtsnavn
 tcp_eport=Manglende eller ugyldigt portnummer
 tcp_ealarm=Manglende eller ugyldig timeout for forbindelse
+
 http_url=URL der skal anmodes om
 http_alarm=Forbindelse timeout
 http_eurl=Manglende eller ugyldig URL
@@ -208,11 +215,13 @@ http_regexp=Siden skal svare til regexp
 http_eregexp=Intet regulært udtryk for indtastet side, der skal matche
 http_none2=Ikke match
 http_ehead=Metoden HEAD-anmodning kan ikke bruges, når der kontrolleres for et regelmæssigt udtryk
+
 ping_host=Vært for ping
 ping_wait=Tid til at vente på svar
 ping_ehost=Manglende eller ugyldigt værtsnavn
 ping_ewait=Manglende eller ugyldig ventetid
 ping_econfig=Der er ikke indstillet nogen ping-kommando i Module Config
+
 proc_pid=Kører med PIDs $1 
 proc_cmd=Kommando at kontrollere for
 proc_not=Mislykkes, hvis processen er
@@ -224,6 +233,7 @@ proc_ethresh=Manglende eller ugyldigt antal processer
 proc_asuser=Kører som bruger
 proc_anyuser=Enhver bruger
 proc_easuser=Bruger til at køre som den ikke findes
+
 exec_cmd=Kommando til at køre
 exec_mode=Afslut statuskontrol
 exec_mode0=Fail monitor, hvis kommandoen mislykkes
@@ -235,6 +245,7 @@ exec_noregexp=Kontroller ikke
 exec_remode=Regexp-check
 exec_remode0=Mislykkes, hvis output ikke stemmer overens
 exec_remode1=Mislykkes, hvis output stemmer overens
+
 file_file=Fil, katalog eller mønster, der skal kontrolleres
 file_test=Test for at udføre
 file_test_0=Skal eksistere
@@ -253,6 +264,7 @@ file_group=Filgruppen skal være
 file_nocheck=Hvad som helst
 file_perms=Oktale tilladelser skal være
 file_eperm=Filer med forkerte tilladelser : $1 
+
 traffic_iface=Interface, der skal overvåges
 traffic_bytes=Maksimum byte/sekund
 traffic_dir=Retning til overvågning
@@ -262,6 +274,7 @@ traffic_dir2=Kun udgående
 traffic_desc=Denne skærm holder styr på netværkstrafikken på en valgt grænseflade og viser skærmen som nede, hvis trafikken overstiger antallet af byte pr. Sekund, der er indtastet nedenfor. Dette fungerer kun rigtig godt, hvis planlagt overvågning er aktiveret ved indstillet til et kort interval, som hvert 5. minut.
 traffic_eifaces=Dit operativsystem har ikke en/proc/net/dev-fil
 traffic_ebytes=Manglende eller ugyldigt antal bytes/sekund
+
 space_fs=Filsystem, der skal kontrolleres
 space_min2=Minimum ledig plads
 space_mode0=Absolut størrelse
@@ -277,6 +290,7 @@ space_ierr=Kun $1 inoder gratis
 space_merr=Kun $1 plads fri
 space_perr=Kun $1% gratis
 space_dferr=Kunne ikke få filsystemstørrelse
+
 load_time=Belastning gennemsnit for at kontrollere
 load_1=1 minut
 load_5=5 minutter
@@ -285,6 +299,7 @@ load_max=Maksimum belastningsgennemsnit
 load_emax=Manglende eller ugyldig maksimal belastningsgennemsnit
 load_ecmd=Kommandoen <tt>oppetid</tt> blev ikke fundet på dit system
 load_efmt=Outputet fra kommandoen <tt>oppetid</tt> kunne ikke analyseres
+
 log_create=Oprettet monitor $1 
 log_modify=Ændret skærm $1 
 log_delete=Slettet skærm $1 
@@ -295,10 +310,14 @@ log_tmpl_modify=Ændret e-mail-skabelon $1
 log_tmpl_delete=Slet e-mail-skabelon $1 
 log_tmpl_deletes=Slet $1 e-mail skabeloner
 log_refresh=Opfriskede monitorstatusser
+
 acl_edit=Kan redigere og oprette skærme?
 acl_sched=Kan ændre planlagt overvågning?
+
 change_file=Fil eller bibliotek, der skal overvåges (mislykkes hvis ændret)
+
 jabber_eparser=Perl-modulet $1 er ikke installeret på dit system.
+
 memory_min2=Minimum gratis reel hukommelse
 memory_emin=Manglende eller ugyldig mængde gratis reel hukommelse
 memory_eproc=Webmin ved ikke, hvordan man kontrollerer ledig hukommelse på dit operativsystem
@@ -308,7 +327,9 @@ memory_freelow=Kun $1 ægte hukommelse fri
 memory_freelowswap=Kun $1 virtuel hukommelse fri
 memory_minswap=Minimum gratis virtuel hukommelse
 memory_eminswap=Manglende eller ugyldig mængde gratis virtuel hukommelse
+
 proftpd_etype=Denne skærm kan ikke bruges, når ProFTPD køres selvstændigt
+
 mailserver_to=Send e-mail til adresse
 mailserver_timeout=Timeout og interval
 mailserver_units_0=Sekunder
@@ -316,22 +337,28 @@ mailserver_units_1=minutter
 mailserver_units_2=timer
 mailserver_units_3=Dage
 mailserver_desc=Nedenstående adresse skal være en autosvar, der svarer til kildeadressen med det samme emne: linje.
+
 oldfile_file=Fil til overvågning (mislykkes hvis ikke ændret)
 oldfile_diff=Mislykkes, hvis ikke ændret for
 oldfile_secs=sek
+
 raid_device=RAID-enhed
 raid_edevice=Der er ikke valgt nogen RAID-enhed
 raid_bad=Der blev fundet en dårlig disk
 raid_resync=I øjeblikket synkroniseres
 raid_notfound=RAID-enhed $1 ikke fundet
 raid_other=Andet ..
+
 iface_iface=Grænseflade, der skal kontrolleres
+
 init_action=Handling til kontrol
 init_eaction=Ingen handling valgt
+
 refresh_title=Opdater status
 refresh_doing=Forfriskende status for alle skærme ..
 refresh_doing2=Opdaterer status for $1 valgte skærme ..
 refresh_done=.. Færdig.
+
 sensors_name=Sensor til kontrol
 sensors_value=Mislykkedes når
 sensors_value0=Systemet angiver advarsel
@@ -342,6 +369,7 @@ sensors_none=Ingen sensorer blev fundet på dit system. Du skal muligvis køre k
 sensors_cur=$1 (i øjeblikket $2 $3)
 sensors_emin=Manglende eller ugyldig minimumsværdi
 sensors_emax=Manglende eller ugyldig maksimalværdi
+
 nut_ups=NUT UPS for at kontrollere
 nut_name=Attribut til kontrol
 nut_value=Mislykkedes når
@@ -352,6 +380,7 @@ nut_eups=Ingen USP til kontrol blev indtastet
 nut_cur=$1 (i øjeblikket $2)
 nut_emin=Manglende eller ugyldig minimumsværdi
 nut_emax=Manglende eller ugyldig maksimalværdi
+
 mailq_system=Mailserver
 mailq_qmailadmin=qmail
 mailq_postfix=postfix
@@ -360,6 +389,7 @@ mailq_size=Maksimal postkøstørrelse
 mailq_esize=Manglende eller ugyldig maksimal køstørrelse
 mailq_toomany=Ned - $1 meddelelser i kø
 mailq_ok=Op - $1 meddelelser i kø
+
 dns_server=DNS-server
 dns_host=Værtsnavn til opslag
 dns_address=Forventet IP-adresse
@@ -367,6 +397,7 @@ dns_eserver=Manglende eller ugyldig DNS-server
 dns_ehost=Manglende eller ugyldigt udseende værtsnavn til opslag
 dns_eaddress=Manglende eller ugyldig forventet IP-adresse
 dns_ecmds=Hverken kommandoerne <tt>nslookup</tt> eller <tt>dig</tt> er installeret på dit system
+
 monitor_sub_down=$1 nede på $2 
 monitor_pager_down=$1 : "$2" er nede $3 
 monitor_snmp_down= $1:$2 
@@ -398,8 +429,10 @@ monitor_run1=Kører $1 på $2.
 monitor_run2=Kører $1 ..
 monitor_runerr=Kunne ikke køre $1 på $2 : $3 
 monitor_email_stat=Aktuel status: $1 
+
 deletes_egone=En af de valgte skærme findes ikke længere
 deletes_enone=Ingen skærme er valgt
+
 ftp_host=FTP-server vært
 ftp_port=FTP-port
 ftp_user=Login som bruger
@@ -416,6 +449,7 @@ ftp_econn=TLS FTP-forbindelse mislykkedes
 ftp_econn2=TLS FTP-forbindelse mislykkedes : $1 
 ftp_elogin=TLS FTP-login mislykkedes : $1 
 ftp_etlsfile=TLS FTP-download mislykkedes : $1 
+
 query_driver=SQL-databasetype
 query_db=Databasens navn
 query_host=Databaseserver vært
@@ -436,9 +470,12 @@ query_elogin=Login mislykkedes : $1
 query_eprepare=SQL-fejl : $1 
 query_eexecute=SQL mislykkedes : $1 
 query_ewrong=Forkert resultat : $1 
+
 consume_rate=Maksimal forbrugshastighed (pr. Sekund)
 consume_high=Forbrugsprocent er $1 / sekund
+
 alive_up=Op til $1 
+
 rssh_host=SSH-server vært
 rssh_ruser=Login som bruger
 rssh_rpass=Login med adgangskode
@@ -454,6 +491,7 @@ rssh_error=SSH-fejl
 rssh_haspass=Adgangskode
 rssh_port=SSH-serverport
 rssh_eport=Manglende eller ugyldigt portnummer
+
 tmpls_title=E-mail-skabeloner
 tmpls_ecannot=Du har ikke tilladelse til at redigere e-mail-skabeloner
 tmpls_none=Der er endnu ikke defineret nogen e-mail-skabeloner. Alle alarmer sendes ved hjælp af Webmin standardmeddelelser.
@@ -462,6 +500,7 @@ tmpls_email=E-mail-besked
 tmpls_add=Tilføj en ny e-mail-skabelon.
 tmpls_return=oversigt over skabeloner
 tmpls_delete=Slet valgte skabeloner
+
 tmpl_title1=Opret e-mail-skabelon
 tmpl_title2=Rediger e-mail-skabelon
 tmpl_header=Besked med e-mail-skabelon
@@ -486,9 +525,11 @@ tmpl_esms=Manglende SMS-besked
 tmpl_esnmp=Manglende SNMP-meddelelse
 tmpl_err2=Kunne ikke slette e-mail-skabelonen
 tmpl_eusers=Det bruges af følgende skærme : $1 
+
 dtmpls_err=Kunne ikke slette skabeloner
 dtmpls_enone=Ingen valgt
 dtmpls_eusers=$1 bruges af følgende skærme : $2 
+
 sslcert_src=Certifikat placering
 sslcert_url=Fra HTTPS URL
 sslcert_file=Fra fil på server
@@ -506,18 +547,21 @@ sslcert_eend=Ikke gyldig efter $1
 sslcert_left=Op - $1 dage indtil udløbet
 sslcert_ematch=Værtsnavn $1 stemmer ikke overens med certifikat $2 
 sslcert_emismatch=Certifikatværtsnavnskontrol kan kun bruges, når du kontrollerer en URL
+
 du_dir=Directory til overvågning
 du_max=Maksimal størrelse
 du_edir=Manglende eller ikke-absolut katalogsti
 du_emax=Manglende eller ikke-numerisk maksimal størrelse
 du_over=Størrelse er $1 
 du_under=Størrelse er kun $1 
+
 ldap_edriver=Perl-modulet $1 er ikke installeret
 ldap_host=LDAP-serverværtsnavn
 ldap_port=LDAP-serverport
 ldap_ssl=Brug SSL-forbindelse?
 ldap_user=LDAP-server login
 ldap_pass=LDAP-serveradgangskode
+
 info_desc=System monitor
 info_last=Nuværende status
 info_title=System- og serverstatus

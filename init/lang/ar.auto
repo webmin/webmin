@@ -50,6 +50,7 @@ index_sadd=إنشاء خدمة systemd جديدة.
 index_always=دائما
 index_ladd=إنشاء وكيل انطلاق جديد.
 index_lname=اسم العميل
+
 edit_title=تحرير الإجراء
 create_title=إنشاء عمل
 edit_ecannot=لا يسمح لك بتحرير إجراءات التمهيد
@@ -83,6 +84,7 @@ edit_statusnow=إظهار الحالة
 edit_return=عمل
 edit_status=هل بدأت الآن؟
 edit_unknown=مجهول
+
 save_err=فشل في حفظ الإجراء
 save_ecannot=لا يسمح لك بتحرير إجراءات التمهيد
 save_ealready=يوجد بالفعل إجراء يسمى "$1"
@@ -91,6 +93,7 @@ save_ename=اسم إجراء مفقود أو غير صالح
 save_eclash=يوجد بالفعل إجراء بنفس الاسم
 save_escript=لم يتم إدخال برنامج نصي للعمل
 save_estartcmd=أمر إقلاع مفقود
+
 ss_ecannot=غير مسموح لك ببدء أو إيقاف إجراءات التمهيد
 ss_start=ابدأ الإجراء
 ss_stop=أوقف العمل
@@ -101,21 +104,25 @@ ss_exec=جاري تنفيذ$1 ..
 ss_doingstart=جاري بدء الإجراء$1 ..
 ss_doingstop=جاري إيقاف الإجراء$1 ..
 ss_doingstatus=جاري طلب حالة الإجراء$1 ..
+
 shutdown_ecannot=لا يسمح لك بإغلاق النظام
 shutdown_title=اغلق
 shutdown_rusure=هل تريد بالتأكيد إيقاف تشغيل النظام باستخدام الأمر$1؟
 shutdown_ok=نظام اغلاق
 shutdown_exec=يتم الآن إيقاف التشغيل باستخدام الأمر$1 ..
+
 reboot_ecannot=لا يسمح لك بإعادة تشغيل النظام
 reboot_title=اعادة التشغيل
 reboot_rusure=هل تريد بالتأكيد إعادة تشغيل النظام باستخدام الأمر$1؟
 reboot_ok=إعادة تشغيل النظام
 reboot_exec=إعادة التشغيل باستخدام الأمر$1 ..
+
 acl_script=يمكن تحرير البرنامج النصي التمهيد؟
 acl_actions=يمكن تشغيل وتحرير وإنشاء وحذف الإجراءات؟
 acl_runonly=تشغيل فقط
 acl_reboot=يمكن إعادة تشغيل النظام؟
 acl_shutdown=يمكن اغلاق النظام؟
+
 log_rename=تمت إعادة تسمية الإجراء$1 إلى$2
 log_modify=إجراء معدل$1
 log_create=الإجراء الذي تم إنشاؤه$1
@@ -136,6 +143,7 @@ log_massrestart=الإجراءات المعاد تشغيلها$1
 log_massenable=الإجراءات الممكّنة$1
 log_massdisable=الإجراءات المعطلة$1
 log_telinit=تم التبديل إلى مستوى التشغيل$1
+
 edit_hostconfig_startup=يتم تشغيل البرنامج النصي$1 في وقت تمهيد النظام إذا كان هذا الإجراء نشطًا. يمكنك تحريره أدناه
 edit_hostconfig_plist=يقوم الملف$1 بتعيين معلمات معينة فيما يتعلق ببرنامج التشغيل النصي. يمكنك تحريره أدناه
 edit_hostconfig_new=إنشاء إجراء جديد
@@ -147,6 +155,7 @@ edit_hostconfig_array=الحقول$1 و$2 و$3 هي حقول صفيف ويمكن
 edit_hostconfig_further=بعد إنشاء إجراء بدء التشغيل الجديد ، ستتم إعادة توجيهك إلى صفحة حيث يمكنك تعديل البرنامج النصي لبدء التشغيل وقائمة المعلمات إذا لزم الأمر.
 edit_hostconfig_hostconfig=يتحكم الملف$1 في الخدمات والخطوط الشديدة على مستوى النظام التي تبدأ عند تمهيد النظام. يمكنك تحريره أدناه
 edit_hostconfig_title=تحرير Hostconfig
+
 mass_enone=لم يتم تحديد أي إجراءات
 mass_enone2=لم يتم تحديد خدمات
 mass_start=بدء الإجراءات
@@ -167,9 +176,11 @@ mass_udisable=تعطيل الخدمة$1 في وقت التمهيد.
 mass_ustarting=جاري بدء الخدمة$1 ..
 mass_ustopping=جاري إيقاف الخدمة$1 ..
 mass_urestarting=إعادة تشغيل الخدمة$1 ..
+
 change_err=غير مسموح لك بتبديل مستويات التشغيل
 change_title=التبديل مستوى التشغيل
 change_cmd=التبديل إلى مستوى التشغيل$1 باستخدام الأمر$2. قد يستغرق هذا بعض الوقت ، وقد لا يكون Webmin متاحًا بعد التبديل.
+
 mode_init=الحرف الأول من SysV
 mode_osx=ماك
 mode_local=برنامج نصي واحد التمهيد
@@ -178,6 +189,7 @@ mode_rc=مخطوطات FreeBSD RC
 mode_upstart=مغرور
 mode_systemd=Systemd
 mode_launchd=LaunchD
+
 upstart_title1=إنشاء خدمة Upstart
 upstart_title2=تحرير خدمة Upstart
 upstart_egone=الخدمة لم تعد موجودة!
@@ -202,6 +214,7 @@ upstart_eserver=لم يتم إدخال أمر خادم
 upstart_eserver2=أمر الخادم غير موجود
 upstart_eserver3=يمكن إدخال أمر خادم واحد فقط
 upstart_return=خدمة مبتدئة
+
 systemd_title1=إنشاء خدمة Systemd
 systemd_title2=تحرير خدمة Systemd
 systemd_egone=الخدمة لم تعد موجودة!
@@ -225,6 +238,7 @@ systemd_edesc=وصف الخدمة مفقود
 systemd_return=خدمة systemd
 systemd_econf=لم يتم إدخال تكوين systemd
 systemd_estart=أوامر مفقودة للتشغيل عند بدء التشغيل
+
 launchd_title1=إنشاء وكيل Launchd
 launchd_title2=تحرير عامل Launchd
 launchd_egone=وكيل لم يعد موجودا!
@@ -245,4 +259,5 @@ launchd_eclash=وكيل بنفس الاسم موجود بالفعل
 launchd_return=وكيل انطلاق
 launchd_econf=لم يتم إدخال تكوين انطلاق
 launchd_estart=أمر خادم مفقود
+
 syslog_journalctl=سجلات SystemD

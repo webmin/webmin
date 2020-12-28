@@ -43,8 +43,10 @@ index_natnone=Aún no se han definido reglas de traducción de direcciones de re
 index_nataction=Modo NAT
 index_natfrom=Paquetes a juego
 index_natto=Traducción
+
 dir_in=Entrante
 dir_out=Saliente
+
 action_pass=<font color=#00aa00>Pase</font>
 action_block=<font color=#ff0000>Bloque</font>
 action_skip=Omitir
@@ -57,6 +59,7 @@ action_map=Cartografía
 action_rdr=Redirigir
 action_bimap=Mapeo bidireccional
 action_map-block=Mapeo de bloques
+
 laction_pass=<font color=#00aa00>Pase el paquete</font>
 laction_block=<font color=#ff0000>Paquete de bloque, con código ICMP</font>
 laction_log=Paquete de registro, a nivel
@@ -65,6 +68,7 @@ laction_skip=Saltar las siguientes reglas
 laction_auth=Autorización de espacio de usuario
 laction_preauth=Comprobar autorización previa
 laction_call=Función de kernel de llamada
+
 edit_title1=Crear regla
 edit_title2=Editar regla
 edit_header1=Acción de la regla
@@ -130,6 +134,7 @@ edit_icmp=Tipo de ICMP
 edit_icmpany=&lt;Cualquier tipo&gt;
 edit_icmpcode=y código
 edit_codeany=&lt;Cualquier código&gt;
+
 save_err=Error al guardar la regla
 save_ehostfrom=Nombre de host de origen faltante o no válido
 save_ehostto=Nombre de host de destino faltante o no válido
@@ -158,11 +163,13 @@ save_eto=Falta o no es válida la interfaz para enviar
 save_etoip=Dirección IP no válida para enviar
 save_ereplyto=Falta o no es válida la interfaz para responder
 save_ereplytoip=Dirección IP no válida para responder
+
 apply_err=Error al aplicar la configuración
 apply_remote=Error de $1 : $2 
 unapply_err=Error al revertir la configuración
 unapply_ein=Error al obtener las reglas de entrada
 unapply_eout=Error al obtener reglas de salida
+
 desc_if=Si $1 
 desc_and=y
 desc_always=Siempre
@@ -196,6 +203,7 @@ desc_rdr=Direcciones IP $1 puerto $2
 desc_dport1=el puerto es $1 
 desc_dport2=el puerto está entre $1 y $2 
 desc_nattoiface=dirección de interfaz
+
 log_create_rule=Creado $1 regla
 log_delete_rule=Regla eliminada $1 
 log_modify_rule=Regla modificada $1 
@@ -224,6 +232,7 @@ log_add_host=Servidor de clúster agregado $1
 log_add_group=Se agregaron servidores de clúster del grupo $1 
 log_delete_host=Se eliminó el servidor de clúster $1 
 log_delete_group=Se eliminaron $1 servidores de clúster
+
 cluster_title=Servidores de firewall de clúster
 cluster_none=Aún no se han agregado servidores al clúster de firewall.
 cluster_host=Nombre de host
@@ -234,6 +243,7 @@ cluster_gadd=Agregar servidores en grupo
 cluster_need=Debe agregar servidores con un nombre de usuario y contraseña en el módulo Índice de servidores Webmin antes de que puedan administrarse aquí.
 cluster_return=servidores de clúster
 cluster_delete=Eliminar selección
+
 add_title=Agregar servidores
 add_msg=Añadiendo $1 ..
 add_gmsg=Agregando servidores en el grupo $1 ..
@@ -242,6 +252,7 @@ add_gerr=Error al agregar grupo
 add_echeck=El servidor $1 no tiene el módulo IPFilter Firewall
 add_emissing=Al servidor $1 le falta el comando de firewall $2 
 add_ok=Se agregó $1, con $2 reglas de firewall activas.
+
 nat_title1=Crear regla NAT
 nat_title2=Editar regla NAT
 nat_action=Modo NAT
@@ -300,4 +311,5 @@ nat_edport2=Puerto original finalizado que falta o no válido
 net_erdrip='$1' no es una dirección IP de destino válida
 nat_erdrips=No se ingresaron direcciones IP de destino
 nat_erdrport=Puerto de destino faltante o no válido
+
 boot_esmf=El servicio SMF $1 no existe o no se encuentra en un estado conocido

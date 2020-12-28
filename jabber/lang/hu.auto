@@ -17,6 +17,7 @@ index_restartmsg=Kattintson erre a gombra az aktuális konfiguráció alkalmazá
 index_comments=Figyelem - a (z) $1 Jabber konfigurációs fájl megjegyzéseket tartalmaz, amelyek eltávolításra kerülnek, ha bármilyen konfigurációs módosítást hajtanak végre ezzel a modullal.
 index_return=Jabber menü
 index_version=Jabber $1 verzió
+
 general_title=Általános opciók
 general_header=Globális Jabber szerver lehetőségek
 general_host=A szerver gazdaneve
@@ -32,6 +33,7 @@ general_eelogfmt=Hiányzik a hibanapló formátuma
 general_erlog=Hiányzó vagy érvénytelen forgalmi naplófájl
 general_erlogfmt=Hiányzik a forgalomnapló-formátum
 general_epidfile=Hiányzó vagy érvénytelen folyamat-azonosító fájl
+
 messages_title=üzenetek
 messages_header=Jabber szerver üzenet az ügyfelek számára
 messages_wsubject=Üdvözlő üzenet tárgya
@@ -44,6 +46,7 @@ messages_vcard2jud=Küldjön vCard kártyát a Jabber felhasználói könyvtárb
 messages_err=Az üzenetek mentése nem sikerült
 messages_evcard=Érvénytelen vCard XML : $1 
 messages_etag=A vCard kiszolgáló XML-je nem &lt;vCard&gt; -nel kezdődik
+
 modules_title=Jabber modulok
 modules_desc=Az alább felsorolt modulokat használjuk a Jabber session manager által kapott üzenetek feldolgozására. Csak akkor változtassa meg ezt a listát, ha tudja, mit csinál.
 modules_header=Jabber szerver munkamenetkezelő modulok
@@ -52,6 +55,7 @@ modules_so=Közös könyvtár
 modules_err=Nem sikerült menteni a Jabber modulokat
 modules_emod=A '$1' nem érvényes modulnév
 modules_eso=A (z) '$1' megosztott könyvtár nem létezik
+
 karma_title=Karma Forgalomirányító
 karma_header=Forgalomsebesség-szabályozási lehetőségek
 karma_rate=Túlzott kapcsolatkezelés
@@ -80,6 +84,7 @@ karma_epenalty=Hiányzó vagy érvénytelen büntetési időszakok
 karma_erestore=Hiányzó vagy érvénytelen visszaállítási periódusok
 karma_epoints=Hiányzó vagy érvénytelen kapcsolatok száma
 karma_etime=Hiányzó vagy érvénytelen idő a blokkoláshoz
+
 ips_title=IP hozzáférés-vezérlés
 ips_header=Jabber szerver IP hozzáférés-vezérlés
 ips_allow=Megengedett kliens IP-k
@@ -89,10 +94,12 @@ ips_none=Egyik sem
 ips_sel=Felsorolt címek/hálómaszkok ..
 ips_err=Nem sikerült menteni az IP-hozzáférés-vezérlést
 ips_eaddr=A '$1' nem érvényes IP-cím vagy IP-cím/hálómaszk
+
 file_title=A Config File szerkesztése
 file_desc=Az alábbi űrlap segítségével közvetlenül szerkesztheti a Jabber konfigurációs fájlt. Ezt csak akkor szabad megtenni, ha megérti az XML konfigurációs formátumot.
 file_header=A Jabber konfigurációs fájl szerkesztése
 file_err=A konfigurációs fájl mentése nem sikerült
+
 admin_title=Felügyeleti felhasználók
 admin_header=Szerver adminisztráció felhasználói
 admin_read=Olvassa el az adminisztrátorokat
@@ -100,11 +107,13 @@ admin_write=Írjon hozzáférési adminokat
 admin_reply=Automatikus válasz az admin üzenetekhez?
 admin_rsubject=Téma automatikusan
 admin_rbody=Automatikus válasz üzenet
+
 filter_title=Felhasználói szűrők
 filter_header=Felhasználói szűrő engedélyek
 filter_max=Maximális szűrési szabályok
 filter_conds=Megengedett szűrési feltételek
 filter_acts=Engedélyezett szűrési műveletek
+
 restart_err=Nem sikerült alkalmazni a módosításokat
 stop_err=A Jabber megállítása nem sikerült
 stop_epid=Nem sikerült megtalálni a Jabber folyamatot

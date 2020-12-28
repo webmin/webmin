@@ -5,6 +5,7 @@ index_delete2=Excluir interfaces selecionadas
 index_delete3=Excluir e aplicar interfaces selecionadas
 index_apply2=Aplicar interfaces selecionadas
 index_vmin=Virtualmin
+
 ifcs_activedesc=As interfaces listadas nesta tabela estão atualmente ativas no sistema. Na maioria dos casos, você deve editá-los na guia <b>Ativado na inicialização</b>.
 ifcs_bootdesc=As interfaces listadas nesta tabela serão ativadas quando o sistema inicializar e, geralmente, também estarão ativas agora.
 ifcs_ip6=Endereço IPv6
@@ -32,12 +33,14 @@ ifcs_linkyes=Conectado
 ifcs_linkno=Desconectado
 ifcs_speed=Velocidade da interface
 ifcs_duplex=, $1 dúplex
+
 aifc_evirtmin=O número da interface virtual deve ser pelo menos $1 
 aifc_eclash=A interface $1 já está usando este endereço IP
 aifc_eaddress6=O endereço IPv6 na linha $1 não é válido
 aifc_enetmask6=A máscara de rede IPv6 na linha $1 deve ser um número inteiro entre 1 e 128
 aifc_eclash6=O endereço IPv6 na linha $1 já está em uso pela interface $2 
 aifc_eaddresses6=Nenhum endereço IPv6 inserido
+
 bifc_act=Ativar na inicialização?
 bifc_dapply=Excluir e aplicar
 bifc_err4=Falha ao desativar a interface
@@ -53,6 +56,7 @@ bifc_bridgestp=Protocolo Spanning Tree
 bifc_bridgefd=Atraso de encaminhamento
 bifc_bridgewait=Atraso para tornar-se disponível
 bifc_ebond=A interface de ligação deve ser um número
+
 bonding_add=Adicione uma nova interface de ligação.
 bonding_create=Criar interface de ligação
 bonding_teamparts=Teaming Partners
@@ -64,11 +68,14 @@ bonding_miimon=Intervalo de Monitoramento Mii
 bonding_miimondesc=(Deixe em branco para desativar o monitoramento de links)
 bonding_updelay=Updelay
 bonding_downdelay=Downdelay
+
 vlan_add=Adicionar interface etiquetada Vlan
 vlan_physical=Dispositivo físico
 vlan_id=ID da Vlan
 vlan_create=Criar interface VLAN
+
 bridge_create=Criar interface de ponte
+
 routes_now=Configuração de roteamento ativada agora
 routes_default6=Roteador IPv6 padrão
 routes_default2=Rotas padrão
@@ -117,6 +124,7 @@ routes_tabboot=Configuração do tempo de inicialização
 routes_tabactive=Configuração ativa
 routes_descactive=Esta seção lista as rotas que o sistema configurou atualmente e permite adicionar ou remover rotas ativas em alguns sistemas. Tenha cuidado ao fazer isso, pois alterações incorretas podem cortar o sistema que está executando o Webmin do restante da rede.
 routes_descboot=Esta seção permite configurar as rotas que são ativadas quando o sistema é inicializado ou quando as configurações de rede são totalmente reaplicadas.
+
 dns_ecannot=Você não tem permissão para editar as configurações do cliente DNS
 dns_err=Falha ao salvar a configuração do DNS
 dns_ehost='$1' não é um nome de host válido
@@ -125,9 +133,11 @@ dns_edomain='$1' não é um nome de domínio válido
 dns_esearch=Nenhum domínio para pesquisa fornecido
 dns_hoststoo=Atualizar o nome do host nos endereços do host, se alterado?
 dns_dhcp=Nome do host é definido pelo servidor DHCP?
+
 hosts_active=Ativado?
 hosts_ecannot=Você não tem permissão para editar endereços de host
 hosts_delete=Excluir endereços de host selecionados
+
 ipnodes_title=Endereços de host IPv6
 ipnodes_ip=Endereço IPv6
 ipnodes_host=Nomes de host
@@ -139,6 +149,7 @@ ipnodes_return=Lista de endereços de host IPv6
 ipnodes_ecannot=Você não tem permissão para editar endereços de host IPv6
 ipnodes_none=Nenhum endereço de host IPv6 foi definido ainda.
 ipnodes_delete=Excluir endereços de host IPv6 selecionados
+
 log_create_host=Endereço de host criado $1 
 log_delete_host=Endereço de host excluído $1 
 log_modify_host=Endereço de host modificado $1 
@@ -162,6 +173,7 @@ log_apply_bfics=$1 interfaces de tempo de inicialização ativadas
 log_create_route=Rota ativa criada para $1 
 log_create_defroute=Rota padrão ativa criada
 log_delete_routes=$1 rotas ativas excluídas
+
 acl_ifcs=Pode editar interfaces de rede?
 acl_routes=Pode editar roteamento e gateways?
 acl_dns=Pode editar as configurações do cliente DNS?
@@ -179,6 +191,7 @@ acl_virt=Pode adicionar interfaces virtuais?
 acl_delete=Pode excluir interfaces?
 acl_hide=Ocultar interfaces não editáveis?
 acl_sysinfo=Mostrar interfaces de rede disponíveis no painel
+
 interfaces_title1=Escolha Interfaces. ..
 interfaces_all=Todas as interfaces. ..
 interfaces_sel=Interfaces Selecionadas
@@ -186,7 +199,9 @@ interfaces_ok=Está bem
 interfaces_cancel=Cancelar
 interfaces_clear=Claro
 interfaces_title2=Selecione Usuário. ..
+
 apply_ecannot=Você não tem permissão para aplicar a configuração
+
 mod_egone=A interface não está mais ativa!
 mod_title=Interface ativa
 mod_desc=A interface $1 está sendo usada para $2 e, portanto, não pode ser gerenciada usando este módulo.
@@ -198,6 +213,7 @@ mod_pptpc=a conexão PPTP $1
 mod_zones=uma interface virtual para a zona <tt>$1</tt>
 mod_virtualmin=o servidor Virtualmin <tt>$1</tt>
 mod_reseller=o revendedor Virtualmin <tt>$1</tt>
+
 range_edit=Editar intervalo de endereços
 range_create=Criar intervalo de endereços
 range_header=Opções de interface do intervalo de endereços
@@ -213,13 +229,17 @@ range_eend=Endereço IP final ausente ou inválido
 range_enum=Número da primeira interface virtual ausente ou não numérico
 range_eclass=Os endereços inicial e final devem estar dentro da mesma rede classe C
 range_ebefore=O endereço final deve ser maior que o endereço inicial
+
 chooser_any=&lt;Qualquer
 chooser_other=De outros ..
+
 dafics_err=Falha ao desativar interfaces
 daifcs_enone=Nenhum selecionado
 daifcs_egone=A interface não existe mais!
+
 dbifcs_err=Falha ao excluir interfaces
 dbifcs_err2=Falha ao ativar interfaces
+
 hdelete_err=Falha ao excluir endereços de host
 hdelete_enone=Nenhum selecionado
 idelete_err=Falha ao excluir endereços de host IPv6

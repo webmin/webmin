@@ -40,19 +40,24 @@ index_sadd=Skapa en ny systemdjänst.
 index_always=Alltid
 index_ladd=Skapa en ny lanserad agent.
 index_lname=Agent namn
+
 edit_egone=Åtgärder finns inte längre
 edit_startcmd=Uppstartskommando
 edit_stopcmd=Avstängningskommando
 edit_statuscmd=Statuskommando
 edit_reloadnow2=Läs igen Config File
+
 save_ename=Saknat eller ogiltigt åtgärdsnamn
 save_eclash=En åtgärd med samma namn finns redan
 save_escript=Inget åtgärdsskript angav
 save_estartcmd=Saknas uppstartskommando
+
 ss_doingstart=Starta åtgärd $1 ..
 ss_doingstop=Stoppar åtgärd $1 ..
 ss_doingstatus=Begär åtgärdens status $1 ..
+
 acl_runonly=Kör bara
+
 log_restart=Återstart åtgärd $1 
 log_condrestart=Villkorligt omstartad åtgärd $1 
 log_reload=Omlastad åtgärd $1 
@@ -63,6 +68,7 @@ log_massrestart=Återstartade åtgärder $1
 log_massenable=Aktiverade åtgärder $1 
 log_massdisable=Inaktiverade åtgärder $1 
 log_telinit=Växlade till körnivå $1 
+
 edit_hostconfig_startup=Skriptet $1 körs vid systemstarttid om denna åtgärd är aktiv. Du kan redigera det nedan
 edit_hostconfig_plist=Filen $1 anger vissa parametrar med avseende på startskriptet. Du kan redigera det nedan
 edit_hostconfig_new=Skapa ny åtgärd
@@ -74,6 +80,7 @@ edit_hostconfig_array=Fälten $1, $2 och $3 är matrisfält och kan innehålla m
 edit_hostconfig_further=När du har skapat den nya startåtgärden kommer du att vidarebefordras till en sida där du kan justera startskriptet och parameterlistan vid behov.
 edit_hostconfig_hostconfig=Filen $1 styr systemövergripande tjänster och demoner som startas vid systemstart. Du kan redigera det nedan
 edit_hostconfig_title=Redigera Hostconfig
+
 mass_enone=Inga åtgärder har valts
 mass_enone2=Inga tjänster har valts
 mass_start=Starta åtgärder
@@ -94,9 +101,11 @@ mass_udisable=Inaktiverar tjänsten $1 vid starttid.
 mass_ustarting=Starta tjänsten $1 ..
 mass_ustopping=Stoppar tjänsten $1 ..
 mass_urestarting=Omstartstjänst $1 ..
+
 change_err=Du har inte tillåtelse att byta runlevels
 change_title=Växla Runlevel
 change_cmd=Byt till körnivå $1 med kommando $2. Det kan ta lite tid och Webmin kanske inte är tillgängligt längre efter byte.
+
 mode_init=SysV init
 mode_osx=Mac OS
 mode_local=Enstart-skript
@@ -105,6 +114,7 @@ mode_rc=FreeBSD RC-skript
 mode_upstart=Uppkomling
 mode_systemd=SYSTEMD
 mode_launchd=launchd
+
 upstart_title1=Skapa Upstart-tjänst
 upstart_title2=Redigera Upstart-tjänsten
 upstart_egone=Tjänsten finns inte längre!
@@ -129,6 +139,7 @@ upstart_eserver=Inget serverkommando har angetts
 upstart_eserver2=Serverkommando finns inte
 upstart_eserver3=Endast ett serverkommando kan anges
 upstart_return=upstart-tjänst
+
 systemd_title1=Skapa Systemd-tjänst
 systemd_title2=Redigera Systemd Service
 systemd_egone=Tjänsten finns inte längre!
@@ -152,6 +163,7 @@ systemd_edesc=Servicebeskrivning saknas
 systemd_return=systemdjänst
 systemd_econf=Ingen systemd-konfiguration har angetts
 systemd_estart=Saknas kommandon för att köra vid start
+
 launchd_title1=Skapa Launchd Agent
 launchd_title2=Redigera Launchd Agent
 launchd_egone=Agent finns inte längre!
@@ -172,4 +184,5 @@ launchd_eclash=En agent med samma namn finns redan
 launchd_return=lanserad agent
 launchd_econf=Ingen startad konfiguration har angetts
 launchd_estart=Saknar serverkommando
+
 syslog_journalctl=SystemD-loggar

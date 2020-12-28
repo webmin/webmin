@@ -57,6 +57,7 @@ index_reposdisable=השבת מאגרים
 index_reposenable=אפשר מאגרים
 index_reposdelete=מחק מאגרים
 index_repoheader=אפשרויות מאגר חבילות חדשות
+
 update_title=עדכן חבילות
 update_title2=התקן חבילות
 update_enone=לא נבחרו חבילות
@@ -94,9 +95,11 @@ update_none=אף אחד
 update_ops=בניית רשימת חבילות שלמה ..
 update_rebootdesc=אחת מהחבילות המותקנות דורשת הפעלה מחדש מחדש באופן מלא.
 update_reboot=הפעל מחדש עכשיו
+
 sched_title=עדכון מתוזמן
 sched_yes=בדיקה מתוזמנת אחר עדכונים פעילה כעת.
 sched_no=הבדיקה המתוזמנת אחר עדכונים הושבתה.
+
 log_update=התקנת חבילות מעודכנות של $1 
 log_sched=אפשר עדכונים מתוזמנים
 log_unsched=עדכונים מתוזמנים מושבתים
@@ -108,11 +111,13 @@ log_enable_repo=מאגר החבילות מופעל $1
 log_disable_repo=מאגר החבילות השבת $1 
 log_delete_repo=מאגר החבילות $1 נמחק
 log_create_repo=יצר מאגר החבילות $1 
+
 refresh_title=חבילות מרעננות
 refresh_clearing=מחיקת מטמונים בחבילה ..
 refresh_done=.. בוצע
 refresh_available=משיג מחדש חבילות זמינות ..
 refresh_done3=.. מצא $1 עדכונים אפשריים
+
 view_title=פרטי החבילה
 view_header=מידע על חבילה ניתנת להתאמה
 view_name=שם חבילה
@@ -126,12 +131,14 @@ view_changelog=צ'נגלוג לגרסה זמינה
 view_software=נהל חבילה
 view_update=עדכן חבילה
 view_install=התקן את החבילה
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)
 system_webmin=מודול Webmin
 system_usermin=מודול Usermin
 system_tgz=Webmin או Usermin tar.gz
+
 repos_err_disable=כיבוי מאגרים נכשל
 repos_err_enable=הפעלת מאגרים נכשלה
 repos_err_delete=מחיקת מאגרים נכשלה

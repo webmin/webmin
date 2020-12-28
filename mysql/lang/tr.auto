@@ -16,6 +16,7 @@ index_showing=$1 ile eşleşen veritabanları gösteriliyor.
 index_emsg=Tam MySQL hata mesajı : $1 
 index_jump=Veya veritabanını düzenleyin:
 index_jumpok=Açık
+
 dbase_header=Veritabanı tabloları, dizinler ve görünümler
 dbase_empty=Boş Veritabanı
 dbase_none2=Aramanızla eşleşen tablo yok.
@@ -34,8 +35,10 @@ dbase_type=tip
 dbase_typetable=Tablo 1)
 dbase_typeindex=indeks
 dbase_typeview=Görünüm
+
 ddrop_rusure2=$1 veritabanını boşaltmak istediğinizden emin misiniz? $3 satır veri içeren $2 tablo silinecek.
 ddrop_empty2=Tüm Tabloları Sil
+
 ddrops_err=Veritabanları bırakılamadı
 ddrops_title=Drop Veritabanları
 ddrops_rusure=Seçilen $1 veritabanını bırakmak istediğinizden emin misiniz? $3 satır veri içeren $2 tablo silinecek.
@@ -44,23 +47,27 @@ ddrops_mysql=Ana veritabanı seçildiğinden, veritabanını bırakmak muhtemele
 ddrops_ok=Drop Veritabanları
 ddrops_enone=Hiçbir veritabanı seçilmedi
 ddrops_ecannotdb=$1 veritabanını bırakmanıza izin verilmiyor
+
 table_csv=CSV olarak dışa aktar
 table_index=Dizin Oluştur
 table_copy2=Alanları veritabanından kopyala
 table_copy2t=ve masa
 table_delete=Seçilen Alanları Sil
+
 tdrops_enone=Seçilecek tablo yok
 tdrops_err=Tablolar bırakılamadı
 tdrops_ok=Düşürmek
 tdrops_title=Seçili Bırak
 tdrops_rusure=$1 seçili tabloyu $2 veritabanına bırakmak istediğinizden emin misiniz? $3 veri satırı silinecek.
 tdrops_rusure2=$1 seçili tabloyu $2 veritabanına bırakmak istediğinizden emin misiniz?
+
 field_current=Şimdiki zaman
 field_defval=değer
 field_defdef=MySQL varsayılanı
 field_defnone=Standart değil
 field_defempty=Boş dize
 field_defleave=Değişme
+
 view_refresh=Yenile
 view_search2=Alan $2 $3 $1 olduğu satırları arayın
 view_match4=daha büyük
@@ -72,6 +79,7 @@ view_sortreset=Sıralamayı sıfırla
 view_go=Git
 view_set=Dosyanın içeriğine ayarla ..
 view_sqlrun=SQL sorgusu tarafından oluşturulan sonuçlar : $1 
+
 users_syncwhen=Ne zaman senkronize edilir
 users_delete=Silme seçildi
 users_derr=Kullanıcılar silinemedi
@@ -80,6 +88,7 @@ users_ssl=sertifika
 users_dtitle=Kullanıcı İzinlerini Sil
 users_drusure=Seçilen $1 MySQL kullanıcı izinlerini silmek istediğinizden emin misiniz?
 users_dok=Kullanıcıları Sil
+
 user_vwarning=UYARI: Bu MySQL kullanıcısı $1 Virtualmin etki alanı için yönetim oturum açma adıdır. Burada herhangi bir ayarın değiştirilmesi Virtualmin'de hatalara neden olabilir.
 user_locked=Kilitli
 user_priv_select=Tablo verilerini seçin
@@ -128,21 +137,26 @@ user_emax_user_connections=Maksimum eşzamanlı giriş sayısı bir sayı olmal�
 user_emax_connections=Saat başına maksimum bağlantı bir sayı olmalıdır
 user_emax_updates=Saat başına maksimum güncelleme bir sayı olmalıdır
 user_emax_questions=Saat başına maksimum sorgu sayısı bir sayı olmalıdır
+
 dbs_derr=Veritabanı izinleri silinemedi
 dbs_enone=Hiçbir veritabanı seçilmedi
 dbs_dtitle=Veritabanı İzinlerini Sil
 dbs_drusure=Seçilen $1 MySQL veritabanı izinlerini silmek istediğinizden emin misiniz?
 dbs_dok=İzinleri Sil
+
 hosts_derr=Ana makine izinleri silinemedi
 hosts_enone=Hiçbir ana bilgisayar seçilmedi
 hosts_dtitle=Ana Makine İzinlerini Sil
 hosts_drusure=Seçilen $1 MySQL ana bilgisayar izinlerini silmek istediğinizden emin misiniz?
 hosts_dok=İzinleri Sil
 hosts_return=ana bilgisayar izinleri
+
 host_sel=seçilmiş
 host_otherdb=Eşleşen desen
+
 newdb_charset=Karakter seti
 newdb_collation=Harmanlama sırası
+
 exec_header2a=Bu, yalnızca SQL komutlarının bir dosyası olan MySQL yedeklemesini geri yüklemek için de kullanılabilir.
 exec_import=Verileri içe aktarma tablosu
 exec_format=Dosya formatı
@@ -156,22 +170,28 @@ exec_iheader=Metin dosyası içe aktarma seçenekleri
 exec_created=$1 tablo oluşturuldu.
 exec_inserted=$1 kayıt eklendi.
 exec_cs=Veri için karakter kümesi
+
 tprivs_derr=Tablo izinleri silinemedi
 tprivs_enone=Seçili tablo yok
 tprivs_dtitle=Tablo İzinlerini Sil
 tprivs_drusure=Seçilen $1 MySQL tablo izinlerini silmek istediğinizden emin misiniz?
 tprivs_dok=İzinleri Sil
+
 tpriv_edb=Eksik veya geçersiz veritabanı adı
+
 cprivs_add2=Yeni izinler ekle :
 cprivs_derr=Alan izinleri silinemedi
 cprivs_enone=Seçili alan yok
 cprivs_dtitle=Sütun İzinlerini Sil
 cprivs_drusure=Seçilen $1 MySQL sütun izinlerini silmek istediğinizden emin misiniz?
 cprivs_dok=İzinleri Sil
+
 cpriv_edb=Eksik veya geçersiz veritabanı adı
+
 acl_indexes=Dizinleri görüntüleyebilir ve yönetebilir mi?
 acl_views=Görünümleri görüntüleyebilir ve yönetebilir mi?
 acl_files=SQL'i yerel dosyalardan yürütebilir mi?
+
 log_cnf=MySQL sunucu yapılandırması değiştirildi
 log_kill=$1 veritabanı bağlantısı öldürüldü
 log_vars=Değiştirilmiş $1 sistem değişkeni
@@ -191,6 +211,7 @@ log_fields_delete=$3 veritabanında $2 alanından $1 alan silindi
 log_set=$1 MySQL değişkeni değişti
 log_root=Yönetim şifresi değişti
 log_manual=Manuel olarak düzenlenen yapılandırma dosyası
+
 backup_header1=Yedekleme hedefi
 backup_header2=Diğer yedekleme seçenekleri
 backup_header3=Yedekleme programı
@@ -235,6 +256,7 @@ backup_bodyspace=Dosya sistemi boyutu: $1 Boş alan : $2
 backup_bodyall=herşey
 backup_edownloadall=Yalnızca tek bir veritabanı yedeklemesi indirilebilir
 backup_edownloadsave=İndirme modu, zamanlanmış yedeklemeler için kullanılamaz
+
 csv_title=CSV Dosyasını Dışa Aktar
 csv_header=CSV dışa aktarma seçenekleri
 csv_dest=Dışa aktarma hedefi
@@ -255,6 +277,7 @@ csv_done=$1 'e CSV aktarımı tamamlandı. Sonuçta elde edilen dosya boyutu $2.
 csv_headers=CSV'ye sütun adları eklensin mi?
 csv_cols=CSV'ye dahil edilecek sütunlar
 csv_ecols=Seçili sütun yok
+
 cnf_title=MySQL Sunucu Yapılandırması
 cnf_efile=$1 MySQL yapılandırma dosyası sisteminizde bulunamadı. Doğru yolu kullanmak için <a href='$2'>modül yapılandırmasını</a> ayarlamanız gerekebilir.
 cnf_header=MySQL sunucu seçenekleri
@@ -296,11 +319,13 @@ cnf_restart=MySQL'i Kaydet ve Yeniden Başlat
 cnf_fpt=Her InnoDB tablosu için ayrı dosya?
 cnf_ilt=InnoDB kilit zaman aşımı (saniye olarak)
 cnf_eilt=InnoDB kilit zaman aşımı bir tamsayı olmalıdır
+
 manual_title=Yapılandırma Dosyalarını Düzenle
 manual_file=Yapılandırma dosyasını düzenle:
 manual_ok=tamam
 manual_efile=Geçersiz yapılandırma dosyası!
 manual_err=Yapılandırma dosyası kaydedilemedi
+
 index_title1=Dizin Oluştur
 index_header1=Dizin seçenekleri
 index_name=Dizin adı
@@ -316,12 +341,15 @@ index_ecols=Seçili alan yok
 index_title2=Dizini Düzenle
 index_header=$2 veritabanında $1 dizini
 index_ecannot=Dizinleri yönetme izniniz yok
+
 syslog_desc=MySQL hata mesajları
 syslog_desc2=MySQL hata mesajı
 syslog_logdesc=MySQL sorguları
+
 fdrop_err=Alanlar silinemedi
 fdrop_enone=Hiçbiri seçilmedi
 fdrop_eall=Bir tablodaki tüm alanları silemezsiniz!
+
 view_title1=Görünüm Oluştur
 view_title2=Görünümü Düzenle
 view_header1=Detayları göster
@@ -347,6 +375,7 @@ view_cascaded=Temel görünümler
 view_local=Yalnızca bu görünüm
 view_nocheck=Yok
 view_ecannot=Görünümleri yönetme izniniz yok
+
 procs_title=Veritabanı Bağlantıları
 procs_id=İD
 procs_user=Kullanıcı adı
@@ -358,9 +387,11 @@ procs_query=Sorgu çalıştırılıyor
 procs_kill=Seçili Bağlantıları Öldür
 procs_ecannot=Veritabanı bağlantılarını görüntüleme izniniz yok
 procs_none=Şu anda başka bir veritabanı istemcisi bağlantısı yok.
+
 kill_err=Veritabanı bağlantıları öldürülemedi
 kill_ecannot=Veritabanı bağlantılarını yönetme izniniz yok
 kill_enone=Hiçbiri seçilmedi
+
 vars_title=MySQL Sistem Değişkenleri
 vars_desc=Uyarı - MySQL yeniden başlatıldığında bu sayfada ayarlanan değişkenler varsayılan değerlerine sıfırlanır. Kalıcı ayarlar <a href='$1'>MySQL Sunucu Yapılandırması</a> sayfasında yapılmalıdır.
 vars_ecannot=Sistem değişkenlerini düzenleme izniniz yok
@@ -371,10 +402,12 @@ vars_search=Eşleşen değişkenleri göster:
 vars_ok=Arama
 vars_none2=Aramanızla eşleşen sistem değişkeni yok.
 vars_none=Sistem değişkeni bulunamadı!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
 compat_postgresql=PostgreSQL
+
 compat_oracle=torpil
 compat_mssql=Microsoft SQL
 compat_db2=DB2
@@ -382,7 +415,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=Anahtar seçenekler
 compat_no_table_options=Tablo seçenekleri
 compat_no_field_options=Alan seçenekleri
+
 config_echarset=Eksik veya geçersiz görünümlü karakter kümesi
+
 root_title=Yönetim Parolasını Değiştir
 root_header=Yeni yönetim şifresi
 root_user=Yönetim girişi
@@ -395,6 +430,7 @@ root_epass1=Yeni şifre girilmedi
 root_epass2=Parolalar uyuşmuyor
 root_none=Şifre yok!
 root_auto=Otomatik (genellikle <tt>kök</tt>)
+
 mysqlpass_err=MySQL güvenli mod
 mysqlpass_esafecmd=Kimlik doğrulama devre dışı bırakılarak MySQL'i başlatmak için gereken $1 komutu bulunamadı
 mysqlpass_eshutdown=Kapatma başarısız oldu : $1 

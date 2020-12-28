@@ -24,13 +24,16 @@ index_out=La sortida de $1 ha estat
 index_boot=Connecta en engegar amb:
 index_noboot=&lt;No et connectis&gt;
 index_bootdesc=Canvia aquesta opció per controlar si la connexió PPP seleccionada s'inicia en engegar el sistema o no.
+
 init_title=Detecció de la Configuració
 init_cmd=S'està detectant un mòdem connectat amb l'ordre $1...
 init_done=...fet
 init_modems=Hi ha mòdems configurats a $1 i $2.
 init_modem=S'ha detectat un mòdem a $1.
 init_none=No s'ha detectat cap mòdem!
+
 device_serial=port sèrie $1
+
 connect_title=Establiment de Connexió
 connect_cmd=S'està intentant establir una connexió amb l'ordre $1...
 connect_failed=... la connexió ha fallat! Mira la sortida per saber-ne el perquè.
@@ -40,12 +43,14 @@ connect_dns=S'està utilitzant la configuració DNS assignada pel PPP.
 connect_dns2=S'ha establert la configuració DNS assignada pel PPP.
 connect_dnsto=Límit de temps en intentar la configuració  DNS assignada pel PPP.
 connect_dnsdown=Sembla que la connexió ha fallat en esperar la configuració DNS assignada pel PPP.
+
 disc_title=Tancament del PPP
 disc_err=No s'ha pogut tancar la connexió PPP
 disc_edown=Ja està desconnectada.
 disc_ok1=La connexió PPP feta utilitzant $2 s'ha tancat amb èxit.
 disc_ok2=La connexió PPP s'ha tancat amb èxit.
 disc_dns=S'ha restaurat la configuració DNS anterior.
+
 edit_title1=Addició de Trucador ISP
 edit_title2=Edició de Trucador ISP
 edit_ddesc=Aquests valors per defecte s'aplicaran a les connexions fetes amb qualsevol altre trucador.
@@ -76,6 +81,7 @@ edit_idle=Temps límit d'inactivitat (en segons)
 edit_def=Dels valors per defecte
 edit_inherits=Hereta els valors
 edit_from=Del trucador...
+
 save_err=No s'ha pogut desar el trucador
 save_err2=No s'ha pogut suprimir el trucador
 save_ename=Hi falta el nom del trucador o bé és invàlid
@@ -88,6 +94,7 @@ save_edial=Hi falta el nombre d'intents de trucada o bé és invàlid
 save_eidle=Hi falta el temps límit d'inactivitat o bé és invàlid
 save_einherits=Aquest trucador no es pot suprimir perquè '$1' n'hereta valors.
 save_eclash=Ja existeix un trucador amb el mateix nom
+
 log_create=S'ha creat $1
 log_update=S'ha actualitzat $1
 log_delete=S'ha suprimit $1

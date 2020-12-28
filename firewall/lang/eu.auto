@@ -16,6 +16,7 @@ index_chain=$1 katea
 index_action=Ekintza
 index_desc=baldintza
 index_comm=Iruzkina
+index_no_comment=
 index_move=Mugitu
 index_none=Ez dago kate honetarako zehaztutako araurik.
 index_policy=Ezarri ekintza lehenetsi gisa:
@@ -88,6 +89,7 @@ index_ipset_size=Tamaina
 index_ipvxmode=Aldatu IP protokoloaren bertsioa:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=protokoloa $1 da
 desc_p!=protokoloa ez da $1 
 desc_s=iturria $1 da
@@ -114,6 +116,8 @@ desc_tcp-option=paketeak $1 TCP aukera erabiltzen du
 desc_tcp-option!=paketeak ez du $1 TCP aukera erabiltzen
 desc_icmp-type=ICMP mota $1 da
 desc_icmp-type!=ICMP mota ez da $1 
+desc_icmpv6-type=ICMP mota $1 da
+desc_icmpv6-type!=ICMP mota ez da $1 
 desc_mac-source=Ethernet helbidea $1 da
 desc_mac-source!=Ethernet helbidea ez da $1 
 desc_limit=tasa $1 baino txikiagoa da
@@ -146,10 +150,15 @@ desc_always=beti
 desc_args--match-set=$2 IP-multzoan dago $1 
 desc_src=iturria
 desc_dest=helmuga
+
 redhat_einstalled=Ez da <tt>iptables (6)</tt> abiarazteko ekintza aurkitu, eta horrek adierazten du IPtables paketea ez dagoela zure sisteman instalatuta.
 redhat_eoutput=Errore bat gertatu da IPtables egoera $1 komandoan lortzean. Horrek ziur asko adierazten du zure sistema IPchains ordez IPchains erabiltzeko konfiguratu dela.
+
 gentoo_escript=Gentoo IPtables hasierako script $1 ez da zure sisteman aurkitu.
+
 eiptables=IPtable ezezagunak fitxategiaren lerroa gordetzeko : $1 
+eip6tables=IP6tables ezezagunak fitxategiaren lerroa gordetzeko : $1 
+
 edit_title1=Gehitu araua
 edit_title2=Editatu araua
 edit_title3=Klonearen araua
@@ -218,6 +227,7 @@ edit_physdevout=Irteerako interfaze fisikoa
 edit_physdevisin=Pakete sarrerako zubiaren interfazean
 edit_physdevisout=Paketeak irteerako zubia
 edit_physdevisbridged=Paketea zubi bihurtzen ari da
+
 save_err=Huts egin du araua gordetzean
 save_echain=Kate falta edo baliogabea da exekutatzeko
 save_esource=Iturri helbide edo sare falta edo baliogabea
@@ -262,23 +272,28 @@ save_estates=Ez da konexiorik hautatu
 save_ecanjump=Ez zaizu ekintza hau erabiltzeko baimena ematen
 save_ephysdevin=Sarrerako interfaze fisiko falta edo baliogabea
 save_ephysdevout=Irteerako interfaze fisiko falta edo baliogabea
+
 delete_title=Ezabatu katea
 delete_rusure=Ziur $1 katea ezabatu nahi duzula? $2 arauak ezabatuko dira.
 delete_ok=Ezabatu orain
 delete_ecannot=Ezin duzu kateak ezabatu
+
 clear_title=Kate argia
 clear_rusure=Ziur $2 arau guztiak ezabatu nahi dituzula $1 kateetik?
 clear_ecannot=Ezin duzu kateak garbitu
+
 new_err=Ezin izan da katea sortu
 new_ename=Katearen izen falta edo baliogabea
 new_etaken=Izen hori duen kate bat dagoeneko
 new_ecannot=Ezin duzu kateik sortu
+
 apply_err=Ezin izan da konfigurazioa aplikatu
 apply_ecannot=Ezin duzu konfigurazioa aplikatu
 apply_remote=Errorea $1 : $2 -tik
 unapply_err=Ezin izan da konfigurazioa berrabiarazi
 unapply_ecannot=Ezin duzu konfigurazioa berrabiarazi
 bootup_ecannot=Ezin duzu firewall gaitu edo desgaitu abiaraztean
+
 log_create_rule=Araua gehitu da $2 taulan $1 kateari
 log_modify_rule=Arau aldatu bat $1 katean $2 taulan
 log_delete_rule=$1 taulan $1 katean ezabatu den araua
@@ -301,8 +316,10 @@ log_add_group=$1 taldeko kluster zerbitzariak gehitu dira
 log_delete_host=$1 cluster zerbitzaria kendu da
 log_delete_group=$1 kluster zerbitzariak kendu dira
 log_openports=Firewall portu irekiak $1 
+
 setup_eiface=Ez da kanpoko sareko interfazerik sartu
 setup_ecannot=Ez duzu baimendu suebakia konfiguratzea
+
 acl_tables=IP baimenduak
 acl_apply=Konfigurazioa aplika al dezakezu?
 acl_unapply=Ezin duzu konfigurazioa aplikatu?
@@ -314,9 +331,11 @@ acl_jall=guztiak
 acl_newchain=Kate berriak sor daitezke?
 acl_delchain=Kateak ezabatu edo garbitu al ditzake?
 acl_policy=Aldatu daiteke politika lehenetsia?
+
 etable=Ezin duzu IPtable hau editatu
 ejump=Ezin duzu arau hau editatu
 ecluster=Ez duzu baimendu suebakiaren klusterra kudeatzea
+
 cluster_title=Firewall Zerbitzari klusterrak
 cluster_none=Ez da oraindik zerbitzaririk gehitu firewall klusterra.
 cluster_host=hostname
@@ -327,6 +346,7 @@ cluster_gadd=Gehitu zerbitzariak taldean
 cluster_need=Saioa hasi eta pasahitza duten zerbitzariak gehitu behar dituzu Webmin Servers Index moduluan hemen kudeatu aurretik.
 cluster_return=kluster zerbitzariak
 cluster_delete=Kendu Hautatuta
+
 add_title=Gehitu zerbitzariak
 add_msg=$1 gehitzen ..
 add_gmsg=Zerbitzariak gehitzen $1 taldean.
@@ -336,13 +356,16 @@ add_echeck=$1 zerbitzariak ez du Linux Firewall modulua
 add_emissing=$1 zerbitzaria $2 firewall komandoa falta da
 add_ok=$1 gehitu da, $2 firewall arau aktiboekin.
 add_enone=Ez da zerbitzaririk gehitu hautatuta!
+
 policy_ecannot=Ezin duzu kate honetarako politika lehenetsia aldatu
+
 move_title=Mugitu arauak
 move_count=Hautatutako arauak
 move_chain=Oraingo aldaketa
 move_dest=Helmuga katea
 move_ok=Mugitu orain
 move_header=Araua mugitzeko aukerak
+
 rename_title=Kate-izena aldatu
 rename_count=Arauak katean
 rename_chain=Egungo izena
@@ -352,6 +375,3 @@ rename_header=Katearen izena aldatzeko aukerak
 rename_adjust=Kate horretara salto egiten duten beste arauak aldatu?
 rename_none=Bat ere ez
 rename_ecannot=Ezin duzu kateak berrizendatu
-desc_icmpv6-type=ICMP mota $1 da
-desc_icmpv6-type!=ICMP mota ez da $1 
-eip6tables=IP6tables ezezagunak fitxategiaren lerroa gordetzeko : $1 

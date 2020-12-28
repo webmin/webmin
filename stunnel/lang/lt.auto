@@ -21,6 +21,7 @@ index_eversion=Jūsų sistemoje įdiegta „STunnel“ versija yra $1, tačiau �
 index_conf=Iš konfigūracijos failo $1 
 index_noconf=Nėra konfigūracijos failo!
 index_delete=Ištrinti pasirinktus tunelius
+
 edit_title=Redaguoti SSL tunelį
 create_title=Sukurkite SSL tunelį
 edit_header1=Tunelio šaltinio parinktys
@@ -47,6 +48,7 @@ edit_tcpw=TCP-wrappers pavadinimas
 edit_auto=Automatinis
 edit_iface=Siunčiamo šaltinio adresas
 edit_type=Bėgti nuo
+
 save_err=Nepavyko išsaugoti SSL tunelio
 save_enclash=Paslaugos pavadinimas $2 jau naudojamas prievadoje $1.
 save_einetd=Jau yra įdiegta paslauga, vadinama $1.
@@ -61,6 +63,7 @@ save_etcpw=Trūksta arba netinkamas TCP apklotų pavadinimas
 save_eiface=Trūksta arba netinkamas išeinančio šaltinio adresas
 save_exinetd=Jau yra xinetd paslauga, vadinama $1 
 save_export=Prievadą $1 jau naudoja xinetd tarnyba $2 
+
 log_apply=Taikomi pakeitimai
 log_create=Sukurtas SSL tunelis $1 
 log_delete=Ištrintas SSL tunelis $1 

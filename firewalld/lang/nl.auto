@@ -30,6 +30,7 @@ index_return=lijst van zones
 index_ezones=Geen FirewallD-zones gevonden!
 index_none=Deze zone heeft nog geen toegestane poorten of services.
 index_ifaces=Pas regels toe op interfaces:
+
 port_edit=Poort bewerken
 port_create=Poort toevoegen
 port_header=Toegestane poortopties
@@ -45,11 +46,13 @@ port_eport=Ontbrekend of ongeldig poortnummer of naam
 port_eportlow=Lage poort moet een nummer zijn
 port_eporthigh=Hoge poort moet een nummer zijn
 port_eportrange=Lage poort moet onder de hoge poort zijn
+
 serv_edit=Service bewerken
 serv_create=Service toevoegen
 serv_header=Toegestane serviceopties
 serv_name=Service om toe te staan
 serv_err=Kan service niet opslaan
+
 forward_edit=Vooruit bewerken
 forward_create=Maak Forward
 forward_header=Port forwarding opties
@@ -61,10 +64,13 @@ forward_dstaddr=Bestemmingsadres
 forward_dstlocal=Dit systeem
 forward_edstaddr=Ongeldig IPv4-bestemmingsadres
 forward_eneither=Er moet een bestemmingsadres of poort of beide worden ingevoerd
+
 check_ecmd=De FirewallD-besturingsopdracht $1 is niet gevonden op uw systeem
+
 delete_err=Kan regels niet verwijderen
 delete_enone=Geen geselecteerd!
 delete_edel=Verwijderen van $1 is mislukt : $2 
+
 zone_title=Zone maken
 zone_header=Nieuwe zone-opties
 zone_name=Zone naam
@@ -77,12 +83,16 @@ zone_mode4=Poorten gebruikt voor virtuele hosting
 zone_err=Kan zone niet maken
 zone_ename=Ontbrekende of ongeldige zonenaam
 zone_eclash=Er bestaat al een zone met dezelfde naam
+
 delzone_title=Zone verwijderen
 delzone_err=Kan zone niet verwijderen
 delzone_edefault=De standaardzone kan niet worden verwijderd
 delzone_rusure=Weet u zeker dat u zone $1 wilt verwijderen, die $2 poorten en $3 services bevat?
+
 defzone_err=Kan zone niet als standaard instellen
+
 restart_err=Configuratie mislukt
+
 stop_err=Kan FirewallD niet stoppen
 start_err=Kan FirewallD niet starten
 log_stop=Gestopt FirewallD

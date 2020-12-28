@@ -7,6 +7,7 @@ index_sched=Planifier la synchronisation ?
 index_schedyes=Oui, aux heures suivantes ...
 index_sync=Appliquer et synchroniser
 index_hardware2=Mettre également à jour l'horloge matérielle
+index_boot=Synchroniser au démarrage de Webmin?
 index_tzheader=Fuseau horaire
 index_tz=Localisation actuelle
 index_ehwclock=$1 échec : $2
@@ -16,6 +17,7 @@ index_tabsync=Synchronisation avec un serveur de temps
 index_desctime=Ce formulaire permet de modifier l'heure et la date courante du système, lesquels sont utilisés par tous les processus en exécution. Il peut également être utilisé sur les systèmes dotées d'une horloge matérielle séparée afin de la modifier.
 index_desczone=Ce formulaire permet de modifier le fuseau horaire par défaut du système. Celui-ci permet la conversion de l'heure et de la date du système (Temps universel coordonné ou UTC) en heure locale, en tenant compte d'un éventuel changement d'heure été/hivers.
 index_descsync=Ce formulaire permet de configurer le système pour synchroniser automatiquement l'heure et la date avec un serveur de temps distant. La synchronisation s'effectuera soit avec le protocole <tt>time</tt> d'Unix, soit NTP, selon les commandes installées sur l'ordinateur local, et selon les protocoles supportés par le système distant.
+
 action_save=Enregistrer
 action_apply=Appliquer
 action_sync=Synchroniser l'horloge système avec l'horloge matérielle
@@ -23,6 +25,7 @@ action_sync_s=Synchroniser l'horloge matérielle avec l'horloge système
 action_timeserver_sys=Synchroniser l'horloge système
 action_timeserver_hw=Synchroniser l'horloge matérielle
 action_savezone=Changer le fuseau horaire
+
 acl_sys=Autoriser la modification de l'horloge système ?
 acl_hw=Autoriser la modification de l'horloge matérielle ?
 acl_timezone=Autoriser la modification du fuseau horaire ?
@@ -33,19 +36,25 @@ acl_error=Vous avez accès au module Temps Système, mais vous n'êtes pas autor
 acl_nosys=Vous n'êtes pas autorisé à modifier l'horloge système
 acl_nohw=Vous n'êtes pas autorisé à modifier l'horloge matérielle
 acl_nontp=Vous n'êtes pas autorisé à effectuer une synchronisation avec un serveur de temps
+
 sys_title=Horloge Système
 hw_title=Horloge Matérielle
-day=Journée
+
+day=Jour
 month=Mois
 date=Date
 hour=Heure
 year=Année
+minute=Minute
+second=Seconde
+
 error_cnf=Erreur : $1 commande introuvable
 error_hw=Impossible d'enregistrer l'horloge système : $1
 error_sync=Impossible de synchroniser avec l'horloge système : $1
 error_ediff=L'écart entre l'heure et la date de l'ordinateur local et du serveur est trop important : $1 jours
 error_entp=Échec de la synchronisation NTP de l'heure et de la date : $1
 error_etimeserver=Aucun serveur de temps n'a été défini pour la synchronisation
+
 log_set_date=Horloge système réglée à $1
 log_set_hwclock=Horloge matérielle réglée à $1
 log_remote_date=Heure et date système récupérée de $2
@@ -55,6 +64,7 @@ log_remote_hwclock_l=Heure et date matérielle $1 récupérée de $2
 log_sync=Horloge système synchronisée avec l'horloge matérielle
 log_sync_s=Horloge matérielle synchronisée avec l'horloge système
 log_timezone=Changement du fuseau horaire vers $1
+
 timezone_err=Impossible de sauver le fuseau horaire
 timezone_ecannot=Vous n'êtes pas autorisé à modifier le fuseau horaire
 timezone_enone=Aucun fuseau horaire n'est sélectionné

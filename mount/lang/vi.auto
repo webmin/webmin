@@ -12,6 +12,7 @@ index_return=danh sách hệ thống tập tin
 index_none=Bạn không có quyền truy cập vào bất kỳ hệ thống tập tin gắn kết.
 index_mount2=Gắn kết với mật khẩu:
 index_root=Hệ thống tập tin gốc
+
 edit_title=Chỉnh sửa núi
 create_title=Tạo núi
 edit_err=Không thể chỉnh sửa mount
@@ -58,6 +59,7 @@ edit_ecannot=Bạn không được phép chỉnh sửa hệ thống tập tin n�
 edit_ecannot2=Bạn không được phép thêm hệ thống tập tin mới
 edit_3_or_lower=3 (hoặc thấp hơn)
 edit_advanced=Chế độ nâng cao
+
 save_err=Không thể lưu mount
 save_edir='$1' không phải là một thư mục
 save_edirname='$1' không phải là tên thư mục hợp lệ
@@ -74,8 +76,10 @@ save_apply=Áp dụng vào danh sách thường trực
 save_fapply=Lực lượng không gắn kết
 save_eremount=Không thành công : $1
 save_enone=Bạn đã không chọn lưu hoặc gắn kết
+
 swap_err=Không thể tạo tập tin hoán đổi
 swap_esize='$1' không phải là kích thước hợp lệ
+
 nfs_server=Chọn máy chủ NFS ..
 nfs_select=Chọn một máy chủ NFS để gắn kết từ ..
 nfs_ip=Địa chỉ IP
@@ -87,6 +91,7 @@ nfs_seldir=Chọn một thư mục NFS để gắn kết ..
 nfs_seldirv4=Đối với ngàm NFSv4, bạn nên chọn '/'
 nfs_dir=Danh mục
 nfs_clients=Khách hàng
+
 smb_choose=Chọn máy chủ CIFS ..
 smb_elist=Không thể truy xuất danh sách máy chủ từ $1. Có lẽ máy chủ không cho phép duyệt
 smb_eworkgroup=Không có nhóm làm việc nào được đặt trên trang Cấu hình mô-đun
@@ -103,6 +108,7 @@ smb_sel2=Chọn một chia sẻ để gắn kết ..
 smb_share=Chia sẻ
 smb_comment=Bình luận
 smb_noshares=Không có chia sẻ tệp có sẵn trên máy chủ $1
+
 solaris_scsidev=Bộ điều khiển SCSI $1 target $2 unit $3 phân vùng $4
 solaris_idedev=Trình điều khiển IDE $1 drive $2 phân vùng $3
 solaris_mddev=Thiết bị RAID $1
@@ -240,6 +246,7 @@ solaris_efstyp2=Không thể kiểm tra loại hệ thống tệp : $1
 solaris_ecachedir='$1' không phải là thư mục bộ đệm hợp lệ
 solaris_efmode='$1' không phải là chế độ tệp bát phân hợp lệ
 solaris_edmode='$1' không phải là chế độ thư mục bát phân hợp lệ
+
 linux_eamd=AMD thất bại
 linux_eauto=Tự động thất bại : $1
 linux_esmbconn=kết nối thất bại
@@ -361,6 +368,7 @@ linux_noenforce=Có, nhưng không thi hành
 linux_df=Bao gồm các khối dành riêng trong kích thước hệ thống tập tin?
 linux_noatime=Tránh cập nhật lần truy cập cuối cùng?
 linux_netdev=Chờ cho đến khi giao diện mạng được lên?
+linux_nofail=Tiếp tục khởi động ngay cả khi mount không thành công?
 linux_ecname=Tên netbios của khách hàng bị thiếu hoặc không hợp lệ
 linux_emname=Tên máy chủ hoặc địa chỉ IP bị thiếu hoặc không hợp lệ
 linux_bind=Thư mục gốc
@@ -386,6 +394,7 @@ linux_nounix=Vô hiệu hóa tiện ích mở rộng CIFS Unix?
 linux_noserverino=Tạo số inode bên phía khách hàng?
 linux_cvers=Phiên bản CIFS
 linux_ecvers=Phiên bản CIFS phải là một số
+
 log_mount=Đã gắn kết $3
 log_mount_l=Đã gắn $2 $1 trên $3
 log_umount=Chưa kết thúc $3
@@ -399,7 +408,9 @@ log_modify_l=Đã sửa đổi $2 mount $1 trên $3
 log_delete=Đã xóa mount $3
 log_delete_l=Đã xóa $2 mount $1 trên $3
 log_swap=Đã tạo tệp hoán đổi $1
+
 unmount_err=Không thể ngắt kết nối $1
+
 mount_err=Không thể gắn kết $1
 irix_nhost=Tên máy chủ NFS
 irix_ndir=Thư mục NFS
@@ -430,6 +441,7 @@ irix_rock=Sử dụng tiện ích mở rộng Rock Ridge?
 irix_nofsck=Kiểm tra hệ thống tập tin khi khởi động?
 irix_auto=Nguồn tự động
 irix_automap=Bản đồ tập tin
+
 irix_ehost=Máy chủ '$1' không tồn tại
 irix_eloss=Máy chủ '$1' không hoạt động
 irix_eshowmount=Máy chủ '$1' không hỗ trợ NFS
@@ -447,9 +459,11 @@ irix_efstyp2=Không thể nhận loại hệ thống tệp $1 : $2
 irix_efstyp=Loại hệ thống tệp trên $1 là $2, không phải $3
 irix_eautomap=Tệp bản đồ tự động '$1' không tồn tại
 irix_eauthmap2=Tập tin bản đồ tự động bị thiếu hoặc không hợp lệ
+
 irix_devroot=Phân vùng gốc
 irix_devswap=Hoán đổi phân vùng
 irix_autohosts=Tất cả xuất khẩu NFS
+
 acl_only=Chỉ cho phép gắn kết và ngắt kết nối?
 acl_fs=Hệ thống tập tin có thể được chỉnh sửa
 acl_types=Các loại hệ thống tập tin có thể được sử dụng
@@ -462,8 +476,10 @@ acl_hide=Ẩn hệ thống tập tin không thể chỉnh sửa?
 acl_simple=Hiển thị hình thức gắn kết đơn giản?
 acl_simopts=Hiển thị các tùy chọn hệ thống tập tin đơn giản?
 acl_browse=Hiển thị tập tin và chia sẻ nút duyệt?
+
 egcc=Trình biên dịch GCC hoặc CC cần thiết để xây dựng chương trình liệt kê các hệ thống tệp được gắn trên hệ thống của bạn không khả dụng.
 ecompile=Đã xảy ra lỗi khi xây dựng chương trình liệt kê các hệ thống tệp được gắn trên hệ thống của bạn : $1
+
 freebsd_eaddr=Địa chỉ máy chủ bị thiếu hoặc không hợp lệ
 freebsd_eworkgroup=Nhóm làm việc bị thiếu hoặc không hợp lệ
 freebsd_ide=Đĩa cứng IDE
@@ -477,8 +493,10 @@ freebsd_idedev=Thiết bị IDE $1, lát $2, phân vùng $3
 freebsd_scsidev=Thiết bị SCSI $1, lát $2, phân vùng $3
 freebsd_edevpath=Thiết bị khác phải là một đường dẫn tuyệt đối, như <tt>/dev/cdrom</tt>
 freebsd_edevfile=Tệp thiết bị '$1' không tồn tại
+
 cswap_file=Tệp hoán đổi $1 không tồn tại.
 cswap_size=Tạo và gắn kết một tập tin trao đổi với kích thước
+
 acl_sysinfo=Hiển thị dữ liệu đĩa có sẵn trên Bảng điều khiển?
 sysinfo_total=Toàn bộ
 sysinfo_dev=ID thiết bị

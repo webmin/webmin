@@ -9,6 +9,7 @@ index_restart=Käynnistä Webmin uudelleen
 index_restartmsg=Napsauta tätä painiketta käynnistääksesi Webmin-palvelinprosessin uudelleen. Tämä voi olla tarpeen, jos olet äskettäin päivittänyt Perlin.
 index_refresh=Päivitä moduulit
 index_refreshmsg=Tarkista kaikki asennetut palvelimet Webmin-moduuleista ja päivitä 'Ei käytössä moduuleja' -luokassa olevat moduulit.
+
 access_title=IP-pääsyn hallinta
 access_desc=Webmin-palvelin voidaan määrittää estämään tai sallimaan pääsy vain tietyiltä IP-osoitteilta tämän lomakkeen avulla. Isäntänimet (kuten foo.bar.com) ja IP-verkot (kuten 10.254.3.0 tai 10.254.1.0/255.255.255.128 tai 10.254.1.0/25 tai 10.254.1.5-10.254.97.127) voidaan myös syöttää. Sinun tulisi rajoittaa palvelimellesi pääsy luotettaviin osoitteisiin, varsinkin jos siihen pääsee Internetistä. Muuten jokaisella, joka arvailee salasanasi, on täydellinen hallinta järjestelmässäsi.
 access_ip=Sallitut IP-osoitteet
@@ -33,6 +34,7 @@ access_ehost='$1' IP-osoitteen löytäminen epäonnistui
 access_eself=Nykyinen IP-osoitteesi ($1) hylätään
 access_always=Ratkaisetko isäntänimet jokaisessa pyynnössä?
 access_trust=Luotatko välityspalvelimien tarjoamaan etä-IP-osoitteeseen?
+
 bind_title=Satamat ja osoitteet
 bind_desc2=Tätä lomaketta voidaan käyttää muuttamaan porttinumeroa, jota Webmin kuuntelee, tai saada se kuuntelemaan vain yhtä järjestelmän IP-osoitetta järjestelmässäsi. Voit myös määrittää sen hyväksymään yhteydet useissa porteissa tai kuuntelemaan useita IP-osoitteita. Huomaa - selaimesi saattaa pyytää sinua kirjautumaan uudelleen sisään portin tai sidontaosoitteen vaihtamisen jälkeen.
 bind_header=IP-osoitteet ja portit
@@ -61,6 +63,7 @@ bind_eipv6=IPv6: ta ei voi ottaa käyttöön, ellei $1 Perl-moduulia ole asennet
 bind_redirecting=Uudelleenohjaaminen uuteen URL-osoitteeseen ..
 bind_elsof=Uusi portti $1 on jo toisen prosessin käytössä
 bind_eonsystem=IP-osoite $1 ei ole aktiivinen tässä järjestelmässä, joten sitä ei voida käyttää
+
 log_title=hakkuu
 log_desc=Webmin voidaan määrittää kirjoittamaan lokipalvelin Web-palvelimen osumia tavallisessa CLF-lokitiedostomuodossa. Jos kirjaaminen on käytössä, voit myös valita, tallennetaanko IP-osoitteet vai isäntänimet ja kuinka usein lokitiedosto tyhjennetään. Kun tämä on käytössä, lokit kirjoitetaan tiedostoon $1.
 log_desc2=Kun kirjaaminen on käytössä, Webmin kirjoittaa myös yksityiskohtaisemman lokin käyttäjän toimista tiedostoon $1. Tätä lokia voidaan tarkastella ja analysoida Webmin Actions Log -moduulin avulla nähdäksesi tarkalleen, mitä kukin Webmin-käyttäjä on tehnyt.
@@ -92,6 +95,7 @@ log_login=Sisällytetäänkö Webminin kirjautumiset ja uloskirjautumiset toimin
 log_email=Lähetä kirjautuneet toimet sähköpostitse osoitteeseen
 log_emailnone=Älä lähetä
 log_inmodsemail=Lähetä sähköpostia toimista
+
 proxy_title=Välityspalvelimet ja lataukset
 proxy_desc=Jos isäntä, jolla Webmin toimii, on jonkinlaisen palomuurin takana, saatat joutua asettamaan välityspalvelimen käyttämään Web- ja FTP-sivustoja. Tietyt moduulit, kuten <tt>Ohjelmistopaketit</tt>, käyttävät näitä välityspalvelimia tiedostojen tai ohjelmien lataamisessa.
 proxy_header=Välityspalvelimet
@@ -134,6 +138,7 @@ proxy_return=välityspalvelimet ja lataukset
 proxy_tabproxy=välityspalvelinkäytön
 proxy_tabdown=lataaminen
 proxy_fallback=Kokeile suoraa pyyntöä, jos välityspalvelin ei ole käytössä?
+
 ui_title=Käyttöliittymä
 ui_desc=Tämän lomakkeen avulla voit muokata kaikkien moduulien käyttämiä käyttöliittymäasetuksia. Kun syötät värejä, jokainen on määritettävä käyttämällä standardia RGB-järjestelmää, jossa jokainen arvo on heksadesimaaliluku välillä 00 - ff.
 ui_header=Käyttöliittymän asetukset
@@ -183,6 +188,7 @@ ui_dateformat_dd/mm/yyyy=pp/kk/vvvv (eli 16.09.2001)
 ui_dateformat_mm/dd/yyyy=kk/pp/vvvv (eli 16.09.2001)
 ui_dateformat_yyyy/mm/dd=vvvv/kk/pp (eli 2001/09/16)
 ui_ehostnamedisplay=Puuttuva tai virheellinen näyttönimi
+
 mods_title=Webmin-moduulit
 mods_desc1=Webmin-moduulit voidaan lisätä asennuksen jälkeen käyttämällä oikealla olevaa lomaketta. Moduulit jaetaan tyypillisesti <tt>.wbm</tt>-tiedostoina, joista kukin voi sisältää yhden tai useamman moduulin. Moduulit voidaan asentaa myös RPM-tiedostoista, jos käyttöjärjestelmä tukee niitä.
 mods_installsource=Asenna
@@ -226,6 +232,7 @@ mods_tabinstall=Asentaa
 mods_tabclone=Klooni
 mods_tabdelete=Poistaa
 mods_tabexport=Viedä
+
 install_err1=Moduulin asennus epäonnistui $1
 install_efile=Tiedostoa ei ole
 install_err2=Ladatun moduulin asennus epäonnistui
@@ -259,10 +266,12 @@ install_cat=Luokkaan $1.
 install_eneither=RPM ei sisällä webmin-moduulia tai teemaa
 install_err4=Vakiomoduulin asentaminen epäonnistui
 install_emissing=Määritettyä moduulia ei ole olemassa
+
 clone_err=Moduulin kloonaaminen epäonnistui
 clone_elink=symlink epäonnistui : $1
 clone_ecopy=kokoonpanon kopiointi epäonnistui : $1
 clone_desc=Klooni, jonka luokka on $1
+
 delete_err=Moduulien poistaminen epäonnistui
 delete_edep=Moduulia $1 ei voida poistaa, koska moduuli $2 riippuu siitä
 delete_desc1=$1 ($2 klooni)
@@ -274,6 +283,7 @@ delete_rusure2=Haluatko varmasti poistaa teeman $2? $1 kt tiedostoja poistetaan 
 delete_rusure3=Haluatko varmasti poistaa moduulin kloonit $2?
 delete_acls=Poistetaanko käyttäjiltä ja palautetaanko käyttöoikeuksien hallintaasetukset
 delete_enone=Ei moduuleja valittu
+
 os_title=Käyttöjärjestelmä ja ympäristö
 os_desc3=Tällä sivulla näytetään käyttöjärjestelmän, jonka Webmin on havainnut asennuksen yhteydessä, ja järjestelmän, joka on tällä hetkellä havaittu. Jos ne ovat erilaisia, voit halutessasi päivittää Webmin-käyttöjärjestelmän tiedot, jotka saattavat tarvita, jos olet päivittänyt äskettäin.
 os_desc2=Voit myös muuttaa Webminin käyttämää hakupolkua ajaessaan ohjelmia, ja jaetun kirjaston polun siirretty mille tahansa ohjelmalle.
@@ -296,6 +306,7 @@ os_eiversion=Puuttuu sisäinen käyttöjärjestelmäversio
 os_incorrect=Varoitus - Järjestelmäsi käyttää tosiasiallisesti $1 versiota $2.
 os_fix=Päivitä havaittu käyttöjärjestelmä
 os_usermin=Päivitä myös Usermin OS
+
 lang_title=Kieli
 lang_title2=Webmin-kieli
 lang_lang=Näyttö kielellä
@@ -307,6 +318,7 @@ lang_chardef=Määritetään kielen perusteella
 lang_charover=Pakota merkistö
 lang_err=Kielen tallentaminen epäonnistui
 lang_echarset=Puuttuva tai virheellisen näköinen merkistö
+
 ssl_title=SSL-salaus
 ssl_essl=Net::SSLeay perl -moduulia ei näytä olevan asennettuna järjestelmään. Asenna OpenSSL-kirjasto ja Net::SSLeay noudattamalla <a href='$1'>näitä ohjeita</a> Webmin-sivustolta.
 ssl_cpan=Voit vaihtoehtoisesti antaa Webmin <a href='$1'>ladata ja asentaa</a> vaaditun Net::SSLeay Perl -moduulin.
@@ -412,6 +424,7 @@ ssl_letsnotrenew=Uusi vain manuaalisesti
 ssl_staging=Salatkoon palvelin
 ssl_staging0=Todellinen
 ssl_staging1=Vaihe (vain testi)
+
 newkey_err=SSL-avaimen luominen epäonnistui
 newkey_ecn=Puuttuva tai virheellinen palvelimen nimi
 newkey_ecns=Palvelimen nimiä ei ole annettu
@@ -424,11 +437,13 @@ newkey_ok=Seuraavan SSL-avaimen luominen onnistui :
 newkey_esize=Puuttuva tai virheellinen avaimen koko
 newkey_edays=Puuttuva tai virheellinen päivämäärä ennen voimassaolon päättymistä
 newkey_ecountry=Maakoodin on oltava kaksi kirjainta
+
 newcsr_err=SSL-CSR: n luominen epäonnistui
 newcsr_efile=Puuttuu CSR-tiedostonimi
 newcsr_title=Luo CSR
 newcsr_ok=Seuraavan SSL-varmennepyynnön luonti onnistui :
 newcsr_ok2=Tämä CSR on lähetettävä allekirjoittajalle, joka palauttaa allekirjoitetun varmenteen. Tämä voidaan asentaa yllä olevalla avaimella <b>Lähetä varmenne</b> -välilehdellä.
+
 startpage_title=Hakemistosivun asetukset
 startpage_intro2=Tällä sivulla voit hallita Webmin-päävalikon ulkoasua. Jotkut vaihtoehdot voivat olla tehokkaita vain käytettäessä oletusteemaa.
 startpage_tabs=Luokittele moduulit?
@@ -442,6 +457,7 @@ startpage_gotonone=&lt;Ei mitään&gt;
 startpage_gotomodule=Sisäänkirjautumisen jälkeen siirry aina moduuliin
 startpage_webminup=Näytä Webmin-päivitykset Järjestelmätiedot-sivulla?
 startpage_moduleup=Näytä moduulipäivitykset Järjestelmätiedot-sivulla?
+
 upgrade_title=Päivitä Webmin
 upgrade_desc=Tämän lomakkeen avulla voit päivittää koko Webmin-asennuksen uuteen versioon. Voit asentaa paikallisesta tiedostosta, ladatusta tiedostosta tai uusimmasta versiosta osoitteessa <a href=http://www.webmin.com/>www.webmin.com</a>. Aivan kuten manuaalisen päivityksen kanssa, kaikki konfigurointiasetuksesi ja kolmannen osapuolen moduulit säilytetään.
 upgrade_descrpm=Tämän lomakkeen avulla voit päivittää koko webmin-asennuksen uuteen versioon RPM: n päivitysvaihtoehdon avulla. Voit asentaa paikallisesta RPM-tiedostosta, ladatusta tiedostosta tai uusimmasta versiosta osoitteessa <a href=http://www.webmin.com/>www.webmin.com</a>. Aivan kuten manuaalisen päivityksen kanssa, kaikki konfigurointiasetuksesi ja kolmannen osapuolen moduulit säilytetään.
@@ -506,10 +522,12 @@ upgrade_tabupdate=Päivitä moduulit
 upgrade_tabsched=Ajoitettu päivitys
 upgrade_src=Päivitä Webmin alkaen
 upgrade_opts=Päivitysvaihtoehdot
+
 newmod_desc=Kun Webmin päivitetään, uudet moduulit uudessa versiossa myönnetään yhdelle tai useammalle käyttäjälle. Tämän lomakkeen avulla voit asettaa käyttäjät, jotka vastaanottavat uusia moduuleja. Tätä asetusta käytetään päivitettäessä komentorivillä tai käyttämällä yllä olevaa lomaketta.
 newmod_header=Uudet moduulituki
 newmod_def=Oletuskäyttäytyminen - anna uusia moduuleja <tt>root</tt> tai <tt>admin</tt>
 newmod_users=Myönnä uusia moduuleja :
+
 update_desc1=Tämä lomake antaa sinun päivittää Webmin-moduuleja, joiden on havaittu sisältävän virheitä tai <a href=http://www.webmin.com/updates.html>Webmin-päivitykset</a> -sivulta tai muusta lähteestä. Tämä vertaa nykyisin asennettuja moduuleja päivitettävissä oleviin moduuleihin ja lataa ja asentaa valinnaisesti kaikki vanhentuneet moduulit.
 update_header1=Päivitä moduulit nyt
 update_header2=Päivitä moduulit aikataulussa
@@ -536,6 +554,7 @@ update_enomodsig=Moduulin allekirjoitustiedostoa ei voitu ladata : $1
 update_ebadmodsig=Moduulin allekirjoitustarkistus epäonnistui : $1
 update_src=Päivitä moduulit
 update_opts=Moduulin päivitysasetukset
+
 ca_title=Varmentaja
 ca_old=Olemassa oleva sertifikaatti
 ca_header1=Luo uusi CA-varmenne
@@ -567,6 +586,7 @@ ca_eminiserv=SSL-asiakasvarmenteita tuetaan vain miniserv-järjestelmässä.
 ca_eversion=Järjestelmään asennetun Perl Net::SSLeay-moduulin versio ei tue SSL-asiakasvarmenteita.
 ca_essleay=SSL-hallintakomentoa $1 ei löydy järjestelmästäsi. Saatat joutua vaihtamaan polun Webmin-käyttäjien moduulin kokoonpanossa.
 ca_essl=SSL-varmennus voidaan asettaa vain, kun verkkopalvelin toimii SSL-tilassa.
+
 session_title=Authentication
 session_desc1=Kun tämä on käytössä, salasanan aikakatkaisut suojaavat Webmin-palvelinta suojattomalta salasanan murtohyökkäyksiltä lisäämällä jatkuvasti kasvavaa viivettä saman käyttäjän jokaisen epäonnistuneen kirjautumisyrityksen väliin.
 session_header=Todennus ja istuntovaihtoehdot
@@ -630,10 +650,12 @@ session_sha512=Käytä SHA512-salausta
 session_emd5mod=MD5-salausta ei voida käyttää, koska Perl $1 -moduulia ei ole asennettu.
 session_esha512mod=SHA512-salausta ei voida käyttää, koska Perl $1 -moduulia ei ole asennettu.
 session_blocklock=Lukitse myös käyttäjät, joilla epäonnistuneet kirjautumiset
+
 assignment_title=Määritä moduulit uudelleen
 assignment_header=Moduuliluokka
 assignment_ok=Muuta luokkia
 assignment_desc=Tämä lomake antaa sinun määrittää, mihin luokkaan kukin moduuli näytetään Webmin-hakemistosivulla.
+
 categories_title=Muokkaa luokkia
 categories_header=Luokan tunnus ja kuvaukset
 categories_desc=Tämän lomakkeen avulla voit nimetä nykyiset Webmin-luokat uudelleen ja luoda uusia luokkia määrittämään. Taulukon yläosa on tarkoitettu sisäisten luokkien kuvausten muuttamiseen, kun taas alaosa on tarkoitettu uusien luokkatunnusten ja kuvausten lisäämiseen.
@@ -646,6 +668,7 @@ categories_name=Näytetty kuvaus
 categories_lang=Muokkaa luokkia kielellä:
 categories_langok=Muuttaa
 categories_custom=Mukautettu
+
 log_access=IP-käyttöoikeuden muutos
 log_bind=Portti ja osoite muutettu
 log_log=Muutokset kirjausasetuksissa
@@ -691,6 +714,7 @@ log_onedelete_webmincron=Poistettu ajoitettu toiminto moduulista $1
 log_letsencrypt=Pyysi uutta SSL-varmennetta Let's Encryptiltä
 log_letsencryptdns=Luotu salattiin DNS-tietue $1
 log_letsencryptcleanup=Poistettiin salaamaan $1 DNS-tietue
+
 themes_title=Webmin-teemat
 themes_desc=Teemat ohjaavat Webmin-käyttöliittymän ulkonäköä, mukaan lukien kuvakkeet, värit, taustat ja sivujen asettelu. Alla olevaa valintaruutua voidaan käyttää valitsemalla yksi järjestelmään asennetuista teemoista.
 themes_sel=Nykyinen teema :
@@ -706,6 +730,7 @@ themes_taboverlay=Vaihda peittokuva
 themes_tabinstall=Asenna teema
 themes_tabdelete=Poista teemoja
 themes_tabexport=Vie teemoja
+
 themes_err1=Teeman asennus epäonnistui $1
 themes_efile=Tiedostoa ei ole
 themes_err2=Ladatun teeman asennus epäonnistui
@@ -731,9 +756,11 @@ themes_delok=Poistettava teema :
 themes_return=teemaluettelo
 themes_err4=Peittokuvateeman muuttaminen epäonnistui
 themes_eoverlay=Valittu peittokuva ei ole yhteensopiva nykyisen globaalin teeman kanssa
+
 themes_desc4=Asennetut teemat voidaan viedä wbt.gz-tiedostona alla olevan lomakkeen avulla. Tematiedosto voidaan sitten asentaa toiseen Webmin-järjestelmää käyttävään järjestelmään.
 themes_exportmods=Vietettävät teemat
 themes_exportok=Vie valitut teemat
+
 referers_title=Luotetut viittaajat
 referers_desc=Tällä sivulla voit määrittää Webminin viittaustarkistuksen tuen, jota käytetään estämään muiden verkkosivustojen haitalliset linkit, jotka huijaavat selainta tekemään vaarallisia asioita Webminin kanssa. Jos sinulla on linkkejä omien verkkosivustojesi Webminiin, joita et halua varoittaa, lisää nämä sivustot alla olevaan luetteloon.
 referers_list=Luotetut sivustot
@@ -742,6 +769,7 @@ referers_none2=VAROITUS: Tämä avaa järjestelmän XSS-hyökkäyksille!
 referers_referer=Viittauksen tarkistus käytössä?
 referers_err=Arvioitsijoiden tallentaminen epäonnistui
 referers_ehost='$1' ei ole kelvollinen luotettu isäntänimi
+
 update_err=Moduulien päivitys epäonnistui
 update_eurl=Puuttuva tai virheellinen päivitys-URL
 update_title=Päivitä moduulit
@@ -762,6 +790,7 @@ update_rv=Tarkistetaan päivitetyt Webmin-moduulit $1
 update_eemail=Sinun on annettava sähköpostiosoite, jos näytetään vain se, mitä päivitetään.
 update_subject=Webmin-moduulien päivitysraportti
 update_version=Uusi Webmin-julkaisu (versio $1) on nyt ladattavissa. Tulevat päivitykset julkaistaan vain uusimmalle versioon.
+
 anon_title=Anonyymi pääsy moduuliin
 anon_desc=Tällä sivulla voit myöntää pääsyn valittuihin Webmin-moduuleihin ja polkuihin ilman, että asiakkaiden on kirjauduttava sisään. Jokaiselle alla syöttämällesi moduulipolulle (kuten <tt>/custom</tt> tai <tt>/passwd</tt>) on myös annettava Webmin-käyttäjän nimi, jonka oikeuksia käytetään pääsyyn moduuli.
 anon_desc2=Sinun tulee olla erittäin varovainen myöntäessään nimettömiä käyttöoikeuksia, koska riittämättömät IP-käyttöoikeuksien hallinta tai väärän moduulin käyttöoikeuksien myöntäminen voivat antaa hyökkääjien valvoa järjestelmän.
@@ -770,15 +799,19 @@ anon_user=Webmin-käyttäjä
 anon_err=Nimettömän käytön tallentaminen epäonnistui
 anon_eurl='$1' ei ole kelvollinen URL-polku
 anon_euser=Puuttuva tai virheellinen Webmin-käyttäjä URL-osoitteen polulle '$1'
+
 enogpg=GnuPG: tä ei ole asennettu
+
 standard_failed=Moduuliluettelon lataus epäonnistui : $1
 standard_header=Tavalliset Webmin-moduulit
 standard_warn=Varoitus - et käytä uusinta Webmin-versiota $1, joten näiden moduulien asennus epäonnistuu.
 standard_eurl=Virheellinen standardimoduulien URL-osoite
+
 third_failed=Moduuliluettelon lataus epäonnistui : $1
 third_header=Kolmannen osapuolen Webmin-moduulit
 third_eurl=Virheellinen kolmannen osapuolen moduulien URL-osoite
 third_title=Valitse kolmannen osapuolen moduuli
+
 lock_title=Tiedoston lukitus
 lock_desc=Oletusarvoisesti Webmin saa lukituksen kaikille tiedostoille, joita se muuttaa, estääksesi samanaikaisia muutoksia useilla prosesseilla, mikä voi johtaa tiedostojen vioittumiseen. Tällä sivulla voit poistaa lukituksen valinnaisesti tai kokonaan käytöstä, jos se aiheuttaa ongelmia.
 lock_header=Tiedoston lukitusasetukset
@@ -789,6 +822,7 @@ lock_except=Lukitse kaikki tiedostot ja hakemistot paitsi ..
 lock_err=Tiedoston lukituksen tallentaminen epäonnistui
 lock_edir='$1' ei ole ehdoton polku
 lock_edirs=Tiedostoja tai hakemistoja ei ole annettu
+
 ipkey_title1=Luo SSL-avain
 ipkey_title2=Muokkaa SSL-avainta
 ipkey_header=IP-erityiset SSL-avaintiedot
@@ -798,6 +832,7 @@ ipkey_eip2='$1' ei ole kelvollinen IP-osoite tai isäntänimi
 ipkey_eips=IP-osoitteita ei ole annettu
 ipkey_eextracas=Muita varmennetiedostoja ei ole annettu
 ipkey_eextraca=Lisäsertifikaattitiedostoa $1 ei ole
+
 descs_title=Moduulinimikkeet
 descs_info=Tällä sivulla voit määrittää vaihtoehtoiset otsikot Webmin-moduuleille ohittaa niiden vakiokuvaukset.
 descs_mod=Moduuli
@@ -807,11 +842,13 @@ descs_cdesc=Kloonin otsikko
 descs_err=Moduulien nimikkeiden tallentaminen epäonnistui
 descs_edesc=Puuttuu otsikko moduulille '$1'
 descs_etitle=Puuttuu otsikko kloonille '$1'
+
 export_err=Moduulien vieminen epäonnistui
 export_ecmd=Puuttuva komento $1
 export_efile=Puuttuva tai virheellinen vientitiedosto
 export_done=Vie valitut moduulit onnistuneesti $1 -porttiin.
 export_title=Vie moduulit
+
 advanced_title=Edistyneet asetukset
 advanced_header=Lisäasetukset ja kokeelliset vaihtoehdot
 advanced_temp=Väliaikaisten tiedostojen hakemisto
@@ -855,10 +892,13 @@ advanced_listdir=Listaa luettelot ilman hakemistotiedostoa?
 advanced_headers=Ylimääräiset HTTP-otsikot
 advanced_eheader=Otsikot on muotoiltava kuten <tt>Otsikko: Arvo</tt>
 advanced_sortconfigs=Tallennetaanko konfigurointitiedostot sen avaimien mukaan lajiteltuina?
+
 syslog_errorlog=Webmin-virheloki
+
 clear_title=Tyhjennä Lataa välimuisti
 clear_done=Webmin-välimuisti, joka sisältää $1 tiedostoja $2 URL-osoitteista, on tyhjennetty onnistuneesti.
 clear_none=Webmin-latausvälimuistissa ei ole tällä hetkellä URL-osoitteita.
+
 savekey_err=Uuden avaimen tallentaminen epäonnistui
 savekey_ekey=Puuttuva tai virheellinen PEM-muotoavain
 savekey_ecert=Puuttuva tai virheellinen PEM-muodon varmenne
@@ -868,6 +908,7 @@ savekey_title=Lataa olemassa oleva avain
 savekey_done2=Mukana toimitettu SSL-avain on tallennettu $1 ja sertifikaatti $2.
 savekey_done=Mukana toimitettu SSL-avain ja varmenne on tallennettu tiedostoon $1.
 savekey_done3=Mukana toimitettu ketjutettu SSL-varmenne on tallennettu tiedostoon $1.
+
 cache_title=Välimuistissa olevat URL-osoitteet
 cache_search=Etsi URL-osoitteita, jotka sisältävät:
 cache_ok=Hae
@@ -880,8 +921,10 @@ cache_delete=Väri valittu välimuistista
 cache_err=Välimuistissa olevien URL-osoitteiden tyhjennys epäonnistui
 cache_enone=Mitään ei ole valittu
 cache_efile=Virheellinen tiedostonimi
+
 restart_title=Käynnistä Webmin uudelleen
 restart_done=Webmin-palvelinprosessi käynnistyy nyt uudelleen - odota muutama sekunti ennen jatkamista.
+
 mobile_title=Mobiililaitteen asetukset
 mobile_header=Lisäasetukset mobiiliselaimille
 mobile_theme=Teema mobiiliselaimille
@@ -890,6 +933,7 @@ mobile_nosession=Pakota HTTP-todennuksen käyttö?
 mobile_agents=Lisäkäyttäjät mobiiliselaimille
 mobile_err=Mobiililaitteen asetusten tallentaminen epäonnistui
 mobile_prefixes=URL-isäntänimen etuliitteet mobiiliselaimille
+
 blocked_title=Estetyt isännät ja käyttäjät
 blocked_type=Tyyppi
 blocked_who=Isäntänimi tai käyttäjänimi
@@ -901,9 +945,11 @@ blocked_host=Asiakkaan isäntä
 blocked_clear=Poista kaikki esteet
 blocked_cleardesc=Napsauta tätä painiketta, jos haluat poistaa kaikki nykyiset isäntä- ja käyttäjälohkot käynnistämällä Webmin-palvelinprosessin uudelleen.
 blocked_restarting=Webmin-palvelinprosessi käynnistyy nyt uudelleen estettyjen koneiden ja käyttäjien poistamiseksi - odota muutama sekunti ennen jatkamista.
+
 refreshmods_title=Päivitä moduulit
 refreshmods_installed=Käytettävissä olevien Webmin-moduulien tarkistaminen ..
 refeshmods_counts=.. löytyi $2 asennetuilla sovelluksilla, $1 ei ole asennettu.
+
 debug_title=Lokitiedoston virheenkorjaus
 debug_header=Webmin-virheen lokitiedostoasetukset
 debug_enabled=Virheloki on käytössä?
@@ -931,6 +977,7 @@ debug_cmd=Komentorivi
 debug_cron=Taustatyöt
 debug_inmods=Moduulit, joihin kirjoittaa virheen lokit
 debug_emodules=Ei valittujen moduulien virheenkorjausta
+
 notif_passexpired=Webmin-salasanasi on vanhentunut! Sinun on pakko muuttaa se seuraavan kirjautumisen yhteydessä.
 notif_passchange=Webmin-salasanasi vaihdettiin viimeksi $1, ja se on vaihdettava $2 päivässä.
 notif_passlock=Webmin-salasanasi vaihdettiin viimeksi $1, ja tilisi lukitaan $2 päivään, jos sitä ei muuteta.
@@ -946,6 +993,7 @@ notify_updatedesc=Korjaa ongelman
 notif_updateok=Asenna päivitykset nyt
 notif_reboot=Viimeisimmät pakettipäivitykset (kuten uusi ytimen versio) vaativat uudelleenkäynnistyksen, jotta se olisi täysin asennettuna.
 notif_rebootok=Käynnistä uudelleen nyt
+
 status_title=Taustatilakokoelma
 status_header=Tilankeruutyön asetukset
 status_interval=Kerätäänkö järjestelmän tila taustalla?
@@ -957,6 +1005,7 @@ status_temp=Kerää käyttölämpötilat?
 status_units=Lämpötilayksiköt
 status_celsius=celsius
 status_fahrenheit=Fahrenheit
+
 sendmail_title=Lähetetään sähköpostia
 sendmail_desc=Tällä sivulla hallitaan, kuinka Webmin lähettää sähköpostia, kuten aikatauluneista varmuuskopioista tai taustavalvonnasta. Se vaikuttaa myös Lue käyttäjäposti -moduulilla lähetetyihin sähköposteihin.
 sendmail_header=Postin lähetysvaihtoehdot
@@ -997,12 +1046,14 @@ sendmail_url=Webmin URL-osoite käytettäväksi sähköpostissa
 sendmail_url_def=Oletus ($1)
 sendmail_url_custom=Mukautettu URL
 sendmail_eurl=Muokattu URL puuttuu tai on virheellinen
+
 testmail_title=Lähetä testisähköposti
 testmail_err=Testiviestin lähettäminen epäonnistui
 testmail_eto=Kohdeosoitetta ei annettu
 testmail_sending=Lähetetään viesti $1 $2 ..
 testmail_done=.. viesti lähetetty. Tarkista kohdeosoitteen postilaatikko varmistaaksesi, että se todella toimitettiin.
 testmail_failed=.. lähetys epäonnistui : $1
+
 web_title=Web-palvelimen asetukset
 web_header=Vaihtoehdot Webminin sisäänrakennetulle verkkopalvelimelle
 web_expires=Asiakaspuolen välimuistin aika staattisille tiedostoille
@@ -1014,6 +1065,7 @@ web_expirespaths=Asiakaspuolen välimuistiajat URL-polun perusteella
 web_expirespath=Polku säännöllinen lauseke
 web_expirestime=Välimuistiaika sekunteina
 web_eexpires2=Puuttuva tai ei-numeerinen asiakaspuolen välimuistin aika rivillä $1
+
 webmincron_title=Webminin ajoitetut toiminnot
 webmincron_emodule=Webmin Cron Jobs -moduulia ei ole asennettu!
 webmincron_module=Webmin-moduuli
@@ -1037,6 +1089,7 @@ webmincron_when1=Erityiset ajat
 webmincron_secs=sekuntia
 webmincron_err=Ajoitetun toiminnon tallentaminen epäonnistui
 webmincron_einterval=Intervallin on oltava nolla suurempi sekuntimäärä
+
 twofactor_title=Kahden tekijän todennus
 twofactor_header=Kahden tekijän todennusvaihtoehdot
 twofactor_provider=Todentamisen tarjoaja
@@ -1075,6 +1128,7 @@ twofactor_secret1=Luotu satunnaisesti
 twofactor_secret0=Käytä 16-merkkistä näppäintä
 twofactor_esecret=Salaisen avaimen tulee olla tarkalleen 16 merkkiä pitkä ja sisältää vain kirjaimia ja numeroita
 twofactor_esession=Kaksikerroista todennusta ei voida käyttää, ellei istuntopohjainen todennus ole aktiivinen
+
 letsencrypt_title=Salatkaamme varmennepyyntö
 letsencrypt_err=Varmenteen pyytäminen epäonnistui
 letsencrypt_ecmds=Järjestelmästä ei löytynyt Let's Encrypt client -komentoa <tt>certbot</tt> tai <tt>python</tt> -komentoa.
@@ -1108,5 +1162,6 @@ letsencrypt_ecsr=CSR: n luominen epäonnistui : $1
 letsencrypt_ekeygen=Yksityisen avaimen luonti epäonnistui : $1
 letsencrypt_enative=Alkuperäistä Let's Encrypt -asiakasta (certbot) käytettiin aiemmin tässä järjestelmässä, ja sitä on käytettävä kaikkiin tuleviin varmennepyyntöihin
 letsencrypt_eacmedns=Vain virallinen Let's Encrypt -asiakas tukee DNS-pohjaista validointia
+
 announce_hide=Piilota tämä ilmoitus
 alert_hide=Piilota hälytys

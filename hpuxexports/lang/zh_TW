@@ -8,6 +8,7 @@ index_apply=套用變更
 index_applymsg=按下這個按鈕以套用目前檔案匯出的設定。這將會使上列的目錄依據指定的選項匯出。
 index_return=匯出清單
 index_eprog=在您的系統上找不到 NFS 伺服器執行檔。NFS 套裝軟體似乎尚未安裝。
+
 edit_title=編輯匯出
 create_title=建立匯出
 edit_details=匯出的詳細資料
@@ -36,6 +37,7 @@ edit_gids=不信任 GID
 edit_anonuid=將不信任的使用者當成
 edit_default=預設
 edit_anongid=將不信任的群組當成
+
 save_err=儲存匯出失敗
 save_edir=目錄 '$1' 不存在
 save_enetgroup=錯誤或缺少的網路群組

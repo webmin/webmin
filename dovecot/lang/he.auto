@@ -11,11 +11,13 @@ index_boot=מתחילים באתחול?
 index_bootdesc=שנה הגדרה זו כדי להפעיל או לבטל את הפעלת שרת Dovecot בזמן אתחול המערכת.
 index_return=אינדקס מודול
 index_version=Version $1
+
 stop_err=עצירת Dovecot נכשלה
 stop_erunning=כבר לא רץ
 start_err=הפעלת Dovecot נכשלה
 start_eprotos=No protocols selected on the <b>Networking and Protocols</b> page
 apply_err=החלת התצורה נכשלה
+
 net_title=רשת ופרוטוקולים
 net_header=אפשרויות רשת Dovecot ופרוטוקול דואר
 net_protocols=הגש פרוטוקולי דואר
@@ -42,8 +44,11 @@ net_eimaps_listen=כתובת IP לא חוקית עבור חיבורי SSL IMAP
 net_epop3s_listen=כתובת IP לא חוקית עבור חיבורי POP3 SSL
 net_elisten=כתובת IP לא חוקית עבור חיבורים שאינם SSL
 net_essl_listen=כתובת IP לא חוקית עבור חיבורי SSL
+
 imap_title=אפשרויות IMAP
+
 pop3_title=אפשרויות POP3
+
 ssl_title=תצורת SSL
 ssl_header=אפשרויות מצב IMAP ו- POP3 SSL
 ssl_key=קובץ מפתח פרטי של SSL
@@ -61,7 +66,9 @@ ssl_ecert=קובץ אישור חסר או שאינו קיים
 ssl_eca=קובץ אישור CA של לקוח חסר או שאינו קיים
 ssl_eregen=מרווח התחדשות פרמטרים חסר או שאינו מספרי
 ssl_epass=לא הוזנה סיסמת קובץ מפתח SSL
+
 misc_title=אפשרויות אחרות
+
 login_title=אפשרויות משתמש וכניסה
 login_header=אפשרויות אימות משתמש וכניסה
 login_fuid=UID מינימלי תקף
@@ -117,6 +124,7 @@ login_procs=תהליכי התחברות מקסימליים
 login_count=תהליכי התחברות ראשוניים
 login_eprocs=מספר מקסימלי של תהליכי התחברות חסרים או לא חוקיים
 login_ecount=מספר ראשוני חסר או לא חוקי של תהליכי התחברות
+
 mail_title=קבצי דואר
 mail_header=אפשרויות דואר ואפשרויות קריאה
 mail_env=מיקום קובץ הדואר
@@ -169,6 +177,7 @@ mail_eindexmode=לא ניתן להגדיר את מיקום קבצי האינדק
 mail_econtrolmode=לא ניתן להגדיר את מיקום קבצי הבקרה כאשר המיקום של קובץ הדואר מתגלה באופן אוטומטי
 mail_eindex=נתיב מוחלט חסר או לא חוקי עבור קבצי אינדקס
 mail_econtrol=נתיב מוחלט חסר או לא חוקי עבור קבצי בקרה
+
 log_net=שינויים ברשת ופרוטוקולים
 log_login=אפשרויות משתמש והתחברות השתנו
 log_mail=קבצי דואר שונו
@@ -179,6 +188,7 @@ log_stop=שרת Dovecot הופסק
 log_bootup=Dovecot מופעל בזמן האתחול
 log_bootdown=Dovecot מושבת בזמן האתחול
 log_manual=Manually edited config file $1
+
 manual_title=ערוך קבצי תצורה
 manual_editsel=ערוך את קובץ התצורה של Dovecot
 manual_err=שמירת קובץ התצורה נכשלה

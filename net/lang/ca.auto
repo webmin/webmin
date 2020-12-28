@@ -1,3 +1,5 @@
 ifcs_static2=Configuració estàtica
+
 hosts_active=Està activat?
+
 acl_sysinfo=Mostra les interfícies de xarxa disponibles al Tauler de control

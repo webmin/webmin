@@ -17,6 +17,7 @@ index_tabsync=Sincronització de servidor horari
 index_desctime=Aquest formulari és per a canviar l'hora actual del sistema, que és utilitzat per tots els processos en execució. Amb sistemes operatius que utilitzen un rellotge de maquinari a part, també es pot utilitzar per establir aquest.
 index_desczone=Aquest formulari permet canvia la zona horària per defecte del sistema, que s'utilitza per convertir l'hora del sistema a un format humanament llegible.
 index_descsync=Aquest formulari és per configurar el sistema per sincronitzar automàticament l'hora amb un servidor remot. La sincronització es farà utilitzant el protocol <tt>time</tt> de Unix o el protocol NTP, depenent de quines ordres hi hagi instal·lades i del que suportin els servidor remots.
+
 action_save=Desa
 action_apply=Aplica
 action_sync=Sincronitza l'hora del sistema amb l'hora del maquinari
@@ -24,6 +25,7 @@ action_sync_s=Sincronitza l'hora del maquinari amb l'hora del sistema
 action_timeserver_sys=Sincronitza l'hora del sistema
 action_timeserver_hw=Sincronitza l'hora del maquinari
 action_savezone=Canvia la zona horària
+
 acl_sys=L'usuari pot editar l'hora del sistema
 acl_hw=L'usuari pot editar l'hora del maquinari
 acl_timezone=L'usuari pot establir la zona horària
@@ -34,8 +36,10 @@ acl_error=Tens accés al mòdul de l'hora del sistema, però no pots editar no l
 acl_nosys=No tens permís per editar l'hora del sistema
 acl_nohw=No tens permís per editar l'hora del maquinari
 acl_nontp=No tens permís per sincronitzar amb un servidor horari
+
 sys_title=Hora del Sistema
 hw_title=Hora del Maquinari
+
 day=Dia
 month=Mes
 date=Data
@@ -43,12 +47,14 @@ hour=Hora
 year=Any
 minute=Minut
 second=Segon
+
 error_cnf=Error: no s'ha trobat l'ordre $1
 error_hw=No es pot establir l'hora del maquinari: $1
 error_sync=No es pot sincronitzar amb l'hora del sistema: $1
 error_ediff=La diferència del servidor horari amb l'hora local és massa gran: $1 dies
 error_entp=La sincronització horària NTP ha fallat: $1
 error_etimeserver=No hi ha cap servidor horari a sincronitzar amb el que has introduït
+
 log_set_date=Estableix l'hora del sistema a $1
 log_set_hwclock=Estableix l'hora del maquinari a $1
 log_remote_date=S'ha obtingut l'hora del sistema de $2
@@ -58,6 +64,7 @@ log_remote_hwclock_l=S'ha obtingut l'hora del maquinari $1 de $2
 log_sync=S'ha sincronitzat l'hora del sistema amb l'hora del maquinari
 log_sync_s=S'ha sincronitzat l'hora del maquinari amb l'hora del sistema
 log_timezone=S'ha canviat la zona horària a $1
+
 timezone_err=No s'ha pogut desar la zona horària
 timezone_ecannot=No tens permís per canviar la zona horària
 timezone_enone=No has seleccionat cap zona

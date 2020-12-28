@@ -1,4 +1,5 @@
 quota_unlimited=Neribota
+
 acl_fss=Failų sistemos, kurias šis vartotojas gali redaguoti
 acl_fall=Visos failų sistemos
 acl_fsel=Pasirinkta ..
@@ -24,9 +25,11 @@ acl_maxblocks=Didžiausia granuliuojamų blokų kvota
 acl_maxfiles=Didžiausia leistina failo kvota
 acl_unlimited=Neribota
 acl_email=Ar galima nustatyti el. Pašto pranešimus?
+
 activate_eallow=Jums neleidžiama įjungti ar išjungti kvotų šioje failų sistemoje
 activate_eon=Nepavyko įjungti kvotų
 activate_eoff=Nepavyko išjungti kvotų
+
 check_title=Patikrinkite kvotas
 check_return=$1 sąrašas
 check_ecannot=Negalite patikrinti šios failų sistemos kvotų
@@ -34,11 +37,13 @@ check_running=<tt>quotacheck</tt> komanda vykdoma norint patikrinti bloką ir fa
 check_done=... Padaryta.
 check_rgroup=grupė
 check_ruser=Vartotojas
+
 cgroup_efail=Nepavyko nukopijuoti kvotų
 cgroup_ecannot=Jūs negalite nukopijuoti kvotų
 cgroup_egallow=Jums neleidžiama kopijuoti šios grupės kvotų
 cgroup_enogroup=Nėra grupių, į kurias reikia kopijuoti
 cgroup_eallowto=Jums neleidžiama kopijuoti kvotų į „$1“
+
 cgform_title=Kopijuoti kvotas
 cgform_return=grupės kvota
 cgform_ecannot=Jūs negalite nukopijuoti kvotų
@@ -48,11 +53,13 @@ cgform_all=Visos grupės jūsų sistemoje
 cgform_select=Pasirinktos grupės
 cgform_contain=Grupės, kuriose yra vartotojų
 cgform_doit=Kopijuoti
+
 cuser_efail=Nepavyko nukopijuoti kvotų
 cuser_ecannot=Jūs negalite nukopijuoti kvotų
 cuser_euallow=Jums neleidžiama kopijuoti šio vartotojo kvotų
 cuser_enouser=Nėra vartotojų, į kuriuos reikia kopijuoti
 cuser_eallowto=Jums neleidžiama kopijuoti kvotų į „$1“
+
 cuform_title=Kopijuoti kvotas
 cuform_return=vartotojo kvota
 cuform_ecannot=Jūs negalite nukopijuoti kvotų
@@ -62,6 +69,7 @@ cuform_all=Visi jūsų sistemos vartotojai
 cuform_select=Pasirinkti vartotojai
 cuform_members=Pasirinktų grupių nariai
 cuform_doit=Kopijuoti
+
 egroup_title=Redaguoti grupės kvotą
 egroup_freturn=failų sistemos sąrašas
 egroup_greturn=grupių sąrašas
@@ -80,6 +88,7 @@ egroup_hflimit=Kietosios bylos apribojimas
 egroup_update=Atnaujinti
 egroup_listall=Išvardykite visas kvotas
 egroup_listalldesc=Spustelėkite šį mygtuką, kad būtų pateiktas visų failų sistemų, kuriuose ši grupė turi disko kvotas, sąrašas su nuorodomis juos redaguoti.
+
 euser_title=Redaguoti vartotojo kvotą
 euser_freturn=failų sistemos sąrašas
 euser_ureturn=vartotojų sąrašas
@@ -102,6 +111,7 @@ euser_hflimit=Kietųjų failų limitas
 euser_update=Atnaujinti
 euser_listall=Išvardykite visas kvotas
 euser_listalldesc=Spustelėkite šį mygtuką, norėdami pamatyti visų failų sistemų, kuriose šis vartotojas turi disko kvotas, sąrašą su nuorodomis juos redaguoti.
+
 gfilesys_title=Grupinės kvotos
 gfilesys_return=failų sistemų sąrašas
 gfilesys_ecannot=Negalite redaguoti „$1“ kvotų
@@ -120,6 +130,7 @@ gfilesys_copy=Kopijuoti kvotas
 gfilesys_editdesc=Peržiūrėkite ir redaguokite šios grupės kvotas kitoje failų sistemoje, kurioje šiuo metu kvotų nėra.
 gfilesys_copydesc=Nukopijuokite visų failų sistemų šios grupės kvotų apribojimus į kai kurias arba visas kitas grupes.
 gfilesys_enone=Neįvestas grupės pavadinimas
+
 ggracef_title=„Grace Times“
 ggracef_return=grupių sąrašas
 ggracef_ecannot=Šioje failų sistemoje negalima redaguoti malonės laiko
@@ -128,9 +139,11 @@ ggracef_graces=Grupės malonės laikas <tt>$1</tt>
 ggracef_block=Dėl bendros kvotos
 ggracef_file=Dėl failo kvotos
 ggracef_update=Atnaujinti
+
 ggraces_esave=Nepavyko išsaugoti malonių laikų
 ggraces_eedit=Šioje failų sistemoje negalima redaguoti malonės laiko
 ggraces_enumber=„$1“ nėra skaičius
+
 index_quser=Vartotojų kvotos
 index_qgroup=Grupinės kvotos
 index_qboth=Vartotojų ir grupių kvotos
@@ -154,6 +167,7 @@ index_egroup=Redaguoti grupės kvotas:
 index_egroupdesc=Įveskite arba pasirinkite grupę ir spustelėkite šį mygtuką norėdami pamatyti jos kvotas visose failų sistemose.
 index_nosupport=Jokios vietinės failų sistemos negali palaikyti kvotų.
 index_mountmod=Galite įjungti failų sistemos kvotas modulyje <a href='$1'>Disko ir tinklo failų sistemos</a>.
+
 lgroups_failed=Nepavyko išvardyti grupių
 lgroups_tablist=Grupių sąrašas
 lgroups_eallow=Jums neleidžiama redaguoti kvotų šioje failų sistemoje
@@ -182,13 +196,17 @@ lgroups_tofixed=1 Adresas
 lgroups_emailheader=Siųsti grupėms, artinančioms prie kvotos
 lgroups_email=Siųsti el. Laišką grupėms?
 lgroups_tovirt=„Virtualmin“ domeno savininkas
+
 sgroup_egroup=Jums neleidžiama redaguoti šios grupės kvotų
 sgroup_efs=Jums neleidžiama redaguoti kvotų šioje failų sistemoje
+
 ssync_ecannot=Negalite nustatyti numatytos šios failų sistemos kvotos
+
 suser_euser=Jums neleidžiama redaguoti šio vartotojo kvotų
 suser_efs=Jums neleidžiama redaguoti kvotų šioje failų sistemoje
 suser_emaxblocks=Jums neleidžiama suteikti blokų limitų, viršijančių $1 
 suser_emaxfiles=Jums neleidžiama suteikti failų apribojimų, viršijančių $1 
+
 ufilesys_title=Vartotojo kvotos
 ufilesys_return=failų sistemų sąrašas
 ufilesys_ecannot=Negalite redaguoti „$1“ kvotų
@@ -208,6 +226,7 @@ ufilesys_copydesc=Nukopijuokite šio vartotojo visų failų sistemų kvotų apri
 ufilesys_copy=Kopijuoti kvotas
 ufilesys_grace=Malonė
 ufilesys_enone=Neįvestas vartotojo vardas
+
 ugracef_title=„Grace Times“
 ugracef_return=vartotojų sąrašas
 ugracef_ecannot=Šioje failų sistemoje negalima redaguoti malonės laiko
@@ -216,9 +235,11 @@ ugracef_graces=<tt>$1</tt> vartotojo malonių laikai
 ugracef_block=Dėl bendros kvotos
 ugracef_file=Dėl failo kvotos
 ugracef_update=Atnaujinti
+
 ugraces_esave=Nepavyko išsaugoti malonių laikų
 ugraces_eedit=Šioje failų sistemoje negalima redaguoti malonės laiko
 ugraces_enumber=„$1“ nėra skaičius
+
 lusers_failed=Nepavyko sudaryti vartotojų sąrašo
 lusers_tablist=Vartotojų sąrašas
 lusers_tabdefault=Numatytosios kvotos
@@ -264,12 +285,14 @@ lusers_from=Nuo: adresas el
 lusers_mass=Atnaujinkite pasirinktus vartotojus
 lusers_cc=Taip pat siųsti el. Laišką
 lusers_nocc=Niekas
+
 grace_seconds=Sekundės
 grace_minutes=Minutės
 grace_hours=Valandos
 grace_days=Dienos
 grace_weeks=Savaitės
 grace_months=Mėnesių
+
 log_activate_u=Įgalintos $1 vartotojo kvotos
 log_activate_g=Įgalintos grupės kvotos $1 
 log_activate_ug=Įgalintos $1 vartotojų ir grupių kvotos
@@ -287,6 +310,7 @@ log_check=Patikrintos $1 kvotos
 log_copy_u=Nukopijuotos vartotojo $1 kvotos
 log_copy_g=Nukopijuotos grupės $1 kvotos
 log_support=Įgalinta $1 kvotos parama
+
 email_err=Nepavyko išsaugoti el. Pašto parinkčių
 email_ecannot=Jums neleidžiama keisti el. Pašto parinkčių
 email_einterval=Trūksta arba netinkamas intervalas
@@ -299,6 +323,7 @@ gemail_msg=$1 disko naudojimas failų sistemoje $2 pasiekė $3% leidžiamos kvot
 email_subject=Disko kvota viršyta
 gemail_subject=Disko kvota viršyta
 email_eto=Trūksta tikslo el. Pašto adreso
+
 umass_title=Atnaujinkite vartotojo kvotas
 umass_header=Kvotos pakeitimai taikomi pasirinktiems vartotojams
 umass_sblocks=Minkštų blokų riba
@@ -315,6 +340,7 @@ umass_esfiles=Trūksta arba netinkamas minkštųjų failų limitas
 umass_ehfiles=Trūksta arba netinkamas kietųjų failų limitas
 umass_count=Žemiau pateikti pakeitimai bus taikomi $1 pasirinktiems vartotojams.
 umass_err=Nepavyko atnaujinti vartotojo kvotų
+
 gmass_title=Atnaujinkite grupės kvotas
 gmass_header=Kvotos pakeitimai taikomi pasirinktoms grupėms
 gmass_count=Žemiau pateikti pakeitimai bus taikomi $1 pasirinktoms grupėms.

@@ -6,6 +6,7 @@ index_stop=QMailプロセスを停止する
 index_stopmsg=このボタンをクリックして、キューに入れられたメールの配信を担当するバックグラウンドQMailプロセスを停止します。これらのプロセスがないと、システムからメールが適切に送信または配信されません。
 index_start=QMailプロセスを開始する
 index_startmsg=このボタンをクリックして、キューに入れられたメールの配信を担当するバックグラウンドQMailプロセスを開始します。これらのプロセスがないと、システムからメールが適切に送信または配信されません。
+
 opts_title=QMailオプション
 opts_me=ローカルホスト名
 opts_helo=SMTP HELOのホスト名
@@ -24,6 +25,7 @@ opts_etoremote=無効なSMTP送信応答タイムアウト
 opts_ebytes=無効な最大メッセージサイズ
 opts_etimeout=無効なSMTP受信データタイムアウト
 opts_elocalip=無効なローカルIPアドレスのホスト名
+
 aliases_title=メールエイリアス
 aliases_addr=住所
 aliases_to=へのエイリアス
@@ -38,6 +40,7 @@ aliases_return=エイリアスリスト
 aliases_toomany=このページに表示するには、システムのメールエイリアスが多すぎます。
 aliases_go=一致するエイリアスを検索：
 aliases_delete=選択したエイリアスを削除
+
 aform_type0=なし
 aform_type1=電子メールアドレス
 aform_type2=メールディレクトリ
@@ -52,6 +55,7 @@ aform_val=エイリアス
 aform_afile=編集 ..
 aform_novirt=&lt;すべてのドメイン&gt;
 aform_return=エイリアス
+
 asave_err=エイリアスを保存できませんでした
 asave_eaddr=「$1」は有効な住所ではありません
 asave_ealready=「$1」のエイリアスは既に存在します
@@ -62,13 +66,16 @@ asave_etype4=「$1」は有効なプログラムではないか、存在しま�
 asave_etype5=自動返信ファイル「$1」は無効です
 asave_etype4none=プログラムはありません
 asave_etype6=フィルターファイル '$1'は無効です
+
 adelete_err=エイリアスを削除できませんでした
 adelete_enone=何も選択されていません
+
 locals_title=ローカルドメイン
 locals_domains=このサーバーのローカルドメイン
 locals_desc=Qmailは、左側のテキストボックスにリストされているドメインとホスト名へのメールをローカルユーザーへの配信に受け入れます。メールサーバーで複数のメールドメインを処理する場合は、このフォームにすべてのメールドメインをリストする必要があります。
 locals_only=ローカルホスト名のみ $1
 locals_sel=以下にリストされているドメイン ..
+
 rcpts_title=承認済みドメイン
 rcpts_domains=承認済みのローカルドメインとリレードメイン
 rcpts_all=任意のドメイン
@@ -76,9 +83,11 @@ rcpts_sel=以下にリストされているドメイン ..
 rcpts_desc=Qmailは、左側のテキストボックスにリストされているドメインおよびホスト名へのメールの中継またはローカル配信のみを受け入れます。 <tt>.foo.com</tt>などのドメイン内のすべてのホストに一致するワイルドカードを入力することもできます。メールサーバーでクライアントの電子メールを中継する場合は、任意のドメインからのメールを受け入れる必要があります。
 rcpts_domains2=追加のローカルドメインとリレードメイン
 rcpts_desc2=承認済みドメインが多数ある場合は、あまり使用されないドメインをこのテキストボックスに入力する必要があります。一般に、最初の50個の許可されたドメインを上部のテキストボックスに入力し、残りをこのテキストボックスに入力する必要があります。
+
 bads_title=拒否されたアドレス
 bads_addresses=拒否されたメールアドレス
 bads_desc=QMailは、左側のテキストボックスにリストされているアドレスのいずれかからの配信またはリレー用のメールを拒否します。アドレスは<tt>username@domainname</tt>として入力する必要があります。ドメイン全体からのメールを拒否する場合は、<tt>@domainname</tt>として入力する必要があります。
+
 routes_title=ドメインルーティング
 routes_toomany=このページに表示するには、システム上のドメインルートが多すぎます。
 routes_go=一致するドメインルートを検索：
@@ -88,19 +97,24 @@ routes_direct=直接配信
 routes_defroute=他のすべての送信メールを次の方法で配信します。
 routes_return=ドメインルート
 routes_delete=選択したドメインルートを削除する
+
 rform_edit=ドメインルートを編集
 rform_create=ドメインルートを作成
 rform_from=ホストまたはドメイン宛のメール
 rform_to=SMTPサーバー経由で送信
 rform_port=SMTPポート
+
 rsave_err=ドメインルートを保存できませんでした
 rsave_efrom=「$1」は有効なドメイン名ではありません
 rsave_eto=「$1」は有効なSMTPサーバーではありません
 rsave_eport=「$1」は有効なポート番号ではありません
+
 rdelete_err=ドメインルートを削除できませんでした
+
 percents_title=アドレスドメインの割合
 percents_domains=％アドレスをサポートするドメイン
 percents_desc=QMailは、左側のテキストボックスに<tt>seconddomain</tt>がリストされている場合、<tt>user％firstdomain@seconddomain</tt>形式のアドレスを持つ電子メールを受け入れます。この形式のメッセージは、このメールサーバーによって<tt>user@firstdomain</tt>に転送されます。
+
 virts_title=仮想マッピング
 virts_toomany=このページに表示するには、システム上の仮想マッピングが多すぎます。
 virts_go=一致する仮想マッピングを検索：
@@ -111,6 +125,7 @@ virts_none=仮想ではない
 virts_desc=QMailは仮想マッピングを使用して、サーバー上のさまざまなドメインへの電子メールを処理します。電子メールアドレスのユーザー部分にテキストを追加してから処理します。ドメインの新しい仮想マッピングを作成し、<a href='$1'>メールエイリアス</a>ページを使用してそのドメイン内にエイリアスを作成することにより、仮想メールドメインをセットアップすることができます。
 virts_return=仮想マッピング
 virts_delete=選択した仮想マッピングを削除
+
 vform_edit=仮想マッピングの編集
 vform_create=仮想マッピングを作成する
 vform_from=住所宛メール
@@ -121,13 +136,17 @@ vform_to=ユーザー名の前に追加
 vform_none=なし
 vform_prepend=指定されたプレフィックス
 vform_auto=自動的に選択されたプレフィックス
+
 vsave_err=仮想マッピングを保存できませんでした
 vsave_edomain=「$1」は有効なメールドメインではありません
 vsave_euser=「$1」は有効なメールユーザー名ではありません
 vsave_eprepend=「$1」は有効なマッピングプレフィックスではありません
 vsave_eboth=「別の仮想マッピングに一致しないアドレス」と「何も」の両方を選択することはできません
+
 vdelete_err=仮想マッピングを削除できませんでした
+
 stop_err=qmail-sendプロセスが実行されなくなった
+
 log_stop=QMailプロセスの停止
 log_start=QMailプロセスを開始しました
 log_opts=QMailオプションの変更
@@ -158,6 +177,7 @@ log_delete_assigns=$1のメールユーザーを削除しました
 log_delmail=$2から $1メッセージを削除しました
 log_movemail=$1メッセージを $2から $3に移動しました
 log_send=$1にメールを送信しました
+
 rfile_title=自動返信ファイルを編集
 rfile_desc=以下のテキスト領域を使用して、 $1の自動返信メッセージを編集します。メッセージには、マクロ$ SUBJECT、$ FROM、$ TO、$ DATE、および$ BODYが含まれている場合がありますが、これらは自動返信がアクティブになったときに展開されます。
 rfile_desc2=次のような行を追加して、自動返信で使用されるデフォルトに追加または置換するメールヘッダーを設定することもできます。<br><tt> From：foo@bar.com </tt><br> <tt>Subject：On holiday</tt> <br>メッセージの上部にあり、1行の空白行で本文と区切られています。
@@ -176,6 +196,7 @@ rfile_from=差出人：返信用アドレス
 rfile_auto=自動（受信者のアドレスに基づいて）
 rfile_efrom=差出人：アドレス
 rfile_fromdesc=自動方法は信頼できない場合があるため、From：アドレスは可能な限り常に指定する必要があります。
+
 ffile_title=フィルターファイルの編集
 ffile_desc=以下のフォームを使用して、ファイル $1にフィルタールールを設定します。
 ffile_efile=$1の編集は許可されていません。
@@ -191,6 +212,7 @@ ffile_other=それ以外の場合は $1に転送します
 ffile_err=フィルターファイルを保存できませんでした
 ffile_ematch=一致しない
 ffile_eaction=転送先アドレスがありません
+
 queue_title=メールキュー
 queue_count=$1メッセージ
 queue_none=現在、メールメッセージは配信用にキューに入れられていません
@@ -206,10 +228,12 @@ queue_all=すべて選択
 queue_invert=選択を反転
 queue_refresh=メールキューを更新
 queue_refreshdesc=このページを再読み込みして、メールキューの現在の状態を表示します。
+
 qview_title=キューに入れられたメッセージ
 qview_desc=ファイル $1から
 qview_headers=メールヘッダー
 qview_attach=添付ファイル
+
 assigns_title=メールユーザーの割り当て
 assigns_return=メールユーザーの割り当て
 assigns_toomany=システム上のメールユーザーが多すぎるため、このページに表示できません。
@@ -221,6 +245,7 @@ assigns_gid=GID
 assigns_home=ホームディレクトリ
 assigns_desc=メールユーザーの割り当てにより、Unixユーザーリストで定義されていないユーザーのメールボックスを作成できます。各割り当ては、実際のUnixユーザーのメールボックスに配信されているかのように、選択したユーザー名またはユーザー名パターンのメールを配信します。
 assigns_delete=選択したメールユーザーを削除
+
 sform_edit=メールユーザーの編集
 sform_create=メールユーザーを作成する
 sform_address=住所のユーザー名
@@ -230,15 +255,19 @@ sform_user=Unixユーザー
 sform_uid=UID
 sform_gid=GID
 sform_home=ホームディレクトリ
+
 ssave_err=メールユーザーを保存できませんでした
 ssave_eaddress=住所ユーザー名が欠落しているか無効です
 ssave_euser=Unixユーザーが見つからないか無効です
 ssave_euid=UIDが欠落しているか無効です
 ssave_egid=GIDが欠落しているか無効です
 ssave_ehome=ホームディレクトリが見つからないか無効です
+
 sdelete_err=メールユーザーを削除できませんでした
+
 delete_egone=キューに入れられたメッセージはもう存在しません
 delete_ebogus=無効なキューファイル名
+
 boxes_title=ユーザーメールボックス
 boxes_user=ユーザー
 boxes_size=メールボックスのサイズ
@@ -248,6 +277,7 @@ boxes_sent=送信済みメール
 boxes_ecannot=メールを読むことはできません
 boxes_toomany=システム上のユーザーが多すぎて、すべてのメールボックスをリストできません。
 boxes_go=ユーザーのメールを表示：
+
 mail_title=ユーザーメール
 mail_from=から
 mail_date=日付
@@ -286,6 +316,7 @@ mail_forward=進む
 mail_rfc=行から
 mail_move=へ引っ越す：
 mail_eexists=メッセージはもう存在しません！
+
 view_title=メールを読む
 view_desc=$2のメッセージ $1
 view_desc2=ユーザー $2のメッセージ $1
@@ -309,6 +340,7 @@ view_mark1=読んだ
 view_mark2=特別
 view_return=元のメール
 view_sub=添付メール
+
 compose_title=Eメールの作成
 reply_title=メールに返信
 forward_title=前方のメール
@@ -319,6 +351,7 @@ reply_mailforward=転送されたメッセージ
 reply_attach2=クライアントおよびサーバー側の添付ファイル
 reply_send=メールを送る
 reply_ecannot=このユーザーとしてメールを送信することはできません
+
 send_err=メールを送信できませんでした
 send_eto=住所がありません
 send_efrom=差出人アドレスがありません
@@ -331,6 +364,7 @@ send_eattach=添付ファイルの合計サイズが $1 kBを超えることは�
 send_eperms=ユーザー $1は $2を読み取れません
 send_eperms2=ファイル $1を送信することはできません
 send_epath=Sendmail実行可能ファイル $1は存在しません。
+
 delete_title=メールを削除
 delete_rusure=$1の選択したメッセージを $2から削除してもよろしいですか？大きなメールファイルの場合、これには時間がかかる場合があります。削除が完了するまで、他のアクションは実行されません。
 delete_rusure2=このメッセージを $1から削除してもよろしいですか？大きなメールファイルの場合、これには時間がかかる場合があります。削除が完了するまで、他のアクションは実行されません。
@@ -339,6 +373,7 @@ delete_ecannot=これで、このユーザーからメールを削除できま�
 delete_enone=削除するメールが選択されていません
 delete_emnone=マークするメールが選択されていません
 delete_nobutton=ボタンがクリックされていません
+
 search_title=の検索結果
 search_ecannot=このユーザーのメールを検索することはできません
 search_ematch=一致するテキストを入力する必要があります。
@@ -346,6 +381,7 @@ search_efield=検索タイプを選択する必要があります。
 search_none=メッセージが見つかりません。
 search_results2=$2に一致する $1のメールメッセージ ..
 search_results3=$1のメールメッセージが $2と一致しません ..
+
 match_from=From：マッチ
 match_subject=件名：一致
 match_to=宛先：一致
@@ -363,6 +399,7 @@ match_!date=日付：一致しません
 match_!body=体が一致しません
 match_!size=サイズがより小さい
 match_!headers=ヘッダーが一致しません
+
 delq_titles=メッセージを削除する
 delq_rusure=選択した $1個のキューに入っているメッセージを削除してもよろしいですか？
 delq_confirm=メッセージを削除する

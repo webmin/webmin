@@ -15,6 +15,7 @@ index_header2=Yapılandırmayı şimdi geri al
 index_now2=Şimdi Geri Al
 index_apply=Yapılandırmalar uygulansın mı?
 index_jobs=Zamanlandırılmış Yedekler
+
 edit_title1=Zamanlandırılmış Yedekleme Oluştur
 edit_title2=Zamanlandırılmış Yedeklemeyi Düzenle
 edit_header=Zamanlandırılmış yedekleme seçenekleri
@@ -28,8 +29,10 @@ edit_mods=Yedeklenecek modüller
 edit_dest=Yedek hedefi
 edit_mods2=Geri alınacak modüller
 edit_dest2=Buradan geri al
+
 save_err=Yedeğin kaydedilmesinde hata oluştu
 save_emods=Modül seçilmedi
+
 backup_mode0=Yerel dosya
 backup_mode1=FTP sunucusu
 backup_mode2=SSH sunucusu
@@ -45,6 +48,7 @@ backup_egunzip=Yedek sıkıştırılmış, ama <tt>gunzip</tt> kurulmamış
 backup_euntar=TAR 'ın açılmasında hata oluştu : $1
 backup_enone2=Seçili modüllerin hiçbir dosyası yedek içinde bulunmuyor
 backup_epre2=$1 modülü geri alınmayı reddetti : $2
+
 backup_err=Yedeklemede hata oluştu
 backup_edest=Yerel dosya girilmemiş ya da yanlış girilmiş
 backup_eserver1=FTP sunucusu girilmemiş ya da yanlış girilmiş
@@ -57,15 +61,18 @@ backup_title=Yedekleme Yapılandırması
 backup_doing=Modül yapılandırma dosyalarının $1 'e yedeklenmesi başlıyor ..
 backup_failed=.. hata! $1
 backup_done=.. tamamlandı. Son yedek boyutu $1, $2 dosya içeriyor.
+
 restore_err=Geri almada hata oluştu
 restore_title=Yapılandırmayı Geri Al
 restore_doing=Modül yapılandırma dosyalarını $1 'den geri alınması başlandı ..
 restore_failed=.. hata! $1
 restore_done=.. tamamlandı. $1 dosya geri alındı
+
 nice_ftp=FTP ile $1 'de $2
 nice_ssh=SSH ile $1 'de $2
 nice_upload=yüklenen dosya
 nice_download=tarayıcı
+
 log_backup=$1 modül $2 'ye yedeklendi
 log_restore=$1 modül $2 'den geri alındı
 log_create_backup=$1 modülün $2'de yedeklenmesi oluşturuldu

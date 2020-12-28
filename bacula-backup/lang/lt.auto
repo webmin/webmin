@@ -29,12 +29,14 @@ index_fd=Failo demono konfigūracija
 index_groups=„Bacula“ grupės konfigūracija
 index_actions=Atsarginės kopijos kūrimo ir atkūrimo veiksmai
 index_ocmin=Prisidėjo <a href=$2 target=_new>Linmin</a> </a>
+
 connect_emysql=Nepavyko įkelti duomenų bazės DBI tvarkyklės $1 
 connect_elogin=Nepavyko prisijungti prie duomenų bazės $1:$2.
 connect_equery=Atrodo, kad duomenų bazėje $1 nėra „Bacula“ lentelių.
 connect_equery2=Taip gali būti todėl, kad įdiegtas „SQLite Perl“ modulis yra per naujas ir nepalaiko senesnio „SQLite“ duomenų bazės formato, kurį naudoja „Bacula“.
 connect_equery3=Atrodo, kad duomenų bazėje $1 nėra OC Bacula grupių lentelių.
 esql=SQL klaida : $1 
+
 check_edir=„Bacula“ konfigūracijos aplankas $1 jūsų sistemoje nerastas.
 check_ebacula=„Bacula“ kontrolės komanda $1 nerasta.
 check_econsole=„Bacula“ konsolės komanda $1 nerasta.
@@ -43,12 +45,14 @@ check_eclient=Atrodo, kad ši sistema yra <a href='$2'>„Bacula“ klientas</a>
 check_econfigs=$1 nerasta jokių „Bacula“ konfigūracijos failų
 check_eservers=Nebuvo apibrėžtos „Webmin“ serverių grupės
 check_engmod=„OpenCountry Bacula“ grupių modulis neįdiegtas
+
 proc_bacula-sd=Sandėliavimo demonas
 proc_bacula-fd=Bylos demonas
 proc_bacula-dir=„Bacula Director“ demonas
 proc_bareos-sd=Sandėliavimo demonas
 proc_bareos-fd=Bylos demonas
 proc_bareos-dir=„Bacula Director“ demonas
+
 stop_err=Nepavyko sustabdyti Bacula
 start_err=Nepavyko paleisti Bacula
 start_einit=$1 scenarijaus nerasta
@@ -57,6 +61,7 @@ restart_err=Nepavyko iš naujo paleisti „Bacula“
 apply_err=Nepavyko pritaikyti konfigūracijos
 apply_failed=Aptikta konfigūracijos klaida
 apply_problem=Nepavyko pritaikyti konfigūracijos : $1 
+
 jobs_title=Atsarginiai darbai
 jobs_none=Dar nėra apibrėžta atsarginių užduočių.
 jobs_name=Pareigos vardas
@@ -69,6 +74,7 @@ jobs_add=Pridėkite naują atsarginę užduotį.
 jobs_delete=Ištrinti pažymėtus darbus
 jobs_return=darbų sąrašas
 jobs_derr=Nepavyko ištrinti darbų
+
 filesets_title=Failų rinkiniai
 filesets_none=Dar nėra apibrėžta atsarginių failų rinkinių.
 filesets_name=Failo rinkinio pavadinimas
@@ -78,6 +84,7 @@ filesets_delete=Ištrinti pasirinktus failų rinkinius
 filesets_return=failų rinkinių sąrašas
 filesets_derr=Nepavyko ištrinti failų rinkinių
 filesets_ednone=Nepasirinkta
+
 fileset_title1=Sukurti failų rinkinį
 fileset_title2=Redaguoti failų rinkinį
 fileset_header=Atsarginio failo rinkinio informacija
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;Numatytasis glaudinimo lygis&gt;
 fileset_lzo=LZO suspaudimas
 fileset_gzip=Gipo lygis $1 
 fileset_onefs=Riboti atsarginę kopiją vienoje failų sistemoje
+
 clients_title=Atsarginiai klientai
 clients_none=Dar nėra apibrėžta atsarginių klientų.
 clients_name=Kliento vardas
@@ -106,6 +114,7 @@ clients_add=Pridėkite naują atsarginį klientą.
 clients_delete=Ištrinti pasirinktus klientus
 clients_return=klientų sąrašas
 clients_derr=Nepavyko ištrinti klientų
+
 client_title1=Sukurti atsarginį klientą
 client_title2=Redaguoti atsarginį klientą
 client_header=Išsami informacija apie klientą, kurį reikia saugoti
@@ -128,6 +137,7 @@ client_efileret=Trūksta arba netinkamas failo saugojimo laikotarpis
 client_ejobret=Trūksta arba netinkamas darbo išlaikymo laikotarpis
 client_echild=Šio kliento negalima ištrinti, nes juo naudojasi $1 
 client_status=Rodyti būseną
+
 job_title1=Sukurti atsarginę užduotį
 job_title2=Redaguoti atsarginę užduotį
 job_header=Atsarginė darbo informacija
@@ -156,6 +166,7 @@ job_before=Įsakymas prieš darbą
 job_after=Komanda po darbo
 job_cbefore=Komanda prieš darbą (klientui)
 job_cafter=Komanda po darbo (klientui)
+
 schedules_title=Atsarginės grafikai
 schedules_none=Dar nėra apibrėžtas atsarginis tvarkaraštis.
 schedules_name=Tvarkaraščio pavadinimas
@@ -164,6 +175,7 @@ schedules_add=Pridėkite naują atsarginį tvarkaraštį.
 schedules_delete=Ištrinti pasirinktus tvarkaraščius
 schedules_return=tvarkaraščių sąrašas
 schedules_derr=Nepavyko ištrinti tvarkaraščių
+
 schedule_title1=Sukurkite atsarginių kopijų tvarkaraštį
 schedule_title2=Redaguoti atsarginių kopijų tvarkaraštį
 schedule_header=Atsarginio tvarkaraščio informacija
@@ -177,6 +189,7 @@ schedule_ename=Trūksta arba netinkamas tvarkaraščio pavadinimas
 schedule_eclash=Tvarkaraštis tuo pačiu pavadinimu jau yra
 schedule_etimes=Trūksta atsarginės kopijos darymo laiko $1 eilutėje
 schedule_echild=Šio tvarkaraščio negalima ištrinti, nes jį naudoja $1 
+
 backup_title=Vykdyti atsarginę užduotį
 backup_header=Atsarginė darbo informacija
 backup_job=Darbas bėgti
@@ -191,11 +204,13 @@ backup_running=.. dabar vykdoma atsarginė užduotis. Kai bus baigti, rezultatai
 backup_running2=.. atsarginis darbas buvo pradėtas fone.
 backup_done=.. atsarginė kopija baigta.
 backup_failed=.. atsarginė kopija nebuvo sėkmingai baigta. Norėdami gauti daugiau informacijos, patikrinkite aukščiau esantį klaidos pranešimą.
+
 gbackup_title=Vykdykite „Bacula Group“ atsarginį darbą
 gbackup_run=Pradėti atsarginę užduotį $1 $2 klientams ..
 gbackup_on=Vykdoma atsarginė užduotis $1 kliente :
 gbackup_header=„Bacula“ grupės atsarginės darbo vietos informacija
 gbackup_jd=$1 (failų rinkinys $2 grupėje $3)
+
 dirstatus_title=Režisieriaus statusas
 dirstatus_sched=Suplanuoti atsarginiai darbai
 dirstatus_name=Pareigos vardas
@@ -216,12 +231,14 @@ dirstatus_status2=Statusas
 dirstatus_donenone=Nebuvo vykdomos atsarginės užduotys.
 dirstatus_cancel=Atšaukti pasirinktus darbus
 dirstatus_refresh=Atnaujinti sąrašą
+
 clientstatus_title=Kliento būsena
 clientstatus_err=Nepavyko gauti būsenos iš $1 : $2 
 clientstatus_msg=Būsena nuo $1 : $2 
 clientstatus_show=Rodyti kliento būseną:
 clientstatus_ok=Gerai
 clientstatus_on=$1 ($2)
+
 storages_title=Sandėliavimo demonai
 storages_none=Dar nėra apibrėžta saugojimo demonų.
 storages_name=Saugyklos pavadinimas
@@ -232,6 +249,7 @@ storages_add=Pridėkite naują saugojimo demoną.
 storages_delete=Ištrinkite pasirinktus saugojimo demonus
 storages_return=saugojimo demonų sąrašas
 storages_derr=Nepavyko ištrinti saugojimo demonų
+
 storage_title1=Sukurti saugyklos demoną
 storage_title2=Redaguoti saugojimo demoną
 storage_header=Informacija apie nuotolinio saugojimo demoną
@@ -255,6 +273,7 @@ storage_emedia=Trūksta medijos tipo pavadinimo
 storage_emaxjobs=Trūksta daugiausiai vienu metu atliekamų darbų
 storage_echild=Šio kliento negalima ištrinti, nes juo naudojasi $1 
 storage_status=Rodyti būseną
+
 devices_title=Sandėliavimo įrenginiai
 devices_none=Dar nėra apibrėžta jokių saugojimo įrenginių.
 devices_name=Įrenginio pavadinimas
@@ -264,6 +283,7 @@ devices_add=Pridėkite naują saugojimo įrenginį.
 devices_delete=Ištrinkite pasirinktus saugojimo įrenginius
 devices_return=saugojimo įrenginių sąrašas
 devices_derr=Nepavyko ištrinti atminties įrenginių
+
 device_title1=Sukurti saugojimo įrenginį
 device_title2=Redaguoti saugojimo įrenginį
 device_header=Informacija apie failų saugojimo įrenginį
@@ -282,11 +302,13 @@ device_eclash=To paties pavadinimo atminties įrenginys jau yra
 device_emedia=Trūksta medijos tipo pavadinimo
 device_edevice=Trūksta arba netinkamas archyvo įrenginys ar katalogas
 device_echild=Šio kliento negalima ištrinti, nes juo naudojasi $1 
+
 storagestatus_title=Sandėliavimo demono būsena
 storagestatus_err=Nepavyko gauti būsenos iš $1 : $2 
 storagestatus_msg=Būsena nuo $1 : $2 
 storagestatus_show=Rodyti saugojimo demono būseną:
 storagestatus_ok=Gerai
+
 label_title=Etiketės tūris
 label_header=Informacija apie etiketėje nurodytą tūrį
 label_storage=Saugojimo demonas etiketėms
@@ -302,6 +324,7 @@ label_done=.. ženklinti sėkmingai.
 label_epool=.. nepavyko rasti baseino!
 label_err=Etiketė nepavyko
 label_elabel=Neįrašyta etiketė
+
 pools_title=Tūriniai baseinai
 pools_none=Dar nėra apibrėžti tūrio fondai.
 pools_name=Baseino pavadinimas
@@ -311,6 +334,7 @@ pools_add=Pridėkite naują tūrio baseiną.
 pools_delete=Ištrinti pasirinktus tūrio rezervus
 pools_return=tūrio baseinų sąrašas
 pools_derr=Nepavyko ištrinti tūrio telkinių
+
 pool_title1=Sukurkite tūrio fondą
 pool_title2=Redaguoti tūrio fondą
 pool_header=Informacija apie atsarginį tūrio fondą
@@ -332,6 +356,7 @@ pool_ereten=Trūksta arba netinkamas saugojimo laikotarpis
 pool_status=Rodyti tomus
 pool_autolabel=Automatiškai etikečių etiketės etiketė
 pool_maxvolsize=Maksimalus garsumo dydis (pvz., 5G 5 gigabaitams)
+
 poolstatus_title=Tūriai baseine
 poolstatus_show=Rodyti tūrį baseine:
 poolstatus_ok=Gerai
@@ -345,9 +370,11 @@ poolstatus_status=Atsarginis režimas
 poolstatus_none=Šiame atsarginiame baseine šiuo metu nėra tūrio.
 poolstatus_never=Niekada
 poolstatus_delete=Ištrinti pasirinktus tomus
+
 dvolumes_err=Nepavyko ištrinti tomų
 dvolumes_enone=Nepasirinkta
 dvolumes_ebacula=Bacula klaida : $1 
+
 mount_title=Montuoti arba atkabinti
 mount_header=Saugyklos montavimo arba atjungimo parinktys
 mount_storage=Laikymo įrenginys
@@ -365,8 +392,10 @@ unmount_failed=.. atjungti nepavyko! Norėdami sužinoti priežastį, skaitykite
 mount_return=montavimo forma
 mount_err=Nepavyko prijungti atminties įrenginio
 mount_eslot=Trūksta arba netinkamas lizdo numeris
+
 cancel_err=Nepavyko atšaukti darbų
 cancel_enone=Nepasirinkta
+
 gjobs_title=„Bacula Group“ atsarginės darbo vietos
 gjobs_none=Dar nėra apibrėžta „Bacula“ grupės atsarginių užduočių.
 gjobs_add=Pridėkite naują „Bacula“ grupės atsarginę užduotį.
@@ -374,10 +403,12 @@ gjobs_delete=Ištrinti pažymėtus darbus
 gjobs_return=„Bacula“ grupės darbo vietų sąrašas
 gjobs_derr=Nepavyko ištrinti „Bacula“ grupės darbų
 gjobs_client=„Bacula“ grupės atsarginės kopijos
+
 gjob_title1=Sukurkite „Bacula Group“ atsarginį darbą
 gjob_title2=Redaguoti „Bacula Group“ atsarginį darbą
 gjob_header=„Bacula“ grupės atsarginės darbo vietos informacija
 gjob_client=„Bacula“ grupės atsarginės kopijos
+
 groups_title=Bacula grupės
 groups_none=„Bacula“ atsarginėms atsarginėms kopijoms dar nepasirinko nė vienos „Bacula“ grupės.
 groups_name=Grupės pavadinimas
@@ -391,6 +422,7 @@ groups_derr=Nepavyko ištrinti grupių
 groups_noadd=Nėra „Bacula“ grupių, kurias būtų galima pasirinkti atsarginėms kopijoms kurti.
 groups_info=$1 ($2 nariai)
 groups_already=Visos „Bacula“ grupės jau pridėtos.
+
 group_title1=Sukurti „Bacula“ grupę
 group_title2=Redaguoti „Bacula“ grupę
 group_header=Informacija apie „Bacula“ grupės duomenų bazę
@@ -401,11 +433,13 @@ group_port=„Bacula FD“ prievadas
 group_err=Nepavyko išsaugoti „Bacula“ grupės
 group_eclash=Grupė tuo pačiu pavadinimu jau egzistuoja
 group_members=Šeimininkai Bacula grupėje
+
 sync_title=„Bacula“ grupės sinchronizavimas
 sync_header=Automatinės „Bacula“ grupės kliento sinchronizacijos parinktys
 sync_sched=Sinchronizuoti pagal grafiką?
 sync_schedyes=Taip, žemiau nurodytais laikais ..
 sync_err=Nepavyko išsaugoti „Bacula“ grupės sinchronizacijos
+
 log_create_client=Sukurtas atsarginis klientas $1 
 log_modify_client=Modifikuotas atsarginis klientas $1 
 log_delete_client=Ištrintas atsarginis klientas $1 
@@ -464,6 +498,7 @@ log_director=Išsaugota pasaulinė „Bacula“ režisieriaus konfigūracija
 log_file=Išsaugota „Bacula“ failo demono konfigūracija
 log_storagec=Išsaugota „Bacula“ saugyklos demono konfigūracija
 log_fixpass=Fiksuotas „Bacula“ konsolės programos slaptažodis
+
 director_title=Režisieriaus konfigūracija
 director_header=„Global Bacula“ režisieriaus galimybės
 director_name=Režisieriaus vardas
@@ -477,6 +512,7 @@ director_ename=Trūksta arba netinkamas režisieriaus vardas
 director_eport=Trūksta arba netinkamas prievado numeris
 director_ejobs=Trūksta arba netinkamas vienu metu esančių darbų skaičius
 director_edir=Trūksta arba jo nėra
+
 tls_enable=Įgalinti TLS šifravimą?
 tls_require=Priimti tik TLS ryšius?
 tls_verify=Patikrinti TLS klientus?
@@ -488,6 +524,7 @@ tls_ecert=Nėra TLS pažymėjimo failo arba jo nėra
 tls_ekey=Nėra TLS rakto failo arba jo nėra
 tls_ecacert=Nėra arba nėra TLS CA sertifikatų failo
 tls_ecerts=Kad TLS būtų įgalinta, reikia nurodyti sertifikatų, raktų ir CA failus
+
 file_title=Failo demono konfigūracija
 file_header=„Bacula“ failo demono parinktys
 file_name=Failo demono vardas
@@ -500,6 +537,7 @@ file_ename=Trūksta arba netinkamas failo demono vardas
 file_eport=Trūksta arba netinkamas prievado numeris
 file_ejobs=Trūksta arba netinkamas vienu metu esančių darbų skaičius
 file_edir=Trūksta arba jo nėra
+
 fdirectors_title=„File Daemon“ režisieriai
 fdirectors_none=Režisierių dar nėra.
 fdirectors_name=Režisieriaus vardas
@@ -508,6 +546,7 @@ fdirectors_add=Pridėti naują direktorių.
 fdirectors_delete=Ištrinti pasirinktus režisierius
 fdirectors_return=direktorių sąrašas
 fdirectors_derr=Nepavyko ištrinti režisierių
+
 fdirector_title1=Sukurkite failų demono direktorių
 fdirector_title2=Redaguoti „File Daemon Director“
 fdirector_header=Informacija apie nuotolinio direktoriaus valdymą
@@ -519,6 +558,7 @@ fdirector_err=Nepavyko išsaugoti demono direktoriaus
 fdirector_ename=Trūksta režisieriaus vardo
 fdirector_eclash=Režisierius tuo pačiu vardu jau egzistuoja
 fdirector_epass=Nėra slaptažodžio
+
 sdirectors_title=„Storage Daemon“ direktoriai
 sdirectors_none=Režisierių dar nėra.
 sdirectors_name=Režisieriaus vardas
@@ -527,6 +567,7 @@ sdirectors_add=Pridėti naują direktorių.
 sdirectors_delete=Ištrinti pasirinktus režisierius
 sdirectors_return=direktorių sąrašas
 sdirectors_derr=Nepavyko ištrinti režisierių
+
 sdirector_title1=Sukurkite „Storage Daemon Director“
 sdirector_title2=Redaguoti „Storage Daemon“ direktorių
 sdirector_header=Informacija apie nuotolinio direktoriaus valdymą
@@ -538,6 +579,7 @@ sdirector_err=Nepavyko išsaugoti saugyklos demono direktoriaus
 sdirector_ename=Trūksta režisieriaus vardo
 sdirector_eclash=Režisierius tuo pačiu vardu jau egzistuoja
 sdirector_epass=Nėra slaptažodžio
+
 storagec_title=Saugojimo demono konfigūracija
 storagec_header=„Bacula“ saugojimo demono parinktys
 storagec_name=Deimono vardas
@@ -550,6 +592,7 @@ storagec_ename=Trūksta arba netinkamas saugojimo demono vardas
 storagec_eport=Trūksta arba netinkamas prievado numeris
 storagec_ejobs=Trūksta arba netinkamas vienu metu esančių darbų skaičius
 storagec_edir=Trūksta arba jo nėra
+
 chooser_title=Pasirinkite Tvarkaraštis
 chooser_monthsh=Mėnesiai vykdyti
 chooser_months=Metų mėnesiai
@@ -574,11 +617,13 @@ chooser_emonthsrange=Pasirinkti mėnesiai turi būti gretimi
 chooser_eweekdaysrange=Pasirinktos darbo dienos turi būti gretimos
 chooser_eweekdaynumsrange=Pasirinkti darbo dienų numeriai turi būti gretimi
 chooser_edaysrange=Pasirinktos mėnesio dienos turi būti gretimos
+
 weekdaynum_1=Pirmas
 weekdaynum_2=Antra
 weekdaynum_3=Trečias
 weekdaynum_4=Ketvirtasis
 weekdaynum_5=Penkta
+
 restore_title=Atstatyti atsarginę kopiją
 restore_title2=Atkurti „Bacula“ grupės atsargines kopijas
 restore_title3=Atkurti „Bacula Group“ atsarginę kopiją

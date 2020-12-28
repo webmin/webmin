@@ -16,6 +16,7 @@ index_cancel=Utzi konexioa
 index_canceldesc=ADSL bezeroa konexio bat ezartzen saiatzen ari da. Egin klik botoi honetan $1 komandoarekin saiatzeko.
 index_cdemand=Utzi eskaera
 index_cdemanddesc=ADSL bezeroa konexio eskaeraren zain dago une honetan. Egin klik botoi honetan $1 komandoarekin gelditzeko.
+
 index_header=ADSL bezeroaren konfigurazio aukerak
 index_desc=Beheko ezarpenak zure sistemak hasitako ADSL konexio berri guztiei aplikatuko zaizkie. Aldatzen badituzu, konexioa itzali eta berriro hasi behar da aldaketak gauzatzeko.
 index_eth=Ethernet interfazea
@@ -36,11 +37,13 @@ index_fw_standalone=Ostalari bakarrerako
 index_fw_masquerade=NAT aterako
 index_connect=Konexio saiatzeko denbora
 index_forever=Forever
+
 start_err=Ezin izan da ADSL konexioa abiarazi
 start_title=Abiarazi ADSL
 start_ip=ADSL konexioa ezarri da $1 IP helbidearekin.
 start_demand=Eskari modua konektatzeko gaituta dagoenez, zure ADSL konexioa behar denean bakarrik hasiko da.
 start_bg=ADSL konexioa ez zen 20 segundotan hasi. ADSL bezeroak bigarren planoan konektatzen saiatzen jarraituko du arrakasta izan arte.
+
 save_err=Ezin izan da ADSL konfigurazioa gorde
 save_eeth=Interfaze Ethernet falta edo baliogabea da
 save_etimeout=Eskatutako denbora-muga falta da edo baliogabea
@@ -49,10 +52,12 @@ save_econnect=Konexioaren iraungitze falta edo baliogabea da
 save_emss=Paketeen gehienezko tamaina falta edo baliogabea da
 save_title=Gorde konfigurazioa
 save_desc=Zure ADSL bezeroaren konfigurazioa ongi gorde da, baina ez da berriro konektatu arte erabiliko.
+
 stop_err=Ezin izan da ADSL konexioa itzali
 stop_title=Itzali ADSL
 stop_ok=ADSL konexioa behar bezala itzali da.
 stop_failed=Zure ADSL konexioa aktiboa da oraindik arrazoiren batengatik!
+
 log_save=Gorde bezeroaren konfigurazioa
 log_stop=ADSL itxi
 log_start=ADSL sortu zen

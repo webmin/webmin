@@ -15,6 +15,7 @@ index_db=數據庫名稱
 index_tables=桌子
 index_drops=刪除選定的數據庫
 index_postgresql=PostgreSQL的
+
 index_toomany=數據庫太多，無法顯示。查找匹配的數據庫：
 index_search=搜索
 index_showing=顯示與 $1..相匹配的數據庫
@@ -28,6 +29,7 @@ index_gist=廣義索引搜索樹
 index_jump=或編輯數據庫：
 index_jumpok=打開
 index_edithosts=配置允許的主機系統
+
 dbase_header=數據庫表，索引，視圖和序列
 dbase_vadd=建立檢視
 dbase_sadd=創建序列
@@ -44,12 +46,15 @@ dbase_jump=編輯表格：
 dbase_vjump=編輯視圖：
 dbase_ijump=編輯索引：
 dbase_sjump=編輯順序：
+
 table_eblob=BLOB字段 $1不需要大小
 table_csv=導出為CSV
 table_index=創建索引
 table_delete=刪除所選字段
+
 field_err2=保存字段失敗
 field_err1=刪除字段失敗
+
 exec_old=或選擇一個先前的SQL命令：
 exec_clear=清除歷史記錄
 exec_header2=選擇一個SQL命令文件以在數據庫 $1上執行。
@@ -73,6 +78,7 @@ exec_tabexec=執行SQL
 exec_tabfile=從文件運行SQL
 exec_tabimport=導入文字文件
 exec_return=執行SQL表格
+
 view_refresh=刷新
 view_search2=搜索其中字段 $2 $3 $1的行
 view_match0=包含
@@ -98,12 +104,14 @@ view_set=設置為文件內容。
 view_warn=警告-將文件上傳到<tt>text</tt>或<tt>bytea</tt>字段中並查看其內容將無法正常工作，除非已安裝並使用了 $1和 $2 Perl模塊。
 view_adv=高級搜索
 view_sqlrun=SQL查詢生成的結果： $1
+
 newdb_ecannot2=您無權再創建任何數據庫
 newdb_user=由用戶擁有
 newdb_encoding=字符集編碼
 newdb_eencoding=缺少字符集編碼
 newdb_template=模板數據庫
 newdb_notemplate=沒有
+
 user_vwarning=警告：此PostgreSQL用戶是Virtualmin域 $1的管理登錄名。在此處更改任何設置可能會導致Virtualmin錯誤。
 user_setto=調成
 user_nochange=不要改變
@@ -115,6 +123,7 @@ user_sync_delete=刪除匹配的Unix用戶後，刪除PostgreSQL用戶。
 user_delete=刪除所選
 user_derr=刪除用戶失敗
 user_enone=未選擇用戶
+
 host_header=PostgreSQL客戶端身份驗證詳細信息
 host_peer=網絡對等
 host_user=用戶數
@@ -138,16 +147,20 @@ host_derr=無法刪除允許的主機
 host_enone=未選擇主機
 host_manual=編輯配置文件
 host_manualdesc=單擊此按鈕以手動編輯允許的主機配置文件。
+
 manual_title=編輯配置文件
 manual_err=保存配置文件失敗
+
 grant_ns=架構圖
 grant_toomany=有太多對像要顯示。查找匹配的對象：
 grant_showing=顯示與 $1..相匹配的對象
 grant_delete=重置選定的贈款
+
 group_memsopts=所有用戶
 group_memsvals=組中的用戶
 group_derr=刪除群組失敗
 group_enone=未選擇組
+
 log_dbs_delete=刪除了 $1個數據庫
 log_users_delete=已刪除 $1個用戶
 log_groups_delete=已刪除 $1個群組
@@ -170,6 +183,7 @@ log_backup_l=將數據庫 $1備份到文件 $2
 log_backup_all=備份所有數據庫
 log_backup_all_l=將所有數據庫備份到文件 $2
 log_manual=手動編輯允許的主機配置文件
+
 acl_max=是的，最多
 acl_backup=可以創建備份嗎？
 acl_restore=可以還原備份嗎？
@@ -182,12 +196,16 @@ acl_cmds=可以在備份命令之前和之後進行編輯嗎？
 acl_views=可以查看和管理視圖嗎？
 acl_indexes=可以查看和管理索引嗎？
 acl_seqs=可以查看和管理序列嗎？
+
 fdrop_enone=未選擇
 fdrop_eall=您不能從表中刪除所有字段！
+
 setup_err=初始化數據庫失敗
 setup_ecannot=您不允許初始化數據庫
+
 dbase_bkup=後備
 dbase_rstr=恢復
+
 restore_title=恢復數據庫
 restore_header=恢復數據庫選項
 restore_db=數據庫名稱
@@ -210,6 +228,7 @@ restore_tables=還原表
 restore_tables1=全部在備份文件中
 restore_tables0=列出的表
 restore_failed=還原失敗： $1
+
 backup_title=備份資料庫
 backup_title2=備份所有數據庫
 backup_header1=備份目的地
@@ -258,17 +277,21 @@ backup_ebefore=備份前命令失敗！
 backup_cmode=何時運行命令
 backup_cmode1=所有數據庫之前/之後
 backup_cmode0=每個數據庫之前/之後
+
 r_command=命令不受支持
+
 adv_title=高級搜索
 adv_and=查找符合所有條件的記錄 ..
 adv_or=查找符合任何條件的記錄 ..
 adv_ok=馬上搜索
+
 tdrops_enone=沒有要刪除的表格
 tdrops_err=無法刪除表格
 tdrops_ok=下降
 tdrops_title=刪除所選
 tdrops_rusure=您確定要在數據庫 $2中刪除 $1個選定的表嗎？ $3行數據將被刪除。
 tdrops_rusure2=您確定要在數據庫 $2中刪除 $1個選定的表嗎？
+
 ddrops_err=無法刪除數據庫
 ddrops_title=刪除數據庫
 ddrops_rusure=您確定要刪除 $1個選定的數據庫嗎？包含 $3行數據的 $2表將被刪除。
@@ -276,6 +299,7 @@ ddrops_mysql=由於選擇了master數據庫，因此刪除它可能會使Postgre
 ddrops_ok=刪除數據庫
 ddrops_enone=未選擇數據庫
 ddrops_ecannotdb=您不允許刪除數據庫 $1
+
 csv_title=導出CSV文件
 csv_header=CSV導出選項
 csv_dest=出口目的地
@@ -296,6 +320,7 @@ csv_done=CSV導出到 $1已完成。生成的文件大小為 $2。
 csv_headers=在CSV中包含列名？
 csv_cols=要包含在CSV中的列
 csv_ecols=未選擇任何列
+
 import_title=匯入資料
 import_uploadout=從上傳的文件中導入數據 ..
 import_fileout=從文件 $1..導入數據
@@ -303,6 +328,7 @@ import_eupload=缺少上傳的導入文件
 import_efile=缺少導入文件名
 import_done=..創建了 $1行，跳過了 $2重複項。
 import_erow=..在第 $1行中找不到任何字段
+
 index_title1=創建索引
 index_header1=索引選項
 index_name=索引名稱
@@ -320,6 +346,7 @@ index_ecols=未選擇任何字段
 index_title2=編輯索引
 index_header=數據庫 $2中的索引 $1
 index_ecannot=您無權管理索引
+
 view_title1=建立檢視
 view_title2=編輯視圖
 view_header1=查看詳情
@@ -334,6 +361,7 @@ view_eclash=具有相同名稱的視圖
 view_equery=缺少SQL查詢
 view_ecols=沒有輸入列名
 view_ecannot=您無權管理視圖
+
 seq_title1=創建序列
 seq_title2=編輯序列
 seq_header1=遞增順序選項
@@ -353,5 +381,6 @@ seq_emin=最小值缺失或無效
 seq_emax=最大值缺失或無效
 seq_ecache=缺少或無效的值數量要緩存
 seq_ecannot=您無權管理序列
+
 dgrant_err=重置補助金失敗
 dgrant_enone=未選擇對象

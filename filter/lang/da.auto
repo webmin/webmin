@@ -45,6 +45,7 @@ index_ondate=Dato
 index_charset=Sæt automatisk beskedtegnsættet
 index_subject=Motiver automatisk beskedemne
 index_nowebmin=Dette modul er kun til brug i Usermin. Hvis det er synligt i Webmin, er det tema, du bruger, ufuldstændigt.
+
 edit_title1=Opret filter
 edit_title2=Rediger filter
 edit_header1=Betingelse for filter
@@ -71,6 +72,7 @@ edit_amode7=Gem i den nye mappe med navnet
 edit_nobounce=Undertrykke videresendelse af afvisningsmeddelelser
 edit_apply=Vis matchende e-mail i mappe:
 edit_move=Ansøg om e-mail i mappen:
+
 save_err=Kunne ikke gemme filter
 save_egone=Filter findes ikke længere!
 save_econdheader=Manglende eller ugyldig e-mailhoved
@@ -89,8 +91,10 @@ save_enewfolder3=En mappe med samme navn findes allerede
 save_estart=Ugyldig autosvar startdato
 save_eend=Ugyldig autoreply slutdato
 save_echarset=Manglende eller ugyldig autosvar tegnsæt
+
 delete_err=Kunne ikke slette filtre
 delete_enone=Ingen valgt
+
 aliases_type1=Adresse 1
 aliases_type2=Adresser i fil $1 
 aliases_type3=Fil $1 
@@ -101,6 +105,7 @@ aliases_your=Din postkasse
 aliases_delete=Slet mail
 aliases_other=Postkasse til bruger $1 
 aliases_auto=Autosvarer med meddelelse $1 
+
 auto_title=E-mail automatisk svar
 auto_header=Automatiske e-mail-svarindstillinger
 auto_enabled=Automatisk svar aktiveret?
@@ -111,12 +116,14 @@ auto_charsetdef=Fra det aktuelle sprog
 auto_charsetother=Andet tegnsæt
 auto_period=Minimumsinterval mellem svar
 auto_err=Kunne ikke gemme automatisk svar
+
 forward_title=Videresend e-mail
 forward_header=Indstillinger for videresendelse af e-mail
 forward_enabled=E-mail-videresendelse aktiveret?
 forward_to=Videresendes til adresser
 forward_cont=Leverer du også normalt?
 forward_err=Kunne ikke gemme videresendelse af e-mail
+
 move_err=Kunne ikke anvende filter
 move_esrc=Kildemappe $1 findes ikke!
 move_edest=Destinationsmappe $1 findes ikke!

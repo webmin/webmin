@@ -7,6 +7,7 @@ index_applymsg=Cliquer sur ce bouton appliquera la configuration courante.  Ceci
 index_start=Démarrer le Serveur
 index_startmsg=Cliquer sur ce bouton démarrera le service FTP avec la configuration actuelle.  Vous pouvez aussi configurer le serveur pour qu'il soit démarrer automatiquement en utilisant le module <a href='$1'>Services Internet</a>.
 index_return=options du serveur FTP
+
 class_title=Usagers et Classes
 class_header=Classes et options d'usager
 class_class=Classes d'usager
@@ -29,6 +30,7 @@ class_err=Impossible d'enregistrer les classes d'usager
 class_eclass=$1 n'est pas un nom de classe valide
 class_etypes=Aucun type choisit pour la classe $1
 class_eaddrs=Aucune adresses entré pour la classe $1
+
 message_title=Banières et Messages
 message_header=Messages, bannières et fichiers README
 message_message=Fichiers de message
@@ -57,6 +59,7 @@ message_eclass=La classe $1 n'existe pas
 message_ebanner=$1 n'est pas un banière d'ouverture de session valide
 message_ehostname=Nom d'hôte manquant ou invalide
 message_eemail=Adresse de couriel manquant ou invalide
+
 acl_title=Limites et Contrôle d'Accès
 acl_header=Options des limites et contrôle d'accès
 acl_deny=Refuser l'accès de
@@ -103,6 +106,7 @@ acl_elmsg=$1 n'est pas un fichier de message is not a valid error message file
 acl_efbcount=$1 n'est pas un nombre de fichier ou de bytes valide
 acl_elimit=$1 n'est pas une valeur de temps limite valide
 acl_efails=$1 n'est pas nombre d'ouverture de session ratés valide
+
 net_title=Réseau
 net_header=Options réseau
 net_tcp=Taille de la fenêtre TCP
@@ -120,6 +124,7 @@ net_eip=$1 n'est pas un adresse IP valide
 net_enet=$1 n'est pas une adresse réseau valide
 net_ecidr=$1 n'est pas nombre de bits réseau valide
 net_eport=$1 n'est pas un nombre de port valide
+
 log_title=Journaux
 log_header=Options des journaux
 log_commands=Enregistrer toutes les commandes pour
@@ -136,6 +141,7 @@ log_to=Enregistrer les transfers pour
 log_syslog=Journal système
 log_xferlog=Fichier journal XFER
 log_err=Impossible d'enregistrer les options de journaux
+
 alias_title=Alias et Chemins
 alias_header=Options de chemins et d'alias
 alias_alias=Alias de répertoire pour CD
@@ -146,6 +152,7 @@ alias_err=Impossible d'enregistrer à les alias et les chemins
 alias_efrom=$1 n'est pas un nom d'alias valide
 alias_eto=$1 n'est pas un alias de répertoire valide
 alias_ecdpath=$1 n'est pas répertoire de recherche de CD valide
+
 anon_title=FTP Anonyme
 anon_eftp=Attention - votre système n'a pas l'usager <tt>ftp</tt>, ainsi les sessions anonyme ne sont pas configuré
 anon_header=Options de FTP anonyme
@@ -168,6 +175,7 @@ anon_uids=Pour les usagers Unix
 anon_err=Impossible d'enregistrer les options du FTP anonyme
 anon_edir=$1 n'est pas un répertoire valide
 anon_egroup=$1 n'est pas un groupe valide
+
 perm_title=Permissions
 perm_header=Options de permissions
 perm_perms=Restrictions des commandes
@@ -189,7 +197,9 @@ perm_err=Impossible d'enregistrer les permissions
 perm_echar=$1 n'est pas un caractère valide dans une expression régulière
 perm_etypes=Aucun type d'usager sélectionné
 perm_emesg=$1 n'est pas un message d'erreur valide
+
 host_title=Contrôle d'Accès des Hôtes
+
 misc_title=Autres Options
 misc_header=Autres options
 misc_lslong=Commande pour les listes détaillée

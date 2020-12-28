@@ -1,5 +1,6 @@
 index_euser=Il-fajl tal-konfigurazzjoni RBAC $1 ma nstabx fis-sistema tiegħek. Forsi l-RBAC mhuwiex installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
 index_return=indiċi tal-modulu
+
 users_title=Attributi tal-Utent
 users_user=Username
 users_profiles=Profili mogħtija
@@ -10,6 +11,7 @@ users_return=lista tal-attributi tal-utent
 users_type=Tip
 users_role=Rwol
 users_project=Proġett
+
 user_title1=Oħloq Attributi ta 'l-Utenti
 user_title2=Edit L-Attributi tal-Utenti
 user_header=Attributi mogħtija lil utent Unix
@@ -35,6 +37,7 @@ user_eauth="$1" mhix awtorizzazzjoni valida
 user_ecannot=M’intix permess li teditja dan l-utent
 user_erole=M'għandekx permess tassenja r-rwol "$1"
 user_eprof=M'għandekx permess tassenja l-profil '$1'
+
 auths_title=Awtorizzazzjonijiet
 auths_name=Isem l-awtorizzazzjoni
 auths_desc=Deskrizzjoni
@@ -42,8 +45,10 @@ auths_none=L-ebda awtorizzazzjoni ma ġiet definita s'issa.
 auths_add=Żid awtorizzazzjoni ġdida.
 auths_return=lista tal-awtorizzazzjonijiet
 auths_ecannot=M'għandekx permess teditja l-awtorizzazzjonijiet
+
 authc_name=Awtorizzazzjoni
 authc_desc=Deskrizzjoni
+
 auth_title1=Oħloq Awtorizzazzjoni
 auth_title2=Editja l-Awtorizzazzjoni
 auth_header=Dettalji dwar il-privileġġ tal-awtorizzazzjoni
@@ -57,6 +62,7 @@ auth_edesc=Deskrizzjoni twila mhix valida
 auth_eclash=Awtorizzazzjoni bl-istess isem diġà teżisti
 auth_einuseu=Din l-awtorizzazzjoni tintuża mill-utent $1, u għalhekk ma tistax titħassar
 auth_einusep=Din l-awtorizzazzjoni tintuża mill-profil $1, u għalhekk ma tistax titħassar
+
 profs_title=Profili
 profs_name=Isem tal-profil
 profs_desc=Deskrizzjoni
@@ -65,6 +71,7 @@ profs_none=L-ebda profili ma ġew definiti s'issa.
 profs_add=Żid profil ġdid.
 profs_return=lista tal-profili
 profs_ecannot=M'għandekx permess teditja l-profili
+
 prof_title1=Oħloq Profil
 prof_title2=Editja Profil
 prof_header=Dettalji dwar il-profil tal-awtorizzazzjoni
@@ -81,6 +88,7 @@ prof_einuseu=Dan il-profil qed jintuża mill-utent $1, u għalhekk ma jistax jit
 prof_einusep=Dan il-profil jintuża mill-profil $1, u għalhekk ma jistax jitħassar
 prof_einusee=Dan il-profil għandu profili ta 'eżekuzzjoni relatati $1, u għalhekk ma jistax jitħassar
 prof_none=M'hemmx profili disponibbli
+
 execs_title=Profili ta 'eżekuzzjoni
 execs_name=Profil
 execs_policy=Politika ta 'sigurtà
@@ -92,6 +100,7 @@ execs_none=L-ebda profili ta 'eżekuzzjoni ma ġew definiti s'issa.
 execs_add=Żid profil ta ’eżekuzzjoni ġdid.
 execs_return=Lista tal-profili ta ’eżekuzzjoni
 execs_ecannot=M'għandekx permess teditja profili ta 'eżekuzzjoni
+
 exec_title1=Oħloq Profil ta 'Eżekuzzjoni
 exec_title2=Editja l-Profil tal-Eżekuzzjoni
 exec_header=Dettalji tal-profil ta 'l-eżekuzzjoni
@@ -113,6 +122,7 @@ exec_erruid=Utent nieqes jew invalidu biex jimxi kif inhu
 exec_errgid=Grupp nieqes jew invalidu biex jitmexxa
 exec_erreuid=Utent effettiv nieqes jew invalidu biex jimxi kif inhu
 exec_erregid=Grupp effettiv nieqes jew invalidu biex jitmexxa
+
 policy_title=Politiki tas-Sistema
 policy_header=L-issettjar tal-politika globali tas-sistema
 policy_auths=Awtorizzazzjonijiet għall-utenti kollha
@@ -126,16 +136,20 @@ policy_err=Ma rnexxielux isalva l-politiki tas-sistema
 policy_eallow=L-ebda algoritmi li jippermettu magħżula
 policy_eclash=Fl-istess ħin ma jistax jintgħażel l-Algoritmu li jippermetti u jitwaqqa '
 policy_ecannot=M'għandekx permess teditja l-politika tas-sistema
+
 attr_none=L-ebda attribut tal-utenti ma ġie definit
 attr_nonenormal=L-ebda utenti Unix ma ġew definiti
 attr_nonerole=L-ebda rwoli disponibbli mhumiex definiti
+
 help_epath=Mhux validu fajl ta 'għajnuna!
 help_link=(Għajnuna..)
+
 crypt___unix__=Kripta Unix
 crypt_1=BSD MD5
 crypt_2a=BSD Flowfish
 crypt_md5=Xemx MD5
 crypt_rot13=ROT13
+
 log_create_user=Attributi maħluqa minn utent għal $1 
 log_modify_user=Attributi modifikati ta 'utent għal $1 
 log_delete_user=Attributi mħassra ta 'utent għal $1 
@@ -152,6 +166,7 @@ log_create_project=Proġett maħluq $1
 log_modify_project=Proġett modifikat $1 
 log_delete_project=Proġett imħassar $1 
 log_policy=Inbidlet il-politika tas-sistema
+
 acl_roles=Tista 'teditja rwoli?
 acl_users=Jista 'jeditja l-attributi ta' l-utent?
 acl_roleassign=Jista 'jassenja rwoli
@@ -166,6 +181,7 @@ acl_profs=Tista 'teditja l-profili?
 acl_ro=Ara biss
 acl_execs=Tista 'teditja l-profili ta' eżekuzzjoni?
 acl_projects=Tista 'teditja proġetti?
+
 projects_title=Proġetti
 projects_name=Isem
 projects_id=ID
@@ -184,6 +200,7 @@ projects_exceptusers=L-utenti kollha minbarra $1
 projects_exceptgroups=Il-gruppi kollha minbarra $1 
 projects_onlyusers=$1 biss
 projects_onlygroups=$1 biss
+
 project_title1=Oħloq Proġett
 project_title2=Editja Proġett
 project_header=Dettalji tal-proġett u membri
@@ -219,6 +236,7 @@ project_egroupscannot=L-ebda grupp li jeskludi magħżul
 project_elimit=Limitu nieqes jew invalidu fir-ringiela $1 
 project_epool=Isem il-pool tal-proġett nieqes jew invalidu
 project_erss=Memorja massima nieqsa jew invalida
+
 prctl_title=Kontrolli tar-Riżorsi
 prctl_ok=Uri l-limiti għal:
 prctl_mode0=Proċess bl-ID

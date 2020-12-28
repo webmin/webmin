@@ -1,5 +1,6 @@
 check_etargets=在系统上找不到iSCSI服务器配置文件 $1。
 check_eserver=在系统上找不到iSCSI服务器程序 $1。
+
 index_title=iSCSI服务器
 index_clink=可能未安装，或者您的<a href='$1'>模块配置</a>不正确。
 index_stop=停止iSCSI服务器
@@ -11,6 +12,7 @@ index_restartdesc=单击此按钮可通过重新启动iSCSI服务器来应用当
 index_atboot=从启动开始？
 index_atbootdesc=更改此选项可控制是否在引导时启动iSCSI服务器。如果当前在启动时尚未启动，并且选择了“是”，则将创建一个新的初始化脚本。
 index_return=模块索引
+
 extents_title=共享设备
 extents_none=尚未创建要共享的设备。
 extents_name=设备名称
@@ -25,6 +27,7 @@ extents_denone=未选择
 extents_einuse=无法删除设备 $1，因为它已由 $2使用：
 extents_drusure=您确定要删除以下设备： $1？它们的内容将被保留，但iSCSI客户端将无法再访问它们。
 extents_sure=删除设备
+
 extent_create=创建要共享的设备
 extent_edit=编辑设备以共享
 extent_egone=共享 $1的设备不存在！
@@ -50,6 +53,7 @@ extent_estart=范围的开始必须是一个数字
 extent_esize=范围的大小必须是一个数字
 extent_esizemax=范围的结尾不能大于 $1的设备大小
 extent_einuse=无法删除此设备，因为 $1正在使用该设备
+
 devices_title=设备组合
 devices_none=尚未创建任何设备组合。
 devices_name=组合名称
@@ -65,6 +69,7 @@ devices_denone=未选择
 devices_einuse=组合 $1无法删除，因为它已由 $2使用：
 devices_drusure=您确定要删除以下设备组合： $1？它们的内容将被保留，但iSCSI客户端将无法再访问它们。
 devices_sure=删除设备组合
+
 device_create=创建设备组合
 device_edit=编辑设备组合
 device_egone=设备组合 $1不存在！
@@ -81,6 +86,7 @@ device_sure=删除设备组合
 device_einuse=该设备组合不能删除，因为它已被 $1使用：
 device_eextents=未选择成员设备
 device_eself=所选的成员设备之一包含此设备！
+
 targets_title=分享目标
 targets_none=尚未创建共享目标。
 targets_name=目标名称
@@ -96,6 +102,7 @@ targets_derr=删除共享目标失败
 targets_denone=未选择
 targets_drusure=您确定要删除以下共享目标： $1？不会丢失任何数据，但是iSCSI客户端将无法再访问它们。
 targets_sure=删除共享目标
+
 target_create=创建共享目标
 target_edit=编辑共享目标
 target_egone=共享目标 $1不存在！
@@ -112,6 +119,7 @@ target_rusure=您确定要删除共享目标 $1吗？不会丢失任何数据，
 target_sure=删除目标
 target_enetwork=与之共享的网络缺失或无效
 target_emask=与之共享的网络掩码缺失或无效
+
 opts_title=iSCSI服务器选项
 opts_header=所有iSCSI目标的选项
 opts_ip4=接受IPv4连接
@@ -124,10 +132,12 @@ opts_err=保存选项失败
 opts_ename=名称缺失或无效-仅允许使用字母，数字，破折号，点和下划线
 opts_eport=缺少端口号或非数字端口号
 opts_esess=缺少或非数字的最大会话数
+
 manual_title=编辑配置文件
 manual_desc=使用下面的文本框编辑iSCSI服务器配置文件 $1。小心，因为不会对您的输入执行任何验证！
 manual_err=保存配置文件失败
 manual_edata=没有输入内容！
+
 users_title=iSCSI验证
 users_none=尚未创建iSCSI用户。客户端无需身份验证即可访问共享设备。
 users_add=添加一个新的iSCSI用户。
@@ -135,6 +145,7 @@ users_delete=删除所选用户
 users_name=用户名
 users_mode=身份验证方法
 users_return=用户列表
+
 user_create=创建iSCSI用户
 user_edit=编辑iSCSI用户
 user_header=iSCSI用户详细信息
@@ -145,13 +156,16 @@ user_egone=用户不再存在！
 user_err=保存iSCSI用户失败
 user_euser=用户名缺失或无效-不允许使用空格和冒号
 user_epass=密码丢失或无效-不允许使用空格和冒号
+
 desc_extent=共享 $1的设备
 desc_device=设备组合 $1
 desc_target=共享目标 $1
+
 start_err=无法启动iSCSI服务器
 stop_err=停止iSCSI服务器失败
 restart_err=重启iSCSI服务器失败
 atboot_err=无法在启动时启用
+
 log_create_extent=已创建要共享 $1的设备
 log_modify_extent=更新了设备以共享 $1
 log_delete_extent=已删除要共享 $1的设备

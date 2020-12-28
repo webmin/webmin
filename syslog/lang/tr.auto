@@ -3,12 +3,16 @@ index_pipe=Adlandırılmış boru $1
 index_cmd=$1 çıktısı
 index_viewfile=Günlük dosyasını görüntüle:
 index_viewok=Görünüm
+
 view_filter=Yalnızca $1 metnine sahip satırları göster
+
 save_epipe='$1' geçerli bir adlandırılmış kanal değil
 save_ecannot6=Rasgele günlükleri görüntüleme izniniz yok
 save_ecannot7=Bu ekstra günlüğü görüntüleme izniniz yok
 save_emissing=Görüntülenecek eksik günlük dosyası
+
 desc_debug=Mesajlarda Hata Ayıklama
+
 acl_any=Herhangi bir dosyayı günlük olarak görüntüleyebilir mi?
 acl_extra=Bu kullanıcı için ekstra günlük dosyaları
 acl_syslog=Günlükleri syslog'dan görüntüleyebilir mi?

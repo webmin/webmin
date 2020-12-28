@@ -52,6 +52,7 @@ index_sadd=צור שירות מערכת חדש.
 index_always=תמיד
 index_ladd=צור סוכן חדש שיושק.
 index_lname=שם סוכן
+
 edit_title=ערוך פעולה
 create_title=צור פעולה
 edit_ecannot=אינך רשאי לערוך פעולות אתחול
@@ -85,6 +86,7 @@ edit_statusnow=הצג סטטוס
 edit_return=פעולה
 edit_status=התחלת עכשיו?
 edit_unknown=לא ידוע
+
 save_err=שמירת הפעולה נכשלה
 save_ecannot=אינך רשאי לערוך פעולות אתחול
 save_ealready=פעולה בשם '$1' כבר קיימת
@@ -93,6 +95,7 @@ save_ename=שם פעולה או לא חוקי חסר
 save_eclash=פעולה עם אותו שם כבר קיימת
 save_escript=לא הוזנה סקריפט פעולה
 save_estartcmd=פקודת האתחול חסרה
+
 ss_ecannot=אינך מורשה להתחיל או להפסיק פעולות אתחול
 ss_start=התחל בפעולה
 ss_stop=עצור פעולה
@@ -103,21 +106,25 @@ ss_exec=מבצע $1 ..
 ss_doingstart=מתחיל בפעולה $1 ..
 ss_doingstop=הפסקת פעולה $1 ..
 ss_doingstatus=מבקש סטטוס של פעולה $1 ..
+
 shutdown_ecannot=אינך רשאי לכבות את המערכת
 shutdown_title=לכבות
 shutdown_rusure=האם אתה בטוח שברצונך לכבות את המערכת עם הפקודה $1 ?
 shutdown_ok=מערכת כיבוי
 shutdown_exec=כבה עם הפקודה $1 ..
+
 reboot_ecannot=אינך רשאי לאתחל את המערכת מחדש
 reboot_title=אתחל מחדש
 reboot_rusure=האם אתה בטוח שברצונך לאתחל את המערכת מחדש עם הפקודה $1 ?
 reboot_ok=איתחול מערכת
 reboot_exec=אתחול מחדש עם הפקודה $1 ..
+
 acl_script=האם ניתן לערוך את סקריפט האתחול?
 acl_actions=האם ניתן להריץ, לערוך, ליצור ולמחוק פעולות?
 acl_runonly=רק לרוץ
 acl_reboot=האם ניתן לאתחל את המערכת מחדש?
 acl_shutdown=האם ניתן לכבות את המערכת?
+
 log_rename=שינוי שם הפעולה $1 ל- $2 
 log_modify=פעולה שונה $1 
 log_create=יצרה פעולה $1 
@@ -138,6 +145,7 @@ log_massrestart=הפעולות מחדש $1
 log_massenable=פעולות מופעלות $1 
 log_massdisable=פעולות מושבתות $1 
 log_telinit=עבר לרמה $1 
+
 edit_hostconfig_startup=הסקריפט $1 מופעל בזמן אתחול המערכת אם פעולה זו פעילה. תוכל לערוך אותו למטה
 edit_hostconfig_plist=הקובץ $1 קובע פרמטרים מסוימים ביחס לסקריפט האתחול. תוכל לערוך אותו למטה
 edit_hostconfig_new=צור פעולה חדשה
@@ -149,6 +157,7 @@ edit_hostconfig_array=השדות $1, $2 ו- $3 הם שדות מערך ויכול
 edit_hostconfig_further=לאחר יצירת פעולת ההפעלה החדשה, תועברו לדף בו תוכלו לשנות את סקריפט ההפעלה ואת רשימת הפרמטרים במידת הצורך.
 edit_hostconfig_hostconfig=הקובץ $1 שולט בשירותים ובדמונים רחבי מערכת המתחילים בעת אתחול המערכת. תוכל לערוך אותו למטה
 edit_hostconfig_title=ערוך את Hostconfig
+
 mass_enone=לא נבחרו פעולות
 mass_enone2=לא נבחרו שירותים
 mass_start=פעולות מתחילות
@@ -169,9 +178,11 @@ mass_udisable=השבתת שירות $1 בזמן האתחול.
 mass_ustarting=החל שירות $1 ..
 mass_ustopping=הפסקת השירות $1 ..
 mass_urestarting=הפעלה מחדש של שירות $1 ..
+
 change_err=אינך מורשה להחליף בין רמות
 change_title=החלף Runlevel
 change_cmd=מעבר לרמת הסיבוב $1 עם הפקודה $2. זה עשוי לקחת זמן, וייתכן ש- Webmin לא יהיה זמין יותר לאחר המעבר.
+
 mode_init=SysV init
 mode_osx=MacOS
 mode_local=תסריט אתחול יחיד
@@ -180,6 +191,7 @@ mode_rc=סקריפטים של FreeBSD RC
 mode_upstart=למעלה
 mode_systemd=מערכת
 mode_launchd=השקה ד
+
 upstart_title1=צור שירות התחלתי
 upstart_title2=ערוך את שירות Upstart
 upstart_egone=השירות כבר לא קיים!
@@ -204,6 +216,7 @@ upstart_eserver=לא הוזנה פקודת שרת
 upstart_eserver2=פקודת השרת אינה קיימת
 upstart_eserver3=ניתן להזין רק פקודת שרת אחת
 upstart_return=שירות למעלה
+
 systemd_title1=צור שירות מערכת
 systemd_title2=ערוך את שירות Systemd
 systemd_egone=השירות כבר לא קיים!
@@ -227,6 +240,7 @@ systemd_edesc=תיאור שירות חסר
 systemd_return=שירות מערכת
 systemd_econf=לא הוזנה תצורת מערכת
 systemd_estart=פקודות חסרות להפעלה בהפעלה
+
 launchd_title1=צור סוכן Launchd
 launchd_title2=ערוך את סוכן ההשקה
 launchd_egone=הסוכן כבר לא קיים!
@@ -247,4 +261,5 @@ launchd_eclash=סוכן עם אותו שם כבר קיים
 launchd_return=סוכן שיגור
 launchd_econf=לא הוזנה תצורת שיגור
 launchd_estart=פקודת שרת חסרה
+
 syslog_journalctl=יומני מערכת

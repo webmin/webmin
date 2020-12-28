@@ -2,6 +2,7 @@ index_title=Baca Mel Pengguna
 index_none=Anda tidak dibenarkan membaca e-mel untuk mana-mana pengguna di sistem ini.
 index_header=Peti mel pengguna
 index_empty=Tiada mel
+index_return=senarai pengguna
 index_esystem=Tiada pelayan mel yang disokong (Exim, Qmail, Postfix dan Sendmail) dikesan pada sistem anda. Anda perlu melaraskan konfigurasi modul <a href='$1'></a> untuk menetapkan pelayan mel dan kemungkinan laluan mel secara manual.
 index_esystem2=Pelayan mel yang ditetapkan dalam konfigurasi modul <a href='$1'></a> tidak dijumpai pada sistem anda. Anda perlu melaraskan konfigurasi untuk menggunakan pelayan yang betul.
 index_esystem3=Ralat berlaku menghubungi sistem mel yang ditetapkan dalam konfigurasi modul <a href='$1'></a>: $2.
@@ -19,6 +20,7 @@ index_eperl=Mod Perl $1 diperlukan untuk mod pengesahan SMTP yang dipilih tidak 
 index_file=Baca Mel dalam Fail atau Maildir:
 index_nousers=Tiada pengguna dijumpai!
 index_nousersmail=Tiada pengguna dengan e-mel yang ditemui.
+
 mail_title=E-mel Pengguna
 mail_from=Dari
 mail_date=Tarikh
@@ -75,6 +77,7 @@ mail_fromfilter=Buat penapis oleh penghantar
 mail_tofilter=Buat penapis oleh penerima
 mail_subfilter=Buat penapis mengikut subjek
 mail_unknown=Tidak diketahui
+
 mail_sign=Tandatangan dengan kunci
 mail_nosign=&lt;Jangan tanda&gt;
 mail_crypt=Menyulitkan
@@ -109,6 +112,7 @@ mail_selread=Pilih baca.
 mail_selunread=Pilih belum dibaca.
 mail_selspecial=Pilih khas.
 mail_specialsync=Menyegerakkan Khas
+
 view_title=Baca E-mel
 view_desc=Mesej $1 dalam $2
 view_desc2=Mesej $1 untuk pengguna $2
@@ -150,6 +154,7 @@ view_sub=Melampirkan E-mel
 view_sub2=Melampirkan e-mel dari $1
 view_egone=Mesej ini tidak lagi wujud
 view_eugone=Pengguna ini tidak wujud
+
 view_gnupg=Pengesahan tandatangan GnuPG
 view_gnupg_0=Tandatangan oleh $1 adalah sah.
 view_gnupg_1=Tandatangan oleh $1 sah, tetapi rantaian amanah tidak dapat diwujudkan.
@@ -186,7 +191,9 @@ view_images=Tunjukkan imej
 view_raw=Lihat mesej mentah
 view_aall=Simpan semua lampiran sebagai ZIP.
 view_aslideshow=Tunjukkan semua imej.
+
 compose_title=Tulis E-mel
+
 reply_title=Balas kepada E-mel
 forward_title=Hantar E-mel
 enew_title=Edit E-mel
@@ -216,9 +223,11 @@ reply_addattach=Tambah medan lampiran.
 reply_addssattach=Tambah medan lampiran sisi pelayan.
 reply_html0=Mengarang teks
 reply_html1=Tulis HTML
+
 reply_spell=Periksa kesilapan ejaan?
 reply_draft=Menyimpan sebagai draf
 reply_save=Simpan dan Edit
+
 send_err=Gagal menghantar mel
 send_eto=Hilang Untuk alamat
 send_efrom=Kehilangan Daripada alamat
@@ -235,6 +244,7 @@ send_eperms2=Anda tidak dibenarkan menghantar fail $1
 send_epath=Sendmail boleh dieksekusi $1 tidak wujud.
 send_efile=Gagal membaca lampiran $1 : $2 
 send_done=.. selesai.
+
 send_epass=Anda tidak boleh menandatangani mesej kerana frasa laluan anda belum lagi diatur dalam modul GnuPG.
 send_esign=Gagal menandatangani mesej : $1
 send_ekey=Tidak dapat mencari kunci untuk alamat e-mel $1
@@ -246,6 +256,7 @@ send_espell=Kesalahan ejaan berikut ditemui dalam mesej anda ..
 send_draft=Mel ke $1 disimpan dalam folder draf.
 send_drafting=Menyimpan mel ke $1 dalam folder draf ..
 send_eattachsize=Lampiran mel melebihi saiz maksimum dibenarkan $1 bait
+
 delete_title=Padam Mail
 delete_rusure=Adakah anda pasti mahu memadamkan $1 mesej terpilih dari $2? Ini mungkin mengambil sedikit masa untuk fail mel yang besar. Sehingga penghapusan selesai, tiada tindakan lain yang perlu dilakukan.
 delete_rusure2=Adakah anda pasti mahu memadamkan mesej ini dari $1? Ini mungkin mengambil sedikit masa untuk fail mel yang besar. Sehingga penghapusan selesai, tiada tindakan lain yang perlu dilakukan.
@@ -268,6 +279,7 @@ delete_nobutton=Tiada butang diklik
 delete_ereport=Gagal melaporkan sebagai spam : $1
 delete_errc=Gagal menyalin mel
 delete_errm=Gagal memindahkan mel
+
 confirm_title=Sahkan Padam
 confirm_warn=Adakah anda pasti mahu memadamkan $1 mesej terpilih dari folder ini?
 confirm_warnf=Adakah anda pasti mahu memadamkan $1 mesej terpilih dari folder <b>$2</b>?
@@ -277,6 +289,7 @@ confirm_warn4=Sehingga penghapusan selesai, tiada tindakan lain yang perlu dilak
 confirm_ok=Padamkan Sekarang
 confirm_warnall=Adakah anda pasti mahu memadamkan semua mesej dalam folder ini?
 confirm_warnallf=Adakah anda pasti mahu memadamkan semua mesej dalam folder <b>$1</b>?
+
 search_title=Keputusan Carian
 search_ecannot=Anda tidak dibenarkan untuk mencari e-mel pengguna ini
 search_ematch=Anda mesti memasukkan teks untuk menandingi.
@@ -305,16 +318,19 @@ search_nolatest=Semua dalam folder
 search_latestnum=Hanya terkini
 search_elatest=Bilangan mesej yang hilang atau tidak sah untuk dicari
 search_withstatus=, dengan status $1
+
 folder_inbox=Peti masuk
 folder_sent=Menghantar surat
 folder_drafts=Draf
 folder_trash=Sampah
+
 detach_err=Gagal melepaskan fail
 detach_edir=Tiada fail atau direktori untuk disimpan untuk dimasukkan
 detach_eopen=Gagal membuka $1 : $2 
 detach_ewrite=Gagal menulis ke $1 : $2 
 detach_title=Tanggalkan Fail
 detach_ok=Tulis lampiran ke fail sisi pelayan $1 ($2).
+
 sform_title=carian terperinci
 sform_header=Pilihan carian e-mel lanjutan
 sform_andmode=Mod kriteria
@@ -339,6 +355,7 @@ sform_headers=sebarang tajuk
 sform_allmsg=keseluruhan mesej
 sform_size=saiz mesej
 sform_return=borang carian maju
+
 find_enone=Tiada pengguna sepadan dengan carian anda ditemui
 find_title=Keputusan Carian
 find_results=Pengguna yang memadankan carian untuk $1 ..
@@ -351,6 +368,7 @@ find_incount=E-mel
 find_sentcount=Dihantar
 find_fcount=Folder
 find_in=$1 dalam $2
+
 acl_none=Tiada
 acl_same=Pengguna dengan nama yang sama
 acl_all=Semua
@@ -376,12 +394,15 @@ acl_usersu=Dengan UID dalam julat
 acl_sec=Termasuk kumpulan sekunder?
 acl_dir=Boleh membaca fail mel dalam direktori
 acl_dirauto=Tentukan secara automatik (di mana sahaja jika semua pengguna kelihatan, di mana sahaja sebaliknya)
+
 log_delmail=Dihapuskan $1 mesej daripada $2
 log_movemail=Memindahkan $1 mesej dari $2 ke $3
 log_copymail=Disalin $1 mesej dari $2 ke $3
 log_send=Hantar surat ke $1
 log_read=Baca mel untuk $1
+
 emodified=Folder ini telah diubah suai sejak ia dilihat terakhir! Kembali ke <a href='$1'>senarai mel</a> dan cuba lagi.
+
 razor_title=Pelaporan Sebagai Spam
 razor_title2=Pelaporan Sebagai Ham
 razor_report=Melaporkan mesej ini kepada Razor dan pangkalan data penyekat spam SpamAssassin lain ..
@@ -391,14 +412,18 @@ razor_done=.. selesai
 razor_err=.. gagal! Lihat mesej ralat di atas untuk alasan mengapa.
 razor_moved=.. selesai, dan berpindah ke folder $1.
 razor_deleted=.. selesai, dan mesej yang dipadam juga.
+
 ham_title=Pelaporan Sebagai Ham
 ham_report=Melaporkan mesej ini sebagai spam kepada Razor dan pangkalan data SpamAssassin lain ..
+
 black_title=Menolak Penghantar
 black_done=Menambah alamat e-mel $1 ke senarai alamat yang ditolak SpamAssassin.
 black_already=Alamat email $1 sudah ada pada senarai alamat yang ditolak SpamAssassin.
+
 white_title=Membenarkan Penghantar
 white_done=Menambah alamat e-mel $1 ke senarai alamat SpamAssassin yang dibenarkan.
 white_already=Alamat email $1 sudah ada pada senarai alamat yang dibenarkan SpamAssassin.
+
 ldap_emod=Mod Perl Perl hilang $1 diperlukan untuk menyambung ke LDAP
 ldap_econn=Gagal menyambung ke pelayan LDAP $1 port $2
 ldap_elogin=Gagal mengikat pelayan LDAP $1 sebagai $2 : $3 
@@ -406,12 +431,15 @@ ldap_ehost=Tiada pelayan LDAP ditetapkan dalam konfigurasi modul
 ldap_eport=Tiada pelabuhan pelayan LDAP yang ditetapkan dalam konfigurasi modul
 ldap_euser=Tiada log masuk LDAP ditetapkan dalam konfigurasi modul
 ldap_ebase=Tiada asas DD LDAP ditetapkan dalam konfigurasi modul
+
 delall_title=Padamkan Semua Mel
 delall_rusure=Adakah anda pasti mahu memadamkan semua e-mel dari $1? $2 mesej yang berjumlah $3 akan dipadam selamanya.
 delall_ok=Padamkan Sekarang
+
 slide_title=Imej Terlampir
 slide_prev=Sebelum ini
 slide_next=Seterusnya
+
 left_mail=Mel
 left_search=Carian:
 left_folders=Urus Folder

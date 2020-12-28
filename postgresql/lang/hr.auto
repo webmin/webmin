@@ -16,6 +16,7 @@ index_add=Stvorite novu bazu podataka.
 index_users=Korisnik, grupe i dozvole
 index_return=popis baza podataka
 index_esql=Program klijenta PostgreSQL $1 nije pronađen u vašem sustavu. Možda PostgreSQL nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
+
 index_ehba=Konfiguracijska datoteka hostgre PostgreSQL $1 nije pronađena u vašem sustavu. Možda PostgreSQL nije inicijaliziran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
 index_superuser=PostgreSQL klijentski program psql se nije mogao izvršiti na vašem sustavu. Možda PostgreSQL nije instaliran ili je vaša <a href='$1'>konfiguracija modula</a> netočna.
 index_eversion=PostgreSQL baza podataka u vašem sustavu je verzija $1, ali Webmin podržava samo verzije $2 i novije verzije.
@@ -48,10 +49,12 @@ index_gist=Generalizirano stablo za pretraživanje indeksa
 index_jump=Ili uredite bazu podataka:
 index_jumpok=Otvoren
 index_edithosts=Konfigurirajte dopuštene sustave domaćina
+
 login_err=Prijava nije uspjela
 login_ecannot=Nije vam dopušteno konfigurirati prijavu baze podataka
 login_elogin=Nedostaje prijava za administraciju
 login_epass=Neispravno korisničko ime ili lozinka
+
 dbase_title=Uređivanje baze podataka
 dbase_noconn=Ova baza podataka trenutno ne prihvaća veze pa se u njoj ne mogu obavljati nikakvi postupci.
 dbase_header=Tablice baze podataka, indeksi, prikazi i nizovi
@@ -78,6 +81,7 @@ dbase_jump=Uredi tablicu:
 dbase_vjump=Uredi prikaz:
 dbase_ijump=Uredi indeks:
 dbase_sjump=Uređivanje slijeda:
+
 table_title=Uredi tablicu
 table_title2=Stvori tablicu
 table_opts=Opcije polja
@@ -105,6 +109,7 @@ table_eblob=Nije potrebna veličina za polje BLOB $1
 table_csv=Izvezi kao CSV
 table_index=Stvorite indeks
 table_delete=Izbriši odabrana polja
+
 field_title1=Dodavanje polja
 field_title2=Izmijeni polje
 field_in=U tablici $1 u bazi podataka $2 
@@ -123,6 +128,7 @@ field_esize='$1' nije važeća veličina polja
 field_eenum=Nema unesenih nabrojanih vrijednosti
 field_efield='$1' nije valjano ime polja
 field_ekey=Polja koja dopuštaju nulu ne mogu biti dio primarnog ključa
+
 exec_title=Izvrši SQL
 exec_header=Unesite SQL naredbu za izvršenje na bazi podataka $1 ..
 exec_old=Ili odaberite prethodnu SQL naredbu :
@@ -152,21 +158,25 @@ exec_tabexec=Izvrši SQL
 exec_tabfile=Pokrenite SQL iz datoteke
 exec_tabimport=Uvezi tekstualnu datoteku
 exec_return=izvrši SQL obrazac
+
 stop_err=Zaustavljanje poslužitelja baze podataka nije uspjelo
 stop_epidfile=Otvaranje PID datoteke $1 nije uspjelo
 stop_ekill=Ubijanje postupka $1 : $2 nije uspjelo
 stop_ecannot=Ne smijete zaustaviti poslužitelj baze podataka
 start_err=Nije uspio pokretanje poslužitelja baze podataka
 start_ecannot=Nije vam dopušteno pokretanje poslužitelja baze podataka
+
 ddrop_err=Ispustavanje baze podataka nije uspjelo
 ddrop_title=Ispusti bazu podataka
 ddrop_rusure=Jeste li sigurni da želite ispustiti bazu podataka $1 ? Izbrisat će se $2 tablice koje sadrže $3 retka podataka.
 ddrop_mysql=Budući da je ovo glavna baza podataka, njeno izbacivanje će vjerojatno učiniti vaš PostgreSQL poslužitelj neupotrebljivim!
 ddrop_ok=Ispusti bazu podataka
+
 tdrop_err=Ispustanje stola nije uspjelo
 tdrop_title=Ispusti tablicu
 tdrop_rusure=Jeste li sigurni da želite da ispustite tablicu $1 u bazu podataka $2 ? Izbrisat će se $3 redaka podataka.
 tdrop_ok=Ispusti tablicu
+
 view_title=Podaci tablice
 view_pos=Redovi $1 do $2 od $3 
 view_none=Ova tablica ne sadrži podatke
@@ -201,6 +211,7 @@ view_set=Postavite na sadržaj datoteke ..
 view_warn=Upozorenje - prijenos datoteka i pregled sadržaja polja <tt>teksta</tt> ili <tt>bytea</tt> vjerojatno neće raditi ako nisu instalirani i korišteni $1 i $2 Perl moduli.
 view_adv=Napredna pretraga
 view_sqlrun=Rezultati generirani SQL upitom : $1 
+
 newdb_title=Stvorite bazu podataka
 newdb_header=Nove opcije baze podataka
 newdb_db=Naziv baze podataka
@@ -215,6 +226,7 @@ newdb_encoding=Kodiranje skupa znakova
 newdb_eencoding=Nedostaje kodiranje skupa znakova
 newdb_template=Baza podataka predloška
 newdb_notemplate=nijedan
+
 user_title=Korisnici PostgreSQL-a
 user_vwarning=UPOZORENJE: Ovaj korisnik PostgreSQL je prijava za administraciju u Virtualmin domeni $1. Promjena ovdje svih postavki može uzrokovati pogreške u Virtualminu.
 user_ecannot=Nije vam dopušteno uređivanje korisnika
@@ -244,6 +256,7 @@ user_sync_delete=Obrišite korisnika PostgreSQL-a kada se briše odgovarajućeg 
 user_delete=Obriši odabrano
 user_derr=Brisanje korisnika nije uspjelo
 user_enone=Nije odabran nijedan korisnik
+
 host_ecannot=Nije vam dopušteno uređivanje dopuštenih računala
 host_title=Dozvoljeni domaćini
 host_desc=Kad se klijent poveže s bazom podataka, hostovi navedeni u nastavku obrađuju se redom sve dok se jedan ne podudara, a klijentu je dopušteno ili odbijeno.
@@ -299,8 +312,10 @@ host_derr=Brisanje dopuštenih hostova nije uspjelo
 host_enone=Nije odabran nijedan domaćin
 host_manual=Uredi datoteku za konfiguriranje
 host_manualdesc=Kliknite ovaj gumb za ručno uređivanje dopuštene konfiguracijske datoteke računala.
+
 manual_title=Uredi datoteku za konfiguriranje
 manual_err=Konfiguriranje datoteke nije uspjelo
+
 grant_title=Dodijeljene privilegije
 grant_tvi=Objekt
 grant_type=Tip
@@ -328,6 +343,7 @@ grant_none=Ne postoje tablice, prikazi, sekvence ili indeksi koji omogućuju pri
 grant_toomany=Previše je objekata za prikaz. Pronađite predmete koji se podudaraju:
 grant_showing=Prikazivanje objekata koji odgovaraju $1 ..
 grant_delete=Poništite odabrane potpore
+
 group_title=PostgreSQL Grupe
 group_ecannot=Nije vam dopušteno uređivanje grupa
 group_name=Grupno ime
@@ -347,6 +363,7 @@ group_etaken=Naziv grupe se već koristi
 group_none=Trenutno nema PostgreSQL grupa.
 group_derr=Brisanje grupa nije uspjelo
 group_enone=Nijedna grupa nije odabrana
+
 esql=SQL $1 nije uspio : $2 
 log_start=Pokrenut PostgreSQL poslužitelj
 log_stop=Zaustavljen PostgreSQL poslužitelj
@@ -403,6 +420,7 @@ log_backup_l=Sigurnosno kopiranje baze podataka $1 u datoteku $2
 log_backup_all=Izrada sigurnosne kopije svih baza podataka
 log_backup_all_l=Sigurnosno kopiranje svih baza podataka u datoteku $2 
 log_manual=Ručno uređena dopuštena domaćin konfiguracijska datoteka
+
 acl_dbs=Baze podataka kojima ovaj korisnik može upravljati
 acl_dbscannot=Ova kontrola pristupa stupit će na snagu nakon pokretanja PostgreSQL poslužitelja baze podataka.
 acl_dall=Sve baze podataka
@@ -423,13 +441,17 @@ acl_cmds=Može li se uređivati prije i poslije naredbe sigurnosnog kopiranja?
 acl_views=Može li pregledavati i upravljati pogledima?
 acl_indexes=Mogu li pregledati indekse i upravljati njima?
 acl_seqs=Može li pregledavati i upravljati nizovima?
+
 fdrop_err=Brisanje polja nije uspjelo
 fdrop_enone=Nijedna nije odabrana
 fdrop_eall=Ne možete izbrisati sva polja iz tablice!
+
 setup_err=Inicijalizacija baze podataka nije uspjela
 setup_ecannot=Nije vam dopušteno inicijalizirati bazu podataka
+
 dbase_bkup=rezerva
 dbase_rstr=Vratiti
+
 restore_title=Vrati bazu podataka
 restore_header=Vrati opcije baze podataka
 restore_db=Naziv baze podataka
@@ -452,6 +474,7 @@ restore_tables=Tablice za vraćanje
 restore_tables1=Sve u datoteci sigurnosne kopije
 restore_tables0=Navedene tablice
 restore_failed=Vraćanje nije uspjelo : $1 
+
 backup_title=Rezervna baza podataka
 backup_title2=Izrada sigurnosne kopije svih baza podataka
 backup_header1=Rezervno odredište
@@ -500,17 +523,21 @@ backup_ebefore=Naredba prije sigurnosne kopije nije uspjela!
 backup_cmode=Kada pokrenuti naredbe
 backup_cmode1=Prije i nakon svih baza podataka
 backup_cmode0=Prije i nakon svake baze podataka
+
 r_command=Naredba nije podržana
+
 adv_title=Napredna pretraga
 adv_and=Pronađi zapise koji odgovaraju svim kriterijima ..
 adv_or=Pronađite zapise koji odgovaraju bilo kojim kriterijima ..
 adv_ok=Pretražite sada
+
 tdrops_enone=Nema odabranih tablica
 tdrops_err=Ispustanje tablica nije uspjelo
 tdrops_ok=Pad
 tdrops_title=Ispusti odabrano
 tdrops_rusure=Jeste li sigurni da želite da ispustite $1 odabrane tablice u bazu podataka $2 ? Izbrisat će se $3 redaka podataka.
 tdrops_rusure2=Jeste li sigurni da želite da ispustite $1 odabrane tablice u bazu podataka $2 ?
+
 ddrops_err=Baziranje podataka nije uspjelo
 ddrops_title=Ispusti baze podataka
 ddrops_rusure=Jeste li sigurni da želite ispustiti $1 odabrane baze podataka? Izbrisat će se $2 tablice koje sadrže $3 retka podataka.
@@ -518,6 +545,7 @@ ddrops_mysql=Budući da je odabrana glavna baza podataka, njeno ispadanje vjeroj
 ddrops_ok=Ispusti baze podataka
 ddrops_enone=Nije odabrana nijedna baza podataka
 ddrops_ecannotdb=Nije vam dopušteno ispustiti bazu podataka $1 
+
 csv_title=Izvezi CSV datoteku
 csv_header=CSV opcije izvoza
 csv_dest=Izvozno odredište
@@ -538,6 +566,7 @@ csv_done=Dovršen je izvoz CSV-a u $1. Rezultirajuća veličina datoteke je $2.
 csv_headers=Želite li uključiti imena stupaca u CSV?
 csv_cols=Stupci za uključivanje u CSV
 csv_ecols=Nije odabran nijedan stupac
+
 import_title=Uvoz podataka
 import_uploadout=Uvoz podataka iz prenesene datoteke ..
 import_fileout=Uvoz podataka iz datoteke $1 ..
@@ -545,6 +574,7 @@ import_eupload=Nedostaje prenesena datoteka za uvoz
 import_efile=Nedostaje naziv datoteke za uvoz
 import_done=.. stvorio $1 redaka, preskočio $2 duplikata.
 import_erow=.. u retku $1 nije pronađeno polje
+
 index_title1=Stvorite indeks
 index_header1=Opcije indeksa
 index_name=Naziv indeksa
@@ -562,6 +592,7 @@ index_ecols=Nije odabrano nijedno polje
 index_title2=Uredi indeks
 index_header=Indeks $1 u bazi podataka $2 
 index_ecannot=Nije vam dopušteno upravljati indeksima
+
 view_title1=Stvori prikaz
 view_title2=Uredi prikaz
 view_header1=Pregledavati pojedinosti
@@ -576,6 +607,7 @@ view_eclash=Pogled s istim nazivom već postoji
 view_equery=Nedostaje SQL upit
 view_ecols=Nije unesen naziv stupaca
 view_ecannot=Nije vam dopušteno upravljanje pogledima
+
 seq_title1=Stvorite slijed
 seq_title2=Uređivanje slijeda
 seq_header1=Opcije povećanja redoslijeda
@@ -595,5 +627,6 @@ seq_emin=Nedostaje ili nije važeća minimalna vrijednost
 seq_emax=Nedostaje ili neispravna maksimalna vrijednost
 seq_ecache=Nedostaje ili nevažeći broj vrijednosti za predmemoriju
 seq_ecannot=Nije vam dopušteno upravljati nizovima
+
 dgrant_err=Ponovno postavljanje bespovratnih sredstava nije uspjelo
 dgrant_enone=Nije odabran nijedan objekt

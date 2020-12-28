@@ -21,6 +21,7 @@ index_thost=Tên máy chủ
 index_tdesc=Sự miêu tả
 index_tcount=Gói
 index_ttype=Loại hệ điều hành
+
 install_err=Không thể cài đặt gói
 install_elocal=Không có tệp cục bộ nào
 install_elocal2='$1' không tồn tại
@@ -37,6 +38,7 @@ install_ok=Tải về
 install_erus=Máy chủ này sử dụng hệ thống cập nhật khác với máy chủ chính ($1 so với $2)
 install_eupdate=Đã xảy ra lỗi khi cài đặt các bản cập nhật đã chỉ định
 install_ealready=Phiên bản $1 đã được cài đặt
+
 add_title=Thêm máy chủ
 add_msg=Thêm $1 ..
 add_gmsg=Thêm máy chủ trong nhóm $1 ..
@@ -45,6 +47,7 @@ add_gerr=Không thể thêm nhóm
 add_echeck=Máy chủ $1 không có mô-đun gói phần mềm
 add_esystem=Máy chủ $1 không sử dụng cùng hệ thống gói với máy này
 add_ok=Đã thêm $1 với gói $2.
+
 search_title=Tìm kiếm gói
 search_nomatch=Không có gói nào khớp $1 
 search_none=không ai
@@ -56,6 +59,7 @@ search_return=kết quả tìm kiếm
 search_delete=Gỡ cài đặt các gói đã chọn từ:
 search_selall=Chọn tất cả
 search_invert=Lựa chọn đối nghịch
+
 host_title=Máy chủ được quản lý
 host_header=Phần mềm quản lý chi tiết máy chủ
 host_name=Tên máy chủ
@@ -70,6 +74,7 @@ host_count=Gói cài đặt
 host_os=Hệ điều hành từ Webmin
 host_return=chi tiết máy chủ
 host_system=Hệ thống trọn gói
+
 edit_title=Chỉnh sửa gói
 edit_details=Chi tiết gói từ $1 
 edit_desc=Sự miêu tả
@@ -88,6 +93,7 @@ edit_all=&lt;tất cả máy chủ&gt;
 edit_donthave=&lt;máy chủ không có nó&gt;
 edit_have=&lt;máy chủ lưu trữ có nó&gt;
 edit_group=Thành viên của $1 
+
 list_title=Gói tập tin
 list_files=Tệp cho Gói $1 trên $2 
 list_path=Con đường
@@ -97,6 +103,7 @@ list_type=Kiểu
 list_size=Kích thước
 list_status=Trạng thái
 list_ok=đồng ý
+
 refresh_title=Làm mới danh sách gói
 refresh_header=Yêu cầu lại danh sách gói từ tất cả các máy chủ ..
 refresh_header4=Yêu cầu lại danh sách gói từ các thành viên của $2 ..
@@ -108,6 +115,7 @@ refresh_4=Đã làm mới $1 (không thay đổi)
 refresh_done=.. làm xong
 refresh_del=Đã xóa $1 khỏi danh sách máy chủ
 refresh_failed=Không thể làm mới $1 : $2 
+
 delete_err=Không thể xóa gói $1 
 delete_epack=Gói $1 không tồn tại
 delete_title=Xóa gói
@@ -120,6 +128,7 @@ delete_error=Không thể xóa từ $1 : $2
 delete_success=Đã xóa từ $1.
 delete_done=.. làm xong
 delete_header=Xóa gói $1 ..
+
 do_title=Cài đặt gói
 do_header=Cài đặt $1 trên tất cả các máy chủ ..
 do_header3=Cài đặt $1 trên các máy chủ chưa có ..
@@ -140,6 +149,7 @@ do_arch=Ngành kiến trúc
 do_inst=Cài đặt
 do_none=không ai
 do_edeleted=Tệp cài đặt đã bị xóa - quay lại chỉ mục mô-đun và thử lại.
+
 compare_title=So sánh các gói
 compare_desc=Biểu mẫu này có thể được sử dụng để so sánh các gói được cài đặt trên hai hoặc nhiều máy chủ và tìm thấy bất kỳ sự khác biệt nào giữa các phiên bản hoặc gói có sẵn.
 compare_hosts=Máy chủ để so sánh
@@ -154,6 +164,7 @@ compare_showall=Gói để hiển thị
 compare_showall1=Tất cả
 compare_showall0=Chỉ không phù hợp
 compare_got=đồng ý
+
 deletes_err=Không thể xóa các gói
 deletes_enone=Không có gói nào được chọn
 deletes_title=Xóa gói

@@ -8,6 +8,7 @@ index_none=ไม่มีการกำหนดตัวเลือกกา
 index_efile=ไม่พบไฟล์เมนู GRUB บนระบบของคุณ อาจไม่ได้ติดตั้ง GRUB หรือ <a href='$2'>การกำหนดค่าโมดูล</a> ไม่ถูกต้อง
 index_epath=ไม่พบ GRUB แบบปฏิบัติการได้ 1 บนระบบของคุณ อาจไม่ได้ติดตั้ง GRUB หรือ <a href='$2'>การกำหนดค่าโมดูล</a> ไม่ถูกต้อง
 index_return=รายการตัวเลือก
+
 title_add=เพิ่มตัวเลือกการบูต
 title_edit=แก้ไขตัวเลือกการบูต
 title_header=รายละเอียดตัวเลือกเมนู Boot
@@ -36,6 +37,7 @@ title_echain=ไฟล์ chainloader ที่ขาดหายไปหรื
 title_edev=อุปกรณ์พาร์ติชันรูทที่ไม่รองรับ $1 
 title_einitrd=ไม่มีชื่อไฟล์ ramdisk เริ่มต้น
 title_lock=รหัสผ่านถูกล็อค?
+
 global_title=ตัวเลือกสากล
 global_header=ตัวเลือกเมนูการบูตทั่วโลก
 global_default=ตัวเลือกการเริ่มต้น
@@ -56,12 +58,14 @@ global_edev=ติดตั้งดิสก์/พาร์ติชัน $1 
 global_eother=ดิสก์/พาร์ติชันที่ขาดหายไปหรือไม่ถูกต้อง
 global_epassword=รหัสผ่านการบูตขาดหายไปหรือไม่ถูกต้อง
 global_epasswordfile=ไม่มีชื่อไฟล์เมนูอื่น
+
 install_title=ติดตั้ง GRUB
 install_err=ไม่สามารถติดตั้ง GRUB
 install_efind=ไม่พบไฟล์เมนู
 install_desc=การติดตั้ง GRUB ใน $1 ด้วยคำสั่ง $2 และ $3 ..
 install_ok=.. ติดตั้งเสร็จสมบูรณ์
 install_failed=.. การติดตั้งล้มเหลว!
+
 log_create_title=สร้างตัวเลือกการบูต $1 แล้ว
 log_delete_title=ตัวเลือกการบูตที่ถูกลบ $1 
 log_modify_title=ตัวเลือกการบูตที่ปรับเปลี่ยน $1 

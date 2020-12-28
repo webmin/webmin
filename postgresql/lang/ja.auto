@@ -1,10 +1,13 @@
 index_startmsg2=このボタンをクリックして、システムでPostgreSQLデータベースサーバーを起動します。このWebminモジュールは、データベースが開始されるまでデータベースを管理できません。
 index_nodbs3=検索に一致するPostgreSQLデータベースはありません。
 index_edithosts=許可されたホストシステムの構成
+
 dbase_vjump=編集ビュー：
 dbase_ijump=インデックスを編集：
 dbase_sjump=シーケンスの編集：
+
 table_delete=選択したフィールドを削除
+
 exec_old=または、前のSQLコマンドを選択します。
 exec_clear=履歴をクリア
 exec_importmode=CSVファイルソース
@@ -12,29 +15,38 @@ exec_tabexec=SQLを実行する
 exec_tabfile=ファイルからSQLを実行する
 exec_tabimport=テキストファイルをインポートする
 exec_return=SQLフォームを実行する
+
 view_refresh=リフレッシュ
 view_match4=より大きい
 view_match5=未満
 view_go=行く
 view_sqlrun=SQLクエリによって生成された結果： $1
+
 newdb_template=テンプレートデータベース
 newdb_notemplate=なし
+
 user_vwarning=警告：このPostgreSQLユーザーは、Virtualminドメイン $1の管理ログインです。ここで設定を変更すると、Virtualminでエラーが発生する場合があります。
 user_syncwhen=同期するタイミング
+
 host_peer=ネットワークピア
 host_identarg0=ユーザーマップを使用しない
 host_identarg1=PostgreSQLとUnixユーザーは同じです
 host_identarg2=ユーザーマップファイルを使用する
 host_manual=構成ファイルの編集
 host_manualdesc=このボタンをクリックして、許可されたホスト構成ファイルを手動で編集します。
+
 manual_title=構成ファイルの編集
 manual_err=構成ファイルを保存できませんでした
+
 group_memsopts=すべてのユーザー
 group_memsvals=グループのユーザー
+
 log_fields_delete=データベース $3の $2から $1フィールドを削除しました
 log_manual=手動で編集された許可されたホストの構成ファイル
+
 fdrop_enone=何も選択されていません
 fdrop_eall=テーブルからすべてのフィールドを削除することはできません！
+
 restore_tables=復元するテーブル
 restore_tables1=バックアップファイル内のすべて
 restore_tables0=一覧表

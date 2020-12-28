@@ -4,6 +4,7 @@ index_desc=apibūdinimas
 index_add=Pridėkite naują PAM paslaugą.
 index_return=paslaugų sąrašas
 index_none=Jūsų sistemoje aplanke $1 nerasta jokių PAM konfigūracijos failų. Gal PAM nepalaikomas arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
+
 desc_su=Pakeisti vartotoją
 desc_su-l=Pakeisti vartotoją (su prisijungimu)
 desc_login=Vietinis arba nuotolinis prisijungimas
@@ -87,6 +88,7 @@ desc_common-account=Bendras sąskaitos patvirtinimas
 desc_common-auth=Bendras autentifikavimas
 desc_common-password=Įprastas slaptažodžio keitimas
 desc_common-session=Bendras seanso nustatymas
+
 edit_title=Redaguoti PAM tarnybą
 edit_header=PAM paslaugos informacija
 edit_name=Paslaugos pavadinimas
@@ -107,6 +109,7 @@ edit_move=Judėk
 edit_return=PAM paslauga
 edit_inc=Įtraukite $1 paslaugą
 edit_iheader=Į kainą įskaičiuotos PAM paslaugos
+
 pam_pwdb.so=„Unix“ slaptažodžio atpažinimas
 pam_securetty.so=Saugus TTY patikrinimas, ar nėra šaknies
 pam_nologin.so=<tt>/etc/nologin</tt> failų tikrinimas
@@ -149,6 +152,7 @@ pam_console.so=Tik pulte patikrinkite
 pam_xauth.so=X autentifikavimas
 pam_stack.so=Skambinkite kitai PAM tarnybai
 pam_foreground.so=Konsolės nustatymas
+
 control_requisite=Reikalaujama
 control_required=Privaloma
 control_sufficient=Pakanka
@@ -157,6 +161,7 @@ control_desc_requisite=Atsiradus nesėkmei, iškart nepavyksta patvirtinti savo 
 control_desc_required=Nepavykus autentifikuoti pabaigoje
 control_desc_sufficient=Sėkmingai patvirtinkite autentiškumą iškart
 control_desc_optional=Nepaisoma sėkmės ar nesėkmės
+
 create_title=Sukurkite PAM paslaugą
 create_header=Naujos PAM paslaugos parinktys
 create_name=Paslaugos pavadinimas
@@ -165,6 +170,7 @@ create_mods=Pradiniai PAM moduliai
 create_0=Nė vienas
 create_1=„Unix“ autentifikavimas
 create_2=Atmesti bet kokią prieigą
+
 mod_edit=Redaguoti PAM modulį
 mod_create=Pridėti PAM modulį
 mod_header=PAM modulio parinktys
@@ -178,10 +184,12 @@ mod_type_password=Slaptažodžio keitimas
 mod_control=Gedimo lygis
 mod_args=Modulio argumentai
 mod_err=Nepavyko išsaugoti modulio
+
 pwdb_shadow=Naudoti šešėlinio slaptažodžio failą?
 pwdb_nullok=Priimti slaptus slaptažodžius?
 pwdb_md5=Naudoti MD5 užšifruotus slaptažodžius?
 pwdb_nodelay=Vėluoti po nepavykusio prisijungimo?
+
 unix_nullok_secure=Priimti niekinius slaptažodžius saugiuose TTY?
 unix_min=Mažiausias slaptažodžio ilgis
 unix_nomin=Nė vienas
@@ -190,6 +198,7 @@ unix_nomax=Jokios ribos
 unix_obscure=Neleisti naudoti paprastų slaptažodžių?
 unix_emin=Trūksta arba netinkamas mažiausias slaptažodžio ilgis
 unix_emax=Trūksta arba netinkamas didžiausias slaptažodžio ilgis
+
 listfile_item=Ieškoti failo
 listfile_item_user=Vartotojo vardas
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=Apribokite patikrinimą iki
 listfile_all=Visi vartotojai
 listfile_user=Tik vartotojas
 listfile_group=Tik grupė
+
 cracklib_type=Paraginti įveskite slaptažodį
 cracklib_retry=Didžiausias pakartojimų skaičius prieš nesėkmę
 cracklib_eretry=Trūksta arba netinkamas pakartojimų skaičius
 cracklib_etype=Trūksta arba netinkamas slaptažodžio tipas
+
 rhosts_equiv=Skaityti failą <tt>/etc/hosts.equiv</tt>?
 rhosts_rhosts=Skaityti vartotojų <tt>.rhosts</tt> failus?
 rhosts_promiscuous=<tt>+</tt> įvedimas leidžia visiems kompiuteriams?
 rhosts_suppress=Žurnalo autentifikacijos nesėkmės?
+
 env_var=Kintamasis vardas
 env_def=Numatytoji reikšmė
 env_over=Nepaisykite vertės
 env_evar=Kintamųjų pavadinimuose negali būti tarpų
+
 securetty_ttys=Saugūs TTY
+
 shells_shells=Galiojantys vartotojo apvalkalai
+
 tally_deny=Nepavyko uždrausti prieigos
 tally_reset=Gedimo atstatymas priklauso nuo sėkmės
 tally_edeny=Trūksta arba netinkamas klaidų bandymų skaičius
 tally_magic=Gedimų skaičius galioja <tt>šaknims</tt>?
 tally_root=<tt>root</tt> sąskaitą galima atsisakyti?
+
 time_services=Paslaugos
 time_ttys=TTY
 time_users=Vartotojai
 time_times=Prieigos laikai
 time_info=Visuose laukuose gali būti kelios reikšmės, atskirtos |, ir reikšmes gali naudoti * kaip pakaitos ženklą arba! kaip neigėjas.
+
 group_services=Paslaugos
 group_ttys=TTY
 group_users=Vartotojai
 group_times=Prieigos laikai
 group_groups=Pridėti grupes
 group_info=Visuose laukuose gali būti kelios reikšmės, atskirtos |, ir reikšmes gali naudoti * kaip pakaitos ženklą arba! kaip neigėjas.
+
 wheel_group=Patikrinkite narystę grupėje
 wheel_group_def=Numatytasis (<tt>ratukas</tt> arba GID 0)
 wheel_trust=Grupės nariai apeina tolesnį autentifikavimą?
 wheel_deny=Neigti, užuot leidę grupės nariams?
 wheel_egroup=Trūksta arba netinkamas grupės pavadinimas
+
 motd_file=Rodomas failas
 motd_file_def=Numatytasis (<tt>/etc/motd</tt>)
 motd_efile=Trūksta arba netinkamas failo vardas
+
 mail_nopen=Rodyti el. Pašto pranešimą prisijungiant?
 mail_close=Rodyti el. Pašto pranešimą atsijungus?
 mail_empty=Pranešti, ar pašto failas tuščias?
 mail_noenv=Nustatyti $ MAIL aplinkos kintamąjį?
 mail_dir=Pašto ritinių katalogas
 mail_edir=Trūksta arba netinkamas pašto paketų katalogas
+
 stack_service=Perduokite patikrinimą PAM tarnybai
+
 log_pam_create=Sukurta PAM paslauga $1 
 log_pam_delete=Ištrinta PAM paslauga $1 
 log_mod_create=Pridėtas PAM modulis $1 prie paslaugos $2 
@@ -262,6 +284,7 @@ log_inc_create=Pridėta $2 už paslaugą $2
 log_inc_modify=Modifikuotas apima $1 paslaugų $2 
 log_inc_delete=Ištrinta apima $1 už paslaugą $2 
 log_incs=Atnaujinta apima paslaugą $1 
+
 inc_edit=Redaguoti įtrauktą paslaugą
 inc_create=Sukurti įtrauktą paslaugą
 inc_header=Įtraukta PAM paslaugos informacija

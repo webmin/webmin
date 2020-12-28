@@ -4,6 +4,7 @@ index_desc=Opis
 index_add=Dodaj nową usługę PAM
 index_return=listy usług
 index_none=Nie znaleziono w systemie w katalogu $1 plików konfiguracyjnych PAM. Możliwe, że system nie wspomaga PAM lub Twoja <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
+
 desc_su=Przełącz użytkownika
 desc_login=Logowanie zdalne lub lokalne
 desc_samba=Serwer plików dla Windows Samba
@@ -61,6 +62,7 @@ desc_printconf-gui=Narzędzie konfiguracji drukarek w Redhat'cie
 desc_rhn_register=Rejestracja sieci w Redhat'cie
 desc_system-auth=Wspólna autoryzacja
 desc_cups=drukowanie przez CUPS
+
 edit_title=Zmień usługę PAM
 edit_header=Informacje o usłudze PAM
 edit_name=Nazwa usługi
@@ -77,6 +79,7 @@ edit_none=Nie określono modułów PAM dla tego etapu
 edit_delete=Usuń usługę PAM
 edit_move=Przesuń
 edit_return=usługi PAM
+
 pam_pwdb.so=Uniksowa autoryzacja hasłem
 pam_securetty.so=Sprawdzanie bezpiecznych terminali dla roota
 pam_nologin.so=Sprawdzanie pliku <tt>/etc/nologin</tt>
@@ -118,6 +121,7 @@ pam_desgold.so=Autoryzacja kartą DESGold
 pam_console.so=Jedynie sprawdzanie konsoli
 pam_xauth.so=Autoryzacja X
 pam_stack.so=Wywołaj inną usługę PAM
+
 control_requisite=Niezbędne
 control_required=Wymagane
 control_sufficient=Wystarczające
@@ -126,6 +130,7 @@ control_desc_requisite=W razie niepowodzenia odrzuć autoryzację natychmiast
 control_desc_required=W razie niepowodzenia odrzuć autoryzację po niepomyślnym zakończeniu
 control_desc_sufficient=W razie powodzenia zakończ autoryzację sukcesem natychmiast
 control_desc_optional=Pomyślny i niepomyślny wynik autoryzacji jest ignorowany
+
 create_title=Utwórz usługę PAM
 create_header=Opcje nowej usługi PAM
 create_name=Nazwa usługi
@@ -134,6 +139,7 @@ create_mods=Inicjalne moduły PAM
 create_0=Brak
 create_1=Autoryzacja uniksowa
 create_2=Zabronić dostępu
+
 mod_edit=Zmień opcje modułu PAM
 mod_create=Dodaj moduł PAM
 mod_header=Opcje modułu PAM
@@ -147,10 +153,12 @@ mod_type_password=Zmiany hasła
 mod_control=Poziom błędu
 mod_args=Argumenty dla modułu
 mod_err=Nie udało się zachować opcji modułu
+
 pwdb_shadow=Korzysć z pliku haseł <tt>shadow</tt>?
 pwdb_nullok=Akceptować puste hasła?
 pwdb_md5=Korzystać z haseł kodowanych MD5?
 pwdb_nodelay=Opóźnienie po nieudanym logowaniu?
+
 listfile_item=Poszukuj w pliku
 listfile_item_user=Nazwy użytkownika
 listfile_item_tty=Terminal
@@ -167,51 +175,64 @@ listfile_apply=Ograniczyć sprawdzanie do
 listfile_all=Wszystkich użytkowników
 listfile_user=Tylko użytkownika
 listfile_group=Tylko grupy
+
 cracklib_type=Rodzaj hasła przy zapytaniu
 cracklib_retry=Maksymalna liczba prób przed zgłoszeniem błędu
 cracklib_eretry=Nie podana lub niepoprawna liczba prób
 cracklib_etype=Nie podany lub niepoprawny rodzaj hasła
+
 rhosts_equiv=Czytać plik <tt>/etc/hosts.equiv</tt>?
 rhosts_rhosts=Czytać pliki <tt>.rhosts</tt> użytkowników?
 rhosts_promiscuous=Wpis <tt>+</tt> dopuszcza wszystkie hosty?
 rhosts_suppress=Logować błędy autoryzacji?
+
 env_var=Nazwa zmiennej
 env_def=Wartość domyślna
 env_over=Nadpisać wartość
 env_evar=Nazwy zmiennych nie mogą zawierać spacji
+
 securetty_ttys=Bezpieczne terminale
+
 shells_shells=Poprawne powłoki użytkownika
+
 tally_deny=Liczba nieudanych prób przed zablokowaniem dostępu użytkownikowi
 tally_reset=Zerować licznik nieudanych prób w razie powodzenia
 tally_edeny=Nie podana lub niepoprawna liczba nieudanych prób
 tally_magic=Licznik nieudanych prób nieudanych prób dotyczy <tt>root</tt>a?
 tally_root=Można zablokować konto <tt>root</tt>?
+
 time_services=Usługi
 time_ttys=Terminale
 time_users=Użytkownicy
 time_times=Czas dostępu
 time_info=Wszystkie pola mogą zawierać wiele wartości rozdzielonych |, jak też * jako znak wieloznaczny i ! jako negację.
+
 group_services=Usługi
 group_ttys=Terminale
 group_users=Użytkownicy
 group_times=Czas dostępu
 group_groups=Dodać grupy
 group_info=Wszystkie pola mogą zawierać wiele wartości rozdzielonych |, jak też * jako znak wieloznaczny i ! jako negację.
+
 wheel_group=Sprawdzać przynależność do grupy
 wheel_group_def=Domyślnej (<tt>wheel</tt> lub GID 0)
 wheel_trust=Dla członków grupy pomijana jest dalsza autoryzacja?
 wheel_deny=Zabronić dostępu zamiast pozwalać członkom grupy?
 wheel_egroup=Nie podana lub niepoprawna nazwa grupy
+
 motd_file=Wyświetlany plik
 motd_file_def=Domyślny (<tt>/etc/motd</tt>)
 motd_efile=Nie podana lub niepoprawna nazwa pliku
+
 mail_nopen=Pokazywać powiadomienie o poczcie po zalogowaniu?
 mail_close=Pokazywać powiadomienie o poczcie przy wylogowywaniu?
 mail_empty=Powiadamiać, gdy plik poczty jest pusty?
 mail_noenv=Ustawiać zmienną środowiska $MAIL?
 mail_dir=Katalog poczty
 mail_edir=Nie podana lub niepoprawna nazwa katalogu poczty
+
 stack_service=Przekaż kontrolę do usługi PAM
+
 log_pam_create=Utworzono usługe PAM $1
 log_pam_delete=Usunięto usługę PAM $1
 log_mod_create=Dodano moduł PAM $1 dla usługi $2

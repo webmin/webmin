@@ -57,6 +57,7 @@ index_reposdisable=Inaktivera förvar
 index_reposenable=Aktivera förvar
 index_reposdelete=Radera förvar
 index_repoheader=Nya alternativ för paketförvar
+
 update_title=Uppdatera paket
 update_title2=Installera paket
 update_enone=Inga paket valda
@@ -94,9 +95,11 @@ update_none=Ingen
 update_ops=Skapa en komplett lista över paket ..
 update_rebootdesc=Ett av de installerade paketen kräver att en omstart tillämpas fullt ut.
 update_reboot=Starta om nu
+
 sched_title=Schemalagd uppdatering
 sched_yes=Schemalagd kontroll av uppdateringar är nu aktiv.
 sched_no=Schemalagd kontroll av uppdateringar har inaktiverats.
+
 log_update=Installerade $1 uppdaterade paket
 log_sched=Aktiverade schemalagda uppdateringar
 log_unsched=Inaktiverade schemalagda uppdateringar
@@ -108,11 +111,13 @@ log_enable_repo=Aktiverat paketförråd $1
 log_disable_repo=Inaktiverat paketförråd $1 
 log_delete_repo=Raderat paketförråd $1 
 log_create_repo=Skapade paketförvaret $1 
+
 refresh_title=Uppfriskande paket
 refresh_clearing=Rensar cacheminne för paketet
 refresh_done=.. Gjort
 refresh_available=Hämtar tillgängliga paket igen.
 refresh_done3=.. hittade $1 möjliga uppdateringar
+
 view_title=Paketdetaljer
 view_header=Uppdaterbar paketinformation
 view_name=Paketnamn
@@ -126,12 +131,14 @@ view_changelog=Changelog för tillgänglig version
 view_software=Hantera paketet
 view_update=Uppdatera paketet
 view_install=Installera paketet
+
 system_yum=YUM
 system_apt=BENÄGEN
 system_csw=CSW (Blastwave)
 system_webmin=Webmin-modul
 system_usermin=Usermin-modul
 system_tgz=Webmin eller Usermin tar.gz
+
 repos_err_disable=Det gick inte att inaktivera förvar
 repos_err_enable=Det gick inte att aktivera förvar
 repos_err_delete=Det gick inte att ta bort lagrar

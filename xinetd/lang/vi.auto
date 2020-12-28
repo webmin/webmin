@@ -25,6 +25,7 @@ index_estart=Lệnh bắt đầu Xinetd $1 không tồn tại. Có thể nó ch�
 index_noport=không xác định
 index_enable=Cho phép chọn
 index_disable=Vô hiệu hóa được chọn
+
 serv_create=Tạo dịch vụ Internet
 serv_edit=Chỉnh sửa dịch vụ Internet
 serv_header1=Tùy chọn mạng dịch vụ
@@ -78,19 +79,24 @@ serv_enice=Thiếu hay không hợp lệ
 serv_ecps0=Số lượng kết nối bị thiếu hoặc không hợp lệ mỗi giây
 serv_ecps1=Thiếu hoặc chậm trễ không hợp lệ
 serv_etimes=Thời gian truy cập phải ở định dạng HH: MM-HH: MM
+
 sock_stream=Suối
 sock_dgram=Datagram
 sock_raw=Nguyên
 sock_seqpacket=Tuần tự dữ liệu
+
 proto_=Mặc định
 proto_ip=IP (Giao thức Internet)
 proto_tcp=TCP (Giao thức điều khiển truyền)
 proto_udp=UDP (Giao thức gói dữ liệu người dùng)
+
 restart_err=Không thể áp dụng thay đổi
 restart_ekill=Không thể gửi tín hiệu USR2 tới PID $1 : $2 
 restart_epid=Không còn chạy
+
 start_err=Không thể bắt đầu xinetd
 start_estart=$1 thất bại : $2 
+
 defs_title=Tùy chọn mặc định
 defs_header=Tùy chọn mặc định cho dịch vụ
 defs_log=Chế độ đăng nhập Xinetd
@@ -115,6 +121,7 @@ defs_err=Không thể lưu các tùy chọn mặc định
 defs_efile=Tên tệp nhật ký bị thiếu hoặc không hợp lệ
 defs_esoft=Giới hạn mềm bị thiếu hoặc không hợp lệ
 defs_ehard=Thiếu hoặc giới hạn cứng không hợp lệ
+
 log_create_serv=Đã tạo $2 dịch vụ $1 
 log_modify_serv=Đã sửa đổi $2 dịch vụ $1 
 log_delete_serv=Đã xóa $2 dịch vụ $1 
@@ -125,5 +132,6 @@ log_enable=Đã bật $1 dịch vụ
 log_disable=Dịch vụ $1 bị vô hiệu hóa
 log_enable_l=Đã bật dịch vụ $1 
 log_disable_l=Dịch vụ bị vô hiệu hóa $1 
+
 config_dirdef=Tập tin cấu hình Xinetd
 config_dirto=Tập tin mới trong thư mục

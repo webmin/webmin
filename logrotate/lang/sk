@@ -5,17 +5,22 @@ index_post=Príkaz po archivácii
 index_sched=Upraviť časový plán
 index_notset=Nenastaven0
 index_return=Zoznam záznamových súborov
+
 period_daily=Denne
 period_weekly=Týždenne
 period_monthly=Mesačne
 period_never=Nikdy
+
 edit_compress=Komprimovať staré súbory záznamov?
 edit_delaycompress=Odložiť kompresiu až do ďaľšieho spustenia archivácie?
 edit_create=Znovuvytvoriť súbory záznamov po archivácii?
 edit_createno=Nie, nevytvárať znovu
 edit_createsame=Áno, s pôvodnými právami
+
 save_err=Zlyhalo uloženie záznamov
+
 log_create_sched=Vytvorená cron úloha pre archiváciu záznamov
 log_global=Upravené globálne možnosti
 log_create=Pridaná archivácia pre súbor záznamov $1
+
 sched_save=Aktualizovať úlohu v crone

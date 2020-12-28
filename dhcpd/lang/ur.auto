@@ -64,12 +64,14 @@ index_match1=مشتمل
 index_match2=میچ
 index_dhcpd=آئی ایس سی ڈی ایچ سی پی ڈی
 index_delete=منتخب کردہ کو حذف کریں
+
 butt_save=محفوظ کریں
 butt_eco=کلائنٹ کے اختیارات میں ترمیم کریں
 butt_vco=کلائنٹ کے اختیارات دیکھیں
 butt_del=حذف کریں
 butt_create=بنانا
 butt_leases=لیز لیز
+
 esub_crheader=سب نیٹٹ بنائیں
 esub_edheader=سب نیٹ میں ترمیم کریں
 esub_tabhdr=سب نیٹ تفصیلات
@@ -83,12 +85,14 @@ esub_groups=اس سب نیٹ میں براہ راست گروپس
 esub_pools=سب نیٹ کیلئے ایڈریس پولز
 esub_pool=پول$1
 esub_poolnone=پتہ کے تالاب کی کوئی وضاحت نہیں کی گئی
+
 esub_pooladd=ایڈریس پول شامل کریں۔
 esub_none=کوئی نہیں
 esub_return=سب نیٹ لسٹ
 esub_retshar=مشترکہ نیٹ ورک
 esub_desc=سب نیٹ ورک کی تفصیل
 esub_fopeer=فیل اوور پیر
+
 esh_crheader=مشترکہ نیٹ ورک بنائیں
 esh_eheader=مشترکہ نیٹ ورک میں ترمیم کریں
 esh_tabhdr=مشترکہ نیٹ ورک کی تفصیلات
@@ -99,6 +103,7 @@ esh_subn=اس مشترکہ نیٹ ورک میں سبنیٹس
 esh_return=سب نیٹ لسٹ
 esh_pools=مشترکہ نیٹ ورک کیلئے ایڈریس پولز
 esh_desc=مشترکہ نیٹ ورک کی تفصیل
+
 ehost_crheader=میزبان بنائیں
 ehost_eheader=میزبان میں ترمیم کریں
 ehost_tabhdr=میزبان تفصیلات
@@ -119,6 +124,7 @@ ehost_retgroup=گروپ
 ehost_retsubn=سب نیٹ
 ehost_retshar=مشترکہ نیٹ ورک
 ehost_desc=میزبان تفصیل
+
 egroup_crheader=میزبان گروپ بنائیں
 egroup_eheader=میزبان گروپ میں ترمیم کریں
 egroup_tblhdr=گروپ کی تفصیلات
@@ -129,6 +135,7 @@ egroup_return=میزبان فہرست
 egroup_retsubn=سب نیٹ
 egroup_retshar=مشترکہ نیٹ ورک
 egroup_desc=گروپ کی تفصیل
+
 default=پہلے سے طے شدہ
 secs=سیکنڈ
 none=کوئی نہیں
@@ -157,20 +164,24 @@ listl_pc=فیصد
 listl_err=حذف شدہ لیزوں میں ناکام
 listl_enone=کوئی بھی منتخب نہیں ہوا
 listl_refresh=فہرست کو تازہ کریں
+
 restart_errmsg1=ڈی ایچ سی پی ڈی کو دوبارہ شروع کرنے میں ناکام
 restart_errmsg2=عمل کا اشارہ کرنے میں ناکام
 start_failstart=ڈی ایچ سی پی ڈی شروع کرنے میں ناکام
 restart_conftext=$2 میں $1 کے ارد گرد لکیریں :
+
 sgroup_faildel=گروپ کو حذف کرنے میں ناکام
 sgroup_failsave=گروپ کو بچانے میں ناکام
 sgroup_invassign=ایک غلط حصے کو تفویض کردہ گروپ
 sgroup_echanged=تشکیل فائل کے مندرجات کو تبدیل کر دیا گیا ہے۔ دوبارہ کوشش کریں.
+
 shost_faildel=میزبان کو حذف کرنے میں ناکام
 shost_failsave=میزبان کو بچانے میں ناکام
 shost_invalidhn=درست میزبان نام نہیں ہے
 shost_invalidhwa='$1' درست $2 پتہ نہیں ہے
 shost_invalidaddr='$1' میں ایک غلط میزبان نام یا IP پتہ ہے
 shost_invassign=میزبان کو غلط حصے میں تفویض کیا گیا ہے
+
 sopt_failsave=مؤکل کے اختیارات کو بچانے میں ناکام
 sopt_invalidip=ایک درست IP ایڈریس نہیں ہے
 sopt_invalidint=عدد نہیں ہے
@@ -180,10 +191,12 @@ sopt_ednum='$1' درست آپشن نمبر نہیں ہے
 sopt_edtype='$1' درست آپشن قسم نہیں ہے
 sopt_ecval=کسٹم آپشن '$1' کی قیمت غائب ہے
 sopt_ecip=کسٹم آپشن '$1' کی قدر آئی پی ایڈریس ہونی چاہئے
+
 sshared_faildel=مشترکہ نیٹ ورک کو حذف کرنے میں ناکام
 sshared_failsave=مشترکہ نیٹ ورک کو بچانے میں ناکام
 sshared_invalidsname=مشترکہ نیٹ ورک کا نام غائب یا غلط۔
 sshared_nosubnet=مشترکہ نیٹ ورک '$1' میں کوئی سب نیٹ شامل نہیں ہے۔
+
 ssub_faildel=سب نیٹ کو حذف کرنے میں ناکام
 ssub_failsave=سب نیٹ کو بچانے میں ناکام
 ssub_invalidsubaddr=ایک درست سب نیٹ ایڈریس نہیں ہے
@@ -191,6 +204,7 @@ ssub_invalidnmask=ایک درست نیٹ ماسک نہیں ہے
 ssub_invalidipr=ایک درست حد کا IP پتہ نہیں ہے
 ssub_nosubnet=مشترکہ نیٹ ورک '$1' میں کوئی سب نیٹ شامل نہیں ہے۔
 ssub_invalidfopeer=درست فیل اوور ہم مرتبہ نہیں ہے
+
 plib_deflt=پہلے سے طے شدہ لیز کا وقت
 plib_bfname=بوٹ فائل نام
 plib_maxlt=زیادہ سے زیادہ لیز کا وقت
@@ -244,6 +258,7 @@ plib_eexpr=ڈی ایچ سی پی کنفیگریشن کے اس حصے میں اظ
 plib_auth_subnet=سرور اس سب نیٹ کیلئے مستند ہے؟
 plib_auth_shared-network=سرور اس مشترکہ نیٹ ورک کے لئے مستند ہے؟
 plib_auth_global=سرور تمام ذیلی سیٹوں کے لئے مستند ہے؟
+
 eopt_header=کلائنٹ کے اختیارات
 eopt_subtitle=سب نیٹ$1 کے لئے
 eopt_returnsub=سب نیٹ
@@ -289,6 +304,7 @@ eopt_slpa=ایس ایل پی ڈائریکٹری ایجنٹ آئی پی
 eopt_slpaips=صرف یہ آئی پی؟
 eopt_slps=ایس ایل پی سروس کا دائرہ کار
 eopt_slpsonly=صرف اس گنجائش؟
+
 log_apply=لاگو تبدیلیاں
 log_start=ڈی ایچ سی پی سرور شروع کیا
 log_stop=ڈی ایچ سی پی سرور بند ہوگیا
@@ -311,6 +327,7 @@ log_options_group=$1 میزبانوں کے گروپ کیلئے ترمیم شدہ
 log_delete_lease=$1 کیلئے لیز حذف کردی گئی
 log_delete_subnets=حذف کردہ$1 subnets اور مشترکہ نیٹ ورکس
 log_delete_hosts=حذف شدہ$1 میزبان اور میزبان گروپ
+
 keys_edit=TSIG کلید میں ترمیم کریں
 keys_create=ٹی ایس آئی جی کیز بنائیں
 keys_title=ڈی این ایس کیز
@@ -321,12 +338,14 @@ keys_ecannot=آپ کو DNS چابیاں میں ترمیم کرنے کی اجاز
 keys_err=ڈی این ایس کیز کو محفوظ کرنے میں ناکام
 keys_ekey='$1' درست کلیدی ID نہیں ہے
 keys_esecret=کلید$1 کے لئے غائب یا غلط بیس 64 انکوڈ والا راز
+
 pool_edit=ایڈریس پول میں ترمیم کریں
 pool_create=ایڈریس پول بنایا
 pool_header=ایڈریس پول کے اختیارات
 pool_allow=گاہکوں کو اجازت دینے کے لئے
 pool_deny=مؤکلین انکار کرنے کے لئے
 pool_return=سب نیٹ
+
 cdel_header=انتباہ
 cdel_shared1=مشترکہ نیٹ ورک
 cdel_shared2=مشترکہ نیٹ ورک
@@ -344,6 +363,7 @@ cdel_txt=$1 '$2' کو حذف کرنے سے اس کے مندرجات بھی حذ�
 cdel_confirm=کیا آپ واقعی اس$1 کو حذف کرنا چاہتے ہیں؟
 cdel_eunknown=نامعلوم خامی
 cdel_return=میزبان اور نیٹ ورک کی فہرست
+
 eacl_aviol=رسائی کنٹرول کی خلاف ورزی
 eacl_np=آپ کو اجازت نہیں ہے
 eacl_pdh=میزبان کو حذف کریں
@@ -369,6 +389,7 @@ eacl_pdl=لیزیں حذف کریں
 eacl_psl=لیزیں دیکھیں
 eacl_pglob=عالمی اختیارات میں ترمیم کریں
 eacl_papply=اس سروس کو دوبارہ شروع کریں
+
 acl_apply=کیا تبدیلیوں کا اطلاق کر سکتے ہیں؟
 acl_r_leases=لیزیں دیکھ سکتے ہیں؟
 acl_w_leases=لیزوں کو ختم کرسکتے ہیں؟
@@ -398,9 +419,11 @@ acl_err=ACL فہرست کو محفوظ کرنے میں خامی
 acl_ernow=اگر آپ کسی قسم کی آبجیکٹ کے ل write عالمی ACLs میں تحریری رسائی کو قابل بنانا چاہتے ہیں تو آپ کو اس آبجیکٹ کی قسم کے ل read پڑھنے تک رسائی کو بھی چالو کرنا ہوگا۔
 acl_normal=عام
 acl_paranoic=غیر معمولی
+
 iface_title=نیٹ ورک انٹرفیس
 iface_desc=ڈی ایچ سی پی سرور ذیل میں منتخب کردہ کسی ایک انٹرفیس سے جڑے ہوئے نیٹ ورکس پر صرف IP پتے تفویض کرسکتا ہے۔ تمام متعین subnets کے لئے نیٹ ورک انٹرفیس شامل کیا جانا چاہئے. اگر کسی کو منتخب نہیں کیا جاتا ہے تو ، ڈی ایچ سی پی سرور خود بخود تلاش کرنے کی کوشش کرے گا۔
 iface_listen=انٹرفیس پر سنیں
+
 lookup_ehost=نام ، IP پتہ یا میک ایڈریس$1 کے ساتھ کوئی میزبان موجود نہیں ہے
 lookup_ehostname=میزبان کا کوئی نام ، IP پتہ یا MAC پتہ درج نہیں کیا گیا
 lookup_egroup=نام یا ڈومین نام$1 والا کوئی گروپ موجود نہیں ہے
@@ -409,6 +432,7 @@ lookup_esubnet=پتہ یا پتے/نیٹ ماسک$1 کے ساتھ کوئی سب 
 lookup_esubnetname=کوئی سب نیٹ ایڈریس یا پتہ/نیٹ ماسک داخل نہیں ہوا
 lookup_eshared=$1 نام والا کوئی مشترکہ نیٹ ورک موجود نہیں ہے
 lookup_esharedname=کوئی مشترکہ نیٹ ورک کا نام داخل نہیں ہوا
+
 zone_key=ڈی این ایس زون
 index_addzone=نیا DNS زون شامل کریں۔
 index_zone=زون
@@ -424,16 +448,21 @@ zone_faildel=زون کو حذف کرنے میں ناکام
 zone_failsave=زون کو بچانے میں ناکام
 zone_tsigkey=ٹی ایس آئی جی کلید
 zone_ecannot=آپ کو DNS زون میں ترمیم کرنے کی اجازت نہیں ہے
+
 plib_clientupdates=کیا گاہک اپنے ریکارڈ کو اپ ڈیٹ کرسکتے ہیں؟
+
 text_title=dhcpd.conf
 text_editor=متن ایڈیٹر
 text_return=مین مینو
 text_undo=کالعدم کریں
 text_ecannot=آپ کو کنفگریشن فائل میں ترمیم کرنے کی اجازت نہیں ہے
+
 index_buttetext=دستی طور پر ترتیب میں ترمیم کریں
 index_text=ترتیب فائل کو دستی طور پر متن میں ترمیم کریں
+
 stop_err=ڈی ایچ سی پی سرور کو روکنے میں ناکام
 stop_ekill=نہیں چل رہا!
+
 sdelete_err=سبینٹس اور مشترکہ نیٹ ورکس کو حذف کرنے میں ناکام
 sdelete_enone=کوئی بھی منتخب نہیں ہوا
 sdelete_title=سبینٹس اور مشترکہ نیٹ ورکس کو حذف کریں
@@ -441,6 +470,7 @@ sdelete_rusure1=کیا آپ واقعی$1 منتخب کردہ سبنیٹس اور
 sdelete_rusure2=کیا آپ واقعی منتخب شدہ$1 سبنیٹس کو حذف کرنا چاہتے ہیں؟ ذیلی علاقوں میں موجود کوئی بھی دوسری چیزیں بھی ختم ہوجائیں گی۔
 sdelete_rusure3=کیا آپ واقعی منتخب کردہ $2 مشترکہ نیٹ ورکس کو حذف کرنا چاہتے ہیں؟ نیٹ ورکس کے اندر موجود کوئی ذیلی سیٹ یا دوسری چیزیں بھی ختم ہوجائیں گی۔
 sdelete_ok=ابھی حذف کریں
+
 hdelete_err=میزبان اور گروپس کو حذف کرنے میں ناکام
 hdelete_enone=کوئی بھی منتخب نہیں ہوا
 hdelete_title=میزبان اور گروپ حذف کریں

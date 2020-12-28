@@ -43,8 +43,10 @@ index_natnone=Der er endnu ikke defineret nogen oversættelsesregler for netvær
 index_nataction=NAT-tilstand
 index_natfrom=Pakker der skal matche
 index_natto=Oversættelse
+
 dir_in=Indgående
 dir_out=Udgående
+
 action_pass=<font color=#00aa00>Pass</font>
 action_block=<font color=#ff0000>Blok</font>
 action_skip=Springe
@@ -57,6 +59,7 @@ action_map=Kortlægning
 action_rdr=Redirect
 action_bimap=Tovejskortlægning
 action_map-block=Blok kortlægning
+
 laction_pass=<font color=#00aa00>Pass pakke</font>
 laction_block=<font color=#ff0000>Bloker pakke med ICMP-kode</font>
 laction_log=Log pakke, på niveau
@@ -65,6 +68,7 @@ laction_skip=Spring over de næste regler
 laction_auth=Bruger-plads tilladelse
 laction_preauth=Kontroller forrige tilladelse
 laction_call=Opkald kernefunktion
+
 edit_title1=Opret regel
 edit_title2=Rediger regel
 edit_header1=Regelhandling
@@ -130,6 +134,7 @@ edit_icmp=ICMP-type
 edit_icmpany=&lt;Enhver type&gt;
 edit_icmpcode=og kode
 edit_codeany=&lt;Enhver kode&gt;
+
 save_err=Kunne ikke gemme reglen
 save_ehostfrom=Manglende eller ugyldig kildeværtnavn
 save_ehostto=Manglende eller ugyldig destinationshostnavn
@@ -158,11 +163,13 @@ save_eto=Manglende eller ugyldig grænseflade, der skal sendes ud
 save_etoip=Ugyldig IP-adresse, der skal sendes ud
 save_ereplyto=Manglende eller ugyldig interface til at svare på
 save_ereplytoip=Ugyldig IP-adresse at svare på
+
 apply_err=Kunne ikke anvende konfiguration
 apply_remote=Fejl fra $1 : $2 
 unapply_err=Kunne ikke vende konfigurationen tilbage
 unapply_ein=Kunne ikke indtaste regler
 unapply_eout=Kunne ikke få output-regler
+
 desc_if=Hvis $1 
 desc_and=og
 desc_always=Altid
@@ -196,6 +203,7 @@ desc_rdr=IP-adresser $1 port $2
 desc_dport1=port er $1 
 desc_dport2=port er mellem $1 og $2 
 desc_nattoiface=interface-adresse
+
 log_create_rule=Oprettet $1 -regel
 log_delete_rule=Slet $1 -regel
 log_modify_rule=Ændret $1 -regel
@@ -224,6 +232,7 @@ log_add_host=Tilføjet klyngeserver $1
 log_add_group=Tilføjet klyngeservere fra gruppe $1 
 log_delete_host=Fjernet klyngeserver $1 
 log_delete_group=$1 klyngeservere blev fjernet
+
 cluster_title=Cluster Firewall-servere
 cluster_none=Der er endnu ikke tilføjet nogen servere til firewall-klyngen.
 cluster_host=Værtsnavn
@@ -234,6 +243,7 @@ cluster_gadd=Tilføj servere i gruppe
 cluster_need=Du skal tilføje servere med et login og password i Webmin Servers Index-modulet, før de kan styres her.
 cluster_return=klyngeservere
 cluster_delete=Fjern valgte
+
 add_title=Tilføj servere
 add_msg=Tilføjer $1 ..
 add_gmsg=Tilføjelse af servere i gruppe $1 ..
@@ -242,6 +252,7 @@ add_gerr=Kunne ikke tilføje gruppe
 add_echeck=Server $1 har ikke IPFilter Firewall-modulet
 add_emissing=Server $1 mangler firewall-kommandoen $2 
 add_ok=Tilføjet $1 med $2 aktive firewall-regler.
+
 nat_title1=Opret NAT-regel
 nat_title2=Rediger NAT-regel
 nat_action=NAT-tilstand
@@ -300,4 +311,5 @@ nat_edport2=Manglende eller ugyldig slutning af den originale port
 net_erdrip='$1' er ikke en gyldig IP-adresse
 nat_erdrips=Der er ikke angivet nogen destinations-IP'er
 nat_erdrport=Manglende eller ugyldig destinationsport
+
 boot_esmf=SMF-tjenesten $1 findes ikke eller er ikke i en kendt tilstand

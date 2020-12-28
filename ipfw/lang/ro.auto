@@ -25,6 +25,7 @@ index_resetdesc=Faceți clic pe acest buton pentru a șterge toate regulile de f
 index_cluster=Servere Cluster
 index_clusterdesc=Faceți clic pe acest buton pentru a configura servere Webmin suplimentare pe care configurația firewallului va fi copiată automat.
 index_return=reguli pentru firewall
+
 index_num=Num
 index_action=Acțiune
 index_desc=Condiție
@@ -37,6 +38,7 @@ index_delete=Sterge selectia
 index_existing=Webmin a detectat regulile de firewall IPFW $1 utilizate în prezent, care nu sunt înregistrate în fișierul $2. Aceste reguli au fost probabil configurate dintr-un script pe care acest modul nu știe să-l citească și să îl editeze. <p> Dacă doriți să utilizați acest modul pentru a gestiona firewall-ul dvs. IPFW, faceți clic pe butonul de mai jos pentru a converti regulile existente într-un fișier de salvare. și apoi dezactivați scriptul de firewall existent.
 index_saveex=Salvați regulile pentru firewall
 index_headerex=Configurația existentă pentru firewall
+
 action_allow=<font color=#00aa00>Permite</font>
 action_deny=<font color=#ff0000>Drop</font>
 action_reject=<font color=#ff4400>Respinge</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Drop pachet</font>
 laction_reject=<font color=#ff4400>Respingeți respingerea ICMP</font>
 laction_reset=<font color=#ff4400>Resetați conexiunea TCP</font>
 laction_skipto=Salt la regulă
+
 edit_title1=Creați o regulă
 edit_title2=Modificați regula $1 
 edit_header1=Acțiunea regulilor
@@ -114,6 +117,7 @@ edit_src-addr=De la adresa sursă ..
 edit_src-port=Din portul sursă ..
 edit_dst-addr=La adresa de destinație ..
 edit_dst-port=Spre portul de destinație ..
+
 save_err=Reglarea nu a reușit să salveze
 save_enum=Număr de regulă lipsă sau nevalid
 save_eskipto=Numele regulii lipsă sau nevalide la care săriți la
@@ -144,7 +148,9 @@ save_etcpflags=Steagurile TCP pot fi specificate numai dacă protocolul este TCP
 save_elimit=Limită maximă lipsă sau nevalidă
 save_edstport=Portul de destinație lipsă sau nevalid
 save_esrcport=Portul sursă lipsă sau nevalid
+
 apply_err=Eroare la aplicarea configurației
+
 desc_if=Dacă $1 
 desc_and=și
 desc_always=Mereu
@@ -191,6 +197,7 @@ desc_where=unde $1
 desc_all=pentru toate pachetele
 desc_in=pachetul intră
 desc_out=pachetul este în curs de ieșire
+
 log_create_rule=Regula $1 creată
 log_delete_rule=S-a șters regula $1 
 log_modify_rule=Regula $1 modificată
@@ -206,6 +213,7 @@ log_convert=Reguli de firewall active convertite
 log_setup=Confecționare inițială firewall
 log_unapply=Configurarea firewall-ului inversat
 log_delsel=Reguli $1 șterse
+
 cluster_title=Cluster Firewall Servers
 cluster_none=Încă nu au fost adăugate servere la clusterul firewall.
 cluster_host=Numele gazdei
@@ -216,6 +224,7 @@ cluster_gadd=Adăugați servere în grup
 cluster_need=Pentru a putea fi gestionate aici, trebuie să adăugați servere cu o autentificare și parolă în modulul Index Web Servers.
 cluster_return=serverele de cluster
 cluster_delete=Sterge selectia
+
 add_title=Adăugați servere
 add_msg=Se adaugă $1 ..
 add_gmsg=Adăugarea serverelor în grupul $1 ..

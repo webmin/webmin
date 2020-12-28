@@ -44,6 +44,7 @@ index_dscsi=SCSI-laitteen $1 ohjain $2
 index_draid=RAID-taso $1 
 index_dparts=väliseinät
 index_none2=Tästä järjestelmästä ei löytynyt levyjä.
+
 bytes=tavua
 megabytes=megatavua
 extended=laajennettu
@@ -67,6 +68,7 @@ select_promise=Lupa RAID-asemaan $1
 select_ppart=Lupa RAID-asemaan $1 osio $2 
 select_nvme=NVME SSD $1 -asema $2 
 select_nvmepart=NVME SSD $1 -aseman $2 osio $3 
+
 edit_title=Muokkaa osiota
 create_title=Luo osio
 edit_ecannot=Sinulla ei ole oikeutta muokata tätä levyä
@@ -110,6 +112,7 @@ edit_newmount2=Kiinnitä väliseinä
 edit_mountas=kuten
 edit_mountmsg=Asenna tämä osio järjestelmän uuteen hakemistoon, jotta sitä voidaan käyttää tiedostojen tallentamiseen. Tiedostojärjestelmä on oltava jo luotu osioon.
 edit_mountmsg2=Asenna tämä osio järjestelmän virtuaalimuistiksi lisätäksesi käytettävissä olevan muistin määrää.
+
 mkfs_title=Uusi tiedostojärjestelmä
 mkfs_ecannot=Et voi rakentaa uutta tiedostojärjestelmää tälle levylle
 mkfs_desc1=Napsauttamalla tämän lomakkeen alaosassa olevaa painiketta, rakennetaan uusi $1 tiedostojärjestelmä laitteelle $2. Kaikki tämän osion tiedot poistetaan pysyvästi.
@@ -120,6 +123,7 @@ mkfs_err=Tiedostojärjestelmän luominen epäonnistui
 mkfs_exec=Suoritetaan komento $1 ..
 mkfs_failed=.. komento epäonnistui!
 mkfs_ok=.. komento valmis.
+
 fsck_title=Korjaa tiedostojärjestelmä
 fsck_ecannot=Sinulla ei ole oikeutta tarkistaa tätä levyä
 fsck_desc1=Napsauttamalla <tt>Korjaa tiedostojärjestelmä</tt> -painiketta yritetään korjata vaurioitunut $1 tiedostojärjestelmä $2 : lla asennettavaksi $3 : een. Jos tiedostojärjestelmä ei ole vaurioitunut, muutoksia ei tehdä.
@@ -132,6 +136,7 @@ fsck_err3=löydetyt ja korjatut virheet - käynnistä uudelleen
 fsck_err4=virheitä löytyi, mutta EI korjattu
 fsck_err16=komentorivivirhe
 fsck_unknown=tuntematon paluukoodi $1 
+
 tunefs_title=Viritä tiedostojärjestelmä
 tunefs_ecannot=Sinulla ei ole oikeutta virittää tätä tiedostojärjestelmää
 tunefs_desc=Tämä muoto antaa sinun säätää $1 -tiedostojärjestelmän parametreja $2 : een asennettavaksi $3 : een. Tämän tiedostojärjestelmän olemassa oleviin tiedostoihin ei vaikuteta.
@@ -153,10 +158,12 @@ tunefs_err=Tiedostojärjestelmän viritys epäonnistui
 tunefs_exec=Suoritetaan komento $1 ..
 tunefs_failed=.. komento epäonnistui!
 tunefs_ok=.. komento valmis.
+
 reboot_title=reboot
 reboot_msg=Käynnistetään uudelleen nyt ..
 reboot_ok=Käynnistä uudelleen nyt
 reboot_why=Olet vaihtanut osiotaulun $1 : ssä. Jotta tämä muutos tulee voimaan kunnolla, järjestelmä on käynnistettävä uudelleen.
+
 save_err=Osion tallentaminen epäonnistui
 save_ecannot=Sinulla ei ole oikeutta muokata tätä levyä
 save_estart='$1' ei ole kelvollinen aloitussylinteri
@@ -165,6 +172,7 @@ save_emin=Lähtösylinterin on oltava> = $1
 save_emax=Päätepullon on oltava <= $1 
 save_eminmax=Lähtösylinterin on oltava pienempi kuin pääty
 save_eoverlap=Päällekkäisyys havaittu osiossa $1 ($2 - $3)
+
 ext2_b=Lohkon koko
 ext2_f=Fragmentin koko
 ext2_i=Tavut per inode
@@ -172,6 +180,7 @@ ext2_m=Varatut lohkot
 ext2_g=Blokit ryhmää kohti
 ext2_c=Tarkista onko virheellisiä lohkoja?
 ext3_j=Lokitiedoston koko
+
 msdos_ff=FAT: ien lukumäärä
 msdos_F=FAT-koko
 msdos_F_other=Muut ..
@@ -180,24 +189,32 @@ msdos_n=Levyn nimi
 msdos_r=Juurimerkinnät
 msdos_s=Rypäleen koko
 msdos_c=Tarkista onko virheellisiä lohkoja?
+
 minix_n=Tiedostonimen pituus
 minix_i=Inodien lukumäärä
 minix_b=Lohkojen lukumäärä
 minix_c=Tarkista onko virheellisiä lohkoja?
+
 reiserfs_force=Pakota tiedostojärjestelmän luominen
 reiserfs_hash=Hash-toiminto
+
 xfs_force=Pakota tiedostojärjestelmän luominen
 xfs_b=Lohkon koko
+
 jfs_s=Lokin koko
 jfs_c=Tarkista onko virheellisiä lohkoja?
+
 btrfs_l=Lehden koko
 btrfs_n=Solmun koko
 btrfs_s=Sektorin koko
+
 fatx_none=FATX-tiedostojärjestelmille ei ole saatavana vaihtoehtoja.
+
 acl_disks=Levyt, jotka tämä käyttäjä voi osioida ja alustaa
 acl_dall=Kaikki levyt
 acl_dsel=Valitut ..
 acl_view=Voiko katsella muokkaamattomia levyjä?
+
 hdparm_title=Muokkaa IDE-parametreja
 hdparm_on=Päällä
 hdparm_off=Vinossa
@@ -226,9 +243,11 @@ hdparm_performing=esittävä
 hdparm_buf1=Puskurivälimuisti:
 hdparm_buf2=puskuroitu:
 hdparm_speedres=Nopeustestin tulokset
+
 blink_title=Tunnista asema
 blink_desc=Taajuusmuuttajan toiminta-LED-valo palaa nyt kuusikymmentä kertaa
 blink_back=Mene takaisin
+
 log_modify=Muokattu $1 
 log_create=Luotu $1 
 log_delete=Poistettu $1 
@@ -236,6 +255,7 @@ log_mkfs=Luotu $1 tiedostojärjestelmä $2 : een
 log_tunefs=Viritetty $1 tiedostojärjestelmä $2 : lla
 log_fsck=Korjattu $1 tiedostojärjestelmä $2 : lla
 log_hdparm=Muokatut IDE-parametrit $1 : lle
+
 fs_ext2=Vanha Linuxin alkuperäinen
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -246,9 +266,11 @@ fs_ext4=Uusi Linuxin alkuperäinen
 fs_xfs=SGI
 fs_jfs=IBM Journalling
 fs_btrfs=BTR
+
 delete_title=Poista osio
 delete_rusure=Haluatko varmasti poistaa $1 ($2)? Tämän osion tiedot voivat kadota lopullisesti.
 delete_ok=Poista nyt
+
 disk_title=Muokkaa levyosioita
 disk_egone=Levyä ei enää ole!
 disk_no=Määrä
@@ -269,11 +291,13 @@ disk_table=<b>Osiointitaulukon muoto:</b> $1
 disk_notable=<b>Osiointitaulukon muoto:</b> Ei mitään luotu
 disk_needtable=Mitään osiota ei voi luoda ilman osiotaulua.
 disk_return=luettelo osioista
+
 relabel_title=Pyyhi väliseinät
 relabel_warn=Haluatko varmasti pyyhkiä kaikki osiot kohdasta $1 ($2) kirjoittamalla levyn etiketti uudelleen? Kaikki olemassa olevat tiedot ja tiedostojärjestelmät menetetään!
 relabel_parts=Olemassa olevat osiot
 relabel_noparts=Ei vielä luotu
 relabel_table=Osiointitaulukon muoto
 relabel_ok=Pyyhi ja merkitä se uudelleen
+
 table_msdos=MS-DOS (tavallinen osiomuoto)
 table_gpt=GPT (2T tai suuremmille levyille)

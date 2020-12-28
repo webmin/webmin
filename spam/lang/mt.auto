@@ -13,6 +13,7 @@ index_applydesc=Ikklikkja din il-buttuna biex tapplika l-konfigurazzjoni SpamAss
 index_cpan=Minħabba li SpamAssassin huwa modulu Perl, tista 'wkoll tinstallah awtomatikament billi tuża <a href='$2'>Moduli Perl</a> ta' Webmin biex tniżżel $1 minn CPAN.
 index_spamassassin=SpamAssassin
 index_ecannot=M'għandekx permess timmaniġġja l-fajl tal-konfigurazzjoni SpamAssassin $1 
+
 white_title=Indirizzi permessi u miċħuda
 white_desc=It-tabelli f'din il-paġna jippermettulek tispeċifika Minn: u Lil: indirizzi għal posta elettronika li hija dejjem jew qatt klassifikata bħala spam. Kull email oħra tkun ipproċessata b'mod normali bir-regoli ta 'SpamAssassin. L-indirizzi tal-email kollha jista 'jkun fihom wildcards, bħal *@foo.com jew *.foo.com biex jaqblu ma' dominji sħaħ.
 white_from=Mittenti li qatt ma jikklassifikaw bħala spam
@@ -44,6 +45,7 @@ white_tabham=Indirizzi permessi
 white_tabspam=Indirizzi miċħuda
 white_tabsome=Indirizzi tad-destinazzjoni
 white_tabimport=Indirizzi ta 'importazzjoni
+
 score_title=Klassifikazzjoni tal-ispam
 score_desc=SpamAssassin jassenja punteġġ lil kull messaġġ abbażi tal-kontenut u l-intestaturi tiegħu. L-għażliet f'din il-paġna jiddeterminaw il-punteġġ 'il fuq minn liema messaġġ huwa meqjus bħala spam, u wħud mill-metodi li permezz tagħhom jiġi kkalkulat dak il-punteġġ.
 score_header=Għażliet ta 'klassifikazzjoni ta' messaġġi spam
@@ -77,6 +79,7 @@ score_emxdelay=Sekondi nieqsa jew invalidi li wieħed jistenna bejn il-kontrolli
 score_etimeout=Sekondi nieqsa jew invalidi biex jistennew il-mistoqsijiet RBL
 score_ereceived=Numru nieqes jew invalidu ta 'Rċevuti: intestaturi li għandhom jiġu ċċekkjati b'RBL
 score_bayes=Uża klassifikatur tat-tagħlim Bayesjan?
+
 report_title=Modifika tal-Messaġġ
 report_desc=L-għażliet f'din il-paġna jikkontrollaw il-modifiki li SpamAssassin jagħmel għall-intestaturi u l-korp tal-messaġġi kollha li janalizza, u l-modifiki li jagħmel lil dawk klassifikati bħala spam.
 report_header=Analizzati u għażliet ta 'modifikazzjoni ta' messaġġi spam
@@ -109,6 +112,7 @@ report_addspam=Spam
 report_addham=Perżut
 report_addall=Kollha
 report_eaddheader=Intestatura addizzjonali nieqsa jew invalida biex iżżid $1 
+
 user_title=Għażliet Mħallsa ta 'Utenti
 user_desc=L-għażliet f'din il-paġna huma l-aktar relatati mal-mogħdijiet u l-issettjar li SpamAssassin juża għall-pakketti ta 'identifikazzjoni tal-ispam esterni Razor, DCC u Pyzor. Tista 'wkoll tgħid lil SpamAssassin jekk tkunx tista' twettaq tfittxija DNS jew le.
 user_header=Għażliet varji fuq livell ta 'utent
@@ -131,6 +135,7 @@ user_err=Ma rnexxielux isalva l-għażliet tal-utent
 user_etimeout="$1" m'huwiex perjodu ta 'żmien validu
 user_epath="$1" mhijiex triq tal-programm tal-klijent valida
 user_emax="$1" m'huwiex għadd ta 'checkum validu
+
 header_title=Testijiet ta 'Intestatura u Korp
 header_desc=Din il-paġna jippermettilek tiddefinixxi testijiet addizzjonali li SpamAssassin se tapplika għall-email, ibbażati fuq intestaturi tal-messaġġi, il-kontenut tal-ġisem, URLs misjuba fil-ġisem, jew kombinazzjonijiet ta 'testijiet oħra. L-isem assenjat għal kull test huwa f'idejn tiegħek, imma ġeneralment hija xi ħaġa bħal CONTAINS_FOO. Il-punteġġ attwali li SpamAssassin iżid mal-messaġġi li jaqblu ma 'test jista' jiġi ssettjat billi ddaħħal l-ismijiet tat-test tiegħek stess jew inkorporati fit-tabelli fil-qiegħ tal-paġna.
 header_switch=Aqleb għal modalità sempliċi ..
@@ -164,6 +169,7 @@ header_eeval="$1" mhix funzjoni ta 'evalwazzjoni valida
 header_eheader="$1" mhux intestatura ta 'email valida
 header_eregexp="$1" mhix espressjoni regolari valida (trid tkun bħal / espressjoni /)
 header_emeta=Espressjoni tat-test nieqsa għat-test "$1"
+
 priv_title=Għażliet Privileġġjati Mixxellanji
 priv_desc=L-għażliet dwar dan jistgħu jiġu ssettjati biss globalment, aktar milli fil-fajls ta 'konfigurazzjoni ta' l-utenti individwali. Huma jikkontrollaw b 'mogħdijiet għall-konfigurazzjoni varji u l-fajl tal-qtugħ.
 priv_header=Issettjar mixxellanju ta 'livell ta' privileġġ
@@ -183,6 +189,7 @@ priv_eargs="$1" mhix lista valida ta 'argumenti
 priv_emscore="$1" mhijiex punteġġ validu tal-ogħla frażi
 priv_ephrase="$1" mhix frażi valida ta 'spam b'żewġ kelmiet
 priv_escore=Punteġġ nieqes jew invalidu għall-frażi spam “$1”
+
 usually=Normalment $1 
 ecannot=M’intix permess tuża din il-paġna
 setup_title=Twaqqaf Procmail Għal SpamAssassin
@@ -202,11 +209,13 @@ setup_drop1=Utent li jirċievi Unix
 setup_drop0=<tt>root</tt> Utent
 setup_ok=Twaqqaf Procmail għal SpamAssassin
 setup_email=Ibgħat l-indirizz tal-email
+
 setup_err=Naqset milli tissettja SpamAssassin
 setup_efile=Fajl tal-format mbox nieqes jew invalidu
 setup_emaildir=Direttorju tal-posta Qmail nieqes jew invalidu
 setup_emhdir=Direttorju tal-posta MH nieqes jew invalidu
 setup_eemail=Indirizz tal-email nieqes jew invalidu
+
 log_white=Indirizzi permessi u miċħuda modifikati
 log_score=Klassifikazzjoni spam modifikata
 log_report=Modifika tal-messaġġ modifikata
@@ -217,12 +226,14 @@ log_setup=Twaqqaf Procmail għal SpamAssassin
 log_procmail=Biddel il-konfigurazzjoni ta 'Procmail
 log_import=Indirizzi permessi $1 importati
 log_manual=Fajl ta 'konfigurazzjoni editjat manwalment
+
 import_title=Indirizzi ta 'Importazzjoni
 import_err=Ma rnexxielux jimporta l-indirizzi
 import_efile=L-ebda fajl li jimporta minn magħżul
 import_enone=L-ebda indirizz elettroniku ma jinsab fil-fajl
 import_ok1=$2 indirizzi tal-email instabu fil-fajl, li minnhom $1 kienu ġodda u ġew miżjuda mal-lista tal-indirizzi kollha permessi.
 import_ok2=L-indirizzi tal-email $1 instabu fil-fajl, iżda dawn kienu diġà kollha fil-lista tal-indirizzi permessi.
+
 mail_title=Spam Mail
 mail_desc=Din il-paġna telenka messaġġi li ġew klassifikati bħala spam, u qed jistennew xi azzjoni. Messaġġi li ġew indentifikati ħażin jistgħu jiġu mċaqalqa għall-Inbox tiegħek, filwaqt li dawk li huma tassew spam jistgħu jitħassru.
 mail_level=Punteġġ
@@ -240,10 +251,13 @@ mail_will=Tiffriska awtomatikament f ' $1 minuti
 mail_wills=Tiffriska awtomatiku f ' $1 sekonda
 mail_delall=Ħassar l-ispam kollu
 mail_search3=Fittex għall-punteġġ hawn fuq:
+
 process_eclean=Sar żball meta tneħħi l-intestaturi ta 'SpamAssassin minn dan l-email
 process_ereport=Naqas milli jirrapporta email lil SpamAssassin : $1 
+
 apply_err=Ma rnexxielux japplika tibdil
 apply_none=L-ebda proċess ta 'daemon SpamAssassin ma nstab!
+
 acl_avail=Ikoni disponibbli għall-utent
 acl_file=Fajl tal-konfigurazzjoni SpamAssassin biex jeditja
 acl_filedef=Fajl konfigurazzjoni globali
@@ -251,8 +265,10 @@ acl_awl=L-utenti huma permessi għall-editjar tal-lista awtomatika
 acl_awl0=L-utenti kollha
 acl_awl1=Utenti elenkati biss $1 
 acl_awl2=Membri biss tal-gruppi $1 
+
 search_escore=Punteġġ tal-ispam nieqes jew invalidu
 search_results5=$1 messaġġi bil-posta bl-ispam ta 'jew aktar minn $2.
+
 razor_title=Twaqqaf Razor Spam Detector
 razor_desc=Vipul's Razor hija sistema kollaborattiva ta 'skoperta u rappurtar tal-ispam li tista' ttejjeb il-klassifikazzjoni tal-ispam mibgħut fl-indirizz tiegħek. Madankollu, qabel ma tkun tista 'tintuża trid tirreġistra għal kont Razor, billi tuża l-formola hawn taħt.
 razor_user=Username Razor
@@ -267,6 +283,7 @@ razor_epass=Password nieqsa
 razor_doing=Issa qed tipprova tirreġistra u tissettja Razor ..
 razor_done=.. sar.
 razor_failed=.. naqas! Ara l-iżball tal-ħruġ hawn fuq għar-raġuni għaliex.
+
 amavisd_title=Kunsinna Spam Amavisd
 amavisd_desc=Il-formola tista 'tintuża biex tbiddel il-konfigurazzjoni ta' Amavisd li tiddetermina x'jiġri fil-messaġġi klassifikati bħala spam.
 amavis_ok=Ibdel il-Kunsinna Amavisd
@@ -304,9 +321,11 @@ amavis_quarantine_today=Spam mails fil-Kwarantina llum (24h)
 amavis_quarantine_week=Spam mails fil-Kwarantina din il-ġimgħa (7 ijiem)
 amavis_quarantine_month=Spam mails fil-Kwarantina dan ix-xahar (30 ġurnata)
 amavis_quarantine_total=Numru totali ta 'emails bi spam fil-Kwarantina
+
 procmail_title=Twassil Spam Procmail
 procmail_ok=Ibdel il-Kunsinna Procmail
 procmail_desc=Il-formola tista 'tintuża biex tbiddel il-konfigurazzjoni ta' Procmail li tiddetermina x'jiġri fil-messaġġi klassifikati bħala spam.
+
 simple_title=Testijiet ta 'Intestatura u Korp
 simple_desc=Din il-paġna jippermettilek tiddefinixxi testijiet addizzjonali li SpamAssassin se tapplika għall-imejl, ibbażati fuq intestaturi tal-messaġġi, il-kontenut tal-ġisem, URLs misjuba fil-ġisem. L-isem assenjat għal kull test huwa f'idejn tiegħek, imma ġeneralment hija xi ħaġa bħal CONTAINS_FOO.
 simple_switch=Aqleb għal modalità avvanzata ..
@@ -317,8 +336,10 @@ simple_regexp=Espressjoni mqabbla
 simple_score=Punteġġ li japplika
 simple_describe=Deskrizzjoni
 simple_err=Ma rnexxielux isalva testijiet tal-messaġġ
+
 before_ecmd=Ma rnexxiex qabel il-kmand tal-iffrankar : $1 
 after_ecmd=Il-kmand ta 'wara l-iffrankar falla : $1 
+
 connect_emysql=Ma rnexxielhiex tgħabbi s-sewwieq tad-database $1 
 connect_elogin=Ma rnexxielux jidħol fid-database $1:$2.
 connect_equery=Id-database $1 ma tinkludix it-tabella tal-preferenzi $2 
@@ -326,9 +347,11 @@ connect_eldapmod=Il-modulu Perl $1 meħtieġ biex jikkomunika ma 'LDAP ma jiġix
 connect_eldap=Naqset milli tikkonnettja mas-server LDAP $1 fuq il-port $2 
 connect_eldaplogin=Naqset milli tidħol mas-server LDAP $1 bħala $2 : $3 
 connect_ebase=Il-bażi LDAP DN $1 mhix valida : $2 
+
 eldap=It-tħaddim LDAP falla : $1 
 esql=SQL fallut : $1 
 ldap_euser=Ma setgħetx issib oġġett ta 'utent LDAP għal $1 
+
 db_title=Databases ta 'SQL u LDAP
 db_header=Għażliet ta 'database ta' ħażna ta 'konfigurazzjoni
 db_dsn=Aħżen il-konfigurazzjonijiet tal-utent fi
@@ -364,6 +387,7 @@ db_eldapport=Numru tal-port tas-server LDAP nieqes jew invalidu
 db_eldapdn=DN bażiku nieqes jew invalidu - l-ebda spazji huma permessi
 db_eldapattr=Attribut SpamAssassin nieqes jew invalidu
 db_eldapuid=Attribut ta 'username nieqes jew invalidu
+
 awl_title=Immaniġġja l-Auto-Whitelists
 awl_search=Fittex fil-lista bajda għal:
 awl_ok=Fittex
@@ -389,6 +413,7 @@ awl_deleteone=Auto-Whitelist Ċara
 awl_deleteonedesc=Neħħi l-iskrizzjonijiet kollha ta 'lista awtomatika għall-utent $1.
 awl_deleteall=Ċara l-Auto-Whitelists kollha
 awl_deletealldesc=Neħħi l-entrati kollha ta 'auto-whitelist għall-utenti kollha fis-sistema.
+
 dawl_err=Ma rnexxielux jitħassar minn lista awtomatika
 dawl_eopen=Ma setgħetx tinfetaħ whitelist
 dawl_enone=M’hemmx indirizzi magħżula
@@ -396,6 +421,7 @@ dawl_ecannot=M'għandekx permess timmaniġġja l-auto-whitelist għal dan l-uten
 dawl_doing=Tħassar auto-whitelists għall-utenti kollha ..
 dawl_done=.. ħassar $2 iskrizzjonijiet minn utenti ta ' $1.
 dawl_title=Ħassar l-Auto-Whitelists kollha
+
 manual_title=Editja l-Iskedi tal-Konfigurazzjoni
 manual_file=Editja l-fajl konfigurazzjoni:
 manual_ok=kollox sew

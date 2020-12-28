@@ -12,6 +12,7 @@ index_ereq_resource_cmd=O script para solicitar recursos do outro nó ($1) não 
 index_version=Versão de pulsação $1 
 index_noversion=Aviso - A versão do Heartbeat instalada no seu sistema não pôde ser detectada automaticamente. Você deve configurá-lo na página <a href='$1'>configuração do módulo</a>.
 index_status=Status de pulsação
+
 conf_title=Opções de configuração
 conf_header=Opções de configuração de pulsação
 conf_serials=Portas de pulsação serial
@@ -54,6 +55,7 @@ conf_auto_on=$ {conf_enabled}
 conf_auto_off=$ {conf_disabled}
 conf_auto_legacy=Modo legado
 conf_auto_=$ {padrão}
+
 res_title=Recursos de cluster
 res_node=Nó Primário
 res_ips=Endereços IP
@@ -67,6 +69,7 @@ res_getserv=Obter Recurso
 res_hbdown=Batimento cardíaco baixo
 res_up=ACIMA
 res_down=BAIXA
+
 node_create=Adicionar recurso de cluster
 node_edit=Editar recurso de cluster
 node_header=Detalhes do recurso de cluster
@@ -83,6 +86,7 @@ node_enone=Nó principal ausente ou inválido
 node_eip='$1' não é um endereço IP válido
 node_ecidr='$1' não é um CIDR válido
 node_ebroad='$1' não é um endereço de transmissão válido
+
 auth_title=Chaves de autenticação
 auth_header=Autenticação de nó de cluster
 auth_mode=Modo de autenticação
@@ -92,6 +96,8 @@ auth_md5=MD5 com senha
 auth_err=Falha ao salvar chaves de autenticação
 auth_emd5=Senha MD5 ausente ou inválida
 auth_esha1=Senha SHA1 ausente ou inválida
+
 start_err=Falha ao iniciar o batimento cardíaco
+
 apply_err=Falha ao aplicar as alterações
 apply_epid=O processo não está mais em execução

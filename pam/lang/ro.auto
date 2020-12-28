@@ -4,6 +4,7 @@ index_desc=Descriere
 index_add=Adăugați un nou serviciu PAM.
 index_return=lista de servicii
 index_none=Nu au fost găsite fișiere de configurare PAM pe sistemul dvs. în directorul $1. Poate că PAM nu este acceptată sau configurația modulului <a href='$2'></a> este incorectă.
+
 desc_su=Schimba utilizator
 desc_su-l=Comutare utilizator (cu autentificare)
 desc_login=Autentificare locală sau de la distanță
@@ -87,6 +88,7 @@ desc_common-account=Verificarea contului comun
 desc_common-auth=Autentificare comună
 desc_common-password=Schimbare comună de parolă
 desc_common-session=Configurare comună a sesiunii
+
 edit_title=Editează Serviciul PAM
 edit_header=Detalii despre serviciul PAM
 edit_name=Numele serviciului
@@ -107,6 +109,7 @@ edit_move=Mișcare
 edit_return=Serviciul PAM
 edit_inc=Includeți serviciul $1 
 edit_iheader=Servicii PAM incluse
+
 pam_pwdb.so=Autentificare parolă Unix
 pam_securetty.so=Verificați TTY sigur pentru rădăcină
 pam_nologin.so=<tt>/etc/nologin</tt> verificarea fișierului
@@ -149,6 +152,7 @@ pam_console.so=Verificați numai consolă
 pam_xauth.so=X autentificare
 pam_stack.so=Apelați alt serviciu PAM
 pam_foreground.so=Configurarea consolei
+
 control_requisite=condiție
 control_required=Necesar
 control_sufficient=Suficient
@@ -157,6 +161,7 @@ control_desc_requisite=Nu reușiți autentificarea imediat la eșec
 control_desc_required=Eșuează autentificarea la sfârșit la eșec
 control_desc_sufficient=Succesează autentificarea imediat după succes
 control_desc_optional=Succesul sau eșecul sunt ignorate
+
 create_title=Creați serviciul PAM
 create_header=Noi opțiuni de servicii PAM
 create_name=Numele serviciului
@@ -165,6 +170,7 @@ create_mods=Module PAM inițiale
 create_0=Nici unul
 create_1=Autentificare Unix
 create_2=Refuză accesul
+
 mod_edit=Editează modulul PAM
 mod_create=Adăugați modulul PAM
 mod_header=Opțiuni ale modulului PAM
@@ -178,10 +184,12 @@ mod_type_password=Schimbare parolă
 mod_control=Nivelul de eșec
 mod_args=Argumentele modulului
 mod_err=Nu a reușit salvarea modulului
+
 pwdb_shadow=Utilizați fișierul shadow shadow?
 pwdb_nullok=Acceptați parolele nule?
 pwdb_md5=Folosiți parolele criptate MD5?
 pwdb_nodelay=Întârziere după conectarea eșuată?
+
 unix_nullok_secure=Acceptați parolele nule pe TTY-uri sigure?
 unix_min=Lungimea minimă a parolei
 unix_nomin=Nici unul
@@ -190,6 +198,7 @@ unix_nomax=Fara limita
 unix_obscure=Împiedicați utilizarea unor parole ușoare?
 unix_emin=Lipsă sau nevalidă lungimea minimă a parolei
 unix_emax=Lipsă sau nevalidă lungimea maximă a parolei
+
 listfile_item=Căutare fișier pentru
 listfile_item_user=Nume de utilizator
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=Limitați verificarea la
 listfile_all=Toți utilizatorii
 listfile_user=Numai utilizator
 listfile_group=Numai grup
+
 cracklib_type=Tip de parolă prompt
 cracklib_retry=Reîncercări maxime înainte de eșec
 cracklib_eretry=Număr de încercări lipsă sau nevalid
 cracklib_etype=Tip de parolă lipsă sau nevalid
+
 rhosts_equiv=Citiți fișierul <tt>/etc/hosts.equiv</tt>?
 rhosts_rhosts=Citiți fișierele <tt>.rhosts</tt> ale utilizatorilor?
 rhosts_promiscuous=<tt>+</tt> intrarea permite tuturor gazdelor?
 rhosts_suppress=Eșecuri autentificare jurnal?
+
 env_var=Denumirea variabilă
 env_def=Valoare implicită
 env_over=Valoare de anulare
 env_evar=Numele variabile nu pot conține spații
+
 securetty_ttys=TTY-uri sigure
+
 shells_shells=Cochilii de utilizator valide
+
 tally_deny=Încercări eșuate înainte de a refuza accesul
 tally_reset=Resetarea eșecului contează pe succes
 tally_edeny=Număr de încercări de eșec lipsă sau nevalide
 tally_magic=Numărul de eșecuri se aplică la <tt>root</tt>?
 tally_root=Contul <tt>root</tt> poate fi refuzat?
+
 time_services=Servicii
 time_ttys=ttys
 time_users=Utilizatori
 time_times=Timpuri de acces
 time_info=Toate câmpurile pot conține mai multe valori separate prin |, iar valorile pot fi utilizate * ca wildcard sau! ca negator.
+
 group_services=Servicii
 group_ttys=ttys
 group_users=Utilizatori
 group_times=Timpuri de acces
 group_groups=Adăugați grupuri
 group_info=Toate câmpurile pot conține mai multe valori separate prin |, iar valorile pot fi utilizate * ca wildcard sau! ca negator.
+
 wheel_group=Verificați calitatea de membru al grupului
 wheel_group_def=Default (<tt>roată</tt> sau GID 0)
 wheel_trust=Membrii grupului ocolesc autentificarea suplimentară?
 wheel_deny=Refuză în loc să le permită membrilor grupului?
 wheel_egroup=Numele grupului lipsă sau nevalid
+
 motd_file=Fișier de afișat
 motd_file_def=Implicit (<tt>/etc/motd</tt>)
 motd_efile=Numele de fișier lipsă sau nevalide
+
 mail_nopen=Afișați notificarea prin e-mail la autentificare?
 mail_close=Afișați notificarea prin e-mail la deconectare?
 mail_empty=Notificați dacă fișierul e-mail este gol?
 mail_noenv=Setați variabila de mediu $ MAIL?
 mail_dir=Repertoriu mail spool
 mail_edir=Directorul spool de e-mail lipsă sau nevalid
+
 stack_service=Verificați serviciul PAM
+
 log_pam_create=Serviciul PAM creat 1
 log_pam_delete=S-a șters serviciul PAM $1 
 log_mod_create=S-a adăugat modulul PAM $1 la serviciul $2 
@@ -262,6 +284,7 @@ log_inc_create=Adăugat include $1 pentru serviciul $2
 log_inc_modify=Modificat include $1 pentru serviciul $2 
 log_inc_delete=Șterse include $1 pentru serviciul $2 
 log_incs=Actualizate includ pentru serviciul $1 
+
 inc_edit=Editare serviciu inclus
 inc_create=Creați un serviciu inclus
 inc_header=Detalii despre serviciul PAM inclus

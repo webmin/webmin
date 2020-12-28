@@ -19,10 +19,13 @@ index_samba=סמבה?
 index_cyrus=IMAP?
 index_users=משתמשי LDAP
 index_groups=קבוצות LDAP
+
 imap_econn=התחברות לשרת IMAP $1 נכשלה
 imap_elogin=כניסה לשרת IMAP $1 נכשלה כ- $2 : $3 
 conn_eldap_host=לא נמצא קובץ תצורת לקוח LDAP במערכת שלך, ולכן יש להגדיר את שרת LDAP בדף תצורת המודול
 conn_elogin=לא נמצא קובץ תצורת לקוח LDAP במערכת שלך, ולכן יש להגדיר את כניסת ה- LDAP בדף תצורת המודול
+conn_efile_open=לא ניתן לפתוח את קובץ אישורי הכריכה של LDAP:
+
 uedit_cap=יכולות משתמש
 uedit_samba=כניסה לסמבה?
 uedit_cyrus=התחברות לשרת IMAP?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=עדכון סיסמא אחרון
 uedit_sambapwdcanchange=הסיסמה יכולה להשתנות
 uedit_sambabadpasswordcount=ספירת סיסמאות שגויה
 uedit_sambaacctflags=דגלי חשבון
+
 usave_eadd=הוספת משתמש למאגר LDAP נכשל : $1 
 usave_emod=שינוי המשתמש במסד הנתונים של LDAP נכשל : $1 
 usave_emoddn=שינוי שם המשתמש נכשל במסד הנתונים של LDAP : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=המשתמש $1 כבר משתמש ב- $2 $3
 usave_eattrdupg=הקבוצה $1 כבר משתמשת ב- $2 $3 
 usave_ereal=חסר שם אמיתי
 usave_equota=מכסת IMAP חסרה או לא חוקית
+
 search_err=חיפוש $1 תחת $2 נכשל : $3 
+
 gedit_dn=ה- LDAP DN של הקבוצה
 gedit_return=פרטי קבוצה
 gedit_cap=יכולות קבוצתיות
 gedit_samba=קבוצת סמבה?
+
 gsave_egone=הקבוצה כבר לא קיימת!
 gsave_edelete=מחיקת הקבוצה ממאגר LDAP נכשלה : $1 
 gsave_eadd=הוספת קבוצה למסד הנתונים של LDAP נכשלה : $1 
 gsave_emod=שינוי הקבוצה במסד הנתונים של LDAP נכשל : $1 
 gsave_emoddn=שינוי שם הקבוצה נכשל במסד הנתונים של LDAP : $1 
+
 gdel_group=מוחק רשומה לקבוצת LDAP ..
+
 udel_pass=מוחק את רשומת המשתמש של LDAP ..
 udel_book=מוחק מתוך פנקס הכתובות ..
 udel_imap=מוחק תיקיית IMAP ..
 udel_warnimap=תיבת הדואר הקיימת תימחק בעת מחיקת ספריית הבית!
 udel_failed=.. נכשל!  : $1 
+
 raw_title=תכונות LDAP
 raw_name=שם מאפיין
 raw_value=ערכים
 raw_for=בשביל 1
+
 batch_samba=ליצור חשבון סמבה למשתמשים חדשים?
 batch_imap=ליצור חשבון IMAP למשתמשים חדשים?
 batch_descafter3=ב <b>צור</b> ו <b>שינוי</b> שורות, אתה יכול להוסיף שדות נוספים המכילים תכונות LDAP בתבנית <i>שם</i> = <i>ערך</i> להיות מוקצה למשתמשים החדשים או שהשתנו.

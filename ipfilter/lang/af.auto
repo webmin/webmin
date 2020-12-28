@@ -43,8 +43,10 @@ index_natnone=Geen netwerkadresvertaalreëls is nog gedefinieër nie.
 index_nataction=NAT-modus
 index_natfrom=Pakkies wat pas
 index_natto=vertaling
+
 dir_in=inkomende
 dir_out=uitgaande
+
 action_pass=<font color=#00aa00>Slaag</font>
 action_block=<font color=#ff0000>Blok</font>
 action_skip=Huppel
@@ -57,6 +59,7 @@ action_map=Kartering
 action_rdr=redirect
 action_bimap=Twee-rigting kartering
 action_map-block=Blok kartering
+
 laction_pass=<font color=#00aa00>Slaag pakket</font>
 laction_block=<font color=#ff0000>Blok pakket, met ICMP-kode</font>
 laction_log=Teken pakket op vlak
@@ -65,6 +68,7 @@ laction_skip=Slaan volgende reëls oor
 laction_auth=Gebruiker-ruimte magtiging
 laction_preauth=Gaan vorige magtiging na
 laction_call=Oproep kernfunksie
+
 edit_title1=Skep reël
 edit_title2=Wysig reël
 edit_header1=Reël aksie
@@ -130,6 +134,7 @@ edit_icmp=ICMP-tipe
 edit_icmpany=&lt;Enige tipe&gt;
 edit_icmpcode=en kode
 edit_codeany=&lt;Enige kode&gt;
+
 save_err=Kon nie reël stoor nie
 save_ehostfrom=Ontbrekende of ongeldige brongasheernaam
 save_ehostto=Ontbrekende of ongeldige bestemmingsgasheernaam
@@ -158,11 +163,13 @@ save_eto=Ontbrekende of ongeldige koppelvlak om uit te stuur
 save_etoip=Ongeldige IP-adres om aan te stuur
 save_ereplyto=Ontbrekende of ongeldige koppelvlak om op te antwoord
 save_ereplytoip=Ongeldige IP-adres om op te antwoord
+
 apply_err=Kon nie konfigurasie toepas nie
 apply_remote=Fout van $1 : $2 
 unapply_err=Kon nie die konfigurasie terugkeer nie
 unapply_ein=Kon nie invoerreëls kry nie
 unapply_eout=Kon nie uitvoerreëls kry nie
+
 desc_if=As $1 
 desc_and=en
 desc_always=altyd
@@ -196,6 +203,7 @@ desc_rdr=IP-adresse $1 poort $2
 desc_dport1=hawe is $1 
 desc_dport2=poort is tussen $1 en $2 
 desc_nattoiface=koppelvlakadres
+
 log_create_rule=Skep $1 -reël
 log_delete_rule=$1 -reël is uitgevee
 log_modify_rule=Gewysigde $1 -reël
@@ -224,6 +232,7 @@ log_add_host=Klusterbediener $1 bygevoeg
 log_add_group=Klusterbedieners van groep $1 bygevoeg
 log_delete_host=Klusterbediener $1 is verwyder
 log_delete_group=$1 groepbedieners verwyder
+
 cluster_title=Cluster Firewall Servers
 cluster_none=Daar is nog geen bedieners by die firewall-groep gevoeg nie.
 cluster_host=gasheernaam
@@ -234,6 +243,7 @@ cluster_gadd=Voeg bedieners in groep by
 cluster_need=U moet bedieners met 'n aanmelding en wagwoord in die Webmin Servers Index-module voeg voordat dit hier bestuur kan word.
 cluster_return=groep bedieners
 cluster_delete=Verwyder geselekteerde
+
 add_title=Voeg bedieners by
 add_msg=Voeg $1 by.
 add_gmsg=Voeg bedieners in groep $1 by.
@@ -242,6 +252,7 @@ add_gerr=Kon nie groep byvoeg nie
 add_echeck=Bediener $1 het nie die IPFilter Firewall-module nie
 add_emissing=Bediener $1 ontbreek die firewall-opdrag $2 
 add_ok=$1 bygevoeg, met $2 aktiewe firewall-reëls.
+
 nat_title1=Skep NAT-reël
 nat_title2=Wysig NAT-reël
 nat_action=NAT-modus
@@ -300,4 +311,5 @@ nat_edport2=Die oorspronklike poort ontbreek of is ongeldig
 net_erdrip='$1' is nie 'n geldige IP-adres nie
 nat_erdrips=Geen bestemmings-IP's ingevoer nie
 nat_erdrport=Ontbrekende of ongeldige bestemmingspoort
+
 boot_esmf=Die SMF-diens $1 bestaan nie of is nie in 'n bekende toestand nie

@@ -1,15 +1,23 @@
 index_return2=global konfiguration
+
 cvirt_eroot4=Ingen användare har definierats i Apache-konfigurationen
+
 enewline=Ogiltigt tecken i värde
+
 virt_eprotocol=Du måste välja minst en användbar SSL/TLS-protokollversion
+
 vserv_virtualmin=Denna virtuella Apache-värd tillhör Virtualmin-servern <tt>$1</tt>, så adressen, porten, baskatalogen och värdnamnet kan inte ändras här.
+
 htaccess_eempty=Inga kataloger med alternativfil har angetts
 htaccess_eabsolute=Katalog med alternativfil måste vara en absolut sökväg
 htaccess_err=Det gick inte att skapa alternativsfilen
+
 core_portname=Protokoll
 core_protoany=&lt;Any&gt;
 core_eduplisten=Lyssna adress $1 listas två gånger
 core_minor=Endast mindre version
+
 mod_proxy_seconds=sekunder
+
 mod_ssl_cafile=Certifikatmyndighetens fil
 mod_ssl_ecafile=Saknade certifikatmyndigheters nyckelfil

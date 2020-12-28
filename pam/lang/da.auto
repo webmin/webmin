@@ -4,6 +4,7 @@ index_desc=Beskrivelse
 index_add=Tilføj en ny PAM-tjeneste.
 index_return=serviceliste
 index_none=Der blev ikke fundet nogen PAM-konfigurationsfiler på dit system i biblioteket $1. Måske understøttes PAM ikke, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+
 desc_su=Skift bruger
 desc_su-l=Skift bruger (med login)
 desc_login=Lokal eller fjern login
@@ -87,6 +88,7 @@ desc_common-account=Fælles kontoverifikation
 desc_common-auth=Almindelig godkendelse
 desc_common-password=Almindelig adgangskodeskift
 desc_common-session=Almindelig session opsætning
+
 edit_title=Rediger PAM-service
 edit_header=PAM-servicedetaljer
 edit_name=Servicenavn
@@ -107,6 +109,7 @@ edit_move=Bevæge sig
 edit_return=PAM-service
 edit_inc=Inkluder service $1 
 edit_iheader=Inkluderede PAM-tjenester
+
 pam_pwdb.so=Unix adgangskodegodkendelse
 pam_securetty.so=Sikker TTY-kontrol for rod
 pam_nologin.so=<tt>/etc/nologin</tt> filkontrol
@@ -149,6 +152,7 @@ pam_console.so=Kontroller kun konsol
 pam_xauth.so=X-godkendelse
 pam_stack.so=Ring til anden PAM-service
 pam_foreground.so=Konsolopsætning
+
 control_requisite=Nødvendigt
 control_required=Nødvendig
 control_sufficient=Tilstrækkelig
@@ -157,6 +161,7 @@ control_desc_requisite=Fejl godkendelse straks efter fejl
 control_desc_required=Fejl ved godkendelse ved afslutning af fejl
 control_desc_sufficient=Fortsæt autentificering straks efter succes
 control_desc_optional=Succes eller fiasko ignoreres
+
 create_title=Opret PAM-service
 create_header=Nye PAM-servicemuligheder
 create_name=Servicenavn
@@ -165,6 +170,7 @@ create_mods=Indledende PAM-moduler
 create_0=Ingen
 create_1=Unix-godkendelse
 create_2=Nægt al adgang
+
 mod_edit=Rediger PAM-modul
 mod_create=Tilføj PAM-modul
 mod_header=PAM-modulindstillinger
@@ -178,10 +184,12 @@ mod_type_password=Ændring af adgangskode
 mod_control=Fejlniveau
 mod_args=Modul argumenter
 mod_err=Kunne ikke gemme modulet
+
 pwdb_shadow=Brug skygge-adgangskodefil?
 pwdb_nullok=Accepterer du nul-adgangskoder?
 pwdb_md5=Brug MD5-krypterede adgangskoder?
 pwdb_nodelay=Forsinkelse efter mislykket login?
+
 unix_nullok_secure=Accepterer du nul-adgangskoder på sikre TTY'er?
 unix_min=Minimum adgangskodelængde
 unix_nomin=Ingen
@@ -190,6 +198,7 @@ unix_nomax=Ingen grænse
 unix_obscure=Forebygge brug af lette adgangskoder?
 unix_emin=Manglende eller ugyldig minimumsadgangskodelængde
 unix_emax=Manglende eller ugyldig maksimal adgangskodelængde
+
 listfile_item=Søg fil til
 listfile_item_user=Brugernavn
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=Begræns kontrol til
 listfile_all=Alle brugere
 listfile_user=Kun bruger
 listfile_group=Kun gruppe
+
 cracklib_type=Adgangskodetype i prompt
 cracklib_retry=Maksimalt forsøg før fejl
 cracklib_eretry=Manglende eller ugyldigt antal forsøg på ny
 cracklib_etype=Manglende eller ugyldig adgangskodetype
+
 rhosts_equiv=Læs <tt>/etc/hosts.equiv</tt> filen?
 rhosts_rhosts=Læs brugernes <tt>.rhosts</tt> -filer?
 rhosts_promiscuous=<tt>+</tt> indgang tillader alle værter?
 rhosts_suppress=Fejl i loggodkendelse?
+
 env_var=Variabel navn
 env_def=Standard værdi
 env_over=Overstyr værdi
 env_evar=Variable navne kan ikke indeholde mellemrum
+
 securetty_ttys=Sikker TTY'er
+
 shells_shells=Gyldige brugerskaller
+
 tally_deny=Mislykkedes forsøg, før adgang nægtes
 tally_reset=Nulstil fiasko tæller med succes
 tally_edeny=Manglende eller ugyldigt antal fejlforsøg
 tally_magic=Fejltælling gælder for <tt>rod</tt>?
 tally_root=<tt>root</tt> -konto kan nægtes?
+
 time_services=Services
 time_ttys=ttyS
 time_users=Brugere
 time_times=Adgangstider
 time_info=Alle felter kan indeholde flere værdier adskilt med |, og værdier kan bruge * som et jokertegn eller! som neger.
+
 group_services=Services
 group_ttys=ttyS
 group_users=Brugere
 group_times=Adgangstider
 group_groups=Tilføj grupper
 group_info=Alle felter kan indeholde flere værdier adskilt med |, og værdier kan bruge * som et jokertegn eller! som neger.
+
 wheel_group=Kontroller for medlemskab af gruppen
 wheel_group_def=Standard (<tt>hjul</tt> eller GID 0)
 wheel_trust=Gruppemedlemmer omgår yderligere godkendelse?
 wheel_deny=Afvis i stedet for at tillade gruppemedlemmer?
 wheel_egroup=Manglende eller ugyldigt gruppenavn
+
 motd_file=Fil, der skal vises
 motd_file_def=Standard (<tt>/etc/motd</tt>)
 motd_efile=Manglende eller ugyldigt filnavn
+
 mail_nopen=Vis e-mail-meddelelse ved login?
 mail_close=Vis e-mail-meddelelse ved logout?
 mail_empty=Advisér, hvis postfilen er tom?
 mail_noenv=Indstille $ MAIL miljøvariabel?
 mail_dir=Mail spool katalog
 mail_edir=Manglende eller ugyldig mail-spoolkatalog
+
 stack_service=Kontroller videre til PAM-service
+
 log_pam_create=Oprettet PAM-service $1 
 log_pam_delete=Slettet PAM-service $1 
 log_mod_create=Føjet PAM-modul $1 til service $2 
@@ -262,6 +284,7 @@ log_inc_create=Tilføjet inkluderer $1 for service $2
 log_inc_modify=Ændret inkluderer $1 for service $2 
 log_inc_delete=Slettet inkluderer $1 for service $2 
 log_incs=Opdateret inkluderer service $1 
+
 inc_edit=Rediger inkluderet service
 inc_create=Opret inkluderet service
 inc_header=Inkluderede PAM-servicedetaljer

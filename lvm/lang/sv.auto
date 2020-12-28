@@ -42,6 +42,7 @@ index_lvused=Använd utrymme
 index_lvuse=Används för
 index_snapof=(Snapshot av $1)
 index_thin=LVM tunn pool för $1 LV
+
 lv_edit=Redigera logisk volym
 lv_edit_snap=Redigera ögonblicksbild
 lv_create=Skapa logisk volym
@@ -128,6 +129,7 @@ lv_pvfrom=Flytta block från fysisk volym
 lv_pvto=Till fysisk volym
 lv_moveok=Flytta block
 lv_return=logisk volym
+
 mkfs_title=Skapa filsystem
 mkfs_desc=Detta formulär låter dig bygga ett nytt $2 ($1) filsystem på logisk volym $3. All befintlig data kommer att raderas.
 mkfs_header=Nya filsystemalternativ
@@ -135,6 +137,7 @@ mkfs_err=Det gick inte att skapa filsystem
 mkfs_exec=Utför kommando $1 ..
 mkfs_failed=.. kommandot misslyckades!
 mkfs_ok=.. kommandot slutfört.
+
 resize_title=Ändra storlek på logisk volym
 resize_mesg=Filsystemet $1 i den logiska volymen kan inte ändras. Om du ändrar storleken på den logiska volymen måste du skapa filsystemet igen, vilket raderar all data i det.
 resize_mesg2=Webmin vet inte vilken typ av filsystem som finns på denna logiska volym, om någon. Om du ändrar storleken på den logiska volymen måste du skapa filsystemet igen, vilket raderar all data i det.
@@ -142,8 +145,10 @@ resize_fs=Det uppstod ett fel vid ändring av storleken på filsystemet $1 på d
 resize_ok=Ändra storlek på logisk volym
 resize_emounted=Det går inte att ändra storlek på filsystemet på den logiska volymen medan det är monterat
 resize_emounted2=Filsystemet på denna logiska volym kan inte krympas medan det är monterat
+
 init_title=Aktivera LVM
 init_cmd=Kör kommando $1 ..
+
 pv_edit=Redigera fysisk volym
 pv_create=Lägg till fysisk volym
 pv_vg=I volymgrupp $1 
@@ -170,6 +175,7 @@ pv_eother=Saknad eller ogiltig diskenhet
 pv_raid=RAID-enhet $1 
 pv_lvs=Tilldelning efter logiska volymer
 pv_egone=Fysisk volym finns inte längre!
+
 vg_edit=Redigera Volymgrupp
 vg_create=Skapa volymgrupp
 vg_name=Volymgruppens namn
@@ -188,11 +194,13 @@ vg_deleteok=Radera nu
 vg_ename=Saknas eller ogiltigt volymgruppsnamn
 vg_epesize=Storleken på tilldelningsblocket saknas eller ogiltig
 vg_egone=Volymgrupp finns inte längre!
+
 pvmove_err=Det gick inte att flytta den logiska volymen
 pvmove_title=Flytta logisk volym
 pvmove_start=Flytta logisk volym $1 från $2 till $3.
 pvmove_failed=.. flytta misslyckades!
 pvmove_done=.. flytta komplett
+
 thin_title=Skapa tunn pool
 thin_desc=En tunn pool är ett par LV: er som kan användas för att skapa ytterligare LV: er som kan vara större än de tillgängliga omfattningarna. Utrymme konsumeras endast när det behövs, snarare än när LV: erna i poolen skapas. VARNING - All data om de valda LV: erna kommer att gå förlorad!
 thin_header=Nya tunna pooldetaljer
@@ -204,6 +212,7 @@ thin_err=Det gick inte att skapa tunn pool
 thin_esame=Båda utvalda LV: erna är desamma
 thin_edata=Den valda data-LV används redan
 thin_emetadata=Den valda metadata LV används redan
+
 log_create_vg=Skapad volymgrupp $1 
 log_modify_vg=Modifierad volymgrupp $1 
 log_delete_vg=Raderad volymgrupp $1 
@@ -216,4 +225,5 @@ log_create_pv=Lade till fysisk volym $1 till VG $1
 log_modify_pv=Modifierad fysisk volym $1 i VG $2 
 log_delete_pv=Borttagen fysisk volym $1 från VG $2 
 log_resize_pv=Ändrade storlek på fysisk volym $1 i VG $2 
+
 blocks=block

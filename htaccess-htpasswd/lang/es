@@ -13,6 +13,7 @@ index_search=Buscar directorios protegidos bajo:
 index_md5=La encriptación MD5 está habilitada en la configuración del módulo, pero el módulo de Perl $1 necesario para su funcionamiento no está instalado.
 index_sha1=La encriptación SHA1 está habilitada en la configuración del módulo, pero el módulo de Perl $1 necesario para su funcionamiento no está instalado.
 index_cpan=<a href='$1'>Pulse aquí</a> para descargalo e instalarlo ahora.
+
 dir_title1=Agregar Directorio Protegido
 dir_title2=Editar Directorio Protegido
 dir_header=Opciones de directorio protegido
@@ -49,6 +50,7 @@ dir_requireu=Solo usuarios ..
 dir_requireg=Sólo miembros de los grupos ..
 dir_erequire_user=No se introdujeron usuarios a permitir
 dir_erequire_group=No se introdujeron grupos a permitir
+
 edit_title1=Crear Usuario
 edit_title2=Editar Usuario
 edit_header=Detalles del usuario de autenticación Web
@@ -60,11 +62,13 @@ edit_pass0=Configurar a
 edit_passfrom=Cambiar de
 edit_passto=a nueva contraseña
 edit_dom=Dominio Digest
+
 gedit_title1=Crear Grupo
 gedit_title2=Editar Grupo
 gedit_header=Detalles del grupo de autenticación web
 gedit_group=Nombre de grupo
 gedit_members=Miembros del grupo
+
 save_err=Fallo al salvar usuario
 save_euser1=Nombre de usuario no ingresado
 save_euser2=Nombre de usuario no puede contener el carácter :
@@ -73,15 +77,18 @@ save_eclash=Ya existe un usuario con el mismo nombre
 save_eoldpass=La password antigua no es correcta
 save_title=Usuario Guardado
 save_edom=Dominio Digest no válido o inexistente
+
 gsave_err=No se pudo salvar grupo
 gsave_egroup1=Nombre de grupo inexistente
 gsave_egroup2=El nombre del grupo no puede contener el caracter : ni espacios
 gsave_eclash=Ya existe un grupo con el mismo nombre
+
 acl_dirs=Directorios permitidos
 acl_user=Crear archivos .htaccess y htusers como usuario Unix
 acl_same=Igual que el usuario de ingreso Webmin
 acl_home=¿Incluir el directorio de inicio del usuario Unix?
 acl_sync=¿Puede configurar la sincronización de usuario Unix?
+
 log_create_dir=Agregado directorio $1
 log_modify_dir=Modificado directorio $1
 log_delete_dir=Borrado directorio $1
@@ -91,6 +98,7 @@ log_delete_user=Borrado usuario $1
 log_create_group=Grupo $1 creado
 log_modify_group=Grupo $1 modificado
 log_delete_group=Grupo $1 eliminado
+
 search_title=Resultados de Búsqueda
 search_err=Búsqueda fallida
 search_edir=Directorio absoluto de búsqueda no válido o inexistente

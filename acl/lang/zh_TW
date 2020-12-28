@@ -20,6 +20,7 @@ index_modgroups=群組 $1的模組
 index_sync=組態Unix 使用者同步
 index_unix=組態Unix 使用者認證
 index_sessions=檢視登入訊息
+
 edit_title=編輯 Webmin 使用者
 edit_title2=建立 Webmin 使用者
 edit_rights=Webmin 使用者存取權利
@@ -58,6 +59,7 @@ edit_themedef=預設Webmin佈景主題
 edit_log=檢視紀錄
 edit_selall=全選
 edit_invert=取消全選
+
 save_err=儲存使用者失敗
 save_ename='$1' 不是一個有效的使用者名稱
 save_enamewebmin=此使用者名稱 'webmin' 已經預留使用了
@@ -79,10 +81,12 @@ save_enet='$1'不是一個有效的網路位置
 save_emask='$1'不是一個有效的netmask
 save_eip='$1' 不是一個完整的IP或網路位置
 save_ehost=找尋'$1'的IP位置失敗
+
 delete_err=刪除使用者失敗
 delete_eself=您不能刪除您自己
 delete_ecannot=您不被允許刪除使用者
 delete_euser=您不被允許刪除這個使用者
+
 cert_title=要求憑證
 cert_issue=發出憑證
 cert_header=新憑證詳細資料
@@ -101,11 +105,13 @@ cert_install=安裝您的認證到瀏覽器
 cert_ekey=您的瀏覽器並未送出一個新的 SSL 密碼 - 可能是不支援 SSL 用戶端憑證。
 cert_eca=設定憑證授權失敗 : $1
 cert_already=警告 - 您目前正使用憑證 $1。
+
 acl_title=模組存取控制
 acl_title2=給 $1 在 $2
 acl_title3=給群組 $1 在 $2
 acl_options=$1 存取控制選項
 acl_config=是否可以編輯模組設定?
+
 acl_uall=所有使用者
 acl_uthis=此使用者
 acl_usel=選取的 ..
@@ -141,6 +147,7 @@ acl_sessions=可以瀏覽和取消登入對話?
 acl_cats=可以改變此分類?
 acl_theme=可以改變個人佈景主題?
 acl_ips=可以改變IP進入控制?
+
 log_modify=修改Webmin 使用者$1
 log_rename=更名Webmin 使用者$1 到 $2
 log_create=新增Webmin 使用者$1
@@ -152,12 +159,14 @@ log_modify_g=修改Webmin群組 $1
 log_rename_g=更名Webmin群組 $1 to $2
 log_create_g=新增Webmin群組 $1
 log_delete_g=刪除 Webmin群組 $1
+
 gedit_ecannot=您不被允許編輯群組
 gedit_title=編輯Webmin群組
 gedit_title2=新增Webmin群組
 gedit_group=群組名稱
 gedit_rights=Webmin群組進入權限
 gedit_modules=成員的模組
+
 gdelete_err=刪除群組失敗
 gdelete_ecannot=您不被允許刪除群組
 gdelete_euser=您不能刪除您自己的群組
@@ -165,10 +174,12 @@ gdelete_esub=所隸屬的群組無法刪除
 gdelete_title=刪除群組
 gdelete_desc=您確定要刪除群組 $1和它的成員使用者$2 ?
 gdelete_ok=刪除群組
+
 gsave_err=儲存群組失敗
 gsave_ename=沒有輸入或錯誤的群組名稱
 gsave_enamewebmin=此群組名稱 'webmin' 已經預留使用了
 gsave_edup=群組名稱已經使用了
+
 convert_title=轉換使用者
 convert_ecannot=您不被允許轉換Unix使用者
 convert_nogroups=沒有定義Webmin群組在您的系統上。至少新增一個已定義權限的群組在轉換轉換使用者前。
@@ -191,6 +202,7 @@ convert_skip=$1 被忽略
 convert_exists=$1 已經存在
 convert_added=$1 被加入
 convert_msg=轉換Unix使用者中...
+
 sync_title=Unix使用者同步
 sync_desc=這表單允許您在此模組中設定當新增Unix 使用者時，自動同步到Webmin和使用者。
 sync_nogroups=在您的系統上沒有定義Webmin群組。至少必須對新的使用者定義一個群組來設定進入控制。
@@ -199,12 +211,14 @@ sync_update=更新符合的 Webmin 使用者當更新Unix 使用者時。
 sync_delete=刪除符合的Webmin 使用者當Unix使用者被刪除時。
 sync_group=配置新的使用者到Webmin群組。
 sync_ecannot=您不被允許同步組態使用者。
+
 unix_title=Unix使用者認證
 unix_desc=此頁讓可以您設定防止嘗試登入Webmi的系統使用者清單和PAM，如果您有一大堆想要讓他們進入Webmin的已經存在 Unix 使用者，這將對您很有幫助。
 unix_def=只有允許 Webmin 使用者登入
 unix_user=允許任何有使用者權限Unix使用者登入
 unix_ecannot=您不被允許組態Unix使用者認證
 unix_epam=Unix 認證無法使用因為<tt>Authen::PAM</tt> Perl模組尚未安裝或無法正常執行
+
 sessions_title=目前登入對話
 sessions_id=對話代號
 sessions_user=Webmin使用者

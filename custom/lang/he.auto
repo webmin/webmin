@@ -15,6 +15,7 @@ index_actform=טופס
 index_actrun=רוץ
 index_actsql=טופס
 index_acted=פתוח
+
 edit_title=ערוך את הפקודה
 create_title=צור פיקוד
 edit_ecannot=אינך רשאי לערוך פקודות
@@ -66,6 +67,7 @@ edit_format4=הורד במידת האפשר
 edit_servers=הפעל על שרתי Webmin
 edit_this=שרת זה
 edit_clone=שיבוט
+
 save_err=שמירת הפקודה נכשלה
 save_ecannot=אינך רשאי לערוך פקודות
 save_ecmd=לא הוזמנה שום פקודה
@@ -78,6 +80,7 @@ save_eusermin=לא ניתן להפעיל פקודות הפועלות בשרתי�
 save_eformat=סוג MIME פלט לא חוקי
 save_eopts=קובץ אפשרויות חסר לפרמטר $1 
 save_eopts2=קובץ אפשרויות או ערך ברירת מחדל לפרמטר $1 אינם יכולים להכיל :
+
 run_err=ביצוע הפקודה נכשל
 run_ecannot=אינך רשאי להריץ פקודה זו
 run_euser=משתמש חסר או לא חוקי
@@ -94,6 +97,7 @@ run_eupload=לא נבחר קובץ להעלאה
 run_emust=ערך חסר לפרמטר '$1'
 run_timeout=הפקודה לא הושלמה לפני הפסק זמן של $1 שניה.
 run_failed=הפקודה נכשלה בסטטוס היציאה $1 
+
 log_modify=פקודה שונה $1 
 log_create=נוצר פקודה $1 
 log_delete=הפקודה $1 נמחקה
@@ -102,11 +106,13 @@ log_modify_edit=עורך הקבצים השתנה $1
 log_create_edit=יצר את עורך הקבצים $1 
 log_delete_edit=עורך הקבצים $1 נמחק
 log_save_edit=קובץ שמור $1 
+
 acl_cmds=פקודות שמשתמש זה יכול להריץ
 acl_call=כל הפקודות
 acl_csel=נבחר ..
 acl_cexcept=כולם למעט נבחרים ..
 acl_edit=האם ניתן ליצור ולערוך פקודות?
+
 file_ecannot=אינך מורשה לערוך קבצים
 fcreate_title=צור עורך קבצים
 fedit_title=ערוך את עורך הקבצים
@@ -130,6 +136,7 @@ file_egroup=שם קבוצה חסר או לא חוקי
 file_eperms=הרשאות אוקטליות חסרות או לא חוקיות
 file_envs=להחליף משתני סביבה בשם הקובץ?
 file_id=מזהה עורך
+
 view_err=עריכת הקובץ נכשלה
 view_ecannot=אינך מורשה לערוך קובץ זה
 view_title=ערוך קובץ
@@ -138,10 +145,12 @@ view_header=עריכת קובץ $1
 view_ebeforeedit=הפקודה לפני עריכה נכשלה : $1 
 view_ebefore=הפקודה לפני שמירת נכשלה : $1 
 view_eafter=הפקודה לאחר שמירת נכשלה : $1 
+
 form_ecannot=אינך רשאי להריץ פקודה זו
 form_title=בצע את הפקודה
 form_exec=לבצע
 form_edit=ערוך
+
 sql_title1=צור פיקוד SQL
 sql_title2=ערוך את פקודת SQL
 sql_header=פרטי פקודת SQL
@@ -157,6 +166,7 @@ sql_err=שמירת פקודת SQL נכשלה
 sql_esql=לא הוזנה SQL
 sql_ehost=מארח שרת מסד נתונים חסר או לא חוקי
 sql_edb=שם בסיס נתונים חסר או לא חוקי
+
 srun_title=בצע פקודת SQL
 srun_err=ביצוע הפקודה SQL נכשל
 srun_edriver=לא ניתן היה לטעון את מנהל ההתקן של DBI

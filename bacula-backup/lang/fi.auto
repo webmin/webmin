@@ -29,12 +29,14 @@ index_fd=Tiedoston Daemon-asetukset
 index_groups=Bacula-ryhmän kokoonpano
 index_actions=Varmuuskopiointi ja palauttaminen
 index_ocmin=Kirjoittaja: <a href=$2 target=_new>Linmin</a> </a>
+
 connect_emysql=Tietokannan DBI-ohjaimen $1 lataus epäonnistui
 connect_elogin=Kirjautuminen tietokantaan $1 epäonnistui: $2.
 connect_equery=Tietokanta $1 ei näytä sisältävän Bacula-taulukoita.
 connect_equery2=Tämä voi johtua siitä, että asennettu SQLite Perl -moduuli on liian uusi, eikä tue Baculan käyttämää vanhaa SQLite-tietokantamuotoa.
 connect_equery3=Tietokanta $1 ei näytä sisältävän OC Bacula -ryhmätaulukoita.
 esql=SQL-virhe : $1 
+
 check_edir=Bacula-määrityshakemistoa $1 ei löydy järjestelmästäsi.
 check_ebacula=Bacula-ohjauskomentoa $1 ei löytynyt.
 check_econsole=Bacula-konsolin komentoa $1 ei löytynyt.
@@ -43,12 +45,14 @@ check_eclient=Tämä järjestelmä näyttää olevan <a href='$2'>Bacula-asiakas
 check_econfigs=Kohdasta $1 ei löytynyt Bacula-määritystiedostoja
 check_eservers=Webmin-palvelinryhmiä ei ole määritetty
 check_engmod=OpenCountry Bacula -ryhmiä ei ole asennettu
+
 proc_bacula-sd=Tallennusdeemoni
 proc_bacula-fd=Tiedostodeemoni
 proc_bacula-dir=Bacula Director -deemoni
 proc_bareos-sd=Tallennusdeemoni
 proc_bareos-fd=Tiedostodeemoni
 proc_bareos-dir=Bacula Director -deemoni
+
 stop_err=Baculan pysäyttäminen epäonnistui
 start_err=Baculan käynnistäminen epäonnistui
 start_einit=$1 : lle ei löytynyt init-komentosarjaa
@@ -57,6 +61,7 @@ restart_err=Baculan käynnistäminen epäonnistui
 apply_err=Asetusten määrittäminen epäonnistui
 apply_failed=Konfigurointivirhe havaittiin
 apply_problem=Konfiguraation soveltaminen epäonnistui : $1 
+
 jobs_title=Varmuuskopiot
 jobs_none=Varmuuskopioita ei ole vielä määritetty.
 jobs_name=Työn nimi
@@ -69,6 +74,7 @@ jobs_add=Lisää uusi varmuuskopiointityö.
 jobs_delete=Poista valitut työt
 jobs_return=luettelo työpaikoista
 jobs_derr=Työn poistaminen epäonnistui
+
 filesets_title=Tiedostojoukot
 filesets_none=Varmuuskopiotiedostojoukkoja ei ole vielä määritetty.
 filesets_name=Tiedostojoukon nimi
@@ -78,6 +84,7 @@ filesets_delete=Poista valitut tiedostojoukot
 filesets_return=luettelo tiedostojoukosta
 filesets_derr=Tiedostojoukkojen poistaminen epäonnistui
 filesets_ednone=Mitään ei ole valittu
+
 fileset_title1=Luo tiedostojoukko
 fileset_title2=Muokkaa tiedostojoukkoa
 fileset_header=Varmuuskopiotiedoston asetustiedot
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;Oletuspakkaustaso&gt;
 fileset_lzo=LZO-pakkaus
 fileset_gzip=Gzip-taso $1 
 fileset_onefs=Rajoitako varmuuskopio vain yhteen tiedostojärjestelmään?
+
 clients_title=Vara-asiakkaat
 clients_none=Yhtään varmuuskopioasiakasta ei ole vielä määritetty.
 clients_name=Asiakkaan Nimi
@@ -106,6 +114,7 @@ clients_add=Lisää uusi varmuuskopio-asiakas.
 clients_delete=Poista valitut asiakkaat
 clients_return=luettelo asiakkaista
 clients_derr=Asiakkaiden poistaminen epäonnistui
+
 client_title1=Luo varmuuskopiointiohjelma
 client_title2=Muokkaa varmuuskopiointiohjelmaa
 client_header=Tiedot varmuuskopioitavasta asiakkaasta
@@ -128,6 +137,7 @@ client_efileret=Puuttuva tai virheellinen tiedostojen säilytysaika
 client_ejobret=Puuttuva tai virheellinen työn säilyttämisaika
 client_echild=Tätä asiakasohjelmaa ei voi poistaa, koska $1 käyttää sitä
 client_status=Näytä tila
+
 job_title1=Luo varmuuskopio
 job_title2=Muokkaa varmuuskopiotyötä
 job_header=Varmistustyön yksityiskohdat
@@ -156,6 +166,7 @@ job_before=Komento ennen työtä
 job_after=Komento työn jälkeen
 job_cbefore=Komento ennen työtä (asiakkaalla)
 job_cafter=Komento työn jälkeen (asiakkaalla)
+
 schedules_title=Varmuuskopiointiaikataulut
 schedules_none=Varmuuskopiointiaikatauluja ei ole vielä määritetty.
 schedules_name=Aikataulun nimi
@@ -164,6 +175,7 @@ schedules_add=Lisää uusi varmuuskopioaikataulu.
 schedules_delete=Poista valitut aikataulut
 schedules_return=aikataulujen luettelo
 schedules_derr=Aikataulujen poistaminen epäonnistui
+
 schedule_title1=Luo varmuuskopioaikataulu
 schedule_title2=Muokkaa varmuuskopiointiaikataulua
 schedule_header=Varmuuskopion aikataulun tiedot
@@ -177,6 +189,7 @@ schedule_ename=Puuttuva tai virheellinen aikataulun nimi
 schedule_eclash=Saman nimen aikataulu on jo olemassa
 schedule_etimes=Puuttuvat varmuusajat riviltä $1 
 schedule_echild=Tätä aikataulua ei voi poistaa, koska $1 käyttää sitä
+
 backup_title=Suorita varmuuskopiointi
 backup_header=Varmistustyön yksityiskohdat
 backup_job=Työ juosta
@@ -191,11 +204,13 @@ backup_running=.. varmuuskopiointityö on nyt käynnissä. Kun valmis, tulokset 
 backup_running2=.. varmuuskopiointityö on aloitettu taustalla.
 backup_done=.. varmuuskopiointi valmis.
 backup_failed=.. varmuuskopiointi ei onnistunut. Katso yksityiskohdat yllä olevasta virhesanomasta.
+
 gbackup_title=Suorita Bacula Group Backup Job
 gbackup_run=Varmuuskopiointityön aloittaminen $1 $2 asiakasohjelmassa ..
 gbackup_on=Suoritetaan varmuuskopiointityötä asiakkaalla $1  :
 gbackup_header=Bacula-ryhmän varmuuskopiointityöt
 gbackup_jd=$1 (tiedostojoukko $2 ryhmässä $3)
+
 dirstatus_title=Ohjaaja-asema
 dirstatus_sched=Ajoitetut varmuuskopiointityöt
 dirstatus_name=Työn nimi
@@ -216,12 +231,14 @@ dirstatus_status2=Tila
 dirstatus_donenone=Varmistustöitä ei ole suoritettu.
 dirstatus_cancel=Peruuta valitut työt
 dirstatus_refresh=Päivitä lista
+
 clientstatus_title=Asiakkaan tila
 clientstatus_err=Tilan hakeminen $1 : $2 epäonnistui
 clientstatus_msg=Tila $1  : stä $2 
 clientstatus_show=Näytä asiakkaan tila:
 clientstatus_ok=kunnossa
 clientstatus_on=$1 ($2)
+
 storages_title=Tallennusdemonit
 storages_none=Ei tallennusdeemoneita ole vielä määritelty.
 storages_name=Varaston nimi
@@ -232,6 +249,7 @@ storages_add=Lisää uusi tallennusdeemoni.
 storages_delete=Poista valitut tallennusdeemonit
 storages_return=luettelo tallennusdeemoneista
 storages_derr=Tallennusdemoneiden poistaminen epäonnistui
+
 storage_title1=Luo Storage Daemon
 storage_title2=Muokkaa tallennusdeemonia
 storage_header=Yksityiskohdat etätallennusdeemonista
@@ -255,6 +273,7 @@ storage_emedia=Puuttuva mediatyypin nimi
 storage_emaxjobs=Enintään samanaikaisia töitä puuttuu
 storage_echild=Tätä asiakasohjelmaa ei voi poistaa, koska $1 käyttää sitä
 storage_status=Näytä tila
+
 devices_title=Tallennuslaitteet
 devices_none=Tallennuslaitteita ei ole vielä määritetty.
 devices_name=Laitteen nimi
@@ -264,6 +283,7 @@ devices_add=Lisää uusi tallennuslaite.
 devices_delete=Poista valitut tallennuslaitteet
 devices_return=luettelo tallennuslaitteista
 devices_derr=Tallennuslaitteiden poistaminen epäonnistui
+
 device_title1=Luo tallennuslaite
 device_title2=Muokkaa tallennuslaitetta
 device_header=Tiedot tiedostojen tallennuslaitteesta
@@ -282,11 +302,13 @@ device_eclash=Saman nimen tallennuslaite on jo olemassa
 device_emedia=Puuttuva mediatyypin nimi
 device_edevice=Puuttuva tai virheellinen arkistolaite tai hakemisto
 device_echild=Tätä asiakasohjelmaa ei voi poistaa, koska $1 käyttää sitä
+
 storagestatus_title=Storage Daemon -tila
 storagestatus_err=Tilan hakeminen $1 : $2 epäonnistui
 storagestatus_msg=Tila $1  : stä $2 
 storagestatus_show=Näytä tallennusdeemonin tila:
 storagestatus_ok=kunnossa
+
 label_title=Tarran äänenvoimakkuus
 label_header=Tiedot tarramerkinnästä
 label_storage=Tallennusdemoni merkitsemistä varten
@@ -302,6 +324,7 @@ label_done=.. merkitseminen onnistunut.
 label_epool=.. ei löytänyt uima-allasta!
 label_err=Tunniste epäonnistui
 label_elabel=Etikettiä ei annettu
+
 pools_title=Volume-altaat
 pools_none=Tilavarastoja ei ole vielä määritelty.
 pools_name=Altaan nimi
@@ -311,6 +334,7 @@ pools_add=Lisää uusi tilavuusallas.
 pools_delete=Poista valitut tilavuusvarastot
 pools_return=luettelo tilavuusaltaista
 pools_derr=Levyalustojen poistaminen epäonnistui
+
 pool_title1=Luo volyymiallas
 pool_title2=Muokkaa Volume Poolia
 pool_header=Tiedot varmuuskopiointitilasta
@@ -332,6 +356,7 @@ pool_ereten=Puuttuva tai virheellinen säilytysaika
 pool_status=Näytä volyymit
 pool_autolabel=Tunnista etumerkinnät automaattisesti etuliitteeksi
 pool_maxvolsize=Suurin äänenvoimakkuus (esim. 5G 5 gigatavulle)
+
 poolstatus_title=Tilavuudet uima-altaalla
 poolstatus_show=Näytä volyymit uima-altaassa:
 poolstatus_ok=kunnossa
@@ -345,9 +370,11 @@ poolstatus_status=Varmuuskopiointitila
 poolstatus_none=Tässä varmuuskopiossa ei ole tällä hetkellä levyjä.
 poolstatus_never=Ei koskaan
 poolstatus_delete=Poista valitut määrät
+
 dvolumes_err=Levyjen poistaminen epäonnistui
 dvolumes_enone=Mitään ei ole valittu
 dvolumes_ebacula=Bacula-virhe : $1 
+
 mount_title=Asenna tai irrota
 mount_header=Tallennusasennus- tai irrotusvaihtoehdot
 mount_storage=Tallennuslaite
@@ -365,8 +392,10 @@ unmount_failed=.. irrottaminen epäonnistui! Katso syy miksi yllä olevassa virh
 mount_return=asennusmuoto
 mount_err=Tallennuslaitteen asennus epäonnistui
 mount_eslot=Puuttuva tai virheellinen korttipaikan numero
+
 cancel_err=Töiden peruuttaminen epäonnistui
 cancel_enone=Mitään ei ole valittu
+
 gjobs_title=Bacula-ryhmän varmuuskopiointityöt
 gjobs_none=Yhtään Bacula-ryhmän varmuuskopiointityötä ei ole vielä määritetty.
 gjobs_add=Lisää uusi Bacula-ryhmän varmuuskopiointityö.
@@ -374,10 +403,12 @@ gjobs_delete=Poista valitut työt
 gjobs_return=luettelo Bacula-ryhmän töistä
 gjobs_derr=Bacula-ryhmätöiden poistaminen epäonnistui
 gjobs_client=Bacula-ryhmä varmuuskopiointia varten
+
 gjob_title1=Luo Bacula-ryhmän varmuuskopiointityö
 gjob_title2=Muokkaa Bacula-ryhmän varmuuskopiotyötä
 gjob_header=Bacula-ryhmän varmuuskopiointityöt
 gjob_client=Bacula-ryhmä varmuuskopiointia varten
+
 groups_title=Bacula-ryhmät
 groups_none=Bacula ei ole vielä valinnut Bacula-ryhmiä varmuuskopiointiin.
 groups_name=Ryhmän nimi
@@ -391,6 +422,7 @@ groups_derr=Ryhmien poistaminen epäonnistui
 groups_noadd=Bacula-ryhmiä ei ole valittavissa varmuuskopioille.
 groups_info=$1 ($2 jäsentä)
 groups_already=Kaikki Bacula-ryhmät on jo lisätty.
+
 group_title1=Luo Bacula-ryhmä
 group_title2=Muokkaa Bacula-ryhmää
 group_header=Tiedot varmuuskopioitavasta Bacula-ryhmästä
@@ -401,11 +433,13 @@ group_port=Bacula FD -portti
 group_err=Bacula-ryhmän tallentaminen epäonnistui
 group_eclash=Ryhmä, jolla on sama nimi, on jo olemassa
 group_members=Isännät Bacula-ryhmässä
+
 sync_title=Bacula-ryhmän synkronointi
 sync_header=Automaattiset Bacula-ryhmän asiakassynkronointiasetukset
 sync_sched=Synkronoidaan aikataulun mukaan?
 sync_schedyes=Kyllä, alla valituina aikoina ..
 sync_err=Bacula-ryhmän synkronoinnin tallentaminen epäonnistui
+
 log_create_client=Luotu varmuuskopiointiohjelma $1 
 log_modify_client=Muokattu varmuuskopiointiohjelma $1 
 log_delete_client=Poistettu varaohjelma $1 
@@ -464,6 +498,7 @@ log_director=Tallennettu globaali Bacula-ohjaimen kokoonpano
 log_file=Tallennetut Bacula-tiedoston daemon-asetukset
 log_storagec=Tallennetut Bacula-tallennusdeemonin kokoonpanot
 log_fixpass=Kiinteä Bacula-konsoli-ohjelman salasana
+
 director_title=Ohjaimen kokoonpano
 director_header=Globaalin Bacula-ohjaajavaihtoehdot
 director_name=Ohjaaja nimi
@@ -477,6 +512,7 @@ director_ename=Puuttuva tai virheellinen ohjaaja nimi
 director_eport=Puuttuva tai virheellinen porttinumero
 director_ejobs=Puuttuva tai virheellinen määrä samanaikaisia töitä
 director_edir=Puuttuva tai puuttuva työhakemisto
+
 tls_enable=Ota TLS-salaus käyttöön?
 tls_require=Hyväksytäänkö vain TLS-yhteydet?
 tls_verify=Vahvista TLS-asiakkaat?
@@ -488,6 +524,7 @@ tls_ecert=Puuttuva tai puuttuva TLS-varmennetiedosto
 tls_ekey=Puuttuva tai puuttuva TLS-avaintiedosto
 tls_ecacert=Puuttuva tai puuttuva TLS CA -varmennetiedosto
 tls_ecerts=Jotta TLS voidaan ottaa käyttöön, varmenne-, avain- ja CA-tiedostot on määritettävä
+
 file_title=Tiedoston Daemon-asetukset
 file_header=Bacula-tiedoston daemon-asetukset
 file_name=Tiedoston daemonin nimi
@@ -500,6 +537,7 @@ file_ename=Puuttuva tai virheellinen tiedostodeemonin nimi
 file_eport=Puuttuva tai virheellinen porttinumero
 file_ejobs=Puuttuva tai virheellinen määrä samanaikaisia töitä
 file_edir=Puuttuva tai puuttuva työhakemisto
+
 fdirectors_title=File Daemon -ohjaimet
 fdirectors_none=Yhtään johtajaa ei ole vielä määritelty.
 fdirectors_name=Ohjaaja nimi
@@ -508,6 +546,7 @@ fdirectors_add=Lisää uusi ohjaaja.
 fdirectors_delete=Poista valitut ohjaajat
 fdirectors_return=luettelo johtajista
 fdirectors_derr=Ohjainten poistaminen epäonnistui
+
 fdirector_title1=Luo tiedosto Daemon Director
 fdirector_title2=Muokkaa File Daemon Director -sovellusta
 fdirector_header=Tiedot kaukosäätimen ohjauksesta
@@ -519,6 +558,7 @@ fdirector_err=Tiedoston daemon Director -sovelluksen tallentaminen epäonnistui
 fdirector_ename=Puuttuu ohjaaja nimi
 fdirector_eclash=Samalla nimellä ohjaaja on jo olemassa
 fdirector_epass=Puuttuu salasana
+
 sdirectors_title=Storage Daemon -ohjaimet
 sdirectors_none=Yhtään johtajaa ei ole vielä määritelty.
 sdirectors_name=Ohjaaja nimi
@@ -527,6 +567,7 @@ sdirectors_add=Lisää uusi ohjaaja.
 sdirectors_delete=Poista valitut ohjaajat
 sdirectors_return=luettelo johtajista
 sdirectors_derr=Ohjainten poistaminen epäonnistui
+
 sdirector_title1=Luo Storage Daemon Director
 sdirector_title2=Muokkaa Storage Daemon Director -sovellusta
 sdirector_header=Tiedot kaukosäätimen ohjauksesta
@@ -538,6 +579,7 @@ sdirector_err=Tallennusdemoni-ohjaimen tallentaminen epäonnistui
 sdirector_ename=Puuttuu ohjaaja nimi
 sdirector_eclash=Samalla nimellä ohjaaja on jo olemassa
 sdirector_epass=Puuttuu salasana
+
 storagec_title=Storage Daemon -määritykset
 storagec_header=Bacula-tallennusdeemonin vaihtoehdot
 storagec_name=Daemon nimi
@@ -550,6 +592,7 @@ storagec_ename=Puuttuva tai virheellinen tallennusdeemonin nimi
 storagec_eport=Puuttuva tai virheellinen porttinumero
 storagec_ejobs=Puuttuva tai virheellinen määrä samanaikaisia töitä
 storagec_edir=Puuttuva tai puuttuva työhakemisto
+
 chooser_title=Valitse Aikataulu
 chooser_monthsh=Suoritettavat kuukaudet
 chooser_months=Vuoden kuukaudet
@@ -574,11 +617,13 @@ chooser_emonthsrange=Valittujen kuukausien on oltava vierekkäisiä
 chooser_eweekdaysrange=Valittujen arkipäivien on oltava vierekkäisiä
 chooser_eweekdaynumsrange=Valittujen arkipäivän numeroiden on oltava vierekkäisiä
 chooser_edaysrange=Kuukauden valittujen päivien on oltava vierekkäisiä
+
 weekdaynum_1=Ensimmäinen
 weekdaynum_2=Toinen
 weekdaynum_3=kolmas
 weekdaynum_4=Neljäs
 weekdaynum_5=Viides
+
 restore_title=Palauta varmuuskopio
 restore_title2=Palauta varmuuskopio Bacula-ryhmään
 restore_title3=Palauta Bacula-ryhmän varmuuskopio

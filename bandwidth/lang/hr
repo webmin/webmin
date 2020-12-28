@@ -56,19 +56,26 @@ index_rotate=Ispravi Statistiku
 index_rotatedesc=Klikom na ovu tipku za upućivanje mrežnog prometa prema trenutnom vremenu, čini ga  odmah aktivnim za izvještavanje.
 index_eiptables=Upozorenje - Vaša IPtables konfiguracija sadrži grešku : $1. Postavke opsega nadzora izbrisat će sva pravila vatrozida.
 index_return=forma za izvješće
+
 log_setup=Podesi opseg nadzora na sučelju $1
 log_turnoff=Onemogući opseg nadzora.
 log_rotate=Dopuni statistiku
+
 acl_setup=Ne možete pokrenuti i omogućiti nadzor?
+
 turnoff_ecannot=Nije Vam dopušteno prekinuti nadzor
+
 setup_ecannot=Nemate dopuštenje da omogućite nadzor
 setup_ezone=Neuspjeli pokušaj pronalažanja Shorewall zone za odabrano sučelje
+
 system_firewall=IPtablice
 system_ipfw=[hr
 system_ipfilter=IPFilter
 system_shorewall=Shorewall
+
 syslog_syslog=Sistemski Zapis
 syslog_syslog-ng=Sistemski zapis-NG
+
 rotate_title=Ispravi Statistiku
 rotate_doing=Obrađujem prijavljeni mrežni promet...
 rotate_done=...gotovo.

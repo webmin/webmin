@@ -16,6 +16,7 @@ index_cancel=Kanselleer verbinding
 index_canceldesc=Die ADSL-kliënt probeer tans om 'n verbinding te bewerkstellig. Klik op hierdie knoppie om die poging met die opdrag $1 te kanselleer.
 index_cdemand=Kanselleer op aanvraag
 index_cdemanddesc=Die ADSL-kliënt wag tans vir 'n aanvraag vir verbinding. Klik op hierdie knoppie om dit met die $1 te stop.
+
 index_header=ADSL-kliënt-konfigurasie-opsies
 index_desc=Die instellings hieronder is van toepassing op enige nuwe ADSL-verbinding wat deur u stelsel begin is. As u hulle verander, moet die verbinding uitgeskakel word en weer begin word om die wysigings in werking te stel.
 index_eth=Ethernet-koppelvlak
@@ -36,11 +37,13 @@ index_fw_standalone=Vir enkel gasheer
 index_fw_masquerade=Vir NAT-poort
 index_connect=Tyd om te skakel vir
 index_forever=vir ewig
+
 start_err=Kon nie ADSL-verbinding begin nie
 start_title=Begin ADSL
 start_ip='N ADSL-verbinding is met IP-adres $1 tot stand gebring.
 start_demand=Aangesien verbinding op aanvraag afgeskakel is, sal u ADSL-verbinding slegs begin word indien nodig.
 start_bg=Die ADSL-verbinding is nie binne 20 sekondes begin nie. Die ADSL-kliënt sal aanhou probeer om op die agtergrond te konnekteer totdat dit suksesvol is.
+
 save_err=Kon nie ADSL-konfigurasie stoor nie
 save_eeth=Eternet-koppelvlak ontbreek of ongeldig
 save_etimeout=Ontbreek of ongeldig time-out op aanvraag
@@ -49,10 +52,12 @@ save_econnect=Ontbreek of ongeldige verbindingstydperk
 save_emss=Die maksimum pakketgrootte ontbreek of is ongeldig
 save_title=Stoor konfigurasie
 save_desc=U ADSL-kliëntkonfigurasie is suksesvol gestoor, maar sal nie gebruik word voordat u weer verbind nie.
+
 stop_err=Kon nie ADSL-verbinding afskakel nie
 stop_title=Sluit ADSL af
 stop_ok=U ADSL-verbinding is suksesvol afgesluit.
 stop_failed=Om u rede is u ADSL-verbinding steeds aktief!
+
 log_save=Gestoorde kliëntkonfigurasie
 log_stop=Sluit ADSL af
 log_start=ADSL begin

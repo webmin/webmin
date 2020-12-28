@@ -12,10 +12,12 @@ index_restart=أعد تشغيل خادم Fail2Ban
 index_restartdesc=انقر فوق هذا الزر لتطبيق التكوين الحالي عن طريق إعادة تشغيل خادم Fail2Ban.
 index_return=مؤشر الوحدة
 index_header=وحدة Fail2Ban
+
 check_edir=دليل التكوين$1 غير موجود
 check_econf=ملف التكوين$2 في$1 غير موجود
 check_eclient=لم يتم العثور على أمر العميل$1
 check_eserver=لم يتم العثور على أمر الخادم$1
+
 filters_title=سجل المرشحات
 filters_name=اسم المرشح
 filters_re=تعبير عادي
@@ -25,6 +27,7 @@ filters_return=قائمة المرشحات
 filters_derr=فشل في حذف المرشحات
 filters_enone=لا شيء محدد
 filters_einuse=لا يمكن حذف المرشح$1 ، حيث يتم استخدامه بواسطة السجون :$2
+
 filter_title1=إنشاء مرشح
 filter_title2=تحرير مرشح
 filter_desc=استخدم <i>&lt;HOST&gt;</i> في التعبيرات العادية حيث يجب أن يظهر اسم مضيف أو عنوان IP.
@@ -39,6 +42,7 @@ filter_ename=اسم عامل التصفية مفقود أو غير صالح
 filter_eclash=اسم الفلتر قيد الاستخدام بالفعل
 filter_efail=لم يتم إدخال تعبير منتظم للمطابقة
 filter_einuse=لا يمكن حذف هذا الفلتر ، حيث يتم استخدامه بواسطة السجون :$1
+
 actions_title=إجراءات المباراة
 actions_name=اسم العمل
 actions_ban=قيادة الحظر
@@ -48,6 +52,7 @@ actions_return=قائمة الإجراءات
 actions_derr=فشل في حذف الإجراءات
 actions_enone=لا شيء محدد
 actions_einuse=لا يمكن حذف الإجراء$1 ، حيث يتم استخدامه بواسطة السجون :$2
+
 action_title1=إنشاء تطابق العمل
 action_title2=تحرير المباراة العمل
 action_header=تطابق تفاصيل العمل
@@ -64,6 +69,7 @@ action_ban=أمر لحظر IP
 action_unban=أمر لإلغاء حظر IP
 action_desc=سيتم استبدال <i>&lt;ip&gt;</i> بعنوان IP المحظور.
 action_einuse=لا يمكن حذف هذا الإجراء ، حيث يتم استخدامه بواسطة السجون :$1
+
 jails_title=تصفية عمل السجون
 jails_add=أضف سجن جديد.
 jails_name=اسم السجن
@@ -76,6 +82,7 @@ jails_defdesc=قم بتعديل الإعدادات والحدود الافترا
 jails_return=قائمة السجون
 jails_derr=فشل في حذف السجون
 jails_enone=لا شيء محدد
+
 jail_title1=إنشاء السجن
 jail_title2=تحرير السجن
 jail_header=تصفية تفاصيل السجن العمل
@@ -115,13 +122,16 @@ jail_banaction=الإجراء الافتراضي للتطبيق
 jail_defprotocol=البروتوكول الافتراضي للإجراءات
 jail_edestemail=عنوان البريد الإلكتروني للإشعار الافتراضي مفقود أو غير صالح
 jail_eignoreip=عنوان IP غير صالح للتجاهل
+
 jaildef_title=خيارات السجن الافتراضية
 jaildef_header=الإعدادات الافتراضية لجميع السجون
 jaildef_err=فشل في حفظ خيارات السجن الافتراضية
 jaildef_egone=لم يتم العثور على سجن افتراضي!
+
 start_err=فشل في بدء الخادم
 stop_err=فشل في إيقاف الخادم
 restart_err=فشل في إعادة تشغيل الخادم
+
 log_create_filter=مرشح تم إنشاؤه$1
 log_update_filter=مرشح معدل$1
 log_delete_filter=مرشح محذوف$1
@@ -139,6 +149,7 @@ log_atboot=تمكين Fail2Ban في وقت التمهيد
 log_delboot=معطل Fail2Ban في وقت التمهيد
 log_manual=ملف التكوين المحرر$1
 log_jaildef=خيارات السجن الافتراضية المعدلة
+
 config_title=التكوين العالمي
 config_edef=لم يتم العثور على قسم التعريف في ملف التكوين!
 config_header=إعدادات التكوين ل Fail2Ban
@@ -151,10 +162,12 @@ config_socket=المقبس للتواصل مع الخادم
 config_err=فشل في حفظ التكوين العام
 config_elogtarget=يجب أن يكون الملف المراد كتابة السجلات إليه مسارًا مطلقًا
 config_esocket=يجب أن يكون ملف المقبس مسارًا مطلقًا
+
 manual_title=تحرير ملفات التكوين
 manual_desc=ملف للتحرير:
 manual_ok=حسنا
 manual_efile=الملف المحدد ليس جزءًا من تكوين Fail2Ban!
 manual_err=فشل في تحرير ملف التكوين
 manual_edata=لم يتم إدخال محتويات ملف التكوين
+
 syslog_logtarget=سجل العمل Fail2Ban

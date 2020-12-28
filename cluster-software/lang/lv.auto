@@ -21,6 +21,7 @@ index_thost=Resursdatora nosaukums
 index_tdesc=Apraksts
 index_tcount=Pakas
 index_ttype=OS tips
+
 install_err=Neizdevās instalēt pakotni
 install_elocal=Vietējā lieta nav dota
 install_elocal2='$1' nepastāv
@@ -37,6 +38,7 @@ install_ok=Uzstādīt
 install_erus=Šis serveris izmanto atšķirīgu galvenā servera atjaunināšanas sistēmu ($1 pret $2)
 install_eupdate=Instalējot norādītos atjauninājumus, radās kļūda
 install_ealready=$1 versija jau ir instalēta
+
 add_title=Pievienot serverus
 add_msg=Notiek $1 pievienošana.
 add_gmsg=Serveru pievienošana grupā $1.
@@ -45,6 +47,7 @@ add_gerr=Neizdevās pievienot grupu
 add_echeck=Serverim $1 nav programmatūras pakotņu moduļa
 add_esystem=Serveris $1 neizmanto to pašu pakotņu sistēmu kā šī mašīna
 add_ok=Pievienots $1 ar $2 pakotnēm.
+
 search_title=Paketes meklēšana
 search_nomatch=Neviena pakete neatbilst $1
 search_none=Nav
@@ -56,6 +59,7 @@ search_return=Meklēšanas rezultāti
 search_delete=Atinstalēt atlasītās paketes no:
 search_selall=Izvēlēties visus
 search_invert=Apgrieztā atlase
+
 host_title=Pārvaldīts serveris
 host_header=Programmatūras pārvaldītā servera informācija
 host_name=Resursdatora nosaukums
@@ -70,6 +74,7 @@ host_count=Instalētās paketes
 host_os=OS no Webmin
 host_return=informācija par serveri
 host_system=Iepakojuma sistēma
+
 edit_title=Rediģēt paketi
 edit_details=Sīkāka informācija par paketi no $1 
 edit_desc=Apraksts
@@ -88,6 +93,7 @@ edit_all=&lt;visi saimnieki&gt;
 edit_donthave=&lt;saimniekiem, kuriem to nav&gt;
 edit_have=&lt;saimniekiem, kuriem tas ir&gt;
 edit_group=$1 dalībnieki
+
 list_title=Pakešu faili
 list_files=Faili paketei $1 uz $2 
 list_path=Ceļš
@@ -97,6 +103,7 @@ list_type=Veids
 list_size=Izmērs
 list_status=Statuss
 list_ok=labi
+
 refresh_title=Atsvaidziniet pakešu sarakstus
 refresh_header=Atkārtoti pieprasot pakešu sarakstus no visiem serveriem.
 refresh_header4=Atkārtoti pieprasot pakešu sarakstus no $2 dalībniekiem.
@@ -108,6 +115,7 @@ refresh_4=Atjaunināts $1 (bez izmaiņām)
 refresh_done=.. darīts
 refresh_del=$1 tika noņemts no serveru saraksta
 refresh_failed=Neizdevās atsvaidzināt $1 : $2 
+
 delete_err=Neizdevās izdzēst paketi $1 
 delete_epack=Pakete $1 neeksistē
 delete_title=Dzēst paketi
@@ -120,6 +128,7 @@ delete_error=Neizdevās izdzēst no $1 : $2
 delete_success=Dzēsts no $1.
 delete_done=.. darīts
 delete_header=Notiek paketes $1 dzēšana.
+
 do_title=Instalēt pakotni
 do_header=Instalē $1 visos resursdatoros.
 do_header3=Instalējam $1 resursdatoros, kuriem tā vēl nav.
@@ -140,6 +149,7 @@ do_arch=Arhitektūra
 do_inst=Instalēts
 do_none=Nav
 do_edeleted=Instalācijas fails ir izdzēsts - atgriezieties moduļa rādītājā un mēģiniet vēlreiz.
+
 compare_title=Salīdziniet paketes
 compare_desc=Šo veidlapu var izmantot, lai salīdzinātu paketes, kas instalētas divos vai vairāk serveros, un atrastu neatbilstības starp pieejamajām versijām vai pakotnēm.
 compare_hosts=Serveri, lai salīdzinātu
@@ -154,6 +164,7 @@ compare_showall=Pakas, ko parādīt
 compare_showall1=Visi
 compare_showall0=Tikai neatbilstības
 compare_got=labi
+
 deletes_err=Neizdevās izdzēst pakotnes
 deletes_enone=Nav atlasīts neviens iepakojums
 deletes_title=Dzēst pakotnes

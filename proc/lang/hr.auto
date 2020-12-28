@@ -16,6 +16,7 @@ index_loadname=CPU učitava prosjeke:
 index_loadnums=$1 (1 min), $2 (5 min), $3 (15 min)
 index_cpuname=Vrsta CPU-a:
 index_inzone=U zoni $1 
+
 pid=iskaznica
 owner=Vlasnik
 command=naredba
@@ -27,6 +28,7 @@ nice=Lijepa razina
 stime=počeo
 sclass=IO zakazivanje klase
 sprio=IO prioritet
+
 search_user=Vlasnik
 search_match=odgovarajući
 search_cpupc=Korištenje više od $1% CPU-a
@@ -43,6 +45,7 @@ search_sigkill=Ubijte procese
 search_port=Korištenje porta
 search_protocol=protokol
 search_ip=Korištenje IP adrese
+
 run_command=Naredba za pokretanje
 run_submit=Trčanje
 run_mode=Način rada
@@ -56,6 +59,7 @@ run_ecannot=Nije vam dopušteno pokretanje naredbi
 run_as=Pokreni kao korisnik
 run_euser=Nedostaje ili nije valjano korisničko ime
 run_euser2=Nije vam dopušteno pokretanje naredbi kao odabrani korisnik
+
 edit_title=Informacije o procesu
 edit_gone=Taj se postupak više ne pokreće
 edit_sub=Podprocesi
@@ -75,12 +79,15 @@ edit_sigcont=Rezime
 edit_open=Datoteke i veze
 edit_trace=Proces tragova
 edit_return=detalji procesa
+
 kill_err=Slanje signala $1 nije uspjelo za obradu $2 
 kill_title=Pošalji signal
 kill_sent=poslana
 kill_ecannot=Ne smijete ubijati procese
+
 renice_err=Obnavljanje postupka $1 nije uspjelo
 renice_ecannot=Nije vam dopušteno ponovno uspostavljanje procesa
+
 linux_pri=Prioritet
 linux_tty=TTY
 linux_status=Status
@@ -91,25 +98,30 @@ linux_ruser=Pravi korisnik
 linux_rgroup=Prava grupa
 linux_pgid=ID grupe procesa
 linux_stime=počeo
+
 linuxstat_R=Trčanje
 linuxstat_S=Spavanje
 linuxstat_D=Dubok san
 linuxstat_T=zaustavljen
 linuxstat_Z=Zombi
+
 linux_real=Stvarno vrijeme
 linux_be=Najbolji trud
 linux_idle=Besposlen
+
 freebsd_ruser=Pravi korisnik
 freebsd_rgroup=Prava grupa
 freebsd_tty=TTY
 freebsd_pgid=Procesna grupa
 freebsd_stime=počeo
 freebsd_lim=Ograničenje memorije
+
 hpux_pri=Prioritet
 hpux_tty=TTY
 hpux_status=Status
 hpux_wchan=Čekati
 hpux_stime=počeo
+
 hpuxstat_0=nepostojeći
 hpuxstat_S=Spavanje
 hpuxstat_W=Čekanje
@@ -118,7 +130,9 @@ hpuxstat_I=srednji
 hpuxstat_Z=Zombi
 hpuxstat_T=zaustavljen
 hpuxstat_G=Rastući
+
 macos_tty=TTY
+
 sysv_group=Skupina
 sysv_ruser=Pravi korisnik
 sysv_rgroup=Prava grupa
@@ -127,12 +141,14 @@ sysv_tty=TTY
 sysv_stime=počeo
 sysv_task=ID zadatka
 sysv_zone=Naziv zone
+
 log_run=Naredba ranka "$1"
 log_kill=Poslan je signal $1 da obradi $2 
 log_kills=Pošalji signal $1 do $2 procesa
 log_kill_l=Poslan je signal $1 da obradi $2 
 log_kills_l=Poslan signal $1 procesima <br> $2 
 log_renice=Izmijenjen je prioritet postupka $2 u $1 
+
 acl_manage=Upravljanje procesima kao korisnik
 acl_manage_def=Trenutačni korisnik Webmina
 acl_edit=Mogu li ubijati i oduzeti procese?
@@ -142,11 +158,13 @@ acl_who=Može upravljati procesima za korisnike
 acl_who0=Svi korisnici
 acl_who1=Trenutačni korisnik Webmina
 acl_who2=Korisnici na popisu ..
+
 kill_kill=Ubiti proces
 kill_term=okončati
 kill_hup=Ponovno pokretanje
 kill_stop=Stop
 kill_cont=Nastaviti
+
 open_title=Otvorite datoteke i veze
 open_proc=Za proces $1 (PID $2)
 open_header1=Otvori datoteke
@@ -170,6 +188,7 @@ open_blk=Blok poseban
 open_size=Veličina datoteke
 open_inode=inode
 open_file=Staza
+
 trace_title=Proces tragova
 trace_start=Traženje sistemskog poziva za $1 ..
 trace_doing=Traženje sistemskog poziva za $1  :
@@ -180,5 +199,7 @@ trace_syscalls=Sustavi tragova pozivi:
 trace_all=svi
 trace_sel=Navedene ..
 trace_change=Promijeniti
+
 windows_threads=Niti u procesu
+
 syslog_dmesg=Kernel poruke

@@ -11,6 +11,7 @@ index_version2=Verzija Sendmail $1, config $2
 index_xversion=Verzija Sendmail $1 
 index_version=Sendmail config $1 
 index_sendmail=Poslati mail
+
 opts_title=Opcije slanja pošte
 opts_ecannot=Nije vam dopušteno uređivanje opcija za sendmail
 opts_ds=Pošaljite odlaznu poštu putem hosta
@@ -57,6 +58,7 @@ opts_qso=Poredaj red čekanja po
 opts_priority=Prioritet
 opts_host=Ime računala
 opts_time=Vrijeme primljeno
+
 aliases_title=Aliases za poštu
 aliases_ecannot=Nije vam dopušteno uređivanje aliasa
 aliases_enofile=U konfiguraciji Sendmail nije definirana datoteka pseudonima
@@ -73,6 +75,7 @@ aliases_return=alias list
 aliases_toomany=Na vašem je sustavu previše pseudonima e-pošte za prikaz.
 aliases_go=Pronađi pseudonim koji odgovaraju:
 aliases_delete=Izbrišite odabrana imena
+
 aform_ecannot=Nije vam dopušteno uređivanje ovog aliasa
 aform_type0=nijedan
 aform_type1=Email adresa
@@ -90,11 +93,13 @@ aform_val=Alias to
 aform_afile=Uredi ..
 aform_return=pseudonim
 aform_cmt=Opis
+
 afile_title=Uredi datoteku adresa
 afile_desc=Pomoću područja teksta u nastavku uredite adrese u datoteci $1.
 afile_efile=Nije vam dopušteno uređivanje $1.
 afile_undo=Poništi promjene
 afile_ewrite=Pisanje u datoteku adresa nije uspjelo : $1 
+
 ffile_title=Uredi datoteku filtra
 ffile_desc=Upotrijebite donji obrazac za postavljanje pravila filtra u datoteci $1.
 ffile_efile=Nije vam dopušteno uređivanje $1.
@@ -110,6 +115,7 @@ ffile_other=U protivnom proslijedite na $1
 ffile_err=Spremanje datoteke filtra nije uspjelo
 ffile_ematch=Nedostaje utakmica
 ffile_eaction=Nedostaje adresa za prosljeđivanje
+
 rfile_title=Uređivanje datoteke Automatski odgovor
 rfile_desc=Upotrijebite područje teksta u nastavku za uređivanje poruke automatskog odgovora u $1. Poruka može sadržavati makronaredbe $SUBJECT, $FROM, $TO, $DATE i $BODY koje će se proširiti kada je aktivirano automatsko odgovaranje.
 rfile_desc2=Možete postaviti i zaglavlja e-pošte koja dodaju ili zamjenjuju zadane postavke korištene u automatskom odgovoru stavljanjem redaka poput: <br><tt> Od: foo@bar.com </tt><br> <tt>Tema: Na odmor</tt> <br> na vrhu poruke, odvojen od tijela jednim praznim retkom.
@@ -129,6 +135,7 @@ rfile_from=Od: adresa za odgovor
 rfile_auto=Automatski (na temelju adrese primatelja)
 rfile_efrom=Nedostaje: adresa
 rfile_fromdesc=O: Od adrese: uvijek treba navesti gdje je to moguće, jer automatska metoda možda nije pouzdana.
+
 asave_err=Spremanje aliasa nije uspjelo
 asave_ecannot2=Nije vam dopušteno uređivanje aliasa
 asave_ecannot=Nije vam dopušteno uređivanje ovog aliasa
@@ -145,9 +152,11 @@ asave_etype5=Datoteka za automatsko odgovaranje '$1' nije valjana
 asave_etype4none=Nije dat program
 asave_etype6=Datoteka filtra "$1" nije valjana
 asave_esame=Dopušteno vam je samo izrađivanje pseudonima s istim imenom kao i vaša webmin prijava
+
 adelete_err=Brisanje aliasa nije uspjelo
 adelete_enone=Nijedna nije odabrana
 adelete_ecannot=Ne možete izbrisati pseudonim $1 
+
 cws_title=Lokalne domene
 cws_ecannot=Nije vam dopušteno uređivanje lokalnih domena
 cws_domains=Domene koje poslužuje ovaj poslužitelj
@@ -156,6 +165,7 @@ cws_desc2=Imajte na umu da samo uključivanje domene na popis obično nije dovol
 cws_err=Spremanje lokalnih domena nije uspjelo
 cws_ehost='$1' nije valjano ime hosta ili domene
 cws_eip='$1' je IP adresa, a ne domena
+
 masq_title=Maskiranje domena
 masq_ecannot=Nije vam dopušteno konfigurirati maskiranje
 masq_domain=Maskarada kao domena
@@ -167,12 +177,14 @@ masq_err=Spremanje maskeradije domene nije uspjelo
 masq_edomain='$1' nije valjana domena koja se maskira kao
 masq_ehost='$1' nije valjano ime hosta ili domene
 masq_eip='$1' je IP adresa, a ne domena
+
 trusts_title=Pouzdani korisnici
 trusts_ecannot=Nije vam dopušteno uređivanje pouzdanih korisnika
 trusts_users=Lokalni korisnici kojima se vjeruje sendmail
 trusts_desc=Ako lokalni korisnik pokušava poslati e-poštu, sendmail će dopustiti korisniku da unese drugu <tt>From:</tt> adresu ako je korisnik na popisu u nastavku. Ovo ograničenje postoji radi sprečavanja korisnika da krivotvore e-poštu s lažnom <tt>From:</tt> porijeklom iz vašeg sustava.
 trusts_err=Spremanje pouzdanih korisnika nije uspjelo
 trusts_euser='$1' nije valjan korisnik
+
 virtusers_title=Mapiranje adresa
 virtusers_ecannot=Nije vam dopušteno uređivanje mapiranja adresa
 virtusers_efeature=U vašoj konfiguraciji sendmail nije omogućena značajka mapiranja adresa (<tt>virtuer</tt>). <a href='$1'>Kliknite ovdje</a> za postavljanje značajki sendmail.
@@ -190,6 +202,7 @@ virtusers_return=popis mapiranja adresa
 virtusers_toomany=Previše je mapiranja adresa na vašem sustavu da bi se prikazalo na ovoj stranici.
 virtusers_go=Pronađite podudaranje mapiranja adresa:
 virtusers_delete=Brisanje odabranih mapiranja adresa
+
 vform_edit=Uređivanje mapiranja adresa
 vform_create=Stvaranje mapiranja adresa
 vform_for=Mail za
@@ -206,6 +219,7 @@ vform_err_tempfail=Privremeni neuspjeh
 vform_err_protocol=Pogreška protokola
 vform_end=Pomakni se do kraja
 vform_ecannot=Nije vam dopušteno uređivanje ovog mapiranja adresa
+
 vsave_ecannot=Nije vam dopušteno uređivanje mapiranja adresa
 vsave_ecannot2=Nije vam dopušteno uređivanje ovog mapiranja adresa
 vsave_emax=Ne možete stvoriti više od $1 mapiranja adresa
@@ -221,8 +235,10 @@ vsave_eaddr='$1' nije valjana adresa
 vsave_ecannot4=Nije vam dopušteno stvarati preslikavanja u domene
 vsave_edomdom=Samo se jedna domena može preslikati na drugu domenu
 vsave_ecannot5=Nije vam dopušteno stvoriti mapiranja koja vraćaju pogrešku
+
 vdelete_err=Brisanje mapiranja adresa nije uspjelo
 vdelete_ecannot=Ne možete izbrisati mapiranje za $1 
+
 mailers_title=Usmjeravanje domena
 mailers_cannot=Nije vam dopušteno uređivanje usmjeravanja domena
 mailers_edirective=Vaša konfiguracijska datoteka sendmail nema potrebnu direktivu za usmjeravanje domene.
@@ -236,6 +252,7 @@ mailers_delivery=dostava
 mailers_to=Pošalji u ..
 mailers_return=popis usmjeravanja domena
 mailers_delete=Izbrišite odabrane rute domena
+
 mform_edit=Uredi usmjeravanje
 mform_create=Stvorite usmjeravanje
 mform_for=Mail za
@@ -259,12 +276,15 @@ mform_procmail=Procmail
 mform_mail11=DECnet pošta11
 mform_error=greška
 mform_ecannot=Nije vam dopušteno uređivanje usmjeravanja domena
+
 msave_ecannot=Nije vam dopušteno uređivanje usmjeravanja domena
 msave_err=Spremanje usmjeravanja domene nije uspjelo
 msave_edomain='$1' nije važeći host ili domena
 msave_edup=Usmjeravanje domene za '$1' već je definirano
+
 mdelete_err=Brisanje usmjernika domene nije uspjelo
 mdelete_ecannot=Nije vam dopušteno brisanje rute za $1 
+
 generics_title=Odlazne adrese
 generics_cannot=Nije vam dopušteno uređivanje odlaznih adresa
 generics_econfig=Vaša konfiguracijska datoteka sendmail nema potrebnu direktivu za mapiranje odlazne adrese.
@@ -278,11 +298,13 @@ generics_return=popis mapiranja adresa
 generics_toomany=U vašem sustavu postoji previše odlaznih adresa za prikaz na ovoj stranici.
 generics_go=Pronađite podudaranje izlaznih adresa:
 generics_delete=Izbrišite odabrane odlazne adrese
+
 gform_edit=Uredi preslikavanje
 gform_create=Stvorite mapiranje
 gform_from=Mail od
 gform_to=Promijeniti
 gform_ecannot=Nije vam dopušteno uređivanje ove odlazne adrese
+
 gsave_ecannot=Nije vam dopušteno uređivanje odlaznih adresa
 gsave_ecannot2=Nije vam dopušteno uređivanje ove odlazne adrese
 gsave_ecannot3=Nije vam dopušteno spremanje ove odlazne adrese
@@ -291,8 +313,10 @@ gsave_efrom="$1" nije valjan s adrese
 gsave_ematch=Adresa sa adrese ne odgovara '$1'
 gsave_eto='$1' nije važeća nova adresa
 gsave_ealready=Mapiranje adrese odlazne adrese za '$1' već postoji
+
 gdelete_err=Brisanje mapiranja izlaznih adresa nije uspjelo
 gdelete_ecannot=Ne možete izbrisati mapiranje za $1 
+
 cgs_title=Izlazne domene
 cgs_ecannot=Nije vam dopušteno uređivanje odlaznih domena
 cgs_header=Domene adresa odlaznih adresa
@@ -300,6 +324,7 @@ cgs_desc=Osim pošte koju su poslali lokalni korisnici, sendmail će vršiti sam
 cgs_err=Nije uspjelo spremanje odlaznih domena
 cgs_ehost='$1' nije valjano ime hosta ili domene
 cgs_eip='$1' je IP adresa, a ne domena
+
 domains_title=Mapiranje domene
 domains_ecannot=Nije vam dopušteno uređivanje mapiranja domena
 domains_econfig=Vaša konfiguracijska datoteka sendmail nema potrebnu direktivu za mapiranje domene.
@@ -310,17 +335,21 @@ domains_from=Iz domene ..
 domains_to=Za domenu ..
 domains_return=popis za preslikavanje domena
 domains_delete=Brisanje odabranih mapiranja domena
+
 dform_edit=Uredi preslikavanje
 dform_create=Stvorite mapiranje
 dform_from=Iz domene
 dform_to=Za domenu
 dform_ecannot=Nije vam dopušteno uređivanje mapiranja domena
+
 dsave_ecannot=Nije vam dopušteno uređivanje mapiranja domena
 dsave_err=Spremanje preslikavanja domena nije uspjelo
 dsave_edomain='$1' nije valjano ime domene
 dsave_ealready=Mapiranje domene za '$1' već postoji
+
 ddelete_err=Brisanje mapiranja domena nije uspjelo
 ddelete_ecannot=Ne možete izbrisati mapiranje za $1 
+
 access_title=Kontrola neželjene pošte
 access_ecannot=Nije vam dopušteno konfigurirati kontrolu neželjene pošte
 access_efeature=U vašoj konfiguraciji sendmail nije omogućena značajka kontrole neželjene pošte (<tt>access_db</tt>). <a href='$1'>Kliknite ovdje</a> za postavljanje značajki sendmail.
@@ -333,6 +362,7 @@ access_return=popis neželjene pošte
 access_toomany=Previše je pravila za kontrolu neželjene pošte u vašem sustavu da bi se prikazalo na ovoj stranici.
 access_go=Pronađite pravila za kontrolu neželjene pošte koja se podudaraju:
 access_delete=Izbrišite odabrana pravila za kontrolu neželjene pošte
+
 sform_edit=Uređivanje pravila o neželjenoj pošti
 sform_create=Stvorite pravilo kontrole neželjene pošte
 sform_source=Izvor pošte
@@ -354,6 +384,7 @@ sform_discard=Odbacite se tiho
 sform_err=Kod pogreške
 sform_msg=Poruka
 sform_ecannot=Nije vam dopušteno uređivanje ovog pravila o kontroli neželjene pošte
+
 ssave_err=Pravilo kontrole neželjene pošte nije uspjelo spremiti
 ssave_etype0='$1' nije valjana adresa
 ssave_etype1='$1' nije valjana mrežna adresa
@@ -362,8 +393,10 @@ ssave_etype3='$1' nije valjana domena
 ssave_ecode='$1' nije važeći SMTP kôd pogreške
 ssave_ealready=Pravilo za kontrolu neželjene pošte za '$1' već postoji
 ssave_ecannot2=Nije vam dopušteno spremanje ovog pravila o kontroli neželjene pošte
+
 sdelete_err=Brisanje pravila za kontrolu neželjene pošte nije uspjelo
 sdelete_ecannot=Ne možete izbrisati pravilo za $1 
+
 relay_title=Relej domena
 relay_ecannot=Nije vam dopušteno uređivanje relejnih domena
 relay_eversion=Samo sendmail verzije 8.9 i novije verzije podržavaju značajku relejnih domena.
@@ -372,6 +405,7 @@ relay_desc1=Ako nije dopušteno <a href='$1'>kontrolom neželjene pošte</a>, se
 relay_desc2=Ako vaš sustav služi kao gateway za nekoliko domena koje nisu izravno dostupne izvan vaše mreže (pomoću značajke <a href='$1'>usmjeravanje domene</a>), ovdje bi trebale biti navedene sve te domene.
 relay_err=Nije uspjelo spremanje relejnih domena
 relay_edomain='$1' nije valjano ime domene
+
 mailq_title=Red čekanja
 mailq_count=$1 poruke
 mailq_ecannot=Nije vam dopušteno pregledati red čekanja
@@ -401,12 +435,15 @@ mailq_search=Pronađi poruke u redovima čekanja
 mailq_quar=karanteni
 mailq_refresh=Osvježi red za poštu
 mailq_refreshdesc=Ponovno učitajte ovu stranicu da biste prikazali trenutno stanje reda čekanja.
+
 flushq_title=Red ispiranja
 flushq_desc=Prisiljavanje na pokušaj isporuke svih poruka pomoću naredbe $1 ..
 flushq_desc2=Prisiljavanje na pokušaj isporuke $1 odabrane poruke ..
 flushq_ecannot=Ne možete isprazniti red čekanja
+
 searchq_title=Rezultati pretraživanja u redu
 searchq_none=Nije pronađena nijedna poruka u redu.
+
 delq_err=Brisanje poruke nije uspjelo
 delq_ecannot=Nije vam dopušteno uklanjanje poruka
 delq_locked=Datoteka je trenutno zaključana za slanje
@@ -422,6 +459,7 @@ delq_force=Ionako prisilno brisanje
 delq_ecannot2=ne možete izbrisati ovu poruku
 delq_rusure=Jeste li sigurni da želite izbrisati $1 odabrane poruke u redu?
 delq_confirm=Izbriši poruke
+
 boxes_title=Korisničke poštanske sandučiće
 boxes_user=Korisnik
 boxes_size=Veličina poštanskog sandučića
@@ -431,6 +469,7 @@ boxes_sent=Poslana pošta
 boxes_ecannot=Nije vam dopušteno čitati e-poštu
 boxes_toomany=Na vašem sustavu ima previše korisnika da bi popisali sve svoje poštanske sandučiće.
 boxes_go=Pogledajte poštu za korisnika:
+
 mail_title=Korisnička adresa e-pošte
 mail_from=Iz
 mail_date=Datum
@@ -471,6 +510,7 @@ mail_move=Premjesti u:
 mail_copy=Kopirajte u:
 mail_rfc=Iz linije
 mail_eexists=Poruka više ne postoji!
+
 view_title=Pročitajte e-poštu
 view_desc=Poruka $1 u $2 
 view_desc2=Poruka $1 za korisnika $2 
@@ -501,6 +541,7 @@ view_egone=Ova poruka više ne postoji
 view_afile=Naziv privitka
 view_atype=Vrsta privitka
 view_asize=Veličina datoteke
+
 compose_title=Sastavite e-poštu
 reply_title=Odgovor na e-poštu
 forward_title=Prosljeđivanje e-pošte
@@ -512,6 +553,7 @@ reply_attach2=Prilozi na strani klijenta i poslužitelja
 reply_send=Poslati mail
 reply_ecannot=Nije vam dopušteno slanje pošte kao ovog korisnika
 reply_body=Tekst poruke
+
 send_err=Slanje pošte nije uspjelo
 send_eto=Nedostaje adresa
 send_efrom=Nedostaje s adrese
@@ -524,6 +566,7 @@ send_eattach=Prilozi ne mogu imati više od $1 kB.
 send_eperms=Korisnik $1 ne može čitati $2 
 send_eperms2=Nije vam dopušteno slanje datoteke $1 
 send_epath=Izvršni dokument Sendmail $1 ne postoji.
+
 delete_title=Izbriši poštu
 delete_rusure=Jeste li sigurni da želite izbrisati $1 odabrane poruke iz $2 ? Možda će potrajati neko vrijeme za veliku datoteku pošte. Dok se brisanje ne završi, ne smije se provoditi nikakva druga radnja.
 delete_rusure2=Jeste li sigurni da želite izbrisati ovu poruku sa $1 ? Možda će potrajati neko vrijeme za veliku datoteku pošte. Dok se brisanje ne završi, ne smije se provoditi nikakva druga radnja.
@@ -536,6 +579,7 @@ delete_emoveuser=Korisnik za premještanje pošte ne postoji
 delete_emovecannot=Ne smijete premještati poštu navedenom korisniku
 delete_emovenone=Nije odabrana pošta za premještanje
 delete_nobutton=Nijedan klik nijedan gumb
+
 search_title=Rezultati pretraživanja
 search_ecannot=Nije vam dopušteno pretraživanje e-pošte ovog korisnika
 search_ematch=Morate unijeti tekst za podudaranje.
@@ -549,6 +593,7 @@ search_results4=$1 poruke e-pošte koji odgovaraju vašoj potrazi ..
 search_local=U lokalnim mapama
 search_all=U svim mapama
 search_eboolean=Booleova pretraživanja koristeći i 'i' i 'ili' nisu podržana
+
 file_title=Uredi Sendmail datoteku
 file_desc=Pomoću tekstnog polja u nastavku ručno uredite Sendmail datoteku $1.
 file_undo=Poništi promjene
@@ -564,6 +609,7 @@ file_emode=Nepoznat način!
 file_err=Nije uspjelo uređivanje datoteke
 file_ealias=Nevažeći format za liniju datoteke aliasa : $1 
 file_etab=Nevažeći format za liniju datoteke karte : $1 
+
 acl_opts=Možete li urediti opcije slanja pošte?
 acl_ports=Mogu li uređivati mrežne portove?
 acl_cws=Mogu li uređivati lokalne domene?
@@ -630,6 +676,7 @@ acl_usersm=Korisnici se podudaraju
 acl_asame=Isto kao i korisničko ime
 acl_usersu=Sa UID-om u dometu
 acl_spam=Neželjene adrese koje ovaj korisnik može uređivati
+
 log_opts=Izmijenjene su opcije slanja pošte
 log_ports=Promijenite mrežne portove
 log_alias_create=Izrađen je pseudonim $1 
@@ -680,6 +727,7 @@ log_delete_domains=Izbrisani $1 preslikavanja domena
 log_delete_accesses=Izbrisani su unosi kontrole $1 neželjene pošte
 log_delete_generics=Izbrisane $1 odlazne adrese
 log_delete_mailers=Izbrisane rute $1 domene
+
 match_from=Od: šibice
 match_subject=Predmet: utakmice
 match_to=Za: utakmice
@@ -699,6 +747,7 @@ match_!status=Status se ne podudara
 match_!body=Tijelo se ne podudara
 match_!size=Veličina je manja od
 match_!headers=Zaglavlja se ne podudaraju
+
 features_title=Konfiguracija Sendmail M4
 features_desc=Na ovoj se stranici nalaze relevantni unosi iz konfiguracijske datoteke Sendmail M4 $1 iz koje je izgrađena stvarna konfiguracijska datoteka $2.
 features_type=Vrsta unosa
@@ -718,6 +767,7 @@ features_efeatures=Osnovni direktorij $2 Sendmail M4 nije pronađen u vašem sus
 features_econfig=Lokacije osnovnog direktorija Sendmail M4 i konfiguracijske datoteke M4 još nisu postavljene u vašoj konfiguraciji <a href='$1'>modula</a>. Ako ste poslali Sendmail iz izvora, oni bi trebali biti pod izvornom direktorijom izvora.
 features_move=Pomicati
 features_manual=Ručno uređivanje datoteke
+
 feature_add=Dodajte unos konfiguracije
 feature_edit=Uređivanje unosa konfiguracije
 feature_header=Pojedinosti o unosu konfiguracije M4
@@ -738,12 +788,15 @@ feature_emailer=Mailer $1 već postoji
 feature_eostype=Vrsta OS-a već je definirana kao $1 
 feature_manual=Uredi datoteku M4
 feature_mdesc=Stranica vam omogućuje ručno uređivanje konfiguracijske datoteke Sendmail M4 $1. Budite oprezni jer se na vašoj izmjeni neće provjeriti sintaksa.
+
 feat_access_db=Datoteka za kontrolu neželjene pošte
 feat_virtusertable=Mapiranje adresa
 feat_mailertable=Usmjeravanje domena
 feat_genericstable=Odlazne adrese
 feat_domaintable=Mapiranje domene
+
 mailer_local=Lokalna dostava Unix-a
+
 build_title=Obnova Sendmail konfiguracije
 build_em4=Naredba $1 potrebna za obnovu konfiguracijske datoteke Sendmail nije pronađena u vašem sustavu.
 build_ebuild=Konfiguracija nije uspjela : $1 
@@ -752,13 +805,16 @@ build_rusure2=Imajte na umu da ako ste unijeli promjene u Sendmail na stranici s
 build_ok=Da, zamijenite ga sada
 build_diff=Sljedeće će se izmjene izvršiti u vašoj konfiguracijskoj datoteci Sendmail ..
 build_nodiff=Vaša konfiguracijska datoteka za sendmail već je ažurirana.
+
 stop_err=Zaustavljanje sendmail nije uspjelo
 stop_ecannot=Ne smijete zaustaviti sendmail
 stop_epid=Čini se da se poštanska pošta ne pokreće
 restart_epids=Ne mogu se pronaći procesi sendmail
 restart_ekill=Nije uspio proces slanja poštanske pošte : $1 
+
 start_err=Nije uspjelo pokretanje sendmail-a
 start_ecannot=Nije vam dopušteno pokrenuti sendmail
+
 ports_title=Mrežni priključci
 ports_name=Naziv porta
 ports_addr=Slušajte na adresi

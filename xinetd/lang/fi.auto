@@ -25,6 +25,7 @@ index_estart=Komentoa käynnistää Xinetd $1 ei ole. Ehkä sitä ei ole asennet
 index_noport=Tuntematon
 index_enable=Ota valitut käyttöön
 index_disable=Poista valitut käytöstä
+
 serv_create=Luo Internet-palvelu
 serv_edit=Muokkaa Internet-palvelua
 serv_header1=Palveluverkkovaihtoehdot
@@ -78,19 +79,24 @@ serv_enice=Puuttuva tai virheellinen mukava taso
 serv_ecps0=Puuttuva tai virheellinen yhteyksien määrä sekunnissa
 serv_ecps1=Puuttuva tai virheellinen viive
 serv_etimes=Käyttöaikojen on oltava muodossa HH: MM-HH: MM
+
 sock_stream=virta
 sock_dgram=datagrammi
 sock_raw=Raaka
 sock_seqpacket=Peräkkäinen datagrammi
+
 proto_=oletusarvo
 proto_ip=IP (Internet Protocol)
 proto_tcp=TCP (Transmission Control Protocol)
 proto_udp=UDP (User Datagram Protocol)
+
 restart_err=Muutosten asettaminen epäonnistui
 restart_ekill=USR2-signaalin lähettäminen epäonnistui PID $1 : $2 
 restart_epid=Ei enää juokse
+
 start_err=Xinetd: n käynnistäminen epäonnistui
 start_estart=$1 epäonnistui : $2 
+
 defs_title=Oletusasetukset
 defs_header=Palveluiden oletusasetukset
 defs_log=Xinetd-kirjausmuoto
@@ -115,6 +121,7 @@ defs_err=Oletusasetusten tallentaminen epäonnistui
 defs_efile=Puuttuva tai virheellinen lokitiedostonimi
 defs_esoft=Puuttuva tai virheellinen pehmeä raja
 defs_ehard=Puuttuva tai virheellinen kova raja
+
 log_create_serv=Luotu $2 palvelu $1 
 log_modify_serv=Muokattu $2 palvelu $1 
 log_delete_serv=Poistettu $2 palvelu $1 
@@ -125,5 +132,6 @@ log_enable=Käytössä $1 palvelut
 log_disable=Vammaiset $1 palvelut
 log_enable_l=Aktivoidut palvelut $1 
 log_disable_l=Vammaiset palvelut $1 
+
 config_dirdef=Xinetd-asetustiedosto
 config_dirto=Uusi tiedosto hakemistossa

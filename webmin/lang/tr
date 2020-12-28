@@ -7,6 +7,7 @@ index_inetd=Webmin şu an <tt>inetd</tt> ile çalıştığından muhtemelen bu s
 index_apache=Çünkü Webmin şu an Apache altında çalışmaktadır, muhtemelen bu seçeneği aktif hale getirmek istemiyorsunuzdur.
 index_restart=Webmin'i Yeniden Başlat
 index_restartmsg=Bu butonu tıklayarak Webmin sunucusunu yeniden başlatabilirsiniz. Eğer Perl'i güncellediyseniz bu işlem gerekli olabilir.
+
 access_title=IP Erişim Kontrolü
 access_desc=Webmin Sunucusu bu formu kullanarak sadece belirtilen IP adreslerinden girilmesini sağlayabilir. Buraya bilgiler makine isimleri (gelecek.com.tr gibi) veya IP numarası/Alt ağ maskesi (212.45.76.93/255.255.255.0 gibi) şeklinde girilmiş olmalıdır. Eğer internetten bağlanmak isterseniz güvenli olması açısından sadece belirli IP'lerden girilmesini sağlayabilirsiniz. Aksi takdirde başka birisi sizin şifrenizi öğrendiğinde sisteminizin kontrolünü ele geçirecektir.
 access_header=Erişim kontrol seçenekleri
@@ -22,6 +23,7 @@ access_eip='$1' tam bir ağ ya da IP adresi değil
 access_ehost='$1'in IP adresinin bulunmasında hata oluştu
 access_eself=Mevcut IP adresinizden ($1) girişleri engellemek istermisiniz?
 access_always=Her istekte makine adları çözülsün
+
 bind_title=Port ve Adresler
 bind_desc2=Bu form ile Webmin'in çalışacağı portu değiştirebilir ya da Webmin'in tek bir IP adresi üzerinde çalışmasını sağlanabilirsiniz. Ayrıca birden fazla porta ya da değişik IP adreslerine gelen istekleri kabul edecek şekilde de yapılandırılabilir. Not - Portu ya da çalıştığı IP adresini değiştirdikten sonra web tarayıcınız tekrar giriş yapmanızı isteyebilir.
 bind_header=IP Adresi ve Port
@@ -43,6 +45,7 @@ bind_eport2='$1' geçerli bir port numarası değil
 bind_erestart=Webmin'in yeni adres ve port ayarları ile başlatılmasında hata oluştu : $1
 bind_elisten=UDP yayınlarının dinlenileceği port eksik ya da geçersiz
 bind_ehostname=Eksik ya da geçersiz web sunucusu makine adı
+
 log_title=Kayıt
 log_desc=Webmin, Web sunucusu kayıtlarının standart Apache kayıt dosyası şeklinde yazması için yapılandırılabilir. Kayıt aktif olduğunda, IP adresi ve makine adlarının kaydedilip kaydedilmeyeceğini ve kayıt dosyasının hangi sıklıkla silineceğini seçebilirsiniz. Aktif edildiğinde kayıtlar $1 dosyasına yazılacaktır.
 log_desc2=Kayıt tutma aktif hale getirildiğinde, $1 dosyasında Webmin kullanıcı işlemleri hakkında daha detaylı bilgi tutacaktır. Bu log ile Webmin İşlem Kaydı modülünde hangi kullanıcının tam olarak ne yaptığı görüntülenebilir ve analiz edilebilir.
@@ -61,6 +64,7 @@ log_ehours='$1' geçerli bir saat sayısı değildir
 log_ediff=Sisteminiz kayıt dosyası değişiklikleri için kullanılacak olan $1 komutunu içermiyor.
 log_perms=Kayıt dosyalarının izinleri
 log_eperms=Eksik ya da geçersiz sekizli izin (755 gibi)
+
 proxy_title=Proxy Sunucuları
 proxy_desc=Eğer Webmin'in çalıştığı makine bir tür güvenlik duvarının arkasında ise web ve FTP sitelerine erişebilmesi için proxy sunucusu ayarlarının yapılması gerekmektedir. <tt>Yazılım Paketleri</tt> gibi bazı modüller dosya ve programları indirebilmek için bu proxy'leri kullanacaktır.
 proxy_header=Proxy Sunucuları
@@ -75,6 +79,7 @@ proxy_ehttp2=HTTP proxy sunucusu adresi $1 gibi bir URL şeklinde girilmelidir
 proxy_eftp2=FTP proxy sunucusu adresi $1 gibi bir URL şeklinde girilmelidir
 proxy_bind=HTTP bağlantıları için kaynak IP adresi
 proxy_ebind=Eksik ya da geçersiz kaynak IP adresi
+
 ui_title=Kullanıcı Arayüzü
 ui_desc=Bu form bütün modüller için kullanıcı arayüzlerini değiştirmek için kullanılır. Renkleri girdiğinizde standart RGB renk sistemi olarak girmelisiniz. Girilen değerler 00 ve FF arası hex (onaltılı) değerleri olmalıdır.
 ui_header=Kullanıcı Arayüzü Seçenekleri
@@ -103,6 +108,7 @@ ui_hnm1=URL'den alınan makine adı
 ui_hnm2=URL'den alınan alan adı
 ui_hnm3=Diğer ..
 ui_feedbackconfig=Bütün kullanıcılara geribildirimlerde<br>yapılandırmayı göndermelerine izin verilsin ?
+
 mods_title=Webmin Modülleri
 mods_desc1=Kurulumdan sonra sağdaki form kullanılarak Webmin'e yeni modüller eklenebilir. Modüller standart olarak bir ya da daha fazla modülü içeren <tt>.wbm</tt> dosyaları olarak dağıtılmaktadır. Modüller ayrıca sisteminiz destekliyor ise RPM dosyalarından da kurulabilir.
 mods_install=Modül Kur
@@ -127,6 +133,7 @@ mods_cloneok=Modül Klonla
 mods_desc3=Mevcut modüller ve modüllerin klonları aşağıdaki form kullanılarak silinebilir. Eğer klonu olan bir modül silinirse, klonların da ayrıca silinmesi gerekmektedir. Eğer bir modüş silinirse tekrar kullanabilmek için yeniden kurulmalıdır. Bir modül kendisine bağımlı başka bir modül içeriyorsa silinemez.
 mods_delete=Modülleri Sil
 mods_deleteok=Seçilen Modülleri Sil
+
 install_err1=$1'den modül kurulmasında hata oluştu
 install_efile=Dosya mevcut değil
 install_err2=Yüklenen dosyadan kurulumda hata oluştu
@@ -157,10 +164,12 @@ install_cat=$1 kategorisi altında
 install_eneither=RPM bir webmin modülü ya da temasını içermiyor
 install_err4=Standart modülün kurulmasında hata oluştu
 install_emissing=Belirtilen modül bulunamadı
+
 clone_err=Modülün klonlanmasında hata oluştu
 clone_elink=Sembolik linkte hata oluştu : $1
 clone_ecopy=Yapılandırılmanın kopyalanmasında hata oluştu : $1
 clone_desc=$1'in klonu
+
 delete_err=Modüllerin silinmesinde hata oluştu
 delete_edep=$1 modülü silinemez. Çünkü $2 modülü bu modüle ihtiyaç duymaktadır.
 delete_desc1=$1 ($2'nin kopyası)
@@ -171,6 +180,7 @@ delete_rusure2=$2 temasını silmek istediğinizden emin misiniz? $1 kb dosya ka
 delete_rusure3=$2 modül klonlarını silmek istediğinizden emin misiniz?
 delete_acls=Kullanıcıların modül listelerinden silinerek erişim kontrol ayarları düzenlensin ?
 delete_enone=Modül seçilmedi
+
 os_title=İşletim Sistemi
 os_desc2=Webmin'in çalıştırdığı programların yollarını ve paylaşılmış kütüphane yollarını değiştirebilirsiniz.
 os_header=Makine İşletim Sistemi
@@ -180,6 +190,7 @@ os_ld_path=Kütüphane arama yolu (lib)
 os_envs=Ek çevresel değişkenler
 os_name=Değişken adı
 os_value=Değeri
+
 lang_title=Dil
 lang_title2=Webmin Dili
 lang_lang=Görüntüleme dili
@@ -191,6 +202,7 @@ lang_chardef=Dil tarafından belirlenen
 lang_charover=Karakter setini kullan
 lang_err=Dilin kaydedilmesinde hata oluştu
 lang_echarset=Eksik ya da geçersiz bakılan karakter seti
+
 ssl_title=SSL Şifrelemesi
 ssl_essl=Net::SSLeay perl modülü sisteminizde kurulu gibi görünmüyor. OpenSSL kütüphanesinşi ve Net::SSLeay modülü kurmak için Webmin'in web sitesindeki <a href='$1'>bu talimatları</a> takip ediniz.
 ssl_cpan=Alternatif olarak, gerekli Net::SSLeay Perl modülünü <a href='$1'>indirip kurmak</a> için Webmin'i kullanabilirsin.
@@ -221,6 +233,7 @@ ssl_custom=Özel boyut
 ssl_bits=bit
 ssl_eextraca=Ek sertifika dosyası '$1' mevcut değil
 ssl_days=Geçerli olacağı gün
+
 newkey_err=SSL anahtarının oluşturulmasında hata oluştu
 newkey_ecn=Eksik ya da geçersiz sunucu adı
 newkey_efile=Anahtar dosyası adı girilmemiş
@@ -231,6 +244,7 @@ newkey_ecat=Yeni anahtar dosyasına yazılırken hata oluştu :
 newkey_ok=Aşağıdaki SSL anahtarı başarı ile oluşturuldu.
 newkey_esize=Eksik ya da geçersiz anahtar boyutu
 newkey_edays=Geçerli olacağı gün girilmemiş ya da yanlış girilmiş
+
 startpage_title=Indeks Sayfası Seçenekleri
 startpage_intro2=Bu sayfa ana Webmin menüsünün görünüşünü kontrol etmek için kullanılır. Bazı seçenekler sadece öntanımlı tema kullanıldığında aktif olabilir.
 startpage_tabs=Modüller sınıflandırılsın mı?
@@ -242,6 +256,7 @@ startpage_deftab=Öntanımlı kategori
 startpage_nohost=Sürüm, makine adı ve işletim sistemi gösterilsin mi?
 startpage_gotonone=&lt;Hiçbiri&gt;
 startpage_gotomodule=Girişten sonra her zaman bu modüle git
+
 upgrade_title=Webmin Güncelleştir
 upgrade_desc=Bu sayfa varolan Webmin'i daha yeni bir sürümüne güncellemek için kullanılır. Yerel dosyadan, yüklenebilecek bir dosyadan veya <a href="www.webmin.com">www.webmin.com</a> adresinden en son sürümünü kurabilirsiniz. Eğer elle yapacaksanız bütün yapılandırma ayarları ve üçüncü parti modüller saklanacaktır.
 upgrade_descrpm=Bu form ile webmin'in tamamını RPM'nin güncelleme seçeneği ile yeni sürümüne güncelleyebilirsiniz. Sunucudaki bir dosyadan, yüklenen bir dosyadan ya da <a href=http://www.webmin.com/>www.webmin.com</a> adresindeki son sürümü ile güncelleme yapabilirsiniz. Elle yapılan bir güncelleme gibi bütün yapılandırmanız ve üçüncü parti modülleriniz saklanacaktır.
@@ -287,10 +302,12 @@ upgrade_edownsig=İmzanın indirilmesinde hata oluştu : $1
 upgrade_everify4=İmzanın kontrol edilmesinde hata oluştu : $1
 upgrade_sigok=Paket imzası başarı ile kontrol edildi.
 upgrade_only=Silinen modülleri yeniden kurma ?
+
 newmod_desc=Webmin güncellendiğinde yeni sürümle gelen yeni modül için bir ya da daha çok kullanıcıya erişim izini verilecektir. Bu form ile yeni modüllere erişebilecek kullanıcıları belirleyebilirsiniz. Bu ayarlar, Webmin komut satırından ya da aşağıdaki form ile güncellendiğinde uygulanacaktır.
 newmod_header=Yeni modül izinleri
 newmod_def=Öntanımlı davranış - <tt>root</tt> ya da <tt>admin</tt> kullanıcısı erişebilsin
 newmod_users=Yeni modüllere erişebilenler :
+
 update_desc1=Bu form ile modüllerin hatalarını ya da güvenlik açıklarını <a href=http://www.webmin.com/updates.html>Webmin Güncellemeleri</a> sayfasından ya da başka bir kaynaktan güncelleyebilirsiniz. Mevcut modüllerin güncellemelerinin olup olmadığı araştırılacak ve seçiminize göre güncel modülleri otomatik olarak indirip kurulacaktır.
 update_header1=Modülleri şimdi güncelle
 update_header2=Modülleri belirli zamanlanlarda güncelle
@@ -308,6 +325,7 @@ update_sched2=Modülleri her $3 günde bir $1:$2 'de güncelle
 update_none=Bu sürüm için bir güncelleme yok
 update_failed=Modülün kurulmasında hata oluştu : $1
 update_desc2=Bu form ile modüllerin hatalarının ya da güvenlik açıklarının <a href=http://www.webmin.com/updates.html>Webmin Güncellemeleri</a> sayfasından ya da başka bir kaynaktan bir zaman çizelgesine göre otomatik olarak güncellenmesi sağlanabilir. Bu servis oldukça kullanışlıdır, fakat güncelleme sunucusu saldırganlar tarafından ele geçirilirse sisteminizin de kontrolü ele geçirilebileceğinden oldukça dikkatli olmalıdır.
+
 ca_title=Sertifika Onaylama
 ca_old=Mevcut Sertifika
 ca_header1=Yeni bir CA sertifikası oluştur
@@ -332,6 +350,7 @@ ca_eminiserv=SSL istemci sertifikaları sadece miniserv altında desteklenmekted
 ca_eversion=Sisteminizde kurulu olan Perl Net::SSLeay modülünün bu sürümü SSL istemci sertifikalarını desteklememektedir.
 ca_essleay=SSL yönetim komutu $1 sisteminizde bulunmamaktadır. 'Webmin Kullanıcıları' modül yapılandırmasını değiştirmeniz gerekebilir.
 ca_essl=SSL sertifikasyonu sadece SSL modunda çalışan web sunucusu olduğu zaman kurulabilir.
+
 session_title=Onaylama
 session_desc1=Aktif hale getirildiğinde, Webmin, aynı kullanıcı ile yapılan başarısız giriş denemeleri şifre kırma ataklarına karşı korunacaktır.
 session_header=Onaylama ve oturum seçenekleri
@@ -368,10 +387,12 @@ session_pmode1=Süresi geçmiş parolaya sahip kullanıcıları her zaman onayla
 session_pmode2=Süresi geçmiş parolaya sahip kullanıcılardan yeni bir tane girmesini iste
 session_md5off=Webmin parolaları için standart Unix <tt>crypt</tt> şifrelemesini kullan
 session_md5on=Webmin parolaları için MD% şifrelemesi kullan (uzun parolalara izin verir)
+
 assignment_title=Modülleri Sınıflandır
 assignment_header=Modül Kategorilendirme
 assignment_ok=Kategorileri Değiştir
 assignment_desc=Bu form ile Webmin ana sayfasında hangi modülün hangi kategori altında gösterileceğini yapılandırabilirsiniz.
+
 categories_title=Kategorileri Düzenle
 categories_header=Kategory ID ve Açıklama
 categories_desc=Bu form ile mevcut Webmin kategorilerini yeniden adlandırabilir veya yeni kategoriler oluşturabilirsiniz. Tablonun üst bölümü mevcut kategorilerin açıklamalarını değiştirmek için, alt bölüm ise yeni kategori ID ve açıklamaları eklemek içindir.
@@ -381,6 +402,7 @@ categories_edesc=$1 için eksik açıklama
 categories_ecat=Kategori ID $1 zaten kullanılıyor
 categories_code=ID
 categories_name=Gösterilen açıklama
+
 log_access=IP erişim kontrolü değiştirildi
 log_bind=Port ve adres değiştirildi
 log_log=Kayıt seçenekleri değiştirildi
@@ -405,6 +427,7 @@ log_categories=Kategori isimleri değiştirildi
 log_theme=Tema $1 olarak değiştirildi
 log_theme_def=Tema öntanımlı olarak değiştirildi
 log_referers=Güvenilir referanslar değiştirildi
+
 themes_title=Webmin Temaları
 themes_desc=Tema, Webmin'in simgeleri, renkleri, arkaplan renklerini ve sayfaların biçimlerini  de içeren kullanıcı arayüzünü kontrol etmek için kullanılır. Aşağıdan kurulu temalardan birini seçerek kullanabilirsiniz.
 themes_sel=Mevcut tema :
@@ -412,6 +435,7 @@ themes_default=Eski Webmin teması
 themes_change=Değiştir
 themes_installdesc=Aşağıdaki form ile sisteminize yeni bir Webmin teması kurabilirsiniz. Temalar genellikle <tt>.wbt</tt> dosyaları şeklindedir ama işletim sistemi destekliyor ise RPM dosyaları ile de kurulabilir.
 themes_installok=Tema Kur
+
 themes_err1=$1 'den temanın kurulmasında hata oluştu
 themes_efile=Dosya mevcut değil
 themes_err2=Yüklenilen temanın kurulmasında hata oluştu
@@ -433,11 +457,13 @@ themes_ok=Tema başarı ile değiştirildi .. Webmin ana sayfasına yönlendiril
 themes_delete=Bu form ile sisteminizdeki kullanılmayan temalardan birini silebilirsiniz.
 themes_delok=Silinecek tema :
 themes_return=tema listesi
+
 referers_title=Güvenilir Referanslar
 referers_desc=Bu sayfa ile Webmin'in referans kontrol desteğini yapılandırabilirsiniz. Referans kontrolü ile diğer web sitelerinden Webmin'e sisteme tehlikeye atacak işler yaptırmak için verilmiş linkleri engelleyebilirsiniz. Ancak Webmin'e kendi sitenizden verdiğiniz linkler varsa bu siteleri aşağıdaki listeye ekleyebilirsiniz.
 referers_list=Güvenilir web siteleri
 referers_none=Bilinmeyen referanslardan gelen bağlantılara güven
 referers_referer=Referans kontrolü aktif mi?
+
 update_err=Modüllerin güncellenmesinde hata oluştu
 update_eurl=Eksik ya da geçersiz güncelleme URL'si
 update_title=Modülleri Güncelle
@@ -456,6 +482,7 @@ update_rv=Webmin modüllerinin güncellemeleri $1 'den kontrol ediliyor
 update_eemail=Eğer sadece nelerin güncellendiğini görmek istiyorsanız bir e-posta adresi girmelisiniz.
 update_subject=Webmin modülleri güncelleme raporu
 update_version=Webmin'in yeni sürümü (sürüm $1) indirmek için hazır durumda. Yeni güncellemer sadece son sürüm için yayınlanacaktır.
+
 anon_title=Anonymous Modül Erişimi
 anon_desc=Bu sayfa ile seçili Webmin modüllerine istemcilerin giriş yapmadan erişimi sağlanabilir. Gireceğiniz her modül yolu ( <tt>/custom</tt> ya da <tt>/passwd</tt> gibi) için aynı zamanda erişim kontrol haklarının alınacağı kullanıcının adı da girilmelidir.
 anon_desc2=Anonymous erişimi açarken ÇOK DİKKATLİ olmalısınız. Yanlış modüllere ya da yanlış IP adreslerine erişim izni verirseniz sisteminize saldırıları açık hale getirebilirsiniz.
@@ -464,14 +491,18 @@ anon_user=Webmin kullanıcısı
 anon_err=Anonymous erişimin kaydedilmesinde hata oluştu
 anon_eurl='$1' geçerli bir URL yolu değil
 anon_euser='$1' URL yolu için eksik ya da geçersiz Webmin kullanıcısı
+
 enogpg=GnuPG kurulu değil
+
 standard_failed=Modül listesinin indirilmesinde hata oluştu : $1
 standard_header=Standart Webmin modülleri
 standard_warn=Uyarı - Webmin'in son sürümü olan $1 'i kullanmıyorsunuz, yani bu modüllerin kurulumunda muhtemelen hata oluşacaktır.
 standard_eurl=Geçersiz standart modül URL'si
+
 third_failed=Modül listesinin indirilmesinde hata oluştu : $1
 third_header=Üçüncü Parti Webmin modülleri
 third_eurl=Geçersiz üçüncü parti modül URL'si
+
 lock_title=Dosya Kilitleme
 lock_desc=Öntanımlı olarak, Webmin değiştirilen herhangi bir dosyayı aynı anda yapılabilecek diğer değişikliklerin oluşturabileceği sorunlardan korumak için kilitlemektedir. Kilitleme özelliği sorun oluşturuyorsa bu sayfa ile parça parça ya da tamamen kapabilirsiniz.
 lock_header=Dosya kilitleme seçenekleri

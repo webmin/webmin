@@ -44,6 +44,7 @@ index_sadd=Crea un nuovo servizio systemd.
 index_always=Sempre
 index_ladd=Crea un nuovo agente di avvio.
 index_lname=Nome dell'agente
+
 edit_egone=L'azione non esiste più
 edit_startcmd=Comando di avvio
 edit_stopcmd=Comando di spegnimento
@@ -56,17 +57,21 @@ edit_reloadnow=Ricarica ora
 edit_statusnow=Mostra stato
 edit_status=Iniziato adesso?
 edit_unknown=Sconosciuto
+
 save_ename=Nome azione mancante o non valido
 save_eclash=Un'azione con lo stesso nome esiste già
 save_escript=Nessuno script di azioni inserito
 save_estartcmd=Comando di avvio mancante
+
 ss_restart=Riavvia azione
 ss_reload=Ricarica azione
 ss_status=Stato dell'azione
 ss_doingstart=Avvio dell'azione $1 ..
 ss_doingstop=Azione di arresto $1 ..
 ss_doingstatus=Stato dell'azione richiesto $1 ..
+
 acl_runonly=Corri solo
+
 log_rename=Azione rinominata da $1 a $2 
 log_modify=Azione modificata $1 
 log_create=Azione creata $1 
@@ -87,6 +92,7 @@ log_massrestart=Azioni riavviate $1
 log_massenable=Azioni abilitate $1 
 log_massdisable=Azioni per disabili $1 
 log_telinit=Passato al runlevel $1 
+
 edit_hostconfig_startup=Lo script $1 viene eseguito all'avvio del sistema se questa azione è attiva. Puoi modificarlo qui sotto
 edit_hostconfig_plist=Il file $1 imposta alcuni parametri rispetto allo script di avvio. Puoi modificarlo qui sotto
 edit_hostconfig_new=Crea nuova azione
@@ -98,6 +104,7 @@ edit_hostconfig_array=I campi $1, $2 e $3 sono campi di array e possono contener
 edit_hostconfig_further=Dopo aver creato la nuova azione di avvio, verrai inoltrato a una pagina in cui puoi modificare lo script di avvio e l'elenco dei parametri, se necessario.
 edit_hostconfig_hostconfig=Il file $1 controlla i servizi e i demoni di sistema che vengono avviati all'avvio del sistema. Puoi modificarlo qui sotto
 edit_hostconfig_title=Modifica Hostconfig
+
 mass_enone=Nessuna azione selezionata
 mass_enone2=Nessun servizio selezionato
 mass_start=Azioni iniziali
@@ -118,9 +125,11 @@ mass_udisable=Disabilitazione del servizio $1 all'avvio.
 mass_ustarting=Avvio del servizio $1 ..
 mass_ustopping=Arresto del servizio $1 ..
 mass_urestarting=Riavvio del servizio $1 ..
+
 change_err=Non ti è permesso cambiare i runlevel
 change_title=Cambia Runlevel
 change_cmd=Passa al runlevel $1 con il comando $2. Questa operazione potrebbe richiedere del tempo e Webmin potrebbe non essere più disponibile dopo il passaggio.
+
 mode_init=SysV init
 mode_osx=Mac OS
 mode_local=Script di avvio singolo
@@ -129,6 +138,7 @@ mode_rc=Script RC di FreeBSD
 mode_upstart=parvenu
 mode_systemd=systemd
 mode_launchd=launchd
+
 upstart_title1=Crea servizio di avvio
 upstart_title2=Modifica servizio di avvio
 upstart_egone=Il servizio non esiste più!
@@ -153,6 +163,7 @@ upstart_eserver=Nessun comando del server inserito
 upstart_eserver2=Il comando server non esiste
 upstart_eserver3=È possibile immettere un solo comando server
 upstart_return=servizio di avviamento
+
 systemd_title1=Crea servizio Systemd
 systemd_title2=Modifica servizio Systemd
 systemd_egone=Il servizio non esiste più!
@@ -176,6 +187,7 @@ systemd_edesc=Descrizione del servizio mancante
 systemd_return=servizio di sistema
 systemd_econf=Nessuna configurazione di sistema inserita
 systemd_estart=Comandi mancanti da eseguire all'avvio
+
 launchd_title1=Crea Launchd Agent
 launchd_title2=Modifica Launchd Agent
 launchd_egone=L'agente non esiste più!
@@ -196,4 +208,5 @@ launchd_eclash=Un agente con lo stesso nome esiste già
 launchd_return=agente di avvio
 launchd_econf=Nessuna configurazione di avvio inserita
 launchd_estart=Comando del server mancante
+
 syslog_journalctl=Registri di SystemD

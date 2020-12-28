@@ -32,6 +32,7 @@ index_man=تحرير التكوين يدويًا
 index_mandesc=قم بتحرير ملف التكوين الأساسي لـ Procmail مباشرةً لإنشاء القواعد والمتغيرات والكتل الخاصة بك.
 index_ecmd=لم يتم العثور على برنامج Procmail $1 على نظامك. إما أنه غير مثبت أو أن <a href='$2'>تكوين الوحدة النمطية</a> غير صحيح.
 index_delete=حذف الإجراءات المحددة
+
 edit_title2=تحرير الإجراء
 edit_title1=إنشاء عمل
 edit_header1=تفاصيل إجراءات التسليم
@@ -67,6 +68,7 @@ edit_none=لا يوجد
 edit_lock=ملف محدد
 edit_ctype=نوع الشرط
 edit_cvalue=التعبير العادي أو الأمر
+
 save_err=فشل في حفظ الإجراء
 save_eaction_0=ملف مفقود للإلحاق به
 save_eaction_1=مجلد MH مفقود للكتابة إليه
@@ -79,6 +81,7 @@ save_elockfile=اسم ملف القفل مفقود
 save_esize=حجم البريد مفقود أو غير صالح للشرط$1
 save_ere=تعبير عادي مفقود للشرط$1
 save_eshell=أمر مفقود للشرط$1
+
 env_title1=إنشاء متغير
 env_title2=تحرير متغير
 env_header=متغير بيئة Procmail
@@ -86,15 +89,19 @@ env_name=اسم المتغير
 env_value=القيمة
 env_err=فشل في حفظ المتغير
 env_ename=اسم متغير مفقود أو غير صالح
+
 inc_title1=إضافة ملف تضمين
 inc_title2=تحرير تضمين ملف
 inc_header=ملف قواعد procmail المضمنة
 inc_inc=ملف مدرج
 inc_einc=لم يتم إدخال ملف التضمين
+
 config_eline=سطر غير معروف$1 في $2 : $3 
+
 manual_title=تحرير التكوين
 manual_desc=يمكن استخدام هذه الصفحة لتحرير ملف تكوين Procmail يدويًا$1. كن حذرا ، حيث لن يتم التحقق من بناء الجملة.
 manual_edata=لم يتم توفير البيانات من قبل المتصفح الخاص بك!
+
 log_create_rec=وصفة تم إنشاؤها إلى$1
 log_delete_rec=وصفة محذوفة إلى$1
 log_modify_rec=وصفة معدلة إلى$1
@@ -114,7 +121,9 @@ log_delete_inc=يتضمن الملف المحذوف$1
 log_manual=التكوين الذي تم تحريره يدويًا
 log_up=تم نقل إدخال لأعلى
 log_down=تم نقل الإدخال لأسفل
+
 delete_err=فشل في حذف الإجراءات
 delete_enone=لم يتم تحديد شيء
+
 check_epostfix=Procmail غير ممكّن في تكوين Postfix. يجب أن يتضمن ملف التكوين <tt>$2</tt> خيار <tt>$1</tt> على <tt>$3</tt>.
 check_esendmail=لم يتم إعداد Sendmail لاستخدام Procmail للتسليم المحلي. يمكن تكوين هذا في الوحدة النمطية <a href='$1'>Sendmail Mail Server</a> في Webmin.

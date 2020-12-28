@@ -27,6 +27,7 @@ index_ok=Hledat
 index_searchres=Úlohy Cronu vyhovující $1 ..
 index_reset=Resetovat hledání.
 index_econfigcheck=Úlohy Cronu nelze na Vašem systému spravovat, dokud nebude konfigurace modulu v pořádku: $1
+
 edit_title=Editovat úlohu Cronu
 create_title=Vytvořit úlohu Cronu
 edit_ecannot=Nemáte oprávnění editovat úlohy Cronu pro tohoto uživatele
@@ -64,6 +65,7 @@ lcedit_special_weekly=týdně (v neděli)
 lcedit_special_monthly=měsíčně (vždy prvního)
 lcedit_special_yearly=ročně (vždy prvního ledna)
 lcedit_special_reboot=Když systém startuje
+
 save_err=Chyba při ukládání úlohy
 save_ecmd=Nezadal jste příkaz ke spouštění
 save_euser=Musíte vybrat uživatele
@@ -72,6 +74,7 @@ save_eallow=Uživatel '$1' nemá povolen přístup ke cronu
 save_ecannot=Nemáte oprávnění vytvořit úlohu Cronu pro '$1'
 save_enone=Nevybral jste žádné $1 ke spuštění
 save_ecannot2=Nemáte oprávnění vytvářet úlohy Cronu
+
 allow_title=Nastavení přístupu ke Cronu
 allow_desc=Tento formulář umožňuje nastavit který uživatel může vytvářet a spouštět úlohy Cronu
 allow_ecannot=Nemůžete nastavit uživatelský přístup k úlohám Cronu
@@ -80,6 +83,7 @@ allow_all2=Zakázat všechny uživatele mimo roota
 allow_all3=Povolit všechny uživatele
 allow_allow=Povolit pouze vybrané uživatele
 allow_deny=Zakázat pouze vybrané uživatele
+
 env_title1=Upravit proměnnou prostředí
 env_title2=Vytvořit proměnnou prostředí
 env_name=Jméno proměnné
@@ -95,11 +99,13 @@ env_where2=Přesunout proměnnou prostředí
 env_top=Před všemi úlohami Cronu uživatele
 env_bot=Po všech úlohách Cronu
 env_leave=Momentální pozice
+
 exec_title=Spustit úlohu Cronu
 exec_ecannot=Nemáte oprávnění spouštět úlohu Cronu tohoto uživatele
 exec_cmd=Výstup příkazu $1 ..
 exec_cmdbg=Běžící příkaz $1 jako proces v pozadí.
 exec_none=Nebyl generován žádný výstup
+
 acl_users=Může editovat úlohy Cronu pro
 acl_all=Všechny uživatele
 acl_this=Aktuálního webmin uživatele
@@ -115,6 +121,7 @@ acl_move=Může přesunout úlohy Cronu?
 acl_kill=Může přerušit úlohy Cronu?
 acl_hourly=Omezit úlohy na nejméně hodinový interval?
 acl_hourlydef=Převzít konfiguraci modulu
+
 log_modify=Modifikována úloha Cronu pro $1
 log_modify_l=Modifikována úloha Cronu "$2" pro $1
 log_create=Vytvořena úloha Cronu pro $1
@@ -132,21 +139,26 @@ log_move=Přesunuta úloha Cronu pro $1
 log_crons_delete=Smazáno $1 úloh Cronu
 log_crons_disable=Vypnuto $1 úloh Cronu
 log_crons_enable=Zapnuto $1 úloh Cronu
+
 ecopy=V nové konfiguraci Cronu byla detekována chyba : $1 $2
+
 when_min=každou minutu
 when_hour=každou hodinu v $1 po hodině
 when_day=každý den v $2:$1
 when_month=dne $3 každý měsíc v $2:$1
 when_weekday=vždy $3 v $2:$1
 when_cron=v čase úlohy $1
+
 ucwhen_min=Každou minutu
 ucwhen_hour=Každou hodinu v $1 po hodině
 ucwhen_day=Každý den v $2:$1
 ucwhen_month=Dne $3 každý měsíc v $2:$1
 ucwhen_weekday=Vždy $3 v $2:$1
 ucwhen_cron=V čase úlohy $1
+
 move_err=Chyba při přesunu úlohy Cronu
 move_etype=Tato úloha nemůže být přesunut
+
 kill_err=Chyba při přerušení úlohy Cronu
 kill_ecannot=Nemáte oprávnění přerušit tuto úlohu
 kill_egone=Již neběží
@@ -155,10 +167,12 @@ kill_title=Přerušit úlohu Cronu
 kill_rusure=Určitě chcete přerušit proces $1 s PID $2?
 kill_rusure2=Určitě chcete přerušit proces $1 s PID $2 a všechny jeho pod-procesy?
 kill_ok=Ano, přerušit
+
 range_all=Spustit ve kterýkoliv den
 range_start=Běžet pouze od $1
 range_end=do $1
 range_estart=Chybějící nebo neplatný počáteční den v rozsahu spuštění
 range_eend=Chybějící nebo neplatný koncový den v rozsahu spuštění
+
 delete_err=Chyba při mazání úloh Cronu
 delete_enone=Nic není vybráno

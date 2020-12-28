@@ -23,6 +23,7 @@ index_econf=Xinetd konfiguracijska datoteka $1 ne postoji. Možda nije instalira
 index_noport=Nepoznato
 index_enable=Uključi označene
 index_disable=Isključi označene
+
 serv_create=Kreiraj Internet Servis
 serv_edit=Izmjeni Internet Servise
 serv_header1=Opcije service mreže
@@ -76,19 +77,24 @@ serv_enice=Nepostojeć ili pogrešan nice level
 serv_ecps0=Nepostojeci ili pogrešan broj spajanja u sekundi
 serv_ecps1=Nepostojeća ili pogrešna pauza
 serv_etimes=Vrijeme pristupa mora biti u formatu HH:MM-HH:MM
+
 sock_stream=Stream
 sock_dgram=Datagram
 sock_raw=Raw
 sock_seqpacket=Sequential datagram
+
 proto_=Uobičajene postavke
 proto_ip=IP(Internet Protocol)
 proto_tcp=TCP(Transmission Control Protocol)
 proto_udp=UDP(User Datagram Protocol)
+
 restart_err=Neuspješna promjena
 restart_ekill=Neuspješno poslan USR2 signal na PID $1 : $2
 restart_epid=Ne izvršava se
+
 start_err=Neuspješan start Xinetd
 start_estart=$1 mfailed : $2
+
 defs_title=Uobičajene postavke
 defs_header=Uobičajene opcije za servise
 defs_log=Xinetd log mod
@@ -113,6 +119,7 @@ defs_err=Neuspješno snimanje uobičajenih postavki
 defs_efile=Nepostojeća ili neispravna log datoteka
 defs_esoft=Nepostojeći ili neispravan mekani limit (soft limit)
 defs_ehard=Nepostojeći ili neispravan tvrdi limit (hard limit)
+
 log_create_serv=Kreirane $2 servis $1
 log_modify_serv=Izmjenjen $2 servis $1
 log_delete_serv=Izbrisan $2 servis $1
@@ -123,5 +130,6 @@ log_enable=Ukljucen $1 servis
 log_disable=Isključen $1 servis
 log_enable_l=Uključen servis $1
 log_disable_l=Isključen servis $1
+
 config_dirdef=Xinetd konfiguracijska datoteka
 config_dirto=Nova datoteka u folderu

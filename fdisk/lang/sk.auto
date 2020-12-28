@@ -44,6 +44,7 @@ index_dscsi=SCSI zariadenie $1 radič $2
 index_draid=Úroveň RAID $1 
 index_dparts=priečky
 index_none2=V tomto systéme sa nenašli žiadne disky.
+
 bytes=bajtov
 megabytes=megabajtov
 extended=predĺžený
@@ -67,6 +68,7 @@ select_promise=Sľubovať disk RAID $1
 select_ppart=Sľubujte jednotku RAID $1 oddiel $2 
 select_nvme=Jednotka NVME SSD $1 
 select_nvmepart=Jednotka NVME SSD $1 $2 partition $3 
+
 edit_title=Upraviť oblasť
 create_title=Vytvorte oddiel
 edit_ecannot=Nemáte oprávnenie upravovať tento disk
@@ -110,6 +112,7 @@ edit_newmount2=Mount Partition
 edit_mountas=ako
 edit_mountmsg=Pripojte tento oddiel do nového adresára vo vašom systéme, aby ste ho mohli použiť na ukladanie súborov. V oddiele už musí byť vytvorený súborový systém.
 edit_mountmsg2=Pripojte tento oddiel ako virtuálnu pamäť vo vašom systéme, aby ste zvýšili množstvo dostupnej pamäte.
+
 mkfs_title=Nový súborový systém
 mkfs_ecannot=Na tomto disku nemôžete vytvárať nový súborový systém
 mkfs_desc1=Kliknutím na tlačidlo v dolnej časti tohto formulára sa v zariadení $2 vytvorí nový súborový systém $1. Všetky údaje v tomto oddiele sa natrvalo vymažú.
@@ -120,6 +123,7 @@ mkfs_err=Nepodarilo sa vytvoriť súborový systém
 mkfs_exec=Vykonáva sa príkaz $1 ..
 mkfs_failed=.. príkaz zlyhal!
 mkfs_ok=.. príkaz dokončený.
+
 fsck_title=Opravte súborový systém
 fsck_ecannot=Nemáte oprávnenie fsck tento disk
 fsck_desc1=Kliknutím na tlačidlo <tt>Opraviť súborový systém</tt> sa pokúsite opraviť poškodený súborový systém $1 na $2 a pripojiť ho na $3. Ak súborový systém nie je poškodený, nevykonajú sa žiadne zmeny.
@@ -132,6 +136,7 @@ fsck_err3=nájdené a opravené chyby - je potrebné reštartovať počítač
 fsck_err4=nájdené chyby, ale NIE JE opravené
 fsck_err16=chyba príkazového riadku
 fsck_unknown=neznámy návratový kód $1 
+
 tunefs_title=Vyladiť súborový systém
 tunefs_ecannot=Nemáte dovolené vyladiť tento systém súborov
 tunefs_desc=Tento formulár umožňuje upraviť rôzne parametre súborového systému $1 na $2 pre pripojenie na $3. Existujúce súbory v tomto súborovom systéme nebudú ovplyvnené.
@@ -153,10 +158,12 @@ tunefs_err=Nepodarilo sa vyladiť súborový systém
 tunefs_exec=Vykonáva sa príkaz $1 ..
 tunefs_failed=.. príkaz zlyhal!
 tunefs_ok=.. príkaz dokončený.
+
 reboot_title=Reštartovať
 reboot_msg=Teraz sa reštartuje ..
 reboot_ok=Reštartuj teraz
 reboot_why=Tabuľku oddielov ste zmenili na $1. Aby sa táto zmena prejavila správne, musíte systém reštartovať.
+
 save_err=Nepodarilo sa uložiť oddiel
 save_ecannot=Nemáte oprávnenie upravovať tento disk
 save_estart='$1' nie je platný štartovací valec
@@ -165,6 +172,7 @@ save_emin=Štartovací valec musí byť> = $1
 save_emax=Koncový valec musí byť <= $1 
 save_eminmax=Počiatočný valec musí byť menší ako koniec
 save_eoverlap=Zistilo sa prekrytie s oddielom $1 ($2 až $3)
+
 ext2_b=Veľkosť bloku
 ext2_f=Veľkosť fragmentu
 ext2_i=Bajty na jeden uzol
@@ -172,6 +180,7 @@ ext2_m=Vyhradené bloky
 ext2_g=Bloky v skupine
 ext2_c=Skontrolovať zlé bloky?
 ext3_j=Veľkosť súboru denníka
+
 msdos_ff=Počet FAT
 msdos_F=Veľkosť FAT
 msdos_F_other=Other ..
@@ -180,24 +189,32 @@ msdos_n=Názov zväzku
 msdos_r=Koreňové záznamy
 msdos_s=Veľkosť klastra
 msdos_c=Skontrolovať zlé bloky?
+
 minix_n=Dĺžka názvu súboru
 minix_i=Počet inódov
 minix_b=Počet blokov
 minix_c=Skontrolovať zlé bloky?
+
 reiserfs_force=Vynútiť vytvorenie súborového systému
 reiserfs_hash=Hašovacia funkcia
+
 xfs_force=Vynútiť vytvorenie súborového systému
 xfs_b=Veľkosť bloku
+
 jfs_s=Veľkosť denníka
 jfs_c=Skontrolovať zlé bloky?
+
 btrfs_l=Veľkosť listu
 btrfs_n=Veľkosť uzla
 btrfs_s=Veľkosť sektora
+
 fatx_none=Pre súborové systémy FATX nie sú k dispozícii žiadne možnosti.
+
 acl_disks=Disky, ktoré môže tento užívateľ rozdeliť a formátovať
 acl_dall=Všetky disky
 acl_dsel=Vybraný ..
 acl_view=Dokážu zobraziť neupraviteľné disky?
+
 hdparm_title=Upraviť parametre IDE
 hdparm_on=na
 hdparm_off=preč
@@ -226,9 +243,11 @@ hdparm_performing=živé
 hdparm_buf1=Vyrovnávacia pamäť:
 hdparm_buf2=pufrovaný:
 hdparm_speedres=Výsledky skúšky rýchlosti
+
 blink_title=Identifikujte disk
 blink_desc=Kontrolka aktivity jednotky sa teraz rozsvieti šesťdesiatkrát
 blink_back=Vráť sa
+
 log_modify=Upravené $1 
 log_create=Vytvorené $1 
 log_delete=Odstránené $1 
@@ -236,6 +255,7 @@ log_mkfs=Bol vytvorený $1 systém súborov na $2
 log_tunefs=Súborový systém $1 bol naladený na $2 
 log_fsck=Opravený súborový systém $1 na $2 
 log_hdparm=Upravené parametre IDE pre $1 
+
 fs_ext2=Starý Linux domorodec
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -246,9 +266,11 @@ fs_ext4=Nový systém Linux Native
 fs_xfs=SGI
 fs_jfs=IBM Journalling
 fs_btrfs=BTR
+
 delete_title=Odstrániť oblasť
 delete_rusure=Naozaj chcete odstrániť $1 ($2)? Dáta v tomto oddiele sa môžu navždy stratiť.
 delete_ok=Odstrániť teraz
+
 disk_title=Upravte diskové oddiely
 disk_egone=Disk už neexistuje!
 disk_no=číslo
@@ -269,11 +291,13 @@ disk_table=<b>Formát tabuľky oddielov:</b> $1
 disk_notable=<b>Formát tabuľky oddielov:</b> Žiadne
 disk_needtable=Žiadne oddiely nemožno vytvoriť bez tabuľky oddielov.
 disk_return=zoznam oddielov
+
 relabel_title=Vymazať oddiely
 relabel_warn=Naozaj chcete vymazať všetky oddiely na $1 ($2) opätovným zápisom označenia disku? Všetky existujúce údaje a súborové systémy sa stratia!
 relabel_parts=Existujúce oddiely
 relabel_noparts=Zatiaľ žiadne neboli vytvorené
 relabel_table=Formát tabuľky oddielov
 relabel_ok=Vymazať a znova označiť
+
 table_msdos=MS-DOS (štandardný formát oddielu)
 table_gpt=GPT (pre 2T alebo väčšie disky)

@@ -3,8 +3,10 @@ index_clink=Možná není nainstalována nebo je vaše <a href='$1'>konfigurace 
 index_return=index modulu
 index_atboot=Začít při spuštění?
 index_atbootdesc=Změňte tuto možnost, abyste určili, zda je klient iSCSI spuštěn v době spuštění nebo ne. To je nutné pro automatické připojení souborových systémů připojených ze serverů iSCSI.
+
 check_econfig=Ve vašem systému nebyl nalezen konfigurační soubor klienta iSCSI $1.
 check_eiscsiadm=Ve vašem systému nebyl nalezen program pro správu klientů iSCSI $1.
+
 auth_title=Možnosti ověřování
 auth_header=iSCSI autentizace klientů a serverů
 auth_name=Jméno iniciátora lokálního systému
@@ -29,6 +31,7 @@ auth_edpassword=Chybí heslo pro zjišťování serveru
 auth_edusername_in=Chybí uživatelské jméno zjišťování pro klienta
 auth_edpassword_in=Chybí heslo pro zjišťování pro klienta
 auth_egen=Nepodařilo se vygenerovat nové jméno!
+
 timeout_title=Časový limit iSCSI
 timeout_header=Možnosti časového limitu klienta iSCSI
 timeout_timeout=Je třeba počkat, než dojde k selhání příkazů SCSI
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Chybějící nebo nečíselný čas na vyčkávání n
 timeout_eabort_timeout=Chybějící nebo nečíselný čas na čekání na přerušení odezvy před selháním
 timeout_elu_reset_timeout=Chybějící nebo nečíselný čas na čekání na odpověď logické jednotky před selháním
 timeout_etgt_reset_timeout=Chybějící nebo nečíselný čas na čekání na cílovou odpověď, než dojde k chybě
+
 iscsi_title=Možnosti iSCSI
 iscsi_header=Další možnosti iSCSI
 iscsi_startup=Připojit relace v době spuštění?
@@ -62,6 +66,7 @@ iscsi_err=Uložení možností iSCSI se nezdařilo
 iscsi_eretry=Chybějící nebo nečíselný počet opakování pokusu o přihlášení
 iscsi_ecmds=Chybějící nebo nečíselné maximální příkazy zařazené do fronty na relaci
 iscsi_equeue=Chybějící nebo nečíselné maximální příkazy zařazené do fronty na zařízení
+
 ifaces_title=Rozhraní iSCSI
 ifaces_elist=Seznam rozhraní se nezdařil : $1 
 ifaces_name=Název rozhraní
@@ -78,11 +83,13 @@ ifaces_hwaddress=MAC adresa
 ifaces_ifacename=Zdrojové rozhraní
 ifaces_ipaddressdef=Automatický
 ifaces_notset=Automatický
+
 iadd_err=Nepodařilo se přidat rozhraní
 iadd_eclash=Rozhraní s názvem $1 již existuje
 iadd_eipaddress=Chybějící nebo neplatná zdrojová adresa IP
 iadd_ehwaddress=Chybí nebo je neplatná adresa MAC
 iadd_ename=Název rozhraní chybí nebo obsahuje neplatné znaky
+
 difaces_err=Rozhraní se nepodařilo odebrat
 difaces_enone=Nebyl vybrán žádný
 difaces_edelete=Odebrání rozhraní $1 se nezdařilo : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Odebrat rozhraní
 difaces_target=Cíl iSCSI
 difaces_ip=iSCSI server
 difaces_users=Některá připojení používající tato rozhraní jsou aktuálně aktivní a po odebrání rozhraní nebudou fungovat :
+
 conns_title=Připojení iSCSI
 conns_elist=Seznam připojení se nezdařil : $1 
 conns_ip=IP serveru
@@ -113,6 +121,7 @@ conns_return=seznam připojení
 conns_iface=Rozhraní iSCSI
 conns_ifacedef=Vyberte si automaticky
 conns_ifaceerr=Nepodařilo se načíst rozhraní : $1 
+
 add_title=Přidat připojení iSCSI
 add_err=Přidání připojení iSCSI se nezdařilo
 add_ehost=Chybějící nebo nerozlišitelný název hostitele
@@ -129,6 +138,7 @@ add_on=$1 na $2
 add_auth=Přihlášení k serveru
 add_auth1=Použijte výchozí metodu ověřování
 add_auth0=Přihlaste se jako $2 pomocí hesla $3 pomocí metody $1 
+
 dconns_err=Odpojení připojení se nezdařilo
 dconns_enone=Nebyl vybrán žádný
 dconns_edelete=Odstranění cíle $2 z hostitele $1 selhalo : $3 
@@ -142,6 +152,7 @@ dconns_use=Používá
 dconns_size=Velikost oddílu
 dconns_confirm=Odebrat připojení
 dconns_unused=Nepoužitý
+
 vconn_title=Připojení iSCSI
 vconn_egone=Vybrané připojení již neexistuje!
 vconn_header=Podrobnosti o připojení iSCSI
@@ -160,8 +171,10 @@ vconn_device3=Konstantní název zařízení
 vconn_delete=Odpojte připojení
 vconn_users=Aktuální uživatelé
 vconn_size=Velikost disku
+
 atboot_err=Nepodařilo se povolit v době spuštění
 atboot_einit=Neexistuje žádná spouštěcí akce s názvem $1 
+
 log_auth=Uložené možnosti ověřování
 log_timeout=Uložené možnosti časového limitu
 log_iscsi=Uložené možnosti iSCSI

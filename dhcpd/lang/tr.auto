@@ -41,23 +41,28 @@ index_match1=içeren
 index_match2=maçlar
 index_dhcpd=ISC DHCPd
 index_delete=Silme seçildi
+
 butt_vco=İstemci Seçeneklerini Görüntüle
 butt_leases=Kira Listesi
+
 esub_hosts=Doğrudan bu alt ağda barındırılıyor
 esub_groups=Doğrudan bu alt ağdaki gruplar
 esub_pools=Alt Ağ için Adres Havuzları
 esub_pool=Havuz $1 
 esub_poolnone=Tanımlanmış adres havuzu yok
+
 esub_pooladd=Bir adres havuzu ekleyin.
 esub_none=Yok
 esub_retshar=paylaşılan ağ
 esub_desc=Alt ağ açıklaması
 esub_fopeer=Yük Devretme Eşi
+
 esh_hosts=Doğrudan bu paylaşılan ağda barındırılıyor
 esh_groups=Doğrudan bu paylaşılan ağdaki gruplar
 esh_subn=Bu paylaşılan ağdaki alt ağlar
 esh_pools=Paylaşılan Ağ için Adres Havuzları
 esh_desc=Paylaşılan ağ açıklaması
+
 ehost_nojavascr=Tarayıcınız javascript'i desteklemiyor gibi görünüyor. Şimdi aşağıdaki listeden doğru konumu seçmelisiniz.
 ehost_assign=Ana bilgisayara atandı
 ehost_toplevel=Üst düzey
@@ -72,10 +77,12 @@ ehost_retgroup=grup
 ehost_retsubn=alt ağ
 ehost_retshar=paylaşılan ağ
 ehost_desc=Ana bilgisayar açıklaması
+
 egroup_assign=Grubuna atandı
 egroup_retsubn=alt ağ
 egroup_retshar=paylaşılan ağ
 egroup_desc=Grup açıklaması
+
 listl_network=$1 / $2 ağında
 listl_lfnotcont2=DHCPd kiralama dosyası <tt>$1</tt> şu anda etkin olan herhangi bir kiralama içermiyor.
 listl_all=Tüm aktif ve süresi dolmuş kiraları listele
@@ -91,19 +98,26 @@ listl_pc=Yüzde
 listl_err=Kiralamalar silinemedi
 listl_enone=Hiçbiri seçilmedi
 listl_refresh=Listeyi yenile
+
 restart_conftext=$2 içinde $1 çevresindeki satırlar :
+
 sgroup_invassign=yanlış bir bölüme atanmış grup
 sgroup_echanged=Yapılandırma dosyası içeriği değiştirildi. Tekrar deneyin.
+
 shost_invalidaddr='$1' geçersiz bir ana bilgisayar adı veya IP adresi içeriyor
 shost_invassign=yanlış bir bölüme atanmış ana bilgisayar
+
 sopt_edname='$1' geçerli bir seçenek adı değil
 sopt_ednum='$1' geçerli bir seçenek numarası değil
 sopt_edtype='$1' geçerli bir seçenek türü değil
 sopt_ecval='$1' özel seçeneği için eksik değer
 sopt_ecip='$1' özel seçeneği için değer bir IP adresi olmalıdır
+
 sshared_nosubnet=Paylaşılan '$1' ağı alt ağ içermiyor.
+
 ssub_nosubnet=Paylaşılan '$1' ağı alt ağ içermiyor.
 ssub_invalidfopeer=geçerli bir yük devretme eşi değil
+
 plib_invaliddom=$1 geçerli bir alan adı değil
 plib_toffset=Zaman ofseti
 plib_serverid=DHCP sunucusu tanımlayıcısı
@@ -124,6 +138,7 @@ plib_eexpr=DHCP yapılandırmasının bu bölümü, Webmin tarafından güvenli 
 plib_auth_subnet=Sunucu bu alt ağ için yetkili mi?
 plib_auth_shared-network=Sunucu bu paylaşılan ağ için yetkili mi?
 plib_auth_global=Sunucu tüm alt ağlar için yetkili mi?
+
 eopt_returnshsub=paylaşılan ağ
 eopt_returngroup=ev sahibi grup
 eopt_domsearch=Aranacak DNS alanları
@@ -140,10 +155,12 @@ eopt_slpa=SLP dizin aracısı IP'leri
 eopt_slpaips=Sadece bu IP'ler mi?
 eopt_slps=SLP hizmet kapsamı
 eopt_slpsonly=Sadece bu kapsam?
+
 log_stop=DHCP sunucusu durduruldu
 log_delete_lease=$1 için kira silindi
 log_delete_subnets=$1 alt ağ ve paylaşılan ağ silindi
 log_delete_hosts=$1 ana bilgisayar ve ana bilgisayar grubu silindi
+
 keys_edit=TSIG anahtarını düzenle
 keys_create=Oluşturulan TSIG anahtarları
 keys_title=DNS Anahtarları
@@ -154,12 +171,14 @@ keys_ecannot=DNS anahtarlarını düzenlemenize izin verilmiyor
 keys_err=DNS anahtarları kaydedilemedi
 keys_ekey='$1' geçerli bir anahtar kimliği değil
 keys_esecret=$1 anahtarı için eksik veya geçersiz base-64 kodlu sır
+
 pool_edit=Adres Havuzunu Düzenle
 pool_create=Oluşturulan Adres Havuzu
 pool_header=Adres havuzu seçenekleri
 pool_allow=İzin verilecek müşteriler
 pool_deny=Reddedilecek müşteriler
 pool_return=alt ağ
+
 cdel_header=Uyarı
 cdel_shared1=paylaşılan ağ
 cdel_shared2=paylaşılan ağ
@@ -177,6 +196,7 @@ cdel_txt=$1 '$2' silindiğinde içeriği de silinecek:
 cdel_confirm=Bu $1 'i gerçekten silmek istiyor musunuz?
 cdel_eunknown=Bilinmeyen hata
 cdel_return=ana bilgisayar ve ağ listesi
+
 eacl_aviol=Erişim kontrolü ihlali
 eacl_np=İçin izniniz yok
 eacl_pdh=ana bilgisayarı sil
@@ -202,6 +222,7 @@ eacl_pdl=kiraları sil
 eacl_psl=kiraları görüntüle
 eacl_pglob=global seçenekleri düzenle
 eacl_papply=bu hizmeti yeniden başlat
+
 acl_apply=Değişiklikler uygulayabilir mi?
 acl_r_leases=Kiraları görüntüleyebilir mi?
 acl_w_leases=Kiralamalar kaldırılabilir mi?
@@ -231,9 +252,11 @@ acl_err=EKL listesi kaydedilirken hata oluştu
 acl_ernow=Bazı nesne türleri için genel ACL'lerde yazma erişimini etkinleştirmek istiyorsanız, bu nesne türü için okuma erişimini de etkinleştirmeniz gerekir.
 acl_normal=normal
 acl_paranoic=paranoya
+
 iface_title=Ağ Arayüzü
 iface_desc=DHCP sunucusu yalnızca aşağıda seçilen arabirimlerden birine bağlı ağlara IP adresleri atayabilir. Tanımlanan tüm alt ağlar için ağ arabirimi dahil edilmelidir. Hiçbiri seçilmezse, DHCP sunucusu otomatik olarak bir tane bulmaya çalışır.
 iface_listen=Arayüzlerde dinleyin
+
 lookup_ehost=$1 adında, IP adresinde veya MAC adresinde ana bilgisayar yok
 lookup_ehostname=Ana bilgisayar adı, IP adresi veya MAC adresi girilmedi
 lookup_egroup=$1 adında veya alan adında grup yok
@@ -242,6 +265,7 @@ lookup_esubnet=$1 adresine/adresine/ağ maskesine sahip bir alt ağ yok
 lookup_esubnetname=Alt ağ adresi veya adres/ağ maskesi girilmedi
 lookup_eshared=$1 adında paylaşılan bir ağ yok
 lookup_esharedname=Paylaşılan ağ adı girilmedi
+
 zone_key=DNS Bölgeleri
 index_addzone=Yeni bir DNS bölgesi ekleyin.
 index_zone=bölge
@@ -257,16 +281,21 @@ zone_faildel=Bölge silinemedi
 zone_failsave=Bölge kaydedilemedi
 zone_tsigkey=TSIG anahtarı
 zone_ecannot=DNS bölgelerini düzenleme izniniz yok
+
 plib_clientupdates=İstemciler kendi kayıtlarını güncelleyebilir mi?
+
 text_title=dhcpd.conf
 text_editor=Metin düzeltici
 text_return=ana menü
 text_undo=geri alma
 text_ecannot=Yapılandırma dosyasını düzenlemenize izin verilmiyor
+
 index_buttetext=Yapılandırmayı Manuel Olarak Düzenleme
 index_text=Yapılandırma dosyasını el ile metin düzenleme
+
 stop_err=DHCP sunucusu durdurulamadı
 stop_ekill=Koşmak yok!
+
 sdelete_err=Alt ağlar ve paylaşılan ağlar silinemedi
 sdelete_enone=Hiçbiri seçilmedi
 sdelete_title=Alt Ağları ve Paylaşılan Ağları Sil
@@ -274,6 +303,7 @@ sdelete_rusure1=Seçilen $1 alt ağı ve $2 paylaşılan ağı silmek istediğin
 sdelete_rusure2=Seçilen $1 alt ağı silmek istediğinizden emin misiniz? Alt ağlardaki diğer nesneler de kaybolacaktır.
 sdelete_rusure3=Seçilen $2 paylaşılan ağı silmek istediğinizden emin misiniz? Ağlardaki alt ağlar veya diğer nesneler de kaybolacaktır.
 sdelete_ok=Şimdi sil
+
 hdelete_err=Ana bilgisayarlar ve gruplar silinemedi
 hdelete_enone=Hiçbiri seçilmedi
 hdelete_title=Ana Bilgisayarları ve Grupları Silme

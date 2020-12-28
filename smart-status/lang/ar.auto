@@ -25,6 +25,7 @@ index_family=عائلة نموذجية
 index_serial=رقم سري
 index_capacity=سعة
 index_norm=تطبيع:
+
 monitor_type=فحص محرك سمارت
 monitor_type2=اهتراء SSD
 monitor_drive=دفع للتحقق
@@ -40,14 +41,17 @@ monitor_wearlevel=فشل إذا انخفض مستوى التآكل أدناه
 monitor_ewearlevel=نسبة التآكل غير صالحة
 monitor_nowearout=محرك الأقراص لا يبلغ عن مؤشر تآكل SSD
 monitor_wornout=انخفض مستوى التآكل إلى$1
+
 short_title=اختبار ذاتي قصير
 short_doing=بدء الاختبار الذاتي القصير لـ$1 ..
 short_failed=.. فشل!
 short_ok=.. بدأ الاختبار موافق. انظر حالة محرك الأقراص على الصفحة الرئيسية للوحدة للحصول على النتائج.
+
 ext_title=اختبار ذاتي ممتد
 ext_doing=جاري بدء الاختبار الذاتي الموسع لـ$1 ..
 ext_failed=.. فشل!
 ext_ok=.. بدأ الاختبار موافق. انظر حالة محرك الأقراص على الصفحة الرئيسية للوحدة للحصول على النتائج.
+
 data_title=اختبار جمع البيانات
 data_doing=جاري بدء تجميع البيانات دون اتصال على$1 ..
 data_failed=.. فشل!

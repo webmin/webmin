@@ -29,12 +29,14 @@ index_fd=Konfigurazzjoni tad-Daemon tal-Fajl
 index_groups=Konfigurazzjoni tal-Grupp Bacula
 index_actions=Azzjonijiet ta 'Backup u Restawr
 index_ocmin=Kontribwit minn <a href=$2 target=_new>Linmin</a> </a>
+
 connect_emysql=Ma rnexxielhiex tgħabbi d-database tas-sewwieq DBI $1 
 connect_elogin=Ma rnexxielux jidħol fid-database $1:$2.
 connect_equery=Id-database $1 ma tidhirx li fiha tabelli Bacula.
 connect_equery2=Dan jista 'jkun minħabba li l-modulu SQLite Perl installat huwa ġdid wisq, u ma jappoġġjax il-format tad-database SQLite anzjani użat minn Bacula.
 connect_equery3=Id-database $1 ma tidhirx li tinkludi tabelli tal-grupp OC Bacula.
 esql=Żball SQL : $1 
+
 check_edir=Id-direttorju tal-konfigurazzjoni Bacula $1 ma nstabx fis-sistema tiegħek.
 check_ebacula=Il-kmand tal-kontroll tal-Bacula $1 ma nstabx.
 check_econsole=Il-kmand tal-console Bacula $1 ma nstabx.
@@ -43,12 +45,14 @@ check_eclient=Din is-sistema tidher li hi <a href='$2'>Bacula klijent</a> aktar 
 check_econfigs=L-ebda fajl ta 'konfigurazzjoni ta' Bacula ma nstab f' $1 
 check_eservers=L-ebda grupp ta 'server Webmin ma ġie definit
 check_engmod=Il-modulu tal-gruppi OpenCountry Bacula mhuwiex installat
+
 proc_bacula-sd=Ħażna tad-daemon
 proc_bacula-fd=Fajl tad-daemon
 proc_bacula-dir=Daemon tad-Direttur Bacula
 proc_bareos-sd=Ħażna tad-daemon
 proc_bareos-fd=Fajl tad-daemon
 proc_bareos-dir=Daemon tad-Direttur Bacula
+
 stop_err=Naqset milli twaqqaf Bacula
 start_err=Naqset milli tibda Bacula
 start_einit=L-ebda skritt init ma nstab għal $1 
@@ -57,6 +61,7 @@ restart_err=Naqset milli terġa tibda Bacula
 apply_err=Ma rnexxielux japplika l-konfigurazzjoni
 apply_failed=Ġie skopert żball ta 'konfigurazzjoni
 apply_problem=Ma rnexxielux japplika l-konfigurazzjoni : $1 
+
 jobs_title=Impjiegi ta 'Backup
 jobs_none=L-ebda impjiegi ta 'backup ma ġew definiti s'issa.
 jobs_name=Isem tax-xogħol
@@ -69,6 +74,7 @@ jobs_add=Żid xogħol ta 'backup ġdid.
 jobs_delete=Ħassar l-Impjiegi magħżula
 jobs_return=lista ta 'l-impjiegi
 jobs_derr=Naqset milli tħassar l-impjiegi
+
 filesets_title=Settijiet ta 'Fajls
 filesets_none=L-ebda settijiet ta 'fajls ta' backup ma ġew definiti s'issa.
 filesets_name=Isem stabbilit fajl
@@ -78,6 +84,7 @@ filesets_delete=Ħassar Settijiet ta 'Fajls Magħżula
 filesets_return=lista ta 'settijiet ta' fajls
 filesets_derr=Naqset milli tħassar settijiet ta 'fajls
 filesets_ednone=L-ebda magħżul
+
 fileset_title1=Oħloq Sett tal-Fajl
 fileset_title2=Editja Sett ta 'Fajls
 fileset_header=Dettalji ta 'fajl ta' Backup
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;Livell ta 'kompressjoni default&gt;
 fileset_lzo=Kompressjoni LZO
 fileset_gzip=Livell tal-Gzip $1 
 fileset_onefs=Tillimita l-backup għal fileystem wieħed?
+
 clients_title=Backup Klijenti
 clients_none=L-ebda klijenti ta 'backup ma ġew definiti s'issa.
 clients_name=Isem il-Klijent
@@ -106,6 +114,7 @@ clients_add=Żid klijent tal-backup ġdid.
 clients_delete=Ħassar Klijenti Magħżula
 clients_return=lista tal-klijenti
 clients_derr=Naqset milli tħassar il-klijenti
+
 client_title1=Oħloq Klijent ta 'Backup
 client_title2=Editja Klijent tal-Backup
 client_header=Dettalji tal-klijent li għandhom jiġu sostnuti
@@ -128,6 +137,7 @@ client_efileret=Perjodu ta 'żamma ta' fajl nieqes jew invalidu
 client_ejobret=Perjodu ta 'żamma ta' xogħol nieqes jew invalidu
 client_echild=Dan il-klijent ma jistax jitħassar għax jintuża minn $1 
 client_status=Uri l-Istatus
+
 job_title1=Oħloq Backup Job
 job_title2=Editja Xogħol ta 'Backup
 job_header=Backup dettalji tax-xogħol
@@ -156,6 +166,7 @@ job_before=Kmand qabel ix-xogħol
 job_after=Kmand wara xogħol
 job_cbefore=Kmand qabel ix-xogħol (fuq il-klijent)
 job_cafter=Kmand wara xogħol (fuq klijent)
+
 schedules_title=Skedi ta 'Backup
 schedules_none=L-ebda skeda ta 'backup ma ġiet definita s'issa.
 schedules_name=Iskeda tal-isem
@@ -164,6 +175,7 @@ schedules_add=Żid skeda ta 'backup ġdida.
 schedules_delete=Ħassar Skedi Magħżula
 schedules_return=lista ta 'skedi
 schedules_derr=Naqset milli tħassar l-iskedi
+
 schedule_title1=Oħloq Skeda ta 'Backup
 schedule_title2=Editja Skeda ta 'Backup
 schedule_header=Dettalji tal-iskeda tal-Backup
@@ -177,6 +189,7 @@ schedule_ename=Isem tal-iskeda nieqes jew invalidu
 schedule_eclash=Skeda bl-istess isem diġà teżisti
 schedule_etimes=Ħinijiet ta 'backup nieqsa fir-ringiela $1 
 schedule_echild=Din l-iskeda ma tistax titħassar billi tintuża minn $1 
+
 backup_title=Mexxi Xogħol ta 'Backup
 backup_header=Backup dettalji tax-xogħol
 backup_job=Xogħol biex imexxi
@@ -191,11 +204,13 @@ backup_running=.. L-impjieg tal-backup issa għaddej. Meta tlesti, ir-riżultati
 backup_running2=.. Ix-xogħol tal-backup beda fl-isfond.
 backup_done=.. backup kompluta.
 backup_failed=.. il-backup ma tlestiex b'suċċess. Iċċekkja l-messaġġ ta 'żball ta' hawn fuq għad-dettalji.
+
 gbackup_title=Mexxi l-impjieg Backup Group Bacula
 gbackup_run=Tibda xogħol ta 'backup $1 fuq $2 klijenti ..
 gbackup_on=It-tħaddim ta 'xogħol ta' backup fuq il-klijent $1  :
 gbackup_header=Dettalji dwar ix-xogħol tal-backup tal-grupp Bacula
 gbackup_jd=$1 (Sett ta 'fajl $2 fuq grupp $3)
+
 dirstatus_title=Status tad-Direttur
 dirstatus_sched=Impjiegi ta 'Backup Skedati
 dirstatus_name=Isem tax-xogħol
@@ -216,12 +231,14 @@ dirstatus_status2=Status
 dirstatus_donenone=L-ebda impjiegi ta 'backup ma ġew immexxija.
 dirstatus_cancel=Ikkanċella l-Impjiegi magħżula
 dirstatus_refresh=Lista ta ’Aġġornar
+
 clientstatus_title=Status tal-Klijent
 clientstatus_err=Ma rnexxielux iġib status minn $1 : $2 
 clientstatus_msg=Status minn $1 : $2 
 clientstatus_show=Uri l-istatus tal-klijent:
 clientstatus_ok=kollox sew
 clientstatus_on=$1 (fuq $2)
+
 storages_title=Demmijiet tal-Ħażna
 storages_none=L-ebda daemons tal-ħażna ma ġew definiti s'issa.
 storages_name=Isem tal-ħażna
@@ -232,6 +249,7 @@ storages_add=Żid daemon ta 'ħażna ġdid.
 storages_delete=Ħassar Demenzi tal-Ħażna magħżula
 storages_return=lista tad-daemons tal-ħażna
 storages_derr=Ma rnexxielhiex tħassar id-daemons tal-ħażna
+
 storage_title1=Oħloq Daemon tal-Ħażna
 storage_title2=Editja Daemon tal-Ħażna
 storage_header=Dettalji tad-daemon tal-ħażna remota
@@ -255,6 +273,7 @@ storage_emedia=Isem tat-tip tal-midja nieqes
 storage_emaxjobs=Jieqfu l-impjiegi massimi fl-istess ħin
 storage_echild=Dan il-klijent ma jistax jitħassar għax jintuża minn $1 
 storage_status=Uri l-Istatus
+
 devices_title=Apparat tal-Ħażna
 devices_none=L-ebda apparat ta 'ħażna ma ġie definit s'issa.
 devices_name=Isem tal-apparat
@@ -264,6 +283,7 @@ devices_add=Żid apparat tal-ħażna ġdid.
 devices_delete=Ħassar Apparat ta 'Ħażna magħżul
 devices_return=lista ta 'apparati għall-ħażna
 devices_derr=Naqset milli tħassar il-mezzi tal-ħażna
+
 device_title1=Oħloq Apparat tal-Ħażna
 device_title2=Editja l-Apparat tal-Ħażna
 device_header=Dettalji tal-apparat tal-ħażna tal-fajl
@@ -282,11 +302,13 @@ device_eclash=Apparat ta 'ħażna bl-istess isem diġà jeżisti
 device_emedia=Isem tat-tip tal-midja nieqes
 device_edevice=Apparat jew direttorju tal-arkivju nieqes jew invalidu
 device_echild=Dan il-klijent ma jistax jitħassar għax jintuża minn $1 
+
 storagestatus_title=Ħażna ta 'Status tad-Daemon
 storagestatus_err=Ma rnexxielux iġib status minn $1 : $2 
 storagestatus_msg=Status minn $1 : $2 
 storagestatus_show=Uri l-istat tad-daemon tal-ħażna:
 storagestatus_ok=kollox sew
+
 label_title=Volum tat-Tikketta
 label_header=Dettalji tal-volum fuq it-tikketta
 label_storage=Daemon tal-ħażna għat-tikketta
@@ -302,6 +324,7 @@ label_done=.. Tikkettar li rnexxa.
 label_epool=.. ma setgħetx issib ġabra!
 label_err=It-tikketta ma rnexxietx
 label_elabel=L-ebda tikketta ma ddaħħlet
+
 pools_title=Flokkijiet tal-Volum
 pools_none=Ma ġew definiti l-ebda pixxini ta 'volum.
 pools_name=Isem tal-Pool
@@ -311,6 +334,7 @@ pools_add=Żid ġabra ta 'volum ġdid.
 pools_delete=Ħassar Il-Ġabriet tal-Volum Magħżul
 pools_return=lista tal-pixxini tal-volum
 pools_derr=Ma rnexxielhiex tħassar il-pixxini tal-volum
+
 pool_title1=Oħloq Ġabra tal-Volum
 pool_title2=Editja l-Ġabra tal-Volum
 pool_header=Dettalji tal-ġabra tal-volum tal-backup
@@ -332,6 +356,7 @@ pool_ereten=Perjodu ta 'żamma nieqes jew invalidu
 pool_status=Uri l-Volumi
 pool_autolabel=Tikketta awtomatikament il-prefiss tal-volumi
 pool_maxvolsize=Daqs massimu tal-volum (e.g. 5G għal 5 gigabytes)
+
 poolstatus_title=Volumi Fil-Pixxina
 poolstatus_show=Uri l-volumi fil-ġabra ta 'flus:
 poolstatus_ok=kollox sew
@@ -345,9 +370,11 @@ poolstatus_status=Modalità Backup
 poolstatus_none=M'hemm l-ebda volum bħalissa f'dan il-ġabra ta 'backup.
 poolstatus_never=Qatt
 poolstatus_delete=Ħassar il-Volumi Magħżula
+
 dvolumes_err=Ma rnexxielhiex tħassar il-volumi
 dvolumes_enone=L-ebda magħżul
 dvolumes_ebacula=Żball tal-Bacula : $1 
+
 mount_title=Immonta jew Jissmonta
 mount_header=Għażliet ta 'mmuntar jew un-mount għażliet
 mount_storage=Apparat tal-ħażna
@@ -365,8 +392,10 @@ unmount_failed=.. un-mount falliet! Ara l-messaġġ ta 'żball ta' hawn fuq għa
 mount_return=forma ta 'impunjazzjoni
 mount_err=Naqset milli timmonta l-apparat tal-ħażna
 mount_eslot=Numru tas-slot nieqes jew invalidu
+
 cancel_err=Naqset milli tikkanċella l-impjiegi
 cancel_enone=L-ebda magħżul
+
 gjobs_title=Impjiegi ta 'Backup Group Bacula
 gjobs_none=L-ebda impjiegi ta 'backup tal-grupp Bacula ma ġew definiti s'issa.
 gjobs_add=Żid impjieg ġdid tal-backup tal-grupp Bacula.
@@ -374,10 +403,12 @@ gjobs_delete=Ħassar l-Impjiegi magħżula
 gjobs_return=lista tal-impjiegi tal-grupp Bacula
 gjobs_derr=Naqset milli tħassar l-impjiegi tal-grupp Bacula
 gjobs_client=Grupp Bacula għal backup
+
 gjob_title1=Oħloq Xogħol ta 'Backup tal-Grupp Bacula
 gjob_title2=Editja l-impjieg tal-Backup tal-Grupp Bacula
 gjob_header=Dettalji dwar ix-xogħol tal-backup tal-grupp Bacula
 gjob_client=Grupp Bacula għal backup
+
 groups_title=Gruppi Bacula
 groups_none=L-ebda grupp ta 'Bacula ma ntgħażel għall-backup minn Bacula s'issa.
 groups_name=Isem tal-grupp
@@ -391,6 +422,7 @@ groups_derr=Ma rnexxielhiex tħassar il-gruppi
 groups_noadd=M'hemm l-ebda grupp ta 'Bacula li għandu jintgħażel għall-backups.
 groups_info=$1 ($2 membri)
 groups_already=Il-gruppi kollha tal-Bacula diġà ġew miżjuda.
+
 group_title1=Oħloq Grupp Bacula
 group_title2=Editja l-Grupp Bacula
 group_header=Dettalji tal-grupp Bacula għandhom jiġu sostnuti
@@ -401,11 +433,13 @@ group_port=Port Bacula FD
 group_err=Ma rnexxielux isalva l-grupp Bacula
 group_eclash=Grupp bl-istess isem diġà jeżisti
 group_members=Ospitanti fil-grupp Bacula
+
 sync_title=Sinkronizzazzjoni tal-Grupp Bacula
 sync_header=Għażliet ta 'sinkronizzazzjoni awtomatika tal-grupp Bacula
 sync_sched=Issinkronizza fl-iskeda?
 sync_schedyes=Iva, f'ħinijiet magħżula hawn taħt ..
 sync_err=Ma rnexxielux isalva s-sinkronizzazzjoni tal-grupp Bacula
+
 log_create_client=Klijent ta 'backup maħluq $1 
 log_modify_client=Klijent tal-backup modifikat $1 
 log_delete_client=Klijent imħassar backup $1 
@@ -464,6 +498,7 @@ log_director=Ġiet salvata l-konfigurazzjoni tad-direttur globali tal-Bacula
 log_file=Iffrankat il-konfigurazzjoni tad-daemon tal-fajl Bacula
 log_storagec=Konfigurazzjoni tal-ħażna tad-daemon tal-ħażna Bacula
 log_fixpass=Iffissat il-password tal-programm tal-konsola Bacula
+
 director_title=Konfigurazzjoni tad-Direttur
 director_header=L-għażliet tad-direttur globali Bacula
 director_name=Isem id-Direttur
@@ -477,6 +512,7 @@ director_ename=Isem id-direttur nieqes jew invalidu
 director_eport=Numru tal-port nieqes jew invalidu
 director_ejobs=Numru nieqes jew invalidi ta 'impjiegi fl-istess ħin
 director_edir=Direttorju tax-xogħol nieqes jew ineżistenti
+
 tls_enable=Tippermetti kriptaġġ TLS?
 tls_require=Aċċetta biss konnessjonijiet TLS?
 tls_verify=Tivverifika klijenti TLS?
@@ -488,6 +524,7 @@ tls_ecert=Fajl taċ-ċertifikat TLS nieqes jew li ma jeżistix
 tls_ekey=Fajl ewlieni TLS nieqes jew ineżistenti
 tls_ecacert=Fajl taċ-ċertifikat TLS CA nieqes jew mhux eżistenti
 tls_ecerts=Sabiex TLS tkun attivata, ċertifikat, ċavetta u fajls CA għandhom ikunu speċifikati
+
 file_title=Konfigurazzjoni tad-Daemon tal-Fajl
 file_header=Għażliet ta 'daemon tal-fajl Bacula
 file_name=Fajl isem daemon
@@ -500,6 +537,7 @@ file_ename=Isem tad-daemon tal-fajl nieqes jew invalidu
 file_eport=Numru tal-port nieqes jew invalidu
 file_ejobs=Numru nieqes jew invalidi ta 'impjiegi fl-istess ħin
 file_edir=Direttorju tax-xogħol nieqes jew ineżistenti
+
 fdirectors_title=Fajl tad-Diretturi tad-Daemon
 fdirectors_none=L-ebda direttur ma ġie definit s'issa.
 fdirectors_name=Isem id-Direttur
@@ -508,6 +546,7 @@ fdirectors_add=Żid direttur ġdid.
 fdirectors_delete=Ħassar Diretturi Magħżula
 fdirectors_return=lista tad-diretturi
 fdirectors_derr=Naqset milli tħassar diretturi
+
 fdirector_title1=Oħloq Fajl Direttur Daemon
 fdirector_title2=Editja l-File Daemon Director
 fdirector_header=Dettalji ta 'kontroll direttur remot
@@ -519,6 +558,7 @@ fdirector_err=Ma rnexxielux isalva fajl direttur tad-daemon
 fdirector_ename=Isem id-direttur nieqes
 fdirector_eclash=Direttur bl-istess isem diġà jeżisti
 fdirector_epass=Password nieqsa
+
 sdirectors_title=Ħażna tad-Diretturi tad-Daemon
 sdirectors_none=L-ebda direttur ma ġie definit s'issa.
 sdirectors_name=Isem id-Direttur
@@ -527,6 +567,7 @@ sdirectors_add=Żid direttur ġdid.
 sdirectors_delete=Ħassar Diretturi Magħżula
 sdirectors_return=lista tad-diretturi
 sdirectors_derr=Naqset milli tħassar diretturi
+
 sdirector_title1=Oħloq Direttur Daemon Ħażna
 sdirector_title2=Editja d-Direttur tad-Daemon tal-Ħażna
 sdirector_header=Dettalji ta 'kontroll direttur remot
@@ -538,6 +579,7 @@ sdirector_err=Ma rnexxielux isalva d-direttur tad-daemon tal-ħażna
 sdirector_ename=Isem id-direttur nieqes
 sdirector_eclash=Direttur bl-istess isem diġà jeżisti
 sdirector_epass=Password nieqsa
+
 storagec_title=Konfigurazzjoni tad-Daemon tal-Ħażna
 storagec_header=Għażliet ta 'daemon tad-daemon Bacula
 storagec_name=Isem Daemon
@@ -550,6 +592,7 @@ storagec_ename=L-isem tad-daemon tal-ħażna nieqes jew invalidu
 storagec_eport=Numru tal-port nieqes jew invalidu
 storagec_ejobs=Numru nieqes jew invalidi ta 'impjiegi fl-istess ħin
 storagec_edir=Direttorju tax-xogħol nieqes jew ineżistenti
+
 chooser_title=Agħżel Skeda
 chooser_monthsh=Xhur biex tesegwixxi
 chooser_months=Xhur tas-sena
@@ -574,11 +617,13 @@ chooser_emonthsrange=Ix-xhur magħżula jridu jkunu kontigwi
 chooser_eweekdaysrange=Il-ġranet ta ’ġimgħa magħżula jridu jkunu kontigwi
 chooser_eweekdaynumsrange=In-numri tal-ġimgħa magħżula jridu jkunu kontigwi
 chooser_edaysrange=Il-ġranet magħżula tax-xahar iridu jkunu kontigwi
+
 weekdaynum_1=L-ewwel
 weekdaynum_2=It-tieni
 weekdaynum_3=It-tielet
 weekdaynum_4=Ir-raba '
 weekdaynum_5=Il-ħames
+
 restore_title=Irrestawra l-Backup
 restore_title2=Restawra Backup Biex Grupp Bacula
 restore_title3=Restawra l-Backup tal-Grupp Bacula

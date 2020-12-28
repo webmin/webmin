@@ -26,6 +26,7 @@ index_when=Kyllä, $1
 index_webalizer=Webalizer
 index_enable=Aikataulu valittu
 index_disable=Aikataulu poistettu valittuna
+
 edit_title1=Lisää lokitiedosto
 edit_title2=Muokkaa lokitiedostoa
 edit_header=Lokitiedoston raporttivaihtoehdot
@@ -49,12 +50,14 @@ edit_cmode0=Käytä globaaleja vaihtoehtoja
 edit_cmode1=Mukautetut vaihtoehdot
 edit_cmode2=Muu konfigurointitiedosto ..
 edit_clear=Poistetaanko lokitiedostot aikataulun mukaisen raportin jälkeen?
+
 gen_title=Luo raportti
 gen_header=Käynnistetään Webalizer luomaan raportti $1 : stä ..
 gen_done=.. valmis
 gen_failed=.. Webalizer epäonnistui! Katso yksityiskohdat yllä olevasta tuotosta.
 gen_nothing=.. Webalizer valmis, mutta raporttia ei luotu. Katso yksityiskohdat yllä olevasta tuotosta.
 gen_view=Näytä valmis raportti.
+
 save_err=Lokitiedoston tallentaminen epäonnistui
 save_efile=Lokitiedostoa ei annettu tai sitä ei ole
 save_ecfile=Puuttuu tai puuttuu muu konfiguraatiotiedosto
@@ -64,12 +67,14 @@ save_ewuser=Yhtään Unix-käyttäjää nimeltä $1 ei ole
 save_ehost=Puuttuva tai virheellinen verkkosivuston isäntänimi
 save_etitle=Puuttuu raportin otsikko
 save_ecannot=Sinulla on oikeus luoda raportteja vain alle $1 oleville lokille
+
 view_epath=Virheellinen PATH_INFO
 view_efile=Virheellinen raporttitiedostonimi
 view_elog=Virheellinen lokitiedosto
 view_ecannot=Et voi katsella tätä raporttia
 view_eopen=Raporttitiedoston avaaminen epäonnistui
 view_title=Katso raportti
+
 global_title=Global Webalizer -asetukset
 global_title2=Webalizer-raporttivaihtoehdot
 global_for=Lokitiedostolle $1 
@@ -130,6 +135,7 @@ global_includesite=Asiakkaita ei tule sivuuttaa
 global_includereferrer=Viittaajat eivät saa sivuuttaa
 global_includeuser=Käyttäjät eivät saa sivuuttaa
 global_includeagent=Selaimet eivät saa sivuuttaa
+
 global_err=Webalizer-asetusten tallentaminen epäonnistui
 global_ereport=Puuttuu raportin otsikon etuliite
 global_ehost=Puuttuva tai virheellinen isäntänimi
@@ -139,6 +145,7 @@ global_etable=Puuttuva tai virheellinen '$1' -taulukon koko
 global_ehistory=Puuttuva tai virheellinen historiatiedoston nimi
 global_ecurrent=Puuttuva tai virheellinen inkrementaalitiedoston nimi
 global_ecache=Puuttuva tai virheellinen DNS-välimuistitiedoston nimi
+
 log_create_log=Luotu raportti $1 : lle
 log_modify_log=Muokattu raportointi $1 : lle
 log_delete_log=$1 : n raportointi poistettu
@@ -147,6 +154,7 @@ log_global=Muokatut globaalit Webalizer-vaihtoehdot
 log_global2=Muokatut Webalizer-vaihtoehdot $1 : lle
 log_enable_logs=Ajoitettu raportointi $1 lokista
 log_disable_logs=Aikataulun mukainen raportointi $1 lokissa
+
 acl_view=Voiko vain katsella olemassa olevia raportteja?
 acl_global=Voiko muokata maailmanlaajuisia webalizer-asetuksia?
 acl_dir=Salli vain alla olevien lokien raporttien tarkastelu ja muokkaaminen

@@ -6,6 +6,7 @@ index_printershare=yazıcı paylaşımı
 index_shareconf=paylaşım yapılandırması
 index_version=Samba $1 sürümü
 index_samba=Samba
+
 index_sharename=Paylaşım Adı
 index_path=Yolu
 index_security=Güvenlik
@@ -36,12 +37,14 @@ index_stop=Samba Sunucusunu Durdur
 index_stopmsg=Sisteminizdeki çalışan Samba sunucularını kapatmak için bu tuşa basın. Yürürlükteki giriş yapmış kullanıcılar bağlantıdan kopmuş olacaklar.
 index_einclude=Uyarı - Samba yapılandırma $1 dosyanız $2 ya da $3 yönergelerini içeriyor. Bu Webmin'in de dosya üzerinde yanlış işlem yapmasına sebep olabilir
 index_delete=Seçili Paylaşımları Sil
+
 config_mins=Dak
 config_secs=San
 config_bytes=Bayt
 config_never=Asla
 config_all=Hepsi
 config_neither=İkisi de değil
+
 global_title=Global Yapılandırma
 global_unixnetwork=Unix Ağı
 global_winnetwork=Windows Ağı
@@ -54,6 +57,7 @@ global_password=Şifrelenmiş Parolalar
 global_users=Samba Kullanıcıları
 global_group=Samba Grupları
 global_bind=Winbind Seçenekleri
+
 error_nosamba=Samba sunucusu çalıştırılabiliri <tt>$1</tt> bulunamadı. Sisteminizde Samba sunucusu kurulmamış ya da <a href="$2">modül yapılandırmanız</a> yanlış olabilir.
 error_version=Webmin Samba sunucusu çalıştırılabiliri olan <tt>$1</tt>'in sürümünü okuyamadı. Doğru yolu belirtmek için <a href="$2">modül yapılandırma</a>nızı kontrol ediniz.
 error_config=Yapılandırma dosyası $1 bulunamadı. Büyük ihtimalle sisteminize Samba kurulmamıştır, ya da  <a href="$2">modül yapılandırma</a>nız yanlıştır
@@ -61,6 +65,7 @@ error_include=Webmin <tt>config</tt> ya da <tt>include</tt> komutlarını kullan
 error_delshare=Paylaşımın silinmesinde hata oluştu
 error_delcopy=Bu paylaşım '$1' paylaşımından kopyalanmıştır
 error_savename=Dosya adının kaydedilmesinde hata oluştu
+
 convert_title=Kullanıcıları Dönüştür
 convert_msg=Bu form Samba ve Unix kullanıcılarının eşzamanlamasını yapmak için kullanılır. Samba <a href=$1>encrypted passwords</a> seçeneğini kullandığında, sistem kullanıcılarının yerine kullanıcı ve şifrelerin ayrılmış listesi kullanılır.
 convert_noconv=Bu kullanıcıları silme ya da dönüştürme:
@@ -74,6 +79,7 @@ convert_lock=Alan kilitlendi
 convert_passwd=Bu şifreyi kullan
 convert_convert=Kullanıcıları Dönüştür
 convert_cannot=Unix kullanıcıları Samba kullanıcılarına dönüştürülemiyor
+
 misc_title=Çeşitli Seçenekler
 misc_debug=Hatasızlaştırma Seviyesi
 misc_cachecall=Cache <tt>getwd()</tt>'yi çağırsın mı?
@@ -87,6 +93,7 @@ misc_chroot=<tt>chroot()</tt> dizini
 misc_smbrun=<tt>smbrun</tt> yolu
 misc_clienttime=İstemci zaman dengesi
 misc_readprediction=Tahmini okuma?
+
 net_title=Unix Ağ Seçenekleri
 net_idle=Bağlantı kesilmesinden önceki bekleme süresi
 net_trustlist=Doğrulanmış makineler/kullanıcılar dosyası
@@ -101,6 +108,7 @@ net_every=Tümünü gönder
 net_maxpacket=En çok paket boyutu
 net_listen=Adresi dinle
 net_socket=Soket seçenekleri
+
 passwd_title=Parola Seçenekleri
 passwd_encrypt=Şifrelenmiş parolalar kullanılsın mı?
 passwd_allownull=Boş şifreler kabul edilsin mi?
@@ -114,11 +122,13 @@ passwd_send=Gönder
 passwd_map=Kullanıcı adı haritalandırması
 passwd_unixuser=Unix Kullanıcıları
 passwd_winuser=Windows Kullanıcıları
+
 print_title=Yazıcı Seçenekleri
 print_style=Unix yazım stili
 print_show=Bütün yazıcıları göster?
 print_printcap=Printcap dosyası
 print_cachetime=Yazıcı durumu cache zamanı
+
 smb_title=Windows Ağ Seçenekleri
 smb_workgroup=Çalışma Grubu
 smb_wins=WINS modu
@@ -146,14 +156,17 @@ smb_nowhere=Hiçbiryer
 smb_fromlist=Listeden...
 smb_ip=IP Adresi
 smb_asworkgroup=<b>Çalışma grubu olarak</b> (seçime bağlı)
+
 create_title=Kopya Oluştur
 create_msg=Bir kopya paylaşım seçtiğiniz paylaşımdaki bütün öntanımlı değerleri alır. Eğer kaynak değiştirilirse, kopyası da değiştirilir
 create_from=Buradan kopyayı paylaştır:
 create_name=Yeni paylaşım ismi:
+
 smbuser_title=Samba Kullanıcıları
 smbuser_list=Samba Kullanıcı Listesi
 smbuser_nouser=Samba kullanıcıları tanımlanmadı
 smbuser_cannot=Samba kullanıcıları listelenemiyor
+
 euser_title=Samba Kullanıcısının Değiştir
 euser_name=Kullanıcı adı
 euser_uid=Unix UID
@@ -170,6 +183,7 @@ euser_normal=Normal kullanıcı
 euser_nopwrequired=Şifre gerekmiyor
 euser_disable=Hesap kapatıldı
 euser_trust=İş istasyonu onaylama hesabı
+
 fmisc_title=Çeşitli Dosya Öntanımlıları
 fmisc_for=<tt>$1</tt> paylaşımı için
 fmisc_lockfile=Dosya kilitlensin mi?
@@ -187,6 +201,7 @@ fmisc_conncmd=Bağlantı için kullanılacak komut
 fmisc_disconncmd=Bağlantıyı kesmek için kullanılacak komut
 fmisc_rootconn=<i>Root olarak</i> bağlantı için kullanılacak komut
 fmisc_rootdisconn=<i>Root olarak</i> bağlantıyı kesmek için kullanılacak komut
+
 fname_title1=Dosya İsimlendirme Öntanımlıları
 fname_title2=Dosya İsimlendirmesini Değiştir
 fname_option=Dosya İsimlendirme Seçenekleri
@@ -201,6 +216,7 @@ fname_hide=Noktalı dosyalar saklansın mı?
 fname_archive=DOS arşiv dosyalarını sakla?
 fname_hidden=DOS gizli dosyalarını sakla?
 fname_system=DOS sistem dosyalarını sakla?
+
 fperm_title1=Dosya İzinleri Öntanımlıları
 fperm_title2=Dosya İzinlerini Değiştir
 fperm_option=Dosya İzin Seçenekleri
@@ -213,6 +229,7 @@ fperm_link=Sembolik linklerin dış paylaşımlara erişimine izin verilsin?
 fperm_delro=Sadece okunur dosyalar silinebilsin mi?
 fperm_forcefile=Unix dosya modunu kullan
 fperm_forcedir=Unix dizin modunu kullan
+
 share_title1=Dosya Paylaşım Öntanımlıları
 share_title2=Dosya Paylaşımını Değiştir
 share_title3=Dosya Paylaşımı Oluştur
@@ -234,6 +251,7 @@ share_naming=Dosya İsimlendirme
 share_misc=Çeşitli Seçenekler
 share_samedesc1=Not - bu ayarlar bütün dosya paylaşımları için varsayılan ayarları da etkiler.
 share_samedesc2=Note - bu ayarlar bütün yazıcı paylaşımları için varsayılan ayarları da etkiler.
+
 print_title1=Yazıcı Seçenekleri Öntanımlıları
 print_title2=Yazıcı Seçeneklerini Değiştir
 print_option=Yazıcı Seçenekleri
@@ -245,6 +263,7 @@ print_delete=İş komutunu sil
 print_pause=İş komutunu durdur
 print_unresume=İş komutunu devam ettirme
 print_driver=Yazıcı Sürücüsü
+
 pshare_title1=Yazıcı Seçenekleri Öntanımlıları
 pshare_title2=Yazıcı Paylaşımını Değiştir
 pshare_title3=Yazıcı Paylaşımı Oluştur
@@ -253,6 +272,7 @@ pshare_name=Paylaşım Adı
 pshare_all=Bütün Yazıcıların Paylaşımı
 pshare_unixprn=Unix Yazıcısı
 pshare_spool=Tutma dizini
+
 sec_index1=Güvenlik Öntanımlıları
 sec_index2=Güvenliği Değiştir
 sec_writable=Yazılabilir?
@@ -275,6 +295,7 @@ sec_rouser=Sadece okuyabilir kullanıcılar
 sec_rogroup=Sadece okuyabilir gruplar
 sec_rwuser=Okuma/Yazma izinli kullanıcılar
 sec_rwgroup=Okuman/Yazma izinli gruplar
+
 esync_title=Kullanıcı Eşzamanlaması
 esync_msg=Webmin, Unix kullanıcıları listesi değiştiğinde otomatik olarak Samba kullanıcı listesini de değiştirecek şekilde yapılandırılabilir. Bu sadece kullanıcı ekleme, silme ve değiştirme işlemleri <tt>Kullanıcı ve Gruplar</tt> Webmin modülü kullanılarak yapıldığında münkündür.
 esync_add=Bir Unix kullanıcısı eklendiğinde Samba kullanıcısı ekle
@@ -286,6 +307,7 @@ esync_gid=Yeni kullanıcılar için SID ya da RID grubu
 esync_apply=Uygula
 esync_cannot=Kullanıcı sekronizasyonu yapılandırılamıyor
 esync_egid=Kayıp SID yada RID grubu
+
 mkpass_title=Kullanıcı Dönüştür
 mkpass_convfail=Kullanıcıyı dönüştürürken hata oluştu
 mkpass_msg=Unix kullanıcıları dönüştürülüyor...
@@ -294,10 +316,12 @@ mkpass_same=her zaman aynısı
 mkpass_update=oluşum güncellendir
 mkpass_del=oluşum silindi
 mkpass_passfail=Şifre verilmedinde hata oluştu
+
 savecopy_fail=Kopya oluşturulmasında hata oluştu
 savecopy_global='Global' ismi bir paylaşım için kullanılamaz
 savecopy_exist='$1' paylaşımı her zaman mevcut
 savecopy_ename=Paylaşım adı girilmedi
+
 saveuser_fail=Kullanıcının kaydedilmesinde hata oluştu
 saveuser_uid='$1' geçerli bir Unix UID'si değildir
 saveuser_colon=Gerçek isim bu karakteri içermemelidir :
@@ -305,16 +329,20 @@ saveuser_home=Ev dizini '$1' mevcut değildir
 saveuser_shell=$1 geçerli bir kabuk değildir
 saveuser_pass=smbpasswd kullanılarak parolanın değiştirilmesinde hata oluştu : $1
 saveuser_ews='Çalışma güven hesabı' seçeneği mevcut olan kullanıcılar için sağlanamıyor
+
 savefmisc_fail=Çeşitli seçeneklerin kaydedilmesinde hata oluştu
 savefmisc_number='$1' geçerli bir bağlantı sayısı değildir
+
 savefperm_fail=Dosya izinlerinin kaydedilmesinde hata oluştu
 savefperm_mode='$1' geçerli bir Unix dosya modu değildir
+
 savefshare_fail=Paylaşımın kaydedilmesinde hata oluştu
 savefshare_nopath=Yol girilmedi
 savefshare_exist='$1' paylaşımı her zaman mevcut
 savefshare_mode='$1' geçerli bir paylaşım ismi değildir
 savefshare_global='global' ismi bir paylaşım için kullanılamaz
 savefshare_owner=Yeni dizin için eksik ya da geçersiz sahiplik
+
 savemisc_fail=Seçeneklerin kaydedilmesinde hata oluştu
 savemisc_lockdir=Dizin içeriği kilit dizini mevcut değil
 savemisc_logdir=Dizin içeriği kilit dizini mevcut değil
@@ -323,34 +351,44 @@ savemisc_overlap='$1' geçerli bir üstüste okuma boyutu değildir
 savemisc_chroot=chroot dizini '$1' mevcut değildir
 savemisc_smbrun=smbrun programı '$1' mevcut değil ya da çalıştırılamaz
 savemisc_time='$1' geçerli bir denge zamanı değildir
+
 savenet_fail=Seçeneklerin kaydedilmesinde hata oluştu
 savenet_timeout='$1' geçerli bir bağlantı kopma süresi değildir
 savenet_ip='$1' geçerli bir IP byte'ı değildir
 savenet_keep='$1' geçerli bir keepalive aralığı değildir
 savenet_maxxmit='$1' geçerli bir en çok pakey boyutu değildir
+
 savepass_fail=Seçeneklerin kaydedilmesinde hata oluştu
 savepass_nopass=Samba sürümünüz encrypt passwords seçeneğini desteklememektedir
 savepass_passwd=Parola değiştirme programı girilmedi
 savepass_level='$1' geçerli bir parola harf farklılığı değildir
 savepass_chat=Parola değiştirme sorularının sırası boş
+
 savepopts_fail=Yazıcı seçeneklerinin kaydedilmesinde hata oluştu
 savepopts_number=En az boş alan bir sayı olmalıdır
+
 saveprint_fail=Seçeneklerin kaydedilmesinde hata oluştu
 saveprint_printcap=printcap dosyası '$1' mevcut değildir
 saveprint_cache='$1' geçerli bir cache süresi değildir
+
 savepshare_fail=Yazıcı paylaşımının kaydedilmesinde hata oluştu
 savepshare_exist='$1' paylaşımı her zaman mevcut
 savepshare_name='$1' geçerli bir paylaşım ismi değildir
 savepshare_global='global' ismi bir paylaşım ismi olarak kullanılamaz
+
 savesec_fail=Güvenliğin kaydedilmesinde hata oluştu
+
 savesmb_fail=Seçeneklerin kaydedilmesinde hata oluştu
 savesmb_size='$1' geçerli bir dik boyutu değildir
 savesmb_oslevel='$1' geçerli bir ana tarayıcı önceliği değildir
 savesmb_server=Bir parola sunucusu girmelisiniz
+
 start_err=Samba sunuucların başlatılmasında hata oluştu
 start_fail=$1 hata!
+
 swats_fail=Kullanıcı adının kaydedilmesinde hata oluştu
 swats_user=SWAT kullanıcı adı bulunamadı
+
 viewu_index=Mevcut kullanıcılar
 viewu_list=<i>$1</i>'in mevcut kullanıcıları
 viewu_share=Paylaşım
@@ -366,6 +404,7 @@ viewu_none=Hiçbiri
 viewu_ecmd=$1 samba durum programı sisteminizde yüklü görünmüyor. Belki <a href='$2'>Modül Yapılandırması</a> yanlıştır.
 viewu_kill=Seçili Kullanıcıların Bağlantısını Kopar
 viewu_enone=Hiçbir kullanıcı seçilmedi
+
 log_apply=Samba sunucuları yeniden başlatıldı
 log_stop=Durdurulan Samba sunucuları
 log_start=Samba sunucuları başlatıldı
@@ -404,6 +443,7 @@ log_modify_group=Değiştirilen Samba grubu $1
 log_delete_group=Silinen $1 Samba grubu 
 log_gsync=Yapılandırılan Unix grup sekronizasyonu
 log_manual=Elle düzenlenen yapılandırma dosyası $1
+
 swat_title=SWAT'a giriş
 swat_list=SWAT'a Kayıt ol
 swat_msg1=Girdiğiniz SWAT kullanıcı adı ve şifresi yanlıştır. Aşağıdaki formu giriş için tekrar kullanın.
@@ -415,6 +455,7 @@ swat_password=Şifre
 swat_login=Kayıt ol
 swat_clear=Temizle
 swat_logout=SWAT'dan Çık
+
 eacl_aviol=Erişim kontrol ihlali
 eacl_np=İzinlerin yoktur
 eacl_papply=bu servisi yeniden başlat
@@ -450,6 +491,7 @@ eacl_pafs=bu dosya paylaşımına eriş
 eacl_paps=bu yazıcı paylaşımına eriş
 eacl_pcps=yazıcı paylaşımı oluştur
 eacl_pcfs=dosya paylaşımı oluşturma
+
 acl_apply=Değişiklikleri uygulayayım mı ve Samba'yı durdurayayım mı?
 acl_view_all_con=Bütün bağlantıları görüntüleyeyim mi?
 acl_kill_con=Bağlantıları kaldırayayım mı?
@@ -495,6 +537,7 @@ acl_group_opts=Samba grup seçenekleri
 acl_maint_groups=Grupları görüntüleyebilir, düzenleyebilir, ekleyebilirim?
 acl_maint_gsync=UNIX'i SAMBA gruplarına otomatik olarak senkronize yapıyorum?
 acl_winbind=Alan adlarıyla ilşkilendireyim mi?
+
 groups_title=Samba Grupları
 groups_name=Grup adı
 groups_unix=Unix grubu
@@ -510,6 +553,7 @@ groups_return=grupların listesi
 groups_add=Yeni bir Samba grubu ekle.
 groups_ecannot=Samba gruplarını görüntülemek ya da düzenlemek için yetkili değilsiniz
 groups_cannot=Samba grupları listelenemedi
+
 gedit_title2=Samba Grubunu Düzenle
 gedit_title1=Samba Grubu Oluştur
 gedit_header=Samba grubu detayları
@@ -522,11 +566,13 @@ gedit_unix=Unix grubu
 gedit_unixgr=Grup ..
 gedit_none=Hiçbiri
 gedit_set=Listelendi ..
+
 gsave_err=Grubu kaydederken hata oluştu
 gsave_eunix=Eksik ya da geçersiz Unix grup adı veya GID'i
 gsave_ename=Eksik grup adı
 gsave_epriv=Eksik grup öncelikleri
 gsave_elocal=Öncelikler sadece yerel gruplar için ayarlanır
+
 gsync_title=Grup Sekronizasyonu
 gsync_msg=Unix grup listesindeki değişikliklerin otomatik olarak Samba grup listesinde de uygulanabilmesi için webmin yapılandırılabilir. Bu, grup ekleme, çıkarma, silme işlemleri için sadece Webmin'in <b>Kullanıcılar ve Gruplar</b> modülünün kullanılması durumunda çalışır.
 gsync_add=Bir Unix grubu eklendiğinde bir Samba grubu ekle
@@ -537,10 +583,12 @@ gsync_type=Yeni grupların tipi
 gsync_priv=Yeni gruplar için öncelikler (eger yerel ise)
 gsync_ecannot=Grup sekronizasyonu yapılandırmaya yetkili değilsiniz
 gsync_cannot=Grup senkronizasyonu yapıladırılamıyor
+
 check_user1=$1 : Şifrelenmiş parolalar <a href='$2'>Yetkilendirme</a> sayfasında aktif değil.
 check_user2=$1 : <a href='$2'>Modül Yapılandırma</a> sayfasında pdbedit için Samba şifre dosyası ya da yolu ayarlı değildir.
 check_group1=$1 : Gruplar sadece Samba'nın 3. sürümünde desteklenir.
 check_group2=$1 : <a href='$2'>Modül Yapılandırma</a> sayfasında smbgroupedit yolu veya ağ komutları ayarlı değildir.
+
 winbind_title=Alana İlişkilendir
 winbind_ecannot=Alanlara ilişkilendirme yetkiniz yoktur
 winbind_msg=Samba sunucunuzu Windows alanına bağlayan bu form, genellikle farklı bir sunucu tarafından yönetilir.
@@ -556,6 +604,7 @@ winbind_edom=Eksik alan adı
 winbind_cmd=$1 komutuyla alana bağlanma ..
 winbind_failed=.. hata oluştu! Bunun sebebini görmek için yukarıdaki çıktıya bakın.
 winbind_ok=.. tamamla.
+
 bind_title=Winbind Seçenekleri
 bind_ecannot=Winbind seçeneklerini düzenlenme yetkiniz yoktur
 bind_header=Windows alan bağlama seçenekleri
@@ -573,9 +622,11 @@ bind_erealm=Geçersiz Kerberos alanı
 bind_ecache=Eksik ya da geçersiz önbellek zamanı
 bind_euid=UID geçersiz aralık - aralık 20000-30000 gibi olmalıdır
 bind_egid=GID geçersiz aralık - aralık 20000-30000 gibi olmalıdır
+
 manual_title=Yapılandırma Dosyasını Düzenle
 manual_desc=Samba yapılandırma $1 dosyasını düzenliyor .. 
 manual_err=Yapılandırma dosyası saklanırken hata oluştu
 manual_edata=Hiçbir şey girilmedi!
+
 delete_err=Paylaşımları silerken hata oluştu
 delete_enone=Seçili öğe yoktur

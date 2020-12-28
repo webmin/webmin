@@ -12,10 +12,12 @@ index_restart=Reinicia  el Servidor Fail2Ban
 index_restartdesc=Fes clic sobre aquest botó per aplicar la configuració actual reiniciant el servidor Fail2Ban.
 index_return=a l'índex de mòduls
 index_header=Mòdul Fail2Ban
+
 check_edir=El directori de configuració $1 no existeix
 check_econf=El fitxer de configuració $2 de $1 no existeix
 check_eclient=No s'ha trobat l'ordre client '$1'
 check_eserver=No s'ha trobat l'ordre servidor '$1'
+
 filters_title=Filtres de Registres
 filters_name=Nom del filtre
 filters_re=Expressió regular
@@ -25,6 +27,7 @@ filters_return=a la llista de filtres
 filters_derr=No s'han pogut suprimir els filtres
 filters_enone=No n'hi ha cap de seleccionat
 filters_einuse=No es pot suprimir el filtre $1, ja que està en ús per part de les presons: $2
+
 filter_title1=Creació de Filtre
 filter_title2=Edició de Filtre
 filter_desc=Utilitza <i>&lt;HOST&gt;</i> a les expressions regulars allà on hagi d'aparèixer un nom de host o una adreça IP.
@@ -39,6 +42,7 @@ filter_ename=Hi falta el nom del filtre o bé és invàlid
 filter_eclash=El nom del filtre ja està en ús
 filter_efail=No has introduït cap expressió regular
 filter_einuse=Aquest filtre no es pot suprimir, ja que està en ús per part de les presons: $1
+
 actions_title=Accions de Coincidència
 actions_name=Nom de l'acció
 actions_ban=Ordre de prohibició
@@ -48,6 +52,7 @@ actions_return=a la llista d'accions
 actions_derr=No s'han pogut suprimir les accions
 actions_enone=No n'hi ha cap de seleccionada
 actions_einuse=L'acció $1 no es pot suprimir, ja que està en ús per part de les presons: $2
+
 action_title1=Creació d'Acció de Coincidència
 action_title2=Edició d'Acció de Coincidència
 action_header=Detalls de l'acció de coincidència
@@ -64,6 +69,7 @@ action_ban=Ordre per a prohibir una IP
 action_unban=Ordre per a autoritzar una IP
 action_desc=<i>&lt;ip&gt;</i> se substituirà per l'adreça IP que s'està prohibint.
 action_einuse=Aquesta acció no es pot suprimir, ja que està en ús per part de les presons: $1
+
 jails_title=Presons d'Accions de Filtre
 jails_add=Afegeix una nova presó
 jails_name=Nom de la presó
@@ -76,6 +82,7 @@ jails_defdesc=Edita els paràmetres per defecte i els límits que s'apliquen a t
 jails_return=a la llista de presons
 jails_derr=No s'han pogut suprimir les presons
 jails_enone=No n'hi ha cap de seleccionada
+
 jail_title1=Creació de Presó
 jail_title2=Edició de Presó
 jail_header=Detalls de la presó d'accions de filtre
@@ -115,13 +122,16 @@ jail_banaction=Acció a aplicar per defecte
 jail_defprotocol=Protocol per defecte de les accions
 jail_edestemail=Hi falta el correu de notificació per defecte o bé és invàlid
 jail_eignoreip=L'adreça IP a ignorar és invàlida
+
 jaildef_title=Opcions per Defecte de les Presons
 jaildef_header=Valors per defecte de totes les presons
 jaildef_err=No s'han pogut desar els valors per defecte de les presons
 jaildef_egone=No s'ha trobat cap presó per DEFECTE!
+
 start_err=No s'ha pogut iniciar el servidor
 stop_err=No s'ha pogut aturar el servidor
 restart_err=No s'ha pogut reiniciar el servidor
+
 log_create_filter=S'ha creat el filtre $1
 log_delete_filter=S'ha suprimit el filtre $1
 log_create_action=S'ha creat l'acció $1
@@ -136,6 +146,7 @@ log_atboot=S'ha activat Fail2Ban en engegar el sistema
 log_delboot=S'ha desactivat Fail2Ban en engegar el sistema
 log_manual=S'ha editat el fitxer de configuració $1
 log_jaildef=S'han modificat les opcions per defecte de les presons
+
 config_title=Configuració Global
 config_edef=No s'ha trobat cap secció 'Definition' al fitxer de configuració!
 config_header=Paràmetres de configuració de Fail2Ban
@@ -148,10 +159,12 @@ config_socket=Sòcol per a la comunicació amb el servidor
 config_err=No s'ha pogut desar la configuració global
 config_elogtarget=El fitxer de registre ha de ser un camí absolut
 config_esocket=El fitxer de sòcol ha de ser un camí absolut
+
 manual_title=Edició de Fitxers de Configuració
 manual_desc=Fitxer a editar:
 manual_ok=Bé
 manual_efile=El fitxer seleccionar no forma part de la configuració de Fail2Ban !
 manual_err=No s'ha pogut editar el fitxer de configuració
 manual_edata=No has introduït cap contingut al fitxer de configuració
+
 syslog_logtarget=Registre d'accions de Fail2Ban

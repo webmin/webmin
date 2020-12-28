@@ -12,6 +12,7 @@ index_restartdesc=单击此按钮以激活当前的Squid配置。
 index_iptables=端口重定向设置
 index_squid=鱿鱼代理服务器
 index_manual=编辑配置文件
+
 manual_title=编辑配置文件
 manual_file=选择一个配置文件进行编辑：
 manual_change=更改
@@ -19,6 +20,7 @@ manual_editing=使用下面的文本框手动编辑$1中的配置。请注意，
 manual_err=保存配置文件失败
 manual_efile=无效的配置文件名！
 manual_ecannot=您无权手动编辑配置文件
+
 acl_eusersall=所有用户
 acl_euserssel=只列出那些。
 acl_nodns=禁用查找？
@@ -32,15 +34,21 @@ acl_file=将ACL值存储在文件中
 acl_nofile=鱿鱼配置
 acl_infile=单独的文件
 acl_keep=只是使用文件的现有内容？
+
 aclsave_enofile=没有输入ACL文件名
 aclsave_ealready=ACL文件已存在
+
 cach_esame=<b>Squid cachemgr.cgi可执行文件</b>设置为Webmin的cachemgr.cgi程序，而不是Squid提供的程序。
+
 clear_url=从缓存中删除一个URL：
 clear_ok=去掉
+
 eacl_noprr=未定义代理回复限制
 eacl_addprr=添加代理回复限制。
+
 eacl_replypr=回复代理限制
 eacl_replynopr=未定义回复代理限制
+
 eacl_ext=外部ACL程序
 eacl_ename=班级名称
 eacl_format=输入格式
@@ -51,11 +59,13 @@ eacl_eclass=未选择程序类别
 eacl_cname=类型名称
 eacl_file=来自文件$1
 eacl_hdelete=删除选定的限制
+
 ec_coss=COSS
 ec_gap=最大客户预读间隔
 ec_maxreplies=最大回复正文大小
 ec_maxrn=大小（kB）
 ec_maxracls=对于与ACL匹配的请求（所有留空）
+
 ech_siq2=拒绝ICP查询？
 ech_timeo=主机的连接超时
 ech_digest=主机的缓存摘要URL
@@ -66,12 +76,15 @@ ech_origin=将主机视为原始服务器？
 ech_force=强制主机：标头
 ech_same=不变的
 ech_ssl=使用SSL连接吗？
+
 eicp_thost=主机名
 eicp_ttype=类型
 eicp_tpport=代理端口
 eicp_tiport=ICP端口
 eicp_delete=删除选定的缓存
+
 elogs_none=没有
+
 elogs_logformat=访问日志格式
 elogs_fname=格式名称
 elogs_ffmt=格式定义
@@ -85,8 +98,10 @@ elogs_notset=没有设置
 elogs_dont=不要登录
 elogs_file=文件$1
 elogs_squid=鱿鱼标准
+
 emisc_none=没有
 emisc_virtual=虚拟
+
 eports_ssl=SSL地址和端口
 eports_opts=端口选项
 eports_def=默认值（通常为3128）
@@ -95,6 +110,7 @@ eports_unc=不干净的SSL关闭吗？
 eports_checkhost=验证URL中的主机名？
 eports_underscore=允许在主机名中使用下划线？
 eports_all=所有
+
 eprogs_sppe=启用了ping程序？
 eprogs_startup=最初启动的程序
 eprogs_idle=最低运行程序
@@ -103,20 +119,27 @@ eprogs_capweb=Webmin默认
 eprogs_ttl=认证缓存时间
 eprogs_aittl=验证IP缓存时间
 eprogs_realm=认证领域
+
 ahttp_replyheader=创建代理回复限制
 ahttp_replyheader1=编辑代理回复限制
 ahttp_replypr=代理回复限制
+
 icache_euser=用户运行不存在的Squid
+
 scache_emaxrs=第$1行的最大正文大小无效
+
 slogs_efname=第$1行中的格式名称无效
 slogs_effmt=$1行中缺少日志格式
 slogs_eafile=$1行中缺少或无效的日志文件
+
 sprog_emsg9='$1'不是有效的缓存时间
 sprog_emsg10='$1'不是有效的TTL
 sprog_echildren=程序数必须是大于零的数字
+
 lib_aclrpmt=回复MIME类型
 lib_aclext=外部程序
 lib_aclmuip=最大用户IP
+
 log_authparam=更改的身份验证程序选项
 log_https_delete=删除了$1代理限制
 log_headeracc_create=创建头访问规则
@@ -133,16 +156,20 @@ log_pools_delete=删除的$1延迟池
 log_delay_create=为延迟池$1添加了ACL
 log_delay_modify=延迟池$1的已修改ACL
 log_delay_delete=已删除延迟池$1的ACL
+
 log_delay_move=移动了延迟池的ACL $1
 log_refresh_create=为$1创建刷新规则
 log_refresh_modify=修改了$1的刷新规则
 log_refresh_delete=$1的刷新规则已删除
+
 log_refresh_move=移动了$1的刷新规则
 log_refreshes_delete=删除的$1刷新规则
 log_iptables=更新了端口重定向设置
 log_purge=从缓存中删除URL $1
 log_cachemgr=更改了缓存管理器密码
+
 acl_restart=可以应用Squid配置吗？
+
 delay_title=延迟池
 delay_add=添加一个新的延迟池。
 delay_num=数
@@ -192,11 +219,14 @@ pool_unit2=千位
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=兆字节
+
 dpool_err=删除延迟池失败
 dpool_enone=未选择
+
 apool_header=添加延迟池ACL
 apool_header1=编辑延迟池ACL
 apool_pr=延迟池ACL
+
 authparam_title=认证程序
 authparam_header=外部身份验证程序选项
 authparam_ttl=是时候缓存密码了
@@ -239,6 +269,7 @@ ext_ecache=缓存大小丢失或无效
 ext_eprogram=输入了无效的程序路径
 ext_eclash=具有相同名称的外部程序类型已存在
 ext_eused=ACL正在使用此外部程序
+
 header_title=标头访问控制
 header_none=尚未定义头访问控制规则。
 header_name=HTTP头
@@ -258,6 +289,7 @@ header_err=保存标头访问控制规则失败
 header_ename=标头名称缺失或无效
 header_request_header_access=请求标题
 header_reply_header_access=回复标题
+
 refresh_title=刷新规则
 refresh_none=尚未定义刷新规则。
 refresh_re=正则表达式
@@ -284,6 +316,7 @@ refresh_epc=年龄百分比缺失或无效
 refresh_delete=删除选定的刷新规则
 drefresh_err=删除刷新规则失败
 drefesh_enone=未选择
+
 iptables_title=端口重定向设置
 iptables_inst0=设置端口重定向所需的IPtables防火墙命令似乎未安装在您的系统上。有关更多详细信息，请参见<a href='$1'>Linux防火墙</a>模块。
 iptables_inst1=<a href='$1'>Linux防火墙</a>模块似乎未在系统上完全安装。该模块利用该模块来设置Frox端口重定向。
@@ -298,18 +331,23 @@ iptables_enet=缺少或无效的网络地址（应为192.168.1.0/24）
 iptables_eiface=网络接口丢失或无效
 iptables_eapply=应用防火墙失败：$1
 iptables_eapply2=Apply Squid失败：$1
+
 syslog_access=鱿鱼访问日志
 syslog_cache=鱿鱼缓存日志
 syslog_store=鱿鱼对象存储日志
+
 purge_err=无法清除缓存中的网址
 purge_title=清除缓存的URL
 purge_doing=清除URL $1 ..
 purge_done=..完成。
 purge_failed=..失败了！有关原因，请参见上面的错误消息。
+
 dhttp_err=删除代理限制失败
 dhttp_enone=未选择
+
 dicp_err=删除ICP限制失败
 dicp_enone=未选择
+
 cachemgr_title=缓存管理器密码
 cachemgr_ecannot=您无权编辑缓存管理器密码
 cachemgr_def1=无需密码

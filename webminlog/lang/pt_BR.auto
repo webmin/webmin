@@ -16,6 +16,7 @@ index_sdesc=A descrição da ação contém
 index_shost=Servidor Webmin de origem
 index_long=Mostrar descrições de ação completas?
 index_global=&lt;Não existe em nenhum módulo&gt;
+
 search_webmin=Servidor Webmin
 search_none2=Nenhuma ação corresponde à sua pesquisa por ações
 search_critd=onde a descrição contém <tt>$1</tt>
@@ -30,6 +31,7 @@ search_global_baduser=Nome de usuário incorreto
 search_global_badpass=Senha incorreta
 search_global_twofactor=Token de dois fatores inválido
 search_csv=Exportar como CSV.
+
 view_host=Servidor Webmin de origem
 view_ecannot=Você não tem permissão para visualizar esta entrada de log
 view_rollback2=Reverter arquivos selecionados
@@ -41,12 +43,14 @@ view_files=Arquivos alterados e comandos executados
 view_raw=Dados brutos de log
 view_rawname=Nome do parâmetro
 view_rawvalue=Valor do parâmetro
+
 acl_mods=Pode visualizar logs em módulos
 acl_all=Todos
 acl_sel=Selecionado abaixo ..
 acl_self=Somente eu
 acl_users=Pode visualizar ações dos usuários
 acl_rollback=Pode reverter ações?
+
 rollback_title=Ação de reversão
 rollback_rusure=Tem certeza de que deseja reverter todos os arquivos listados abaixo para o conteúdo antes de executar esta ação? Todos os dados que eles contêm atualmente serão substituídos pelas seguintes alterações :
 rollback_isdir=Um diretório - nenhuma alteração será feita.
@@ -69,4 +73,5 @@ rollback_modfile=Recuperou o conteúdo do arquivo $1.
 rollback_deleted=Arquivo excluído $1.
 rollback_nodeleted=Arquivo inexistente ignorado $1.
 rollback_enone=Nenhum arquivo selecionado
+
 log_rollback=Ação revertida $1 no módulo $2 

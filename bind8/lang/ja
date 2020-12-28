@@ -55,6 +55,7 @@ index_massdelete=選択したものを削除
 index_massupdate=選択したレコードを更新
 index_masscreate=選択したレコードに追加
 index_bind=BIND
+
 master_title=マスター ゾーンの編集
 master_ecannot=このゾーンは編集できません
 master_eviewcannot=そのビューでゾーンを作成することはできません
@@ -132,6 +133,7 @@ master_defttl=このレコードのデフォルトTTL(time-to-live)値
 master_edefttl='$1' は有効なTTL(time-to-live)値ではありません。
 master_esoagone=SOAレコードが見つかりません！
 master_einclude=追加のテンプレートファイルは存在しません
+
 delete_title=ゾーンの削除
 delete_mesg=ゾーン $1を削除してもよろしいですか？すべてのレコードとゾーン ファイルが削除されます。
 delete_mesg2=本当にルートゾーンを削除してかまいませんか？ このDNSサーバはインターネットアドレスを検索できなくなるかもしれません。
@@ -141,6 +143,7 @@ delete_fwd=他のゾーンの順引きレコードを削除しますか？
 delete_onslave=スレーブサーバーからも削除しますか？
 delete_errslave=マスターゾーンは削除されましたが、スレーブで次のエラーが発生しました：$1
 delete_ezone=スレーブサーバにゾーンが見付かりません。
+
 mcreate_title=マスター ゾーンの作成
 mcreate_ecannot=マスター ゾーンを作成できません
 mcreate_opts=新規のマスター ゾーン オプション
@@ -152,6 +155,7 @@ mcreate_view=ビュー内に作成する
 mcreate_file=レコード ファイル
 mcreate_auto=自動
 mcreate_err=マスター ゾーンを作成できませんでした
+
 slave_title=スレーブ ゾーンの編集
 stub_title=スタブ ゾーンの編集
 slave_ecannot=このゾーンは編集できません
@@ -182,6 +186,7 @@ slave_apply=更新を強制する
 slave_applymsg2=このボタンをクリックして、マスターサーバーからゾーンを強制的に再転送し、すべての最新のレコードを取得します。
 slave_last=最終転送：$1
 slave_never=決して
+
 screate_title1=スレーブ ゾーンの作成
 screate_title2=スタブ ゾーンの作成
 screate_ecannot1=スレーブ ゾーンを作成できません
@@ -194,6 +199,7 @@ screate_rev=逆引き (アドレスを名前に)
 screate_dom=ドメイン名 / ネットワーク
 screate_err1=スレーブ ゾーンを作成できませんでした
 screate_err2=スタブ ゾーンを作成できませんでした
+
 recs_ecannot=このゾーン内のレコードは編集できません
 recs_ecannottype=このタイプのレコードを編集する権限がありません
 recs_title=$1 レコード
@@ -209,6 +215,7 @@ recs_find=一致するレコードを表示：
 recs_search=検索
 recs_drev=リバースも削除しますか？
 recs_none=ドメインにはまだ$1レコードがありません。
+
 edit_title=$1 の編集
 edit_header=$1 内
 edit_edit=$1 レコードの編集
@@ -265,6 +272,7 @@ edit_espfa='$1'はからの送信を許可する有効なホストではあり�
 edit_espfmx='$1'はMXからの送信を許可する有効なドメイン名ではありません
 edit_espfip='$1'は、送信を許可する有効なIPアドレスまたはIP /プレフィックスではありません
 edit_espfinclude='$1'はメールの送信元である有効な追加ドメインではありません
+
 text_title=レコード ファイルの編集
 text_title2=レコードファイルを見る
 text_desc2=このページはBINDがマスタサーバから転送されてきたゾーンを元に作成したDNSレコード $1 を表示しています。
@@ -272,6 +280,7 @@ text_undo=やり直し
 text_ecannot=レコード ファイルは編集できません
 text_none=ファイルが空です。おそらくそのゾーンはまだマスタサーバから転送されていません。
 text_soa=シリアル番号を自動的に増やす
+
 restart_err=変更を適用できませんでした
 restart_ecannot=BIND は再起動できません
 restart_epidfile=$1にBIND PIDが見つかりませんでした
@@ -280,10 +289,12 @@ restart_erunning2=BINDがスレーブサーバー$1で実行されていない�
 restart_endc=NDCコマンドが失敗しました : $1
 restart_ecmd=再起動コマンドが失敗しました : $1
 restart_eversion=スレーブサーバー$1はWebminバージョン$ 2以上を実行していません。
+
 start_ecannot=BIND を起動できません
 start_error=BIND を起動できませんでした: $1
 stop_epid=BINDが実行されていません
 stop_ecannot=BINDを停止することはできません
+
 fwd_title=転送ゾーンの編集
 fwd_ecannot=このゾーンは編集できません
 fwd_opts=ゾーン オプション
@@ -292,12 +303,14 @@ fwd_forward=別のサーバを試行しますか？
 fwd_check=名前を調べますか？
 fwd_err=オプションを保存できませんでした
 fwd_delmsg=このボタンをクリックして、DNSサーバーからこのゾーンを削除します。 その中のレコードは、通常の解決プロセスを使用して検索されます。
+
 delegation_title=委任ゾーンを編集
 delegation_ecannot=このゾーンの編集は許可されていません
 delegation_opts=ゾーンオプション
 delegation_err=オプションを保存できませんでした
 delegation_noopts=委任ゾーンには構成可能なオプションはありません。
 delegation_delmsg=このボタンをクリックして、DNSサーバーからこのゾーンを削除します。 NS以外のレコードタイプは、BINDによって認識されます。
+
 fcreate_title=転送ゾーンの作成
 fcreate_ecannot=転送ゾーンを作成できません
 fcreate_opts=新規の転送ゾーンのオプション
@@ -307,10 +320,12 @@ fcreate_rev=逆引き (アドレスを名前に)
 fcreate_dom=ドメイン名 / ネットワーク
 fcreate_masters=マスター サーバ
 fcreate_err=転送ゾーンを作成できませんでした
+
 dcreate_title=Create Delegation-Only Zone委任専用ゾーンを作成する
 dcreate_ecannot=委任ゾーンを作成することはできません
 dcreate_opts=新しい委任ゾーンオプション
 dcreate_err=委任ゾーンを作成できませんでした
+
 create_enet='$1' は無効なネットワークです
 create_edom='$1' は無効なドメイン名です
 create_edom2='$1' はネットワークではなく、ドメインである必要があります。
@@ -320,9 +335,11 @@ create_efile3=$1 を作成できませんでした: $2
 create_efile4=File $1 は既に存在します。
 create_emaster='$1' は無効なマスター サーバ アドレスです
 create_enone=少なくとも一つのマスター サーバを入力する必要があります
+
 boot_err=ダウンロードできませんでした
 boot_egzip=ルートゾーンファイルは圧縮されていますが、<tt>gzip</tt>コマンドがシステムにインストールされていません。
 boot_egzip2=ルートゾーンファイルの解凍に失敗しました：$1
+
 type_A=アドレス
 type_AAAA=IPv6 アドレス
 type_NS=ネーム サーバ
@@ -338,6 +355,7 @@ type_LOC=場所
 type_SRV=サービスアドレス
 type_ALL=全てのレコードタイプ
 type_KEY=公開鍵
+
 edit_A=アドレス
 edit_AAAA=IPv6 アドレス
 edit_NS=ネーム サーバ
@@ -352,6 +370,7 @@ edit_PTR=逆引きアドレス
 edit_LOC=場所
 edit_SRV=サービスアドレス
 edit_KEY=公開鍵
+
 recs_defttl=デフォルトのTTL
 recs_A=アドレス
 recs_AAAA=IPv6 アドレス
@@ -369,6 +388,7 @@ recs_SRV=サービスアドレス
 recs_ALL=すべて
 recs_KEY=公開鍵
 recs_delete=選択を削除します
+
 value_A1=アドレス
 value_NS1=ネーム サーバ
 value_CNAME1=実名
@@ -407,6 +427,7 @@ value_spfall2=落胆 (~all)
 value_spfall1=中性 (?all)
 value_spfall0=許可する (+all)
 value_spfalldef=デフォルト
+
 warn=警告
 fail=失敗
 ignore=無視
@@ -420,6 +441,7 @@ listed=リスト..
 eip='$1' は無効な IP アドレスです
 eport='$1' は有効なポート番号ではありません。
 eipacl='$1'は有効なIPアドレスまたはACL名ではありません
+
 acl_zones=このユーザが編集できるドメイン
 acl_zall=すべてのゾーン
 acl_zsel=選択..
@@ -461,6 +483,7 @@ acl_ztypes_master=マスター
 acl_ztypes_slave=スレーブ/スタブ
 acl_ztypes_delegation=委任
 acl_ztypes_forward=転送
+
 servers_title=他の DNS サーバ
 servers_ip=IP アドレス
 servers_bogus=偽のサーバを無視しますか？
@@ -472,6 +495,7 @@ servers_keys=DNSキーを使用する
 servers_err=他の DNS サーバを保存できませんでした
 servers_eip='$1' は無効な IP アドレスです
 servers_etrans='$1'は有効な最大転送数ではありません
+
 logging_title=ログとエラー
 logging_ecannot=ログを設定する許可がありません
 logging_header=グローバル ログとエラー オプション
@@ -509,6 +533,7 @@ logging_ename='$1' は無効なチャネル名です
 logging_efile=ログ ファイル名がありません
 logging_ever='$1'は無効なバージョン番号です
 logging_esize='$1' は無効なログ サイズです
+
 acls_title=アクセス制御リスト
 acls_ecannot=グローバル アクセス制御リストを編集できません
 acls_name=アクセス制御リスト名
@@ -516,6 +541,7 @@ acls_values=一致したアドレス、ネットワークおよび アクセス�
 acls_err=アクセス制御リストを保存できませんでした
 acls_ename='$1' は無効なアクセス制御リスト名です
 acls_eline=各IPアドレスは、ACL '$1'の個別の行に入力する必要があります
+
 files_title=ファイルとディレクトリ
 files_ecannot=ファイルを設定できません
 files_header=グローバル ファイルとディレクトリ オプション
@@ -525,6 +551,7 @@ files_pid=ID ファイルの処理
 files_xfer=ゾーン転送プログラムへのパス
 files_err=ファイルとディレクトリ オプションを保存できません
 files_efile=ファイル名がないか無効です
+
 forwarding_title=転送
 forwarding_ecannot=転送オプションを編集できません
 forwarding_header=グローバル転送とゾーン転送オプション
@@ -543,6 +570,7 @@ forwarding_etrans=最大同時転送がないか無効です
 forwarding_minutes=分
 forwarding_ip=IPアドレス
 forwarding_port=ポート(オプション)
+
 net_title=アドレスとトポロジ
 net_ecannot=アドレスとトポロジ オプションを編集できません
 net_header=グローバル アドレスとトポロジ オプション
@@ -560,6 +588,7 @@ net_eport='$1' は無効なポート番号です
 net_eusedport=ポート$1には1行のアドレスしか許可されていません
 net_etopology=トポロジ アドレスが入力されていません
 net_erecur=入力からの再帰を許可するアドレスがありません
+
 controls_title=コントロールインターフェイスオプション
 controls_ecannot=コントロールオプションを編集する権限がありません。
 controls_header=コントロールオプション
@@ -581,6 +610,7 @@ controls_eunixpath=FIFOファイルパスがないか無効です
 controls_eunixperm=8進ファイルのアクセス許可がないか、無効です
 controls_eunixowner=ファイル所有者が見つからないか無効です
 controls_eunixgroup=ファイルグループが見つからないか無効です
+
 controls_inet=インターネットポートアクセス
 controls_unix=Unix FIFO アクセス
 controls_port=ポート
@@ -594,6 +624,7 @@ controls_efile=FIFOファイル名が指定されていないか不正です。
 controls_eperms=FIFOのパーミッションが不正です。
 controls_eowner=FIFO所有者のUIDが指定されていないか不正です。
 controls_egroup=FIFO所有者のGIDが指定されていないか不正です。
+
 keys_title=DNSキー
 keys_id=キーID
 keys_alg=アルゴリズム
@@ -602,6 +633,7 @@ keys_ecannot=キーを編集する権限がありません。
 keys_err=DNSキーの保存に失敗しました。
 keys_ekey='$1' は有効なキーIDではありません。
 keys_esecret=base-64でエンコードされたキーが不正です。
+
 misc_title=その他のオプション
 misc_ecannot=その他のオプションを編集できません
 misc_header=その他のグローバル オプション
@@ -621,6 +653,7 @@ misc_esize='$1' は無効なサイズです
 misc_efiles='$1' は無効な最大オープン ファイル数です
 misc_emins='$1'は無効な分です
 misc_mins=分
+
 zonedef_title=ゾーン デフォルト
 zonedef_msg=新規マスター ゾーンのデフォルト
 zonedef_err=ゾーン デフォルトを保存できませんでした
@@ -636,10 +669,13 @@ zonedef_email=デフォルト E メール アドレス
 zonedef_prins=マスタードメインのデフォルトネームサーバ
 zonedef_this=システムホスト名 ($1)
 zonedef_eprins=マスタードメインのデフォルトネームサーバーが見つからないか無効です
+
 find_title=ゾーンの検索
 find_match=$1 に一致するゾーン..
 find_none=見つかったゾーンはありません。
+
 efirst=$2 内のライン$1 に不正な最初のディレクティブがあります
+
 findfree_title=使用できる IP アドレスの検索
 findfree_desc=使用できる IP アドレスの検索
 findfree_nofind=使用できる IP アドレスを検索できません
@@ -651,8 +687,10 @@ findfree_cf='freeXXXreeXXX' <em>ホスト名を</em> 使用できる IP アド�
 findfree_search=検索
 findfree_msg=Found $1 free IP addresses
 findfree_msg2=(of which $1 are like <i>freeXXX</i>, $2 like <i>freemac</i>)
+
 free_title=Free IP Addresses
 free_ip=IPアドレス
+
 log_servers=他の DNS サーバを変更しました
 log_logging=ログとエラーを変更しました
 log_acls=アクセス制御リストを変更しました
@@ -702,11 +740,14 @@ log_delete_zones=$1ゾーンを削除
 log_update_zones=Updated records in $1 zones
 log_freeze=Froze zone $1
 log_thaw=Un-froze zone $1
+
 convert_err=ゾーンの変換に失敗しました。
 convert_efile=レコードファイルはマスターに変換可能なスレーブゾーンより先に明記されている必要があります。
+
 whois_title=WHOIS情報
 whois_header=コマンド $1 からの出力
 whois_ecannot=WHOIS情報を参照する権限がありません
+
 view_title=クライアントビューの編集
 view_opts=クライアントビュー概要
 view_opts2=ビュー内のゾーンのオプション
@@ -717,6 +758,7 @@ view_recursion=クライアントのために再帰参照しますか?
 view_ecannot=このビューを編集する権限がありません
 view_delete=ビューを削除
 view_deletemsg=このボタンをクリックして、ビューを削除します。 含まれているゾーンを別のビューに移動するか、削除するかを選択できます。
+
 vcreate_title=クライアントビューの作成
 vcreate_match_all=全てのクライアント
 vcreate_match_sel=選択したアドレス、ネットワークおよびACL
@@ -725,6 +767,7 @@ vcreate_ename=不正なビュー名です
 vcreate_etaken=ビュー名はすでに取得されています
 vcreate_eclass=不正なクラス名です
 vcreate_ecannot=ビューを作成する権限がありません
+
 hint_title=ルートゾーンの編集
 hint_desc=ルートゾーンはDNSサーバがインターネット上のルートサーバにアクセスするために使われます。そのおかげで<tt> .com</tt>や<tt>.net.au</tt>のようなあなたの制御下にないドメイン名を変換する事ができます。DNSサーバが内部用や他のサーバにクエリを発行するための物であってもこのルート存は削除すべきではありません。
 hint_move=ビューに移動:
@@ -733,6 +776,7 @@ hint_refetch=ルートネームサーバーを再ダウンロードする
 hint_refetchdesc=このボタンをクリックすると、WebminがInternic FTPサーバー上のソースからルートゾーンファイルを再ダウンロードします。
 hint_delete=ルートゾーンを削除
 hint_deletedesc=このボタンをクリックして、このルートゾーンを削除します。 これがないと、ネームサーバーはインターネット上のセカンダリサーバー以外のドメインを解決できません。
+
 hcreate_title=ルートゾーンを作成する。
 hcreate_desc=ルートゾーンはDNSサーバがインターネット上のルートサーバにアクセスするために使われます。そのおかげで<tt> .com</tt>や<tt>.net.au</tt>のようなあなたの制御下にないドメイン名を変換する事ができます。複数のビューを使用する場合には、それぞれのビューで全てのクライアントが名前解決できるように別々のルートゾーンが必要になるかもしれません。
 hcreate_header=Root zone details
@@ -746,6 +790,7 @@ hcreate_efile='$1' は許されないルートファイルです。
 hcreate_efile2=不正なルートファイルです。
 mcreate_erecs=ルートゾーンファイルが有効ではない
 hcreate_err=ルートゾーンの作成に失敗しました。
+
 vdelete_title=ビューの削除
 vdelete_mesg=クライアントビュー $1 を削除しますか? このビュー内の全てのゾーンとゾーンファイルは削除されるか依存関係にある別のビューに移動されます。
 vdelete_mesg2=クライアントビュー $1 を削除しますか?
@@ -753,6 +798,7 @@ vdelete_newview=このビュー内のゾーン
 vdelete_root=ビューの外に移動
 vdelete_delete=全て削除
 vdelete_move=ビューに移動
+
 gen_title=レコードジェネレータ
 gen_desc=このページではジェネレータを定義する事ができます。ジェネレータはカウンターをインクリメントしながら複数のゾーンを生成します。これは、リバースゾーンの一部を他のサーバに委譲するのに使えます。
 gen_range=範囲
@@ -772,7 +818,9 @@ gen_evalue=ジェネレータ $1 用のホスト名パターンが不正です�
 gen_title2=生成されたレコード
 gen_raw=設定ファイル行
 gen_ecannot=レコードジェネレータを編集する権限がありません。
+
 refetch_err=ルートゾーンの再ダウンロードに失敗しました
+
 slaves_title=クラスタスレーブサーバ
 slaves_none=まだ追加されたDNSクラスタはありません。
 slaves_host=ホスト名
@@ -800,6 +848,7 @@ slaves_sec=ローカルに作成するときにスレーブにセカンダリを
 slaves_name=NSレコードの名前
 slaves_same=ホスト名と同じ
 slaves_header=クラスタースレーブサーバーオプション
+
 add_title=サーバーを追加
 add_msg=$1を追加中..
 add_gmsg=グループ$1にサーバーを追加しています..
@@ -816,6 +865,7 @@ add_createok=$2の新しいスレーブゾーンで$1をセットアップしま
 add_ename=NSレコード名がないか無効です
 add_egname=グループを追加するときにNSレコード名を指定することはできません
 add_emyip=このシステムのIPアドレスを計算できませんでした。 Module Configページで、<b>リモートスレーブゾーンのデフォルトマスターサーバーIP </b>を設定する必要があります。
+
 mass_title=バッチファイルからゾーンを作成する
 mass_desc=このページでは、アップロードされたテキストファイルまたはサーバー側のテキストファイルから一度に複数のゾーンを作成できます。 ファイルの各行の形式は次のとおりです。<p><tt><i>domainname</i>：<i>type</i>：<i>filename</i>：<i> master IPs </i> </tt><p><i>type</i>は、<tt>master</tt>、<tt>slave</tt>、<tt>stub</tt>または <tt>転送</tt>。 <i> filename </i>はオプションであり、欠落している場合は自動的に計算されます。 <i>マスターIP </i>は、スレーブゾーンにのみ指定する必要があります。
 mass_local=ローカルバッチファイル
@@ -847,6 +897,7 @@ mass_emips=マスターIPアドレスがありません
 mass_addedslaves=スレーブサーバーに$1を追加 OK
 mass_eonslave=スレーブサーバーで作成されたエラーが発生しました：$1
 mass_eviewcannot=このビューにゾーンを追加することはできません
+
 massdelete_title=ゾーンを削除する
 massdelete_rusure=選択した$1ゾーンを削除してもよろしいですか？ （$2）
 massdelete_ok=今すぐ削除
@@ -854,6 +905,7 @@ massdelete_zone=ゾーン$1を削除しています..
 massdelete_done=.. 完了.
 massdelete_slaves=スレーブサーバーからゾーン$1を削除しています..
 massdelete_failed=.. 一部のスレーブが失敗しました：
+
 rndc_title=RNDCの設定
 rndc_desc=このページは、RNDCプログラムによる制御のためにBINDをセットアップするために使用できます。これにより、BINDを完全に再起動する必要なく、個々のゾーンを更新できます。
 rndc_desc2=RNDC appears to be setup properly already, so you probably do not need to use this form.
@@ -864,11 +916,13 @@ rndc_ok=はい、RNDCをセットアップします
 rndc_err=RNDCのセットアップに失敗しました
 rndc_ekey=rndc.confにキーが見つかりませんでした
 rndc_esecret=rndc.confにシークレットが見つかりませんでした
+
 drecs_err=レコードを削除できませんでした
 drecs_enone=何も選択されていません
 drecs_title=レコードを削除する
 drecs_rusure=選択した$1レコードを$2から削除してもよろしいですか？
 drecs_ok=今すぐ削除
+
 manual_title=設定ファイルの編集
 manual_ecannot=BIND構成ファイルの編集は許可されていません
 manual_ok=編集
@@ -876,7 +930,9 @@ manual_efile=選択したファイルはBIND構成の一部ではありません
 manual_file=編集する設定ファイル:
 manual_edata=何も入っていない！
 manual_err=設定ファイルを保存できませんでした
+
 syslog_desc=BIND DNS サーバメッセージ
+
 umass_err=ゾーンを更新できませんでした
 umass_enone=何も選択されていません
 umass_title=ゾーンのレコードを更新する
@@ -895,6 +951,7 @@ umass_done=.. $2のうち$1の一致するレコードを更新しました。
 umass_none=.. $1のうち、更新する一致するレコードが見つかりません。
 umass_egone=ゾーンは存在しません
 emass_emx='$1'は、有効なホスト名が後に続くメールサーバーの優先順位番号ではありません
+
 rmass_err=レコードを追加できませんでした
 rmass_enone=何も選択されていません
 rmass_title=レコードをゾーンに追加
@@ -911,6 +968,7 @@ rmass_doing=ゾーン$1にレコードを追加しています..
 rmass_done=.. 完了
 rmass_eclash=.. 同じ名前と値$1のレコードは既に存在します。
 rmass_clash=レコードがすでに存在していても作成しますか？
+
 check_title=記録を確認する
 check_ecannot=レコードのチェックは許可されていません
 check_errs=レコードファイル$1で次のエラーが見つかりました。

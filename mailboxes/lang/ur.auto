@@ -2,6 +2,7 @@ index_title=صارف میل پڑھیں
 index_none=آپ کو اس سسٹم میں کسی بھی صارف کے لئے ای میل پڑھنے کی اجازت نہیں ہے۔
 index_header=صارف کے میل باکس
 index_empty=کوئی میل نہیں ہے
+index_return=صارف کی فہرست
 index_esystem=None of the supported mail servers (Exim, Qmail, Postfix and Sendmail) were detected on your system. You will need to adjust the <a href='$1'>module configuration</a> to set the mail server and possibly mail paths manually.
 index_esystem2=The mail server set in the <a href='$1'>module configuration</a> was not found on your system. You will need to adjust the configuration to use the correct server.
 index_esystem3=An error occurred contacting the mail system set in the <a href='$1'>module configuration</a> : $2.
@@ -19,6 +20,7 @@ index_eperl=The Perl module $1 needed for the selected SMTP authentication mode 
 index_file=فائل یا میلڈر میں میل پڑھیں:
 index_nousers=کوئی صارف نہیں ملا!
 index_nousersmail=ای میل والے صارفین کو نہیں ملا۔
+
 mail_title=صارف کا ای میل
 mail_from=سے
 mail_date=تاریخ
@@ -75,6 +77,7 @@ mail_fromfilter=مرسل کے ذریعہ فلٹر بنائیں
 mail_tofilter=وصول کنندہ کے ذریعہ فلٹر بنائیں
 mail_subfilter=موضوع کے لحاظ سے فلٹر بنائیں
 mail_unknown=نامعلوم
+
 mail_sign=چابی سے دستخط کریں
 mail_nosign=&lt;دستخط نہ کریں&gt;
 mail_crypt=کے لئے خفیہ کاری
@@ -109,6 +112,7 @@ mail_selread=پڑھیں کو منتخب کریں۔
 mail_selunread=غیر پڑھے ہوئے کو منتخب کریں۔
 mail_selspecial=خصوصی منتخب کریں۔
 mail_specialsync=خصوصی ہم آہنگی
+
 view_title=ای میل پڑھیں
 view_desc=Message $1 in $2
 view_desc2=Message $1 for user $2
@@ -150,6 +154,7 @@ view_sub=منسلک ای میل
 view_sub2=Attached email from $1
 view_egone=اب یہ پیغام موجود نہیں ہے
 view_eugone=یہ صارف موجود نہیں ہے
+
 view_gnupg=GnuPG دستخطی کی توثیق
 view_gnupg_0=Signature by $1 is valid.
 view_gnupg_1=Signature by $1 is valid, but trust chain could not be established.
@@ -186,7 +191,9 @@ view_images=تصاویر دکھائیں
 view_raw=کچا پیغام دیکھیں
 view_aall=تمام منسلکات کو بطور زپ محفوظ کریں۔
 view_aslideshow=تمام تصاویر دکھائیں۔
+
 compose_title=ای میل لکھیں
+
 reply_title=ای میل کا جواب دیں
 forward_title=فارورڈ ای میل
 enew_title=ای میل میں ترمیم کریں
@@ -216,9 +223,11 @@ reply_addattach=اٹیچمنٹ فیلڈ شامل کریں۔
 reply_addssattach=سرور سائیڈ منسلکہ کا فیلڈ شامل کریں۔
 reply_html0=عبارت تحریر کریں
 reply_html1=HTML تحریر کریں
+
 reply_spell=ہجے کی غلطیوں کی جانچ کریں؟
 reply_draft=بطور مسودہ محفوظ کریں
 reply_save=محفوظ کریں اور ترمیم کریں
+
 send_err=میل بھیجنے میں ناکام
 send_eto=پتہ غائب ہے
 send_efrom=پتہ غائب ہے
@@ -235,6 +244,7 @@ send_eperms2=You are not allowed to send file $1
 send_epath=Sendmail executable $1 does not exist.
 send_efile=Failed to read attachment $1 : $2
 send_done=.. ہو گیا۔
+
 send_epass=آپ کسی پیغام پر دستخط نہیں کرسکتے ہیں کیوں کہ آپ کا پاس فریز ابھی تک GnuPG ماڈیول میں سیٹ اپ نہیں ہوا ہے۔
 send_esign=Failed to sign message : $1
 send_ekey=Couldn't find key for email address $1
@@ -246,6 +256,7 @@ send_espell=آپ کے پیغام میں املا کی درج ذیل خامیاں
 send_draft=Mail to $1 saved in drafts folder.
 send_drafting=Saving mail to $1 in drafts folder ..
 send_eattachsize=The mail attachment exceeded the maximum allowed size of $1 bytes
+
 delete_title=میل کو حذف کریں
 delete_rusure=Are you sure you want to delete the $1 selected messages from $2? This may take some time for a large mail file. Until the deletion has finished, no other action should be performed.
 delete_rusure2=Are you sure you want to delete this message from $1? This may take some time for a large mail file. Until the deletion has finished, no other action should be performed.
@@ -268,6 +279,7 @@ delete_nobutton=کوئی بٹن نہیں کلکس کیا گیا
 delete_ereport=Failed to report as spam : $1
 delete_errc=میل کاپی کرنے میں ناکام
 delete_errm=میل منتقل کرنے میں ناکام
+
 confirm_title=حذف ہونے کی تصدیق کریں
 confirm_warn=Are you sure you want to delete the $1 selected messages from this folder?
 confirm_warnf=Are you sure you want to delete the $1 selected messages from the folder <b>$2</b>?
@@ -277,6 +289,7 @@ confirm_warn4=جب تک حذف ہونے کا کام ختم نہیں ہوجاتا
 confirm_ok=ابھی حذف کریں
 confirm_warnall=کیا آپ واقعی اس فولڈر میں موجود تمام پیغامات کو حذف کرنا چاہتے ہیں؟
 confirm_warnallf=Are you sure you want to delete all of the messages in the folder <b>$1</b>?
+
 search_title=تلاش کے نتائج
 search_ecannot=آپ کو اس صارف کے ای میل کو تلاش کرنے کی اجازت نہیں ہے
 search_ematch=اس کے مقابلہ کیلئے آپ کو متن درج کرنا ہوگا۔
@@ -305,16 +318,19 @@ search_nolatest=سبھی فولڈر میں
 search_latestnum=صرف تازہ ترین
 search_elatest=تلاش کرنے کیلئے پیغامات کی گمشدہ یا غلط تعداد
 search_withstatus=, with status $1
+
 folder_inbox=ان باکس
 folder_sent=میل بھیجا
 folder_drafts=ڈرافٹس
 folder_trash=کوڑے دان
+
 detach_err=فائل کو علیحدہ کرنے میں ناکام
 detach_edir=داخل کرنے کیلئے محفوظ کرنے کے لئے کوئی فائل یا ڈائریکٹری نہیں ہے
 detach_eopen=Failed to open $1 : $2
 detach_ewrite=Failed to write to $1 : $2
 detach_title=فائل کو الگ کریں
 detach_ok=Wrote attachment to server-side file $1 ($2).
+
 sform_title=اعلی درجے کی تلاش
 sform_header=اعلی درجے کی ای میل تلاش کے اختیارات
 sform_andmode=معیار کا وضع
@@ -339,6 +355,7 @@ sform_headers=کوئی ہیڈر
 sform_allmsg=پورا پیغام
 sform_size=پیغام کا سائز
 sform_return=جدید ترین سرچ فارم
+
 find_enone=آپ کی تلاش سے مماثل کوئی صارف نہیں ملا
 find_title=تلاش کے نتائج
 find_results=Users matching search for $1 ..
@@ -351,6 +368,7 @@ find_incount=ای میلز
 find_sentcount=بھیجا گیا
 find_fcount=فولڈرز
 find_in=$1 in $2
+
 acl_none=کوئی نہیں
 acl_same=ایک ہی نام کے ساتھ صارف
 acl_all=سب
@@ -376,12 +394,15 @@ acl_usersu=حد میں UID کے ساتھ
 acl_sec=ثانوی گروہوں کو شامل کریں؟
 acl_dir=ڈائریکٹری میں میل فائلوں کو پڑھ سکتے ہیں
 acl_dirauto=خود بخود فیصلہ کریں (کہیں بھی اگر تمام صارف دکھائی دیں ، کہیں بھی نہیں)
+
 log_delmail=Deleted $1 messages from $2
 log_movemail=Moved $1 messages from $2 to $3
 log_copymail=Copied $1 messages from $2 to $3
 log_send=Sent mail to $1
 log_read=Read mail for $1
+
 emodified=This folder has been modified since it was last viewed! Return to the <a href='$1'>mail list</a> and try again.
+
 razor_title=بطور اسپام رپورٹنگ
 razor_title2=ہام کی حیثیت سے رپورٹنگ
 razor_report=اس پیغام کو استرا اور اسپاماساسن اسپیم مسدود کرنے والے ڈیٹا بیس کو بتانا۔
@@ -391,14 +412,18 @@ razor_done=.. ہو گیا
 razor_err=.. ناکام! اس کی وجہ کے لئے اوپر غلطی کا پیغام ملاحظہ کریں۔
 razor_moved=.. done, and moved to folder $1.
 razor_deleted=.. ہو گیا ، اور حذف شدہ پیغام بھی۔
+
 ham_title=ہام کی حیثیت سے رپورٹنگ
 ham_report=اس پیغام کو ریزر اور اسپاماساسن کے دوسرے ڈیٹا بیس کو غیر اسپیم کی حیثیت سے بتانا ..
+
 black_title=مرسل کو انکار کرنا
 black_done=Added the email address $1 to SpamAssassin's denied addresses list.
 black_already=The email address $1 is already on SpamAssassin's denied addresses list.
+
 white_title=بھیجنے والے کو اجازت دے رہا ہے
 white_done=Added the email address $1 to SpamAssassin's allowed addresses list.
 white_already=The email address $1 is already on SpamAssassin's allowed addresses list.
+
 ldap_emod=Missing Perl module $1 needed for connecting to LDAP
 ldap_econn=Failed to connect to LDAP server $1 port $2
 ldap_elogin=Failed to bind to LDAP server $1 as $2 : $3
@@ -406,12 +431,15 @@ ldap_ehost=کوئی LDAP سرور ماڈیول ترتیب میں سیٹ نہیں
 ldap_eport=کوئی درست ایل ڈی اے پی سرور بندرگاہ ماڈیول کنفیگریشن میں سیٹ نہیں ہے
 ldap_euser=ماڈیول کنفیگریشن میں ایل ڈی اے پی لاگ ان سیٹ نہیں ہے
 ldap_ebase=ماڈیول کنفیگریشن میں ایل ڈی اے پی بیس ڈی این سیٹ نہیں ہے
+
 delall_title=تمام میل کو حذف کریں
 delall_rusure=Are you sure you want to delete all email from $1? $2 messages totaling $3 will be deleted forever.
 delall_ok=ابھی حذف کریں
+
 slide_title=منسلک امیجز
 slide_prev=پچھلا
 slide_next=اگلے
+
 left_mail=میل
 left_search=تلاش:
 left_folders=فولڈرز کا نظم کریں

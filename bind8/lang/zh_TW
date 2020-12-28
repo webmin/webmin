@@ -23,6 +23,7 @@ index_stub=儲存
 index_forward=轉送
 index_opts=伺服器全域選項
 index_return=區域列表
+
 master_title=編輯主要區域
 master_ecannot=您不被允許編輯這個區域
 master_manual=編輯紀錄檔
@@ -68,10 +69,12 @@ master_eip=遺失或錯誤的模板 IP 位址
 master_eiptmpl=模板紀錄數值僅能來自位址紀錄
 master_esoacannot=您不被允許編輯區域參數
 master_eoptscannot=您不被允許編輯區域選項
+
 delete_title=刪除區域
 delete_mesg=您確定要刪除區域 $1 嗎? 所有的紀錄與這個區域檔都將被刪除.
 delete_rev=是否刪除其他區域中的反查紀錄?
 delete_fwd=是否刪除其他區域中的正向紀錄?
+
 mcreate_title=建立主控區域
 mcreate_ecannot=您不能建立主控區域
 mcreate_opts=新的主控區域選項
@@ -82,6 +85,7 @@ mcreate_dom=網域名稱 / 網路
 mcreate_file=紀錄檔
 mcreate_auto=自動
 mcreate_err=建立區域失敗
+
 slave_title=編輯被控區域
 stub_title=編輯儲存區域
 slave_ecannot=您不被允許編輯這個區域
@@ -101,6 +105,7 @@ slave_err=儲存選項失敗
 slave_emax='$1' 不是一個有效的最大傳輸時間
 slave_efile=遺失紀錄檔案
 slave_efile2='$1' 不是一個可以接受的紀錄檔案
+
 screate_title1=建立被控區域
 screate_title2=建立儲存區域
 screate_ecannot1=您不被允許建立被控區域
@@ -113,6 +118,7 @@ screate_rev=反查 (位址到名稱)
 screate_dom=網域名稱 / 網路
 screate_err1=無法建立被控區域
 screate_err2=無法建立儲存區域
+
 recs_ecannot=您不被允許編輯這個區域中的紀錄
 recs_title=$1 紀錄
 recs_header=在 $1
@@ -120,6 +126,7 @@ recs_addr=位址
 recs_name=名稱
 recs_ttl=存活時間
 recs_return=紀錄
+
 edit_title=編輯 $1
 edit_header=在 $1
 edit_edit=編輯 $1 紀錄
@@ -145,12 +152,16 @@ edit_eos=遺失或錯誤的作業系統類別
 edit_eserv=您沒有輸入任何已知的服務
 edit_eemail='$1' 不是一個有效的電子郵件位址
 edit_etxt='$1' 不是一個有效的文字紀錄名稱
+
 text_title=編輯紀錄檔
 text_undo=復原
 text_ecannot=您不被允序編輯紀錄檔案
+
 restart_ecannot=您不被允許重新啟動 BIND
+
 start_ecannot=您不被允序啟動 BIND
 start_error=啟動 BIND 失敗 : $1
+
 fwd_title=編輯轉送區域
 fwd_ecannot=您不被允許編輯這個區域
 fwd_opts=區域選項
@@ -158,6 +169,7 @@ fwd_masters=主控伺服器
 fwd_forward=是否嘗試其他伺服器?
 fwd_check=是否檢查名稱?
 fwd_err=儲存選項失敗
+
 fcreate_title=建立轉送區域
 fcreate_ecannot=您不被允序建立轉送區域
 fcreate_opts=新的轉送區域選項
@@ -167,7 +179,9 @@ fcreate_rev=反查 (位址到名稱)
 fcreate_dom=網域名稱 / 網路
 fcreate_masters=主控伺服器
 fcreate_err=建立轉送區域失敗
+
 boot_err=下載失敗
+
 type_A=位址
 type_NS=名稱伺服器
 type_CNAME=別名
@@ -177,6 +191,7 @@ type_TXT=文字
 type_WKS=一般服務
 type_RP=負責人
 type_PTR=反查位址
+
 value_A1=位址
 value_NS1=名稱伺服器
 value_CNAME1=真實名稱
@@ -191,6 +206,7 @@ value_WKS3=服務
 value_RP1=電子郵件位址
 value_RP2=文字紀錄
 value_PTR1=主機名稱
+
 warn=警告
 fail=失敗
 ignore=忽略
@@ -211,6 +227,7 @@ acl_file=是否可以編輯紀錄檔案?
 acl_params=是否可以編輯區域參數?
 acl_opts=是否可以編輯區域選項?
 acl_delete=是否可以刪除區域?
+
 servers_title=其他 DNS 伺服器
 servers_ip=IP 位址
 servers_bogus=是否忽略偽造的伺服器?
@@ -221,6 +238,7 @@ servers_many=多次
 servers_err=儲存到其他 DNS 伺服器失敗
 servers_eip='$1' 不是一個有效的 IP 位址
 servers_etrans='$1' 不是一個有效的最大傳輸量
+
 logging_title=紀錄與錯誤
 logging_ecannot=您不被允許組態紀錄
 logging_header=全域紀錄與錯誤選項
@@ -252,12 +270,14 @@ logging_ename='$1' 不是一個有效的頻道名稱
 logging_efile=遺失紀錄檔檔名
 logging_ever='$1' 不是一個有效的版本編號
 logging_esize='$1' 不是一個有效的紀錄大小
+
 acls_title=存取控制列表
 acls_ecannot=您不被允許編輯全域存取控制列表
 acls_name=存取控制列表名稱
 acls_values=符合的位址, 網路與存取控制列表
 acls_err=無法儲存存取控制列表
 acls_ename='$1' 不是一個有效的存取控制列表名稱
+
 files_title=檔案與目錄
 files_ecannot=您不被允許組態檔案
 files_header=全域檔案與目錄選項
@@ -267,6 +287,7 @@ files_pid=程序編號檔案
 files_xfer=到區域傳輸程式的路徑
 files_err=無法儲存檔案與目錄選項
 files_efile=遺失或錯誤的檔名
+
 forwarding_title=轉送與傳輸
 forwarding_ecannot=您不被允許編輯轉送與傳輸選項
 forwarding_header=全域轉送與區與傳輸選項
@@ -280,6 +301,7 @@ forwarding_in=最大同時區域傳輸數目
 forwarding_err=無法儲存轉送與傳輸選項
 forwarding_emins=遺失或錯誤的傳輸時間
 forwarding_etrans=遺失或錯誤的最大同時傳輸數目
+
 net_title=位址與拓樸
 net_ecannot=您不被允許編輯位址與拓樸
 net_header=全域位址與拓樸選項
@@ -292,6 +314,7 @@ net_port=通訊埠
 net_topol=名稱伺服器選擇拓樸
 net_err=無法儲存位址與拓樸選項
 net_eport='$1' 不是一個有效的通訊埠編號
+
 misc_title=其他選項
 misc_ecannot=您不被允許編輯其他選項
 misc_header=其他全域全域選項
@@ -310,6 +333,7 @@ misc_err=無法儲存其他選項
 misc_esize='$1' 不是一個有效的大小
 misc_efiles='$1' 不是一個有效的最大開啟檔案數目
 misc_emins='$1' 不是一個有效的分鐘數字
+
 zonedef_title=區域預設值
 zonedef_msg=給新主控區域的預設值
 zonedef_err=無法儲存區域預設值
@@ -321,4 +345,5 @@ zonedef_cmaster=是否檢查主控伺服器中的名稱?
 zonedef_cslave=是否檢查被控區域中的名稱?
 zonedef_cresponse=是否檢查名稱是否有回應?
 zonedef_notify=是否通知被控伺服器變更?
+
 efirst=在 $2 的第 $1 行有錯誤的第一指令

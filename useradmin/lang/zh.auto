@@ -27,8 +27,10 @@ index_mass=删除所选用户
 index_mass2=禁用选择
 index_mass3=启用选定
 index_gmass=删除选定的组
+
 search_found=找到与用户匹配的$1 ..
 search_gfound=找到$1匹配组 ..
+
 gid=组
 gidnum=组号
 uedit_manual=目录
@@ -46,6 +48,7 @@ uedit_uid_calc=已计算
 uedit_disabled=暂时停用登录
 uedit_sys=系统默认
 uedit_clone=克隆用户
+
 usave_elength=用户名不能超过$1个字母
 usave_ere=用户名与regexp $1不匹配
 usave_ealluid=所有允许的UID已分配
@@ -64,6 +67,7 @@ usave_epasswd_same=密码包含或与用户名相同
 usave_epasswd_mindays=密码更改的天数少于$1天
 usave_epasswd_cmd=密码验证命令失败
 usave_eothers=用户已成功保存，但在另一个模块中发生错误：$1
+
 gedit_desc=描述
 gedit_oneperline=（每行一个）
 gedit_egone=选定的组不再存在！
@@ -76,22 +80,27 @@ gedit_selu=组中的用户
 gedit_pri=主要小组成员
 gedit_prinone=没有用户将此群组作为主要群组
 gedit_clone=克隆组
+
 gsave_elength=组名不能超过$1字母
 gsave_eggid=您无权更改组的GID
 gsave_eallgid=所有允许的GID已分配
 gsave_eothers=该组已成功保存，但在另一个模块中发生错误：$1
 gsave_egidused2=GID已被使用
+
 udel_enum=无效的用户号码
 udel_eroot=不允许删除系统用户（UID小于或等于10的用户）。
 udel_ugroupother=在其他模块中删除此用户的组。
 udel_failed=..失败了！ ：$1
 udel_dothers=删除其他模块中的用户？
 udel_root=警告！如果删除了root用户，则将来可能无法管理系统。
+
 gdel_eroot=不允许删除系统组（GID小于或等于10的系统组）。
 gdel_enum=组号无效
 gdel_dothers=删除其他模块中的组？
 gdel_other=正在从其他模块中删除 ..
+
 many_egtaken=在行$1中已使用的组名：$2
+
 acl_uedit_gid=具有GID范围的用户
 acl_uedit_sec=包括次要小组？
 acl_uedit_this=只有这个使用者
@@ -119,6 +128,7 @@ acl_udelete=可以删除用户吗？
 acl_gdelete=可以删除群组吗？
 acl_urename=可以重命名用户吗？
 acl_grename=可以重命名组吗？
+
 log_batch=执行的批处理文件$1
 log_batch_l=执行的批处理文件$1（创建的$2，已修改的$3，$4已删除）
 log_ubatch=执行上传的批处理文件
@@ -129,6 +139,7 @@ log_ugbatch=执行上载的组批处理文件
 log_ugbatch_l=执行上传的组批处理文件（已创建$1，已修改$2，已删除$3）
 log_delete_users=删除的$1用户
 log_delete_groups=删除的$1组
+
 batch_title=执行批处理文件
 batch_ecannot=您不能使用批处理文件格式
 batch_desc=此表单使您可以一次从上载或本地文本文件中创建，修改或删除许多用户。文件中的每一行都根据其第一个字段指定要执行的操作。行格式为：
@@ -187,12 +198,14 @@ batch_eexpire=$1上的无效到期日：$2
 batch_echange=$1上的无效密码更改日：$2
 batch_instr=说明和批处理格式
 batch_header=批量用户创建，更新和删除选项
+
 who_title=登录用户
 who_user=Unix用户
 who_tty=TTY
 who_when=登录于
 who_from=从登录
 who_none=当前没有用户登录。
+
 export_title=导出批处理文件
 export_desc=该表单使您可以创建一个批处理文件，其中包含系统上的部分或全部可用用户。假设文件使用选定的批处理文件格式，则可以在另一个系统的“执行批处理文件”页面上使用该文件来重新创建导出的用户。
 export_header=批处理用户导出选项
@@ -213,6 +226,7 @@ export_done=将$1用户成功导出到文件$2（$3）。
 export_pft=批处理文件格式
 export_who=用户导出
 export_ecannot=您不允许导出用户
+
 gexport_title=导出组批处理文件
 gexport_desc=此表单使您可以创建包含系统上某些或所有可用组的批处理文件。可以在另一个系统上的“执行组批处理文件”页面上使用该文件来重新创建导出的组。
 gexport_header=批处理组导出选项
@@ -221,6 +235,7 @@ gexport_ecannot=您不允许导出组
 gexport_err=导出组批处理文件失败
 gexport_egid=范围内的第一个GID无效
 gexport_egid2=范围内的第二个GID无效
+
 pft_0=仅经典<tt>passwd</tt>文件
 pft_1=BSD <tt>master.passwd</tt>文件
 pft_2=标准<tt>passwd</tt>和<tt>shadow</tt>文件
@@ -228,6 +243,7 @@ pft_3=Unixware <tt>passwd</tt>文件
 pft_4=AIX <tt>passwd</tt>和<tt>security</tt>文件
 pft_5=OpenServer <tt>passwd</tt>和短<tt>shadow</tt>文件
 pft_6=MacOS NetInfo数据库
+
 umass_title=删除用户
 umass_err=删除用户失败
 umass_sure=您确定要删除$1所选用户吗？他们的主目录包含文件的$2。
@@ -239,6 +255,7 @@ umass_del1=删除用户
 umass_del2=删除用户和主目录
 umass_eroot=不允许删除系统用户（UID小于或等于10的用户）。
 umass_doing=删除用户$1 ..
+
 gmass_title=删除群组
 gmass_err=删除群组失败
 gmass_sure=您确定要删除$1选定的组吗？
@@ -248,16 +265,19 @@ gmass_del=删除群组
 gmass_eroot=不允许删除系统组（GID小于或等于10的系统组）。
 gmass_doing=删除组$1 ..
 gmass_eprimary=组$1无法删除，因为它是用户$2的主要组。
+
 dmass_title=禁用用户
 dmass_sure=您确定要禁用$1所选用户吗？以后可以重新启用它们，而不会丢失密码或数据。
 dmass_dis=禁用用户
 dmass_pass=暂时锁定密码 ..
 dmass_doing=禁用用户$1 ..
 dmass_already=..已经被禁用！
+
 emass_title=启用用户
 emass_pass=解锁密码 ..
 emass_doing=启用用户$1 ..
 emass_already=..已经启用！
+
 gbatch_title=执行组批处理文件
 gbatch_ecannot=您不能使用组批处理文件格式
 gbatch_desc=通过此表单，您可以一次从上载或本地文本文件中创建，修改或删除多个组。文件中的每一行都根据其第一个字段指定要执行的操作。行格式为：

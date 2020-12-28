@@ -57,20 +57,27 @@ index_rotate=更新統計
 index_rotatedesc=單擊此按鈕可處理直到當前時間的所有記錄的網絡流量，使其立即可用於報告。
 index_eiptables=警告-您的IPtables配置有錯誤： $1。設置帶寬監視將清除所有防火牆規則。
 index_return=報表
+
 log_setup=在接口 $1上設置帶寬監視
 log_turnoff=禁用帶寬監控
 log_rotate=更新統計
+
 acl_setup=可以設置和禁用監視嗎？
+
 turnoff_ecannot=您無權禁用監視
+
 setup_ecannot=您無權啟用監控
 setup_eiface=接口名稱缺失或無效
 setup_ezone=無法找到所選接口的Shorewall區域
+
 system_firewall=IP表
 system_ipfw=IPFW
 system_ipfilter=IP過濾器
 system_shorewall=岸牆
+
 syslog_syslog=系統日誌
 syslog_syslog-ng=系統日誌
+
 rotate_title=更新統計
 rotate_doing=處理記錄的網絡流量 ..
 rotate_done=..完成。

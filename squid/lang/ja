@@ -26,6 +26,7 @@ index_authparam=認証プログラム
 index_return=インデックス
 index_squidver=コマンド <tt>$1</tt>の返り値 :
 index_version=Squid バージョン $1
+
 buttsave=保存
 buttdel=削除
 buttcreat=作成
@@ -35,6 +36,7 @@ default=デフォルト
 none=なし
 on=オン
 off=オフ
+
 acl_header1=ACL (アクセス制御リスト) の作成
 acl_header2=ACL (アクセス制御リスト) の編集
 acl_name=ACL 名
@@ -85,6 +87,7 @@ acl_failurl=失敗した URL
 acl_buttsave=保存
 acl_buttdel=削除
 acl_return=ACL (アクセス制御リスト)
+
 aclsave_failsave=ACL を保存できませんでした
 aclsave_faildel=ACL を削除できませんでした:
 aclsave_epr=この ACL はプロキシ制限で使用されています
@@ -102,10 +105,12 @@ aclsave_eehour=終了時間が無効です
 aclsave_esmin=開始の分が無効です
 aclsave_eemin=終了の分が無効です
 aclsave_efile=ACL ファイル '$1' への書込みはできません
+
 cach_ecannot=キャッシュマネージャの統計にアクセスする権限がありません
 cach_err=エラー
 cach_nfound=Squid キャッシュ マネージャ プログラム <tt>$1</tt> がシステムに見つかりませんでした。ご使用の<a href=/config.cgi?$2 >モジュール設定</a> が不正な可能性があります。
 cach_return=Squid インデックス
+
 chown_header=所有権の変更
 chown_stop=Squid を停止...
 chown_done=.. 完了
@@ -113,6 +118,7 @@ chown_chown=所有権を変更中...
 chown_restart=Squid の再起動...
 chown_failrestart=Squid を再起動できませんでした..
 chown_return=Squid インデックス
+
 clear_ecannot=キャッシュをクリア及びリビルドする権限がありません
 clear_header=キャッシュのクリアとリビルド
 clear_msgclear=Squid キャッシュをクリアしてリビルドしてもよろしいですか？これはキャッシュに入れた <b>すべて</b> のファイルを削除して Squid サーバを再起動します。
@@ -124,6 +130,7 @@ clear_del=古いキャッシュ ファイルを削除中 ..
 clear_init=コマンド<tt>$1</tt>で Squid キャッシュを初期化中..
 clear_failrestart=Squid を再起動できませんでした..
 clear_return=Squid インデックス
+
 eacl_ecannot=アクセス制御を編集する権限がありません
 eacl_header=アクセス制御
 eacl_acls=ACL (アクセス制御リスト)
@@ -138,6 +145,7 @@ eacl_acls1=ACL
 eacl_move=移動
 eacl_nopr=プロキシ制限が定義されていません
 eacl_addpr=プロキシ制限を追加
+
 eacl_icpr=ICP 制限
 eacl_noicpr=ICP 制限が定義されていません
 eacl_addicpr=ICP 制限を追加
@@ -152,6 +160,7 @@ eacl_noext=外部アクセス制御プログラムが定義されていません
 eacl_addext=外部アクセス制御プログラムの追加
 eacl_eclass=プログラムクラスが選択されていません
 eacl_cname=タイプ名
+
 eadm_ecannot=管理オプションを編集する権限がありません
 eadm_header=管理オプション
 eadm_aao=管理とアナウンス オプション
@@ -178,6 +187,7 @@ eadm_caf=キャッシュ アナウンスのファイル
 eadm_annp=アナウンス期間
 eadm_buttsave=保存
 eadm_return=Squid インデックス
+
 eauth_ecannot=プロクシ認証を編集する権限がありません
 eauth_header=プロキシ認証
 eauth_aopt=認証オプション
@@ -191,6 +201,7 @@ eauth_pusers=プロキシ ユーザ
 eauth_nopusers=現在定義されているプロキシ ユーザはありません。
 eauth_addpuser=新規プロキシ ユーザを追加
 eauth_return=Squid インデックス
+
 ec_ecannot=キャッシュオプションを編集する権限がありません
 ec_header=キャッシュ オプション
 ec_cro=キャッシュと要請オプション
@@ -244,6 +255,7 @@ ec_return=Squid インデックス
 ec_maxreplies=応答ボディサイズの最大値
 ec_maxrn=サイズ (kB)
 ec_maxracls=ACLと合致する要求に対し(空欄で全てに合致)
+
 ech_header=キャッシュ ホストの作成
 ech_header1=キャッシュ ホストの編集
 ech_cho=キャッシュ ホストのオプション
@@ -287,6 +299,7 @@ ech_origin=ホストを起源サーバとして扱いますか?
 ech_force=Host:ヘッダの強制
 ech_same=変更されていません
 ech_ssl=SSLで接続しますか?
+
 eicp_ecannot=他のキャッシュを編集する権限がありません
 eicp_header=その他のキャッシュ
 eicp_opcs=その他のキャッシュ プロキシ サーバ
@@ -319,6 +332,7 @@ eicp_addalways=直接取出しの ACL を追加
 eicp_never=間接取出しの ACL
 eicp_nonever=間接取出しの ACL は定義されていません
 eicp_addnever=間接取出しの ACL を追加
+
 elogs_ecannot=ロギングを編集する権限がありません
 elogs_header=ログ
 elogs_lalo=ログとログ ファイルのオプション
@@ -339,6 +353,7 @@ elogs_ln=ログ ネットマスク
 elogs_do=デバッグ オプション
 elogs_mht=MIME ヘッダ テーブル
 elogs_return=Squid インデックス
+
 emem_ecannot=メモリ使用を編集する権限がありません
 emem_dheader=メモリとディスクの使用率
 emem_header=メモリ使用率
@@ -364,6 +379,7 @@ emem_lfuda=LFUDA
 emem_hlru=HLFU
 emem_return=Squid インデックス
 emem_mrp=メモリの置換えポリシー
+
 emisc_ecannot=その他のオプションを編集する権限がありません
 emisc_header=その他のオプション
 emisc_mo=その他のオプション
@@ -400,6 +416,7 @@ emisc_wccpin=WCCP インカミングアドレス
 emisc_wccpout=WCCP アウトゴーイングアドレス
 emisc_none=無し
 emisc_virtual=バーチャル
+
 eports_ecannot=ポートとネットワークを編集する権限がありません
 eports_header=ポートとネットワーク
 eports_pano=ポートとネットワーク オプション
@@ -422,6 +439,7 @@ eports_return=Squid インデックス
 eports_def=デフォルト (通常は 3128)
 eports_sel=以下にリストされた..
 eports_unc=クリーンでないSSLシャットダウンを行いますか?
+
 eprogs_ecannot=ヘルパープログラムを編集する権限がありません
 eprogs_header=ヘルパー プログラム
 eprogs_chpo=キャッシュ ヘルパー プログラム オプション
@@ -446,6 +464,7 @@ eprogs_ttl=認証キャッシュ時間
 eprogs_aittl=認証IPのキャッシュ時間
 eprogs_realm=認証領域(レルム)
 eprogs_return=Squid インデックス
+
 euser_header=プロキシ ユーザの作成
 euser_header1=プロキシ ユーザの編集
 euser_pud=プロキシ ユーザの詳細
@@ -454,6 +473,7 @@ euser_p=パスワード
 euser_u1=変更なし
 euser_e=可能ですか?
 euser_return=ユーザ リスト
+
 ahttp_header=プロキシ制限の作成
 ahttp_header1=プロキシ制限の編集
 ahttp_pr=プロキシ制限
@@ -463,7 +483,9 @@ ahttp_d=拒否
 ahttp_ma=ACL に一致
 ahttp_dma=ACL に一致しない
 ahttp_return=ACL (アクセス制御リスト)
+
 sahttp_ftspr=プロキシ制限を保存できませんでした
+
 aicp_header=ICP 制限の作成
 aicp_header1=ICP 制限の編集
 aicp_ir=ICP 制限
@@ -473,14 +495,18 @@ aicp_d=拒否
 aicp_ma=ACL に一致
 aicp_dma=ACL に一致しない
 aicp_return=ACL (アクセス制御リスト)
+
 saicp_ftsir=ICP 制限を保存できませんでした
+
 icache_ecannot=キャッシュを初期化する権限がありません
 icache_ftic=キャッシュを初期化できませんでした
 icache_ymcautrsa=Squid を実行するユーザを選択する必要があります
 icache_itscwtc=コマンド<tt>$1</tt>で Squid キャッシュを初期化中..
 icache_return=Squid インデックス
 icache_title=キャッシュを初期化
+
 restart_ftrs=Squid を再設定できませんでした
+
 sadmin_ftsao=管理オプションを保存できませんでした
 sadmin_header=所有権の変更
 sadmin_msg1=Squid を実行するユーザまたはグループを変更しました。この変更を有効にするには、すべてのキャッシュとログファイルの所有権を更新し Squid を再起動する必要があります。
@@ -490,10 +516,12 @@ sadmin_inavea='$1' は無効な E メール アドレスです
 sadmin_inavh='$1' は無効なホスト名です
 sadmin_inavap='$1' は無効なアナウンス期間です
 sadmin_inavp='$1' は無効なポートです
+
 sauth_ftsao=認証オプションを保存できませんでした
 sauth_iomuf=ユーザ ファイル名がないか無効です
 sauth_iomd=ドメインがないか無効です
 sauth_msg1=ご使用の Squid のバージョンはプロキシ認証のサポートつきでコンパイルされていません。
+
 scache_ftsco=キャッシュ オプションを保存できませんでした
 scache_emsg0=少なくとも 1 つのキャッシュ ディレクトリを入力する必要があります
 scache_emsg1=キャッシュ ディレクトリ '$1' は存在しません
@@ -511,34 +539,41 @@ scache_emsg12='$1' は無効なディレクトリ サイズです
 scache_emsg13='$1' は有効なホストではありません
 scache_emsg14='$1' は無効なポートです
 scache_emaxrs=行番号 $1 の最大ボディサイズが無効です
+
 schost_ftsc=キャッシュを保存できませんでした
 schost_emsg1='$1' は無効なキャッシュ ホスト名です
 schost_emsg2='$1' は無効なプロキシ ポートです
 schost_emsg3='$1' は無効な ICP ポートです
 schost_emsg4='$1' は無効なTTL時間です
 schost_emsg5='$1' は無効な重みです
+
 sicp_ftsco=キャッシュ オプションを保存できませんでした
 sicp_emsg1='$1' は無効なタイムアウトです
+
 slogs_ftslo=ログ オプションを保存できませんでした
 slogs_emsg1='$1' は無効な絶対ファイル名です
 slogs_emsg2='$1' は無効なファイル名です
 slogs_emsg3=ディレクトリ '$1' は存在しません
 slogs_emsg4='$1' は無効なネットマスクです
 slogs_emsg5='$1' は無効なデバッグ オプション リストです
+
 smem_ftsmo=メモリ オプションを保存できませんでした
 smem_emsg1='$1' は無効なキャッシュ サイズです
 smem_emsg2='$1' は無効なハイ ウォーターマークです
 smem_emsg3='$1' は無効なロー ウォーターマークです
 smem_emsg4='$1' は無効なオブジェクト サイズです
+
 smisc_ftso=オプションを保存できませんでした
 smisc_emsg1='$1'は無効なローテーション数です
 smisc_emsg2='$1' は無効なドメインです
 smisc_emsg3='$1' は無効なプロキシです
 smisc_emsg4='$1'は無効なホップ数です
+
 sport_ftspo=ポート オプションを保存できませんでした
 sport_emsg1='$1' は無効なポート番号です
 sport_emsg2='$1' は無効なアドレスです
 sport_emsg3='$1' は無効なバッファ サイズです
+
 sprog_ftshpo=ヘルパー プログラム オプションを保存できませんでした
 sprog_emsg1=FTP オプションがありません
 sprog_emsg2='$1' は無効なプログラムです
@@ -549,19 +584,23 @@ sprog_emsg6='$1' は無効なカラム幅です
 sprog_emsg7=DNS サーバが入力されていません
 sprog_emsg8='$1' は無効な IP アドレスです
 sprog_emsg9='$1' は有効なキャッシュタイムではありません
+
 suser_ftsu=ユーザを保存できませんでした
 suser_emsg1=ユーザ名がないか無効です
 suser_etaken=ユーザ名がすでに使用中です
+
 start_ftsq=Squid を起動できませんでした
 start_ecannot=Squidを開始する権限がありません
 stop_ftsq=Squid を停止できませんでした
 stop_ecannot=Squidを停止する権限がありません
+
 calamaris_ecannot=Calamarisログ解析にアクセスする権限がありません
 calamaris_title=Calamaris ログ分析
 calamaris_last=分析をログの最後の $1 行に制限中..
 calamaris_eprog=Calamaris 実行ファイル $1 が見つかりません。システムにCalamaris 実行ファイルがインストールされていないか <a href='$2'>モジュール設定</a> が不正な可能性があります。
 calamaris_elogs=ログ ディレクトリ $1 は <tt>access.log</tt> ファイルを含んでいません。Squid が実行されていないか、 <a href='$2'>モジュール設定</a> が不正な可能性があります。
 calamaris_gen=$1 でレポートを作成しました
+
 lib_emsg1='$1' は無効な IP アドレスです
 lib_seconds=秒
 lib_minutes=分
@@ -609,6 +648,7 @@ lib_aclmuip=ユーザIPの最大値
 lib_buttac=変更を適用
 lib_buttss=Squid を停止
 lib_buttss1=Squid を起動
+
 log_ports=ポートとネットワーク オプションを変更しました
 log_icp=その他のキャッシュ オプションを変更しました
 log_mem=メモリ使用率オプションを変更しました
@@ -655,16 +695,21 @@ log_pool_delete=遅延プール $1 が削除されました
 log_delay_create=遅延プール $1 のACLが追加されました
 log_delay_modify=遅延プール $1 のACLが変更されました
 log_delay_delete=遅延プール $1 のACLが削除されました
+
 log_delay_move=遅延プール $1 のACLが移動されました
+
 acl_root=ACL ファイルの root ディレクトリ
 acl_sections=許可された設定ページ
 acl_start=squidの起動及び停止を許可しますか?
+
 always_create=直接取出しを作成
 always_edit=直接取出しを編集
 always_header=ACL と一致した直接取出し要請
+
 never_create=間接取出しを作成
 never_edit=間接取出しを編集
 never_header=ACL と一致した間接取出し要請
+
 delay_title=遅延プール
 delay_add=遅延プールの追加
 delay_num=番号
@@ -713,9 +758,11 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=MB
+
 apool_header=遅延プールACLを追加する
 apool_header1=遅延プールACLを編集する
 apool_pr=遅延プールACL
+
 authparam_title=認証プログラム
 authparam_header=外部認証プログラムオプション
 authparam_ttl=パスワードをキャッシュ

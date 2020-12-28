@@ -9,6 +9,7 @@ index_startmsg=Ikklikkja din il-buttuna biex tibda s-server FTP bil-konfigurazzj
 index_startmsg2=Ikklikkja din il-buttuna biex tibda s-server FTP bil-konfigurazzjoni kurrenti. Tista 'wkoll tikkonfigura s-server biex jinbeda awtomatikament meta jkun meħtieġ billi tuża inetd jew xi programm ekwivalenti.
 index_return=Għażliet ta 'server FTP
 index_version=Verżjoni tal-WU-FTPd $1 
+
 class_title=Utenti u Klassijiet
 class_header=Klassijiet ta 'utenti u għażliet ta' utent
 class_class=Klassijiet tal-utenti
@@ -31,6 +32,7 @@ class_err=Ma rnexxielux isalva klassijiet tal-utent
 class_eclass="$1" mhux isem tal-klassi validu
 class_etypes=Ebda tip magħżul għall-klassi "$1"
 class_eaddrs=L-ebda indirizz imdaħħal għall-klassi "$1"
+
 message_title=Messaġġi u Banners
 message_header=Messaġġi, banners u fajls README
 message_message=Fajls ta 'messaġġ
@@ -59,6 +61,7 @@ message_eclass=Il-Klassi "$1" ma teżistix
 message_ebanner="$1" mhijiex fajl tal-banner tad-dħul validu
 message_ehostname=Name host nieqes jew invalidu
 message_eemail=Indirizz tal-email nieqes jew invalidu
+
 acl_title=Limiti u Kontroll tal-Aċċess
 acl_header=Limiti u għażliet ta 'kontroll ta' aċċess
 acl_deny=Iċħad l-aċċess minn
@@ -105,6 +108,7 @@ acl_elmsg="$1" mhux fajl ta 'messaġġ ta' żball validu
 acl_efbcount="$1" mhux numru validu ta 'fajls jew bytes
 acl_elimit="$1" mhux limitu ta 'żmien validu
 acl_efails="$1" mhux numru validu ta 'fallimenti ta' login
+
 net_title=Netwerking
 net_header=Għażliet ta 'netwerking
 net_tcp=Daqsijiet tat-twieqi TCP
@@ -122,6 +126,7 @@ net_eip="$1" mhuwiex indirizz IP validu
 net_enet="$1" mhuwiex indirizz validu tan-netwerk
 net_ecidr="$1" mhux numru validu ta 'bits tan-netwerk
 net_eport="$1" mhux numru tal-port validu
+
 log_title=Qtugħ
 log_header=Opzjonijiet ta 'qtugħ
 log_commands=Irreġistra l-kmandi kollha għal
@@ -139,6 +144,7 @@ log_syslog=Ġurnal tas-Sistema
 log_xferlog=Fajl tal-log XFER
 log_sysxfer=Iż-żewġ destinazzjonijiet
 log_err=Ma rnexxielux isalva l-għażliet tal-qtugħ
+
 alias_title=Alias u Paths
 alias_header=Għażiż u għażliet tal-passaġġ
 alias_alias=Aliases tad-direttorju tas-CD
@@ -149,6 +155,7 @@ alias_err=Naqset milli ssalva psewdonimi u mogħdijiet
 alias_efrom="$1" mhux isem tal-alias validu
 alias_eto="$1" mhux direttorju tal-alias validu
 alias_ecdpath="$1" mhix direttorju validu ta 'tfittxija ta' CD
+
 anon_title=FTP anonimu
 anon_eftp=Twissija - is-sistema tiegħek m'għandhiex utent <tt>ftp</tt>, u għalhekk FTP anonimu probabbilment mhux konfigurat.
 anon_header=Għażliet FTP anonimi
@@ -171,6 +178,7 @@ anon_uids=Għal utenti Unix
 anon_err=Ma rnexxielux isalva għażliet FTP anonimi
 anon_edir="$1" mhux direttorju validu
 anon_egroup="$1" mhux grupp validu
+
 perm_title=Permessi
 perm_header=Għażliet ta 'permess
 perm_perms=Restrizzjonijiet ta 'kmand
@@ -192,7 +200,9 @@ perm_err=Ma rnexxielux isalva l-permessi
 perm_echar="$1" mhix espressjoni regolari ta 'sett ta' karattri valida
 perm_etypes=L-ebda tipi ta 'utenti magħżula
 perm_emesg="$1" mhux fajl ta 'messaġġ ta' żball validu
+
 host_title=Kontroll tal-Aċċess għall-Ospitanti
+
 misc_title=Għażliet Varji
 misc_header=Għażliet varji
 misc_lslong=Kmand tal-elenkar fit-tul
@@ -213,6 +223,7 @@ misc_elsplain=Nieqes il-kmand tal-elenkar sempliċi
 misc_eshutdown=Fajl ta 'notifika ta' għeluq nieqes
 misc_enice="$1" mhuwiex livell sabiħ validu
 misc_eumask="$1" mhix umask valida
+
 log_class=Utenti u klassijiet mibdula
 log_message=Inbidlu messaġġi u banners
 log_acl=Limiti mibdula u kontroll tal-aċċess

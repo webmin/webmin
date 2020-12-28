@@ -27,6 +27,7 @@ index_checkconfig=确保在<a href='$1'>模块配置</a>页面上正确设置了
 index_eexpired=警告：以下区域的DNSSEC签名已过期：$1
 index_eexpired_conf=自动签名应在$1页面上重新启用。
 index_eexpired_mod=使用$1模块为这些域禁用DNSSEC，或者检查为什么签名失败。
+
 master_inview=视图 $2中的 $1
 master_egone=在任何视图中都不存在区域$1
 master_egone2=区域$1不存在！
@@ -47,14 +48,17 @@ master_defttl=记录的默认生存时间
 master_edefttl='$1'不是记录的有效默认生存时间
 master_esoagone=找不到SOA记录！
 master_einclude=附加模板文件不存在
+
 delete_mesg3=您确定要删除区域$1吗？
 delete_onslave=还要从从服务器删除吗？
 delete_errslave=主区域删除确定，但在从属服务器上发生以下错误：$1
 delete_vwarn=该区域与Virtualmin域 $1相关联，因此不应在此处删除！
 delete_vwarn2=该区域与Virtualmin域 $1和其他 $2相关联，因此不应在此处删除！
+
 mcreate_dnssec_tools_enable=使用DNSSEC工具启用DNSSEC
 mcreate_ednssecsize=无法计算密钥大小：$1
 mcreate_ednssec=记录创建成功，但是DNSSEC失败：$1
+
 slave_convertdesc=单击此按钮可将该从属区域转换为主区域，其中包含最近从原始主系统传输的所有记录。
 slave_manual=查看记录文件
 slave_delmsg=单击此按钮可从DNS服务器删除此区域。源主控区域将保持不变。
@@ -63,6 +67,7 @@ slave_applymsg2=单击此按钮可以强制从主服务器重新传输区域，�
 slave_last=上次传输时间：$1
 slave_never=决不
 slave_xfer=测试区转移
+
 recs_ecannottype=您无权编辑此类型的记录
 recs_find=显示符合条件的记录：
 recs_search=搜索
@@ -70,6 +75,7 @@ recs_drev=也要删除反向链接吗？
 recs_none=该域还没有任何$1记录。
 recs_nosearch=没有记录与您的搜索匹配。
 recs_needsearch=输入搜索以找到匹配的记录。
+
 edit_canon=完整的规范名称
 edit_egone=所选记录已不存在！
 edit_eusage='$1'不是有效的TLSA使用率编号
@@ -95,44 +101,54 @@ edit_edmarcpct=邮件百分比必须为0到100之间的整数
 edit_edmarcrua=缺少汇总反馈地址
 edit_edmarcruf=缺少法证信息地址
 edit_ecaavalue2=域名缺失或外观无效
+
 text_title2=查看记录文件
 text_desc3=此表单使您可以手动编辑DNS记录文件$1。 Webmin不会进行语法检查。
 text_desc2=本页显示DNS记录文件$1，该文件是在从主服务器传输区域时由BIND创建的。
 text_none=但是，该文件当前为空，可能是因为尚未从主服务器传输该区域。
 text_soa=自动增加序列号
 text_rawformat=该区域为原始二进制格式，因此无法显示为文本。
+
 restart_err=无法应用更改
 restart_epidfile=在$1中找不到BIND PID
 restart_errslave=该服务器已重新启动，但是在从属服务器上发生了以下错误：$1
 restart_erunning2=BIND似乎没有在从属服务器上运行$1
 restart_eversion=从服务器$1没有运行Webmin版本$2或更高版本。
+
 stop_epid=BIND未运行
 stop_ecannot=您无权停止BIND
+
 fwd_delmsg=单击此按钮可从DNS服务器删除此区域。然后将使用常规解析过程查找其中的记录。
+
 delegation_title=编辑授权区域
 delegation_ecannot=您无权编辑此区域
 delegation_opts=区域选项
 delegation_err=保存选项失败
 delegation_noopts=委托区域没有任何可配置的选项。
 delegation_delmsg=单击此按钮可从DNS服务器删除此区域。 BIND将识别其中非NS的记录类型。
+
 dcreate_title=创建仅委派区域
 dcreate_ecannot=您无权创建委派区域
 dcreate_opts=新的委派区域选项
 dcreate_err=创建委派区域失败
+
 boot_egzip=根区域文件已压缩，但是您的系统上未安装<tt>gzip</tt>命令！
 boot_egzip2=根区域文件的解压缩失败：$1
+
 type_NSEC3PARAM=DNSSEC参数
 type_SPF=发件人允许来自
 type_TLSA=SSL证书
 type_SSHFP=SSH公钥
 type_DMARC=DMARC
 type_CAA=证书颁发机构
+
 edit_SPF=发件人允许来自
 edit_DMARC=DMARC
 edit_NSEC3PARAM=DNSSEC参数
 edit_TLSA=SSL证书
 edit_SSHFP=SSH公钥
 edit_CAA=证书颁发机构
+
 recs_defttl=默认TTL
 recs_SPF=发件人允许来自
 recs_DMARC=DMARC
@@ -141,6 +157,7 @@ recs_TLSA=SSL证书
 recs_SSHFP=SSH公钥
 recs_CAA=证书颁发机构
 recs_delete=删除所选
+
 value_AAAA1=IPv6地址
 value_TLSA1=证书使用
 value_TLSA2=证书选择器
@@ -194,6 +211,7 @@ value_CAA3=CA域名
 value_caa_issue=单域证书
 value_caa_issuewild=通配符证书
 value_caa_iodef=违反政策的网址
+
 tlsa_usage0=证书颁发机构
 tlsa_usage1=最终实体
 tlsa_usage2=信任锚
@@ -203,14 +221,17 @@ tlsa_selector1=公钥信息
 tlsa_match0=未隐藏的内容
 tlsa_match1=SHA-256散列
 tlsa_match2=SHA-512散列
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=编号25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 eport='$1'不是有效的端口号
 eipacl='$1'不是有效的IP地址或ACL名称
+
 acl_inviews=该用户可以在其中编辑域的视图
 acl_toplevel=在任何视图之外
 acl_applygonly=仅应用配置
@@ -225,6 +246,7 @@ acl_ztypes_master=主
 acl_ztypes_slave=从/存根
 acl_ztypes_delegation=代表团
 acl_ztypes_forward=向前
+
 logging_catsdesc=该表控制在另一个选项卡上定义的哪些类别的消息写入哪个日志通道。
 logging_chansdesc=下表列出了日志记录通道，这些通道是可以将消息记录到的文件或其他目标。前四个是BIND内置的默认值，无法更改。
 logging_stderr=标准错误输出
@@ -232,11 +254,14 @@ logging_pcat2=日志类别？
 logging_psev2=日志严重性？
 logging_ptime2=记录时间？
 logging_efile2=日志文件名必须是绝对路径
+
 acls_eline=必须在ACL'$1'的单独行中输入每个IP地址
+
 forwarding_out=最大并发传出区域传输
 forwarding_per_ns=每台服务器的最大并发传入传输
 forwarding_ip=IP地址
 forwarding_port=港口
+
 net_ip=IP地址
 net_recur=允许来自的递归查询
 net_eusedport=端口$1只允许一行地址
@@ -249,6 +274,7 @@ net_taddrdef=最近的IP
 net_etport=没有地址就无法指定传输源端口
 net_eaddr='$1'不是有效的IPv4地址
 net_eaddr6='$1'不是有效的IPv6地址
+
 controls_inetopt=允许通过网络进行控制？
 controls_inetyes=是的，在IP地址$1端口上$2
 controls_allowips=允许的客户端IP地址
@@ -266,6 +292,7 @@ controls_eunixpath=缺少或无效的FIFO文件路径
 controls_eunixperm=八进制文件权限丢失或无效
 controls_eunixowner=丢失或无效的文件所有者
 controls_eunixgroup=文件组丢失或无效
+
 zonedef_prins=主域的默认名称服务器
 zonedef_this=系统主机名（$1）
 zonedef_eprins=主域缺少或无效的默认名称服务器
@@ -277,12 +304,15 @@ zonedef_size=初始金钥大小
 zonedef_single=要创建的密钥数
 zonedef_two=区域密钥和密钥签名密钥
 zonedef_one=仅区域键
+
 findfree_fromip=来自IP地址
 findfree_toip=到IP地址
 findfree_msg=找到了$1个免费IP地址
 findfree_msg2=（其中$1如<i>freeXXX</i>，$2如<i>freemac</i>）
+
 free_title=免费IP地址
 free_ip=IP地址
+
 log_manual=手动编辑的配置文件$1
 log_stop=停止DNS服务器
 log_delegation=创建仅委派区域$1
@@ -306,19 +336,25 @@ log_sign=为区域$1更新了DNSSEC签名
 log_resign=为区域$1重新签名的DNSSEC密钥
 log_trusted=更改DNSSEC验证
 log_dnssec=更改DNSSEC密钥重新签名
+
 convert_efilesize=记录文件$1不存在或为空
 convert_ebinary=未安装从二进制从属区域转换为文本格式主文件所需的命令
 convert_ecompile=二进制到文本格式转换失败：$1
+
 view_opts2=视图区域的选项
 view_delete=删除检视
 view_deletemsg=单击此按钮删除视图。您可以选择将其包含的区域移动到另一个视图，也可以将其删除。
+
 hint_refetch=重新下载根名称服务器
 hint_refetchdesc=单击此按钮可使Webmin从Internic FTP服务器上的源重新下载根区域文件。
 hint_delete=删除根区
 hint_deletedesc=单击此按钮删除此根区域。如果没有它，您的域名服务器将无法解析Internet上除其作为辅助域名的域名以外的其他域名。
+
 hcreate_header=根区详细信息
 hcreate_webmin=使用Webmin的较早的根服务器信息
+
 refetch_err=重新下载根区域失败
+
 slaves_title=集群从服务器
 slaves_none=尚未将任何服务器添加到DNS群集。
 slaves_host=主机名
@@ -346,6 +382,7 @@ slaves_sec=在本地创建时在从属服务器上创建辅助服务器？
 slaves_name=NS记录的名称
 slaves_same=与主机名相同
 slaves_header=集群从属服务器选项
+
 add_title=添加服务器
 add_msg=添加$1 ..
 add_gmsg=在组$1中添加服务器。
@@ -363,6 +400,7 @@ add_createok=使用$2新的从属区域设置$1。
 add_ename=NS记录名称缺失或无效
 add_egname=添加组时无法指定NS记录名称
 add_emyip=无法计算出该系统的IP地址。您应该在“模块配置”页面上设置<b>远程从属区域的默认主服务器IP</b>。
+
 mass_title=从批处理文件创建区域
 mass_desc=该页面允许您从上载的或服务器端的文本文件中一次创建多个区域。文件中的每一行都必须具有以下格式： <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p>该<i>类型</i>必须是<tt>master</tt> ， <tt>slave</tt> ， <tt>stub</tt>或<tt>forward</tt> 。 <i>文件名</i>是可选的，如果丢失，将自动计算。只需为从属区域提供<i>主IP</i> 。
 mass_local=本地批处理文件
@@ -394,6 +432,7 @@ mass_emips=缺少主IP地址
 mass_addedslaves=将$1添加到从属服务器中，确定。
 mass_eonslave=在从属服务器上创建错误：$1
 mass_eviewcannot=您无权向此视图添加区域
+
 massdelete_title=删除区域
 massdelete_rusure=您确定要删除$1选定区域吗？ （$2）
 massdelete_ok=立即删除
@@ -403,6 +442,7 @@ massdelete_slaves=从从服务器中删除区域$1。
 massdelete_failed=..一些奴隶失败了：
 massdelete_vwarn=某些区域与Virtualmin域 $1相关联，因此不应在此处删除！
 massdelete_vwarn2=某些区域与Virtualmin域 $1和 $2相关联，因此不应在此处删除！
+
 rndc_title=设置RNDC
 rndc_desc=此页面可用于设置BIND以由RNDC程序进行控制，这样就可以刷新各个区域，而无需完全重新启动BIND。
 rndc_desc2=RNDC似乎已经正确设置，因此您可能不需要使用此表格。
@@ -413,11 +453,13 @@ rndc_ok=是的，设置RNDC
 rndc_err=无法设置RNDC
 rndc_ekey=在rndc.conf中找不到密钥
 rndc_esecret=在rndc.conf中找不到机密
+
 drecs_err=删除记录失败
 drecs_enone=未选择
 drecs_title=删除记录
 drecs_rusure=您确定要从$2删除$1选定记录吗？
 drecs_ok=立即删除
+
 manual_title=编辑配置文件
 manual_ecannot=您无权编辑BIND配置文件
 manual_ok=编辑
@@ -425,7 +467,9 @@ manual_efile=所选文件不属于BIND配置
 manual_file=编辑配置文件：
 manual_edata=什么都没输入！
 manual_err=保存配置文件失败
+
 syslog_desc=绑定DNS服务器消息
+
 umass_err=无法更新区域
 umass_enone=未选择
 umass_title=更新区域中的记录
@@ -444,6 +488,7 @@ umass_done=..更新了$1匹配的记录，这些记录来自$2。
 umass_none=..没有匹配的记录从$1中更新。
 umass_egone=区域不存在
 emass_emx='$1'不是邮件服务器优先级数字，后跟有效的主机名
+
 rdmass_err=无法删除区域中的记录
 rdmass_enone=未选择
 rdmass_title=删除区域中的记录
@@ -460,6 +505,7 @@ rdmass_done=..从$2中删除匹配的$1记录。
 rdmass_none=..没有匹配的记录从$1中删除。
 rdmass_ok=删除记录
 rdmass_sel=记录名为
+
 rmass_err=添加记录失败
 rmass_enone=未选择
 rmass_title=将记录添加到区域
@@ -479,18 +525,22 @@ rmass_esign=..完成，但签名失败：$1
 rmass_eclash=..具有相同名称和值$1的记录已存在。
 rmass_eclash2=..具有相同名称和相同值$1的记录已存在。
 rmass_clash=即使记录已经存在也创建吗？
+
 check_title=检查记录
 check_ecannot=您无权检查记录
 check_errs=在记录文件$1中发现以下错误。
 check_allok=在记录文件$1中未找到错误。
+
 ncheck_title=检查BIND配置
 ncheck_ecannot=您无权检查BIND配置
 ncheck_errs=在BIND配置文件$1或引用的区域文件中发现以下错误。
 ncheck_allok=在BIND配置文件$1或引用的区域文件中未找到错误。
+
 links_restart=应用配置
 links_stop=停止绑定
 links_start=开始绑定
 links_apply=申请专区
+
 dnssec_title=DNSSEC密钥重新签名
 dnssec_ecannot=您无权配置DNSSEC
 dnssec_header=密钥重新签名选项
@@ -501,6 +551,7 @@ dnssec_secs=秒
 dnssec_desc=使用DNSSEC签名的区域通常具有两个密钥-必须定期重新生成和签名的区域密钥，以及保持不变的密钥签名密钥。该页面允许您配置Webmin以自动执行此重新签名。
 dnssec_err=保存DNSSEC密钥重新签名失败
 dnssec_eperiod=两次重新签名之间缺少或无效的天数
+
 dnssectools_title=DNSSEC-工具自动化
 dt_conf_title=DNSSEC-工具自动化
 dt_enable_title=DNSSEC-工具自动化
@@ -565,6 +616,7 @@ dt_status_inKSKroll=在KSK Roll
 dt_status_inZSKroll=在ZSK Roll中
 dt_status_signed=签
 dt_status_unsigned=无符号
+
 zonekey_title=设置DNSSEC密钥
 zonekey_desc=该区域还没有DNSSEC签名密钥。您可以使用此表单让Webmin创建一个表单，以便保护解决此区域的客户端免受DNS欺骗攻击。
 zonekey_header=新的DNSSEC密钥选项
@@ -598,9 +650,12 @@ zonekey_sign=标志区
 zonekey_signdesc=立即对该区域进行重新签名，以便对手动进行的记录所做的任何更改都将包括在签名记录中。
 zonekey_resign=重签区
 zonekey_resigndesc=生成一个新的区域签名密钥，用该区域的主密钥对其进行签名，然后重新签署所有记录。
+
 sign_err=无法签名区域
 sign_emsg=记录更改失败后进行DNSSEC签名：$1
+
 resign_err=无法重新签名区域
+
 trusted_title=DNSSEC验证
 trusted_ecannot=您无权配置DNSSEC验证
 trusted_esupport=您的BIND版本不支持DNSSEC验证
@@ -635,6 +690,7 @@ trusted_setup=为了使DNSSEC对验证Internet上大多数已签名区域有用�
 trusted_ok=设置DLV并启用DNSSEC验证
 trusted_warning=警告！您的BIND DNSSEC客户端配置包含过期的密钥，这些密钥将在2017年10月停止工作。使用<a href='$1'>BIND DNSSEC验证页面</a>调整配置，或单击下面的按钮。
 trusted_fix=修复DNSSEC配置
+
 xfer_title=测试区转移
 xfer_doing=测试从$1的从属区域的传输。
 xfer_failed=.. from $1：失败：$2

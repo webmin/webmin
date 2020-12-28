@@ -24,23 +24,28 @@ index_sadd=Cree un nuevo servicio systemd.
 index_always=Siempre
 index_ladd=Crea un nuevo agente de launchd.
 index_lname=Nombre del agente
+
 edit_egone=La acción ya no existe
 edit_startcmd=Comando de arranque
 edit_stopcmd=Comando de apagado
 edit_statuscmd=Comando de estado
 edit_reloadnow2=Volver a leer el archivo de configuración
+
 save_ename=Nombre de acción faltante o inválido
 save_eclash=Ya existe una acción con el mismo nombre
 save_escript=No se ingresó ningún script de acción
 save_estartcmd=Falta el comando de arranque
+
 ss_doingstart=Iniciando acción $1 ..
 ss_doingstop=Deteniendo la acción $1 ..
 ss_doingstatus=Solicitud del estado de la acción $1 ..
+
 log_restart=Acción reiniciada $1 
 log_condrestart=Acción reiniciada condicionalmente $1 
 log_reload=Acción recargada $1 
 log_status=Estado recuperado de la acción $1 
 log_massrestart=Acciones reiniciadas $1 
+
 mass_enone2=No hay servicios seleccionados
 mass_restart=Reiniciar acciones
 mass_starting=Iniciando acción $1 ..
@@ -55,6 +60,7 @@ mass_udisable=Deshabilitar el servicio $1 en el momento del arranque.
 mass_ustarting=Iniciando servicio $1 ..
 mass_ustopping=Deteniendo el servicio $1 ..
 mass_urestarting=Reiniciando el servicio $1 ..
+
 mode_init=SysV init
 mode_osx=Mac OS
 mode_local=Script de arranque único
@@ -63,6 +69,7 @@ mode_rc=Scripts de FreeBSD RC
 mode_upstart=Advenedizo
 mode_systemd=Systemd
 mode_launchd=LaunchD
+
 upstart_title1=Crear servicio de arranque
 upstart_title2=Editar servicio de arranque
 upstart_egone=¡El servicio ya no existe!
@@ -87,6 +94,7 @@ upstart_eserver=No se ingresó ningún comando del servidor
 upstart_eserver2=El comando del servidor no existe
 upstart_eserver3=Solo se puede ingresar un comando de servidor
 upstart_return=servicio advenedizo
+
 systemd_title1=Crear servicio de Systemd
 systemd_title2=Editar servicio Systemd
 systemd_egone=¡El servicio ya no existe!
@@ -110,6 +118,7 @@ systemd_edesc=Falta la descripción del servicio
 systemd_return=servicio systemd
 systemd_econf=No se ingresó la configuración del sistema
 systemd_estart=Faltan comandos para ejecutar al inicio
+
 launchd_title1=Crear agente lanzado
 launchd_title2=Editar agente lanzado
 launchd_egone=¡El agente ya no existe!
@@ -130,4 +139,5 @@ launchd_eclash=Ya existe un agente con el mismo nombre
 launchd_return=agente de lanzamiento
 launchd_econf=No se ingresó la configuración de lanzamiento
 launchd_estart=Falta el comando del servidor
+
 syslog_journalctl=Registros de SystemD

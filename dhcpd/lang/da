@@ -50,12 +50,14 @@ index_gdom=Gruppe for $1
 index_match1=indeholder
 index_match2=matcher
 index_dhcpd=ISC DHCPd
+
 butt_save=Gem
 butt_eco=Rediger klientindstillinger
 butt_vco=Se klientindstillinger
 butt_del=Slet
 butt_create=Opret
 butt_leases=List leases
+
 esub_crheader=Opret subnet
 esub_edheader=Rediger subnet
 esub_tabhdr=Subnet detaljer
@@ -69,11 +71,13 @@ esub_groups=Grupper direkte i dette subnet
 esub_pools=Adressepools for subnet
 esub_pool=Pool $1
 esub_poolnone=Ikke defineret nogen adressepools
+
 esub_pooladd=Tilføj en adressepool.
 esub_none=Ingen
 esub_return=subnet liste
 esub_retshar=delt netværk
 esub_desc=Subnet beskrivelse
+
 esh_crheader=Opret delt netværk
 esh_eheader=Rediger delt netværk
 esh_tabhdr=Detaljer for delt netværk
@@ -84,6 +88,7 @@ esh_subn=Subnet i dette delte netværk
 esh_return=subnet liste
 esh_pools=Adressepools for delt netværk
 esh_desc=Beskrivelse for delt netværk
+
 ehost_crheader=Opret host
 ehost_eheader=Rediger host
 ehost_tabhdr=Host detaljer
@@ -104,6 +109,7 @@ ehost_retgroup=gruppe
 ehost_retsubn=subnet
 ehost_retshar=delt netværk
 ehost_desc=Host beskrivelse
+
 egroup_crheader=Opret host gruppe
 egroup_eheader=Rediger hostgruppe
 egroup_tblhdr=Gruppedetaljer
@@ -114,6 +120,7 @@ egroup_return=host liste
 egroup_retsubn=subnet
 egroup_retshar=Delt netværk
 egroup_desc=Gruppebeskrivelse
+
 default=Standard
 eopt_header=Klientindstillinger
 eopt_subtitle=For subnet $1
@@ -157,6 +164,7 @@ eopt_dtype=Type
 eopt_slpaips=Kun disse IP'er?
 eopt_slps=SLP service scope
 eopt_slpsonly=Kun dette scope?
+
 cdel_header=Advarsel
 cdel_shared1=delt netværk
 cdel_shared2=delt netværk
@@ -174,6 +182,7 @@ cdel_txt=Sletter $1 '$2' sletter også dets indhold:
 cdel_confirm=Vil du virkelig gerne slette denne $1 ?
 cdel_eunknown=Ukendt fejl
 cdel_return=host og netværksliste
+
 eacl_aviol=Brud på adgangskontrol
 eacl_np=Du har ikke tilladelse til
 eacl_pdh=slet host
@@ -197,6 +206,7 @@ eacl_pdl=Slet leases
 eacl_psl=Vis leases
 eacl_pglob=rediger globale indstillinger
 eacl_papply=genstart denne service
+
 acl_apply=Kan anvende ændringer?
 acl_r_leases=Kan se leases?
 acl_w_leases=Kan fjerne leases?
@@ -225,9 +235,12 @@ acl_err=Fejl ved gmening af ACL liste
 acl_ernow=Hvis du vil aktivere skriveadgang i globale ACL'er for nogle objekttyper skal du også aktivere læseadgang for denne objekttype.
 acl_normal=normal
 acl_paranoic=paranoid
+
 iface_title=Netværksinterface
 iface_desc=DHCP serveren kan kun tildele IP adresser på netværk der er tilsluttet til et af interfacene valgt nedenfor. Netværksinterfacet for alle definerede subnet skal være inkluderet. Hvis intet er valgt, vil DHCP serveren forsøge at finde et automatisk.
 iface_listen=Lyt på interface
+
 index_addzone=Tilføj en ny DNS zone.
 index_nozones=Ingen DNS zoner er endnu definerede.
+
 index_buttetext=Configgil

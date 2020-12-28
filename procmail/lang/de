@@ -32,6 +32,7 @@ index_man=Manuell editierte Konfiguration
 index_mandesc=Direkt die primäre Procmail Konfigurationsdatei bearbeiten, um Ihre eigenen Regeln, Variablen und Blöcke zu erstellen.
 index_ecmd=Die Procmail Programm $1 wurde auf Ihrem System nicht gefunden. Entweder es ist nicht installiert, oder die <a href='$2'>Modulkonfiguration</a> ist falsch.
 index_delete=Lösche ausgewählte Aktionen
+
 edit_title2=Aktion bearbeiten
 edit_title1=Aktion erzeugen
 edit_header1=Versandaktion-Details
@@ -67,6 +68,7 @@ edit_none=Keine
 edit_lock=Spezifische Datei
 edit_ctype=Bedingungstyp
 edit_cvalue=Regulärer Ausdruck oder Befehl
+
 save_err=Konnte Aktion nicht speichern
 save_eaction_0=Fehlende Datei zum Schreiben
 save_eaction_1=Fehlender MH-Ordner zum Schreiben
@@ -79,6 +81,7 @@ save_elockfile=Fehlender Sperrdateiname
 save_esize=Fehlende oder ungültige E-Mail-Größe für die Bedingung $1
 save_ere=Fehlender regulärer Ausdruck für die Bedingung $1
 save_eshell=Fehlender Befehl für die Bedingung $1
+
 env_title1=Variable erzeugen
 env_title2=Variable bearbeiten
 env_header=Procmail-Umgebungsvariable
@@ -86,15 +89,19 @@ env_name=Variablenname
 env_value=Wert
 env_err=Konnte Variable nicht speichern
 env_ename=Fehlender oder ungültiger Variablenname
+
 inc_title1=Eingebundene Datei hinzufügen
 inc_title2=Eingebundene Datei bearbeiten
 inc_header=Eingebundene Procmail-Regeldatei
 inc_inc=Eingebundene Datei
 inc_einc=Keine <tt>include</tt>-Datei angegeben
+
 config_eline=Unbekannte Konfigurationszeile $1 in $2 : $3
+
 manual_title=Konfiguration bearbeiten
 manual_desc=Diese Seite dient dazu die Procmail-Konfigurationsdatei $1 manuell zu editieren. Es wird jedoch keine Syntax-Überprüfung durchgeführt!
 manual_edata=Es wurden keine Daten von Ihrem Browser empfangen!
+
 log_create_rec=Rezept an $1 erzeugt
 log_delete_rec=Rezept an $1 gelöscht
 log_modify_rec=Rezept an $1 bearbeitet
@@ -114,7 +121,9 @@ log_delete_inc=Eingebundene Datei $1 gelöscht
 log_manual=Konfiguration manuell bearbeitet
 log_up=Einen Eintrag nach oben verschoben
 log_down=Einen Eintrag nach unten verschoben
+
 delete_err=Fehlgeschlagen Aktionen zu löschen
 delete_enone=Nichts ausgewählt
+
 check_epostfix=Procmail ist nicht in Ihrem Postfix-Konfiguration aktiviert. Die Konfigurationsdatei <tt>$2</tt> müssen die <tt>$1</tt> Option auf <tt>$3</tt> gesetzt haben.
 check_esendmail=Sendmail ist nicht eingerichtet, um Procmail für die lokale Zustellung zu verwenden. Dies kann in Webmin im <a href='$1'>Sendmail Mail Server</a> Modul konfiguriert werden.

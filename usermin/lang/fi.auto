@@ -16,11 +16,14 @@ index_esame=<a href='$2'>moduulin määritys</a> -sivulle asetettu Usermin-mää
 index_eroot=Usermin-määrityshakemisto $1 on olemassa, mutta ohjelman juurihakemisto $2, johon se viittaa, ei! Sinun tulisi ladata ja asentaa Usermin manuaalisesti.
 index_restart=Käynnistä Usermin uudelleen
 index_restartmsg=Napsauta tätä painiketta käynnistääksesi Usermin-palvelimen prosessin uudelleen. Tämä voi olla tarpeen, jos olet äskettäin päivittänyt Perlin.
+
 access_title=IP-pääsyn hallinta
 access_desc=Usermin-palvelin voidaan määrittää estämään tai sallimaan pääsy vain tietyiltä IP-osoitteilta tämän lomakkeen avulla. Isäntänimet (kuten foo.bar.com) ja IP-verkot (kuten 10.254.3.0 tai 10.254.1.0/255.255.255.128 tai 10.254.1.0/25 tai 10.254.1.5-10.254.97.127) voidaan myös syöttää. Sinun tulisi rajoittaa palvelimellesi pääsy luotettaviin osoitteisiin, varsinkin jos siihen pääsee Internetistä. Muuten jokaisella, joka arvailee salasanasi, on täydellinen hallinta järjestelmässäsi.
+
 bind_title=Satamat ja osoitteet
 bind_desc2=Tätä lomaketta voidaan käyttää muuttamaan porttinumeroa, jota Usermin kuuntelee, tai saada se kuuntelemaan vain yhtä järjestelmän IP-osoitetta järjestelmässäsi. Voit myös määrittää sen hyväksymään yhteydet useissa porteissa tai kuuntelemaan useita IP-osoitteita. Huomaa - selaimesi saattaa pyytää sinua kirjautumaan uudelleen sisään portin tai sidontaosoitteen vaihtamisen jälkeen.
 bind_erestart=Virhe käynnistettäessä Usermin uudesta osoitteesta ja porttiasetuksista : $1 
+
 mods_title=Usermin-moduulit
 umods_title=Usermin-moduulit
 mods_desc1=Usermin-moduulit voidaan lisätä asennuksen jälkeen käyttämällä oikealla olevaa lomaketta. Moduulit jaetaan tyypillisesti <tt>.wbm</tt>-tiedostoina, joista kukin voi sisältää yhden tai useamman moduulin. Moduulit voidaan asentaa myös RPM-tiedostoista, jos käyttöjärjestelmä tukee niitä.
@@ -41,15 +44,18 @@ mods_desc3=Olemassa olevat moduulit voidaan poistaa alla olevan lomakkeen avulla
 mods_delete=Poista moduulit
 mods_deleteok=Poista valitut moduulit
 mods_desc4=Asennetut moduulit voidaan viedä wbm.gz-tiedostona alla olevan lomakkeen avulla. Moduulitiedosto voidaan sitten asentaa toiseen järjestelmään, jossa on Usermin.
+
 os_title=Käyttöjärjestelmä ja ympäristö
 os_desc3=Tällä sivulla näkyy käyttöjärjestelmä, jonka Usermin on havainnut asennuksen yhteydessä, ja järjestelmä, joka on tällä hetkellä havaittu. Jos ne ovat erilaisia, voit päivittää Userminin käyttöjärjestelmätiedot, jotka saattavat tarvita, jos olet päivittänyt äskettäin.
 os_desc2=Voit myös muuttaa hakupolun, jota Usermin käyttää, kun ajetaan ohjelmia, ja jaetun kirjaston polun siirretty mille tahansa ohjelmalle.
 os_usermin=Usermin: n mukainen käyttöjärjestelmä
 os_iusermin=Sisäinen käyttöjärjestelmäkoodi, jota Usermin käyttää
 os_update=Päivitä Usermin käyttämään havaittua käyttöjärjestelmää
+
 lang_title=Kieli
 lang_title2=Usermin Language
 lang_intro=Tällä sivulla voit valita, mitä kieltä Usermin käyttää nimikkeiden, kehotteiden ja viestien näyttämiseen
+
 session_title=Authentication
 session_desc1=Kun tämä on käytössä, salasanan aikakatkaisut suojaavat Usermin-palvelinta suojattomalta salasanan murtautumiselta lisäämällä jatkuvasti kasvavaa viivettä saman käyttäjän jokaisen epäonnistuneen kirjautumisyrityksen väliin.
 session_desc2=Kun istunnon todennus on käytössä, Usermin seuraa kaikkia kirjautuneiden käyttäjien istuntoja, jolloin käyttämättömät käyttäjät voidaan kirjautua ulos automaattisesti. Muista, että istunnon todennuksen ottaminen käyttöön tai poistaminen käytöstä voi pakottaa kaikki käyttäjät kirjautumaan uudelleen sisään.
@@ -73,6 +79,7 @@ session_blank=Pyydä käyttäjiä, joiden salasana on tyhjä, valitsemaan salasa
 session_homedir=Luo puuttuvia kotihakemistoja kirjautumisen jälkeen?
 session_homedir_perms=Uuden hakemiston käyttöoikeudet
 session_ehomedir_perms=Puuttuvat tai virheelliset oktaalihakemiston käyttöoikeudet
+
 themes_title=Usermin-teemat
 themes_desc=Teemat hallitsevat Usermin-käyttöliittymän ulkonäköä, mukaan lukien kuvakkeet, värit, taustat ja mahdollisesti sivujen asettelut. Alla olevaa valintaruutua voidaan käyttää valitsemalla yksi järjestelmään asennetuista teemoista, jotka ovat oletusarvoja Usermin-käyttäjille.
 themes_sel=Nykyinen teema :
@@ -101,7 +108,9 @@ themes_eirpm=RPM-asennus epäonnistui : $1
 themes_ok=Teema vaihtui onnistuneesti.. uudelleenohjaaminen Webmin-hakemistosivulle.
 themes_delete=Tätä lomaketta voidaan käyttää poistamaan yksi järjestelmään asennetuista teemoista, joita ei tällä hetkellä käytetä.
 themes_delok=Poistettava teema :
+
 themes_desc4=Asennetut teemat voidaan viedä wbt.gz-tiedostona alla olevan lomakkeen avulla. Tematiedosto voidaan sitten asentaa toiseen järjestelmään, jossa toimii Usermin.
+
 configs_ecannot=Et voi määrittää tätä moduulia
 configs_title=Usermin-moduulin konfigurointi
 configs_header=Konfiguroitavat moduulit
@@ -115,8 +124,10 @@ configs_global=Globaali moduulin kokoonpano
 configs_globaldesc=Tämän lomakkeen asetukset koskevat kaikkia moduulin käyttäjiä, ja ne yleensä määrittävät sen käyttämiin ohjelmiin ja tiedostoihin liittyvät asetukset.
 configs_user=Käyttäjän oletusasetukset
 configs_userdesc=Tämän lomakkeen asetukset määrittävät tämän moduulin käyttäjän muokattavien asetusten oletusasetukset. Ellei toisin ilmoita, yksittäiset käyttäjät voivat käyttää niitä yli.
+
 acl_title=Saatavissa olevat moduulit
 acl_desc=Tämän sivun avulla voit valita, mitkä asennetut Usermin-moduulit näkyvät käyttäjille.
+
 ssl_title=SSL-salaus
 ssl_desc1=Isäntänä, jolla Usermin toimii, näyttää olevan asennettu SSLeay Perl-moduuli. Tämän avulla Usermin tukee SSL-salattua tiedonsiirtoa selaimesi ja palvelimen välillä. Jos käyttäjät käyttävät Usermin-palvelinta Internetin kautta, sinun kannattaa ehdottomasti harkita SSL: n käyttöä estämään hyökkääjää sieppaamasta salasanoja.
 ssl_desc2=Varoitus - ota SSL-tuki käyttöön vain, jos sinulla on SSL: tä tukeva selain, eikä selaimesi ja Usermin-isäntän välillä ole palomuuria, jotka estäisivät <tt>https</tt> -pyyntöjä.
@@ -125,18 +136,23 @@ ssl_hole=Koska käytät tällä hetkellä oletusarvoista Usermin SSL-avainta, jo
 ssl_savekey=Tämän lomakkeen avulla voit lähettää olemassa olevan PEM-muodossa olevan SSL-yksityisen avaimen ja sertifikaatin käyttäjän Usermin-palvelimen käytettäväksi.
 ssl_copycert=Kopioi varmenne Webministä
 ssl_copycertdesc=Kopioi SSL-varmenne, yksityinen avain, CA-varmenne ja muut Webmin käyttämät asetukset.
+
 ca_email=Sähköpostiosoite
 ca_ou=osasto
 ca_o=organisaatio
 ca_sp=Osavaltio
 ca_c=Maatunnus
+
 newkey_ok=Seuraavan SSL-avaimen luonti onnistuneesti Userminille.
+
 stop_err=Userminin pysäyttäminen epäonnistui
 stop_ekill=Tappaminen epäonnistui : $1 
 stop_efile=Jo pysähtynyt
 stop_ecannot=Sinulla ei ole oikeutta pysäyttää Usermin-palvelua
+
 start_err=Userminin käynnistäminen epäonnistui
 start_ecannot=Sinulla ei ole oikeutta käynnistää Usermin: ää
+
 users_title=Sallitut käyttäjät ja ryhmät
 users_desc=Usermin voidaan määrittää rajoittamaan mitä unix-käyttäjiä ja ryhmiä saa kirjautua sisään tällä lomakkeella. Jos haluat määrittää kaikki unix-ryhmän ensisijaiset jäsenet, kirjoita <tt>@ ryhmänimi</tt> luetteloon.
 users_desc2=Vastataksesi useita UID-tunnuksia, kirjoita luetteloon <tt>aloitus- ja loppukohta</tt>, <tt>käynnistys-</tt> tai <tt>-pää</tt>.
@@ -150,10 +166,12 @@ users_euser='$1' ei ole kelvollinen käyttäjänimi
 users_egroup='$1' ei ole kelvollinen ryhmän nimi
 users_shells=Estä käyttäjät, joiden kuoret eivät ole tiedostossa
 users_eshells=Puuttuva tai puuttuva kuoritiedosto
+
 defacl_title=Kulunvalvonta-asetukset
 defacl_desc=Tällä sivulla voit määrittää erilaisia pääsynhallintavaihtoehtoja, jotka koskevat Usermin-moduuleja ja käyttäjiä. Nämä vaihtoehdot ovat samanlaisia kuin Webmin-käyttäjien moduulin kunkin käyttäjän globaalissa ACL: ssä.
 defacl_header=Usermin-käyttäjien pääsynhallintavaihtoehdot
 defacl_err=Kulunvalvonta-asetusten tallentaminen epäonnistui
+
 install_err1=$1 moduulin asentaminen epäonnistui
 install_efile=Tiedostoa ei ole
 install_err2=Ladatun moduulin asennus epäonnistui
@@ -180,6 +198,7 @@ install_erpm=Ei Usermin-moduuli tai teeman RPM
 install_eirpm=RPM-asennus epäonnistui : $1 
 install_cat=Luokkaan $1.
 install_eneither=RPM ei sisällä usermin-moduulia tai teemaa
+
 delete_err=Moduulien poistaminen epäonnistui
 delete_edep=Moduulia $1 ei voida poistaa, koska moduuli $2 riippuu siitä
 delete_desc1=$1 ($2 : n klooni)
@@ -189,6 +208,7 @@ delete_msg=Seuraavat moduulit on poistettu onnistuneesti Usermin-asennuksesta :
 delete_rusure=Haluatko varmasti poistaa moduulit / moduulit $2 ? $1 kt tiedostoja poistetaan lopullisesti.
 delete_rusure2=Haluatko varmasti poistaa teeman $2 ? $1 kt tiedostoja poistetaan lopullisesti.
 delete_enone=Ei moduuleja valittu
+
 ui_title=Käyttöliittymä
 ui_desc=Tämän lomakkeen avulla voit muokata kaikkien Usermin-moduulien käyttämiä käyttöliittymäasetuksia.
 ui_header=Käyttöliittymän asetukset
@@ -230,6 +250,7 @@ ui_hnm1=Isäntänimi URL-osoitteesta
 ui_hnm2=Verkkotunnuksen nimi URL-osoitteesta
 ui_hnm3=Muu nimi ..
 ui_tabs=Luokittele moduulit?
+
 upgrade_title=Päivitä Usermin
 upgrade_title2=Asenna Usermin
 upgrade_desc=Tämän lomakkeen avulla voit päivittää koko Usermin-asennuksen uuteen versioon. Voit asentaa paikallisesta tiedostosta, ladatusta tiedostosta tai uusimmasta versiosta osoitteessa <a href=http://www.usermin.com/>www.usermin.com</a>. Aivan kuten manuaalisen päivityksen kanssa, kaikki konfigurointiasetuksesi ja kolmannen osapuolen moduulit säilytetään.
@@ -263,6 +284,7 @@ upgrade_done=.. päivitys valmis.
 upgrade_failed=.. päivitys epäonnistui!
 upgrade_updates=Tätä uutta Usermin-versiota on $1 -päivityksiä. <a href='$2'>Napsauta tätä</a> ladataksesi ja asentaaksesi ne nyt automaattisesti.
 upgrade_eupdates=Päivitysluettelon lataus epäonnistui : $1 
+
 update_desc1=Tämä lomake antaa sinun päivittää Usermin-moduuleja, joiden on havaittu sisältävän virheitä tai <a href=http://www.usermin.com/uupdates.html>Usermin Updates</a> -sivulta tai muusta lähteestä. Tämä vertaa nykyisin asennettuja moduuleja päivitettävissä oleviin moduuleihin ja lataa ja asentaa valinnaisesti kaikki vanhentuneet moduulit.
 update_header1=Päivitä moduulit nyt
 update_header2=Päivitä moduulit aikataulussa
@@ -279,10 +301,12 @@ update_sched=Päivitä moduulit $1 : 00 välein $2 päivän välein
 update_none=Tälle versioon ei ole Usermin-päivityksiä.
 update_failed=Moduulin asentaminen epäonnistui : $1 
 update_desc2=Tämä lomake on tarkoitettu vian tai tietoturva-aukkojen sisältävien Usermin-moduulien automaattisen päivityksen ajoittamiseen <a href=http://www.usermin.com/uupdates.html>Usermin-päivitykset</a> -sivulta tai muusta lähteestä. Vaikka tämä palvelu on hyödyllinen, sinun tulee olla varovainen sen käyttämisessä, koska se saattaa antaa hyökkääjien ottaa järjestelmän haltuunsa, jos päivityspalvelin on koskaan vaarantunut.
+
 assignment_title=Määritä moduulit uudelleen
 assignment_header=Moduuliluokan tehtävät
 assignment_ok=Muuta luokkia
 assignment_desc=Tämä muoto antaa sinun määrittää, mihin luokkaan kukin moduuli näytetään Usermin-hakemistosivulla.
+
 categories_title=Muokkaa luokkia
 categories_header=Luokan tunnus ja kuvaukset
 categories_desc=Tämä lomake antaa sinun nimetä olemassa olevat Usermin-luokat ja luoda uusia luokkia, joille moduulit voidaan määrittää. Taulukon yläosa on tarkoitettu sisäisten luokkien kuvausten muuttamiseen, kun taas alaosa on tarkoitettu uusien luokkatunnusten ja kuvausten lisäämiseen.
@@ -292,6 +316,7 @@ categories_edesc=Puuttuu kuvaus kohdasta $1
 categories_ecat=Luokkatunnus $1 on jo otettu
 categories_code=ID
 categories_name=Näytetty kuvaus
+
 log_access=IP-käyttöoikeuden muutos
 log_bind=Portti ja osoite muutettu
 log_log=Muutokset kirjausasetuksissa
@@ -327,6 +352,7 @@ log_restrict_create=Luotu rajoitus kohteelle $1
 log_restrict_modify=Muutettu rajoitus $1 : lle
 log_restrict_delete=Poistettu rajoitus $1 : lle
 log_restrict_move=Siirretty rajoitus $1 : lle
+
 log_all=kaikki käyttäjät
 log_group=ryhmä $1 
 log_switch=Vaihdettiin Usermin-käyttäjälle $1 
@@ -334,6 +360,7 @@ log_logout=Automaattiset uloskirjautumisajat ovat muuttuneet
 log_dav=Vaihdetut DAV-palvelimen asetukset
 log_advanced=Vaihdetut lisäasetukset
 log_mobile=Vaihdetut mobiililaitteen asetukset
+
 update_err=Moduulien päivitys epäonnistui
 update_eurl=Puuttuva tai virheellinen päivitys-URL
 update_title=Päivitä moduulit
@@ -352,6 +379,7 @@ update_rv=Tarkistetaan päivitetyt Usermin-moduulit kohdasta $1
 update_eemail=Sinun on annettava sähköpostiosoite, jos näytetään vain se, mitä päivitetään.
 update_subject=Usermin-moduulien päivitysraportti
 update_version=Uusi Usermin-julkaisu (versio $1) on nyt ladattavissa. Tulevat päivitykset julkaistaan vain uusimmalle versioon.
+
 restrict_title=Moduulirajoitukset
 restrict_desc=Tällä sivulla voit hallita, mitkä Usermin-moduulit ovat saatavilla eri käyttäjille ja ryhmille. Kaikki luettelossa olevat moduulin lisäykset ja vähennykset eivät koske vain ensimmäistä, joka vastaa kutakin käyttäjää. <br>Moduuleja, joita ei ole valittu<a href='$1'> saatavissa oleviin moduuleihin </a> -sivulle, ei tule koskaan saataville käyttäjiä, vaikka heidät olisi valittu täällä.
 restrict_who=Usermin-käyttäjä
@@ -384,6 +412,7 @@ restrict_egroup=Puuttuva tai virheellinen ryhmän nimi
 restrict_efile=Puuttuvat, olemattomat tai ei-absoluuttiset käyttäjät ja ryhmätiedostot
 restrict_move=Liikkua
 bootup_ecannot=Et voi määrittää käynnistystä
+
 acl_icons=Sallitut kokoonpanosivut
 acl_mods=Osaa konfiguroida moduuleja
 acl_all=Kaikki moduulit
@@ -391,10 +420,12 @@ acl_sel=Valittu alla ..
 acl_stop=Voiko pysäyttää ja käynnistää Userminin?
 acl_bootup=Voiko määrittää käynnistyksen käynnistyksen yhteydessä?
 acl_ecannot=Sinulla ei ole oikeutta käyttää tätä sivua
+
 clone_err=Moduulin kloonaaminen epäonnistui
 clone_elink=linkki epäonnistui : $1 
 clone_ecopy=ei onnistunut kopioimaan asetusta : $1 
 clone_desc=$1 : n klooni
+
 sessions_title=Nykyiset kirjautuminenistunnot
 sessions_desc=Nykyiset Usermin-istunnon kirjautumiset on lueteltu alla. Voit peruuttaa olemassa olevan istunnon ja pakottaa käyttäjän kirjautumaan uudelleen napsauttamalla sen istunnon tunnusta.
 sessions_id=Istunnon tunniste
@@ -404,12 +435,15 @@ sessions_login=Kirjautunut sisään
 sessions_none=Yhtään käyttäjää ei ole tällä hetkellä kirjautunut Userminiin.
 sessions_switch=Vaihda Usermin-käyttäjäksi:
 sessions_ok=Vaihtaa
+
 referers_title=Luotetut viittaajat
 referers_desc=Tällä sivulla voit määrittää Userminin viittaustarkistuksen tuen, jota käytetään estämään muiden verkkosivustojen haitalliset linkit, jotka huijaavat käyttäjän selaimet tekemästä vaarallisia asioita Userminin kanssa. Jos sinulla on linkkejä omilta verkkosivustoiltasi Userminiin, joita et halua varoittaa, lisää nämä sivustot alla olevaan luetteloon.
+
 anon_title=Anonyymi pääsy moduuliin
 anon_desc=Tällä sivulla voit myöntää pääsyn valittuihin Usermin-moduuleihin ja polkuihin ilman, että asiakkaiden on kirjauduttava sisään. Jokaiselle alla kirjoittamalle moduulipolulle (kuten / komennot tai / Changepass) sinun on myös annettava Unix-käyttäjän nimi, jonka oikeuksia käytetään moduulin käyttämiseen.
 anon_user=Unix-käyttäjä
 anon_euser=Puuttuva tai virheellinen Unix-käyttäjä URL-osoitteiden polulle '$1'
+
 logout_title=Automaattinen uloskirjautumisaika
 logout_desc=Tätä sivua voidaan käyttää määrittämään erilaiset käyttämättömyyden uloskirjautumisajat eri Usermin-käyttäjille. Aikakatkaisu on syötettävä minuutteina, ja nollan aikakatkaisu tarkoittaa, että sopivia käyttäjiä koskevia istuntoja ei koskaan kirjaudu ulos automaattisesti.
 logout_type=Tyyppi
@@ -424,6 +458,7 @@ logout_egroup=Puuttuva tai virheellinen ryhmä rivillä $1
 logout_efile=Puuttuva tai puuttuva tiedosto riviltä $1 
 logout_etime=Puuttuva tai virheellinen aikakatkaisu rivillä $1 
 logout_ecannot=Et voi määrittää uloskirjautumisaikoja
+
 dav_title=DAV-palvelin
 dav_header=DAV-palvelimen asetukset
 dav_path=DAV käytössä?
@@ -444,16 +479,22 @@ dav_users=Käyttäjät, jotka voivat käyttää DAV: tä
 dav_users1=Kaikki käyttäjät
 dav_users0=Alla luetellut käyttäjät ja ryhmät ..
 dav_eusers=Ei käyttäjiä
+
 syslog_errorlog=Usermin -virheloki
+
 descs_title=Moduulinimikkeet
 descs_info=Tällä sivulla voit määrittää vaihtoehtoiset otsikot Usermin-moduuleille ohittaa niiden vakiokuvaukset.
+
 advanced_title=Edistyneet asetukset
 advanced_pass=Asetetaanko salasana Usermin-ohjelmien käyttöön? <br><font size=-1> (Ei toimi, kun istunnon todennus on käytössä) </font>
+
 blocked_title=Estetyt isännät ja käyttäjät
 blocked_none=Usermin ei tällä hetkellä estä ketään isäntiä tai käyttäjiä.
 blocked_user=Usermin-käyttäjä
 blocked_cleardesc=Napsauta tätä painiketta, jos haluat poistaa kaikki nykyiset isäntä- ja käyttäjälohkot käynnistämällä Usermin-palvelinprosessin uudelleen.
+
 mobile_title=Mobiililaitteen asetukset
+
 copycert_err=SSL-asetusten kopiointi epäonnistui Webministä
 copycert_essl=SSL ei ole käytössä
 copycert_ekeyfile=Webminissä ei ole asetettu yksityistä avaintiedostoa

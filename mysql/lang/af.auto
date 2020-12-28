@@ -45,12 +45,15 @@ index_showing=Wys databasisse wat ooreenstem met $1.
 index_emsg=Die volledige MySQL-foutboodskap was : $1 
 index_jump=Of wysig databasis:
 index_jumpok=oop
+
 login_err=Aanmelding misluk
 login_ecannot=U mag nie die databasisaanmelding opstel nie
 login_elogin=Ontbrekende administrasie-aanmelding
 login_epass=Verkeerde administratiewe gebruikersnaam of wagwoord
+
 stop_err=Kon nie databasis stop nie
 start_err=Kon nie die databasis begin nie
+
 dbase_title=Wysig databasis
 dbase_header=Databasistabelle, indekse en aansigte
 dbase_tables=Databasistabelle
@@ -81,6 +84,7 @@ dbase_type=tipe
 dbase_typetable=Tabel ($1)
 dbase_typeindex=indeks
 dbase_typeview=Beskou
+
 ddrop_err=Kon nie databasis aflaai nie
 ddrop_title=Drop databasis
 ddrop_rusure=Is u seker dat u die databasis $1 wil laat val? $2 tabelle wat $3 rye data bevat, sal uitgevee word.
@@ -89,6 +93,7 @@ ddrop_mysql=Omdat dit die meerdatabasis is, sal u MySQL-bediener waarskynlik onb
 ddrop_ok=Drop databasis
 ddrop_empty=Vee net alle tabelle uit
 ddrop_empty2=Vee alle tabelle uit
+
 ddrops_err=Kon nie databasisse aflaai nie
 ddrops_title=Drop databasisse
 ddrops_rusure=Is u seker dat u die geselekteerde $1 databasisse wil laat val? $2 tabelle wat $3 rye data bevat, sal uitgevee word.
@@ -97,6 +102,7 @@ ddrops_mysql=Omdat die meerdatabasis gekies is, sal u MySQL-bediener waarskynlik
 ddrops_ok=Drop databasisse
 ddrops_enone=Geen databasisse gekies nie
 ddrops_ecannotdb=U mag nie die databasis $1 laat val nie
+
 table_title=Redigeer Tabel
 table_title2=Skep tabel
 table_header=Tabel $1 in databasis $2 
@@ -142,16 +148,19 @@ table_nextra=Ekstra toegeskryf
 table_eautokey=Die outomatiese inkrementiewe veld moet ook 'n primêre sleutel wees
 table_eauto=Slegs een veld kan outomaties inkrementeer
 table_delete=Vee geselekteerde velde uit
+
 tdrop_err=Kon nie die tabel laat val nie
 tdrop_title=Drop Table
 tdrop_rusure=Is u seker dat u die tabel $1 in databasis $2 wil laat val? $3 rye data sal uitgevee word.
 tdrop_ok=Drop Table
+
 tdrops_enone=Geen tabel (te) om te laat val nie
 tdrops_err=Kon nie tabel (e) laat val nie
 tdrops_ok=drop
 tdrops_title=Drop gekies
 tdrops_rusure=Is u seker dat u $1 geselekteerde tabel (s) in databasis $2 wil laat val? $3 rye data sal uitgevee word.
 tdrops_rusure2=Is u seker dat u $1 geselekteerde tabel (s) in databasis $2 wil laat val?
+
 field_title1=Voeg veld by
 field_title2=Verander veld
 field_in=In tabel $1 in databasis $2 
@@ -185,6 +194,7 @@ field_esize='$1' is nie 'n geldige veldgrootte nie
 field_eenum=Geen vermelde waardes ingevoer nie
 field_efield='$1' is nie 'n geldige veldnaam nie
 field_ekey=Velde wat nul toelaat, kan nie deel uitmaak van die primêre sleutel nie
+
 view_title=Tabel Data
 view_pos=Rye $1 tot $2 van $3 
 view_none=Hierdie tabel bevat geen data nie.
@@ -219,6 +229,7 @@ view_keep=Laat onveranderd
 view_set=Stel die inhoud van die lêer in.
 view_adv=Gevorderde soektog
 view_sqlrun=Resultate gegenereer deur SQL-navraag : $1 
+
 users_title=Gebruikertoestemmings
 users_user=gebruiker
 users_host=gashere
@@ -245,6 +256,7 @@ users_ssl=sertifikaat
 users_dtitle=Vee gebruikertoestemmings uit
 users_drusure=Is u seker dat u die $1 geselekteerde MySQL-gebruikertoestemmings wil verwyder?
 users_dok=Verwyder gebruikers
+
 user_title1=Skep gebruiker
 user_title2=Gebruiker wysig
 user_header=MySQL-gebruikersdetails
@@ -308,6 +320,7 @@ user_emax_user_connections=Maksimum gelyktydige aanmeldings moet 'n getal wees
 user_emax_connections=Die maksimum verbindings per uur moet 'n nommer wees
 user_emax_updates=Die maksimum opdatering per uur moet 'n nommer wees
 user_emax_questions=Die maksimum navrae per uur moet 'n nommer wees
+
 dbs_title=Databasistoestemmings
 dbs_db=databasisse
 dbs_user=gebruiker
@@ -326,6 +339,7 @@ dbs_enone=Geen databasisse gekies nie
 dbs_dtitle=Vee databasistoestemmings uit
 dbs_drusure=Weet u seker dat u die $1 geselekteerde MySQL-databasistoestemmings wil verwyder?
 dbs_dok=Skrap toestemmings
+
 db_title1=Skep databasistoestemmings
 db_title2=Wysig databasistoestemmings
 db_header=Opsies vir toestemming van die databasis
@@ -340,6 +354,7 @@ db_err=Stoor van databasistoestemmings kon nie
 db_euser=Gebruikernaam ontbreek of ongeldig
 db_ehost=Ontbrekende of ongeldige gasheernaam
 db_edb=Ontbrekende of ongeldige databasisnaam
+
 hosts_title=Gasheertoestemmings
 hosts_db=databasisse
 hosts_host=gashere
@@ -355,6 +370,7 @@ hosts_dtitle=Vee gasheer-toestemmings uit
 hosts_drusure=Is u seker dat u die $1 geselekteerde MySQL-gasheertoestemmings wil uitvee?
 hosts_dok=Skrap toestemmings
 hosts_return=gasheer toestemmings
+
 host_title1=Skep gasheerregte
 host_title2=Wysig gasheertoestemmings
 host_header=Opsies vir gasheertoestemmings
@@ -364,6 +380,7 @@ host_sel=gekies
 host_otherdb=Paspatroon
 host_host=gashere
 host_perms=permissions
+
 newdb_title=Skep databasis
 newdb_header=Nuwe databasisopsies
 newdb_db=Databasisnaam
@@ -377,6 +394,7 @@ newdb_err=Kon nie databasis skep nie
 newdb_edb=Ontbrekende of ongeldige databasisnaam
 newdb_ecannot=U mag nie databasisse skep nie
 newdb_ecannot2=U mag nie meer databasisse skep nie
+
 exec_title=Voer SQL uit
 exec_header=Voer 'n SQL-opdrag in om uit te voer op databasis $1.
 exec_old=Of kies 'n vorige SQL-opdrag :
@@ -413,6 +431,7 @@ exec_iheader=Opsies vir invoer van tekslêers
 exec_created=$1 tabelle is geskep.
 exec_inserted=$1 rekords is ingevoeg.
 exec_cs=Karakterset vir data
+
 tprivs_title=Tabel Toestemmings
 tprivs_table=tafel
 tprivs_db=databasis
@@ -431,6 +450,7 @@ tprivs_enone=Geen tabelle gekies nie
 tprivs_dtitle=Verwyder tabeltoestemmings
 tprivs_drusure=Weet u seker dat u die $1 geselekteerde MySQL-tabeltoestemmings wil verwyder?
 tprivs_dok=Skrap toestemmings
+
 tpriv_title1=Skep tabeltoestemmings
 tpriv_title2=Wysig tabeltoestemmings
 tpriv_header=Tabel toestemmingsopsies
@@ -447,6 +467,7 @@ tpriv_etable=Geen tabel gekies nie
 tpriv_euser=Gebruikernaam ontbreek of ongeldig
 tpriv_ehost=Ontbrekende of ongeldige gasheer
 tpriv_edb=Ontbrekende of ongeldige databasisnaam
+
 cprivs_title=Veldtoestemmings
 cprivs_field=veld
 cprivs_table=tafel
@@ -466,6 +487,7 @@ cprivs_enone=Geen velde gekies nie
 cprivs_dtitle=Vee kolomtoelatings uit
 cprivs_drusure=Is u seker dat u die $1 geselekteerde MySQL-kolomtoestemmings wil verwyder?
 cprivs_dok=Skrap toestemmings
+
 cpriv_title1=Skep veldtoestemmings
 cpriv_title2=Bewys veldtoestemmings
 cpriv_header=Veldtoestemmingsopsies
@@ -482,11 +504,13 @@ cpriv_etable=Geen tabel gekies nie
 cpriv_euser=Gebruikernaam ontbreek of ongeldig
 cpriv_ehost=Ontbrekende of ongeldige gasheer
 cpriv_edb=Ontbrekende of ongeldige databasisnaam
+
 esql=SQL $1 misluk : $2 
 eparse=Webmin kan nie die uitset vanaf die $1 -opdrag ontleed nie weens die aard van die data in u databasis. U moet die $2 en $3 Perl-modules installeer om hierdie probleem op te los.
 edenied=U het nie toegang tot hierdie MySQL-databasis nie
 perms_ecannot=U mag nie toestemmings wysig nie
 perms_edb=U mag slegs toestemmings vir u eie databasisse wysig
+
 acl_dbs=Databasisse wat hierdie gebruiker kan bestuur
 acl_dall=Alle databasisse
 acl_dsel=Gekies ..
@@ -507,6 +531,7 @@ acl_bnone=Weier rugsteun
 acl_indexes=Kan indekse gekyk en bestuur word?
 acl_views=Kan u sienings bestuur en bestuur?
 acl_files=Kan SQL vanuit plaaslike lêers uitgevoer word?
+
 log_start=MySQL-bediener is begin
 log_stop=MySQL-bediener is gestop
 log_cnf=MySQL-bediener se konfigurasie is verander
@@ -571,6 +596,7 @@ log_importfile=Gevoerde data vanaf lêer $1 ingevoer
 log_set=$1 MySQL-veranderlikes verander
 log_root=Administrasie wagwoord verander
 log_manual=Handig geredigeerde konfigurasie lêer
+
 backup_title=Rugsteundatabasis
 backup_title2=Rugsteun alle databasisse
 backup_edump=Die MySQL-rugsteunprogram $1 is nie op u stelsel gevind nie. Miskien is u <a href='$2'>module-opstelling</a> verkeerd.
@@ -649,15 +675,18 @@ backup_bodyspace=Lêersisteemgrootte: $1 Vrye ruimte : $2
 backup_bodyall=almal
 backup_edownloadall=Slegs 'n enkele databasis-rugsteun kan afgelaai word
 backup_edownloadsave=Die aflaaimodus kan nie vir geskeduleerde rugsteun gebruik word nie
+
 import_title=Voer data in
 import_uploadout=Voer data in vanaf opgelaaide lêer ..
 import_fileout=Voer data uit lêer $1 in.
 import_eupload=Ontbrekende invoerlêer ontbreek
 import_efile=Ontbrekende lêernaam ontbreek
+
 adv_title=Gevorderde soektog
 adv_and=Soek rekords wat aan al die kriteria voldoen.
 adv_or=Soek rekords wat ooreenstem met enige kriteria.
 adv_ok=Soek nou
+
 csv_title=Voer CSV-lêer uit
 csv_header=CSV-uitvoeropsies
 csv_dest=Uitvoer bestemming
@@ -678,6 +707,7 @@ csv_done=CSV-uitvoer na $1 is voltooi. Die resulterende lêergrootte is $2.
 csv_headers=Kolomname in CSV insluit?
 csv_cols=Kolomme om in CSV in te sluit
 csv_ecols=Geen kolomme is gekies nie
+
 cnf_title=MySQL Server-konfigurasie
 cnf_efile=Die MySQL-konfigurasielêer $1 is nie op u stelsel gevind nie. Miskien moet u die <a href='$2'>modulekonfigurasie</a> aanpas om die regte pad te gebruik.
 cnf_header=MySQL-bedieneropsies
@@ -719,11 +749,13 @@ cnf_restart=Stoor en herbegin MySQL
 cnf_fpt=Afsonderlike lêer vir elke InnoDB-tabel?
 cnf_ilt=InnoDB-sluitstyd (in sekondes)
 cnf_eilt=InnoDB-eindtyd moet 'n heelgetal wees
+
 manual_title=Wysig konfiglêers
 manual_file=Wysig konfigurasielêer:
 manual_ok=OK
 manual_efile=Ongeldige konfigurasielêer!
 manual_err=Kon nie die konfigurasielêer stoor nie
+
 index_title1=Skep indeks
 index_header1=Indeksopsies
 index_name=Indeksnaam
@@ -739,12 +771,15 @@ index_ecols=Geen velde gekies nie
 index_title2=Wysig indeks
 index_header=Indeks $1 in databasis $2 
 index_ecannot=U mag nie indekse bestuur nie
+
 syslog_desc=MySQL foutboodskappe
 syslog_desc2=MySQL-foutboodskap
 syslog_logdesc=MySQL-navrae
+
 fdrop_err=Kon nie velde uitvee nie
 fdrop_enone=Geen gekies nie
 fdrop_eall=U kan nie alle velde van 'n tabel verwyder nie!
+
 view_title1=Skep aansig
 view_title2=Wysig aansig
 view_header1=Sien besonderhede
@@ -770,6 +805,7 @@ view_cascaded=Onderliggende sienings
 view_local=Slegs hierdie siening
 view_nocheck=Geen
 view_ecannot=U mag nie sienings bestuur nie
+
 procs_title=Databasisverbindings
 procs_id=ID
 procs_user=Gebruikersnaam
@@ -781,9 +817,11 @@ procs_query=Doen navraag
 procs_kill=Maak geselekteerde verbindings dood
 procs_ecannot=U mag nie databasisverbindings sien nie
 procs_none=Daar is tans geen ander databasis-kliëntverbindings nie.
+
 kill_err=Kon nie databasisverbindings doodmaak nie
 kill_ecannot=U mag nie databasisverbindings bestuur nie
 kill_enone=Geen gekies nie
+
 vars_title=MySQL-stelselveranderlikes
 vars_desc=Waarskuwing - Veranderlikes wat op hierdie bladsy gestel word, sal na hul standaardwaardes teruggestel word wanneer MySQL herbegin word. Permanente instellings moet op die <a href='$1'>MySQL Server Configuration</a> -bladsy gemaak word.
 vars_ecannot=U mag nie die stelselveranderlikes wysig nie
@@ -794,6 +832,7 @@ vars_search=Wys veranderlikes wat ooreenstem:
 vars_ok=Soek
 vars_none2=Geen stelselveranderlikes pas by u soektog nie.
 vars_none=Geen stelselveranderlikes is gevind nie!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
@@ -805,7 +844,9 @@ compat_maxdb=maxdb
 compat_no_key_options=Belangrike opsies
 compat_no_table_options=Tabelopsies
 compat_no_field_options=Veldopsies
+
 config_echarset=Karakterset ontbreek of ongeldig
+
 root_title=Verander administrasie wagwoord
 root_header=Nuwe administrasie wagwoord
 root_user=Administrasie-aanmelding
@@ -818,6 +859,7 @@ root_epass1=Geen nuwe wagwoord ingevoer nie
 root_epass2=Wagwoorde stem nie ooreen nie
 root_none=Geen wagwoord nie!
 root_auto=Outomaties (tipies <tt>wortel</tt>)
+
 mysqlpass_err=MySQL veilige modus
 mysqlpass_esafecmd=Die opdrag $1 wat nodig is om MySQL te begin met verifikasie uitgeskakel, is nie gevind nie
 mysqlpass_eshutdown=Kon nie afskakel nie : $1 

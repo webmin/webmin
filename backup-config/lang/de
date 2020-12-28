@@ -20,6 +20,7 @@ index_nostrftime=Warnung - enige Backupjobs verwenden % in ihren Dateinamen, abe
 index_tabsched=Zeitgesteuerte Backups
 index_tabbackup=Backup jetzt ausführen
 index_tabrestore=Jetzt wiederherstellen
+
 edit_title1=Erzeuge zeitgesteuertes Backup
 edit_title2=Bearbeite zeitgesteuertes Backup
 edit_header=Zeitgesteuerte Sicherungsoptionen
@@ -44,9 +45,11 @@ edit_return=Sicherungsformular
 edit_other=Andere ausgewählte Dateien ..
 edit_pre=Befehle vor dem Backup
 edit_post=Befehle nach dem Backup
+
 save_err=Konnte Backup nicht sichern
 save_emods=Keine Module ausgewählt
 save_ewebmin=Es wurden weder Webmin- noch Serverkonfigurationsdateien ausgewählt.
+
 backup_mode0=Lokale Datei
 backup_mode1=FTP-Server
 backup_mode2=SSH-Server
@@ -63,6 +66,7 @@ backup_egunzip=Dieses Backup ist komprimiert, aber <tt>gunzip</tt> ist nicht ins
 backup_euntar=Un-TAR gescheitert : $1
 backup_enone2=Für die ausgewählten Module existieren in der Sicherung keine Dateien
 backup_epre2=Modul $1 konnte nicht zurückgeschrieben werden : $2
+
 backup_err=Sicherung gescheitert
 backup_edest=Fehlende oder ungültige Datei mit absolutem Pfad
 backup_eserver1=Fehlender oder ungültiger FTP-Server
@@ -78,6 +82,7 @@ backup_title=Sicherungskonfiguration
 backup_doing=Starte Backup der Modulkonfigurationsdateien nach $1 ..
 backup_failed=.. gescheitert! $1
 backup_done=.. fertig. Das gesamte Backup beträgt $1 mit insgesamt $2 Dateien.
+
 restore_err=Wiederherstellung gescheitert!
 restore_emods=Keine Module oder andere Dateien ausgewählt
 restore_title=Konfigurations-Wiederherstellung
@@ -86,22 +91,26 @@ restore_testing=Extrahiere Inhalt von Backup von $1 ..
 restore_failed=.. gescheitert! $1
 restore_done=.. fertig. $1 Dateien wurde wiederhergestellt.
 restore_done2=.. Dateien im Backup sind :
+
 nice_ftp=$2 on $1 via FTP
 nice_ftpp=$2 auf $1 Port $3 via FTP
 nice_ssh=$2 on $1 via SSH
 nice_sshp=$2 auf $1 Port $3 via SSH
 nice_upload=Hochgeladene Datei
 nice_download=Browser
+
 log_backup=Backup von $1 Modulen bis $2
 log_restore=Stelle her Backup von $1 Modulen bis $2
 log_create_backup=Erstelle Backup von $1 Modulen bis $2
 log_modify_backup=Modifiziere Backup von $1 Modulen bis $2
 log_delete_backup=Lösche Backup von $1 Modulen bis $2
 log_run_backup=Führe Backup von $1 Modulen bis $2
+
 run_title=Backup-Konfigurationen
 run_doing=Starte Backup von $1 Modulen nach $2 ..
 run_ok=.. Backup erfolgreich abgeschlossen.
 run_failed=.. Backup gescheitert! Bitte lesen Sie die Fehlermeldung oben für die Begründung.
+
 email_mods=Backup von Modulen:
 email_failed=an $1 fehlgeschlagen :
 email_ok=an $1 erfolgreich.

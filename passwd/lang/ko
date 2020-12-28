@@ -5,6 +5,7 @@ index_user=유저 암호 변경:
 index_euseradmin=시스템에서 유저와 그룹 모듈이 설치되어 있지 않거나 지원하지 않기 때문에 이 모듈을 사용할 수 없습니다.
 index_toomany=시스템에 출력할 수 있는 유저가 너무 많습니다. 아래에서 변경을 원하는 유저의 이름을 입력하십시오.
 index_none=다른 유저의 암호를 변결할 권한이 없습니다.
+
 passwd_title=암호 변경
 passwd_header=유닉스 유저 암호 변경
 passwd_for=암호 변경할 유저
@@ -23,7 +24,9 @@ passwd_erepeat=새 암호가 동일하지 않습니다.
 passwd_ecmd=$1 실패: $2
 passwd_ok=$1 유저의 암호가 변경이 되었습니다. 이 유저가 현재 Webmin 유저라면 로그인을 다시 하셔야 합니다.
 passwd_ok2=유저 암호 $1 변경이 완료 되었습니다.
+
 log_passwd=$1 유저 암호 변경
+
 acl_repeat=새 암호를 다시 입력 하셨습니까?
 acl_old=이전 함호를 입력해야만 합니까?
 acl_old_this=다른 유저만

@@ -65,6 +65,7 @@ index_checkconfig=Make sure that the chroot directory is set correctly on the <a
 index_eexpired=Warning : The following zones have expired DNSSEC signatures : $1
 index_eexpired_conf=Automatic signing should be re-enabled on the $1 page.
 index_eexpired_mod=Use the $1 module to either disable DNSSEC for these domains, or check why signing is failing.
+
 master_title=تحرير ماجستير المنطقة
 master_inview=$1 في العرض$2
 master_ecannot=غير مسموح لك بتحرير هذه المنطقة
@@ -146,6 +147,7 @@ master_defttl=الوقت الافتراضي للعيش للسجلات
 master_edefttl='$1' is not a valid default time-to-live for records
 master_esoagone=لم يتم العثور على سجل الخدمية!
 master_einclude=ملف القالب الإضافي غير موجود
+
 delete_title=حذف المنطقة
 delete_mesg=Are you sure you want to delete the zone $1 ? All records and the zone file will be deleted.
 delete_mesg2=هل أنت متأكد أنك تريد حذف منطقة الجذر؟ قد لا يتمكن خادم DNS الخاص بك من البحث عن عناوين على الإنترنت.
@@ -157,6 +159,7 @@ delete_errslave=Master zone deleted OK, but the following errors occurred on sla
 delete_ezone=لم يتم العثور على المنطقة على خادم الرقيق
 delete_vwarn=هذه المنطقة مرتبطة بمجال Virtualmin $1 ، لذا لا ينبغي حذفها هنا!
 delete_vwarn2=هذه المنطقة مرتبطة بمجال Virtualmin $1 و$2 آخرين ، لذا لا ينبغي حذفها هنا!
+
 mcreate_title=إنشاء ماجستير المنطقة
 mcreate_ecannot=لا يمكنك إنشاء مناطق رئيسية
 mcreate_opts=خيارات منطقة رئيسية جديدة
@@ -171,6 +174,7 @@ mcreate_auto=تلقائي
 mcreate_err=فشل في إنشاء منطقة رئيسية
 mcreate_ednssecsize=Failed to compute key size : $1
 mcreate_ednssec=Record creation succeeded, but DNSSEC failed : $1
+
 slave_title=تحرير منطقة الرقيق
 stub_title=تحرير منطقة كعب الروتين
 slave_ecannot=غير مسموح لك بتحرير هذه المنطقة
@@ -202,6 +206,7 @@ slave_applymsg2=انقر فوق هذا الزر لفرض إعادة نقل ال�
 slave_last=Last transferred : $1
 slave_never=أبدا
 slave_xfer=نقل منطقة الاختبار
+
 screate_title1=إنشاء منطقة الرقيق
 screate_title2=إنشاء منطقة كعب الروتين
 screate_ecannot1=غير مسموح لك بإنشاء مناطق للرقيق
@@ -214,6 +219,7 @@ screate_rev=عكس (عناوين إلى أسماء)
 screate_dom=اسم المجال / الشبكة
 screate_err1=فشل في إنشاء منطقة الرقيق
 screate_err2=فشل في إنشاء منطقة كعب الروتين
+
 recs_ecannot=غير مسموح لك بتحرير السجلات في هذه المنطقة
 recs_ecannottype=غير مسموح لك بتحرير سجلات من هذا النوع
 recs_title=$1 Records
@@ -231,6 +237,7 @@ recs_drev=حذف عكس أيضا؟
 recs_none=The domain does not have any $1 records yet.
 recs_nosearch=لا توجد سجلات مطابقة لبحثك.
 recs_needsearch=أدخل البحث للعثور على سجلات مطابقة.
+
 edit_title=Edit $1
 edit_header=In $1
 edit_edit=Edit $1 Record
@@ -306,6 +313,7 @@ edit_edmarcpct=يجب أن تكون النسبة المئوية للرسائل �
 edit_edmarcrua=في عداد المفقودين عنوان التعليق الكلي
 edit_edmarcruf=عنوان معلومات الطب الشرعي مفقود
 edit_ecaavalue2=اسم مجال مفقود أو غير صالح المظهر
+
 text_title=تحرير ملف السجلات
 text_title2=عرض ملف السجلات
 text_desc3=This form allows you to manually edit the DNS records file $1. No syntax checking will be done by Webmin.
@@ -315,6 +323,7 @@ text_ecannot=غير مسموح لك بتحرير ملفات السجل
 text_none=ومع ذلك ، فإن الملف فارغ حاليًا ، ربما لأن المنطقة لم يتم نقلها بعد من الخادم الرئيسي.
 text_soa=زيادة الرقم التسلسلي تلقائيا
 text_rawformat=هذه المنطقة بتنسيق ثنائي خام ، وبالتالي لا يمكن عرضها كنص.
+
 restart_err=فشل في تطبيق التغييرات
 restart_ecannot=غير مسموح لك بإعادة تشغيل BIND
 restart_epidfile=Could not find BIND PID in $1
@@ -323,10 +332,12 @@ restart_erunning2=BIND does not appear to be running on the slave server $1
 restart_endc=NDC command failed : $1
 restart_ecmd=Restart command failed : $1
 restart_eversion=Slave server $1 is not running Webmin version $2 or above.
+
 start_ecannot=غير مسموح لك ببدء BIND
 start_error=Failed to start BIND : $1
 stop_epid=BIND ليست قيد التشغيل
 stop_ecannot=غير مسموح لك بإيقاف BIND
+
 fwd_title=تحرير المنطقة الأمامية
 fwd_ecannot=غير مسموح لك بتحرير هذه المنطقة
 fwd_opts=خيارات المنطقة
@@ -335,12 +346,14 @@ fwd_forward=جرب خوادم أخرى؟
 fwd_check=تحقق من الأسماء؟
 fwd_err=فشل في حفظ الخيارات
 fwd_delmsg=انقر فوق هذا الزر لحذف هذه المنطقة من خادم DNS الخاص بك. ثم يتم البحث في السجلات الموجودة فيه باستخدام عملية الدقة العادية.
+
 delegation_title=تحرير منطقة التفويض
 delegation_ecannot=غير مسموح لك بتحرير هذه المنطقة
 delegation_opts=خيارات المنطقة
 delegation_err=فشل في حفظ الخيارات
 delegation_noopts=مناطق التفويض لا تملك أي خيارات قابلة للتكوين.
 delegation_delmsg=انقر فوق هذا الزر لحذف هذه المنطقة من خادم DNS الخاص بك. ثم يتم التعرف على أنواع السجلات الموجودة بخلاف NS بواسطة BIND.
+
 fcreate_title=إنشاء منطقة الأمام
 fcreate_ecannot=غير مسموح لك بإنشاء مناطق للأمام
 fcreate_opts=خيارات المنطقة الأمامية الجديدة
@@ -350,10 +363,12 @@ fcreate_rev=عكس (عناوين إلى أسماء)
 fcreate_dom=اسم المجال / الشبكة
 fcreate_masters=خوادم ماجستير
 fcreate_err=فشل في إنشاء منطقة للأمام
+
 dcreate_title=إنشاء منطقة التفويض فقط
 dcreate_ecannot=غير مسموح لك بإنشاء مناطق التفويض
 dcreate_opts=خيارات منطقة تفويض جديدة
 dcreate_err=فشل في إنشاء منطقة التفويض
+
 create_enet='$1' is not a valid network
 create_edom='$1' is not a valid domain name
 create_edom2='$1' must be a domain, not a network
@@ -363,9 +378,11 @@ create_efile3=Failed to create '$1' : $2
 create_efile4=File $1 already exists
 create_emaster='$1' is not a valid master server address
 create_enone=يجب إدخال خادم رئيسي واحد على الأقل
+
 boot_err=التحميل فشل
 boot_egzip=The root zone file is compressed, but the <tt>gzip</tt> command is not installed on your system!
 boot_egzip2=Uncompression of root zone file failed : $1
+
 type_A=عنوان
 type_AAAA=عنوان IPv6
 type_NS=اسم الخادم
@@ -386,6 +403,7 @@ type_SRV=عنوان الخدمة
 type_ALL=جميع أنواع السجلات
 type_KEY=المفتاح العمومي
 type_CAA=سلطة الشهادة
+
 edit_A=عنوان
 edit_AAAA=عنوان IPv6
 edit_NS=اسم الخادم
@@ -405,6 +423,7 @@ edit_NSEC3PARAM=معلمات DNSSEC
 edit_TLSA=شهادة SSL
 edit_SSHFP=SSH المفتاح العمومي
 edit_CAA=سلطة الشهادة
+
 recs_defttl=TTL الافتراضي
 recs_A=عنوان
 recs_AAAA=عنوان IPv6
@@ -427,6 +446,7 @@ recs_TLSA=شهادة SSL
 recs_SSHFP=SSH المفتاح العمومي
 recs_CAA=سلطة الشهادة
 recs_delete=احذف المختار
+
 value_A1=عنوان
 value_AAAA1=عنوان IPv6
 value_NS1=اسم الخادم
@@ -503,6 +523,7 @@ value_CAA3=اسم المجال CA
 value_caa_issue=سيرت مجال واحد
 value_caa_issuewild=شهادة البدل
 value_caa_iodef=عنوان URL لانتهاك السياسة
+
 tlsa_usage0=سلطة الشهادة
 tlsa_usage1=كيان النهاية
 tlsa_usage2=مرساة الثقة
@@ -512,12 +533,14 @@ tlsa_selector1=معلومات المفتاح العام
 tlsa_match0=محتويات unhashed
 tlsa_match1=SHA-256 مجزأة
 tlsa_match2=SHA-512 مجزأة
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 warn=حذر
 fail=فشل
 ignore=تجاهل
@@ -531,6 +554,7 @@ listed=المدرجة ..
 eip='$1' is not a valid IP address
 eport='$1' is not a valid port number
 eipacl='$1' is not a valid IP address or ACL name
+
 acl_zones=المجالات التي يمكن لهذا المستخدم تحريرها
 acl_zall=جميع المناطق
 acl_zsel=مناطق مختارة ..
@@ -575,6 +599,7 @@ acl_ztypes_master=رئيس
 acl_ztypes_slave=الرقيق / كعب
 acl_ztypes_delegation=وفد
 acl_ztypes_forward=إلى الأمام
+
 servers_title=خوادم DNS الأخرى
 servers_ip=عنوان IP
 servers_bogus=تجاهل خادم وهمية؟
@@ -586,6 +611,7 @@ servers_keys=استخدام مفاتيح DNS
 servers_err=فشل في حفظ خوادم DNS الأخرى
 servers_eip='$1' is not a valid IP address
 servers_etrans='$1' is not a valid number of maximum transfers
+
 logging_title=تسجيل والأخطاء
 logging_ecannot=غير مسموح لك بتكوين التسجيل
 logging_header=خيارات التسجيل والأخطاء العامة
@@ -624,6 +650,7 @@ logging_efile=اسم ملف السجل مفقود
 logging_efile2=يجب أن يكون اسم ملف السجل مسارًا مطلقًا
 logging_ever='$1' is not a valid number of versions
 logging_esize='$1' is not a valid log size
+
 acls_title=قوائم التحكم في الوصول
 acls_ecannot=غير مسموح لك بتحرير قوائم ACL العالمية
 acls_name=اسم دوري أبطال آسيا
@@ -631,6 +658,7 @@ acls_values=مطابقة العناوين والشبكات و ACLs
 acls_err=فشل في حفظ قوائم التحكم في الوصول
 acls_ename='$1' is not a valid ACL name
 acls_eline=Each IP address must be entered on a separate line for ACL '$1'
+
 files_title=الملفات والدلائل
 files_ecannot=غير مسموح لك بتكوين الملفات
 files_header=خيارات الملفات والأدلة العالمية
@@ -640,6 +668,7 @@ files_pid=ملف معرف العملية
 files_xfer=الطريق إلى برنامج نقل المنطقة
 files_err=فشل في حفظ خيارات الملفات والدلائل
 files_efile=اسم ملف مفقود أو غير صالح
+
 forwarding_title=الشحن والتحويلات
 forwarding_ecannot=غير مسموح لك بتحرير خيارات إعادة التوجيه والنقل
 forwarding_header=خيارات النقل وإعادة التوجيه العالمية
@@ -658,6 +687,7 @@ forwarding_etrans=عمليات النقل المتزامنة القصوى أو �
 forwarding_minutes=الدقائق
 forwarding_ip=عنوان IP
 forwarding_port=ميناء
+
 net_title=العناوين والطوبولوجيا
 net_ecannot=غير مسموح لك بتحرير خيارات العنوان والطوبولوجيا
 net_header=العنوان العالمي وخيارات الهيكل
@@ -683,6 +713,7 @@ net_taddrdef=أقرب IP
 net_etport=لا يمكن تحديد منفذ مصدر النقل بدون عنوان
 net_eaddr='$1' is not a valid IPv4 address
 net_eaddr6='$1' is not a valid IPv6 address
+
 controls_title=خيارات واجهة التحكم
 controls_ecannot=غير مسموح لك بتحرير خيارات التحكم
 controls_header=خيارات التحكم
@@ -704,6 +735,7 @@ controls_eunixpath=مسار ملف FIFO مفقود أو غير صالح
 controls_eunixperm=أذونات ملف ثماني مفقودة أو غير صالحة
 controls_eunixowner=مالك ملف مفقود أو غير صالح
 controls_eunixgroup=مجموعة ملفات مفقودة أو غير صالحة
+
 controls_inet=الوصول إلى منفذ الإنترنت
 controls_unix=وصول يونيكس FIFO
 controls_port=ميناء
@@ -717,6 +749,7 @@ controls_efile=اسم ملف FIFO مفقود أو غير صالح
 controls_eperms=أذونات FIFO مفقودة أو غير صالحة
 controls_eowner=معرف UID مفقود أو غير صالح
 controls_egroup=GID مفقود أو غير صالح لمالك FIFO
+
 keys_title=مفاتيح DNS
 keys_id=معرف المفتاح
 keys_alg=خوارزمية
@@ -725,6 +758,7 @@ keys_ecannot=غير مسموح لك بتحرير مفاتيح DNS
 keys_err=فشل في حفظ مفاتيح DNS
 keys_ekey='$1' is not a valid key ID
 keys_esecret=Missing or invalid base-64 encoded secret for key $1
+
 misc_title=الخيارات المتنوعة
 misc_ecannot=غير مسموح لك بتحرير خيارات متنوعة
 misc_header=خيارات عالمية متنوعة
@@ -744,6 +778,7 @@ misc_esize='$1' is not a valid size
 misc_efiles='$1' is not a valid number of maximum open files
 misc_emins='$1' is not a valid number of minutes
 misc_mins=دقيقة
+
 zonedef_title=افتراضيات المنطقة
 zonedef_msg=الإعدادات الافتراضية للمناطق الرئيسية الجديدة
 zonedef_err=فشل في حفظ الإعدادات الافتراضية للمنطقة
@@ -767,10 +802,13 @@ zonedef_size=حجم المفتاح الأولي
 zonedef_single=عدد المفاتيح المراد إنشاؤها
 zonedef_two=مفتاح المنطقة ومفتاح التوقيع
 zonedef_one=مفتاح المنطقة فقط
+
 find_title=البحث عن المناطق
 find_match=Zones matching $1 ..
 find_none=لا توجد مناطق
+
 efirst=Bad first directive at line $1 in $2
+
 findfree_title=البحث عن عناوين IP مجانية
 findfree_desc=البحث عن عناوين IP مجانية
 findfree_nofind=لا يمكنك البحث عن عناوين IP المجانية
@@ -782,8 +820,10 @@ findfree_cf=Consider <em>freeXXX</em> hostnames as free IPs?
 findfree_search=بحث
 findfree_msg=Found $1 free IP addresses
 findfree_msg2=(of which $1 are like <i>freeXXX</i>, $2 like <i>freemac</i>)
+
 free_title=عناوين IP المجانية
 free_ip=عنوان IP
+
 log_servers=تم تغيير خوادم DNS الأخرى
 log_logging=تغيير التسجيل والأخطاء
 log_acls=تغيير قوائم التحكم في الوصول
@@ -840,14 +880,17 @@ log_sign=Updated DNSSEC signatures for zone $1
 log_resign=Re-signed DNSSEC key for zone $1
 log_trusted=تم التحقق من DNSSEC
 log_dnssec=تغيير إعادة تسجيل مفتاح DNSSEC
+
 convert_err=فشل في تحويل المنطقة
 convert_efile=يجب تحديد ملف السجلات قبل أن يمكن تحويل منطقة الرقيق إلى سيد.
 convert_efilesize=Records file $1 does not exist or is empty
 convert_ebinary=لم يتم تثبيت الأمر المطلوب للتحويل من منطقة الرقيق الثنائية إلى رئيسي تنسيق النص
 convert_ecompile=Binary to text format conversion failed : $1
+
 whois_title=معلومات WHOIS
 whois_header=Output from command $1 ..
 whois_ecannot=غير مسموح لك بالبحث في معلومات WHOIS
+
 view_title=تحرير عرض العميل
 view_opts=تفاصيل عرض العميل
 view_opts2=خيارات للمناطق في الرأي
@@ -858,6 +901,7 @@ view_recursion=هل عمليات البحث العودية الكاملة للع
 view_ecannot=غير مسموح لك بتحرير هذا العرض
 view_delete=حذف عرض
 view_deletemsg=انقر فوق هذا الزر لحذف العرض. سيكون لديك خيار الانتقال للمناطق التي يحتويها إلى طريقة عرض أخرى ، أو حذفها أيضًا.
+
 vcreate_title=إنشاء عرض عميل
 vcreate_match_all=جميع العملاء
 vcreate_match_sel=العناوين والشبكات و ACL المدرجة في القائمة
@@ -866,6 +910,7 @@ vcreate_ename=اسم العرض مفقود أو غير صالح
 vcreate_etaken=عرض الاسم مأخوذ بالفعل
 vcreate_eclass=اسم فئة مفقود أو غير صالح
 vcreate_ecannot=غير مسموح لك بإنشاء طرق عرض
+
 hint_title=تحرير منطقة الجذر
 hint_desc=The root zone is used by your DNS server to contact the root servers on the internet, so that it can resolve names in domains not handled by your DNS server, like <tt>.com</tt> or <tt>.net.au</tt>. Unless your DNS server is for use on an internal network or you are forwarding all queries to another server, you should not delete this root zone.
 hint_move=الانتقال للعرض:
@@ -874,6 +919,7 @@ hint_refetch=إعادة تنزيل خوادم الأسماء الجذرية
 hint_refetchdesc=انقر فوق هذا الزر لجعل Webmin يعيد تنزيل ملف منطقة الجذر من مصدره على خادم Internic FTP.
 hint_delete=حذف منطقة الجذر
 hint_deletedesc=انقر فوق هذا الزر لإزالة منطقة الجذر هذه. بدون ذلك ، لن يتمكن خادم الأسماء من حل المجالات على الإنترنت بخلاف تلك التي يعدها ثانويًا.
+
 hcreate_title=إنشاء منطقة الجذر
 hcreate_desc=The root zone is used by your DNS server to contact the root servers on the internet, so that it can resolve names in domains not handled by your DNS server, like <tt>.com</tt> or <tt>.net.au</tt>. If you are using multiple views, you may need to have a separate root zone in each view so that all clients can resolve internet domains properly.
 hcreate_header=تفاصيل منطقة الجذر
@@ -887,6 +933,7 @@ hcreate_efile='$1' is not an allowable root file
 hcreate_efile2=ملف الجذر مفقود أو غير صالح
 mcreate_erecs=ليس ملفًا صالحًا لمنطقة الجذر
 hcreate_err=فشل في إنشاء منطقة الجذر
+
 vdelete_title=حذف عرض
 vdelete_mesg=Are you sure you want to delete the client view $1 ? All the zones in this view will either be deleted (along with their zone files) or moved to another view depending on your selection below.
 vdelete_mesg2=Are you sure you want to delete the client view $1 ?
@@ -894,6 +941,7 @@ vdelete_newview=المناطق داخل هذا الرأي
 vdelete_root=الخروج من وجهات النظر
 vdelete_delete=حذف تماما
 vdelete_move=الانتقال للعرض
+
 gen_title=سجل المولدات
 gen_desc=تتيح لك هذه الصفحة تحديد المولدات ، حيث يقوم كل منها بإنشاء سجلات متعددة في هذه المنطقة باستخدام عداد متزايد. قد يكون ذلك مفيدًا لتفويض أجزاء من المنطقة العكسية إلى خادم آخر.
 gen_range=نطاق
@@ -913,7 +961,9 @@ gen_evalue=Missing or invalid hostname pattern for generator $1
 gen_title2=السجلات المولدة
 gen_raw=خط ملف التكوين
 gen_ecannot=غير مسموح لك بتحرير مولدات السجلات
+
 refetch_err=أخفق إعادة تنزيل منطقة الجذر
+
 slaves_title=خوادم الرقيق العنقودية
 slaves_none=لم تتم إضافة أي خوادم إلى مجموعة DNS حتى الآن.
 slaves_host=اسم المضيف
@@ -941,6 +991,7 @@ slaves_sec=إنشاء الثانوية على الرقيق عند إنشاء م�
 slaves_name=اسم سجل NS
 slaves_same=نفس اسم المضيف
 slaves_header=خيارات خادم الرقيق الكتلة
+
 add_title=إضافة خوادم
 add_msg=Adding $1 ..
 add_gmsg=Adding servers in group $1 ..
@@ -958,6 +1009,7 @@ add_createok=Setup $1 with $2 new slave zones.
 add_ename=اسم سجل NS مفقود أو غير صالح
 add_egname=لا يمكن تحديد اسم سجل NS عند إضافة مجموعة
 add_emyip=Could not work out this system's IP address. You should set the <b>Default master server IP for remote slave zones</b> on the Module Config page.
+
 mass_title=إنشاء مناطق من ملف دفعي
 mass_desc=تتيح لك هذه الصفحة إنشاء مناطق متعددة في وقت واحد من ملف نصي محمّل أو من جانب الخادم. يجب أن يكون لكل سطر في الملف التنسيق التالي: <p style=";text-align:right;direction:rtl"></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p style=";text-align:right;direction:rtl"></p> يجب أن يكون <i>النوع من النوع</i> <tt>master</tt> ، أو <tt>slave</tt> ، أو <tt>stub</tt> أو <tt>forward</tt>. <i>اسم الملف</i> اختياري ، وسيتم حسابه تلقائيًا في حالة فقده. يجب إعطاء <i>عناوين IP الرئيسية</i> فقط للمناطق التابعة.
 mass_local=ملف دفعي محلي
@@ -989,6 +1041,7 @@ mass_emips=عناوين IP الرئيسية المفقودة
 mass_addedslaves=Added $1 to slave servers OK.
 mass_eonslave=Errors occurred created on slave servers : $1
 mass_eviewcannot=غير مسموح لك بإضافة مناطق إلى طريقة العرض هذه
+
 massdelete_title=حذف المناطق
 massdelete_rusure=Are you sure you want to delete the $1 selected zones? ($2)
 massdelete_ok=احذف الان
@@ -998,6 +1051,7 @@ massdelete_slaves=Deleting zone $1 from slave servers ..
 massdelete_failed=.. فشل بعض العبيد :
 massdelete_vwarn=ترتبط بعض المناطق بمجال Virtualmin $1 ، لذا لا ينبغي حذفها هنا!
 massdelete_vwarn2=ترتبط بعض المناطق بمجال Virtualmin $1 و$2 ، لذا لا يجب حذفها هنا!
+
 rndc_title=إعداد RNDC
 rndc_desc=يمكن استخدام هذه الصفحة لإعداد BIND للتحكم بواسطة برنامج RNDC ، بحيث يمكن تحديث المناطق الفردية دون الحاجة إلى إعادة تشغيل BIND كاملة.
 rndc_desc2=RNDC يبدو أنه تم الإعداد بشكل صحيح بالفعل ، لذلك ربما لا تحتاج إلى استخدام هذا النموذج.
@@ -1008,11 +1062,13 @@ rndc_ok=نعم ، إعداد RNDC
 rndc_err=فشل في إعداد RNDC
 rndc_ekey=لا يمكن العثور على مفتاح في rndc.conf
 rndc_esecret=لا يمكن العثور على سر في rndc.conf
+
 drecs_err=فشل في حذف السجلات
 drecs_enone=لا شيء محدد
 drecs_title=حذف السجلات
 drecs_rusure=Are you sure you want to delete the $1 selected records from $2?
 drecs_ok=احذف الان
+
 manual_title=تحرير ملف التكوين
 manual_ecannot=غير مسموح لك بتحرير ملف التكوين BIND
 manual_ok=تعديل
@@ -1020,7 +1076,9 @@ manual_efile=الملف المحدد ليس جزءًا من تكوين BIND
 manual_file=تحرير ملف التكوين:
 manual_edata=لا شيء دخل!
 manual_err=فشل في حفظ ملف التكوين
+
 syslog_desc=رسائل خادم DNS BIND
+
 umass_err=فشل في تحديث المناطق
 umass_enone=لا شيء محدد
 umass_title=تحديث السجلات في المناطق
@@ -1039,6 +1097,7 @@ umass_done=.. updated $1 matching records out of $2.
 umass_none=.. no matching records out of $1 to update found.
 umass_egone=المنطقة غير موجودة
 emass_emx='$1' is not a mail server priority number followed by a valid hostname
+
 rdmass_err=فشل في حذف السجلات في المناطق
 rdmass_enone=لا شيء محدد
 rdmass_title=حذف السجلات في المناطق
@@ -1055,6 +1114,7 @@ rdmass_done=.. deleted $1 matching records out of $2.
 rdmass_none=.. no matching records out of $1 to delete found.
 rdmass_ok=حذف السجلات
 rdmass_sel=السجلات المسماة
+
 rmass_err=فشل في اضافة السجلات
 rmass_enone=لا شيء محدد
 rmass_title=إضافة سجل إلى المناطق
@@ -1074,18 +1134,22 @@ rmass_esign=.. done, but signing failed : $1
 rmass_eclash=.. a record with the same name and value $1 already exists.
 rmass_eclash2=.. a record with the same name and the same value $1 already exists.
 rmass_clash=إنشاء حتى لو كان السجل موجود بالفعل؟
+
 check_title=تحقق السجلات
 check_ecannot=غير مسموح لك بالتحقق من السجلات
 check_errs=The following errors were found in the records file $1 ..
 check_allok=No errors were found in the records file $1.
+
 ncheck_title=تحقق BIND التكوين
 ncheck_ecannot=غير مسموح لك بالتحقق من تكوين BIND
 ncheck_errs=The following errors were found in the BIND configuration file $1 or referenced zone files ..
 ncheck_allok=No errors were found in the BIND configuration file $1 or referenced zone files.
+
 links_restart=تطبيق التكوين
 links_stop=وقف BIND
 links_start=بدء BIND
 links_apply=تطبيق المنطقة
+
 dnssec_title=DNSSEC إعادة توقيع المفتاح
 dnssec_ecannot=غير مسموح لك بتكوين DNSSEC
 dnssec_header=خيارات إعادة التوقيع الرئيسية
@@ -1096,6 +1160,7 @@ dnssec_secs=ثواني
 dnssec_desc=تحتوي المناطق الموقعة مع DNSSEC عادة على مفتاحين - مفتاح المنطقة الذي يجب إعادة إنشائه وتوقيعه بانتظام ، ومفتاح توقيع المفتاح الذي يظل ثابتًا. تسمح لك هذه الصفحة بتكوين Webmin لأداء عملية إعادة التسجيل هذه تلقائيًا.
 dnssec_err=أخفق حفظ توقيع مفتاح DNSSEC
 dnssec_eperiod=عدد الأيام المفقودة أو غير الصحيحة بين إعادة الإشارات
+
 dnssectools_title=أتمتة أدوات DNSSEC
 dt_conf_title=أتمتة أدوات DNSSEC
 dt_enable_title=أتمتة أدوات DNSSEC
@@ -1160,6 +1225,7 @@ dt_status_inKSKroll=في KSK رول
 dt_status_inZSKroll=في ZSK رول
 dt_status_signed=وقعت
 dt_status_unsigned=غير موقعة
+
 zonekey_title=إعداد مفتاح DNSSEC
 zonekey_desc=لا تحتوي هذه المنطقة على مفتاح توقيع DNSSEC حتى الآن. يمكنك استخدام هذا النموذج لجعل Webmin يقوم بإنشاء واحد ، بحيث يتم حماية العملاء الذين يقومون بحل هذه المنطقة من هجمات خداع DNS.
 zonekey_header=خيارات مفتاح DNSSEC جديدة
@@ -1193,9 +1259,12 @@ zonekey_sign=علامة المنطقة
 zonekey_signdesc=أعد تسجيل هذه المنطقة فورًا ، بحيث يتم تضمين أي تغييرات على السجلات التي يتم إجراؤها يدويًا في سجلات التوقيع.
 zonekey_resign=إعادة تسجيل المنطقة
 zonekey_resigndesc=قم بإنشاء مفتاح توقيع منطقة جديد وتوقيعه باستخدام المفتاح الرئيسي للمنطقة وإعادة تسجيل جميع السجلات.
+
 sign_err=فشل في توقيع المنطقة
 sign_emsg=DNSSEC signing after records change failed : $1
+
 resign_err=فشل في إعادة توقيع المنطقة
+
 trusted_title=التحقق من DNSSEC
 trusted_ecannot=غير مسموح لك بتكوين التحقق من DNSSEC
 trusted_esupport=لا يدعم إصدار BIND الخاص بك التحقق من DNSSEC
@@ -1230,6 +1299,7 @@ trusted_setup=For DNSSEC to be useful to verify the majority of signed zones on 
 trusted_ok=إعداد DLV وتمكين التحقق من DNSSEC
 trusted_warning=Warning! Your BIND DNSSEC client configuration contains out of date keys that will stop working in October 2017. Either use the <a href='$1'>BIND DNSSEC Verification page</a> to adjust the configuration, or click the button below.
 trusted_fix=إصلاح تكوين DNSSEC
+
 xfer_title=نقل منطقة الاختبار
 xfer_doing=Testing transfer of slave zone from $1 ..
 xfer_failed=.. from $1 : Failed : $2

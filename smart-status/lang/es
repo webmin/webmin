@@ -18,6 +18,7 @@ index_data=Test de Recolección de Datos
 index_errors=Errores recopilados
 index_ecount=$1 errores detectados
 index_return=índice del módulo
+
 monitor_type=Chequeo de Dispositivo SMART
 monitor_drive=Dispositivo a chequear
 monitor_errors=¿Se guarda también el error de chequeo?
@@ -25,14 +26,17 @@ monitor_other=Otro..
 monitor_edrive=El dispositivo a chequear falta o no es válido
 monitor_nosuch=No existe ese dispositivo
 monitor_nosmart=Sin soporte SMART
+
 short_title=Auto-Test Corto
 short_doing=Iniciando auto-test corto de $1
 short_failed=.. ¡falló!
 short_ok=.. el test comenzó OK. Vaya al estado de dispositivo de la página principal del módulo para ver los resultados.
+
 ext_title=Auto-Test Extendido
 ext_doing=Iniciando auto-test extendido de $1 ..
 ext_failed=$short_failed
 ext_ok=$short_ok
+
 data_title=Test de Recolección de Datos
 data_doing=Iniciando la recolección de datos fuera de línea en $1 ..
 data_failed=.. ¡falló!

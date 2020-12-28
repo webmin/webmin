@@ -7,14 +7,17 @@ index_descfetch=Tämä sivu on tarkoitettu tiedoston lataamiseen järjestelmäst
 index_email=Lähetä sähköpostia, kun lataus on valmis?
 index_emailto=Kyllä, osoitteeseen
 index_email2=Lähetä sähköpostia, kun lataus on valmis?
+
 upload_eemail=Puuttuu ilmoitettava sähköpostiosoite
 upload_saving=Tallennetaan tiedosto $1 ..
 upload_saved=.. kirjoitti $1 
 upload_unzipping=Tiedoston $1 purkaminen ..
 upload_unzipdone=.. $1 
+
 fetch_eexists2=Tiedostoa tai hakemistoa ei ole
 fetch_ezip=Hakemistoa ei voi ladata, ellei <tt>zip</tt> -komento ole asennettu
 fetch_eroot=Juurikansiota ei voi ladata!
+
 email_downmsg=Seuraava lataus on valmis :
 email_downurl=URL: $1 
 email_downerr=Virheviesti: $1 

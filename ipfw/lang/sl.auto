@@ -25,6 +25,7 @@ index_resetdesc=Kliknite ta gumb, da počistite vsa obstoječa pravila požarneg
 index_cluster=Cluster strežniki
 index_clusterdesc=Kliknite ta gumb, da nastavite dodatne strežnike Webmin, na katere bo konfiguracija požarnega zidu samodejno kopirana.
 index_return=pravila požarnega zidu
+
 index_num=Št
 index_action=Ukrep
 index_desc=Pogoj
@@ -37,6 +38,7 @@ index_delete=Izbriši izbrano
 index_existing=Webmin je zaznal trenutno uporabljena pravila požarnega zidu $1 IPFW, ki niso zabeležena v datoteki $2. Ta pravila so bila verjetno nastavljena iz skripta, ki ga ta modul ne zna brati in urejati. <p> Če želite s tem modulom upravljati požarni zid IPFW, kliknite spodnji gumb, če želite obstoječa pravila pretvoriti v shranjeno datoteko in nato onemogočite obstoječo skriptu požarnega zidu.
 index_saveex=Shranite pravila požarnega zidu
 index_headerex=Obstoječa konfiguracija požarnega zidu
+
 action_allow=<font color=#00aa00>Dovoli</font>
 action_deny=<font color=#ff0000>Spustite</font>
 action_reject=<font color=#ff4400>Zavrni</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Spustite paket</font>
 laction_reject=<font color=#ff4400>Vrni zavrnitev ICMP</font>
 laction_reset=<font color=#ff4400>Ponastavi povezavo TCP</font>
 laction_skipto=Preskoči na pravilo
+
 edit_title1=Ustvari pravilo
 edit_title2=Uredi pravilo $1 
 edit_header1=Pravilo ukrepanje
@@ -114,6 +117,7 @@ edit_src-addr=Iz naslova vira ..
 edit_src-port=Iz izvornega pristanišča ..
 edit_dst-addr=Na ciljni naslov ..
 edit_dst-port=Do ciljnega pristanišča ..
+
 save_err=Pravila ni bilo mogoče shraniti
 save_enum=Manjkajoča ali neveljavna številka pravila
 save_eskipto=Manjkajoča ali neveljavna številka pravila, na katero se želite preskočiti
@@ -144,7 +148,9 @@ save_etcpflags=TCP zastave je mogoče določiti samo, če je protokol TCP
 save_elimit=Manjkajoča ali neveljavna najvišja omejitev
 save_edstport=Manjkajoče ali neveljavno ciljno pristanišče
 save_esrcport=Manjkajoči ali neveljavni izvorni vhod
+
 apply_err=Konfiguracije ni bilo mogoče uporabiti
+
 desc_if=Če $1 
 desc_and=in
 desc_always=Nenehno
@@ -191,6 +197,7 @@ desc_where=kjer $1
 desc_all=za vse pakete
 desc_in=paket dohaja
 desc_out=paket je odhodni
+
 log_create_rule=Ustvarjeno pravilo $1 
 log_delete_rule=Izbrisano je $1 pravilo
 log_modify_rule=Spremenjeno pravilo $1 
@@ -206,6 +213,7 @@ log_convert=Pravila aktivnega požarnega zidu
 log_setup=Izvedena je bila začetna namestitev požarnega zidu
 log_unapply=Konvertirana požarna stena
 log_delsel=Izbrisana so pravila $1 
+
 cluster_title=Strežniki požarnega zidu gruč
 cluster_none=V grozdišče požarnega zidu še ni bil dodan noben strežnik.
 cluster_host=Ime gostitelja
@@ -216,6 +224,7 @@ cluster_gadd=Dodajte strežnike v skupino
 cluster_need=Preden lahko tukaj upravljate, morate v modul Webmin Servers Index dodati strežnike z prijavo in geslom.
 cluster_return=grozdni strežniki
 cluster_delete=Odstrani izbrano
+
 add_title=Dodaj strežnike
 add_msg=Dodajanje $1.
 add_gmsg=Dodajanje strežnikov v skupino $1.

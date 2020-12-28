@@ -3,8 +3,10 @@ index_clink=Belki yüklü değil veya <a href='$1'>modül yapılandırmanız</a>
 index_return=modül dizini
 index_atboot=Önyüklemeden başla?
 index_atbootdesc=İSCSI istemcisinin önyükleme zamanında başlatılıp başlatılmayacağını kontrol etmek için bu seçeneği değiştirin. Bu, iSCSI sunucularından bağlanan dosya sistemlerinin otomatik olarak bağlanması için gereklidir.
+
 check_econfig=$1 iSCSI istemci yapılandırma dosyası sisteminizde bulunamadı.
 check_eiscsiadm=$1 iSCSI istemci yönetim programı sisteminizde bulunamadı.
+
 auth_title=Kimlik Doğrulama Seçenekleri
 auth_header=iSCSI istemci ve sunucu kimlik doğrulaması
 auth_name=Yerel sistem başlatıcı adı
@@ -29,6 +31,7 @@ auth_edpassword=Sunucu için eksik bulma şifresi
 auth_edusername_in=Müşteri için eksik keşif kullanıcı adı
 auth_edpassword_in=İstemci için eksik bulma şifresi
 auth_egen=Yeni bir ad oluşturulamadı!
+
 timeout_title=iSCSI Zaman Aşımları
 timeout_header=iSCSI istemcisi zaman aşımı seçenekleri
 timeout_timeout=SCSI komutlarında hata oluşmadan önce beklenecek süre
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Başarısız olmadan önce ping için bekleyecek veya 
 timeout_eabort_timeout=Başarısız olmadan önce iptal yanıtını beklemek için eksik veya sayısal olmayan zaman
 timeout_elu_reset_timeout=Hata vermeden önce mantıksal birim yanıtını beklemek için eksik veya sayısal olmayan süre
 timeout_etgt_reset_timeout=Başarısız olmadan önce hedef yanıtı beklemek için eksik veya sayısal olmayan zaman
+
 iscsi_title=iSCSI Seçenekleri
 iscsi_header=Diğer iSCSI seçenekleri
 iscsi_startup=Oturumlar önyükleme sırasında bağlanılsın mı?
@@ -62,6 +66,7 @@ iscsi_err=İSCSI seçenekleri kaydedilemedi
 iscsi_eretry=Oturum açma işlemini yeniden denemek için eksik veya sayısal olmayan sayıda
 iscsi_ecmds=Oturum başına sıralanan eksik veya sayısal olmayan maksimum komutlar
 iscsi_equeue=Aygıt başına kuyruğa alınan eksik veya sayısal olmayan maksimum komutlar
+
 ifaces_title=iSCSI Arayüzleri
 ifaces_elist=Arabirimler listelenemedi : $1 
 ifaces_name=Arayüz adı
@@ -78,11 +83,13 @@ ifaces_hwaddress=Mac Adresi
 ifaces_ifacename=Kaynak arayüzü
 ifaces_ipaddressdef=Otomatik
 ifaces_notset=Otomatik
+
 iadd_err=Arayüz eklenemedi
 iadd_eclash=$1 adında bir arayüz zaten var
 iadd_eipaddress=Kaynak IP adresi eksik veya geçersiz
 iadd_ehwaddress=Eksik veya geçersiz MAC adresi
 iadd_ename=Arabirim adı eksik veya geçersiz karakterler içeriyor
+
 difaces_err=Arayüzler kaldırılamadı
 difaces_enone=Hiçbiri seçilmedi
 difaces_edelete=$1 arayüzünün kaldırılması başarısız oldu : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Arabirimleri Kaldır
 difaces_target=iSCSI hedefi
 difaces_ip=iSCSI sunucusu
 difaces_users=Bu arayüzleri kullanan bazı bağlantılar şu anda aktiftir ve arayüzler kaldırıldığında çalışmaz :
+
 conns_title=iSCSI Bağlantıları
 conns_elist=Bağlantılar listelenemedi : $1 
 conns_ip=Sunucu IP'si
@@ -113,6 +121,7 @@ conns_return=bağlantı listesi
 conns_iface=iSCSI arayüzü
 conns_ifacedef=Otomatik olarak seç
 conns_ifaceerr=Arabirimler getirilemedi : $1 
+
 add_title=İSCSI Bağlantısı Ekle
 add_err=İSCSI bağlantısı eklenemedi
 add_ehost=Eksik veya çözümlenemeyen ana bilgisayar adı
@@ -129,6 +138,7 @@ add_on=$2 üzerinde $1
 add_auth=Sunucuya giriş
 add_auth1=Varsayılan kimlik doğrulama yöntemini kullan
 add_auth0=$1 yöntemini kullanarak $3 parolasıyla $2 olarak oturum açın
+
 dconns_err=Bağlantılar kesilemedi
 dconns_enone=Hiçbiri seçilmedi
 dconns_edelete=$2 hedefinin $1 ana bilgisayarından kaldırılması başarısız oldu : $3 
@@ -142,6 +152,7 @@ dconns_use=Tarafından kullanılan
 dconns_size=Bölüm boyutu
 dconns_confirm=Bağlantıları Kaldır
 dconns_unused=kullanılmamış
+
 vconn_title=iSCSI Bağlantısı
 vconn_egone=Seçilen bağlantı artık mevcut değil!
 vconn_header=iSCSI bağlantı ayrıntıları
@@ -160,8 +171,10 @@ vconn_device3=Sabit cihaz adı
 vconn_delete=Bağlantıyı Kes
 vconn_users=Mevcut kullanıcılar
 vconn_size=Disk boyutu
+
 atboot_err=Önyükleme zamanında etkinleştirilemedi
 atboot_einit=$1 adında önyükleme eylemi yok
+
 log_auth=Kayıtlı kimlik doğrulama seçenekleri
 log_timeout=Kaydedilmiş zaman aşımı seçenekleri
 log_iscsi=Kaydedilmiş iSCSI seçenekleri

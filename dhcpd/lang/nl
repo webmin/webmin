@@ -64,12 +64,14 @@ index_match1=bevat
 index_match2=overeenkomsten
 index_dhcpd=ISC DHCPD
 index_delete=Verwijder Geselecteerde
+
 butt_save=Opslaan
 butt_eco=Bewerk Cliënt Opties
 butt_vco=Bekijk Opties van Client
 butt_del=Verwijderen
 butt_create=Aanmaken
 butt_leases=Lijst Leases
+
 esub_crheader=Maak Subnet aan
 esub_edheader=Bewerk Subnet
 esub_tabhdr=Details van Subnet
@@ -83,12 +85,14 @@ esub_groups=Groepen direct in dit subnet
 esub_pools=Adres Pools voor Subnet
 esub_pool=Pool $1
 esub_poolnone=Geen adres pool's gedefinieerd
+
 esub_pooladd=Voeg een adres pool toe
 esub_none=Geen
 esub_return=subnet lijst
 esub_retshar=gedeeld network
 esub_desc=Subnet omschrijving
 esub_fopeer=Terugvallen op Peer
+
 esh_crheader=Maak Gedeeld Netwerk
 esh_eheader=Wijzig Gedeeld Netwerk
 esh_tabhdr=Details van Gedeeld Netwerk
@@ -99,6 +103,7 @@ esh_subn=Subnetten in dit gedeelde netwerk
 esh_return=subnet lijst
 esh_pools=Adres Pool voor Gedeeld Netwerk
 esh_desc=Gedeelde netwerk omschrijving
+
 ehost_crheader=Maak Host aan
 ehost_eheader=Wijzig Host
 ehost_tabhdr=Details van Host
@@ -119,6 +124,7 @@ ehost_retgroup=groep
 ehost_retsubn=subnet
 ehost_retshar=gedeeld netwerk
 ehost_desc=Host omschrijving
+
 egroup_crheader=Maak Host Groep aan
 egroup_eheader=Bewerk Host Groep
 egroup_tblhdr=Details van Groep
@@ -129,6 +135,7 @@ egroup_return=host lijst
 egroup_retsubn=subnet
 egroup_retshar=gedeeld netwerk
 egroup_desc=Groep omschrijving
+
 default=Standaard
 secs=sec.
 none=Geen
@@ -157,20 +164,24 @@ listl_pc=Percentage
 listl_err=Leases verwijderen mislukten
 listl_enone=Niets geselecteerd
 listl_refresh=Ververs lijst
+
 restart_errmsg1=Herstarten DHCPD niet gelukt
 restart_errmsg2=Signaal proces niet gelukt
 start_failstart=Starten DHCPD niet gelukt
 restart_conftext=Regels bij $1 in $2 :
+
 sgroup_faildel=Verwijderen van groep niet gelukt
 sgroup_failsave=Opslaan van groep niet gelukt
 sgroup_invassign=groep toegekend aan een onjuiste sectie
 sgroup_echanged=De inhoud van het configuratie file is veranderd. Probeer opnieuw.
+
 shost_faildel=Verwijderen van host niet gelukt
 shost_failsave=Opslaan van host niet gelukt
 shost_invalidhn=is geen geldige hostnaam
 shost_invalidhwa='$1' is geen geldig $2 adres
 shost_invalidaddr='$1' bevat een ongeldige hostnaam of IP adres
 shost_invassign=host toegekend aan een onjuiste sectie
+
 sopt_failsave=Opslaan van cliënt opties niet gelukt
 sopt_invalidip=is een ongeldig IP adres
 sopt_invalidint=is geen geheel getal
@@ -180,10 +191,12 @@ sopt_ednum='$1' is geen geldige optie nummer
 sopt_edtype='$1' is geen geldige optie type
 sopt_ecval=Ontbrekende waarde voor custom optie '$1'
 sopt_ecip=Waarde voor custom optie '$1' moet een IP adres zijn
+
 sshared_faildel=Verwijderen gedeeld netwerk niet gelukt
 sshared_failsave=Opslaan van gedeeld netwerk niet gelukt
 sshared_invalidsname=Naam van gedeeld netwerk ontbreekt of is ongeldig.
 sshared_nosubnet=Gedeeld netwerk '$1' bevat geen enkel subnet.
+
 ssub_faildel=Verwijderen subnet niet gelukt
 ssub_failsave=Opslaan subnet niet gelukt
 ssub_invalidsubaddr=is een ongeldig subnet adres
@@ -191,6 +204,7 @@ ssub_invalidnmask=is een ongeldig netmask
 ssub_invalidipr=is een ongeldig IP adres
 ssub_nosubnet=Gedeeld netwerk '$1' bevat geen enkel subnet.
 ssub_invalidfopeer=is geen geldige failover peer
+
 plib_deflt=Standaard lease-duur
 plib_bfname=Boot bestandsnaam
 plib_maxlt=Maximum lease-duur
@@ -244,6 +258,7 @@ plib_eexpr=Deze sectie van de DHCP configuratie bevat de uitdrukking richtlijnen
 plib_auth_subnet=Server is de baas over dit subnet?
 plib_auth_shared-network=Server is de baas voor dit gedeelde netwerk?
 plib_auth_global=Server is de baas over alle subnetten?
+
 eopt_header=Cliënt Opties
 eopt_subtitle=Voor subnet $1
 eopt_returnsub=subnet
@@ -289,6 +304,7 @@ eopt_slpa=SLP directory agent IPs
 eopt_slpaips=Alleen deze IP's?
 eopt_slps=SLP service scope
 eopt_slpsonly=Alleen deze scope?
+
 log_apply=Wijzigingen aangebracht
 log_start=DHCP server gestart
 log_stop=Gestopte DHCP server
@@ -311,6 +327,7 @@ log_options_group=Opties voor host groep $1 hosts gewijzigd
 log_delete_lease=Lease voor $1 verwijderd
 log_delete_subnets=Verwijdert $1 subnet's en gedeelde netwerken
 log_delete_hosts=Verwijdert $1 hosts en host groepen
+
 keys_edit=Bewerk TSIG sleutel
 keys_create=Maak TSIG sleutels
 keys_title=DNS Sleutels
@@ -321,12 +338,14 @@ keys_ecannot=U bent niet bevoegd om DNS sleutels te bewerken
 keys_err=Mislukt om DNS sleutels op te slaan
 keys_ekey='$1' is geen geldig sleutel ID
 keys_esecret=Ontbrekende of ongeldige 64-bit gecodeerde waarde voor sleutel $1
+
 pool_edit=Adres Pool Wijzigen
 pool_create=Adres Pool Aanmaken
 pool_header=Adres Pool Opties
 pool_allow=Toegestane Cliënten
 pool_deny=Niet toegestane cliënten
 pool_return=subnet
+
 cdel_header=Waarschuwing
 cdel_shared1=gedeeld netwerk
 cdel_shared2=gedeeld netwerk
@@ -344,6 +363,7 @@ cdel_txt=Verwijdering van $1 '$2' zal tevens de volgende inhoud verwijderd worde
 cdel_confirm=Wilt u echt deze $1 verwijderen ?
 cdel_eunknown=Onbekende fout
 cdel_return=host- en netwerk lijst
+
 eacl_aviol=Overtreding toegangs regels
 eacl_np=U hebt geen toestemming om
 eacl_pdh=hosts verwijderen
@@ -369,6 +389,7 @@ eacl_pdl=verwijder leases
 eacl_psl=bekijk leases
 eacl_pglob=bewerk globale opties
 eacl_papply=herstart deze service
+
 acl_apply=Mag wijzigen aanbrengen?
 acl_r_leases=Mag leases bekijken?
 acl_w_leases=Mag leases verwijderen?
@@ -397,9 +418,11 @@ acl_err=Fout bij opslaan ACL lijst
 acl_ernow=Als u schrijf toegang in globale ACL's voor sommige objecten wilt aanzetten, moet u ook lees toegang voor dit type object regelen.
 acl_normal=normaal
 acl_paranoic=paranoïde
+
 iface_title=Netwerk Interface
 iface_desc=De DHCP server zal alleen IP adressen uitgeven op de netwerken die verbonden zijn met deze interfaces. De interfaces voor alle gedefinieerde subnetten moet hier worden opgegeven. Indien niets wordt opgegeven zal DHCP proberen de interface zelf te vinden.
 iface_listen=Luister op interfaces
+
 lookup_ehost=Er bestaat geen host met de naam, IP adres of MAC adres $1
 lookup_ehostname=Geen host naam, IP adres of MAC adres ingevoerd
 lookup_egroup=Er bestaat geen groep of domein-naam met de naam $1
@@ -408,6 +431,7 @@ lookup_esubnet=Er bestaat geen subnet met het adres of adres/netmask $1
 lookup_esubnetname=Geen subnet adres of adres/netmask ingevoerd
 lookup_eshared=Er bestaat geen gedeeld netwerk met de naam $1
 lookup_esharedname=Geen gedeelde netwerk naam ingevoerd
+
 zone_key=DNS-zones
 index_addzone=Voeg een nieuwe DNS zone toe.
 index_zone=Zone
@@ -422,16 +446,21 @@ zone_return=Hoofd menu
 zone_faildel=Mislukt om zone te verwijderen
 zone_failsave=Mislukt om zone op te slaan
 zone_tsigkey=TSIG sleutel
+
 plib_clientupdates=Mogen clients hun eigen records updaten?
+
 text_title=dhcpd.conf
 text_editor=Tekst bewerker
 text_return=hoofd menu
 text_undo=ongedaan maken
 text_ecannot=U bent niet bevoegd de configuratie file te bewerken
+
 index_buttetext=Configuratie Handmatig Bewerken
 index_text=Bewerk de configuratie tekst file handmatig
+
 stop_err=Mislukt om DHCP server te stoppen
 stop_ekill=Niet werkend!
+
 sdelete_err=Mislukt om subnetten en gedeelde netwerken te verwijderen
 sdelete_enone=Niets geselecteerd
 sdelete_title=Verwijder Subnetten en Gedeelde Netwerken
@@ -439,6 +468,7 @@ sdelete_rusure1=Weet u zeker dat u de geselecteerde $1 subnetten en $2 gedeelde 
 sdelete_rusure2=Weet u zeker dat u de geselecteerde $1 subnetten wilt verwijderen? Alle objecten binnen dit netwerk zullen ook verdwijnen.
 sdelete_rusure3=Weet u zeker dat u de geselecteerde $2 gedeelde netwerken wilt verwijderen? Ieder subnet en alle objecten binnen dit netwerk zal ook verdwijnen.
 sdelete_ok=Verwijder Nu
+
 hdelete_err=Mislukt om hosts en groepen te verwijderen
 hdelete_enone=Niets geselecteerd
 hdelete_title=Verwijder Hosts en Groepen

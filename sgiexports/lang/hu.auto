@@ -7,6 +7,7 @@ index_none=NFS-export még nem került meghatározásra.
 index_apply=Alkalmazza a konfigurációt
 index_applydesc=Kattintson erre a gombra az összes fenti exportálás aktívvá tételéhez, a konfigurált opciókkal együtt.
 index_return=export lista
+
 edit_title1=Exportálás létrehozása
 edit_title2=Exportálás szerkesztése
 edit_header=Adatok exportálása
@@ -24,12 +25,14 @@ edit_access=Mount hozzáférés
 edit_all=Minden házigazda
 edit_sel=Felsorolt házigazdák ..
 edit_none=Nincs házigazda
+
 save_err=Az exportálás mentése nem sikerült
 save_edir=Hiányzik vagy nem létezik az exportálni kívánt könyvtár
 save_eanon=Hiányzó vagy érvénytelen gyökér felhasználó
 save_erw=Nem lépett be írási-írási host
 save_eroot=Nincs megadva gyökérfájl-hozzáférési hoszt
 save_eaccess=Nincs megadva mount hozzáférési házigazda
+
 log_create_export=Létrehozta a (z) $1 exportját
 log_delete_export=Törölve a (z) $1 exportját
 log_modify_export=$1 módosított exportja

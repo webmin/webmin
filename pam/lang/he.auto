@@ -4,6 +4,7 @@ index_desc=תיאור
 index_add=הוסף שירות PAM חדש.
 index_return=רשימת שירות
 index_none=לא נמצאו קבצי תצורת PAM במערכת שלך בספרייה $1. אולי PAM אינו נתמך, או <a href='$2'>תצורת המודול</a> שלך שגויה.
+
 desc_su=החלף משתמש
 desc_su-l=החלף משתמש (עם כניסה)
 desc_login=כניסה מקומית או מרחוק
@@ -87,6 +88,7 @@ desc_common-account=אימות חשבון נפוץ
 desc_common-auth=אימות נפוץ
 desc_common-password=שינוי סיסמא נפוץ
 desc_common-session=הגדרת הפעלה נפוצה
+
 edit_title=ערוך את שירות PAM
 edit_header=פרטי שירות PAM
 edit_name=שם השירות
@@ -107,6 +109,7 @@ edit_move=מהלך \ לזוז \ לעבור
 edit_return=שירות PAM
 edit_inc=כלול שירות $1 
 edit_iheader=שירותי PAM כללו
+
 pam_pwdb.so=אימות אימות סיסמה
 pam_securetty.so=בדוק TTY מאובטח עבור שורש
 pam_nologin.so=<tt>/etc/nologin</tt> בדיקת קבצים
@@ -149,6 +152,7 @@ pam_console.so=בדוק קונסולה בלבד
 pam_xauth.so=אימות X
 pam_stack.so=התקשר לשירות PAM אחר
 pam_foreground.so=הגדרת קונסולה
+
 control_requisite=חובה
 control_required=נדרש
 control_sufficient=מספיק
@@ -157,6 +161,7 @@ control_desc_requisite=אימות נכשל מייד לאחר הכישלון
 control_desc_required=אימות נכשל בסוף לאחר כישלון
 control_desc_sufficient=הצליח לאמת מייד בהצלחה
 control_desc_optional=מתעלמים מהצלחה או כישלון
+
 create_title=צור שירות PAM
 create_header=אפשרויות שירות PAM חדשות
 create_name=שם השירות
@@ -165,6 +170,7 @@ create_mods=מודולי PAM ראשוניים
 create_0=אף אחד
 create_1=אימות יוניקס
 create_2=דחה את כל הגישה
+
 mod_edit=ערוך את מודול PAM
 mod_create=הוסף מודול PAM
 mod_header=אפשרויות מודול PAM
@@ -178,10 +184,12 @@ mod_type_password=שינוי סיסמא
 mod_control=רמת כישלון
 mod_args=טיעוני מודול
 mod_err=שמירת המודול נכשלה
+
 pwdb_shadow=להשתמש בקובץ סיסמת צל?
 pwdb_nullok=לקבל סיסמאות בטלות?
 pwdb_md5=משתמשים בסיסמאות מוצפנות MD5?
 pwdb_nodelay=עיכוב לאחר כניסה נכשלה?
+
 unix_nullok_secure=לקבל סיסמאות בטלות ב- TTYs מאובטחים?
 unix_min=אורך סיסמא מינימלי
 unix_nomin=אף אחד
@@ -190,6 +198,7 @@ unix_nomax=אין גבול
 unix_obscure=למנוע שימוש בסיסמאות קלות?
 unix_emin=אורך סיסמא מינימלי חסר או לא חוקי
 unix_emax=אורך סיסמא מרבי חסר או לא חוקי
+
 listfile_item=חיפוש קובץ עבור
 listfile_item_user=שם משתמש
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=הגבל את הסימון ל
 listfile_all=כל המשתמשים
 listfile_user=משתמש בלבד
 listfile_group=קבוצה בלבד
+
 cracklib_type=הקלד סיסמה בהנחיה
 cracklib_retry=ניסיונות מקסימליים לפני כישלון
 cracklib_eretry=מספר ניסיון ניסיוני חסר או לא חוקי
 cracklib_etype=סוג סיסמא חסר או לא חוקי
+
 rhosts_equiv=קרא את <tt>/etc/hosts.equiv</tt> קובץ?
 rhosts_rhosts=לקרוא את קבצי <tt>.ostshost</tt> של משתמשים?
 rhosts_promiscuous=<tt>+</tt> הכניסה מאפשרת לכל המארחים?
 rhosts_suppress=כשלי אימות יומן?
+
 env_var=שם משתנה
 env_def=ערך ברירת מחדל
 env_over=עקף את הערך
 env_evar=שמות משתנים אינם יכולים להכיל רווחים
+
 securetty_ttys=TTYs מאובטחים
+
 shells_shells=פגזי משתמש תקפים
+
 tally_deny=ניסיונות כישלון לפני שלילת גישה
 tally_reset=אפס כישלון לסמוך על הצלחה
 tally_edeny=מספר חסר או לא חוקי של ניסיונות כישלון
 tally_magic=ספירת הכישלון חלה על <tt>שורש</em>?
 tally_root=<tt>שורש</strong> ניתן לדחות את החשבון?
+
 time_services=שירותים
 time_ttys=TTYs
 time_users=משתמשים
 time_times=זמני גישה
 time_info=כל השדות יכולים להכיל מספר ערכים המופרדים על ידי |, וערכים יכולים להשתמש * כתו כללי או! כשלילה.
+
 group_services=שירותים
 group_ttys=TTYs
 group_users=משתמשים
 group_times=זמני גישה
 group_groups=הוסף קבוצות
 group_info=כל השדות יכולים להכיל מספר ערכים המופרדים על ידי |, וערכים יכולים להשתמש * כתו כללי או! כשלילה.
+
 wheel_group=בדוק אם קיימת חברות בקבוצה
 wheel_group_def=ברירת מחדל (<tt>גלגל</tt> או GID 0)
 wheel_trust=חברי הקבוצה עוקפים אימות נוסף?
 wheel_deny=להכחיש במקום לאפשר לחברי הקבוצה?
 wheel_egroup=שם קבוצה חסר או לא חוקי
+
 motd_file=קובץ להצגה
 motd_file_def=ברירת מחדל (<tt>/etc/motd</tt>)
 motd_efile=שם קובץ חסר או לא חוקי
+
 mail_nopen=להציג הודעה בדואר כניסה?
 mail_close=להציג הודעה בדואר ביציאה?
 mail_empty=הודע אם קובץ הדואר ריק?
 mail_noenv=האם להגדיר משתנה בסביבה $ MAIL?
 mail_dir=ספריית סלילי דואר
 mail_edir=ספריית סליל דואר חסרה או לא חוקית
+
 stack_service=העבר את הסימון לשירות PAM
+
 log_pam_create=יצר שירות PAM $1 
 log_pam_delete=שירות PAM נמחק $1 
 log_mod_create=מודול PAM $1 נוסף לשירות $2 
@@ -262,6 +284,7 @@ log_inc_create=נוסף כלול $1 לשירות $2
 log_inc_modify=השינוי כולל $1 לשירות $2 
 log_inc_delete=נמחק כלול $1 לשירות $2 
 log_incs=עדכון כולל שירות $1 
+
 inc_edit=ערוך שירות כלול
 inc_create=צור שירות כלול
 inc_header=פרטי שירות PAM כללו

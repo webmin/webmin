@@ -20,6 +20,7 @@ index_recs=Sljedeći Perl moduli preporučeni su za Webmin instalaciju :
 index_recsok=Instaliraj Webmin module
 index_recsgot=Svi sljedeći Perl moduli preporučeni od Webmin-a su instalirani : $1
 index_ezone=Izgleda da je Perl dijeljen s globalnom zonom, tako da moduli ne mogu biti ovdje instalirani. MOPraju biti instalirani u globalnoj zoni.
+
 download_err=Neuspjela instalacija modula
 download_elocal=Nije dat lokalni dokument
 download_elocal2='$1' ne postoji
@@ -55,6 +56,7 @@ download_missing=Nedostaje $1 modul
 download_nomissing=Sve instalirano
 download_ebuild=Jedan ili više Perl modula treba $1 biti podignut, ali ovaj Perl modul nije instaliran.
 download_yum=Instaliram Perl module $1 iz paketa $2 ..
+
 install_title=Instaliram Modul
 install_untar=Odpakirani modul dokument
 install_make=Prevodim modul
@@ -74,11 +76,13 @@ install_err2=Također možete instalirati modul iz CPAN s naredbom $1.
 install_exec=Izvršavam $1 ..
 install_efile=Modul dokument $1 više ne postoji
 install_needunlink=Možda ćete pokušati instalirati ponovno vraćanjem na prethodnu stranicu i odabiranjem različitih opcija. U suprotnom<a href='$1'>kliknite ovdje da bi izbrisali trenutne pakete dokumenata</a> u svrhu čuvanja prostora na disku.
+
 cpan_sel=MOduli ispod $1 ..
 cpan_title=Odaberi Perl modul
 cpan_search=Pronađi imenovane module
 cpan_match=Moduli koji se podudaraju s $1 ..
 cpan_none=Nisu pronađene podudarnosti.
+
 edit_title=Detalji Modula
 edit_header=Modul informacija
 edit_mod=Naziv modula
@@ -95,6 +99,7 @@ edit_method=Instalirano iz
 edit_rpm=RPM paket $1
 edit_debian=Debian paket $1
 edit_manual=Ručno instalirani Perl modul
+
 uninstall_title=Deinstaliraj MOdule
 uninstall_rusure=Jeste li sigurni da želite deinstalirati Perl modul $1 ? Sljedeći dokumenti biti će izbrisani :
 uninstall_rusure2=Jeste li sigurni da želite deinstalirati Perl modul $1 i podmodul(e) $2? Sljedeći dokumenti biti će izbrisani :
@@ -102,7 +107,9 @@ uninstall_ok=Deinstaliraj Sada
 uninstall_rpm=Modul će biti uklonjen deinstalacijom $1 RPM paketa.
 uninstall_debian=Modul će biti uklonjen pri deinstalaciji $1 Debian paketa.
 uninstall_err=Neuspjela deinstalacija modula
+
 delete_efile=Neispravan paket dokument!
+
 uninstalls_title=Deinstaliraj Module
 uninstalls_err=Neuspjela deinstalacija modula
 uninstalls_enone=Ništa nije odabrano

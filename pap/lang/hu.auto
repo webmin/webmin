@@ -14,10 +14,12 @@ index_apply=Alkalmaz
 index_return=PPP index
 index_none=Nincs hozzáférése a modul egyik szolgáltatásához.
 index_delete=Törölje a kiválasztott fiókokat
+
 secrets_title=PPP számlák
 secrets_return=index
 secrets_none=Még nem hoztak létre PPP-fiókot.
 secrets_ecannot=A PPP-fiókok nem szerkeszthetők
+
 edit_secret_etitle=A PPP-fiók szerkesztése
 edit_secret_ctitle=Hozzon létre PPP-fiókot
 edit_secret_acc=PPP számla
@@ -37,8 +39,10 @@ edit_secret_alist=Engedélyezze a felsorolt ..
 edit_secret_save=Megment
 edit_secret_del=Töröl
 edit_secret_return=fióklista
+
 save_secret_esave=Nem sikerült menteni a fiókot
 save_secret_enoip=A '$1' nem érvényes cím
+
 log_create=Létrehozta a (z) $1 PPP-fiókot
 log_modify=Módosított $1 PPP-fiók
 log_delete=Törölt $1 PPP-fiók
@@ -54,6 +58,7 @@ log_dialin_move=A (z) $1 hívó fél azonosítója áthelyezve
 log_mgetty_create=Létrehozva a (z) $1 soros portot
 log_mgetty_modify=A módosított $1 soros port
 log_mgetty_delete=Törölve a (z) $1 soros portot
+
 options_title=PPP beállítások
 options_serial=A (z) $1 soros porthoz
 options_dev=$1 eszköznél
@@ -84,6 +89,7 @@ options_idle=Készenléti idő a leválasztás előtt
 options_idle_def=Soha
 options_eidle=Hiányzó vagy érvénytelen tétlen idő
 options_ecannot=A PPP beállításait nem szabad szerkeszteni
+
 mgetty_title=Soros port konfigurálása
 mgetty_ecmd=A (z) $1 parancs nem található a rendszeren. Erre a programra a soros portok bejelentkezésének modem vagy közvetlen kapcsolaton keresztüli kezeléséhez van szükség.
 mgetty_desc=Azért, hogy a szerver engedélyezzen bejelentkezést egy soros porton modemen vagy közvetlen kapcsolaton keresztül, azt az alábbiakban fel kell tüntetni. Ha hozzáad egy portot ehhez a listához, akkor a $1 program úgy lesz konfigurálva, hogy válaszoljon a modem kapcsolatokra és megjelenjen egy bejelentkezési kérés.
@@ -125,6 +131,7 @@ mgetty_apply=Alkalmazza a konfigurációt
 mgetty_applydesc=Kattintson erre a gombra a soros port aktuális konfigurációjának a $1 parancs futtatásával és az összes Mgetty folyamat leölésével történő alkalmazásához.
 mgetty_applyerr=A konfiguráció alkalmazása nem sikerült
 mgetty_ecannot=A soros port konfigurációit nem szabad szerkeszteni
+
 dialin_title=Hívófél-hozzáférés
 dialin_desc=Ezen az oldalon konfigurálhatja az Mgetty alkalmazást, hogy engedélyezi vagy megtagadja a tárcsázáshoz való hozzáférést a hívó fél telefonszáma alapján. Hívás beérkezésekor a lista első bejegyzésének, amely megegyezik a telefonszámmal, meghatározható, hogy elfogadja-e a hívást.
 dialin_efile=A (z) $1 Mgetty hívófél-azonosító hozzáférés-vezérlő fájl nem található a rendszerén. Lehet, hogy a Mgetty nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
@@ -145,9 +152,12 @@ dialin_move=Mozog
 dialin_err=Nem sikerült menteni a hívó fél azonosítóját
 dialin_enumber=Hiányzó vagy érvénytelen telefonszám
 dialin_ecannot=A hívófél-azonosító hozzáférése nem szerkeszthető
+
 acl_pages=Elérhető oldalak
 acl_direct=Ugrás közvetlenül egy oldalra?
+
 sync_ecannot=Nem szabad szerkeszteni az unix-ppp szinkronizálási beállításokat
 sync_title=Felhasználói szinkronizálás
+
 delete_err=A fiókok törlése nem sikerült
 delete_enone=Egy sincs kiválasztva

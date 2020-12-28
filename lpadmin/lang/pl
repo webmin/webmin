@@ -24,6 +24,7 @@ index_style=System drukarki: $1
 index_cluster=Klaster serwerów
 index_clusterdesc=Kliknij na ten przycisk, aby ustawić dodatkowe serwery Webmina na których będzie możliwe tworzenie, aktualizowanie i kasowanie drukarek.
 index_delete=Usuń wybrane drukarki
+
 style_solaris=Solaris
 style_linux=Linux LPR
 style_freebsd=FreeBSD LPR
@@ -33,6 +34,7 @@ style_unixware=UnixWare
 style_cups=CUPS
 style_irix=IRIX
 style_aix=AIX
+
 edit_eedit=Nie masz uprawnień do zmian tej drukarki
 edit_eadd=Nie masz uprawnień do dodawania drukarek
 edit_add=Utwórz drukarkę
@@ -76,7 +78,9 @@ edit_direct=Bezpośrednie połączenie TCP
 edit_dport=Port
 edit_driver=Sterownik drukarki
 edit_check=Sprawdzać, czy zdalny serwer działa?
+
 blocks=bloków
+
 save_err=Nie udało się zachować drukarki
 save_eadd=Nie masz uprawnień do dodawania drukarek
 save_eedit=Nie masz uprawnień do zmian tej drukarki
@@ -98,6 +102,7 @@ save_evalid=System drukarki nie zezwolił na tę drukarkę
 save_errslave=Drukarka została utworzona na tym systemie, ale wystąpiły następujące błędy na klasterze systemu : $1
 save_egone=Nie znaleziono drukarki o nazwie '$1'
 save_errdelslave=Drukarka została usunięta z tego systemu, ale wystąpiły następujące błędy na klasterze systemu : $1
+
 jobs_title=Zadania do wydrukowania
 jobs_header=Zadania do wydrukowania na $1
 jobs_id=Nr ID zadania
@@ -114,17 +119,23 @@ jobs_test=Drukuj stronę testową
 jobs_cancelsel=Anuluj wybrane zadania
 jobs_on=W drukarce $1
 jobs_return=listy zadań drukowania
+
 cancel_ecannot=Nie masz uprawnień do anulowania zadań
 cancel_err=Nie udało się anulować zadania
 cancel_egone=Zadanie $1 już nie istnieje
+
 view_ecannot=Nie masz uprawnień do oglądania tego zadania
 view_egone=To zadanie już nie istnieje
+
 start_ecannot=Nie masz uprawnień do uruchamiania zarządcy
 start_err=Nie udało się uruchomić zarządcy
+
 stop_ecannot=Nie masz uprawnień do zatrzymywania zarządcy
 stop_err=Nie udało się zatrzymać zarządcy
+
 restart_ecannot=Nie masz uprawnień do restartu zarządcy
 restart_err=Nie udało się zrestartować zarządcy
+
 webmin_none=Brak
 webmin_nonemsg=Drukarka postscriptowa lub tekstowa
 webmin_remotemsg=Drukarka zdalna
@@ -135,6 +146,7 @@ webmin_uniprint=Sterownik Uniprint
 webmin_edrivers=Nie udało się uzyskać sterownika $1. Brak sterowników Webmina używających ghostscripta.
 webmin_egs=Komenda $1 nie znaleziona. Brak sterowników Webmina używających ghostscripta.
 webmin_edriver='$1' nie istnieje.
+
 caldera_none=Brak
 caldera_nonemsg=Drukarka zdalna lub nie przetwarzająca
 caldera_prog=Program
@@ -148,6 +160,7 @@ caldera_uniprint=Sterownik Uniprint
 caldera_eprog='$1' nie istnieje
 caldera_edriver=Nie wybrano sterownika drukarki
 caldera_eres=Nie wybrano rozdzielczości
+
 redhat_none=Brak
 redhat_nonemsg=Drukarka postscriptowa lub tekstowa
 redhat_prog=Program
@@ -166,6 +179,7 @@ redhat_ehmargin=Nie podany lub niepoprawny prawy/lewy margines
 redhat_evmargin=Nie podany lub niepoprawny górny/dolny margines
 redhat_eres=Nie wybrano rozdzielczości
 redhat_printer2=Model i sterownik drukarki
+
 suse_none=Brak
 suse_nonemsg=Drukarka postscriptowa lub tekstowa
 suse_prog=Program
@@ -182,7 +196,9 @@ suse_extra=Dodatkowe opcje dla ghostscripta
 suse_yast2=sterownik YAST2
 suse_edriver=Nie wybrano rodzaju drukarki
 suse_eres=Nie podana lub niepoprawna rozdzielczość
+
 estop=Nie udało się zatrzymać lpd : $1
+
 acl_printers=Drukarki, które ten użytkownik może konfigurować
 acl_add=Może dodawać nowe drukarki?
 acl_cancel=Może anulować zadania do drukowania?
@@ -198,6 +214,7 @@ acl_user_all=Wszystkich użytkowników
 acl_user_this=Aktualnego użytkownika Webmina
 acl_delete=Może usuwać drukarki?
 acl_cluster=Może zarządzać klastrem drukarki?
+
 log_stop=Zatrzymano zarządcę kolejek drukowania
 log_start=Uruchomiono zarządcę kolejek drukowania
 log_restart=Zrestartowano zarządcę kolejek drukowania
@@ -210,37 +227,45 @@ log_delete=Deleted drukarkę $1 na $2
 log_create_l=Utworzono drukarkę $3 $1 na $2
 log_modify_l=Zmieniono drukarkę $3 $1 na $2
 log_delete_l=Usunięto drukarkę $3 $1 na $2
+
 linux_paralel=Port równoległy $1
 linux_serial=Port szeregowy $1 (COM$1)
 linux_null=Urządzenie null
 linux_usb=Drukarka USB $1
 linux_ecmd=Polecenie $1 nie zostało znalezione w twoim systemie, prawdopodobnie system drukarki Linux nie jest zainstalowany.
 linux_espool=Katalog zadań $1 nie istnieje w twoim systemie, prawdopodobnie system drukarki Linux nie jest zainstalowany.
+
 freebsd_paralel=Port równoległy
 freebsd_serial=Port szeregowy $1 (COM$1)
 freebsd_ecmd=Polecenie $1 nie zostało znalezione w twoim systemie, prawdopodobnie system drukarki FreeBSD nie jest zainstalowany.
 freebsd_espool=Katalog zadań $1 nie istnieje w twoim systemie, prawdopodobnie system drukarki FreeBSD nie jest zainstalowany.
+
 openbsd_paralel=Port równoległy
 openbsd_serial=Port szeregowy $1 (COM$1)
+
 unixware_paralel=Port równoległy $1
 unixware_serial=Port szeregowy $1
 unixware_null=Urządzenie null
 unixware_ecmd=Polecenie $1 nie zostało znalezione w twoim systemie, prawdopodobnie system drukarki UnixWare nie jest zainstalowany.
+
 hpux_paralel=Port równoległy $1
 hpux_serial=Port szeregowy $1
 hpux_null=Urządzenie null
 hpux_ecmd=Polecenie $1 nie zostało znalezione w twoim systemie, prawdopodobnie system drukarki HPUX nie jest zainstalowany.
 hpux_eiface=Katalog skryptów interfejsu $1 nie istnieje w twoim systemie, prawdopodobnie system drukarki HPUX nie jest zainstalowany.
+
 lprng_paralel=Port równoległy $1
 lprng_serial=Port szeregowy $1 (COM$1)
 lprng_null=Urządzenie null
 lprng_ecmd=Polecenie $1 nie zostało znalezione w twoim systemie, prawdopodobnie system drukarki LPRng nie jest zainstalowany.
 lprng_espool=Katalog zadań $1 nie istnieje w twoim systemie, prawdopodobnie system drukarki LPRng nie jest zainstalowany.
+
 solaris_paralel=Port równoległy
 solaris_uparalel=Port równoległy Ultra 5/10
 solaris_serial=Port szeregowy $1
 solaris_null=Urządzenie null
 solaris_ecmd=Polecenie $1 nie zostało znalezione w twoim systemie, prawdopodobnie system drukarki Solaris nie jest zainstalowany.
+
 test_title=Druk strony testowej
 test_ecannot=Nie masz uprawnień do drukowania stron testowych
 test_desc=Za pomocą tego formularza możesz wydrukować stronę testową na drukarce $1. Wybierz rodzaj drukowanej strony :
@@ -252,6 +277,7 @@ test_print=Drukuj stronę
 test_exec=Trwa drukowanie strony testowej za pomocą polecenia $1 ..
 test_failed=.. polecenie zakończyło się niepowodzeniem!
 test_ok=.. polecenie wykonano.
+
 cups_none=Brak
 cups_nonemsg=Drukarka zdalna lub nie przetwarzająca
 cups_prog=Program
@@ -259,11 +285,14 @@ cups_driver=Sterownik CUPS
 cups_eprog='$1' nie jest poprawnym programem
 cups_opts=Opcje dla $1
 cups_ecmd=Polecenie $1 nie zostało znalezione w twoim systemie, prawdopodobnie system drukarki CUPS nie jest zainstalowany.
+
 irix_ecmd=Polecenie $1 nie zostało znalezione w twoim systemie, prawdopodobnie system drukarki IRIX nie jest zainstalowany.
 irix_eiface=Katalog skryptów interfejsu $1 nie istnieje w twoim systemie, prawdopodobnie system drukarki IRIX nie jest zainstalowany.
+
 aix_port=Port drukarki $1
 aix_edesc=Błędny opis - tylko litery i liczby są dozwolone, bez spacji
 aix_ecmd=Serwer drukarki AIX $1 nie został znaleziony. Możliwe, że nie jest zainstalowany lub inny system drukarki jest używany.
+
 cluster_title=Klaster drukarki serwerów
 cluster_none=Nie dodano jeszcze żadnych serwerów do klastra drukarki.
 cluster_host=Nazwa hosta
@@ -275,6 +304,7 @@ cluster_need=Musisz dodać serwery z loginem i hasłem w module Serwery Webmina 
 cluster_return=serwery klastra
 cluster_delete=Usuń wybrane
 cluster_ecannot=Nie masz uprawnień do zarządzania klastrem serwerów drukarek
+
 add_title=Dodawanie serwerów
 add_msg=Dodawanie $1 ..
 add_gmsg=Dodawanie serwerów w grupie $1 ..

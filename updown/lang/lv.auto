@@ -40,6 +40,7 @@ index_descfetch=Šī lapa ir paredzēta, lai lejupielādētu failu no sistēmas,
 index_email=Vai sūtīt e-pastu, kad lejupielāde ir pabeigta?
 index_emailto=Jā, lai uzrunātu
 index_email2=Vai sūtīt e-pastu, kad augšupielāde ir pabeigta?
+
 upload_title=Augšupielādēt failus
 upload_err=Neizdevās augšupielādēt failus
 upload_edir=Trūkst direktorija, kurā augšupielādēt
@@ -63,6 +64,7 @@ upload_saving=Notiek faila $1 saglabāšana.
 upload_saved=.. uzrakstīja $1 
 upload_unzipping=Notiek faila $1 iegūšana.
 upload_unzipdone=.. $1 
+
 download_err=Neizdevās saglabāt lejupielādi
 download_enone=Neviens lejupielādējamais URL nav ievadīts
 download_eurl=“$1” nav derīgs URL
@@ -74,9 +76,11 @@ download_failed=Lejupielāde neizdevās : $1
 download_eaccess=Jums nav atļauts lejupielādēt failus uz $1 
 download_eucannot=Jums nav atļauts lejupielādēt failus kā lietotājam $1 
 download_egcannot=Atlasītajā grupā nav atlasītā lietotāja
+
 cancel_err=Neizdevās atcelt lejupielādes
 cancel_enone=Nav atlasīts
 cancel_ecannot=Jums nav atļauts atcelt lietotāja $1 lejupielādes
+
 log_cancel=Atcelta $1 lejupielāde (s)
 log_upload_l=Augšupielādēts (-i) fails (-i) $1 
 log_upload=Augšupielādēts $1 fails (i)
@@ -84,6 +88,7 @@ log_download_l=Lejupielādēts URL (-i) $1
 log_download=Lejupielādēts $1 URL
 log_sdownload_l=Plānota vietrāža (-u) URL (-u) lejupielāde
 log_sdownload=Plānotā $1 URL lejupielāde
+
 acl_users=Var augšupielādēt un lejupielādēt failus kā lietotāji
 acl_all=Visi lietotāji
 acl_this=Pašreizējais Webmin lietotājs
@@ -98,6 +103,7 @@ acl_max=Maksimālais augšupielādes lielums
 acl_unlim=Neierobežots
 acl_b=baiti
 acl_fetch=Vai var lejupielādēt failus uz personālo datoru?
+
 fetch_err=Neizdevās lejupielādēt failu
 fetch_ecannot=Jums nav atļauts lejupielādēt failus uz personālo datoru
 fetch_efile=Nav ievadīts faila nosaukums
@@ -106,6 +112,7 @@ fetch_eopen=Neizdevās atvērt failu : $1
 fetch_eaccess=Jums nav atļauts lejupielādēt failus no $1 
 fetch_ezip=Direktoriju nevar lejupielādēt, ja nav instalēta komanda <tt>zip</tt>
 fetch_eroot=Saknes direktoriju nevar lejupielādēt.
+
 email_downmsg=Šī lejupielāde ir pabeigta :
 email_downurl=URL: $1 
 email_downerr=Kļūdas ziņojums: $1 

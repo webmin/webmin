@@ -31,6 +31,7 @@ index_header3=Descargar archivo desde servidor al PC
 index_fetch=Archivo a descargar
 index_ok2=Descarga
 index_show=¿Mostrar en navegador si es posible?
+
 upload_title=Carga de Ficheros
 upload_err=No he podido cargar los ficheros
 upload_edir=Falta el directorio para la carga
@@ -49,6 +50,7 @@ upload_eextract=, que no se ha podido extraer: $1
 upload_extracted=, y extraidos los ficheros...
 upload_deleted=, y extraidos los ficheros antes de eliminar el archivo...
 upload_notcomp=No es un fichero ZIP ni TAR
+
 download_err=No se pudo salvar la descarga
 download_eurl='$1' no es una URL válida
 download_edate=Hora o fecha no válido
@@ -59,9 +61,11 @@ download_failed=La descarga ha fallado: $1
 download_eaccess=No tiene permiso para bajar ficheros a $1
 download_eucannot=No tiene permiso para bajar ficheros como usuario $1
 download_egcannot=El grupo seleccionado no contiene al usuario seleccionado.
+
 cancel_err=No he podido cancelar las descargas
 cancel_enone=No hay ninguna seleccionada
 cancel_ecannot=No tienes permiso para cancelar descargas del usuario $1
+
 log_cancel=Canceladas $1 descargas
 log_upload_l=Cargado el(los) fichero(s) $1
 log_upload=Cargado $1 fichero(s)
@@ -69,6 +73,7 @@ log_download_l=Descargada(s) la(s) URL(s) $1
 log_download=Descargada(s) $1 URL(s)
 log_sdownload_l=Planificada la descarga de las URLs $1
 log_sdownload=Planificada la descarga de $1 URL(s)
+
 acl_users=Puede subir y bajar ficheros como usuarios
 acl_all=Todos los usuarios
 acl_this=Usuario Webmin actual
@@ -83,6 +88,7 @@ acl_max=Tamaño máximo de subida
 acl_unlim=Ilimitada
 acl_b=bytes
 acl_fetch=¿Puede descargar archivos al PC?
+
 fetch_err=Fallo al descargar archivo
 fetch_ecannot=No tiene permiso para descargar archivos a un PC
 fetch_efile=No se introdujo nombre de archivo

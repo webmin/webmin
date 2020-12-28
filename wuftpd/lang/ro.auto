@@ -9,6 +9,7 @@ index_startmsg=Faceți clic pe acest buton pentru a porni serverul FTP cu config
 index_startmsg2=Faceți clic pe acest buton pentru a porni serverul FTP cu configurația curentă. Puteți configura, de asemenea, serverul pentru a fi pornit automat atunci când este necesar, folosind inetd sau un program echivalent.
 index_return=Opțiuni server FTP
 index_version=Versiunea WU-FTPd $1 
+
 class_title=Utilizatori și clase
 class_header=Clase de utilizator și opțiuni de utilizator
 class_class=Cursuri de utilizatori
@@ -31,6 +32,7 @@ class_err=Nu a reușit salvarea claselor de utilizator
 class_eclass=„$1” nu este un nume de clasă valid
 class_etypes=Nu există tipuri alese pentru clasa „$1”
 class_eaddrs=Nu s-au introdus adrese pentru clasa „$1”
+
 message_title=Mesaje și Bannere
 message_header=Mesaje, bannere și fișiere README
 message_message=Fișiere de mesaje
@@ -59,6 +61,7 @@ message_eclass=Clasa „$1” nu există
 message_ebanner=„$1” nu este un fișier de autentificare autentic
 message_ehostname=Numele de gazdă lipsă sau nevalid
 message_eemail=Adresa de e-mail lipsă sau nevalidă
+
 acl_title=Limite și controlul accesului
 acl_header=Limite și opțiuni de control de acces
 acl_deny=Refuză accesul de la
@@ -105,6 +108,7 @@ acl_elmsg=„$1” nu este un fișier de mesaj de eroare valid
 acl_efbcount=„$1” nu este un număr valid de fișiere sau octeți
 acl_elimit=„$1” nu este un termen valabil
 acl_efails=„$1” nu este un număr valid de eșecuri de conectare
+
 net_title=Rețele
 net_header=Opțiuni de rețea
 net_tcp=Dimensiuni fereastră TCP
@@ -122,6 +126,7 @@ net_eip=„$1” nu este o adresă IP validă
 net_enet=„$1” nu este o adresă de rețea validă
 net_ecidr=„$1” nu este un număr valid de biți de rețea
 net_eport=„$1” nu este un număr de port valid
+
 log_title=Logare
 log_header=Opțiuni de înregistrare
 log_commands=Logează toate comenzile pentru
@@ -139,6 +144,7 @@ log_syslog=Jurnal de sistem
 log_xferlog=Fișier jurnal XFER
 log_sysxfer=Ambele destinații
 log_err=Nu a reușit să salvați opțiunile de înregistrare
+
 alias_title=Aliasuri și căi
 alias_header=Opțiuni de alias și cale
 alias_alias=Alias de director CD
@@ -149,6 +155,7 @@ alias_err=Nu a reușit să salveze pseudonimele și căile
 alias_efrom=„$1” nu este un nume de alias valid
 alias_eto=„$1” nu este un director alias valid
 alias_ecdpath=„$1” nu este un director de căutare CD valid
+
 anon_title=FTP anonim
 anon_eftp=Avertisment - sistemul dvs. nu are un utilizator <tt>ftp</tt> și, prin urmare, FTP-ul anonim nu este probabil configurat.
 anon_header=Opțiuni FTP anonime
@@ -171,6 +178,7 @@ anon_uids=Pentru utilizatorii Unix
 anon_err=Nu a reușit să salvați opțiunile FTP anonime
 anon_edir=„$1” nu este un director valid
 anon_egroup=„$1” nu este un grup valid
+
 perm_title=Permisiuni
 perm_header=Opțiuni de permis
 perm_perms=Restricții de comandă
@@ -192,7 +200,9 @@ perm_err=Nu a reușit să salveze permisiunile
 perm_echar=„$1” nu este o expresie regulată a unui set de caractere valid
 perm_etypes=Nu au fost selectate tipuri de utilizatori
 perm_emesg=„$1” nu este un fișier de mesaj de eroare valid
+
 host_title=Controlul accesului gazdelor
+
 misc_title=Opțiuni diverse
 misc_header=Opțiuni diverse
 misc_lslong=Comandă lungă listare
@@ -213,6 +223,7 @@ misc_elsplain=Lipsește comanda de listare simplă
 misc_eshutdown=Lipsește fișierul de notificare de închidere
 misc_enice=„$1” nu este un nivel frumos valid
 misc_eumask=„$1” nu este o mască umas validă
+
 log_class=Utilizatori și clase modificate
 log_message=Modificări de mesaje și bannere
 log_acl=Limitele modificate și controlul accesului

@@ -12,6 +12,7 @@ index_eprog=Serverul executabil NFS nu a fost găsit în sistemul dvs. Pachetul 
 index_delete=Ștergeți exporturile selectate
 index_disable=Dezactivare selectat
 index_enable=Activați selectat
+
 edit_title=Editați Export
 create_title=Creați Export
 edit_details=Detalii despre export
@@ -65,6 +66,7 @@ edit_sec_krb5i=Integritatea Kerberos
 edit_sec_krb5p=Confidențialitatea Kerberos
 edit_sec_lipkey=LIPKEY
 edit_sec_spkm=SPKM
+
 save_err=Nu a reușit să salveze exportul
 save_edir=Directorul „$1” nu există
 save_epfs=Calea pseudosistemului de fișiere „$1” nu arată ca o cale absolută
@@ -78,6 +80,7 @@ save_pfs=„$1” este deja exportat ca director
 save_create_dir=Nu se poate crea directorul „$1”
 save_eanonuid=Nume utilizator de acces anonim nevalid
 save_eanongid=Nume grup de acces anonim nevalid
+
 exports_webnfs=WebNFS clienti
 exports_ngroup=Netgroup $1 
 exports_net=Rețea $1 
@@ -85,6 +88,7 @@ exports_all=Toata lumea
 exports_hosts=Hosts $1 
 exports_host=Gazdă $1 
 exports_gss=Rețea autentificată: $1 
+
 log_modify=Export modificat NFS $1 
 log_modify_l=Export modificat NFS $1 la $2 
 log_delete=Export șters NFS $1 

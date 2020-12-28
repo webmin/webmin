@@ -5,6 +5,7 @@ index_restore=回存備份的檔案系統類型:
 index_restoremsg=選取檔案系統類型和按下此鈕開始執行程序來回存選取的檔案系統備份。
 index_ecommands=模組在您的系統上找不到所需要的檔案系統備份指令 (像是 $1)，也許現在還沒有安裝。
 index_return=備份清單
+
 dump_dir=備份目錄
 dump_fs=檔案系統
 dump_sched=排程?
@@ -35,6 +36,7 @@ dump_emp=備份目錄必須是一個檔案系統掛載點
 dump_erase=在備份前先刪除檔案/抹除磁帶?
 dump_verify=在備份後檢驗資料?
 dump_offline=在備份後退出磁帶?
+
 edit_err=新增備份失敗
 edit_edir=沒有輸入備份目錄
 edit_efs=這個模組無法備份 $1 類型的檔案系統
@@ -48,11 +50,14 @@ edit_savenow=儲存並開始備份
 edit_createnow=新增並開始備份
 edit_return=dump
 edit_email=傳送排程輸出到電子郵件
+
 save_err=儲存備份失敗
 save_edir=沒有輸入或錯誤的備份目錄
 save_efs=備份目錄無法變更成不同的檔案系統
+
 backup_title=現在備份
 backup_desc=備份 $1 到 $2 ..
+
 restore_title=回存備份
 restore_ecommand=指令 $1在您的系統上找不到所需要的$2檔案系統回存備份指令，也許現在還沒有安裝。
 restore_header=回存備份 $1 檔案系統
@@ -82,6 +87,7 @@ restore_edir=沒有輸入或錯誤的回存目錄
 restore_failed=回存失敗 : $1
 restore_complete=回存成功！
 restore_test=只顯示備份的檔案?
+
 log_create=新增$1的備份設定
 log_modify=修改$1的備份設定
 log_delete=刪除$1的備份設定

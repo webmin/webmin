@@ -51,11 +51,13 @@ index_mass=Elimina gli utenti selezionati
 index_mass2=Disabilita Selezionato
 index_mass3=Abilita selezionati
 index_gmass=Elimina i gruppi selezionati
+
 search_title=risultati di ricerca
 search_notfound=Nessun utente corrispondente trovato
 search_found=Trovati $1 utenti corrispondenti.
 search_gnotfound=Nessun gruppo corrispondente trovato
 search_gfound=Trovati $1 gruppi corrispondenti.
+
 uedit_title=Modifica utente
 uedit_title2=Creare un utente
 uedit_details=Dettagli dell'utente
@@ -133,6 +135,7 @@ uedit_uid_calc=Calcolato
 uedit_disabled=Accesso temporaneamente disabilitato
 uedit_sys=Default del sistema
 uedit_clone=Clona utente
+
 usave_err=Impossibile salvare l'utente
 usave_eedit=Non è possibile modificare questo utente
 usave_ecreate=Non è possibile creare nuovi utenti
@@ -186,6 +189,7 @@ usave_epasswd_same=La password contiene o è uguale al nome utente
 usave_epasswd_mindays=La password è stata modificata meno di $1 giorni fa
 usave_epasswd_cmd=Comando di convalida password non riuscito
 usave_eothers=L'utente è stato salvato con successo, ma si è verificato un errore in un altro modulo : $1
+
 gedit_title=Modifica gruppo
 gedit_title2=Creare un gruppo
 gedit_details=Dettagli del gruppo
@@ -208,6 +212,7 @@ gedit_selu=Utenti nel gruppo
 gedit_pri=Membri del gruppo primario
 gedit_prinone=Nessun utente ha questo gruppo come principale
 gedit_clone=Clone Group
+
 gsave_err=Impossibile salvare il gruppo
 gsave_eedit=Non è possibile modificare questo gruppo
 gsave_ecreate=Non è possibile creare nuovi gruppi
@@ -224,6 +229,7 @@ usave_egidused=Il gruppo $1 sta già utilizzando GID $2
 gsave_egidused2=GID è già in uso
 usave_efromroot=Non è possibile spostare la directory principale da /
 usave_etoroot=Non è possibile spostare la directory principale in /
+
 logins_title=Login registrati
 logins_head=Login registrati per $1
 logins_from=Accedi da
@@ -236,6 +242,7 @@ logins_none=Nessun accesso registrato
 logins_elist=Non è consentito elencare gli accessi
 logins_elistu=Non puoi elencare accessi per '$1'
 logins_local=Locale
+
 udel_title=Elimina utente
 udel_err=Impossibile eliminare l'utente
 udel_enum=Numero utente non valido
@@ -258,6 +265,7 @@ udel_del2=Elimina directory utente e home
 udel_others=AVVERTIMENTO! La home directory $1 contiene $2 file di proprietà di altri utenti.
 udel_dothers=Eliminare l'utente in altri moduli?
 udel_root=Avvertimento! Se l'utente root viene eliminato, potrebbe non essere possibile amministrare il sistema in futuro.
+
 gdel_title=Elimina gruppo
 gdel_err=Impossibile eliminare il gruppo
 gdel_eroot=Non è consentito eliminare i gruppi di sistema (quelli con un GID inferiore o uguale a 10).
@@ -271,6 +279,7 @@ gdel_sure=Sei sicuro di voler eliminare il gruppo $1?
 gdel_del=Elimina gruppo
 gdel_dothers=Elimina gruppo in altri moduli?
 gdel_other=Eliminazione da altri moduli ..
+
 many_title=Crea più utenti
 many_desc=Questo modulo consente di creare più utenti contemporaneamente da un file di testo caricato o locale. Ogni riga nel file specifica un utente nel seguente formato:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -294,6 +303,7 @@ many_eshell=Shell non valida alla riga $1 : $2
 many_emkdir=Impossibile creare la home directory $1 : $2 
 many_egtaken=Nome del gruppo già in uso alla riga $1 : $2 
 many_ok=Utente creato $1
+
 acl_uedit=Utenti Unix che possono essere modificati
 acl_uedit_all=Tutti gli utenti
 acl_uedit_none=Nessun utente
@@ -353,6 +363,7 @@ acl_udelete=Puoi eliminare gli utenti?
 acl_gdelete=Puoi eliminare gruppi?
 acl_urename=È possibile rinominare gli utenti?
 acl_grename=È possibile rinominare i gruppi?
+
 log_urename=Utente rinominato da $1 a $2
 log_umodify=Utente modificato $1
 log_ucreate=Utente creato $1
@@ -371,6 +382,7 @@ log_ugbatch=File batch del gruppo caricato eseguito
 log_ugbatch_l=File batch di gruppo caricato eseguito ($1 creato, $2 modificato, $3 eliminato)
 log_delete_users=Utenti $1 eliminati
 log_delete_groups=Gruppi $1 eliminati
+
 batch_title=Esegui file batch
 batch_ecannot=Non è possibile utilizzare il modulo file batch
 batch_desc=Questo modulo consente di creare, modificare o eliminare più utenti contemporaneamente da un file di testo caricato o locale. Ogni riga nel file specifica un'azione da eseguire, a seconda del suo primo campo. I formati di linea sono :
@@ -429,12 +441,14 @@ batch_eexpire=Giorno di scadenza on line non valido $1 : $2
 batch_echange=Giorno di cambio password non valido on line $1 : $2 
 batch_instr=Istruzioni e formato batch
 batch_header=Opzioni di creazione, aggiornamento ed eliminazione utente in batch
+
 who_title=Utenti connessi
 who_user=Utente Unix
 who_tty=TTY
 who_when=Accesso effettuato presso
 who_from=Accesso effettuato da
 who_none=Nessun utente è attualmente connesso.
+
 export_title=Esporta file batch
 export_desc=Questo modulo consente di creare un file batch contenente alcuni o tutti gli utenti disponibili sul sistema. Il file può essere utilizzato nella pagina Esegui file batch su un altro sistema per ricreare gli utenti esportati, supponendo che utilizzi il formato file batch selezionato.
 export_header=Opzioni di esportazione utente in batch
@@ -455,6 +469,7 @@ export_done=$1 esportati correttamente nel file $2 ($3).
 export_pft=Formato file batch
 export_who=Utenti da esportare
 export_ecannot=Non puoi esportare utenti
+
 gexport_title=Esporta file batch gruppi
 gexport_desc=Questo modulo consente di creare un file batch contenente alcuni o tutti i gruppi disponibili sul sistema. Il file può essere utilizzato nella pagina Esegui file batch gruppo su un altro sistema per ricreare i gruppi esportati.
 gexport_header=Opzioni di esportazione del gruppo batch
@@ -463,6 +478,7 @@ gexport_ecannot=Non è consentito esportare gruppi
 gexport_err=Impossibile esportare il file batch di gruppo
 gexport_egid=Primo GID non valido nell'intervallo
 gexport_egid2=Secondo GID non valido nell'intervallo
+
 pft_0=Solo file classico <tt>passwd</tt>
 pft_1=File BSD <tt>master.passwd</tt>
 pft_2=File <tt>passwd</tt> e <tt>shadow</tt> standard
@@ -470,6 +486,7 @@ pft_3=File Unixware <tt>passwd</tt>
 pft_4=File AIX <tt>passwd</tt> e <tt>sicurezza</tt>
 pft_5=OpenServer <tt>passwd</tt> e file <tt>shadow</tt> brevi
 pft_6=Database di MacOS NetInfo
+
 umass_title=Elimina utenti
 umass_err=Impossibile eliminare gli utenti
 umass_sure=Sei sicuro di voler eliminare gli utenti selezionati $1? Le loro home directory contengono $2 di file.
@@ -481,6 +498,7 @@ umass_del1=Elimina utenti
 umass_del2=Elimina utenti e home directory
 umass_eroot=Non è consentito eliminare gli utenti di sistema (quelli con un UID inferiore o uguale a 10).
 umass_doing=Eliminazione dell'utente $1 ..
+
 gmass_title=Elimina gruppi
 gmass_err=Impossibile eliminare i gruppi
 gmass_sure=Sei sicuro di voler eliminare i gruppi selezionati $1?
@@ -490,16 +508,19 @@ gmass_del=Elimina gruppi
 gmass_eroot=Non è consentito eliminare i gruppi di sistema (quelli con un GID inferiore o uguale a 10).
 gmass_doing=Eliminazione del gruppo $1 ..
 gmass_eprimary=Il gruppo $1 non può essere eliminato, in quanto è il gruppo principale dell'utente $2.
+
 dmass_title=Disabilita gli utenti
 dmass_sure=Sei sicuro di voler disabilitare gli utenti selezionati $1? Possono essere riattivati in seguito senza perdita di password o dati.
 dmass_dis=Disabilita gli utenti
 dmass_pass=Blocco temporaneo della password ..
 dmass_doing=Disabilitazione dell'utente $1 ..
 dmass_already=.. già disabilitato!
+
 emass_title=Abilita utenti
 emass_pass=Password di sblocco ..
 emass_doing=Abilitazione dell'utente $1 ..
 emass_already=.. già abilitato!
+
 gbatch_title=Esegui file batch di gruppo
 gbatch_ecannot=Non è possibile utilizzare il modulo file batch di gruppo
 gbatch_desc=Questo modulo consente di creare, modificare o eliminare più gruppi contemporaneamente da un file di testo caricato o locale. Ogni riga nel file specifica un'azione da eseguire, a seconda del suo primo campo. I formati di linea sono :

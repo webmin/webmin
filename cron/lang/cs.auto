@@ -2,13 +2,18 @@ index_manual=Ručně upravte úlohy cronu.
 index_next=Další běh
 index_nunknown=Neznámý
 index_ecrondir_create=Zkuste vytvořit adresář úloh $1 ?
+
 edit_next=Čas příštího běhu
 edit_saverun=Uložit a spustit hned
+
 save_eidx=Úloha Cron byla úspěšně uložena, ale nelze ji spustit, protože nebyla nalezena!
+
 when_interval=každých $1 sekund
 when_boot=v době spuštění
+
 ucwhen_interval=Každých $1 sekund
 ucwhen_boot=V době spuštění
+
 manual_title=Ručně upravte úlohy Cron
 manual_edit=Soubor Cron pro úpravy:
 manual_ok=Upravit

@@ -24,8 +24,10 @@ all=Alles
 index_view=Bekijk ..
 index_viewfile=Bekijk log file :
 index_viewok=Bekijk
+
 restart_ekill=Mislukt een signaal te sturen naar het syslog proces $1 : $2
 restart_ecannot=U bent niet bevoegd om syslog te herstarten
+
 start_ecannot=U bent niet bevoegd om syslog te starten
 edit_title=Bewerk Systeem Log
 create_title=Systeem Log Toevoegen
@@ -56,11 +58,13 @@ edit_tag=Alleen voor programma
 edit_return=log details
 edit_ecannot=U bent niet bevoegd om log instellingen te bewerken
 edit_ecannot2=U bent niet bevoegd om deze log te bewerken
+
 view_title=Bekijk Logfile
 view_header=Laatste $1 regels van $2
 view_empty=Log file is leeg
 view_refresh=Vernieuw
 view_filter=Laat alleen regels zien met de tekst $1
+
 save_err=Mislukt om log op te slaan
 save_efile='$1' is geldige filenaam : $2
 save_epipe='$1' is geen geldige naam voor een pipe
@@ -80,11 +84,13 @@ save_ecannot5=U bent niet bevoegd om deze log te modificeren
 save_ecannot6=U bent niet bevoegd om willekeurige logs te bekijken
 save_ecannot7=U bent niet bevoegd om deze extra log te bekijken
 save_emissing=Ontbrekende log file om te bekijken
+
 log_modify=Gemodificeerde log aan $1
 log_create=Log toegevoegd aan $1
 log_delete=Log verwijderd van $1
 log_apply=Toegevoegde veranderingen
 log_start=Gestarte log server
+
 desc_sysmesg=Systeem Berichten
 desc_mail=Email Log
 desc_auth=Authenticatie Log
@@ -93,6 +99,7 @@ desc_news=NNTP Nieuws Log
 desc_uucp=UUCP Log
 desc_debug=Debugging Berichten
 desc_cron=Cron Taken Log
+
 acl_noedit=Mag alleen log files bekijken
 acl_any=Mag iedere file bekijken als een log?
 acl_logs=Mag log files bekijken en configureren

@@ -25,6 +25,7 @@ index_estart=Der Befehl zum Starten von Xinetd $1 existiert nicht. Vielleicht is
 index_noport=Unbekannt
 index_enable=Ausgewählte aktivieren
 index_disable=Ausgewählte deaktivieren
+
 serv_create=Erzeuge Internetdienst
 serv_edit=Bearbeite Internetdienst
 serv_header1=Netzwerkoptionen des Dienstes
@@ -78,19 +79,24 @@ serv_enice=Fehlender oder ungültiger Nice-Status
 serv_ecps0=Fehlende oder ungültige Anzahl von Verbindungen pro Sekunde
 serv_ecps1=Fehlende oder ungültige Verzögerung
 serv_etimes=Zugriffszeiten müssen in der Art HH:MM-HH:MM angegeben werden.
+
 sock_stream=Stream
 sock_dgram=Datagram
 sock_raw=Raw
 sock_seqpacket=Sequentielles Datagram
+
 proto_=Standard
 proto_ip=IP (Internet Protocol)
 proto_tcp=TCP (Transmission Control Protocol)
 proto_udp=UDP (User Datagram Protocol)
+
 restart_err=Konnte Änderungen nicht anwenden
 restart_ekill=Konnte USR2-Signal nicht an PID $1 senden : $2
 restart_epid=Läuft nicht mehr
+
 start_err=Konnte Xinetd nicht starten
 start_estart=$1 gescheitert : $2
+
 defs_title=Standardoptionen
 defs_header=Standardoptionen für Dienste
 defs_log=Xinetd Protokollierungsmodus
@@ -115,6 +121,7 @@ defs_err=Konnte Standardeigenschaften nicht speichern
 defs_efile=Fehlender oder ungültiger Name für die Protokolldatei
 defs_esoft=Fehlendes oder ungültiges weiches Dateilimit
 defs_ehard=Fehlendes oder ungültiges hartes Dateilimit
+
 log_create_serv=$2 Dienste $1 erstellt
 log_modify_serv=$2 Dienste $1 modifiziert
 log_delete_serv=$2 Dienste $1 gelöscht
@@ -125,5 +132,6 @@ log_enable=$1 Dienste aktiviert
 log_disable=$1 Dienste deaktiviert
 log_enable_l=Dienste $1 aktiviert
 log_disable_l=Dienste $1 deaktiviert
+
 config_dirdef=Xinetd Konfigurationsdatei
 config_dirto=Neue Datei in Verzeichnis

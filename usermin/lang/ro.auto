@@ -16,11 +16,14 @@ index_esame=Directorul de configurare Usermin $1 setat pe pagina <a href='$2'>co
 index_eroot=Directorul de configurare Usermin $1 există, dar directorul rădăcină al programului $2 la care se referă nu! Ar trebui să descărcați și să reinstalați manual Usermin.
 index_restart=Reporniți Usermin
 index_restartmsg=Faceți clic pe acest buton pentru a relansa procesul serverului Usermin. Acest lucru poate fi necesar dacă ați actualizat recent Perl.
+
 access_title=Control acces IP
 access_desc=Serverul Usermin poate fi configurat pentru a refuza sau permite accesul numai de la anumite adrese IP folosind acest formular. Numele de gazdă (cum ar fi foo.bar.com) și rețelele IP (cum ar fi 10.254.3.0 sau 10.254.1.0/255.255.255.128 sau 10.254.1.0/25 sau 10.254.1.5-10.254.97.127) pot fi de asemenea introduse. Ar trebui să vă limitați accesul la serverul dvs. la adrese de încredere, în special dacă este accesibil de pe Internet. În caz contrar, oricine ghicește parola dvs. va avea controlul complet asupra sistemului dvs.
+
 bind_title=Porturi și adrese
 bind_desc2=Acest formular poate fi utilizat pentru a schimba numărul de port pe care Usermin îl ascultă sau pentru a-l asculta doar pe o singură adresă IP din sistem. Puteți configura, de asemenea, pentru a accepta conexiuni pe mai multe porturi sau pentru a asculta mai multe adrese IP. Notă - browserul dvs. web vă poate solicita să vă conectați din nou după schimbarea portului sau a adresei de legare.
 bind_erestart=A apărut o eroare la pornirea Usermin cu noua adresă și setările portului : $1 
+
 mods_title=Module Usermin
 umods_title=Module Usermin
 mods_desc1=Modulele Usermin pot fi adăugate după instalare folosind formularul din dreapta. Modulele sunt de obicei distribuite în fișiere <tt>.wbm</tt>, fiecare dintre ele putând conține unul sau mai multe module. De asemenea, modulele pot fi instalate din fișiere RPM dacă sunt acceptate de sistemul dvs. de operare.
@@ -41,15 +44,18 @@ mods_desc3=Modulele existente pot fi șterse folosind formularul de mai jos. Dup
 mods_delete=Ștergeți modulele
 mods_deleteok=Ștergeți modulele selectate
 mods_desc4=Modulele instalate pot fi exportate ca fișier wbm.gz folosind formularul de mai jos. Un fișier modul poate fi apoi instalat pe un alt sistem care rulează Usermin.
+
 os_title=Sistem de operare și mediu
 os_desc3=Această pagină afișează sistemul de operare detectat de Usermin la momentul instalării și sistemul care este detectat în prezent. Dacă acestea sunt diferite, puteți alege să actualizați informațiile despre sistemul de operare Usermin, ceea ce poate fi necesar dacă ați actualizat recent.
 os_desc2=De asemenea, puteți schimba calea de căutare folosită de Usermin la rularea programelor, iar calea de bibliotecă partajată a trecut la orice programe.
 os_usermin=Sistem de operare conform Usermin
 os_iusermin=Cod de sistem intern folosit de Usermin
 os_update=Actualizați Usermin pentru a utiliza sistemul de operare detectat
+
 lang_title=Limba
 lang_title2=Limba Usermin
 lang_intro=Această pagină vă permite să alegeți ce limbă va folosi Usermin pentru afișarea titlurilor, solicitări și mesaje
+
 session_title=Autentificare
 session_desc1=Când este activat, intervalele de timp protejate de parolă protejează serverul dvs. Usermin de atacurile de fisurare a parolelor cu forță brută, adăugând o întârziere în continuă expansiune între fiecare încercare de conectare eșuată pentru același utilizator.
 session_desc2=Când autentificarea sesiunii este activată, fiecare sesiune de utilizatori autentificați va fi urmărită de Usermin, ceea ce face posibil ca utilizatorii inactivi să fie deconectați automat. Rețineți că activarea sau dezactivarea autentificării sesiunii poate obliga toți utilizatorii să se autentifice din nou.
@@ -73,6 +79,7 @@ session_blank=Solicitați utilizatorilor cu parola goală să aleagă una la pri
 session_homedir=Creați directoarele de domiciliu lipsă după autentificare?
 session_homedir_perms=Permisiunile pentru noul director
 session_ehomedir_perms=Permisele de director de origine octal lipsă sau nevalide
+
 themes_title=Teme Usermin
 themes_desc=Temele controlează aspectul interfeței de utilizator Usermin, inclusiv pictograme, culori, fundaluri și, eventual, aspectul paginilor. Caseta de selectare de mai jos poate fi utilizată pentru a alege una dintre temele instalate pe sistemul dvs. care va fi implicit pentru utilizatorii Usermin.
 themes_sel=Tema actuală :
@@ -101,7 +108,9 @@ themes_eirpm=Instalarea RPM a eșuat : $1
 themes_ok=Tema sa schimbat cu succes.. redirecționarea către pagina indexului Webmin.
 themes_delete=Acest formular poate fi utilizat pentru a șterge una dintre temele instalate pe sistemul dvs. care nu este utilizat în prezent.
 themes_delok=Tema de șters :
+
 themes_desc4=Temele instalate pot fi exportate ca fișier wbt.gz folosind formularul de mai jos. Un fișier temă poate fi apoi instalat pe un alt sistem care rulează Usermin.
+
 configs_ecannot=Nu aveți voie să configurați acest modul
 configs_title=Configurarea modulului Usermin
 configs_header=Module configurabile
@@ -115,8 +124,10 @@ configs_global=Configurația modulului global
 configs_globaldesc=Setările din acest formular se aplică tuturor utilizatorilor modulului și, în general, setează opțiuni legate de programele și fișierele pe care le folosește.
 configs_user=Preferințe implicite ale utilizatorului
 configs_userdesc=Setările din acest formular definesc valorile implicite pentru preferințele care pot fi modificate de utilizator pentru acest modul. Cu excepția cazului în care specificați altfel, ei pot fi suprasolicitați de utilizatori individuali.
+
 acl_title=Module disponibile
 acl_desc=Utilizați această pagină pentru a selecta modulele Usermin instalate sunt vizibile pentru utilizatori.
+
 ssl_title=Criptare SSL
 ssl_desc1=Gazda pe care rulează Usermin pare să aibă instalat modulul SSLeay Perl. Utilizând aceasta, Usermin acceptă comunicarea criptată SSL între browserul dvs. și server. Dacă utilizatorii accesează serverul dvs. Usermin prin Internet, atunci ar trebui să luați în considerare utilizarea SSL pentru a împiedica un atacator să capteze parolele lor.
 ssl_desc2=Avertisment - porniți asistența SSL numai dacă aveți un browser care acceptă SSL și nu există firewall care blochează <tt>https</tt> cereri între browserul dvs. și gazda Usermin.
@@ -125,18 +136,23 @@ ssl_hole=Deoarece în prezent utilizați cheia implicită Usermin SSL la care to
 ssl_savekey=Acest formular vă permite să încărcați o cheie privată SSL în format PEM existent și un certificat pentru serverul Usermin.
 ssl_copycert=Copiați certificatul de pe Webmin
 ssl_copycertdesc=Copiați certificatul SSL, cheia privată, certificatul CA și alte setări pe care le utilizează Webmin.
+
 ca_email=Adresa de email
 ca_ou=Departament
 ca_o=Organizare
 ca_sp=Stat
 ca_c=Codul tarii
+
 newkey_ok=Generați cu succes următoarea cheie SSL pentru Usermin.
+
 stop_err=Nu a reușit să oprească Usermin
 stop_ekill=Procesul nu a reușit să omoare : $1 
 stop_efile=Deja s-a oprit
 stop_ecannot=Nu aveți voie să opriți Usermin
+
 start_err=Eroare la pornirea Usermin
 start_ecannot=Nu aveți voie să porniți Usermin
+
 users_title=Utilizatori și grupuri permise
 users_desc=Usermin poate fi configurat pentru a limita ce utilizatori și grupuri unix au voie să se conecteze, folosind acest formular. Pentru a specifica toți membrii primari ai unui grup unix, introduceți <tt>@groupname</tt> în listă.
 users_desc2=Pentru a potrivi o serie de UID-uri, introduceți <tt>start-end</tt>, <tt>start-</tt> sau <tt>-end</tt> în listă.
@@ -150,10 +166,12 @@ users_euser=„$1” nu este un nume de utilizator valid
 users_egroup=„$1” nu este un nume de grup valid
 users_shells=Respingeți utilizatorii ale căror shell-uri nu sunt în fișier
 users_eshells=Fișier shell-uri lipsă sau inexistent
+
 defacl_title=Opțiuni de control de acces
 defacl_desc=Această pagină vă permite să configurați diverse opțiuni de control de acces care se aplică pentru modulele și utilizatorii Usermin. Aceste opțiuni sunt similare cu cele din ACL global pentru fiecare utilizator din modulul Utilizatori Webmin.
 defacl_header=Opțiuni de control de acces pentru utilizatorii Usermin
 defacl_err=Nu a reușit să salvați opțiunile de control de acces
+
 install_err1=Instalarea modulului a eșuat de la $1 
 install_efile=Fisierul nu exista
 install_err2=Instalarea modulului încărcat nu a reușit
@@ -180,6 +198,7 @@ install_erpm=Nu este un modul Usermin sau un RPM cu temă
 install_eirpm=Instalarea RPM a eșuat : $1 
 install_cat=La categoria $1.
 install_eneither=RPM nu conține un modul sau temă usermin
+
 delete_err=Nu a reușit ștergerea modulelor
 delete_edep=Modulul $1 nu poate fi șters, deoarece modulul $2 depinde de acesta
 delete_desc1=$1 (clonă a $2)
@@ -189,6 +208,7 @@ delete_msg=Următoarele module au fost șterse cu succes din instalarea Usermin 
 delete_rusure=Sigur doriți să ștergeți modulul (modulele) $2 ? $1 kB de fișiere vor fi șterse pentru totdeauna.
 delete_rusure2=Sigur doriți să ștergeți tema $2 ? $1 kB de fișiere vor fi șterse pentru totdeauna.
 delete_enone=Nu au fost selectate module
+
 ui_title=Interfața cu utilizatorul
 ui_desc=Acest formular vă permite să editați opțiunile de interfață utilizator utilizate de toate modulele Usermin.
 ui_header=Opțiuni de interfață utilizator
@@ -230,6 +250,7 @@ ui_hnm1=Nume gazdă de la URL
 ui_hnm2=Numele de domeniu de la URL
 ui_hnm3=Alt nume ..
 ui_tabs=Categorizați modulele?
+
 upgrade_title=Actualizați Usermin
 upgrade_title2=Instalați Usermin
 upgrade_desc=Acest formular vă permite să actualizați întreaga instalare Usermin la o nouă versiune. Puteți instala dintr-un fișier local, un fișier încărcat sau din cea mai recentă versiune la <a href=http://www.usermin.com/>www.usermin.com</a>. La fel ca în cazul unui upgrade manual, toate setările de configurare și modulele terță parte vor fi păstrate.
@@ -263,6 +284,7 @@ upgrade_done=.. upgrade complet.
 upgrade_failed=.. upgrade-ul a eșuat!
 upgrade_updates=Există $1 actualizări pentru această nouă versiune a Usermin. <a href='$2'>Faceți clic aici</a> pentru a le descărca și instala automat.
 upgrade_eupdates=Lista de actualizări nu a reușit : $1 
+
 update_desc1=Acest formular vă permite să actualizați modulele Usermin care s-au dovedit a conține erori sau gauri de securitate din pagina <a href=http://www.usermin.com/uupdates.html>Actualizări Usermin</a> sau din altă sursă. Acest lucru va compara modulele instalate în prezent cu cele disponibile pentru actualizare și, în mod opțional, se vor descărca și instala automat orice module care nu sunt depășite.
 update_header1=Actualizați modulele acum
 update_header2=Actualizați modulele în grafic
@@ -279,10 +301,12 @@ update_sched=Actualizați modulele la $1 : 00 la fiecare $2 zile
 update_none=Nu există actualizări Usermin pentru această versiune.
 update_failed=Instalarea modulului nu a reușit : $1 
 update_desc2=Acest formular este pentru programarea actualizării automate a modulelor Usermin care conțin buguri sau găuri de securitate din <a href=http://www.usermin.com/uupdates.html>Actualizări Usermin</a> sau din altă sursă. În timp ce acest serviciu este util, ar trebui să fii atent să-l folosești, deoarece poate permite atacatorilor să preia sistemul tău dacă serverul de actualizare a fost vreodată compromis.
+
 assignment_title=Reasignarea modulelor
 assignment_header=Alocări de categorii de module
 assignment_ok=Schimbați categoriile
 assignment_desc=Acest formular vă permite să configurați în ce categorie este afișat fiecare modul în pagina indexului Usermin.
+
 categories_title=Modificați categoriile
 categories_header=ID de categorie și descrieri
 categories_desc=Acest formular vă permite să redenumiți categoriile Usermin existente și să le creați altele noi pentru a atribui module. Partea superioară a tabelului este pentru modificarea descrierilor categoriilor încorporate, în timp ce partea de jos este pentru adăugarea de ID-uri și descrieri de categorii noi.
@@ -292,6 +316,7 @@ categories_edesc=Descrierea lipsă pentru $1
 categories_ecat=ID-ul categoriei $1 este deja luat
 categories_code=ID-ul
 categories_name=Descrierea afișată
+
 log_access=Schimbarea controlului de acces IP
 log_bind=Port și adresă modificate
 log_log=Opțiuni de jurnal modificate
@@ -327,6 +352,7 @@ log_restrict_create=Crearea restricției pentru $1
 log_restrict_modify=Restricție modificată pentru $1 
 log_restrict_delete=Restricție ștersă pentru $1 
 log_restrict_move=Restricție mutată pentru $1 
+
 log_all=toți utilizatorii
 log_group=Grupa 1
 log_switch=Trecut la usermin User $1
@@ -334,6 +360,7 @@ log_logout=Timpul modificat auto-deconectare
 log_dav=Setări modificate ale serverului DAV
 log_advanced=Opțiuni avansate modificate
 log_mobile=Opțiuni modificate pentru dispozitive mobile
+
 update_err=Actualizarea modulelor nu a reușit
 update_eurl=Adresa URL de actualizare lipsă sau nevalidă
 update_title=Module de actualizare
@@ -352,6 +379,7 @@ update_rv=Verificarea actualizării modulelor Usermin de la $1
 update_eemail=Trebuie să introduceți o adresă de e-mail dacă arătați doar ce ar fi actualizat.
 update_subject=Raportul de actualizare a modulelor Usermin
 update_version=O nouă versiune a Usermin (versiunea $1) este acum disponibilă pentru descărcare. Actualizările viitoare vor fi lansate numai pentru cea mai recentă versiune.
+
 restrict_title=Restricții ale modulului
 restrict_desc=Această pagină vă permite să controlați ce module Usermin sunt disponibile pentru diferiți utilizatori și grupuri. Toate adăugările și scăderile de module din listă se aplică, nu doar primul care se potrivește fiecărui utilizator. <br>Modulele care nu sunt selectate pe pagina<a href='$1'> module disponibile </a> nu vor fi niciodată disponibile pentru utilizatori, chiar dacă sunt selectați aici.
 restrict_who=Usermin user
@@ -384,6 +412,7 @@ restrict_egroup=Numele grupului lipsă sau nevalid
 restrict_efile=Fișier de grupuri de utilizatori și inexistenți lipsiți, inexistenți sau inexistenți
 restrict_move=Mișcare
 bootup_ecannot=Nu aveți voie să configurați bootup-ul
+
 acl_icons=Pagini de configurare permise
 acl_mods=Poate configura module
 acl_all=Toate modulele
@@ -391,10 +420,12 @@ acl_sel=Selectat mai jos ..
 acl_stop=Pot opri și porni Usermin?
 acl_bootup=Se poate configura începând cu momentul de pornire?
 acl_ecannot=Nu aveți voie să utilizați această pagină
+
 clone_err=Modulul de clonare nu a reușit
 clone_elink=link-ul nu a reușit : $1 
 clone_ecopy=nu a reușit să copieze configurația : $1 
 clone_desc=Clonă de $1 
+
 sessions_title=Sesiuni de autentificare curente
 sessions_desc=Conectările actuale ale sesiunii Usermin sunt enumerate mai jos. Pentru a anula o sesiune existentă și a forța utilizatorul să se autentifice din nou, faceți clic pe ID-ul sesiunii sale.
 sessions_id=Sesiune ID
@@ -404,12 +435,15 @@ sessions_login=Autentificat la
 sessions_none=În prezent, niciun utilizator nu este conectat la Usermin.
 sessions_switch=Treceți la utilizator Usermin:
 sessions_ok=Intrerupator
+
 referers_title=Referitori de încredere
 referers_desc=Această pagină vă permite să configurați asistența de verificare a referitorului Usermin, care este folosită pentru a preveni link-urile dăunătoare de pe alte site-uri web care păcălesc browserele utilizatorilor dvs. să facă lucruri periculoase cu Usermin. Cu toate acestea, dacă aveți link-uri către Usermin de pe site-urile proprii despre care nu doriți să fiți avertizați, ar trebui să adăugați aceste site-uri în lista de mai jos.
+
 anon_title=Acces la modul anonim
 anon_desc=Această pagină vă permite să acordați acces la modulele și căile Usermin selectate, fără ca clienții să fie nevoiți să se autentifice. Pentru fiecare cale a modulului pe care o introduceți mai jos (cum ar fi / comenzi sau / schimbare) trebuie să introduceți și numele unui utilizator Unix ale cărui permisiuni vor fi utilizate pentru accesul la modul.
 anon_user=Utilizator Unix
 anon_euser=Utilizator Unix lipsă sau nevalid pentru calea URL „$1”
+
 logout_title=Timpuri de deconectare automată
 logout_desc=Această pagină poate fi utilizată pentru a configura diferite timpi de deconectare a inactivității pentru diferiți utilizatori Usermin. Timeout-ul trebuie să fie introdus în câteva minute, iar un interval de timp zero înseamnă că sesiunile pentru utilizatorii potriviți nu vor fi deconectate automat.
 logout_type=Tip
@@ -424,6 +458,7 @@ logout_egroup=Grup lipsit sau nevalid din rândul $1
 logout_efile=Fișier lipsă sau inexistent în rândul $1 
 logout_etime=Lipsește sau este nevalid un interval de timp din rândul $1 
 logout_ecannot=Nu aveți voie să configurați orele de deconectare
+
 dav_title=Server DAV
 dav_header=Opțiuni server DAV
 dav_path=DAV activat?
@@ -444,16 +479,22 @@ dav_users=Utilizatori care pot utiliza DAV
 dav_users1=Toți utilizatorii
 dav_users0=Utilizatori și grupuri enumerate mai jos ..
 dav_eusers=Nu a fost introdus niciun utilizator
+
 syslog_errorlog=Jurnal de eroare Usermin
+
 descs_title=Titluri modul
 descs_info=Această pagină vă permite să specificați titluri alternative pentru modulele Usermin, pentru a trece peste descrierile lor standard.
+
 advanced_title=Opțiuni avansate
 advanced_pass=Pune la dispoziție parola pentru programele Usermin? <br><font size=-1> (Nu funcționează când autentificarea sesiunii este activată) </font>
+
 blocked_title=Gazde și Utilizatori Blocați
 blocked_none=În prezent, nicio gazdă sau utilizator nu este blocată de Usermin.
 blocked_user=Usermin user
 blocked_cleardesc=Faceți clic pe acest buton pentru a șterge toate blocurile de gazdă și de utilizator curente, repornind procesul serverului Usermin.
+
 mobile_title=Opțiuni dispozitiv mobil
+
 copycert_err=Eroare la copierea setărilor SSL de pe Webmin
 copycert_essl=SSL nu este activat
 copycert_ekeyfile=Nu este setat niciun fișier cu cheie privată în Webmin

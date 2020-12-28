@@ -43,8 +43,10 @@ index_natnone=ネットワークアドレス変換規則はまだ定義されて
 index_nataction=NATモード
 index_natfrom=一致するパケット
 index_natto=翻訳
+
 dir_in=着信
 dir_out=発信
+
 action_pass=<font color=＃00aa00>パス</font>
 action_block=<font color=＃ff0000>ブロック</font>
 action_skip=スキップ
@@ -57,6 +59,7 @@ action_map=マッピング
 action_rdr=リダイレクト
 action_bimap=双方向マッピング
 action_map-block=ブロックマッピング
+
 laction_pass=<font color=＃00aa00>パスパケット</font>
 laction_block=<font color=＃ff0000>ICMPコード付きのブロックパケット</font>
 laction_log=レベルでのログパケット
@@ -65,6 +68,7 @@ laction_skip=次のルールをスキップ
 laction_auth=ユーザースペース認証
 laction_preauth=以前の承認を確認する
 laction_call=カーネル関数を呼び出す
+
 edit_title1=ルールを作成
 edit_title2=ルールを編集
 edit_header1=ルールアクション
@@ -130,6 +134,7 @@ edit_icmp=ICMPタイプ
 edit_icmpany=&lt;任意のタイプ&gt;
 edit_icmpcode=とコード
 edit_codeany=&lt;任意のコード&gt;
+
 save_err=ルールを保存できませんでした
 save_ehostfrom=ソースホスト名が欠落しているか無効です
 save_ehostto=宛先ホスト名が欠落しているか無効です
@@ -158,11 +163,13 @@ save_eto=送信するインターフェイスがないか無効です
 save_etoip=送信するIPアドレスが無効です
 save_ereplyto=返信用のインターフェースが見つからないか無効です
 save_ereplytoip=返信するIPアドレスが無効です
+
 apply_err=構成を適用できませんでした
 apply_remote=$1からのエラー： $2
 unapply_err=設定を元に戻せませんでした
 unapply_ein=入力ルールを取得できませんでした
 unapply_eout=出力ルールの取得に失敗しました
+
 desc_if=$1の場合
 desc_and=そして
 desc_always=常に
@@ -196,6 +203,7 @@ desc_rdr=IPアドレス $1ポート $2
 desc_dport1=ポートは $1です
 desc_dport2=ポートは $1と $2の間です
 desc_nattoiface=インターフェースアドレス
+
 log_create_rule=$1ルールを作成しました
 log_delete_rule=$1ルールを削除しました
 log_modify_rule=変更された $1ルール
@@ -224,6 +232,7 @@ log_add_host=クラスタサーバー $1を追加しました
 log_add_group=グループ $1からクラスターサーバーを追加しました
 log_delete_host=クラスターサーバー $1を削除しました
 log_delete_group=$1クラスターサーバーを削除しました
+
 cluster_title=クラスターファイアウォールサーバー
 cluster_none=ファイアウォールクラスターにサーバーがまだ追加されていません。
 cluster_host=ホスト名
@@ -234,6 +243,7 @@ cluster_gadd=グループにサーバーを追加
 cluster_need=ここで管理するには、Webmin Servers Indexモジュールでログインとパスワードを使用してサーバーを追加する必要があります。
 cluster_return=クラスタサーバー
 cluster_delete=削除選択
+
 add_title=サーバーを追加する
 add_msg=$1を追加します ..
 add_gmsg=グループ $1にサーバーを追加します ..
@@ -242,6 +252,7 @@ add_gerr=グループを追加できませんでした
 add_echeck=サーバー $1にはIPFilterファイアウォールモジュールがありません
 add_emissing=サーバー $1にはファイアウォールコマンド $2がありません
 add_ok=$1を追加し、 $2のアクティブなファイアウォールルールを追加しました。
+
 nat_title1=NATルールを作成する
 nat_title2=NATルールを編集
 nat_action=NATモード
@@ -300,4 +311,5 @@ nat_edport2=元のポートが見つからないか無効です
 net_erdrip=「$1」は有効な宛先IPアドレスではありません
 nat_erdrips=宛先IPが入力されていません
 nat_erdrport=宛先ポートが欠落しているか無効です
+
 boot_esmf=SMFサービス $1は存在しないか、既知の状態ではありません

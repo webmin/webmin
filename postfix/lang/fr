@@ -1,5 +1,6 @@
 index_title=Configuration de Postfix
 index_epath=Le programme de contrôle de Postfix $1 n'est pas installé sur votre système. Peut-être que la <a href='$2'>configuration du module</a> est incorrecte, ou bien Postfix n'est pas installé.
+
 internal_error=Erreur interne
 index_econfig=Le programme de configuration de Postfix $1 n'existe pas. Peut-être que la <a href='$2'>configuration du module</a> est incorrecte.
 index_stop=Arrêter Postfix
@@ -7,8 +8,10 @@ index_start=Démarrer Postfix
 index_stopmsg=Cliquez sur ce bouton pour arrêter le serveur de courriers électroniques Postfix. Ceci interrompra la livraison du courrier aux utilisateurs, et interrompra aussi l'envoi de courrier.
 index_startmsg=Cliquez sur ce bouton pour démarrer le serveur de courriers électroniques Postfix. Ceci permettra la livraison du courrier aux utilisateurs, et permettra aussi l'envoi de courrier.
 opts_err=Echec de la sauvegarde des options
+
 check_error=Erreur pendant la vérification de la configuration actuelle de Postfix. Veuillez résoudre manuellement ce problème.
 check_manual=Editer manuellement le fichier de configuration de Postfix
+
 address_rewriting_title=Réécriture et masquage d'adresses
 address_rewriting_ecannot=Vous n'êtes pas autorisé à éditer le masquage d'adresses
 aliases_title=Alias
@@ -29,7 +32,9 @@ aliases_type1=Adresse $1
 aliases_type3=Fichier $1
 aliases_type4=Programme $1
 aliases_none=Aucun
+
 postfinger_title=Contrôle de la configuration
+
 aform_type0=Aucun
 aform_type1=Courriel
 aform_type3=Ecrire dans le le fichier
@@ -40,18 +45,23 @@ aform_enabled=Activé?
 aform_afile=Edition..
 aform_return=alias
 aform_cmt=Description
+
 asave_err=Echec de sauvegarde des alias
 asave_etype1='$1' n'est pas une adresse de courriel valide
 asave_etype3='$1' n'est pas un nom de fichier valide
+
 afile_title=Edition du Fichier d'Adresses
 afile_efile=Vous n'êtes pas autorisés à éditer $1
 afile_undo=Révoquer les modifications
+
 ffile_efile=Vous n'êtes pas autorisés à éditer $1.
+
 general_title=Options Générales
 general_title_sensible=Options les plus courantes
 general_title_others=Autres options
 general_ecannot=Vous n'êtes pas autorisé à éditer les options générales
 what_is_it=Qu'est-ce que c'est ?
+
 opts_default=Défaut
 opts_none=Aucun
 opts_relayhost=Envoyer le courrier sortant via la machine
@@ -68,9 +78,11 @@ opts_mail_owner=Propriétaire des courriers
 opts_default_privs=Droits par défaut du programme de livraison du courrier
 opts_inet_interfaces=Interfaces réseau pour la réception du courrier
 opts_all_interfaces=Toutes
+
 opts_local_recipient_maps=Rejeter les utilisateurs inconnus
 opts_no=Non
 opts_save=Sauvegarder et Appliquer
+
 opts_allow_percent_hack=Réécrire "utilisateur%domaine" en "utilisateur@domaine"
 opts_append_at_myorigin=Réécrire "utilisateur" en "utilisateur@$mydomain"
 opts_append_dot_mydomain=Réécrire "utilisateur@machine" en "utilisateur@machine.$mydomain"
@@ -80,13 +92,17 @@ opts_swap_bangpath=Réécrire "site!utilisateur" en "utilisateur@site"
 opts_masquerade_domains=Masquage d'adresses
 opts_masquerade_exceptions=Exceptions au masquage
 index_return=Configuration de Postfix
+
 opts_alias_maps=Bases de données d'alias utilisées par le livreur de courrier
 opts_alias_database=Base de données d'alias créée par Postfix
 aliases_warning=Attention: <ul><li>lorsque le premier champ est non-vide, la commande par défaut de Postfix pour générer les alias est utilisée afin de créer les bases de données ; <li>sinon, la commande de compatibilité avec Sendmail, "newaliases", est utilisée afin de générer les bases de données du deuxième champ.</ul>
+
 aliases_name=Nom
 aliases_value=Alias en...
+
 new_alias=Créer un nouvel alias
 new_aliasmsg=CLiquez sur ce bouton pour créer un nouvel alias
+
 local_delivery_ecannot=Vous n'êtes pas autorisé à éditer les options de livraison de courrier
 local_delivery_title=Livraison du courrier
 opts_local_transport=Nom du transport pour la livraison du courrier
@@ -112,6 +128,7 @@ opts_local_destination_recipient_limit=Nombre max de destinataires par livraison
 opts_local_destination_recipient_limit_default=Défaut
 opts_prepend_delivered_header=Ajouter <tt>Delivered-To:</tt> lorsque...
 opts_prepend_delivered_header_default=Défaut
+
 resource_title=Contrôle des ressources
 resource_ecannot=Vous n'êtes pas autorisé à éditer les ressources
 opts_bounce_size_limit=Taille max des messages rebond (bounced)
@@ -130,6 +147,7 @@ opts_qmgr_message_recipient_limit=Nombre max de destinaires en mémoire
 opts_queue_minfree=Espace libre min sur le système de fichier de la file
 opts_stale_lock_time=Durée max après laquelle les verrouillages inutiles sont libérés
 opts_transport_retry_time=Durée en seconde entre les tentatives de contacter un MDT
+
 opts_always_bcc=Adresse qui reçoit un bcc de chaque message
 opts_always_bcc_none=Aucune
 opts_daemon_timeout=Timeout sur le traitement des requêtes
@@ -162,6 +180,7 @@ opts_relocated_maps_default=Défaut (désactivé)
 opts_sun_mailtool_compatibility=Désactiver le verrouillage noyau sur les boîtes aux lettres
 opts_trigger_timeout=Durée max d'envoi de déclenchement de démon
 opts_delay_warning_time=Durée en heures avant d'envoyer un avertissement pour non-livraison
+
 smtpd_title=Options du serveur SMTP
 smtpd_ecannot=Vous n'êtes pas autorisé à éditer les options du serveur SMTP
 opts_disable_vrfy_command=Désactiver la commande SMTP VRFY
@@ -188,6 +207,7 @@ opts_relay_domains_reject_code=Réponse du serveur sur relai interdit
 opts_unknown_address_reject_code=Réponse du serveur sur rejet pour domaine inconnu
 opts_unknown_client_reject_code=Réponse du serveur sur rejet pour client inconnu
 opts_unknown_hostname_reject_code=Réponse du serveur sur rejet pour nom de machine inconnu
+
 smtp_title=Options du client SMTP
 smtp_ecannot=Vous n'êtes pas autorisé à éditer les options du client SMTP
 opts_best_mx_transport=Que faire lorsque listé comme meilleur MX
@@ -206,6 +226,7 @@ opts_smtp_data_init_timeout=Timeout pour l'attente de la réponse à DATA
 opts_smtp_data_xfer_timeout=Timeout pour l'attente de la réponse au contenu du message
 opts_smtp_data_done_timeout=Timeout pour l'attente de la réponse à "."
 opts_smtp_quit_timeout=Timeout pour l'attente de la réponse à QUIT
+
 rate_title=Cadences de livraison
 rate_ecannot=Vous n'êtes pas autorisé à éditer les cadences de livraison
 opts_default_destination_concurrency_limit=Nombre max de livraisons parallèles pour la même destination
@@ -216,17 +237,20 @@ opts_maximal_queue_lifetime=Durée max (jours) dans la file avant que le message
 opts_minimal_backoff_time=Durée min (secs) entre les tentatives de livrer un message reporté
 opts_queue_run_delay=Durée (secs) entre les examens de la file des messages reportés
 opts_defer_transports=Transports qui ne devraient pas être livrés
+
 debug_title=Débogage
 debug_ecannot=Vous n'êtes pas autorisé à éditer les options de débogage
 opts_debug_peer_list=Liste des domaines/réseaux pour lesquels le log étendu (verbose) est activé
 opts_debug_peer_level=Niveau de log lorsque les domaines/réseaux sont dans la liste ci-dessus
 debug_version=Module postfix pour Webmin - version $1
+
 ldap_title=Recherches LDAP
 ldap_ecannot=Vous n'êtes pas autorisé à éditer les options de recherche LDAP
 ldap_non_existent=Il semble que LDAP n'existe pas dans votre installation de Postfix
 opts_ldap_lookup_timeout=Timeout pour les recherche dans les bases de données LDAP
 opts_ldap_search_base=Base de données LDAP à examiner
 opts_ldap_server_host=Nom du serveur LDAP
+
 canonical_title=Correspondances canoniques
 canonical_ecannot=Vous n'êtes pas autorisé à éditer les options de correspondances canoniques
 opts_canonical_maps=Tables de correspondances canoniques
@@ -237,6 +261,7 @@ edit_recipient_canonical_maps=Editer les tables canoniques destinataire
 edit_sender_canonical_maps=Editer les tables canoniques émetteur
 edit_canonical_maps_general=Cliquez sur un de ces boutons pour édtier les tables de correspondances canoniques
 canonical_edit_title=Editer une correspondance
+
 mapping_name=Nom
 mapping_value=Correspond à...
 new_mapping=Nouvelle entrée
@@ -251,29 +276,38 @@ map_delete_create=Impossible d'effacer une correspondance que vous êtes en trai
 maps_internal_error=Correspondances: erreur interne
 maps_cant_write=Impossible d'écrire
 help_map_format=Quel format dois-je utiliser ?
+
 virtual_title=Domaines virtuels
 virtual_ecannot=Vous n'êtes pas autorisé à éditer la configuration des domaines virtuels
 opts_virtual_maps=Tables de correspondances de domaines
 virtual_return=domaines virtuels
+
 transport_title=Correspondances de transport
 transport_ecannot=Vous n'êtes pas autorisé à éditer les correspondance de transport
 opts_transport_maps=Tables de correspondances de transport
+
 relocated_title=Correspondances de relogement
 relocated_ecannot=Vous n'êtes pas autorisé à éditer les correspondances de relogement
 opts_relocated_maps=Tables de correspondances de relogement
+
 map_click=Cliquez sur une correspondance pour éditer ses propriétés:
 no_map=(Aucune table n'est définie. Définissez-en une d'abord, ensuite vous pourrez l'éditer)
 no_map2=Aucune table n'est définie. Définissez-en une d'abord, ensuite vous pourrez l'éditer.
+
 stop_efailed=Echec de l'arrêt de postfix
 stop_ecannot=Vous n'êtes pas autorisé à arrêter postfix
+
 start_ecannot=Vous n'êtes pas autorisés à démarrer Postif
+
 reload_efailed=Echec du rechargement de postfix
 reload_ecannot=Vous n'êtes pas autorisé à recharger postfix
+
 query_get_efailed=Echec de la requête sur la configuration postfix pour obtenir la valeur actuelle du paramètre $1: <tt>$2</tt>
 query_set_efailed=Echec de la requête sur la configuration postfix pour mettre la valeur du paramètre $1 à $3: <tt>$3</tt>
 regenerate_ecannot=Vous n'avez pas le droit de régénérer les alias
 regenerate_alias_efailed=Echec de la régénération des alias: <tt>$1</tt>
 regenerate_table_efailed=Echec de la régénération de la table $1:<tt>$2</tt>
+
 acl_resource=Peut éditer les ressources ?
 acl_aliases=Peut éditer les alias ?
 acl_aliases_options=Peut éditer les options d'alias ?
@@ -293,7 +327,9 @@ acl_ldap=Peut éditer les recherches LDAP ?
 acl_startstop=Peut démarrer et arrêter postfix
 acl_postfinger=Peut vérifier les configuration de postfix
 acl_manual=Peut éditer le fichier de configuration
+
 boxes_title=Boîtes aux lettres des usagers
+
 view_title=Lire le Courriel
 view_desc=Message $1 dans $1
 view_desc2=Message $1 pour l'utilisateur $2
@@ -307,20 +343,27 @@ view_mark=Marqué le message comme:
 view_mark0=Non lu
 view_mark1=Lu
 view_sub=Courriel Attaché
+
 send_err=Echec d'envois du courriel
 send_title=Courriel envoyé
 send_ok=Courriel envoyé avec succès à $1
 send_esmtp=La commande SMTP $1 a échoué ! $2
 send_eperms2=Vous n'êtes pas autorisés à envoyer le ficher $1
+
 search_none=Auncun message trouvé.
+
 mailq_title=Queue de messages
 mailq_none=Aucun message ne se trouve actuellement dans la queue d'envoi
+
 after_err=Erreur de configuration de postfix : $1
+
 cmanual_ecannot=Vous n'êtes pas autorisés à éditer le fichier de configuration de Postix
+
 client_title=Restrictions du Client SMTP
 client_ecannot=Vous n'êtes pas autorisés à éditer les restrictions du client SMTP
 client_other=Autres restrictions :
 client_return=Restrictions du client SMTP
+
 chooser_mysql=Base de données MySQL
 chooser_muser=Identifiant de la base de données
 chooser_mpassword=Mot de passe de la base de données

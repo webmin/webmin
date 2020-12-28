@@ -8,6 +8,7 @@ index_none=定義されたブートオプションはありません。GRUB を�
 index_efile=GRUB メニュー ファイル $1 がシステムにありませんでした。GRUB がインストールされていないか、<a href='$2'>モジュール設定</a>が不正な可能性があります。
 index_epath=GRUB 実行ファイル $1がシステムにありませんでした。GRUB がインストールされていないか、<a href='$2'>モジュール設定</a> が不正な可能性があります。
 index_return=オプション リスト
+
 title_add=ブートオプションの追加
 title_edit=ブートオプションの編集
 title_header=ブートメニューオプションの詳細
@@ -36,6 +37,7 @@ title_echain=chainloader ファイルがないか無効です
 title_edev=root パーティションデバイス $1 がサポートされていません
 title_einitrd=初期 RAMDISK ファイル名が指定されていません
 title_lock=パスワードロックされていますか？
+
 global_title=グローバル オプション
 global_header=グローバルブートメニュー オプション
 global_default=デフォルト ブート オプション
@@ -56,12 +58,14 @@ global_edev=インストール ディスク/パーティション $1 はサポ�
 global_eother=ディスク/パーティションがないか無効です
 global_epassword=ブートパスワードが指定されていないか不正です
 global_epasswordfile=オルタネイトメニューファイル名が指定されていません
+
 install_title=GRUB のインストール
 install_err=GRUB をインストールできませんでした
 install_efind=メニューファイルがありませんでした
 install_desc=GRUB を $1 にコマンド $2 と $3 でインストールしています ..
 install_ok=.. インストールを完了しました。
 install_failed=.. インストールに失敗しました。
+
 log_create_title=起動オプション $1 が作成されました
 log_delete_title=起動オプション $1 が削除されました
 log_modify_title=起動オプション $1 が変更されました

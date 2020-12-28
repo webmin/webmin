@@ -24,6 +24,7 @@ index_showing=$1 과 (와) 일치하는 데이터베이스 표시
 index_emsg=전체 MySQL 오류 메시지는 다음과 같습니다. $1 
 index_jump=또는 데이터베이스를 편집하십시오.
 index_jumpok=열다
+
 dbase_header=데이터베이스 테이블, 인덱스 및 뷰
 dbase_empty=빈 데이터베이스
 dbase_none2=일치하는 테이블이 없습니다.
@@ -42,9 +43,11 @@ dbase_type=유형
 dbase_typetable=1 번 테이블)
 dbase_typeindex=인덱스
 dbase_typeview=전망
+
 ddrop_rusure2=$1 데이터베이스를 비우시겠습니까? $3 개의 데이터 행을 포함하는 $2 개의 테이블이 삭제됩니다.
 ddrop_empty=모든 테이블 삭제
 ddrop_empty2=모든 테이블 삭제
+
 ddrops_err=데이터베이스를 삭제하지 못했습니다
 ddrops_title=데이터베이스 삭제
 ddrops_rusure=선택한 $1 개의 데이터베이스를 삭제 하시겠습니까? $3 개의 데이터 행을 포함하는 $2 개의 테이블이 삭제됩니다.
@@ -53,6 +56,7 @@ ddrops_mysql=마스터 데이터베이스가 선택되었으므로 삭제하면 
 ddrops_ok=데이터베이스 삭제
 ddrops_enone=선택된 데이터베이스가 없습니다
 ddrops_ecannotdb=$1 데이터베이스를 삭제할 수 없습니다
+
 table_csv=CSV로 내보내기
 table_index=인덱스 생성
 table_copy2=데이터베이스에서 필드 복사
@@ -70,12 +74,14 @@ table_nextra=추가 기여
 table_eautokey=자동 비 증분 필드는 기본 키 여야합니다.
 table_eauto=하나의 필드 만 자동 증분 가능
 table_delete=선택된 필드 삭제
+
 tdrops_enone=삭제할 테이블이 없습니다.
 tdrops_err=테이블을 삭제하지 못했습니다.
 tdrops_ok=하락
 tdrops_title=선택된 드롭
 tdrops_rusure=$2 데이터베이스에서 선택한 테이블 $1 을 (를) 삭제 하시겠습니까? $3 개의 데이터 행이 삭제됩니다.
 tdrops_rusure2=$2 데이터베이스에서 선택한 테이블 $1 을 (를) 삭제 하시겠습니까?
+
 field_typewarn=경고! 유형을 변경하면 데이터가 손실 될 수 있습니다
 field_current=현재 시간
 field_defval=값
@@ -85,6 +91,7 @@ field_defempty=빈 문자열
 field_defleave=변경하지 마십시오
 field_dmode0=없음
 field_dmode1=없는
+
 view_refresh=새롭게 하다
 view_search2=필드 $2 $3 $1 인 행 검색
 view_match0=포함
@@ -105,6 +112,7 @@ view_keep=그대로 두십시오
 view_set=파일 내용으로 설정합니다.
 view_adv=고급 검색
 view_sqlrun=SQL 쿼리에 의해 생성 된 결과  : $1 
+
 users_sync=아래 옵션은 Webmin과 MySQL 사용자를 통해 생성 된 Unix 사용자 간의 동기화를 구성합니다.
 users_syncwhen=동기화시기
 users_sync_create=유닉스 사용자가 추가되면 새로운 MySQL 사용자 추가
@@ -121,6 +129,7 @@ users_ssl=증명서
 users_dtitle=사용자 권한 삭제
 users_drusure=선택한 $1 개의 MySQL 사용자 권한을 삭제 하시겠습니까?
 users_dok=사용자 삭제
+
 user_vwarning=경고 :이 MySQL 사용자는 Virtualmin 도메인 $1 의 관리 로그인입니다. 여기에서 설정을 변경하면 Virtualmin에서 오류가 발생할 수 있습니다.
 user_locked=잠김
 user_priv_select=테이블 데이터 선택
@@ -169,24 +178,29 @@ user_emax_user_connections=최대 동시 로그인 수는 숫자 여야합니다
 user_emax_connections=시간당 최대 연결 수는 숫자 여야합니다
 user_emax_updates=시간당 최대 업데이트는 숫자 여야합니다
 user_emax_questions=시간당 최대 쿼리 수는 숫자 여야합니다
+
 dbs_derr=데이터베이스 권한을 삭제하지 못했습니다.
 dbs_enone=선택된 데이터베이스가 없습니다
 dbs_dtitle=데이터베이스 권한 삭제
 dbs_drusure=선택한 $1 개의 MySQL 데이터베이스 권한을 삭제 하시겠습니까?
 dbs_dok=권한 삭제
+
 hosts_derr=호스트 권한을 삭제하지 못했습니다.
 hosts_enone=선택된 호스트가 없습니다
 hosts_dtitle=호스트 권한 삭제
 hosts_drusure=선택한 $1 개의 MySQL 호스트 권한을 삭제 하시겠습니까?
 hosts_dok=권한 삭제
 hosts_return=호스트 권한
+
 host_sel=선택된
 host_otherdb=일치하는 패턴
+
 newdb_tname=명명 된
 newdb_charset=문자 세트
 newdb_collation=데이터 정렬 순서
 newdb_str=아래 필드로
 newdb_ecannot2=더 이상 데이터베이스를 만들 수 없습니다
+
 exec_old=또는 이전 SQL 명령을 선택하십시오.
 exec_clear=명확한 역사
 exec_header2a=또한 SQL 명령 파일 인 MySQL 백업을 복원하는 데에도 사용할 수 있습니다.
@@ -209,27 +223,34 @@ exec_iheader=텍스트 파일 가져 오기 옵션
 exec_created=$1 개의 테이블이 생성되었습니다.
 exec_inserted=$1 개의 레코드가 삽입되었습니다.
 exec_cs=데이터의 문자 세트
+
 tprivs_derr=테이블 권한을 삭제하지 못했습니다.
 tprivs_enone=선택된 테이블이 없습니다
 tprivs_dtitle=테이블 권한 삭제
 tprivs_drusure=선택한 $1 개의 MySQL 테이블 권한을 삭제 하시겠습니까?
 tprivs_dok=권한 삭제
+
 tpriv_edb=데이터베이스 이름이 없거나 유효하지 않습니다
+
 cprivs_add2=새로운 권한 추가  :
 cprivs_derr=필드 권한을 삭제하지 못했습니다.
 cprivs_enone=선택된 필드가 없습니다
 cprivs_dtitle=열 권한 삭제
 cprivs_drusure=선택한 $1 개의 MySQL 열 권한을 삭제 하시겠습니까?
 cprivs_dok=권한 삭제
+
 cpriv_edb=데이터베이스 이름이 없거나 유효하지 않습니다
+
 eparse=데이터베이스의 데이터 특성으로 인해 Webmin이 $1 명령의 출력을 구문 분석 할 수 없습니다. 이 문제를 해결하려면 $2 및 $3 Perl 모듈을 설치해야합니다.
 edenied=이 MySQL 데이터베이스에 액세스 할 수 없습니다
+
 acl_max=예, 최대
 acl_edonly=테이블 데이터 만 편집 할 수 있습니까?
 acl_bnone=백업 금지
 acl_indexes=인덱스를보고 관리 할 수 있습니까?
 acl_views=보기를보고 관리 할 수 있습니까?
 acl_files=로컬 파일에서 SQL을 실행할 수 있습니까?
+
 log_cnf=변경된 MySQL 서버 구성
 log_kill=$1 데이터베이스 연결이 종료되었습니다
 log_vars=$1 시스템 변수 수정
@@ -253,6 +274,7 @@ log_importfile=파일 $1 에서 가져온 데이터
 log_set=$1 MySQL 변수 변경
 log_root=변경된 관리 비밀번호
 log_manual=수동으로 편집 한 구성 파일
+
 backup_title2=모든 데이터베이스 백업
 backup_desc3=이 양식을 사용하면 모든 데이터베이스를 SQL 문 파일로 백업 할 수 있습니다. 백업을 복원하기 위해 SQL 실행 양식을 사용하여 파일 중 하나에서 명령을 실행할 수 있습니다.
 backup_desc2=백업은 즉시 또는 선택한 일정에 따라 자동으로 수행 할 수 있습니다.
@@ -317,15 +339,18 @@ backup_bodyspace=파일 시스템 크기 : $1 여유 공간  : $2
 backup_bodyall=모두
 backup_edownloadall=단일 데이터베이스 백업 만 다운로드 할 수 있습니다
 backup_edownloadsave=예약 된 백업에는 다운로드 모드를 사용할 수 없습니다
+
 import_title=데이터 가져 오기
 import_uploadout=업로드 된 파일에서 데이터 가져 오기 ..
 import_fileout=$1 파일에서 데이터를 가져 오는 중입니다.
 import_eupload=업로드 된 가져 오기 파일이 없습니다.
 import_efile=가져 오기 파일 이름이 없습니다.
+
 adv_title=고급 검색
 adv_and=모든 기준과 일치하는 레코드 찾기 ..
 adv_or=모든 기준과 일치하는 레코드 찾기 ..
 adv_ok=지금 검색
+
 csv_title=CSV 파일 내보내기
 csv_header=CSV 내보내기 옵션
 csv_dest=수출 목적지
@@ -346,6 +371,7 @@ csv_done=$1 (으)로 CSV 내보내기가 완료되었습니다. 결과 파일 �
 csv_headers=CSV에 열 이름을 포함 하시겠습니까?
 csv_cols=CSV에 포함 할 열
 csv_ecols=선택된 열이 없습니다.
+
 cnf_title=MySQL 서버 구성
 cnf_efile=시스템에서 MySQL 구성 파일 $1 을 (를) 찾을 수 없습니다. 올바른 경로를 사용하기 위해 <a href='$2'>모듈 구성</a>을 조정해야 할 수도 있습니다.
 cnf_header=MySQL 서버 옵션
@@ -387,11 +413,13 @@ cnf_restart=MySQL 저장 및 재시작
 cnf_fpt=각 InnoDB 테이블마다 별도의 파일이 있습니까?
 cnf_ilt=InnoDB 잠금 시간 초과 (초)
 cnf_eilt=InnoDB 잠금 시간 종료는 정수 여야합니다
+
 manual_title=구성 파일 편집
 manual_file=구성 파일 편집 :
 manual_ok=확인
 manual_efile=잘못된 구성 파일!
 manual_err=구성 파일을 저장하지 못했습니다
+
 index_title1=인덱스 생성
 index_header1=인덱스 옵션
 index_name=색인 이름
@@ -407,12 +435,15 @@ index_ecols=선택된 필드가 없습니다
 index_title2=색인 편집
 index_header=데이터베이스 $2 의 인덱스 $1 
 index_ecannot=색인을 관리 할 수 없습니다
+
 syslog_desc=MySQL 오류 메시지
 syslog_desc2=MySQL 오류 메시지
 syslog_logdesc=MySQL 쿼리
+
 fdrop_err=필드를 삭제하지 못했습니다
 fdrop_enone=선택된 사항 없음
 fdrop_eall=테이블에서 모든 필드를 삭제할 수는 없습니다!
+
 view_title1=뷰 작성
 view_title2=뷰 편집
 view_header1=세부 정보보기
@@ -438,6 +469,7 @@ view_cascaded=기본 견해
 view_local=이보기 만
 view_nocheck=없음
 view_ecannot=뷰를 관리 할 수 없습니다
+
 procs_title=데이터베이스 연결
 procs_id=신분증
 procs_user=사용자 이름
@@ -449,9 +481,11 @@ procs_query=쿼리 실행
 procs_kill=선택된 연결 종료
 procs_ecannot=데이터베이스 연결을 볼 수 없습니다
 procs_none=현재 다른 데이터베이스 클라이언트 연결이 없습니다.
+
 kill_err=데이터베이스 연결을 종료하지 못했습니다
 kill_ecannot=데이터베이스 연결을 관리 할 수 없습니다
 kill_enone=선택된 사항 없음
+
 vars_title=MySQL 시스템 변수
 vars_desc=경고-이 페이지에서 설정 한 변수는 MySQL을 다시 시작할 때 기본값으로 재설정됩니다. <a href='$1'>MySQL Server 구성</a> 페이지에서 영구적으로 설정해야합니다.
 vars_ecannot=시스템 변수를 편집 할 수 없습니다
@@ -462,6 +496,7 @@ vars_search=일치하는 변수 표시 :
 vars_ok=검색
 vars_none2=검색어와 일치하는 시스템 변수가 없습니다.
 vars_none=시스템 변수가 없습니다!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
@@ -473,7 +508,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=주요 옵션
 compat_no_table_options=테이블 옵션
 compat_no_field_options=필드 옵션
+
 config_echarset=문자 세트가 없거나 잘못 표시됨
+
 root_title=관리 비밀번호 변경
 root_header=새로운 관리 비밀번호
 root_user=관리 로그인
@@ -486,6 +523,7 @@ root_epass1=새 비밀번호를 입력하지 않았습니다
 root_epass2=비밀번호가 일치하지 않습니다
 root_none=비밀번호가 없습니다!
 root_auto=자동 (일반적으로 <tt>root</tt>)
+
 mysqlpass_err=MySQL 안전 모드
 mysqlpass_esafecmd=인증이 비활성화 된 상태에서 MySQL을 시작하는 데 필요한 $1 명령을 찾을 수 없습니다.
 mysqlpass_eshutdown=종료 실패  : $1 

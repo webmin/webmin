@@ -16,8 +16,10 @@ index_type=Tipul cheii SSH:
 index_rsa1=RSA (pentru SSH v1)
 index_rsa=RSA (pentru SSH v2)
 index_dsa=DSA (pentru SSH v2)
+
 bits=biți
 secs=secunde
+
 users_title=Autentificare
 users_header=Opțiuni de autentificare și autentificare
 users_expire=Cu câteva zile înainte de expirarea contului pentru a avertiza utilizatorul
@@ -54,6 +56,7 @@ users_eauthkeys=Fișierul cu chei autorizate lipsă sau cu aspect nevalid
 users_maxauthtries=Încercări maxime de conectare pe conexiune
 users_emaxauthtries=Număr de încercări de autentificare lipsă sau ne-numerice pe conexiune
 users_chal=Utilizați autentificarea provocării-răspuns?
+
 net_title=Rețele
 net_header=Opțiuni de rețea
 net_port=Ascultă în port
@@ -91,6 +94,7 @@ net_eprots=Trebuie să selectați cel puțin un protocol
 net_eladdress=„$1” nu este o adresă validă pentru a fi ascultat
 net_elport=„$1” nu este un port valid pentru a fi ascultat
 net_elisten2=Nu au fost introduse adrese pentru a asculta
+
 access_title=Controlul accesului
 access_header=Opțiuni de control al accesului în rețea și autentificare
 access_allowu=Permiteți numai utilizatorii
@@ -108,6 +112,7 @@ access_eallowg=Niciun grup care să permită să fie introdus
 access_edenyg=Nu a intrat niciun grup de negat
 access_eallowh=Nicio gazdă care să permită intrarea
 access_edenyh=Nu a intrat nicio gazdă pentru a refuza
+
 misc_title=Opțiuni diverse
 misc_header=Alte opțiuni diverse ale serverului SSH
 misc_x11=Permiteți redirecționarea conexiunii X11?
@@ -131,14 +136,17 @@ misc_eumask=Lipsește sau este incorect un e-mail de 4 cifre
 misc_ebits=Dimensiunea cheii de server lipsă sau nevalidă
 misc_eregen=Interval de regenerare a cheii care lipsește sau este nevalid
 misc_epid=Lipsește calea fișierului PID
+
 start_err=Eșecul la pornirea serverului SSH
 apply_epid=Nu alearga
+
 hosts_title=Opțiuni gazdă client
 hosts_header=Gazde client SSH
 hosts_none=Nu au fost definite opțiuni de gazdă client. Toate conectările client SSH vor utiliza setările implicite.
 hosts_all=Toate gazdele
 hosts_add=Adăugați opțiuni pentru gazda clientului.
 hosts_return=lista gazdelor clientului
+
 host_create=Adăugați Opțiuni de gazdă
 host_edit=Editați Opțiunile gazdă
 host_header=Opțiuni de client pentru gazda SSH
@@ -194,6 +202,7 @@ host_eprots=Trebuie să selectați cel puțin un protocol
 host_proxy=Comanda proxy de conexiune
 host_proxy_def=Nici unul
 host_eproxy=Comanda proxy de conexiune care lipsește sau este nevalidă
+
 log_users=Opțiuni de autentificare modificate
 log_net=Opțiuni modificate de rețea
 log_access=Schimbarea controlului de acces
@@ -208,6 +217,7 @@ log_stop=Serverul SSH oprit
 log_start=A început serverul SSH
 log_apply=Configurație aplicată
 log_manual=Editarea manuală a fișierului de configurare $1
+
 sync_title=Configurare cheie SSH utilizator
 sync_desc=Această pagină vă permite să configurați configurarea automată a SSH pentru utilizatorii noi Unix creați pe sistemul dvs. Dacă este configurat, utilizatorii noi nu vor trebui să ruleze <tt>ssh-keygen</tt> înainte de a utiliza SSH.
 sync_create=Setare cheie SSH pentru noi utilizatori Unix?
@@ -216,9 +226,11 @@ sync_pass=Folosiți parola ca parolă-cheie?
 sync_gnupg=Setare cheie GNUPG pentru utilizatori noi Unix.
 sync_type=Tipul cheii
 sync_auto=&lt;Automatic&gt;
+
 keys_title=Cheile SSH gazdă
 keys_desc=Această pagină vă permite să vizualizați tastele SSH pentru această gazdă.
 keys_none=Nu am putut găsi nicio înregistrare HostKey în configurația SSHD.
+
 manual_title=Editați fișierele de configurare
 manual_ecannot=Nu aveți voie să editați fișierul de configurare al serverului SSH
 manual_ok=Editați | ×
@@ -226,5 +238,6 @@ manual_efile=Fișierul selectat nu face parte din configurația serverului SSH
 manual_file=Editați fișierul de configurare:
 manual_edata=Nu a intrat nimic!
 manual_err=Nu a reușit să salvați fișierul de configurare
+
 dknown_err=Nu a reușit să ștergi gazdele cunoscute
 dknown_enone=Nimic selectat

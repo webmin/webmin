@@ -16,6 +16,7 @@ index_loadname=ממוצעי עומס מעבד:
 index_loadnums=$1 (1 דק '), $2 (5 דקות), $3 (15 דקות)
 index_cpuname=סוג מעבד:
 index_inzone=באזור $1 
+
 pid=תעודת זהות
 owner=בעלים
 command=פקודה
@@ -27,6 +28,7 @@ nice=ברמה נחמדה
 stime=התחיל
 sclass=שיעור תזמון IO
 sprio=עדיפות ל- IO
+
 search_user=בבעלות
 search_match=התאמה
 search_cpupc=באמצעות יותר מ- $1% מעבד
@@ -43,6 +45,7 @@ search_sigkill=תהליכים להרוג
 search_port=באמצעות יציאה
 search_protocol=נוהל
 search_ip=באמצעות כתובת IP
+
 run_command=פקודה לרוץ
 run_submit=רוץ
 run_mode=מצב ריצה
@@ -56,6 +59,7 @@ run_ecannot=אינך רשאי להפעיל פקודות
 run_as=הפעל כמשתמש
 run_euser=שם משתמש חסר או לא חוקי
 run_euser2=אינך רשאי להפעיל פקודות כמשתמש שנבחר
+
 edit_title=עיבוד מידע
 edit_gone=תהליך זה אינו פועל עוד
 edit_sub=מעבדי משנה
@@ -75,12 +79,15 @@ edit_sigcont=קורות חיים
 edit_open=קבצים וחיבורים
 edit_trace=תהליך עקבות
 edit_return=פרטי תהליך
+
 kill_err=שליחת האות $1 לעיבוד $2 נכשלה
 kill_title=שלח אות
 kill_sent=נשלח
 kill_ecannot=אינך מורשה להרוג תהליכים
+
 renice_err=נכשל שינוי שם של תהליך $1 מחדש
 renice_ecannot=אינך מורשה לשנות מחדש תהליכים
+
 linux_pri=עדיפות
 linux_tty=TTY
 linux_status=סטטוס
@@ -91,25 +98,30 @@ linux_ruser=משתמש אמיתי
 linux_rgroup=קבוצה אמיתית
 linux_pgid=עבד את מזהה הקבוצה
 linux_stime=התחיל
+
 linuxstat_R=רץ
 linuxstat_S=ישן
 linuxstat_D=שינה עמוקה
 linuxstat_T=עצר
 linuxstat_Z=זומבי
+
 linux_real=זמן אמת
 linux_be=המאמץ הטוב ביותר
 linux_idle=סרק
+
 freebsd_ruser=משתמש אמיתי
 freebsd_rgroup=קבוצה אמיתית
 freebsd_tty=TTY
 freebsd_pgid=קבוצת תהליכים
 freebsd_stime=התחיל
 freebsd_lim=מגבלת זיכרון
+
 hpux_pri=עדיפות
 hpux_tty=TTY
 hpux_status=סטטוס
 hpux_wchan=מחכה ל
 hpux_stime=התחיל
+
 hpuxstat_0=לא קיים
 hpuxstat_S=ישן
 hpuxstat_W=מחכה
@@ -118,7 +130,9 @@ hpuxstat_I=ביניים
 hpuxstat_Z=זומבי
 hpuxstat_T=עצר
 hpuxstat_G=גדל
+
 macos_tty=TTY
+
 sysv_group=קבוצה
 sysv_ruser=משתמש אמיתי
 sysv_rgroup=קבוצה אמיתית
@@ -127,12 +141,14 @@ sysv_tty=TTY
 sysv_stime=התחיל
 sysv_task=מזהה משימה
 sysv_zone=שם אזור
+
 log_run=רץ פקודה "$1"
 log_kill=נשלח האות $1 לעיבוד $2 
 log_kills=שלח תהליכים של $1 ל- $2 
 log_kill_l=נשלח האות $1 לעיבוד $2 
 log_kills_l=נשלח אות $1 לתהליכים <br> $2 
 log_renice=העדיפות השתנתה של התהליך $2 ל- $1 
+
 acl_manage=ניהול תהליכים כמשתמש
 acl_manage_def=משתמש נוכחי Webmin
 acl_edit=האם יכולים להרוג ולשנות מחדש תהליכים?
@@ -142,11 +158,13 @@ acl_who=יכול לנהל תהליכים למשתמשים
 acl_who0=כל המשתמשים
 acl_who1=משתמש נוכחי Webmin
 acl_who2=משתמשים רשומים ..
+
 kill_kill=תהליך הריגה
 kill_term=לבטל, לסיים
 kill_hup=איתחול
 kill_stop=תפסיק
 kill_cont=המשך
+
 open_title=פתח קבצים וחיבורים
 open_proc=לתהליך $1 (PID $2)
 open_header1=קבצים פתוחים
@@ -170,6 +188,7 @@ open_blk=חסום מיוחד
 open_size=גודל הקובץ
 open_inode=אינוד
 open_file=נתיב
+
 trace_title=תהליך עקבות
 trace_start=החל מעקב אחר שיחות מערכת עבור $1 ..
 trace_doing=עקוב שיחות מערכת עבור $1  :
@@ -180,5 +199,7 @@ trace_syscalls=שיחות מערכת עקבות:
 trace_all=את כל
 trace_sel=רשום ..
 trace_change=שינוי
+
 windows_threads=האשכולות בתהליך
+
 syslog_dmesg=הודעות גרעין

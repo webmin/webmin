@@ -1,9 +1,11 @@
 net_lmtp=LMTP
+
 ssl_ca=Soubor certifikátů CA klienta SSL
 ssl_pass=Heslo pro soubor klíče
 ssl_prompt=Není potřeba
 ssl_eca=Chybějící nebo neexistující soubor certifikátů CA klienta
 ssl_epass=Nebylo zadáno žádné heslo souboru klíče SSL
+
 mail_index=Umístění souborů indexu
 mail_index0=Výchozí (v adresáři Maildir)
 mail_index1=Pouze v paměti
@@ -24,6 +26,7 @@ mail_eindexmode=Umístění souborů indexu nelze nastavit, když je umístění
 mail_econtrolmode=Umístění kontrolních souborů nelze nastavit, když je umístění souboru pošty detekováno automaticky
 mail_eindex=Chybějící nebo neplatná absolutní cesta k indexovým souborům
 mail_econtrol=Chybějící nebo neplatná absolutní cesta pro kontrolní soubory
+
 manual_editsel=Upravit konfigurační soubor Dovecot
 manual_efile=Vybraný konfigurační soubor není platný
 manual_ok=Upravit

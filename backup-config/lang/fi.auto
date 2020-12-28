@@ -20,6 +20,7 @@ index_nostrftime=Varoitus - jotkut varmuuskopiointityöt käyttävät % tiedosto
 index_tabsched=Ajoitetut varmuuskopiot
 index_tabbackup=Varmuuskopio nyt
 index_tabrestore=Palauta nyt
+
 edit_title1=Luo ajoitettu varmuuskopio
 edit_title2=Muokkaa ajoitettuja varmuuskopioita
 edit_header=Ajoitetut varmuuskopiointivaihtoehdot
@@ -44,9 +45,11 @@ edit_return=varmuuskopio
 edit_other=Muut luettelossa olevat tiedostot ..
 edit_pre=Pre-backup-komento
 edit_post=Varmuuskopioinnin jälkeinen komento
+
 save_err=Varmuuskopion tallentaminen epäonnistui
 save_emods=Ei moduuleja valittu
 save_ewebmin=Webmin- tai palvelinmääritystiedostoja ei valittu
+
 backup_mode0=Paikallinen tiedosto
 backup_mode1=FTP-palvelin
 backup_mode2=SSH-palvelin
@@ -63,6 +66,7 @@ backup_egunzip=Varmuuskopio on pakattu, mutta <tt>gunzip</tt> -sovellusta ei ole
 backup_euntar=Poista-TAR epäonnistui : $1 
 backup_enone2=Mikään valittujen moduulien tiedostoista ei ole varmuuskopiossa
 backup_epre2=Moduulin $1 hylätty palautus : $2 
+
 backup_err=Varmuuskopiointi epäonnistui
 backup_edest=Puuttuva tai virheellinen ehdoton paikallinen tiedosto
 backup_eserver1=Puuttuva tai virheellinen FTP-palvelin
@@ -78,6 +82,7 @@ backup_title=Varmuuskopiointiasetukset
 backup_doing=Moduulitiedostojen varmuuskopioinnin aloittaminen tiedostoon $1.
 backup_failed=.. epäonnistui! $1 
 backup_done=.. saattaa loppuun. Lopullinen varmuuskopio oli $1, joka sisälsi $2 tiedostoa.
+
 restore_err=Palauttaminen epäonnistui
 restore_emods=Ei moduuleja tai muita tiedostoja valittu
 restore_title=Palauta kokoonpano
@@ -86,22 +91,26 @@ restore_testing=Varmuuskopion sisällön purkaminen $1 : stä ..
 restore_failed=.. epäonnistui! $1 
 restore_done=.. saattaa loppuun. $1 tiedostoa palautettiin.
 restore_done2=.. varmuuskopiossa olevat tiedostot ovat :
+
 nice_ftp=$2 $1 : ssä FTP: n kautta
 nice_ftpp=$2 $1 -portissa $3 FTP: n kautta
 nice_ssh=$2 $1 : ssä SSH: n kautta
 nice_sshp=$2 $1 -portissa $3 SSH: n kautta
 nice_upload=ladattu tiedosto
 nice_download=selain
+
 log_backup=Varmuuskopio $1 moduuleista $2 : ksi
 log_restore=Palautettu $1 moduulia kohdasta $2 
 log_create_backup=Luotu varmuuskopio $1 moduuleista $2 : een
 log_modify_backup=Muokattu varmuuskopio $1 moduuleista $2 : ksi
 log_delete_backup=$1 moduulien varmuuskopio poistettu $2 : een
 log_run_backup=Suoritettu varmuuskopio $1 moduuleista $2 : een
+
 run_title=Varmuuskopiointimääritykset
 run_doing=$1 -moduulien varmuuskopioinnin aloittaminen kohtaan $2.
 run_ok=.. varmuuskopiointi onnistui.
 run_failed=.. varmuuskopiointi epäonnistui! Katso syy miksi yllä olevassa virhesanomassa.
+
 email_mods=Moduulien varmuuskopio :
 email_failed=$1 epäonnistui :
 email_ok=kohteeseen $1 onnistui.

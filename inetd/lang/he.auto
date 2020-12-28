@@ -14,6 +14,7 @@ index_search=תצוגת שירותי תצוגה:
 index_sok=לחפש
 index_toomany=יש יותר מדי שירותי אינטרנט להצגה בדף זה.
 index_none=אין שירותי אינטרנט התואמים לחיפוש שלך.
+
 error_restart=ההפעלה מחדש של Inetd נכשלה
 error_saverpc=שמירת תוכנית RPC נכשלה
 error_invalidprgname='$1' אינו שם תוכנית חוקית
@@ -43,6 +44,7 @@ error_nameexist=קיים שירות עם שם $1 ופרוטוקול $2
 error_inetservice=קיים שירות אינטרנט עם שם $1 ופרוטוקול $2 
 error_smfservice=עדכון שירות ה- smf נכשל עם cmd '$1', קוד השגיאה $2 
 error_smf_cmdfield=עבור smf, שם הקובץ של התוכנית '$1' חייב להתאים לוויכוח הראשון של שדה הפקודה, כלומר להיות '$2'
+
 editrpc_title1=צור תוכנית RPC
 editrpc_title2=ערוך את תוכנית RPC
 editrpc_detail=פרטי תוכנית RPC
@@ -69,6 +71,7 @@ editrpc_execasuser=ביצוע כמשתמש
 editrpc_max=מקסימום לדקה
 editrpc_default=ברירת מחדל
 editrpc_execasgrp=ביצוע כקבוצה
+
 editserv_title1=צור שירות אינטרנט
 editserv_title2=ערוך את שירות האינטרנט
 editserv_detail=פרטי שירות אינטרנט
@@ -82,6 +85,7 @@ editserv_wrapper=TCP-Wrapper
 editserv_inetd=פנימי ל- <tt>inetd</tt>
 editserv_qm=הפקודה אולי לא קיימת?
 editserv_ename=אין שירות עם שם ופרוטוקול זה
+
 log_apply=שינויים שהוחלו
 log_create_serv=נוצר שירות $1 
 log_modify_serv=שירות שונה $1 
@@ -95,6 +99,7 @@ log_delete_serv_l=השירות נמחק $1 ביציאה $2
 log_create_prog_l=יצר שירות $1 ביציאה $2 עבור תוכנית $3 
 log_modify_prog_l=שירות שונה $1 ביציאה $2 עבור תוכנית $3 
 log_delete_prog_l=השירות $1 ביציאה $2 עבור התוכנית $3 נמחק
+
 log_create_rpc=יצר RPC $1 
 log_modify_rpc=שינוי RPC $1 
 log_delete_rpc=RPC $1 נמחק

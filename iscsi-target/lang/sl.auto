@@ -1,6 +1,7 @@
 check_econfig=Konfiguracijske datoteke iSCSI ciljne datoteke $1 v vašem sistemu ni bilo mogoče najti.
 check_eietadm=Ukaza ciljne administracije iSCSI $1 v vašem sistemu ni bilo mogoče najti.
 check_einit=Ukrep za zagon $1 ne obstaja
+
 index_title=iSCSI Target
 index_clink=Mogoče ni nameščen ali pa je vaša <a href='$1'>konfiguracija modula</a> napačna.
 index_stop=Ustavi cilj iSCSI
@@ -22,8 +23,10 @@ index_noluns=Noben
 index_nousers=Kaj
 index_nullio=RAM disk $1 sektorjev
 index_size=Skupna velikost
+
 dtargets_err=Brisanje ciljev ni uspelo
 dtargets_enone=Izbran ni noben!
+
 target_title1=Ustvari cilj iSCSI
 target_title2=Uredi cilj iSCSI
 target_header=Možnosti naprave v skupni rabi iSCSI
@@ -68,11 +71,13 @@ target_noalias=Noben
 target_hdigest=Kontrolna vsota glave
 target_ddigest=Kontrolna vsota podatkov
 target_nodigest=Noben
+
 auth_title=Nastavitve preverjanja pristnosti
 auth_header=Privzete možnosti preverjanja pristnosti za vse cilje
 auth_iuser=Preverjanje pristnosti s strani strank
 auth_ouser=Preverjanje pristnosti za stranke
 auth_err=Nastavitev avtentikacije ni bilo mogoče shraniti
+
 conn_title=Nastavitve povezave
 conn_header=Privzete možnosti povezave za vse cilje
 conn_sessions=Največ sočasnih sej
@@ -91,6 +96,7 @@ conn_emaxrecv=Največja ali neštevilčna največja dolžina odseka
 conn_emaxxmit=Največja ali neštevilčna največja dolžina oddajnega segmenta
 conn_emaxburst=Manjkajoča ali neštevilčna največja velikost porušitve odjemalca
 conn_efirstburst=Manjkajoča ali neštevilčna največja velikost neželenih podatkov odjemalca
+
 timeout_title=Nastavitve časovne omejitve
 timeout_header=Možnosti časovne omejitve odjemalca
 timeout_nopi=Interval med pingi v prostem teku
@@ -98,6 +104,7 @@ timeout_nopinone=Nikoli ne ping
 timeout_secs=sekund
 timeout_nopt=Čas za čakanje na pingov odgovor
 timeout_noptnone=Enako kot čas pinga
+
 addr_title=Naslov in vrata strežnika
 addr_header=Možnosti mreženja strežnika iSCSI
 addr_addr=Poslušaj na naslovu IP
@@ -110,18 +117,21 @@ addr_err=Naslova strežnika ni bilo mogoče shraniti
 addr_eaddr=Naslov, ki ga želite poslušati, mora biti naslov IP
 addr_eport=Pristop, ki ga želite poslušati, mora biti številka
 addr_edebug=Stopnja napak mora biti številka
+
 initiators_title=Dovoljeni naslovi strank
 initiators_none=Še ni določen noben dovoljeni naslov stranke. Nobena stranka se ne bo mogla povezati.
 initiators_ips=Dovoljene stranke
 initiators_title1=Dodajte dovoljene naslove strank
 initiators_title2=Urejanje dovoljenih naslovov strank
 initiators_header=Dovoljeni odjemalci iSCSI za ciljno
+
 targets_title=Dovoljeni naslovi strežnika
 targets_none=Še ni določen noben dovoljeni naslov strežnika. Nobena stranka se ne bo mogla povezati.
 targets_ips=Dovoljeni strežniški vmesniki
 targets_title1=Dodajte dovoljene naslove strežnika
 targets_title2=Urejanje dovoljenih naslovov strežnika
 targets_header=Dovoljen strežniški vmesnik iSCSI
+
 allow_target=Ime cilja
 allow_move=Premakni se
 allow_delete=Izbriši izbrano
@@ -133,17 +143,21 @@ allow_return=dovoljeni cilji in naslovi
 allow_err=Dovoljenih naslovov ni bilo mogoče shraniti
 allow_eaddr=Naslov $1 ni veljaven. To mora biti bodisi naslov IPv4, omrežje/maska IPv4 ali naslov IPv6 v oglatih oklepajih.
 allow_eaddrs=Ni dovoljenih naslovov
+
 dallow_err=Dovoljenih naslovov ni bilo mogoče izbrisati
 dallow_enone=Izbrana ni nobena
+
 manual_title=Uredi konfiguracijsko datoteko
 manual_desc=Uporabite spodnje besedilno polje za urejanje konfiguracijske datoteke strežnika iSCSI $1. Bodite previdni, saj preverjanje na vašem vnosu ne bo opravljeno!
 manual_err=Konfiguracijske datoteke ni bilo mogoče shraniti
 manual_edata=Vnešena ni nobena vsebina!
+
 start_err=Zagon strežnika iSCSI ni uspel
 stop_err=Ni uspelo zaustaviti strežnika iSCSI
 restart_err=Ni bilo mogoče znova zagnati strežnika iSCSI
 atboot_err=Ni mogoče omogočiti ob zagonu
 atboot_einit=Init skripta $1 ne obstaja
+
 log_create_target=Ustvarjen cilj $1 
 log_delete_target=Izbrisan cilj $1 
 log_modify_target=Spremenjen cilj $1 

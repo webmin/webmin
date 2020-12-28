@@ -57,6 +57,7 @@ index_reposdisable=Zakázat repozitáře
 index_reposenable=Povolit repozitáře
 index_reposdelete=Smazat úložiště
 index_repoheader=Nové možnosti úložiště balíčků
+
 update_title=Aktualizujte balíčky
 update_title2=Nainstalujte balíčky
 update_enone=Nebyly vybrány žádné balíčky
@@ -94,9 +95,11 @@ update_none=Žádný
 update_ops=Vytváření kompletního seznamu balíčků ..
 update_rebootdesc=Jeden z nainstalovaných balíčků vyžaduje restartování systému, aby bylo plně použito.
 update_reboot=Restartujte nyní
+
 sched_title=Plánovaná aktualizace
 sched_yes=Plánovaná kontrola aktualizací je nyní aktivní.
 sched_no=Plánované kontroly aktualizací byly zakázány.
+
 log_update=Nainstalované $1 aktualizované balíčky
 log_sched=Povolené naplánované aktualizace
 log_unsched=Zakázané naplánované aktualizace
@@ -108,11 +111,13 @@ log_enable_repo=Povolené úložiště balíčků $1
 log_disable_repo=Zakázané úložiště balíčků $1 
 log_delete_repo=Úložiště odstraněných balíků $1 
 log_create_repo=Vytvořeno úložiště balíčků $1 
+
 refresh_title=Aktualizace balíčků
 refresh_clearing=Vymazání mezipaměti balíčků ..
 refresh_done=.. Hotovo
 refresh_available=Opakované načítání dostupných balíčků ..
 refresh_done3=.. nalezeno $1 možných aktualizací
+
 view_title=Detaily balíčku
 view_header=Aktualizovatelné informace o balíčku
 view_name=Název balíčku
@@ -126,12 +131,14 @@ view_changelog=Seznam změn dostupné verze
 view_software=Spravujte balíček
 view_update=Aktualizujte balíček
 view_install=Nainstalujte balíček
+
 system_yum=MŇAM
 system_apt=APT
 system_csw=CSW (Blastwave)
 system_webmin=Webmin modul
 system_usermin=Usermin modul
 system_tgz=Webmin nebo Usermin tar.gz
+
 repos_err_disable=Nepodařilo se deaktivovat repozitáře
 repos_err_enable=Nepodařilo se povolit repozitáře
 repos_err_delete=Úložiště se nepodařilo smazat

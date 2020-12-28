@@ -57,20 +57,27 @@ index_rotate=Оновити статистику
 index_rotatedesc=Натисніть цю кнопку, щоб обробити весь зареєстрований мережевий трафік до поточного часу, зробивши його негайно доступним для звітності.
 index_eiptables=Попередження - Ваша конфігурація IPtables має помилку: $1. Налаштування моніторингу пропускної здатності очистить усі правила брандмауера.
 index_return=форма звіту
+
 log_setup=Налаштування моніторингу пропускної здатності інтерфейсу $1 
 log_turnoff=Відключений моніторинг пропускної здатності
 log_rotate=Оновлена статистика
+
 acl_setup=Чи можна налаштувати та відключити моніторинг?
+
 turnoff_ecannot=Вам заборонено відключати моніторинг
+
 setup_ecannot=Вам заборонено вмикати моніторинг
 setup_eiface=Відсутнє або недійсне ім'я інтерфейсу
 setup_ezone=Не вдалося знайти зону Shorewall для обраного інтерфейсу
+
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=Shorewall
+
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=Оновлення статистики
 rotate_doing=Обробка зареєстрованого мережевого трафіку ..
 rotate_done=.. зроблено.

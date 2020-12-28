@@ -5,6 +5,7 @@ index_return=module index
 index_fixpam=<b>Waarschuwing</b> - Webmin heeft 2 aparte LDAP configuratie files ontdekt op uw systeem. NSS-LDAP is geconfigureerd om $1 te gebruiken, terwijl PAM-LDAP $2 gebruikt. Dit kan lijden tot inconsistentie tussen deze twee services.
 index_fix=Repareer door het Linken van Files
 index_ignore=Dit Bericht Niet Laten Zien
+
 server_title=LDAP Server Configuratie
 server_header=LDAP server en login opties
 server_host=LDAP server hostnamen
@@ -42,6 +43,7 @@ server_etimelimit=Ontbrekende of ongeldige verbindings tijd limiet
 server_ecacert=Ontbrekende of ongeldige CA certificate file
 server_euport=Ontbrekende of ongeldige poort voor server $1
 server_euri=Geen LDAP servers ingevuld
+
 base_title=LDAP Zoek Basis
 base_header=LDAP directory opzoek locaties
 base_base=Globale zoek basis
@@ -77,6 +79,7 @@ base_enetmasks=Ontbrekende basis voor netmask namen
 base_ealiases=Basis ontbreekt voor email aliassen
 base_enetgroup=Ontbrekende basis voor netgroepen
 base_etimelimit=Ontbrekende of ongeldige zoektijd limiet
+
 pam_title=Authenticatie Opties
 pam_header=PAM authenticatie en wachtwoord instellingen
 pam_filter=Toegevoegd LDAP filter
@@ -97,10 +100,12 @@ pam_efilter=Ontbrekende toegevoegde LDAP filter
 pam_elogin=Ontbrekende of ongeldige LDAP attributen voor gebruikersnaam
 pam_egroupdn=Ontbrekende LDAP groep om lidmaatschap te forceren van
 pam_emember=Ontbrekende of ongeldige LDAP attributen voor groep leden
+
 switch_title=Services die LDAP Gebruiken
 switch_service=Service
 switch_srcs=Data bronnen
 switch_return=services die LDAP gebruiken
+
 ldap_emodule=De $1 Perl module die nodig is om met de LDAP server te communiceren is niet geinstalleerd. <a href='$2'>Klik hier</a> zodat Webmin het nu kan downloaden en installeren.
 ldap_emodule2=De $1 Perl module die nodig is om de communiceren met de LDAP server is niet geinstalleerd.
 ldap_econf=De LDAP client configuratie file $1is niet gevonden op uw systeem
@@ -110,6 +115,7 @@ ldap_elogin=Bind is mislukt aan LDAP server $1 als $2 : $3
 ldap_anon=anoniem
 ldap_eparse=Ontleden mislukt van de LDAP server URI $1
 ldap_etls=Mislukt om over te schakelen naar TLS mode : $1
+
 browser_title=LDAP Browser
 browser_econn=De LDAP browser kan niet gebruikt worden : $1
 browser_base=Doorzoeken :
@@ -120,6 +126,7 @@ browser_attrs=Object attributen
 browser_parent=Hoofd Doorzoeken
 browser_none=Niets
 browser_sel=OK
+
 order_nisplus=NIS+
 order_nis=NIS
 order_dns=DNS
@@ -132,6 +139,7 @@ order_user=Gebruikers printers
 order_xfn=XFN
 order_mdns4=Multicast DNS
 order_mdns4_minimal=Multicast DNS (minimaal)
+
 desc_aliases=Sendmail aliassen
 desc_mail=Sendmail aliassen
 desc_hosts=Host adressen
@@ -167,6 +175,7 @@ desc_printers=Printers
 desc_ipnodes=IP nodes
 desc_timezone=Tijdzones
 desc_locale=Taalinstellingen
+
 eswitch_title=Bewerk Service
 eswitch_egone=Service bestaat niet!
 eswitch_header=Service details
@@ -186,10 +195,12 @@ eswitch_continue=Doorgaan met zoeken
 eswitch_none=Niets
 eswitch_err=Mislukt om service op te slaan
 eswitch_enone=Geen bronnen geselecteerd!
+
 log_server=Gemodificeerde LDAP server configuratie
 log_base=Gemodificeerde LDAP zoek basis
 log_pam=Gemodificeerde authenticatie opties
 log_modify_switch=Veranderde service $1
+
 check_title=Valideren van LDAP Configuratie
 check_base=Vind LDAP basis voor gebruikers ..
 check_ebase=.. geen basis gevonden in client configuratie!

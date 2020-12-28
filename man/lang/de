@@ -30,6 +30,7 @@ index_other_google=Google-Suchmaschine
 index_other_kde=KDE-Dokumentation
 index_and=Alle Worte
 index_or=Beliebige Worte
+
 search_efor=Es wurde keine Anleitung angegeben, nach der gesucht werden soll
 search_title=Suchergebnisse
 search_desc=Beschreibung
@@ -47,24 +48,32 @@ search_none=Keine Anleitung passend zu '$1' gefunden
 search_for=Für $1
 search_google=Google-Suchergebnis
 search_doxfer=Webmin Online Dokumentation
+
 howto_title=HOWTO-Dokument
 howto_header=HOWTO-Dokument Datei $1
 howto_epath=Ungültiger HOWTO-Pfad
+
 doc_title=Paket-Dokumentation
 doc_header=Paket-Dokumentendatei $1
 doc_epath=Ungültiger Paket-Dokumentenpfad
+
 man_title=Handbuch
 man_header=Handbuch für $1 ($2)
 man_noentry=Handbuch für $1 nicht vorhanden!
 man_epath=Manpage kann kein Pfad sein!
+
 kernel_title=Kernel-Dokument
 kernel_header=Kernel-Dokumentendatei $1
 kernel_epath=Ungültiger Kernel-Dokumentenpfad
+
 kde_title=KDE-Dokumentation
 kde_header=KDE-Dokumentendatei $1
 kde_epath=Ungültiger KDE-Dokumentenpfad
+
 perl_title=Perl-Modul Dokumentation
 perl_header=Dokumentation für Perl-Modul $1
 perl_emod=Ungültiger Perl-Modulname
+
 acl_allow=Erlaubte Suchtypen bearbeiten?
+
 check_ecannot=Keine Berechtigung zum Bearbeiten der Suchtypen

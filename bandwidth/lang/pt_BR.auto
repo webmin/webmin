@@ -57,20 +57,27 @@ index_rotate=Atualizar estatísticas
 index_rotatedesc=Clique neste botão para processar todo o tráfego de rede registrado até o horário atual, disponibilizando-o imediatamente para geração de relatórios.
 index_eiptables=Aviso - Sua configuração de tabelas de IP tem um erro: $1. A configuração do monitoramento da largura de banda limpará todas as regras do firewall.
 index_return=formulário de relatório
+
 log_setup=Configurar o monitoramento da largura de banda na interface $1 
 log_turnoff=Monitoramento de largura de banda desativado
 log_rotate=Estatísticas atualizadas
+
 acl_setup=Pode configurar e desativar o monitoramento?
+
 turnoff_ecannot=Você não tem permissão para desativar o monitoramento
+
 setup_ecannot=Você não tem permissão para ativar o monitoramento
 setup_eiface=Nome de interface ausente ou inválido
 setup_ezone=Falha ao encontrar a zona Shorewall para a interface selecionada
+
 system_firewall=Tabelas de IP
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=Shorewall
+
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=Atualizando estatísticas
 rotate_doing=Processando o tráfego de rede registrado.
 rotate_done=.. feito.

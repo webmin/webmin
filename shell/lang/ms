@@ -8,7 +8,9 @@ index_pok=Laksanakan arahan sebelumnya
 index_edit=Sunting sebelum
 index_trunced=Jumlah pengeluaran sebanyak $2 telah disatukan di $1.
 index_timedout=Arahan telah ditamatkan selepas berlari untuk $1 saat.
+
 acl_user=Laksanakan arahan sebagai pengguna
 acl_user_def=Pengguna Webmin semasa
+
 log_run=Telah larikan arahan $1
 log_clear=Padamkan sejarah arahan

@@ -59,6 +59,7 @@ index_massupdate=Update Records in Geselecteerde
 index_masscreate=Voeg Record toe aan Geselecteerde
 index_massrdelete=Verwijder Geselecteerde Records
 index_bind=BIND
+
 master_title=Bewerk Master Zone
 master_ecannot=U bent niet bevoegd om deze zone te bewerken
 master_eviewcannot=U bent niet bevoegd een zone te maken in dit overzicht
@@ -136,6 +137,7 @@ master_defttl=Standaard tijd-om-te-leven voor records
 master_edefttl='$1' is geen geldige standaard tijd-om-te-leven voor records
 master_esoagone=Geen SOA record gevonden!
 master_einclude=Extra template file bestaat niet
+
 delete_title=Verwijder Zone
 delete_mesg=Weet u zeker dat u de zone $1 wilt verwijderen? Alle records en de zone file zal worden verwijdert
 delete_mesg2=Weet u zeker dat u de root zone wilt verwijderen? Uw DNS server zal niet langer adressen kunnen opzoeken op het internet.
@@ -145,6 +147,7 @@ delete_fwd=Verwijder doorstuur records in andere zones?
 delete_onslave=Ook verwijderen van de slaaf servers?
 delete_errslave=Master zone succesvol verwijdert, maar de volgende fouten zijn ontstaan op de slaven : $1
 delete_ezone=Zone is niet gevonden op slaaf server
+
 mcreate_title=Maak Master Zone
 mcreate_ecannot=U kunt geen master zones maken
 mcreate_opts=Nieuwe master zone opties
@@ -159,6 +162,7 @@ mcreate_auto=Automatisch
 mcreate_err=Mislukt om master zone te maken
 mcreate_ednssecsize=Mislukt om de sleutel grote te berekenen : $1
 mcreate_ednssec=Records maken is gelukt, maar de DNSSEC mislukte : $1
+
 slave_title=Bewerk Slaaf Zone
 stub_title=Bewerk Stub Zone
 slave_ecannot=U bent niet bevoegd deze zone te bewerken
@@ -190,6 +194,7 @@ slave_applymsg2=Klik op deze knop om de zone geforceerd opnieuw te versturen van
 slave_last=Laatste overdracht : $1
 slave_never=Nooit
 slave_xfer=Test Zone Overdracht
+
 screate_title1=Maak Slaaf Zone
 screate_title2=Maak Stub Zone
 screate_ecannot1=U bent niet bevoegd om slaaf zones te maken
@@ -202,6 +207,7 @@ screate_rev=Omkeren (Adressen naar Namen)
 screate_dom=Domein naam / Netwerk
 screate_err1=Mislukt om slaaf zone te maken
 screate_err2=Mislukt om stub zone te maken
+
 recs_ecannot=U bent niet bevoegd om records te bewerken in deze zone
 recs_ecannottype=U bent niet bevoegd om records te bewerken van dit type
 recs_title=$1 Records
@@ -217,6 +223,7 @@ recs_find=Laat overeenkomende records zien :
 recs_search=Zoeken
 recs_drev=Reverses ook wissen?
 recs_none=Het domein heeft nog geen enkele $1 records.
+
 edit_title=Bewerk $1
 edit_header=In $1
 edit_edit=Bewerk $1 Record
@@ -278,6 +285,7 @@ edit_espfip6='$1' is geen geldig IPv6 adres of IPv6/voorvoegsel om van te verstu
 edit_espfinclude='$1' is geen geldige extra domein waar email vanaf word gezonden
 edit_espfredirect='$1' is geen geldige alternatieve domein naam
 edit_espfexp='$1' is een geldige record naam voor een geweigerd bericht
+
 text_title=Bewerk Records File
 text_title2=Overzicht Records File
 text_desc3=Met dit formulier kunt u handmatig de DNS records file $1 bewerken. Er zal dan geen syntax controle gedaan worden door Webmin.
@@ -286,6 +294,7 @@ text_undo=ongedaan maken
 text_ecannot=U bent niet bevoegd om record files te bewerken
 text_none=De file is op dit moment leeg, waarschijnlijk omdat de zone nog niet is overgezonden vanaf de master server.
 text_soa=Serie nummer automatisch laten oplopen
+
 restart_err=Mislukt om veranderingen toe te voegen
 restart_ecannot=U bent niet bevoegd om BIND te herstarten
 restart_epidfile=Kon geen BIND PID vinden in $1
@@ -294,10 +303,12 @@ restart_erunning2=BIND lijkt niet te lopen op de slaaf server $1
 restart_endc=NDC opdracht mislukt : $1
 restart_ecmd=Herstart opdracht mislukt : $1
 restart_eversion=Slaaf server $1 werkt niet met Webmin versie $2 of hoger.
+
 start_ecannot=U bent niet bevoegd om BIND te starten
 start_error=Mislukt om BIND te starten : $1
 stop_epid=BIND is niet aan het werk
 stop_ecannot=U bent niet bevoegd om BIND te stoppen
+
 fwd_title=Bewerk Doorstuur Zone
 fwd_ecannot=U bent niet bevoegd om deze zone te bewerken
 fwd_opts=Zone Opties
@@ -306,12 +317,14 @@ fwd_forward=Probeer andere servers?
 fwd_check=Controleer namen?
 fwd_err=Mislukt om opties op te slaan
 fwd_delmsg=Klik op deze knop om deze zone te verwijderen van uw DNS server. Records die erin zitten zullen dan opgezocht worden door het normale resolutie proces.
+
 delegation_title=Bewerk Gedelegeerde Zone
 delegation_ecannot=U bent niet bevoegd om deze zone te bewerken
 delegation_opts=Zone Opties
 delegation_err=Mislukt om opties op te slaan
 delegation_noopts=Gedelegeerde Zones hebben geen configureerbare opties.
 delegation_delmsg=Klik op deze knop om deze zone te verwijderen van uw DNS server. Record types die erin zitten anders dan NS zullen dan herkend worden door BIND.
+
 fcreate_title=Maak Doorstuur Zone
 fcreate_ecannot=U bent niet bevoegd om doorstuur zones te maken
 fcreate_opts=Nieuwe doorstuur zone opties
@@ -321,10 +334,12 @@ fcreate_rev=Reverse (Adressen naar Namen)
 fcreate_dom=Domein naam / Netwerk
 fcreate_masters=Master servers
 fcreate_err=Mislukt om een doorstuur zone te maken
+
 dcreate_title=Maak een Alleen-Gedelegeerde Zone
 dcreate_ecannot=U bent niet bevoegd om gedelegeerde zones te maken
 dcreate_opts=Nieuwe gedelegeerde zone opties
 dcreate_err=Mislukt om een gedelegeerde zones te maken
+
 create_enet='$1' is geen geldig netwerk
 create_edom='$1' is geen geldige domein naam
 create_edom2='$1' moet een domein zijn en geen netwerk
@@ -334,9 +349,11 @@ create_efile3=Maken mislukt van '$1' : $2
 create_efile4=File $1 bestaat reeds
 create_emaster='$1' is geen geldig master server adres
 create_enone=U moet minimaal 1 master server invullen
+
 boot_err=Download mislukt
 boot_egzip=De root zone file is gecomprimeerd, maar er is geen <tt>gzip</tt> opdracht geinstalleerd op uw systeem!
 boot_egzip2=Decomprimeren van de root zone file mislukte : $1
+
 type_A=Adres
 type_AAAA=IPv6 Adres
 type_NS=Naam Server
@@ -352,6 +369,7 @@ type_LOC=Locatie
 type_SRV=Service Adres
 type_ALL=Alle Record Types
 type_KEY=Publieke Sleutel
+
 edit_A=Adres
 edit_AAAA=IPv6 Adres
 edit_NS=Naam Server
@@ -366,6 +384,7 @@ edit_PTR=Reverse Adres
 edit_LOC=Locatie
 edit_SRV=Service Adres
 edit_KEY=Publieke Sleutel
+
 recs_defttl=Standaard TTL
 recs_A=Adres
 recs_AAAA=IPv6 Adres
@@ -383,6 +402,7 @@ recs_SRV=Service Adres
 recs_ALL=Alles
 recs_KEY=Publieke Sleutel
 recs_delete=Verwijder Geselecteerde
+
 value_A1=Adres
 value_AAAA1=IPv6 Adres
 value_NS1=Naam Server
@@ -427,6 +447,7 @@ value_spfredirect=Gebruik SPF record van alternatief domein
 value_spfnoredirect=Gebruik dit domein record
 value_spfexp=TXT record voor geweigerde reden
 value_spfnoexp=Geen
+
 warn=Waarschuwing
 fail=Mislukt
 ignore=Negeer
@@ -440,6 +461,7 @@ listed=Vermeld ..
 eip='$1' is geen geldig IP adres
 eport='$1' is geen geldig poort nummer
 eipacl='$1' is geen geldig IP adres of ACL naam
+
 acl_zones=Domeinen die deze gebruiker mag bewerken
 acl_zall=Alle zones
 acl_zsel=Geselecteerde zones..
@@ -481,6 +503,7 @@ acl_ztypes_master=Master
 acl_ztypes_slave=Slaaf/stub
 acl_ztypes_delegation=Delegeren
 acl_ztypes_forward=Doorsturen
+
 servers_title=Andere DNS Servers
 servers_ip=IP adres
 servers_bogus=Negeer valse server?
@@ -492,6 +515,7 @@ servers_keys=Gebruik DNS sleutels
 servers_err=Mislukt om andere DNS servers op te slaan
 servers_eip='$1' is geen geldig IP adres
 servers_etrans='$1' is geen geldig aantal voor maximale overdrachten
+
 logging_title=Loggen en Fouten
 logging_ecannot=U bent niet bevoegd het loggen te configureren
 logging_header=Globale log en fout opties
@@ -530,6 +554,7 @@ logging_efile=Ontbrekende log filenaam
 logging_efile2=Log filenaam moet een absoluut pad zijn
 logging_ever='$1' is geen geldig aantal van versies
 logging_esize='$1' is geen geldige log grote
+
 acls_title=Toegang Controle Lijst
 acls_ecannot=U bent niet bevoegd om globale ACL's te bewerken
 acls_name=ACL Naam
@@ -537,6 +562,7 @@ acls_values=Overeenkomende adressen, netwerken en ACL's
 acls_err=Mislukt om de toegang controle lijst op te slaan
 acls_ename='$1' is geen geldige ACL naam
 acls_eline=Ieder IP adres moet worden ingevuld op een aparte regel voor ACL '$1'
+
 files_title=Files en Directory's
 files_ecannot=U bent niet bevoegd om files te configureren
 files_header=Globale files en directory's opties
@@ -546,6 +572,7 @@ files_pid=Proces ID file
 files_xfer=Pad naar zone overdracht programma
 files_err=Mislukt om de files en directory's opties op te slaan
 files_efile=Ontbrekende of ongeldige filenaam
+
 forwarding_title=Doorsturen en Overdrachten
 forwarding_ecannot=U bent niet bevoegd om doorstuur en overdacht opties te bewerken
 forwarding_header=Globale doorstuur en zone overdracht opties
@@ -564,6 +591,7 @@ forwarding_etrans=Ontbrekende of ongeldige maximum gezamenlijke overdrachten
 forwarding_minutes=minuten
 forwarding_ip=IP adres
 forwarding_port=Poort
+
 net_title=Adressen en Topologie
 net_ecannot=U bent niet bevoegd om adres en topologie opties te bewerken
 net_header=Globale adres en topologie opties
@@ -585,6 +613,7 @@ net_taddr=Bron IP adres voor overdrachten
 net_tport=Bron poort voor overdrachten
 net_taddrdef=IP meest dichtbij
 net_etport=Een overdracht bron poort kan niet worden gespecificeerd zonder een adres
+
 controls_title=Beheer Interface Opties
 controls_ecannot=U bent niet bevoegd om de controle opties te bewerken
 controls_header=Beheer opties
@@ -606,6 +635,7 @@ controls_eunixpath=Ontbrekende of ongeldige FIFO file pad
 controls_eunixperm=Ontbrekende of ongeldige getal file permissies
 controls_eunixowner=Ontbrekende of ongeldige file eigenaar
 controls_eunixgroup=Ontbrekende of ongeldige file groep
+
 controls_inet=Internet poort toegang
 controls_unix=Unix FIFO toegang
 controls_port=poort
@@ -619,6 +649,7 @@ controls_efile=Ontbrekende of ongeldige FIFO filenaam
 controls_eperms=Ontbrekende of ongeldige FIFO permissies
 controls_eowner=Ontbrekende of ongeldige FIFO eigenaar UID
 controls_egroup=Ontbrekende of ongeldige FIFO eigenaar GID
+
 keys_title=DNS Sleutels
 keys_id=Sleutel ID
 keys_alg=Algoritme
@@ -627,6 +658,7 @@ keys_ecannot=U bent niet bevoegd om DNS sleutels te bewerken
 keys_err=Mislukt om DNS sleutels op te slaan
 keys_ekey='$1' is geen geldige sleutel ID
 keys_esecret=Ontbrekende of ongeldige 64-bit geheime code voor sleutel $1
+
 misc_title=Diverse Opties
 misc_ecannot=U bent niet bevoegd diverse opties te bewerken
 misc_header=Diverse globale opties
@@ -646,6 +678,7 @@ misc_esize='$1' is geen geldige grote
 misc_efiles='$1' is geen geldig aantal maximale open files
 misc_emins='$1' is geen geldig aantal minuten
 misc_mins=minuten
+
 zonedef_title=Zone Standaarden
 zonedef_msg=Standaard voor nieuwe master zones
 zonedef_err=Mislukt om zone standaarden op te slaan
@@ -669,10 +702,13 @@ zonedef_size=Aanvankelijke sleutel grote
 zonedef_single=Aantal sleutels die gemaakt moeten worden
 zonedef_two=Zone sleutel en de sleutel waarmee ondertekent word
 zonedef_one=Alleen zone sleutel
+
 find_title=Vind Zones
 find_match=Zones overeenkomend met $1 ..
 find_none=Geen zones gevonden.
+
 efirst=Slechte eerste richtlijn op regel $1 in $2
+
 findfree_title=Vind Vrije IP's
 findfree_desc=Vind Vrije IP's
 findfree_nofind=U kunt niet rondkijken voor vrije IP's
@@ -684,8 +720,10 @@ findfree_cf=Bekijk <em>freeXXX</em> hostnamen als vrije IP's?
 findfree_search=Zoek
 findfree_msg=Gevonden $1 vrije IP adressen
 findfree_msg2=(of welke $1 zijn zoals <i>freeXXX</i>, $2 zoals <i>freemac</i>)
+
 free_title=Vrije IP Adressen
 free_ip=IP Adres
+
 log_servers=Gewijzigde andere DNS servers
 log_logging=Veranderde log's en fouten
 log_acls=Veranderde toegang controle lijst
@@ -742,11 +780,14 @@ log_sign=Ge-Update DNSSEC handtekeningen voor zone $1
 log_resign=Her-ondertekende DNSSEC sleutel voor zone $1
 log_trusted=Verander DNSSEC verificatie
 log_dnssec=Verander DNSSEC sleutel her-ondertekening
+
 convert_err=Mislukt om zone te converteren
 convert_efile=Eerst moet er een records file worden gespecificeerd voordat een slaaf zone kan worden geconverteerd naar master.
+
 whois_title=WHOIS Informatie
 whois_header=Resultaat van opdracht $1 ..
 whois_ecannot=U bent niet bevoegd een WHOIS informatie zoekopdracht uit te voeren
+
 view_title=Bewerk Client Overzicht
 view_opts=Client overzicht details
 view_opts2=Opties voor zones in overzicht
@@ -757,6 +798,7 @@ view_recursion=Doe een volledige recursieve zoekopdracht voor de clients?
 view_ecannot=U bent niet bevoegd dit overzicht te bewerken
 view_delete=Verwijder Overzicht
 view_deletemsg=Klik op deze knop om het overzicht te verwijderen. U krijgt nog de keuze om de zones die erin zitten te verplaatsen naar een ander overzicht of deze ook allemaal te verwijderen.
+
 vcreate_title=Maak Client Overzicht
 vcreate_match_all=Alle clients
 vcreate_match_sel=Geselecteerde adressen, netwerken en ACL's
@@ -765,6 +807,7 @@ vcreate_ename=Ontbrekende of ongeldige overzicht naam
 vcreate_etaken=Overzicht naam is reeds in gebruik
 vcreate_eclass=Ontbrekende of ongeldige klas naam
 vcreate_ecannot=U bent niet bevoegd om overzichten te maken
+
 hint_title=Bewerk Root Zone
 hint_desc=De root zone word gebruikt door uw DNS server om contact te maken met root servers op het internet, zodat het namen kan opzoeken van domeinen die niet worden afgehandeld door uw DNS server, zoals <tt>.com</tt> of <tt>.net.au</tt>. Tenzij uw DNS server word gebruikt voor een intern netwerk of alle aanvragen doorstuurt naar een andere server, moet u niet deze root zone verwijderen.
 hint_move=Verplaats naar overzicht :
@@ -773,6 +816,7 @@ hint_refetch=Her-Download Root Naam Servers
 hint_refetchdesc=Klik op deze knop om Webmin de root zone file te herladen van zijn bron op de Internic FTP server.
 hint_delete=Verwijder Root Zone
 hint_deletedesc=Klik op deze knop om deze root zone te verwijderen. Zonder deze zal uw naam server geen domeinen meer kunnen ophalen op het internet anders dan waar het een secundaire server voor is.
+
 hcreate_title=Maak Root Zone
 hcreate_desc=De root zone word gebruikt door uw DNS server om contact te maken met root servers op het internet, zodat het namen kan opzoeken van domeinen die niet worden afgehandeld door uw DNS server, zoals <tt>.com</tt> of <tt>.net.au</tt>. Als u diverse overzichten gebruikt heeft u een aparte root zone nodig in ieder overzicht zodat alle clients op de juiste manier domeinen kunnen opzoeken.
 hcreate_header=Root zone details
@@ -786,6 +830,7 @@ hcreate_efile='$1' is geen toegestane root file
 hcreate_efile2=Ontbrekende of ongeldige root file
 mcreate_erecs=Geen geldige bestaande root zone file
 hcreate_err=Mislukt om root zone te maken
+
 vdelete_title=Verwijder Overzicht
 vdelete_mesg=Weet u zeker dat u het client overzicht $1 wilt verwijderen ? Alle zones in dit overzicht zullen worden verwijdert ( samen met hun zone files) of verplaatst naar een ander overzicht afhankelijk van uw selectie hieronder.
 vdelete_mesg2=Weet u zeker dat u het client overzicht $1 wilt verwijderen ?
@@ -793,6 +838,7 @@ vdelete_newview=Zones in dit overzicht
 vdelete_root=Haal weg uit de overzichten
 vdelete_delete=Verwijder totaal
 vdelete_move=Verplaats naar overzicht
+
 gen_title=Record Generators
 gen_desc=Op deze pagina kunt u generators definieren, elke generator zal veelvoudige records maken in deze zone en een oplopende teller gebruiken. Dit kan nuttig zijn om delen van de reverse zone te delegeren naar een andere server.
 gen_range=Reeks
@@ -812,7 +858,9 @@ gen_evalue=Ontbrekende of ongeldige hostnaam patroon voor generator $1
 gen_title2=Gegenereerde Records
 gen_raw=Config file regel
 gen_ecannot=U bent niet bevoegd om record generators te bewerken
+
 refetch_err=Mislukt om root zone opnieuw te downloaden
+
 slaves_title=Cluster Slaaf Servers
 slaves_none=Er zijn geen servers toegevoegd aan de DNS cluster op dit moment.
 slaves_host=Hostnaam
@@ -840,6 +888,7 @@ slaves_sec=Ondergeschikt maken op de slaaf wanneer dit lokaal aangemaakt word?
 slaves_name=Naam voor NS record
 slaves_same=Zelfde als hostnaam
 slaves_header=Cluster slaaf server opties
+
 add_title=Toevoegen Servers
 add_msg=Toevoegen $1 ..
 add_gmsg=Voeg servers toe in groep $1 ..
@@ -857,6 +906,7 @@ add_createok=Instelling $1 met $2 nieuwe slaaf zones.
 add_ename=Ontbrekende of ongeldige NS record naam
 add_egname=Een NS record naam kan niet worden gespecificeerd wanneer u een groep toevoegt
 add_emyip=Kan het IP adres van dit systeem niet vinden. U moet de <b>Standaard master server IP voor slaaf zones op afstand instellen</b> in de Module Configuratie pagina.
+
 mass_title=Maak Zones Met Batch File
 mass_desc=Op deze pagina kunt u diverse zones in 1 keer maken door middel van het uploaden van een tekst file of een op de server staande tekst file. Iedere regel in de file moet er als volgt uitzien:<p><tt><i>domeinnaam</i>:<i>type</i>:<i>filenaam</i>:<i>master IP's</i></tt><p>Het <i>soort zone</i> moet van het type  <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> of <tt>forward</tt> zijn. De <i>filenaam</i> is optioneel en zal automatisch gemaakt worden indien hij ontbreekt. De <i>master IP's</i> zijn alleen nodig voor slaaf zones.
 mass_local=Locale batch file
@@ -888,6 +938,7 @@ mass_emips=Ontbrekende master IP adressen
 mass_addedslaves=$1 aan slaaf servers toegevoegd OK.
 mass_eonslave=Ontstane fouten op gemaakte slaaf servers : $1
 mass_eviewcannot=U bent niet bevoegd om zones toe te voegen aan dit overzicht.
+
 massdelete_title=Verwijder Zones
 massdelete_rusure=Weet u zeker dat u de $1 geselecteerde zones wilt verwijderen? ($2)
 massdelete_ok=Verwijder Nu
@@ -895,6 +946,7 @@ massdelete_zone=Verwijderde zone $1 ..
 massdelete_done=.. gedaan.
 massdelete_slaves=Wissen van zone $1 van slaaf servers ..
 massdelete_failed=.. sommige slaven mislukten :
+
 rndc_title=RNDC Opzetten
 rndc_desc=Deze pagina kan gebruikt worden om BIND op te zetten en te laten beheren door het RNDC programma, zodat individuele zones ververst kunnen worden zonder dat BIND volledig hoeft te herstarten.
 rndc_desc2=RNDC lijkt reeds goed opgezet te zijn, dus u hoeft waarschijnlijk dit formulier niet te gebruiken.
@@ -905,11 +957,13 @@ rndc_ok=Ja, RNDC opzetten
 rndc_err=Mislukt om RNDC op te zetten
 rndc_ekey=Kan geen sleutel vinden in de rndc.conf
 rndc_esecret=Kan het geheim niet vinden in rndc.conf
+
 drecs_err=Mislukt om records te verwijderen
 drecs_enone=Niets geselecteerd
 drecs_title=Verwijder Records
 drecs_rusure=Weet u zeker dat u de $1 geselecteerde records van $2 wilt verwijderen?
 drecs_ok=Verwijder Nu
+
 manual_title=Bewerk Config File
 manual_ecannot=U bent niet bevoegd om de BIND config file te bewerken
 manual_ok=Bewerk
@@ -917,7 +971,9 @@ manual_efile=Geselecteerde file is geen onderdeel van de BIND configuratie
 manual_file=Bewerk config file :
 manual_edata=Niets ingevuld!
 manual_err=Mislukt om config file op te slaan
+
 syslog_desc=BIND DNS server berichten
+
 umass_err=Mislukt om zones te updaten
 umass_enone=Niets geselecteerd
 umass_title=Update Records in Zones
@@ -936,6 +992,7 @@ umass_done=.. ge-update $1 overeenkomende records van $2.
 umass_none=.. geen overeenkomende records van $1 gevonden om te updaten
 umass_egone=Zone bestaat niet
 emass_emx='$1' is geen email server prioriteit nummer gevolgd door een geldige hostnaam
+
 rdmass_err=Mislukt om records te verwijderen in zones
 rdmass_enone=Niets geselecteerd
 rdmass_title=Verwijder Records in Zones
@@ -952,6 +1009,7 @@ rdmass_done=.. $1 overeenkomende record verwijderd van $2 .
 rdmass_none=.. er is geen overeenkomende record gevonden van $1 om te verwijderen.
 rdmass_ok=Verwijder Records
 rdmass_sel=Records naam
+
 rmass_err=Mislukt om records toe te voegen
 rmass_enone=Niets geselecteerd
 rmass_title=Toevoegen Record aan Zones
@@ -970,18 +1028,22 @@ rmass_done=.. klaar
 rmass_eclash=.. een record met dezelfde naam en waarde $1 bestaat al.
 rmass_eclash2=.. een record met dezelfde naam en dezelfde waarde $1 bestaat reeds.
 rmass_clash=Aanmaken ondanks dat het record al bestaat?
+
 check_title=Controleer Records
 check_ecannot=U bent niet bevoegd om records te controleren
 check_errs=De volgende fouten zijn gevonden in de the records file $1 ..
 check_allok=Er zijn geen fouten gevonden in de records file $1.
+
 ncheck_title=Controleer BIND Config
 ncheck_ecannot=U bent niet bevoegd de BIND configuratie te controleren
 ncheck_errs=De volgende fouten zijn gevonden in de BIND configuratie file $1 of referentie zone files ..
 ncheck_allok=Er zijn geen fouten gevonden in de BIND configuratie file $1 of referentie zone files.
+
 links_restart=Toevoegen Configuratie
 links_stop=Stop BIND
 links_start=Start BIND
 links_apply=Toevoegen Zone
+
 dnssec_title=DNSSEC Sleutel Her-ondertekening
 dnssec_ecannot=U bent niet bevoegd om DNSSEC te configureren
 dnssec_header=Sleutel her-ondertekening opties
@@ -991,6 +1053,7 @@ dnssec_days=dagen
 dnssec_desc=Zones ondertekend met DNSSEC hebben normaal gesproken 2 sleutels - een zone sleutel die regelmatig opnieuw gegenereerd en ondertekend moet worden, En een ondertekende sleutel die hetzelfde blijft. Met deze pagina kunt u Webmin zo configureren dat die het opnieuw ondertekenen automatisch voor u doet.
 dnssec_err=Mislukt om de DNSSEC sleutel her-ondertekening op te slaan
 dnssec_eperiod=Ontbrekende of ongeldig aantal dagen tussen her-ondertekenen
+
 dnssectools_title=DNSSEC-Tools Automatisering
 dt_conf_title=DNSSEC-Tools Automatisering
 dt_enable_title=DNSSEC-Tools Automatisering
@@ -1055,6 +1118,7 @@ dt_status_inKSKroll=In KSK Roll
 dt_status_inZSKroll=In ZSK Roll
 dt_status_signed=Ondertekend
 dt_status_unsigned=Niet ondertekend
+
 zonekey_title=DNSSEC Sleutel Instellen
 zonekey_desc=Deze zone heeft nog geen DNSSEC ondertekende sleutel. U kunt dit formulier gebruiken om Webmin er 1 te laten maken zodat clients die deze zone opvragen zijn beschermt tegen DNS spoof aanvallen.
 zonekey_header=Nieuwe DNSSEC sleutel opties
@@ -1084,9 +1148,12 @@ zonekey_sign=Onderteken Zone
 zonekey_signdesc=Onmiddellijk deze zone opnieuw ondertekenen, zodat iedere verandering van de records die handmatig gemaakt zijn zullen worden ingevoegd in de ondertekende records.
 zonekey_resign=Zone Opnieuw Ondertekenen
 zonekey_resigndesc=Genereer een nieuwe zone ondertekende sleutel, en onderteken deze met de zone master sleutel, en onderteken opnieuw alle records.
+
 sign_err=Mislukt om de zone te ondertekenen
 sign_emsg=DNSSEC ondertekening nadat de records veranderingen mislukte : $1
+
 resign_err=Mislukt om de zone opnieuw te ondertekenen
+
 trusted_title=DNSSEC Verificatie
 trusted_ecannot=U bent niet bevoegd om DNSSEC verificatie te configureren
 trusted_esupport=Uw BIND versie ondersteunt geen DNSSEC verificatie
@@ -1115,6 +1182,7 @@ trusted_ealg=Ontbrekende of ongeldige algoritme nummer in rij $1
 trusted_ekey=Ontbrekende basis-64 gecodeerde vertrouwde sleutel in rij $1
 trusted_setup=Voordat DNSSEC bruikbaar is om het grootste deel van de ondertekende zones op het internet te kunnen checken moet BIND zo worden geconfigureerd dat hij een DLV server gebruikt. Webmin kan dit voor u opzetten, met gebruik van de ICS DLV server op $1.
 trusted_ok=Setup DLV en aanzetten van DNSSEC verificatie
+
 xfer_title=Test Zone Overdracht
 xfer_doing=Overdrachten testen van slaaf zone vanaf $1 ..
 xfer_failed=.. van $1 : Mislukte : $2

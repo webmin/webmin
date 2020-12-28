@@ -43,8 +43,10 @@ index_natnone=Henüz bir ağ adresi çeviri kuralı tanımlanmadı.
 index_nataction=NAT modu
 index_natfrom=Eşleştirilecek paketler
 index_natto=Tercüme
+
 dir_in=Gelen
 dir_out=Dışa dönük
+
 action_pass=<font color=#00aa00>Geçiş</font>
 action_block=<font color=#ff0000>Engelle</font>
 action_skip=Atla
@@ -57,6 +59,7 @@ action_map=haritalama
 action_rdr=Yönlendirme
 action_bimap=Çift Yönlü Haritalama
 action_map-block=Eşlemeyi engelle
+
 laction_pass=<font color=#00aa00>Paketi geçir</font>
 laction_block=<font color=#ff0000>Paketi, ICMP koduyla engelle</font>
 laction_log=Günlük paketi, düzey düzeyinde
@@ -65,6 +68,7 @@ laction_skip=Sonraki kuralları atla
 laction_auth=Kullanıcı alanı yetkilendirme
 laction_preauth=Önceki yetkilendirmeyi kontrol et
 laction_call=Arama çekirdeği işlevi
+
 edit_title1=Kural koy
 edit_title2=Kuralı Düzenle
 edit_header1=Kural eylemi
@@ -130,6 +134,7 @@ edit_icmp=ICMP türü
 edit_icmpany=&lt;Herhangi bir tür&gt;
 edit_icmpcode=ve kod
 edit_codeany=&lt;Herhangi bir kod&gt;
+
 save_err=Kural kaydedilemedi
 save_ehostfrom=Kaynak ana makine adı eksik veya geçersiz
 save_ehostto=Eksik veya geçersiz hedef ana bilgisayar adı
@@ -158,11 +163,13 @@ save_eto=Gönderilecek eksik veya geçersiz arayüz
 save_etoip=Gönderilecek geçersiz IP adresi
 save_ereplyto=Yanıtlamak için eksik veya geçersiz arayüz
 save_ereplytoip=Yanıtlamak için geçersiz IP adresi
+
 apply_err=Yapılandırma uygulanamadı
 apply_remote=$1 hatası : $2 
 unapply_err=Yapılandırma geri alınamadı
 unapply_ein=Giriş kuralları alınamadı
 unapply_eout=Çıktı kuralları alınamadı
+
 desc_if=$1 ise
 desc_and=ve
 desc_always=Her zaman
@@ -196,6 +203,7 @@ desc_rdr=IP adresleri $1 bağlantı noktası $2
 desc_dport1=bağlantı noktası $1 
 desc_dport2=bağlantı noktası $1 ile $2 arasında
 desc_nattoiface=arayüz adresi
+
 log_create_rule=$1 kuralı oluşturuldu
 log_delete_rule=$1 kuralı silindi
 log_modify_rule=$1 kural değiştirildi
@@ -224,6 +232,7 @@ log_add_host=$1 küme sunucusu eklendi
 log_add_group=$1 grubundan küme sunucuları eklendi
 log_delete_host=$1 küme sunucusu kaldırıldı
 log_delete_group=$1 küme sunucusu kaldırıldı
+
 cluster_title=Küme Güvenlik Duvarı Sunucuları
 cluster_none=Güvenlik duvarı kümesine henüz hiçbir sunucu eklenmedi.
 cluster_host=Hostadı
@@ -234,6 +243,7 @@ cluster_gadd=Gruba sunucu ekle
 cluster_need=Burada yönetilebilmeleri için Webmin Sunucuları Dizin modülüne oturum açma adı ve şifresi olan sunucular eklemeniz gerekir.
 cluster_return=küme sunucuları
 cluster_delete=Seçilenleri Kaldır
+
 add_title=Sunucu Ekle
 add_msg=$1 ekleniyor ..
 add_gmsg=$1 grubuna sunucu ekleniyor.
@@ -242,6 +252,7 @@ add_gerr=Grup eklenemedi
 add_echeck=$1 sunucusunda IPFilter Güvenlik Duvarı modülü yok
 add_emissing=$1 sunucusunda $2 güvenlik duvarı komutu eksik
 add_ok=$2 etkin güvenlik duvarı kurallarıyla $1 eklendi.
+
 nat_title1=NAT Kuralı Oluştur
 nat_title2=NAT Kuralını Düzenle
 nat_action=NAT modu
@@ -300,4 +311,5 @@ nat_edport2=Eksik veya geçersiz bitişli orijinal bağlantı noktası
 net_erdrip='$1' geçerli bir hedef IP adresi değil
 nat_erdrips=Hedef IP girilmedi
 nat_erdrport=Eksik veya geçersiz hedef bağlantı noktası
+
 boot_esmf=$1 SMF hizmeti mevcut değil veya bilinen bir durumda değil

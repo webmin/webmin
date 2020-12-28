@@ -43,8 +43,10 @@ index_natnone=아직 네트워크 주소 변환 규칙이 정의되지 않았습
 index_nataction=NAT 모드
 index_natfrom=일치하는 패킷
 index_natto=번역
+
 dir_in=들어오는
 dir_out=나가는
+
 action_pass=<font color=#00aa00>패스</font>
 action_block=<font color=#ff0000>차단</font>
 action_skip=건너 뛰기
@@ -57,6 +59,7 @@ action_map=매핑
 action_rdr=리디렉션
 action_bimap=양방향 매핑
 action_map-block=블록 매핑
+
 laction_pass=<font color=#00aa00>패스 패킷</font>
 laction_block=<font color=#ff0000>ICMP 코드가있는 블록 패킷</font>
 laction_log=레벨의 로그 패킷
@@ -65,6 +68,7 @@ laction_skip=다음 규칙 건너 뛰기
 laction_auth=사용자 공간 인증
 laction_preauth=이전 승인 확인
 laction_call=커널 함수 호출
+
 edit_title1=규칙 만들기
 edit_title2=규칙 편집
 edit_header1=규칙 동작
@@ -130,6 +134,7 @@ edit_icmp=ICMP 유형
 edit_icmpany=&lt;모든 유형&gt;
 edit_icmpcode=그리고 코드
 edit_codeany=&lt;모든 코드&gt;
+
 save_err=규칙을 저장하지 못했습니다
 save_ehostfrom=소스 호스트 이름이 없거나 유효하지 않습니다
 save_ehostto=대상 호스트 이름이 없거나 잘못되었습니다
@@ -158,11 +163,13 @@ save_eto=보낼 인터페이스가 없거나 잘못되었습니다
 save_etoip=보낼 잘못된 IP 주소
 save_ereplyto=응답 할 인터페이스가 없거나 잘못되었습니다.
 save_ereplytoip=응답 할 잘못된 IP 주소
+
 apply_err=구성을 적용하지 못했습니다
 apply_remote=$1 의 오류  : $2 
 unapply_err=구성을 되 돌리지 못했습니다
 unapply_ein=입력 규칙을 가져 오지 못했습니다.
 unapply_eout=출력 규칙을 가져 오지 못했습니다.
+
 desc_if=$1 인 경우
 desc_and=과
 desc_always=항상
@@ -196,6 +203,7 @@ desc_rdr=IP 주소 $1 포트 $2
 desc_dport1=포트는 $1 입니다
 desc_dport2=포트가 $1 과 (와) $2 사이에 있습니다
 desc_nattoiface=인터페이스 주소
+
 log_create_rule=$1 규칙 생성
 log_delete_rule=$1 규칙을 삭제했습니다.
 log_modify_rule=$1 규칙 수정
@@ -224,6 +232,7 @@ log_add_host=클러스터 서버 $1 추가
 log_add_group=그룹 $1 의 클러스터 서버를 추가했습니다.
 log_delete_host=클러스터 서버 $1 을 제거했습니다.
 log_delete_group=$1 개의 클러스터 서버를 제거했습니다.
+
 cluster_title=클러스터 방화벽 서버
 cluster_none=방화벽 클러스터에 서버가 아직 추가되지 않았습니다.
 cluster_host=호스트 이름
@@ -234,6 +243,7 @@ cluster_gadd=그룹에 서버 추가
 cluster_need=여기에서 관리하려면 Webmin Servers Index 모듈에 로그인 및 비밀번호가있는 서버를 추가해야합니다.
 cluster_return=클러스터 서버
 cluster_delete=선택된 것을 지워 라
+
 add_title=서버 추가
 add_msg=$1 추가 중 ..
 add_gmsg=$1 그룹에 서버 추가
@@ -242,6 +252,7 @@ add_gerr=그룹을 추가하지 못했습니다
 add_echeck=$1 서버에 IPFilter 방화벽 모듈이 없습니다
 add_emissing=$1 서버에 방화벽 명령 $2 이 (가) 없습니다.
 add_ok=활성 방화벽 규칙이 $2 인 $1 이 (가) 추가되었습니다.
+
 nat_title1=NAT 규칙 생성
 nat_title2=NAT 규칙 편집
 nat_action=NAT 모드
@@ -300,4 +311,5 @@ nat_edport2=결말 원본 포트가 없거나 잘못되었습니다
 net_erdrip='$1'은 (는) 유효한 대상 IP 주소가 아닙니다
 nat_erdrips=대상 IP가 입력되지 않았습니다
 nat_erdrport=대상 포트가 없거나 잘못되었습니다
+
 boot_esmf=SMF 서비스 $1 이 (가) 없거나 알려진 상태가 아닙니다.

@@ -14,10 +14,12 @@ index_apply=aplikatu
 index_return=PPP indizea
 index_none=Ez duzu modulu honen funtzionaltasunetarako sarbiderik.
 index_delete=Ezabatu hautatutako kontuak
+
 secrets_title=PPP kontuak
 secrets_return=indizea
 secrets_none=Oraindik ez da PPP kontuik sortu.
 secrets_ecannot=Ezin duzu PPP kontuak editatu
+
 edit_secret_etitle=Editatu PPP kontua
 edit_secret_ctitle=Sortu PPP kontua
 edit_secret_acc=PPP kontua
@@ -37,8 +39,10 @@ edit_secret_alist=Baimendu zerrendatuta ..
 edit_secret_save=Save
 edit_secret_del=Ezabatu
 edit_secret_return=kontu zerrenda
+
 save_secret_esave=Ezin izan da kontua gorde
 save_secret_enoip='$1' ez da baliozko helbide bat
+
 log_create=$1 PPP kontua sortu da
 log_modify=$1 aldatutako PPP kontua
 log_delete=$1 PPP kontua ezabatu da
@@ -54,6 +58,7 @@ log_dialin_move=Mugitu deitzailearen ID-zenbakia $1
 log_mgetty_create=$1 serieko portua sortu da
 log_mgetty_modify=$1 serieko ataka aldatua
 log_mgetty_delete=$1 serieko ataka ezabatu da
+
 options_title=PPP Aukerak
 options_serial=$1 portuko serierako
 options_dev=$1 gailurako
@@ -84,6 +89,7 @@ options_idle=Desaktibatu aurretik, denbora inaktiboan
 options_idle_def=Inoiz ez
 options_eidle=Denbora inaktibo falta edo baliogabea
 options_ecannot=Ezin duzu PPP aukerak editatu
+
 mgetty_title=Serial Port-en konfigurazioa
 mgetty_ecmd=$1 komandoa ez da zure sisteman aurkitu. Programa hau serieko portu saioak modem bidez edo konexio zuzena kudeatzeko beharrezkoa da.
 mgetty_desc=Zure zerbitzariak modem bidez edo konexio zuzenaren bidez serieko portu batean saioak baimendu ditzan, behean zerrendatu behar da. Zerrenda honi portu bat gehitzen duzunean, $1 programa konfiguratuko da modem konexioei erantzuteko eta saioa hasteko gonbita bistaratzeko.
@@ -125,6 +131,7 @@ mgetty_apply=Aplikatu konfigurazioa
 mgetty_applydesc=Egin klik botoi honetan uneko serieko portuaren konfigurazioa aplikatzeko $1 komandoa exekutatuz eta Mgetty prozesu guztiak hilaz.
 mgetty_applyerr=Ezin izan da konfigurazioa aplikatu
 mgetty_ecannot=Ezin duzu serieko portu konfigurazioak editatu
+
 dialin_title=Deitzailearen IDa Sarbidea
 dialin_desc=Orrialde honen bidez, Mgetty konfiguratu dezakezu deitzaileen sarbidea baimendu edo ukatzeko, deitzailearen telefono zenbakian oinarrituta. Dei bat heltzen denean, telefono zenbakiarekin bat datorren zerrendako lehen sarrera zehaztuko da deia onartzen den edo ez.
 dialin_efile=Mgetty deitzailearen IDa sarbide kontrolerako $1 fitxategia ez da zure sisteman aurkitu. Agian Mgetty ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
@@ -145,9 +152,12 @@ dialin_move=Mugitu
 dialin_err=Ezin izan da deitzailearen ID zenbakia gordetzean
 dialin_enumber=Telefono zenbaki falta edo baliogabea
 dialin_ecannot=Ezin duzu deitzailearen ID sarbidea editatu
+
 acl_pages=Eskuragarri dauden orriak
 acl_direct=Joan zuzenean orri batera?
+
 sync_ecannot=Ezin duzu unix-ppp sinkronizazio aukerak editatu
 sync_title=Erabiltzailearen sinkronizazioa
+
 delete_err=Ezin izan dira kontuak ezabatu
 delete_enone=Ez da hautatu

@@ -1,30 +1,38 @@
 index_refresh=모듈 새로 고침
 index_refreshmsg=설치된 서버의 모든 Webmin 모듈을 다시 확인하고 '사용하지 않은 모듈'범주에 나타나는 모듈을 업데이트하십시오.
+
 access_local=로컬 네트워크를 목록에 포함
 access_elibwrap=$1 Perl 모듈이 설치되어 있지 않으므로 TCP 래퍼를 사용한 IP 액세스 제어를 사용할 수 없습니다.
 access_libwrapcpan=Webmin이 누락 된 Perl 모듈을 자동으로 설치하게하려면 <a href='$1'>여기를 클릭</a>하십시오.
+
 access_eip6='$1'은 완전한 IPv6 또는 네트워크 주소가 아닙니다
 access_ecidr6='$1'은 (는) 유효한 IPv6 네트워크 크기가 아닙니다
 access_ecidr8=IPv6 네트워크 크기 '$1'은 (는) 8로 나눌 수 있어야합니다
 access_trust=프록시가 제공하는 원격 IP 주소를 신뢰합니까?
+
 bind_firewall=방화벽에서 새 포트를여시겠습니까?
 bind_ipv6=IPv6 연결을 수락 하시겠습니까?
 bind_eipv6=$1 Perl 모듈이 설치되어 있지 않으면 IPv6을 사용할 수 없습니다
 bind_redirecting=새 URL로 리디렉션
 bind_elsof=다른 프로세스에서 새 포트 $1을 이미 사용하고 있습니다.
 bind_eonsystem=이 시스템에서 IP 주소 $1이 (가) 활성화되어 있지 않으므로 사용할 수 없습니다
+
 log_global=&lt;글로벌 액션&gt;
 log_sched=예약 된 기능을 기록 하시겠습니까?
 log_login=작업 로그에 Webmin 로그인 및 로그 아웃을 포함 하시겠습니까?
 log_email=이메일을 통해 기록 된 작업 보내기
 log_emailnone=보내 지마
 log_inmodsemail=작업을위한 이메일 보내기
+
 ui_nice_size_type=이진 측정 단위 사용 (KB, MB, GB 대신 KiB, MiB, GiB)
 ui_showhost=페이지 제목 앞에 호스트 이름을 추가 하시겠습니까?
 ui_ehostnamedisplay=표시 호스트 이름이 없거나 잘못되었습니다
+
 mods_checksig=다운로드 한 모듈의 서명 파일을 확인 하시겠습니까?
+
 os_perllib=추가 Perl 라이브러리 경로
 os_usermin=Usermin OS도 업데이트
+
 ssl_deny=거부 할 SSL 프로토콜 버전
 ssl_compression=압축 SSL 연결을 허용 하시겠습니까?
 ssl_honorcipherorder=서버 정의 암호 순서를 강제로 사용 하시겠습니까?
@@ -71,17 +79,22 @@ ssl_letsnotrenew=수동으로 만 갱신
 ssl_staging=서버를 암호화하자
 ssl_staging0=레알
 ssl_staging1=스테이징 (테스트 전용)
+
 newkey_ecns=서버 이름이 입력되지 않았습니다
+
 newcsr_err=SSL CSR을 작성하지 못했습니다.
 newcsr_efile=CSR 파일 이름이 없습니다.
 newcsr_title=CSR 생성
 newcsr_ok=다음 SSL 인증서 요청을 성공적으로 생성했습니다.
 newcsr_ok2=이 CSR은 서명 기관으로 보내야하며, 서명 기관은 서명 된 인증서를 반환합니다. <b>인증서 업로드</b> 탭을 사용하여 위의 키로 설치할 수 있습니다.
+
 startpage_webminup=시스템 정보 페이지에 Webmin 업데이트를 표시 하시겠습니까?
 startpage_moduleup=시스템 정보 페이지에 모듈 업데이트를 표시 하시겠습니까?
+
 upgrade_eportage=포티지 패키지에서 설치하면 Webmin의 업그레이드 기능이 현재 작동하지 않습니다. 대신 포티지 도구를 사용하여 업그레이드하십시오.
 upgrade_src=에서 Webmin 업그레이드
 upgrade_opts=업그레이드 옵션
+
 update_checksig=Webmin이 아닌 리포지토리에서 서명 확인
 update_enosig=업데이트를위한 서명 파일을 다운로드 할 수 없습니다  : $1
 update_ebadsig=서명 검사 업데이트 실패  : $1
@@ -89,7 +102,9 @@ update_enomodsig=$1 모듈의 서명 파일을 다운로드 할 수 없습니다
 update_ebadmodsig=모듈 서명 확인 실패  : $1
 update_src=모듈 업그레이드
 update_opts=모듈 업데이트 옵션
+
 ca_alt=추가 도메인
+
 session_ptimeout=비밀번호 시간 초과
 session_pblock=실패한 로그인 차단
 session_syslog3=<tt>syslog</tt>에 로그 실패?
@@ -109,7 +124,9 @@ session_banner=사전 로그인 배너
 session_md5=Webmin 비밀번호 해싱 형식
 session_sha512=SHA512 암호화 사용
 session_esha512mod=Perl $1 모듈이 설치되지 않았으므로 SHA512 암호화를 사용할 수 없습니다.
+
 categories_custom=커스텀
+
 log_twofactor=변경된 2 단계 인증 옵션
 log_newcsr=새로운 SSL CSR 생성
 log_web=변경된 웹 서버 옵션
@@ -122,6 +139,7 @@ log_onedelete_webmincron=$1 모듈에서 예약 된 기능을 삭제했습니다
 log_letsencrypt=Let 's Encrypt에서 새 SSL 인증서를 요청했습니다.
 log_letsencryptdns=$1에 대한 DNS 레코드를 암호화합시다.
 log_letsencryptcleanup=$1에 대한 DNS 레코드를 암호화합시다.
+
 themes_none=없음-테마로 결정
 themes_overdesc=오버레이는 색상, 배경 및 아이콘을 변경하여 테마의 모양을 수정합니다. 레이아웃을 변경하지 않습니다.
 themes_overlay=현재 오버레이  :
@@ -130,17 +148,22 @@ themes_taboverlay=오버레이 변경
 themes_tabinstall=테마 설치
 themes_tabdelete=테마 삭제
 themes_tabexport=테마 내보내기
+
 themes_ok2=테마 오버레이가 성공적으로 변경되었습니다. Webmin 색인 페이지로 경로 재 지정.
 themes_err4=오버레이 테마를 변경하지 못했습니다.
 themes_eoverlay=선택한 오버레이가 현재 글로벌 테마와 호환되지 않습니다
+
 referers_none2=경고 : 최대 XSS 공격까지 시스템이 열립니다!
+
 ipkey_ips2=IP 주소 및 호스트 이름
 ipkey_eip2='$1'은 (는) 유효한 IP 주소 또는 호스트 이름이 아닙니다
 ipkey_eextracas=추가 인증서 파일이 입력되지 않았습니다
 ipkey_eextraca=추가 인증서 파일 $1이 없습니다.
+
 descs_cmod=오리지널 모듈
 descs_cdesc=클론 제목
 descs_etitle=클론 '$1'에 대한 제목이 없습니다.
+
 advanced_precache=사전 캐시 할 텍스트 파일?
 advanced_precache0=없음
 advanced_precache1=영어 텍스트 파일
@@ -161,8 +184,10 @@ advanced_listdir=색인 파일이없는 디렉토리를 나열 하시겠습니�
 advanced_headers=추가 HTTP 헤더
 advanced_eheader=헤더는 <tt>헤더 : 값</tt>과 같은 형식이어야합니다.
 advanced_sortconfigs=구성 파일을 키별로 정렬하여 저장 하시겠습니까?
+
 savekey_echain=PEM 형식 체인 인증서가 없거나 잘못되었습니다
 savekey_done3=제공된 체인 SSL 인증서가 $1 파일에 저장되었습니다.
+
 debug_title=로그 파일 디버깅
 debug_header=Webmin 디버그 로그 파일 옵션
 debug_enabled=디버그 로그가 활성화 되었습니까?
@@ -190,6 +215,7 @@ debug_cmd=커맨드 라인
 debug_cron=백그라운드 작업
 debug_inmods=디버그 로그를 작성하기위한 모듈
 debug_emodules=선택한 모듈에 대해 디버그 할 모듈이 없습니다.
+
 notif_passexpired=Webmin 비밀번호가 만료되었습니다! 다음에 로그인 할 때 변경해야합니다.
 notif_passchange=Webmin 비밀번호는 $1에 마지막으로 변경되었으며 $2 일 안에 변경해야합니다.
 notif_passlock=Webmin 비밀번호는 $1에 마지막으로 변경되었으며 계정이 변경되지 않으면 $2 일 내에 계정이 잠 깁니다.
@@ -205,6 +231,7 @@ notify_updatedesc=문제 해결
 notif_updateok=지금 업데이트 설치
 notif_reboot=최신 패키지 업데이트 (예 : 새 커널 버전)를 완전히 적용하려면 재부팅이 필요합니다.
 notif_rebootok=지금 재부팅하세요
+
 status_title=백그라운드 상태 수집
 status_header=상태 수집 작업 설정
 status_interval=백그라운드에서 시스템 상태를 수집 하시겠습니까?
@@ -216,6 +243,7 @@ status_temp=드라이브 온도를 수집 하시겠습니까?
 status_units=온도 단위
 status_celsius=섭씨
 status_fahrenheit=화씨
+
 sendmail_title=이메일 보내기
 sendmail_desc=이 페이지는 예약 된 백업 또는 백그라운드 모니터링과 같은 Webmin의 이메일 전송 방법을 제어합니다. 또한 사용자 메일 읽기 모듈을 사용하여 전송 된 이메일에 영향을줍니다.
 sendmail_header=메일 발송 옵션
@@ -256,12 +284,14 @@ sendmail_url=이메일에 사용할 Webmin URL
 sendmail_url_def=기본값 ($1)
 sendmail_url_custom=사용자 정의 URL
 sendmail_eurl=맞춤 URL이 없거나 잘못되었습니다.
+
 testmail_title=테스트 이메일 보내기
 testmail_err=테스트 메시지를 보내지 못했습니다
 testmail_eto=목적지 주소가 입력되지 않았습니다
 testmail_sending=$1에서 $2 (으)로 메시지 보내기
 testmail_done=.. 메시지 전송 됨. 대상 주소의 사서함을 확인하여 실제로 배달되었는지 확인하십시오.
 testmail_failed=.. 전송 실패  : $1
+
 web_title=웹 서버 옵션
 web_header=Webmin의 내장 웹 서버 옵션
 web_expires=정적 파일의 클라이언트 측 캐시 시간
@@ -273,6 +303,7 @@ web_expirespaths=URL 경로에 따른 클라이언트 측 캐시 시간
 web_expirespath=경로 정규식
 web_expirestime=캐시 시간 (초)
 web_eexpires2=$1 행에 없거나 숫자가 아닌 클라이언트 측 캐시 시간
+
 webmincron_title=Webmin 예약 기능
 webmincron_emodule=Webmin Cron Jobs 모듈이 설치되지 않았습니다!
 webmincron_module=Webmin 모듈
@@ -296,6 +327,7 @@ webmincron_when1=특정 시간
 webmincron_secs=초
 webmincron_err=예약 된 기능을 저장하지 못했습니다
 webmincron_einterval=간격은 0보다 큰 초 수 여야합니다.
+
 twofactor_title=2 단계 인증
 twofactor_header=이중 인증 옵션
 twofactor_provider=인증 제공자
@@ -334,6 +366,7 @@ twofactor_secret1=무작위로 생성
 twofactor_secret0=16 자 키 사용
 twofactor_esecret=비밀 키는 정확히 16 자 여야하며 문자와 숫자 만 포함해야합니다.
 twofactor_esession=세션 기반 인증이 활성화되어 있지 않으면 2 단계 인증을 사용할 수 없습니다
+
 letsencrypt_title=인증서 요청을 암호화하자
 letsencrypt_err=인증서를 요청하지 못했습니다
 letsencrypt_ecmds=시스템에서 클라이언트의 클라이언트 암호화 명령 <tt>certbot</tt> 또는 <tt>python</tt> 명령을 찾을 수 없습니다.
@@ -367,5 +400,6 @@ letsencrypt_ecsr=CSR을 생성하지 못했습니다  : $1
 letsencrypt_ekeygen=개인 키를 생성하지 못했습니다  : $1
 letsencrypt_enative=기본 Let 's Encrypt 클라이언트 (certbot)는이 시스템에서 이전에 사용되었으며 향후 모든 인증서 요청에 사용해야합니다.
 letsencrypt_eacmedns=공식적인 Let 's Encrypt 클라이언트 만이 DNS 기반 유효성 검사를 지원합니다
+
 announce_hide=이 공지 숨기기
 alert_hide=경고 숨기기

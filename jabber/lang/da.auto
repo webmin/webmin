@@ -17,6 +17,7 @@ index_restartmsg=Klik på denne knap for at anvende den aktuelle konfiguration v
 index_comments=Advarsel - din Jabber-konfigurationsfil $1 indeholder kommentarer, som fjernes, hvis der foretages konfigurationsændringer ved hjælp af dette modul.
 index_return=Jabber-menu
 index_version=Jabber version $1 
+
 general_title=Generelle indstillinger
 general_header=Globale Jabber-serverindstillinger
 general_host=Din server's værtsnavn
@@ -32,6 +33,7 @@ general_eelogfmt=Manglende fejlloggformat
 general_erlog=Manglende eller ugyldig trafiklogfil
 general_erlogfmt=Manglende trafiklogformat
 general_epidfile=Manglende eller ugyldig proces-id-fil
+
 messages_title=Beskeder
 messages_header=Jabber-serverbesked til klienter
 messages_wsubject=Velkomstmeddelelsesemne
@@ -44,6 +46,7 @@ messages_vcard2jud=Send vCard til Jabber brugerkatalog?
 messages_err=Kunne ikke gemme beskeder
 messages_evcard=Ugyldig vCard XML : $1 
 messages_etag=Server vCard XML starter ikke med &lt;vCard&gt;
+
 modules_title=Jabber-moduler
 modules_desc=Modulerne nedenfor er brugt til at behandle meddelelser modtaget af Jabber session manager. Du bør kun ændre denne liste, hvis du ved, hvad du laver.
 modules_header=Jabber server session manager moduler
@@ -52,6 +55,7 @@ modules_so=Delt bibliotek
 modules_err=Kunne ikke gemme Jabber-moduler
 modules_emod='$1' er ikke et gyldigt modulnavn
 modules_eso=Delt bibliotek '$1' findes ikke
+
 karma_title=Karma Traffic Control
 karma_header=Valgmuligheder for kontrol af trafikfrekvens
 karma_rate=Overdreven forbindelseshåndtering
@@ -80,6 +84,7 @@ karma_epenalty=Manglende eller ugyldige strafperioder
 karma_erestore=Manglende eller ugyldige gendannelsesperioder
 karma_epoints=Manglende eller ugyldigt antal forbindelser
 karma_etime=Manglende eller ugyldig tid at blokere for
+
 ips_title=IP-adgangskontrol
 ips_header=Jabber-server IP-adgangskontrol
 ips_allow=Tilladte klient-IP'er
@@ -89,10 +94,12 @@ ips_none=Ingen
 ips_sel=Noterede adresser/netmasks ..
 ips_err=Kunne ikke gemme IP-adgangskontrol
 ips_eaddr='$1' er ikke en gyldig IP-adresse eller IP-adresse/netmaske
+
 file_title=Rediger konfigurationsfil
 file_desc=Brug formularen nedenfor til at redigere Jabber-konfigurationsfilen direkte. Dette skal kun gøres, hvis du forstår XML-konfigurationsformatet.
 file_header=Rediger Jabber-konfigurationsfil
 file_err=Kunne ikke gemme konfigurationsfilen
+
 admin_title=Administrative brugere
 admin_header=Brugere af serveradministration
 admin_read=Læs adgangsadministratorer
@@ -100,11 +107,13 @@ admin_write=Skriveadgangsadministratorer
 admin_reply=Svar automatisk på admin-meddelelser?
 admin_rsubject=Motiver automatisk
 admin_rbody=Besked automatisk
+
 filter_title=Brugerfiltre
 filter_header=Brugerfilter tilladelser
 filter_max=Maksimale filterregler
 filter_conds=Tilladte filterbetingelser
 filter_acts=Tilladte filterhandlinger
+
 restart_err=Kunne ikke anvende ændringer
 stop_err=Kunne ikke stoppe Jabber
 stop_epid=Kunne ikke finde Jabber-processen

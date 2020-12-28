@@ -16,9 +16,11 @@ index_mailfromnone=Domyślnie (<tt>root</tt>)
 index_program=Polecenie do uruchomienia po wykryciu problemów
 index_programnone=Nie uruchamiaj żadnych
 index_monitor=Monitorowanie włączone?
+
 raid6=RAID6 (podwójna parzystość rozproszona)
 raid10=RAID10 (paski i odbicie lustrzane)
 blocks=Bloki
+
 create_missing=Czy dołączyć aktualnie brakujący dysk?
 create_assume=Pominąć inicjalizację urządzeń?
 create_lvm=LVM VG $1, LV $2 
@@ -33,6 +35,7 @@ create_o2_layout=2 kopie offsetowe
 create_n3_layout=3 w pobliżu kopii
 create_f3_layout=3 dalekie kopie
 create_o3_layout=3 kopie offsetowe
+
 view_uuid=UUID
 view_errors=Błędy RAID
 view_bad=Awaria dysków $1 
@@ -69,7 +72,9 @@ view_mountmsg=Wprowadź katalog i kliknij ten przycisk, aby przejść do formula
 view_mountmsg2=Kliknij ten przycisk, aby użyć tego urządzenia RAID dla pamięci wirtualnej w systemie.
 view_blocks=$1 bloków
 view_sparegroup=Grupa zapasowa
+
 mkfs_header2=Ten formularz umożliwia zbudowanie nowego systemu plików $2 na $1. <b>Wszystkie</b> istniejące dane zostaną usunięte!
+
 emdadmstop=<tt>mdadm</tt> in <tt>--stop</tt> mode failed : $1
 emdadmcreate=<tt>mdadm</tt> in <tt>--create</tt> mode failed : $1
 emdadmadd=<tt>mdadm</tt> in <tt>--manage --add</tt> mode failed : $1
@@ -77,6 +82,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_add=Dodano partycję $2 do urządzenia RAID $1 
 log_remove=Usunięto partycję $2 z urządzenia RAID $1 
 log_replace=Wymieniona na gorąco partycja $2 w urządzeniu RAID $1 z wolną partycją $3 
@@ -84,14 +90,17 @@ log_grow=Wyhodowano urządzenie RAID $1 do łącznie $2 dysków
 log_convert_to_raid6=Konwertowane urządzenie RAID5 $1 na urządzenie RAID6
 log_convert_to_raid5=Konwertowane urządzenie RAID6 $1 na urządzenie RAID5
 log_notif=Zaktualizowano opcje powiadamiania o problemach RAID
+
 notif_err=Nie udało się zapisać opcji powiadamiania o problemie RAID
 notif_emailaddr=Brakujący lub nieprawidłowy adres powiadomienia
 notif_emailfrom=Brak lub nieprawidłowy adres nadawcy
 notif_eprogram=Brakujący lub nieistniejący program do uruchomienia
+
 delete_title=Usuń macierz RAID
 delete_rusure=Czy na pewno chcesz usunąć macierz RAID $1, która zajmuje $2 miejsca na dysku?
 delete_ok=Tak, usuń to
 delete_eidx=Nie wybrano macierzy RAID!
+
 remove_title=Usuń partycję z macierzy RAID
 remove_rusure=Czy na pewno chcesz usunąć partycję $2 z macierzy RAID $1 ?
 remove_ok=Tak, usuń to

@@ -9,6 +9,7 @@ index_auto=Type inconnu
 index_swap=Mémoire virtuelle
 index_return=Liste des systèmes de fichiers
 index_mount2=Monter avec un mot de passe:
+
 edit_title=Éditer un montage
 create_title=Créer un montage
 edit_err=Impossible d'éditer ce montage
@@ -53,6 +54,7 @@ edit_ecannot=Vous n'êtes pas autorisé à éditer ce système de fichiers
 edit_ecannot2=Vous n'êtes pas autorisé à ajouter un nouveau système de fichiers
 edit_3_or_lower=3 (ou moins)
 edit_advanced=Mode Avancé
+
 save_err=Impossible d'enregistrer le montage
 save_edir='$1' n'est pas un répertoire
 save_edirname='$1' n'est pas un nom de répertoire valide
@@ -67,8 +69,10 @@ save_perm=Les changements au montage sur $1 ne peuvent ne pas être appliqués v
 save_apply=Appliquer à la liste permanente
 save_eremount=Echec de remontage : $1
 save_enone=Vous n'avez pas choisi d'enregistrer ou de monter
+
 swap_err=Impossible de créer le fichier de swap
 swap_esize=$1 n'est pas une taille valide
+
 nfs_server=Choisir le Serveur NFS...
 nfs_select=Choisir un serveur NFS...
 nfs_ip=Adresse IP
@@ -80,6 +84,7 @@ nfs_seldir=Choisir le répertoire NFS à monter...
 nfs_seldirv4=Pour un montage NFSv4, vous devez sélectionner '/'
 nfs_dir=Répertoire
 nfs_clients=Clients
+
 smb_choose=Choisir le serveur SMB...
 smb_elist=Impossible de lire la liste du serveur $1. Peut-être que le serveur ne permet pas de le parcourir
 smb_ehost=Le serveur $1 n'existe pas
@@ -94,6 +99,7 @@ smb_sel2=Choisir un partage à monter...
 smb_share=Partage
 smb_comment=Commentaire
 smb_noshares=Il n'y a aucun partage de fichiers sur le serveur $1
+
 solaris_scsidev=Contrôleur SCSI $1 cible $2 unité $3 partition $4
 solaris_mddev=Périphérique RAID $1
 solaris_ecacheexists=Le répertoire $1 existe déjà. Supprimez-le.
@@ -225,6 +231,7 @@ solaris_efstyp2=Impossible de vérifier le type de système de fichiers : $1
 solaris_ecachedir='$1' n'est pas un répertoire de tampon valide
 solaris_efmode='$1' n'est pas un mode octal de fichier valide
 solaris_edmode='$1' n'est pas un mode octal de répertoire valide
+
 linux_eamd=Impossible d'utiliser le service d'automontage
 linux_eauto=Automontage impossible : $1
 linux_esmbconn=Impossible de se connecter au serveur
@@ -347,6 +354,7 @@ linux_sec=Niveau de sécurité
 linux_integrity=Intégrité
 linux_privacy=Confidentialité (et Intégrité)
 linux_transfert=Protocole RPC/de transfert
+
 log_mount=$3 monté
 log_mount_l=$2 $1 monté sur $3
 log_umount=$3 démonté
@@ -359,7 +367,9 @@ log_modify=Montage $3 modifié
 log_modify_l=Montage $1 modifié $2 sur $3
 log_delete=Montage $3 supprimé
 log_delete_l=Montage $1 supprimé $2 on $3
+
 unmount_err=Impossible de démonter $1
+
 mount_err=Impossible de monter $1
 irix_nhost=Nom d'hôte NFS
 irix_ndir=Répertoire NFS
@@ -390,6 +400,7 @@ irix_rock=Utiliser les extensions Rock Ridge ?
 irix_nofsck=Vérifier le système de fichier au démarrage ?
 irix_auto=Source de l'automonteur
 irix_automap=Fichier de correspondance
+
 irix_ehost=la machine '$1' n'existe pas
 irix_eloss=La machine '$1' est arrêtée
 irix_eshowmount=La machine '$1' ne supporte pas NFS
@@ -407,15 +418,19 @@ irix_efstyp2=Impossible d'obtenir le type du système de fichiers de $1 : $2
 irix_efstyp=Le type du système de fichiers sur $1 est $2, et non $3
 irix_eautomap=Le fichier de correspondance de l'automonteur '$1' n'existe pas
 irix_eauthmap2=Fichier de correspondance de l'automonteur manquant ou invalide
+
 irix_devroot=Partition racine
 irix_devswap=Partition de swap
 irix_autohosts=Tous les systèmes de fichiers NFS exportés
+
 acl_only=Autoriser uniquement le montage et le démontage ?
 acl_fs=Systèmes de fichiers éditables
 acl_all=Tous
 acl_list=Sous les répertoires
 acl_create=Ajout possible de nouveaux systèmes de fichiers ?
+
 egcc=Impossible de trouver le compilateur gcc ou cc pour générer un programme pour lister les systèmes de fichiers montés sur votre machine.
 ecompile=Erreur en créant le programme pour lister les systèmes de fichiers montés sur votre machine : $1
+
 freebsd_eaddr=Adresse du serveur manquante ou invalide
 freebsd_eworkgroup=Groupe de travail manquant ou invalide

@@ -57,20 +57,27 @@ index_rotate=통계 업데이트
 index_rotatedesc=이 버튼을 클릭하면 기록 된 모든 네트워크 트래픽을 현재 시간까지 처리하여 즉시보고 할 수 있습니다.
 index_eiptables=경고-IPtables 구성에 오류가 있습니다 : $1. 대역폭 모니터링을 설정하면 모든 방화벽 규칙이 지워집니다.
 index_return=보고서 양식
+
 log_setup=인터페이스 $1 에서 대역폭 모니터링 설정
 log_turnoff=비활성화 된 대역폭 모니터링
 log_rotate=업데이트 된 통계
+
 acl_setup=모니터링을 설정 및 비활성화 할 수 있습니까?
+
 turnoff_ecannot=모니터링을 비활성화 할 수 없습니다
+
 setup_ecannot=모니터링을 사용할 수 없습니다
 setup_eiface=인터페이스 이름이 없거나 유효하지 않습니다
 setup_ezone=선택한 인터페이스의 Shorewall 영역을 찾지 못했습니다.
+
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=쇼어 월
+
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=통계 업데이트
 rotate_doing=기록 된 네트워크 트래픽 처리 ..
 rotate_done=.. 완료.

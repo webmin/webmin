@@ -2,6 +2,7 @@ index_version2=Sendmail sürümü $1, yapılandırma $2
 index_xversion=Sendmail sürümü $1 
 index_version=Sendmail yapılandırma $1 
 index_sendmail=Posta göndermek
+
 opts_gecos=Kullanıcıların gerçek adları için posta kabul edilsin mi?
 opts_hops=Maksimum posta atlama sayısı
 opts_daemon=SMTP bağlantı noktası seçenekleri
@@ -12,16 +13,20 @@ opts_qso=Posta kuyruğunu sırala
 opts_priority=öncelik
 opts_host=Hostadı
 opts_time=Alınan zaman
+
 aliases_enofile=Sendmail yapılandırmanızda tanımlanmış bir takma ad dosyası yok
 aliases_type6=$1 filtre dosyasını uygula
 aliases_toomany=Sisteminizde bu sayfada görüntülenecek çok fazla posta takma adı var.
 aliases_go=Eşleşen takma adları bulun:
 aliases_delete=Seçilen Takma Adları Sil
+
 aform_ecannot=Bu takma adı düzenlemenize izin verilmiyor
 aform_type6=Filtre dosyasını uygula
 aform_file=Takma ad dosyasına ekle
 aform_cmt=Açıklama
+
 afile_ewrite=Adres dosyasına yazılamadı : $1 
+
 ffile_title=Filtre Dosyasını Düzenle
 ffile_desc=$1 dosyasındaki filtre kurallarını ayarlamak için aşağıdaki formu kullanın.
 ffile_efile=$1 öğesini düzenlemenize izin verilmiyor.
@@ -37,6 +42,7 @@ ffile_other=Aksi takdirde $1 'e ilerleyin
 ffile_err=Filtre dosyası kaydedilemedi
 ffile_ematch=Eksik maç
 ffile_eaction=Yönlendirme adresi eksik
+
 rfile_desc2=Ayrıca, otomatik olarak kullanılan varsayılanları ekleyen veya değiştiren posta üstbilgilerini aşağıdaki gibi satırlar koyarak da ayarlayabilirsiniz: <br><tt> Kimden: foo@bar.com </tt><br> <tt>Konu: Tatilde</tt> <br> iletinin üst kısmında, gövdeden tek bir boş satırla ayrılır.
 rfile_undo=Değişiklikleri geri al
 rfile_replies=Posta döngülerini önlemek için yanıtlar izlensin mi?
@@ -53,60 +59,81 @@ rfile_from=Kimden: yanıt adresi
 rfile_auto=Otomatik (alıcının adresine göre)
 rfile_efrom=Gönderen: adresi
 rfile_fromdesc=A: otomatik yöntem güvenilir olmayabileceğinden, mümkün olduğunda her zaman Kimden: adresi belirtilmelidir.
+
 asave_etype6='$1' filtre dosyası geçerli değil
 asave_esame=Yalnızca webmin giriş bilgilerinizle aynı ada sahip bir takma ad oluşturmanıza izin verilir
+
 adelete_err=Takma adlar silinemedi
 adelete_enone=Hiçbiri seçilmedi
 adelete_ecannot=$1 takma adını silme izniniz yok
+
 masq_ndomains=Maskelenmeyecek alanlar
+
 virtusers_efeature=Sendmail yapılandırmanızda adres eşleme (<tt>virtuser</tt>) özelliği etkin değil. Sendmail özelliklerini ayarlamak için <a href='$1'>burayı tıklayın</a>.
 virtusers_createfile=Veya bu özellik henüz etkinleştirildiyse, dosyayı oluşturmak için <a href='$1'>burayı tıklayın</a>.
 virtusers_cmt=Açıklama
 virtusers_toomany=Sisteminizde bu sayfada görüntülenemeyecek kadar çok adres eşlemesi var.
 virtusers_go=Eşleşen adres eşlemelerini bulun:
 virtusers_delete=Seçilen Adres Eşlemelerini Sil
+
 vform_cmt=Açıklama
 vform_err_unavailable=Kullanım dışı
 vform_err_tempfail=Geçici arıza
 vform_err_protocol=Protokol hatası
+
 vsave_esame=Yalnızca kullanıcı adınız için adres eşlemeleri oluşturma izniniz var
+
 vdelete_err=Adres eşleşmeleri silinemedi
 vdelete_ecannot=$1 için eşlemeyi silme izniniz yok
+
 mailers_efeature=Sendmail yapılandırmanızda alan adı yönlendirme (<tt>mailertable</tt>) özelliği etkin değil. Sendmail özelliklerini ayarlamak için <a href='$1'>burayı tıklayın</a>.
 mailers_desc3=Ayrıca her alan adı için <a href='$1'>geçiş alan adları</a> listesinde bir girişiniz de olmalıdır.
 mailers_delete=Seçili Alan Adı Rotalarını Sil
+
 mform_host2=Ana bilgisayar veya alan adı
 mform_domain2=Alan adındaki tüm ana makineler
 mform_domain3=Alan adı ve tüm ana bilgisayarları
+
 mdelete_err=Alan adı yönlendiricisi silinemedi
 mdelete_ecannot=$1 için rotayı silme izniniz yok
+
 generics_efeature=Sendmail yapılandırmanızda giden adres eşleme (<tt>jenerikler</tt>) özelliği etkin değil. Sendmail özelliklerini ayarlamak için <a href='$1'>burayı tıklayın</a>.
 generics_toomany=Sisteminizde bu sayfada görüntülenemeyecek kadar çok adres var.
 generics_go=Eşleşen giden adresleri bulun:
 generics_delete=Seçilen Giden Adresleri Sil
+
 gsave_ecannot3=Bu giden adresi kaydetme izniniz yok
 gsave_ealready='$1' için giden bir adres eşleme zaten var
+
 gdelete_err=Giden adres eşleşmeleri silinemedi
 gdelete_ecannot=$1 için eşlemeyi silme izniniz yok
+
 domains_efeature=Sendmail yapılandırmanızda alan eşleme (<tt>alan adı</tt>) özelliği etkin değil. Sendmail özelliklerini ayarlamak için <a href='$1'>burayı tıklayın</a>.
 domains_delete=Seçilen Alan Eşlemelerini Sil
+
 dsave_ealready='$1' için bir alan adı eşlemesi zaten var
+
 ddelete_err=Alan adı eşlemeleri silinemedi
 ddelete_ecannot=$1 için eşlemeyi silme izniniz yok
+
 access_efeature=Sendmail yapılandırmanızda spam denetimi (<tt>access_db</tt>) özelliği etkin değil. Sendmail özelliklerini ayarlamak için <a href='$1'>burayı tıklayın</a>.
 access_toomany=Sisteminizde bu sayfada görüntülenemeyecek kadar çok spam kontrol kuralı var.
 access_go=Eşleşen spam kontrol kurallarını bulun:
 access_delete=Seçilen Spam Kontrol Kurallarını Sil
+
 sform_tag=Karşı maç
 sform_tag_=her şey
 sform_tag_from=Adresten
 sform_tag_to=Adrese
 sform_tag_connect=Bağlantı bilgileri
 sform_tag_spam=Spam bilgileri
+
 ssave_ealready='$1' için bir spam kontrol kuralı zaten var
 ssave_ecannot2=Bu spam kontrol kuralını kaydetmenize izin verilmiyor
+
 sdelete_err=Spam kontrol kuralları silinemedi
 sdelete_ecannot=$1 kuralını silme izniniz yok
+
 mailq_count=$1 Mesajlar
 mailq_cc=cc
 mailq_subject=konu
@@ -122,10 +149,13 @@ mailq_search=Sıraya alınan iletileri bulun
 mailq_quar=Karantinaya alınan
 mailq_refresh=Posta Kuyruğunu Yenile
 mailq_refreshdesc=Posta sırasının geçerli durumunu göstermek için bu sayfayı yeniden yükleyin.
+
 flushq_desc2=Seçilen $1 iletinin teslim edilmeye çalışılması zorlanıyor ..
 flushq_ecannot=Posta kuyruğunu temizlemenize izin verilmiyor
+
 searchq_title=Sıra Arama Sonuçları
 searchq_none=Kuyruğa alınmış ileti bulunamadı.
+
 delq_enone=Silinecek mesaj yok seçildi
 delq_titles=Mesajları Silme
 delq_file=$1 posta dosyası siliniyor ..
@@ -138,9 +168,11 @@ delq_force=Yine de silinmeye zorla
 delq_ecannot2=bu mesajı silemezsin
 delq_rusure=Seçilen $1 sıraya alınmış mesajı silmek istediğinizden emin misiniz?
 delq_confirm=Mesajları sil
+
 boxes_sent=Gönderilmiş postalar
 boxes_toomany=Sisteminizde tüm posta kutularını listelemek için çok fazla kullanıcı var.
 boxes_go=Kullanıcı için postayı görüntüle:
+
 mail_for2=$1 kullanıcısı için
 mail_sent=Gönderilmiş postalar listesinde
 mail_euserexists=Bu Unix kullanıcısı mevcut değil
@@ -154,6 +186,7 @@ mail_move=Taşınmak:
 mail_copy=Kopyala:
 mail_rfc=Satırdan
 mail_eexists=Mesaj artık mevcut değil!
+
 view_desc2=$2 kullanıcısı için $1 iletisi
 view_desc3=Mesaj $1 
 view_sent=Gönderilen posta listesinde $1 mesajı
@@ -174,11 +207,14 @@ view_egone=Bu mesaj artık mevcut değil
 view_afile=Ek adı
 view_atype=Ek tipi
 view_asize=Dosya boyutu
+
 enew_title=E-postayı Düzenle
 reply_mailforward=Yönlendirilmiş mesajlar
 reply_body=Mesaj metni
+
 send_eperms2=$1 dosyasını gönderme izniniz yok
 send_epath=Sendmail yürütülebilir $1 mevcut değil.
+
 delete_title=Postayı Sil
 delete_rusure=Seçilen $1 iletiyi $2 klasöründen silmek istediğinizden emin misiniz? Bu, büyük bir posta dosyası için biraz zaman alabilir. Silme işlemi bitinceye kadar başka bir işlem yapılmamalıdır.
 delete_rusure2=Bu iletiyi $1 kullanıcısından silmek istediğinizden emin misiniz? Bu, büyük bir posta dosyası için biraz zaman alabilir. Silme işlemi bitinceye kadar başka bir işlem yapılmamalıdır.
@@ -189,6 +225,7 @@ delete_emoveuser=Postaları taşıyacak kullanıcı mevcut değil
 delete_emovecannot=Belirtilen kullanıcıya posta taşıma izniniz yok
 delete_emovenone=Taşınacak posta seçilmedi
 delete_nobutton=Hiçbir düğme tıklanmadı
+
 search_efield=Bir arama türü seçmelisiniz.
 search_ewhat=$1 satırı için girilecek metin yok
 search_enone=Hiçbir arama kriteri girilmedi
@@ -198,10 +235,12 @@ search_results4=Aramanızla eşleşen $1 posta mesajı ..
 search_local=Yerel klasörlerde
 search_all=Tüm klasörlerde
 search_eboolean=Hem 'hem de' ve 'veya' kullanılan Boole aramaları desteklenmez
+
 file_edomains=Alan adı eşleme dosyasını düzenlemenize izin verilmiyor.
 file_ecannot=Bu dosyayı düzenlemenize izin verilmiyor
 file_ealias=Takma ad dosya satırı için geçersiz biçim : $1 
 file_etab=Harita dosya satırı için geçersiz biçim : $1 
+
 acl_ports=Ağ bağlantı noktalarını düzenleyebilir mi?
 acl_manual=Dosyaları elle düzenleyebilir mi?
 acl_flushq=Posta kuyruğunu temizleyebilir mi?
@@ -226,6 +265,7 @@ acl_usersm=Eşleşen kullanıcılar
 acl_asame=Kullanıcı adı ile aynı
 acl_usersu=UID aralığında
 acl_spam=Bu kullanıcının düzenleyebileceği spam denetim adresleri
+
 log_ports=Ağ bağlantı noktalarını değiştirme
 log_delmailqs=Kuyruktan $1 posta silindi
 log_movemail=$1 iletiyi $2 'den $3 'e taşıdı
@@ -240,6 +280,7 @@ log_delete_domains=$1 alan adı eşlemesi silindi
 log_delete_accesses=$1 spam kontrol girişi silindi
 log_delete_generics=$1 giden adres silindi
 log_delete_mailers=$1 alan adı silindi
+
 match_from=Gönderen: eşleşmeler
 match_subject=Konu: eşleşmeler
 match_to=Alıcı: eşleşmeler
@@ -259,6 +300,7 @@ match_!status=Durum eşleşmiyor
 match_!body=Vücut uyuşmuyor
 match_!size=Boyut daha küçük
 match_!headers=Üstbilgiler eşleşmiyor
+
 features_title=Sendmail M4 Yapılandırması
 features_desc=Bu sayfa, $2 gerçek yapılandırma dosyasının oluşturulduğu $1 Sendmail M4 yapılandırma dosyasından ilgili girdileri listeler.
 features_type=Giriş türü
@@ -278,6 +320,7 @@ features_efeatures=$2 Sendmail M4 yapılandırma temel dizini sisteminizde bulun
 features_econfig=Sendmail M4 temel dizininin ve M4 yapılandırma dosyasının konumları <a href='$1'>modül yapılandırmanızda</a> henüz ayarlanmadı. Sendmail'i kaynaktan yüklediyseniz, bunlar orijinal kaynak dizininin altında olmalıdır.
 features_move=Hareket
 features_manual=Dosyayı manuel olarak düzenleme
+
 feature_add=Yapılandırma Girişi Ekle
 feature_edit=Yapılandırma Girişini Düzenle
 feature_header=M4 yapılandırma girişi ayrıntıları
@@ -298,12 +341,15 @@ feature_emailer=$1 postası zaten var
 feature_eostype=İşletim sistemi türü zaten $1 olarak tanımlanmış
 feature_manual=M4 Dosyasını Düzenle
 feature_mdesc=Bu sayfa $1 Sendmail M4 yapılandırma dosyasını elle düzenlemenizi sağlar. Düzenlemelerinizde hiçbir sözdizimi denetimi yapılmayacağından dikkatli olun.
+
 feat_access_db=Spam kontrol dosyası
 feat_virtusertable=Adres Eşleme
 feat_mailertable=Alan Adı Yönlendirme
 feat_genericstable=Giden Adresler
 feat_domaintable=Alan Adı Eşleme
+
 mailer_local=Yerel Unix dağıtımı
+
 build_title=Sendmail Yapılandırmasını Yeniden Oluşturma
 build_em4=Sendmail yapılandırma dosyasını yeniden oluşturmak için gereken $1 komutu sisteminizde bulunamadı.
 build_ebuild=Yapılandırma oluşturulamadı : $1 
@@ -312,13 +358,16 @@ build_rusure2=Sendmail Seçenekleri sayfasında Sendmail'de değişiklik yaptıy
 build_ok=Evet, şimdi değiştirin
 build_diff=Sendmail yapılandırma dosyanızda aşağıdaki değişiklikler yapılacaktır.
 build_nodiff=Sendmail yapılandırma dosyanız zaten güncel.
+
 stop_err=Sendmail durdurulamadı
 stop_ecannot=Sendmail'i durdurmanıza izin verilmiyor
 stop_epid=Sendmail çalışıyor gibi görünmüyor
 restart_epids=Sendmail işlemleri bulunamadı
 restart_ekill=Sendmail işlemleri bildirilemedi : $1 
+
 start_err=Sendmail başlatılamadı
 start_ecannot=Sendmail başlatmanıza izin verilmiyor
+
 ports_title=Ağ Bağlantı Noktaları
 ports_name=Bağlantı noktası adı
 ports_addr=Adresi dinle

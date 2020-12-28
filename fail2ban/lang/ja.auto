@@ -12,10 +12,12 @@ index_restart=Fail2Banサーバーの再起動
 index_restartdesc=このボタンをクリックして、Fail2Banサーバーを再起動して現在の構成を適用します。
 index_return=モジュールインデックス
 index_header=Fail2Banモジュール
+
 check_edir=構成ディレクトリ $1は存在しません
 check_econf=$1の構成ファイル $2は存在しません
 check_eclient=クライアントコマンド $1が見つかりませんでした
 check_eserver=サーバーコマンド $1が見つかりませんでした
+
 filters_title=ログフィルター
 filters_name=フィルター名
 filters_re=正規表現
@@ -25,6 +27,7 @@ filters_return=フィルターのリスト
 filters_derr=フィルターを削除できませんでした
 filters_enone=何も選択されていません
 filters_einuse=フィルター $1は、jailによって使用されるため、削除できません： $2
+
 filter_title1=フィルタを作成
 filter_title2=フィルターを編集
 filter_desc=ホスト名またはIPアドレスが表示される正規表現では、<i>&lt;HOST&gt;</i>を使用します。
@@ -39,6 +42,7 @@ filter_ename=フィルター名が欠落しているか無効です
 filter_eclash=フィルター名は既に使用されています
 filter_efail=一致する正規表現が入力されていません
 filter_einuse=このフィルタは、jailによって使用されているため、削除できません： $1
+
 actions_title=マッチアクション
 actions_name=アクション名
 actions_ban=禁止コマンド
@@ -48,6 +52,7 @@ actions_return=アクションのリスト
 actions_derr=アクションを削除できませんでした
 actions_enone=何も選択されていません
 actions_einuse=アクション $1は、jailによって使用されるため、削除できません： $2
+
 action_title1=一致アクションを作成
 action_title2=一致アクションを編集
 action_header=一致アクションの詳細
@@ -64,6 +69,7 @@ action_ban=IPを禁止するコマンド
 action_unban=IPの禁止を解除するコマンド
 action_desc=<i>&lt;ip&gt;</i>は、禁止されているIPアドレスに置き換えられます。
 action_einuse=このアクションは、jailによって使用されるため、削除できません： $1
+
 jails_title=アクション刑務所のフィルター
 jails_add=新しい刑務所を追加します。
 jails_name=刑務所名
@@ -76,6 +82,7 @@ jails_defdesc=必要な一致数やIPを禁止する時間など、上記のす�
 jails_return=刑務所のリスト
 jails_derr=刑務所を削除できませんでした
 jails_enone=何も選択されていません
+
 jail_title1=刑務所を作成
 jail_title2=刑務所を編集
 jail_header=アクション刑務所の詳細をフィルタリングする
@@ -115,13 +122,16 @@ jail_banaction=適用するデフォルトのアクション
 jail_defprotocol=アクションのデフォルトプロトコル
 jail_edestemail=デフォルトの通知メールアドレスが見つからないか無効です
 jail_eignoreip=無視する無効なIPアドレス
+
 jaildef_title=デフォルトの刑務所オプション
 jaildef_header=すべての刑務所のデフォルト
 jaildef_err=デフォルトの刑務所オプションを保存できませんでした
 jaildef_egone=デフォルトの刑務所が見つかりません！
+
 start_err=サーバーの起動に失敗しました
 stop_err=サーバーを停止できませんでした
 restart_err=サーバーの再起動に失敗しました
+
 log_create_filter=フィルター $1を作成しました
 log_update_filter=変更されたフィルター $1
 log_delete_filter=フィルター $1を削除しました
@@ -139,6 +149,7 @@ log_atboot=起動時にFail2Banを有効化
 log_delboot=起動時にFail2Banを無効にしました
 log_manual=編集された構成ファイル $1
 log_jaildef=変更されたデフォルトのjailオプション
+
 config_title=グローバル構成
 config_edef=構成ファイルに定義セクションが見つかりません！
 config_header=Fail2Banの構成設定
@@ -151,10 +162,12 @@ config_socket=サーバーとの通信用ソケット
 config_err=グローバル構成を保存できませんでした
 config_elogtarget=ログを書き込むファイルは絶対パスである必要があります
 config_esocket=ソケットファイルは絶対パスである必要があります
+
 manual_title=構成ファイルの編集
 manual_desc=編集するファイル：
 manual_ok=OK
 manual_efile=選択したファイルはFail2Ban構成の一部ではありません！
 manual_err=構成ファイルの編集に失敗しました
 manual_edata=設定ファイルの内容が入力されていません
+
 syslog_logtarget=Fail2Banアクションログ

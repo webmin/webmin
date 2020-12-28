@@ -25,6 +25,7 @@ index_resetdesc=Haga clic en este botón para borrar todas las reglas de firewal
 index_cluster=Servidores en clúster
 index_clusterdesc=Haga clic en este botón para configurar servidores Webmin adicionales en los que la configuración del firewall se copiará automáticamente.
 index_return=reglas de firewall
+
 index_num=Num
 index_action=Acción
 index_desc=Condición
@@ -37,6 +38,7 @@ index_delete=Eliminar seleccionado
 index_existing=Webmin ha detectado $1 las reglas de firewall IPFW actualmente en uso, que no están registradas en el archivo $2. Estas reglas probablemente se configuraron a partir de un script, que este módulo no sabe cómo leer y editar. <p> Si desea usar este módulo para administrar su firewall IPFW, haga clic en el botón a continuación para convertir las reglas existentes en un archivo de guardado y luego deshabilite su script de firewall existente.
 index_saveex=Guardar reglas de firewall
 index_headerex=Configuración de firewall existente
+
 action_allow=<font color=#00aa00>Permitir</font>
 action_deny=<font color=#ff0000>Soltar</font>
 action_reject=<font color=#ff4400>Rechazar</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Soltar paquete</font>
 laction_reject=<font color=#ff4400>Devolver el rechazo de ICMP</font>
 laction_reset=<font color=#ff4400>Restablecer conexión TCP</font>
 laction_skipto=Saltar a la regla
+
 edit_title1=Crear regla
 edit_title2=Editar regla $1 
 edit_header1=Acción de la regla
@@ -114,6 +117,7 @@ edit_src-addr=De la dirección de origen ..
 edit_src-port=Desde el puerto de origen. ..
 edit_dst-addr=A la dirección de destino. ..
 edit_dst-port=Al puerto de destino.
+
 save_err=Error al guardar la regla
 save_enum=Número de regla faltante o no válido
 save_eskipto=Número de regla faltante o no válido para saltar
@@ -144,7 +148,9 @@ save_etcpflags=Los indicadores TCP solo se pueden especificar si el protocolo es
 save_elimit=Límite máximo faltante o no válido
 save_edstport=Puerto de destino faltante o no válido
 save_esrcport=Puerto de origen faltante o no válido
+
 apply_err=Error al aplicar la configuración
+
 desc_if=Si $1 
 desc_and=y
 desc_always=Siempre
@@ -191,6 +197,7 @@ desc_where=donde $1
 desc_all=para todos los paquetes
 desc_in=el paquete es entrante
 desc_out=el paquete es saliente
+
 log_create_rule=Creado $1 regla
 log_delete_rule=Regla eliminada $1 
 log_modify_rule=Regla modificada $1 
@@ -206,6 +213,7 @@ log_convert=Reglas de firewall activas convertidas
 log_setup=Configuración inicial del firewall realizada
 log_unapply=Configuración de firewall revertida
 log_delsel=Reglas $1 eliminadas
+
 cluster_title=Servidores de firewall de clúster
 cluster_none=Aún no se han agregado servidores al clúster de firewall.
 cluster_host=Nombre de host
@@ -216,6 +224,7 @@ cluster_gadd=Agregar servidores en grupo
 cluster_need=Debe agregar servidores con un nombre de usuario y contraseña en el módulo Índice de servidores Webmin antes de que puedan administrarse aquí.
 cluster_return=servidores de clúster
 cluster_delete=Eliminar selección
+
 add_title=Agregar servidores
 add_msg=Añadiendo $1 ..
 add_gmsg=Agregando servidores en el grupo $1 ..

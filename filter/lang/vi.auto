@@ -45,6 +45,7 @@ index_ondate=Ngày
 index_charset=Bộ ký tự tin nhắn tự động
 index_subject=Chủ đề tin nhắn tự động
 index_nowebmin=Mô-đun này chỉ được sử dụng trong Usermin. Nếu nó hiển thị trong Webmin, chủ đề bạn đang sử dụng không đầy đủ.
+
 edit_title1=Tạo bộ lọc
 edit_title2=Chỉnh sửa bộ lọc
 edit_header1=Điều kiện cho bộ lọc
@@ -71,6 +72,7 @@ edit_amode7=Lưu vào thư mục mới có tên
 edit_nobounce=Loại bỏ chuyển tiếp tin nhắn bị trả lại
 edit_apply=Hiển thị email phù hợp trong thư mục:
 edit_move=Áp dụng cho email trong thư mục:
+
 save_err=Không thể lưu bộ lọc
 save_egone=Bộ lọc không còn tồn tại!
 save_econdheader=Tiêu đề email bị thiếu hoặc không hợp lệ
@@ -89,8 +91,10 @@ save_enewfolder3=Một thư mục có cùng tên đã tồn tại
 save_estart=Ngày bắt đầu tự động không hợp lệ
 save_eend=Ngày kết thúc tự động không hợp lệ
 save_echarset=Bộ ký tự tự động bị thiếu hoặc không hợp lệ
+
 delete_err=Không thể xóa bộ lọc
 delete_enone=Không được chọn
+
 aliases_type1=Địa chỉ 1
 aliases_type2=Địa chỉ trong tệp $1 
 aliases_type3=Tệp $1 
@@ -101,6 +105,7 @@ aliases_your=Hộp thư của bạn
 aliases_delete=Xóa thư
 aliases_other=Hộp thư của người dùng $1 
 aliases_auto=Trả lời tự động với tin nhắn $1 
+
 auto_title=Email trả lời tự động
 auto_header=Tùy chọn trả lời email tự động
 auto_enabled=Phản ứng tự động kích hoạt?
@@ -111,12 +116,14 @@ auto_charsetdef=Từ ngôn ngữ hiện tại
 auto_charsetother=Bộ ký tự khác
 auto_period=Khoảng thời gian tối thiểu giữa các câu trả lời
 auto_err=Không thể lưu trả lời tự động
+
 forward_title=Chuyển tiếp email
 forward_header=Tùy chọn chuyển tiếp email
 forward_enabled=Chuyển tiếp email được kích hoạt?
 forward_to=Chuyển tiếp đến địa chỉ
 forward_cont=Cũng giao hàng bình thường?
 forward_err=Không thể lưu chuyển tiếp email
+
 move_err=Không thể áp dụng bộ lọc
 move_esrc=Thư mục nguồn $1 không tồn tại!
 move_edest=Thư mục đích $1 không tồn tại!

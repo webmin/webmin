@@ -19,10 +19,13 @@ index_samba=サンバ？
 index_cyrus=IMAP？
 index_users=LDAPユーザー
 index_groups=LDAPグループ
+
 imap_econn=IMAPサーバー $1への接続に失敗しました
 imap_elogin=IMAPサーバー $1に $2としてログインできませんでした： $3
 conn_eldap_host=システムにLDAPクライアント構成ファイルが見つからなかったため、LDAPサーバーは「モジュール構成」ページで設定する必要があります
 conn_elogin=システムにLDAPクライアント構成ファイルが見つからなかったため、LDAPログインを[モジュール構成]ページで設定する必要があります
+conn_efile_open=LDAPバインド資格情報ファイルを開くことができませんでした：
+
 uedit_cap=ユーザー機能
 uedit_samba=Sambaログイン？
 uedit_cyrus=IMAPサーバーのログイン？
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=最終パスワード更新
 uedit_sambapwdcanchange=パスワードは変更できます
 uedit_sambabadpasswordcount=悪いパスワード数
 uedit_sambaacctflags=アカウントフラグ
+
 usave_eadd=ユーザーをLDAPデータベースに追加できませんでした： $1
 usave_emod=LDAPデータベースのユーザーを変更できませんでした： $1
 usave_emoddn=LDAPデータベースのユーザー名の変更に失敗しました： $1
@@ -66,26 +70,33 @@ usave_eattrdupu=ユーザー $1はすでに $2 $3を使用しています
 usave_eattrdupg=グループ $1はすでに $2 $3を使用しています
 usave_ereal=本名がありません
 usave_equota=IMAPクォータがないか、無効です
+
 search_err=$2の下の $1の検索に失敗しました： $3
+
 gedit_dn=グループのLDAP DN
 gedit_return=グループの詳細
 gedit_cap=グループ能力
 gedit_samba=サンバグループ？
+
 gsave_egone=グループはもう存在しません！
 gsave_edelete=LDAPデータベースからグループを削除できませんでした： $1
 gsave_eadd=グループをLDAPデータベースに追加できませんでした： $1
 gsave_emod=LDAPデータベースのグループを変更できませんでした： $1
 gsave_emoddn=LDAPデータベースのグループの名前変更に失敗しました： $1
+
 gdel_group=LDAPグループエントリの削除 ..
+
 udel_pass=LDAPユーザーエントリの削除 ..
 udel_book=アドレス帳から削除 ..
 udel_imap=IMAPフォルダーの削除 ..
 udel_warnimap=ホームディレクトリを削除すると、既存のメールポストボックスが削除されます！
 udel_failed=..失敗しました！ ： $1
+
 raw_title=LDAP属性
 raw_name=属性名
 raw_value=値
 raw_for=$1の場合
+
 batch_samba=新しいユーザーのSambaアカウントを作成しますか？
 batch_imap=新しいユーザーのIMAPアカウントを作成しますか？
 batch_descafter3=<b>create</b>および<b>modify</b>行では、オプションで<i>name</i> = <i>value</i>形式のLDAP属性を含む追加フィールドを追加できます。新規または変更されたユーザーに割り当てられます。

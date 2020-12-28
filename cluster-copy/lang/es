@@ -10,6 +10,7 @@ index_sched=¿Planificado?
 index_when=Si, $1
 index_act=Acción
 index_exec=Ejecutar
+
 edit_title=Editar Copia Cluster
 create_title=Crear Copia Cluster
 edit_header=Detalles copia cluster
@@ -30,12 +31,14 @@ edit_run=Copiar Ahora
 edit_return=Copia cluster
 edit_email=Email salida a
 edit_none=Nadie
+
 save_err=Fallo al salvar tarea cron de cluster
 save_efiles=No se introdujeron archivos a copiar
 save_edest=Falta directorio de destino
 save_eservers=No se introdujeron servidores en los que copiar
 save_efile=Archivo a copiar '$1' no es una ruta absoluta
 save_eemail=Dirección email falta o no es válida
+
 exec_title=Copiando Archivos
 exec_files1=Copiando $1 archivos a servidores seleccionados $2 ..
 exec_files2=Copiando $1 a servidores seleccionados $2 ..
@@ -48,6 +51,7 @@ exec_nothing=No se copiaron archivos con éxito a $1.
 exec_not=Fallo al copiar los siguientes archivos a $1 :
 exec_cmd=Salida de comando posterior a copia en $1 :
 exec_before=Salida de comando anterior a copia en $1 :
+
 log_create=Creada copia para $1 a $2 servidores
 log_modify=Modificada copia para $1 a $2 servidores
 log_delete=Borrada copia para $1 a $2 servidores

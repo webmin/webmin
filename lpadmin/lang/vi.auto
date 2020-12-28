@@ -24,6 +24,7 @@ index_style=Hệ thống in: $1
 index_cluster=Máy chủ cụm
 index_clusterdesc=Nhấp vào nút này để thiết lập các máy chủ Webmin bổ sung mà máy in sẽ được tạo, cập nhật và xóa.
 index_delete=Xóa các máy in đã chọn
+
 style_solaris=Solaris
 style_linux=Linux LPR
 style_freebsd=FreeBSD LPR
@@ -33,6 +34,7 @@ style_unixware=UnixWare
 style_cups=CUPS
 style_irix=IRIX
 style_aix=AIX
+
 edit_eedit=Bạn không được phép chỉnh sửa máy in này
 edit_eadd=Bạn không được phép thêm máy in
 edit_add=Tạo máy in
@@ -76,7 +78,9 @@ edit_direct=Kết nối TCP trực tiếp
 edit_dport=Hải cảng
 edit_driver=Trình điều khiển máy in
 edit_check=Kiểm tra xem máy chủ từ xa đã lên chưa?
+
 blocks=khối
+
 save_err=Không thể lưu máy in
 save_eadd=Bạn không được phép thêm máy in
 save_eedit=Bạn không được phép chỉnh sửa máy in này
@@ -98,6 +102,7 @@ save_evalid=Hệ thống in không cho phép máy in này
 save_errslave=Máy in đã tạo OK trên hệ thống này, nhưng đã xảy ra các lỗi sau trên hệ thống cụm : $1 
 save_egone=Không tìm thấy máy in có tên '$1'
 save_errdelslave=Máy in đã xóa OK trên hệ thống này, nhưng đã xảy ra các lỗi sau trên hệ thống cụm : $1 
+
 jobs_title=Công việc in
 jobs_header=In công việc trên $1 
 jobs_id=ID công việc
@@ -114,17 +119,23 @@ jobs_test=Trang thử nghiệm in
 jobs_cancelsel=Hủy công việc đã chọn
 jobs_on=Trên máy in $1 
 jobs_return=danh sách các công việc in ấn
+
 cancel_ecannot=Bạn không được phép hủy công việc in
 cancel_err=Không thể hủy công việc in
 cancel_egone=Công việc in $1 không còn tồn tại
+
 view_ecannot=Bạn không thể xem công việc in này
 view_egone=Công việc in này không còn tồn tại
+
 start_ecannot=Bạn không được phép khởi động lịch trình
 start_err=Không thể bắt đầu lên lịch
+
 stop_ecannot=Bạn không được phép dừng lịch trình
 stop_err=Không thể dừng lịch trình
+
 restart_ecannot=Bạn không được phép khởi động lại lịch trình
 restart_err=Không thể khởi động lại lịch trình
+
 webmin_none=không ai
 webmin_nonemsg=Máy in hoặc máy in văn bản
 webmin_remotemsg=Máy in từ xa
@@ -135,6 +146,7 @@ webmin_uniprint=Trình điều khiển uniprint
 webmin_edrivers=Không thể tải trình điều khiển từ $1. Trình điều khiển máy in Webmin sử dụng ghostscript không khả dụng
 webmin_egs=Lệnh $1 không được tìm thấy. Trình điều khiển máy in Webmin sử dụng ghostscript không khả dụng
 webmin_edriver='$1' không tồn tại
+
 caldera_none=không ai
 caldera_nonemsg=Máy in từ xa hoặc thô
 caldera_prog=Chương trình
@@ -148,6 +160,7 @@ caldera_uniprint=Trình điều khiển uniprint
 caldera_eprog='$1' không tồn tại
 caldera_edriver=Không có trình điều khiển máy in được chọn
 caldera_eres=Không có độ phân giải được chọn
+
 redhat_none=không ai
 redhat_nonemsg=Máy in hoặc máy in văn bản
 redhat_prog=Chương trình
@@ -166,6 +179,7 @@ redhat_ehmargin=Thiếu hoặc không hợp lệ lề phải/trái
 redhat_evmargin=Thiếu lề trên/dưới không hợp lệ
 redhat_eres=Không có độ phân giải được chọn
 redhat_printer2=Mô hình máy in và trình điều khiển
+
 suse_none=không ai
 suse_nonemsg=Máy in hoặc máy in văn bản
 suse_prog=Chương trình
@@ -182,7 +196,9 @@ suse_extra=Tùy chọn ghostscript thêm
 suse_yast2=Trình điều khiển YAST2
 suse_edriver=Không có loại máy in được chọn
 suse_eres=Thiếu hoặc giải quyết không hợp lệ
+
 estop=Không thể dừng lpd : $1 
+
 acl_printers=Máy in người dùng này có thể cấu hình
 acl_add=Có thể thêm máy in mới?
 acl_cancel=Có thể hủy công việc in?
@@ -198,6 +214,7 @@ acl_user_all=Tất cả người dùng
 acl_user_this=Người dùng Webmin hiện tại
 acl_delete=Có thể xóa máy in?
 acl_cluster=Có thể quản lý cụm máy in?
+
 log_stop=Lịch trình in bị dừng
 log_start=Bắt đầu in lịch trình
 log_restart=Khởi động lại lịch trình in
@@ -210,37 +227,45 @@ log_delete=Đã xóa máy in $1 trên $2
 log_create_l=Đã tạo $3 máy in $1 trên $2 
 log_modify_l=Đã sửa đổi $3 máy in $1 trên $2 
 log_delete_l=Đã xóa $3 máy in $1 trên $2 
+
 linux_paralel=Cổng song song $1 
 linux_serial=Cổng nối tiếp $1 (COM $1)
 linux_null=Thiết bị Null
 linux_usb=Máy in USB $1 
 linux_ecmd=Lệnh $1 không được tìm thấy trên hệ thống của bạn, điều này cho biết rằng hệ thống in Linux chưa được cài đặt.
 linux_espool=Thư mục spool $1 không tồn tại trên hệ thống của bạn, điều này cho biết rằng hệ thống in Linux chưa được cài đặt.
+
 freebsd_paralel=Cổng song song
 freebsd_serial=Cổng nối tiếp $1 (COM $1)
 freebsd_ecmd=Lệnh $1 không được tìm thấy trên hệ thống của bạn, điều này cho thấy hệ thống in FreeBSD chưa được cài đặt.
 freebsd_espool=Thư mục spool $1 không tồn tại trên hệ thống của bạn, điều này cho biết rằng hệ thống in FreeBSD chưa được cài đặt.
+
 openbsd_paralel=Cổng song song
 openbsd_serial=Cổng nối tiếp $1 (COM $1)
+
 unixware_paralel=Cổng song song $1 
 unixware_serial=Cổng nối tiếp $1 
 unixware_null=Thiết bị Null
 unixware_ecmd=Lệnh $1 không được tìm thấy trên hệ thống của bạn, điều này cho thấy hệ thống in UnixWare chưa được cài đặt.
+
 hpux_paralel=Song song $1 
 hpux_serial=Nối tiếp $1 
 hpux_null=Thiết bị Null
 hpux_ecmd=Không tìm thấy lệnh $1 trên hệ thống của bạn, điều này cho biết rằng hệ thống in HPUX chưa được cài đặt.
 hpux_eiface=Thư mục tập lệnh giao diện $1 không tồn tại trên hệ thống của bạn, điều này cho biết rằng hệ thống in HPUX chưa được cài đặt.
+
 lprng_paralel=Cổng song song $1 
 lprng_serial=Cổng nối tiếp $1 (COM $1)
 lprng_null=Thiết bị Null
 lprng_ecmd=Không tìm thấy lệnh $1 trên hệ thống của bạn, điều này cho thấy hệ thống in LPRng chưa được cài đặt.
 lprng_espool=Thư mục spool $1 không tồn tại trên hệ thống của bạn, điều này cho biết rằng hệ thống in LPRng chưa được cài đặt.
+
 solaris_paralel=Cổng song song
 solaris_uparalel=Cổng song song Ultra 5/10
 solaris_serial=Cổng nối tiếp $1 
 solaris_null=Thiết bị Null
 solaris_ecmd=Lệnh $1 không được tìm thấy trên hệ thống của bạn, điều này cho biết rằng hệ thống in Solaris chưa được cài đặt.
+
 test_title=Trang thử nghiệm in
 test_ecannot=Bạn không được phép in các trang thử nghiệm
 test_desc=Biểu mẫu này cho phép bạn in trang thử nghiệm cho máy in $1. Chọn loại trang bạn muốn in :
@@ -252,6 +277,7 @@ test_print=Trang in
 test_exec=In trang thử nghiệm bằng lệnh $1 ..
 test_failed=.. Lệnh không thành công!
 test_ok=.. lệnh hoàn thành.
+
 cups_none=không ai
 cups_nonemsg=Máy in từ xa hoặc thô
 cups_prog=Chương trình
@@ -259,11 +285,14 @@ cups_driver=Trình điều khiển CUPS
 cups_eprog='$1' không phải là chương trình hợp lệ
 cups_opts=Tùy chọn cho $1 
 cups_ecmd=Không tìm thấy lệnh $1 trên hệ thống của bạn, điều này cho biết rằng hệ thống in CUPS chưa được cài đặt.
+
 irix_ecmd=Không tìm thấy lệnh $1 trên hệ thống của bạn, điều này cho biết rằng hệ thống in IRIX chưa được cài đặt.
 irix_eiface=Thư mục giao diện tập lệnh $1 không tồn tại trên hệ thống của bạn, điều này cho biết rằng hệ thống in IRIX chưa được cài đặt.
+
 aix_port=Cổng máy in $1 
 aix_edesc=Mô tả không hợp lệ - chỉ cho phép chữ và số và không có khoảng trắng
 aix_ecmd=Không tìm thấy máy chủ AIX $1. Có thể nó chưa được cài đặt hoặc hệ thống in khác đang được sử dụng.
+
 cluster_title=Máy chủ cụm máy in
 cluster_none=Chưa có máy chủ nào được thêm vào cụm máy in.
 cluster_host=Tên máy chủ
@@ -275,6 +304,7 @@ cluster_need=Bạn phải thêm các máy chủ có thông tin đăng nhập và
 cluster_return=máy chủ cụm
 cluster_delete=Bỏ đã chọn
 cluster_ecannot=Bạn không được phép quản lý máy chủ cụm máy in
+
 add_title=Thêm máy chủ
 add_msg=Thêm $1 ..
 add_gmsg=Thêm máy chủ trong nhóm $1 ..

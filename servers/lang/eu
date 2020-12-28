@@ -19,6 +19,7 @@ index_defport=Webmin portua
 index_delete=Aukeratutako zerbitzariak ezabatu
 index_auto=Automatikoki Aurkitu Zerbitzariak
 index_automsg=Click this button to setup the automatic periodic discovery of new Webmin servers on your network.
+
 edit_title=Editatu Zerbitzaria
 create_title=Erregistratu Zerbitzaria
 edit_details=Zerbitzariaren zehaztapenak
@@ -52,6 +53,7 @@ edit_baduser=Login rejected
 edit_invalid=User cannot do RPC
 edit_version=Running Webmin $1
 edit_same=Only available not in session authentication mode, and when the password is made available to Webmin programs.
+
 save_err=Failed to save server
 save_ehost=Missing or invalid hostname
 save_ehost2=Host does not exist
@@ -61,6 +63,7 @@ save_epass=Missing password
 save_egroup=Missing group name
 save_elogin=Invalid login or password to host
 save_egroup2=Invalid new group name
+
 find_title=Find Servers
 find_new=Found new server at $1
 find_but=Found new server at $1, but authentication failed : $2
@@ -74,16 +77,20 @@ find_ecannot=You are not allowed to find servers
 find_scanning=Scanning for servers in network $1 ..
 find_broading=Broadcasting for servers on addresses $1 ..
 find_eport=Missing or invalid port number
+
 log_modify=Modified server $1
 log_create=Registered server $1
 log_delete=Deleted server $1
 log_find=Found server $1
 log_deletes=Deleted $1 servers
+
 link_elogin=Failed to login to $1 as $2
 link_ecannot=You are not allowed to use this server
 link_essl=You do not have the perl Net::SSLeay library installed
 link_eautologin=Invalid login or password for $1. <a href='$2'>Click here</a> to try again.
+
 lib_other=Other
+
 acl_edit=Can edit servers?
 acl_find=Can find servers?
 acl_servers=Can use servers
@@ -95,6 +102,7 @@ acl_forcefast=Force fast RPC mode to default?
 acl_forcetype=Force OS type to default?
 acl_forcelink=Force login type to default?
 acl_links=Can connect through to servers?
+
 login_title=Login to Server
 login_desc=You must supply a username and password to login to the Webmin server $1.
 login_header=Webmin authentication
@@ -102,10 +110,13 @@ login_user=Username
 login_pass=Password
 login_login=Login
 login_esame=The option to use the same login as this server can only be used when not in session authentication mode, and when the password is made available to Webmin programs.
+
 this_server=this server
+
 delete_err=Failed to delete servers
 delete_enone=None selected
 delete_ecannot=You are not allowed to delete servers
+
 auto_title=Automatically Find Servers
 auto_header=Automatic server registration options
 auto_sched=Check for new servers?
@@ -131,8 +142,10 @@ auto_smtp=Send via SMTP server
 auto_self=This system
 auto_esmtp=Missing or invalid SMTP server
 auto_findself=Register this system too?
+
 config_deftype=Default system type
 config_typeauto=Automatic
+
 email_regsubject=System $1 registered
 email_reg=The system $1 has been automatically registered.
 email_unregsubject=System $1 un-registered

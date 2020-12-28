@@ -15,6 +15,7 @@ index_actform=Hình thức
 index_actrun=Chạy
 index_actsql=Hình thức
 index_acted=Mở
+
 edit_title=Chỉnh sửa lệnh
 create_title=Tạo lệnh
 edit_ecannot=Bạn không được phép chỉnh sửa lệnh
@@ -66,6 +67,7 @@ edit_format4=Tải xuống khi có thể
 edit_servers=Chạy trên máy chủ Webmin
 edit_this=máy chủ này
 edit_clone=Bản sao
+
 save_err=Không thể lưu lệnh
 save_ecannot=Bạn không được phép chỉnh sửa lệnh
 save_ecmd=Không có lệnh nào được nhập
@@ -78,6 +80,7 @@ save_eusermin=Các lệnh chạy trên các máy chủ khác không thể chạy
 save_eformat=Loại MIME đầu ra không hợp lệ
 save_eopts=Thiếu tệp tùy chọn cho tham số $1 
 save_eopts2=Tệp tùy chọn hoặc giá trị mặc định cho tham số $1 không thể chứa :
+
 run_err=Không thể thực thi lệnh
 run_ecannot=Bạn không được phép chạy lệnh này
 run_euser=Người dùng bị thiếu hoặc không hợp lệ
@@ -94,6 +97,7 @@ run_eupload=Không có tập tin để tải lên được chọn
 run_emust=Thiếu giá trị cho tham số '$1'
 run_timeout=Lệnh không hoàn thành trước thời gian chờ $1 giây.
 run_failed=Lệnh không thành công với trạng thái thoát $1 
+
 log_modify=Lệnh đã sửa đổi $1 
 log_create=Đã tạo lệnh $1 
 log_delete=Đã xóa lệnh $1 
@@ -102,11 +106,13 @@ log_modify_edit=Trình chỉnh sửa tệp đã sửa đổi $1
 log_create_edit=Đã tạo trình chỉnh sửa tệp $1 
 log_delete_edit=Đã xóa trình chỉnh sửa tệp $1 
 log_save_edit=Tệp đã lưu $1 
+
 acl_cmds=Lệnh này người dùng có thể chạy
 acl_call=Tất cả các lệnh
 acl_csel=Đã chọn ..
 acl_cexcept=Tất cả ngoại trừ được chọn ..
 acl_edit=Có thể tạo và chỉnh sửa các lệnh?
+
 file_ecannot=Bạn không được phép chỉnh sửa tập tin
 fcreate_title=Tạo trình chỉnh sửa tệp
 fedit_title=Chỉnh sửa tập tin chỉnh sửa
@@ -130,6 +136,7 @@ file_egroup=Tên nhóm bị thiếu hoặc không hợp lệ
 file_eperms=Quyền bát phân bị thiếu hoặc không hợp lệ
 file_envs=Thay thế các biến môi trường trong tên tệp?
 file_id=ID biên tập
+
 view_err=Không thể chỉnh sửa tập tin
 view_ecannot=Bạn không được phép chỉnh sửa tập tin này
 view_title=Chỉnh sửa tập tin
@@ -138,10 +145,12 @@ view_header=Chỉnh sửa tập tin $1
 view_ebeforeedit=Lệnh trước khi chỉnh sửa không thành công : $1 
 view_ebefore=Lệnh lưu trước không thành công : $1 
 view_eafter=Lệnh lưu sau thất bại : $1 
+
 form_ecannot=Bạn không được phép chạy lệnh này
 form_title=Lệnh thực thi
 form_exec=Hành hình
 form_edit=Biên tập
+
 sql_title1=Tạo lệnh SQL
 sql_title2=Chỉnh sửa lệnh SQL
 sql_header=Chi tiết lệnh SQL
@@ -157,6 +166,7 @@ sql_err=Không thể lưu lệnh SQL
 sql_esql=Không có SQL nào được nhập
 sql_ehost=Máy chủ cơ sở dữ liệu bị thiếu hoặc không hợp lệ
 sql_edb=Tên cơ sở dữ liệu bị thiếu hoặc không hợp lệ
+
 srun_title=Thực thi lệnh SQL
 srun_err=Không thể thực thi lệnh SQL
 srun_edriver=Không thể tải trình điều khiển DBI

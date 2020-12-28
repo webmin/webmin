@@ -12,6 +12,7 @@ index_db=Adatbázis név
 index_tables=asztalok
 index_drops=Kiválasztott adatbázisok eldobása
 index_postgresql=PostgreSQL
+
 index_toomany=Túl sok adatbázis jelenik meg. Keresse meg a megfelelő adatbázisokat:
 index_search=Keresés
 index_showing=A (z) $1 -nek megfelelő adatbázisok megjelenítése
@@ -25,6 +26,7 @@ index_gist=Általános index kereső fa
 index_jump=Vagy szerkessze az adatbázist:
 index_jumpok=Nyisd ki
 index_edithosts=Konfigurálja az engedélyezett gazdarendszereket
+
 dbase_header=Adatbázis-táblázatok, indexek, nézetek és sorozatok
 dbase_vadd=Nézet létrehozása
 dbase_sadd=Szekvencia létrehozása
@@ -41,12 +43,15 @@ dbase_jump=Táblázat szerkesztése:
 dbase_vjump=Nézet szerkesztése:
 dbase_ijump=Index szerkesztése:
 dbase_sjump=Szerkesztési sorrend:
+
 table_eblob=Nincs szükség méretre a $1 BLOB mezőben
 table_csv=Exportálás CSV formátumban
 table_index=Index létrehozása
 table_delete=Törölje a kijelölt mezőket
+
 field_err2=A mező mentése nem sikerült
 field_err1=A mező törlése nem sikerült
+
 exec_old=Vagy válassza ki az előző SQL parancsot :
 exec_clear=Előzmények törlése
 exec_header2=Válasszon egy SQL parancsfájlt, amelyet a $1 adatbázison hajt végre.
@@ -70,6 +75,7 @@ exec_tabexec=Futtassa az SQL-t
 exec_tabfile=Futtassa az SQL fájlt
 exec_tabimport=Szöveges fájl importálása
 exec_return=futtassa az SQL űrlapot
+
 view_refresh=Frissítés
 view_search2=Sorok keresése, ahol a $2 $3 $1 mező található
 view_match0=tartalmaz
@@ -95,12 +101,14 @@ view_set=Állítsa be a fájl tartalmára.
 view_warn=Figyelem! A fájlok feltöltése a <tt>szöveges</tt> vagy <tt>bytea</tt> mezőkbe és a tartalmak megtekintése valószínűleg nem fog működni, kivéve, ha az $1 és a $2 Perl modulok telepítve vannak és használatban vannak.
 view_adv=Részletes keresés
 view_sqlrun=SQL lekérdezés által generált eredmények : $1 
+
 newdb_ecannot2=Nem hozhat létre több adatbázist
 newdb_user=A felhasználó tulajdonában van
 newdb_encoding=Karakterkészlet-kódolás
 newdb_eencoding=Hiányzik a karakterkészlet kódolása
 newdb_template=Sablon adatbázis
 newdb_notemplate=Egyik sem
+
 user_vwarning=FIGYELMEZTETÉS: Ez a PostgreSQL felhasználó az adminisztrációs bejelentkezés a $1 Virtualmin domainhez. A beállítások itt történő megváltoztatása hibákat okozhat a Virtualminban.
 user_setto=Állítva
 user_nochange=Ne változtasson
@@ -108,6 +116,7 @@ user_syncwhen=Mikor kell szinkronizálni
 user_delete=Kijelöltek eltávolítása
 user_derr=A felhasználók törlése nem sikerült
 user_enone=Nincs felhasználó kiválasztva
+
 host_header=PostgreSQL kliens-hitelesítési részletek
 host_peer=Hálózati társ
 host_user=felhasználók
@@ -131,16 +140,20 @@ host_derr=Nem sikerült törölni az engedélyezett gazdagépeket
 host_enone=Nincs kiválasztva gazdagép
 host_manual=A Config File szerkesztése
 host_manualdesc=Kattintson erre a gombra az engedélyezett gazdagép-konfigurációs fájl manuális szerkesztéséhez.
+
 manual_title=A Config File szerkesztése
 manual_err=A konfigurációs fájl mentése nem sikerült
+
 grant_ns=Séma
 grant_toomany=Túl sok objektum van a megjelenítéshez. Keressen megfelelő objektumokat:
 grant_showing=A (z) $1 objektumok megjelenítése
 grant_delete=A kiválasztott támogatások visszaállítása
+
 group_memsopts=Minden felhasználó
 group_memsvals=Csoportos felhasználók
 group_derr=A csoportok törlése nem sikerült
 group_enone=Nincs kiválasztva csoport
+
 log_dbs_delete=Elhagyott $1 adatbázisok
 log_users_delete=$1 felhasználó törölve
 log_groups_delete=$1 csoport törölve
@@ -162,6 +175,7 @@ log_backup_l=A (z) $1 adatbázis biztonsági mentése a (z) $2 fájlra
 log_backup_all=Az összes adatbázis biztonsági mentését
 log_backup_all_l=Az összes adatbázist biztonsági másolatot készített a (z) $2 fájlra
 log_manual=Kézzel szerkesztett engedélyezett gazdagépek konfigurációs fájlja
+
 acl_max=Igen, legfeljebb
 acl_backup=Készíthet biztonsági másolatot?
 acl_restore=Visszaállíthatók a biztonsági mentések?
@@ -174,10 +188,13 @@ acl_cmds=Szerkesztheti a biztonsági mentési parancsok előtt és után?
 acl_views=Megtekintheti és kezelheti a nézeteket?
 acl_indexes=Megtekintheti és kezelheti az indexeket?
 acl_seqs=Megtekintheti és kezelheti a sorozatokat?
+
 fdrop_enone=Egy sincs kiválasztva
 fdrop_eall=Nem törölheti az összes mezőt a táblából!
+
 dbase_bkup=biztonsági mentés
 dbase_rstr=visszaállítás
+
 restore_title=Adatbázis visszaállítása
 restore_header=Az adatbázis beállításainak visszaállítása
 restore_db=Adatbázis név
@@ -200,6 +217,7 @@ restore_tables=Helyreállítási táblák
 restore_tables1=Mindent biztonsági másolatban
 restore_tables0=Felsorolt táblák
 restore_failed=A visszaállítás sikertelen : $1 
+
 backup_title=Biztonsági mentési adatbázis
 backup_title2=Az összes adatbázis biztonsági mentése
 backup_header1=Biztonsági mentési cél
@@ -248,17 +266,21 @@ backup_ebefore=A biztonsági mentés előtti parancs sikertelen!
 backup_cmode=Mikor kell futtatni a parancsokat
 backup_cmode1=Minden adatbázis előtt/után
 backup_cmode0=Minden adatbázis előtt/után
+
 r_command=A parancs nem támogatott
+
 adv_title=Részletes keresés
 adv_and=Keressen minden kritériumnak megfelelő nyilvántartást ..
 adv_or=Keressen minden kritériumnak megfelelő rekordot ..
 adv_ok=Keress most
+
 tdrops_enone=Nincs kiválasztott tábla
 tdrops_err=Nem sikerült eldobni az asztalokat
 tdrops_ok=Csepp
 tdrops_title=Kiválasztás csepp
 tdrops_rusure=Biztosan el akarja dobni a $1 kijelölt táblázatokat a $2 adatbázisban? $3 adatsor törlődik.
 tdrops_rusure2=Biztosan el akarja dobni a $1 kijelölt táblázatokat a $2 adatbázisban?
+
 ddrops_err=Nem sikerült eldönteni az adatbázisokat
 ddrops_title=Drop Databases
 ddrops_rusure=Biztos benne, hogy el akarja dobni a $1 kiválasztott adatbázist? A $2 táblát tartalmazó $2 tábla törlődik.
@@ -266,6 +288,7 @@ ddrops_mysql=Mivel a fő adatbázis ki van választva, annak eldobása valószí
 ddrops_ok=Drop Databases
 ddrops_enone=Nincs kiválasztva adatbázis
 ddrops_ecannotdb=A (z) $1 adatbázist nem engedheti el
+
 csv_title=CSV-fájl exportálása
 csv_header=CSV exportálási lehetőségek
 csv_dest=Export rendeltetési hely
@@ -286,6 +309,7 @@ csv_done=A CSV exportálása a (z) $1 -be teljes. A kapott fájlméret $2.
 csv_headers=Beilleszti az oszlopneveket a CSV-be?
 csv_cols=A CSV-be beépítendő oszlopok
 csv_ecols=Nincs kiválasztva oszlop
+
 import_title=Adatok importálása
 import_uploadout=Adatok importálása a feltöltött fájlból ..
 import_fileout=Adatok importálása a (z) $1 fájlból.
@@ -293,6 +317,7 @@ import_eupload=Hiányzik a feltöltött import fájl
 import_efile=Hiányzik az importált fájlnév
 import_done=.. $1 sort hozott létre, kihagyta a (z) $2 másolatot.
 import_erow=.. a (z) $1 sorban nem található mező
+
 index_title1=Index létrehozása
 index_header1=Index opciók
 index_name=Index név
@@ -310,6 +335,7 @@ index_ecols=Nincs kiválasztva mező
 index_title2=Index szerkesztése
 index_header=$1 index a $2 adatbázisban
 index_ecannot=Nem engedélyezi az indexek kezelését
+
 view_title1=Nézet létrehozása
 view_title2=Nézet szerkesztése
 view_header1=Részletek megtekintése
@@ -324,6 +350,7 @@ view_eclash=Az azonos nevű nézet már létezik
 view_equery=Hiányzik az SQL lekérdezés
 view_ecols=Nincs megadva oszlopnév
 view_ecannot=Nem engedélyezi a nézetek kezelését
+
 seq_title1=Szekvencia létrehozása
 seq_title2=Szekvencia szerkesztése
 seq_header1=Növekvő sorrend opciók
@@ -343,5 +370,6 @@ seq_emin=Hiányzó vagy érvénytelen minimális érték
 seq_emax=Hiányzó vagy érvénytelen maximális érték
 seq_ecache=Hiányzik vagy érvénytelen a gyorsítótárhoz tartozó értékek száma
 seq_ecannot=A szekvenciákat nem szabad kezelni
+
 dgrant_err=A támogatások visszaállítása nem sikerült
 dgrant_enone=Nincs kiválasztva objektum

@@ -27,6 +27,7 @@ index_tabmods=Istniejące moduły
 index_tabinstall=Zainstaluj moduł
 index_tabsuggest=Zalecane moduły
 index_wantmods=Moduły do zainstalowania
+
 download_err=Nie udało sie zainstalować modułu
 download_elocal=Nie podano pliku lokalnego
 download_elocal2='$1' nie istnieje
@@ -64,6 +65,7 @@ download_ebuild=Jeden lub więcej modułów Perl potrzebnych potrzebuje $1, ale 
 download_yum=Instalacja modułu Perla $1 z pakietu $2 ..
 download_missingok=Brak modułów w CPAN
 download_fallback=Instalacja niektórych modułów z pakietów nie powiodła się, zamiast tego nastąpi próba instalacji ze źródła..
+
 install_title=Zainstaluj moduł
 install_untar=Rozłożenie pliku tar modułu
 install_make=Kompilacja modułu
@@ -83,11 +85,13 @@ install_err2=Możesz także zainstalować moduły przez CPAN poleceniem $1.
 install_exec=Uruchamianie $1 ..
 install_efile=Plik modułu $1 już nie istnieje
 install_needunlink=Możesz spróbować zainstalować ponownie wracając do poprzedniej strony i wybierając różne opcje. W przeciwnym wypadku  <a href='$1'>kliknij tutaj, aby usunąć pliki tymczasowe pakietu</a> i zaoszczędzić miejsce na dysku.
+
 cpan_sel=Moduły w $1 ..
 cpan_title=Wybierz moduł Perla
 cpan_search=Znajdź nazwy modułów
 cpan_match=Pasujące moduły $1 ..
 cpan_none=Nie odnaleziono pasujących.
+
 edit_title=Dane modułu
 edit_header=Informacje o module
 edit_mod=Nazwa modułu
@@ -104,6 +108,7 @@ edit_method=Zainstalowano z
 edit_rpm=Pakiet RPM $1
 edit_debian=Pakiet Debiana $1
 edit_manual=Ręczna instalacja pakietu Perl
+
 uninstall_title=Odinstalowywanie modułu
 uninstall_rusure=Na pewno chcesz odinstalować moduł Perla '$1' ? Następujące pliki zostaną usunięte :
 uninstall_rusure2=Na pewno chcesz odinstalować moduł Perla '$1'  i pod-moduły $2 ? <br>Następujące pliki zostaną usunięte :
@@ -111,7 +116,9 @@ uninstall_ok=Odinstaluj teraz
 uninstall_rpm=Moduł zostanie usunięty przez odinstalowanie pakietu $1 RPM.
 uninstall_debian=Moduł zostanie usunięty przez odinstalowanie pakietu $1 Debiana.
 uninstall_err=Nie udało się odinstalować moduł
+
 delete_efile=Nieprawidłowy plik pakietu!
+
 uninstalls_title=Odinstalowywanie modułów
 uninstalls_err=Nie udało się usunąć modułu
 uninstalls_enone=Nie wybrano

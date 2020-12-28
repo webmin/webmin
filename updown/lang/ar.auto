@@ -40,6 +40,7 @@ index_descfetch=هذه الصفحة مخصصة لتنزيل ملف من النظ
 index_email=إرسال البريد الإلكتروني عند الانتهاء من التنزيلات؟
 index_emailto=نعم ، للتصدي
 index_email2=إرسال بريد إلكتروني عند الانتهاء من التحميلات؟
+
 upload_title=تحميل الملفات
 upload_err=فشل تحميل الملفات
 upload_edir=دليل مفقود للتحميل
@@ -63,6 +64,7 @@ upload_saving=جاري حفظ الملف$1 ..
 upload_saved=.. كتب$1
 upload_unzipping=جاري استخراج الملف$1 ..
 upload_unzipdone=..$1
+
 download_err=فشل حفظ التنزيل
 download_enone=لم يتم إدخال عناوين URL للتنزيل
 download_eurl=إن '$1' ليس عنوان URL صالحًا
@@ -74,9 +76,11 @@ download_failed=فشل التنزيل :$1
 download_eaccess=غير مسموح لك بتنزيل الملفات إلى$1
 download_eucannot=غير مسموح لك بتنزيل الملفات كمستخدم$1
 download_egcannot=لا تحتوي المجموعة المحددة على المستخدم المحدد
+
 cancel_err=فشل إلغاء التنزيلات
 cancel_enone=لم يتم تحديد شيء
 cancel_ecannot=غير مسموح لك بإلغاء التنزيلات للمستخدم$1
+
 log_cancel=تم إلغاء تنزيل (تنزيلات)$1
 log_upload_l=تم تحميل الملف (الملفات)$1
 log_upload=تم تحميل$1 ملف (ملفات)
@@ -84,6 +88,7 @@ log_download_l=تم تحميل URL (عناوين) URL$1
 log_download=تم تنزيل$1 من عناوين URL
 log_sdownload_l=جدولة تنزيل عنوان (عناوين) URL $1
 log_sdownload=جدولة تنزيل$1 من عناوين URL
+
 acl_users=يمكن تحميل وتنزيل الملفات كمستخدمين
 acl_all=جميع المستخدمين
 acl_this=مستخدم Webmin الحالي
@@ -98,6 +103,7 @@ acl_max=أقصى حجم للتحميل
 acl_unlim=غير محدود
 acl_b=بايت
 acl_fetch=يمكن تنزيل الملفات على جهاز الكمبيوتر؟
+
 fetch_err=فشل تحميل الملف
 fetch_ecannot=لا يسمح لك بتنزيل الملفات على جهاز الكمبيوتر
 fetch_efile=لم يتم إدخال اسم ملف
@@ -106,6 +112,7 @@ fetch_eopen=فشل في فتح الملف :$1
 fetch_eaccess=غير مسموح لك بتنزيل الملفات من$1
 fetch_ezip=لا يمكن تنزيل الدليل ما لم يتم تثبيت الأمر <tt>zip</tt>
 fetch_eroot=لا يمكن تنزيل الدليل الجذر!
+
 email_downmsg=اكتمل التنزيل التالي :
 email_downurl=URL:$1
 email_downerr=رسالة الخطأ:$1

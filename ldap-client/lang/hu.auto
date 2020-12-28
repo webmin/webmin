@@ -14,6 +14,7 @@ index_restart=Indítsa újra az LDAP kliens démont
 index_restartdesc=Alkalmazza az aktuális konfigurációt a helyi LDAP kliens démon újraindításával.
 index_atboot=Indítsa el az LDAP klienst a rendszerindításkor
 index_atbootdesc=Megváltoztatja, hogy az LDAP kliens démon elinduljon-e, amikor a rendszer indul, vagy sem.
+
 server_title=LDAP szerver konfiguráció
 server_header=LDAP szerver és bejelentkezési lehetőségek
 server_host=LDAP szerver gazdanevek
@@ -51,6 +52,7 @@ server_etimelimit=Hiányzó vagy érvénytelen csatlakozási határidő
 server_ecacert=Hiányzó vagy érvénytelen CA tanúsítványfájl
 server_euport=Hiányzó vagy érvénytelen port a (z) $1 szerverhez
 server_euri=Nincs megadva LDAP-kiszolgáló
+
 base_title=LDAP keresési bázisok
 base_header=LDAP könyvtárkeresési helyek
 base_base=Globális keresési bázis
@@ -86,6 +88,7 @@ base_enetmasks=Hiányzó alap a hálómaszk-nevekhez
 base_ealiases=Hiányzik az e-mail álnevek
 base_enetgroup=Hiányzó alap a hálózati csoportok számára
 base_etimelimit=Hiányzó vagy érvénytelen keresési határidő
+
 pam_title=Hitelesítési beállítások
 pam_header=PAM hitelesítés és jelszó beállításai
 pam_filter=További LDAP szűrő
@@ -106,10 +109,12 @@ pam_efilter=Hiányzik a további LDAP szűrő
 pam_elogin=Hiányzó vagy érvénytelen LDAP attribútum a felhasználónévhez
 pam_egroupdn=Hiányzik az LDAP csoport, hogy kényszerítse a
 pam_emember=Hiányzó vagy érvénytelen LDAP attribútum a csoport tagjai számára
+
 switch_title=Szolgáltatások az LDAP használatával
 switch_service=Szolgáltatás
 switch_srcs=Adatforrások
 switch_return=szolgáltatások az LDAP használatával
+
 ldap_emodule=Az LDAP szerverrel való beszélgetéshez szükséges $1 Perl modul nincs telepítve. <a href='$2'>Kattintson ide</a> a Webmin letöltéséhez és telepítéséhez.
 ldap_emodule2=Az LDAP szerverrel való beszélgetéshez szükséges $1 Perl modul nincs telepítve.
 ldap_econf=A (z) $1 LDAP kliens konfigurációs fájl nem található a rendszerén
@@ -119,6 +124,7 @@ ldap_elogin=Nem sikerült a $1 LDAP szerverhez kötni: $2 : $3
 ldap_anon=névtelen
 ldap_eparse=Nem sikerült elemezni az $1 LDAP kiszolgáló URI-jét
 ldap_etls=Nem sikerült váltani a TLS módra : $1 
+
 browser_title=LDAP böngésző
 browser_econn=Az LDAP böngésző nem használható : $1 
 browser_base=böngészés:
@@ -129,6 +135,7 @@ browser_attrs=Objektum attribútumok
 browser_parent=Böngészés a szülő között
 browser_none=Egyik sem
 browser_sel=rendben
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Felhasználói nyomtatók
 order_xfn=XFN
 order_mdns4=Multicast DNS
 order_mdns4_minimal=Multicast DNS (minimális)
+
 desc_aliases=Sendmail álnevek
 desc_mail=Sendmail álnevek
 desc_hosts=Host címek
@@ -177,6 +185,7 @@ desc_printers=nyomtatók
 desc_ipnodes=IP-csomópontok
 desc_timezone=Időzónák
 desc_locale=Honosítás
+
 eswitch_title=Szerkesztési szolgáltatás
 eswitch_egone=A szolgáltatás nem létezik!
 eswitch_header=Szolgáltatás részletei
@@ -196,6 +205,7 @@ eswitch_continue=Folytassa a keresést
 eswitch_none=Egyik sem
 eswitch_err=Nem sikerült menteni a szolgáltatást
 eswitch_enone=Nincs kiválasztva forrás!
+
 log_server=Módosított LDAP szerver konfiguráció
 log_base=Módosított LDAP keresési bázisok
 log_pam=Módosított hitelesítési beállítások
@@ -205,6 +215,7 @@ log_delboot=Letiltott LDAP kliens démon indításkor
 log_start=Elindította az LDAP kliens démont
 log_stop=Megállt az LDAP kliens démon
 log_restart=Újraindította az LDAP kliens démont
+
 check_title=Az LDAP-konfiguráció érvényesítése
 check_base=LDAP-alap megkeresése a felhasználók számára ..
 check_ebase=.. nem található az ügyfélkonfigurációban!

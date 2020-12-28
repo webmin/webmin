@@ -57,6 +57,7 @@ index_fmode1=Virtualiųjų serverių failas $1
 index_fmode1d=Naujas failas, esantis virtualių serverių kataloge $1
 index_fmode2=Pasirinktas failas ..
 index_delete=Ištrinti pasirinktus serverius
+
 cvirt_ecannot=Jums neleidžiama kurti virtualiojo serverio
 cvirt_err=Nepavyko sukurti virtualiojo serverio
 cvirt_eaddr1=Neįvestas adresas
@@ -70,6 +71,7 @@ cvirt_eroot4=„Apache“ konfigūracijoje nėra apibrėžtas joks vartotojas
 cvirt_etaken=Virtualus serveris tuo pačiu pavadinimu ir prievadu jau yra
 cvirt_efile=Nepavyko parašyti į $1 : $2 
 cvirt_emissing=Naujas virtualus serveris buvo pridėtas prie $1, tačiau šis failas nenaudojamas „Apache“. Patikrinkite <a href='$2'>modulio konfigūraciją</a> ir įsitikinkite, kad „Failas ar katalogas, į kurį norite įtraukti virtualius serverius“ yra teisingi.
+
 etype=Jums neleidžiama redaguoti šio tipo parinkčių
 efailed=Nepavyko išsaugoti $1
 apache_apply=Taikyti pakeitimus
@@ -80,6 +82,7 @@ default_serv=numatytasis serveris
 bytes=baitų
 eafter=Konfigūracijos patvirtinti nepavyko: $1 pakeitimai neišsaugoti.
 enewline=Netinkamas simbolio reikšmė
+
 global_ecannot=Jums neleidžiama redaguoti visuotinių parinkčių
 global_mime=Visuotinis MIME tipų sąrašas
 global_mimedesc=Spustelėkite MIME tipą iš žemiau pateikto sąrašo, norėdami jį redaguoti, arba naudokite nuorodą puslapio apačioje, jei norite įtraukti naują tipą į sąrašą.
@@ -87,6 +90,7 @@ global_type=Tipas
 global_ext=Pratęsimai
 global_add=Pridėkite naują MIME tipą.
 global_return=MIME tipai
+
 mime_ecannot=Jums neleidžiama redaguoti mime tipų
 mime_edit=Redaguoti MIME tipą
 mime_add=Pridėti MIME tipą
@@ -95,6 +99,7 @@ mime_type=MIME tipas
 mime_ext=Pratęsimai
 mime_err=Nepavyko išsaugoti MIME tipo
 mime_etype=„$1“ nėra teisingas MIME tipas
+
 virt_ecannot=Negalite redaguoti šio virtualiojo serverio
 virt_eprotocol=Turite pasirinkti bent vieną tinkamą SSL/TLS protokolo versiją
 virt_title=Virtualiojo serverio parinktys
@@ -121,6 +126,7 @@ virt_path=Kelias
 virt_return=serverio rodyklė
 virt_euser=Jums neleidžiama pakeisti šio virtualiojo serverio vartotojo ar grupės.
 virt_header2=$1 už $2
+
 vserv_title=Virtualiojo serverio konfigūracija
 vserv_virtualmin=Šis „Apache“ virtualusis kompiuteris priklauso „Virtualmin“ serveriui <tt>$1</tt>, todėl adreso, prievado, bazinio katalogo ir pagrindinio kompiuterio pavadinimo čia pakeisti negalima.
 vserv_ecannot=Negalite redaguoti šio virtualiojo serverio adreso
@@ -140,10 +146,12 @@ vserv_eport=„$1“ nėra galiojantis prievadas
 vserv_eroot=„$1“ nėra tinkama dokumento šaknis
 vserv_ename=„$1“ nėra teisingas serverio vardas
 vserv_eaddrs=Neįvestas virtualus serverio adresas
+
 show_title=Direktyvos
 show_edit=Redaguoti „Apache“ direktyvą:
 show_these=Neautomatiškai taisykite direktyvas
 show_ok=Redaguoti
+
 manual_configs=Redaguoti konfigūravimo failus
 manual_title=Redaguoti direktyvas
 manual_header=Naudokite žemiau esantį teksto lauką, norėdami rankiniu būdu redaguoti „Apache“ direktyvas $1, kurios galioja šiam virtualiam serveriui, aplankui ar failams.
@@ -153,6 +161,7 @@ manual_efile=Netinkamas „Apache“ konfigūracijos failas
 manual_etest=Aptikta konfigūracijos failo klaida : $1
 manual_editfile=Redaguoti konfigūracijos failą:
 manual_switch=Redaguoti
+
 dir_title=„Katalogų parinktys“
 dir_proxyall=Visos įgaliotojo užklausos
 dir_header=$1 $2
@@ -169,6 +178,7 @@ dir_re=Rungtynių režimas
 dir_path=Kelias
 dir_return=katalogo rodyklė
 dir_header2=$1 už $2
+
 type_0=Procesai ir ribos
 type_1=Tinklų kūrimas ir adresai
 type_2=„Apache“ moduliai
@@ -190,6 +200,7 @@ type_17=Automatiniai virtualieji kompiuteriai
 type_18=Filtrai
 type_19=Kalbos
 type_20=Vaizdų žemėlapiai
+
 htaccess_title=„Katalogų parinkčių failai“
 htaccess_ecannot=Jūs negalite redaguoti „htaccess“ failų
 htaccess_file=Esami parinkčių failai
@@ -205,6 +216,7 @@ htaccess_edelete=Jums neleidžiama ištrinti šio parinkčių failo
 htaccess_eempty=Neįvestas parinkčių failo katalogas
 htaccess_eabsolute=Parinkčių failo katalogas turi būti absoliutus kelias
 htaccess_err=Nepavyko sukurti parinkčių failo
+
 htindex_ecannot=Jums neleidžiama redaguoti šio parinkčių failo
 htindex_title=„Katalogo parinkčių failas“
 htindex_delete=Ištrinti failą
@@ -220,12 +232,14 @@ htindex_path=Kelias
 htindex_header=$1
 htindex_header2=$1 parinkčių failui $2
 htindex_return=parinkčių failo rodyklė
+
 htfile_title=„Failų parinktys“
 htfile_header=$1 $2
 htfile_show=Rodyti direktyvas
 htfile_edit=Redaguoti direktyvas
 htfile_apply=Parinktys galioja ..
 htfile_header2=$1 už $2
+
 reconfig_title=Iš naujo sukonfigūruokite žinomus modulius
 reconfig_ecannot=Jums neleidžiama iš naujo konfigūruoti apache
 reconfig_ever=Nepavyko gauti „Apache“ serverio versijos, vykdomosios $1. Patikrinkite <a href='$2'>modulio konfigūraciją</a> ir įsitikinkite, kad tai teisingas kelias.
@@ -233,11 +247,13 @@ reconfig_desc1=Jūsų „Apache“ konfigūracija pasikeitė arba dar nebuvo pat
 reconfig_desc2=Žemiau yra sąrašas visų „Apache“ modulių, palaikomų „Webmin“, su šiuo metu pasirinktais. Jei naudojate dinamiškai įkeltus modulius, gali tekti pasirinkti tuos, kurie yra dinamiškai įkeliami.
 reconfig_desc3=Jei nesate tikri, kuriuos modulius palaiko „Apache“ jūsų sistemoje, tiesiog sukonfigūruokite, nes „Webmin“ paprastai gali automatiškai išspręsti palaikomus modulius.
 reconfig_ok=Konfigūruokite
+
 defines_title=Redaguoti apibrėžtus parametrus
 defines_ecannot=Jums neleidžiama redaguoti httpd apibrėžimų
 defines_desc=Paleidus „Apache“, parametrus galima perduoti jam naudojant komandinės eilutės parinktį <tt>-D</tt>. Kadangi šie parametrai gali paveikti, kurios direktyvos naudojamos jūsų konfigūracijos failuose, „Webmin“ turi žinoti, kurios iš jų perduodamos „Apache“ paleidžiant. Dešinėje esančiame teksto lauke įveskite savo sistemoje naudojamus parametrus.
 defines_config=Atminkite, kad šie apibrėžti parametrai jau yra žinomi : $1
 defines_list=Apibrėžti parametrai
+
 authu_ecannot=„$1“ nėra leidžiamas naudotojų tekstinis failas
 authu_title=Vartotojų sąrašas
 authu_header=Byloje $1
@@ -259,6 +275,7 @@ authu_sync=Žemiau pateiktos parinktys leidžia sukonfigūruoti „Webmin“ aut
 authu_screate=Pridėti vartotoją, kai pridedamas „Unix“ vartotojas
 authu_sdelete=Ištrinkite vartotoją, kai ištrinamas „Unix“ vartotojas
 authu_smodify=Pakeiskite vartotoją, kai keičiamas „Unix“ vartotojas
+
 authg_ecannot=„$1“ nėra leidžiamas grupių tekstinis failas
 authg_title=Grupių sąrašas
 authg_header=Byloje $1
@@ -276,22 +293,26 @@ authg_err=Nepavyko išsaugoti grupės
 authg_euser=Neįvestas grupės pavadinimas
 authg_euser2=Grupės pavadinime negali būti :
 authg_edup=Grupė, vadinama „$1“, jau egzistuoja
+
 stop_err=Nepavyko sustabdyti afišos
 stop_ecannot=Jums neleidžiama sustoti apache
 stop_epid=Nepavyko atidaryti PID failo $1
 stop_epid2=Neteisingas PID failas $1
 stop_esig=Nepavyko nusiųsti SIGTERM apdoroti $1
+
 start_err=Nepavyko pradėti afišos
 start_ecannot=Jums neleidžiama pradėti lietis
 start_ecmd=$1 nepavyko : $2
 start_eunknown=Nežinoma priežastis
 start_eafter=Panašu, kad „Apache“ neveikia
+
 restart_err=Nepavyko pritaikyti pakeitimų
 restart_epid=Nepavyko atidaryti PID failo $1
 restart_epid2=Neteisingas PID failas $1
 restart_esig=Nepavyko nusiųsti „SIGHUP“ apdoroti $1
 restart_eunknown=Nežinoma priežastis
 restart_ecannot=Jums neleidžiama taikyti pakeitimų
+
 acl_virts=Virtualūs serveriai, kuriuos šis vartotojas gali redaguoti
 acl_vall=Visi serveriai
 acl_vsel=Pasirinkta ..
@@ -314,6 +335,7 @@ acl_dirs=Galimos „Apache“ direktyvos <br><font size=-1> (atsižvelgiant į a
 acl_dirs0=Visi
 acl_dirs1=Tik išvardytos ..
 acl_dirs2=Visi, išskyrus išvardytus ..
+
 core_maxconc=Didžiausias vienu metu esančių prašymų skaičius
 core_maxkeep=Maksimalus išlaikymas vienam ryšiui
 core_maxreq=Maksimalus užklausų skaičius vienam serverio procesui
@@ -499,10 +521,12 @@ core_infilter=Taikykite įvesties filtrus visiems failams
 core_outfilter=Visiems failams taikykite išvesties filtrus
 core_defchar=Simbolių rinkinys dokumentams
 core_edefchar=Trūksta arba netinkamas simbolių rinkinys dokumentams
+
 mod_negotiation_cache=Talpyklos turinio sutarti dokumentai?
 mod_negotiation_pri=Kalbos prioritetas keliems vaizdams
 mod_negotiation_def=Numatytas
 mod_negotiation_epri=Trūksta kalbos prioritetų
+
 mod_cgi_logname=CGI scenarijų žurnalas
 mod_cgi_none=Nė vienas
 mod_cgi_elogname=Netinkamas CGI scenarijaus žurnalo failas
@@ -512,6 +536,7 @@ mod_cgi_elogsize=CGI žurnalo dydis turi būti sveikasis skaičius
 mod_cgi_post=Didžiausias įrašytų įrašų duomenų dydis
 mod_cgi_epost=Skelbimo duomenų dydis turi būti sveikas skaičius
 mod_cgi_eunder=CGI scenarijų žurnalas nėra leidžiamame kataloge
+
 mod_alias_from=Iš
 mod_alias_to=Kam
 mod_alias_status=Statusas
@@ -535,6 +560,7 @@ mod_alias_cgi2=CGI katalogo slapyvardis
 mod_alias_rcgi=„Regexp CGI“ katalogo slapyvardžiai
 mod_alias_rcgi2=atnaujinti CGI katalogo slapyvardį
 mod_alias_estatus=„$1“ negalioja
+
 mod_proxy_proxy=Veiks kaip tarpinis serveris?
 mod_proxy_req=Prašymai
 mod_proxy_forw=Pirmyn į
@@ -605,11 +631,13 @@ mod_proxy_timeout=Įgaliotojo serverio užklausos laikas sekundėmis
 mod_proxy_etimeout=Tarpinio serverio užklausos laikas turi būti sekundžių skaičius
 mod_proxy_via=Nustatyti per: antraštes
 mod_proxy_not=Nė vienas
+
 mod_log_agent_default=Numatytas
 mod_log_agent_file=Bylos ..
 mod_log_agent_program=Programa ..
 mod_log_agent_log=Naršyklės žurnalo failas
 mod_log_agent_efile=$1 nėra teisingas agento žurnalo failo vardas
+
 mod_log_config_common=Bendras žurnalo formatas
 mod_log_config_named=Pavadinti žurnalo formatai
 mod_log_config_nick=Slapyvardis
@@ -628,6 +656,7 @@ mod_log_config_enofilprog=Trūksta žurnalo failo vardo ar programos
 mod_log_config_efilprog=„$1“ nėra leidžiamas žurnalo failo vardas ar programa
 mod_log_config_eifset=„Jei nustatytas“ parinkties negalima naudoti su numatytuoju žurnalo formatu
 mod_log_config_edir=Žurnalo failo „$1“ katalogas neegzistuoja
+
 mod_log_referer_default=Numatytas
 mod_log_referer_file=Bylos ..
 mod_log_referer_program=Programa ..
@@ -635,7 +664,9 @@ mod_log_referer_log=Kreipimosi žurnalo failas
 mod_log_referer_nolog=Negalima registruoti nuorodų iš
 mod_log_referer_elog=$1 nėra teisingas žurnalo failo vardas
 mod_log_referer_edir=nuorodos žurnalo nėra pagal leidžiamą katalogą
+
 mod_status_msg=Rodyti išplėstinę būsenos informaciją
+
 mod_mime_ext=Pratęsimai
 mod_mime_xtype=Papildomi MIME tipai
 mod_mime_mtype=MIME tipas
@@ -668,6 +699,7 @@ mod_mime_outfilter=Išvesties filtrai
 mod_mime_infilter=Įvesties filtrai
 mod_mime_filters=Taikomi filtrai
 mod_mime_efext=Filtrui (-ams) $1 nėra suteikta jokių plėtinių
+
 mod_setenvif_header=Antraštė
 mod_setenvif_match=Rungtynės
 mod_setenvif_case=Rungtynių atvejis
@@ -678,11 +710,13 @@ mod_setenvif_eheader=Netinkama užklausos antraštė „$1“
 mod_setenvif_eregex=Netinkama reguliari išraiška „$1“
 mod_setenvif_evar=Netinkamas kintamojo vardas „$1“
 mod_setenvif_clear=Aišku
+
 mod_userdir_default=Numatytas
 mod_userdir_all=Visi vartotojai prieinami
 mod_userdir_except=Visi vartotojai, išskyrus
 mod_userdir_dir=Vartotojo WWW katalogas
 mod_userdir_edir=Jums neleidžiama naudoti nurodyto vartotojo WWW katalogo
+
 mod_imap_action=Veiksmai dėl netinkamo vaizdo schemų naudojimo
 mod_imap_default=Numatytas
 mod_imap_godefurl=Eiti į numatytąjį URL
@@ -702,8 +736,10 @@ mod_imap_refurl=Persiunčiamasis URL
 mod_imap_url=URL. ..
 mod_imap_defbase=Numatytoji vaizdo schemų bazė
 mod_imap_eurl=„$1“ nėra galiojantis URL
+
 mod_speling_autocorr=Automatiškai ištaisyti neteisingai parašytus URL?
 mod_speling_default=Numatytas
+
 mod_actions_mime=Prižiūrėtojas / MIME tipas
 mod_actions_cgiurl=CGI scenarijaus URL
 mod_actions_mimecgi=Tvarkyklės arba MIME tipo CGI veiksmai
@@ -713,10 +749,13 @@ mod_actions_httpcgi=HTTP metodo CGI veiksmai
 mod_actions_emime=„$1“ nėra tinkamas tvarkytojas ar MIME tipas
 mod_actions_ecgi=„$1“ nėra galiojantis CGI scenarijus
 mod_actions_enometh=Nepasirinktas CGI scenarijaus „$1“ metodas
+
 mod_include_incl=Procesas apima failus su vykdomuoju bitu?
 mod_include_set=Taip ir nustatykite paskutinio modifikavimo datą
 mod_include_default=Numatytas
+
 mod_dir_txt=Katalogų rodyklės failai
+
 mod_autoindex_default=Numatytas
 mod_autoindex_asc=Kylanti
 mod_autoindex_descend=Mažėja
@@ -725,6 +764,7 @@ mod_autoindex_date=Data
 mod_autoindex_size=Dydis
 mod_autoindex_desc=apibūdinimas
 mod_autoindex_sort=Rūšiuokite katalogo rodyklę pagal
+
 browsermatch_regexp=Naršyklės regex
 browsermatch_case=Rungtynių atvejis?
 browsermatch_var=Nustatyti kintamąjį
@@ -732,6 +772,7 @@ browsermatch_value=Vertė
 browsermatch_txt=Kintamieji, nustatyti atsižvelgiant į naršyklės tipą
 browsermatch_evar=Netinkamas kintamojo vardas „$1“
 browsermatch_clear=Aišku
+
 autoindex_fname=Failo pavadinimas
 autoindex_mime=MIME tipas
 autoindex_enc=Kodavimas
@@ -785,9 +826,11 @@ autoindex_sicon=Rodyti failų piktogramas
 autoindex_srules=Rodyti &lt;hr&gt; eilutes
 autoindex_track=Įtraukite „ETags“ į antraštę
 autoindex_version=Rūšiuoti pagal versijų eilutes
+
 mod_mime_magic_file=MIME stebuklingų skaičių failas
 mod_mime_magic_none=Nė vienas
 mod_mime_magic_efile=Neteisingas MIME stebuklingų skaičių failo vardas
+
 mod_env_var=Kintamas
 mod_env_value=Vertė
 mod_env_pass=Pereiti
@@ -798,6 +841,7 @@ mod_env_passall=Perduokite visus aplinkos kintamuosius CGI
 mod_env_default=Numatytas
 mod_env_evar=„$1“ nėra teisingas kintamojo vardas
 mod_env_evalue=„$1“ nėra tinkama kintamoji vertė
+
 mod_access_order=Prieigos tikrinimo tvarka:
 mod_access_denyallow=Neleisk tada leisti
 mod_access_allowdeny=Leisk tada neigti
@@ -820,6 +864,7 @@ mod_access_epip=„$1“ nėra galiojantis dalinis IP adresas
 mod_access_emask=„$1“ nėra tinkama tinklo / tinklo maskavimo pora
 mod_access_ecidr=„$1“ nėra tinkama tinklo / CIDR pora
 mod_access_evar=„$1“ nėra teisingas kintamojo vardas
+
 mod_auth_ufile=Vartotojo tekstinis failas
 mod_auth_uedit=Redaguoti vartotojus
 mod_auth_gfile=Grupuoti tekstinį failą
@@ -830,6 +875,7 @@ mod_auth_eudir=Vartotojo teksto failo nėra leidžiamame kataloge
 mod_auth_egdir=Grupės teksto failo nėra leidžiamame kataloge
 mod_auth_eufile=Netinkamas vartotojo teksto failo vardas
 mod_auth_egfile=Netinkamas grupės teksto failo pavadinimas
+
 mod_auth_dbm_ufile=Vartotojo DBM failas
 mod_auth_dbm_gfile=Grupuoti DBM failą
 mod_auth_dbm_pass=Perduoti gedimus kitam moduliui?
@@ -840,6 +886,7 @@ mod_auth_dbm_egfile=Netinkamas grupės DBM failo vardas
 mod_auth_dbm_type=DBM duomenų bazės tipas
 mod_auth_dbm_gtype=DBM grupės duomenų bazės tipas
 mod_auth_dbm_default=Numatytasis DBM formatas
+
 mod_cern_meta_process=Proceso antraštės metafailai
 mod_cern_meta_dir=Antraštės metafailų pakatalogis
 mod_cern_meta_default=Numatytas
@@ -847,6 +894,7 @@ mod_cern_meta_edir=Netinkamas metafailo pakatalogio pavadinimas
 mod_cern_meta_suffix=Antraštės metafailų failo priesaga
 mod_cern_meta_default2=Numatytas
 mod_cern_meta_esuffix=Netinkama metafailo priesaga
+
 mod_ssl_enable=Įgalinti SSL?
 mod_ssl_proto=SSL protokolai
 mod_ssl_cfile=Sertifikato / privataus rakto failas
@@ -874,6 +922,7 @@ mod_ssl_passsc=Vykdykite scenarijų $1
 mod_ssl_epassph=Neįvestas SSL slaptažodis
 mod_ssl_epasssc=Trūksta arba netinkamas SSL slaptažodžio scenarijus
 mod_ssl_ecerton=Kai įjungta SSL, reikia pasirinkti pažymėjimo failą
+
 mod_apachessl_notssl=Atmesti SSL prieigą
 mod_apachessl_forcessl=Priversti prieigą prie SSL / notSSL?
 mod_apachessl_capath=Kelias į katalogą su sertifikavimo institucijų pažymėjimais
@@ -906,6 +955,7 @@ mod_apachessl_nov2=Išjungti 2 SSL versiją
 mod_apachessl_fake=Naudodamas pažymėjimo pavadinimą, imituoja pagrindinius vartotojo autentifikavimo prisijungimus
 mod_apachessl_cdnfile=Tikrinamas failas pagal kliento DN
 mod_apachessl_ecdnfile=Patikrinama, ar trūksta failo pagal kliento DN
+
 log_global=Pakeistos visuotinės $1 parinktys
 log_virtc=Sukurtas serveris $1
 log_virts=Iš naujo sukonfigūruotas serveris $1
@@ -946,8 +996,10 @@ log_stop=Sustabdytas internetinis serveris
 log_apply=Taikomi pakeitimai
 log_manual=Rankiniu būdu redaguotas konfigūracijos failas $1
 log_virts_delete=Ištrinti $1 virtualūs serveriai
+
 search_title=Rasti serverius
 search_notfound=Nerasta atitinkančių virtualių serverių
+
 mod_php_value=PHP konfigūracijos vertės
 mod_php_flag=PHP konfigūracijos vėliavos
 mod_php_admin_value=PHP administratoriaus konfigūracijos vertės
@@ -956,6 +1008,7 @@ mod_php_name_header=Nustatymas
 mod_php_value_header=Vertė
 mod_php_ename=„$1“ yra neteisingas vardas
 mod_php_evalue=„$1“ yra neteisinga $2 vertė
+
 mod_vhost_alias_root=Automatinė pagrindinio kompiuterio šaknis
 mod_vhost_alias_ip=Naudoti IP adresą, o ne pagrindinio kompiuterio vardą?
 mod_vhost_alias_none=Nė vienas
@@ -963,12 +1016,14 @@ mod_vhost_alias_script=Automatinis virtualusis kompiuterio cgi-bin
 mod_vhost_alias_eroot=Trūksta arba netinkama virtualiojo kompiuterio šaknis
 mod_vhost_alias_eroot2=Neleidžiamas virtualus pagrindinio kompiuterio šakninis katalogas
 mod_vhost_alias_escript=Trūksta arba netinkamo virtualiojo kompiuterio cgi-bin
+
 worker_minspare=Minimalūs atsarginiai sriegiai
 worker_maxspare=Maksimalūs atsarginiai siūlai
 worker_eminspare=Mažiausias atsarginių siūlų skaičius turi būti sveikasis skaičius
 worker_emaxspare=Didžiausias atsarginių siūlų skaičius turi būti sveikasis skaičius
 worker_threads=Siūlai vienam vaiko procesui
 worker_ethreads=Gijų skaičius viename procese turi būti sveikas skaičius
+
 perchild_sthreads=Pradinės gijos, susijusios su vienu vaiko procesu
 perchild_esthreads=Gijų skaičius viename procese turi būti sveikas skaičius
 perchild_numservers=Vaikų procesų skaičius
@@ -984,6 +1039,7 @@ perchild_gid=GID
 perchild_enum=Proceso numeris turi būti sveikasis skaičius be nulio
 perchild_euid=UID turi būti sveikasis skaičius
 perchild_egid=GID turi būti sveikasis skaičius
+
 cache_enable=Aktyvus?
 cache_type=Talpyklos parduotuvė
 cache_disk=Diskas
@@ -1004,12 +1060,14 @@ cache_eminos=Mažiausias talpyklos objekto dydis turi būti baitų skaičius
 cache_emaxos=Maksimalus talpyklos objekto dydis turi būti baitų skaičius
 cache_maxoc=Daugiausia atmintyje saugomų objektų
 cache_emaxoc=Talpykloje saugomų objektų skaičius turi būti sveikasis skaičius
+
 suexec_su=Vykdykite CGI programas kaip
 suexec_none=Vartotojas iš visuotinės konfigūracijos
 suexec_user=„Unix“ vartotojas
 suexec_group=ir grupė
 suexec_euser=Trūksta arba netinkamas vartotojas, norintis paleisti CGI programas kaip
 suexec_egroup=Trūksta arba netinkama grupė CGI programoms paleisti kaip
+
 filter_name=vardas
 filter_intype=Įveskite MIME tipą
 filter_outtype=Išvesties MIME tipas
@@ -1019,11 +1077,13 @@ filter_in=Įvesties filtro apibrėžimai
 filter_out=Išvesties filtro apibrėžimai
 filter_ename=Netinkamas filtro pavadinimas „$1“
 filter_ecmd=Trūksta filtro „$1“ komandos
+
 cdir_err=Nepavyko sukurti kiekvieno katalogo parinkčių
 cdir_err2=Nepavyko išsaugoti kiekvieno katalogo parinkčių
 cdir_epath=Trūksta kelio
 cdir_eproxy=Neįmanoma sukurti tarpinio serverio parinkčių, jei įjungta atitikties pakartotinio taikymo parinktis
 cdir_ecannot=Jums neleidžiama sukurti nurodyto kelio parinkčių parinkčių
+
 mod_band_enable=Pralaidumo ribojimas įjungtas?
 mod_band_bw=Riba (baitais / sek)
 mod_band_client=Klientams
@@ -1042,24 +1102,30 @@ mod_band_epulse=Trūksta arba netinkamas intervalas tarp ribotų paketų
 mod_band_dir=Pralaidumą ribojančių duomenų failų katalogas
 mod_band_edir=Trūksta arba nėra pralaidumo duomenų failų katalogo
 mod_band_esubdir=Trūksta būtino pakatalogio <tt>$1</tt> pralaidumo duomenų failų kataloge
+
 mod_dav_active=„WebDAV“ įgalinta?
 mod_dav_inf=Ar leidžiama begalinio gylio „DAV PROPFIND“ užklausoms?
 mod_dav_timeout=Minimalus DAV laikas per sekundes
 mod_dav_etimeout=Trūksta arba netinkamas „DAV“ laikas
+
 delete_err=Nepavyko ištrinti virtualių serverių
 delete_enone=Nepasirinkta
 delete_ecannot=Jums neleidžiama ištrinti serverių
 delete_ecannot2=Jums neleidžiama redaguoti serverio $1
+
 syslog_desc=„Apache“ klaidų žurnalas
+
 mod_auth_basic_pass=Perduoti pagrindines prisijungimo klaidas kitam moduliui?
 mod_auth_basic_prov=Pagrindiniai prisijungimo vartotojo failų tipai
 mod_auth_basic_file=Tekstinis failas
 mod_auth_basic_dbm=DBM duomenų bazė
+
 mod_auth_digest_pass=Ar perduoti suvestinės prisijungimo klaidas kitam moduliui?
 mod_auth_digest_prov=Suvestinės prisijungimo vartotojo failų rūšys
 mod_auth_digest_al=Maišymo algoritmas
 mod_auth_digest_domain=URL ir keliai tame pačiame domene
 mod_auth_digest_edomain=Trūksta URL ir kelių tame pačiame domene
+
 mods_title=Konfigūruokite „Apache“ modulius
 mods_mod=Modulis
 mods_state=Dabartinė būsena

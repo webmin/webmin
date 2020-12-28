@@ -3,6 +3,7 @@ connect_elogin=Neizdevās pieteikties datu bāzē $1:$2.
 index_title=Postfix pasta serveris
 index_epath=Postfix vadības komanda $1 jūsu sistēmā nav instalēta. Varbūt jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza vai Postfix nav instalēts.
 index_postfix=Pasta indekss
+
 internal_error=Iekšēja kļūda
 index_econfig=Postfix konfigurēšanas komanda $1 neeksistē. Varbūt jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 index_esuper=Postfix supervizora komanda $1 neeksistē. Varbūt jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
@@ -14,8 +15,10 @@ index_startmsg=Noklikšķiniet uz šīs pogas, lai palaistu Postfix pasta server
 index_reloadmsg=Noklikšķiniet uz šīs pogas, lai Postfix atkārtoti lasītu visus tā konfigurācijas failus. Tas var būt noderīgi, ja Postfix konfigurācijas faili ir manuāli modificēti.
 index_version=Postfix versija $1
 opts_err=Neizdevās saglabāt opcijas
+
 check_error=Kļūda, pārbaudot pašreizējo Postfix konfigurāciju. Lūdzu, manuāli labojiet Postfix konfigurāciju.
 check_manual=Manuāli rediģējiet Postfix konfigurācijas failu.
+
 address_rewriting_title=Adrešu pārrakstīšana un maskēšana
 address_rewriting_ecannot=Jums nav atļauts rediģēt adreses pārrakstīšanu un maskēšanu
 aliases_title=Pasta pseidonīmi
@@ -42,9 +45,11 @@ aliases_type5=Automātiski atbildēt failā $1
 aliases_type6=Lietot filtra failu $1
 aliases_none=Nav
 aliases_delete=Dzēst atlasītos pseidonīmus
+
 postfinger_title=Konfigurācijas pārbaude
 postfinger_show=Izrāde
 postfinger_ecannot=Jums nav atļauts pārbaudīt Postfix konfigurāciju
+
 mailclean_title=Notīriet MailQueue
 mailclean_ecannot=Nav privilēģiju tīrīt MailQueues
 mailclean_active=Aktīvā rinda
@@ -53,6 +58,7 @@ mailclean_deferred=Atliktā rinda
 mailclean_defer=Atlikt rindu
 mailclean_all=Visas rindas
 mailclean_search=Meklēšanas virkne
+
 aform_type0=Nav
 aform_type1=Epasta adrese
 aform_type2=Adreses failā
@@ -68,6 +74,7 @@ aform_val=Pseidonīms
 aform_afile=Rediģēt ..
 aform_return=pseidonīms
 aform_cmt=Apraksts
+
 asave_err=Neizdevās saglabāt aizstājvārdu
 asave_eaddr=“$1” nav derīga adrese
 asave_ealready=“$1” aizstājvārds jau pastāv
@@ -78,11 +85,13 @@ asave_etype4='$1' nav derīga programma vai neeksistē
 asave_etype5=Automātiskās atbildes fails “$1” nav derīgs
 asave_etype4none=Programma nav dota
 asave_etype6=Filtra fails “$1” nav derīgs
+
 afile_title=Rediģēt adreses failu
 afile_desc=Izmantojiet zemāk esošo teksta laukumu, lai rediģētu adreses failā $1.
 afile_efile=Jums nav atļauts rediģēt $1.
 afile_undo=Atsaukt izmaiņas
 afile_ewrite=Neizdevās uzrakstīt uz adrešu failu : $1
+
 ffile_title=Rediģēt filtra failu
 ffile_desc=Izmantojiet zemāk esošo formu, lai iestatītu filtra kārtulas failā $1.
 ffile_efile=Jums nav atļauts rediģēt $1.
@@ -98,6 +107,7 @@ ffile_other=Pretējā gadījumā pārsūtiet uz $1
 ffile_err=Neizdevās saglabāt filtra failu
 ffile_ematch=Trūkst spēles
 ffile_eaction=Trūkst pārsūtīšanas adreses
+
 rfile_title=Rediģēt automātiskās atbildes failu
 rfile_desc=Izmantojiet zemāk esošo teksta laukumu, lai rediģētu automātiskās atbildes ziņojumu $1. Ziņojumā var būt makro $SUBJECT, $FROM, $TO, $DATE un $BODY, kas tiks izvērsti, kad tiks aktivizēta automātiskā atbilde.
 rfile_desc2=Varat arī iestatīt pasta galvenes, kas papildina vai aizvieto automātiskajā atbildē izmantotos noklusējumus, ievietojot šādas rindiņas: <br><tt> No: foo@bar.com </tt><br> <tt>Temats: Brīvdienās</tt> <br> ziņojuma augšdaļā, atdalīta no pamatteksta ar vienu tukšu līniju.
@@ -116,11 +126,13 @@ rfile_from=No: atbildes adrese
 rfile_auto=Automātiska (pamatojoties uz adresāta adresi)
 rfile_efrom=Trūkst No: adrese
 rfile_fromdesc=A No: adrese vienmēr jānorāda, kur iespējams, jo automātiskā metode var nebūt uzticama.
+
 general_title=Vispārīgās iespējas
 general_title_sensible=Visnoderīgākās vispārīgās iespējas
 general_title_others=Citas vispārējās iespējas
 general_ecannot=Jums nav atļauts rediģēt vispārējās opcijas
 what_is_it=Kas tas ir?
+
 opts_default=Noklusējums
 opts_none=Nav
 opts_nomap=Nav iestatīta karte
@@ -140,10 +152,12 @@ opts_mail_owner=Pasta īpašnieks
 opts_default_privs=Piegādes aģenta noklusētās tiesības
 opts_inet_interfaces=Tīkla saskarnes pasta saņemšanai
 opts_all_interfaces=Visi
+
 opts_local_recipient_maps=Noraidiet nezināmus vietējos lietotājus
 opts_no=Nē
 opts_save=Saglabājiet un piesakieties
 opts_edir=Jums ir atļauts norādīt tikai kartes failus zem $1
+
 opts_allow_percent_hack=Pārrakstīt "user%domain" uz "user@domain"
 opts_append_at_myorigin=Pārrakstīt vārdu “user” uz “user@$mydomain”
 opts_append_dot_mydomain=Pārrakstiet “user@host” uz “user@host.$mydomain”
@@ -153,13 +167,17 @@ opts_swap_bangpath=Pārrakstīt "site! User" uz "user @ site"
 opts_masquerade_domains=Adreses maskēšana
 opts_masquerade_exceptions=Maskavas izņēmumi
 index_return=Postfix konfigurācija
+
 opts_alias_maps=Alias datu bāzes, kuras izmanto vietējais piegādes aģents
 opts_alias_database=Alias datu bāzes, kuras izveidojusi komanda "newaliases"
 aliases_warning=Brīdinājums: <ul><li> kad pirmais lauks nav tukšs, atbilstošo datu bāzu izveidošanai tiek izmantota noklusējuma Postfix aizstājvārdu ģenerēšanas komanda; <li>citādi tiek izmantota Sendmail saderības komanda "newaliases", tas izmantos otrā lauka datu bāzes.</ul>
+
 aliases_name=Vārds
 aliases_value=Pseidonīms. ..
+
 new_alias=Izveidojiet jaunu aizstājvārdu
 new_aliasmsg=Noklikšķiniet uz šīs pogas, lai izveidotu jaunu aizstājvārdu
+
 local_delivery_ecannot=Jums nav atļauts rediģēt vietējās piegādes iespējas
 local_delivery_title=Vietējā piegāde
 opts_local_transport=Vietējām piegādēm paredzētā transporta nosaukums
@@ -185,6 +203,7 @@ opts_local_destination_recipient_limit=Maksimālais saņēmēju skaits uz vietē
 opts_local_destination_recipient_limit_default=Noklusējums
 opts_prepend_delivered_header=Pievienojiet <tt>piegādāts:</tt> kad. ..
 opts_prepend_delivered_header_default=Noklusējums
+
 resource_title=Vispārējā resursu kontrole
 resource_ecannot=Resursu kontroles parametrus jums nav atļauts rediģēt
 opts_bounce_size_limit=Maksimālais atlekšanas ziņojuma lielums
@@ -204,6 +223,7 @@ opts_qmgr_message_recipient_limit=Maksimālais saņēmēju skaits atmiņā
 opts_queue_minfree=Minimāla brīva vieta rindu failu sistēmā
 opts_stale_lock_time=Maksimālais laiks, pēc kura novecojušā atslēga tiek atbrīvota
 opts_transport_retry_time=Laiks sekundēs starp mēģinājumiem sazināties ar bojātu MDT
+
 opts_always_bcc=Adrese, kas saņem katra ziņojuma kopiju
 opts_always_bcc_none=Nav
 opts_daemon_timeout=Pieteikumu apstrādes noildze
@@ -242,6 +262,7 @@ opts_trigger_timeout=Maksimālais laiks, lai nosūtītu sprūdu dēmonam
 opts_delay_warning_time=Laiks stundās pirms brīdinājuma nosūtīšanas par nepiegādi
 opts_delay_warning_time_default2=Postfix noklusējums
 opts_content_filter_default=Nav
+
 smtpd_title=SMTP servera opcijas
 smtpd_ecannot=Jums nav atļauts rediģēt SMTP servera opcijas
 opts_disable_vrfy_command=Atspējot komandu SMTP VRFY
@@ -273,6 +294,7 @@ smtpd_nomap=Pagaidām nav ievadīta karte atļautajām adresēm.
 smtpd_nomap2=Pagaidām nav ievadīta karte sūtītāju adreses ierobežojumiem.
 smtpd_map=Atļautās adreses nosūtīšanai
 smtpd_map2=Sūtītāju adreses ierobežojumi
+
 smtp_title=SMTP klienta iespējas
 smtp_ecannot=Jums nav atļauts rediģēt SMTP klienta opcijas
 opts_best_mx_transport=Darbība, ja tā ir norādīta kā labākā MX saimniece
@@ -293,6 +315,7 @@ opts_smtp_data_done_timeout=Taimauts, gaidot atbildi, lai beigtu "".
 opts_smtp_quit_timeout=Noildzis, gaidot atbildi uz QUIT
 opts_smtp_use_tls=SMTP savienojumiem izmantojiet TLS
 opts_smtp_sasl_security_options=SASL drošības iespējas
+
 rate_title=Piegādes cenas
 rate_ecannot=Jums nav atļauts rediģēt piegādes tarifu opcijas
 opts_default_destination_concurrency_limit=Maksimālais paralēlu piegāžu skaits uz to pašu galamērķi
@@ -303,18 +326,21 @@ opts_maximal_queue_lifetime=Maksimālais laiks (dienas) rindā pirms ziņojuma n
 opts_minimal_backoff_time=Min. Laiks (sekundēs) starp mēģinājumiem piegādāt atliktu ziņojumu
 opts_queue_run_delay=Laiks (sekundēs) starp atliktās rindas skenēšanu
 opts_defer_transports=Pārvadājumi, kurus nevajadzētu piegādāt
+
 debug_title=Atkļūdošanas funkcijas
 debug_ecannot=Jums nav atļauts rediģēt atkļūdošanas funkcijas
 opts_debug_peer_list=To domēna / tīkla modeļu saraksts, kuriem ir iespējots detalizēts žurnāls
 opts_debug_peer_level=Atbilstoši iepriekšminētajam sarakstam ir detalizēts reģistrēšanas līmenis
 debug_version=Postfix modulis Webmin - versija $1
 opts_edebug=Trūkst vai nav derīgs detalizētās reģistrēšanas līmenis - skaitlim jābūt lielākam par nulli
+
 ldap_title=LDAP meklējumi
 ldap_ecannot=Jums nav atļauts rediģēt LDAP meklēšanas opcijas
 ldap_non_existent=Liekas, ka jūsu Postfix sistēmā LDAP nav
 opts_ldap_lookup_timeout=Noilgums LDAP datu bāzes meklēšanai
 opts_ldap_search_base=LDAP datu bāze meklēšanai
 opts_ldap_server_host=LDAP servera resursdators
+
 canonical_title=Kanoniskā kartēšana
 canonical_ecannot=Jums nav atļauts rediģēt kanonisko kartēšanas konfigurāciju
 opts_canonical_maps=Adreses kartēšanas uzmeklēšanas tabulas
@@ -328,6 +354,7 @@ canonical_edit_title=Rediģēt kanonisko karti
 canonical_return_sender=sūtītāja kanoniskās kartes
 canonical_return_recipient=saņēmēju kanoniskās kartes
 canonical_return=kanoniskās kartes
+
 mapping_name=Vārds
 mapping_value=Kartes uz. ..
 mapping_delete=Dzēst atlasīto
@@ -355,6 +382,7 @@ mapping_toomany=Ir $1 kartes ieraksti, kas pārsniedz $2 attēlojuma robežu.
 mapping_find=Rādīt atbilstošos attēlojumus:
 mapping_search=Meklēt
 mapping_match=Kartes failu ieraksti, kas atbilst <tt>$1</tt> ..
+
 virtual_title=Virtuālie domēni
 virtual_ecannot=Jums nav atļauts rediģēt virtuālo domēnu kartēšanas konfigurāciju
 opts_virtual_maps=Domēna kartēšanas uzmeklēšanas tabulas
@@ -362,29 +390,44 @@ opts_virtual_alias_maps=Domēna kartēšanas uzmeklēšanas tabulas
 opts_virtual_alias_domains=Domēni, lai veiktu virtuālo kartēšanu
 virtual_same=No domēna kartēšanas tabulām
 virtual_return=virtuālie domēni
+
 transport_title=Transporta kartēšana
 transport_ecannot=Jums nav atļauts rediģēt transporta kartēšanas konfigurāciju
 opts_transport_maps=Transporta kartēšanas meklēšanas tabulas
 transport_return=transporta kartes
+
+sni_title=Sertifikātu kartēšana
+sni_ecannot=Jums nav atļauts rediģēt sertifikātu kartēšanas konfigurāciju
+opts_sni_maps=Sertifikātu kartēšanas uzmeklēšanas tabulas
+sni_return=sertifikātu kartes
+sni_dom=Resursdatora nosaukums
+sni_certs=Sertifikāta faili
+
 relocated_title=Pārvietota kartēšana
 relocated_ecannot=Jums nav atļauts rediģēt pārvietoto kartēšanas konfigurāciju
 relocated_return=pārvietotās kartes
 opts_relocated_maps=Pārvietotas kartēšanas meklēšanas tabulas
 opts_content_filter=E-pasta satura filtrs
+
 map_click=Noklikšķiniet uz jebkura kartējuma, lai rediģētu tā rekvizītus:
 no_map=(Šobrīd nav definēta karte. Vispirms definējiet karti, pēc tam to var rediģēt)
 no_map2=Pašlaik nav definēta karte. Vispirms definējiet karti, pēc tam to var rediģēt.
+
 stop_efailed=Neizdevās apturēt Postfix
 stop_ecannot=Jums nav atļauts pārtraukt Postfix
+
 start_efailed=Neizdevās sākt Postfix
 start_ecannot=Jums nav atļauts sākt Postfix
+
 reload_efailed=Neizdevās atkārtoti ielādēt Postfix
 reload_ecannot=Jums nav atļauts atkārtoti ielādēt Postfix
+
 query_get_efailed=Neizdevās vaicāt komandu Postfix config, lai iegūtu parametra $1 pašreizējo vērtību: <tt>$2</tt>
 query_set_efailed=Neizdevās vaicāt komandu Postfix config, lai iestatītu parametra $1 pašreizējo vērtību uz $2: <tt>$3</tt>
 regenerate_ecannot=Jums nav atļauts atjaunot pseidonīmus
 regenerate_alias_efailed=Neizdevās atjaunot aizstājvārdus: <tt>$1</tt>
 regenerate_table_efailed=Neizdevās reģenerēt tabulu $1: <tt>$2</tt>
+
 acl_resource=Vai var rediģēt resursus?
 acl_aliases=Vai var rediģēt pseidonīmus?
 acl_aliases_options=Vai var rediģēt pseidonīmu opcijas?
@@ -393,6 +436,7 @@ acl_address_rewriting=Vai var rediģēt adreses pārrakstīšanu?
 acl_canonical=Vai var rediģēt kanonisko?
 acl_virtual=Vai var rediģēt virtuāli?
 acl_transport=Vai var rediģēt transportu?
+acl_sni=Vai var rediģēt sertifikātus?
 acl_relocated=Vai rediģēt var pārvietot?
 acl_header=Vai var rediģēt galvenes pārbaudes?
 acl_local_delivery=Vai var rediģēt vietējo piegādi?
@@ -411,6 +455,7 @@ acl_postfinger=Vai var pārbaudīt postfix konfigurāciju?
 acl_manual=Vai var rediģēt konfigurācijas failu?
 acl_dir=Atļauts karšu failu direktorijs
 acl_bcc=Vai var rediģēt BCC kartēšanu?
+
 boxes_title=Lietotāju pastkastes
 boxes_user=Lietotājs
 boxes_size=Pastkastes lielums
@@ -420,6 +465,7 @@ boxes_sent=Nosūtītais pasts
 boxes_ecannot=Jums nav atļauts lasīt e-pastu
 boxes_toomany=Jūsu sistēmā ir pārāk daudz lietotāju, lai uzskaitītu visas viņu pastkastes.
 boxes_go=Skatīt lietotāja pastu:
+
 mail_title=Lietotāja e-pasts
 mail_from=No plkst
 mail_date=Datums
@@ -458,6 +504,7 @@ mail_forward=Uz priekšu
 mail_rfc=No līnijas
 mail_move=Pārvietot uz:
 mail_eexists=Ziņojums vairs nepastāv!
+
 view_title=Lasīt e-pastu
 view_desc=Ziņojums $1 $2
 view_desc2=Ziņojums $1 lietotājam $2
@@ -486,6 +533,7 @@ view_body=Ziņojuma teksts
 view_afile=Pielikuma nosaukums
 view_atype=Pielikuma tips
 view_asize=Faila lielums
+
 compose_title=Sastādīt e-pastu
 reply_title=Atbildēt uz e-pastu
 forward_title=Pārsūtīt e-pastu
@@ -496,6 +544,7 @@ reply_mailforward=Pārsūtītie ziņojumi
 reply_attach2=Klienta un servera puses pielikumi
 reply_send=Nosūtīt pastu
 reply_ecannot=Jums nav atļauts sūtīt vēstules kā šim lietotājam
+
 send_err=Neizdevās nosūtīt pastu
 send_eto=Trūkst adreses
 send_efrom=Trūkst adreses
@@ -509,6 +558,7 @@ send_eperms=Lietotājs $1 nevar nolasīt $2
 send_eperms2=Jums nav atļauts sūtīt failu $1
 send_epath=Sendmail izpildāmā $1 neeksistē.
 send_ewrapper=Postfix sendmail saskarnes programma neeksistē
+
 search_title=Meklēšanas rezultāti
 search_ecannot=Jums nav atļauts meklēt šī lietotāja e-pastā
 search_ematch=Jums ir jāievada teksts, kuram jāsakrīt.
@@ -516,6 +566,7 @@ search_efield=Jums jāizvēlas meklēšanas tips.
 search_none=Nav atrasts neviens ziņojums.
 search_results2=$1 pasta ziņas, kas atbilst $2 ..
 search_results3=$1 pasta ziņas, kas neatbilst $2 ..
+
 match_from=No: sakritības
 match_subject=Temats: spēles
 match_to=Kam: atbilst
@@ -533,6 +584,7 @@ match_!date=Datums: neatbilst
 match_!body=Ķermenis neatbilst
 match_!size=Izmērs ir mazāks par
 match_!headers=Galvenes nesakrīt
+
 mailq_title=Pasta rinda
 mailq_count=$1 ziņojumi
 mailq_none=Pašlaik neviena pasta ziņa netiek piegādāta rindā
@@ -561,15 +613,20 @@ mailq_active=Aktīvs
 mailq_deferred=Atlikts
 mailq_hold=Turiet atlasīto
 mailq_unhold=Apturēt atlasīto
+
 flushq_title=Flush Queue
 flushq_desc=Pasta piespiešanas mēģinājuma piespiešana ar komandu $1 ..
+
 qview_title=Sagaidīts ziņojums
 qview_desc=No faila $1
 qview_headers=Pasta galvenes
 qview_attach=Pielikumi
+
 after_err=Postfix konfigurācijas kļūda : $1
+
 searchq_title=Rindu meklēšanas rezultāti
 searchq_none=Nav atrasts neviens rindā esošs ziņojums.
+
 header_title=Galvenes pārbaudes
 header_ecannot=Jums nav atļauts rediģēt galvenes pārbaudes
 header_eregexp=Galvenes pārbaudes kartei jābūt formātā <tt>regexp:</tt> <i>faila nosaukums</i>
@@ -588,15 +645,18 @@ header_reject=Noraidīt (ar kļūdas ziņojumu..)
 header_warn=Brīdinājums par žurnālu (ar ziņojumu..)
 header_ename=Nederīga regulārā izteiksme - tai jābūt kā / kaut kam /
 header_return=galvenes pārbaudes
+
 body_title=Ķermeņa pārbaudes
 body_ecannot=Jums nav atļauts rediģēt ķermeņa pārbaudes
 body_eregexp=Ķermeņa pārbaudes kartei jābūt formātā <tt>regexp:</tt> <i>faila nosaukums</i>
 opts_body_checks=Ziņojumu ķermeņa pārbaudes tabulas
 body_return=ķermeņa pārbaudes
+
 dependent_title=No sūtītāja atkarīga transporta kartēšana
 dependent_ecannot=Jums nav atļauts rediģēt no sūtītāja atkarīgas transporta kartēšanas
 dependent_eregexp=No sūtītāja atkarīgā transporta karte ir formātā <tt>regexp:</tt> <i>faila nosaukums</i>
 dependent_return=no sūtītāja atkarīgas transporta kartes
+
 manual_title=Rediģēt kartes failu
 manual_file=Atlasiet rediģējamu kartes failu:
 manual_change=Pārmaiņas
@@ -604,9 +664,11 @@ manual_editing=Izmantojiet zemāk esošo lodziņu, lai manuāli rediģētu attē
 manual_err=Neizdevās saglabāt kartes failu
 manual_efile=Nederīgs kartes faila nosaukums!
 manual_ecannot=Jums nav atļauts manuāli rediģēt kartes failus
+
 delq_titles=Ziņu dzēšana
 delq_rusure=Vai tiešām vēlaties dzēst $1 atlasītos rindas ziņojumus?
 delq_confirm=Dzēst ziņas
+
 master_title=Serveru procesi
 master_name=Procesa nosaukums
 master_enabled=Iespējots?
@@ -647,8 +709,10 @@ master_einet=Resursdatora adresi, kuru klausīties, var norādīt tikai internet
 master_ecommand=Trūkst servera procesa komandas
 master_ewakeup=Trūkst vai nav derīgs pamodināšanas laiks
 master_emaxprocs=Trūkst vai nav derīgs maksimālais procesu skaits
+
 delete_err=Neizdevās izdzēst kartēšanu
 delete_enone=Nav atlasīts
+
 cmanual_title=Rediģēt konfigurācijas failus
 cmanual_ecannot=Jums nav atļauts rediģēt Postfix konfigurācijas failu
 cmanual_ok=Rediģēt
@@ -656,10 +720,12 @@ cmanual_efile=Atlasītais fails neietilpst Postfix konfigurācijā
 cmanual_file=Rediģēt konfigurācijas failu:
 cmanual_edata=Nekas nav ienācis
 cmanual_err=Neizdevās saglabāt konfigurācijas failu
+
 access_return=piekļuves kartes tabula
 edit_map_file=Rediģēt kartes failu
 opts_reject_rbl_client=Meklēt reāllaika melnajos sarakstos (RBL)
 opts_check_sender_access=Pārbaudiet sūtītāja piekļuves kartes tabulu
+
 log_misc=Mainītas vispārējās iespējas
 log_opts=Mainīta adreses pārrakstīšana un maskēšana
 log_aliases=Mainītas pseidonīmu iespējas
@@ -667,6 +733,7 @@ log_canonical=Kanonisko kartēšanas opciju maiņa
 log_virtual=Mainītas virtuālā domēna opcijas
 log_bcc=Mainītas BCC kartes opcijas
 log_transport=Mainītas transporta kartēšanas iespējas
+log_sni=Mainīt sertifikātu kartēšanas opcijas
 log_dependent=Mainītas no sūtītāja atkarīgās adreses iespējas
 log_relocated=Mainītas kartēšanas opcijas
 log_header=Mainītas galvenes pārbaudes opcijas
@@ -744,6 +811,7 @@ log_sender_dependent_default_transport_maps_modify=Pārveidota no sūtītāja at
 log_sender_dependent_default_transport_maps_delete=Svītrota no sūtītāja atkarīga adrese $1
 log_delete_sender_dependent_default_transport_mapss=Izdzēstas $1 adreses atkarīgās adreses
 log_manual_sender_dependent_default_transport_mapss=Manuāli rediģētas no sūtītāja atkarīgas adreses $1
+
 sasl_title=SMTP autentifikācija un šifrēšana
 opts_smtpd_sasl_auth_enable=Vai nepieciešama SASL SMTP autentifikācija?
 opts_smtp_sasl_auth_enable=Vai izmantot SASL SMTP autentifikāciju?
@@ -790,6 +858,7 @@ sasl_nologin=Neviens nav vajadzīgs
 sasl_userpass=Piesakieties kā $1 ar paroli $2
 sasl_elogin=Trūkst vai nav derīga SMTP pieteikšanās (nav atļauts izmantot atstarpes vai kolus)
 sasl_epass=Nederīga SMTP parole (atstarpes nav atļautas)
+
 client_title=SMTP klienta ierobežojumi
 client_ecannot=Jums nav atļauts rediģēt SMTP klienta ierobežojumus
 client_restrict=Klienta ierobežojumi
@@ -799,6 +868,7 @@ client_other=Citi ierobežojumi :
 client_err=Neizdevās saglabāt klienta ierobežojumus
 client_evalue=Trūkst ierobežojuma vērtības $1
 client_return=SMTP klienta ierobežojumi
+
 chooser_title=Atlasiet Kartes avots
 chooser_header=Kartes avots $1
 chooser_none=Nav
@@ -854,6 +924,7 @@ chooser_elquery_filter=Trūkst vaicājuma filtra kartei $1
 chooser_elresult_attribute=Trūkst vai nav derīgs kartes atribūta nosaukums $1
 chooser_elbind_dn=Trūkst pieteikšanās LDAP serverim kartē $1
 chooser_elbind_pw=Trūkst LDAP servera paroles kartē $1
+
 mysql_ecfile=MySQL konfigurācijas fails $1 netika atrasts
 mysql_ecfile2=Nevarēju atrast tabulu MySQL konfigurācijas failā $1
 mysql_edriver=Neizdevās ielādēt datu bāzes draiveri $1
@@ -865,6 +936,7 @@ mysql_eupdate=SQL atjaunināšana neizdevās : $1
 mysql_elist=SQL vaicājums neizdevās : $1
 mysql_esource=Netika atrasts MySQL avots ar nosaukumu $1
 mysql_eneed=MySQL konfigurācijas parametrs $1 netika atrasts. Webmin tas ir nepieciešams, lai izdomātu, kuru tabulu un laukus vaicāt.
+
 ldap_ecfile=LDAP konfigurācijas fails $1 netika atrasts
 ldap_eldapmod=Perl modulis $1, kas nepieciešams saziņai ar LDAP, nav instalēts vai nav ielādējams.
 ldap_eldap=Neizdevās izveidot savienojumu ar LDAP serveri $1 portā $2
@@ -875,6 +947,7 @@ ldap_edelete=Neizdevās izdzēst $1 LDAP : $2
 ldap_equery=Neizdevās meklēt LDAP $1 : $2 
 ldap_erename=$1 LDAP pārdēvēt uz $2 neizdevās : $3
 ldap_emodify=Neizdevās veikt LDAP modifikāciju $1 : $2 
+
 bcc_title=BCC kartēšana
 bcc_ecannot=Jums nav atļauts rediģēt BCC kartēšanu
 opts_sender_bcc_maps=Sūtītāja BCC kartēšanas meklēšanas tabulas

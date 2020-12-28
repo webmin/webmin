@@ -23,6 +23,7 @@ index_ok=Procurar
 index_searchres=Trabalhos Cron correspondentes a $1 ..
 index_reset=Redefinir pesquisa.
 index_econfigcheck=Trabalhos Cron não podem ser gerenciados no seu sistema, pois a configuração do módulo não é válida : $1 
+
 edit_next=Próximo tempo de execução
 edit_comment=Descrição
 edit_range=Período a ser executado
@@ -44,10 +45,13 @@ lcedit_special_weekly=semanalmente (no domingo)
 lcedit_special_monthly=mensalmente (no 1º)
 lcedit_special_yearly=anualmente (em 1º de janeiro)
 lcedit_special_reboot=quando o sistema inicializar
+
 save_euser2=O usuário '$1' não existe
 save_ecannot2=Você não tem permissão para criar trabalhos cron
 save_eidx=O trabalho do Cron foi salvo com sucesso, mas não pode ser executado porque não foi encontrado!
+
 allow_all2=Negar todos os usuários, exceto root
+
 env_title1=Editar variável de ambiente
 env_title2=Criar variável de ambiente
 env_user=Para usuário
@@ -60,7 +64,9 @@ env_where2=Mover variável de ambiente
 env_top=Antes de todos os trabalhos do Cron para o usuário
 env_bot=Depois de todos os trabalhos de Cron
 env_leave=Posição atual
+
 exec_cmdbg=Executando o comando $1 como um processo em segundo plano.
+
 acl_this=Usuário atual do webmin
 acl_command=Pode visualizar e editar comandos Cron?
 acl_uid=Usuários com UID no intervalo
@@ -71,6 +77,7 @@ acl_move=Pode mover trabalhos do Cron?
 acl_kill=Pode terminar trabalhos Cron?
 acl_hourly=Limitar trabalhos a no máximo por hora?
 acl_hourlydef=Conforme definido em Configuração do módulo
+
 log_modify=Trabalho Cron modificado para $1 
 log_modify_l=Trabalho Cron modificado "$2" para $1 
 log_create=Trabalho Cron criado para $1 
@@ -88,7 +95,9 @@ log_move=Trabalho Cron movido para $1
 log_crons_delete=$1 Cron empregos excluídos
 log_crons_disable=$1 Cron empregos desativados
 log_crons_enable=Trabalhos $1 Cron ativados
+
 ecopy=Foi detectado um erro na nova configuração do Cron: $1 $2 
+
 when_min=todo minuto
 when_hour=a cada hora em $1 após a hora
 when_day=todos os dias às $2:$1 
@@ -97,6 +106,7 @@ when_weekday=cada $3 em $2:$1
 when_cron=no horário cron $1 
 when_interval=a cada $1 segundo
 when_boot=no momento da inicialização
+
 ucwhen_min=Todo minuto
 ucwhen_hour=A cada hora em $1 após a hora
 ucwhen_day=Todos os dias às $2:$1 
@@ -105,8 +115,10 @@ ucwhen_weekday=A cada $3 em $2:$1
 ucwhen_cron=No horário cron $1 
 ucwhen_interval=A cada $1 segundo
 ucwhen_boot=No momento da inicialização
+
 move_err=Falha ao mover o trabalho Cron
 move_etype=Este trabalho não pode ser movido
+
 kill_err=Falha ao finalizar o trabalho Cron
 kill_ecannot=Você não tem permissão para terminar este trabalho
 kill_egone=Não está mais em execução
@@ -115,13 +127,16 @@ kill_title=Encerrar Trabalho Cron
 kill_rusure=Tem certeza de que deseja encerrar o processo $1 com o PID $2 ?
 kill_rusure2=Tem certeza de que deseja encerrar o processo $1 com o PID $2 e todos os seus subprocessos?
 kill_ok=Sim, encerre-o
+
 range_all=Executar em qualquer data
 range_start=Executar apenas a partir de $1 
 range_end=para $1 
 range_estart=Data de início ausente ou inválida no intervalo a ser executado
 range_eend=Data final ausente ou inválida no intervalo a ser executado
+
 delete_err=Falha ao excluir trabalhos do Cron
 delete_enone=Nenhum selecionado
+
 manual_title=Editar manualmente trabalhos Cron
 manual_edit=Arquivo Cron para editar:
 manual_ok=Editar

@@ -9,17 +9,21 @@ index_edit=Styre
 index_manual=Rediger manuelt
 index_anyfile=Rediger anden PHP-konfigurationsfil:
 index_return=konfigurationsfiler
+
 file_global=Global PHP-konfiguration
 file_eread=Kunne ikke læse $1 : $2 
+
 manual_title=Rediger konfiguration manuelt
 manual_desc=Denne side kan bruges til manuelt at redigere en PHP-konfigurationsfil. Dette skal udføres omhyggeligt, da der ikke udføres nogen syntaks eller anden gyldighedskontrol på dine ændringer.
 manual_err=Kunne ikke redigere konfigurationsfilen
 manual_edata=Intet nyt indhold indtastet
+
 list_title=Administrer PHP-konfiguration
 list_ecannot=Du har ikke tilladelse til at administrere denne PHP-konfigurationsfil
 list_return=PHP-konfiguration
 list_format_ini=INI-format
 list_format_fpm=FPM-format
+
 vars_title=PHP-variabler
 vars_header=PHP variabel oprettelse og citering indstillinger
 vars_magic=Citat alle input variabler?
@@ -28,6 +32,7 @@ vars_register=Vil du gøre alt input til globale variabler?
 vars_args=Vil du gøre kommandolinjeparametre til globale variabler?
 vars_long=Opret arrayer i gammel stil som <tt>HTTP_GET_VARS</tt>?
 vars_err=Kunne ikke gemme PHP-variabelindstillinger
+
 dirs_title=Katalogindstillinger
 dirs_header=PHP script- og udvidelsesbibliotekindstillinger
 dirs_include=Søg i mapper til inkluderer
@@ -39,6 +44,7 @@ dirs_err=Kunne ikke gemme katalogindstillinger
 dirs_eincs=Intet inkluderet søgekataloger
 dirs_eutmp=Manglende eller ugyldig bibliotek for midlertidige filer
 dirs_eext=Manglende udvidelseskatalog
+
 db_title=Databaseindstillinger
 db_header1=MySQL-databaseforbindelsesindstillinger
 db_persist=Tillad vedvarende databaseforbindelser?
@@ -57,6 +63,7 @@ db_emaxlinks=Manglende eller ugyldigt maksimum antal samlede forbindelser
 db_etimeout=Manglende eller ugyldig timeout for forbindelse
 db_ehost=Manglende eller ugyldig standard MySQL-serverhost
 db_eport=Manglende eller ugyldig standard MySQL-serverport
+
 session_title=Session indstillinger
 session_header=Indstillinger for PHP-sessionsporing
 session_handler=Session lagringsmekanisme
@@ -73,6 +80,7 @@ session_epath=Manglende eller ugyldig mappe til sessionfiler
 session_elife=Manglende eller ugyldig cookie-levetid
 session_emaxlife=Manglende eller ugyldig maksimal sessionens levetid
 session_eredis=Manglende eller deaktiveret genudvidelse igen
+
 safe_title=Valg af sikker tilstand
 safe_header=Indstillinger for sikker filtilgangstilstand
 safe_on=Aktivér sikker tilstand?
@@ -85,6 +93,7 @@ safe_err=Kunne ikke gemme sikkerhedsindstillinger
 safe_einclude=Manglende eller ugyldig tilladt mappe til inkluderede filer
 safe_eexec=Manglende eller ugyldig tilladt mappe til udførte programmer
 safe_ebasedir=Manglende eller ugyldig mappe til filhandlinger
+
 limits_title=Ressourcegrænser
 limits_header=Indstillinger for hukommelse og overførselsgrænse
 limits_mem=Maksimal hukommelsestildeling
@@ -98,6 +107,7 @@ limits_epost=Manglende eller ugyldig maksimal HTTP POST-størrelse
 limits_eupload=Manglende eller ugyldig maksimum upload af filstørrelse
 limits_eexec=Manglende eller ugyldig maksimal udførelsestid
 limits_einput=Manglende eller ugyldig maksimal indtastningstid for parsing
+
 errors_title=Fejl ved logning
 errors_header=Indstillinger for fejlmeddelelse og logning
 errors_display=Vis fejlmeddelelser?
@@ -128,6 +138,7 @@ errors_err=Kunne ikke gemme fejllogging
 errors_ereporting=Der er ikke indtastet nogen fejltypeudtryk
 errors_emaxlen=Manglende eller ugyldig maksimal størrelse på loggede fejl
 errors_efile=Manglende fejlloggfil
+
 misc_title=Andre indstillinger
 misc_header=Diverse andre PHP-indstillinger
 misc_short=Tillad PHP-scripts der starter med &lt;? ?
@@ -148,6 +159,7 @@ misc_include=Tillad åbning af fjernbetjening Inkluderer?
 misc_path=CGI Fix Path Info?
 misc_timezone=PHP-tidszone
 misc_charset=Standard tegnsæt
+
 log_manual=Rediger fil $1 manuelt
 log_vars=Ændrede PHP-variabler i $1 
 log_dirs=Ændrede biblioteksindstillinger i $1 
@@ -157,6 +169,7 @@ log_safe=Ændrede indstillinger for sikker tilstand i $1
 log_limits=Ændrede ressourcegrænser i $1 
 log_errors=Ændret fejllogging i $1 
 log_misc=Ændrede andre indstillinger i $1 
+
 acl_global=Kan redigere global PHP-konfiguration?
 acl_anyfile=Kan redigere en hvilken som helst fil som en PHP-konfiguration?
 acl_manual=Kan manuelt redigere konfigurationsfiler?

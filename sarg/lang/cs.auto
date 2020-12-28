@@ -10,6 +10,7 @@ index_range=Vygenerujte sestavu pro časové období
 index_view=Zobrazit vygenerovaný přehled
 index_viewdesc=Zobrazit naposledy vygenerovaný přehled v adresáři $1.
 index_return=index modulu
+
 log_title=Zdroj protokolu a cíl zprávy
 log_header=Zdrojový soubor chobotnice a generované možnosti hlášení
 log_access_log=Zdrojový soubor chobotnice
@@ -30,6 +31,7 @@ log_elastlog=Chybí nebo není číslo
 log_eemail=Chybí nebo neplatná e-mailová adresa
 log_emailx=Chybějící nebo neexistující poštovní program
 log_squidguard_log_path=Soubor protokolu SquidGuard
+
 style_title=Styl zprávy
 style_header=Možnosti stylu HTML a barev
 style_title2=Název přehledu
@@ -54,6 +56,7 @@ style_efont=Chybějící nebo neplatný název písma
 style_esize=Chybějící nebo neplatná šířka a výška obrázku
 style_language=Jazyk hlášení
 style_charset=Zpráva znaková sada
+
 report_title=Možnosti hlášení
 report_header=Nahlásit obsah a možnosti generování
 report_resolve_ip=Vyřešit IP adresy?
@@ -134,6 +137,7 @@ report_echar=Prostory nejsou povoleny
 report_estring=Chybějící nebo neplatný náhradní text
 report_eselect=Nic vybráno
 report_eenter=Nic nevstoupilo
+
 sched_title=Plánované generování sestav
 sched_header=Plánované možnosti hlášení
 sched_sched=Plánovaná zpráva povolena?
@@ -148,9 +152,11 @@ sched_rsel=Ty od $1 do $2 dny
 sched_err=Uložení naplánovaného generování sestav se nezdařilo
 sched_erfrom=Chybějící nebo neplatný počáteční počet dní
 sched_erto=Chybějící nebo neplatný konečný počet dní
+
 view_title=Sargova zpráva
 view_efile=Neplatný název souboru!
 view_eopen=Soubor se zprávou se nepodařilo otevřít
+
 gen_title=Generovat zprávu
 gen_header=Nyní generuje zprávu Sarg ze souboru protokolu Squid $1 a všech otočených verzí ..
 gen_done=.. Hotovo
@@ -160,6 +166,7 @@ gen_view=Zobrazit dokončenou zprávu.
 gen_err=Generování zprávy se nezdařilo
 gen_efrom=Chybí nebo je neplatný ode dne
 gen_eto=Dnes chybí nebo je neplatný
+
 webmin_log_log=Aktualizován zdroj protokolu a možnosti určení cíle
 webmin_log_report=Aktualizované možnosti přehledu
 webmin_log_style=Aktualizované možnosti stylu přehledu

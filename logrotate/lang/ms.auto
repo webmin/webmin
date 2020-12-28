@@ -19,11 +19,13 @@ index_force=Putaran Log Pasukan
 index_forcedesc=Paksikan giliran segera semua fail log, walaupun belum lagi masa.
 index_logrotate=Logrotate
 index_delete=Padam Rotasi Log Terpilih
+
 period_daily=Harian
 period_weekly=Setiap minggu
 period_monthly=Bulanan
 period_never=Tidak pernah
 period_bytes=bait
+
 edit_title1=Edit Fail Log
 edit_title2=Buat Fail Log
 edit_header=Butiran fail log diputar
@@ -62,8 +64,10 @@ edit_pre=Perintah untuk dijalankan sebelum putaran
 edit_default=Lalai ($1)
 edit_sharedscripts=Hanya jalankan skrip sekali untuk semua fail?
 edit_now=Putar Sekarang
+
 global_title=Pilihan Global
 global_header=Pilihan lalai untuk semua fail log
+
 save_err=Gagal menyimpan log
 save_efile=Nama fail log hilang atau tidak sah
 save_esize=Saiz maksimum yang tiada atau tidak sah
@@ -81,6 +85,7 @@ save_eerrors=Alamat e-mel yang hilang untuk mesej ralat
 save_epre=Skrip pra-putaran tidak boleh mengandungi baris <tt>endrip</tt> atau <tt>endrotate</tt>
 save_epost=Skrip pasang putaran tidak boleh mengandungi baris <tt>endrip</tt> atau <tt>endrotate</tt>
 save_enofiles=Tiada fail untuk putar yang dimasukkan
+
 log_modify_sched=Kerja cron rotasi log berubah
 log_create_sched=Kerja cron rotasi log yang dibuat
 log_delete_sched=Kerja cron rotasi log yang dipadamkan
@@ -89,6 +94,7 @@ log_create=Ditambah putaran untuk fail log $1
 log_modify=Putaran diubah untuk fail log $1 
 log_delete=Putaran dipadamkan untuk fail log $1 
 log_delete_logs=Pusingan dipadamkan untuk $1 fail log
+
 sched_title=Jadual Putaran Log
 sched_desc=Untuk putaran log yang dikonfigurasi dengan menggunakan modul ini untuk dilakukan, perintah $1 mesti dijalankan pada jadual biasa (biasanya setiap hari) oleh Cron.
 sched_runparts=Pada masa ini, perintah putaran log sedang dijalankan dari skrip $1 $2, dan tidak dapat dilaraskan.
@@ -98,10 +104,12 @@ sched_enabled=Dihidupkan, kadang-kadang di bawah ..
 sched_save=Kemas kini Cron Job
 sched_err=Gagal menyimpan jadual putaran
 sched_when=Masa untuk berlari
+
 force_title=Putaran Log Pasukan
 force_doing=Memaksa giliran segera semua fail log ..
 force_doingone=Memaksa giliran segera satu fail log ..
 force_done=.. selesai.
 force_failed=.. gagal! Lihat output di atas atas alasan mengapa.
+
 delete_err=Gagal memadam log
 delete_enone=Tiada yang dipilih

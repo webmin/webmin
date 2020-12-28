@@ -2,6 +2,7 @@ index_title=Servidor de Missatges de Veu
 index_ecmd=No s'ha trobat al sistema l'ordre $1 de vgetty. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_econfig=No s'ha trobat al sistema el fitxer de configuració $1 de vgetty. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_return=a l'índex de missatges de veu
+
 vgetty_title=Configuració del Port Sèrie
 vgetty_desc=Per tal que el servidor contesti trucades de veu amb un mòdem connectat a un port sèrie, cal que estigui llistat a sota. Quan afegeixis un port a aquesta llistat, es configurarà el programa $1 per a contestar les trucades i reproduir un missatge.
 vgetty_add=Afegeix un port sèrie nou
@@ -32,6 +33,7 @@ vgetty_erings=Hi falta el nombre de trucs o bé és invàlid
 vgetty_erings2=El nombre de trucs ha de ser almenys 2
 vgetty_eans=No has seleccionat cap mode de resposta
 vgetty_eclash=El port sèrie $1 ja està en ús
+
 options_title=Opcions del Servidor de Missatges de Veu
 options_header=Opcions de tots els ports sèrie
 options_maxlen=Llargada màxima del missatge
@@ -68,6 +70,7 @@ options_eprog=Hi falta el programa a executar o bé no existeix
 options_eowner=Hi falta l'usuari Unix dels fitxers de missatges o bé és invàlid
 options_egroup=Hi falta el grup Unix dels fitxers de missatges o bé és invàlid
 options_emode=Hi falta el permís octal dels fitxers de missatges o bé és invàlid
+
 received_title=Missatges Rebuts
 recieved_desc=Es llisten a sota els missatges rebuts pel servidor. Per escoltar un missatge, fes clic sobre la data/hora de la primera columna.
 received_none=No s'ha trobat cap missatge rebut.
@@ -79,9 +82,12 @@ received_delete=Suprimeix els missatges seleccionats
 received_move=Converteix els seleccionats a benvingudes
 received_all=Selecciona-ho tot
 received_invert=Inverteix la selecció
+
 listen_efile=Nom de fitxer de missatge invàlid!
 listen_epath=El missatge ja no existeix
+
 delete_efile=Nom de fitxer de missatge invàlid!
+
 messages_title=Missatges de Benvinguda
 messages_desc=Aquesta pàgina llista els missatges de benvinguda que es reproduiran quan algú es connecti a través del servidor de missatges de veu. Si en tens més d'un, se n'utilitzarà un de sol triat a l'atzar.
 messages_file=Fitxer
@@ -89,12 +95,15 @@ messages_none=No ha cap missatge de benvinguda disponible
 messages_updesc=Aquest formulari permet pujar un fitxer WAV addicional de missatge de benvinguda, que es convertirà al format triat per a utilitzar amb el mòdem. La freqüència de mostreig del fitxer WAV pujat ha de ser la mateixa que la dels missatges rebuts, així com la del format seleccionat.
 messages_upload=Puja missatge
 messages_fmt=converteix a
+
 pvfdesc=$1, $2 bits
+
 upload_err=No s'ha pogut afegir el missatge
 upload_emessage=No has seleccionat cap fitxer WAV
 upload_ewav=No s'ha pogut convertir el fitxer WAV: $1
 upload_epvf=No s'ha pogut crear el fitxer RMD: $1
 upload_esame=El fitxer de missatge $1 ja existeix
+
 log_apply=S'ha aplicat la configuració
 log_upload=S'ha pujat el missatge de benvinguda $1
 log_move=S'han convertit $1 missatges rebuts
@@ -104,5 +113,6 @@ log_options=S'han canviat les opcions de voicemail
 log_vgetty_create=S'ha afegit el port sèrie $1
 log_vgetty_modify=S'ha modificat el port sèrie $1
 log_vgetty_delete=S'ha suprimit el port sèrie $1
+
 email_subject=Missatge Voicemail
 email_body=S'ha rebut un missatge Voicemail a $1 per part de $2.

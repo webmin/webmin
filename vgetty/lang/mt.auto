@@ -2,6 +2,7 @@ index_title=Server tal-Vuċi
 index_ecmd=Il-kmand Vgetty $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
 index_econfig=Il-fajl config Vgetty $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
 index_return=Indiċi tal-voicemail
+
 vgetty_title=Konfigurazzjoni tal-Port Serjali
 vgetty_desc=Sabiex is-server tiegħek iwieġeb sejħiet bil-vuċi bil-modem konness ma 'port tas-serje, għandu jkun elenkat hawn taħt. Meta żżid port ma 'din il-lista, il-programm $1 jiġi kkonfigurat biex iwieġeb sejħiet u jilgħab messaġġ.
 vgetty_add=Żid port tas-serje ġdid
@@ -32,6 +33,7 @@ vgetty_erings=Numru ta 'ċrieki nieqsa jew invalidi
 vgetty_erings2=In-numru ta 'ċrieki għandu jkun mill-inqas 2
 vgetty_eans=Ma jintgħażlu l-ebda modi ta 'tweġiba
 vgetty_eclash=Il-port tas-serje $1 diġà qiegħed jintuża
+
 options_title=Għażliet tas-Server tal-Voicemail
 options_header=Għażliet għall-portijiet tas-serje kollha
 options_maxlen=It-tul massimu tal-messaġġ
@@ -68,6 +70,7 @@ options_eprog=Programm nieqes jew ineżistenti biex jitħaddem
 options_eowner=Utent Unix nieqes jew invalidu għall-fajls tal-messaġġi
 options_egroup=Grupp Unix nieqes jew invalidu għall-fajls tal-messaġġi
 options_emode=Permessi nieqsa jew invalidi għall-fajls tal-messaġġi
+
 received_title=Messaġġi riċevuti
 recieved_desc=Il-messaġġi tal-voicemail li rċevew is-server tiegħek huma elenkati hawn taħt. Biex tisma 'messaġġ, ikklikkja fuq id-data/il-ħin fl-ewwel kolonna.
 received_none=Ma nstabu l-ebda messaġġi ta 'voicemail.
@@ -79,9 +82,12 @@ received_delete=Ħassar il-messaġġi magħżula
 received_move=Ikkonverti magħżula għal awguri
 received_all=Agħżel kollox
 received_invert=Inverti l-għażla
+
 listen_efile=Isem tal-fajl tal-messaġġ mhux validu!
 listen_epath=Il-messaġġ tal-voicemail ma jeżistix
+
 delete_efile=Isem tal-fajl tal-messaġġ mhux validu!
+
 messages_title=Messaġġi ta 'Awguri
 messages_desc=Din il-paġna telenka messaġġi ta 'awguri li se jintlagħbu meta min iċempel jgħaqqad mas-server tal-posta tal-posta. Jekk ikollok aktar minn dak wieħed, se jintuża messaġġ wieħed magħżul bl-addoċċ.
 messages_file=Isem tal-fajl
@@ -89,12 +95,15 @@ messages_none=M'hemm l-ebda messaġġ ta 'tislima.
 messages_updesc=Din il-formola jippermettilek ittella 'messaġġ ta' awguri addizzjonali ta 'fajl WAV, li jiġi kkonvertit għall-format magħżul għall-użu mill-modem tiegħek. Ir-rata tal-kampjun tal-WAV imtellgħa għandha tkun l-istess bħar-rata tal-kampjun tal-messaġġi rċevuti, bħalma għandu l-format magħżul.
 messages_upload=Itella 'messaġġ
 messages_fmt=taqleb għal
+
 pvfdesc=$1, $2 bits
+
 upload_err=Ma rnexxielux iżid messaġġ
 upload_emessage=L-ebda fajl WAV ma ntgħażel
 upload_ewav=Ma rnexxielux jikkonverti l-fajl WAV : $1 
 upload_epvf=Ma rnexxielux joħloq fajl RMD : $1 
 upload_esame=Il-fajl tal-messaġġ $1 diġà jeżisti
+
 log_apply=Konfigurazzjoni applikata
 log_upload=Imtella 'l-messaġġ ta' awguri $1 
 log_move=Mibdula $1 messaġġi riċevuti
@@ -104,5 +113,6 @@ log_options=Inbidlu b'għażliet tal-voicemail
 log_vgetty_create=Port tas-serje $1 miżjud
 log_vgetty_modify=Port tas-serje modifikat $1 
 log_vgetty_delete=Port tas-serje mħassar $1 
+
 email_subject=Messaġġ tal-voicemail
 email_body=Messaġġ tal-voicemail riċevut fi $1 minn $2.

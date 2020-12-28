@@ -4,6 +4,7 @@ index_desc=Apraksts
 index_add=Pievienojiet jaunu PAM pakalpojumu.
 index_return=pakalpojumu saraksts
 index_none=Jūsu sistēmā direktorijā $1 netika atrasti PAM konfigurācijas faili. Varbūt PAM netiek atbalstīts vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
+
 desc_su=Mainīt lietotāju
 desc_su-l=Lietotāja maiņa (ar pieteikšanos)
 desc_login=Vietēja vai attāla pieteikšanās
@@ -87,6 +88,7 @@ desc_common-account=Kopīga konta verifikācija
 desc_common-auth=Kopēja autentifikācija
 desc_common-password=Kopīgas paroles maiņas
 desc_common-session=Kopīga sesijas iestatīšana
+
 edit_title=Rediģēt PAM pakalpojumu
 edit_header=PAM pakalpojuma informācija
 edit_name=Pakalpojuma nosaukums
@@ -107,6 +109,7 @@ edit_move=Kustēties
 edit_return=PAM pakalpojums
 edit_inc=Iekļaut pakalpojumu $1 
 edit_iheader=Iekļauti PAM pakalpojumi
+
 pam_pwdb.so=Unix paroles autentifikācija
 pam_securetty.so=Droša TTY pārbaude, vai nav saknes
 pam_nologin.so=<tt>/etc/nologin</tt> failu pārbaude
@@ -149,6 +152,7 @@ pam_console.so=Pārbaudiet tikai konsoli
 pam_xauth.so=X autentifikācija
 pam_stack.so=Zvaniet citam PAM dienestam
 pam_foreground.so=Konsoles iestatīšana
+
 control_requisite=Nepieciešams
 control_required=Obligāti
 control_sufficient=Pietiekams
@@ -157,6 +161,7 @@ control_desc_requisite=Neveiksmīgas autentifikācijas gadījumā nekavējoties
 control_desc_required=Neveiksmīga autentifikācija beigās
 control_desc_sufficient=Veiksmīgi veiciet tūlītēju autentifikāciju
 control_desc_optional=Panākumi vai neveiksmes tiek ignorēti
+
 create_title=Izveidot PAM pakalpojumu
 create_header=Jaunas PAM pakalpojumu iespējas
 create_name=Pakalpojuma nosaukums
@@ -165,6 +170,7 @@ create_mods=Sākotnējie PAM moduļi
 create_0=Nav
 create_1=Unix autentifikācija
 create_2=Liegt piekļuvi visam
+
 mod_edit=Rediģēt PAM moduli
 mod_create=Pievienojiet PAM moduli
 mod_header=PAM moduļa iespējas
@@ -178,10 +184,12 @@ mod_type_password=Paroles maiņa
 mod_control=Neveiksmes līmenis
 mod_args=Moduļa argumenti
 mod_err=Neizdevās saglabāt moduli
+
 pwdb_shadow=Vai izmantot ēnu paroles failu?
 pwdb_nullok=Vai pieņemt paroles?
 pwdb_md5=Vai izmantot MD5 šifrētas paroles?
 pwdb_nodelay=Kavēšanās pēc neveiksmīgas pieteikšanās?
+
 unix_nullok_secure=Vai drošos TTY pieņemat nulles paroles?
 unix_min=Minimālais paroles garums
 unix_nomin=Nav
@@ -190,6 +198,7 @@ unix_nomax=Nav ierobežojumu
 unix_obscure=Vai neļaut lietot vieglas paroles?
 unix_emin=Trūkst vai nav derīgs minimālais paroles garums
 unix_emax=Trūkst vai nav derīgs paroles maksimālais garums
+
 listfile_item=Meklēt failu
 listfile_item_user=Lietotājvārds
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=Ierobežot pārbaudi līdz
 listfile_all=Visi lietotāji
 listfile_user=Tikai lietotājs
 listfile_group=Tikai grupa
+
 cracklib_type=Paroles tips tiek parādīts
 cracklib_retry=Maksimālais atkārtojumu skaits pirms kļūmes
 cracklib_eretry=Trūkst vai nav derīgs atkārtotu mēģinājumu skaits
 cracklib_etype=Trūkst vai nav derīgs paroles tips
+
 rhosts_equiv=Lasīt failu <tt>/etc/hosts.equiv</tt>?
 rhosts_rhosts=Lasīt lietotāju <tt>.rhosts</tt> failus?
 rhosts_promiscuous=<tt>+</tt> ieraksts ļauj visiem saimniekiem?
 rhosts_suppress=Žurnāla autentifikācijas kļūmes?
+
 env_var=Mainīgais nosaukums
 env_def=Noklusējuma vērtība
 env_over=Ignorēt vērtību
 env_evar=Mainīgajos nosaukumos nedrīkst būt atstarpes
+
 securetty_ttys=Droši TTY
+
 shells_shells=Derīgi lietotāja čaulas
+
 tally_deny=Kļūdas mēģinājumi pirms piekļuves liegšanas
 tally_reset=Atiestatīt neveiksmi rēķinās ar panākumiem
 tally_edeny=Trūkst vai nav derīgs neveiksmes mēģinājumu skaits
 tally_magic=Neveiksmju skaits attiecas uz <tt>sakni</tt>?
 tally_root=<tt>root</tt> kontu var noraidīt?
+
 time_services=Pakalpojumi
 time_ttys=TTY
 time_users=Lietotāji
 time_times=Piekļuves laiki
 time_info=Visos laukos var būt vairākas vērtības, kas atdalītas ar |, un vērtības var izmantot * kā aizstājējzīmi vai! kā noliedzējs.
+
 group_services=Pakalpojumi
 group_ttys=TTY
 group_users=Lietotāji
 group_times=Piekļuves laiki
 group_groups=Pievienojiet grupas
 group_info=Visos laukos var būt vairākas vērtības, kas atdalītas ar |, un vērtības var izmantot * kā aizstājējzīmi vai! kā noliedzējs.
+
 wheel_group=Pārbaudiet dalību grupā
 wheel_group_def=Noklusējums (<tt>ritenis</tt> vai GID 0)
 wheel_trust=Grupas dalībnieki apiet tālāku autentifikāciju?
 wheel_deny=Vai noliegt tā vietā, lai atļautu grupas dalībniekiem?
 wheel_egroup=Trūkst vai nav derīgs grupas nosaukums
+
 motd_file=Parādāmais fails
 motd_file_def=Noklusējums (<tt>/etc/motd</tt>)
 motd_efile=Trūkst vai nav derīgs faila nosaukums
+
 mail_nopen=Vai parādīt pasta paziņojumu, kad piesakāties?
 mail_close=Vai parādīt pasta paziņojumu atteikšanās laikā?
 mail_empty=Paziņot, vai pasta fails ir tukšs?
 mail_noenv=Vai iestatīt $ MAIL vides mainīgo?
 mail_dir=Pasta spoles katalogs
 mail_edir=Trūkst vai nav derīga pasta pakešu direktorija
+
 stack_service=Nododiet pārbaudi PAM pakalpojumam
+
 log_pam_create=Izveidots PAM pakalpojums $1 
 log_pam_delete=Izdzēsts PAM pakalpojums $1 
 log_mod_create=Pievienots PAM modulis $1 pakalpojumam $2 
@@ -262,6 +284,7 @@ log_inc_create=Pievienots $1 pakalpojumam $2
 log_inc_modify=Modificēts ietver $1 pakalpojumam $2 
 log_inc_delete=Dzēsts ietver $1 par pakalpojumu $2 
 log_incs=Atjaunināts iekļauts pakalpojumam $1 
+
 inc_edit=Rediģēt iekļauto pakalpojumu
 inc_create=Izveidojiet iekļauto pakalpojumu
 inc_header=Iekļauta PAM pakalpojuma informācija

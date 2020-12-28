@@ -16,8 +16,10 @@ index_type=SSH-nyckeltyp:
 index_rsa1=RSA (för SSH v1)
 index_rsa=RSA (för SSH v2)
 index_dsa=DSA (för SSH v2)
+
 bits=bitar
 secs=sekunder
+
 users_title=autentisering
 users_header=Inloggnings- och autentiseringsalternativ
 users_expire=Dagar före konto löper ut för att varna användare
@@ -54,6 +56,7 @@ users_eauthkeys=Saknade eller ogiltiga snygga godkända nyckelfil
 users_maxauthtries=Max inloggningsförsök per anslutning
 users_emaxauthtries=Saknar eller icke-numeriskt antal inloggningsförsök per anslutning
 users_chal=Använd autentisering av utmaningssvar?
+
 net_title=nätverk
 net_header=Nätverksalternativ
 net_port=Lyssna på porten
@@ -91,6 +94,7 @@ net_eprots=Du måste välja minst ett protokoll
 net_eladdress='$1' är inte en giltig adress att lyssna på
 net_elport='$1' är inte en giltig port att lyssna på
 net_elisten2=Inga adresser att lyssna på angivna
+
 access_title=Åtkomstkontroll
 access_header=Alternativ för nätverks- och inloggningskontroll
 access_allowu=Tillåt bara användare
@@ -108,6 +112,7 @@ access_eallowg=Inga grupper att tillåta angivna
 access_edenyg=Inga grupper att neka in
 access_eallowh=Inga värdar att tillåta angivna
 access_edenyh=Inga värdar att förneka angivna
+
 misc_title=Diverse alternativ
 misc_header=Andra diverse SSH-serveralternativ
 misc_x11=Tillåt vidarebefordran av X11-anslutning?
@@ -131,14 +136,17 @@ misc_eumask=Saknas eller ogiltig 4-siffrig oktal umask
 misc_ebits=Saknad eller ogiltig servernyckelstorlek
 misc_eregen=Saknas eller ogiltigt nyckelregenereringsintervall
 misc_epid=PID-filsökväg saknas
+
 start_err=Det gick inte att starta SSH-servern
 apply_epid=Springer inte
+
 hosts_title=Alternativ för klientvärd
 hosts_header=SSH-klientvärdar
 hosts_none=Inga klientvärdalternativ har definierats. Alla SSH-klientinloggningar använder standardinställningarna.
 hosts_all=Alla värdar
 hosts_add=Lägg till alternativ för kundvärd.
 hosts_return=klient värd lista
+
 host_create=Lägg till värdalternativ
 host_edit=Redigera värdalternativ
 host_header=Klientalternativ för SSH-värd
@@ -194,6 +202,7 @@ host_eprots=Du måste välja minst ett protokoll
 host_proxy=Anslutning proxy kommando
 host_proxy_def=Ingen
 host_eproxy=Saknar eller ogiltigt snygg proxy-kommando
+
 log_users=Ändrade autentiseringsalternativ
 log_net=Ändrade nätverksalternativ
 log_access=Ändrad åtkomstkontroll
@@ -208,6 +217,7 @@ log_stop=Stoppad SSH-server
 log_start=Startade SSH-server
 log_apply=Tillämpad konfiguration
 log_manual=Redigera manuellt konfigurationsfilen $1
+
 sync_title=Användar SSH-tangentinställning
 sync_desc=På denna sida kan du konfigurera den automatiska inställningen av SSH för nya Unix-användare som skapats på ditt system. Om de är konfigurerade behöver nya användare inte köra <tt>ssh-keygen</tt> innan de använder SSH.
 sync_create=Ställa in SSH-nyckel för nya Unix-användare?
@@ -216,9 +226,11 @@ sync_pass=Använd lösenord som nyckelfras?
 sync_gnupg=Ställ in GNUPG-nyckel för nya Unix-användare.
 sync_type=Nyckeltyp
 sync_auto=&lt;Automatisk&gt;
+
 keys_title=Värd SSH-nycklar
 keys_desc=På denna sida kan du se SSH-nycklarna för denna värd.
 keys_none=Det gick inte att hitta några HostKey-poster i din SSHD-konfiguration.
+
 manual_title=Redigera konfigurationsfiler
 manual_ecannot=Du får inte redigera konfigurationsfilen för SSH-servern
 manual_ok=Redigera
@@ -226,5 +238,6 @@ manual_efile=Den valda filen är inte en del av SSH-serverkonfigurationen
 manual_file=Redigera konfigurationsfil:
 manual_edata=Ingenting kom in!
 manual_err=Det gick inte att spara konfigurationsfilen
+
 dknown_err=Det gick inte att ta bort kända värdar
 dknown_enone=Ingen vald

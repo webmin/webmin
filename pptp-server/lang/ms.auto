@@ -10,6 +10,7 @@ index_apply=Terapkan Konfigurasi
 index_applydesc=Klik butang ini untuk menggunakan opsyen pelayan PPTP semasa dengan menghentikan dan memulakan semula proses pelayan PPTP. Perubahan kepada pilihan PPP dan akaun PPP akan sentiasa terpakai pada mana-mana sambungan baru
 index_return=indeks modul
 index_epppd=Program pelayan PPP $1 tidak dipasang pada sistem anda. PPTP bergantung kepadanya untuk beroperasi.
+
 conf_title=Pilihan Pelayan PPTP
 conf_ecannot=Anda tidak dibenarkan mengedit pilihan pelayan PPTP
 conf_header=Konfigurasi pelayan PPTP
@@ -35,6 +36,7 @@ conf_elocalip='$1' bukan alamat atau rangkaian IP tempatan yang sah
 conf_eremoteip='$1' bukan alamat atau rangkaian IP jarak jauh yang sah
 conf_efrom=Rangkaian IPX yang hilang atau tidak sah dari alamat
 conf_eto=Rangkaian IPX yang hilang atau tidak sah untuk alamat
+
 options_title=Pilihan PPP
 options_ecannot=Anda tidak dibenarkan mengedit pilihan PPP
 options_desc0=Pilihan PPP di bawah dari $1 dikenakan kepada SEMUA sambungan masuk yang diterima oleh sistem anda, termasuk modem dialup.
@@ -67,6 +69,7 @@ options_mschap=Pengesahan MS-CHAP
 options_mschap-v2=Pengesahan MS-CHAP versi 2
 options_chapms=Pengesahan MS-CHAP
 options_chapms-v2=Pengesahan MS-CHAP versi 2
+
 secrets_title=Akaun PPP
 secrets_ecannot=Anda tidak dibenarkan mengedit akaun PPP
 secrets_return=indeks
@@ -80,6 +83,7 @@ secrets_sany=APAPUN
 secrets_create=Buat akaun PPP baharu.
 secrets_desc=Akaun PPP yang disenaraikan di halaman ini diambil dari fail $1, yang digunakan untuk pengesahan $3. Hanya mereka untuk pelayan anda $2 ditunjukkan, bukan akaun untuk membuat sambungan keluar.
 secrets_delete=Padam Akaun PPP Yang Dipilih
+
 edit_secret_etitle=Edit Akaun PPP
 edit_secret_ctitle=Buat Akaun PPP
 edit_secret_acc=Akaun PPP
@@ -99,15 +103,20 @@ edit_secret_alist=Izinkan disenaraikan ..
 edit_secret_save=Simpan
 edit_secret_del=Padam
 edit_secret_return=senarai akaun
+
 save_secret_esave=Gagal menyimpan akaun
 save_secret_enoip='$1' bukan alamat yang sah
+
 stop_err=Gagal menghentikan pelayan PPTP
 stop_egone=Tidak lagi berjalan
 stop_ecannot=Anda tidak dibenarkan untuk menghentikan pelayan PPTP
+
 start_err=Gagal memulakan pelayan PPTP
 start_ecannot=Anda tidak dibenarkan untuk memulakan pelayan PPTP
+
 apply_err=Gagal memulakan semula pelayan PPTP
 apply_ecannot=Anda tidak dibenarkan untuk mulakan semula pelayan PPTP
+
 conns_title=Sambungan Aktif
 conns_ecannot=Anda tidak dibenarkan mengurus sambungan aktif
 conns_desc=Halaman ini menyenaraikan sambungan PPTP yang sedang aktif ke pelayan anda. Untuk secara paksa mencabut satu, klik pada nama antara muka.
@@ -119,9 +128,11 @@ conns_remote=Alamat VPN klien
 conns_none=Tiada sambungan PPTP kelihatan aktif pada masa ini.
 conns_unknown=Tidak diketahui
 conns_user=Nama pengguna
+
 disc_err=Gagal melepaskan sambungan
 disc_egone=Sambungan tidak lagi aktif
 disc_ekill=Proses tidak lagi berjalan
+
 log_secret_create=Dicipta akaun PPP $1 
 log_secret_modify=Akaun PPP yang diubahsuai $1 
 log_secret_delete=Akaun PPP yang dipadam $1 
@@ -132,6 +143,7 @@ log_disc=Pelanggan terputus $1
 log_start=Memulakan pelayan PPTP
 log_stop=Berhenti pelayan PPTP
 log_apply=Konfigurasi pelayan PPTP yang digunakan
+
 acl_conf=Boleh mengedit konfigurasi?
 acl_options=Boleh edit pilihan?
 acl_secrets=Boleh mengurus akaun PPTP?

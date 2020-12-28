@@ -3,8 +3,10 @@ index_clink=Poate că nu este instalat sau configurația modulului <a href='$1'>
 index_return=indexul modulului
 index_atboot=Începeți la pornire?
 index_atbootdesc=Modificați această opțiune pentru a controla dacă clientul iSCSI este pornit la momentul de pornire sau nu. Acest lucru este necesar pentru ca sistemele de fișiere montate de pe servere iSCSI să fie montate automat.
+
 check_econfig=Fișierul de configurare a clientului iSCSI $1 nu a fost găsit în sistemul dvs.
 check_eiscsiadm=Programul de administrare a clientului iSCSI $1 nu a fost găsit în sistemul dvs.
+
 auth_title=Opțiuni de autentificare
 auth_header=autentificare iSCSI client și server
 auth_name=Numele inițiatorului sistemului local
@@ -29,6 +31,7 @@ auth_edpassword=Lipsește parola de descoperire pentru server
 auth_edusername_in=Lipsește numele de utilizator de descoperire pentru client
 auth_edpassword_in=Lipsește parola de descoperire pentru client
 auth_egen=Nu a reușit să genereze un nou nume!
+
 timeout_title=iSCSI Timeouts
 timeout_header=Opțiuni de expirare a clientului iSCSI
 timeout_timeout=Timpul de așteptare înainte de a eșua comenzile SCSI
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Timp lipsit sau nenumerotat pentru a aștepta ping-ul 
 timeout_eabort_timeout=Timp lipsesc sau care nu sunt numerice pentru a aștepta răspunsul la avort înainte de a eșua
 timeout_elu_reset_timeout=Timp lipsit sau non-numeric pentru a aștepta răspunsul unității logice înainte de a eșua
 timeout_etgt_reset_timeout=Timp lipsit sau non-numeric pentru a aștepta răspunsul țintă înainte de a eșua
+
 iscsi_title=Opțiuni iSCSI
 iscsi_header=Alte opțiuni iSCSI
 iscsi_startup=Conectați sesiunile la momentul de pornire?
@@ -62,6 +66,7 @@ iscsi_err=Nu a reușit să salvați opțiunile iSCSI
 iscsi_eretry=Număr de ori lipsește sau nu este numeric de a încerca autentificarea
 iscsi_ecmds=Comenzi maxime care lipsesc sau care nu sunt numerice în coada pe sesiune
 iscsi_equeue=Comenzi maxime lipsă sau nenumerice coada la dispozitiv
+
 ifaces_title=Interfețe iSCSI
 ifaces_elist=Eroare la listarea interfețelor : $1 
 ifaces_name=Numele interfeței
@@ -78,11 +83,13 @@ ifaces_hwaddress=Adresa mac
 ifaces_ifacename=Interfață sursă
 ifaces_ipaddressdef=Automat
 ifaces_notset=Automat
+
 iadd_err=Eroare la adăugarea interfeței
 iadd_eclash=O interfață numită $1 există deja
 iadd_eipaddress=Adresa IP sursă lipsă sau nevalidă
 iadd_ehwaddress=Adresa MAC lipsă sau nevalidă
 iadd_ename=Numele interfeței lipsește sau conține caractere nevalide
+
 difaces_err=Nu a reușit să elimine interfețele
 difaces_enone=Nimic selectat
 difaces_edelete=Eliminarea interfeței $1 a eșuat : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Eliminați interfețele
 difaces_target=iSCSI țintă
 difaces_ip=server iSCSI
 difaces_users=Unele conexiuni care utilizează aceste interfețe sunt în prezent active și nu vor funcționa atunci când interfețele sunt eliminate :
+
 conns_title=conexiuni iSCSI
 conns_elist=Eroare la listarea conexiunilor : $1 
 conns_ip=IP-ul serverului
@@ -113,6 +121,7 @@ conns_return=lista conexiunilor
 conns_iface=interfață iSCSI
 conns_ifacedef=Alegeți automat
 conns_ifaceerr=Eroare la preluarea interfețelor : $1 
+
 add_title=Adăugați conexiune iSCSI
 add_err=Eroare la adăugarea conexiunii iSCSI
 add_ehost=Numele de gazdă care lipsește sau nu poate fi rezolvat
@@ -129,6 +138,7 @@ add_on=$1 pe $2
 add_auth=Autentificare pe server
 add_auth1=Utilizați metoda de autentificare implicită
 add_auth0=Conectați-vă ca $2 cu parola $3 folosind metoda $1 
+
 dconns_err=Nu a putut deconecta conexiunile
 dconns_enone=Nimic selectat
 dconns_edelete=Eliminarea țintei $2 de la gazdă $1 a eșuat : $3 
@@ -142,6 +152,7 @@ dconns_use=Folosit de
 dconns_size=Mărimea partiției
 dconns_confirm=Eliminați conexiunile
 dconns_unused=nefolosit
+
 vconn_title=conexiune iSCSI
 vconn_egone=Conexiunea selectată nu mai există!
 vconn_header=Detalii conexiune iSCSI
@@ -160,8 +171,10 @@ vconn_device3=Numele dispozitivului constant
 vconn_delete=Deconectați conexiunea
 vconn_users=Utilizatori actuali
 vconn_size=Dimensiunea discului
+
 atboot_err=Activarea nu a reușit la momentul de pornire
 atboot_einit=Nu există nicio acțiune de pornire numită $1 
+
 log_auth=Opțiuni de autentificare salvate
 log_timeout=Opțiuni de expirare salvate
 log_iscsi=Opțiuni iSCSI salvate

@@ -10,6 +10,7 @@ index_hosts=میزبان
 index_cmd=فرمان
 index_delete=انتخاب شده را پاک کن
 index_none=هیچ یک
+
 edit_title1allow=Allow Rule را ایجاد کنید
 edit_title2allow=اجازه قانون را ویرایش کنید
 edit_title1deny=قانون را انکار کنید
@@ -22,9 +23,11 @@ edit_hosts=میزبان از راه دور
 edit_hostsexcept=به جز میزبان
 edit_cmd=دستورات شل
 edit_efound=Daemon '$1' در پیکربندی xinetd یافت نشد.
+
 save_errtitle=خطا در صرفه جویی در قانون
 save_ehost=ورودی میزبان حاوی کاراکترهای بد است
 save_ecmd=ورودی فرمان حاوی نویسه های بد است
 save_eservice=نامهای Daemon حاوی شخصیت های بد هستند
+
 del_errtitle=خطا در حذف قوانین
 del_enone=هیچ قانونی برای حذف مشخص نشده است

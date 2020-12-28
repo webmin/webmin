@@ -14,10 +14,12 @@ index_apply=Taikyti
 index_return=PPP indeksas
 index_none=Jūs negalite pasiekti nė vienos šio modulio funkcijos.
 index_delete=Ištrinti pasirinktas paskyras
+
 secrets_title=VPSP sąskaitos
 secrets_return=indeksas
 secrets_none=Dar nesukurtos PPP sąskaitos.
 secrets_ecannot=Jums neleidžiama redaguoti PPP paskyrų
+
 edit_secret_etitle=Redaguoti PPP sąskaitą
 edit_secret_ctitle=Sukurkite PPP sąskaitą
 edit_secret_acc=PPP sąskaita
@@ -37,8 +39,10 @@ edit_secret_alist=Leisti išvardyti ..
 edit_secret_save=Sutaupyti
 edit_secret_del=Ištrinti
 edit_secret_return=sąskaitų sąrašas
+
 save_secret_esave=Nepavyko išsaugoti paskyros
 save_secret_enoip=„$1“ nėra teisingas adresas
+
 log_create=Sukurta VPSP sąskaita $1 
 log_modify=Modifikuota PPP sąskaita $1 
 log_delete=Ištrinta VPSP sąskaita $1 
@@ -54,6 +58,7 @@ log_dialin_move=Perkeltas skambintojo ID numeris $1
 log_mgetty_create=Sukurtas serijinis prievadas $1 
 log_mgetty_modify=Modifikuotas serijinis prievadas $1 
 log_mgetty_delete=Ištrintas serijinis prievadas $1 
+
 options_title=PPP parinktys
 options_serial=Serijiniam prievadui $1 
 options_dev=Prietaisui $1 
@@ -84,6 +89,7 @@ options_idle=Laikas prieš atjungiant
 options_idle_def=Niekada
 options_eidle=Trūksta arba netinkamas neveikimo laikas
 options_ecannot=Jums neleidžiama redaguoti PPP parinkčių
+
 mgetty_title=Serijinio prievado konfigūracija
 mgetty_ecmd=Komanda $1 nerasta jūsų sistemoje. Ši programa reikalinga serijinių prievadų prisijungimui tvarkyti per modemą arba tiesioginį ryšį.
 mgetty_desc=Kad jūsų serveris leistų prisijungti prie nuoseklaus prievado per modemą arba tiesioginį ryšį, jis turi būti nurodytas žemiau. Įtraukus prie šio sąrašo prievadą, programa $1 bus sukonfigūruota atsakyti į modemo ryšius ir parodyti prisijungimo raginimą.
@@ -125,6 +131,7 @@ mgetty_apply=Taikyti konfigūraciją
 mgetty_applydesc=Spustelėkite šį mygtuką, kad pritaikytumėte dabartinę nuosekliojo prievado konfigūraciją, paleisdami komandą $1 ir užmušdami visus „Mgetty“ procesus.
 mgetty_applyerr=Nepavyko pritaikyti konfigūracijos
 mgetty_ecannot=Jums neleidžiama redaguoti nuosekliųjų prievadų konfigūracijų
+
 dialin_title=Skambintojo ID prieiga
 dialin_desc=Šis puslapis leidžia jums sukonfigūruoti „Mgetty“ leisti arba neleisti prisijungti prie dialino pagal skambinančiojo telefono numerį. Kai skambina, pirmasis sąrašo įrašas, kuris atitinka telefono numerį, lems, ar skambutis priimamas, ar ne.
 dialin_efile=„Mgetty“ skambintojo ID prieigos kontrolės failas $1 nerastas jūsų sistemoje. Gal „Mgetty“ neįdiegta, arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
@@ -145,9 +152,12 @@ dialin_move=Judėk
 dialin_err=Nepavyko išsaugoti skambintojo ID numerio
 dialin_enumber=Trūksta arba netinkamas telefono numeris
 dialin_ecannot=Jums neleidžiama redaguoti skambintojo ID prieigos
+
 acl_pages=Galimi puslapiai
 acl_direct=Eiti tiesiai į vieną puslapį?
+
 sync_ecannot=Jums neleidžiama redaguoti „unix-ppp“ sinchronizacijos parinkčių
 sync_title=Vartotojo sinchronizavimas
+
 delete_err=Nepavyko ištrinti paskyrų
 delete_enone=Nepasirinkta

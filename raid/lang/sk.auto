@@ -21,6 +21,7 @@ index_mailfromnone=Predvolené (<tt>root</tt>)
 index_program=Príkaz na spustenie pri zistení problémov
 index_programnone=Nepoužívajte žiadne
 index_monitor=Monitorovanie povolené?
+
 linear=Lineárne (zreťazené)
 raid0=RAID0 (pruhované)
 raid1=RAID1 (zrkadlené)
@@ -29,6 +30,7 @@ raid5=RAID5 (distribuovaná parita)
 raid6=RAID6 (duálna distribuovaná parita)
 raid10=RAID10 (pruhované a zrkadlené)
 blocks=bloky
+
 create_title=Vytvorte zariadenie RAID
 create_header=Možnosti zariadenia RAID
 create_device=Súbor zariadenia
@@ -62,6 +64,7 @@ create_o2_layout=2 Ofsetové kópie
 create_n3_layout=3 Blízko kópií
 create_f3_layout=3 ďaleké kópie
 create_o3_layout=3 Ofsetové kópie
+
 view_title=RAID zariadenie
 view_header=Možnosti zariadenia RAID
 view_device=Súbor zariadenia
@@ -117,6 +120,7 @@ view_mountmsg=Zadajte adresár a kliknutím na toto tlačidlo prejdete na formul
 view_mountmsg2=Kliknutím na toto tlačidlo použijete toto zariadenie RAID na virtuálnu pamäť vo vašom systéme.
 view_blocks=Bloky: $1 
 view_sparegroup=Náhradná skupina
+
 mkfs_title=Vytvorte súborový systém
 mkfs_header2=Tento formulár vám umožňuje vytvoriť nový súborový systém $2 na $1. <b>Všetky</b> existujúce údaje budú vymazané!
 mkfs_options=Nové možnosti súborového systému Linux
@@ -124,6 +128,7 @@ mkfs_err=Nepodarilo sa vytvoriť súborový systém
 mkfs_exec=Vykonáva sa príkaz $1 ..
 mkfs_failed=.. príkaz zlyhal!
 mkfs_ok=.. príkaz dokončený.
+
 emkraid=<tt>mkraid</tt> zlyhalo : $1 
 eraidstop=<tt>raidstop</tt> zlyhalo : $1 
 eraidstart=<tt>raidstart</tt> zlyhalo : $1 
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=Vytvorené zariadenie RAID $1 
 log_stop=Deaktivované zariadenie RAID $1 
 log_start=Aktivované zariadenie RAID $1 
@@ -147,14 +153,17 @@ log_grow=Zaregistroval RAID zariadenie $1 na celkom $2 diskov
 log_convert_to_raid6=Konvertovalo sa zariadenie RAID5 $1 na zariadenie RAID6
 log_convert_to_raid5=Konvertovalo sa zariadenie RAID6 $1 na zariadenie RAID5
 log_notif=Aktualizované možnosti oznámenia problémov s RAID
+
 notif_err=Možnosti upozornenia na problém RAID sa nepodarilo uložiť
 notif_emailaddr=Chýba alebo je neplatná adresa pre oznámenie
 notif_emailfrom=Chýba alebo je neplatná z adresy
 notif_eprogram=Chýbajúci alebo neexistujúci program na spustenie
+
 delete_title=Odstrániť pole RAID
 delete_rusure=Naozaj chcete odstrániť pole RAID $1, ktoré využíva $2 miesta na disku?
 delete_ok=Áno, odstrániť
 delete_eidx=Nie je vybraté žiadne pole RAID!
+
 remove_title=Odstráňte oddiel z poľa RAID
 remove_rusure=Naozaj chcete odstrániť oddiel $2 poľa RAID $1 ?
 remove_ok=Áno, odstrániť

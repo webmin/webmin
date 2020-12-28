@@ -3,6 +3,7 @@ connect_elogin=Gagal masuk ke pangkalan data $1:$2.
 index_title=Pelayan Mail Postfix
 index_epath=Arahan kawalan Postfix $1 tidak dipasang pada sistem anda. Mungkin konfigurasi modul <a href='$2'></a> tidak betul, atau Postfix tidak dipasang.
 index_postfix=Postfix
+
 internal_error=Masalah dalaman
 index_econfig=Arahan konfigurasi Postfix $1 tidak wujud. Mungkin konfigurasi modul <a href='$2'>anda</a> tidak betul.
 index_esuper=Perintah pengawas Postfix $1 tidak wujud. Mungkin konfigurasi modul <a href='$2'>anda</a> tidak betul.
@@ -14,8 +15,10 @@ index_startmsg=Klik butang ini untuk memulakan pelayan pos Postfix. Sehingga ini
 index_reloadmsg=Klik butang ini untuk memuat semula semua fail konfigurasi Postfix. Ini berguna jika fail konfigurasi Postfix diubah secara manual.
 index_version=Versi posfix $1
 opts_err=Gagal menyimpan pilihan
+
 check_error=Ralat semasa menyemak konfigurasi Postfix semasa. Sila selesaikan konfigurasi Postfix secara manual.
 check_manual=Edit fail konfigurasi Postfix secara manual.
+
 address_rewriting_title=Alamat Penyataan dan Masquerading
 address_rewriting_ecannot=Anda tidak dibenarkan menyunting semula menulis dan menyamar
 aliases_title=Mail Aliases
@@ -42,9 +45,11 @@ aliases_type5=Fail autoreply $1
 aliases_type6=Terapkan file penapis $1
 aliases_none=Tiada
 aliases_delete=Padam Aliases terpilih
+
 postfinger_title=Semak Tatarajah
 postfinger_show=Tunjukkan
 postfinger_ecannot=Anda tidak dibenarkan menyemak konfigurasi Postfix
+
 mailclean_title=Clean MailQueue
 mailclean_ecannot=Tiada keistimewaan untuk membersihkan MailQueues
 mailclean_active=Beratur Aktif
@@ -53,6 +58,7 @@ mailclean_deferred=Tertunda-Tertunda
 mailclean_defer=Menunda-Beratur
 mailclean_all=Semua Baris
 mailclean_search=Carian-String
+
 aform_type0=Tiada
 aform_type1=Alamat emel
 aform_type2=Alamat dalam fail
@@ -68,6 +74,7 @@ aform_val=Alias to
 aform_afile=Edit ..
 aform_return=alias
 aform_cmt=Penerangan
+
 asave_err=Gagal menyimpan alias
 asave_eaddr='$1' bukan alamat yang sah
 asave_ealready=Alias untuk '$1' sudah wujud
@@ -78,11 +85,13 @@ asave_etype4='$1' bukan program yang sah atau tidak wujud
 asave_etype5=Fail autoreply '$1' tidak sah
 asave_etype4none=Tiada program yang diberikan
 asave_etype6=Fail penapis '$1' tidak sah
+
 afile_title=Edit Fail Alamat
 afile_desc=Gunakan kawasan teks di bawah untuk mengedit alamat dalam fail $1.
 afile_efile=Anda tidak dibenarkan mengedit $1.
 afile_undo=Undo Perubahan
 afile_ewrite=Gagal menulis ke alamat fail : $1
+
 ffile_title=Edit Fail Penapis
 ffile_desc=Gunakan borang di bawah untuk menetapkan peraturan penapis dalam fail $1.
 ffile_efile=Anda tidak dibenarkan mengedit $1.
@@ -98,6 +107,7 @@ ffile_other=Jika tidak, hantar ke $1
 ffile_err=Gagal menyimpan fail penapis
 ffile_ematch=Perlawanan yang tiada
 ffile_eaction=Alamat penghantaran yang hilang
+
 rfile_title=Edit Fail Autoreply
 rfile_desc=Gunakan kawasan teks di bawah untuk mengedit mesej autoreply di $1. Mesej itu mungkin mengandungi makro $SUBJECT, $FROM, $TO, $DATE dan $BODY yang akan diperluaskan apabila autoreply diaktifkan.
 rfile_desc2=Anda juga boleh menetapkan tajuk surat yang menambah atau menggantikan lalai yang digunakan dalam autoreply dengan meletakkan garis seperti: <br><tt> Dari: foo@bar.com </tt><br> <tt>Subjek: Pada hari cuti</tt> <br> di bahagian atas mesej, dipisahkan dari tubuh dengan satu baris kosong.
@@ -116,11 +126,13 @@ rfile_from=Daripada: alamat untuk balasan
 rfile_auto=Automatik (berdasarkan alamat penerima)
 rfile_efrom=Kehilangan Daripada: alamat
 rfile_fromdesc=A Dari: alamat harus selalu ditentukan jika mungkin, kerana kaedah automatik mungkin tidak boleh dipercayai.
+
 general_title=Pilihan Umum
 general_title_sensible=Pilihan umum yang Berguna
 general_title_others=Pilihan Umum Lain
 general_ecannot=Anda tidak dibenarkan untuk mengedit Pilihan Umum
 what_is_it=Apa itu?
+
 opts_default=Lalai
 opts_none=Tiada
 opts_nomap=Tiada set peta
@@ -140,10 +152,12 @@ opts_mail_owner=Pemilik surat
 opts_default_privs=Hak ingkar ejen penghantaran
 opts_inet_interfaces=Antara muka rangkaian untuk menerima mel
 opts_all_interfaces=Semua
+
 opts_local_recipient_maps=Tolak pengguna tempatan yang tidak dikenali
 opts_no=Tidak
 opts_save=Simpan dan Terapkan
 opts_edir=Anda hanya dibenarkan menentukan fail peta di bawah $1
+
 opts_allow_percent_hack=Tulis semula "domain%pengguna" kepada "user@domain"
 opts_append_at_myorigin=Tulis semula "pengguna" kepada "user@$mydomain"
 opts_append_dot_mydomain=Tulis semula "user@host" ke "user@host.$mydomain"
@@ -153,13 +167,17 @@ opts_swap_bangpath=Tulis semula "laman web pengguna!" Ke "user @ site"
 opts_masquerade_domains=Alamat menyamar
 opts_masquerade_exceptions=Pengecualian menyamar
 index_return=Konfigurasi posfix
+
 opts_alias_maps=Alias pangkalan data yang digunakan oleh ejen penghantaran tempatan
 opts_alias_database=Alias pangkalan data yang dibina oleh perintah "newaliases"
 aliases_warning=Amaran: <ul><li> apabila medan pertama tidak kosong, perintah-perintah generik alias Postfix yang digunakan untuk membina pangkalan data yang sepadan; <li>lain-lain perintah keserasian Sendmail "newaliases" digunakan, ini akan menggunakan pangkalan data medan kedua.</ul>
+
 aliases_name=Nama
 aliases_value=Alias untuk. ..
+
 new_alias=Buat alias baru
 new_aliasmsg=Klik butang ini untuk membuat alias baru
+
 local_delivery_ecannot=Anda tidak dibenarkan mengedit pilihan penghantaran tempatan
 local_delivery_title=Penghantaran Tempatan
 opts_local_transport=Nama pengangkutan untuk penghantaran tempatan
@@ -185,6 +203,7 @@ opts_local_destination_recipient_limit=Bilangan maksimum penerima untuk penghant
 opts_local_destination_recipient_limit_default=Lalai
 opts_prepend_delivered_header=Sediakan <tt>Delivered-To:</tt> ketika. ..
 opts_prepend_delivered_header_default=Lalai
+
 resource_title=Kawalan Sumber Am
 resource_ecannot=Anda tidak dibenarkan mengedit parameter kawalan sumber
 opts_bounce_size_limit=Saiz maksimum mesej bounced
@@ -204,6 +223,7 @@ opts_qmgr_message_recipient_limit=Bilangan maksimum penerima dalam memori
 opts_queue_minfree=Ruang kosong min dalam sistem fail beratur
 opts_stale_lock_time=Masa maksimum selepas kunci basi dilepaskan
 opts_transport_retry_time=Masa dalam saat antara percubaan untuk menghubungi MDT yang rosak
+
 opts_always_bcc=Alamat yang menerima bcc setiap mesej
 opts_always_bcc_none=Tiada
 opts_daemon_timeout=Masa menunggu permintaan pengendalian
@@ -242,6 +262,7 @@ opts_trigger_timeout=Masa maksimum untuk menghantar pencetus ke daemon
 opts_delay_warning_time=Masa dalam beberapa jam sebelum menghantar amaran tanpa penghantaran
 opts_delay_warning_time_default2=Default postfix
 opts_content_filter_default=Tiada
+
 smtpd_title=Pilihan Pelayan SMTP
 smtpd_ecannot=Anda tidak dibenarkan mengedit pilihan pelayan SMTP
 opts_disable_vrfy_command=Lumpuhkan arahan SMTP VRFY
@@ -273,6 +294,7 @@ smtpd_nomap=Tiada peta untuk alamat yang dibenarkan untuk menyampaikan telah dim
 smtpd_nomap2=Tiada peta untuk sekatan pada alamat penghantar telah dimasukkan.
 smtpd_map=Alamat yang dibenarkan untuk menyampaikan
 smtpd_map2=Sekatan pada alamat penghantar
+
 smtp_title=Pilihan Pelanggan SMTP
 smtp_ecannot=Anda tidak dibenarkan mengedit pilihan klien SMTP
 opts_best_mx_transport=Tindakan apabila disenaraikan sebagai tuan rumah MX terbaik
@@ -293,6 +315,7 @@ opts_smtp_data_done_timeout=Masa menunggu menunggu jawapan untuk mengakhiri "."
 opts_smtp_quit_timeout=Masa menunggu menunggu jawapan untuk QUIT
 opts_smtp_use_tls=Gunakan TLS untuk sambungan SMTP
 opts_smtp_sasl_security_options=Pilihan keselamatan SASL
+
 rate_title=Kadar penghantaran
 rate_ecannot=Anda tidak dibenarkan mengedit pilihan kadar penghantaran
 opts_default_destination_concurrency_limit=Bilangan maksimum selari penghantaran ke destinasi yang sama
@@ -303,18 +326,21 @@ opts_maximal_queue_lifetime=Masa maksimum (hari) dalam barisan sebelum mesej tid
 opts_minimal_backoff_time=Masa min (saat) antara percubaan untuk menghantar mesej tertunda
 opts_queue_run_delay=Masa (saat) antara mengimbas barisan tertunda
 opts_defer_transports=Pengangkutan yang tidak boleh dihantar
+
 debug_title=Ciri debugging
 debug_ecannot=Anda tidak dibenarkan menyunting ciri debug
 opts_debug_peer_list=Senarai corak domain / rangkaian yang membolehkan log verbose diaktifkan
 opts_debug_peer_level=Tahap log pembakaran apabila menyamai senarai di atas
 debug_version=Modul Postfix untuk Webmin - Versi $1
 opts_edebug=Tahap pembalakan verbose yang hilang atau tidak sah - mestilah nombor yang lebih besar daripada sifar
+
 ldap_title=Carian LDAP
 ldap_ecannot=Anda tidak dibenarkan mengedit pilihan carian LDAP
 ldap_non_existent=Nampaknya LDAP tidak wujud dalam sistem Postfix anda
 opts_ldap_lookup_timeout=Masa untuk mencari pangkalan data LDAP
 opts_ldap_search_base=Pangkalan data LDAP untuk mencari
 opts_ldap_server_host=Nama hos pelayan LDAP
+
 canonical_title=Pemetaan Kanonis
 canonical_ecannot=Anda tidak dibenarkan mengedit konfigurasi pemetaan kanonik
 opts_canonical_maps=Alamat jadual carian pemetaan
@@ -328,6 +354,7 @@ canonical_edit_title=Edit Peta Canonical
 canonical_return_sender=peta kanun penghantar
 canonical_return_recipient=peta kanonik penerima
 canonical_return=peta kanonik
+
 mapping_name=Nama
 mapping_value=Peta untuk. ..
 mapping_delete=Padam Dipilih
@@ -355,6 +382,7 @@ mapping_toomany=Terdapat entri peta $1, yang berada di atas had paparan $2.
 mapping_find=Tunjukkan pemetaan pemetaan:
 mapping_search=Carian
 mapping_match=Penyertaan fail peta yang sepadan <tt>$1</tt> ..
+
 virtual_title=Domains Maya
 virtual_ecannot=Anda tidak dibenarkan mengedit konfigurasi pemetaan domain maya
 opts_virtual_maps=Jadual carian pemetaan domain
@@ -362,29 +390,44 @@ opts_virtual_alias_maps=Jadual carian pemetaan domain
 opts_virtual_alias_domains=Domain untuk melaksanakan pemetaan maya untuk
 virtual_same=Daripada jadual pemetaan domain
 virtual_return=domain maya
+
 transport_title=Pemetaan Pengangkutan
 transport_ecannot=Anda tidak dibenarkan mengedit konfigurasi pemetaan pengangkutan
 opts_transport_maps=Jadual carian pemetaan pengangkutan
 transport_return=peta pengangkutan
+
+sni_title=Pemetaan Sijil
+sni_ecannot=Anda tidak dibenarkan mengedit konfigurasi pemetaan sijil
+opts_sni_maps=Jadual carian pemetaan sijil
+sni_return=peta sijil
+sni_dom=Nama Hos
+sni_certs=Fail sijil
+
 relocated_title=Pemetaan yang dipindahkan
 relocated_ecannot=Anda tidak dibenarkan menyunting konfigurasi pemetaan yang dipindahkan
 relocated_return=peta yang dipindahkan
 opts_relocated_maps=Jadual carian pemetaan dipindahkan
 opts_content_filter=Penapis kandungan e-mel
+
 map_click=Klik pada mana-mana pemetaan untuk mengedit sifatnya:
 no_map=(Tiada peta pada masa ini ditakrifkan. Tentukan peta dahulu, maka anda boleh mengeditnya)
 no_map2=Tiada peta ditakrifkan pada masa ini. Tentukan peta dahulu, maka anda boleh mengeditnya.
+
 stop_efailed=Gagal menghentikan Postfix
 stop_ecannot=Anda tidak dibenarkan untuk menghentikan Postfix
+
 start_efailed=Gagal memulakan Postfix
 start_ecannot=Anda tidak dibenarkan memulakan Postfix
+
 reload_efailed=Gagal memuatkan semula Postfix
 reload_ecannot=Anda tidak dibenarkan memuatkan Postfix
+
 query_get_efailed=Gagal menanyakan perintah config Postfix untuk mendapatkan nilai semasa parameter $1: <tt>$2</tt>
 query_set_efailed=Gagal menanyakan arahan config Postfix untuk menetapkan nilai parameter semasa $1 kepada $2: <tt>$3</tt>
 regenerate_ecannot=Anda tidak dibenarkan untuk memulihkan semula Aliases
 regenerate_alias_efailed=Gagal memperbaharui nama alias: <tt>$1</tt>
 regenerate_table_efailed=Gagal untuk menjana semula jadual $1: <tt>$2</tt>
+
 acl_resource=Bolehkah mengedit sumber?
 acl_aliases=Boleh mengedit alias?
 acl_aliases_options=Boleh mengedit pilihan alias?
@@ -393,6 +436,7 @@ acl_address_rewriting=Boleh mengedit semula menulis alamat?
 acl_canonical=Boleh edit kanonikal?
 acl_virtual=Boleh edit maya?
 acl_transport=Bolehkah mengedit pengangkutan?
+acl_sni=Boleh mengedit sijil?
 acl_relocated=Boleh edit dipindahkan?
 acl_header=Bolehkah mengedit pengepala kepala?
 acl_local_delivery=Boleh mengedit penghantaran tempatan?
@@ -411,6 +455,7 @@ acl_postfinger=Bolehkah menyemak konfigurasi postfix?
 acl_manual=Boleh mengedit fail konfigurasi?
 acl_dir=Direktori yang dibenarkan untuk fail peta
 acl_bcc=Boleh mengedit pemetaan BCC?
+
 boxes_title=Peti mel pengguna
 boxes_user=Pengguna
 boxes_size=Saiz peti mel
@@ -420,6 +465,7 @@ boxes_sent=Menghantar surat
 boxes_ecannot=Anda tidak dibenarkan membaca e-mel
 boxes_toomany=Terdapat terlalu banyak pengguna pada sistem anda untuk menyenaraikan semua peti mel mereka.
 boxes_go=Lihat mel untuk pengguna:
+
 mail_title=E-mel Pengguna
 mail_from=Dari
 mail_date=Tarikh
@@ -458,6 +504,7 @@ mail_forward=Teruskan
 mail_rfc=Dari baris
 mail_move=Berpindah ke:
 mail_eexists=Mesej tidak lagi wujud!
+
 view_title=Baca E-mel
 view_desc=Mesej $1 di $2
 view_desc2=Mesej $1 untuk pengguna $2
@@ -486,6 +533,7 @@ view_body=Teks mesej
 view_afile=Nama lampiran
 view_atype=Jenis lampiran
 view_asize=Saiz fail
+
 compose_title=Tulis E-mel
 reply_title=Balas kepada E-mel
 forward_title=Hantar E-mel
@@ -496,6 +544,7 @@ reply_mailforward=Mesej yang dihantar
 reply_attach2=Lampiran Pelanggan dan pelayan
 reply_send=Hantar surat
 reply_ecannot=Anda tidak dibenarkan menghantar e-mel sebagai pengguna ini
+
 send_err=Gagal menghantar mel
 send_eto=Hilang Untuk alamat
 send_efrom=Kehilangan Daripada alamat
@@ -509,6 +558,7 @@ send_eperms=Pengguna $1 tidak dapat membaca $2
 send_eperms2=Anda tidak dibenarkan menghantar fail $1
 send_epath=Sendmail boleh laksana $1 tidak wujud.
 send_ewrapper=Program antaramuka sendmail Postfix tidak wujud
+
 search_title=Keputusan Carian
 search_ecannot=Anda tidak dibenarkan untuk mencari e-mel pengguna ini
 search_ematch=Anda mesti memasukkan teks untuk menandingi.
@@ -516,6 +566,7 @@ search_efield=Anda mesti memilih jenis carian.
 search_none=Tiada mesej dijumpai.
 search_results2=mesej galat $1 yang sepadan $2 ..
 search_results3=mesej e-mel $1 tidak sepadan $2 ..
+
 match_from=Daripada: perlawanan
 match_subject=Subjek: perlawanan
 match_to=Kepada: perlawanan
@@ -533,6 +584,7 @@ match_!date=Tarikh: tidak sepadan
 match_!body=Badan tidak sepadan
 match_!size=Saiz kurang daripada
 match_!headers=Tajuk tidak sepadan
+
 mailq_title=Giliran Mail
 mailq_count=$1 mesej
 mailq_none=Tiada mesej mel giliran untuk penghantaran
@@ -561,15 +613,20 @@ mailq_active=Aktif
 mailq_deferred=Tertunda
 mailq_hold=Pegang Dipilih
 mailq_unhold=Un-Hold Selected
+
 flushq_title=Gilir Giliran
 flushq_desc=Memaksa cubaan penghantaran mel dengan perintah $1 ..
+
 qview_title=Mesej Terdiri
 qview_desc=Dari fail $1
 qview_headers=Tajuk surat
 qview_attach=Lampiran
+
 after_err=Ralat konfigurasi postfix : $1
+
 searchq_title=Keputusan Carian Giliran
 searchq_none=Tiada mesej beratur yang dijumpai.
+
 header_title=Cek Tandukan
 header_ecannot=Anda tidak dibenarkan mengedit cek pengepala
 header_eregexp=Peta pemeriksaan pengepala mesti dalam format <tt>regexp:</tt> <i>nama file</i>
@@ -588,15 +645,18 @@ header_reject=Tolak (dengan mesej ralat..)
 header_warn=Amaran log (dengan mesej..)
 header_ename=Ungkapan biasa tidak sah - mestilah seperti / sesuatu /
 header_return=cek kepala
+
 body_title=Pemeriksaan Badan
 body_ecannot=Anda tidak dibenarkan mengedit cek badan
 body_eregexp=Semak peta badan mesti dalam format <tt>regexp:</tt> <i>nama file</i>
 opts_body_checks=Jadual pemeriksaan badan pesanan
 body_return=pemeriksaan badan
+
 dependent_title=Pemetaan Pengangkutan Dependen Penghantar
 dependent_ecannot=Anda tidak dibenarkan untuk mengedit pemetaan pengangkutan bergantung kepada penghantar
 dependent_eregexp=Pengirim yang bergantung kepada peta mesti berada dalam format <tt>regexp:</tt> <i>nama fail</i>
 dependent_return=pemetaan pengangkutan dependent pengirim
+
 manual_title=Edit Fail Peta
 manual_file=Pilih fail peta untuk diedit:
 manual_change=Ubah
@@ -604,9 +664,11 @@ manual_editing=Gunakan kotak teks di bawah untuk mengedit pengeditan secara manu
 manual_err=Gagal menyimpan fail peta
 manual_efile=Nama fail peta tidak sah!
 manual_ecannot=Anda tidak dibenarkan mengedit fail peta secara manual
+
 delq_titles=Memadam Mesej
 delq_rusure=Adakah anda pasti mahu memadamkan mesej antaramuka $1 yang dipilih?
 delq_confirm=Padam Mesej
+
 master_title=Proses pelayan
 master_name=Nama proses
 master_enabled=Dihidupkan?
@@ -647,8 +709,10 @@ master_einet=Alamat hos untuk didengar hanya boleh ditentukan untuk proses Inter
 master_ecommand=Perintah proses pelayan yang tiada
 master_ewakeup=Waktu bangun atau tidak sah
 master_emaxprocs=Bilangan proses yang hilang atau tidak sah
+
 delete_err=Gagal memadamkan pemetaan
 delete_enone=Tiada yang dipilih
+
 cmanual_title=Edit Fail Config
 cmanual_ecannot=Anda tidak dibenarkan mengedit fail config Postfix
 cmanual_ok=Edit
@@ -656,10 +720,12 @@ cmanual_efile=Fail terpilih bukan sebahagian daripada konfigurasi Postfix
 cmanual_file=Edit fail konfig:
 cmanual_edata=Tiada apa-apa yang masuk!
 cmanual_err=Gagal menyimpan fail konfigurasi
+
 access_return=jadual peta akses
 edit_map_file=Edit Fail Peta
 opts_reject_rbl_client=Senarai hitam realtime (RBL)
 opts_check_sender_access=Semak jadual peta akses penghantar
+
 log_misc=Menukar pilihan umum
 log_opts=Menukar alamat semula dan menyamar
 log_aliases=Pilihan alias yang diubah
@@ -667,6 +733,7 @@ log_canonical=Menukar pilihan pemetaan kanonik
 log_virtual=Pilihan domain maya yang berubah
 log_bcc=Pilihan peta BCC yang diubah
 log_transport=Pilihan pemetaan pengangkutan berubah
+log_sni=Tukar pilihan pemetaan sijil
 log_dependent=Pilihan alamat bergantung bergantung kepada pengirim
 log_relocated=Menukar pilihan pemetaan berpindah
 log_header=Pilihan semak pengubah kepala
@@ -744,6 +811,7 @@ log_sender_dependent_default_transport_maps_modify=Alamat bergantung kepada peng
 log_sender_dependent_default_transport_maps_delete=Alamat bergantung penghantar penghapus $1
 log_delete_sender_dependent_default_transport_mapss=Dihapuskan $1 alamat yang bergantung kepada penghantar
 log_manual_sender_dependent_default_transport_mapss=Alamat bergantung kepada penghantar yang diedit secara manual di $1
+
 sasl_title=Pengesahan dan Penyulitan SMTP
 opts_smtpd_sasl_auth_enable=Memerlukan pengesahan SMTP SASL?
 opts_smtp_sasl_auth_enable=Menggunakan pengesahan SMTP SASL?
@@ -790,6 +858,7 @@ sasl_nologin=Tiada yang diperlukan
 sasl_userpass=Log masuk sebagai $1 dengan kata laluan $2
 sasl_elogin=Log masuk SMTP yang hilang atau tidak sah (tiada ruang atau kolar yang dibenarkan)
 sasl_epass=Kata laluan SMTP tidak sah (tiada ruang dibenarkan)
+
 client_title=Sekatan Klien SMTP
 client_ecannot=Anda tidak dibenarkan mengedit sekatan klien SMTP
 client_restrict=Sekatan pelanggan
@@ -799,6 +868,7 @@ client_other=Sekatan lain :
 client_err=Gagal menyimpan sekatan pelanggan
 client_evalue=Tiada nilai untuk sekatan $1
 client_return=Sekatan klien SMTP
+
 chooser_title=Pilih Sumber Peta
 chooser_header=Sumber peta $1
 chooser_none=Tiada
@@ -854,6 +924,7 @@ chooser_elquery_filter=Penapis pertanyaan yang hilang untuk peta $1
 chooser_elresult_attribute=Nama atribut hasil yang tiada atau tidak sah untuk peta $1
 chooser_elbind_dn=Log masuk yang hilang untuk pelayan LDAP untuk peta $1
 chooser_elbind_pw=Kata laluan yang hilang untuk pelayan LDAP untuk peta $1
+
 mysql_ecfile=Fail konfigurasi MySQL $1 tidak dijumpai
 mysql_ecfile2=Tidak dapat mencari jadual dalam fail konfigurasi MySQL $1
 mysql_edriver=Gagal memuat pemacu pangkalan data $1
@@ -865,6 +936,7 @@ mysql_eupdate=Kemaskini SQL gagal : $1
 mysql_elist=Pertanyaan SQL gagal : $1
 mysql_esource=Tiada sumber MySQL yang dinamakan $1 telah dijumpai
 mysql_eneed=Parameter konfigurasi MySQL $1 tidak dijumpai. Webmin memerlukan ini untuk mencari jadual dan medan mana yang diminta.
+
 ldap_ecfile=Fail konfigurasi LDAP $1 tidak dijumpai
 ldap_eldapmod=Mod Perl $1 yang diperlukan untuk berkomunikasi dengan LDAP tidak dipasang atau tidak boleh dimuatkan
 ldap_eldap=Gagal menyambung ke pelayan LDAP $1 pada port $2
@@ -875,6 +947,7 @@ ldap_edelete=Penghapusan LDAP dari $1 gagal : $2
 ldap_equery=Carian LDAP $1 gagal : $2
 ldap_erename=Ubah nama LDAP dari $1 ke $2 gagal : $3
 ldap_emodify=LDAP mengubah suai $1 gagal : $2
+
 bcc_title=Pemetaan BCC
 bcc_ecannot=Anda tidak dibenarkan untuk mengedit pemetaan BCC
 opts_sender_bcc_maps=Jadual pemetaan pemapar BCC Pengirim

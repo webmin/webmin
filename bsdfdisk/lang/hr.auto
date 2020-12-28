@@ -7,6 +7,7 @@ index_dsize=Ukupna veličina
 index_dmodel=Napravite i modelirajte
 index_dparts=kriške
 index_return=popis diskova
+
 disk_title=Uređivanje diska
 disk_egone=Disk više ne postoji!
 disk_no=Kriška
@@ -31,9 +32,11 @@ disk_return=detalji diska i popis kriški
 disk_add=Stvorite novu krišku.
 disk_smart=Prikaži SMART status
 disk_smartdesc=Pokažite trenutni status ovog pogona kako je utvrdio SMART i provjerite ima li na disku grešaka.
+
 select_device=$1 uređaj $2 
 select_slice=$1 uređaj $2 kriška $3 
 select_part=$1 uređaj $2 kriška $3 particija $4 
+
 slice_title=Uređivanje kriške
 slice_egone=Odabrana kriška ne postoji!
 slice_ssize=Veličina kriške
@@ -58,6 +61,7 @@ slice_return=slice detalje i popis particija
 slice_err=Promjena dijelova nije uspjela
 slice_header=Pojedinosti o krišku
 slice_suse=Izravno koristi
+
 dslice_title=Izbriši krišku
 dslice_rusure=Jeste li sigurni da želite izbrisati krišku $1 ? Sve particije i datotečni sustavi unutar njega također će biti izbrisani.
 dslice_warn=Upozorenje - ovaj dio trenutno koristi : $1 
@@ -65,6 +69,7 @@ dslice_confirm=Izbriši sada
 dslice_deleting=Brisanje kriške $1 ..
 dslice_failed=.. brisanje nije uspjelo : $1 
 dslice_done=.. gotovo
+
 nslice_title=Stvorite krišku
 nslice_header=Novi detalji kriške
 nslice_number=Broj rezača
@@ -86,6 +91,7 @@ nslice_done=.. dodana je kriška
 nslice_parting=Stvorite zadane particije u odsječku $1 na $2 ..
 nslice_pfailed=.. stvaranje particije nije uspjelo : $1 
 nslice_pdone=.. dodana je particija
+
 npart_title=Stvorite particiju
 npart_header=Novi detalji particije
 npart_letter=Particijsko pismo
@@ -98,6 +104,7 @@ npart_emax=Završni blok ne može biti veći od veličine kriške $1 blokova
 npart_creating=Izrada particije $1 na $2 ..
 npart_failed=.. stvaranje particije nije uspjelo : $1 
 npart_done=.. dodana je particija
+
 part_title=Uređivanje particije
 part_egone=Particija više ne postoji!
 part_header=Pojedinosti o particiji
@@ -124,6 +131,7 @@ part_newmount2=Mount Partition
 part_mountmsg=Montirajte ovaj uređaj na novu mapu vašeg sustava kako bi se mogao koristiti za pohranu datoteka. Na uređaju mora biti već stvoren datotečni sustav.
 part_mountmsg2=Montirajte ovaj uređaj kao virtualnu memoriju na vašem sustavu da biste povećali količinu dostupne memorije.
 part_cannotedit=Ova se particija ne može mijenjati jer se trenutno koristi.
+
 dpart_title=Izbriši particiju
 dpart_rusure=Jeste li sigurni da želite izbrisati particiju $1 ? Svi će se datotečni sustavi unutar njega također izbrisati.
 dpart_warn=Upozorenje - ovu particiju trenutno koristi $1 
@@ -131,6 +139,7 @@ dpart_confirm=Izbriši sada
 dpart_deleting=Brisanje particije $1 ..
 dpart_failed=.. brisanje nije uspjelo : $1 
 dpart_done=.. gotovo
+
 newfs_title=Stvorite datotečni sustav
 newfs_header=Nove pojedinosti o datotečnom sustavu
 newfs_free=Prostor za rezervaciju za korijen
@@ -145,11 +154,13 @@ newfs_elabel=Nedostaje ili nevažeća naljepnica
 newfs_creating=Izrada datotečnog sustava na $1 ..
 newfs_failed=.. stvaranje nije uspjelo!
 newfs_done=.. stvoreno uspješno
+
 fsck_title=Provjerite sistem datoteka
 fsck_err=Provjera datotečnog sustava nije uspjela
 fsck_checking=Provjera datotečnog sustava na $1 ..
 fsck_failed=.. provjera nije uspjela!
 fsck_done=.. provjera je dovršena i nije pronađena nijedna pogreška
+
 log_create_slice=Napravljena je kriška $1 
 log_delete_slice=Izbrisana je kriška $1 
 log_modify_slice=Izmijenjena kriška $1 

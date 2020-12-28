@@ -28,6 +28,7 @@ index_tabinstall=Instalatu modulua
 index_tabsuggest=Gomendatutako moduluak
 index_allmods2=Webmin-ek erabiltzen dituen moduluak falta dira
 index_wantmods=Instalatu beharreko moduluak
+
 download_err=Ezin izan da modulua instalatu
 download_elocal=Ez da tokiko fitxategirik eman
 download_elocal2='$1' ez da existitzen
@@ -65,6 +66,7 @@ download_ebuild=Perl moduluren bat edo gehiago $1 eraiki behar da, baina Perl mo
 download_yum=$1 Perl modulua instalatzen $2 paketetik.
 download_missingok=CPANen falta diren moduluak
 download_fallback=Modulu batzuek ezin izan dute paketeetatik instalatu, iturburutik instalatu nahian.
+
 install_title=Instalatu modulua
 install_untar=Modurik gabeko fitxategia
 install_make=Konpilazio modulua
@@ -84,11 +86,13 @@ install_err2=Modulua CPAN-etik ere instalatu dezakezu $1 komandoarekin.
 install_exec=$1 exekutatzen ari da ..
 install_efile=$1 fitxategia ez dago jada
 install_needunlink=Baliteke berriro instalatzen saiatzea aurreko orrialdera itzuliz eta aukera desberdinak aukeratuz. Bestela, <a href='$1'>egin klik hemen behin-behineko pakete fitxategiak ezabatzeko</a> diskoaren lekua aurrezteko.
+
 cpan_sel=$1 azpiko moduluak.
 cpan_title=Aukeratu Perl modulua
 cpan_search=Aurkitu moduluak
 cpan_match=$1 datozen moduluak.
 cpan_none=Ez da emaitzarik aurkitu
+
 edit_title=Moduluaren xehetasunak
 edit_header=Moduluen informazioa
 edit_mod=Moduluaren izena
@@ -105,6 +109,7 @@ edit_method=Instalatu da
 edit_rpm=$1 RPM paketea
 edit_debian=$1 Debian paketea
 edit_manual=Eskuzko Perl modulua instalatu
+
 uninstall_title=Desinstalatu modulua
 uninstall_rusure=Ziur $1 Perl modulua desinstalatu nahi duzula? Hurrengo fitxategiak ezabatuko dira :
 uninstall_rusure2=Ziur $1 Perl modulua eta submodula (k) $2 desinstalatu nahi duzula? <br> Fitxategi hauek ezabatuko dira :
@@ -112,7 +117,9 @@ uninstall_ok=Desinstalatu Orain
 uninstall_rpm=Modulua $1 RPM paketea desinstalatuz kenduko da.
 uninstall_debian=Modulua kenduko da Debian $1 paketea ez instalatuz.
 uninstall_err=Ezin izan da modulua desinstalatu
+
 delete_efile=Pakete fitxategi baliogabea!
+
 uninstalls_title=Desinstalatu moduluak
 uninstalls_err=Ezin izan da moduluak desinstalatu
 uninstalls_enone=Ez da hautatu

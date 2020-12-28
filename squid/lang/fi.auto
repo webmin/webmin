@@ -38,6 +38,7 @@ index_restartdesc=Napsauta tätä painiketta aktivoidaksesi nykyisen kalmarin ko
 index_iptables=Portin uudelleenohjauksen asetukset
 index_squid=Kalmarin välityspalvelin
 index_manual=Muokkaa asetustiedostoja
+
 manual_title=Muokkaa asetustiedostoja
 manual_file=Valitse muokattava asetustiedosto:
 manual_change=Muuttaa
@@ -45,6 +46,7 @@ manual_editing=Käytä alla olevaa tekstikenttää muokataksesi manuaalisesti $1
 manual_err=Konfigurointitiedoston tallentaminen epäonnistui
 manual_efile=Virheellinen kokoonpanotiedoston nimi!
 manual_ecannot=Et voi muokata konfigurointitiedostoja manuaalisesti
+
 buttsave=Tallentaa
 buttdel=Poistaa
 buttcreat=Luoda
@@ -54,6 +56,7 @@ default=oletusarvo
 none=Ei mitään
 on=Päällä
 off=Vinossa
+
 acl_header1=Luo ACL
 acl_header2=Muokkaa ACL
 acl_name=ACL-nimi
@@ -109,6 +112,7 @@ acl_file=Tallenna ACL-arvot tiedostoon
 acl_nofile=Kalmarin kokoonpano
 acl_infile=Erillinen tiedosto
 acl_keep=Käytätkö vain tiedoston olemassa olevia sisältöjä?
+
 aclsave_failsave=ACL: n tallentaminen epäonnistui
 aclsave_faildel=ACL: n poistaminen epäonnistui
 aclsave_epr=Tätä ACL: tä käytetään välityspalvelimen rajoituksella
@@ -128,11 +132,13 @@ aclsave_eemin=Virheellinen loppu min
 aclsave_efile=Et voi kirjoittaa ACL-tiedostoon '$1'
 aclsave_enofile=ACL-tiedostonimeä ei annettu
 aclsave_ealready=ACL-tiedosto on jo olemassa
+
 cach_ecannot=Et voi käyttää välimuistinhallinnan tilastoja
 cach_err=Virhe
 cach_nfound=Kalmarivälimuistin hallintaohjelmaa <tt>$1</tt> ei löydy järjestelmästäsi. Ehkä <a href=/config.cgi?$2>moduulin kokoonpano</a> on väärä.
 cach_return=kalmarihakemisto
 cach_esame=<b>Kalmari cachemgr.cgi-suoritettava</b> on asetettu Webminin cachemgr.cgi-ohjelmalle, ei Squidin toimittamalle.
+
 chown_header=Vaihda omistajuutta
 chown_stop=Pysäytä kalmari. ..
 chown_done=.. Valmis
@@ -140,6 +146,7 @@ chown_chown=Vaihdetaan omistajuutta. ..
 chown_restart=Käynnistetään kalmari uudelleen. ..
 chown_failrestart=Kalmarin käynnistäminen epäonnistui ..
 chown_return=kalmarihakemisto
+
 clear_ecannot=Välimuistia ei saa tyhjentää ja rakentaa uudelleen
 clear_header=Tyhjennä ja lisää välimuisti
 clear_msgclear=Haluatko varmasti tyhjentää ja rakentaa Kalmarin välimuistin uudelleen? Tämä poistaa <b>kaikki</b> tallennetut tiedostot ja käynnistää Squid-palvelimen uudelleen.
@@ -153,6 +160,7 @@ clear_failrestart=Kalmarin käynnistäminen epäonnistui ..
 clear_return=kalmarihakemisto
 clear_url=Poista yksi URL välimuistista:
 clear_ok=Poista
+
 eacl_ecannot=Sinulla ei ole oikeutta muokata käyttöoikeuksien hallintaa
 eacl_header=Kulunvalvonta
 eacl_acls=Kulunvalvontalistat
@@ -169,8 +177,10 @@ eacl_nopr=Välityspalvelimen rajoituksia ei ole määritetty.
 eacl_addpr=Lisää välityspalvelimen rajoitus.
 eacl_noprr=Välityspalvelimen vastausrajoituksia ei ole määritetty
 eacl_addprr=Lisää välityspalvelimen vastausrajoitus.
+
 eacl_replypr=Vastaa välityspalvelimen rajoituksiin
 eacl_replynopr=Vastausvälityspalvelimen rajoituksia ei ole määritetty
+
 eacl_icpr=ICP-rajoitukset
 eacl_noicpr=ICP-rajoituksia ei ole määritelty
 eacl_addicpr=Lisää ICP-rajoitus.
@@ -187,6 +197,7 @@ eacl_eclass=Ohjelmaluokkaa ei ole valittu
 eacl_cname=Kirjoita nimi
 eacl_file=Tiedostosta $1
 eacl_hdelete=Poista valitut rajoitukset
+
 eadm_ecannot=Et voi muokata järjestelmänvalvojan asetuksia
 eadm_header=Hallinnolliset vaihtoehdot
 eadm_aao=Hallinnolliset ja ilmoittavat vaihtoehdot
@@ -213,6 +224,7 @@ eadm_caf=Välimuisti ilmoittaa tiedoston
 eadm_annp=Ilmoituskausi
 eadm_buttsave=Tallentaa
 eadm_return=kalmarihakemisto
+
 eauth_ecannot=Et voi muokata välityspalvelimen todennusta
 eauth_header=Välityspalvelimen todennus
 eauth_aopt=Todennusasetukset
@@ -226,6 +238,7 @@ eauth_pusers=Välityspalvelimen käyttäjät
 eauth_nopusers=Ei välityspalvelimen käyttäjiä on tällä hetkellä määritelty.
 eauth_addpuser=Lisää uusi välityspalvelimen käyttäjä.
 eauth_return=kalmarihakemisto
+
 ec_ecannot=Välimuistin asetuksia ei saa muokata
 ec_header=Välimuistin asetukset
 ec_cro=Välimuisti ja pyyntövaihtoehdot
@@ -280,6 +293,7 @@ ec_return=kalmarihakemisto
 ec_maxreplies=Maksimivastauskoko
 ec_maxrn=Koko (kB)
 ec_maxracls=ACL: ää vastaavien pyyntöjen osalta (jätä tyhjä kaikille)
+
 ech_header=Luo välimuistin isäntä
 ech_header1=Muokkaa välimuistin isäntä
 ech_cho=Välimuistin isäntäasetukset
@@ -324,6 +338,7 @@ ech_origin=Kohdellako isäntä alkuperäispalvelimena?
 ech_force=Pakota isäntä: otsikko kohteeseen
 ech_same=ennallaan
 ech_ssl=Yhdistätkö SSL: n avulla?
+
 eicp_ecannot=Et voi muokata muita välimuistia
 eicp_header=Muut välimuistit
 eicp_opcs=Muut välityspalvelimen välimuistipalvelimet
@@ -361,6 +376,7 @@ eicp_ttype=Tyyppi
 eicp_tpport=Välityspalvelimen portti
 eicp_tiport=ICP-portti
 eicp_delete=Poista valitut välimuistit
+
 elogs_ecannot=Et voi muokata hakkuita
 elogs_header=hakkuu
 elogs_lalo=Lokit ja lokitiedostoasetukset
@@ -394,6 +410,7 @@ elogs_notset=Ei valittu
 elogs_dont=Älä kirjaudu
 elogs_file=Tiedosto $1
 elogs_squid=Kalmarin standardi
+
 emem_ecannot=Muistin käyttöä ei saa muokata
 emem_dheader=Muistin ja levyn käyttö
 emem_header=Muistin käyttö
@@ -419,6 +436,7 @@ emem_lfuda=Dynaaminen vähiten käytetty
 emem_hlru=Kasa vähiten käytetty
 emem_return=kalmarihakemisto
 emem_mrp=Muistin korvauskäytäntö
+
 emisc_ecannot=Et voi muokata sekalaisia vaihtoehtoja
 emisc_header=Sekalaiset vaihtoehdot
 emisc_mo=Sekalaiset vaihtoehdot
@@ -455,6 +473,7 @@ emisc_wccpin=WCCP: n saapuva osoite
 emisc_wccpout=WCCP-lähtevä osoite
 emisc_none=Ei mitään
 emisc_virtual=virtuaali-
+
 eports_ecannot=Sinulla ei ole oikeutta muokata portteja ja verkkoyhteyksiä
 eports_header=Satamat ja verkottuminen
 eports_pano=Portit ja verkkoasetukset
@@ -480,6 +499,7 @@ eports_unc=Tekevätkö likaiset SSL-sammutukset?
 eports_checkhost=Vahvistatko URL-osoitteissa isäntänimet?
 eports_underscore=Sallivatko alaviivat isäntänimissä?
 eports_all=Kaikki
+
 eprogs_ecannot=Et voi muokata auttajaohjelmia
 eprogs_header=Auttajaohjelmat
 eprogs_chpo=Cache Helper -ohjelma-asetukset
@@ -508,6 +528,7 @@ eprogs_ttl=Todennusvälimuistin aika
 eprogs_aittl=Todenna IP-välimuistin aika
 eprogs_realm=Todennusalue
 eprogs_return=kalmarihakemisto
+
 euser_header=Luo välityspalvelimen käyttäjä
 euser_header1=Muokkaa välityspalvelimen käyttäjää
 euser_pud=Välityspalvelimen käyttäjän tiedot
@@ -516,6 +537,7 @@ euser_p=Salasana
 euser_u1=ennallaan
 euser_e=Käytössä?
 euser_return=käyttäjien luettelo
+
 ahttp_header=Luo välityspalvelimen rajoitus
 ahttp_header1=Muokkaa välityspalvelimen rajoitusta
 ahttp_pr=Välityspalvelimen rajoitus
@@ -525,10 +547,13 @@ ahttp_d=kieltää
 ahttp_ma=Ottelu ACL: t
 ahttp_dma=Älä vastaa ACL: ää
 ahttp_return=ACL-luettelo
+
 ahttp_replyheader=Luo välityspalvelimen vastausrajoitus
 ahttp_replyheader1=Muokkaa välityspalvelimen vastausrajoitusta
 ahttp_replypr=Välityspalvelimen vastausrajoitus
+
 sahttp_ftspr=Välityspalvelimen vastausrajoituksen tallentaminen epäonnistui
+
 aicp_header=Luo ICP-rajoitus
 aicp_header1=Muokkaa ICP-rajoitusta
 aicp_ir=ICP-rajoitus
@@ -538,7 +563,9 @@ aicp_d=kieltää
 aicp_ma=Ottelu ACL: t
 aicp_dma=Älä vastaa ACL: ää
 aicp_return=ACL-luettelo
+
 saicp_ftsir=ICP-rajoituksen tallentaminen epäonnistui
+
 icache_ecannot=Välimuistia ei saa alustaa
 icache_ftic=Välimuistin alustaminen epäonnistui
 icache_ymcautrsa=Sinun on valittava käyttäjä suorittamaan Squid as
@@ -546,7 +573,9 @@ icache_euser=Käyttäjä suorittaa Kalmarin sellaisena kuin sitä ei ole
 icache_itscwtc=Kalmarin välimuistin alustaminen komennolla <tt>$1</tt> ..
 icache_return=kalmarihakemisto
 icache_title=Alusta välimuisti
+
 restart_ftrs=Kalmarin uudelleenmääritys epäonnistui
+
 sadmin_ftsao=Hallinnollisten asetusten tallentaminen epäonnistui
 sadmin_header=Vaihda omistajuutta
 sadmin_msg1=Olet vaihtanut käyttäjän tai ryhmän, jota Kalmari ajaa. Jotta tämä toimisi oikein, kaikkien välimuistin ja lokitiedostojen omistajuudet olisi päivitettävä ja Kalmari käynnistettävä uudelleen.
@@ -556,10 +585,12 @@ sadmin_inavea='$1' ei ole kelvollinen sähköpostiosoite
 sadmin_inavh='$1' ei ole kelvollinen isäntänimi
 sadmin_inavap='$1' ei ole kelvollinen ilmoitusaika
 sadmin_inavp='$1' ei ole kelvollinen portti
+
 sauth_ftsao=Todennusasetuksien tallentaminen epäonnistui
 sauth_iomuf=Virheellinen tai puuttuva käyttäjän tiedostonimi
 sauth_iomd=Virheellinen tai puuttuva verkkotunnus
 sauth_msg1=Squid-versiota ei ole koottu välityspalvelimen todennuksen tuella
+
 scache_ftsco=Välimuistin asetusten tallentaminen epäonnistui
 scache_emsg0=Sinun on syötettävä ainakin yksi välimuistihakemisto
 scache_emsg1=Välimuistihakemistoa '$1' ei ole
@@ -577,14 +608,17 @@ scache_emsg12='$1' ei ole kelvollinen hakemistokoko
 scache_emsg13='$1' ei ole kelvollinen isäntä
 scache_emsg14='$1' ei ole kelvollinen portti
 scache_emaxrs=Virheellinen enimmäiskoko rivillä $1
+
 schost_ftsc=Välimuistin tallentaminen epäonnistui
 schost_emsg1='$1' ei ole kelvollinen välimuistin isäntänimi
 schost_emsg2='$1' ei ole kelvollinen välityspalvelinportti
 schost_emsg3='$1' ei ole kelvollinen ICP-portti
 schost_emsg4='$1' ei ole kelvollinen elää
 schost_emsg5='$1' ei ole kelvollinen painotus
+
 sicp_ftsco=Välimuistin asetusten tallentaminen epäonnistui
 sicp_emsg1='$1' ei ole kelvollinen aikakatkaisu
+
 slogs_ftslo=Kirjausasetuksien tallentaminen epäonnistui
 slogs_emsg1='$1' ei ole ehdoton tiedostonimi
 slogs_emsg2='$1' ei ole kelvollinen tiedostonimi
@@ -594,20 +628,24 @@ slogs_emsg5='$1' ei ole kelvollinen vianetsintävaihtoehtojen luettelo
 slogs_efname=Virheellinen muodon nimi rivillä $1
 slogs_effmt=Puuttuva lokimuoto rivillä $1
 slogs_eafile=Puuttuva tai virheellinen lokitiedosto rivillä $1
+
 smem_ftsmo=Muistivaihtoehtojen tallentaminen epäonnistui
 smem_emsg1='$1' ei ole kelvollinen välimuistin koko
 smem_emsg2='$1' ei ole kelvollinen korkean veden merkki
 smem_emsg3='$1' ei ole kelvollinen matalan veden merkki
 smem_emsg4='$1' ei ole kelvollinen objektikoko
+
 smisc_ftso=Asetusten tallentaminen epäonnistui
 smisc_emsg1='$1' ei ole kelvollinen kierrosluku
 smisc_emsg2='$1' ei ole kelvollinen verkkotunnus
 smisc_emsg3='$1' ei ole kelvollinen välityspalvelin
 smisc_emsg4='$1' ei ole kelvollinen määrä humalaa
+
 sport_ftspo=Porttivaihtoehtojen tallentaminen epäonnistui
 sport_emsg1='$1' ei ole kelvollinen porttinumero
 sport_emsg2='$1' ei ole kelvollinen osoite
 sport_emsg3='$1' ei ole kelvollinen puskurin koko
+
 sprog_ftshpo=Auttajaohjelmavaihtoehtojen tallentaminen epäonnistui
 sprog_emsg1=Puuttuvat FTP-asetukset
 sprog_emsg2='$1' ei ole kelvollinen ohjelma
@@ -620,19 +658,23 @@ sprog_emsg8='$1' ei ole kelvollinen IP-osoite
 sprog_emsg9='$1' ei ole kelvollinen välimuistiaika
 sprog_emsg10='$1' ei ole kelvollinen TTL
 sprog_echildren=Ohjelmien lukumäärän on oltava nollaa suurempi
+
 suser_ftsu=Käyttäjän tallentaminen epäonnistui
 suser_emsg1=Virheellinen tai puuttuva käyttäjänimi
 suser_etaken=Käyttäjänimi on jo käytössä
+
 start_ftsq=Kalmarin käynnistäminen epäonnistui
 start_ecannot=Sinulla ei ole oikeutta aloittaa Kalmaria
 stop_ftsq=Kalmarin pysäyttäminen epäonnistui
 stop_ecannot=Sinulla ei ole oikeutta pysäyttää Kalmaria
+
 calamaris_ecannot=Et voi käyttää Calamaris-loki-analyysiä
 calamaris_title=Calamaris Log -analyysi
 calamaris_last=Rajoitetaan analyysi viimeisiin $1 lokiriviin ..
 calamaris_eprog=Calamaris-suoritettavaa $1 ei löytynyt. Ehkä sitä ei ole asennettu järjestelmään tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
 calamaris_elogs=Lokihakemisto $1 ei sisällä <tt>access.log</tt>-tiedostoja. Ehkä kalmaria ei ole vielä ajettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
 calamaris_gen=Raportti luotiin $1
+
 lib_emsg1='$1' ei ole kelvollinen IP-osoite
 lib_seconds=sekuntia
 lib_minutes=pöytäkirja
@@ -680,6 +722,7 @@ lib_aclmuip=Suurin käyttäjän IP
 lib_buttac=Ota muutokset käyttöön
 lib_buttss=Lopeta kalmari
 lib_buttss1=Aloita kalmari
+
 log_ports=Muutetut portit ja verkkoasetukset
 log_icp=Muutti välimuistin vaihtoehtoja
 log_mem=Muistin käyttövaihtoehdot muuttuneet
@@ -734,25 +777,31 @@ log_pools_delete=Poistettu $1 viivevarat
 log_delay_create=Lisätty ACL viive poolille $1
 log_delay_modify=Muokattu ACL viive poolille $1
 log_delay_delete=Poistettu ACL viive poolille $1
+
 log_delay_move=Siirretty ACL viivevaralle $1
 log_refresh_create=Luotu päivityssääntö $1
 log_refresh_modify=Muokattu päivityssääntö $1
 log_refresh_delete=Poistettu päivityssääntö tuotteelle $1
+
 log_refresh_move=Siirretty $1 päivityssääntö
 log_refreshes_delete=Poistettu $1 päivityssäännöt
 log_iptables=Päivitetty portin uudelleenohjausasetukset
 log_purge=Poistettu välimuistista URL-osoite $1
 log_cachemgr=Välimuistinhallinnan salasanat vaihdetaan
+
 acl_root=Juurihakemisto ACL-tiedostoille
 acl_sections=Sallitut kokoonpanosivut
 acl_start=Voiko kalmari käynnistyä ja lopettaa?
 acl_restart=Voiko käyttää kalmarin kokoonpanoa?
+
 always_create=Luo suora haku
 always_edit=Muokkaa suorahakua
 always_header=Hae suoraan vastaavia ACL-hakuja koskevat pyynnöt
+
 never_create=Luo epäsuora haku
 never_edit=Muokkaa epäsuoraa hakua
 never_header=Älä koskaan nouta suoraan vastaavia ACL-luetteloita koskevia pyyntöjä
+
 delay_title=Viivästytä uima-altaita
 delay_add=Lisää uusi viiveallas.
 delay_num=Määrä
@@ -802,11 +851,14 @@ pool_unit2=KB
 pool_unit3=kB
 pool_unit4=mb
 pool_unit5=MB
+
 dpool_err=Viivevarastojen poistaminen epäonnistui
 dpool_enone=Mitään ei ole valittu
+
 apool_header=Lisää Delay Pool ACL
 apool_header1=Muokkaa Delay Pool ACL
 apool_pr=Viive uima-allas ACL
+
 authparam_title=Todennusohjelmat
 authparam_header=Ulkoinen todennusohjelmavaihtoehdot
 authparam_ttl=Aika tallentaa salasanat välimuistiin
@@ -849,6 +901,7 @@ ext_ecache=Välimuistin koko puuttuu tai on virheellinen
 ext_eprogram=Virheellinen ohjelmapolku annettiin
 ext_eclash=Saman niminen ulkoinen ohjelmatyyppi on jo olemassa
 ext_eused=Tätä ulkoista ohjelmaa käyttää ACL
+
 header_title=Otsikon käyttöoikeuksien hallinta
 header_none=Otsikon käyttöoikeussääntöjä ei ole vielä määritelty.
 header_name=HTTP-otsikko
@@ -868,6 +921,7 @@ header_err=Otsikon käyttöoikeussäännön tallentaminen epäonnistui
 header_ename=Puuttuva tai virheellinen otsikon nimi
 header_request_header_access=Pyydä otsikot
 header_reply_header_access=Vastaa otsikot
+
 refresh_title=Päivitä säännöt
 refresh_none=Päivityssääntöjä ei ole vielä määritelty.
 refresh_re=Tavallinen ilme
@@ -894,6 +948,7 @@ refresh_epc=Puuttuva tai virheellinen ikäprosentti
 refresh_delete=Poista valitut päivityssäännöt
 drefresh_err=Päivittämissääntöjen poistaminen epäonnistui
 drefesh_enone=Mitään ei ole valittu
+
 iptables_title=Portin uudelleenohjauksen asetukset
 iptables_inst0=Porttien uudelleenohjauksen asettamiseen tarvittavat IPtable-palomuurikomennot eivät näytä olevan asennettuina järjestelmään. Katso lisätietoja <a href='$1'>Linux-palomuuri</a> -moduulista.
 iptables_inst1=<a href='$1'>Linux-palomuuri</a> -moduuli ei näytä olevan täysin asennettuna järjestelmässäsi. Tämä moduuli käyttää tätä moduulia Frox-portin uudelleenohjauksen määrittämiseen.
@@ -908,18 +963,23 @@ iptables_enet=Puuttuva tai virheellinen verkko-osoite (pitäisi olla kuten 192.1
 iptables_eiface=Puuttuva tai virheellinen verkkoliitäntä
 iptables_eapply=Palomuurin asentaminen epäonnistui : $1
 iptables_eapply2=Levitä kalmari epäonnistui : $1
+
 syslog_access=Kalmarin käyttöloki
 syslog_cache=Kalmarin välimuistiloki
 syslog_store=Kalmarin esineiden varastoloki
+
 purge_err=URL-osoitteen tyhjentäminen välimuistista epäonnistui
 purge_title=Tyhjennä välimuistissa oleva URL-osoite
 purge_doing=Tyhjennä URL $1 ..
 purge_done=.. valmis.
 purge_failed=.. epäonnistui! Katso syy miksi yllä olevassa virhesanomassa.
+
 dhttp_err=Välityspalvelimen rajoitusten poistaminen epäonnistui
 dhttp_enone=Mitään ei ole valittu
+
 dicp_err=ICP-rajoitusten poistaminen epäonnistui
 dicp_enone=Mitään ei ole valittu
+
 cachemgr_title=Välimuistin hallinta -salasanat
 cachemgr_ecannot=Välimuistin hallintaohjelman salasanoja ei saa muokata
 cachemgr_def1=Salasanoja ei vaadita

@@ -13,6 +13,7 @@ index_applydesc=Kliknij ten przycisk, aby zastosować bieżącą konfigurację S
 index_cpan=Ponieważ SpamAssassin jest modułem Perla, możesz także zainstalować go automatycznie, używając modułu <a href='$2'>Moduły Perla</a> Webmina, aby pobrać $1 z CPAN.
 index_spamassassin=SpamAssassin
 index_ecannot=Nie możesz zarządzać plikiem konfiguracyjnym SpamAssassin $1 
+
 white_title=Dozwolone i odrzucone adresy
 white_desc=Tabele na tej stronie pozwalają określić adresy Od: i Do: dla wiadomości e-mail, która jest zawsze lub nigdy nie jest klasyfikowana jako spam. Wszelkie inne wiadomości e-mail będą przetwarzane normalnie zgodnie z zasadami SpamAssassin. Wszystkie adresy e-mail mogą zawierać symbole wieloznaczne, takie jak *@foo.com lub *.foo.com, aby pasowały do całych domen.
 white_from=Nadawcy nigdy nie klasyfikują się jako spam
@@ -44,6 +45,7 @@ white_tabham=Dozwolone adresy
 white_tabspam=Odmowa adresów
 white_tabsome=Adresy docelowe
 white_tabimport=Importuj adresy
+
 score_title=Klasyfikacja spamu
 score_desc=SpamAssassin przypisuje ocenę każdej wiadomości na podstawie jej zawartości i nagłówków. Opcje na tej stronie określają wynik, powyżej którego wiadomość jest uważana za spam, oraz niektóre metody obliczania tego wyniku.
 score_header=Opcje klasyfikacji wiadomości spamowych
@@ -77,6 +79,7 @@ score_emxdelay=Brakujące lub nieprawidłowe sekundy oczekiwania między czekami
 score_etimeout=Brakujące lub nieprawidłowe sekundy oczekiwania na zapytania RBL
 score_ereceived=Brakująca lub nieprawidłowa liczba odebranych: nagłówków do sprawdzenia za pomocą RBL
 score_bayes=Używasz klasyfikatora nauczania Bayesa
+
 report_title=Modyfikacja wiadomości
 report_desc=Opcje na tej stronie kontrolują modyfikacje, które SpamAssassin wprowadza do nagłówków i treści wszystkich analizowanych wiadomości oraz modyfikacje, które wprowadza do wiadomości zaklasyfikowanych jako spam.
 report_header=Opcje analizy i modyfikacji wiadomości spamowych
@@ -109,6 +112,7 @@ report_addspam=spam
 report_addham=szynka
 report_addall=Wszystko
 report_eaddheader=Brakujący lub nieprawidłowy dodatkowy nagłówek, aby dodać $1 
+
 user_title=Różne opcje użytkownika
 user_desc=Opcje na tej stronie są głównie związane ze ścieżkami i ustawieniami używanymi przez SpamAssassin dla zewnętrznych pakietów identyfikacji spamu Razor, DCC i Pyzor. Możesz także powiedzieć SpamAssassin, czy będzie w stanie przeprowadzić wyszukiwanie DNS, czy nie.
 user_header=Różne opcje na poziomie użytkownika
@@ -131,6 +135,7 @@ user_err=Nie udało się zapisać opcji użytkownika
 user_etimeout=„$1” nie jest prawidłowym limitem czasu
 user_epath=„$1” nie jest prawidłową ścieżką do programu klienta
 user_emax=„$1” nie jest prawidłową liczbą sum kontrolnych
+
 header_title=Testy nagłówka i ciała
 header_desc=Ta strona umożliwia zdefiniowanie dodatkowych testów, które SpamAssassin będzie stosować do wiadomości e-mail, na podstawie nagłówków wiadomości, treści, adresów URL znalezionych w treści lub kombinacji innych testów. Nazwa przypisana do każdego testu zależy od ciebie, ale zwykle jest coś w rodzaju CONTAINS_FOO. Rzeczywisty wynik, który SpamAssassin dodaje do wiadomości pasujących do testu, można ustawić, wprowadzając własne lub wbudowane nazwy testów w tabelach na dole strony.
 header_switch=Przełącz do trybu prostego ..
@@ -164,6 +169,7 @@ header_eeval=„$1” nie jest prawidłową funkcją oceny
 header_eheader=„$1” nie jest prawidłowym nagłówkiem wiadomości e-mail
 header_eregexp=„$1” nie jest prawidłowym wyrażeniem regularnym (musi być jak / expression /)
 header_emeta=Brak wyrażenia testowego dla testu „$1”
+
 priv_title=Różne uprzywilejowane opcje
 priv_desc=Opcje tego można ustawić tylko globalnie, a nie w plikach konfiguracyjnych poszczególnych użytkowników. Kontrolują za pomocą ścieżek do różnych plików konfiguracyjnych i rejestrujących.
 priv_header=Różne ustawienia na poziomie uprawnień
@@ -183,6 +189,7 @@ priv_eargs=„$1” nie jest prawidłową listą argumentów
 priv_emscore=„$1” nie jest prawidłowym najwyższym wynikiem frazy
 priv_ephrase=„$1” nie jest poprawnym dwuliterowym wyrażeniem spamowym
 priv_escore=Brakujący lub nieprawidłowy wynik dla frazy spamowej „$1”
+
 usually=Zwykle $1 
 ecannot=Nie możesz korzystać z tej strony
 setup_title=Skonfiguruj Procmail dla SpamAssassin
@@ -202,11 +209,13 @@ setup_drop1=Odbiorca Unixowy użytkownik
 setup_drop0=<tt>root</tt> użytkownik
 setup_ok=Skonfiguruj Procmail dla SpamAssassin
 setup_email=Prześlij na adres e-mail
+
 setup_err=Nie udało się skonfigurować SpamAssassin
 setup_efile=Brakujący lub nieprawidłowy plik w formacie mbox
 setup_emaildir=Brakujący lub nieprawidłowy katalog poczty Qmail
 setup_emhdir=Brakujący lub nieprawidłowy katalog poczty MH
 setup_eemail=Brakujący lub nieprawidłowy adres e-mail
+
 log_white=Zmodyfikowano dozwolone i odrzucone adresy
 log_score=Zmodyfikowana klasyfikacja spamu
 log_report=Zmodyfikowana modyfikacja wiadomości
@@ -217,12 +226,14 @@ log_setup=Skonfiguruj Procmail dla SpamAssassin
 log_procmail=Zmieniono konfigurację Procmail
 log_import=Zaimportowano $1 dozwolone adresy
 log_manual=Ręcznie zmodyfikowany plik konfiguracyjny
+
 import_title=Importuj adresy
 import_err=Nie udało się zaimportować adresów
 import_efile=Brak wybranego pliku do zaimportowania
 import_enone=W pliku nie znaleziono adresów e-mail
 import_ok1=W pliku znaleziono $2 adresów e-mail, z których $1 było nowe i zostały dodane do listy dozwolonych adresów.
 import_ok2=W pliku znaleziono $1 adresów e-mail, ale wszystkie znajdowały się już na liście dozwolonych adresów.
+
 mail_title=Poczta spamowa
 mail_desc=Ta strona zawiera wiadomości zaklasyfikowane jako spam i oczekujące na działanie. Wiadomości, które zostały nieprawidłowo zidentyfikowane, można przenieść do skrzynki odbiorczej, a te, które są naprawdę spamem, można usunąć.
 mail_level=Wynik
@@ -240,10 +251,13 @@ mail_will=Automatyczne odświeżanie za $1 minut
 mail_wills=Automatyczne odświeżanie za $1 sekund
 mail_delall=Usuń cały spam
 mail_search3=Wyszukaj wynik powyżej:
+
 process_eclean=Wystąpił błąd podczas usuwania nagłówków SpamAssassin z tego e-maila
 process_ereport=Nie udało się zgłosić wiadomości e-mail do SpamAssassin : $1 
+
 apply_err=Nie udało się zastosować zmian
 apply_none=Nie znaleziono procesów demona SpamAssassin!
+
 acl_avail=Ikony dostępne dla użytkownika
 acl_file=Plik konfiguracyjny SpamAssassin do edycji
 acl_filedef=Globalny plik konfiguracyjny
@@ -251,8 +265,10 @@ acl_awl=Zezwalano użytkownikom na automatyczną edycję białej listy
 acl_awl0=Wszyscy użytkownicy
 acl_awl1=Tylko użytkownicy z listy $1 
 acl_awl2=Tylko członkowie grup $1 
+
 search_escore=Brakujący lub nieprawidłowy wynik spamu
 search_results5=$1 wiadomości e-mail o wyniku spamu równym lub większym niż $2 ..
+
 razor_title=Skonfiguruj Razor Spam Detector
 razor_desc=Vipul's Razor to oparty na współpracy system wykrywania i raportowania spamu, który może poprawić klasyfikację spamu wysyłanego na Twój adres. Jednak zanim będzie można go użyć, musisz zarejestrować konto Razor, korzystając z poniższego formularza.
 razor_user=Nazwa użytkownika Razor
@@ -267,6 +283,7 @@ razor_epass=Brakujące hasło
 razor_doing=Teraz próbuję zarejestrować i skonfigurować Razor ..
 razor_done=.. gotowy.
 razor_failed=.. nie powiodło się! Zobacz wynik błędu powyżej, z jakiego powodu.
+
 amavisd_title=Dostawa spamu Amavisd
 amavisd_desc=Formularza można użyć do zmiany konfiguracji Amavisd, która określa, co dzieje się z wiadomościami sklasyfikowanymi jako spam.
 amavis_ok=Zmień dostawę Amavisd
@@ -304,9 +321,11 @@ amavis_quarantine_today=Wiadomości spamowe w Kwarantannie dzisiaj (24h)
 amavis_quarantine_week=Wiadomości spamowe w kwarantannie w tym tygodniu (7 dni)
 amavis_quarantine_month=Wiadomości spamowe w kwarantannie w tym miesiącu (30 dni)
 amavis_quarantine_total=Łączna liczba wiadomości spamowych w Kwarantannie
+
 procmail_title=Dostarczanie spamu Procmail
 procmail_ok=Zmień dostawę Procmail
 procmail_desc=Formularza można użyć do zmiany konfiguracji Procmail, która określa, co dzieje się z wiadomościami sklasyfikowanymi jako spam.
+
 simple_title=Testy nagłówka i ciała
 simple_desc=Ta strona umożliwia zdefiniowanie dodatkowych testów, które SpamAssassin będzie stosować do wiadomości e-mail, na podstawie nagłówków wiadomości, treści i adresów URL znalezionych w treści. Nazwa przypisana do każdego testu zależy od ciebie, ale zwykle jest coś w rodzaju CONTAINS_FOO.
 simple_switch=Zmienić na tryb zaawansowany ..
@@ -317,8 +336,10 @@ simple_regexp=Dopasuj wyrażenie
 simple_score=Wynik do zastosowania
 simple_describe=Opis
 simple_err=Nie udało się zapisać testów wiadomości
+
 before_ecmd=Komenda przed zapisaniem nie powiodła się : $1 
 after_ecmd=Komenda po zapisaniu nie powiodła się : $1 
+
 connect_emysql=Nie udało się załadować sterownika bazy danych $1 
 connect_elogin=Nie udało się zalogować do bazy danych $1:$2.
 connect_equery=Baza danych $1 nie zawiera tabeli preferencji $2 
@@ -326,9 +347,11 @@ connect_eldapmod=Moduł Perla $1 potrzebny do komunikacji z LDAP nie jest zainst
 connect_eldap=Nie udało się połączyć z serwerem LDAP $1 na porcie $2 
 connect_eldaplogin=Nie udało się zalogować do serwera LDAP $1 jako $2 : $3 
 connect_ebase=Podstawowa nazwa wyróżniająca LDAP $1 jest niepoprawna : $2 
+
 eldap=Operacja LDAP nie powiodła się : $1 
 esql=Błąd SQL : $1 
 ldap_euser=Nie można znaleźć obiektu użytkownika LDAP dla $1 
+
 db_title=Bazy danych SQL i LDAP
 db_header=Opcje bazy danych konfiguracji przechowywania
 db_dsn=Przechowuj konfiguracje użytkowników w
@@ -364,6 +387,7 @@ db_eldapport=Brakujący lub nieprawidłowy numer portu serwera LDAP
 db_eldapdn=Brakująca lub niepoprawna podstawowa nazwa wyróżniająca - spacje nie są dozwolone
 db_eldapattr=Brakujący lub nieprawidłowy atrybut SpamAssassin
 db_eldapuid=Brakujący lub nieprawidłowy atrybut nazwy użytkownika
+
 awl_title=Zarządzaj automatycznymi listami
 awl_search=Wyszukaj na białej liście:
 awl_ok=Szukaj
@@ -389,6 +413,7 @@ awl_deleteone=Wyczyść automatyczne białe listy
 awl_deleteonedesc=Usuń wszystkie wpisy automatycznej białej listy dla użytkownika $1.
 awl_deleteall=Wyczyść wszystkie automatyczne białe listy
 awl_deletealldesc=Usuń wszystkie wpisy automatycznej białej listy dla wszystkich użytkowników w systemie.
+
 dawl_err=Nie udało się usunąć z automatycznej białej listy
 dawl_eopen=Nie można otworzyć białej listy
 dawl_enone=Nie wybrano adresów do usunięcia
@@ -396,6 +421,7 @@ dawl_ecannot=Nie możesz zarządzać automatyczną białą listą dla tego użyt
 dawl_doing=Usuwanie automatycznych białych list dla wszystkich użytkowników ..
 dawl_done=.. usunął $2 wpisy od $1 użytkowników.
 dawl_title=Usuń wszystkie automatyczne białe listy
+
 manual_title=Edytuj pliki konfiguracji
 manual_file=Edytuj plik konfiguracyjny:
 manual_ok=dobrze

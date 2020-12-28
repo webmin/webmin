@@ -9,6 +9,7 @@ index_start=Start de Syslog-NG
 index_startdesc=Klik op deze knop om de Syslog-NG daemon te starten met gebruik van de huidige configuratie.
 index_return=module index
 index_version=Syslog-NG $1
+
 options_title=Log Opties
 options_header=Opties voor alle log files
 options_secs=seconden
@@ -55,6 +56,7 @@ options_esync=Ontbrekende of ongeldig aantal berichten om te bufferen voordat ze
 options_estats=Ontbrekende of niet-numerieke tijd om te wachten tussen berichten statistieken
 options_elog_fifo_size=Ontbrekende of ongeldige aantal berichten om te bufferen
 options_elog_msg_size=Ontbrekende of niet-numerieke maximum log berichten grote
+
 destinations_title=Log Bestemmingen
 destinations_name=Naam bestemming
 destinations_type=Schrijf naar
@@ -77,6 +79,7 @@ destinations_add=Nieuwe log bestemming toevoegen.
 destinations_return=Log bestemmingen
 destinations_desc=Andere module log
 destinations_cmd=Resultaat van $1
+
 destination_header=Log bestemming opties
 destination_title1=Maak Log Bestemming
 destination_title2=Bewerk Log Bestemming
@@ -117,17 +120,22 @@ destination_enet_localip=Ontbrekende of ongeldige lokaal IP adres
 destination_enet_localport=Ontbrekende of ongeldige locale poort nummer
 destination_enet_host=Ontbrekende of ongeldige Syslog server host of adres
 destination_eunix=Ontbrekende Unix socket naam
+
 ddelete_err=Mislukt om de bestemming te verwijderen
 ddelete_enone=Niets geselecteerd
 ddelete_eused=De bestemming $1 kan niet worden verwijderd omdat het in gebruik is als een log bestemming.
+
 sdelete_err=Mislukt om bronnen te verwijderen
 sdelete_enone=Niets geselecteerd
 sdelete_eused=De log bron $1 kan niet worden verwijderd omdat het in gebruik is als log doel.
+
 fdelete_err=Mislukt om filters te verwijderen
 fdelete_enone=Niets geselecteerd
 fdelete_eused=Het log filter $1 kan niet worden verwijderd omdat het in gebruik is als een log bestemming
+
 ldelete_err=Mislukt om log doelen te verwijderen
 ldelete_enone=Niets geselecteerd
+
 filters_title=Log Filters
 filters_name=Filter naam
 filters_desc=Condities
@@ -144,6 +152,7 @@ filters_program=Programma <tt>$1</tt>
 filters_match=komt overeen met "$1"
 filters_host=van hostnaam <tt>$1</tt>
 filters_netmask=van afzender <tt>$1</tt>
+
 filter_title1=Maak Log Filter
 filter_title2=Bewerk Log Filter
 filter_header=Log filter specifieke details
@@ -169,6 +178,7 @@ filter_enet=Ontbrekende of ongeldige netwerk IP adres
 filter_emask=Ontbrekende of ongeldige netmask
 filter_ebool=Fout in complexe expressie
 filter_egone=Filter bestaat niet meer!
+
 logs_title=Log Doelen
 logs_source=Bronnen
 logs_filter=Filters
@@ -177,6 +187,7 @@ logs_add=Een nieuw log doel toevoegen.
 logs_delete=Verwijder Geselecteerde Log Doelen
 logs_return=log doelen
 logs_none=Geen
+
 log_title1=Maak Log Doel
 log_title2=Bewerk Log Doel
 log_header=Log bron, filter en bestemming selecties
@@ -190,6 +201,7 @@ log_flags=Doel opties
 log_egone=Log doel bestaat niet langer!
 log_err=Mislukt om log doel op te slaan
 log_esource=Geen bronnen geselecteerd
+
 sources_title=Log Bronnen
 sources_none=Er zijn nog geen bronnen gedefinieerd!
 sources_add=Toevoegen van een nieuwe log bron.
@@ -206,6 +218,7 @@ sources_typep=Benoemde pipe
 sources_typen=Sun stream
 sources_return=log bronnen
 sources_none2=Geen
+
 source_title1=Maak Log Bron
 source_title2=Bewerk Log Bron
 source_header=Log bron opties
@@ -241,15 +254,20 @@ source_epipe_name=Ontbrekende of ongeldige genoemde pipe file naam
 source_door=Door filenaam
 source_esun_streams_name=Ontbrekende of ongeldige Sun streams file naam
 source_edoor=Ontbrekende of ongeldige Sun streams door file naam
+
 view_title=Bekijk Logfile
 view_header=Laatste $1 regels van $2
 view_empty=Log file is leeg
 view_refresh=Ververs
 view_filter=Alleen regels tonen met de tekst $1
+
 apply_err=Mislukt om de configuratie toe te voegen
 apply_egone=Niet aan het werk!
+
 start_err=Mislukt om de Syslog-NG server te starten
+
 stop_err=Mislukt om de Syslog-NG server te stoppen
+
 log_create_destination=Gemaakte log bestemming $1
 log_modify_destination=Gemodificeerde log bestemming $1
 log_delete_destination=Verwijderde log bestemming $1

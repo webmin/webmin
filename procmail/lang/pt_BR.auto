@@ -32,6 +32,7 @@ index_man=Editar manualmente a configuração
 index_mandesc=Edite diretamente o arquivo de configuração principal do Procmail, para criar suas próprias regras, variáveis e blocos.
 index_ecmd=O programa Procmail $1 não foi encontrado no seu sistema. Ele não está instalado ou a <a href='$2'>configuração do módulo</a> está incorreta.
 index_delete=Excluir ações selecionadas
+
 edit_title2=Editar ação
 edit_title1=Criar Ação
 edit_header1=Detalhes da ação de entrega
@@ -67,6 +68,7 @@ edit_none=Nenhum
 edit_lock=Arquivo específico
 edit_ctype=Tipo de condição
 edit_cvalue=Expressão regular ou comando
+
 save_err=Falha ao salvar a ação
 save_eaction_0=Arquivo ausente ao qual anexar
 save_eaction_1=Pasta MH ausente para gravar
@@ -79,6 +81,7 @@ save_elockfile=Nome do arquivo de bloqueio ausente
 save_esize=Tamanho de correio ausente ou inválido para a condição $1 
 save_ere=Expressão regular ausente para a condição $1 
 save_eshell=Comando ausente para a condição $1 
+
 env_title1=Criar variável
 env_title2=Editar variável
 env_header=Variável de ambiente Procmail
@@ -86,15 +89,19 @@ env_name=Nome variável
 env_value=Valor
 env_err=Falha ao salvar a variável
 env_ename=Nome de variável ausente ou inválido
+
 inc_title1=Adicionar arquivo de inclusão
 inc_title2=Editar arquivo de inclusão
 inc_header=Arquivo de regras procmail incluído
 inc_inc=Arquivo incluído
 inc_einc=Nenhum arquivo de inclusão inserido
+
 config_eline=Linha desconhecida $1 em $2 : $3 
+
 manual_title=Editar configuração
 manual_desc=Esta página pode ser usada para editar manualmente o arquivo de configuração do Procmail $1. Tenha cuidado, pois nenhuma verificação de sintaxe será feita.
 manual_edata=Nenhum dado foi fornecido pelo seu navegador!
+
 log_create_rec=Receita criada para $1 
 log_delete_rec=Receita excluída para $1 
 log_modify_rec=Receita modificada para $1 
@@ -114,7 +121,9 @@ log_delete_inc=Arquivo de inclusão excluído $1
 log_manual=Configuração editada manualmente
 log_up=Movida uma entrada para cima
 log_down=Moveu uma entrada para baixo
+
 delete_err=Falha ao excluir ações
 delete_enone=Nenhum selecionado
+
 check_epostfix=O Procmail não está ativado na sua configuração do Postfix. O arquivo de configuração <tt>$2</tt> deve ter a opção <tt>$1</tt> definida como <tt>$3</tt>.
 check_esendmail=O Sendmail não está configurado para usar o Procmail para entrega local. Isso pode ser configurado no módulo <a href='$1'>Sendmail Mail Server</a> da Webmin.

@@ -11,11 +11,13 @@ index_boot=開機時啟動?
 index_bootdesc=更改這個設定去開啟或者是關閉：系統開機時啟動 Dovecot 伺服器.
 index_return=模組索引
 index_version=版本 $1
+
 stop_err=停止 Dovecot 伺服器失敗
 stop_erunning=非執行中...
 start_err=啟動 Dovecot 伺服器失敗
 start_eprotos=沒有選擇通訊協定在 <b>網路及通訊協定</b> 頁面
 apply_err=套用設定失敗
+
 net_title=網路及通訊協定
 net_header=Dovecot 網路及 Mail 通訊協定選項
 net_protocols=伺服器使用的 Mail 通訊協定
@@ -41,8 +43,11 @@ net_eimaps_listen=不正確的 IP 位址在 IMAP SSL 連線設定
 net_epop3s_listen=不正確的 IP 位址在 POP3 SSL 連線設定
 net_elisten=不正確的 IP 位址在非 SSL 連線介面
 net_essl_listen=不正確的 IP 位址在 SSL 連線介面
+
 imap_title=IMAP 選項
+
 pop3_title=POP3 選項
+
 ssl_title=SSL 設定
 ssl_header=IMAP 和 POP3 SSL 模式選項
 ssl_key=SSL 私鑰檔案
@@ -55,7 +60,9 @@ ssl_err=儲存 SSL 設定失敗
 ssl_ekey=私鑰檔案遺失或不存在
 ssl_ecert=認證檔案遺失或不存在
 ssl_eregen=SSL 參數重新產生間隔時間遺失或您輸入的資料並非數值
+
 misc_title=其他選項
+
 login_title=使用者和登入選項
 login_header=使用者認證和登入選項
 login_fuid=UID 的最小值
@@ -111,6 +118,7 @@ login_procs=登入處理的最大值
 login_count=登入處理的起始值
 login_eprocs=登入處理的最大值遺失或無效
 login_ecount=登入處理的起始值遺失或無效
+
 mail_title=Mail 檔案設定
 mail_header=Mail 位置和讀取選項
 mail_env=Mail 檔案位置
@@ -163,6 +171,7 @@ mail_eindexmode=當 MAIL 檔案位置是自動偵測時，索引檔位置無法�
 mail_econtrolmode=當 MAIL 檔案位置是自動偵測時，控制檔位置無法設定
 mail_eindex=絕對路徑的索引檔遺失或無效
 mail_econtrol=絕對路徑的控制檔遺失或無效
+
 log_net=已變更網路及通訊協定
 log_login=已變更使用者和登入選項
 log_mail=已變更 Mail 檔案設定
@@ -173,6 +182,7 @@ log_stop=Dovecot 伺服器已停止
 log_bootup=開機時啟動 Dovecot 功能開啟
 log_bootdown=開機時啟動 Dovecot 功能關閉
 log_manual=人工編輯設定檔 $1
+
 manual_title=編輯設定檔
 manual_err=儲存設定檔失敗
 manual_edata=沒有輸入資料!

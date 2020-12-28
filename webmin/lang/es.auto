@@ -1,13 +1,16 @@
 index_refresh=Actualizar módulos
 index_refreshmsg=Vuelva a verificar todos los módulos de Webmin para los servidores instalados y actualice los que aparecen en la categoría 'Módulos no utilizados'.
+
 access_ip=Direcciones IP permitidas
 access_local=Incluir red local en la lista
 access_elibwrap=El control de acceso IP mediante TCP-wrappers no está disponible, ya que el módulo Perl $1 no está instalado.
 access_libwrapcpan=<a href='$1'>Haga clic aquí</a> para que Webmin instale automáticamente el módulo Perl que falta.
+
 access_eip6='$1' no es una dirección de red o IPv6 completa
 access_ecidr6='$1' no es un tamaño de red IPv6 válido
 access_ecidr8=El tamaño de la red IPv6 '$1' debe ser divisible por 8
 access_trust=¿Confía en la dirección IP remota proporcionada por proxies?
+
 bind_firewall=¿Abrir nuevos puertos en el firewall?
 bind_resolv_myname=¿Dirección IP conectada con resolución inversa?
 bind_ipv6=¿Aceptar conexiones IPv6?
@@ -15,6 +18,7 @@ bind_eipv6=IPv6 no se puede habilitar a menos que el módulo Perl $1 esté insta
 bind_redirecting=Redireccionando a una nueva URL.
 bind_elsof=El nuevo puerto $1 ya está en uso por otro proceso
 bind_eonsystem=La dirección IP $1 no está activa en este sistema, por lo que no se puede usar
+
 log_status=¿Registro activo?
 log_clear2=Periódicamente borrar archivos de registro?
 log_period=Sí, cada $1 horas
@@ -27,6 +31,7 @@ log_login=¿Incluye inicios de sesión y cierres de sesión de Webmin en el regi
 log_email=Enviar acciones registradas por correo electrónico a
 log_emailnone=No enviar
 log_inmodsemail=Enviar correo electrónico para acciones en
+
 proxy_cache=¿Caché de archivos descargados?
 proxy_cache1=No
 proxy_cache0=Sí, en caché de tamaño
@@ -48,6 +53,7 @@ proxy_return=servidores proxy y descargas
 proxy_tabproxy=Proxy
 proxy_tabdown=Descargando
 proxy_fallback=¿Probar solicitud directa si el proxy está inactivo?
+
 ui_nice_size_type=Utilice unidades de medida binarias (KiB, MiB, GiB en lugar de KB, MB, GB)
 ui_sizefile=Tamaño del selector de archivos
 ui_sizeuser=Tamaño de elección del usuario
@@ -65,6 +71,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/aaaa (es decir, 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/aaaa (es decir, 16/09/2001)
 ui_dateformat_yyyy/mm/dd=aaaa/mm/dd (es decir, 2001/09/16)
 ui_ehostnamedisplay=Nombre de host de visualización faltante o no válido
+
 mods_installsource=Instalar desde
 mods_grantto=Conceder acceso a
 mods_nodeps2=Ignorar las dependencias del módulo al eliminar
@@ -80,6 +87,7 @@ mods_tabinstall=Instalar en pc
 mods_tabclone=Clon
 mods_tabdelete=Eliminar
 mods_tabexport=Exportar
+
 os_iwebmin=Código interno del sistema operativo utilizado por Webmin
 os_syspath=¿Incluir la propia ruta de búsqueda del sistema?
 os_perllib=Rutas adicionales de la biblioteca Perl
@@ -88,6 +96,7 @@ os_eiversion=Falta la versión interna del sistema operativo
 os_incorrect=Advertencia: su sistema realmente está ejecutando $1 versión $2.
 os_fix=Actualizar sistema operativo detectado
 os_usermin=También actualice Usermin OS
+
 ssl_deny=Versiones de protocolo SSL para rechazar
 ssl_compression=¿Permitir conexiones SSL comprimidas?
 ssl_honorcipherorder=¿Forzar el uso del orden de cifrado definido por el servidor?
@@ -155,15 +164,19 @@ ssl_letsnotrenew=Solo renueve manualmente
 ssl_staging=Encriptemos el servidor
 ssl_staging0=Real
 ssl_staging1=Estadificación (solo prueba)
+
 newkey_ecns=No se ingresaron nombres de servidores
 newkey_ecountry=El código del país debe tener dos letras
+
 newcsr_err=Error al crear CSR SSL
 newcsr_efile=Falta el nombre del archivo CSR
 newcsr_title=Generar CSR
 newcsr_ok=Se generó correctamente la siguiente solicitud de certificado SSL :
 newcsr_ok2=Este CSR debe enviarse a una autoridad de firma, que devolverá un certificado firmado. Esto se puede instalar con la clave anterior utilizando la pestaña <b>Cargar certificado</b>.
+
 startpage_webminup=¿Mostrar actualizaciones de Webmin en la página de información del sistema?
 startpage_moduleup=¿Mostrar actualizaciones de módulos en la página de información del sistema?
+
 upgrade_descdeb=Este formulario le permite actualizar toda su instalación de Webmin a una nueva versión actualizando su paquete Debian. Puede instalar desde un archivo.deb local, un archivo cargado o desde la última versión en <a href=http://www.webmin.com/>www.webmin.com</a>. Al igual que con una actualización manual, se mantendrán todos sus ajustes de configuración y módulos de terceros.
 upgrade_edeb=No es un archivo de paquete Webmin Debian válido
 upgrade_setupdeb=Ejecutar DPKG para actualizar Webmin. Espere un minuto hasta que se complete antes de continuar.
@@ -175,6 +188,7 @@ upgrade_tabupdate=Actualizar módulos
 upgrade_tabsched=Actualización programada
 upgrade_src=Actualizar Webmin desde
 upgrade_opts=Opciones de actualización
+
 update_checksig=Comprobar firmas en repositorios que no sean de Webmin
 update_user=Inicie sesión para actualizar el servidor
 update_pass=Contraseña para actualizar el servidor
@@ -184,6 +198,7 @@ update_enomodsig=No se pudo descargar el archivo de firma para el módulo : $1
 update_ebadmodsig=Comprobación de firma del módulo fallida : $1
 update_src=Actualizar módulos desde
 update_opts=Opciones de actualización del módulo
+
 ca_alt=Dominios adicionales
 ca_city=Ciudad o localidad
 ca_issuer_cn=Nombre del emisor
@@ -191,6 +206,7 @@ ca_issuer_o=Organización emisora
 ca_issuer_email=Dirección de correo electrónico del emisor
 ca_type=Tipo de certificado
 ca_notafter=Válido hasta
+
 session_ptimeout=Tiempo de espera de contraseña
 session_pblock=Bloques de inicio de sesión fallidos
 session_blockuser=Bloquee a los usuarios con más de $1 inicios de sesión fallidos durante $2 segundos.
@@ -216,9 +232,11 @@ session_sha512=Utilice el cifrado SHA512
 session_emd5mod=El cifrado MD5 no se puede utilizar, ya que el módulo Perl $1 no está instalado.
 session_esha512mod=El cifrado SHA512 no se puede utilizar, ya que el módulo Perl $1 no está instalado.
 session_blocklock=También bloquea usuarios con inicios de sesión fallidos
+
 categories_lang=Editar categorías en el idioma:
 categories_langok=Cambio
 categories_custom=Personalizado
+
 log_twofactor=Opciones de autenticación de dos factores modificadas
 log_newcsr=Creó una nueva CSR SSL
 log_mobile=Opciones de dispositivo móvil modificadas
@@ -237,6 +255,7 @@ log_onedelete_webmincron=Función programada eliminada en el módulo $1
 log_letsencrypt=Nuevo certificado SSL solicitado de Let's Encrypt
 log_letsencryptdns=Se creó el registro DNS de Let's Encrypt para $1
 log_letsencryptcleanup=Se eliminó el registro de Let's Encrypt DNS para $1
+
 themes_none=Ninguno: deje que el tema decida
 themes_overdesc=Las superposiciones modifican la apariencia de un tema cambiando los colores, fondos e íconos. No cambian el diseño.
 themes_overlay=Superposición actual :
@@ -245,27 +264,36 @@ themes_taboverlay=Cambiar superposición
 themes_tabinstall=Instalar el tema
 themes_tabdelete=Eliminar temas
 themes_tabexport=Exportar temas
+
 themes_ok2=La superposición de temas cambió con éxito... redirigiendo a la página de índice de Webmin.
 themes_err4=Error al cambiar el tema de superposición
 themes_eoverlay=La superposición seleccionada no es compatible con el tema global actual
+
 themes_desc4=Los temas instalados se pueden exportar como un archivo wbt.gz utilizando el siguiente formulario. Luego se puede instalar un archivo de tema en otro sistema que ejecute Webmin.
 themes_exportmods=Temas para exportar
 themes_exportok=Exportar temas seleccionados
+
 referers_none2=ADVERTENCIA: ¡Esto abre su sistema a ataques XSS!
 referers_err=Error al salvar a los árbitros
 referers_ehost='$1' no es un nombre de host de confianza válido
+
 update_mtype=El módulo $1 no se puede actualizar ya que se instaló desde un paquete $2
+
 third_title=Seleccionar módulo de terceros
+
 ipkey_ips2=Para direcciones IP y nombres de host
 ipkey_eip2='$1' no es una dirección IP o nombre de host válido
 ipkey_eextracas=No se ingresaron archivos de certificado adicionales
 ipkey_eextraca=El archivo de certificado adicional $1 no existe
+
 descs_cmod=Módulo original
 descs_cdesc=Título clon
 descs_etitle=Falta el título para el clon '$1'
+
 export_efile=Archivo de exportación faltante o no válido
 export_done=Exportó con éxito los módulos seleccionados a $1.
 export_title=Módulos de exportación
+
 advanced_tdd=¿Borrar archivos temporales en un directorio no estándar?
 advanced_tempdelete=Antigüedad máxima de archivos temporales
 advanced_nodelete=Ilimitado
@@ -302,10 +330,13 @@ advanced_listdir=¿Listar directorios sin un archivo de índice?
 advanced_headers=Encabezados HTTP adicionales
 advanced_eheader=Los encabezados deben estar formateados como <tt>Encabezado: Valor</tt>
 advanced_sortconfigs=¿Guardar archivos de configuración ordenados por sus claves?
+
 syslog_errorlog=Registro de errores de Webmin
+
 clear_title=Borrar Descargar caché
 clear_done=El caché de Webmin que contiene $1 de archivos de $2 ha sido borrado con éxito.
 clear_none=Actualmente no hay URL en el caché de descarga de Webmin.
+
 savekey_err=Error al guardar la nueva clave
 savekey_ekey=Clave de formato PEM faltante o no válida
 savekey_ecert=Certificado de formato PEM faltante o no válido
@@ -315,6 +346,7 @@ savekey_title=Subir clave existente
 savekey_done2=La clave SSL suministrada se ha guardado en $1, y el certificado en $2.
 savekey_done=La clave SSL y el certificado suministrados se guardaron en el archivo $1.
 savekey_done3=El certificado SSL encadenado suministrado se ha guardado en el archivo $1.
+
 cache_title=URL en caché
 cache_search=Encuentra URL que contengan:
 cache_ok=Buscar
@@ -327,8 +359,10 @@ cache_delete=Flush seleccionado de la caché
 cache_err=Error al vaciar las URL en caché
 cache_enone=Ninguna seleccionada
 cache_efile=Nombre de archivo inválido
+
 restart_title=Reiniciar Webmin
 restart_done=El proceso del servidor Webmin ahora se está reiniciando. Espere unos segundos antes de continuar.
+
 mobile_title=Opciones de dispositivos móviles
 mobile_header=Opciones para navegadores móviles
 mobile_theme=Tema para navegadores móviles
@@ -337,6 +371,7 @@ mobile_nosession=¿Forzar el uso de la autenticación HTTP?
 mobile_agents=Agentes de usuario adicionales para navegadores móviles
 mobile_err=Error al guardar las opciones del dispositivo móvil
 mobile_prefixes=Prefijos de nombre de host de URL para navegadores móviles
+
 blocked_title=Hosts y usuarios bloqueados
 blocked_type=Tipo
 blocked_who=Nombre de host o nombre de usuario
@@ -348,9 +383,11 @@ blocked_host=Cliente host
 blocked_clear=Borrar todos los bloques
 blocked_cleardesc=Haga clic en este botón para borrar todos los bloques actuales de host y usuario, reiniciando el proceso del servidor Webmin.
 blocked_restarting=El proceso del servidor Webmin ahora se está reiniciando para borrar los hosts y usuarios bloqueados; espere unos segundos antes de continuar.
+
 refreshmods_title=Actualizar módulos
 refreshmods_installed=Comprobación de módulos utilizables de Webmin.
 refeshmods_counts=.. encontrado $2 con aplicaciones instaladas, $1 no instalado.
+
 debug_title=Archivo de registro de depuración
 debug_header=Opciones de archivo de registro de depuración de Webmin
 debug_enabled=Registro de depuración habilitado?
@@ -378,6 +415,7 @@ debug_cmd=Línea de comando
 debug_cron=Trabajos en segundo plano
 debug_inmods=Módulos para escribir registros de depuración para
 debug_emodules=No hay módulos para depurar para seleccionados
+
 notif_passexpired=¡Tu contraseña de Webmin ha caducado! Tendrás que cambiarlo en el próximo inicio de sesión.
 notif_passchange=Su contraseña de Webmin se modificó por última vez en $1, y debe cambiarse en $2 días.
 notif_passlock=Su contraseña de Webmin se modificó por última vez en $1, y su cuenta se bloqueará en $2 días si no se cambia.
@@ -393,6 +431,7 @@ notify_updatedesc=Soluciona el problema
 notif_updateok=Instalar actualizaciones ahora
 notif_reboot=Las actualizaciones de paquetes recientes (como una nueva versión del kernel) requieren que se reinicie completamente para aplicarse.
 notif_rebootok=Reinicie ahora
+
 status_title=Colección de estado de fondo
 status_header=Configuración del trabajo de recopilación de estado
 status_interval=¿Recopilar el estado del sistema en segundo plano?
@@ -404,6 +443,7 @@ status_temp=¿Recoger las temperaturas de manejo?
 status_units=Unidades para temperaturas
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+
 sendmail_title=Enviando correo electrónico
 sendmail_desc=Esta página controla cómo Webmin envía correos electrónicos, como las copias de seguridad programadas o la supervisión en segundo plano. También afecta el correo electrónico enviado usando el módulo Leer correo de usuario.
 sendmail_header=Opciones de envío de correo
@@ -444,12 +484,14 @@ sendmail_url=URL de Webmin para usar en correo electrónico
 sendmail_url_def=Predeterminado ($1)
 sendmail_url_custom=URL personalizada
 sendmail_eurl=URL personalizada faltante o no válida
+
 testmail_title=Enviar correo electrónico de prueba
 testmail_err=Error al enviar mensaje de prueba
 testmail_eto=No se ingresó la dirección de destino
 testmail_sending=Enviando mensaje de $1 a $2 ..
 testmail_done=.. mensaje enviado. Verifique el buzón de la dirección de destino para asegurarse de que realmente se entregó.
 testmail_failed=.. error de envío : $1
+
 web_title=Opciones de servidor web
 web_header=Opciones para el servidor web incorporado de Webmin
 web_expires=Tiempo de caché del lado del cliente para archivos estáticos
@@ -461,6 +503,7 @@ web_expirespaths=Tiempos de caché del lado del cliente basados en la ruta URL
 web_expirespath=Expresión regular de ruta
 web_expirestime=Tiempo de caché en segundos
 web_eexpires2=Tiempo de caché del lado del cliente faltante o no numérico en la fila $1
+
 webmincron_title=Funciones programadas de Webmin
 webmincron_emodule=¡El módulo Webmin Cron Jobs no está instalado!
 webmincron_module=Módulo Webmin
@@ -484,6 +527,7 @@ webmincron_when1=Tiempos específicos
 webmincron_secs=segundos
 webmincron_err=Error al guardar la función programada
 webmincron_einterval=El intervalo debe ser un número de segundos mayor que cero
+
 twofactor_title=Autenticación de dos factores
 twofactor_header=Opciones de autenticación de dos factores
 twofactor_provider=Proveedor de autenticación
@@ -522,6 +566,7 @@ twofactor_secret1=Generado al azar
 twofactor_secret0=Usar clave de 16 caracteres
 twofactor_esecret=La clave secreta debe tener exactamente 16 caracteres y contener solo letras y números
 twofactor_esession=La autenticación de dos factores no se puede usar a menos que la autenticación basada en sesión esté activa
+
 letsencrypt_title=Cifremos la solicitud de certificado
 letsencrypt_err=Error al solicitar el certificado
 letsencrypt_ecmds=Ni el comando de cliente Let's Encrypt <tt>certbot</tt> o el comando <tt>python</tt> se encontraron en su sistema
@@ -555,5 +600,6 @@ letsencrypt_ecsr=Error al generar CSR : $1
 letsencrypt_ekeygen=Error al generar la clave privada : $1
 letsencrypt_enative=El cliente nativo Let's Encrypt (certbot) se usó anteriormente en este sistema y debe usarse para todas las solicitudes de certificados futuras
 letsencrypt_eacmedns=Solo el cliente oficial Let's Encrypt admite la validación basada en DNS
+
 announce_hide=Ocultar este anuncio
 alert_hide=Ocultar alerta

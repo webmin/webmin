@@ -11,6 +11,7 @@ index_eprog=Spouštěč NFS serveru nebyl ve vašem systému nalezen. Vypadá to
 index_delete=Smazat vybrané exporty
 index_disable=Nepovolit vybrané
 index_enable=Povolit vybrané
+
 edit_title=Editace exportu
 create_title=Vytvoření exportu
 edit_details=Detaily exportu
@@ -55,6 +56,7 @@ edit_sync1=$ano
 edit_sync2=$ne
 edit_sync0=$výchozí
 edit_in=v
+
 save_err=Chyba při ukládání exportu
 save_edir=Adresář '$1' neexistuje
 save_enetgroup=Cgybějící nebo neplatná síťová skupina
@@ -65,6 +67,7 @@ save_euids=Nedůvěryhodná UIDs musí být seznam čísel oddělených čárkou
 save_egids=Nedůvěryhodná UIDs musí být seznam čísel oddělených čárkou nebo rozsah čísel
 save_pfs='$1' je již exportován jako adresář
 save_create_dir=Nelze vytvořit adresář '$1'
+
 exports_webnfs=WebNFS klienti
 exports_ngroup=Síťová skupina $1
 exports_net=Síť $1
@@ -72,6 +75,7 @@ exports_all=Všichni
 exports_hosts=Hosté $1
 exports_host=Host $1
 exports_gss=Autentikovaná síť: $1
+
 log_modify=Modifikován NFS export $1
 log_modify_l=Modifikován NFS export $1 do $2
 log_delete=Smazán NFS export $1

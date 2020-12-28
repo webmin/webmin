@@ -15,6 +15,7 @@ index_add=새 데이터베이스 작성
 index_users=사용자 옵션
 index_return=데이터베이스 목록
 index_esql=시스템에 PostgreSQL 클라이언트 프로그램 $1이(가)없습니다. PostgreSQL이 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 정확하지 않을 수 있습니다.
+
 index_ehba=시스템에 PostgreSQL 호스트 구성 파일 $1이(가) 없습니다. PostgreSQL이 초기화되지 않았거나 <a href='$2'>모듈 구성</a>이 정확하지 않을 수 있습니다.
 index_superuser=시스템에서 PostgreSQL 클라이언트 프로그램 psql 을 실행할 수 없습니다. PostgreSQL 이 설치되어 있지 않거나 <a href='$1'>모듈 구성</a>이 잘못되어 있습니다.
 index_eversion=시스템의 PostgreSQL 데이터베이스 버전은 $1이지만, Webmin에서는 버전 $2 이상만 지원합니다.
@@ -45,10 +46,12 @@ index_hash=Hash
 index_gist=일반적인 인덱스 검색 트리
 index_jump=또는 데이터베이스 편집:
 index_jumpok=열기
+
 login_err=로그인 실패
 login_ecannot=데이터베이스 로그인을 구성할 수 없습니다
 login_elogin=없는 관리 로그인
 login_epass=잘못된 관리 사용자 이름 또는 패스워드
+
 dbase_title=데이터베이스 편집
 dbase_noconn=현재 이 데이터베이스로의 접속이 거부당하여 이 데이터베이스에서 아무런 작업을 수행할 수 없습니다.
 dbase_tables=데이터베이스 테이블
@@ -71,6 +74,7 @@ dbase_index=인덱스
 dbase_view=뷰
 dbase_seq=시퀀스
 dbase_jump=또는 테이블 편집:
+
 table_title=테이블 편집
 table_title2=테이블 작성
 table_opts=필드 옵션
@@ -115,6 +119,7 @@ field_esize='$1'은(는) 유효한 필드 크기가 아닙니다
 field_eenum=입력된 열거 값이 없습니다
 field_efield='$1'은(는) 유효한 필드 이름이 아닙니다
 field_ekey=널을 허용하는 필드는 주 키의 일부일 수 없습니다
+
 exec_title=SQL 실행
 exec_header=$1 데이터베이스에서 실행할 SQL 명령을 입력하십시오..
 exec_exec=실행
@@ -136,21 +141,25 @@ exec_delete=먼저 테이블의 데이터를 삭제하겠습니까?
 exec_filename=파일 이름으로
 exec_ignore=중복된 행을 무시하겠습니까?
 exec_format=파일 형식
+
 stop_err=데이터베이스 서버를 중지하지 못했습니다
 stop_epidfile=PID 파일 $1을(를) 열지 못했습니다
 stop_ekill=프로세스 $1을(를) kill하지 못했습니다: $2
 stop_ecannot=데이터베이스 서버를 정지할 권한이 없습니다.
 start_err=데이터베이스 서버를 시작하지 못했습니다
 start_ecannot=데이터베이스 서버를 시작할 권한이 없습니다.
+
 ddrop_err=데이터베이스를 삭제하지 못했습니다
 ddrop_title=데이터베이스 삭제
 ddrop_rusure=데이터베이스 $1을(를) 삭제하시겠습니까? 데이터의 $3 행을 포함하는 $2 테이블이 삭제됩니다.
 ddrop_mysql=이 데이터베이스는 마스터 데이터베이스이므로 삭제할 경우 PostgreSQL 서버를 사용하지 못할 수도 있습니다!
 ddrop_ok=데이터베이스 삭제
+
 tdrop_err=테이블을 삭제하지 못했습니다
 tdrop_title=테이블 삭제
 tdrop_rusure=데이터베이스 $2의 테이블 $1을(를) 삭제하시겠습니까? 데이터의 $3 행이 삭제됩니다.
 tdrop_ok=테이블 삭제
+
 view_title=테이블 데이터
 view_pos=$3의 $1-$2 행
 view_none=이 테이블에 데이터가 없습니다
@@ -178,6 +187,7 @@ view_jump=다음 행으로 이동 :
 view_download=다운로드..
 view_keep=변경 없이 나가기
 view_adv=고급 검색
+
 newdb_title=데이터베이스 작성
 newdb_header=새 데이터베이스 옵션
 newdb_db=데이터베이스 이름
@@ -190,6 +200,7 @@ newdb_epath=없는 데이터베이스 경로
 newdb_user=유저 권한
 newdb_encoding=문자셋 인코딩
 newdb_eencoding=문자셋 인코딩이 지정되지 않았습니다.
+
 user_title=PostgreSQL 사용자
 user_ecannot=사용자를 편집할 수 없습니다
 user_name=사용자 이름
@@ -217,6 +228,7 @@ user_sync_delete=유닉스 유저 삭제시에, 일치하는 PostgreSQL 유저�
 user_delete=선택된 것 삭제
 user_derr=유저 삭제 실패
 user_enone=선택된 유저가 없습니다.
+
 host_ecannot=허용된 호스트를 편집할 수 없습니다
 host_title=허용된 호스트
 host_desc=클라이언트가 데이터베이스에 접속할때, 한 항목이 일치하여 클라이언트가 허락되거나 거부될 때가지 아래의 호스트 리스트가 진행되게 됩니다.
@@ -265,6 +277,7 @@ host_ssl=SSL 연결을 사용하겠습니까?
 host_viassl=SSL 을 이용
 host_derr=허가된 호스트를 삭제하는데 실패했습니다.
 host_enone=호스트가 선택되지 않았습니다.
+
 grant_title=부여된 권한
 grant_tvi=개체
 grant_type=유형
@@ -292,6 +305,7 @@ grant_none=권한을 부여할 테이블, 보기, 시퀀스 또는 인덱스가 
 grant_toomany=출력할 오브젝트가 너무 많습니다. 일치하는 오브젝트 찾기:
 grant_showing=$1과(와) 일치하는 오브젝트 보기 ..
 grant_delete=선택된 권한을 초기화
+
 group_title=PostgreSQL 그룹
 group_ecannot=그룹을 편집할 수 없습니다
 group_name=그룹 이름
@@ -309,6 +323,7 @@ group_etaken=이미 사용 중인 그룹 이름
 group_none=PostgreSQL 그룹이 현재 없습니다
 group_derr=그룹을 삭제하는데 실패했습니다.
 group_enone=선택된 그룹이 없습니다.
+
 esql=SQL $1 실패: $2
 log_start=PostgreSQL 서버 시작됨
 log_stop=PostgreSQL 서버 중지됨
@@ -320,6 +335,7 @@ log_groups_delete=$1 그룹 삭제
 log_hosts_delete=$1 허락된 호스트 삭제
 log_table_create=데이터베이스 $2의 테이블 $1 작성됨
 log_table_delete=데이터베이스 $2에서 테이블 $1 삭제됨
+
 log_view_create=$2 데이터베이스에 $1 뷰 생성
 log_view_modify=$2 데이터베이스의 $1 뷰 수정
 log_view_delete=$2 데이터베이스의 $1 뷰 삭제
@@ -361,6 +377,7 @@ log_backup=$1 데이터베이스 백업
 log_backup_l=$2 파일로 $1 데이터베이스 백업
 log_backup_all=모든 데이터베이스 백업
 log_backup_all_l=$2 파일로 모든 데이터베이스 백업
+
 acl_dbs=이 사용자가 관리할 수 있는 데이터베이스
 acl_dbscannot=이 접근 설정은 PostgreSQL 데이터베이스 서버가 재시작 된 후에 적용됩니다.
 acl_dall=모든 데이터베이스
@@ -379,11 +396,15 @@ acl_cmds=백업 전/후 명령을 수정하겠습니까?
 acl_views=뷰를 보고 관리하겠습니까?
 acl_indexes=인덱스를 보고 관리하겠습니까?
 acl_seqs=시퀀스를 보고 관리하겠습니까?
+
 fdrop_err=필드 제거중 에러가 발생했습니다.
+
 setup_err=데이터베이스 초기화를 실패했습니다.
 setup_ecannot=데이터베이스 초기화 권한이 없습니다.
+
 dbase_bkup=백업
 dbase_rstr=복구
+
 restore_title=데이터베이스 복구
 restore_header=데이터베이스 복구 옵션
 restore_db=데이터베이스 이름
@@ -403,6 +424,7 @@ restore_ecannot=백업 복구 권한이 없습니다.
 restore_only=테이블은 빼고 데이터만 복구하겠습니까?
 restore_clean=복구전에 테이블을 삭제하겠습니까?
 restore_failed=복구 실패: $1
+
 backup_title=데이터베이스 백업
 backup_title2=모든 데이터베이스 백업
 backup_db=데이터베이스 이름
@@ -447,17 +469,21 @@ backup_ebefore=백업 전 명령이 실패했습니다!
 backup_cmode=명령을 실행할 때
 backup_cmode1=모든 데이터베이스 전/후
 backup_cmode0=각 데이터베이스 전/후
+
 r_command=지원하지 않는 명령
+
 adv_title=고급 검색
 adv_and=모든 기준에 일치하는 레코드 찾기 ..
 adv_or=기준에 일치하는 레코드 찾기
 adv_ok=지금 검색
+
 tdrops_enone=삭제할 오브젝트를 선택하지 않았습니다.
 tdrops_err=오브젝트 삭제 실패
 tdrops_ok=오브젝스 삭제
 tdrops_title=오브젝트 삭제
 tdrops_rusure=$2 데이터베이스에서 선택된 오브젝트 $1을 삭제하겠습니까? 데이터의 $3 행이 삭제 됩니다.
 tdrops_rusure2=$2 데이터베이스에서 선택된 오브젝트 $1을 삭제하겠습니까?
+
 ddrops_err=데이터베이스 삭제 실패
 ddrops_title=데이터베이스 제거
 ddrops_rusure=선택된 $1 데이터베이스를 삭제하겠습니까? $2 테이블의 $3 행의 데이터가 삭제되게 됩니다.
@@ -465,6 +491,7 @@ ddrops_mysql=마스터 데이터베이스를 선택했기 때문에, 이 데이�
 ddrops_ok=데이터베이스 삭제
 ddrops_enone=선택된 데이터베이스가 없습니다.
 ddrops_ecannotdb=$1 데이터베이스를 삭제할 권한이 없습니다.
+
 csv_title=CSV 파일 내보내기
 csv_header=CSV 내보내기 옵션
 csv_dest=내보내기 대상
@@ -485,6 +512,7 @@ csv_done=$1(으)로 CSV 내보내기를 완료했습니다. 결과물의 크기�
 csv_headers=CSV 에 칼럼 이름을 포함하겠습니까?
 csv_cols=CSV 에 칼럼을 포함
 csv_ecols=선택된 칼럼이 없습니다.
+
 import_title=데이터 불러오기
 import_uploadout=업로드 파일로 데이터 불러오기 ..
 import_fileout=$1 파일로 데이터 불러오기 ..
@@ -492,6 +520,7 @@ import_eupload=업로드 불러오기 파일이 지정되지 않았습니다.
 import_efile=불러오기를 할 파일 이름이 지정되지 않았습니다.
 import_done=.. 중복된 $2 를 건너뛰고, $1 행이 생성되었습니다.
 import_erow=.. $1 행에서 발견된 필드가 없습니다.
+
 index_title1=인덱스 생성
 index_header1=인덱스 옵션
 index_name=인덱스 이름
@@ -508,6 +537,7 @@ index_ecols=선택된 필드가 없습니다.
 index_title2=인덱스 편집
 index_header=$2 데이타베이스의 $1 인덱스
 index_ecannot=인덱스를 관리할 권한이 없습니다.
+
 view_title1=뷰 생성
 view_title2=뷰 수정
 view_header1=뷰 상세사항
@@ -521,6 +551,7 @@ view_eclash=같은 이름의 뷰가 이미 존재합니다.
 view_equery=SQL 질의를 지정하지 않았습니다.
 view_ecols=컬럼이름을 입력하지 않았습니다.
 view_ecannot=뷰를 관리할 권한이 없습니다.
+
 seq_title1=시퀀스 생성
 seq_title2=시퀀스 수정
 seq_header1=시퀀스 증가 옵션
@@ -540,5 +571,6 @@ seq_emin=최소값이 지정되지 않았거나 유효하지 않습니다.
 seq_emax=최대값이 지정되지 않았거나 유효하지 않습니다.
 seq_ecache=캐시 값이 지정되지 않았습니다.
 seq_ecannot=시퀀스를 관리할 권한이 없습니다.
+
 dgrant_err=권한 초기화 실패
 dgrant_enone=선택된 오브젝트가 없습니다.

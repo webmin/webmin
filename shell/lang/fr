@@ -8,9 +8,11 @@ index_pok=Exécuter la commande précédente
 index_edit=Modifier commande précédente
 index_trunced=La sortie totale de $2 a été tronquée à $1.
 index_timedout=La commande a été arrêtée après avoir été exécutée pendant $1 secondes.
+
 acl_user=Exécuter les commandes en tant qu'utilisateur
 acl_user_def=Utilisateur Webmin actuel
 acl_shellenv=Utiliser l'environnement de l'utilisateur sélectionné?
 acl_chroot=Chroot dans le répertoire
+
 log_run=Commande exécutée $1
 log_clear=historique effacé

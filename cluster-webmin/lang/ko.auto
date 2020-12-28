@@ -39,7 +39,9 @@ index_thost=호스트 이름
 index_tdesc=기술
 index_tver=버전
 index_ttype=OS 유형
+
 this_server=이 서버
+
 add_title=서버 추가
 add_msg=$1 추가 중 ..
 add_gmsg=$1 그룹에 서버 추가
@@ -49,6 +51,7 @@ add_echeck=$1 서버에 Webmin 구성 모듈이 없습니다
 add_echeck2=$1 서버에 Webmin 사용자 모듈이 없습니다
 add_eversion=서버 $1 이 (가) Webmin 버전 $2 이상을 실행하고 있지 않습니다.
 add_ok=$2 모듈, $3 테마, $4 사용자 및 $5 그룹에 $1 이 (가) 추가되었습니다.
+
 refresh_title=모듈 및 사용자 목록 새로 고침
 refresh_header=모든 서버에서 모듈, 사용자 및 그룹 목록을 다시 요청하십시오.
 refresh_header4=$2 멤버의 모듈, 사용자 및 그룹 목록을 다시 요청합니다.
@@ -64,6 +67,7 @@ refresh_g2=$1 그룹을 제거했습니다.
 refresh_done=.. 완료
 refresh_del=서버 목록에서 $1 을 제거했습니다.
 refresh_failed=$1 을 (를) 새로 고치지 못했습니다  : $2 
+
 host_title=관리 서버
 host_header=관리되는 Webmin 서버 세부 사항
 host_name=호스트 이름
@@ -81,6 +85,7 @@ host_header_u=Webmin 사용자
 host_header_g=웹민 그룹
 host_return=서버 세부 사항
 host_version2=버전
+
 edit_title_mod=모듈 편집
 edit_title_theme=테마 편집
 edit_header_mod=$1 의 Webmin 모듈 세부 사항
@@ -104,6 +109,7 @@ edit_acl=에 대한 ACL 편집
 edit_uacl=$2 의 사용자 $1 
 edit_gacl=$2 의 그룹 $1 
 edit_config=설정 편집
+
 install_err=모듈을 설치하지 못했습니다
 install_title=모듈 설치
 install_elocal=로컬 파일이 없습니다
@@ -124,6 +130,7 @@ do_failed=$1 에 설치하지 못했습니다  : $2
 do_success_mod=$1 에 설치된 모듈 $2 
 do_success_theme=$1 에 테마 $2 을 (를) 설치했습니다.
 do_done=.. 완료
+
 delete_err=$1 모듈을 삭제하지 못했습니다
 delete_epack=$1 모듈이 존재하지 않습니다
 delete_title=모듈 삭제
@@ -141,6 +148,7 @@ delete_edepends=모듈 $1 이 (가) 이에 의존합니다.
 delete_egone=모듈이 더 이상 존재하지 않습니다
 delete_esuccess=$1 에서 성공적으로 삭제되었습니다  : $2 
 delete_acls=사용자를 제거하고 액세스 제어 설정을 재설정 하시겠습니까?
+
 user_title1=Webmin 사용자 생성
 user_header1=새로운 Webmin 사용자 정보
 user_name=사용자 이름
@@ -200,11 +208,13 @@ user_all=&lt;모든 호스트&gt;
 user_donthave=&lt;없는 호스트&gt;
 user_have=&lt;가있는 호스트&gt;
 user_ofgroup=$1 의 회원
+
 udelete_title=사용자 삭제
 udelete_doing=모든 호스트에서 $1 사용자를 삭제하는 중입니다.
 udelete_success=$1 에서 성공적으로 삭제되었습니다
 udelete_failed=$1 에서 삭제하지 못했습니다  : $2 
 udelete_done=.. 완료
+
 group_title1=그룹 만들기
 group_header1=새로운 Webmin 그룹 세부 사항
 group_name=그룹 이름
@@ -232,6 +242,7 @@ group_failed2=$1 에서 그룹을 업데이트하지 못했습니다  : $2
 group_return=그룹 세부 사항
 group_nomems=회원이 없습니다
 group_servers=작성할 서버
+
 gdelete_title=그룹 삭제
 gdelete_desc=모든 호스트에서 그룹 $1 및 구성원 사용자 $2 을 (를) 삭제 하시겠습니까?
 gdelete_ok=그룹 삭제
@@ -240,6 +251,7 @@ gdelete_success=$1 에서 성공적으로 삭제되었습니다
 gdelete_failed=$1 에서 삭제하지 못했습니다  : $2 
 gdelete_done=.. 완료
 gdelete_esub=이 그룹에는 하위 그룹 $1 이 (가) 있으므로 삭제할 수 없습니다.
+
 acl_title=모듈 액세스 제어
 acl_title2=$3 의 $2 에있는 사용자 $1 의 경우
 acl_title3=$3 의 $2 에있는 $1 그룹의 경우
@@ -258,6 +270,7 @@ acl_doing2=$2 에서 $1 에 대한 액세스 제어 설정
 acl_success=$1 에서 액세스 제어를 설정했습니다.
 acl_failed=$1 에서 액세스 제어를 설정하지 못했습니다  : $2 
 acl_done=.. 완료
+
 sync_title=서버 동기화
 sync_desc=이 양식을 사용하면 현재 클러스터가없는 서버에서 Webmin 사용자 및 그룹을 작성하여 클러스터의 모든 서버에서 계정을 동기화 할 수 있습니다.
 sync_hosts=동기화 할 서버
@@ -281,6 +294,7 @@ sync_gcreate=Webmin 그룹 $1 추가 중 ..
 sync_acl=$1 에 대한 ACL 파일 복사
 sync_test=수행 할 작업 만 표시 하시겠습니까?
 sync_restart=Webmin 다시 시작 ..
+
 upgrade_title=Webmin 업그레이드
 upgrade_header=모든 호스트에서 Webmin 업그레이드 ..
 upgrade_header2=$1 에서 Webmin 업그레이드 중 ..
@@ -299,6 +313,7 @@ upgrade_failed=$1 에 설치하지 못했습니다  : $2
 upgrade_done=.. 완료
 upgrade_efast=빠른 RPC 모드를 사용하는 서버 만 업그레이드 할 수 있습니다
 upgrade_ereconn=업그레이드 후 Webmin에 다시 연결하지 못했습니다!  : $1
+
 update_title=업데이트 모듈
 update_header=모든 호스트 모듈 업데이트 ..
 update_header5=$2 에서 모듈 업데이트 중 ..
@@ -306,6 +321,7 @@ update_header4=$2 멤버의 모듈 업데이트
 update_onhost=$1 업데이트 결과 ..
 update_failed=.. 업데이트 실패  : $1 
 update_none=.. 업데이트가 없습니다.
+
 config_title=모듈 구성 편집
 config_enone=모듈이 설치된 호스트가 선택되지 않았습니다
 config_ethis=이 서버에 모듈이 설치되지 않았습니다

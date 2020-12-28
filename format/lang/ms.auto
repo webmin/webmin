@@ -15,6 +15,7 @@ index_use=Guna
 index_free=Percuma
 index_format=Disk ini tidak diformat
 index_return=senarai cakera
+
 edit_ecannot=Anda tidak dibenarkan mengedit cakera ini
 edit_title=Edit Partition
 edit_header=Butiran Partition
@@ -56,6 +57,7 @@ edit_tunedesc2=Anda tidak boleh menyesuaikan sistem fail pada partition ini kera
 edit_tunedesc3=Anda tidak boleh menyesuaikan sistem fail pada partition ini kerana ia sedang dipasang. Gunakan <a href=/mount/>modul sistem fail</a> untuk menyaharuakannya terlebih dahulu.
 edit_tunedesc4=Anda tidak boleh menyesuaikan sistem fail pada partition ini kerana ia tidak mempunyai sistem fail.
 edit_tunedesc5=Anda tidak boleh menyesuaikan sistem fail pada partition ini kerana hanya <tt>UFS</tt> sistem fail boleh ditala.
+
 save_ecannot=Anda tidak dibenarkan mengedit cakera ini
 save_edelete=Gagal memadamkan partition
 save_esave=Gagal menyimpan partition
@@ -64,6 +66,7 @@ save_eend='$1' bukan silinder akhir yang sah
 save_estartmin=Silinder permulaan mesti> 0
 save_eendmax=Silinder yang terakhir mestilah < $1 
 save_estartend=Silinder permulaan mesti kurang dari akhir
+
 newfs_title=Buat Filesystem
 newfs_ecannot=Anda tidak dibenarkan memformat cakera ini
 newfs_desc=Mengklik butang di bahagian bawah borang ini akan membina $1 baru pada peranti $2. Semua data pada partition ini akan dipadamkan secara kekal.
@@ -89,6 +92,7 @@ newfs_err=Gagal mencipta sistem fail
 newfs_exec=Pelaksanaan perintah $1 ..
 newfs_failed=.. arahan gagal!
 newfs_ok=.. arahan lengkap.
+
 fsck_title=Pembaikan Filesystem
 fsck_ecannot=Anda tidak dibenarkan membaiki cakera ini
 fsck_desc=Mengklik butang <b>Pembaikan</b> akan menyemak dan pilihan pembaikan $1 pada $2. Tahap pemeriksaan dan pembaikan ditentukan oleh pilihan anda di bawah.
@@ -106,6 +110,7 @@ fsck_37=proses terbunuh semasa pemeriksaan
 fsck_39=Kesalahan yang tidak dapat dikesan dikesan!
 fsck_40=tiada ralat yang dikesan
 fsck_unknown=Ralat tidak diketahui
+
 tunefs_title=Tune Filesystem
 tunefs_ecannot=Anda tidak dibenarkan untuk menyesuaikan cakera ini
 tunefs_desc=Borang ini membolehkan anda melaraskan pelbagai parameter $1 pada $2. Fail sedia ada pada sistem fail ini tidak akan dirugikan.
@@ -122,6 +127,7 @@ tunefs_err=Gagal menala sistem fail
 tunefs_exec=Pelaksanaan perintah $1 ..
 tunefs_failed=.. arahan gagal!
 tunefs_ok=.. arahan lengkap.
+
 select_device=Pengawal SCSI $1 sasaran $2 unit $3 
 select_idedevice=Peranti IDE $1 
 select_part=Pengawal SCSI $1 target $2 unit $3 partition $4 
@@ -131,10 +137,13 @@ esun=Pemisahan hanya boleh diubah suai pada perkakasan Sun
 emounted=Cakera telah dipasang partisyen
 elast=Partition terakhir tidak dapat dialihkan
 eformat=<tt>format</tt> tidak menemui sebarang cakera!
+
 fstype_ufs=Solaris Unix Filesystem
 fstype_unknown=Filesystem tidak diketahui
+
 acl_disks=Disks pengguna ini boleh partition dan format
 acl_dall=Semua cakera
 acl_dsel=Terpilih ..
 acl_view=Bolehkah mengedit cakera dan sekatan?
+
 ecannot=Anda tidak dibenarkan mengedit partition

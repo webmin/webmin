@@ -2,6 +2,7 @@ check_econfigset=Tiada fail konfigurasi iSCSI TGTd!
 check_econfig=Fail konfigurasi iSCSI TGTd $1 tidak terdapat pada sistem anda.
 check_etgtadm=Perintah pentadbiran iSCSI TGTd $1 tidak terdapat pada sistem anda.
 check_einit=Tindakan boot $1 tidak wujud
+
 index_title=iSCSI TGTd
 index_clink=Mungkin ia tidak dipasang, atau konfigurasi modul <a href='$1'>anda</a> tidak betul.
 index_stop=Hentikan iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=Pengguna yang dibenarkan
 index_size=Jumlah saiz
 index_noluns=Tiada
 index_nousers=Mana-mana
+
 dtargets_err=Gagal memadamkan sasaran
 dtargets_enone=Tiada pilihan!
+
 target_title1=Buat Sasaran iSCSI
 target_title2=Edit Target iSCSI
 target_header=opsyen peranti yang dikongsi iSCSI
@@ -74,11 +77,13 @@ target_direct=Akses peranti langsung
 target_cache=Cache menulis ke peranti?
 target_eaddr=Alamat IP yang dibenarkan tidak sah
 target_eaname=Nama pemula yang dibenarkan tidak sah
+
 start_err=Gagal memulakan iSCSI TGTd
 stop_err=Gagal menghentikan iSCSI TGTd
 restart_err=Gagal memulakan semula iSCSI TGTd
 atboot_err=Gagal membolehkan pada boot
 atboot_einit=Skrip Init $1 tidak wujud
+
 log_create_target=Sasaran yang dibuat $1 
 log_delete_target=Objektif dipadamkan $1 
 log_modify_target=Sasaran yang diubah suai $1 
@@ -89,6 +94,7 @@ log_restart=Pelayan iSCSI dimulakan semula
 log_atboot=Dihidupkan pelayan iSCSI pada masa boot
 log_delboot=Pelayan iSCSI yang dilumpuhkan pada masa boot
 log_manual=Fail konfigurasi yang diedit secara manual
+
 manual_title=Edit Fail Konfigurasi
 manual_file=Pilih fail untuk mengedit:
 manual_ok=Buka

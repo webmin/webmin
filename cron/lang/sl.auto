@@ -31,6 +31,7 @@ index_ok=Iskanje
 index_searchres=Cron opravila ustrezajo $1 ..
 index_reset=Ponastavi iskanje.
 index_econfigcheck=Cron opravil ni mogoče upravljati v vašem sistemu, saj konfiguracija modula ni veljavna : $1 
+
 edit_title=Uredi Cron Job
 create_title=Ustvari Cron Job
 edit_ecannot=Za tega uporabnika ne morete urejati opravil cron
@@ -70,6 +71,7 @@ lcedit_special_weekly=tedensko (v nedeljo)
 lcedit_special_monthly=mesečno (1.)
 lcedit_special_yearly=letno (1. januarja)
 lcedit_special_reboot=ko sistemski škornji
+
 save_err=Cron ni uspel shraniti
 save_ecmd=Niste vnesli ukaza za izvedbo
 save_euser=Izbrati morate uporabnika
@@ -79,6 +81,7 @@ save_ecannot=Nimate nobenega ustvarjanja ali urejanja delovnih mest cron za '$1'
 save_enone=Za izvedbo niste izbrali nobenega $1 
 save_ecannot2=Ne smete ustvarjati delovnih mest cron
 save_eidx=Cron opravilo je bilo uspešno shranjeno, vendar ga ni mogoče zagnati, ker ga ni bilo mogoče najti!
+
 allow_title=Nadzor dostopa do Cron
 allow_desc=Ta obrazec vam omogoča nadzor nad tem, kateri uporabniki lahko ustvarjajo in izvajajo opravila cron.
 allow_ecannot=Uporabniškega dostopa do cron ne morete nadzorovati
@@ -87,6 +90,7 @@ allow_all2=Zavrni vse uporabnike, razen root
 allow_all3=Dovoli vsem uporabnikom
 allow_allow=Dovoli samo navedenim uporabnikom
 allow_deny=Zavrni le naštete uporabnike
+
 env_title1=Uredi spremenljivko okolja
 env_title2=Ustvari spremenljivko okolja
 env_name=Ime spremenljivke
@@ -102,11 +106,13 @@ env_where2=Premikanje spremenljivke okolja
 env_top=Pred vsemi opravili Cron za uporabnika
 env_bot=Po vseh opravilih Cron
 env_leave=Trenutni položaj
+
 exec_title=Izvedi Cron Job
 exec_ecannot=Za tega uporabnika ni dovoljeno izvajati cron opravil
 exec_cmd=Izhod iz ukaza $1 ..
 exec_cmdbg=Izvajanje ukaza $1 kot postopek v ozadju.
 exec_none=Izhod ne ustvarja
+
 acl_users=Lahko uredite opravila cron za
 acl_all=Vsi uporabniki
 acl_this=Trenutni uporabnik spletne strani
@@ -122,6 +128,7 @@ acl_move=Ali lahko Cron premaknete delovna mesta?
 acl_kill=Ali lahko Cron prekine delovna mesta?
 acl_hourly=Omejite delovna mesta na največ uro?
 acl_hourlydef=Kot je nastavljeno v modulu Config
+
 log_modify=Spremenjena naloga Cron za $1 
 log_modify_l=Spremenjeno delo Cron "$2" za $1 
 log_create=Ustvaril je Cron opravilo za $1 
@@ -139,7 +146,9 @@ log_move=Naloga Cron premaknjena za $1
 log_crons_delete=Izbrisana $1 Cron opravila
 log_crons_disable=Onemogočena opravila $1 Cron
 log_crons_enable=Omogočena $1 Cron opravila
+
 ecopy=V novi konfiguraciji Cron je bila odkrita napaka: $1 $2 
+
 when_min=vsako minuto
 when_hour=vsako uro ob $1 mimo ure
 when_day=vsak dan pri $2:$1 
@@ -148,6 +157,7 @@ when_weekday=vsak $3 pri $2:$1
 when_cron=v času kron $1 
 when_interval=vsakih $1 sekundo
 when_boot=ob zagonu
+
 ucwhen_min=Vsako minuto
 ucwhen_hour=Vsako uro ob $1 mimo ure
 ucwhen_day=Vsak dan pri $2:$1 
@@ -156,8 +166,10 @@ ucwhen_weekday=Vsak $3 pri $2:$1
 ucwhen_cron=V času kron $1 
 ucwhen_interval=Vsakih $1 sekundo
 ucwhen_boot=Ob zagonu
+
 move_err=Cron službe ni mogel premakniti
 move_etype=Tega opravila ni mogoče premakniti
+
 kill_err=Cron ni mogel prenehati
 kill_ecannot=Tega dela ne smete ukiniti
 kill_egone=Ne teče več
@@ -166,13 +178,16 @@ kill_title=Prekini Cron Job
 kill_rusure=Ali ste prepričani, da želite končati postopek $1 s PID $2 ?
 kill_rusure2=Ali ste prepričani, da želite končati postopek $1 s PID $2 in vsemi njegovimi podprocesi?
 kill_ok=Da, prenehaj
+
 range_all=Zaženite na kateri koli datum
 range_start=Teči samo od $1 
 range_end=do $1 
 range_estart=Manjkajoč ali neveljaven začetni datum v območju, ki ga je treba zagnati
 range_eend=Manjkajoč ali neveljaven končni datum v dosegu
+
 delete_err=Cron opravil ni bilo mogoče izbrisati
 delete_enone=Izbrana ni nobena
+
 manual_title=Ročno urejanje delovnih mest Cron
 manual_edit=Cron datoteka za urejanje:
 manual_ok=Uredi

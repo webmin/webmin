@@ -1,6 +1,7 @@
 check_econfig=$1 iSCSI hedef yapılandırma dosyası sisteminizde bulunamadı.
 check_eietadm=$1 iSCSI hedef yönetim komutu sisteminizde bulunamadı.
 check_einit=$1 önyükleme eylemi mevcut değil
+
 index_title=iSCSI Hedefi
 index_clink=Belki yüklü değil veya <a href='$1'>modül yapılandırmanız</a> yanlış.
 index_stop=İSCSI Hedefini Durdur
@@ -22,8 +23,10 @@ index_noluns=Yok
 index_nousers=Hiç
 index_nullio=$1 sektörünün RAM diski
 index_size=Toplam boyut
+
 dtargets_err=Hedefler silinemedi
 dtargets_enone=Hiçbiri seçilmedi!
+
 target_title1=İSCSI Hedefi Oluştur
 target_title2=İSCSI Hedefini Düzenle
 target_header=iSCSI paylaşılan cihaz seçenekleri
@@ -68,11 +71,13 @@ target_noalias=Yok
 target_hdigest=Başlık sağlama toplamı
 target_ddigest=Veri sağlama toplamı
 target_nodigest=Yok
+
 auth_title=Kimlik Doğrulama Ayarları
 auth_header=Tüm hedefler için varsayılan kimlik doğrulama seçenekleri
 auth_iuser=İstemciler tarafından kimlik doğrulaması
 auth_ouser=İstemcilere kimlik doğrulama
 auth_err=Kimlik doğrulama ayarları kaydedilemedi
+
 conn_title=Bağlantı Ayarları
 conn_header=Tüm hedefler için varsayılan bağlantı seçenekleri
 conn_sessions=Maksimum eşzamanlı oturum
@@ -91,6 +96,7 @@ conn_emaxrecv=Eksik veya sayısal olmayan maksimum alma segmenti uzunluğu
 conn_emaxxmit=Eksik veya sayısal olmayan maksimum iletim segmenti uzunluğu
 conn_emaxburst=Eksik veya sayısal olmayan maksimum istemci veri bloğu boyutu
 conn_efirstburst=Eksik veya sayısal olmayan maksimum istemci istenmeyen veri boyutu
+
 timeout_title=Zaman Aşımı Ayarları
 timeout_header=İstemci zaman aşımı seçenekleri
 timeout_nopi=Boştayken pingler arasındaki aralık
@@ -98,6 +104,7 @@ timeout_nopinone=Asla ping atma
 timeout_secs=saniye
 timeout_nopt=Ping yanıtı için bekleme süresi
 timeout_noptnone=Ping zamanı ile aynı
+
 addr_title=Sunucu Adresi ve Bağlantı Noktası
 addr_header=iSCSI sunucusu ağ seçenekleri
 addr_addr=IP adresinden dinleyin
@@ -110,18 +117,21 @@ addr_err=Sunucu adresi kaydedilemedi
 addr_eaddr=Dinlenecek adres bir IP adresi olmalıdır
 addr_eport=Dinlenecek bağlantı noktası bir sayı olmalıdır
 addr_edebug=Hata ayıklama düzeyi bir sayı olmalıdır
+
 initiators_title=İzin Verilen Müşteri Adresleri
 initiators_none=Henüz izin verilen müşteri adresi tanımlanmadı. Hiçbir istemci bağlanamaz.
 initiators_ips=İzin verilen istemciler
 initiators_title1=İzin Verilen İstemci Adresleri Ekleme
 initiators_title2=İzin Verilen İstemci Adreslerini Düzenle
 initiators_header=Hedef için izin verilen iSCSI istemcileri
+
 targets_title=İzin Verilen Sunucu Adresleri
 targets_none=Henüz izin verilen sunucu adresi tanımlanmadı. Hiçbir istemci bağlanamaz.
 targets_ips=İzin verilen sunucu arayüzleri
 targets_title1=İzin Verilen Sunucu Adresleri Ekleme
 targets_title2=İzin Verilen Sunucu Adreslerini Düzenle
 targets_header=Hedef için izin verilen iSCSI sunucu arayüzü
+
 allow_target=Hedef adı
 allow_move=Hareket
 allow_delete=Silme seçildi
@@ -133,17 +143,21 @@ allow_return=izin verilen hedefler ve adresler
 allow_err=İzin verilen adresler kaydedilemedi
 allow_eaddr=$1 adresi geçerli değil. IPv4 adresi, IPv4 ağ/maske veya köşeli parantez içindeki IPv6 adresi olmalıdır.
 allow_eaddrs=Girilecek adres yok
+
 dallow_err=İzin verilen adresler silinemedi
 dallow_enone=Hiçbiri seçilmedi
+
 manual_title=Yapılandırma Dosyasını Düzenle
 manual_desc=$1 iSCSI sunucusu yapılandırma dosyasını düzenlemek için aşağıdaki metin kutusunu kullanın. Girişinizde hiçbir doğrulama yapılmayacağından dikkatli olun!
 manual_err=Yapılandırma dosyası kaydedilemedi
 manual_edata=İçerik girilmedi!
+
 start_err=İSCSI sunucusu başlatılamadı
 stop_err=İSCSI sunucusu durdurulamadı
 restart_err=İSCSI sunucusu yeniden başlatılamadı
 atboot_err=Önyükleme sırasında etkinleştirilemedi
 atboot_einit=$1 başlangıç betiği mevcut değil
+
 log_create_target=$1 hedefi oluşturuldu
 log_delete_target=$1 hedefi silindi
 log_modify_target=Değiştirilmiş hedef $1 

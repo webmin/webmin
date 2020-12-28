@@ -3,6 +3,7 @@ connect_elogin=Failed to login to the database $1 : $2.
 index_title=پوسٹ فکس میل سرور
 index_epath=The Postfix control command $1 is not installed on your system. Maybe your <a href='$2'>module configuration</a> is incorrect, or Postfix is not installed.
 index_postfix=پوسٹ فکس
+
 internal_error=داخلی خامی
 index_econfig=The Postfix config command $1 does not exist. Maybe your <a href='$2'>module configuration</a> is incorrect.
 index_esuper=The Postfix supervisor command $1 does not exist. Maybe your <a href='$2'>module configuration</a> is incorrect.
@@ -14,8 +15,10 @@ index_startmsg=پوسٹ فکس میل سرور شروع کرنے کے لئے ا�
 index_reloadmsg=اس بٹن پر کلک کریں تاکہ پوسٹ فکس نے اپنی تمام ترتیب فائلوں کو دوبارہ پڑھیں۔ یہ مفید ثابت ہوسکتا ہے اگر پوسٹ فکس ترتیب فائلوں کو دستی طور پر تبدیل کیا گیا ہو۔
 index_version=Postfix version $1
 opts_err=اختیارات کو بچانے میں ناکام
+
 check_error=موجودہ پوسٹ فکس ترتیب کو چیک کرتے وقت خامی۔ براہ کرم دستی طور پر پوسٹ فکس ترتیب کو ٹھیک کریں۔
 check_manual=دستی طور پر پوسٹ فکس ترتیب فائل میں ترمیم کریں۔
+
 address_rewriting_title=ایڈریس کی دوبارہ تحریر اور بہانا
 address_rewriting_ecannot=آپ کو ایڈریس کی دوبارہ تحریر اور نقاب پوشی میں ترمیم کرنے کی اجازت نہیں ہے
 aliases_title=میل عرفات
@@ -42,9 +45,11 @@ aliases_type5=Autoreply file $1
 aliases_type6=Apply filter file $1
 aliases_none=کوئی نہیں
 aliases_delete=منتخب کردہ عرفات کو حذف کریں
+
 postfinger_title=کنفگریشن چیک
 postfinger_show=دکھائیں
 postfinger_ecannot=آپ کو پوسٹ فکس ترتیب کو چیک کرنے کی اجازت نہیں ہے
+
 mailclean_title=میل کیوئ صاف کریں
 mailclean_ecannot=میل کیوئز کو صاف کرنے کے لئے کوئی مراعات نہیں ہیں
 mailclean_active=فعال قطار
@@ -53,6 +58,7 @@ mailclean_deferred=التوا - قطار
 mailclean_defer=موخر قطار
 mailclean_all=تمام قطاریں
 mailclean_search=سٹرنگ سٹرنگ
+
 aform_type0=کوئی نہیں
 aform_type1=ای میل اڈریس
 aform_type2=فائل میں پتے
@@ -68,6 +74,7 @@ aform_val=عرف عرف
 aform_afile=ترمیم ..
 aform_return=عرف
 aform_cmt=تفصیل
+
 asave_err=عرف کو بچانے میں ناکام
 asave_eaddr='$1' is not a valid address
 asave_ealready=An alias for '$1' already exists
@@ -78,11 +85,13 @@ asave_etype4='$1' is not a valid program or does not exist
 asave_etype5=Autoreply file '$1' is not valid
 asave_etype4none=کوئی پروگرام نہیں دیا گیا
 asave_etype6=Filter file '$1' is not valid
+
 afile_title=ایڈریس فائل میں ترمیم کریں
 afile_desc=Use the text area below to edit the addresses in the file $1.
 afile_efile=You are not allowed to edit $1.
 afile_undo=تبدیلیوں کو کالعدم کریں
 afile_ewrite=Failed to write to addresses file : $1
+
 ffile_title=فلٹر فائل میں ترمیم کریں
 ffile_desc=Use the form below to setup filter rules in the file $1.
 ffile_efile=You are not allowed to edit $1.
@@ -98,6 +107,7 @@ ffile_other=Otherwise forward to $1
 ffile_err=فلٹر فائل کو محفوظ کرنے میں ناکام
 ffile_ematch=گمشدہ میچ
 ffile_eaction=فارورڈنگ پتہ غائب ہے
+
 rfile_title=خودکار طریقے سے فائل میں ترمیم کریں
 rfile_desc=Use the text area below to edit the autoreply message in $1. The message may contain the macros $SUBJECT, $FROM, $TO, $DATE and $BODY which will be expanded when the autoreply is activated.
 rfile_desc2=You can also set mail headers that add to or replace the defaults used in the autoreply by putting lines like:<br><tt>From: foo@bar.com</tt><br><tt>Subject: On holiday</tt><br>at the top of the message, separated from the body by a single blank line.
@@ -116,11 +126,13 @@ rfile_from=منجانب: جواب کے لئے پتہ
 rfile_auto=خودکار (وصول کنندہ کے پتے پر مبنی)
 rfile_efrom=گم: منجانب
 rfile_fromdesc=A منجانب: جہاں بھی ممکن ہو پتا ہمیشہ بیان کرنا چاہئے ، کیونکہ خودکار طریقہ قابل اعتماد نہیں ہوسکتا ہے۔
+
 general_title=عام اختیارات
 general_title_sensible=سب سے مفید عام اختیارات
 general_title_others=دوسرے عام اختیارات
 general_ecannot=آپ کو عام اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
 what_is_it=یہ کیا ہے؟
+
 opts_default=پہلے سے طے شدہ
 opts_none=کوئی نہیں
 opts_nomap=کوئی نقشہ سیٹ نہیں ہے
@@ -140,10 +152,12 @@ opts_mail_owner=میل کا مالک
 opts_default_privs=ترسیل ایجنٹ کے پہلے سے طے شدہ حقوق
 opts_inet_interfaces=میل موصول کرنے کے ل Network نیٹ ورک انٹرفیس
 opts_all_interfaces=سب
+
 opts_local_recipient_maps=نامعلوم مقامی صارفین کو مسترد کریں
 opts_no=نہیں
 opts_save=محفوظ کریں اور لگائیں
 opts_edir=You are only allowed to specify map files under $1
+
 opts_allow_percent_hack="یوزر٪ڈومین" کو "یوزر@ڈومین" میں دوبارہ لکھیں
 opts_append_at_myorigin="صارف" کو "صارف @ $ ماڈومین" میں دوبارہ لکھیں
 opts_append_dot_mydomain="user@host.$mydomain" میں "یوزر @ میزبان" کو دوبارہ سے لکھیں
@@ -153,13 +167,17 @@ opts_swap_bangpath="سائٹ! صارف" کو "یوزر @ سائٹ" میں دوب
 opts_masquerade_domains=ایڈریس ماسکریڈنگ
 opts_masquerade_exceptions=مستثنیات مستثنیات
 index_return=پوسٹ فکس ترتیب
+
 opts_alias_maps=مقامی ترسیل ایجنٹ کے ذریعہ استعمال کردہ عرفی ڈیٹا بیس
 opts_alias_database="newaliases" کمانڈ کے ذریعہ تعمیر کردہ عرفی ڈیٹا بیس
 aliases_warning=Warning: <ul><li>when the first field is not empty, the default Postfix aliases-generation command is used to build up the corresponding databases ; <li>else the Sendmail compatibility command &quot;newaliases&quot; is used, this will use the second field's databases.</ul>
+
 aliases_name=نام
 aliases_value=عرف. ..
+
 new_alias=نیا عرف بنائیں
 new_aliasmsg=نیا عرف بنانے کیلئے اس بٹن پر کلک کریں
+
 local_delivery_ecannot=آپ کو مقامی ترسیل کے اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
 local_delivery_title=مقامی فراہمی
 opts_local_transport=مقامی ترسیل کے لئے نقل و حمل کا نام
@@ -185,6 +203,7 @@ opts_local_destination_recipient_limit=فی مقامی پیغام کی ترسی�
 opts_local_destination_recipient_limit_default=پہلے سے طے شدہ
 opts_prepend_delivered_header=Prepend a <tt>Delivered-To:</tt> when...
 opts_prepend_delivered_header_default=پہلے سے طے شدہ
+
 resource_title=جنرل ریسورس کنٹرول
 resource_ecannot=آپ کو ریسورس کنٹرول پیرامیٹرز میں ترمیم کرنے کی اجازت نہیں ہے
 opts_bounce_size_limit=اچھال والے پیغام کا زیادہ سے زیادہ سائز
@@ -204,6 +223,7 @@ opts_qmgr_message_recipient_limit=میموری میں وصول کنندگان ک
 opts_queue_minfree=قطار فائل سسٹم میں کم سے کم مفت جگہ
 opts_stale_lock_time=زیادہ سے زیادہ وقت جس کے بعد باسی تالا جاری کیا جاتا ہے
 opts_transport_retry_time=ٹوٹے ہوئے MDT سے رابطہ کرنے کی کوششوں کے درمیان سیکنڈ میں وقت
+
 opts_always_bcc=پتہ جو ہر پیغام کا بی سی سی وصول کرتا ہے
 opts_always_bcc_none=کوئی نہیں
 opts_daemon_timeout=درخواستوں کو سنبھالنے کا وقت ختم
@@ -242,6 +262,7 @@ opts_trigger_timeout=ڈییمون پر ٹرگر بھیجنے کا زیادہ س�
 opts_delay_warning_time=بغیر حوالگی کے انتباہ بھیجنے سے پہلے گھنٹوں میں وقت
 opts_delay_warning_time_default2=پوسٹ فکس ڈیفالٹ
 opts_content_filter_default=کوئی نہیں
+
 smtpd_title=SMTP سرور کے اختیارات
 smtpd_ecannot=آپ کو SMTP سرور کے اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
 opts_disable_vrfy_command=SMTP VRFY کمانڈ کو غیر فعال کریں
@@ -273,6 +294,7 @@ smtpd_nomap=ابھی تک ریلے کے لئے اجازت شدہ پتوں کا �
 smtpd_nomap2=ابھی مرسل پتے پر پابندیوں کا کوئی نقشہ داخل نہیں کیا گیا ہے۔
 smtpd_map=دوبارہ پلے لگانے کے لئے اجازت شدہ پتے
 smtpd_map2=بھیجنے والے پتے پر پابندیاں
+
 smtp_title=ایس ایم ٹی پی کلائنٹ کے اختیارات
 smtp_ecannot=آپ کو SMTP کلائنٹ کے اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
 opts_best_mx_transport=بہترین MX میزبان کے طور پر درج ہونے پر ایکشن
@@ -293,6 +315,7 @@ opts_smtp_data_done_timeout="ختم ہونے کے جواب کے منتظر وق�
 opts_smtp_quit_timeout=کوئٹ کے جواب کے منتظر ٹائم آؤٹ
 opts_smtp_use_tls=ایس ایم ٹی پی کنیکشن کے لئے ٹی ایل ایس کا استعمال کریں
 opts_smtp_sasl_security_options=SASL سیکیورٹی کے اختیارات
+
 rate_title=فراہمی کی شرح
 rate_ecannot=آپ کو ترسیل کی شرح کے اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
 opts_default_destination_concurrency_limit=متوازی ترسیل کی زیادہ سے زیادہ تعداد اسی منزل تک پہنچتی ہے
@@ -303,18 +326,21 @@ opts_maximal_queue_lifetime=پیغام سے پہلے قطار میں زیادہ 
 opts_minimal_backoff_time=موخر پیغام پہنچانے کی کوششوں کے درمیان کم سے کم وقت (سیکنڈ)
 opts_queue_run_delay=موخر قطار کو اسکین کرنے کے درمیان وقت (سیکنڈ)
 opts_defer_transports=ٹرانسپورٹ جو فراہم نہیں کیے جانے چاہئیں
+
 debug_title=ڈیبگنگ کی خصوصیات
 debug_ecannot=آپ کو ٹھیک کرنا خصوصیت میں ترمیم کرنے کی اجازت نہیں ہے
 opts_debug_peer_list=ڈومین / نیٹ ورک کے نمونوں کی فہرست جس کے لئے لفظی لاگ قابل ہے
 opts_debug_peer_level=مذکورہ بالا فہرست سے مماثلت پانے کے موقع پر لاگ بوس لاگنگ کی سطح
 debug_version=Postfix Module for Webmin - Version $1
 opts_edebug=گمشدہ یا غلط لفظی لاگنگ کی سطح - ایک صفر سے بڑی تعداد کا ہونا ضروری ہے
+
 ldap_title=LDAP دیکھو
 ldap_ecannot=آپ کو ایل ڈی اے پی نظر کے اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
 ldap_non_existent=ایسا لگتا ہے کہ ایل ڈی اے پی آپ کے پوسٹ فکس سسٹم میں موجود نہیں ہے
 opts_ldap_lookup_timeout=LDAP ڈیٹا بیس کی تلاش کے لئے ٹائم آؤٹ
 opts_ldap_search_base=تلاش کرنے کے لئے ایل ڈی اے پی ڈیٹا بیس
 opts_ldap_server_host=LDAP سرور ہوسٹ نام
+
 canonical_title=کیننیکل میپنگ
 canonical_ecannot=آپ کو نقشہ سازی کی تشکیل میں ترمیم کرنے کی اجازت نہیں ہے
 opts_canonical_maps=ایڈریس میپنگ لوک ٹیبلز
@@ -328,6 +354,7 @@ canonical_edit_title=کینونیکل نقشہ میں ترمیم کریں
 canonical_return_sender=مرسل بھیجنے والے نقشہ جات
 canonical_return_recipient=وصول کنینیکل نقشے
 canonical_return=کلی نقشہ جات
+
 mapping_name=نام
 mapping_value=نقشے کو. ..
 mapping_delete=منتخب کردہ کو حذف کریں
@@ -355,6 +382,7 @@ mapping_toomany=There are $1 map entries, which is above the display limit of $2
 mapping_find=مماثلت کے نقشے دکھائیں:
 mapping_search=تلاش کریں
 mapping_match=Map file entries matching <tt>$1</tt> ..
+
 virtual_title=ورچوئل ڈومینز
 virtual_ecannot=آپ کو ورچوئل ڈومینز میپنگ کی تشکیل میں ترمیم کرنے کی اجازت نہیں ہے
 opts_virtual_maps=ڈومین میپنگ لوکنگ ٹیبلز
@@ -362,29 +390,44 @@ opts_virtual_alias_maps=ڈومین میپنگ لوکنگ ٹیبلز
 opts_virtual_alias_domains=ورچوئل میپنگ انجام دینے کیلئے ڈومینز
 virtual_same=ڈومین میپنگ ٹیبلز سے
 virtual_return=ورچوئل ڈومینز
+
 transport_title=ٹرانسپورٹ میپنگ
 transport_ecannot=آپ کو ٹرانسپورٹ میپنگ کی تشکیل میں ترمیم کرنے کی اجازت نہیں ہے
 opts_transport_maps=ٹرانسپورٹ میپنگ لوکنگ ٹیبلز
 transport_return=نقل و حمل کے نقشے
+
+sni_title=سرٹیفکیٹ کی تعریفیں
+sni_ecannot=آپ کو سرٹیفکیٹ میپنگ کی تشکیل میں ترمیم کرنے کی اجازت نہیں ہے
+opts_sni_maps=سرٹیفکیٹ کی نقشہ سازی کی جدولیں
+sni_return=سرٹیفکیٹ کے نقشے
+sni_dom=میزبان کا نام
+sni_certs=سرٹیفکیٹ فائلیں
+
 relocated_title=دوبارہ آباد نقشہ کاری
 relocated_ecannot=آپ کو تبدیل شدہ میپنگ کی تشکیل میں ترمیم کرنے کی اجازت نہیں ہے
 relocated_return=منتقل نقشہ جات
 opts_relocated_maps=دوبارہ تبدیل شدہ میپنگ لوکنگ ٹیبلز
 opts_content_filter=ای میل کے مواد کا فلٹر
+
 map_click=کسی بھی تعریفیں پر کلک کریں اس کی خصوصیات میں ترمیم کریں:
 no_map=(فی الحال کسی نقشہ کی تعریف نہیں کی گئی ہے۔ پہلے کسی نقشہ کی وضاحت کریں ، پھر آپ اسے ترمیم کرسکتے ہیں)
 no_map2=فی الحال کسی نقشہ کی تعریف نہیں کی گئی ہے۔ پہلے نقشہ کی وضاحت کریں ، پھر آپ اس میں ترمیم کرسکتے ہیں۔
+
 stop_efailed=پوسٹ فکس کو روکنے میں ناکام
 stop_ecannot=آپ کو پوسٹ فکس روکنے کی اجازت نہیں ہے
+
 start_efailed=پوسٹ فکس شروع کرنے میں ناکام
 start_ecannot=آپ کو پوسٹ فکس شروع کرنے کی اجازت نہیں ہے
+
 reload_efailed=پوسٹ فکس کو دوبارہ لوڈ کرنے میں ناکام
 reload_ecannot=آپ کو پوسٹ فکس دوبارہ لوڈ کرنے کی اجازت نہیں ہے
+
 query_get_efailed=Failed to query Postfix config command to get the current value of parameter $1: <tt>$2</tt>
 query_set_efailed=Failed to query Postfix config command to set the current value of parameter $1 to $2: <tt>$3</tt>
 regenerate_ecannot=آپ کو عرفان کو دوبارہ تخلیق کرنے کی اجازت نہیں ہے
 regenerate_alias_efailed=Failed to regenerate aliases: <tt>$1</tt>
 regenerate_table_efailed=Failed to regenerate table $1: <tt>$2</tt>
+
 acl_resource=وسائل میں ترمیم کرسکتے ہیں؟
 acl_aliases=عرفی نام میں ترمیم کر سکتے ہیں؟
 acl_aliases_options=عرفی اختیارات میں ترمیم کر سکتے ہیں؟
@@ -393,6 +436,7 @@ acl_address_rewriting=کیا ایڈریس کی دوبارہ تحریر میں ت
 acl_canonical=کیا تخصیصی ترمیم کر سکتے ہیں؟
 acl_virtual=ورچوئل میں ترمیم کر سکتے ہیں؟
 acl_transport=کیا نقل و حمل میں ترمیم کر سکتے ہیں؟
+acl_sni=کیا سندوں میں ترمیم کر سکتے ہیں؟
 acl_relocated=کیا ترمیم کو دوبارہ منتقل کیا جاسکتا ہے؟
 acl_header=کیا ہیڈر چیک میں ترمیم کر سکتے ہیں؟
 acl_local_delivery=مقامی ترسیل میں ترمیم کر سکتے ہیں؟
@@ -411,6 +455,7 @@ acl_postfinger=پوسٹ فکس ترتیب کو جانچ سکتا ہے؟
 acl_manual=کیا تشکیل فائل میں ترمیم کی جاسکتی ہے؟
 acl_dir=نقشہ فائلوں کے لئے اجازت شدہ ڈائریکٹری
 acl_bcc=کیا بی سی سی میپنگ میں ترمیم کی جاسکتی ہے؟
+
 boxes_title=صارف میل باکسز
 boxes_user=صارف
 boxes_size=میل باکس کا سائز
@@ -420,6 +465,7 @@ boxes_sent=میل بھیجا
 boxes_ecannot=آپ کو ای میل پڑھنے کی اجازت نہیں ہے
 boxes_toomany=آپ کے سسٹم میں بہت سارے صارفین اپنے تمام میل باکسوں کی فہرست کے ل. ہیں۔
 boxes_go=صارف کے لئے میل دیکھیں:
+
 mail_title=صارف کا ای میل
 mail_from=سے
 mail_date=تاریخ
@@ -458,6 +504,7 @@ mail_forward=آگے
 mail_rfc=لائن سے
 mail_move=پر منتقل:
 mail_eexists=پیغام اب موجود نہیں ہے!
+
 view_title=ای میل پڑھیں
 view_desc=Message $1 in $2
 view_desc2=Message $1 for user $2
@@ -486,6 +533,7 @@ view_body=پیغام کا متن
 view_afile=منسلکہ نام
 view_atype=منسلکہ کی قسم
 view_asize=فائل کا ناپ
+
 compose_title=ای میل لکھیں
 reply_title=ای میل کا جواب دیں
 forward_title=فارورڈ ای میل
@@ -496,6 +544,7 @@ reply_mailforward=آگے بھیجے گئے پیغامات
 reply_attach2=کلائنٹ اور سرور سائیڈ اٹیچمنٹ
 reply_send=میل بھیجیں
 reply_ecannot=آپ کو بطور صارف اس میل کو بھیجنے کی اجازت نہیں ہے
+
 send_err=میل بھیجنے میں ناکام
 send_eto=پتہ غائب ہے
 send_efrom=پتہ غائب ہے
@@ -509,6 +558,7 @@ send_eperms=User $1 cannot read $2
 send_eperms2=You are not allowed to send file $1
 send_epath=Sendmail executable $1 does not exist.
 send_ewrapper=پوسٹ فکس سنٹ میل انٹرفیس پروگرام موجود نہیں ہے
+
 search_title=تلاش کے نتائج
 search_ecannot=آپ کو اس صارف کے ای میل کو تلاش کرنے کی اجازت نہیں ہے
 search_ematch=اس کے مقابلہ کیلئے آپ کو متن درج کرنا ہوگا۔
@@ -516,6 +566,7 @@ search_efield=آپ کو تلاش کی قسم منتخب کرنا ہوگی۔
 search_none=کوئی پیغام نہیں ملا۔
 search_results2=$1 mail messages matching $2 ..
 search_results3=$1 mail messages not matching $2 ..
+
 match_from=منجانب: میچ
 match_subject=موضوع: میچ
 match_to=منجانب: میچ
@@ -533,6 +584,7 @@ match_!date=تاریخ: مماثل نہیں ہے
 match_!body=باڈی مماثل نہیں ہے
 match_!size=سائز اس سے کم ہے
 match_!headers=ہیڈر مماثل نہیں ہیں
+
 mailq_title=میل قطار
 mailq_count=$1 messages
 mailq_none=فی الحال کوئی میل پیغامات کی ترسیل کے لئے قطار میں نہیں ہیں
@@ -561,15 +613,20 @@ mailq_active=فعال
 mailq_deferred=موخر
 mailq_hold=پکڑو
 mailq_unhold=غیر ہولڈ سلیکٹڈ
+
 flushq_title=فلش قطار
 flushq_desc=Forcing the attempted delivery of mail with the command $1 ..
+
 qview_title=قطار میں موجود پیغام
 qview_desc=From file $1
 qview_headers=میل ہیڈر
 qview_attach=اٹیچمنٹ
+
 after_err=Postfix configuration error : $1
+
 searchq_title=قطار تلاش کے نتائج
 searchq_none=کوئی قطار میں موجود پیغامات نہیں ملے۔
+
 header_title=ہیڈر چیکس
 header_ecannot=آپ کو ہیڈر چیک میں ترمیم کرنے کی اجازت نہیں ہے
 header_eregexp=The header checks map must be in the format <tt>regexp:</tt><i>filename</i>
@@ -588,15 +645,18 @@ header_reject=مسترد کریں (غلطی والے پیغام کے ساتھ..)
 header_warn=لاگ انتباہ (پیغام کے ساتھ..)
 header_ename=غلط باقاعدہ اظہار - ضرور / کچھ / ہونا چاہئے
 header_return=ہیڈر چیک
+
 body_title=جسمانی چیک
 body_ecannot=آپ کو باڈی چیک میں ترمیم کرنے کی اجازت نہیں ہے
 body_eregexp=The body checks map must be in the format <tt>regexp:</tt><i>filename</i>
 opts_body_checks=پیغام باڈی چیکنگ ٹیبلز
 body_return=جسم کی جانچ پڑتال
+
 dependent_title=بھیجنے والے پر منحصر ٹرانسپورٹ میپنگ
 dependent_ecannot=آپ کو مرسل انحصار ٹرانسپورٹ میپنگز میں ترمیم کرنے کی اجازت نہیں ہے
 dependent_eregexp=The sender dependent transports map must be in the format <tt>regexp:</tt><i>filename</i>
 dependent_return=مرسل انحصار ٹرانسپورٹ میپنگز
+
 manual_title=نقشہ کی فائل میں ترمیم کریں
 manual_file=ترمیم کرنے کے لئے نقشہ کی فائل منتخب کریں:
 manual_change=بدلیں
@@ -604,9 +664,11 @@ manual_editing=Use the text box below to manually edit the mappings in $1. Be ca
 manual_err=نقشہ کی فائل کو محفوظ کرنے میں ناکام
 manual_efile=غلط نقشہ فائل نام!
 manual_ecannot=آپ کو نقشہ کی فائلوں کو دستی طور پر ترمیم کرنے کی اجازت نہیں ہے
+
 delq_titles=پیغامات کو حذف کرنا
 delq_rusure=Are you sure you want to delete the $1 selected queued messages?
 delq_confirm=پیغامات کو حذف کریں
+
 master_title=سرور کے عمل
 master_name=عمل نام
 master_enabled=قابل کیا گیا؟
@@ -647,8 +709,10 @@ master_einet=سننے کے لئے ایک میزبان پتہ صرف انٹرنی
 master_ecommand=غائب سرور پروسیسنگ کمانڈ
 master_ewakeup=گمشدہ یا جاگ اٹھنے کا غلط وقت
 master_emaxprocs=ضائع یا زیادہ سے زیادہ تعداد میں غلط عمل
+
 delete_err=نقشہ سازی کو حذف کرنے میں ناکام
 delete_enone=کوئی بھی منتخب نہیں ہوا
+
 cmanual_title=کنفگ فائلوں میں ترمیم کریں
 cmanual_ecannot=آپ کو پوسٹ فکس کنفول فائل میں ترمیم کرنے کی اجازت نہیں ہے
 cmanual_ok=ترمیم
@@ -656,10 +720,12 @@ cmanual_efile=منتخب فائل پوسٹ فکس ترتیب کا حصہ نہی�
 cmanual_file=کنفگ فائل میں ترمیم کریں:
 cmanual_edata=کچھ داخل نہیں ہوا!
 cmanual_err=کنفگ فائل کو محفوظ کرنے میں ناکام
+
 access_return=نقشہ کی میز تک رسائی حاصل کریں
 edit_map_file=نقشہ کی فائل میں ترمیم کریں
 opts_reject_rbl_client=ریئل ٹائم بلیک لسٹس (آر بی ایل) کی نظریں
 opts_check_sender_access=بھیجنے والے رسائی کے نقشے کی میز کو چیک کریں
+
 log_misc=عام اختیارات بدل گئے
 log_opts=ایڈریس کی دوبارہ تحریر اور نقاب پوشی میں تبدیلی
 log_aliases=عرفی اختیارات تبدیل ہوگئے
@@ -667,6 +733,7 @@ log_canonical=کیننیکل میپنگ کے آپشنز کو تبدیل کرنا
 log_virtual=تبدیل شدہ ورچوئل ڈومین کے اختیارات
 log_bcc=تبدیل شدہ بی سی سی نقشہ کے اختیارات
 log_transport=ٹرانسپورٹ میپنگ کے آپشنز تبدیل ہوگئے
+log_sni=سرٹیفکیٹ میپنگ کے اختیارات تبدیل کریں
 log_dependent=مرسل پر منحصر ایڈریس کے اختیارات تبدیل کردیئے گئے
 log_relocated=تبدیلی کے متبادل نقشہ جات کے اختیارات
 log_header=تبدیل شدہ ہیڈر چیک کے اختیارات
@@ -744,6 +811,7 @@ log_sender_dependent_default_transport_maps_modify=Modified sender dependent add
 log_sender_dependent_default_transport_maps_delete=Deleted sender dependent address $1
 log_delete_sender_dependent_default_transport_mapss=Deleted $1 sender dependent addresses
 log_manual_sender_dependent_default_transport_mapss=Manually edited sender dependent addresses in $1
+
 sasl_title=ایس ایم ٹی پی کی توثیق اور خفیہ کاری
 opts_smtpd_sasl_auth_enable=SASL SMTP تصدیق کی ضرورت ہے؟
 opts_smtp_sasl_auth_enable=SASL SMTP توثیق کا استعمال کریں؟
@@ -790,6 +858,7 @@ sasl_nologin=کسی کی ضرورت نہیں
 sasl_userpass=Login as $1 with password $2
 sasl_elogin=لاپتہ یا غیر موزوں SMTP لاگ ان (خالی جگہوں یا کالونوں کی اجازت نہیں)
 sasl_epass=غلط ایس ایم ٹی پی پاس ورڈ (جگہوں کی اجازت نہیں ہے)
+
 client_title=SMTP کلائنٹ کی پابندیاں
 client_ecannot=آپ کو ایس ایم ٹی پی کلائنٹ کی پابندیوں میں ترمیم کرنے کی اجازت نہیں ہے
 client_restrict=کلائنٹ کی پابندیاں
@@ -799,6 +868,7 @@ client_other=دیگر پابندیاں :
 client_err=مؤکل کی پابندیوں کو بچانے میں ناکام
 client_evalue=Missing value for restriction $1
 client_return=SMTP کلائنٹ کی پابندیاں
+
 chooser_title=نقشہ کا ماخذ منتخب کریں
 chooser_header=Map source $1
 chooser_none=کوئی نہیں
@@ -854,6 +924,7 @@ chooser_elquery_filter=Missing query filter for map $1
 chooser_elresult_attribute=Missing or invalid result attribute name for map $1
 chooser_elbind_dn=Missing login for LDAP server for map $1
 chooser_elbind_pw=Missing password for LDAP server for map $1
+
 mysql_ecfile=MySQL configuration file $1 was not found
 mysql_ecfile2=Could not find table in MySQL configuration file $1
 mysql_edriver=Failed to load the database driver $1
@@ -865,6 +936,7 @@ mysql_eupdate=SQL update failed : $1
 mysql_elist=SQL query failed : $1
 mysql_esource=No MySQL source named $1 was found
 mysql_eneed=The MySQL configuration parameter $1 was not found. Webmin needs this to figure out which table and fields to query.
+
 ldap_ecfile=LDAP configuration file $1 was not found
 ldap_eldapmod=Perl module $1 needed to communicate with LDAP is not installed or not loadable
 ldap_eldap=Failed to connect to LDAP server $1 on port $2
@@ -875,6 +947,7 @@ ldap_edelete=LDAP delete of $1 failed : $2
 ldap_equery=LDAP search of $1 failed : $2
 ldap_erename=LDAP rename of $1 to $2 failed : $3
 ldap_emodify=LDAP modify of $1 failed : $2
+
 bcc_title=بی سی سی میپنگ
 bcc_ecannot=آپ کو بی سی سی میپنگز میں ترمیم کرنے کی اجازت نہیں ہے
 opts_sender_bcc_maps=مرسل BCC کی نقشہ کاری کی جدولیں بھیجیں

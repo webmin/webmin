@@ -3,6 +3,7 @@ connect_elogin=Failed to login to the database $1 : $2.
 index_title=Postfix メール エージェント
 index_epath=Postfix 制御コマンド $1 がシステムにインストールされていません。ご使用の<a href='$2'>module configuration</a> is incorrect, or Postfix is not installed.
 index_postfix=Postfix
+
 internal_error=内部エラー
 index_econfig=Postfix 設定コマンド $1 は存在しません。ご使用の <a href='$2'>module configuration</a> is incorrect.
 index_esuper=The Postfix supervisor command $1 does not exist. Maybe your <a href='$2'>module configuration</a> is incorrect.
@@ -12,8 +13,10 @@ index_stopmsg=実行中のPostfix メール サーバを停止するにはこの
 index_startmsg=Postfix メール サーバを起動するにはこのボタンをクリックしてください。これを実行するまでは、他のシステムからローカル ユーザにメールは配信されず、クライアントはこのシステムをメール サーバとして使用できません。
 index_version=Postfix バージョン $1
 opts_err=オプションを保存できませんでした
+
 check_error=現在の Postfix 設定を検査中にエラーが発生しました。Postfix 設定を手動で修正してください。
 check_manual=Manually edit the Postfix configuration file.
+
 address_rewriting_title=アドレスの再書込みとマスカレード
 address_rewriting_ecannot=アドレスの再書込みとマスカレードは編集できません
 aliases_title=メール エイリアス
@@ -40,9 +43,11 @@ aliases_type5=自動返信ファイル $1
 aliases_type6=フィルタファイル $1の適用
 aliases_none=無し
 aliases_delete=選択したエイリアスを削除
+
 postfinger_title=設定チェック
 postfinger_show=表示
 postfinger_ecannot=You are not allowed to check the postfix configuration
+
 mailclean_title=Clean MailQueue
 mailclean_ecannot=No privileges to clean MailQueues
 mailclean_active=Active-Queue
@@ -51,6 +56,7 @@ mailclean_deferred=Deferred-Queue
 mailclean_defer=Defer-Queue
 mailclean_all=All Queues
 mailclean_search=Search-String
+
 aform_type0=無し
 aform_type1=Emailアドレス
 aform_type2=ファイル内のアドレス
@@ -66,6 +72,7 @@ aform_val=エイリアス先
 aform_afile=編集..
 aform_return=エイリアス
 aform_cmt=説明
+
 asave_err=エイリアスの保存に失敗しました
 asave_eaddr='$1' は有効なアドレスではありません
 asave_ealready='$1'のエイリアスは既に存在します
@@ -76,11 +83,13 @@ asave_etype4='$1'は有効なプログラムでないか存在しません
 asave_etype5=自動返信ファイル '$1' は有効ではありません
 asave_etype4none=プログラムが与えられていません
 asave_etype6=フィルタファイル '$1'は有効ではありません
+
 afile_title=アドレスファイルの編集
 afile_desc=ファイル $1 のアドレスを編集するには下のテキストエリアを使用してください
 afile_efile=$1を編集する権限がありません
 afile_undo=やり直し
 afile_ewrite=アドレスファイルの書き込みに失敗しました : $1
+
 ffile_title=フィルタファイルの編集
 ffile_desc=ファイル $1 のフィルタルールを作成するには下のフォームを使用してください
 ffile_efile=$1を編集する権限がありません
@@ -96,6 +105,7 @@ ffile_other=それ以外は $1 へ転送する
 ffile_err=フィルタファイルの保存に失敗しました
 ffile_ematch=一致するものがありません
 ffile_eaction=転送先アドレスが見付かりません
+
 rfile_title=自動返信ファイルの編集
 rfile_desc=$1内の自動返信メッセージの編集には下のテキストエリアを使用してください。メッセージには $SUBJECT, $FROM, $TO, $DATE, $BODYをマクロとして使用できます。
 rfile_desc2=自動返信メッセージのデフォルトメールヘッダの追加及び交換も可能です。例:<br><tt>From: foo@bar.com</tt><br><tt>Subject: 休日について</tt><br>とメッセージの最上部に行を作成することで編集できます。本文との境界は空行を１行設けてください。
@@ -114,11 +124,13 @@ rfile_from=From: address for reply
 rfile_auto=Automatic (based on recipient's address)
 rfile_efrom=Missing From: address
 rfile_fromdesc=A From: address should always be specified where possible, as the automatic method may not be reliable.
+
 general_title=一般オプション
 general_title_sensible=最も便利な一般オプション
 general_title_others=その他の一般オプション
 general_ecannot=一般オプションを編集できません。
 what_is_it=何ですか？
+
 opts_default=デフォルト
 opts_none=なし
 opts_relayhost=ホスト経由でメールを送信
@@ -135,10 +147,12 @@ opts_mail_owner=メールの所有者
 opts_default_privs=配信エージェントのデフォルトの権利
 opts_inet_interfaces=メール受信用のネットワーク インターフェイス
 opts_all_interfaces=すべて
+
 opts_local_recipient_maps=不明なローカル ユーザを拒否
 opts_no=いいえ
 opts_save=保存して適用
 opts_edir=You are only allowed to specify map files under $1
+
 opts_allow_percent_hack="user%domain" を "user@domain"に再書込み
 opts_append_at_myorigin="user" を "user@$mydomain" に再書込み
 opts_append_dot_mydomain="user@host" を "user@host.$mydomain" に再書込み
@@ -148,13 +162,17 @@ opts_swap_bangpath="site!user" を "user@site" に再書込み
 opts_masquerade_domains=アドレス マスカレード
 opts_masquerade_exceptions=除外をマスカレード
 index_return=Postfix 設定
+
 opts_alias_maps=ローカル配信エージェントが使用するエイリアス データベース
 opts_alias_database="newaliases" コマンドで構築されたエイリアス データベース
 aliases_warning=警告<ul><li>最初のフィールドが空でない場合は、デフォルトの Postfix エイリアス生成コマンドは関連するデータベースを構築するために使用され、<li>そうでなければSendmail 互換コマンド "newaliases" が使用され、これはデータベースの2番目のフィールドのデータベースを使用します。</ul>
+
 aliases_name=エイリアス名
 aliases_value=エイリアスの値...
+
 new_alias=新規エイリアスを作成
 new_aliasmsg=新規のエイリアスを作成するにはこのボタンをクリックしてください
+
 local_delivery_ecannot=ローカル配信オプションは編集できません
 local_delivery_title=ローカル配信
 opts_local_transport=ローカル配信用のトランスポート名
@@ -180,6 +198,7 @@ opts_local_destination_recipient_limit=各ローカル メッセージ配信ご�
 opts_local_destination_recipient_limit_default=デフォルト
 opts_prepend_delivered_header=次の場合に<tt>Delivered-To:</tt> を前に付加...
 opts_prepend_delivered_header_default=デフォルト
+
 resource_title=一般リソース制御
 resource_ecannot=リソース制御パラメータは編集できません
 opts_bounce_size_limit=バウンスしたメッセージの最大サイズ
@@ -199,6 +218,7 @@ opts_qmgr_message_recipient_limit=メモリ内の受信側の最大数
 opts_queue_minfree=キュー ファイル システムの最小空き領域
 opts_stale_lock_time=不整合ロック解除後の最大時間
 opts_transport_retry_time=破損した MDT に接触を試行する間隔 (秒)
+
 opts_always_bcc=各メッセージの bcc を受信するアドレス
 opts_always_bcc_none=なし
 opts_daemon_timeout=要請を処理するタイムアウト
@@ -236,6 +256,7 @@ opts_sun_mailtool_compatibility=メールボックスでカーネル ファイ�
 opts_trigger_timeout=デーモンにトリガーを送信する最大時間
 opts_delay_warning_time=無配信の警告を送信するまでの時間
 opts_content_filter_default=無し
+
 smtpd_title=SMTP サーバ オプション
 smtpd_ecannot=SMTP サーバ オプションを編集できません
 opts_disable_vrfy_command=SMTP VRFY コマンドを無効
@@ -262,6 +283,7 @@ opts_relay_domains_reject_code=禁止リレーの SMTP サーバ応答
 opts_unknown_address_reject_code=不明なドメインの拒否のSMTP サーバ応答
 opts_unknown_client_reject_code=不明なクライアント拒否の SMTP サーバ応答
 opts_unknown_hostname_reject_code=不明なホスト名拒否の SMTP サーバ応答
+
 smtp_title=SMTP クライアント オプション
 smtp_ecannot=SMTP クライアント オプションは編集できません
 opts_best_mx_transport=最適 MX ホストとしてリストされたときのアクション
@@ -280,6 +302,7 @@ opts_smtp_data_init_timeout=DATA への応答を待機するタイムアウト
 opts_smtp_data_xfer_timeout=メッセージ内容の転送への応答を待機するタイムアウト
 opts_smtp_data_done_timeout="." の終了への応答を待機するタイムアウト
 opts_smtp_quit_timeout=QUIT への応答を待機するタイムアウト
+
 rate_title=配信レート
 rate_ecannot=配信 レートのオプションは編集できません
 opts_default_destination_concurrency_limit=同一の宛先への並列配送の最大数
@@ -290,17 +313,20 @@ opts_maximal_queue_lifetime=メッセージが配信不可になるまでのキ�
 opts_minimal_backoff_time=後でのメッセージ配信を試行する間隔の最大数 (秒)
 opts_queue_run_delay=後でのキューをスキャンする間隔 (秒)
 opts_defer_transports=配信しないトランスポート
+
 debug_title=デバッグ機能
 debug_ecannot=デバッグ機能は編集できません
 opts_debug_peer_list=冗長ログが有効なドメイン/ネットワーク パターンのリスト
 opts_debug_peer_level=上のリストに一致した場合の冗長ロギング レベル
 debug_version=Webmin 用の Postfix モジュール - バージョン $1
+
 ldap_title=LDAP の検索
 ldap_ecannot=LDAP 検索オプションは編集できません
 ldap_non_existent=Postfix システムに LDAP が存在しないと思われます
 opts_ldap_lookup_timeout=LDAP データベース検索のタイムアウト
 opts_ldap_search_base=検索する LDAP データベース
 opts_ldap_server_host=LDAP サーバ ホスト名
+
 canonical_title=正規マッピング
 canonical_ecannot=正規マッピングは編集できません
 opts_canonical_maps=アドレス マッピング検索テーブル
@@ -314,6 +340,7 @@ canonical_edit_title=正規マップの編集
 canonical_return_sender=sender canonical maps
 canonical_return_recipient=recipient canonical maps
 canonical_return=canonical maps
+
 mapping_name=マッピング名
 mapping_value=マップ先...
 mapping_delete=Delete Selected
@@ -336,6 +363,7 @@ help_map_format=形式を指定してください
 map_noname=Missing or invalid mapping name
 map_cannot=This map cannot be edited : $1
 map_unknown=Webmin does not support the map type $1
+
 virtual_title=仮想ドメイン
 virtual_ecannot=仮想ドメイン マッピング設定は編集できません
 opts_virtual_maps=ドメイン マッピング検索テーブル
@@ -343,29 +371,37 @@ opts_virtual_alias_maps=$opts_virtual_maps
 opts_virtual_alias_domains=仮想マッピング用のドメイン
 virtual_same=ドメインマップテーブルから
 virtual_return=virtual domains
+
 transport_title=マッピングのトランスポート
 transport_ecannot=トランスポート マッピング設定は編集できません
 opts_transport_maps=トランスポート マッピング検索テーブル
 transport_return=transport maps
+
 relocated_title=再配置済みマッピング
 relocated_ecannot=再配置済みマッピングは編集できません
 relocated_return=relocated maps
 opts_relocated_maps=再配置済みマッピング検索テーブル
 opts_content_filter=Emailコンテントフィルタ
+
 map_click=プロパティを編集するマッピングをクリックしてください:
 no_map=(現在定義されたマップはありません。まずマップを定義しないと編集できません。)
 no_map2=現在定義されたマップはありません。まずマップを定義しないと編集できません。
+
 stop_efailed=Postfix を停止できませんでした
 stop_ecannot=Postfix を停止できません
+
 start_efailed=Failed to start Postfix
 start_ecannot=You are not allowed to start Postfix
+
 reload_efailed=Postfix を再ロードできませんでした。
 reload_ecannot=Postfix を再ロードできません
+
 query_get_efailed=パラメータ $1 の現在値を取得するための Postfix 設定コマンドをクエリーできませんでした: <tt>$2</tt>
 query_set_efailed=パラメータ $1の現在値を$2に設定するための Postfix 設定コマンドをクエリーできませんでした: <tt>$3</tt>
 regenerate_ecannot=エイリアスを再度生成できません
 regenerate_alias_efailed=エイリアスを再度生成できませんでした: <tt>$1</tt>
 regenerate_table_efailed=テーブル $1 を再度生成できませんでした: <tt>$2</tt>
+
 acl_resource=リソースの編集を許可しますか?
 acl_aliases=エイリアスの編集を許可しますか?
 acl_aliases_options=エイリアスオプションの編集を許可しますか?
@@ -391,6 +427,7 @@ acl_postfinger=Can check postfix configuration?
 acl_manual=Can edit config file?
 acl_dir=Allowed directory for map files
 acl_bcc=Can edit BCC mapping?
+
 boxes_title=ユーザメールボックス
 boxes_user=ユーザ
 boxes_size=メールボックスサイズ
@@ -400,6 +437,7 @@ boxes_sent=送信済メール
 boxes_ecannot=メールを読む権限がありません
 boxes_toomany=全てのメールボックスをリストするにはシステム上のユーザが多すぎます
 boxes_go=ユーザのメールを見る:
+
 mail_title=ユーザメール
 mail_from=送信者
 mail_date=日付
@@ -438,6 +476,7 @@ mail_forward=転送
 mail_rfc=FROM行
 mail_move=移動する:
 mail_eexists=メッセージが存在しません!
+
 view_title=Emailを読む
 view_desc=Message $1 in $2
 view_desc2=Message $1 for user $2
@@ -462,6 +501,7 @@ view_mark1=既読
 view_mark2=特別
 view_return=オリジナルのメール
 view_sub=添付されたEmail
+
 compose_title=メールを作成する
 reply_title=メールの返信
 forward_title=メール転送
@@ -472,6 +512,7 @@ reply_mailforward=転送メッセージ
 reply_attach2=クライアント及びサーバサイド添付ファイル
 reply_send=メールの送信
 reply_ecannot=このユーザとしてメールを送信する権限がありません
+
 send_err=メールの送信に失敗しました
 send_eto=宛先アドレスが見付かりません
 send_efrom=差出人アドレスが見付かりません
@@ -485,6 +526,7 @@ send_eperms=ユーザ $1 は $2 を読めません
 send_eperms2=ファイル $1 を送信する権限がありません
 send_epath=Sendmail実行ファイル $1 が存在しません
 send_ewrapper=Postfixのsendmailインターフェイスプログラムが存在しません
+
 search_title=検索結果
 search_ecannot=このユーザのメールを検索する権限がありません
 search_ematch=検索する文字列を入力してください
@@ -492,6 +534,7 @@ search_efield=検索タイプを選択してください
 search_none=該当するメッセージは見付かりませんでした
 search_results2=$1 のメールメッセージが $2 と一致しました..
 search_results3=$1 のメールメッセージが $2 と一致しませんでした..
+
 match_from=差出人:が一致する
 match_subject=件名:が一致する
 match_to=宛先:が一致する
@@ -509,6 +552,7 @@ match_!date=日付:が一致しない
 match_!body=本文が一致しない
 match_!size=サイズが小さい
 match_!headers=ヘッダが一致しない
+
 mailq_title=メールキュー
 mailq_count=$1のメッセージ
 mailq_none=配送用のキューにメッセージはありません
@@ -533,15 +577,20 @@ mailq_active=Active
 mailq_deferred=Deferred
 mailq_hold=Hold Selected
 mailq_unhold=Un-Hold Selected
+
 flushq_title=キューのフラッシュ
 flushq_desc=メール配送を強制しています コマンド $1 ..
+
 qview_title=キューされたメッセージ
 qview_desc=ファイル $1 から
 qview_headers=メールヘッダ
 qview_attach=添付ファイル
+
 after_err=Postfix設定エラー : $1
+
 searchq_title=キュー検索結果
 searchq_none=キューされたメッセージは見付かりませんでした
+
 header_title=ヘッダのチェック
 header_ecannot=You are not allowed to edit header checks
 header_eregexp=The header checks map must be in the format <tt>regexp:</tt><i>filename</i>
@@ -560,11 +609,13 @@ header_reject=Reject (with error message ..)
 header_warn=Log warning (with message ..)
 header_ename=Invalid regular expression - must be like /something/
 header_return=header checks
+
 body_title=ボディのチェック
 body_ecannot=You are not allowed to edit body checks
 body_eregexp=The body checks map must be in the format <tt>regexp:</tt><i>filename</i>
 opts_body_checks=メッセージボディのチェックテーブル
 body_return=body checks
+
 manual_title=Edit Map File
 manual_file=Select a map file to edit:
 manual_change=Change
@@ -572,9 +623,11 @@ manual_editing=Use the text box below to manually edit the mappings in $1. Be ca
 manual_err=Failed to save map file
 manual_efile=Invalid map filename!
 manual_ecannot=You are not allowed to manually edit map files
+
 delq_titles=Deleting Messages
 delq_rusure=Are you sure you want to delete the $1 selected queued messages?
 delq_confirm=Delete Messages
+
 master_title=サーバプロセス
 master_name=Process name
 master_enabled=Enabled?
@@ -614,8 +667,10 @@ master_einet=A host address to listen on can only be specified for Internet proc
 master_ecommand=Missing server process command
 master_ewakeup=Missing or invalid wakeup time
 master_emaxprocs=Missing or invalid maximum number of processes
+
 delete_err=Failed to delete mappings
 delete_enone=削除するメールが選択されていません
+
 cmanual_title=設定ファイルの編集
 cmanual_ecannot=Postfix 設定ファイルの編集が許可されていません
 cmanual_ok=編集
@@ -623,10 +678,12 @@ cmanual_efile=選択されたファイルはPostfix設定の一部ではあり�
 cmanual_file=編集する設定ファイル:
 cmanual_edata=何も入力されていません!
 cmanual_err=設定ファイルの保存に失敗しました
+
 access_return=access map table
 edit_map_file=Edit Map File
 opts_reject_rbl_client=Realtime Black Lists (RBL) lookups
 opts_check_sender_access=Check sender access map table
+
 log_misc=Changed general options
 log_opts=Changed address rewriting and masquerading
 log_aliases=Changed aliases options
@@ -694,6 +751,7 @@ log_start=Started Postfix server
 log_delqs=Deleted $1 messages from mail queue
 log_flushq=Flushed mail queue
 log_backend=Updated configuration file for map $1
+
 sasl_title=SMTP 認証と暗号化
 opts_smtpd_sasl_auth_enable=SASL SMTP 認証を有効にしますか?
 opts_broken_sasl_auth_clients=non-compliant SMTP クライアントを扱いますか?
@@ -718,6 +776,7 @@ sasl_err=Failed to save SMTP authentication and encryption
 sasl_ecert=Missing or invalid TLS certificate file
 sasl_ekey=Missing or invalid TLS key file
 sasl_eca=Missing or invalid TLS certificate authority file
+
 chooser_title=Select Map Source
 chooser_header=Map source $1
 chooser_none=None
@@ -773,6 +832,7 @@ chooser_elquery_filter=Missing query filter for map $1
 chooser_elresult_attribute=Missing or invalid result attribute name for map $1
 chooser_elbind_dn=Missing login for LDAP server for map $1
 chooser_elbind_pw=Missing password for LDAP server for map $1
+
 mysql_ecfile=MySQL configuration file $1 was not found
 mysql_elogin=Failed to login to the database $1 : $2.
 mysql_equery=Failed to query table $1 : $2
@@ -781,6 +841,7 @@ mysql_edelete=SQL delete failed : $1
 mysql_eupdate=SQL update failed : $1
 mysql_esource=No MySQL source named $1 was found
 mysql_eneed=The MySQL configuration parameter $1 was not found. Virtualmin needs this to figure out which table and fields to query.
+
 ldap_ecfile=LDAP configuration file $1 was not found
 ldap_eldapmod=Perl module $1 needed to communicate with LDAP is not installed or not loadable
 ldap_eldap=Failed to connect to LDAP server $1 on port $2
@@ -791,6 +852,7 @@ ldap_edelete=LDAP delete of $1 failed : $2
 ldap_equery=LDAP search of $1 failed : $2
 ldap_erename=LDAP rename of $1 to $2 failed : $3
 ldap_emodify=LDAP modify of $1 failed : $2
+
 bcc_title=BCCマッピング
 bcc_ecannot=BCCマッピングの編集が許可されていません
 opts_sender_bcc_maps=BCCマッピング参照テーブル

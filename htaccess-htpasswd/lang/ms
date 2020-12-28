@@ -7,6 +7,7 @@ index_return=senarai pengguna dan direktori
 index_nousers=Belum dinyatakan lagi
 index_eaccess=Anda tidak memiliki capaian pada sebarang direktori
 index_search=Cari direktori dilindungi yang sedia ada dibawah:
+
 dir_title1=Tambah Direktori Dilindungi
 dir_title2=Sunting Direktori Dilindungi
 dir_header=Pilihan direktori dilindungi
@@ -27,6 +28,7 @@ dir_ehtaccess=Gagal untuk mencipta fail opsyen Apache $1 : $2
 dir_ehtpasswd=Gagal untuk mencipta fail penguna $1 : $2
 dir_remove=Padam fail $1 dan $2 sepenuhnya?
 dir_erealm=Kehilangan pengesahan realm
+
 edit_title1=Cipta Pengguna
 edit_title2=Sunting Pengguna
 edit_header=Fail perincian kata laluan pengguna
@@ -37,6 +39,7 @@ edit_pass1=Biarkan tak berubah
 edit_pass0=Tetapkan kepada
 edit_passfrom=Tukar kepada
 edit_passto=kepada kata laluan baharu
+
 save_err=Gagal untuk menyimpan pengguna
 save_euser1=Nama pengguna hilang
 save_euser2=Nama pengguna tidak boleh mengandungi aksara :
@@ -44,18 +47,21 @@ save_epass=Kata laluan tidak boleh mengandungi karektor :
 save_eclash=Terdapat pengguna dengan nama yang sama
 save_eoldpass=Kata laluan lama tidak betul
 save_title=Pengguna Disimpan
+
 acl_dirs=Direktori yang dibenarkan
 acl_user=Cipta fail .htaccess dan htusers sebagai pengguna Unix
 acl_same=Sama seperti log masuk Webmin
 acl_home=Termasuk direktori home pengguna Unix?
 acl_sync=Boleh tetapkan penyegerakan pengguna Unix?
 acl_uonly=Boleh menambah dan menukar direktori dilindungi?
+
 log_create_dir=Tambah direktori $1
 log_modify_dir=Ubah suai direktori $1
 log_delete_dir=Padam direktori $1
 log_create_user=Cipta pengguna $1
 log_modify_user=Ubah suai pengguna $1
 log_delete_user=Padam pengguna $1
+
 search_title=Keputusan Carian
 search_err=Carian gagal
 search_edir=Direktori mutlak yang dicari hilang atau tidak sah

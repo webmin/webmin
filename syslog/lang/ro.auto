@@ -24,8 +24,10 @@ all=Toate
 index_view=Vedere ..
 index_viewfile=Vizualizați fișierul jurnal:
 index_viewok=Vedere
+
 restart_ekill=Eroare la semnalarea procesului syslog $1 : $2 
 restart_ecannot=Nu aveți voie să reporniți syslog
+
 start_ecannot=Nu aveți voie să începeți syslog
 edit_title=Editează jurnalul de sistem
 create_title=Adăugare jurnal sistem
@@ -56,11 +58,13 @@ edit_tag=Numai pentru program
 edit_return=detalii jurnal
 edit_ecannot=Nu aveți voie să editați setările de jurnal
 edit_ecannot2=Nu aveți voie să editați acest jurnal
+
 view_title=Vizualizați fișierul de înregistrare
 view_header=Ultimele $1 linii din $2 
 view_empty=Fișierul jurnal este gol
 view_refresh=Reîmprospăta
 view_filter=Afișați doar linii cu text $1 
+
 save_err=Nu a reușit salvarea jurnalului
 save_efile=„$1” nu este un nume de fișier valid : $2 
 save_epipe=„$1” nu este o conductă numită valabilă
@@ -80,11 +84,13 @@ save_ecannot5=Nu aveți voie să modificați acest jurnal
 save_ecannot6=Nu aveți voie să vizualizați jurnalele arbitrare
 save_ecannot7=Nu aveți voie să vizualizați acest jurnal suplimentar
 save_emissing=Fișierul jurnal lipsit de vizualizat
+
 log_modify=Jurnal modificat la $1 
 log_create=Adăugarea jurnalului la $1 
 log_delete=Jurnal șters la $1 
 log_apply=Modificări aplicate
 log_start=A început serverul de logare
+
 desc_sysmesg=Mesaje de sistem
 desc_mail=Jurnal de e-mail
 desc_auth=Jurnal de autentificare
@@ -93,6 +99,7 @@ desc_news=Jurnal de știri NNTP
 desc_uucp=Jurnal UUCP
 desc_debug=Mesaje de depanare
 desc_cron=Cron Jurnal Job
+
 acl_noedit=Se pot vizualiza doar jurnalele?
 acl_any=Poate vizualiza orice fișier ca jurnal?
 acl_logs=Poate vizualiza și configura fișierele jurnal

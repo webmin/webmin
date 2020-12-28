@@ -23,6 +23,7 @@ index_econf=Le fichier de configuration xinetd actuel $1 n'existe pas. Peut-êtr
 index_noport=Inconnu
 index_enable=Activer les services sélectionnés
 index_disable=Désactiver les services sélectionnés
+
 serv_create=Créer un service Internet
 serv_edit=Editer un service Internet
 serv_header1=Options réseau du service
@@ -76,19 +77,24 @@ serv_enice=Niveau de nice manquant ou invalide
 serv_ecps0=Nombre maximum de connections par seconde manquant ou invalide
 serv_ecps1=Délai manquant ou invalide
 serv_etimes=Les dates d'accès doivent être au format HH:MM-HH:MM
+
 sock_stream=Stream
 sock_dgram=Datagramme
 sock_raw=Raw
 sock_seqpacket=Datagramme séquentiel
+
 proto_=Par défaut
 proto_ip=IP (Internet Protocol)
 proto_tcp=TCP (Transmission Control Protocol)
 proto_udp=UDP (User Datagram Protocol)
+
 restart_err=Echec de l'application des modifications
 restart_ekill=Echec de l'envoi du signal HUP au PID $1 : $2
 restart_epid=Plus en cours d'exécution
+
 start_err=Echec du démarrage de xinetd
 start_estart=$1 échoué : $2
+
 defs_title=Options par défaut
 defs_header=Options par défaut pour les services
 defs_log=Mode de journalisation pour xinetd
@@ -113,6 +119,7 @@ defs_err=Echec de la sauvegarde des options par défaut
 defs_efile=Nom de fichier du journal manquant ou invalide
 defs_esoft=Limite douce manquante ou invalide
 defs_ehard=Limite dure manquante ou invalide
+
 log_create_serv=$2 créé, service $1
 log_modify_serv=$2 modifié, service $1
 log_delete_serv=$2 supprimé, service $1
@@ -121,5 +128,6 @@ log_apply=Changements appliqués
 log_defaults=Options par défaut modifiées
 log_enable=Activation de $1 services
 log_disable=Désactivation de $1 services
+
 config_dirdef=Fichier de configuration Xinetd
 config_dirto=Nouveau fichier dans le répertoire

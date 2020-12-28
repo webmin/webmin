@@ -25,6 +25,7 @@ index_family=Familia model
 index_serial=Număr de serie
 index_capacity=Capacitate
 index_norm=normalizată:
+
 monitor_type=Verificare unitate SMART
 monitor_type2=SSD Wearout
 monitor_drive=Conduceți pentru a verifica
@@ -40,14 +41,17 @@ monitor_wearlevel=Eșec dacă nivelul de uzură scade sub
 monitor_ewearlevel=Procent procentaj nevalid
 monitor_nowearout=Drive nu raportează un indicator de uzură SSD
 monitor_wornout=Nivelul de uzură a scăzut la $1 
+
 short_title=Autotestare scurtă
 short_doing=Începerea autotestului scurt de $1 ..
 short_failed=.. a eșuat!
 short_ok=.. testul a început OK. Consultați starea unității din pagina principală a modulului pentru rezultate.
+
 ext_title=Autotest extins
 ext_doing=Începerea testării extinse de $1 ..
 ext_failed=.. a eșuat!
 ext_ok=.. testul a început OK. Consultați starea unității din pagina principală a modulului pentru rezultate.
+
 data_title=Test de colectare a datelor
 data_doing=Începând colectarea de date offline pe $1 ..
 data_failed=.. a eșuat!

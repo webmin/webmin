@@ -24,13 +24,16 @@ index_out=Produktionen från $1 var
 index_boot=Anslut vid start med:
 index_noboot=&lt;Anslut inte&gt;
 index_bootdesc=Ändra det här alternativet för att kontrollera om den valda PPP-anslutningen startas vid starttid eller inte.
+
 init_title=Upptäck konfiguration
 init_cmd=Upptäcker ett anslutet modem med kommandot $1 ..
 init_done=.. Gjort
 init_modems=Modem är konfigurerade på $1 och $2.
 init_modem=Ett modem detekterades på $1.
 init_none=Inga modem upptäcktes!
+
 device_serial=serieport $1 
+
 connect_title=Upprätta anslutning
 connect_cmd=Försök att upprätta en anslutning till kommandot $1.
 connect_failed=.. anslutningen misslyckades! Se utgången ovan för anledningen.
@@ -40,12 +43,14 @@ connect_dns=Med PPP-tilldelad DNS-konfiguration.
 connect_dns2=PPP-tilldelad DNS-konfiguration har ställts in.
 connect_dnsto=Timeout väntar på den PPP-tilldelade DNS-konfigurationen.
 connect_dnsdown=Anslutningen verkar ha misslyckats medan du väntar på PPP-tilldelad DNS-konfiguration.
+
 disc_title=Stäng av PPP
 disc_err=Det gick inte att stänga av PPP-anslutningen
 disc_edown=Redan frånkopplad
 disc_ok1=Din PPP-anslutning med $2 stängdes av.
 disc_ok2=Din PPP-anslutning stängdes framgångsrikt.
 disc_dns=Återställd gammal DNS-konfiguration.
+
 edit_title1=Lägg till ISP Dialer
 edit_title2=Redigera ISP Dialer
 edit_ddesc=Dessa standardinställningar kommer att gälla för anslutningar som görs med någon annan uppringare.
@@ -76,6 +81,7 @@ edit_idle=Tidsgräns för viloläge (i sekunder)
 edit_def=Från standardinställningar
 edit_inherits=Arv inställningar
 edit_from=Från uppringare ..
+
 save_err=Det gick inte att spara uppringaren
 save_err2=Det gick inte att radera uppringaren
 save_ename=Saknas eller ogiltigt uppringningsnamn
@@ -88,6 +94,7 @@ save_edial=Det saknas eller ogiltigt antal uppringningsförsök
 save_eidle=Saknad eller ogiltig tidsavbrott på viloläge
 save_einherits=Denna uppringare kan inte tas bort eftersom '$1' ärver inställningar från den.
 save_eclash=En uppringare med samma namn finns redan
+
 log_create=Skapat $1 
 log_update=Uppdaterad $1 
 log_delete=$1 har tagits bort

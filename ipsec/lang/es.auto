@@ -1,4 +1,5 @@
 index_version2=$2 versión $1 
+
 edit_pfs=Perfecto reenvío secreto?
 edit_pmodeyes=si
 edit_pmodeno=No
@@ -21,8 +22,11 @@ edit_unit_s=segundos
 edit_unit_m=minutos
 edit_unit_h=horas
 edit_unit_d=dias
+
 config_nat=¿Habilitar el recorrido NAT?
+
 policy_desc_private=Redes encriptadas
+
 save_ekeying=Falta o no es válido el número de reintentos
 save_eleftcert=Certificado de servidor local faltante o no válido
 save_erightcert=Certificado de servidor remoto faltante o no válido

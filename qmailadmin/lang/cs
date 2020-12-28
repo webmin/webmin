@@ -6,6 +6,7 @@ index_stop=Ukončit QMail procesy
 index_stopmsg=Klepnutím na toto tlačítko se ukončí QMail procesy běžící v pozadí, které slouži pro odesílání mailů ve frontě. Bez těchto procesů maily nebudou řádně odesílány ani ven ze systému ani dovnitř systému.
 index_start=Spustit QMail procesy
 index_startmsg=Klepnutím na toto tlačítko se spustí QMail procesy běžící v pozadí, které slouži pro odesílání mailů ve frontě. Bez těchto procesů maily nebudou řádně odesílány ani ven ze systému ani dovnitř systému.
+
 opts_title=Nastavení QMailu
 opts_me=Jméno lokálního hosta
 opts_helo=Jméno hosta pro SMTP HELO
@@ -24,6 +25,7 @@ opts_etoremote=Nesprávná časová prodleva SMTP odchozí reakce
 opts_ebytes=Nesprávná maximální velikost zprávy
 opts_etimeout=Nesprávná časová prodleva SMTP příchozích dat
 opts_elocalip=Nesprávné jméno hosta lokálních IP adres
+
 aliases_title=Aliasy mailů
 aliases_addr=Adresa
 aliases_to=Alias na..
@@ -37,6 +39,7 @@ aliases_none=Nic
 aliases_return=seznam aliasu
 aliases_toomany=Máte ve vašem systému příliš mnoho mail aliasů zobrazitelných na jednu stránku.
 aliases_go=Najít aliasy obsahující:
+
 aform_type0=Nic
 aform_type1=Email adresa
 aform_type2=Mail adresář
@@ -51,6 +54,7 @@ aform_val=Alias na
 aform_afile=Editovat..
 aform_novirt=&lt;Všechny domény&gt;
 aform_return=alias
+
 asave_err=Chyba při ukládání aliasu
 asave_eaddr='$1' není platná adresa
 asave_ealready=Alias pro '$1' již existuje
@@ -61,11 +65,13 @@ asave_etype4='$1' není platný program nebo neexistuje
 asave_etype5=Soubor automatické odpovědi '$1' není platný
 asave_etype4none=Naní zadán žádný program
 asave_etype6=Soubor filtrů '$1' není platný
+
 locals_title=Lokální domény
 locals_domains=Lokální domény pro tento server
 locals_desc=Qmail bude přijímat odesílání emailů k lokálním uživatelům domén a hostů uvedených v text boxu vlevo. Pokud chcete, aby váš mail server udržoval vícenásobné email domény, měly by být uvedeny v tomto formuláři.
 locals_only=Pouze jména lokálních hotů $1
 locals_sel=Níže uvedené domény ..
+
 rcpts_title=Akceptované domény
 rcpts_domains=Akceptované lokální a přenosné domény
 rcpts_all=Jakákolv doména
@@ -73,9 +79,11 @@ rcpts_sel=Níže uvedené domény ..
 rcpts_desc=Qmail bude akceptovat přenášení nebo lokální odesílání poze emailů k doménám a hotům uvedených v text boxu vlevo. Můžete také vkládat zástupné znaky, které vyhovují všem hostům v doméně např. <tt>.foo.com</tt>. Pokud chcete, aby váš mail server přenášel emaily pro klienty, musíte akceptovat mail z jakékoliv domény.
 rcpts_domains2=Přídavné lokální a přenosné domény
 rcpts_desc2=Máte-li velké množství akceptovaných domén, bez společně užívaných, maly by být vloženy do tohoto text boxu. Obecně řečeno, vašich prvních povolených domén by mělo být vloženo do výše uvedeného text boxu a měly by tam zůstat.
+
 bads_title=Odmítané adresy
 bads_addresses=Odmítané email adresy
 bads_desc=QMail bude odmítat meily k odesílání nebo předávání od jakékoliv z adres uvedených v text boxu vlevo. Tyto adresy musí být vloženy ve stylu <tt>username@domainname</tt>. Pokud chcete odmítat mail zcelé domény, můžete použít zápis <tt>@domainname</tt>.
+
 routes_title=Routování domén
 routes_toomany=Máte ve vašem systému příliš mnoho routerů domén zobrazitelných na jednu stránku.
 routes_go=Najít routery domén obsahující:
@@ -84,18 +92,22 @@ routes_to=Poslat přes server
 routes_direct=Přímo odesílat
 routes_defroute=Odesílat všechny ostatní odchozí maily přes:
 routes_return=routery domén
+
 rform_edit=Ediace routeru domény
 rform_create=Vytvoření routeru domény
 rform_from=Mail pro hosta nabo doménu
 rform_to=Poslat přes SMTP server
 rform_port=SMTP port
+
 rsave_err=Chyba při ukládání routeru domén
 rsave_efrom='$1' není platné jméno domény
 rsave_eto='$1' není platný SMTP server
 rsave_eport='$1' není platné číslo portu
+
 percents_title=Domény % adres
 percents_domains=Domény, které podporují % adresy
 percents_desc=QMail bude akceptovat emaily s adresami ve formátu <tt>user%firstdomain@seconddomain</tt>, pokud je <tt>seconddomain</tt> uvedena v text boxu vlevo. Zprávy v tomto formátu budou předány na <tt>user@firstdomain</tt> pomocí tohoto mail serveru.
+
 virts_title=Virtuální mapování
 virts_toomany=Máte ve vašem systému příliš mnoho virtuálního mapování zobrazitelného na jednu stránku.
 virts_go=Najít virtuální mapování obsahující:
@@ -105,6 +117,7 @@ virts_all=Všechny adresy
 virts_none=Kromě virtuálních
 virts_desc=Virtuální mapování jsou používaná QMailem pro údržbu emailů rozdílných domén na vašem serveru, dodatečné přidání textu do uživatelské části emailové adresy před jejím dalším zpracováním. Tot můžete použít při nastavování virtuálních mail domén tak, že vytvoříte nové virtuální mapování pro doménu, pokud použijete stránku <a href='$1'>Mail Aliasy</a> a vytvoříte aliasy v rámci takové domény.
 virts_return=virtuální mapování
+
 vform_edit=Editace virtuálního mapování
 vform_create=Vytvoření virtuálního mapování
 vform_from=Mail pro adresu
@@ -115,12 +128,15 @@ vform_to=Dodatečné přidání do jména uživatele
 vform_none=Nic
 vform_prepend=Specifikovaný prefix
 vform_auto=Automatická výměna prefixu
+
 vsave_err=Chyba při ukládání virtuálního mapování
 vsave_edomain='$1' není platná email doména
 vsave_euser='$1' není platné jméno uživatele emailu
 vsave_eprepend='$1' není platný prefix mapování
 vsave_eboth=Nemůřžete vybrat jak '$vform_all' tak '$vform_none'
+
 stop_err=qmail-send proces již neběží
+
 log_stop=Ukončen QMail procesy
 log_start=Spuštěn QMail procesy
 log_opts=Změněna nastavení QMailu
@@ -144,10 +160,12 @@ log_defroute=Modifikováno výchozí routování
 log_assign_create=Vytvořen mail uživatel $1
 log_assign_delete=Smazán mail uživatel $1
 log_assign_modifed=Modifikován mail uživatel $1
+
 rfile_title=Editace souboru s automatickou odpovědí
 rfile_desc=Použitím níže uvedeného text area editujete zprávu s automatickou odpovědí v $1. Zpráva může obsahovat makra $SUBJECT, $FROM, $TO, $DATE a $BODY, která budou použita v momentě, kdy bude automatická odpověď aktivována.
 rfile_efile=Nemáte oprávnění editovat $1.
 rfile_undo=Odvolat změny
+
 ffile_title=Editace soiuboru s filtry
 ffile_desc=Použitím níže uvedeného formuláře nastavíte pravidla filtrace v souboru $1.
 ffile_efile=Nemáte oprávnění editovat $1.
@@ -163,6 +181,7 @@ ffile_other=Jinak předat dál k $1
 ffile_err=Chyba při ukládání souboru s filtry
 ffile_ematch=Chybějící zápis porovnání
 ffile_eaction=Chybějící adresa pro předání dál
+
 queue_title=Mailvá fronta
 queue_count=$1 zprávy
 queue_none=Momentálně nejsou ve frontě žádné zprávy k odeslání
@@ -176,10 +195,12 @@ queue_return=mailová fronta
 queue_delete=Smazat vybrané zprávy
 queue_all=Vybrat vše
 queue_invert=Invertovat výběr
+
 qview_title=Zpráva ve frontě
 qview_desc=Ze souboru $1
 qview_headers=Hlavičky mailu
 qview_attach=Přílohy
+
 assigns_title=Přidělování mail uživatelů
 assigns_return=přidělování mail uživatelů
 assigns_toomany=Máte ve vašem systému příliš mnoho mail uživatelů zobrazitelných na jednu stránku.
@@ -190,6 +211,7 @@ assigns_uid=UID
 assigns_gid=GID
 assigns_home=Domovský adresář
 assigns_desc=Přidělování mail uživatelů umožňuje vytváření mailboxů pro uživatele, kteří nejsou definováni v seznamu Unix uživatelů. Každé přidělení bude odesílat mail pro vybrané uživatelské jméno nebo "otce" uživatelského jména tak, že bude odeslán do mailboxu skutečného Unix uživatele.
+
 sform_edit=Editace mail uživatele
 sform_create=Vytvoření mail uživatele
 sform_address=Uživatelské jméno adresy
@@ -199,13 +221,16 @@ sform_user=Unix uživatel
 sform_uid=UID
 sform_gid=GID
 sform_home=Domovský adresář
+
 ssave_err=Chyba při ukládání mail uživatele
 ssave_eaddress=Chybějící nebo nesprávné uživatelské jméno adresy
 ssave_euser=Chybějící nebo nesprávný Unix uživatel
 ssave_euid=Chybějící nebo nesprávné UID
 ssave_egid=Chybějící nebo nesprávné GID
 ssave_ehome=Chybějící nebo nesprávný domovský adresář
+
 delete_egone=Zpráva ve frontě již neexistuje
+
 boxes_title=Uživatelské mailboxy
 boxes_user=Uživatel
 boxes_size=Velikost mailboxu
@@ -215,6 +240,7 @@ boxes_sent=Odeslaný mail
 boxes_ecannot=Nemáte oprávnění číst email
 boxes_toomany=Ve vašem systému je příliš mnoho uživatelů, takže nejdou vypsat všechny jejich mailboxy.
 boxes_go=Zobrazit mail pro uživatele:
+
 mail_title=Email uživatele
 mail_from=Od
 mail_date=Datum
@@ -251,6 +277,7 @@ mail_mark1=Přečtená
 mail_mark2=Speciální
 mail_forward=Předaná dál
 mail_rfc=Z řádku
+
 view_title=Čtení emailu
 view_desc=Zpráva $1 v $2
 view_desc2=Zpráva $1 pro uživatele $2
@@ -274,6 +301,7 @@ view_mark1=Přečteno
 view_mark2=Speciální
 view_return=originální email
 view_sub=Přibalená email
+
 compose_title=Napsání emailu
 reply_title=Odpověď na email
 forward_title=Email předaný dál
@@ -284,6 +312,7 @@ reply_mailforward=Zprávy předané dál
 reply_attach2=Klientské a server-side přílohy
 reply_send=Odeslat mail
 reply_ecannot=Nemáte oprávnění odeslat mail pod tímto uživatelem
+
 send_err=Chyba při odeslání mailu
 send_eto=Chybějící Komu adresa
 send_efrom=Chybějící Od adresa
@@ -296,15 +325,18 @@ send_eattach=Přílohy nemohou mít větší velikost než $1 kB.
 send_eperms=Uživatel $1 nemůže číst $2
 send_eperms2=Nemáte oprávnění odeslat soubor $1
 send_epath=Spouštěč Sendmailu $1 neexistuje.
+
 delete_ecannot=Nemáte oprávnění smazat mail od tohoto uživatele
 delete_enone=Nebyly vybrány žádné maily ke smazání
 delete_emnone=Nebyly vybrány žádné maily k označení
+
 search_title=Výsledky hledání
 search_ecannot=Nemáte oprávnění prohledávat emaily tohoto uživatele
 search_ematch=Musíte vložit text, který se bude porovnávat.
 search_none=Nebyly nalezeny žádné zprávy.
 search_results2=$1 mailové zprávy obsahují $2 ..
 search_results3=$1 mailové zprávy neobsahují $2 ..
+
 match_from=Od: obsahuje
 match_subject=Předmět: obsahuje
 match_to=Komu: obsahuje

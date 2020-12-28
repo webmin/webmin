@@ -16,11 +16,14 @@ index_esame=A <a href='$2'>modulkonfiguráció</a> oldalon beállított $1 felha
 index_eroot=A $1 Usermin konfigurációs könyvtár létezik, de a hivatkozott $2 program gyökérkönyvtár, amelyre hivatkozik, nem! Kézzel töltse le és telepítse újra a Usermin szoftvert.
 index_restart=Indítsa újra a Usermin alkalmazást
 index_restartmsg=Kattintson erre a gombra a Usermin szerver folyamatának újraindításához. Erre akkor lehet szükség, ha nemrégiben frissítette a Perl szolgáltatást.
+
 access_title=IP hozzáférés-vezérlés
 access_desc=A Usermin szerver úgy konfigurálható, hogy csak bizonyos IP-címektől tagadja meg vagy engedélyezi a hozzáférést ezen az űrlapon. A hostnevek (például a foo.bar.com) és az IP-hálózatok (mint például 10.254.3.0 vagy 10.254.1.0/255.255.255.128 vagy 10.254.1.0/25 vagy 10.254.1.5-10.254.97.127) beírhatók. A kiszolgálóhoz való hozzáférést csak megbízható címekre kell korlátoznia, különösen, ha ez elérhető az internetről. Ellenkező esetben bárki, aki kitalálja a jelszavát, teljes mértékben irányítja a rendszerét.
+
 bind_title=Portok és címek
 bind_desc2=Ez az űrlap felhasználható annak a portnak a megváltoztatására, amelyet a Usermin hallgat, vagy a rendszer egyetlen IP-címére hallgathatja. Azt is konfigurálhatja, hogy több porton keresztül fogadja el a kapcsolatokat, vagy több IP-címen hallgassa meg. Megjegyzés: a port vagy a kötési cím megváltoztatása után a böngésző kérheti újbóli bejelentkezését.
 bind_erestart=Hiba történt a Usermin indításakor az új cím és portbeállításokkal : $1 
+
 mods_title=Felhasználói modulok
 umods_title=Felhasználói modulok
 mods_desc1=A Usermin modulok telepítés után hozzáadhatók a jobb oldali űrlap használatával. A modulokat általában <tt>.wbm</tt> fájlokban terjesztik, amelyek mindegyike tartalmazhat egy vagy több modult. A modulok RPM fájlokból is telepíthetők, ha az operációs rendszer támogatja.
@@ -41,15 +44,18 @@ mods_desc3=A meglévő modulokat az alábbi űrlap segítségével törölheti. 
 mods_delete=Modulok törlése
 mods_deleteok=Törölje a kiválasztott modulokat
 mods_desc4=A telepített modulok wbm.gz fájlként exportálhatók az alábbi űrlap segítségével. Ezután egy modulfájl telepíthető egy másik rendszerbe, amelyen a Usermin fut.
+
 os_title=Operációs rendszer és környezet
 os_desc3=Ez az oldal megjeleníti a Usermin által a telepítéskor észlelt operációs rendszert és a jelenleg észlelt rendszert. Ha ezek különböznek, akkor dönthet úgy, hogy frissíti a Usermin operációs rendszerrel kapcsolatos információkat, amelyre szükség lehet, ha nemrégiben frissítettél.
 os_desc2=Megváltoztathatja a Usermin által használt program elérési útját a programok futtatásakor, és a megosztott könyvtár elérési útját átadhatja bármelyik programnak.
 os_usermin=Operációs rendszer a Usermin szerint
 os_iusermin=A Usermin által használt belső operációs rendszer kódja
 os_update=Frissítse a Usermin szoftvert az észlelt operációs rendszer használatához
+
 lang_title=Nyelv
 lang_title2=Felhasználói nyelv
 lang_intro=Ezen az oldalon kiválaszthatja, hogy a Usermin milyen nyelvet használja a címek, utasítások és üzenetek megjelenítéséhez
+
 session_title=Hitelesítés
 session_desc1=Ha engedélyezve van, a jelszó időtúllépése megvédi a Usermin kiszolgálót a brute-force jelszó-feltörési támadásoktól, mivel folyamatosan növekvő késleltetést ad az azonos felhasználó minden sikertelen bejelentkezési kísérlete között.
 session_desc2=Ha a munkamenet hitelesítés engedélyezve van, a bejelentkezett felhasználók munkamenetét a Usermin követi nyomon, lehetővé téve az alapjáratú felhasználók automatikus kijelentkezését. Vegye figyelembe, hogy a munkamenet-hitelesítés engedélyezése vagy letiltása minden felhasználót arra kényszeríthet, hogy újból bejelentkezzen.
@@ -73,6 +79,7 @@ session_blank=Arra kéri az üres jelszóval rendelkező felhasználókat, hogy 
 session_homedir=Hozzon létre hiányzó otthoni könyvtárakat a bejelentkezés után?
 session_homedir_perms=Engedélyek új könyvtárhoz
 session_ehomedir_perms=Hiányzó vagy érvénytelen oktális otthoni könyvtár engedélyek
+
 themes_title=Felhasználói témák
 themes_desc=A témák szabályozzák a Usermin felhasználói felület megjelenését, beleértve az ikonokat, a színeket, a hátteret és esetleg az oldalak elrendezését. Az alábbi választómező segítségével kiválaszthatja a rendszerére telepített egyik témát, amely alapértelmezésként lesz a Usermin felhasználók számára.
 themes_sel=Aktuális téma :
@@ -101,7 +108,9 @@ themes_eirpm=RPM telepítés sikertelen : $1
 themes_ok=A téma sikeresen megváltozott.. átirányítva a Webmin index oldalára.
 themes_delete=Ez az űrlap felhasználható a rendszerben telepített, a jelenleg nem használt egyik téma törlésére.
 themes_delok=A törölni kívánt téma :
+
 themes_desc4=A telepített témák wbt.gz fájlként exportálhatók az alábbi űrlap segítségével. Ezután egy témafájl telepíthető egy másik rendszerbe, amelyen a Usermin fut.
+
 configs_ecannot=Ezt a modult nem szabad konfigurálni
 configs_title=Felhasználói modul modul konfigurálása
 configs_header=Konfigurálható modulok
@@ -115,8 +124,10 @@ configs_global=Globális modulkonfiguráció
 configs_globaldesc=Az ebben az űrlapban szereplő beállítások a modul összes felhasználójára vonatkoznak, és általában meghatározzák az általa használt programokhoz és fájlokhoz kapcsolódó beállításokat.
 configs_user=Alapértelmezett felhasználói beállítások
 configs_userdesc=Az ezen az űrlapon található beállítások meghatározzák a modul felhasználó által szerkeszthető beállításainak alapértelmezéseit. Eltérő rendelkezés hiányában az egyes felhasználók túlliciálhatják őket.
+
 acl_title=Elérhető modulok
 acl_desc=Ezen az oldalon válassza ki, mely telepített Usermin modulok láthatók a felhasználók számára.
+
 ssl_title=SSL titkosítás
 ssl_desc1=Úgy tűnik, hogy a gazdagépen, amelyen a Usermin fut, telepítve van az SSLeay Perl modul. Ezzel a Usermin támogatja az SSL titkosított kommunikációt a böngésző és a szerver között. Ha a felhasználók az Interneten keresztül férnek hozzá a Usermin szerveréhez, akkor feltétlenül fontolóra kell vennie az SSL használatát a támadó megakadályozása érdekében, hogy elfogja a jelszavát.
 ssl_desc2=Figyelem! Csak akkor kapcsolja be az SSL-támogatást, ha rendelkezik olyan böngészővel, amely támogatja az SSL-t, és nincs tűzfal, amely blokkolja a <tt>https</tt> kéréseket a böngésző és a Usermin host között.
@@ -125,18 +136,23 @@ ssl_hole=Mivel jelenleg az alapértelmezett Usermin SSL kulcsot használja, amel
 ssl_savekey=Ez az űrlap lehetővé teszi egy meglévő PEM formátumú SSL privát kulcs és tanúsítvány feltöltését a Usermin szerver számára.
 ssl_copycert=Másolja a tanúsítványt a Webminből
 ssl_copycertdesc=Másolja az SSL tanúsítványt, a privát kulcsot, a CA tanúsítványt és a Webmin által használt egyéb beállításokat.
+
 ca_email=Email cím
 ca_ou=Osztály
 ca_o=Szervezet
 ca_sp=Állapot
 ca_c=Ország kód
+
 newkey_ok=A következő SSL kulcs sikeresen létrehozta a Usermin számára.
+
 stop_err=A Usermin megállítása nem sikerült
 stop_ekill=Nem sikerült megölni a folyamatot : $1 
 stop_efile=Már megállt
 stop_ecannot=Nem hagyhatja abba a Usermin szolgáltatást
+
 start_err=A Usermin elindítása nem sikerült
 start_ecannot=Nem engedélyezi a Usermin elindítását
+
 users_title=Engedélyezett felhasználók és csoportok
 users_desc=A Usermin úgy konfigurálható, hogy korlátozza, hogy melyik unix felhasználók és csoportok léphetnek be ezen az űrlapon. Az unix csoport összes elsődleges tagjának meghatározásához írja be a <tt>@csoportnév</tt> elemet a listába.
 users_desc2=A UID-tartományok egyezéséhez írja be a listába a <tt>kezdő- és vége</tt>, <tt>start-</tt> vagy <tt>-end</tt> -ot.
@@ -150,10 +166,12 @@ users_euser=A '$1' nem érvényes felhasználónév
 users_egroup=A '$1' nem érvényes csoportnév
 users_shells=Tagadja meg azokat a felhasználókat, akiknek a héja nincs fájlban
 users_eshells=Hiányzó vagy nem létező héjfájl
+
 defacl_title=Hozzáférés-vezérlési lehetőségek
 defacl_desc=Ezen az oldalon konfigurálhat különféle hozzáférés-vezérlési opciókat, amelyek a Usermin modulokra és a felhasználókra vonatkoznak. Ezek a beállítások hasonlóak a Webmin felhasználók moduljának minden felhasználó globális ACL-jéhez.
 defacl_header=Hozzáférés-vezérlési lehetőségek a Usermin felhasználók számára
 defacl_err=Nem sikerült menteni a hozzáférés-vezérlési lehetőségeket
+
 install_err1=A (z) $1 modul telepítése nem sikerült
 install_efile=A fájl nem létezik
 install_err2=A feltöltött modul telepítése nem sikerült
@@ -180,6 +198,7 @@ install_erpm=Nem Usermin modul vagy téma RPM
 install_eirpm=RPM telepítés sikertelen : $1 
 install_cat=A $1 kategória alatt.
 install_eneither=Az RPM nem tartalmaz felhasználói felhasználói modult vagy témát
+
 delete_err=Nem sikerült a modulok törlése
 delete_edep=A $1 modult nem lehet törölni, mivel a $2 modul attól függ
 delete_desc1=$1 ($2 klón)
@@ -189,6 +208,7 @@ delete_msg=A következő modulok sikeresen törlődtek a Usermin telepítéséb�
 delete_rusure=Biztosan törli a $2 modul (oka) t? A $1 kB fájlok örökre törlődnek.
 delete_rusure2=Biztosan törli a (z) $2 témát? A $1 kB fájlok örökre törlődnek.
 delete_enone=Nincs kiválasztva modul
+
 ui_title=Felhasználói felület
 ui_desc=Ez az űrlap lehetővé teszi az összes Usermin modul által használt felhasználói felület beállításainak szerkesztését.
 ui_header=A felhasználói felület lehetőségei
@@ -230,6 +250,7 @@ ui_hnm1=Gazdagép neve az URL-ből
 ui_hnm2=Domain név az URL-ből
 ui_hnm3=Másik név ..
 ui_tabs=Kategorizálja a modulokat?
+
 upgrade_title=Frissítse a Usermin alkalmazást
 upgrade_title2=Telepítse a Usermin alkalmazást
 upgrade_desc=Ez az űrlap lehetővé teszi a teljes Usermin telepítésének frissítését új verzióra. Telepíthet helyi fájlból, feltöltött fájlból vagy a legfrissebb verzióról a <a href=http://www.usermin.com/>www.usermin.com</a> webhelyen. A kézi frissítéshez hasonlóan a konfigurációs beállításokat és a harmadik fél moduljait is megőrzik.
@@ -263,6 +284,7 @@ upgrade_done=.. frissítés kész.
 upgrade_failed=.. a frissítés sikertelen!
 upgrade_updates=$1 frissítés van a Usermin ezen új verziójához. <a href='$2'>Kattintson ide</a>, hogy automatikusan letöltse és telepítse őket.
 upgrade_eupdates=A frissítések listájának letöltése nem sikerült : $1 
+
 update_desc1=Ez az űrlap lehetővé teszi azoknak a Usermin moduloknak a frissítését, amelyek hibákat vagy biztonsági lyukakat találtak a <a href=http://www.usermin.com/uupdates.html>Usermin frissítések</a> oldalon vagy más forrásból. Ez összehasonlítja a jelenleg telepített modulokat a frissítésre elérhető modulokkal, és opcionálisan automatikusan letölti és telepíti az elavult modulokat.
 update_header1=Frissítse a modulokat most
 update_header2=Frissítse a modulokat az ütemezés szerint
@@ -279,10 +301,12 @@ update_sched=Frissítse a modulokat $1 : 00-on $2 naponta
 update_none=Ehhez a verzióhoz nincs Usermin frissítés.
 update_failed=Nem sikerült a modul telepítése : $1 
 update_desc2=Ez az űrlap hibákat vagy biztonsági lyukakat tartalmazó Usermin modulok automatikus frissítésének ütemezésére szolgál a <a href=http://www.usermin.com/uupdates.html>Felhasználói frissítések</a> oldalról vagy más forrásból. Míg ez a szolgáltatás hasznos, óvatosan kell használni, mivel ez lehetővé teheti a támadók számára, hogy átvegyék a rendszerét, ha a frissítési szerver valaha veszélybe került.
+
 assignment_title=A modulok újbóli hozzárendelése
 assignment_header=Modulkategória-hozzárendelések
 assignment_ok=Kategóriák módosítása
 assignment_desc=Ez az űrlap lehetővé teszi annak konfigurálását, hogy az egyes modulok mely kategóriákban jelenjenek meg a Usermin index oldalán.
+
 categories_title=Kategóriák szerkesztése
 categories_header=Kategória azonosítója és leírása
 categories_desc=Ez az űrlap lehetővé teszi a meglévő Usermin kategóriák átnevezését és újak létrehozását, amelyekhez modulokat rendelhet. A táblázat felső része a beépített kategóriák leírásának megváltoztatására szolgál, míg az alsó rész az új kategória azonosítók és leírások hozzáadásához.
@@ -292,6 +316,7 @@ categories_edesc=Hiányzik a (z) $1 leírása
 categories_ecat=A (z) $1 kategória azonosítója már bekerült
 categories_code=ID
 categories_name=Megjelenített leírás
+
 log_access=Megváltozott az IP hozzáférés vezérlése
 log_bind=Megváltozott port és cím
 log_log=Megváltozott naplózási beállítások
@@ -327,6 +352,7 @@ log_restrict_create=Létrehozott korlátozást a következőre: $1
 log_restrict_modify=Módosított korlátozás a $1 -re
 log_restrict_delete=A (z) $1 korlátozása törölve
 log_restrict_move=A (z) $1 korlátozása áthelyezve
+
 log_all=minden felhasználó
 log_group=$1 csoport
 log_switch=Váltott a (z) $1 felhasználói fiókra
@@ -334,6 +360,7 @@ log_logout=Megváltozott az automatikus kijelentkezési idő
 log_dav=Megváltoztak a DAV szerver beállításai
 log_advanced=Megváltozott a speciális beállítások
 log_mobile=Megváltozott a mobil eszköz opciói
+
 update_err=Nem sikerült frissíteni a modulokat
 update_eurl=Hiányzó vagy érvénytelen frissítési URL
 update_title=Frissítse a modulokat
@@ -352,6 +379,7 @@ update_rv=A (z) $1 frissített Usermin moduljainak ellenőrzése
 update_eemail=Meg kell adnia egy e-mail címet, ha csak azt mutatja meg, amit frissíteni fog.
 update_subject=A Usermin modulok frissítési jelentése
 update_version=Letölthető a Usermin új kiadása ($1 verzió). A jövőbeli frissítések csak a legújabb verzióra kerülnek kiadásra.
+
 restrict_title=Modul korlátozások
 restrict_desc=Ezen az oldalon ellenőrizheti, hogy a Usermin modulok mely felhasználók és csoportok számára elérhetők. A listában szereplő összes modul-kiegészítés és kivonás érvényes, nem csak az első, amely megfelel az egyes felhasználóknak. <br>Azok a modulok, amelyeket nem választottak ki az<a href='$1'> elérhető modulok </a> oldalon, soha nem lesznek elérhetők az felhasználók, még akkor is, ha itt vannak kiválasztva.
 restrict_who=Usermin felhasználó
@@ -384,16 +412,19 @@ restrict_egroup=Hiányzó vagy érvénytelen csoportnév
 restrict_efile=Hiányzó, nem létező vagy abszolút felhasználói és csoportfájl
 restrict_move=Mozog
 bootup_ecannot=A rendszerindítást nem szabad konfigurálni
+
 acl_icons=Megengedett konfigurációs oldalak
 acl_mods=Konfigurálhat modulokat
 acl_sel=Az alábbiak szerint választották ..
 acl_stop=Megállíthatom és elindíthatom a Usermin-et?
 acl_bootup=Be lehet állítani a indításkori indítást?
 acl_ecannot=Nem használhatja ezt az oldalt
+
 clone_err=Nem sikerült a klónozni a modult
 clone_elink=a szinkronizálás sikertelen : $1 
 clone_ecopy=nem sikerült lemásolni a konfigurációt : $1 
 clone_desc=$1 klón
+
 sessions_title=Jelenlegi bejelentkezési munkamenetek
 sessions_desc=Az alábbiakban felsoroljuk a jelenlegi Usermin munkamenet-bejelentkezéseket. Meglévő munkamenet visszavonásához és a felhasználó újbóli bejelentkezéshez kényszerítéséhez kattintson a munkamenet azonosítójára.
 sessions_id=Munkamenet azonosító
@@ -403,12 +434,15 @@ sessions_login=Bejelentkezés:
 sessions_none=Jelenleg egyetlen felhasználó nincs bejelentkezve a Userminbe.
 sessions_switch=Váltás a Usermin felhasználóra:
 sessions_ok=Kapcsoló
+
 referers_title=Megbízható hivatkozók
 referers_desc=Ezen az oldalon konfigurálhatja a Usermin hivatkozási ellenőrzési támogatását, amelyet arra használnak, hogy megakadályozzák más webhelyek rosszindulatú hivatkozásait, és arra készteti a felhasználói böngészőket, hogy veszélyes tevékenységeket hajtsanak végre a Usermin segítségével. Ha azonban a saját webhelyén van linkek a Userminhez, amelyeket nem szeretne figyelmeztetni, akkor vegye fel ezeket a webhelyeket az alábbi listába.
+
 anon_title=Névtelen hozzáférés a modulhoz
 anon_desc=Ez az oldal lehetővé teszi a hozzáférést a kiválasztott Usermin modulokhoz és útvonalakhoz anélkül, hogy az ügyfeleknek bejelentkezniük kellene. Minden egyes alább megadott modul elérési úthoz (például / parancsok vagy / changepass) meg kell adnia annak a Unix felhasználónak a nevét, akinek az engedélyeit a modul eléréséhez fogja használni.
 anon_user=Unix felhasználó
 anon_euser=Hiányzó vagy érvénytelen Unix felhasználó a (z) '$1' URL elérési úthoz
+
 logout_title=Automatikus kijelentkezési idő
 logout_desc=Ezen az oldalon lehet beállítani a különböző inaktivitási kijelentkezési időket a különböző Usermin felhasználók számára. Az időtúllépést percben kell megadni, és a nulla időkorlát azt jelenti, hogy a párosítást végző felhasználók soha nem kerülnek automatikusan kijelentkezésre.
 logout_type=típus
@@ -423,6 +457,7 @@ logout_egroup=Hiányzó vagy érvénytelen csoport a (z) $1 sorban
 logout_efile=Hiányzó vagy nem létező fájl a (z) $1 sorban
 logout_etime=Hiányzó vagy érvénytelen időkorlát a (z) $1 sorban
 logout_ecannot=A kijelentkezési idő nem konfigurálható
+
 dav_title=DAV szerver
 dav_header=A DAV szerver lehetőségei
 dav_path=A DAV engedélyezve van?
@@ -443,16 +478,22 @@ dav_users=Felhasználók, akik használhatják a DAV-t
 dav_users1=Minden felhasználó
 dav_users0=Az alább felsorolt felhasználók és csoportok ..
 dav_eusers=Nincs felhasználó megadva
+
 syslog_errorlog=Usermin hiba napló
+
 descs_title=Modul címei
 descs_info=Ezen az oldalon megadhatja a Usermin modulok alternatív címeit, hogy felülbírálhassa a szabványos leírásokat.
+
 advanced_title=Haladó beállítások
 advanced_pass=A jelszót elérhetővé teszi a Usermin programok számára? <br><font size=-1> (Nem működik, ha a munkamenet hitelesítés engedélyezve van.) </font>
+
 blocked_title=Blokkolt gépek és felhasználók
 blocked_none=A Usermin jelenleg nem blokkolja a gazdagépeket és a felhasználókat.
 blocked_user=Usermin felhasználó
 blocked_cleardesc=Kattintson erre a gombra az összes aktuális gazdagép és felhasználói blokk törléséhez a Usermin szerver folyamatának újraindításával.
+
 mobile_title=Mobil eszköz opciói
+
 copycert_err=Nem sikerült az SSL-beállítások másolása a Webminből
 copycert_essl=Az SSL nem engedélyezett
 copycert_ekeyfile=Nincs beállítva privát kulcsfájl a Webminben

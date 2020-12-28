@@ -23,6 +23,7 @@ index_follow=$1 'den sonra
 index_forcetar=TAR formatında
 index_delete=Seçilen Yedekleri Sil
 index_nostrftime=Uyarı - bazı yedekleme işleri dosya adlarında % kullanır, ancak Modül Yapılandırma sayfasında strftime değiştirme etkin değildir.
+
 dump_dir=Yedeklenecek dizin
 dump_dirs=Yedeklenecek dizinler
 dump_fs=Dosya sistemi
@@ -108,6 +109,7 @@ dump_remount=Yedekleme sırasında <tt>noatime</tt> seçeneğiyle yeniden monte 
 dump_eftpupdate=FTP kullanılırken mevcut bir arşive dosya eklemek mümkün değildir.
 dump_eleveldir=Dosya sistemi bağlama noktaları olmayan dizinler için yalnızca düzey 0 yedeklemelerine izin verilir
 dump_eupdatedir=<tt>/etc/dumpdates</tt> dosyası yalnızca dosya sistemi bağlama noktaları olan dizinler için güncellenebilir
+
 edit_err=Yedek oluşturulamadı
 edit_edir=Yedek dizin eksik
 edit_efs=$1 türündeki dosya sistemleri bu modül tarafından yedeklenemez
@@ -132,9 +134,11 @@ edit_tolevel=$1 - $2 (seviye $3)
 edit_special=Yedekleme programı
 edit_when=Ne zaman yedeklenir?
 edit_clone=Klon
+
 save_err=Yedek kaydedilemedi
 save_edir=Eksik veya geçersiz yedekleme dizini
 save_efs=Yedekleme dizini farklı bir dosya sistemine değiştirilemez
+
 backup_title=Şimdi yedekle
 backup_desc=$1 ile $2 arasında yedekleme gerçekleştiriliyor.
 backup_reverify=.. tamamlayınız. Şimdi yedek doğrulanıyor ..
@@ -147,6 +151,7 @@ backup_notape=.. yedekleme tek bir bandın kapasitesini aştı. Bant değiştirm
 backup_egone=Yedekleme mevcut değil!
 backup_bg=Arkaplan yedekleme işlemine başlanması. İlerlemesini, modülün ana sayfasındaki <b>Yedekleme İşlerini Çalıştırma</b> bölümünde izleyebilir ve nihai durumu e-posta ile bilgilendirilir.
 backup_ecannot=Bu dizini yedeklemenize izin verilmiyor
+
 restore_title=Yedeği Geri Yükle
 restore_err=Yedekleme geri yüklenemedi
 restore_ecommand=$2 dosya sistemi yedeklemelerini geri yüklemek için gereken $1 komutu sisteminizde bulunamadı. Belki şu anda yüklü değil.
@@ -190,6 +195,7 @@ restore_gzip=Arşiv sıkıştırılsın mı?
 restore_keep=Dosyaların üzerine yazmıyor musunuz?
 restore_emulti=Çoklu dosya geri yüklemeleri bir teyp cihazından yapılamaz
 restore_emulti2=Çok dosyalı geri yüklemeler uzak sunucudan yapılamaz
+
 log_create=$1 için yedekleme yapılandırması oluşturuldu
 log_modify=$1 için değiştirilmiş yedekleme yapılandırması
 log_delete=$1 için yedekleme yapılandırması silindi
@@ -197,13 +203,16 @@ log_backup=$1 - $2 yedeklendi
 log_bgbackup=$1 ile $2 arasında yedekleme başlatıldı
 log_restore=$1 'den geri yüklendi
 log_kill=$1 için yedeklemeye son verildi
+
 kill_err=Yedekleme sonlandırılamadı
 kill_egone=Artık koşmuyor!
 kill_ecannot=Bu yedeklemeyi sonlandırmanıza izin verilmiyor
+
 newtape_err=Yeni teyp bildirilemedi
 newtape_egone=Yedekleme artık çalışmıyor!
 newtape_estatus=Yedekleme artık yeni bir bant beklemiyor
 newtape_ecannot=Bu yedeklemeyi yönetme izniniz yok
+
 acl_edit=Yedek oluşturup düzenleyebilir mi?
 acl_restore=Yedekleri geri yükleyebilir mi?
 acl_cmds=Komutlardan önce ve sonra düzenleme yapabilir mi?
@@ -211,8 +220,10 @@ acl_extra=Ek komut satırı parametrelerini düzenleyebilir mi?
 acl_dirs=Yedeklemeler için izin verilen dizinler
 acl_all=Tüm dizinler
 acl_list=Sadece listelenmiş ..
+
 delete_err=Yedekler silinemedi
 delete_enone=Hiçbiri seçilmedi
+
 email_already=Yedekleme $1 PID ile zaten çalışıyor.
 email_ebefore=Yedekleme öncesi komutu başarısız oldu!
 email_verify=Yedek doğrulanıyor ..
@@ -220,5 +231,6 @@ email_eafter=Yedekleme sonrası komutu başarısız oldu!
 email_subject=$2 üzerinde $1 yedeği
 email_ok=Yedekleme başarılı
 email_failed=Yedekleme başarısız!
+
 newtape_subject=$3 üzerinde $2 yedeği için $1 bant değişimi
 newtape_body=$3 üzerinde $2 yedeği, $1 kasetinde izin verilen maksimum veri miktarına ulaştı. Yedeklemenin devam etmesi için yeni bir bant yüklemeniz ve Webmin'in Dosya Sistemi Yedekleme modülündeki 'Bant Yüklendi' bağlantısını tıklamanız gerekir.

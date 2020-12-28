@@ -15,6 +15,7 @@ index_actform=Skjema
 index_actrun=Kjør
 index_actsql=Skjela
 index_acted=Åpne
+
 edit_title=Rediger kommando
 create_title=Opprett kommando
 edit_ecannot=Du har ikke lov til å redigere kommandoer
@@ -66,6 +67,7 @@ edit_format4=Last ned hvis mulig
 edit_servers=Kjør på Webmin tjenere
 edit_this=denne tjeneren
 edit_clone=Klone
+
 save_err=Kunne ikke lagre kommando
 save_ecannot=Du har ikke lov til å redigere kommandoer
 save_ecmd=Ingen kommando angitt
@@ -78,6 +80,7 @@ save_eusermin=Kommandoer som kjører på andre tjenere kan ikke kjøres fra User
 save_eformat=Ugyldig output MIME type
 save_eopts=Manglende innstllingsfil for parameter $1
 save_eopts2=Innstillingsfil eller standard-verdi for parameter $1 kan ikke innholde :
+
 run_err=Kunne ikke utføre kommando
 run_ecannot=Du har ikke lov til å kjøre denne kommandoen
 run_euser=Manglende eller ugyldig bruker
@@ -94,6 +97,7 @@ run_eupload=Ingen fil valgt for opplasting
 run_emust=Manglende verdi for parameter '$1'
 run_timeout=Kommando terminert etter $1 sekund(er) tidsavbrudd.
 run_failed=Kommando feilet med exit-status $1
+
 log_modify=Endret kommando $1
 log_create=Opprettet kommando $1
 log_delete=Slettet kommando $1
@@ -102,11 +106,13 @@ log_modify_edit=Endret fil-editor $1
 log_create_edit=Opprettet fil-editor $1
 log_delete_edit=Slettet fil-editor $1
 log_save_edit=Lagret filen $1
+
 acl_cmds=Kommandoer denne brukeren kan kjøre
 acl_call=Alle kommandoer
 acl_csel=Valgte..
 acl_cexcept=Alle unntatt valgte..
 acl_edit=Kan opprette og redigere kommandoer?
+
 file_ecannot=Du har ikke lov til å redigere filer
 fcreate_title=Opprett fil-editor
 fedit_title=Rediger fil-editor
@@ -130,6 +136,7 @@ file_egroup=Manglende eller ugyldig gruppenavn
 file_eperms=Manglende eller ugyldige oktale tillatelser
 file_envs=Erstatt miljøvariabler i filnavn?
 file_id=Editor ID
+
 view_err=Kunne ikke redigere fil
 view_ecannot=Du har ikke lov til å redigere denne filen
 view_title=Rediger fil
@@ -138,10 +145,12 @@ view_header=Redigerer filen $1
 view_ebeforeedit=Før-redigering kommando feilet : $1
 view_ebefore=Før-lagring kommando feilet : $1
 view_eafter=Etter-lagring kommando feilet : $1
+
 form_ecannot=Du har ikke lov til å kjøre denne kommandoen
 form_title=Utfør kommando
 form_exec=Utfør
 form_edit=Rediger
+
 sql_title1=Opprett SQL kommando
 sql_title2=Rediger SQL kommando
 sql_header=Detaljer for SQL kommando
@@ -157,6 +166,7 @@ sql_err=Kunne ikke lagre SQL kommando
 sql_esql=Ingen SQL angitt
 sql_ehost=Manglende elelr ugyldig databasetjener vert
 sql_edb=Manglende eller ugyldig databasenavn
+
 srun_title=Utfør SQL kommando
 srun_err=Kunne ikke utføre SQL kommando
 srun_edriver=Kunne ikke laste DBI driver

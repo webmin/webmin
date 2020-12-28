@@ -23,6 +23,7 @@ index_follow=Nach $1
 index_forcetar=Im TAR-Format
 index_delete=Lösche ausgewählte Backups
 index_nostrftime=Warnung - einige Backup-Aufträge verwenden % in ihrem Dateinamen, aber "strftime substitution" ist nicht auf die Modulkonfigurationsseite aktiviert.
+
 dump_dir=Verzeichnis zum Sichern
 dump_dirs=Verzeichnisse zum Sichern
 dump_fs=Dateisystem
@@ -108,6 +109,7 @@ dump_remount=Erneutes Mounten mit <tt>noatime</tt>-Option während der Sicherung
 dump_eftpupdate=Hinzufügen von Dateien zu einem bestehenden Archiv ist nicht möglich bei der Verwendung von FTP.
 dump_eleveldir=Nur Level 0 Backups sind für Verzeichnisse, die nicht Dateisystem Mountpunkte sind, erlaubt
 dump_eupdatedir=Die <tt>/etc/dumpdates</tt>-Datei kann nur für Verzeichnisse, die Dateisystem-Mount-Punkte aktualisiert werden
+
 edit_err=Erstellung der Sicherung fehlgeschlagen
 edit_edir=Fehlendes Sicherungsverzeichnis
 edit_efs=Dateisysteme vom Typ $1 können mit diesem Modul nicht gesichert werden
@@ -132,9 +134,11 @@ edit_tolevel=$1 von $2 (Level $3)
 edit_special=Backup-Zeitplan
 edit_when=Wann zu sichern
 edit_clone=Klone
+
 save_err=Sicherung fehlgeschlagen
 save_edir=Fehlendes oder ungültiges Verzeichnis
 save_efs=Sicherungsverzeichnis kann nicht auf ein anderes Dateisystem geändert werden
+
 backup_title=Jetzt sichern
 backup_desc=Sicherung von $1 nach $2 wird ausgeführt ..
 backup_reverify=...fertig. Überprüfe nun Backup...
@@ -147,6 +151,7 @@ backup_notape=.. das Backup hat die maximale Größe eines Bandes erreicht. Band
 backup_egone=Backup existiert nicht!
 backup_bg=Starte den Sicherungsprozess im Hintergrund. Sie können diesen in der Sektion <b>Laufende Backups</b> auf der Modulhauptseite verfolgen. Sie werden über das Ende des Backups via E-Mail informiert.
 backup_ecannot=Sie dürfen dieses Verzeichnis nicht sichern
+
 restore_title=Sicherung wiederherstellen
 restore_err=Konnte Backup nicht zurückschreiben
 restore_ecommand=Das Kommando $1, welches zum Wiederherstellen von Dateisystem $2 benötigt wird, wurde nicht gefunden. Möglicherweise ist es nicht installiert.
@@ -190,6 +195,7 @@ restore_gzip=Dekomprimiere GZip-Archive?
 restore_keep=Keine Dateien überschreiben?
 restore_emulti=Von einem Band können keine Backups über mehrere Dateien zurückgeschrieben werden
 restore_emulti2=Von einem remoten Server können keine Backups über mehrere Dateien zurückgeschrieben werden
+
 log_create=Erstellte Sicherungskonfiguration für $1
 log_modify=Geänderte Sicherungskonfiguration für $1
 log_delete=Gelöschte Sicherungskonfiguration für $1
@@ -197,13 +203,16 @@ log_backup=$1 nach $2 gesichert
 log_bgbackup=Starte Backup von $1 auf $2
 log_restore=Wiederhergestelltes Backup von $1
 log_kill=Backup für $1 abgebrochen
+
 kill_err=Konnte Backup nicht terminieren
 kill_egone=Läuft nicht mehr!
 kill_ecannot=Sie dürfen dieses Backup nicht beenden
+
 newtape_err=Fehler beim Erkennen eines neuen Bandes
 newtape_egone=Das Backup läuft nicht mehr!
 newtape_estatus=Das Backup wartet nicht mehr auf ein neues Band
 newtape_ecannot=Sie dürfen dieses Backups nicht managen
+
 acl_edit=Darf Backups erzeugen und editieren?
 acl_restore=Darf Backups zurückschreiben?
 acl_cmds=Kann vor-und-nach Befehle bearbeiten?
@@ -211,8 +220,10 @@ acl_extra=Kann extra Kommandozeilen Parameter editieren?
 acl_dirs=Erlaubte Verzeichnisse für Backups
 acl_all=Alle Verzeichnisse
 acl_list=Nur aufgelistete..
+
 delete_err=Fehlgeschlagen Backups zu löschen
 delete_enone=Nichts ausgewählt
+
 email_already=Backup läuft bereits mit PID $1.
 email_ebefore=Vor-Backup-Befehl fehlgeschlagen!
 email_verify=Überprüfe Backups...
@@ -220,5 +231,6 @@ email_eafter=Nach-Backup-Befehl fehlgeschlagen!
 email_subject=Backup $1 von $2
 email_ok=Backup erfolgreich
 email_failed=Backup fehlgeschlagen!
+
 newtape_subject=Tape wechseln $1 für Backup $2 von $3
 newtape_body=Das Backup von $2 auf $3 ist die maximale Anzahl von Daten auf Band $1 wurde erreicht. Sie müssen ein neues Band laden und die "Tape Loaded"-Link in Filesystem-Backup Webmin das Modul für die Sicherung drücken, um fortzufahren.

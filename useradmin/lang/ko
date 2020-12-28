@@ -19,9 +19,11 @@ index_equals=같음
 index_matches=일치함
 index_nequals=같지 않음
 index_nmatches=일치하지 않음
+
 search_title=검색 결과
 search_notfound=일치하는 사용자가 없습니다
 search_gnotfound=일치하는 그룹이 없습니다
+
 uedit_title=사용자 편집
 uedit_title2=사용자 작성
 uedit_details=사용자 세부 정보
@@ -72,6 +74,7 @@ uedit_eedit=이 사용자를 편집할 수 없습니다
 uedit_admin=루트 사용자만 암호를 변경할 수 있습니다
 uedit_admchg=사용자가 새 암호를 선택해야 합니다
 uedit_nocheck=암호 제한을 선택하지 마십시오
+
 usave_err=사용자를 저장하지 못했습니다
 usave_eedit=이 사용자를 편집할 수 없습니다
 usave_ecreate=새 사용자를 작성할 수 없습니다
@@ -105,6 +108,7 @@ usave_emove=홈 디렉토리를 이동하지 못했습니다: $1
 usave_emkdir=홈 디렉토리를 작성할 수 없습니다: $1
 usave_echown=홈 디렉토리를 chown할 수 없습니다: $1
 usave_echmod=홈 디렉토리를 chmod할 수 없습니다: $1
+
 gedit_title=그룹 편집
 gedit_title2=그룹 작성
 gedit_details=그룹 세부 정보
@@ -115,6 +119,7 @@ gedit_homedirs=홈 디렉토리
 gedit_allfiles=모든 파일
 gedit_ecreate=새 그룹을 작성할 수 없습니다
 gedit_eedit=이 그룹을 편집할 수 없습니다
+
 gsave_err=그룹을 저장하지 못했습니다
 gsave_eedit=이 그룹을 편집할 수 없습니다
 gsave_ecreate=새 그룹을 작성할 수 없습니다
@@ -126,6 +131,7 @@ usave_ehigid=GID는 $1보다 작거나 같아야 합니다
 usave_egidused=그룹 $1이(가) GID $2을(를) 이미 사용하고 있습니다
 usave_efromroot=루트(/)에서 홈 디렉토리를 이동할 수 없습니다
 usave_etoroot=루트(/)로 홈 디렉토리를 이동할 수 없습니다
+
 logins_title=기록된 로그인
 logins_head=$1의 기록된 로그인
 logins_from=로그인 시작 위치
@@ -138,6 +144,7 @@ logins_none=기록된 로그인 없음
 logins_elist=로그인을 나열할 수 없습니다
 logins_elistu='$1'의 로그인을 나열할 수 없습니다
 logins_local=로컬
+
 udel_title=사용자 삭제
 udel_err=사용자를 삭제하지 못했습니다
 udel_euser=이 사용자를 삭제할 수 없습니다
@@ -154,6 +161,7 @@ udel_sure2=사용자 $1을(를) 삭제하시겠습니까?
 udel_del1=사용자 삭제
 udel_del2=사용자 및 홈 디렉토리 삭제
 udel_others=경고! 홈 디렉토리 $1에 다른 사용자 소유의 파일이 $2개 있습니다.
+
 gdel_title=그룹 삭제
 gdel_err=그룹을 삭제하지 못했습니다
 gdel_egroup=이 그룹을 삭제할 수 없습니다
@@ -163,6 +171,7 @@ gdel_done=.. 완료
 gdel_eprimary=사용자 $1의 주 그룹입니다
 gdel_sure=그룹 $1을(를) 삭제하시겠습니까?
 gdel_del=그룹 삭제
+
 many_title=여러 사용자 작성
 many_desc=이 양식은 업로드된 텍스트 파일이나 로컬 텍스트 파일에서 한 번에 여러 명의 사용자를 작성할 수 있게 해 줍니다. 파일의 각 행에서 다음과 같은 형식으로 사용자를 한 명씩 지정합니다.
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -186,6 +195,7 @@ many_eshell=$1 행에 잘못된 쉘이 있습니다: $2
 many_emkdir=홈 디렉토리 $1을(를) 작성하지 못했습니다: $2
 many_egtaken=그룹 이름이 $1 행에서 이미 사용되고 있습니다: $2
 many_ok=사용자 $1 작성됨
+
 acl_uedit=편집할 수 있는 Unix 사용자
 acl_uedit_all=모든 사용자
 acl_uedit_none=사용자 없음
@@ -218,6 +228,7 @@ acl_lnone=사용자 없음
 acl_lall=모든 사용자
 acl_epeopt=암호 만료 옵션을 편집할 수 있습니까?
 acl_egp=그룹 암호를 편집할 수 있습니까?
+
 log_urename=사용자 이름이 $1에서 $2(으)로 바뀜
 log_umodify=사용자 $1 수정됨
 log_ucreate=사용자 $1 작성됨
@@ -226,6 +237,7 @@ log_udeletehome=사용자 $1 및 디렉토리 $2 삭제됨
 log_gmodify=그룹 $1 수정됨
 log_gcreate=그룹 $1 작성됨
 log_gdelete=그룹 $1 삭제됨
+
 batch_title=배치 파일 실행
 batch_desc=이 양식에서는 업로드된 텍스트 파일이나 로컬 텍스트 파일에서 한 번에 여러 명의 사용자를 작성, 수정 또는 삭제할 수 있습니다. 파일의 각 행에서 첫번째 필드에 따라 취할 조치를 하나씩 지정합니다. 행 형식은 다음과 같습니다.
 batch_desc2=<b>작성</b>:username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire<p><b>수정</b>:oldusername:username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire<p><b>삭제</b>:username

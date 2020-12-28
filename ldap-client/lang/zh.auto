@@ -14,6 +14,7 @@ index_restart=重新启动LDAP客户端守护程序
 index_restartdesc=通过重新启动本地LDAP客户端守护程序来应用当前配置。
 index_atboot=在启动时启动LDAP客户端
 index_atbootdesc=更改系统启动时是否启动LDAP客户端守护程序。
+
 server_title=LDAP服务器配置
 server_header=LDAP服务器和登录选项
 server_host=LDAP服务器主机名
@@ -51,6 +52,7 @@ server_etimelimit=缺少或无效的连接时间限制
 server_ecacert=缺少或无效的CA证书文件
 server_euport=服务器 $1的端口丢失或无效
 server_euri=没有输入LDAP服务器
+
 base_title=LDAP搜索基础
 base_header=LDAP目录搜索位置
 base_base=全球搜寻基地
@@ -86,6 +88,7 @@ base_enetmasks=网络掩码名称的缺少基数
 base_ealiases=缺少电子邮件别名的基础
 base_enetgroup=网络组的基础缺失
 base_etimelimit=缺少或无效的搜索时间限制
+
 pam_title=验证选项
 pam_header=PAM身份验证和密码设置
 pam_filter=附加LDAP过滤器
@@ -106,10 +109,12 @@ pam_efilter=缺少其他LDAP过滤器
 pam_elogin=用户名的LDAP属性缺失或无效
 pam_egroupdn=缺少LDAP组以强制加入
 pam_emember=群组成员的LDAP属性缺失或无效
+
 switch_title=使用LDAP的服务
 switch_service=服务
 switch_srcs=数据源
 switch_return=使用LDAP的服务
+
 ldap_emodule=未安装与LDAP服务器对话所需的 $1 Perl模块。 <a href='$2'>单击此处</a>立即下载并安装Webmin。
 ldap_emodule2=未安装与LDAP服务器对话所需的 $1 Perl模块。
 ldap_econf=在系统上找不到LDAP客户端配置文件 $1
@@ -119,6 +124,7 @@ ldap_elogin=未能作为 $2绑定到LDAP服务器 $1 : $3
 ldap_anon=匿名
 ldap_eparse=无法解析LDAP服务器URI $1
 ldap_etls=切换到TLS模式失败： $1
+
 browser_title=LDAP浏览器
 browser_econn=不能使用LDAP浏览器： $1
 browser_base=浏览：
@@ -129,6 +135,7 @@ browser_attrs=对象属性
 browser_parent=浏览父级
 browser_none=没有
 browser_sel=好
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=域名解析
@@ -142,6 +149,7 @@ order_user=用户打印机
 order_xfn=XFN
 order_mdns4=组播DNS
 order_mdns4_minimal=组播DNS（最小）
+
 desc_aliases=Sendmail别名
 desc_mail=Sendmail别名
 desc_hosts=主机地址
@@ -177,6 +185,7 @@ desc_printers=印表机
 desc_ipnodes=IP节点
 desc_timezone=时区
 desc_locale=语言环境
+
 eswitch_title=编辑服务
 eswitch_egone=服务不存在！
 eswitch_header=服务详情
@@ -196,6 +205,7 @@ eswitch_continue=继续搜寻
 eswitch_none=没有
 eswitch_err=保存服务失败
 eswitch_enone=未选择来源！
+
 log_server=修改的LDAP服务器配置
 log_base=修改后的LDAP搜索库
 log_pam=修改的身份验证选项
@@ -205,6 +215,7 @@ log_delboot=引导时禁用了LDAP客户端守护程序
 log_start=启动LDAP客户端守护程序
 log_stop=停止的LDAP客户端守护程序
 log_restart=重新启动LDAP客户端守护程序
+
 check_title=验证LDAP配置
 check_base=查找用户的LDAP基础 ..
 check_ebase=..在客户端配置中找不到基础！

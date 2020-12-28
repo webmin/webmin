@@ -3,8 +3,10 @@ index_clink=Lehet, hogy nincs telepítve, vagy a <a href='$1'>modul konfiguráci
 index_return=modul index
 index_atboot=Induláskor indul?
 index_atbootdesc=Ezt a beállítást módosíthatja annak ellenőrzéséhez, hogy az iSCSI kliens elinduljon-e a rendszerindításkor. Erre az iSCSI kiszolgálókról telepített fájlrendszerek automatikus csatlakoztatásához van szükség.
+
 check_econfig=A (z) $1 iSCSI kliens konfigurációs fájl nem található a rendszerén.
 check_eiscsiadm=A (z) $1 iSCSI kliens adminisztrációs program nem található a rendszerén.
+
 auth_title=Hitelesítési beállítások
 auth_header=iSCSI kliens és szerver hitelesítés
 auth_name=Helyi rendszer kezdeményező neve
@@ -29,6 +31,7 @@ auth_edpassword=Hiányzik a kiszolgáló felfedezési jelszava
 auth_edusername_in=Hiányzik a kliens felfedezési felhasználóneve
 auth_edpassword_in=Hiányzik a kliens felfedezési jelszava
 auth_egen=Nem sikerült új nevet létrehozni!
+
 timeout_title=iSCSI időtúllépések
 timeout_header=iSCSI kliens időtúllépési beállításai
 timeout_timeout=Ideje várni, mielőtt kudarcot vall az SCSI parancsokhoz
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Hiányzó vagy nem numerikus idő a ping megvárásár
 timeout_eabort_timeout=Hiányzik vagy nem numerikus idő vár a megszakítási válaszra, mielőtt meghiúsul
 timeout_elu_reset_timeout=Hiányzik vagy nem numerikus idő vár a logikai egységre adott válaszra, mielőtt meghiúsul
 timeout_etgt_reset_timeout=Hiányzik vagy nem numerikus idő vár a célválaszra, mielőtt kudarcot vall
+
 iscsi_title=iSCSI opciók
 iscsi_header=Egyéb iSCSI lehetőségek
 iscsi_startup=Összekapcsolja a munkameneteket a rendszerindításkor?
@@ -62,6 +66,7 @@ iscsi_err=Az iSCSI beállítások mentése nem sikerült
 iscsi_eretry=Hiányzó vagy nem numerikus számú alkalom a bejelentkezés újbóli kipróbálására
 iscsi_ecmds=Hiányzó vagy nem numerikus maximális parancs, amely soronként sorba áll
 iscsi_equeue=Hiányzó vagy nem numerikus maximális parancs, amely sorba áll az eszközönként
+
 ifaces_title=iSCSI interfészek
 ifaces_elist=Nem sikerült felsorolni az interfészeket : $1 
 ifaces_name=Interfész neve
@@ -78,11 +83,13 @@ ifaces_hwaddress=Mac cím
 ifaces_ifacename=Forrás interfész
 ifaces_ipaddressdef=Automatikus
 ifaces_notset=Automatikus
+
 iadd_err=Nem sikerült felületet hozzáadni
 iadd_eclash=A $1 nevű felület már létezik
 iadd_eipaddress=Hiányzó vagy érvénytelen forrás IP-cím
 iadd_ehwaddress=Hiányzó vagy érvénytelen MAC-cím
 iadd_ename=Hiányzik a felület neve, vagy érvénytelen karaktereket tartalmaz
+
 difaces_err=Nem sikerült eltávolítani az interfészeket
 difaces_enone=Egy sincs kiválasztva
 difaces_edelete=A (z) $1 interfész eltávolítása sikertelen : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Távolítsa el az interfészeket
 difaces_target=iSCSI cél
 difaces_ip=iSCSI szerver
 difaces_users=Az interfészeket használó egyes kapcsolatok jelenleg aktívak, és az interfészek eltávolításakor nem működnek :
+
 conns_title=iSCSI kapcsolatok
 conns_elist=Nem sikerült felsorolni a kapcsolatokat : $1 
 conns_ip=Szerver IP
@@ -113,6 +121,7 @@ conns_return=a kapcsolatok listája
 conns_iface=iSCSI interfész
 conns_ifacedef=Válassza ki automatikusan
 conns_ifaceerr=Az interfészek letöltése nem sikerült : $1 
+
 add_title=Add hozzá az iSCSI kapcsolatot
 add_err=Nem sikerült hozzáadni az iSCSI kapcsolatot
 add_ehost=Hiányzik vagy nem oldható meg a gazdagépnév
@@ -129,6 +138,7 @@ add_on=$1 a $2 -en
 add_auth=Bejelentkezés a szerverre
 add_auth1=Használjon alapértelmezett hitelesítési módszert
 add_auth0=Jelentkezzen be mint $2 a $3 jelszóval, $1 módszerrel
+
 dconns_err=Nem sikerült megszakítani a kapcsolatokat
 dconns_enone=Egy sincs kiválasztva
 dconns_edelete=A (z) $2 cél eltávolítása a (z) $1 gazdagépről sikertelen : $3 
@@ -142,6 +152,7 @@ dconns_use=Használva
 dconns_size=Partíció mérete
 dconns_confirm=Távolítsa el a kapcsolatokat
 dconns_unused=Felhasználatlan
+
 vconn_title=iSCSI kapcsolat
 vconn_egone=A kiválasztott kapcsolat már nem létezik!
 vconn_header=iSCSI kapcsolat részletei
@@ -160,8 +171,10 @@ vconn_device3=Állandó eszköznév
 vconn_delete=Húzza ki a kapcsolatot
 vconn_users=Jelenlegi felhasználók
 vconn_size=A lemez mérete
+
 atboot_err=Az indításkor nem sikerült engedélyezni
 atboot_einit=Nincs létező $1 nevű indítási művelet
+
 log_auth=Mentett hitelesítési lehetőségek
 log_timeout=Mentett időtúllépési beállítások
 log_iscsi=Mentett iSCSI beállítások

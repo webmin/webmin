@@ -1,6 +1,7 @@
 check_econfig=„ISCSI“ tikslo konfigūracijos failas $1 jūsų sistemoje nerastas.
 check_eietadm=„ISCSI“ tikslo administravimo komanda $1 jūsų sistemoje nerasta.
 check_einit=Paleidimo veiksmas $1 neegzistuoja
+
 index_title=iSCSI taikinys
 index_clink=Galbūt jis neįdiegtas, arba <a href='$1'>modulio konfigūracija</a> yra neteisinga.
 index_stop=Sustabdykite „iSCSI Target“
@@ -22,8 +23,10 @@ index_noluns=Nė vienas
 index_nousers=Bet kokia
 index_nullio=$1 sektorių RAM diskas
 index_size=Visas dydis
+
 dtargets_err=Nepavyko ištrinti taikinių
 dtargets_enone=Nepasirinkta!
+
 target_title1=Sukurkite „iSCSI“ taikinį
 target_title2=Redaguoti „iSCSI“ tikslą
 target_header=„iSCSI“ bendro naudojimo įrenginio parinktys
@@ -68,11 +71,13 @@ target_noalias=Nė vienas
 target_hdigest=Antraštės kontrolinė suma
 target_ddigest=Duomenų kontrolinė suma
 target_nodigest=Nė vienas
+
 auth_title=Autentifikacijos nustatymai
 auth_header=Numatytosios visų taikinių autentifikavimo parinktys
 auth_iuser=Klientų autentiškumo patvirtinimas
 auth_ouser=Autentifikavimas klientams
 auth_err=Nepavyko išsaugoti autentifikavimo nustatymų
+
 conn_title=Ryšio nustatymai
 conn_header=Numatytosios jungčių parinktys visiems taikiniams
 conn_sessions=Maksimalus vienu metu vykstančių sesijų skaičius
@@ -91,6 +96,7 @@ conn_emaxrecv=Trūksta arba neskaitinis ilgiausias gavimo segmentas
 conn_emaxxmit=Trūksta arba neskaitinis didžiausias perdavimo segmento ilgis
 conn_emaxburst=Trūksta didžiausio nei kliento skaičiaus arba ne skaitvardžio
 conn_efirstburst=Trūksta arba neskaičiuojamas maksimalus kliento nepageidaujamų duomenų dydis
+
 timeout_title=Laiko nustatymo nustatymai
 timeout_header=Kliento skirtojo laiko parinktys
 timeout_nopi=Intervalas tarp taškų laisvąja eiga
@@ -98,6 +104,7 @@ timeout_nopinone=Niekada ne ping
 timeout_secs=sekundžių
 timeout_nopt=Laikas laukti ping atsakymo
 timeout_noptnone=Tas pats, kaip „ping“ laikas
+
 addr_title=Serverio adresas ir prievadas
 addr_header=„iSCSI“ serverio tinklo parinktys
 addr_addr=Klausykite IP adreso
@@ -110,18 +117,21 @@ addr_err=Nepavyko išsaugoti serverio adreso
 addr_eaddr=Klausomas adresas turi būti IP adresas
 addr_eport=Uostas, kurio reikia klausytis, turi būti skaičius
 addr_edebug=Derinimo lygis turi būti skaičius
+
 initiators_title=Leidžiami klientų adresai
 initiators_none=Dar nebuvo apibrėžtas leidžiamas kliento adresas. Joks klientas negalės prisijungti.
 initiators_ips=Leidžiami klientai
 initiators_title1=Pridėti leistinus klientų adresus
 initiators_title2=Redaguoti leistinus klientų adresus
 initiators_header=Leidžiami „iSCSI“ klientai
+
 targets_title=Leidžiami serverių adresai
 targets_none=Dar nebuvo apibrėžtas leidžiamas serverio adresas. Joks klientas negalės prisijungti.
 targets_ips=Leidžiamos serverio sąsajos
 targets_title1=Pridėti leistinus serverio adresus
 targets_title2=Redaguoti leistinus serverių adresus
 targets_header=Leidžiama „iSCSI“ serverio sąsaja tikslui
+
 allow_target=Tikslinis vardas
 allow_move=Judėk
 allow_delete=Išštrinti pasirinktus
@@ -133,17 +143,21 @@ allow_return=leidžiami taikiniai ir adresai
 allow_err=Nepavyko išsaugoti leidžiamų adresų
 allow_eaddr=Adresas $1 negalioja. Tai turi būti IPv4 adresas, IPv4 tinklas/kaukė arba IPv6 adresas laužtiniuose skliaustuose.
 allow_eaddrs=Nėra adresų, kuriuos būtų galima įvesti
+
 dallow_err=Nepavyko ištrinti leidžiamų adresų
 dallow_enone=Nepasirinkta
+
 manual_title=Redaguoti konfigūracijos failą
 manual_desc=Norėdami redaguoti „iSCSI“ serverio konfigūracijos failą $1, naudokite žemiau esantį teksto lauką. Būkite atsargūs, nes jūsų įvestis nebus patvirtinta!
 manual_err=Nepavyko išsaugoti konfigūracijos failo
 manual_edata=Neįvestas turinys!
+
 start_err=Nepavyko paleisti iSCSI serverio
 stop_err=Nepavyko sustabdyti iSCSI serverio
 restart_err=Nepavyko iš naujo paleisti iSCSI serverio
 atboot_err=Nepavyko įgalinti įkrovos metu
 atboot_einit=Pradinio scenarijaus $1 neegzistuoja
+
 log_create_target=Sukurtas tikslas $1 
 log_delete_target=Ištrintas $1 tikslas
 log_modify_target=Pakeistas tikslas $1 

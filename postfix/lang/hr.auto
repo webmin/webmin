@@ -3,6 +3,7 @@ connect_elogin=Nije uspjela prijava u bazu podataka $1:$2.
 index_title=Poslužitelj poštanskih pošta
 index_epath=Naredba Postfix kontrole $1 nije instalirana na vašem sustavu. Možda je vaša konfiguracija <a href='$2'>modula</a> netočna ili Postfix nije instaliran.
 index_postfix=Postfix
+
 internal_error=Unutarnja greška
 index_econfig=Naredba Postfix config $1 ne postoji. Možda je vaša konfiguracija <a href='$2'>modula</a> netočna.
 index_esuper=Naredba nadzornika Postfix $1 ne postoji. Možda je vaša konfiguracija <a href='$2'>modula</a> netočna.
@@ -14,8 +15,10 @@ index_startmsg=Kliknite ovaj gumb za pokretanje Postfix poslužitelja pošte. Do
 index_reloadmsg=Kliknite ovaj gumb kako bi Postfix ponovo pročitao sve njegove konfiguracijske datoteke. Ovo može biti korisno ako su konfiguracijske datoteke Postfix ručno izmijenjene.
 index_version=Verzija postfiksa $1
 opts_err=Spremanje opcija nije uspjelo
+
 check_error=Pogreška prilikom provjere trenutne konfiguracije Postfix-a. Ručno ispravite Postfix konfiguraciju.
 check_manual=Ručno uredite konfiguracijsku datoteku Postfix.
+
 address_rewriting_title=Prepisivanje adresa i maskiranje
 address_rewriting_ecannot=Nije vam dopušteno uređivanje prepisivanja adresa i maskiranja
 aliases_title=Aliases za poštu
@@ -42,9 +45,11 @@ aliases_type5=Automatski odgovori datoteku $1
 aliases_type6=Primijeni datoteku filtra $1
 aliases_none=nijedan
 aliases_delete=Izbrišite odabrana imena
+
 postfinger_title=Provjera konfiguracije
 postfinger_show=Pokazati
 postfinger_ecannot=Ne možete provjeriti Postfix konfiguraciju
+
 mailclean_title=Očistite poštu pošte
 mailclean_ecannot=Nema privilegija za čišćenje MailQueues-a
 mailclean_active=Aktivno-Red
@@ -53,6 +58,7 @@ mailclean_deferred=Odgođeno-Red
 mailclean_defer=Odgodi-Red
 mailclean_all=Svi redovi
 mailclean_search=Ključna-String
+
 aform_type0=nijedan
 aform_type1=Email adresa
 aform_type2=Adrese u datoteci
@@ -68,6 +74,7 @@ aform_val=Alias to
 aform_afile=Uredi ..
 aform_return=pseudonim
 aform_cmt=Opis
+
 asave_err=Spremanje aliasa nije uspjelo
 asave_eaddr='$1' nije valjana adresa
 asave_ealready=Alias za "$1" već postoji
@@ -78,11 +85,13 @@ asave_etype4='$1' nije važeći program ili ne postoji
 asave_etype5=Datoteka za automatsko odgovaranje '$1' nije valjana
 asave_etype4none=Nije dat program
 asave_etype6=Datoteka filtra "$1" nije valjana
+
 afile_title=Uredi datoteku adresa
 afile_desc=Područjem teksta u nastavku uredite adrese u datoteci $1.
 afile_efile=Nije vam dopušteno uređivanje $1.
 afile_undo=Poništi promjene
 afile_ewrite=Pisanje u datoteku adresa nije uspjelo : $1
+
 ffile_title=Uredi datoteku filtra
 ffile_desc=Upotrijebite donji obrazac za postavljanje pravila filtra u datoteci $1.
 ffile_efile=Nije vam dopušteno uređivanje $1.
@@ -98,6 +107,7 @@ ffile_other=Inače proslijedite na $1
 ffile_err=Spremanje datoteke filtra nije uspjelo
 ffile_ematch=Nedostaje utakmica
 ffile_eaction=Nedostaje adresa za prosljeđivanje
+
 rfile_title=Uređivanje datoteke Automatski odgovor
 rfile_desc=Područje teksta u nastavku uredite automatsku poruku u $1. Poruka može sadržavati makronaredbe $SUBJECT, $FROM, $TO, $DATE i $BODY koje će se proširiti kad je aktivirano automatsko odgovaranje.
 rfile_desc2=Možete postaviti i zaglavlja e-pošte koja dodaju ili zamjenjuju zadane postavke korištene u automatskom odgovoru stavljanjem redaka poput: <br><tt> Od: foo@bar.com </tt><br> <tt>Tema: Na odmor</tt> <br> na vrhu poruke, odvojen od tijela jednim praznim retkom.
@@ -116,11 +126,13 @@ rfile_from=Od: adresa za odgovor
 rfile_auto=Automatski (na temelju adrese primatelja)
 rfile_efrom=Nedostaje: adresa
 rfile_fromdesc=O: Od adrese: uvijek treba navesti gdje je to moguće, jer automatska metoda možda nije pouzdana.
+
 general_title=Opće mogućnosti
 general_title_sensible=Najkorisnije opće opcije
 general_title_others=Ostale opće mogućnosti
 general_ecannot=Nije vam dopušteno uređivanje Općih opcija
 what_is_it=Što je?
+
 opts_default=Zadano
 opts_none=nijedan
 opts_nomap=Nije postavljena karta
@@ -140,10 +152,12 @@ opts_mail_owner=Vlasnik pošte
 opts_default_privs=Zadana prava dobavljača
 opts_inet_interfaces=Mrežna sučelja za primanje pošte
 opts_all_interfaces=svi
+
 opts_local_recipient_maps=Odbijte nepoznate lokalne korisnike
 opts_no=Ne
 opts_save=Spremite i primijenite
 opts_edir=Dopušteno vam je samo određivanje datoteka s mapama pod $1
+
 opts_allow_percent_hack=Prepišite "user%domain" u "user@domena"
 opts_append_at_myorigin=Prepiši "user" u "user@$mydomain"
 opts_append_dot_mydomain=Prepišite "user@host" u "user@host.$mydomain"
@@ -153,13 +167,17 @@ opts_swap_bangpath=Prepišite "site! User" u "user @ site"
 opts_masquerade_domains=Maskiranje adresa
 opts_masquerade_exceptions=Maskiranje izuzetaka
 index_return=Konfiguracija postfiksa
+
 opts_alias_maps=Alias baze podataka koje koristi lokalni agent za dostavu
 opts_alias_database=Alias baze podataka izgrađene naredbom "newaliases"
 aliases_warning=Upozorenje: <ul><li> kada prvo polje nije prazno, zadana naredba generiranja aliasa Postfix koristi se za izgradnju odgovarajućih baza podataka; <li>else upotrebljava se naredba kompatibilnosti Sendmaila "newaliases", to će koristiti baze podataka drugog polja.</ul>
+
 aliases_name=Ime
 aliases_value=Alias za. ..
+
 new_alias=Izradite novi pseudonim
 new_aliasmsg=Kliknite ovaj gumb da biste stvorili novi pseudonim
+
 local_delivery_ecannot=Nije vam dopušteno uređivanje lokalnih opcija isporuke
 local_delivery_title=Lokalna dostava
 opts_local_transport=Naziv prijevoza za lokalne isporuke
@@ -185,6 +203,7 @@ opts_local_destination_recipient_limit=Maksimalan broj primatelja po lokalnoj is
 opts_local_destination_recipient_limit_default=Zadano
 opts_prepend_delivered_header=Dodajte <tt>Isporučeno za:</tt> kada. ..
 opts_prepend_delivered_header_default=Zadano
+
 resource_title=Opća kontrola resursa
 resource_ecannot=Nije vam dopušteno uređivanje parametara kontrole resursa
 opts_bounce_size_limit=Maksimalna veličina odbijene poruke
@@ -204,6 +223,7 @@ opts_qmgr_message_recipient_limit=Maks. Broj primatelja u memoriji
 opts_queue_minfree=Min. Slobodnog prostora u datotečnom sustavu čekanja
 opts_stale_lock_time=Maksimalno vrijeme nakon kojeg se otpušta ustajalo zaključavanje
 opts_transport_retry_time=Vrijeme u sekundama između pokušaja kontaktiranja slomljenog MDT-a
+
 opts_always_bcc=Adresa koja prima bcc svake poruke
 opts_always_bcc_none=nijedan
 opts_daemon_timeout=Istek vremena za rješavanje zahtjeva
@@ -242,6 +262,7 @@ opts_trigger_timeout=Maksimalno vrijeme za slanje okidača demonu
 opts_delay_warning_time=Vrijeme u satima prije slanja upozorenja da nema isporuke
 opts_delay_warning_time_default2=Zadani postfiks
 opts_content_filter_default=nijedan
+
 smtpd_title=Opcije SMTP poslužitelja
 smtpd_ecannot=Nije vam dopušteno uređivanje opcija SMTP poslužitelja
 opts_disable_vrfy_command=Onemogući SMTP VRFY naredbu
@@ -273,6 +294,7 @@ smtpd_nomap=Još nije upisana karta dopuštenih adresa za prenošenje.
 smtpd_nomap2=Još nije upisana karta za ograničenja adresa pošiljatelja.
 smtpd_map=Dopuštene adrese za prenošenje
 smtpd_map2=Ograničenja na adrese pošiljatelja
+
 smtp_title=Opcije SMTP klijenta
 smtp_ecannot=Nije vam dopušteno uređivanje opcija SMTP klijenta
 opts_best_mx_transport=Akcija kada je navedena kao najbolji MX domaćin
@@ -293,6 +315,7 @@ opts_smtp_data_done_timeout=Vrijeme čekanja na čekanje odgovora do kraja ".
 opts_smtp_quit_timeout=Istek vremena čekanja na odgovor na QUIT
 opts_smtp_use_tls=Koristite TLS za SMTP veze
 opts_smtp_sasl_security_options=SASL sigurnosne opcije
+
 rate_title=Stope isporuke
 rate_ecannot=Nije vam dopušteno uređivanje opcija stope isporuke
 opts_default_destination_concurrency_limit=Maksimalni broj paralelnih isporuka do istog odredišta
@@ -303,18 +326,21 @@ opts_maximal_queue_lifetime=Maksimalno vrijeme (dani) u redu prije poruke ne mo�
 opts_minimal_backoff_time=Min vrijeme (sekunde) između pokušaja isporuke odgođene poruke
 opts_queue_run_delay=Vrijeme (s) između skeniranja odgođenog reda čekanja
 opts_defer_transports=Prijevoza koji se ne smiju isporučiti
+
 debug_title=Značajke uklanjanja pogrešaka
 debug_ecannot=Nije vam dopušteno uređivanje značajki za uklanjanje pogrešaka
 opts_debug_peer_list=Popis obrazaca domene / mreže za koje je omogućen detaljan zapisnik
 opts_debug_peer_level=Razina detaljne evidencije kod podudaranja s gornjim popisom
 debug_version=Postfix modul za Webmin - verzija $1
 opts_edebug=Nedostaje ili nevaljana razina zapisovane verbose - mora biti broj veći od nule
+
 ldap_title=LDAP pretrage
 ldap_ecannot=Nije vam dopušteno uređivanje opcija pretraživanja LDAP
 ldap_non_existent=Čini se da LDAP ne postoji u vašem Postfix sustavu
 opts_ldap_lookup_timeout=Istek vremena pretraživanja baze podataka LDAP
 opts_ldap_search_base=LDAP baze podataka za pretraživanje
 opts_ldap_server_host=Naziv glavnog računala LDAP poslužitelja
+
 canonical_title=Kanonsko preslikavanje
 canonical_ecannot=Nije vam dopušteno uređivanje kanonske konfiguracije mapiranja
 opts_canonical_maps=Tabele pretraživanja mapiranja adresa
@@ -328,6 +354,7 @@ canonical_edit_title=Uređivanje kanonske karte
 canonical_return_sender=pošiljateljeve kanonske karte
 canonical_return_recipient=primatelje kanonske karte
 canonical_return=kanonske karte
+
 mapping_name=Ime
 mapping_value=Karte za. ..
 mapping_delete=Obriši odabrano
@@ -355,6 +382,7 @@ mapping_toomany=Postoje $1 unosi na kartu, što je iznad ograničenja prikaza $2
 mapping_find=Prikaži podudaranja mapiranja:
 mapping_search=traži
 mapping_match=Unosi datoteke mape koji odgovaraju <tt>$1</tt> ..
+
 virtual_title=Virtualne domene
 virtual_ecannot=Nije vam dopušteno uređivanje konfiguracije mapiranja virtualnih domena
 opts_virtual_maps=Tabele pretraživanja preslikavanja domena
@@ -362,29 +390,44 @@ opts_virtual_alias_maps=Tabele pretraživanja preslikavanja domena
 opts_virtual_alias_domains=Domene za izvođenje virtualnog mapiranja
 virtual_same=Iz tablica mapiranja domena
 virtual_return=virtualne domene
+
 transport_title=Transportno mapiranje
 transport_ecannot=Nije vam dopušteno uređivanje konfiguracije transportnog mapiranja
 opts_transport_maps=Tablice za pretraživanje mapiranja prijevoza
 transport_return=karte prijevoza
+
+sni_title=Kartiranje certifikata
+sni_ecannot=Nije vam dopušteno uređivati konfiguraciju preslikavanja certifikata
+opts_sni_maps=Tablice pretraživanja mapiranja certifikata
+sni_return=karte certifikata
+sni_dom=Ime hosta
+sni_certs=Datoteke certifikata
+
 relocated_title=Premješteno preslikavanje
 relocated_ecannot=Nije vam dopušteno uređivanje konfiguracije premještenog mapiranja
 relocated_return=premještene karte
 opts_relocated_maps=Premještene tablice za pretraživanje preslikavanja
 opts_content_filter=Filter sadržaja e-poštom
+
 map_click=Kliknite bilo koje preslikavanje da biste uredili njegova svojstva:
 no_map=(Trenutno nije definirana nijedna karta. Prvo definirajte kartu, a zatim je možete urediti)
 no_map2=Trenutno nije definirana nijedna karta. Prvo definirajte kartu, a zatim je možete urediti.
+
 stop_efailed=Zaustavljanje Postfiksa nije uspjelo
 stop_ecannot=Ne možete zaustaviti Postfix
+
 start_efailed=Nije uspio pokrenuti Postfix
 start_ecannot=Ne možete pokrenuti Postfix
+
 reload_efailed=Ponovno učitavanje Postfiksa
 reload_ecannot=Ne možete ponovno učitati Postfix
+
 query_get_efailed=Nije uspjelo upit naredbe Postfix config da dobije trenutnu vrijednost parametra $1: <tt>$2</tt>
 query_set_efailed=Nije uspjelo upit naredbe Postfix config da postavi trenutnu vrijednost parametra $1 za $2: <tt>$3</tt>
 regenerate_ecannot=Nije vam dopušteno regenerirati alijase
 regenerate_alias_efailed=Nije uspjela regeneracija aliasa: <tt>$1</tt>
 regenerate_table_efailed=Nije uspjelo regeneriranje tablice $1: <tt>$2</tt>
+
 acl_resource=Mogu li uređivati resurse?
 acl_aliases=Mogu li uređivati pseudonimije?
 acl_aliases_options=Mogu li uređivati opcije aliasa?
@@ -393,6 +436,7 @@ acl_address_rewriting=Može li se uređivati prepisivanje adresa?
 acl_canonical=Može li se uređivati kanonski?
 acl_virtual=Može li se uređivati virtualno?
 acl_transport=Može li se urediti prijevoz?
+acl_sni=Može li uređivati certifikate?
 acl_relocated=Može li se uređivanje preseliti?
 acl_header=Mogu li uređivati čekove zaglavlja?
 acl_local_delivery=Možete li urediti lokalnu dostavu?
@@ -411,6 +455,7 @@ acl_postfinger=Može li provjeriti konfiguraciju postfiksa?
 acl_manual=Može li urediti datoteku config?
 acl_dir=Dopušten direktorij za datoteke s mapama
 acl_bcc=Može li se urediti BCC mapiranje?
+
 boxes_title=Korisničke poštanske sandučiće
 boxes_user=Korisnik
 boxes_size=Veličina poštanskog sandučića
@@ -420,6 +465,7 @@ boxes_sent=Poslana pošta
 boxes_ecannot=Nije vam dopušteno čitati e-poštu
 boxes_toomany=Na vašem sustavu ima previše korisnika da bi popisali sve svoje poštanske sandučiće.
 boxes_go=Pogledajte poštu za korisnika:
+
 mail_title=Korisnička adresa e-pošte
 mail_from=Iz
 mail_date=Datum
@@ -458,6 +504,7 @@ mail_forward=Naprijed
 mail_rfc=Iz linije
 mail_move=Premjesti u:
 mail_eexists=Poruka više ne postoji!
+
 view_title=Pročitajte e-poštu
 view_desc=Poruka $1 u $2
 view_desc2=Poruka $1 za korisnika $2
@@ -486,6 +533,7 @@ view_body=Tekst poruke
 view_afile=Naziv privitka
 view_atype=Vrsta privitka
 view_asize=Veličina datoteke
+
 compose_title=Sastavite e-poštu
 reply_title=Odgovor na e-poštu
 forward_title=Prosljeđivanje e-pošte
@@ -496,6 +544,7 @@ reply_mailforward=Proslijeđene poruke
 reply_attach2=Prilozi na strani klijenta i poslužitelja
 reply_send=Poslati mail
 reply_ecannot=Nije vam dopušteno slanje pošte kao ovog korisnika
+
 send_err=Slanje pošte nije uspjelo
 send_eto=Nedostaje adresa
 send_efrom=Nedostaje s adrese
@@ -509,6 +558,7 @@ send_eperms=Korisnik $1 ne može čitati $2
 send_eperms2=Nije vam dopušteno slanje datoteke $1
 send_epath=Izvršni program Sendmail $1 ne postoji.
 send_ewrapper=Program za sučelje poštanskog poštanskog sandučića ne postoji
+
 search_title=Rezultati pretraživanja
 search_ecannot=Nije vam dopušteno pretraživanje e-pošte ovog korisnika
 search_ematch=Morate unijeti tekst za podudaranje.
@@ -516,6 +566,7 @@ search_efield=Morate odabrati vrstu pretraživanja.
 search_none=Nisu pronađene poruke
 search_results2=$1 poruke e-pošte koji odgovaraju $2 ..
 search_results3=$1 poruke e-pošte ne odgovaraju $2 ..
+
 match_from=Od: šibice
 match_subject=Predmet: utakmice
 match_to=Za: utakmice
@@ -533,6 +584,7 @@ match_!date=Datum: ne podudara se
 match_!body=Tijelo se ne podudara
 match_!size=Veličina je manja od
 match_!headers=Zaglavlja se ne podudaraju
+
 mailq_title=Red čekanja
 mailq_count=$1 poruke
 mailq_none=Trenutno nijedna poruka e-pošte nije na redu za dostavu
@@ -561,15 +613,20 @@ mailq_active=Aktivan
 mailq_deferred=Odgođena
 mailq_hold=Zadržite odabrano
 mailq_unhold=Odabrano zadržite
+
 flushq_title=Red ispiranja
 flushq_desc=Prisiljavanje pokušaja isporuke pošte pomoću naredbe $1 ..
+
 qview_title=Poruka u redu
 qview_desc=Iz datoteke $1
 qview_headers=Zaglavlja e-pošte
 qview_attach=Prilozi
+
 after_err=Pogreška u konfiguraciji postfiksa : $1
+
 searchq_title=Rezultati pretraživanja u redu
 searchq_none=Nije pronađena nijedna poruka u redu.
+
 header_title=Provjera zaglavlja
 header_ecannot=Ne možete uređivati čekove zaglavlja
 header_eregexp=Karta provjere zaglavlja mora biti u formatu <tt>regexp:</tt> <i>ime datoteke</i>
@@ -588,15 +645,18 @@ header_reject=Odbij (s porukom o pogrešci..)
 header_warn=Upozorenje dnevnika (s porukom..)
 header_ename=Nevažeći regularni izraz - mora biti poput / nešto /
 header_return=provjere zaglavlja
+
 body_title=Provjere tijela
 body_ecannot=Ne možete uređivati provjere tijela
 body_eregexp=Karta provjere tijela mora biti u formatu <tt>regexp:</tt> <i>ime datoteke</i>
 opts_body_checks=Tablice za provjeru tijela poruke
 body_return=provjere tijela
+
 dependent_title=Mander transporta ovisnog prijevoza
 dependent_ecannot=Nije vam dopušteno uređivanje prijevoznih mapiranja ovisnih o pošiljatelju
 dependent_eregexp=Karta transporta ovisna o pošiljatelju mora biti u formatu <tt>regexp:</tt> <i>ime datoteke</i>
 dependent_return=pošiljateljeve prijevozne mape
+
 manual_title=Uredi datoteku karte
 manual_file=Odaberite datoteku karte za uređivanje:
 manual_change=Promijeniti
@@ -604,9 +664,11 @@ manual_editing=Pomoću tekstnog polja u nastavku ručno uredite mapiranja u $1. 
 manual_err=Spremanje datoteke karte nije uspjelo
 manual_efile=Nevažeće ime datoteke mape!
 manual_ecannot=Ne možete ručno uređivati kartografske datoteke
+
 delq_titles=Brisanje poruka
 delq_rusure=Jeste li sigurni da želite izbrisati $1 odabrane poruke u redu?
 delq_confirm=Izbriši poruke
+
 master_title=Poslužiteljski procesi
 master_name=Naziv procesa
 master_enabled=Omogućeno?
@@ -647,8 +709,10 @@ master_einet=Adresa domaćina koju treba slušati može se odrediti samo za inte
 master_ecommand=Nedostaje naredba procesa na poslužitelju
 master_ewakeup=Nedostaje ili nije valjano vrijeme buđenja
 master_emaxprocs=Manjkajući ili nevažeći maksimalni broj postupaka
+
 delete_err=Brisanje mapiranja nije uspjelo
 delete_enone=Nijedna nije odabrana
+
 cmanual_title=Uređivanje datoteka za konfiguriranje
 cmanual_ecannot=Nije vam dopušteno uređivanje konfiguracijske datoteke Postfix
 cmanual_ok=Uredi
@@ -656,10 +720,12 @@ cmanual_efile=Odabrana datoteka nije dio Postfix konfiguracije
 cmanual_file=Uređivanje konfiguracijske datoteke:
 cmanual_edata=Ništa nije ušlo!
 cmanual_err=Konfiguriranje datoteke nije uspjelo
+
 access_return=tablica karte pristupa
 edit_map_file=Uredi datoteku karte
 opts_reject_rbl_client=Traženje crnih popisa u stvarnom vremenu (RBL)
 opts_check_sender_access=Provjerite tablicu karte pristupa pošiljatelja
+
 log_misc=Promijenjene opće opcije
 log_opts=Promijenjeno prepisivanje adresa i maskiranje
 log_aliases=Izmijenjene su opcije aliasa
@@ -667,6 +733,7 @@ log_canonical=Promjena kanonskih opcija mapiranja
 log_virtual=Izmijenjene su mogućnosti virtualne domene
 log_bcc=Izmijenjene su opcije BCC karte
 log_transport=Promijenjene su mogućnosti mapiranja prijevoza
+log_sni=Promijenite mogućnosti mapiranja certifikata
 log_dependent=Izmijenjene su adrese adrese pošiljatelja
 log_relocated=Izmijenjene su mogućnosti izmještanja premještenih
 log_header=Izmijenjene opcije provjere zaglavlja
@@ -744,6 +811,7 @@ log_sender_dependent_default_transport_maps_modify=Izmijenjena adresa ovisna o p
 log_sender_dependent_default_transport_maps_delete=Izbrisana adresa ovisnika pošiljatelja $1
 log_delete_sender_dependent_default_transport_mapss=Izbrisana $1 adrese ovisne o pošiljatelju
 log_manual_sender_dependent_default_transport_mapss=Ručno uređena adresa ovisna o pošiljatelju u $1
+
 sasl_title=Autentifikacija i šifriranje SMTP-a
 opts_smtpd_sasl_auth_enable=Zahtijevate SASL SMTP provjeru autentičnosti?
 opts_smtp_sasl_auth_enable=Koristite SASL SMTP provjeru autentičnosti?
@@ -790,6 +858,7 @@ sasl_nologin=Nije potrebno
 sasl_userpass=Prijavite se kao $1 s lozinkom $2
 sasl_elogin=Nedostaje ili nije valjana SMTP prijava (nisu dopušteni razmaci ili koloni)
 sasl_epass=Nevaljana SMTP lozinka (nisu dopušteni razmaci)
+
 client_title=Ograničenja SMTP klijenta
 client_ecannot=Nije vam dopušteno uređivanje ograničenja SMTP klijenta
 client_restrict=Ograničenja za klijenta
@@ -799,6 +868,7 @@ client_other=Ostala ograničenja :
 client_err=Spremanje ograničenja klijenta nije uspjelo
 client_evalue=Nedostaje vrijednost za ograničenje $1
 client_return=Ograničenja SMTP klijenta
+
 chooser_title=Odaberite Izvor karte
 chooser_header=Izvor karte $1
 chooser_none=nijedan
@@ -854,6 +924,7 @@ chooser_elquery_filter=Nedostaje filtar upita za kartu $1
 chooser_elresult_attribute=Nedostaje ili neispravno ime atributa rezultata za kartu $1
 chooser_elbind_dn=Nedostaje prijava za LDAP poslužitelj za kartu $1
 chooser_elbind_pw=Nedostaje lozinka za LDAP poslužitelj za kartu $1
+
 mysql_ecfile=Konfiguracijska datoteka MySQL $1 nije pronađena
 mysql_ecfile2=Ne mogu pronaći tablicu u MySQL datoteci konfiguracije $1
 mysql_edriver=Nije uspio učitavanje pogonitelja baze podataka $1
@@ -865,6 +936,7 @@ mysql_eupdate=Ažuriranje SQL-a nije uspjelo : $1
 mysql_elist=SQL upit nije uspio : $1
 mysql_esource=Nije pronađen MySQL izvor $1
 mysql_eneed=Konfiguracijski parametar MySQL $1 nije pronađen. Webmin treba ovo da shvati koju će tablicu i polja postaviti.
+
 ldap_ecfile=Konfiguracijska datoteka LDAP $1 nije pronađena
 ldap_eldapmod=Perl modul $1 potreban za komunikaciju s LDAP-om nije instaliran ili nije dostupan
 ldap_eldap=Nije uspjelo povezivanje s poslužiteljem LDAP $1 na portalu $2
@@ -875,6 +947,7 @@ ldap_edelete=LDAP brisanje $1 nije uspjelo : $2
 ldap_equery=LDAP pretraživanje $1 nije uspjelo : $2
 ldap_erename=LDAP preimenovanje $1 u $2 nije uspjelo : $3
 ldap_emodify=Izmjena LDAP-a $1 nije uspjela : $2
+
 bcc_title=BCC mapiranje
 bcc_ecannot=Nije vam dopušteno uređivanje BCC mapiranja
 opts_sender_bcc_maps=Tablice za pretraživanje preslikavanja pošiljatelja BCC

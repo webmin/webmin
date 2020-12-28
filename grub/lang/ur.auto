@@ -8,6 +8,7 @@ index_none=کسی بوٹ کے اختیارات کی وضاحت نہیں کی گ�
 index_efile=The GRUB menu file $1 was not found on your system. Maybe GRUB is not installed, or the <a href='$2'>module configuration</a> is incorrect.
 index_epath=The GRUB executable $1 was not found on your system. Maybe GRUB is not installed, or the <a href='$2'>module configuration</a> is incorrect.
 index_return=اختیارات کی فہرست
+
 title_add=بوٹ آپشن شامل کریں
 title_edit=بوٹ آپشن میں ترمیم کریں
 title_header=بوٹ مینو آپشن کی تفصیلات
@@ -36,6 +37,7 @@ title_echain=لاپتہ یا غلط چینلوڈر فائل
 title_edev=غیر تعاون یافتہ جڑ کی تقسیم کا آلہ$1
 title_einitrd=ابتدائی ramdisk فائل کا نام غائب ہے
 title_lock=پاس ورڈ مقفل ہے؟
+
 global_title=عالمی اختیارات
 global_header=گلوبل بوٹ مینو کے اختیارات
 global_default=پہلے سے طے شدہ بوٹ کا اختیار
@@ -56,12 +58,14 @@ global_edev=غیر تعاون یافتہ انسٹال ڈسک/پارٹیشن$1
 global_eother=غائب یا غلط ڈسک/پارٹیشن
 global_epassword=غائب یا غلط بوٹ پاس ورڈ
 global_epasswordfile=متبادل مینو فائل کا نام غائب ہے
+
 install_title=GRUB انسٹال کریں
 install_err=GRUB انسٹال کرنے میں ناکام
 install_efind=مینو فائل نہیں مل سکی
 install_desc=کمانڈ$2 اور$3 کے ساتھ$1 پر GRUB انسٹال کرنا۔
 install_ok=.. انسٹال مکمل
 install_failed=.. انسٹال ناکام!
+
 log_create_title=بوٹ آپشن$1 تشکیل دیا گیا
 log_delete_title=حذف شدہ بوٹ آپشن$1
 log_modify_title=ترمیم شدہ بوٹ آپشن$1

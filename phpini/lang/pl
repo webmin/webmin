@@ -9,20 +9,25 @@ index_edit=Zarządzaj
 index_manual=Edytuj ręcznie
 index_anyfile=Edytuj inny plik konfiguracyjny PHP:
 index_return=plików konfiguracyjnych
+
 file_global=Globalna konfiguracja PHP
 file_eread=Błąd odczytu $1 : $2
+
 manual_title=Ręczna edycja konfiguracji
 manual_desc=Ta strona pozwala na ręczną edycję pliku konfiguracyjnego PHP. Bądź ostrożny, ponieważ składnia i inne ważne ustawienia nie będą sprawdzane po wykonaniu zmian.
 manual_err=Błąd edycji pliku konfiguracyjnego
 manual_edata=Nie wpisano nowej treści
+
 list_title=Zarządzanie konfiguracją PHP
 list_ecannot=Nie masz uprawnień do zarządzania tym plikiem konfiguracyjnym PHP
 list_return=konfiguracji PHP
+
 vars_title=Zmienne PHP
 vars_register=Włączyć wszystkie dane wejściowe do zmiennych globalnych?
 vars_args=Włączyć parametry linii poleceń do globalnych zmiennych?
 vars_long=Tworzyć tablice w starym stylu jak <tt>HTTP_GET_VARS</tt>?
 vars_err=Błąd zapisywania opcji zmiennych PHP
+
 dirs_title=Ustawienia katalogu
 dirs_header=Ustawienia skryptu PHP i katalogu rozszerzeń
 dirs_include=Przeszukiwane katalogi do dołączenia (include)
@@ -34,6 +39,7 @@ dirs_err=Błąd zapisu ustawień katalogu
 dirs_eincs=Nie wpisano katalogów do przeszukiwania
 dirs_eutmp=Brakujący lub błędny katalog plików tymczasowych
 dirs_eext=Brak katalogu rozszerzeń
+
 db_title=Ustawienia bazy danych
 db_header1=Ustawienia połączenia z bazą danych MySQL
 db_persist=Pozwalać na trwałe połączenia z bazą danych?
@@ -52,6 +58,7 @@ db_emaxlinks=Brakująca lub nieprawidłowa maksymalna liczba wszystkich połącz
 db_etimeout=Brakujący lub nieprawidłowy maksymalny czas połączenia (timeout)
 db_ehost=Brakujący lub nieprawidłowy domyślny host serwer MySQL
 db_eport=Brakujący lub nieprawidłowy domyślny port serwera MySQL
+
 session_title=Opcje sesji
 session_header=Opcje śledzenia sesji PHP
 session_handler=Mechanizm przechowywania sesji
@@ -67,6 +74,7 @@ session_maxlife=Maksymalny czas życia sesji
 session_epath=Brakujący lub nieprawidłowy katalog dla plików sesji
 session_elife=Brakujący lub błędny czas życia ciasteczka
 session_emaxlife=Brakujący lub nieprawidłowy maksymalny czas życia sesji
+
 safe_title=Opcje trybu bezpiecznego
 safe_header=Opcje trybu bezpiecznego dostępu pliku
 safe_on=Włączyć tryb bezpieczny?
@@ -79,6 +87,7 @@ safe_err=Błąd zapisu opcji trybu bezpiecznego
 safe_einclude=Brakujący lub nieprawidłowy dozwolony katalog dołączonych plików
 safe_eexec=Brakujący lub nieprawidłowy katalog dla wykonywanych programów
 safe_ebasedir=Brakujące lub nieprawidłowe ograniczenie operacji na plikach katalogu
+
 limits_title=Ograniczenia zasobów
 limits_header=Opcje limitu pamięci i transferu
 limits_mem=Maksymalna alokacja pamięci
@@ -92,6 +101,7 @@ limits_epost=Brakujący lub błędny maksymalny rozmiar POST HTTP
 limits_eupload=Brakujący lub błędny maksymalny rozmiar wysłanego pliku
 limits_eexec=Brakujący lub błędny maksymalny czas wykonywania
 limits_einput=Brakujący lub nieprawidłowy maksymalny wejściowy czas parsowania
+
 errors_title=Rejestrowanie błędów
 errors_header=Opcje wyświetlania błędów i ich rejestracji
 errors_display=Wyświetlać błędy?
@@ -122,6 +132,7 @@ errors_err=Błąd zapisu rejestrowania błędów
 errors_ereporting=Nie wpisano typu wyrażenia
 errors_emaxlen=Brakujący lub nieprawidłowy maksymalny rozmiar rejestrowanych błędów
 errors_efile=Brakujący plik logowania błędów
+
 misc_title=Inne ustawienia
 misc_header=Różne inne ustawienia PHP
 misc_short=Zezwalać na skrypty PHP zaczynające się na &lt;? ?
@@ -140,6 +151,7 @@ misc_esendmail=Nieprawidłowe polecenie wysyłania e-maili
 misc_esendmail2=Brakujące polecenie do wysyłania e-maili
 misc_include=Pozwalać na otwieranie zdalnych dołączeń (include)?
 misc_timezone=Strefa czasowa PHP
+
 log_manual=Ręcznie edytowano plik $1
 log_vars=Zmieniono zmienne PHP w $1
 log_dirs=Zmieniono ustawienia katalogu w $1
@@ -149,6 +161,7 @@ log_safe=Zmieniono opcje Safe Mode w $1
 log_limits=Zmieniono limity zasobów w $1
 log_errors=Zmieniono rejestrowanie błędów w $1
 log_misc=Zmieniono inne ustawienia w $1
+
 acl_global=Może edytować globalną konfigurację PHP?
 acl_anyfile=Może edytować dowolny plik w konfiguracji PHP?
 acl_manual=Może ręcznie edytować pliki konfiguracyjne?

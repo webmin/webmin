@@ -27,12 +27,14 @@ index_fd=Configuración del Programa de Cliente (FD)
 index_groups=Configuracion de Grupos de Bacula
 index_actions=Acciones de Respaldo y Recuperación 
 index_ocmin=Contribución de <a href=$2 target=_new>Linmin<img align=middle border=0 src='$1'></a>. Traducción por <a href="http://www.skinatech.com">SkinaTech</a>
+
 connect_emysql=No fue posible cargar el soporte DBI para la base de datos $1
 connect_elogin=No fue posible ingresar a la base de datos $1 : $2.
 connect_equery=La base de datos $1 no parece tener las tablas de bacula.
 connect_equery2=Esto puede ser porque el moduloe de Perl de SQLite instalado es demasiado nuevo, y no soporta el formato antiguo usado por Bacula.
 connect_equery3=La base de datos $1 no parece contener tablas de grupos de Bacula.
 esql=SQL error : $1
+
 check_edir=El directorio de configuración de Bacula $1 no se encuentra en su sistema.
 check_ebacula=No se encuentra el comando de control de Bacula $1 
 check_econsole=No se encuentra el comando de consola de Bacula $1 
@@ -41,9 +43,11 @@ check_eclient=Este sistema parece ser mas un <a href='$2'>cliente de Bacula</a> 
 check_econfigs=No se encuentran los archivos de configuración de Bacula en $1
 check_eservers=No se ha definido grupos de servidores de Webmin
 check_engmod=El módulo de grupos de OpenCountry Bacula no está instalado
+
 proc_bacula-sd=Programa de Almacenamiento (SD)
 proc_bacula-fd=Programa Cliente (FD)
 proc_bacula-dir=Programa Director de Bacula (DIR)
+
 stop_err=No fue posible detener Bacula
 start_err=No fue posible iniciar Bacula
 start_einit=No se encuentra el programa de inicio $1
@@ -52,6 +56,7 @@ restart_err=No fue posible re-iniciar Bacula
 apply_err=No fue posible aplicar la configuración
 apply_failed=Un error de configuraci&ocute;n fue encontrado
 apply_problem=No fue posible aplicar la configuración : $1
+
 jobs_title=Trabajos de Respaldo (Jobs)
 jobs_none=Aún no se han definido trabajos de respaldo.
 jobs_name=Nombre del Trabajo
@@ -64,6 +69,7 @@ jobs_add=Agregar un nuevo Trabajo de Respaldo.
 jobs_delete=Borrar los Trabajos seleccionados.
 jobs_return=Listado de Trabajos
 jobs_derr=No fue posible borrar el Trabajo.
+
 filesets_title=Conjuntos de Archivos (FileSets)
 filesets_none=Aun no se han definido conjuntos de archivos para respaldar.
 filesets_name=Nombre del conjunto de archivos
@@ -73,6 +79,7 @@ filesets_delete=Borrar el conjunto de archivos seleccionado
 filesets_return=Listado de conjuntos de archivos
 filesets_derr=No ha sido posible borrar el conjunto de archivos
 filesets_ednone=No se ha seleccionado ninguno
+
 fileset_title1=Crear un conjunto de archivos
 fileset_title2=Editar el conjunto de archivos
 fileset_header=Detalles del conjunto de archivos
@@ -91,6 +98,7 @@ fileset_comp=Tipo de compresión
 fileset_gzipdef=&lt;Nivel de compresión por omisión&gt;
 fileset_gzip=Gzip nivel $1
 fileset_onefs=Limitar el respaldo a un solo sistema de archivos?
+
 clients_title=Clientes 
 clients_none=Aun no se han definido clientes para respaldar.
 clients_name=Nombre del Cliente
@@ -100,6 +108,7 @@ clients_add=Agregar un nuevo cliente
 clients_delete=Borrar clientes seleccionados
 clients_return=listado de clientes
 clients_derr=No ha sido posible borrar el cliente
+
 client_title1=Crear Cliente
 client_title2=Editar Cliente
 client_header=Detalles del cliente a respaldar
@@ -122,6 +131,7 @@ client_efileret=Tiempo de retencion de archivos inválido o inexistente
 client_ejobret=Tiempo de retencion de trabajos inválido o inexistente
 client_echild=Este cliente no puede ser borrado porque esta siendo usado por $1
 client_status=Mostrar estado
+
 job_title1=Crear Trabajo de Respaldo
 job_title2=Editar trabajo de respaldo
 job_header=Detalles de trabajo de respaldo
@@ -150,6 +160,7 @@ job_before=Comando previo al trabajo
 job_after=Comando posterior al trabajo
 job_cbefore=Comando previo al trabajo (en el cliente)
 job_cafter=Comando posterior al trabajo (en el cliente)
+
 schedules_title=Programación de Respaldos
 schedules_none=Ningun horario de backups ha sido definido.
 schedules_name=Programación
@@ -158,6 +169,7 @@ schedules_add=Agregar nueva programación
 schedules_delete=Borrar programaciones seleccionadas
 schedules_return=listado de programaciones
 schedules_derr=No ha sido posible borrar horarios
+
 schedule_title1=Crear Programación de Respaldos
 schedule_title2=Editar programación de respaldos
 schedule_header=Detalles de programación de Backup
@@ -171,6 +183,7 @@ schedule_ename=Nombre de programació inválido o no encontrado
 schedule_eclash=Una programación con ese nombre ya existe
 schedule_etimes=Missing backup times in row $1
 schedule_echild=This schedule cannot be deleted as it is used by $1
+
 backup_title=Correr Trabajo de Respaldo
 backup_header=Backup job details
 backup_job=Job to run
@@ -185,11 +198,13 @@ backup_running=.. the backup job is now running. When complete, the results will
 backup_running2=.. the backup job has been started in the background.
 backup_done=.. backup complete.
 backup_failed=.. the backup did not complete successfully. Check the error message above for details.
+
 gbackup_title=Run Bacula Group Backup Job
 gbackup_run=Starting backup job $1 on $2 clients ..
 gbackup_on=Running backup job on client $1 :
 gbackup_header=Bacula group backup job details
 gbackup_jd=$1 (File set $2 on group $3)
+
 dirstatus_title=Estado del Director 
 dirstatus_sched=Trabajos Programados
 dirstatus_name=Trabajo
@@ -210,12 +225,14 @@ dirstatus_status2=Finalizado
 dirstatus_donenone=No se han corrido trabajos.
 dirstatus_cancel=Cancel Selected Jobs
 dirstatus_refresh=Actualizar lista
+
 clientstatus_title=Estado de Clientes
 clientstatus_err=Failed to fetch status from $1 : $2
 clientstatus_msg=Status from $1 : $2
 clientstatus_show=Show status of client:
 clientstatus_ok=OK
 clientstatus_on=$1 (on $2)
+
 storages_title=Almacenamiento (SD)
 storages_none=Aún no ha sido definindo un almacenamiento (SD).
 storages_name=Nombre del Almacenamiento
@@ -226,6 +243,7 @@ storages_add=Agregar un nuevo almacenamiento.
 storages_delete=Borrar almacenamiento seleccionado
 storages_return=Listado almacenamientos
 storages_derr=No ha sido posible borrar el almacenamiento
+
 storage_title1=Crear almacenamiento
 storage_title2=Editar almacenamiento
 storage_header=Detalles del programa de almacenamiento remoto
@@ -249,6 +267,7 @@ storage_emedia=Missing media type name
 storage_emaxjobs=Missing maximum concurrent jobs
 storage_echild=This client cannot be deleted as it is used by $1
 storage_status=Show Status
+
 devices_title=Dispositivos de Almacenamiento
 devices_none=No dispositivo de almacenamientos have been defined yet.
 devices_name=Device name
@@ -258,6 +277,7 @@ devices_add=Add a new dispositivo de almacenamiento.
 devices_delete=Borrar los dispositivos de almacenamiento seleccionados
 devices_return=Listado de dispositivo de almacenamientos
 devices_derr=No ha sido posibel borrar el dispositivo de almacenamientos
+
 device_title1=Crear Dispositivo de Almacenamiento
 device_title2=Editar dispositivo de almacenamiento
 device_header=Details of file dispositivo de almacenamiento
@@ -276,11 +296,13 @@ device_eclash=A dispositivo de almacenamiento with the same name already exists
 device_emedia=Missing media type name
 device_edevice=Missing or invalid archive device or directory
 device_echild=This client cannot be deleted as it is used by $1
+
 storagestatus_title=Estado Programa Almacenamiento (SD)
 storagestatus_err=Failed to fetch status from $1 : $2
 storagestatus_msg=Status from $1 : $2
 storagestatus_show=Show status of storage daemon:
 storagestatus_ok=OK
+
 label_title=Etiquetar Volumen
 label_header=Details of volume to label
 label_storage=Almacenamiento daemon to label
@@ -296,6 +318,7 @@ label_done=.. labelling successful.
 label_epool=.. could not find pool!
 label_err=Label failed
 label_elabel=No label entered
+
 pools_title=Grupos de Volumenes (Pool)
 pools_none=No volume pools have been defined yet.
 pools_name=Pool name
@@ -305,6 +328,7 @@ pools_add=Add a new volume pool.
 pools_delete=Borrar los pools seleccionados
 pools_return=list of volume pools
 pools_derr=Failed to delete volume pools
+
 pool_title1=Create Volume Pool
 pool_title2=Edit Volume Pool
 pool_header=Details of backup volume pool
@@ -326,6 +350,7 @@ pool_ereten=Missing or invalid retention period
 pool_status=Show Volumes
 pool_autolabel=Automatically label volumes prefix
 pool_maxvolsize=Maximum volume size (e.g. 5G for 5 Gigabytes)
+
 poolstatus_title=Volumes In Pool
 poolstatus_show=Show volumes in pool:
 poolstatus_ok=OK
@@ -339,9 +364,11 @@ poolstatus_status=Estado
 poolstatus_none=There are no volumes currently in this backup pool.
 poolstatus_never=Nunca
 poolstatus_delete=Borrar volumenes seleccionados
+
 dvolumes_err=Failed to delete volumes
 dvolumes_enone=None selected
 dvolumes_ebacula=Bacula error : $1
+
 mount_title=Montar o Desmontar
 mount_header=Almacenamiento mount or un-mount options
 mount_storage=Dispositivo de almacenamiento
@@ -359,8 +386,10 @@ unmount_failed=.. un-mount failed! See the error message above for the reason wh
 mount_return=mount form
 mount_err=Failed to mount dispositivo de almacenamiento
 mount_eslot=Missing or invalid slot number
+
 cancel_err=Failed to cancel jobs
 cancel_enone=None selected
+
 gjobs_title=Bacula Group Backup Jobs
 gjobs_none=No Bacula group backup jobs have been defined yet.
 gjobs_add=Add a new Bacula group backup job.
@@ -368,10 +397,12 @@ gjobs_delete=Delete Selected Jobs
 gjobs_return=list of Bacula group jobs
 gjobs_derr=Failed to delete Bacula group jobs
 gjobs_client=Bacula group to backup
+
 gjob_title1=Create Bacula Group Backup Job
 gjob_title2=Edit Bacula Group Backup Job
 gjob_header=Bacula group backup job details
 gjob_client=Bacula group to backup
+
 groups_title=Bacula Groups
 groups_none=No Bacula groups have been selected for backup by Bacula yet.
 groups_name=Group name
@@ -385,6 +416,7 @@ groups_derr=Failed to delete groups
 groups_noadd=No Bacula groups exist to be selected for backups.
 groups_info=$1 ($2 members)
 groups_already=All Bacula groups have been already added.
+
 group_title1=Create Bacula Group
 group_title2=Edit Bacula Group
 group_header=Details of Bacula group to be backed up
@@ -395,11 +427,13 @@ group_port=Bacula FD port
 group_err=Failed to save Bacula group
 group_eclash=A group with the same name already exists
 group_members=Hosts in Bacula group
+
 sync_title=Bacula Group Synchronization
 sync_header=Automatic Bacula group client synchronization options
 sync_sched=Synchronize on schedule?
 sync_schedyes=Yes, at times selected below ..
 sync_err=Failed to save Bacula group synchronization
+
 log_create_client=Created backup client $1
 log_modify_client=Modified backup client $1
 log_delete_client=Deleted backup client $1
@@ -458,6 +492,7 @@ log_director=Saved global Bacula director configuration
 log_file=Saved Bacula file daemon configuration
 log_storagec=Saved Bacula storage daemon configuration
 log_fixpass=Fixed Bacula console program password
+
 director_title=Configuracion del Director
 director_header=Global Bacula director options
 director_name=Nombre del Director
@@ -471,6 +506,7 @@ director_ename=Missing or invalid director name
 director_eport=Missing or invalid port number
 director_ejobs=Missing or invalid number of concurrent jobs
 director_edir=Missing or non-existant working directory
+
 tls_enable=Enable TLS encryption?
 tls_require=Only accept TLS connections?
 tls_verify=Verify TLS clients?
@@ -482,6 +518,7 @@ tls_ecert=Missing or non-existant TLS certificate file
 tls_ekey=Missing or non-existant TLS key file
 tls_ecacert=Missing or non-existant TLS CA certificate file
 tls_ecerts=For TLS to be enabled, certificate, key and CA files must be specified
+
 file_title=Configuración Programa Cliente
 file_header=Bacula file daemon options
 file_name=File daemon name
@@ -494,6 +531,7 @@ file_ename=Missing or invalid file daemon name
 file_eport=Missing or invalid port number
 file_ejobs=Missing or invalid number of concurrent jobs
 file_edir=Missing or non-existant working directory
+
 fdirectors_title=File Demonio Directors
 fdirectors_none=No directors have been defined yet.
 fdirectors_name=Director name
@@ -502,6 +540,7 @@ fdirectors_add=Add a new director.
 fdirectors_delete=Delete Selected Directors
 fdirectors_return=list of directors
 fdirectors_derr=Failed to delete directors
+
 fdirector_title1=Create File Demonio Director
 fdirector_title2=Edit File Demonio Director
 fdirector_header=Details of controlling remote director
@@ -513,6 +552,7 @@ fdirector_err=Failed to save file daemon director
 fdirector_ename=Missing director name
 fdirector_eclash=A director with the same name already exists
 fdirector_epass=Missing password
+
 sdirectors_title=Almacenamiento Demonio Directors
 sdirectors_none=No directors have been defined yet.
 sdirectors_name=Director name
@@ -521,6 +561,7 @@ sdirectors_add=Add a new director.
 sdirectors_delete=Delete Selected Directors
 sdirectors_return=list of directors
 sdirectors_derr=Failed to delete directors
+
 sdirector_title1=Create Almacenamiento Demonio Director
 sdirector_title2=Edit Almacenamiento Demonio Director
 sdirector_header=Details of controlling remote director
@@ -532,6 +573,7 @@ sdirector_err=Failed to save storage daemon director
 sdirector_ename=Missing director name
 sdirector_eclash=A director with the same name already exists
 sdirector_epass=Missing password
+
 storagec_title=Almacenamiento Demonio Configuracion
 storagec_header=Bacula storage daemon options
 storagec_name=Demonio name
@@ -544,6 +586,7 @@ storagec_ename=Missing or invalid storage daemon name
 storagec_eport=Missing or invalid port number
 storagec_ejobs=Missing or invalid number of concurrent jobs
 storagec_edir=Missing or non-existant working directory
+
 chooser_title=Select Schedule
 chooser_monthsh=Months to execute
 chooser_months=Months of year
@@ -568,11 +611,13 @@ chooser_emonthsrange=Selected months must be contiguous
 chooser_eweekdaysrange=Selected weekdays must be contiguous
 chooser_eweekdaynumsrange=Selected weekdays numbers must be contiguous
 chooser_edaysrange=Selected days of the month must be contiguous
+
 weekdaynum_1=Primero
 weekdaynum_2=Segundo
 weekdaynum_3=Tercero
 weekdaynum_4=Cuarto
 weekdaynum_5=Quinto
+
 restore_title=Recuperar Backup
 restore_title2=Recuperar Backup To Bacula Group
 restore_title3=Recuperar Bacula Group Backup

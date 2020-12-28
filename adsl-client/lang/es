@@ -16,6 +16,7 @@ index_cancel=Cancelar conexión
 index_canceldesc=El cliente ADSL está actualmente intentando establecer conexión. Pulse este botón para cancelar el intento con el comando $1.
 index_cdemand=Cancelar demanda
 index_cdemanddesc=El cliente ADSL esta a la espera para una solicitud de conexion demandada. Haga clic en este boton para detener con el comando $1
+
 index_header=Opciones de configuración del cliente ADSL
 index_desc=La configuración de abajo se aplica a cualquier conexión ADSL iniciada por su sistema. Si la cambia, la conexión debe ser apagada y reiniciada para que las modificaciones surtan efecto.
 index_eth=Interfaz Ethernet
@@ -36,11 +37,13 @@ index_fw_standalone=Para único host
 index_fw_masquerade=Para gateway NAT
 index_connect=Tiempo durante el que se intenta una conexión
 index_forever=Para siempre
+
 start_err=Fallo al lanzar la conexión ADSL
 start_title=Lanzar ADSL
 start_ip=Se ha establecido una conexión ADSL con dirección Ip $1.
 start_demand=Dado que el modo de conexión bajo demanda está habilitado, su conexión ADSL sólo comenzará cuando sea necesario.
 start_bg=La conexión ADSL no comenzó en 20 segundos. El cliente ADSL continuará intentándolo en segundo plano hasta lograrlo.
+
 save_err=Fallo al salvar configuración ADSL
 save_eeth=Interfaz Ethernet sin introducir o no válido
 save_etimeout=Timeout bajo demanda no válido o sin introducir
@@ -49,10 +52,12 @@ save_econnect=Timeout de conexión no válido o sin introducir
 save_emss=Tamaño máximo de paquete no válido o sin introducir
 save_title=Salvar Configuración
 save_desc=La configuración de cliente de ADSL ha sido guardada con éxito, pero no se utilizará hasta que reconecte.
+
 stop_err=Fallo al parar conexión ADSL
 stop_title=Parar ADSL
 stop_ok=Su conexión ADSL se paró con éxito.
 stop_failed=¡Su conexión ADSL aun está activa, por alguna razón!
+
 log_save=Salvada configuración de cliente
 log_stop=Parado ADSL
 log_start=Lanzado ADSL

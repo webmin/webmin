@@ -30,6 +30,7 @@ index_other_google=Google
 index_other_kde=KDE dokumentácia
 index_and=Všetky
 index_or=Zhoda v ktoromkoľvek
+
 search_efor=Neboli vybrané žiadne manuálové stránky pre vyhľadávanie
 search_title=Výsledky vyhľadávania
 search_desc=Popis
@@ -46,21 +47,27 @@ search_custom=Užívateľská dokumentácia
 search_none=Nebola nájdená dokumentácia obsahujúca $1.
 search_for=Pre $1
 search_google=Výsledky vyhľadávania cez Google
+
 howto_title=Dokument HOWTO
 howto_header=Dokument HOWTO $1
 howto_epath=Chybná cesta k HOWTO dokumentom
+
 doc_title=Balíček dokumentácie
 doc_header=Balíček dokumentácie $1
 doc_epath=Chybná cesta k balíčkom dokumentácie
+
 man_title=Manuálová stránka
 man_header=Manuálová stránka pre $1($2)
 man_noentry=Manuálová stránka pre $1 neexistuje!
+
 kernel_title=Dokument jadra
 kernel_header=Dokument jadra $1
 kernel_epath=Chybná cesta k dokumentácii jadra
+
 kde_title=KDE dokumentácia
 kde_header=KDE dokument $1
 kde_epath=Chybná cesta ku KDE dokumentácii
+
 perl_title=Modul Perlu
 perl_header=Dokumentácia pre Perlovský modul $1
 perl_emod=Chybný názov modulu Perl

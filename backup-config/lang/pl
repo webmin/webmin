@@ -20,6 +20,7 @@ index_nostrftime=Ostrzeżenie - niektóre zadania kopii zapasowej używają % w 
 index_tabsched=Zaplanowane kopie zapasowe
 index_tabbackup=Wykonaj kopię zapasową
 index_tabrestore=Przywróć teraz
+
 edit_title1=Utwórz zaplanowaną kopię zapasową
 edit_title2=Edycja zaplanowanych kopii zapasowych
 edit_header=Opcje zaplanowanej kopii zapasowej
@@ -44,9 +45,11 @@ edit_return=kopia zapasowa z
 edit_other=Inne pliki z listy...
 edit_pre=Polecenie przed wykonaniem kopii
 edit_post=Polecenie po wykonaniu kopii
+
 save_err=Błąd zapisu kopii zapasowej
 save_emods=Nie wybrano modułów
 save_ewebmin=Nie wybrano plików konfiguracyjnych webmina lub serwera
+
 backup_mode0=Plik lokalny
 backup_mode1=Serwer FTP
 backup_mode2=Serwer SSH
@@ -63,6 +66,7 @@ backup_egunzip=Kopia zapasowa jest skompresowana, a nie zainstalowano programu <
 backup_euntar=Błąd un-TAR: $1
 backup_enone2=W kopii zapasowej nie ma żadnego z plików dla wybranych modułów
 backup_epre2=Moduł $1 odrzucił przywracanie: $2
+
 backup_err=Błąd wykonywania kopii zapasowej
 backup_edest=Brakujący lub nieprawidłowy plik lokalny
 backup_eserver1=Brakujący lub nieprawidłowy serwer FTP
@@ -78,6 +82,7 @@ backup_title=Konfiguracja kopii zapasowej
 backup_doing=Uruchamianie kopii zapasowej plików konfiguracyjnych modułu do $1 ...
 backup_failed=... błąd! $1
 backup_done=... zakończono. Ostateczny rozmiar kopii zapasowej to $1, zawiera $2 plików.
+
 restore_err=Błąd przywracania
 restore_emods=Nie wybrano modułów lub innych plików
 restore_title=Przywróć konfigurację
@@ -86,22 +91,26 @@ restore_testing=Wyodrębnianie zawartości kopii zapasowej z $1 ...
 restore_failed=... z błędem! $1
 restore_done=... zakończono. Przywrócono $1 plików.
 restore_done2=... pliki zawarte w kopii zapasowej:
+
 nice_ftp=$2 na $1 za pomocą FTP
 nice_ftpp=$2 na $1 port $3 za pomocą FTP
 nice_ssh=$2 na $1 za pomocą SSH
 nice_sshp=$2 na $1 port $3 za pomocą SSH
 nice_upload=załadowany plik
 nice_download=przeglądarka
+
 log_backup=Wykonano kopię zapasową $1 modułów do $2
 log_restore=Przywrócono $1 modułów z $2
 log_create_backup=Utworzono kopię zapasową $1 modułów do $2
 log_modify_backup=Zmodyfikowano kopię zapasową $1 modułów do $2
 log_delete_backup=Usunięto kopię zapasową $1 modułów do $2
 log_run_backup=Wykonano kopię zapasową $1 modułów do $2
+
 run_title=Konfiguracje kopii zapasowej
 run_doing=Uruchamianie kopii zapasowej $1 modułów do $2 ...
 run_ok=... kopia zapasowa zakończona poprawnie.
 run_failed=... błąd kopii zapasowej! Obejrzyj powyższy komunikat błędu.
+
 email_mods=Kopia zapasowa modułów:
 email_failed=do $1 z błędem:
 email_ok=do $1 poprawnie.

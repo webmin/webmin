@@ -25,6 +25,7 @@ index_echeckupdate=Nu a fost detectat niciun sistem de actualizare!
 index_filter=Pachetele de filtrare
 index_filterclear=Ștergeți filtrul
 index_filtered=Se afișează <tt>$1</tt> pachete din <tt>$2</tt>
+
 search_title=Căutare pachete
 search_nomatch=Niciun pachet nu se potrivește cu $1 
 search_none=Nici unul
@@ -37,6 +38,7 @@ search_esearch=Nu ai introdus nimic pentru a căuta!
 search_delete=Dezinstalați pachetele selectate
 search_selall=Selectează tot
 search_invert=Inverseaza selectia
+
 edit_title=Modifica pachetul
 edit_details=Detalii pachet
 edit_desc=Descriere
@@ -53,6 +55,7 @@ edit_uninst=Dezinstalați
 edit_uninstdesc=Ștergeți acest pachet din sistem.
 edit_return=detalii pachet
 edit_egone=Pachetul nu mai este instalat
+
 list_title=Fișiere pachet
 list_files=Fișiere pentru pachetul $1 
 list_path=cale
@@ -64,6 +67,7 @@ list_status=stare
 list_ok=O.K
 list_view=(Vedere)
 list_eview=Nu a putut deschide $1 : $2 
+
 delete_err=Nu a reușit să ștergeți pachetul $1 
 delete_epack=Pachetul $1 nu există
 delete_title=Ștergeți pachetul
@@ -75,6 +79,7 @@ delete_noscripts=Evitați să dezinstalați scripturile?
 delete_efile=Fișier temp incorect de șters
 delete_purge=Purgeți fișierele de configurare?
 delete_depstoo=Și ați eliminat dependențele neutilizate?
+
 file_title=Informații despre fișier
 file_notfound=Nu sunt disponibile informații despre $1 
 file_path=cale
@@ -88,6 +93,7 @@ file_pack=Pachet
 file_class=Clasă
 file_desc=Descriere
 file_none=Nici unul
+
 install_err=Instalarea pachetului nu a reușit
 install_elocal=Nu a fost furnizat niciun fișier local
 install_elocal2=„$1” nu există
@@ -101,6 +107,7 @@ install_title=Instalează pachetul
 install_header=Instalați pachetul
 install_packs=Pachet (e) de instalat
 install_ok=Instalare
+
 do_err=Instalarea pachetului $1 nu a reușit
 do_title=Instalează pachetul
 do_efailed=Instalarea a eșuat : $1 
@@ -117,10 +124,12 @@ do_arch=Arhitectură
 do_inst=instalat
 do_none=Nici unul
 do_files=Fișiere pachet
+
 pkgadd_root=Directorul rădăcină
 pkgadd_eroot=Directorul rădăcină „$1” nu există
 pkgadd_unknown=Necunoscut
 pkgadd_manager=Managerul de pachete System V
+
 rpm_upgrade=Pachet de actualizare?
 rpm_replacepkgs=Suprascrieți pachetul?
 rpm_nodeps=Ignorați dependențele?
@@ -138,10 +147,12 @@ rpm_find=Căutare rpmfind.net ..
 rpm_findrpm=Pachetul nume de fișier
 rpm_finddistro=distribuire
 rpm_finddesc=Descriere
+
 bsd_unknown=Necunoscut
 bsd_scripts=Executați scripturile de instalare pre și post?
 bsd_force=Forțați instalarea dacă lipsesc premisele?
 bsd_manager=$1 Manager de pachete
+
 slack_unclass=Alte
 slack_unknown=Necunoscut
 slack_missing=Dispărut
@@ -149,12 +160,14 @@ slack_root=Directorul rădăcină
 slack_eroot=Directorul rădăcină lipsă sau nevalid
 slack_manager=Managerul de pachete Slackware
 slack_edir=Lipsește directorul pachetelor Slackware $1 
+
 debian_unknown=Necunoscut
 debian_depends=Ignorați probleme de dependență?
 debian_conflicts=Ignorați conflictele de pachete?
 debian_overwrite=Suprascrieți fișierele de la alte pachete?
 debian_downgrade=Înlocuiți pachetul mai nou cu cel vechi?
 debian_manager=Debian DPKG
+
 log_install_package=Pachetul instalat $1 
 log_install_apt_l=Pachet (e) instalat (e) $1 din APT
 log_install_apt=Instalat $2 pachet (e) din APT
@@ -173,6 +186,7 @@ log_upgrade_yum_l=Pachetul (pachetele) actualizat $1 de la YUM
 log_upgrade_yum=Pachetul actualizat $2 de la YUM
 log_check_rhn_l=Pachetul (pachetele) actualizat $1 din rețeaua Redhat
 log_check_rhn=Pachetul actualizat $2 din rețeaua Redhat
+
 rhn_input=Pachet din Redhat Network
 rhn_find=Caută RHN ..
 rhn_install=Instalarea pachetului (pachetelor) cu comanda $1 ..
@@ -200,6 +214,7 @@ rhn_eproxy=Server proxy lipsă sau nevalid
 rhn_skip=Sariți pachetele care se potrivesc
 rhn_nonefound=Nu există pachete disponibile pentru actualizare.
 rhn_name=Rețeaua Redhat
+
 apt_input=Pachet de la APT
 apt_install=Instalarea pachetului (pachetelor) cu comanda $1 ..
 apt_ok=.. instalare completă.
@@ -229,6 +244,7 @@ apt_repo_url=Adresa URL a bazei de depozitare
 apt_repo_path=Componentele căilor de distribuție
 apt_repo_eurl=Adresa URL de bază care lipsește sau este nevalidă
 apt_repo_epath=Calea de distribuție lipsește
+
 yum_input=Pachet de la YUM
 yum_install=Instalarea pachetului (pachetelor) cu comanda $1 ..
 yum_ok=.. instalare completă.
@@ -259,6 +275,7 @@ yum_repo_ename=Lipsește numele depozitului
 yum_repo_eurl=Adresa URL a depozitului lipsă sau nevalidă
 yum_repo_egpg=Fișierul GPG cert lipsește sau nu există
 yum_repo_efile=Fișierul de depozit există deja!
+
 urpmi_name=urpmi
 urpmi_input=Pachet de la URPMI
 urpmi_find=Căutați URPMI ..
@@ -273,6 +290,7 @@ urpmi_upgradeok=.. complet.
 urpmi_install=Instalarea pachetului (pachetelor) cu comanda $1 ..
 urpmi_ok=.. instalare completă.
 urpmi_failed=.. instalarea nu a reușit!
+
 rpm_missing=Dispărut
 rpm_checkfail=Verificare $1 eșuată
 rpm_md5=MD5
@@ -284,6 +302,7 @@ rpm_user=proprietatea utilizatorului
 rpm_perm=permisiuni
 rpm_group=proprietatea grupului
 rpm_erpm=RPM $1 nu a fost găsit : $2 
+
 soft_reg=Fișier regulat
 soft_dir=Director
 soft_spec=Fișier special
@@ -295,6 +314,7 @@ soft_euncompress=Fișierul este comprimat, dar comanda <tt>uncompress</tt> nu a 
 soft_euncmsg=Nu a putut fi decomprimat fișierul : $1 
 soft_egzip=Fișierul este gzipped, dar comanda gzip nu a fost găsită în sistemul dvs.
 soft_egzmsg=Eroare la fișierul gunzip : $1 
+
 aix_unknown=Necunoscut
 aix_device=Dispozitiv / director INPUT pentru software
 aix_software=SOFTWARE pentru instalare
@@ -312,6 +332,7 @@ aix_accept=ACCEPTĂ noi acorduri de licență?
 aix_license=Previzualizați noile acorduri LICENȚĂ?
 aix_clean=Eșec la instalarea curățării?
 aix_manager=Manager de pachete AIX
+
 emerge_input=Din depozitul Portage
 emerge_find=Căutare ..
 emerge_install=Instalarea pachetului cu comanda $1 ..
@@ -327,6 +348,7 @@ emerge_noreplace=Înlocuiți pachetele existente?
 emerge_onlydeps=Instalați doar dependențe?
 emerge_title=Căutare Portage
 emerge_name=taxă de transport
+
 cygwin_fmissing=Fișierul lipsește
 cygwin_lmissing=Fișierul la care punctează link-ul lipsește
 cygwin_estat=Nu a reușit fișierul stat: $1 
@@ -336,6 +358,7 @@ cygwin_badpostscript=Avertisment: acest script nu pare să fi fost executat
 cygwin_pkgexists=Pachetul $1 există deja.
 cygwin_warnuse=Avertisment: aceasta nu este o interfață oficială pentru gestionarea software-ului Cygwin. Folosiți pe propria răspundere.
 cygwin_edb=Lipsește baza de date de pachete Cygwin $1 
+
 deletes_err=Nu a reușit să ștergeți pachetele
 deletes_enone=Nu au fost selectate pachete
 deletes_title=Ștergeți pachetele
@@ -346,6 +369,7 @@ deletes_failed2=Dezinstalarea a eșuat : $1
 deletes_success2=.. dezinstalarea finalizată.
 deletes_rusure=Sigur doriți să dezinstalați pachetele $1 ?
 deletes_ok=Ștergeți-le pe toate
+
 csw_input=Pachet de la CSW
 csw_install=Instalarea pachetului (pachetelor) cu comanda $1 ..
 csw_ok=.. instalare completă.
@@ -360,20 +384,24 @@ csw_name=CSW
 csw_form=Pachetele de upgrade
 csw_upgrade=Actualizați toate pachetele instalate
 csw_updatedesc=Actualizarea tuturor pachetelor instalate cu comanda $1 ..
+
 missing_msg=Pachetul $1 poate fi instalat automat de Webmin folosind $2.
 missing_now=Instaleaza acum
+
 find_title=Caută pachet
 find_search=Găsiți pachete care se potrivesc:
 find_name=Nume
 find_version=Versiune
 find_desc=Descriere
 find_none=Nu s-au găsit pachete care să corespundă căutării dvs.
+
 msi_users=Pune la dispoziție aplicația nouă
 msi_users0=Nimeni
 msi_users1=Utilizator curent
 msi_users2=Toți utilizatorii
 msi_missing=Nu exista
 msi_size=Dimensiune greșită
+
 hpux_create_target_path=Creați o cale de țintă?
 hpux_mount_all_filesystems=Montați toate sistemele de fișiere?
 hpux_reinstall=Reinstala?
@@ -389,6 +417,7 @@ hpux_enforce_dependencies=Cumpărați dependențele?
 hpux_enforce_scripts=Aplicați scripturile?
 hpux_enforce_dsa=Aplică analiza spațiului pe disc?
 hpux_root=Directorul rădăcină
+
 ports_install=Instalarea porturilor FreeBSD $1 ..
 ports_failed=.. unele porturi au eșuat
 ports_ok=.. instalare completă
@@ -399,18 +428,22 @@ ports_form=Actualizarea bazei de date Porturi
 ports_apply=Descărcați cel mai recent instantaneu
 ports_upgrade=Descărcarea instantanee de porturi
 ports_running=Se execută comanda $1 ..
+
 pkg_install=Instalarea pachetelor FreeBSD $1 ..
 pkg_failed=.. unele pachete nu au reușit
 pkg_ok=.. instalare completă
 pkg_find=Căutați pkgng
 pkg_input=Pachet de la pkgng
+
 pkgsrc_install=Instalarea pachetelor pkgsrc $1 ..
 pkgsrc_failed=.. unele pachete nu au reușit
 pkgsrc_ok=.. instalare completă
 pkgsrc_find=Căutați pkgng
 pkgsrc_input=Pachet de la pkgsrc
+
 log_IPKG_update=Baza de date IPKG actualizată
 log_IPKG_upgrade=Pachetele IPKG instalate modernizate
+
 IPKG_name=ipkg
 IPKG_input=Pachet de la IPKG
 IPKG_find=Căutați IPKG ..

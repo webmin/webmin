@@ -42,11 +42,13 @@ index_mass=Verwijder Geselecteerde Gebruikers
 index_mass2=Geselecteerde Uitschakelen
 index_mass3=Geselecteerde Aanzetten
 index_gmass=Verwijder Geselecteerde Groepen
+
 search_title=Zoek Resultaten
 search_notfound=Geen overeenkomstige gebruikers gevonden
 search_found=Vond $1 overeenkomende gebruikers ..
 search_gnotfound=Geen overeenkomstige groepen gevonden
 search_gfound=Vond $1 overeenkomende groepen ..
+
 uedit_title=Bewerk gebruiker
 uedit_title2=Maak Gebruiker
 uedit_details=Gebruiker Details
@@ -123,6 +125,7 @@ uedit_uid_def=Automatisch
 uedit_uid_calc=Berekend
 uedit_disabled=Inloggen tijdelijk onmogelijk maken
 uedit_sys=Systeem standaard
+
 usave_err=Opslaan van gebruiker mislukte
 usave_eedit=U kunt deze gebruiker niet aanpassen
 usave_ecreate=U kunt geen gebruikers toevoegen
@@ -175,6 +178,7 @@ usave_epasswd_dict=Wachtwoord is een woordenboek woord
 usave_epasswd_same=Wachtwoord is hetzelfde als de gebruikersnaam
 usave_epasswd_mindays=Wachtwoord is minder dan $1 dagen geleden gewijzigd.
 usave_eothers=De gebruiker is succesvol opgeslagen, maar er ontstond een fout in een andere module : $1
+
 gedit_title=Bewerk Groep
 gedit_title2=Groep Aanmaken
 gedit_details=Groep Details
@@ -196,6 +200,7 @@ gedit_allu=Alle gebruikers
 gedit_selu=Gebruikers in groep
 gedit_pri=Primaire groep leden
 gedit_prinone=Geen gebruikers hebben deze groep als hun primaire groep
+
 gsave_err=Opslaan van groep mislukt
 gsave_eedit=U mag deze groep niet bewerken
 gsave_ecreate=U mag geen groepen toevoegen
@@ -212,6 +217,7 @@ usave_egidused=Groep $1 gebruikt al GID $2
 gsave_egidused2=GID is al in gebruik
 usave_efromroot=U kunt de home directory niet verplaatsen van /
 usave_etoroot=U kunt de home directory niet verplaatsen naar /
+
 logins_title=Opgenomen Logins
 logins_head=Opgenomen logins voor $1
 logins_from=Ingelogd Van
@@ -224,6 +230,7 @@ logins_none=Geen Logins Opgenomen
 logins_elist=U bent niet bevoegd om login's te bekijken
 logins_elistu=U bent niet bevoegd om login's te bekijken van '$1'
 logins_local=Lokaal
+
 udel_title=Verwijder Gebruiker
 udel_err=Verwijderen van gebruiker is mislukt
 udel_enum=Verkeerd gebruikers nummer
@@ -246,6 +253,7 @@ udel_del2=Verwijder Gebruiker en Home Directory
 udel_others=WAARSCHUWING! Home directory $1 bevat $2 bestanden van andere gebruikers.
 udel_dothers=Gebruiker in andere modules verwijderen?
 udel_root=WAARSCHUWING! Als de root-gebruiker is verwijderd kunt u in de toekomst geen bewerkingen meer uitvoeren op uw systeem.
+
 gdel_title=Groep Verwijderen
 gdel_err=Verwijderen van groep is mislukt
 gdel_eroot=U bent niet bevoegd om systeem groepen te verwijderen (die een GID hebben minder of gelijk aan 10).
@@ -259,6 +267,7 @@ gdel_sure=Weet u zeker dat u groep $1 wilt verwijderen ?
 gdel_del=Groep Verwijderen
 gdel_dothers=Groep weggooien in andere modules?
 gdel_other=Verwijderen van andere modules ..
+
 many_title=Aanmaken Meerdere Gebruikers
 many_desc=Met dit formulier kunt u een aantal gebruikers in 1 keer aanmaken vanuit een ge-uploaden file of een lokaal tekstbestand. 1 regel in het bestand specificeert 1 gebruiker in het volgende formaat   :
 many_desc2=gebruikersnaam:wachtwoord:uid:gid:volledige_naam:home_directory:shell:min:max:waarschuwing:inactief:expireert
@@ -282,6 +291,7 @@ many_eshell=Ongeldige shell op regel $1 : $2
 many_emkdir=Aanmaken van home directory $1 mislukt : $2
 many_egtaken=De groepsnaam wordt al gebruikt op regel $1 : $2
 many_ok=Gebruiker $1 aangemaakt
+
 acl_uedit=Unix gebruikers die kunnen worden gewijzigd
 acl_uedit_all=Alle gebruikers
 acl_uedit_none=Geen gebruikers
@@ -341,6 +351,7 @@ acl_udelete=Mag gebruikers weggooien?
 acl_gdelete=Mag groepen verwijderen?
 acl_urename=Mag gebruikers naam veranderen?
 acl_grename=Mag groepen hernoemen?
+
 log_urename=Gebruiker $1 hernoemd naar $2
 log_umodify=Gebruiker $1 gewijzigd
 log_ucreate=Gebruiker $1 aangemaakt
@@ -359,6 +370,7 @@ log_ugbatch=Groepen batch file uitgevoerd die ge-upload was
 log_ugbatch_l=Uitgevoerd van ge-uploaden groepen batch file ($1 gemaakt, $2 gemodificeerd, $3 verwijderd)
 log_delete_users=$1 gebruikers verwijdert
 log_delete_groups=$1 groepen verwijdert
+
 batch_title=Batch File Uitvoeren
 batch_ecannot=U kunt het batch file formulier niet gebruiken
 batch_desc=Met dit formulier kunt u een aantal gebruikers in 1 keer aanmaken, wijzigen of verwijderen vanuit een ge-uploaden file of lokaal tekstbestand. 1 regel in het bestand specificeert 1 uit te voeren actie, afhankelijk van het eerste veld. De regel formaten zijn :
@@ -417,12 +429,14 @@ batch_eexpire=Ongeldige vervaldag op regel $1 : $2
 batch_echange=Ongeldige dag om wachtwoord te veranderen op regel $1 : $2
 batch_instr=Instructies en batch formaat
 batch_header=Batch opties om gebruikers te maken, updaten en te verwijderen
+
 who_title=Ingelogde gebruikers
 who_user=Unix gebruiker
 who_tty=TTY
 who_when=Ingelogd op
 who_from=Ingelogd van
 who_none=Er zijn momenteel geen gebruikers ingelogd.
+
 export_title=Exporteer Batch File
 export_desc=Met dit formulier kunt u een batch file maken van een paar of alle gebruikers op dit systeem. Deze file kan gebruikt worden op een "Exporteer Batch file pagina" op een ander systeem, om de ge-exporteerde gebruikers opnieuw aan te maken, ervanuit gaande dat dit systeem hetzelfde batch file formaat gebruikt.
 export_header=Batch gebruiker export opties
@@ -443,6 +457,7 @@ export_done=Succesvol ge-exporteert $1 gebruikers naar de file $2 ($3).
 export_pft=Batch file formaat
 export_who=Exporteer gebruiker
 export_ecannot=U bent niet bevoegd gebruikers te exporteren
+
 gexport_title=Export Groepen Batch File
 gexport_desc=Met dit formulier kunt u een batch file maken waarin sommige of alle beschikbare groepen zitten van dit systeem. De file kan gebruikt worden op de <b>Uitvoeren Groep Batch File</b> pagina op een ander systeem om de geexporteerde groepen weer opnieuw aan te maken.
 gexport_header=Batch groep export opties
@@ -451,6 +466,7 @@ gexport_ecannot=U bent niet bevoegd om groepen te exporteren
 gexport_err=Mislukt om groep batch file te exporteren
 gexport_egid=Ongeldige eerste GID in reeks
 gexport_egid2=Ongeldige tweede GID in reeks
+
 pft_0=Alleen de klassieke <tt>passwd</tt> file
 pft_1=BSD <tt>master.passwd</tt> file
 pft_2=Standaard <tt>passwd</tt> en <tt>shaduw</tt> files
@@ -458,6 +474,7 @@ pft_3=Unixware <tt>passwd</tt> file
 pft_4=AIX <tt>passwd</tt> en <tt>beveiligde</tt> files
 pft_5=Open Server <tt>wachtwoord</tt> en korte <tt>schaduw</tt> files
 pft_6=MacOS NetInfo database
+
 umass_title=Verwijder gebruikers
 umass_err=Gebruikers verwijderen mislukt
 umass_sure=Weet u zeker dat de $1 geselecteerde gebruikers wilt verwijderen? Hun home directory's bevatten $2 files
@@ -469,6 +486,7 @@ umass_del1=Verwijder Gebruikers
 umass_del2=Verwijder Gebruikers en Home Directory's
 umass_eroot=U bent niet bevoegd om systeem gebruikers te verwijderen (die een UID hebben minder of gelijk aan 10).
 umass_doing=Verwijder gebruiker $1 ..
+
 gmass_title=Verwijder Groepen
 gmass_err=Mislukt om groepen te weg te gooien
 gmass_sure=Weet u zeker dat u de $1 geselecteerde groepen wilt weg gooien?
@@ -478,16 +496,19 @@ gmass_del=Verwijder Groepen
 gmass_eroot=U bent niet bevoegd om systeem groepen te verwijderen (die een GID hebben minder of gelijk aan 10).
 gmass_doing=Verwijder groep $1 ..
 gmass_eprimary=De groep $1 kan niet weggegooid worden omdat het de primaire groep van gebruiker $2 is.
+
 dmass_title=Gebruikers Uitschakelen
 dmass_sure=Weet u zeker dat u de $1 geselecteerde gebruiker wilt uitschakelen? Het kan later weer aangezet worden zonder verlies van het wachtwoord of data.
 dmass_dis=Gebruikers Uitschakelen
 dmass_pass=Wachtwoord tijdelijk op slot zetten ..
 dmass_doing=Gebruiker $1 uitschakelen ..
 dmass_already=.. al uitgeschakeld!
+
 emass_title=Activeer gebruikers
 emass_pass=Wachtwoord van slot halen ..
 emass_doing=Activeren van gebruiker $1 ..
 emass_already=.. reeds geactiveerd!
+
 gbatch_title=Uitvoeren Groep Batch File
 gbatch_ecannot=U kunt de groep batch file formulier niet gebruiken
 gbatch_desc=Met dit formulier kunt u vele groepen in 1 keer modificeren, maken of verwijderen van een ge-uploaden of lokale tekst file. Iedere regel in de file moet 1 specifieke taak hebben voor een actie, afhankelijk van het eerste veld. De regel formaten zijn :

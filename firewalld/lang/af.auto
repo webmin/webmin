@@ -30,6 +30,7 @@ index_return=lys van sones
 index_ezones=Geen FirewallD-sones gevind nie!
 index_none=Hierdie sone het nog geen toegelate hawens of dienste nie.
 index_ifaces=Pas reëls toe op koppelvlakke:
+
 port_edit=Wysig hawe
 port_create=Voeg hawe by
 port_header=Toegestane hawe-opsies
@@ -45,11 +46,13 @@ port_eport=Poortnummer of naam ontbreek of ongeldig
 port_eportlow=Lae poort moet 'n getal wees
 port_eporthigh=Die hoë poort moet 'n nommer wees
 port_eportrange=Lae hawe moet onder die hoë hawe wees
+
 serv_edit=Redigeer diens
 serv_create=Voeg diens by
 serv_header=Toegestane diensopsies
 serv_name=Diens om toe te laat
 serv_err=Kon nie die diens stoor nie
+
 forward_edit=Wysig vorentoe
 forward_create=Skep vorentoe
 forward_header=Oordragopsies vir hawe
@@ -61,10 +64,13 @@ forward_dstaddr=Bestemmingsadres
 forward_dstlocal=Hierdie stelsel
 forward_edstaddr=Ongeldige IPv4-bestemmingsadres
 forward_eneither=Óf 'n bestemmingsadres of poort of albei moet ingevoer word
+
 check_ecmd=Die FirewallD-beheeropdrag $1 is nie op u stelsel gevind nie
+
 delete_err=Kon nie reëls uitvee nie
 delete_enone=Geen gekies nie!
 delete_edel=Die verwydering van $1 het misluk : $2 
+
 zone_title=Skep sone
 zone_header=Nuwe sone-opsies
 zone_name=Sone naam
@@ -77,12 +83,16 @@ zone_mode4=Poorte wat vir virtuele hosting gebruik word
 zone_err=Kon nie sone skep nie
 zone_ename=Sone-naam ontbreek of ongeldig
 zone_eclash=Daar bestaan reeds 'n sone met dieselfde naam
+
 delzone_title=Vee sone uit
 delzone_err=Kon nie sone uitvee nie
 delzone_edefault=Die versteksone kan nie verwyder word nie
 delzone_rusure=Is u seker dat u die zone $1, wat $2 -poorte en $3 -dienste bevat, wil uitvee?
+
 defzone_err=Kon nie zone die verstek maak nie
+
 restart_err=Kon nie konfigurasie toepas nie
+
 stop_err=Kon nie FirewallD stop nie
 start_err=Kon nie FirewallD begin nie
 log_stop=Gestop FirewallD

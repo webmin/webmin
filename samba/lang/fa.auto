@@ -1,4 +1,5 @@
 index_samba=سامبا
+
 index_start_wb=سرورهای Winbind را شروع کنید
 index_startmsg_wb=به نظر نمی رسد که سرورهای Winbind روی سیستم شما اجرا شوند.
 index_restart_wb=راه اندازی مجدد سرورهای Winbind
@@ -6,32 +7,44 @@ index_restartmsg_wb=برای راه اندازی مجدد سرورهای Winbind
 index_stop_wb=سرورهای Winbind را متوقف کنید
 index_stopmsg_wb=برای خاموش کردن سرورهای Winbind در حال اجرا روی سیستم خود ، روی این دکمه کلیک کنید.
 index_delete=سهام انتخاب شده را حذف کنید
+
 convert_who=کاربران یونیکس برای تبدیل
 convert_who0=فقط کاربران لیست شده یا محدوده UID هستند
 convert_who1=همه به جز کاربران ذکر شده و محدوده UID
+
 net_ip=آدرس آی پی
+
 smb_descriptionnone=هیچ یک
 smb_master_auto=خودکار
 smb_server=سرور رمز عبور
+
 euser_uid=یونیکس UID
 euser_noexpire=رمز عبور هرگز منقضی نمی شود
 euser_locked=حساب قفل است
+
 share_createperms=با مجوزها ایجاد کنید
 share_group=با گروه ایجاد کنید
+
 mkpass_added=اضافه
 mkpass_user=نام کاربری
 mkpass_action=اقدامی انجام شد
 mkpass_skipcount=$1 کاربران برای تبدیل به سیستم حذف شدند.
+
 saveuser_uid='$1' UID معتبر یونیکس نیست
+
 savefshare_group=گروه موجود نیست یا نامعتبر است برای فهرست جدید
 savefshare_perms=مجوزهای نامعتبر یا نامعتبر برای فهرست جدید
 savefshare_emkdir=ایجاد فهرست انجام نشد :$1
+
 start_err_wb=راه اندازی سرورهای Winbind انجام نشد
+
 restart_err=راه اندازی مجدد سرورهای سامبا انجام نشد
 restart_err_wb=راه اندازی مجدد سرورهای Winbind انجام نشد
+
 viewu_kill=کاربران منتخب را قطع کنید
 viewu_enone=هیچ کاربر انتخاب نشده است
 viewu_refresh=صفحه را رفرش کن.
+
 log_apply_wb=مجدداً سرورهای Winbind را راه اندازی کرد
 log_stop_wb=سرورهای Winbind را متوقف کرد
 log_start_wb=سرورهای Winbind را راه اندازی کرد
@@ -39,14 +52,18 @@ log_kills=فرآیندهای$1 قطع شد
 log_skills=پردازش$1 از سهم$2 جدا شد
 log_delete_shares=$1 اشتراک حذف شد
 log_manual=پرونده پیکربندی دستی$1 ویرایش شده است
+
 acl_manual=آیا می توانید پرونده پیکربندی را به صورت دستی ویرایش کنید؟
 acl_bind=آیا می توانید به گزینه های winbind دسترسی داشته باشید؟
+
 bind_defaultdomain=همیشه از دامنه پیش فرض استفاده می کنید؟
 bind_uid=محدوده UID برای کاربران ویندوز
 bind_euid=دامنه UID نامعتبر است - باید مانند 20000-30000 باشد
+
 manual_title=پیکربندی پرونده را ویرایش کنید
 manual_desc=در حال ویرایش پرونده پیکربندی سامبا$1 ..
 manual_err=ذخیره پرونده پیکربندی انجام نشد
 manual_edata=هیچ چیز وارد نشده است!
+
 delete_err=حذف سهام انجام نشد
 delete_enone=هیچ یک انتخاب نشده است

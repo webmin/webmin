@@ -39,7 +39,9 @@ index_thost=Meno hosťa
 index_tdesc=popis
 index_tver=verzia
 index_ttype=Typ operačného systému
+
 this_server=tento server
+
 add_title=Pridať servery
 add_msg=Pridáva sa $1 ..
 add_gmsg=Pridávanie serverov do skupiny $1 ..
@@ -49,6 +51,7 @@ add_echeck=Server $1 nemá konfiguračný modul Usermin
 add_echeck2=Server $1 nemá modul Usermin Users
 add_eversion=Server $1 nemá spustený Usermin verziu $2 alebo vyššiu.
 add_ok=Pridané $1 s modulmi $2 a $3 témami.
+
 refresh_title=Obnovte zoznamy modulov a tém
 refresh_header=Opätovné vyžiadanie zoznamov modulov a tém zo všetkých serverov.
 refresh_header4=Opätovné vyžiadanie zoznamov modulov a tém od členov $2 ..
@@ -64,6 +67,7 @@ refresh_g2=Odstránili sa skupiny ($1).
 refresh_done=.. hotový
 refresh_del=Odstránené $1 zo zoznamu serverov
 refresh_failed=Nepodarilo sa obnoviť $1 : $2 
+
 host_title=Spravovaný server
 host_header=Podrobnosti o spravovanom serveri Usermin
 host_name=Meno hosťa
@@ -81,6 +85,7 @@ host_header_u=Usermin užívatelia
 host_header_g=Usermínové skupiny
 host_return=podrobnosti servera
 host_version2=verzia
+
 edit_title_mod=Upraviť modul
 edit_title_theme=Upraviť tému
 edit_header_mod=Podrobnosti používateľského modulu z $1 
@@ -103,6 +108,7 @@ edit_codes=Z testu $1
 edit_acl=Upraviť zoznam ACL pre
 edit_uacl=Používateľ $1 na $2 
 edit_gacl=Skupina $1 na $2 
+
 install_err=Inštalácia modulu zlyhala
 install_title=Inštalovať modul
 install_elocal=Nebol zadaný žiadny miestny súbor
@@ -123,6 +129,7 @@ do_failed=Inštalácia zlyhala na $1 : $2
 do_success_mod=Nainštalovaný modul $2 na $1 
 do_success_theme=Nainštalovaná téma $2 na $1 
 do_done=.. hotový
+
 delete_err=Nepodarilo sa odstrániť modul $1 
 delete_epack=Modul $1 neexistuje
 delete_title=Odstrániť modul
@@ -140,6 +147,7 @@ delete_edepends=Moduly $1 od toho závisia.
 delete_egone=Modul už neexistuje
 delete_esuccess=Úspešne odstránené z $1 : $2 
 delete_acls=Odstrániť od používateľov a obnoviť nastavenia kontroly prístupu?
+
 user_title1=Vytvorte Usermin User
 user_header1=Nové informácie o používateľovi Usermin
 user_name=užívateľské meno
@@ -198,11 +206,13 @@ user_all=&lt;všetci hostitelia&gt;
 user_donthave=&lt;hostitelia, ktorí ho nemajú&gt;
 user_have=&lt;hostitelia, ktorí ju majú&gt;
 user_ofgroup=Členovia $1 
+
 udelete_title=Odstrániť používateľa
 udelete_doing=Odstraňuje sa používateľ $1 zo všetkých hostiteľov.
 udelete_success=Úspešne odstránené z $1 
 udelete_failed=Odstránenie zlyhalo z $1 : $2 
 udelete_done=.. hotový
+
 group_title1=Vytvoriť skupinu
 group_header1=Podrobnosti o novej skupine Usermin
 group_name=Názov skupiny
@@ -230,6 +240,7 @@ group_failed2=Aktualizácia skupiny na $1 : $2 zlyhala
 group_return=podrobnosti o skupine
 group_nomems=Žiadni členovia
 group_servers=Servery, na ktorých sa má vytvoriť
+
 gdelete_title=Odstrániť skupinu
 gdelete_desc=Naozaj chcete odstrániť skupinu $1 a jej členov $2 zo všetkých hostiteľov?
 gdelete_ok=Odstrániť skupinu
@@ -238,6 +249,7 @@ gdelete_success=Úspešne odstránené z $1
 gdelete_failed=Odstránenie zlyhalo z $1 : $2 
 gdelete_done=.. hotový
 gdelete_esub=Táto skupina má podskupiny $1, a preto ju nemožno odstrániť.
+
 acl_title=Modul Riadenie prístupu
 acl_title2=Pre používateľa $1 v $2 na $3 
 acl_title3=Pre skupinu $1 v $2 na $3 
@@ -256,6 +268,7 @@ acl_doing2=Nastavenie kontroly prístupu pre $1 na $2 ..
 acl_success=Riadenie prístupu bolo úspešne nastavené na $1 
 acl_failed=Nepodarilo sa nastaviť riadenie prístupu na $1 : $2 
 acl_done=.. hotový
+
 sync_title=Synchronizujte servery
 sync_desc=Tento formulár vám umožňuje vytvárať používateľov a skupiny Usermin na serveroch, ktoré ich momentálne nemajú, aby ste synchronizovali účty na všetkých serveroch vo vašom klastri.
 sync_hosts=Servery na synchronizáciu
@@ -279,6 +292,7 @@ sync_gcreate=Pridáva sa skupina usermínov $1 ..
 sync_acl=Kopírujú sa súbory ACL pre $1 ..
 sync_test=Ukážte, čo by sa urobilo?
 sync_restart=Opakované spustenie Usermin ..
+
 upgrade_title=Aktualizujte Usermin
 upgrade_header=Aktualizácia Usermin na všetkých hostiteľoch ..
 upgrade_header2=Prebieha inovácia na Usermin na $1 ..
@@ -297,6 +311,7 @@ upgrade_failed=Inštalácia zlyhala na $1 : $2
 upgrade_done=.. hotový
 upgrade_efast=Inovovať sa môžu iba servery používajúce rýchly RPC režim
 upgrade_ereconn=Po inovácii sa nepodarilo znova pripojiť k Usermin!  : $1 
+
 update_title=Aktualizujte moduly
 update_header=Aktualizácia modulov všetkých hostiteľov.
 update_header5=Aktualizácia modulov na $2 ..

@@ -11,8 +11,10 @@ index_reposdisable=Schakel opslagplaatsen uit
 index_reposenable=Schakel opslagplaatsen in
 index_reposdelete=Verwijder opslagplaatsen
 index_repoheader=Nieuwe pakketrepository-opties
+
 update_title2=Installeer pakketten
 update_enone=Geen pakketten geselecteerd
+
 log_enable_repos=$1 pakketrepository's ingeschakeld
 log_disable_repos=Pakketrepository's van $1 uitgeschakeld
 log_delete_repos=$1 pakketrepository's verwijderd
@@ -20,6 +22,7 @@ log_enable_repo=Pakketrepository $1 ingeschakeld
 log_disable_repo=Pakketrepository $1 uitgeschakeld
 log_delete_repo=Pakketrepository $1 verwijderd
 log_create_repo=Pakketrepository $1 gemaakt
+
 repos_err_disable=Kan opslagplaatsen niet uitschakelen
 repos_err_enable=Kan opslagplaatsen niet inschakelen
 repos_err_delete=Kan opslagplaatsen niet verwijderen

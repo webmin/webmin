@@ -11,11 +11,13 @@ index_boot=Start ved opstart?
 index_bootdesc=Skift denne indstilling for at aktivere eller deaktivere start af Dovecot-serveren på systemets starttidspunkt.
 index_return=modul indeks
 index_version=Version $1
+
 stop_err=Kunne ikke stoppe Dovecot
 stop_erunning=Kører ikke længere
 start_err=Kunne ikke starte Dovecot
 start_eprotos=Ingen protokoller er valgt på siden <b>Netværk og protokoller</b>
 apply_err=Kunne ikke anvende konfiguration
+
 net_title=Netværk og protokoller
 net_header=Dovecot netværks- og postprotokollindstillinger
 net_protocols=Server e-mail-protokoller
@@ -42,8 +44,11 @@ net_eimaps_listen=Ugyldig IP-adresse til IMAP SSL-forbindelser
 net_epop3s_listen=Ugyldig IP-adresse for POP3 SSL-forbindelser
 net_elisten=Ugyldig IP-adresse til ikke-SSL-forbindelser
 net_essl_listen=Ugyldig IP-adresse til SSL-forbindelser
+
 imap_title=IMAP-indstillinger
+
 pop3_title=POP3-indstillinger
+
 ssl_title=SSL-konfiguration
 ssl_header=Indstillinger for IMAP og POP3 SSL-tilstand
 ssl_key=SSL privat nøglefil
@@ -61,7 +66,9 @@ ssl_ecert=Manglende eller ikke-eksisterende certifikatfil
 ssl_eca=Manglende eller ikke-eksisterende CA-certifikatfil
 ssl_eregen=Manglende eller ikke-numerisk parameterregenerationsinterval
 ssl_epass=Der er ikke indtastet adgangskode til SSL-nøglefil
+
 misc_title=Andre muligheder
+
 login_title=Bruger- og loginindstillinger
 login_header=Indstillinger for brugergodkendelse og login
 login_fuid=Minimum gyldigt UID
@@ -117,6 +124,7 @@ login_procs=Maksimale loginprocesser
 login_count=Indledende loginprocesser
 login_eprocs=Manglende eller ugyldigt maksimum antal loginprocesser
 login_ecount=Manglende eller ugyldigt oprindeligt antal loginprocesser
+
 mail_title=Mail filer
 mail_header=E-mail-placering og læseindstillinger
 mail_env=Postfilplacering
@@ -169,6 +177,7 @@ mail_eindexmode=Indeksfils placering kan ikke indstilles, når postfilplaceringe
 mail_econtrolmode=Kontrolfilers placering kan ikke indstilles, når postfilplaceringen registreres automatisk
 mail_eindex=Manglende eller ugyldig absolut sti til indeksfiler
 mail_econtrol=Manglende eller ugyldig absolut sti til kontrolfiler
+
 log_net=Ændrede netværk og protokoller
 log_login=Ændrede valgmuligheder for bruger og login
 log_mail=Ændrede postfiler
@@ -179,6 +188,7 @@ log_stop=Stopet Dovecot-server
 log_bootup=Aktiveret Dovecot ved starttidspunktet
 log_bootdown=Deaktiveret Dovecot ved starttidspunkt
 log_manual=Manuel redigeret konfigurationsfil $1
+
 manual_title=Rediger konfigurationsfiler
 manual_editsel=Rediger Dovecot-konfigurationsfil
 manual_err=Kunne ikke gemme konfigurationsfilen

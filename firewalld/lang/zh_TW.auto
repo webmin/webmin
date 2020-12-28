@@ -30,6 +30,7 @@ index_return=區域列表
 index_ezones=找不到FirewallD區域！
 index_none=此區域尚無任何允許的端口或服務。
 index_ifaces=將規則應用於接口：
+
 port_edit=編輯端口
 port_create=添加端口
 port_header=允許的端口選項
@@ -45,11 +46,13 @@ port_eport=缺少或無效的端口號或名稱
 port_eportlow=低端端口必須為數字
 port_eporthigh=高端口必須是數字
 port_eportrange=低端口必須在高端口下方
+
 serv_edit=編輯服務
 serv_create=添加服務
 serv_header=允許的服務選項
 serv_name=服務允許
 serv_err=保存服務失敗
+
 forward_edit=向前編輯
 forward_create=向前創建
 forward_header=端口轉發選項
@@ -61,10 +64,13 @@ forward_dstaddr=目的地址
 forward_dstlocal=這個系統
 forward_edstaddr=無效的IPv4目標地址
 forward_eneither=必須輸入目標地址或端口，或兩者都輸入
+
 check_ecmd=在系統上找不到FirewallD控制命令 $1
+
 delete_err=刪除規則失敗
 delete_enone=未選擇！
 delete_edel=刪除 $1失敗： $2
+
 zone_title=創建專區
 zone_header=新區域選項
 zone_name=區域名稱
@@ -77,12 +83,16 @@ zone_mode4=用於虛擬主機的端口
 zone_err=創建區域失敗
 zone_ename=區域名稱缺失或無效
 zone_eclash=具有相同名稱的區域
+
 delzone_title=刪除區域
 delzone_err=刪除區域失敗
 delzone_edefault=默認區域無法刪除
 delzone_rusure=您確定要刪除包含 $2端口和 $3服務的 $1區域嗎？
+
 defzone_err=無法將區域設為默認區域
+
 restart_err=應用配置失敗
+
 stop_err=無法停止FirewallD
 start_err=無法啟動FirewallD
 log_stop=停止的防火牆D

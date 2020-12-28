@@ -3,6 +3,7 @@ index_twofactor=Authentification à deux facteurs
 index_joingroup=Ajouter au groupe:
 index_eulist=Échec de la liste des utilisateurs: $1 
 index_eglist=Échec de la liste des groupes: $1 
+
 edit_title3=Créer un utilisateur Webmin sécurisé
 edit_passold=Le dernier mot de passe a été modifié il y a $1 jours
 edit_passtoday=Le mot de passe a été modifié il y a moins d'un jour
@@ -21,12 +22,16 @@ edit_safe=Niveau privilège
 edit_safe0=Libre
 edit_safe1=Modules sécurisés uniquement
 edit_unsafe=Rétablir sans restriction
+
 save_eunixname=Le nom d'utilisateur '$1' n'est pas un utilisateur Unix et ne peut donc pas être utilisé en mode sans échec
 save_eoverlay=Une superposition de thème ne peut être sélectionnée que si un thème est
 save_eminsize=Longueur minimale du mot de passe manquante ou non numérique
 save_etemp=L'option pour forcer un changement de mot de passe à la prochaine connexion ne peut être utilisée que si <a href='$1'>invitant les utilisateurs à entrer de nouveaux mots de passe</a> est activée
+
 delete_eanonuser=Cet utilisateur est utilisé pour l'accès au module anonyme
+
 cert_etempdir=Fichier de certificat non valide
+
 log_joingroup=Ajout de $1 utilisateurs Webmin au groupe $2 
 log_pass=Restrictions de mot de passe modifiées
 log_unix=Authentification utilisateur Unix modifiée
@@ -34,19 +39,24 @@ log_sync=Changement de la synchronisation des utilisateurs Unix
 log_sql=Base de données d'utilisateurs et de groupes modifiée
 log_twofactor=Utilisateur inscrit $1 avec un fournisseur à deux facteurs $2 
 log_onefactor=Utilisateur désinscrit $1 pour l'authentification à deux facteurs
+
 convert_sync2=Synchroniser le mot de passe avec l'utilisateur Unix à l'avenir?
 convert_user=Utilisateur Unix
 convert_action=Action prise
 convert_done= $1 utilisateurs convertis, $2 invalide, $3 existent déjà, $4 exclus.
 convert_users=Utilisateurs à convertir
+
 sync_when=Quand synchroniser
+
 unix_err=Échec de l'enregistrement de l'authentification Unix
 unix_restrict2=Restrictions supplémentaires
 unix_esudo=La commande $1 n'est pas installée
 unix_esudomod=Le module Perl $1 nécessaire à l'authentification <tt>sudo</tt> n'est pas installé
 unix_header=Paramètres d'authentification utilisateur Unix
 unix_utable=Utilisateurs Unix autorisés
+
 udeletes_jerr=Échec de l'ajout d'utilisateurs au groupe
+
 pass_header=Options d'application de mot de passe Webmin
 pass_minsize=Longueur minimale du mot de passe
 pass_nominsize=Pas de minimum
@@ -64,6 +74,7 @@ pass_eminsize=Longueur minimale du mot de passe manquante ou non numérique
 pass_emaxdays=Nombre de jours manquant ou non numérique avant de changer
 pass_elockdays=Nombre de jours manquant ou non numérique avant le verrouillage du compte
 pass_eoldblock=Nombre manquant ou non numérique d'anciens mots de passe à rejeter
+
 sql_title=Base de données d'utilisateurs et de groupes
 sql_ecannot=Vous n'êtes pas autorisé à configurer la base de données d'utilisateurs et de groupes
 sql_header=Options de backend de base de données pour les utilisateurs et les groupes
@@ -97,13 +108,17 @@ sql_title3=Créer un DN manquant
 sql_dnerr=Les paramètres de base de données d'utilisateurs et de groupes sont valides, mais le DN LDAP requis par Webmin est manquant: $1 
 sql_dnerr2=Cliquez sur le bouton <b>Créer un DN</b> ci-dessous pour le créer automatiquement ou l'ajouter manuellement à votre serveur LDAP.
 sql_schema=Télécharger le schéma LDAP
+
 make_exec=Exécution de SQL $1..
+
 makedn_eoc=Aucune classe d'objets structurelle trouvée!
 makedn_exec=Création du DN parent $1..
 makedn_failed=.. la création a échoué: $1 
 makedn_still=Certains problèmes ont été détectés même après la création du DN: $1 
+
 schema_desc=Avant que Webmin puisse utiliser un serveur LDAP pour stocker des utilisateurs et des groupes, il doit être configuré pour utiliser le schéma ci-dessous. Cela peut généralement être fait en enregistrant la définition de schéma dans <tt>/etc/ldap/schema</tt> ou <tt>/etc/openldap/schema</tt> sous <tt>webmin.schema</tt>, puis en configurant le serveur pour charger ce fichier de schéma.
 schema_download=Téléchargez le fichier de schéma: <a href=$1>$1</a>
+
 twofactor_err=Impossible de configurer l'authentification à deux facteurs
 twofactor_euser=Votre utilisateur Webmin est introuvable!
 twofactor_title=Authentification à deux facteurs

@@ -39,7 +39,9 @@ index_thost=Hostname
 index_tdesc=Beschreibung
 index_tver=Version
 index_ttype=Betriebssystemtyp
+
 this_server=Diesem Server
+
 add_title=Server hinzufügen
 add_msg=Füge $1 hinzu ..
 add_gmsg=Füge Server der Gruppe $1 hinzu ..
@@ -49,6 +51,7 @@ add_echeck=Auf Server $1 ist das Webmin-Konfigurationsmodul nicht verfügbar
 add_echeck2=Auf Server $1 ist das Webmin-Benutzermodul nicht verfügbar
 add_eversion=Der Server $1 hat kein Webmin Version $2 oder höher installiert.
 add_ok=Es wurde $1 mit $2 Modulen, $3 Designs, $4 Benutzern und $5 Gruppen hinzugefügt.
+
 refresh_title=Aktualisiere Modul- und Benutzerlisten
 refresh_header=Erneute Abfrage aller Modul-, Benutzer- und Gruppenlisten von allen Servern ..
 refresh_header4=Neuabfrage der Modul-, Benutzer- und Gruppenliste von Mitgliedern von $2 ..
@@ -64,6 +67,7 @@ refresh_g2=$1 Gruppen gelöscht.
 refresh_done=.. erledigt
 refresh_del=$1 von Serverliste entfernt
 refresh_failed=Konnte $1 nicht aktualisieren : $2
+
 host_title=Administrierte Server
 host_header=Eigenschaften der administrierten Webmin-Server
 host_name=Hostname
@@ -81,6 +85,7 @@ host_header_u=Webmin-Benutzer
 host_header_g=Webmin-Gruppen
 host_return=Serverdetails
 host_version2=Version
+
 edit_title_mod=Modul bearbeiten
 edit_title_theme=Design bearbeiten
 edit_header_mod=Webmin-Modul-Eigenschaften von $1
@@ -104,6 +109,7 @@ edit_acl=Bearbeite ACL für
 edit_uacl=Benutzer $1 auf $2
 edit_gacl=Gruppe $1 auf $2
 edit_config=Editiere Konfiguration auf
+
 install_err=Konnte Modul nicht installieren
 install_title=Installiere Modul
 install_elocal=Keine lokale Datei ausgewählt
@@ -124,6 +130,7 @@ do_failed=Konnte auf $1 nicht installieren : $2
 do_success_mod=Modul $2 auf $1 installiert
 do_success_theme=Design $2 auf $1 installiert
 do_done=.. erledigt
+
 delete_err=Konnte Modul $1 nicht löschen
 delete_epack=Das Modul $1 existiert nicht
 delete_title=Modul löschen
@@ -141,6 +148,7 @@ delete_edepends=Modul(e) $1 sind darauf angewiesen.
 delete_egone=Dieses Modul existiert nicht mehr
 delete_esuccess=Erfolgreich gelöscht von $1: $2
 delete_acls=Von den Benutzern entfernen und die Zugriffskontrollen zurücksetzen?
+
 user_title1=Erzeuge Webmin-Benutzer
 user_header1=Eigenschaften des neuen Webmin-Benutzers
 user_name=Benutzername
@@ -200,11 +208,13 @@ user_all=&lt;Alle Server&gt;
 user_donthave=&lt;Server, wo es nicht existiert&gt;
 user_have=&lt;Server, die es schon haben&gt;
 user_ofgroup=Mitglieder von $1
+
 udelete_title=Lösche Benutzer
 udelete_doing=Lösche Benutzer $1 von allen Servern ..
 udelete_success=Erfolgreich von $1 gelöscht
 udelete_failed=Konnte von $1 nicht löschen : $2
 udelete_done=.. erledigt
+
 group_title1=Gruppe erzeugen
 group_header1=Eigenschaften der neuen Webmin-Gruppe
 group_name=Gruppenname
@@ -232,6 +242,7 @@ group_failed2=Konnte Gruppe auf $1 nicht erzeugen : $2
 group_return=Gruppen-Eigenschaften
 group_nomems=Keine Mitglieder
 group_servers=Server zum Erzeugen
+
 gdelete_title=Gruppe löschen
 gdelete_desc=Sind Sie sicher, daß Sie die Gruppe $1 und seine Mitglieder $2 von allen Servern löschen möchten?
 gdelete_ok=Gruppe bearbeiten
@@ -240,6 +251,7 @@ gdelete_success=Erfolgreich gelöscht von $1
 gdelete_failed=Konnte nicht von $1 löschen : $2
 gdelete_done=.. erledigt
 gdelete_esub=Diese Gruppe hat Untergruppen $1 und kann deswegen nicht gelöscht werden.
+
 acl_title=Modul-Zugriffskontrolle
 acl_title2=Für Benutzer $1 in $2 auf $3
 acl_title3=Für Gruppe $1 in $2 auf $3
@@ -258,6 +270,7 @@ acl_doing2=Setze Zugriffskontrolle für $1 auf $2 ..
 acl_success=Zugriffskontrolle erfolgreich auf $1 gesetzt
 acl_failed=Konnte Zugriffskontrolle auf $1 nicht setzen : $2
 acl_done=.. erledigt
+
 sync_title=Synchronisiere Server
 sync_desc=Auf dieser Seite können Sie Webmin-Benutzer und -Gruppen auf Servern erzeugen, die diese Benutzer und Gruppen bisher noch nicht haben, um alle Server zu synchronisieren.
 sync_hosts=Server zum Synchronisieren
@@ -281,6 +294,7 @@ sync_gcreate=Hinzufügen der Webmin-Gruppe $1 ..
 sync_acl=Kopiere ACL Dateien für $1 ..
 sync_test=Testlauf! - Zeige nur, was passieren würde?
 sync_restart=Starte Webmin neu ..
+
 upgrade_title=Webmin aufrüsten
 upgrade_header=Rüste Webmin auf allen Servern hoch ..
 upgrade_header2=Rüste Webmin auf $1 hoch ..
@@ -299,6 +313,7 @@ upgrade_failed=Konnte auf $1 nicht installieren : $2
 upgrade_done=.. erledigt
 upgrade_efast=Nur Server, die schnelle RPC-Aufrufe unterstützen, können aufgerüstet werden
 upgrade_ereconn=Konnte nach Webmin-Upgrade nicht mehr zu Webmin verbinden! : $1
+
 update_title=Module aktualisieren
 update_header=Aktualisiere Module von allen Hosts ..
 update_header5=Aktualisiere Module auf $2 ..
@@ -306,6 +321,7 @@ update_header4=Aktualisiere Module in Mitgliedern von $2 ..
 update_onhost=Ergebnis des Updates auf $1 ..
 update_failed=.. Aktualisierung gescheitert : $1
 update_none=.. Keine Updates gefunden.
+
 config_title=Editiere Modulkonfiguration
 config_enone=Keine Hosts mit dem Modul installiert sind ausgewählt
 config_ethis=Das Modul ist auf diesem Server nicht installiert

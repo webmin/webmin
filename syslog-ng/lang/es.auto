@@ -9,6 +9,7 @@ index_start=Inicie Syslog-NG
 index_startdesc=Haga clic en este botón para iniciar el demonio Syslog-NG, utilizando la configuración actual.
 index_return=índice del módulo
 index_version=Syslog-NG $1 
+
 options_title=Opciones de registro
 options_header=Opciones para todos los archivos de registro
 options_secs=segundos
@@ -55,6 +56,7 @@ options_esync=Número de mensajes faltantes o no válidos para almacenar antes d
 options_estats=Tiempo perdido o no numérico para esperar entre mensajes de estadísticas
 options_elog_fifo_size=Número de mensajes faltantes o no válidos para almacenar
 options_elog_msg_size=Tamaño de mensaje de registro máximo faltante o no numérico
+
 destinations_title=Registrar destinos
 destinations_name=Nombre del destino
 destinations_type=Escribir a
@@ -77,6 +79,7 @@ destinations_add=Agregar un nuevo destino de registro.
 destinations_return=destinos de registro
 destinations_desc=Registro de otro módulo
 destinations_cmd=Salida de $1 
+
 destination_header=Opciones de registro de destino
 destination_title1=Crear destino de registro
 destination_title2=Editar destino de registro
@@ -117,17 +120,22 @@ destination_enet_localip=Dirección IP local faltante o inválida
 destination_enet_localport=Número de puerto local faltante o no válido
 destination_enet_host=Dirección o host del servidor Syslog faltante o no válido
 destination_eunix=Falta el nombre del socket Unix
+
 ddelete_err=Error al eliminar destinos
 ddelete_enone=Ninguna seleccionada
 ddelete_eused=El destino $1 no se puede eliminar, ya que lo utiliza un destino de registro
+
 sdelete_err=Error al eliminar fuentes
 sdelete_enone=Ninguna seleccionada
 sdelete_eused=El origen de registro $1 no se puede eliminar, ya que lo utiliza un destino de registro
+
 fdelete_err=Error al eliminar filtros
 fdelete_enone=Ninguna seleccionada
 fdelete_eused=El filtro de registro $1 no se puede eliminar, ya que lo utiliza un destino de registro
+
 ldelete_err=Error al eliminar los objetivos de registro
 ldelete_enone=Ninguna seleccionada
+
 filters_title=Filtros de registro
 filters_name=Nombre del filtro
 filters_desc=Condiciones
@@ -144,6 +152,7 @@ filters_program=programa <tt>$1</tt>
 filters_match=coincide con "$1"
 filters_host=del nombre de host <tt>$1</tt>
 filters_netmask=del remitente <tt>$1</tt>
+
 filter_title1=Crear filtro de registro
 filter_title2=Editar filtro de registro
 filter_header=Detalles de la especificación del filtro de registro
@@ -169,6 +178,7 @@ filter_enet=Dirección IP de red faltante o inválida
 filter_emask=Máscara de red faltante o inválida
 filter_ebool=Error en expresión compleja
 filter_egone=¡El filtro ya no existe!
+
 logs_title=Objetivos de registro
 logs_source=Fuentes
 logs_filter=Filtros
@@ -177,6 +187,7 @@ logs_add=Agregar un nuevo objetivo de registro.
 logs_delete=Eliminar objetivos de registro seleccionados
 logs_return=objetivos de registro
 logs_none=Ninguna
+
 log_title1=Crear objetivo de registro
 log_title2=Editar objetivo de registro
 log_header=Fuente de registro, filtro y selecciones de destino
@@ -190,6 +201,7 @@ log_flags=Opciones de objetivo
 log_egone=¡El objetivo de registro ya no existe!
 log_err=Error al guardar el objetivo de registro
 log_esource=No se seleccionaron fuentes
+
 sources_title=Fuentes de registro
 sources_none=¡Aún no se han definido fuentes!
 sources_add=Agregar una nueva fuente de registro.
@@ -207,6 +219,7 @@ sources_typen=Corriente del sol
 sources_typenw=Servidor Syslog
 sources_return=fuentes de registro
 sources_none2=Ninguna
+
 source_title1=Crear fuente de registro
 source_title2=Editar fuente de registro
 source_header=Opciones de origen de registro
@@ -243,15 +256,20 @@ source_door=Nombre de archivo de puerta
 source_esun_streams_name=Nombre de archivo de secuencias de Sun perdido o no válido
 source_edoor=Nombre de archivo de puerta de Sun Streams perdido o no válido
 source_transport=Protocolo de red
+
 view_title=Ver archivo de registro
 view_header=Últimas $1 líneas de $2 
 view_empty=El archivo de registro está vacío.
 view_refresh=Actualizar
 view_filter=Mostrar solo líneas con texto $1 
+
 apply_err=Error al aplicar la configuración
 apply_egone=¡No corras!
+
 start_err=Error al iniciar el servidor Syslog-NG
+
 stop_err=Error al detener el servidor Syslog-NG
+
 log_create_destination=Destino de registro creado $1 
 log_modify_destination=Destino de registro modificado $1 
 log_delete_destination=Destino de registro eliminado $1 

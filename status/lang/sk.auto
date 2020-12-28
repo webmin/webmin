@@ -6,6 +6,7 @@ index_refsel=Obnoviť vybrané
 index_group=Členovia $1 
 index_tmpls=Upraviť e-mailové šablóny
 index_tmplsdesc=Prezerajte a upravujte šablóny používané na vytváranie e-mailových správ odosielaných v prípade, že sledované služby klesnú.
+
 type_sslcert=Certifikát SSL
 type_ftp=Vzdialená služba FTP
 type_fail2ban=Server Fail2Ban
@@ -22,6 +23,8 @@ type_alive=Živý systém
 type_rssh=Vzdialené SSH
 type_slapd=LDAP Server
 type_ldap=Pripojenie LDAP
+
+mon_virtualmin=Výstraha! Tento monitor je priradený k doméne Virtualmin $1, a preto by sa tu nemal upravovať ani mazať.
 mon_header2=Príkazy na spustenie
 mon_header3=Sledované možnosti služby
 mon_remotes2=Beží na hostiteľoch a skupinách
@@ -53,6 +56,7 @@ mon_changes0=Zobraziť každý typ udalosti
 mon_changes1=Zobraziť iba zmeny
 mon_all=Zobraziť všetky historické udalosti
 mon_nochanges=V posledných historických udalostiach $1 nedošlo k žiadnym zmenám stavu.
+
 sched_pnone=Neodosielať stránky
 sched_eemailserver=Váš poštový server nie je nainštalovaný : $1 
 sched_sms=Poslať SMS na adresu
@@ -66,13 +70,16 @@ sched_subject0=Žiadne (upozornenie je v tele)
 sched_subject1=Varovný text (nechajte telo prázdne)
 sched_subject2=Vlastný text
 sched_esubject=Chýba predmet správy SMS
+
 http_regexp=Stránka sa musí zhodovať s regexp
 http_eregexp=Nebol zadaný žiadny regulárny výraz pre stránku, ktorá by sa zhodovala
 http_none2=Nezhodujú sa
 http_ehead=Metódu žiadosti HEAD nemožno použiť pri kontrole regulárneho výrazu
+
 proc_asuser=Beží ako užívateľ
 proc_anyuser=Každý užívateľ
 proc_easuser=Používateľ, ktorý má proces spustiť, neexistuje
+
 exec_mode=Ukončite kontrolu stavu
 exec_mode0=Ak zlyhá príkaz, monitorujte zlyhanie
 exec_mode1=Zlyhanie monitorovania, ak je príkaz úspešný
@@ -82,6 +89,7 @@ exec_noregexp=Nekontroluj
 exec_remode=Kontrola regulárnych výrazov
 exec_remode0=Zlyhanie, ak sa výstup nezhoduje
 exec_remode1=Zlyhanie, ak sa výstup nezhoduje
+
 file_elarge=Príliš veľké súbory : $1 
 file_esmall=Súbory príliš malé : $1 
 file_eowner=Súbory s nesprávnym vlastníkom : $1 
@@ -91,6 +99,7 @@ file_group=Skupina súborov musí byť
 file_nocheck=čokoľvek
 file_perms=Osmičkové povolenia musia byť
 file_eperm=Súbory s nesprávnymi povoleniami : $1 
+
 space_min2=Minimálny voľný priestor
 space_mode0=Absolútna veľkosť
 space_mode1=Percento z celkového počtu
@@ -100,12 +109,14 @@ space_ierr=Iba $1 voľného inodes
 space_merr=Iba $1 voľného miesta
 space_perr=Iba $1% voľného
 space_dferr=Nepodarilo sa získať veľkosť súborového systému
+
 log_deletes=Monitor bol odstránený
 log_tmpl_create=Vytvorená e-mailová šablóna $1 
 log_tmpl_modify=Upravená šablóna e-mailu $1 
 log_tmpl_delete=Šablóna e-mailu bola odstránená $1 
 log_tmpl_deletes=Odstránené e-mailové šablóny $1 
 log_refresh=Obnovené stavy monitora
+
 memory_min2=Minimálna voľná reálna pamäť
 memory_free2=Skutočná pamäť $1 je zadarmo
 memory_freeswap=Bezplatná virtuálna pamäť $1 
@@ -113,13 +124,17 @@ memory_freelow=Uvoľnená je iba $1 skutočná pamäť
 memory_freelowswap=Bezplatná je iba virtuálna pamäť $1 
 memory_minswap=Minimálna voľná virtuálna pamäť
 memory_eminswap=Chýbajúce alebo neplatné množstvo voľnej virtuálnej pamäte
+
 raid_other=Other ..
+
 init_action=Akcia na kontrolu
 init_eaction=Nie je vybraná žiadna akcia
+
 refresh_title=Obnoviť stav
 refresh_doing=Obnovuje sa stav všetkých monitorov.
 refresh_doing2=Obnovuje sa stav vybraných monitorov $1.
 refresh_done=.. hotový.
+
 sensors_name=Senzor skontrolovať
 sensors_value=Neúspešné, keď
 sensors_value0=Systém indikuje varovanie
@@ -130,6 +145,7 @@ sensors_none=Vo vašom systéme neboli zistené žiadne senzory. Možno budete m
 sensors_cur=$1 (v súčasnosti $2 $3)
 sensors_emin=Chýbajúca alebo neplatná minimálna hodnota
 sensors_emax=Chýbajúca alebo neplatná maximálna hodnota
+
 nut_ups=NUT UPS na kontrolu
 nut_name=Atribút na kontrolu
 nut_value=Neúspešné, keď
@@ -140,6 +156,7 @@ nut_eups=Nebol zadaný žiadny USP na kontrolu
 nut_cur=$1 (momentálne $2)
 nut_emin=Chýbajúca alebo neplatná minimálna hodnota
 nut_emax=Chýbajúca alebo neplatná maximálna hodnota
+
 mailq_system=Poštový server
 mailq_qmailadmin=qmail
 mailq_postfix=Postfix
@@ -148,6 +165,7 @@ mailq_size=Maximálna veľkosť poštovej fronty
 mailq_esize=Chýbajúca alebo neplatná maximálna veľkosť frontu
 mailq_toomany=Down - $1 správ zaradených do frontu
 mailq_ok=Hore - $1 správ zaradených do frontu
+
 dns_server=DNS server
 dns_host=Názov hostiteľa na vyhľadávanie
 dns_address=Očakávaná adresa IP
@@ -155,6 +173,7 @@ dns_eserver=Chýba alebo je neplatný server DNS
 dns_ehost=Chýba vyhľadávacie meno hostiteľa, ktorého názov je neplatný alebo neplatný
 dns_eaddress=Chýbajúca alebo neplatná očakávaná adresa IP
 dns_ecmds=Vo vašom systéme nie sú nainštalované ani príkazy <tt>nslookup</tt> ani <tt>dig</tt>
+
 monitor_sub_down=$1 nadol na $2 
 monitor_pager_down=$1 : „$2“ klesá o $3 
 monitor_snmp_down= $1:$2 
@@ -186,8 +205,10 @@ monitor_run1=Spúšťa sa $1 na $2 ..
 monitor_run2=Spúšťa sa $1 ..
 monitor_runerr=Nepodarilo sa spustiť $1 na $2 : $3 
 monitor_email_stat=Aktuálny stav: $1 
+
 deletes_egone=Jeden z vybraných monitorov už neexistuje
 deletes_enone=Nie sú vybraté žiadne monitory
+
 ftp_host=Hostiteľ servera FTP
 ftp_port=FTP port
 ftp_user=Prihláste sa ako užívateľ
@@ -204,6 +225,7 @@ ftp_econn=FTP pripojenie TLS zlyhalo
 ftp_econn2=FTP pripojenie TLS zlyhalo : $1 
 ftp_elogin=Prihlásenie TLS FTP zlyhalo : $1 
 ftp_etlsfile=Stiahnutie servera TLS FTP zlyhalo : $1 
+
 query_driver=Typ databázy SQL
 query_db=Názov databázy
 query_host=Hostiteľ databázového servera
@@ -224,9 +246,12 @@ query_elogin=Prihlásenie zlyhalo : $1
 query_eprepare=Chyba SQL : $1 
 query_eexecute=SQL zlyhalo : $1 
 query_ewrong=Nesprávny výsledok : $1 
+
 consume_rate=Maximálna miera spotreby (za sekundu)
 consume_high=Miera spotreby je $1 / s
+
 alive_up=Až o $1 
+
 rssh_host=Hostiteľ servera SSH
 rssh_ruser=Prihláste sa ako užívateľ
 rssh_rpass=Prihláste sa pomocou hesla
@@ -242,6 +267,7 @@ rssh_error=Chyba SSH
 rssh_haspass=heslo
 rssh_port=Port servera SSH
 rssh_eport=Chýbajúce alebo neplatné číslo portu
+
 tmpls_title=E-mailové šablóny
 tmpls_ecannot=Nemáte oprávnenie upravovať e-mailové šablóny
 tmpls_none=Zatiaľ neboli definované žiadne e-mailové šablóny. Všetky upozornenia sa budú odosielať pomocou predvolených správ Webmin.
@@ -250,6 +276,7 @@ tmpls_email=E-mailová správa
 tmpls_add=Pridajte novú šablónu e-mailu.
 tmpls_return=zoznam šablón
 tmpls_delete=Odstrániť vybrané šablóny
+
 tmpl_title1=Vytvoriť šablónu e-mailu
 tmpl_title2=Upraviť šablónu e-mailu
 tmpl_header=Upozorniť na e-mailové šablóny správ
@@ -274,9 +301,11 @@ tmpl_esms=Chýba SMS správa
 tmpl_esnmp=Chýba správa SNMP
 tmpl_err2=Šablónu e-mailu sa nepodarilo odstrániť
 tmpl_eusers=Používajú ho nasledujúce monitory : $1 
+
 dtmpls_err=Šablóny sa nepodarilo odstrániť
 dtmpls_enone=Žiadne vybraté
 dtmpls_eusers=$1 používajú nasledujúce monitory : $2 
+
 sslcert_src=Umiestnenie certifikátu
 sslcert_url=Z adresy HTTPS
 sslcert_file=Zo súboru na serveri
@@ -294,18 +323,21 @@ sslcert_eend=Neplatné po $1
 sslcert_left=Až - $1 dní do skončenia platnosti
 sslcert_ematch=Názov hostiteľa $1 sa nezhoduje s certifikátom $2 
 sslcert_emismatch=Kontrola názvu hostiteľa certifikátu sa dá použiť iba pri kontrole adresy URL
+
 du_dir=Adresár na monitorovanie
 du_max=Maximálna veľkosť
 du_edir=Chýba alebo nie je absolútna cesta k adresáru
 du_emax=Chýbajúca alebo nečíselná maximálna veľkosť
 du_over=Veľkosť je $1 
 du_under=Veľkosť je iba $1 
+
 ldap_edriver=Modul Perl $1 nie je nainštalovaný
 ldap_host=Názov hostiteľa servera LDAP
 ldap_port=Port servera LDAP
 ldap_ssl=Používate pripojenie SSL?
 ldap_user=Prihlásenie na server LDAP
 ldap_pass=Heslo servera LDAP
+
 info_desc=Monitorovanie systému
 info_last=Súčasný stav
 info_title=Stav systému a servera

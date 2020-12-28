@@ -4,6 +4,7 @@ index_desc=Deskrizzjoni
 index_add=Żid servizz PAM ġdid.
 index_return=lista tas-servizzi
 index_none=L-ebda fajl ta 'konfigurazzjoni PAM ma nstab fis-sistema tiegħek fid-direttorju $1. Forsi PAM mhuwiex sostnut, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> tiegħek mhix korretta.
+
 desc_su=Ibdel l-utent
 desc_su-l=Aqleb l-utent (bl-login)
 desc_login=Login lokali jew remot
@@ -87,6 +88,7 @@ desc_common-account=Verifika tal-kont komuni
 desc_common-auth=Awtentikazzjoni komuni
 desc_common-password=Bidla komuni tal-password
 desc_common-session=Twaqqif ta ’sessjoni komuni
+
 edit_title=Editja s-Servizz PAM
 edit_header=Dettalji tas-servizz PAM
 edit_name=Isem tas-servizz
@@ -107,6 +109,7 @@ edit_move=Tmexxi
 edit_return=Servizz PAM
 edit_inc=Inkludi servizz $1 
 edit_iheader=Inklużi servizzi PAM
+
 pam_pwdb.so=Awtentikazzjoni tal-password Unix
 pam_securetty.so=Iċċekkja TTY għall-għerq
 pam_nologin.so=<tt>/etc/nologin</tt> Iċċekkja l-fajl
@@ -149,6 +152,7 @@ pam_console.so=Ikkontrolla l-konsola biss
 pam_xauth.so=X awtentikazzjoni
 pam_stack.so=Ċempel servizz ieħor PAM
 pam_foreground.so=Twaqqif tal-konsola
+
 control_requisite=Rekwiżit
 control_required=Meħtieġ
 control_sufficient=Biżejjed
@@ -157,6 +161,7 @@ control_desc_requisite=Ifalli l-awtentikazzjoni immedjatament fuq il-falliment
 control_desc_required=Falliment fl-awtentikazzjoni fit-tmiem fuq falliment
 control_desc_sufficient=Irnexxi l-awtentikazzjoni immedjatament fuq is-suċċess
 control_desc_optional=Suċċess jew falliment huwa injorat
+
 create_title=Oħloq Servizz PAM
 create_header=Għażliet ġodda ta 'servizzi PAM
 create_name=Isem tas-servizz
@@ -165,6 +170,7 @@ create_mods=Moduli PAM inizjali
 create_0=Xejn
 create_1=Awtentikazzjoni Unix
 create_2=Iċħad kull aċċess
+
 mod_edit=Editja l-Modulu PAM
 mod_create=Żid il-Modulu PAM
 mod_header=Għażliet tal-modulu PAM
@@ -178,10 +184,12 @@ mod_type_password=Bidla tal-Password
 mod_control=Livell ta 'falliment
 mod_args=Modulu ta 'argumenti
 mod_err=Ma rnexxielux isalva l-modulu
+
 pwdb_shadow=Uża l-fajl tal-password dell?
 pwdb_nullok=Taċċetta passwords null?
 pwdb_md5=Uża passwords kodifikati fl-MD5?
 pwdb_nodelay=Dewmien wara li falliet l-login?
+
 unix_nullok_secure=Taċċetta passwords nulli fuq TTYs siguri?
 unix_min=Tul minimu tal-password
 unix_nomin=Xejn
@@ -190,6 +198,7 @@ unix_nomax=L-ebda limitu
 unix_obscure=Tipprevjeni l-użu ta 'passwords faċli?
 unix_emin=It-tul minimu tal-password nieqes jew invalidu
 unix_emax=It-tul massimu tal-password nieqes jew invalidu
+
 listfile_item=Fittex fajl għal
 listfile_item_user=Username
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=Limitu tal-verifika għal
 listfile_all=L-utenti kollha
 listfile_user=Utent biss
 listfile_group=Grupp biss
+
 cracklib_type=Tip ta 'password fil-pront
 cracklib_retry=Il-massimu jerġa ’jibda mill-ġdid
 cracklib_eretry=Numru ta 'tentattivi nieqsa jew invalidi
 cracklib_etype=Tip ta 'password nieqes jew invalidu
+
 rhosts_equiv=Aqra l-fajl <tt>/etc/hosts.equiv</tt>?
 rhosts_rhosts=Aqra l-fajls <tt>.rhosts</tt> tal-utenti?
 rhosts_promiscuous=<tt>+</tt> Id-dħul jippermetti l-ospiti kollha?
 rhosts_suppress=Idħol il-fallimenti tal-awtentikazzjoni?
+
 env_var=Isem varjabbli
 env_def=Valur awtomatiku
 env_over=Valur li jwarrab
 env_evar=Ismijiet varjabbli ma jistax ikun fihom spazji
+
 securetty_ttys=TTYs Sikuri
+
 shells_shells=Qxur validi ta 'l-utent
+
 tally_deny=Fallimenti ta 'attentati qabel ma jiċħad l-aċċess
 tally_reset=Irrisettja l-falliment joqgħod fuq is-suċċess
 tally_edeny=Numru nieqes jew invalidi ta 'attentati ta' falliment
 tally_magic=Għadd ta 'nuqqasijiet japplika għal <tt>root</tt>?
 tally_root=<tt>root</tt> kont jista 'jiġi miċħud?
+
 time_services=Servizzi
 time_ttys=TTYs
 time_users=Utenti
 time_times=Ħinijiet ta 'aċċess
 time_info=L-oqsma kollha jista 'jkun fihom valuri multipli separati minn |, u l-valuri jistgħu jużaw * bħala wildcard jew! bħala negatur.
+
 group_services=Servizzi
 group_ttys=TTYs
 group_users=Utenti
 group_times=Ħinijiet ta 'aċċess
 group_groups=Żid gruppi
 group_info=L-oqsma kollha jista 'jkun fihom valuri multipli separati minn |, u l-valuri jistgħu jużaw * bħala wildcard jew! bħala negatur.
+
 wheel_group=Iċċekkja għal sħubija ta 'grupp
 wheel_group_def=Default (<tt>rota</tt> jew GID 0)
 wheel_trust=Il-membri tal-grupp jinjoraw aktar awtentikazzjoni?
 wheel_deny=Minflok ma tiċħadx lill-membri tal-grupp?
 wheel_egroup=Isem tal-grupp nieqes jew invalidu
+
 motd_file=Fajl li juri
 motd_file_def=Default (<tt>/eċċ/motd</tt>)
 motd_efile=Isem tal-fajl nieqes jew invalidu
+
 mail_nopen=Uri n-notifika bil-posta waqt id-dħul?
 mail_close=Turi notifika tal-posta elettronika waqt il-waqfien?
 mail_empty=Avża jekk il-fajl tal-posta jkun vojt?
 mail_noenv=Issettja $ MAIL f'ambjent varjabbli?
 mail_dir=Direttorju tal-posta rukkell
 mail_edir=Direttorju tat-tabella tal-posta elettronika nieqes jew invalidu
+
 stack_service=Għaddi ċekk fuq is-servizz PAM
+
 log_pam_create=Ħoloq servizz PAM $1 
 log_pam_delete=Servizz imħassar PAM $1 
 log_mod_create=Il-modulu PAM $1 ġie miżjud mas-servizz $2 
@@ -262,6 +284,7 @@ log_inc_create=Miżjud jinkludi $1 għas-servizz $2
 log_inc_modify=Modifikat jinkludi $1 għas-servizz $2 
 log_inc_delete=Imħassar jinkludi $1 għas-servizz $2 
 log_incs=Aġġornat jinkludi għas-servizz $1 
+
 inc_edit=Editja Servizz Inkluż
 inc_create=Oħloq Servizz Inkluż
 inc_header=Inklużi dettalji tas-servizz PAM

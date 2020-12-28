@@ -26,6 +26,7 @@ index_when=Bai, $1
 index_webalizer=Webalizer
 index_enable=Egutegia aukeratua
 index_disable=Hautatu Egutegia
+
 edit_title1=Gehitu log fitxategia
 edit_title2=Editatu log fitxategia
 edit_header=Eguneratu fitxategien txosten aukerak
@@ -49,12 +50,14 @@ edit_cmode0=Aukera globala erabili
 edit_cmode1=Aukera pertsonalizatuak
 edit_cmode2=Beste konfigurazio fitxategi bat ..
 edit_clear=Log fitxategiak garbitu nahi dituzu txostena programatu ondoren?
+
 gen_title=Sortu Txostena
 gen_header=Webalizer exekutatzen $1 etik txostena sortzeko.
 gen_done=.. egin
 gen_failed=Webguneak huts egin du. Ikusi goiko irteera xehetasunetarako.
 gen_nothing=.. Webalizer amaitu da, baina ez da txostenik sortu. Ikusi goiko irteera xehetasunetarako.
 gen_view=Ikusi osatutako txostena.
+
 save_err=Ezin izan da erregistroko fitxategia gorde
 save_efile=Log fitxategia ez da sartu edo ez da existitzen
 save_ecfile=Falta den edo ez dagoen beste konfigurazio fitxategi bat
@@ -64,12 +67,14 @@ save_ewuser=Ez dago $1 izeneko Unix erabiltzailerik
 save_ehost=Webgunearen ostalariaren izen falta edo baliogabea
 save_etitle=Txostenaren titulua falta da
 save_ecannot=$1 etik beherako erregistroetarako txostenak sor ditzakezu soilik
+
 view_epath=PATH_INFO baliogabea
 view_efile=Baliogabearen txostena
 view_elog=Log fitxategi baliogabea
 view_ecannot=Ezin duzu txostena ikusi
 view_eopen=Ezin izan da txostenaren fitxategia ireki
 view_title=Ikusi Txostena
+
 global_title=Webguneen Aukeraketa Globala
 global_title2=Webguneen txostenaren aukerak
 global_for=$1 erregistrorako
@@ -130,6 +135,7 @@ global_includesite=Bezeroek ez dute kasurik egin behar
 global_includereferrer=Epaileak ez ahaztu
 global_includeuser=Erabiltzaileei ez diete jaramonik egin
 global_includeagent=Nabigatzailea ez da jaramonik egiten
+
 global_err=Huts egin du Webalizer aukerak gordetzean
 global_ereport=Falta da txostenaren izenburuaren aurrizkia
 global_ehost=Ostalariaren izen falta edo baliogabea
@@ -139,6 +145,7 @@ global_etable='$1' taulan tamaina falta edo baliogabea
 global_ehistory=Falta da edo historiaren fitxategiaren izena baliogabea
 global_ecurrent=Fitxategiaren gehikuntzaren izen falta edo baliogabea da
 global_ecache=Falta edo DNS cache fitxategiaren izen baliogabea
+
 log_create_log=$1 erako txostena sortu da
 log_modify_log=$1 aldatzeko txostena
 log_delete_log=$1 -eko txostena ezabatu da
@@ -147,6 +154,7 @@ log_global=Webgunearen globalizatutako aukerak aldatu
 log_global2=$1 erako Webalizer aukerak aldatu
 log_enable_logs=$1 erregistroetan erregistratutako planifikazioa
 log_disable_logs=$1 erregistroetan aurreikusitako txostena
+
 acl_view=Dauden txostenak soilik ikus al ditzake?
 acl_global=Editatu al ditzakezu web-hedatzaile globalak?
 acl_dir=Txostenak erregistroak ikustea eta editatzea bakarrik baimendu

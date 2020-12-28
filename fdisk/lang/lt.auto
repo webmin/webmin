@@ -44,6 +44,7 @@ index_dscsi=SCSI įrenginys $1 valdiklis $2
 index_draid=RAID lygis $1 
 index_dparts=Pertvaros
 index_none2=Šioje sistemoje nerasta jokių diskų.
+
 bytes=baitų
 megabytes=megabaitų
 extended=Išplėstas
@@ -67,6 +68,7 @@ select_promise=Pažadėkite RAID diską $1
 select_ppart=Pažadėkite RAID disko $1 skaidinį $2 
 select_nvme=NVME SSD $1 diskas $2 
 select_nvmepart=NVME SSD $1 diskas $2 skaidinys $3 
+
 edit_title=Redaguoti skaidinį
 create_title=Sukurti skaidinį
 edit_ecannot=Jums neleidžiama redaguoti šio disko
@@ -110,6 +112,7 @@ edit_newmount2=Mount pertvara
 edit_mountas=kaip
 edit_mountmsg=Įdėkite šį skaidinį į naują savo sistemos katalogą, kad jį būtų galima naudoti failams saugoti. Skirsnyje turi būti jau sukurta failų sistema.
 edit_mountmsg2=Sumontuokite šį skaidinį kaip virtualiąją atmintį savo sistemoje, kad padidintumėte laisvos atminties kiekį.
+
 mkfs_title=Nauja failų sistema
 mkfs_ecannot=Šiame diske jums neleidžiama kurti naujos failų sistemos
 mkfs_desc1=Spustelėjus mygtuką šios formos apačioje, įrenginyje $2 bus sukurta nauja failų sistema $1. Visi šio skaidinio duomenys bus visam laikui ištrinti.
@@ -120,6 +123,7 @@ mkfs_err=Nepavyko sukurti failų sistemos
 mkfs_exec=Vykdoma komanda $1.
 mkfs_failed=.. komanda nepavyko!
 mkfs_ok=.. komanda baigta.
+
 fsck_title=Pataisykite failų sistemą
 fsck_ecannot=Jums neleidžiama fsck šio disko
 fsck_desc1=Spustelėję mygtuką <tt>Pataisyti failų sistemą</tt>, bus bandoma atkurti pažeistą $1 failų sistemą $2, kad ji būtų montuojama $3. Jei failų sistema nepažeista, pakeitimai nebus atliekami.
@@ -132,6 +136,7 @@ fsck_err3=rastos ir ištaisytos klaidos - reikia iš naujo paleisti
 fsck_err4=rastos klaidos, bet NEIŠTIKRINTOS
 fsck_err16=komandinės eilutės klaida
 fsck_unknown=nežinomas grąžinimo kodas $1 
+
 tunefs_title=Derinti failų sistemą
 tunefs_ecannot=Jums neleidžiama suderinti šios failų sistemos
 tunefs_desc=Ši forma leidžia jums pritaikyti įvairius $1 failų sistemos parametrus $2, kad būtų galima prijungti $3. Esami šios failų sistemos failai nebus paveikti.
@@ -153,10 +158,12 @@ tunefs_err=Nepavyko suderinti failų sistemos
 tunefs_exec=Vykdoma komanda $1.
 tunefs_failed=.. komanda nepavyko!
 tunefs_ok=.. komanda baigta.
+
 reboot_title=Perkraukite
 reboot_msg=Perkraukite dabar ..
 reboot_ok=Perkrauti dabar
 reboot_why=Pakeitėte $1 skaidinių lentelę. Kad šis pakeitimas tinkamai įsigaliotų, jūsų sistema turi būti paleista iš naujo.
+
 save_err=Nepavyko išsaugoti skaidinio
 save_ecannot=Jums neleidžiama redaguoti šio disko
 save_estart=„$1“ nėra galiojantis pradinis cilindras
@@ -165,6 +172,7 @@ save_emin=Pradinis cilindras turi būti> = $1
 save_emax=Galinis cilindras turi būti <= $1 
 save_eminmax=Pradinis cilindras turi būti mažesnis už galinį
 save_eoverlap=Aptikta sutapimo su skaidiniu $1 (nuo $2 iki $3)
+
 ext2_b=Bloko dydis
 ext2_f=Fragmento dydis
 ext2_i=Baitai už įvadą
@@ -172,6 +180,7 @@ ext2_m=Rezervuoti blokai
 ext2_g=Blokai vienai grupei
 ext2_c=Patikrinkite, ar nėra blogų blokų?
 ext3_j=Žurnalo failo dydis
+
 msdos_ff=FAT skaičius
 msdos_F=RIEBALŲ dydis
 msdos_F_other=Kiti ..
@@ -180,24 +189,32 @@ msdos_n=Tomo pavadinimas
 msdos_r=Šaknies įrašai
 msdos_s=Klasterio dydis
 msdos_c=Patikrinkite, ar nėra blogų blokų?
+
 minix_n=Failo vardo ilgis
 minix_i=Intarpų skaičius
 minix_b=Blokų skaičius
 minix_c=Patikrinkite, ar nėra blogų blokų?
+
 reiserfs_force=Priverstinai sukurti failų sistemą
 reiserfs_hash=Hash funkcija
+
 xfs_force=Priverstinai sukurti failų sistemą
 xfs_b=Bloko dydis
+
 jfs_s=Rąsto dydis
 jfs_c=Patikrinkite, ar nėra blogų blokų?
+
 btrfs_l=Lapų dydis
 btrfs_n=Mazgo dydis
 btrfs_s=Sektoriaus dydis
+
 fatx_none=„FATX“ failų sistemoms parinkčių nėra.
+
 acl_disks=Diskai, kuriuos šis vartotojas gali skaidyti ir formatuoti
 acl_dall=Visi diskai
 acl_dsel=Pasirinkta ..
 acl_view=Ar galite žiūrėti neredaguojamus diskus?
+
 hdparm_title=Redaguoti IDE parametrus
 hdparm_on=Įjungta
 hdparm_off=Išjungta
@@ -226,9 +243,11 @@ hdparm_performing=Atlieka
 hdparm_buf1=Buferinė talpykla:
 hdparm_buf2=Buferis:
 hdparm_speedres=Greičio bandymo rezultatai
+
 blink_title=Nurodykite diską
 blink_desc=Pavaros veikimo šviesos diodas dabar užsidegs šešiasdešimt kartų
 blink_back=Eik atgal
+
 log_modify=Modifikuotas $1 
 log_create=Sukurta $1 
 log_delete=Ištrinta $1 
@@ -236,6 +255,7 @@ log_mkfs=Sukurta $1 failų sistema $2
 log_tunefs=Suderinta $1 failų sistema $2 
 log_fsck=Sutaisyta $1 failų sistema $2 
 log_hdparm=Modifikuoti $1 IDE parametrai
+
 fs_ext2=Senoji „Linux“ gimtoji
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -246,9 +266,11 @@ fs_ext4=Nauja „Linux“ gimtoji
 fs_xfs=SGI
 fs_jfs=„IBM Journalling“
 fs_btrfs=BTR
+
 delete_title=Ištrinti skaidinį
 delete_rusure=Ar tikrai norite ištrinti $1 ($2)? Duomenys apie šį skaidinį gali būti prarasti visam laikui.
 delete_ok=Ištrinti dabar
+
 disk_title=Redaguoti disko skaidinius
 disk_egone=Disko nebeegzistuoja!
 disk_no=Skaičius
@@ -269,11 +291,13 @@ disk_table=<b>Skirsnių lentelės formatas:</b> $1
 disk_notable=<b>Pasiskirstymo lentelės formatas:</b> Nesukurta
 disk_needtable=Negalima sukurti skaidinių be skirsnių lentelės.
 disk_return=pertvarų sąrašas
+
 relabel_title=Nuvalykite pertvaras
 relabel_warn=Ar tikrai norite išvalyti visus skaidinius $1 ($2), perrašydami disko etiketę? Bus prarasti visi turimi duomenys ir failų sistemos!
 relabel_parts=Esamos pertvaros
 relabel_noparts=Dar niekas nesukurtas
 relabel_table=Skirsnių lentelės formatas
 relabel_ok=Nuvalykite ir vėl pažymėkite etiketę
+
 table_msdos=MS-DOS (standartinis skaidinio formatas)
 table_gpt=GPT (2T ar didesniems diskams)

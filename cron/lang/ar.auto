@@ -31,6 +31,7 @@ index_ok=بحث
 index_searchres=وظائف Cron مطابقة$1 ..
 index_reset=إعادة ضبط البحث.
 index_econfigcheck=لا يمكن إدارة مهام Cron على نظامك ، لأن تكوين الوحدة غير صالح :$1
+
 edit_title=تحرير كرون الوظيفة
 create_title=خلق كرون الوظيفة
 edit_ecannot=غير مسموح لك بتحرير وظائف cron لهذا المستخدم
@@ -70,6 +71,7 @@ lcedit_special_weekly=أسبوعيا (يوم الأحد)
 lcedit_special_monthly=شهريًا (في الأول)
 lcedit_special_yearly=سنوي (في 1 يناير)
 lcedit_special_reboot=عندما يقوم النظام بالتمهيد
+
 save_err=فشل في حفظ وظيفة كرون
 save_ecmd=لم تقم بإدخال أمر للتنفيذ
 save_euser=يجب عليك اختيار مستخدم
@@ -79,6 +81,7 @@ save_ecannot=غير مسموح لك بإنشاء أو تحرير وظائف cron
 save_enone=لم تختر أي$1 للتنفيذ
 save_ecannot2=غير مسموح لك بإنشاء وظائف cron
 save_eidx=تم حفظ وظيفة Cron بنجاح ، لكن لا يمكن تشغيلها لأنه لم يتم العثور عليها!
+
 allow_title=التحكم في الوصول إلى Cron
 allow_desc=يتيح لك هذا النموذج التحكم في المستخدمين الذين يمكنهم إنشاء وظائف cron وتشغيلها.
 allow_ecannot=لا يمكنك التحكم في وصول المستخدم إلى cron
@@ -87,6 +90,7 @@ allow_all2=رفض جميع المستخدمين باستثناء الجذر
 allow_all3=السماح لجميع المستخدمين
 allow_allow=السماح فقط للمستخدمين المدرجة
 allow_deny=رفض المستخدمين المدرجين فقط
+
 env_title1=تحرير متغير البيئة
 env_title2=إنشاء بيئة متغير
 env_name=اسم المتغير
@@ -102,11 +106,13 @@ env_where2=نقل متغير البيئة
 env_top=قبل كل وظائف Cron للمستخدم
 env_bot=بعد كل وظائف كرون
 env_leave=الموقف الحالى
+
 exec_title=تنفيذ كرون الوظيفة
 exec_ecannot=غير مسموح لك بتنفيذ وظائف cron لهذا المستخدم
 exec_cmd=الإخراج من الأمر$1 ..
 exec_cmdbg=تشغيل الأمر$1 كعملية خلفية.
 exec_none=لا الإخراج المتولدة
+
 acl_users=يمكن تحرير وظائف كرون ل
 acl_all=جميع المستخدمين
 acl_this=مستخدم الويب الحالي
@@ -122,6 +128,7 @@ acl_move=يمكن نقل وظائف كرون؟
 acl_kill=يمكن إنهاء وظائف كرون؟
 acl_hourly=الحد من الوظائف على الأكثر في كل ساعة؟
 acl_hourlydef=كما هو محدد في الوحدة النمطية التكوين
+
 log_modify=وظيفة Cron المعدلة لـ$1
 log_modify_l=وظيفة Cron المعدلة "$2" لـ$1
 log_create=تم إنشاء وظيفة Cron لـ$1
@@ -139,7 +146,9 @@ log_move=وظيفة Cron المنقولة لـ$1
 log_crons_delete=تم حذف وظائف$1 Cron
 log_crons_disable=معطل$1 وظائف كرون
 log_crons_enable=تم تمكين وظائف$1 Cron
+
 ecopy=تم اكتشاف خطأ في تكوين Cron الجديد:$1 $2
+
 when_min=كل دقيقة
 when_hour=كل ساعة عند$1 بعد الساعة
 when_day=كل يوم في $2:$1 
@@ -148,6 +157,7 @@ when_weekday=كل$3 في $2:$1
 when_cron=في وقت كرون$1
 when_interval=كل$1 ثانية
 when_boot=في وقت بدء التشغيل
+
 ucwhen_min=كل دقيقة
 ucwhen_hour=كل ساعة عند$1 بعد الساعة
 ucwhen_day=كل يوم في $2:$1 
@@ -156,8 +166,10 @@ ucwhen_weekday=كل$3 في $2:$1
 ucwhen_cron=في وقت كرون$1
 ucwhen_interval=كل$1 ثانية
 ucwhen_boot=في وقت بدء التشغيل
+
 move_err=فشل في نقل وظيفة كرون
 move_etype=لا يمكن نقل هذه الوظيفة
+
 kill_err=فشل في إنهاء مهمة Cron
 kill_ecannot=غير مسموح لك بإنهاء هذه الوظيفة
 kill_egone=لم يعد يعمل
@@ -166,13 +178,16 @@ kill_title=إنهاء كرون الوظيفة
 kill_rusure=هل أنت متأكد من أنك تريد إنهاء العملية$1 باستخدام PID$2؟
 kill_rusure2=هل أنت متأكد من رغبتك في إنهاء العملية$1 باستخدام PID $2 ، وكافة العمليات الفرعية الخاصة بها؟
 kill_ok=نعم ، إنهائه
+
 range_all=تشغيل في أي تاريخ
 range_start=يعمل فقط من$1
 range_end=إلى 1
 range_estart=تاريخ البدء مفقود أو غير صالح في النطاق للتشغيل
 range_eend=تاريخ الانتهاء مفقود أو غير صالح في النطاق للتشغيل
+
 delete_err=فشل في حذف وظائف Cron
 delete_enone=لا شيء محدد
+
 manual_title=تحرير وظائف كرون يدويا
 manual_edit=ملف Cron للتحرير:
 manual_ok=تعديل

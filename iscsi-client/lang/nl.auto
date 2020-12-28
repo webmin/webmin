@@ -3,8 +3,10 @@ index_clink=Misschien is het niet geïnstalleerd of is uw <a href='$1'>modulecon
 index_return=module-index
 index_atboot=Beginnen bij het opstarten?
 index_atbootdesc=Wijzig deze optie om te bepalen of de iSCSI-client tijdens het opstarten wordt gestart of niet. Dit is vereist voor bestandssystemen die zijn gemount vanaf iSCSI-servers om automatisch te worden gemount.
+
 check_econfig=Het iSCSI-clientconfiguratiebestand $1 is niet gevonden op uw systeem.
 check_eiscsiadm=Het iSCSI-clientbeheerprogramma $1 is niet gevonden op uw systeem.
+
 auth_title=Verificatie-opties
 auth_header=iSCSI-client- en serververificatie
 auth_name=Naam van lokale systeeminitiator
@@ -29,6 +31,7 @@ auth_edpassword=Ontbrekend ontdekkingswachtwoord voor server
 auth_edusername_in=Ontbrekende ontdekkingsgebruikersnaam voor client
 auth_edpassword_in=Ontbrekend ontdekkingswachtwoord voor client
 auth_egen=Kan geen nieuwe naam genereren!
+
 timeout_title=iSCSI-time-outs
 timeout_header=Time-outopties voor iSCSI-client
 timeout_timeout=Tijd om te wachten voordat SCSI-opdrachten mislukken
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Ontbrekende of niet-numerieke tijd om te wachten op pi
 timeout_eabort_timeout=Ontbrekende of niet-numerieke tijd om te wachten op een afgebroken reactie voordat deze mislukt
 timeout_elu_reset_timeout=Ontbrekende of niet-numerieke tijd om te wachten op respons van logische eenheid voordat deze mislukt
 timeout_etgt_reset_timeout=Ontbrekende of niet-numerieke tijd om te wachten op doelreactie voordat deze mislukt
+
 iscsi_title=iSCSI-opties
 iscsi_header=Andere iSCSI-opties
 iscsi_startup=Sessies verbinden tijdens het opstarten?
@@ -62,6 +66,7 @@ iscsi_err=Kan iSCSI-opties niet opslaan
 iscsi_eretry=Ontbrekend of niet-numeriek aantal keren om opnieuw in te loggen
 iscsi_ecmds=Ontbrekende of niet-numerieke maximale opdrachten die per sessie in de wachtrij staan
 iscsi_equeue=Ontbrekende of niet-numerieke maximumopdrachten in de wachtrij per apparaat
+
 ifaces_title=iSCSI-interfaces
 ifaces_elist=Kan interfaces niet weergeven : $1 
 ifaces_name=Interface naam
@@ -78,11 +83,13 @@ ifaces_hwaddress=Mac adres
 ifaces_ifacename=Broninterface
 ifaces_ipaddressdef=Automatisch
 ifaces_notset=Automatisch
+
 iadd_err=Kan interface niet toevoegen
 iadd_eclash=Er bestaat al een interface met de naam $1 
 iadd_eipaddress=Ontbrekend of ongeldig bron-IP-adres
 iadd_ehwaddress=Ontbrekend of ongeldig MAC-adres
 iadd_ename=De interfacenaam ontbreekt of bevat ongeldige tekens
+
 difaces_err=Kan interfaces niet verwijderen
 difaces_enone=Geen geselecteerd
 difaces_edelete=Het verwijderen van interface $1 is mislukt : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Interfaces verwijderen
 difaces_target=iSCSI-doel
 difaces_ip=iSCSI-server
 difaces_users=Sommige verbindingen die deze interfaces gebruiken, zijn momenteel actief en zullen niet werken wanneer de interfaces worden verwijderd :
+
 conns_title=iSCSI-verbindingen
 conns_elist=Kan verbindingen niet weergeven : $1 
 conns_ip=Server IP
@@ -113,6 +121,7 @@ conns_return=lijst met verbindingen
 conns_iface=iSCSI-interface
 conns_ifacedef=Kies automatisch
 conns_ifaceerr=Kan interfaces niet ophalen : $1 
+
 add_title=Voeg iSCSI-verbinding toe
 add_err=Kan iSCSI-verbinding niet toevoegen
 add_ehost=Ontbrekende of onoplosbare hostnaam
@@ -129,6 +138,7 @@ add_on=$1 op $2
 add_auth=Log in op de server
 add_auth1=Gebruik standaard authenticatiemethode
 add_auth0=Log in als $2 met wachtwoord $3 met methode $1 
+
 dconns_err=Kan verbindingen niet verbreken
 dconns_enone=Geen geselecteerd
 dconns_edelete=Verwijderen van doel $2 van host $1 is mislukt : $3 
@@ -142,6 +152,7 @@ dconns_use=Gebruikt door
 dconns_size=Partitiegrootte
 dconns_confirm=Verbindingen verwijderen
 dconns_unused=Ongebruikt
+
 vconn_title=iSCSI-verbinding
 vconn_egone=Geselecteerde verbinding bestaat niet meer!
 vconn_header=iSCSI-verbindingsdetails
@@ -160,8 +171,10 @@ vconn_device3=Constante apparaatnaam
 vconn_delete=Verbinding verbreken
 vconn_users=Huidige gebruikers
 vconn_size=Schijfgrootte
+
 atboot_err=Kan niet inschakelen tijdens het opstarten
 atboot_einit=Er bestaat geen opstartactie met de naam $1 
+
 log_auth=Opgeslagen authenticatie-opties
 log_timeout=Opgeslagen time-outopties
 log_iscsi=Opgeslagen iSCSI-opties

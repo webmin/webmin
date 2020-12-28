@@ -31,6 +31,7 @@ index_header3=Stiahnutie súboru zo servera na PC
 index_fetch=Súbor na stiahnutie
 index_ok2=Sťahovanie
 index_show=Ak je to možné, zobraziť v prehliadači?
+
 upload_title=Upload súborov
 upload_err=Chyba pri uploade súborov
 upload_edir=Chýbajúci adresár pre nahranie do
@@ -49,6 +50,7 @@ upload_eextract=, ktorý nemohol byť rozbalený : $1
 upload_extracted=, a rozbalené súbory ..
 upload_deleted=, a rozbalené súbory pred zmazaním archívu ..
 upload_notcomp=Nie je ZIP alebo TAR súbor
+
 download_err=Zlyhalo uloženie sťahovania
 download_enone=Neboli zadané žiadne adresy pre stiahnutie
 download_eurl='$1' nie je platná URL
@@ -60,9 +62,11 @@ download_failed=Sťahovanie zlyhalo : $1
 download_eaccess=Nemáte práva pre stiahnutie súborov do $1
 download_eucannot=Nemáte právo sťahovať súbory ako užívateľ $1
 download_egcannot=Vybraná skupina neobsahuje výbraného užívateľa
+
 cancel_err=Zlyhalo zrušenie sťahovaní
 cancel_enone=Nevybrané
 cancel_ecannot=Nemáte právo zrušiť sťahovanie pre užívateľa $1
+
 log_cancel=Prerušené $1 sťahovanie
 log_upload_l=Nahrané súbory $1
 log_upload=Nahraný $1 súboru
@@ -70,6 +74,7 @@ log_download_l=Stiahnuté URL $1
 log_download=Stiahnuté $1 URL
 log_sdownload_l=Naplánované sťahovanie URL $1
 log_sdownload=Naplánované sťahovanie $1 URL
+
 acl_users=Môže uploadovať a sťahovať súbory ako užívatelia
 acl_all=Všetci užívatelia
 acl_this=Súčasný Webmin užívateľ
@@ -84,6 +89,7 @@ acl_max=Maximálna veľkosť uploadu
 acl_unlim=Nelimitovaný
 acl_b=bajtov
 acl_fetch=Môže stiahnuť súbory do PC?
+
 fetch_err=Zlyhalo stiahnutie súboru
 fetch_ecannot=Nemáte oprávnenie stiahnuť súbory do PC
 fetch_efile=Meno súboru nebolo zadané

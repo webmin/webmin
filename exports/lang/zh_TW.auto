@@ -2,6 +2,7 @@ index_add4=添加一個新的NFSv4導出。
 index_delete=刪除選定的導出
 index_disable=禁用選擇
 index_enable=啟用選定
+
 edit_vers=NFS版本
 edit_nfs_vers=NFS版本
 edit_pfs=要導出的NFSv4偽文件系統
@@ -28,11 +29,13 @@ edit_sec_krb5i=Kerberos完整性
 edit_sec_krb5p=Kerberos隱私
 edit_sec_lipkey=利比
 edit_sec_spkm=知識管理
+
 save_epfs=偽文件系統路徑'$1'看起來不像絕對路徑
 save_pfs='$1'已經作為目錄導出
 save_create_dir=無法創建目錄“$1”
 save_eanonuid=無效的匿名訪問用戶名
 save_eanongid=無效的匿名訪問組名稱
+
 exports_webnfs=WebNFS客戶端
 exports_ngroup=網絡組 $1
 exports_net=網絡 $1
@@ -40,6 +43,7 @@ exports_all=大家
 exports_hosts=主機 $1
 exports_host=主機 $1
 exports_gss=經過身份驗證的網絡： $1
+
 log_modify=修改後的NFS導出 $1
 log_modify_l=已將NFS導出 $1更改為 $2
 log_delete=已刪除NFS導出 $1

@@ -12,6 +12,7 @@ index_eprog=آپ کے سسٹم پر عمل درآمد کا NFS سرور نہیں
 index_delete=منتخب برآمدات کو حذف کریں
 index_disable=غیر فعال منتخب
 index_enable=منتخب شدہ کو فعال کریں
+
 edit_title=ایکسپورٹ میں ترمیم کریں
 create_title=ایکسپورٹ بنائیں
 edit_details=تفصیلات برآمد کریں
@@ -65,6 +66,7 @@ edit_sec_krb5i=کربروس کی سالمیت
 edit_sec_krb5p=کربروس پرائیویسی
 edit_sec_lipkey=LIPKEY
 edit_sec_spkm=ایس پی کے ایم
+
 save_err=برآمد کو بچانے میں ناکام
 save_edir=ڈائرکٹری '$1' موجود نہیں ہے
 save_epfs=چھدمو فائل سسٹم کا راستہ '$1' قطعی راہ کی طرح نہیں لگتا ہے
@@ -78,6 +80,7 @@ save_pfs='$1' ڈائریکٹری کے طور پر پہلے ہی برآمد کی�
 save_create_dir='$1' ڈائریکٹری نہیں بنا سکتے
 save_eanonuid=غلط گمنام رسائی صارف نام
 save_eanongid=نامعلوم گمنام رسائی گروپ کا نام
+
 exports_webnfs=WebNFS مؤکل
 exports_ngroup=نیٹ گروپ$1
 exports_net=نیٹ ورک$1
@@ -85,6 +88,7 @@ exports_all=ہر ایک
 exports_hosts=میزبان$1
 exports_host=میزبان$1
 exports_gss=مستند نیٹ ورک:$1
+
 log_modify=ترمیم شدہ NFS برآمد$1
 log_modify_l=ترمیم شدہ NFS برآمد$1 سے$2
 log_delete=حذف شدہ NFS برآمد$1

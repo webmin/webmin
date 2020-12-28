@@ -9,6 +9,7 @@ index_startmsg=Tryck på denna knapp för att starta FTP-servern med dessa inst�
 index_startmsg2=Tryck på denna knapp för att starta FTP-servern med dessa inställningar. Du kan också ställa in servern att starta automatiskt när det behövs genom att använda inetd eller motsvarande program.
 index_return=inställningar för FTP-server
 index_version=WU-Ftpd Version $1
+
 class_title=Användare och klasser
 class_header=Användarklasser och -inställningar
 class_class=Användarklasser
@@ -31,6 +32,7 @@ class_err=Det gick inte att spara användarklasser
 class_eclass='$1' är inte ett giltigt klassnamn
 class_etypes=Du har inte angivit någon typ för klass '$1'
 class_eaddrs=Du har inte angivit någon adress för klass '$1'
+
 message_title=Meddelanden
 message_header=Meddelanden och README-filer
 message_message=Meddelandefiler
@@ -59,6 +61,7 @@ message_eclass=Klass '$1' finns inte
 message_ebanner='$1' är inte en giltig fil med inloggningsmeddelande
 message_ehostname=Datornamn saknas eller är felaktigt angivet
 message_eemail=E-postadress saknas eller är felaktigt angiven
+
 acl_title=Begränsningar och åtkomstkontroll
 acl_header=Inställningar av begränsningar och åtkomstkontroll
 acl_deny=Neka åtkomst från
@@ -105,6 +108,7 @@ acl_elmsg='$1' är inte en giltig felmeddelandefil
 acl_efbcount='$1' är inte ett giltigt antal filer eller bytes
 acl_elimit='$1' är inte en giltig tidsbegränsning
 acl_efails='$1' är inte ett giltigt antal inloggningsförsök
+
 net_title=Nätverk
 net_header=Inställningar för nätverk
 net_tcp=Storlek på TCP-fönster
@@ -122,6 +126,7 @@ net_eip='$1' är inte en giltig IP-adress
 net_enet='$1' är inte en giltig nätverksadress
 net_ecidr='$1' är inte ett giltigt antal nätverksbitar
 net_eport='$1' är inte ett giltigt portnummer
+
 log_title=Loggning
 log_header=Inställningar för loggning
 log_commands=Logga alla kommandon för
@@ -139,6 +144,7 @@ log_syslog=Systemlogg
 log_xferlog=XFER-loggfil
 log_sysxfer=Båda destinationerna
 log_err=Det gick inte att spara loggningsinställningarna
+
 alias_title=Alias och sökvägar
 alias_header=Inställningar för Alias och sökvägar
 alias_alias=Alias för cd-katalog
@@ -149,6 +155,7 @@ alias_err=Det gick inte att spara alias och sökvägar
 alias_efrom='$1' är inte ett giltigt aliasnamn
 alias_eto='$1' är inte en giltig aliaskatalog
 alias_ecdpath='$1' är inte en giltig cd-katalog
+
 anon_title=Anonym FTP
 anon_eftp=Varning! Systemet har ingen <tt>ftp</tt>-användare, vilket betyder att anonym FTP troligen inte har ställts in.
 anon_header=Inställningar för anonym FTP
@@ -171,6 +178,7 @@ anon_uids=För Unix-användare
 anon_err=Det gick inte att spara inställningarna för anonym FTP
 anon_edir='$1' är inte en giltig katalog
 anon_egroup='$1' är inte en giltig grupp
+
 perm_title=Rättigheter
 perm_header=Inställningar för rättigheter
 perm_perms=Begränsningar av kommandon
@@ -192,7 +200,9 @@ perm_err=Det gick inte att spara rättigheter
 perm_echar='$1' är inte en giltig teckenuppsättning
 perm_etypes=Du har inte angivit någon användartyp
 perm_emesg='$1' är inte en giltig felmeddelandefil
+
 host_title=Åtkomstkontroll för datorer
+
 misc_title=Blandade inställningar
 misc_header=Blandade inställningar
 misc_lslong=Kommando för lång listning
@@ -213,6 +223,7 @@ misc_elsplain=Du har inte angivit något kommando för normal listning
 misc_eshutdown=Du har inte angivit någon fil för avstängningsmeddelanden
 misc_enice='$1' är inte en giltig nice-nivå
 misc_eumask='$1' är inte en giltig umask
+
 log_class=Ändrade användare och klasser
 log_message=Ändrade meddelanden
 log_acl=Ändrade begränsningar och åtkomstkontroll

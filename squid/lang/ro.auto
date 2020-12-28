@@ -38,6 +38,7 @@ index_restartdesc=Faceți clic pe acest buton pentru a activa configurația cure
 index_iptables=Configurarea redirecționării portului
 index_squid=Server proxy Squid
 index_manual=Editați fișierele de configurare
+
 manual_title=Editați fișierele de configurare
 manual_file=Selectați un fișier de configurare pentru a edita:
 manual_change=Schimbare
@@ -45,6 +46,7 @@ manual_editing=Utilizați caseta de text de mai jos pentru a edita manual config
 manual_err=Nu a reușit să salvați fișierul de configurare
 manual_efile=Nume de fișier de configurare nevalid!
 manual_ecannot=Nu aveți voie să editați manual fișierele de configurare
+
 buttsave=salva
 buttdel=Șterge
 buttcreat=Crea
@@ -54,6 +56,7 @@ default=Mod implicit
 none=Nici unul
 on=Pe
 off=de pe
+
 acl_header1=Creați ACL
 acl_header2=Editează ACL
 acl_name=Nume ACL
@@ -109,6 +112,7 @@ acl_file=Stocați valorile ACL în fișier
 acl_nofile=Configurația calmarului
 acl_infile=Fișier separat
 acl_keep=Folosiți conținutul existent al fișierului?
+
 aclsave_failsave=Nu a reușit salvarea ACL
 aclsave_faildel=Nu a reușit să ștergi ACL
 aclsave_epr=Acest ACL este utilizat de o restricție proxy
@@ -128,11 +132,13 @@ aclsave_eemin=Minimal de încheiere nevalid
 aclsave_efile=Nu aveți voie să scrieți în fișierul ACL „$1”
 aclsave_enofile=Nu a fost introdus niciun nume de fișier ACL
 aclsave_ealready=Fișierul ACL există deja
+
 cach_ecannot=Nu aveți voie să accesați statisticile managerului de cache
 cach_err=Eroare
 cach_nfound=Programul managerului de cache Squid <tt>$1</tt> nu a fost găsit în sistemul dvs. Poate că <a href=/config.cgi?$2>configurația modulului</a> este incorectă.
 cach_return=indexul calmarului
 cach_esame=<b>Squid cachemgr.cgi executabil</b> este setat la programul Webmin cachemgr.cgi, nu la cel furnizat de Squid.
+
 chown_header=Schimbă proprietatea
 chown_stop=Oprește calmarul. ..
 chown_done=.. Terminat
@@ -140,6 +146,7 @@ chown_chown=Schimbarea proprietății. ..
 chown_restart=Re-pornirea Squid. ..
 chown_failrestart=Nu a reușit să pornească nou Squid.
 chown_return=indexul calmarului
+
 clear_ecannot=Nu aveți voie să ștergeți și să reconstruiți memoria cache
 clear_header=Goliți și reconstruiți memoria cache
 clear_msgclear=Sunteți sigur că doriți să ștergeți și să vă reconstruiți cache-ul Squid? Acest lucru va șterge <b>toate</b> fișierele pe care le-ați memorat în cache și va relansa serverul Squid.
@@ -153,6 +160,7 @@ clear_failrestart=Nu a reușit să pornească nou Squid.
 clear_return=indexul calmarului
 clear_url=Eliminați o adresă URL din cache:
 clear_ok=Elimina
+
 eacl_ecannot=Nu aveți voie să editați controlul de acces
 eacl_header=Controlul accesului
 eacl_acls=Liste de control de acces
@@ -169,8 +177,10 @@ eacl_nopr=Nu au fost definite restricții proxy.
 eacl_addpr=Adăugați restricție proxy.
 eacl_noprr=Nu au fost definite restricții de răspuns proxy
 eacl_addprr=Adăugați restricția de răspuns proxy.
+
 eacl_replypr=Răspundeți la restricțiile de proxy
 eacl_replynopr=Nu au fost definite restricții pentru proxy de răspuns
+
 eacl_icpr=Restricții ICP
 eacl_noicpr=Nu sunt definite restricții ICP
 eacl_addicpr=Adăugați restricția ICP.
@@ -187,6 +197,7 @@ eacl_eclass=Nu a fost selectată o clasă de program
 eacl_cname=Numele tipului
 eacl_file=Din fișierul $1
 eacl_hdelete=Ștergeți restricțiile selectate
+
 eadm_ecannot=Nu aveți voie să editați opțiunile administrative
 eadm_header=Opțiuni administrative
 eadm_aao=Opțiuni administrative și de anunț
@@ -213,6 +224,7 @@ eadm_caf=Cache anunțează fișierul
 eadm_annp=Perioada de anunțare
 eadm_buttsave=salva
 eadm_return=indexul calmarului
+
 eauth_ecannot=Nu aveți voie să editați autentificarea proxy
 eauth_header=Autentificare proxy
 eauth_aopt=Opțiuni de autentificare
@@ -226,6 +238,7 @@ eauth_pusers=Utilizatori proxy
 eauth_nopusers=În prezent, nu sunt definiți utilizatori proxy.
 eauth_addpuser=Adăugați un nou utilizator proxy.
 eauth_return=indexul calmarului
+
 ec_ecannot=Nu aveți voie să editați opțiunile din cache
 ec_header=Opțiuni pentru cache
 ec_cro=Opțiuni de cache și solicitare
@@ -280,6 +293,7 @@ ec_return=indexul calmarului
 ec_maxreplies=Dimensiuni maxime ale corpului de răspuns
 ec_maxrn=Dimensiune (kB)
 ec_maxracls=Pentru cererile care corespund ACL-urilor (lăsați gol pentru toți)
+
 ech_header=Creați gazdă Cache
 ech_header1=Editați gazda Cache
 ech_cho=Opțiuni gazdă Cache
@@ -324,6 +338,7 @@ ech_origin=Tratați gazda ca server de origine?
 ech_force=Force Host: antet la
 ech_same=Neschimbat
 ech_ssl=Conectați-vă cu SSL?
+
 eicp_ecannot=Nu aveți voie să editați alte cache-uri
 eicp_header=Alte cache
 eicp_opcs=Alte servere de cache proxy
@@ -361,6 +376,7 @@ eicp_ttype=Tip
 eicp_tpport=Port proxy
 eicp_tiport=Port ICP
 eicp_delete=Ștergeți cache-urile selectate
+
 elogs_ecannot=Nu aveți voie să editați jurnalul
 elogs_header=Logare
 elogs_lalo=Opțiuni de înregistrare și fișier de logare
@@ -394,6 +410,7 @@ elogs_notset=Nu este setat
 elogs_dont=Nu te autentifica
 elogs_file=Fișierul $1
 elogs_squid=Squid standard
+
 emem_ecannot=Nu aveți voie să editați utilizarea memoriei
 emem_dheader=Utilizare memorie și disc
 emem_header=Folosirea memoriei
@@ -419,6 +436,7 @@ emem_lfuda=Dinamic cel mai puțin utilizat
 emem_hlru=Încălțăți cel puțin frecvent
 emem_return=indexul calmarului
 emem_mrp=Politica de înlocuire a memoriei
+
 emisc_ecannot=Nu aveți voie să editați opțiuni diverse
 emisc_header=Opțiuni diverse
 emisc_mo=Opțiuni diverse
@@ -455,6 +473,7 @@ emisc_wccpin=Adresa de intrare WCCP
 emisc_wccpout=Adresa de ieșire a WCCP
 emisc_none=Nici unul
 emisc_virtual=Virtual
+
 eports_ecannot=Nu aveți voie să editați porturi și rețele
 eports_header=Porturi si retea
 eports_pano=Porturi și opțiuni de rețea
@@ -480,6 +499,7 @@ eports_unc=Oprirea SSL necurată?
 eports_checkhost=Validați numele de gazdă în adresele URL?
 eports_underscore=Permiteți sublinierea numelor de gazdă?
 eports_all=Toate
+
 eprogs_ecannot=Nu aveți voie să editați programe de ajutor
 eprogs_header=Programe de ajutor
 eprogs_chpo=Opțiuni pentru programul Cache Helper
@@ -508,6 +528,7 @@ eprogs_ttl=Timp de cache de autentificare
 eprogs_aittl=Autentificați timpul de cache IP
 eprogs_realm=Tărâmul de autentificare
 eprogs_return=indexul calmarului
+
 euser_header=Creați un utilizator proxy
 euser_header1=Editare utilizator proxy
 euser_pud=Detalii utilizator proxy
@@ -516,6 +537,7 @@ euser_p=Parola
 euser_u1=Neschimbat
 euser_e=Activat?
 euser_return=lista utilizatorilor
+
 ahttp_header=Creați Restricție proxy
 ahttp_header1=Editați Restricția Proxy
 ahttp_pr=Restricție de proxy
@@ -525,10 +547,13 @@ ahttp_d=tăgădui
 ahttp_ma=Potriviți ACL-urile
 ahttp_dma=Nu se potrivesc cu ACL-urile
 ahttp_return=Lista ACL
+
 ahttp_replyheader=Creați restricție de răspuns proxy
 ahttp_replyheader1=Editați Restricția de răspuns proxy
 ahttp_replypr=Restricție de răspuns la proxy
+
 sahttp_ftspr=Nu a reușit să salveze restricția de răspuns proxy
+
 aicp_header=Creați restricție ICP
 aicp_header1=Editați Restricția ICP
 aicp_ir=Restricția ICP
@@ -538,7 +563,9 @@ aicp_d=tăgădui
 aicp_ma=Potriviți ACL-urile
 aicp_dma=Nu se potrivesc cu ACL-urile
 aicp_return=Lista ACL
+
 saicp_ftsir=Nu a reușit să salveze restricția ICP
+
 icache_ecannot=Nu aveți voie să inițializați memoria cache
 icache_ftic=Initializarea cache-ului nu a reusit
 icache_ymcautrsa=Trebuie să alegeți un utilizator pentru a rula Squid ca
@@ -546,7 +573,9 @@ icache_euser=Utilizatorul care execută Squid deoarece nu există
 icache_itscwtc=Inițializarea cache-ului Squid cu comanda <tt>$1</tt> ..
 icache_return=indexul calmarului
 icache_title=Inițializează memoria Cache
+
 restart_ftrs=Eroare la reconfigurarea calmarului
+
 sadmin_ftsao=Nu a reușit salvarea opțiunilor administrative
 sadmin_header=Schimbă proprietatea
 sadmin_msg1=Ați schimbat utilizatorul sau grupul la care rulează Squid. Pentru ca acest lucru să aibă efect în mod corespunzător, proprietatea tuturor fișierelor de memorie cache și jurnal ar trebui actualizată și Squid reîncepe.
@@ -556,10 +585,12 @@ sadmin_inavea=„$1” nu este o adresă de e-mail validă
 sadmin_inavh=„$1” nu este un nume de gazdă valid
 sadmin_inavap=„$1” nu este o perioadă de anunț valabilă
 sadmin_inavp=„$1” nu este un port valid
+
 sauth_ftsao=Nu a reușit să salvați opțiunile de autentificare
 sauth_iomuf=Numele de fișier al utilizatorilor nevalide sau lipsă
 sauth_iomd=Domeniu nevalid sau lipsă
 sauth_msg1=Versiunea dvs. de Squid nu a fost compilată cu suport pentru autentificarea proxy
+
 scache_ftsco=Nu a reușit să salvați opțiunile din cache
 scache_emsg0=Trebuie să introduceți cel puțin un director de cache
 scache_emsg1=Directorul cache „$1” nu există
@@ -577,14 +608,17 @@ scache_emsg12=„$1” nu are o dimensiune de director validă
 scache_emsg13=„$1” nu este o gazdă validă
 scache_emsg14=„$1” nu este un port valid
 scache_emaxrs=Mărimea maximă a corpului nevalidă în rândul $1
+
 schost_ftsc=Nu a reușit să salveze memoria cache
 schost_emsg1=„$1” nu este un nume de gazdă cache valid
 schost_emsg2=„$1” nu este un port proxy valid
 schost_emsg3=„$1” nu este un port ICP valid
 schost_emsg4=„$1” nu este un timp valabil
 schost_emsg5=„$1” nu este o ponderare validă
+
 sicp_ftsco=Nu a reușit să salvați opțiunile din cache
 sicp_emsg1=„$1” nu este un interval de timp valid
+
 slogs_ftslo=Nu a reușit să salvați opțiunile de înregistrare
 slogs_emsg1=„$1” nu este un nume de fișier absolut
 slogs_emsg2=„$1” nu este un nume de fișier valid
@@ -594,20 +628,24 @@ slogs_emsg5=„$1” nu este o listă de opțiuni de depanare validă
 slogs_efname=Nume format nevalid în rândul $1
 slogs_effmt=Lipsește formatul de jurnal în rândul $1
 slogs_eafile=Fișier de jurnal lipsă sau nevalid din rândul $1
+
 smem_ftsmo=Nu a reușit să salvați opțiunile de memorie
 smem_emsg1=„$1” nu are o dimensiune valabilă în cache
 smem_emsg2=„$1” nu este o marcă valabilă cu apă mare
 smem_emsg3=„$1” nu este o marcă valabilă cu apă scăzută
 smem_emsg4=„$1” nu este o dimensiune valabilă a obiectului
+
 smisc_ftso=Nu a reușit să salvați opțiunile
 smisc_emsg1=„$1” nu este un număr valid de rotații
 smisc_emsg2=„$1” nu este un domeniu valid
 smisc_emsg3=„$1” nu este un proxy valid
 smisc_emsg4=„$1” nu este un număr valid de hamei
+
 sport_ftspo=Nu a reușit să salvați opțiunile portului
 sport_emsg1=„$1” nu este un număr de port valid
 sport_emsg2=„$1” nu este o adresă validă
 sport_emsg3=„$1” nu are o dimensiune tampon validă
+
 sprog_ftshpo=Nu a reușit să salvați opțiunile programului de ajutor
 sprog_emsg1=Opțiunile FTP lipsesc
 sprog_emsg2=„$1” nu este un program valid
@@ -620,19 +658,23 @@ sprog_emsg8=„$1” nu este o adresă IP validă
 sprog_emsg9=„$1” nu este o perioadă valabilă în memoria cache
 sprog_emsg10=„$1” nu este un TTL valid
 sprog_echildren=Numărul de programe trebuie să fie un număr mai mare de zero
+
 suser_ftsu=Nu a reușit salvarea utilizatorului
 suser_emsg1=Nume de utilizator nevalid sau lipsă
 suser_etaken=Numele de utilizator este deja folosit
+
 start_ftsq=Nu a reușit să pornească Squid
 start_ecannot=Nu aveți voie să porniți Squid
 stop_ftsq=Nu a reușit să oprească Squid
 stop_ecannot=Nu aveți voie să opriți Squid
+
 calamaris_ecannot=Nu aveți voie să accesați analiza jurnalului Calamaris
 calamaris_title=Analiza Calamaris Log
 calamaris_last=Limitarea analizei la ultimele $1 linii de jurnal.
 calamaris_eprog=Calamariul executabil $1 nu a fost găsit. Poate că nu este instalat pe sistemul dvs. sau configurația modulului <a href='$2'></a> este incorectă.
 calamaris_elogs=Directorul jurnal $1 nu conține fișiere <tt>access.log</tt>. Poate că calmarul nu a fost rulat încă sau configurația modulului <a href='$2'></a> este incorectă.
 calamaris_gen=Raport generat la $1
+
 lib_emsg1=„$1” nu este o adresă IP validă
 lib_seconds=secunde
 lib_minutes=minute
@@ -680,6 +722,7 @@ lib_aclmuip=IP maxim de utilizator
 lib_buttac=Aplica schimbarile
 lib_buttss=Oprește Squid
 lib_buttss1=Începe Squid
+
 log_ports=Porturi modificate și opțiuni de rețea
 log_icp=S-au schimbat alte opțiuni de cache
 log_mem=Opțiuni de utilizare a memoriei modificate
@@ -734,25 +777,31 @@ log_pools_delete=Șterse $1 rezerve de întârziere
 log_delay_create=S-a adăugat ACL pentru setul de întârziere $1
 log_delay_modify=ACL modificat pentru pool-ul de întârziere $1
 log_delay_delete=S-a șters ACL pentru rezoluția de întârziere $1
+
 log_delay_move=S-a mutat ACL pentru setul de întârziere $1
 log_refresh_create=Regula de actualizare creată pentru $1
 log_refresh_modify=Regula de actualizare modificată pentru $1
 log_refresh_delete=Regula de actualizare ștersă pentru $1
+
 log_refresh_move=Regla de actualizare mutată pentru $1
 log_refreshes_delete=$1 au fost șterse reguli de actualizare
 log_iptables=Configurare actualizată pentru redirecționarea portului
 log_purge=URL eliminat $1 din cache
 log_cachemgr=Modifică parolele managerului de cache
+
 acl_root=Directorul rădăcină pentru fișierele ACL
 acl_sections=Pagini de configurare permise
 acl_start=Poate porni și opri Squid?
 acl_restart=Poate aplica configurația Squid?
+
 always_create=Creați direct fete
 always_edit=Editați Direct Fetch
 always_header=Obțineți direct cereri care corespund ACL-urilor
+
 never_create=Creați fete indirecte
 never_edit=Editați fete indirecte
 never_header=Nu aduceți niciodată direct cereri care corespund ACL-urilor
+
 delay_title=Piscine de întârziere
 delay_add=Adăugați un nou grup de întârziere.
 delay_num=Număr
@@ -802,11 +851,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=MB
+
 dpool_err=Nu a reușit să ștergeți grupurile de întârziere
 dpool_enone=Nimic selectat
+
 apool_header=Adăugați ACL Pool Delay
 apool_header1=Modificați ACL Pool Delay
 apool_pr=Întârziere ACL piscină
+
 authparam_title=Programe de autentificare
 authparam_header=Opțiuni externe ale programului de autentificare
 authparam_ttl=Timpul pentru cache parolele pentru
@@ -849,6 +901,7 @@ ext_ecache=Dimensiunea cache lipsească sau nevalidă
 ext_eprogram=A fost introdusă o cale de program nevalidă
 ext_eclash=Există deja un tip de program extern cu același nume
 ext_eused=Acest program extern este folosit de un ACL
+
 header_title=Control acces acces la antet
 header_none=Nu au fost definite încă reguli de control de acces la antet.
 header_name=Antet HTTP
@@ -868,6 +921,7 @@ header_err=Nu a reușit să salveze regula de control a accesului la antet
 header_ename=Numele antetului lipsă sau nevalid
 header_request_header_access=Cereți anteturi
 header_reply_header_access=Răspunde anteturi
+
 refresh_title=Reguli de actualizare
 refresh_none=Nu au fost definite încă reguli de actualizare.
 refresh_re=Expresie uzuala
@@ -894,6 +948,7 @@ refresh_epc=Procentul de vârstă lipsă sau nevalid
 refresh_delete=Ștergeți regulile de actualizare selectate
 drefresh_err=Nu a reușit să ștergi regulile de actualizare
 drefesh_enone=Nimic selectat
+
 iptables_title=Configurarea redirecționării portului
 iptables_inst0=Comenzile de firewall IPtables necesare pentru configurarea redirecționării portului par să nu fie instalate pe sistemul tău. Consultați <a href='$1'>Linux Firewall</a> pentru mai multe detalii.
 iptables_inst1=Modulul <a href='$1'>Linux Firewall</a> nu pare să fi fost complet configurat pe sistemul dvs. Acest modul îl folosește pe acela pentru a configura redirecția portului Frox.
@@ -908,18 +963,23 @@ iptables_enet=Adresa de rețea care lipsește sau este nevalidă (ar trebui să 
 iptables_eiface=Interfață de rețea lipsă sau nevalidă
 iptables_eapply=Aplicați firewall-ul eșuat : $1
 iptables_eapply2=Aplicați Squid eșuat : $1
+
 syslog_access=Jurnal de acces Squid
 syslog_cache=Jurnal de cache de calamari
 syslog_store=Jurnalul magazinului de obiecte Squid
+
 purge_err=Nu a reușit să ștergeți adresa URL din cache
 purge_title=Ștergeți adresa URL în cache
 purge_doing=Ștergerea URL-ului $1 ..
 purge_done=.. Terminat.
 purge_failed=.. a eșuat! Consultați mesajul de eroare de mai sus pentru motivul pentru care.
+
 dhttp_err=Nu a reușit să ștergeți restricțiile de proxy
 dhttp_enone=Nimic selectat
+
 dicp_err=Nu a reușit să ștergeți restricțiile ICP
 dicp_enone=Nimic selectat
+
 cachemgr_title=Parole Manager Cache
 cachemgr_ecannot=Nu aveți voie să editați parolele managerului de cache
 cachemgr_def1=Nu sunt necesare parole

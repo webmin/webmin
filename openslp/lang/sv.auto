@@ -3,11 +3,14 @@ index_return=OpenSLP-konfiguration
 index_eslpd=OpenSLP-demonen $1 hittades inte på ditt system. Kanske är den inte installerad eller så är din <a href='$2'>modulkonfiguration</a> felaktig.
 index_econf=OpenSLP-konfigurationsfilen $1 hittades inte på ditt system. Kanske är den inte installerad eller så är din <a href='$2'>modulkonfiguration</a> felaktig.
 index_version=OpenSLP-version $1 
+
 slp_apply=Applicera förändringar
 slp_stop=Stoppa OpenSLP
+
 snda_title=Statisk räckvidd och DA
 snda_useScopes=Statisk lista över omfattningar
 snda_DAAddresses=Statisk lista över katalogagenter (DA)
+
 netcfg_title=nätverkskonfiguration
 netcfg_isBroadcastOnly=Tvinga sändningar som ska användas istället för multicast
 netcfg_passiveDADetection=Använd passiv DA-detektion
@@ -23,20 +26,25 @@ netcfg_unicastMaximumWait=Maximal tid mellan unicast-förfrågningar (i millisek
 netcfg_randomWaitBound=Maximalt värde för alla slumpmässiga vänteparametrar (i millisekunder)
 netcfg_MTU=MTU-paketstorlek (i byte)
 netcfg_interfaces=IP-adresser för gränssnitt som DA/SA bör lyssna på
+
 dacfg_title=DA-konfiguration
 dacfg_isDA=Funktion som endast DA (läs användarguiden innan du ändrar detta)
+
 log_title=Spårning och loggning
 log_traceDATraffic=Skriv ut DA-trafikmeddelanden
 log_traceMsg=Skriv ut SLP-detaljmeddelanden
 log_traceDrop=Print SLP tappade meddelanden information
 log_traceReg=Skriv ut DA- och SA-registrerings- och avregistreringsinformation
+
 error_open=Fel vid öppning av fil
 error_flock_on=Fel vid skapandet av fillås
 error_flock_off=Fel vid förstörelse av fillås
 error_hup=Fel vid omstart av OpenSLP med PID
+
 index_start=Starta OpenSLP
 index_startmsg=Klicka på den här knappen för att starta OpenSLP-demonen på ditt system.
 index_stop=Stoppa OpenSLP
 index_stopmsg=Klicka på den här knappen för att stoppa OpenSLP-demonen på ditt system.
+
 stop_err=Det gick inte att stoppa OpenSLP
 start_err=Det gick inte att starta OpenSLP

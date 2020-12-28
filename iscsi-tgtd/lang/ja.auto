@@ -2,6 +2,7 @@ check_econfigset=iSCSI TGTd構成ファイルが設定されていません！
 check_econfig=iSCSI TGTd構成ファイル $1がシステムで見つかりませんでした。
 check_etgtadm=iSCSI TGTd管理コマンド $1がシステムで見つかりませんでした。
 check_einit=起動アクション $1は存在しません
+
 index_title=iSCSI TGTd
 index_clink=インストールされていないか、<a href='$1'>モジュール設定</a>が正しくない可能性があります。
 index_stop=iSCSI TGTdを停止します
@@ -24,8 +25,10 @@ index_users=許可されたユーザー
 index_size=全体の大きさ
 index_noluns=なし
 index_nousers=どれか
+
 dtargets_err=ターゲットを削除できませんでした
 dtargets_enone=何も選択されていません！
+
 target_title1=iSCSIターゲットを作成する
 target_title2=iSCSIターゲットの編集
 target_header=iSCSI共有デバイスオプション
@@ -74,11 +77,13 @@ target_direct=デバイスへの直接アクセス
 target_cache=デバイスへのキャッシュ書き込み？
 target_eaddr=許可されたIPアドレスが無効です
 target_eaname=許可されたイニシエーター名が無効です
+
 start_err=iSCSI TGTdを開始できませんでした
 stop_err=iSCSI TGTdを停止できませんでした
 restart_err=iSCSI TGTdの再起動に失敗しました
 atboot_err=起動時に有効にできませんでした
 atboot_einit=初期化スクリプト $1は存在しません
+
 log_create_target=ターゲット $1を作成しました
 log_delete_target=削除されたターゲット $1
 log_modify_target=変更されたターゲット $1
@@ -89,6 +94,7 @@ log_restart=再起動されたiSCSIサーバー
 log_atboot=起動時にiSCSIサーバーを有効化
 log_delboot=起動時にiSCSIサーバーを無効にしました
 log_manual=手動で編集された構成ファイル
+
 manual_title=構成ファイルの編集
 manual_file=編集するファイルを選択：
 manual_ok=開いた

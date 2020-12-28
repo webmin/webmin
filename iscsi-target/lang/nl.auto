@@ -1,6 +1,7 @@
 check_econfig=Het iSCSI-doelconfiguratiebestand $1 is niet gevonden op uw systeem.
 check_eietadm=De iSCSI-doelbeheeropdracht $1 is niet gevonden op uw systeem.
 check_einit=Opstartactie $1 bestaat niet
+
 index_title=iSCSI-doel
 index_clink=Misschien is het niet geïnstalleerd of is uw <a href='$1'>moduleconfiguratie</a> onjuist.
 index_stop=Stop iSCSI Target
@@ -22,8 +23,10 @@ index_noluns=Geen
 index_nousers=Ieder
 index_nullio=RAM-schijf van $1 sectoren
 index_size=Totale grootte
+
 dtargets_err=Kan doelen niet verwijderen
 dtargets_enone=Geen geselecteerd!
+
 target_title1=Maak een iSCSI-doel aan
 target_title2=Bewerk iSCSI-doel
 target_header=iSCSI-opties voor gedeelde apparaten
@@ -68,11 +71,13 @@ target_noalias=Geen
 target_hdigest=Koptekst checksum
 target_ddigest=Gegevenscontrolesom
 target_nodigest=Geen
+
 auth_title=Verificatie-instellingen
 auth_header=Standaard authenticatie-opties voor alle doelen
 auth_iuser=Authenticatie door klanten
 auth_ouser=Authenticatie aan klanten
 auth_err=Kan authenticatie-instellingen niet opslaan
+
 conn_title=Verbindingsinstellingen
 conn_header=Standaard verbindingsopties voor alle doelen
 conn_sessions=Maximale gelijktijdige sessies
@@ -91,6 +96,7 @@ conn_emaxrecv=Ontbrekende of niet-numerieke maximale ontvangstsegmentlengte
 conn_emaxxmit=Ontbrekende of niet-numerieke maximale zendsegmentlengte
 conn_emaxburst=Ontbrekende of niet-numerieke maximale burst-grootte van client
 conn_efirstburst=Ontbrekende of niet-numerieke maximale ongevraagde gegevensgrootte van client
+
 timeout_title=Time-outinstellingen
 timeout_header=Time-outopties voor client
 timeout_nopi=Interval tussen pings bij inactiviteit
@@ -98,6 +104,7 @@ timeout_nopinone=Ping nooit
 timeout_secs=seconden
 timeout_nopt=Tijd om te wachten op ping-reactie
 timeout_noptnone=Hetzelfde als pingtijd
+
 addr_title=Serveradres en poort
 addr_header=iSCSI-server netwerkopties
 addr_addr=Luister op IP-adres
@@ -110,18 +117,21 @@ addr_err=Kan serveradres niet opslaan
 addr_eaddr=Het adres waarop moet worden geluisterd, moet een IP-adres zijn
 addr_eport=Poort om op te luisteren moet een nummer zijn
 addr_edebug=Debug-niveau moet een getal zijn
+
 initiators_title=Toegestane clientadressen
 initiators_none=Er is nog geen toegestaan klantadres gedefinieerd. Geen enkele client kan verbinding maken.
 initiators_ips=Toegestane klanten
 initiators_title1=Toegestane clientadressen toevoegen
 initiators_title2=Toegestane clientadressen bewerken
 initiators_header=Toegestane iSCSI-clients voor doel
+
 targets_title=Toegestane serveradressen
 targets_none=Er is nog geen toegestaan serveradres gedefinieerd. Geen enkele client kan verbinding maken.
 targets_ips=Toegestane serverinterfaces
 targets_title1=Voeg toegestane serveradressen toe
 targets_title2=Toegestane serveradressen bewerken
 targets_header=Toegestane iSCSI-serverinterface voor doel
+
 allow_target=Doelnaam
 allow_move=Actie
 allow_delete=Verwijder geselecteerde
@@ -133,17 +143,21 @@ allow_return=toegestane doelen en adressen
 allow_err=Kan toegestane adressen niet opslaan
 allow_eaddr=Adres $1 is niet geldig. Het moet een IPv4-adres, IPv4-netwerk/-masker of IPv6-adres tussen vierkante haken zijn.
 allow_eaddrs=Geen adressen toegestaan om in te voeren
+
 dallow_err=Kan toegestane adressen niet verwijderen
 dallow_enone=Geen geselecteerd
+
 manual_title=Configuratiebestand bewerken
 manual_desc=Gebruik het onderstaande tekstvak om het iSCSI-serverconfiguratiebestand $1 te bewerken. Wees voorzichtig, want er zal geen validatie worden uitgevoerd op uw input!
 manual_err=Kan configuratiebestand niet opslaan
 manual_edata=Geen inhoud ingevoerd!
+
 start_err=Kan iSCSI-server niet starten
 stop_err=Kan iSCSI-server niet stoppen
 restart_err=Kan iSCSI-server niet opnieuw opstarten
 atboot_err=Kan niet inschakelen bij opstarten
 atboot_einit=Init-script $1 bestaat niet
+
 log_create_target=Doel $1 gemaakt
 log_delete_target=Doel $1 verwijderd
 log_modify_target=Gewijzigd doel $1 

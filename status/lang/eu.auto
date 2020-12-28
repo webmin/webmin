@@ -19,6 +19,7 @@ index_refsel=Eguneratu aukeratua
 index_group=$1 eko kideak
 index_tmpls=Editatu posta elektronikoaren txantiloiak
 index_tmplsdesc=Begiraleko zerbitzuak bidalitako mezu elektronikoak eraikitzeko erabiltzen diren txantiloiak ikusi eta editatu.
+
 type_apache=Apache Webserver
 type_inetd=Internet eta RPC zerbitzaria
 type_xinetd=Interneteko zerbitzari hedatua
@@ -73,8 +74,10 @@ type_alive=Sistema Alive
 type_rssh=Urruneko SSH
 type_slapd=LDAP zerbitzaria
 type_ldap=LDAP konexioa
+
 mon_create=Sortu Monitorea
 mon_edit=Editatu monitorea
+mon_virtualmin=Kontuz! Monitore hau $1 Virtualmin domeinuarekin lotuta dago eta, beraz, ez da hemen editatu edo ezabatu behar.
 mon_header=Begiralearen xehetasunak
 mon_header2=Exekutatzeko aginduak
 mon_header3=Begiratutako zerbitzuen aukerak
@@ -138,6 +141,7 @@ mon_changes0=Erakutsi gertaera mota guztiak
 mon_changes1=Erakutsi aldaketak bakarrik
 mon_all=Erakutsi gertaera historiko guztiak
 mon_nochanges=Azken $1 gertaera historikoetan ez da egoera aldaketarik gertatu.
+
 sched_title=Programatutako jarraipena
 sched_header=Aurreikusitako fondoen jarraipena egiteko aukerak
 sched_mode=Programatutako egiaztapena gaituta dago?
@@ -184,16 +188,19 @@ sched_subject0=Bat ere ez (alerta gorputzean dago)
 sched_subject1=Alerta-testua (utzi gorputza hutsik)
 sched_subject2=Testu pertsonalizatua
 sched_esubject=SMS mezuen gaia falta da
+
 up_since=$1 etik gora
 depends_mod=$1 modulua ez dago zure sisteman instalatuta
 depends_os=$1 modulua ez da onartzen zure sisteman
 depends_remote=$1 moduluak ez du onartzen $2 zerbitzarian
+
 tcp_host=Konektatzeko ostalaria
 tcp_port=Konektatzeko portua
 tcp_alarm=Konexioaren iraupena
 tcp_ehost=Ostalari-izen falta edo baliogabea
 tcp_eport=Ataka-zenbaki falta edo baliogabea
 tcp_ealarm=Konexioaren iraungitze falta edo baliogabea
+
 http_url=Eskatzeko URLa
 http_alarm=Konexioaren iraupena
 http_eurl=URL falta edo baliogabea
@@ -208,11 +215,13 @@ http_regexp=Orriak regexp-ekin bat egin behar du
 http_eregexp=Ez da sartu adierazpenarekin bat datorren orrialderako adierazpen erregularrik
 http_none2=Ez datoz bat
 http_ehead=HEAD eskaera metodoa ezin da erabili adierazpen arruntak egiaztatzean
+
 ping_host=Ostalaria ping-era
 ping_wait=Erantzuna itxaroteko denbora
 ping_ehost=Ostalari-izen falta edo baliogabea
 ping_ewait=Itxarote denbora falta da edo baliogabea
 ping_econfig=Modulu konfigurazioan ez da ping komandoik ezarri
+
 proc_pid=PID $1 ekin exekutatzen
 proc_cmd=Egiaztatzeko komandoa
 proc_not=Huts egin prozesua bada
@@ -224,6 +233,7 @@ proc_ethresh=Prozesu kopurua falta edo baliogabea
 proc_asuser=Erabiltzaile gisa exekutatzen
 proc_anyuser=Erabiltzaile oro
 proc_easuser=Erabiltzailea existitzen ez den bezala exekutatzeko
+
 exec_cmd=Exekutatzeko agindua
 exec_mode=Irten egoeraren egiaztapena
 exec_mode0=Hutsegiteak kontrolatzen du aginduak huts egiten badu
@@ -235,6 +245,7 @@ exec_noregexp=Ez egiaztatu
 exec_remode=Regexp egiaztapena
 exec_remode0=Huts egin irteera ez datorrelako
 exec_remode1=Huts egin irteerak bat egiten badu
+
 file_file=Fitxategia, direktorio edo eredua egiaztatzeko
 file_test=Egiteko proba
 file_test_0=Existitu behar da
@@ -253,6 +264,7 @@ file_group=Fitxategi taldea izan behar da
 file_nocheck=ezer
 file_perms=Urriko baimenak izan behar dira
 file_eperm=Baimen okerrak dituzten fitxategiak : $1 
+
 traffic_iface=Interfazea kontrolatzeko
 traffic_bytes=Gehienez byte/segundo
 traffic_dir=Jarraipena egiteko norabidea
@@ -262,6 +274,7 @@ traffic_dir2=Irteera bakarra
 traffic_desc=Monitore honek sareko trafikoaren jarraipena egiten du hautatutako interfaze batean, eta monitorea behera bistaratzen du zirkulazioak behean sartutako segundoko byte kopurua gainditzen badu. Honek benetan funtzionatzen du 5 minuturo bezala, jarraipen programatua gaituta badago.
 traffic_eifaces=Zure sistema eragileak ez du/proc/net/dev fitxategirik
 traffic_ebytes=Byte/segundo kopuru falta edo baliogabea
+
 space_fs=Fitxategi-sistema egiaztatzeko
 space_min2=Gutxieneko espazio librea
 space_mode0=Tamaina absolutua
@@ -277,6 +290,7 @@ space_ierr=$1 inodoak soilik dira
 space_merr=$1 lekua soilik da
 space_perr=$1% doan bakarrik
 space_dferr=Ezin izan da fitxategi-sistemaren tamaina lortu
+
 load_time=Kargaren batez bestekoa egiaztatzeko
 load_1=1 minutu
 load_5=5 minutu
@@ -285,6 +299,7 @@ load_max=Gehieneko karga batez bestekoa
 load_emax=Gehieneko batez besteko karga falta edo baliogabea
 load_ecmd=<tt>uptime</tt> komandoa ez da zure sisteman aurkitu
 load_efmt=Ezin izan da <tt>uptime</tt> komandoaren irteera analizatu
+
 log_create=$1 monitorea sortu da
 log_modify=$1 monitore aldatua
 log_delete=$1 monitorea ezabatu da
@@ -295,10 +310,14 @@ log_tmpl_modify=$1 posta elektronikoaren txantiloia
 log_tmpl_delete=$1 posta elektronikoaren txantiloia ezabatu da
 log_tmpl_deletes=$1 posta elektronikoaren txantiloiak ezabatu dira
 log_refresh=Eguneratutako monitore egoerak
+
 acl_edit=Monitoreak editatu eta sortu al ditzake?
 acl_sched=Aldatu al daiteke aurreikusitako jarraipena?
+
 change_file=Fitxategia edo direktorio kontrolatzeko (huts egin bada aldatu)
+
 jabber_eparser=$1 Perl modulua ez dago zure sisteman instalatuta.
+
 memory_min2=Gutxieneko memoria erreala doan
 memory_emin=Memoria errealaren doako zenbatekoa falta edo baliogabea
 memory_eproc=Webmin-ek ez daki memoria librea nola kontrolatu zure sistema eragilean
@@ -308,7 +327,9 @@ memory_freelow=$1 memoria librea bakarrik da
 memory_freelowswap=$1 soilik memoria birtuala doan
 memory_minswap=Doako memoria birtual librea
 memory_eminswap=Memoria birtual librearen kopuru falta edo baliogabea
+
 proftpd_etype=Monitore hau ezin da erabili ProFTPD geldirik dagoenean
+
 mailserver_to=Bidali helbide elektronikoa
 mailserver_timeout=Iraupena eta tartea
 mailserver_units_0=seconds
@@ -316,22 +337,28 @@ mailserver_units_1=Minutu
 mailserver_units_2=Orduak
 mailserver_units_3=egunak
 mailserver_desc=Beheko helbidea, iturri bereko gaiarekin: lerroarekin erantzuten duen erantzun automatikoa izan behar du.
+
 oldfile_file=Fitxategia kontrolatzeko (huts egin ez bada aldatu)
 oldfile_diff=Huts egin du ez bada aldatu
 oldfile_secs=secs
+
 raid_device=RAID gailua
 raid_edevice=Ez da RAID gailu bat aukeratu
 raid_bad=Disko txarra hauteman da
 raid_resync=Gaur egun biraketa
 raid_notfound=Ez da aurkitu $1 RAID gailua
 raid_other=Beste ..
+
 iface_iface=Interfazea egiaztatzeko
+
 init_action=Egiaztatzeko ekintza
 init_eaction=Ez da ekintza aukeratu
+
 refresh_title=Freskatu egoera
 refresh_doing=Monitore guztien egoera freskatu ..
 refresh_doing2=Hautatutako $1 monitoreen egoera freskatzen da ..
 refresh_done=.. egin.
+
 sensors_name=Sentsorea egiaztatu behar da
 sensors_value=Huts egin du
 sensors_value0=Sistemak abisua adierazten du
@@ -342,6 +369,7 @@ sensors_none=Ez da sentsorerik hauteman zure sisteman. Baliteke <tt>sentsoreak-d
 sensors_cur=$1 (gaur egun $2 $3)
 sensors_emin=Gutxieneko balio falta edo falta da
 sensors_emax=Gehienezko balio falta edo baliogabea
+
 nut_ups=NUT UPS egiaztatzeko
 nut_name=Egiaztatu beharreko atributua
 nut_value=Huts egin du
@@ -352,6 +380,7 @@ nut_eups=Ez da sartu USPrik egiaztatzeko
 nut_cur=$1 (gaur egun $2)
 nut_emin=Gutxieneko balio falta edo falta da
 nut_emax=Gehienezko balio falta edo baliogabea
+
 mailq_system=Posta zerbitzaria
 mailq_qmailadmin=qmail
 mailq_postfix=Postfix
@@ -360,6 +389,7 @@ mailq_size=Gehieneko posta ilararen tamaina
 mailq_esize=Gehien edo gehienezko ilararen tamaina falta da
 mailq_toomany=Behera - $1 mezu jarri dira ilaran
 mailq_ok=Gora - $1 mezu jarri ziren ilaran
+
 dns_server=DNS zerbitzaria
 dns_host=Ostalariaren izena bilaketara
 dns_address=Aurreikusitako IP helbidea
@@ -367,6 +397,7 @@ dns_eserver=Falta den DNS zerbitzaria edo baliogabea
 dns_ehost=Galdutako ostalariaren izena falta da edo baliogabea
 dns_eaddress=Espero den IP helbide falta edo baliogabea
 dns_ecmds=Ez dira <tt>nslookup</tt> edo <tt>dig</tt> komandoak instalatuta zure sisteman
+
 monitor_sub_down=$1 behera $2 an
 monitor_pager_down=$1 : "$2" $3 behera dago
 monitor_snmp_down= $1:$2 
@@ -398,8 +429,10 @@ monitor_run1=$1 exekutatzen $2 an.
 monitor_run2=$1 exekutatzen ari da ..
 monitor_runerr=Huts egin du $1 exekutatzeak $2 an : $3 an
 monitor_email_stat=Uneko egoera: $1 
+
 deletes_egone=Aukeratutako monitoreetako bat ez da existitzen
 deletes_enone=Ez da monitore hautatu
+
 ftp_host=FTP zerbitzariaren ostalaria
 ftp_port=FTP portua
 ftp_user=Sartu erabiltzaile gisa
@@ -416,6 +449,7 @@ ftp_econn=TLS FTP konexioak huts egin du
 ftp_econn2=TLS FTP konexioak huts egin du : $1 
 ftp_elogin=TLS FTP sarbidea huts egin du : $1 
 ftp_etlsfile=TLS FTP deskargak huts egin du : $1 
+
 query_driver=SQL datu base mota
 query_db=Datu-basearen izena
 query_host=Datu-base zerbitzariaren ostalaria
@@ -436,9 +470,12 @@ query_elogin=Saioa ez da huts egin : $1
 query_eprepare=SQL errorea : $1 
 query_eexecute=SQL huts egin du : $1 
 query_ewrong=Emaitza okerra : $1 
+
 consume_rate=Gehieneko kontsumo-tasa (segundoko)
 consume_high=Kontsumo tasa $1 / segundokoa da
+
 alive_up=$1 igo
+
 rssh_host=SSH zerbitzariaren ostalaria
 rssh_ruser=Sartu erabiltzaile gisa
 rssh_rpass=Sartu pasahitzarekin
@@ -454,6 +491,7 @@ rssh_error=SSH errorea
 rssh_haspass=Pasahitza
 rssh_port=SSH zerbitzariaren portua
 rssh_eport=Ataka-zenbaki falta edo baliogabea
+
 tmpls_title=Posta elektronikoaren txantiloiak
 tmpls_ecannot=Ezin duzu posta elektronikoaren txantiloiak editatu
 tmpls_none=Oraindik ez da helbide elektronikoaren txantiloiak zehaztu. Alerta guztiak Webmin mezu lehenetsiak erabilita bidaliko dira.
@@ -462,6 +500,7 @@ tmpls_email=Mezu elektronikoa
 tmpls_add=Gehitu helbide elektroniko berri bat.
 tmpls_return=txantiloien zerrenda
 tmpls_delete=Ezabatu hautatutako txantiloiak
+
 tmpl_title1=Sortu helbide elektronikoa txantiloia
 tmpl_title2=Editatu posta elektronikoaren txantiloia
 tmpl_header=Alerta posta elektronikoaren txantiloiko mezuak
@@ -486,9 +525,11 @@ tmpl_esms=SMS mezua falta da
 tmpl_esnmp=SNMP mezu falta da
 tmpl_err2=Ezin izan da e-posta txantiloia ezabatu
 tmpl_eusers=Monitore hauek erabiltzen dute : $1 
+
 dtmpls_err=Ezin izan da txantiloiak ezabatu
 dtmpls_enone=Ez da hautatu
 dtmpls_eusers=$1 monitoreek erabiltzen dute : $2 
+
 sslcert_src=Ziurtagiriaren kokapena
 sslcert_url=HTTPS URLtik
 sslcert_file=Fitxategitik zerbitzarian
@@ -506,18 +547,21 @@ sslcert_eend=Ez da baliozkoa $1 ondoren
 sslcert_left=Gora - $1 egun iraungi arte
 sslcert_ematch=$1 ostalariaren izena ez dator $2 ziurtagiriarekin
 sslcert_emismatch=Ziurtagiriaren ostalariaren izena egiaztatzea URL bat egiaztatzean soilik erabil daiteke
+
 du_dir=Direktorioa kontrolatzeko
 du_max=Gehieneko tamaina
 du_edir=Falta den edo ez den direktorio direktorio bat
 du_emax=Gehieneko tamaina falta edo ez-numerikoa
 du_over=Tamaina $1 da
 du_under=Tamaina $1 baino ez da
+
 ldap_edriver=$1 Perl modulua ez dago instalatuta
 ldap_host=LDAP zerbitzariaren ostalariaren izena
 ldap_port=LDAP zerbitzariaren portua
 ldap_ssl=SSL konexioa erabili?
 ldap_user=LDAP zerbitzariaren hasiera
 ldap_pass=LDAP zerbitzariaren pasahitza
+
 info_desc=Sistemaren monitorea
 info_last=Egungo egoera
 info_title=Sistema eta zerbitzariaren egoera

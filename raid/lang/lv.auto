@@ -21,6 +21,7 @@ index_mailfromnone=Noklusējums (<tt>sakne</tt>)
 index_program=Komanda palaist, kad tiek atklātas problēmas
 index_programnone=Neskrien nevienu
 index_monitor=Uzraudzība ir iespējota?
+
 linear=Lineārs (salikts)
 raid0=RAID0 (svītrains)
 raid1=RAID1 (atspoguļots)
@@ -29,6 +30,7 @@ raid5=RAID5 (sadalītā paritāte)
 raid6=RAID6 (divkārši sadalīta paritāte)
 raid10=RAID10 (svītrains un spoguļattēls)
 blocks=bloki
+
 create_title=Izveidot RAID ierīci
 create_header=RAID ierīces opcijas
 create_device=Ierīces fails
@@ -62,6 +64,7 @@ create_o2_layout=2 Ofseta kopijas
 create_n3_layout=3 Kopiju tuvumā
 create_f3_layout=3 tālie eksemplāri
 create_o3_layout=3 Ofseta kopijas
+
 view_title=RAID ierīce
 view_header=RAID ierīces opcijas
 view_device=Ierīces fails
@@ -117,6 +120,7 @@ view_mountmsg=Ievadiet direktoriju un noklikšķiniet uz šīs pogas, lai pārie
 view_mountmsg2=Noklikšķiniet uz šīs pogas, lai izmantotu šo RAID ierīci virtuālajai atmiņai jūsu sistēmā.
 view_blocks=$1 bloki
 view_sparegroup=Rezerves grupa
+
 mkfs_title=Izveidot failu sistēmu
 mkfs_header2=Šī forma ļauj izveidot jaunu $2 failu sistēmu uz $1. <b>Visi</b> esošie dati tiks izdzēsti!
 mkfs_options=Jaunas Linux failu sistēmas opcijas
@@ -124,6 +128,7 @@ mkfs_err=Neizdevās izveidot failu sistēmu
 mkfs_exec=Izpilda komandu $1.
 mkfs_failed=.. komanda neizdevās!
 mkfs_ok=.. komanda pabeigta.
+
 emkraid=<tt>mkraid</tt> neizdevās : $1 
 eraidstop=<tt>reidstop</tt> neizdevās : $1 
 eraidstart=<tt>raidstart</tt> neizdevās : $1 
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=Izveidota $1 RAID ierīce $2 
 log_stop=Deaktivizēta RAID ierīce $1 
 log_start=Aktivizēta RAID ierīce $1 
@@ -147,14 +153,17 @@ log_grow=Audzēta RAID ierīce $1 līdz kopējam $2 diskam
 log_convert_to_raid6=RAID5 ierīce $1 ir pārveidota par RAID6 ierīci
 log_convert_to_raid5=RAID6 ierīce $1 ir pārveidota par RAID5 ierīci
 log_notif=Atjauninātas RAID problēmas paziņošanas iespējas
+
 notif_err=Neizdevās saglabāt RAID problēmas paziņošanas opcijas
 notif_emailaddr=Trūkst vai nav derīga paziņojuma adrese
 notif_emailfrom=Trūkst vai nav derīga adrese
 notif_eprogram=Trūkst vai nav programmas, kas darbotos
+
 delete_title=Dzēst RAID masīvu
 delete_rusure=Vai tiešām vēlaties izdzēst RAID masīvu $1, kas izmanto $2 diska vietas?
 delete_ok=Jā, izdzēst
 delete_eidx=Nav izvēlēts RAID masīvs.
+
 remove_title=Noņemiet nodalījumu no RAID masīva
 remove_rusure=Vai tiešām vēlaties noņemt RAID masīva $1 nodalījumu $2 ?
 remove_ok=Jā, noņemiet to

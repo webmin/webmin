@@ -19,11 +19,13 @@ index_force=Lực lượng quay nhật ký
 index_forcedesc=Buộc quay vòng ngay lập tức tất cả các tệp nhật ký, ngay cả khi chưa đến lúc.
 index_logrotate=Logrotate
 index_delete=Xóa luân chuyển nhật ký đã chọn
+
 period_daily=hằng ngày
 period_weekly=Hàng tuần
 period_monthly=Hàng tháng
 period_never=Không bao giờ
 period_bytes=byte
+
 edit_title1=Chỉnh sửa tệp nhật ký
 edit_title2=Tạo tệp nhật ký
 edit_header=Chi tiết tệp nhật ký xoay
@@ -62,8 +64,10 @@ edit_pre=Các lệnh để chạy trước khi xoay
 edit_default=Mặc định ($1)
 edit_sharedscripts=Chỉ chạy script một lần cho tất cả các tệp?
 edit_now=Xoay ngay bây giờ
+
 global_title=Tùy chọn toàn cầu
 global_header=Tùy chọn mặc định cho tất cả các tệp nhật ký
+
 save_err=Không thể lưu nhật ký
 save_efile=Tên tệp nhật ký bị thiếu hoặc không hợp lệ
 save_esize=Thiếu kích thước tối đa hoặc không hợp lệ
@@ -81,6 +85,7 @@ save_eerrors=Thiếu địa chỉ email cho thông báo lỗi
 save_epre=Tập lệnh xoay vòng trước không thể chứa dòng <tt>endcript</tt> hoặc <tt>endrotate</tt>
 save_epost=Tập lệnh xoay vòng không thể chứa dòng <tt>endcript</tt> hoặc <tt>endrotate</tt>
 save_enofiles=Không có tập tin nào để xoay
+
 log_modify_sched=Thay đổi luân chuyển nhật ký Cron job
 log_create_sched=Tạo nhật ký luân chuyển công việc Cron
 log_delete_sched=Đã xóa luân chuyển công việc Cron
@@ -89,6 +94,7 @@ log_create=Đã thêm xoay vòng cho tệp nhật ký $1
 log_modify=Xoay vòng đã sửa đổi cho tệp nhật ký $1 
 log_delete=Đã xóa xoay vòng cho tệp nhật ký $1 
 log_delete_logs=Đã xóa xoay vòng cho các tệp nhật ký $1 
+
 sched_title=Nhật ký luân chuyển
 sched_desc=Để xoay vòng nhật ký được cấu hình bằng mô-đun này được thực hiện, lệnh $1 phải được chạy theo lịch trình thông thường (thường là hàng ngày) bởi Cron.
 sched_runparts=Hiện tại, lệnh xoay vòng nhật ký đang được chạy từ tập lệnh $1 $2 và không thể điều chỉnh.
@@ -98,10 +104,12 @@ sched_enabled=Đã bật, vào những thời điểm dưới đây ..
 sched_save=Cập nhật công việc định kỳ
 sched_err=Không thể lưu lịch quay
 sched_when=Thời gian để chạy
+
 force_title=Lực lượng quay nhật ký
 force_doing=Buộc quay vòng ngay lập tức tất cả các tệp nhật ký ..
 force_doingone=Buộc quay ngay lập tức một tệp nhật ký ..
 force_done=.. làm xong.
 force_failed=.. thất bại! Xem đầu ra ở trên cho lý do tại sao.
+
 delete_err=Không thể xóa nhật ký
 delete_enone=Không được chọn

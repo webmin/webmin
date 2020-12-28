@@ -12,10 +12,12 @@ index_restart=Genstart Fail2Ban-server
 index_restartdesc=Klik på denne knap for at anvende den aktuelle konfiguration ved at genstarte Fail2Ban-serveren.
 index_return=modul indeks
 index_header=Fail2Ban-modul
+
 check_edir=Konfigurationsbiblioteket $1 findes ikke
 check_econf=Konfigurationsfilen $2 i $1 findes ikke
 check_eclient=Klientkommandoen $1 blev ikke fundet
 check_eserver=Serverkommandoen $1 blev ikke fundet
+
 filters_title=Logfiltre
 filters_name=Filtrer navn
 filters_re=Almindelig udtryk
@@ -25,6 +27,7 @@ filters_return=liste over filtre
 filters_derr=Kunne ikke slette filtre
 filters_enone=Ingen valgt
 filters_einuse=Filteret $1 kan ikke slettes, da det bruges af fængslerne : $2 
+
 filter_title1=Opret filter
 filter_title2=Rediger filter
 filter_desc=Brug <i>&lt;HOST&gt;</i> i almindelige udtryk, hvor et værtsnavn eller IP-adresse skal vises.
@@ -39,6 +42,7 @@ filter_ename=Manglende eller ugyldigt filternavn
 filter_eclash=Filternavn er allerede i brug
 filter_efail=Der er ikke indtastet noget regulært udtryk, der matcher
 filter_einuse=Dette filter kan ikke slettes, da det bruges af fængslerne : $1 
+
 actions_title=Match handlinger
 actions_name=Handlingsnavn
 actions_ban=Forbudskommando
@@ -48,6 +52,7 @@ actions_return=liste over handlinger
 actions_derr=Kunne ikke slette handlinger
 actions_enone=Ingen valgt
 actions_einuse=Handlingen $1 kan ikke slettes, da den bruges af fængslerne : $2 
+
 action_title1=Opret matchhandling
 action_title2=Rediger matchhandling
 action_header=Match handling detaljer
@@ -64,6 +69,7 @@ action_ban=Kommando til at forbyde en IP
 action_unban=Kommando til at fjerne forbud mod en IP
 action_desc=<i>&lt;ip&gt;</i> erstattes med den IP-adresse, der er forbudt.
 action_einuse=Denne handling kan ikke slettes, da den bruges af fængslerne : $1 
+
 jails_title=Filtrer handlingsfængsler
 jails_add=Tilføj et nyt fængsel.
 jails_name=Fængsel navn
@@ -76,6 +82,7 @@ jails_defdesc=Rediger standardindstillinger og grænser, der gælder for alle de
 jails_return=liste over fængsler
 jails_derr=Kunne ikke slette fængsler
 jails_enone=Ingen valgt
+
 jail_title1=Opret fængsel
 jail_title2=Rediger fængsel
 jail_header=Filtrer handlingens fængselsoplysninger
@@ -115,13 +122,16 @@ jail_banaction=Standardhandling, der skal anvendes
 jail_defprotocol=Standardprotokol til handlinger
 jail_edestemail=Manglende eller ugyldig standard-e-mail-adresse
 jail_eignoreip=Ugyldig IP-adresse at ignorere
+
 jaildef_title=Standard fængselsindstillinger
 jaildef_header=Standardindstillinger for alle fængsler
 jaildef_err=Kunne ikke gemme standardfængselsindstillinger
 jaildef_egone=Intet DEFAULT fængsel fundet!
+
 start_err=Kunne ikke starte serveren
 stop_err=Kunne ikke stoppe serveren
 restart_err=Kunne ikke genstarte serveren
+
 log_create_filter=Oprettet filter $1 
 log_update_filter=Ændret filter $1 
 log_delete_filter=Slet filter $1 
@@ -139,6 +149,7 @@ log_atboot=Aktiveret Fail2Ban ved starttidspunktet
 log_delboot=Deaktiveret Fail2Ban ved starttidspunktet
 log_manual=Redigeret konfigurationsfil $1 
 log_jaildef=Ændrede standardfængselsindstillinger
+
 config_title=Global konfiguration
 config_edef=Der findes intet definition i konfigurationsfilen!
 config_header=Konfigurer indstillinger for Fail2Ban
@@ -151,10 +162,12 @@ config_socket=Socket til kommunikation med serveren
 config_err=Kunne ikke gemme global konfiguration
 config_elogtarget=Fil til at skrive logfiler til skal være en absolut sti
 config_esocket=Socket-fil skal være en absolut sti
+
 manual_title=Rediger konfigurationsfiler
 manual_desc=Fil, der skal redigeres:
 manual_ok=Okay
 manual_efile=Den valgte fil er ikke en del af Fail2Ban-konfigurationen!
 manual_err=Kunne ikke redigere konfigurationsfilen
 manual_edata=Intet indtastet indhold af konfigurationsfil
+
 syslog_logtarget=Fail2Ban handling log

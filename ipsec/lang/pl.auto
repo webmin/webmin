@@ -25,12 +25,15 @@ index_up=Rozpocznij połączenie:
 index_updesc=Wybierz połączenie z listy obok tego przycisku i kliknij je, aby spróbować nawiązać natychmiastowe połączenie.
 index_nopol=Nie znaleziono zasad sieciowych - być może Twoja <a href='$1'>konfiguracja sieci</a> jest nieprawidłowa.
 index_import=Zaimportuj połączenie z pliku.
+
 stop_err=Nie udało się zatrzymać serwera IPsec
 start_err=Nie udało się uruchomić serwera IPsec
 restart_err=Nie można ponownie uruchomić serwera IPsec
 start_elog=Zarejestrowano następujące błędy : $1 
+
 newkey_err=Nie udało się wygenerować klucza
 newkey_ehost=Brakująca lub nieprawidłowa nazwa hosta
+
 edit_title1=Utwórz połączenie
 edit_title2=Edytuj połączenie
 edit_header=Szczegóły połączenia IPsec VPN
@@ -101,6 +104,7 @@ edit_unit_s=sek
 edit_unit_m=min
 edit_unit_h=godziny
 edit_unit_d=dni
+
 config_title=Konfiguracja serwera
 config_header=Globalne ustawienia serwera VPN
 config_ifaces=Interfejsy sieciowe dla IPsec
@@ -118,6 +122,7 @@ config_nat=Włączyć translację NAT?
 config_err=Nie udało się zapisać konfiguracji serwera
 config_eri=Rzeczywisty interfejs „$1” jest wymieniony więcej niż jeden raz
 config_enone=Nie określono interfejsów sieciowych
+
 showkey_title=Pokaż klucz publiczny
 showkey_desc1=Publiczny klucz RSA pokazany poniżej powinien zostać skopiowany do konfiguracji innych systemów łączących się z tym, w sekcji dotyczącej tego hosta.
 showkey_desc2=Wartości pokazane poniżej można wykorzystać do utworzenia rekordu KLUCZ DNS dla tego hosta, aby inne systemy łączące się z nim mogły wyszukać jego klucz publiczny.
@@ -125,6 +130,7 @@ showkey_flags=Flagi
 showkey_proto=Protokół
 showkey_alg=Algorytm
 showkey_key=Kluczowe dane
+
 policy_desc_block=Zablokowane sieci
 policy_desc_clear=Wyczyść sieci ruchu
 policy_desc_private=Szyfrowane sieci
@@ -145,6 +151,7 @@ policy_mask=Prefiks
 policy_err=Nie udało się zapisać sieci
 policy_enet=Nieprawidłowy adres IP sieci w wierszu $1 
 policy_emask=Nieprawidłowa długość prefiksu w wierszu $2 
+
 save_err=Nie udało się zapisać połączenia
 save_ename=Brakująca lub nieprawidłowa nazwa połączenia
 save_ekeying=Brak lub nieprawidłowa liczba ponownych prób wprowadzenia klucza
@@ -164,6 +171,7 @@ save_eleftcert=Brakujący lub nieprawidłowy certyfikat lokalnego serwera
 save_erightcert=Brakujący lub nieprawidłowy certyfikat zdalnego serwera
 save_ekeylife=Żywotność brakującego lub nieprawidłowego klucza połączenia
 save_eikelifetime=Trwałość kanału brakującego lub nieprawidłowego klucza
+
 log_create_conn=Utworzono połączenie $1 
 log_delete_conn=Usunięte połączenie $1 
 log_modify_conn=Zmodyfikowane połączenie $1 
@@ -182,8 +190,10 @@ log_delete_secret=Usunięto tajny klucz dla $1
 log_create_secret_nn=Utworzono tajny klucz dla dowolnego hosta
 log_modify_secret_nn=Zmodyfikowany tajny klucz dla dowolnego hosta
 log_delete_secret_nn=Usunięto tajny klucz dla dowolnego hosta
+
 up_title=Rozpocznij połączenie
 up_cmd=Rozpoczynanie połączenia za pomocą polecenia $1 ..
+
 export_title=Eksportuj konfigurację
 export_desc=Tego formularza można użyć do wyeksportowania sekcji pliku konfiguracyjnego dla połączenia $1, dzięki czemu można go łatwo zaimportować na serwerze na drugim końcu.
 export_print=Wyświetl konfigurację w przeglądarce
@@ -193,11 +203,13 @@ export_err=Nie udało się wyeksportować konfiguracji
 export_efile=Brak nazwy pliku
 export_esave=Nie udało się zapisać do pliku : $1 
 export_done=Wyeksportowano konfigurację połączenia $1 do $2 ($3 bajtów).
+
 import_title=Importuj konfigurację
 import_desc=Tego formularza można użyć do zaimportowania sekcji pliku konfiguracyjnego dla połączenia, na przykład utworzonego przez funkcję eksportu modułu w innym systemie.
 import_upload=Importuj z przesłanego pliku ..
 import_file=Importuj z pliku po stronie serwera ..
 import_ok=Importuj teraz
+
 import_err=Nie udało się zaimportować konfiguracji
 import_eupload=Nie wybrano pliku do przesłania
 import_efile=Nie wprowadzono pliku po stronie serwera
@@ -207,6 +219,7 @@ import_eclash=Połączenie o nazwie $1 już istnieje.
 import_done1=Pomyślnie dodano nowe połączenie IPsec $1.
 import_done2=Pomyślnie zaktualizowano połączenie IPsec $1.
 import_over=Zastąpić istniejące połączenie o tej samej nazwie?
+
 secrets_title=Tajne klucze
 secrets_none=Nie znaleziono kluczy tajnych!
 secrets_name=Sekret dla
@@ -220,6 +233,7 @@ secrets_mod=Moduł $1
 secrets_newpsk=Utwórz nowy wspólny tajny klucz.
 secrets_newrsa=Utwórz nowy klucz RSA.
 secrets_return=lista tajnych kluczy
+
 secret_title1=Utwórz tajny klucz
 secret_title2=Edytuj tajny klucz
 secret_header=Tajne kluczowe szczegóły

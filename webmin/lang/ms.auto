@@ -1,12 +1,16 @@
 access_ecidr8=Saiz rangkaian IPv6 '$1' mesti dibahagikan dengan 8
 access_trust=Percayakan alamat IP jauh yang disediakan oleh proksi?
+
 log_global=&lt;Tindakan global&gt;
 log_sched=Fungsi berjadual log?
 log_email=Hantar tindakan log melalui e-mel kepada
 log_emailnone=Jangan hantar
 log_inmodsemail=Hantar e-mel untuk tindakan dalam
+
 ui_nice_size_type=Gunakan unit pengukuran binari (KiB, MiB, GiB daripada KB, MB, GB)
+
 mods_checksig=Periksa fail tandatangan untuk modul yang dimuat turun?
+
 ssl_deny=Versi protokol SSL untuk menolak
 ssl_ekey2=Fail kunci peribadi SSL $1 tidak mengandungi kekunci format PEM
 ssl_ecert2=Fail sijil SSL $1 tidak mengandungi sijil format PEM
@@ -16,6 +20,7 @@ ssl_tablets=Let's Encrypt
 ssl_letsdesc=Let's Encrypt adalah pihak berkuasa sijil percuma, automatik dan terbuka yang boleh digunakan untuk menghasilkan sijil SSL untuk digunakan oleh Webmin.
 ssl_letserr=Malangnya, Let's Encrypt tidak boleh digunakan pada sistem anda: $1.
 ssl_letserr2=Selalunya, semak halaman konfigurasi <a href='$1'></a> untuk memastikan anda menggunakan laluan yang betul untuk arahan <tt>letsencrypt</tt>.
+
 ssl_letsdesc2=Halaman ini boleh digunakan untuk meminta sijil baru, yang akan menimpa mana-mana yang sedang dikonfigurasikan pada Webmin yang lain. Walau bagaimanapun, perkhidmatan Encrypt Letakkan pemilikan domain sijil anda disahkan dengan memeriksa bahawa sistem ini menjadi tuan rumah laman web untuk domain tersebut. Ini dilakukan dengan meletakkan fail sementara kecil di direktori dokumen laman web.
 ssl_letsheader=Pilihan untuk sijil SSL baru
 ssl_letsdoms=Nama hos untuk sijil
@@ -32,9 +37,13 @@ ssl_letsnotrenew=Hanya memperbaharui secara manual
 ssl_staging=Mari kita Sulitkan pelayan
 ssl_staging0=Real
 ssl_staging1=Pementasan (ujian sahaja)
+
 newkey_ecns=Tiada nama pelayan yang dimasukkan
+
 upgrade_eportage=Ciri naik taraf Webmin tidak berfungsi saat ini apabila anda memasang dari pakej Portage. Sila naik taraf menggunakan alat Portage sebaliknya.
+
 ca_alt=Domain tambahan
+
 session_ptimeout=Masa tunggu kata laluan
 session_pblock=Blok masuk gagal
 session_syslog3=Kegagalan log ke <tt>syslog</tt>?
@@ -49,19 +58,25 @@ session_banner=Spanduk pra-masuk
 session_md5=Format hashing kata laluan Webmin
 session_sha512=Gunakan penyulitan SHA512
 session_esha512mod=Penyulitan SHA512 tidak boleh digunakan, kerana mod Perl $1 tidak dipasang.
+
 log_letsencrypt=Meminta sijil SSL baru dari Let's Encrypt
 log_letsencryptdns=Diciptakan Letakkan rekod DNS untuk $1
 log_letsencryptcleanup=Dikeluarkan Sambungkan rekod DNS untuk $1
+
 referers_none2=AMARAN: Ini membuka sistem anda sehingga serangan XSS!
+
 ipkey_ips2=Untuk alamat IP dan nama host
 ipkey_eip2='$1' bukan alamat IP atau nama hos yang sah
+
 advanced_listdir=Senarai direktori tanpa fail indeks?
 advanced_headers=Tajuk tambahan HTTP
 advanced_eheader=Tajuk mesti diformat seperti <tt>Tajuk: Nilai</tt>
 advanced_sortconfigs=Simpan fail config disusun dengan kuncinya?
+
 status_units=Unit untuk suhu
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+
 sendmail_port=Pelabuhan SMTP
 sendmail_portdef=Gunakan port lalai
 sendmail_portsel=Gunakan nombor port
@@ -74,7 +89,9 @@ sendmail_url=URL Webmin untuk digunakan dalam e-mel
 sendmail_url_def=Lalai ($1)
 sendmail_url_custom=URL tersuai
 sendmail_eurl=URL tersuai tidak ada atau tidak sah
+
 twofactor_eusers=Pengesahan dua faktor tidak boleh dilumpuhkan, kerana pengguna berikut kini mendaftar : $1
+
 letsencrypt_title=Let's Encrypt Request Certificate
 letsencrypt_err=Gagal meminta sijil
 letsencrypt_ecmds=Sama ada perintah klien Encrypt Let <tt>certbot</tt> atau perintah <tt>python</tt> tidak terdapat pada sistem anda
@@ -108,5 +125,6 @@ letsencrypt_ecsr=Gagal untuk menjana CSR : $1
 letsencrypt_ekeygen=Gagal menjana kunci peribadi : $1
 letsencrypt_enative=Native Encrypt native (certbot) asli digunakan sebelum ini pada sistem ini, dan mesti digunakan untuk semua permintaan sijil masa depan
 letsencrypt_eacmedns=Hanya klien Let's Encrypt yang sah yang menyokong pengesahan berasaskan DNS
+
 announce_hide=Sembunyikan Pengumuman Ini
 alert_hide=Sembunyikan Makluman

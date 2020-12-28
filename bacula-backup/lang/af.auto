@@ -29,12 +29,14 @@ index_fd=Lêer Daemon-konfigurasie
 index_groups=Bacula-groepkonfigurasie
 index_actions=Rugsteun en herstel aksies
 index_ocmin=Bydra deur <a href=$2 target=_new>Linmin</a> </a>
+
 connect_emysql=Kon nie die databasisbestuurder $1 van die databasis laai nie
 connect_elogin=Kon nie by die databasis $1:$2 aanmeld nie.
 connect_equery=Dit lyk nie asof die databasis $1 Bacula-tabelle bevat nie.
 connect_equery2=Dit kan wees omdat die geïnstalleerde SQLite Perl-module te nuut is en nie die ouer SQLite-databasisformaat wat deur Bacula gebruik word, ondersteun nie.
 connect_equery3=Dit lyk nie asof die databasis $1 OC Bacula-groepstabelle bevat nie.
 esql=SQL-fout : $1 
+
 check_edir=Die Bacula-konfigurasiegids $1 is nie op u stelsel gevind nie.
 check_ebacula=Die Bacula-beheeropdrag $1 is nie gevind nie.
 check_econsole=Die Bacula-konsoleopdrag $1 is nie gevind nie.
@@ -43,12 +45,14 @@ check_eclient=Dit lyk asof hierdie stelsel 'n <a href='$2'>Bacula-kliënt is</a>
 check_econfigs=Geen Bacula-konfigurasielêers is in $1 gevind nie
 check_eservers=Geen Webmin-bedienergroepe is gedefinieër nie
 check_engmod=Die OpenCountry Bacula-groepe-module is nie geïnstalleer nie
+
 proc_bacula-sd=Bergingsdemon
 proc_bacula-fd=Lêer daemon
 proc_bacula-dir=Bacula Direkteur-dememon
 proc_bareos-sd=Bergingsdemon
 proc_bareos-fd=Lêer daemon
 proc_bareos-dir=Bacula Direkteur-dememon
+
 stop_err=Kon nie Bacula stop nie
 start_err=Kon nie Bacula begin nie
 start_einit=Geen init-skrip vir $1 gevind nie
@@ -57,6 +61,7 @@ restart_err=Kon nie Bacula weer begin nie
 apply_err=Kon nie konfigurasie toepas nie
 apply_failed='N Konfigurasiefout is opgespoor
 apply_problem=Kon nie konfigurasie toepas : $1 
+
 jobs_title=Rugsteungeleenthede
 jobs_none=Geen rugsteunkoste is nog gedefinieër nie.
 jobs_name=Posnaam
@@ -69,6 +74,7 @@ jobs_add=Voeg 'n nuwe rugsteuntaak by.
 jobs_delete=Vee geselekteerde poste uit
 jobs_return=lys van poste
 jobs_derr=Kon nie bane uitvee nie
+
 filesets_title=Lêersets
 filesets_none=Geen rugsteunlêerstelle is nog gedefinieër nie.
 filesets_name=Lêerstelnaam
@@ -78,6 +84,7 @@ filesets_delete=Vee geselekteerde lêersets uit
 filesets_return=lys van lêerstelle
 filesets_derr=Kon nie lêerstelle uitvee nie
 filesets_ednone=Geen gekies nie
+
 fileset_title1=Skep lêerstel
 fileset_title2=Wysig lêerstel
 fileset_header=Besonderhede oor die stel van rugsteunlêers
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;Standaard kompressievlak&gt;
 fileset_lzo=LZO-kompressie
 fileset_gzip=Gzip-vlak $1 
 fileset_onefs=Beperk rugsteun tot een lêersisteem?
+
 clients_title=Kliënte vir rugsteun
 clients_none=Geen rugsteunkliënte is nog gedefinieër nie.
 clients_name=Kliënt Naam
@@ -106,6 +114,7 @@ clients_add=Voeg 'n nuwe rugsteunkliënt by.
 clients_delete=Vee geselekteerde kliënte uit
 clients_return=lys van kliënte
 clients_derr=Kon nie kliënte uitvee nie
+
 client_title1=Skep rugsteunkliënt
 client_title2=Wysig rugsteunkliënt
 client_header=Besonderhede van die kliënt wat gerugsteun moet word
@@ -128,6 +137,7 @@ client_efileret=Ontbrekende of ongeldige lêerbehoudperiode
 client_ejobret=Ontbrekende of ongeldige tydperk van werkbehoud
 client_echild=Hierdie kliënt kan nie uitgevee word nie, aangesien dit deur $1 gebruik word
 client_status=Wys status
+
 job_title1=Skep rugsteuntaak
 job_title2=Redigeer rugsteuntaak
 job_header=Besonderhede oor rugsteunwerk
@@ -156,6 +166,7 @@ job_before=Bevel voor werk
 job_after=Bevel na werk
 job_cbefore=Opdrag voor werk (op kliënt)
 job_cafter=Bevel na werk (op kliënt)
+
 schedules_title=Rugsteunskedules
 schedules_none=Geen rugsteunskedules is nog gedefinieër nie.
 schedules_name=Skedule naam
@@ -164,6 +175,7 @@ schedules_add=Voeg 'n nuwe rugsteunskedule by.
 schedules_delete=Vee geselekteerde skedules uit
 schedules_return=lys van skedules
 schedules_derr=Kon nie skedules uitvee nie
+
 schedule_title1=Skep rugsteunskedule
 schedule_title2=Wysig rugsteunskedule
 schedule_header=Besonderhede oor rugsteunskedules
@@ -177,6 +189,7 @@ schedule_ename=Ontbrekende of ongeldige skedulenaam
 schedule_eclash=Daar bestaan reeds 'n skedule met dieselfde naam
 schedule_etimes=Rugsteentye in ry $1 ontbreek
 schedule_echild=Hierdie skedule kan nie uitgevee word nie, omdat dit deur $1 gebruik word
+
 backup_title=Begin rugsteuntaak
 backup_header=Besonderhede oor rugsteunwerk
 backup_job=Job om te hardloop
@@ -191,11 +204,13 @@ backup_running=.. die rugsteuntaak loop nou. As u klaar is, sal die resultate hi
 backup_running2=.. met die rugsteuntaak op die agtergrond begin is.
 backup_done=.. rugsteun voltooi.
 backup_failed=.. die rugsteun nie suksesvol voltooi is nie. Kyk na die foutboodskap hierbo vir meer inligting.
+
 gbackup_title=Begin Bacula Group Backup Job
 gbackup_run=Begin rugsteunwerk $1 op $2 kliënte ..
 gbackup_on=Gebruik rugsteuntaak op kliënt $1  :
 gbackup_header=Bacula-groep se rugsteunkopie-besonderhede
 gbackup_jd=$1 (Lêerset $2 op groep $3)
+
 dirstatus_title=Direkteurstatus
 dirstatus_sched=Geplande rugsteunkoste
 dirstatus_name=Posnaam
@@ -216,12 +231,14 @@ dirstatus_status2=status
 dirstatus_donenone=Geen rugsteundienste is uitgevoer nie.
 dirstatus_cancel=Kanselleer geselekteerde poste
 dirstatus_refresh=Herlaai lys
+
 clientstatus_title=Kliëntstatus
 clientstatus_err=Kon nie status van $1 : $2 haal nie
 clientstatus_msg=Status vanaf $1 : $2 
 clientstatus_show=Toon status van kliënt:
 clientstatus_ok=OK
 clientstatus_on=$1 (op $2)
+
 storages_title=Berging Daemons
 storages_none=Daar is nog geen stoordemone gedefinieër nie.
 storages_name=Bergingsnaam
@@ -232,6 +249,7 @@ storages_add=Voeg 'n nuwe opslaan daemon by.
 storages_delete=Verwyder geselekteerde opslaan daemons
 storages_return=lys van stoorlemoene
 storages_derr=Kon nie bergingskemers uitvee nie
+
 storage_title1=Skep bergingsdemon
 storage_title2=Bewaar Storage Daemon
 storage_header=Besonderhede van afstandsopbergingsdemon
@@ -255,6 +273,7 @@ storage_emedia=Vermiste mediatipe naam
 storage_emaxjobs=Ontbrekende maksimum gelyktydige poste
 storage_echild=Hierdie kliënt kan nie uitgevee word nie, aangesien dit deur $1 gebruik word
 storage_status=Wys status
+
 devices_title=Bergingstoestelle
 devices_none=Geen opbergtoestelle is nog gedefinieër nie.
 devices_name=Toestel naam
@@ -264,6 +283,7 @@ devices_add=Voeg 'n nuwe bergingstoestel by.
 devices_delete=Vee geselekteerde bergingstoestelle uit
 devices_return=lys van stoortoestelle
 devices_derr=Kon nie bergingstoestelle uitvee nie
+
 device_title1=Skep bergingstoestel
 device_title2=Bewaar bergingstoestel
 device_header=Besonderhede van lêerstoorapparaat
@@ -282,11 +302,13 @@ device_eclash='N Bergingstoestel met dieselfde naam bestaan reeds
 device_emedia=Vermiste mediatipe naam
 device_edevice=Ontbrekende of ongeldige argieftoestel of -gids
 device_echild=Hierdie kliënt kan nie uitgevee word nie, aangesien dit deur $1 gebruik word
+
 storagestatus_title=Berging Daemon-status
 storagestatus_err=Kon nie status van $1 : $2 haal nie
 storagestatus_msg=Status vanaf $1 : $2 
 storagestatus_show=Wys die status van die opslaan daemon:
 storagestatus_ok=OK
+
 label_title=Etiketvolume
 label_header=Besonderhede van volume na etiket
 label_storage=Bergingsdemon vir etiket
@@ -302,6 +324,7 @@ label_done=.. etikettering suksesvol.
 label_epool=.. kon nie swembad vind nie!
 label_err=Etiket het misluk
 label_elabel=Geen etiket is ingevoer nie
+
 pools_title=Volume swembaddens
 pools_none=Geen volume poele is nog gedefinieer nie.
 pools_name=Swembadnaam
@@ -311,6 +334,7 @@ pools_add=Voeg 'n nuwe volume swembad by.
 pools_delete=Vee geselekteerde volume poele uit
 pools_return=lys van volumes poele
 pools_derr=Kon nie volume-poele uitvee nie
+
 pool_title1=Skep Volume Pool
 pool_title2=Wysig Volume Pool
 pool_header=Besonderhede van rugsteunvolumeswembad
@@ -332,6 +356,7 @@ pool_ereten=Ontbrekende of ongeldige behoudstydperk
 pool_status=Wys volumes
 pool_autolabel=Benoem outomaties volume-voorvoegsel
 pool_maxvolsize=Maksimum volume grootte (bv. 5G vir 5 Gigabyte)
+
 poolstatus_title=Volumes in die swembad
 poolstatus_show=Wys volumes in swembad:
 poolstatus_ok=OK
@@ -345,9 +370,11 @@ poolstatus_status=Rugsteunmodus
 poolstatus_none=Daar is tans geen volumes in hierdie rugsteelpoel nie.
 poolstatus_never=nooit
 poolstatus_delete=Vee geselekteerde volumes uit
+
 dvolumes_err=Kon nie volumes uitvee nie
 dvolumes_enone=Geen gekies nie
 dvolumes_ebacula=Bacula-fout : $1 
+
 mount_title=Monteer of ontkoppel
 mount_header=Opbergmeganisme of ongemonteer-opsies
 mount_storage=Stoor toestel
@@ -365,8 +392,10 @@ unmount_failed=.. un-mount misluk! Kyk na die foutboodskap hierbo om die rede.
 mount_return=monteer vorm
 mount_err=Kon nie die bergingstoestel monteer nie
 mount_eslot=Ontbrekende of ongeldige gleufnommer
+
 cancel_err=Kon nie bane kanselleer nie
 cancel_enone=Geen gekies nie
+
 gjobs_title=Bacula Groep-rugsteunwerk
 gjobs_none=Geen Bacula-groepsteun-bane is nog gedefinieer nie.
 gjobs_add=Voeg 'n nuwe Bacula-rugsteuntaak by.
@@ -374,10 +403,12 @@ gjobs_delete=Vee geselekteerde poste uit
 gjobs_return=lys van Bacula-groepgeleenthede
 gjobs_derr=Kon nie Bacula-groepopdragte uitvee nie
 gjobs_client=Bacula-groep te rugsteun
+
 gjob_title1=Skep Bacula Group Backup Job
 gjob_title2=Bewerk Bacula Group Backup Job
 gjob_header=Bacula-groep se rugsteunkopie-besonderhede
 gjob_client=Bacula-groep te rugsteun
+
 groups_title=Bacula-groepe
 groups_none=Geen Bacula-groepe is nog gekies vir rugsteun deur Bacula nie.
 groups_name=Groepnaam
@@ -391,6 +422,7 @@ groups_derr=Kon nie groepe uitvee nie
 groups_noadd=Geen Bacula-groepe kan gekies word vir rugsteun nie.
 groups_info=$1 ($2 lede)
 groups_already=Alle Bacula-groepe is reeds bygevoeg.
+
 group_title1=Skep Bacula Group
 group_title2=Bacula Group wysig
 group_header=Besonderhede van die Bacula-groep wat gerugsteun moet word
@@ -401,11 +433,13 @@ group_port=Bacula FD-poort
 group_err=Kon nie Bacula-groep red nie
 group_eclash=Daar bestaan reeds 'n groep met dieselfde naam
 group_members=Gashere in Bacula-groep
+
 sync_title=Bacula-groep sinchronisasie
 sync_header=Outomatiese Bacula-groepkliëntsinkronisasie-opsies
 sync_sched=Sinkroniseer op skedule?
 sync_schedyes=Ja, soms hieronder gekies.
 sync_err=Kon nie Bacula-groepsinkronisasie stoor nie
+
 log_create_client=Skep rugsteenkliënt $1 
 log_modify_client=Gewysigde rugsteunkliënt $1 
 log_delete_client=Rugsteunkliënt $1 is uitgevee
@@ -464,6 +498,7 @@ log_director=Gestoorde wêreldwye Bacula-direkteurkonfigurasie
 log_file=Gestoorde Bacula-lêer-dememonkonfigurasie
 log_storagec=Gestoorde Bacula-opslaan daemon-opstelling
 log_fixpass=Vaste Bacula-konsole-programwagwoord
+
 director_title=Direkteur konfigurasie
 director_header=Opsies vir globale direkteur van Bacula
 director_name=Direkteur naam
@@ -477,6 +512,7 @@ director_ename=Registreernaam ontbreek of ongeldig
 director_eport=Poortnommer ontbreek of ongeldig
 director_ejobs=Ontbrekende of ongeldige aantal gelyktydige poste
 director_edir=Werkgids ontbreek of bestaan nie
+
 tls_enable=Aktiveer TLS-kodering?
 tls_require=Aanvaar u slegs TLS-verbindings?
 tls_verify=Verifieer TLS-kliënte?
@@ -488,6 +524,7 @@ tls_ecert=Ontbrekende of nie-bestaande TLS-sertifikaatlêer
 tls_ekey=Ontbrekende of nie-bestaande TLS-sleutellêer
 tls_ecacert=Ontbrekende of nie-bestaande TLS CA-sertifikaatlêer
 tls_ecerts=Om TLS in te skakel, moet sertifikaat-, sleutel- en CA-lêers gespesifiseer word
+
 file_title=Lêer Daemon-konfigurasie
 file_header=Bacula-lêer-demoonopsies
 file_name=Lêer daemon naam
@@ -500,6 +537,7 @@ file_ename=Ontbrekende of ongeldige lêerdemon-naam
 file_eport=Poortnommer ontbreek of ongeldig
 file_ejobs=Ontbrekende of ongeldige aantal gelyktydige poste
 file_edir=Werkgids ontbreek of bestaan nie
+
 fdirectors_title=Lêers van Daemon lêer
 fdirectors_none=Geen direkteure is nog gedefinieër nie.
 fdirectors_name=Direkteur naam
@@ -508,6 +546,7 @@ fdirectors_add=Voeg 'n nuwe direkteur by.
 fdirectors_delete=Verwyder gekose direkteure
 fdirectors_return=lys van direkteure
 fdirectors_derr=Kon nie direkteure uitvee nie
+
 fdirector_title1=Skep File Daemon Director
 fdirector_title2=Redigeer File Daemon Director
 fdirector_header=Besonderhede van die beheer van afstandbeheer
@@ -519,6 +558,7 @@ fdirector_err=Kon nie die lêer-dememon-direkteur stoor nie
 fdirector_ename=Direkteur se naam ontbreek
 fdirector_eclash='N Regisseur met dieselfde naam bestaan reeds
 fdirector_epass=Wagwoord ontbreek
+
 sdirectors_title=Berging Daemon Direkteure
 sdirectors_none=Geen direkteure is nog gedefinieër nie.
 sdirectors_name=Direkteur naam
@@ -527,6 +567,7 @@ sdirectors_add=Voeg 'n nuwe direkteur by.
 sdirectors_delete=Verwyder gekose direkteure
 sdirectors_return=lys van direkteure
 sdirectors_derr=Kon nie direkteure uitvee nie
+
 sdirector_title1=Skep Storage Daemon-direkteur
 sdirector_title2=Bewerk direkteur van Storage Daemon
 sdirector_header=Besonderhede van die beheer van afstandbeheer
@@ -538,6 +579,7 @@ sdirector_err=Kon nie die opslaan-dememon-direkteur stoor nie
 sdirector_ename=Direkteur se naam ontbreek
 sdirector_eclash='N Regisseur met dieselfde naam bestaan reeds
 sdirector_epass=Wagwoord ontbreek
+
 storagec_title=Berging Daemon-konfigurasie
 storagec_header=Bacula-opslaan daemon opsies
 storagec_name=Daemon-naam
@@ -550,6 +592,7 @@ storagec_ename=Ontbrekende of ongeldige naam van die opslaan daemon
 storagec_eport=Poortnommer ontbreek of ongeldig
 storagec_ejobs=Ontbrekende of ongeldige aantal gelyktydige poste
 storagec_edir=Werkgids ontbreek of bestaan nie
+
 chooser_title=Kies Skedule
 chooser_monthsh=Maande om uit te voer
 chooser_months=Maande van die jaar
@@ -574,11 +617,13 @@ chooser_emonthsrange=Geselekteerde maande moet aaneenlopend wees
 chooser_eweekdaysrange=Die gekose weekdae moet aaneenlopend wees
 chooser_eweekdaynumsrange=Die aantal nommers van die weekdae moet aangrensend wees
 chooser_edaysrange=Geselekteerde dae van die maand moet aaneenlopend wees
+
 weekdaynum_1=eerste
 weekdaynum_2=tweede
 weekdaynum_3=derde
 weekdaynum_4=vierde
 weekdaynum_5=vyfde
+
 restore_title=Herstel rugsteun
 restore_title2=Herstel rugsteun na Bacula-groep
 restore_title3=Herstel Bacula Group Backup

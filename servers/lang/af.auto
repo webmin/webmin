@@ -22,6 +22,7 @@ index_auto=Vind bedieners outomaties
 index_automsg=Klik op hierdie knoppie om die outomatiese periodieke ontdekking van nuwe Webmin-bedieners op u netwerk op te stel.
 index_search=Wys bedieners wat ooreenstem:
 index_ok=Soek
+
 edit_title=Bewerk bediener
 create_title=Registreer bediener
 edit_details=Bedienerbesonderhede
@@ -57,6 +58,7 @@ edit_baduser=Aanmelding verwerp
 edit_invalid=Gebruiker kan nie RPC doen nie
 edit_version=Webmin $1 bedryf
 edit_same=Slegs beskikbaar nie in die sessieverifikasiemodus nie, en as die wagwoord aan Webmin-programme beskikbaar gestel word.
+
 save_err=Kon nie bediener stoor nie
 save_ehost=Ontbrekende of ongeldige gasheernaam
 save_ehost2=Gasheer bestaan nie
@@ -67,6 +69,7 @@ save_epass=Wagwoord ontbreek
 save_egroup=Groepnaam ontbreek
 save_elogin=Ongeldige aanmeld of wagwoord om aan te bied
 save_egroup2=Ongeldige nuwe groepnaam
+
 find_title=Soek bedieners
 find_new=Nuwe bediener op $1 gevind
 find_but=Nuwe bediener op $1 gevind, maar verifikasie het misluk : $2 
@@ -81,16 +84,20 @@ find_ecannot=U mag nie bedieners vind nie
 find_scanning=Soek na bedieners in netwerk $1.
 find_broading=Uitsaai vir bedieners op adresse $1.
 find_eport=Poortnommer ontbreek of ongeldig
+
 log_modify=Gewysigde bediener $1 
 log_create=Geregistreerde bediener $1 
 log_delete=Bediener $1 is uitgevee
 log_find=Bediener $1 gevind
 log_deletes=$1 bedieners is uitgevee
+
 link_elogin=Kon nie by $1 as $2 aanmeld nie
 link_ecannot=U mag nie hierdie bediener gebruik nie
 link_essl=U het nie die perl Net::SSLeay-biblioteek geïnstalleer nie
 link_eautologin=Ongeldige aanmelding of wagwoord vir $1. <a href='$2'>Klik hier</a> om weer te probeer.
+
 lib_other=ander
+
 acl_edit=Kan bedieners redigeer?
 acl_find=Kan bedieners gevind word?
 acl_servers=Kan bedieners gebruik
@@ -102,6 +109,7 @@ acl_forcefast=Dwing vinnige RPC-modus na verstek?
 acl_forcetype=Dwing OS-tipe na verstek?
 acl_forcelink=Dwing aanmeldtipe na verstek?
 acl_links=Kan u via bedieners skakel?
+
 login_title=Teken in op bediener
 login_desc=U moet 'n gebruikersnaam en wagwoord verskaf om aan te meld by die Webmin-bediener $1.
 login_header=Webmin-verifikasie
@@ -109,13 +117,16 @@ login_user=Gebruikersnaam
 login_pass=wagwoord
 login_login=Teken aan
 login_esame=Die opsie om dieselfde aanmelding as hierdie bediener te gebruik, kan slegs gebruik word as dit nie in die sessieverifikasiemodus is nie, en as die wagwoord aan Webmin-programme beskikbaar gestel word.
+
 this_server=hierdie bediener
+
 delete_err=Kon nie bedieners uitvee nie
 delete_enone=Geen gekies nie
 delete_ecannot=U mag nie bedieners uitvee nie
 delete_title=Verwyder bedieners
 delete_rusure=Is u seker dat u die $1 geselekteerde bedieners wil verwyder?
 delete_confirm=Vee nou uit
+
 auto_title=Vind bedieners outomaties
 auto_header=Outomatiese opsies vir bedienerregistrasie
 auto_sched=Kyk vir nuwe bedieners?
@@ -141,8 +152,10 @@ auto_smtp=Stuur via SMTP-bediener
 auto_self=Hierdie stelsel
 auto_esmtp=Ontbrekende of ongeldige SMTP-bediener
 auto_findself=Registreer hierdie stelsel ook?
+
 config_deftype=Verstekstelsel tipe
 config_typeauto=outomatiese
+
 email_regsubject=Stelsel $1 geregistreer
 email_reg=Die stelsel $1 is outomaties geregistreer.
 email_unregsubject=Stelsel $1 is nie geregistreer nie

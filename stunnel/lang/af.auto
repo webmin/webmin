@@ -21,6 +21,7 @@ index_eversion=Die weergawe van STunnel wat op u stelsel geïnstalleer is, is $1
 index_conf=Van die konfigurasielêer $1 
 index_noconf=Geen konfigurasielêer nie!
 index_delete=Vee geselekteerde tonnels uit
+
 edit_title=Wysig SSL-tonnel
 create_title=Skep SSL-tonnel
 edit_header1=Tunnelbronopsies
@@ -47,6 +48,7 @@ edit_tcpw=TCP-verpakkingsnaam
 edit_auto=outomatiese
 edit_iface=Uitgaande bronadres
 edit_type=Hardloop vanaf
+
 save_err=Kon nie SSL-tonnel stoor nie
 save_enclash=Die diensnaam $2 word reeds op poort $1 gebruik.
 save_einetd=Daar is reeds 'n inetd-diens genaamd $1.
@@ -61,6 +63,7 @@ save_etcpw=TCP-wrappers-naam ontbreek of ongeldig
 save_eiface=Ontbrekende of ongeldige bronadres ontbreek
 save_exinetd=Daar is reeds 'n xinet-diens met die naam $1 
 save_export=Die poort $1 word reeds deur xinetdiens $2 gebruik
+
 log_apply=Toegepaste wysigings
 log_create=SSL-tonnel $1 geskep
 log_delete=SSL-tonnel $1 is uitgevee

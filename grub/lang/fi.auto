@@ -8,6 +8,7 @@ index_none=Käynnistysasetuksia ei ole määritetty. Varmista, että olet lisän
 index_efile=GRUB-valikkotiedostoa $1 ei löydy järjestelmästäsi. Ehkä GRUBia ei ole asennettu, tai <a href='$2'>moduulin kokoonpano</a> on väärä.
 index_epath=GRUB-suoritettavaa $1 ei löydy järjestelmästäsi. Ehkä GRUBia ei ole asennettu, tai <a href='$2'>moduulin kokoonpano</a> on väärä.
 index_return=vaihtoehtojen luettelo
+
 title_add=Lisää käynnistysvaihtoehto
 title_edit=Muokkaa käynnistysvaihtoehtoa
 title_header=Käynnistysvalikon vaihtoehdot
@@ -36,6 +37,7 @@ title_echain=Puuttuva tai virheellinen ketjutuontatiedosto
 title_edev=Juuriosiolaitetta $1 ei tueta
 title_einitrd=Alkuperäinen ramdisk-tiedostonimi puuttuu
 title_lock=Salasana lukittu?
+
 global_title=Globaalit vaihtoehdot
 global_header=Globaalit käynnistysvalikon vaihtoehdot
 global_default=Oletuskäynnistysvaihtoehto
@@ -56,12 +58,14 @@ global_edev=Asennuslevyä/osiota ei tueta $1
 global_eother=Puuttuva tai virheellinen levy/osio
 global_epassword=Puuttuva tai virheellinen käynnistyssalasana
 global_epasswordfile=Puuttuu vaihtoehtoinen valikkotiedostonimi
+
 install_title=Asenna GRUB
 install_err=GRUB: n asennus epäonnistui
 install_efind=Valikkotiedostoa ei löytynyt
 install_desc=GRUB: n asentaminen tiedostoon $1 komennoilla $2 ja $3.
 install_ok=.. asennus valmis.
 install_failed=.. asennus epäonnistui!
+
 log_create_title=Luotu käynnistysvaihtoehto $1 
 log_delete_title=Poistettu käynnistysvaihtoehto $1 
 log_modify_title=Muokattu käynnistysvaihtoehto $1 

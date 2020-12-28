@@ -1,6 +1,7 @@
 check_econfig=Fișierul de configurare țintă iSCSI $1 nu a fost găsit în sistemul dvs.
 check_eietadm=Comanda de administrare a țintei iSCSI $1 nu a fost găsită în sistemul dvs.
 check_einit=Acțiunea de pornire $1 nu există
+
 index_title=iSCSI Target
 index_clink=Poate că nu este instalat sau configurația modulului <a href='$1'></a> este incorectă.
 index_stop=Opriți iSCSI Target
@@ -22,8 +23,10 @@ index_noluns=Nici unul
 index_nousers=Orice
 index_nullio=Discul RAM din sectoarele $1 
 index_size=Marimea totala
+
 dtargets_err=Nu a reușit să ștergeți țintele
 dtargets_enone=Nimic selectat!
+
 target_title1=Creați țintă iSCSI
 target_title2=Editează iSCSI Target
 target_header=Opțiuni de dispozitiv partajat iSCSI
@@ -68,11 +71,13 @@ target_noalias=Nici unul
 target_hdigest=Sumar de control antet
 target_ddigest=Date de control
 target_nodigest=Nici unul
+
 auth_title=Setări de autentificare
 auth_header=Opțiuni implicite de autentificare pentru toate țintele
 auth_iuser=Autentificare de către clienți
 auth_ouser=Autentificare pentru clienți
 auth_err=Nu a reușit să salvați setările de autentificare
+
 conn_title=Setări de conectare
 conn_header=Opțiuni de conectare implicite pentru toate țintele
 conn_sessions=Sesiuni concomitente maxime
@@ -91,6 +96,7 @@ conn_emaxrecv=Lipsă sau non-numerică lungimea maximă a segmentului de primire
 conn_emaxxmit=Lungimea maximă a segmentului de transmisie lipsă sau nenumerică
 conn_emaxburst=Lipsește sau nu numerică dimensiunea maximă de rupere a clientului
 conn_efirstburst=Dimensiunea maximă nesolicitată a clientului lipsă sau nenumerică
+
 timeout_title=Setări de expirare
 timeout_header=Opțiuni de întrerupere a clientului
 timeout_nopi=Interval între pings atunci când este inactiv
@@ -98,6 +104,7 @@ timeout_nopinone=Niciodată nu faceți ping
 timeout_secs=secunde
 timeout_nopt=E timpul să aștepți răspunsul ping
 timeout_noptnone=La fel ca timpul de ping
+
 addr_title=Adresa și portul serverului
 addr_header=Opțiuni de rețea a serverului iSCSI
 addr_addr=Ascultați pe adresa IP
@@ -110,18 +117,21 @@ addr_err=Nu a reușit salvarea adresei serverului
 addr_eaddr=Adresa pentru a asculta trebuie să fie o adresă IP
 addr_eport=Portul pentru a asculta trebuie să fie un număr
 addr_edebug=Nivelul de depanare trebuie să fie un număr
+
 initiators_title=Adresele clientului permise
 initiators_none=Nu s-a definit încă o adresă de client permisă. Niciun client nu se va putea conecta.
 initiators_ips=Clienți autorizați
 initiators_title1=Adăugați adrese client permise
 initiators_title2=Editați Adresele Clientului Permise
 initiators_header=Permis clienților iSCSI pentru țintă
+
 targets_title=Adrese server permise
 targets_none=Nu s-a definit încă o adresă de server permisă. Niciun client nu se va putea conecta.
 targets_ips=Interfețe de server permise
 targets_title1=Adăugați adrese server permise
 targets_title2=Editați adresele serverului permis
 targets_header=Interfața de server iSCSI este permisă pentru țintă
+
 allow_target=Numele țintei
 allow_move=Mișcare
 allow_delete=Sterge selectia
@@ -133,17 +143,21 @@ allow_return=ținte și adrese permise
 allow_err=Nu a reușit salvarea adreselor permise
 allow_eaddr=Adresa $1 nu este validă. Trebuie să fie o adresă IPv4, o rețea/mască IPv4 sau o adresă IPv6 între paranteze pătrate.
 allow_eaddrs=Fără adrese care să permită introducerea
+
 dallow_err=Nu a reușit ștergerea adreselor permise
 dallow_enone=Nimic selectat
+
 manual_title=Editează fișierul de configurare
 manual_desc=Utilizați caseta de text de mai jos pentru a edita fișierul de configurare a serverului iSCSI $1. Aveți grijă, deoarece nu va fi efectuată nicio validare pe intrarea dvs.!
 manual_err=Nu a reușit să salvați fișierul de configurare
 manual_edata=Nu a fost introdus conținut!
+
 start_err=Eroare la pornirea serverului iSCSI
 stop_err=Nu a reușit să oprească serverul iSCSI
 restart_err=Eroare la repornirea serverului iSCSI
 atboot_err=Activarea eșuată la pornire
 atboot_einit=Scriptul inițial $1 nu există
+
 log_create_target=Țintă creată $1 
 log_delete_target=Țintă eliminată $1 
 log_modify_target=Țintă modificată $1 

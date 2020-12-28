@@ -16,6 +16,7 @@ index_chain=连锁 $1
 index_action=行动
 index_desc=条件
 index_comm=评论
+index_no_comment=
 index_move=移动
 index_none=没有为此链定义任何规则。
 index_policy=将默认操作设置为：
@@ -88,6 +89,7 @@ index_ipset_size=尺寸
 index_ipvxmode=更改IP协议版本：
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=协议为 $1
 desc_p!=协议不是 $1
 desc_s=来源是 $1
@@ -114,6 +116,8 @@ desc_tcp-option=数据包使用TCP选项 $1
 desc_tcp-option!=数据包不使用TCP选项 $1
 desc_icmp-type=ICMP类型为 $1
 desc_icmp-type!=ICMP类型不是 $1
+desc_icmpv6-type=ICMP类型为 $1
+desc_icmpv6-type!=ICMP类型不是 $1
 desc_mac-source=以太网地址为 $1
 desc_mac-source!=以太网地址不是 $1
 desc_limit=率小于 $1
@@ -146,10 +150,15 @@ desc_always=总是
 desc_args--match-set=IP设置 $1中包含 $2
 desc_src=资源
 desc_dest=目的地
+
 redhat_einstalled=找不到<tt>iptables（6）</tt>引导操作，表明您的系统上未安装IPtables软件包
 redhat_eoutput=从命令 $1获取IPtables状态时发生错误。这可能表明您的系统已配置为使用IP链而不是IPtable。
+
 gentoo_escript=在您的系统上找不到Gentoo IPtables启动脚本 $1。
+
 eiptables=未知的IPtables保存文件行： $1
+eip6tables=未知的ip6tables保存文件行： $1
+
 edit_title1=添加规则
 edit_title2=编辑规则
 edit_title3=克隆规则
@@ -218,6 +227,7 @@ edit_physdevout=传出物理接口
 edit_physdevisin=数据包在网桥接口上传入
 edit_physdevisout=桥接接口上的数据包传出
 edit_physdevisbridged=数据包正在桥接
+
 save_err=保存规则失败
 save_echain=链缺失或无效
 save_esource=源地址或网络缺失或无效
@@ -262,23 +272,28 @@ save_estates=未选择连接状态
 save_ecanjump=您无权使用此操作
 save_ephysdevin=缺少或无效的传入物理接口
 save_ephysdevout=缺少或无效的传出物理接口
+
 delete_title=删除链
 delete_rusure=您确定要删除链 $1吗？其中的 $2条规则将被删除。
 delete_ok=立即删除
 delete_ecannot=您无权删除链条
+
 clear_title=清除链
 clear_rusure=您确定要从链 $1删除所有 $2规则吗？
 clear_ecannot=您无权清除链条
+
 new_err=创建链失败
 new_ename=链名称缺失或无效
 new_etaken=此名称的链已存在
 new_ecannot=您无权创建链
+
 apply_err=应用配置失败
 apply_ecannot=不允许您应用配置
 apply_remote=来自 $1的错误： $2
 unapply_err=还原配置失败
 unapply_ecannot=您不可以还原配置
 bootup_ecannot=不允许在启动时启用或禁用防火墙
+
 log_create_rule=已将规则添加到表 $2中的链 $1
 log_modify_rule=表 $2中链 $1中的修改规则
 log_delete_rule=表 $2中链 $1中的已删除规则
@@ -301,8 +316,10 @@ log_add_group=从组 $1添加了群集服务器
 log_delete_host=删除了群集服务器 $1
 log_delete_group=删除了 $1个群集服务器
 log_openports=打开的防火墙端口 $1
+
 setup_eiface=没有输入外部网络接口
 setup_ecannot=您无权设置防火墙
+
 acl_tables=允许的IP表
 acl_apply=可以申请配置吗？
 acl_unapply=可以取消应用配置吗？
@@ -314,9 +331,11 @@ acl_jall=所有
 acl_newchain=可以建立新的连锁店吗？
 acl_delchain=可以删除或清除链条吗？
 acl_policy=可以更改默认策略吗？
+
 etable=您无权编辑此IPtable
 ejump=您无权编辑此规则
 ecluster=您无权管理防火墙集群
+
 cluster_title=群集防火墙服务器
 cluster_none=尚未将任何服务器添加到防火墙群集。
 cluster_host=主机名
@@ -327,6 +346,7 @@ cluster_gadd=在组中添加服务器
 cluster_need=您必须先在Webmin服务器索引模块中添加具有登录名和密码的服务器，然后才能在此处对其进行管理。
 cluster_return=集群服务器
 cluster_delete=删除选定
+
 add_title=添加服务器
 add_msg=正在添加 $1 ..
 add_gmsg=在组 $1中添加服务器 ..
@@ -336,13 +356,16 @@ add_echeck=服务器 $1没有Linux防火墙模块
 add_emissing=服务器 $1缺少防火墙命令 $2
 add_ok=添加了 $1，其中有 $2有效的防火墙规则。
 add_enone=没有要添加的服务器！
+
 policy_ecannot=您无权更改此链的默认策略
+
 move_title=移动规则
 move_count=选择规则
 move_chain=当前变化
 move_dest=目的链
 move_ok=立即行动
 move_header=规则移动选项
+
 rename_title=重命名链
 rename_count=连锁规则
 rename_chain=现名
@@ -352,6 +375,3 @@ rename_header=链重命名选项
 rename_adjust=修改跳到该链的其他规则？
 rename_none=没有
 rename_ecannot=您不允许重命名链
-desc_icmpv6-type=ICMP类型为 $1
-desc_icmpv6-type!=ICMP类型不是 $1
-eip6tables=未知的ip6tables保存文件行： $1

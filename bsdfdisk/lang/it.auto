@@ -7,6 +7,7 @@ index_dsize=Dimensione totale
 index_dmodel=Marca e modello
 index_dparts=fette
 index_return=elenco di dischi
+
 disk_title=Modifica disco
 disk_egone=Il disco non esiste più!
 disk_no=Fetta
@@ -31,9 +32,11 @@ disk_return=dettagli del disco ed elenco di sezioni
 disk_add=Crea una nuova sezione.
 disk_smart=Mostra stato SMART
 disk_smartdesc=Mostra lo stato corrente di questa unità come rilevato da SMART e verificalo per errori del disco.
+
 select_device=$1 dispositivo $2 
 select_slice=$1 dispositivo $2 slice $3 
 select_part=$1 dispositivo $2 slice $3 partizione $4 
+
 slice_title=Modifica Slice
 slice_egone=La sezione selezionata non esiste!
 slice_ssize=Dimensione della fetta
@@ -58,6 +61,7 @@ slice_return=dettagli delle sezioni e elenco delle partizioni
 slice_err=Modifica della sezione non riuscita
 slice_header=Dettagli della fetta
 slice_suse=Utilizzato direttamente da
+
 dslice_title=Elimina fetta
 dslice_rusure=Sei sicuro di voler eliminare la porzione $1 ? Anche le partizioni e i filesystem al suo interno verranno eliminati.
 dslice_warn=Attenzione: questa sezione è attualmente utilizzata da : $1 
@@ -65,6 +69,7 @@ dslice_confirm=Cancella ora
 dslice_deleting=Eliminazione della sezione $1 ..
 dslice_failed=.. eliminazione non riuscita : $1 
 dslice_done=.. fatto
+
 nslice_title=Crea Slice
 nslice_header=Nuovi dettagli della sezione
 nslice_number=Numero fetta
@@ -86,6 +91,7 @@ nslice_done=.. fetta aggiunta
 nslice_parting=Crea partizioni predefinite nella sezione $1 su $2 ..
 nslice_pfailed=.. creazione della partizione non riuscita : $1 
 nslice_pdone=.. partizione aggiunta
+
 npart_title=Crea partizione
 npart_header=Nuovi dettagli sulla partizione
 npart_letter=Lettera di partizione
@@ -98,6 +104,7 @@ npart_emax=Il blocco finale non può essere più grande della dimensione della s
 npart_creating=Creazione partizione $1 su $2 ..
 npart_failed=.. creazione della partizione non riuscita : $1 
 npart_done=.. partizione aggiunta
+
 part_title=Modifica partizione
 part_egone=La partizione non esiste più!
 part_header=Dettagli della partizione
@@ -124,6 +131,7 @@ part_newmount2=Mount Partition
 part_mountmsg=Montare questo dispositivo su una nuova directory sul sistema, in modo che possa essere utilizzato per archiviare i file. Un file system deve essere già stato creato sul dispositivo.
 part_mountmsg2=Montare questo dispositivo come memoria virtuale sul sistema, per aumentare la quantità di memoria disponibile.
 part_cannotedit=Questa partizione non può essere modificata in quanto è attualmente in uso.
+
 dpart_title=Elimina partizione
 dpart_rusure=Sei sicuro di voler eliminare la partizione $1 ? Anche i filesystem al suo interno verranno eliminati.
 dpart_warn=Avviso: questa partizione è attualmente utilizzata da $1 
@@ -131,6 +139,7 @@ dpart_confirm=Cancella ora
 dpart_deleting=Eliminazione della partizione $1 ..
 dpart_failed=.. eliminazione non riuscita : $1 
 dpart_done=.. fatto
+
 newfs_title=Crea filesystem
 newfs_header=Nuovi dettagli del filesystem
 newfs_free=Spazio da riservare alla radice
@@ -145,11 +154,13 @@ newfs_elabel=Etichetta mancante o non valida
 newfs_creating=Creazione del filesystem su $1 ..
 newfs_failed=.. creazione fallita!
 newfs_done=.. creato con successo
+
 fsck_title=Controlla il filesystem
 fsck_err=Impossibile controllare il file system
 fsck_checking=Verifica del filesystem su $1 ..
 fsck_failed=.. controllo fallito!
 fsck_done=.. controllo completato senza errori trovati
+
 log_create_slice=Fetta creata $1 
 log_delete_slice=Sezione eliminata $1 
 log_modify_slice=Slice modificata $1 

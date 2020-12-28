@@ -19,6 +19,7 @@ index_defport=Webmin poort
 index_delete=Verwijder Geselecteerde Servers
 index_auto=Automatisch Servers Vinden
 index_automsg=Klik op deze knop om in te stellen dat er automatisch en regelmatig word gezocht naar nieuwe Webmin servers op uw netwerk.
+
 edit_title=Bewerk Server
 create_title=Registreer Server
 edit_details=Server details
@@ -53,6 +54,7 @@ edit_baduser=Login geweigerd
 edit_invalid=Gebruiker kan geen RPC uitvoeren
 edit_version=Werkende Webmin $1
 edit_same=Alleen beschikbaar en niet in sessie authenticatie mode, en wanneer het wachtwoord beschikbaar is gemaakt voor Webmin programma's.
+
 save_err=Mislukt om server op te slaan
 save_ehost=Ontbrekende of ongeldige hostnaam
 save_ehost2=Host bestaat niet
@@ -63,6 +65,7 @@ save_epass=Ontbrekend wachtwoord
 save_egroup=Ontbrekende groep naam
 save_elogin=Ongeldige login of wachtwoord voor host
 save_egroup2=Ongeldige nieuwe groep naam
+
 find_title=Vind Servers
 find_new=Nieuwe server gevonden op $1
 find_but=Nieuwe server gevonden op $1, maar authenticatie mislukte : $2
@@ -76,16 +79,20 @@ find_ecannot=U bent niet bevoegd om servers te zoeken
 find_scanning=Scannen naar servers in netwerk $1 ..
 find_broading=Broadcasting voor servers op de adressen $1 ..
 find_eport=Ontbrekende of ongeldig poort nummer
+
 log_modify=Gemodificeerde server $1
 log_create=Geregistreerde server $1
 log_delete=Verwijderde server $1
 log_find=Gevonden server $1
 log_deletes=Verwijderd $1 servers
+
 link_elogin=Mislukt om in te loggen op $1 als $2
 link_ecannot=U bent niet bevoegd om deze server te gebruiken
 link_essl=U heeft de perl Net::SSLeay bibliotheek niet geinstalleerd
 link_eautologin=Ongeldige login of wachtwoord voor $1. <a href='$2'>Klik hier</a> om het nogmaals te proberen.
+
 lib_other=Andere
+
 acl_edit=Mag servers bewerken?
 acl_find=Mag servers zoeken?
 acl_servers=Mag servers gebruiken
@@ -97,6 +104,7 @@ acl_forcefast=Forceer snelle RPC mode naar standaard?
 acl_forcetype=Forceer OS type naar standaard?
 acl_forcelink=Forceer login type naar standaard?
 acl_links=Mag doorverbinden naar servers?
+
 login_title=Login op Server
 login_desc=U moet een gebruikersnaam en wachtwoord invullen om in te loggen bij Webmin server $1.
 login_header=Webmin authenticatie
@@ -104,10 +112,13 @@ login_user=Gebruikersnaam
 login_pass=Wachtwoord
 login_login=Login
 login_esame=De optie om dezelfde login te gebruiken als op deze server kan alleen wanneer u niet in een authenticatie mode sessie zit, en wanneer het wachtwoord beschikbaar is gemaakt voor Webmin programma's.
+
 this_server=deze server
+
 delete_err=Mislukt om servers te verwijderen
 delete_enone=Niets geselecteerd
 delete_ecannot=U bent niet bevoegd om servers te verwijderen
+
 auto_title=Automatisch Gevonden Servers
 auto_header=Automatische server registratie opties
 auto_sched=Controleer op nieuwe servers?
@@ -133,8 +144,10 @@ auto_smtp=Verstuur via SMTP server
 auto_self=Dit systeem
 auto_esmtp=Ontbrekende of ongeldige SMTP server
 auto_findself=Registreer dit systeem ook?
+
 config_deftype=Standaard systeem type
 config_typeauto=Automatisch
+
 email_regsubject=Systeem $1 is geregistreerd
 email_reg=Het systeem $1 is automatisch geregistreerd.
 email_unregsubject=Systeem $1 is niet meer geregistreerd

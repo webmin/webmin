@@ -155,8 +155,10 @@ menu_bookmarks=Marcaje
 notallowed=Nu aveți voie să accesați $1. Directoarele permise sunt : $2 
 error_upload_emax=Fișierul încărcat este mai mare decât limita $1 
 extract_etype=Tipul fișierului de arhivă neacceptat
+
 info_total1=Total: $1 fișier și $2 director
 info_total2=Total: $1 fișiere și $2 director
 info_total3=Total: $1 fișier și $2 directoare
 info_total4=Total: $1 fișiere și $2 directoare
+
 ownership=Proprietar

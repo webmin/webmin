@@ -45,6 +45,7 @@ index_ondate=Data
 index_charset=Sett awtomatiku ta 'karattri ta' messaġġ
 index_subject=Suġġett għall-messaġġ awtomatikament
 index_nowebmin=Dan il-modulu huwa biss għall-użu fl-Usermin. Jekk tidher fil-Webmin, it-tema li qed tuża mhix kompluta.
+
 edit_title1=Oħloq Iffiltra
 edit_title2=Editja Iffiltra
 edit_header1=Kundizzjoni għall-filtru
@@ -71,6 +72,7 @@ edit_amode7=Issejvja f'folder ġdid imsemmi
 edit_nobounce=Titrażżan it-trasmissjoni ta 'messaġġi ta' bounce
 edit_apply=Uri l-Email Corrispondenti fil-Folder:
 edit_move=Applika għall-Email Fil-Folder:
+
 save_err=Ma rnexxielux isalva l-filtru
 save_egone=Iffiltra ma għadhiex teżisti!
 save_econdheader=Intestatura tal-email nieqsa jew invalida
@@ -89,8 +91,10 @@ save_enewfolder3=Fowlder bl-istess isem diġà jeżisti
 save_estart=Data tal-bidu awtomatika valida
 save_eend=Data ta 'tmiem awtomatiku valida
 save_echarset=Sett ta 'karattri ta' awtoreplika nieqsa jew invalidu
+
 delete_err=Naqset milli tħassar il-filtri
 delete_enone=L-ebda magħżul
+
 aliases_type1=Indirizz $1 
 aliases_type2=Indirizzi fil-fajl $1 
 aliases_type3=Fajl $1 
@@ -101,6 +105,7 @@ aliases_your=Il-kaxxa tal-posta tieghek
 aliases_delete=Ħassar il-posta
 aliases_other=Kaxxa tal-posta tal-utent $1 
 aliases_auto=Autoresponder b'messaġġ $1 
+
 auto_title=Email risposta awtomatika
 auto_header=Għażliet awtomatiċi ta 'tweġib bl-email
 auto_enabled=Reazzjoni awtomatika ppermettiet?
@@ -111,12 +116,14 @@ auto_charsetdef=Minn lingwa kurrenti
 auto_charsetother=Sett ta 'karattri oħra
 auto_period=Intervall minimu bejn ir-risposti
 auto_err=Ma rnexxielux isalva tweġiba awtomatika
+
 forward_title=Ibgħat Email
 forward_header=Għażliet ta 'trażmissjoni ta' email
 forward_enabled=It-trażmissjoni tal-email ippermetta?
 forward_to=Ibgħat l-indirizzi
 forward_cont=Iwassal ukoll b'mod normali?
 forward_err=Ma rnexxielux isalva t-trasferiment tal-email
+
 move_err=Naqas milli japplika filtru
 move_esrc=Il-fowlder tas-sors $1 ma jeżistix!
 move_edest=Il-fowlder tad-destinazzjoni $1 ma jeżistix!

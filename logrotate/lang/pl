@@ -19,11 +19,13 @@ index_force=Wymuś rotację logów
 index_forcedesc=Wymusza natychmiastową rotację wszystkich logów nawet, jeżeli jeszcze nie jest pora.
 index_logrotate=Rotacja logów
 index_delete=Usuń wybrane rotacje logów
+
 period_daily=Dziennie
 period_weekly=Tygodniowo
 period_monthly=Miesięcznie
 period_never=Nigdy
 period_bytes=bajtów
+
 edit_title1=Edycja rotacji loga
 edit_title2=Tworzenie rotacji loga
 edit_header=Szczegóły rotacji pliku loga
@@ -62,8 +64,10 @@ edit_pre=Polecenie do uruchomienia po rotacją
 edit_default=Domyślnie ($1)
 edit_sharedscripts=Uruchomić skrypt tylko raz dla wszystkich plików?
 edit_now=Wykonaj rotację
+
 global_title=Globalne opcje
 global_header=Domyślne opcje dla wszystkich plików logów
+
 save_err=Błąd zapisywania loga
 save_efile=Brakująca lub nieprawidłowa nazwa loga
 save_esize=Brakujący lub nieprawidłowy maksymalny rozmiar
@@ -81,6 +85,7 @@ save_eerrors=Brakujący adres e-mail dla wiadomości o błędzie
 save_epre=Skrypt "Przed rotacją" nie może zawierać linii <tt>endscript</tt> lub <tt>endrotate</tt>
 save_epost=Skrypt "Po rotacji" nie może zawierać linii <tt>endscript</tt> lub <tt>endrotate</tt>
 save_enofiles=Nie wpisano plików do rotacji
+
 log_modify_sched=Zmieniono zadanie rotacji loga
 log_create_sched=Utworzono nowe zadanie rotacji loga Cron
 log_delete_sched=Usunięto zadanie rotacji loga
@@ -89,6 +94,7 @@ log_create=Dodano plik loga do rotacji $1
 log_modify=Zmodyfikowano rotację dla pliku loga $1
 log_delete=Usunięto plik loga z rotacji $1
 log_delete_logs=Usunięto rotację z $1 plików loga
+
 sched_title=Harmonogram rotacji logów
 sched_desc=Do rotacji logów skonfigurowanych przy użyciu tego modułu należy używać polecenia $1. Musi być ono wykonywane w harmonogramie (najlepiej codziennie) przez Cron.
 sched_runparts=Aktualnie polecenie rotacji logów zostało uruchomione przez skrypt $1 $2 i nie może zostać dostosowane.
@@ -98,10 +104,12 @@ sched_enabled=Włączony, w poniższym czasie
 sched_save=Aktualizuj zadanie Cron
 sched_err=Błąd zapisywania harmonogramu rotacji
 sched_when=Czas uruchomienia
+
 force_title=Wymuszenie rotacji logów
 force_doing=Wymuszanie natychmiastowej rotacji wszystkich plików logów ..
 force_doingone=Wymuszanie natychmiastowej rotacji jednego pliku loga ..
 force_done=.. gotowe.
 force_failed=.. niepowodzenie! Sprawdź powyższe dane wyjściowe, aby znaleźć powód.
+
 delete_err=Błąd kasowania logów
 delete_enone=Nic nie wybrano

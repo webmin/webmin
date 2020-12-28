@@ -21,6 +21,7 @@ index_thost=Værtsnavn
 index_tdesc=Beskrivelse
 index_tcount=pakker
 index_ttype=OS-type
+
 install_err=Kunne ikke installere pakken
 install_elocal=Ingen lokal fil angivet
 install_elocal2='$1' findes ikke
@@ -37,6 +38,7 @@ install_ok=Installere
 install_erus=Denne server bruger et andet opdateringssystem end masterserveren ($1 versus $2)
 install_eupdate=Der opstod en fejl under installation af de specificerede opdateringer
 install_ealready=Version $1 er allerede installeret
+
 add_title=Tilføj servere
 add_msg=Tilføjer $1 ..
 add_gmsg=Tilføjelse af servere i gruppe $1 ..
@@ -45,6 +47,7 @@ add_gerr=Kunne ikke tilføje gruppe
 add_echeck=Server $1 har ikke softwarepakkermodulet
 add_esystem=Server $1 bruger ikke det samme pakkesystem som denne maskine
 add_ok=Tilføjet $1 med $2 pakker.
+
 search_title=Pakkesøgning
 search_nomatch=Ingen pakker matchede $1 
 search_none=Ingen
@@ -56,6 +59,7 @@ search_return=Søgeresultater
 search_delete=Afinstaller valgte pakker Fra:
 search_selall=Vælg alle
 search_invert=Invertere valg
+
 host_title=Administreret server
 host_header=Softwareadministreret serverdetaljer
 host_name=Værtsnavn
@@ -70,6 +74,7 @@ host_count=Pakker installeret
 host_os=OS fra Webmin
 host_return=serverdetaljer
 host_system=Pakkesystem
+
 edit_title=Rediger pakke
 edit_details=Pakkeoplysninger fra $1 
 edit_desc=Beskrivelse
@@ -88,6 +93,7 @@ edit_all=&lt;alle værter&gt;
 edit_donthave=&lt;værter der ikke har det&gt;
 edit_have=&lt;værter der har det&gt;
 edit_group=Medlemmer af $1 
+
 list_title=Pakkefiler
 list_files=Filer til pakke $1 på $2 
 list_path=Sti
@@ -97,6 +103,7 @@ list_type=Type
 list_size=Størrelse
 list_status=status
 list_ok=Okay
+
 refresh_title=Opdater pakkelister
 refresh_header=Genanmodning om pakkelister fra alle servere ..
 refresh_header4=Genanmodning om pakkelister fra medlemmer af $2.
@@ -108,6 +115,7 @@ refresh_4=Opdateret $1 (ingen ændringer)
 refresh_done=.. Færdig
 refresh_del=$1 blev fjernet fra serverlisten
 refresh_failed=Opdatering af $1 : $2 kunne ikke opdateres
+
 delete_err=Kunne ikke slette pakke $1 
 delete_epack=Pakken $1 findes ikke
 delete_title=Slet pakke
@@ -120,6 +128,7 @@ delete_error=Kunne ikke slette fra $1 : $2
 delete_success=Slettet fra $1.
 delete_done=.. Færdig
 delete_header=Sletning af pakke $1 ..
+
 do_title=Installer pakken
 do_header=Installation af $1 på alle værter ..
 do_header3=Installation af $1 på værter, der endnu ikke har det ..
@@ -140,6 +149,7 @@ do_arch=Arkitektur
 do_inst=Installeret
 do_none=Ingen
 do_edeleted=Installationsfil er blevet slettet - vende tilbage til modulindekset, og prøv igen.
+
 compare_title=Sammenlign pakker
 compare_desc=Denne formular kan bruges til at sammenligne pakker, der er installeret på to eller flere servere, og finde eventuelle uoverensstemmelser mellem tilgængelige versioner eller pakker.
 compare_hosts=Servere til sammenligning
@@ -154,6 +164,7 @@ compare_showall=Pakker, der skal vises
 compare_showall1=Alle
 compare_showall0=Kun uoverensstemmelser
 compare_got=Okay
+
 deletes_err=Kunne ikke slette pakker
 deletes_enone=Ingen pakker valgt
 deletes_title=Slet pakker

@@ -32,6 +32,7 @@ index_man=Chỉnh sửa cấu hình thủ công
 index_mandesc=Chỉnh sửa trực tiếp tệp cấu hình Procmail chính, để tạo quy tắc, biến và khối của riêng bạn.
 index_ecmd=Chương trình Procmail $1 không tìm thấy trên hệ thống của bạn. Cấu hình mô-đun chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> không chính xác.
 index_delete=Xóa các hành động đã chọn
+
 edit_title2=Chỉnh sửa hành động
 edit_title1=Tạo hành động
 edit_header1=Chi tiết hành động giao hàng
@@ -67,6 +68,7 @@ edit_none=không ai
 edit_lock=Tập tin cụ thể
 edit_ctype=Loại điều kiện
 edit_cvalue=Biểu thức hoặc lệnh thông thường
+
 save_err=Không thể lưu hành động
 save_eaction_0=Thiếu tập tin để nối vào
 save_eaction_1=Thiếu thư mục MH để ghi vào
@@ -79,6 +81,7 @@ save_elockfile=Thiếu tên tập tin khóa
 save_esize=Kích thước thư bị thiếu hoặc không hợp lệ cho điều kiện $1 
 save_ere=Thiếu biểu thức chính quy cho điều kiện $1 
 save_eshell=Thiếu lệnh cho điều kiện $1 
+
 env_title1=Tạo biến
 env_title2=Chỉnh sửa biến
 env_header=Biến môi trường Procmail
@@ -86,15 +89,19 @@ env_name=Tên biến
 env_value=Giá trị
 env_err=Không thể lưu biến
 env_ename=Tên biến thiếu hoặc không hợp lệ
+
 inc_title1=Thêm tệp bao gồm
 inc_title2=Chỉnh sửa Bao gồm tệp
 inc_header=Bao gồm tập tin quy tắc procmail
 inc_inc=Bao gồm tập tin
 inc_einc=Không bao gồm tập tin đã nhập
+
 config_eline=Dòng không xác định $1 trong $2 : $3 
+
 manual_title=Chỉnh sửa cấu hình
 manual_desc=Trang này có thể được sử dụng để chỉnh sửa thủ công tệp cấu hình Procmail $1. Hãy cẩn thận, vì không có kiểm tra cú pháp sẽ được thực hiện.
 manual_edata=Không có dữ liệu được cung cấp bởi trình duyệt của bạn!
+
 log_create_rec=Đã tạo công thức cho $1 
 log_delete_rec=Đã xóa công thức thành $1 
 log_modify_rec=Công thức đã sửa đổi thành $1 
@@ -114,7 +121,9 @@ log_delete_inc=Đã xóa bao gồm tệp $1
 log_manual=Cấu hình chỉnh sửa thủ công
 log_up=Đã chuyển một mục lên
 log_down=Đã chuyển một mục xuống
+
 delete_err=Không thể xóa hành động
 delete_enone=Không được chọn
+
 check_epostfix=Procmail không được bật trong cấu hình Postfix của bạn. Tệp cấu hình <tt>$2</tt> phải có tùy chọn <tt>$1</tt> được đặt thành <tt>$3</tt>.
 check_esendmail=Sendmail không được thiết lập để sử dụng Procmail để giao hàng cục bộ. Điều này có thể được định cấu hình trong mô-đun <a href='$1'>Sendmail Mail Server</a> của Webmin.

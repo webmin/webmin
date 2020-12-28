@@ -23,6 +23,7 @@ index_ok=Sök
 index_searchres=Cron jobb matchar $1 ..
 index_reset=Återställ sökningen.
 index_econfigcheck=Cron-jobb kan inte hanteras på ditt system, eftersom modulkonfigurationen inte är giltig : $1 
+
 edit_next=Nästa körtid
 edit_comment=Beskrivning
 edit_range=Datumintervall att utföra
@@ -44,8 +45,10 @@ lcedit_special_weekly=varje vecka (på söndag)
 lcedit_special_monthly=varje månad (den 1: a)
 lcedit_special_yearly=årligen (1 januari)
 lcedit_special_reboot=när systemet startar
+
 save_ecannot2=Du får inte skapa cron-jobb
 save_eidx=Cron-jobbet sparades framgångsrikt, men kan inte köras eftersom det inte hittades!
+
 env_title1=Redigera miljövariabel
 env_title2=Skapa miljövariabel
 env_user=För användare
@@ -58,7 +61,9 @@ env_where2=Flytta miljövariabel
 env_top=Innan alla Cron-jobb för användare
 env_bot=När allt Cron jobb
 env_leave=Nuvarande position
+
 exec_cmdbg=Kör kommando $1 som bakgrundsprocess.
+
 acl_this=Nuvarande webminanvändare
 acl_command=Kan visa och redigera Cron-kommandon?
 acl_uid=Användare med UID inom räckvidd
@@ -69,6 +74,7 @@ acl_move=Kan flytta Cron jobb?
 acl_kill=Kan säga upp Cron-jobb?
 acl_hourly=Begränsa jobb till högst varje timme?
 acl_hourlydef=Som anges i modulkonfig
+
 log_modify=Modifierat Cron-jobb för $1 
 log_modify_l=Modifierat Cron-jobb "$2" för $1 
 log_create=Skapade Cron-jobb för $1 
@@ -86,7 +92,9 @@ log_move=Flyttade Cron-jobb för $1
 log_crons_delete=Raderade $1 Cron-jobb
 log_crons_disable=Disabled $1 Cron jobb
 log_crons_enable=Aktiverat $1 Cron-jobb
+
 ecopy=Ett fel upptäcktes i den nya Cron-konfigurationen: $1 $2 
+
 when_min=varje minut
 when_hour=varje timme vid $1 efter timmen
 when_day=varje dag vid $2:$1 
@@ -95,6 +103,7 @@ when_weekday=varje $3 vid $2:$1
 when_cron=vid cron-tid $1 
 when_interval=varje $1 sekund
 when_boot=vid starttid
+
 ucwhen_min=Varje minut
 ucwhen_hour=Varje timme vid $1 efter timmen
 ucwhen_day=Varje dag vid $2:$1 
@@ -103,8 +112,10 @@ ucwhen_weekday=Varje $3 vid $2:$1
 ucwhen_cron=Vid cron-tid $1 
 ucwhen_interval=Varje $1 sekund
 ucwhen_boot=Vid starttid
+
 move_err=Det gick inte att flytta Cron-jobb
 move_etype=Det här jobbet kan inte flyttas
+
 kill_err=Det gick inte att säga upp Cron-jobbet
 kill_ecannot=Du får inte säga upp detta jobb
 kill_egone=Kör inte längre
@@ -113,13 +124,16 @@ kill_title=Avsluta Cron Job
 kill_rusure=Är du säker på att du vill avsluta processen $1 med PID $2 ?
 kill_rusure2=Är du säker på att du vill avsluta processen $1 med PID $2 och alla dess delprocesser?
 kill_ok=Ja, avsluta det
+
 range_all=Kör på valfritt datum
 range_start=Kör endast från $1 
 range_end=till $1 
 range_estart=Det saknas eller ogiltigt startdatum inom intervallet som ska köras
 range_eend=Saknat eller ogiltigt slutdatum inom intervallet som ska köras
+
 delete_err=Det gick inte att ta bort Cron-jobb
 delete_enone=Ingen vald
+
 manual_title=Redigera Cron-jobb manuellt
 manual_edit=Cron-fil för att redigera:
 manual_ok=Redigera

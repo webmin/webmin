@@ -16,11 +16,14 @@ index_esame=Id-direttorju tal-konfigurazzjoni Usermin $1 imniżżel fuq il-paġn
 index_eroot=Id-direttorju tal-konfigurazzjoni Usermin $1 jeżisti, iżda d-direttorju tal-għerq tal-programm $2 li jirreferi għalih ma għandux! Għandek tniżżel u terġa 'tinstalla Usermin mill-ġdid.
 index_restart=Irristartja Usermin
 index_restartmsg=Ikklikkja din il-buttuna biex terġa 'tibda l-proċess tas-server Usermin. Dan jista 'jkun meħtieġ jekk tkun reċentement immodernizzat Perl.
+
 access_title=Kontroll tal-Aċċess IP
 access_desc=Is-server Usermin jista 'jiġi kkonfigurat biex jiċħad jew jippermetti aċċess biss minn ċerti indirizzi IP bl-użu ta' din il-formola. Ismijiet ospitanti (bħal foo.bar.com) u netwerks IP (bħal 10.254.3.0 jew 10.254.1.0/255.255.255.128 jew 10.254.1.0/25 jew 10.254.1.5-10.254.97.127) jistgħu wkoll jiddaħħlu. Għandek tillimita l-aċċess għas-server tiegħek għal indirizzi fdati, speċjalment jekk tkun aċċessibbli mill-Internet. Inkella, kull min jivvinta l-password tiegħek ikollu kontroll sħiħ tas-sistema tiegħek.
+
 bind_title=Portijiet u Indirizzi
 bind_desc2=Din il-formola tista 'tintuża biex tbiddel in-numru tal-port li Usermin jisma', jew biex tisma 'fuq indirizz IP wieħed biss fis-sistema tiegħek. Tista 'wkoll tikkonfiguraha biex taċċetta konnessjonijiet fuq portijiet multipli, jew biex tisma' diversi indirizzi IP. Nota - il-browser web tiegħek jista 'jġiegħlek terġa' tidħol wara li tbiddel il-port jew l-indirizz li jorbot.
 bind_erestart=Żball li jseħħ billi jibda Usermin bl-indirizz il-ġdid u l-issettjar tal-port : $1 
+
 mods_title=Moduli Usermin
 umods_title=Moduli Usermin
 mods_desc1=Moduli Usermin jistgħu jiġu miżjuda wara l-installazzjoni billi tuża l-formola fuq il-lemin. Moduli huma tipikament mqassma fi fajls <tt>.wbm</tt>, li kull wieħed minnhom jista ’jkun fih modulu wieħed jew aktar. Moduli jistgħu wkoll jiġu installati minn fajls RPM jekk appoġġjati mis-sistema operattiva tiegħek.
@@ -41,15 +44,18 @@ mods_desc3=Moduli eżistenti jistgħu jitħassru billi tuża l-formola hawn taħ
 mods_delete=Ħassar il-Moduli
 mods_deleteok=Ħassar il-Moduli Magħżula
 mods_desc4=Il-moduli installati jistgħu jiġu esportati bħala fajl wbm.gz billi tuża l-formola hawn taħt. File file jista 'mbagħad jiġi installat fuq sistema oħra li tuża l-Usermin.
+
 os_title=Sistema Operattiva u Ambjent
 os_desc3=Din il-paġna turi s-sistema operattiva misjuba minn Usermin fil-ħin tal-installazzjoni, u s-sistema li bħalissa tinsab. Jekk huma differenti, tista 'tagħżel li jkollok l-informazzjoni ta' l-OS ta 'Usermin aġġornata, li tista' tkun meħtieġa jekk tkun reċentement immodernizzat.
 os_desc2=Tista 'wkoll tbiddel it-triq ta' tfittxija użata minn Usermin meta tħaddem programmi, u l-passaġġ tal-librerija maqsuma jgħaddi għal kwalunkwe programm.
 os_usermin=Sistema operattiva skont Usermin
 os_iusermin=Kodiċi intern tal-OS użat minn Usermin
 os_update=Aġġorna Usermin biex tuża OS misjub
+
 lang_title=Lingwa
 lang_title2=Lingwa Usermin
 lang_intro=Din il-paġna jippermettilek tagħżel liema lingwa tuża l-Usermin għall-wiri ta 'titoli, tqassim u messaġġi
+
 session_title=Awtentikazzjoni
 session_desc1=Meta tkun attivata, l-iskedi ta 'żmien tal-password jipproteġu s-server Usermin tiegħek minn attakki ta' qsim ta 'password brutali billi jżidu dewmien li qed jespandi kontinwament bejn kull tentattiv ta' login fallut għall-istess utent.
 session_desc2=Meta l-awtentikazzjoni tas-sessjoni tkun attivata, kull sessjoni tal-utenti logged tkun segwita mill-Usermin, biex b'hekk ikun possibbli li l-utenti idle jiġu awtomatikament maqtugħin. Kun konxju li l-abilitazzjoni jew id-diżattivazzjoni tal-awtentikazzjoni tas-sessjoni jistgħu jġiegħlu lill-utenti kollha jerġgħu jidħlu.
@@ -73,6 +79,7 @@ session_blank=Ħeġġeġ lill-utenti bil-password vojta biex jagħżlu waħda mi
 session_homedir=Oħloq direttorji tad-dar nieqsa wara l-login?
 session_homedir_perms=Permessi għal direttorju ġdid
 session_ehomedir_perms=Neqsin jew invalidi permessi tad-direttorju tad-dar tad-dar
+
 themes_title=Temi ta 'Usermin
 themes_desc=It-temi jikkontrollaw id-dehra tal-interface tal-utent Usermin, inklużi ikoni, kuluri, sfondi u possibbilment it-tqassim tal-paġni. Il-kaxxa tal-għażla hawn taħt tista 'tintuża biex tagħżel waħda mit-temi installati fis-sistema tiegħek li se tkun il-inadempjenza għall-utenti Usermin.
 themes_sel=Tema kurrenti :
@@ -101,7 +108,9 @@ themes_eirpm=L-installazzjoni RPM falliet : $1
 themes_ok=Tema nbidlet b'suċċess.. direzzjoni mill-ġdid lejn il-paġna tal-indiċi Webmin.
 themes_delete=Din il-formola tista 'tintuża biex tħassar waħda mit-temi installati fis-sistema tiegħek li bħalissa mhix qed tintuża.
 themes_delok=Tema li titħassar :
+
 themes_desc4=It-temi installati jistgħu jiġu esportati bħala fajl wbt.gz billi tuża l-formola hawn taħt. Fajl tema jista 'mbagħad jiġi installat fuq sistema oħra li tuża l-Usermin.
+
 configs_ecannot=M'għandekx permess biex tikkonfigura dan il-modulu
 configs_title=Konfigurazzjoni tal-Modulu Usermin
 configs_header=Moduli konfigurabbli
@@ -115,8 +124,10 @@ configs_global=Konfigurazzjoni modulu globali
 configs_globaldesc=Is-settings f’din il-formola japplikaw għall-utenti kollha tal-modulu, u ġeneralment jistabbilixxu għażliet relatati mal-programmi u l-fajls li juża.
 configs_user=Preferenzi ta 'l-utent Default
 configs_userdesc=L-issettjar f'din il-formola jiddefinixxi n-nuqqasijiet għall-preferenzi li jistgħu jiġu editjati mill-utent għal dan il-modulu. Sakemm ma tispeċifikax mod ieħor, dawn jistgħu jinqabżu żejjed minn utenti individwali.
+
 acl_title=Moduli Disponibbli
 acl_desc=Uża din il-paġna biex tagħżel liema moduli ta ’Usermin installati huma viżibbli għall-utenti.
+
 ssl_title=SSL Encryption
 ssl_desc1=L-ospitanti li jkun qed juża Usermin jidher li għandu l-modulu SSLeay Perl installat. Meta tuża dan, Usermin jappoġġja komunikazzjoni kriptata SSL bejn il-browser tiegħek u s-server. Jekk l-utenti qed jaċċessaw is-server Usermin tiegħek fuq l-Internet, allura inti għandek definittivament tikkunsidra li tuża SSL biex tevita li attakkant jaqbad il-passwords tagħhom.
 ssl_desc2=Twissija - dawwar biss l-appoġġ SSL jekk ikollok browser li jappoġġja SSL, u m'hemm l-ebda imblukkar tal-firewall <tt>https</tt> talbiet bejn il-browser tiegħek u l-host Usermin.
@@ -125,18 +136,23 @@ ssl_hole=Minħabba li bħalissa qed tuża ċ-ċavetta SSL Usermin default li kul
 ssl_savekey=Din il-formola jippermettilek ittella 'ċavetta privata SSL f'format PEM eżistenti u ċ-ċertifikat għas-server Usermin tiegħek biex tużah.
 ssl_copycert=Ċertifikat tal-Kopja Minn Webmin
 ssl_copycertdesc=Ikkopja ċ-ċertifikat SSL, ċavetta privata, ċertifikat CA u settings oħra li Webmin qed juża.
+
 ca_email=Indirizz tal-Email
 ca_ou=Dipartiment
 ca_o=Organizzazzjoni
 ca_sp=Stat
 ca_c=Kodiċi tal-pajjiż
+
 newkey_ok=Iġġenera b'suċċess iċ-ċavetta SSL li ġejja għall-Usermin.
+
 stop_err=Naqset milli twaqqaf Usermin
 stop_ekill=Ma rnexxielux joqtol il-proċess : $1 
 stop_efile=Diġà waqaf
 stop_ecannot=M'għandekx permess twaqqaf Usermin
+
 start_err=Ma rnexxielux jibda l-Usermin
 start_ecannot=M'għandekx permess tibda Usermin
+
 users_title=Utenti u Gruppi Mħallsin
 users_desc=Usermin jista 'jiġi kkonfigurat biex jillimita liema utenti u gruppi li ma jitħallewx jingħaqdu ma' din il-formola. Biex tispeċifika l-membri primarji kollha ta 'grupp unix, daħħal <tt>@groupname</tt> fil-lista.
 users_desc2=Biex tqabbel firxa ta 'UIDs, daħħal <tt>start-end</tt>, <tt>start-</tt> jew <tt>-end</tt> fil-lista.
@@ -150,10 +166,12 @@ users_euser="$1" mhux isem tal-utent validu
 users_egroup="$1" mhux isem tal-grupp validu
 users_shells=Iċħad lill-utenti li l-qxur tagħhom mhumiex fil-fajl
 users_eshells=Fajl tal-qxur nieqes jew ineżistenti
+
 defacl_title=Għażliet ta 'Kontroll ta' Aċċess
 defacl_desc=Din il-paġna jippermettilek li tikkonfigura għażla varja tal-kontroll tal-aċċess li tapplika għall-moduli u l-utenti ta 'Usermin. Dawn l-għażliet huma simili għal dawk fl-ACL Globali għal kull utent fil-modulu Utenti tal-Webmin.
 defacl_header=Għażliet ta 'kontroll għall-utenti ta' Usermin
 defacl_err=Ma rnexxielux isalva l-għażliet tal-kontroll tal-aċċess
+
 install_err1=Ma rnexxiex tinstalla modulu minn $1 
 install_efile=Fajl ma jeżistix
 install_err2=Naqset milli tinstalla l-modulu mtella '
@@ -180,6 +198,7 @@ install_erpm=Mhux modulu Usermin jew RPM tat-tema
 install_eirpm=L-installazzjoni RPM falliet : $1 
 install_cat=Taħt il-kategorija $1 
 install_eneither=L-RPM ma fihx modulu jew tema ta 'usermin
+
 delete_err=Naqset milli tħassar il-moduli
 delete_edep=Il-modulu $1 ma jistax jitħassar, billi l-modulu $2 jiddependi minnu
 delete_desc1=$1 (klonu ta ' $2)
@@ -189,6 +208,7 @@ delete_msg=Il-moduli li ġejjin tħassru b'suċċess mill-installazzjoni tal-Use
 delete_rusure=Int żgur li trid tħassar il-modulu (i) $2 ? $1 kB ta 'fajls se jitħassru għal dejjem.
 delete_rusure2=Int żgur li trid tħassar it-tema $2 ? $1 kB ta 'fajls se jitħassru għal dejjem.
 delete_enone=L-ebda moduli magħżula
+
 ui_title=Interfaċċa tal-Utent
 ui_desc=Din il-formola tippermettilek teditja l-għażliet tal-interface tal-utent użati mill-moduli Usermin kollha.
 ui_header=Għażliet ta 'interface għall-utent
@@ -230,6 +250,7 @@ ui_hnm1=Name Host minn URL
 ui_hnm2=Isem tad-domain mill-URL
 ui_hnm3=Isem ieħor ..
 ui_tabs=Tikkategorizza l-moduli?
+
 upgrade_title=Aġġorna Usermin
 upgrade_title2=Installa Usermin
 upgrade_desc=Din il-formola jippermettilek taġġorna l-installazzjoni kollha tal-Usermin għal verżjoni ġdida. Tista 'tinstalla minn fajl lokali, fajl imtella' jew mill-aħħar verżjoni fuq <a href=http://www.usermin.com/>www.usermin.com</a>. L-istess bħal ma 'aġġornament manwali, l-issettjar kollu tal-konfigurazzjoni tiegħek u l-moduli ta' partijiet terzi jinżammu.
@@ -263,6 +284,7 @@ upgrade_done=.. upgrade komplut.
 upgrade_failed=.. naqas l-aġġornament!
 upgrade_updates=Hemm aġġornamenti $1 għal din il-verżjoni l-ġdida ta 'Usermin. <a href='$2'>Ikklikkja hawn</a> biex tniżżel u tinstallahom awtomatikament issa.
 upgrade_eupdates=Ma rnexxielux iniżżel il-lista tal-aġġornamenti : $1 
+
 update_desc1=Din il-formola tippermetti li ttejjeb il-moduli Usermin li nstabu li fihom bugs jew toqob ta 'sigurtà mill-paġna <a href=http://www.usermin.com/uupdates.html>Aġġornamenti ta' Usermin</a> jew minn sors ieħor. Dan se jqabbel il-moduli installati bħalissa ma 'dawk disponibbli għall-aġġornament, u b'għażla awtomatikament iniżżel u jinstalla kwalunkwe modulu li m'għadux aġġornat.
 update_header1=Aġġorna moduli issa
 update_header2=Aġġorna moduli skont l-iskeda
@@ -279,10 +301,12 @@ update_sched=Aġġorna moduli f ' $1 : 00 kull $2 ijiem
 update_none=L-ebda aġġornament tal-Usermin għal din il-verżjoni.
 update_failed=Naqas mill-installazzjoni tal-modulu : $1 
 update_desc2=Din il-formola hija għall-iskedar tal-aġġornament awtomatiku tal-moduli Usermin li fihom bugs jew toqob ta 'sigurtà mill-paġna <a href=http://www.usermin.com/uupdates.html>Aġġornamenti ta' Usermin</a> jew minn sors ieħor. Filwaqt li dan is-servizz huwa utli, għandek toqgħod attent billi tużah għax tista 'tippermetti lill-attakkanti jieħdu f'idejhom is-sistema tiegħek jekk is-server ta' aġġornament kien qatt kompromess.
+
 assignment_title=Moduli mill-ġdid
 assignment_header=Assenjazzjonijiet tal-kategorija tal-moduli
 assignment_ok=Ibdel il-Kategoriji
 assignment_desc=Din il-formola tippermetti li tikkonfigura liema kategorija tidher taħt kull modulu fil-paġna tal-indiċi tal-Usermin.
+
 categories_title=Editja l-Kategoriji
 categories_header=ID tal-Kategorija u deskrizzjonijiet
 categories_desc=Din il-formola jippermettilek tibdel isem il-kategoriji tal-Usermin eżistenti u toħloq oħrajn biex tassenja moduli. Il-parti ta 'fuq tat-tabella hija għall-bdil tad-deskrizzjonijiet tal-kategoriji inkorporati, filwaqt li l-parti ta' isfel hija biex iżżid IDs u deskrizzjonijiet ġodda tal-kategorija.
@@ -292,6 +316,7 @@ categories_edesc=Deskrizzjoni nieqsa għal $1
 categories_ecat=L-ID tal-Kategorija $1 diġà ttieħed
 categories_code=ID
 categories_name=Deskrizzjoni murija
+
 log_access=Biddel il-kontroll tal-aċċess għall-IP
 log_bind=Port u indirizz mibdula
 log_log=Inbidlet fl-għażliet tal-qtugħ
@@ -327,6 +352,7 @@ log_restrict_create=Restrizzjoni maħluqa għal $1
 log_restrict_modify=Restrizzjoni modifikata għal $1 
 log_restrict_delete=Restrizzjoni mħassra għal $1 
 log_restrict_move=Restrizzjoni mċaqalqa għal $1 
+
 log_all=l-utenti kollha
 log_group=grupp $1 
 log_switch=Inbidel għall-utent Usermin $1 
@@ -334,6 +360,7 @@ log_logout=Inbidel il-ħinijiet tal-logout awtomatiku
 log_dav=Biddel is-settings tas-server DAV
 log_advanced=Inbidlu f'avvanzati
 log_mobile=Inbidlu l-għażliet tat-tagħmir mobbli
+
 update_err=Naqset milli taġġorna l-moduli
 update_eurl=URL ta 'aġġornament nieqes jew invalidu
 update_title=Moduli ta 'Aġġornament
@@ -352,6 +379,7 @@ update_rv=Iċċekkjar għal moduli ta 'Usermin aġġornati minn $1
 update_eemail=Trid tidħol indirizz elettroniku jekk turi biss dak li ser jiġi aġġornat.
 update_subject=Moduli ta 'usermin jirrapportaw aġġornament
 update_version=Rilaxx ġdid ta 'Usermin (il-verżjoni $1) issa huwa disponibbli biex jitniżżel. Aġġornamenti futuri se jiġu rrilaxxati biss għall-aħħar verżjoni.
+
 restrict_title=Restrizzjonijiet tal-Modulu
 restrict_desc=Din il-paġna jippermettilek tikkontrolla liema moduli Usermin huma disponibbli għal utenti u gruppi differenti. Iż-żidiet u s-sostrazzjonijiet kollha tal-moduli fil-lista japplikaw, mhux biss l-ewwel wieħed li jaqblu ma 'kull utent. <br>Il-moduli li mhumiex magħżula fuq il-<a href='$1'> moduli disponibbli </a> paġna qatt mhu se jkunu disponibbli għal utenti, anke jekk huma magħżula hawn.
 restrict_who=Utent Usermin
@@ -384,6 +412,7 @@ restrict_egroup=Isem tal-grupp nieqes jew invalidu
 restrict_efile=Fajl ta 'utenti u gruppi nieqsa, ineżistenti jew mhux assoluti
 restrict_move=Tmexxi
 bootup_ecannot=M'għandekx permess biex tikkonfigura bootup
+
 acl_icons=Paġni ta 'konfigurazzjoni permessi
 acl_mods=Tista 'tikkonfigura moduli
 acl_all=Il-moduli kollha
@@ -391,10 +420,12 @@ acl_sel=Magħżula hawn taħt ..
 acl_stop=Tista 'tieqaf u tibda Usermin?
 acl_bootup=Tista 'tikkonfigura li tibda fil-ħin tal-ibbutjar?
 acl_ecannot=M’intix permess tuża din il-paġna
+
 clone_err=Naqas mill-modulu tal-klonu
 clone_elink=symlink falla : $1 
 clone_ecopy=naqset milli tikkopja l-konfigurazzjoni : $1 
 clone_desc=Klonu ta ' $1 
+
 sessions_title=Sessjonijiet kurrenti ta 'Dħul
 sessions_desc=L-logins attwali tas-sessjonijiet ta ’Usermin huma elenkati hawn taħt. Biex tikkanċella sessjoni eżistenti u ġġiegħel lill-utent jidħol mill-ġdid, ikklikkja fuq l-ID tas-sessjoni tiegħu.
 sessions_id=ID tas-Sessjoni
@@ -404,12 +435,15 @@ sessions_login=Dħalt fi
 sessions_none=L-ebda utent bħalissa ma jkun illoggjat fil-Usermin.
 sessions_switch=Aqleb għall-utent Usermin:
 sessions_ok=Aqleb
+
 referers_title=Referenti ta 'fiduċja
 referers_desc=Din il-paġna jippermettilek li tikkonfigura l-appoġġ tal-iċċekkjar tal-referrer ta 'Usermin, li jintuża biex jipprevjeni links malizzjużi minn websajts oħra li jqarrqu l-browsers tal-utenti tiegħek biex jagħmlu affarijiet perikolużi ma' Usermin. Madankollu, jekk għandek links għal Usermin mill-websajts tiegħek stess li ma tridx tkun mwissija dwarek għandek iżżid dawk is-siti fil-lista hawn taħt.
+
 anon_title=Aċċess għall-Modulu Anonimu
 anon_desc=Din il-paġna jippermettilek tagħti aċċess għal moduli u mogħdijiet tal-Usermin magħżula mingħajr ma jkun hemm bżonn li l-klijenti jidħlu. Għal kull passaġġ tal-modulu li tidħol hawn taħt (bħal / kmandi jew / bidla) trid tidħol ukoll l-isem ta 'utent Unix li l-permessi tagħhom jintużaw għall-aċċess għall-modulu.
 anon_user=Utent Unix
 anon_euser=Utent Unix nieqes jew invalidu għall-passaġġ URL "$1"
+
 logout_title=Żminijiet ta 'Auto-Logout
 logout_desc=Din il-paġna tista 'tintuża biex tikkonfigura ħinijiet differenti ta' inattività tal-logout għal utenti Usermin differenti. Il-ħin ta 'l-iskeda għandu jkun miktub f'minuti, u t-timeout ta' żero ifisser li s-sessjonijiet għall-utenti li jaqblu qatt ma jiġu awtomatikament illiberati.
 logout_type=Tip
@@ -424,6 +458,7 @@ logout_egroup=Grupp nieqes jew invalidu fir-ringiela $1
 logout_efile=Fajl nieqes jew ineżistenti fir-ringiela $1 
 logout_etime=It-terminu ta 'żmien nieqes jew invalidu fir-ringiela $1 
 logout_ecannot=M'għandekx permess tikkonfigura l-ħinijiet tal-logout
+
 dav_title=Server DAV
 dav_header=Għażliet ta 'server DAV
 dav_path=DAV attivat?
@@ -444,16 +479,22 @@ dav_users=Utenti li jistgħu jużaw DAV
 dav_users1=L-utenti kollha
 dav_users0=Utenti u gruppi elenkati hawn taħt ..
 dav_eusers=Ma daħal l-ebda utent
+
 syslog_errorlog=Logg tal-iżball fl-Usermin
+
 descs_title=Titolu tal-Modulu
 descs_info=Din il-paġna jippermettilek tispeċifika t-titoli alternattivi għall-moduli Usermin, biex twarrab id-deskrizzjonijiet standard tagħhom.
+
 advanced_title=Għażliet Avvanzati
 advanced_pass=Qiegħed għad-dispożizzjoni tal-password għall-programmi Usermin? <br><font size=-1> (Ma jaħdimx meta l-awtentikazzjoni tas-sessjoni hija attivata) </font>
+
 blocked_title=Ospitanti u Utenti Imblukkati
 blocked_none=L-ebda host jew utenti bħalissa mhumiex imblukkati minn Usermin.
 blocked_user=Utent Usermin
 blocked_cleardesc=Ikklikkja din il-buttuna biex tikklerja l-blokki kollha tal-host u l-utenti kurrenti, billi terġa 'tibda l-proċess tas-server Usermin.
+
 mobile_title=Għażliet ta 'Apparat Mobbli
+
 copycert_err=Ma rnexxiex tikkopja l-issettjar SSL minn Webmin
 copycert_essl=SSL mhux attivat
 copycert_ekeyfile=L-ebda fajl ewlieni privat ma huwa stabbilit fil-Webmin

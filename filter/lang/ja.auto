@@ -45,6 +45,7 @@ index_ondate=日付
 index_charset=自動返信メッセージの文字セット
 index_subject=自動返信メッセージの件名
 index_nowebmin=このモジュールはUserminでのみ使用できます。 Webminで表示される場合、使用しているテーマは不完全です。
+
 edit_title1=フィルタを作成
 edit_title2=フィルターを編集
 edit_header1=フィルターの条件
@@ -71,6 +72,7 @@ edit_amode7=という名前の新しいフォルダに保存
 edit_nobounce=バウンスメッセージの転送を抑制する
 edit_apply=一致するメールをフォルダーに表示：
 edit_move=フォルダー内のメールに適用：
+
 save_err=フィルターを保存できませんでした
 save_egone=フィルターはもう存在しません！
 save_econdheader=メールヘッダーが見つからないか無効です
@@ -89,8 +91,10 @@ save_enewfolder3=同じ名前のフォルダーが既に存在します
 save_estart=自動返信の開始日が無効です
 save_eend=自動返信の終了日
 save_echarset=自動返信文字セットが見つからないか無効です
+
 delete_err=フィルターを削除できませんでした
 delete_enone=何も選択されていません
+
 aliases_type1=住所（1
 aliases_type2=ファイル $1のアドレス
 aliases_type3=ファイル $1
@@ -101,6 +105,7 @@ aliases_your=あなたのメールボックス
 aliases_delete=メールを削除
 aliases_other=ユーザー $1のメールボックス
 aliases_auto=メッセージ $1の自動返信
+
 auto_title=メール自動返信
 auto_header=自動メール返信オプション
 auto_enabled=自動応答は有効ですか？
@@ -111,12 +116,14 @@ auto_charsetdef=現在の言語から
 auto_charsetother=その他の文字セット
 auto_period=返信間の最小間隔
 auto_err=自動返信を保存できませんでした
+
 forward_title=前方のメール
 forward_header=メール転送オプション
 forward_enabled=メール転送は有効ですか？
 forward_to=アドレスに転送
 forward_cont=また、正常に配信しますか？
 forward_err=メール転送を保存できませんでした
+
 move_err=フィルターを適用できませんでした
 move_esrc=ソースフォルダー $1は存在しません！
 move_edest=宛先フォルダー $1は存在しません！

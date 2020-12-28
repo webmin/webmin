@@ -25,22 +25,28 @@ inittab_return=indeks inittab
 inittab_apply=Terapkan konfigurasi Init
 inittab_applymsg=Klik butang ini untuk menerapkan Konfigurasi Init SysV terkini dengan melarikan arahan <tt>telinit q</tt>. Sebarang kesilapan dalam konfigurasi akan menjadikan sistem anda tidak berfungsi, ketika melarikan arahan ini.
 index_delete=Padam Proses Terpilih
+
 edit_inittab_err=Anda tidak dibenar menyunting proses
 edit_inittab_title=Sunting proses $1
 edit_inittab_details=Perincian Proses
 edit_inittab_del=Padam
 edit_inittab_save=Simpan
+
 new_inittab_err=Anda tidak dibenarkan mencipta proses baharu
 new_inittab_title=Proses Baharu
+
 save_inittab_err=Anda tidak dibenar menyimpan proses
 save_inittab_noid=Ralat, tiada nama proses yang dimasukkan
 save_inittab_already=Ralat, nama proses telah wujud
+
 log_modify=Proses ini $1 diubahsuai
 log_rename=Menamakan proses init $1 kepada $2
 log_create=Proses init $1 dicipta
 log_delete=Proses ini $1 dipadam
 log_apply=Konfigurasi diterap
 log_deletes=Telah dipadam $1 proses init
+
 apply_err=Gagal menerapkan konfigurasi
+
 delete_err=Gagal untuk memadam proses
 delete_enone=Tiada dipilih

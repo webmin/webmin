@@ -5,6 +5,7 @@ index_fileshare=ファイルの共有
 index_printershare=プリンタの共有
 index_shareconf=共有設定
 index_version=Sambaバージョン $1
+
 index_sharename=共有名
 index_path=パス
 index_security=セキュリティ
@@ -33,12 +34,14 @@ index_restartmsg=システムの Samba サーバを再起動するには、こ�
 index_restartmsg2=この処理はサーバへの接続を全て切断します。したがって、すぐに現在の設定を適用したいのでなれば、1分ほどSambaが自動で設定を再読み込むのを待ってください。
 index_stop=Sambaサーバの停止
 index_stopmsg=このボタンをクリックすると稼働中のSambaサーバを停止します。現在接続中の全てのユーザは強制的に切断されます
+
 config_mins=分
 config_secs=秒
 config_bytes=バイト
 config_never=なし
 config_all=すべて
 config_neither=なし
+
 global_title=グローバル設定
 global_unixnetwork=Unix ネットワーク
 global_winnetwork=Windows ネットワーク
@@ -50,6 +53,7 @@ global_prndefault=プリンタ共有デフォルト
 global_password=暗号化パスワード
 global_users=Sambaユーザ
 global_group=Sambaグループ
+
 error_nosamba=Samba サーバ実行ファイル <tt>$1</tt> が見つかりませんでした。システムに Samba がインストールされていないか<a href="$2">モジュール設定</a> が不正です。
 error_version=Webmin は Samba サーバ実行ファイル <tt>$1</tt> を取得できませんでした。 ご使用の <a href="$2">モジュール設定</a>を調べてパスが正しいか確認してください。
 error_config=設定ファイル $1 がありませんでした。システムに Samba がインストールされていないか <a href="$2">モジュール設定</a> が不正です。
@@ -57,6 +61,7 @@ error_include=Webmin は <tt>config</tt> または<tt>include</tt> ディレク�
 error_delshare=共有を削除できませんでした
 error_delcopy=共有 '$1'は、この共有からコピーします
 error_savename=ファイル名を保存できませんでした
+
 convert_title=ユーザの変換
 convert_msg=この画面では、Unix と Samba ユーザのリストを同期できます。Samba が <a href=$1>暗号化パスワード</a>を使用している場合は、システム ユーザ リストの代わりに別のユーザとパスワードのリストが使用されます。
 convert_noconv=これらのユーザを変換または除去しない:
@@ -70,6 +75,7 @@ convert_lock=アカウントのロック
 convert_passwd=このパスワードを使用
 convert_convert=ユーザの変換
 convert_cannot=unixユーザをSambaユーザに変換されていません
+
 misc_title=その他のオプション
 misc_debug=デバッグ レベル
 misc_cachecall=キャッシュ<tt>getwd()</tt> を呼び出しますか？
@@ -83,6 +89,7 @@ misc_chroot=<tt>chroot()</tt> ディレクトリ
 misc_smbrun=</tt>smbrun</tt> へのパス
 misc_clienttime=クライアント時間のオフセット
 misc_readprediction=予測を読み取りますか？
+
 net_title=Unix ネットワーク オプション
 net_idle=切断までのアイドル時間
 net_trustlist=トラステッド ホスト/ユーザ ファイル
@@ -97,6 +104,7 @@ net_every=次ごとに送信
 net_maxpacket=最大パケット サイズ
 net_listen=リッスンするアドレス
 net_socket=ソケット オプション
+
 passwd_title=パスワード オプション
 passwd_encrypt=暗号化パスワードを使用しますか？
 passwd_allownull=ヌル パスワードを許可しますか？
@@ -110,11 +118,13 @@ passwd_send=送信
 passwd_map=ユーザ名マッピング
 passwd_unixuser=Unix ユーザ
 passwd_winuser=Windows ユーザ
+
 print_title=印刷オプション
 print_style=Unix 印刷スタイル
 print_show=すべてのプリンタを表示しますか？
 print_printcap=Printcap ファイル
 print_cachetime=プリンタ ステータス キャッシュ時間
+
 smb_title=Windows ネットワーク オプション
 smb_workgroup=ワークグループ
 smb_wins=WINS モード
@@ -141,14 +151,17 @@ smb_nowhere=なし
 smb_fromlist=リストから...
 smb_ip=IP アドレス
 smb_asworkgroup=<b>ワークグループとして</b> (オプショナル)
+
 create_title=コピーの作成
 create_msg=共有のコピーは選択する共有からそのすべてのデフォルト値を継承します。元の共有が変更されると、そのコピーも変更されます。
 create_from=コピーする元の共有:
 create_name=新しい共有名:
+
 smbuser_title=Samba ユーザ
 smbuser_list=Samba ユーザ リスト
 smbuser_nouser=Samba ユーザが定義されていません
 smbuser_cannot=Sambaユーザをリストできません
+
 euser_title=Samba ユーザの編集
 euser_name=ユーザ名
 euser_uid=Unix UID
@@ -165,6 +178,7 @@ euser_normal=標準ユーザ
 euser_nopwrequired=パスワードは不要です
 euser_disable=アカウントは無効です
 euser_trust=ワークステーション トラスト アカウント
+
 fmisc_title=その他のファイル デフォルト
 fmisc_for=共有<tt>$1</tt>
 fmisc_lockfile=ファイルのロックを行いますか？
@@ -182,6 +196,7 @@ fmisc_conncmd=接続で実行するコマンド
 fmisc_disconncmd=切断で実行するコマンド
 fmisc_rootconn=<i>root として</i> 実行するコマンド
 fmisc_rootdisconn=<i>root として</i>実行するコマンド
+
 fname_title1=ファイル命名のデフォルト
 fname_title2=ファイル命名の編集
 fname_option=ファイル命名オプション
@@ -196,6 +211,7 @@ fname_hide=ドット ファイルを非表示にしますか？
 fname_archive=DOS アーカイブ フラグを保存しますか？
 fname_hidden=DOS 非表示フラグを保存しますか？
 fname_system=DOS システム フラグを保存しますか？
+
 fperm_title1=ファイル許可のデフォルト
 fperm_title2=ファイル許可の編集
 fperm_option=ファイル許可のオプション
@@ -208,6 +224,7 @@ fperm_link=共有の外で symlink を許可しますか？
 fperm_delro=読取り専用ファイルを削除可能にしますか？
 fperm_forcefile=強制 Unix ファイル モード
 fperm_forcedir=強制 Unix ディレクトリ モード
+
 share_title1=ファイル共有デフォルト
 share_title2=ファイル共有の編集
 share_title3=ファイル共有の作成
@@ -228,6 +245,7 @@ share_naming=ファイル命名
 share_misc=その他のオプション
 share_samedesc1=注意 - これらの設定は全ての共有のデフォルト設定にも影響します
 share_samedesc2=注意 - これらの設定は全てのプリンタ共有にも影響します
+
 print_title1=プリンタ オプション デフォルト
 print_title2=プリンタ オプションの編集
 print_option=プリンタ オプション
@@ -239,6 +257,7 @@ print_delete=ジョブ コマンドを削除
 print_pause=ジョブ コマンドを一時停止
 print_unresume=ユーザ名ジョブ コマンド
 print_driver=プリンタ ドライバ
+
 pshare_title1=プリンタ共有デフォルト
 pshare_title2=プリンタ共有の編集
 pshare_title3=プリンタ共有の作成
@@ -247,6 +266,7 @@ pshare_name=共有名
 pshare_all=すべてのプリンタ共有
 pshare_unixprn=Unix プリンタ
 pshare_spool=スプール ディレクトリ
+
 sec_index1=セキュリティ デフォルト
 sec_index2=セキュリティを編集
 sec_writable=書込み可能にしますか？
@@ -269,6 +289,7 @@ sec_rouser=読取り専用ユーザ
 sec_rogroup=読取り専用グループ
 sec_rwuser=読取り/書込み ユーザ
 sec_rwgroup=読取り/書込み グループ
+
 esync_title=ユーザの同期
 esync_msg=Unix ユーザ リストへの変更が自動的に Samba ユーザ リストに適用されるように Webmin を設定できます。これはユーザの追加、削除、または変更が<tt>ユーザとグループ</tt> Webmin モジュールが使用されたときのみ動作します。
 esync_add=Unixのユーザが追加されたときに Samba ユーザを追加
@@ -278,6 +299,7 @@ esync_del_profile=Unixユーザが削除されたらローミングプロファ�
 esync_chg_profile=Unixユーザ名が変更されたらローミングプロファイルを変更
 esync_apply=適用
 esync_cannot=ユーザの同期が設定されていません
+
 mkpass_title=ユーザの変換
 mkpass_convfail=ユーザを変換できませんでした
 mkpass_msg=Unix ユーザを変換...
@@ -286,10 +308,12 @@ mkpass_same=はすでに同一です
 mkpass_update=アップデートしました
 mkpass_del=削除しました
 mkpass_passfail=パスワードを設定できませんでした
+
 savecopy_fail=コピーを作成できませんでした
 savecopy_global='global' という名前は共有に使用できません
 savecopy_exist='$1' という共有はすでに存在しています
 savecopy_ename=共有名が入力されていません
+
 saveuser_fail=ユーザを保存できませんでした
 saveuser_uid='$1' は無効な Unix UID です
 saveuser_colon=実名には次の文字を含められません:
@@ -297,15 +321,19 @@ saveuser_home=ホーム ディレクトリ '$1' は存在しません
 saveuser_shell='$1' は無効なシェルです
 saveuser_pass=smbpasswd を使用してパスワードを変更できませんでした: $1
 saveuser_ews='ワークステーション　信頼アカウント'は存在するユーザに対し使用できません
+
 savefmisc_fail=その他のオプションを保存できませんでした
 savefmisc_number='$1'は無効な接続数です
+
 savefperm_fail=ファイルの許可を保存できませんでした
 savefperm_mode='$1' は無効な Unix ファイル モードです
+
 savefshare_fail=共有を保存できませんでした
 savefshare_nopath=パスが指定されていません
 savefshare_exist='$1' という共有はすでに存在しています
 savefshare_mode='$1' は無効な共有名です
 savefshare_global='global' という名前は共有に使用できません
+
 savemisc_fail=オプションを保存できませんでした
 savemisc_lockdir=ロック ディレクトリを含むディレクトリは存在しません
 savemisc_logdir=ログ ファイルを含むディレクトリは存在しません
@@ -314,34 +342,44 @@ savemisc_overlap='$1' は無効なオーバーラップの実サイズです
 savemisc_chroot=chroot ディレクトリ '$1' は存在しません
 savemisc_smbrun=smbrun プログラム '$1' は存在しないか実行できません
 savemisc_time='$1' は無効な時間のオフセットです
+
 savenet_fail=オプションを保存できませんでした
 savenet_timeout='$1' は無効な切断のタイムアウトです
 savenet_ip='$1' は無効な IPバイトです
 savenet_keep='$1' は無効な keepalive 間隔です
 savenet_maxxmit='$1' は無効な最大パケット サイズです
+
 savepass_fail=オプションを保存できませんでした
 savepass_nopass=ご使用の Samba のバージョンは暗号化パスワードをサポートしません
 savepass_passwd=パスワードの変更プログラムがありません
 savepass_level='$1' のパスワードの大文字/小文字の区別が無効です
 savepass_chat=変更パスワード チャット シーケンスが空です
+
 savepopts_fail=プリンタ オプションを保存できませんでした
 savepopts_number=最小空き領域は数字でなければなりません
+
 saveprint_fail=オプションを保存できませんでした
 saveprint_printcap=printcap ファイル '$1' は存在しません
 saveprint_cache='$1' は無効なキャッシュ時間です
+
 savepshare_fail=プリンタ共有を保存できませんでした
 savepshare_exist='$1' という共有はすでに存在しています
 savepshare_name='$1' は無効な共有名です
 savepshare_global='global' という名前は共有に使用できません
+
 savesec_fail=セキュリティを保存できませんでした
+
 savesmb_fail=オプションを保存できませんでした
 savesmb_size='$1' は無効なディスク サイズです
 savesmb_oslevel='$1' は無効なマスター ブラウザの優先度です
 savesmb_server=パスワード サーバを入力する必要があります
+
 start_err=Samba サーバを起動できませんでした
 start_fail=$1 が失敗しました
+
 swats_fail=ユーザ名を保存できませんでした
 swats_user=SWAT ユーザ名がありません
+
 viewu_index=現在のユーザ
 viewu_list=$1 の現在のユーザ
 viewu_share=共有
@@ -355,6 +393,7 @@ viewu_msg2=現在接続されているユーザはありません
 viewu_locks=ファイルを開く
 viewu_none=無し
 viewu_ecmd=Sambaステータスプログラム　$1 がインストールされていないようです。<a href='$2'>モジュール設定</a>が間違っているの可能性があります
+
 log_apply=Samba サーバを再起動
 log_stop=Sambaサーバが停止しました
 log_start=Samba サーバを起動しました
@@ -388,6 +427,7 @@ log_create_group=Sambaグループ　$1 が作成されました
 log_modify_group=Sambaグループ　$1　が変更されました
 log_delete_group=Sambaグループ　$2 が削除されました
 log_gsync=Unixグループ同期が設定されました
+
 swat_title=SWAT ログイン
 swat_list=SWAT ログイン
 swat_msg1=現在の SWAT ユーザ名とパスワードは不正です。再度ログインするには下の画面を使用してください。
@@ -399,6 +439,7 @@ swat_password=パスワード
 swat_login=ログイン
 swat_clear=クリア
 swat_logout=SWATのログアウト
+
 eacl_aviol=アクセス制御違反
 eacl_np=次の操作の許可がありません:
 eacl_papply=このサービスを再度開始
@@ -434,6 +475,7 @@ eacl_pafs=このファイル共有にアクセス
 eacl_paps=このプリンタ共有にアクセス
 eacl_pcps=プリンタ共有を作成
 eacl_pcfs=ファイル共有を作成
+
 acl_apply=変更を適用可能にしますか？
 acl_view_all_con=すべての接続を表示可能にしますか？
 acl_kill_con=接続を切断可能にしますか？
@@ -479,6 +521,7 @@ acl_group_opts=Samba グループオプション
 acl_maint_groups=グループを閲覧・編集・追加を許可しますか ?
 acl_maint_gsync=UNIXグループと Sambaグループを同期を許可しますか ?
 acl_winbind=ドメインにバインドできますか？
+
 groups_title=Sambaグループ
 groups_name=グループ名
 groups_unix=Unixグループ
@@ -494,6 +537,7 @@ groups_return=グループリスト
 groups_add=新規Sambaグループの追加
 groups_ecannot=Sambaグループを閲覧及び編集する権限がありません
 groups_cannot=Sambaグループをリストできません
+
 gedit_title2=Sambaグループの編集
 gedit_title1=Sambaグループの作成
 gedit_header=Sambaグループの詳細
@@ -506,11 +550,13 @@ gedit_unix=Unixグループ
 gedit_unixgr=グループ..
 gedit_none=無し
 gedit_set=リスト..
+
 gsave_err=グループの保存に失敗しました
 gsave_eunix=Unixグループ名またはGIDが無効です
 gsave_ename=グループ名がみつかりません
 gsave_epriv=グループ権限がみつかりません
 gsave_elocal=権限の設定はローカルグループにのみ設定できます
+
 gsync_title=グループ同期
 gsync_msg=Webminの設定が完了しました。Unixグループリストは自動的にSambaグループリストに適用されます。これはWebminモジュール<b>ユーザとグループ</b>を使用した場合のみ動作します
 gsync_add=Unixグループが追加されたらSambaグループにも追加する
@@ -521,12 +567,15 @@ gsync_type=新しいグループの種類
 gsync_priv=新規グループの権限(ローカル)
 gsync_ecannot=グループ同期を設定する権限がありません
 gsync_cannot=グループ同期が設定されていません
+
 check_user1=$1 : 暗号化パスワードが<a hter='$2'>認証</a>ページで使用しない設定になっています
 check_user2=$1 : samba パスワードファイル または pdbeditへのパスが <a href='$2'>モジュール設定</a>ページで設定されていません
 check_group1=$1 : グループはSambaバージョン3でのみサポートされます。
 check_group2=$1 : smbgroupedit または　net コマンドへのパスが <a href='$2'>モジュール設定</a>ページで設定されていません
+
 winbind_title=ドメインにバインド
 winbind_user=ユーザとしてバインド
 winbind_save=直ちにバインド
+
 bind_cache=ユーザ詳細をキャッシュする秒数
 bind_backend=アカウントマッピングのための LDAP バックエンド

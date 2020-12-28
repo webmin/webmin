@@ -15,6 +15,7 @@ index_esnmp=El módulo está configurado para mandar tramas SNMP en la página  
 index_refresh=Refrescar Estado
 index_refreshdesc=Realizar un refresco inmediato del estado de todos los monitores, en lugar de esperar el refresco programado.
 index_delete=Borrar Seleccionados
+
 type_apache=Servidor Web de Apache
 type_inetd=Servidor de Internet y RPC
 type_xinetd=Servidor de Internet Extendido
@@ -57,6 +58,7 @@ type_sensors=Estado de Sensor LM
 type_nut=Valor NUT UPS
 type_mailq=Tamaño de Cola de Correo
 type_dns=Lookup DNS
+
 mon_create=Crear Monitor
 mon_edit=Editar Monitor
 mon_header=Detalles de Monitor
@@ -100,6 +102,7 @@ mon_depend=No chequear si este monitor está caído
 mon_edepend=Un monitor no puede depender de sí mismo
 mon_clone2=Clonar
 mon_skip=Saltado
+
 sched_title=Monitorización Planificada
 sched_header=Opciones de monitorización planificada en segundo plano
 sched_mode=¿Revisión planificada activada?
@@ -133,16 +136,19 @@ sched_smtp_prog=Ejecutable de sendmail local
 sched_smtp_server=Servidor SMTP
 sched_esmtp=Servidor SMTP no válido o inexistente
 sched_esmtpcmd=Falló el comando $1 de SMTP: $2
+
 up_since=Activo desde $1
 depends_mod=El módulo $1 no está instalado en su sistema
 depends_os=El módulo $1 no es soportado por su sistema
 depends_remote=El módulo $1 no es soportado en servidor $2
+
 tcp_host=Máquina con la que conectar
 tcp_port=Puerto con el que conectar
 tcp_alarm=Timeout de Conexión
 tcp_ehost=Nombre de máquina no válido o inexistente
 tcp_eport=Número de puerto no válido o inexistente
 tcp_ealarm=Timeout de conexión no válido o inexistente
+
 http_url=URL a pedir
 http_alarm=Timeout de conexión
 http_eurl=URL no válida o inexistente
@@ -153,11 +159,13 @@ http_user=Nombre de usuario
 http_pass=contraseña
 http_euser=Falta nombre de usuario
 http_method=Método de petición HTTP
+
 ping_host=Máquina a hacer ping
 ping_wait=Tiempo que se esperará una respuesta
 ping_ehost=Nombre de máquina no válido o inexistente
 ping_ewait=Tiempo de espera no válido o inexistente
 ping_econfig=No se ha configurado comando para hacer ping en configuración del módulo
+
 proc_pid=Ejecutando con PID $1
 proc_cmd=Comando a revisar
 proc_not=Falla si el proceso está
@@ -166,8 +174,10 @@ proc_not1=Ejecutando
 proc_ecmd=Comando sin poner
 proc_thresh=Número de procesos que deben existir para que el monitor lo considere como ejecutándose
 proc_ethresh=Número de procesos no válido o inexistente
+
 exec_cmd=Comando del que revisar estado de salida
 exec_ecmd=Comando sin poner
+
 file_file=Archivo a revisar
 file_test=Prueba a realizar
 file_test_0=El archivo ha de existir
@@ -177,6 +187,7 @@ file_test_3=El archivo ha de ser menor que
 file_bytes=bytes
 file_efile=Falta nombre de archivo a revisar
 file_esize=Tamaño de archivo no válido
+
 traffic_iface=Interfaz a monitorizar
 traffic_bytes=Máximos bytes/segundo
 traffic_dir=Dirección a monitorizar
@@ -186,6 +197,7 @@ traffic_dir2=Sólo Saliente
 traffic_desc=Este monitor vigila el tráfico de red en una interfaz seleccionada y muestra el monitor como caído si el tráfico excede el número de bytes por segundo escrito debajo. Esto sólo funciona bien si la monitorización planificada está activada con un intervalo corto, como por ejemplo cada 5 minutos.
 traffic_eifaces=Su sistema operativo no tiene un archivo /proc/net/dev
 traffic_ebytes=Número de bytes/segundo no válido o inexistente
+
 space_fs=Sistema de archivos a revisar
 space_min2=Mínimo espacio libre
 space_desc=$1 libres
@@ -193,6 +205,7 @@ space_nofs=Sistema de archivos no montado
 space_other=Otro...
 space_emin=Espacio libre no válido o inexistente
 space_eother=Sistema de archivos no válido o inexistente
+
 load_time=Media de carga a revisar
 load_1=1 minuto
 load_5=5 minutos
@@ -201,20 +214,27 @@ load_max=Máxima media de carga
 load_emax=Media de carga máxima no válida o inexistente
 load_ecmd=El comando <tt>uptime</tt> no ha sido hallado en su sistema
 load_efmt=La salida del comando <tt>uptime</tt> no puede ser mostrada
+
 log_create=Creado monitor $1
 log_modify=Modificado monitor $1
 log_delete=Borrado monitor $1
 log_sched=Cambiada la monitorización planificada
 log_deletes=$1 monitores borrados
+
 acl_edit=¿Puede editar y crear monitores?
 acl_sched=¿Puede cambiar la monitorización planificada?
+
 change_file=Archivo a monitorizar (fallo si ha cambiado)
+
 jabber_eparser=El módulo $1 de Perl no está instalado en su sistema.
+
 memory_min2=Mínimo de memoria libre
 memory_emin=Cantidad de memoria libre no válida o inexistente
 memory_eproc=Webmin no sabe chequear la memoria libre de su S.O.
 memory_free2=$1 libre
+
 proftpd_etype=Este monitor no puede usarse cuando ProFTPD se ejecuta en modo stand-alone
+
 mailserver_to=Enviar email a dirección
 mailserver_timeout=Timeout e intervalo
 mailserver_units_0=Segundos
@@ -222,19 +242,24 @@ mailserver_units_1=Minutos
 mailserver_units_2=Horas
 mailserver_units_3=Días
 mailserver_desc=La dirección introducida debe ser un autoresponder, que responda a la dirección original con la misma línea de Asunto:
+
 oldfile_file=Archivo a monitorizar (Fallo si no cambia)
 oldfile_diff=Fallo si no ha cambiado en
 oldfile_secs=segs
+
 raid_device=Dispositivo RAID
 raid_edevice=Ningún dispositivo RAID seleccionado
 raid_bad=Detectado Disco Erróneo
 raid_resync=Actualmente resincronizando
 raid_notfound=Dispositivo RAID $1 no encontrado
 raid_other=Otro..
+
 iface_iface=Interfaz a chequear
+
 refresh_title=Refrescar Estado
 refresh_doing=Refrescando el estado de todos los monitores ..
 refresh_done=.. hecho.
+
 sensors_name=Sensor a chequear
 sensors_value=Falló cuando
 sensors_value0=El sistema indica advertencia
@@ -245,6 +270,7 @@ sensors_none=No se detectaron sensores en su sistema. Podría necesitar ejecutar
 sensors_cur=$1 (actualmente $2 $3)
 sensors_emin=Valor mínimo no válido o inexistente
 sensors_emax=Valor máximo no válido o inexistente
+
 nut_ups=NUT UPS a chequear
 nut_name=Atributo a chequear
 nut_value=Falló cuando
@@ -254,6 +280,7 @@ nut_cmd=El comando <tt>upsc</tt> no está instalado en su sistema. Este monitor 
 nut_cur=$1 (actualmente $2)
 nut_emin=Valor mínimo no válido o inexistente
 nut_emax=Valor máximo no válido o inexistente
+
 mailq_system=Servidor de correo
 mailq_qmailadmin=Qmail
 mailq_postfix=Postfix
@@ -262,6 +289,7 @@ mailq_size=Máximo tamaño de cola de correo
 mailq_esize=Tamaño máximo de cola no válido o inexistente
 mailq_toomany=Mal - $1 mensajes en cola
 mailq_ok=Bien - $1 mensajes en cola
+
 dns_server=Servidor DNS
 dns_host=Hostname para hacer lookup
 dns_address=Se esperaba dirección IP
@@ -269,6 +297,7 @@ dns_eserver=Servidor DNS inexistente o no válido
 dns_ehost=Hostname no válido o inexistente para hacer lookup
 dns_eaddress=Dirección IP esperada no válida o inexistente
 dns_ecmds=Ni el comando <tt>nslookup</t> ni el comando <tt>dig</tt> están instalados en su sistema
+
 monitor_sub_down=$1 caido en $2
 monitor_pager_down=$1: "$2" caido $3
 monitor_snmp_down=$1: $2
@@ -298,4 +327,5 @@ monitor_sub2=Monitor de Servicio
 monitor_sub3=Monitor de Servicio : $1 servicios
 monitor_run1=Ejecutando $1 en $2 ..
 monitor_run2=Ejecutando $1 ..
+
 deletes_egone=Uno de los monitores seleccionados ya no existe

@@ -25,6 +25,7 @@ index_resetdesc=Mevcut tüm güvenlik duvarı kurallarını temizlemek ve temel 
 index_cluster=Küme Sunucuları
 index_clusterdesc=Güvenlik duvarı yapılandırmasının otomatik olarak kopyalanacağı ek Webmin sunucuları ayarlamak için bu düğmeyi tıklatın.
 index_return=güvenlik duvarı kuralları
+
 index_num=Num
 index_action=Aksiyon
 index_desc=Şart
@@ -37,6 +38,7 @@ index_delete=Silme seçildi
 index_existing=Webmin şu anda kullanımda olan $1 IPFW güvenlik duvarı kurallarını algıladı ve bunlar $2 dosyasına kaydedilmedi. Bu kurallar muhtemelen bu modülün nasıl okunacağını ve düzenleneceğini bilmediği bir komut dosyasından oluşturulmuştur. <p> IPFW güvenlik duvarınızı yönetmek için bu modülü kullanmak istiyorsanız, mevcut kuralları bir kayıt dosyasına dönüştürmek için aşağıdaki düğmeyi tıklayın seçeneğini belirleyin ve mevcut güvenlik duvarı komut dosyanızı devre dışı bırakın.
 index_saveex=Güvenlik Duvarı Kurallarını Kaydet
 index_headerex=Mevcut güvenlik duvarı yapılandırması
+
 action_allow=<font color=#00aa00>İzin ver</font>
 action_deny=<font color=#ff0000>Bırak</font>
 action_reject=<font color=#ff4400>Reddet</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Paketi bırak</font>
 laction_reject=<font color=#ff4400>ICMP reddini döndür</font>
 laction_reset=<font color=#ff4400>TCP bağlantısını sıfırla</font>
 laction_skipto=Kural atla
+
 edit_title1=Kural koy
 edit_title2=$1 Kuralını Düzenle
 edit_header1=Kural eylemi
@@ -114,6 +117,7 @@ edit_src-addr=Kaynak adresten ..
 edit_src-port=Kaynak bağlantı noktasından ..
 edit_dst-addr=Hedef adrese ..
 edit_dst-port=Hedef limana ..
+
 save_err=Kural kaydedilemedi
 save_enum=Eksik veya geçersiz kural numarası
 save_eskipto=Atlamak için eksik veya geçersiz kural numarası
@@ -144,7 +148,9 @@ save_etcpflags=TCP bayrakları yalnızca protokol TCP ise belirtilebilir
 save_elimit=Eksik veya geçersiz maksimum sınır
 save_edstport=Eksik veya geçersiz hedef bağlantı noktası
 save_esrcport=Eksik veya geçersiz kaynak bağlantı noktası
+
 apply_err=Yapılandırma uygulanamadı
+
 desc_if=$1 ise
 desc_and=ve
 desc_always=Her zaman
@@ -191,6 +197,7 @@ desc_where=burada $1
 desc_all=tüm paketler için
 desc_in=paket geliyor
 desc_out=paket giden
+
 log_create_rule=$1 kuralı oluşturuldu
 log_delete_rule=$1 kuralı silindi
 log_modify_rule=$1 kural değiştirildi
@@ -206,6 +213,7 @@ log_convert=Dönüştürülmüş etkin güvenlik duvarı kuralları
 log_setup=İlk güvenlik duvarı kurulumu gerçekleştirildi
 log_unapply=Geri döndürülmüş güvenlik duvarı yapılandırması
 log_delsel=$1 kural silindi
+
 cluster_title=Küme Güvenlik Duvarı Sunucuları
 cluster_none=Güvenlik duvarı kümesine henüz hiçbir sunucu eklenmedi.
 cluster_host=Hostadı
@@ -216,6 +224,7 @@ cluster_gadd=Gruba sunucu ekle
 cluster_need=Burada yönetilebilmeleri için Webmin Sunucuları Dizin modülüne oturum açma adı ve şifresi olan sunucular eklemeniz gerekir.
 cluster_return=küme sunucuları
 cluster_delete=Seçilenleri Kaldır
+
 add_title=Sunucu Ekle
 add_msg=$1 ekleniyor ..
 add_gmsg=$1 grubuna sunucu ekleniyor.

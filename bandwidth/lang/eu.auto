@@ -57,20 +57,27 @@ index_rotate=Eguneratu estatistikak
 index_rotatedesc=Egin klik botoi honetan erregistratutako sare trafiko guztia uneoro prozesatzeko, berehala eskuragarri jarri ahal izateko.
 index_eiptables=Abisua: zure IPtables konfigurazioak errore bat du: $1. Banda zabaleraren jarraipena konfiguratuz, suebakiaren arau guztiak garbituko dira.
 index_return=txostena
+
 log_setup=Ezarpen banda zabaleraren jarraipena $1 interfazean
 log_turnoff=Desgaitutako banda zabaleraren jarraipena
 log_rotate=Eguneratutako estatistikak
+
 acl_setup=Konfiguratu eta desgaitu al daiteke jarraipena?
+
 turnoff_ecannot=Ezin duzu jarraipena desgaitu
+
 setup_ecannot=Ezin duzu jarraipena gaitu
 setup_eiface=Interfazearen izen falta edo baliogabea
 setup_ezone=Huts egin du Shorewall hautatutako interfazerako gunea aurkitzeko
+
 system_firewall=iptables
 system_ipfw=IPFW
 system_ipfilter=IP iragazki
 system_shorewall=shorewall
+
 syslog_syslog=syslog
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=Estatistikak eguneratzea
 rotate_doing=Registratutako sare trafikoa prozesatzen ..
 rotate_done=.. egin.

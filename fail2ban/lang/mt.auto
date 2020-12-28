@@ -12,10 +12,12 @@ index_restart=Irristartja s-Server Fail2Ban
 index_restartdesc=Ikklikkja din il-buttuna biex tapplika l-konfigurazzjoni kurrenti billi terġa 'tibda s-server Fail2Ban.
 index_return=indiċi tal-modulu
 index_header=Modulu Fail2Ban
+
 check_edir=Id-direttorju tal-konfigurazzjoni $1 ma jeżistix
 check_econf=Il-fajl tal-konfigurazzjoni $2 f' $1 ma jeżistix
 check_eclient=Il-kmand tal-klijent $1 ma nstabx
 check_eserver=Il-kmand tas-server $1 ma nstabx
+
 filters_title=Iffiltra Filtri
 filters_name=Iffiltra l-isem
 filters_re=Espressjoni regolari
@@ -25,6 +27,7 @@ filters_return=lista tal-filtri
 filters_derr=Naqset milli tħassar il-filtri
 filters_enone=L-ebda magħżul
 filters_einuse=Il-filtru $1 ma jistax jitħassar, billi jintuża mill-ħabsijiet : $2 
+
 filter_title1=Oħloq Iffiltra
 filter_title2=Editja Iffiltra
 filter_desc=Uża <i>&lt;HOST&gt;</i> f'espressjonijiet regolari fejn għandek tidher isem tal-host jew indirizz IP.
@@ -39,6 +42,7 @@ filter_ename=Isem il-filtru nieqes jew invalidu
 filter_eclash=Isem tal-filtru diġà qiegħed jintuża
 filter_efail=Ma daħlet l-ebda espressjoni regolari li taqbel
 filter_einuse=Dan il-filtru ma jistax jitħassar għax jintuża mill-ħabsijiet : $1 
+
 actions_title=Azzjonijiet tal-Logħba
 actions_name=Isem ta 'azzjoni
 actions_ban=Projbizzjoni tal-kmand
@@ -48,6 +52,7 @@ actions_return=lista ta 'l - azzjonijiet
 actions_derr=Ma rnexxielhomx iħassru l-azzjonijiet
 actions_enone=L-ebda magħżul
 actions_einuse=L-azzjoni $1 ma tistax titħassar, peress li tintuża mill-ħabsijiet : $2 
+
 action_title1=Oħloq Azzjoni Match
 action_title2=Editja Azzjoni tat-Tqabbil
 action_header=Dettalji ta 'l-azzjoni Match
@@ -64,6 +69,7 @@ action_ban=Kmand biex tipprojbixxi IP
 action_unban=Kmand biex tipprojbixxi IP
 action_desc=<i>&lt;ip&gt;</i> se jinbidel bl-indirizz IP jiġi pprojbit.
 action_einuse=Din l-azzjoni ma tistax titħassar, peress li tintuża mill-ħabsijiet : $1 
+
 jails_title=Iffiltra Ħabsijiet ta 'Azzjoni
 jails_add=Żid ħabs ġdid.
 jails_name=Isem il-ħabs
@@ -76,6 +82,7 @@ jails_defdesc=Editja l-issettjar u l-limiti awtomatiċi li japplikaw għall-ħab
 jails_return=lista tal-ħabsijiet
 jails_derr=Naqset milli tħassar il-ħabsijiet
 jails_enone=L-ebda magħżul
+
 jail_title1=Oħloq Ħabs
 jail_title2=Editja l-Ħabs
 jail_header=Iffiltra d-dettalji tal-ħabs
@@ -115,13 +122,16 @@ jail_banaction=Azzjoni default li tapplika
 jail_defprotocol=Protokoll default għal azzjonijiet
 jail_edestemail=Indirizz tal-email ta 'notifika awtomatiku nieqes jew invalidu
 jail_eignoreip=Indirizz IP invalidu li jinjora
+
 jaildef_title=Għażliet ta 'Ħabs Default
 jaildef_header=Nuqqasijiet għall-ħabsijiet kollha
 jaildef_err=Ma rnexxielux isalva l-għażliet tal-ħabs b'default
 jaildef_egone=L-ebda ħabs DEFAULT instab!
+
 start_err=Naqas milli jibda s-server
 stop_err=Ma rnexxielux iwaqqaf is-server
 restart_err=Naqset milli terġa 'tibda s-server
+
 log_create_filter=Filtru maħluq $1 
 log_update_filter=Filtru modifikat $1 
 log_delete_filter=Filtru mħassar $1 
@@ -139,6 +149,7 @@ log_atboot=Attiva Fail2Ban fil-ħin tal-bidu
 log_delboot=B'diżabilità Fail2Ban fil-ħin tal-bidu
 log_manual=Fajl ta 'konfigurazzjoni editat $1 
 log_jaildef=Għażliet ta 'ħabs default modifikati
+
 config_title=Konfigurazzjoni Globali
 config_edef=L-ebda sezzjoni tad-Definizzjoni ma nstabet fil-fajl config!
 config_header=Ikkonfigura s-settings għal Fail2Ban
@@ -151,10 +162,12 @@ config_socket=Sokit għall-komunikazzjoni mas-server
 config_err=Ma rnexxielux isalva konfigurazzjoni globali
 config_elogtarget=Fajl biex tikteb iz-zkuk għandu jkun passaġġ assolut
 config_esocket=Socket file għandu jkun passaġġ assolut
+
 manual_title=Editja l-Iskedi tal-Konfigurazzjoni
 manual_desc=Fajl li jeditjaw:
 manual_ok=kollox sew
 manual_efile=Fajl magħżul mhux parti mill-konfigurazzjoni Fail2Ban!
 manual_err=Ma rnexxielux jeditja l-fajl konfigurazzjoni
 manual_edata=L-ebda kontenut ta 'fajl konfigurat ma daħal
+
 syslog_logtarget=Ġurnal tal-azzjoni Fail2Ban

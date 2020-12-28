@@ -18,10 +18,12 @@ index_version=Verzia PPPd $1
 index_boot=Pripojiť pri štarte:
 index_noboot=&lt;Nepripájať sa&gt;
 index_bootdesc=Zmeňte túto voľbu, aby ste určili, či sa vybrané pripojenie PPTP VPN spustí v čase zavádzania alebo nie.
+
 disc_err=Nepodarilo sa odpojiť tunel
 disc_egone=Už nie je aktívny
 disc_ekill=Nepodarilo sa zabiť proces pppd
 disc_done=Tunel $1 bol úspešne odpojený.
+
 conn_err=Nepodarilo sa pripojiť tunel
 conn_egone=Tunel už neexistuje
 cone_ealready=Už ste pripojení
@@ -32,6 +34,7 @@ conn_ok=.. pripojenie bolo úspešne aktivované pomocou rozhrania $1. Vaša mie
 conn_timeout=.. pripojenie zlyhalo! Informácie o dôvodoch nájdete v nižšie uvedených správach denníka.
 conn_routes=Pridávanie trás pomocou príkazov.
 conn_mppe=Protokol MPPE na šifrovanie VPN vyžaduje podporu démona a jadra PPP. Vyššie uvedené chyby však naznačujú, že jedna alebo obidve nie sú vo vašom systéme k dispozícii. Ak server PPTP nevyžaduje MPPE, skúste vypnúť všetky možnosti, ktoré s ním súvisia, na stránke <a href='$1'>globálne možnosti PPP</a>.
+
 edit_title1=Pridajte tunel PPTP
 edit_title2=Upraviť tunel PPTP
 edit_header=Možnosti tunela PPTP VPN
@@ -60,6 +63,7 @@ edit_file=Súbor možností PPP
 edit_none=nikto
 edit_global=Štandardný globálny súbor
 edit_ofile=Iný súbor ..
+
 save_err=Uloženie tunela zlyhalo
 save_ename=Chýba názov tunela
 save_eserver=Chýba alebo je neplatný server na pripojenie
@@ -75,6 +79,7 @@ save_egw2=Neplatná brána pre hostiteľa na trase $1
 save_erename=Nepodarilo sa premenovať súbor tunela
 save_eclash=Tunel alebo partner PPP s rovnakým názvom už existuje
 save_efile=Chýba alebo je neplatný súbor možností PPP
+
 opts_title=Globálne možnosti PPP
 opts_desc=Nižšie uvedené nastavenia sú prevzaté z $1 a budú platiť pre všetky tunely, ktoré sú nastavené na používanie štandardného súboru globálnych možností PPP.
 opts_header=Možnosti PPP pre všetky tunely
@@ -84,6 +89,7 @@ opts_err=Nepodarilo sa uložiť globálne možnosti PPP
 opts_emtu=Chýba alebo je neplatná maximálna veľkosť odosielacieho paketu
 opts_emru=Chýba alebo je neplatná maximálna veľkosť prijímaného paketu
 opts_msdesc=Možnosti uvedené nižšie povoľujú šifrovanie MPPE, ktoré používajú servery VPN systému Windows. MPPE však vyžaduje podporu v jadre PPP aj v operačnom systéme.
+
 mppe_mppe-40=Používate 40-bitové šifrovanie MPPE?
 mppe_mppe-128=Používate 128-bitové šifrovanie MPPE?
 mppe_mppe-stateless=Povoliť režim bez štátnej príslušnosti?
@@ -95,6 +101,7 @@ mppe_d1=Povolený
 mppe_mppe-stateful=Povoliť stavový režim MPPE?
 mppe_old=Varovanie - V konfiguračnom súbore boli nájdené smernice MPPE v starom štýle $1, hoci démon PPP podporuje smernice v novom štýle.
 mppe_new=Varovanie - Direktívy MPPE nového štýlu $1 boli nájdené v konfiguračnom súbore, hoci démon PPP podporuje iba direktívy starého štýlu.
+
 log_create=Vytvorený tunel PPTP $1 
 log_update=Upravený tunel PPTP $1 
 log_delete=Odstránený tunel PPTP $1 

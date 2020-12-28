@@ -25,6 +25,7 @@ index_family=Rodzina modeli
 index_serial=Numer seryjny
 index_capacity=Pojemność
 index_norm=Znormalizowane:
+
 monitor_type=SMART Drive Check
 monitor_type2=Zużycie SSD
 monitor_drive=Jedź, aby sprawdzić
@@ -40,14 +41,17 @@ monitor_wearlevel=Błąd, jeśli poziom zużycia spadnie poniżej
 monitor_ewearlevel=Nieprawidłowy procent poziomu zużycia
 monitor_nowearout=Dysk nie zgłasza wskaźnika zużycia dysku SSD
 monitor_wornout=Poziom zużycia spadł do $1 
+
 short_title=Krótki autotest
 short_doing=Rozpoczęcie krótkiego autotestu $1 ..
 short_failed=.. nie powiodło się!
 short_ok=.. test zaczął się OK. Zobacz status napędu na stronie głównej modułu, aby zobaczyć wyniki.
+
 ext_title=Rozszerzony autotest
 ext_doing=Uruchamianie rozszerzonego autotestu $1 ..
 ext_failed=.. nie powiodło się!
 ext_ok=.. test zaczął się OK. Zobacz status napędu na stronie głównej modułu, aby zobaczyć wyniki.
+
 data_title=Test zbierania danych
 data_doing=Rozpoczynam zbieranie danych offline na $1 ..
 data_failed=.. nie powiodło się!

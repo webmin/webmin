@@ -19,6 +19,7 @@ index_dump=Näytä Dump
 index_dumpdesc=Napsauta tätä painiketta, jos haluat nähdä Shorewall-jäljitystiedot <tt>shorewall6 dump</tt> -komennosta.
 index_check=Tarkista palomuuri
 index_checkdesc=Napsauta tätä painiketta, niin Shorewall vahvistaa palomuurisi asetukset <tt>shorewall6 check</tt> -komennolla.
+
 list_move=Liikkua
 list_add=Lisätä
 list_auto=Automaattinen
@@ -30,6 +31,7 @@ list_manual=Muokkaa tiedostoa manuaalisesti
 list_manualdesc=Napsauta tätä painiketta, kun haluat muokata Shorewall-tiedostoa $1 manuaalisesti, johon yllä olevat merkinnät on tallennettu.
 list_ecannot=Et voi muokata tätä Shorewall-taulukkoa.
 list_delete=Poista valitut
+
 restart_err=Asetusten määrittäminen epäonnistui
 refresh_err=Kokoonpanon päivittäminen epäonnistui
 start_err=Palomuurin käynnistäminen epäonnistui
@@ -41,6 +43,7 @@ check_title=Tarkista palomuuri
 check_ok=.. palomuurin kokoonpano näyttää hyvältä.
 check_failed=.. palomuurin kokoonpanossa löydettiin virhe!
 check_cmd=Tarkistetaan kokoonpano ..
+
 zones_title=Verkkoalueet
 zones_desc=Tällä sivulla luetellut vyöhykkeet edustavat järjestelmiäsi tavoitettavissa olevia verkkoja. Tässä olevilla merkinnöillä ei kuitenkaan ole mitään vaikutusta palomuuriin - sen sijaan ne vain määrittelevät vyöhykkeiden nimet ja kuvaukset.
 zones_add=Lisää uusi verkkoalue.
@@ -72,6 +75,7 @@ zones_firewall=Palomuurijärjestelmä
 zones_eopts=Virheelliset vyöhykeasetukset
 zones_eopts_in=Virheelliset alueelle saapuvat asetukset
 zones_eopts_out=Virheelliset vyöhykkeestä lähtevät asetukset
+
 policy_title=Oletuskäytännöt
 policy_desc=Tällä sivulla voit määrittää oletustoiminnot liikennettä varten eri palomuurivyöhykkeiden välillä. Ne voidaan ohittaa tietyillä isäntälajeilla tai tietotyypeillä palomuurisääntöjen sivulla.
 policy_add=Lisää uusi oletuskäytäntö.
@@ -92,6 +96,7 @@ policy_ulog=Kirjaudu ULOGiin
 policy_efw=&lt;Firewall&gt; voidaan valita sekä lähde- että kohdevyöhykkeille
 policy_elimit=Puuttuva tai virheellinen liikenteen rajanumero
 policy_eburst=Puuttuva tai virheellinen liikennepurskenumero
+
 rules_title=Palomuurisäännöt
 rules_desc=Tässä taulukossa luetellaan poikkeukset oletuskäytännöistä tietyntyyppiselle liikenteelle, lähteille tai kohteille. Valittua toimintoa sovelletaan paketteihin, jotka vastaavat valittua kriteeriä oletuksen sijaan.
 rules_add=Lisää uusi palomuurisääntö.
@@ -138,6 +143,7 @@ rules_eaction=Toimintoa ei ole valittu
 rules_macro=Makrotoimintaparametri
 rules_none2=Ei mitään
 rules_emacro=Puuttuva tai virheellinen makroparametri
+
 tos_title=Palvelun tyypit
 tos_desc=Tällä sivulla määritetään tietyn tyyppiselle liikenteelle IP-palvelutyypit, joita voidaan käyttää nostamaan tai laskemaan niiden prioriteetteja.
 tos_add=Lisää uuden tyyppinen palvelu.
@@ -156,6 +162,7 @@ tos_edit=Muokkaa palvelun tyyppiä
 tos_create=Luo palvelun tyyppi
 tos_header=Palvelun tyyppi
 tos_err=Palvelun tyypin tallentaminen epäonnistui
+
 interfaces_title=Verkkoliitännät
 interfaces_desc=Jokainen järjestelmän verkkoliitäntä, jota haluat Shorewallin hallittavan, olisi lueteltava tällä sivulla ja liitettävä vyöhykkeeseen, johon se on kytketty. Takaisinkytkentärajapinta <tt>lo</tt> ei saa koskaan olla luettelossa.
 interfaces_add=Lisää uusi verkkoliitäntä.
@@ -171,6 +178,7 @@ interfaces_header=Verkkorajapinnan yksityiskohdat
 interfaces_err=Verkkoliitännän tallentaminen epäonnistui
 interfaces_eiface=Puuttuva tai virheellinen käyttöliittymän nimi
 interfaces_ebroad=Puuttuva tai virheellinen lähetysosoite
+
 masq_title=naamioitunut
 masq_desc=Tämän sivun merkinnät määrittävät verkkoosoitteen muuntamisen liikenteelle, joka reititetään jonkin verkon ja tietyn rajapinnan välillä.
 masq_add=Lisää uusi naamiointisääntö.
@@ -201,6 +209,7 @@ masq_emnete=Tyhjä poikkeusverkkojen luettelo
 masq_esnat=Virheellinen SNAT-IP-osoite
 masq_eports=Puuttuva tai virheellinen pilkuilla erillinen luettelo porteista
 masq_eipsec=Puuttuvat IPsec-asetukset
+
 nat_title=Staattinen NAT
 nat_desc=Tämän taulukon staattisia verkkoosoitteiden käännösmerkintöjä voidaan käyttää asettamaan 1-1-kirjeenvaihto palomuurin ulkoisen osoitteen ja palomuurin takana olevan laitteen RFC1918-osoitteen välille. Staattista NAT: a käytetään usein yhteyksien luomiseen sisäiseen palvelimeen verkon ulkopuolelta.
 nat_add=Lisää uusi staattinen NAT-merkintä.
@@ -219,6 +228,7 @@ nat_local=Aktiivinen palomuurijärjestelmässä?
 nat_eext=Virheellinen ulkoinen IP-osoite
 nat_eint=Virheellinen sisäinen IP-osoite
 nat_evirt=Virheellinen virtuaalirajapinnan numero
+
 proxyndp_title=Välityspalvelimen NDP
 proxyndp_desc=Tällä sivulla voit määrittää järjestelmän vastaamaan NDP-pyyntöihin muihin kuin omaan IP-osoitteisiin, jotta se voi välittää paketit näihin osoitteisiin todellisiin kohteisiinsa.
 proxyndp_add=Lisää uusi välityspalvelimen NDP-osoite.
@@ -235,6 +245,7 @@ proxyndp_err=Välityspalvelimen NDP: n tallennus epäonnistui
 proxyndp_have=Onko isäntäreitti olemassa?
 proxyndp_eaddr=Puuttuva tai virheellinen osoite NDP: lle
 proxyndp_pers=Jätä reitti, vaikka palomuuri pysähtyi?
+
 routestopped_title=Kun lopetettu
 routestopped_desc=Oletusarvoisesti, kun Shorewall lopetetaan, se estää pääsyn kaikilta koneilta. Tällä sivulla voit määrittää isännät tai verkot, jotka ovat edelleen käytettävissä.
 routestopped_add=Lisää uusi pysäytetty osoite.
@@ -250,6 +261,7 @@ routestopped_err=Pysäytetyn osoitteen tallentaminen epäonnistui
 routestopped_eaddr=Osoitteita ei annettu
 routestopped_all=Kaikki osoitteet
 routestopped_list=Listatut osoitteet ja verkot ..
+
 tunnels_title=VPN-tunnelit
 tunnels_desc=Tällä sivulla on luettelo palomuurisi läpi kulkevista VPN-tunneleista, joten Shorewall-kokoonpanon on sallittava se.
 tunnels_add=Lisää uusi VPN-tunneli.
@@ -282,6 +294,7 @@ tunnels_generic_l=Yleinen protokollille ..
 tunnels_gsel=Listatut alueet
 tunnels_eopenvpn=Virheellinen porttinumero OpenVPN-tunnelille
 tunnels_egeneric=Puuttuva protokolla tai protokolla: yleisen tunnelin portti
+
 hosts_title=Alueen isännät
 hosts_desc=Tällä sivulla on luettelo isännöimistä ja verkoista, jotka kuuluvat tiettyihin vyöhykkeisiin. Sinun ei yleensä tarvitse tehdä mitään muutoksia tähän luetteloon.
 hosts_add=Lisää uusi vyöhyke-isäntä.
@@ -301,8 +314,10 @@ hosts_ip=Osoite tai verkko $1
 hosts_mac=MAC-osoite $1 
 hosts_ipset=IP asetettu $1 
 hosts_any=Mikä tahansa isäntä
+
 edit_before=Ennen tuloa $1 
 edit_after=Tulon jälkeen $1 
+
 blacklist_title=Mustan listan isännät
 blacklist_desc=Tällä sivulla luetellaan isännät ja palvelut, jotka estetään, jos niiden liikenne saapuu rajapintaan <b>mustan listan</b> kanssa.
 blacklist_add=Lisää uusi mustan listan isäntä.
@@ -325,6 +340,7 @@ blacklist_eproto=Puuttuva tai virheellinen protokolla
 blacklist_eports=Virheellinen porttinumero tai pilkuilla erotettu porttiluettelo
 blacklist_eports2=Portit voidaan määrittää vain TCP- ja UDP-protokollille
 blacklist_return=mustan listan isännät
+
 providers_title=Muut reitityspalveluntarjoajat
 providers_desc=Tämä sivu määrittelee ylimääräiset reititystaulukot. Näitä tarvitaan, jos sinulla on yhteyksiä useampaan kuin yhteen Internet-palveluntarjoajaan tai useita yhteyksiä samaan Internet-palveluntarjoajaan, tai jos suoritat Squidia läpinäkyvänä välityspalvelimena muussa isäntässä kuin palomuuri.
 providers_add=Lisää uusi reitityspalveluntarjoaja.
@@ -359,17 +375,21 @@ providers_enumber=Puuttuva tai virheellinen palveluntarjoajan numero
 providers_emark=Puuttuva tai virheellinen palveluntarjoajan merkkinumero
 providers_edup=Puuttuva toimittaja kopioimaan
 providers_egateway=Puuttuva tai virheellinen yhdyskäytävä
+
 manual_desc=Tätä lomaketta voidaan käyttää Shorewall-tiedoston $1 manuaaliseen muokkaamiseen. Ole varovainen, koska muutoksille ei suoriteta syntaksitarkistusta.
 manual_reset=Kumoa
 manual_err=Taulukkotiedoston tallentaminen epäonnistui
 manual_efile=Virheellinen taulukon nimi!
 manual_edata=Taulukkotiedoston sisältöä ei ole annettu.
+
 acl_nochange=Voiko Shorewall-määritykset hakea, pysäyttää ja käynnistää?
 acl_files=Saatavana Shorewall-pöydät
 acl_all=Kaikki
 acl_sel=Valittu alla ..
+
 delete_err=Rivien poistaminen epäonnistui
 delete_enone=Ei rivejä valittu
+
 opts_routeback=Hyväksy liikenne takaisin isäntään
 opts_source=Salli isännästä mihin tahansa määränpäähän
 opts_dest=Salli isäntä mistä tahansa lähteestä
@@ -386,12 +406,14 @@ opts_proxyndp=Ota välityspalvelimen NDP käyttöön
 opts_ndp_filter=Vastaa vain rajapinnan IP NDP-pyyntöihin
 opts_detectnets=Taylorin vyöhyke sisältää vain reititetyt isännät
 opts_upnp=Pakkaa kartta uudelleen UPNP: n kautta
+
 opts_dhcp=Rajapinta käyttää DHCP: tä
 opts_forward=Aseta edelleenlähetys
 opts_ignore=Ohita ylös/alas-tapahtumat
 opts_optional=Rajapinta on valinnainen
 opts_required=Rajapinta vaaditaan
 opts_bridge=Rajapinta on silta
+
 comment_add=Lisää uusi kommentti.
 comment_edit=Muokkaa kommenttia
 comment_create=Luo kommentti
@@ -399,6 +421,7 @@ comment_header=Taulukon kommentin yksityiskohdat
 comment_msg=Viesti
 comment_err=Kommentin tallentaminen epäonnistui
 comment_enone=Viestiä ei annettu
+
 log_create_table=Lisätty merkintä taulukkoon $1 
 log_modify_table=Muokattu merkintä $1 -taulukossa
 log_delete_table=Poistettu merkintä taulukosta $1 
@@ -414,6 +437,7 @@ log_start=Käynnistetty palomuuri
 log_refresh=Päivitetty palomuuri
 log_restart=Käynnistetty palomuuri uudelleen
 log_clear=Puhdistettu palomuuri
+
 shorewall_conf_title=Pääkonfiguraatiotiedosto
 shorewall_conf_desc=Tällä sivulla voit määrittää globaalit kokoonpanomuuttujat. HUOMAUTUS: Tässä ei suositella muuttujien järjestyksen muuttamista, jos haluat säilyttää kommenttien suhteellisen sijainnin asetustiedostossa.
 shorewall_conf_add=Lisää uusi kokoonpanomuuttuja.
@@ -427,6 +451,7 @@ shorewall_conf_create=Luo kokoonpanomuuttuja
 shorewall_conf_header=Kokoonpanomuuttujan yksityiskohdat
 shorewall_conf_err=Kokoonpanomuuttujan tallentaminen epäonnistui
 shorewall_conf_varname=Virheellinen muuttujan nimi (sen on oltava kelvollinen kuoremuuttujan nimi)
+
 params_title=Muokatut parametrit
 params_desc=Tällä sivulla voit määrittää Shorewallin mukautetut parametrit. HUOMAUTUS: Parametrijärjestyksen muuttamista tässä ei suositella, jos haluat säilyttää kommenttien suhteellisen sijainnin asetustiedostossa.
 params_add=Lisää uusi mukautettu parametri.

@@ -8,6 +8,7 @@ index_none=În prezent nu sunt exportate directoare în acest sistem.
 index_apply=Aplica schimbarile
 index_applydesc=Faceți clic pe acest buton pentru a aplica configurația curentă de partajare a fișierelor. Acest lucru va face ca toate directoarele enumerate mai sus să fie disponibile cu opțiunile specificate.
 index_return=lista acțiunilor
+
 edit_title1=Editați Partajare
 edit_title2=Creați Partajare
 edit_header1=Distribuie detalii
@@ -30,6 +31,7 @@ edit_anon1=Fără acces
 edit_aclok=Permiteți ACL-uri?
 edit_public=Partajare WebNFS?
 edit_index=Fișier index WebNFS
+
 save_err=Nu a reușit salvarea partajării
 save_edirectory=„$1” nu este un nume de director valid
 save_edirectory2=Directorul „$1” nu există
@@ -38,13 +40,18 @@ save_ero=Nu ați listat nicio gazdă cu care să partajați doar în citire
 save_eroot=Nu ați listat nicio gazdă cu care să partajați root
 save_ealready=Directorul „$1” este deja partajat
 save_ehost=Gazda „$1” nu există
+
 log_modify=Ponderea modificată NFS $1 
 log_rename=Cota schimbată NFS $1 la $2 
 log_create=% Share NFS creat $1 
 log_delete=Partajare NFS ștersă $1 
 log_apply=Modificări aplicate
+
 acl_view=Poate edita acțiuni NFS?
+
 ecannot=Nu aveți voie să gestionați acțiuni NFS
+
 delete_err=Nu a reușit să ștergeți acțiunile
 delete_enone=Nimic selectat
+
 restart_err=Eroare la aplicarea modificărilor

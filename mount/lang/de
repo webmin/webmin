@@ -12,6 +12,7 @@ index_return=Dateisystemliste
 index_none=Sie haben keinen Zugriff auf irgendwelche gemounteten Dateisysteme.
 index_mount2=Einhängen mit Passwort:
 index_root=Root Dateisystem
+
 edit_title=Bearbeite Mount
 create_title=Lege Mount an
 edit_err=Fehler beim Bearbeiten des Mounts
@@ -58,6 +59,7 @@ edit_ecannot=Sie dürfen dieses Dateisystem nicht ändern
 edit_ecannot2=Sie dürfen keine neuen Dateisysteme hinzufügen.
 edit_3_or_lower=3 (oder niedriger)
 edit_advanced=Erweiterter Modus
+
 save_err=Fehler beim Speichern des Mounts
 save_edir='$1' ist kein Verzeichnis
 save_edirname='$1' ist kein gültiger Verzeichnisname
@@ -74,8 +76,10 @@ save_apply=Anwenden auf permanente Liste
 save_fapply=Erzwinge Aushängen
 save_eremount=Remount schlug fehl: $1
 save_enone=Sie haben nicht ausgewählt, ob gespeichert oder gemountet werden soll
+
 swap_err=Fehler beim Anlegen der Auslagerungsdatei
 swap_esize='$1' ist keine gültige Größe
+
 nfs_server=Wähle NFS-Server..
 nfs_select=Wählen Sie einen NFS-Server, von dem gemountet werden soll..
 nfs_ip=IP-Adresse
@@ -87,6 +91,7 @@ nfs_seldir=Wählen Sie ein NFS-Verzeichnis zum mounten..
 nfs_seldirv4=Für einen NFSv4-Einhängepunkt müssen Sie '/' auswählen
 nfs_dir=Verzeichnis
 nfs_clients=Clients
+
 smb_choose=Wähle einen CIFS-Server..
 smb_elist=Fehler beim Holen der Serverliste von $1. Vielleicht erlaubt der Server kein Durchsuchen
 smb_eworkgroup=Keine Arbeitsgruppe auf der Modulkonfigurationsseite eingestellt
@@ -103,6 +108,7 @@ smb_sel2=Wählen Sie eine Freigabe zum mounten..
 smb_share=Freigabe
 smb_comment=Kommentar
 smb_noshares=Es sind keine verfügbaren Freigaben auf dem Server $1
+
 solaris_scsidev=SCSI-Controller $1 Ziel $2 Gerät $3 Partition $4
 solaris_idedev=IDE Kontroller $1 Laufwerk $2 Partition $3
 solaris_mddev=RAID-Gerät $1
@@ -240,6 +246,7 @@ solaris_efstyp2=Fehler beim Überprüfen des Dateisystemtyps: $1
 solaris_ecachedir='$1' ist kein gültiges Cache-Verzeichnis
 solaris_efmode='$1' ist kein gültiger oktaler Dateimodus
 solaris_edmode='$1' ist kein gültiger oktaler Verzeichnismodus
+
 linux_eamd=AMD schlug fehl
 linux_eauto=Automount schlug fehl: $1
 linux_esmbconn=Fehler beim Verbinden zum Server
@@ -385,6 +392,7 @@ linux_eiocharset=Fehlender oder ungültiger IO-Zeichensatz
 linux_nounix=Deaktiviere CIFS-Unix-Erweiterungen?
 linux_cvers=CIFS Version
 linux_ecvers=CIFS Version muss eine Zahl sein
+
 log_mount=$3 eingehängt
 log_mount_l=$2 $1 auf $3 eingehängt
 log_umount=$3 ausgehängt
@@ -398,7 +406,9 @@ log_modify_l=$2 Einhängepunkt $1 auf $3 geändert
 log_delete=Einhängepunkt $3 gelöscht
 log_delete_l=$2 Einhängepunkt $1 auf $3 gelöscht
 log_swap=Erstellte SWAP Datei $1
+
 unmount_err=Konnte $1 nicht aushängen
+
 mount_err=Konnte $1 nicht mounten
 irix_nhost=NFS-Hostname
 irix_ndir=NFS-Verzeichnis
@@ -429,6 +439,7 @@ irix_rock=Rock-Ridge-Erweiterungen nutzen?
 irix_nofsck=Dateisystem beim Booten prüfen?
 irix_auto=Automount-Quelle
 irix_automap=Map-Datei
+
 irix_ehost=Der Host '$1' existiert nicht
 irix_eloss=Der Host '$1' ist offline
 irix_eshowmount=Der Host '$1' scheint NFS nicht zu unterstützen.
@@ -446,9 +457,11 @@ irix_efstyp2=Konnte Dateisystem $1 nicht ermitteln : $2
 irix_efstyp=Das Dateisystem auf $1 ist $2 und nicht $3
 irix_eautomap=Die Automount-Map-Datei '$1' existiert nicht
 irix_eauthmap2=Fehlende oder ungültige Automount-Map-Datei
+
 irix_devroot=Root-Partition
 irix_devswap=Swap-Partition
 irix_autohosts=Alle NFS-Exporte
+
 acl_only=Nur Einhängen und Aushängen erlauben?
 acl_fs=Dateisysteme, die geändert werden können
 acl_types=Filesystem-Typen, die verwendet werden können
@@ -461,8 +474,10 @@ acl_hide=Verstecke nicht editierbare Dateisysteme?
 acl_simple=Zeige einfaches Mount Formular?
 acl_simopts=Zeige vereinfachte Dateisystem Optionen?
 acl_browse=Zeige Datei und teile Durchsuche-Tasten?
+
 egcc=Der GCC- oder CC-Compiler, welcher für das Anlegen der Kommandos gebraucht wird, um die Liste der eingehängten Dateisysteme Ihres Systemes zu ermitteln, ist nicht verfügbar.
 ecompile=Beim Anlegen des Kommandos, um einhangene Dateisystem aufzulisten, ist ein Fehler aufgetreten : $1
+
 freebsd_eaddr=Fehlende oder ungültige Server-Adresse
 freebsd_eworkgroup=Fehlende oder ungültige Arbeitsgruppe
 freebsd_ide=IDE Festplatte
@@ -476,8 +491,10 @@ freebsd_idedev=IDE-Gerät $1, Slice $2, Partition $3
 freebsd_scsidev=SCSI-Gerät $1, Slice $2, Partition $3
 freebsd_edevpath=Anderes Gerät muss ein absoluter Pfad sein, wie /dev/cdrom
 freebsd_edevfile=Die Gerätedatei '$1' existiert nicht
+
 cswap_file=Die SWAP Datei $1 existiert nicht.
 cswap_size=Erstelle und Mounten einer Swap-Datei mit Größe
+
 acl_sysinfo=Verfügbare Datenträgerdaten im Dashboard anzeigen?
 sysinfo_total=Gesamt
 sysinfo_dev=Geräte-ID

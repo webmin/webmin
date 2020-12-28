@@ -10,6 +10,7 @@ index_hosts=værter
 index_cmd=Kommando
 index_delete=Slet valgt
 index_none=ingen
+
 edit_title1allow=Opret tilladt regel
 edit_title2allow=Rediger Tillad regel
 edit_title1deny=Opret afvisningsregel
@@ -22,9 +23,11 @@ edit_hosts=Fjernværter
 edit_hostsexcept=Undtagen værter
 edit_cmd=Shell-kommandoer
 edit_efound=Daemon '$1' blev ikke fundet i xinetd-konfiguration.
+
 save_errtitle=Fejl ved Gem-regel
 save_ehost=Værtsinput indeholder dårlige tegn
 save_ecmd=Kommandoinput indeholder dårlige tegn
 save_eservice=Daemon-navne indeholder dårlige tegn
+
 del_errtitle=Fejl ved sletning af regler
 del_enone=Ingen regler markeret for at slette

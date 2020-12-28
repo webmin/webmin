@@ -45,12 +45,15 @@ index_showing=Menunjukkan pangkalan data padanan $1 ..
 index_emsg=Mesej ralat MySQL penuh adalah : $1 
 index_jump=Atau edit pangkalan data:
 index_jumpok=Buka
+
 login_err=Daftar masuk gagal
 login_ecannot=Anda tidak dibenarkan untuk mengkonfigurasi pangkalan data pangkalan data
 login_elogin=Log masuk pentadbiran yang tiada
 login_epass=Nama pengguna atau kata laluan pentadbiran yang tidak betul
+
 stop_err=Gagal menghentikan pangkalan data
 start_err=Gagal memulakan pangkalan data
+
 dbase_title=Edit Pangkalan Data
 dbase_header=Jadual pangkalan data, indeks dan pandangan
 dbase_tables=Jadual Pangkalan Data
@@ -81,6 +84,7 @@ dbase_type=Taipkan
 dbase_typetable=Jadual ($1)
 dbase_typeindex=Indeks
 dbase_typeview=Lihat
+
 ddrop_err=Gagal untuk menurunkan pangkalan data
 ddrop_title=Drop Database
 ddrop_rusure=Adakah anda pasti mahu menurunkan pangkalan data $1 ? $2 jadual yang mengandungi $3 baris data akan dipadamkan.
@@ -89,6 +93,7 @@ ddrop_mysql=Kerana ini pangkalan data utama, menjatuhkannya mungkin membuat pela
 ddrop_ok=Drop Database
 ddrop_empty=Hanya Padamkan Semua Jadual
 ddrop_empty2=Padamkan Semua Jadual
+
 ddrops_err=Gagal untuk menggugurkan pangkalan data
 ddrops_title=Drop Databases
 ddrops_rusure=Adakah anda pasti mahu menggugurkan pangkalan data terpilih $1 ? $2 jadual yang mengandungi $3 baris data akan dipadamkan.
@@ -97,6 +102,7 @@ ddrops_mysql=Kerana pangkalan pangkalan data dipilih, menjatuhkannya mungkin mem
 ddrops_ok=Drop Databases
 ddrops_enone=Tiada pangkalan data yang dipilih
 ddrops_ecannotdb=Anda tidak dibenarkan menjatuhkan pangkalan data $1 
+
 table_title=Edit Jadual
 table_title2=Buat Jadual
 table_header=Jadual $1 dalam pangkalan data $2 
@@ -142,16 +148,19 @@ table_nextra=Tambahan dikaitkan
 table_eautokey=Medan auto-incrementent juga mesti menjadi kunci utama
 table_eauto=Hanya satu bidang boleh auto-incrementing
 table_delete=Padamkan Medan yang Dipilih
+
 tdrop_err=Gagal menggugurkan jadual
 tdrop_title=Drop Table
 tdrop_rusure=Adakah anda pasti mahu menjatuhkan jadual $1 dalam pangkalan data $2 ? $3 baris data akan dipadamkan.
 tdrop_ok=Drop Table
+
 tdrops_enone=Tiada jadual untuk jatuh dipilih
 tdrops_err=Gagal melepaskan jadual (s)
 tdrops_ok=Drop
 tdrops_title=Drop dipilih
 tdrops_rusure=Adakah anda pasti mahu menjatuhkan $1 jadual yang dipilih dalam pangkalan data $2 ? $3 baris data akan dipadamkan.
 tdrops_rusure2=Adakah anda pasti mahu menjatuhkan $1 jadual yang dipilih dalam pangkalan data $2 ?
+
 field_title1=Tambah Medan
 field_title2=Ubah Suai Bidang
 field_in=Dalam jadual $1 dalam pangkalan data $2 
@@ -185,6 +194,7 @@ field_esize='$1' bukan saiz medan yang sah
 field_eenum=Tiada nilai yang dinyatakan
 field_efield='$1' bukan nama medan yang sah
 field_ekey=Bidang yang membenarkan nol tidak boleh menjadi sebahagian daripada kunci utama
+
 view_title=Data Jadual
 view_pos=Baris $1 hingga $2 daripada $3 
 view_none=Jadual ini tidak mengandungi data.
@@ -219,6 +229,7 @@ view_keep=Biarkan tidak berubah
 view_set=Tetapkan pada kandungan fail ..
 view_adv=carian terperinci
 view_sqlrun=Keputusan yang dihasilkan oleh pertanyaan SQL : $1 
+
 users_title=Kebenaran Pengguna
 users_user=Pengguna
 users_host=Hos
@@ -245,6 +256,7 @@ users_ssl=Sijil
 users_dtitle=Padamkan Kebenaran Pengguna
 users_drusure=Adakah anda pasti mahu menghapuskan kebenaran pengguna MySQL yang dipilih $1 ?
 users_dok=Padamkan Pengguna
+
 user_title1=Buat Pengguna
 user_title2=Edit Pengguna
 user_header=Butiran pengguna MySQL
@@ -308,6 +320,7 @@ user_emax_user_connections=Masuk serentak maksimum mestilah nombor
 user_emax_connections=Sambungan maksimum sejam mestilah nombor
 user_emax_updates=Kemas kini maksimum sejam mestilah nombor
 user_emax_questions=Pertanyaan maksimum setiap jam mestilah nombor
+
 dbs_title=Kebenaran Pangkalan Data
 dbs_db=Pangkalan data
 dbs_user=Pengguna
@@ -326,6 +339,7 @@ dbs_enone=Tiada pangkalan data yang dipilih
 dbs_dtitle=Padamkan Kebenaran Pangkalan Data
 dbs_drusure=Adakah anda pasti mahu menghapuskan kebenaran database MySQL terpilih $1 ?
 dbs_dok=Padamkan Kebenaran
+
 db_title1=Buat Kebenaran Pangkalan Data
 db_title2=Edit Kebenaran Pangkalan Data
 db_header=Pilihan kebenaran pangkalan data
@@ -340,6 +354,7 @@ db_err=Gagal menyimpan kebenaran pangkalan data
 db_euser=Nama pengguna yang hilang atau tidak sah
 db_ehost=Nama tuan rumah yang hilang atau tidak sah
 db_edb=Nama pangkalan data yang hilang atau tidak sah
+
 hosts_title=Kebenaran Hos
 hosts_db=Pangkalan data
 hosts_host=Hos
@@ -355,6 +370,7 @@ hosts_dtitle=Padam Kebenaran Hos
 hosts_drusure=Adakah anda pasti mahu memadamkan keizinan hos MySQL yang dipilih $1 ?
 hosts_dok=Padamkan Kebenaran
 hosts_return=kebenaran tuan rumah
+
 host_title1=Buat Kebenaran Hos
 host_title2=Edit Kebenaran Hos
 host_header=Pilihan kebenaran tuan rumah
@@ -364,6 +380,7 @@ host_sel=Dipilih
 host_otherdb=Corak pencocokan
 host_host=Hos
 host_perms=Kebenaran
+
 newdb_title=Buat Pangkalan Data
 newdb_header=Pilihan pangkalan data baru
 newdb_db=Nama pangkalan data
@@ -377,6 +394,7 @@ newdb_err=Gagal membuat pangkalan data
 newdb_edb=Nama pangkalan data yang hilang atau tidak sah
 newdb_ecannot=Anda tidak dibenarkan membuat pangkalan data
 newdb_ecannot2=Anda tidak dibenarkan membuat sebarang pangkalan data lagi
+
 exec_title=Jalankan SQL
 exec_header=Masukkan arahan SQL untuk melaksanakan pada pangkalan data $1 ..
 exec_old=Atau pilih arahan SQL terdahulu :
@@ -413,6 +431,7 @@ exec_iheader=Pilihan import fail teks
 exec_created=$1 jadual telah dibuat.
 exec_inserted=$1 rekod dimasukkan.
 exec_cs=Watak yang ditetapkan untuk data
+
 tprivs_title=Kebenaran Jadual
 tprivs_table=Jadual
 tprivs_db=Pangkalan data
@@ -431,6 +450,7 @@ tprivs_enone=Tiada jadual dipilih
 tprivs_dtitle=Padam Kebenaran Jadual
 tprivs_drusure=Adakah anda pasti mahu memadamkan kebenaran jadual MySQL yang dipilih $1 ?
 tprivs_dok=Padamkan Kebenaran
+
 tpriv_title1=Buat Kebenaran Jadual
 tpriv_title2=Edit Kebenaran Jadual
 tpriv_header=Pilihan kebenaran jadual
@@ -447,6 +467,7 @@ tpriv_etable=Tiada jadual dipilih
 tpriv_euser=Nama pengguna yang hilang atau tidak sah
 tpriv_ehost=Tuan rumah yang hilang atau tidak sah
 tpriv_edb=Nama pangkalan data yang hilang atau tidak sah
+
 cprivs_title=Kebenaran Medan
 cprivs_field=Padang
 cprivs_table=Jadual
@@ -466,6 +487,7 @@ cprivs_enone=Tiada medan dipilih
 cprivs_dtitle=Padamkan Kebenaran Tiang
 cprivs_drusure=Adakah anda pasti mahu memadamkan kebenaran ruang $1 MySQL yang dipilih?
 cprivs_dok=Padamkan Kebenaran
+
 cpriv_title1=Buat Kebenaran Medan
 cpriv_title2=Edit Kebenaran Medan
 cpriv_header=Pilihan kebenaran lapangan
@@ -482,11 +504,13 @@ cpriv_etable=Tiada jadual dipilih
 cpriv_euser=Nama pengguna yang hilang atau tidak sah
 cpriv_ehost=Tuan rumah yang hilang atau tidak sah
 cpriv_edb=Nama pangkalan data yang hilang atau tidak sah
+
 esql=SQL $1 gagal : $2 
 eparse=Webmin tidak dapat mengurai output daripada arahan $1 kerana sifat data dalam pangkalan data anda. Anda perlu memasang modul $2 dan $3 Perl untuk menyelesaikan masalah ini.
 edenied=Anda tidak mempunyai akses kepada pangkalan data MySQL ini
 perms_ecannot=Anda tidak dibenarkan mengedit kebenaran
 perms_edb=Anda hanya dibenarkan mengedit kebenaran untuk pangkalan data anda sendiri
+
 acl_dbs=Pangkalan data pengguna ini boleh dikendalikan
 acl_dall=Semua pangkalan data
 acl_dsel=Terpilih ..
@@ -507,6 +531,7 @@ acl_bnone=Membatalkan sandaran
 acl_indexes=Boleh melihat dan mengurus indeks?
 acl_views=Boleh melihat dan mengurus pandangan?
 acl_files=Bolehkah melaksanakan SQL dari fail tempatan?
+
 log_start=Memulakan pelayan MySQL
 log_stop=Berhenti pelayan MySQL
 log_cnf=Konfigurasi pelayan MySQL diubah
@@ -571,6 +596,7 @@ log_importfile=Data yang diimport dari fail $1
 log_set=Perubahan $1 pembolehubah MySQL
 log_root=Kata laluan pentadbiran yang diubah
 log_manual=Fail config yang diedit secara manual
+
 backup_title=Pangkalan Data Cadangan
 backup_title2=Sandaran Semua Pangkalan Data
 backup_edump=Program sandaran MySQL $1 tidak dijumpai pada sistem anda. Mungkin konfigurasi modul <a href='$2'>anda</a> tidak betul.
@@ -649,15 +675,18 @@ backup_bodyspace=Saiz fail: $1 Ruang bebas : $2
 backup_bodyall=semua
 backup_edownloadall=Hanya sandaran pangkalan data sahaja boleh dimuat turun
 backup_edownloadsave=Mod muat turun tidak boleh digunakan untuk backup yang dijadualkan
+
 import_title=Import Data
 import_uploadout=Mengimport data dari fail yang dimuat naik ..
 import_fileout=Mengimport data dari fail $1 ..
 import_eupload=Fail import yang dimuat naik
 import_efile=Tiada nama fail import
+
 adv_title=carian terperinci
 adv_and=Cari rekod yang sepadan dengan semua kriteria ..
 adv_or=Cari rekod yang sepadan dengan mana-mana kriteria ..
 adv_ok=Cari Sekarang
+
 csv_title=Fail CSV Eksport
 csv_header=Pilihan eksport CSV
 csv_dest=Destinasi eksport
@@ -678,6 +707,7 @@ csv_done=Eksport CSV ke $1 selesai. Saiz fail yang terhasil ialah $2.
 csv_headers=Sertakan nama lajur dalam CSV?
 csv_cols=Lajur untuk disertakan dalam CSV
 csv_ecols=Tiada lajur dipilih
+
 cnf_title=Konfigurasi Server MySQL
 cnf_efile=Fail konfigurasi MySQL $1 tidak dijumpai pada sistem anda. Anda mungkin perlu melaraskan konfigurasi modul <a href='$2'></a> untuk menggunakan laluan yang betul.
 cnf_header=Pilihan pelayan MySQL
@@ -719,11 +749,13 @@ cnf_restart=Simpan dan Mulakan Semula MySQL
 cnf_fpt=Fail berasingan untuk setiap jadual InnoDB?
 cnf_ilt=Masa tamat lock InnoDB (dalam saat)
 cnf_eilt=Masa tamat kunci InnoDB mestilah integer
+
 manual_title=Edit Fail Config
 manual_file=Edit fail konfig:
 manual_ok=okey
 manual_efile=Fail konfigurasi tidak sah!
 manual_err=Gagal menyimpan fail konfigurasi
+
 index_title1=Buat Indeks
 index_header1=Pilihan Indeks
 index_name=Nama indeks
@@ -739,12 +771,15 @@ index_ecols=Tiada medan dipilih
 index_title2=Edit Indeks
 index_header=Indeks $1 dalam pangkalan data $2 
 index_ecannot=Anda tidak dibenarkan menguruskan indeks
+
 syslog_desc=Mesej ralat MySQL
 syslog_desc2=Mesej ralat MySQL
 syslog_logdesc=Pertanyaan MySQL
+
 fdrop_err=Gagal memadamkan medan
 fdrop_enone=Tiada yang dipilih
 fdrop_eall=Anda tidak boleh memadam semua medan dari jadual!
+
 view_title1=Buat Lihat
 view_title2=Edit Paparan
 view_header1=Lihat butiran
@@ -770,6 +805,7 @@ view_cascaded=Pandangan mendasar
 view_local=Pandangan ini sahaja
 view_nocheck=Tiada
 view_ecannot=Anda tidak dibenarkan mengurus pandangan
+
 procs_title=Sambungan Pangkalan Data
 procs_id=ID
 procs_user=Nama pengguna
@@ -781,9 +817,11 @@ procs_query=Pertanyaan berjalan
 procs_kill=Bunuh Sambungan Terpilih
 procs_ecannot=Anda tidak dibenarkan melihat sambungan pangkalan data
 procs_none=Tiada sambungan klien pangkalan data pada masa ini.
+
 kill_err=Gagal membunuh sambungan pangkalan data
 kill_ecannot=Anda tidak dibenarkan menguruskan sambungan pangkalan data
 kill_enone=Tiada yang dipilih
+
 vars_title=Pembolehubah Sistem MySQL
 vars_desc=Amaran - Pembolehubah yang ditetapkan pada halaman ini akan ditetapkan semula kepada nilai lalai apabila MySQL dimulakan semula. Tetapan tetap mesti dilakukan pada halaman <a href='$1'>Konfigurasi Pelayan MySQL</a>.
 vars_ecannot=Anda tidak dibenarkan mengedit pembolehubah sistem
@@ -794,6 +832,7 @@ vars_search=Tunjukkan pemboleh ubah yang sepadan:
 vars_ok=Carian
 vars_none2=Tiada pembolehubah sistem yang sepadan dengan carian anda.
 vars_none=Tiada pemboleh ubah sistem ditemui!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
@@ -805,7 +844,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=Pilihan utama
 compat_no_table_options=Pilihan jadual
 compat_no_field_options=Pilihan bidang
+
 config_echarset=Set aksara watak yang hilang atau tidak sah
+
 root_title=Tukar Kata Laluan Pentadbiran
 root_header=Kata laluan pentadbiran baru
 root_user=Log masuk pentadbiran
@@ -818,6 +859,7 @@ root_epass1=Tiada kata laluan baru yang dimasukkan
 root_epass2=Kata laluan tidak sepadan
 root_none=Tiada kata laluan!
 root_auto=Automatik (biasanya <tt>root</tt>)
+
 mysqlpass_err=Mod selamat MySQL
 mysqlpass_esafecmd=Perintah $1 yang diperlukan untuk memulakan MySQL dengan pengesahan yang dilumpuhkan tidak dijumpai
 mysqlpass_eshutdown=Penutupan gagal : $1 

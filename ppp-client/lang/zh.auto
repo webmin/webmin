@@ -24,13 +24,16 @@ index_out=$1的输出为
 index_boot=在启动时连接：
 index_noboot=&lt;不连接&gt;
 index_bootdesc=更改此选项可控制是否在引导时启动所选的PPP连接。
+
 init_title=检测配置
 init_cmd=使用命令 $1..检测连接的调制解调器
 init_done=..完成
 init_modems=调制解调器在 $1和 $2上配置。
 init_modem=在 $1上检测到调制解调器。
 init_none=未检测到调制解调器！
+
 device_serial=串行端口 $1
+
 connect_title=建立连接
 connect_cmd=试图与命令 $1..建立连接
 connect_failed=.. 连接失败！请参阅上面的输出以了解原因。
@@ -40,12 +43,14 @@ connect_dns=使用PPP分配的DNS配置。
 connect_dns2=已设置PPP分配的DNS配置。
 connect_dnsto=等待PPP分配的DNS配置超时。
 connect_dnsdown=等待PPP分配的DNS配置时，连接似乎失败。
+
 disc_title=关闭PPP
 disc_err=无法关闭PPP连接
 disc_edown=已断开连接
 disc_ok1=使用 $2建立的PPP连接已成功关闭。
 disc_ok2=您的PPP连接已成功关闭。
 disc_dns=恢复了旧的DNS配置。
+
 edit_title1=添加ISP拨号器
 edit_title2=编辑ISP拨号器
 edit_ddesc=这些默认设置将适用于使用任何其他拨号程序进行的连接。
@@ -76,6 +81,7 @@ edit_idle=空闲超时（以秒为单位）
 edit_def=从默认设置
 edit_inherits=继承设置
 edit_from=从拨号器 ..
+
 save_err=保存拨号器失败
 save_err2=删除拨号失败
 save_ename=拨号器名称缺失或无效
@@ -88,6 +94,7 @@ save_edial=拨号尝试次数丢失或无效
 save_eidle=缺少或无效的空闲超时
 save_einherits=无法删除该拨号程序，因为'$1'从其继承设置。
 save_eclash=具有相同名称的拨号器已存在
+
 log_create=已建立 $1
 log_update=更新了 $1
 log_delete=已删除 $1

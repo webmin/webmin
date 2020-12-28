@@ -11,6 +11,7 @@ index_version2=میل بھیجنے والا ورژن$1 ، تشکیل$2
 index_xversion=بھیجنے والا ورژن$1
 index_version=بھیجنے کی تشکیل$1
 index_sendmail=ارسال کریں
+
 opts_title=بھیجنے کے اختیارات
 opts_ecannot=آپ کو بھیجنے کے اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
 opts_ds=آؤٹ گوئنگ میل کو میزبان کے ذریعہ بھیجیں
@@ -57,6 +58,7 @@ opts_qso=بذریعہ میل قطار ترتیب دیں
 opts_priority=ترجیح
 opts_host=میزبان کا نام
 opts_time=وقت موصول ہوا
+
 aliases_title=میل عرفات
 aliases_ecannot=آپ کو عرفی نام میں ترمیم کرنے کی اجازت نہیں ہے
 aliases_enofile=آپ کے میل بھیجنے میں کوئی عرفی فائل متعین نہیں کی جاتی ہے
@@ -73,6 +75,7 @@ aliases_return=عرف کی فہرست
 aliases_toomany=آپ کے سسٹم پر اس صفحے پر ظاہر کرنے کے لئے بہت سارے میل عرفات موجود ہیں۔
 aliases_go=مماثل عرفات تلاش کریں:
 aliases_delete=منتخب کردہ عرفات کو حذف کریں
+
 aform_ecannot=آپ کو یہ عرف تبدیل کرنے کی اجازت نہیں ہے
 aform_type0=کوئی نہیں
 aform_type1=ای میل اڈریس
@@ -90,11 +93,13 @@ aform_val=عرف عرف
 aform_afile=ترمیم ..
 aform_return=عرف
 aform_cmt=تفصیل
+
 afile_title=ایڈریس فائل میں ترمیم کریں
 afile_desc=فائل$1 میں پتے میں ترمیم کرنے کے لئے نیچے ٹیکسٹ ایریا کا استعمال کریں۔
 afile_efile=آپ کو$1 میں ترمیم کرنے کی اجازت نہیں ہے۔
 afile_undo=تبدیلیوں کو کالعدم کریں
 afile_ewrite=ایڈریس فائل :$1 پر لکھنے میں ناکام
+
 ffile_title=فلٹر فائل میں ترمیم کریں
 ffile_desc=فائل$1 میں فلٹر قواعد ترتیب دینے کے لئے نیچے دیئے گئے فارم کا استعمال کریں۔
 ffile_efile=آپ کو$1 میں ترمیم کرنے کی اجازت نہیں ہے۔
@@ -110,6 +115,7 @@ ffile_other=بصورت دیگر$1 پر آگے بڑھیں
 ffile_err=فلٹر فائل کو محفوظ کرنے میں ناکام
 ffile_ematch=گمشدہ میچ
 ffile_eaction=فارورڈنگ پتہ غائب ہے
+
 rfile_title=خودکار طریقے سے فائل میں ترمیم کریں
 rfile_desc=$1 میں خودکار طریقے سے پیغام میں ترمیم کرنے کے لئے نیچے دیئے گئے ٹیکسٹ ایریا کا استعمال کریں۔ اس پیغام میں میکرو $ سبجیکٹ ، RO منجانب ، $ TO ، ATE تاریخ اور OD جسم شامل ہوسکتے ہیں جو خود کار طریقے سے چالو ہونے پر اسے بڑھایا جائے گا۔
 rfile_desc2=You can also set mail headers that add to or replace the defaults used in the autoreply by putting lines like:<br><tt>From: foo@bar.com</tt><br><tt>Subject: On holiday</tt><br>at the top of the message, separated from the body by a single blank line.
@@ -129,6 +135,7 @@ rfile_from=منجانب: جواب کے لئے پتہ
 rfile_auto=خودکار (وصول کنندہ کے پتے پر مبنی)
 rfile_efrom=گم: منجانب
 rfile_fromdesc=A منجانب: ہر جگہ جہاں بھی ممکن ہو پتے کی وضاحت کی جانی چاہئے ، کیونکہ خودکار طریقہ قابل اعتماد نہیں ہوسکتا ہے۔
+
 asave_err=عرف کو بچانے میں ناکام
 asave_ecannot2=آپ کو عرفی نام میں ترمیم کرنے کی اجازت نہیں ہے
 asave_ecannot=آپ کو یہ عرف تبدیل کرنے کی اجازت نہیں ہے
@@ -145,9 +152,11 @@ asave_etype5=خود کار طریقے سے فائل '$1' درست نہیں ہے
 asave_etype4none=کوئی پروگرام نہیں دیا گیا
 asave_etype6=فلٹر فائل 'Fil 1' درست نہیں ہے
 asave_esame=آپ کو صرف اسی نام سے ایک عرفی نام بنانے کی اجازت ہے جس میں آپ کے ویب مائن لاگ ان ہوں
+
 adelete_err=عرفی نام کو حذف کرنے میں ناکام
 adelete_enone=کوئی بھی منتخب نہیں ہوا
 adelete_ecannot=آپ کو عرف$1 کو حذف کرنے کی اجازت نہیں ہے
+
 cws_title=مقامی ڈومینز
 cws_ecannot=آپ کو مقامی ڈومین میں ترمیم کرنے کی اجازت نہیں ہے
 cws_domains=اس سرور کے ذریعہ ڈومینز کو سنبھالا جاتا ہے
@@ -156,6 +165,7 @@ cws_desc2=نوٹ کریں کہ صرف فہرست میں ڈومین شامل کر
 cws_err=مقامی ڈومینز کو بچانے میں ناکام
 cws_ehost='$1' درست میزبان یا ڈومین نام نہیں ہے
 cws_eip='$1' ایک IP ایڈریس ہے ، ڈومین کا نہیں
+
 masq_title=ڈومین بہانا
 masq_ecannot=آپ کو ماسکریڈنگ ترتیب دینے کی اجازت نہیں ہے
 masq_domain=بطور ڈومین بہانا
@@ -167,12 +177,14 @@ masq_err=ڈومین ماسکریڈنگ کو بچانے میں ناکام
 masq_edomain='$1' بہانا ایک درست ڈومین نہیں ہے
 masq_ehost='$1' درست میزبان یا ڈومین نام نہیں ہے
 masq_eip='$1' ایک IP ایڈریس ہے ، ڈومین کا نہیں
+
 trusts_title=قابل اعتماد صارفین
 trusts_ecannot=آپ کو قابل اعتماد صارفین میں ترمیم کرنے کی اجازت نہیں ہے
 trusts_users=مقامی صارفین پر بھیجے گئے میل پر اعتماد کیا گیا
 trusts_desc=If a local user tries to send email, sendmail will only allow the user to provide a different <tt>From:</tt> address if the user is on the list below. This restriction exists to prevent users from forging email with faked <tt>From:</tt> addresses origination from your system.
 trusts_err=قابل اعتماد صارفین کو بچانے میں ناکام
 trusts_euser='$1' درست صارف نہیں ہے
+
 virtusers_title=ایڈریس میپنگز
 virtusers_ecannot=آپ کو ایڈریس میپنگز میں ترمیم کرنے کی اجازت نہیں ہے
 virtusers_efeature=Your sendmail configuration does not have the address mapping (<tt>virtuser</tt>) feature enabled. <a href='$1'>Click here</a> to setup sendmail features.
@@ -190,6 +202,7 @@ virtusers_return=پتے کی نقشہ سازی کی فہرست
 virtusers_toomany=آپ کے سسٹم میں اس صفحے پر ظاہر کرنے کے لئے بہت سارے ایڈریس میپنگز موجود ہیں۔
 virtusers_go=ایڈریس میپنگز ملاپ والے ڈھونڈیں:
 virtusers_delete=منتخب ایڈریس میپنگز کو حذف کریں
+
 vform_edit=ایڈریس میپنگ میں ترمیم کریں
 vform_create=ایڈریس میپنگ بنائیں
 vform_for=کے لئے میل
@@ -206,6 +219,7 @@ vform_err_tempfail=عارضی ناکامی
 vform_err_protocol=پروٹوکول میں خرابی
 vform_end=اختتام پر منتقل کریں
 vform_ecannot=آپ کو اس ایڈریس میپنگ میں ترمیم کرنے کی اجازت نہیں ہے
+
 vsave_ecannot=آپ کو ایڈریس میپنگز میں ترمیم کرنے کی اجازت نہیں ہے
 vsave_ecannot2=آپ کو اس ایڈریس میپنگ میں ترمیم کرنے کی اجازت نہیں ہے
 vsave_emax=آپ کو$1 سے زیادہ ایڈریس میپنگز بنانے کی اجازت نہیں ہے
@@ -221,8 +235,10 @@ vsave_eaddr='$1' درست پتہ نہیں ہے
 vsave_ecannot4=آپ کو ڈومینز میں میپنگ بنانے کی اجازت نہیں ہے
 vsave_edomdom=دوسرے ڈومین میں صرف ڈومین کا نقشہ لگایا جاسکتا ہے
 vsave_ecannot5=آپ کو نقشہ سازی کرنے کی اجازت نہیں ہے جو غلطی کو لوٹاتے ہیں
+
 vdelete_err=ایڈریس میپنگز کو حذف کرنے میں ناکام
 vdelete_ecannot=آپ کو$1 کے لئے نقشہ سازی کو حذف کرنے کی اجازت نہیں ہے
+
 mailers_title=ڈومین روٹنگ
 mailers_cannot=آپ کو ڈومین روٹنگ میں ترمیم کرنے کی اجازت نہیں ہے
 mailers_edirective=آپ کے بھیجنے کی تشکیل فائل میں ڈومین روٹنگ کے لئے ضروری ہدایت نہیں ہے۔
@@ -236,6 +252,7 @@ mailers_delivery=ترسیل
 mailers_to=کے لئے بھیج ..
 mailers_return=ڈومین روٹنگ لسٹ
 mailers_delete=منتخب کردہ ڈومین روٹس کو حذف کریں
+
 mform_edit=روٹنگ میں ترمیم کریں
 mform_create=روٹنگ بنائیں
 mform_for=کے لئے میل
@@ -259,12 +276,15 @@ mform_procmail=پروک میل
 mform_mail11=DECnet میل 11
 mform_error=خرابی
 mform_ecannot=آپ کو ڈومین روٹنگ میں ترمیم کرنے کی اجازت نہیں ہے
+
 msave_ecannot=آپ کو ڈومین روٹنگ میں ترمیم کرنے کی اجازت نہیں ہے
 msave_err=ڈومین روٹنگ کو بچانے میں ناکام
 msave_edomain='$1' درست میزبان یا ڈومین نہیں ہے
 msave_edup='$1' کے لئے ڈومین روٹنگ پہلے ہی بیان کی جاچکی ہے
+
 mdelete_err=ڈومین راؤٹر کو حذف کرنے میں ناکام
 mdelete_ecannot=آپ کو$1 کے لئے راستہ حذف کرنے کی اجازت نہیں ہے
+
 generics_title=سبکدوش ہونے والے پتے
 generics_cannot=آپ کو جانے والے پتے میں ترمیم کرنے کی اجازت نہیں ہے
 generics_econfig=آؤٹ گوئنگ ایڈریس میپنگ کے ل Your آپ کی سنڈ میل کنفگریشن فائل میں ضروری ہدایت نہیں ہے۔
@@ -278,11 +298,13 @@ generics_return=پتے کی نقشہ سازی کی فہرست
 generics_toomany=اس صفحے پر ظاہر کرنے کے لئے آپ کے سسٹم میں بہت سارے آؤٹ گوئنگ پتے ہیں۔
 generics_go=باہر جانے والے پتے ملاپ کریں:
 generics_delete=منتخب شدہ آؤٹ گوئنگ ایڈریسز کو حذف کریں
+
 gform_edit=تعریفیں ترمیم کریں
 gform_create=تعریفیں بنائیں
 gform_from=سے میل
 gform_to=تبدیل کرنا
 gform_ecannot=آپ کو یہ سبکدوش پتے میں ترمیم کرنے کی اجازت نہیں ہے
+
 gsave_ecannot=آپ کو جانے والے پتے میں ترمیم کرنے کی اجازت نہیں ہے
 gsave_ecannot2=آپ کو یہ سبکدوش پتے میں ترمیم کرنے کی اجازت نہیں ہے
 gsave_ecannot3=آپ کو یہ جانے والا پتہ بچانے کی اجازت نہیں ہے
@@ -291,8 +313,10 @@ gsave_efrom='$1' ایڈریس سے درست نہیں ہے
 gsave_ematch=پتہ '$1' سے مماثل نہیں ہے
 gsave_eto='$1' درست نیا پتہ نہیں ہے
 gsave_ealready='$1' کے لئے سبکدوش ہونے والے پتہ کا نقشہ پہلے ہی موجود ہے
+
 gdelete_err=سبکدوش ہونے والے پتہ کی نقشہ جات کو حذف کرنے میں ناکام
 gdelete_ecannot=آپ کو$1 کے لئے نقشہ سازی کو حذف کرنے کی اجازت نہیں ہے
+
 cgs_title=سبکدوش ہونے والے ڈومینز
 cgs_ecannot=آپ کو آؤٹ گوئنگ ڈومین میں ترمیم کرنے کی اجازت نہیں ہے
 cgs_header=جانے والے ایڈریس ڈومینز
@@ -300,6 +324,7 @@ cgs_desc=Apart from mail sent by local users, sendmail will only perform <a href
 cgs_err=سبکدوش ہونے والے ڈومینز کو محفوظ کرنے میں ناکام
 cgs_ehost='$1' درست میزبان یا ڈومین نام نہیں ہے
 cgs_eip='$1' ایک IP ایڈریس ہے ، ڈومین کا نہیں
+
 domains_title=ڈومین میپنگ
 domains_ecannot=آپ کو ڈومین میپنگ میں ترمیم کرنے کی اجازت نہیں ہے
 domains_econfig=آپ کی سنڈ میل کنفیگریشن فائل میں ڈومین میپنگ کیلئے ضروری ہدایت نہیں ہے۔
@@ -310,17 +335,21 @@ domains_from=ڈومین سے ..
 domains_to=ڈومین کرنے کے لئے ..
 domains_return=ڈومین میپنگ کی فہرست
 domains_delete=منتخب شدہ ڈومین تعریفیں حذف کریں
+
 dform_edit=تعریفیں ترمیم کریں
 dform_create=تعریفیں بنائیں
 dform_from=ڈومین سے
 dform_to=ڈومین کرنے کے لئے
 dform_ecannot=آپ کو ڈومین میپنگ میں ترمیم کرنے کی اجازت نہیں ہے
+
 dsave_ecannot=آپ کو ڈومین میپنگ میں ترمیم کرنے کی اجازت نہیں ہے
 dsave_err=ڈومین میپنگ کو بچانے میں ناکام
 dsave_edomain='$1' ایک درست ڈومین نام نہیں ہے
 dsave_ealready='$1' کے لئے ایک ڈومین میپنگ پہلے ہی موجود ہے
+
 ddelete_err=ڈومین میپنگز کو حذف کرنے میں ناکام
 ddelete_ecannot=آپ کو$1 کے لئے نقشہ سازی کو حذف کرنے کی اجازت نہیں ہے
+
 access_title=سپیم کنٹرول
 access_ecannot=آپ کو اسپام کنٹرول کی تشکیل کی اجازت نہیں ہے
 access_efeature=Your sendmail configuration does not have the spam control (<tt>access_db</tt>) feature enabled. <a href='$1'>Click here</a> to setup sendmail features.
@@ -333,6 +362,7 @@ access_return=سپیم کنٹرول لسٹ
 access_toomany=اس صفحے پر ظاہر کرنے کے لئے آپ کے سسٹم میں بہت سارے سپام کنٹرول کے قواعد موجود ہیں۔
 access_go=سپیم کنٹرول کے قواعد کے مماثل تلاش کریں:
 access_delete=سپیم کنٹرول کے منتخب کردہ قواعد کو حذف کریں
+
 sform_edit=سپیم کنٹرول رول میں ترمیم کریں
 sform_create=سپیم کنٹرول رول بنائیں
 sform_source=میل سورس
@@ -354,6 +384,7 @@ sform_discard=خاموشی سے خارج کردیں
 sform_err=غلط کوڈ
 sform_msg=پیغام
 sform_ecannot=آپ کو اسپام کنٹرول کے قاعدے میں ترمیم کرنے کی اجازت نہیں ہے
+
 ssave_err=سپیم کنٹرول کے اصول کو بچانے میں ناکام
 ssave_etype0='$1' درست پتہ نہیں ہے
 ssave_etype1='$1' ایک درست نیٹ ورک ایڈریس نہیں ہے
@@ -362,8 +393,10 @@ ssave_etype3='$1' درست ڈومین نہیں ہے
 ssave_ecode='$1' درست SMTP غلطی کا کوڈ نہیں ہے
 ssave_ealready='$1' کیلئے اسپام کنٹرول کا قاعدہ پہلے سے موجود ہے
 ssave_ecannot2=آپ کو اس سپیم کنٹرول قواعد کو بچانے کی اجازت نہیں ہے
+
 sdelete_err=سپیم کنٹرول کے قواعد کو حذف کرنے میں ناکام
 sdelete_ecannot=آپ کو$1 کیلئے قاعدہ حذف کرنے کی اجازت نہیں ہے
+
 relay_title=ریلے ڈومینز
 relay_ecannot=آپ کو ریلے ڈومین میں ترمیم کرنے کی اجازت نہیں ہے
 relay_eversion=صرف بھیجنے والے ورژن 8.9 اور اس سے اوپر والے ریلے ڈومینز کی خصوصیت کی تائید کرتے ہیں۔
@@ -372,6 +405,7 @@ relay_desc1=Unless allowed by the <a href='$1'>spam control</a> rules, sendmail 
 relay_desc2=If your system is serving as a gateway for several domains that are not directly accessible from outside your network (using the <a href='$1'>domain routing</a> feature), then all those domains should be listed here.
 relay_err=ریلے ڈومینز کو بچانے میں ناکام
 relay_edomain='$1' ایک درست ڈومین نام نہیں ہے
+
 mailq_title=میل قطار
 mailq_count=$1 پیغامات
 mailq_ecannot=آپ کو میل قطار دیکھنے کی اجازت نہیں ہے
@@ -401,12 +435,15 @@ mailq_search=قطار میں موجود پیغامات کو جہاں ڈھونڈ�
 mailq_quar=الگ الگ
 mailq_refresh=میل قطار کو تازہ کریں
 mailq_refreshdesc=میل قطار کی موجودہ حالت ظاہر کرنے کے لئے اس صفحے کو دوبارہ لوڈ کریں۔
+
 flushq_title=فلش قطار
 flushq_desc=کمانڈ$1 کے ساتھ تمام پیغامات کی فراہمی کی کوشش کرنا۔
 flushq_desc2=کوشش کی گئی$1 منتخب کردہ پیغامات کی فراہمی ..
 flushq_ecannot=آپ کو میل قطار فلش کرنے کی اجازت نہیں ہے
+
 searchq_title=قطار تلاش کے نتائج
 searchq_none=کوئی قطار میں موجود پیغامات نہیں ملے۔
+
 delq_err=پیغام حذف کرنے میں ناکام
 delq_ecannot=آپ کو پیغامات کی کمی کی اجازت نہیں ہے
 delq_locked=فائل بھیجنے کے لئے فی الحال لاک ہے
@@ -422,6 +459,7 @@ delq_force=ویسے بھی حذف کرنے پر مجبور کریں
 delq_ecannot2=آپ اس پیغام کو حذف نہیں کرسکتے ہیں
 delq_rusure=کیا آپ واقعی$1 قطار میں لائے ہوئے پیغامات کو حذف کرنا چاہتے ہیں؟
 delq_confirm=پیغامات کو حذف کریں
+
 boxes_title=صارف میل باکسز
 boxes_user=صارف
 boxes_size=میل باکس کا سائز
@@ -431,6 +469,7 @@ boxes_sent=میل بھیجا
 boxes_ecannot=آپ کو ای میل پڑھنے کی اجازت نہیں ہے
 boxes_toomany=آپ کے سسٹم میں بہت سارے صارفین اپنے تمام میل باکسوں کی فہرست کے ل. ہیں۔
 boxes_go=صارف کے لئے میل دیکھیں:
+
 mail_title=صارف کا ای میل
 mail_from=سے
 mail_date=تاریخ
@@ -471,6 +510,7 @@ mail_move=پر منتقل:
 mail_copy=کاپی کریں:
 mail_rfc=لائن سے
 mail_eexists=پیغام اب موجود نہیں ہے!
+
 view_title=ای میل پڑھیں
 view_desc=پیغام$1 میں$2
 view_desc2=پیغام$1 صارف$2 کے لئے
@@ -501,6 +541,7 @@ view_egone=اب یہ پیغام موجود نہیں ہے
 view_afile=منسلکہ نام
 view_atype=منسلکہ کی قسم
 view_asize=فائل کا ناپ
+
 compose_title=ای میل لکھیں
 reply_title=ای میل کا جواب دیں
 forward_title=فارورڈ ای میل
@@ -512,6 +553,7 @@ reply_attach2=کلائنٹ اور سرور سائیڈ منسلکات
 reply_send=میل بھیجیں
 reply_ecannot=آپ کو بطور صارف اس میل کو بھیجنے کی اجازت نہیں ہے
 reply_body=پیغام کا متن
+
 send_err=میل بھیجنے میں ناکام
 send_eto=پتہ غائب ہے
 send_efrom=پتہ غائب ہے
@@ -524,6 +566,7 @@ send_eattach=منسلکات زیادہ سے زیادہ$1 kB سائز میں نہ
 send_eperms=صارف$1 $2 نہیں پڑھ سکتا ہے
 send_eperms2=آپ کو فائل$1 بھیجنے کی اجازت نہیں ہے
 send_epath=ای میل بھیجنے والی$1 موجود نہیں ہے۔
+
 delete_title=میل کو حذف کریں
 delete_rusure=کیا آپ واقعی$1 سے منتخب کردہ $1 پیغامات کو$2 سے حذف کرنا چاہتے ہیں؟ ایک بڑی میل فائل میں کچھ وقت لگ سکتا ہے۔ جب تک حذف ہونے کا کام ختم نہیں ہوجاتا ، کوئی اور کارروائی نہیں کی جانی چاہئے۔
 delete_rusure2=کیا آپ واقعی اس پیغام کو$1 سے حذف کرنا چاہتے ہیں؟ ایک بڑی میل فائل میں کچھ وقت لگ سکتا ہے۔ جب تک حذف ہونے کا کام ختم نہیں ہوجاتا ، کوئی اور کارروائی نہیں کی جانی چاہئے۔
@@ -536,6 +579,7 @@ delete_emoveuser=میل منتقل کرنے کے لئے صارف موجود نہ
 delete_emovecannot=آپ کو مخصوص صارف کو میل منتقل کرنے کی اجازت نہیں ہے
 delete_emovenone=منتقل کرنے کے لئے کوئی میل منتخب نہیں کیا گیا ہے
 delete_nobutton=کوئی بٹن نہیں کلکس کیا گیا
+
 search_title=تلاش کے نتائج
 search_ecannot=آپ کو اس صارف کے ای میل کو تلاش کرنے کی اجازت نہیں ہے
 search_ematch=اس کے مقابلہ کیلئے آپ کو متن درج کرنا ہوگا۔
@@ -549,6 +593,7 @@ search_results4=آپ کی تلاش سے مماثل 1 میل پیغامات ..
 search_local=مقامی فولڈروں میں
 search_all=تمام فولڈروں میں
 search_eboolean='اور' اور 'یا' دونوں کا استعمال کرتے ہوئے بولین تلاشیاں معاون نہیں ہیں
+
 file_title=فائل بھیجنے کی فائل بھیجیں
 file_desc=دستی طور پر سینڈ میل فائل$1 میں ترمیم کرنے کے لئے نیچے ٹیکسٹ باکس کا استعمال کریں۔
 file_undo=تبدیلیوں کو کالعدم کریں
@@ -564,6 +609,7 @@ file_emode=نامعلوم وضع!
 file_err=فائل میں ترمیم کرنے میں ناکام
 file_ealias=عرفی فائل فائل لائن کے لئے غلط فارمیٹ :$1
 file_etab=نقشہ فائل لائن کے لئے غلط فارمیٹ :$1
+
 acl_opts=کیا میل بھیجنے کے اختیارات میں ترمیم کی جاسکتی ہے؟
 acl_ports=کیا نیٹ ورک پورٹس میں ترمیم کی جاسکتی ہے؟
 acl_cws=مقامی ڈومینز میں ترمیم کرسکتے ہیں؟
@@ -630,6 +676,7 @@ acl_usersm=ملاپ کرنے والے صارفین
 acl_asame=صارف نام کی طرح
 acl_usersu=حد میں UID کے ساتھ
 acl_spam=اس صارف کو سپیم کنٹرول کے ایڈریس میں ترمیم کر سکتے ہیں
+
 log_opts=بھیجے گئے میل کے اختیارات
 log_ports=نیٹ ورک پورٹس کو تبدیل کریں
 log_alias_create=عرف$1 تشکیل دیا گیا
@@ -680,6 +727,7 @@ log_delete_domains=حذف شدہ$1 ڈومین میپنگز
 log_delete_accesses=حذف کردہ$1 اسپام کنٹرول اندراجات
 log_delete_generics=خارج ہونے والے$1 پتے
 log_delete_mailers=حذف شدہ$1 ڈومین روٹس
+
 match_from=منجانب: میچ
 match_subject=موضوع: میچ
 match_to=منجانب: میچ
@@ -699,6 +747,7 @@ match_!status=حیثیت مماثل نہیں ہے
 match_!body=باڈی مماثل نہیں ہے
 match_!size=سائز اس سے کم ہے
 match_!headers=ہیڈر مماثل نہیں ہیں
+
 features_title=ارسال میل M4 تشکیل
 features_desc=اس صفحے میں مرسل میل M4 ترتیب فائل$1 سے متعلقہ اندراجات کی فہرست دی گئی ہے ، جہاں سے اصل کنفگریشن فائل$2 بنایا گیا ہے۔
 features_type=اندراج کی قسم
@@ -718,6 +767,7 @@ features_efeatures=The Sendmail M4 configuration base directory $2 was not found
 features_econfig=The locations of the Sendmail M4 base directory and M4 config file have not been set yet in your <a href='$1'>module configuration</a>. If you have installed Sendmail from the source, these should be under the original source directory.
 features_move=اقدام
 features_manual=دستی طور پر فائل میں ترمیم کریں
+
 feature_add=تشکیل اندراج شامل کریں
 feature_edit=ترتیب اندراج میں ترمیم کریں
 feature_header=M4 ترتیب اندراج کی تفصیلات
@@ -738,12 +788,15 @@ feature_emailer=میلر$1 پہلے سے موجود ہے
 feature_eostype=OS کی قسم پہلے ہی$1 کی تعریف کی گئی ہے
 feature_manual=M4 فائل میں ترمیم کریں
 feature_mdesc=صفحہ آپ کو دستی طور پر بھیج میل M4 ترتیب فائل$1 میں ترمیم کرنے کی اجازت دیتا ہے۔ ہوشیار رہیں ، کیوں کہ آپ کی ترمیم پر نحو کی جانچ نہیں کی جائے گی۔
+
 feat_access_db=اسپیم کنٹرول فائل
 feat_virtusertable=ایڈریس میپنگ
 feat_mailertable=ڈومین روٹنگ
 feat_genericstable=سبکدوش ہونے والے پتے
 feat_domaintable=ڈومین میپنگ
+
 mailer_local=مقامی یونکس کی ترسیل
+
 build_title=دوبارہ بھیج بھیجیں میل کی تشکیل
 build_em4=آپ کے سسٹم پر بھیجنے والی میل کی تشکیل فائل کو دوبارہ بنانے کے لئے درکار کمانڈ$1 نہیں ملا۔
 build_ebuild=تشکیل :$1 تشکیل دینے میں ناکام
@@ -752,13 +805,16 @@ build_rusure2=اس بات سے آگاہ رہیں کہ اگر آپ نے بھیج�
 build_ok=ہاں ، اب اس کی جگہ لے لو
 build_diff=درج ذیل تبدیلیاں آپ کی سنڈ میل کنفیگریشن فائل میں کی جائیں گی ..
 build_nodiff=آپ کے بھیجنے کی تشکیل کی فائل پہلے سے ہی تازہ ترین ہے۔
+
 stop_err=بھیجنے سے روکنے میں ناکام
 stop_ecannot=آپ کو میل بھیجنے سے روکنے کی اجازت نہیں ہے
 stop_epid=دکھائی نہیں دیتا ہے کہ میل بھیج رہا ہے
 restart_epids=بھیجنے کے عمل کو تلاش نہیں کیا جاسکا
 restart_ekill=بھیجنے کے عمل کو اشارہ کرنے میں ناکام :$1
+
 start_err=بھیج بھیجنے میں ناکام
 start_ecannot=آپ کو میل بھیجنے کی اجازت نہیں ہے
+
 ports_title=نیٹ ورک پورٹس
 ports_name=بندرگاہ کا نام
 ports_addr=ایڈریس پر سنو

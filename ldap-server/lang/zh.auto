@@ -16,6 +16,7 @@ index_setupdesc=LDAP服务器的数据库尚不包含根DN $1，这意味着在�
 index_setup=创建根DN
 index_permsdesc=LDAP服务器数据目录 $1包含不属于正确用户 $2的文件，这意味着它不太可能正确启动。但是，Webmin可以通过单击下面的按钮为您解决此问题。
 index_perms=修复所有权
+
 connect_eserver=LDAP服务器 $1不存在
 connect_euser=没有用户已配置登录
 connect_epass=没有配置登录密码
@@ -28,6 +29,7 @@ connect_eldap=无法在端口 $2上连接到LDAP服务器 $1
 connect_essl=无法使用LDAP服务器 $1启动TLS加密： $2
 connect_elogin=无法以 $2的身份登录到LDAP服务器 $1 : $3
 connect_cpan=您可以从CPAN中自动安装<tt>$1</tt> Perl模块<a href='$2'></a>。
+
 slapd_title=OpenLDAP服务器配置
 ldif_title=OpenLDAP服务器配置
 slapd_header=全局LDAP服务器选项
@@ -76,6 +78,7 @@ slapd_protos=LDAP连接接受
 slapd_ldap=网络上的LDAP
 slapd_ldaps=通过SSL的LDAP
 slapd_ldapi=Unix套接字文件
+
 schema_title=管理架构
 schema_file=名称
 schema_desc=描述
@@ -93,6 +96,7 @@ schema_edesc=该页面允许您手动编辑LDAP模式文件。仅当您熟悉文
 schema_return=模式清单
 schema_emove=找不到要移动的架构文件！
 schema_ecannot=您无权管理LDAP模式
+
 acl_title=LDAP访问控制
 acl_ecannot=您无权配置LDAP访问控制
 acl_what=对象
@@ -103,6 +107,7 @@ acl_none=尚未定义访问控制规则。 LDAP数据库中的所有对象将对
 acl_delete=删除所选规则
 acl_add=添加新的访问控制规则。
 acl_return=访问控制规则
+
 browser_title=浏览数据库
 browser_econn=不能使用LDAP浏览器： $1
 browser_ecannot=您无权浏览LDAP数据库
@@ -136,24 +141,30 @@ browser_nomatch=没有与您的 $1搜索匹配的对象。
 browser_search=查找匹配的对象：
 browser_search2=显示匹配的对象：
 browser_sok=搜索
+
 save_err=更改属性失败
 save_ebase=无法从数据库获取对象 $1
 save_emodify=对 $1中的 $2进行LDAP修改失败： $3
 save_enone=没有输入值
+
 add_err=添加属性失败
 add_eadd=属性名称缺失或无效
 add_evalue=价值缺失
 add_emodify=LDAP将 $2添加到 $1失败： $3
+
 delete_err=删除属性失败
 delete_enone=未选择
 delete_emodify=LDAP从 $1删除 $2失败： $3
+
 sdelete_err=删除对象失败
 sdelete_edn=找不到对象 $1
 sdelete_edel=LDAP删除 $1失败： $2
+
 rename_err=重命名对象失败
 rename_eget=找不到DN为 $1的对象
 rename_enew=新名称似乎无效
 rename_erename=LDAP newdn从 $1到 $2失败： $3
+
 oadd_title=创建对象
 oadd_header=新的LDAP对象详细信息
 oadd_base=父对象DN
@@ -170,6 +181,7 @@ oadd_eget2=无法检查与 $1的冲突： $2
 oadd_eclash=DN为 $1的对象已存在
 oadd_eadd=LDAP添加 $1失败： $2
 oadd_err=创建新对象失败
+
 create_title=创建树
 create_ecannot=您无权创建新树
 create_desc=该页面提供了一种方便的方式来创建DN，该DN将成为数据库中新树的基础。它还可以在树下创建示例用户或电子邮件别名，作为您自己对象的模板。
@@ -191,18 +203,23 @@ create_done=..完成
 create_doingex=创建具有DN $1..的示例对象
 create_edoingex=..失败： $1。但是，该树仍然可以使用。
 create_eoc=找不到适合新DN的对象类
+
 eunknown=未知错误
+
 apply_err=应用配置失败
 apply_ecmd=$1失败： $2
 apply_ecannot=不允许您应用配置
+
 stop_err=停止LDAP服务器失败
 stop_ecmd=$1失败： $2
 stop_egone=不再运行！
 stop_ekill=杀死进程失败： $1
 stop_ecannot=您无权停止LDAP服务器
+
 start_err=无法启动LDAP服务器
 start_ecmd=$1失败： $2
 start_ecannot=您不允许启动LDAP服务器
+
 log_create_dn=创建的对象 $1
 log_delete_dn=删除的对象 $1
 log_rename_dn=重命名对象 $1
@@ -234,6 +251,7 @@ log_up_access=将 $1的访问控制规则上移
 log_down_access=下移了 $1的访问控制规则
 log_delete_accesses=已删除 $1访问控制规则
 log_all=所有物件
+
 gencert_title=生成SSL证书
 gencert_header=新的SSL证书详细信息
 gencert_create=创建证书
@@ -245,7 +263,9 @@ gencert_dir=目录
 gencert_err=生成证书失败
 gencert_edest=目标目录不存在
 gencert_epath=LDAP服务器配置中的证书和密钥文件必须是绝对路径
+
 perms_err=修复文件所有权失败
+
 acl_slapd=可以配置LDAP服务器吗？
 acl_ldif=可以配置LDAP服务器吗？
 acl_schema=可以管理架构吗？
@@ -254,6 +274,7 @@ acl_browser=可以浏览和编辑数据库吗？
 acl_create=可以创建新树吗？
 acl_start=可以启动和停止LDAP服务器吗？
 acl_apply=可以应用配置更改吗？
+
 access_desc=$2 by $1
 access_self=自
 access_users=认证用户
@@ -273,6 +294,7 @@ access_lcompare=比较
 access_lsearch=搜索
 access_lread=读
 access_lwrite=写
+
 eacl_title1=创建访问控制规则
 eacl_title2=编辑访问控制规则
 eacl_header=LDAP数据库访问控制规则详细信息

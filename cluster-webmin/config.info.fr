@@ -1,1 +1,2 @@
-sort_mode=Trier les hôtes par,1,1-Nom d'hôte,0-Ordre d'ajout,2-Description
+sort_mode=Trier les hôtes par,1,1-Nom d'hôte,0-Ordre ajouté,2-Description
+table_mode=Afficher les hôtes comme,1,1-Table,0-Icônes

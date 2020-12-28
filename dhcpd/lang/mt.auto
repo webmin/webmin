@@ -64,12 +64,14 @@ index_match1=fih
 index_match2=logħbiet
 index_dhcpd=ISC DHCPd
 index_delete=Ħassar Magħżul
+
 butt_save=Issejvja
 butt_eco=Editja l-Għażliet tal-Klijent
 butt_vco=Ara l-Għażliet tal-Klijent
 butt_del=Ħassar
 butt_create=Oħloq
 butt_leases=Lista tal-Kirjiet
+
 esub_crheader=Oħloq Subnet
 esub_edheader=Edit Subnet
 esub_tabhdr=Dettalji tas-Subnet
@@ -83,12 +85,14 @@ esub_groups=Gruppi direttament f'dan is-subnet
 esub_pools=Ġemgħat ta 'Indirizz għal Subnet
 esub_pool=Ġabra $1 
 esub_poolnone=L-ebda indirizz ta ’ġabra definit
+
 esub_pooladd=Żid ġabra ta 'indirizzi.
 esub_none=Xejn
 esub_return=lista tas-subnet
 esub_retshar=netwerk maqsum
 esub_desc=Deskrizzjoni tas-Subnet
 esub_fopeer=Failver Peer
+
 esh_crheader=Oħloq Netwerk Maqsum
 esh_eheader=Editja Netwerk Maqsum
 esh_tabhdr=Dettalji ta 'Netwerk maqsuma
@@ -99,6 +103,7 @@ esh_subn=Subnets f'dan in-netwerk maqsum
 esh_return=lista tas-subnet
 esh_pools=Ġemgħat ta ’Indirizz għal Netwerk Kondiviż
 esh_desc=Deskrizzjoni ta 'netwerk kondiviża
+
 ehost_crheader=Oħloq Ospitanti
 ehost_eheader=Editja l-Ospitanti
 ehost_tabhdr=Dettalji tal-Ospitanti
@@ -119,6 +124,7 @@ ehost_retgroup=grupp
 ehost_retsubn=subnet
 ehost_retshar=netwerk maqsum
 ehost_desc=Deskrizzjoni tal-host
+
 egroup_crheader=Oħloq Grupp Ospitanti
 egroup_eheader=Editja l-Grupp Ospitanti
 egroup_tblhdr=Dettalji tal-Grupp
@@ -129,6 +135,7 @@ egroup_return=lista tal-ospiti
 egroup_retsubn=subnet
 egroup_retshar=netwerk maqsum
 egroup_desc=Deskrizzjoni tal-Grupp
+
 default=Default
 secs=seks
 none=Xejn
@@ -157,20 +164,24 @@ listl_pc=Perċentwali
 listl_err=Ma rnexxielhomx jikru
 listl_enone=L-ebda magħżul
 listl_refresh=Aġġorna lista
+
 restart_errmsg1=Ma rnexxielux jerġa 'jibda dhcpd
 restart_errmsg2=Naqset milli proċess tas-sinjal
 start_failstart=Naqas milli jibda dhcpd
 restart_conftext=Linji ta 'madwar $1 f' $2  :
+
 sgroup_faildel=Ma rnexxielux jitħassar il-grupp
 sgroup_failsave=Ma rnexxielux isalva grupp
 sgroup_invassign=grupp assenjat għal sezzjoni mhux korretta
 sgroup_echanged=Il-kontenut tal-fajl ta 'konfigurazzjoni nbidel. Erġa 'pprova.
+
 shost_faildel=Ma rnexxielux iħassar il-host
 shost_failsave=Ma rnexxielux isalva host
 shost_invalidhn=mhuwiex isem tal-host validu
 shost_invalidhwa="$1" mhuwiex indirizz validu $2 
 shost_invalidaddr="$1" fih isem tal-host jew indirizz IP invalidi
 shost_invassign=host assenjat għal sezzjoni mhux korretta
+
 sopt_failsave=Ma rnexxielux isalva l-għażliet tal-klijent
 sopt_invalidip=mhuwiex indirizz IP validu
 sopt_invalidint=mhix numru sħiħ
@@ -180,10 +191,12 @@ sopt_ednum="$1" mhux numru ta 'għażla validu
 sopt_edtype="$1" mhux tip ta 'għażla valida
 sopt_ecval=Valur nieqes għall-għażla tad-dwana "$1"
 sopt_ecip=Il-valur għall-għażla tad-dwana '$1' għandu jkun indirizz IP
+
 sshared_faildel=Naqset milli tħassar netwerk maqsum
 sshared_failsave=Ma rnexxielux isalva netwerk maqsum
 sshared_invalidsname=In-netwerk kondiviż nieqes jew invalidu huwa nieqes.
 sshared_nosubnet=Netwerk kondiviż "$1" ma fih l-ebda subnet.
+
 ssub_faildel=Naqset milli tħassar is-subnet
 ssub_failsave=Ma rnexxielux isalva subnet
 ssub_invalidsubaddr=mhijiex indirizz tas-subnet validu
@@ -191,6 +204,7 @@ ssub_invalidnmask=mhix netmask valida
 ssub_invalidipr=Mhux indirizz tal-medda IP valida
 ssub_nosubnet=Netwerk kondiviż "$1" ma fih l-ebda subnet.
 ssub_invalidfopeer=mhix valida bejn il-failover peer
+
 plib_deflt=Il-ħin tal-kiri default
 plib_bfname=Ibbutja l-isem tal-fajl
 plib_maxlt=Il-ħin massimu tal-kiri
@@ -244,6 +258,7 @@ plib_eexpr=Din it-taqsima tal-konfigurazzjoni DHCP fiha d-direttiva tal-espressj
 plib_auth_subnet=Is-server huwa awtorevoli għal din is-subnet?
 plib_auth_shared-network=Is-server huwa awtorevoli għal dan in-netwerk maqsum?
 plib_auth_global=Is-server huwa awtorevoli għas-subnets kollha?
+
 eopt_header=Għażliet tal-Klijent
 eopt_subtitle=Għas-subnet $1 
 eopt_returnsub=subnet
@@ -289,6 +304,7 @@ eopt_slpa=IPs tad-direttorju tal-aġenti SLP
 eopt_slpaips=Dawn l-IPs biss?
 eopt_slps=Ambitu tas-servizz SLP
 eopt_slpsonly=Dan l-ambitu biss?
+
 log_apply=Bidliet applikati
 log_start=Beda s-server DHCP
 log_stop=Waqqaf server DHCP
@@ -311,6 +327,7 @@ log_options_group=Għażliet immodifikati għal grupp ta 'ospiti $1
 log_delete_lease=Kera mħassra għal $1 
 log_delete_subnets=Subnets $1 imħassra u netwerks maqsuma
 log_delete_hosts=Ospitanti u gruppi ospitanti $1 imħassra
+
 keys_edit=Editja t-TSIG key
 keys_create=Inħolqu ċwievet TSIG
 keys_title=Ċwievet DNS
@@ -321,12 +338,14 @@ keys_ecannot=M'għandekx permess teditja ċ-ċwievet DNS
 keys_err=Ma rnexxielux isalva ċ-ċwievet DNS
 keys_ekey="$1" mhijiex ID ċavetta valida
 keys_esecret=Sigriet kodifikat tal-bażi-64 nieqes jew invalidu għaċ-ċavetta $1 
+
 pool_edit=Editja l-Ġabra tal-Indirizzi
 pool_create=Ġabra ta 'Indirizz Maħluq
 pool_header=Indirizz ta 'għażliet ta' ġabra ta 'flus
 pool_allow=Klijenti li jippermettu
 pool_deny=Klijenti li jiċħdu
 pool_return=subnet
+
 cdel_header=Twissija
 cdel_shared1=netwerk maqsum
 cdel_shared2=netwerk maqsum
@@ -344,6 +363,7 @@ cdel_txt=It-tħassir ta '$1' $2 'se jitħassar ukoll il-kontenut tiegħu:
 cdel_confirm=Int verament trid tħassar dan $1 ?
 cdel_eunknown=Żball mhux magħruf
 cdel_return=lista tal-host u netwerk
+
 eacl_aviol=Ksur ta 'kontroll ta' aċċess
 eacl_np=M'għandekx permessi
 eacl_pdh=ħassar il-host
@@ -369,6 +389,7 @@ eacl_pdl=ħassar kirjiet
 eacl_psl=tara kiri
 eacl_pglob=editja għażliet globali
 eacl_papply=terġa 'tibda dan is-servizz
+
 acl_apply=Tista 'tapplika bidliet?
 acl_r_leases=Tista 'tara kiri?
 acl_w_leases=Tista 'tneħħi l-kirjiet?
@@ -398,9 +419,11 @@ acl_err=Żball fil-iffrankar tal-lista ACL
 acl_ernow=Jekk trid tippermetti aċċess għall-kitba f'ACLs globali għal xi tip ta 'oġġett inti trid tippermetti wkoll aċċess għall-qari għal dan it-tip ta' oġġett.
 acl_normal=normali
 acl_paranoic=paranojiku
+
 iface_title=Interfaċċa tan-Netwerk
 iface_desc=Is-server DHCP jista 'jassenja biss indirizzi IP fuq netwerks imqabbdin ma' waħda mill-interfaces magħżula hawn taħt. L-interface tan-netwerk għas-subnets definiti kollha għandu jkun inkluż. Jekk ma jintgħażel xejn, is-server DHCP jipprova jsib wieħed awtomatikament.
 iface_listen=Isma fuq l-interfaces
+
 lookup_ehost=L-ebda ospitanti bl-isem, l-indirizz IP jew l-indirizz MAC $1 ma jeżisti
 lookup_ehostname=L-ebda isem tal-host, indirizz IP jew indirizz MAC ma daħal
 lookup_egroup=Ma jeżisti l-ebda grupp bl-isem jew l-isem tad-dominju $1 
@@ -409,6 +432,7 @@ lookup_esubnet=Ma teżisti l-ebda subnet ma 'l-indirizz jew l-indirizz/netmask $
 lookup_esubnetname=L-ebda indirizz tas-subnet jew indirizz/netmask ma daħlu
 lookup_eshared=Ma teżisti l-ebda netwerk kondiviż bl-isem $1 
 lookup_esharedname=Ma daħal l-ebda isem ta 'netwerk maqsum
+
 zone_key=Żoni DNS
 index_addzone=Żid żona DNS ġdida.
 index_zone=Żona
@@ -424,16 +448,21 @@ zone_faildel=Naqset milli tħassar iż-żona
 zone_failsave=Naqas milli jsalva ż-żona
 zone_tsigkey=Ċavetta TSIG
 zone_ecannot=M'għandekx permess teditja żoni DNS
+
 plib_clientupdates=Il-klijenti jistgħu jaġġornaw ir-rekords tagħhom stess?
+
 text_title=dhcpd.conf
 text_editor=Editur tat-test
 text_return=menu prinċipali
 text_undo=annulla
 text_ecannot=M'għandekx permess teditja l-fajl tal-konfigurazzjoni
+
 index_buttetext=Editja Manwal il-Konfigurazzjoni
 index_text=Editja l-fajl tal-konfigurazzjoni tat-test manwalment
+
 stop_err=Ma rnexxielux iwaqqaf is-server DHCP
 stop_ekill=Mhux għaddej!
+
 sdelete_err=Ma rnexxielhiex tħassar subnetwerks u netwerks maqsuma
 sdelete_enone=L-ebda magħżul
 sdelete_title=Ħassar Subnets u Netwerks Maqsuma
@@ -441,6 +470,7 @@ sdelete_rusure1=Int żgur li trid tħassar is-subnets magħżula $1 u netwerks m
 sdelete_rusure2=Int żgur li trid tħassar is-subnets magħżula $1 ? Kull oġġett ieħor fis-subnets jintilef ukoll.
 sdelete_rusure3=Int żgur li trid tħassar in-netwerks maqsuma $2 magħżula? Xi subnets jew oġġetti oħra fin-netwerks jintilfu wkoll.
 sdelete_ok=Ħassar issa
+
 hdelete_err=Ma rnexxielux jitħassar host u gruppi
 hdelete_enone=L-ebda magħżul
 hdelete_title=Ħassar Hosts u Gruppi

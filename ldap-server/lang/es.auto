@@ -16,6 +16,7 @@ index_setupdesc=La base de datos de su servidor LDAP aún no contiene el DN raí
 index_setup=Crear DN raíz
 index_permsdesc=El directorio de datos del servidor LDAP $1 contiene archivos que no pertenecen al usuario correcto $2, lo que significa que es poco probable que se inicie correctamente. Sin embargo, Webmin puede solucionarlo haciendo clic en el botón a continuación.
 index_perms=Propiedad de Fix
+
 connect_eserver=El servidor LDAP $1 no existe
 connect_euser=Ningún usuario debe iniciar sesión ya que se ha configurado
 connect_epass=No se ha configurado ninguna contraseña para iniciar sesión
@@ -28,6 +29,7 @@ connect_eldap=Error al conectarse al servidor LDAP $1 en el puerto $2
 connect_essl=Error al iniciar el cifrado TLS con el servidor LDAP $1 : $2 
 connect_elogin=Error al iniciar sesión en el servidor LDAP $1 como $2 : $3 
 connect_cpan=Puede tener el <tt>$1</tt> módulo Perl <a href='$2'>instalado automáticamente</a> desde CPAN.
+
 slapd_title=Configuración del servidor OpenLDAP
 ldif_title=Configuración del servidor OpenLDAP
 slapd_header=Opciones globales de servidor LDAP
@@ -76,6 +78,7 @@ slapd_protos=Conexiones LDAP para aceptar
 slapd_ldap=LDAP a través de la red
 slapd_ldaps=LDAP sobre SSL
 slapd_ldapi=Archivo de socket Unix
+
 schema_title=Gestionar esquema
 schema_file=Nombre
 schema_desc=Descripción
@@ -93,6 +96,7 @@ schema_edesc=Esta página le permite editar manualmente un archivo de esquema LD
 schema_return=lista de esquemas
 schema_emove=¡No se pudo encontrar el archivo de esquema para mover!
 schema_ecannot=No tiene permiso para administrar el esquema LDAP
+
 acl_title=Control de acceso LDAP
 acl_ecannot=No tiene permiso para configurar el control de acceso LDAP
 acl_what=Objetos
@@ -103,6 +107,7 @@ acl_none=Aún no se han definido reglas de control de acceso. Todos los objetos 
 acl_delete=Eliminar reglas seleccionadas
 acl_add=Agregar una nueva regla de control de acceso.
 acl_return=reglas de control de acceso
+
 browser_title=Examinar base de datos
 browser_econn=El navegador LDAP no se puede usar : $1 
 browser_ecannot=No tiene permiso para explorar la base de datos LDAP
@@ -136,24 +141,30 @@ browser_nomatch=Ningún objeto coincide con su búsqueda de $1.
 browser_search=Encuentra objetos que coinciden :
 browser_search2=Mostrando objetos que coinciden :
 browser_sok=Buscar
+
 save_err=Error al cambiar el atributo
 save_ebase=No se pudo recuperar el objeto $1 de la base de datos
 save_emodify=Error en la modificación LDAP de $2 en $1 : $3 
 save_enone=No se ingresaron valores
+
 add_err=Error al agregar atributo
 add_eadd=Nombre de atributo faltante o no válido
 add_evalue=Valor que falta
 add_emodify=Error al agregar LDAP de $2 a $1 : $3 
+
 delete_err=Error al eliminar atributos
 delete_enone=Ninguna seleccionada
 delete_emodify=Error al eliminar LDAP de $2 de $1 : $3 
+
 sdelete_err=Error al eliminar objetos
 sdelete_edn=No se encontró el objeto $1 
 sdelete_edel=Error de eliminación de LDAP de $1 : $2 
+
 rename_err=Error al cambiar el nombre del objeto
 rename_eget=No se pudo encontrar el objeto con DN $1 
 rename_enew=El nuevo nombre no parece ser válido
 rename_erename=LDAP newdn a $2 desde $1 falló : $3 
+
 oadd_title=Crear objeto
 oadd_header=Nuevos detalles del objeto LDAP
 oadd_base=DN del objeto padre
@@ -170,6 +181,7 @@ oadd_eget2=Error al verificar el choque con $1 : $2
 oadd_eclash=Ya existe un objeto con el DN $1 
 oadd_eadd=Error al agregar LDAP de $1 : $2 
 oadd_err=Error al crear nuevo objeto
+
 create_title=Crear árbol
 create_ecannot=No tienes permiso para crear un nuevo árbol
 create_desc=Esta página proporciona una forma conveniente de crear DN que será la base de un nuevo árbol en la base de datos. También puede crear un usuario de ejemplo o un alias de correo electrónico debajo del árbol, como una plantilla para sus propios objetos.
@@ -191,18 +203,23 @@ create_done=.. hecho
 create_doingex=Creando objeto de ejemplo con DN $1 ..
 create_edoingex=.. fallido: $1. Sin embargo, el árbol todavía se puede usar.
 create_eoc=No se pudo encontrar una clase de objeto adecuada para el nuevo DN
+
 eunknown=Error desconocido
+
 apply_err=Error al aplicar la configuración
 apply_ecmd=$1 falló : $2 
 apply_ecannot=No tiene permitido aplicar la configuración
+
 stop_err=Error al detener el servidor LDAP
 stop_ecmd=$1 falló : $2 
 stop_egone=¡Ya no corre!
 stop_ekill=Proceso de eliminación fallido : $1 
 stop_ecannot=No tiene permiso para detener el servidor LDAP
+
 start_err=Error al iniciar el servidor LDAP
 start_ecmd=$1 falló : $2 
 start_ecannot=No tiene permiso para iniciar el servidor LDAP
+
 log_create_dn=Objeto creado $1 
 log_delete_dn=Objeto eliminado $1 
 log_rename_dn=Objeto renombrado $1 
@@ -234,6 +251,7 @@ log_up_access=Se movió la regla de control de acceso para $1
 log_down_access=Se movió hacia abajo la regla de control de acceso para $1 
 log_delete_accesses=Reglas de control de acceso $1 eliminadas
 log_all=todos los objetos
+
 gencert_title=Generar certificado SSL
 gencert_header=Nuevos detalles del certificado SSL
 gencert_create=Crear certificado
@@ -245,7 +263,9 @@ gencert_dir=Directorio
 gencert_err=Error al generar el certificado
 gencert_edest=El directorio de destino no existe
 gencert_epath=Los archivos de certificado y clave en la configuración del servidor LDAP deben ser rutas absolutas
+
 perms_err=Error al corregir la propiedad del archivo
+
 acl_slapd=¿Se puede configurar el servidor LDAP?
 acl_ldif=¿Se puede configurar el servidor LDAP?
 acl_schema=¿Se puede administrar el esquema?
@@ -254,6 +274,7 @@ acl_browser=¿Puede navegar y editar la base de datos?
 acl_create=¿Se puede crear un nuevo árbol?
 acl_start=¿Puede iniciar y detener el servidor LDAP?
 acl_apply=¿Se pueden aplicar cambios de configuración?
+
 access_desc=$2 por $1 
 access_self=yo
 access_users=usuarios autenticados
@@ -273,6 +294,7 @@ access_lcompare=Comparar
 access_lsearch=Buscar
 access_lread=Leer
 access_lwrite=Escribir
+
 eacl_title1=Crear regla de control de acceso
 eacl_title2=Editar regla de control de acceso
 eacl_header=Detalles de la regla de control de acceso a la base de datos LDAP

@@ -9,17 +9,21 @@ index_edit=Immaniġġja
 index_manual=Editja Manwalment
 index_anyfile=Editja fajl ta 'konfigurazzjoni PHP ieħor:
 index_return=Fajls ta 'konfigurazzjoni
+
 file_global=Konfigurazzjoni PHP Globali
 file_eread=Naqas milli jaqra $1 : $2 
+
 manual_title=Editja l-Konfigurazzjoni Manwalment
 manual_desc=Din il-paġna tista 'tintuża biex teditja manwalment fajl ta' konfigurazzjoni PHP. Dan għandu jsir bir-reqqa, peress li ebda sintassi jew verifika oħra tal-validità ma jsiru fuq il-bidliet tiegħek.
 manual_err=Ma rnexxielux jeditja l-fajl tal-konfigurazzjoni
 manual_edata=L-ebda kontenut ġdid ma daħal
+
 list_title=Immaniġġja l-konfigurazzjoni PHP
 list_ecannot=M'għandekx permess timmaniġġja dan il-fajl ta 'konfigurazzjoni PHP
 list_return=Konfigurazzjoni PHP
 list_format_ini=Format INI
 list_format_fpm=Format FPM
+
 vars_title=Varjabbli PHP
 vars_header=Ħolqien ta 'varjabbli PHP u għażliet għall-kwotazzjoni
 vars_magic=Tikkwota l-varjabbli kollha tal-input?
@@ -28,6 +32,7 @@ vars_register=Ibdel l-input kollu f'varjabbli globali?
 vars_args=Ibdel il-parametri tal-linja ta 'kmand f'varjabbli globali?
 vars_long=Oħloq matriċi ta 'stil antik bħal <tt>HTTP_GET_VARS</tt>?
 vars_err=Ma rnexxielux isalva s-settings tal-PHP varjabbli
+
 dirs_title=Settings tad-Direttorju
 dirs_header=Skript PHP u settings tad-direttorju ta 'estensjoni
 dirs_include=Fittex direttorji għal tinkludi
@@ -39,6 +44,7 @@ dirs_err=Ma rnexxielux isalva s-settings tad-direttorju
 dirs_eincs=L-ebda tinkludi direttorji ta 'tfittxija mdaħħla
 dirs_eutmp=Direttorju tal-fajls temporanji nieqes jew invalidi
 dirs_eext=Nieqes id-direttorju tal-estensjonijiet
+
 db_title=Issettjar tad-Database
 db_header1=Issettjar tal-konnessjoni tad-database MySQL
 db_persist=Ħalli konnessjonijiet ta 'database persistenti?
@@ -57,6 +63,7 @@ db_emaxlinks=Numru massimu nieqes jew invalidu ta 'konnessjonijiet totali
 db_etimeout=It-terminu tal-konnessjoni nieqes jew invalidu
 db_ehost=Nieqes jew invalidu l-ospitanti tas-server MySQL default
 db_eport=Port tas-server MySQL default nieqes jew invalidu
+
 session_title=Għażliet tas-Sessjoni
 session_header=Għażliet għall-intraċċar tas-sessjoni PHP
 session_handler=Mekkaniżmu għall-ħażna tas-sessjoni
@@ -73,6 +80,7 @@ session_epath=Direttur nieqes jew invalidu għall-fajls tas-sessjoni
 session_elife=Cookie nieqes jew ħajja invalida
 session_emaxlife=Nieqes jew invalidu tul il-ħajja massima tas-sessjoni
 session_eredis=Estensjoni ta 'redis mill-ġdid nieqsa jew b'diżabilità
+
 safe_title=Għażliet tal-Modalità Salv
 safe_header=Għażliet ta 'modalità ta' aċċess għal fajl sikur
 safe_on=Tippermetti modalità sikura?
@@ -85,6 +93,7 @@ safe_err=Ma rnexxielux isalva l-għażliet tal-mod sigur
 safe_einclude=Direttorju permess nieqes jew invalidu għall-fajls inklużi
 safe_eexec=Direttorju permess nieqes jew invalidu għal programmi eżegwiti
 safe_ebasedir=Direttorju nieqes jew invalidu għal operazzjonijiet ta 'fajls
+
 limits_title=Limiti ta 'Riżorsi
 limits_header=Memorja u għażliet ta 'limitu tat-trasferiment
 limits_mem=Allokazzjoni massima tal-memorja
@@ -98,6 +107,7 @@ limits_epost=Daqs massimu jew invalidu tal-POST HTTP massimu
 limits_eupload=Id-daqs massimu tal-upload tal-fajl nieqes jew invalidu
 limits_eexec=Ħin massimu ta 'eżekuzzjoni nieqes jew invalidu
 limits_einput=Ħin massimu ta 'analiżi ta' input nieqes jew invalidu
+
 errors_title=Żball fil-Qtugħ
 errors_header=Wiri ta 'messaġġi ta' żball u għażliet ta 'qtugħ
 errors_display=Uri messaġġi ta 'żball?
@@ -128,6 +138,7 @@ errors_err=Ma rnexxielux isalva l-iżball tal-qtugħ
 errors_ereporting=Ma daħlet l-ebda espressjoni tat-tip ta 'żball
 errors_emaxlen=Id-daqs massimu nieqes jew invalidu ta ’żbalji rreġistrati
 errors_efile=Fajl tal-ġurnal tal-iżball nieqes
+
 misc_title=Issettjar ieħor
 misc_header=Settijiet oħra varji tal-PHP
 misc_short=Ħalli skripts PHP jibdew b '&lt;? ?
@@ -148,6 +159,7 @@ misc_include=Jippermettu l-ftuħ ta 'Inkluż mill-bogħod?
 misc_path=Informazzjoni dwar il-Path Waħħal CGI?
 misc_timezone=Żona tal-ħin PHP
 misc_charset=Sett ta 'karattri awtomatiku
+
 log_manual=Editja l-fajl manwalment $1 
 log_vars=Bidliet fil-varjabbli PHP f' $1 
 log_dirs=Inbidlet is-settings tad-direttorju f ' $1 
@@ -157,6 +169,7 @@ log_safe=L-għażliet tal-modalità sikura nbidlu f' $1
 log_limits=Limiti ta 'riżorsi mibdula f' $1 
 log_errors=Inbidlet żball fl-illoggjar f ' $1 
 log_misc=Inbidlet issettjar ieħor f' $1 
+
 acl_global=Tista 'teditja l-konfigurazzjoni PHP globali?
 acl_anyfile=Tista 'teditja kwalunkwe fajl bħala konfigurazzjoni PHP?
 acl_manual=Tista 'manwalment tibdel fajls ta' konfigurazzjoni?

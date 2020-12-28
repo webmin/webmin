@@ -25,12 +25,15 @@ index_nomod=Advertencia:  el módulo $1 de Perl no está instalado en su sistema
 index_nomods=Warning: Los módulos de Perl $1 y $2 no están instalados en su sistema, por lo que Webmin no podrá acceder a su base de datos MySQL en forma confiable. <a href='$3'>Presione aquí</a> para instalarlo ahora.
 index_mysqlver=El comando <tt>$1</tt> retornó :
 index_nodbs=No tiene acceso a ninguna base de datos MySQL.
+
 login_err=Fallo al hacer login
 login_ecannot=No está autorizado a configurar el login de la base de datos
 login_elogin=Login de administración no ingresado
 login_epass=Nombre de usuario o contraseña de administración incorrectos
+
 stop_err=Fallo al detener la base de datos
 start_err=Fallo al arrancar la base de datos
+
 dbase_title=Editar Base de Datos
 dbase_tables=Tablas de Base de Datos
 dbase_add=Crear una nueva tabla
@@ -43,12 +46,14 @@ dbase_return=lista de tablas
 dbase_ecannot=No estás autorizado a editar esta base de datos
 dbase_rows=Filas
 dbase_cols=Campos
+
 ddrop_err=Fallo al borrar la base de datos
 ddrop_title=Borrar Base de Datos
 ddrop_rusure=¿Está seguro de querer borrar la base de datos $1?: $2 tablas con $3 filas de datos serán borradas.
 ddrop_mysql=¡Debido a que esta es la base de datos maestra, borrarla supondrá que su servidor MySQL quede inutilizable!
 ddrop_ok=Base de datos borrada
 ddrop_empty=Sólo borrar todas las tablas
+
 table_title=Editar Tabla
 table_title2=Crear Tabla
 table_header=Tabla $1 de la base de datos $2
@@ -92,6 +97,7 @@ tdrop_err=Fallo al borrar tabla
 tdrop_title=Borrar Tabla
 tdrop_rusure=¿Estás seguro de querer borrar la tabla $1 de la base de datos $2?: $3 filas de datos serán borradas.
 tdrop_ok=Tabla borrada
+
 field_title1=Añadir Campo
 field_title2=Modificar Campo
 field_in=En la tabla $1 de la base de datos $2
@@ -117,6 +123,7 @@ field_esize='$1' no es un tamaño válida de campo
 field_eenum=No se han ingresado valores enumerados
 field_efield='$1' no es un nombre de campo válido
 field_ekey=Los campos que permiten nulos no pueden formar parte de la clave primaria
+
 view_title=Datos de Tabla
 view_pos=Filas $1 a $2 de $3
 view_none=Esta tabla no contiene datos
@@ -140,6 +147,7 @@ view_jump=Ir a fila:
 view_download=Descargar..
 view_keep=Dejar incambiado
 view_set=Setear a contenido de archivo..
+
 users_title=Permisos de Usuario
 users_user=Usuario
 users_host=Máquinas
@@ -158,6 +166,7 @@ users_sync_privs=Permisos para nuevos usuarios
 users_sync_host=Crear nuevos usuarios con máquinas
 users_sync_def=Todas las máquinas
 users_sync_sel=Máquina específica
+
 user_title1=Crear Usuario
 user_title2=Editar Usuario
 user_header=Detalles de usuario de MySQL
@@ -173,6 +182,7 @@ user_perms=Permisos
 user_err=Fallo al salvar usuario
 user_euser=Nombre de usuario no ingresado o no válido
 user_ehost=Máquina(s) no ingresada(s) o no válida(s)
+
 dbs_title=Permisos de Base de Datos
 dbs_db=Bases de Datos
 dbs_user=Usuario
@@ -186,6 +196,7 @@ dbs_add=Crear nuevos permisos de base de datos
 dbs_all=Todos
 dbs_none=Ninguno
 dbs_return=permisos de base de datos
+
 db_title1=Permisos para Crear Bases de Datos
 db_title2=Permisos para Editar Bases de Datos
 db_header=Opciones de permisos de base de datos
@@ -200,6 +211,7 @@ db_err=Fallo al salvar permisos de base de datos
 db_euser=Nombre de usuario no ingresado o no válido
 db_ehost=Nombre de máquina no ingresado o no válido
 db_edb=Nombre de base de datos no ingresado o no válido 
+
 hosts_title=Permisos de Máquina
 hosts_db=Bases de Datos
 hosts_host=Máquinas
@@ -209,6 +221,7 @@ hosts_all=Todos
 hosts_none=Ninguno
 hosts_add=Permisos para crear máquina nueva
 hosts_empty=No se han definido permisos de máquina
+
 host_title1=Permisos para Crear Máquina
 host_title2=Permisos para Editar Máquina
 host_header=Opciones de permisos de máquina
@@ -216,6 +229,7 @@ host_db=Bases de datos
 host_any=Cualquiera
 host_host=Máquinas
 host_perms=Permisos
+
 newdb_title=Crear Base de Datos
 newdb_header=Opciones de nueva base de datos
 newdb_db=Nombre de base de datos
@@ -224,6 +238,7 @@ newdb_none=Ninguna
 newdb_err=Fallo al crear base de datos
 newdb_edb=Nombre de base de datos no ingresado o no válido
 newdb_ecannot=No está autorizado a crear bases de datos
+
 exec_title=Ejecutar SQL
 exec_header=Ingresar comando SQL a ejectur en la base de datos $1...
 exec_old=O seleccionar un comando SQL previo:
@@ -247,6 +262,7 @@ exec_header4=Este archivo debe de contener una base de datos por línea con los 
 exec_delete=¿Borrar primero los datos de la tabla?
 exec_filename=Desde archivo
 exec_ignore=¿Ignorar filas duplicadas?
+
 tprivs_title=Permisos de Tabla
 tprivs_table=Tabla
 tprivs_db=Base de datos
@@ -260,6 +276,7 @@ tprivs_add=Añadir nuevos permisos en base de datos:
 tprivs_norows=No se han definido permisos de tabla
 tprivs_return=permisos de tabla
 tprivs_none=Ninguno
+
 tpriv_title1=Crear permisos para tabla
 tpriv_title2=Editar permisos para tabla
 tpriv_header=Opciones de permisos de tabla
@@ -275,6 +292,7 @@ tpriv_err=Fallo al salvar permisos de tabla
 tpriv_etable=No se ha seleccionado tabla alguna
 tpriv_euser=Nombre de usuario no ingresado o no válido 
 tpriv_ehost=Máquina no ingresada o no válida 
+
 cprivs_title=Permisos de Campo
 cprivs_field=Campo
 cprivs_table=Tabla
@@ -288,6 +306,7 @@ cprivs_add=Añadir nuevos permisos en base de datos y tabla:
 cprivs_norows=No se han definido permisos de campo
 cprivs_return=permisos de campo
 cprivs_none=Ninguno
+
 cpriv_title1=Permisos para Crear Campo
 cpriv_title2=Permisos para Editar Campo
 cpriv_header=Opciones de permiso de campo
@@ -303,11 +322,13 @@ cpriv_err=No pude salvar permisos de campo
 cpriv_etable=No se ha seleccionado campo alguno
 cpriv_euser=Nombre de usuario no ingresado o no válido
 cpriv_ehost=Máquina no ingresada o no válida
+
 esql=SQL $1 falló: $2
 eparse=Webmin no puede parsear la salida del comando $1 debido a la naturaleza de los datos en su base de datos. Necesitará instalar los módulos Perl $2 y $3 para solucionar este problema.
 edenied=No tiene acceso a esta base de datos MySQL
 perms_ecannot=No estás autorizado a editar permisos
 perms_edb=Sólo estás autorizado a editar permisos de tus propias bases de datos
+
 acl_dbs=Bases de datos que este usuario puede gestionar
 acl_dall=Todas las bases de datos
 acl_dsel=Las seleccionadas...
@@ -324,12 +345,14 @@ acl_user=nombre de usuario
 acl_pass=contraseña
 acl_edonly=¿Puede sólo editar datos de tabla?
 acl_bnone=Deshabilitar respaldos
+
 log_start=Arrancado servidor MySQL
 log_stop=Parado servidor MySQL
 log_db_create=Creada base de datos $1
 log_db_delete=Elminada base de datos $1
 log_table_create=Creada tabla $1 en base de datos $2
 log_table_delete=Elmiminada tabla $1 de la base de datos $2
+
 log_field_create=Añadido campo $1 a $2 en la base de datos $3
 log_field_modify=Modificado campo $1 $4 en $2 en la base de datos $3
 log_field_delete=Borrado campo $1 de $2 en la base de datos $3
@@ -367,6 +390,7 @@ log_execupload=Ejecutados comandos SQL desde archivo cargado
 log_execfile=Ejecutados comandos SQL desde archivo $1
 log_importupload=Datos importados desde archivo cargado
 log_importfile=Datos importados desde archivo $1
+
 backup_title=Respaldar Base de Datos
 backup_edump=El programa de respaldo de MySQL $1 no ha sido hallado en su sistema. Quizás su <a href='$2'>configuración del módulo</a> es incorrecta.
 backup_desc=Este formulario le permite respaldar la base de datos $1 como un archivo de sentencias SQL. Para restaurar un resplado, puede usar el formulario de Ejecutar SQL para ejecutar los comandos del archivo.
@@ -391,6 +415,7 @@ backup_ccron=Respaldo programado para la base de datos habilitado.
 backup_dcron=Respaldo programado para la base de datos deshabilitado.
 backup_ucron=Camino, opciones y hora del respaldo programado de la base de datos actualizado.
 backup_ncron=Respaldo programado para la base de datos dejado deshabilitado.
+
 import_title=Importar Datos
 import_uploadout=Importando datos desde archivo cargado...
 import_fileout=Importando datos desde archivo $1...

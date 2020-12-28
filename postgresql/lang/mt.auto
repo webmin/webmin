@@ -16,6 +16,7 @@ index_add=Oħloq database ġdida.
 index_users=Utent, Gruppi u Permessi
 index_return=lista tad-database
 index_esql=Il-programm tal-klijent PostgreSQL $1 ma nstabx fis-sistema tiegħek. Forsi PostgreSQL mhux installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> tiegħek mhix korretta.
+
 index_ehba=Il-fajl tal-konfigurazzjoni ospitanti PostgreSQL $1 ma nstabx fis-sistema tiegħek. Forsi PostgreSQL ma kienx inizjalizzat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> tiegħek mhix korretta.
 index_superuser=Il-programm tal-klijent PostgreSQL psql ma setax jesegwixxi fis-sistema tiegħek. Forsi PostgreSQL mhux installat, jew il-konfigurazzjoni tal-modulu <a href='$1'></a> tiegħek mhix korretta.
 index_eversion=Id-database PostgreSQL fis-sistema tiegħek hija l-verżjoni $1, iżda Webmin jappoġġja biss il-verżjonijiet $2 u aktar.
@@ -48,10 +49,12 @@ index_gist=Indiċi Ġeneralizzata tas-Siġra tat-Tiftix
 index_jump=Jew editja database:
 index_jumpok=Miftuħ
 index_edithosts=Ikkonfigura s-Sistemi Ospitanti Allow
+
 login_err=Id-dħul ma rnexxiex
 login_ecannot=M'għandekx permess tikkonfigura l-login tad-database
 login_elogin=Nieqes id-dħul tal-amministrazzjoni
 login_epass=Username jew password ta 'l-amministrazzjoni mhux korretta
+
 dbase_title=Editja Database
 dbase_noconn=Din il-bażi tad-dejta bħalissa mhix taċċetta konnessjonijiet, u għalhekk ma tista 'ssir l-ebda azzjoni fiha.
 dbase_header=Database tabelli, indiċi, veduti u sekwenzi
@@ -78,6 +81,7 @@ dbase_jump=Editja tabella:
 dbase_vjump=Editja l-veduta:
 dbase_ijump=Edit indiċi:
 dbase_sjump=Edit sekwenza:
+
 table_title=Editja Tabella
 table_title2=Oħloq Tabella
 table_opts=Għażliet tal-qasam
@@ -105,6 +109,7 @@ table_eblob=L-ebda daqs m'hu meħtieġ għall-qasam BLOB $1
 table_csv=Esportazzjoni bħala CSV
 table_index=Oħloq Indiċi
 table_delete=Ħassar l-Oqsma magħżula
+
 field_title1=Żid il-Qasam
 field_title2=Ibdel il-Qasam
 field_in=Fit-tabella $1 fid-database $2 
@@ -123,6 +128,7 @@ field_esize="$1" m'huwiex daqs kamp validu
 field_eenum=L-ebda valuri enumerati ma daħlu
 field_efield="$1" mhux isem tal-qasam validu
 field_ekey=L-oqsma li jippermettu n-null ma jistgħux ikunu parti miċ-ċavetta primarja
+
 exec_title=Eżegwixxi SQL
 exec_header=Daħħal il-kmand SQL biex tesegwixxi fuq database $1 ..
 exec_old=Jew agħżel kmand SQL preċedenti :
@@ -152,21 +158,25 @@ exec_tabexec=Eżegwixxi SQL
 exec_tabfile=Ħaddem SQL mill-fajl
 exec_tabimport=Importa fajl tat-test
 exec_return=eżegwixxi forma SQL
+
 stop_err=Ma rnexxiex twaqqaf server tad-database
 stop_epidfile=Ma rnexxielux jiftaħ il-fajl PID $1 
 stop_ekill=Ma rnexxielux joqtol il-proċess $1 : $2 
 stop_ecannot=M'għandekx permess twaqqaf is-server tad-database
 start_err=Ma rnexxiex tibda s-server tad-database
 start_ecannot=M'għandekx permess tibda s-server tad-database
+
 ddrop_err=Naqset milli tinżel database
 ddrop_title=Database tal-Qatra
 ddrop_rusure=Int żgur li trid tinżel id-database $1 ? $2 tabelli li fihom $3 ringieli ta 'dejta jiġu mħassra.
 ddrop_mysql=Minħabba li din hija d-database ewlenija, twaqqa 'probabbilment se tagħmel is-server PostgreSQL tiegħek mhux użabbli!
 ddrop_ok=Database tal-Qatra
+
 tdrop_err=Naqset milli tinżel fit-tabella
 tdrop_title=Tabella tal-qatra
 tdrop_rusure=Int żgur li trid twaqqa 't-tabella $1 fid-database $2 ? $3 ringieli ta 'dejta se jitħassru
 tdrop_ok=Tabella tal-qatra
+
 view_title=Tabella ta 'Dejta
 view_pos=Ringieli $1 sa $2 ta ' $3 
 view_none=Din it-tabella ma fiha l-ebda dejta
@@ -201,6 +211,7 @@ view_set=Issettja għall-kontenut tal-fajl ..
 view_warn=Twissija - it-tlugħ ta 'fajls fil-kontenuti ta' <tt>test</tt> jew <tt>bytea</tt> huma probabbli li ma jaħdmux ħlief jekk il-moduli Perl $1 u $2 jiġu installati u li jintużaw.
 view_adv=Tiftix Avvanzat
 view_sqlrun=Riżultati ġġenerati mill-mistoqsija SQL : $1 
+
 newdb_title=Oħloq Database
 newdb_header=Għażliet tad-database ġodda
 newdb_db=Isem tad-database
@@ -215,6 +226,7 @@ newdb_encoding=Kodifikazzjoni b'sett ta 'karattri
 newdb_eencoding=Nieqes kodifikazzjoni sett ta 'karattri
 newdb_template=Bażi ta 'bażi ta' mudelli
 newdb_notemplate=Xejn
+
 user_title=Utenti PostgreSQL
 user_vwarning=TWISSIJA: Dan l-utent PostgreSQL huwa l-amministrazzjoni tal-login għad-dominju Virtualmin $1. It-tibdil f'kull settings hawn jista 'jikkawża żbalji fil-Virtualmin.
 user_ecannot=M'għandekx permess teditja l-utenti
@@ -244,6 +256,7 @@ user_sync_delete=Ħassar utent ta 'PostgreSQL meta l-utent Unix li jaqbel huwa m
 user_delete=Ħassar Magħżul
 user_derr=Ma rnexxielhomx iħassru lill-utenti
 user_enone=L-ebda utenti magħżula
+
 host_ecannot=M'għandekx permess teditja l-ospiti permessi
 host_title=Hosts Permessi
 host_desc=Meta klijent jgħaqqad mad-database, l-ospiti elenkati hawn taħt huma pproċessati sabiex wieħed jaqbel u l-klijent jitħalla jew jiġi miċħud.
@@ -299,8 +312,10 @@ host_derr=Ma rnexxielux jitħassar hosts permessi
 host_enone=L-ebda host magħżul
 host_manual=Editja l-File Config
 host_manualdesc=Ikklikkja din il-buttuna biex teditja manwalment il-fajl ta 'konfigurazzjoni tal-ospiti permess.
+
 manual_title=Editja l-File Config
 manual_err=Ma rnexxielux isalva l-fajl tal-konfigurazzjoni
+
 grant_title=Privileġġi mogħtija
 grant_tvi=Oġġett
 grant_type=Tip
@@ -328,6 +343,7 @@ grant_none=Ebda tabelli, veduti, sekwenzi jew indiċi ma jeżistu biex jingħata
 grant_toomany=Hemm wisq oġġetti biex turi. Sib oġġetti li jaqblu:
 grant_showing=Li juru oġġetti li jaqblu ma ' $1 ..
 grant_delete=Irrisettja l-Għotjiet Magħżula
+
 group_title=Gruppi PostgreSQL
 group_ecannot=M'għandekx permess teditja gruppi
 group_name=Isem tal-grupp
@@ -347,6 +363,7 @@ group_etaken=L-isem tal-grupp diġà qed jintuża
 group_none=L-ebda grupp ta 'PostgreSQL ma jeżisti bħalissa.
 group_derr=Ma rnexxielhiex tħassar il-gruppi
 group_enone=L-ebda grupp magħżul
+
 esql=SQL $1 falliet : $2 
 log_start=Beda s-server PostgreSQL
 log_stop=Waqqaf is-server PostgreSQL
@@ -403,6 +420,7 @@ log_backup_l=Ġie appoġġjat id-database $1 għall-fajl $2
 log_backup_all=Appoġġja d-databases kollha
 log_backup_all_l=Appoġġja d-databases kollha għall-fajl $2 
 log_manual=Editjat manwalment permess host fajl konfigurazzjoni
+
 acl_dbs=Databases ta ’dan l-utent jistgħu jimmaniġġjaw
 acl_dbscannot=Dan il-kontroll tal-aċċess isir effettiv wara li tibda s-server tad-database PostgreSQL.
 acl_dall=Il-bażijiet tad-dejta kollha
@@ -423,13 +441,17 @@ acl_cmds=Tista 'teditja qabel u wara l-kmandi ta' backup?
 acl_views=Tista 'tara u timmaniġġja veduti?
 acl_indexes=Tista 'tara u timmaniġġja indiċi?
 acl_seqs=Tista 'tara u timmaniġġja sekwenzi?
+
 fdrop_err=Naqset milli tħassar l-oqsma
 fdrop_enone=L-ebda magħżul
 fdrop_eall=Ma tistax tħassar l-oqsma kollha minn tabella!
+
 setup_err=Ma rnexxielux inizjalizza database
 setup_ecannot=M'għandekx permess inizjalizzazzjoni fid-database
+
 dbase_bkup=Backup
 dbase_rstr=Irrestawra
+
 restore_title=Restore Database
 restore_header=Irrestawra l-għażliet tad-database
 restore_db=Isem tad-database
@@ -452,6 +474,7 @@ restore_tables=Tabelli biex jerġa 'jkun
 restore_tables1=Kollha fil-fajl tal-backup
 restore_tables0=Tabelli elenkati
 restore_failed=Ir-restawr falla : $1 
+
 backup_title=Database tad-Dejt
 backup_title2=Backup Il-Databases kollha
 backup_header1=Backup destinazzjoni
@@ -500,17 +523,21 @@ backup_ebefore=Il-kmand ta 'qabel il-backup falla!
 backup_cmode=Meta tmexxi kmandi
 backup_cmode1=Qabel/wara d-databases kollha
 backup_cmode0=Qabel/wara kull database
+
 r_command=Kmand mhux sostnut
+
 adv_title=Tiftix Avvanzat
 adv_and=Sib rekords li jaqblu mal-kriterji kollha ..
 adv_or=Sib rekords li jaqblu ma 'xi kriterji ..
 adv_ok=Fittex Issa
+
 tdrops_enone=L-ebda tabella (i) li tinżel magħżula
 tdrops_err=Naqset milli tinżel tabella (i)
 tdrops_ok=Waqqa '
 tdrops_title=Qatra magħżula
 tdrops_rusure=Int żgur li trid twaħħal $1 tabella (i) magħżula fid-database $2 ? $3 ringieli ta 'dejta se jitħassru
 tdrops_rusure2=Int żgur li trid twaħħal $1 tabella (i) magħżula fid-database $2 ?
+
 ddrops_err=Naqset milli twaqqa 'bażijiet tad-data
 ddrops_title=Bażi ta 'Databases
 ddrops_rusure=Int żgur li trid twaqqa 'l-bażijiet tad-data magħżula $1 ? $2 tabelli li fihom $3 ringieli ta 'dejta jiġu mħassra.
@@ -518,6 +545,7 @@ ddrops_mysql=Minħabba li d-database ewlenija hija magħżula, it-twaqqigħ prob
 ddrops_ok=Bażi ta 'Databases
 ddrops_enone=L-ebda bażi tad-data magħżula
 ddrops_ecannotdb=M'għandekx permess tinżel id-database $1 
+
 csv_title=Esportazzjoni tal-Fajl CSV
 csv_header=Għażliet ta 'esportazzjoni CSV
 csv_dest=Destinazzjoni tal-esportazzjoni
@@ -538,6 +566,7 @@ csv_done=L-esportazzjoni CSV għal $1 hija kompluta. Id-daqs tal-fajl li jirriż
 csv_headers=Jinkludu ismijiet tal-kolonni fi CSV?
 csv_cols=Kolonni li għandhom jinkludu fis-CSV
 csv_ecols=L-ebda kolonni magħżula
+
 import_title=Importazzjoni tad-Dejta
 import_uploadout=Timporta data minn fajl imtella ' ..
 import_fileout=Jimporta data mill-fajl $1 ..
@@ -545,6 +574,7 @@ import_eupload=Fajl ta 'importazzjoni mtella' nieqes
 import_efile=Nieqes il-fajl tal-importazzjoni
 import_done=.. ħoloq $1 ringieli, skipped $2 duplikati.
 import_erow=.. l-ebda oqsma misjuba fir-ringiela $1 
+
 index_title1=Oħloq Indiċi
 index_header1=Għażliet ta 'indiċi
 index_name=Isem tal-indiċi
@@ -562,6 +592,7 @@ index_ecols=L-ebda oqsma magħżula
 index_title2=Edit Indiċi
 index_header=Indiċi $1 fid-database $2 
 index_ecannot=M'għandekx permess timmaniġġja indiċi
+
 view_title1=Oħloq Ara
 view_title2=Editja Ara
 view_header1=Ara d-dettalji
@@ -576,6 +607,7 @@ view_eclash=Veduta bl-istess isem diġà teżisti
 view_equery=Nieqes mistoqsija SQL
 view_ecols=L-ebda ismijiet tal-kolonna ma daħlu
 view_ecannot=M'għandekx permess timmaniġġja l-opinjonijiet
+
 seq_title1=Oħloq Sekwenza
 seq_title2=Edit Sekwenza
 seq_header1=Inżidu l-għażliet tas-sekwenza
@@ -595,5 +627,6 @@ seq_emin=Valur minimu nieqes jew invalidu
 seq_emax=Valur massimu nieqes jew invalidu
 seq_ecache=Numru ta 'valuri nieqsa jew invalidi fil-cache
 seq_ecannot=M'għandekx permess timmaniġġja sekwenzi
+
 dgrant_err=Ma rnexxielhomx jirrisettjaw l-għotjiet
 dgrant_enone=L-ebda oġġetti magħżula

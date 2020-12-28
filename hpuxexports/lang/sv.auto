@@ -4,6 +4,7 @@ index_ro_rw=alla värdar läsåtkomst, valda värdar skrivåtkomst
 index_sel_rw=valda värdar skrivåtkomst
 index_all_rw=alla värdar skrivtillgång
 index_sel_root=valda värd root-åtkomst
+
 edit_security=Exportera säkerhet
 edit_sel_ro=Listade värdar läsåtkomst
 edit_all_ro=Alla värdar läsåtkomst
@@ -18,7 +19,9 @@ edit_anon_access=Anonym användare
 edit_anon_notset=Inte inställd
 edit_anon_noaccess=Ingen åtkomst
 edit_async=Asynkron skriver
+
 save_enohost='$1' - Du listade inga värdar
+
 log_modify=Modifierad NFS-export $1 
 log_modify_l=Modifierad NFS-export $1 till $2 
 log_delete=NFS-export $1 har tagits bort

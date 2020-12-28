@@ -21,6 +21,7 @@ index_mailfromnone=Lalai (<tt>root</tt>)
 index_program=Perintah untuk dijalankan apabila masalah dikesan
 index_programnone=Jangan lari apa-apa
 index_monitor=Pemantauan didayakan?
+
 linear=Linear (Concatenated)
 raid0=RAID0 (Striped)
 raid1=RAID1 (dicerminkan)
@@ -29,6 +30,7 @@ raid5=RAID5 (Parity yang dibahagi)
 raid6=RAID6 (Parity Dual Distributed)
 raid10=RAID10 (Striped and Mirrored)
 blocks=blok
+
 create_title=Buat Peranti RAID
 create_header=Pilihan peranti RAID
 create_device=Fail peranti
@@ -62,6 +64,7 @@ create_o2_layout=2 Salinan Mengimbangi
 create_n3_layout=3 berhampiran salinan
 create_f3_layout=3 salinan jauh
 create_o3_layout=3 Salinan Mengimbangi
+
 view_title=RAID Device
 view_header=Pilihan peranti RAID
 view_device=Fail peranti
@@ -117,6 +120,7 @@ view_mountmsg=Masukkan direktori dan klik butang ini untuk pergi ke borang untuk
 view_mountmsg2=Klik butang ini untuk menggunakan peranti RAID ini untuk memori maya pada sistem anda.
 view_blocks=$1 blok
 view_sparegroup=Kumpulan ganti
+
 mkfs_title=Buat Filesystem
 mkfs_header2=Borang ini membolehkan anda membina $2 sistem fail baru pada $1. <b>Semua</b> data sedia ada akan dipadamkan!
 mkfs_options=Pilihan sistem fail Linux baru
@@ -124,6 +128,7 @@ mkfs_err=Gagal mencipta sistem fail
 mkfs_exec=Pelaksanaan perintah $1 ..
 mkfs_failed=.. arahan gagal!
 mkfs_ok=.. arahan lengkap.
+
 emkraid=<tt>mkraid</tt> gagal : $1 
 eraidstop=<tt>raidstop</tt> gagal : $1 
 eraidstart=<tt>raidstart</tt> gagal : $1 
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=Dibuat $1 peranti RAID $2 
 log_stop=Peranti RAID dinyahaktifkan $1 
 log_start=Peranti RAID diaktifkan $1 
@@ -147,14 +153,17 @@ log_grow=Menambah peranti RAID $1 ke jumlah $2 cakera
 log_convert_to_raid6=Peranti RAID5 $1 diubah kepada peranti RAID6
 log_convert_to_raid5=Peranti RAID6 $1 diubah ke peranti RAID5
 log_notif=Pilihan pemberitahuan masalah RAID yang dikemas kini
+
 notif_err=Gagal menyimpan pilihan pemberitahuan masalah RAID
 notif_emailaddr=Alamat pemberitahuan hilang atau tidak sah
 notif_emailfrom=Hilang atau tidak sah Daripada alamat
 notif_eprogram=Program hilang atau tidak wujud untuk dijalankan
+
 delete_title=Padam Arahan RAID
 delete_rusure=Adakah anda pasti mahu memadam array RAID $1, yang menggunakan $2 ruang cakera?
 delete_ok=Ya, Padam Ia
 delete_eidx=Tiada array RAID dipilih!
+
 remove_title=Keluarkan Partition dari RAID Array
 remove_rusure=Adakah anda pasti mahu mengeluarkan partition $2 dari RAID array $1 ?
 remove_ok=Ya, keluarkannya

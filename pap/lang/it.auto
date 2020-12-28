@@ -14,10 +14,12 @@ index_apply=Applicare
 index_return=Indice PPP
 index_none=Non hai accesso a nessuna delle funzionalità di questo modulo.
 index_delete=Elimina gli account selezionati
+
 secrets_title=Conti PPP
 secrets_return=indice
 secrets_none=Non sono ancora stati creati account PPP.
 secrets_ecannot=Non sei autorizzato a modificare gli account PPP
+
 edit_secret_etitle=Modifica account PPP
 edit_secret_ctitle=Crea un account PPP
 edit_secret_acc=Conto PPP
@@ -37,8 +39,10 @@ edit_secret_alist=Consentiti elencati ..
 edit_secret_save=Salva
 edit_secret_del=Elimina
 edit_secret_return=elenco dei conti
+
 save_secret_esave=Impossibile salvare l'account
 save_secret_enoip='$1' non è un indirizzo valido
+
 log_create=Account PPP creato $1 
 log_modify=Account PPP modificato $1 
 log_delete=Account PPP eliminato $1 
@@ -54,6 +58,7 @@ log_dialin_move=Numero ID chiamante spostato $1
 log_mgetty_create=Porta seriale creata $1 
 log_mgetty_modify=Porta seriale modificata $1 
 log_mgetty_delete=Porta seriale eliminata $1 
+
 options_title=Opzioni PPP
 options_serial=Per la porta seriale $1 
 options_dev=Per il dispositivo $1 
@@ -84,6 +89,7 @@ options_idle=Tempo di inattività prima di disconnettersi
 options_idle_def=Mai
 options_eidle=Tempo di inattività mancante o non valido
 options_ecannot=Non puoi modificare le opzioni PPP
+
 mgetty_title=Configurazione della porta seriale
 mgetty_ecmd=Il comando $1 non è stato trovato sul tuo sistema. Questo programma è necessario per gestire gli accessi alle porte seriali tramite modem o connessione diretta.
 mgetty_desc=Affinché il server consenta l'accesso su una porta seriale tramite modem o una connessione diretta, deve essere elencato di seguito. Quando si aggiunge una porta a questo elenco, il programma $1 verrà configurato per rispondere alle connessioni modem e visualizzare un prompt di accesso.
@@ -125,6 +131,7 @@ mgetty_apply=Applica configurazione
 mgetty_applydesc=Fare clic su questo pulsante per applicare la configurazione della porta seriale corrente eseguendo il comando $1 e uccidendo tutti i processi Mgetty.
 mgetty_applyerr=Impossibile applicare la configurazione
 mgetty_ecannot=Non è consentito modificare le configurazioni della porta seriale
+
 dialin_title=Accesso ID chiamante
 dialin_desc=Questa pagina consente di configurare Mgetty per consentire o negare l'accesso al dialin in base al numero di telefono di un chiamante. Quando arriva una chiamata, la prima voce nell'elenco che corrisponde al numero di telefono determinerà se la chiamata è stata accettata o meno.
 dialin_efile=Il file di controllo dell'accesso all'ID chiamante Mgetty $1 non è stato trovato sul tuo sistema. Forse Mgetty non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
@@ -145,9 +152,12 @@ dialin_move=Mossa
 dialin_err=Impossibile salvare il numero ID chiamante
 dialin_enumber=Numero di telefono mancante o non valido
 dialin_ecannot=Non è consentito modificare l'accesso all'ID chiamante
+
 acl_pages=Pagine disponibili
 acl_direct=Vai direttamente a una pagina?
+
 sync_ecannot=Non è consentito modificare le opzioni di sincronizzazione unix-ppp
 sync_title=Sincronizzazione utente
+
 delete_err=Impossibile eliminare gli account
 delete_enone=Nessuno selezionato

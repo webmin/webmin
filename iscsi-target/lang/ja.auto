@@ -1,6 +1,7 @@
 check_econfig=iSCSIターゲット構成ファイル $1がシステムで見つかりませんでした。
 check_eietadm=iSCSIターゲット管理コマンド $1がシステムで見つかりませんでした。
 check_einit=起動アクション $1は存在しません
+
 index_title=iSCSIターゲット
 index_clink=インストールされていないか、<a href='$1'>モジュール設定</a>が正しくない可能性があります。
 index_stop=iSCSIターゲットを停止
@@ -22,8 +23,10 @@ index_noluns=なし
 index_nousers=どれか
 index_nullio=$1セクターのRAMディスク
 index_size=全体の大きさ
+
 dtargets_err=ターゲットを削除できませんでした
 dtargets_enone=何も選択されていません！
+
 target_title1=iSCSIターゲットを作成する
 target_title2=iSCSIターゲットの編集
 target_header=iSCSI共有デバイスオプション
@@ -68,11 +71,13 @@ target_noalias=なし
 target_hdigest=ヘッダーチェックサム
 target_ddigest=データチェックサム
 target_nodigest=なし
+
 auth_title=認証設定
 auth_header=すべてのターゲットのデフォルト認証オプション
 auth_iuser=クライアントによる認証
 auth_ouser=クライアントへの認証
 auth_err=認証設定を保存できませんでした
+
 conn_title=接続設定
 conn_header=すべてのターゲットのデフォルトの接続オプション
 conn_sessions=最大同時セッション
@@ -91,6 +96,7 @@ conn_emaxrecv=最大受信セグメント長の欠落または非数値
 conn_emaxxmit=最大送信セグメント長の欠落または非数値
 conn_emaxburst=クライアントバーストサイズの欠落または非数値
 conn_efirstburst=クライアントの未承諾データの最大サイズの欠落または非数値
+
 timeout_title=タイムアウト設定
 timeout_header=クライアントタイムアウトオプション
 timeout_nopi=アイドル時のpingの間隔
@@ -98,6 +104,7 @@ timeout_nopinone=pingを実行しない
 timeout_secs=秒
 timeout_nopt=ping応答を待つ時間
 timeout_noptnone=ping時間と同じ
+
 addr_title=サーバーのアドレスとポート
 addr_header=iSCSIサーバーのネットワークオプション
 addr_addr=IPアドレスでリッスンする
@@ -110,18 +117,21 @@ addr_err=サーバーのアドレスを保存できませんでした
 addr_eaddr=リッスンするアドレスはIPアドレスである必要があります
 addr_eport=リッスンするポートは番号である必要があります
 addr_edebug=デバッグレベルは数値である必要があります
+
 initiators_title=許可されたクライアントアドレス
 initiators_none=許可されたクライアントアドレスはまだ定義されていません。クライアントは接続できません。
 initiators_ips=許可されたクライアント
 initiators_title1=許可されたクライアントアドレスを追加する
 initiators_title2=許可されたクライアントアドレスの編集
 initiators_header=ターゲットに許可されたiSCSIクライアント
+
 targets_title=許可されたサーバーアドレス
 targets_none=許可されたサーバーアドレスはまだ定義されていません。クライアントは接続できません。
 targets_ips=許可されたサーバーインターフェイス
 targets_title1=許可されたサーバーアドレスを追加
 targets_title2=許可されたサーバーアドレスの編集
 targets_header=ターゲットに許可されたiSCSIサーバーインターフェイス
+
 allow_target=ターゲット名
 allow_move=移動する
 allow_delete=選択を削除します
@@ -133,17 +143,21 @@ allow_return=許可されたターゲットとアドレス
 allow_err=許可されたアドレスを保存できませんでした
 allow_eaddr=アドレス $1は無効です。 IPv4アドレス、IPv4ネットワーク/マスク、または角括弧で囲まれたIPv6アドレスのいずれかでなければなりません。
 allow_eaddrs=入力を許可するアドレスがありません
+
 dallow_err=許可されたアドレスを削除できませんでした
 dallow_enone=何も選択されていません
+
 manual_title=構成ファイルの編集
 manual_desc=次のテキストボックスを使用して、iSCSIサーバー構成ファイル $1を編集します。入力に対して検証は行われないため、注意してください！
 manual_err=構成ファイルを保存できませんでした
 manual_edata=内容が入力されていません！
+
 start_err=iSCSIサーバーの起動に失敗しました
 stop_err=iSCSIサーバーの停止に失敗しました
 restart_err=iSCSIサーバーの再起動に失敗しました
 atboot_err=起動時に有効にできませんでした
 atboot_einit=初期化スクリプト $1は存在しません
+
 log_create_target=ターゲット $1を作成しました
 log_delete_target=削除されたターゲット $1
 log_modify_target=変更されたターゲット $1

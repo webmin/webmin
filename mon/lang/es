@@ -6,6 +6,7 @@ mon_conf_title=Configuación Básica
 mon_status_title=Estado Operacional
 hostgroups_title=Grupos de Máquinas de Configuración de MON
 services_title=Definiciones de Servicio de Grupos de Observación
+
 head_hostgroups=Grupos de máquinas y Servicios
 head_groups=Nombre de Grupo de máquinas
 head_members=Miembros de Grupo de máquinas
@@ -17,6 +18,7 @@ head_monauth=Suministrar autenticación para MONCMD
 head_usr=Nombre de usuario
 head_pass=Clave de acceso
 head_mand=(Los parámetros en color rojo son obligatorios)
+
 err_nomon=el paquete 'mon' no está instalado en tu sistema
 err_nomonconf=El archivo de configuración de MON $1 no fue hallado en tu sistema. Quizás no está instalado o tu <a href='$2'>configuracion del módulo</a> es incorrecta.
 err_nowatch=No se han seleccionado grupos de observación. Selecciona al menos uno para proceder.
@@ -28,6 +30,7 @@ stop_epid=Ya no se está ejecutando
 start_err=No pude arrancar MON
 restart_err=No pude rearrancar MON
 restart_epid=No pude obtener PID
+
 other=Otros (separados por espacios)
 next=Siguiente
 mon_stat=Estado de MON
@@ -43,6 +46,7 @@ save_apply=Salvar y Aplicar
 watch=Grupo de Observación
 members=Miembros
 def_perargs=wd {Sat-Sun}
+
 def_desc=descripción
 def_inter=intervalo
 def_mon=monitor
@@ -58,15 +62,18 @@ def_trapdur=trapduration
 def_rand=randskew
 def_exclhost=exclude_hosts
 def_exclper=exclude_period
+
 groups_title=Grupos de Máquinas
 groups_group=Nombre de Grupo
 groups_members=Máquinas Miembro
+
 watches_title=Listas de Observación
 watches_group=Grupo de Observación
 watches_services=Servicios que son observados
 watches_sadd=Añadir servicio...
 watches_add=Añadir lista de observación para grupo:
 watches_return=listas de observación
+
 global_title=Opciones Globales
 global_header=Opciones globales de configuración de MON
 global_maxprocs=Máximos procesos de MON
@@ -84,6 +91,7 @@ global_ehistlength=El tamaño de historia de evento falta o es inválido
 global_ealertdir=El directorio de programas de alerta falta o es inválido
 global_emondir=El directorio de programas de monitor falta o es inválido
 global_euserfile=Falta el archivo de usuarios de MON
+
 watch_title=Editar Lista de Observación
 watch_header=Detalles de observación de grupo de Máquina
 watch_group=Grupo de máquinas a observar
@@ -92,6 +100,7 @@ watch_service=Nombre de servicio
 watch_monitor=Monitor a usar
 watch_interval=Revisar cada
 watch_periods=Períodos de monitorización
+
 service_title=Añadir Servicio
 service_title2=Editar Servicio
 service_header=Detalles de servicio observado
@@ -144,16 +153,19 @@ service_epstr=Falta la especificación del período
 service_known0=cadena <tt>Time::Period</tt>
 service_known1=Días y horas especificadas
 service_known2=Período definido
+
 status_title=Estado de MON
 status_ecgi=El programa CGI de estado de MON $1 no existe. Quizás no está instalado o tu <a href='$2'>configuración del módulo</a> es incorrecta.
 status_eperl=El programa CGI de estado de MON requiere el módulo $1 de perl. <a href='$2'>Haz click aquí</a> para instalarlo diréctamente desde CPAN.
 status_esame=El programa CGI de estado MON $1 se ha configurado al script <tt>mon.cgi</tt> en este módulo Webmin, y no al programa CGI que viene con MON. Ajuste la  <a href='$2'>configuración del módulo</a> para utilizar la ruta adecuada.
+
 users_title=Usuarios de MON
 users_etype=La lista de usuarios de MON no puede ser editada debido a que MON no está configurado actuálmente para utilizarla autenticación en la página de <a href='$1'>Opciones Globales</a>.
 users_header=Usuarios de MON autorizados en $1
 users_nousers=No se han definido usuarios de MON en $1.
 users_add=Crear un nuevo usuario.
 users_return=lista de usuarios de MON
+
 user_create=Crear Usuario de MON
 user_edit=Editar Usuario de MON
 user_header=Detalles de usuario de MON
@@ -163,6 +175,7 @@ user_leave=Dejar sin cambiar
 user_err=No pude salvar usuario
 user_euser=El nombre de usuario falta o es inválido
 user_esame=Ya existe un usuario con el mismo nombre
+
 auth_title=Comandos de Cliente
 auth_desc=Esta página te permite controlar qué comandos de MON pueden ejecutarse por qué usuarios al utilizar los programas de cliente.
 auth_cmd=Comando de MON
@@ -172,6 +185,7 @@ auth_all=Todos
 auth_sel=Sólo los usuarios
 auth_err=No pude salvar comandos de cliente
 auth_eusers=No se han digitado usuarios para comando $1
+
 periods_title=Períodos Definidos
 periods_period=Nombre de período
 periods_times=Días y horas

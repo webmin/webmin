@@ -16,6 +16,7 @@ index_chain=Grandinė $1
 index_action=Veiksmas
 index_desc=Būklė
 index_comm=Komentuok
+index_no_comment=
 index_move=Judėk
 index_none=Šiai grandinei nėra apibrėžtų taisyklių.
 index_policy=Nustatyti numatytąjį veiksmą į:
@@ -88,6 +89,7 @@ index_ipset_size=Dydis
 index_ipvxmode=Pakeisti IP protokolo versiją:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=protokolas yra $1 
 desc_p!=protokolas nėra $1 
 desc_s=šaltinis yra $1 
@@ -114,6 +116,8 @@ desc_tcp-option=paketas naudoja TCP parinktį $1
 desc_tcp-option!=paketas nenaudoja TCP parinkties $1 
 desc_icmp-type=ICMP tipas yra $1 
 desc_icmp-type!=ICMP tipas nėra $1 
+desc_icmpv6-type=ICMP tipas yra $1 
+desc_icmpv6-type!=ICMP tipas nėra $1 
 desc_mac-source=Ethernet adresas yra $1 
 desc_mac-source!=Ethernet adresas nėra $1 
 desc_limit=norma yra mažesnė nei $1 
@@ -146,10 +150,15 @@ desc_always=Visada
 desc_args--match-set=$2 yra IP rinkinyje $1 
 desc_src=šaltinis
 desc_dest=Kelionės tikslas
+
 redhat_einstalled=Nebuvo rastas <tt>iptables (6)</tt> įkrovos veiksmas, rodantis, kad IPtable paketas neįdiegtas jūsų sistemoje
 redhat_eoutput=Gaunant „IPtable“ būseną iš komandos $1 įvyko klaida. Tai tikriausiai rodo, kad jūsų sistema sukonfigūruota naudoti IPchains, o ne IPtable.
+
 gentoo_escript=„Gentoo IPtables“ paleisties scenarijus $1 jūsų sistemoje nerastas.
+
 eiptables=Nežinoma IP lentelės įrašo failo eilutė : $1 
+eip6tables=Nežinoma „ip6tables“ išsaugo failo eilutę : $1 
+
 edit_title1=Pridėti taisyklę
 edit_title2=Redaguoti taisyklę
 edit_title3=Klono taisyklė
@@ -218,6 +227,7 @@ edit_physdevout=Siunčiama fizinė sąsaja
 edit_physdevisin=Paketai, gaunami tilto sąsajoje
 edit_physdevisout=Paketų siuntimas tilto sąsajoje
 edit_physdevisbridged=Paketai yra sujungiami
+
 save_err=Nepavyko išsaugoti taisyklės
 save_echain=Trūksta arba netinkama grandinė paleisti
 save_esource=Trūksta arba netinkamas šaltinio adresas arba tinklas
@@ -262,23 +272,28 @@ save_estates=Nepasirinkta nė viena ryšio būsena
 save_ecanjump=Jums neleidžiama atlikti šio veiksmo
 save_ephysdevin=Trūksta arba netinkama gaunamoji fizinė sąsaja
 save_ephysdevout=Trūksta arba netinkama siunčiama fizinė sąsaja
+
 delete_title=Ištrinti grandinę
 delete_rusure=Ar tikrai norite ištrinti grandinę $1 ? $2 joje esančios taisyklės bus ištrintos.
 delete_ok=Ištrinti dabar
 delete_ecannot=Jums neleidžiama ištrinti grandinių
+
 clear_title=Skaidri grandinė
 clear_rusure=Ar tikrai norite ištrinti visas $2 taisykles iš $1 grandinės?
 clear_ecannot=Jums neleidžiama išvalyti grandinių
+
 new_err=Nepavyko sukurti grandinės
 new_ename=Trūksta arba netinkamas grandinės pavadinimas
 new_etaken=Grandinė tokiu pavadinimu jau yra
 new_ecannot=Jums neleidžiama kurti grandinių
+
 apply_err=Nepavyko pritaikyti konfigūracijos
 apply_ecannot=Jums neleidžiama naudoti konfigūracijos
 apply_remote=Klaida nuo $1 : $2 
 unapply_err=Nepavyko atkurti konfigūracijos
 unapply_ecannot=Jums neleidžiama grąžinti konfigūracijos
 bootup_ecannot=Įleidžiant ugnį neleidžiama įjungti ar išjungti užkardos
+
 log_create_rule=Pridėta taisyklė $1 lentelės $2 grandinėje
 log_modify_rule=Modifikuota taisyklė $1 lentelės $2 grandinėje
 log_delete_rule=Ištrinta taisyklė $1 lentelės $2 grandinėje
@@ -301,8 +316,10 @@ log_add_group=Pridėta klasterio serverių iš grupės $1
 log_delete_host=Pašalintas klasterio serveris $1 
 log_delete_group=Pašalinti $1 grupių serveriai
 log_openports=Atidaryti ugniasienės prievadai $1 
+
 setup_eiface=Neįvesta jokia išorinė tinklo sąsaja
 setup_ecannot=Jums neleidžiama nustatyti ugniasienės
+
 acl_tables=Leidžiamos IP lentelės
 acl_apply=Ar galima pritaikyti konfigūraciją?
 acl_unapply=Ar galima netaikyti konfigūracijos?
@@ -314,9 +331,11 @@ acl_jall=Visi
 acl_newchain=Ar galite sukurti naujas grandines?
 acl_delchain=Ar galima ištrinti ar išvalyti grandines?
 acl_policy=Ar galima pakeisti numatytąją politiką?
+
 etable=Jums neleidžiama redaguoti šio IPtable
 ejump=Jums neleidžiama redaguoti šios taisyklės
 ecluster=Jums neleidžiama valdyti užkardos grupių
+
 cluster_title=Klasterio ugniasienės serveriai
 cluster_none=Prie ugniasienės klasterio dar nebuvo pridėta jokių serverių.
 cluster_host=Pagrindinio kompiuterio vardas
@@ -327,6 +346,7 @@ cluster_gadd=Įtraukite serverius į grupę
 cluster_need=„Webmin“ serverių rodyklės modulyje turite pridėti serverius su prisijungimo vardu ir slaptažodžiu, kad juos būtų galima valdyti čia.
 cluster_return=klasterių serveriai
 cluster_delete=Pašalinti pasirinktą
+
 add_title=Pridėti serverius
 add_msg=Pridedama $1 ..
 add_gmsg=Serverių pridėjimas grupėje $1 ..
@@ -336,13 +356,16 @@ add_echeck=Serveris $1 neturi „Linux Firewall“ modulio
 add_emissing=$1 serveriui trūksta užkardos komandos $2 
 add_ok=Pridėta $1 su $2 aktyviomis ugniasienės taisyklėmis.
 add_enone=Nėra pasirinktų serverių!
+
 policy_ecannot=Jums neleidžiama pakeisti šios grandinės numatytosios politikos
+
 move_title=Perkelti taisykles
 move_count=Pasirinktos taisyklės
 move_chain=Dabartinis pokytis
 move_dest=Paskirties grandinė
 move_ok=Judėk dabar
 move_header=Taisyklių perkėlimo parinktys
+
 rename_title=Pervadinti grandinę
 rename_count=Taisyklės grandinėje
 rename_chain=Dabartinis vardas
@@ -352,6 +375,3 @@ rename_header=Grandinės pervadinimo parinktys
 rename_adjust=Modifikuoti kitas taisykles, kurios pereina į šią grandinę?
 rename_none=Nė vienas
 rename_ecannot=Jums neleidžiama pervadinti grandinių
-desc_icmpv6-type=ICMP tipas yra $1 
-desc_icmpv6-type!=ICMP tipas nėra $1 
-eip6tables=Nežinoma „ip6tables“ išsaugo failo eilutę : $1 

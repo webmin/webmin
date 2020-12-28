@@ -24,8 +24,10 @@ all=Alle
 index_view=Betrachten..
 index_viewfile=Log Datei ansehen:
 index_viewok=Ansehen
+
 restart_ekill=Fehler beim Signalisieren des Syslog-Prozesses $1 : $2
 restart_ecannot=Sie sind nicht berechtigt <tt>Syslog</tt> neu zu starten
+
 start_ecannot=Sie sind nicht berechtigt <tt>Syslog</tt> zu starten!
 edit_title=Systemprotokoll bearbeiten
 create_title=Systemprotokoll hinzufügen
@@ -56,11 +58,13 @@ edit_tag=Nur für Programm
 edit_return=Logdateieinzelheiten
 edit_ecannot=Sie sind nicht berechtigt die Einstellungen zu verändern!
 edit_ecannot2=Sie dürfen diese Logdatei nicht bearbeiten
+
 view_title=Protokolldatei einsehen
 view_header=Die letzten $1 Zeilen von $2
 view_empty=Protokolldatei ist leer
 view_refresh=Aktualisieren
 view_filter=Zeige nur Zeilen mit dem Text $1
+
 save_err=Fehler beim Speichern der Protokolldatei
 save_efile='$1' ist kein gültiger Dateiname : $2
 save_epipe='$1' ist keine gültige Named-Pipe
@@ -80,11 +84,13 @@ save_ecannot5=Sie dürfen diese Logdatei nicht ändern
 save_ecannot6=Es ist Ihnen nicht erlaubt willkürliche Logs anzusehen
 save_ecannot7=Es ist Ihnen nicht erlaubt diese extra Log Datei anzusehen
 save_emissing=Fehlende Log Datei zum ansehen
+
 log_modify=Logdatei zu $1 geändert
 log_create=Logdatei zu $1 hinzugefügt
 log_delete=Logdatei zu $1 gelöscht
 log_apply=Angewandte Änderungen
 log_start=Logdatei-Server gestartet
+
 desc_sysmesg=System-Nachrichten
 desc_mail=Mail-Logdateien
 desc_auth=Authentifizierungs-Logdatei
@@ -93,6 +99,7 @@ desc_news=NNTP-News Logdateien
 desc_uucp=UUCP-Logdateien
 desc_debug=Debugging Nachrichten
 desc_cron=Cron-Job Logdateien
+
 acl_noedit=Darf nur Logdateien ansehen?
 acl_any=Kann eine beliebige Datei als Protokoll ansehen?
 acl_logs=Darf Logdateien ansehen und konfigurieren

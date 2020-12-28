@@ -14,6 +14,7 @@ index_restart=LDAP Client Daemon neu gestartet
 index_restartdesc=Übernehme die aktuelle Konfiguration durch den Neustart des lokalen LDAP-Client-Daemons.
 index_atboot=Starte LDAP Client beim Booten
 index_atbootdesc=Ändert, ob der LDAP-Client Dämon beim Booten gestartet wird oder nicht.
+
 server_title=LDAP Server Konfiguration
 server_header=LDAP Server und Login Optionen
 server_host=LDAP Server Hostnamen
@@ -51,6 +52,7 @@ server_etimelimit=Fehlende oder ungültige Verbindungsfrist
 server_ecacert=Fehlende oder ungültige CA-Zertifikats-Datei
 server_euport=Fehlender oder ungültiger Port für Server $1
 server_euri=Keine LDAP Server eingegeben
+
 base_title=LDAP Such-Basen
 base_header=LDAP Verzeichnis Suchorte
 base_base=Globale Suchbasis
@@ -86,6 +88,7 @@ base_enetmasks=Fehlende Basis für Netzwerknamen
 base_ealiases=Fehlende Basis für E-Mail-Aliase
 base_enetgroup=Fehlende Basis für Netzgruppen
 base_etimelimit=Fehlende oder ungültige Suchfrist
+
 pam_title=Authentifizierungsoptionen
 pam_header=PAM-Authentifizierung und Passwort-Einstellungen
 pam_filter=Zusätzliche LDAP Filter
@@ -106,10 +109,12 @@ pam_efilter=Fehlende zusätzliche LDAP-Filter
 pam_elogin=Fehlendes oder ungültiges LDAP-Attribut für Benutzernamen
 pam_egroupdn=Fehlende LDAP-Gruppe zu erzwingen zur Mitgliedschaft auf
 pam_emember=Fehlendes oder ungültiges LDAP-Attribut für Mitglieder der Gruppe
+
 switch_title=Dienste die LDAP benutzen
 switch_service=Dienst
 switch_srcs=Datenquellen
 switch_return=Dienste die LDAP benutzen
+
 ldap_emodule=Das Perl-Modul $1, welche zum Kommunizieren mit dem LDAP-Server benötigt wird, ist nicht installiert. <a href='$2'>Klicken Sie hier</a> um es von Webmin herunterzuladen und es jetzt zu installieren.
 ldap_emodule2=Das Perl-Modul $1, welche zum Kommunizieren mit dem LDAP-Server benötigt wird, ist nicht installiert.
 ldap_econf=Die LDAP Client Konfigurationsdatei $1 wurde nicht auf Ihrem System gefunden
@@ -119,6 +124,7 @@ ldap_elogin=Fehlgeschlagen LDAP Server zu binden $1 als $2 : $3
 ldap_anon=anonymous
 ldap_eparse=Konnte nicht den LDAP-Server URI $1 analysieren
 ldap_etls=Fehlgeschlagen zum TLS-Modus zu wechseln : $1
+
 browser_title=LDAP Browser
 browser_econn=Der LDAP-Browser können nicht verwendet werden : $1
 browser_base=Browse:
@@ -129,6 +135,7 @@ browser_attrs=Objektattribute
 browser_parent=Durchsuche Übergeordnetes
 browser_none=Keine
 browser_sel=OK
+
 order_nisplus=NIS+
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Benutzerdrucker
 order_xfn=XFN
 order_mdns4=Multicast DNS
 order_mdns4_minimal=Multicast DNS (minimal)
+
 desc_aliases=Sendmail Aliase
 desc_mail=Sendmail Aliase
 desc_hosts=Host Adressen
@@ -177,6 +185,7 @@ desc_printers=Drucker
 desc_ipnodes=IP nodes
 desc_timezone=Zeitzonen
 desc_locale=Locales
+
 eswitch_title=Editiere Dienst
 eswitch_egone=Dienst existiert nicht!
 eswitch_header=Dienstdetails
@@ -196,6 +205,7 @@ eswitch_continue=Setze Suche fort
 eswitch_none=Keine
 eswitch_err=Fehlgeschlagen Dienst zu speichern
 eswitch_enone=Keine Quellen ausgewählt!
+
 log_server=LDAP Server Konfiguration modifiziert
 log_base=LDAP Such Basis modifiziert
 log_pam=Authentifizierungsoptionen geändert
@@ -205,6 +215,7 @@ log_delboot=LDAP Client beim Booten deaktviert
 log_start=LDAP Client Dämon gestartet
 log_stop=LDAP Client Dämon gestoppt
 log_restart=LDAP Client Daemon neu gestartet
+
 check_title=Validiere LDAP-Konfiguration
 check_base=Finde LDAP Basis für Benutzer ..
 check_ebase=.. keine Basis in Client Konfiguration gefunden!

@@ -45,6 +45,7 @@ index_ondate=Datums
 index_charset=Automātiski atbildēt uz rakstzīmju kopu
 index_subject=Automātiski atbildēt uz ziņojuma tēmu
 index_nowebmin=Šis modulis ir paredzēts tikai izmantošanai Usermin. Ja tas ir redzams Webmin, izmantotais motīvs ir nepilnīgs.
+
 edit_title1=Izveidot filtru
 edit_title2=Rediģēt filtru
 edit_header1=Nosacījums filtram
@@ -71,6 +72,7 @@ edit_amode7=Saglabāt jaunajā mapē ar nosaukumu
 edit_nobounce=Nodrošināt atlēcošo ziņojumu pārsūtīšanu
 edit_apply=Rādīt atbilstošo e-pastu mapē:
 edit_move=Piesakies e-pastā mapē:
+
 save_err=Neizdevās saglabāt filtru
 save_egone=Filtrs vairs nepastāv!
 save_econdheader=Trūkst vai nav derīga e-pasta galvene
@@ -89,8 +91,10 @@ save_enewfolder3=Mape ar tādu pašu nosaukumu jau pastāv
 save_estart=Nederīgs automātiskās atbildes sākuma datums
 save_eend=Nederīgs automātiskās atbildes beigu datums
 save_echarset=Trūkst vai nav derīga automātiskās atbildes rakstzīmju kopa
+
 delete_err=Neizdevās izdzēst filtrus
 delete_enone=Nav atlasīts
+
 aliases_type1=Adrese 1
 aliases_type2=Adreses failā $1 
 aliases_type3=Fails $1 
@@ -101,6 +105,7 @@ aliases_your=Jūsu pastkastīte
 aliases_delete=Dzēst pastu
 aliases_other=Lietotāja $1 pastkaste
 aliases_auto=Automātiskais atbildētājs ar ziņojumu $1 
+
 auto_title=E-pasta automātiskā atbilde
 auto_header=Automātiskas e-pasta atbildes iespējas
 auto_enabled=Automātiskā atbilde ir iespējota?
@@ -111,12 +116,14 @@ auto_charsetdef=No pašreizējās valodas
 auto_charsetother=Citu rakstzīmju kopa
 auto_period=Minimālais intervāls starp atbildēm
 auto_err=Neizdevās saglabāt automātisko atbildi
+
 forward_title=Pārsūtīt e-pastu
 forward_header=E-pasta pāradresācijas iespējas
 forward_enabled=E-pasta pāradresācija ir iespējota?
 forward_to=Pārsūtīt uz adresēm
 forward_cont=Piegādāt arī normāli?
 forward_err=Neizdevās saglabāt e-pasta pārsūtīšanu
+
 move_err=Neizdevās piemērot filtru
 move_esrc=Avota mape $1 neeksistē!
 move_edest=Galamērķa mape $1 neeksistē!

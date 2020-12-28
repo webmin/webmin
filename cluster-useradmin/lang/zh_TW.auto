@@ -17,6 +17,7 @@ index_tdesc=描述
 index_tucount=用戶數
 index_tgcount=團體
 index_ttype=操作系統類型
+
 add_title=添加服務器
 add_msg=正在添加 $1 ..
 add_gmsg=將服務器添加到組 $1 ..
@@ -26,6 +27,7 @@ add_echeck=服務器 $1沒有用戶和組模塊
 add_epft=服務器 $1不使用與此主機相同的用戶文件格式
 add_egft=服務器 $1不使用與此主機相同的組文件格式
 add_ok=已向 $1添加了 $2用戶和 $3組。
+
 host_title=受管服務器
 host_header=軟件管理的服務器詳細信息
 host_name=主機名
@@ -34,8 +36,7 @@ host_delete=從託管列表中刪除
 host_refresh=刷新用戶和組
 host_users=用戶數
 host_groups=組數
-host_ulist=服務器上的用戶
-host_glist=服務器上的群組
+
 host_return=服務器詳細信息
 refresh_title=刷新用戶和組
 refresh_header=從所有服務器重新請求用戶和組列表。
@@ -49,6 +50,7 @@ refresh_gdel=刪除 $1個群組
 refresh_done=..完成
 refresh_del=已從服務器列表中刪除 $1
 refresh_failed=無法刷新 $1 : $2
+
 uedit_host=來自 $1的詳細信息
 uedit_leave=不要改變
 uedit_set=調成
@@ -66,6 +68,7 @@ uedit_servers=要在其上創建的服務器
 uedit_all=&lt;所有主機&gt;
 uedit_donthave=&lt;沒有他的主人&gt;
 uedit_group=$1的成員
+
 usave_einuse=$1上已經存在一個具有相同名稱的用戶
 usave_esecgid=輔助組 $1不存在
 usave_con=在 $1上創建 ..
@@ -88,16 +91,20 @@ usave_header=在所有主機上創建用戶 $1。
 usave_header5=在 $2上創建用戶 $1。
 usave_header4=在組 $2的成員上創建用戶 $1 ..
 usave_header3=在沒有他的主機上創建用戶 $1 ..
+
 search_hosts=主持人
+
 udel_on=正在從 $1..中刪除
 udel_servs=刪除主目錄（如果存在）
 udel_others=刪除其他模塊中的用戶？
 udel_dothers=刪除其他模塊 ..
 udel_gone=用戶不再存在。
 udel_failed=刪除用戶失敗： $1
+
 gdel_on=正在從 $1..中刪除
 gdel_gone=用戶不再存在。
 gdel_failed=刪除組失敗： $1
+
 gsave_create=添加組文件條目 ..
 gsave_con=在 $1上創建 ..
 gsave_euser=用戶 $1不存在
@@ -110,10 +117,12 @@ gsave_header=在所有主機上創建組 $1 ..
 gsave_header5=在 $2上創建組 $1 ..
 gsave_header4=在組 $2的成員上創建組 $1 ..
 gsave_header3=在沒有主機的主機上創建組 $1 ..
+
 gedit_host=來自 $1的詳細信息
 gedit_add=新增使用者
 gedit_del=刪除用戶
 gedit_donthave=&lt;沒有主機的主機&gt;
+
 sync_title=同步服務器
 sync_desc=通過此表單，您可以在當前沒有用戶和服務器的服務器上創建用戶和組，以使帳戶在群集中的所有服務器之間同步。
 sync_hosts=要同步的服務器
@@ -141,6 +150,7 @@ sync_test=只顯示會做什麼？
 sync_makehome=創建主目錄？
 sync_copy=將文件複製到主目錄？
 sync_others=在其他模塊中創建用戶？
+
 log_create_user=已創建用戶 $1
 log_delete_user=刪除的用戶 $1
 log_modify_user=修改的用戶 $1

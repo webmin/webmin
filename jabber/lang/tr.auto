@@ -17,6 +17,7 @@ index_restartmsg=Jabber sunucusunu durdurup yeniden başlatarak geçerli yapıla
 index_comments=Uyarı - $1 Jabber yapılandırma dosyanız, bu modül kullanılarak herhangi bir yapılandırma değişikliği yapılırsa kaldırılacak yorumlar içeriyor.
 index_return=Jabber menüsü
 index_version=Jabber sürümü $1 
+
 general_title=Genel seçenekler
 general_header=Global Jabber sunucu seçenekleri
 general_host=Sunucunuzun ana bilgisayar adı
@@ -32,6 +33,7 @@ general_eelogfmt=Hata günlüğü biçimi eksik
 general_erlog=Eksik veya geçersiz trafik günlüğü dosyası
 general_erlogfmt=Trafik günlüğü biçimi eksik
 general_epidfile=Eksik veya geçersiz işlem kimliği dosyası
+
 messages_title=Mesajlar
 messages_header=İstemciler için Jabber sunucu mesajı
 messages_wsubject=Karşılama mesajı konusu
@@ -44,6 +46,7 @@ messages_vcard2jud=VCard Jabber kullanıcı dizinine gönderilsin mi?
 messages_err=Mesajlar kaydedilemedi
 messages_evcard=Geçersiz vCard XML : $1 
 messages_etag=Sunucu vCard XML'si &lt;vCard&gt; ile başlamıyor
+
 modules_title=Jabber Modülleri
 modules_desc=Aşağıda listelenen modüller, Jabber oturum yöneticisi tarafından alınan mesajları işlemek için kullanılır. Bu listeyi yalnızca ne yaptığınızı biliyorsanız değiştirmelisiniz.
 modules_header=Jabber sunucusu oturum yöneticisi modülleri
@@ -52,6 +55,7 @@ modules_so=Paylaşılan kitaplık
 modules_err=Jabber modülleri kaydedilemedi
 modules_emod='$1' geçerli bir modül adı değil
 modules_eso=Paylaşılan '$1' kitaplığı mevcut değil
+
 karma_title=Karma Trafik Kontrolü
 karma_header=Trafik hızı kontrol seçenekleri
 karma_rate=Aşırı bağlantı kullanımı
@@ -80,6 +84,7 @@ karma_epenalty=Eksik veya geçersiz ceza süreleri
 karma_erestore=Eksik veya geçersiz geri yükleme süreleri
 karma_epoints=Eksik veya geçersiz bağlantı sayısı
 karma_etime=İçin engellenecek eksik veya geçersiz zaman
+
 ips_title=IP Erişim Kontrolü
 ips_header=Jabber sunucusu IP erişim kontrolü
 ips_allow=İzin verilen istemci IP'leri
@@ -89,10 +94,12 @@ ips_none=Yok
 ips_sel=Listelenen adresler/ağ maskeleri ..
 ips_err=IP erişim kontrolü kaydedilemedi
 ips_eaddr='$1' geçerli bir IP adresi veya IP adresi/ağ maskesi değil
+
 file_title=Yapılandırma Dosyasını Düzenle
 file_desc=Jabber yapılandırma dosyasını doğrudan düzenlemek için aşağıdaki formu kullanın. Bu yalnızca XML yapılandırma biçimini anlarsanız yapılmalıdır.
 file_header=Jabber yapılandırma dosyasını düzenle
 file_err=Yapılandırma dosyası kaydedilemedi
+
 admin_title=Yönetici Kullanıcılar
 admin_header=Sunucu yönetim kullanıcıları
 admin_read=Okuma erişim yöneticileri
@@ -100,11 +107,13 @@ admin_write=Yazma erişim yöneticileri
 admin_reply=Yönetici iletilerine otomatik yanıt verilsin mi?
 admin_rsubject=Konuyu otomatik yanıtla
 admin_rbody=Mesajı otomatik yanıtla
+
 filter_title=Kullanıcı Filtreleri
 filter_header=Kullanıcı filtresi izinleri
 filter_max=Maksimum filtre kuralları
 filter_conds=İzin verilen filtre koşulları
 filter_acts=İzin verilen filtre işlemleri
+
 restart_err=Değişiklikler uygulanamadı
 stop_err=Jabber durdurulamadı
 stop_epid=Jabber işlemi bulunamadı

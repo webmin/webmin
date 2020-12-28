@@ -16,6 +16,7 @@ index_digest2=Sujungimo šifravimas įjungtas modulio konfigūracijoje, tačiau 
 index_cpan=<a href='$1'>Norėdami atsisiųsti ir įdiegti dabar, spustelėkite čia</a>.
 index_delete=Ne apsaugoti pasirinktų katalogų
 index_remove=Neišsaugokite ir pašalinkite failus
+
 dir_title1=Pridėti saugomą katalogą
 dir_title2=Redaguoti apsaugotą katalogą
 dir_header=Apsaugotos katalogo parinktys
@@ -60,6 +61,7 @@ dir_delete3=Pašalinti ir pašalinti failą
 dir_apache=Redaguoti „Apache“ parinktis
 dir_efiledir='$1' yra katalogas, todėl jo negalima naudoti kaip vartotojo failo
 dir_egfiledir='$1' yra katalogas, todėl jo negalima naudoti kaip grupių failo
+
 edit_title1=Sukurti vartotoją
 edit_title2=Redaguoti vartotoją
 edit_header=Vartotojo žiniatinklio autentifikavimo informacija
@@ -71,11 +73,13 @@ edit_pass0=Nustatytas į
 edit_passfrom=Pakeisti iš
 edit_passto=į naują slaptažodį
 edit_dom=Virškinimo sritis
+
 gedit_title1=Sukurti grupę
 gedit_title2=Redaguoti grupę
 gedit_header=Išsami žiniatinklio autentifikavimo grupės informacija
 gedit_group=Grupės pavadinimas
 gedit_members=Grupės nariai
+
 save_err=Nepavyko išsaugoti vartotojo
 save_euser1=Trūksta vartotojo vardo
 save_euser2=Vartotojo varde negali būti: simbolio
@@ -84,16 +88,19 @@ save_eclash=Vartotojas tuo pačiu vardu jau yra
 save_eoldpass=Senas slaptažodis neteisingas
 save_title=Vartotojo išsaugota
 save_edom=Trūksta arba netinkama suvestinė sritis
+
 gsave_err=Nepavyko išsaugoti grupės
 gsave_egroup1=Trūksta grupės pavadinimo
 gsave_egroup2=Grupės pavadinime negali būti: simbolio ar tarpų
 gsave_eclash=Grupė tuo pačiu pavadinimu jau egzistuoja
+
 acl_dirs=Leidžiami katalogai
 acl_user=Sukurkite.htaccess ir htusers failus kaip „Unix“ vartotoją
 acl_same=Tas pats, kas prisijungti prie „Webmin“
 acl_home=Ar įtraukti „Unix“ vartotojo namų katalogą?
 acl_sync=Ar galima nustatyti „Unix“ vartotojo sinchronizaciją?
 acl_uonly=Ar galima pridėti ir pakeisti saugomus katalogus?
+
 log_create_dir=Pridėtas katalogas $1 
 log_modify_dir=Modifikuotas katalogas $1 
 log_delete_dir=Ištrintas katalogas $1 
@@ -104,6 +111,7 @@ log_create_group=Sukurta grupė $1
 log_modify_group=Modifikuota grupė $1 
 log_delete_group=Ištrinta grupė $1 
 log_delete_dirs=Ištrinti $1 katalogai
+
 search_title=Paieškos rezultatai
 search_err=Paieška nepavyko
 search_edir=Trūksta arba netinkamas absoliutus katalogas

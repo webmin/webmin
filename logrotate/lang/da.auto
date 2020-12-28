@@ -19,11 +19,13 @@ index_force=Tving log-rotation
 index_forcedesc=Tving den øjeblikkelige rotation af alle logfiler, selvom det endnu ikke er tid.
 index_logrotate=logrotate
 index_delete=Slet valgte logrotationer
+
 period_daily=Daglige
 period_weekly=Ugentlig
 period_monthly=Månedlige
 period_never=Aldrig
 period_bytes=bytes
+
 edit_title1=Rediger logfil
 edit_title2=Opret logfil
 edit_header=Roterede logfilfiloplysninger
@@ -62,8 +64,10 @@ edit_pre=Kommandoer, der skal køres inden rotation
 edit_default=Standard ($1)
 edit_sharedscripts=Kun køre scripts én gang for alle filer?
 edit_now=Drej nu
+
 global_title=Globale indstillinger
 global_header=Standardindstillinger for alle logfiler
+
 save_err=Kunne ikke gemme loggen
 save_efile=Manglende eller ugyldig logfilnavn
 save_esize=Manglende eller ugyldig maksimal størrelse
@@ -81,6 +85,7 @@ save_eerrors=Manglende e-mail-adresse til fejlmeddelelser
 save_epre=Pre-rotations script kan ikke indeholde en <tt>endingskript</tt> eller <tt>endrotate</tt> linje
 save_epost=Post-rotations script kan ikke indeholde en <tt>endingskript</tt> eller <tt>endrotate</tt> linje
 save_enofiles=Der er ikke indtastet nogen filer, der skal roteres
+
 log_modify_sched=Ændret logrotation Cron-job
 log_create_sched=Oprettet logrotation Cron-job
 log_delete_sched=Slet logrotation Cron-job
@@ -89,6 +94,7 @@ log_create=Tilføjet rotation for logfil $1
 log_modify=Ændret rotation for logfil $1 
 log_delete=Slettet rotation for logfil $1 
 log_delete_logs=Slettet rotation for $1 logfiler
+
 sched_title=Logrotationsplan
 sched_desc=For log-rotation, der er konfigureret ved hjælp af dette modul, der skal udføres, skal kommandoen $1 køres på en regelmæssig plan (normalt dagligt) af Cron.
 sched_runparts=I øjeblikket køres logrotationskommandoen fra scriptet $1 $2 og kan ikke justeres.
@@ -98,10 +104,12 @@ sched_enabled=Aktiveret, til tider nedenfor ..
 sched_save=Opdater Cron Job
 sched_err=Kunne ikke gemme rotationsplanen
 sched_when=Tider at køre
+
 force_title=Tving log-rotation
 force_doing=Tvinge den øjeblikkelige rotation af alle logfiler ..
 force_doingone=Tvinge den øjeblikkelige rotation af en logfil ..
 force_done=.. Færdig.
 force_failed=.. mislykkedes! Se output ovenfor for grunden til.
+
 delete_err=Kunne ikke slette logfiler
 delete_enone=Ingen valgt

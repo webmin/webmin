@@ -24,13 +24,16 @@ index_out=Keluaran dari $1 adalah
 index_boot=Sambungkan pada boot dengan:
 index_noboot=&lt;Jangan sambung&gt;
 index_bootdesc=Ubah pilihan ini untuk mengawal sama ada sambungan PPP yang dipilih dimulakan pada waktu boot atau tidak.
+
 init_title=Mengesan Konfigurasi
 init_cmd=Mengesan modem yang disambung dengan perintah $1 ..
 init_done=.. selesai
 init_modems=Modem dikonfigurasi pada $1 dan $2.
 init_modem=Modem dikesan pada $1.
 init_none=Tiada modem dikesan!
+
 device_serial=port siri $1 
+
 connect_title=Menubuhkan Sambungan
 connect_cmd=Cuba untuk membuat sambungan dengan arahan $1 ..
 connect_failed=.. sambungan telah gagal! Lihat output di atas atas alasan mengapa.
@@ -40,12 +43,14 @@ connect_dns=Menggunakan konfigurasi DNS yang diberikan oleh PPP.
 connect_dns2=Konfigurasi DNS yang ditetapkan PPP telah ditetapkan.
 connect_dnsto=Masa menunggu menunggu konfigurasi DNS yang diberikan oleh PPP.
 connect_dnsdown=Sambungan nampaknya gagal semasa menunggu konfigurasi DNS yang diberikan oleh PPP.
+
 disc_title=Tutup PPP
 disc_err=Gagal menutup sambungan PPP
 disc_edown=Sudah terputus
 disc_ok1=Sambungan PPP anda yang dibuat menggunakan $2 berjaya dimatikan.
 disc_ok2=Sambungan PPP anda berjaya ditutup.
 disc_dns=Memulihkan konfigurasi DNS lama.
+
 edit_title1=Tambah Dialer ISP
 edit_title2=Edit Dialer ISP
 edit_ddesc=Tetapan lalai ini akan digunakan untuk sambungan yang dibuat menggunakan mana-mana pendail lain.
@@ -76,6 +81,7 @@ edit_idle=Masa tunggu habis (dalam saat)
 edit_def=Daripada tetapan lalai
 edit_inherits=Pewarisan tetapan
 edit_from=Dari dialer ..
+
 save_err=Gagal menyimpan pendail
 save_err2=Gagal memadamkan pendail
 save_ename=Nama dialer yang hilang atau tidak sah
@@ -88,6 +94,7 @@ save_edial=Nombor percubaan dail yang hilang atau tidak sah
 save_eidle=Masa tunggu habis yang tiada atau tidak sah
 save_einherits=Dialer ini tidak dapat dipadamkan kerana '$1' mewaraskan tetapannya.
 save_eclash=Dialer dengan nama yang sama sudah wujud
+
 log_create=Dicipta $1 
 log_update=Dikemas kini $1 
 log_delete=Dihapus $1 

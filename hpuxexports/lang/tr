@@ -8,6 +8,7 @@ index_apply=Değişiklikleri Uygula
 index_applymsg=Bu düğmeyi tıklayarak mevcut dosya bağlantı ayarlarını uygulayabilirsiniz.
 index_return=bağlantılar listesi
 index_eprog=NFS sunucusu çalıştrılabilir dosyası bulunamadı. NFS paketi yüklenmemiş olabilir
+
 edit_title=Bağlantıyı Değiştir
 create_title=Bağlantı Oluştur
 edit_details=Bağlantı Ayarları
@@ -36,6 +37,7 @@ edit_gids=GID onayla
 edit_anonuid=Onaylanmamış kullanıcıları araştır
 edit_default=Öntanımlı
 edit_anongid=Onaylanmamış grupları araştır
+
 save_err=Bağlantının kaydedilmesinde hata oluştu
 save_edir='$1' dizini mevcut değil
 save_enetgroup=Yanlış ya da kayıp netgroup
@@ -44,6 +46,7 @@ save_enetmask='$1' geçerli bir ağ maskesi değil
 save_ehost='$1' geçerli bir makşne adı değil
 save_euids=Sayı ya da alan listesinin virgülle ayrılmış olan UID'leri onaylanmaz
 save_egids=Sayy ya da alan listesinin virgülle ayrylmyş olan GID'leri onaylanmaz
+
 log_modify=NFS sunumu $1 değiştirildi
 log_modify_l=$2'de NFS sunumu $1 değiştirildi
 log_delete=NFS sunumu $1 silindi

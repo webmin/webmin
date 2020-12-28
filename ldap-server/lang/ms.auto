@@ -16,6 +16,7 @@ index_setupdesc=Pangkalan data pelayan LDAP anda tidak mengandungi akar DN $1 la
 index_setup=Buat DN Root
 index_permsdesc=Direktori data pelayan LDAP $1 mengandungi fail yang tidak dimiliki oleh pengguna yang betul $2, yang bermaksud bahawa ia tidak mungkin dimulakan dengan betul. Walau bagaimanapun, Webmin boleh membetulkannya untuk anda dengan mengklik butang di bawah.
 index_perms=Memperbaiki Pemilikan
+
 connect_eserver=Pelayan LDAP $1 tidak wujud
 connect_euser=Tiada pengguna untuk log masuk seperti yang telah dikonfigurasikan
 connect_epass=Tiada kata laluan untuk log masuk telah dikonfigurasikan
@@ -28,6 +29,7 @@ connect_eldap=Gagal menyambung ke pelayan LDAP $1 pada port $2
 connect_essl=Gagal memulakan penyulitan TLS dengan pelayan LDAP $1 : $2 
 connect_elogin=Gagal masuk ke pelayan LDAP $1 sebagai $2 : $3 
 connect_cpan=Anda boleh mempunyai mod <tt>$1</tt> Perl perlulah <a href='$2'>dipasang secara automatik</a> dari CPAN.
+
 slapd_title=Konfigurasi Server OpenLDAP
 ldif_title=Konfigurasi Server OpenLDAP
 slapd_header=Pilihan pelayan LDAP global
@@ -76,6 +78,7 @@ slapd_protos=Sambungan LDAP untuk diterima
 slapd_ldap=LDAP melalui rangkaian
 slapd_ldaps=LDAP melalui SSL
 slapd_ldapi=Fail soket Unix
+
 schema_title=Uruskan Skema
 schema_file=Nama
 schema_desc=Penerangan
@@ -93,6 +96,7 @@ schema_edesc=Halaman ini membolehkan anda mengedit fail skema LDAP secara manual
 schema_return=senarai skema
 schema_emove=Tidak dapat mencari fail skema untuk bergerak!
 schema_ecannot=Anda tidak dibenarkan untuk mengurus skema LDAP
+
 acl_title=Kawalan Akses LDAP
 acl_ecannot=Anda tidak dibenarkan untuk mengkonfigurasi kawalan akses LDAP
 acl_what=Objek
@@ -103,6 +107,7 @@ acl_none=Tiada peraturan kawalan akses yang telah ditakrifkan lagi. Semua objek 
 acl_delete=Padam Peraturan Terpilih
 acl_add=Tambah peraturan kawalan akses baharu.
 acl_return=peraturan kawalan akses
+
 browser_title=Semak Pangkalan Data
 browser_econn=Penyemak imbas LDAP tidak boleh digunakan : $1 
 browser_ecannot=Anda tidak dibenarkan melayari pangkalan data LDAP
@@ -136,24 +141,30 @@ browser_nomatch=Tiada objek yang sepadan dengan carian anda untuk $1.
 browser_search=Mencari objek yang sepadan :
 browser_search2=Menunjukkan objek yang sepadan :
 browser_sok=Carian
+
 save_err=Gagal menukar atribut
 save_ebase=Tidak dapat mengambil objek $1 dari pangkalan data
 save_emodify=Pengubahsuaian LDAP $2 dalam $1 gagal : $3 
 save_enone=Tiada nilai yang dimasukkan
+
 add_err=Gagal menambah atribut
 add_eadd=Nama atribut yang tiada atau tidak sah
 add_evalue=Nilai yang tiada
 add_emodify=LDAP tambah $2 hingga $1 gagal : $3 
+
 delete_err=Gagal untuk mengalih keluar atribut
 delete_enone=Tiada yang dipilih
 delete_emodify=Hapus LDAP dari $2 dari $1 gagal : $3 
+
 sdelete_err=Gagal memadamkan objek
 sdelete_edn=Objek $1 tidak dijumpai
 sdelete_edel=Hapus LDAP dari $1 gagal : $2 
+
 rename_err=Gagal menukar nama objek
 rename_eget=Tidak dapat mencari objek dengan DN $1 
 rename_enew=Nama baru tidak kelihatan sah
 rename_erename=Newdn LDAP ke $2 dari $1 gagal : $3 
+
 oadd_title=Buat Objek
 oadd_header=Butiran objek LDAP baru
 oadd_base=Objek ibu bapa DN
@@ -170,6 +181,7 @@ oadd_eget2=Gagal menyemak pertempuran dengan $1 : $2
 oadd_eclash=Objek dengan DN $1 sudah wujud
 oadd_eadd=LDAP tambah $1 gagal : $2 
 oadd_err=Gagal membuat objek baru
+
 create_title=Buat Pokok
 create_ecannot=Anda tidak dibenarkan membuat pokok baru
 create_desc=Halaman ini menyediakan cara mudah untuk membuat DN yang akan menjadi asas pokok baru dalam pangkalan data. Ia juga boleh membuat contoh pengguna atau alias e-mel di bawah pokok, sebagai templat untuk objek anda sendiri.
@@ -191,18 +203,23 @@ create_done=.. selesai
 create_doingex=Membuat objek contoh dengan DN $1 ..
 create_edoingex=.. gagal: $1. Walau bagaimanapun, pokok itu masih boleh digunakan.
 create_eoc=Tidak dapat mencari kelas objek yang sesuai untuk DN baru
+
 eunknown=Ralat tidak diketahui
+
 apply_err=Gagal menggunakan konfigurasi
 apply_ecmd=$1 gagal : $2 
 apply_ecannot=Anda tidak dibenarkan memohon konfigurasi
+
 stop_err=Gagal menghentikan pelayan LDAP
 stop_ecmd=$1 gagal : $2 
 stop_egone=Tidak lagi berlari!
 stop_ekill=Proses membunuh gagal : $1 
 stop_ecannot=Anda tidak dibenarkan untuk menghentikan pelayan LDAP
+
 start_err=Gagal memulakan pelayan LDAP
 start_ecmd=$1 gagal : $2 
 start_ecannot=Anda tidak dibenarkan memulakan pelayan LDAP
+
 log_create_dn=Objek yang dibuat $1 
 log_delete_dn=Objek dibuang $1 
 log_rename_dn=Nama semula nama $1 
@@ -234,6 +251,7 @@ log_up_access=Mengawal peraturan kawalan akses untuk $1
 log_down_access=Menurun ke bawah kawalan kawalan akses untuk $1 
 log_delete_accesses=Kawalan $1 peraturan kawalan akses yang dipadam
 log_all=semua objek
+
 gencert_title=Menjana Sijil SSL
 gencert_header=Butiran sijil SSL baru
 gencert_create=Buat Sijil
@@ -245,7 +263,9 @@ gencert_dir=Direktori
 gencert_err=Gagal menjana sijil
 gencert_edest=Direktori destinasi tidak wujud
 gencert_epath=Sijil dan fail utama dalam konfigurasi pelayan LDAP mestilah jalan mutlak
+
 perms_err=Gagal menetapkan pemilikan fail
+
 acl_slapd=Bolehkah mengkonfigurasi pelayan LDAP?
 acl_ldif=Bolehkah mengkonfigurasi pelayan LDAP?
 acl_schema=Boleh mengurus skema?
@@ -254,6 +274,7 @@ acl_browser=Boleh menyemak dan mengedit pangkalan data?
 acl_create=Bolehkah membuat pokok baru?
 acl_start=Boleh memulakan dan menghentikan pelayan LDAP?
 acl_apply=Boleh memohon perubahan konfigurasi?
+
 access_desc=$2 oleh $1 
 access_self=diri sendiri
 access_users=pengguna yang disahkan
@@ -273,6 +294,7 @@ access_lcompare=Bandingkan
 access_lsearch=Carian
 access_lread=Baca
 access_lwrite=Tulis
+
 eacl_title1=Buat Peraturan Kawalan Akses
 eacl_title2=Edit Peraturan Kawalan Akses
 eacl_header=Butiran peraturan kawalan akses LDAP pangkalan data

@@ -8,7 +8,9 @@ index_pok=Führe vorherigen Befehl aus
 index_edit=Editiere bisherige
 index_trunced=Gesamter Output von $2 wurde bei $1 abgeschnitten.
 index_timedout=Befehl wurde nach der Ausführung für $1 Sekunden beendet.
+
 acl_user=Führe Befehl aus als Benutzer
 acl_user_def=Aktueller Webmin-Benutzer
+
 log_run=Ausgeführter Befehl $1
 log_clear=Gelöschter Befehls-Verlauf

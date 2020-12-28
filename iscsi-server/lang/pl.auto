@@ -1,5 +1,6 @@
 check_etargets=Plik konfiguracyjny serwera iSCSI $1 nie został znaleziony w twoim systemie.
 check_eserver=W systemie nie znaleziono programu serwera iSCSI $1.
+
 index_title=Serwer iSCSI
 index_clink=Być może nie jest zainstalowany lub konfiguracja modułu <a href='$1'></a> jest nieprawidłowa.
 index_stop=Zatrzymaj serwer iSCSI
@@ -11,6 +12,7 @@ index_restartdesc=Kliknij ten przycisk, aby zastosować bieżącą konfigurację
 index_atboot=Zaczynasz przy starcie?
 index_atbootdesc=Zmień tę opcję, aby kontrolować, czy serwer iSCSI ma być uruchamiany podczas rozruchu, czy nie. Jeśli nie jest on aktualnie uruchamiany podczas rozruchu i wybrano opcję Tak, zostanie utworzony nowy skrypt inicjujący.
 index_return=indeks modułu
+
 extents_title=Urządzenia do udostępniania
 extents_none=Nie utworzono jeszcze żadnych urządzeń do udostępniania.
 extents_name=Nazwa urządzenia
@@ -25,6 +27,7 @@ extents_denone=Nie wybrano
 extents_einuse=Urządzenia $1 nie można usunąć, ponieważ jest używane przez : $2 
 extents_drusure=Czy na pewno chcesz usunąć następujące urządzenia: $1 ? Ich zawartość zostanie zachowana, ale nie będą już dostępne dla klientów iSCSI.
 extents_sure=Usuń urządzenia
+
 extent_create=Utwórz urządzenie do udostępniania
 extent_edit=Edytuj urządzenie do udostępnienia
 extent_egone=Urządzenie do udostępniania $1 nie istnieje!
@@ -50,6 +53,7 @@ extent_estart=Początek zakresu musi być liczbą
 extent_esize=Rozmiar zakresu musi być liczbą
 extent_esizemax=Koniec zakresu nie może być większy niż rozmiar urządzenia $1 
 extent_einuse=Nie można usunąć tego urządzenia, ponieważ jest używane przez : $1 
+
 devices_title=Kombinacje urządzeń
 devices_none=Nie utworzono jeszcze kombinacji urządzeń.
 devices_name=Nazwa kombinacji
@@ -65,6 +69,7 @@ devices_denone=Nie wybrano
 devices_einuse=Kombinacji $1 nie można usunąć, ponieważ jest używana przez : $2 
 devices_drusure=Czy na pewno chcesz usunąć następujące kombinacje urządzeń: $1 ? Ich zawartość zostanie zachowana, ale nie będą już dostępne dla klientów iSCSI.
 devices_sure=Usuń kombinacje urządzeń
+
 device_create=Utwórz kombinację urządzeń
 device_edit=Edytuj kombinację urządzeń
 device_egone=Kombinacja urządzeń $1 nie istnieje!
@@ -81,6 +86,7 @@ device_sure=Usuń kombinację urządzeń
 device_einuse=Tej kombinacji urządzeń nie można usunąć, ponieważ jest używana przez : $1 
 device_eextents=Nie wybrano urządzeń członkowskich
 device_eself=Jedno z wybranych urządzeń członkowskich zawiera to urządzenie!
+
 targets_title=Udostępnianie celów
 targets_none=Nie utworzono jeszcze celów udostępniania.
 targets_name=Nazwa docelowa
@@ -96,6 +102,7 @@ targets_derr=Nie udało się usunąć celów udostępniania
 targets_denone=Nie wybrano
 targets_drusure=Czy na pewno chcesz usunąć następujące cele udostępniania: $1 ? Żadne dane nie zostaną utracone, ale nie będą już dostępne dla klientów iSCSI.
 targets_sure=Usuń cele udostępniania
+
 target_create=Utwórz cele udostępniania
 target_edit=Edytuj cele udostępniania
 target_egone=Udostępnianie celu $1 nie istnieje!
@@ -112,6 +119,7 @@ target_rusure=Czy na pewno chcesz usunąć cel udostępniania $1 ? Żadne dane n
 target_sure=Usuń cel
 target_enetwork=Brakująca lub nieprawidłowa sieć do udostępniania
 target_emask=Brakująca lub nieprawidłowa maska sieciowa do udostępnienia
+
 opts_title=Opcje serwera iSCSI
 opts_header=Opcje dla wszystkich obiektów docelowych iSCSI
 opts_ip4=Akceptuj połączenia IPv4
@@ -124,10 +132,12 @@ opts_err=Nie udało się zapisać opcji
 opts_ename=Brakująca lub niepoprawna nazwa - dozwolone są tylko litery, cyfry, myślnik, kropka i podkreślnik
 opts_eport=Brakujący lub nienumeryczny numer portu
 opts_esess=Brakujące lub nienumeryczne sesje maksymalne
+
 manual_title=Edytuj plik konfiguracyjny
 manual_desc=Użyj pola tekstowego poniżej, aby edytować plik konfiguracyjny serwera iSCSI $1. Zachowaj ostrożność, ponieważ twoja weryfikacja nie zostanie przeprowadzona!
 manual_err=Nie udało się zapisać pliku konfiguracyjnego
 manual_edata=Nie wpisano treści!
+
 users_title=Uwierzytelnianie iSCSI
 users_none=Nie utworzono jeszcze użytkowników iSCSI. Klienci będą mogli uzyskać dostęp do udostępnionych urządzeń bez uwierzytelniania.
 users_add=Dodaj nowego użytkownika iSCSI.
@@ -135,6 +145,7 @@ users_delete=Usuń wybranych użytkowników
 users_name=Nazwa Użytkownika
 users_mode=Metoda Uwierzytelnienia
 users_return=lista użytkowników
+
 user_create=Utwórz użytkownika iSCSI
 user_edit=Edytuj użytkownika iSCSI
 user_header=Dane użytkownika iSCSI
@@ -145,13 +156,16 @@ user_egone=Użytkownik już nie istnieje!
 user_err=Nie udało się zapisać użytkownika iSCSI
 user_euser=Brakująca lub niepoprawna nazwa użytkownika - spacje i dwukropki nie są dozwolone
 user_epass=Brakujące lub nieprawidłowe hasło - spacje i dwukropki nie są dozwolone
+
 desc_extent=Urządzenie do udostępniania $1 
 desc_device=Kombinacja urządzeń $1 
 desc_target=Udostępnianie celu $1 
+
 start_err=Nie udało się uruchomić serwera iSCSI
 stop_err=Nie udało się zatrzymać serwera iSCSI
 restart_err=Nie można zrestartować serwera iSCSI
 atboot_err=Nie można włączyć podczas uruchamiania
+
 log_create_extent=Utworzono urządzenie do udostępniania $1 
 log_modify_extent=Zaktualizowano urządzenie do udostępniania $1 
 log_delete_extent=Usunięto urządzenie, aby udostępnić $1 

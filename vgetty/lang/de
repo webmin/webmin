@@ -2,6 +2,7 @@ index_title=Voicemail Server
 index_ecmd=Der Vgetty Befehl $1 wurde nicht auf Ihrem System gefunden. Möglicherweise ist dieser nicht installiert oder Ihre <a href='$2'>Modulkonfiguration</a> ist ungültig.
 index_econfig=Die Vgetty Konfigurationsdatei $1 wurde nicht auf Ihrem System gefunden. Möglicherweise ist diese nicht installiert oder Ihre <a href='$2'>Modulkonfiguration</a> ist ungültig.
 index_return=Voicemail Index
+
 vgetty_title=Serieller Port Konfiguration
 vgetty_desc=Für Ihren Server, um Voice-Anrufe, die mit einem Modem mit der seriellen Schnittstelle verbunden sind, zu beantworten, müssen unten aufgeführt werden. Wenn Sie einen Port zu dieser Liste hinzufügen, wird das $1-Programm konfiguriert, um Anrufe zu beantworten und eine Nachricht abzuspielen.
 vgetty_add=Fügen neuen seriellen Port hinzu
@@ -32,6 +33,7 @@ vgetty_erings=Fehlende oder ungültige Anzahl an Ruftönen
 vgetty_erings2=Anzahl an Ruftönen muss mindestens 2 sein
 vgetty_eans=Keine Antwort Modi ausgewählt
 vgetty_eclash=Die serielle Schnittstelle $1 ist bereits in Benutzung
+
 options_title=Voicemail Server Optionen
 options_header=Optionen für alle seriellen Ports
 options_maxlen=Maximale Nachrichtenlänge
@@ -68,6 +70,7 @@ options_eprog=Fehlendes oder nicht vorhandenes Programm zum Ausführen
 options_eowner=Fehlende oder ungültige Unix-Benutzer für Message-Dateien
 options_egroup=Fehlende oder ungültige Unix-Gruppe für Message-Dateien
 options_emode=Fehlende oder ungültige oktale Berechtigungen für Message-Dateien
+
 received_title=Empfangene Nachrichten
 recieved_desc=Voicemail-Nachrichten, die von Ihrem Server empfangen wurden, werden unten aufgeführt. Um eine Nachricht zu hören, klicken Sie auf das Datum/Uhrzeit in der ersten Spalte.
 received_none=Keine erhaltene voicemail Nachrichten wurden gefunden.
@@ -79,9 +82,12 @@ received_delete=Lösche ausgewählte Nachrichten
 received_move=Konvertiert Ausgewählte zu Grüße
 received_all=Wähle alles aus
 received_invert=Invertiere Auswahl
+
 listen_efile=Ungültiger Dateiname der Nachricht!
 listen_epath=Voicemail Nachricht existiert nicht länger
+
 delete_efile=Ungültiger Nachrichtendateiname!
+
 messages_title=Begrüßungsnachricht
 messages_desc=Diese Seite listet Ansagen auf, die abgespielt werden, wenn ein Anrufer eine Verbindung zu Ihrem Voicemail-Server herstellt. Wenn Sie mehr als eine haben, wird eine einzelne zufällig ausgewählte Nachricht verwendet werden.
 messages_file=Dateiname
@@ -89,12 +95,15 @@ messages_none=Keine Begrüßungsnachricht verfügbar.
 messages_updesc=Diese Form ermöglicht es Ihnen, eine zusätzliche Ansage (als WAV-Datei) hochzuladen, die mit dem gewählten Format für die Verwendung von Ihrem Modem umgewandelt wird. Die Abtastrate der hochgeladenen WAV sollte die gleiche wie die Sample-Rate der empfangenen Nachrichten sein, ebenso wie die gewählte Format.
 messages_upload=Upload Nachricht
 messages_fmt=konvertiere in
+
 pvfdesc=$1, $2 bits
+
 upload_err=Fehlgeschlagen Nachricht hinzuzufügen
 upload_emessage=Keine WAV Datei ausgewählt
 upload_ewav=Fehlgeschlagen WAV Datei $1 zu konvertieren
 upload_epvf=Fehlgeschlagen RMD Datei zu erstellen : $1
 upload_esame=Die Message-Datei $1 existiert bereits
+
 log_apply=Wende Konfiguration an
 log_upload=Begrüßungsnachricht $1 hochgeladen
 log_move=$1 erhaltene Nachrichten konvertiert
@@ -104,5 +113,6 @@ log_options=Ändere Voicemail Optionen
 log_vgetty_create=Seriellen Port $1 hinzugefügt
 log_vgetty_modify=Seriellen Port $1 modifiziert
 log_vgetty_delete=Seriellen Port $1 gelöscht
+
 email_subject=Voicemail Nachricht
 email_body=Voicemail Nachricht erhalten am $1 um $2.

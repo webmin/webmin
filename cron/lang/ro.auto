@@ -31,6 +31,7 @@ index_ok=Căutare
 index_searchres=Joburi Cron potrivite cu $1 ..
 index_reset=Resetează căutarea.
 index_econfigcheck=Joburile Cron nu pot fi gestionate pe sistemul dvs., deoarece configurația modulului nu este valabilă : $1 
+
 edit_title=Editați Job Cron
 create_title=Creați job Cron
 edit_ecannot=Nu aveți voie să editați joburi cron pentru acest utilizator
@@ -70,6 +71,7 @@ lcedit_special_weekly=săptămânal (duminică)
 lcedit_special_monthly=lunar (pe 1)
 lcedit_special_yearly=anual (la 1 ianuarie)
 lcedit_special_reboot=când sistemul pornește
+
 save_err=Nu a reușit să salvați jobul cron
 save_ecmd=Nu ați introdus o comandă de executat
 save_euser=Trebuie să selectați un utilizator
@@ -79,6 +81,7 @@ save_ecannot=Nu aveți voie să creați sau să modificați joburi cron pentru �
 save_enone=Nu ați ales nicio $1 pe care să o executați
 save_ecannot2=Nu aveți voie să creați joburi cron
 save_eidx=Jobul Cron a fost salvat cu succes, dar nu poate fi executat deoarece nu a fost găsit!
+
 allow_title=Control acces Cron
 allow_desc=Acest formular vă permite să controlați ce utilizatori pot crea și rula locuri de muncă cron.
 allow_ecannot=Nu puteți controla accesul utilizatorului la cron
@@ -87,6 +90,7 @@ allow_all2=Refuză toți utilizatorii, cu excepția root
 allow_all3=Permiteți tuturor utilizatorilor
 allow_allow=Permiteți doar utilizatorii enumerați
 allow_deny=Refuză doar utilizatorii enumerați
+
 env_title1=Editează variabilă de mediu
 env_title2=Creați variabilă de mediu
 env_name=Denumirea variabilă
@@ -102,11 +106,13 @@ env_where2=Mutați variabila de mediu
 env_top=Înainte de toate joburile Cron pentru utilizator
 env_bot=După toate joburile Cron
 env_leave=Pozitie curenta
+
 exec_title=Execută Cron Job
 exec_ecannot=Nu aveți voie să executați joburi cron pentru acest utilizator
 exec_cmd=Ieșire din comanda $1 ..
 exec_cmdbg=Se execută comanda $1 ca proces de fundal.
 exec_none=Nici o ieșire generată
+
 acl_users=Poate edita joburile cron pentru
 acl_all=Toți utilizatorii
 acl_this=Utilizator curent webmin
@@ -122,6 +128,7 @@ acl_move=Poți muta locuri de muncă Cron?
 acl_kill=Poate înceta lucrările Cron?
 acl_hourly=Limitați lucrările la cel mult o oră?
 acl_hourlydef=Așa cum este setat în Modul Config
+
 log_modify=Lucrare Cron modificată pentru $1 
 log_modify_l=Job modificat Cron „$2” pentru $1 
 log_create=Creare job Cron pentru $1 
@@ -139,7 +146,9 @@ log_move=Locație Cron mutată pentru $1
 log_crons_delete=Lucrări șterse de $1 Cron
 log_crons_disable=Lucrări dezactivate $1 Cron
 log_crons_enable=Activări $1 Cron joburi
+
 ecopy=În noua configurație Cron a fost detectată o eroare: $1 $2 
+
 when_min=in fiecare minut
 when_hour=în fiecare oră la $1 ultima oră
 when_day=în fiecare zi la $2:$1 
@@ -148,6 +157,7 @@ when_weekday=la fiecare $3 la $2:$1
 when_cron=la cron time $1 
 when_interval=la fiecare $1 secunde
 when_boot=la ora de pornire
+
 ucwhen_min=In fiecare minut
 ucwhen_hour=În fiecare oră la $1 trecut ora
 ucwhen_day=În fiecare zi la $2:$1 
@@ -156,8 +166,10 @@ ucwhen_weekday=La fiecare $3 la $2:$1
 ucwhen_cron=La cron cronologie $1 
 ucwhen_interval=La fiecare $1 secunde
 ucwhen_boot=La ora de pornire
+
 move_err=Nu a reușit să mute jobul Cron
 move_etype=Acest job nu poate fi mutat
+
 kill_err=Nu a reușit să încheie lucrarea Cron
 kill_ecannot=Nu aveți voie să încetați această lucrare
 kill_egone=Nu mai alerga
@@ -166,13 +178,16 @@ kill_title=Încetează jobul Cron
 kill_rusure=Sigur doriți să încheiați procesul $1 cu PID $2 ?
 kill_rusure2=Sigur doriți să încheiați procesul $1 cu PID $2 și toate subprocesele sale?
 kill_ok=Da, încheie-l
+
 range_all=Executați la orice dată
 range_start=Rulați numai de la $1 
 range_end=la $1 
 range_estart=Data de început lipsă sau nevalidă în intervalul de rulat
 range_eend=Data de încheiere care lipsește sau este nevalidă în intervalul de rulat
+
 delete_err=Nu a reușit ștergerea lucrărilor Cron
 delete_enone=Nimic selectat
+
 manual_title=Editează manual Joburi Cron
 manual_edit=Fișier Cron pentru a edita:
 manual_ok=Editați | ×

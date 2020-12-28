@@ -17,6 +17,7 @@ index_tdesc=Descripció
 index_tucount=Usuaris
 index_tgcount=Grups
 index_ttype=Tipus de SO
+
 add_title=Addició Servidors
 add_msg=S'està afegint $1...
 add_gmsg=S'estan afegint servidors al grup $1...
@@ -26,6 +27,7 @@ add_echeck=El servidor $1 no té el mòdul d'usuaris i grups
 add_epft=El servidor $1 no utilitza el mateix format de fitxer d'usuaris que aquest host
 add_egft=El servidor $1 no utilitza el mateix format de fitxer de grups que aquest host
 add_ok=S'ha afegit $1 amb $2 usuaris i $3 grups.
+
 host_title=Servidor Gestionat
 host_header=Detalls dels servidor gestionat
 host_name=Nom de host
@@ -34,8 +36,7 @@ host_delete=Treu-lo de la Llista Gestionada
 host_refresh=Refresca els Usuaris i els Grups
 host_users=Nombre d'usuaris
 host_groups=Nombre de grups
-host_ulist=Usuaris al Servidor
-host_glist=Grups al Servidor
+
 host_return=als detalls del servidor
 refresh_title=Refresc d'Usuaris i Grups
 refresh_header=S'estan tornant a demanar les llistes de grups i usuaris de tots els servidors...
@@ -49,6 +50,7 @@ refresh_gdel=S'han tret $1 grups
 refresh_done=...fet
 refresh_del=S'ha tret $1 de la llista de servidors
 refresh_failed=No s'ha pogut refrescar $1: $2
+
 uedit_host=Detalls de $1
 uedit_leave=No ho canviïs
 uedit_set=Estableix a
@@ -66,6 +68,7 @@ uedit_servers=Servidor(s) per crear-l'hi
 uedit_all=&lt;tots els hosts&gt; 
 uedit_donthave=&lt;hosts que no el/la tenen&gt;
 uedit_group=Membres de $1
+
 usave_einuse=Ja hi ha a $1 un usuari amb el mateix nom
 usave_esecgid=El grup secundari $1 no existeix
 usave_con=S'està creant a $1...
@@ -88,16 +91,20 @@ usave_header=S'està creant l'usuari $1 a tots els hosts...
 usave_header5=S'està creant l'usuari $1 a $2...
 usave_header4=S'està creant l'usuari $1 als membres del grup $2...
 usave_header3=S'està creant l'usuari $1 als hosts que no ho tenen...
+
 search_hosts=Hosts
+
 udel_on=S'està suprimint de $1...
 udel_servs=Suprimeix el directori si existeix a
 udel_others=Suprimeix l'usuari als altres mòduls
 udel_dothers=S'està suprimint als altres mòduls...
 udel_gone=L'usuari ja no existeix.
 udel_failed=No s'ha pogut suprimir l'usuari: $1
+
 gdel_on=S'està suprimint de $1...
 gdel_gone=L'usuari ja no existeix.
 gdel_failed=No s'ha pogut suprimir el grup: $1
+
 gsave_create=S'està afegint entrada al fitxer de grups...
 gsave_con=S'està creant a $1...
 gsave_euser=L'usuari $1 no existeix
@@ -110,10 +117,12 @@ gsave_header=S'està creant el grup $1 a tots els hosts...
 gsave_header5=S'està creant el grup $1 a $2...
 gsave_header4=S'està creant el grup $1 als membres del grup $2...
 gsave_header3=S'està creant el grup $1 als hosts que no ho tenen...
+
 gedit_host=Detalls de $1
 gedit_add=Afegeix usuaris
 gedit_del=Treu usuaris
 gedit_donthave=&lt;hosts que no ho tenen&gt;
+
 sync_title=Sincronització de Servidors
 sync_desc=Aquest formulari permet crear usuaris i grups als servidors que actualment no els tenen, per tal de tenir els comptes sincronitzats a través de tots els servidors del clúster.
 sync_hosts=Servidors a sincronitzar
@@ -141,6 +150,7 @@ sync_test=Mostra només el que caldria fer
 sync_makehome=Crea els directoris arrel
 sync_copy=Copia els fitxers als directoris arrel
 sync_others=Crea l'usuari en els altres mòduls
+
 log_create_user=S'ha creat l'usuari $1
 log_delete_user=S'ha suprimit l'usuari $1
 log_modify_user=S'ha modificat l'usuari $1

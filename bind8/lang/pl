@@ -62,6 +62,7 @@ index_bind=BIND
 index_ewrongchroot=Uwaga : Webmin, myśli, że BIND używa katalogu chroot $2, możliwe jednak, że jest on nieprawidłowy. Pliki strefy dla domen $1 nie zostały znalezione.
 index_emissingchroot=Uwaga : Webmin myśli, że BIND nie używa katalogu chroot, ale może to nie być prawda. Pliki strefy dla domen $1 nie zostały znalezione.
 index_checkconfig=Upewnij się, że katalog chroot jest poprawnie ustawiony na stronie <a href='$1'>konfiguracji modułu</a>.
+
 master_title=Edytuj strefę podstawową
 master_ecannot=Nie masz uprawnień do modyfikacji tej strefy
 master_egone=Strefa $1 nie istnieje w żadnym widoku
@@ -142,6 +143,7 @@ master_defttl=Domyślny czas życia dla rekordów
 master_edefttl='$1' nie jest poprawnym domyślnym czasem życia dla rekordów
 master_esoagone=Nie znaleziono rekordu SOA!
 master_einclude=Plik dodatkowego szablonu nie istnieje
+
 delete_title=Usuń strefę
 delete_mesg=Czy jesteś pewien, że chcesz usunąć strefę $1 ? Wszystkie rekordy oraz plik strefy zostaną usunięte.
 delete_mesg2=Czy jesteś pewien, że chcesz usunąć strefę główną ? Możliwe, że serwer DNS nie będzie w stanie poszukiwać adresów w Internecie.
@@ -151,6 +153,7 @@ delete_fwd=Czy usunąć rekordy prostego DNS z innych stref ?
 delete_onslave=Usunąć z zerwerów zapasowych?
 delete_errslave=Poprawinie usunięto strefę główną, ale wystąpiły następujące błędy na serwerach zapasowych: $1
 delete_ezone=Nie znaleziono strefy na serwerze zapasowym
+
 mcreate_title=Utwórz strefę podstawową
 mcreate_ecannot=Nie masz uprawnień do tworzenia strefy podstawowej
 mcreate_opts=Nowe opcje strefy podstawowej
@@ -165,6 +168,7 @@ mcreate_auto=Automatyczny
 mcreate_err=Nie udało się utworzyć pliku strefy podstawowej
 mcreate_ednssecsize=Błąd przetwarzania rozmiaru klucza: $1
 mcreate_ednssec=Poprawnie utworzono rekord, ale wystąpił błąd DNSSEC: $1
+
 slave_title=Edytuj strefę zapasową
 stub_title=Edytuj strefę skrótową
 slave_ecannot=Nie masz uprawnień do modyfikacji tej strefy
@@ -196,6 +200,7 @@ slave_applymsg2=Kliknij ten przycisk, aby wymusić transfer strefy z serwera gł
 slave_last=Ostatni transfer : $1
 slave_never=Nigdy
 slave_xfer=Testowy transfer strefy
+
 screate_title1=Utwórz strefę zapasową
 screate_title2=Utwórz strefę skrótową
 screate_ecannot1=Nie masz uprawnień do tworzenia stref zapasowych
@@ -208,6 +213,7 @@ screate_rev=Odwrotna (adresy na nazwy)
 screate_dom=Nazwa domeny / Sieć
 screate_err1=Nie udało się utworzyć strefy zapasowej
 screate_err2=Nie udało się utworzyć strefy skrótowej
+
 recs_ecannot=Nie masz uprawnień do modyfikacji rekordów w tej strefie
 recs_ecannottype=Nie masz uprawnień do edycji tego rodzaju rekordów
 recs_title=Rekordy $1
@@ -225,6 +231,7 @@ recs_drev=Usunąć także odwrotne?
 recs_none=Domena nie zawiera żadnych rekordów $1.
 recs_nosearch=Nie znaleziono pasujących rekordów.
 recs_needsearch=Wyszukaj pasujące rekordy.
+
 edit_title=Edytuj $1
 edit_header=W $1
 edit_edit=Edytuj rekord $1
@@ -291,6 +298,7 @@ edit_ensec3value2=Brakująca lub nienumeryczna liczba iteracji
 edit_ensec3value3=Brakująca lub nie kodowana przez base64 sól
 edit_edmarcpct=Procent wiadomości musi być liczbą całkowitą pomiędzy 0,a 100
 edit_edmarcrua=Brakujący adres zbiorczej informacji zwrotnej
+
 text_title=Edytuj plik strefy
 text_title2=Wyświetl pliki rekordów
 text_desc3=Formularz ten umożliwia ręczną edycję pliku strefy DNS $1. Składnia nie jest sprawdzana przez Webmina.
@@ -300,6 +308,7 @@ text_ecannot=Nie masz uprawnień do modyfikacji plików stref
 text_none=Jednakże plik jest pusty, ponieważ strefa nie została przetransferowana z serwera głównego.
 text_soa=Automatycznie zwiększ numer seryjny
 text_rawformat=Ta strefa jest w formacie binarnym i nie może zostać wyświetlona jako tekst.
+
 restart_err=Błąd stosowania zmian
 restart_ecannot=Nie masz uprawnień do restartu BINDa
 restart_epidfile=Nie można znaleźć PID BINDa w $1
@@ -308,10 +317,12 @@ restart_erunning2=Ne serwerze zapasowym $1 nie uruchomiono serwera BIND
 restart_endc=Błąd komendy NDC: $1
 restart_ecmd=Błąd komendy restartowania : $1
 restart_eversion=Na serwerze zapasowym $1 nie uruchomiono Webmina w wersji $1 lub późniejszej.
+
 start_ecannot=Nie masz uprawnień do uruchamiania BINDa
 start_error=Nie udało się uruchomić BINDa : $1
 stop_epid=BIND nie jest uruchomiony
 stop_ecannot=Nie masz uprawnień do zatrzymania BINDa
+
 fwd_title=Edytuj strefę pośredniczącą
 fwd_ecannot=Nie masz uprawnień do edytowania tej strefy
 fwd_opts=Opcje strefy
@@ -320,12 +331,14 @@ fwd_forward=Czy próbować innych serwerów?
 fwd_check=Czy sprawdzać nazwy?
 fwd_err=Błąd zapisywania opcji
 fwd_delmsg=Kliknij ten przycisk, aby usunąć tą strefę z serwera DNS. Przeszukiwanie rekordów znajdujących się w tej strefie będzie odbywać się normalnie.
+
 delegation_title=Edytuj strefę delegacji
 delegation_ecannot=Nie masz uprawnień do edytowania tej strefy
 delegation_opts=Opcje strefy
 delegation_err=Błąd zapisywania opcji
 delegation_noopts=Strefy delegowania nie posiadają konfigurowalnych opcji.
 delegation_delmsg=Kliknij ten przycisk, aby usunąć tą strefę z serwera DNS. Rodzaje rekordów inne niż NS zostaną rozpoznane przez BINDa.
+
 fcreate_title=Utwórz strefę pośredniczącą
 fcreate_ecannot=Nie masz uprawnień do tworzenia stref pośredniczących
 fcreate_opts=Opcje nowej strefy pośredniczącej
@@ -335,10 +348,12 @@ fcreate_rev=Odwrotna (adresy na nazwy)
 fcreate_dom=Nazwa domeny / Siec
 fcreate_masters=Serwery podstawowe
 fcreate_err=Nie udało się utworzyć strefy pośredniczącej
+
 dcreate_title=Utwórz strefę tylko do delegacji
 dcreate_ecannot=Nie masz uprawnień do utworzenia strefy delegowania
 dcreate_opts=Opcje nowej strefy delegacji
 dcreate_err=Błąd tworzenia strefy delegowania
+
 create_enet='$1' nie jest poprawną siecią
 create_edom='$1' nie jest poprawną nazwą domeny
 create_edom2='$1' musi być domeną a nie siecią
@@ -348,9 +363,11 @@ create_efile3=Błąd tworzenia '$1' : $2
 create_efile4=Plik $1 już istnieje
 create_emaster='$1' nie jest poprawnym adresem serwera podstawowego
 create_enone=Musisz wpisać co najmniej jeden serwer podstawowy
+
 boot_err=Błąd pobierania
 boot_egzip=Plik strefy głównej jest skompresowany, a w systemie nie zainstalowano komendy <tt>gzip</tt>.
 boot_egzip2=Błąd dekompresji pliku strefy głównej :  $1
+
 type_A=Adresy
 type_AAAA=Adresy IPv6
 type_NS=Serwery DNS
@@ -368,6 +385,7 @@ type_LOC=Lokalizacja
 type_SRV=Adres usługi
 type_ALL=Wszystkie rodzaje rekordów
 type_KEY=Klucz publiczny
+
 edit_A=Adres
 edit_AAAA=Adres IPv6
 edit_NS=Serwer DNS
@@ -384,6 +402,7 @@ edit_LOC=Lokalizacja
 edit_SRV=Adres usługi
 edit_KEY=Klucz publiczny
 edit_NSEC3PARAM=Parametry DNSSEC
+
 recs_defttl=Domyślny TTL
 recs_A=Adres
 recs_AAAA=Adres IPv6
@@ -403,6 +422,7 @@ recs_ALL=Wszystkie
 recs_KEY=Klucz publiczny
 recs_NSEC3PARAM=Parametry DNSSEC
 recs_delete=Usuń zaznaczone
+
 value_A1=Adres
 value_AAAA1=Adres IPv6
 value_NS1=Serwer DNS
@@ -465,6 +485,7 @@ value_dmarcnop=Takie samo jak tej domeny
 value_dmarcaspf=Wymaga ścisłego wyrównania SPF
 value_dmarcadkim=Wymaga ścisłego wyrównania DKIM
 value_dmarcnor=Nie wysyłaj
+
 warn=Ostrzeż
 fail=Błąd
 ignore=Ignoruj
@@ -478,6 +499,7 @@ listed=Wymienione ..
 eip='$1' nie jest poprawnym adresem IP
 eport='$1' nie jest poprawnym numerem portu
 eipacl='$1' nie jest poprawnym adresem IP lub nazwą ACL
+
 acl_zones=Domeny, które użytkownik może edytować
 acl_zall=Wszystkie strefy
 acl_zsel=Wybrane strefy..
@@ -522,6 +544,7 @@ acl_ztypes_master=Główna
 acl_ztypes_slave=Zapasowa/skrótowa
 acl_ztypes_delegation=Delegacja
 acl_ztypes_forward=Prosta
+
 servers_title=Inne serwery DNS
 servers_ip=Adres IP
 servers_bogus=Ignorować podrabiane serwery?
@@ -533,6 +556,7 @@ servers_keys=Użyj kluczy DNS
 servers_err=Nie można zapisać innych serwerów DNS
 servers_eip='$1' nie jest poprawnym adresem IP
 servers_etrans='$1' nie jest poprawną maksymalną liczba transferów
+
 logging_title=Logowanie i błędy
 logging_ecannot=Nie masz uprawnień do konfiguracji logowania
 logging_header=Ogólne opcje logowania i błędów
@@ -571,6 +595,7 @@ logging_efile=Brakująca nazwa pliku logowania
 logging_efile2=Plik loga musi mieć ścieżkę absolutną
 logging_ever='$1' nie jest poprawnym numerem wersji
 logging_esize='$1' nie jest poprawnym rozmiarem logu
+
 acls_title=Listy kontroli dostępu (ACL)
 acls_ecannot=Nie masz uprawnień do edycji ogólnych ACL
 acls_name=Nazwa ACL
@@ -578,6 +603,7 @@ acls_values=Odpowiadające adresy, sieci i ACL
 acls_err=Błąd zapisu list kontroli dostępu
 acls_ename='$1' nie jest prawidłową nazwą ACL
 acls_eline=Każdy adres IP musi być wprowadzony w osobnym wierszu dla ACL '$1'
+
 files_title=Pliki i katalogi
 files_ecannot=Nie masz uprawnień do konfiguracji plików
 files_header=Ogólne opcje plików i katalogów
@@ -587,6 +613,7 @@ files_pid=Plik ID procesu
 files_xfer=Ścieżka do programu transferu stref
 files_err=Błąd zapisu opcji plików i katalogów
 files_efile=Brakująca lub niepoprawna nazwa pliku
+
 forwarding_title=Pośredniczenie i transfery
 forwarding_ecannot=Nie masz uprawnień do modyfikacji opcji pośredniczenia i transferów
 forwarding_header=Ogólne opcje pośredniczenia i transferów strefy
@@ -605,6 +632,7 @@ forwarding_etrans=Brakująca lub niepoprawna maksymalna liczba jednoczesnych tra
 forwarding_minutes=minut
 forwarding_ip=Adres IP
 forwarding_port=Port
+
 net_title=Adresy i topologia
 net_ecannot=Nie masz uprawnień do modyfikacji opcji adresów i topologii
 net_header=Ogólne opcje adresów i topologii
@@ -626,6 +654,7 @@ net_taddr=Źródłowy adres IP dla transferów
 net_tport=Źródłowy port dla transferów
 net_taddrdef=Najbliższe IP
 net_etport=Źródłowy transferu nie może zostać określony bez adresu
+
 controls_title=Opcje kontroli interfejsu
 controls_ecannot=Nie masz uprawnień do edytowania opcji kontroli
 controls_header=Opcje kontroli
@@ -647,6 +676,7 @@ controls_eunixpath=Brakujący lub nieprawidłowy plik ścieżki FIFO
 controls_eunixperm=Brakujące lub nieprawidłowe uprawnienia pliku ósemkowego
 controls_eunixowner=Brakujący lub nieprawidłowy właściciel pliku
 controls_eunixgroup=Brakująca lub nieprawidłowa grupa pliku
+
 controls_inet=Port dostepu internetowego
 controls_unix=Dostęp Unix FIFO
 controls_port=port
@@ -660,6 +690,7 @@ controls_efile=Brakująca lub nieprawidłowa nazwa pliku FIFO
 controls_eperms=Brakujące lub nieprawidłowe uprawnienia FIFO
 controls_eowner=Brakujący lub nieprawidłowy UID właściciela FIFO
 controls_egroup=Brakujący lub nieprawidłowy GID właściciela FIFO
+
 keys_title=Klucze DNS
 keys_id=ID Klucza
 keys_alg=Algorytm
@@ -668,6 +699,7 @@ keys_ecannot=Nie masz uprawnień do edycji kluczy DNS
 keys_err=Błąd zapisywania kluczy DNS
 keys_ekey='$1' nie jest poprawnym ID klucza
 keys_esecret=Brakujący lub nieprawidłowy zakodowany w base-64 sekret dla klucza $1
+
 misc_title=Opcje różne
 misc_ecannot=Nie masz uprawnień do modyfikacji opcji różnych
 misc_header=Różne opcje ogólne
@@ -687,6 +719,7 @@ misc_esize='$1' nie jest poprawnym rozmiarem
 misc_efiles='$1' nie jest poprawną liczbą otwartych plików
 misc_emins='$1' nie jest poprawną liczbą minut
 misc_mins=minut
+
 zonedef_title=Domyślne ustawienia stref
 zonedef_msg=Domyślne ustawienia dla nowych stref podstawowych
 zonedef_err=Nie udało się zachować ustawień domyślnych stref
@@ -710,10 +743,13 @@ zonedef_size=Rozmiar klucza
 zonedef_single=Liczba kluczy do utworzenia
 zonedef_two=Klucz strefy i klucz podpisywania
 zonedef_one=Tylko klucz strefy
+
 find_title=Znajdź strefy
 find_match=Strefy wg wzorca "$1" ..
 find_none=Nie znaleziono żadnej strefy.
+
 efirst=Nieprawidłowa pierwsza dyrektywa w linii $1 w $2
+
 findfree_title=Szukanie wolnych IP
 findfree_desc=Znajdź wolne IP
 findfree_nofind=Nie masz uprawnień do poszukiwania wolnych IP
@@ -725,8 +761,10 @@ findfree_cf=Traktować nazwy hostów <em>freeXXX</em> jako wolne IP?
 findfree_search=Szukaj
 findfree_msg=Znaleziono $1 wolnych adresów IP
 findfree_msg2=(z których $1 jest <i>freeXXX</i>, $2 jak <i>freemac</i>)
+
 free_title=Wolne adresy IP
 free_ip=Adres IP
+
 log_servers=Zmiany innych serwerów DNS
 log_logging=Zmieniono logowanie i błędów
 log_acls=Zmieniono listy kontroli dostępu
@@ -783,14 +821,17 @@ log_sign=Uaktualniono sygnatury DNSSEC dla strefy $1
 log_resign=Klucz podpisywania DNSSEC dla strefy $1
 log_trusted=Zmieniono weryfikacji DNSSEC
 log_dnssec=Zmień klucz podpisywania DNSSEC
+
 convert_err=Błąd konwertowania strefy
 convert_efile=Musisz określić plik strefy zanim będzie można zamienić strefę zapasową na podstawową.
 convert_efilesize=Plik rekordów $1 nie istnieje lub jest pusty
 convert_ebinary=Polecenie potrzebne do konwersji z binarnej strefy slave do formatu tekstowego master nie jest zainstalwoane
 convert_ecompile=Konwersja z formatu binarnego to tekstowego nie powiodła się : $1
+
 whois_title=Informacje z bazy WHOIS
 whois_header=Wynik polecenia $1 ..
 whois_ecannot=Nie masz uprawnień do oglądania informacji WHOIS
+
 view_title=Edytuj widok kliencki
 view_opts=Dane widoku klienckiego
 view_opts2=Opcje dla stref w widoku
@@ -801,6 +842,7 @@ view_recursion=Wykonywać pełne rekurencyjne poszukiwanie klientów?
 view_ecannot=Nie masz uprawnień do edycji tego widoku
 view_delete=Usuń widok
 view_deletemsg=Kliknij ten przycisk, aby usunąć widok. Możesz wybrać przeniesienie stref, które on zawiera do innego widoku lub usunąć je wszystkie.
+
 vcreate_title=Utwórz widok kliencki
 vcreate_match_all=Wszystkich klientów
 vcreate_match_sel=Wybranych adresów, sieci lub ACL-i
@@ -809,6 +851,7 @@ vcreate_ename=Nie podana lub niepoprawna nazwa widoku
 vcreate_etaken=Ta nazwa widoku jest już zajęta
 vcreate_eclass=Nie podana lub niepoprawna nazwa klasy
 vcreate_ecannot=Nie masz uprawnień do tworzenia widoków
+
 hint_title=Edytuj strefę główną
 hint_desc=Strefa główna jest używana przez serwer DNS do porozumiewania się z serwerami głównymi Internetu, aby mógł on rozwiązywać nazwy w domenach nie obsługiwanych przez siebie, jak np. <tt>.com</tt> lub <tt>.net.pl</tt>. Jeśli serwer DNS nie jest przeznaczony wyłącznie do obsługi sieci wewnętrznej, ani nie przekazuje wszystkich zapytań do innego serwera, nie powinieneś kasować tej strefy głównej.
 hint_move=Przenieść do widoku:
@@ -817,6 +860,7 @@ hint_refetch=Pobierz główne serwery
 hint_refetchdesc=Kliknij ten przycisk, aby Webmin pobrał plik strefy głównej z serwera FTP Internic.
 hint_delete=Usuń strefę główną
 hint_deletedesc=Kliknij ten przycisk, aby usunąć tą strefę główną. Bez niej serwer nazw nie będzie mógł rozpoznawać domen w Internecie innych niż te znajdujące się w strefie zapasowej.
+
 hcreate_title=Utwórz strefę główną
 hcreate_desc=Strefa główna jest używana przez serwer DNS do porozumiewania się z serwerami głównymi Internetu, aby mógł on rozwiązywać nazwy w domenach nie obsługiwanych przez siebie, jak np. <tt>.com</tt> lub <tt>.net.pl</tt>. Jeśli używasz wielu widoków, możesz potrzebować osobnych stref głównych w każdym z nich, aby klienci mogli prawidłowo rozwiązywać nazwy domenowe w Internecie.
 hcreate_header=Szczegóły strefy głównej
@@ -830,6 +874,7 @@ hcreate_efile='$1' nie jest dozwolonym plikiem serwerów głównych
 hcreate_efile2=Nie podany lub niepoprawny plik serwerów głównych
 mcreate_erecs=Nie jest to poprawna istniejący plik strefy głównej
 hcreate_err=Nie udało się utworzyć strefy głównej
+
 vdelete_title=Usuń widok
 vdelete_mesg=Czy na pewno chcesz usunąć widok kliencki $1 ? Wszystkie strefy z tego widoku albo zostaną skasowane (łącznie z odpowiednimi plikami stref), albo zostaną przeniesione do innych widoków w zależności od tego, co wybierzesz poniżej.
 vdelete_mesg2=Czy na pewno chcesz usunąć widok kliencki $1 ?
@@ -837,6 +882,7 @@ vdelete_newview=Strefy w tym widoku
 vdelete_root=Przenieś poza widoki
 vdelete_delete=Usuń całkowicie
 vdelete_move=Przenieść do widoku
+
 gen_title=Generatory rekordów
 gen_desc=Strona umożliwia zdefiniowanie generatorów, z których każdy utworzy wiele rekordów w tej strefie za pomocą licznika. Może być to użyteczne do delegowania części strefy odwrotnej na inny serwer.
 gen_range=Zakres
@@ -856,7 +902,9 @@ gen_evalue=Brakujący lub nieprawidłowy wzorzec nazwy hosta dla generatora $1
 gen_title2=Wygenerowane rekordy
 gen_raw=Wiersz pliku konfiguracyjnego
 gen_ecannot=Nie masz uprawnień do edycji generatorów rekordu
+
 refetch_err=Błąd pobierania strefy głównej
+
 slaves_title=Klaster serwerów zapasowych
 slaves_none=Nie dodano jeszcze serwerów do klastra DNS.
 slaves_host=Nazwa hosta
@@ -884,6 +932,7 @@ slaves_sec=Utworzyć strefę zapasową na serwerze podczas tworzenia lokalnego?
 slaves_name=Nazwa dla rekordu NS
 slaves_same=Taki sam jak nazwa hosta
 slaves_header=Opcje klastra serwera zapasowego
+
 add_title=Dodaj serwery
 add_msg=Dodawanie $1 ..
 add_gmsg=Dodawanie serwerów w grupie $1 ..
@@ -901,6 +950,7 @@ add_createok=Ustawiono $1 z $2 nowych stref zapasowych.
 add_ename=Brakująca lub nieprawidłowa nazwa rekordu NS
 add_egname=Nie można określić nazwy rekordu NS podczas dodawania grupy
 add_emyip=Nie można działać z adresem IP tego systemu. Powinieneś ustawić <strong>IP domyślnego serwera głównego dla stref zapasowych</strong> na stronie Konfiguracji modułu.
+
 mass_title=Utwórz strefy z pliku wsadowego
 mass_desc=Strona ta umożliwia utworzenie wielu stref za jednym razem z załadowanego pliku tekstowego. Każdy wiersz pliku musi posiadać format: <p><tt><i>nazwadomeny</i>:<i>rodzaj</i>:<i>nazwapliku</i>:<i>IP serwera głównego</i>. <p><i>Rodzaj</i> to <strong>master</strong>, <strong>slave</strong>, <strong>stub</strong> lub <strong>forward</strong>. <i>Nazwapliku</i> jest opcjonalna i zostanie automatycznie dodana jeśli zostanie pominięta. <i>IP serwera głównego</i> wymagane jest tylko dla stref zapasowych.
 mass_local=Lokalny plik wsadowy
@@ -932,6 +982,7 @@ mass_emips=Brakujący adres glówny IP
 mass_addedslaves=Poprawnie dodano $1 do serwerów zapasowych.
 mass_eonslave=Wystąpiły błędy na serwerach zapasowych : $1
 mass_eviewcannot=Nie masz uprawnień do dodania stref do tego widoku
+
 massdelete_title=Usuń strefy
 massdelete_rusure=Czy jesteś pewien, że chcesz usunąć $1 wybranych stref? ($2)
 massdelete_ok=Usuń teraz
@@ -939,6 +990,7 @@ massdelete_zone=Usuwanie strefy $1 ..
 massdelete_done=.. zakończono.
 massdelete_slaves=Usuwanie strefy $1 z serwerów zapasowych ..
 massdelete_failed=.. na niektórych serwerach zapasowych wystąpił błąd :
+
 rndc_title=Ustawienia RNDC
 rndc_desc=Strona jest używana do ustawienia BINDa w taki sposób, aby kontrolował program RNDC. Jest to wymagane, aby pojedyncze strefy mogły być odświeżane bez pełnego restartu BINDa.
 rndc_desc2=RNDC zgłasza, że jest poprawnie skonfigurowany, a więc nie potrzebujesz używać tego formularza.
@@ -949,11 +1001,13 @@ rndc_ok=Tak, ustaw RNDC
 rndc_err=Błąd ustawiania RNDC
 rndc_ekey=Nie można znaleźć klucza w rndc.conf
 rndc_esecret=Nie można znaleźć tajnego klucza w rndc.cong
+
 drecs_err=Błąd usuwania rekordów
 drecs_enone=Nie wybrano
 drecs_title=Usuń rekordy
 drecs_rusure=Czy jesteś pewien, że chcesz usunąć $1 wybranych rekordów z S2?
 drecs_ok=Usuń teraz
+
 manual_title=Edycja pliku konfiguracyjnego
 manual_ecannot=Nie masz uprawnień do edytowania pliku konfiguracyjnego BINDa
 manual_ok=Edytuj
@@ -961,7 +1015,9 @@ manual_efile=Wybrany plik nie jest częścią konfiguracji BINDa
 manual_file=Edytuj plik konfiguracyjny:
 manual_edata=Nie wprowadzono niczego!
 manual_err=Błąd zapisywania pliku konfiguracyjnego
+
 syslog_desc=Komunikaty serwera BIND DNS
+
 umass_err=Błąd uaktualniania stref
 umass_enone=Nie wybrano
 umass_title=Uaktualnij rekordy w strefach
@@ -980,6 +1036,7 @@ umass_done=.. uaktualniono $1 pasujących rekordów w $2.
 umass_none=.. brak pasujących rekordów $1 do uaktualnienia.
 umass_egone=Strefa nie istnieje
 emass_emx='$1' nie jest numerem priorytetu serwera pocztowego poprzedzonego przez poprawną nazwę hosta
+
 rdmass_err=Błąd usuwania rekordów w strefach
 rdmass_enone=Nie zaznaczono
 rdmass_title=Kasowanie rekordów w strefach
@@ -996,6 +1053,7 @@ rdmass_done=.. usunięto $1 pasujących rekordów z $2.
 rdmass_none=.. nie znaleziono pasujących rekordów z $1 do usunięcia
 rdmass_ok=Usuwanie rekordów
 rdmass_sel=Rekordy nazwane
+
 rmass_err=Błąd dodawania rekordów
 rmass_enone=Nie wybrano
 rmass_title=Dodaj rekord do stref
@@ -1015,18 +1073,22 @@ rmass_esign=.. gotowe, ale podpisanie nie powiodło się : $1
 rmass_eclash=.. rekord o takiej samej nazwie i wartości $1 już istnieje.
 rmass_eclash2=.. rekord o takiej samej nazwie i wartości $1 już istnieje.
 rmass_clash=Utworzyć nawet jeśli rekord już istnieje?
+
 check_title=Sprawdź rekordy
 check_ecannot=Nie masz uprawnień do sprawdzania rekordów
 check_errs=Następujące błędy zostały znalezione w pliku rekordów $1 ..
 check_allok=Nie znaleziono błędów w pliku strefy $1.
+
 ncheck_title=Sprawdź konfigurację BINDa
 ncheck_ecannot=Nie masz uprawnień do sprawdzania konfiguracji BINDa
 ncheck_errs=Znaleziono następujące błędy w pliku konfiguracji BINDa $1 lub plikach stref..
 ncheck_allok=Nie znaleziono błędów w pliku konfiguracyjnym BINDa lub lub plikach stref.
+
 links_restart=Zastosuj konfigurację
 links_stop=Zatrzymaj BINDa
 links_start=Uruchom BINDa
 links_apply=Zastosuj strefę
+
 dnssec_title=Podpisywanie klucza DNSSEC
 dnssec_ecannot=Nie masz uprawnień do skonfigurowania DNSSEC
 dnssec_header=Opcje klucza podpisywania
@@ -1036,6 +1098,7 @@ dnssec_days=dni
 dnssec_desc=Strefy podpisane za pomocą DNSSEC zazwyczaj posiadają dwa klucze - klucz strefy, który musi być regenerowany i regularnie podpisywany oraz klucz podpisywania kluczy, który pozostaje niezmienny. Strona ta umożliwia skonfigurowanie Webmina do automatycznego podpisywania stref.
 dnssec_err=Błąd zapisywania klucza podpisywania DNSSEC
 dnssec_eperiod=Brakująca lub nieprawidłowa liczba dni pomiędzy podpisaniami
+
 dnssectools_title=DNSSEC-Narzędzia automatyzacji
 dt_conf_title=DNSSEC-Narzędzia automatyzacji
 dt_enable_title=DNSSEC-Narzędzia automatyzacji
@@ -1098,6 +1161,7 @@ dt_status_inKSKroll=W KSK Roll
 dt_status_inZSKroll=W ZSK Roll
 dt_status_signed=Podpisano
 dt_status_unsigned=Niepodpisano
+
 zonekey_title=Ustaw klucz DNSSEC
 zonekey_desc=Ta strefa nie posiada ustawionego klucza DNSSEC. Możesz użyć tego formularza do utworzenia klucza dla tej strefy, co zabezpieczy ją przez atakami na DNS.
 zonekey_header=Nowe opcje klucza DNSSEC
@@ -1130,9 +1194,12 @@ zonekey_sign=Podpisz srefę
 zonekey_signdesc=Natychmiastowo podpisuje tą strefę, tak więc dowolna zmiana rekordów wykoanana ręcznie zostanie uwzględniona w podpisanych rekordach.
 zonekey_resign=Podpisz strefę
 zonekey_resigndesc=Generuje nowy klucz podpisywania strefy, podpisuje nim klucz strefy głównej i ponownie podpisuje wszystkie rekordy.
+
 sign_err=Błąd podpisywania strefy
 sign_emsg=Błąd podpisywania DNSSEC po zmianie rekordów : $1
+
 resign_err=Błąd podpisywania strefy
+
 trusted_title=Weryfikacja DNSSEC
 trusted_ecannot=Nie masz uprawnień do konfigurowania weryfikacji DNSSEC
 trusted_esupport=Twoja wersja BINDa nie obsługuje weryfikacji DNSSEC
@@ -1161,6 +1228,7 @@ trusted_ealg=Brakujący lub nieprawidlowy numer algorytmu w wierszu $1
 trusted_ekey=Brakujący klucz strefyz zaufanej zakodowanej base-64 w wierszu $1
 trusted_setup=Aby DNSSEC był użyteczny przy weryfikacji podpisów stref w Internecie, należy najpierw skonfigurować BINDa, aby używał serwera DLV. Webmin może to zrobić używając serwera ICS DLV pod adresem $1.
 trusted_ok=Ustaw DLV i włącz weryfikację DNSSEC
+
 xfer_title=Test transferu strefy
 xfer_doing=Test transferu strefy z $1 ..
 xfer_failed=.. z $1 : niepowodzenie : $2

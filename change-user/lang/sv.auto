@@ -20,6 +20,7 @@ index_d1=$1
 index_dlang=språket som modulerna visas på
 index_dtheme=temat som styr Webmins utseende
 index_dpass=lösenordet som används för att logga in med
+
 change_title=Ändra inställningar
 change_user=Ändrar inloggning av Webmin ..
 change_done=.. Gjort
@@ -30,6 +31,7 @@ change_epass2=Nya lösenord matchar inte
 change_epass=Det nya lösenordet är inte giltigt : $1 
 change_eoverlay=Du kan inte välja ett temaöverlagring såvida inte ett UI-tema också väljs
 change_eoverlay2=Det valda temaöverlägget är inte kompatibelt med det valda UI-temat
+
 acl_lang=Kan ändra språk?
 acl_theme=Kan ändra tema?
 acl_pass=Kan du ändra lösenord (när det ställs in i Webmin)?

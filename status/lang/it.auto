@@ -5,6 +5,7 @@ index_refreshdesc=Eseguire un aggiornamento immediato di tutti gli stati del mon
 index_refsel=Aggiorna selezionato
 index_tmpls=Modifica modelli di email
 index_tmplsdesc=Visualizza e modifica i modelli utilizzati per costruire i messaggi e-mail inviati quando i servizi monitorati vengono disattivati.
+
 type_apache=Server web Apache
 type_inetd=Server Internet e RPC
 type_xinetd=Server Internet esteso
@@ -59,6 +60,8 @@ type_alive=Alive System
 type_rssh=SSH remoto
 type_slapd=Server LDAP
 type_ldap=Connessione LDAP
+
+mon_virtualmin=Avvertimento! Questo monitor è associato al dominio Virtualmin $1, quindi non deve essere modificato o eliminato qui.
 mon_header3=Opzioni di servizio monitorate
 mon_remotes2=Esegui su host e gruppi
 mon_none=Nessun server remoto definito
@@ -96,6 +99,7 @@ mon_changes0=Mostra ogni tipo di evento
 mon_changes1=Mostra solo le modifiche
 mon_all=Mostra tutti gli eventi storici
 mon_nochanges=Nessun cambiamento di stato negli ultimi $1 eventi storici.
+
 sched_title=Monitoraggio programmato
 sched_header=Opzioni di monitoraggio in background pianificate
 sched_mode=Controllo programmato abilitato?
@@ -142,19 +146,23 @@ sched_subject0=Nessuno (l'avviso è nel corpo)
 sched_subject1=Testo di avviso (lasciare il corpo vuoto)
 sched_subject2=Testo personalizzato
 sched_esubject=Oggetto del messaggio SMS mancante
+
 tcp_host=Host a cui connettersi
 tcp_port=Porta a cui connettersi
 tcp_alarm=Connesione finita
 tcp_ehost=Nome host mancante o non valido
 tcp_eport=Numero porta mancante o non valido
 tcp_ealarm=Timeout di connessione mancante o non valido
+
 http_url=URL da richiedere
 http_ehead=Il metodo di richiesta HEAD non può essere utilizzato quando si verifica un'espressione regolare
+
 ping_host=Host per il ping
 ping_wait=È tempo di aspettare una risposta
 ping_ehost=Nome host mancante o non valido
 ping_ewait=Tempo di attesa mancante o non valido
 ping_econfig=Nessun comando ping è stato impostato in Module Config
+
 proc_pid=In esecuzione con PID $1 
 proc_cmd=Comando da verificare
 proc_not=Fallire se il processo è
@@ -166,6 +174,7 @@ proc_ethresh=Numero di processi mancante o non valido
 proc_asuser=In esecuzione come utente
 proc_anyuser=Qualsiasi utente
 proc_easuser=Utente per l'esecuzione del processo in quanto non esiste
+
 exec_cmd=Comando da eseguire
 exec_mode=Esci dal controllo dello stato
 exec_mode0=Fail monitor se il comando fallisce
@@ -176,6 +185,7 @@ exec_noregexp=Non controllare
 exec_remode=Verifica periodica
 exec_remode0=Fallito se l'output non corrisponde
 exec_remode1=Fallito se l'output corrisponde
+
 file_efile=Nome file o directory mancante da verificare
 file_elarge=File troppo grandi : $1 
 file_esmall=File troppo piccoli : $1 
@@ -186,6 +196,7 @@ file_group=Il gruppo di file deve essere
 file_nocheck=Nulla
 file_perms=Le autorizzazioni ottali devono essere
 file_eperm=File con autorizzazioni errate : $1 
+
 traffic_iface=Interfaccia da monitorare
 traffic_bytes=Numero massimo di byte/secondo
 traffic_dir=Direzione da monitorare
@@ -195,6 +206,7 @@ traffic_dir2=Solo in uscita
 traffic_desc=Questo monitor tiene traccia del traffico di rete su un'interfaccia selezionata e visualizza il monitor come inattivo se il traffico supera il numero di byte al secondo immesso di seguito. Funziona davvero bene solo se il monitoraggio programmato è abilitato a un intervallo breve, come ogni 5 minuti.
 traffic_eifaces=Il tuo sistema operativo non ha un file/proc/net/dev
 traffic_ebytes=Numero di byte mancanti o non validi/secondo
+
 space_fs=File system da controllare
 space_min2=Spazio libero minimo
 space_mode0=Dimensione assoluta
@@ -210,37 +222,47 @@ space_ierr=Solo $1 inode gratuiti
 space_merr=Solo $1 spazio libero
 space_perr=Solo $1% gratis
 space_dferr=Impossibile ottenere la dimensione del file system
+
 load_time=Carica media da verificare
+
 log_sched=Monitoraggio programmato modificato
 log_tmpl_create=Modello email creato $1 
 log_tmpl_modify=Modello email modificato $1 
 log_tmpl_delete=Modello di email eliminato $1 
 log_tmpl_deletes=Modelli di email $1 eliminati
 log_refresh=Stati monitor aggiornati
+
 memory_emin=Quantità mancante o non valida di memoria reale libera
 memory_freeswap=$1 memoria virtuale libera
 memory_freelow=Solo $1 di memoria reale libera
 memory_freelowswap=Solo $1 di memoria virtuale libera
 memory_minswap=Memoria virtuale libera minima
 memory_eminswap=Quantità mancante o non valida di memoria virtuale libera
+
 proftpd_etype=Questo monitor non può essere utilizzato quando ProFTPD viene eseguito autonomamente
+
 mailserver_timeout=Timeout e intervallo
 mailserver_desc=L'indirizzo seguente deve essere un autorisponditore che risponde all'indirizzo di origine con lo stesso oggetto: riga.
+
 oldfile_file=File da monitorare (errore se non modificato)
 oldfile_diff=Fallire se non modificato per
 oldfile_secs=secondi
+
 raid_device=Dispositivo RAID
 raid_edevice=Nessun dispositivo RAID selezionato
 raid_bad=Disco difettoso rilevato
 raid_resync=Attualmente risincronizzazione
 raid_notfound=Dispositivo RAID $1 non trovato
 raid_other=Altro ..
+
 init_action=Azione da verificare
 init_eaction=Nessuna azione selezionata
+
 refresh_title=Aggiorna stato
 refresh_doing=Aggiornamento dello stato di tutti i monitor ..
 refresh_doing2=Aggiornamento dello stato di $1 monitor selezionati.
 refresh_done=.. fatto.
+
 sensors_name=Sensore da controllare
 sensors_value=Fallito quando
 sensors_value0=Il sistema indica un avviso
@@ -251,6 +273,7 @@ sensors_none=Nessun sensore rilevato sul tuo sistema. Potrebbe essere necessario
 sensors_cur=$1 (attualmente $2 $3)
 sensors_emin=Valore minimo mancante o non valido
 sensors_emax=Valore massimo mancante o non valido
+
 nut_ups=UPS NUT da controllare
 nut_name=Attributo da verificare
 nut_value=Fallito quando
@@ -261,11 +284,14 @@ nut_eups=Nessun USP da controllare inserito
 nut_cur=$1 (attualmente $2)
 nut_emin=Valore minimo mancante o non valido
 nut_emax=Valore massimo mancante o non valido
+
 mailq_size=Dimensione massima della coda di posta
 mailq_esize=Dimensione massima della coda mancante o non valida
 mailq_toomany=Giù: $1 messaggi in coda
 mailq_ok=Su: $1 messaggi in coda
+
 dns_ehost=Nome host mancante o dall'aspetto non valido per la ricerca
+
 monitor_sub_down=$1 giù su $2 
 monitor_pager_down=$1 : "$2" è in calo $3 
 monitor_email_down=Il monitoraggio su $1 per "$2" ha rilevato che il servizio è diminuito a $3 
@@ -294,13 +320,16 @@ monitor_sub2=Servizio di monitoraggio
 monitor_sub3=Monitoraggio servizi: $1 servizi
 monitor_runerr=Impossibile eseguire $1 su $2 : $3 
 monitor_email_stat=Stato attuale: $1 
+
 deletes_enone=Nessun monitor selezionato
+
 ftp_tls=Utilizzare la crittografia TLS?
 ftp_etls=TLS non può essere abilitato se non è installato il modulo $1 Perl
 ftp_econn=Connessione FTP TLS non riuscita
 ftp_econn2=Connessione FTP TLS non riuscita : $1 
 ftp_elogin=Accesso FTP TLS non riuscito : $1 
 ftp_etlsfile=Download FTP TLS non riuscito : $1 
+
 query_driver=Tipo di database SQL
 query_db=Nome del database
 query_host=Host del server di database
@@ -321,6 +350,7 @@ query_elogin=Accesso non riuscito : $1
 query_eprepare=Errore SQL : $1 
 query_eexecute=SQL non riuscito : $1 
 query_ewrong=Risultato errato : $1 
+
 rssh_host=Host server SSH
 rssh_ruser=Accedi come utente
 rssh_rpass=Accedi con password
@@ -336,6 +366,7 @@ rssh_error=Errore SSH
 rssh_haspass=Parola d'ordine
 rssh_port=Porta del server SSH
 rssh_eport=Numero porta mancante o non valido
+
 tmpls_title=Modelli e-mail
 tmpls_ecannot=Non sei autorizzato a modificare i modelli di email
 tmpls_none=Nessun modello di e-mail è stato ancora definito. Tutti gli avvisi verranno inviati utilizzando i messaggi predefiniti di Webmin.
@@ -344,6 +375,7 @@ tmpls_email=Messaggio email
 tmpls_add=Aggiungi un nuovo modello di email.
 tmpls_return=elenco dei modelli
 tmpls_delete=Elimina i modelli selezionati
+
 tmpl_title1=Crea modello e-mail
 tmpl_title2=Modifica modello email
 tmpl_header=Avvisa i messaggi dei modelli di email
@@ -368,9 +400,11 @@ tmpl_esms=Messaggio SMS mancante
 tmpl_esnmp=Messaggio SNMP mancante
 tmpl_err2=Impossibile eliminare il modello e-mail
 tmpl_eusers=È utilizzato dai seguenti monitor : $1 
+
 dtmpls_err=Impossibile eliminare i modelli
 dtmpls_enone=Nessuno selezionato
 dtmpls_eusers=$1 è utilizzato dai seguenti monitor : $2 
+
 sslcert_src=Posizione del certificato
 sslcert_url=Dall'URL HTTPS
 sslcert_file=Dal file sul server
@@ -388,18 +422,21 @@ sslcert_eend=Non valido dopo $1
 sslcert_left=Su: $1 giorni fino alla scadenza
 sslcert_ematch=Il nome host $1 non corrisponde al certificato $2 
 sslcert_emismatch=Il controllo del nome host del certificato può essere utilizzato solo quando si controlla un URL
+
 du_dir=Directory da monitorare
 du_max=Taglia massima
 du_edir=Percorso di directory mancante o non assoluto
 du_emax=Dimensione massima mancante o non numerica
 du_over=La dimensione è $1 
 du_under=La dimensione è solo $1 
+
 ldap_edriver=Il modulo Perl $1 non è installato
 ldap_host=Nome host del server LDAP
 ldap_port=Porta del server LDAP
 ldap_ssl=Usa la connessione SSL?
 ldap_user=Accesso al server LDAP
 ldap_pass=Password del server LDAP
+
 info_desc=Monitor di sistema
 info_last=Stato attuale
 info_title=Stato del sistema e del server

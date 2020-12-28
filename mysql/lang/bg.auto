@@ -1,13 +1,18 @@
 view_refresh=Обновяване
 view_go=Отивам
+
 user_locked=Заключен
+
 backup_prefix=Префикс за име на файл
 backup_eprefix=Префиксът за име на файл не може да съдържа /
 backup_noprefix=Нито един
+
 cnf_table_open_cache=Таблици за кеш
 cnf_ilt=Времето за заключване на InnoDB (в секунди)
 cnf_eilt=Времето за заключване на InnoDB трябва да бъде цяло число
+
 syslog_desc2=Съобщение за грешка в MySQL
+
 mysqlpass_err=Безопасен режим на MySQL
 mysqlpass_esafecmd=Командата $1, необходима за стартиране на MySQL с деактивирано удостоверяване, не бе намерена
 mysqlpass_eshutdown=Неуспешно изключване : $1 

@@ -3,6 +3,7 @@ index_twofactor=Dvojfaktorové overenie
 index_joingroup=Pridať do skupiny:
 index_eulist=Nepodarilo sa uviesť používateľov: $1 
 index_eglist=Nepodarilo sa uviesť skupiny: $1 
+
 edit_title3=Vytvorte bezpečného používateľa Webmin
 edit_readonly=Tento užívateľ Webmin by nemal byť upravovaný, pretože je spravovaný modulom $1. <a href='$2'>Kliknite tu</a>, aby ste toto upozornenie obišli a upravili používateľa - buďte si však vedomí, že akékoľvek manuálne zmeny môžu byť prepísané!
 edit_cloneof=Klonovanie užívateľa Webmin
@@ -41,6 +42,7 @@ edit_safe=Úroveň privilégií
 edit_safe0=neobmedzený
 edit_safe1=Iba bezpečné moduly
 edit_unsafe=Obnoviť na neobmedzené
+
 save_eunixname=Používateľské meno „$1“ nie je používateľom systému Unix, a preto ho nemožno použiť v bezpečnom režime
 save_eoverlay=Prekryvnú tému nie je možné vybrať, pokiaľ nejde o motív
 save_epass=Heslo nie je platné: $1 
@@ -50,13 +52,18 @@ save_edays=Vybraté nie sú žiadne dni na povolenie
 save_ehours=Chýbajúce alebo neplatné časy na povolenie
 save_ehours2=Čas začiatku, ktorý sa má povoliť, musí byť pred koncom
 save_etemp=Možnosť vynútiť zmenu hesla pri ďalšom prihlásení nie je možné použiť, pokiaľ nie je povolená možnosť <a href='$1'>vyzývajúca používateľov na zadanie nových hesiel</a>.
+
 delete_eanonuser=Tento užívateľ sa používa na anonymný prístup k modulu
+
 cert_etempdir=Neplatný súbor certifikátu
+
 acl_rbac=Získať nastavenia riadenia prístupu z RBAC?
 acl_rbacyes=Áno (prepíše nastavenia nižšie)
+
 acl_times=Môžu zmeniť povolené časy prihlásenia?
 acl_pass=Môžete zmeniť obmedzenia hesiel?
 acl_sql=Môžete nakonfigurovať databázu používateľov a skupín?
+
 log_joingroup=Do skupiny $2 boli pridaní $1 
 log_pass=Zmenené obmedzenia hesla
 log_unix=Zmenená autentifikácia používateľov systému Unix
@@ -64,16 +71,21 @@ log_sync=Zmenená synchronizácia unixového používateľa
 log_sql=Zmenená databáza používateľov a skupín
 log_twofactor=Registrovaný používateľ $1 s dvojfaktorovým poskytovateľom $2 
 log_onefactor=Registrovaný používateľ $1 na dvojfaktorové overenie
+
 gedit_members=Používatelia a skupiny členov
 gedit_desc=Popis skupiny
 gedit_egone=Vybraná skupina už neexistuje!
+
 gsave_edesc=Neplatný popis - znak: nie je povolený
+
 convert_sync2=Synchronizovať heslo s používateľom Unix v budúcnosti?
 convert_user=Unixový užívateľ
 convert_action=Prijaté opatrenia
 convert_done= $1 konvertovaní používatelia, $2 neplatné, $3 už existujú, $4 vylúčené.
 convert_users=Používatelia majú prevádzať
+
 sync_when=Kedy synchronizovať
+
 unix_err=Nepodarilo sa uložiť autentifikáciu Unix
 unix_sel=Povoliť používateľom Unixu uvedeným nižšie prihlásiť sa.
 unix_group=Členovia skupiny..
@@ -89,6 +101,7 @@ unix_esudo=Príkaz $1 nie je nainštalovaný
 unix_esudomod=Nie je nainštalovaný modul Perl $1 potrebný na autentifikáciu <tt>sudo</tt>
 unix_header=Nastavenia overovania používateľov systému Unix
 unix_utable=Povolení používatelia Unixu
+
 sessions_actions=Akcia..
 sessions_logouts=Zobraziť aj odhlásené relácie.
 sessions_state=Štát
@@ -96,12 +109,15 @@ sessions_this=Toto prihlásenie
 sessions_in=Prihlásený
 sessions_out=Odhlasený
 sessions_kill=Odpojenie..
+
 logins_title=Posledné prihlasovacie údaje pre správcov webu
+
 rbac_desc=Integrácia produktu RBAC servera Webmin poskytuje spôsob, ako určiť užívateľské moduly a oprávnenia ACL z databázy RBAC (Role Based Access Control), a nie z vlastných konfiguračných súborov spoločnosti Webmin. Keď je podpora RBAC povolená, každý používateľ, pre ktorého je vybratá možnosť <b>RBAC riadi všetky moduly a ACL</b>, bude mať svoje schopnosti určené radšej RBAC ako nastavenia vlastného riadenia prístupu Webmin.
 rbac_esolaris=Systém RBAC je momentálne podporovaný iba v systéme Solaris, a preto ho nemožno použiť v tomto systéme $1.
 rbac_eperl=Nie je nainštalovaný modul Perl $1 potrebný na integráciu RBAC. <a href='$2'>Kliknite sem</a> a nainštalujte ho teraz.
 rbac_ecpan=Nemáte prístup na stránku Webmin Perl Moduules, aby ste mohli nainštalovať potrebný modul $1 na integráciu RBAC.
 rbac_ok=Integrácia RBAC je k dispozícii v tomto systéme a dá sa povoliť pre každého užívateľa na stránke Edit Webmin User user.
+
 udeletes_err=Nepodarilo sa odstrániť používateľov
 udeletes_jerr=Nepodarilo sa pridať používateľov do skupiny
 udeletes_enone=Žiadne vybraté
@@ -110,7 +126,9 @@ udeletes_rusure=Naozaj chcete odstrániť vybratých používateľov $1 ? Všetk
 udeletes_users=Vybraní používatelia: $1 
 udeletes_ok=Odstrániť používateľov
 udeletes_ereadonly=Jeden z vybraných používateľov je označený ako neupraviteľný
+
 gdeletes_rusure=Naozaj chcete odstrániť vybraté skupiny $1 a $2 používateľov, ktorých obsahujú? Všetky ich nastavenia riadenia prístupu a podrobnosti o používateľovi budú stratené.
+
 pass_title=Obmedzenia hesla
 pass_ecannot=Nemáte oprávnenie upravovať obmedzenia hesiel
 pass_header=Možnosti vymáhania hesla správcu webu
@@ -133,6 +151,7 @@ pass_eminsize=Chýbajúca alebo nečíselná minimálna dĺžka hesla
 pass_emaxdays=Chýbajúci alebo nečíselný počet dní pred zmenou
 pass_elockdays=Chýbajúci alebo nečíselný počet dní pred zablokovaním účtu
 pass_eoldblock=Chýbajúce alebo nečíselné množstvo starých hesiel na odmietnutie
+
 cpass_minsize=Musí mať aspoň $1 písmen
 cpass_notre=Zodpovedá zakázanému vzoru
 cpass_re=Nezodpovedá požadovanému vzoru
@@ -140,6 +159,7 @@ cpass_name=Obsahuje používateľské meno
 cpass_dict=Je slovníkom slovníka
 cpass_spellcmd=Nie sú nainštalované príkazy $1 ani $2 potrebné na kontrolu slovníkových slov.
 cpass_old=Staré heslá nie je možné znovu použiť
+
 sql_title=Databáza používateľov a skupín
 sql_ecannot=Nemáte povolenie konfigurovať databázu používateľov a skupín
 sql_header=Možnosti databázového backendu pre používateľov a skupiny
@@ -182,21 +202,25 @@ sql_dnerr=Nastavenia databázy používateľov a skupín sú platné, ale Webmin
 sql_dnerr2=Kliknutím na tlačidlo <b>Vytvoriť DN</b> nižšie ho vytvoríte automaticky, alebo ho pridajte na svoj server LDAP ručne.
 sql_makedn=Vytvorte DN
 sql_schema=Stiahnite si schému LDAP
+
 make_title=Vytvorte tabuľky používateľov a skupín
 make_err=Nepodarilo sa vytvoriť tabuľky používateľov a skupín
 make_exec=Vykonáva sa SQL $1..
 make_failed=.. vytvorenie zlyhalo: $1 
 make_done=.. hotový
 make_still=Niektoré problémy sa našli aj po vytvorení tabuľky: $1 
+
 makedn_title=Vytvorte LDAP DN
 makedn_eoc=Nenašli sa žiadne triedy štruktúrnych objektov!
 makedn_exec=Vytvára sa rodičovský DN $1..
 makedn_failed=.. vytvorenie zlyhalo: $1 
 makedn_done=.. hotový
 makedn_still=Niektoré problémy sa našli aj po vytvorení DN: $1 
+
 schema_title=Stiahnite si schému LDAP
 schema_desc=Aby mohol Webmin použiť server LDAP na ukladanie používateľov a skupín, musí byť nakonfigurovaný na používanie nižšie uvedenej schémy. Spravidla sa to dá dosiahnuť uložením definície schémy do <tt>/etc/ldap/schema</tt> alebo <tt>/etc/openldap/schema</tt> ako <tt>webmin.schema</tt>, potom nakonfigurujte server tak, aby načítal tento súbor schémy.
 schema_download=Stiahnite si súbor schémy: <a href=$1>$1</a>
+
 twofactor_err=Nepodarilo sa nastaviť dvojfaktorové overenie
 twofactor_euser=Váš užívateľ Webmin nebol nájdený!
 twofactor_title=Dvojfaktorové overenie

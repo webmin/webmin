@@ -4,6 +4,7 @@ index_desc=deskribapena
 index_add=Gehitu PAM zerbitzu berria.
 index_return=zerbitzuen zerrenda
 index_none=Ez da PAM konfigurazio fitxategirik aurkitu zure sisteman $1 direktorioan. Agian PAM ez da onartzen, edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+
 desc_su=Aldatu erabiltzailea
 desc_su-l=Aldatu erabiltzailea (loginekin)
 desc_login=Tokiko edo urruneko saioa
@@ -87,6 +88,7 @@ desc_common-account=Kontuaren egiaztapen arrunta
 desc_common-auth=Autentifikazio arrunta
 desc_common-password=Pasahitz aldaketa arrunta
 desc_common-session=Saioaren konfigurazio arrunta
+
 edit_title=Editatu PAM zerbitzua
 edit_header=PAM zerbitzuaren xehetasunak
 edit_name=Zerbitzuaren izena
@@ -107,6 +109,7 @@ edit_move=Mugitu
 edit_return=PAM zerbitzua
 edit_inc=$1 zerbitzua barne
 edit_iheader=PAM zerbitzuak barne
+
 pam_pwdb.so=Unix pasahitzaren autentikazioa
 pam_securetty.so=Sarrera segurua kontrolatzeko TTY egiaztatzea
 pam_nologin.so=<tt>/etc/nologin</tt> fitxategiaren egiaztapena
@@ -149,6 +152,7 @@ pam_console.so=Kontsola bakarrik egiaztatu
 pam_xauth.so=X autentifikazioa
 pam_stack.so=Deitu beste PAM zerbitzura
 pam_foreground.so=Kontsolaren konfigurazioa
+
 control_requisite=beharrezko
 control_required=Beharrezko
 control_sufficient=nahikoa
@@ -157,6 +161,7 @@ control_desc_requisite=Huts egin autentikazioa berehala huts egin du
 control_desc_required=Huts egin autentifikazioan huts egin du
 control_desc_sufficient=Lortu benetako autentikazioa berehala
 control_desc_optional=Arrakasta edo porrota baztertzen da
+
 create_title=Sortu PAM zerbitzua
 create_header=PAM zerbitzu aukera berriak
 create_name=Zerbitzuaren izena
@@ -165,6 +170,7 @@ create_mods=PAM hasierako moduluak
 create_0=Bat ere ez
 create_1=Unix autentikazioa
 create_2=Sarbide guztia ukatu
+
 mod_edit=Editatu PAM modulua
 mod_create=Gehitu PAM modulua
 mod_header=PAM moduluaren aukerak
@@ -178,10 +184,12 @@ mod_type_password=Pasahitza aldatu
 mod_control=Hutsegite maila
 mod_args=Modulu argumentuak
 mod_err=Ezin izan da modulua gorde
+
 pwdb_shadow=Erabili itzal pasahitz fitxategia?
 pwdb_nullok=Pasahitz nuluak onartu?
 pwdb_md5=Erabili MD5 enkriptatutako pasahitzak?
 pwdb_nodelay=Saioa hasi eta gero huts egin duzu?
+
 unix_nullok_secure=Pasahitz nuluak onartzea TTY seguruei buruz?
 unix_min=Pasahitz minimoen luzera
 unix_nomin=Bat ere ez
@@ -190,6 +198,7 @@ unix_nomax=Mugarik ez
 unix_obscure=Pasahitz errazak erabiltzea saihestu?
 unix_emin=Pasahitz gutxieneko luzera falta edo baliogabea da
 unix_emax=Pasahitz gehieneko luzera falta edo baliogabea da
+
 listfile_item=Bilatu fitxategia
 listfile_item_user=Erabiltzaile izena
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=Mugatu egiaztapena
 listfile_all=Erabiltzaile guztiak
 listfile_user=Erabiltzailea bakarrik
 listfile_group=Taldea bakarrik
+
 cracklib_type=Pasahitz mota gonbidapenean
 cracklib_retry=Gehienezko saiakerak huts egin aurretik
 cracklib_eretry=Falta diren saiakera kopurua edo baliogabea
 cracklib_etype=Pasahitz mota falta edo baliogabea
+
 rhosts_equiv=Irakurri <tt>/etc/hosts.equiv</tt> fitxategia?
 rhosts_rhosts=Irakurri erabiltzaileen <tt>.rhosts</tt> fitxategiak?
 rhosts_promiscuous=<tt>+</tt> sarrerak ostalari guztiak baimentzen ditu?
 rhosts_suppress=Log autentifikazio akatsak?
+
 env_var=Izena aldakorra
 env_def=Lehenetsitako balioa
 env_over=Baliogabetzeko balioa
 env_evar=Izen aldakorrek ezin dituzte espazioak izan
+
 securetty_ttys=TTY seguruak
+
 shells_shells=Erabiltzaileen maskorrak baliozkoak
+
 tally_deny=Sarbidea ukatu aurretik huts egin du
 tally_reset=Berrezarri hutsegiteak arrakasta zenbatzen du
 tally_edeny=Huts egin edo baliogabeko huts saiakera kopurua
 tally_magic=Hutsen kopurua <tt>root</tt>-ri aplikatzen al zaio?
 tally_root=<tt>root</tt> kontua ukatu al daiteke?
+
 time_services=Zerbitzuak
 time_ttys=ttyS
 time_users=erabiltzaileak
 time_times=Sarbide orduak
 time_info=Eremu guztiek | | bereizitako balio anitzak izan ditzakete, eta baloreek * komodin gisa erabil ditzakete edo! ezezko gisa.
+
 group_services=Zerbitzuak
 group_ttys=ttyS
 group_users=erabiltzaileak
 group_times=Sarbide orduak
 group_groups=Taldeak gehitu
 group_info=Eremu guztiek | | bereizitako balio anitzak izan ditzakete, eta baloreek * komodin gisa erabil ditzakete edo! ezezko gisa.
+
 wheel_group=Egiaztatu taldeko kide izatea
 wheel_group_def=Lehenetsia (<tt>gurpila</tt> edo GID 0)
 wheel_trust=Taldeko kideek autentikazio gehiago alboratu?
 wheel_deny=Ukatu taldeko kideak baimendu beharrean?
 wheel_egroup=Talde izen falta edo baliogabea
+
 motd_file=Bistaratzeko fitxategia
 motd_file_def=Lehenespenez (<tt>/etc/motd</tt>)
 motd_efile=Fitxategi-izen falta edo baliogabea
+
 mail_nopen=Erakutsi posta jakinarazpena saioa hastean?
 mail_close=Erakutsi posta jakinarazpena amaitzean?
 mail_empty=Jakinarazi posta fitxategia hutsik badago?
 mail_noenv=Ezarri $ MAIL ingurumen aldagaia?
 mail_dir=Mail spool direktorioa
 mail_edir=Falta da edo ez dago posta elektronikoaren spool direktorio baliogabea
+
 stack_service=Egiaztatu PAM zerbitzura
+
 log_pam_create=$1 PAM zerbitzua sortu da
 log_pam_delete=$1 PAM zerbitzua ezabatu da
 log_mod_create=$1 PAM modulua gehitu da $2 zerbitzura
@@ -262,6 +284,7 @@ log_inc_create=Gehitutako $1 zerbitzuaren $2 sartzen da
 log_inc_modify=Aldatua $1 zerbitzuaren $2 da
 log_inc_delete=Ezabatuta, $1 zerbitzuaren $2 sartzen da
 log_incs=Eguneratutako $1 zerbitzurako barne hartzen da
+
 inc_edit=Editatu Barne Zerbitzua
 inc_create=Sortu zerbitzu barne
 inc_header=PAM zerbitzuaren xehetasunak

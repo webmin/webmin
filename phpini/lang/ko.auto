@@ -1,9 +1,13 @@
 file_eread=$1 을 (를) 읽지 못했습니다  : $2 
+
 list_format_ini=INI 형식
 list_format_fpm=FPM 형식
+
 session_eredis=Redis 확장이 없거나 비활성화되었습니다
+
 misc_include=원격 포함을 열 수 있습니까?
 misc_path=CGI 수정 경로 정보?
 misc_timezone=PHP 시간대
 misc_charset=기본 문자 세트
+
 acl_user=사용자로서 파일 읽기 및 쓰기

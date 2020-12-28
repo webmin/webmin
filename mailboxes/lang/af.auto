@@ -2,6 +2,7 @@ index_title=Lees gebruikerspos
 index_none=U mag nie e-pos vir enige gebruikers op hierdie stelsel lees nie.
 index_header=Gebruiker se posbusse
 index_empty=Geen pos nie
+index_return=gebruikerslys
 index_esystem=Nie een van die ondersteunde e-posbedieners (Exim, Qmail, Postfix en Sendmail) is op u stelsel opgespoor nie. U moet die <a href='$1'>modulekonfigurasie</a> aanpas om die e-posbediener en moontlik die pospaaie met die hand in te stel.
 index_esystem2=Die e-posbediener wat in die <a href='$1'>module-opstelling</a> gestel is, is nie op u stelsel gevind nie. U moet die konfigurasie aanpas om die regte bediener te gebruik.
 index_esystem3=Kon nie die e-posstelsel in die <a href='$1'>module-opstelling</a> kontak nie: $2.
@@ -19,6 +20,7 @@ index_eperl=Die Perl-module $1 wat nodig is vir die geselekteerde SMTP-verifikas
 index_file=Lees Mail in File of Maildir:
 index_nousers=Geen gebruikers is gevind nie!
 index_nousersmail=Geen gebruikers met e-pos is gevind nie.
+
 mail_title=Gebruiker e-pos
 mail_from=Van
 mail_date=datum
@@ -75,6 +77,7 @@ mail_fromfilter=Skep filter volgens sender
 mail_tofilter=Skep filter volgens ontvanger
 mail_subfilter=Skep filter volgens onderwerp
 mail_unknown=onbekend
+
 mail_sign=Teken met sleutel
 mail_nosign=&lt;Moenie teken nie&gt;
 mail_crypt=Enkripteer vir
@@ -109,6 +112,7 @@ mail_selread=Kies lees.
 mail_selunread=Kies ongelees.
 mail_selspecial=Kies spesiaal.
 mail_specialsync=Sync Spesiaal
+
 view_title=Lees e-pos
 view_desc=Boodskap $1 in $2
 view_desc2=Boodskap $1 vir gebruiker $2
@@ -150,6 +154,7 @@ view_sub=Aangehegde e-posadres
 view_sub2=Aangehegde e-posadres van $1
 view_egone=Hierdie boodskap bestaan nie meer nie
 view_eugone=Hierdie gebruiker bestaan nie
+
 view_gnupg=GnuPG-handtekeningverifikasie
 view_gnupg_0=Handtekening deur $1 is geldig.
 view_gnupg_1=Handtekening deur $1 is geldig, maar vertroue ketting kon nie vasgestel word nie.
@@ -186,7 +191,9 @@ view_images=Wys prente
 view_raw=Kyk na rou boodskap
 view_aall=Stoor alle aanhangsels as zip.
 view_aslideshow=Wys alle prente.
+
 compose_title=Skryf e-pos
+
 reply_title=Antwoord op e-pos
 forward_title=Stuur e-pos
 enew_title=Redigeer e-pos
@@ -216,9 +223,11 @@ reply_addattach=Voeg aanhegselsveld by.
 reply_addssattach=Voeg aanhegselsveld aan die bedkant by.
 reply_html0=Komponeer teks
 reply_html1=Stel HTML op
+
 reply_spell=Kyk vir spelfoute?
 reply_draft=Stoor as konsep
 reply_save=Stoor en redigeer
+
 send_err=Kon nie e-pos stuur nie
 send_eto=Ontbreek aan adres
 send_efrom=Ontbreek vanaf adres
@@ -235,6 +244,7 @@ send_eperms2=U mag nie lêer $1 stuur nie
 send_epath=Sendmail-uitvoerbare $1 bestaan nie.
 send_efile=Kon nie aanhangsel $1 : $2 lees nie
 send_done=.. klaar.
+
 send_epass=U kan nie 'n boodskap onderteken nie, omdat u wagwoordfrase nog nie in die GnuPG-module opgestel is nie.
 send_esign=Kon nie boodskap onderteken nie : $1
 send_ekey=Kon nie die sleutel vir e-posadres $1 vind nie
@@ -246,6 +256,7 @@ send_espell=Die volgende spelfoute is in u boodskap gevind.
 send_draft=Pos na $1 gestoor in die konsepmap.
 send_drafting=Stoor e-pos na $1 in die konsepmap ..
 send_eattachsize=Die e-posaanhangsel het die maksimum toegelate grootte van $1 grepe oorskry
+
 delete_title=Vee pos uit
 delete_rusure=Is u seker dat u die $1 geselekteerde boodskappe uit $2 wil verwyder? Dit kan 'n tydjie neem vir 'n groot poslêer. Totdat die skrap klaar is, moet geen ander aksie uitgevoer word nie.
 delete_rusure2=Is u seker dat u hierdie boodskap van $1 wil verwyder? Dit kan 'n tydjie neem vir 'n groot poslêer. Totdat die skrap klaar is, moet geen ander aksie uitgevoer word nie.
@@ -268,6 +279,7 @@ delete_nobutton=Geen knoppie geklik nie
 delete_ereport=Kon nie as strooipos rapporteer nie : $1
 delete_errc=Kon nie e-pos kopieër nie
 delete_errm=Kon nie e-pos skuif nie
+
 confirm_title=Bevestig verwyder
 confirm_warn=Is u seker dat u die $1 geselekteerde boodskappe uit hierdie gids wil verwyder?
 confirm_warnf=Is u seker dat u die $1 geselekteerde boodskappe uit die vouer <b>$2</b> wil verwyder?
@@ -277,6 +289,7 @@ confirm_warn4=Totdat die skrap klaar is, moet geen ander aksie uitgevoer word ni
 confirm_ok=Vee nou uit
 confirm_warnall=Is u seker dat u al die boodskappe in hierdie vouer wil uitvee?
 confirm_warnallf=Is u seker dat u al die boodskappe in die vouer <b>$1</b> wil uitvee?
+
 search_title=Soek Resultate
 search_ecannot=U mag nie die e-pos van hierdie gebruiker deursoek nie
 search_ematch=U moet teks invoer om mee te stem.
@@ -305,16 +318,19 @@ search_nolatest=Alles in die lêergids
 search_latestnum=Slegs nuutste
 search_elatest=Ontbrekende of ongeldige aantal boodskappe om te soek
 search_withstatus=, met status $1
+
 folder_inbox=posbus
 folder_sent=Gestuurde pos
 folder_drafts=Drafts
 folder_trash=asblik
+
 detach_err=Kon nie lêer verwyder nie
 detach_edir=Geen lêer of gids om in te voer nie
 detach_eopen=Kon nie $1 oopmaak nie : $2
 detach_ewrite=Kon nie aan $1 skryf nie : $2
 detach_title=Maak lêer los
 detach_ok=Aanhegsel aan die lêer aan die serverkant $1 ($2) geskryf.
+
 sform_title=Gevorderde soektog
 sform_header=Gevorderde e-posopsies
 sform_andmode=Kriteria-modus
@@ -339,6 +355,7 @@ sform_headers=enige kop
 sform_allmsg=hele boodskap
 sform_size=boodskapgrootte
 sform_return=gevorderde soekvorm
+
 find_enone=Geen gebruikers wat ooreenstem met u soektog is gevind nie
 find_title=Soek Resultate
 find_results=Gebruikers wat ooreenstem met soek na $1 ..
@@ -351,6 +368,7 @@ find_incount=e-pos
 find_sentcount=gestuur
 find_fcount=dopgehou
 find_in=$1 in $2
+
 acl_none=Geen
 acl_same=Gebruiker met dieselfde naam
 acl_all=Almal
@@ -376,12 +394,15 @@ acl_usersu=Met UID binne bereik
 acl_sec=Sluit sekondêre groepe in?
 acl_dir=Kan e-poslêers in die gids lees
 acl_dirauto=Besluit outomaties (oral waar alle gebruikers sigbaar is, nêrens anders nie)
+
 log_delmail=$1 boodskappe van $2 uitgevee
 log_movemail=$1 boodskappe van $2 na $3 geskuif
 log_copymail=$1 boodskappe van $2 na $3 gekopieër
 log_send=Stuur e-pos na $1
 log_read=Lees pos vir $1
+
 emodified=Hierdie lêergids is gewysig sedert dit laas gekyk is! Keer terug na die <a href='$1'>e-poslys</a> en probeer weer.
+
 razor_title=Rapporteer as strooipos
 razor_title2=Verslagdoening as Ham
 razor_report=Rapporteer hierdie boodskap aan Razor en ander SpamAssassin-spam databasisse.
@@ -391,14 +412,18 @@ razor_done=.. klaar
 razor_err=.. misluk! Kyk na die foutboodskap hierbo om die rede.
 razor_moved=.. klaar, en geskuif na map $1.
 razor_deleted=.. klaar, en ook boodskap uitgevee.
+
 ham_title=Verslagdoening as Ham
 ham_report=Rapporteer hierdie boodskap as nie-strooipos by Razor en ander SpamAssassin-databasisse.
+
 black_title=Afsender ontken
 black_done=Het die e-posadres $1 bygevoeg tot SpamAssassin se lys van ontken adresse.
 black_already=Die e-posadres $1 is reeds op SpamAssassin se lys van ontken adresse.
+
 white_title=Laat die sender toe
 white_done=Het die e-posadres $1 by die toegelate adreslys van SpamAssassin gevoeg.
 white_already=Die e-posadres $1 is reeds op die toegelate adreslys van SpamAssassin.
+
 ldap_emod=Perl-module ontbreek $1 wat nodig is om aan LDAP te koppel
 ldap_econn=Kon nie aan LDAP-bediener $1 poort $2 koppel nie
 ldap_elogin=Kon nie bind aan LDAP-bediener $1 as $2 : $3 
@@ -406,12 +431,15 @@ ldap_ehost=Geen LDAP-bediener is in die module-opstelling gestel nie
 ldap_eport=Geen geldige LDAP-bedienerspoort is in die module-opstelling gestel nie
 ldap_euser=Geen LDAP-aanmelding is in die module-opstelling gestel nie
 ldap_ebase=Geen LDAP-basis-DN is in die module-opstelling gestel nie
+
 delall_title=Vee alle pos uit
 delall_rusure=Is u seker dat u alle e-pos vanaf $1 wil uitvee? $2 boodskappe van altesaam $3 sal vir ewig uitgevee word.
 delall_ok=Vee nou uit
+
 slide_title=Aangehegte prente
 slide_prev=vorige
 slide_next=volgende
+
 left_mail=pos
 left_search=Soek:
 left_folders=Bestuur dopgehou

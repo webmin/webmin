@@ -38,6 +38,7 @@ index_restartdesc=Nhấn vào nút này để kích hoạt cấu hình Squid hi�
 index_iptables=Thiết lập chuyển hướng cổng
 index_squid=Máy chủ Proxy mực
 index_manual=Chỉnh sửa tập tin cấu hình
+
 manual_title=Chỉnh sửa tập tin cấu hình
 manual_file=Chọn một tập tin cấu hình để chỉnh sửa:
 manual_change=Thay đổi
@@ -45,6 +46,7 @@ manual_editing=Sử dụng hộp văn bản bên dưới để chỉnh sửa th�
 manual_err=Không thể lưu tập tin cấu hình
 manual_efile=Tên tệp cấu hình không hợp lệ!
 manual_ecannot=Bạn không được phép chỉnh sửa tập tin cấu hình theo cách thủ công
+
 buttsave=Tiết kiệm
 buttdel=Xóa bỏ
 buttcreat=Tạo nên
@@ -54,6 +56,7 @@ default=Mặc định
 none=không ai
 on=Trên
 off=Tắt
+
 acl_header1=Tạo ACL
 acl_header2=Chỉnh sửa ACL
 acl_name=Tên ACL
@@ -109,6 +112,7 @@ acl_file=Lưu trữ giá trị ACL trong tệp
 acl_nofile=Cấu hình mực
 acl_infile=Tập tin riêng biệt
 acl_keep=Chỉ cần sử dụng nội dung hiện có của tập tin?
+
 aclsave_failsave=Không thể lưu ACL
 aclsave_faildel=Không thể xóa ACL
 aclsave_epr=ACL này đang được sử dụng bởi một hạn chế proxy
@@ -128,11 +132,13 @@ aclsave_eemin=Kết thúc không hợp lệ
 aclsave_efile=Bạn không được phép ghi vào tệp ACL '$1'
 aclsave_enofile=Không có tên tệp ACL được nhập
 aclsave_ealready=Tệp ACL đã tồn tại
+
 cach_ecannot=Bạn không được phép truy cập số liệu thống kê của trình quản lý bộ đệm
 cach_err=lỗi
 cach_nfound=Chương trình quản lý bộ đệm Squid <tt>$1</tt> không tìm thấy trên hệ thống của bạn. Có thể cấu hình mô-đun <a href=/config.cgi?$2></a> của bạn không chính xác.
 cach_return=chỉ số mực
 cach_esame=<B>Squid cacheemgr.cgi thực thi</b> được đặt thành chương trình cacheemgr.cgi của Webmin, không phải chương trình do Squid cung cấp.
+
 chown_header=Thay đổi quyền sở hữu
 chown_stop=Ngừng mực. ..
 chown_done=.. Làm xong
@@ -140,6 +146,7 @@ chown_chown=Thay đổi quyền sở hữu. ..
 chown_restart=Bắt đầu lại mực. ..
 chown_failrestart=Không thể khởi động lại Mực ..
 chown_return=chỉ số mực
+
 clear_ecannot=Bạn không được phép xóa và xây dựng lại bộ đệm
 clear_header=Xóa và xây dựng lại bộ nhớ cache
 clear_msgclear=Bạn có chắc chắn muốn xóa và xây dựng lại bộ đệm Squid của mình không? Thao tác này sẽ xóa <b>tất cả</b> các tệp bạn đã lưu trong bộ nhớ cache và khởi động lại máy chủ Squid của bạn.
@@ -153,6 +160,7 @@ clear_failrestart=Không thể khởi động lại Mực ..
 clear_return=chỉ số mực
 clear_url=Xóa một URL khỏi bộ đệm:
 clear_ok=Tẩy
+
 eacl_ecannot=Bạn không được phép chỉnh sửa kiểm soát truy cập
 eacl_header=Kiểm soát truy cập
 eacl_acls=Danh sách kiểm soát truy cập
@@ -169,8 +177,10 @@ eacl_nopr=Không có giới hạn proxy được xác định.
 eacl_addpr=Thêm hạn chế proxy.
 eacl_noprr=Không có giới hạn trả lời proxy được xác định
 eacl_addprr=Thêm hạn chế trả lời proxy.
+
 eacl_replypr=Trả lời hạn chế proxy
 eacl_replynopr=Không có giới hạn proxy trả lời được xác định
+
 eacl_icpr=Hạn chế ICP
 eacl_noicpr=Không có giới hạn ICP được xác định
 eacl_addicpr=Thêm hạn chế ICP.
@@ -187,6 +197,7 @@ eacl_eclass=Không có lớp chương trình nào được chọn
 eacl_cname=Tên loại
 eacl_file=Từ tệp $1
 eacl_hdelete=Xóa các hạn chế đã chọn
+
 eadm_ecannot=Bạn không được phép chỉnh sửa tùy chọn quản trị
 eadm_header=Tùy chọn quản trị
 eadm_aao=Tùy chọn hành chính và thông báo
@@ -213,6 +224,7 @@ eadm_caf=Cache thông báo tập tin
 eadm_annp=Thời gian thông báo
 eadm_buttsave=Tiết kiệm
 eadm_return=chỉ số mực
+
 eauth_ecannot=Bạn không được phép chỉnh sửa xác thực proxy
 eauth_header=Xác thực proxy
 eauth_aopt=Tùy chọn xác thực
@@ -226,6 +238,7 @@ eauth_pusers=Người dùng proxy
 eauth_nopusers=Không có người dùng proxy hiện đang được xác định.
 eauth_addpuser=Thêm một người dùng proxy mới.
 eauth_return=chỉ số mực
+
 ec_ecannot=Bạn không được phép chỉnh sửa tùy chọn bộ đệm
 ec_header=Tùy chọn bộ nhớ cache
 ec_cro=Tùy chọn bộ nhớ đệm và yêu cầu
@@ -280,6 +293,7 @@ ec_return=chỉ số mực
 ec_maxreplies=Kích thước cơ thể trả lời tối đa
 ec_maxrn=Kích thước (kB)
 ec_maxracls=Đối với các yêu cầu phù hợp với ACL (để trống cho tất cả)
+
 ech_header=Tạo máy chủ lưu trữ
 ech_header1=Chỉnh sửa máy chủ lưu trữ
 ech_cho=Tùy chọn máy chủ lưu trữ
@@ -324,6 +338,7 @@ ech_origin=Coi máy chủ là máy chủ gốc?
 ech_force=Buộc máy chủ: tiêu đề để
 ech_same=Không thay đổi
 ech_ssl=Kết nối bằng SSL?
+
 eicp_ecannot=Bạn không được phép chỉnh sửa bộ nhớ cache khác
 eicp_header=Bộ nhớ cache khác
 eicp_opcs=Máy chủ bộ đệm proxy khác
@@ -361,6 +376,7 @@ eicp_ttype=Kiểu
 eicp_tpport=Cổng giao thức
 eicp_tiport=Cổng ICP
 eicp_delete=Xóa bộ nhớ cache đã chọn
+
 elogs_ecannot=Bạn không được phép chỉnh sửa đăng nhập
 elogs_header=Ghi nhật ký
 elogs_lalo=Tùy chọn đăng nhập và đăng nhập
@@ -394,6 +410,7 @@ elogs_notset=Không được thiết lập
 elogs_dont=Đừng đăng nhập
 elogs_file=Tệp $1
 elogs_squid=Tiêu chuẩn mực
+
 emem_ecannot=Bạn không được phép chỉnh sửa sử dụng bộ nhớ
 emem_dheader=Sử dụng bộ nhớ và đĩa
 emem_header=Sử dụng bộ nhớ
@@ -419,6 +436,7 @@ emem_lfuda=Ít sử dụng nhất
 emem_hlru=Heap ít được sử dụng nhất
 emem_return=chỉ số mực
 emem_mrp=Chính sách thay thế bộ nhớ
+
 emisc_ecannot=Bạn không được phép chỉnh sửa các tùy chọn linh tinh
 emisc_header=sự lựa chọn hỗn hợp
 emisc_mo=sự lựa chọn hỗn hợp
@@ -455,6 +473,7 @@ emisc_wccpin=Địa chỉ đến WCCP
 emisc_wccpout=Địa chỉ gửi đi WCCP
 emisc_none=không ai
 emisc_virtual=Ảo
+
 eports_ecannot=Bạn không được phép chỉnh sửa cổng và mạng
 eports_header=Cổng và mạng
 eports_pano=Tùy chọn cổng và mạng
@@ -480,6 +499,7 @@ eports_unc=Do tắt máy SSL không sạch?
 eports_checkhost=Xác thực tên máy chủ trong URL?
 eports_underscore=Cho phép gạch dưới trong tên máy chủ?
 eports_all=Tất cả
+
 eprogs_ecannot=Bạn không được phép chỉnh sửa các chương trình trợ giúp
 eprogs_header=Chương trình trợ giúp
 eprogs_chpo=Tùy chọn chương trình trợ giúp bộ đệm
@@ -508,6 +528,7 @@ eprogs_ttl=Thời gian bộ đệm xác thực
 eprogs_aittl=Xác thực thời gian bộ đệm IP
 eprogs_realm=Cõi xác thực
 eprogs_return=chỉ số mực
+
 euser_header=Tạo người dùng proxy
 euser_header1=Chỉnh sửa người dùng Proxy
 euser_pud=Chi tiết người dùng proxy
@@ -516,6 +537,7 @@ euser_p=Mật khẩu
 euser_u1=Không thay đổi
 euser_e=Đã bật?
 euser_return=danh sách người dùng
+
 ahttp_header=Tạo hạn chế proxy
 ahttp_header1=Chỉnh sửa hạn chế proxy
 ahttp_pr=Hạn chế proxy
@@ -525,10 +547,13 @@ ahttp_d=Phủ nhận
 ahttp_ma=Kết hợp ACL
 ahttp_dma=Không khớp với ACL
 ahttp_return=Danh sách ACL
+
 ahttp_replyheader=Tạo hạn chế trả lời proxy
 ahttp_replyheader1=Chỉnh sửa hạn chế trả lời Proxy
 ahttp_replypr=Hạn chế trả lời proxy
+
 sahttp_ftspr=Không thể lưu hạn chế trả lời proxy
+
 aicp_header=Tạo hạn chế ICP
 aicp_header1=Chỉnh sửa hạn chế ICP
 aicp_ir=Hạn chế ICP
@@ -538,7 +563,9 @@ aicp_d=Phủ nhận
 aicp_ma=Kết hợp ACL
 aicp_dma=Không khớp với ACL
 aicp_return=Danh sách ACL
+
 saicp_ftsir=Không thể lưu hạn chế ICP
+
 icache_ecannot=Bạn không được phép khởi tạo bộ đệm
 icache_ftic=Không thể khởi tạo bộ đệm
 icache_ymcautrsa=Bạn phải chọn người dùng để chạy Squid như
@@ -546,7 +573,9 @@ icache_euser=Người dùng chạy Squid như không tồn tại
 icache_itscwtc=Khởi tạo bộ đệm Squid bằng lệnh <tt>$1</tt> ..
 icache_return=chỉ số mực
 icache_title=Khởi tạo bộ nhớ cache
+
 restart_ftrs=Không thể cấu hình lại con mực
+
 sadmin_ftsao=Không thể lưu tùy chọn quản trị
 sadmin_header=Thay đổi quyền sở hữu
 sadmin_msg1=Bạn đã thay đổi người dùng hoặc nhóm mà Squid chạy. Để điều này có hiệu lực chính xác, quyền sở hữu của tất cả các tệp nhật ký và bộ đệm nên được cập nhật và Squid bắt đầu lại.
@@ -556,10 +585,12 @@ sadmin_inavea='$1' không phải là địa chỉ email hợp lệ
 sadmin_inavh='$1' không phải là tên máy chủ hợp lệ
 sadmin_inavap='$1' không phải là khoảng thời gian thông báo hợp lệ
 sadmin_inavp='$1' không phải là một cổng hợp lệ
+
 sauth_ftsao=Không thể lưu tùy chọn xác thực
 sauth_iomuf=Tên người dùng không hợp lệ hoặc bị thiếu
 sauth_iomd=Tên miền không hợp lệ hoặc bị thiếu
 sauth_msg1=Phiên bản Squid của bạn chưa được biên dịch với hỗ trợ xác thực proxy
+
 scache_ftsco=Không thể lưu tùy chọn bộ nhớ cache
 scache_emsg0=Bạn phải nhập ít nhất một thư mục bộ đệm
 scache_emsg1=Thư mục bộ đệm '$1' không tồn tại
@@ -577,14 +608,17 @@ scache_emsg12='$1' không phải là kích thước thư mục hợp lệ
 scache_emsg13='$1' không phải là máy chủ hợp lệ
 scache_emsg14='$1' không phải là một cổng hợp lệ
 scache_emaxrs=Kích thước cơ thể tối đa không hợp lệ trong hàng $1
+
 schost_ftsc=Không thể lưu bộ nhớ cache
 schost_emsg1='$1' không phải là tên máy chủ bộ đệm hợp lệ
 schost_emsg2='$1' không phải là cổng proxy hợp lệ
 schost_emsg3='$1' không phải là cổng ICP hợp lệ
 schost_emsg4='$1' không phải là thời gian tồn tại hợp lệ
 schost_emsg5='$1' không phải là trọng số hợp lệ
+
 sicp_ftsco=Không thể lưu tùy chọn bộ nhớ cache
 sicp_emsg1='$1' không phải là thời gian chờ hợp lệ
+
 slogs_ftslo=Không thể lưu tùy chọn đăng nhập
 slogs_emsg1='$1' không phải là tên tệp tuyệt đối
 slogs_emsg2='$1' không phải là tên tệp hợp lệ
@@ -594,20 +628,24 @@ slogs_emsg5='$1' không phải là danh sách tùy chọn gỡ lỗi hợp lệ
 slogs_efname=Tên định dạng không hợp lệ trong hàng $1
 slogs_effmt=Thiếu định dạng nhật ký trong hàng $1
 slogs_eafile=Tệp nhật ký bị thiếu hoặc không hợp lệ trong hàng $1
+
 smem_ftsmo=Không thể lưu tùy chọn bộ nhớ
 smem_emsg1='$1' không phải là kích thước bộ đệm hợp lệ
 smem_emsg2='$1' không phải là nhãn hiệu nước cao hợp lệ
 smem_emsg3='$1' không phải là nhãn hiệu nước thấp hợp lệ
 smem_emsg4='$1' không phải là kích thước đối tượng hợp lệ
+
 smisc_ftso=Không thể lưu tùy chọn
 smisc_emsg1='$1' không phải là số lần quay hợp lệ
 smisc_emsg2='$1' không phải là miền hợp lệ
 smisc_emsg3='$1' không phải là proxy hợp lệ
 smisc_emsg4='$1' không phải là số bước nhảy hợp lệ
+
 sport_ftspo=Không thể lưu tùy chọn cổng
 sport_emsg1='$1' không phải là số cổng hợp lệ
 sport_emsg2='$1' không phải là địa chỉ hợp lệ
 sport_emsg3='$1' không phải là kích thước bộ đệm hợp lệ
+
 sprog_ftshpo=Không thể lưu tùy chọn chương trình trợ giúp
 sprog_emsg1=Thiếu tùy chọn FTP
 sprog_emsg2='$1' không phải là chương trình hợp lệ
@@ -620,19 +658,23 @@ sprog_emsg8='$1' không phải là địa chỉ IP hợp lệ
 sprog_emsg9='$1' không phải là thời gian bộ nhớ cache hợp lệ
 sprog_emsg10='$1' không phải là một TTL hợp lệ
 sprog_echildren=Số lượng chương trình phải là một số lớn hơn 0
+
 suser_ftsu=Không thể lưu người dùng
 suser_emsg1=Tên người dùng không hợp lệ hoặc bị thiếu
 suser_etaken=tên đăng nhập đã được sử dụng
+
 start_ftsq=Không thể bắt đầu Mực
 start_ecannot=Bạn không được phép bắt đầu Mực
 stop_ftsq=Không thể dừng mực
 stop_ecannot=Bạn không được phép dừng mực
+
 calamaris_ecannot=Bạn không được phép truy cập phân tích nhật ký Calamaris
 calamaris_title=Phân tích Nhật ký Calamaris
 calamaris_last=Giới hạn phân tích đối với các dòng nhật ký $1 cuối cùng ..
 calamaris_eprog=Không tìm thấy calamaris thực thi $1. Có thể nó không được cài đặt trên hệ thống của bạn hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
 calamaris_elogs=Thư mục nhật ký $1 không chứa bất kỳ tệp <tt>access.log</tt> nào. Có thể mực chưa được chạy hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
 calamaris_gen=Báo cáo được tạo trên $1
+
 lib_emsg1='$1' không phải là địa chỉ IP hợp lệ
 lib_seconds=giây
 lib_minutes=phút
@@ -680,6 +722,7 @@ lib_aclmuip=IP người dùng tối đa
 lib_buttac=Áp dụng các thay đổi
 lib_buttss=Ngừng mực
 lib_buttss1=Bắt đầu câu mực
+
 log_ports=Thay đổi cổng và tùy chọn mạng
 log_icp=Thay đổi tùy chọn bộ đệm khác
 log_mem=Thay đổi tùy chọn sử dụng bộ nhớ
@@ -734,25 +777,31 @@ log_pools_delete=Đã xóa $1 nhóm trì hoãn
 log_delay_create=Đã thêm ACL cho nhóm độ trễ $1
 log_delay_modify=ACL đã sửa đổi cho nhóm độ trễ $1
 log_delay_delete=Đã xóa ACL cho nhóm trì hoãn $1
+
 log_delay_move=Đã chuyển ACL cho nhóm trì hoãn $1
 log_refresh_create=Đã tạo quy tắc làm mới cho $1
 log_refresh_modify=Quy tắc làm mới được sửa đổi cho $1
 log_refresh_delete=Đã xóa quy tắc làm mới cho $1
+
 log_refresh_move=Đã di chuyển quy tắc làm mới cho $1
 log_refreshes_delete=Đã xóa $1 quy tắc làm mới
 log_iptables=Cập nhật thiết lập chuyển hướng cổng
 log_purge=Đã xóa URL $1 khỏi bộ đệm
 log_cachemgr=Thay đổi mật khẩu quản lý bộ đệm
+
 acl_root=Thư mục gốc cho các tệp ACL
 acl_sections=Trang cấu hình được phép
 acl_start=Có thể bắt đầu và dừng mực?
 acl_restart=Có thể áp dụng cấu hình Squid?
+
 always_create=Tạo Fetch trực tiếp
 always_edit=Chỉnh sửa tìm nạp trực tiếp
 always_header=Tìm nạp trực tiếp các yêu cầu phù hợp với ACL
+
 never_create=Tạo Fetch gián tiếp
 never_edit=Chỉnh sửa tìm nạp gián tiếp
 never_header=Không bao giờ tìm nạp trực tiếp các yêu cầu phù hợp với ACL
+
 delay_title=Hồ bơi trễ
 delay_add=Thêm một nhóm trì hoãn mới.
 delay_num=Con số
@@ -802,11 +851,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=MB
+
 dpool_err=Không thể xóa nhóm độ trễ
 dpool_enone=Không được chọn
+
 apool_header=Thêm độ trễ bể bơi ACL
 apool_header1=Chỉnh sửa độ trễ bể bơi ACL
 apool_pr=Trì hoãn hồ bơi ACL
+
 authparam_title=Chương trình xác thực
 authparam_header=Tùy chọn chương trình xác thực bên ngoài
 authparam_ttl=Thời gian để lưu mật khẩu cho
@@ -849,6 +901,7 @@ ext_ecache=Kích thước bộ đệm bị thiếu hoặc không hợp lệ
 ext_eprogram=Một đường dẫn chương trình không hợp lệ đã được nhập
 ext_eclash=Một loại chương trình bên ngoài có cùng tên đã tồn tại
 ext_eused=Chương trình bên ngoài này được sử dụng bởi ACL
+
 header_title=Kiểm soát truy cập tiêu đề
 header_none=Không có quy tắc kiểm soát truy cập tiêu đề đã được xác định.
 header_name=Tiêu đề HTTP
@@ -868,6 +921,7 @@ header_err=Không thể lưu quy tắc kiểm soát truy cập tiêu đề
 header_ename=Tên tiêu đề bị thiếu hoặc không hợp lệ
 header_request_header_access=Yêu cầu tiêu đề
 header_reply_header_access=Trả lời tiêu đề
+
 refresh_title=Làm mới quy tắc
 refresh_none=Không có quy tắc làm mới đã được xác định.
 refresh_re=Biểu hiện thông thường
@@ -894,6 +948,7 @@ refresh_epc=Thiếu hoặc không hợp lệ phần trăm tuổi
 refresh_delete=Xóa quy tắc làm mới được chọn
 drefresh_err=Không thể xóa quy tắc làm mới
 drefesh_enone=Không được chọn
+
 iptables_title=Thiết lập chuyển hướng cổng
 iptables_inst0=Các lệnh tường lửa IPtables cần thiết để thiết lập chuyển hướng cổng dường như không được cài đặt trên hệ thống của bạn. Xem mô-đun <a href='$1'>Tường lửa Linux</a> để biết thêm chi tiết.
 iptables_inst1=Mô-đun <a href='$1'>Tường lửa Linux</a> dường như không được thiết lập đầy đủ trên hệ thống của bạn. Mô-đun này sử dụng cái đó để thiết lập chuyển hướng cổng Frox.
@@ -908,18 +963,23 @@ iptables_enet=Địa chỉ mạng bị thiếu hoặc không hợp lệ (phải 
 iptables_eiface=Giao diện mạng bị thiếu hoặc không hợp lệ
 iptables_eapply=Áp dụng tường lửa không thành công : $1
 iptables_eapply2=Áp dụng Squid không thành công : $1
+
 syslog_access=Nhật ký truy cập mực
 syslog_cache=Nhật ký lưu trữ mực
 syslog_store=Nhật ký cửa hàng mực
+
 purge_err=Không thể xóa URL khỏi bộ nhớ cache
 purge_title=Xóa URL đã lưu
 purge_doing=Xóa URL $1 ..
 purge_done=.. làm xong.
 purge_failed=.. thất bại! Xem thông báo lỗi ở trên để biết lý do tại sao.
+
 dhttp_err=Không thể xóa các hạn chế proxy
 dhttp_enone=Không được chọn
+
 dicp_err=Không thể xóa các hạn chế ICP
 dicp_enone=Không được chọn
+
 cachemgr_title=Mật khẩu quản lý bộ đệm
 cachemgr_ecannot=Bạn không được phép chỉnh sửa mật khẩu quản lý bộ đệm
 cachemgr_def1=Không cần mật khẩu

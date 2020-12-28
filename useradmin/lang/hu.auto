@@ -49,11 +49,13 @@ index_mass=Törölje a kijelölt felhasználókat
 index_mass2=Letiltva a kiválasztott
 index_mass3=Engedélyezze a Kiválasztott lehetőséget
 index_gmass=Törölje a kijelölt csoportokat
+
 search_title=Keresési eredmények
 search_notfound=Nem található megfelelő felhasználó
 search_found=Talált $1 megfelelő felhasználót.
 search_gnotfound=Nem található megfelelő csoport
 search_gfound=Talált $1 megfelelő csoportot.
+
 uedit_title=Felhasználó szerkesztése
 uedit_title2=Felhasználó létrehozása
 uedit_details=Felhasználói adatok
@@ -131,6 +133,7 @@ uedit_uid_calc=Számított
 uedit_disabled=A bejelentkezés ideiglenesen le van tiltva
 uedit_sys=Rendszer alapértelmezés
 uedit_clone=Klón felhasználó
+
 usave_err=Nem sikerült menteni a felhasználót
 usave_eedit=Ezt a felhasználót nem szerkesztheti
 usave_ecreate=Nem hozhat létre új felhasználókat
@@ -184,6 +187,7 @@ usave_epasswd_same=A jelszó tartalmaz, vagy megegyezik a felhasználónévvel
 usave_epasswd_mindays=A jelszó kevesebb, mint $1 nappal ezelőtt lett megváltoztatva
 usave_epasswd_cmd=A jelszó érvényesítési parancs sikertelen
 usave_eothers=A felhasználót sikeresen mentettük, de egy másik modulban hiba történt : $1
+
 gedit_title=Csoport szerkesztése
 gedit_title2=Csoport létrehozása
 gedit_details=Csoport részletei
@@ -206,6 +210,7 @@ gedit_selu=Csoportos felhasználók
 gedit_pri=Elsődleges csoport tagjai
 gedit_prinone=Egyik felhasználónak sem ez a csoport az elsődleges
 gedit_clone=Klón csoport
+
 gsave_err=A csoport mentése nem sikerült
 gsave_eedit=Ezt a csoportot nem szerkesztheti
 gsave_ecreate=Nem hozhat létre új csoportokat
@@ -222,6 +227,7 @@ usave_egidused=A $1 csoport már használja a GID $2
 gsave_egidused2=A GID már használatban van
 usave_efromroot=A home könyvtárat nem lehet áthelyezni a /
 usave_etoroot=A home könyvtárat nem helyezheti át a /
+
 logins_title=Rögzített bejelentkezések
 logins_head=A $1 regisztrált bejelentkezései
 logins_from=Bejelentkezés
@@ -234,6 +240,7 @@ logins_none=Nincs rögzített bejelentkezés
 logins_elist=Nem engedélyezi a bejelentkezéseket
 logins_elistu=Nem engedélyezi a (z) '$1' bejelentkezéseinek felsorolását.
 logins_local=Helyi
+
 udel_title=Felhasználó törlése
 udel_err=Nem sikerült a felhasználó törlése
 udel_enum=Érvénytelen felhasználói szám
@@ -256,6 +263,7 @@ udel_del2=Törölje a felhasználói és az otthoni könyvtárat
 udel_others=FIGYELEM! A $1 otthoni könyvtár $2 fájlokat tartalmaz, amelyek a többi felhasználó tulajdonában vannak.
 udel_dothers=Törli a felhasználót más modulokban?
 udel_root=Figyelem! Ha a gyökér felhasználót törli, akkor a jövőben nem biztos, hogy képes kezelni a rendszert.
+
 gdel_title=Csoport törlése
 gdel_err=A csoport törlése nem sikerült
 gdel_eroot=Nem szabad rendszercsoportokat törölni (azokat, amelyek GID-je 10-nél kisebb vagy azzal egyenlő).
@@ -269,6 +277,7 @@ gdel_sure=Biztosan törli a $1 csoportot?
 gdel_del=Csoport törlése
 gdel_dothers=Törli a csoportot más modulokban?
 gdel_other=Törlés más modulokból
+
 many_title=Hozzon létre több felhasználót
 many_desc=Ez az űrlap lehetővé teszi, hogy egyszerre sok felhasználót hozzon létre egy feltöltött vagy helyi szöveges fájlból. A fájl minden sora egy felhasználót határoz meg a következő formátumban:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -292,6 +301,7 @@ many_eshell=Érvénytelen héj a $1 sorban : $2
 many_emkdir=Nem sikerült létrehozni a $1 otthoni könyvtárat : $2
 many_egtaken=A csoport neve már használatban van a $1 sorban : $2
 many_ok=Létrehozott felhasználó $1
+
 acl_uedit=Unix felhasználók, akik szerkeszthetők
 acl_uedit_all=Minden felhasználó
 acl_uedit_none=Nincs felhasználó
@@ -350,6 +360,7 @@ acl_udelete=Törölheti a felhasználókat?
 acl_gdelete=Törölheti a csoportokat?
 acl_urename=Átnevezhetik a felhasználókat?
 acl_grename=Átnevezheti a csoportokat?
+
 log_urename=$1 átnevezett felhasználói név $2
 log_umodify=Módosított felhasználó $1
 log_ucreate=Létrehozott felhasználó $1
@@ -368,6 +379,7 @@ log_ugbatch=Futtatott feltöltött csoport kötegfájl
 log_ugbatch_l=Végrehozott feltöltött csoportos kötegfájl ($1 létrehozva, $2 módosítva, $3 törölve)
 log_delete_users=Törölt $1 felhasználók
 log_delete_groups=Törölt $1 csoportok
+
 batch_title=Futtassa a kötegelt fájlt
 batch_ecannot=A kötegelt fájl űrlap nem használható
 batch_desc=Ez az űrlap lehetővé teszi, hogy sok felhasználót egyszerre hozzon létre, módosíthat vagy törölhet egy feltöltött vagy helyi szöveges fájlból. A fájl minden sora meghatározza az elvégzendő műveletet, az első mezőjétől függően. A sorok formátumai :
@@ -426,12 +438,14 @@ batch_eexpire=Érvénytelen lejárati nap a $1 : $2
 batch_echange=Érvénytelen jelszóváltás napja a $1 : $2 
 batch_instr=Utasítások és kötegelt formátum
 batch_header=Kötegelt felhasználói létrehozási, frissítési és törlési lehetőségek
+
 who_title=Bejelentkezett felhasználók
 who_user=Unix felhasználó
 who_tty=TTY
 who_when=Bejelentkezés:
 who_from=Bejelentkezve
 who_none=Jelenleg nincs bejelentkezve felhasználó.
+
 export_title=Kötegelt fájl exportálása
 export_desc=Ez az űrlap lehetővé teszi egy kötegelt fájl létrehozását, amely a rendszerben elérhető összes felhasználót vagy az összes felhasználót tartalmazza. A fájl felhasználható egy másik rendszer Kötegelt fájl végrehajtása oldalán az exportált felhasználók újbóli létrehozásához, feltételezve, hogy a kiválasztott kötegelt fájl formátumot használja.
 export_header=Kötegelt felhasználói exportálási lehetőségek
@@ -452,6 +466,7 @@ export_done=A $1 felhasználó sikeresen exportálásra került a $2 ($3) fájlb
 export_pft=Kötegelt fájl formátuma
 export_who=Exportálni kívánt felhasználók
 export_ecannot=Nem exportálhat felhasználókat
+
 gexport_title=Csoportok exportálása kötegelt fájlban
 gexport_desc=Ez az űrlap lehetővé teszi egy kötegelt fájl létrehozását, amely a rendszerben elérhető összes csoportot vagy az összeset tartalmazza. A fájl felhasználható egy másik rendszer csoportos kötegelt fájljának végrehajtása lapon az exportált csoportok újbóli létrehozásához.
 gexport_header=Kötegelt csoport exportálási lehetőségei
@@ -460,6 +475,7 @@ gexport_ecannot=Nem szabad csoportokat exportálni
 gexport_err=A csoportos kötegelt fájl exportálása nem sikerült
 gexport_egid=Érvénytelen az első GID a tartományban
 gexport_egid2=Érvénytelen második GID a tartományban
+
 pft_0=Csak a klasszikus <tt>passwd</tt> fájl
 pft_1=BSD <tt>master.passwd</tt> fájl
 pft_2=Szabványos <tt>passwd</tt> és <tt>shadow</tt> fájlok
@@ -467,6 +483,7 @@ pft_3=Unixware <tt>passwd</tt> fájl
 pft_4=AIX <tt>passwd</tt> és <tt>biztonsági</tt> fájlok
 pft_5=OpenServer <tt>passwd</tt> és a rövid <tt>árnyék</tt> fájlok
 pft_6=MacOS NetInfo adatbázis
+
 umass_title=Felhasználók törlése
 umass_err=A felhasználók törlése nem sikerült
 umass_sure=Biztosan törli a $1 kiválasztott felhasználókat? Az otthoni könyvtárak $2 fájlokat tartalmaznak.
@@ -478,6 +495,7 @@ umass_del1=Felhasználók törlése
 umass_del2=Törölje a felhasználókat és az otthoni könyvtárakat
 umass_eroot=Nem szabad törölni a rendszerfelhasználókat (azok, akiknek UID-je legfeljebb 10).
 umass_doing=$1 felhasználó törlése ..
+
 gmass_title=Csoportok törlése
 gmass_err=A csoportok törlése nem sikerült
 gmass_sure=Biztosan törli a kiválasztott $1 csoportokat?
@@ -487,16 +505,19 @@ gmass_del=Csoportok törlése
 gmass_eroot=Nem szabad rendszercsoportokat törölni (azokat, amelyek GID-je 10-nél kisebb vagy azzal egyenlő).
 gmass_doing=$1 csoport törlése ..
 gmass_eprimary=A $1 csoportot nem lehet törölni, mivel ez a $2 felhasználói elsődleges csoport.
+
 dmass_title=Felhasználók letiltása
 dmass_sure=Biztosan le akarja tiltani a $1 kiválasztott felhasználókat? Később újra engedélyezhetők jelszó vagy adat elvesztése nélkül.
 dmass_dis=Felhasználók letiltása
 dmass_pass=A jelszó ideiglenes lezárása ..
 dmass_doing=A $1 felhasználó letiltása ..
 dmass_already=.. már le van tiltva!
+
 emass_title=A felhasználók engedélyezése
 emass_pass=Jelszó feloldása ..
 emass_doing=A (z) $1 felhasználói engedélyezése ..
 emass_already=.. már engedélyezve van!
+
 gbatch_title=A csoportos kötegelt fájl végrehajtása
 gbatch_ecannot=A csoportos kötegelt fájl űrlap nem használható
 gbatch_desc=Ez az űrlap lehetővé teszi, hogy sok csoportot egyszerre hozzon létre, módosítson vagy töröljön egy feltöltött vagy helyi szöveges fájlból. A fájl minden sora meghatározza az elvégzendő műveletet, az első mezőjétől függően. A sorok formátumai :

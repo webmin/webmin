@@ -26,6 +26,7 @@ index_when=Áno, $1
 index_webalizer=Webalizer
 index_enable=Vybratý rozvrh
 index_disable=Vybraté rozvrhnutie
+
 edit_title1=Pridať súbor denníka
 edit_title2=Upravte súbor denníka
 edit_header=Možnosti hlásenia protokolového súboru
@@ -49,12 +50,14 @@ edit_cmode0=Použite globálne možnosti
 edit_cmode1=Vlastné možnosti
 edit_cmode2=Iný konfiguračný súbor ..
 edit_clear=Vymazať súbory denníka po naplánovanej správe?
+
 gen_title=Generovať správu
 gen_header=Spúšťam Webalizer na generovanie prehľadu z $1 ..
 gen_done=.. hotový
 gen_failed=.. Webalizer zlyhal! Podrobnosti nájdete vo výstupe vyššie.
 gen_nothing=.. Webalizer bol dokončený, ale nebola vygenerovaná žiadna správa. Podrobnosti nájdete vo výstupe vyššie.
 gen_view=Zobraziť dokončenú správu.
+
 save_err=Uloženie súboru denníka zlyhalo
 save_efile=Súbor denníka nebol zadaný alebo neexistuje
 save_ecfile=Chýba alebo neexistuje žiadny iný konfiguračný súbor
@@ -64,12 +67,14 @@ save_ewuser=Neexistuje žiadny používateľ Unix s názvom $1
 save_ehost=Chýba alebo je neplatný názov hostiteľa webovej stránky
 save_etitle=Chýba názov prehľadu
 save_ecannot=Môžete generovať prehľady iba pre protokoly pod $1 
+
 view_epath=Neplatný PATH_INFO
 view_efile=Neplatný názov súboru prehľadu
 view_elog=Neplatný súbor denníka
 view_ecannot=Nemáte povolenie zobraziť tento prehľad
 view_eopen=Súbor prehľadu sa nepodarilo otvoriť
 view_title=Pozrieť si správu
+
 global_title=Globálne možnosti webového prehľadávača
 global_title2=Možnosti prehľadu webového prehľadávača
 global_for=Pre súbor denníka $1 
@@ -130,6 +135,7 @@ global_includesite=Klienti nebudú ignorovať
 global_includereferrer=Sprostredkovatelia nebudú ignorovať
 global_includeuser=Používatelia nebudú ignorovať
 global_includeagent=Prehliadače nebudú ignorovať
+
 global_err=Možnosti webového prehľadávača sa nepodarilo uložiť
 global_ereport=Chýba predpona názvu prehľadu
 global_ehost=Chýba alebo je neplatný názov hostiteľa
@@ -139,6 +145,7 @@ global_etable=Chýbajúca alebo neplatná veľkosť tabuľky „$1“
 global_ehistory=Chýba alebo je neplatný názov súboru histórie
 global_ecurrent=Chýba alebo je neplatný názov prírastkového súboru
 global_ecache=Chýba alebo je neplatný názov súboru vyrovnávacej pamäte DNS
+
 log_create_log=Vytvorené prehľady pre $1 
 log_modify_log=Upravené prehľady pre $1 
 log_delete_log=Odstránené prehľady pre $1 
@@ -147,6 +154,7 @@ log_global=Upravené globálne možnosti webového prehľadávača
 log_global2=Upravené možnosti webového prehľadávača pre $1 
 log_enable_logs=Naplánované podávanie správ v protokoloch $1 
 log_disable_logs=Plánované prehľady v protokoloch $1 
+
 acl_view=Môžete zobraziť iba existujúce prehľady?
 acl_global=Môžete upraviť možnosti globálneho webalizátora?
 acl_dir=Povoliť iba prezeranie a úpravu správ pre denníky pod

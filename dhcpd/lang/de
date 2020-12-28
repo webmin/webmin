@@ -64,12 +64,14 @@ index_match1=enthält
 index_match2=entspricht
 index_dhcpd=ISC DHCPd
 index_delete=Lösche ausgewählte
+
 butt_save=Speichern
 butt_eco=Bearbeite Client-Einstellungen
 butt_vco=Zeige Client Optionen
 butt_del=Löschen
 butt_create=Erstellen
 butt_leases=Zeige Vergaben
+
 esub_crheader=Subnetz erstellen
 esub_edheader=Subnetz bearbeiten
 esub_tabhdr=Subnetz-Details
@@ -83,12 +85,14 @@ esub_groups=Gruppen direkt in diesem Subnetz
 esub_pools=Adress Pool für Subnetz
 esub_pool=Pool $1
 esub_poolnone=Keine Adress Pools definiert
+
 esub_pooladd=Füge einen Adress Pool hinzu.
 esub_none=Nichts
 esub_return=Subnetz-Liste
 esub_retshar=Freigegebenes Netzwerk
 esub_desc=Subnetz Beschreibung
 esub_fopeer=Failover Peer
+
 esh_crheader=Freigegebenes Netzwerk erstellen
 esh_eheader=Freigegebenes Netzwerk bearbeiten
 esh_tabhdr=Details des freigegebenen Netzwerks
@@ -99,6 +103,7 @@ esh_subn=Subnetz in diesem freigegebenen Netzwerk
 esh_return=Subnet-Liste
 esh_pools=Adresspools für freigegebenes Netzwerk
 esh_desc=Beschreibung des freigegebenes Netzwerks
+
 ehost_crheader=Host erstellen
 ehost_eheader=Host bearbeiten
 ehost_tabhdr=Hostdetails
@@ -119,6 +124,7 @@ ehost_retgroup=Gruppe
 ehost_retsubn=Subnetz
 ehost_retshar=freigegebenes Netzwerk
 ehost_desc=Host Beschreibung
+
 egroup_crheader=Hostgruppe erstellen
 egroup_eheader=Hostgruppe bearbeiten
 egroup_tblhdr=Gruppendetails
@@ -129,6 +135,7 @@ egroup_return=Hostliste
 egroup_retsubn=Subnetz
 egroup_retshar=freigegebenes Netzwerk
 egroup_desc=Gruppenbeschreibung
+
 default=Standard
 secs=Sek.
 none=Keine
@@ -157,20 +164,24 @@ listl_pc=Prozentsatz
 listl_err=Fehlgeschlagen leases zu löschen
 listl_enone=keine ausgewählt
 listl_refresh=Aktualisiere Liste
+
 restart_errmsg1=Das Neustarten des dhcpd schlug fehl
 restart_errmsg2=Fehler beim Senden des Signals an den Prozess
 start_failstart=Das Starten des dhcpd schlug fehl
 restart_conftext=Zeilen um $1 in $2 :
+
 sgroup_faildel=Das Löschen der Gruppe schlug fehl
 sgroup_failsave=Fehler beim Speichern der Gruppe
 sgroup_invassign=Gruppe zugeordnet zu einem fehlerhaften Abschnitt
 sgroup_echanged=Inhalt der Konfigurationsdatei wurde geändert. Versuchen Sie es erneut.
+
 shost_faildel=Das Löschen des Hosts schlug fehl
 shost_failsave=Das Speichern des Hosts schlug fehl
 shost_invalidhn=ist kein gültiger Hostname
 shost_invalidhwa='$1' ist kein gültige $2 Adresse
 shost_invalidaddr='$1' enthält einen ungültigen Hostname oder IP-Adresse
 shost_invassign=Host zugeordnet zu einem falschen Abschnitt
+
 sopt_failsave=Fehler beim Speichern der Client-Einstellungen
 sopt_invalidip=ist keine gültige IP-Adresse
 sopt_invalidint=ist keine ganze Zahl
@@ -180,10 +191,12 @@ sopt_ednum='$1' ist keine gültige Optionsnummer
 sopt_edtype='$1' ist kein gültiger Optionstyp
 sopt_ecval=Fehlender Wert für benutzerdefinierte Option '$1'
 sopt_ecip=Wert für benutzerdefinierte Option '$1' muss eine IP-Adresse sein
+
 sshared_faildel=Das Löschen des freigegebenen Netzwerks schlug fehl
 sshared_failsave=Das Speichern des freigegebenen Netzwerks schlug fehl
 sshared_invalidsname=Fehlender oder ungültiger Name für freigegebenenes Netzwerk
 sshared_nosubnet=Freigegebenes Netzwerk '$1' enthält kein Subnetz.
+
 ssub_faildel=Das Löschen des Subnetzes schlug fehl
 ssub_failsave=Fehler beim Speichern des Subnetzes
 ssub_invalidsubaddr=ist keine gültige Subnetz-Adresse
@@ -191,6 +204,7 @@ ssub_invalidnmask=ist keine gültige Netzmaske
 ssub_invalidipr=ist kein gültiger IP-Bereich
 ssub_nosubnet=Freigegebenes Netzwerk '$1' enthält nicht ein Subnetz.
 ssub_invalidfopeer=ist kein gültiger failover peer
+
 plib_deflt=Standardvergabezeit
 plib_bfname=Boot-Dateiname
 plib_maxlt=Maximale Vergabezeit
@@ -244,6 +258,7 @@ plib_eexpr=Dieser Abschnitt der DHCP-Konfiguration enthält den Ausdruck Direkti
 plib_auth_subnet=Server ist "authoritative" für dieses Subnetz?
 plib_auth_shared-network=Server ist "authoritative" für dieses freigegebene Subnetz?
 plib_auth_global=Server ist "authoritative" für alle Subnetze?
+
 eopt_header=Client-Einstellungen
 eopt_subtitle=Für Subnet $1
 eopt_returnsub=Subnetz
@@ -289,6 +304,7 @@ eopt_slpa=SLP Verzeichnis Agent IPs
 eopt_slpaips=Nur diese IPs?
 eopt_slps=SLP Service Bereich
 eopt_slpsonly=Nur dieser Bereich?
+
 log_apply=Wende Änderungen an
 log_start=Gestarteter DHCP Server
 log_stop=Gestoppter DHCP Server
@@ -311,6 +327,7 @@ log_options_group=Optionen für Gruppe von $1 Hosts modifiziert
 log_delete_lease=Lease für $1 gelöscht
 log_delete_subnets=$1 Subnetze und freigegebenes Netzwerk gelöscht
 log_delete_hosts=$1 Hosts und Host-Gruppen gelöscht
+
 keys_edit=TSIG-Schlüssel bearbeiten
 keys_create=Erstellte TSIG-Schlüssel
 keys_title=DNS-Schlüssel
@@ -321,12 +338,14 @@ keys_ecannot=Sie haben nicht die Berechtigung, DNS-Schlüssel zu bearbeiten
 keys_err=Fehler beim Abspeichern des DNS-Schlüssels
 keys_ekey='$1' ist keine gültige Schlüssel-ID
 keys_esecret=Fehlende oder ungültige Base-64 kodierte Daten für Schlüssel $1
+
 pool_edit=Editiere Adress Pool
 pool_create=Adress Pool erstellt
 pool_header=Adress Pool Optionen
 pool_allow=Erlaubte Clients
 pool_deny=Clients zum ablehnen
 pool_return=Subnetz
+
 cdel_header=Warnung
 cdel_shared1=freigegebenes Netzwerk
 cdel_shared2=freigegebenes Netzwerk
@@ -344,6 +363,7 @@ cdel_txt=Löschen von $1 '$2' wird außerdem den Inhalt löschen:
 cdel_confirm=Möchten Sie wirklich $1 löschen?
 cdel_eunknown=Unbekannter Fehler
 cdel_return=Host- und Netzwerkliste
+
 eacl_aviol=Zutrittskontrolle Verletzung
 eacl_np=Sie haben keine Rechte um
 eacl_pdh=Lösche Host
@@ -369,6 +389,7 @@ eacl_pdl=Lösche Vergaben
 eacl_psl=Zeige Vergaben
 eacl_pglob=Editiere globale Optionen
 eacl_papply=Neustarten des Dienstes
+
 acl_apply=Kann Änderungen anwenden?
 acl_r_leases=Kann Vergaben einsehen?
 acl_w_leases=Kann leases löschen?
@@ -398,9 +419,11 @@ acl_err=Fehler beim Speichern der ACL
 acl_ernow=Wenn Sie damit Schreibzugriff im globalen ACLs für einige Objekttyp möchten, müssen Sie auch Lesezugriff für diesen Objekttyp ermöglichen.
 acl_normal=Normal
 acl_paranoic=paranoid
+
 iface_title=Netzwerkschnittstelle
 iface_desc=Der DHCP-Server kann nur IP-Adressen zuweisen, die mit dem Netzwerk mit einer unten ausgewählten Schnittstelle verbunden sind. Die Netzwerkschnittstelle für alle definierten Subnetze muss einbezogen werden. Wenn keine ausgewählt ist, wird der DHCP-Server versuchen, ein automatisch zu finden.
 iface_listen=Auf Schnittstelle lauschen
+
 lookup_ehost=Kein Host mit dem Namen, IP-Adresse oder MAC-Adresse $1 existiert
 lookup_ehostname=Kein Hostname, IP-Adresse oder MAC-Adresse eingegeben
 lookup_egroup=Keine Gruppe mit dem Namen oder Domain-Namen $1 existiert
@@ -409,6 +432,7 @@ lookup_esubnet=Kein Subnetz mit der Adresse oder Adresse/Netzmaske $1 existiert
 lookup_esubnetname=Keine Subnetzadresse oder Adresse/Netzmaske eingegeben
 lookup_eshared=Kein freigegebenes Netzwerk mit dem Namen $1 existiert
 lookup_esharedname=Keine freigegebener Netzwerkname eingegeben
+
 zone_key=DNS-Zonen
 index_addzone=Eine neue DNS-Zone hinzufügen.
 index_zone=Zone
@@ -424,16 +448,21 @@ zone_faildel=Fehler beim Löschen der Zone
 zone_failsave=Fehler beim Abspeichern der Zone
 zone_tsigkey=TSIG-Schlüssel
 zone_ecannot=Es ist Ihnen nich erlaubt DNS-Zonen zu editieren
+
 plib_clientupdates=Client-Updates: Dürfen Clients ihre eigenen Einträge ändern?
+
 text_title=dhcpd.conf
 text_editor=Texteditor
 text_return=Hauptmenü
 text_undo=Rückgängig
 text_ecannot=Es ist Ihnen nicht erlaubt die Konfigurationsdatei zu editieren
+
 index_buttetext=Manuell Bearbeiten der Konfiguration
 index_text=Konfigurationsdatei im Texteditor manuell bearbeiten
+
 stop_err=Fehlgeschlagen den DHCP Server zu stoppen
 stop_ekill=Läuft nicht!
+
 sdelete_err=Fehlgeschlagen Subnetze und freigegebene Netzwerke zu löschen
 sdelete_enone=Keine ausgewählt
 sdelete_title=Löscht Subnetze und freigegebene Netzwerke
@@ -441,6 +470,7 @@ sdelete_rusure1=Sind Sie sicher, dass Sie die $1 ausgewählten Subnetze und $2 f
 sdelete_rusure2=Sind Sie sicher, dass Sie die $1 ausgewählten Subnetze löschen möchten? Alle anderen Objekte innerhalb der Subnetze sind auch verloren.
 sdelete_rusure3=Sind Sie sicher, dass Sie die $2 ausgewählten freigegebenen Netzwerken löschen möchten? Alle Subnetze oder andere Objekte innerhalb der Netze werden auch verloren sein.
 sdelete_ok=Lösche jetzt
+
 hdelete_err=Fehlgeschlagen Hosts und Gruppen zu löschen
 hdelete_enone=Keine ausgewählt
 hdelete_title=Lösche Hosts und Gruppen

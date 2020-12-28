@@ -1,7 +1,9 @@
 index_none=您无权更改任何用户的密码。
+
 passwd_expire=强制用户在下次登录时更改密码？
 passwd_others=更改其他模块的密码？
 passwd_ok2=用户 $1的密码已成功更改。
+
 acl_self=始终允许更改自己的密码？
 acl_opt=可选的
 acl_expire=可以强制用户在下次登录时更改密码吗？

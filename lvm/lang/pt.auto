@@ -42,6 +42,7 @@ index_lvused=Espaço usado
 index_lvuse=Usado para
 index_snapof=(Instantâneo de $1)
 index_thin=Conjunto thin LVM para $1 LVs
+
 lv_edit=Editar volume lógico
 lv_edit_snap=Editar instantâneo
 lv_create=Criar volume lógico
@@ -128,6 +129,7 @@ lv_pvfrom=Mover blocos do volume físico
 lv_pvto=Para volume físico
 lv_moveok=Mover blocos
 lv_return=volume lógico
+
 mkfs_title=Criar sistema de arquivos
 mkfs_desc=Este formulário permite criar um novo sistema de arquivos $2 ($1) no volume lógico $3. Todos os dados existentes serão apagados.
 mkfs_header=Novas opções de sistema de arquivos
@@ -135,6 +137,7 @@ mkfs_err=Falha ao criar sistema de arquivos
 mkfs_exec=Executando o comando $1 ..
 mkfs_failed=.. comando falhou!
 mkfs_ok=.. comando concluído.
+
 resize_title=Redimensionar volume lógico
 resize_mesg=O sistema de arquivos $1 neste volume lógico não pode ser redimensionado. Se você redimensionar o volume lógico, deverá recriar o sistema de arquivos, o que apagará todos os dados nele.
 resize_mesg2=O Webmin não sabe que tipo de sistema de arquivos está nesse volume lógico, se houver. Se você redimensionar o volume lógico, deverá recriar o sistema de arquivos, o que apagará todos os dados nele.
@@ -142,8 +145,10 @@ resize_fs=Ocorreu um erro ao redimensionar o sistema de arquivos $1 neste volume
 resize_ok=Redimensionar volume lógico
 resize_emounted=O sistema de arquivos neste volume lógico não pode ser redimensionado enquanto estiver montado
 resize_emounted2=O sistema de arquivos neste volume lógico não pode ser reduzido enquanto está montado
+
 init_title=Ativar LVM
 init_cmd=Executando o comando $1 ..
+
 pv_edit=Editar volume físico
 pv_create=Adicionar volume físico
 pv_vg=No grupo de volumes $1 
@@ -170,6 +175,7 @@ pv_eother=Dispositivo de disco ausente ou inválido
 pv_raid=Dispositivo RAID $1 
 pv_lvs=Alocação por volumes lógicos
 pv_egone=O volume físico não existe mais!
+
 vg_edit=Editar grupo de volumes
 vg_create=Criar grupo de volumes
 vg_name=Nome do grupo de volumes
@@ -188,11 +194,13 @@ vg_deleteok=Excluir agora
 vg_ename=Nome do grupo de volumes ausente ou inválido
 vg_epesize=Tamanho do bloco de alocação ausente ou inválido
 vg_egone=O grupo de volumes não existe mais!
+
 pvmove_err=Falha ao mover o volume lógico
 pvmove_title=Mover volume lógico
 pvmove_start=Movendo o volume lógico $1 de $2 para $3 ..
 pvmove_failed=.. movimento falhou!
 pvmove_done=.. mover completo
+
 thin_title=Criar pool fino
 thin_desc=Um pool fino é um par de LVs que podem ser usados para criar LVs adicionais que podem ser maiores que as extensões disponíveis. O espaço é consumido apenas quando necessário, e não quando os LVs dentro do pool são criados. AVISO - Todos os dados nos LVs selecionados serão perdidos!
 thin_header=Novos detalhes de pool fino
@@ -204,6 +212,7 @@ thin_err=Falha ao criar pool fino
 thin_esame=Ambos os LVs selecionados são os mesmos
 thin_edata=O LV de dados selecionado já está em uso
 thin_emetadata=Os metadados selecionados LV já estão em uso
+
 log_create_vg=Grupo de volumes criado $1 
 log_modify_vg=Grupo de volumes modificado $1 
 log_delete_vg=Grupo de volumes excluído $1 
@@ -216,4 +225,5 @@ log_create_pv=Adicionado volume físico $1 a VG $1
 log_modify_pv=Volume físico modificado $1 em VG $2 
 log_delete_pv=Volume físico removido $1 do VG $2 
 log_resize_pv=Volume físico redimensionado $1 em VG $2 
+
 blocks=blocos

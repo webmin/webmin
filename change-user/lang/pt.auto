@@ -20,6 +20,7 @@ index_d1=$1
 index_dlang=o idioma em que os módulos são exibidos
 index_dtheme=o tema que controla a aparência do Webmin
 index_dpass=a senha usada para fazer login com
+
 change_title=Alterar configurações
 change_user=Modificando o login do Webmin.
 change_done=.. feito
@@ -30,6 +31,7 @@ change_epass2=Novas senhas não combinam
 change_epass=A nova senha não é válida : $1 
 change_eoverlay=Você não pode selecionar uma sobreposição de tema, a menos que um tema da interface do usuário também seja escolhido
 change_eoverlay2=A sobreposição de tema selecionada não é compatível com o tema da interface do usuário escolhido
+
 acl_lang=Pode mudar o idioma?
 acl_theme=Pode mudar de tema?
 acl_pass=Pode alterar a senha (quando definida no Webmin)?

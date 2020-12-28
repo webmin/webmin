@@ -24,8 +24,10 @@ all=Todos
 index_view=Visão ..
 index_viewfile=Exibir arquivo de log:
 index_viewok=Visão
+
 restart_ekill=Falha ao sinalizar o processo syslog $1 : $2 
 restart_ecannot=Você não tem permissão para reiniciar o syslog
+
 start_ecannot=Você não tem permissão para iniciar o syslog
 edit_title=Editar log do sistema
 create_title=Adicionar log do sistema
@@ -56,11 +58,13 @@ edit_tag=Somente para programa
 edit_return=detalhes do registro
 edit_ecannot=Você não tem permissão para editar configurações de log
 edit_ecannot2=Você não tem permissão para editar este log
+
 view_title=Exibir arquivo de log
 view_header=Últimas $1 linhas de $2 
 view_empty=O arquivo de log está vazio
 view_refresh=Atualizar
 view_filter=Mostrar apenas linhas com o texto $1 
+
 save_err=Falha ao salvar o log
 save_efile='$1' não é um nome de arquivo válido : $2 
 save_epipe='$1' não é um canal nomeado válido
@@ -80,11 +84,13 @@ save_ecannot5=Você não tem permissão para modificar este log
 save_ecannot6=Você não tem permissão para visualizar logs arbitrários
 save_ecannot7=Você não tem permissão para visualizar este log extra
 save_emissing=Arquivo de log ausente para exibição
+
 log_modify=Log modificado para $1 
 log_create=Registro adicionado a $1 
 log_delete=Registro excluído para $1 
 log_apply=Alterações aplicadas
 log_start=Servidor de registro iniciado
+
 desc_sysmesg=Mensagens do sistema
 desc_mail=Registro de e-mail
 desc_auth=Log de autenticação
@@ -93,6 +99,7 @@ desc_news=NNTP News Log
 desc_uucp=Log UUCP
 desc_debug=Mensagens de depuração
 desc_cron=Cron Job Log
+
 acl_noedit=Só pode visualizar logs?
 acl_any=Pode visualizar qualquer arquivo como um log?
 acl_logs=Pode visualizar e configurar arquivos de log

@@ -39,7 +39,9 @@ index_thost=ホスト名
 index_tdesc=説明
 index_tver=バージョン
 index_ttype=OSタイプ
+
 this_server=このサーバー
+
 add_title=サーバーを追加する
 add_msg=$1を追加します ..
 add_gmsg=グループ $1にサーバーを追加します ..
@@ -49,6 +51,7 @@ add_echeck=サーバー $1にはWebmin構成モジュールがありません
 add_echeck2=サーバー $1にはWebmin Usersモジュールがありません
 add_eversion=サーバー $1はWebminバージョン $2以上を実行していません。
 add_ok=$2モジュール、 $3テーマ、 $4ユーザー、 $5グループを含む $1を追加しました。
+
 refresh_title=モジュールとユーザーリストの更新
 refresh_header=すべてのサーバーからのモジュール、ユーザー、およびグループのリストの再要求 ..
 refresh_header4=$2のメンバーからのモジュール、ユーザー、およびグループリストの再要求 ..
@@ -64,6 +67,7 @@ refresh_g2=$1グループを削除しました。
 refresh_done=..完了
 refresh_del=サーバーリストから $1を削除しました
 refresh_failed=$1の更新に失敗しました： $2
+
 host_title=管理対象サーバー
 host_header=管理されたWebminサーバーの詳細
 host_name=ホスト名
@@ -81,6 +85,7 @@ host_header_u=Webminユーザー
 host_header_g=Webminグループ
 host_return=サーバーの詳細
 host_version2=バージョン
+
 edit_title_mod=モジュールを編集
 edit_title_theme=テーマを編集
 edit_header_mod=$1からのWebminモジュールの詳細
@@ -104,6 +109,7 @@ edit_acl=のACLを編集
 edit_uacl=$2のユーザー $1
 edit_gacl=$2のグループ $1
 edit_config=設定を編集
+
 install_err=モジュールのインストールに失敗しました
 install_title=モジュールをインストール
 install_elocal=ローカルファイルが指定されていません
@@ -124,6 +130,7 @@ do_failed=$1にインストールできませんでした： $2
 do_success_mod=$1にモジュール $2をインストールしました
 do_success_theme=テーマ $2を $1にインストールしました
 do_done=..完了
+
 delete_err=モジュール $1を削除できませんでした
 delete_epack=モジュール $1は存在しません
 delete_title=モジュールを削除
@@ -141,6 +148,7 @@ delete_edepends=モジュール $1はそれに依存しています。
 delete_egone=モジュールはもう存在しません
 delete_esuccess=$1から正常に削除されました： $2
 delete_acls=ユーザーから削除し、アクセス制御設定をリセットしますか？
+
 user_title1=Webminユーザーを作成する
 user_header1=新しいWebminユーザーの詳細
 user_name=ユーザー名
@@ -200,11 +208,13 @@ user_all=&lt;すべてのホスト&gt;
 user_donthave=&lt;それを持たないホスト&gt;
 user_have=&lt;それを持っているホスト&gt;
 user_ofgroup=$1のメンバー
+
 udelete_title=ユーザーを削除
 udelete_doing=すべてのホストからユーザー $1を削除しています ..
 udelete_success=$1から正常に削除されました
 udelete_failed=$1から削除できませんでした： $2
 udelete_done=..完了
+
 group_title1=グループを作る
 group_header1=新しいWebminグループの詳細
 group_name=グループ名
@@ -232,6 +242,7 @@ group_failed2=$1のグループを更新できませんでした： $2
 group_return=グループの詳細
 group_nomems=メンバーなし
 group_servers=作成するサーバー
+
 gdelete_title=グループを削除
 gdelete_desc=グループ $1とそのメンバーユーザー $2をすべてのホストから削除してもよろしいですか？
 gdelete_ok=グループを削除
@@ -240,6 +251,7 @@ gdelete_success=$1から正常に削除されました
 gdelete_failed=$1から削除できませんでした： $2
 gdelete_done=..完了
 gdelete_esub=このグループにはサブグループ $1があるため、削除できません。
+
 acl_title=モジュールのアクセス制御
 acl_title2=$3の $2のユーザー $1の場合
 acl_title3=$3の $2のグループ $1
@@ -258,6 +270,7 @@ acl_doing2=$2で $1のアクセス制御を設定しています ..
 acl_success=$1にアクセス制御を正常に設定しました
 acl_failed=$1でアクセス制御を設定できませんでした： $2
 acl_done=..完了
+
 sync_title=サーバーの同期
 sync_desc=このフォームを使用すると、クラスター内のすべてのサーバーでアカウントを同期させるために、現在それらを持たないサーバー上でWebminユーザーおよびグループを作成できます。
 sync_hosts=同期するサーバー
@@ -281,6 +294,7 @@ sync_gcreate=Webminグループ $1を追加しています ..
 sync_acl=$1のACLファイルをコピーしています ..
 sync_test=何が行われるかだけを表示しますか？
 sync_restart=Webminを再起動します ..
+
 upgrade_title=Webminをアップグレードする
 upgrade_header=すべてのホストでのWebminのアップグレード ..
 upgrade_header2=$1でWebminをアップグレードしています ..
@@ -299,6 +313,7 @@ upgrade_failed=$1にインストールできませんでした： $2
 upgrade_done=..完了
 upgrade_efast=アップグレードできるのは、高速RPCモードを使用するサーバーのみです
 upgrade_ereconn=アップグレード後にWebminに再接続できませんでした！ ： $1
+
 update_title=更新モジュール
 update_header=すべてのホストのモジュールの更新 ..
 update_header5=$2のモジュールを更新しています ..
@@ -306,6 +321,7 @@ update_header4=$2のメンバーのモジュールを更新しています ..
 update_onhost=$1の更新の結果 ..
 update_failed=..更新に失敗しました： $1
 update_none=..更新は見つかりませんでした。
+
 config_title=モジュール構成の編集
 config_enone=モジュールがインストールされているホストは選択されていません
 config_ethis=モジュールはこのサーバーにインストールされていません

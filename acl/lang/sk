@@ -22,6 +22,7 @@ index_unix=Nastaviť overovanie Unixových užívateľov
 index_sessions=Prezri si záznamy prihlásení
 index_rbac=Nastaviť RBAC
 index_delete=Odstrániť vybrané
+
 edit_title=Upraviť Webmin užívateľa
 edit_title2=Vytvoriť Webmin užívateľa
 edit_rights=Práva prístupu Webmin užívateľa
@@ -72,6 +73,7 @@ edit_alldays=Každý deň
 edit_seldays=Iba vybrané dni...
 edit_hours=Povolený čas v dni
 edit_allhours=Kedykoľvek
+
 save_err=Zlyhalo uloženie užívateľa
 save_ename='$1' nie je platné meno užívateľa
 save_enamewebmin=Užívateľ 'webmin' je vyhradený pre vnútorné použitie
@@ -93,10 +95,12 @@ save_enet='$1' nie je správna adresa siete
 save_emask='$1' nie je platná sieťová maska
 save_eip='$1' nie je kompletná IP alebo sieťová adresa
 save_ehost=IP adresu pre '$1' nebolo možné nájsť
+
 delete_err=Zlyhalo zmazanie užívateľa
 delete_eself=Nemôžete zmazať seba
 delete_ecannot=Nemáte oprávnenie zmazať užívateľov
 delete_euser=Nemáte oprávnenie na zmazanie tohoto užívateľa
+
 cert_title=Vyžadovať certifikát
 cert_issue=Vydať certifikát
 cert_header=Podrobnosti nového certifikátu
@@ -115,12 +119,14 @@ cert_install=Inštaluj Váš certifikát do prehliadača
 cert_ekey=Nový SSL kľúč nebol odoslaný Vaším prehliadačom - možnože nepodporuje SSL klientské certifikáty.
 cert_eca=Zlyhalo vytvorenie certifikačnej autority : $1
 cert_already=Upozornenie - certifikát $1 je už používaný­.
+
 acl_title=Modul kontroly prístupu
 acl_title2=Pre $1 v $2
 acl_title3=Pre skupinu $1 v $2
 acl_options=možnosti nastavenia prístupu $1
 acl_config=Môže meniť nastavenia modulov?
 acl_reset=Nastaviť na plný prístup
+
 acl_uall=Všetci užívatelia
 acl_uthis=Tento užívateľ
 acl_usel=Vybraní užívatelia ..
@@ -157,6 +163,7 @@ acl_cats=Môže meniť kategorizáciu?
 acl_theme=Môže meniť svoj vzhľad Webminu?
 acl_ips=Môže zmeniť IP prístupové práva?
 acl_switch=Môže sa prihlásiť ako iný užívateľ?
+
 log_modify=Zaznamenávať zmeny Webmin užívateľa $1
 log_rename=Zaznamenávať premenovanie Webmin užívateľa $1 na $2
 log_create=Zaznamenávať vytváranie Webmin užívateľa $1
@@ -172,12 +179,14 @@ log_delete_g=Zaznamenávať zmazanie Webmin skupiny $1
 log_switch=Príhlásený ako užívateľ $1
 log_delete_users=Odstránených $1 užívateľov Webminu
 log_delete_groups=Odstránených $1 skupín Webminu
+
 gedit_ecannot=Nemáte oprávnenie na úpravy skupín
 gedit_title=Upraviť Webmin skupinu
 gedit_title2=Vytvoriť Webmin skupinu
 gedit_group=Meno skupiny
 gedit_rights=Prístupové práva Webmin skupiny
 gedit_modules=Členské moduly
+
 gdelete_err=Zlyhalo zmazanie skupiny
 gdelete_ecannot=Nemáte oprávnenie na zmazanie skupiny
 gdelete_euser=Nemôžete zmazať svoju vlastnú skupinu
@@ -185,10 +194,12 @@ gdelete_esub=Skupiny s podskupinami nemôžu byť zmazané
 gdelete_title=Vymazať skupinu
 gdelete_desc=Ste si skutočne istí, že chcete zmazať skupinu $1 a jej členov $2 ?
 gdelete_ok=Vymazať skupinu
+
 gsave_err=Zlyhalo uloženie skupiny
 gsave_ename=Chybné alebo chýbajúce meno skupiny
 gsave_enamewebmin=Skupina "webmin" je rezervovaná pre vnútorné použitie
 gsave_edup=Meno skupiny je už použité
+
 convert_title=Konvertuj užívateľov
 convert_ecannot=Nemáte oprávnenie na konverziu Unixových užívateľov
 convert_nogroups=Neboli definované žiadne Webmin skupiny. Musí byť nadefinovaná aspoň jedna skupina pred konverziou aby mohli byť prebrané práva pre skonvertovaných užívateľov.
@@ -212,6 +223,7 @@ convert_exists=$1 už existuje
 convert_invalid=$1 nie je platné meno Webmin užívateľa
 convert_added=pridávam $1
 convert_msg=Konvertujem Unixových užívateľov...
+
 sync_title=Synchronizácia s Unixovými užívateľmi
 sync_desc=Tento formulár umožňuje nastaviť automatickú synchronizáciu medzi Unixovými užívateľmi vytvorených cez Webmin a užívateľmi v tomto module.
 sync_nogroups=Neboli definované žiadne Webmin skupiny. Minimálne jedna skupina musí byť vytvorená pre priradenie prístupových práv pre vytváraných užívateľov.
@@ -221,6 +233,7 @@ sync_delete=Zmazať Webmin užívateľa vždy keď je Unixový užívateľ zmaza
 sync_group=Priradiť nových užívateľov k Webmin skupine
 sync_unix=Zadať heslo pre nových užívateľov pre Unixové overovanie.
 sync_ecannot=Nemáte oprávnenie na nastavenie synchronizácie užívateľov.
+
 unix_title=Overovanie Unixových užívateľov
 unix_desc=Táto stránka umožňuje nastaviť Webmin na kontrolu prihlasovanie systémových užívateľov.
 unix_def=Povoliť iba Webmin užívateľom prihlásenie
@@ -238,21 +251,26 @@ unix_euser="$1" nie je platné meno užívateľa
 unix_egroup="$1" nie je platné meno skupiny
 unix_shells=Odmietnuť Unixových užívateľov, ktorých shell nie je v súbore
 unix_eshells=Chýbajúci alebo neexistujúci súbor shell
+
 sessions_title=Terajšie prihlásené spojenia
 sessions_id=ID spojenia
 sessions_user=Užívateľ Webminu
 sessions_login=Prihlásený o
 sessions_host=IP adresa
 sessions_lview=Prezri si záznamy..
+
 hide_title=Skryť nepoužívané moduly
 hide_desc=Nasledujúce moduly budú odstránené z prístupového zoznamu pre $1 pretože ich servre niesú nainštalované na Vašom systéme ..
 hide_ok=Skryť moduly teraz
 hide_none=Nie je čo skryť - $1 nemá prístup k žiadnemu modulu, ktorého servre nie sú nainštalované na Vašom systéme.
 hide_desc2=Upozornenie - moduly sa neobjavia po inštalácii príslušných serverov. Budete im musieť ručne priradiť prístupové práva.
 hide_clone=(Skopírovať $1)
+
 switch_euser=Nemôžete sa prihlásiť ako tento užívateľ
 switch_eold=Nenašiel som existujúce spojenie!
+
 rbac_title=Nastaviť RBAC
+
 gdeletes_err=Odstránenie skupín zlyhalo
 gdeletes_title=Odstránenie skupín
 gdeletes_users=Vybrané skupiny: $1

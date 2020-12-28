@@ -10,6 +10,7 @@ index_return=naredbe
 index_cmd=Naredba
 index_desc=Opis
 index_ed=Uredi..
+
 edit_title=Uredi Naredbu
 create_title=Kreiraj Naredbu
 edit_ecannot=Nije vam dopušteno uređivati nardbe
@@ -47,6 +48,7 @@ edit_secs=sekunde
 edit_clear=Ukloniti varijable okruženja?
 edit_servers=Pokreni na Webmin poslužiteljima
 edit_this=ovaj poslužitelj
+
 save_err=Neuspjelo spremanje naredbe
 save_ecannot=Nije Vam dozvoljeno uređivati naredbe
 save_ecmd=Nije unešena naredba
@@ -56,6 +58,7 @@ save_euser=Nepostojeći ili neisspravan korisnik
 save_eorder=Nalog na glavnoj stranici mora biti broj
 save_etimeout=Nepostojeće ili neispravno maksimalno vrijeme čekanja
 save_eusermin=Naredbe koje se izvršavaju na drugim serverima ne mogu biti pokrenute iz Usermin-a
+
 run_err=Neuspjelo izvršavanje naredbe
 run_ecannot=Nije vam dopušteno pokretanje ove naredbe
 run_euser=Nepostojeći ili neispravan korisnik
@@ -69,6 +72,7 @@ run_noout=Nije generiran izlaz
 run_ecmduser=Korisnik '$1' za pokretanje ove naredbe ne postoji
 run_eopt=Odabrana neispravna opcija
 run_timeout=Naredba prekinuta nakon $1 drugog vremena zaustavljanja.
+
 log_modify=Izmijeni naredbu $1
 log_create=Kreiraj nardbu $1
 log_delete=Izbriši naredbu $1
@@ -77,11 +81,13 @@ log_modify_edit=Izmijeni dokument editor $1
 log_create_edit=Kreiraj dokument editor $1
 log_delete_edit=Izbriši dokument editor $1
 log_save_edit=Spremi dokument $1
+
 acl_cmds=Naredbe koje ovaj korisnik može pokretati
 acl_call=Sve naredbe
 acl_csel=Odabrano..
 acl_cexcept=Svi prihvatiti odabrano..
 acl_edit=Ne možete kreirati i uređivati naredbe?
+
 file_ecannot=Nije Vam dozvoljeno uređivati dokumente
 fcreate_title=Kreiraj Dokument Editor
 fedit_title=Uredi Dokument Editor
@@ -104,14 +110,17 @@ file_egroup=Nedostaje ili je neispravan naziv grupe
 file_eperms=Nedostaje ili je neispravni oktalno dopuštenje
 file_envs=Zamijeni varijable okruženja u nazivu dokumenta?
 file_id=ID editora
+
 view_err=Neuspjelo uređivanje dokumenta
 view_ecannot=Nije Vam dopušteno uređivati ovaj dokument
 view_title=Uredi Dokument
 view_efile=Upisivanje u $1 nije uspjelo : $2 
+
 form_ecannot=Nije Vam dopušteno pokretanje ove naredbe
 form_title=Izvrši Naredbu
 form_exec=Izvrši
 form_edit=Uredi
+
 sql_title1=Kreiraj SQL Naredbu
 sql_title2=Uredi SQL Naredbu
 sql_header=Detalji SQL naredbe
@@ -127,6 +136,7 @@ sql_err=Neuspjelo spremanje SQL naredbe
 sql_esql=Nije unešen SQL
 sql_ehost=Nepostojeći ili neispravan poslužiteljski host baze podataka
 sql_edb=Nepostojeći ili neispravan naziv baze podataka
+
 srun_title=Izvrši SQl Naredbu
 srun_err=Neuspjelo izvršavanje SQL naredbe
 srun_edriver=Ne mogu učitati DBI pokretački program

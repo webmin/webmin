@@ -21,6 +21,7 @@ index_mailfromnone=Predefinito (<tt>root</tt>)
 index_program=Comando da eseguire quando vengono rilevati problemi
 index_programnone=Non eseguirne
 index_monitor=Monitoraggio abilitato?
+
 linear=Lineare (concatenata)
 raid0=RAID0 (a strisce)
 raid1=RAID1 (con mirroring)
@@ -29,6 +30,7 @@ raid5=RAID5 (parità distribuita)
 raid6=RAID6 (doppia parità distribuita)
 raid10=RAID10 (a strisce e con mirroring)
 blocks=blocchi
+
 create_title=Crea dispositivo RAID
 create_header=Opzioni del dispositivo RAID
 create_device=File del dispositivo
@@ -62,6 +64,7 @@ create_o2_layout=2 copie offset
 create_n3_layout=3 copie vicine
 create_f3_layout=3 copie lontane
 create_o3_layout=3 copie offset
+
 view_title=Dispositivo RAID
 view_header=Opzioni del dispositivo RAID
 view_device=File del dispositivo
@@ -117,6 +120,7 @@ view_mountmsg=Immettere una directory e fare clic su questo pulsante per acceder
 view_mountmsg2=Fare clic su questo pulsante per utilizzare questo dispositivo RAID per la memoria virtuale sul proprio sistema.
 view_blocks=$1 blocchi
 view_sparegroup=Gruppo di riserva
+
 mkfs_title=Crea filesystem
 mkfs_header2=Questo modulo consente di creare un nuovo filesystem $2 su $1. <b>Tutti</b> i dati esistenti verranno cancellati!
 mkfs_options=Nuove opzioni del filesystem Linux
@@ -124,6 +128,7 @@ mkfs_err=Impossibile creare il file system
 mkfs_exec=Esecuzione del comando $1 ..
 mkfs_failed=.. comando fallito!
 mkfs_ok=.. comando completato.
+
 emkraid=<tt>mkraid</tt> non riuscito : $1 
 eraidstop=<tt>raidstop</tt> non riuscito : $1 
 eraidstart=<tt>raidstart</tt> non riuscito : $1 
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=Creato $1 dispositivo RAID $2 
 log_stop=Dispositivo RAID disattivato $1 
 log_start=Dispositivo RAID attivato $1 
@@ -147,14 +153,17 @@ log_grow=Dispositivo RAID sviluppato da $1 a un totale di $2 dischi
 log_convert_to_raid6=Convertito il dispositivo RAID5 $1 in un dispositivo RAID6
 log_convert_to_raid5=Convertito il dispositivo RAID6 $1 in un dispositivo RAID5
 log_notif=Opzioni di notifica dei problemi RAID aggiornate
+
 notif_err=Impossibile salvare le opzioni di notifica del problema RAID
 notif_emailaddr=Indirizzo di notifica mancante o non valido
 notif_emailfrom=Indirizzo da mancante o non valido
 notif_eprogram=Programma mancante o inesistente da eseguire
+
 delete_title=Elimina array RAID
 delete_rusure=Sei sicuro di voler eliminare l'array RAID $1, che utilizza $2 di spazio su disco?
 delete_ok=Sì, cancellalo
 delete_eidx=Nessun array RAID selezionato!
+
 remove_title=Rimuovere la partizione dall'array RAID
 remove_rusure=Sei sicuro di voler rimuovere la partizione $2 dell'array RAID $1 ?
 remove_ok=Sì, rimuovilo

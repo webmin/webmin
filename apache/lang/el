@@ -57,6 +57,7 @@ index_fmode1=Virtual servers file $1
 index_fmode1d=New file under virtual servers directory $1
 index_fmode2=Επιλεγμένο αρχείο..
 index_delete=Διαγραφή Επιλεγμένων Διακομιστών
+
 cvirt_ecannot=You are not allowed to create a virtual server
 cvirt_err=Failed to create virtual server
 cvirt_eaddr1=No address entered
@@ -70,6 +71,7 @@ cvirt_eroot4=No User defined in the Apache configuration
 cvirt_etaken=A virtual server with the same name and port already exists
 cvirt_efile=Failed to write to $1 : $2
 cvirt_emissing=The new virtual server was added to $1, but this file is not used by Apache. Check the <a href='$2'>module configuration</a> and make sure the 'File or directory to add virtual servers to' is correct.
+
 etype=You are not allowed to edit options of this type
 efailed=Failed to save $1
 apache_apply=Apply Changes
@@ -79,6 +81,7 @@ auth_return=access control
 default_serv=default server
 bytes=bytes
 eafter=Configuration verification failed : $1 Changes have not been saved.
+
 global_ecannot=You are not allowed to edit global options
 global_mime=Global MIME types list
 global_mimedesc=Click on a MIME type from the list below to edit it, or use the link at the bottom of the page to add a new type to the list.
@@ -86,6 +89,7 @@ global_type=Type
 global_ext=Extensions
 global_add=Add a new MIME type.
 global_return=MIME types
+
 mime_ecannot=You are not allowed to edit mime types
 mime_edit=Edit MIME Type
 mime_add=Add MIME Type
@@ -94,6 +98,7 @@ mime_type=MIME Type
 mime_ext=Extensions
 mime_err=Failed to save MIME type
 mime_etype='$1' is not a valid MIME type
+
 virt_ecannot=Δεν μπορείτε να επεξεργαστείτε αυτόν τον εικονικό διακομιστή
 virt_title=Επιλογές Εικονικού Διακομιστή
 virt_header=Για $1
@@ -119,6 +124,7 @@ virt_path=Path
 virt_return=server index
 virt_euser=You are not allowed to change the user or group for this virtual server.
 virt_header2=$1 for $2
+
 vserv_title=Virtual Server Configuration
 vserv_virtualmin=This Apache virtual host belongs to the Virtualmin server <tt>$1</tt>, so the address, port, base directory and hostname cannot be changed here.
 vserv_ecannot=You cannot edit this virtual server's address
@@ -138,10 +144,12 @@ vserv_eport='$1' is not a valid port
 vserv_eroot='$1' is not a valid document root
 vserv_ename='$1' is not a valid server name
 vserv_eaddrs=No virtual server addresses entered
+
 show_title=Directives
 show_edit=Edit Apache directive:
 show_these=Manually edit directives
 show_ok=Edit
+
 manual_configs=Edit Config Files
 manual_title=Edit Directives
 manual_header=Use the text box below to manually edit the Apache directives in $1 that apply to this virtual server, directory or files.
@@ -151,6 +159,7 @@ manual_efile=Invalid Apache config file
 manual_etest=Configuration file error detected : $1
 manual_editfile=Edit config file:
 manual_switch=Edit
+
 dir_title=Per-Directory Options
 dir_proxyall=All proxy requests
 dir_header=For $1 on $2
@@ -167,6 +176,7 @@ dir_re=Match regexp
 dir_path=Path
 dir_return=directory index
 dir_header2=$1 for $2
+
 type_0=Διεργασίες και Όρια
 type_1=Δικτύωση και Διευθύνσεις
 type_2=Πρόσθετα Apache
@@ -188,6 +198,7 @@ type_17=Αυτόματοι Εικονικοί Διακομιστές
 type_18=Φίλτρα
 type_19=Γλώσσες
 type_20=Χάρτες Εικόνων
+
 htaccess_title=Per-Directory Options Files
 htaccess_ecannot=You cannot edit htaccess files
 htaccess_file=Existing options files
@@ -203,6 +214,7 @@ htaccess_edelete=You are not allowed to delete this options file
 htaccess_eempty=No options file directory entered
 htaccess_eabsolute=Options file directory must be an absolute path
 htaccess_err=Failed to create options file
+
 htindex_ecannot=You are not allowed to edit this options file
 htindex_title=Per-Directory Options File
 htindex_delete=Delete File
@@ -218,12 +230,14 @@ htindex_path=Path
 htindex_header=For $1
 htindex_header2=$1 for options file $2
 htindex_return=options file index
+
 htfile_title=Per-File Options
 htfile_header=For $1 in $2
 htfile_show=Show Directives
 htfile_edit=Edit Directives
 htfile_apply=Options apply to ..
 htfile_header2=$1 for $2
+
 reconfig_title=Re-Configure Known Modules
 reconfig_ecannot=You are not allowed to reconfigure apache
 reconfig_ever=Failed to get the version of Apache server executable $1. Check your <a href='$2'>module configuration</a> to make sure this is the correct path.
@@ -231,11 +245,13 @@ reconfig_desc1=Your Apache configuration has changed, or has not yet been examin
 reconfig_desc2=Below is a list of all Apache modules supported by Webmin, with those currently installed selected. If you are using dynamically loaded modules then you may need to select those that are dynamically loaded.
 reconfig_desc3=If you are unsure which modules are supported by Apache on your system, just Configure as Webmin can normally work out the supported modules automatically.
 reconfig_ok=Configure
+
 defines_title=Edit Defined Parameters
 defines_ecannot=You are not allowed to edit httpd defines
 defines_desc=When Apache is started, parameters can be passed to it with the <tt>-D</tt> command line option. Because these parameters can affect which directives are used in your config files, Webmin needs to know which ones are passed to Apache when it is started up. Enter the parameters used on your system into the text field on the right.
 defines_config=Note that the following defined parameters are already known : $1
 defines_list=Defined parameters
+
 authu_ecannot='$1' is not an allowed users text file
 authu_title=User List
 authu_header=In file $1
@@ -257,6 +273,7 @@ authu_sync=The options below allow you to configure Webmin to automatically add,
 authu_screate=Add a user when a Unix user is added
 authu_sdelete=Delete the user when a Unix user is deleted
 authu_smodify=Change the user when a Unix user is changed
+
 authg_ecannot='$1' is not an allowed groups text file
 authg_title=Group List
 authg_header=In file $1
@@ -274,22 +291,26 @@ authg_err=Failed to save group
 authg_euser=No group name entered
 authg_euser2=Group name cannot contain a :
 authg_edup=A group called '$1' already exists
+
 stop_err=Failed to stop apache
 stop_ecannot=You are not allowed to stop apache
 stop_epid=Failed to open PID file $1
 stop_epid2=Invalid PID file $1
 stop_esig=Failed to send SIGTERM to process $1
+
 start_err=Failed to start apache
 start_ecannot=You are not allowed to start apache
 start_ecmd=$1 failed : $2
 start_eunknown=Unknown reason
 start_eafter=Apache does not appear to be running
+
 restart_err=Failed to apply changes
 restart_epid=Failed to open PID file $1
 restart_epid2=Invalid PID file $1
 restart_esig=Failed to send SIGHUP to process $1
 restart_eunknown=Unknown reason
 restart_ecannot=You are not allowed to apply changes
+
 acl_virts=Virtual servers this user can edit
 acl_vall=All servers
 acl_vsel=Selected..
@@ -312,6 +333,7 @@ acl_dirs=Apache directives available<br><font size=-1>(Subject to types limit ab
 acl_dirs0=All
 acl_dirs1=Only listed ..
 acl_dirs2=All except listed ..
+
 core_maxconc=Maximum concurrent requests
 core_maxkeep=Maximum keepalives per connection
 core_maxreq=Maximum requests per server process
@@ -497,10 +519,12 @@ core_infilter=Apply input filters for all files
 core_outfilter=Apply output filters for all files
 core_defchar=Character set for documents
 core_edefchar=Missing or invalid character set for documents
+
 mod_negotiation_cache=Cache content-negotiated documents?
 mod_negotiation_pri=Language priority for multi-views
 mod_negotiation_def=Default
 mod_negotiation_epri=Missing language priorities
+
 mod_cgi_logname=CGI Script log
 mod_cgi_none=None
 mod_cgi_elogname=Invalid CGI script log file
@@ -510,6 +534,7 @@ mod_cgi_elogsize=CGI log size must be an integer
 mod_cgi_post=Maximum logged post data size
 mod_cgi_epost=Post data size must be an integer
 mod_cgi_eunder=CGI script log is not under the allowed directory
+
 mod_alias_from=From
 mod_alias_to=To
 mod_alias_status=Status
@@ -533,6 +558,7 @@ mod_alias_cgi2=CGI directory alias
 mod_alias_rcgi=Regexp CGI directory aliases
 mod_alias_rcgi2=regexp CGI directory alias
 mod_alias_estatus='$1' is not a valid status
+
 mod_proxy_proxy=Act as proxy server?
 mod_proxy_req=Requests
 mod_proxy_forw=Forward to
@@ -603,11 +629,13 @@ mod_proxy_timeout=Proxy request timeout in seconds
 mod_proxy_etimeout=Proxy request timeout must be a number of seconds
 mod_proxy_via=Set Via: headers
 mod_proxy_not=None
+
 mod_log_agent_default=Default
 mod_log_agent_file=File..
 mod_log_agent_program=Program..
 mod_log_agent_log=Browser log file
 mod_log_agent_efile=$1 is not a valid agent log filename
+
 mod_log_config_common=Common Log Format
 mod_log_config_named=Named log formats
 mod_log_config_nick=Nickname
@@ -626,6 +654,7 @@ mod_log_config_enofilprog=Missing log filename or program
 mod_log_config_efilprog='$1' is not an allowed log filename or program
 mod_log_config_eifset='If set' option cannot be used with the default log format
 mod_log_config_edir=Directory for log file '$1' does not exist
+
 mod_log_referer_default=Default
 mod_log_referer_file=File..
 mod_log_referer_program=Program..
@@ -633,7 +662,9 @@ mod_log_referer_log=Referer log file
 mod_log_referer_nolog=Don't log references from
 mod_log_referer_elog=$1 is not a valid referer log filename
 mod_log_referer_edir=referer log is not under the allowed directory
+
 mod_status_msg=Display extended status information
+
 mod_mime_ext=Extensions
 mod_mime_xtype=Extra MIME types
 mod_mime_mtype=MIME type
@@ -666,6 +697,7 @@ mod_mime_outfilter=Output filters
 mod_mime_infilter=Input filters
 mod_mime_filters=Filters to apply
 mod_mime_efext=No extensions given for filter(s) $1
+
 mod_setenvif_header=Header
 mod_setenvif_match=Match
 mod_setenvif_case=Match case
@@ -676,11 +708,13 @@ mod_setenvif_eheader=Invalid request header '$1'
 mod_setenvif_eregex=Invalid regular expression '$1'
 mod_setenvif_evar=Invalid variable name '$1'
 mod_setenvif_clear=Clear
+
 mod_userdir_default=Default
 mod_userdir_all=All users accessible
 mod_userdir_except=All users except
 mod_userdir_dir=User WWW directory
 mod_userdir_edir=You are not allowed to use the specified user WWW directory
+
 mod_imap_action=Action on incorrect use of imagemaps
 mod_imap_default=Default
 mod_imap_godefurl=Go to default URL
@@ -700,8 +734,10 @@ mod_imap_refurl=Referring URL
 mod_imap_url=URL...
 mod_imap_defbase=Default base for imagemaps
 mod_imap_eurl='$1' is not a valid URL
+
 mod_speling_autocorr=Automatically correct misspelled URLs?
 mod_speling_default=Default
+
 mod_actions_mime=Handler / MIME type
 mod_actions_cgiurl=CGI script URL
 mod_actions_mimecgi=Handler or MIME type CGI actions
@@ -711,10 +747,13 @@ mod_actions_httpcgi=HTTP method CGI actions
 mod_actions_emime='$1' is not a valid handler or MIME type
 mod_actions_ecgi='$1' is not a valid CGI script
 mod_actions_enometh=No method chosen for CGI script '$1'
+
 mod_include_incl=Process includes on files with execute bit?
 mod_include_set=Yes and set last-modified date
 mod_include_default=Default
+
 mod_dir_txt=Directory index files
+
 mod_autoindex_default=Default
 mod_autoindex_asc=Ascending
 mod_autoindex_descend=Descending
@@ -723,6 +762,7 @@ mod_autoindex_date=Date
 mod_autoindex_size=Size
 mod_autoindex_desc=Description
 mod_autoindex_sort=Sort directory index by
+
 browsermatch_regexp=Browser regex
 browsermatch_case=Match case?
 browsermatch_var=Set variable
@@ -730,6 +770,7 @@ browsermatch_value=Value
 browsermatch_txt=Variables set based on browser type
 browsermatch_evar=Invalid variable name '$1'
 browsermatch_clear=Clear
+
 autoindex_fname=Filename
 autoindex_mime=MIME type
 autoindex_enc=Encoding
@@ -783,9 +824,11 @@ autoindex_sicon=Show file icons
 autoindex_srules=Show &lt;hr&gt; lines
 autoindex_track=Include ETags in header
 autoindex_version=Sort by version strings
+
 mod_mime_magic_file=MIME magic numbers file
 mod_mime_magic_none=None
 mod_mime_magic_efile=Invalid MIME magic numbers filename
+
 mod_env_var=Variable
 mod_env_value=Value
 mod_env_pass=Pass through
@@ -796,6 +839,7 @@ mod_env_passall=Pass all environment variables to CGIs
 mod_env_default=Default
 mod_env_evar='$1' is not a valid variable name
 mod_env_evalue='$1' is not a valid variable value
+
 mod_access_order=Access checking order:
 mod_access_denyallow=Deny then allow
 mod_access_allowdeny=Allow then deny
@@ -818,6 +862,7 @@ mod_access_epip='$1' is not a valid partial IP address
 mod_access_emask='$1' is not a valid network/netmask pair
 mod_access_ecidr='$1' is not a valid network/CIDR pair
 mod_access_evar='$1' is not a valid variable name
+
 mod_auth_ufile=User text file
 mod_auth_uedit=Edit users
 mod_auth_gfile=Group text file
@@ -828,6 +873,7 @@ mod_auth_eudir=User text file is not under the allowed directory
 mod_auth_egdir=Group text file is not under the allowed directory
 mod_auth_eufile=Invalid user text file name
 mod_auth_egfile=Invalid group text file name
+
 mod_auth_dbm_ufile=User DBM file
 mod_auth_dbm_gfile=Group DBM file
 mod_auth_dbm_pass=Pass failures to next module?
@@ -838,6 +884,7 @@ mod_auth_dbm_egfile=Invalid group DBM file name
 mod_auth_dbm_type=DBM database type
 mod_auth_dbm_gtype=DBM group database type
 mod_auth_dbm_default=Default DBM format
+
 mod_cern_meta_process=Process header metafiles
 mod_cern_meta_dir=Subdirectory for header metafiles
 mod_cern_meta_default=Default
@@ -845,6 +892,7 @@ mod_cern_meta_edir=Invalid metafile subdirectory name
 mod_cern_meta_suffix=File suffix for header metafiles
 mod_cern_meta_default2=Default
 mod_cern_meta_esuffix=Invalid metafile suffix
+
 mod_ssl_enable=Enable SSL?
 mod_ssl_proto=SSL protocols
 mod_ssl_cfile=Certificate/private key file
@@ -872,6 +920,7 @@ mod_ssl_passsc=Execute script $1
 mod_ssl_epassph=No SSL password entered
 mod_ssl_epasssc=Missing or invalid SSL password script
 mod_ssl_ecerton=When SSL is enabled, a certificate file must be selected
+
 mod_apachessl_notssl=Deny SSL access
 mod_apachessl_forcessl=Force SSL/notSSL access?
 mod_apachessl_capath=Path to directory with certificates of the Certification Authorities in
@@ -904,6 +953,7 @@ mod_apachessl_nov2=Disable SSL version 2
 mod_apachessl_fake=Simulates user basic authentication logons, using the certificate name
 mod_apachessl_cdnfile=File against the client DN is checked
 mod_apachessl_ecdnfile=Missing File against the client DN is checked
+
 log_global=Changed global $1 options
 log_virtc=Created server $1
 log_virts=Reconfigured server $1
@@ -944,8 +994,10 @@ log_stop=Stopped webserver
 log_apply=Applied changes
 log_manual=Manually edited configuration file $1
 log_virts_delete=Deleted $1 virtual servers
+
 search_title=Find Servers
 search_notfound=No matching virtual servers found
+
 mod_php_value=PHP Configuration Values
 mod_php_flag=PHP Configuration Flags
 mod_php_admin_value=PHP Admin Configuration Values
@@ -954,6 +1006,7 @@ mod_php_name_header=Setting
 mod_php_value_header=Value
 mod_php_ename='$1' is an invalid name
 mod_php_evalue='$1' is an invalid value for $2
+
 mod_vhost_alias_root=Automatic virtual host root
 mod_vhost_alias_ip=Use IP address instead of hostname?
 mod_vhost_alias_none=None
@@ -961,12 +1014,14 @@ mod_vhost_alias_script=Automatic virtual host cgi-bin
 mod_vhost_alias_eroot=Missing or invalid virtual host root
 mod_vhost_alias_eroot2=Virtual host root directory is not allowed
 mod_vhost_alias_escript=Missing or invalid virtual host cgi-bin
+
 worker_minspare=Minimum spare threads
 worker_maxspare=Maximum spare threads
 worker_eminspare=Minimum spare threads must be an integer
 worker_emaxspare=Maximum spare threads must be an integer
 worker_threads=Threads per child process
 worker_ethreads=Number of threads per child process must be an integer
+
 perchild_sthreads=Initial threads per child process
 perchild_esthreads=Number of threads per child process must be an integer
 perchild_numservers=Number of child processes
@@ -982,6 +1037,7 @@ perchild_gid=GID
 perchild_enum=Process number must be a non-zero integer
 perchild_euid=UID must be an integer
 perchild_egid=GID must be an integer
+
 cache_enable=Active?
 cache_type=Cache store
 cache_disk=Disk
@@ -1002,12 +1058,14 @@ cache_eminos=Minimum object size to cache must be a number of bytes
 cache_emaxos=Maximum object size to cache must be a number of bytes
 cache_maxoc=Maximum objects to cache in memory
 cache_emaxoc=Number of objects to cache in memory must be an integer
+
 suexec_su=Εκτέλεση προγραμμάτων CGI ως
 suexec_none=User from global configuration
 suexec_user=Unix user
 suexec_group=and group
 suexec_euser=Missing or invalid user to run CGI programs as
 suexec_egroup=Missing or invalid group to run CGI programs as
+
 filter_name=Όνομα
 filter_intype=Input MIME type
 filter_outtype=Output MIME type
@@ -1017,11 +1075,13 @@ filter_in=Input Filter Definitions
 filter_out=Output Filter Definitions
 filter_ename=Invalid filter name '$1'
 filter_ecmd=Missing command for filter '$1'
+
 cdir_err=Failed to create per-directory options
 cdir_err2=Failed to save per-directory options
 cdir_epath=Missing path
 cdir_eproxy=Proxy options cannot be created with the match regexp option enabled
 cdir_ecannot=You are not allowed to create per-directory options for the given path
+
 mod_band_enable=Bandwidth limiting enabled?
 mod_band_bw=Limit (bytes/sec)
 mod_band_client=For clients
@@ -1040,24 +1100,30 @@ mod_band_epulse=Missing or invalid interval between limited packets
 mod_band_dir=Bandwidth limiting data files directory
 mod_band_edir=Missing or non-existant bandwidth data files directory
 mod_band_esubdir=Missing required subdirectory <tt>$1</tt> under bandwidth data files directory
+
 mod_dav_active=WebDAV enabled?
 mod_dav_inf=Allowing infinite depth DAV PROPFIND requests?
 mod_dav_timeout=Minimum DAV timeout in seconds
 mod_dav_etimeout=Missing or invalid DAV timeout
+
 delete_err=Failed to delete virtual servers
 delete_enone=None selected
 delete_ecannot=You are not allowed to delete servers
 delete_ecannot2=You are not allowed to edit the server $1
+
 syslog_desc=Καταγραφή σφαλμάτων Apache
+
 mod_auth_basic_pass=Pass basic login failures to next module?
 mod_auth_basic_prov=Basic login user file types
 mod_auth_basic_file=Αρχείο κειμένου
 mod_auth_basic_dbm=Βάση δεδομένων DBM
+
 mod_auth_digest_pass=Pass digest login failures to next module?
 mod_auth_digest_prov=Digest login user file types
 mod_auth_digest_al=Hashing algorithm
 mod_auth_digest_domain=URLs and paths in same domain
 mod_auth_digest_edomain=Missing URLs and paths in same domain
+
 mods_title=Ρύθμιση Πρόσθετων Apache
 mods_mod=Πρόσθετο
 mods_state=Τρέχουσα κατάσταση

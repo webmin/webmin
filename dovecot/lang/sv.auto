@@ -11,11 +11,13 @@ index_boot=Börja vid start?
 index_bootdesc=Ändra den här inställningen för att aktivera eller inaktivera start av Dovecot-servern vid systemstarttid.
 index_return=modulindex
 index_version=Version $1
+
 stop_err=Det gick inte att stoppa Dovecot
 stop_erunning=Kör inte längre
 start_err=Det gick inte att starta Dovecot
 start_eprotos=Inga protokoll valda på sidan <b>Nätverk och protokoll</b>
 apply_err=Det gick inte att tillämpa konfigurationen
+
 net_title=Nätverk och protokoll
 net_header=Alternativ för Dovecot-nätverk och e-postprotokoll
 net_protocols=Servera e-postprotokoll
@@ -42,8 +44,11 @@ net_eimaps_listen=Ogiltig IP-adress för IMAP SSL-anslutningar
 net_epop3s_listen=Ogiltig IP-adress för POP3 SSL-anslutningar
 net_elisten=Ogiltig IP-adress för icke-SSL-anslutningar
 net_essl_listen=Ogiltig IP-adress för SSL-anslutningar
+
 imap_title=IMAP-alternativ
+
 pop3_title=POP3-alternativ
+
 ssl_title=SSL-konfiguration
 ssl_header=Alternativ för IMAP och POP3 SSL-läge
 ssl_key=SSL-nyckelfil
@@ -61,7 +66,9 @@ ssl_ecert=Certifikatfil saknas eller saknas
 ssl_eca=Saknad eller obefintlig CA-certifikatfil
 ssl_eregen=Parameterregenerationsintervall saknas eller ej
 ssl_epass=Inget lösenord för SSL-nyckelfil har angetts
+
 misc_title=Andra alternativ
+
 login_title=Användar- och inloggningsalternativ
 login_header=Alternativ för användarautentisering och inloggning
 login_fuid=Minsta giltiga UID
@@ -117,6 +124,7 @@ login_procs=Maximala inloggningsprocesser
 login_count=Inledande inloggningsprocesser
 login_eprocs=Det maximala antalet inloggningsprocesser saknas eller ogiltig
 login_ecount=Det inledande antalet inloggningsprocesser saknas eller ogiltigt
+
 mail_title=E-postfiler
 mail_header=Postplats och läsningsalternativ
 mail_env=E-postfilens plats
@@ -169,6 +177,7 @@ mail_eindexmode=Indexfilsplatsen kan inte ställas in när postfilsplatsen uppt�
 mail_econtrolmode=Kontrollfilsplatsen kan inte ställas in när postfilsplatsen upptäcks automatiskt
 mail_eindex=Saknad eller ogiltig absolut sökväg för indexfiler
 mail_econtrol=Saknad eller ogiltig absolut sökväg för kontrollfiler
+
 log_net=Ändrade nätverk och protokoll
 log_login=Ändrade användar- och inloggningsalternativ
 log_mail=Ändrade e-postfiler
@@ -179,6 +188,7 @@ log_stop=Stoppad Dovecot-server
 log_bootup=Aktiverad Dovecot vid starttid
 log_bootdown=Inaktiverad Dovecot vid starttid
 log_manual=Manuell redigerad konfigurationsfil $1
+
 manual_title=Redigera konfigurationsfiler
 manual_editsel=Redigera Dovecot-konfigurationsfilen
 manual_err=Det gick inte att spara konfigurationsfilen

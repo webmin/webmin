@@ -51,11 +51,13 @@ index_mass=Ħassar l-Utenti magħżula
 index_mass2=Iddiżattiva l-Għażla
 index_mass3=Attiv magħżula
 index_gmass=Ħassar Gruppi Magħżula
+
 search_title=Riżultati tat-Tiftix
 search_notfound=Ma nstab l-ebda utenti li jaqblu
 search_found=Jinstab $1 utenti li jaqblu.
 search_gnotfound=Ma nstab l-ebda tqabbil ta 'gruppi
 search_gfound=Jinstabu $1 gruppi ta 'tqabbil.
+
 uedit_title=Editja l-Utent
 uedit_title2=Oħloq Utent
 uedit_details=Dettalji tal-Utent
@@ -133,6 +135,7 @@ uedit_uid_calc=Ikkalkulat
 uedit_disabled=Login temporanjament b'diżabilità
 uedit_sys=Sistema awtomatika
 uedit_clone=Utent tal-Klonu
+
 usave_err=Ma rnexxielux isalva l-utent
 usave_eedit=Ma tistax teditja dan l-utent
 usave_ecreate=Ma tistax toħloq utenti ġodda
@@ -186,6 +189,7 @@ usave_epasswd_same=Il-password fiha jew hija l-istess bħal username
 usave_epasswd_mindays=Il-password inbidlet inqas minn $1 jiem ilu
 usave_epasswd_cmd=Il-kmand tal-validazzjoni tal-password ma rnexxiex
 usave_eothers=L-utent ġie ffrankat b'suċċess, iżda seħħ żball f'modulu ieħor : $1
+
 gedit_title=Grupp Editja
 gedit_title2=Oħloq Grupp
 gedit_details=Dettalji tal-Grupp
@@ -208,6 +212,7 @@ gedit_selu=Utenti fi grupp
 gedit_pri=Membri tal-grupp primarju
 gedit_prinone=L-ebda utenti ma għandhom dan il-grupp bħala primarju
 gedit_clone=Grupp Klonu
+
 gsave_err=Ma rnexxielux isalva grupp
 gsave_eedit=Ma tistax teditja dan il-grupp
 gsave_ecreate=Ma tistax toħloq gruppi ġodda
@@ -224,6 +229,7 @@ usave_egidused=Grupp $1 diġà qed juża GID $2
 gsave_egidused2=GID diġà qed jintuża
 usave_efromroot=Ma tistax tiċċaqlaq id-direttorju tad-dar minn /
 usave_etoroot=Ma tistax tiċċaqlaq id-direttorju tad-dar lejn /
+
 logins_title=Logins Rreġistrati
 logins_head=Logins irrekordjati għal $1
 logins_from=Idħol Minn
@@ -236,6 +242,7 @@ logins_none=L-ebda Logins Recorded
 logins_elist=M'għandekx permess li telenka logins
 logins_elistu=M'għandekx permess li telenka logins għal '$1'
 logins_local=Lokali
+
 udel_title=Ħassar l-Utent
 udel_err=Naqset milli tħassar l-utent
 udel_enum=Numru ta 'utent mhux validu
@@ -258,6 +265,7 @@ udel_del2=Ħassar l-Utent u d-Direttorju tad-Dar
 udel_others=TWISSIJA! Id-direttorju tad-dar $1 fih $2 fajls li huma proprjetà ta ’utenti oħra.
 udel_dothers=Ħassar l-utent f'moduli oħra?
 udel_root=Twissija! Jekk l-utent tal-għeruq jitħassar, jista 'jkun li inti ma tkunx tista' tamministra s-sistema tiegħek fil-futur.
+
 gdel_title=Ħassar Grupp
 gdel_err=Ma rnexxielux jitħassar il-grupp
 gdel_eroot=M'għandekx permess tħassar gruppi tas-sistema (dawk b'GID inqas minn jew daqs 10).
@@ -271,6 +279,7 @@ gdel_sure=Int żgur li trid tħassar il-grupp $1?
 gdel_del=Ħassar Grupp
 gdel_dothers=Tħassar grupp minn moduli oħra?
 gdel_other=Tħassir minn moduli oħra ..
+
 many_title=Oħloq Utenti Multipli
 many_desc=Din il-formola tippermetti li toħloq bosta utenti f'daqqa jew minn fajl tat-test imtella 'jew lokali. Kull linja fil-fajl tispeċifika utent wieħed fil-format li ġej:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -294,6 +303,7 @@ many_eshell=Qoxra invalida fil-linja $1 : $2
 many_emkdir=Ma rnexxielux joħloq direttorju tad-dar $1 : $2 
 many_egtaken=Isem tal-grupp li diġà intuża fil-linja $1 : $2 
 many_ok=Utent maħluq $1
+
 acl_uedit=Utenti Unix li jistgħu jiġu editjati
 acl_uedit_all=L-utenti kollha
 acl_uedit_none=L-ebda utenti
@@ -353,6 +363,7 @@ acl_udelete=Tista 'tħassar l-utenti?
 acl_gdelete=Jistgħu jitħassru gruppi?
 acl_urename=Jistgħu isemmi l-utenti?
 acl_grename=Jistgħu isem ġdid gruppi?
+
 log_urename=Utent imsejjaħ $1 għal $2
 log_umodify=Utent immodifikat $1
 log_ucreate=Utent maħluq $1
@@ -371,6 +382,7 @@ log_ugbatch=Fajl imtella '
 log_ugbatch_l=Fajl tal-grupp tal-grupp imtella 'esegwit ($1 maħluqa, $2 modifikat, $3 imħassar)
 log_delete_users=Imħassar $1 l-utenti
 log_delete_groups=Imħassra gruppi $1
+
 batch_title=Eżegwixxi Fajl tal-Lott
 batch_ecannot=Ma tistax tuża l-formola tal-fajl tal-lott
 batch_desc=Din il-formola jippermettilek toħloq, timmodifika jew tħassar ħafna utenti f'daqqa minn fajl tat-test imtella 'jew lokali. Kull linja fil-fajl tispeċifika azzjoni waħda li tieħu, skont l-ewwel qasam tagħha. Il-formati tal-linja huma :
@@ -429,12 +441,14 @@ batch_eexpire=Ġurnata ta 'skadenza invalida fuq il-linja $1 : $2
 batch_echange=Ġurnata ta 'bidla tal-password mhux valida fuq il-linja $1 : $2 
 batch_instr=Istruzzjonijiet u format tal-lott
 batch_header=Lott ta 'ħolqien, aġġornament u tħassir ta' utenti tal-lott
+
 who_title=Dħalt fl-Utenti
 who_user=Utent Unix
 who_tty=TTY
 who_when=Dħalt fi
 who_from=Dħalt minn
 who_none=Bħalissa l-ebda utenti ma ġew illoggjati.
+
 export_title=Fajl tal-Lott Esportazzjoni
 export_desc=Din il-formola jippermettilek toħloq fajl tal-lott li fih ftit jew kollha mill-utenti disponibbli fis-sistema. Il-fajl jista 'jintuża fuq il-paġna Eżekuta Fajl tal-Lott fuq sistema oħra biex terġa' toħloq l-utenti esportati, jekk wieħed jassumi li juża l-format tal-fajl tal-lott magħżul.
 export_header=Għażliet ta 'esportazzjoni tal-utent tal-lott
@@ -455,6 +469,7 @@ export_done=Esportaw b'suċċess $1 l-utenti għall-fajl $2 ($3).
 export_pft=Format tal-fajl tal-lott
 export_who=Utenti li jesportaw
 export_ecannot=M'għandekx permess tesporta lill-utenti
+
 gexport_title=Esportazzjoni ta 'Fajl tal-Lott tal-Gruppi
 gexport_desc=Din il-formola jippermettilek toħloq fajl tal-lott li fih ftit jew il-gruppi kollha disponibbli fis-sistema. Il-fajl jista 'jintuża fuq il-paġna Eżekuta Fajl tal-Lott tal-Grupp fuq sistema oħra biex jerġa' joħloq il-gruppi esportati.
 gexport_header=Għażliet ta 'esportazzjoni tal-grupp tal-lott
@@ -463,6 +478,7 @@ gexport_ecannot=M'għandekx permess tesporta gruppi
 gexport_err=Ma rnexxielux jesporta fajl tal-lott tal-grupp
 gexport_egid=L-ewwel GID mhux validu fil-medda
 gexport_egid2=Invalidu tat-tieni GID fil-medda
+
 pft_0=Fajl klassiku <tt>passwd</tt> biss
 pft_1=Fajl Btt <tt>master.passwd</tt>
 pft_2=Fajls standard <tt>passwd</tt> u <tt>shadow</tt>
@@ -470,6 +486,7 @@ pft_3=Unixware <tt>passwd</tt> fajl
 pft_4=AIX <tt>passwd</tt> u <tt>security</tt> fajls
 pft_5=OpenServer <tt>passwd</tt> u <tt>shadow</tt> fajls qosra
 pft_6=Database macOS NetInfo
+
 umass_title=Ħassar l-Utenti
 umass_err=Ma rnexxielhomx iħassru lill-utenti
 umass_sure=Int żgur li trid tħassar l- $1 l-utenti magħżula? Id-direttorji tad-dar tagħhom fihom $2 ta 'fajls.
@@ -481,6 +498,7 @@ umass_del1=Ħassar l-Utenti
 umass_del2=Ħassar l-Utenti u d-Direttorji tad-Dar
 umass_eroot=M'għandekx permess tħassar l-utenti tas-sistema (dawk b'UID inqas minn jew daqs 10).
 umass_doing=It-tħassir tal-utent $1 ..
+
 gmass_title=Ħassar Gruppi
 gmass_err=Ma rnexxielhiex tħassar il-gruppi
 gmass_sure=Int żgur li trid tħassar il-gruppi $1?
@@ -490,16 +508,19 @@ gmass_del=Ħassar Gruppi
 gmass_eroot=M'għandekx permess tħassar gruppi tas-sistema (dawk b'GID inqas minn jew daqs 10).
 gmass_doing=It-tħassir tal-grupp $1 ..
 gmass_eprimary=Il-grupp $1 ma jistax jitħassar, billi huwa l-grupp primarju ta 'utent $2.
+
 dmass_title=Itfi l-Utenti
 dmass_sure=Int żgur li trid tiddiżattiva l- $1 l-utenti magħżula? Huma jistgħu jerġgħu jiġu ffaċilitati aktar tard mingħajr it-telf tal-passwords jew tad-dejta tagħhom.
 dmass_dis=Itfi l-Utenti
 dmass_pass=Qfil tal-password temporanjament ..
 dmass_doing=Iddiżattiva l-utent $1 ..
 dmass_already=.. diġà b'diżabilità!
+
 emass_title=Jippermettu l-Utenti
 emass_pass=Tfetaħ il-password ..
 emass_doing=Jippermetti lill-utent $1 ..
 emass_already=.. diġà ppermettiet!
+
 gbatch_title=Eżegwixxi Fajl tal-Lott tal-Grupp
 gbatch_ecannot=Ma tistax tuża l-formola tal-fajl tal-grupp tal-lott
 gbatch_desc=Din il-formola jippermettilek toħloq, timmodifika jew tħassar ħafna gruppi f'daqqa minn fajl tat-test imtella 'jew lokali. Kull linja fil-fajl tispeċifika azzjoni waħda li tieħu, skont l-ewwel qasam tagħha. Il-formati tal-linja huma :

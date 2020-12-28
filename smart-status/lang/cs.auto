@@ -5,6 +5,7 @@ index_family=Modelová rodina
 index_serial=Sériové číslo
 index_capacity=Kapacita
 index_norm=Normalizováno:
+
 monitor_type2=SSD Wearout
 monitor_errorsinc=Ano, ale pouze v případě zvýšení počtu chyb
 monitor_errorsfound=Hlášeny chyby $1 

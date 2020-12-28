@@ -42,11 +42,13 @@ index_norder0=Asignación
 index_norder1=Estructura de Archivo
 index_norder2=Nombre/Dirección IP
 index_version=DHCPd versión $1 de ISC
+
 butt_save=Salvar
 butt_eco=Editar Opciones de Cliente
 butt_vco=Ver Opciones de Cliente
 butt_del=Borrar
 butt_create=Crear
+
 esub_crheader=Crear Subred
 esub_edheader=Editar Subred
 esub_tabhdr=Detalles de Subred
@@ -60,10 +62,12 @@ esub_groups=Grupos diréctamente en esta Subred
 esub_pools=Paquetes de direcciones para Subred
 esub_pool=Paquete $1
 esub_poolnone=No se ha definido paquetes de direcciones
+
 esub_pooladd=Añadir un paquetes de direcciones
 esub_none=Ninguno
 esub_return=lista de subred
 esub_retshar=red compartida
+
 esh_crheader=Crear Red Compartida
 esh_eheader=Editar Red Compartida
 esh_tabhdr=Detalles de Red Compartida
@@ -72,6 +76,7 @@ esh_hosts=Máquinas diréctamente en esta red compartida
 esh_groups=Grupos diréctamente en esta red compartida
 esh_subn=Subredes en esta red compartida
 esh_return=lista de subred
+
 ehost_crheader=Crear Máquina
 ehost_eheader=Editar Máquina
 ehost_tabhdr=Detalles de Máquina
@@ -90,6 +95,7 @@ ehost_return=lista de máquinas
 ehost_retgroup=grupo
 ehost_retsubn=subred
 ehost_retshar=red compartida
+
 egroup_crheader=Crear Grupo de Máquinas
 egroup_eheader=Editar Grupo de Máquinas
 egroup_tblhdr=Detalles de Grupo
@@ -99,6 +105,7 @@ egroup_nchoice=¿Uso el nombre como nombre de máquina del cliente?
 egroup_return=lista de máquinas
 egroup_retsubn=subred
 egroup_retshar=red compartida
+
 default=Por defecto
 secs=segs
 none=Ninguno
@@ -114,33 +121,40 @@ listl_end=Fecha de Fin
 listl_return=lista de subred
 listl_all=Lista todas los arrendamientos activos y expirados
 listl_delete=Haz click en una dirección IP de arrendamiento de la lista superior para borrarla
+
 restart_errmsg1=Falló al reiniciar dhcpd
 restart_errmsg2=Falló al enviar señal al proceso
 start_failstart=Falló al iniciar dhcpd
+
 sgroup_faildel=Falló al borrar grupo
 sgroup_failsave=Falló al salvar grupo
 sgroup_invassign=grupo asignado a una sección incorrecta
 sgroup_echanged=El contenido del archivo de configuración ha cambiado. Prueba otra vez.
+
 shost_faildel=Falló al borrar máquina
 shost_failsave=Falló al salvar máquina
 shost_invalidhn=no es un nombre de máquina válido
 shost_invalidhwa='$1' no es una dirección $2 válida
 shost_invalidaddr='$1' contiene un nombre de máquina o una dirección IP inválidos
 shost_invassign=máquina asignada a una sección incorrecta
+
 sopt_failsave=Falló al salvar opciones de cliente
 sopt_invalidip=no es una dirección IP válida
 sopt_invalidint=no es un entero
 sopt_invalidipp=no es un par de direcciones IP válido (como 1.2.3.4, 5.6.7.8)
+
 sshared_faildel=Falló al borrar red compartida
 sshared_failsave=Falló al salvar red compartida
 sshared_invalidsname=Nombre de red compartida perdido o inválido
 sshared_nosubnet=La red compartida '$1' no contiene ninguna subred.
+
 ssub_faildel=Falló al borrar subred
 ssub_failsave=Falló al salvar subred
 ssub_invalidsubaddr=no es una dirección de subred válida
 ssub_invalidnmask=no es una máscara de red válida
 ssub_invalidipr=no es un rango válido de direcciones IP
 ssub_nosubnet=La red compartida '$1' no contiene ninguna subred.
+
 plib_deflt=Tiempo de arrendamiento por defecto
 plib_bfname=Nombre de archivo de Boot
 plib_maxlt=Máximo tiempo de arrendamiento
@@ -184,6 +198,7 @@ plib_ddnsupstyle=Estilo de actualización dinámica de DNS
 plib_adhoc=Ad-hoc
 plib_interim=Interín
 plib_none=Ninguno
+
 eopt_header=Opciones de Cliente
 eopt_subtitle=Para subred $1
 eopt_returnsub=lista de subred
@@ -218,6 +233,7 @@ eopt_nbntype=Tipo de nodo de NetBIOS
 eopt_custom=Opción de cliente
 eopt_cnum=Número
 eopt_cval=Valor
+
 log_apply=Cambios aplicados
 log_start=Servidor DHCP arrancado
 log_create_subnet=Creada subred $1
@@ -237,12 +253,14 @@ log_delete_group=Borrado grupo de $1 máquinas
 log_modify_group=Modificado grupo de $1 máquinas
 log_options_group=Modificadas opciones para grupo de $1 máquinas
 log_delete_lease=Borrado arrendamiento para $1
+
 pool_edit=Editar Paquete de Direcciones
 pool_create=Creado Paquete de Direcciones
 pool_header=Opciones de Paquete de direcciones
 pool_allow=Clientes autorizados
 pool_deny=Clientes denegados
 pool_return=subred
+
 cdel_header=Aviso
 cdel_shared1=red compartida
 cdel_shared2=red compartida
@@ -260,6 +278,7 @@ cdel_txt=Borrando $1 '$2' también se borrará su contenido:
 cdel_confirm=¿Reálmente deseas borrar este $1?
 cdel_eunknown=Error desconocido
 cdel_return=lista de máquina y red
+
 eacl_aviol=Violación de control de acceso
 eacl_np=No tienes permisos para
 eacl_pdh=borrar máquina
@@ -283,6 +302,7 @@ eacl_pdl=borrar arrendamientos
 eacl_psl=ver arrendamientos
 eacl_pglob=editar opcione globales
 eacl_papply=rearrancar este servicio
+
 acl_apply=¿Puede aplicar los cambios?
 acl_r_leases=¿Puede ver arrendamientos?
 acl_w_leases=¿Puede quitar arrendamientos?

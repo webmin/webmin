@@ -19,11 +19,13 @@ index_force=Priverstinis žurnalo pasukimas
 index_forcedesc=Priverskite nedelsiant pasukti visus žurnalų failus, net jei dar nėra laiko.
 index_logrotate=Logrotatas
 index_delete=Ištrinti pasirinktus žurnalo pasukimus
+
 period_daily=Kasdien
 period_weekly=Kas savaitę
 period_monthly=Kas mėnesį
 period_never=Niekada
 period_bytes=baitų
+
 edit_title1=Redaguoti žurnalo failą
 edit_title2=Sukurti žurnalo failą
 edit_header=Pasukta žurnalo failo informacija
@@ -62,8 +64,10 @@ edit_pre=Komandos turi bėgti prieš sukimąsi
 edit_default=Numatytasis ($1)
 edit_sharedscripts=Tik paleiskite visų failų scenarijus vieną kartą?
 edit_now=Sukti dabar
+
 global_title=Visuotinės parinktys
 global_header=Numatytosios visų žurnalo failų parinktys
+
 save_err=Nepavyko išsaugoti žurnalo
 save_efile=Trūksta arba netinkamas žurnalo failo vardas
 save_esize=Trūksta arba netinkamas didžiausias dydis
@@ -81,6 +85,7 @@ save_eerrors=Trūksta klaidų pranešimų el. Pašto adreso
 save_epre=Prieš sukimąsi scenarijuje negali būti eilutės <tt>pabaigos scenarijus</tt> arba <tt>endrotate</tt>
 save_epost=Po rotacijos esančiame scenarijuje negali būti eilutės <tt>pabaigos scenarijus</tt> arba <tt>endrotate</tt>
 save_enofiles=Neįvesta jokių sukamų failų
+
 log_modify_sched=Pakeistas žurnalo pasukimas Cron darbas
 log_create_sched=Sukurtas rąstų rotacijos „Cron“ darbas
 log_delete_sched=Ištrinta žurnalo kaitaliojimo „Cron“ užduotis
@@ -89,6 +94,7 @@ log_create=Pridėta žurnalo failo rotacija $1
 log_modify=Modifikuota žurnalo failo rotacija $1 
 log_delete=Ištrinta žurnalo failo rotacija $1 
 log_delete_logs=Ištrinta $1 žurnalo failų rotacija
+
 sched_title=Žurnalų pasukimo grafikas
 sched_desc=Norėdami atlikti žurnalo pasukimą, sukonfigūruotą naudojant šį modulį, komandą $1 turi vykdyti įprastas grafikas (paprastai kasdien), kurį teikia „Cron“.
 sched_runparts=Šiuo metu žurnalo pasukimo komanda vykdoma iš scenarijaus $1 $2 ir negali būti koreguojama.
@@ -98,10 +104,12 @@ sched_enabled=Įgalinta, kartais žemiau ..
 sched_save=Atnaujinkite „Cron Job“
 sched_err=Nepavyko išsaugoti rotacijos grafiko
 sched_when=Laikai bėgti
+
 force_title=Priverstinis žurnalo pasukimas
 force_doing=Privedant betarpišką visų žurnalo failų sukimą
 force_doingone=Priverstinis greitas vieno žurnalo failo pasukimas.
 force_done=.. padaryta.
 force_failed=.. nepavyko! Norėdami sužinoti priežastį, skaitykite aukščiau pateiktą išvestį.
+
 delete_err=Nepavyko ištrinti žurnalų
 delete_enone=Nepasirinkta

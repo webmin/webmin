@@ -14,6 +14,7 @@ index_restart=Ponovo pokrenite LDAP klijent Daemon
 index_restartdesc=Primijenite trenutnu konfiguraciju ponovnim pokretanjem lokalnog demona LDAP klijenta.
 index_atboot=Pokrenite LDAP klijent pri pokretanju
 index_atbootdesc=Mijenja da li se demon LDAP klijenta pokreće kada se sustav pokrene ili ne.
+
 server_title=Konfiguracija poslužitelja LDAP
 server_header=Opcije LDAP poslužitelja i prijave
 server_host=Imena hosta LDAP poslužitelja
@@ -51,6 +52,7 @@ server_etimelimit=Nedostaje ili nevažeće vremensko ograničenje veze
 server_ecacert=Nedostaje ili nije važeća datoteka certifikata CA
 server_euport=Nedostaje ili nevažeći port za poslužitelj $1 
 server_euri=Nema unesenih LDAP poslužitelja
+
 base_title=LDAP baze pretraživanja
 base_header=Lokacije za pretraživanje direktorija LDAP
 base_base=Globalna baza za pretraživanje
@@ -86,6 +88,7 @@ base_enetmasks=Nedostaje baza za imena mrežnih maski
 base_ealiases=Nedostaje baza za nadimke e-pošte
 base_enetgroup=Nedostaje baza za mreže
 base_etimelimit=Nedostaje ili nevažeće vremensko ograničenje pretraživanja
+
 pam_title=Opcije provjere autentičnosti
 pam_header=PAM provjere autentičnosti i postavke lozinke
 pam_filter=Dodatni LDAP filter
@@ -106,10 +109,12 @@ pam_efilter=Nedostaje dodatni LDAP filter
 pam_elogin=Nedostaje ili je nevažeći atribut LDAP za korisničko ime
 pam_egroupdn=Nedostaje LDAP grupa za prisiljavanje na članstvo
 pam_emember=Nedostaje ili nije važeći atribut LDAP za članove grupe
+
 switch_title=Usluge koje koriste LDAP
 switch_service=Servis
 switch_srcs=Izvori podataka
 switch_return=usluge pomoću LDAP-a
+
 ldap_emodule=$1 Perl modul potreban za razgovor s LDAP poslužiteljem nije instaliran. <a href='$2'>Kliknite ovdje</a> da biste preuzeli Webmin i instalirali ga sada.
 ldap_emodule2=$1 Perl modul potreban za razgovor s LDAP poslužiteljem nije instaliran.
 ldap_econf=Konfiguracijska datoteka klijenta LDAP $1 nije pronađena u vašem sustavu
@@ -119,6 +124,7 @@ ldap_elogin=Povezivanje s LDAP serverom $1 nije uspjelo kao $2 : $3
 ldap_anon=anoniman
 ldap_eparse=Nije uspjelo raščlaniti URI LDAP poslužitelja $1 
 ldap_etls=Prijelaz na TLS način nije uspio : $1 
+
 browser_title=LDAP preglednik
 browser_econn=LDAP preglednik nije moguće koristiti : $1 
 browser_base=pregledavanje:
@@ -129,6 +135,7 @@ browser_attrs=Atributi objekta
 browser_parent=Pretražite Roditelj
 browser_none=nijedan
 browser_sel=u redu
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Korisnički pisači
 order_xfn=XFN
 order_mdns4=DNS za višestruko slanje
 order_mdns4_minimal=Multicast DNS (minimalno)
+
 desc_aliases=Aliasi za sendmail
 desc_mail=Aliasi za sendmail
 desc_hosts=Adresa domaćina
@@ -177,6 +185,7 @@ desc_printers=Pisači
 desc_ipnodes=IP čvorovi
 desc_timezone=Vremenske zone
 desc_locale=lokalizacije
+
 eswitch_title=Usluga uređivanja
 eswitch_egone=Usluga ne postoji!
 eswitch_header=Pojedinosti o usluzi
@@ -196,6 +205,7 @@ eswitch_continue=Nastavite pretraživanje
 eswitch_none=nijedan
 eswitch_err=Spremanje usluge nije uspjelo
 eswitch_enone=Nisu odabrani izvori!
+
 log_server=Izmijenjena konfiguracija LDAP poslužitelja
 log_base=Izmijenjene baze pretraživanja LDAP
 log_pam=Izmijenjene opcije provjere autentičnosti
@@ -205,6 +215,7 @@ log_delboot=Onemogućen demon demona LDAP klijenta u vrijeme dizanja
 log_start=Počeo je demon klijenta LDAP
 log_stop=Zaustavljen demon klijenta LDAP
 log_restart=Retardirani demon klijenta LDAP
+
 check_title=Provjeravanje LDAP konfiguracije
 check_base=Pronalaženje LDAP baze za korisnike ..
 check_ebase=.. u konfiguraciji klijenta nije pronađen niti jedan temelj!

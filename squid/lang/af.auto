@@ -38,6 +38,7 @@ index_restartdesc=Klik op hierdie knoppie om die huidige inkviskonfigurasie te a
 index_iptables=Port Redirection Setup
 index_squid=Inktvis-instaanbediener
 index_manual=Wysig konfigurasielêers
+
 manual_title=Wysig konfigurasielêers
 manual_file=Kies 'n konfigurasielêer om te wysig:
 manual_change=verandering
@@ -45,6 +46,7 @@ manual_editing=Gebruik die onderstaande teksblokkie om die konfigurasies met die
 manual_err=Kon nie die konfigurasielêer stoor nie
 manual_efile=Ongeldige config-lêernaam!
 manual_ecannot=U mag nie config-lêers handmatig wysig nie
+
 buttsave=Save
 buttdel=Delete
 buttcreat=Skep
@@ -54,6 +56,7 @@ default=verstek
 none=Geen
 on=op
 off=af
+
 acl_header1=Skep ACL
 acl_header2=Wysig ACL
 acl_name=ACL Naam
@@ -109,6 +112,7 @@ acl_file=Stoor ACL-waardes in lêers
 acl_nofile=Invis inkonfigurasie
 acl_infile=Afsonderlike lêer
 acl_keep=Gebruik u die bestaande inhoud van die lêer?
+
 aclsave_failsave=Kon nie ACL stoor nie
 aclsave_faildel=Kon nie ACL uitvee nie
 aclsave_epr=Hierdie ACL word deur 'n instaanbeperking gebruik
@@ -128,11 +132,13 @@ aclsave_eemin=Ongeldige einde min
 aclsave_efile=U mag nie aan die ACL-lêer '$1' skryf nie
 aclsave_enofile=Geen ACL-lêernaam is ingevoer nie
 aclsave_ealready=ACL-lêer bestaan reeds
+
 cach_ecannot=U mag nie toegang kry tot die bestuurstatistieke van die kas nie
 cach_err=fout
 cach_nfound=Die inkvis-bestuurderprogram <tt>$1</tt> is nie op u stelsel gevind nie. Miskien is u <a href=/config.cgi?$2>module-opstelling</a> verkeerd.
 cach_return=inkvis indeks
 cach_esame=Die <b>Squid cachemgr.cgi-uitvoerbare</b> is ingestel op Webmin se cachemgr.cgi-program, nie op die program wat deur Squid verskaf word nie.
+
 chown_header=Verander eienaarskap
 chown_stop=Stop inkvis. ..
 chown_done=.. Klaar
@@ -140,6 +146,7 @@ chown_chown=Verander eienaarskap. ..
 chown_restart=Begin die inkvis weer. ..
 chown_failrestart=Kon nie Squid weer begin nie ..
 chown_return=inkvis indeks
+
 clear_ecannot=U mag nie die kas skoonmaak en herbou nie
 clear_header=Maak die kas skoon en herbou dit
 clear_msgclear=Is u seker dat u u inkvis-kas wil uitvee en herbou? Dit sal <b>alle</b> lêers wat u gekas het, uitvee en u inkvis-bediener weer begin.
@@ -153,6 +160,7 @@ clear_failrestart=Kon nie Squid weer begin nie ..
 clear_return=inkvis indeks
 clear_url=Verwyder een URL uit die kas:
 clear_ok=Verwyder
+
 eacl_ecannot=U mag nie toegangsbeheer beheer nie
 eacl_header=Toegangsbeheer
 eacl_acls=Toegangsbeheerlyste
@@ -169,8 +177,10 @@ eacl_nopr=Geen volmagbeperkings gedefinieër nie.
 eacl_addpr=Voeg volmagbeperking by.
 eacl_noprr=Geen instaanbeperkingsbeperkings gedefinieër nie
 eacl_addprr=Voeg volmag-antwoordbeperking by.
+
 eacl_replypr=Beantwoord volmagbeperkings
 eacl_replynopr=Geen antwoordmagtigingbeperkings gedefinieër nie
+
 eacl_icpr=ICP-beperkings
 eacl_noicpr=Geen ICP-beperkings gedefinieer nie
 eacl_addicpr=Voeg ICP-beperking by.
@@ -187,6 +197,7 @@ eacl_eclass=Geen programklas gekies nie
 eacl_cname=Tik naam
 eacl_file=Vanaf lêer $1
 eacl_hdelete=Vee geselekteerde beperkings uit
+
 eadm_ecannot=U mag nie administratiewe opsies wysig nie
 eadm_header=Administratiewe opsies
 eadm_aao=Opsies vir administratiewe en aankondigings
@@ -213,6 +224,7 @@ eadm_caf=Cache kondig lêer aan
 eadm_annp=Aankondigingstydperk
 eadm_buttsave=Save
 eadm_return=inkvis indeks
+
 eauth_ecannot=U mag nie instaan vir instaanbediener nie
 eauth_header=Proxy-verifikasie
 eauth_aopt=Verifikasie-opsies
@@ -226,6 +238,7 @@ eauth_pusers=Volmaggebruikers
 eauth_nopusers=Geen volmaggebruikers word tans gedefinieër nie.
 eauth_addpuser=Voeg 'n nuwe instaanbediener by.
 eauth_return=inkvis indeks
+
 ec_ecannot=U mag nie kasopsies wysig nie
 ec_header=Kasopsies
 ec_cro=Caching en versoekopsies
@@ -280,6 +293,7 @@ ec_return=inkvis indeks
 ec_maxreplies=Maksimum antwoordgroottegroottes
 ec_maxrn=Grootte (kB)
 ec_maxracls=Vir versoeke wat ooreenstem met ACL's (laat leeg vir almal)
+
 ech_header=Skep kasgeheue
 ech_header1=Redigeer die gasheer
 ech_cho=Cache gasheeropsies
@@ -324,6 +338,7 @@ ech_origin=Behandel gasheer as oorsprongbediener?
 ech_force=Dwing gasheer: kop na
 ech_same=onveranderd
 ech_ssl=Skakel met SSL?
+
 eicp_ecannot=U mag nie ander cache redigeer nie
 eicp_header=Ander kas
 eicp_opcs=Ander proxy-kasbedieners
@@ -361,6 +376,7 @@ eicp_ttype=tipe
 eicp_tpport=Proxy-poort
 eicp_tiport=ICP-poort
 eicp_delete=Vee geselekteerde caches uit
+
 elogs_ecannot=U mag nie aanmelding wysig nie
 elogs_header=meld
 elogs_lalo=Opsies vir houtkap en lêer
@@ -394,6 +410,7 @@ elogs_notset=Nie gestel nie
 elogs_dont=Moenie aanteken nie
 elogs_file=Lêer $1
 elogs_squid=Inkvis standaard
+
 emem_ecannot=U mag nie die geheue gebruik nie
 emem_dheader=Geheue en skyfgebruik
 emem_header=Geheue gebruik
@@ -419,6 +436,7 @@ emem_lfuda=Dinamies wat die minste gereeld gebruik word
 emem_hlru=Hoop wat die minste gebruik word
 emem_return=inkvis indeks
 emem_mrp=Beleid vir geheuevervanging
+
 emisc_ecannot=U mag nie verskillende opsies wysig nie
 emisc_header=Diverse opsies
 emisc_mo=Diverse opsies
@@ -455,6 +473,7 @@ emisc_wccpin=WCCP Inkomende adres
 emisc_wccpout=WCCP Uitgaande Adres
 emisc_none=Geen
 emisc_virtual=virtuele
+
 eports_ecannot=U mag nie hawens en netwerke wysig nie
 eports_header=Hawens en netwerke
 eports_pano=Poorte en netwerkopsies
@@ -480,6 +499,7 @@ eports_unc=Onrein SSL-afskakelings?
 eports_checkhost=Valide gasheername in URL's?
 eports_underscore=Laat onderstreep in gasname toe?
 eports_all=Almal
+
 eprogs_ecannot=U mag nie helperprogramme wysig nie
 eprogs_header=Helper-programme
 eprogs_chpo=Cache Helper-programopsies
@@ -508,6 +528,7 @@ eprogs_ttl=Verifikasiekas tyd
 eprogs_aittl=Verifieer IP-kas tyd
 eprogs_realm=Verifikasieryk
 eprogs_return=inkvis indeks
+
 euser_header=Skep volmaggebruiker
 euser_header1=Proxy-gebruiker wysig
 euser_pud=Proxy-gebruikersdetails
@@ -516,6 +537,7 @@ euser_p=wagwoord
 euser_u1=onveranderd
 euser_e=In staat gestel?
 euser_return=gebruikers lys
+
 ahttp_header=Skep instaanbeperking
 ahttp_header1=Redigeer volmagbeperking
 ahttp_pr=Volmagbeperking
@@ -525,10 +547,13 @@ ahttp_d=ontken
 ahttp_ma=Pas ACL's
 ahttp_dma=Moenie ooreenstem met ACL's nie
 ahttp_return=ACL-lys
+
 ahttp_replyheader=Skep 'n instaanbeperkingsbeperking
 ahttp_replyheader1=Redigeer die instaan van die volmag-antwoord
 ahttp_replypr=Proxy-antwoordbeperking
+
 sahttp_ftspr=Kon nie die instaanbeperkingsbeperking stoor nie
+
 aicp_header=Skep ICP-beperking
 aicp_header1=Redigeer ICP-beperking
 aicp_ir=ICP-beperking
@@ -538,7 +563,9 @@ aicp_d=ontken
 aicp_ma=Pas ACL's
 aicp_dma=Moenie ooreenstem met ACL's nie
 aicp_return=ACL-lys
+
 saicp_ftsir=Kon nie ICP-beperking stoor nie
+
 icache_ecannot=U mag nie die kas initialiseer nie
 icache_ftic=Kon nie die kas inisialiseer nie
 icache_ymcautrsa=U moet 'n gebruiker kies om Squid as te laat loop
@@ -546,7 +573,9 @@ icache_euser=Gebruiker om Squid te bestuur soos wat nie bestaan nie
 icache_itscwtc=Inisialiseer die inkvis-kas met die opdrag <tt>$1</tt> ..
 icache_return=inkvis indeks
 icache_title=Initialiseer kas
+
 restart_ftrs=Kon nie inkvis herkonfigureer nie
+
 sadmin_ftsao=Kon nie administratiewe opsies stoor nie
 sadmin_header=Verander eienaarskap
 sadmin_msg1=U het die gebruiker of groep wat Squid bestuur, verander. Om dit behoorlik in werking te stel, moet die eienaarskap van alle cache- en loglêers opgedateer word en die inkvis weer begin.
@@ -556,10 +585,12 @@ sadmin_inavea='$1' is nie 'n geldige e-posadres nie
 sadmin_inavh='$1' is nie 'n geldige gasheernaam nie
 sadmin_inavap='$1' is nie 'n geldige aankondigingstydperk nie
 sadmin_inavp='$1' is nie 'n geldige poort nie
+
 sauth_ftsao=Kon nie stawingsopsies stoor nie
 sauth_iomuf=Ongeldige of ontbrekende gebruikersnaam
 sauth_iomd=Ongeldige of ontbrekende domein
 sauth_msg1=U weergawe van Squid is nie saamgestel met ondersteuning vir instaanmagtiging nie
+
 scache_ftsco=Kon nie kasopsies stoor nie
 scache_emsg0=U moet ten minste een kasgids invoer
 scache_emsg1=Die kasgids '$1' bestaan nie
@@ -577,14 +608,17 @@ scache_emsg12='$1' is nie 'n geldige gidsgrootte nie
 scache_emsg13='$1' is nie 'n geldige gasheer nie
 scache_emsg14='$1' is nie 'n geldige poort nie
 scache_emaxrs=Ongeldige maksimum liggaamsgrootte in ry $1
+
 schost_ftsc=Kon nie die kas stoor nie
 schost_emsg1='$1' is nie 'n geldige cache-gasheernaam nie
 schost_emsg2='$1' is nie 'n geldige proxy-poort nie
 schost_emsg3='$1' is nie 'n geldige ICP-poort nie
 schost_emsg4='$1' is nie 'n geldige tydstip om te leef nie
 schost_emsg5='$1' is nie 'n geldige gewig nie
+
 sicp_ftsco=Kon nie kasopsies stoor nie
 sicp_emsg1='$1' is nie 'n geldige time-out nie
+
 slogs_ftslo=Kon nie logboekopsies stoor nie
 slogs_emsg1='$1' is nie 'n absolute lêernaam nie
 slogs_emsg2='$1' is nie 'n geldige lêernaam nie
@@ -594,20 +628,24 @@ slogs_emsg5='$1' is nie 'n geldige debugopsielys nie
 slogs_efname=Ongeldige formaatnaam in ry $1
 slogs_effmt=Logformaat ontbreek in ry $1
 slogs_eafile=Ontbrekende of ongeldige loglêer in ry $1
+
 smem_ftsmo=Die geheue-opsies kon nie gestoor word nie
 smem_emsg1='$1' is nie 'n geldige kasgrootte nie
 smem_emsg2='$1' is nie 'n geldige hoogwatermerk nie
 smem_emsg3='$1' is nie 'n geldige laagwatermerk nie
 smem_emsg4='$1' is nie 'n geldige voorwerpgrootte nie
+
 smisc_ftso=Opslaan van opsies is misluk
 smisc_emsg1='$1' is nie 'n geldige aantal rotasies nie
 smisc_emsg2='$1' is nie 'n geldige domein nie
 smisc_emsg3='$1' is nie 'n geldige instaanbediener nie
 smisc_emsg4='$1' is nie 'n geldige aantal hop nie
+
 sport_ftspo=Kon nie hawe-opsies stoor nie
 sport_emsg1='$1' is nie 'n geldige poortnommer nie
 sport_emsg2='$1' is nie 'n geldige adres nie
 sport_emsg3='$1' is nie 'n geldige buffergrootte nie
+
 sprog_ftshpo=Kon nie die helperprogramopsies stoor nie
 sprog_emsg1=Ontbrekende FTP-opsies
 sprog_emsg2='$1' is nie 'n geldige program nie
@@ -620,19 +658,23 @@ sprog_emsg8='$1' is nie 'n geldige IP-adres nie
 sprog_emsg9='$1' is nie 'n geldige cache-tyd nie
 sprog_emsg10='$1' is nie 'n geldige TTL nie
 sprog_echildren=Aantal programme moet 'n getal groter as nul wees
+
 suser_ftsu=Kon nie gebruiker stoor nie
 suser_emsg1=Ongeldige of ontbrekende gebruikersnaam
 suser_etaken=Gebruikernaam is reeds in gebruik
+
 start_ftsq=Kon nie Squid begin nie
 start_ecannot=U mag nie inktvis begin nie
 stop_ftsq=Kon nie inkvis stop nie
 stop_ecannot=U mag nie die inkvis stop nie
+
 calamaris_ecannot=U mag nie toegang tot die Calamaris-log-ontleding verkry nie
 calamaris_title=Calamaris-loganalise
 calamaris_last=Beperk analise tot die laaste $1 reël logs.
 calamaris_eprog=Die calamaris-uitvoerbare $1 is nie gevind nie. Miskien is dit nie op u stelsel geïnstalleer nie, of is u <a href='$2'>modulekonfigurasie</a> verkeerd.
 calamaris_elogs=Die loggids $1 bevat geen <tt>toegang.log</tt> lêers nie. Miskien is inkvis nog nie uitgevoer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
 calamaris_gen=Verslag gegenereer op $1
+
 lib_emsg1='$1' is nie 'n geldige IP-adres nie
 lib_seconds=sekondes
 lib_minutes=minute
@@ -680,6 +722,7 @@ lib_aclmuip=Maks gebruikers-IP
 lib_buttac=Pas veranderinge toe
 lib_buttss=Stop inkvis
 lib_buttss1=Begin inkvis
+
 log_ports=Veranderde poorte en netwerkopsies
 log_icp=Ander kasopsies verander
 log_mem=Verander geheue gebruik opsies
@@ -734,25 +777,31 @@ log_pools_delete=$1 vertragingspoele is uitgevee
 log_delay_create=ACL bygevoeg vir vertragingspoel $1
 log_delay_modify=Gewysigde ACL vir vertragingspoel $1
 log_delay_delete=ACL is uitgestel vir vertragingspoel $1
+
 log_delay_move=ACL verskuif vir vertragingspoel $1
 log_refresh_create=Skep verfrissingsreël vir $1
 log_refresh_modify=Gewysigde opdateringsreël vir $1
 log_refresh_delete=Opdateringsreël vir $1 is verwyder
+
 log_refresh_move=Opdateringsreël is verplaas vir $1
 log_refreshes_delete=$1 verfris reëls uitgevee
 log_iptables=Opgedateer opstel van poortherleiding
 log_purge=URL is verwyder $1 uit die kas
 log_cachemgr=Wagwoorde vir kasbestuurder verander
+
 acl_root=Wortelgids vir ACL-lêers
 acl_sections=Toelaatbare konfigurasiebladsye
 acl_start=Kan Squid begin en stop?
 acl_restart=Kan die inkviskonfigurasie toegepas word?
+
 always_create=Skep direkte haal
 always_edit=Redigeer direk haal
 always_header=Haal direk versoeke wat ooreenstem met ACL's
+
 never_create=Skep indirekte haal
 never_edit=Redigeer indirekte haal
 never_header=Moet nooit versoeke wat ooreenstem met ACL's direk haal nie
+
 delay_title=Vertraag swembaddens
 delay_add=Voeg 'n nuwe vertragingspoel by.
 delay_num=aantal
@@ -802,11 +851,14 @@ pool_unit2=k
 pool_unit3=KG
 pool_unit4=MB
 pool_unit5=MB
+
 dpool_err=Kon nie vertragingspoele uitvee nie
 dpool_enone=Geen gekies nie
+
 apool_header=Voeg Delay Pool ACL by
 apool_header1=Wysig uitstelpoel ACL
 apool_pr=Vertraag swembad ACL
+
 authparam_title=Verifikasieprogramme
 authparam_header=Opsies vir eksterne verifikasieprogramme
 authparam_ttl=Tyd om wagwoorde in te kas vir
@@ -849,6 +901,7 @@ ext_ecache=Ontbrekende of ongeldige kasgrootte
 ext_eprogram='N Ongeldige programpad is ingevoer
 ext_eclash=Daar bestaan reeds 'n eksterne programtipe met dieselfde naam
 ext_eused=Hierdie eksterne program word deur 'n ACL gebruik
+
 header_title=Beheer van kopkop
 header_none=Geen reëls vir toegangsbeheer vir koptekste is nog gedefinieër nie.
 header_name=HTTP-kopkop
@@ -868,6 +921,7 @@ header_err=Kon nie reël vir toegangsbeheer vir kopstukke stoor nie
 header_ename=Naam of ongeldige kopnaam ontbreek
 header_request_header_access=Versoek opskrifte
 header_reply_header_access=Antwoord opskrifte
+
 refresh_title=Verfris reëls
 refresh_none=Geen opdateringsreëls is nog gedefinieër nie.
 refresh_re=Gewone uitdrukking
@@ -894,6 +948,7 @@ refresh_epc=Ouderdom persentasie ontbreek of ongeldig
 refresh_delete=Vee geselekteerde opdateringsreëls uit
 drefresh_err=Kon nie die verfrisreëls uitvee nie
 drefesh_enone=Geen gekies nie
+
 iptables_title=Port Redirection Setup
 iptables_inst0=Die IPtables-firewall-opdragte wat nodig is om die herleiding van die poort op te stel, blyk nie op u stelsel geïnstalleer te wees nie. Raadpleeg die module <a href='$1'>Linux Firewall</a> vir meer inligting.
 iptables_inst1=Dit lyk nie of die <a href='$1'>Linux Firewall</a> module volledig op u stelsel opgestel is nie. Hierdie module maak gebruik van die een om Frox-poortherleiding te instel.
@@ -908,18 +963,23 @@ iptables_enet=Ontbrekende of ongeldige netwerkadres (moet soos 192.168.1.0/24 we
 iptables_eiface=Ontbrekende of ongeldige netwerk koppelvlak
 iptables_eapply=Die toepassing van die firewall is misluk : $1
 iptables_eapply2=Pas die inkvis misluk : $1
+
 syslog_access=Inktvis-logboek
 syslog_cache=Inktkassielêer
 syslog_store=Inktvis-winkelstoorlogboek
+
 purge_err=Kon nie URL uit die kas skoonmaak nie
 purge_title=Vee kasgebaseerde URL uit
 purge_doing=Wis URL af $1 ..
 purge_done=.. klaar.
 purge_failed=.. misluk! Kyk na die foutboodskap hierbo om die rede.
+
 dhttp_err=Kon nie volmagbeperkings uitvee nie
 dhttp_enone=Geen gekies nie
+
 dicp_err=Kon nie ICP-beperkings uitvee nie
 dicp_enone=Geen gekies nie
+
 cachemgr_title=Wagwoorde vir kasbestuurder
 cachemgr_ecannot=U mag nie wagwoorde vir kasbestuurder wysig nie
 cachemgr_def1=Geen wagwoorde benodig nie

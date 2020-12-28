@@ -19,10 +19,13 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=Uživatelé LDAP
 index_groups=Skupiny LDAP
+
 imap_econn=Nepodařilo se připojit k serveru IMAP $1 
 imap_elogin=Nepodařilo se přihlásit k serveru IMAP $1 jako $2 : $3 
 conn_eldap_host=Ve vašem systému nebyl nalezen žádný konfigurační soubor klienta LDAP, takže server LDAP musí být nastaven na stránce Konfigurace modulu
 conn_elogin=Ve vašem systému nebyl nalezen žádný konfigurační soubor klienta LDAP, takže přihlášení LDAP musí být nastaveno na stránce Konfigurace modulu
+conn_efile_open=Nelze otevřít soubor pověření vazby LDAP:
+
 uedit_cap=Uživatelské možnosti
 uedit_samba=Samba přihlášení?
 uedit_cyrus=Přihlášení k serveru IMAP?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=Poslední aktualizace hesla
 uedit_sambapwdcanchange=Heslo se může změnit
 uedit_sambabadpasswordcount=Počet chybných hesel
 uedit_sambaacctflags=Příznaky účtu
+
 usave_eadd=Nepodařilo se přidat uživatele do databáze LDAP : $1 
 usave_emod=Nepodařilo se upravit uživatele v databázi LDAP : $1 
 usave_emoddn=Nepodařilo se přejmenovat uživatele v databázi LDAP : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=Uživatel $1 již používá $2 $3
 usave_eattrdupg=Skupina $1 již používá $2 $3 
 usave_ereal=Chybí skutečné jméno
 usave_equota=Chybějící nebo neplatná kvóta IMAP
+
 search_err=Hledání $1 pod $2 selhalo : $3 
+
 gedit_dn=LDAP DN skupiny
 gedit_return=podrobnosti skupiny
 gedit_cap=Skupinové schopnosti
 gedit_samba=Samba skupina?
+
 gsave_egone=Skupina již neexistuje!
 gsave_edelete=Nepodařilo se smazat skupinu z databáze LDAP : $1 
 gsave_eadd=Nepodařilo se přidat skupinu do databáze LDAP : $1 
 gsave_emod=Nepodařilo se upravit skupinu v databázi LDAP : $1 
 gsave_emoddn=Nepodařilo se přejmenovat skupinu v databázi LDAP : $1 
+
 gdel_group=Mazání záznamu skupiny LDAP.
+
 udel_pass=Mazání záznamu uživatele LDAP.
 udel_book=Mazání z adresáře ..
 udel_imap=Mazání složky IMAP ..
 udel_warnimap=Po odstranění domovského adresáře bude stávající poštovní schránka odstraněna!
 udel_failed=.. selhalo!  : $1 
+
 raw_title=Atributy LDAP
 raw_name=Název atributu
 raw_value=Hodnoty
 raw_for=Pro $1 
+
 batch_samba=Vytvořit účet Samba pro nové uživatele?
 batch_imap=Vytvořit účet IMAP pro nové uživatele?
 batch_descafter3=V <b>vytvořit</b> a <b>upravit</b> řádky můžete volitelně připojit další pole obsahující atributy LDAP ve formátu <i>name</i> = <i>value</i>, aby být přiřazen novým nebo upraveným uživatelům.

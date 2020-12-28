@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Scriptul pentru a solicita resurse de la celălalt nod (
 index_version=Versiunea bătăilor inimii $1 
 index_noversion=Avertisment - versiunea de Heartbeat instalată pe sistemul dvs. nu a putut fi detectată automat. Ar trebui să îl setați pe pagina <a href='$1'>de configurare a modulului</a>.
 index_status=Starea bătăilor inimii
+
 conf_title=Opțiuni de configurare
 conf_header=Opțiuni de configurare a bătăilor inimii
 conf_serials=Porturi de bătăi cardiace seriale
@@ -54,6 +55,7 @@ conf_auto_on=$ {Conf_enabled}
 conf_auto_off=$ {Conf_disabled}
 conf_auto_legacy=Mod legal
 conf_auto_=$ {Implicit}
+
 res_title=Resurse de cluster
 res_node=Nodul primar
 res_ips=Adrese IP
@@ -67,6 +69,7 @@ res_getserv=Obțineți resurse
 res_hbdown=Bătăile inimii în jos
 res_up=SUS
 res_down=JOS
+
 node_create=Adăugați Resursă Cluster
 node_edit=Editează resursa clusterului
 node_header=Detalii despre resurse cluster
@@ -83,6 +86,7 @@ node_enone=Nodul primar lipsă sau nevalid
 node_eip=„$1” nu este o adresă IP validă
 node_ecidr=„$1” nu este un CIDR valid
 node_ebroad=„$1” nu este o adresă de difuzare validă
+
 auth_title=Taste de autentificare
 auth_header=Autentificarea nodului cluster
 auth_mode=Mod de autentificare
@@ -92,6 +96,8 @@ auth_md5=MD5 cu parolă
 auth_err=Nu a reușit să salvați cheile de autentificare
 auth_emd5=Parolă MD5 lipsă sau nevalidă
 auth_esha1=Parola SHA1 lipsă sau nevalidă
+
 start_err=Nu a reușit să înceapă bătăile inimii
+
 apply_err=Eroare la aplicarea modificărilor
 apply_epid=Procesul nu mai rulează

@@ -51,11 +51,13 @@ index_mass=Izbriši izbrane uporabnike
 index_mass2=Onemogoči izbrano
 index_mass3=Omogoči izbrano
 index_gmass=Izbrišite izbrane skupine
+
 search_title=Rezultati iskanja
 search_notfound=Uporabnikov ni bilo mogoče najti
 search_found=Najdeno $1 ujemanje uporabnikov ..
 search_gnotfound=Ujemljivih skupin ni bilo mogoče najti
 search_gfound=Najdeno $1 ujemanje skupin ..
+
 uedit_title=Urejanje uporabnika
 uedit_title2=Ustvari uporabnika
 uedit_details=Podrobnosti o uporabniku
@@ -133,6 +135,7 @@ uedit_uid_calc=Izračunano
 uedit_disabled=Prijava je začasno onemogočena
 uedit_sys=Privzeti sistem
 uedit_clone=Uporabnik kloniranja
+
 usave_err=Uporabnika ni bilo mogoče shraniti
 usave_eedit=Tega uporabnika ne morete urejati
 usave_ecreate=Ne morete ustvariti novih uporabnikov
@@ -186,6 +189,7 @@ usave_epasswd_same=Geslo vsebuje ali je isto kot uporabniško ime
 usave_epasswd_mindays=Geslo je bilo spremenjeno manj kot $1 pred dnevi
 usave_epasswd_cmd=Ukaza za preverjanje gesla ni bilo mogoče
 usave_eothers=Uporabnik je bil uspešno shranjen, vendar je prišlo do napake v drugem modulu : $1
+
 gedit_title=Uredi skupino
 gedit_title2=Ustvari skupino
 gedit_details=Podrobnosti o skupini
@@ -208,6 +212,7 @@ gedit_selu=Uporabniki v skupini
 gedit_pri=Člani primarne skupine
 gedit_prinone=Noben uporabnik nima te skupine kot svojo glavno
 gedit_clone=Skupina klonov
+
 gsave_err=Skupine ni bilo mogoče shraniti
 gsave_eedit=Te skupine ne morete urediti
 gsave_ecreate=Ne morete ustvariti novih skupin
@@ -224,6 +229,7 @@ usave_egidused=Skupina $1 že uporablja GID $2
 gsave_egidused2=GID je že v uporabi
 usave_efromroot=Domačega imenika ne morete premakniti iz /
 usave_etoroot=Domačega imenika ne morete premakniti v /
+
 logins_title=Zabeležene prijave
 logins_head=Zapisane prijave za $1
 logins_from=Prijava od
@@ -236,6 +242,7 @@ logins_none=Zapisi niso zabeleženi
 logins_elist=Nimate dovoljenja za seznam prijav
 logins_elistu=Nimate dovoljenja za seznam prijav za '$1'
 logins_local=Lokalno
+
 udel_title=Izbriši uporabnika
 udel_err=Uporabnika ni bilo mogoče izbrisati
 udel_enum=Neveljavna uporabniška številka
@@ -258,6 +265,7 @@ udel_del2=Izbrišite uporabnika in domači imenik
 udel_others=OPOZORILO! Domači imenik $1 vsebuje datoteke $2, ki so v lasti drugih uporabnikov.
 udel_dothers=Želite uporabnika izbrisati v drugih modulih?
 udel_root=Opozorilo! Če je korenski uporabnik izbrisan, v prihodnosti morda ne boste mogli upravljati sistema.
+
 gdel_title=Izbriši skupino
 gdel_err=Skupine ni bilo mogoče izbrisati
 gdel_eroot=Ne smete izbrisati sistemskih skupin (tiste z GID manjšim ali enakim 10).
@@ -271,6 +279,7 @@ gdel_sure=Ali ste prepričani, da želite izbrisati skupino $1?
 gdel_del=Izbriši skupino
 gdel_dothers=Želite izbrisati skupino v drugih modulih?
 gdel_other=Brisanje iz drugih modulov ..
+
 many_title=Ustvari več uporabnikov
 many_desc=Ta obrazec omogoča ustvarjanje več uporabnikov hkrati iz naložene ali lokalne besedilne datoteke. Vsaka vrstica v datoteki poda enega uporabnika v naslednji obliki:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -294,6 +303,7 @@ many_eshell=Neveljavna lupina v vrstici $1 : $2
 many_emkdir=Domačega imenika $1 ni bilo mogoče ustvariti : $2
 many_egtaken=Ime skupine, ki je že v vrstici $1 : $2 
 many_ok=Ustvarjen uporabnik $1
+
 acl_uedit=Uporabniki Unixa, ki jih je mogoče urejati
 acl_uedit_all=Vsi uporabniki
 acl_uedit_none=Ni uporabnikov
@@ -353,6 +363,7 @@ acl_udelete=Ali lahko uporabnike izbrišete?
 acl_gdelete=Ali lahko izbrišete skupine?
 acl_urename=Ali lahko preimenujete uporabnike?
 acl_grename=Ali lahko skupine preimenujete?
+
 log_urename=Preimenovan uporabnik $1 v $2
 log_umodify=Spremenjen uporabnik $1
 log_ucreate=Ustvarjen uporabnik $1
@@ -371,6 +382,7 @@ log_ugbatch=Izvedena naložena skupinska datoteka
 log_ugbatch_l=Izvedena naložena skupinska datoteka datoteke ($1 ustvarjen, $2 spremenjen, $3 izbrisan)
 log_delete_users=Izbrisani $1 uporabniki
 log_delete_groups=Izbrisane skupine $1
+
 batch_title=Izvedite paketno datoteko
 batch_ecannot=Ne morete uporabiti obrazca paketne datoteke
 batch_desc=Ta obrazec omogoča ustvarjanje, spreminjanje ali brisanje več uporabnikov hkrati iz naložene ali lokalne besedilne datoteke. Vsaka vrstica v datoteki poda eno dejanje, odvisno od prvega polja. Oblike vrstic so :
@@ -429,12 +441,14 @@ batch_eexpire=Neveljaven dan poteka v vrstici $1 : $2
 batch_echange=Neveljaven dan za spremembo gesla v vrstici $1 : $2 
 batch_instr=Navodila in format serije
 batch_header=Možnosti paketnega ustvarjanja, posodabljanja in brisanja uporabnikov
+
 who_title=Uporabniki, ki so prijavljeni
 who_user=Uporabnik Unixa
 who_tty=TTY
 who_when=Prijavite se v
 who_from=Prijavljeni s
 who_none=Trenutno ni prijavljenih nobenih uporabnikov.
+
 export_title=Izvozi paketno datoteko
 export_desc=Ta obrazec vam omogoča, da ustvarite paketno datoteko, ki vsebuje nekaj ali vseh uporabnikov, ki so na voljo v sistemu. Datoteko je mogoče uporabiti na strani Execute Batch File v drugem sistemu za ponovno ustvarjanje izvoženih uporabnikov ob predpostavki, da uporablja izbrano obliko paketne datoteke.
 export_header=Možnosti paketnega izvoza uporabnikov
@@ -455,6 +469,7 @@ export_done=Uporabniki $1 so bili uspešno izvoženi v datoteko $2 ($3).
 export_pft=Oblika paketne datoteke
 export_who=Uporabniki za izvoz
 export_ecannot=Izvoženih uporabnikov ni dovoljeno
+
 gexport_title=Izvozi paketno datoteko skupin
 gexport_desc=Ta obrazec vam omogoča, da ustvarite paketno datoteko, ki vsebuje nekatere ali vse razpoložljive skupine v sistemu. Datoteko je mogoče uporabiti na strani Execute Group Batch File v drugem sistemu za ponovno ustvarjanje izvoženih skupin.
 gexport_header=Možnosti izvoza paketne skupine
@@ -463,6 +478,7 @@ gexport_ecannot=Izvoljenih skupin ne smete izvažati
 gexport_err=Izvoz paketne datoteke skupine ni uspel
 gexport_egid=Neveljaven prvi GID v dosegu
 gexport_egid2=Neveljaven drugi GID v dosegu
+
 pft_0=Klasična datoteka <tt>passwd</tt>
 pft_1=BSD <tt>master.passwd</tt> datoteka
 pft_2=Standardne datoteke <tt>passwd</tt> in <tt>senca</tt>
@@ -470,6 +486,7 @@ pft_3=Datoteka Unixware <tt>passwd</tt>
 pft_4=Datoteke AIX <tt>passwd</tt> in <tt>varnost</tt>
 pft_5=OpenServer <tt>passwd</tt> in kratke <tt>senca</tt> datoteke
 pft_6=Baza podatkov MacOS NetInfo
+
 umass_title=Izbriši uporabnike
 umass_err=Uporabnikov ni bilo mogoče izbrisati
 umass_sure=Ali ste prepričani, da želite izbrisati izbrane uporabnike $1? Njihovi domači imeniki vsebujejo $2 datoteke.
@@ -481,6 +498,7 @@ umass_del1=Izbriši uporabnike
 umass_del2=Izbrišite uporabnike in domače imenike
 umass_eroot=Ne smete izbrisati sistemskih uporabnikov (tistih z UID, manjšim ali enakim 10).
 umass_doing=Brisanje uporabnika $1.
+
 gmass_title=Izbriši skupine
 gmass_err=Brisanja skupin ni bilo mogoče
 gmass_sure=Ali ste prepričani, da želite izbrisati izbrane skupine $1?
@@ -490,16 +508,19 @@ gmass_del=Izbriši skupine
 gmass_eroot=Ne smete izbrisati sistemskih skupin (tiste z GID manjšim ali enakim 10).
 gmass_doing=Brisanje skupine $1.
 gmass_eprimary=Skupine $1 ni mogoče izbrisati, saj je to glavna skupina uporabnika $2.
+
 dmass_title=Onemogoči uporabnike
 dmass_sure=Ali ste prepričani, da želite onemogočiti $1 izbrane uporabnike? Pozneje jih je mogoče znova omogočiti brez izgube gesla ali podatkov.
 dmass_dis=Onemogoči uporabnike
 dmass_pass=Začasno zaklepanje gesla ..
 dmass_doing=Onemogočanje uporabnika $1.
 dmass_already=.. že onemogočeno!
+
 emass_title=Omogoči uporabnike
 emass_pass=Odklepanje gesla ..
 emass_doing=Omogočanje uporabniku $1.
 emass_already=.. že omogočeno!
+
 gbatch_title=Izvrši skupinsko datotečno datoteko
 gbatch_ecannot=Ne morete uporabiti obrazca skupinske datoteke
 gbatch_desc=Ta obrazec omogoča ustvarjanje, spreminjanje ali brisanje več skupin hkrati iz naložene ali lokalne besedilne datoteke. Vsaka vrstica v datoteki poda eno dejanje, odvisno od prvega polja. Oblike vrstic so :

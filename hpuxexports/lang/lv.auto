@@ -14,6 +14,7 @@ index_ro_rw=visi resursdatori lasīšanas piekļuvi, atlasītie resursi raksta p
 index_sel_rw=atlasītie mitinātāji raksta piekļuvi
 index_all_rw=visi saimnieki raksta piekļuvi
 index_sel_root=atlasītajiem resursiem nodrošina piekļuvi saknei
+
 edit_title=Rediģēt eksportēšanu
 create_title=Izveidot eksportu
 edit_details=Eksportēt informāciju
@@ -56,6 +57,7 @@ edit_anon_access=Anonīms lietotājs
 edit_anon_notset=Nav uzstādīts
 edit_anon_noaccess=Nav piekļuves
 edit_async=Asinhronie raksta
+
 save_err=Neizdevās saglabāt eksportu
 save_edir=Katalogs “$1” neeksistē
 save_enetgroup=Nederīga vai trūkst tīkla grupas
@@ -65,6 +67,7 @@ save_ehost='$2' - '$1' nav derīgs resursdatora nosaukums
 save_enohost='$1' - jūs neesat uzskaitījis nevienu saimnieku
 save_euids=UID neuzticamībai jābūt ar komatu atdalītam skaitļu vai diapazonu sarakstam
 save_egids=GID, kam neuzticas, jābūt ar komatu atdalītam skaitļu vai diapazonu sarakstam
+
 log_modify=Modificēts NFS eksports $1 
 log_modify_l=Modificēts NFS eksports no $1 uz $2 
 log_delete=Izdzēsts NFS eksports $1 

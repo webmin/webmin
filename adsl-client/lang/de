@@ -16,6 +16,7 @@ index_cancel=Verbindung beenden
 index_canceldesc=Es wird momentan eine ADSL-Verbindung hergestellt. Klicken Sie auf diesen Button, um diesen Vorgang mit dem Befehl $1 abzubrechen.
 index_cdemand=Auf Verlangen abbrechen
 index_cdemanddesc=Der ADSL-Client wartet derzeit darauf, Benutzer auf Verlangen die Verbindung zu beenden. Klicken Sie auf diesen Button, wenn Sie dies mit dem Befehl $1 ausführen möchten.
+
 index_header=ADSL-Client - Konfigurierbare Optionen
 index_desc=Diese Einstellungen werden erst bei der nächsten Anmeldung des ADSL-Clients aktiv. Wenn Sie diese ändern, dann müssen Sie die Verbindung beenden und neu aufbauen, damit die Änderungen wirksam werden.
 index_eth=Netzwerkinterface
@@ -36,11 +37,13 @@ index_fw_standalone=Für diesen Rechner
 index_fw_masquerade=Für ein NAT-Gateway
 index_connect=Konfigurierbare Dauer der Verbindung
 index_forever=Immer
+
 start_err=Konnte ADSL-Verbindung nicht starten
 start_title=Starte ADSL-Verbindung
 start_ip=Eine ADSL-Verbindung wurde eingerichtet. Derzeitige IP-Adresse: $1.
 start_demand=Da Sie "Verbindung auf Wunsch" angewählt haben, wird Ihre ADSL-Verbindung nur dann aktiviert, wenn diese benötigt wird.
 start_bg=Die ADSL-Verbindung konnte nicht innerhalb von 20 Sekunden aktiviert werden. Der ADSL-Client wird es solange versuchen, bis es klappt.
+
 save_err=Konnte ADSL-Verbindung nicht speichern
 save_eeth=Fehlende oder ungültige aussehende Ethernetschnittstelle
 save_etimeout=Fehlendes oder ungültige "Verbindung auf Wunsch"-Zeitangabe (timeout)
@@ -49,10 +52,12 @@ save_econnect=Fehlendes oder ungültiges "timeout"
 save_emss=Fehlende oder ungültige Maximum-Paketgröße
 save_title=Konfiguration speichern
 save_desc=Ihre ADSL-Client-Konfiguration wurde erfolgreich gespeichert, wird jedoch erst bei der nächsten Anmeldung/Anwahl aktiv.
+
 stop_err=Konnte ADSL-Verbindung nicht beenden
 stop_title=Beende ADSL-Verbindung
 stop_ok=Ihre ADSL-Verbindung wurde erfolgreich beendet.
 stop_failed=Ihre ADSL-Verbindung ist aus unerklärlichen Gründen immer noch aktiv!
+
 log_save=Client-Konfiguration gespeichert
 log_stop=ADSL-Verbindung beendet
 log_start=ADSL-Verbindung gestartet

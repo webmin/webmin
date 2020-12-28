@@ -6,6 +6,7 @@ index_start=Démarrer le serveur de commandes programmées
 index_startdesc=Démarrez le processus du serveur d'arrière-plan <tt>atd</tt> qui exécute les commandes planifiées. Ceci est nécessaire pour que les commandes s'exécutent aux heures spécifiées.
 index_boot=Démarrer le serveur au démarrage?
 index_bootdesc=Modifiez ce paramètre pour activer ou désactiver le démarrage du serveur de commandes planifiées au moment du démarrage du système.
+
 log_allow=Utilisateurs autorisés modifiés
 log_create_job=Commande planifiée créée pour $1 
 log_delete_job=Commande planifiée annulée pour $1 
@@ -15,5 +16,6 @@ log_stop=Serveur de commandes planifiées arrêté
 log_start=Démarrage du serveur de commandes planifiées
 log_bootup=Serveur de commandes planifiées activé au démarrage
 log_bootdown=Serveur de commandes planifiées désactivé au démarrage
+
 stop_err=Échec de l'arrêt du serveur
 start_err=Échec du démarrage du serveur

@@ -24,8 +24,10 @@ all=Kollha
 index_view=Ara ..
 index_viewfile=Ara l-fajl tal-ġurnal:
 index_viewok=Ara
+
 restart_ekill=Naqset milli tissinjalja l-proċess ta ’syslog $1 : $2 
 restart_ecannot=M'għandekx permess terġa 'tibda syslog
+
 start_ecannot=M'għandekx permess tibda syslog
 edit_title=Editja l-Ġurnal tas-Sistema
 create_title=Żid Ġurnal tas-Sistema
@@ -56,11 +58,13 @@ edit_tag=Għall-programm biss
 edit_return=dettalji tal-log
 edit_ecannot=M'għandekx permess teditja s-settings tal-log
 edit_ecannot2=M'għandekx permess teditja dan il-log
+
 view_title=Ara Logfile
 view_header=L-aħħar $1 linji ta ' $2 
 view_empty=Il-fajl tal-ġurnal huwa vojt
 view_refresh=Aġġorna
 view_filter=Uri biss linji bit-test $1 
+
 save_err=Ma rnexxielux isalva l-log
 save_efile="$1" mhux isem tal-fajl validu : $2 
 save_epipe="$1" mhux pajp validu msemmi
@@ -80,11 +84,13 @@ save_ecannot5=M'għandekx permess timmodifika dan il-log
 save_ecannot6=M'intix permess li tara zkuk arbitrarji
 save_ecannot7=M'għandekx permess tara dan il-ġurnal żejjed
 save_emissing=Fajl tal-ġurnal nieqes biex tarah
+
 log_modify=Log modifikat għal $1 
 log_create=Log miżjud ma ' $1 
 log_delete=Log imħassar għal $1 
 log_apply=Bidliet applikati
 log_start=Beda l-qtugħ fis-server
+
 desc_sysmesg=Messaġġi tas-Sistema
 desc_mail=Ġurnal tal-posta
 desc_auth=Ġurnal ta ’l-Awtentikazzjoni
@@ -93,6 +99,7 @@ desc_news=Ġurnal tal-Aħbarijiet NNTP
 desc_uucp=Log UUCP
 desc_debug=Messaġġi ta 'debugging
 desc_cron=Cron Job Job
+
 acl_noedit=Jista 'jara biss zkuk?
 acl_any=Tista 'tara kwalunkwe fajl bħala log?
 acl_logs=Tista 'tara u tikkonfigura fajls tal-log

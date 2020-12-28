@@ -16,6 +16,7 @@ index_refresh=Stav obnovy
 index_refreshdesc=Okamžitě vykonat obnovení stavů veškerého monitoringu, namísto čekání na další naplánovaný update.
 index_delete=Vymazat vybrané
 index_group=Členové z $1
+
 type_apache=Apache webserver
 type_inetd=Internet a RPC server
 type_xinetd=Rozšířený Internet server
@@ -63,6 +64,7 @@ type_dns=DNS vyhledávání
 type_query=SQL dotaz
 type_alive=Životaschopný systém
 type_rssh=Vzdálený SSH
+
 mon_create=Vytvořit monitorování
 mon_edit=Editovat monitorování
 mon_header=Detaily monitorování
@@ -113,6 +115,7 @@ mon_empty=Žádní členové
 mon_onemem=Jeden člen
 mon_members=$1 členů
 mon_enoremote=Ve vybraných není ke spuštění žádná skupina nebo host
+
 sched_title=Plánované monitorování
 sched_header=Nastavení monitorování naplánované na pozadí
 sched_mode=Povolena plnánovaná kontrola?
@@ -153,16 +156,19 @@ sched_smsno=Nikdo
 sched_smscarrier=Zavolat na carrier
 sched_smsnumber=s číslem
 sched_esmsnumber=Chybějící nebo neplatné číslo SMS
+
 up_since=Žije dokud $1
 depends_mod=Modul $1 není ve vašem systému nainstalován
 depends_os=Modul $1 není ve vašem systému podporován
 depends_remote=Modul $1 není vpodporován na serveru $2
+
 tcp_host=Host k připojení do
 tcp_port=Port k připojení do
 tcp_alarm=Časová prodleva připojení
 tcp_ehost=Chybějící nebo nesprávné jméno hosta
 tcp_eport=Chybějící nebo nesprávné číslo portu
 tcp_ealarm=Chybějící nebo nesprávná časová prodleva připojení
+
 http_url=URL na požadavky
 http_alarm=asová prodleva připojení
 http_eurl=Chybějící nebo nesprávná URL
@@ -177,11 +183,13 @@ http_regexp=Stránka musí odpovídat regulárnímu výrazu
 http_eregexp=Žádný regulární výraz pro stránku neodpovídá vloženému zadání
 http_none2=Neodpovídá
 http_ehead=Metoda požadavku HEAD nemůže být využita v případě, kdy kontrola obsahuje regulární výraz
+
 ping_host=Host pro ping
 ping_wait=Doba čekání na odezvu
 ping_ehost=Chybějící nebo nesprávné jméno hosta
 ping_ewait=Chybějící nebo nesprávná doba čekání
 ping_econfig=Nebyl nastaven žádný ping přikaz v konfiguraci modulu
+
 proc_pid=Práve běží s PID $1
 proc_cmd=Příkaz ke kontrole pro
 proc_not=Nahlásit chybu, jestliže je proces
@@ -190,8 +198,10 @@ proc_not1=Běží
 proc_ecmd=Chybějící příkaz
 proc_thresh=Číslo procesu, které musí existovat při<br>monitorování jeho spuštění
 proc_ethresh=Chybějící nebo neplatný počet procesů
+
 exec_cmd=Příkaz, který kontroluje stav opouštení
 exec_ecmd=Chybějící příkaz
+
 file_file=Soubor ke kontrole
 file_test=Testovat na provedení
 file_test_0=Soubor musí existovat
@@ -201,6 +211,7 @@ file_test_3=Soubor musí být menší než
 file_bytes=bytů
 file_efile=Chybějící soubor ke kontrole
 file_esize=Neplatná velikost souboru
+
 traffic_iface=Rozhraní pro monitorování
 traffic_bytes=Maximum bytes/second
 traffic_dir=Směr k monitorování
@@ -210,6 +221,7 @@ traffic_dir2=Pouze odchozí
 traffic_desc=Toto monitorování udržuje trasy síťových přenosů na vybraném rozhraní, dále zobrazuje, zda je monitorování shozené, či zda přenos je schopen přijmout níže uvedný počet bytů za vteřinu. Tato činnost pracuje správně pouze v případě, že je naplánované monitorování v krátkých intervalech, jako například každých 5 minut.
 traffic_eifaces=Váš operační systém nemá soubor /proc/net/dev
 traffic_ebytes=Chybějící nebo nesprávný počet bytes/second
+
 space_fs=Souborový systém ke kontrole
 space_min2=Minimální volné místo
 space_desc=$1 volné
@@ -219,6 +231,7 @@ space_emin=Chybějící nebo nesprávná hodnota pro udání volného místa
 space_eother=Chybějící nebo nesprávný souborový systém
 space_inode=Minimální počet volných inodů
 space_ierr=Pouze $1 inody(ů) volných
+
 load_time=Průměrné nahrávání ke kontrole
 load_1=1 minuta
 load_5=5 minut
@@ -227,20 +240,27 @@ load_max=Maximální průměrné nahrávání
 load_emax=Chybějící nebo nesprávné průměrné nahrávání
 load_ecmd=Příkaz <tt>uptime</tt> nebyl nalezen ve vašem systému
 load_efmt=Výstup příkazu <tt>uptime</tt> nemůže být rozebrán
+
 log_create=Vytvořeno monitorování $1
 log_modify=Modifikováno monitorování $1
 log_delete=Smazáno monitorování $1
 log_sched=Změněno plánování monitorování
 log_deletes=Smazáno $1 monitorování
+
 acl_edit=Může vytvořit a editovat monitorování?
 acl_sched=Může změnit plánování monitorování?
+
 change_file=Soubor pro monitorování
+
 jabber_eparser=Perl modul $1není nainstalován ve vašem systému.
+
 memory_min2=Minimální velikost volné paměti
 memory_emin=Chybějící nebo nesprávné určení volné paměti
 memory_eproc=Webmin neví, jak zkontrolovat volnou paměť u vašeho operačního systému
 memory_free2=$1 volného
+
 proftpd_etype=Tento monitoring nemůže být použit, pokud ProFTPD běží stand-alone
+
 mailserver_to=Poslat mail na adresu
 mailserver_timeout=časová prodleva a interval
 mailserver_units_0=Sekund(y)
@@ -248,19 +268,24 @@ mailserver_units_1=Minut(y)
 mailserver_units_2=Hodin(y)
 mailserver_units_3=Dnů(y)
 mailserver_desc=Níže uvedená adresa musí mít nastavenu automatickou odezvu, která automaticky odpovídá na zdrojovou adresu se stejným Předmětem.
+
 oldfile_file=Soubor pro monitoring (chyba, pokud není změněn)
 oldfile_diff=Chyba, pokud nebylo změněno pro
 oldfile_secs=secs
+
 raid_device=RAID zařízení
 raid_edevice=Nebylo vybráno žádné RAID zařízení
 raid_bad=Detekován špatný disk
 raid_resync=Momentálně resynchronizuje
 raid_notfound=RAID zařízení $1 nebylo nalezeno
 raid_other=Jiné..
+
 iface_iface=Rozhraní ke kontrole
+
 refresh_title=Stav obnovení
 refresh_doing=Obnovuje se stav veškerého monitoringu ..
 refresh_done=.. hotovo.
+
 sensors_name=Senzor ke kontrole
 sensors_value=Chyba, když
 sensors_value0=Systém indikuje varování
@@ -271,6 +296,7 @@ sensors_none=Ve vašem systému není detekován žádný senzor. Možná musít
 sensors_cur=$1 (momentálně $2 $3)
 sensors_emin=Chybějící nebo neplatná minimální hodnota
 sensors_emax=Chybějící nebo neplatná maximální hodnota
+
 nut_ups=NUT UPS ke kontrole
 nut_name=Atribut ke kontrole
 nut_value=Chyba, když
@@ -281,6 +307,7 @@ nut_eups=Není vložen USP ke kontrole
 nut_cur=$1 (momentálně $2)
 nut_emin=Chybějící nebo neplatná minimální hodnota
 nut_emax=Chybějící nebo neplatná maximální hodnota
+
 mailq_system=Mail server
 mailq_qmailadmin=Qmail
 mailq_postfix=Postfix
@@ -289,6 +316,7 @@ mailq_size=Maximální velikost poštovní fronty
 mailq_esize=Chybějící nebo neplatná maximální velikost fronty
 mailq_toomany=Shodit - $1 zpráv ve frontě
 mailq_ok=Nahodit -  $1 zpráv ve frontě
+
 dns_server=DNS server
 dns_host=Hostname pro zpětné vyhledávání
 dns_address=Očekávaná IP adresa
@@ -296,6 +324,7 @@ dns_eserver=Chybějící nebo neplatný DNS server
 dns_ehost=Chybějící nebo neplatně vyhlížející hostname pro zpětné vyhledávání
 dns_eaddress=Chybějící nebo neplatná očekávaná IP adresa
 dns_ecmds=Ve vašem systému není nainstalován ani příkaz <tt>nslookup</tt> ani příkaz <tt>dig</tt>
+
 monitor_sub_down=$1 shozen na $2
 monitor_pager_down=$1: "$2" je shozen $3
 monitor_snmp_down=$1: $2
@@ -326,7 +355,9 @@ monitor_sub3=Monitorování služby : $1 služeb
 monitor_run1=Běží $1 na $2 ..
 monitor_run2=Běží $1 ..
 monitor_runerr=Chyba při běhu $1 na $2 : $3
+
 deletes_egone=Jeden z vybraného monitoringu již neexistuje
+
 ftp_host=Host FTP serveru
 ftp_port=FTP port
 ftp_user=Přihlásit se pod uživatelem
@@ -337,6 +368,7 @@ ftp_none=Nic (pouze přihlášení)
 ftp_ehost=Chybějící nebo neplatný host FTP serveru
 ftp_eport=Chybějící nebo neplatný port FTP serveru
 ftp_efile=Chybějící nebo neplatný soubor ke stažení
+
 query_driver=Typ SQL databáze
 query_db=Název databáze
 query_host=Host databázového serveru
@@ -357,9 +389,12 @@ query_elogin=Chyba při přihlašování : $1
 query_eprepare=SQL chyba : $1
 query_eexecute=Chyba SQL : $1
 query_ewrong=Nesprávný výsledek : $1
+
 consume_rate=Maximální podíl na spotřebě (za sekundu)
 consume_high=Podíl na spotřebě je $1 /sekunda
+
 alive_up=Nahodit pro $1
+
 rssh_host=Host SSH server
 rssh_ruser=Přihlásit se pod uživatelem
 rssh_rpass=Přihlásit se s heslem

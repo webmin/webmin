@@ -16,8 +16,10 @@ index_type=SSH nøkkeltype:
 index_rsa1=RSA (for SSH v1)
 index_rsa=RSA (for SSH v2)
 index_dsa=DSA (for SSH v2)
+
 bits=bits
 secs=sekunder
+
 users_title=Autentisering
 users_header=Innstillinger for innlogging og autentisering
 users_expire=Antall dager før konto-utløp at brukeren advares
@@ -54,6 +56,7 @@ users_eauthkeys=Manglende eller ugyldig fil med autoriserte nøkler
 users_maxauthtries=Maks. antall innloggingsforsøk per tilkobling
 users_emaxauthtries=Manglende eller ugyldig antall innloggingsforsøk per tilkobling
 users_chal=Bruk utfordring-svar autentisering?
+
 net_title=Nettverk
 net_header=Innstillinger for nettverk
 net_port=Lytt på port
@@ -91,6 +94,7 @@ net_eprots=Du må velge minste en protokoll
 net_eladdress='$1' er ikke en gyldig adresse å lytte på
 net_elport='$1' er ikke en gyldig port å lytte på
 net_elisten2=Ingen lytteadresser angitt
+
 access_title=Tilgangskontroll
 access_header=Tilgangskontroll-innstillinger for nettverk og innlogging
 access_allowu=Bare tillat brukerene
@@ -108,6 +112,7 @@ access_eallowg=Ingen grupper angitt for tillating
 access_edenyg=Ingen grupper angitt for nekting
 access_eallowh=Ingen verter angitt for tillating
 access_edenyh=Ingen verter angitt for nekting
+
 misc_title=Forskjellig innstillinger
 misc_header=Andre forskjellige SSH tjener innstillinger
 misc_x11=Tillat videresending av X11 tilkoblinger?
@@ -131,14 +136,17 @@ misc_eumask=Manglende eller ugyldig 4-siffers oktal umask
 misc_ebits=Manglende eller ugyldig tjener nøkkel-størrelse
 misc_eregen=Manglende eller ugyldig nøkkel-regenererings intervall
 misc_epid=Manglende sti til PID fil
+
 start_err=Kunne ikke starte SSH tjener
 apply_epid=Kjører ikke
+
 hosts_title=Innstillinger for klient vert
 hosts_header=SSH klientverter
 hosts_none=Ingen klient-vert innstillinger er definert. Alle SSH klientinnlogginger vil bruker standardinnstillingene.
 hosts_all=Alle verter
 hosts_add=Legg til innstillinger for klientvert.
 hosts_return=liste over klientverter
+
 host_create=Legg til verts-innstillinger
 host_edit=Rediger innstillinger for vert
 host_header=Klient-innstillinger for SSH vert
@@ -194,6 +202,7 @@ host_eprots=Du må velge minst en protokoll
 host_proxy=Proxy kommando for tilkobling
 host_proxy_def=Ingen
 host_eproxy=Manglende eller ugyldig proxy kommando for tilkobling
+
 log_users=Endret autentiserings-alternativer
 log_net=Endret nettverksinnstillinger
 log_access=Endret tilgangskontroll
@@ -208,6 +217,7 @@ log_stop=Stoppet SSH tjener
 log_start=Startet SSH tjener
 log_apply=Tok i bruk konfigurasjon
 log_manual=Manuell redigering av konfig.fil $1
+
 sync_title=Oppsett av bruker SSH nøkkel
 sync_desc=Denne siden lar deg konfigurere automatisk oppsett av SSH for nye Unix brukere opprettet på systemet ditt. Hvis denne er konfigurert, vil nye brukere ikke trenge å kjøre <tt>ssh-keygen</tt> før de bruker SSH.
 sync_create=Sett opp SSH nøkkel for nye Unix brukere?
@@ -216,9 +226,11 @@ sync_pass=Bruk passord som passfrase for nøkkel?
 sync_gnupg=Sett opp GNUPG nøkkel for nye Unix brukere?
 sync_type=Nøkkel-type
 sync_auto=&lt;Automatisk&gt;
+
 keys_title=Vert SSH nøkler
 keys_desc=Denne siden lar de seg SSH nøklene for denne verten.
 keys_none=Kunne ikke finne noen HostKey oppføringer i din SSHD konfigurasjon.
+
 manual_title=Rediger konfig.filer
 manual_ecannot=Du har ikke tilgang til å redigere SSH tjenerens konfig-fil
 manual_ok=Rediger
@@ -226,5 +238,6 @@ manual_efile=Valgt fil er ikke en del av SSH tjenerens konfigurasjon
 manual_file=Rediger konfigfil:
 manual_edata=Ingenting angitt!
 manual_err=Kunne ikke lagre konfig-fil
+
 dknown_err=Kunne ikke slette kjente verter
 dknown_enone=Ingen valgt

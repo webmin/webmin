@@ -45,6 +45,7 @@ index_ondate=日期
 index_charset=自動回复消息字符集
 index_subject=自動回复郵件主題
 index_nowebmin=該模塊僅在Usermin中使用。如果在Webmin中可見，則說明您使用的主題不完整。
+
 edit_title1=創建過濾器
 edit_title2=編輯過濾器
 edit_header1=過濾條件
@@ -71,6 +72,7 @@ edit_amode7=保存到名為的新文件夾
 edit_nobounce=禁止轉發退回郵件
 edit_apply=在文件夾中顯示匹配的電子郵件：
 edit_move=應用於文件夾中的電子郵件：
+
 save_err=保存過濾器失敗
 save_egone=過濾器已不存在！
 save_econdheader=電子郵件標題缺失或無效
@@ -89,8 +91,10 @@ save_enewfolder3=具有相同名稱的文件夾已存在
 save_estart=自動回復開始日期無效
 save_eend=自動回复結束日期無效
 save_echarset=自動回複字符集缺失或無效
+
 delete_err=刪除過濾器失敗
 delete_enone=未選擇
+
 aliases_type1=地址1
 aliases_type2=文件 $1中的地址
 aliases_type3=文件 $1
@@ -101,6 +105,7 @@ aliases_your=您的郵箱
 aliases_delete=刪除郵件
 aliases_other=用戶 $1的郵箱
 aliases_auto=具有消息 $1的自動回复
+
 auto_title=電子郵件自動回复
 auto_header=自動電子郵件回複選項
 auto_enabled=啟用自動回复？
@@ -111,12 +116,14 @@ auto_charsetdef=從當前語言
 auto_charsetother=其他字符集
 auto_period=最小回复間隔
 auto_err=保存自動回复失敗
+
 forward_title=轉發郵件
 forward_header=電子郵件轉發選項
 forward_enabled=啟用電子郵件轉發？
 forward_to=轉發到地址
 forward_cont=還正常發貨嗎？
 forward_err=保存電子郵件轉發失敗
+
 move_err=無法套用篩選器
 move_esrc=源文件夾 $1不存在！
 move_edest=目標文件夾 $1不存在！

@@ -11,8 +11,10 @@ index_reposdisable=Wyłącz repozytoria
 index_reposenable=Włącz repozytoria
 index_reposdelete=Usuń repozytoria
 index_repoheader=Nowe opcje repozytorium pakietów
+
 update_title2=Zainstaluj pakiety
 update_enone=Nie wybrano żadnych pakietów
+
 log_enable_repos=Włączono repozytoria pakietów $1 
 log_disable_repos=Wyłączono repozytoria pakietów $1 
 log_delete_repos=Usunięte repozytoria pakietów $1 
@@ -20,6 +22,7 @@ log_enable_repo=Włączone repozytorium pakietów $1
 log_disable_repo=Wyłączone repozytorium pakietów $1 
 log_delete_repo=Usunięte repozytorium pakietów $1 
 log_create_repo=Utworzono repozytorium pakietów $1 
+
 repos_err_disable=Nie udało się wyłączyć repozytoriów
 repos_err_enable=Nie udało się włączyć repozytoriów
 repos_err_delete=Nie udało się usunąć repozytoriów

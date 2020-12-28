@@ -15,6 +15,7 @@ index_use=Sử dụng
 index_free=Miễn phí
 index_format=Đĩa này không được định dạng
 index_return=danh sách đĩa
+
 edit_ecannot=Bạn không được phép chỉnh sửa đĩa này
 edit_title=Chỉnh sửa phân vùng
 edit_header=Chi tiết phân vùng
@@ -56,6 +57,7 @@ edit_tunedesc2=Bạn không thể điều chỉnh hệ thống tập tin trên p
 edit_tunedesc3=Bạn không thể điều chỉnh hệ thống tập tin trên phân vùng này vì nó hiện đang được gắn. Sử dụng <a href=/mount/>mô-đun hệ thống tệp</a> để ngắt kết nối trước.
 edit_tunedesc4=Bạn không thể điều chỉnh hệ thống tập tin trên phân vùng này vì nó không có hệ thống tập tin.
 edit_tunedesc5=Bạn không thể điều chỉnh hệ thống tệp trên phân vùng này vì chỉ có thể điều chỉnh hệ thống tệp <tt>UFS</tt>.
+
 save_ecannot=Bạn không được phép chỉnh sửa đĩa này
 save_edelete=Không thể xóa phân vùng
 save_esave=Không thể lưu phân vùng
@@ -64,6 +66,7 @@ save_eend='$1' không phải là hình trụ kết thúc hợp lệ
 save_estartmin=Xylanh bắt đầu phải> 0
 save_eendmax=Hình trụ kết thúc phải < $1 
 save_estartend=Xi lanh bắt đầu phải nhỏ hơn kết thúc
+
 newfs_title=Tạo hệ thống tập tin
 newfs_ecannot=Bạn không được phép định dạng đĩa này
 newfs_desc=Nhấp vào nút ở dưới cùng của biểu mẫu này sẽ tạo $1 mới trên thiết bị $2. Tất cả dữ liệu trên phân vùng này sẽ bị xóa vĩnh viễn.
@@ -89,6 +92,7 @@ newfs_err=Không thể tạo hệ thống tập tin
 newfs_exec=Thực hiện lệnh $1 ..
 newfs_failed=.. Lệnh không thành công!
 newfs_ok=.. lệnh hoàn thành.
+
 fsck_title=Sửa chữa hệ thống tập tin
 fsck_ecannot=Bạn không được phép sửa đĩa này
 fsck_desc=Nhấp vào nút <b>Sửa chữa</b> sẽ kiểm tra và tùy chọn sửa chữa $1 trên $2. Mức độ kiểm tra và sửa chữa được xác định bởi sự lựa chọn của bạn dưới đây.
@@ -106,6 +110,7 @@ fsck_37=quá trình bị giết trong quá trình kiểm tra
 fsck_39=phát hiện lỗi không chính xác!
 fsck_40=không phát hiện lỗi
 fsck_unknown=lỗi không thể nhận biết
+
 tunefs_title=Điều chỉnh hệ thống tập tin
 tunefs_ecannot=Bạn không được phép điều chỉnh đĩa này
 tunefs_desc=Biểu mẫu này cho phép bạn điều chỉnh các thông số khác nhau của $1 trên $2. Các tập tin hiện có trên hệ thống tập tin này sẽ không bị tổn hại.
@@ -122,6 +127,7 @@ tunefs_err=Không thể điều chỉnh hệ thống tập tin
 tunefs_exec=Thực hiện lệnh $1 ..
 tunefs_failed=.. Lệnh không thành công!
 tunefs_ok=.. lệnh hoàn thành.
+
 select_device=Bộ điều khiển SCSI $1 mục tiêu $2 đơn vị $3 
 select_idedevice=Thiết bị IDE $1 
 select_part=Bộ điều khiển SCSI $1 mục tiêu $2 đơn vị $3 phân vùng $4 
@@ -131,10 +137,13 @@ esun=Phân vùng chỉ có thể được sửa đổi trên phần cứng của
 emounted=Đĩa đã gắn phân vùng
 elast=Phân vùng cuối cùng không thể được gỡ bỏ
 eformat=<tt>định dạng</tt> không tìm thấy bất kỳ đĩa nào!
+
 fstype_ufs=Hệ thống tập tin Unix Solaris
 fstype_unknown=Hệ thống tập tin không xác định
+
 acl_disks=Đĩa người dùng này có thể phân vùng và định dạng
 acl_dall=Tất cả các đĩa
 acl_dsel=Đã chọn ..
 acl_view=Có thể chỉnh sửa đĩa và phân vùng?
+
 ecannot=Bạn không được phép chỉnh sửa phân vùng

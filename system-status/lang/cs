@@ -39,6 +39,7 @@ right_upsec=Je dostupná aktualizace $1 balíčků, přičemž $2 z nich jsou be
 right_recollect=Obnovit informace o systému
 right_vvirtualmin=Verze Virtualminu
 right_vvm2=Verze Cloudminu
+
 acl_show=Dostupne informace o systému
 acl_showall=Vše
 acl_showsel=Jen vybrané ..

@@ -9,6 +9,7 @@ index_start=Uruchom Syslog-NG
 index_startdesc=Kliknij ten przycisk, aby uruchomić demona Syslog-NG przy użyciu bieżącej konfiguracji.
 index_return=indeks modułu
 index_version=Syslog-NG $1 
+
 options_title=Opcje rejestrowania
 options_header=Opcje dla wszystkich plików dziennika
 options_secs=sekundy
@@ -55,6 +56,7 @@ options_esync=Brakująca lub niepoprawna liczba wiadomości do buforowania przed
 options_estats=Brakujący lub nienumeryczny czas oczekiwania między wiadomościami statystycznymi
 options_elog_fifo_size=Brakująca lub niepoprawna liczba wiadomości do buforowania
 options_elog_msg_size=Brakujący lub nienumeryczny maksymalny rozmiar dziennika
+
 destinations_title=Miejsca docelowe dziennika
 destinations_name=Nazwa miejsca docelowego
 destinations_type=Napisz do
@@ -77,6 +79,7 @@ destinations_add=Dodaj nowy cel dziennika.
 destinations_return=miejsca docelowe dziennika
 destinations_desc=Dziennik innego modułu
 destinations_cmd=Wyjście z $1 
+
 destination_header=Opcje miejsca docelowego dziennika
 destination_title1=Utwórz miejsce docelowe dziennika
 destination_title2=Edytuj miejsce docelowe dziennika
@@ -117,17 +120,22 @@ destination_enet_localip=Brakujący lub nieprawidłowy lokalny adres IP
 destination_enet_localport=Brakujący lub nieprawidłowy numer portu lokalnego
 destination_enet_host=Brakujący lub nieprawidłowy host lub adres serwera Syslog
 destination_eunix=Brak nazwy gniazda Unix
+
 ddelete_err=Nie udało się usunąć miejsc docelowych
 ddelete_enone=Nie wybrano
 ddelete_eused=Miejsce docelowe $1 nie może zostać usunięte, ponieważ jest używane przez cel dziennika
+
 sdelete_err=Nie udało się usunąć źródeł
 sdelete_enone=Nie wybrano
 sdelete_eused=Źródło dziennika $1 nie może zostać usunięte, ponieważ jest używane przez cel dziennika
+
 fdelete_err=Nie udało się usunąć filtrów
 fdelete_enone=Nie wybrano
 fdelete_eused=Filtr dziennika $1 nie może zostać usunięty, ponieważ jest używany przez cel dziennika
+
 ldelete_err=Nie udało się usunąć celów dziennika
 ldelete_enone=Nie wybrano
+
 filters_title=Filtry dziennika
 filters_name=Nazwa filtra
 filters_desc=Warunki
@@ -144,6 +152,7 @@ filters_program=program <tt>$1</tt>
 filters_match=pasuje do „$1”
 filters_host=z nazwy hosta <tt>$1</tt>
 filters_netmask=od nadawcy <tt>$1</tt>
+
 filter_title1=Utwórz filtr dziennika
 filter_title2=Edytuj filtr dziennika
 filter_header=Szczegóły specyfikacji filtru dziennika
@@ -169,6 +178,7 @@ filter_enet=Brakujący lub nieprawidłowy adres IP sieci
 filter_emask=Brakująca lub nieprawidłowa maska sieci
 filter_ebool=Błąd złożonego wyrażenia
 filter_egone=Filtr już nie istnieje!
+
 logs_title=Zaloguj cele
 logs_source=Źródła
 logs_filter=Filtry
@@ -177,6 +187,7 @@ logs_add=Dodaj nowy cel dziennika.
 logs_delete=Usuń wybrane cele dziennika
 logs_return=rejestrować cele
 logs_none=Żaden
+
 log_title1=Utwórz cel dziennika
 log_title2=Edytuj cel dziennika
 log_header=Wybierz źródło dziennika, filtr i miejsce docelowe
@@ -190,6 +201,7 @@ log_flags=Opcje docelowe
 log_egone=Cel dziennika już nie istnieje!
 log_err=Nie udało się zapisać celu dziennika
 log_esource=Nie wybrano żadnych źródeł
+
 sources_title=Źródła dziennika
 sources_none=Nie zdefiniowano jeszcze żadnych źródeł!
 sources_add=Dodaj nowe źródło dziennika.
@@ -207,6 +219,7 @@ sources_typen=Strumień słoneczny
 sources_typenw=Serwer Syslog
 sources_return=źródła dziennika
 sources_none2=Żaden
+
 source_title1=Utwórz źródło dziennika
 source_title2=Edytuj źródło dziennika
 source_header=Opcje źródła dziennika
@@ -243,15 +256,20 @@ source_door=Nazwa pliku drzwi
 source_esun_streams_name=Brakująca lub nieprawidłowa nazwa pliku strumieni Sun
 source_edoor=Brakująca lub nieprawidłowa nazwa pliku drzwi przesyłanych strumieniowo przez firmę Sun
 source_transport=Protokół sieciowy
+
 view_title=Wyświetl plik dziennika
 view_header=Ostatnie $1 wierszy z $2 
 view_empty=Plik dziennika jest pusty
 view_refresh=Odświeżać
 view_filter=Pokaż tylko wiersze z tekstem $1 
+
 apply_err=Nie można zastosować konfiguracji
 apply_egone=Nie działa!
+
 start_err=Nie udało się uruchomić serwera Syslog-NG
+
 stop_err=Nie udało się zatrzymać serwera Syslog-NG
+
 log_create_destination=Utworzono miejsce docelowe dziennika $1 
 log_modify_destination=Zmodyfikowano miejsce docelowe dziennika $1 
 log_delete_destination=Usunięto miejsce docelowe dziennika $1 

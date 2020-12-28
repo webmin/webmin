@@ -39,7 +39,9 @@ index_thost=Jméno počítače
 index_tdesc=Poznámka
 index_tver=Verze
 index_ttype=Typ OS
+
 this_server=tento server
+
 add_title=Přidat servery
 add_msg=Přidání $1 ..
 add_gmsg=Přidání serverů do skupiny $1 ..
@@ -49,6 +51,7 @@ add_echeck=Server $1 nemá configurační modul Webminu
 add_echeck2=Server $1 nená modul uživatelů Webminu
 add_eversion=Na serveru $1 neběží Webmin verze $2 nebo vyžší.
 add_ok=Přidal $1 s $2 moduly, $3 tématy, $4 uživately a $5 skupinami.
+
 refresh_title=Obnovení seznamu modulů a uživatelů
 refresh_header=Znovu žádám seznamy modulů, uživatelů a skupin od všech serverů ..
 refresh_header4=Znovu žádám seznamy modulů, uživatelů a skupin od členů z $2 ..
@@ -64,6 +67,7 @@ refresh_g2=Vymazáno $1 skupin.
 refresh_done=.. hotovo
 refresh_del=Odstraněno $1 ze seznamu servrů
 refresh_failed=Obnovení $1 : $2 selhalo
+
 host_title=Zpravovaný server
 host_header=Dataily spravovaných Webmin serverů
 host_name=Jméno počítače
@@ -81,6 +85,7 @@ host_header_u=Uživatelé Webminu
 host_header_g=Skupiny Webminu
 host_return=detaily serveru
 host_version2=Verze
+
 edit_title_mod=Úprava modulu
 edit_title_theme=Úprava tématu
 edit_header_mod=Detaily Webmin modulu z $1
@@ -104,6 +109,7 @@ edit_acl=Upravit ACL pro
 edit_uacl=Uživatel $1 na $2
 edit_gacl=Skupina $1 na $2
 edit_config=Úprana konfigurace na
+
 install_err=Chyba při instalaci modulu
 install_title=Instalovat modul
 install_elocal=Lokální soubor nebyl stanovený
@@ -124,6 +130,7 @@ do_failed=Instalace na $1 : $2 selhala
 do_success_mod=Nainstalován modul $2 na $1
 do_success_theme=Nainstalováno téma $2 na $1
 do_done=.. hotovo
+
 delete_err=Chyba při mazávání modulu
 delete_epack=Modul $1 neexistuje
 delete_title=Odstraněné moduly
@@ -141,6 +148,7 @@ delete_edepends=Modul(y) $1 závisí na.
 delete_egone=Modul už neexistuje
 delete_esuccess=Vymazání z $1 : $1 proběhlo úspěšně
 delete_acls=Odstranit z uživatelů a resetovat nastavení přístupových práv?
+
 user_title1=Vytvořit uživatele Webminu
 user_header1=Detaily nového uživatele Webminu
 user_name=Uživatelské jméno
@@ -199,11 +207,13 @@ user_all=&lt;Všichni hostitelé&gt;
 user_donthave=&lt;hostitelé zde neuvedení&gt;
 user_have=&lt;hostitelé zde uvedení&gt;
 user_ofgroup=Členové z $1
+
 udelete_title=Vymazat uživatele
 udelete_doing=Mažu uživatele $1 ze všech hostitelů ..
 udelete_success=Vymazání z $1 bylo úspěšné
 udelete_failed=Vymazání z $1 : $2 selhalo
 udelete_done=.. hotovo
+
 group_title1=Vytvořit skupinu
 group_header1=Detaily nové Webmin skupiny
 group_name=Skupina jméno
@@ -231,6 +241,7 @@ group_failed2=Selhala aktualizace skupiny na $1 : $2
 group_return=detaily skupiny
 group_nomems=Žádní členové
 group_servers=Server(y) vytvořit na
+
 gdelete_title=Vymazat skupinu
 gdelete_desc=Jste si jistí, že chcete vymazat skupinu $1 a její členské uživatele $2 ze všech hostitelů?
 gdelete_ok=Vymazat skupinu
@@ -239,6 +250,7 @@ gdelete_success=Úspěšně smazáno z $1
 gdelete_failed=Vymazání z $1 : $2 selhalo
 gdelete_done=.. hotovo
 gdelete_esub=Tato skupina má podskupiny $1 a proto nemůže být smazána.
+
 acl_title=Modul řízení přístupu
 acl_title2=Pro uživatele $1 z $2 na $3
 acl_title3=Pro skupinu $1 z $2 na $3
@@ -257,6 +269,7 @@ acl_doing2=Natavení kontroly přístupu pro $1 na $2 ..
 acl_success=Nastavení kontroly přístupu na $1 proběhlo úspěšně
 acl_failed=Natavení kontroly přístupu na $1 : $2 selhalo
 acl_done=.. hotovo
+
 sync_title=Synchronizace serverů
 sync_desc=Tento formulář umožní vytvořit uživatele a skupiny Webminu na servrech, kde v současnosti nejsou, účty přenese pomocí synchronizace na všechny servery ve Vašem clustru.
 sync_hosts=Servery k synchronizaci
@@ -280,6 +293,7 @@ sync_gcreate=Přidat Webmin skupinu $1 ..
 sync_acl=Kopíruji ACL soubory pro $1 ..
 sync_test=Jen ukázat, že co by bylo uděláno?
 sync_restart=Restart Webminu ..
+
 upgrade_title=Povýšení Webminu
 upgrade_header=Aktualizuji Webmin na všech hostitelích ..
 upgrade_header2=Aktualizuji Webmin na $1 ..
@@ -298,6 +312,7 @@ upgrade_failed=Instalace na $1 : $2 selhala
 upgrade_done=.. hotovo
 upgrade_efast=Pouze servry používající rychlý RPC mód byly aktualizovány
 upgrade_ereconn=Znovu připojení k Webminu po aktualizaci selhalo! : $1
+
 update_title=Aktualizace modulů
 update_header=Aktualizuji moduly na všech hostitelích ..
 update_header5=Aktualizuji moduly na $2 ..
@@ -305,6 +320,7 @@ update_header4=Aktualizuji moduly na členech z $2 ..
 update_onhost=Výsledek aktualizace na $1 ..
 update_failed=.. aktualizace selhala : $1
 update_none=.. žádné aktualizace nebyli nalezeny.
+
 config_title=Úprava konfigurace modulu
 config_enone=Žádní hostitelé s instalovaným modulem nebyli vybráni
 config_ethis=Modul není instalován na tomto serveru

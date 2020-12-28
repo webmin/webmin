@@ -12,6 +12,7 @@ index_eprog=Izvršljivega strežnika NFS v vašem sistemu ni bilo mogoče najti.
 index_delete=Izbrišite izbrane izvoznike
 index_disable=Onemogoči izbrano
 index_enable=Omogoči izbrano
+
 edit_title=Uredi izvoz
 create_title=Ustvari izvoz
 edit_details=Izvozi podrobnosti
@@ -65,6 +66,7 @@ edit_sec_krb5i=Kerberosova celovitost
 edit_sec_krb5p=Kerberosova zasebnost
 edit_sec_lipkey=LIPKEY
 edit_sec_spkm=SPKM
+
 save_err=Izvoza ni bilo mogoče shraniti
 save_edir=Imenik '$1' ne obstaja
 save_epfs=Pot psevdo datotek "$1" ne izgleda kot absolutna pot
@@ -78,6 +80,7 @@ save_pfs='$1' je že izvožen kot imenik
 save_create_dir=Imenika »$1« ni mogoče ustvariti
 save_eanonuid=Neveljavno uporabniško ime za anonimni dostop
 save_eanongid=Neveljavno ime anonimne skupine dostopov
+
 exports_webnfs=Odjemalci WebNFS
 exports_ngroup=Netgroup $1 
 exports_net=Omrežje $1 
@@ -85,6 +88,7 @@ exports_all=Vsi
 exports_hosts=Gostitelji $1 
 exports_host=Gostitelj $1 
 exports_gss=Potrjeno omrežje: $1 
+
 log_modify=Spremenjen izvoz NFS $1 
 log_modify_l=Spremenjen izvoz NFS $1 do $2 
 log_delete=Izbrisan NFS izvoz $1 

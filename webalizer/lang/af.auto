@@ -26,6 +26,7 @@ index_when=Ja, $1
 index_webalizer=Webalizer
 index_enable=Skedule gekies
 index_disable=De-skedule gekies
+
 edit_title1=Voeg loglêer by
 edit_title2=Redigeer loglêer
 edit_header=Opsies vir logbestandverslae
@@ -49,12 +50,14 @@ edit_cmode0=Gebruik wêreldwye opsies
 edit_cmode1=Pasgemaakte opsies
 edit_cmode2=Ander config lêer ..
 edit_clear=Vee loglêers (le) na die geskeduleerde verslag uit?
+
 gen_title=Genereer verslag
 gen_header=Webalizer laat loop om verslag vanaf $1 te genereer.
 gen_done=.. klaar
 gen_failed=.. Webalizer het misluk! Raadpleeg die afvoer hierbo vir besonderhede.
 gen_nothing=.. Webalizer klaar, maar geen verslag is gegenereer nie. Raadpleeg die afvoer hierbo vir besonderhede.
 gen_view=Kyk na voltooide verslag.
+
 save_err=Kon nie die loglêer stoor nie
 save_efile=Loglêer is nie ingevoer nie of bestaan nie
 save_ecfile=Ander konfigurasie-lêer ontbreek of bestaan nie
@@ -64,12 +67,14 @@ save_ewuser=Geen Unix-gebruiker genaamd $1 bestaan nie
 save_ehost=Ontbrekende of ongeldige webwerfgasheernaam
 save_etitle=Verslagtitel ontbreek
 save_ecannot=U mag slegs verslae genereer vir logs onder $1 
+
 view_epath=Ongeldige PATH_INFO
 view_efile=Ongeldige verslaglêernaam
 view_elog=Ongeldige loglêer
 view_ecannot=U mag nie hierdie verslag bekyk nie
 view_eopen=Kon nie die lêer oopmaak nie
 view_title=Bekyk verslag
+
 global_title=Wêreldwye webalizer-opsies
 global_title2=Webalizer-verslagopsies
 global_for=Vir loglêer $1 
@@ -130,6 +135,7 @@ global_includesite=Kliënte om nie te ignoreer nie
 global_includereferrer=Verwysers om nie te ignoreer nie
 global_includeuser=Gebruikers om nie te ignoreer nie
 global_includeagent=Blaaiers om nie te ignoreer nie
+
 global_err=Webalizer-opsies kon nie gestoor word nie
 global_ereport=Ontbreking van die titelverslag
 global_ehost=Ontbrekende of ongeldige gasheernaam
@@ -139,6 +145,7 @@ global_etable=Grootte of 'n ongeldige grootte vir '$1' -tabel ontbreek
 global_ehistory=Ontbrekende of ongeldige geskiedenislêernaam
 global_ecurrent=Inkrementele lêernaam ontbreek of ongeldig
 global_ecache=DNS-cache-lêernaam ontbreek of ongeldig
+
 log_create_log=Rapportering vir $1 geskep
 log_modify_log=Gewysigde verslagdoening vir $1 
 log_delete_log=Rapportering vir $1 is uitgevee
@@ -147,6 +154,7 @@ log_global=Gewysigde globale Webalizer-opsies
 log_global2=Gewysigde Webalizer-opsies vir $1 
 log_enable_logs=Geplande verslagdoening oor $1 -loglêers
 log_disable_logs=Geprogrammeerde verslagdoening oor $1 logs
+
 acl_view=Kan slegs bestaande verslae gesien word?
 acl_global=Kan globale webalizer-opsies gewysig word?
 acl_dir=Laat slegs die verslae en redigering van verslae vir logs onder toe

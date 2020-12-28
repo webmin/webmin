@@ -30,6 +30,7 @@ index_sdesc=Handlingsbeskrivelse indeholder
 index_shost=Kilde Webmin-server
 index_long=Vis fulde handlingsbeskrivelser?
 index_global=&lt;Ikke i noget modul&gt;
+
 search_title=Søgeresultater
 search_date=Dato
 search_time=Tid
@@ -63,6 +64,7 @@ search_global_baduser=Dårligt brugernavn
 search_global_badpass=Dårligt kodeord
 search_global_twofactor=Ugyldig tofaktortoken
 search_csv=Eksporter som CSV.
+
 view_title=Handlingsdetaljer
 view_header=Detaljer om logget handling $1 
 view_action=Beskrivelse
@@ -96,12 +98,14 @@ view_files=Filer ændret, og kommandoer køres
 view_raw=Raw log data
 view_rawname=Parameternavn
 view_rawvalue=Parameterværdi
+
 acl_mods=Kan se logfiler i moduler
 acl_all=Alle
 acl_sel=Valgt nedenfor ..
 acl_self=Kun mig selv
 acl_users=Kan se handlinger fra brugere
 acl_rollback=Kan rulle handlinger tilbage?
+
 rollback_title=Rollback Action
 rollback_rusure=Er du sikker på, at du vil vende alle de filer, der er anført nedenfor til deres indhold, før denne handling blev udført? Alle data, som de i øjeblikket indeholder, vil blive overskrevet af følgende ændringer :
 rollback_isdir=Et bibliotek - der foretages ingen ændringer.
@@ -124,4 +128,5 @@ rollback_modfile=Rullet tilbage indholdet af filen $1.
 rollback_deleted=Slettet fil $1.
 rollback_nodeleted=Springet ikke-eksisterende fil $1.
 rollback_enone=Ingen filer valgt
+
 log_rollback=Rullet tilbage $1 i modul $2 

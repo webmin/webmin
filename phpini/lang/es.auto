@@ -9,17 +9,21 @@ index_edit=Gestionar
 index_manual=Editar manualmente
 index_anyfile=Edite otro archivo de configuración de PHP:
 index_return=Archivos de configuración
+
 file_global=Configuración global de PHP
 file_eread=Error al leer $1 : $2 
+
 manual_title=Editar configuración manualmente
 manual_desc=Esta página se puede usar para editar manualmente un archivo de configuración de PHP. Esto debe hacerse con cuidado, ya que no se realizará ninguna sintaxis u otra verificación de validez en sus cambios.
 manual_err=Error al editar el archivo de configuración
 manual_edata=No hay nuevos contenidos ingresados
+
 list_title=Administrar la configuración de PHP
 list_ecannot=No tiene permiso para administrar este archivo de configuración de PHP
 list_return=Configuración PHP
 list_format_ini=Formato INI
 list_format_fpm=Formato FPM
+
 vars_title=Variables PHP
 vars_header=Opciones de creación y cotización de variables PHP
 vars_magic=¿Citar todas las variables de entrada?
@@ -28,6 +32,7 @@ vars_register=¿Convertir todas las entradas en variables globales?
 vars_args=¿Convertir los parámetros de la línea de comandos en variables globales?
 vars_long=¿Crear matrices de estilo antiguo como <tt>HTTP_GET_VARS</tt>?
 vars_err=Error al guardar la configuración de variables de PHP
+
 dirs_title=Configuraciones de directorio
 dirs_header=Script PHP y configuración de directorio de extensión
 dirs_include=Buscar directorios para incluye
@@ -39,6 +44,7 @@ dirs_err=Error al guardar la configuración del directorio
 dirs_eincs=No incluye directorios de búsqueda ingresados
 dirs_eutmp=Directorio de archivos temporales faltantes o no válidos
 dirs_eext=Falta el directorio de extensiones
+
 db_title=Configuraciones de base de datos
 db_header1=Configuración de conexión de base de datos MySQL
 db_persist=¿Permitir conexiones de base de datos persistentes?
@@ -57,6 +63,7 @@ db_emaxlinks=Número máximo de conexiones totales faltantes o no válidas
 db_etimeout=Tiempo de espera de conexión faltante o no válido
 db_ehost=Host de servidor MySQL predeterminado faltante o no válido
 db_eport=Puerto predeterminado o no válido del servidor MySQL
+
 session_title=Opciones de sesión
 session_header=Opciones para el seguimiento de sesión PHP
 session_handler=Mecanismo de almacenamiento de sesiones
@@ -73,6 +80,7 @@ session_epath=Directorio faltante o no válido para archivos de sesión
 session_elife=Duración de la cookie faltante o inválida
 session_emaxlife=Duración máxima de sesión faltante o inválida
 session_eredis=Extensión redis faltante o deshabilitada
+
 safe_title=Opciones de modo seguro
 safe_header=Opciones de modo de acceso seguro a archivos
 safe_on=¿Habilitar el modo seguro?
@@ -85,6 +93,7 @@ safe_err=Error al guardar las opciones de modo seguro
 safe_einclude=Directorio permitido faltante o no válido para los archivos incluidos
 safe_eexec=Directorio permitido faltante o no válido para programas ejecutados
 safe_ebasedir=Directorio faltante o no válido para operaciones de archivo
+
 limits_title=Límites de recursos
 limits_header=Opciones de límite de memoria y transferencia
 limits_mem=Máxima asignación de memoria
@@ -98,6 +107,7 @@ limits_epost=Tamaño HTTP POST máximo faltante o no válido
 limits_eupload=Tamaño máximo de carga de archivo faltante o no válido
 limits_eexec=Tiempo de ejecución máximo faltante o inválido
 limits_einput=Tiempo de análisis de entrada máximo faltante o no válido
+
 errors_title=Registro de errores
 errors_header=Visualización de mensajes de error y opciones de registro
 errors_display=Mostrar mensajes de error?
@@ -128,6 +138,7 @@ errors_err=Error al guardar el registro de errores
 errors_ereporting=No se ingresó ninguna expresión de tipo de error
 errors_emaxlen=Tamaño máximo faltante o no válido de errores registrados
 errors_efile=Falta el archivo de registro de errores
+
 misc_title=Otros ajustes
 misc_header=Otras configuraciones PHP diversas
 misc_short=Permitir scripts PHP que comiencen con &lt;? ?
@@ -148,6 +159,7 @@ misc_include=Permitir apertura de control remoto Incluye?
 misc_path=Información de ruta de reparación de CGI?
 misc_timezone=Zona horaria de PHP
 misc_charset=Conjunto de caracteres predeterminado
+
 log_manual=Editar manualmente el archivo $1 
 log_vars=Variables PHP modificadas en $1 
 log_dirs=Se modificó la configuración del directorio en $1 
@@ -157,6 +169,7 @@ log_safe=Se cambiaron las opciones de modo seguro en $1
 log_limits=Se modificaron los límites de recursos en $1 
 log_errors=Se modificó el registro de errores en $1 
 log_misc=Cambió otras configuraciones en $1 
+
 acl_global=¿Se puede editar la configuración global de PHP?
 acl_anyfile=¿Se puede editar cualquier archivo como una configuración PHP?
 acl_manual=¿Se pueden editar manualmente los archivos de configuración?

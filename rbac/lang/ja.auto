@@ -1,5 +1,6 @@
 index_euser=RBAC構成ファイル $1がシステムで見つかりませんでした。 RBACがインストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
 index_return=モジュールインデックス
+
 users_title=ユーザー属性
 users_user=ユーザー名
 users_profiles=付与されたプロファイル
@@ -10,6 +11,7 @@ users_return=ユーザー属性リスト
 users_type=タイプ
 users_role=役割
 users_project=事業
+
 user_title1=ユーザー属性を作成する
 user_title2=ユーザー属性の編集
 user_header=Unixユーザーに付与された属性
@@ -35,6 +37,7 @@ user_eauth=「$1」は有効な承認ではありません
 user_ecannot=このユーザーの編集は許可されていません
 user_erole=「$1」ロールを割り当てることはできません
 user_eprof=プロファイル「$1」を割り当てることはできません
+
 auths_title=認可
 auths_name=認証名
 auths_desc=説明
@@ -42,8 +45,10 @@ auths_none=承認はまだ定義されていません。
 auths_add=新しい承認を追加します。
 auths_return=権限リスト
 auths_ecannot=認証を編集することはできません
+
 authc_name=認可
 authc_desc=説明
+
 auth_title1=承認を作成
 auth_title2=承認の編集
 auth_header=許可特権の詳細
@@ -57,6 +62,7 @@ auth_edesc=長い説明が無効です
 auth_eclash=同じ名前の承認が既に存在します
 auth_einuseu=この認証はユーザー $1によって使用されているため、削除できません
 auth_einusep=この許可はプロファイル $1で使用されているため、削除できません
+
 profs_title=プロフィール
 profs_name=プロファイル名
 profs_desc=説明
@@ -65,6 +71,7 @@ profs_none=プロファイルはまだ定義されていません。
 profs_add=新しいプロファイルを追加します。
 profs_return=プロファイルリスト
 profs_ecannot=プロフィールの編集は許可されていません
+
 prof_title1=プロフィール作成
 prof_title2=プロファイル編集
 prof_header=許可プロファイルの詳細
@@ -81,6 +88,7 @@ prof_einuseu=このプロファイルはユーザー $1によって使用され�
 prof_einusep=このプロファイルはプロファイル $1で使用されているため、削除できません
 prof_einusee=このプロファイルには $1の関連実行プロファイルがあるため、削除できません
 prof_none=利用可能なプロファイルはありません
+
 execs_title=実行プロファイル
 execs_name=プロフィール
 execs_policy=セキュリティポリシー
@@ -92,6 +100,7 @@ execs_none=実行プロファイルはまだ定義されていません。
 execs_add=新しい実行プロファイルを追加します。
 execs_return=実行プロファイルリスト
 execs_ecannot=実行プロファイルを編集することはできません
+
 exec_title1=実行プロファイルを作成する
 exec_title2=実行プロファイルの編集
 exec_header=実行プロファイルの詳細
@@ -113,6 +122,7 @@ exec_erruid=実行するユーザーが見つからないか無効です
 exec_errgid=実行するグループが欠落しているか無効です
 exec_erreuid=実行する有効ユーザーが見つからないか無効です
 exec_erregid=実行するための実効グループが欠落しているか無効です
+
 policy_title=システムポリシー
 policy_header=グローバルシステムポリシー設定
 policy_auths=すべてのユーザーの承認
@@ -126,16 +136,20 @@ policy_err=システムポリシーを保存できませんでした
 policy_eallow=選択を許可するアルゴリズムはありません
 policy_eclash=許可と非推奨のアルゴリズムを両方同時に選択することはできません
 policy_ecannot=システムポリシーの編集は許可されていません
+
 attr_none=ユーザー属性が定義されていません
 attr_nonenormal=UNIXユーザーが定義されていません
 attr_nonerole=利用可能な役割が定義されていません
+
 help_epath=無効なヘルプファイルパス！
 help_link=（助けて..）
+
 crypt___unix__=Unix暗号
 crypt_1=BSD MD5
 crypt_2a=BSD Flowfish
 crypt_md5=Sun MD5
 crypt_rot13=ROT13
+
 log_create_user=$1のユーザー属性を作成しました
 log_modify_user=$1のユーザー属性を変更しました
 log_delete_user=$1のユーザー属性を削除しました
@@ -152,6 +166,7 @@ log_create_project=作成されたプロジェクト $1
 log_modify_project=変更されたプロジェクト $1
 log_delete_project=プロジェクト $1を削除しました
 log_policy=システムポリシーの変更
+
 acl_roles=役割を編集できますか？
 acl_users=ユーザー属性を編集できますか？
 acl_roleassign=役割を割り当てることができます
@@ -166,6 +181,7 @@ acl_profs=プロファイルを編集できますか？
 acl_ro=表示のみ
 acl_execs=実行プロファイルを編集できますか？
 acl_projects=プロジェクトを編集できますか？
+
 projects_title=プロジェクト
 projects_name=名前
 projects_id=ID
@@ -184,6 +200,7 @@ projects_exceptusers=$1を除くすべてのユーザー
 projects_exceptgroups=$1を除くすべてのグループ
 projects_onlyusers=たった1つ
 projects_onlygroups=たった1つ
+
 project_title1=プロジェクトを作成
 project_title2=プロジェクトを編集
 project_header=プロジェクトの詳細とメンバー
@@ -219,6 +236,7 @@ project_egroupscannot=除外するグループは選択されていません
 project_elimit=行 $1に制限がないか、無効です
 project_epool=プロジェクトプール名が欠落しているか無効です
 project_erss=最大メモリがないか無効です
+
 prctl_title=リソース管理
 prctl_ok=次の制限を表示：
 prctl_mode0=IDを持つプロセス

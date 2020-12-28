@@ -1,5 +1,6 @@
 index_euser=No s'ha trobat al sistema el fitxer $1 de configuració de RBAC. Pot ser que RBAC no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_return=a l'índex de mòduls
+
 users_title=Atributs d'Usuari
 users_user=Usuari
 users_profiles=Perfils concedits
@@ -10,6 +11,7 @@ users_return=a la llista d'atributs d'usuari
 users_type=Tipus
 users_role=Paper
 users_project=Projecte
+
 user_title1=Creació d'Atributs d'Usuari
 user_title2=Edició d'Atributs d'Usuari
 user_header=Atributs concedits a l'usuari Unix
@@ -35,6 +37,7 @@ user_eauth='$1' no és una autorització vàlida
 user_ecannot=No tens permís per editar aquest usuari
 user_erole=No tens permís per assignar el paper '$1'
 user_eprof=No tens permís per assignar el perfil '$1'
+
 auths_title=Autoritzacions
 auths_name=Nom de l'autorització
 auths_desc=Descripció
@@ -42,8 +45,10 @@ auths_none=Encara no s'ha definit cap autorització.
 auths_add=Afegeix una nova autorització.
 auths_return=a la llista d'autoritzacions
 auths_ecannot=No tens permís per editar autoritzacions
+
 authc_name=Autorització
 authc_desc=Descripció
+
 auth_title1=Creació d'Autorització
 auth_title2=Edició d'Autorització
 auth_header=Detalls del privilegi d'autorització
@@ -57,6 +62,7 @@ auth_edesc=Descripció llarga invàlida
 auth_eclash=Ja existeix una autorització amb aquest nom
 auth_einuseu=Aquesta autorització està en ús per part de l'usuari $1, i per tant no es pot suprimir
 auth_einusep=Aquesta autorització està en ús per part del perfil $1, i per tant no es pot suprimir
+
 profs_title=Perfils
 profs_name=Nom del perfil
 profs_desc=Descripció
@@ -65,6 +71,7 @@ profs_none=Encara no s'ha definit cap perfil.
 profs_add=Afegeix un nou perfil.
 profs_return=a la llista de perfils
 profs_ecannot=No tens permís per editar perfils
+
 prof_title1=Creació de Perfil
 prof_title2=Edició de Perfil
 prof_header=Detalls del perfil d'autorització
@@ -81,6 +88,7 @@ prof_einuseu=Aquest perfil està en ús per part de l'usuari $1, i per tant no e
 prof_einusep=Aquest perfil està en ús per part del perfil $1, i per tant no es pot suprimir
 prof_einusee=Aquest perfil té $1 perfils d'execució relacionats, i per tant no es pot suprimir
 prof_none=No hi ha cap perfil disponible
+
 execs_title=Perfils d'Execució
 execs_name=Perfil
 execs_policy=Política de seguretat
@@ -92,6 +100,7 @@ execs_none=Encara no s'ha definit cap perfil d'execució.
 execs_add=Afegeix un nou perfil d'execució.
 execs_return=a la llista de perfils d'execució
 execs_ecannot=No tens permís per editar perfils d'execució
+
 exec_title1=Creació de Perfil d'Execució
 exec_title2=Edició de Perfil d'Execució
 exec_header=Detalls del perfil d'execució
@@ -113,6 +122,7 @@ exec_erruid=Hi falta l'usuari d'execució o bé és invàlid
 exec_errgid=Hi falta el grup d'execució o bé és invàlid
 exec_erreuid=Hi falta l'usuari efectiu d'execució o bé és invàlid
 exec_erregid=Hi falta el grup efectiu d'execució o bé és invàlid
+
 policy_title=Polítiques del Sistema
 policy_header=Configuració de política global del sistema
 policy_auths=Autoritzacions de tots els usuaris
@@ -126,16 +136,20 @@ policy_err=No s'han pogut desar les polítiques del sistema
 policy_eallow=No has seleccionat cap algoritme permès
 policy_eclash=No pots seleccionar al mateix temps un algoritme per permetre i abandonar
 policy_ecannot=No tens permís per editar les polítiques del sistema
+
 attr_none=No hi ha cap atribut d'usuari definit
 attr_nonenormal=No hi ha cap usuari Unix definit
 attr_nonerole=No hi ha cap paper disponible definit
+
 help_epath=Camí del fitxer d'ajuda invàlid!
 help_link=(Ajuda...)
+
 crypt___unix__=crypt de Unix
 crypt_1=MD5 de BSD
 crypt_2a=Blowfish de BSD
 crypt_md5=MD5 de Sun
 crypt_rot13=ROT13
+
 log_create_user=S'han creat els atributs d'usuari de $1
 log_modify_user=S'han modificat els atributs d'usuari de $1
 log_delete_user=S'han suprimit els atributs d'usuari de $1
@@ -152,6 +166,7 @@ log_create_project=S'ha creat el projecte $1
 log_modify_project=S'ha modificat el projecte $1
 log_delete_project=S'ha suprimit el projecte $1
 log_policy=S'han canviat les polítiques del sistema
+
 acl_roles=Pot editar papers
 acl_users=Pot editar atributs d'usuari
 acl_roleassign=Pot assignar papers
@@ -166,6 +181,7 @@ acl_profs=Pot editar perfils
 acl_ro=Només visualitzar
 acl_execs=Pot editar perfils d'execució
 acl_projects=Pot editar projectes
+
 projects_title=Projectes
 projects_name=Nom
 projects_id=ID
@@ -184,6 +200,7 @@ projects_exceptusers=Tots els usuaris excepte $1
 projects_exceptgroups=Tots els grups excepte $1
 projects_onlyusers=Només $1
 projects_onlygroups=Només $1
+
 project_title1=Creació de Projecte
 project_title2=Edició de Projecte
 project_header=Detalls del projecte i membres
@@ -219,6 +236,7 @@ project_egroupscannot=No has seleccionat cap grup per excloure
 project_elimit=Hi falta el límit o bé és invàlid a la fila $1
 project_epool=Hi falta el nom del pool de projectes o bé és invàlid
 project_erss=Hi falta la memòria màxima o bé és invàlida
+
 prctl_title=Controls de Recurs
 prctl_ok=Mostra els límits de:
 prctl_mode0=Procés amb ID

@@ -11,11 +11,13 @@ index_boot=Spustit při spuštění?
 index_bootdesc=Změnou tohoto nastavení se zapne nebo vypne Dovecot serveru v momentě spuštění.
 index_return=seznam modulu
 index_version=Verze $1
+
 stop_err=Chyba při zastavení Dovecotu
 stop_erunning=Nadále není spuštěn
 start_err=Chyba při spuštění Dovecotu
 start_eprotos=Na stránce <b>Sítě a protokoly</b> nebyly vybrány žádné protokoly
 apply_err=Chyba při aplikaci konfigurace
+
 net_title=Sítě a protokoly
 net_header=Volby Dovecotu pro síťové a poštovní protokoly
 net_protocols=Protokoly mail serveru
@@ -41,8 +43,11 @@ net_eimaps_listen=Neplatná IP adresa pro IMAP SSL připojení
 net_epop3s_listen=Neplatná IP adresa pro POP3 SSL připojení
 net_elisten=Neplatná IP adresa pro ne-SSL připojení
 net_essl_listen=Neplatná IP adresa pro SSL připojení
+
 imap_title=Volby IMAP
+
 pop3_title=Volby POP3
+
 ssl_title=SSL konfigurace
 ssl_header=Volby IMAP a POP3 SSL módu
 ssl_key=soubor se soukromým SSL klíčem
@@ -55,7 +60,9 @@ ssl_err=Chyba při ukládání SSL konfigurace
 ssl_ekey=Chybějící nebo neexistující soubor se soukromým klíčem
 ssl_ecert=Chybějící nebo neexistující soubor s certifikátem
 ssl_eregen=Chybějící nebo nečíselný parametr pro interval regenerace
+
 misc_title=Jiné volby
+
 login_title=Volby pro uživatele a přihlášení
 login_header=Volby pro uživatelskou autentikaci a přihlášení
 login_fuid=Minimální platné UID
@@ -111,6 +118,7 @@ login_procs=Maximální počet přihlašovacích procesů
 login_count=Inicializační přihlašovací procesy
 login_eprocs=Chybějící nebo neplatný maximální počet přihlašovacích procesů
 login_ecount=Chybějící nebo neplatný inicializační počet přihlašovacích procesů
+
 mail_title=Soubory s maily
 mail_header=Volby pro umístnění a čtení mailů
 mail_env=Umístění mail souboru
@@ -143,6 +151,7 @@ mail_uidl_courier2=Courier verze 2
 mail_uidl_tpop3d=tpop3d
 mail_euidl=Chybný nebo neplatný formát UIDL
 mail_last=Povolit používání příkazu POP3 LAST?
+
 log_net=Změněny sítě a protokoly
 log_login=Změněny volby uživatele a přihlášení
 log_mail=Změněny soubory pro zprávy
@@ -153,6 +162,7 @@ log_stop=Zastaven Dovecot server
 log_bootup=Zapnutý Dovecot v momentě bootování
 log_bootdown=Vypnutý Dovecot v momentě bootování
 log_manual=Ručně upraven konfigurační soubor $1
+
 manual_title=Upravit konfigurační soubor
 manual_err=Chyba při ukládání konfiguračního souboru
 manual_edata=Nic není vloženo!

@@ -10,6 +10,7 @@ index_apply=Pas konfigurasie toe
 index_applydesc=Klik op hierdie knoppie om die huidige PPTP-bedieneropsies toe te pas deur die PPTP-bedienerproses te stop en weer te begin. Wysigings aan die PPP-opsies en PPP-rekeninge sal altyd van toepassing wees op enige nuwe verbindings
 index_return=module-indeks
 index_epppd=Die PPP-bedienerprogram $1 is nie op u stelsel geïnstalleer nie. Die PPTP hang daarvan af om te werk.
+
 conf_title=PPTP-bedieneropsies
 conf_ecannot=U mag nie die PPTP-bedieneropsies wysig nie
 conf_header=PPTP-bediener konfigurasie
@@ -35,6 +36,7 @@ conf_elocalip='$1' is nie 'n geldige plaaslike IP-adres of reeks nie
 conf_eremoteip='$1' is nie 'n geldige IP-adres of reeks nie
 conf_efrom=IPX-netwerk ontbreek of ongeldig vanaf adres
 conf_eto=IPX-netwerk ontbreek of ongeldig om aan te spreek
+
 options_title=PPP Opsies
 options_ecannot=U mag nie PPP-opsies wysig nie
 options_desc0=Die PPP-opsies hieronder van $1 is van toepassing op ALLE inkomende verbindings wat deur u stelsel ontvang word, insluitend dié vir inbelmodems.
@@ -67,6 +69,7 @@ options_mschap=MS-CHAP-verifikasie
 options_mschap-v2=MS-CHAP weergawe 2-verifikasie
 options_chapms=MS-CHAP-verifikasie
 options_chapms-v2=MS-CHAP weergawe 2-verifikasie
+
 secrets_title=PPP-rekeninge
 secrets_ecannot=U mag nie PPP-rekeninge wysig nie
 secrets_return=indeks
@@ -80,6 +83,7 @@ secrets_sany=ENIGE
 secrets_create=Skep 'n nuwe PPP-rekening.
 secrets_desc=Die PPP-rekeninge wat op hierdie bladsy gelys word, is geneem uit die lêer $1 wat gebruik word vir verifikasie van $3. Net die vir u bediener $2 word getoon, nie rekeninge vir die maak van uitgaande verbindings nie.
 secrets_delete=Vee geselekteerde PPP-rekeninge uit
+
 edit_secret_etitle=Wysig PPP-rekening
 edit_secret_ctitle=Skep PPP-rekening
 edit_secret_acc=PPP-rekening
@@ -99,15 +103,20 @@ edit_secret_alist=Laat gelys ..
 edit_secret_save=Save
 edit_secret_del=Delete
 edit_secret_return=rekeninglys
+
 save_secret_esave=Kon nie rekening stoor nie
 save_secret_enoip='$1' is nie 'n geldige adres nie
+
 stop_err=Kon nie die PPTP-bediener stop nie
 stop_egone=Nie meer hardloop nie
 stop_ecannot=U mag nie die PPTP-bediener stop nie
+
 start_err=Kon nie die PPTP-bediener begin nie
 start_ecannot=U mag nie die PPTP-bediener begin nie
+
 apply_err=Kon nie die PPTP-bediener weer begin nie
 apply_ecannot=U mag nie die PPTP-bediener weer begin nie
+
 conns_title=Aktiewe verbindings
 conns_ecannot=U mag nie aktiewe verbindings bestuur nie
 conns_desc=Hierdie bladsy bevat 'n lys van die aktiewe PPTP-verbindings met u bediener. Om een met geweld te ontkoppel, klik op die naam van die koppelvlak.
@@ -119,9 +128,11 @@ conns_remote=Kliënt-VPN-adres
 conns_none=Geen PPTP-verbindings blyk tans aktief te wees nie.
 conns_unknown=onbekend
 conns_user=Gebruikersnaam
+
 disc_err=Kon nie ontkoppel nie
 disc_egone=Verbindings is nie meer aktief nie
 disc_ekill=Proses loop nie meer nie
+
 log_secret_create=Skep PPP-rekening $1 
 log_secret_modify=Gewysigde PPP-rekening $1 
 log_secret_delete=PPP-rekening $1 is uitgevee
@@ -132,6 +143,7 @@ log_disc=Ontkoppelde kliënt $1
 log_start=PPTP-bediener is begin
 log_stop=Gestopte PPTP-bediener
 log_apply=Toegepaste PPTP-bedieneropstelling
+
 acl_conf=Kan die opstelling verander?
 acl_options=Kan opsies gewysig word?
 acl_secrets=Kan PPTP-rekeninge bestuur?

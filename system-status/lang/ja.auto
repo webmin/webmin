@@ -44,6 +44,7 @@ right_upsec=$1パッケージの更新プログラムが利用可能で、その
 right_recollect=システム情報を更新する
 right_vvirtualmin=Virtualminバージョン
 right_vvm2=Cloudminバージョン
+
 acl_show=表示するシステム情報
 acl_showall=すべて
 acl_showsel=選択された..のみ

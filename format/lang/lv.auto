@@ -15,6 +15,7 @@ index_use=Izmantojiet
 index_free=Bezmaksas
 index_format=Šis disks nav formatēts
 index_return=disku saraksts
+
 edit_ecannot=Jums nav atļauts rediģēt šo disku
 edit_title=Rediģēt nodalījumu
 edit_header=Dati par nodalījumu
@@ -56,6 +57,7 @@ edit_tunedesc2=Jūs nevarat noregulēt šajā nodalījumā esošo failu sistēmu
 edit_tunedesc3=Nevar noregulēt šajā nodalījumā esošo failu sistēmu, jo tā pašlaik ir uzstādīta. Lai to vispirms noņemtu, izmantojiet <a href=/mount/>failu sistēmu moduli</a>.
 edit_tunedesc4=Jūs nevarat noregulēt šajā nodalījumā esošo failu sistēmu, jo tai nav failu sistēmas.
 edit_tunedesc5=Šajā nodalījumā nevar iestatīt failu sistēmu, jo noregulēt var tikai <tt>UFS</tt> failu sistēmas.
+
 save_ecannot=Jums nav atļauts rediģēt šo disku
 save_edelete=Neizdevās izdzēst nodalījumu
 save_esave=Neizdevās saglabāt nodalījumu
@@ -64,6 +66,7 @@ save_eend='$1' nav derīgs cilindrs ar beigu punktu
 save_estartmin=Starta cilindram jābūt> 0
 save_eendmax=Beigu cilindram jābūt < $1 
 save_estartend=Sākuma cilindram jābūt mazākam par beigu daļu
+
 newfs_title=Izveidot failu sistēmu
 newfs_ecannot=Jums nav atļauts formatēt šo disku
 newfs_desc=Noklikšķinot uz pogas šīs veidlapas apakšā, ierīcē $2 tiks izveidots jauns $1. Visi dati par šo nodalījumu tiks neatgriezeniski izdzēsti.
@@ -89,6 +92,7 @@ newfs_err=Neizdevās izveidot failu sistēmu
 newfs_exec=Izpilda komandu $1.
 newfs_failed=.. komanda neizdevās!
 newfs_ok=.. komanda pabeigta.
+
 fsck_title=Labojiet failu sistēmu
 fsck_ecannot=Jums nav atļauts labot šo disku
 fsck_desc=Noklikšķinot uz pogas <b>Remonts</b>, tiks pārbaudīts un pēc izvēles labots $1 uz $2. Pārbaudes un remonta līmeni nosaka jūsu izvēlētais zemāk.
@@ -106,6 +110,7 @@ fsck_37=process nogalināts pārbaudes laikā
 fsck_39=atklātas neizlabojamas kļūdas!
 fsck_40=nav atklātas kļūdas
 fsck_unknown=nezināma kļūda
+
 tunefs_title=Noskaņot failu sistēmu
 tunefs_ecannot=Jums nav atļauts noregulēt šo disku
 tunefs_desc=Šī forma ļauj pielāgot dažādus parametrus $1 uz $2. Esošajiem failiem šajā failu sistēmā netiks nodarīts kaitējums.
@@ -122,6 +127,7 @@ tunefs_err=Neizdevās noregulēt failu sistēmu
 tunefs_exec=Izpilda komandu $1.
 tunefs_failed=.. komanda neizdevās!
 tunefs_ok=.. komanda pabeigta.
+
 select_device=SCSI kontrolieris $1 mērķis $2 vienība $3 
 select_idedevice=IDE ierīce $1 
 select_part=SCSI kontrolieris $1 mērķis $2 vienība $3 nodalījums $4 
@@ -131,10 +137,13 @@ esun=Starpsienas var modificēt tikai ar Sun aparatūru
 emounted=Diskā ir uzstādīti starpsienas
 elast=Pēdējo nodalījumu nevar noņemt
 eformat=<tt>formāts</tt> neatrada nevienu disku!
+
 fstype_ufs=Solaris Unix failu sistēma
 fstype_unknown=Nezināma failu sistēma
+
 acl_disks=Diski, ko šis lietotājs var nodalīt un formatēt
 acl_dall=Visi diski
 acl_dsel=Atlasīts ..
 acl_view=Vai var rediģēt diskus un nodalījumus?
+
 ecannot=Jums nav atļauts rediģēt nodalījumus

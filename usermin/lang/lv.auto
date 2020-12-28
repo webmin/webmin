@@ -16,11 +16,14 @@ index_esame=Lapā <a href='$2'>moduļa konfigurācija</a> iestatītais Usermin k
 index_eroot=Usermin konfigurācijas direktorijs $1 pastāv, bet programmas saknes direktorijs $2, uz kuru tas atsaucas, neeksistē! Jums vajadzētu manuāli lejupielādēt un atkārtoti instalēt Usermin.
 index_restart=Restartējiet Usermin
 index_restartmsg=Noklikšķiniet uz šīs pogas, lai atsāktu Usermin servera procesu. Tas var būt nepieciešams, ja nesen esat jauninājis Perl.
+
 access_title=IP piekļuves kontrole
 access_desc=Usermin serveri var konfigurēt, lai liegtu piekļuvi vai atļautu piekļuvi tikai no noteiktām IP adresēm, izmantojot šo veidlapu. Var ievadīt arī resursdatorus (piemēram, foo.bar.com) un IP tīklus (piemēram, 10.254.3.0 vai 10.254.1.0/255.255.255.128 vai 10.254.1.0/25 vai 10.254.1.5-10.254.97.127). Jums vajadzētu ierobežot piekļuvi serverim ar uzticamām adresēm, it īpaši, ja tas ir pieejams no interneta. Pretējā gadījumā ikviens, kurš uzminēs jūsu paroli, pilnībā kontrolēs jūsu sistēmu.
+
 bind_title=Ostas un adreses
 bind_desc2=Šo veidlapu var izmantot, lai mainītu porta numuru, kuru klausās Usermin, vai liktu to klausīties tikai vienā jūsu sistēmas IP adresē. Varat arī konfigurēt tā, lai tas pieņemtu savienojumus vairākos portos vai klausītos vairākās IP adresēs. Piezīme - pēc porta vai saistošās adreses maiņas jūsu tīmekļa pārlūks var pamudināt jūs atkal pieteikties.
 bind_erestart=Kļūda, startējot Usermin ar jauno adreses un porta iestatījumiem : $1 
+
 mods_title=Usermin moduļi
 umods_title=Usermin moduļi
 mods_desc1=Pēc instalēšanas Usermin moduļus var pievienot, izmantojot labo formu. Moduļi parasti tiek izplatīti <tt>.wbm</tt> failos, no kuriem katrs var saturēt vienu vai vairākus moduļus. Moduļus var instalēt arī no RPM failiem, ja jūsu operētājsistēma tos atbalsta.
@@ -41,15 +44,18 @@ mods_desc3=Esošos moduļus var izdzēst, izmantojot zemāk esošo veidlapu. Kad
 mods_delete=Dzēst moduļus
 mods_deleteok=Dzēst atlasītos moduļus
 mods_desc4=Instalētos moduļus var eksportēt kā wbm.gz failu, izmantojot zemāk esošo formu. Pēc tam moduļa failu var instalēt citā sistēmā, kurā darbojas Usermin.
+
 os_title=Operētājsistēma un vide
 os_desc3=Šajā lapā tiek parādīta operētājsistēma, kuru instalēšanas laikā atklāja Usermin, un sistēma, kas šobrīd ir atklāta. Ja tie atšķiras, varat izvēlēties atjaunināt Usermin OS informāciju, kas var būt nepieciešama, ja nesen esat jauninājis.
 os_desc2=Varat arī mainīt meklēšanas ceļu, ko izmanto Usermin, palaižot programmas, un koplietotais bibliotēkas ceļš tika nodots jebkurai programmai.
 os_usermin=Operētājsistēma saskaņā ar Usermin
 os_iusermin=Iekšējais OS kods, ko izmanto Usermin
 os_update=Atjauniniet Usermin, lai izmantotu atklāto OS
+
 lang_title=Valoda
 lang_title2=Usermin valoda
 lang_intro=Šī lapa ļauj jums izvēlēties, kuru valodu Usermin izmantos virsrakstu, uzvedņu un ziņojumu parādīšanai
+
 session_title=Autentifikācija
 session_desc1=Ja iespējota, paroles noildze aizsargā jūsu Usermin serveri no brutāla spēka paroles krekinga uzbrukumiem, pievienojot nepārtraukti pieaugošu kavēšanos starp katru neveiksmīgu pieteikšanos vienam un tam pašam lietotājam.
 session_desc2=Kad sesijas autentifikācija ir iespējota, Usermin izseko katru reģistrēto lietotāju sesiju, dodot iespēju automātiski atteikties no dīkstāves lietotājiem. Ņemiet vērā, ka sesijas autentifikācijas iespējošana vai atspējošana var piespiest visus lietotājus atkārtoti pieteikties.
@@ -73,6 +79,7 @@ session_blank=Aicina lietotājus ar tukšu paroli izvēlēties vienu, kad pietei
 session_homedir=Pēc pieteikšanās izveidot trūkstošos mājas direktorijus?
 session_homedir_perms=Atļaujas jaunam direktorijam
 session_ehomedir_perms=Trūkst vai nav derīgas oktālā mājas direktorija atļaujas
+
 themes_title=Usermin motīvi
 themes_desc=Motīvi kontrolē Usermin lietotāja interfeisa izskatu, ieskaitot ikonas, krāsas, fonu un, iespējams, lapu izkārtojumu. Zemāk esošo izvēles rūtiņu var izmantot, lai izvēlētos kādu no jūsu sistēmā instalētajiem motīviem, kas būs noklusējuma iestatījumi Usermin lietotājiem.
 themes_sel=Pašreizējā tēma :
@@ -101,7 +108,9 @@ themes_eirpm=RPM instalēšana neizdevās : $1
 themes_ok=Tēma veiksmīgi mainīta.. novirzot uz Webmin indeksa lapu.
 themes_delete=Šo veidlapu var izmantot, lai izdzēstu vienu no jūsu sistēmā instalētajām tēmām, kuras pašlaik netiek izmantotas.
 themes_delok=Dzēstā tēma :
+
 themes_desc4=Instalētās motīvas var eksportēt kā wbt.gz failu, izmantojot zemāk esošo veidlapu. Motīvu failu pēc tam var instalēt citā sistēmā, kurā darbojas Usermin.
+
 configs_ecannot=Jums nav atļauts konfigurēt šo moduli
 configs_title=Usermin moduļa konfigurācija
 configs_header=Konfigurējami moduļi
@@ -115,8 +124,10 @@ configs_global=Globālā moduļa konfigurācija
 configs_globaldesc=Iestatījumi šajā formā attiecas uz visiem moduļa lietotājiem, un tie parasti nosaka opcijas, kas saistītas ar tā izmantotajām programmām un failiem.
 configs_user=Noklusētās lietotāja preferences
 configs_userdesc=Iestatījumi šajā formā nosaka noklusējumus šī moduļa lietotāja rediģējamām preferencēm. Ja vien jūs nenorādāt citādi, atsevišķi lietotāji tos var pārāk pārņemt.
+
 acl_title=Pieejamie moduļi
 acl_desc=Izmantojiet šo lapu, lai atlasītu, kuri instalētie Usermin moduļi ir redzami lietotājiem.
+
 ssl_title=SSL šifrēšana
 ssl_desc1=Šķiet, ka resursdatorā, kurā darbojas Usermin, ir uzstādīts SSLeay Perl modulis. Izmantojot to, Usermin atbalsta SSL šifrētu saziņu starp jūsu pārlūkprogrammu un serveri. Ja lietotāji piekļūst jūsu Usermin serverim, izmantojot internetu, jums noteikti jāapsver SSL izmantošana, lai novērstu uzbrucēja sagūstīšanu viņu parolēs.
 ssl_desc2=Brīdinājums - ieslēdziet SSL atbalstu tikai tad, ja jums ir pārlūks, kas atbalsta SSL, un starp jūsu pārlūkprogrammu un Usermin resursdatoru nav ugunsmūra, kas bloķē <tt>https</tt> pieprasījumus.
@@ -125,18 +136,23 @@ ssl_hole=Tā kā jūs šobrīd izmantojat noklusējuma Usermin SSL atslēgu, kur
 ssl_savekey=Šī veidlapa ļauj augšupielādēt esošu PEM formāta SSL privāto atslēgu un sertifikātu, lai jūsu Usermin serveris varētu izmantot.
 ssl_copycert=Kopēt sertifikātu no Webmin
 ssl_copycertdesc=Kopējiet SSL sertifikātu, privāto atslēgu, CA sertifikātu un citus iestatījumus, kurus Webmin izmanto.
+
 ca_email=Epasta adrese
 ca_ou=nodaļa
 ca_o=Organizācija
 ca_sp=Valsts
 ca_c=Valsts kods
+
 newkey_ok=Veiksmīgi ģenerējama šī lietotājprogrammas SSL atslēga.
+
 stop_err=Neizdevās apturēt Usermin
 stop_ekill=Neizdevās nogalināt procesu : $1 
 stop_efile=Jau apstājies
 stop_ecannot=Jums nav atļauts apturēt Usermin
+
 start_err=Neizdevās palaist Usermin
 start_ecannot=Jums nav atļauts startēt Usermin
+
 users_title=Atļautie lietotāji un grupas
 users_desc=Izmantojot šo veidlapu, Usermin var konfigurēt, lai ierobežotu, kuriem unix lietotājiem un grupām ir atļauts pieteikties. Lai norādītu visus primāros unix grupas dalībniekus, sarakstā ievadiet <tt>@groupname</tt>.
 users_desc2=Lai atbilstu UID diapazonam, sarakstā ievadiet <tt>sākuma-beigu</tt>, <tt>sākuma-</tt> vai <tt>-pabeigt</tt>.
@@ -150,10 +166,12 @@ users_euser='$1' nav derīgs lietotājvārds
 users_egroup='$1' nav derīgs grupas nosaukums
 users_shells=Liedziet lietotājiem, kuru čaulas nav failā
 users_eshells=Trūkst vai neeksistē čaumalu fails
+
 defacl_title=Piekļuves kontroles opcijas
 defacl_desc=Šī lapa ļauj konfigurēt dažādas piekļuves kontroles opcijas, kas attiecas uz Usermin moduļiem un lietotājiem. Šīs opcijas ir līdzīgas tām, kas katram Webminatora moduļa lietotājam ir norādītas globālajā ACL.
 defacl_header=Piekļuves kontroles iespējas Usermin lietotājiem
 defacl_err=Neizdevās saglabāt piekļuves kontroles opcijas
+
 install_err1=Neizdevās instalēt moduli no $1 
 install_efile=Fails neeksistē
 install_err2=Neizdevās instalēt augšupielādēto moduli
@@ -180,6 +198,7 @@ install_erpm=Nav Usermin modulis vai tēmas RPM
 install_eirpm=RPM instalēšana neizdevās : $1 
 install_cat=Zem kategorijas $1.
 install_eneither=RPM nesatur lietotājprogrammas moduli vai motīvu
+
 delete_err=Neizdevās izdzēst moduļus
 delete_edep=Moduli $1 nevar izdzēst, jo modulis $2 ir atkarīgs no tā
 delete_desc1=$1 ($2 klons)
@@ -189,6 +208,7 @@ delete_msg=No jūsu Usermin instalācijas ir veiksmīgi izdzēsti šādi moduļi
 delete_rusure=Vai tiešām vēlaties izdzēst moduli (-us) $2 ? $1 KB faili tiks izdzēsti uz visiem laikiem.
 delete_rusure2=Vai tiešām vēlaties dzēst tēmu $2 ? $1 KB faili tiks izdzēsti uz visiem laikiem.
 delete_enone=Nav atlasīts neviens modulis
+
 ui_title=Lietotāja interfeiss
 ui_desc=Šī forma ļauj rediģēt lietotāja interfeisa opcijas, kuras izmanto visi Usermin moduļi.
 ui_header=Lietotāja interfeisa opcijas
@@ -230,6 +250,7 @@ ui_hnm1=Resursdatora nosaukums no URL
 ui_hnm2=Domēna vārds no URL
 ui_hnm3=Cits vārds ..
 ui_tabs=Kategorizēt moduļus?
+
 upgrade_title=Jaunināt Usermin
 upgrade_title2=Instalējiet Usermin
 upgrade_desc=Šī forma ļauj jaunināt visu Usermin instalāciju uz jaunu versiju. Instalēt var no vietēja faila, augšupielādēta faila vai no jaunākās versijas vietnē <a href=http://www.usermin.com/>www.usermin.com</a>. Tāpat kā manuāla jaunināšana, visi jūsu konfigurācijas iestatījumi un trešo pušu moduļi tiks saglabāti.
@@ -263,6 +284,7 @@ upgrade_done=.. jaunināšana pabeigta.
 upgrade_failed=.. jaunināšana neizdevās!
 upgrade_updates=Šai jaunajai Usermin versijai ir $1 atjauninājumi. <a href='$2'>Noklikšķiniet šeit</a>, lai tos automātiski lejupielādētu un instalētu tūlīt.
 upgrade_eupdates=Neizdevās lejupielādēt atjauninājumu sarakstu : $1 
+
 update_desc1=Šī forma ļauj jaunināt Usermin moduļus, kas <a href=http://www.usermin.com/uupdates.html>Usermin Updates</a> lapā vai citos avotos ir atrasti kļūdaini vai drošības trūkumi. Tādējādi tiks salīdzināti pašlaik instalētie moduļi ar atjaunināšanai pieejamajiem moduļiem un pēc izvēles automātiski lejupielādēti un instalēti visi novecojuši moduļi.
 update_header1=Atjauniniet moduļus tūlīt
 update_header2=Atjauniniet moduļus pēc grafika
@@ -279,10 +301,12 @@ update_sched=Atjauniniet moduļus $1 : 00 ik pēc $2 dienām
 update_none=Šai versijai nav lietotāja atjauninājumu.
 update_failed=Neizdevās instalēt moduli : $1 
 update_desc2=Šī veidlapa ir paredzēta, lai no <a href=http://www.usermin.com/uupdates.html>Usermin Updates</a> lapas vai no cita avota ieplānotu Usermin moduļu automātisku atjaunināšanu, kas satur kļūdas vai drošības spraugas. Lai gan šis pakalpojums ir noderīgs, jums to vajadzētu izmantot uzmanīgi, jo tas var ļaut uzbrucējiem pārņemt jūsu sistēmu, ja kādreiz ir bijis apdraudēts atjauninājumu serveris.
+
 assignment_title=Pārdaliet moduļus
 assignment_header=Moduļu kategoriju piešķiršana
 assignment_ok=Mainīt kategorijas
 assignment_desc=Šī forma ļauj jums konfigurēt, kura kategorija katrs modulis tiek parādīts Usermin indeksa lapā.
+
 categories_title=Rediģēt kategorijas
 categories_header=Kategorijas ID un apraksti
 categories_desc=Šī forma ļauj pārdēvēt esošās Usermin kategorijas un izveidot jaunas, kurām moduļus piešķirt. Tabulas augšējā daļa ir paredzēta iebūvēto kategoriju aprakstu mainīšanai, bet apakšējā - jaunu kategoriju ID un aprakstu pievienošanai.
@@ -292,6 +316,7 @@ categories_edesc=Trūkst $1 apraksta
 categories_ecat=Kategorijas ID $1 jau ir ņemts
 categories_code=ID
 categories_name=Parādītais apraksts
+
 log_access=Mainīta IP piekļuves kontrole
 log_bind=Mainīta osta un adrese
 log_log=Mainītas reģistrēšanas iespējas
@@ -327,6 +352,7 @@ log_restrict_create=Izveidots ierobežojums $1
 log_restrict_modify=Pārveidots ierobežojums $1 
 log_restrict_delete=Dzēsts ierobežojums $1 
 log_restrict_move=Pārvietots ierobežojums $1 
+
 log_all=visi lietotāji
 log_group=grupa $1 
 log_switch=Pārslēdzās uz Usermin lietotāju $1 
@@ -334,6 +360,7 @@ log_logout=Mainīti automātiskās atteikšanās laiki
 log_dav=Mainīti DAV servera iestatījumi
 log_advanced=Mainītas papildu opcijas
 log_mobile=Mainītas mobilās ierīces opcijas
+
 update_err=Neizdevās atjaunināt moduļus
 update_eurl=Trūkst vai nav derīgs atjaunināšanas URL
 update_title=Atjauniniet moduļus
@@ -352,6 +379,7 @@ update_rv=Notiek atjauninātu Usermin moduļu meklēšana no $1
 update_eemail=Jums jāievada e-pasta adrese, ja tiek parādīta tikai tā, kas tiks atjaunināta.
 update_subject=Usermin moduļu atjaunināšanas ziņojums
 update_version=Tagad lejupielādējama jauna Usermin versija (versija $1). Turpmākie atjauninājumi tiks izlaisti tikai jaunākajai versijai.
+
 restrict_title=Moduļu ierobežojumi
 restrict_desc=Šī lapa ļauj jums kontrolēt, kuri Usermin moduļi ir pieejami dažādiem lietotājiem un grupām. Tiek piemēroti visi saraksta moduļu papildinājumi un atdalījumi, ne tikai pirmais, kas atbilst katram lietotājam. <br>Moduļi, kas nav atlasīti<a href='$1'> pieejamos moduļos </a>, nekad nebūs pieejami lietotājiem, pat ja viņi šeit tiek atlasīti.
 restrict_who=Usermin lietotājs
@@ -384,6 +412,7 @@ restrict_egroup=Trūkst vai nav derīgs grupas nosaukums
 restrict_efile=Trūkst lietotāju, to nav vai tie nav absolūti
 restrict_move=Kustēties
 bootup_ecannot=Jums nav atļauts konfigurēt sāknēšanu
+
 acl_icons=Atļautās konfigurācijas lapas
 acl_mods=Var konfigurēt moduļus
 acl_all=Visi moduļi
@@ -391,10 +420,12 @@ acl_sel=Atlasīts zemāk ..
 acl_stop=Vai var apstāties un sākt Usermin?
 acl_bootup=Vai var konfigurēt sākšanu sāknēšanas laikā?
 acl_ecannot=Jums nav atļauts izmantot šo lapu
+
 clone_err=Neizdevās klonēt moduli
 clone_elink=neizdevās izveidot saiti : $1 
 clone_ecopy=neizdevās nokopēt konfigurāciju : $1 
 clone_desc=$1 klons
+
 sessions_title=Pašreizējās pieteikšanās sesijas
 sessions_desc=Zemāk ir uzskaitīti pašreizējie Usermin sesijas pieteikšanās. Lai atceltu esošo sesiju un piespiestu lietotāju vēlreiz pieteikties, noklikšķiniet uz tās sesijas ID.
 sessions_id=Sesijas ID
@@ -404,12 +435,15 @@ sessions_login=Pieteicies plkst
 sessions_none=Lietotājā pašlaik nav pieteicies neviens lietotājs.
 sessions_switch=Pārslēgties uz Usermin lietotāju:
 sessions_ok=Slēdzis
+
 referers_title=Uzticamie novirzītāji
 referers_desc=Šī lapa ļauj jums konfigurēt Usermin atsauces pārbaudes atbalstu, kas tiek izmantots, lai novērstu ļaunprātīgas saites no citām vietnēm, kas krāpj jūsu lietotāju pārlūkprogrammas bīstamās darbībās ar Usermin. Tomēr, ja jums ir saites uz Usermin no jūsu vietnēm, kuras nevēlaties par to brīdināt, šīs vietnes jāpievieno zemāk esošajam sarakstam.
+
 anon_title=Piekļuve anonīmam modulim
 anon_desc=Šī lapa ļauj jums piešķirt piekļuvi atlasītajiem Usermin moduļiem un ceļiem, klientiem nepiesakoties. Katram moduļa ceļam, kuru ievadāt zemāk (piemēram, / komandas vai / changepass), jums jāievada arī tā Unix lietotāja vārds, kura atļaujas tiks izmantotas piekļuvei modulim.
 anon_user=Unix lietotājs
 anon_euser=Trūkst vai nav derīgs Unix lietotājs URL ceļam '$1'
+
 logout_title=Automātiskās atteikšanās laiki
 logout_desc=Šo lapu var izmantot, lai konfigurētu dažādus bezdarbības atteikšanās laikus dažādiem Usermin lietotājiem. Taimauts jāievada minūtēs, un nulles noildze nozīmē, ka atbilstošu lietotāju sesijas nekad netiks automātiski izslēgtas.
 logout_type=Veids
@@ -424,6 +458,7 @@ logout_egroup=Trūkst vai nav derīga grupa rindā $1
 logout_efile=Trūkst vai nav faila rindā $1 
 logout_etime=Trūkst vai nav derīgs taimauts rindā $1 
 logout_ecannot=Jums nav atļauts konfigurēt izrakstīšanās laikus
+
 dav_title=DAV serveris
 dav_header=DAV servera opcijas
 dav_path=Vai DAV ir iespējots?
@@ -444,16 +479,22 @@ dav_users=Lietotāji, kuri var izmantot DAV
 dav_users1=Visi lietotāji
 dav_users0=Zemāk uzskaitītie lietotāji un grupas ..
 dav_eusers=Nav ievadīts neviens lietotājs
+
 syslog_errorlog=Usermin kļūdu žurnāls
+
 descs_title=Moduļu nosaukumi
 descs_info=Šī lapa ļauj jums norādīt alternatīvus Usermin moduļu nosaukumus, lai ignorētu to standarta aprakstus.
+
 advanced_title=Pielāgota opcija
 advanced_pass=Vai padarīt paroli pieejamu Usermin programmām? <br><font size=-1> (nedarbojas, ja sesijas autentifikācija ir iespējota) </font>
+
 blocked_title=Bloķētie resursdatori un lietotāji
 blocked_none=Pašlaik Usermin nav bloķējis nevienu resursdatoru vai lietotāju.
 blocked_user=Usermin lietotājs
 blocked_cleardesc=Noklikšķiniet uz šīs pogas, lai notīrītu visus pašreizējos resursdatoru un lietotāju bloķējumus, restartējot Usermin servera procesu.
+
 mobile_title=Mobilās ierīces opcijas
+
 copycert_err=Neizdevās nokopēt SSL iestatījumus no Webmin
 copycert_essl=SSL nav iespējots
 copycert_ekeyfile=Webmin nav iestatīts privātas atslēgas fails

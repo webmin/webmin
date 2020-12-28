@@ -7,6 +7,7 @@ index_cpu=Processeur
 index_search=Recherche
 index_run=Exécuter
 index_return=la liste des processus
+
 pid=Numéro de processus
 owner=Propriétaire
 command=Commande
@@ -15,6 +16,7 @@ size=Taille
 parent=Processus parent
 runtime=Temps d'exécution
 nice=Niveau de priorité
+
 search_user=Appartient à
 search_match=Correspond à
 search_cpupc=Utilise plus que $1% du CPU
@@ -25,6 +27,7 @@ search_none=Aucun processus correspondant
 search_kill=Envoyer le signal
 search_ignore=Ignorer les processus de recherche
 search_return=page de recherche
+
 run_command=Commande à exécuter
 run_submit=Exécuter
 run_mode=Mode d'exécution
@@ -35,6 +38,7 @@ run_title=Sortie de la Commande
 run_output=Sortie de $1
 run_none=Aucune sortie générée
 run_ecannot=Vous n'êtes pas autorisé à lancer des commandes
+
 edit_title=Information du processus
 edit_gone=Ce processus n'est plus exécuté
 edit_sub=Sous-processus
@@ -45,12 +49,15 @@ edit_prihigh=Priorité haute
 edit_pridef=Par défaut
 edit_none=Aucun
 edit_ecannot=Vous n'êtes pas autorisé à éditer les processus
+
 kill_err=Impossible d'envoyer le signal $1 au processus $2
 kill_title=Envoyer le signal
 kill_sent=envoyé
 kill_ecannot=Vous n'êtes pas autorisé à tuer les processus
+
 renice_err=Impossible de changer la priorité du processus $1
 renice_ecannot=Vous n'êtes pas autorisé à changer la priorité des processus
+
 linux_pri=Priorité
 linux_tty=TTY
 linux_status=États
@@ -60,20 +67,24 @@ linux_group=Groupe
 linux_ruser=Véritable utilisateur
 linux_rgroup=Véritable groupe
 linux_pgid=Numéro de groupe du processus
+
 linuxstat_R=Exécuté
 linuxstat_S=En sommeil
 linuxstat_D=Sommeil profond
 linuxstat_T=Arrêté
 linuxstat_Z=Zombie
+
 freebsd_ruser=Véritable usager
 freebsd_rgroup=Véritable groupe
 freebsd_tty=TTY
 freebsd_pgid=Groupe de processus
 freebsd_lim=Limite de mémoire
+
 hpux_pri=Priorité
 hpux_tty=TTY
 hpux_status=États
 hpux_wchan=En attente de
+
 hpuxstat_0=Inexistant
 hpuxstat_S=En sommeil
 hpuxstat_W=En attente
@@ -82,20 +93,25 @@ hpuxstat_I=Intermédiaire
 hpuxstat_Z=Zombie
 hpuxstat_T=Arrêté
 hpuxstat_G=En expansion
+
 macos_tty=TTY
+
 sysv_group=Groupe
 sysv_ruser=Véritable usager
 sysv_rgroup=Véritable groupe
 sysv_pgid=Numéro de groupe de processus
 sysv_tty=TTY
+
 log_run=Commande "$1" lancée
 log_kill=Signal $1 envoyé au processus $2
 log_kills=Signal $1 envoyé aux processus $2
 log_kill_l=Signal $1 envoyé au processus $2
 log_kills_l=Signal $1 envoyé aux processus<br>$2
+
 acl_manage=Manipuler les processus comme utilisateur
 acl_edit=Peut tuer et renicer des processus ?
 acl_run=Peut lancer des commandes ?
+
 kill_kill=Tuer processus
 kill_term= Terminer  
 kill_hup=  Redémarrer   

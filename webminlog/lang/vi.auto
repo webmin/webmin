@@ -30,6 +30,7 @@ index_sdesc=Mô tả hành động chứa
 index_shost=Nguồn máy chủ Webmin
 index_long=Hiển thị mô tả hành động đầy đủ?
 index_global=&lt;Không có trong bất kỳ mô-đun nào&gt;
+
 search_title=kết quả tìm kiếm
 search_date=Ngày
 search_time=Thời gian
@@ -63,6 +64,7 @@ search_global_baduser=Tên người dùng xấu
 search_global_badpass=Mật khẩu xấu
 search_global_twofactor=Mã thông báo twofactor không hợp lệ
 search_csv=Xuất dưới dạng CSV.
+
 view_title=Chi tiết hành động
 view_header=Chi tiết về hành động đã đăng nhập $1 
 view_action=Sự miêu tả
@@ -96,12 +98,14 @@ view_files=Tập tin đã thay đổi và lệnh chạy
 view_raw=Dữ liệu nhật ký thô
 view_rawname=Tên tham số
 view_rawvalue=Giá trị tham số
+
 acl_mods=Có thể xem nhật ký trong các mô-đun
 acl_all=Tất cả
 acl_sel=Chọn bên dưới ..
 acl_self=Chỉ có bản thân
 acl_users=Có thể xem hành động của người dùng
 acl_rollback=Có thể quay lại hành động?
+
 rollback_title=Hành động quay lại
 rollback_rusure=Bạn có chắc chắn muốn hoàn nguyên tất cả các tệp được liệt kê bên dưới về nội dung của chúng trước khi thực hiện hành động này không? Bất kỳ dữ liệu nào hiện tại chúng sẽ được ghi đè bằng các thay đổi sau :
 rollback_isdir=Một thư mục - không có thay đổi sẽ được thực hiện.
@@ -124,4 +128,5 @@ rollback_modfile=Quay lại nội dung của tệp $1.
 rollback_deleted=Đã xóa tệp $1.
 rollback_nodeleted=Bỏ qua tệp không tồn tại $1.
 rollback_enone=Không có tập tin nào được chọn
+
 log_rollback=Hành động quay lại $1 trong mô đun $2 

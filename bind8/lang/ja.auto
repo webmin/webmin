@@ -8,18 +8,24 @@ index_checkconfig=<a href='$1'>モジュール構成</a>ページでchrootディ
 index_eexpired=警告：次のゾーンはDNSSEC署名の有効期限が切れています：$1
 index_eexpired_conf=$1ページで自動署名を再度有効にする必要があります。
 index_eexpired_mod=$1モジュールを使用して、これらのドメインのDNSSECを無効にするか、署名が失敗する理由を確認します。
+
 master_inview=ビュー $2の $1
 master_egone=ゾーン$1はどのビューにも存在しません
 master_egone2=ゾーン$1は存在しません！
 master_egone3=ビュー$2のゾーン$1は存在しません！
+
 delete_vwarn=このゾーンはVirtualminドメイン $1に関連付けられているため、ここで削除しないでください！
 delete_vwarn2=このゾーンはVirtualminドメイン $1および $2に関連付けられているため、ここで削除しないでください！
+
 mcreate_dnssec_tools_enable=DNSSEC-Toolsを使用してDNSSECを有効にする
 mcreate_ednssecsize=キーサイズの計算に失敗しました：$1
 mcreate_ednssec=レコードの作成は成功しましたが、DNSSECが失敗しました：$1
+
 slave_xfer=テストゾーン転送
+
 recs_nosearch=検索に一致するレコードはありませんでした。
 recs_needsearch=検索を入力して、一致するレコードを見つけます。
+
 edit_egone=選択したレコードはもう存在しません！
 edit_eusage=「$1」は有効なTLSA使用番号ではありません
 edit_eselector=「$1」は有効なTLSAセレクター番号ではありません
@@ -39,23 +45,28 @@ edit_edmarcpct=メッセージの割合は0〜100の整数である必要があ�
 edit_edmarcrua=集計フィードバックアドレスがありません
 edit_edmarcruf=法医学情報アドレスがありません
 edit_ecaavalue2=ドメイン名の欠落または無効
+
 text_desc3=このフォームを使用すると、DNSレコードファイル$1を手動で編集できます。 Webminは構文チェックを行いません。
 text_rawformat=このゾーンは生のバイナリ形式であるため、テキストとして表示できません。
+
 type_NSEC3PARAM=DNSSECパラメーター
 type_TLSA=SSL証明書
 type_SSHFP=SSH公開鍵
 type_DMARC=DMARC
 type_CAA=証明する機関
+
 edit_DMARC=DMARC
 edit_NSEC3PARAM=DNSSECパラメーター
 edit_TLSA=SSL証明書
 edit_SSHFP=SSH公開鍵
 edit_CAA=証明する機関
+
 recs_DMARC=DMARC
 recs_NSEC3PARAM=DNSSECパラメーター
 recs_TLSA=SSL証明書
 recs_SSHFP=SSH公開鍵
 recs_CAA=証明する機関
+
 value_AAAA1=IPv6アドレス
 value_TLSA1=証明書の使用
 value_TLSA2=証明書セレクター
@@ -94,6 +105,7 @@ value_CAA3=CAドメイン名
 value_caa_issue=単一ドメイン証明書
 value_caa_issuewild=ワイルドカード証明書
 value_caa_iodef=ポリシー違反URL
+
 tlsa_usage0=証明する機関
 tlsa_usage1=終了エンティティ
 tlsa_usage2=トラストアンカー
@@ -103,16 +115,20 @@ tlsa_selector1=公開鍵情報
 tlsa_match0=ハッシュ化されていないコンテンツ
 tlsa_match1=SHA-256ハッシュ
 tlsa_match2=SHA-512ハッシュ
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 acl_inviews=このユーザーがドメインを編集できるビュー
 acl_toplevel=ビューの外側
 acl_dnssec=ゾーンのDNSSECを構成できますか？
+
 logging_efile2=ログファイル名は絶対パスである必要があります
+
 net_taddr=転送のソースIPv4アドレス
 net_tport=転送のソースIPv4ポート
 net_taddr6=転送のソースIPv6アドレス
@@ -121,6 +137,7 @@ net_taddrdef=最も近いIP
 net_etport=転送元ポートはアドレスなしでは指定できません
 net_eaddr=「$1」は有効なIPv4アドレスではありません
 net_eaddr6=「$1」は有効なIPv6アドレスではありません
+
 zonedef_dnssec=DNSSECキーを作成し、新しいゾーンに署名しますか？
 zonedef_dnssec_dt=すべてのDNSSEC操作を自動化します（以下の他の設定は無視します）？
 zonedef_dne=を使用した認証済みの拒否
@@ -129,6 +146,7 @@ zonedef_size=初期キーサイズ
 zonedef_single=作成するキーの数
 zonedef_two=ゾーンキーとキー署名キー
 zonedef_one=ゾーンキーのみ
+
 log_rdelete_zones=$1ゾーンのレコードを削除しました
 log_zonekeyon=ゾーン$1のDNSSECを有効にしました
 log_zonekeyoff=ゾーン$1のDNSSECを無効にしました
@@ -136,12 +154,16 @@ log_sign=ゾーン$1のDNSSEC署名を更新しました
 log_resign=ゾーン$1のDNSSECキーに再署名しました
 log_trusted=DNSSEC検証の変更
 log_dnssec=DNSSECキーの再署名を変更する
+
 convert_efilesize=レコードファイル$1は存在しないか空です
 convert_ebinary=バイナリスレーブゾーンからテキスト形式のマスターに変換するために必要なコマンドがインストールされていません
 convert_ecompile=バイナリからテキスト形式への変換に失敗しました：$1
+
 add_eipaddr=サーバー$1にはホスト名ではなくIPアドレスがあります
+
 massdelete_vwarn=一部のゾーンはVirtualminドメイン $1に関連付けられているため、ここで削除しないでください！
 massdelete_vwarn2=一部のゾーンはVirtualminドメイン $1および $2に関連付けられているため、ここでは削除しないでください！
+
 rdmass_err=ゾーンのレコードを削除できませんでした
 rdmass_enone=何も選択されていません
 rdmass_title=ゾーンのレコードを削除する
@@ -155,30 +177,37 @@ rdmass_vsel=価値のある記録
 rdmass_doing=ゾーン$1のレコードを削除しています。
 rdmass_ename=削除するレコード名が入力されていません
 rdmass_done=.. $2から一致する$1レコードを削除しました。
+
 rdmass_none=..削除する$1に一致するレコードが見つかりません。
 rdmass_ok=レコードを削除する
 rdmass_sel=名前の付いたレコード
+
 rmass_name2=（ドメイン名に<tt>@</tt>を入力します）
 rmass_esign=..完了しましたが、署名に失敗しました：$1
 rmass_eclash2=..同じ名前と同じ値を持つレコード$1はすでに存在します。
+
 ncheck_title=BIND Configを確認してください
 ncheck_ecannot=BIND構成を確認することはできません
 ncheck_errs=BIND構成ファイル$1または参照ゾーンファイルで次のエラーが見つかりました。
 ncheck_allok=BIND構成ファイル$1または参照ゾーンファイルにエラーは見つかりませんでした。
+
 links_restart=設定を適用
 links_stop=バインドを停止
 links_start=BINDを開始
 links_apply=ゾーンを適用
+
 dnssec_title=DNSSECキーの再署名
 dnssec_ecannot=DNSSECの構成は許可されていません
 dnssec_header=キーの再署名オプション
 dnssec_enabled=自動キー再署名は有効ですか？
 dnssec_period=再署名の間隔は？
 dnssec_days=日々
+
 dnssec_secs=秒
 dnssec_desc=DNSSECで署名されたゾーンには通常、2つのキーがあります。ゾーンキーは定期的に再生成および署名する必要があり、キー署名キーは一定のままです。このページでは、Webminがこの再署名を自動的に実行するように構成できます。
 dnssec_err=DNSSECキーの再署名を保存できませんでした
 dnssec_eperiod=再署名間の日数がないか無効です
+
 dnssectools_title=DNSSEC-Tools Automation
 dt_conf_title=DNSSEC-Tools Automation
 dt_enable_title=DNSSEC-Tools Automation
@@ -243,6 +272,7 @@ dt_status_inKSKroll=KSKロールで
 dt_status_inZSKroll=ZSKロール
 dt_status_signed=署名済み
 dt_status_unsigned=署名なし
+
 zonekey_title=DNSSECキーのセットアップ
 zonekey_desc=このゾーンには、まだDNSSEC署名キーがありません。このフォームを使用してWebminで作成し、このゾーンを解決するクライアントがDNSスプーフィング攻撃から保護されるようにすることができます。
 zonekey_header=新しいDNSSECキーオプション
@@ -276,9 +306,12 @@ zonekey_sign=サインゾーン
 zonekey_signdesc=手動で行ったレコードへの変更が署名レコードに含まれるように、このゾーンにすぐに再署名してください。
 zonekey_resign=再署名ゾーン
 zonekey_resigndesc=新しいゾーン署名キーを生成し、ゾーンのマスターキーで署名し、すべてのレコードに再署名します。
+
 sign_err=ゾーンに署名できませんでした
 sign_emsg=レコード変更後のDNSSEC署名が失敗しました：$1
+
 resign_err=ゾーンの再署名に失敗しました
+
 trusted_title=DNSSEC検証
 trusted_ecannot=DNSSEC検証を構成することはできません
 trusted_esupport=BINDのバージョンはDNSSEC検証をサポートしていません
@@ -313,6 +346,7 @@ trusted_setup=DNSSECがインターネット上の署名済みゾーンの大部
 trusted_ok=DLVのセットアップとDNSSEC検証の有効化
 trusted_warning=警告！ BIND DNSSECクライアント設定には、2017年10月に機能しなくなる古いキーが含まれています。<a href='$1'>BIND DNSSEC Verificationページ</a>を使用して設定を調整するか、下のボタンをクリックしてください。
 trusted_fix=DNSSEC構成を修正する
+
 xfer_title=テストゾーン転送
 xfer_doing=$1からのスレーブゾーンの転送のテスト ..
 xfer_failed=.. from $1：失敗しました：$2

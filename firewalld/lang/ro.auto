@@ -30,6 +30,7 @@ index_return=lista zonelor
 index_ezones=Nu au fost găsite zone FirewallD!
 index_none=Această zonă nu are încă porturi sau servicii permise.
 index_ifaces=Aplicați reguli interfețelor:
+
 port_edit=Editare port
 port_create=Adăugați port
 port_header=Opțiuni de port permise
@@ -45,11 +46,13 @@ port_eport=Număr sau nume de port lipsă sau nevalid
 port_eportlow=Portul scăzut trebuie să fie un număr
 port_eporthigh=Portul înalt trebuie să fie un număr
 port_eportrange=Portul scăzut trebuie să fie sub portul înalt
+
 serv_edit=Editare Serviciu
 serv_create=Adaugă Serviciu
 serv_header=Opțiuni de servicii permise
 serv_name=Serviciul de a permite
 serv_err=Salvarea serviciului nu a reușit
+
 forward_edit=Modificați înainte
 forward_create=Creați înainte
 forward_header=Opțiuni de redirecționare a porturilor
@@ -61,10 +64,13 @@ forward_dstaddr=Adresa de destinație
 forward_dstlocal=Acest sistem
 forward_edstaddr=Adresa de destinație IPv4 nevalidă
 forward_eneither=Trebuie introduse fie o adresă de destinație, fie un port sau ambele
+
 check_ecmd=Comanda de control FirewallD $1 nu a fost găsită în sistemul tău
+
 delete_err=Eroare la ștergerea regulilor
 delete_enone=Nimic selectat!
 delete_edel=Eliminarea $1 a eșuat : $2 
+
 zone_title=Creați zona
 zone_header=Opțiuni de zonă noi
 zone_name=Numele zonei
@@ -77,12 +83,16 @@ zone_mode4=Porturi utilizate pentru găzduire virtuală
 zone_err=Crearea zonei nu a reușit
 zone_ename=Numele zonei lipsă sau nevalid
 zone_eclash=Există deja o zonă cu același nume
+
 delzone_title=Ștergeți Zona
 delzone_err=Nu a reușit ștergerea zonei
 delzone_edefault=Zona implicită nu poate fi eliminată
 delzone_rusure=Sigur doriți să ștergeți zona $1, care conține $2 porturi și servicii $3 ?
+
 defzone_err=Nu a reușit să facă zona implicită
+
 restart_err=Eroare la aplicarea configurației
+
 stop_err=Nu a reușit să oprească FirewallD
 start_err=Eroare la pornirea FirewallD
 log_stop=FirewallD oprit

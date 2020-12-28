@@ -19,11 +19,13 @@ index_force=כוח סיבוב יומן
 index_forcedesc=כפה את הסיבוב המיידי של כל קבצי היומן, גם אם עדיין לא הגיע הזמן.
 index_logrotate=לוגוטייט
 index_delete=מחק סיבובי יומן שנבחרו
+
 period_daily=יומי
 period_weekly=שבועי
 period_monthly=חודשי
 period_never=לעולם לא
 period_bytes=בתים
+
 edit_title1=ערוך קובץ יומן
 edit_title2=צור קובץ יומן
 edit_header=פרטי קובץ יומן מסתובבים
@@ -62,8 +64,10 @@ edit_pre=פקודות להפעלה לפני סיבוב
 edit_default=ברירת מחדל ($1)
 edit_sharedscripts=רק להריץ סקריפטים פעם אחת לכל הקבצים?
 edit_now=סובב עכשיו
+
 global_title=אופציות עולמיות
 global_header=אפשרויות ברירת מחדל עבור כל קבצי היומן
+
 save_err=שמירת היומן נכשלה
 save_efile=שם קובץ יומן חסר או לא חוקי
 save_esize=גודל מקסימלי חסר או לא חוקי
@@ -81,6 +85,7 @@ save_eerrors=כתובת דוא"ל חסרה להודעות שגיאה
 save_epre=סקריפט טרום-סיבוב לא יכול להכיל קו <tt>סיום</tt> או <tt>סוף-סוף</tt>
 save_epost=סקריפט שלאחר הסיבוב לא יכול להכיל קו <tt>סיום</tt> או <tt>endrotate</tt>
 save_enofiles=לא נכנסו קבצים לסיבוב
+
 log_modify_sched=שינוי סיבוב יומן Cron עבודה
 log_create_sched=יצר סיבוב יומן Cron עבודה
 log_delete_sched=סיבוב יומן נמחק משימת Cron
@@ -89,6 +94,7 @@ log_create=סיבוב נוסף לקובץ היומן $1
 log_modify=סיבוב שונה לקובץ היומן $1 
 log_delete=הסיבוב נמחק לקובץ היומן $1 
 log_delete_logs=הסיבוב נמחק עבור קבצי יומן $1 
+
 sched_title=לוח זמנים לסיבוב יומן
 sched_desc=לצורך ביצוע סיבוב יומנים המוגדר באמצעות מודול זה, יש לבצע את הפקודה $1 בלוח זמנים קבוע (לרוב מדי יום) על ידי Cron.
 sched_runparts=נכון לעכשיו, פקודת סיבוב היומן מופעלת מהסקריפט $1 $2, ולא ניתן לכוונן אותה.
@@ -98,10 +104,12 @@ sched_enabled=מופעלת, לפעמים מתחת ..
 sched_save=עדכן את Cron Job
 sched_err=שמירת לוח הזמנים של הסיבוב נכשל
 sched_when=פעמים לרוץ
+
 force_title=כוח סיבוב יומן
 force_doing=מכריח את הסיבוב המיידי של כל קבצי היומן ..
 force_doingone=מכריח את הסיבוב המיידי של קובץ יומן אחד ..
 force_done=.. בוצע.
 force_failed=.. נכשל! ראה את הפלט למעלה מהסיבה שבגללה.
+
 delete_err=מחיקת יומני נכשלה
 delete_enone=לא נבחר

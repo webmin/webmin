@@ -16,6 +16,7 @@ index_cancel=Prekini povezavo
 index_canceldesc=Odjemalec ADSL trenutno poskuša vzpostaviti povezavo. Kliknite ta gumb, če želite preklicati poskus z ukazom $1.
 index_cdemand=Prekliči na zahtevo
 index_cdemanddesc=Odjemalec ADSL trenutno čaka na zahtevo po povezavi. Kliknite ta gumb, da ga zaustavite s sporočilom $1.
+
 index_header=Možnosti konfiguracije odjemalca ADSL
 index_desc=Spodnje nastavitve veljajo za vse nove povezave ADSL, ki jih je začel vaš sistem. Če jih spremenite, morate povezavo izklopiti in znova zagnati, da bodo spremembe začele veljati.
 index_eth=Ethernet vmesnik
@@ -36,11 +37,13 @@ index_fw_standalone=Za enega samega gostitelja
 index_fw_masquerade=Za NAT prehod
 index_connect=Čas za poskus povezave za
 index_forever=Za vedno
+
 start_err=Zagon povezave ADSL ni uspel
 start_title=Zaženite ADSL
 start_ip=Vzpostavljena je bila povezava ADSL z naslovom IP $1.
 start_demand=Ker je omogočen način povezovanja na zahtevo, se bo povezava ADSL zagnala le, kadar je to potrebno.
 start_bg=ADSL povezava ni bila vzpostavljena v 20 sekundah. Odjemalec ADSL se bo še naprej poskušal povezati v ozadju, dokler ne bo uspešen.
+
 save_err=Konfiguracije ADSL ni bilo mogoče shraniti
 save_eeth=Manjkajoč ali neveljaven ethernet vmesnik
 save_etimeout=Manjkajoča ali neveljavna časovna omejitev na zahtevo
@@ -49,10 +52,12 @@ save_econnect=Manjkajoča ali neveljavna časovna omejitev povezave
 save_emss=Manjkajoča ali neveljavna največja velikost paketa
 save_title=Shrani konfiguracijo
 save_desc=Konfiguracija odjemalca ADSL je bila uspešno shranjena, vendar ne bo uporabljena, dokler se ponovno ne povežete.
+
 stop_err=Povezave ADSL ni bilo mogoče izklopiti
 stop_title=Ugasni ADSL
 stop_ok=Vaša ADSL povezava je bila uspešno prekinjena.
 stop_failed=Vaša povezava ADSL je iz neznanega razloga še vedno aktivna!
+
 log_save=Shranjena konfiguracija odjemalca
 log_stop=Ugasni ADSL
 log_start=Začela ADSL

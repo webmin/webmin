@@ -36,6 +36,7 @@ white_import=Import adres ze souboru
 white_sort=Setřídit povolené adresy po importu?
 white_importok=Importovat
 white_return=povolené a zakázané adresy
+
 score_title=Klasifikace spamu
 score_desc=SpamAssassin přiřazuje skóre zprávě na základě obsahu a hlavičky. Nastavení na této stránce určují skóre při kterém bude zpráva považovaná za spam a některé z těchto metod určují způsob jak je skóre počítáno.
 score_header=Možnosti klasifikace spamových zpráv
@@ -68,6 +69,7 @@ score_emxdelay=Chybějící nebo nevhodný čas čekání v sekundách mezi kont
 score_etimeout=Chybějící nebo nevhodný počet sekund pro čekání na RBL dotazy
 score_ereceived=Chybějící nebo nevhodný počet příjemců v hlavičce pro kontrolu přes RBL
 score_bayes=Použít Bayesian samoučící se klasifikaci?
+
 report_title=Úpravy zprávy
 report_desc=Nastavení na této stránce řídí úpravy, které provede SpamAssassin v hlavičkách a těle všech zpráv, při analýze a úpravách zpráv označených za spam.
 report_header=Možnosti pozměnění analyzovaných a spamových zpráv
@@ -100,6 +102,7 @@ report_addspam=Spam
 report_addham=Ham
 report_addall=Vše
 report_eaddheader=Chybějící nebo nevhodná dodatečná hlavička k přidání $1
+
 user_title=Různorodá uživatelská nastavení
 user_desc=Volby na této stránce většinou souvisejí s cestami a nastaveními SpemAssassinu pro užívání externích spam identifikujících balíčků Razor, DCC a Pyzor. Také zde můžete SpemAssassinu říci zda má provádět DNS překlady či nikoliv.
 user_header=Různorodá nastavení uživatelské úrovně
@@ -122,6 +125,7 @@ user_err=Uložení uživatelských nastavení selhalo
 user_etimeout='$1' není povolený timeout
 user_epath='$1' není povolená cesta ke klientskému programu
 user_emax='$1' není povolený počet kontrolních součtů
+
 header_title=Test hlavičky a těla
 header_desc=Tato stránka umožňuje definovat rozšiřující testy pro SpamAssassin aplikovatelné na e-mail, podle hlavičky zprávy, obsahu těla zprávy, URL obsažených ve zprávě nebo kombinovat s ostatními testy. Jméno přiřazené každému testu je na Vás, ale nejčastěji něco jako OBSAHUJICI_XXX. Aktuální skóre, které SpamAssassin přidá k odpovídajícím zprávám můžete zadat sám nebo u předdefinovaných testů ke konci této stránky.
 header_switch=Přepnutí do jednoduchého režimu ..
@@ -155,6 +159,7 @@ header_eeval='$1' není správnou hodnotící funkcí
 header_eheader='$1' není platná e-mailová adresa
 header_eregexp='$1' není povolený regulérní výraz (mel by být obdobou /výraz/)
 header_emeta=Chybějící testovací výraz pro test '$1'
+
 priv_title=Různorodá nastavení privilegované úrovně
 priv_desc=Tyto volby jsou nastaveny pouze globálně, přesněji pak v individuálních uživatelských konfiguračních souborech. Tyto volby kontrolují od cest přes různé nastavení po logovací soubory.
 priv_header=Různorodá nastavení pro privilegovanou úroveň
@@ -174,8 +179,10 @@ priv_eargs='$1' není povoleným seznamem argumentů
 priv_emscore='$1' je nepovolenou hodnotou pro nejvyšší ohodnocení fráze
 priv_ephrase='$1' je nepřípustná dvoj-slovná fráze spamu
 priv_escore=Chybějící nebo nesprávná hodnota skóre pro spam fráze '$1'
+
 usually=Obvykle $1
 ecannot=Toto není povoleno na této stránce
+
 setup_title=Nastavení Procmailu pro SpamAssassin
 setup_desc_webmin=Tento formulář se používá pro nastavení Procmailu v $1 pro spuštění SpamAssassinu na všechny e-mailové zprávy přijaté Vaším systémem. Nicméně toto je použitelné pouze tehdy jeli poštovní server konfigurován tak aby pro lokální doručení používal Procmail nebo pro uživatele, jejichž soubor <tt>.forward</tt> je nastaven na spuštění Procmailu.
 setup_desc_usermin=Tento formulář se používá pro nastavení Procmailu v $1 pro spuštění SpamAssassinu na všechny e-mailové zprávy zaslané va Váš účet. Nicméně toto je použitelné pouze tehdy jeli poštovní server konfigurován tak aby pro lokální doručení používal Procmail nebo pokud Váš soubor <tt>.forward</tt> předává všechny e-maily Procmailu.
@@ -193,11 +200,13 @@ setup_drop1=Příjemce unixový uživatel
 setup_drop0=uživatel <tt>root</tt>
 setup_ok=Nastavení Procmailu pro SpamAssassin
 setup_email=Přeposlat na e-mailovou adresu
+
 setup_err=Chyba při konfiguraci SpamAssassinu
 setup_efile=Chybějící nebo nevhodný soubor formátu mbox
 setup_emaildir=Chybějící nebo nevhodný poštovní adresář typu Qmail
 setup_emhdir=Chybějící nebo nevhodný poštovní adresář typu MH
 setup_eemail=Chybějící nebo nevhodná e-mailová adresa
+
 log_white=Upravit povolené a zakázané adresy
 log_score=Změna klasifikace spamu
 log_report=Úprava modifikace zprávy
@@ -207,12 +216,14 @@ log_priv=Upravit různorodá privilegovaná nastavení
 log_setup=Nastavení Procmailu pro SpamAssassin
 log_procmail=Změna konfigurace Procmailu
 log_import=Importováno $1 povolených adres
+
 import_title=Import adres
 import_err=Import adres selhal
 import_efile=Není vybrán žádný soubor pro import
 import_enone=Žádná e-mailová adresa nebyla v souboru nalezena
 import_ok1=V souboru se nachází $2 e-mailových adres, z čehož je $1 nových které budou přidány  do seznamu povolených adres.
 import_ok2=V souboru se nachází $1 e-mailových adres, ale všechny již existují v seznamu povolených adres.
+
 mail_title=Čtení spam pošty
 mail_desc=Tato stránka obsahuje seznam zpráv klasifikovaných jako spam a čekajících na zpracování. Zprávy které byli nesprávně označeny můžete přesunout do Vašeho Inboxu, zatímco skutečné spamy mohou byt smazány.
 mail_level=Skóre
@@ -230,15 +241,20 @@ mail_will=Automatické obnovení po $1 minutách
 mail_wills=Automatické obnovení po $1 sekundách
 mail_delall=Vymazat všechny spamy
 mail_search3=Vyhledej skóre přesahující:
+
 process_eclean=Chyba nastala při odstranění SpamAssassin hlavičky z tohoto e-mailu
 process_ereport=Selhalo zaslání e-mailu pro SpamAssassinu : $1
+
 apply_err=Chyba při aplikování změn
 apply_none=SpamAssassin démon nenalezen!
+
 acl_avail=Ikony uvolněné pro uživatele
 acl_file=Editace konfiguračního souboru SpamAssassinu
 acl_filedef=Globální konfigurační soubor
+
 search_escore=Chybějící nebo nevhodné spam skóre
 search_results5=$1 poštovních zpráv se spam skóre rovným nebo vyšším než $2 ..
+
 razor_title=Nastavení Razor spam detektoru
 razor_desc=Vipul's Razor je spolupracující spamy detekující a hlásící systém pro zdokonalení klasifikace spamů zaslaných na Vaši adresu. Nicméně, před jeho použitím se musíte registrovat a získat Razor účet, který použijete následně.
 razor_user=Uživatelské jméno pro Razor
@@ -253,9 +269,11 @@ razor_epass=Chybějící heslo
 razor_doing=Nyní se pokouším se registrovat a nastavit Razor ..
 razor_done=.. dokončeno.
 razor_failed=.. selhal! Podívejte se výstupní chyby pro zjištění příčiny.
+
 procmail_title=Procmail - doručování spamu
 procmail_ok=Změnit Procmail doručení
 procmail_desc=Tento formulář slouží ke změně konfigurace Procmailu, která určuje co se stane se zprávou označenou jako spam.
+
 simple_title=$header_title
 simple_desc=Tato stránka povoluje definovat doplňkové testy pro SpamAssassin, které budou aplikovány na e-maily podle hlavičky zprávy, těla zprávy, URL v těle zprávy.
 simple_switch=Přepnout do rozšířeného režimu ..
@@ -266,8 +284,10 @@ simple_regexp=Odpovídající výraz
 simple_score=Aplikovat výsledek
 simple_describe=Poznámka
 simple_err=Chyba při uložení testovací zprávy
+
 before_ecmd=Příkaz před uložením selhal : $1
 after_ecmd=Příkaz po uložení selhal : $1
+
 connect_emysql=Chyba při nahrávání ovladače databáze $1
 connect_elogin=Chyba při přihlášení k databázi $1 : $2.
 connect_equery=Databáze $1 neobsahuje předvolenou tabulku $2
@@ -275,9 +295,11 @@ connect_eldapmod=Perl modul $1 nutný pro komunikaci s LDAP není nainstalován 
 connect_eldap=Chyba při připojení k LDAP serveru $1 na portu $2
 connect_eldaplogin=Chyba při přihlášení k LDAP serveru $1 jako $2 : $3
 connect_ebase=LDAP základna DN $1 není správná : $2
+
 eldap=LDAP operace selhala : $1
 esql=SQL selhalo : $1
 ldap_euser=Nemohu najít uživatelský LDAP objekt pro $1
+
 db_title=SQL a LDAP databáze
 db_header=Konfigurace vlastností databázového úložiště
 db_dsn=Uložit uživatelskou konfiguraci do

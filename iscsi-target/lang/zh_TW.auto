@@ -1,6 +1,7 @@
 check_econfig=在系統上找不到iSCSI目標配置文件 $1。
 check_eietadm=在系統上找不到iSCSI目標管理命令 $1。
 check_einit=引導操作 $1不存在
+
 index_title=iSCSI目標
 index_clink=可能未安裝，或者您的<a href='$1'>模塊配置</a>不正確。
 index_stop=停止iSCSI Target
@@ -22,8 +23,10 @@ index_noluns=沒有
 index_nousers=任何
 index_nullio=$1個扇區的RAM磁盤
 index_size=總尺寸
+
 dtargets_err=刪除目標失敗
 dtargets_enone=未選擇！
+
 target_title1=創建iSCSI目標
 target_title2=編輯iSCSI目標
 target_header=iSCSI共享設備選項
@@ -68,11 +71,13 @@ target_noalias=沒有
 target_hdigest=標頭校驗和
 target_ddigest=數據校驗和
 target_nodigest=沒有
+
 auth_title=驗證設定
 auth_header=所有目標的默認身份驗證選項
 auth_iuser=客戶認證
 auth_ouser=對客戶端的身份驗證
 auth_err=無法保存身份驗證設置
+
 conn_title=連接設定
 conn_header=所有目標的默認連接選項
 conn_sessions=最大並發會話
@@ -91,6 +96,7 @@ conn_emaxrecv=丟失或非數字的最大接收段長度
 conn_emaxxmit=丟失或非數字的最大傳輸段長度
 conn_emaxburst=客戶端最大突發大小丟失或非數字
 conn_efirstburst=客戶端不請自來的最大數據大小缺失或非數字
+
 timeout_title=超時設定
 timeout_header=客戶端超時選項
 timeout_nopi=空閒時ping之間的間隔
@@ -98,6 +104,7 @@ timeout_nopinone=永不ping
 timeout_secs=秒
 timeout_nopt=等待ping響應的時間
 timeout_noptnone=與ping時間相同
+
 addr_title=服務器地址和端口
 addr_header=iSCSI服務器網絡選項
 addr_addr=監聽IP地址
@@ -110,18 +117,21 @@ addr_err=保存服務器地址失敗
 addr_eaddr=要收聽的地址必須是IP地址
 addr_eport=要監聽的端口必須是一個數字
 addr_edebug=調試級別必須為數字
+
 initiators_title=允許的客戶地址
 initiators_none=尚未定義允許的客戶地址。沒有客戶端將能夠連接。
 initiators_ips=允許的客戶
 initiators_title1=添加允許的客戶地址
 initiators_title2=編輯允許的客戶地址
 initiators_header=允許目標的iSCSI客戶端
+
 targets_title=允許的服務器地址
 targets_none=尚未定義允許的服務器地址。沒有客戶端將能夠連接。
 targets_ips=允許的服務器接口
 targets_title1=添加允許的服務器地址
 targets_title2=編輯允許的服務器地址
 targets_header=允許目標使用iSCSI服務器接口
+
 allow_target=目標名稱
 allow_move=移動
 allow_delete=刪除所選
@@ -133,17 +143,21 @@ allow_return=允許的目標和地址
 allow_err=無法保存允許的地址
 allow_eaddr=地址 $1無效。它必須是方括號中的IPv4地址，IPv4網絡/掩碼或IPv6地址。
 allow_eaddrs=沒有地址允許輸入
+
 dallow_err=無法刪除允許的地址
 dallow_enone=未選擇
+
 manual_title=編輯配置文件
 manual_desc=使用下面的文本框編輯iSCSI服務器配置文件 $1。小心，因為不會對您的輸入執行任何驗證！
 manual_err=保存配置文件失敗
 manual_edata=沒有輸入內容！
+
 start_err=無法啟動iSCSI服務器
 stop_err=停止iSCSI服務器失敗
 restart_err=重啟iSCSI服務器失敗
 atboot_err=無法在啟動時啟用
 atboot_einit=初始化腳本 $1不存在
+
 log_create_target=已創建目標 $1
 log_delete_target=已刪除目標 $1
 log_modify_target=修改後的目標 $1

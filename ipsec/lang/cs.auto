@@ -25,12 +25,15 @@ index_up=Zahájit připojení:
 index_updesc=Vyberte připojení ze seznamu vedle tohoto tlačítka a kliknutím na něj se pokuste o jeho okamžité navázání.
 index_nopol=Nebyly nalezeny žádné zásady sítě - možná je vaše <a href='$1'>konfigurace sítě</a> nesprávná.
 index_import=Importovat připojení ze souboru.
+
 stop_err=Zastavení serveru IPsec se nezdařilo
 start_err=Spuštění serveru IPsec se nezdařilo
 restart_err=Server IPsec se nepodařilo znovu spustit
 start_elog=Byly zaznamenány následující chyby : $1 
+
 newkey_err=Generování klíče se nezdařilo
 newkey_ehost=Chybí nebo je neplatný název hostitele
+
 edit_title1=Vytvořit připojení
 edit_title2=Upravit připojení
 edit_header=Podrobnosti o připojení IPsec VPN
@@ -101,6 +104,7 @@ edit_unit_s=sec
 edit_unit_m=min
 edit_unit_h=hodin
 edit_unit_d=dny
+
 config_title=Konfigurace serveru
 config_header=Globální nastavení serveru VPN
 config_ifaces=Síťová rozhraní pro IPsec
@@ -118,6 +122,7 @@ config_nat=Povolit přechod NAT?
 config_err=Uložení konfigurace serveru se nezdařilo
 config_eri=Skutečné rozhraní „$1“ je uvedeno vícekrát
 config_enone=Nebyla zadána žádná síťová rozhraní
+
 showkey_title=Zobrazit veřejný klíč
 showkey_desc1=Níže uvedený veřejný klíč RSA by měl být zkopírován do konfigurace dalších systémů připojujících se k tomuto systému v části týkající se tohoto hostitele.
 showkey_desc2=Níže uvedené hodnoty lze použít k vytvoření záznamu DNS KEY pro tohoto hostitele, takže ostatní systémy, které se k němu připojují, mohou vyhledat jeho veřejný klíč.
@@ -125,6 +130,7 @@ showkey_flags=Vlajky
 showkey_proto=Protokol
 showkey_alg=Algoritmus
 showkey_key=Klíčová data
+
 policy_desc_block=Blokované sítě
 policy_desc_clear=Vymazat dopravní sítě
 policy_desc_private=Šifrované sítě
@@ -145,6 +151,7 @@ policy_mask=Předpona
 policy_err=Uložení sítí se nezdařilo
 policy_enet=Neplatná síťová adresa IP v řádku $1 
 policy_emask=Neplatná délka předpony v řádku $2 
+
 save_err=Uložení připojení se nezdařilo
 save_ename=Chybí nebo je neplatný název připojení
 save_ekeying=Chybějící nebo neplatný počet opakovaných pokusů o klíčování
@@ -164,6 +171,7 @@ save_eleftcert=Chybějící nebo neplatný certifikát místního serveru
 save_erightcert=Chybějící nebo neplatný certifikát vzdáleného serveru
 save_ekeylife=Životnost chybí nebo je neplatná
 save_eikelifetime=Životnost chybí nebo je neplatná
+
 log_create_conn=Vytvořeno připojení $1 
 log_delete_conn=Smazané připojení $1 
 log_modify_conn=Upravené připojení $1 
@@ -182,8 +190,10 @@ log_delete_secret=Smazaný tajný klíč pro $1
 log_create_secret_nn=Vytvořen tajný klíč pro libovolného hostitele
 log_modify_secret_nn=Upravený tajný klíč pro libovolného hostitele
 log_delete_secret_nn=Smazaný tajný klíč pro libovolného hostitele
+
 up_title=Spusťte připojení
 up_cmd=Zahájení připojení pomocí příkazu $1 ..
+
 export_title=Export konfigurace
 export_desc=Tento formulář lze použít k exportu části konfiguračního souboru pro připojení $1, takže jej lze snadno importovat na server na druhém konci.
 export_print=Zobrazit konfiguraci v prohlížeči
@@ -193,11 +203,13 @@ export_err=Export konfigurace se nezdařil
 export_efile=Chybí název souboru
 export_esave=Zápis do souboru se nezdařil : $1 
 export_done=Exportovaná konfigurace pro připojení $1 do $2 ($3 bajtů).
+
 import_title=Importovat konfiguraci
 import_desc=Tento formulář lze použít k importu části konfiguračního souboru pro připojení, například té, která byla vytvořena funkcí exportu modulu do jiného systému.
 import_upload=Importovat z nahraného souboru ..
 import_file=Import ze souboru na straně serveru.
 import_ok=Importovat nyní
+
 import_err=Import konfigurace se nezdařil
 import_eupload=Nebyl vybrán žádný soubor k nahrání
 import_efile=Nebyl zadán žádný soubor na straně serveru
@@ -207,6 +219,7 @@ import_eclash=Připojení s názvem $1 již existuje.
 import_done1=Nové připojení IPsec bylo úspěšně přidáno $1.
 import_done2=Úspěšně aktualizováno připojení IPsec $1.
 import_over=Přepsat existující připojení se stejným názvem?
+
 secrets_title=Tajné klíče
 secrets_none=Nebyly nalezeny žádné tajné klíče!
 secrets_name=Tajemství pro
@@ -220,6 +233,7 @@ secrets_mod=Modul $1
 secrets_newpsk=Vytvořit nový sdílený tajný klíč.
 secrets_newrsa=Vytvořte nový klíč RSA.
 secrets_return=seznam tajných klíčů
+
 secret_title1=Vytvořte tajný klíč
 secret_title2=Upravit tajný klíč
 secret_header=Detaily tajného klíče

@@ -45,6 +45,7 @@ index_ondate=Datum
 index_charset=Ange meddelandeteckenuppsättningen automatiskt
 index_subject=Ändra meddelandet automatiskt
 index_nowebmin=Denna modul är endast avsedd att användas i Usermin. Om det är synligt i Webmin är temat du använder ofullständigt.
+
 edit_title1=Skapa filter
 edit_title2=Redigera filter
 edit_header1=Skick för filter
@@ -71,6 +72,7 @@ edit_amode7=Spara i ny mapp med namnet
 edit_nobounce=Undertryck vidarebefordran av avvisningsmeddelanden
 edit_apply=Visa matchande e-post i mapp:
 edit_move=Ansök om e-post i mappen:
+
 save_err=Det gick inte att spara filter
 save_egone=Filter finns inte längre!
 save_econdheader=Saknad eller ogiltig e-posthuvud
@@ -89,8 +91,10 @@ save_enewfolder3=En mapp med samma namn finns redan
 save_estart=Ogiltigt autosvar startdatum
 save_eend=Ogiltigt autosvar slutdatum
 save_echarset=Teckenuppsättning saknas eller ogiltig
+
 delete_err=Det gick inte att ta bort filter
 delete_enone=Ingen vald
+
 aliases_type1=Adress 1
 aliases_type2=Adresser i fil $1 
 aliases_type3=Fil $1 
@@ -101,6 +105,7 @@ aliases_your=Din brevlåda
 aliases_delete=Ta bort e-post
 aliases_other=Mailbox för användare $1 
 aliases_auto=Autosvar med meddelandet $1 
+
 auto_title=E-post automatisk svar
 auto_header=Automatiska e-postsvaralternativ
 auto_enabled=Automatiskt svar aktiverat?
@@ -111,12 +116,14 @@ auto_charsetdef=Från nuvarande språk
 auto_charsetother=Annan teckenuppsättning
 auto_period=Minsta intervall mellan svar
 auto_err=Det gick inte att spara automatisk svar
+
 forward_title=Vidarebefordra e-post
 forward_header=Alternativ för vidarebefordran av e-post
 forward_enabled=E-postöverföring aktiverad?
 forward_to=Vidarebefordra till adresser
 forward_cont=Levererar också normalt?
 forward_err=Det gick inte att spara vidarebefordran av e-post
+
 move_err=Det gick inte att tillämpa filter
 move_esrc=Källmapp $1 finns inte!
 move_edest=Destinationsmapp $1 finns inte!

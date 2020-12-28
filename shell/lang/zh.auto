@@ -8,9 +8,11 @@ index_pok=执行上一条命令
 index_edit=编辑上一个
 index_trunced=$2的总输出在 $1处被截断。
 index_timedout=运行 $1秒后命令已终止。
+
 acl_user=以用户身份执行命令
 acl_user_def=Webmin当前用户
 acl_shellenv=使用所选用户的环境？
 acl_chroot=chroot到目录
+
 log_run=跑命令 $1
 log_clear=清除命令历史

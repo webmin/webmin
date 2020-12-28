@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Skripta za traženje resursa iz drugog čvora ($1) nije 
 index_version=Verzija otkucaja srca $1 
 index_noversion=Upozorenje - Verziju otkucaja srca instaliranu na vašem sustavu nije moguće automatski prepoznati. Trebali biste ga postaviti na stranici <a href='$1'>konfiguracija modula</a>.
 index_status=Status otkucaja srca
+
 conf_title=Opcije konfiguracije
 conf_header=Opcije konfiguracije otkucaja srca
 conf_serials=Serijski otvori za otkucaje srca
@@ -54,6 +55,7 @@ conf_auto_on=$ {Conf_enabled}
 conf_auto_off=$ {Conf_disabled}
 conf_auto_legacy=Naslijeđeni način
 conf_auto_=$ {Zadano}
+
 res_title=Resursi klastera
 res_node=Primarni čvor
 res_ips=IP adrese
@@ -67,6 +69,7 @@ res_getserv=Dohvati resurse
 res_hbdown=Otkucaji srca
 res_up=UP
 res_down=DOLJE
+
 node_create=Dodavanje resursa klastera
 node_edit=Uređivanje resursa klastera
 node_header=Pojedinosti o klasteru
@@ -83,6 +86,7 @@ node_enone=Nedostaje ili nije važeći primarni čvor
 node_eip='$1' nije valjana IP adresa
 node_ecidr='$1' nije važeći CIDR
 node_ebroad='$1' nije valjana adresa emitiranja
+
 auth_title=Ključevi provjere autentičnosti
 auth_header=Autentifikacija čvora klastera
 auth_mode=Način provjere autentičnosti
@@ -92,6 +96,8 @@ auth_md5=MD5 sa lozinkom
 auth_err=Spremanje ključeva za provjeru autentičnosti nije uspjelo
 auth_emd5=Nedostaje ili nije važeća MD5 lozinka
 auth_esha1=Nedostaje ili nije važeća SHA1 lozinka
+
 start_err=Nije uspjelo pokretanje srca
+
 apply_err=Primjena promjena nije uspjela
 apply_epid=Proces se više ne pokreće

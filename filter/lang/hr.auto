@@ -45,6 +45,7 @@ index_ondate=Datum
 index_charset=Skup znakova automatske prijave
 index_subject=Automatski odgovor teme
 index_nowebmin=Ovaj se modul koristi samo u Usermin-u. Ako je vidljiv u Webminu, tema koju koristite je nepotpuna.
+
 edit_title1=Stvorite filtar
 edit_title2=Uredi filtar
 edit_header1=Uvjet za filter
@@ -71,6 +72,7 @@ edit_amode7=Spremi u novu mapu nazvanu
 edit_nobounce=Suzbiti prosljeđivanje poruka odskoka
 edit_apply=Prikaži odgovarajuću e-poštu u mapi:
 edit_move=Prijavite se u e-poštu u mapi:
+
 save_err=Spremanje filtra nije uspjelo
 save_egone=Filter više ne postoji!
 save_econdheader=Nedostaje ili nevažeće zaglavlje e-pošte
@@ -89,8 +91,10 @@ save_enewfolder3=Mapa s istim nazivom već postoji
 save_estart=Nevažeći datum početka automatske prijave
 save_eend=Nevažeći datum završetka automatskog odgovora
 save_echarset=Nedostaje ili je nevažeći automatski znak karaktera
+
 delete_err=Brisanje filtera nije uspjelo
 delete_enone=Nijedna nije odabrana
+
 aliases_type1=Adresa 1
 aliases_type2=Adrese u datoteci $1 
 aliases_type3=Datoteka $1 
@@ -101,6 +105,7 @@ aliases_your=Vaš poštanski sandučić
 aliases_delete=Izbriši poštu
 aliases_other=Spremnik korisnika $1 
 aliases_auto=Automatski odgovor s porukom $1 
+
 auto_title=Automatski odgovor e-poštom
 auto_header=Opcije automatskog odgovora putem e-pošte
 auto_enabled=Je li omogućen automatski odgovor?
@@ -111,12 +116,14 @@ auto_charsetdef=S trenutnog jezika
 auto_charsetother=Drugi skup znakova
 auto_period=Minimalni interval između odgovora
 auto_err=Spremanje automatskog odgovora nije uspjelo
+
 forward_title=Prosljeđivanje e-pošte
 forward_header=Opcije prosljeđivanja e-pošte
 forward_enabled=Omogućeno je prosljeđivanje e-pošte?
 forward_to=Proslijedi na adrese
 forward_cont=Također isporučiti normalno?
 forward_err=Spremanje prosljeđivanja e-pošte nije uspjelo
+
 move_err=Primjena filtra nije uspjela
 move_esrc=Izvorna mapa $1 ne postoji!
 move_edest=Odredišna mapa $1 ne postoji!

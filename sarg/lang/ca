@@ -10,6 +10,7 @@ index_range=Genera l'informe per al rang de dates
 index_view=Visualitza l'Informe Generat
 index_viewdesc=Visualitza l'informe generat més recent al directori $1.
 index_return=a l'índex del mòdul
+
 log_title=Origen del Registre i Destinació de l'Informe
 log_header=Opcions del fitxer de registre de Squid origen i de l'informe generat
 log_access_log=Fitxer de registre de Squid origen
@@ -30,6 +31,7 @@ log_elastlog=Hi falta el nombre o bé no és un número
 log_eemail=Hi falta l'adreça de correu o bé és aparentment invàlida
 log_emailx=Hi falta el programa de correu o bé no existeix
 log_squidguard_log_path=Fitxer de registre de SquidGuard
+
 style_title=Estil de l'Informe
 style_header=Opcions HTML de l'estil i el color de l'informe
 style_title2=Títol de l'informe
@@ -54,6 +56,7 @@ style_efont=Hi falta el nom de la tipografia o bé és invàlid
 style_esize=Hi falta l'amplada i alçada de la imatge o bé és invàlida
 style_language=Idioma de l'informe
 style_charset=Joc de caràcters de l'informe
+
 report_title=Opcions de l'Informe
 report_header=Contingut de l'informe i opcions de generació
 report_resolve_ip=Resol les adreces IP
@@ -134,6 +137,7 @@ report_echar=Els espais no estan permesos
 report_estring=Hi falta el text de substitució o bé és invàlid
 report_eselect=No has seleccionat res
 report_eenter=No has introduït res
+
 sched_title=Generació Planificada d'Informes
 sched_header=Opcions dels informes planificats
 sched_sched=Informe planificat activat
@@ -148,9 +152,11 @@ sched_rsel=Des de fa $1 dies fins fa $2 dies
 sched_err=No s'ha pogut desar la generació planificada de l'informe
 sched_erfrom=Hi falta el nombre de dies inicial o bé és invàlid
 sched_erto=Hi falta el nombre de dies final o bé és invàlid
+
 view_title=Informe Sarg
 view_efile=Nom de fitxer invàlid!
 view_eopen=No s'ha pogut obrir el fitxer d'informe
+
 gen_title=Generació d'Informe
 gen_header=S'està generant l'informe Sarg a partir del fitxer $1 de registre de Squid i totes les versions rotades...
 gen_done=... fet
@@ -160,6 +166,7 @@ gen_view=Visualitza l'informe completat.
 gen_err=No s'ha pogut generar l'informe
 gen_efrom=Hi falta el dia inicial o bé és invàlid
 gen_eto=Hi falta el dia final o bé és invàlid
+
 webmin_log_log=S'han actualitzat les opcions del registre origen i destinació de l'informe
 webmin_log_report=S'han actualitzat les opcions de l'informe
 webmin_log_style=S'han actualitzat les opcions d'estil de l'informe

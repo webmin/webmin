@@ -20,6 +20,7 @@ index_nostrftime=Amaran - ada tugas backup yang menggunakan% pada nama fail, tet
 index_tabsched=Backup Berjadual
 index_tabbackup=Backup
 index_tabrestore=Restore
+
 edit_title1=Cipta Backup Berjadul
 edit_title2=Sunting Backup Berjadul
 edit_header=Pilihan backup berjadual
@@ -43,9 +44,11 @@ edit_return=Borang backup
 edit_other=Fail lain yang tersenarai ..
 edit_pre=Arahan sebelum backup
 edit_post=Arahan selepas backup
+
 save_err=Gagal untuk simpan backup
 save_emods=Tiada modul dipilih
 save_ewebmin=Sama ada webmin atau konfigurasi fail pelayan tidak dipilih
+
 backup_mode0=Fail lokal
 backup_mode1=Pelayan FTP
 backup_mode2=Pelayan SSH
@@ -62,6 +65,7 @@ backup_egunzip=Backup dimampatkan, tetapi <tt>gunzip</tt> tidak dipasang
 backup_euntar=Nyah-TAR gagal : $1
 backup_enone2=Modul yang dipilih tiada fail dalam backup
 backup_epre2=Modul $1menolak restore : $2
+
 backup_err=Backup gagal
 backup_edest=Hilang atau fail lokal tidak wujud
 backup_eserver1=Hilang atau pelayan FTP tidak sah
@@ -77,6 +81,7 @@ backup_title=Konfigurasi Backup
 backup_doing=Memulakan backup fail konfigurasi modul ke $1 ..
 backup_failed=.. gagal! : $1
 backup_done=.. selesai. Saiz backup akhir adalah $1, mengandungi $2 fail.
+
 restore_err=Restore gagal
 restore_title=Konfigurasi Restore
 restore_doing=Memulakan restore fail konfigurasi modul dari $1 ..
@@ -84,22 +89,26 @@ restore_testing=Mengekstrak kandungan backup dari $1 ..
 restore_failed=.. gagal! : $1
 restore_done=.. selesai. $1 telah di restore.
 restore_done2=.. fail didalam backup adalah :
+
 nice_ftp=$2 ke $1 menggunakan FTP
 nice_ftpp=$2 ke $1 menggunakan FTP dengan port $3
 nice_ssh=$2 ke $1 menggunakan SSH
 nice_sshp=$2 ke $1 menggunakan SSH dengan port $3
 nice_upload=fail yang dimuat naik
 nice_download=pelayar
+
 log_backup=Backup modul $1 kedalam $2
 log_restore=Restore $1 modul dari $2
 log_create_backup=Mencipta backup modul $1 kedalam $ 2
 log_modify_backup=Backup diubahsuai sebanyak $1 modul ke $2
 log_delete_backup=Backup dipadam sebanyak $1 modul ke $2
 log_run_backup=Backup dilaksanakan sebanyak $1 modul ke $2
+
 run_title=Konfigurasi Backup
 run_doing=Memulakan backup dari $1 modul ke $2 ..
 run_ok=.. backup selesai dengan jayanya.
 run_failed=.. backup gagal! Lihat mesej ralat diatas untuk mengetahui kenapa.
+
 email_mods=Backup modul :
 email_failed=Gagal pada $1 :
 email_ok=ke $1 telah berjaya.

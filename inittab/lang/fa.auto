@@ -26,22 +26,28 @@ inittab_apply=پیکربندی اولیه را اعمال کنید
 inittab_applymsg=با استفاده از دستور <tt>telinit q</tt> ، روی این دکمه کلیک کنید تا پیکربندی Init SysV Init فعلی را اعمال کنید. آگاه باشید که هر گونه اشتباه در پیکربندی شما می تواند سیستم را هنگام اجرای این دستور غیرقابل استفاده کند.
 index_delete=فرآیندهای انتخاب شده را حذف کنید
 inittab_none2=هیچ فرآیند راه اندازی در سیستم شما یافت نشد. این احتمالاً نشان می دهد که از فایل پیکربندی SysV init استفاده نمی کند.
+
 edit_inittab_err=شما مجاز به ویرایش یک فرآیند نیستید
 edit_inittab_title=فرایند$1 را ویرایش کنید
 edit_inittab_details=جزئیات فرآیند
 edit_inittab_del=حذف
 edit_inittab_save=صرفه جویی
+
 new_inittab_err=شما مجاز به ایجاد یک فرآیند جدید نیستید
 new_inittab_title=فرآیند جدید
+
 save_inittab_err=مجاز به ذخیره یک فرآیند نیستید
 save_inittab_noid=خطا ، هیچ فرآیند نامگذاری وارد نشده است
 save_inittab_already=خطا ، فرایند نام قبلاً وجود دارد
+
 log_modify=فرآیند شروع اصلاح شده$1
 log_rename=فرایند اولیه$1 تا$2 تغییر نام داد
 log_create=فرآیند آغاز$1 ایجاد شد
 log_delete=مراحل اولیه$1 حذف شد
 log_apply=پیکربندی کاربردی
 log_deletes=$1 مراحل شروع حذف شد
+
 apply_err=پیکربندی انجام نشد
+
 delete_err=فرآیندها حذف نشدند
 delete_enone=هیچ یک انتخاب نشده است

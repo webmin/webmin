@@ -16,8 +16,10 @@ index_type=Tipo chiave SSH:
 index_rsa1=RSA (per SSH v1)
 index_rsa=RSA (per SSH v2)
 index_dsa=DSA (per SSH v2)
+
 bits=bits
 secs=secondi
+
 users_title=Autenticazione
 users_header=Opzioni di login e autenticazione
 users_expire=Giorni prima della scadenza dell' account per avvertire l' utente
@@ -53,6 +55,7 @@ users_authkeys_set=File nella home
 users_eauthkeys=File chiavi autorizzate mancante o non valido
 users_maxauthtries=Massimo numero tentativi di login per connessione
 users_emaxauthtries=Numero di tentativi di login per connessione mancante o valore non numerico
+
 net_title=Reti
 net_header=Opzioni reti
 net_port=Ascolta sulla porta
@@ -90,6 +93,7 @@ net_eprots=Devi selezionare almeno un protocollo
 net_eladdress='$1' non è un indirizzo su cui ascoltare valido
 net_elport='$1' non è una valida porta su cui ascoltare
 net_elisten2=Nessun indirizzo su cui ascoltare inserito
+
 access_title=Controllo accessi
 access_header=Opzioni controllo rete e login
 access_allowu=Permetti solo agli utenti
@@ -107,6 +111,7 @@ access_eallowg=Non consentire accesso a gruppi
 access_edenyg=Non negare l' accesso ai gruppi
 access_eallowh=Non consentire accesso agli host
 access_edenyh=non negare l' accesso agli host
+
 misc_title=Opzioni varie
 misc_header=Altre opzioni varie server SSH
 misc_x11=Abilita redirezione connessioni X11?
@@ -130,14 +135,17 @@ misc_eumask=Umask ottale 4-digit mancante o non valida
 misc_ebits=Dimensione chiave server mancante o non valida
 misc_eregen=Intervallo di rigenerazione della chiave mancante o non valido
 misc_epid=Percorso file PID mancante
+
 start_err=Fallito il tentativo di avviare il server SSH
 apply_epid=Non in esecuzione
+
 hosts_title=Opzioni clients SSH
 hosts_header=SSH Client Hosts
 hosts_none=Non è stata definita alcuna opzione per clients host.Tutti gli accessi via SSH useranno le impostazioni di default.
 hosts_all=Tutti gli host
 hosts_add=Aggiungi opzioni per il client host
 hosts_return=Lista client hosts
+
 host_create=Aggiungi opzioni hosts
 host_edit=Edita opzioni hosts
 host_header=Opzioni client per host SSH
@@ -193,6 +201,7 @@ host_eprots=Devi selezionare almeno un protocollo
 host_proxy=Comando connessione proxy
 host_proxy_def=Nessuno
 host_eproxy=Comando di ricerca connessioni proxy mancante o non valido
+
 log_users=Cambiate opzioni di autenticazione
 log_net=Cambiate opzioni reti
 log_access=Cambiato controllo accesso
@@ -207,6 +216,7 @@ log_stop=Arrestato server SSH
 log_start=Avviato server SSH
 log_apply=Configurazione applicata
 log_manual=File di configurazione $1 editato manualmente
+
 sync_title=Impostazioni chiavi SSH utenti
 sync_desc=Questa pagina ti consente di configurare le impostazioni automatiche di SSH per i nuovi utenti Unix creati sul tuo sistema. Se configurato,i nuovi utenti non dovranno eseguire <tt>ssh-keygen</tt> prima di usare SSH.
 sync_create=Configura chiave SSH per nuovi utenti Unix.
@@ -215,9 +225,11 @@ sync_pass=Usa password come parola d' ordine per la chiave.
 sync_gnupg=Configura chiave GNUPG per i nuovi utenti Unix.
 sync_type=Tipo chiave
 sync_auto=&lt;Automatico&gt;
+
 keys_title=Chiavi host SSH
 keys_desc=Questa pagina ti consente di veder le chiavi SSH per gli host.
 keys_none=Non è possibile trovare alcuna HostKey nella configurazione di SSHd
+
 manual_title=Edita file di configurazione
 manual_ecannot=Non sei abilitato a modificare i file di configurazione del server SSH
 manual_ok=Edita
@@ -225,5 +237,6 @@ manual_efile=Il file selezionato non è parte della configurazione del server SS
 manual_file=Edita file di configurazione:
 manual_edata=Niente di inserito!
 manual_err=Fallito il tentativo di salvare i file di configurazione
+
 dknown_err=Fallita eliminazione degli host conosciuti
 dknown_enone=Nessuno selezionato

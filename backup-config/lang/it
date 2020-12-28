@@ -20,6 +20,7 @@ index_nostrftime=Attenzione - Alcuni backup usano il carattare % nel nome del fi
 index_tabsched=Backup pianificati
 index_tabbackup=Effettua il backup adesso
 index_tabrestore=Ripristina adesso
+
 edit_title1=Crea backup pianificato
 edit_title2=Modifica backup pianificato
 edit_header=Opzioni per il backup pianificato
@@ -43,9 +44,11 @@ edit_return=form di backup
 edit_other=Altri file elencati:
 edit_pre=Comandi pre backup
 edit_post=Comandi post backup
+
 save_err=Salvataggio del backup non riuscito
 save_emods=Nessun modulo selezionato
 save_ewebmin=Non sono stati selezionati file di configurazione né per il server né per Webmin
+
 backup_mode0=File locale
 backup_mode1=Server FTP
 backup_mode2=Server SSH
@@ -62,6 +65,7 @@ backup_egunzip=Il file di backup è compresso, ma <tt>gunzip</tt> non è install
 backup_euntar=Un-TAR non riuscito: $1
 backup_enone2=Nessuno dei file per i moduli selezionati si trova nel backup
 backup_epre2=Ripristino scartato per il modulo $1: $2
+
 backup_err=Backup non riuscito
 backup_edest=Percorso assoluto al file locale mancante o non valido
 backup_eserver1=Server FTP mancante o non valido
@@ -77,6 +81,7 @@ backup_title=Backup della configurazione
 backup_doing=Inizio il backup dei file di configurazione del modulo su $1:
 backup_failed=... non riuscito! $1
 backup_done=... completato. La dimensione del file di backup è di $1, e contiene $2 file.
+
 restore_err=Ripristino non riuscito
 restore_title=Ripristina configurazione
 restore_doing=Inizio il ripristino dei file di configurazione del modulo da $1...
@@ -84,22 +89,26 @@ restore_testing=Estrazione contenuto del backup da $1 ..
 restore_failed=... non riuscito! $1
 restore_done=... completato. $1 file sono stati ripristinati.
 restore_done2=.. i file nel backup sono :
+
 nice_ftp=$2 su $1 via FTP
 nice_ftpp=$2 su $2 porta $3 via FTP
 nice_ssh=$2 su $1 via SSH
 nice_sshp=$2 su $2 porta $3 via FTP
 nice_upload=file caricati
 nice_download=browser
+
 log_backup=E' stato eseguito il backup di $1 moduli su $2
 log_restore=Ripristinati $1 moduli da $2
 log_create_backup=Creato il backup di $1 moduli su $2
 log_modify_backup=Modificato il backup di $1 moduli su $2
 log_delete_backup=Cancellato il backup di $1 moduli su $2
 log_run_backup=Eseguito il backup di $1 moduli su $2
+
 run_title=Configurazioni per il backup
 run_doing=Inizio il backup di $1 moduli su $2...
 run_ok=... backup completato con successo.
 run_failed=... backup non riuscito! Per maggiori dettagli consulta i messaggi di errore in alto.
+
 email_mods=Backup dei moduli:
 email_failed=in $1 non riuscito:
 email_ok=in $1 riuscito.

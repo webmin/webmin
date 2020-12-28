@@ -5,6 +5,7 @@ index_user=Schimbați parola pentru utilizator:
 index_euseradmin=Acest modul nu poate fi utilizat deoarece modulul Utilizatori și grupuri nu este instalat sau nu este acceptat pe sistemul dvs.
 index_toomany=Există prea mulți utilizatori pentru a afișa pe sistemul dvs. Introduceți numele utilizatorului a cărui parolă doriți să o modificați mai jos ..
 index_none=Nu aveți acces la niciun utilizator pentru a le schimba parolele.
+
 passwd_title=Schimbați parola
 passwd_header=Schimbarea parolei utilizatorului Unix
 passwd_for=Schimbarea parolei pentru
@@ -23,7 +24,9 @@ passwd_erepeat=Parolele noi nu sunt aceleași
 passwd_ecmd=$1 a eșuat : $2 
 passwd_ok=Parola pentru utilizator $1 a fost schimbată cu succes. Dacă acesta este actualul dvs. utilizator Webmin, este posibil să fiți forțat să vă autentificați din nou.
 passwd_ok2=Parola pentru utilizator $1 a fost schimbată cu succes.
+
 log_passwd=Parolă modificată pentru utilizator $1 
+
 acl_repeat=Trebuie să introduceți din nou parola nouă?
 acl_self=Întotdeauna permiteți modificarea propriei parole?
 acl_old=Trebuie să introduceți parola veche?

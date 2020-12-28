@@ -22,6 +22,7 @@ index_unix=Podesi autorizaciju Unix korisnika
 index_sessions=Pogledaj logirane sekcije
 index_rbac=Postavi RBAC
 index_delete=Obriši Odabrano
+
 edit_title=Uredi Webmin Korisnika
 edit_title2=Kreiraj Webmin Korisnika
 edit_readonly=Ovaj WEBmin korisnik ne smije biti uređivan kao što je to moguće modulom $1.
@@ -88,6 +89,7 @@ edit_ui=Opcije korisničkog sučelja
 edit_security=Opcije zaštite i ograničenja
 edit_mods=Dostupni Webmin moduli
 edit_modsg=Dostupni Webmin moduli (uz dodatak onim iz grupe)
+
 save_err=Neuspjeli pokušaj da se sačuva korisnik
 save_ename='$1' nije valjano korisničko ime
 save_enamewebmin=KOrisničko ime 'webmin' rezervirano je za unutarnju uporabu
@@ -115,10 +117,12 @@ save_eminsize=Nepostojeći ili nebrojčani minimum duljine lozinke
 save_edays=Ni jedan dopušteni dan nije odabran
 save_ehours=Nepostojeći ili neispravni vrijeme dopuštanja
 save_ehours2=Početno vrijeme dopuštenja mora biti prije završetka
+
 delete_err=Neuspješno brisanje korisnika
 delete_eself=Ne možete izbrisati sami sebe
 delete_ecannot=Nemate dopuštenje obrisati korisnika
 delete_euser=Nemate dopuštenje izbrisati ovog korisnika
+
 cert_title=Zatraži certifikaciju
 cert_issue=Broj certifikacije
 cert_header=Novi detalji vertifikacije
@@ -137,6 +141,7 @@ cert_install=Instaliraj svoj certifikat u pretraživač
 cert_ekey=Nova SLL šifra nije potvrđena od strane Vašeg pretraživača - moguće da pretraživač ne podupire SSL certifikaciju klijenata.
 cert_eca=Neuspješno postavljanje autorizacije certifikata : $1
 cert_already=Upozorenje - već koristite certifikat Ë˜$1.
+
 acl_title=Modulska Kontrola Pristupa
 acl_title2=Za $1 u $2
 acl_title3=Za grupu $1 u $2
@@ -145,6 +150,7 @@ acl_config=Ne možete uređivati konfiguraciju modula?
 acl_reset=Ponovno postavi (resetiraj) na opciju Puni Pristup
 acl_rbac=Želite li preuzeti postavke kontrole pristupa od RBAC?
 acl_rbacyes=Da (prebriši prethodne postavke)
+
 acl_uall=Svi korisnici
 acl_uthis=Ovaj korisnik
 acl_usel=Odabrani korisnici...
@@ -182,6 +188,7 @@ acl_theme=Ne možete promijeniti osobne teme?
 acl_ips=Ne možete promijeniti IP kontrolu pristupa?
 acl_switch=Ne možete se prebaciti na druge korisnike?
 acl_times=Ne možete promijeniti dopuštene logirane teme?
+
 log_modify=Uređeni Webmin korisnik $1
 log_rename=Preimenovani Webmin korisnik $1 u $2
 log_create=Kreiraj Webmin korisnik $1
@@ -200,6 +207,7 @@ log_delete_groups=Izbrisane Webmin grupe $1
 log_pass=Izmjenjena ograničenja lozinke
 log_unix=Izmijeni valajnost unix korisnika
 log_sync=Izmijeni sinkronizaciju unix korisnika
+
 gedit_ecannot=Nemate dopuštenje da uređujete grupe
 gedit_title=Uredi Webmin grupu
 gedit_title2=Kreiraj Webmin grupu
@@ -207,6 +215,7 @@ gedit_group=Naziv grupe
 gedit_rights=Prava pristupa Webmin grupe
 gedit_modules=Moduli korisnika
 gedit_members=Korisnici i grupe
+
 gdelete_err=Neuspjelo brisanje grupe
 gdelete_ecannot=Nemate dopuštenje da izbrišete grupe
 gdelete_euser=Ne možete izbrisati vlastitu grupu
@@ -214,10 +223,12 @@ gdelete_esub=Grupa sa svojim podgrupama ne može biti izbrisana
 gdelete_title=Izbriši Grupu
 gdelete_desc=Jeste li sigurni da želite izbrisati grupu $1 i njene korisnike $2?
 gdelete_ok=Izbriši Grupu
+
 gsave_err=Neuspjelo snimljena grupa
 gsave_ename=Naziv grupe nedostaje ili je neispravno
 gsave_enamewebmin=Naziv grupe 'webmin' rezervirano je za unutarnju uporabu
 gsave_edup=Naziv grupe već je u uporabi
+
 convert_title=Prebali korisnica
 convert_ecannot=Nemate dopuštenje da mijenjate Unix korisnike
 convert_nogroups=Ni jedna Webmin grupa nije definirana na Vašemu sistemu. Najmanje jedna grupa mora biti kreirana prije orebacivanja u svrhu definiranja dopuštenja za prebačene korisnike.
@@ -241,6 +252,7 @@ convert_exists=$1 već postoji
 convert_invalid=$1 nije valjano Webmin korisničko ime
 convert_added=$1 je dodan
 convert_msg=Prebacujem Unix korisnike...
+
 sync_title=Unix Korisnička Sinkronizacija
 sync_desc=Ova forma dopušta Vam podešavanje automatske sinkronizacije za Unix korisnike kreirane putem Webmin-a i korisnike u ovom modulu.
 sync_nogroups=NI jedna Webmin grupa nije određena na vašem sustavu. Najmanje jedna grupa mora biti kreirana da bi se postavio pristup za kreirane korisnike.
@@ -250,6 +262,7 @@ sync_delete=Obriši odgovarajuće Webmin korisnike kada Unix korisnik bude izbri
 sync_group=Upiši novog korisnika u Webmin grupu
 sync_unix=Postavi lozinku za novu Unix korisničku autentikaciju.
 sync_ecannot=Nije vam dopušteno podešavati sinkronizaciju korisnika.
+
 unix_title=Unix Korisnička Provjera
 unix_err=Nuspiješno sacuvana Unix autentikacija
 unix_desc=Ova stranica Vam dopušta da podesite Webmin da potvrđuje pokušaje prijavljivanja na korisničke liste i PAM. Ova opcija može biti korisna ukoliko imate veliki broj postojećih Unix korisnika kojima želite dati pravo pristupa na Webmin.
@@ -279,26 +292,31 @@ unix_sudo=Dopusti korisnicima koji žele pokrenuti sve komende putem <tt>sudo</t
 unix_pamany=Tretiraj samo one prijave koje prođu PAM provjeru kao $1
 unix_esudo=$1 naredba nije instalirana
 unix_esudomod=Perl modul $1 potreban za <tt>sudo</tt> autentikacija nije instalirana
+
 sessions_title=Trenutna Session Prijava
 sessions_id=Session ID
 sessions_user=Webmin korisnik
 sessions_login=Zapisi u...
 sessions_host=IP adresa
 sessions_lview=Pogledaj zapise...
+
 hide_title=Sakrij Neiskorištene Module
 hide_desc=Sljedeći moduli bit će izbrisani s liste pristupa modulima for $ jer njihovi odgovarujući serveri nisu instalirani na Vašem sustavu...
 hide_ok=Sakrij Module Sada
 hide_none=Ništa za sakriti - $1 nema dopuštenje za pristup modulima čiji odgovarajući serveri nisu instalirani na vašem sustavu.
 hide_desc2=Budite svjesni da se ovi moduli neće ponovno automatski pojavljivati ako su instalirani odgovarajući serveri. Morat ćete omogućitit pristrup manualno koriseći ove module.
 hide_clone=(Kopirani $1)
+
 switch_euser=Nije Vam odpušteno da se prebacite na ovog korisnika
 switch_eold=Postojeći session nije pronađen
+
 rbac_title=Postavi RBAC
 rbac_desc=Webmin RBA integracija omogućava korisničkim modulima i ACL da budu uklonjeni iz RBAC (Role Based Access Control) baze podataka, radije nego vlastitim Webmin konfiguracjskim dokumentima. Jednom kada se onemogući RBAC potpora, svim korisnicima kod kojih je odabrana <b>$edit_rbacdeny1</b> opcija, bit će uklonjene mogućnosti od strane RBAC-a koji će radije ukloniti njih nego vlastite Webmin postavke kontrole pristupa.
 rbac_esolaris=RBAC je trenutno podržan jedino na Solarisu, tako da ne može biti korišten na $1 sustavu.
 rbac_eperl=Perl modul $1 potreban za RBAC integraciju nije instaliran. <a href='$2'>Kliknte ovdje</a> da ga instalirate.
 rbac_ecpan=Nemate mogućnost pristupa stranicam Webmin Perl Modula u svrhu instaliranja nužnih $1 modula za RBCA integraciju.
 rbac_ok=RBAC integracija  je dosupna na ovom sustavu i može biti omogućena osnovi pojedinog korisnika na stranici Edit Webmin User.
+
 udeletes_err=Neuspješno brisanje korisnika
 udeletes_enone=Ništa nije odabrano
 udeletes_title=Obriši Korisnike
@@ -306,11 +324,13 @@ udeletes_rusure=Jeste li sigurni da želite izbrisati $1 odabrane korisnike? Sve
 udeletes_users=Odabrani korisnik: $1
 udeletes_ok=Obriši Korisnike
 udeletes_ereadonly=Jedan od odabranih korisnika označen je kao korisnik koji se ne smije uređivati
+
 gdeletes_err=Neuspjelo brisanje grupe
 gdeletes_title=Izbriši Grupe
 gdeletes_rusure=Jeste li sigurni da želite izbrisati odabrane grupe $1 i korisnike $2 koje one sadrže? Sve njihove postavke kontrola pristupa i podaci o korisnicima bit će izgubljeni.
 gdeletes_users=Odabrane grupe : $1
 gdeletes_ok=Izbriši Grupe
+
 pass_title=Ograničenja Lozinke
 pass_header=Opcije izvršenja Webmin lozinka
 pass_minsize=Minimalna duljina lozinke
@@ -331,6 +351,7 @@ pass_eminsize=Nepostojeća ili nebrojčana minimalna duljina lozinka
 pass_emaxdays=Nepostojeći ili nebrojčani broj dana prije promjena
 pass_elockdays=Nepostojeći ili nebrojčana broj dana prije zaključavanja korisničkog računa
 pass_eoldblock=Nepostojeći ili nebrojčani broj stare lozoinke koja se odbija
+
 cpass_minsize=Mora biti duljine najmanje $1 slova
 cpass_notre=Poklapa se s nedozvoljenim modelom
 cpass_re=Ne poklapa se s traženim modelom

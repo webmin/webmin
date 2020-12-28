@@ -45,6 +45,7 @@ index_ondate=Tarikh
 index_charset=Set aksara watak autoreply
 index_subject=Subjek mesej Autoreply
 index_nowebmin=Modul ini hanya digunakan di Usermin. Jika ia kelihatan di Webmin, tema yang anda gunakan tidak lengkap.
+
 edit_title1=Buat Penapis
 edit_title2=Edit Penapis
 edit_header1=Keadaan untuk penapis
@@ -71,6 +72,7 @@ edit_amode7=Simpan ke folder baru bernama
 edit_nobounce=Menyekat penghantaran mesej lantunan
 edit_apply=Tunjukkan Padanan E-mel Dalam Folder:
 edit_move=Memohon Untuk E-mel Dalam Folder:
+
 save_err=Gagal menyimpan penapis
 save_egone=Penapis tidak lagi wujud!
 save_econdheader=Pengepala e-mel yang hilang atau tidak sah
@@ -89,8 +91,10 @@ save_enewfolder3=Folder dengan nama yang sama sudah wujud
 save_estart=Tarikh mula autoreply tidak sah
 save_eend=Tarikh akhir autoreply tidak sah
 save_echarset=Set aksara watak autoreply yang hilang atau tidak sah
+
 delete_err=Gagal memadamkan penapis
 delete_enone=Tiada yang dipilih
+
 aliases_type1=Alamat 1
 aliases_type2=Alamat dalam fail $1 
 aliases_type3=Fail $1 
@@ -101,6 +105,7 @@ aliases_your=Peti mel anda
 aliases_delete=Padam mel
 aliases_other=Peti mel pengguna $1 
 aliases_auto=Autoresponder dengan mesej $1 
+
 auto_title=E-mel Automatik Balas
 auto_header=Pilihan balas e-mel automatik
 auto_enabled=Sambutan automatik diaktifkan?
@@ -111,12 +116,14 @@ auto_charsetdef=Dari bahasa semasa
 auto_charsetother=Set aksara lain
 auto_period=Selang minimum antara balasan
 auto_err=Gagal menyimpan jawapan automatik
+
 forward_title=Hantar E-mel
 forward_header=Pilihan penghantaran e-mel
 forward_enabled=Pemajuan e-mel didayakan?
 forward_to=Teruskan ke alamat
 forward_cont=Juga menyampaikan secara normal?
 forward_err=Gagal menyimpan penghantaran e-mel
+
 move_err=Gagal menggunakan penapis
 move_esrc=Folder sumber $1 tidak wujud!
 move_edest=Folder destinasi $1 tidak wujud!

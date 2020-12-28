@@ -14,10 +14,12 @@ index_apply=Applika
 index_return=Indiċi PPP
 index_none=M'għandek aċċess għal ebda waħda mill-karatteristiċi ta 'dan il-modulu.
 index_delete=Ħassar il-Kontijiet Magħżula
+
 secrets_title=Kontijiet PPP
 secrets_return=indiċi
 secrets_none=L-ebda kont PPP għadu ma nħoloq.
 secrets_ecannot=M'għandekx permess teditja kontijiet PPP
+
 edit_secret_etitle=Editja l-Kont PPP
 edit_secret_ctitle=Oħloq Kont PPP
 edit_secret_acc=Kont PPP
@@ -37,8 +39,10 @@ edit_secret_alist=Ħallih elenkat ..
 edit_secret_save=Issejvja
 edit_secret_del=Ħassar
 edit_secret_return=lista tal-kontijiet
+
 save_secret_esave=Ma rnexxielux isalva l-kont
 save_secret_enoip="$1" mhuwiex indirizz validu
+
 log_create=Kont PPP maħluq $1 
 log_modify=Kont PPP modifikat $1 
 log_delete=Kont PPP imħassar $1 
@@ -54,6 +58,7 @@ log_dialin_move=Numru ta 'l-ID ta' min iċempel $1
 log_mgetty_create=Port tas-serje maħluq $1 
 log_mgetty_modify=Port tas-serje modifikat $1 
 log_mgetty_delete=Port tas-serje mħassar $1 
+
 options_title=Għażliet PPP
 options_serial=Għall-port tas-serje $1 
 options_dev=Għat-tagħmir $1 
@@ -84,6 +89,7 @@ options_idle=Ħin il-ħin qabel ma skonnettja
 options_idle_def=Qatt
 options_eidle=Nieqes il-ħin inattiv jew invalidu
 options_ecannot=M'għandekx permess teditja l-għażliet tal-PPP
+
 mgetty_title=Konfigurazzjoni tal-Port Serjali
 mgetty_ecmd=Il-kmand $1 ma nstabx fis-sistema tiegħek. Dan il-programm huwa meħtieġ biex jittratta logins tal-port serjali permezz ta 'modem jew konnessjoni diretta.
 mgetty_desc=Sabiex is-server tiegħek jippermetti logins fuq port serjali permezz ta 'modem jew konnessjoni diretta, għandu jkun elenkat hawn taħt. Meta żżid port ma 'din il-lista, il-programm $1 jiġi kkonfigurat biex iwieġeb konnessjonijiet tal-modem u juri prompt tal-login.
@@ -125,6 +131,7 @@ mgetty_apply=Applika Konfigurazzjoni
 mgetty_applydesc=Ikklikkja din il-buttuna biex tapplika l-konfigurazzjoni attwali tal-port tas-serje billi tħaddem il-kmand $1 u toqtol il-proċessi Mgetty kollha.
 mgetty_applyerr=Ma rnexxielux japplika l-konfigurazzjoni
 mgetty_ecannot=M'għandekx permess teditja konfigurazzjonijiet tal-port tas-serje
+
 dialin_title=Aċċess għall-ID tas-sejjieħ
 dialin_desc=Din il-paġna jippermettilek li tikkonfigura Mgetty biex tippermetti jew tiċħad l-aċċess dialin ibbażat fuq in-numru tat-telefon ta 'min iċempel. Meta tidħol telefonata, l-ewwel iskrizzjoni fil-lista li taqbel man-numru tat-telefon tiddetermina jekk is-sejħa hijiex aċċettata jew le.
 dialin_efile=Il-fajl tal-kontroll ta 'l-aċċess għall-aċċess tas-sejjieħ Mgetty $1 ma nstabx fis-sistema tiegħek. Forsi Mgetty mhuwiex installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> tiegħek mhix korretta.
@@ -145,9 +152,12 @@ dialin_move=Tmexxi
 dialin_err=Ma rnexxielux isalva n-numru tal-ID tal-sejjieħ
 dialin_enumber=Numru tat-telefon nieqes jew invalidu
 dialin_ecannot=M'għandekx permess teditja l-aċċess għall-identità tas-sejjieħ
+
 acl_pages=Paġni disponibbli
 acl_direct=Tmur dirett għal paġna waħda?
+
 sync_ecannot=M'għandekx permess teditja għażliet ta 'sinkronizzazzjoni unix-ppp
 sync_title=Sinkronizzazzjoni tal-Utent
+
 delete_err=Naqset milli tħassar il-kontijiet
 delete_enone=L-ebda magħżul

@@ -5,11 +5,14 @@ main_skill=רמת מיומנות
 main_readonly=(מצב לקריאה בלבד)
 main_unused=מודולים שאינם בשימוש
 main_refreshmods=רענון מודולים
+
 link_essl=מודול Net::SSLeay Perl הדרוש ליצירת חיבורי HTTPS אינו מותקן במערכת שלך.
+
 category_syslet=Syslets
 category_cluster=אשכול
 category_info=מידע
 category_=כלים
+
 longcategory_servers=מודולים לתצורת רשת, דוא"ל, FTP ושרתים אחרים
 longcategory_hardware=מודולים לתצורת מדפסת, דיסק ותצורת חומרה אחרת
 longcategory_system=מודולים למשתמשים, מערכות קבצים, עבודות Cron והגדרות מערכת אחרות
@@ -18,6 +21,7 @@ longcategory_net=מודולים להגדרת תצורה של רשתות ושיר
 longcategory_cluster=מודולים שיכולים לנהל מספר שרתים מממשק יחיד
 longcategory_info=מודולים המציגים מידע על המערכת שלך
 longcategory_=מודולים המבצעים משימות שונות אחרות
+
 error_previous=עמוד קודם
 error_stack=התקשר לעקוב אחר סטאק
 error_file=קובץ
@@ -35,8 +39,10 @@ euserdbacl=Failed to fetch user ACL : $1
 euserdbacl2=Failed to update user ACL : $1
 egroupdbacl=Failed to fetch group ACL : $1
 egroupdbacl2=Failed to update group ACL : $1
+
 chooser_date=בחר תאריך
 chooser_eopen=Listing failed : $1
+
 modules_title1=בחר מודולים ..
 modules_title2=בחר מודול ..
 modules_sel=מודולים שנבחרו
@@ -44,16 +50,19 @@ modules_all=כל המודולים
 modules_ok=בסדר
 modules_cancel=בטל
 modules_clear=ברור
+
 config_emodule=המודול אינו קיים
 config_err=שמירת התצורה נכשלה
 config_nochange=אל תשתנה
 config_setto=מכוון ל
 config_ewebmin=פרמטר מסוג 14 עובד רק ב- Webmin
+
 referer_warn_unknown=<b>Warning!</b> Webmin has detected that the program $1 was linked to from an unknown URL, which appears to be outside the Webmin server. This may be an attempt to trick your server into executing a dangerous command.
 referer_fix1=If this is a legitimate link, you can allow links from this URL as follows :<ul><li>Login to Webmin normally.</li><li>Go to the <b>Webmin Configuration</b> module.</li><li>Click on the Trusted Referrers icon.</li><li>Enter the hostname $1 into the <b>Trusted websites</b> field, and click <b>Save</b></li>.</ul>
 referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.</li><li>Save the file.</li></ul>
 referer_fix3u=ודא שהדפדפן שלך מוגדר לשליחת מידע מפנה כך שניתן לאמת אותו על ידי Webmin.
 referer_fix2u=Alternately, you can configure Webmin to allow links from unknown referers by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Find the line <tt>referers_none=1</tt> and change it to <tt>referers_none=0</tt>.</li><li>Save the file.</li></ul><p></p>WARNING - this has the side effect of opening your system up to reflected XSS attacks and so is not recommended!
+
 session_header=התחבר ל- Webmin
 session_mesg=You must enter a username and password to login to the Webmin server on $1.
 session_mesg2=עליך להזין שם משתמש וסיסמא כדי להתחבר.
@@ -67,11 +76,13 @@ session_twofailed=Two-factor authentication failed : $1
 session_logout=היציאה הצליחה. השתמש בטופס למטה כדי להתחבר שוב.
 session_timed_out=Session timed out after $1 minutes of inactivity.
 session_save=זוכר את הכניסה לצמיתות?
+
 pam_header=התחבר ל- Webmin
 pam_mesg=You must respond to the question below to login to Webmin server on $1.
 pam_mesg2=עליכם להשיב לשאלה להלן בכדי להתחבר.
 pam_login=המשך
 pam_restart=איתחול
+
 acl_root=ספריית שורש לבוחר הקבצים
 acl_otherdirs=ספריות גלויות אחרות בבחירת הקבצים
 acl_nodot=להסתיר קבצי נקודה בבחירת הקבצים?
@@ -104,6 +115,7 @@ acl_negative=לתת הרשאות מודול חדשות למשתמש?
 acl_fileunix=דפדף בקבצים כמשתמש יוניקס
 acl_sameunix=זהה לזה של כניסה ל- Webmin
 acl_webminsearch=האם להציג שדה חיפוש ב- Webmin?
+
 day_0=יום ראשון
 day_1=יום שני
 day_2=יום שלישי
@@ -111,6 +123,7 @@ day_3=יום רביעי
 day_4=יום חמישי
 day_5=יום שישי
 day_6=יום שבת
+
 sday_0=סו
 sday_1=מו
 sday_2=טו
@@ -118,12 +131,15 @@ sday_3=אנחנו
 sday_4=ת '
 sday_5=Fr
 sday_6=Sa
+
 emodule=Access denied : User $1 is not allowed to use the $2 module
 emodulecheck=The $1 module is not available on your system
 elock_tries2=Failed to lock file $1 after $2 minutes. Last error was : $3
+
 skill_high=מומחה
 skill_medium=ביניים
 skill_low=טירון
+
 feedback_title=משוב של Webmin
 feedback_desc=This form allows you to report bugs on make suggestions to the Webmin developers regarding any problems or missing features that you have found. When the Send button is clicked, the details entered into the form will be emailed to $1.
 feedback_desc2=משוב זה יישלח למפתח של וובמין ולא למנהל המערכת, לספק שירותי האינטרנט או לחברת אירוח. אנא כתוב את המשוב שלך באנגלית, גם אם אתה מנהל את Webmin בשפה אחרת.
@@ -152,15 +168,18 @@ feedback_to=שלח משוב לכתובות
 feedback_enoto=לא הוזנו כתובות להעברת משוב
 feedback_ecannot=אינך רשאי לשלוח משוב
 feedback_ecannot2=אינך רשאי לשלוח משוב המכיל קבצי תצורה
+
 progress_size2=Downloading $1 ($2) ..
 progress_nosize=Downloading $1 ..
 progress_datan=Received $1 ($2 %)
 progress_data2n=Received $1
 progress_done=.. ההורדה הושלמה.
 progress_incache=Found $1 in cache ..
+
 readparse_cdheader=כותרת חסרת תוכן חסרה
 readparse_enc=מצפה לקידוד נתוני טופס, אך קיבל קידוד רגיל
 readparse_max=Data exceeded maximum size of $1 bytes
+
 password_expired=פג תוקף הסיסמה שלך, ויש לבחור סיסמה חדשה.
 password_temp=עליך לבחור סיסמה חדשה שתחליף את הכניסה הזמנית שלך.
 password_header=בחר סיסמא חדשה
@@ -179,6 +198,7 @@ password_enew2=הסיסמאות החדשות שלך אינן תואמות
 password_epam=PAM error : $1
 password_emodpam=מודול Authen::PAM perl הדרוש לביצוע שינויים בסיסמה אינו מותקן!
 password_enewpass=New password is not allowed : $1
+
 ui_mandatory=שדה רישום זה הוא חובה
 ui_checkmandatory=לא נבחר דבר
 ui_errors=נמצאו שגיאות מרובות :
@@ -193,7 +213,9 @@ ui_etime=זמן לא חוקי
 ui_paging=Showing rows $1 to $2 of $3
 ui_rowlabel=$2 in row $1 :
 ui_filterbox=הקלד לסינון ..
+
 header_statusmsg=$1 logged into $2 $3 on $4 ($5)
+
 uptracker_title=העלאת קובץ
 uptracker_file=שם קובץ
 uptracker_size=גודל
@@ -201,6 +223,7 @@ uptracker_pc=התקדמות
 uptracker_eid=לא צוין מזהה העלאה
 uptracker_eid2=מזהה העלאה אינו חוקי!
 uptracker_of=$1 of $2
+
 wsearch_title=Search $1
 wsearch_modt=מודול
 wsearch_mtitle=שם המודול
@@ -228,6 +251,7 @@ wsearch_hmod=מודול
 wsearch_moddir=URL path /$1/
 wsearch_searching=Searching for $1 . .
 wsearch_found=found $1 results :
+
 sql_emysqldriver=טעינת מנהל ההתקן של MySQL DBI נכשלה
 sql_emysqlconnect=Failed to connect to MySQL database : $1
 sql_epostgresqldriver=טעינת מנהל התקן DBI של PostgreSQL נכשלה
@@ -236,6 +260,7 @@ sql_eldapdriver=טעינת מודול ה- perl של LDAP נכשלה
 sql_eldapconnect=Failed to connect to LDAP server $1
 sql_eldaptls=Failed to start TLS encryption for LDAP : $1
 sql_eldaplogin=Failed to login to LDAP server as $1 : $2
+
 log_email_subject=Webmin action in $1
 log_email_global=פעולה גלובלית של Webmin
 log_email_desc=דוא"ל זה נשלח על ידי Webmin בתגובה לפעולת משתמש.
@@ -247,6 +272,7 @@ log_email_user=Performed by user: $1
 log_email_script=Webmin script: $1
 log_email_session=Session ID: $1
 log_email_remote=Client address: $1
+
 nice_size_PB=PB
 nice_size_PiB=PiB
 nice_size_TB=שחפת
@@ -258,7 +284,9 @@ nice_size_MiB=MiB
 nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=בתים
+
 langauto_include=כלול תרגומי מכונה
+
 file_truncated_message=הביא $1 מהנתונים, קטוע $2 מתוך $3 
 file_truncated_message_head=הביא $1 מתחיל הנתונים, קטוע $2 מתוך $3 
 file_truncated_message_tail=הושג סיום $1 מהנתונים, קטוע $2 מתוך $3 

@@ -25,6 +25,7 @@ index_resetdesc=Noklikšķiniet uz šīs pogas, lai notīrītu visus esošos ugu
 index_cluster=Klasteru serveri
 index_clusterdesc=Noklikšķiniet uz šīs pogas, lai iestatītu papildu Webmin serverus, uz kuriem ugunsmūra konfigurācija tiks automātiski kopēta.
 index_return=ugunsmūra noteikumi
+
 index_num=Num
 index_action=Darbība
 index_desc=Stāvoklis
@@ -37,6 +38,7 @@ index_delete=Dzēst atlasīto
 index_existing=Webmin ir atklājis $1 IPFW ugunsmūra kārtulas, kuras pašlaik tiek izmantotas, kas nav ierakstītas failā $2. Šie noteikumi, iespējams, tika iestatīti no skripta, kuru šis modulis nezina, kā lasīt un rediģēt. <p> Ja vēlaties izmantot šo moduli sava IPFW ugunsmūra pārvaldīšanai, noklikšķiniet uz tālāk esošās pogas, lai esošos noteikumus pārveidotu par saglabāšanas failu un pēc tam atspējojiet esošo ugunsmūra skriptu.
 index_saveex=Saglabājiet ugunsmūra noteikumus
 index_headerex=Esošā ugunsmūra konfigurācija
+
 action_allow=<font color=#00aa00>Atļaut</font>
 action_deny=<font color=#ff0000>Nomet</font>
 action_reject=<font color=#ff4400>Noraidīt</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Pamest paketi</font>
 laction_reject=<font color=#ff4400>Atgriezt ICMP noraidījumu</font>
 laction_reset=<font color=#ff4400>Atiestatīt TCP savienojumu</font>
 laction_skipto=Pāriet uz likumu
+
 edit_title1=Izveidot kārtulu
 edit_title2=Rediģēt kārtulu $1 
 edit_header1=Noteikumu darbība
@@ -114,6 +117,7 @@ edit_src-addr=No avota adreses ..
 edit_src-port=No avota ostas ..
 edit_dst-addr=Uz adresāta adresi ..
 edit_dst-port=Uz galamērķa ostu ..
+
 save_err=Neizdevās saglabāt kārtulu
 save_enum=Trūkst vai nav derīgs noteikumu numurs
 save_eskipto=Trūkst vai nav derīgs kārtulu numurs, uz kuru pāriet
@@ -144,7 +148,9 @@ save_etcpflags=TCP karodziņus var norādīt tikai tad, ja protokols ir TCP
 save_elimit=Trūkst vai nav derīgs maksimālais ierobežojums
 save_edstport=Trūkst vai nav derīgs mērķa ports
 save_esrcport=Trūkst vai nav derīgs avota ports
+
 apply_err=Neizdevās piemērot konfigurāciju
+
 desc_if=Ja $1 
 desc_and=un
 desc_always=Vienmēr
@@ -191,6 +197,7 @@ desc_where=kur $1
 desc_all=visām paciņām
 desc_in=Ienākošā pakete
 desc_out=paciņa ir izejoša
+
 log_create_rule=Izveidots $1 noteikums
 log_delete_rule=Izdzēsts $1 noteikums
 log_modify_rule=Modificēts $1 noteikums
@@ -206,6 +213,7 @@ log_convert=Konvertēti aktīvie ugunsmūra noteikumi
 log_setup=Veikta sākotnējā ugunsmūra iestatīšana
 log_unapply=Atjaunota ugunsmūra konfigurācija
 log_delsel=Izdzēsti $1 noteikumi
+
 cluster_title=Klasteru ugunsmūra serveri
 cluster_none=Ugunsmūra klasterim vēl nav pievienoti serveri.
 cluster_host=Resursdatora nosaukums
@@ -216,6 +224,7 @@ cluster_gadd=Pievienojiet serverus grupai
 cluster_need=Webmin serveru indeksa modulī jāpievieno serveri ar pieteikumvārdu un paroli, pirms tos šeit var pārvaldīt.
 cluster_return=klasteru serveri
 cluster_delete=Noņemt atlasīto
+
 add_title=Pievienot serverus
 add_msg=Notiek $1 pievienošana.
 add_gmsg=Serveru pievienošana grupā $1.

@@ -24,13 +24,16 @@ index_out=La sortie de $1 était
 index_boot=Connectez-vous au démarrage avec:
 index_noboot=&lt;Ne vous connectez pas&gt;
 index_bootdesc=Modifiez cette option pour contrôler si la connexion PPP sélectionnée est démarrée au démarrage ou non.
+
 init_title=Détecter la configuration
 init_cmd=Détection d'un modem connecté avec la commande $1 ..
 init_done=.. terminé
 init_modems=Les modems sont configurés sur $1 et $2.
 init_modem=Un modem a été détecté sur $1.
 init_none=Aucun modem n'a été détecté!
+
 device_serial=port série $1 
+
 connect_title=Établir une connexion
 connect_cmd=Tentative d'établir une connexion avec la commande $1 ..
 connect_failed=.. la connexion a échoué! Voir la sortie ci-dessus pour la raison.
@@ -40,12 +43,14 @@ connect_dns=Utilisation de la configuration DNS attribuée par PPP.
 connect_dns2=La configuration DNS attribuée par PPP a été définie.
 connect_dnsto=Délai d'attente en attente de la configuration DNS attribuée par PPP.
 connect_dnsdown=La connexion semble avoir échoué lors de l'attente de la configuration DNS attribuée par PPP.
+
 disc_title=Arrêter PPP
 disc_err=Impossible de fermer la connexion PPP
 disc_edown=Déjà déconnecté
 disc_ok1=Votre connexion PPP établie à l'aide de $2 a été fermée avec succès.
 disc_ok2=Votre connexion PPP a été fermée avec succès.
 disc_dns=Ancienne configuration DNS restaurée.
+
 edit_title1=Ajouter ISP Dialer
 edit_title2=Modifier le numéroteur du FAI
 edit_ddesc=Ces paramètres par défaut s'appliqueront aux connexions établies à l'aide de tout autre numéroteur.
@@ -76,6 +81,7 @@ edit_idle=Délai d'inactivité (en secondes)
 edit_def=À partir des paramètres par défaut
 edit_inherits=Hériter des paramètres
 edit_from=Du composeur ..
+
 save_err=Échec de l'enregistrement du numéroteur
 save_err2=Impossible de supprimer le numéroteur
 save_ename=Nom du composeur manquant ou invalide
@@ -88,6 +94,7 @@ save_edial=Nombre de tentatives de numérotation manquant ou non valide
 save_eidle=Délai d'inactivité manquant ou invalide
 save_einherits=Ce numéroteur ne peut pas être supprimé car '$1' en hérite des paramètres.
 save_eclash=Un numéroteur portant le même nom existe déjà
+
 log_create=Créé $1 
 log_update=Mis à jour $1 
 log_delete=$1 supprimé

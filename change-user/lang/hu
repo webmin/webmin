@@ -19,6 +19,7 @@ index_d1=$1
 index_dlang=a nyelv amit a modulok használnak
 index_dtheme=és a Webmin kontrolok témájának
 index_dpass=a jelszó amit a belépéshez használ
+
 change_title=Megváltoztatom a beállításokat
 change_user=Módosítom a Webmin belépést..
 change_done=.. rendben
@@ -27,6 +28,7 @@ change_redirect=Átirányítom a főmenübe..
 change_ecolon=Az Ön jelszava nem tartalmazhatja a : karaktert
 change_epass2=A jelszavak nem egyeznek
 change_epass=Az új jelszó: $1
+
 acl_lang=Lehetősége legyen a nyelv választására?
 acl_theme=Lehetősége legyen témát váltani?
 acl_pass=Lehetősége legyen a jelszó váltásra (ha be lett állítva a Webmin -ben)?

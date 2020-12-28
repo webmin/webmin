@@ -44,6 +44,7 @@ right_upsec=$1 -paketuppdateringar är tillgängliga, varav $2 är säkerhetsupp
 right_recollect=Uppdatera systeminformation
 right_vvirtualmin=Virtualmin-version
 right_vvm2=Cloudmin-version
+
 acl_show=Systeminformation som ska visas
 acl_showall=Allt
 acl_showsel=Endast vald. ..

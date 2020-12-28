@@ -64,12 +64,14 @@ index_match1=conține
 index_match2=chibrituri
 index_dhcpd=ISC DHCPd
 index_delete=Sterge selectia
+
 butt_save=salva
 butt_eco=Editați Opțiunile clientului
 butt_vco=Vizualizați Opțiunile clientului
 butt_del=Șterge
 butt_create=Crea
 butt_leases=Listă închirieri
+
 esub_crheader=Creați subrețea
 esub_edheader=Editează subrețea
 esub_tabhdr=Detalii de subrețea
@@ -83,12 +85,14 @@ esub_groups=Grupuri direct în această subrețea
 esub_pools=Grupuri de adrese pentru subrețea
 esub_pool=Grupa $1 
 esub_poolnone=Nu sunt definite grupuri de adrese
+
 esub_pooladd=Adăugați un grup de adrese.
 esub_none=Nici unul
 esub_return=lista de subrețele
 esub_retshar=rețea comună
 esub_desc=Descrierea subnetului
 esub_fopeer=Failover Peer
+
 esh_crheader=Creați rețea comună
 esh_eheader=Editează rețeaua comună
 esh_tabhdr=Detalii partajate din rețea
@@ -99,6 +103,7 @@ esh_subn=Subnetele din această rețea partajată
 esh_return=lista de subrețele
 esh_pools=Grupuri de adrese pentru rețeaua comună
 esh_desc=Descrierea rețelei partajate
+
 ehost_crheader=Creați gazdă
 ehost_eheader=Editați gazda
 ehost_tabhdr=Detalii despre gazdă
@@ -119,6 +124,7 @@ ehost_retgroup=grup
 ehost_retsubn=subrețea
 ehost_retshar=rețea comună
 ehost_desc=Descrierea gazdei
+
 egroup_crheader=Creați grup de gazdă
 egroup_eheader=Editați grupul gazdă
 egroup_tblhdr=Detalii despre grup
@@ -129,6 +135,7 @@ egroup_return=lista de gazde
 egroup_retsubn=subrețea
 egroup_retshar=rețea comună
 egroup_desc=Descrierea Grupului
+
 default=Mod implicit
 secs=secunde
 none=Nici unul
@@ -157,20 +164,24 @@ listl_pc=Procent
 listl_err=Eroare la închirieri șterse
 listl_enone=Nimic selectat
 listl_refresh=Actualizare listă
+
 restart_errmsg1=Nu a putut reporni dhcpd
 restart_errmsg2=Procesul de semnal nu a reușit
 start_failstart=Eșecul la pornirea dhcpd
 restart_conftext=Linii în jur de $1 în $2  :
+
 sgroup_faildel=Nu a reușit ștergerea grupului
 sgroup_failsave=Nu a reușit să salveze grupul
 sgroup_invassign=grup alocat unei secțiuni incorecte
 sgroup_echanged=Conținutul fișierului de configurare a fost schimbat. Încearcă din nou.
+
 shost_faildel=Nu a reușit să ștergi gazda
 shost_failsave=Nu a reușit salvarea gazdei
 shost_invalidhn=nu este un nume de gazdă valid
 shost_invalidhwa=„$1” nu este o adresă validă $2 
 shost_invalidaddr=„$1” conține un nume de gazdă sau o adresă IP nevalide
 shost_invassign=gazda atribuită unei secțiuni incorecte
+
 sopt_failsave=Nu a reușit să salvați opțiunile clientului
 sopt_invalidip=nu este o adresă IP validă
 sopt_invalidint=nu este un număr întreg
@@ -180,10 +191,12 @@ sopt_ednum=„$1” nu este un număr de opțiune valid
 sopt_edtype=„$1” nu este un tip de opțiune valid
 sopt_ecval=Valoarea lipsă pentru opțiunea personalizată „$1”
 sopt_ecip=Valoarea pentru opțiunea personalizată „$1” trebuie să fie o adresă IP
+
 sshared_faildel=Nu a reușit ștergerea rețelei partajate
 sshared_failsave=Nu a reușit salvarea rețelei partajate
 sshared_invalidsname=Numele rețelei partajate lipsă sau nevalide.
 sshared_nosubnet=Rețeaua comună „$1” nu conține nicio subrețea.
+
 ssub_faildel=Nu a reușit să ștergeți subrețea
 ssub_failsave=Nu a reușit să salveze subrețea
 ssub_invalidsubaddr=nu este o adresă de subrețea valabilă
@@ -191,6 +204,7 @@ ssub_invalidnmask=nu este o mască netă valabilă
 ssub_invalidipr=nu este o adresă IP de rază valabilă
 ssub_nosubnet=Rețeaua comună „$1” nu conține nicio subrețea.
 ssub_invalidfopeer=nu este un echivalent valid de la egal
+
 plib_deflt=Timp implicit de închiriere
 plib_bfname=Porniți numele de fișier
 plib_maxlt=Timpul maxim de închiriere
@@ -244,6 +258,7 @@ plib_eexpr=Această secțiune a configurației DHCP conține expresia directivă
 plib_auth_subnet=Serverul este autoritar pentru această subrețea?
 plib_auth_shared-network=Serverul este autoritar pentru această rețea partajată?
 plib_auth_global=Serverul este autoritar pentru toate subnetele?
+
 eopt_header=Opțiuni client
 eopt_subtitle=Pentru subrețea $1 
 eopt_returnsub=subrețea
@@ -289,6 +304,7 @@ eopt_slpa=IP-urile agentului director SLP
 eopt_slpaips=Aceste IP-uri numai?
 eopt_slps=Domeniul de aplicare SLP
 eopt_slpsonly=Doar acest domeniu de aplicare?
+
 log_apply=Modificări aplicate
 log_start=A început serverul DHCP
 log_stop=Serverul DHCP oprit
@@ -311,6 +327,7 @@ log_options_group=Opțiuni modificate pentru grupul de gazde $1
 log_delete_lease=Se închide un contract de închiriere pentru $1 
 log_delete_subnets=S-au șters rețelele $1 și rețelele partajate
 log_delete_hosts=Gazde și grupuri gazdă $1 șterse
+
 keys_edit=Editează cheia TSIG
 keys_create=Chei TSIG create
 keys_title=Cheile DNS
@@ -321,12 +338,14 @@ keys_ecannot=Nu aveți voie să editați cheile DNS
 keys_err=Salvarea cheilor DNS nu a reușit
 keys_ekey=„$1” nu este un cod cheie valid
 keys_esecret=Secretul codat de bază-64 lipsă sau invalid pentru cheia $1 
+
 pool_edit=Editează pool de adrese
 pool_create=Creare grup de adrese
 pool_header=Opțiuni pentru pool de adrese
 pool_allow=Clienții care să permită
 pool_deny=Clienții de negat
 pool_return=subrețea
+
 cdel_header=Avertizare
 cdel_shared1=rețea comună
 cdel_shared2=rețea comună
@@ -344,6 +363,7 @@ cdel_txt=Ștergând $1 '$2' va șterge de asemenea conținutul său:
 cdel_confirm=Doriți cu adevărat să ștergeți acest $1 ?
 cdel_eunknown=Eroare necunoscută
 cdel_return=gazdă și listă de rețea
+
 eacl_aviol=Încălcarea controlului de acces
 eacl_np=Nu aveți permisiuni pentru
 eacl_pdh=ștergeți gazda
@@ -369,6 +389,7 @@ eacl_pdl=ștergeți contractele de închiriere
 eacl_psl=vizualiza închirieri
 eacl_pglob=editați opțiunile globale
 eacl_papply=reporniți acest serviciu
+
 acl_apply=Poate aplica modificări?
 acl_r_leases=Poate vizualiza închirieri?
 acl_w_leases=Poate elimina închirierile?
@@ -398,9 +419,11 @@ acl_err=Eroare la salvarea listei ACL
 acl_ernow=Dacă doriți să activați accesul la scriere în ACL-uri globale pentru un anumit tip de obiect, trebuie să activați accesul de citire pentru acest tip de obiect.
 acl_normal=normal
 acl_paranoic=paranoic
+
 iface_title=Interfata retea
 iface_desc=Serverul DHCP poate atribui adrese IP numai în rețelele conectate la una dintre interfețele selectate mai jos. Interfața de rețea pentru toate subnetele definite trebuie să fie inclusă. Dacă nu este selectat niciunul, serverul DHCP va încerca să găsească automat unul.
 iface_listen=Ascultați pe interfețe
+
 lookup_ehost=Nu există nicio gazdă cu numele, adresa IP sau adresa MAC $1 
 lookup_ehostname=Nu a fost introdus niciun nume de gazdă, adresă IP sau adresă MAC
 lookup_egroup=Nu există niciun grup cu numele sau numele de domeniu $1 
@@ -409,6 +432,7 @@ lookup_esubnet=Nu există nicio subrețea cu adresa sau adresa/netmask $1
 lookup_esubnetname=Nu a fost introdusă nicio adresă de subrețea sau adresă/mască net
 lookup_eshared=Nu există nicio rețea partajată cu numele $1 
 lookup_esharedname=Nu a fost introdus niciun nume de rețea partajat
+
 zone_key=Zonele DNS
 index_addzone=Adăugați o nouă zonă DNS.
 index_zone=Zona
@@ -424,16 +448,21 @@ zone_faildel=Nu a reușit ștergerea zonei
 zone_failsave=Nu a reușit să salveze zona
 zone_tsigkey=Cheia TSIG
 zone_ecannot=Nu aveți voie să editați zone DNS
+
 plib_clientupdates=Își pot actualiza clienții propriile înregistrări?
+
 text_title=manual dhcpd.conf
 text_editor=Editor de text
 text_return=meniu principal
 text_undo=Anula
 text_ecannot=Nu aveți voie să editați fișierul de configurare
+
 index_buttetext=Editează manual configurația
 index_text=Editați fișierul de configurare manual text
+
 stop_err=Nu a reușit oprirea serverului DHCP
 stop_ekill=Nu alearga!
+
 sdelete_err=Nu a reușit ștergerea subrețelelor și a rețelelor partajate
 sdelete_enone=Nimic selectat
 sdelete_title=Ștergeți subnetele și rețelele partajate
@@ -441,6 +470,7 @@ sdelete_rusure1=Sigur doriți să ștergeți subnetele selectate $1 și rețelel
 sdelete_rusure2=Sunteți sigur că doriți să ștergeți subretele selectate $1 ? Orice alte obiecte din subrețele vor fi, de asemenea, pierdute.
 sdelete_rusure3=Sigur doriți să ștergeți rețelele partajate selectate $2 ? Orice subrețele sau alte obiecte din rețele vor fi, de asemenea, pierdute.
 sdelete_ok=Șterge acum
+
 hdelete_err=Nu a reușit să ștergi gazdele și grupurile
 hdelete_enone=Nimic selectat
 hdelete_title=Ștergeți gazdele și grupurile

@@ -10,6 +10,7 @@ index_rpc=RPC Programma's
 index_newrpc=Maak een nieuw RPC programma
 index_apply=Veranderingen Toevoegen
 index_applymsg=Klik op deze knop om de huidige configuratie door het zenden van een SIGHUP signaal toe te voegen aan het lopende <tt>inetd</tt> proces
+
 error_restart=Mislukt om Inetd te herstarten
 error_saverpc=Mislukt om RPC programma op te slaan
 error_invalidprgname='$1' is geen geldige programma naam
@@ -39,6 +40,7 @@ error_nameexist=Een service met de naam $1 en protocol $2 bestaat reeds
 error_inetservice=Een internet service met de naam $1 en protocol $2 bestaat reeds
 error_smfservice=Mislukt om smf service te updaten met opdracht '$1', foutcode $2
 error_smf_cmdfield=Voor smf, filenaam of programma '$1' moet het eerste argument in het opdracht veld overeenkomen met, bijv. be '$2'
+
 editrpc_title1=Maak RPC Programma
 editrpc_title2=Bewerk RPC Programma
 editrpc_detail=RPC Programma Details
@@ -61,6 +63,7 @@ editrpc_execasuser=Uitvoeren als Gebruiker
 editrpc_max=Max per Minuut
 editrpc_default=Standaard
 editrpc_execasgrp=Uitvoeren als Groep
+
 editserv_title1=Maak Internet Service
 editserv_title2=Bewerk Internet Service
 editserv_detail=Internet Service Details
@@ -74,6 +77,7 @@ editserv_wrapper=TCP-Wrapper
 editserv_inetd=Intern naar <tt>inetd</tt>
 editserv_qm=Opdracht bestaat misschien niet?
 editserv_ename=Er bestaat geen service met die naam en protocol
+
 log_apply=Veranderingen toegevoegd
 log_create_serv=Gemaakte service $1
 log_modify_serv=Gemodificeerde service $1
@@ -87,6 +91,7 @@ log_delete_serv_l=Verwijderde service $1 op poort $2
 log_create_prog_l=Gemaakte service $1 op poort $2 voor programma $3
 log_modify_prog_l=Gemodificeerde service $1 op poort $2 voor programma $3
 log_delete_prog_l=Verwijderde service op poort $2 voor programma $3
+
 log_create_rpc=Gemaakte RPC $1
 log_modify_rpc=Gemodificeerd RPC $1
 log_delete_rpc=Verwijderde RPC $1

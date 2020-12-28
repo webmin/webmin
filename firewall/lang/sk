@@ -67,6 +67,7 @@ index_reset=Resetovať firewall
 index_resetdesc=Na toto tlačidlo kliknite ak chcete vymazať všetky pravidlá firewallu a nastaviť nové pravidlá so základnou počiatočnou konfiguráciou.
 index_cluster=Cluster serverov
 index_clusterdesc=Na toto tlačidlo kliknite ak chcete nastaviť dodatočné servery, na ktoré sa nastavenie firewallu automaticky nakopíruje.
+
 desc_p=protokol je $1
 desc_p!=protokol nie je $1
 desc_s=zdroj je $1
@@ -116,9 +117,14 @@ desc_tos!=pole typ služby nie je $1
 desc_conds=Ak $1
 desc_and=a
 desc_always=Vždy
+
 redhat_eoutput=Nastala chyba pri získavaní stavu IP tabuliek príkazom $1. Toto pravdepodobne indikuje, že je Váš systém nakonfigurovaný pomocou IPchains miesto IPtables.
+
 gentoo_escript=Gentoovský štartovací script IP tabuliek $1 nebol vo Vašom systéme nájdený.
+
 eiptables=Neznáme IP tabuľky uložené v súbore na riadku : $1
+eip6tables=Neznáme IP tabuľky uložené v súbore na riadku : $1
+
 edit_title1=Pridanie pravidla
 edit_title2=Úprava pravidla
 edit_title3=Naklonovať pravidlo
@@ -180,6 +186,7 @@ edit_args=Dodatočné parametre
 edit_mods=Dodatočné moduly IP tabuliek
 edit_rwith=Odmietnuť pomocou ICMP typu
 edit_rwithtype=Typ $1
+
 save_err=Nepodarilo sa uložiť pravidlo
 save_echain=Chybné alebo neplatné spúšťané zreťazenie
 save_esource=Chýbajúca alebo neplatná zdrojová adresa alebo sieť
@@ -222,23 +229,28 @@ save_espfrom=Neplatný začiatočný port pre zdroj NAT
 save_espto=Chýbajúci alebo neplatný port pre zdroj NAT
 save_estates=Nebol vybraný stav pripojenia
 save_ecanjump=Nie je Vám povolené použiť túto akciu
+
 delete_title=Odstránenie zreťazenia
 delete_rusure=Naozaj chcete odstrániť zreťazenie $1 ? Bude tiež odstránených $2 pravidiel, ktoré obsahuje.
 delete_ok=Ihneď odstrániť
 delete_ecannot=Nie je Vám dovolené odstraňovať zreťazenia
+
 clear_title=Zmazať zreťazenie
 clear_rusure=Naozaj chcete zmazať všetkých $2 pravidiel zo zreťazenia $1 ?
 clear_ecannot=Nie je Vám dovolené mazať zreťazenia
+
 new_err=Nepodarilo sa vytvoriť zreťazenie
 new_ename=Chýbajúce alebo neplatné meno zreťazenia
 new_etaken=Zreťazenie s takýmto menom už existuje
 new_ecannot=Nie je Vám povolené vytvárať zreťazenia
+
 apply_err=Napodarilo sa aplikovať konfiguráciu
 apply_ecannot=Nie je Vám povolené aplikovať konfiguráciu
 apply_remote=Chyba z $1 : $2
 unapply_err=Nepodarilo sa obnoviť konfiguráciu
 unapply_ecannot=Nie je Vám povolené obnoviť konfiguráciu
 bootup_ecannot=Nie je Vám dovolené zapnúť alebo vypnúť firewall pri štarte systému
+
 log_create_rule=Pridanie pravidla do zreťazenia $1 v tabuľke $2
 log_modify_rule=Úprava pravidla v zreťazení $1 v tabuľke $2
 log_delete_rule=Odstránenie pravidla v zreťazení $1 v tabuľke $2
@@ -258,8 +270,10 @@ log_add_host=Pridaný cluser server $1
 log_add_group=Pridané cluster servery zo skupiny $1
 log_delete_host=Odstránenie cluster serveru $1
 log_delete_group=Odstránenie $1 cluster serverov
+
 setup_eiface=Nebolo zadané vonkajšie rozhranie siete
 setup_ecannot=Nie je Vám povolené nastavovať firewall
+
 acl_tables=Povolené IP tabuľky
 acl_apply=Môže aplikovať konfiguráciu?
 acl_unapply=Môže zrušiť aktuálnu konfiguráciu?
@@ -271,9 +285,11 @@ acl_jall=Všetko
 acl_newchain=Môže vytvárať nové zreťazenia?
 acl_delchain=Môže odstrániť alebo zmazať zreťazenia?
 acl_policy=Môže meniť základnú politiku?
+
 etable=Nie je Vám povolené upravovať túto IP tabuľku
 ejump=Nie je Vám povolené upravovať toto pravidlo
 ecluster=Nie je Vám povolené spravovať firewall clusteru
+
 cluster_title=Firewallový cluster serverov
 cluster_none=Žiadne servery ešte neboli pridané do firewallového clustera.
 cluster_host=Meno hosta
@@ -284,6 +300,7 @@ cluster_gadd=Pridať severy do skupiny
 cluster_need=Najprv musíte zadať servery s prihlasovacím menom a heslom do modulu Zoznam Webmin serverov, až potom ich bude možné tu riadiť.
 cluster_return=cluster serverov
 cluster_delete=Odstrániť vybrané
+
 add_title=Pridať servery
 add_msg=Pridávanie $1 ..
 add_gmsg=Pridávajú sa servery v skupine $1 ..
@@ -292,5 +309,5 @@ add_gerr=Nepodarilo sa pridať skupinu
 add_echeck=Server $1 nemá nainštalovaný modul Firewall Linuxu
 add_emissing=Server $1 neobsahuje príkaz firewallu $2
 add_ok=Bol pridaný $1 s $2 aktívnymi pravidlami firewallu.
+
 policy_ecannot=Nie je Vám povolené meniť základnú politiku tohto zreťazenia
-eip6tables=Neznáme IP tabuľky uložené v súbore na riadku : $1

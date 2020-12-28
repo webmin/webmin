@@ -31,6 +31,7 @@ index_ok=Suche
 index_searchres=Passende Cron Aufträge zu $1 ..
 index_reset=Setze Suche zurück
 index_econfigcheck=Cron Aufträge können auf Ihrem System nicht gesteuert werden, weil die Modul-Konfiguration nicht gültig ist.
+
 edit_title=Cron-Auftrag bearbeiten
 create_title=Cron-Auftrag erstellen
 edit_ecannot=Sie haben keine Berechtigung, Cron-Aufträge für diesen Benutzer zu bearbeiten
@@ -70,6 +71,7 @@ lcedit_special_weekly=wöchentlich (am Sonntag)
 lcedit_special_monthly=monatlich (am 01.)
 lcedit_special_yearly=jährlich (am 01. Januar)
 lcedit_special_reboot=beim Booten des Systems
+
 save_err=Fehler beim Speichern des Cron-Auftrags
 save_ecmd=Sie haben keinen auszuführenden Befehl angegeben
 save_euser=Sie müssen einen Benutzer angeben
@@ -79,6 +81,7 @@ save_ecannot=Sie haben keine Berechtigung, Cron-Aufträge für '$1' zu erstellen
 save_enone=Sie haben keinen $1 zum Ausführen gewählt
 save_ecannot2=Sie dürfen keine Cron-Aufträge erzeugen
 save_eidx=Cron-Autrag wurde erfolgreich gespeichert, kann aber nicht ausgeführt werden, da dieser nicht gefunden worde!
+
 allow_title=Cron-Zugriff kontrollieren
 allow_desc=Auf dieser Seite können Sie einstellen, welche Benutzer Cron-Aufträge anlegen und ausführen dürfen.
 allow_ecannot=Sie haben keine Berechtigung, die Zugriffsrechte für Cron zu kontrollieren
@@ -87,6 +90,7 @@ allow_all2=Verweigere alle Benutzer außer ROOT
 allow_all3=Erlaube alle Benutzer
 allow_allow=Erlaube nur aufgelistete Benutzer
 allow_deny=Verweigere nur aufgelistete Benutzer
+
 env_title1=Bearbeite Umgebungsvariable
 env_title2=Erstelle Umgebungsvariable
 env_name=Variablen-Name
@@ -102,11 +106,13 @@ env_where2=Verschiebe Umgebungsvariable
 env_top=Vor allen Cron-Aufträgen für Benutzer
 env_bot=Nach allen Cron-Aufträgen
 env_leave=Momentane Position
+
 exec_title=Führe Cron-Auftrag aus
 exec_ecannot=Sie dürfen Cron-Aufträge für diesen Benutzer nicht ausführen
 exec_cmd=Ausgabe des Befehls $1 ..
 exec_cmdbg=Das Kommando $1 wird als Hintergrundprozess ausgeführt.
 exec_none=Es wurde keine Ausgabe erstellt
+
 acl_users=Darf Cron-Aufträge bearbeiten für
 acl_all=Alle Benutzer
 acl_this=Aktuellen Webmin-Benutzer
@@ -122,6 +128,7 @@ acl_move=Darf Cron-Aufträge verschieben?
 acl_kill=Darf Cron-Aufträge killen?
 acl_hourly=Limitiere Aufträge auf höchstens stündlich?
 acl_hourlydef=Wie in der Modul-Konfiguration eingestellt.
+
 log_modify=Cron-Auftrag für $1 geändert
 log_modify_l=Cron-Auftrag "$2" für $1 geändert
 log_create=Cron-Auftrag für $1 erzeugt
@@ -139,7 +146,9 @@ log_move=Cron-Auftrag verschoben für $1
 log_crons_delete=$1 gelöschte Cron Aufträge
 log_crons_disable=$1 deaktivierte Cron Aufträge
 log_crons_enable=$1 aktivierte Cron Aufträge
+
 ecopy=Es wurde ein Fehler in der neuen Cron-Konfiguration gefunden : $1 $2
+
 when_min=jede Minute
 when_hour=jede Stunde die $1.te Minute
 when_day=jeden Tag um  $2:$1
@@ -148,6 +157,7 @@ when_weekday=jeden $3 um $2:$1
 when_cron=zu Cron-Zeit $1
 when_interval=jede $1 Sekunde
 when_boot=beim Systemstart
+
 ucwhen_min=Jede Minute
 ucwhen_hour=Jede Stunde in der $1ten Minute
 ucwhen_day=Jeden Tag um $2:$1
@@ -156,8 +166,10 @@ ucwhen_weekday=Jeden $3 um $2:$1
 ucwhen_cron=Zu Cron-Zeiten $1
 ucwhen_interval=Jede $1 Sekunde
 ucwhen_boot=Beim Systemstart
+
 move_err=Konnte Cron-Auftrag nicht verschieben
 move_etype=Dieser Cron-Auftrag kann nicht verschoben werden
+
 kill_err=Fehler beim Killen des Cron-Auftrages
 kill_ecannot=Sie dürfen diesen Auftrag nicht killen
 kill_egone=Läuft nicht mehr
@@ -166,13 +178,16 @@ kill_title=Cron-Auftrag killen
 kill_rusure=Sind Sie sicher, daß Sie den Prozess $1 mit PID $2 killen möchten?
 kill_rusure2=Sind Sie sicher, daß Sie den Prozess $1 mit der PID $2 und all seine Unterprozesse terminieren (killen) möchten?
 kill_ok=Ja, jetzt killen
+
 range_all=Führe zu jeder Zeit aus
 range_start=Führe nur aus von $1
 range_end=bis $1
 range_estart=Fehlendes oder falsches Startdatum beim Zeitraum zum Ausführen
 range_eend=Fehlendes oder falsches Enddatum im Zeitraum zum Ausführen
+
 delete_err=Konnte Cron Auftrag nicht löschen
 delete_enone=Nichts ausgewählt
+
 manual_title=Editiere manuell Cron-Aufträge
 manual_edit=Cron Datei zum editieren:
 manual_ok=Editieren

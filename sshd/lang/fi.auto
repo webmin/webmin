@@ -16,8 +16,10 @@ index_type=SSH-avaintyyppi:
 index_rsa1=RSA (SSH v1)
 index_rsa=RSA (SSH v2: lle)
 index_dsa=DSA (SSH v2)
+
 bits=bitit
 secs=sekuntia
+
 users_title=Authentication
 users_header=Sisäänkirjautumis- ja todennusvaihtoehdot
 users_expire=Päiviä ennen tilin voimassaolon päättymistä varoittaa käyttäjää
@@ -54,6 +56,7 @@ users_eauthkeys=Puuttuva tai virheellisen näköinen valtuutettu avaintiedosto
 users_maxauthtries=Suurimmat sisäänkirjautumisyritykset yhteyttä kohti
 users_emaxauthtries=Puuttuva tai ei-numeerinen sisäänkirjautumisyritys lukumäärää kohti yhteyttä
 users_chal=Käytätkö haaste-vastaus -todennusta?
+
 net_title=verkostoituminen
 net_header=Verkkovaihtoehdot
 net_port=Kuuntele portissa
@@ -91,6 +94,7 @@ net_eprots=Sinun on valittava vähintään yksi protokolla
 net_eladdress='$1' ei ole kelvollinen osoite, jota kuunnella
 net_elport='$1' ei ole kelvollinen portti, jota voi kuunnella
 net_elisten2=Ei kirjoitettavia osoitteita
+
 access_title=Kulunvalvonta
 access_header=Verkko- ja sisäänkirjautumisen valvontavaihtoehdot
 access_allowu=Salli vain käyttäjät
@@ -108,6 +112,7 @@ access_eallowg=Ei ryhmiä sallittavaksi
 access_edenyg=Ei ryhmiä, joita kieltää, ei tullut sisään
 access_eallowh=Ei isäntä sallia pääsy
 access_edenyh=Ei vastaanottajia, jotka kieltävät pääsyn
+
 misc_title=Sekalaiset vaihtoehdot
 misc_header=Muut sekalaiset SSH-palvelinvaihtoehdot
 misc_x11=Sallitaanko X11-yhteyden edelleenlähetys?
@@ -131,14 +136,17 @@ misc_eumask=Puuttuva tai virheellinen 4-numeroinen oktaali umask
 misc_ebits=Puuttuva tai virheellinen palvelimen avaimen koko
 misc_eregen=Puuttuva tai virheellinen avaimen palautusväli
 misc_epid=Puuttuu PID-tiedostopolku
+
 start_err=SSH-palvelimen käynnistäminen epäonnistui
 apply_epid=Ei käynnissä
+
 hosts_title=Asiakkaan isäntäasetukset
 hosts_header=SSH-asiakasisäntä
 hosts_none=Asiakkaan isäntävaihtoehtoja ei ole määritetty. Kaikissa SSH-asiakaskirjautuksissa käytetään oletusasetuksia.
 hosts_all=Kaikki isännät
 hosts_add=Lisää asiakkaan isäntäasetuksia.
 hosts_return=asiakasisäntälista
+
 host_create=Lisää isäntäasetukset
 host_edit=Muokkaa isäntäasetuksia
 host_header=SSH-isäntän asiakasasetukset
@@ -194,6 +202,7 @@ host_eprots=Sinun on valittava vähintään yksi protokolla
 host_proxy=Yhteyden välityspalvelimen komento
 host_proxy_def=Ei mitään
 host_eproxy=Puuttuva tai virheellisen näköinen yhteysvälityspalvelinkomento
+
 log_users=Muutetut todennusasetukset
 log_net=Verkkovaihtoehdot muuttuneet
 log_access=Muutettu kulunvalvonta
@@ -208,6 +217,7 @@ log_stop=Pysäytetty SSH-palvelin
 log_start=Käynnistettiin SSH-palvelin
 log_apply=Sovellettu kokoonpano
 log_manual=Konfiguraatiotiedoston $1 manuaalinen muokkaaminen
+
 sync_title=Käyttäjän SSH-avaimen asetukset
 sync_desc=Tällä sivulla voit määrittää SSH: n automaattisen asennuksen järjestelmääsi luotuille uusille Unix-käyttäjille. Jos asetukset on määritetty, uusien käyttäjien ei tarvitse suorittaa <tt>ssh-keygen</tt> -sovellusta ennen SSH: n käyttöä.
 sync_create=Asenna SSH-avain uusille Unix-käyttäjille?
@@ -216,9 +226,11 @@ sync_pass=Käytätkö salasanaa avainlauseena?
 sync_gnupg=Asenna GNUPG-avain uusille Unix-käyttäjille.
 sync_type=Avaintyyppi
 sync_auto=&lt;Automaattinen&gt;
+
 keys_title=Isäntä SSH-avaimet
 keys_desc=Tällä sivulla voit tarkastella tämän isännän SSH-avaimia.
 keys_none=SSK-kokoonpanostasi ei löytynyt HostKey-merkintöjä.
+
 manual_title=Muokkaa asetustiedostoja
 manual_ecannot=SSH-palvelimen määritystiedostoa ei saa muokata
 manual_ok=Muokata
@@ -226,5 +238,6 @@ manual_efile=Valittu tiedosto ei ole osa SSH-palvelimen määrityksiä
 manual_file=Muokkaa asetustiedostoa:
 manual_edata=Mikään ei tullut sisään!
 manual_err=Konfigurointitiedoston tallentaminen epäonnistui
+
 dknown_err=Tunnettujen isäntien poistaminen epäonnistui
 dknown_enone=Mitään ei ole valittu

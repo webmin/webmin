@@ -16,6 +16,7 @@ index_checkconfig=Asegúrese de que el directorio chroot esté configurado corre
 index_eexpired=Advertencia: Las siguientes zonas tienen firmas DNSSEC caducadas : $1
 index_eexpired_conf=La firma automática debe volver a habilitarse en la página $1.
 index_eexpired_mod=Use el módulo $1 para deshabilitar DNSSEC para estos dominios, o verifique por qué falla la firma.
+
 master_inview=$1 en vista $2 
 master_egone=La zona $1 no existe en ninguna vista
 master_egone2=¡La zona $1 no existe!
@@ -36,12 +37,15 @@ master_defttl=Tiempo de vida predeterminado para registros
 master_edefttl='$1' no es un tiempo de vida predeterminado válido para los registros
 master_esoagone=¡No se ha encontrado el registro SOA!
 master_einclude=El archivo de plantilla adicional no existe
+
 delete_mesg3=¿Está seguro de que desea eliminar la zona $1?
 delete_vwarn=Esta zona está asociada con el dominio Virtualmin $1, por lo que no debe eliminarse aquí.
 delete_vwarn2=Esta zona está asociada con el dominio Virtualmin $1 y $2 más, por lo que no debe eliminarse aquí.
+
 mcreate_dnssec_tools_enable=Habilite DNSSEC usando DNSSEC-Tools
 mcreate_ednssecsize=Error al calcular el tamaño de la clave : $1
 mcreate_ednssec=La creación de registros se realizó correctamente, pero DNSSEC falló : $1
+
 slave_convertdesc=Haga clic en este botón para convertir esta zona esclava en maestra, con todos los registros que se transfirieron por última vez desde el sistema maestro original.
 slave_manual=Ver archivo de registros
 slave_delmsg=Haga clic en este botón para eliminar esta zona de su servidor DNS. La zona maestra fuente no se tocará.
@@ -50,6 +54,7 @@ slave_applymsg2=Haga clic en este botón para forzar una nueva transferencia de 
 slave_last=Última transferencia : $1
 slave_never=Nunca
 slave_xfer=Prueba de transferencia de zona
+
 recs_ecannottype=No tiene permiso para editar registros de este tipo
 recs_find=Mostrar registros coincidentes:
 recs_search=Buscar
@@ -57,6 +62,7 @@ recs_drev=¿Eliminar reversos también?
 recs_none=El dominio aún no tiene ningún registro $1.
 recs_nosearch=Ningún registro coincide con su búsqueda.
 recs_needsearch=Ingrese una búsqueda para encontrar registros coincidentes.
+
 edit_canon=Nombre canónico completo
 edit_egone=¡El registro seleccionado ya no existe!
 edit_eusage='$1' no es un número de uso de TLSA válido
@@ -77,34 +83,43 @@ edit_edmarcpct=El porcentaje de mensajes debe ser un número entero entre 0 y 10
 edit_edmarcrua=Falta la dirección de comentarios agregados
 edit_edmarcruf=Falta la dirección de información forense
 edit_ecaavalue2=Nombre de dominio faltante o de aspecto no válido
+
 text_title2=Ver archivo de registros
 text_desc3=Este formulario le permite editar manualmente el archivo de registros DNS $1. Webmin no realizará ninguna comprobación de sintaxis.
 text_desc2=Esta página muestra el archivo de registros DNS $1, creado por BIND cuando la zona se transfirió desde el servidor maestro.
 text_none=Sin embargo, el archivo está actualmente vacío, probablemente porque la zona aún no se ha transferido desde el servidor maestro.
 text_soa=Aumenta el número de serie automáticamente
 text_rawformat=Esta zona está en formato binario sin formato, por lo que no se puede mostrar como texto.
+
 restart_err=Error al aplicar los cambios
 restart_epidfile=No se pudo encontrar BIND PID en $1
 restart_errslave=Este servidor se reinició correctamente, pero se produjeron los siguientes errores en los esclavos : $1
 restart_erunning2=BIND no parece estar ejecutándose en el servidor esclavo $1
 restart_eversion=El servidor esclavo $1 no está ejecutando la versión de Webmin $2 o superior.
+
 stop_epid=BIND no se está ejecutando
 stop_ecannot=No tienes permiso para detener BIND
+
 fwd_delmsg=Haga clic en este botón para eliminar esta zona de su servidor DNS. Los registros que contenga se buscarán utilizando el proceso de resolución normal.
+
 delegation_delmsg=Haga clic en este botón para eliminar esta zona de su servidor DNS. BIND reconocerá los tipos de registros que no sean NS.
+
 boot_egzip=El archivo de la zona raíz está comprimido, ¡pero el comando <tt>gzip</tt> no está instalado en su sistema!
 boot_egzip2=Error al descomprimir el archivo de la zona raíz : $1
+
 type_NSEC3PARAM=Parámetros DNSSEC
 type_SPF=Remitente permitido de
 type_TLSA=Certificado SSL
 type_SSHFP=Clave pública SSH
 type_DMARC=DMARC
 type_CAA=Autoridad certificada
+
 edit_DMARC=DMARC
 edit_NSEC3PARAM=Parámetros DNSSEC
 edit_TLSA=Certificado SSL
 edit_SSHFP=Clave pública SSH
 edit_CAA=Autoridad certificada
+
 recs_defttl=TTL predeterminado
 recs_SPF=Remitente permitido de
 recs_DMARC=DMARC
@@ -113,6 +128,7 @@ recs_TLSA=Certificado SSL
 recs_SSHFP=Clave pública SSH
 recs_CAA=Autoridad certificada
 recs_delete=Eliminar seleccionado
+
 value_AAAA1=Dirección IPv6
 value_TLSA1=Uso del certificado
 value_TLSA2=Selector de certificado
@@ -166,6 +182,7 @@ value_CAA3=Nombre de dominio de CA
 value_caa_issue=Certificado de dominio único
 value_caa_issuewild=Cert comodín
 value_caa_iodef=URL de infracción de política
+
 tlsa_usage0=Autoridad certificada
 tlsa_usage1=Entidad final
 tlsa_usage2=Ancla de confianza
@@ -175,18 +192,22 @@ tlsa_selector1=Información de clave pública
 tlsa_match0=Contenido sin compartir
 tlsa_match1=SHA-256 hash
 tlsa_match2=SHA-512 hash
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 eipacl='$1' no es una dirección IP válida o nombre de ACL
+
 acl_inviews=Las vistas de este usuario pueden editar dominios en
 acl_toplevel=Fuera de cualquier vista
 acl_applygonly=Aplicar solo configuración
 acl_dnssec=¿Se puede configurar DNSSEC para zonas?
 acl_vnone=No hay vistas
+
 logging_catsdesc=Esta tabla controla qué categorías de mensajes se escriben en qué canales de registro, como se define en la otra pestaña.
 logging_chansdesc=Esta tabla enumera los canales de registro, que son archivos u otros destinos en los que se pueden registrar mensajes. Los primeros cuatro son valores predeterminados integrados en BIND, y no se pueden cambiar.
 logging_stderr=Salida de error estándar
@@ -194,9 +215,12 @@ logging_pcat2=Categoría de registro?
 logging_psev2=¿Gravedad de registro?
 logging_ptime2=¿Tiempo de registro?
 logging_efile2=El nombre del archivo de registro debe ser una ruta absoluta
+
 acls_eline=Cada dirección IP debe ingresarse en una línea separada para ACL '$1'
+
 forwarding_out=Transferencias de zona salientes simultáneas máximas
 forwarding_per_ns=Máximas transferencias entrantes simultáneas por servidor
+
 net_ip=dirección IP
 net_recur=Permitir consultas recursivas de
 net_eusedport=Solo se permite una línea de direcciones para el puerto $1
@@ -209,6 +233,7 @@ net_taddrdef=IP más cercana
 net_etport=No se puede especificar un puerto de origen de transferencia sin una dirección
 net_eaddr='$1' no es una dirección IPv4 válida
 net_eaddr6='$1' no es una dirección IPv6 válida
+
 zonedef_prins=Servidor de nombres predeterminado para dominios maestros
 zonedef_this=Nombre de host del sistema ($1)
 zonedef_eprins=Servidor de nombres predeterminado faltante o no válido para dominios maestros
@@ -220,11 +245,14 @@ zonedef_size=Tamaño de clave inicial
 zonedef_single=Número de claves para crear
 zonedef_two=Clave de zona y clave de firma de clave
 zonedef_one=Solo clave de zona
+
 findfree_fromip=De la dirección IP
 findfree_toip=A la dirección IP
 findfree_msg=Se encontraron $1 direcciones IP gratuitas
 findfree_msg2=(de los cuales $1 son como <i>freeXXX</i>, $2 como <i>freemac</i>)
+
 free_ip=Dirección IP
+
 log_manual=Archivo de configuración editado manualmente $1
 log_stop=Servidor DNS detenido
 log_delegation=Crear zona de solo delegación $1
@@ -247,17 +275,23 @@ log_sign=Firmas DNSSEC actualizadas para la zona $1
 log_resign=Clave DNSSEC re-firmada para la zona $1
 log_trusted=Se modificó la verificación de DNSSEC
 log_dnssec=Cambiar la firma de la clave DNSSEC
+
 convert_efilesize=El archivo de registros $1 no existe o está vacío
 convert_ebinary=El comando necesario para convertir de una zona esclava binaria a un maestro de formato de texto no está instalado
 convert_ecompile=La conversión de formato binario a texto falló : $1
+
 view_opts2=Opciones para zonas a la vista
 view_delete=Eliminar vista
 view_deletemsg=Haga clic en este botón para eliminar la vista. Tendrá la opción de mover zonas que contiene a otra vista, o también eliminarlas.
+
 hint_refetchdesc=Haga clic en este botón para que Webmin vuelva a descargar el archivo de la zona raíz desde su origen en el servidor FTP Internic.
 hint_delete=Eliminar zona raíz
 hint_deletedesc=Haga clic en este botón para eliminar esta zona raíz. Sin él, su servidor de nombres no podrá resolver dominios en Internet que no sean aquellos para los que es secundario.
+
 hcreate_header=Detalles de la zona raíz
+
 refetch_err=Error al volver a descargar la zona raíz
+
 slaves_title=Servidores esclavos en clúster
 slaves_none=Aún no se han agregado servidores al clúster DNS.
 slaves_host=Nombre de host
@@ -285,11 +319,13 @@ slaves_sec=¿Crear secundario en esclavo al crear localmente?
 slaves_name=Nombre para registro NS
 slaves_same=Igual que el nombre de host
 slaves_header=Opciones de servidor esclavo de clúster
+
 add_eversion2=El servidor $1 no está ejecutando la versión de Webmin $2 o superior, que es necesaria para agregar zonas a más de una vista
 add_eipaddr=El servidor $1 tiene una dirección IP en lugar de un nombre de host
 add_ename=Nombre de registro NS faltante o no válido
 add_egname=No se puede especificar un nombre de registro NS al agregar un grupo
 add_emyip=No se pudo resolver la dirección IP de este sistema. Debe configurar la <b>IP del servidor maestro predeterminado para zonas esclavas remotas</b> en la página Configuración del módulo.
+
 mass_title=Crear zonas desde un archivo por lotes
 mass_desc=Esta página le permite crear múltiples zonas a la vez desde un archivo de texto cargado o del lado del servidor. Cada línea en el archivo debe tener el siguiente formato: <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p> El <i>tipo</i> debe ser <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> o <tt>forward</tt>. El <i>nombre de archivo</i> es opcional y se calculará automáticamente si falta. Las <i>IP maestras</i> solo necesitan ser dadas para zonas esclavas.
 mass_local=Archivo de lote local
@@ -321,6 +357,7 @@ mass_emips=Faltan direcciones IP maestras
 mass_addedslaves=Se agregó $1 a los servidores esclavos OK.
 mass_eonslave=Se produjeron errores creados en servidores esclavos : $1
 mass_eviewcannot=No está permitido agregar zonas a esta vista
+
 massdelete_title=Eliminar zonas
 massdelete_rusure=¿Está seguro de que desea eliminar las zonas seleccionadas $1? ($2)
 massdelete_ok=Elimina ahora
@@ -330,6 +367,7 @@ massdelete_slaves=Eliminando la zona $1 de los servidores esclavos.
 massdelete_failed=.. algunos esclavos fallaron :
 massdelete_vwarn=Algunas zonas están asociadas con el dominio Virtualmin $1, por lo que no se deben eliminar aquí.
 massdelete_vwarn2=Algunas zonas están asociadas con el dominio Virtualmin $1 y $2 otras, por lo que no deben eliminarse aquí.
+
 rndc_title=Configurar RNDC
 rndc_desc=Esta página se puede utilizar para configurar BIND para el control del programa RNDC, de modo que las zonas individuales se puedan actualizar sin necesidad de reiniciar BIND por completo.
 rndc_desc2=Parece que RNDC ya está configurado correctamente, por lo que probablemente no necesite usar este formulario.
@@ -340,11 +378,13 @@ rndc_ok=Sí, configurar RNDC
 rndc_err=Error al configurar RNDC
 rndc_ekey=No se pudo encontrar la clave en rndc.conf
 rndc_esecret=No se pudo encontrar el secreto en rndc.conf
+
 drecs_err=Error al eliminar registros
 drecs_enone=Ninguna seleccionada
 drecs_title=Eliminar registros
 drecs_rusure=¿Está seguro de que desea eliminar los $1 registros seleccionados de $2?
 drecs_ok=Elimina ahora
+
 manual_title=Editar archivo de configuración
 manual_ecannot=No tiene permiso para editar el archivo de configuración BIND
 manual_ok=Editar
@@ -352,7 +392,9 @@ manual_efile=El archivo seleccionado no es parte de la configuración BIND
 manual_file=Editar archivo de configuración:
 manual_edata=¡Nada entró!
 manual_err=Error al guardar el archivo de configuración
+
 syslog_desc=BIND mensajes del servidor DNS
+
 umass_err=Error al actualizar zonas
 umass_enone=Ninguna seleccionada
 umass_title=Actualizar registros en zonas
@@ -371,6 +413,7 @@ umass_done=.. actualizado $1 registros coincidentes de $2.
 umass_none=.. no se encontraron registros coincidentes de $1 para actualizar encontrado.
 umass_egone=Zona no existe
 emass_emx='$1' no es un número de prioridad del servidor de correo seguido de un nombre de host válido
+
 rdmass_err=Error al eliminar registros en zonas
 rdmass_enone=Ninguna seleccionada
 rdmass_title=Eliminar registros en zonas
@@ -387,6 +430,7 @@ rdmass_done=.. eliminó $1 registros coincidentes de $2.
 rdmass_none=.. no se encontraron registros coincidentes de $1 para eliminar.
 rdmass_ok=Eliminar registros
 rdmass_sel=Registros nombrados
+
 rmass_err=Error al agregar registros
 rmass_enone=Ninguna seleccionada
 rmass_title=Agregar registro a zonas
@@ -406,18 +450,22 @@ rmass_esign=.. hecho, pero la firma falló : $1
 rmass_eclash=.. ya existe un registro con el mismo nombre y valor $1.
 rmass_eclash2=.. ya existe un registro con el mismo nombre y el mismo valor $1.
 rmass_clash=¿Crear incluso si el registro ya existe?
+
 check_title=Verificar registros
 check_ecannot=No tiene permiso para verificar registros
 check_errs=Se encontraron los siguientes errores en el archivo de registros $1 ..
 check_allok=No se encontraron errores en el archivo de registros $1.
+
 ncheck_title=Verifique la configuración de BIND
 ncheck_ecannot=No tiene permiso para verificar la configuración de BIND
 ncheck_errs=Los siguientes errores se encontraron en el archivo de configuración BIND $1 o en los archivos de zona referenciados.
 ncheck_allok=No se encontraron errores en el archivo de configuración BIND $1 o en los archivos de zona referenciados.
+
 links_restart=Aplicar configuración
 links_stop=Stop BIND
 links_start=Iniciar BIND
 links_apply=Aplicar zona
+
 dnssec_title=DNSSEC clave re-firma
 dnssec_ecannot=No tiene permiso para configurar DNSSEC
 dnssec_header=Opciones clave para volver a firmar
@@ -428,6 +476,7 @@ dnssec_secs=segundos
 dnssec_desc=Las zonas firmadas con DNSSEC generalmente tienen dos claves: una clave de zona que se debe volver a generar y firmar regularmente, y una clave de firma de clave que permanece constante. Esta página le permite configurar Webmin para realizar esta nueva firma automáticamente.
 dnssec_err=Error al guardar la firma de la clave DNSSEC
 dnssec_eperiod=Número de días faltantes o no válidos entre re-signos
+
 dnssectools_title=DNSSEC-Tools Automation
 dt_conf_title=DNSSEC-Tools Automation
 dt_enable_title=DNSSEC-Tools Automation
@@ -492,6 +541,7 @@ dt_status_inKSKroll=En rollo KSK
 dt_status_inZSKroll=En rollo ZSK
 dt_status_signed=Firmado
 dt_status_unsigned=No firmado
+
 zonekey_title=Configurar clave DNSSEC
 zonekey_desc=Esta zona aún no tiene una clave de firma DNSSEC. Puede usar este formulario para que Webmin cree uno, de modo que los clientes que resuelvan esta zona estén protegidos contra ataques de suplantación de identidad de DNS.
 zonekey_header=Nuevas opciones clave de DNSSEC
@@ -525,9 +575,12 @@ zonekey_sign=Zona de signos
 zonekey_signdesc=Vuelva a firmar inmediatamente esta zona, para que cualquier cambio en los registros realizados manualmente se incluya en los registros de firma.
 zonekey_resign=Zona de reinscripción
 zonekey_resigndesc=Genere una nueva clave de firma de zona, fírmela con la clave maestra de la zona y vuelva a firmar todos los registros.
+
 sign_err=Error al firmar zona
 sign_emsg=Firma DNSSEC después de un cambio de registros fallido : $1
+
 resign_err=Error al volver a firmar la zona
+
 trusted_title=Verificación DNSSEC
 trusted_ecannot=No tiene permiso para configurar la verificación DNSSEC
 trusted_esupport=Su versión de BIND no es compatible con la verificación DNSSEC
@@ -562,6 +615,7 @@ trusted_setup=Para que DNSSEC sea útil para verificar la mayoría de las zonas 
 trusted_ok=Configurar DLV y habilitar la verificación DNSSEC
 trusted_warning=¡Advertencia! La configuración del cliente BIND DNSSEC contiene claves desactualizadas que dejarán de funcionar en octubre de 2017. Utilice la <a href='$1'>página de verificación BIND DNSSEC</a> para ajustar la configuración o haga clic en el botón a continuación.
 trusted_fix=Fix DNSSEC Configuration
+
 xfer_title=Prueba de transferencia de zona
 xfer_doing=Prueba de transferencia de zona esclava desde $1 ..
 xfer_failed=.. de $1: Falló : $2

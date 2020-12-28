@@ -38,6 +38,7 @@ index_restartdesc=Kattintson erre a gombra a tintahal aktuális konfigurációj�
 index_iptables=Port átirányítás beállítása
 index_squid=Squid Proxy Server
 index_manual=Konfigurációs fájlok szerkesztése
+
 manual_title=Konfigurációs fájlok szerkesztése
 manual_file=Válassza ki a szerkeszteni kívánt konfigurációs fájlt:
 manual_change=változás
@@ -45,6 +46,7 @@ manual_editing=Az alábbi szövegmező segítségével manuálisan szerkesztheti
 manual_err=A konfigurációs fájl mentése nem sikerült
 manual_efile=Érvénytelen konfigurációs fájlnév!
 manual_ecannot=A konfigurációs fájlok manuális szerkesztése nem engedélyezett
+
 buttsave=Megment
 buttdel=Töröl
 buttcreat=teremt
@@ -54,6 +56,7 @@ default=Alapértelmezett
 none=Egyik sem
 on=Tovább
 off=Ki
+
 acl_header1=Hozzon létre ACL-t
 acl_header2=ACL szerkesztése
 acl_name=ACL név
@@ -109,6 +112,7 @@ acl_file=Tárolja az ACL értékeket fájlban
 acl_nofile=Tintahal konfiguráció
 acl_infile=Külön fájl
 acl_keep=Csak a fájl meglévő tartalmát használja?
+
 aclsave_failsave=Az ACL mentése nem sikerült
 aclsave_faildel=Az ACL törlése nem sikerült
 aclsave_epr=Ezt az ACL-t proxy korlátozás használja
@@ -128,11 +132,13 @@ aclsave_eemin=Érvénytelen befejezés min
 aclsave_efile=Nem szabad az '$1' ACL fájlba írni.
 aclsave_enofile=Nincs megadva ACL fájlnév
 aclsave_ealready=Az ACL fájl már létezik
+
 cach_ecannot=Nem férhet hozzá a gyorsítótár-kezelő statisztikájához
 cach_err=Hiba
 cach_nfound=A <tt>$1</tt> Squid cache manager program nem található a rendszerén. Lehet, hogy a <a href=/config.cgi?$2>modul konfigurációja</a> helytelen.
 cach_return=tintahal index
 cach_esame=Az <b>Squid cachemgr.cgi futtatható</b> beállítása a Webmin cachemgr.cgi programjában van, nem a Squid által biztosított.
+
 chown_header=Tulajdonságok megváltoztatása
 chown_stop=A tintahal leállítása. ..
 chown_done=.. Kész
@@ -140,6 +146,7 @@ chown_chown=Tulajdonos cseréje. ..
 chown_restart=A tintahal újraindítása. ..
 chown_failrestart=A Squid újraindítása nem sikerült.
 chown_return=tintahal index
+
 clear_ecannot=Tilos a gyorsítótár ürítése és újratelepítése
 clear_header=Törölje és újjáépítse a gyorsítótárat
 clear_msgclear=Biztos benne, hogy törölni akarja és újra szeretné állítani a Squid gyorsítótárát? Ezzel törli a <b>összes</b> fájlt, amelyet tárolt, és újraindítja a Squid szervert.
@@ -153,6 +160,7 @@ clear_failrestart=A Squid újraindítása nem sikerült.
 clear_return=tintahal index
 clear_url=Egy URL eltávolítása a gyorsítótárból:
 clear_ok=Vegye ki
+
 eacl_ecannot=A hozzáférés-vezérlés nem szerkeszthető
 eacl_header=Hozzáférés-szabályozás
 eacl_acls=Hozzáférés-ellenőrző listák
@@ -169,8 +177,10 @@ eacl_nopr=Nincs meghatározva proxy korlátozás.
 eacl_addpr=Adjon hozzá proxy korlátozást.
 eacl_noprr=Nincs meghatározva proxy válaszkorlátozások
 eacl_addprr=Adjon hozzá proxy válaszkorlátozást.
+
 eacl_replypr=Válasz a proxy korlátozásaira
 eacl_replynopr=Nincs definiálva a válasz proxy korlátozása
+
 eacl_icpr=ICP korlátozások
 eacl_noicpr=Nincs meghatározva ICP korlátozás
 eacl_addicpr=Adja hozzá az ICP korlátozást.
@@ -187,6 +197,7 @@ eacl_eclass=Nem választott program osztály
 eacl_cname=Írja be a nevet
 eacl_file=A $1 fájlból
 eacl_hdelete=Törölje a kiválasztott korlátozásokat
+
 eadm_ecannot=Nem szabad szerkeszteni az adminisztrációs beállításokat
 eadm_header=Adminisztrációs lehetőségek
 eadm_aao=Adminisztrációs és bejelentési lehetőségek
@@ -213,6 +224,7 @@ eadm_caf=A gyorsítótár bejelenti a fájlt
 eadm_annp=Bejelentési időszak
 eadm_buttsave=Megment
 eadm_return=tintahal index
+
 eauth_ecannot=A proxy-hitelesítés nem szerkeszthető
 eauth_header=Proxy-hitelesítés
 eauth_aopt=Hitelesítési beállítások
@@ -226,6 +238,7 @@ eauth_pusers=Proxy felhasználók
 eauth_nopusers=Jelenleg nincs proxy felhasználó meghatározva.
 eauth_addpuser=Adjon hozzá új proxy-felhasználót.
 eauth_return=tintahal index
+
 ec_ecannot=A gyorsítótár beállításait nem szabad szerkeszteni
 ec_header=Gyorsítótár-beállítások
 ec_cro=Gyorsítótár és kérési lehetőségek
@@ -280,6 +293,7 @@ ec_return=tintahal index
 ec_maxreplies=A választest maximális mérete
 ec_maxrn=Méret (kB)
 ec_maxracls=ACL-ekkel megegyező kérések esetén (hagyja üresen az összeset)
+
 ech_header=Hozzon létre gyorsítótár-gazdagépet
 ech_header1=A Cache Host szerkesztése
 ech_cho=Gyorsítótár-gazdagép beállításai
@@ -324,6 +338,7 @@ ech_origin=Kezelni a gazdagépet származási szerverként?
 ech_force=Force Host: fejléc a
 ech_same=Változatlan
 ech_ssl=Csatlakozni az SSL használatával?
+
 eicp_ecannot=Más gyorsítótárakat nem szerkeszthet
 eicp_header=Egyéb gyorsítótárak
 eicp_opcs=Egyéb proxy gyorsítótár-kiszolgálók
@@ -361,6 +376,7 @@ eicp_ttype=típus
 eicp_tpport=Proxyport
 eicp_tiport=ICP port
 eicp_delete=Törölje a kiválasztott gyorsítótárat
+
 elogs_ecannot=A naplózást nem szerkesztheti
 elogs_header=Fakitermelés
 elogs_lalo=Naplózás és naplófájl-beállítások
@@ -394,6 +410,7 @@ elogs_notset=Nincs beállítva
 elogs_dont=Ne jelentkezzen be
 elogs_file=Fájl $1
 elogs_squid=Tintahal standard
+
 emem_ecannot=A memóriahasználat nem szerkeszthető
 emem_dheader=Memória és lemez használata
 emem_header=Memóriahasználat
@@ -419,6 +436,7 @@ emem_lfuda=Dinamikusan legkevésbé használt
 emem_hlru=A legkevésbé gyakran használt halom
 emem_return=tintahal index
 emem_mrp=Memóriacsere-politika
+
 emisc_ecannot=Különféle lehetőségek nem szerkeszthetők
 emisc_header=Egyéb lehetőségek
 emisc_mo=Egyéb lehetőségek
@@ -455,6 +473,7 @@ emisc_wccpin=WCCP bejövő cím
 emisc_wccpout=WCCP kimenő cím
 emisc_none=Egyik sem
 emisc_virtual=tényleges
+
 eports_ecannot=A portok és a hálózat nem szerkeszthetők
 eports_header=Portok és hálózatépítés
 eports_pano=Portok és hálózati lehetőségek
@@ -480,6 +499,7 @@ eports_unc=Tisztátalan SSL leállításokat végez?
 eports_checkhost=Érvényesíti a hostneveket az URL-ekben?
 eports_underscore=Engedélyezni aláhúzást a hostnevekben?
 eports_all=Összes
+
 eprogs_ecannot=A segítő programok nem szerkeszthetők
 eprogs_header=Segédprogramok
 eprogs_chpo=Cache Helper programbeállítások
@@ -508,6 +528,7 @@ eprogs_ttl=Hitelesítési gyorsítótár ideje
 eprogs_aittl=Az IP gyorsítótár idejének hitelesítése
 eprogs_realm=Hitelesítési tartomány
 eprogs_return=tintahal index
+
 euser_header=Proxy felhasználó létrehozása
 euser_header1=Proxy felhasználó szerkesztése
 euser_pud=Proxy felhasználói adatok
@@ -516,6 +537,7 @@ euser_p=Jelszó
 euser_u1=Változatlan
 euser_e=Engedélyezve van?
 euser_return=felhasználók listája
+
 ahttp_header=Hozzon létre proxy korlátozást
 ahttp_header1=A proxy korlátozásának szerkesztése
 ahttp_pr=Proxy korlátozás
@@ -525,10 +547,13 @@ ahttp_d=Tagadni
 ahttp_ma=Egyezik az ACL-ekkel
 ahttp_dma=Ne egyezzen meg az ACL-ekkel
 ahttp_return=ACL lista
+
 ahttp_replyheader=Hozzon létre proxy válaszkorlátozást
 ahttp_replyheader1=A proxy válaszkorlátozásának szerkesztése
 ahttp_replypr=Proxy válasz korlátozása
+
 sahttp_ftspr=Nem sikerült menteni a proxy válaszkorlátozását
+
 aicp_header=Hozzon létre ICP korlátozást
 aicp_header1=Az ICP korlátozás szerkesztése
 aicp_ir=ICP korlátozás
@@ -538,7 +563,9 @@ aicp_d=Tagadni
 aicp_ma=Egyezik az ACL-ekkel
 aicp_dma=Ne egyezzen meg az ACL-ekkel
 aicp_return=ACL lista
+
 saicp_ftsir=Nem sikerült menteni az ICP korlátozást
+
 icache_ecannot=A gyorsítótár inicializálása nem engedélyezett
 icache_ftic=A gyorsítótár inicializálása nem sikerült
 icache_ymcautrsa=A Squid as futtatásához választania kell egy felhasználót
@@ -546,7 +573,9 @@ icache_euser=A Squid as futtatására szolgáló felhasználó nem létezik
 icache_itscwtc=A Tintahal gyorsítótár inicializálása a <tt>$1</tt> paranccsal.
 icache_return=tintahal index
 icache_title=Inicializálja a gyorsítótárat
+
 restart_ftrs=Nem sikerült a tintahal újrakonfigurálása
+
 sadmin_ftsao=Nem sikerült menteni az adminisztrációs beállításokat
 sadmin_header=Tulajdonságok megváltoztatása
 sadmin_msg1=Megváltoztatta azt a felhasználót vagy csoportot, amelyben a Squid fut. Ahhoz, hogy ez megfelelően működjön, az összes gyorsítótár és naplófájl tulajdonjogát frissíteni kell, és a Squid programot újra kell indítani.
@@ -556,10 +585,12 @@ sadmin_inavea=A '$1' nem érvényes e-mail cím
 sadmin_inavh=A '$1' nem érvényes gazdagépnév
 sadmin_inavap=A '$1' nem érvényes bejelentési időszak
 sadmin_inavp=A '$1' nem érvényes port
+
 sauth_ftsao=Nem sikerült menteni a hitelesítési beállításokat
 sauth_iomuf=Érvénytelen vagy hiányzó felhasználói fájlnév
 sauth_iomd=Érvénytelen vagy hiányzó domain
 sauth_msg1=A Squid verzióját még nem készítették proxy-hitelesítés támogatására
+
 scache_ftsco=A gyorsítótár beállításainak mentése nem sikerült
 scache_emsg0=Legalább egy gyorsítótár-könyvtárat meg kell adnia
 scache_emsg1=A '$1' gyorsítótár könyvtár nem létezik
@@ -577,14 +608,17 @@ scache_emsg12=A '$1' nem érvényes könyvtárméret
 scache_emsg13=A '$1' nem érvényes gazdagép
 scache_emsg14=A '$1' nem érvényes port
 scache_emaxrs=Érvénytelen a maximális testméret a $1 sorban
+
 schost_ftsc=A gyorsítótár mentése nem sikerült
 schost_emsg1=A '$1' nem érvényes gyorsítótár-gazdagépnév
 schost_emsg2=A '$1' nem érvényes proxy port
 schost_emsg3=A '$1' nem érvényes ICP-port
 schost_emsg4=A '$1' nem érvényes élettartam
 schost_emsg5=A '$1' nem érvényes súlyozás
+
 sicp_ftsco=A gyorsítótár beállításainak mentése nem sikerült
 sicp_emsg1=A '$1' érvénytelen időtúllépés
+
 slogs_ftslo=A naplózási beállítások mentése nem sikerült
 slogs_emsg1=A '$1' nem abszolút fájlnév
 slogs_emsg2=A '$1' nem érvényes fájlnév
@@ -594,20 +628,24 @@ slogs_emsg5=A '$1' nem érvényes hibakeresési beállítások listája
 slogs_efname=Érvénytelen formátumnév a $1 sorban
 slogs_effmt=Hiányzik a naplóformátum a $1 sorban
 slogs_eafile=Hiányzó vagy érvénytelen naplófájl a $1 sorban
+
 smem_ftsmo=A memória opcióinak mentése nem sikerült
 smem_emsg1=A '$1' érvénytelen gyorsítótárméret
 smem_emsg2=A '$1' nem érvényes magas vízjel
 smem_emsg3=A '$1' nem érvényes alacsony víztartási jel
 smem_emsg4=A '$1' nem érvényes objektumméret
+
 smisc_ftso=Nem sikerült menteni az opciókat
 smisc_emsg1=A '$1' nem érvényes fordulatszám
 smisc_emsg2=A '$1' nem érvényes domain
 smisc_emsg3=A '$1' nem érvényes proxy
 smisc_emsg4=A '$1' nem érvényes számú komló
+
 sport_ftspo=A portbeállítások mentése nem sikerült
 sport_emsg1=A '$1' nem érvényes portszám
 sport_emsg2=A '$1' nem érvényes cím
 sport_emsg3=A '$1' nem érvényes pufferméret
+
 sprog_ftshpo=Nem sikerült menteni a segítőprogram beállításait
 sprog_emsg1=Hiányzó FTP-beállítások
 sprog_emsg2=A '$1' nem érvényes program
@@ -620,19 +658,23 @@ sprog_emsg8=A '$1' nem érvényes IP-cím
 sprog_emsg9=A '$1' nem érvényes gyorsítótár-idő
 sprog_emsg10=A '$1' nem érvényes TTL
 sprog_echildren=A programok számának nullánál nagyobbnak kell lennie
+
 suser_ftsu=Nem sikerült menteni a felhasználót
 suser_emsg1=Érvénytelen vagy hiányzik a felhasználónév
 suser_etaken=A felhasználónév már használatban van
+
 start_ftsq=A Squid elindítása nem sikerült
 start_ecannot=A Squid elindítása nem engedélyezett
 stop_ftsq=A Squid megállítása nem sikerült
 stop_ecannot=Nem szabad megállítania a Kalmárt
+
 calamaris_ecannot=Nem férhet hozzá a Calamaris naplóelemzéséhez
 calamaris_title=Calamaris naplóelemzés
 calamaris_last=Az elemzés korlátozása az utolsó $1 naplósorokra.
 calamaris_eprog=A calamaris végrehajtható $1 végrehajtható fájl nem található. Lehet, hogy nincs telepítve a rendszerére, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
 calamaris_elogs=A $1 naplókönyvtár nem tartalmaz <tt>access.log</tt> fájlokat. Lehet, hogy a tintahal még nem futott, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
 calamaris_gen=A jelentés létrehozása a $1 oldalon történt
+
 lib_emsg1=A '$1' nem érvényes IP-cím
 lib_seconds=másodperc
 lib_minutes=percek
@@ -680,6 +722,7 @@ lib_aclmuip=Max. Felhasználói IP
 lib_buttac=Módosítások elfogadása
 lib_buttss=Stop Squid
 lib_buttss1=Start Squid
+
 log_ports=Megváltozott portok és hálózati lehetőségek
 log_icp=Megváltoztatták a gyorsítótár egyéb beállításait
 log_mem=Megváltozott a memóriahasználati lehetőségek
@@ -734,25 +777,31 @@ log_pools_delete=Törölt $1 késleltetési készletek
 log_delay_create=Hozzáadott ACL a késleltetési készlethez $1
 log_delay_modify=Módosított ACL a késleltetési pool $1 számára
 log_delay_delete=Törölt ACL a késleltetési pool $1 számára
+
 log_delay_move=Áthelyezték az ACL-t a $1 késleltetési pool számára
 log_refresh_create=Létrehozott egy frissítési szabályt a $1 számára
 log_refresh_modify=Módosított frissítési szabály a $1 számára
 log_refresh_delete=Törölt frissítési szabály a $1 számára
+
 log_refresh_move=Áthelyezett frissítési szabály a $1 számára
 log_refreshes_delete=Törölt $1 frissítési szabályok
 log_iptables=Frissített port-átirányítási beállítások
 log_purge=Eltávolítva a $1 URL a gyorsítótárból
 log_cachemgr=A cache manager jelszavai megváltoztak
+
 acl_root=Gyökérkönyvtár az ACL fájlokhoz
 acl_sections=Megengedett konfigurációs oldalak
 acl_start=Elindíthatja és leállíthatja a Kalmárt?
 acl_restart=Alkalmazható a Squid konfiguráció?
+
 always_create=Hozzon létre közvetlen letöltést
 always_edit=Közvetlen letöltés szerkesztése
 always_header=Az ACL-eknek megfelelő kérések közvetlen letöltése
+
 never_create=Indirekt letöltés létrehozása
 never_edit=Közvetett letöltés szerkesztése
 never_header=Soha ne töltsön le közvetlenül az ACL-eknek megfelelő kéréseket
+
 delay_title=Késleltesse a medencéket
 delay_add=Adjon hozzá egy új késleltetési készletet.
 delay_num=Szám
@@ -802,11 +851,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=MB
+
 dpool_err=A késleltetési készletek törlése nem sikerült
 dpool_enone=Egy sincs kiválasztva
+
 apool_header=Adja hozzá a késleltetési pool ACL-t
 apool_header1=Szerkessze a Késleltetés Pool ACL-t
 apool_pr=Késleltetett medence ACL
+
 authparam_title=Hitelesítési programok
 authparam_header=Külső hitelesítési program opciói
 authparam_ttl=Ideje a jelszavak gyorsítótárazásához
@@ -849,6 +901,7 @@ ext_ecache=Hiányzik vagy érvénytelen a gyorsítótár mérete
 ext_eprogram=Érvénytelen program elérési út lett megadva
 ext_eclash=Az azonos nevű külső programtípus már létezik
 ext_eused=Ezt a külső programot egy ACL használja
+
 header_title=Fejléc-hozzáférés-vezérlés
 header_none=A fejléces hozzáférés-szabályozási szabályokat még nem határozták meg.
 header_name=HTTP fejléc
@@ -868,6 +921,7 @@ header_err=A fejléces hozzáférés-vezérlő szabály mentése nem sikerült
 header_ename=Hiányzó vagy érvénytelen fejléc név
 header_request_header_access=Fejlécek kérése
 header_reply_header_access=Válasz fejlécek
+
 refresh_title=Szabályok frissítése
 refresh_none=Még nem határoztak meg frissítési szabályokat.
 refresh_re=Reguláris kifejezés
@@ -894,6 +948,7 @@ refresh_epc=Hiányzó vagy érvénytelen korosztály
 refresh_delete=Törölje a kiválasztott frissítési szabályokat
 drefresh_err=A frissítési szabályok törlése nem sikerült
 drefesh_enone=Egy sincs kiválasztva
+
 iptables_title=Port átirányítás beállítása
 iptables_inst0=A portátirányítás beállításához szükséges IPtable tűzfalparancsok nem tűnnek telepítve a rendszerén. További részletek az <a href='$1'>Linux tűzfal</a> modulban találhatók.
 iptables_inst1=A <a href='$1'>Linux tűzfal</a> modul úgy tűnik, hogy nincs teljesen beállítva a rendszerén. Ez a modul használja ezt a modult a Frox port átirányítás beállításához.
@@ -908,18 +963,23 @@ iptables_enet=Hiányzó vagy érvénytelen hálózati cím (192.168.1.0/24 típu
 iptables_eiface=Hiányzó vagy érvénytelen hálózati interfész
 iptables_eapply=A tűzfal alkalmazása sikertelen : $1
 iptables_eapply2=A Squid alkalmazása sikertelen : $1
+
 syslog_access=Tintahal hozzáférési napló
 syslog_cache=Tintahal gyorsítótárazási naplója
 syslog_store=Tintahal tárgy tároló naplója
+
 purge_err=Nem sikerült az URL-cím törlése a gyorsítótárból
 purge_title=Tárolt URL törlése
 purge_doing=URL törlése $1 ..
 purge_done=.. Kész.
 purge_failed=.. nem sikerült! Ennek okát lásd a fenti hibaüzenetben.
+
 dhttp_err=Nem sikerült a proxy korlátozásait törölni
 dhttp_enone=Egy sincs kiválasztva
+
 dicp_err=Nem sikerült törölni az ICP korlátozásokat
 dicp_enone=Egy sincs kiválasztva
+
 cachemgr_title=Cache Manager jelszavak
 cachemgr_ecannot=A cache manager jelszavak nem szerkeszthetők
 cachemgr_def1=Nincs szükség jelszóra

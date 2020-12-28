@@ -155,8 +155,10 @@ menu_bookmarks=bogmærker
 notallowed=Du har ikke adgang til $1. De tilladte mapper er : $2 
 error_upload_emax=Uploadet fil er større end grænsen på $1 
 extract_etype=Ikke-understøttet arkivfiltype
+
 info_total1=I alt: $1 fil og $2 bibliotek
 info_total2=I alt: $1 filer og $2 bibliotek
 info_total3=I alt: $1 fil og $2 mapper
 info_total4=I alt: $1 filer og $2 mapper
+
 ownership=Ejer

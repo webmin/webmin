@@ -2,6 +2,7 @@ check_econfigset=Не задан файл конфигурации iSCSI TGTd!
 check_econfig=Файл конфигурации iSCSI TGTd $1 не найден в вашей системе.
 check_etgtadm=Команда администрирования iSCSI TGTd $1 не найдена в вашей системе.
 check_einit=Загрузочное действие $1 не существует
+
 index_title=iSCSI TGTd
 index_clink=Возможно, он не установлен или <a href='$1'>конфигурация модуля</a> неверна.
 index_stop=Стоп iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=Разрешенные пользователи
 index_size=Общий размер
 index_noluns=Никто
 index_nousers=Любые
+
 dtargets_err=Не удалось удалить цели
 dtargets_enone=Не выбрано, ничего не выбрано!
+
 target_title1=Создать цель iSCSI
 target_title2=Изменить цель iSCSI
 target_header=Параметры общего устройства iSCSI
@@ -74,11 +77,13 @@ target_direct=Прямой доступ к устройству
 target_cache=Кеш пишет на устройство?
 target_eaddr=Неверный допустимый IP-адрес
 target_eaname=Неверно разрешено имя инициатора
+
 start_err=Не удалось запустить iSCSI TGTd
 stop_err=Не удалось остановить iSCSI TGTd
 restart_err=Не удалось перезапустить iSCSI TGTd
 atboot_err=Не удалось включить при загрузке
 atboot_einit=Сценарий инициализации $1 не существует
+
 log_create_target=Создана цель $1 
 log_delete_target=Удаленная цель $1 
 log_modify_target=Модифицированная цель $1 
@@ -89,6 +94,7 @@ log_restart=Перезапущенный сервер iSCSI
 log_atboot=Включенный сервер iSCSI во время загрузки
 log_delboot=Отключенный сервер iSCSI во время загрузки
 log_manual=Отредактированный вручную файл конфигурации
+
 manual_title=Изменить файл конфигурации
 manual_file=Выберите файл для редактирования:
 manual_ok=открыто

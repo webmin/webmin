@@ -30,6 +30,7 @@ index_return=lista över zoner
 index_ezones=Inga FirewallD-zoner hittades!
 index_none=Den här zonen har inga tillåtna portar eller tjänster än.
 index_ifaces=Tillämpa regler på gränssnitt:
+
 port_edit=Redigera port
 port_create=Lägg till port
 port_header=Tillåtna portalternativ
@@ -45,11 +46,13 @@ port_eport=Saknat eller ogiltigt portnummer eller namn
 port_eportlow=Låg port måste vara ett nummer
 port_eporthigh=Hög port måste vara ett nummer
 port_eportrange=Den låga porten måste vara under den höga porten
+
 serv_edit=Redigera tjänsten
 serv_create=Lägg till service
 serv_header=Tillåtna servicealternativ
 serv_name=Tjänst att tillåta
 serv_err=Det gick inte att spara tjänsten
+
 forward_edit=Redigera framåt
 forward_create=Skapa framåt
 forward_header=Alternativ för portåterföring
@@ -61,10 +64,13 @@ forward_dstaddr=Destinations adress
 forward_dstlocal=Detta system
 forward_edstaddr=Ogiltig IPv4-destinationsadress
 forward_eneither=Antingen måste en destinationsadress eller port eller båda anges
+
 check_ecmd=FirewallD-kontrollkommandot $1 hittades inte på ditt system
+
 delete_err=Det gick inte att ta bort regler
 delete_enone=Ingen vald!
 delete_edel=Borttagning av $1 misslyckades : $2 
+
 zone_title=Skapa zon
 zone_header=Nya zonalternativ
 zone_name=Zonnamn
@@ -77,12 +83,16 @@ zone_mode4=Portar som används för virtuell värd
 zone_err=Det gick inte att skapa zon
 zone_ename=Saknat eller ogiltigt zonnamn
 zone_eclash=En zon med samma namn finns redan
+
 delzone_title=Radera zon
 delzone_err=Det gick inte att ta bort zonen
 delzone_edefault=Standardzonen kan inte tas bort
 delzone_rusure=Är du säker på att du vill ta bort zonen $1, som innehåller $2 -portar och $3 -tjänster?
+
 defzone_err=Det gick inte att göra zon som standard
+
 restart_err=Det gick inte att tillämpa konfigurationen
+
 stop_err=Det gick inte att stoppa FirewallD
 start_err=Det gick inte att starta FirewallD
 log_stop=Stoppad brandväggD

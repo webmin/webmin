@@ -38,6 +38,7 @@ index_restartdesc=Noklikšķiniet uz šīs pogas, lai aktivizētu pašreizējo k
 index_iptables=Portu novirzīšanas iestatīšana
 index_squid=Kalmāru starpniekserveris
 index_manual=Rediģēt konfigurācijas failus
+
 manual_title=Rediģēt konfigurācijas failus
 manual_file=Atlasiet rediģējamo konfigurācijas failu:
 manual_change=Pārmaiņas
@@ -45,6 +46,7 @@ manual_editing=Izmantojiet zemāk esošo lodziņu, lai manuāli rediģētu $1 ko
 manual_err=Neizdevās saglabāt konfigurācijas failu
 manual_efile=Nederīgs konfigurācijas faila nosaukums!
 manual_ecannot=Jums nav atļauts manuāli rediģēt konfigurācijas failus
+
 buttsave=Saglabāt
 buttdel=Dzēst
 buttcreat=Izveidot
@@ -54,6 +56,7 @@ default=Noklusējums
 none=Nav
 on=Ieslēgts
 off=Izslēgts
+
 acl_header1=Izveidot ACL
 acl_header2=Rediģēt ACL
 acl_name=ACL nosaukums
@@ -109,6 +112,7 @@ acl_file=Saglabājiet ACL vērtības failā
 acl_nofile=Kalmāru konfigurācija
 acl_infile=Atsevišķs fails
 acl_keep=Vai tikai izmantot esošo faila saturu?
+
 aclsave_failsave=Neizdevās saglabāt ACL
 aclsave_faildel=Neizdevās izdzēst ACL
 aclsave_epr=Šo ACL izmanto starpniekservera ierobežojums
@@ -128,11 +132,13 @@ aclsave_eemin=Nederīgs beigu min
 aclsave_efile=Jums nav atļauts rakstīt ACL failā “$1”
 aclsave_enofile=Nav ievadīts ACL faila nosaukums
 aclsave_ealready=ACL fails jau pastāv
+
 cach_ecannot=Jums nav atļauts piekļūt kešatmiņas pārvaldnieka statistikai
 cach_err=Kļūda
 cach_nfound=Kalmāru kešatmiņas pārvaldnieka programma <tt>$1</tt> jūsu sistēmā netika atrasta. Varbūt jūsu <a href=/config.cgi?$2>moduļa konfigurācija</a> ir nepareiza.
 cach_return=kalmāru indekss
 cach_esame=<b>Kalmāri cachemgr.cgi izpildāmie</b> ir iestatīti Webmin cachemgr.cgi programmā, nevis tajā, ko piegādā Kalmārs.
+
 chown_header=Mainīt īpašumtiesības
 chown_stop=Apstādina kalmārus. ..
 chown_done=.. Gatavs
@@ -140,6 +146,7 @@ chown_chown=Notiek īpašumtiesību maiņa. ..
 chown_restart=Kalmāru atsākšana. ..
 chown_failrestart=Neizdevās atsākt kalmāru ..
 chown_return=kalmāru indekss
+
 clear_ecannot=Jums nav atļauts iztīrīt un atjaunot kešatmiņu
 clear_header=Notīriet un atjaunojiet kešatmiņu
 clear_msgclear=Vai tiešām vēlaties iztīrīt un atjaunot savu Kalmāru kešatmiņu? Tādējādi tiks izdzēsti <b>visi</b> faili, kas jums ir saglabāti kešatmiņā, un tiks restartēts Kalmāru serveris.
@@ -153,6 +160,7 @@ clear_failrestart=Neizdevās atsākt kalmāru ..
 clear_return=kalmāru indekss
 clear_url=Viena kešatmiņas URL noņemšana:
 clear_ok=Noņemt
+
 eacl_ecannot=Jums nav atļauts rediģēt piekļuves kontroli
 eacl_header=Piekļuves kontrole
 eacl_acls=Piekļuves kontroles saraksti
@@ -169,8 +177,10 @@ eacl_nopr=Starpniekservera ierobežojumi nav definēti.
 eacl_addpr=Pievienojiet starpniekservera ierobežojumu.
 eacl_noprr=Starpniekservera atbildes ierobežojumi nav definēti
 eacl_addprr=Pievienojiet starpniekservera atbildes ierobežojumu.
+
 eacl_replypr=Atbildiet uz starpniekservera ierobežojumiem
 eacl_replynopr=Nav definēti atbildes starpniekservera ierobežojumi
+
 eacl_icpr=ICP ierobežojumi
 eacl_noicpr=Nav definēti ICP ierobežojumi
 eacl_addicpr=Pievienojiet ICP ierobežojumu.
@@ -187,6 +197,7 @@ eacl_eclass=Nav atlasīta neviena programmas klase
 eacl_cname=Ierakstiet vārdu
 eacl_file=No faila $1
 eacl_hdelete=Dzēst atlasītos ierobežojumus
+
 eadm_ecannot=Jums nav atļauts rediģēt administratīvās iespējas
 eadm_header=Administratīvās iespējas
 eadm_aao=Administratīvās un paziņošanas iespējas
@@ -213,6 +224,7 @@ eadm_caf=Kešatmiņas paziņojuma fails
 eadm_annp=Sludinājumu periods
 eadm_buttsave=Saglabāt
 eadm_return=kalmāru indekss
+
 eauth_ecannot=Jums nav atļauts rediģēt starpniekservera autentifikāciju
 eauth_header=Starpniekservera autentifikācija
 eauth_aopt=Autentifikācijas iespējas
@@ -226,6 +238,7 @@ eauth_pusers=Starpniekserveri
 eauth_nopusers=Pašlaik nav definēti starpniekservera lietotāji.
 eauth_addpuser=Pievienojiet jaunu starpniekservera lietotāju.
 eauth_return=kalmāru indekss
+
 ec_ecannot=Kešatmiņas opcijas jums nav atļauts rediģēt
 ec_header=Kešatmiņas opcijas
 ec_cro=Kešatmiņa un pieprasījuma opcijas
@@ -280,6 +293,7 @@ ec_return=kalmāru indekss
 ec_maxreplies=Maksimālie atbildes ķermeņa izmēri
 ec_maxrn=Izmērs (kB)
 ec_maxracls=Pieprasījumiem, kas atbilst ACL (atstājiet tukšu visiem)
+
 ech_header=Izveidot kešatmiņas resursdatoru
 ech_header1=Rediģēt kešatmiņas resursdatoru
 ech_cho=Kešatmiņas resursdatora opcijas
@@ -324,6 +338,7 @@ ech_origin=Vai rīkoties ar resursdatoru kā izcelsmes serveri?
 ech_force=Piespiest resursdatoru: galveni uz
 ech_same=Bez izmaiņām
 ech_ssl=Vai izveidot savienojumu, izmantojot SSL?
+
 eicp_ecannot=Jums nav atļauts rediģēt citas kešatmiņas
 eicp_header=Citas kešatmiņas
 eicp_opcs=Citi starpniekservera kešatmiņas serveri
@@ -361,6 +376,7 @@ eicp_ttype=Veids
 eicp_tpport=Starpniekservera ports
 eicp_tiport=ICP ports
 eicp_delete=Dzēst atlasītās kešatmiņas
+
 elogs_ecannot=Jums nav atļauts rediģēt reģistrēšanu
 elogs_header=Mežizstrāde
 elogs_lalo=Reģistrēšana un žurnālfaila opcijas
@@ -394,6 +410,7 @@ elogs_notset=Nav uzstādīts
 elogs_dont=Nepieteikties
 elogs_file=Fails $1
 elogs_squid=Kalmāru standarts
+
 emem_ecannot=Jums nav atļauts rediģēt atmiņas izmantošanu
 emem_dheader=Atmiņas un diska lietošana
 emem_header=Atmiņas lietošana
@@ -419,6 +436,7 @@ emem_lfuda=Dinamiski vismazāk izmantotie
 emem_hlru=Kaudze, ko izmanto vismazāk
 emem_return=kalmāru indekss
 emem_mrp=Atmiņas aizstāšanas politika
+
 emisc_ecannot=Jums nav atļauts rediģēt dažādas iespējas
 emisc_header=Dažādas iespējas
 emisc_mo=Dažādas iespējas
@@ -455,6 +473,7 @@ emisc_wccpin=WCCP ienākošā adrese
 emisc_wccpout=WCCP izejošā adrese
 emisc_none=Nav
 emisc_virtual=Virtuāls
+
 eports_ecannot=Jums nav atļauts rediģēt ostas un tīkla izveidi
 eports_header=Ostas un tīklošana
 eports_pano=Porti un tīkla iespējas
@@ -480,6 +499,7 @@ eports_unc=Vai netīri SSL slēgumi?
 eports_checkhost=Vai validēt saimniekdatoru nosaukumus vietrāžos URL?
 eports_underscore=Vai atļaut pasvītrošanu resursdatoru nosaukumos?
 eports_all=Visi
+
 eprogs_ecannot=Jums nav atļauts rediģēt palīgu programmas
 eprogs_header=Palīgu programmas
 eprogs_chpo=Programmas Cache Helper opcijas
@@ -508,6 +528,7 @@ eprogs_ttl=Autentifikācijas kešatmiņas laiks
 eprogs_aittl=Autentificējiet IP kešatmiņas laiku
 eprogs_realm=Autentifikācijas sfēra
 eprogs_return=kalmāru indekss
+
 euser_header=Izveidot starpniekserveri
 euser_header1=Rediģēt starpniekservera lietotāju
 euser_pud=Informācija par starpniekserveri
@@ -516,6 +537,7 @@ euser_p=Parole
 euser_u1=Bez izmaiņām
 euser_e=Iespējots?
 euser_return=lietotāju saraksts
+
 ahttp_header=Izveidot starpniekservera ierobežojumu
 ahttp_header1=Rediģēt starpniekservera ierobežojumu
 ahttp_pr=Starpniekservera ierobežojums
@@ -525,10 +547,13 @@ ahttp_d=Noliedz
 ahttp_ma=Atbilst ACL
 ahttp_dma=Neatbilst ACL
 ahttp_return=ACL saraksts
+
 ahttp_replyheader=Izveidot starpniekservera atbildes ierobežojumu
 ahttp_replyheader1=Rediģēt starpniekservera atbildes ierobežojumu
 ahttp_replypr=Starpniekservera atbildes ierobežojums
+
 sahttp_ftspr=Neizdevās saglabāt starpniekservera atbildes ierobežojumu
+
 aicp_header=Izveidot ICP ierobežojumu
 aicp_header1=Rediģēt ICP ierobežojumu
 aicp_ir=ICP ierobežojums
@@ -538,7 +563,9 @@ aicp_d=Noliedz
 aicp_ma=Atbilst ACL
 aicp_dma=Neatbilst ACL
 aicp_return=ACL saraksts
+
 saicp_ftsir=Neizdevās saglabāt ICP ierobežojumu
+
 icache_ecannot=Jums nav atļauts inicializēt kešatmiņu
 icache_ftic=Neizdevās inicializēt kešatmiņu
 icache_ymcautrsa=Jums jāizvēlas lietotājs, kurš darbina Squid as
@@ -546,7 +573,9 @@ icache_euser=Lietotājs palaist kalmāru kā neeksistē
 icache_itscwtc=Kalmāra kešatmiņas inicializēšana ar komandu <tt>$1</tt> ..
 icache_return=kalmāru indekss
 icache_title=Inicializējiet kešatmiņu
+
 restart_ftrs=Neizdevās pārkonfigurēt kalmārus
+
 sadmin_ftsao=Neizdevās saglabāt administratīvās iespējas
 sadmin_header=Mainīt īpašumtiesības
 sadmin_msg1=Jūs esat mainījis lietotāju vai grupu, kuru Kalmārs vada. Lai tas stātos spēkā, ir jāatjaunina visu kešatmiņas un žurnāla failu īpašumtiesības un Squid jāatsāk.
@@ -556,10 +585,12 @@ sadmin_inavea='$1' nav derīga e-pasta adrese
 sadmin_inavh='$1' nav derīgs resursdatora nosaukums
 sadmin_inavap=“$1” nav derīgs paziņošanas periods
 sadmin_inavp='$1' nav derīgs ports
+
 sauth_ftsao=Neizdevās saglabāt autentifikācijas iespējas
 sauth_iomuf=Nederīgs vai trūkstošs lietotāja faila nosaukums
 sauth_iomd=Nederīgs domēns vai tā nav
 sauth_msg1=Jūsu Squid versija nav apkopota ar starpniekservera autentifikācijas atbalstu
+
 scache_ftsco=Kešatmiņas opciju saglabāšana neizdevās
 scache_emsg0=Jums jāievada vismaz viens kešatmiņas direktorijs
 scache_emsg1=Kešatmiņas direktorija '$1' neeksistē
@@ -577,14 +608,17 @@ scache_emsg12='$1' nav derīgs direktorijas lielums
 scache_emsg13='$1' nav derīgs resursdators
 scache_emsg14='$1' nav derīgs ports
 scache_emaxrs=Nederīgs maksimālais ķermeņa izmērs rindā $1
+
 schost_ftsc=Kešatmiņu neizdevās saglabāt
 schost_emsg1='$1' nav derīgs kešatmiņas resursdatora nosaukums
 schost_emsg2='$1' nav derīgs starpniekservera ports
 schost_emsg3='$1' nav derīgs ICP ports
 schost_emsg4='$1' nav derīgs dzīvošanas laiks
 schost_emsg5='$1' nav derīgs svērums
+
 sicp_ftsco=Kešatmiņas opciju saglabāšana neizdevās
 sicp_emsg1='$1' nav derīgs taimauts
+
 slogs_ftslo=Neizdevās saglabāt reģistrēšanas opcijas
 slogs_emsg1='$1' nav absolūts faila nosaukums
 slogs_emsg2='$1' nav derīgs faila nosaukums
@@ -594,20 +628,24 @@ slogs_emsg5='$1' nav derīgs atkļūdošanas iespēju saraksts
 slogs_efname=Nederīgs formāta nosaukums rindā $1
 slogs_effmt=Trūkst žurnāla formāta rindā $1
 slogs_eafile=Trūkst vai nav derīgs žurnāla fails rindā $1
+
 smem_ftsmo=Neizdevās saglabāt atmiņas opcijas
 smem_emsg1='$1' nav derīgs kešatmiņas lielums
 smem_emsg2='$1' nav derīga atzīme par augstu ūdeni
 smem_emsg3='$1' nav derīga zemā ūdens atzīme
 smem_emsg4=“$1” nav derīgs objekta lielums
+
 smisc_ftso=Neizdevās saglabāt opcijas
 smisc_emsg1='$1' nav derīgs pagriezienu skaits
 smisc_emsg2='$1' nav derīgs domēns
 smisc_emsg3='$1' nav derīgs starpniekserveris
 smisc_emsg4='$1' nav derīgs apiņu skaits
+
 sport_ftspo=Neizdevās saglabāt porta opcijas
 sport_emsg1='$1' nav derīgs porta numurs
 sport_emsg2=“$1” nav derīga adrese
 sport_emsg3='$1' nav derīgs bufera lielums
+
 sprog_ftshpo=Neizdevās saglabāt palīgu programmas opcijas
 sprog_emsg1=Trūkst FTP opciju
 sprog_emsg2='$1' nav derīga programma
@@ -620,19 +658,23 @@ sprog_emsg8=“$1” nav derīga IP adrese
 sprog_emsg9='$1' nav derīgs kešatmiņas laiks
 sprog_emsg10='$1' nav derīgs TTL
 sprog_echildren=Programmu skaitam jābūt lielākam par nulli
+
 suser_ftsu=Neizdevās saglabāt lietotāju
 suser_emsg1=Nederīgs lietotājvārds vai tā nav
 suser_etaken=Lietotājvārds jau tiek izmantots
+
 start_ftsq=Neizdevās sākt Kalmāru
 start_ecannot=Jums nav atļauts sākt kalmāru
 stop_ftsq=Neizdevās apturēt Kalmāru
 stop_ecannot=Jums nav atļauts apturēt Kalmāru
+
 calamaris_ecannot=Jums nav atļauts piekļūt Calamaris žurnāla analīzei
 calamaris_title=Calamaris žurnāla analīze
 calamaris_last=Ierobežojot analīzi ar pēdējām $1 žurnālu rindām.
 calamaris_eprog=Calamaris izpildāmā $1 netika atrasts. Varbūt tas nav instalēts jūsu sistēmā, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 calamaris_elogs=Žurnāla direktorijā $1 nav <tt>access.log</tt> failu. Varbūt kalmārs vēl nav palaists vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 calamaris_gen=Pārskats izveidots $1
+
 lib_emsg1=“$1” nav derīga IP adrese
 lib_seconds=sekundes
 lib_minutes=minūtes
@@ -680,6 +722,7 @@ lib_aclmuip=Maksimālais lietotāja IP
 lib_buttac=Lietot izmaiņas
 lib_buttss=Beidziet kalmāru
 lib_buttss1=Sākt kalmāru
+
 log_ports=Mainītas ostas un tīkla iespējas
 log_icp=Mainītas citas kešatmiņas opcijas
 log_mem=Mainītas atmiņas izmantošanas iespējas
@@ -734,25 +777,31 @@ log_pools_delete=Izdzēsti $1 kavēšanās fondi
 log_delay_create=Pievienots ACL kavējuma fondam $1
 log_delay_modify=Modificēta ACL kavējuma fondam $1
 log_delay_delete=Izdzēsta ACL kavējuma fondam $1
+
 log_delay_move=Pārvietota ACL kavējuma fondam $1
 log_refresh_create=Izveidots atsvaidzināšanas noteikums $1
 log_refresh_modify=Modificēts $1 atsvaidzināšanas noteikums
 log_refresh_delete=Izdzēsts atsvaidzināšanas noteikums $1
+
 log_refresh_move=Pārvietots $1 atsvaidzināšanas noteikums
 log_refreshes_delete=Izdzēsti $1 atsvaidzināšanas noteikumi
 log_iptables=Atjaunināta porta novirzīšanas iestatīšana
 log_purge=No kešatmiņas tika noņemts URL $1
 log_cachemgr=Mainītas kešatmiņas pārvaldnieka paroles
+
 acl_root=Saknes direktorijs ACL failiem
 acl_sections=Atļautās konfigurācijas lapas
 acl_start=Vai var sākt un apstādināt Kalmāru?
 acl_restart=Vai var lietot kalmāru konfigurāciju?
+
 always_create=Izveidot tiešo ielādi
 always_edit=Rediģēt tiešo ielādi
 always_header=Tieši ielādēt pieprasījumus, kas atbilst ACL
+
 never_create=Izveidot netiešo ielādi
 never_edit=Rediģēt netiešo ielādi
 never_header=Nekad tieši nepievelciet pieprasījumus, kas atbilst ACL
+
 delay_title=Aizkavēt baseinus
 delay_add=Pievienojiet jaunu kavēšanās baseinu.
 delay_num=Skaits
@@ -802,11 +851,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=MB
+
 dpool_err=Neizdevās izdzēst aizkaves portfeļus
 dpool_enone=Nav atlasīts
+
 apool_header=Pievienojiet aizkaves baseina ACL
 apool_header1=Rediģēt atliktā baseina ACL
 apool_pr=Aizkavējas baseins ACL
+
 authparam_title=Autentifikācijas programmas
 authparam_header=Ārējās autentifikācijas programmas iespējas
 authparam_ttl=Laiks kešatmiņā saglabāt paroles
@@ -849,6 +901,7 @@ ext_ecache=Trūkst vai nav derīgs kešatmiņas lielums
 ext_eprogram=Ievadīts nederīgs programmas ceļš
 ext_eclash=Ārējs programmas tips ar tādu pašu nosaukumu jau pastāv
 ext_eused=Šo ārējo programmu izmanto ACL
+
 header_title=Galvenes piekļuves kontrole
 header_none=Pagaidām nav definēti galvenes piekļuves kontroles noteikumi.
 header_name=HTTP galvene
@@ -868,6 +921,7 @@ header_err=Neizdevās saglabāt galvenes piekļuves kontroles kārtulu
 header_ename=Trūkst vai nav derīgs galvenes nosaukums
 header_request_header_access=Pieprasīt galvenes
 header_reply_header_access=Atbildēt galvenes
+
 refresh_title=Atsvaidzināšanas noteikumi
 refresh_none=Atsvaidzināšanas noteikumi vēl nav definēti.
 refresh_re=Regulāra izteiksme
@@ -894,6 +948,7 @@ refresh_epc=Trūkst vai nav derīgs vecuma procents
 refresh_delete=Dzēst atlasītos atsvaidzināšanas noteikumus
 drefresh_err=Neizdevās izdzēst atsvaidzināšanas kārtulas
 drefesh_enone=Nav atlasīts
+
 iptables_title=Portu novirzīšanas iestatīšana
 iptables_inst0=IPtable ugunsmūra komandas, kas vajadzīgas porta novirzīšanas iestatīšanai, nešķiet instalētas jūsu sistēmā. Plašāku informāciju skatiet <a href='$1'>Linux ugunsmūris</a> modulī.
 iptables_inst1=Šķiet, ka modulis <a href='$1'>Linux ugunsmūris</a> nav pilnībā iestatīts jūsu sistēmā. Šis modulis izmanto šo moduli, lai iestatītu Frox porta novirzīšanu.
@@ -908,18 +963,23 @@ iptables_enet=Trūkst vai nav derīga tīkla adrese (tai vajadzētu būt, piemē
 iptables_eiface=Trūkst vai nav derīga tīkla saskarne
 iptables_eapply=Ugunsmūra lietošana neizdevās : $1
 iptables_eapply2=Lietot kalmāru neizdevās : $1
+
 syslog_access=Kalmāru piekļuves žurnāls
 syslog_cache=Kalmāru kešatmiņas žurnāls
 syslog_store=Kalmāru objektu krātuves žurnāls
+
 purge_err=Neizdevās notīrīt URL no kešatmiņas
 purge_title=Notīrīt kešatmiņā saglabāto URL
 purge_doing=Notīrīt URL $1 ..
 purge_done=.. darīts.
 purge_failed=.. neizdevās! Iemeslu, kāpēc to darīt, skatiet iepriekš redzamajā kļūdas ziņojumā.
+
 dhttp_err=Neizdevās izdzēst starpniekservera ierobežojumus
 dhttp_enone=Nav atlasīts
+
 dicp_err=Neizdevās izdzēst ICP ierobežojumus
 dicp_enone=Nav atlasīts
+
 cachemgr_title=Kešatmiņas pārvaldnieka paroles
 cachemgr_ecannot=Jums nav atļauts rediģēt kešatmiņas pārvaldnieka paroles
 cachemgr_def1=Paroles nav nepieciešamas

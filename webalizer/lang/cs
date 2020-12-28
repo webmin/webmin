@@ -20,6 +20,7 @@ index_global=Editovat globální nastavení
 index_globaldesc=Klepnutím na toto tlačítko se editují nastavení Webalizeru, které se vztahují k reportům vygenerovaným z log souborů.
 index_eversion=Webalizer příkaz $1 vašeho systému je verze $2, avšak tento modul podporuje pouze verze $3 a vyšší.
 index_egetversion=Chyba při získání verze Webalizeru pomocí příkazu $1 : $2
+
 edit_title1=Přidání log souboru
 edit_title2=Editace log souboru
 edit_header=Nastavení log souboru s reporty
@@ -42,11 +43,13 @@ edit_conf=Nastavení reportu
 edit_cmode0=Použít globální nastavení
 edit_cmode1=Vlastní nastavení
 edit_cmode2=Jiný konfigurační soubor ..
+
 gen_title=Generování reportu
 gen_header=Probíhá spouštění Webalizeru, které generuje report z $1 ..
 gen_done=.. hotovo
 gen_failed=.. Webalizer neproběhl! Podívejte se na výše uvedený výstup s detaily.
 gen_view=Zobrazit kompletní report
+
 save_err=Chyba při ukládání log souboru
 save_efile=Nebyl vložen log soubor nebo neexistuje
 save_ecfile=Chybějící nebo neexistující jméno jiného konfiguračního souboru
@@ -56,12 +59,14 @@ save_ewuser=Žádný Unix uuživatel pojmenovaný $1 neexistuje
 save_ehost=Chybějící nebo nesprávné jméno website hosta
 save_etitle=Chybějící titulek reportu
 save_ecannot=Máte oprávnění pouze generovat reporty do logů pod $1
+
 view_epath=Neplatná PATH_INFO
 view_efile=Neplatné jméno report souboru
 view_elog=Neplatný log soubor
 view_ecannot=Nemáte oprávnění zobrazovat tento report
 view_eopen=Chyba při otevířání report souboru
 view_title=Zobrazit report
+
 global_title=Globální nastavení Webalizeru
 global_title2=Nastavení reportu Webalizeru
 global_for=Pro log soubor $1
@@ -113,6 +118,7 @@ global_hideuser=Uživatelé, kteří se nezobrazí v tabulkách
 global_ignoreurl=URLs, které budou úplně ignorovány
 global_ignoresite=Klienti, kteří budou úplně ignorovány
 global_ignoreuser=Uživatelé, kteří budou úplně ignorovány
+
 global_err=Chyba při ukládání nastavení Webalizeru
 global_ereport=Chybějící prefix report titulku
 global_ehost=Chybějící nebo neplatné jméno hosta
@@ -122,12 +128,14 @@ global_etable=Chybějící nebo neplatná velikost pro '$1' tabulku
 global_ehistory=Chybějící nebo neplatné jméno souboru s historií
 global_ecurrent=Chybějící nebo neplatné jméno načítacího souboru
 global_ecache=Chybějící nebo neplatné jméno DNS cache souboru
+
 log_create_log=Vetvořen report pro $1
 log_modify_log=Modifikován report pro $1
 log_delete_log=Smazán report pro $1
 log_generate_log=Generován report pro $1
 log_global=Modifikována globální nastavení Webalizeru
 log_global2=Modifikována nastavení Webalizeru pro $1
+
 acl_view=Může pouze zobrazit existující reporty?
 acl_global=Může editovat globální nastavení Webalizeru?
 acl_dir=Pouze povolit zobrazení a editaci reportů pro logy pod

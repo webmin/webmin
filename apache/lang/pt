@@ -30,12 +30,14 @@ cvirt_eport='$1' não é uma porta válida
 cvirt_ename='$1' não é um nome de servidor válido
 cvirt_eroot1=Tem de introduzir o documento de raíz
 cvirt_eroot2=Erro ao criar o directório '$1' : $2
+
 etype=Você não está autorizado para editar opções deste tipo
 efailed=Erro ao guardar $1
 apache_apply=Aplicar alterações
 apache_stop=Encerrar o Apache
 apache_start=Iniciar o Apache
 auth_return=controlo de acesso
+
 global_ecannot=Você não está autorizado para editar opções gerais
 global_mime=Lista geral de tipos MIME
 global_mimedesc=Clique num tipo de MIME da lista para editá-lo, ou use o enlace abaixo para adicionar um novo tipo à lista.
@@ -43,6 +45,7 @@ global_type=Tipo
 global_ext=Extensões
 global_add=Adicionar novo tipo de MIME
 global_return=Tipos de MIME
+
 mime_ecannot=Você não está autorizado para editar tipos de mime
 mime_edit=Editar tipo de MIME
 mime_add=Adicionar tipos de MIME
@@ -51,6 +54,7 @@ mime_type=Tipos MIME
 mime_ext=Extensões
 mime_err=Erro ao guardar tipos de MIME
 mime_etype='$1' não é um tipo MIME válido
+
 virt_ecannot=Você não pode editar este servidor virtual
 virt_title=Opções de Servidor Virtual
 virt_header=Para $1
@@ -65,6 +69,7 @@ virt_path=Caminho
 virt_return=index do servidor
 virt_euser=Você não está autorizado para alterar o utilizador ou o grupo deste servidor virtual.
 virt_header2=$1 para $2
+
 vserv_title=Configuração do Servidor Virtual
 vserv_ecannot=Você não está autorizado para editar o endereço deste servidor virtual
 vserv_addr=Endereço
@@ -80,9 +85,11 @@ vserv_eaddr2='$1' não é um endereço válido
 vserv_eport='$1' não é uma porta válida
 vserv_eroot='$1' não é um um documento de raíz válido
 vserv_ename='$1' não é um nome de servidor válido
+
 show_title=Directivas
 show_edit=Editar a directiva do Apache
 show_ok=Editar
+
 dir_title=Opções Por-Directório
 dir_header=Para $1 em $2
 dir_show=Mostrar Directivas
@@ -94,6 +101,7 @@ dir_re=Igual a expressão
 dir_path=Caminho
 dir_return=index do directório
 dir_header2=$1 para $2
+
 type_0=Processos e Limites
 type_1=Rede e Endereços
 type_2=Módulos do Apache
@@ -111,6 +119,7 @@ type_13=Proxying
 type_14=Opções de SSL
 type_15=Perl
 type_16=PHP
+
 htaccess_title=Opções de ficheiros Por-Directório
 htaccess_ecannot=Você não pode editar ficheiros htaccess
 htaccess_desc=Opções adicionais de Por-Directório podem ser especificadas num ficheiro (usualmente chamado <tt>.htaccess</tt>) em cada directório. As opções aplicam-se a todos os ficheiros do directório e em qualquer sub-directório, excepto se for sobreposto por outro ficheiro de configuração.
@@ -122,9 +131,11 @@ htaccess_return=lista de opções do ficheiro
 htaccess_edir='$1' não é um directório válido
 htaccess_ecreate=Você não está autorizado para criar este ficheiro de opções
 htaccess_edelete=Você não está autorizado para apagar este ficheiro de opções
+
 htindex_ecannot=Você não está autorizado para editar este ficheiro de opções
 htindex_title=Ficheiro de Opções Por-Directório
 htindex_delete=Apagar ficheiro
+
 htindex_show=Mostrar directivas
 htindex_opts=Opções Por-Directório
 htindex_file=Configuração Por-Ficheiro
@@ -136,20 +147,24 @@ htindex_path=Caminho
 htindex_header=Para $1
 htindex_header2=$1 para o ficheiro de opções $2
 htindex_return=index do ficheiro de opções
+
 htfile_title=Opções Por-Ficheiro
 htfile_header=Para $1 em $2
 htfile_show=Mostrar Directivas
 htfile_apply=Opções aplicadas a ..
 htfile_header2=$1 para $2
+
 reconfig_title=Reconfigurar Módulos Conhecidos
 reconfig_ecannot=Você não está autorizado para reconfigurar o Apache
 reconfig_ever=Erro ao obter a versão do executável $1 do servidor Apache. Verifique a sua <a href='$2'>configuração de módulos</a> para ter a certeza que este é o caminho correcto.
 reconfig_desc1=A configuração do Apache foi alterada, ou ainda não foi examinada pelo Webmin. Abaixo encontra-se uma lista de todos os módulos suportados pelo Webmin, nos quais estão instalados os seleccionados. Você pode seleccionar ou excluir os módulos se a lista estiver incorrecta.
 reconfig_desc2=Abaixo excontra-se a lista de todos os módulos suportados pelo Webmin, dos quais estão selecionados os instalados. Se está a usar módulos carregados dinâmicamente então poderá precisar de seleccionar aqueles que estão dinâmicamente carregados.
 reconfig_ok=Configurar
+
 defines_title=Editar Parâmetros Definidos
 defines_ecannot=Você não está autorizado para editar definições httpd
 defines_desc=Quando o Apache é iniciado, os parâmetros são transmitidos para ele com a opção em linha de comando <tt>-D</tt>. Porque estes parâmetros podem afectar as directivas usadas na sua configuração, O Webmin necessita que elas sejam tranmitidas ao Apache aquando do seu arranque. Introduza no campo de texto da direita os parâmetros usados no seu sistema.
+
 authu_ecannot='$1' não é um ficheiro de texto de utilizadores permitido
 authu_title=Lista de Utilizadores
 authu_header=No ficheiro $1
@@ -165,6 +180,7 @@ authu_err=Erro ao guardar utilizador
 authu_euser=Sem nome de utilizador introduzido
 authu_euser2=O nome de utilizador não pode conter :
 authu_edup=Já existe um utilizador chamado '$1'
+
 authg_ecannot='$1' não é um ficheiro de texto de grupos permitido
 authg_title=Lista de Grupos
 authg_header=No ficheiro $1
@@ -180,20 +196,24 @@ authg_err=Erro ao guardar grupo
 authg_euser=Não foi introduzido o nome de grupo
 authg_euser2=O nome do grupo não pode conter :
 authg_edup=Já existe um grupo chamado '$1'
+
 stop_err=Erro ao parar o Apache
 stop_ecannot=Você não está autorizado para parar o Apache
 stop_epid=Erro ao abrir o ficheiro PID $1
 stop_epid2=Ficheiro PID $1 inválido
 stop_esig=Erro ao enviar o sinal SIGTERM para o processo $1
+
 start_err=Erro ao iniciar o Apache
 start_ecannot=Você não está autorizado para iniciar o Apache
 start_ecmd=$1 falhou : $2
 start_eunknown=Razão desconhecida
+
 restart_err=Erro ao aplicar as alterações
 restart_epid=Erro ao abrir o ficheiro PID $1
 restart_epid2=Ficheiro PID $1 inválido
 restart_esig=Erro ao enviar o sinal SIGHUP para o processo $1
 restart_eunknown=Razão desconhecida
+
 acl_virts=Servidores virtuais que este utilizador pode editar
 acl_global=Pode editar as opções gerais?
 acl_htaccess=apenas .htaccess

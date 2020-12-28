@@ -12,6 +12,7 @@ index_eprog=Program serwera NFS nie został znaleziony. Prawdopodobnie nie zosta
 index_delete=Usuń wybrane eksporty
 index_disable=Wyłącz wybrane
 index_enable=Włącz wybrane
+
 edit_title=Zmień udostępnianie
 create_title=Udostępnij
 edit_details=Dane udostępniania
@@ -65,6 +66,7 @@ edit_sec_krb5i=Integralność Kerberos
 edit_sec_krb5p=Prywatność Kerberos
 edit_sec_lipkey=LIPKEY
 edit_sec_spkm=SPKM
+
 save_err=Nie udało sie zachować parametrów udostępniania
 save_edir=Katalog '$1' nie istnieje
 save_epfs=Ścieżka '$1' Pseudo systemu plików wydaje się nie być ścieżką bezwzględną
@@ -78,6 +80,7 @@ save_pfs='$1' został już wyeksportowany jako katalog
 save_create_dir=Nie można utworzyć katalogu '$1'
 save_eanonuid=Nieprawidłowa anonimowa nazwa użytkownika
 save_eanongid=Nieprawidłowa anonimowa nazwa grupy
+
 exports_webnfs=Klientów eWebNFS
 exports_ngroup=Grupy sieciowej $1
 exports_net=Sieci $1
@@ -85,6 +88,7 @@ exports_all=Wszystkich
 exports_hosts=Hostów $1
 exports_host=Hosta $1
 exports_gss=Uwierzytelnianie sieci: $1
+
 log_modify=Zmieniono eksport NFS $1
 log_modify_l=Zmieniono eksport NFS $1 do $2
 log_delete=Zmieniono eksport NFS $1

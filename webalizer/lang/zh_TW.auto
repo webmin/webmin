@@ -26,6 +26,7 @@ index_when=是， $1
 index_webalizer=Webalizer
 index_enable=預定時間表
 index_disable=取消時間表選擇
+
 edit_title1=添加日誌文件
 edit_title2=編輯日誌文件
 edit_header=日誌文件報告選項
@@ -49,12 +50,14 @@ edit_cmode0=使用全局選項
 edit_cmode1=自訂選項
 edit_cmode2=其他配置文件 ..
 edit_clear=排定報告後清除日誌文件？
+
 gen_title=產生報告
 gen_header=運行Webalizer以從 $1..生成報告
 gen_done=..完成
 gen_failed=.. Webalizer失敗！有關詳細信息，請參見上面的輸出。
 gen_nothing=.. Webalizer完成，但未生成報告。有關詳細信息，請參見上面的輸出。
 gen_view=查看完成的報告。
+
 save_err=保存日誌文件失敗
 save_efile=日誌文件未輸入或不存在
 save_ecfile=其他配置文件缺失或不存在
@@ -64,12 +67,14 @@ save_ewuser=不存在名為 $1的Unix用戶
 save_ehost=網站主機名缺失或無效
 save_etitle=缺少報告標題
 save_ecannot=僅允許您為 $1下的日誌生成報告
+
 view_epath=無效的PATH_INFO
 view_efile=無效的報告文件名
 view_elog=無效的日誌文件
 view_ecannot=您無權查看此報告
 view_eopen=無法打開報告文件
 view_title=查看報告
+
 global_title=全局Webalizer選項
 global_title2=Webalizer報表選項
 global_for=對於日誌文件 $1
@@ -130,6 +135,7 @@ global_includesite=客戶不可忽視
 global_includereferrer=推薦人不要忽視
 global_includeuser=用戶不可忽視
 global_includeagent=瀏覽器不可忽視
+
 global_err=無法保存Webalizer選項
 global_ereport=缺少報告標題前綴
 global_ehost=主機名缺失或無效
@@ -139,6 +145,7 @@ global_etable='$1'表的大小丟失或無效
 global_ehistory=歷史文件名缺失或無效
 global_ecurrent=增量文件名缺失或無效
 global_ecache=DNS緩存文件名缺失或無效
+
 log_create_log=為 $1創建了報告
 log_modify_log=修改了 $1的報告
 log_delete_log=已刪除 $1的報告
@@ -147,6 +154,7 @@ log_global=修改後的全局Webalizer選項
 log_global2=$1的已修改Webalizer選項
 log_enable_logs=計劃在 $1日誌上報告
 log_disable_logs=計劃的 $1日誌報告
+
 acl_view=只能查看現有報告嗎？
 acl_global=可以編輯全局Webalizer選項嗎？
 acl_dir=僅允許查看和編輯以下日誌的報告

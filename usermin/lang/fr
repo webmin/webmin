@@ -16,11 +16,14 @@ index_esame=Le répertoire de configuration de Usermin $1 défini sur la page <a
 index_eroot=Le répertoire de configuration Usermin $1 existe, mais pas le répertoire racine du programme $2 auquel il fait référence! Vous devez télécharger et réinstaller manuellement Usermin.
 index_restart=Redémarrer Usermin
 index_restartmsg=Cliquez sur ce bouton pour redémarrer le processus du serveur Usermin. Il se peut que ce soit nécessaire si vous avez récemment procédé à une mise à niveau de Perl.
+
 access_title=Contrôle d'accès IP
 access_desc=Le serveur Usermin peut être configuré pour interdire ou autoriser l'accès uniquement à partir de certaines adresses IP à l'aide de ce formulaire. Il est également posible de saisir des noms d'hôtes (comme titi.toto.com) et des réseaux IP (comme 10.254.3.0 ou 10.254.1.0/255.255.255.128). Vous devriez limiter l'accès à votre serveur aux adresses de confiance, en particulier s'il est accessible depuis Internet. Autrement, quiconque devine votre mot de passe peut avoir un contrôle complet de votre système.
+
 bind_title=Ports et adresses
 bind_desc2=Ce formulaire peut être utilisé pour changer le numéro de port sur lequel Usermin écoute ou ne lui faire écouter qu'une seule adresse IP sur votre système. Vous pouvez également le configurer pour accepter des connexions sur des ports multiples ou pour écouter sur plusieurs adresses IP. Remarque : votre navigateur web peut émettre une invite pour vous connecter à nouveau après avoir changé le port ou lié l'adresse.
 bind_erestart=Une erreur se produisant lors du démarrage de Usermin avec les nouveaux paramètres d'adresse et de port : $1
+
 mods_title=Modules Usermin
 umods_title=$mods_title
 mods_desc1=Les modules Usermin peuvent être ajoutés après l'installation à l'aide du formulaire ci-dessous. Les modules sont généralement distribués dans des fichiers <tt>.wbm</tt>, dont chacun peut contenir un ou plusieurs modules. Il est également possible d'installer les modules à partir de fichiers RPM si votre système d'exploitation les prend en charge.
@@ -41,15 +44,18 @@ mods_desc3=Les modules existants peuvent être supprimés à l'aide du formulair
 mods_delete=Suppression de modules
 mods_deleteok=Supprimer les modules sélectionnés
 mods_desc4=Les modules installés peuvent être exportées en tant que fichier wbm.gz en utilisant le formulaire ci-dessous. Un fichier de module peut être installé sur un autre système ou Usermin fonctionne.
+
 os_title=Système d'exploitation
 os_desc3=Cette page affiche le système d'exploitation détecté par Usermin au moment de l'installation, et le système qui est actuellement détecté. S'ils sont différents, vous pouvez choisir de mettre à jour les informations de système d'exploitation de Usermin. Ce qui devrait être nécessaire si vous l'avez récemment mis à jour.
 os_desc2=Vous pouvez également changer le chemin de recherche qu'utilise Usermin lorsqu'il exécute des programmes, ainsi que le chemin de la bibliothèque partagée passé à tout programme.
 os_usermin=Système d'exploitation d'après Usermin
 os_iusermin=Code OS interne utilisé par Usermin
 os_update=Mettre à jour Usermin pour détecter l'OS
+
 lang_title=Langue
 lang_title2=Langue de Usermin
 lang_intro=Cette page vous permet de choisir la langue que Usermin utilisera pour afficher les titres, invites et messages.
+
 session_title=Authentification
 session_desc1=Lorsque l'authentification est activée, les délais d'expiration des mots de passe protègent votre serveur Usermin des attaques en force de cassage de mots de passe en ajoutant un délai qui se prolongeant continuellement entre deux tentatives infructeuses de connexion pour le même utilisateur.
 session_desc2=Quand l'authentification de la session est activée, Usermin suit chaque session des utilisateurs connectés, ce qui permet de déconnecter automatiquement les utilisateurs inactifs. Soyez conscient que le fait d'activer ou de désactiver l'authentification de session peut forcer tous les utilisateurs à se reconnecter.
@@ -73,6 +79,7 @@ session_blank=Inviter les utilisateurs ayant un mot de passe vide à en choisir 
 session_homedir=Crée le répertoire racine manquant après le login ?
 session_homedir_perms=Permissions pour nouveau répertoire
 session_ehomedir_perms=Autorisations manquante ou non valide pour le répertoire racine
+
 themes_title=Thèmes Usermin
 themes_desc=Les thèmes déterminent l'apparence de l'interface utilisateur de Usermin, y compris les icônes, les couleurs, le fond d'écran et éventuellement la disposition des pages. La zone de sélection ci-dessous peut être utilisée pour choisir un des thèmes installés sur votre système qui sera le thème par défaut des utilisateurs Usermin.
 themes_sel=Thème actuel :
@@ -101,7 +108,9 @@ themes_eirpm=Impossible d'installer le RPM : $1
 themes_ok=Thème changé avec succès... Redirection en cours vers la page d'index de Webmin.
 themes_delete=Ce formulaire peut être utilisé pour supprimer un des thèmes installés sur votre système qui n'est pas en vigueur actuellement.
 themes_delok=Thème à supprimer :
+
 themes_desc4=Les thèmes installés peuvent être exportées en tant que fichier wbt.gz en utilisant le formulaire ci-dessous. Un thème fichier peut alors être installé sur un autre système ou Usermin est installé.
+
 configs_ecannot=Vous n'êtes pas autorisé à configurer ce module
 configs_title=Configuration du module Usermin
 configs_header=Modules configurables
@@ -115,8 +124,10 @@ configs_global=Configuration globale du module
 configs_globaldesc=Les paramètres de ce formulaire s'appliquent à tous les utilisateurs du module et, en général,  activent les options relatives aux programmes et fichiers qu'il utilise.
 configs_user=Préférences utilisateurs par défaut
 configs_userdesc=Les paramètres de ce formulaire définissent les options par défaut pour les préférences de ce module modifiables par les utilisateurs . Sauf si vous le spécifiez, ils peuvent être modifiées par les utilisateurs.
+
 acl_title=Modules disponibles
 acl_desc=Utilisez cette page pour déterminer quels sont les modules Usermin installés visibles des utilisateurs.
+
 ssl_title=Chiffrement SSL
 ssl_desc1=Il semble que le module Perl SSLeay soit installé sur l'hôte sur lequel Usermin s'exécute. Grâce à lui, Usermin gère la communication chiffrée via SSL entre votre navigateur et le serveur. Si les utilisateurs accèdent à votre serveur Usermin via l'Internet, vous devriez sérieusement envisager de faire appel à SSL pour empêcher un attaquant de capturer leurs mots de passe.
 ssl_desc2=<b>Avertissement</b> : n'activez la prise en charge SSL que si vous avez un navigateur qui gère SSL (comme Netscape ou IE) et s'il n'y a pas de pare-feu bloquant les requêtes <b>https</b> entre votre navigateur et l'hôte Usermin.
@@ -125,18 +136,23 @@ ssl_hole=Du fait que vous utilisez actuellement la clé SSL Usermin par défaut 
 ssl_savekey=Ce formulaire vous permet de télécharger une clé privée SSL au format PEM et un certificat que votre serveur Usermin pourra utiliser.
 ssl_copycert=Copier le certificat depuis Webmin
 ssl_copycertdesc=Copiez le certificat SSL, la clé privée, le certificat CA et les autres paramètres utilisés par Webmin.
+
 ca_email=Adresse électronique
 ca_ou=Département
 ca_o=Organisation
 ca_sp=État
 ca_c=Code du pays
+
 newkey_ok=La clé SSL suivante pour Usermin a été générée avec succès.
+
 stop_err=Impossible d'arrêter Usermin
 stop_ekill=Impossible de tuer le processus : $1
 stop_efile=Déjà arrêté
 stop_ecannot=Vous n'êtes pas autorisé à arrêter Usermin
+
 start_err=Impossible de démarrer Usermin
 start_ecannot=Vous n'êtes pas autorisé à démarrer Usermin
+
 users_title=Utilisateurs et groupes autorisés
 users_desc=Ce formulaire permet de configurer Usermin pour limiter les utilisateurs et les groupes unix autorisés à se connecter. Pour spécifier tous les membres primaires d'un groupe unix, saisissez <tt>@nom-groupe</tt> dans la liste.
 users_desc2=Pour faire correspondre une plage d'UID, saisissez <tt>start-end</tt>, <tt>start-</tt> ou <tt>-end</tt> dans la liste.
@@ -150,10 +166,12 @@ users_euser='$1' n'est pas un nom d'utilisateur valide
 users_egroup='$1' n'est pas un nom de groupe valide
 users_shells=Interdire les utilisateurs dont les interpréteurs de commandes ne sont pas dans un fichier
 users_eshells=Fichier des interpréteurs de commandes absent ou non existant
+
 defacl_title=Options de contrôle d'accès
 defacl_desc=Cette page vous permet de configurer diverses options de contrôle d'accès qui s'appliquent aux modules et utilisateurs Usermin. Ces options sont similaires à celles qui existent pour l'ACL globale de chaque utilisateur dans le module Utilisateurs Webmin.
 defacl_header=Options de contrôle d'accès des utilisateurs Usermin
 defacl_err=Impossible d'enregister les options de contrôle d'accès
+
 install_err1=Impossible d'installer le module à partir de $1
 install_efile=Le fichier n'existe pas
 install_err2=Impossible d'installer le module déposé sur le serveur
@@ -180,6 +198,7 @@ install_erpm=N'est pas un module Usermin ou un RPM de thème
 install_eirpm=Impossible d'installer le RPM : $1
 install_cat=Sous la catégorie $1.
 install_eneither=Le RPM ne contient pas de module ou de thème usermin
+
 delete_err=Impossible de supprimer les modules
 delete_edep=Le module $1 ne peut pas être supprimé car le module $2 en dépend
 delete_desc1=$1 (Clone de $2)
@@ -189,6 +208,7 @@ delete_msg=Les modules suivants ont été supprimés avec succès de votre insta
 delete_rusure=Êtes-vous sûr de vouloir supprimer le(s) module(s) $2 ? $1 ko de fichiers sera supprimé définitivement.
 delete_rusure2=Êtes-vous sûr de vouloir supprimer le thème $2 ? $1 ko de fichiers sera supprimé définitivement.
 delete_enone=Pas de module sélectionné
+
 ui_title=Interface utilisateur
 ui_desc=Ce formulaire vous permet de modifier les options de l'interface utilisateur auxquelles tous les modules Usermin font appel.
 ui_header=Options de l'interface utilisateur
@@ -230,6 +250,7 @@ ui_hnm1=Nom de serveur pour l'URL
 ui_hnm2=Nom de domaine pour l'URL
 ui_hnm3=Autre nom
 ui_tabs=Classifier les modules sur la page d'index ?
+
 upgrade_title=Mise à niveau de Usermin
 upgrade_title2=Installer Usermin
 upgrade_desc=Ce formulaire vous permet de mettre à niveau l'ensemble de votre installation Usermin vers une nouvelle version. Vous pouvez installer à partir d'un fichier local, d'un fichier déposé sur le serveur ou à partir de la toute dernière version sur <a href=http://www.usermin.com/>www.usermin.com</a>. Tout comme pour une mise à niveau manuelle, tous vos paramètres de configuration et les modules tiers seront conservés.
@@ -263,6 +284,7 @@ upgrade_done=... mise à niveau achevée.
 upgrade_failed=... mise à niveau impossible !
 upgrade_updates=Il y a $1 mises à jour pour cette nouvelle version de Usermin. <a href='$2'>Cliquez ici</a> pour les télécharger et les installer automatiquement maintenant.
 upgrade_eupdates=Impossible de télécharger la liste des mises à jour : $1
+
 update_desc1=Ce formulaire vous permet de mettre à niveau les modules Usermin qui sont réputés contenir des bogues ou des trous de sécurité sur la page <a href=http://www.usermin.com/uupdates.html>Mises à jour de Usermin</a> ou à partir d'une autre source. Celle-ci comparera les modules installés actuellement avec ceux disponibles pour la mise à jour. Optionnellement, elle téléchargera et installera automatiquement tout module périmé.
 update_header1=Mise à jour des modules maintenant
 update_header2=Mise à jour des modules selon les prévisions
@@ -279,10 +301,12 @@ update_sched=Mettre à jour les modules à $1:00 tous les $2 jour(s)
 update_none=Pas de mises à jour de Usermin pour cette version.
 update_failed=Impossible d'installer le module : $1
 update_desc2=Ce formulaire est destiné à programmer la mise à jour automatique des modules Usermin contenant des bogues ou des trous de sécurité sur la page <a href=http://www.usermin.com/uupdates.html>Mises à jour de Usermin</a> ou d'une autre source. Bien que ce service soit utile, soyez prudent quand vous l'utilisez car elle peut permettre à des attaquants de prendre le contrôle de votre système s'il arrive que le serveur de mise à jour ait été compromis.
+
 assignment_title=Réaffectation des modules
 assignment_header=Affectation de catégories de modules
 assignment_ok=Changer les catégories
 assignment_desc=Ce formulaire vous permet de configurer quelle est la catégorie de chaque module affichée sous la page d'index Usermin.
+
 categories_title=Modification des catégories
 categories_header=ID et description des catégories
 categories_desc=Ce formulaire vous permet de renommer les catégories Usermin existantes et d'en créer de nouvelles auxquelles affecter des modules. La partie supérieure du tableau sert à changer les descriptions des catégories intégrées, tandis que la partie inférieure sert à ajouter de nouveaux ID et descriptions de catégories.
@@ -292,6 +316,7 @@ categories_edesc=Description de $1 absente
 categories_ecat=L'ID de catégorie $1 est déjà pris
 categories_code=ID
 categories_name=Description affichée
+
 log_access=Changé le contrôle d'accès IP
 log_bind=Changé le port et l'adresse
 log_log=Changé les options de journalisation
@@ -327,6 +352,7 @@ log_restrict_create=Créé une restriction pour $1
 log_restrict_modify=Modifié une restriction pour $1
 log_restrict_delete=Supprimé une restriction pour $1
 log_restrict_move=Déplacé une restriction pour $1
+
 log_all=tous les utilisateurs
 log_group=groupe $1
 log_switch=Basculer vers l'utilisateur Usermin $1
@@ -334,6 +360,7 @@ log_logout=Délai de déconnexion automatique changé.
 log_dav=Paramètres de serveur DAV changés
 log_advanced=Options avancées changées
 log_mobile=Option d'équipement mobile changées
+
 update_err=Impossible de mettre à jour les modules
 update_eurl=URL de mise à jour manquante ou invalide
 update_title=Mise à jour des modules
@@ -352,6 +379,7 @@ update_rv=Chercher les mises à jour de modules Usermin à partir de $1
 update_eemail=Vous devez saisir une adresse électronique en cas d'affichage seul de ce qui devrait être mis à jour
 update_subject=Rapport de mise à jour de modules Usermin
 update_version=Une nouvelle version de Usermin (version $1) est maintenant disponible pour le téléchargement. Les mise à jour futures ne seront fournies que pour la dernière version.
+
 restrict_title=Restrictions des modules
 restrict_desc=Cette page vous permet de vérifier quels sont les modules Usermin à la disposition des différents utilisateurs et groupes. Toutes les additions et soustractions de modules dans la liste s'appliquent, et non simplement le premier pour correspondre à chaque utilisateur.<br>Les modules qui ne sont pas sélectionnés sur la page <a href='$1'>Modules disponibles</a> ne seront jamais à la disposition des utilisateurs, même s'ils sont sélectionnés ici.
 restrict_who=Utilisateur Usermin
@@ -384,6 +412,7 @@ restrict_egroup=Nom de groupe manquant ou invalide
 restrict_efile=Fichier d'utilisateurs et de groupes manquant, inexistant ou non absolu
 restrict_move=Déplacer
 bootup_ecannot=Vous n'êtes pas autorisé à configurer 'bootup'
+
 acl_icons=Pages de configuration autorisées
 acl_mods=Peut configurer des modules
 acl_all=Tous les modules
@@ -391,10 +420,12 @@ acl_sel=Sélectionné(s) ci-dessous...
 acl_stop=Peut arrêter et démarrer Usermin ?
 acl_bootup=Peut configurer le démarrage lors de l'amorçage ?
 acl_ecannot=Vous n'êtes pas autorisé à utiliser cette page
+
 clone_err=Impossible de cloner le module
 clone_elink=lien symbolique impossible : $1
 clone_ecopy=impossible de copier la configuration : $1
 clone_desc=Clone de $1
+
 sessions_title=Sessions de connexion actuelles
 sessions_desc=Les noms de connexion de session actuels sont répertoriés ci-dessous. Pour annuler les sessions existantes et forcer l'utilisateur à se connecter à nouveau, cliquez sur son ID de session.
 sessions_id=ID de session
@@ -404,12 +435,15 @@ sessions_login=Connecté à
 sessions_none=Aucun utilisateur n'est connecté actuellement à Usermin.
 sessions_switch=Basculer vers l'utilisateur Usermin:
 sessions_ok=Basculer
+
 referers_title=Provenances de confiance
 referers_desc=Cette page vous permet de configurer le support de la vérification de provenance de Usermin. Ceci est utilisé pour prévenir les liens détournés à partir d'autres sites web qui piègent les navigateurs de vous utilisateurs pour faire des choses dangereuses avec Usermin. Cependant, si vous avez des liens vers Usermin sur vos propres sites web que vous ne voulez pas inclure dans la vérification, vous devez ajouter ces sites à la liste ci-dessous.
+
 anon_title=Accès anonyme à des modules
 anon_desc=Cette page vous permet de donner l'accès aux modules Usermin et aux chemins sélectionnés sans que les clients aient besoin de s'identifier. Pour chaque chemin de module que vous saisissez ci-dessous (tel que /commands ou /changepass) vous devez aussi saisir le nom d'un utilisateur Unix dont les permissions seront utilisées pour accéder au module.
 anon_user=Utilisateur Unix
 anon_euser=Utilisateur Unix manquant ou invalide pour le chemin URL '$1'
+
 logout_title=Délais de déconnexion automatique
 logout_desc=Cette page peut être utilisé pour configurer différents délais d'inactivité pour différents utilisateurs Usermin. Le délai doit être défini en minutes et un délai de zéro signifie que les sessions pour les utilisateurs correspondants ne seront jamais automatiquement déconnectées.
 logout_type=Type
@@ -424,6 +458,7 @@ logout_egroup=Groupe manquant ou non valide dans la ligne $1
 logout_efile=Fichier manquant ou inexistant dans la ligne $1
 logout_etime=Délais manquant ou non valide dans la ligne $1
 logout_ecannot=Vous n'êtes pas autorisés à modifier les délais de déconnexion automatique
+
 dav_title=Serveur DAV
 dav_header=Option de serveur DAV
 dav_path=DAV activé
@@ -444,16 +479,22 @@ dav_users=Utilisateurs qui peuvent utiliser DAV
 dav_users1=Tous les utilisateurs
 dav_users0=Utilisateurs et les groupes énumérés ci-dessous ..
 dav_eusers=Aucun utilisateur inscrit
+
 syslog_errorlog=Log d'erreur Usermin
+
 descs_title=Titres de modules
 descs_info=Cette page vous permet de spécifier un autre titre pour les modules Usermin, de passer outre à leur descriptions standards.
+
 advanced_title=Options avancées
 advanced_pass=Rendre le mot de passe disponible aux programmes Usermin ?<br><font size=-1>(Ne fonctionne pas quand la session d'authentification est activée)</font>
+
 blocked_title=Utilisateurs et serveur bloqués
 blocked_none=Aucun serveur ou utilisateur n'est pour l'instant bloqué par Usermin
 blocked_user=Utilisateur Usermin
 blocked_cleardesc=Clicker sur ce bouton pour effacer tous les bloc utilisateurs et serveur courrant, en redémarrant le processus serveur de Usermin.
+
 mobile_title=Options d'équipement mobile
+
 copycert_err=Échec de la copie des paramètres SSL de Webmin
 copycert_essl=SSL n'est pas activé
 copycert_ekeyfile=Aucun fichier de clé privée n'est défini dans Webmin

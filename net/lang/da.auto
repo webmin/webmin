@@ -7,6 +7,7 @@ index_delete2=Slet valgte grænseflader
 index_delete3=Slet og anvend valgte grænseflader
 index_apply2=Anvend valgte grænseflader
 index_vmin=Virtualmin
+
 ifcs_title=Netværksgrænseflader
 ifcs_now=Aktiv nu
 ifcs_activedesc=Grænseflader, der er anført i denne tabel, er i øjeblikket aktive på systemet. I de fleste tilfælde skal du redigere dem under fanen <b>Aktiveret ved start</b>.
@@ -55,6 +56,7 @@ ifcs_linkyes=forbundet
 ifcs_linkno=Dis-forbundet
 ifcs_speed=Grænsefladehastighed
 ifcs_duplex=, $1 dupleks
+
 aifc_create=Opret aktiv interface
 aifc_edit=Rediger Aktiv interface
 aifc_desc1=Aktive interfaceparametre
@@ -79,6 +81,7 @@ aifc_eaddress6=IPv6-adresse i række $1 er ikke gyldig
 aifc_enetmask6=IPv6 netmaske i række $1 skal være et heltal mellem 1 og 128
 aifc_eclash6=IPv6-adresse i række $1 er allerede i brug af interface $2 
 aifc_eaddresses6=Ingen IPv6-adresser er indtastet
+
 bifc_create=Opret opstartsgrænseflade
 bifc_act=Aktivér ved opstart?
 bifc_edit=Rediger opstartsgrænseflade
@@ -110,6 +113,7 @@ bifc_bridgestp=Spænding af træprotokol
 bifc_bridgefd=Forsinket forsinkelse
 bifc_bridgewait=Forsinkelse for at blive tilgængelig
 bifc_ebond=Obligationsgrænsefladen skal være et nummer
+
 bonding_add=Tilføj et nyt limningsinterface.
 bonding_create=Opret limning interface
 bonding_teamparts=Teaming Partners
@@ -121,11 +125,14 @@ bonding_miimon=Mii-overvågningsinterval
 bonding_miimondesc=(Lad være tom for at deaktivere linkovervågning)
 bonding_updelay=Updelay
 bonding_downdelay=Downdelay
+
 vlan_add=Tilføj Vlan-taget interface
 vlan_physical=Fysisk enhed
 vlan_id=Vlan ID
 vlan_create=Opret VLAN-interface
+
 bridge_create=Opret broflade
+
 routes_title=Routing og gateways
 routes_boot=Rutekonfiguration aktiveret ved <i>starttidspunkt</i>
 routes_now=Rutekonfiguration aktiveret nu
@@ -194,6 +201,7 @@ routes_tabboot=Opstartstidskonfiguration
 routes_tabactive=Aktiv konfiguration
 routes_descactive=Dette afsnit viser ruter, som systemet i øjeblikket har konfigureret, og giver dig mulighed for at tilføje eller fjerne aktive ruter på nogle systemer. Vær forsigtig med at gøre dette, da forkerte ændringer kan afskære systemet, der kører Webmin fra resten af netværket.
 routes_descboot=Dette afsnit giver dig mulighed for at konfigurere de ruter, der er aktiveret, når systemet starter op, eller når netværksindstillingerne er genanvendt igen.
+
 dns_title=Værtsnavn og DNS-klient
 dns_options=DNS-klientindstillinger
 dns_hostname=Værtsnavn
@@ -211,6 +219,7 @@ dns_edomain='$1' er ikke et gyldigt domænenavn
 dns_esearch=Ingen domæner at søge angivet
 dns_hoststoo=Opdater værtsnavn i værtsadresser, hvis det ændres?
 dns_dhcp=Værtsnavn indstilles af DHCP-server?
+
 hosts_title=Værtsadresser
 hosts_active=Aktiveret?
 hosts_ip=IP-adresse
@@ -222,6 +231,7 @@ hosts_detail=Vært og adresser
 hosts_return=liste over værtsadresser
 hosts_ecannot=Du har ikke tilladelse til at redigere værtsadresser
 hosts_delete=Slet valgte hostadresser
+
 ipnodes_title=IPv6 værtadresser
 ipnodes_ip=IPv6-adresse
 ipnodes_host=værtsnavne
@@ -233,6 +243,7 @@ ipnodes_return=IPv6-hostadresseliste
 ipnodes_ecannot=Du har ikke tilladelse til at redigere IPv6-hostadresser
 ipnodes_none=Der er endnu ikke defineret nogen IPv6-hostadresser.
 ipnodes_delete=Slet valgte IPv6-hostadresser
+
 log_create_host=Oprettet værtadresse $1 
 log_delete_host=Slettet værtadresse $1 
 log_modify_host=Ændret værtadresse $1 
@@ -256,6 +267,7 @@ log_apply_bfics=Aktiverede $1 boot-time grænseflader
 log_create_route=Oprettet aktiv rute for $1 
 log_create_defroute=Oprettet aktiv standardrute
 log_delete_routes=Slet $1 aktive ruter
+
 acl_ifcs=Kan redigere netværksgrænseflader?
 acl_routes=Kan redigere routing og gateways?
 acl_dns=Kan redigere DNS-klientindstillinger?
@@ -273,6 +285,7 @@ acl_virt=Kan tilføje virtuelle grænseflader?
 acl_delete=Kan slette grænseflader?
 acl_hide=Skjul ikke-redigerbare grænseflader?
 acl_sysinfo=Vis tilgængelige netværksgrænseflader på Dashboard
+
 interfaces_title1=Vælg grænseflader. ..
 interfaces_all=Alle grænseflader. ..
 interfaces_sel=Valgte grænseflader
@@ -280,7 +293,9 @@ interfaces_ok=Okay
 interfaces_cancel=Afbestille
 interfaces_clear=Klar
 interfaces_title2=Vælg bruger. ..
+
 apply_ecannot=Du har ikke tilladelse til at anvende konfigurationen
+
 mod_egone=Interface er ikke længere aktiv!
 mod_title=Aktiv interface
 mod_desc=Grænsefladen $1 bruges til $2, og kan derfor ikke administreres ved hjælp af dette modul.
@@ -292,6 +307,7 @@ mod_pptpc=PPTP-forbindelsen $1
 mod_zones=en virtuel grænseflade til zone <tt>$1</tt>
 mod_virtualmin=Virtualmin-serveren <tt>$1</tt>
 mod_reseller=virtualmin-forhandleren <tt>$1</tt>
+
 range_edit=Rediger adresseområde
 range_create=Opret adresseområde
 range_header=Interfaceindstillinger for adresseinterval
@@ -307,13 +323,17 @@ range_eend=Manglende eller ugyldig IP-adresse, der slutter
 range_enum=Manglende eller ikke-numerisk første virtuelle interface nummer
 range_eclass=Start- og slutadresser skal være inden for det samme klasse C-netværk
 range_ebefore=Sluttadressen skal være højere end startadressen
+
 chooser_any=&lt;Any&gt;
 chooser_other=Andet ..
+
 dafics_err=Kunne ikke deaktivere grænseflader
 daifcs_enone=Ingen valgt
 daifcs_egone=Interface findes ikke længere!
+
 dbifcs_err=Kunne ikke slette grænseflader
 dbifcs_err2=Kunne ikke aktivere grænseflader
+
 hdelete_err=Kunne ikke slette værtsadresser
 hdelete_enone=Ingen valgt
 idelete_err=Kunne ikke slette IPv6-hostadresser

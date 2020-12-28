@@ -27,6 +27,7 @@ index_lvused=Espacio usado
 index_lvuse=Usado para
 index_snapof=(Instantánea de $1)
 index_thin=Grupo delgado de LVM para $1 LV
+
 lv_thin=Crear como LV delgado en grupo
 lv_thin2=Delgado provisto en piscina
 lv_nothin=Ninguno (crear como LV normal)
@@ -69,8 +70,10 @@ lv_pvfrom=Mover bloques del volumen físico
 lv_pvto=Al volumen físico
 lv_moveok=Mover bloques
 lv_return=volumen lógico
+
 resize_emounted=El sistema de archivos en este volumen lógico no se puede cambiar de tamaño mientras está montado
 resize_emounted2=El sistema de archivos en este volumen lógico no se puede reducir mientras está montado
+
 pv_force=¿Forzar la adición de volumen?
 pv_petotal2=Tamaño asignado
 pv_create2=Agregar al grupo de volumen
@@ -79,13 +82,16 @@ pv_resize=Cambiar el tamaño para que coincida con el dispositivo
 pv_err3=Error al cambiar el tamaño del volumen físico
 pv_lvs=Asignación por volúmenes lógicos.
 pv_egone=¡El volumen físico ya no existe!
+
 vg_petotal2=Tamaño asignado
 vg_egone=¡El grupo de volúmenes ya no existe!
+
 pvmove_err=Error al mover el volumen lógico
 pvmove_title=Mover volumen lógico
 pvmove_start=Mover el volumen lógico $1 de $2 a $3 ..
 pvmove_failed=.. movimiento fallido!
 pvmove_done=.. movimiento completo
+
 thin_title=Crear piscina delgada
 thin_desc=Un grupo delgado es un par de LV que se pueden usar para crear LV adicionales que pueden ser más grandes que las extensiones disponibles. El espacio solo se consume cuando es necesario, en lugar de cuando se crean los LV dentro del grupo. ADVERTENCIA: ¡se perderán todos los datos de los LV seleccionados!
 thin_header=Nuevos detalles de piscina delgada
@@ -97,6 +103,8 @@ thin_err=Error al crear un grupo delgado
 thin_esame=Ambos LV seleccionados son iguales
 thin_edata=Los datos seleccionados LV ya están en uso
 thin_emetadata=Los metadatos seleccionados LV ya están en uso
+
 log_rollback_lv=Instantánea revertida $1 
 log_resize_pv=Volumen físico redimensionado $1 en VG $2 
+
 blocks=bloques

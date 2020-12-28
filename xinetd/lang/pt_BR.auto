@@ -25,6 +25,7 @@ index_estart=O comando para iniciar o Xinetd $1 não existe. Talvez não esteja 
 index_noport=Desconhecido
 index_enable=Ativar selecionado
 index_disable=Desativar selecionado
+
 serv_create=Criar serviço de Internet
 serv_edit=Editar serviço de Internet
 serv_header1=Opções de rede de serviço
@@ -78,19 +79,24 @@ serv_enice=Nível agradável ausente ou inválido
 serv_ecps0=Número de conexões por segundo ausente ou inválido
 serv_ecps1=Atraso ausente ou inválido
 serv_etimes=Os horários de acesso devem estar no formato HH: MM-HH: MM
+
 sock_stream=Corrente
 sock_dgram=Datagrama
 sock_raw=Cru
 sock_seqpacket=Datagrama seqüencial
+
 proto_=Padrão
 proto_ip=IP (Protocolo da Internet)
 proto_tcp=TCP (Protocolo de Controle de Transmissão)
 proto_udp=UDP (User Datagram Protocol)
+
 restart_err=Falha ao aplicar as alterações
 restart_ekill=Falha ao enviar o sinal USR2 para o PID $1 : $2 
 restart_epid=Não está mais em execução
+
 start_err=Falha ao iniciar o xinetd
 start_estart=$1 falhou : $2 
+
 defs_title=Opções padrão
 defs_header=Opções padrão para serviços
 defs_log=Modo de log do Xinetd
@@ -115,6 +121,7 @@ defs_err=Falha ao salvar as opções padrão
 defs_efile=Nome de arquivo de log inválido ou ausente
 defs_esoft=Limite flexível ausente ou inválido
 defs_ehard=Limite físico ausente ou inválido
+
 log_create_serv=Criado $2 serviço $1 
 log_modify_serv=$2 serviço $1 modificado
 log_delete_serv=$2 serviço $1 excluído
@@ -125,5 +132,6 @@ log_enable=$1 serviços ativados
 log_disable=$1 serviços desativados
 log_enable_l=Serviços ativados $1 
 log_disable_l=Serviços desativados $1 
+
 config_dirdef=Arquivo de configuração do Xinetd
 config_dirto=Novo arquivo no diretório

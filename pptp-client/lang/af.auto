@@ -18,10 +18,12 @@ index_version=PPPd weergawe $1
 index_boot=Verbind by opstart:
 index_noboot=&lt;Moenie kontak maak nie
 index_bootdesc=Verander hierdie opsie om te bepaal of die geselekteerde PPTP VPN-verbinding met die opstartyd begin word of nie.
+
 disc_err=Kon nie die tonnel ontkoppel nie
 disc_egone=Nie meer aktief nie
 disc_ekill=Kon nie die pppd-proses doodmaak nie
 disc_done=Tunnel $1 is suksesvol ontkoppel.
+
 conn_err=Kon nie die tonnel koppel nie
 conn_egone=Tunnel bestaan nie meer nie
 cone_ealready=Reeds gekoppel
@@ -32,6 +34,7 @@ conn_ok=.. verbinding suksesvol geaktiveer met behulp van koppelvlak $1. U plaas
 conn_timeout=.. verbinding misluk! Gaan die onderstaande logboodskappe na vir inligting.
 conn_routes=Roetes met opdragte bygevoeg ..
 conn_mppe=Die MPPE-protokol vir VPN-kodering benodig PPP-dememon en kern-ondersteuning. Die bogenoemde foute dui egter daarop dat een of albei nie op u stelsel beskikbaar is nie. As die PPTP-bediener nie MPPE benodig nie, probeer dan om alle opsies wat daarmee verband hou, uit te skakel op die <a href='$1'>globale PPP-opsies</a> -bladsy.
+
 edit_title1=Voeg PPTP-tonnel by
 edit_title2=Wysig PPTP-tonnel
 edit_header=PPTP VPN-tonnelopsies
@@ -60,6 +63,7 @@ edit_file=PPP-opsielêer
 edit_none=Geen
 edit_global=Standaard globale lêer
 edit_ofile=Ander lêer ..
+
 save_err=Kon nie die tonnel stoor nie
 save_ename=Tonnelnaam ontbreek
 save_eserver=Bediener ontbreek of ongeldig om aan te sluit
@@ -75,6 +79,7 @@ save_egw2=Ongeldige poort vir gasheer op roete $1
 save_erename=Kon nie die tonnellêer hernoem nie
 save_eclash=Daar bestaan reeds 'n tonnel of PPP-eweknie met dieselfde naam
 save_efile=Ontbrekende of ongeldige PPP-opsielêer
+
 opts_title=Wêreldwye PPP-opsies
 opts_desc=Die instellings hieronder is geneem uit $1 en sal van toepassing wees op alle tonnels wat ingestel is om standaard globale PPP-opsielêer te gebruik.
 opts_header=PPP-opsies vir alle tonnels
@@ -84,6 +89,7 @@ opts_err=Kon nie globale PPP-opsies stoor nie
 opts_emtu=Ontbrekende of ongeldige maksimum stuurpakketgrootte
 opts_emru=Maksimum of maksimum pakkiegrootte ontbreek of ongeldig
 opts_msdesc=Die onderstaande opsies stel MPPE-kodering in, wat deur Windows VPN-bedieners gebruik word. MPPE benodig egter ondersteuning in sowel die PPP-daemon as die bedryfstelselkern.
+
 mppe_mppe-40=Gebruik u 40-bis MPPE-kodering?
 mppe_mppe-128=Gebruik 128-bit MPPE-kodering?
 mppe_mppe-stateless=Aktiveer MPeless-modus staatloos?
@@ -95,6 +101,7 @@ mppe_d1=toegelaat
 mppe_mppe-stateful=Aktiveer die MPPE-modus statief?
 mppe_old=Waarskuwing - die ou styl MPPE-riglyne $1 is in u konfigurasielêer gevind, selfs al ondersteun u PPP-dememon die nuwe-styl-riglyne.
 mppe_new=Waarskuwing - die nuwe styl MPPE-riglyne $1 is in u konfigurasielêer gevind, al ondersteun u PPP-demoon slegs die outydse riglyne.
+
 log_create=PPTP-tonnel $1 geskep
 log_update=Gewysigde PPTP-tonnel $1 
 log_delete=PPTP-tonnel $1 is uitgevee

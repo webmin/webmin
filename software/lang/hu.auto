@@ -10,25 +10,32 @@ index_echeckupdate=Nem található frissítési rendszer!
 index_filter=Csomagok szűrése
 index_filterclear=Törölje a szűrőt
 index_filtered=<tt>$1</tt> csomagok megjelenítése a (z) <tt>$2</tt> közül
+
 search_return=Keresési eredmények
 search_esearch=Nem írt be semmit, amit keresne!
 search_delete=Távolítsa el a kiválasztott csomagokat
 search_selall=Mindet kiválaszt
 search_invert=Fordított kijelölés
+
 edit_listdesc=Mutassa meg a csomagban található összes fájlt és azok aktuális ellenőrzési állapotát.
 edit_uninstdesc=Távolítsa el ezt a csomagot a rendszeréből.
 edit_egone=A csomag már nincs telepítve
+
 list_ok=rendben
 list_view=(Kilátás)
 list_eview=A (z) $1 megnyitása nem sikerült : $2 
+
 delete_rusure2=Biztosan törli a (z) $1 csomagot?
 delete_nodeps=Nem veszi figyelembe a függőségeket?
 delete_noscripts=Kihagyja az eltávolító szkripteket?
 delete_efile=Érvénytelen törölni kívánt ideiglenes fájl
 delete_purge=Megtisztítja a konfigurációs fájlokat?
 delete_depstoo=Eltávolította a fel nem használt függőségeket is?
+
 install_eupdate=Nincs megadva telepíthető csomag
+
 pkgadd_manager=System V csomagkezelő
+
 rpm_notriggers=Futtassa az aktivált szkripteket?
 rpm_ignoresize=Ellenőrizze a fájlrendszer méretét?
 rpm_search=Keressen rpmfind.net webhelyre:
@@ -37,10 +44,14 @@ rpm_find=Keressen rpmfind.net ..
 rpm_findrpm=A csomag fájlneve
 rpm_finddistro=terjesztés
 rpm_finddesc=Leírás
+
 bsd_manager=$1 Csomagkezelő
+
 slack_manager=Slackware csomagkezelő
 slack_edir=Hiányzó Slackware csomagok könyvtár $1 
+
 debian_manager=Debian DPKG
+
 log_install_package=Telepített $1 csomag
 log_install_apt_l=Telepített csomag (ok) $1 az APT-től
 log_install_apt=Telepítve: $2 csomag (ok) az APT-től
@@ -59,6 +70,7 @@ log_upgrade_yum_l=Frissített csomag (ok) $1 a YUM-tól
 log_upgrade_yum=Frissítve $2 csomag (ok) a YUM-tól
 log_check_rhn_l=A (z) $1 frissített csomag (ok) a Redhat Network-től
 log_check_rhn=Frissítve $2 csomag a (z) Redhat Network webhelyről
+
 rhn_input=Csomag a Redhat Network-től
 rhn_find=Keressen RHN ..
 rhn_install=Csomagok telepítése a $1 paranccsal.
@@ -86,6 +98,7 @@ rhn_eproxy=Hiányzik vagy érvénytelen proxyszerver
 rhn_skip=Hagyja ki a megfelelő csomagokat
 rhn_nonefound=Nincs elérhető csomag frissítésre.
 rhn_name=Redhat Network
+
 apt_input=Csomag az APT-től
 apt_install=Csomagok telepítése a $1 paranccsal.
 apt_ok=.. telepítés kész.
@@ -115,6 +128,7 @@ apt_repo_url=Lerakat alap URL
 apt_repo_path=Elosztási út összetevői
 apt_repo_eurl=Hiányzó vagy érvénytelen külső URL
 apt_repo_epath=Hiányzó terjesztési út
+
 yum_input=Csomag a YUM-tól
 yum_install=Csomagok telepítése a $1 paranccsal.
 yum_ok=.. telepítés kész.
@@ -145,6 +159,7 @@ yum_repo_ename=Hiányzik a lerakat neve
 yum_repo_eurl=Hiányzó vagy érvénytelen tároló URL
 yum_repo_egpg=GPG tanúsító fájl hiányzik vagy nem létezik
 yum_repo_efile=A lerakatfájl már létezik!
+
 urpmi_name=urpmi
 urpmi_input=Csomag az URPMI-től
 urpmi_find=Keresse meg az URPMI-t ..
@@ -159,6 +174,7 @@ urpmi_upgradeok=.. teljes.
 urpmi_install=Csomagok telepítése a $1 paranccsal.
 urpmi_ok=.. telepítés kész.
 urpmi_failed=.. a telepítés sikertelen!
+
 rpm_missing=Hiányzó
 rpm_checkfail=Nem sikerült $1 ellenőrzés
 rpm_md5=MD5
@@ -170,6 +186,7 @@ rpm_user=felhasználói tulajdon
 rpm_perm=jogosultságok
 rpm_group=csoporttulajdon
 rpm_erpm=RPM $1 nem található : $2 
+
 soft_reg=Normál fájl
 soft_dir=Könyvtár
 soft_spec=Különleges fájl
@@ -181,6 +198,7 @@ soft_euncompress=A fájl tömörítve van, de a <tt>kicsomagolás</tt> parancs a
 soft_euncmsg=A fájl kibontása nem sikerült : $1 
 soft_egzip=A fájl gzippelve van, de a gzip parancs nem található a rendszeren.
 soft_egzmsg=Nem sikerült feladni a fájlt : $1 
+
 aix_unknown=Ismeretlen
 aix_device=INPUT eszköz / könyvtár a szoftverhez
 aix_software=SZOFTVER telepítéséhez
@@ -198,6 +216,7 @@ aix_accept=ELFOGADJA az új licencszerződéseket?
 aix_license=Az új LICENSE-megállapodások előnézete?
 aix_clean=A tisztítási telepítés hibája?
 aix_manager=AIX csomagkezelő
+
 emerge_input=A Portage tárolóból
 emerge_find=Keresés ..
 emerge_install=Csomag telepítése a $1 paranccsal.
@@ -213,6 +232,7 @@ emerge_noreplace=Cserélje a meglévő csomagokat?
 emerge_onlydeps=Csak függőségeket telepít?
 emerge_title=Keresés a Portage-ban
 emerge_name=fuvarozás
+
 cygwin_fmissing=A fájl hiányzik
 cygwin_lmissing=Hiányzik a linkre mutató fájl
 cygwin_estat=Nem sikerült a stat fájl: $1 
@@ -222,6 +242,7 @@ cygwin_badpostscript=Figyelem: Ez a szkript nem tűnik futtatottnak
 cygwin_pkgexists=A $1 csomag már létezik.
 cygwin_warnuse=Figyelem: Ez nem egy hivatalos felület a Cygwin szoftver kezeléséhez. Használat csak saját felelősségre.
 cygwin_edb=Hiányzó Cygwin csomag adatbázis $1 
+
 deletes_err=Nem sikerült a csomagok törlése
 deletes_enone=Nincs kiválasztva csomag
 deletes_title=Törölje a csomagokat
@@ -232,6 +253,7 @@ deletes_failed2=Az eltávolítás sikertelen : $1
 deletes_success2=.. az eltávolítás befejeződött.
 deletes_rusure=Biztosan eltávolítani akarja a (z) $1 csomagokat?
 deletes_ok=Törölje őket
+
 csw_input=Csomag a CSW-től
 csw_install=Csomagok telepítése a $1 paranccsal.
 csw_ok=.. telepítés kész.
@@ -246,20 +268,24 @@ csw_name=CSW
 csw_form=Frissítési csomagok
 csw_upgrade=Frissítse az összes telepített csomagot
 csw_updatedesc=Az összes telepített csomag frissítése a $1 paranccsal.
+
 missing_msg=A $1 csomagot a Webmin automatikusan telepítheti a $2 használatával.
 missing_now=Telepítés most
+
 find_title=Csomag keresése
 find_search=Keressen megfelelő csomagokat:
 find_name=Név
 find_version=Változat
 find_desc=Leírás
 find_none=Nem található a keresésnek megfelelő csomag.
+
 msi_users=Tegye elérhetővé az új alkalmazást a
 msi_users0=Senki
 msi_users1=Jelenlegi felhasználó
 msi_users2=Minden felhasználó
 msi_missing=Nem létezik
 msi_size=Rossz méret
+
 hpux_create_target_path=Hozzon létre célútvonalat?
 hpux_mount_all_filesystems=Összes fájlrendszert csatlakoztatni?
 hpux_reinstall=Reinstall?
@@ -275,6 +301,7 @@ hpux_enforce_dependencies=A függőségeket érvényesíteni?
 hpux_enforce_scripts=A szkriptek végrehajtása?
 hpux_enforce_dsa=A lemezterület-elemzés végrehajtása?
 hpux_root=Gyökérkönyvtár
+
 ports_install=A (z) $1 FreeBSD portok telepítése ..
 ports_failed=.. néhány port meghiúsult
 ports_ok=.. telepítés kész
@@ -285,18 +312,22 @@ ports_form=Frissítse a portok adatbázisát
 ports_apply=Töltse le a legújabb pillanatfelvételt
 ports_upgrade=Portok pillanatképének letöltése
 ports_running=$1 futó parancs
+
 pkg_install=A (z) $1 FreeBSD csomagok telepítése ..
 pkg_failed=.. néhány csomag meghiúsult
 pkg_ok=.. telepítés kész
 pkg_find=Keresés pkgng
 pkg_input=Csomag a pkgng-től
+
 pkgsrc_install=A $1 pkgsrc csomagok telepítése ..
 pkgsrc_failed=.. néhány csomag meghiúsult
 pkgsrc_ok=.. telepítés kész
 pkgsrc_find=Keresés pkgng
 pkgsrc_input=Csomag a pkgsrc-től
+
 log_IPKG_update=Frissített IPKG adatbázis
 log_IPKG_upgrade=Frissített telepített IPKG csomagok
+
 IPKG_name=ipkg
 IPKG_input=Csomag az IPKG-től
 IPKG_find=Böngészés az IPKG-n ..

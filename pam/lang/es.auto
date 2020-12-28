@@ -24,11 +24,14 @@ desc_common-account=Verificación de cuenta común
 desc_common-auth=Autenticación común
 desc_common-password=Cambio de contraseña común
 desc_common-session=Configuración de sesión común
+
 edit_file=Archivo de configuración
 edit_addinc=Agregar servicio incluido
 edit_inc=Incluir servicio $1 
 edit_iheader=Servicios PAM incluidos
+
 pam_foreground.so=Configuración de la consola
+
 unix_nullok_secure=¿Aceptar contraseñas nulas en TTY seguros?
 unix_min=Longitud mínima de contraseña
 unix_nomin=Ninguna
@@ -37,10 +40,12 @@ unix_nomax=Sin límite
 unix_obscure=¿Prevenir el uso de contraseñas fáciles?
 unix_emin=Longitud mínima de contraseña faltante o inválida
 unix_emax=Longitud máxima de contraseña faltante o inválida
+
 log_inc_create=Se incluye incluir $1 para el servicio $2 
 log_inc_modify=Modificado incluye $1 para el servicio $2 
 log_inc_delete=Se eliminó incluir $1 para el servicio $2 
 log_incs=Actualizado incluye para el servicio $1 
+
 inc_edit=Editar servicio incluido
 inc_create=Crear servicio incluido
 inc_header=Detalles del servicio PAM incluidos

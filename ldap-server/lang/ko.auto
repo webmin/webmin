@@ -16,6 +16,7 @@ index_setupdesc=LDAP 서버의 데이터베이스에 아직 루트 DN $1 이 (�
 index_setup=루트 DN 생성
 index_permsdesc=LDAP 서버 데이터 디렉토리 $1 에 올바른 사용자 $2 이 (가) 소유하지 않은 파일이 포함되어 있으므로 제대로 시작되지 않을 수 있습니다. 그러나 Webmin은 아래 버튼을 클릭하여이 문제를 해결할 수 있습니다.
 index_perms=소유권 수정
+
 connect_eserver=LDAP 서버 $1 이 (가) 없습니다
 connect_euser=구성된대로 로그인 할 사용자가 없습니다
 connect_epass=로그인 할 비밀번호가 구성되지 않았습니다
@@ -28,6 +29,7 @@ connect_eldap=포트 $2 에서 LDAP 서버 $1 에 연결하지 못했습니다.
 connect_essl=LDAP 서버 $1 (으)로 TLS 암호화를 시작하지 못했습니다  : $2 
 connect_elogin=$2 (으)로 LDAP 서버 $1 에 로그인하지 못했습니다  : $3 
 connect_cpan=CPAN에서 <tt>$1</tt> Perl 모듈 <a href='$2'>자동 설치</a>를 할 수 있습니다.
+
 slapd_title=OpenLDAP 서버 구성
 ldif_title=OpenLDAP 서버 구성
 slapd_header=글로벌 LDAP 서버 옵션
@@ -76,6 +78,7 @@ slapd_protos=수락 할 LDAP 연결
 slapd_ldap=네트워크를 통한 LDAP
 slapd_ldaps=SSL을 통한 LDAP
 slapd_ldapi=유닉스 소켓 파일
+
 schema_title=스키마 관리
 schema_file=이름
 schema_desc=기술
@@ -93,6 +96,7 @@ schema_edesc=이 페이지에서 LDAP 스키마 파일을 수동으로 편집 �
 schema_return=스키마 목록
 schema_emove=이동할 스키마 파일을 찾을 수 없습니다!
 schema_ecannot=LDAP 스키마를 관리 할 수 없습니다
+
 acl_title=LDAP 액세스 제어
 acl_ecannot=LDAP 액세스 제어를 구성 할 수 없습니다
 acl_what=사물
@@ -103,6 +107,7 @@ acl_none=아직 액세스 제어 규칙이 정의되지 않았습니다. LDAP �
 acl_delete=선택된 규칙 삭제
 acl_add=새로운 액세스 제어 규칙을 추가하십시오.
 acl_return=액세스 제어 규칙
+
 browser_title=데이터베이스 찾아보기
 browser_econn=LDAP 브라우저를 사용할 수 없습니다  : $1 
 browser_ecannot=LDAP 데이터베이스를 찾아 볼 수 없습니다
@@ -136,24 +141,30 @@ browser_nomatch=$1 와 일치하는 개체가 없습니다.
 browser_search=일치하는 객체 찾기  :
 browser_search2=일치하는 객체 표시  :
 browser_sok=검색
+
 save_err=속성을 변경하지 못했습니다
 save_ebase=데이터베이스에서 $1 개체를 가져올 수 없습니다
 save_emodify=$1 에서 $2 의 LDAP 수정에 실패했습니다  : $3 
 save_enone=입력 된 값이 없습니다
+
 add_err=속성을 추가하지 못했습니다
 add_eadd=속성 이름이 없거나 잘못되었습니다
 add_evalue=결 측값
 add_emodify=$1 을 (를) $1 에 추가하지 못했습니다  : $3 
+
 delete_err=속성을 제거하지 못했습니다
 delete_enone=선택된 사항 없음
 delete_emodify=$1 에서 $2 의 LDAP 삭제에 실패했습니다  : $3 
+
 sdelete_err=객체를 삭제하지 못했습니다.
 sdelete_edn=$1 개체를 찾을 수 없습니다
 sdelete_edel=$1 의 LDAP 삭제 실패  : $2 
+
 rename_err=개체 이름을 바꾸지 못했습니다.
 rename_eget=DN이 $1 인 개체를 찾을 수 없습니다
 rename_enew=새 이름이 유효하지 않은 것 같습니다
 rename_erename=$1 에서 $2 (으) 로의 LDAP newdn이 실패했습니다  : $3 
+
 oadd_title=객체 생성
 oadd_header=새로운 LDAP 객체 정보
 oadd_base=부모 개체 DN
@@ -170,6 +181,7 @@ oadd_eget2=$1 과 (와)의 충돌을 확인하지 못했습니다  : $2
 oadd_eclash=DN이 $1 인 개체가 이미 존재합니다
 oadd_eadd=$1 의 LDAP 추가 실패  : $2 
 oadd_err=새 개체를 만들지 못했습니다
+
 create_title=트리 만들기
 create_ecannot=새 나무를 만들 수 없습니다
 create_desc=이 페이지는 데이터베이스에서 새 트리의 기반이 될 DN을 작성하는 편리한 방법을 제공했습니다. 또한 트리 아래에 사용자 개체의 템플릿으로 사용자 또는 전자 메일 별칭 예를 만들 수도 있습니다.
@@ -191,18 +203,23 @@ create_done=.. 완료
 create_doingex=DN $1 을 사용하여 예제 개체 만들기
 create_edoingex=.. 실패 : $1. 그러나 트리를 계속 사용할 수 있습니다.
 create_eoc=새로운 DN에 적합한 객체 클래스를 찾을 수 없습니다
+
 eunknown=알수없는 오류
+
 apply_err=구성을 적용하지 못했습니다
 apply_ecmd=$1 실패  : $2 
 apply_ecannot=구성을 적용 할 수 없습니다
+
 stop_err=LDAP 서버를 중지하지 못했습니다
 stop_ecmd=$1 실패  : $2 
 stop_egone=더 이상 달리지 않습니다!
 stop_ekill=강제 종료 프로세스  : $1 
 stop_ecannot=LDAP 서버를 중지 할 수 없습니다
+
 start_err=LDAP 서버를 시작하지 못했습니다
 start_ecmd=$1 실패  : $2 
 start_ecannot=LDAP 서버를 시작할 수 없습니다
+
 log_create_dn=생성 된 개체 $1 
 log_delete_dn=삭제 된 개체 $1 
 log_rename_dn=이름이 변경된 개체 $1 
@@ -234,6 +251,7 @@ log_up_access=$1 에 대한 액세스 제어 규칙을 이동했습니다.
 log_down_access=$1 에 대한 액세스 제어 규칙을 아래로 이동
 log_delete_accesses=$1 액세스 제어 규칙을 삭제했습니다.
 log_all=모든 사물
+
 gencert_title=SSL 인증서 생성
 gencert_header=새로운 SSL 인증서 세부 사항
 gencert_create=인증서 작성
@@ -245,7 +263,9 @@ gencert_dir=예배 규칙서
 gencert_err=인증서를 생성하지 못했습니다
 gencert_edest=대상 디렉토리가 없습니다
 gencert_epath=LDAP 서버 구성의 인증서 및 키 파일은 절대 경로 여야합니다.
+
 perms_err=파일 소유권을 수정하지 못했습니다
+
 acl_slapd=LDAP 서버를 구성 할 수 있습니까?
 acl_ldif=LDAP 서버를 구성 할 수 있습니까?
 acl_schema=스키마를 관리 할 수 있습니까?
@@ -254,6 +274,7 @@ acl_browser=데이터베이스를 찾아보고 편집 할 수 있습니까?
 acl_create=새 나무를 만들 수 있습니까?
 acl_start=LDAP 서버를 시작하고 중지 할 수 있습니까?
 acl_apply=구성 변경을 적용 할 수 있습니까?
+
 access_desc=$1 에 의한 $2 
 access_self=본인
 access_users=인증 된 사용자
@@ -273,6 +294,7 @@ access_lcompare=비교
 access_lsearch=검색
 access_lread=읽다
 access_lwrite=쓰다
+
 eacl_title1=액세스 제어 규칙 작성
 eacl_title2=액세스 제어 규칙 편집
 eacl_header=LDAP 데이터베이스 액세스 제어 규칙 세부 사항

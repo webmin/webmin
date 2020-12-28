@@ -10,6 +10,7 @@ index_allow=cron ジョブへのユーザのアクセス制御
 index_return=cronのリスト
 index_env=環境変数
 index_move=移動
+
 edit_title=cron ジョブの編集
 create_title=cron ジョブの作成
 edit_ecannot=このユーザの cron ジョブは編集できません
@@ -38,6 +39,7 @@ edit_special_weekly=毎週(日曜)
 edit_special_monthly=毎月(1日)
 edit_special_yearly=毎年(1月1日)
 edit_special_reboot=システム起動時
+
 save_err=cron ジョブを保存できませんでした
 save_ecmd=実行するコマンドが入力されていません
 save_euser=ユーザを選択する必要があります
@@ -45,6 +47,7 @@ save_euser2=ユーザ '$1' は存在しません
 save_eallow=ユーザ '$1' は cron ジョブにアクセスできません
 save_ecannot='$1' の cron ジョブは作成または変更できません
 save_enone=実行する $1 が選択されていません
+
 allow_title=cron アクセス制御
 allow_desc=この画面から、ユーザが作成し実行できるcronジョブの制御をします。
 allow_ecannot=cron ジョブへのユーザのアクセスは制御できません
@@ -53,6 +56,7 @@ allow_all2=root 以外のすべてのユーザを拒否
 allow_all3=すべてのユーザを許可
 allow_allow=リスト内のユーザのみ許可
 allow_deny=リスト内のユーザのみ拒否
+
 env_title1=環境変数を編集
 env_title2=環境変数の作成
 env_name=変数名
@@ -66,10 +70,12 @@ env_order=注意 - この環境変数の設定はモジュールのメインペ�
 env_where=環境変数の追加
 env_top=ユーザ用のcronジョブの前
 env_bot=全てのcronジョブの後
+
 exec_title=cron ジョブの実行
 exec_ecannot=このユーザのcron ジョブは実行できません
 exec_cmd=コマンド $1からの出力..
 exec_none=作成された出力はありません
+
 acl_users=cron ジョブを編集できるユーザ
 acl_all=すべてのユーザ
 acl_this=現在のWebminユーザ
@@ -78,6 +84,7 @@ acl_except=これらのユーザ以外のすべて
 acl_control=cron ジョブへのユーザ アクセスを制御しますか？
 acl_uid=UID範囲内のユーザ
 acl_gid=プライマリグループのユーザ
+
 log_modify=$1 の cron  ジョブを変更しました
 log_modify_l=ユーザ $1のcron  ジョブ "$2" を変更しました
 log_create=$1 の cron  ジョブを作成しました
@@ -90,12 +97,15 @@ log_env_create=$1用の環境変数が作成されました
 log_env_modify=$1用の環境変数が変更されました
 log_env_delete=$1用の環境変数が削除されました
 log_move=$1のcronジョブを移動しました
+
 ecopy=新しいcronの設定内にエラーが発見されました : $1 $2
+
 when_min=毎分
 when_hour=毎時 $1後
 when_day=毎日 $2:$1
 when_month=毎月 $3日の $2:$1
 when_weekday=毎$3 $2:$1
 when_cron=時刻 $1 にcronする
+
 move_err=cronジョブの移動に失敗しました
 move_etype=このジョブは移動できません

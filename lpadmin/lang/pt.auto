@@ -10,6 +10,7 @@ index_style=Sistema de impressão: $1
 index_cluster=Servidores de cluster
 index_clusterdesc=Clique neste botão para configurar servidores Webmin adicionais nos quais as impressoras serão criadas, atualizadas e excluídas.
 index_delete=Excluir impressoras selecionadas
+
 style_solaris=Solaris
 style_linux=Linux LPR
 style_freebsd=FreeBSD LPR
@@ -19,10 +20,12 @@ style_unixware=UnixWare
 style_cups=CUPS
 style_irix=IRIX
 style_aix=AIX
+
 edit_unlimited=Ilimitado
 edit_direct=Conexão TCP direta
 edit_dport=Porta
 edit_check=Verifique se o servidor remoto está ativo?
+
 save_erport=A porta remota '$1' não é válida
 save_edhost=O host direto '$1' não existe
 save_edport=Porta direta ausente ou inválida
@@ -30,6 +33,7 @@ save_evalid=O sistema de impressão não permitiu esta impressora
 save_errslave=A impressora criou OK neste sistema, mas ocorreram os seguintes erros nos sistemas de cluster : $1 
 save_egone=Nenhuma impressora chamada '$1' foi encontrada
 save_errdelslave=A impressora excluiu OK neste sistema, mas ocorreram os seguintes erros nos sistemas de cluster : $1 
+
 jobs_cancelview=Clique em um ID do trabalho na lista acima para cancelar ou clique no tamanho do trabalho para visualizá-lo.
 jobs_all=Cancelar todos os trabalhos de impressão
 jobs_bytes=bytes
@@ -37,11 +41,15 @@ jobs_test=Imprimir página de teste
 jobs_cancelsel=Cancelar trabalhos selecionados
 jobs_on=Na impressora $1 
 jobs_return=lista de trabalhos de impressão
+
 view_ecannot=Você não pode visualizar este trabalho de impressão
 view_egone=Este trabalho de impressão não existe mais
+
 restart_ecannot=Você não tem permissão para reiniciar o planejador
 restart_err=Falha ao reiniciar o planejador
+
 redhat_printer2=Modelo e driver da impressora
+
 suse_none=Nenhum
 suse_nonemsg=Impressora Postscript ou de texto
 suse_prog=Programa
@@ -58,7 +66,9 @@ suse_extra=Opções extras de ghostscript
 suse_yast2=Driver YAST2
 suse_edriver=Nenhum tipo de impressora selecionado
 suse_eres=Resolução ausente ou inválida
+
 estop=Falha ao parar lpd : $1 
+
 acl_restart=Reiniciar apenas
 acl_listed=Somente em impressoras selecionadas.
 acl_pall=Todas as impressoras
@@ -70,6 +80,7 @@ acl_user_all=Todos os usuários
 acl_user_this=Usuário atual do Webmin
 acl_delete=Pode excluir impressoras?
 acl_cluster=Pode gerenciar o cluster de impressoras?
+
 log_stop=Programador de impressão parado
 log_start=Programador de impressão iniciado
 log_restart=Programador de impressão reiniciado
@@ -82,37 +93,45 @@ log_delete=Impressora excluída $1 em $2
 log_create_l=Impressora $3 criada $1 em $2 
 log_modify_l=$3 impressora $1 modificada em $2 modificada
 log_delete_l=$3 impressora $1 excluída em $2 
+
 linux_paralel=Porta paralela $1 
 linux_serial=Porta serial $1 (COM $1)
 linux_null=Dispositivo nulo
 linux_usb=Impressora USB $1 
 linux_ecmd=O comando $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão Linux não está instalado.
 linux_espool=O diretório de spool $1 não existe no seu sistema, o que indica que o sistema de impressão Linux não está instalado.
+
 freebsd_paralel=Porta Paralela
 freebsd_serial=Porta serial $1 (COM $1)
 freebsd_ecmd=O comando $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão FreeBSD não está instalado.
 freebsd_espool=O diretório de spool $1 não existe no seu sistema, o que indica que o sistema de impressão FreeBSD não está instalado.
+
 openbsd_paralel=Porta Paralela
 openbsd_serial=Porta serial $1 (COM $1)
+
 unixware_paralel=Porta paralela $1 
 unixware_serial=Porta serial $1 
 unixware_null=Dispositivo nulo
 unixware_ecmd=O comando $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão UnixWare não está instalado.
+
 hpux_paralel=Paralelo $1 
 hpux_serial=$1 serial
 hpux_null=Dispositivo nulo
 hpux_ecmd=O comando $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão HPUX não está instalado.
 hpux_eiface=O diretório de scripts de interface $1 não existe no seu sistema, o que indica que o sistema de impressão HPUX não está instalado.
+
 lprng_paralel=Porta paralela $1 
 lprng_serial=Porta serial $1 (COM $1)
 lprng_null=Dispositivo nulo
 lprng_ecmd=O comando $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão LPRng não está instalado.
 lprng_espool=O diretório de spool $1 não existe no seu sistema, o que indica que o sistema de impressão LPRng não está instalado.
+
 solaris_paralel=Porta Paralela
 solaris_uparalel=Porta paralela Ultra 5/10
 solaris_serial=Porta serial $1 
 solaris_null=Dispositivo nulo
 solaris_ecmd=O comando $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão Solaris não está instalado.
+
 test_title=Imprimir página de teste
 test_ecannot=Você não tem permissão para imprimir páginas de teste
 test_desc=Este formulário permite imprimir uma página de teste para a impressora $1. Selecione o tipo de página que você deseja imprimir :
@@ -124,6 +143,7 @@ test_print=Imprimir página
 test_exec=Imprimindo página de teste com o comando $1 ..
 test_failed=.. comando falhou!
 test_ok=.. comando concluído.
+
 cups_none=Nenhum
 cups_nonemsg=Impressora remota ou bruta
 cups_prog=Programa
@@ -131,11 +151,14 @@ cups_driver=Driver CUPS
 cups_eprog='$1' não é um programa válido
 cups_opts=Opções para $1 
 cups_ecmd=O comando $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão CUPS não está instalado.
+
 irix_ecmd=O comando $1 não foi encontrado no seu sistema, o que indica que o sistema de impressão IRIX não está instalado.
 irix_eiface=O diretório de scripts de interface $1 não existe no seu sistema, o que indica que o sistema de impressão IRIX não está instalado.
+
 aix_port=Porta da impressora $1 
 aix_edesc=Descrição inválida - somente letras e números são permitidos e não há espaços
 aix_ecmd=O servidor de impressora AIX $1 não foi encontrado. Talvez não esteja instalado ou outro sistema de impressão esteja em uso.
+
 cluster_title=Servidores de impressora de cluster
 cluster_none=Ainda não foram adicionados servidores ao cluster da impressora.
 cluster_host=nome de anfitrião
@@ -147,6 +170,7 @@ cluster_need=Você deve adicionar servidores com login e senha no módulo Webmin
 cluster_return=servidores de cluster
 cluster_delete=Remover Selecionado
 cluster_ecannot=Você não tem permissão para gerenciar servidores de impressora em cluster
+
 add_title=Adicionar servidores
 add_msg=Adicionando $1 ..
 add_gmsg=Adicionando servidores no grupo $1 ..

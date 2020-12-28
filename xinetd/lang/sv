@@ -20,6 +20,7 @@ index_applymsg=Tryck på denna knapp för att ta dessa inställningar i drift ge
 index_start=Starta Xinetd
 index_startmsg=Tryck på denna knapp för att starta Xinetd-servern med dessa inställningar.
 index_econf=Inställningsfilen $1 för Xinetd finns inte. Den kanske inte har installerats, eller också är dina <a href='$2'>modulinställningar</a> felaktiga.
+
 serv_create=Lägg till Internettjänst
 serv_edit=Ändra Internettjänst
 serv_header1=Nätverksinställningar för tjänsten
@@ -73,18 +74,23 @@ serv_enice=Nice-nivå saknas eller är felaktig
 serv_ecps0=Antal uppkopplingar per sekund saknas eller är felaktigt
 serv_ecps1=Fördröjningstid saknas eller är felaktig
 serv_etimes=Åtkomsttider måste anges på formatet TT:MM-TT:MM
+
 sock_stream=Ström
 sock_dgram=Datagram
 sock_raw=Rått
 sock_seqpacket=Sekventiellt datagram
+
 proto_=Standard
 proto_ip=IP (Internet Protocol)
 proto_tcp=TCP (Transmission Control Protocol)
 proto_udp=UDP (User Datagram Protocol)
+
 restart_err=Det gick inte att ta i drift
 restart_ekill=Det gick inte att skicka HUP-signal till PID $1: $2
+
 start_err=Det gick inte att starta xinetd
 start_estart=$1 gick inte: $2
+
 defs_title=Standardinställningar
 defs_header=Standardinställningar för tjänster
 defs_log=Loggningsmod för Xinetd
@@ -109,6 +115,7 @@ defs_err=Det gick inte att spara inställningarna
 defs_efile=Loggfilnamn saknas eller är felaktigt
 defs_esoft=Mjuk begränsning saknas eller är felaktig
 defs_ehard=Hård begränsning saknas eller är felaktig
+
 log_create_serv=Lade till $2 tjänsten $1
 log_modify_serv=Modifierade $2 tjänsten $1
 log_delete_serv=Tog bort $2 tjänsten $1

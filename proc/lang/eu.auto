@@ -16,6 +16,7 @@ index_loadname=PUZaren kargaren batez bestekoak:
 index_loadnums=$1 (1 min), $2 (5 min), $3 (15 min)
 index_cpuname=CPU mota:
 index_inzone=$1 zonaldean
+
 pid=NAN
 owner=Jabea
 command=Komando
@@ -27,6 +28,7 @@ nice=Maila polita
 stime=Hasita
 sclass=IO programazio klasea
 sprio=IO lehentasuna
+
 search_user=Jabeak
 search_match=lotu
 search_cpupc=$1% CPU baino gehiago erabiliz
@@ -43,6 +45,7 @@ search_sigkill=Hiltzeko prozesuak
 search_port=Portua erabiliz
 search_protocol=protokoloa
 search_ip=IP helbidea erabiliz
+
 run_command=Exekutatzeko agindua
 run_submit=Korrika egin
 run_mode=Exekutatzeko modua
@@ -56,6 +59,7 @@ run_ecannot=Ezin duzu komandoak exekutatu
 run_as=Erabiltzaile gisa exekutatu
 run_euser=Erabiltzaile-izena falta edo baliogabea
 run_euser2=Ezin duzu hautatutako erabiltzaile gisa komandoak exekutatu
+
 edit_title=Prozesuen informazioa
 edit_gone=Prozesu hau ez da exekutatzen
 edit_sub=Subprocesses
@@ -75,12 +79,15 @@ edit_sigcont=Jarraitu
 edit_open=Fitxategiak eta Konexioak
 edit_trace=Arrasto prozesua
 edit_return=prozesuaren xehetasunak
+
 kill_err=Huts egin du $1 seinalea bidaltzean $2 prozesatzeko
 kill_title=Bidali seinalea
 kill_sent=bidalitako
 kill_ecannot=Ez duzu prozesuak hiltzen uzten
+
 renice_err=Ezin izan da $1 prozesua berriz aldatu
 renice_ecannot=Ezin duzu prozesuak uko egin
+
 linux_pri=Lehentasuna
 linux_tty=TTY
 linux_status=Egoera
@@ -91,25 +98,30 @@ linux_ruser=Benetako erabiltzailea
 linux_rgroup=Benetako taldea
 linux_pgid=Prozesuaren taldearen IDa
 linux_stime=Hasita
+
 linuxstat_R=carrera
 linuxstat_S=Lotan
 linuxstat_D=Lo sakona
 linuxstat_T=gelditu
 linuxstat_Z=Zombie
+
 linux_real=Denbora erreala
 linux_be=Ahalegin onena
 linux_idle=idle
+
 freebsd_ruser=Benetako erabiltzailea
 freebsd_rgroup=Benetako taldea
 freebsd_tty=TTY
 freebsd_pgid=Prozesu taldea
 freebsd_stime=Hasita
 freebsd_lim=Memoriaren muga
+
 hpux_pri=Lehentasuna
 hpux_tty=TTY
 hpux_status=Egoera
 hpux_wchan=Zain
 hpux_stime=Hasita
+
 hpuxstat_0=existitzen ez
 hpuxstat_S=Lotan
 hpuxstat_W=itxarote
@@ -118,7 +130,9 @@ hpuxstat_I=Bitarteko
 hpuxstat_Z=Zombie
 hpuxstat_T=gelditu
 hpuxstat_G=Hazten ari
+
 macos_tty=TTY
+
 sysv_group=Group
 sysv_ruser=Benetako erabiltzailea
 sysv_rgroup=Benetako taldea
@@ -127,12 +141,14 @@ sysv_tty=TTY
 sysv_stime=Hasita
 sysv_task=Zereginen IDa
 sysv_zone=Zonaren izena
+
 log_run=Ran agindua "$1"
 log_kill=$1 seinalea bidali da $2 prozesatzeko
 log_kills=Bidali $1 eta $2 prozesuen seinalea
 log_kill_l=$1 seinalea bidali da $2 prozesatzeko
 log_kills_l=$1 seinalea bidali da prozesura $2 ra
 log_renice=Prozesuaren $2 tik $1 era lehentasuna aldatu da
+
 acl_manage=Erabiltzaile gisa prozesuak kudeatu
 acl_manage_def=Uneko Webmin erabiltzailea
 acl_edit=Prozesuak hil eta uka ditzakezu?
@@ -142,11 +158,13 @@ acl_who=Erabiltzaileentzako prozesuak kudeatu ditzake
 acl_who0=Erabiltzaile guztiak
 acl_who1=Uneko Webmin erabiltzailea
 acl_who2=Zerrendatutako erabiltzaileak ..
+
 kill_kill=Hiltzeko prozesua
 kill_term=Amaitu
 kill_hup=Berriro hasi
 kill_stop=Gelditu
 kill_cont=Jarraitu
+
 open_title=Ireki fitxategiak eta konexioak
 open_proc=$1 prozesurako (PID $2)
 open_header1=Ireki fitxategiak
@@ -170,6 +188,7 @@ open_blk=Bloke berezia
 open_size=Fitxategiaren tamaina
 open_inode=inode
 open_file=Path
+
 trace_title=Arrasto prozesua
 trace_start=Sistemaren deiaren arrastoa abiarazteko $1 ..
 trace_doing=$1 erako deien sistemaren arrastoa :
@@ -180,5 +199,7 @@ trace_syscalls=Arrastatze sistemaren deiak:
 trace_all=guztiak
 trace_sel=Zerrendatutako ..
 trace_change=Aldaketa
+
 windows_threads=Hariak prozesuan
+
 syslog_dmesg=Kernel mezuak

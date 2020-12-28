@@ -5,6 +5,7 @@ index_user=Ändra lösenord för användare:
 index_euseradmin=Den här modulen kan inte användas eftersom modulen användare och grupper inte är installerad eller inte stöds på ditt system.
 index_toomany=Det finns för många användare att visa på ditt system. Ange namnet på användaren vars lösenord du vill ändra nedan ..
 index_none=Du har inte tillgång till några användare för att ändra sina lösenord.
+
 passwd_title=Ändra lösenord
 passwd_header=Ändra användarlösenord för Unix
 passwd_for=Ändra lösenord för
@@ -23,7 +24,9 @@ passwd_erepeat=Nya lösenord är inte desamma
 passwd_ecmd=$1 misslyckades : $2 
 passwd_ok=Lösenordet för användaren $1 har ändrats. Om detta är din nuvarande Webmin-användare kan du tvingas logga in igen.
 passwd_ok2=Lösenordet för användaren $1 har ändrats.
+
 log_passwd=Ändrat lösenord för användare $1 
+
 acl_repeat=Måste du ange nytt lösenord igen?
 acl_self=Låt alltid ditt eget lösenord ändras?
 acl_old=Måste du ange gammalt lösenord?

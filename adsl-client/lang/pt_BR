@@ -16,6 +16,7 @@ index_cancel=Cancelar Conexão
 index_canceldesc=O cliente ADSL está tentando estabelecer conexão. Clique nesse botão para cancelar a tentativa com o comando $1.
 index_cdemand=Cancelar sob-demanda
 index_cdemanddesc=O cliente ADSL está atualmente aguardando uma requisição de conexão sob-demanda. Clique neste botão para parar isto com o comando $1
+
 index_header=Configuração das opções do cliente ADSL
 index_desc=As configurações abaixo se aplicam para qualquer conexão ADSL nova iniciada pelo seu sistema. Se você alterá-las, a conexão deverá ser encerrada e re-iniciada para que as modificações tenham efeito.
 index_eth=Interface Ethernet
@@ -36,11 +37,13 @@ index_fw_standalone=Para host simples
 index_fw_masquerade=Para gateway NAT
 index_connect=Tempo para tentativa de conexão
 index_forever=Sempre
+
 start_err=Falha em iniciar a conexão ADSL
 start_title=Iniciar ADSL
 start_ip=A conexão ADSL está estabelecida com o endereço de IP $1.
 start_demand=Sua conexão ADSL só será iniciada quando necessário, uma vez que o modo de conexão sob-demanda está habilitado.
 start_bg=A conexão ADSL não foi iniciada em 20 segundos. O cliente ADSL continuará tentando conectar em plano de fundo até que a conexão seja estabelecida.
+
 save_err=Falha ao salvar as configurações ADSL
 save_eeth=Está faltando informar a interface de rede ou a interface informada está inválida
 save_etimeout=Está faltando informar o timeout sob-demanda ou o valor informado está inválido
@@ -49,10 +52,12 @@ save_econnect=Está faltando informar o timeout para a conexão, ou o valor info
 save_emss=Está faltando informar o tamanho máximo do pacote ou o valor informado está inválido
 save_title=Salvar configurações
 save_desc=Sua configuração de cliente ADSL foi salva com sucesso, mas não será usada até que você re-conecte
+
 stop_err=Falha em desconectar a conexão ADSL
 stop_title=Desativar ADSL
 stop_ok=Sua conexão ADSL foi desligada com sucesso.
 stop_failed=Sua conexão ADSL ainda está ativa por alguma razão!
+
 log_save=Salvar configurações de cliente
 log_stop=Desativar ADSL
 log_start=ADSL iniciado

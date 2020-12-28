@@ -29,12 +29,14 @@ index_fd=Cấu hình tệp Daemon
 index_groups=Cấu hình nhóm Bacula
 index_actions=Hành động sao lưu và khôi phục
 index_ocmin=Được đóng góp bởi <a href=$2 target=_new>Linmin</a> </a>
+
 connect_emysql=Không thể tải trình điều khiển DBI cơ sở dữ liệu $1 
 connect_elogin=Không thể đăng nhập vào cơ sở dữ liệu $1:$2.
 connect_equery=Cơ sở dữ liệu $1 dường như không chứa các bảng Bacula.
 connect_equery2=Điều này có thể là do mô-đun SQLite Perl được cài đặt quá mới và không hỗ trợ định dạng cơ sở dữ liệu SQLite cũ hơn được sử dụng bởi Bacula.
 connect_equery3=Cơ sở dữ liệu $1 dường như không chứa các bảng nhóm OC Bacula.
 esql=Lỗi SQL : $1 
+
 check_edir=Không tìm thấy thư mục cấu hình Bacula $1 trên hệ thống của bạn.
 check_ebacula=Lệnh điều khiển Bacula $1 không được tìm thấy.
 check_econsole=Lệnh console Bacula $1 không được tìm thấy.
@@ -43,12 +45,14 @@ check_eclient=Hệ thống này dường như là một <a href='$2'>khách hàn
 check_econfigs=Không tìm thấy tệp cấu hình Bacula nào trong $1 
 check_eservers=Không có nhóm máy chủ Webmin nào được xác định
 check_engmod=Mô-đun nhóm OpenCountry Bacula không được cài đặt
+
 proc_bacula-sd=Daemon lưu trữ
 proc_bacula-fd=Tệp daemon
 proc_bacula-dir=Giám đốc Bacula daemon
 proc_bareos-sd=Daemon lưu trữ
 proc_bareos-fd=Tệp daemon
 proc_bareos-dir=Giám đốc Bacula daemon
+
 stop_err=Không thể ngăn chặn Bacula
 start_err=Không thể bắt đầu Bacula
 start_einit=Không tìm thấy tập lệnh init nào cho $1 
@@ -57,6 +61,7 @@ restart_err=Không thể khởi động lại Bacula
 apply_err=Không thể áp dụng cấu hình
 apply_failed=Đã phát hiện lỗi cấu hình
 apply_problem=Không thể áp dụng cấu hình : $1 
+
 jobs_title=Công việc sao lưu
 jobs_none=Không có công việc sao lưu đã được xác định.
 jobs_name=Tên công việc
@@ -69,6 +74,7 @@ jobs_add=Thêm một công việc sao lưu mới.
 jobs_delete=Xóa công việc đã chọn
 jobs_return=danh sách công việc
 jobs_derr=Không thể xóa công việc
+
 filesets_title=Bộ tập tin
 filesets_none=Không có tập tin sao lưu đã được xác định.
 filesets_name=Tên tập tin
@@ -78,6 +84,7 @@ filesets_delete=Xóa bộ tệp đã chọn
 filesets_return=danh sách các tập tin
 filesets_derr=Không thể xóa bộ tập tin
 filesets_ednone=Không được chọn
+
 fileset_title1=Tạo tập tin
 fileset_title2=Chỉnh sửa tập tin
 fileset_header=Chi tiết tập tin sao lưu
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;Mức nén mặc định&gt;
 fileset_lzo=Nén LZO
 fileset_gzip=Cấp Gzip $1 
 fileset_onefs=Giới hạn sao lưu vào một hệ thống tập tin?
+
 clients_title=Khách hàng dự phòng
 clients_none=Không có khách hàng dự phòng đã được xác định.
 clients_name=Tên khách hàng
@@ -106,6 +114,7 @@ clients_add=Thêm một khách hàng sao lưu mới.
 clients_delete=Xóa các khách hàng đã chọn
 clients_return=danh sách khách hàng
 clients_derr=Không thể xóa khách hàng
+
 client_title1=Tạo máy khách dự phòng
 client_title2=Chỉnh sửa máy khách dự phòng
 client_header=Thông tin chi tiết về khách hàng sẽ được sao lưu
@@ -128,6 +137,7 @@ client_efileret=Thời gian lưu giữ tệp bị thiếu hoặc không hợp l�
 client_ejobret=Thời gian duy trì công việc bị thiếu hoặc không hợp lệ
 client_echild=Không thể xóa ứng dụng khách này vì nó được sử dụng bởi $1 
 client_status=Hiển thị trạng thái
+
 job_title1=Tạo công việc sao lưu
 job_title2=Chỉnh sửa công việc sao lưu
 job_header=Chi tiết công việc sao lưu
@@ -156,6 +166,7 @@ job_before=Lệnh trước khi làm
 job_after=Chỉ huy sau khi làm việc
 job_cbefore=Lệnh trước khi làm việc (trên máy khách)
 job_cafter=Lệnh sau khi làm việc (trên máy khách)
+
 schedules_title=Lịch trình sao lưu
 schedules_none=Không có lịch trình sao lưu đã được xác định.
 schedules_name=Tên lịch trình
@@ -164,6 +175,7 @@ schedules_add=Thêm một lịch trình sao lưu mới.
 schedules_delete=Xóa lịch đã chọn
 schedules_return=danh sách lịch trình
 schedules_derr=Không thể xóa lịch trình
+
 schedule_title1=Tạo lịch sao lưu
 schedule_title2=Chỉnh sửa lịch sao lưu
 schedule_header=Chi tiết lịch trình sao lưu
@@ -177,6 +189,7 @@ schedule_ename=Tên lịch trình bị thiếu hoặc không hợp lệ
 schedule_eclash=Một lịch trình có cùng tên đã tồn tại
 schedule_etimes=Thiếu thời gian sao lưu trong hàng $1 
 schedule_echild=Lịch trình này không thể bị xóa vì nó được sử dụng bởi $1 
+
 backup_title=Chạy công việc sao lưu
 backup_header=Chi tiết công việc sao lưu
 backup_job=Công việc để chạy
@@ -191,11 +204,13 @@ backup_running=.. công việc sao lưu hiện đang chạy. Khi hoàn thành, k
 backup_running2=.. công việc sao lưu đã được bắt đầu trong nền.
 backup_done=.. sao lưu thành công.
 backup_failed=.. sao lưu không hoàn thành thành công. Kiểm tra thông báo lỗi ở trên để biết chi tiết.
+
 gbackup_title=Chạy công việc sao lưu nhóm Bacula
 gbackup_run=Bắt đầu công việc sao lưu $1 trên $2 khách hàng ..
 gbackup_on=Chạy công việc sao lưu trên máy khách $1  :
 gbackup_header=Chi tiết công việc sao lưu nhóm Bacula
 gbackup_jd=$1 (Tệp được đặt $2 trên nhóm $3)
+
 dirstatus_title=Tình trạng giám đốc
 dirstatus_sched=Công việc sao lưu theo lịch trình
 dirstatus_name=Tên công việc
@@ -216,12 +231,14 @@ dirstatus_status2=Trạng thái
 dirstatus_donenone=Không có công việc sao lưu đã được chạy.
 dirstatus_cancel=Hủy công việc đã chọn
 dirstatus_refresh=Làm mới danh sách
+
 clientstatus_title=Tình trạng khách hàng
 clientstatus_err=Không thể tìm nạp trạng thái từ $1 : $2 
 clientstatus_msg=Trạng thái từ $1 : $2 
 clientstatus_show=Hiển thị trạng thái của khách hàng:
 clientstatus_ok=đồng ý
 clientstatus_on=$1 (trên $2)
+
 storages_title=Daemon lưu trữ
 storages_none=Không có daemon lưu trữ đã được xác định.
 storages_name=Tên lưu trữ
@@ -232,6 +249,7 @@ storages_add=Thêm một daemon lưu trữ mới.
 storages_delete=Xóa Daemon lưu trữ đã chọn
 storages_return=danh sách các daemon lưu trữ
 storages_derr=Không thể xóa daemon lưu trữ
+
 storage_title1=Tạo Daemon lưu trữ
 storage_title2=Chỉnh sửa Daemon lưu trữ
 storage_header=Chi tiết về daemon lưu trữ từ xa
@@ -255,6 +273,7 @@ storage_emedia=Thiếu tên loại phương tiện truyền thông
 storage_emaxjobs=Thiếu công việc đồng thời tối đa
 storage_echild=Không thể xóa ứng dụng khách này vì nó được sử dụng bởi $1 
 storage_status=Hiển thị trạng thái
+
 devices_title=Thiêt bị lưu trư
 devices_none=Không có thiết bị lưu trữ đã được xác định.
 devices_name=Tên thiết bị
@@ -264,6 +283,7 @@ devices_add=Thêm một thiết bị lưu trữ mới.
 devices_delete=Xóa các thiết bị lưu trữ được chọn
 devices_return=danh sách các thiết bị lưu trữ
 devices_derr=Không thể xóa thiết bị lưu trữ
+
 device_title1=Tạo thiết bị lưu trữ
 device_title2=Chỉnh sửa thiết bị lưu trữ
 device_header=Chi tiết về thiết bị lưu trữ tập tin
@@ -282,11 +302,13 @@ device_eclash=Một thiết bị lưu trữ có cùng tên đã tồn tại
 device_emedia=Thiếu tên loại phương tiện truyền thông
 device_edevice=Thiết bị hoặc thư mục lưu trữ bị thiếu hoặc không hợp lệ
 device_echild=Không thể xóa ứng dụng khách này vì nó được sử dụng bởi $1 
+
 storagestatus_title=Trạng thái lưu trữ Daemon
 storagestatus_err=Không thể tìm nạp trạng thái từ $1 : $2 
 storagestatus_msg=Trạng thái từ $1 : $2 
 storagestatus_show=Hiển thị trạng thái của daemon lưu trữ:
 storagestatus_ok=đồng ý
+
 label_title=Khối lượng nhãn
 label_header=Chi tiết về khối lượng để dán nhãn
 label_storage=Lưu trữ daemon để nhãn
@@ -302,6 +324,7 @@ label_done=.. ghi nhãn thành công.
 label_epool=.. không thể tìm thấy hồ bơi!
 label_err=Nhãn không thành công
 label_elabel=Không có nhãn nhập
+
 pools_title=Khối lượng hồ bơi
 pools_none=Không có khối lượng đã được xác định nào.
 pools_name=Tên hồ bơi
@@ -311,6 +334,7 @@ pools_add=Thêm một khối lượng mới.
 pools_delete=Xóa nhóm khối lượng đã chọn
 pools_return=danh sách các nhóm khối lượng
 pools_derr=Không thể xóa nhóm âm lượng
+
 pool_title1=Tạo khối lượng hồ bơi
 pool_title2=Chỉnh sửa khối lượng hồ bơi
 pool_header=Chi tiết về khối lượng dự phòng
@@ -332,6 +356,7 @@ pool_ereten=Thời gian lưu giữ thiếu hoặc không hợp lệ
 pool_status=Hiển thị tập
 pool_autolabel=Tự động gắn nhãn tiền tố khối lượng
 pool_maxvolsize=Kích thước âm lượng tối đa (ví dụ: 5G cho 5 Gigabyte)
+
 poolstatus_title=Khối lượng trong hồ bơi
 poolstatus_show=Hiển thị khối lượng trong nhóm:
 poolstatus_ok=đồng ý
@@ -345,9 +370,11 @@ poolstatus_status=Chế độ sao lưu
 poolstatus_none=Không có khối lượng hiện tại trong nhóm sao lưu này.
 poolstatus_never=Không bao giờ
 poolstatus_delete=Xóa các tập đã chọn
+
 dvolumes_err=Không thể xóa khối lượng
 dvolumes_enone=Không được chọn
 dvolumes_ebacula=Lỗi Bacula : $1 
+
 mount_title=Gắn kết hoặc ngắt kết nối
 mount_header=Tùy chọn gắn kết hoặc không gắn kết
 mount_storage=Thiết bị lưu trữ
@@ -365,8 +392,10 @@ unmount_failed=.. un-mount thất bại! Xem thông báo lỗi ở trên để b
 mount_return=hình thức gắn kết
 mount_err=Không thể gắn thiết bị lưu trữ
 mount_eslot=Số khe cắm bị thiếu hoặc không hợp lệ
+
 cancel_err=Không thể hủy công việc
 cancel_enone=Không được chọn
+
 gjobs_title=Công việc sao lưu nhóm Bacula
 gjobs_none=Không có công việc sao lưu nhóm Bacula đã được xác định.
 gjobs_add=Thêm một công việc sao lưu nhóm Bacula mới.
@@ -374,10 +403,12 @@ gjobs_delete=Xóa công việc đã chọn
 gjobs_return=danh sách các công việc nhóm Bacula
 gjobs_derr=Không thể xóa công việc nhóm Bacula
 gjobs_client=Nhóm Bacula để sao lưu
+
 gjob_title1=Tạo công việc sao lưu nhóm Bacula
 gjob_title2=Chỉnh sửa công việc sao lưu nhóm Bacula
 gjob_header=Chi tiết công việc sao lưu nhóm Bacula
 gjob_client=Nhóm Bacula để sao lưu
+
 groups_title=Nhóm Bacula
 groups_none=Chưa có nhóm Bacula nào được chọn để sao lưu bởi Bacula.
 groups_name=Tên nhóm
@@ -391,6 +422,7 @@ groups_derr=Không thể xóa nhóm
 groups_noadd=Không có nhóm Bacula tồn tại để được chọn để sao lưu.
 groups_info=$1 ($2 thành viên)
 groups_already=Tất cả các nhóm Bacula đã được thêm vào.
+
 group_title1=Tạo nhóm Bacula
 group_title2=Chỉnh sửa nhóm Bacula
 group_header=Chi tiết về nhóm Bacula sẽ được sao lưu
@@ -401,11 +433,13 @@ group_port=Cổng Bacula FD
 group_err=Không thể cứu nhóm Bacula
 group_eclash=Một nhóm có cùng tên đã tồn tại
 group_members=Chủ nhà trong nhóm Bacula
+
 sync_title=Đồng bộ hóa nhóm Bacula
 sync_header=Tùy chọn đồng bộ hóa máy khách nhóm Bacula tự động
 sync_sched=Đồng bộ hóa theo lịch trình?
 sync_schedyes=Có, vào những thời điểm được chọn dưới đây ..
 sync_err=Không thể lưu đồng bộ hóa nhóm Bacula
+
 log_create_client=Tạo khách hàng dự phòng $1 
 log_modify_client=Khách hàng dự phòng đã sửa đổi $1 
 log_delete_client=Đã xóa khách hàng dự phòng $1 
@@ -464,6 +498,7 @@ log_director=Đã lưu cấu hình giám đốc Bacula toàn cầu
 log_file=Đã lưu cấu hình Bacula tệp daemon
 log_storagec=Đã lưu cấu hình lưu trữ Bacula daemon
 log_fixpass=Đã sửa lỗi mật khẩu chương trình bảng điều khiển Bacula
+
 director_title=Cấu hình giám đốc
 director_header=Tùy chọn giám đốc Bacula toàn cầu
 director_name=Tên giám đốc
@@ -477,6 +512,7 @@ director_ename=Tên giám đốc bị thiếu hoặc không hợp lệ
 director_eport=Số cổng bị thiếu hoặc không hợp lệ
 director_ejobs=Thiếu hoặc không hợp lệ số lượng công việc đồng thời
 director_edir=Thư mục làm việc bị thiếu hoặc không tồn tại
+
 tls_enable=Kích hoạt mã hóa TLS?
 tls_require=Chỉ chấp nhận kết nối TLS?
 tls_verify=Xác minh khách hàng TLS?
@@ -488,6 +524,7 @@ tls_ecert=Tệp chứng chỉ TLS bị thiếu hoặc không tồn tại
 tls_ekey=Tệp khóa TLS bị thiếu hoặc không tồn tại
 tls_ecacert=Tệp chứng chỉ TLS CA bị thiếu hoặc không tồn tại
 tls_ecerts=Để TLS được bật, các tệp chứng chỉ, khóa và CA phải được chỉ định
+
 file_title=Cấu hình tệp Daemon
 file_header=Tùy chọn daemon tập tin Bacula
 file_name=Tên tệp daemon
@@ -500,6 +537,7 @@ file_ename=Tên daemon tập tin bị thiếu hoặc không hợp lệ
 file_eport=Số cổng bị thiếu hoặc không hợp lệ
 file_ejobs=Thiếu hoặc không hợp lệ số lượng công việc đồng thời
 file_edir=Thư mục làm việc bị thiếu hoặc không tồn tại
+
 fdirectors_title=Giám đốc tập tin Daemon
 fdirectors_none=Không có giám đốc đã được xác định nào.
 fdirectors_name=Tên giám đốc
@@ -508,6 +546,7 @@ fdirectors_add=Thêm một giám đốc mới.
 fdirectors_delete=Xóa Giám đốc đã chọn
 fdirectors_return=danh sách giám đốc
 fdirectors_derr=Không thể xóa giám đốc
+
 fdirector_title1=Tạo tập tin Daemon Director
 fdirector_title2=Chỉnh sửa tập tin Daemon Director
 fdirector_header=Chi tiết kiểm soát giám đốc từ xa
@@ -519,6 +558,7 @@ fdirector_err=Không thể lưu tệp giám đốc trình nền
 fdirector_ename=Tên giám đốc mất tích
 fdirector_eclash=Một giám đốc có cùng tên đã tồn tại
 fdirector_epass=Thiếu mật khẩu
+
 sdirectors_title=Giám đốc lưu trữ Daemon
 sdirectors_none=Không có giám đốc đã được xác định nào.
 sdirectors_name=Tên giám đốc
@@ -527,6 +567,7 @@ sdirectors_add=Thêm một giám đốc mới.
 sdirectors_delete=Xóa Giám đốc đã chọn
 sdirectors_return=danh sách giám đốc
 sdirectors_derr=Không thể xóa giám đốc
+
 sdirector_title1=Tạo Giám đốc lưu trữ Daemon
 sdirector_title2=Chỉnh sửa Giám đốc lưu trữ Daemon
 sdirector_header=Chi tiết kiểm soát giám đốc từ xa
@@ -538,6 +579,7 @@ sdirector_err=Không thể lưu giám đốc daemon lưu trữ
 sdirector_ename=Tên giám đốc mất tích
 sdirector_eclash=Một giám đốc có cùng tên đã tồn tại
 sdirector_epass=Thiếu mật khẩu
+
 storagec_title=Cấu hình lưu trữ Daemon
 storagec_header=Tùy chọn daemon lưu trữ Bacula
 storagec_name=Tên daemon
@@ -550,6 +592,7 @@ storagec_ename=Tên daemon lưu trữ bị thiếu hoặc không hợp lệ
 storagec_eport=Số cổng bị thiếu hoặc không hợp lệ
 storagec_ejobs=Thiếu hoặc không hợp lệ số lượng công việc đồng thời
 storagec_edir=Thư mục làm việc bị thiếu hoặc không tồn tại
+
 chooser_title=Chọn lịch trình
 chooser_monthsh=Tháng thực hiện
 chooser_months=Tháng trong năm
@@ -574,11 +617,13 @@ chooser_emonthsrange=Các tháng được chọn phải liền kề nhau
 chooser_eweekdaysrange=Các ngày trong tuần được chọn phải liền kề nhau
 chooser_eweekdaynumsrange=Các số ngày trong tuần được chọn phải liền kề nhau
 chooser_edaysrange=Các ngày được chọn trong tháng phải liền kề nhau
+
 weekdaynum_1=Đầu tiên
 weekdaynum_2=Thứ hai
 weekdaynum_3=Ngày thứ ba
 weekdaynum_4=Thứ tư
 weekdaynum_5=Thứ năm
+
 restore_title=Khôi phục lại bản sao lưu
 restore_title2=Khôi phục sao lưu vào nhóm Bacula
 restore_title3=Khôi phục sao lưu nhóm Bacula

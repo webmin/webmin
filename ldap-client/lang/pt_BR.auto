@@ -7,9 +7,11 @@ index_restart=Reinicie o daemon do cliente LDAP
 index_restartdesc=Aplique a configuração atual reiniciando o daemon do cliente LDAP local.
 index_atboot=Iniciar cliente LDAP na inicialização
 index_atbootdesc=Altera se o daemon do cliente LDAP é iniciado quando o sistema é inicializado ou não.
+
 order_sss=Serviços de segurança do sistema
 order_mdns4=DNS multicast
 order_mdns4_minimal=DNS multicast (mínimo)
+
 log_atboot=Daemon do cliente LDAP ativado no momento da inicialização
 log_delboot=Daemon do cliente LDAP desativado no momento da inicialização
 log_start=Daemon do cliente LDAP iniciado

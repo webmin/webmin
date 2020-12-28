@@ -25,12 +25,15 @@ index_up=Konnessjoni Ibda:
 index_updesc=Agħżel konnessjoni mil-lista li jmiss għal din il-buttuna, u kklikkjaha biex tipprova l-istabbiliment immedjat tagħha.
 index_nopol=L-ebda politika ta 'netwerk ma nstabet - forsi l-<a href='$1'>konfigurazzjoni tan-netwerk</a> mhix korretta.
 index_import=Importazzjoni konnessjoni minn fajl.
+
 stop_err=Ma rnexxielux iwaqqaf server IPsec
 start_err=Naqset milli tibda server IPsec
 restart_err=Naqset milli terġa tibda s-server IPsec
 start_elog=Kienu reġistrati l-iżbalji li ġejjin : $1 
+
 newkey_err=Ma rnexxielux jiġġenera ċ-ċavetta
 newkey_ehost=Name host nieqes jew invalidu
+
 edit_title1=Oħloq Konnessjoni
 edit_title2=Editja Konnessjoni
 edit_header=Dettalji tal-konnessjoni VPN IPsec
@@ -101,6 +104,7 @@ edit_unit_s=seks
 edit_unit_m=mins
 edit_unit_h=sigħat
 edit_unit_d=jiem
+
 config_title=Konfigurazzjoni tas-Server
 config_header=L-issettjar globali tas-server VPN
 config_ifaces=Interfaces tan-netwerk għall-IPsec
@@ -118,6 +122,7 @@ config_nat=Jippermettu n-NAT traversal?
 config_err=Ma rnexxielux isalva l-konfigurazzjoni tas-server
 config_eri=L-interface reali "$1" hija elenkata aktar minn darba
 config_enone=Ma kienet speċifikata l-ebda interfaċċa tan-netwerk
+
 showkey_title=Uri Ċavetta Pubblika
 showkey_desc1=Iċ-ċavetta pubblika RSA li tidher hawn taħt għandha tiġi kkupjata fil-konfigurazzjoni ta 'sistemi oħra li jgħaqqdu ma' dan, fit-taqsima relatata ma 'dan l-ospitanti.
 showkey_desc2=Il-valuri murija hawn taħt jistgħu jintużaw biex joħolqu rekord DNS KEY għal dan l-ospitanti, sabiex sistemi oħra li jgħaqqdu miegħu jistgħu jfittxu ċ-ċavetta pubblika tiegħu.
@@ -125,6 +130,7 @@ showkey_flags=Bnadar
 showkey_proto=Protokoll
 showkey_alg=Algoritmu
 showkey_key=Dejta ewlenija
+
 policy_desc_block=Netwerks Imblukkati
 policy_desc_clear=Netwerks Ċari tat-Traffiku
 policy_desc_private=Netwerks Kriptati
@@ -145,6 +151,7 @@ policy_mask=Prefiss
 policy_err=Ma rnexxielux isalva n-netwerks
 policy_enet=Indirizz IP mhux validu tan-netwerk fuq ir-ringiela $1 
 policy_emask=Tul tal-prefiss mhux validu fuq ir-ringiela $2 
+
 save_err=Ma rnexxielux isalva l-konnessjoni
 save_ename=Isem tal-konnessjoni nieqes jew invalidu
 save_ekeying=Numru nieqes jew invalidi ta 'keying mill-ġdid jippruvaw
@@ -164,6 +171,7 @@ save_eleftcert=Ċertifikat tas-server lokali nieqes jew invalidu
 save_erightcert=Ċertifikat tas-server remot nieqes jew invalidu
 save_ekeylife=Konnessjoni nieqsa jew invalida taċ-ċavetta tul il-ħajja kollha
 save_eikelifetime=Kanal ta 'keying nieqes jew invalidu tul il-ħajja
+
 log_create_conn=Konnessjoni maħluqa $1 
 log_delete_conn=Konnessjoni mħassra $1 
 log_modify_conn=Konnessjoni modifikata $1 
@@ -182,8 +190,10 @@ log_delete_secret=Ċavetta sigrieta mħassra għal $1
 log_create_secret_nn=Ħoloq ċavetta sigrieta għal kwalunkwe ospitanti
 log_modify_secret_nn=Ċavetta sigrieta modifikata għal kwalunkwe ospitanti
 log_delete_secret_nn=Ċavetta sigrieta mħassra għal kwalunkwe ospitanti
+
 up_title=Ibda Konnessjoni
 up_cmd=Ibda konnessjoni mal-kmand $1 ..
+
 export_title=Konfigurazzjoni tal-Esportazzjoni
 export_desc=Din il-formola tista 'tintuża biex tesporta s-sezzjoni tal-fajl ta' konfigurazzjoni għall-konnessjoni $1, sabiex tkun tista 'tiġi importata faċilment fuq is-server fit-tarf l-ieħor.
 export_print=Konfigurazzjoni tal-wiri fil-browser
@@ -193,11 +203,13 @@ export_err=Ma rnexxielux jesporta l-konfigurazzjoni
 export_efile=Filenam nieqes
 export_esave=Naqset milli tikteb fil-fajl : $1 
 export_done=Konfigurazzjoni esportata għal konnessjoni $1 sa $2 ($3 bytes).
+
 import_title=Konfigurazzjoni tal-Importazzjoni
 import_desc=Din il-formola tista 'tintuża biex timporta sezzjoni ta' fajl ta 'konfigurazzjoni għal konnessjoni, bħal dik maħluqa mill-karatteristika ta' esportazzjoni tal-modulu fuq sistema oħra.
 import_upload=Importa mill-upload tal-fajl ..
 import_file=Importa minn fajl tal-ġenb tas-server ..
 import_ok=Importazzjoni Issa
+
 import_err=Ma rnexxielux jimporta l-konfigurazzjoni
 import_eupload=L-ebda fajl magħżul biex ittella '
 import_efile=L-ebda fajl min-naħa tas-server ma daħal
@@ -207,6 +219,7 @@ import_eclash=Konnessjoni msejħa $1 diġà teżisti.
 import_done1=Żiedet il-konnessjoni l-ġdida IPsec $1.
 import_done2=Aġġornat b'suċċess il-konnessjoni IPsec $1.
 import_over=Ikteb il-konnessjoni eżistenti bl-istess isem?
+
 secrets_title=Ċwievet Sigrieti
 secrets_none=L-ebda ċwievet sigrieti ma nstabu!
 secrets_name=Sigriet għal
@@ -220,6 +233,7 @@ secrets_mod=Modulus $1
 secrets_newpsk=Oħloq ċavetta maqsuma tas-sigriet maqsuma.
 secrets_newrsa=Oħloq ċavetta RSA ġdida.
 secrets_return=Lista taċ-ċavetta sigrieta
+
 secret_title1=Oħloq Ċavetta Sigrieta
 secret_title2=Editja Ċavetta Sigrieta
 secret_header=Dettalji ewlenin sigrieti

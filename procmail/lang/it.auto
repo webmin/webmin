@@ -4,11 +4,15 @@ index_action=Azione da intraprendere
 index_man=Modifica manualmente la configurazione
 index_mandesc=Modifica direttamente il file di configurazione principale di Procmail, per creare regole, variabili e blocchi personalizzati.
 index_delete=Elimina le azioni selezionate
+
 edit_action=Modalità di consegna
 edit_ctype=Tipo di condizione
 edit_cvalue=Espressione o comando regolari
+
 log_delete_recs=$1 ricette cancellate
+
 delete_err=Impossibile eliminare le azioni
 delete_enone=Nessuno selezionato
+
 check_epostfix=Procmail non è abilitato nella configurazione di Postfix. Il file di configurazione <tt>$2</tt> deve avere l'opzione <tt>$1</tt> impostata su <tt>$3</tt>.
 check_esendmail=Sendmail non è configurato per utilizzare Procmail per la consegna locale. Questo può essere configurato nel modulo <a href='$1'>Sendmail Mail Server</a> di Webmin.

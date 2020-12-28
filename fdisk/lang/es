@@ -21,6 +21,7 @@ index_hdparm=Editar parámetros IDE
 index_use=Usado
 index_free=Libre
 index_return=lista de discos
+
 bytes=bytes
 megabytes=megabytes
 extended=Extendida
@@ -42,6 +43,7 @@ select_smart=Compaq Smart Array $1 unidad $2
 select_smartpart=Compaq Smart Array $1 unidad $2 partición $3
 select_promise=RAID Promise unidad $1
 select_ppart=RAID Promise unidad $1 partición $2
+
 edit_title=Editar Partición
 create_title=Crear Partición
 edit_ecannot=No está autorizado a editar este disco
@@ -77,6 +79,7 @@ edit_fsckmsg=Llama al programa $1 para reparar un sistema de archivos para que p
 edit_tune=Ajustar Sistema de Archivos
 edit_tunemsg=Permite modificar varios parámetros de un sistema de archivos existentes.
 edit_none=Ninguno
+
 mkfs_title=Nuevo Sistema de Archivos
 mkfs_ecannot=No está autorizado a construir un nuevo sistema de archivos en este disco
 mkfs_desc1=Al presionar el botón de la parte inferior del formulario se construirá un nuevo sistema de archivos $1 en el dispositivo $2. Todos los datos de esta partición serán eliminados permanentemente.
@@ -87,6 +90,7 @@ mkfs_err=Fallo al crear sistema de archivos
 mkfs_exec=Ejecutando comando $1 ..
 mkfs_failed=.. comando falló!
 mkfs_ok=.. comando completado.
+
 fsck_title=Reparar Sistema de Archivos
 fsck_ecannot=No está autorizado a reparar este disco
 fsck_desc1=Presionando el botón <tt>Reparar Sistema de ARchivos</tt> intentará reparar el sistema de archivos $1 dañado sobre $2 para montarlo en $3. Si el sistema de archivos no está dañado, no se efectuarán cambios.
@@ -99,6 +103,7 @@ fsck_err3=errores encontrados y corregidos - es necesario reiniciar
 fsck_err4=errores encontrados pero NO corregidos
 fsck_err16=error en línea de comandos
 fsck_unknown=código de retorno $1 no reconocido
+
 tunefs_title=Ajustar Sistema de Archivos
 tunefs_ecannot=No está autorizado para ajustar este sistema de archivos
 tunefs_desc=Este formulario le permite ajustar varios parámetros del sistema de archivos $1 en $2 para montarlo en $3. Los archivos existentes en este sistema de archivos no serán afectados.
@@ -120,10 +125,12 @@ tunefs_err=Fallo al ajustar sistema de archivos
 tunefs_exec=Ejecutando comando $1 ..
 tunefs_failed=.. comando falló!
 tunefs_ok=.. comando completado.
+
 reboot_title=Reiniciar
 reboot_msg=Reiniciando ahora ..
 reboot_ok=Reiniciar Ahora
 reboot_why=Ha cambiado la tabla de partición en $1. Para que este cambio tome efecto adecuadamente, su sistema debe ser reiniciado.
+
 save_err=Fallo al salvar partición
 save_ecannot=No está autorizado a editar este disco
 save_estart='$1' no es un cilindro de comienzo válido
@@ -132,6 +139,7 @@ save_emin=El cilindro de comienzo debe ser >= $1
 save_emax=El cilindro de fin debe ser <= $1
 save_eminmax=El cilindro de comienzo debe ser menor que el de fin
 save_eoverlap=Se detectó un solapamiento con la partición $1 ($2 a $3)
+
 ext2_b=Tamaño de bloque
 ext2_f=Tamaño de fragmento
 ext2_i=Bytes por inode
@@ -139,6 +147,7 @@ ext2_m=Bloques reservados
 ext2_g=Bloques por grupo
 ext2_c=¿Chequear bloques defectuosos?
 ext3_j=Tamaño de archivo de diario
+
 msdos_ff=Número de FATs
 msdos_F=Tamaño de FAT
 msdos_i=ID del Volúmen
@@ -146,20 +155,26 @@ msdos_n=Nombre del Volúmen
 msdos_r=Entradas de raíz
 msdos_s=Tamaño de Cluster
 msdos_c=¿Chequear bloques defectuosos?
+
 minix_n=Longitud del nombre de archivo
 minix_i=Número de inodes
 minix_b=Número de bloques
 minix_c=¿Chequear por bloques defectuosos?
+
 reiserfs_force=Forzar creación de sistema de archivos
 reiserfs_hash=Función de hash
+
 xfs_force=Forzar creación de sistema de archivos
 xfs_b=Tamaño de bloque
+
 jfs_s=Tamaño de bitácora
 jfs_c=¿Chequear por bloques defectuosos?
+
 acl_disks=Discos que este usuario puede particionar y formatear
 acl_dall=Todos los discos
 acl_dsel=Seleccionado..
 acl_view=¿Puede ver discos no editables?
+
 hdparm_title=Editar Parámetros IDE
 hdparm_on=Prendido
 hdparm_off=Apagado
@@ -188,6 +203,7 @@ hdparm_performing=Ejecutando
 hdparm_buf1=Cache de buffer:
 hdparm_buf2=En buffer:
 hdparm_speedres=Resultados de pruebas de velocidad
+
 log_modify=Modificado $1
 log_create=Creado $1
 log_delete=Borrado $1
@@ -195,6 +211,7 @@ log_mkfs=Crado sistema de archivos $1 sobre $2
 log_tunefs=Ajustado sistema de archivos $1 sobre $2
 log_fsck=Reparado sistema de archivos $1 sobre $2
 log_hdparm=Modificados parámetros IDE para $1
+
 fs_ext2=Linux Nativo
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -203,6 +220,7 @@ fs_reiserfs=ReiserFS
 fs_ext3=Nuevo Linux Nativo
 fs_xfs=SGI
 fs_jfs=IBM Journalling
+
 delete_title=Borrar Partición
 delete_rusure=¿Está seguro que desea borrar $1 ( $2 ) ? Los datos de esta partición pueden perderse definitivamente.
 delete_ok=Borrar Ahora

@@ -4,6 +4,7 @@ index_return=zoznam užívateľov
 index_user=Zmeň heslo pre užívateľa:
 index_euseradmin=Tento modul nemôže byť použitý, pretože modul Užívatelia a skupiny nie je nainštalovaný alebo podporovaný na Vašom systéme.
 index_toomany=Na Vašom systéme je priveľa užívateľov pre zobrazenie. Zadajte meno užívateľa, ktorého heslo chcete zmeniť.
+
 passwd_title=Zmena hesla
 passwd_header=Mením heslo Unixového užívateľa
 passwd_for=Mením heslo pre
@@ -22,7 +23,9 @@ passwd_erepeat=Nové heslá sa nezhodujú
 passwd_ecmd=$1 zlyhalo : $2
 passwd_ok=Heslo pre užívateľa $1 bolo úspešne zmenené. Ak je to Váš súčasný Webmin užívateľ, môžete byť prinútený opakovane sa prihlásiť.
 passwd_ok2=Heslo pre užívateľa $1 bolo úspešne zmenené.
+
 log_passwd=Zmenené heslo pre užívateľa $1
+
 acl_repeat=Musí zadať opakovane nové heslo?
 acl_old=Musí zadať staré heslo?
 acl_old_this=Iba pre ostatných užívateľov

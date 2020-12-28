@@ -12,10 +12,12 @@ index_restart=Ponovo pokreni poslužitelj Fail2Ban
 index_restartdesc=Kliknite ovaj gumb kako biste primijenili trenutnu konfiguraciju ponovnim pokretanjem poslužitelja Fail2Ban.
 index_return=indeks modula
 index_header=Fail2Ban modul
+
 check_edir=Konfiguracijski direktorij $1 ne postoji
 check_econf=Konfiguracijska datoteka $2 u $1 ne postoji
 check_eclient=Naredba klijenta $1 nije pronađena
 check_eserver=Naredba poslužitelja $1 nije pronađena
+
 filters_title=Prijavite filtre
 filters_name=Naziv filtra
 filters_re=Redovan izraz
@@ -25,6 +27,7 @@ filters_return=popis filtera
 filters_derr=Brisanje filtera nije uspjelo
 filters_enone=Nijedna nije odabrana
 filters_einuse=Filter $1 se ne može izbrisati, jer ga koriste zatvori : $2 
+
 filter_title1=Stvorite filtar
 filter_title2=Uredi filtar
 filter_desc=Upotrijebite <i>&lt;HOST&gt;</i> u regularnim izrazima gdje bi se trebalo pojaviti ime računala ili IP adresa.
@@ -39,6 +42,7 @@ filter_ename=Nedostaje ili nevažeće ime filtra
 filter_eclash=Naziv filtra već se koristi
 filter_efail=Nije upisan regularni izraz koji bi se podudarao
 filter_einuse=Ovaj se filtar ne može izbrisati, jer ga koriste zatvori : $1 
+
 actions_title=Akcije podudaranja
 actions_name=Naziv radnje
 actions_ban=Naredba zabrane
@@ -48,6 +52,7 @@ actions_return=popis radnji
 actions_derr=Brisanje radnji nije uspjelo
 actions_enone=Nijedna nije odabrana
 actions_einuse=Akcija $1 ne može se izbrisati, jer je koriste zatvori : $2 
+
 action_title1=Stvorite akciju podudaranja
 action_title2=Uređivanje radnje podudaranja
 action_header=Uskladi detalje o radnji
@@ -64,6 +69,7 @@ action_ban=Naredba za zabranu IP-a
 action_unban=Naredba za uklanjanje zabrane IP adrese
 action_desc=<i>&lt;ip&gt;</i> bit će zamijenjen zabranom IP adrese.
 action_einuse=Ne može se izbrisati ovu radnju jer je koriste zatvorske jedinice : $1 
+
 jails_title=Filtrirajte akcijske zatvore
 jails_add=Dodajte novi zatvor.
 jails_name=Ime zatvora
@@ -76,6 +82,7 @@ jails_defdesc=Uredite zadane postavke i ograničenja koja se primjenjuju na sve 
 jails_return=popis zatvora
 jails_derr=Brisanje zatvora nije uspjelo
 jails_enone=Nijedna nije odabrana
+
 jail_title1=Stvori zatvor
 jail_title2=Uredi zatvor
 jail_header=Filtrirajte detalje zatvora o akcijama
@@ -115,13 +122,16 @@ jail_banaction=Zadana radnja koja se primjenjuje
 jail_defprotocol=Zadani protokol za radnje
 jail_edestemail=Nedostaje ili nije važeća zadana e-adresa obavijesti
 jail_eignoreip=Zanemariva je IP adresa nevaljana
+
 jaildef_title=Zadane mogućnosti zatvora
 jaildef_header=Zadani zadaci za sve zatvore
 jaildef_err=Spremanje zadanih opcija zatvora nije uspjelo
 jaildef_egone=Zatvor DEFAULT nije pronađen!
+
 start_err=Pokretanje poslužitelja nije uspjelo
 stop_err=Zaustavljanje poslužitelja nije uspjelo
 restart_err=Ponovno pokretanje poslužitelja nije uspjelo
+
 log_create_filter=Izrađen je filter $1 
 log_update_filter=Izmijenjeni filter $1 
 log_delete_filter=Izbrisani filter $1 
@@ -139,6 +149,7 @@ log_atboot=Omogućeno Fail2Ban u vrijeme dizanja
 log_delboot=Onemogućeno Fail2Ban u vrijeme dizanja
 log_manual=Izmijenjena konfiguracijska datoteka $1 
 log_jaildef=Izmijenjene zadane mogućnosti zatvora
+
 config_title=Globalna konfiguracija
 config_edef=U config datoteci nije pronađen odjeljak Definicije!
 config_header=Konfigurirajte postavke za Fail2Ban
@@ -151,10 +162,12 @@ config_socket=Utičnica za komunikaciju sa serverom
 config_err=Spremanje globalne konfiguracije nije uspjelo
 config_elogtarget=Datoteka za pisanje zapisnika mora biti apsolutni put
 config_esocket=Datoteka socket mora biti apsolutni put
+
 manual_title=Uređivanje datoteka za konfiguriranje
 manual_desc=Datoteka za uređivanje:
 manual_ok=u redu
 manual_efile=Odabrana datoteka nije dio konfiguracije Fail2Ban!
 manual_err=Nije uspjelo uređivanje konfiguracijske datoteke
 manual_edata=Nije unesen sadržaj konfiguracijske datoteke
+
 syslog_logtarget=Dnevnik akcija Fail2Ban

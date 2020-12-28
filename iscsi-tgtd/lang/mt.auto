@@ -2,6 +2,7 @@ check_econfigset=L-ebda sett ta 'fajl ta' konfigurazzjoni iSCSI TGTd!
 check_econfig=L-iSCSI TGTd file file tal-konfigurazzjoni ma nstabx fis-sistema tiegħek.
 check_etgtadm=Il-kmand ta 'l-amministrazzjoni ta' l-iSCSI TGTd $1 ma nstabx fis-sistema tiegħek.
 check_einit=Azzjoni tal-bidu $1 ma teżistix
+
 index_title=iSCSI TGTd
 index_clink=Forsi mhuwiex installat, jew il-<a href='$1'>konfigurazzjoni tal-modulu</a> tiegħek mhix korretta.
 index_stop=Ieqaf iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=Utenti permessi
 index_size=Daqs totali
 index_noluns=Xejn
 index_nousers=Kull
+
 dtargets_err=Naqset milli tħassar il-miri
 dtargets_enone=Xejn magħżula!
+
 target_title1=Oħloq ISCSI Target
 target_title2=Editja l-iSCSI Target
 target_header=għażliet ta 'apparat iSCSI maqsuma
@@ -74,11 +77,13 @@ target_direct=Aċċess dirett għall-apparat
 target_cache=Cache jikteb mal-apparat?
 target_eaddr=Indirizz IP permess mhux validu
 target_eaname=L-isem tal-inizjatur permess mhux validu
+
 start_err=Naqas milli jibda l-iSCSI TGTd
 stop_err=Naqset milli twaqqaf iSCSI TGTd
 restart_err=Ma rnexxielux jerġa 'jibda l-iSCSI TGTd
 atboot_err=Ma rnexxielhiex tkun attivata waqt l-istartjar
 atboot_einit=L-iskritt inizjali $1 ma jeżistix
+
 log_create_target=Il-mira maħluqa $1 
 log_delete_target=Mira mħassra $1 
 log_modify_target=Mira modifikata $1 
@@ -89,6 +94,7 @@ log_restart=Irrestartja server iSCSI
 log_atboot=Attiva s-server iSCSI fil-ħin tal-bidu
 log_delboot=B'diżabilità tas-server iSCSI fil-ħin tal-bidu
 log_manual=Fajl ta 'konfigurazzjoni editjat manwalment
+
 manual_title=Editja l-Fajl tal-Konfigurazzjoni
 manual_file=Agħżel fajl biex teditja:
 manual_ok=Miftuħ

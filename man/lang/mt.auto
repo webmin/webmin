@@ -30,6 +30,7 @@ index_other_google=Magna ta 'riċerka Google
 index_other_kde=Dokumentazzjoni KDE
 index_and=Loghba kollha
 index_or=Qabbel kwalunkwe
+
 search_efor=L-ebda paġna manwali biex tfittex id-daħla
 search_title=Riżultati tat-Tiftix
 search_desc=Deskrizzjoni
@@ -47,24 +48,32 @@ search_none=Ma nstabet l-ebda dokumentazzjoni li taqbel $1.
 search_for=Għal $1 
 search_google=Riżultat tat-tfittxija tal-Google
 search_doxfer=Dokumentazzjoni online Webmin
+
 howto_title=Dokument HOWTO
 howto_header=HOWTO file file $1 
 howto_epath=Mhux validu dokument HOWTO
+
 doc_title=Dokumentazzjoni tal-Pakkett
 doc_header=Pakkett tad-dokument tal-fajl $1 
 doc_epath=Rotta ta 'dokumentazzjoni tal-pakkett mhux valida
+
 man_title=Paġna Manwali
 man_header=Paġna manwali għal $1 ($2)
 man_noentry=Il-paġna manwali għal $1 ma teżistix!
 man_epath=Il-paġna manwali ma tistax tkun triq!
+
 kernel_title=Dokument tal-Qlub
 kernel_header=Fajl tad-dokument tal-Kernel $1 
 kernel_epath=Rotta tad-dokument tal-għadma mhix valida
+
 kde_title=Dokumentazzjoni KDE
 kde_header=Fajl tad-dokument KDE $1 
 kde_epath=Triq tad-dokumentazzjoni KDE mhix valida
+
 perl_title=Modulu Perl
 perl_header=Dokumentazzjoni għall-modulu Perl $1 
 perl_emod=Isem tal-modulu Perl invalidu
+
 acl_allow=Tista 'teditja t-tipi ta' tfittxija permessi?
+
 check_ecannot=M'għandekx permess tibdel tipi ta 'tfittxija permessi

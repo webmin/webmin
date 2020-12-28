@@ -57,20 +57,27 @@ index_rotate=آمار را به روز کنید
 index_rotatedesc=بر روی این دکمه کلیک کنید تا تمام ترافیک شبکه وارد شده را تا زمان فعلی پردازش کنید و این را فوراً برای گزارش در دسترس قرار دهید.
 index_eiptables=هشدار - پیکربندی IPtables شما دارای خطا است:$1. تنظیم نظارت بر پهنای باند ، کلیه قوانین فایروال را پاک می کند.
 index_return=فرم گزارش
+
 log_setup=نظارت بر پهنای باند راه اندازی رابط$1
 log_turnoff=پهنای باند غیرفعال است
 log_rotate=آمار به روز شده
+
 acl_setup=آیا می توان نظارت را غیرفعال کرد؟
+
 turnoff_ecannot=شما مجاز نیستید نظارت را غیرفعال کنید
+
 setup_ecannot=شما مجاز نیستید نظارت را فعال کنید
 setup_eiface=نام رابط موجود نیست یا نامعتبر است
 setup_ezone=یافتن منطقه Shorewall برای رابط انتخابی انجام نشد
+
 system_firewall=میزهای IP
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=ساحل
+
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=بروزرسانی آمار
 rotate_doing=پردازش ترافیک شبکه وارد شده ..
 rotate_done=.. انجام شده.

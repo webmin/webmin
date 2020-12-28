@@ -10,6 +10,7 @@ index_range=Iġġenera rapport għall-firxa tad-data
 index_view=Ara r-Rapport Ġenerat
 index_viewdesc=Ara r-rapport iġġenerat l-iktar riċenti fid-direttorju $1.
 index_return=indiċi tal-modulu
+
 log_title=Sors tal-Ġurnal u Destinazzjoni tar-Rapport
 log_header=Is-sors tal-fajl log tal-klam u l-għażliet ta 'rapport iġġenerat
 log_access_log=Sors tal-fajl tal-klamari Sors
@@ -30,6 +31,7 @@ log_elastlog=Numru nieqes jew le
 log_eemail=Indirizz tal-email nieqes jew li jħares mhux validu
 log_emailx=Programm ta ’posta nieqes jew ineżistenti
 log_squidguard_log_path=Fajl ta 'log SquidGuard
+
 style_title=Stil tar-Rapport
 style_header=Stil ta 'rapport HTML u għażliet ta' kulur
 style_title2=Titlu tar-rapport
@@ -54,6 +56,7 @@ style_efont=Isem tat-tipa nieqes jew invalidu
 style_esize=Wisa 'u għoli tal-immaġni nieqes jew invalidu
 style_language=Rapport tal-lingwa
 style_charset=Sett ta 'karattri tar-rapport
+
 report_title=Għażliet ta 'Rapport
 report_header=Irrapporta kontenut u għażliet ta 'ġenerazzjoni
 report_resolve_ip=Issolvi indirizzi IP?
@@ -134,6 +137,7 @@ report_echar=L-ispazji mhumiex permessi
 report_estring=Test ta ’sostituzzjoni nieqes jew invalidu
 report_eselect=Xejn magħżul
 report_eenter=Ma daħal xejn
+
 sched_title=Ġenerazzjoni ta 'Rapport Skedat
 sched_header=Għażliet ta 'rappurtar skedat
 sched_sched=Ir-rapport skedat ippermetta?
@@ -148,9 +152,11 @@ sched_rsel=Dawk minn $1 sa $2 jiem ilu
 sched_err=Ma rnexxielux isalva ġenerazzjoni ta ’rapport skedat
 sched_erfrom=In-numru tal-bidu nieqes jew invalidu ta 'jiem ilu
 sched_erto=Numru ta 'jiem ilu mitluf jew invalidu
+
 view_title=Rapport Sarg
 view_efile=Isem tal-fajl mhux validu
 view_eopen=Naqset milli tiftaħ il-fajl tar-rapport
+
 gen_title=Iġġenera Rapport
 gen_header=Issa qed tiġġenera rapport Sarg mill-fajl tal-log tal-klamari $1 u l-verżjonijiet kollha mdawra ..
 gen_done=.. ghamel
@@ -160,6 +166,7 @@ gen_view=Ara r-rapport komplut.
 gen_err=Naqas milli jiġġenera rapport
 gen_efrom=Nieqes jew invalidu minn jum
 gen_eto=Nieqes jew invalidu kuljum
+
 webmin_log_log=Aġġornament tas-sors tal-ġurnal u tal-għażliet tad-destinazzjoni tar-rapport
 webmin_log_report=Għażliet ta 'rapport aġġornat
 webmin_log_style=Għażliet aġġornati dwar stil ta 'rapport

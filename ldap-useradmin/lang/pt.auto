@@ -19,10 +19,13 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=Usuários LDAP
 index_groups=Grupos LDAP
+
 imap_econn=Falha ao conectar ao servidor IMAP $1 
 imap_elogin=Falha ao fazer login no servidor IMAP $1 como $2 : $3 
 conn_eldap_host=Nenhum arquivo de configuração do cliente LDAP foi encontrado em seu sistema, portanto, o servidor LDAP deve ser definido na página Configuração do Módulo
 conn_elogin=Nenhum arquivo de configuração do cliente LDAP foi encontrado em seu sistema; portanto, o login LDAP deve ser definido na página Configuração do módulo
+conn_efile_open=Não foi possível abrir o arquivo de credenciais de vinculação do LDAP:
+
 uedit_cap=Capacidades do usuário
 uedit_samba=Samba login?
 uedit_cyrus=Login no servidor IMAP?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=Última atualização de senha
 uedit_sambapwdcanchange=A senha pode mudar
 uedit_sambabadpasswordcount=Contagem de senha incorreta
 uedit_sambaacctflags=Sinalizadores de conta
+
 usave_eadd=Falha ao adicionar usuário ao banco de dados LDAP : $1 
 usave_emod=Falha ao modificar o usuário no banco de dados LDAP : $1 
 usave_emoddn=Falha ao renomear o usuário no banco de dados LDAP : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=O usuário $1 já está usando o $2 $3
 usave_eattrdupg=O grupo $1 já está usando o $2 $3 
 usave_ereal=Nome verdadeiro ausente
 usave_equota=Cota IMAP ausente ou inválida
+
 search_err=Falha na pesquisa de $1 em $2 : $3 
+
 gedit_dn=DN LDAP do grupo
 gedit_return=detalhes do grupo
 gedit_cap=Recursos de grupo
 gedit_samba=Grupo de samba?
+
 gsave_egone=O grupo não existe mais!
 gsave_edelete=Falha ao excluir o grupo do banco de dados LDAP : $1 
 gsave_eadd=Falha ao adicionar grupo ao banco de dados LDAP : $1 
 gsave_emod=Falha ao modificar o grupo no banco de dados LDAP : $1 
 gsave_emoddn=Falha ao renomear o grupo no banco de dados LDAP : $1 
+
 gdel_group=Excluindo a entrada do grupo LDAP.
+
 udel_pass=Excluindo a entrada do usuário LDAP.
 udel_book=Excluindo da lista de endereços.
 udel_imap=Excluindo pasta IMAP ..
 udel_warnimap=A caixa postal existente será excluída ao excluir o diretório inicial!
 udel_failed=.. falhou!  : $1 
+
 raw_title=Atributos LDAP
 raw_name=Nome do Atributo
 raw_value=Valores
 raw_for=Por 1
+
 batch_samba=Criar conta Samba para novos usuários?
 batch_imap=Criar conta IMAP para novos usuários?
 batch_descafter3=Nas linhas <b>create</b> e <b>modify</b>, você pode opcionalmente acrescentar campos extras contendo atributos LDAP no formato <i>nome</i> = <i>valor</i>, para ser atribuído aos usuários novos ou modificados.

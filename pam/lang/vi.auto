@@ -4,6 +4,7 @@ index_desc=Sự miêu tả
 index_add=Thêm một dịch vụ PAM mới.
 index_return=danh sách dịch vụ
 index_none=Không tìm thấy tệp cấu hình PAM trên hệ thống của bạn trong thư mục $1. Có thể PAM không được hỗ trợ hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+
 desc_su=Chuyển người dùng
 desc_su-l=Chuyển người dùng (có đăng nhập)
 desc_login=Đăng nhập cục bộ hoặc từ xa
@@ -87,6 +88,7 @@ desc_common-account=Xác minh tài khoản chung
 desc_common-auth=Xác thực chung
 desc_common-password=Thay đổi mật khẩu phổ biến
 desc_common-session=Thiết lập phiên chung
+
 edit_title=Chỉnh sửa dịch vụ PAM
 edit_header=Chi tiết dịch vụ PAM
 edit_name=Tên dịch vụ
@@ -107,6 +109,7 @@ edit_move=Di chuyển
 edit_return=Dịch vụ PAM
 edit_inc=Bao gồm dịch vụ $1 
 edit_iheader=Bao gồm các dịch vụ PAM
+
 pam_pwdb.so=Xác thực mật khẩu Unix
 pam_securetty.so=Kiểm tra TTY an toàn cho root
 pam_nologin.so=Kiểm tra tệp <tt>/etc/nologin</tt>
@@ -149,6 +152,7 @@ pam_console.so=Bảng điều khiển chỉ kiểm tra
 pam_xauth.so=Xác thực X
 pam_stack.so=Gọi dịch vụ PAM khác
 pam_foreground.so=Thiết lập bảng điều khiển
+
 control_requisite=Yêu cầu
 control_required=Cần thiết
 control_sufficient=Đủ
@@ -157,6 +161,7 @@ control_desc_requisite=Xác thực thất bại ngay lập tức khi thất bạ
 control_desc_required=Xác thực thất bại khi kết thúc thất bại
 control_desc_sufficient=Xác thực thành công ngay lập tức khi thành công
 control_desc_optional=Thành công hay thất bại bị bỏ qua
+
 create_title=Tạo dịch vụ PAM
 create_header=Tùy chọn dịch vụ PAM mới
 create_name=Tên dịch vụ
@@ -165,6 +170,7 @@ create_mods=Các mô-đun PAM ban đầu
 create_0=không ai
 create_1=Xác thực Unix
 create_2=Từ chối tất cả quyền truy cập
+
 mod_edit=Chỉnh sửa mô-đun PAM
 mod_create=Thêm mô-đun PAM
 mod_header=Tùy chọn mô-đun PAM
@@ -178,10 +184,12 @@ mod_type_password=Thay đổi mật khẩu
 mod_control=Mức độ thất bại
 mod_args=Đối số mô-đun
 mod_err=Không thể lưu mô-đun
+
 pwdb_shadow=Sử dụng tập tin mật khẩu bóng?
 pwdb_nullok=Chấp nhận mật khẩu null?
 pwdb_md5=Sử dụng mật khẩu được mã hóa MD5?
 pwdb_nodelay=Trì hoãn sau khi đăng nhập thất bại?
+
 unix_nullok_secure=Chấp nhận mật khẩu null trên TTYs an toàn?
 unix_min=Độ dài mật khẩu tối thiểu
 unix_nomin=không ai
@@ -190,6 +198,7 @@ unix_nomax=Không giới hạn
 unix_obscure=Ngăn chặn sử dụng mật khẩu dễ dàng?
 unix_emin=Thiếu độ dài mật khẩu tối thiểu hoặc không hợp lệ
 unix_emax=Thiếu hoặc không hợp lệ chiều dài mật khẩu tối đa
+
 listfile_item=Tìm kiếm tập tin cho
 listfile_item_user=tên tài khoản
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=Kiểm tra giới hạn
 listfile_all=Tất cả người dùng
 listfile_user=Chỉ người dùng
 listfile_group=Chỉ nhóm
+
 cracklib_type=Nhập mật khẩu nhanh chóng
 cracklib_retry=Thử lại tối đa trước khi thất bại
 cracklib_eretry=Số lần thử lại bị thiếu hoặc không hợp lệ
 cracklib_etype=Loại mật khẩu bị thiếu hoặc không hợp lệ
+
 rhosts_equiv=Đọc tệp <tt>/etc/hosts.equiv</tt>?
 rhosts_rhosts=Đọc tệp <tt>.rhosts</tt> của người dùng?
 rhosts_promiscuous=Mục nhập <tt>+</tt> cho phép tất cả máy chủ?
 rhosts_suppress=Đăng nhập thất bại xác thực?
+
 env_var=Tên biến
 env_def=Giá trị mặc định
 env_over=Giá trị ghi đè
 env_evar=Tên biến không thể chứa dấu cách
+
 securetty_ttys=TTYs an toàn
+
 shells_shells=Vỏ người dùng hợp lệ
+
 tally_deny=Thất bại trước khi từ chối truy cập
 tally_reset=Đặt lại thất bại khi thành công
 tally_edeny=Thiếu hoặc không hợp lệ số lần thử thất bại
 tally_magic=Số lần thất bại áp dụng cho <tt>root</tt>?
 tally_root=Tài khoản <tt>root</tt> có thể bị từ chối?
+
 time_services=Dịch vụ
 time_ttys=TTY
 time_users=Người dùng
 time_times=Thời gian truy cập
 time_info=Tất cả các trường có thể chứa nhiều giá trị được phân tách bằng | và các giá trị có thể sử dụng * làm ký tự đại diện hoặc! như một người phủ định.
+
 group_services=Dịch vụ
 group_ttys=TTY
 group_users=Người dùng
 group_times=Thời gian truy cập
 group_groups=Thêm nhóm
 group_info=Tất cả các trường có thể chứa nhiều giá trị được phân tách bằng | và các giá trị có thể sử dụng * làm ký tự đại diện hoặc! như một người phủ định.
+
 wheel_group=Kiểm tra tư cách thành viên của nhóm
 wheel_group_def=Mặc định (<tt>bánh xe</tt> hoặc GID 0)
 wheel_trust=Thành viên nhóm bỏ qua xác thực thêm?
 wheel_deny=Từ chối thay vì cho phép thành viên nhóm?
 wheel_egroup=Tên nhóm bị thiếu hoặc không hợp lệ
+
 motd_file=Tập tin để hiển thị
 motd_file_def=Mặc định (<tt>/etc/motd</tt>)
 motd_efile=Tên tệp bị thiếu hoặc không hợp lệ
+
 mail_nopen=Hiển thị thông báo mail khi đăng nhập?
 mail_close=Hiển thị thông báo thư khi đăng xuất?
 mail_empty=Thông báo nếu tập tin mail trống?
 mail_noenv=Đặt biến môi trường $ MAIL?
 mail_dir=Thư mục spool thư
 mail_edir=Thư mục spool thư bị thiếu hoặc không hợp lệ
+
 stack_service=Kiểm tra qua dịch vụ PAM
+
 log_pam_create=Đã tạo dịch vụ PAM $1 
 log_pam_delete=Đã xóa dịch vụ PAM $1 
 log_mod_create=Đã thêm mô-đun PAM $1 vào dịch vụ $2 
@@ -262,6 +284,7 @@ log_inc_create=Đã thêm bao gồm $1 cho dịch vụ $2
 log_inc_modify=Đã sửa đổi bao gồm $1 cho dịch vụ $2 
 log_inc_delete=Đã xóa bao gồm $1 cho dịch vụ $2 
 log_incs=Đã cập nhật bao gồm dịch vụ $1 
+
 inc_edit=Chỉnh sửa dịch vụ đi kèm
 inc_create=Tạo dịch vụ đi kèm
 inc_header=Bao gồm chi tiết dịch vụ PAM

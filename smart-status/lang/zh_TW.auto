@@ -25,6 +25,7 @@ index_family=模特家族
 index_serial=序列號
 index_capacity=容量
 index_norm=標準化：
+
 monitor_type=智能驅動器檢查
 monitor_type2=SSD磨損
 monitor_drive=開車檢查
@@ -40,14 +41,17 @@ monitor_wearlevel=如果磨損水平降至以下則失敗
 monitor_ewearlevel=無效的磨損水平百分比
 monitor_nowearout=驅動器未報告SSD磨損指示
 monitor_wornout=磨損程度已降至 $1
+
 short_title=簡短的自測
 short_doing=開始對 $1..進行簡短的自檢
 short_failed=..失敗了！
 short_ok=..測試開始OK。有關結果，請參見模塊主頁上的驅動器狀態。
+
 ext_title=擴展自測
 ext_doing=開始對 $1..進行擴展的自檢
 ext_failed=..失敗了！
 ext_ok=..測試開始OK。有關結果，請參見模塊主頁上的驅動器狀態。
+
 data_title=數據收集測試
 data_doing=在 $1..上開始脫機數據收集
 data_failed=..失敗了！

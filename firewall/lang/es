@@ -52,6 +52,7 @@ index_auto1=Hacer traduccion de direccion de red en la interfaz externa:
 index_auto2=Bloquear trafico de red en la interfaz externa:
 index_auto=Configurar Firewall
 index_add=Añadir
+
 desc_p=protocolo es $1
 desc_p!=protocol no es $1
 desc_s=origen es $1
@@ -99,9 +100,14 @@ desc_tos!=el campo tipo-de-servicio NO es $1
 desc_conds=Si $1
 desc_and=y
 desc_always=Siempre
+
 redhat_eoutput=Ocurrio un error al tratar de recuperar el estado del firewall con el comando $1. Esto indica que probablemente su sistema se ha configurado para utilizar un sistema ipchains en lugar de Iptables.
+
 gentoo_escript=El script de firewall $1 no se encontro en su sistema.
+
 eiptables=Fichero de firewall desconocido linea: $1
+eip6tables=Fichero de firewall desconocido linea: $1
+
 edit_title1=Añadir regla
 edit_title2=Editar regla
 edit_title3=Clonar regla
@@ -157,6 +163,7 @@ edit_oifc=Otros...
 edit_clone=Clonar regla
 edit_before=Antes de regla $1
 edit_after=Despues de regla $2
+
 save_err=Error al salvar regla
 save_echain=Cadena de ejecucion no valida o no establecida
 save_esource=Direccion o red de origen no valida o no establecida
@@ -197,16 +204,21 @@ save_esipto=Final de direccion IP no valida para SNAT
 save_espfrom=Puerto inicial para NAT no valido
 save_espto=Puerto final de NAT no valido o no establecido
 save_estates=No se selecciono estado de conexion
+
 delete_title=Eliminar Cadena
 delete_rusure=¿ Esta seguro de que desea eliminar la cadena $1 ? las reglas $2 de la cadena seran tambien eliminadas.
 delete_ok=Delete Now
+
 clear_title=Limpiar cadena
 clear_rusure=Are you sure you want to delete all $2 rules from chain $1 ?
+
 new_err=No se pudo crear cadena
 new_ename=Nombre de cadena no valido o inexistente
 new_etaken=Ya esxite una cadena con este nombre
+
 apply_err=No se consigui aplicar la configuracion
 unapply_err=No se consiguio revertir la configuracion
+
 log_create_rule=Añadida la regla en la cadena $1 en la tabla $2
 log_modify_rule=Modificada la regla en la cadena $1 en la tabla $2
 log_delete_rule=Eliminada la regla en la cadena $1 en la tabla $2
@@ -221,5 +233,5 @@ log_setup=Configurar Firewall
 log_convert=Convertido el Firewall existente
 log_bootup=Habilitar Firewall al arrancar
 log_bootdown=Deshabilitar Firewall al arrancar
+
 setup_eiface=Nose introdujo ningun interfaz de red externo
-eip6tables=Fichero de firewall desconocido linea: $1

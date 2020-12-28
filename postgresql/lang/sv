@@ -13,12 +13,15 @@ index_add=Skapa en ny databas
 index_users=Användarinställningar
 index_return=databaslista
 index_esql=Klientprogrammet $1 till PostgreSQL kunde inte hittas på systemet. PostgreSQL kanske inte har installerats, eller också är dina <a href='$2'>modulinställningar</a> felaktiga.
+
 index_ehba=Datorkonfigurationsfilen $1 för PostgreSQL kunde inte hittas på systemet. PostgreSQL kanske inte har initialiserats, eller också är dina <a href='$2'>modulinställningar</a> felaktiga.
 index_eversion=PostgreSQL-databasen på ditt system är version $1, men Webmin stödjer bara version $2 och högre.
+
 login_err=Inloggningen misslyckades
 login_ecannot=Du får inte konfigurera databasinloggningen
 login_elogin=Du har inte angivit något administratörskonto
 login_epass=Felaktigt administratörskonto eller -lösenord
+
 dbase_title=Ändra databas
 dbase_tables=Databastabeller
 dbase_add=Lägg till en tabell
@@ -28,6 +31,7 @@ dbase_none=Databasen har inga tabeller.
 dbase_fields=Fält:
 dbase_return=tabellista
 dbase_ecannot=Du får inte ändra i denna databas
+
 table_title=Ändra tabell
 table_title2=Lägg till tabell
 table_opts=Fältinställningar
@@ -66,25 +70,30 @@ field_esize='$1' är inte en giltig fältstorlek
 field_eenum=Du har inte angivit några uppräkningsbara värden
 field_efield='$1' är inte ett giltigt fältnamn
 field_ekey=Fält som får innehålla tomma värden får inte vara en del av den primära nyckeln.
+
 exec_title=Utföra SQL-kommandon
 exec_header=Skriv in det SQL-kommando som ska utföras på databas $1 ...
 exec_exec=Utför
 exec_err=Det gick inte att utföra SQL-kommandot
 exec_out=Utdata från SQL-kommandot $1 ...
 exec_none=Inga data från körningen
+
 stop_err=Det gick inte att stanna databasservern
 stop_epidfile=Det gick inte att öppna PID-filen $1
 stop_ekill=Det gick inte att slå ihjäl processen $1: $2
 start_err=Det gick inte att starta databasservern
+
 ddrop_err=Det gick inte att ta bort databasen
 ddrop_title=Ta bort databas
 ddrop_rusure=Vill du verkligen ta bort databasen $1? $2 tabeller med $3 rader med data kommer att raderas
 ddrop_mysql=MySQL-servern kommer troligen att bli oanvändbar om du tar bort denna databas, eftersom den är huvuddatabasen.
 ddrop_ok=Ta bort databasen
+
 tdrop_err=Det gick inte att ta bort tabellen
 tdrop_title=Ta bort tabell
 tdrop_rusure=Vill du verkligen ta bort tabellen $1 i databasen $2? $3 rader med data kommer att raderas.
 tdrop_ok=Ta bort tabell
+
 view_title=Tabelldata
 view_pos=Rad $1 till $2 av $3
 view_none=Denna tabell innehåller inga data
@@ -94,6 +103,7 @@ view_delete=Ta bort angivna rader
 view_nokey=Datauppgifter i denna tabell kan inte ändras eftersom det inte finns någon primär nyckel.
 view_all=Visa alla
 view_invert=Visa uteslutna
+
 newdb_title=Ny databas
 newdb_header=Inställningar för ny databas
 newdb_db=Databasens namn
@@ -102,6 +112,7 @@ newdb_err=Det gick inte att skapa databasen
 newdb_edb=Databasens namn saknas eller är felaktigt
 newdb_ecannot=Du får inte skapa databaser
 newdb_epath=Du har inte angivit någon sökväg till databasen
+
 user_title=PostgreSQL-användare
 user_ecannot=Du får inte ändra användare
 user_name=Användarnamn
@@ -120,6 +131,7 @@ user_none=Inget
 user_err=Det gick inte att spara användaren
 user_epass=Lösenord saknas eller är ogiltigt
 user_ename=Användarnamn saknas eller är ogiltigt
+
 host_ecannot=Du får inte ändra tillåtna datorer
 host_title=Tillåtna datorer
 host_local=Lokal uppkoppling
@@ -150,6 +162,7 @@ host_epassword=Lösenordsfil saknas eller är ogiltig
 host_enetmask=Nätmask saknas eller är ogiltig
 host_enetwork=Nätverk saknas eller är ogiltigt
 host_ehost=IP-adress för datorn saknas eller är ogiltig
+
 grant_title=Utdelade rättigheter
 grant_tvi=Objekt
 grant_type=Typ
@@ -173,6 +186,7 @@ grant_v=Vy
 grant_i=Index
 grant_S=Sekvens
 grant_none=Det finns inga tabeller, vyer, sekvenser eller index att dela ut rättigheter för.
+
 group_title=PostgreSQL-grupper
 group_ecannot=Du får inte ändra grupper
 group_name=Gruppnamn
@@ -188,6 +202,7 @@ group_ename=Gruppens namn saknas eller är ogiltigt
 group_egid=Grupp-ID saknas eller är ogiltigt
 group_etaken=Gruppnamnet används redan
 group_none=Det finns för närvarande inga PostgreSQL-grupper
+
 esql=SQL $1 gick fel: $2
 log_start=Startade PostgreSQL-server
 log_stop=Stannade PostgreSQL-server
@@ -195,6 +210,7 @@ log_db_create=Lade till databasen $1
 log_db_delete=Tog bort databasen $1
 log_table_create=Lade till tabellen $1 i databasen $2
 log_table_delete=Tog bort tabellen $1 från databasen $2
+
 log_field_create=Lade till fält $1 $4 till $2 i databasen $3
 log_field_modify=Modifierade fält $1 $4 i $2 i databasen $3
 log_field_delete=Tog bort fält $1 från $2 i databasen $3
@@ -219,6 +235,7 @@ log_create_hba=Lade till tillåten dator $1
 log_modify_hba=Modifierade tillåten dator $1
 log_delete_hba=Tog bort tillåten dator $1
 log_grant=Delade ut rättigheter för $1 i databasen $2
+
 acl_dbs=Databaser som denna användare får administrera
 acl_dall=Alla databaser
 acl_dsel=Angivna

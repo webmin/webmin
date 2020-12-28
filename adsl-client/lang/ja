@@ -14,6 +14,7 @@ index_esetup=Redhat ADSL設定ファイル $1 がありません。下のボタ�
 index_setup=設定ファイルのセットアップ
 index_cancel=接続キャンセル
 index_canceldesc=現在、PPPoEクライアントは接続の確立を試みています。このボタンをクリックするとコマンド $1 によりキャンセルできます。
+
 index_header=PPPoEクライアント設定オプション
 index_desc=設定は全ての今後開始される新しい接続に適用されます。設定を変更しても再度接続するまで変更は適用されません。
 index_eth=イーサネットインターフェイス
@@ -34,11 +35,13 @@ index_fw_standalone=スタンドアロン向け
 index_fw_masquerade=NATゲートウェイ向け
 index_connect=接続を試みる時間
 index_forever=永続的
+
 start_err=接続を開始できませんでした。
 start_title=接続をする。
 start_ip=PPPoE接続はIPアドレス $1 で開始しました。
 start_demand=オンデマンド接続が有効なので必要時にのみ接続します。
 start_bg=20秒の間接続を試みましたが接続を確立できません。接続が確立するまで続けます。
+
 save_err=PPPoE設定を保存できませんでした。
 save_eeth=イーサネットインターフェースが見付からないか制限されています。
 save_etimeout=オンデマンド接続のタイムアウト時間が空欄か不正です
@@ -47,10 +50,12 @@ save_econnect=接続タイムアウトが空欄か不正です。
 save_emss=MSS値が空欄か不正です。
 save_title=設定を保存する。
 save_desc=PPPoE設定の保存に成功しました。設定の変更は再接続後に有効になります。
+
 stop_err=切断に失敗しました。
 stop_title=切断する。
 stop_ok=切断に成功しました。
 stop_failed=原因不明ですが。接続は依然有効です。
+
 log_save=設定を保存しました。
 log_stop=切断する。
 log_start=PPPoE接続を開始しました。

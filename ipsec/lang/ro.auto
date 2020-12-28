@@ -25,12 +25,15 @@ index_up=Conexiune Start:
 index_updesc=Selectați o conexiune din lista de lângă acest buton și faceți clic pe ea pentru a încerca stabilirea imediată a acesteia.
 index_nopol=Nu s-au găsit politici de rețea - poate că <a href='$1'>configurația rețelei</a> este incorectă.
 index_import=Importați conexiunea din fișier.
+
 stop_err=Nu a putut opri serverul IPsec
 start_err=Eroare la pornirea serverului IPsec
 restart_err=Eroare la reluarea serverului IPsec
 start_elog=Au fost înregistrate următoarele erori : $1 
+
 newkey_err=Nu a reușit să genereze cheia
 newkey_ehost=Numele de gazdă lipsă sau nevalid
+
 edit_title1=Creați conexiune
 edit_title2=Editează conexiunea
 edit_header=Detalii despre conexiunea VPN IPsec
@@ -101,6 +104,7 @@ edit_unit_s=secunde
 edit_unit_m=min
 edit_unit_h=ore
 edit_unit_d=zi
+
 config_title=Configurare server
 config_header=Setări globale ale serverului VPN
 config_ifaces=Interfețe de rețea pentru IPsec
@@ -118,6 +122,7 @@ config_nat=Activați traversarea NAT?
 config_err=Eroare la salvarea configurației serverului
 config_eri=Interfața reală „$1” este listată de mai multe ori
 config_enone=Nu au fost specificate interfețe de rețea
+
 showkey_title=Afișează cheia publică
 showkey_desc1=Cheia publică RSA prezentată mai jos trebuie să fie copiată în configurația altor sisteme care se conectează la acesta, în secțiunea referitoare la această gazdă.
 showkey_desc2=Valorile prezentate mai jos pot fi utilizate pentru a crea o înregistrare DNS KEY pentru această gazdă, astfel încât alte sisteme care se conectează la ea să poată căuta cheia sa publică.
@@ -125,6 +130,7 @@ showkey_flags=Steaguri
 showkey_proto=Protocol
 showkey_alg=Algoritmul
 showkey_key=Date esentiale
+
 policy_desc_block=Rețele blocate
 policy_desc_clear=Ștergeți rețelele de trafic
 policy_desc_private=Rețele criptate
@@ -145,6 +151,7 @@ policy_mask=Prefix
 policy_err=Nu a reușit salvarea rețelelor
 policy_enet=Adresa IP de rețea nevalidă pe rândul $1 
 policy_emask=Lungimea prefixului nevalid pe rândul $2 
+
 save_err=Nu a reușit să salveze conexiunea
 save_ename=Numele de conexiune lipsă sau nevalid
 save_ekeying=Număr lipsit sau nevalid de încercări de încercare
@@ -164,6 +171,7 @@ save_eleftcert=Certificatul de server local lipsit sau nevalid
 save_erightcert=Certificatul de server la distanță lipsă sau nevalid
 save_ekeylife=Durata de viață a cheii de conexiune lipsă sau nevalidă
 save_eikelifetime=Durata de viață a canalului de trimitere lipsă sau nevalidă
+
 log_create_conn=Creare conexiune $1 
 log_delete_conn=Conectare ștersă $1 
 log_modify_conn=Conexiune modificată $1 
@@ -182,8 +190,10 @@ log_delete_secret=Cheia secretă ștersă pentru $1
 log_create_secret_nn=Cheie secretă creată pentru orice gazdă
 log_modify_secret_nn=Cheie secretă modificată pentru orice gazdă
 log_delete_secret_nn=Cheia secretă ștersă pentru orice gazdă
+
 up_title=Porniți conexiunea
 up_cmd=Pornirea conexiunii cu comanda $1 ..
+
 export_title=Configurare export
 export_desc=Acest formular poate fi utilizat pentru a exporta secțiunea de fișiere de configurare pentru conexiunea $1, astfel încât să poată fi importat cu ușurință pe server la celălalt capăt.
 export_print=Configurare afișare în browser
@@ -193,11 +203,13 @@ export_err=Configurația exportului nu a reușit
 export_efile=Lipsește numele de fișier
 export_esave=Nu a reușit să scrie în fișier : $1 
 export_done=Configurație exportată pentru conexiune $1 la $2 ($3 octeți).
+
 import_title=Configurare import
 import_desc=Acest formular poate fi utilizat pentru a importa o secțiune de fișiere de configurare pentru o conexiune, cum ar fi una creată de funcția de export a modulului pe un alt sistem.
 import_upload=Importați din fișierul de încărcare ..
 import_file=Importați din fișierul din partea serverului ..
 import_ok=Importați acum
+
 import_err=Configurația de import a eșuat
 import_eupload=Nu a fost selectat niciun fișier de încărcat
 import_efile=Nu a fost introdus niciun fișier din partea serverului
@@ -207,6 +219,7 @@ import_eclash=O conexiune numită $1 există deja.
 import_done1=A adăugat cu succes noua conexiune IPsec $1.
 import_done2=Actualizați cu succes conexiunea IPsec $1.
 import_over=Suprascrieți conexiunea existentă cu același nume?
+
 secrets_title=Cheile secrete
 secrets_none=Nu au fost găsite chei secrete!
 secrets_name=Secret pentru
@@ -220,6 +233,7 @@ secrets_mod=Modulus $1
 secrets_newpsk=Creați o nouă cheie secretă partajată.
 secrets_newrsa=Creați o nouă cheie RSA.
 secrets_return=lista de chei secrete
+
 secret_title1=Creați cheie secretă
 secret_title2=Editează cheia secretă
 secret_header=Detalii cheie secrete

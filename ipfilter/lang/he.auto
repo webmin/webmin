@@ -43,8 +43,10 @@ index_natnone=טרם הוגדרו כללי תרגום של כתובות רשת.
 index_nataction=מצב NAT
 index_natfrom=מנות להתאמה
 index_natto=תרגום
+
 dir_in=נכנסת
 dir_out=יוצא
+
 action_pass=<font color=#00aa00>מעבר</font>
 action_block=<font color=#ff0000>חסום</font>
 action_skip=לדלג
@@ -57,6 +59,7 @@ action_map=מיפוי
 action_rdr=הפניה מחדש
 action_bimap=מיפוי דו-כיווני
 action_map-block=מיפוי חסימות
+
 laction_pass=<font color=#00aa00>לעבור מנות</font>
 laction_block=<font color=#ff0000>חסום מנות, עם קוד ICMP</font>
 laction_log=יומן מנות, ברמה
@@ -65,6 +68,7 @@ laction_skip=דלג על הכללים הבאים
 laction_auth=הרשאת שטח למשתמש
 laction_preauth=בדוק הרשאה קודמת
 laction_call=פונקצית גרעין שיחה
+
 edit_title1=צור כלל
 edit_title2=ערוך כלל
 edit_header1=פעולה שלטונית
@@ -130,6 +134,7 @@ edit_icmp=סוג ICMP
 edit_icmpany=&lt;כל סוג&gt;
 edit_icmpcode=וקוד
 edit_codeany=&lt;כל קוד&gt;
+
 save_err=שמירת הכלל נכשלה
 save_ehostfrom=שם מארח מקור חסר או לא חוקי
 save_ehostto=שם מארח יעד חסר או לא תקף
@@ -158,11 +163,13 @@ save_eto=ממשק חסר או לא חוקי להעברה
 save_etoip=כתובת IP לא חוקית להעברה
 save_ereplyto=ממשק חסר או לא חוקי לתגובה
 save_ereplytoip=כתובת IP לא חוקית לתשובה עליה
+
 apply_err=החלת התצורה נכשלה
 apply_remote=שגיאה מ- $1 : $2 
 unapply_err=ביטול התצורה נכשל
 unapply_ein=השגת כללי הקלט נכשלה
 unapply_eout=השגת כללי הפלט נכשלה
+
 desc_if=אם $1 
 desc_and=ו
 desc_always=תמיד
@@ -196,6 +203,7 @@ desc_rdr=כתובות IP יציאה $1 $2
 desc_dport1=היציאה היא $1 
 desc_dport2=היציאה היא בין $1 ל- $2 
 desc_nattoiface=כתובת ממשק
+
 log_create_rule=יצר כלל $1 
 log_delete_rule=כלל $1 נמחק
 log_modify_rule=כלל $1 השתנה
@@ -224,6 +232,7 @@ log_add_host=נוסף שרת אשכול $1
 log_add_group=הוסיפו שרתי אשכולות מקבוצה $1 
 log_delete_host=שרת האשכולות הוסרו $1 
 log_delete_group=שרתי אשכול $1 הוסרו
+
 cluster_title=שרתי חומת אש של אשכול
 cluster_none=עדיין לא נוספו שרתים לאשכול חומת האש.
 cluster_host=שם מארח
@@ -234,6 +243,7 @@ cluster_gadd=הוסף שרתים בקבוצה
 cluster_need=עליך להוסיף שרתים עם כניסה וסיסמה במודול אינדקס שרתי Webmin לפני שניתן יהיה לנהל אותם כאן.
 cluster_return=שרתי אשכול
 cluster_delete=הסר פריטים שנבחרו
+
 add_title=הוסף שרתים
 add_msg=מוסיף $1 ..
 add_gmsg=הוספת שרתים בקבוצה $1 ..
@@ -242,6 +252,7 @@ add_gerr=הוספת קבוצה נכשלה
 add_echeck=לשרת $1 אין את מודול חומת האש IPFilter
 add_emissing=בשרת $1 חסר פקודת חומת האש $2 
 add_ok=נוסף $1, עם $2 כללי חומת אש פעילים.
+
 nat_title1=צור כלל NAT
 nat_title2=ערוך כלל NAT
 nat_action=מצב NAT
@@ -300,4 +311,5 @@ nat_edport2=יציאה מקורית חסרה או לא חוקית
 net_erdrip='$1' אינה כתובת IP יעד תקפה
 nat_erdrips=לא הוזנו IP-כתובות יעד
 nat_erdrport=יציאת יעד חסרה או לא תקפה
+
 boot_esmf=שירות SMF $1 אינו קיים או אינו ידוע

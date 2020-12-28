@@ -17,6 +17,7 @@ index_restartmsg=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējo konfig
 index_comments=Brīdinājums - jūsu Jabber konfigurācijas failā $1 ir komentāri, kas tiks noņemti, ja, izmantojot šo moduli, tiks veiktas kādas konfigurācijas izmaiņas.
 index_return=Jabber izvēlne
 index_version=Jabber versija $1 
+
 general_title=Vispārīgās iespējas
 general_header=Globālās Jabber servera iespējas
 general_host=Jūsu servera resursdators
@@ -32,6 +33,7 @@ general_eelogfmt=Trūkst kļūdu žurnāla formāta
 general_erlog=Trūkst vai nav derīgs satiksmes žurnāla fails
 general_erlogfmt=Trūkst satiksmes žurnāla formāta
 general_epidfile=Trūkst vai nav derīgs procesa ID fails
+
 messages_title=Ziņas
 messages_header=Jabber servera ziņojums klientiem
 messages_wsubject=Sveiciena ziņojuma tēma
@@ -44,6 +46,7 @@ messages_vcard2jud=Vai sūtīt vCard uz Jabber lietotāju direktoriju?
 messages_err=Neizdevās saglabāt ziņojumus
 messages_evcard=Nederīgs vCard XML : $1 
 messages_etag=Servera vCard XML nesākas ar &lt;vCard&gt;
+
 modules_title=Jabber moduļi
 modules_desc=Zemāk uzskaitītie moduļi tiek izmantoti, lai apstrādātu ziņojumus, ko saņem Jabber sesiju pārvaldnieks. Jums vajadzētu mainīt šo sarakstu tikai tad, ja zināt, ko darāt.
 modules_header=Jabber servera sesiju pārvaldnieka moduļi
@@ -52,6 +55,7 @@ modules_so=Kopīga bibliotēka
 modules_err=Neizdevās saglabāt Jabber moduļus
 modules_emod='$1' nav derīgs moduļa nosaukums
 modules_eso=Koplietotā bibliotēka '$1' neeksistē
+
 karma_title=Karmas satiksmes kontrole
 karma_header=Satiksmes ātruma kontroles iespējas
 karma_rate=Pārmērīga savienojuma apstrāde
@@ -80,6 +84,7 @@ karma_epenalty=Trūkst vai nav spēkā soda termiņi
 karma_erestore=Trūkst vai nav derīgi atjaunošanas periodi
 karma_epoints=Trūkst vai nav derīgs savienojumu skaits
 karma_etime=Trūkst laika vai tas nav derīgs
+
 ips_title=IP piekļuves kontrole
 ips_header=Jabber servera IP piekļuves kontrole
 ips_allow=Atļautie klienta IP
@@ -89,10 +94,12 @@ ips_none=Nav
 ips_sel=Norādītās adreses/tīkla maskas ..
 ips_err=Neizdevās saglabāt IP piekļuves kontroli
 ips_eaddr=“$1” nav derīga IP adrese vai IP adrese/tīkla maska
+
 file_title=Rediģēt konfigurācijas failu
 file_desc=Izmantojiet zemāk esošo formu, lai tieši rediģētu Jabber konfigurācijas failu. Tas jādara tikai tad, ja saprotat XML konfigurācijas formātu.
 file_header=Rediģēt Jabber konfigurācijas failu
 file_err=Neizdevās saglabāt konfigurācijas failu
+
 admin_title=Administratīvie lietotāji
 admin_header=Servera administrēšanas lietotāji
 admin_read=Lasīt piekļuves administratorus
@@ -100,11 +107,13 @@ admin_write=Rakstiet piekļuves administratorus
 admin_reply=Automātiski atbildēt uz administratora ziņojumiem?
 admin_rsubject=Automātiski atbildīgs priekšmets
 admin_rbody=Automātiskas atbildes ziņojums
+
 filter_title=Lietotāju filtri
 filter_header=Lietotāju filtru atļaujas
 filter_max=Maksimālie filtru noteikumi
 filter_conds=Atļautie filtra apstākļi
 filter_acts=Atļautās filtra darbības
+
 restart_err=Neizdevās piemērot izmaiņas
 stop_err=Neizdevās apturēt Džabberu
 stop_epid=Neizdevās atrast Jabber procesu

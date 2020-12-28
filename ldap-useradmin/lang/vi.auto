@@ -19,10 +19,13 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=Người dùng LDAP
 index_groups=Nhóm LDAP
+
 imap_econn=Không thể kết nối với máy chủ IMAP $1 
 imap_elogin=Không thể đăng nhập vào máy chủ IMAP $1 dưới dạng $2 : $3 
 conn_eldap_host=Không tìm thấy tệp cấu hình máy khách LDAP trên hệ thống của bạn, vì vậy máy chủ LDAP phải được đặt trên trang Cấu hình mô-đun
 conn_elogin=Không tìm thấy tệp cấu hình máy khách LDAP trên hệ thống của bạn, vì vậy phải đăng nhập LDAP trên trang Cấu hình mô-đun
+conn_efile_open=Không thể mở tệp thông tin xác thực ràng buộc LDAP:
+
 uedit_cap=Khả năng của người dùng
 uedit_samba=Samba đăng nhập?
 uedit_cyrus=Đăng nhập máy chủ IMAP?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=Cập nhật mật khẩu lần cuối
 uedit_sambapwdcanchange=Mật khẩu có thể thay đổi
 uedit_sambabadpasswordcount=Số mật khẩu xấu
 uedit_sambaacctflags=Cờ tài khoản
+
 usave_eadd=Không thể thêm người dùng vào cơ sở dữ liệu LDAP : $1 
 usave_emod=Không thể sửa đổi người dùng trong cơ sở dữ liệu LDAP : $1 
 usave_emoddn=Không thể đổi tên người dùng trong cơ sở dữ liệu LDAP : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=Người dùng $1 đã sử dụng $2 $3
 usave_eattrdupg=Nhóm $1 đã sử dụng $2 $3 
 usave_ereal=Thiếu tên thật
 usave_equota=Hạn ngạch IMAP bị thiếu hoặc không hợp lệ
+
 search_err=Tìm kiếm $1 dưới $2 không thành công : $3 
+
 gedit_dn=LDAP của nhóm
 gedit_return=chi tiết nhóm
 gedit_cap=Khả năng nhóm
 gedit_samba=Nhóm Samba?
+
 gsave_egone=Nhóm không còn tồn tại!
 gsave_edelete=Không thể xóa nhóm khỏi cơ sở dữ liệu LDAP : $1 
 gsave_eadd=Không thể thêm nhóm vào cơ sở dữ liệu LDAP : $1 
 gsave_emod=Không thể sửa đổi nhóm trong cơ sở dữ liệu LDAP : $1 
 gsave_emoddn=Không thể đổi tên nhóm trong cơ sở dữ liệu LDAP : $1 
+
 gdel_group=Xóa mục nhập nhóm LDAP ..
+
 udel_pass=Xóa mục nhập người dùng LDAP ..
 udel_book=Xóa khỏi sổ địa chỉ ..
 udel_imap=Xóa thư mục IMAP ..
 udel_warnimap=Hộp thư thư hiện có sẽ bị xóa khi xóa thư mục chính!
 udel_failed=.. thất bại!  : $1 
+
 raw_title=Thuộc tính LDAP
 raw_name=Tên thuộc tính
 raw_value=Giá trị
 raw_for=Cho 1
+
 batch_samba=Tạo tài khoản Samba cho người dùng mới?
 batch_imap=Tạo tài khoản IMAP cho người dùng mới?
 batch_descafter3=Trong các dòng <b>tạo</b> và <b>sửa đổi</b>, bạn có thể tùy ý nối thêm các trường bổ sung có chứa các thuộc tính LDAP ở định dạng <i>name</i> = <i>value</i>, để được chỉ định cho người dùng mới hoặc sửa đổi.

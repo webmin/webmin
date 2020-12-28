@@ -1,5 +1,6 @@
 check_etargets=$1 iSCSI sunucusu yapılandırma dosyası sisteminizde bulunamadı.
 check_eserver=$1 iSCSI sunucu programı sisteminizde bulunamadı.
+
 index_title=iSCSI Sunucusu
 index_clink=Belki yüklü değil veya <a href='$1'>modül yapılandırmanız</a> yanlış.
 index_stop=İSCSI Sunucusunu Durdurma
@@ -11,6 +12,7 @@ index_restartdesc=İSCSI sunucusunu yeniden başlatarak geçerli yapılandırmay
 index_atboot=Önyüklemeden başla?
 index_atbootdesc=İSCSI sunucusunun önyükleme zamanında başlatılıp başlatılmayacağını denetlemek için bu seçeneği değiştirin. Şu anda önyüklemede başlatılmazsa ve Evet seçilirse, yeni bir başlangıç komut dosyası oluşturulur.
 index_return=modül dizini
+
 extents_title=Paylaşılacak Cihazlar
 extents_none=Henüz paylaşılacak cihaz oluşturulmadı.
 extents_name=Cihaz adı
@@ -25,6 +27,7 @@ extents_denone=Hiçbiri seçilmedi
 extents_einuse=$1 cihazı kullanımda olduğu için silinemiyor : $2 
 extents_drusure=Aşağıdaki cihazları kaldırmak istediğinizden emin misiniz: $1 ? İçerikleri korunacak, ancak artık iSCSI istemcileri tarafından erişilemeyecek.
 extents_sure=Cihazları Sil
+
 extent_create=Paylaşılacak Cihaz Oluştur
 extent_edit=Paylaşılacak Cihazı Düzenle
 extent_egone=$1 paylaşılacak cihaz mevcut değil!
@@ -50,6 +53,7 @@ extent_estart=Kapsam başlangıcı bir sayı olmalıdır
 extent_esize=Boyut boyutu bir sayı olmalıdır
 extent_esizemax=Kapsam sonu $1 cihaz boyutundan daha büyük olamaz
 extent_einuse=Bu cihaz, kullanımda olduğu için silinemiyor : $1 
+
 devices_title=Cihaz Kombinasyonları
 devices_none=Henüz hiçbir cihaz kombinasyonu oluşturulmadı.
 devices_name=Kombinasyon adı
@@ -65,6 +69,7 @@ devices_denone=Hiçbiri seçilmedi
 devices_einuse=$1 kombinasyonu, kullanımda olduğu için silinemiyor : $2 
 devices_drusure=Aşağıdaki cihaz kombinasyonlarını kaldırmak istediğinizden emin misiniz: $1 ? İçerikleri korunacak, ancak artık iSCSI istemcileri tarafından erişilemeyecek.
 devices_sure=Cihaz Kombinasyonlarını Sil
+
 device_create=Cihaz Kombinasyonu Oluştur
 device_edit=Cihaz Kombinasyonunu Düzenle
 device_egone=$1 cihaz kombinasyonu mevcut değil!
@@ -81,6 +86,7 @@ device_sure=Cihaz Kombinasyonunu Sil
 device_einuse=Bu cihaz kombinasyonu, kullanımda olduğu için silinemiyor : $1 
 device_eextents=Hiçbir üye cihaz seçilmedi
 device_eself=Seçilen üye cihazlardan biri bu cihazı içeriyor!
+
 targets_title=Hedefleri Paylaşma
 targets_none=Henüz hiçbir paylaşım hedefi oluşturulmadı.
 targets_name=Hedef adı
@@ -96,6 +102,7 @@ targets_derr=Paylaşım hedefleri silinemedi
 targets_denone=Hiçbiri seçilmedi
 targets_drusure=Aşağıdaki paylaşım hedeflerini kaldırmak istediğinizden emin misiniz: $1 ? Hiçbir veri kaybolmaz, ancak artık iSCSI istemcileri tarafından erişilemez.
 targets_sure=Paylaşım Hedeflerini Sil
+
 target_create=Paylaşım Hedefleri Oluşturun
 target_edit=Paylaşım Hedeflerini Düzenle
 target_egone=$1 hedefini paylaşmak mevcut değil!
@@ -112,6 +119,7 @@ target_rusure=$1 paylaşım hedefini silmek istediğinizden emin misiniz? Hiçbi
 target_sure=Hedefi Sil
 target_enetwork=Paylaşmak için eksik veya geçersiz ağ
 target_emask=Paylaşmak için eksik veya geçersiz ağ maskesi
+
 opts_title=iSCSI Sunucu Seçenekleri
 opts_header=Tüm iSCSI hedefleri için seçenekler
 opts_ip4=IPv4 bağlantılarını kabul et
@@ -124,10 +132,12 @@ opts_err=Seçenekler kaydedilemedi
 opts_ename=Eksik veya geçersiz ad - yalnızca harf, sayı, kısa çizgi, nokta ve alt çizgiye izin verilir
 opts_eport=Eksik veya sayısal olmayan bağlantı noktası numarası
 opts_esess=Eksik veya sayısal olmayan maksimum oturumlar
+
 manual_title=Yapılandırma Dosyasını Düzenle
 manual_desc=$1 iSCSI sunucusu yapılandırma dosyasını düzenlemek için aşağıdaki metin kutusunu kullanın. Girişinizde hiçbir doğrulama yapılmayacağından dikkatli olun!
 manual_err=Yapılandırma dosyası kaydedilemedi
 manual_edata=İçerik girilmedi!
+
 users_title=iSCSI Kimlik Doğrulaması
 users_none=Henüz iSCSI kullanıcısı oluşturulmadı. İstemciler, kimlik doğrulaması yapmadan paylaşılan cihazlara erişebilecek.
 users_add=Yeni bir iSCSI kullanıcısı ekleyin.
@@ -135,6 +145,7 @@ users_delete=Seçilen Kullanıcıları Sil
 users_name=Kullanıcı adı
 users_mode=Kimlik doğrulama yöntemi
 users_return=kullanıcı listesi
+
 user_create=İSCSI Kullanıcısı Oluşturun
 user_edit=İSCSI Kullanıcısını Düzenle
 user_header=iSCSI kullanıcı detayları
@@ -145,13 +156,16 @@ user_egone=Kullanıcı artık mevcut değil!
 user_err=İSCSI kullanıcısı kaydedilemedi
 user_euser=Eksik veya geçersiz kullanıcı adı - boşluklara ve iki nokta üst üste işaretlerine izin verilmiyor
 user_epass=Eksik veya geçersiz şifre - boşluklara ve iki nokta üst üste işaretlerine izin verilmiyor
+
 desc_extent=$1 paylaşılacak cihaz
 desc_device=$1 cihaz kombinasyonu
 desc_target=Hedef paylaşma $1 
+
 start_err=İSCSI sunucusu başlatılamadı
 stop_err=İSCSI sunucusu durdurulamadı
 restart_err=İSCSI sunucusu yeniden başlatılamadı
 atboot_err=Önyükleme sırasında etkinleştirilemedi
+
 log_create_extent=$1 paylaşmak için cihaz oluşturuldu
 log_modify_extent=$1 paylaşmak için cihaz güncellendi
 log_delete_extent=$1 paylaşmak için cihaz silindi

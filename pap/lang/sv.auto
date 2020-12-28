@@ -2,8 +2,10 @@ index_title=PPP Dialin Server
 index_return=PPP-index
 index_none=Du har inte tillgång till någon av funktionerna i den här modulen.
 index_delete=Radera valda konton
+
 secrets_none=Inga PPP-konton har skapats än.
 secrets_ecannot=Du får inte redigera PPP-konton
+
 log_deletes=Raderade $1 PPP-konton
 log_apply=Tillämpad Mgetty-konfiguration
 log_options=Sparade PPP-alternativ
@@ -15,6 +17,7 @@ log_dialin_move=Flyttad uppringandes ID-nummer $1
 log_mgetty_create=Skapad serieport $1 
 log_mgetty_modify=Modifierad serieport $1 
 log_mgetty_delete=Seriell port $1 raderad
+
 options_title=PPP-alternativ
 options_serial=För serieport $1 
 options_dev=För enhet $1 
@@ -45,6 +48,7 @@ options_idle=I vilotid innan kopplingen lossnar
 options_idle_def=Aldrig
 options_eidle=Saknad eller ogiltig vilotid
 options_ecannot=Du får inte redigera PPP-alternativ
+
 mgetty_title=Seriell portkonfiguration
 mgetty_ecmd=Kommandot $1 hittades inte på ditt system. Detta program behövs för att hantera seriella portinloggningar via modem eller direktanslutning.
 mgetty_desc=För att din server ska tillåta inloggningar på en seriell port via modem eller en direktanslutning måste den anges nedan. När du lägger till en port i den här listan kommer $1 -programmet att konfigureras för att svara på modemanslutningar och visa en inloggningsprompt.
@@ -86,6 +90,7 @@ mgetty_apply=Använd konfigurering
 mgetty_applydesc=Klicka på den här knappen för att tillämpa den aktuella seriella portkonfigurationen genom att köra kommandot $1 och döda alla Mgetty-processer.
 mgetty_applyerr=Det gick inte att tillämpa konfigurationen
 mgetty_ecannot=Du får inte redigera seriella portkonfigurationer
+
 dialin_title=Anrop till ID
 dialin_desc=På den här sidan kan du konfigurera Mgetty så att du kan tillåta eller neka uppringning baserat på telefonnumret på en anropare. När ett samtal kommer in kommer den första posten i listan som matchar telefonnumret att avgöra om samtalet accepteras eller inte.
 dialin_efile=Mgetty-samtalens ID-åtkomstkontrollfil $1 hittades inte på ditt system. Kanske är Mgetty inte installerad eller så är din <a href='$2'>modulkonfiguration</a> felaktig.
@@ -106,9 +111,12 @@ dialin_move=Flytta
 dialin_err=Det gick inte att spara anrops-ID-nummer
 dialin_enumber=Telefonnummer saknas eller ogiltigt
 dialin_ecannot=Du får inte redigera åtkomst till nummerpresentation
+
 acl_pages=Tillgängliga sidor
 acl_direct=Gå direkt till en sida?
+
 sync_ecannot=Du får inte redigera synkroniseringsalternativ för unix-ppp
 sync_title=Användarsynkronisering
+
 delete_err=Det gick inte att ta bort konton
 delete_enone=Ingen vald

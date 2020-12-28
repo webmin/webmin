@@ -16,6 +16,7 @@ index_d1=$1
 index_dlang=모듈을 출력하기 위한 언어
 index_dtheme=Webmin 의 출력을 조정하기 위한 테마
 index_dpass=로그인에 사용될 암호
+
 change_title=설정 변경
 change_user=Webmin 로그인 변경 ..
 change_done=.. 완료
@@ -23,6 +24,7 @@ change_restart=Webmin 재시작 ..
 change_redirect=메인 메뉴로 재전환 ..
 change_ecolon=암호에 : 문자를 포함할 수 없습니다
 change_epass=유효하지 않은 새 암호 : $1
+
 acl_lang=언어를 변경하겠습니까?
 acl_theme=테마를 변경하겠습니까
 acl_pass=암호를 변경하겠습니까 (Webmin 에서 설정했을 경우) ?

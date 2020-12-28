@@ -15,7 +15,9 @@ index_use=Korzysta
 index_free=Wolne
 index_format=Ten dysk jest niesformatowany
 index_return=listy dysków
+
 edit_ecannot=Nie masz uprawnień do zmian tego dysku
+
 edit_title=Zmień partycję
 edit_header=Dane partycji
 edit_location=Położenie
@@ -56,6 +58,7 @@ edit_tunedesc2=Nie możesz dostrajać systemu plików na tej partycji, gdyż nie
 edit_tunedesc3=Nie możesz dostrajać systemu plików na tej partycji, gdyż jest ona aktualnie zamontowana. Odmontuj ją najpierw za pomocą modułu <a href=/mount/>Lokalne i sieciowe systemy plików</a>.
 edit_tunedesc4=Nie możesz dostrajać systemu plików na tej partycji, gdyż nie zawiera ona systemu plików.
 edit_tunedesc5=Nie możesz dostrajać systemu plików na tej partycji, gdyż można dostrajać jedynie systemy plików <tt>UFS</tt>.
+
 save_ecannot=Nie masz upranień do zmian tego dysku
 save_edelete=Nie udało się skasować partycji
 save_esave=Nie udało się zachować partycji
@@ -64,6 +67,7 @@ save_eend='$1' nie jest poprawnym numerem końcowego cylindra
 save_estartmin=Numer początkowego cylindra musi być > 0
 save_eendmax=Numer końcowego cylindra musi być < $1
 save_estartend=Numer początkowego cylindra musi być mniejszy niź numer końcowego cylindra
+
 newfs_title=Utwórz system plików
 newfs_ecannot=Nie masz uprawnień do formatowania tego dysku
 newfs_desc=Naciskając przycisk u dołu tego formularza utworzysz nowy $1 na urządzeniu $2. Wszystkie dane z tej partycji zostaną nieodwracalnie usunięte.
@@ -89,6 +93,7 @@ newfs_err=Nie udało się utworzyć systemu plików
 newfs_exec=Wykonywanie polecenia $1 ..
 newfs_failed=.. polecenie zakończyło się niepowodzeniem!
 newfs_ok=.. zakończone.
+
 fsck_title=Napraw system plików
 fsck_ecannot=Nie masz uprawnień do naprawy tego dysku
 fsck_desc=Naciskajęc przycisk <b>Napraw</b> sprawdzisz i ewentualnie naprawisz $1 na $2. Poziom sprawdzania i naprawy zależy od Twojego wyboru poniżej.
@@ -106,6 +111,7 @@ fsck_37=proces został zabity podczas sprawdzania
 fsck_39=znaleziono nienaprawialne błędy!
 fsck_40=nie znaleziono błędów
 fsck_unknown=nieznany błąd
+
 tunefs_title=Dostrój system plików
 tunefs_ecannot=Nie masz uprawnień do dostrajania systemów plików na tym dysku
 tunefs_desc=Za pomocą tego formularza możesz dostroić różne parametry $1 na $2. Istniejącym na tym systemie plików plikom nic się nie stanie.
@@ -122,6 +128,7 @@ tunefs_err=Nie udało się dostroić systemu plików
 tunefs_exec=Wykonywanie polecenia $1 ..
 tunefs_failed=.. polecenie zakończyło się niepowodzeniem!
 tunefs_ok=.. zakończone.
+
 select_device=Kontroler SCSI $1 urządzenie $2 podurządzenie $3
 select_idedevice=Urządzenie IDE $1
 select_part=Kontroler SCSI $1 urządzenie $2 podurządzenie $3 partycja $4
@@ -131,8 +138,10 @@ esun=Partycje można zmieniać tylko na sprzęcie Sun-a
 emounted=Dysk zawiera podmontowane partycje
 elast=Nie można usunąć ostatniej partycji
 eformat=<tt>format</tt> nie znalazł żadnego dysku!
+
 fstype_ufs=Uniksowy system plików Solarisa
 fstype_unknown=Nieznany system plików
+
 acl_disks=Dyski, które ten użytkownik może partycjonować i formatować
 acl_dall=Wszystkie dyski
 acl_dsel=Wybrane..

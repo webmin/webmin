@@ -57,6 +57,7 @@ index_fmode1=Súbor virtuálnych serverov $1
 index_fmode1d=Nový súbor v adresári virtuálnych serverov $1
 index_fmode2=Vybraný súbor ..
 index_delete=Odstrániť vybrané servery
+
 cvirt_ecannot=Nemáte oprávnenie vytvárať virtuálny server
 cvirt_err=Nepodarilo sa vytvoriť virtuálny server
 cvirt_eaddr1=Nebola zadaná žiadna adresa
@@ -70,6 +71,7 @@ cvirt_eroot4=V konfigurácii Apache nie je definovaný žiadny užívateľ
 cvirt_etaken=Virtuálny server s rovnakým názvom a portom už existuje
 cvirt_efile=Nepodarilo sa zapísať na $1 : $2 
 cvirt_emissing=Nový virtuálny server bol pridaný do $1, ale tento súbor Apache nepoužíva. Skontrolujte <a href='$2'>konfiguráciu modulu</a> a uistite sa, že je správne zadaný súbor alebo adresár, do ktorého chcete pridať virtuálne servery.
+
 etype=Nemáte povolenie upravovať možnosti tohto typu
 efailed=Uloženie $1 zlyhalo
 apache_apply=Aplikovať zmeny
@@ -80,6 +82,7 @@ default_serv=predvolený server
 bytes=bajtov
 eafter=Overenie konfigurácie zlyhalo: $1 Zmeny sa neuložili.
 enewline=Hodnota v hodnote je neplatná
+
 global_ecannot=Nemáte oprávnenie upravovať globálne možnosti
 global_mime=Globálny zoznam typov MIME
 global_mimedesc=Kliknutím na typ MIME zo zoznamu nižšie ho upravte, alebo pomocou odkazu v dolnej časti stránky pridajte nový typ do zoznamu.
@@ -87,6 +90,7 @@ global_type=typ
 global_ext=rozšírenie
 global_add=Pridajte nový typ MIME.
 global_return=Typy MIME
+
 mime_ecannot=Nemáte dovolené upravovať typy mima
 mime_edit=Upraviť typ MIME
 mime_add=Pridať typ MIME
@@ -95,6 +99,7 @@ mime_type=Typ MIME
 mime_ext=rozšírenie
 mime_err=Nepodarilo sa uložiť typ MIME
 mime_etype=$1 nie je platný typ MIME
+
 virt_ecannot=Tento virtuálny server nemôžete upravovať
 virt_eprotocol=Musíte vybrať aspoň jednu použiteľnú verziu protokolu SSL/TLS
 virt_title=Možnosti virtuálneho servera
@@ -121,6 +126,7 @@ virt_path=cesta
 virt_return=index servera
 virt_euser=Nemáte povolenie meniť používateľa alebo skupinu pre tento virtuálny server.
 virt_header2=$1 pre $2
+
 vserv_title=Konfigurácia virtuálneho servera
 vserv_virtualmin=Tento virtuálny hostiteľ Apache patrí k serveru Virtualmin <tt>$1</tt>, takže tu nie je možné meniť adresu, port, základný adresár a názov hostiteľa.
 vserv_ecannot=Adresa tohto virtuálneho servera nemôžete upraviť
@@ -140,10 +146,12 @@ vserv_eport=$1 nie je platný port
 vserv_eroot='$1' nie je platný koreň dokumentu
 vserv_ename='$1' nie je platný názov servera
 vserv_eaddrs=Neboli zadané žiadne adresy virtuálnych serverov
+
 show_title=smernice
 show_edit=Upraviť smernicu Apache:
 show_these=Ručné úpravy smerníc
 show_ok=editovať
+
 manual_configs=Upraviť konfiguračné súbory
 manual_title=Upraviť smernice
 manual_header=Pomocou textového poľa nižšie ručne upravte smernice Apache v $1, ktoré sa vzťahujú na tento virtuálny server, adresár alebo súbory.
@@ -153,6 +161,7 @@ manual_efile=Neplatný konfiguračný súbor Apache
 manual_etest=Zistená chyba konfiguračného súboru : $1
 manual_editfile=Upraviť konfiguračný súbor:
 manual_switch=editovať
+
 dir_title=Možnosti pre jednotlivé adresáre
 dir_proxyall=Všetky žiadosti o splnomocnenie
 dir_header=Pre $1 na $2
@@ -169,6 +178,7 @@ dir_re=Zápas regexp
 dir_path=cesta
 dir_return=index adresára
 dir_header2=$1 pre $2
+
 type_0=Procesy a limity
 type_1=Vytváranie sietí a adresy
 type_2=Moduly Apache
@@ -190,6 +200,7 @@ type_17=Automatické virtuálne hostiteľa
 type_18=filtre
 type_19=jazyky
 type_20=Obrázkové mapy
+
 htaccess_title=Súbory možností adresárov
 htaccess_ecannot=Nemôžete upravovať súbory htaccess
 htaccess_file=Existujúce súbory možností
@@ -205,6 +216,7 @@ htaccess_edelete=Nemáte povolenie vymazať tento súbor s možnosťami
 htaccess_eempty=Nebol zadaný žiadny adresár súborov volieb
 htaccess_eabsolute=Adresár súborov s voľbami musí byť absolútnou cestou
 htaccess_err=Nepodarilo sa vytvoriť súbor možností
+
 htindex_ecannot=Nemáte povolenie upravovať tento súbor s možnosťami
 htindex_title=Súbor možností pre jednotlivé adresáre
 htindex_delete=Zmazať súbor
@@ -220,12 +232,14 @@ htindex_path=cesta
 htindex_header=Pre $1
 htindex_header2=$1 pre súbor možností $2
 htindex_return=index súborov možností
+
 htfile_title=Možnosti súborov
 htfile_header=Pre $1 v $2
 htfile_show=Zobraziť smernice
 htfile_edit=Upraviť smernice
 htfile_apply=Možnosti sa týkajú ..
 htfile_header2=$1 pre $2
+
 reconfig_title=Znovu nakonfigurujte známe moduly
 reconfig_ecannot=Nemáte povolenie znova nakonfigurovať apache
 reconfig_ever=Nepodarilo sa získať spustiteľnú verziu servera Apache $1. Skontrolujte svoju <a href='$2'>konfiguráciu modulu</a> a uistite sa, že je to správna cesta.
@@ -233,11 +247,13 @@ reconfig_desc1=Vaša konfigurácia Apache sa zmenila alebo ešte nebola preskúm
 reconfig_desc2=Nižšie je uvedený zoznam všetkých modulov Apache podporovaných serverom Webmin s vybratými práve nainštalovanými modulmi. Ak používate dynamicky načítané moduly, možno budete musieť vybrať tie, ktoré sú dynamicky načítané.
 reconfig_desc3=Ak si nie ste istí, ktoré moduly sú podporované Apache vo vašom systéme, len Configure as Webmin môže normálne vypracovať podporované moduly automaticky.
 reconfig_ok=Konfigurácia
+
 defines_title=Upraviť definované parametre
 defines_ecannot=Nemáte oprávnenie upravovať definície httpd
 defines_desc=Pri spustení Apache je možné do parametra zadať voľbu príkazového riadku <tt>-D</tt>. Pretože tieto parametre môžu ovplyvniť, ktoré direktívy sa používajú vo vašich konfiguračných súboroch, Webmin musí vedieť, ktoré sú odovzdané Apache pri jeho spustení. Do textového poľa vpravo zadajte parametre použité vo vašom systéme.
 defines_config=Všimnite si, že už sú známe nasledujúce definované parametre : $1
 defines_list=Definované parametre
+
 authu_ecannot=$1 nie je povolený textový súbor pre používateľov
 authu_title=Zoznam používateľov
 authu_header=V súbore $1
@@ -259,6 +275,7 @@ authu_sync=Nasledujúce možnosti vám umožňujú nakonfigurovať Webmin tak, a
 authu_screate=Pridanie používateľa, keď je pridaný užívateľ Unix
 authu_sdelete=Odstráňte používateľa, keď je odstránený užívateľ Unixu
 authu_smodify=Zmena používateľa pri zmene používateľa systému Unix
+
 authg_ecannot=$1 nie je povolený textový súbor skupín
 authg_title=Zoznam skupín
 authg_header=V súbore $1
@@ -276,22 +293,26 @@ authg_err=Uloženie skupiny zlyhalo
 authg_euser=Nebol zadaný žiadny názov skupiny
 authg_euser2=Názov skupiny nemôže obsahovať :
 authg_edup=Skupina s názvom „$1“ už existuje
+
 stop_err=Nepodarilo sa zastaviť apache
 stop_ecannot=Nemáte povolenie zastaviť apache
 stop_epid=Nepodarilo sa otvoriť súbor PID $1
 stop_epid2=Neplatný súbor PID $1
 stop_esig=Nepodarilo sa odoslať SIGTERM na spracovanie $1
+
 start_err=Nepodarilo sa spustiť apache
 start_ecannot=Nemáte oprávnenie na spustenie apache
 start_ecmd=$1 zlyhalo : $2
 start_eunknown=Neznámy dôvod
 start_eafter=Zdá sa, že Apache nie je spustený
+
 restart_err=Nepodarilo sa uplatniť zmeny
 restart_epid=Nepodarilo sa otvoriť súbor PID $1
 restart_epid2=Neplatný súbor PID $1
 restart_esig=Nepodarilo sa odoslať SIGHUP na spracovanie $1
 restart_eunknown=Neznámy dôvod
 restart_ecannot=Nemáte povolenie na vykonanie zmien
+
 acl_virts=Virtuálne servery, ktoré môže tento používateľ upravovať
 acl_vall=Všetky servery
 acl_vsel=Vybraný ..
@@ -314,6 +335,7 @@ acl_dirs=Dostupné direktívy Apache <br><font size=-1> (podľa obmedzenia typov
 acl_dirs0=všetko
 acl_dirs1=Iba uvedené ..
 acl_dirs2=Všetky okrem uvedených ..
+
 core_maxconc=Maximálny počet súbežných žiadostí
 core_maxkeep=Maximálny počet pripojení na jedno pripojenie
 core_maxreq=Maximálne požiadavky na proces servera
@@ -499,10 +521,12 @@ core_infilter=Použiť vstupné filtre pre všetky súbory
 core_outfilter=Použiť výstupné filtre pre všetky súbory
 core_defchar=Znaková sada pre dokumenty
 core_edefchar=Chýbajúca alebo neplatná znaková sada pre dokumenty
+
 mod_negotiation_cache=Vyrovnávacia pamäť dokumentov dohodnutých v obsahu?
 mod_negotiation_pri=Jazyková priorita pri viacerých zobrazeniach
 mod_negotiation_def=štandardné
 mod_negotiation_epri=Chýbajúce jazykové priority
+
 mod_cgi_logname=Protokol skriptu CGI
 mod_cgi_none=nikto
 mod_cgi_elogname=Neplatný protokolový súbor skriptu CGI
@@ -512,6 +536,7 @@ mod_cgi_elogsize=Veľkosť denníka CGI musí byť celé číslo
 mod_cgi_post=Maximálna veľkosť údajov prihlásených do denníka
 mod_cgi_epost=Veľkosť údajov príspevku musí byť celé číslo
 mod_cgi_eunder=Protokol skriptov CGI nie je v povolenom adresári
+
 mod_alias_from=z
 mod_alias_to=na
 mod_alias_status=Postavenie
@@ -535,6 +560,7 @@ mod_alias_cgi2=Alias adresára CGI
 mod_alias_rcgi=Regexp aliasy adresárov CGI
 mod_alias_rcgi2=regexp alias adresára CGI
 mod_alias_estatus=$1 nie je platný stav
+
 mod_proxy_proxy=Ako proxy server?
 mod_proxy_req=žiadosti
 mod_proxy_forw=Ďalej do
@@ -605,11 +631,13 @@ mod_proxy_timeout=Časový limit žiadosti o proxy v sekundách
 mod_proxy_etimeout=Časový limit žiadosti o proxy musí byť niekoľko sekúnd
 mod_proxy_via=Set Via: hlavičky
 mod_proxy_not=nikto
+
 mod_log_agent_default=štandardné
 mod_log_agent_file=Súbor ..
 mod_log_agent_program=Program ..
 mod_log_agent_log=Súbor denníka prehliadača
 mod_log_agent_efile=$1 nie je platný názov súboru denníka agenta
+
 mod_log_config_common=Spoločný formát denníka
 mod_log_config_named=Pomenované protokolové formáty
 mod_log_config_nick=prezývka
@@ -628,6 +656,7 @@ mod_log_config_enofilprog=Chýba názov súboru denníka alebo program
 mod_log_config_efilprog='$1' nie je povolený názov súboru denníka alebo program
 mod_log_config_eifset=Možnosť „Ak je nastavená“ nemôže byť použitá s predvoleným formátom denníka
 mod_log_config_edir=Adresár pre súbor denníka '$1' neexistuje
+
 mod_log_referer_default=štandardné
 mod_log_referer_file=Súbor ..
 mod_log_referer_program=Program ..
@@ -635,7 +664,9 @@ mod_log_referer_log=Súbor denníka sprostredkovateľa
 mod_log_referer_nolog=Nezaznamenávať odkazy z
 mod_log_referer_elog=$1 nie je platný názov súboru denníka sprostredkovateľa
 mod_log_referer_edir=denník referera nie je v povolenom adresári
+
 mod_status_msg=Zobraziť rozšírené informácie o stave
+
 mod_mime_ext=rozšírenie
 mod_mime_xtype=Extra typy MIME
 mod_mime_mtype=Typ MIME
@@ -668,6 +699,7 @@ mod_mime_outfilter=Výstupné filtre
 mod_mime_infilter=Vstupné filtre
 mod_mime_filters=Použiť filtre
 mod_mime_efext=Pre filtre $1 neboli dané žiadne rozšírenia
+
 mod_setenvif_header=hlavička
 mod_setenvif_match=Zápas
 mod_setenvif_case=Match case
@@ -678,11 +710,13 @@ mod_setenvif_eheader=Neplatná hlavička žiadosti „$1“
 mod_setenvif_eregex=Neplatný regulárny výraz „$1“
 mod_setenvif_evar=Neplatný názov premennej '$1'
 mod_setenvif_clear=jasný
+
 mod_userdir_default=štandardné
 mod_userdir_all=Všetci používatelia sú prístupní
 mod_userdir_except=Všetci používatelia okrem
 mod_userdir_dir=Webový adresár používateľa
 mod_userdir_edir=Nemáte povolené používať zadaný užívateľský WWW adresár
+
 mod_imap_action=Postup pri nesprávnom použití snímok
 mod_imap_default=štandardné
 mod_imap_godefurl=Prejdite na predvolenú adresu URL
@@ -702,8 +736,10 @@ mod_imap_refurl=Sprostredkujúca adresa URL
 mod_imap_url=URL. ..
 mod_imap_defbase=Predvolená základňa pre obrázky
 mod_imap_eurl=$1 nie je platná adresa URL
+
 mod_speling_autocorr=Automaticky opraviť nesprávne napísané adresy URL?
 mod_speling_default=štandardné
+
 mod_actions_mime=Typ obsluhy / MIME
 mod_actions_cgiurl=URL skriptu CGI
 mod_actions_mimecgi=Akcie typu CGI obsluhy alebo typu MIME
@@ -713,10 +749,13 @@ mod_actions_httpcgi=CGI akcie HTTP metódy
 mod_actions_emime='$1' nie je platný popisovač alebo typ MIME
 mod_actions_ecgi='$1' nie je platný skript CGI
 mod_actions_enometh=Pre skript CGI '$1' nebola vybraná žiadna metóda
+
 mod_include_incl=Proces zahŕňa súbory so spusteným bitom?
 mod_include_set=Áno a nastaviť dátum poslednej zmeny
 mod_include_default=štandardné
+
 mod_dir_txt=Súbory indexového adresára
+
 mod_autoindex_default=štandardné
 mod_autoindex_asc=stúpajúca
 mod_autoindex_descend=zostupne
@@ -725,6 +764,7 @@ mod_autoindex_date=Dátum
 mod_autoindex_size=veľkosť
 mod_autoindex_desc=popis
 mod_autoindex_sort=Zoradiť index adresára podľa
+
 browsermatch_regexp=Regex prehliadača
 browsermatch_case=Zápasový prípad?
 browsermatch_var=Nastaviť premennú
@@ -732,6 +772,7 @@ browsermatch_value=hodnota
 browsermatch_txt=Premenné sú nastavené podľa typu prehliadača
 browsermatch_evar=Neplatný názov premennej '$1'
 browsermatch_clear=jasný
+
 autoindex_fname=Názov súboru
 autoindex_mime=Typ MIME
 autoindex_enc=kódovanie
@@ -785,9 +826,11 @@ autoindex_sicon=Zobraziť ikony súborov
 autoindex_srules=Zobraziť &lt;hr&gt; riadky
 autoindex_track=Zahrnúť ETag do hlavičky
 autoindex_version=Zoradiť podľa verzie reťazcov
+
 mod_mime_magic_file=Súbor magických čísel MIME
 mod_mime_magic_none=nikto
 mod_mime_magic_efile=Neplatný názov súboru magických čísel MIME
+
 mod_env_var=premenlivý
 mod_env_value=hodnota
 mod_env_pass=Prejsť cez
@@ -798,6 +841,7 @@ mod_env_passall=Odovzdajte všetky premenné prostredia do CGI
 mod_env_default=štandardné
 mod_env_evar='$1' nie je platný názov premennej
 mod_env_evalue='$1' nie je platná hodnota premennej
+
 mod_access_order=Objednávka kontroly prístupu:
 mod_access_denyallow=Odmietnuť a potom povoliť
 mod_access_allowdeny=Nechajte potom poprieť
@@ -820,6 +864,7 @@ mod_access_epip=$1 nie je platná čiastočná adresa IP
 mod_access_emask='$1' nie je platný pár sieť / maska siete
 mod_access_ecidr='$1' nie je platný pár sieť / CIDR
 mod_access_evar='$1' nie je platný názov premennej
+
 mod_auth_ufile=Používateľský textový súbor
 mod_auth_uedit=Upraviť používateľov
 mod_auth_gfile=Zoskupiť textový súbor
@@ -830,6 +875,7 @@ mod_auth_eudir=Textový súbor používateľa nie je v povolenom adresári
 mod_auth_egdir=Skupinový textový súbor nie je v povolenom adresári
 mod_auth_eufile=Neplatný názov textového súboru používateľa
 mod_auth_egfile=Názov textového súboru skupiny je neplatný
+
 mod_auth_dbm_ufile=Súbor používateľa DBM
 mod_auth_dbm_gfile=Zoskupiť súbor DBM
 mod_auth_dbm_pass=Neúspešné odovzdanie ďalšieho modulu?
@@ -840,6 +886,7 @@ mod_auth_dbm_egfile=Neplatný názov súboru DBM skupiny
 mod_auth_dbm_type=Typ databázy DBM
 mod_auth_dbm_gtype=Typ databázy skupiny DBM
 mod_auth_dbm_default=Predvolený formát DBM
+
 mod_cern_meta_process=Metasúbory hlavičiek procesov
 mod_cern_meta_dir=Podadresár pre metasúbory hlavičky
 mod_cern_meta_default=štandardné
@@ -847,6 +894,7 @@ mod_cern_meta_edir=Neplatný názov podadresára metasúboru
 mod_cern_meta_suffix=Prípona súboru pre metasúbory hlavičky
 mod_cern_meta_default2=štandardné
 mod_cern_meta_esuffix=Neplatná prípona metasúboru
+
 mod_ssl_enable=Povoliť SSL?
 mod_ssl_proto=Protokoly SSL
 mod_ssl_cfile=Súbor certifikátu / súkromného kľúča
@@ -874,6 +922,7 @@ mod_ssl_passsc=Spustite skript $1
 mod_ssl_epassph=Nebolo zadané žiadne heslo SSL
 mod_ssl_epasssc=Chýbajúci alebo neplatný skript hesla SSL
 mod_ssl_ecerton=Ak je povolený protokol SSL, musí sa vybrať súbor certifikátu
+
 mod_apachessl_notssl=Odmietnuť prístup SSL
 mod_apachessl_forcessl=Vynútiť prístup SSL / notSSL?
 mod_apachessl_capath=Cesta k adresáru s osvedčeniami certifikačných orgánov v roku 2007
@@ -906,6 +955,7 @@ mod_apachessl_nov2=Zakázať SSL verziu 2
 mod_apachessl_fake=Simuluje základné prihlasovacie údaje pre používateľov pomocou názvu certifikátu
 mod_apachessl_cdnfile=Súbor proti DN klienta je skontrolovaný
 mod_apachessl_ecdnfile=Chýba súbor proti DN klienta
+
 log_global=Zmenené globálne možnosti $1
 log_virtc=Vytvorený server $1
 log_virts=Prekonfigurovaný server $1
@@ -946,8 +996,10 @@ log_stop=Zastavený webový server
 log_apply=Použité zmeny
 log_manual=Ručne upravený konfiguračný súbor $1
 log_virts_delete=Odstránené virtuálne servery $1
+
 search_title=Vyhľadajte servery
 search_notfound=Nenašli sa žiadne zodpovedajúce virtuálne servery
+
 mod_php_value=Hodnoty konfigurácie PHP
 mod_php_flag=Príznaky konfigurácie PHP
 mod_php_admin_value=Hodnoty konfigurácie správcu PHP
@@ -956,6 +1008,7 @@ mod_php_name_header=nastavenie
 mod_php_value_header=hodnota
 mod_php_ename=$1 je neplatné meno
 mod_php_evalue='$1' je neplatná hodnota pre $2
+
 mod_vhost_alias_root=Automatický koreň virtuálneho hostiteľa
 mod_vhost_alias_ip=Použiť adresu IP namiesto názvu hostiteľa?
 mod_vhost_alias_none=nikto
@@ -963,12 +1016,14 @@ mod_vhost_alias_script=Automatický virtuálny počítač cgi-bin
 mod_vhost_alias_eroot=Chýbajúci alebo neplatný koreň virtuálneho hostiteľa
 mod_vhost_alias_eroot2=Koreňový adresár virtuálneho hostiteľa nie je povolený
 mod_vhost_alias_escript=Chýbajúci alebo neplatný virtuálny hostiteľský program cgi-bin
+
 worker_minspare=Minimálne náhradné nite
 worker_maxspare=Maximálne náhradné nite
 worker_eminspare=Minimálne náhradné vlákna musia byť celé číslo
 worker_emaxspare=Maximálne náhradné vlákno musí byť celé číslo
 worker_threads=Vlákna na jedno dieťa
 worker_ethreads=Počet vlákien na podradený proces musí byť celé číslo
+
 perchild_sthreads=Počiatočné vlákna na podriadený proces
 perchild_esthreads=Počet vlákien na podradený proces musí byť celé číslo
 perchild_numservers=Počet podriadených procesov
@@ -984,6 +1039,7 @@ perchild_gid=GID
 perchild_enum=Číslo procesu musí byť nenulové celé číslo
 perchild_euid=UID musí byť celé číslo
 perchild_egid=GID musí byť celé číslo
+
 cache_enable=Aktívne?
 cache_type=Cache store
 cache_disk=disk
@@ -1004,12 +1060,14 @@ cache_eminos=Minimálna veľkosť objektu do vyrovnávacej pamäte musí byť po
 cache_emaxos=Maximálna veľkosť objektu do vyrovnávacej pamäte musí byť počet bajtov
 cache_maxoc=Maximálny počet objektov na vyrovnávaciu pamäť v pamäti
 cache_emaxoc=Počet objektov, ktoré sa majú uložiť do pamäte cache, musí byť celé číslo
+
 suexec_su=Spustiť programy CGI ako
 suexec_none=Používateľ z globálnej konfigurácie
 suexec_user=Unixový užívateľ
 suexec_group=a skupina
 suexec_euser=Chýbajúci alebo neplatný používateľ na spustenie programov CGI ako
 suexec_egroup=Chýbajúca alebo neplatná skupina na spustenie programov CGI ako
+
 filter_name=názov
 filter_intype=Typ vstupu MIME
 filter_outtype=Typ výstupu MIME
@@ -1019,11 +1077,13 @@ filter_in=Definície vstupného filtra
 filter_out=Definície výstupného filtra
 filter_ename=Neplatný názov filtra '$1'
 filter_ecmd=Chýba príkaz pre filter „$1“
+
 cdir_err=Nepodarilo sa vytvoriť možnosti pre jednotlivé adresáre
 cdir_err2=Možnosti adresára sa nepodarilo uložiť
 cdir_epath=Chýbajúca cesta
 cdir_eproxy=Možnosti proxy nie je možné vytvoriť s povolenou voľbou regexp zhody
 cdir_ecannot=Pre danú cestu nemáte povolené vytvárať možnosti pre jednotlivé adresáre
+
 mod_band_enable=Povolené obmedzenie šírky pásma?
 mod_band_bw=Limit (bajty / s)
 mod_band_client=Pre klientov
@@ -1042,24 +1102,30 @@ mod_band_epulse=Chýbajúci alebo neplatný interval medzi obmedzenými paketmi
 mod_band_dir=Adresár dátových súborov obmedzujúcich šírku pásma
 mod_band_edir=Chýbajúci alebo neexistujúci adresár dátových súborov so šírkou pásma
 mod_band_esubdir=Chýba požadovaný podadresár <tt>$1</tt> v adresári dátových súborov so šírkou pásma
+
 mod_dav_active=WebDAV povolený?
 mod_dav_inf=Povolenie nekonečnej hĺbky požiadaviek DAV PROPFIND?
 mod_dav_timeout=Minimálny časový limit DAV v sekundách
 mod_dav_etimeout=Chýbajúci alebo neplatný časový limit DAV
+
 delete_err=Vymazanie virtuálnych serverov zlyhalo
 delete_enone=Žiadne vybraté
 delete_ecannot=Nie je povolené mazať servery
 delete_ecannot2=Nemáte oprávnenie upravovať server $1
+
 syslog_desc=Denník chýb Apache
+
 mod_auth_basic_pass=Preniesť základné zlyhania prihlásenia do ďalšieho modulu?
 mod_auth_basic_prov=Základné typy súborov prihlásených používateľov
 mod_auth_basic_file=Textový súbor
 mod_auth_basic_dbm=Databáza DBM
+
 mod_auth_digest_pass=Preniesť zlyhania prihlásenia do ďalšieho modulu?
 mod_auth_digest_prov=Prehľadávať typy prihlasovacích súborov používateľov
 mod_auth_digest_al=Algoritmus hasenia
 mod_auth_digest_domain=URL a cesty v rovnakej doméne
 mod_auth_digest_edomain=Chýbajúce adresy URL a cesty v rovnakej doméne
+
 mods_title=Konfigurácia modulov Apache
 mods_mod=modul
 mods_state=Aktuálny stav

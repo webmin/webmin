@@ -9,6 +9,7 @@ index_zone=Zóna
 index_run=Futtatás...
 index_return=processz listához
 index_inzone=A zónában $1
+
 pid=Processz ID
 owner=Tulajdonos
 command=Parancs
@@ -18,6 +19,7 @@ parent=Szülő processz
 runtime=Eltelt idő
 nice=Nice szint
 stime=Elindítva
+
 search_user=Tulajdonosa
 search_match=Keresett szó
 search_cpupc=A CPU-használat nagyobb mint $1 %
@@ -33,6 +35,7 @@ search_sigkill=Processzek kilövése
 search_port=Port használata
 search_protocol=PROTOKOLL
 search_ip=IP címek használata
+
 run_command=Parancs futtatása
 run_submit=Futtatás
 run_mode=Futás módja
@@ -46,6 +49,7 @@ run_ecannot=Önnek nincs joga futtatni parancsokat
 run_as=Futtatás mint felhasználó
 run_euser=Hiányízó vagy érvénytelen felhasználói név
 run_euser2=Önnek nincs joga futtatni parancsokat mint a kiválasztott felhasználó
+
 edit_title=Processz Információ
 edit_gone=Ez a processz nem fut tovább
 edit_sub=Alprocessessz
@@ -63,12 +67,15 @@ edit_sigcont=Visszaállít
 edit_open=File -ok és csatlakozások
 edit_trace=Processz követése
 edit_return=processz adatai
+
 kill_err=A(z) $1 jelzés küldése a(z) $2 processznek nem sikerült.
 kill_title=Jelzés küldése
 kill_sent=elküldve
 kill_ecannot=Önnek nincs engedélyezve a processzek kilövése
+
 renice_err=A(z) $1 processz prioritásának megváltoztatása nem sikerült.
 renice_ecannot=Önnek nincs joga a processzek renice -re
+
 linux_pri=Prioritás
 linux_tty=TTY
 linux_status=Állapot
@@ -79,22 +86,26 @@ linux_ruser=Valódi felhasználó
 linux_rgroup=Valódi csoport
 linux_pgid=Processz csoport ID
 linux_stime=$stime
+
 linuxstat_R=Futó
 linuxstat_S=Alvó
 linuxstat_D=Mélyalvó
 linuxstat_T=Leállított
 linuxstat_Z=Zombi
+
 freebsd_ruser=Valódi felhasználó
 freebsd_rgroup=Valódi csoport
 freebsd_tty=TTY
 freebsd_pgid=Processz csoport
 freebsd_stime=$stime
 freebsd_lim=Memóriakorlát
+
 hpux_pri=Prioritás
 hpux_tty=TTY
 hpux_status=Állapot
 hpux_wchan=Várakozás a
 hpux_stime=$stime
+
 hpuxstat_0=Nemlétező
 hpuxstat_S=Alvó
 hpuxstat_W=Várakozó
@@ -103,7 +114,9 @@ hpuxstat_I=Közvetítő
 hpuxstat_Z=Zombi
 hpuxstat_T=Leállítva
 hpuxstat_G=Növekvő
+
 macos_tty=TTY
+
 sysv_group=Csoport
 sysv_ruser=Valódi felhasználó
 sysv_rgroup=Valódi csoport
@@ -112,11 +125,13 @@ sysv_tty=TTY
 sysv_stime=$stime
 sysv_task=Taszk ID
 sysv_zone=Zóna neve
+
 log_run=Futtatási parancs "$1"
 log_kill=$1 szignál küldése $2 processznek
 log_kills=$1 szignál küldése $2 processzeknek
 log_kill_l=$1 szignál küldése $2 processznek
 log_kills_l=$1 szignál küldése <br>$2 processzeknek
+
 acl_manage=Processzek kezelése mint felhasználó
 acl_manage_def=Aktuális Webmin felhasználó
 acl_edit=Lelőhetem és renice -t használhatok a processznél?
@@ -126,11 +141,13 @@ acl_who=Menedzelhetem a felhasználók processzeit
 acl_who0=Minden felhasználóét
 acl_who1=Az aktuális Webmin felhasználóét
 acl_who2=A felhasználói listából..
+
 kill_kill=Processz lelövése
 kill_term= Megszakítás  
 kill_hup=  Újraindítás   
 kill_stop=    Stop    
 kill_cont=  Folytatás  
+
 open_title=Nyitott file -ok és csatlakozások
 open_proc=A $1 processznek (PID $2)
 open_header1=Nyitott file-ok
@@ -154,6 +171,7 @@ open_blk=Speciális blokk
 open_size=File mérete
 open_inode=Inode
 open_file=Útvonal
+
 trace_title=Nyomozás folyamatban
 trace_start=Rendszer hívási nyomozás elindítva a $1 -re ..
 trace_doing=Rendszer hívási nyomozás a $1 -re :
@@ -164,4 +182,5 @@ trace_syscalls=Rendszerhívás nyomozása:
 trace_all=Mind
 trace_sel=Listából..
 trace_change=Módosít
+
 windows_threads=A processz szálai

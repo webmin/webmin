@@ -42,6 +42,7 @@ index_lvused=Využitý priestor
 index_lvuse=Používa
 index_snapof=(Snímka $1)
 index_thin=Tenká skupina LVM pre $1 LV
+
 lv_edit=Upraviť logický zväzok
 lv_edit_snap=Upraviť snímku
 lv_create=Vytvorenie logického zväzku
@@ -128,6 +129,7 @@ lv_pvfrom=Presunúť bloky z fyzického objemu
 lv_pvto=Na fyzický objem
 lv_moveok=Presunúť bloky
 lv_return=logický zväzok
+
 mkfs_title=Vytvorte súborový systém
 mkfs_desc=Tento formulár vám umožňuje vytvoriť nový súborový systém $2 ($1) na logickom zväzku $3. Všetky existujúce údaje sa vymažú.
 mkfs_header=Nové možnosti súborového systému
@@ -135,6 +137,7 @@ mkfs_err=Nepodarilo sa vytvoriť súborový systém
 mkfs_exec=Vykonáva sa príkaz $1 ..
 mkfs_failed=.. príkaz zlyhal!
 mkfs_ok=.. príkaz dokončený.
+
 resize_title=Zmena veľkosti logického zväzku
 resize_mesg=Veľkosť súborového systému $1 v tomto logickom zväzku nie je možné zmeniť. Ak zmeníte veľkosť logického zväzku, musíte znova vytvoriť systém súborov, ktorý vymaže všetky údaje v ňom.
 resize_mesg2=Webmin nevie, aký druh súborového systému je na tomto logickom zväzku, ak existuje. Ak zmeníte veľkosť logického zväzku, musíte znova vytvoriť systém súborov, ktorý vymaže všetky údaje v ňom.
@@ -142,8 +145,10 @@ resize_fs=Pri zmene veľkosti súborového systému $1 na tomto logickom zväzku
 resize_ok=Zmena veľkosti logického zväzku
 resize_emounted=Veľkosť súborového systému v tomto logickom zväzku nie je možné zmeniť, keď je pripojený
 resize_emounted2=Systém súborov na tomto logickom zväzku nemôže byť počas pripojenia zmenšený
+
 init_title=Aktivujte LVM
 init_cmd=Spúšťa sa príkaz $1 ..
+
 pv_edit=Upraviť fyzický objem
 pv_create=Pridať fyzický objem
 pv_vg=V skupine objemov $1 
@@ -170,6 +175,7 @@ pv_eother=Chýba alebo je neplatné diskové zariadenie
 pv_raid=RAID zariadenie $1 
 pv_lvs=Prideľovanie podľa logických zväzkov
 pv_egone=Fyzický objem už neexistuje!
+
 vg_edit=Upraviť skupinu zväzkov
 vg_create=Vytvorenie skupiny zväzkov
 vg_name=Názov skupiny zväzkov
@@ -188,11 +194,13 @@ vg_deleteok=Odstrániť teraz
 vg_ename=Chýba alebo je neplatný názov skupiny zväzkov
 vg_epesize=Chýba alebo je neplatná veľkosť alokačného bloku
 vg_egone=Skupina zväzkov už neexistuje!
+
 pvmove_err=Nepodarilo sa presunúť logický zväzok
 pvmove_title=Presunúť logický zväzok
 pvmove_start=Presúva sa logický zväzok $1 z $2 do $3 ..
 pvmove_failed=.. presun zlyhal!
 pvmove_done=.. pohyb dokončený
+
 thin_title=Vytvorte tenký bazén
 thin_desc=Tenká oblasť je pár LV, ktoré sa dajú použiť na vytvorenie ďalších LV, ktoré môžu byť väčšie ako dostupné rozsahy. Miesto sa spotrebuje iba v prípade potreby, a nie pri vytváraní LV vo vnútri bazénu. VAROVANIE - Akékoľvek údaje o vybraných LV sa stratia!
 thin_header=Nové tenké podrobnosti o bazéne
@@ -204,6 +212,7 @@ thin_err=Vytvorenie tenkej oblasti zlyhalo
 thin_esame=Obidve vybrané LV sú rovnaké
 thin_edata=Vybraté údaje LV sa už používajú
 thin_emetadata=Vybraté metadáta LV sa už používajú
+
 log_create_vg=Vytvorená skupina zväzkov $1 
 log_modify_vg=Upravená skupina zväzkov $1 
 log_delete_vg=Odstránená skupina zväzkov $1 
@@ -216,4 +225,5 @@ log_create_pv=Fyzický objem $1 bol pridaný k VG $1
 log_modify_pv=Modifikovaný fyzický objem $1 v VG $2 
 log_delete_pv=Fyzický objem $1 bol odstránený z VG $2 
 log_resize_pv=Fyzikálny objem $1 v VG $2 bol zmenený
+
 blocks=bloky

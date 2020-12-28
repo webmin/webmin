@@ -7,6 +7,7 @@ index_dsize=Celková velikost
 index_dmodel=Značka a model
 index_dparts=Plátky
 index_return=seznam disků
+
 disk_title=Upravit disk
 disk_egone=Disk již neexistuje!
 disk_no=Plátek
@@ -31,9 +32,11 @@ disk_return=podrobnosti o disku a seznam řezů
 disk_add=Vytvořte nový řez.
 disk_smart=Zobrazit stav SMART
 disk_smartdesc=Zobrazte aktuální stav této jednotky, jak jej rozpoznal SMART, a zkontrolujte, zda neobsahuje chyby na disku.
+
 select_device=Zařízení $1 $2 
 select_slice=$1 zařízení $2 řezu $3 
 select_part=$1 device $2 slice $3 partition $4 
+
 slice_title=Upravit řez
 slice_egone=Vybraný řez neexistuje!
 slice_ssize=Velikost řezu
@@ -58,6 +61,7 @@ slice_return=podrobnosti řezu a seznam oddílů
 slice_err=Řez se nepodařilo upravit
 slice_header=Podrobnosti řezu
 slice_suse=Přímo používá
+
 dslice_title=Smazat řez
 dslice_rusure=Opravdu chcete smazat řez $1 ? Všechny oddíly a souborové systémy v něm budou také odstraněny.
 dslice_warn=Upozornění - tento řez aktuálně používá : $1 
@@ -65,6 +69,7 @@ dslice_confirm=Smazat
 dslice_deleting=Mazání řezu $1 ..
 dslice_failed=.. odstranění se nezdařilo : $1 
 dslice_done=.. Hotovo
+
 nslice_title=Vytvořte řez
 nslice_header=Nové podrobnosti o řezech
 nslice_number=Číslo řezu
@@ -86,6 +91,7 @@ nslice_done=.. plátek přidán
 nslice_parting=Vytvořte výchozí oddíly v řezu $1 na $2 ..
 nslice_pfailed=.. vytvoření oddílu se nezdařilo : $1 
 nslice_pdone=.. oddíl byl přidán
+
 npart_title=Vytvořit oddíl
 npart_header=Nové podrobnosti o oddílu
 npart_letter=Dělící dopis
@@ -98,6 +104,7 @@ npart_emax=Koncový blok nemůže být větší než velikost řezu $1 bloků
 npart_creating=Vytváření oddílu $1 na $2 ..
 npart_failed=.. vytvoření oddílu se nezdařilo : $1 
 npart_done=.. oddíl byl přidán
+
 part_title=Upravit oddíl
 part_egone=Oddíl již neexistuje!
 part_header=Podrobnosti oddílu
@@ -124,6 +131,7 @@ part_newmount2=Mount Partition
 part_mountmsg=Připojte toto zařízení do nového adresáře ve vašem systému, aby jej bylo možné použít k ukládání souborů. V zařízení již musí být vytvořen souborový systém.
 part_mountmsg2=Připojte toto zařízení jako virtuální paměť ve vašem systému, abyste zvýšili množství dostupné paměti.
 part_cannotedit=Tento oddíl nelze změnit, protože se aktuálně používá.
+
 dpart_title=Odstranit oddíl
 dpart_rusure=Opravdu chcete oddíl $1 smazat? Všechny souborové systémy v něm budou také smazány.
 dpart_warn=Varování - tento oddíl aktuálně používá $1 
@@ -131,6 +139,7 @@ dpart_confirm=Smazat
 dpart_deleting=Mazání oddílu $1 ..
 dpart_failed=.. odstranění se nezdařilo : $1 
 dpart_done=.. Hotovo
+
 newfs_title=Vytvořte souborový systém
 newfs_header=Nové podrobnosti o souborovém systému
 newfs_free=Místo pro rezervování root
@@ -145,11 +154,13 @@ newfs_elabel=Chybějící nebo neplatný štítek
 newfs_creating=Vytváření souborového systému na $1 ..
 newfs_failed=.. vytvoření se nezdařilo!
 newfs_done=.. vytvořeno úspěšně
+
 fsck_title=Zkontrolujte souborový systém
 fsck_err=Souborový systém se nepodařilo zkontrolovat
 fsck_checking=Kontrola souborového systému na $1 ..
 fsck_failed=.. kontrola selhala!
 fsck_done=.. kontrola dokončena bez chyb
+
 log_create_slice=Byl vytvořen řez $1 
 log_delete_slice=Smazaný řez $1 
 log_modify_slice=Upravený řez $1 

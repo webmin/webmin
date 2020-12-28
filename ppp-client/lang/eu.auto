@@ -24,13 +24,16 @@ index_out=$1 -ren irteera honakoa da
 index_boot=Konektatu abioian:
 index_noboot=&lt;Ez konektatu&gt;
 index_bootdesc=Aldatu aukera hau aukeratutako PPP konexioa abiarazi den ala ez kontrolatzeko.
+
 init_title=Konfigurazioa hauteman
 init_cmd=Konektatutako modem bat $1 komandoarekin hautematea.
 init_done=.. egin
 init_modems=Modemak $1 eta $2 konfiguratuta daude.
 init_modem=$1 ean modem bat hauteman da.
 init_none=Ez da modemik hauteman!
+
 device_serial=serieko ataka $1 
+
 connect_title=Ezarri konexioa
 connect_cmd=$1 komandoarekin konexio bat ezartzen saiatzen ari da.
 connect_failed=.. konexioa huts egin du! Ikusi goiko irteera zergatik dagoen.
@@ -40,12 +43,14 @@ connect_dns=PPP esleitutako DNS konfigurazioa erabiliz.
 connect_dns2=PPP esleitutako DNS konfigurazioa ezarri da.
 connect_dnsto=Denbora-muga PPP esleitutako DNS konfigurazioaren zain.
 connect_dnsdown=Konexioak huts egin duela dirudi PPP esleitutako DNS konfigurazioaren zain egon bitartean.
+
 disc_title=Itxi PPP
 disc_err=Ezin izan da PPP konexioa itxi
 disc_edown=Dagoeneko deskonektatuta
 disc_ok1=$2 erabiliz eginiko PPP konexioa itzali da behar bezala.
 disc_ok2=Zure PPP konexioa itzali da behar bezala.
 disc_dns=DNS konfigurazio zaharra zaharberritu da.
+
 edit_title1=Gehitu ISP Dialer
 edit_title2=Editatu ISP Dialer
 edit_ddesc=Ezarpen lehenetsiak beste edozein markagailu erabiliz egindako konexioei aplikatuko zaizkie.
@@ -76,6 +81,7 @@ edit_idle=Iraupena geldiaraztea (segundotan)
 edit_def=Ezarpen lehenetsietatik
 edit_inherits=Hereditu ezarpenak
 edit_from=Markagailutik
+
 save_err=Huts egin du markatzailea gordetzean
 save_err2=Ezin izan da markatzailea ezabatu
 save_ename=Markatzailearen izen falta edo baliogabea
@@ -88,6 +94,7 @@ save_edial=Markaketa saiakera kopurua edo falta da
 save_eidle=Atzerapenik gabeko denbora-muga falta da edo baliogabea
 save_einherits=Markatzailea ezin da ezabatu '$1'-ek ezarpenak heredatzen dituelako.
 save_eclash=Izen bereko markatzailea dagoeneko
+
 log_create=$1 sortu da
 log_update=$1 eguneratua
 log_delete=$1 ezabatu da

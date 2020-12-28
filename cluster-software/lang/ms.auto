@@ -21,6 +21,7 @@ index_thost=Nama hos
 index_tdesc=Penerangan
 index_tcount=Pakej
 index_ttype=Jenis OS
+
 install_err=Gagal memasang pakej
 install_elocal=Tiada fail tempatan yang diberikan
 install_elocal2='$1' tidak wujud
@@ -37,6 +38,7 @@ install_ok=Pasang
 install_erus=Pelayan ini menggunakan sistem kemas kini yang berlainan kepada pelayan induk ($1 versus $2)
 install_eupdate=Ralat berlaku memasang kemas kini yang dinyatakan
 install_ealready=Versi $1 sudah dipasang
+
 add_title=Tambah Pelayan
 add_msg=Menambah $1 ..
 add_gmsg=Menambah pelayan dalam kumpulan $1 ..
@@ -45,6 +47,7 @@ add_gerr=Gagal menambah kumpulan
 add_echeck=Server $1 tidak mempunyai modul pakej perisian
 add_esystem=Server $1 tidak menggunakan sistem pakej yang sama seperti mesin ini
 add_ok=Menambah $1 dengan $2 pakej.
+
 search_title=Carian Pakej
 search_nomatch=Tiada pakej yang dipadankan $1 
 search_none=Tiada
@@ -56,6 +59,7 @@ search_return=Keputusan Carian
 search_delete=Nyahpasang Pakej Terpilih Dari:
 search_selall=Pilih semua
 search_invert=Invert selection
+
 host_title=Pelayan Terurus
 host_header=Perincian pelayan dikelola perisian
 host_name=Nama hos
@@ -70,6 +74,7 @@ host_count=Pakej dipasang
 host_os=OS dari Webmin
 host_return=butiran pelayan
 host_system=Sistem pakej
+
 edit_title=Edit Pakej
 edit_details=Butiran Pakej dari $1 
 edit_desc=Penerangan
@@ -88,6 +93,7 @@ edit_all=&lt;semua tuan rumah&gt;
 edit_donthave=&lt;host yang tidak memilikinya&gt;
 edit_have=&lt;host yang memilikinya&gt;
 edit_group=Ahli $1 
+
 list_title=Fail Pakej
 list_files=Fail untuk Pakej $1 pada $2 
 list_path=Jalan
@@ -97,6 +103,7 @@ list_type=Taipkan
 list_size=Saiz
 list_status=Status
 list_ok=okey
+
 refresh_title=Segarkan Senarai Pakej
 refresh_header=Minta semula senarai pakej dari semua pelayan ..
 refresh_header4=Minta semula senarai pakej dari ahli $2 ..
@@ -108,6 +115,7 @@ refresh_4=Refresh $1 (tiada perubahan)
 refresh_done=.. selesai
 refresh_del=Dihapus $1 dari senarai pelayan
 refresh_failed=Gagal menyegarkan $1 : $2 
+
 delete_err=Gagal memadam pakej $1 
 delete_epack=Pakej $1 tidak wujud
 delete_title=Padamkan Pakej
@@ -120,6 +128,7 @@ delete_error=Gagal memadam dari $1 : $2
 delete_success=Dihapus daripada $1.
 delete_done=.. selesai
 delete_header=Memadamkan pakej $1 ..
+
 do_title=Pasang Pakej
 do_header=Memasang $1 pada semua tuan rumah ..
 do_header3=Memasang $1 pada tuan rumah yang belum memilikinya ..
@@ -140,6 +149,7 @@ do_arch=Seni bina
 do_inst=Dipasang
 do_none=Tiada
 do_edeleted=Pasang fail telah dipadamkan - kembali ke indeks modul dan cuba lagi.
+
 compare_title=Bandingkan Pakej
 compare_desc=Borang ini boleh digunakan untuk membandingkan pakej yang dipasang pada dua atau lebih pelayan, dan mencari sebarang percanggahan antara versi atau pakej yang tersedia.
 compare_hosts=Pelayan untuk membandingkan
@@ -154,6 +164,7 @@ compare_showall=Pakej untuk menunjukkan
 compare_showall1=Semua
 compare_showall0=Hanya ketidakcocokan
 compare_got=okey
+
 deletes_err=Gagal memadam pakej
 deletes_enone=Tiada pakej yang dipilih
 deletes_title=Padam Pakej

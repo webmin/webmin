@@ -8,6 +8,7 @@ index_apply=Değişiklikleri Uygula
 index_applymsg=Bu düğmeyi tıklayarak mevcut dosya bağlantı ayarlarını uygulayabilirsiniz. Bu işlem yukarıda listeli bütün dizinleri belirtilen seçeneklere ulaşılabilir yapacaktır.
 index_return=bağlantı listesi
 index_eprog=NFS sunucusu çalıştrılabilir dosyası bulunamadı. NFS paketi yüklenmemiş olabilir
+
 edit_title=Bağlantıyı Düzenle
 create_title=Bağlantı Oluştur
 edit_details=Bağlantı Ayarları
@@ -49,6 +50,7 @@ edit_sync1=$yes
 edit_sync2=$no
 edit_sync0=$default (genellikle $no)
 edit_in=in
+
 save_err=Bağlantının kaydedilmesinde hata oluştu
 save_edir='$1' dizini mevcut değil
 save_enetgroup=Eksik ya da geçersiz ağ grubu
@@ -59,6 +61,7 @@ save_euids=Güvenilmeyecek UID'ler virgülle ayırılmış ya da bir aralıkta b
 save_egids=Güvenilmeyecek GID'ler virgülle ayırılmış ya da bir aralıkta belirilmiş olmalıdır
 save_pfs='$1' zaten dizin olarak paylaştırılmış
 save_create_dir='$1' dizini oluşturulamıyor
+
 exports_webnfs=WebNFS istemcileri
 exports_ngroup=Ağ grubu $1
 exports_net=Ağ $1
@@ -66,6 +69,7 @@ exports_all=Herkes
 exports_hosts=Makineler $1
 exports_host=Makine $1
 exports_gss=Onaylanmış ağ: $1
+
 log_modify=NFS sunumu $1 değiştirildi
 log_modify_l=$2'de NFS sunumu $1 değiştirildi
 log_delete=NFS sunumu $1 silindi

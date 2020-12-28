@@ -5,6 +5,7 @@ index_restore=恢复文件系统备份类型：
 index_restoremsg=选择文件系统类型，并点击此按钮以执行要恢复所选的文件系统备份的进程。
 index_ecommands=在您的系统没有找到本模块需要的文件系统备份命令（例如$1）。可能当前尚未安装。
 index_return=备份列表
+
 dump_dir=备份目录
 dump_fs=文件系统
 dump_sched=预定时间？
@@ -37,6 +38,7 @@ dump_verify=在备份后检验数据？
 dump_offline=备份后退出磁带？
 dump_blocks=磁带容量
 dump_auto=自动备份
+
 edit_err=创建备份失败
 edit_edir=未输入备份目录
 edit_efs=该模块无法备份$1 类型的文件系统
@@ -50,10 +52,13 @@ edit_savenow=保存并开始备份
 edit_createnow=创建并开始备份
 edit_return=转储
 edit_email=邮件预定输出至
+
 save_err=保存备份失败
 save_edir=未输入或无效的备份目录
 save_efs=备份目录无法改变为不同的文件系统
+
 backup_desc=将$1 备份到 $2 ..
+
 restore_title=恢复备份
 restore_ecommand=在您的系统中未找到要恢复$2文件系统备份所需的命令$1。可以当前尚未安装。
 restore_header=恢复$1文件系统的备份
@@ -84,6 +89,7 @@ restore_failed=恢复失败：$1
 restore_complete=恢复成功！
 restore_test=只显示备份中的文件？
 restore_nothing=只测试备份？
+
 log_create=创建$1的备份设置
 log_modify=修改$1的备份设置
 log_delete=删除$1的备份设置

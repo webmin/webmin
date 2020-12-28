@@ -155,8 +155,10 @@ menu_bookmarks=bokmärken
 notallowed=Du får inte komma åt $1. De tillåtna katalogerna är : $2 
 error_upload_emax=Den uppladdade filen är större än gränsen på $1 
 extract_etype=Arkiverad filtyp som inte stöds
+
 info_total1=Totalt: $1 fil och $2 katalog
 info_total2=Totalt: $1 filer och $2 katalog
 info_total3=Totalt: $1 fil och $2 kataloger
 info_total4=Totalt: $1 filer och $2 kataloger
+
 ownership=Ägare

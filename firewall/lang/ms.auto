@@ -16,6 +16,7 @@ index_chain=Rantaian $1
 index_action=Tindakan
 index_desc=Keadaan
 index_comm=Komen
+index_no_comment=
 index_move=Pindah
 index_none=Tiada peraturan yang ditetapkan untuk rangkaian ini.
 index_policy=Tetapkan Tindakan Lalai Ke:
@@ -88,6 +89,7 @@ index_ipset_size=Saiz
 index_ipvxmode=Tukar versi protokol IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=protokol adalah $1 
 desc_p!=protokol tidak $1 
 desc_s=sumber adalah $1 
@@ -114,6 +116,8 @@ desc_tcp-option=paket menggunakan pilihan TCP $1
 desc_tcp-option!=paket tidak menggunakan opsyen TCP $1 
 desc_icmp-type=Jenis ICMP ialah $1 
 desc_icmp-type!=Jenis ICMP bukan $1 
+desc_icmpv6-type=Jenis ICMP ialah $1 
+desc_icmpv6-type!=Jenis ICMP bukan $1 
 desc_mac-source=alamat ethernet ialah $1 
 desc_mac-source!=alamat ethernet bukan $1 
 desc_limit=kadar adalah kurang daripada $1 
@@ -146,10 +150,15 @@ desc_always=Sentiasa
 desc_args--match-set=$2 terkandung dalam IP-set $1 
 desc_src=sumber
 desc_dest=destinasi
+
 redhat_einstalled=Tiada <tt>iptables (6)</tt> tindakan bootup dijumpai, menunjukkan bahawa pakej IPtables tidak dipasang pada sistem anda
 redhat_eoutput=Ralat berlaku untuk mendapatkan status IPtables dari perintah $1. Ini mungkin menunjukkan bahawa sistem anda telah dikonfigurasikan untuk menggunakan IPchains dan bukannya IPTables.
+
 gentoo_escript=Skrip permulaan Gentoo IPtables $1 tidak dijumpai pada sistem anda.
+
 eiptables=IPTables yang tidak diketahui menyimpan fail fail : $1 
+eip6tables=IP6tables yang tidak diketahui menyimpan fail fail : $1 
+
 edit_title1=Tambah Aturan
 edit_title2=Edit Peraturan
 edit_title3=Peraturan Klon
@@ -218,6 +227,7 @@ edit_physdevout=Antara muka fizikal yang keluar
 edit_physdevisin=Packet masuk pada antara muka jambatan
 edit_physdevisout=Packet outgoing on interface bridge
 edit_physdevisbridged=Packet sedang dibincangkan
+
 save_err=Gagal menyimpan peraturan
 save_echain=Rantaian yang hilang atau tidak sah untuk dijalankan
 save_esource=Alamat atau rangkaian sumber yang hilang atau tidak sah
@@ -262,23 +272,28 @@ save_estates=Tiada negeri sambungan dipilih
 save_ecanjump=Anda tidak dibenarkan menggunakan tindakan ini
 save_ephysdevin=Antara muka fizikal yang masuk atau tidak sah yang hilang atau tidak sah
 save_ephysdevout=Antara muka fizikal yang hilang atau tidak sah
+
 delete_title=Padamkan Rantaian
 delete_rusure=Adakah anda pasti mahu memadamkan rantaian $1 ? $2 peraturan di dalamnya akan dipadamkan.
 delete_ok=Padamkan Sekarang
 delete_ecannot=Anda tidak dibenarkan memadamkan rantai
+
 clear_title=Rantai yang jelas
 clear_rusure=Adakah anda pasti mahu memadamkan semua peraturan $2 dari rantai $1 ?
 clear_ecannot=Anda tidak dibenarkan untuk membersihkan rantai
+
 new_err=Gagal membuat rantaian
 new_ename=Nama rantai yang hilang atau tidak sah
 new_etaken=Rantaian dengan nama ini sudah wujud
 new_ecannot=Anda tidak dibenarkan membuat rantai
+
 apply_err=Gagal menggunakan konfigurasi
 apply_ecannot=Anda tidak dibenarkan memohon konfigurasi
 apply_remote=Ralat daripada $1 : $2 
 unapply_err=Gagal mengembalikan konfigurasi
 unapply_ecannot=Anda tidak dibenarkan untuk memulihkan konfigurasi
 bootup_ecannot=Anda tidak dibenarkan untuk mendayakan atau melumpuhkan firewall pada bootup
+
 log_create_rule=Peraturan Ditambah ke rantaian $1 dalam jadual $2 
 log_modify_rule=Peraturan diubah dalam rantai $1 dalam jadual $2 
 log_delete_rule=Peraturan dipadamkan dalam rantai $1 dalam jadual $2 
@@ -301,8 +316,10 @@ log_add_group=Menambahkan pelayan kelompok dari kumpulan $1
 log_delete_host=Pelayan kluster yang dibuang $1 
 log_delete_group=Dikeluarkan pelayan kelompok $1 
 log_openports=Port firewall dibuka $1 
+
 setup_eiface=Tiada antara muka rangkaian luaran yang dimasukkan
 setup_ecannot=Anda tidak dibenarkan menyiapkan firewall
+
 acl_tables=Dibenarkan IPTables
 acl_apply=Boleh memohon konfigurasi?
 acl_unapply=Bolehkah konfigurasi tidak terpakai?
@@ -314,9 +331,11 @@ acl_jall=Semua
 acl_newchain=Bolehkah membuat rantaian baru?
 acl_delchain=Boleh padam atau hapuskan rantai?
 acl_policy=Boleh menukar dasar lalai?
+
 etable=Anda tidak dibenarkan menyunting IPTV ini
 ejump=Anda tidak dibenarkan mengedit peraturan ini
 ecluster=Anda tidak dibenarkan mengurus cluster firewall
+
 cluster_title=Pelayan Firewall Cluster
 cluster_none=Tiada pelayan telah ditambahkan ke cluster firewall lagi.
 cluster_host=Nama hos
@@ -327,6 +346,7 @@ cluster_gadd=Tambah pelayan dalam kumpulan
 cluster_need=Anda mesti menambah pelayan dengan log masuk dan kata laluan dalam Modul Indeks Servis Webmin sebelum mereka boleh diuruskan di sini.
 cluster_return=pelayan kluster
 cluster_delete=Buang yang ditanda
+
 add_title=Tambah Pelayan
 add_msg=Menambah $1 ..
 add_gmsg=Menambah pelayan dalam kumpulan $1 ..
@@ -336,13 +356,16 @@ add_echeck=Server $1 tidak mempunyai modul Linux Firewall
 add_emissing=Pelayan $1 tiada arahan firewall $2 
 add_ok=Ditambah $1, dengan peraturan firewall aktif $2.
 add_enone=Tiada pelayan untuk menambah pilihan!
+
 policy_ecannot=Anda tidak dibenarkan menukar dasar lalai untuk rantaian ini
+
 move_title=Pindah Peraturan
 move_count=Peraturan dipilih
 move_chain=Perubahan semasa
 move_dest=Rantaian destinasi
 move_ok=Pindah Sekarang
 move_header=Pilihan langkah peraturan
+
 rename_title=Rubah nama Rantaian
 rename_count=Peraturan dalam rantai
 rename_chain=Nama semasa
@@ -352,6 +375,3 @@ rename_header=Rangkaian pilihan rename
 rename_adjust=Ubah peraturan lain yang melompat ke rantaian ini?
 rename_none=Tiada
 rename_ecannot=Anda tidak dibenarkan menukar nama rantai
-desc_icmpv6-type=Jenis ICMP ialah $1 
-desc_icmpv6-type!=Jenis ICMP bukan $1 
-eip6tables=IP6tables yang tidak diketahui menyimpan fail fail : $1 

@@ -1,4 +1,5 @@
 quota_unlimited=Ilimitado
+
 acl_fss=Sistemas de arquivo que o usuário pode editar
 acl_fall=Todos os Sistemas de arquivos
 acl_fsel=Selecionado..
@@ -21,9 +22,11 @@ acl_uuid=Usuários com UID na faixa
 acl_maxblocks=Limite máxima de cota de blocos
 acl_maxfiles=Limite máximo de cota de arquivos
 acl_unlimited=Ilimitado
+
 activate_eallow=Você não tem permissão para habilitar ou disabilitar cotas nesse sistema de arquivos
 activate_eon=Falhou ao iniciar cotas
 activate_eoff=Falhou ao desabilitar cotas
+
 check_title=Verificar Cotas
 check_return=$1 lista
 check_ecannot=Você não pode verificar cotas nesse sistema de arquivos
@@ -31,11 +34,13 @@ check_running=O comando <tt>quotacheck</tt> está verificando a utilização de 
 check_done=... Concluído. 
 check_rgroup=grupo
 check_ruser=usuário
+
 cgroup_efail=Falha ao copiar cotas
 cgroup_ecannot=Você não pode copiar cotas
 cgroup_egallow=Você não tem permissão de copiar cotas desse grupo
 cgroup_enogroup=Nenhum grupo destino para copiar
 cgroup_eallowto=Você não tem permissão de copiar cotas para '$1'
+
 cgform_title=Copiar Cotas
 cgform_return=cota de grupo
 cgform_ecannot=Você não pode copiar cotas
@@ -45,11 +50,13 @@ cgform_all=Todos os grupos em seu sistema
 cgform_select=Grupos selecionados
 cgform_contain=Grupos contendo usuários
 cgform_doit=Copiar
+
 cuser_efail=Falhou ao copiar cotas
 cuser_ecannot=Você não pode copiar cotas
 cuser_euallow=Você não tem permissão de copiar cotas desse usuário
 cuser_enouser=Nenhum usuário destino para copiar
 cuser_eallowto=Você não tem permissão para copiar cotas para '$1'
+
 cuform_title=Copiar Cotas
 cuform_return=Cota de usuário
 cuform_ecannot=Você não pode copiar cotas
@@ -59,6 +66,7 @@ cuform_all=Todos os usuários do sistema
 cuform_select=Usuários selecionados
 cuform_members=Membros dos Grupos selecionados
 cuform_doit=Copiar
+
 egroup_title=Editar Cota
 egroup_freturn=lista de sistema de arquivo
 egroup_greturn=lista de grupo
@@ -73,6 +81,7 @@ egroup_sflimit=Limite flexível de arquivos
 egroup_hflimit=Limite rígido de arquivos
 egroup_update=Atualizar
 egroup_listall=Lista todas as Cotas
+
 euser_title=Editar Cota
 euser_freturn=Lista de sistemas de arquivo
 euser_ureturn=lista de usuários
@@ -89,6 +98,7 @@ euser_sflimit=Limite flexível de arquivos
 euser_hflimit=Limite flexível de arquivos
 euser_update=Atualizar
 euser_listall=Lista todas as Cotas
+
 gfilesys_title=Cotas de Grupo
 gfilesys_return=lista de sistemas de arquivo
 gfilesys_ecannot=Você não pode editar cotas para '$1'
@@ -102,6 +112,7 @@ gfilesys_hard=Limite rígido
 gfilesys_nogquota=Grupo <tt>$1</tt> não tem cotas nesse sistema de arquivos
 gfilesys_edit=Editar Cota em:
 gfilesys_copy=Copiar Cotas
+
 ggracef_title=Tempo de tolerância
 ggracef_return=lista de grupos
 ggracef_ecannot=Você não pode editar o tempo de tolerância nesse sistema de arquivos
@@ -110,9 +121,11 @@ ggracef_graces=Tempo de tolerância para o grupo em <tt>$1</tt>
 ggracef_block=Para cota de bloco
 ggracef_file=Para cota de arquivo
 ggracef_update=Atualizar
+
 ggraces_esave=Falha ao salvar tempo de tolerância
 ggraces_eedit=Você não pode editar o tempo de tolerância nesse sistema de arquivos
 ggraces_enumber='$1' não é um número
+
 index_quser=Cotas de Usuários
 index_qgroup=Cotas de Grupos
 index_qboth=Cotas de Usuários e Grupos
@@ -131,6 +144,7 @@ index_return=índice
 index_euser=Editar Cotas do Usuário:
 index_egroup=Edita Cotas do Grupo:
 index_nosupport=Nenhum sistema de arquivos local que suporte cotas
+
 lgroups_failed=Falha ao listar grupos
 lgroups_eallow=Você não tem permissão para editar cotas nesse sistema de arquivos
 lgroups_title=Cotas Sistemas de Arquivos
@@ -147,13 +161,17 @@ lgroups_noquota=Nenhum grupo tem cota em <tt>$1</tt>
 lgroups_equota=Edita Cota para:
 lgroups_grace=Editar Tempo de tolerância
 lgroups_check=Verifica Cotas
+
 sgroup_egroup=Você não tem permissão para editar cotas para esse grupo
 sgroup_efs=Você não tem permissão para editar cotas nesse sistema de arquivos
+
 ssync_ecannot=Você não pode modificar a cota padrão para esse sistema de arquivos
+
 suser_euser=Você não tem permissão para editar cotas para esse usuário
 suser_efs=Você não tem permissão para editar cotas nesse sistema de arquivos
 suser_emaxblocks=Você não tem permissão de modificar o limite de blocos acima $1
 suser_emaxfiles=Você não tem permissão de modificar o limite de arquivos acima $1
+
 ufilesys_title=Cotas de Usuários
 ufilesys_return=lista de sistema de arquivos
 ufilesys_ecannot=Você não pode editar cotas para '$1'
@@ -167,6 +185,7 @@ ufilesys_hard=Limite rígido
 ufilesys_nouquota=O usuário <tt>$1</tt> não possui cotas em nenhum sistema de arquivos.
 ufilesys_edit=Editar Cota em:
 ufilesys_copy=Copiar Cotas
+
 ugracef_title=Tempo de tolerância
 ugracef_return=lista de usuário
 ugracef_ecannot=Você não pode editar o tempo de tolerância nesse sistema de arquivos
@@ -175,9 +194,11 @@ ugracef_graces=Tempo de tolerância para o usuário em <tt>$1</tt>
 ugracef_block=Cota de bloco
 ugracef_file=Cota de arquivo
 ugracef_update=Atualizar
+
 ugraces_esave=Falha ao salvar tempo de tolerância
 ugraces_eedit=Você não pode editar o tempo de tolerância nesse sistema de arquivos
 ugraces_enumber='$1' não é um número
+
 lusers_failed=Falha ao listar usuários
 lusers_eallow=Você não tem permissão para editar cotas nesse sistema de arquivos
 lusers_title=Cotas Sistema de Arquivo
@@ -202,12 +223,14 @@ lusers_hblimit=Limite rígido de blocos
 lusers_sflimit=Limite flexível de arquivos
 lusers_hflimit=Limite rígido de arquivos
 lusers_apply=Aplicar
+
 grace_seconds=Segundos
 grace_minutes=Minutos
 grace_hours=Horas
 grace_days=Dias
 grace_weeks=Semanas
 grace_months=Meses
+
 log_activate_u=Habilitar cotas para novos usuários em $1
 log_activate_g=Habilitar cotas para grupos em $1
 log_activate_ug=Habilitar cotas para usuários e grupos em $1

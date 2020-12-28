@@ -52,6 +52,7 @@ index_auto1=Esegui una traslazione dell indirizzo sull interfaccia esterna:
 index_auto2=Blocca tutte le connessioni in ingresso sull interfaccia esterna:
 index_auto=Imposta il firewall
 index_add=Aggiungi
+
 desc_p=il protocollo è $1
 desc_p!=il protocollo non è $1
 desc_s=la sorgente è $1
@@ -99,9 +100,14 @@ desc_tos!=type of service field is not $1
 desc_conds=se $1
 desc_and=e
 desc_always=Sempre
+
 redhat_eoutput=Si è verificato un errore caricando la configurazione di IPtables eseguendo il comando $1. Questo indica che probabilmente sul tuo sistema è configurato IPchains e non IPtables.
+
 gentoo_escript=Lo script iniziale $1 delle IPtables di Gentoo non è stato trovato sul tuo sistema.
+
 eiptables=Riga sconosciuta salvata nel file di IPtables: $1
+eip6tables=Riga sconosciuta salvata nel file di ip6tables: $1
+
 edit_title1=Aggiungi regola
 edit_title2=Modifica regola
 edit_title3=Dublica regola
@@ -158,6 +164,7 @@ edit_oifc=Altro..
 edit_clone=Duplica regola
 edit_before=Prima della regola $1
 edit_after=Dopo la regola $1
+
 save_err=Fallito salvataggio della regola
 save_echain=Catena da eseguire invalida o mancante
 save_esource=Indirizzo o rete sorgente invalido o mancante
@@ -198,16 +205,21 @@ save_esipto=Indirizzo IP finale per SNAT invalido
 save_espfrom=Porta iniziale per SNAT invalida
 save_espto=Porta finale per SNAT mancante o invalida
 save_estates=Nessuno stato della connessione selezionato
+
 delete_title=Cancella catena
 delete_rusure=Sei sicuro di voler cancellare la catena $1 ? $2 regole contenute saranno cancellate
 delete_ok=Cancella ora
+
 clear_title=Pulisci la catena
 clear_rusure=Sei sicuro di voler cancellare tutte e $2 le regole della catena $1 ?
+
 new_err=Fallita la creazione della catena
 new_ename=Nome della catena invalida o mancante
 new_etaken=Esiste già una catena con lo stesso nome
+
 apply_err=Fallita l'applicazione della configurazione
 unapply_err=Fallito il ripristino della configurazione
+
 log_create_rule=Aggiunta la regola alla catena $1 nella tabella $2
 log_modify_rule=Modificate regola nella catena $1 nella tabella $2
 log_delete_rule=Cancellata la regola nella catena $1 nella tabella $2
@@ -222,5 +234,5 @@ log_setup=Impostato il firewall
 log_convert=Firewall preesistente convertito
 log_bootup=Abilitato il firewall all'avvio
 log_bootdown=Disabilitato il firewall all'avvio
+
 setup_eiface=Nessuna interfaccia di rete esterna inserita
-eip6tables=Riga sconosciuta salvata nel file di ip6tables: $1

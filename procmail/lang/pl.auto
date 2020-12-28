@@ -16,6 +16,7 @@ index_none=Żadne akcje Procmail nie zostały jeszcze skonfigurowane.
 index_env=Ustaw zmienną $1 na $2 
 index_include=Proces obejmuje plik $1 
 index_ecmd=W twoim systemie nie znaleziono programu Procmail $1. Albo nie jest zainstalowany, albo konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+
 edit_title2=Edytuj działanie
 edit_title1=Utwórz akcję
 edit_header1=Szczegóły działania dostawy
@@ -46,6 +47,7 @@ edit_none=Żaden
 edit_lock=Określony plik
 edit_ctype=Rodzaj stanu
 edit_cvalue=Wyrażenie regularne lub polecenie
+
 save_err=Nie udało się zapisać akcji
 save_eaction_0=Brak pliku do dołączenia
 save_eaction_1=Brak folderu MH do zapisu
@@ -58,15 +60,19 @@ save_elockfile=Brak nazwy pliku blokady
 save_esize=Brakujący lub nieprawidłowy rozmiar poczty dla warunku $1 
 save_ere=Brakuje wyrażenia regularnego dla warunku $1 
 save_eshell=Brak polecenia dla warunku $1 
+
 env_header=Zmienna środowiskowa Procmail
 env_err=Nie udało się zapisać zmiennej
 env_ename=Brakująca lub niepoprawna nazwa zmiennej
+
 inc_title1=Dodaj dołącz plik
 inc_title2=Edytuj dołącz plik
 inc_header=Dołączony plik reguł procmaila
+
 manual_title=Edytuj konfigurację
 manual_desc=Tej strony można użyć do ręcznej edycji pliku konfiguracyjnego Procmail $1. Uważaj, ponieważ nie zostanie wykonane sprawdzanie składni.
 manual_edata=Twoja przeglądarka nie dostarczyła danych!
+
 log_create_rec=Utworzono przepis na $1 
 log_delete_rec=Usunięto przepis do $1 
 log_modify_rec=Zmodyfikowano przepis na $1 

@@ -14,6 +14,7 @@ index_search=Näytä palvelut vastaavat:
 index_sok=Hae
 index_toomany=Internet-palveluita on liian paljon, jotta niitä voidaan näyttää tällä sivulla.
 index_none=Mikään Internet-palvelu ei vastannut hakuasi.
+
 error_restart=Inetdin käynnistäminen epäonnistui
 error_saverpc=RPC-ohjelman tallentaminen epäonnistui
 error_invalidprgname='$1' ei ole kelvollinen ohjelman nimi
@@ -43,6 +44,7 @@ error_nameexist=Palvelu nimillä $1 ja protokolla $2 on jo olemassa
 error_inetservice=Internet-palvelu nimellä $1 ja protokolla $2 on jo olemassa
 error_smfservice=Smf-palvelun päivitys epäonnistui cmd '$1', virhekoodi $2 
 error_smf_cmdfield=Smf: lle ohjelman '$1' tiedostonimen on vastattava komentokentän ensimmäistä argumenttia, ts. '$2'.
+
 editrpc_title1=Luo RPC-ohjelma
 editrpc_title2=Muokkaa RPC-ohjelmaa
 editrpc_detail=RPC-ohjelman yksityiskohdat
@@ -69,6 +71,7 @@ editrpc_execasuser=Suorita käyttäjänä
 editrpc_max=Enimmäismäärä minuutissa
 editrpc_default=oletusarvo
 editrpc_execasgrp=Suorita ryhmänä
+
 editserv_title1=Luo Internet-palvelu
 editserv_title2=Muokkaa Internet-palvelua
 editserv_detail=Internet-palvelun yksityiskohdat
@@ -82,6 +85,7 @@ editserv_wrapper=TCP-wrapper
 editserv_inetd=Sisäinen <tt>inetd</tt>
 editserv_qm=Komentoa ei ehkä ole olemassa?
 editserv_ename=Palvelua tällä nimellä ja protokollalla ei ole
+
 log_apply=Sovelletut muutokset
 log_create_serv=Luotu palvelu $1 
 log_modify_serv=Muokattu palvelu $1 
@@ -95,6 +99,7 @@ log_delete_serv_l=Poistettu palvelu $1 portista $2
 log_create_prog_l=Luotu palvelu $1 portille $2 ohjelmalle $3 
 log_modify_prog_l=Muokattu palvelu $1 portissa $2 ohjelmalle $3 
 log_delete_prog_l=Poistettu palvelu $1 portista $2 ohjelmalle $3 
+
 log_create_rpc=Luotu RPC $1 
 log_modify_rpc=Muokattu RPC $1 
 log_delete_rpc=Poistettu RPC $1 

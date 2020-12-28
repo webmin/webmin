@@ -27,6 +27,7 @@ index_delete=Ħassar Magħżul
 index_joingroup=Żid mal-grupp:
 index_eulist=Naqsu milli jelenkaw l-utenti: $1 
 index_eglist=Naqset milli telenka gruppi: $1 
+
 edit_title=Editja l-Utent tal-Webmin
 edit_title2=Oħloq Utent Webmin
 edit_title3=Oħloq Utent Webmin Salv
@@ -115,6 +116,7 @@ edit_safe=Livell tal-privileġġ
 edit_safe0=Mhux ristrett
 edit_safe1=Moduli sikuri biss
 edit_unsafe=Irrisettja għal mhux ristrett
+
 save_err=Ma rnexxielux isalva l-utent
 save_ename="$1" mhux isem tal-utent validu
 save_eunixname=Il-username '$1' mhux utent Unix, u għalhekk ma jistax jintuża fil-modalità sikura
@@ -145,11 +147,13 @@ save_edays=L-ebda jum li jippermetti li jintgħażel
 save_ehours=Ħinijiet nieqsa jew invalidi li jippermettu
 save_ehours2=Il-ħin tal-bidu li jippermetti għandu jkun qabel it-tmiem
 save_etemp=L-għażla biex iġġiegħel tinbidel password fil-login li jmiss ma tistax tintuża sakemm <a href='$1'>tħeġġeġ lill-utenti biex jidħlu passwords ġodda</a> tkun attivata
+
 delete_err=Naqset milli tħassar l-utent
 delete_eself=Ma tistax tħassar lilek innifsek
 delete_ecannot=M'għandekx permess li tħassar l-utenti
 delete_euser=M'għandekx permess tħassar dan l-utent
 delete_eanonuser=Dan l-utent qed jintuża għal aċċess modulu anonimu
+
 cert_title=Ċertifikat tat-Talba
 cert_issue=Ċertifikat tal-Ħruġ
 cert_header=Dettalji ta 'ċertifikati ġodda
@@ -169,6 +173,7 @@ cert_ekey=Ċavetta SSL ġdida ma ġietx sottomessa mill-browser tiegħek - forsi
 cert_eca=Naqset milli tissettja awtorità taċ-ċertifikat: $1 
 cert_already=Twissija - Diġà qed tuża ċ-ċertifikat $1.
 cert_etempdir=Fajl ta 'ċertifikat mhux validu
+
 acl_title=Modulu ta 'Kontroll ta' l-Aċċess
 acl_title2=Għal $1 f ' $2 
 acl_title3=Għall-grupp $1 f ' $2 
@@ -177,6 +182,7 @@ acl_config=Tista 'teditja l-konfigurazzjoni tal-modulu?
 acl_reset=Irrisettja għal Aċċess sħiħ
 acl_rbac=Tikseb issettjar ta 'kontroll ta' aċċess minn RBAC?
 acl_rbacyes=Iva (twarrab l-issettjar hawn taħt)
+
 acl_uall=L-utenti kollha
 acl_uthis=Dan l-utent
 acl_usel=Utenti magħżula..
@@ -216,6 +222,7 @@ acl_switch=Tista 'taqleb għal utenti oħra?
 acl_times=Tista 'tinbidel il-ħinijiet ta' l-aċċess permessi?
 acl_pass=Tista 'tbiddel restrizzjonijiet ta' password?
 acl_sql=Tista 'tikkonfigura database tal-utenti u tal-grupp?
+
 log_modify=Utent tal-Webmin modifikat $1 
 log_rename=Utent tal-Webmin imsejjaħ $1 għal $2 
 log_create=Ħoloq utent tal-Webmin $1 
@@ -238,6 +245,7 @@ log_sync=Sinkronizzazzjoni tal-utent unix mibdula
 log_sql=Database mibdula ta 'utenti u gruppi
 log_twofactor=Utent irreġistrat $1 ma 'fornitur b'żewġ fatturi $2 
 log_onefactor=Utent irreġistrat $1 għall-awtentikazzjoni b'żewġ fatturi
+
 gedit_ecannot=M'għandekx permess teditja gruppi
 gedit_title=Editja l-Grupp Webmin
 gedit_title2=Oħloq Webmin Group
@@ -247,6 +255,7 @@ gedit_modules=Moduli tal-Membri
 gedit_members=Utenti u gruppi ta 'l - Istati Membri
 gedit_desc=Deskrizzjoni tal-Grupp
 gedit_egone=Grupp magħżul m'għadux jeżisti!
+
 gdelete_err=Ma rnexxielux jitħassar il-grupp
 gdelete_ecannot=M'għandekx permess tħassar gruppi
 gdelete_euser=Ma tistax tħassar il-grupp tiegħek stess
@@ -254,11 +263,13 @@ gdelete_esub=Gruppi b'sottogruppi ma jistgħux jitħassru
 gdelete_title=Ħassar Grupp
 gdelete_desc=Int żgur li trid tħassar il-grupp $1 u l-utenti membri tiegħu $2 ?
 gdelete_ok=Ħassar Grupp
+
 gsave_err=Ma rnexxielux isalva grupp
 gsave_ename=Isem tal-grupp nieqes jew invalidu
 gsave_enamewebmin=L-isem tal-grupp “webmin” huwa riservat għal użu intern
 gsave_edup=L-isem tal-grupp diġà qed jintuża
 gsave_edesc=Deskrizzjoni mhux valida - il-karattru: mhux permess
+
 convert_title=Ikkonverti Utenti
 convert_ecannot=M'għandekx permess tikkonverti l-utent Unix
 convert_nogroups=L-ebda grupp ta 'Webmin ma ġie definit fis-sistema tiegħek. Mill-inqas grupp wieħed irid jinħoloq qabel il-konverżjoni sabiex jiġu definiti permessi għall-utenti konvertiti.
@@ -287,6 +298,7 @@ convert_user=Utent Unix
 convert_action=Azzjoni meħuda
 convert_done= $1 utenti kkonvertiti, $2 invalidi, $3 diġà jeżistu, $4 eskluż.
 convert_users=Utenti biex jikkonvertu
+
 sync_title=Sinkronizzazzjoni tal-Utent Unix
 sync_desc=Din il-formola tippermetti li tikkonfigura s-sinkronizzazzjoni awtomatika tal-utenti Unix maħluqa permezz ta 'Webmin u l-utenti f'dan il-modulu.
 sync_nogroups=L-ebda grupp ta 'Webmin ma ġie definit fis-sistema tiegħek. Mill-inqas grupp wieħed irid jinħoloq biex jistabbilixxi l-aċċess għall-utenti maħluqa.
@@ -297,6 +309,7 @@ sync_delete=Ħassar l-utent ta 'Webmin li jaqbel meta utent Unix jitħassar.
 sync_group=Assenja utenti ġodda għall-grupp Webmin
 sync_unix=Issettja l-password għal utenti ġodda għall-awtentikazzjoni Unix.
 sync_ecannot=M'għandekx permess tikkonfigura s-sinkronizzazzjoni tal-utent.
+
 unix_title=Awtentikazzjoni ta 'l-Utent Unix
 unix_err=Ma rnexxielux isalva l-awtentikazzjoni Unix
 unix_desc=Din il-paġna jippermettilek li tikkonfigura Webmin biex tivvalida l-attentati ta 'login kontra l-lista ta' utenti tas-sistema u PAM. Dan jista 'jkun utli jekk għandek numru kbir ta' utenti Unix eżistenti li tixtieq tagħti aċċess għal Webmin.
@@ -329,6 +342,7 @@ unix_esudo=Il-kmand $1 mhuwiex installat
 unix_esudomod=Il-modulu Perl $1 meħtieġ għall-<tt>sudo</tt> awtentikazzjoni mhix installata
 unix_header=Is-settings tal-awtentikazzjoni tal-utent
 unix_utable=Utenti Unix permessi
+
 sessions_title=Sessjonijiet kurrenti ta 'Dħul
 sessions_id=ID tas-Sessjoni
 sessions_user=Utent tal-Webmin
@@ -342,21 +356,26 @@ sessions_this=Dan id-dħul
 sessions_in=Dħalt
 sessions_out=Dħalt
 sessions_kill=Skonnettja..
+
 logins_title=Logins reċenti tal-Webmin
+
 hide_title=Aħbi Moduli Mhux Użati
 hide_desc=Il-moduli li ġejjin se jitneħħew mil-lista ta 'aċċess għall-moduli għal $1 billi s-servers korrispondenti tagħhom mhumiex installati fis-sistema tiegħek.
 hide_ok=Aħbi l-Moduli Issa
 hide_none=Xejn li jaħbi - $1 m'għandux aċċess għal xi moduli li s-servers korrispondenti tagħhom mhumiex installati fis-sistema tiegħek.
 hide_desc2=Kun konxju li dawn il-moduli ma jerġgħux jidhru awtomatikament jekk is-servers korrispondenti jkunu installati. Ikollok bżonn tagħti aċċess manwalment billi tuża dan il-modulu.
 hide_clone=(Klonu $1 )
+
 switch_euser=M'għandekx permess taqleb għal dan l-utent
 switch_eold=Ma nstabx sessjoni eżistenti!
+
 rbac_title=Twaqqif ta 'RBAC
 rbac_desc=L-integrazzjoni RBAC ta 'Webmin tipprovdi mod kif il-modulu ta' l-utent u l-permessi ACL jiġu determinati minn database RBAC (Role Based Access Control), aktar milli fajls ta 'konfigurazzjoni ta' Webmin stess. Ladarba l-appoġġ RBAC ikun attivat, kull utent li għalih l-għażla <b>RBAC tikkontrolla l-moduli kollha u l-għażla ACLs</b> se jkollha l-kapaċitajiet tiegħu determinati mill-RBAC aktar milli l-issettjar tal-kontroll tal-aċċess tal-Webmin.
 rbac_esolaris=L-RBAC huwa appoġġat biss fuq Solaris fil-mument, u għalhekk ma jistax jintuża fuq din is-sistema $1.
 rbac_eperl=Il-modulu Perl $1 meħtieġ għall-integrazzjoni RBAC mhuwiex installat. <a href='$2'>Ikklikkja hawn</a> biex ikollok installat issa.
 rbac_ecpan=M'għandekx aċċess għall-paġna tal-Moduli Perl ta 'Webmin sabiex tinstalla l-modulu neċessarju $1 għall-integrazzjoni RBAC.
 rbac_ok=L-integrazzjoni RBAC hija disponibbli fuq din is-sistema, u tista 'tkun attivata fuq bażi ta' kull utent fuq il-paġna Editja l-Utent ta 'Webmin.
+
 udeletes_err=Ma rnexxielhomx iħassru lill-utenti
 udeletes_jerr=Naqset milli żżid utenti fil-grupp
 udeletes_enone=L-ebda magħżul
@@ -365,11 +384,13 @@ udeletes_rusure=Int żgur li trid tħassar l- $1 l-utenti magħżula? L-issettja
 udeletes_users=Utenti magħżula: $1 
 udeletes_ok=Ħassar l-Utenti
 udeletes_ereadonly=Wieħed mill-utenti magħżula huwa mmarkat bħala mhux editabbli
+
 gdeletes_err=Ma rnexxielhiex tħassar il-gruppi
 gdeletes_title=Ħassar Gruppi
 gdeletes_rusure=Int żgur li trid tħassar il-gruppi magħżula $1 u l-utenti $2 li fihom? L-issettjar tal-kontroll tal-aċċess tagħhom u d-dettalji tal-utent jintilfu.
 gdeletes_users=Gruppi magħżula: $1 
 gdeletes_ok=Ħassar Gruppi
+
 pass_title=Restrizzjonijiet tal-Password
 pass_ecannot=M'għandekx permess teditja restrizzjonijiet tal-password
 pass_header=Għażliet ta 'infurzar tal-password Webmin
@@ -392,6 +413,7 @@ pass_eminsize=It-tul minimu tal-password nieqes jew mhux numeriku
 pass_emaxdays=Numru ta 'jiem nieqsa jew mhux numeriċi qabel ma jinbidlu
 pass_elockdays=Numru ta 'jiem nieqsa jew mhux numeriċi qabel ma l-kont ikun imsakkar
 pass_eoldblock=Numru nieqsa jew mhux numeriċi ta 'passwords qodma li għandhom jiċħdu
+
 cpass_minsize=Għandha tkun tal-inqas $1 ittri twal
 cpass_notre=Jaqbel ma 'mudell mhux permess
 cpass_re=Ma taqbilx mal-mudell meħtieġ
@@ -399,6 +421,7 @@ cpass_name=Fih l-username
 cpass_dict=Hija kelma dizzjunarju
 cpass_spellcmd=La l-kmand $1 u $2 meħtieġa biex tivverifika jekk il-kliem tad-dizzjunarju mhumiex installati
 cpass_old=Passwords qodma ma jistgħux jintużaw mill-ġdid
+
 sql_title=Database tal-Utenti u tal-Grupp
 sql_ecannot=M'għandekx permess tikkonfigura d-database tal-utenti u tal-grupp
 sql_header=Għażliet għal backend tad-database għal utenti u gruppi
@@ -441,21 +464,25 @@ sql_dnerr=L-issettjar tad-database tal-utenti u tal-grupp huma validi, iżda d-D
 sql_dnerr2=Ikklikkja l-buttuna <b>Oħloq DN</b> hawn taħt biex toħloqha awtomatikament, jew żidha manwalment fis-server LDAP tiegħek.
 sql_makedn=Oħloq DN
 sql_schema=Niżżel l-Iskema LDAP
+
 make_title=Oħloq Tabelli għall-Utenti u l-Grupp
 make_err=Ma rnexxielux joħloq tabelli tal-utenti u tal-grupp
 make_exec=Eżekuzzjoni ta 'SQL $1..
 make_failed=.. Il-ħolqien falla: $1 
 make_done=.. ghamel
 make_still=Xi problemi nstabu anke wara l-ħolqien tat-tabella: $1 
+
 makedn_title=Oħloq DN LDAP
 makedn_eoc=L-ebda klassijiet ta 'oġġett strutturali ma nstabu!
 makedn_exec=Ħolqien tad-DN ġenitur $1..
 makedn_failed=.. Il-ħolqien falla: $1 
 makedn_done=.. ghamel
 makedn_still=Xi problemi nstabu anke wara l-ħolqien tad-DN: $1 
+
 schema_title=Niżżel l-Iskema LDAP
 schema_desc=Qabel ma Webmin ikun jista ’juża server LDAP biex jaħżen l-utenti u l-gruppi għandu jkun ikkonfigurat biex juża l-iskema hawn taħt. Dan tipikament jista 'jsir billi tiġi salvata d-definizzjoni tal-iskema f' <tt>/etc/ldap/schema</tt> jew <tt>/etc/openldap/schema</tt> bħala <tt>webmin.schema</tt>, imbagħad konfigurazzjoni s-server biex jgħabbi dak l-iskema tal-fajl.
 schema_download=Niżżel il-fajl tal-iskema: <a href=$1>$1</a>
+
 twofactor_err=Naqset milli tissettja awtentikazzjoni b'żewġ fatturi
 twofactor_euser=L-utent tal-Webmin tiegħek ma nstabx!
 twofactor_title=Awtentikazzjoni b'żewġ Fatturi

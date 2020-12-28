@@ -1,7 +1,21 @@
 opts_delay_warning_time_default2=Per defecte del correfoc
+
 mapping_toomany=Hi ha $1 entrades de mapa, que es troba per sobre del límit de visualització de $2.
 mapping_find=Mostra els mapatges que coincideixen:
 mapping_search=Cerca
 mapping_match=Entrades de fitxers del mapa que coincideixen amb <tt>$1</tt> ..
+
+sni_title=Assignació de certificats
+sni_ecannot=No podeu editar la configuració de mapatge de certificats
+opts_sni_maps=Taules de cerca de mapatge de certificats
+sni_return=mapes de certificats
+sni_dom=Nom de l'amfitrió
+sni_certs=Fitxers de certificats
+
+acl_sni=Es poden editar certificats?
+
 after_err=Error de configuració de correcció posterior : $1
+
+log_sni=Canvieu les opcions de mapatge de certificats
+
 mysql_ecfile2=No s'ha pogut trobar la taula al fitxer de configuració de MySQL $1

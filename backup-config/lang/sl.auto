@@ -20,6 +20,7 @@ index_nostrftime=Opozorilo - nekatera rezervna opravila v svojih imenih uporablj
 index_tabsched=Načrtovane varnostne kopije
 index_tabbackup=Varnostno kopirajte zdaj
 index_tabrestore=Obnovi zdaj
+
 edit_title1=Ustvari načrtovano varnostno kopijo
 edit_title2=Uredite načrtovano varnostno kopijo
 edit_header=Načrtovane varnostne kopije
@@ -44,9 +45,11 @@ edit_return=rezervni obrazec
 edit_other=Druge naštete datoteke ..
 edit_pre=Ukaz pred varnostno kopijo
 edit_post=Ukaz naknadne varnostne kopije
+
 save_err=Varnostne kopije ni bilo mogoče shraniti
 save_emods=Izbran ni noben modul
 save_ewebmin=Niti izbrana niti spletna konfiguracijska datoteka niti strežnik
+
 backup_mode0=Lokalna datoteka
 backup_mode1=FTP strežnik
 backup_mode2=SSH strežnik
@@ -63,6 +66,7 @@ backup_egunzip=Varnostno kopiranje je stisnjeno, vendar <tt>gunzip</tt> ni name�
 backup_euntar=Un-TAR ni uspel : $1 
 backup_enone2=Nobena datoteka za izbrane module ni v varnostni kopiji
 backup_epre2=Modul $1 zavrnjena obnovitev : $2 
+
 backup_err=Varnostno kopiranje ni uspelo
 backup_edest=Manjkajoča ali neveljavna absolutna lokalna datoteka
 backup_eserver1=Manjkajoči ali neveljavni FTP strežnik
@@ -78,6 +82,7 @@ backup_title=Konfiguracija varnostne kopije
 backup_doing=Zagon varnostne kopije konfiguracijskih datotek modula na $1.
 backup_failed=.. ni uspelo! $1 
 backup_done=.. dokončana. Končna velikost varnostne kopije je bila $1, ki vsebuje $2 datoteke.
+
 restore_err=Obnovitev ni uspela
 restore_emods=Izbrani niso nobeni moduli ali druge datoteke
 restore_title=Obnovi konfiguracijo
@@ -86,22 +91,26 @@ restore_testing=Pridobivanje varnostne kopije iz $1.
 restore_failed=.. ni uspelo! $1 
 restore_done=.. dokončana. $1 datotek je bilo obnovljeno.
 restore_done2=.. datoteke v varnostni kopiji so :
+
 nice_ftp=$2 na $1 prek FTP
 nice_ftpp=$2 na $1 vrata $3 prek FTP
 nice_ssh=$2 na $1 preko SSH
 nice_sshp=$2 na $1 vrata $3 prek SSH
 nice_upload=naložena datoteka
 nice_download=brskalnik
+
 log_backup=Varnostno kopiranje $1 modulov na $2 
 log_restore=Obnovljeni $1 moduli iz $2 
 log_create_backup=Ustvarjeno varnostno kopijo $1 modulov na $2 
 log_modify_backup=Spremenjena varnostna kopija $1 modulov v $2 
 log_delete_backup=Izbrisana varnostna kopija $1 modulov na $2 
 log_run_backup=Izvedena varnostna kopija $1 modulov na $2 
+
 run_title=Rezervne konfiguracije
 run_doing=Začetek varnostne kopije $1 modulov na $2.
 run_ok=.. varnostno kopiranje uspešno zaključeno.
 run_failed=.. varnostno kopiranje ni uspelo! Glej zgornje sporočilo o napaki za razlog.
+
 email_mods=Varnostno kopiranje modulov :
 email_failed=do $1 ni uspelo :
 email_ok=do $1 je uspelo.

@@ -32,6 +32,7 @@ index_man=構成を手動で編集する
 index_mandesc=プライマリProcmail構成ファイルを直接編集して、独自のルール、変数、ブロックを作成します。
 index_ecmd=Procmailプログラム $1がシステムで見つかりませんでした。インストールされていないか、<a href='$2'>モジュール設定</a>が正しくありません。
 index_delete=選択したアクションを削除
+
 edit_title2=アクションを編集
 edit_title1=アクションを作成
 edit_header1=配信アクションの詳細
@@ -67,6 +68,7 @@ edit_none=なし
 edit_lock=特定のファイル
 edit_ctype=条件タイプ
 edit_cvalue=正規表現またはコマンド
+
 save_err=アクションを保存できませんでした
 save_eaction_0=追加するファイルがありません
 save_eaction_1=書き込み先のMHフォルダーがありません
@@ -79,6 +81,7 @@ save_elockfile=ロックファイル名がありません
 save_esize=条件 $1のメールサイズが見つからないか無効です
 save_ere=条件 $1の正規表現がありません
 save_eshell=条件 $1のコマンドがありません
+
 env_title1=変数を作成
 env_title2=変数を編集
 env_header=Procmail環境変数
@@ -86,15 +89,19 @@ env_name=変数名
 env_value=値
 env_err=変数を保存できませんでした
 env_ename=変数名が欠落しているか無効です
+
 inc_title1=インクルードファイルを追加
 inc_title2=インクルードファイルの編集
 inc_header=含まれるprocmailルールファイル
 inc_inc=含まれるファイル
 inc_einc=インクルードファイルが入力されていません
+
 config_eline=$2の不明な行 $1 : $3
+
 manual_title=設定を編集
 manual_desc=このページを使用して、Procmail構成ファイル $1を手動で編集できます。構文チェックは行われないため、注意してください。
 manual_edata=ブラウザからデータが提供されませんでした！
+
 log_create_rec=$1へのレシピを作成しました
 log_delete_rec=レシピを $1に削除しました
 log_modify_rec=レシピを $1に変更しました
@@ -114,7 +121,9 @@ log_delete_inc=インクルードファイル $1を削除しました
 log_manual=手動で編集された構成
 log_up=エントリを上に移動しました
 log_down=エントリを下に移動しました
+
 delete_err=アクションを削除できませんでした
 delete_enone=何も選択されていません
+
 check_epostfix=ProcmailはPostfix設定で有効になっていません。構成ファイル<tt>$2</tt>の<tt>$1</tt>オプションは<tt>$3</tt>に設定する必要があります。
 check_esendmail=Sendmailは、ローカル配信にProcmailを使用するように設定されていません。これは、Webminの<a href='$1'>Sendmail Mail Server</a>モジュールで構成できます。

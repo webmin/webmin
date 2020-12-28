@@ -16,6 +16,7 @@ index_digest2=Digest-Verschlüsselung ist in der Modul-Konfiguration aktiviert, 
 index_cpan=<a href='$1'>Hier klicken</a> für den Download und anschliessender Installation.
 index_delete=Aufheben der ausgewählten Verzeichnisse
 index_remove=Aufheben und Dateien löschen
+
 dir_title1=Ein Verzeichniss schützen
 dir_title2=Ein geschütztes Verzeichnis bearbeiten
 dir_header=Geschützte Verzeichnisoptionen
@@ -60,6 +61,7 @@ dir_delete3=Aufheben und Entfernen der Datei
 dir_apache=Editiere Apache Optionen
 dir_efiledir='$1' ist ein Verzeichnis und kann daher nicht als Benutzerdatei verwendet werden
 dir_egfiledir='$1' ist ein Verzeichnis und kann daher nicht als Gruppendatei verwendet werden
+
 edit_title1=zugangsberechtigten Benutzer anlegen
 edit_title2=zugangsberechtigten Benutzer bearbeiten
 edit_header=Benutzerdetails für die Webauthentifizierung
@@ -71,11 +73,13 @@ edit_pass0=Neues Passwort
 edit_passfrom=Ändere Passwort von
 edit_passto=zu neuem Passwort
 edit_dom=Digest realm
+
 gedit_title1=Erzeuge Gruppe
 gedit_title2=Bearbeite Gruppe
 gedit_header=Gruppeneigenschaften für die Web-Authentifizierung
 gedit_group=Gruppenname
 gedit_members=Mitglieder der Gruppe
+
 save_err=Fehler beim Speichern des Benutzernamens
 save_euser1=Fehlender Benutzername
 save_euser2=Der Benutzername darf kein : enthalten
@@ -84,16 +88,19 @@ save_eclash=Ein Benutzer mit diesem Namen existiert bereits
 save_eoldpass=Altes Passwort falsch
 save_title=zugangsberechtigter Benutzer gespeichert
 save_edom=Fehlender oder ungültiger digest realm
+
 gsave_err=Konnte Gruppe nicht speichern
 gsave_egroup1=Fehlender Gruppenname
 gsave_egroup2=Ein Gruppenname darf weder das Zeichen : noch ein Leerzeichen enthalten
 gsave_eclash=Eine Gruppe mit dem gleichen Namen existiert bereits.
+
 acl_dirs=Erlaubte Verzeichnisse
 acl_user=Erstelle .htaccess und htusers Dateien als Unix Benutzer
 acl_same=Wie Webmin Login
 acl_home=Unix Benutzer's Homeverzeichnis einschließen?
 acl_sync=Darf Unixbenutzer-Synchronisation einrichten?
 acl_uonly=Kann hinzufügen und ändern von geschützten Verzeichnissen?
+
 log_create_dir=WWW-Verzeichnis $1 hinzugefügt
 log_modify_dir=WWW-Verzeichnis $1 modifiziert
 log_delete_dir=WWW-Verzeichnis $1 gelöscht
@@ -104,6 +111,7 @@ log_create_group=Erzeugte Gruppe $1
 log_modify_group=Veränderte Gruppe $1
 log_delete_group=Gelöschte Gruppe $1
 log_delete_dirs=$1 Verzeichnisse gelöscht
+
 search_title=Suchergebnisse
 search_err=Suche gescheitert
 search_edir=Falsches oder fehlendes Verzeichnis für Suche angegeben

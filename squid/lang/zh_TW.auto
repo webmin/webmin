@@ -8,6 +8,7 @@ index_refresh=刷新規則
 index_cachemgr=緩存管理器密碼
 index_squidver=命令<tt>$1</tt>返回：
 index_version=魷魚版本$1
+
 index_stop=停止魷魚
 index_stopdesc=單擊此按鈕停止正在運行的Squid代理服務器。一旦停止，使用它的客戶端將無法發出Web或FTP請求。
 index_start=開始魷魚
@@ -17,6 +18,7 @@ index_restartdesc=單擊此按鈕以激活當前的Squid配置。
 index_iptables=端口重定向設置
 index_squid=魷魚代理服務器
 index_manual=編輯配置文件
+
 manual_title=編輯配置文件
 manual_file=選擇一個配置文件進行編輯：
 manual_change=更改
@@ -24,6 +26,7 @@ manual_editing=使用下面的文本框手動編輯$1中的配置。請注意，
 manual_err=保存配置文件失敗
 manual_efile=無效的配置文件名！
 manual_ecannot=您無權手動編輯配置文件
+
 acl_eusers=外部驗證用戶
 acl_eusersall=所有用戶
 acl_euserssel=只有那些列出的 ..
@@ -43,20 +46,27 @@ acl_file=將ACL值存儲在文件中
 acl_nofile=魷魚配置
 acl_infile=單獨的文件
 acl_keep=只是使用文件的現有內容？
+
 aclsave_efile=您無權寫入ACL文件'$1'
 aclsave_enofile=沒有輸入ACL文件名
 aclsave_ealready=ACL文件已存在
+
 cach_ecannot=您無權訪問緩存管理器統計信息
 cach_esame=<b>Squid cachemgr.cgi可執行文件</b>設置為Webmin的cachemgr.cgi程序，而不是Squid提供的程序。
+
 chown_return=魷魚指數
+
 clear_ecannot=您無權清除並重建緩存
 clear_url=從緩存中刪除一個URL：
 clear_ok=去掉
+
 eacl_ecannot=您無權編輯訪問控制
 eacl_noprr=未定義代理回复限制
 eacl_addprr=添加代理回复限制。
+
 eacl_replypr=回复代理限制
 eacl_replynopr=未定義回复代理限制
+
 eacl_allow=允許
 eacl_deny=拒絕
 eacl_ext=外部ACL程序
@@ -69,10 +79,13 @@ eacl_eclass=未選擇程序類別
 eacl_cname=類型名稱
 eacl_file=來自文件$1
 eacl_hdelete=刪除選定的限制
+
 eadm_ecannot=您無權編輯管理選項
 eadm_haliases=其他緩存DNS名稱
+
 eauth_ecannot=您無權編輯代理身份驗證
 eauth_nmsgaccess=使用正確的ACL，可以從文件$1中訪問下面列出的用戶，以訪問您的代理服務器。添加，刪除或更改用戶後，必須使用“應用更改”鏈接才能使修改生效。
+
 ec_ecannot=您無權編輯緩存選項
 ec_opts=選件
 ec_diskd=磁盤
@@ -81,6 +94,7 @@ ec_gap=最大客戶預讀間隔
 ec_maxreplies=最大回復正文大小
 ec_maxrn=大小（kB）
 ec_maxracls=對於與ACL匹配的請求（所有留空）
+
 ech_siq2=拒絕ICP查詢？
 ech_pass=將客戶端身份驗證傳遞到此緩存
 ech_upass=使用密碼傳遞客戶端登錄信息：
@@ -93,6 +107,7 @@ ech_origin=將主機視為原始服務器？
 ech_force=強制主機：標題
 ech_same=不變的
 ech_ssl=使用SSL連接嗎？
+
 eicp_ecannot=您無權編輯其他緩存
 eicp_secs=秒
 eicp_always=直接獲取的ACL
@@ -106,6 +121,7 @@ eicp_ttype=類型
 eicp_tpport=代理端口
 eicp_tiport=ICP端口
 eicp_delete=刪除選定的緩存
+
 elogs_ecannot=您無權編輯日誌記錄
 elogs_none=沒有
 elogs_logformat=訪問日誌格式
@@ -121,6 +137,7 @@ elogs_notset=沒有設置
 elogs_dont=不要登錄
 elogs_file=文件$1
 elogs_squid=魷魚標準
+
 emem_ecannot=您無權編輯內存使用情況
 emem_dheader=內存和磁盤使用率
 emem_crp=磁盤更換策略
@@ -129,6 +146,7 @@ emem_gdsf=貪心雙頻
 emem_lfuda=動態最不常用
 emem_hlru=最不常用的堆
 emem_mrp=內存更換政策
+
 emisc_ecannot=您無權編輯其他選項
 emisc_hash=只有一個HTTP Accel服務器？
 emisc_wccprtr=WCCP路由器地址
@@ -136,6 +154,7 @@ emisc_wccpin=WCCP傳入地址
 emisc_wccpout=WCCP外寄地址
 emisc_none=沒有
 emisc_virtual=虛擬
+
 eports_ecannot=您無權編輯端口和網絡
 eports_ssl=SSL地址和端口
 eports_opts=端口選項
@@ -145,6 +164,7 @@ eports_unc=不干淨的SSL關閉嗎？
 eports_checkhost=驗證URL中的主機名？
 eports_underscore=允許在主機名中使用下劃線？
 eports_all=所有
+
 eprogs_ecannot=您無權編輯幫助程序
 eprogs_sppe=啟用了ping程序？
 eprogs_startup=最初啟動的程序
@@ -154,29 +174,39 @@ eprogs_capweb=Webmin默認
 eprogs_ttl=認證緩存時間
 eprogs_aittl=驗證IP緩存時間
 eprogs_realm=認證領域
+
 euser_e=已啟用？
+
 ahttp_replyheader=創建代理回复限制
 ahttp_replyheader1=編輯代理回复限制
 ahttp_replypr=代理回复限制
+
 icache_ecannot=您不可以初始化緩存
 icache_euser=用戶運行不存在的Squid
 icache_title=初始化緩存
+
 scache_emaxrs=第$1行的最大正文大小無效
+
 slogs_efname=$1行中的格式名稱無效
 slogs_effmt=$1行中缺少日誌格式
 slogs_eafile=$1行中缺少或無效的日誌文件
+
 sprog_emsg9='$1'不是有效的緩存時間
 sprog_emsg10='$1'不是有效的TTL
 sprog_echildren=程序數必須是大於零的數字
+
 suser_etaken=用戶名已經存在
+
 start_ecannot=您不允許啟動Squid
 stop_ecannot=不允許您停止魷魚
+
 calamaris_ecannot=您無權訪問Calamaris日誌分析
 calamaris_title=卡拉馬里斯測井分析
 calamaris_last=將分析限制為日誌的最後$1行。
 calamaris_eprog=找不到calamaris可執行文件$1。也許它沒有安裝在您的系統上，或者您的<a href='$2'>模塊配置</a>不正確。
 calamaris_elogs=日誌目錄$1不包含任何<tt>access.log</tt>文件。可能尚未運行squid，或者您的<a href='$2'>模塊配置</a>不正確。
 calamaris_gen=在$1上生成的報告
+
 lib_aclrmt=請求MIME類型
 lib_aclrpmt=回复MIME類型
 lib_aclarp=以太網地址
@@ -184,6 +214,7 @@ lib_aclear=外部驗證正則表達式
 lib_aclrur=RFC931用戶正則表達式
 lib_aclext=外部程序
 lib_aclmuip=最大用戶IP
+
 log_ports=更改了端口和網絡選項
 log_icp=更改了其他緩存選項
 log_mem=更改了內存使用選項
@@ -238,25 +269,31 @@ log_pools_delete=刪除的$1延遲池
 log_delay_create=為延遲池$1添加了ACL
 log_delay_modify=延遲池$1的已修改ACL
 log_delay_delete=已刪除延遲池$1的ACL
+
 log_delay_move=移動了延遲池的ACL $1
 log_refresh_create=為$1創建刷新規則
 log_refresh_modify=修改了$1的刷新規則
 log_refresh_delete=$1的刷新規則已刪除
+
 log_refresh_move=移動了$1的刷新規則
 log_refreshes_delete=刪除的$1刷新規則
 log_iptables=更新了端口重定向設置
 log_purge=從緩存中刪除URL $1
 log_cachemgr=更改了緩存管理器密碼
+
 acl_root=ACL文件的根目錄
 acl_sections=允許的配置頁面
 acl_start=可以啟動和停止Squid嗎？
 acl_restart=可以應用Squid配置嗎？
+
 always_create=創建直接提取
 always_edit=編輯直接提取
 always_header=直接獲取匹配ACL的請求
+
 never_create=創建間接提取
 never_edit=編輯間接提取
 never_header=從不直接獲取匹配ACL的請求
+
 delay_title=延遲池
 delay_add=添加一個新的延遲池。
 delay_num=數
@@ -306,11 +343,14 @@ pool_unit2=千位
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=兆字節
+
 dpool_err=刪除延遲池失敗
 dpool_enone=未選擇
+
 apool_header=添加延遲池ACL
 apool_header1=編輯延遲池ACL
 apool_pr=延遲池ACL
+
 authparam_title=認證程序
 authparam_header=外部身份驗證程序選項
 authparam_ttl=是時候緩存密碼了
@@ -353,6 +393,7 @@ ext_ecache=緩存大小丟失或無效
 ext_eprogram=輸入了無效的程序路徑
 ext_eclash=具有相同名稱的外部程序類型已存在
 ext_eused=ACL正在使用此外部程序
+
 header_title=標頭訪問控制
 header_none=尚未定義頭訪問控制規則。
 header_name=HTTP頭
@@ -372,6 +413,7 @@ header_err=保存標頭訪問控制規則失敗
 header_ename=標頭名稱缺失或無效
 header_request_header_access=請求標題
 header_reply_header_access=回复標題
+
 refresh_title=刷新規則
 refresh_none=尚未定義刷新規則。
 refresh_re=正則表達式
@@ -398,6 +440,7 @@ refresh_epc=年齡百分比缺失或無效
 refresh_delete=刪除選定的刷新規則
 drefresh_err=刪除刷新規則失敗
 drefesh_enone=未選擇
+
 iptables_title=端口重定向設置
 iptables_inst0=設置端口重定向所需的IPtables防火牆命令似乎未安裝在您的系統上。有關更多詳細信息，請參見<a href='$1'>Linux防火牆</a>模塊。
 iptables_inst1=<a href='$1'>Linux防火牆</a>模塊似乎未在系統上完全安裝。該模塊利用該模塊來設置Frox端口重定向。
@@ -412,18 +455,23 @@ iptables_enet=缺少或無效的網絡地址（應為192.168.1.0/24）
 iptables_eiface=網絡接口丟失或無效
 iptables_eapply=應用防火牆失敗：$1
 iptables_eapply2=Apply Squid失敗：$1
+
 syslog_access=魷魚訪問日誌
 syslog_cache=魷魚緩存日誌
 syslog_store=魷魚對象存儲日誌
+
 purge_err=無法清除緩存中的網址
 purge_title=清除緩存的URL
 purge_doing=清除URL $1 ..
 purge_done=..完成。
 purge_failed=..失敗了！有關原因，請參見上面的錯誤消息。
+
 dhttp_err=刪除代理限制失敗
 dhttp_enone=未選擇
+
 dicp_err=刪除ICP限制失敗
 dicp_enone=未選擇
+
 cachemgr_title=緩存管理器密碼
 cachemgr_ecannot=您無權編輯緩存管理器密碼
 cachemgr_def1=無需密碼

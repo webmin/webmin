@@ -6,7 +6,9 @@ index_clearcmds=Wissen opdrachten
 index_desc=Typ een shell opdracht om uit te voeren in het tekstveld hieronder. De <tt>cd</tt> opdracht kan gebruikt worden om te wisselen van directory of verdere opdrachten
 index_pok=Vorige opdracht uitvoeren
 index_edit=Bewerk vorige
+
 acl_user=Opdrachten uitvoeren als gebruiker
 acl_user_def=Huidige Webmin gebruiker
+
 log_run=Uitvoeren van opdracht $1
 log_clear=Gewiste opdracht historie

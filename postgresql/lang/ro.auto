@@ -16,6 +16,7 @@ index_add=Creați o nouă bază de date.
 index_users=Utilizator, grupuri și permisiuni
 index_return=lista de baze de date
 index_esql=Programul client PostgreSQL $1 nu a fost găsit în sistemul dvs. Poate că PostgreSQL nu este instalat sau <a href='$2'>configurația modulului</a> este incorectă.
+
 index_ehba=Fișierul de configurare gazdă PostgreSQL $1 nu a fost găsit în sistemul dvs. Poate că PostgreSQL nu a fost inițializată sau configurația modulului <a href='$2'></a> este incorectă.
 index_superuser=Programul client postgreSQL psql nu a putut fi executat pe sistemul dvs. Poate că PostgreSQL nu este instalat sau <a href='$1'>configurația modulului</a> este incorectă.
 index_eversion=Baza de date PostgreSQL de pe sistemul dvs. este versiunea $1, dar Webmin acceptă doar versiunile $2 și superioare.
@@ -48,10 +49,12 @@ index_gist=Arborele de căutare a indexului generalizat
 index_jump=Sau editați baza de date:
 index_jumpok=Deschis
 index_edithosts=Configurați sistemele de gazdă permise
+
 login_err=Autentificare esuata
 login_ecannot=Nu aveți voie să configurați autentificarea bazei de date
 login_elogin=Lipsește autentificarea de administrare
 login_epass=Numele de utilizator sau parola de administrare incorectă
+
 dbase_title=Editează baza de date
 dbase_noconn=Această bază de date nu acceptă conexiuni în prezent, deci nu se pot efectua acțiuni în ea.
 dbase_header=Tabele de baze de date, indexuri, vizualizări și secvențe
@@ -78,6 +81,7 @@ dbase_jump=Editează tabelul:
 dbase_vjump=Editează vizualizarea:
 dbase_ijump=Editează indexul:
 dbase_sjump=Editare secvență:
+
 table_title=Editează tabelul
 table_title2=Creare tabel
 table_opts=Opțiuni de câmp
@@ -105,6 +109,7 @@ table_eblob=Nu este necesară o dimensiune pentru câmpul BLOB $1
 table_csv=Exportați ca CSV
 table_index=Creați index
 table_delete=Ștergeți câmpurile selectate
+
 field_title1=Adaugă câmp
 field_title2=Modificați câmpul
 field_in=În tabelul $1 în baza de date $2 
@@ -123,6 +128,7 @@ field_esize=„$1” nu este o dimensiune de câmp valabilă
 field_eenum=Nu au fost introduse valori enumerate
 field_efield=„$1” nu este un nume de câmp valid
 field_ekey=Câmpurile care permit nulurile nu pot face parte din cheia primară
+
 exec_title=Executați SQL
 exec_header=Introduceți comanda SQL pentru a executa pe baza de date $1 ..
 exec_old=Sau selectați o comandă SQL anterioară :
@@ -152,21 +158,25 @@ exec_tabexec=Executați SQL
 exec_tabfile=Rulați SQL din fișier
 exec_tabimport=Importați fișier text
 exec_return=executați forma SQL
+
 stop_err=Nu a reușit oprirea serverului bazei de date
 stop_epidfile=Nu a putut fi deschis fișierul PID $1 
 stop_ekill=Nu a reușit să omoare procesul $1 : $2 
 stop_ecannot=Nu aveți voie să opriți serverul de baze de date
 start_err=Eroare la pornirea serverului bazei de date
 start_ecannot=Nu aveți voie să porniți serverul de baze de date
+
 ddrop_err=Nu a reușit să renunțe la baza de date
 ddrop_title=Baza de date
 ddrop_rusure=Sigur doriți să renunțați la baza de date $1 ? $2 tabele care conțin $3 rânduri de date vor fi șterse.
 ddrop_mysql=Deoarece aceasta este baza de date master, eliminarea va face probabil serverul dvs. PostgreSQL inutilizabil!
 ddrop_ok=Baza de date
+
 tdrop_err=Nu a reușit să renunțe la tabel
 tdrop_title=Tabelul cu picături
 tdrop_rusure=Sigur doriți să renunțați la tabelul $1 din baza de date $2 ? $3 rânduri de date vor fi șterse.
 tdrop_ok=Tabelul cu picături
+
 view_title=Date din tabel
 view_pos=Rândurile $1 la $2 din $3 
 view_none=Acest tabel nu conține date
@@ -201,6 +211,7 @@ view_set=Setați la conținutul fișierului ..
 view_warn=Avertisment - încărcarea fișierelor în și vizualizarea conținutului <tt>text</tt> sau <tt>bytea</tt> câmpuri este puțin probabil să funcționeze decât dacă sunt instalate și utilizate module de Perl $1 și $2.
 view_adv=Cautare Avansata
 view_sqlrun=Rezultate generate de interogarea SQL : $1 
+
 newdb_title=Creați baza de date
 newdb_header=Noi opțiuni de bază de date
 newdb_db=Numele bazei de date
@@ -215,6 +226,7 @@ newdb_encoding=Codificarea setului de caractere
 newdb_eencoding=Lipsește codificarea setului de caractere
 newdb_template=Baza de date cu șabloane
 newdb_notemplate=Nici unul
+
 user_title=Utilizatorii PostgreSQL
 user_vwarning=AVERTIZARE: Acest utilizator PostgreSQL este autentificarea de administrare a domeniului Virtualmin $1. Modificarea oricăror setări aici poate provoca erori în Virtualmin.
 user_ecannot=Nu aveți voie să editați utilizatori
@@ -244,6 +256,7 @@ user_sync_delete=Ștergeți un utilizator PostgreSQL la eliminarea utilizatorulu
 user_delete=Sterge selectia
 user_derr=Nu a reușit să ștergeți utilizatorii
 user_enone=Nu ați selectat utilizatori
+
 host_ecannot=Nu aveți voie să editați gazdele permise
 host_title=Gazde Permise
 host_desc=Atunci când un client se conectează la baza de date, gazdele enumerate mai jos sunt procesate în ordine până când unul se potrivește și clientul este permis sau refuzat.
@@ -299,8 +312,10 @@ host_derr=Nu a reușit să ștergi gazdele permise
 host_enone=Nu au fost selectate gazdele
 host_manual=Editează fișierul de configurare
 host_manualdesc=Faceți clic pe acest buton pentru a edita manual fișierul de configurare al gazdelor permis.
+
 manual_title=Editează fișierul de configurare
 manual_err=Nu a reușit să salvați fișierul de configurare
+
 grant_title=Privilegii acordate
 grant_tvi=Obiect
 grant_type=Tip
@@ -328,6 +343,7 @@ grant_none=Nu există tabele, vizualizări, secvențe sau indexuri care să acor
 grant_toomany=Există prea multe obiecte de afișat. Găsiți obiecte potrivite:
 grant_showing=Se afișează obiecte care corespund $1 ..
 grant_delete=Resetați subvențiile selectate
+
 group_title=Grupuri PostgreSQL
 group_ecannot=Nu aveți voie să editați grupuri
 group_name=Numele Grupului
@@ -347,6 +363,7 @@ group_etaken=Numele grupului este deja utilizat
 group_none=Nu există în prezent grupuri PostgreSQL.
 group_derr=Nu a reușit ștergerea grupurilor
 group_enone=Nu a fost selectat niciun grup
+
 esql=SQL $1 a eșuat : $2 
 log_start=A început serverul PostgreSQL
 log_stop=Serverul PostgreSQL oprit
@@ -403,6 +420,7 @@ log_backup_l=S-a făcut o copie de rezervă a bazei de date $1 în fișierul $2
 log_backup_all=Copia de rezervă a tuturor bazelor de date
 log_backup_all_l=Copia de rezervă a tuturor bazelor de date la fișierul $2 
 log_manual=Editarea manuală a permis fișierul de configurare a gazdelor
+
 acl_dbs=Baze de date pe care le poate administra acest utilizator
 acl_dbscannot=Acest control de acces va deveni efectiv, după pornirea serverului de baze de date PostgreSQL.
 acl_dall=Toate bazele de date
@@ -423,13 +441,17 @@ acl_cmds=Se pot edita înainte și după comenzile de rezervă?
 acl_views=Poate vizualiza și gestiona vizualizările?
 acl_indexes=Poate vizualiza și gestiona indexuri?
 acl_seqs=Poate vizualiza și gestiona secvențe?
+
 fdrop_err=Nu a reușit ștergerea câmpurilor
 fdrop_enone=Nimic selectat
 fdrop_eall=Nu puteți șterge toate câmpurile dintr-un tabel!
+
 setup_err=Initializarea bazei de date nu a reusit
 setup_ecannot=Nu vi se permite inițializarea bazei de date
+
 dbase_bkup=Backup
 dbase_rstr=Restabili
+
 restore_title=Restaurarea bazei de date
 restore_header=Restaurați opțiunile bazei de date
 restore_db=Numele bazei de date
@@ -452,6 +474,7 @@ restore_tables=Tabele de restaurare
 restore_tables1=Toate în fișierul de rezervă
 restore_tables0=Tabele enumerate
 restore_failed=Restaurarea a eșuat : $1 
+
 backup_title=Baza de date de rezervă
 backup_title2=Backup Toate bazele de date
 backup_header1=Destinație de rezervă
@@ -500,17 +523,21 @@ backup_ebefore=Comanda înainte de backup a eșuat!
 backup_cmode=Când se execută comenzi
 backup_cmode1=Înainte/după toate bazele de date
 backup_cmode0=Înainte/după fiecare bază de date
+
 r_command=Comandă neacceptată
+
 adv_title=Cautare Avansata
 adv_and=Găsiți înregistrări care corespund tuturor criteriilor ..
 adv_or=Găsiți înregistrări care corespund oricăror criterii ..
 adv_ok=Cauta acum
+
 tdrops_enone=Nu a fost selectată nicio tabelă
 tdrops_err=Nu a reușit să renunțe la tabelul (tabelele)
 tdrops_ok=cădere brusca
 tdrops_title=Picătură selectată
 tdrops_rusure=Sigur doriți să renunțați la tabelele selectate $1 din baza de date $2 ? $3 rânduri de date vor fi șterse.
 tdrops_rusure2=Sigur doriți să renunțați la tabelele selectate $1 din baza de date $2 ?
+
 ddrops_err=Nu a reușit să renunțe la bazele de date
 ddrops_title=Bază de baze de date
 ddrops_rusure=Sigur doriți să renunțați la bazele de date selectate $1 ? $2 tabele care conțin $3 rânduri de date vor fi șterse.
@@ -518,6 +545,7 @@ ddrops_mysql=Deoarece baza de date master este selectată, eliminarea va face pr
 ddrops_ok=Bază de baze de date
 ddrops_enone=Nu au fost selectate baze de date
 ddrops_ecannotdb=Nu aveți voie să renunțați la baza de date $1 
+
 csv_title=Exportați fișierul CSV
 csv_header=Opțiuni de export CSV
 csv_dest=Destinația exportului
@@ -538,6 +566,7 @@ csv_done=Exportul CSV către $1 este complet. Mărimea fișierului rezultat este
 csv_headers=Includeți nume de coloană în CSV?
 csv_cols=Coloane care trebuie incluse în CSV
 csv_ecols=Nu au fost selectate coloane
+
 import_title=Importați date
 import_uploadout=Importarea datelor din fișierul încărcat ..
 import_fileout=Importarea datelor din fișierul $1 ..
@@ -545,6 +574,7 @@ import_eupload=Lipsește fișierul de import încărcat
 import_efile=Lipsește numele fișierului la import
 import_done=.. a creat $1 rânduri, a omis $2 duplicate.
 import_erow=.. nu se găsesc câmpuri în rândul $1 
+
 index_title1=Creați index
 index_header1=Opțiuni index
 index_name=Numele indexului
@@ -562,6 +592,7 @@ index_ecols=Nu sunt selectate câmpuri
 index_title2=Editează indexul
 index_header=Index $1 în baza de date $2 
 index_ecannot=Nu aveți voie să gestionați indexuri
+
 view_title1=Creare vizualizare
 view_title2=Editează vizualizarea
 view_header1=Vezi detalii
@@ -576,6 +607,7 @@ view_eclash=Există deja o vizualizare cu același nume
 view_equery=Lipsește interogarea SQL
 view_ecols=Nu au fost introduse nume de coloană
 view_ecannot=Nu aveți voie să gestionați vizualizări
+
 seq_title1=Creați secvență
 seq_title2=Editează secvența
 seq_header1=Creșterea opțiunilor secvenței
@@ -595,5 +627,6 @@ seq_emin=Valoare minimă lipsă sau nevalidă
 seq_emax=Valoarea maximă lipsă sau nevalidă
 seq_ecache=Număr de valori lipsă sau nevalid pentru memoria cache
 seq_ecannot=Nu aveți voie să gestionați secvențe
+
 dgrant_err=Nu a putut reseta subvențiile
 dgrant_enone=Nu au fost selectate obiecte

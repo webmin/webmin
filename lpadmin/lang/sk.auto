@@ -24,6 +24,7 @@ index_style=Tlačový systém: $1
 index_cluster=Clusterové servery
 index_clusterdesc=Kliknutím na toto tlačidlo nastavíte ďalšie servery Webmin, na ktorých sa budú tlačiarne vytvárať, aktualizovať a odstraňovať.
 index_delete=Odstrániť vybrané tlačiarne
+
 style_solaris=solaris
 style_linux=Linux LPR
 style_freebsd=FreeBSD LPR
@@ -33,6 +34,7 @@ style_unixware=UnixWare
 style_cups=CUPS
 style_irix=IRIX
 style_aix=AIX
+
 edit_eedit=Nemáte povolenie upravovať túto tlačiareň
 edit_eadd=Nemáte povolenie pridávať tlačiarne
 edit_add=Vytvorte tlačiareň
@@ -76,7 +78,9 @@ edit_direct=Priame pripojenie TCP
 edit_dport=prístav
 edit_driver=Ovládač tlačiarne
 edit_check=Skontrolujte, či je vzdialený server zapnutý?
+
 blocks=bloky
+
 save_err=Uloženie tlačiarne zlyhalo
 save_eadd=Nemáte povolenie pridávať tlačiarne
 save_eedit=Nemáte povolenie upravovať túto tlačiareň
@@ -98,6 +102,7 @@ save_evalid=Tlačový systém túto tlačiareň nepovolil
 save_errslave=Tlačiareň vytvorila v tomto systéme OK, ale v klastrových systémoch sa vyskytli nasledujúce chyby : $1 
 save_egone=Nenašla sa žiadna tlačiareň s názvom '$1'
 save_errdelslave=Tlačiareň bola v tomto systéme odstránená, ale v klastrových systémoch sa vyskytli nasledujúce chyby : $1 
+
 jobs_title=Tlačové úlohy
 jobs_header=Tlačové úlohy na $1 
 jobs_id=ID úlohy
@@ -114,17 +119,23 @@ jobs_test=Tlač testovacej stránky
 jobs_cancelsel=Zrušiť vybraté úlohy
 jobs_on=Na tlačiarni $1 
 jobs_return=zoznam tlačových úloh
+
 cancel_ecannot=Nie je povolené rušiť tlačové úlohy
 cancel_err=Zrušenie tlačovej úlohy zlyhalo
 cancel_egone=Tlačová úloha $1 už neexistuje
+
 view_ecannot=Túto tlačovú úlohu nemôžete zobraziť
 view_egone=Táto tlačová úloha už neexistuje
+
 start_ecannot=Nemáte povolenie na spustenie plánovača
 start_err=Plánovač sa nepodarilo spustiť
+
 stop_ecannot=Nemáte povolenie zastaviť plánovač
 stop_err=Nepodarilo sa zastaviť plánovač
+
 restart_ecannot=Nemáte povolenie na reštartovanie plánovača
 restart_err=Plánovač sa nepodarilo reštartovať
+
 webmin_none=nikto
 webmin_nonemsg=Postskriptová alebo textová tlačiareň
 webmin_remotemsg=Vzdialená tlačiareň
@@ -135,6 +146,7 @@ webmin_uniprint=Ovládač uniprintov
 webmin_edrivers=Nepodarilo sa získať ovládače z $1. Ovládače tlačiarne Webmin, ktoré používajú ghostscript, nie sú k dispozícii
 webmin_egs=Príkaz $1 nebol nájdený. Ovládače tlačiarne Webmin, ktoré používajú ghostscript, nie sú k dispozícii
 webmin_edriver=$1 neexistuje
+
 caldera_none=nikto
 caldera_nonemsg=Vzdialená alebo surová tlačiareň
 caldera_prog=Program
@@ -148,6 +160,7 @@ caldera_uniprint=Ovládač uniprintov
 caldera_eprog=$1 neexistuje
 caldera_edriver=Nie je vybratý žiadny ovládač tlačiarne
 caldera_eres=Nie je vybraté žiadne rozlíšenie
+
 redhat_none=nikto
 redhat_nonemsg=Postskriptová alebo textová tlačiareň
 redhat_prog=Program
@@ -166,6 +179,7 @@ redhat_ehmargin=Chýbajúci alebo neplatný pravý/ľavý okraj
 redhat_evmargin=Chýba alebo je neplatný horný/dolný okraj
 redhat_eres=Nie je vybraté žiadne rozlíšenie
 redhat_printer2=Model tlačiarne a ovládač
+
 suse_none=nikto
 suse_nonemsg=Postskriptová alebo textová tlačiareň
 suse_prog=Program
@@ -182,7 +196,9 @@ suse_extra=Extra možnosti duchov
 suse_yast2=Ovládač YAST2
 suse_edriver=Nie je vybratý žiadny typ tlačiarne
 suse_eres=Chýbajúce alebo neplatné rozlíšenie
+
 estop=Nepodarilo sa zastaviť lpd : $1 
+
 acl_printers=Tlačiarne, ktoré môže tento užívateľ konfigurovať
 acl_add=Môžete pridať nové tlačiarne?
 acl_cancel=Môžete zrušiť tlačové úlohy?
@@ -198,6 +214,7 @@ acl_user_all=Všetci používatelia
 acl_user_this=Aktuálny užívateľ Webmin
 acl_delete=Môžete odstrániť tlačiarne?
 acl_cluster=Dokážete spravovať klaster tlačiarní?
+
 log_stop=Zastavený plánovač tlače
 log_start=Spustený plánovač tlače
 log_restart=Reštartovaný plánovač tlače
@@ -210,37 +227,45 @@ log_delete=Odstránená tlačiareň $1 na $2
 log_create_l=Vytvorená $3 tlačiareň $1 na $2 
 log_modify_l=Upravená $3 tlačiareň $1 na $2 
 log_delete_l=Odstránená $3 tlačiareň $1 na $2 
+
 linux_paralel=Paralelný port $1 
 linux_serial=Sériový port $1 (COM $1)
 linux_null=Null Device
 linux_usb=USB tlačiareň $1 
 linux_ecmd=Príkaz $1 sa vo vašom systéme nenašiel, čo znamená, že tlačový systém Linux nie je nainštalovaný.
 linux_espool=Vo vašom systéme neexistuje spoolový adresár $1, čo naznačuje, že tlačový systém Linux nie je nainštalovaný.
+
 freebsd_paralel=Paralelný port
 freebsd_serial=Sériový port $1 (COM $1)
 freebsd_ecmd=Príkaz $1 nebol vo vašom systéme nájdený, čo naznačuje, že tlačový systém FreeBSD nie je nainštalovaný.
 freebsd_espool=Vo vašom systéme neexistuje spoolový adresár $1, čo naznačuje, že tlačový systém FreeBSD nie je nainštalovaný.
+
 openbsd_paralel=Paralelný port
 openbsd_serial=Sériový port $1 (COM $1)
+
 unixware_paralel=Paralelný port $1 
 unixware_serial=Sériový port $1 
 unixware_null=Null Device
 unixware_ecmd=Príkaz $1 nebol vo vašom systéme nájdený, čo naznačuje, že tlačový systém UnixWare nie je nainštalovaný.
+
 hpux_paralel=Paralelné $1 
 hpux_serial=Sériové $1 
 hpux_null=Null Device
 hpux_ecmd=Príkaz $1 nebol vo vašom systéme nájdený, čo znamená, že tlačový systém HPUX nie je nainštalovaný.
 hpux_eiface=Adresár skriptov rozhrania $1 vo vašom systéme neexistuje, čo naznačuje, že tlačový systém HPUX nie je nainštalovaný.
+
 lprng_paralel=Paralelný port $1 
 lprng_serial=Sériový port $1 (COM $1)
 lprng_null=Null Device
 lprng_ecmd=Príkaz $1 sa vo vašom systéme nenašiel, čo znamená, že tlačový systém LPRng nie je nainštalovaný.
 lprng_espool=Vo vašom systéme neexistuje spoolový adresár $1, čo naznačuje, že tlačový systém LPRng nie je nainštalovaný.
+
 solaris_paralel=Paralelný port
 solaris_uparalel=Paralelný port Ultra 5/10
 solaris_serial=Sériový port $1 
 solaris_null=Null Device
 solaris_ecmd=Príkaz $1 nebol vo vašom systéme nájdený, čo znamená, že tlačový systém Solaris nie je nainštalovaný.
+
 test_title=Tlač testovacej stránky
 test_ecannot=Nemáte dovolené tlačiť testovacie stránky
 test_desc=Tento formulár umožňuje tlač skúšobnej stránky pre tlačiareň $1. Vyberte typ stránky, ktorú chcete vytlačiť :
@@ -252,6 +277,7 @@ test_print=Vytlačiť stránku
 test_exec=Tlač skúšobnej stránky príkazom $1 ..
 test_failed=.. príkaz zlyhal!
 test_ok=.. príkaz dokončený.
+
 cups_none=nikto
 cups_nonemsg=Vzdialená alebo surová tlačiareň
 cups_prog=Program
@@ -259,11 +285,14 @@ cups_driver=Ovládač CUPS
 cups_eprog=$1 nie je platný program
 cups_opts=Možnosti pre $1 
 cups_ecmd=Príkaz $1 nebol vo vašom systéme nájdený, čo znamená, že tlačový systém CUPS nie je nainštalovaný.
+
 irix_ecmd=Príkaz $1 nebol vo vašom systéme nájdený, čo naznačuje, že tlačový systém IRIX nie je nainštalovaný.
 irix_eiface=Adresár skriptov rozhrania $1 vo vašom systéme neexistuje, čo naznačuje, že tlačový systém IRIX nie je nainštalovaný.
+
 aix_port=Port tlačiarne $1 
 aix_edesc=Neplatný popis - sú povolené iba písmená a čísla, bez medzier
 aix_ecmd=Tlačový server AIX $1 nebol nájdený. Možno nie je nainštalovaný alebo sa používa iný tlačový systém.
+
 cluster_title=Servery klastrových tlačiarní
 cluster_none=Do klastra tlačiarne ešte neboli pridané žiadne servery.
 cluster_host=Meno hosťa
@@ -275,6 +304,7 @@ cluster_need=Predtým, ako ich budete môcť spravovať, musíte do modulu Webmi
 cluster_return=klastrové servery
 cluster_delete=Vymazať označené
 cluster_ecannot=Nemáte oprávnenie spravovať servery klastrových tlačiarní
+
 add_title=Pridať servery
 add_msg=Pridáva sa $1 ..
 add_gmsg=Pridávanie serverov do skupiny $1 ..

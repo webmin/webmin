@@ -39,7 +39,9 @@ index_thost=Імя хаста
 index_tdesc=Апісанне
 index_tver=Версія
 index_ttype=Тып АС
+
 this_server=гэты сервер
+
 add_title=Дадаць серверы
 add_msg=Даданне $1.
 add_gmsg=Даданне сервераў у групу $1.
@@ -49,6 +51,7 @@ add_echeck=Сервер $1 не мае модуля налады Usermin
 add_echeck2=Сервер $1 не мае модуля Usermin User
 add_eversion=Сервер $1 не працуе Usermin версіі $2 або вышэй.
 add_ok=Дададзены $1 з $2 модулямі і $3 тэмамі.
+
 refresh_title=Абнавіць спісы модуляў і тэм
 refresh_header=Паўторны запыт модуляў і спісаў тэм з усіх сервераў ..
 refresh_header4=Паўторны запыт модуляў і спісаў тэм ад удзельнікаў $2.
@@ -64,6 +67,7 @@ refresh_g2=Выдалена $1 групы.
 refresh_done=.. малайчына
 refresh_del=Выдалены $1 са спісу сервераў
 refresh_failed=Не атрымалася абнавіць $1 : $2 
+
 host_title=Кіраваны сервер
 host_header=Падрабязнасці кіраванага сервера Usermin
 host_name=Імя гаспадара
@@ -81,6 +85,7 @@ host_header_u=Карыстальнікі Usermin
 host_header_g=Групы карыстальнікаў
 host_return=дэталі сервера
 host_version2=Версія
+
 edit_title_mod=Рэдагаваць модуль
 edit_title_theme=Рэдагаваць тэму
 edit_header_mod=Падрабязнасці модуля Usermin ад $1 
@@ -103,6 +108,7 @@ edit_codes=З тэсту $1
 edit_acl=Рэдагаваць ACL для
 edit_uacl=Карыстальнік $1 на $2 
 edit_gacl=Група $1 на $2 
+
 install_err=Не атрымалася ўсталяваць модуль
 install_title=Усталюйце модуль
 install_elocal=Лакальны файл не дадзены
@@ -123,6 +129,7 @@ do_failed=Не атрымалася ўсталяваць на $1 : $2
 do_success_mod=Усталяваны модуль $2 на $1 
 do_success_theme=Усталяваная тэма $2 на $1 
 do_done=.. малайчына
+
 delete_err=Не атрымалася выдаліць модуль $1 
 delete_epack=Модуль $1 не існуе
 delete_title=Выдаліць модуль
@@ -140,6 +147,7 @@ delete_edepends=Модуль (ы) $1 залежаць ад яго.
 delete_egone=Модуль больш не існуе
 delete_esuccess=Выдалена з $1 : $2 
 delete_acls=Выдаліць з карыстальнікаў і скінуць налады кіравання доступам?
+
 user_title1=Стварыць Usermin User
 user_header1=Новыя дадзеныя карыстальніка Usermin
 user_name=Імя карыстальніка
@@ -198,11 +206,13 @@ user_all=&lt;усе гаспадары&gt;
 user_donthave=&lt;хасты, якія гэтага не маюць&gt;
 user_have=&lt;хасты, якія ў яго ёсць&gt;
 user_ofgroup=Члены $1 
+
 udelete_title=Выдаліць карыстальніка
 udelete_doing=Выдаленне карыстальніка $1 з усіх хастоў ..
 udelete_success=Выдалена з $1 
 udelete_failed=Не атрымалася выдаліць з $1 : $2 
 udelete_done=.. малайчына
+
 group_title1=Стварэнне групы
 group_header1=Новыя дадзеныя групы Usermin
 group_name=Назва групы
@@ -230,6 +240,7 @@ group_failed2=Не атрымалася абнавіць групу на $1 : $2
 group_return=падрабязнасці групы
 group_nomems=Няма ўдзельнікаў
 group_servers=Сервер (ы) для стварэння
+
 gdelete_title=Выдаліць групу
 gdelete_desc=Вы ўпэўнены, што хочаце выдаліць групу $1 і яе карыстальнікаў-удзельнікаў $2 з усіх хастоў?
 gdelete_ok=Выдаліць групу
@@ -238,6 +249,7 @@ gdelete_success=Выдалена з $1
 gdelete_failed=Не атрымалася выдаліць з $1 : $2 
 gdelete_done=.. малайчына
 gdelete_esub=Гэтая група мае падгрупы $1, і таму іх немагчыма выдаліць.
+
 acl_title=Модуль кантролю доступу
 acl_title2=Для карыстальніка $1 у $2 на $3 
 acl_title3=Для групы $1 у $2 на $3 
@@ -256,6 +268,7 @@ acl_doing2=Усталяванне кантролю доступу для $1 на
 acl_success=Кантроль доступу паспяхова ўсталяваны на $1 
 acl_failed=Не атрымалася ўсталяваць кантроль доступу на $1 : $2 
 acl_done=.. малайчына
+
 sync_title=Сінхранізацыя сервераў
 sync_desc=Гэтая форма дазваляе ствараць карыстальнікаў Usermin і групы на серверах, якія іх зараз не маюць, каб прывесці ўліковыя запісы сінхранізацыі на ўсіх серверах вашага кластара.
 sync_hosts=Серверы для сінхранізацыі
@@ -279,6 +292,7 @@ sync_gcreate=Даданне групы Usermin $1 ..
 sync_acl=Капіяванне файлаў ACL для $1.
 sync_test=Толькі пакажыце, што б было зрабіць?
 sync_restart=Перазапуск Usermin ..
+
 upgrade_title=Абнавіць Usermin
 upgrade_header=Абнаўленне Usermin на ўсіх хастах ..
 upgrade_header2=Абнаўленне Usermin на $1.
@@ -297,6 +311,7 @@ upgrade_failed=Не атрымалася ўсталяваць на $1 : $2
 upgrade_done=.. малайчына
 upgrade_efast=Толькі серверы, якія выкарыстоўваюць хуткі рэжым RPC, могуць быць мадэрнізаваны
 upgrade_ereconn=Не атрымалася паўторна падключыцца да Usermin пасля абнаўлення!  : $1 
+
 update_title=Абнаўленне модуляў
 update_header=Абнаўленне модуляў усіх хастоў ..
 update_header5=Абнаўленне модуляў на $2.

@@ -2,6 +2,7 @@ index_title=عميل وخادم NIS
 index_return=قائمة شيكل
 index_enis=لا يبدو أن جهازك مثبت عليه دعم عميل أو خادم NIS.
 index_enis2=ستكون ميزة خدمات العملاء فقط في هذه الوحدة قابلة للاستخدام.
+
 client_title=عميل NIS
 client_header=تكوين عميل NIS
 client_domain=مجال NIS
@@ -17,10 +18,12 @@ client_eserver=إن '$1' ليس اسم خادم صالحًا
 client_eypwhich=فشل في الارتباط بمجال NIS
 client_ehosts="$1" ليس في ملف hosts
 client_enis=لا يبدو أن جهازك مثبت عليه دعم عميل NIS.
+
 switch_title=خدمة الزبائن
 switch_service=الخدمات
 switch_srcs=مصادر البيانات
 switch_return=خدمة الزبائن
+
 order_=&nbsp;
 order_nisplus=شيكل +
 order_nis=شيكل
@@ -32,6 +35,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=طابعات المستخدم
 order_xfn=XFN
+
 server_title=خادم NIS
 server_header=خيارات خادم NIS
 server_boot=تمكين خادم NIS؟
@@ -65,6 +69,7 @@ server_solaris=ملاحظة - في Solaris ، تكون نطاقات NIS الخا
 server_edir=دليل ملفات المصدر غير صالح
 server_epwdir=دليل ملفات مصدر كلمة المرور غير صالح
 server_enis=لا يبدو أن جهازك مثبت عليه دعم خادم NIS.
+
 tables_title=طاولات NIS
 tables_switch=تحرير جدول شيكل :
 tables_header=جدول$1 شيكل من$2
@@ -81,6 +86,7 @@ tables_search=بحث
 tables_nomatch=لا توجد سجلات مطابقة لبحثك
 tables_build=إعادة إنشاء جداول شيكل
 tables_buildmsg=انقر فوق هذا الزر لإعادة إنشاء قواعد بيانات NIS من بيانات الجدول. إذا قمت بإجراء أي تغييرات ، فستحتاج إلى القيام بذلك لإتاحتها لعملاء NIS.
+
 desc_aliases=الأسماء المستعارة لـ Sendmail
 desc_mail=الأسماء المستعارة لـ Sendmail
 desc_hosts=عناوين المضيف
@@ -116,6 +122,7 @@ desc_printers=طابعات
 desc_ipnodes=عقد IP
 desc_timezone=المناطق الزمنية
 desc_locale=لغات
+
 hosts_title=عنوان المضيف
 hosts_ip=عنوان IP
 hosts_name=اسم المضيف
@@ -124,6 +131,7 @@ hosts_err=فشل في حفظ المضيف
 hosts_eip=عنوان IP مفقود أو غير صالح
 hosts_ename=اسم مضيف مفقود أو غير صالح
 hosts_aliases=اسماء مستعارة
+
 group_name=أسم المجموعة
 group_gid=معرف مجموعة
 group_members=أعضاء المجموعة
@@ -134,6 +142,7 @@ group_none=لا يلزم كلمة مرور
 group_encrypted=كلمة المرور المشفرة مسبقًا
 group_clear=كلمة المرور العادية
 group_err=فشل في حفظ المجموعة
+
 passwd_name=اسم المستخدم
 passwd_uid=هوية المستخدم
 passwd_real=الاسم الحقيقي
@@ -171,6 +180,7 @@ passwd_emax=الحد الأقصى لعدد الأيام غير صالح
 passwd_emin=الحد الأدنى لعدد الأيام غير صالح
 passwd_einactive=عدد أيام غير صالحة
 passwd_eexpiry=تاريخ انتهاء غير صالح
+
 services_name=اسم الخدمة
 services_proto=بروتوكول
 services_port=ميناء
@@ -179,6 +189,7 @@ services_header=خيارات خدمة شبكة Inetd
 services_err=فشل في حفظ الخدمة
 services_ename=اسم خدمة مفقود أو غير صالح
 services_eport=منفذ مفقود أو غير صالح
+
 protocols_name=اسم البروتوكول
 protocols_number=رقم
 protocols_aliases=اسماء مستعارة
@@ -187,6 +198,7 @@ protocols_header=خيارات بروتوكول الشبكة
 protocols_err=فشل في حفظ البروتوكول
 protocols_ename=اسم مفقود أو غير صالح
 protocols_enumber=رقم مفقود أو غير صالح
+
 netgroup_name=اسم Netgroup
 netgroup_members=أفراد
 netgroup_title=مجموعة الشبكة
@@ -201,6 +213,7 @@ netgroup_ename=اسم netgroup مفقود أو غير صالح
 netgroup_ehost=مضيف مفقود أو غير صالح في الصف$1
 netgroup_euser=مستخدم مفقود أو غير صالح في الصف$1
 netgroup_edom=مجال NIS مفقود أو غير صالح في الصف$1
+
 ethers_mac=عنوان إيثرنت
 ethers_ip=عنوان IP
 ethers_title=عنوان إيثرنت
@@ -208,6 +221,7 @@ ethers_header=خيارات تعيين إيثرنت
 ethers_err=فشل في حفظ عنوان إيثرنت
 ethers_emac=عنوان إيثرنت غير صالح
 ethers_eip=عنوان إب غير صالح
+
 rpc_name=إسم البرنامج
 rpc_number=رقم
 rpc_aliases=اسماء مستعارة
@@ -216,6 +230,7 @@ rpc_header=تفاصيل برنامج RPC
 rpc_err=فشل في حفظ برنامج RPC
 rpc_ename=اسم البرنامج مفقود أو غير صالح
 rpc_enumber=رقم مفقود أو غير صالح
+
 networks_title=عنوان الشبكة
 networks_ip=عنوان IP
 networks_name=اسم الشبكة
@@ -224,6 +239,7 @@ networks_err=فشل في حفظ الشبكة
 networks_eip=عنوان IP مفقود أو غير صالح
 networks_ename=اسم مفقود أو غير صالح
 networks_aliases=اسماء مستعارة
+
 netmasks_net=عنوان الشبكة
 netmasks_mask=قناع الشبكة
 netmasks_title=قناع الشبكة
@@ -231,6 +247,7 @@ netmasks_header=تفاصيل قناع الشبكة
 netmasks_err=فشل في حفظ قناع الشبكة
 netmasks_enet=عنوان الشبكة مفقود أو غير صالح
 netmasks_emask=قناع الشبكة مفقود أو غير صالح
+
 aliases_from=عنوان
 aliases_to=الاسم المستعار ل
 aliases_title=Sendmail Alias
@@ -238,6 +255,7 @@ aliases_header=تفاصيل الاسم المستعار لـ Sendmail
 aliases_err=فشل في حفظ الاسم المستعار
 aliases_efrom=العنوان مفقود أو غير صالح
 aliases_eto=عناوين مفقودة
+
 security_title=أمان الخادم
 security_header=خيارات أمان خادم NIS
 security_ok=حفظ وتطبيق
@@ -266,6 +284,7 @@ security_sec_des=تتطلب DES
 security_ehost=إن '$1' ليس اسم مضيف صالح
 security_emap=إن '$1' ليس جدول NIS صالح
 security_efield=إن '$1' ليس رقم حقل صالح
+
 eswitch_title=تحرير الخدمة
 eswitch_egone=الخدمة غير موجودة!
 eswitch_header=تفاصيل الخدمة

@@ -21,6 +21,7 @@ index_cms=캐시 관리자 통계
 index_rebuild=캐시 비우기 및 다시 작성
 index_calamaris=Calamaris 로그 분석
 index_return=인덱스
+
 buttsave=저장
 buttdel=삭제
 buttcreat=작성
@@ -30,6 +31,7 @@ default=기본값
 none=없음
 on=설정
 off=해제
+
 acl_header1=ACL 작성
 acl_header2=ACL 편집
 acl_name=ACL 이름
@@ -71,6 +73,7 @@ acl_failurl=잘못된 URL
 acl_buttsave=저장
 acl_buttdel=삭제
 acl_return=ACL 목록
+
 aclsave_failsave=ACL을 저장하지 못했습니다
 aclsave_faildel=ACL을 삭제하지 못했습니다
 aclsave_epr=프록시 제한에서 이 ACL을 사용 중입니다
@@ -88,9 +91,11 @@ aclsave_eehour=잘못된 종료 시간(시)
 aclsave_esmin=잘못된 시작 시간(분)
 aclsave_eemin=잘못된 종료 시간(분)
 aclsave_efile=ACL 파일 '$1'에 쓸 수 없습니다
+
 cach_err=오류
 cach_nfound=시스템에 squid 캐시 관리자 프로그램 <tt>$1</tt>이(가) 없습니다. <a href=/config.cgi?$2 >모듈 구성</a>이 정확하지 않을 수 있습니다.
 cach_return=squid 인덱스
+
 chown_header=소유권 변경
 chown_stop=squid 중지 중...
 chown_done=.. 완료
@@ -98,6 +103,7 @@ chown_chown=소유권 변경 중...
 chown_restart=squid 다시 시작 중...
 chown_failrestart=squid를 다시 시작하지 못했습니다..
 chown_return=squid 인덱스
+
 clear_header=캐시 비우고 재작성
 clear_msgclear=squid 캐시를 비우고 다시 작성하시겠습니까? 그럴 경우, 캐시된 <b>모든</b> 파일이 삭제되고 squid 서버가 다시 시작됩니다.
 clear_msgclear2=이 캐시를 사용하여 Webmin 서버와 통신하고 있지 않아야 합니다. 그렇지 않으면 캐시가 종료되면서 연결이 끊깁니다.
@@ -108,6 +114,7 @@ clear_del=기존 캐시 파일 삭제 중..
 clear_init=<tt>$1</tt> 명령으로 squid 캐시를 초기화하는 중..
 clear_failrestart=squid를 다시 시작하지 못했습니다..
 clear_return=squid 인덱스
+
 eacl_header=접근 제어
 eacl_acls=접근 제어 목록
 eacl_name=이름
@@ -121,12 +128,14 @@ eacl_acls1=ACL
 eacl_move=이동
 eacl_nopr=정의된 프록시 제한이 없습니다
 eacl_addpr=프록시 제한 추가
+
 eacl_icpr=ICP 제한
 eacl_noicpr=정의된 ICP 제한이 없습니다
 eacl_addicpr=ICP 제한 추가
 eacl_return=squid 인덱스
 eacl_allow=허용
 eacl_deny=거부
+
 eadm_header=관리 옵션
 eadm_aao=관리 및 알림 옵션
 eadm_runasuu=유닉스 사용자로서 실행
@@ -152,6 +161,7 @@ eadm_caf=캐시 알림 파일
 eadm_annp=알림 기간
 eadm_buttsave=저장
 eadm_return=squid 인덱스
+
 eauth_header=프록시 인증
 eauth_aopt=인증 옵션
 eauth_puf=프록시 사용자 파일
@@ -164,6 +174,7 @@ eauth_pusers=프록시 사용자
 eauth_nopusers=현재 정의된 프록시 사용자가 없습니다.
 eauth_addpuser=새 프록시 사용자 추가
 eauth_return=squid 인덱스
+
 ec_header=캐시 옵션
 ec_cro=캐싱 및 요청 옵션
 ec_cdirs=캐시 디렉토리
@@ -211,6 +222,7 @@ ec_wrh=WAIS 릴레이 호스트
 ec_wrp=WAIS 릴레이 포트
 ec_buttsave=저장
 ec_return=squid 인덱스
+
 ech_header=캐시 호스트 작성
 ech_header1=캐시 호스트 편집
 ech_cho=캐시 호스트 옵션
@@ -243,6 +255,7 @@ ech_dqfd=도메인 쿼리 안함
 ech_buttsave=저장
 ech_buttdel=삭제
 ech_return=캐시 목록
+
 eicp_header=다른 캐시
 eicp_opcs=다른 프록시 캐시 서버
 eicp_nocd=정의된 다른 캐시가 없습니다
@@ -274,6 +287,7 @@ eicp_addalways=직접 반입할 ACL 추가
 eicp_never=간접 반입할 ACL
 eicp_nonever=정의된 간접 반입 ACL이 없습니다
 eicp_addnever=간접 반입할 ACL 추가
+
 elogs_header=로그
 elogs_lalo=로그 및 로그 파일 옵션
 elogs_alf=접근 로그 파일
@@ -292,6 +306,7 @@ elogs_ln=넷마스크 로그
 elogs_do=디버그 옵션
 elogs_mht=MIME 헤더 테이블
 elogs_return=squid 인덱스
+
 emem_dheader=메모리 및 디스크 사용량
 emem_header=메모리 사용량
 emem_maduo=메모리 및 디스크 사용 옵션
@@ -316,6 +331,7 @@ emem_lfuda=사용 빈도가 가장 낮은 동적
 emem_hlru=사용 빈도가 가장 낮은 힙
 emem_return=squid 인덱스
 emem_mrp=메모리 교체 정책
+
 emisc_header=기타 옵션
 emisc_mo=기타 옵션
 emisc_sdta=DNS 테스트 시작 주소
@@ -345,6 +361,7 @@ emisc_hauhh=HTTP Accel에서 호스트 헤더를 사용합니다
 emisc_hah=HTTP Accel 호스트
 emisc_hap=HTTP Accel 포트
 emisc_hawp=프록시가 있는 HTTP Accel
+
 eports_header=포트 및 네트워킹
 eports_pano=포트 및 네트워킹 옵션
 eports_paap=프록시 주소 및 포트
@@ -361,6 +378,7 @@ eports_mg=멀티캐스트 그룹
 eports_trb=TCP 수신 버퍼
 eports_od=운영 체제 기본값
 eports_return=squid 인덱스
+
 eprogs_header=도우미 프로그램
 eprogs_chpo=캐시 도우미 프로그램 옵션
 eprogs_sfp=squid FTP 프로그램
@@ -380,6 +398,7 @@ eprogs_norp=리디렉션 프로그램 수
 eprogs_cap=사용자 정의 인증 프로그램
 eprogs_noap=인증 프로그램 수
 eprogs_return=squid 인덱스
+
 euser_header=프록시 사용자 작성
 euser_header1=프록시 사용자 편집
 euser_pud=프록시 사용자 정보
@@ -387,6 +406,7 @@ euser_u=사용자 이름
 euser_p=암호
 euser_u1=변경 안됨
 euser_return=사용자 목록
+
 ahttp_header=프록시 제한 작성
 ahttp_header1=프록시 제한 편집
 ahttp_pr=프록시 제한
@@ -396,7 +416,9 @@ ahttp_d=거부
 ahttp_ma=ACL 일치
 ahttp_dma=ACL 일치 안함
 ahttp_return=ACL 목록
+
 sahttp_ftspr=프록시 제한을 저장하지 못했습니다
+
 aicp_header=ICP 제한 작성
 aicp_header1=ICP 제한 편집
 aicp_ir=ICP 제한
@@ -406,13 +428,17 @@ aicp_d=거부
 aicp_ma=ACL 일치
 aicp_dma=ACL 일치 안함
 aicp_return=ACL 목록
+
 saicp_ftsir=ICP 제한을 저장하지 못했습니다
+
 icache_ftic=캐시를 초기화하지 못했습니다
 icache_ymcautrsa=squid를 실행할 사용자를 선택해야 합니다
 icache_itscwtc=<tt>$1</tt> 명령으로 squid 캐시를 초기화하는 중  ..
 icache_return=squid 인덱스
 icache_title=캐시 초기화
+
 restart_ftrs=squid를 재구성하지 못했습니다
+
 sadmin_ftsao=관리 옵션을 저장하지 못했습니다
 sadmin_header=소유권 변경
 sadmin_msg1=squid를 실행할 사용자나 그룹이 변경되었습니다. 변경 내용을 올바르게 적용하려면 모든 캐시와 로그 파일의 소유권을 업데이트하고 squid를 다시 시작해야 합니다.
@@ -422,10 +448,12 @@ sadmin_inavea='$1'은(는) 유효한 전자 메일 주소가 아닙니다
 sadmin_inavh='$1'은(는) 유효한 호스트 이름이 아닙니다
 sadmin_inavap='$1'은(는) 유효한 알림 기간이 아닙니다
 sadmin_inavp='$1'은(는) 유효한 포트가 아닙니다
+
 sauth_ftsao=인증 옵션을 저장하지 못했습니다
 sauth_iomuf=없거나 잘못된 사용자 파일 이름
 sauth_iomd=없거나 잘못된 도메인
 sauth_msg1=squid 버전이 프록시 인증에 맞게 컴파일되지 않았습니다
+
 scache_ftsco=캐시 옵션을 저장하지 못했습니다
 scache_emsg0=캐시 디렉토리를 하나 이상 입력해야 합니다
 scache_emsg1=캐시 디렉토리 '$1'이(가) 없습니다
@@ -442,34 +470,41 @@ scache_emsg11='$1'은(는) 유효한 개체 수가 아닙니다
 scache_emsg12='$1'은(는) 유효한 디렉토리 크기가 아닙니다
 scache_emsg13='$1'은(는) 유효한 호스트가 아닙니다
 scache_emsg14='$1'은(는) 유효한 포트가 아닙니다
+
 schost_ftsc=캐시를 저장하지 못했습니다
 schost_emsg1='$1'은(는) 유효한 캐시 호스트 이름이 아닙니다
 schost_emsg2='$1'은(는) 유효한 프록시 포트가 아닙니다
 schost_emsg3='$1'은(는) 유효한 ICP 포트가 아닙니다
 schost_emsg4='$1'은(는) 유효한 TTL이 아닙니다
 schost_emsg5='$1'은(는) 유효한 가중치가 아닙니다
+
 sicp_ftsco=캐시 옵션을 저장하지 못했습니다
 sicp_emsg1='$1'은(는) 유효한 시간 초과가 아닙니다
+
 slogs_ftslo=로그 옵션을 저장하지 못했습니다
 slogs_emsg1='$1'은(는) 절대 파일 이름이 아닙니다
 slogs_emsg2='$1'은(는) 유효한 파일 이름이 아닙니다
 slogs_emsg3=디렉토리 '$1'이(가) 없습니다
 slogs_emsg4='$1'은(는) 유효한 넷마스크가 아닙니다
 slogs_emsg5='$1'은(는) 유효한 디버그 옵션 목록이 아닙니다
+
 smem_ftsmo=메모리 옵션을 저장하지 못했습니다
 smem_emsg1='$1'은(는) 유효한 캐시 크기가 아닙니다
 smem_emsg2='$1'은(는) 유효한 상한 워터마크가 아닙니다
 smem_emsg3='$1'은(는) 유효한 하한 워터마크가 아닙니다
 smem_emsg4='$1'은(는) 유효한 개체 크기가 아닙니다
+
 smisc_ftso=옵션을 저장하지 못했습니다
 smisc_emsg1='$1'은(는) 유효한 회전 수가 아닙니다
 smisc_emsg2='$1'은(는) 유효한 도메인이 아닙니다
 smisc_emsg3='$1'은(는) 유효한 프록시가 아닙니다
 smisc_emsg4='$1'은(는) 유효한 홉 수가 아닙니다
+
 sport_ftspo=포트 옵션을 저장하지 못했습니다
 sport_emsg1='$1'은(는) 유효한 포트 번호가 아닙니다
 sport_emsg2='$1'은(는) 유효한 주소가 아닙니다
 sport_emsg3='$1'은(는) 유효한 버퍼 크기가 아닙니다
+
 sprog_ftshpo=도우미 프로그램 옵션을 저장하지 못했습니다
 sprog_emsg1=없는 FTP 옵션
 sprog_emsg2='$1'은(는) 유효한 프로그램이 아닙니다
@@ -479,15 +514,19 @@ sprog_emsg5='$1'은(는) 유효한 프로그램 수가 아닙니다
 sprog_emsg6='$1'은(는) 유효한 열 너비가 아닙니다
 sprog_emsg7=입력된 DNS 서버가 없습니다
 sprog_emsg8='$1'은(는) 유효한 IP 주소가 아닙니다
+
 suser_ftsu=사용자를 저장하지 못했습니다
 suser_emsg1=없거나 잘못된 사용자 이름
+
 start_ftsq=squid를 시작하지 못했습니다
 stop_ftsq=squid를 중지하지 못했습니다
+
 calamaris_title=calamaris 로그 분석
 calamaris_last=로그의 마지막 $1개 행만 분석하도록 제한 중..
 calamaris_eprog=calamaris 실행 파일 $1이(가) 없습니다. 시스템에 설치되어 있지 않거나 <a href='$2'>모듈 구성</a>이 정확하지 않을 수 있습니다.
 calamaris_elogs=로그 디렉토리 $1에 <tt>access.log</tt> 파일이 없습니다. squid가 아직 실행되지 않았거나 <a href='$2'>모듈 구성</a>이 정확하지 않을 수 있습니다.
 calamaris_gen=$1에 생성된 보고서
+
 lib_emsg1='$1'은(는) 유효한 IP 주소가 아닙니다
 lib_seconds=초
 lib_minutes=분
@@ -531,6 +570,7 @@ lib_aclear=외부 인증 정규식
 lib_buttac=변경 내용 적용
 lib_buttss=squid 중지
 lib_buttss1=squid 시작
+
 log_ports=포트 및 네트워크 옵션 변경됨
 log_icp=다른 캐시 옵션 변경됨
 log_mem=메모리 사용 옵션 변경됨
@@ -569,10 +609,13 @@ log_never_create=간접 반입 ACL 작성됨
 log_never_modify=간접 반입 ACL 수정됨
 log_never_delete=간접 반입 ACL 삭제됨
 log_never_move=간접 반입 ACL 이동됨
+
 acl_root=ACL 파일의 루트 디렉토리
+
 always_create=직접 반입 작성
 always_edit=직접 반입 편집
 always_header=요청과 일치하는 ACL 직접 반입
+
 never_create=간접 반입 작성
 never_edit=간접 반입 편집
 never_header=요청과 일치하는 ACL 항상 간접 반입 합니다.

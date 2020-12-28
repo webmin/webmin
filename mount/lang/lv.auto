@@ -12,6 +12,7 @@ index_return=failu sistēmu saraksts
 index_none=Jums nav piekļuves nevienai piestiprinātai failu sistēmai.
 index_mount2=Uzstādīšana ar paroli:
 index_root=Saknes failu sistēma
+
 edit_title=Rediģēt kalnu
 create_title=Izveidot kalnu
 edit_err=Neizdevās rediģēt montāžu
@@ -58,6 +59,7 @@ edit_ecannot=Jums nav atļauts rediģēt šo failu sistēmu
 edit_ecannot2=Jums nav atļauts pievienot jaunas failu sistēmas
 edit_3_or_lower=3 (vai zemāka)
 edit_advanced=Uzlabots režīms
+
 save_err=Neizdevās saglabāt stiprinājumu
 save_edir='$1' nav direktorijs
 save_edirname='$1' nav derīgs direktorijas nosaukums
@@ -74,8 +76,10 @@ save_apply=Piesakies pastāvīgajam sarakstam
 save_fapply=Piespiest Un-Mount
 save_eremount=Pārskaitīt neizdevās : $1
 save_enone=Jūs neizvēlējāties saglabāt vai uzstādīt
+
 swap_err=Neizdevās izveidot mijmaiņas failu
 swap_esize='$1' nav derīgs lielums
+
 nfs_server=Izvēlieties NFS serveri.
 nfs_select=Atlasiet NFS serveri, no kura piestiprināt.
 nfs_ip=IP adrese
@@ -87,6 +91,7 @@ nfs_seldir=Izvēlieties NFS direktoriju, kuru pievienot.
 nfs_seldirv4=NFSv4 stiprinājumam jums jāizvēlas “/”
 nfs_dir=Katalogs
 nfs_clients=Klienti
+
 smb_choose=Izvēlieties CIFS serveri.
 smb_elist=Neizdevās izgūt serveru sarakstu no $1. Varbūt serveris neļauj pārlūkot
 smb_eworkgroup=Lapā Moduļa konfigurācija nav iestatīta neviena darba grupa
@@ -103,6 +108,7 @@ smb_sel2=Izvēlieties pievienojamo akciju.
 smb_share=Dalies
 smb_comment=Komentārs
 smb_noshares=Serverī $1 nav pieejama failu kopīgošana
+
 solaris_scsidev=SCSI kontrolieris $1 target $2 unit $3 partition $4
 solaris_idedev=IDE kontrolieris $1 disks $2 nodalījums $3
 solaris_mddev=RAID ierīce $1
@@ -240,6 +246,7 @@ solaris_efstyp2=Neizdevās pārbaudīt failu sistēmas tipu : $1
 solaris_ecachedir='$1' nav derīgs kešatmiņas direktorijs
 solaris_efmode='$1' nav derīgs oktālā faila režīms
 solaris_edmode='$1' nav derīgs oktālā direktorija režīms
+
 linux_eamd=AMD neizdevās
 linux_eauto=Automount neizdevās : $1
 linux_esmbconn=Neizdevās izveidot savienojumu ar serveri
@@ -361,6 +368,7 @@ linux_noenforce=Jā, bet neizpildi
 linux_df=Vai iekļaut rezervētos blokus failu sistēmas lielumā?
 linux_noatime=Vai izvairīties no pēdējās piekļuves laika atjaunināšanas?
 linux_netdev=Pagaidiet, kamēr tīkla saskarnes ir izveidotas?
+linux_nofail=Turpināt sāknēšanu pat tad, ja montāža neizdodas?
 linux_ecname=Trūkst vai nav derīgs klienta netbios nosaukums
 linux_emname=Trūkst vai nav derīgs servera resursdators vai IP adrese
 linux_bind=Oriģinālais direktorijs
@@ -386,6 +394,7 @@ linux_nounix=Vai atspējot CIFS Unix paplašinājumus?
 linux_noserverino=Ģenerēt inode numurus klienta pusē?
 linux_cvers=CIFS versija
 linux_ecvers=CIFS versijai jābūt skaitlim
+
 log_mount=Pievienots $3
 log_mount_l=Pievienots $2 $1 uz $3
 log_umount=Nenomontēts $3
@@ -399,7 +408,9 @@ log_modify_l=Pārveidots $2 mount $1 uz $3
 log_delete=Dzēsts uzstādījums $3
 log_delete_l=Svītrots $2 mount $1 uz $3
 log_swap=Izveidots mijmaiņas fails $1
+
 unmount_err=Neizdevās noņemt $1
+
 mount_err=Neizdevās uzstādīt $1
 irix_nhost=NFS resursdators
 irix_ndir=NFS direktorijs
@@ -430,6 +441,7 @@ irix_rock=Vai izmantot Rock Ridge paplašinājumus?
 irix_nofsck=Pārbaudīt failu sistēmu sāknēšanas laikā?
 irix_auto=Automounter avots
 irix_automap=Kartes fails
+
 irix_ehost=Resursdators '$1' neeksistē
 irix_eloss=Resursdators '$1' nav pieejams
 irix_eshowmount=Saimnieks “$1” neatbalsta NFS
@@ -447,9 +459,11 @@ irix_efstyp2=Neizdevās iegūt failu sistēmas tipu $1 : $2
 irix_efstyp=$1 failu sistēmas tips ir $2, nevis $3
 irix_eautomap=Automounter kartes fails '$1' neeksistē
 irix_eauthmap2=Trūkst vai nav derīgs automounter kartes fails
+
 irix_devroot=Saknes nodalījums
 irix_devswap=Apmainīt nodalījumu
 irix_autohosts=Viss NFS eksports
+
 acl_only=Vai atļaut tikai montāžu un demontāžu?
 acl_fs=Failsistēmas, kuras var rediģēt
 acl_types=Izmantojamie failu sistēmu tipi
@@ -462,8 +476,10 @@ acl_hide=Vai paslēpt rediģējamas failu sistēmas?
 acl_simple=Vai parādīt vienkāršu montāžas formu?
 acl_simopts=Rādīt vienkāršotas failu sistēmas opcijas?
 acl_browse=Rādīt failu un kopīgot pārlūkošanas pogas?
+
 egcc=PLSP vai CC kompilators, kas nepieciešams, lai izveidotu sistēmu instalētu failu sistēmu uzskaitīšanai jūsu sistēmā, nav pieejams.
 ecompile=Veidojot programmu instalēto failu sistēmu uzskaitīšanai jūsu sistēmā, radās kļūda : $1
+
 freebsd_eaddr=Trūkst vai nav derīga servera adrese
 freebsd_eworkgroup=Trūkst vai nav derīga darba grupa
 freebsd_ide=IDE cietais disks
@@ -477,8 +493,10 @@ freebsd_idedev=IDE ierīce $1, šķēle $2, nodalījums $3
 freebsd_scsidev=SCSI ierīce $1, šķēle $2, nodalījums $3
 freebsd_edevpath=Citai ierīcei jābūt absolūtam ceļam, piemēram, <tt>/dev/cdrom</tt>
 freebsd_edevfile=Ierīces fails '$1' neeksistē
+
 cswap_file=Apmaiņas fails $1 neeksistē.
 cswap_size=Izveidojiet un uzstādiet apmaiņas failu ar izmēru
+
 acl_sysinfo=Rādīt pieejamos diska datus informācijas panelī?
 sysinfo_total=Kopā
 sysinfo_dev=Ierīces ID

@@ -12,8 +12,10 @@ index_startmsg=Pulse este botón para arrancar el servidor SSH. Hasta que no arr
 index_stop=Parar Servidor
 index_stopmsg=Pulse este botón para parar el servidor SSH en ejecución. Una vez que esté parado, ningún usuario podrá acceder via SSH, pero las conexiones existentes permanecerán activas.
 index_version=$1
+
 bits=bits
 secs=segundos
+
 users_title=Autenticación
 users_header=Opciones de login y de autenticación
 users_expire=Días para avisar al usuario antes de que la cuenta expire
@@ -44,6 +46,7 @@ users_eexpire=Los días para avisar de expiración faltan o son inválidos
 users_ebanner=El archivo de mensajes de pre-login falta o es inválido
 users_authkeys=Archivo de claves autorizadas de usuarios
 users_authkeys_def=Por defecto (~/.ssh/authorized_keys)
+
 net_title=En Red
 net_header=Opciones de En Red
 net_port=Escuchar en puerto
@@ -78,6 +81,7 @@ net_eprots=Debes de seleccionar al menos un protocolo
 net_eladdress='$1' no es una dirección válida en la que escuchar
 net_elport='$1' no es un puerto válido en el que escuchar
 net_elisten2=No se han introducido direcciones en las que escuchar
+
 access_title=Control de Acceso
 access_header=Opciones de control de acceso para redes y login
 access_allowu=Sólo permitir usuarios
@@ -95,6 +99,7 @@ access_eallowg=No se han digitado grupos a autorizar
 access_edenyg=No se han digitado grupos a denegar
 access_eallowh=No se han digitado máquinas a autorizar
 access_edenyh=No se han digitado máquinas a denegar
+
 misc_title=Opciones Varias
 misc_header=Otras opciones varias de servidor SSH
 misc_x11=¿Permito el reenvío de conexión X11?
@@ -118,14 +123,17 @@ misc_eumask=La umask octal de 4 dígitos falta o es inválida
 misc_ebits=La medida de clave del servidor falta o es inválida
 misc_eregen=El intervalo de regeneración de clave falta o es inválido
 misc_epid=Falta la trayectoria a archivo de PID
+
 start_err=No pude arrancar servidor SSH
 apply_epid=No ejecutándose
+
 hosts_title=Opciones de Máquina Cliente
 hosts_header=Máquinas Cliente de SSH
 hosts_none=No se han definido opciones de máquina cliente. Todos los login de cliente SSH usarán los valores por defecto.
 hosts_all=Todas las máquinas
 hosts_add=Añadir opciones para máquina cliente.
 hosts_return=lista de máquinas cliente
+
 host_create=Añadir Opciones de Máquina
 host_edit=Editar Opciones de Máquina
 host_header=Opciones de cliente para máquina SSH
@@ -177,6 +185,7 @@ host_eprots=Debe seleccionar al menos un protocolo
 host_proxy=Comando de conexión proxy
 host_proxy_def=Ninguno
 host_eproxy=Comando de conexión proxy falta o parece no válido
+
 log_users=Cambiadas opciones de autenticación
 log_net=Cambiadas opciones de trabajo en red
 log_access=Cambiado control de acceso
@@ -190,6 +199,7 @@ log_delete_all=Borradas opciones para todas las máquinas
 log_stop=Servidor SSH detenido
 log_start=Servidor SSH lanzado
 log_apply=Configuración aplicada
+
 sync_title=Configuración de Clave de SSH
 sync_desc=Esta página le permite poner la configuración automática de SSH para nuevos usuarios de Unix creados en su sistema. Si se configura, los nuevos usuarios no tendrán que usar <tt>ssh-keygen</tt> antes de usar SSH.
 sync_create=Configurar clave SSH para nuevos usuarios de Unix.

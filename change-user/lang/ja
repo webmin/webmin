@@ -16,12 +16,14 @@ index_d1=$1
 index_dlang=モジュールが表示される言語
 index_dtheme=Webminの体裁を制御するテーマ
 index_dpass=ログインに使用されるパスワード
+
 change_title=設定変更
 change_user=Webmin ログインを変更しています ..
 change_done=.. 完了
 change_restart=Webmin を再起動しています ..
 change_redirect=メインメニューにリダイレクトします ..
 change_ecolon=パスワードは、: という文字を含むことが出来ません
+
 acl_lang=言語の変更を許可しますか?
 acl_theme=テーマの変更を許可しますか?
 acl_pass=パスワードの設定を許可しますか(Webminで設定した時)?

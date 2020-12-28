@@ -24,8 +24,10 @@ all=את כל
 index_view=נוף ..
 index_viewfile=הצג קובץ יומן:
 index_viewok=נוף
+
 restart_ekill=כניסה לאיתור תהליך הסיסמאות $1 : $2 
 restart_ecannot=אינך רשאי להפעיל מחדש את ה- syslog
+
 start_ecannot=אינך מורשה להתחיל ב- syslog
 edit_title=ערוך את יומן המערכת
 create_title=הוסף יומן מערכת
@@ -56,11 +58,13 @@ edit_tag=רק לתוכנית
 edit_return=פרטי יומן
 edit_ecannot=אינך מורשה לערוך הגדרות יומן
 edit_ecannot2=אינך רשאי לערוך יומן זה
+
 view_title=הצג Logfile
 view_header=$1 שורות אחרונות של $2 
 view_empty=קובץ היומן ריק
 view_refresh=רענן
 view_filter=הצג רק שורות עם טקסט $1 
+
 save_err=שמירת היומן נכשלה
 save_efile='$1' אינו שם קובץ חוקי : $2 
 save_epipe='$1' אינו צינור בשם תקף
@@ -80,11 +84,13 @@ save_ecannot5=אינך רשאי לשנות יומן זה
 save_ecannot6=אינך רשאי להציג יומנים שרירותיים
 save_ecannot7=אינך רשאי להציג יומן נוסף זה
 save_emissing=קובץ היומן חסר לצפייה
+
 log_modify=יומן שונה ל- $1 
 log_create=יומן נוסף ל- $1 
 log_delete=היומן נמחק ל- $1 
 log_apply=שינויים שהוחלו
 log_start=התחיל שרת כניסה
+
 desc_sysmesg=הודעות מערכת
 desc_mail=יומן דואר
 desc_auth=יומן אימות
@@ -93,6 +99,7 @@ desc_news=יומן חדשות NNTP
 desc_uucp=יומן UUCP
 desc_debug=הודעות באגים
 desc_cron=יומן Cron Job
+
 acl_noedit=האם ניתן להציג יומנים בלבד?
 acl_any=האם ניתן לראות כל קובץ כעל יומן?
 acl_logs=ניתן להציג ולהגדיר קבצי יומן

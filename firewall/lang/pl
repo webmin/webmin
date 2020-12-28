@@ -72,6 +72,7 @@ index_reset=Resetuj Firewall
 index_resetdesc=Kliknij na ten przycisk, aby wyczyścić wszystkie istniejące reguły firewalla i ustawić domyślną początkową konfigurację.
 index_cluster=Serwery klastra
 index_clusterdesc=Kliknij na ten przycisk, aby ustawić dodatkowe serwery Webmina do używania tej konfiguracji firewalla.
+
 desc_p=protokół to $1
 desc_p!=protokół to nie jest $1
 desc_s=źródłem jest $1
@@ -125,10 +126,15 @@ desc_physdev-out!=Fizyczny wyjściowy interfejs nie jest $1
 desc_conds=Jeżeli $1
 desc_and=i
 desc_always=Zawsze
+
 redhat_einstalled=Akcja startowa <tt>iptables(6)</tt> nie została znaleziona, prawdopodobnie pakiet IPtables nie jest zainstalowany
 redhat_eoutput=Wystąpił błąd podczas pobierania stanu IPtables poleceniem $1. Prawdopodobnie twój system jest skonfigurowany do używania IPchains zamiast IPtables.
+
 gentoo_escript=Skrypt uruchamiający IPtables dla Gentoo $1 nie został znaleziony w systemie
+
 eiptables=Nieznana linia zapisana w pliku IPtables : $1
+eip6tables=Nieznana linia zapisana w pliku ip6tables : $1
+
 edit_title1=Dodawanie reguły
 edit_title2=Edycja reguły
 edit_title3=Klonowanie reguły
@@ -195,6 +201,7 @@ edit_physdevout=Interfejs fizyczny wychodzący
 edit_physdevisin=Pakiety przychodzące na zmostkowanym interfejsie
 edit_physdevisout=Pakiety wychodzące na zmostkowanym interfejsie
 edit_physdevisbridged=Pakiet jest zmostkowany
+
 save_err=Błąd zapisywania reguły
 save_echain=Brakujący lub nieprawidłowy łańcuch do uruchomienia
 save_esource=Brakujący lub błędny źródłowy adres lub sieć
@@ -239,23 +246,28 @@ save_estates=Nie wybrano stanów połączenia
 save_ecanjump=Nie masz uprawnień do tego działania
 save_ephysdevin=Brakujący lub błędny fizyczny interfejs przychodzący
 save_ephysdevout=Brakujący lub błędny fizyczny interfejs wychodzący
+
 delete_title=Usuwanie łańcucha
 delete_rusure=Jesteś pewny, że chcesz usunąć łańcuch $1 ? Łańcuch posiada $2 reguł, zostaną one usunięte.
 delete_ok=Usunięto
 delete_ecannot=Nie masz uprawnień do usuwania łańcuchów
+
 clear_title=Czyszczenie łańcucha
 clear_rusure=Jesteś pewny, że chcesz usunąć wszystkie $2 reguły z łańcucha $1 ?
 clear_ecannot=Nie masz uprawnień do czyszczenia łańcuchów
+
 new_err=Błąd tworzenia łańcucha
 new_ename=Brakująca lub nieprawidłowa nazwa łańcucha
 new_etaken=Łańcuch o takiej nazwie już istnieje
 new_ecannot=Nie masz uprawnień do tworzenia łańcuchów
+
 apply_err=Błąd zastosowania konfiguracji
 apply_ecannot=Nie masz uprawnień do zastosowania konfiguracji
 apply_remote=Błąd od $1 : $2
 unapply_err=Błąd przywracania konfiguracji
 unapply_ecannot=Nie masz uprawnień do przywracania konfiguracji
 bootup_ecannot=Nie masz uprawnień do włączenia i wyłączenia uruchamiania firewalla
+
 log_create_rule=Dodano regułę do łańcucha $1 w tabeli $2
 log_modify_rule=Zmodyfikowano regułę w łańcuchu $1 w tabeli $2
 log_delete_rule=Usunięto regułę z łańcucha $1 w tabeli  $2
@@ -278,8 +290,10 @@ log_add_group=Dodano klaster serwerów do grupy $1
 log_delete_host=Usunięto klaster serwera $1
 log_delete_group=Usunięto klaster $1 serwerów
 log_openports=Otwarto porty firewalla $1
+
 setup_eiface=Nie wpisano interfejsu zewnętrznego sieci
 setup_ecannot=Nie masz uprawnień do ustawiania firewalla
+
 acl_tables=Dozwolone IPtables
 acl_apply=Może zastosować konfigurację?
 acl_unapply=Może przywrócić konfigurację?
@@ -291,9 +305,11 @@ acl_jall=Wszystko
 acl_newchain=Może tworzyć nowe łańcuchy?
 acl_delchain=Może usuwać i czyścić łańcuchy?
 acl_policy=Można zmienić zasady domyślne?
+
 etable=Nie masz uprawnień do edycji tej tabeli IPtable
 ejump=Nie masz uprawnień do edycji tej reguły
 ecluster=Nie masz uprawnień do zarządzania klasterem firewalla
+
 cluster_title=Firewall serwerów klastra
 cluster_none=Nie dodano żadnych serwerów do klastra firewalla.
 cluster_host=Nazwa hosta
@@ -304,6 +320,7 @@ cluster_gadd=Dodaj serwery w grupie
 cluster_need=Musisz dodać serwer z loginem i hasłem w module Serwery Webmina nim będziesz mógł nimi tutaj zarządzać.
 cluster_return=serwerów klastra
 cluster_delete=Usuń wybrane
+
 add_title=Dodawanie serwerów
 add_msg=Dodawanie $1 ..
 add_gmsg=Dodawanie serwerów do grupy $1 ..
@@ -312,13 +329,16 @@ add_gerr=Błąd dodawania grupy
 add_echeck=Serwer $1 nie posiada modułu Linux Firewall
 add_emissing=Brak polecenia $2 na serwerze $1
 add_ok=Dodano $1 z $2 aktywnymi regułami firewalla
+
 policy_ecannot=Nie masz uprawnień do zmiany domyślnego działania dla tego łańcucha
+
 move_title=Przenoszenie reguł
 move_count=Wybrane reguły
 move_chain=Aktualnie zmieniony
 move_dest=Docelowy łańcuch
 move_ok=Przeniesiono
 move_header=Opcje przeniesienia reguły
+
 rename_title=Zmiana nazwy łańcucha
 rename_count=Reguły w łańcuchu
 rename_chain=Aktualna nazwa
@@ -328,4 +348,3 @@ rename_header=Opcje zmiany nazwy łańcucha
 rename_adjust=Modyfikować inne reguły, które przeskoczą do tego łańcucha?
 rename_none=Brak
 rename_ecannot=Nie masz uprawnień do zmiany nazwy łańcucha
-eip6tables=Nieznana linia zapisana w pliku ip6tables : $1

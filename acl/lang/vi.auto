@@ -27,6 +27,7 @@ index_delete=Xóa đã chọn
 index_joingroup=Thêm vào nhóm:
 index_eulist=Không thể liệt kê người dùng: $1 
 index_eglist=Không thể liệt kê các nhóm: $1 
+
 edit_title=Chỉnh sửa người dùng Webmin
 edit_title2=Tạo người dùng Webmin
 edit_title3=Tạo người dùng Webmin an toàn
@@ -115,6 +116,7 @@ edit_safe=Cấp đặc quyền
 edit_safe0=Không giới hạn
 edit_safe1=Chỉ mô-đun an toàn
 edit_unsafe=Đặt lại để không bị hạn chế
+
 save_err=Không thể lưu người dùng
 save_ename='$1' không phải là tên người dùng hợp lệ
 save_eunixname=Tên người dùng '$1' không phải là người dùng Unix và do đó không thể được sử dụng trong chế độ an toàn
@@ -145,11 +147,13 @@ save_edays=Không có ngày nào cho phép chọn
 save_ehours=Thiếu hoặc không hợp lệ lần cho phép
 save_ehours2=Thời gian bắt đầu cho phép phải trước khi kết thúc
 save_etemp=Không thể sử dụng tùy chọn buộc thay đổi mật khẩu ở lần đăng nhập tiếp theo trừ khi <a href='$1'>nhắc người dùng nhập mật khẩu mới</a> được bật
+
 delete_err=Không thể xóa người dùng
 delete_eself=Bạn không thể xóa chính mình
 delete_ecannot=Bạn không được phép xóa người dùng
 delete_euser=Bạn không được phép xóa người dùng này
 delete_eanonuser=Người dùng này đang được sử dụng để truy cập mô-đun ẩn danh
+
 cert_title=Giấy chứng nhận yêu cầu
 cert_issue=Giấy chứng nhận cấp
 cert_header=Chi tiết chứng chỉ mới
@@ -169,6 +173,7 @@ cert_ekey=Một khóa SSL mới không được trình duyệt của bạn gửi
 cert_eca=Không thể thiết lập quyền chứng chỉ: $1 
 cert_already=Cảnh báo - bạn đã sử dụng chứng chỉ $1.
 cert_etempdir=Tệp chứng chỉ không hợp lệ
+
 acl_title=Kiểm soát truy cập mô-đun
 acl_title2=Đối với $1 trong $2 
 acl_title3=Đối với nhóm $1 trong $2 
@@ -177,6 +182,7 @@ acl_config=Có thể chỉnh sửa cấu hình mô-đun?
 acl_reset=Đặt lại để truy cập đầy đủ
 acl_rbac=Nhận cài đặt kiểm soát truy cập từ RBAC?
 acl_rbacyes=Có (ghi đè cài đặt bên dưới)
+
 acl_uall=Tất cả người dùng
 acl_uthis=Người dùng này
 acl_usel=Người dùng được chọn..
@@ -216,6 +222,7 @@ acl_switch=Có thể chuyển sang người dùng khác?
 acl_times=Có thể thay đổi thời gian đăng nhập được phép?
 acl_pass=Có thể thay đổi hạn chế mật khẩu?
 acl_sql=Có thể cấu hình cơ sở dữ liệu người dùng và nhóm?
+
 log_modify=Người dùng Webmin đã sửa đổi $1 
 log_rename=Người dùng Webmin đã đổi tên $1 thành $2 
 log_create=Người dùng Webmin đã tạo $1 
@@ -238,6 +245,7 @@ log_sync=Thay đổi đồng bộ hóa người dùng unix
 log_sql=Thay đổi cơ sở dữ liệu người dùng và nhóm
 log_twofactor=Người dùng đã đăng ký $1 với nhà cung cấp hai yếu tố $2 
 log_onefactor=Người dùng đã đăng ký $1 để xác thực hai yếu tố
+
 gedit_ecannot=Bạn không được phép chỉnh sửa nhóm
 gedit_title=Chỉnh sửa nhóm Webmin
 gedit_title2=Tạo nhóm Webmin
@@ -247,6 +255,7 @@ gedit_modules=Mô-đun thành viên
 gedit_members=Thành viên và nhóm người dùng
 gedit_desc=Mô tả nhóm
 gedit_egone=Nhóm được chọn không còn tồn tại!
+
 gdelete_err=Không thể xóa nhóm
 gdelete_ecannot=Bạn không được phép xóa các nhóm
 gdelete_euser=Bạn không thể xóa nhóm của riêng bạn
@@ -254,11 +263,13 @@ gdelete_esub=Không thể xóa các nhóm có nhóm con
 gdelete_title=Xóa nhóm
 gdelete_desc=Bạn có chắc chắn muốn xóa nhóm $1 và người dùng thành viên của nó $2 ?
 gdelete_ok=Xóa nhóm
+
 gsave_err=Không thể lưu nhóm
 gsave_ename=Tên nhóm bị thiếu hoặc không hợp lệ
 gsave_enamewebmin=Tên nhóm 'webmin' được dành riêng cho sử dụng nội bộ
 gsave_edup=Tên nhóm đã được sử dụng
 gsave_edesc=Mô tả không hợp lệ - ký tự: không được phép
+
 convert_title=Chuyển đổi người dùng
 convert_ecannot=Bạn không được phép chuyển đổi người dùng Unix
 convert_nogroups=Không có nhóm Webmin nào được xác định trên hệ thống của bạn. Ít nhất một nhóm phải được tạo trước khi chuyển đổi để xác định quyền cho người dùng đã chuyển đổi.
@@ -287,6 +298,7 @@ convert_user=Người dùng Unix
 convert_action=Hành động
 convert_done=$1 người dùng đã chuyển đổi, $2 không hợp lệ, $3 đã tồn tại, $4 bị loại trừ.
 convert_users=Người dùng chuyển đổi
+
 sync_title=Đồng bộ hóa người dùng Unix
 sync_desc=Biểu mẫu này cho phép bạn định cấu hình đồng bộ hóa tự động của người dùng Unix được tạo thông qua Webmin và người dùng trong mô-đun này.
 sync_nogroups=Không có nhóm Webmin nào được xác định trên hệ thống của bạn. Ít nhất một nhóm phải được tạo để đặt quyền truy cập cho người dùng đã tạo.
@@ -297,6 +309,7 @@ sync_delete=Xóa người dùng Webmin phù hợp khi người dùng Unix bị x
 sync_group=Chỉ định người dùng mới cho nhóm Webmin
 sync_unix=Đặt mật khẩu cho người dùng mới để xác thực Unix.
 sync_ecannot=Bạn không được phép cấu hình đồng bộ hóa người dùng.
+
 unix_title=Xác thực người dùng Unix
 unix_err=Không thể lưu xác thực Unix
 unix_desc=Trang này cho phép bạn định cấu hình Webmin để xác thực các lần thử đăng nhập đối với danh sách người dùng hệ thống và PAM. Điều này có thể hữu ích nếu bạn có một số lượng lớn người dùng Unix hiện tại mà bạn muốn cấp quyền truy cập vào Webmin.
@@ -329,6 +342,7 @@ unix_esudo=Lệnh $1 chưa được cài đặt
 unix_esudomod=Mô-đun Perl $1 cần thiết cho xác thực <tt>sudo</tt> chưa được cài đặt
 unix_header=Cài đặt xác thực người dùng Unix
 unix_utable=Người dùng Unix được phép
+
 sessions_title=Phiên đăng nhập hiện tại
 sessions_id=ID phiên
 sessions_user=Người dùng webmin
@@ -342,21 +356,26 @@ sessions_this=Thông tin đăng nhập này
 sessions_in=Đăng nhập
 sessions_out=Đăng xuất
 sessions_kill=Ngắt kết nối..
+
 logins_title=Đăng nhập Webmin gần đây
+
 hide_title=Ẩn các mô-đun không sử dụng
 hide_desc=Các mô-đun sau sẽ bị xóa khỏi danh sách truy cập mô-đun cho $1 vì các máy chủ tương ứng của chúng không được cài đặt trên hệ thống của bạn..
 hide_ok=Ẩn các mô-đun ngay bây giờ
 hide_none=Không có gì để che giấu - $1 không có quyền truy cập vào bất kỳ mô-đun nào có máy chủ tương ứng không được cài đặt trên hệ thống của bạn.
 hide_desc2=Xin lưu ý rằng các mô-đun này sẽ không tự động xuất hiện lại nếu các máy chủ tương ứng được cài đặt. Bạn sẽ cần cấp quyền truy cập bằng tay bằng cách sử dụng mô-đun này.
 hide_clone=(Bản sao $1 )
+
 switch_euser=Bạn không được phép chuyển sang người dùng này
 switch_eold=Phiên hiện tại không tìm thấy!
+
 rbac_title=Thiết lập RBAC
 rbac_desc=Tích hợp RBAC của Webmin cung cấp một cách để mô-đun người dùng và các quyền ACL được xác định từ cơ sở dữ liệu RBAC (Kiểm soát truy cập dựa trên vai trò), thay vì các tệp cấu hình của Webmin. Khi hỗ trợ RBAC được bật, bất kỳ người dùng nào mà <b>RBAC kiểm soát tất cả các mô-đun và tùy chọn ACL</b> được chọn sẽ có các khả năng của anh ta được xác định bởi RBAC thay vì cài đặt kiểm soát truy cập của Webmin.
 rbac_esolaris=RBAC chỉ được hỗ trợ trên Solaris vào lúc này và do đó không thể được sử dụng trên hệ thống $1 này.
 rbac_eperl=Mô-đun Perl $1 cần thiết cho tích hợp RBAC chưa được cài đặt. <a href='$2'>Nhấp vào đây</a> để cài đặt ngay.
 rbac_ecpan=Bạn không có quyền truy cập vào trang Mô-đun Perl của Webmin để cài đặt mô-đun $1 cần thiết để tích hợp RBAC.
 rbac_ok=Tích hợp RBAC có sẵn trên hệ thống này và có thể được bật trên cơ sở mỗi người dùng trên trang Chỉnh sửa người dùng Webmin.
+
 udeletes_err=Không thể xóa người dùng
 udeletes_jerr=Không thể thêm người dùng vào nhóm
 udeletes_enone=Không được chọn
@@ -365,11 +384,13 @@ udeletes_rusure=Bạn có chắc chắn muốn xóa $1 người dùng đã chọ
 udeletes_users=Người dùng được chọn: $1 
 udeletes_ok=Xóa người dùng
 udeletes_ereadonly=Một trong những người dùng được chọn được đánh dấu là không thể chỉnh sửa
+
 gdeletes_err=Không thể xóa nhóm
 gdeletes_title=Xóa nhóm
 gdeletes_rusure=Bạn có chắc chắn muốn xóa $1 các nhóm đã chọn và $2 người dùng mà họ chứa? Tất cả các cài đặt kiểm soát truy cập và chi tiết người dùng của họ sẽ bị mất.
 gdeletes_users=Các nhóm được chọn: $1 
 gdeletes_ok=Xóa nhóm
+
 pass_title=Giới hạn mật khẩu
 pass_ecannot=Bạn không được phép chỉnh sửa hạn chế mật khẩu
 pass_header=Tùy chọn thực thi mật khẩu Webmin
@@ -392,6 +413,7 @@ pass_eminsize=Độ dài mật khẩu tối thiểu hoặc không có số
 pass_emaxdays=Thiếu hoặc không có số ngày trước khi thay đổi
 pass_elockdays=Số ngày bị thiếu hoặc không phải là số trước khi tài khoản bị khóa
 pass_eoldblock=Thiếu hoặc không có số mật khẩu cũ để từ chối
+
 cpass_minsize=Phải có ít nhất $1 chữ cái dài
 cpass_notre=Phù hợp với một mẫu không được phép
 cpass_re=Không phù hợp với mẫu bắt buộc
@@ -399,6 +421,7 @@ cpass_name=Chứa tên người dùng
 cpass_dict=Là một từ trong từ điển
 cpass_spellcmd=Cả hai lệnh $1 hoặc $2 cần thiết để kiểm tra các từ điển đã được cài đặt
 cpass_old=Mật khẩu cũ không thể được sử dụng lại
+
 sql_title=Cơ sở dữ liệu người dùng và nhóm
 sql_ecannot=Bạn không được phép cấu hình cơ sở dữ liệu người dùng và nhóm
 sql_header=Tùy chọn cho phụ trợ cơ sở dữ liệu cho người dùng và nhóm
@@ -441,21 +464,25 @@ sql_dnerr=Cài đặt cơ sở dữ liệu người dùng và nhóm là hợp l�
 sql_dnerr2=Nhấp vào nút <b>Tạo DN</b> bên dưới để tự động tạo hoặc thêm nó vào máy chủ LDAP của bạn theo cách thủ công.
 sql_makedn=Tạo DN
 sql_schema=Tải xuống lược đồ LDAP
+
 make_title=Tạo bảng người dùng và nhóm
 make_err=Không thể tạo bảng người dùng và nhóm
 make_exec=Đang thực thi SQL $1..
 make_failed=.. việc tạo không thành công: $1 
 make_done=.. làm xong
 make_still=Một số vấn đề đã được tìm thấy ngay cả sau khi tạo bảng: $1 
+
 makedn_title=Tạo LDAP DN
 makedn_eoc=Không tìm thấy các lớp đối tượng cấu trúc!
 makedn_exec=Tạo cha mẹ DN $1..
 makedn_failed=.. việc tạo không thành công: $1 
 makedn_done=.. làm xong
 makedn_still=Một số vấn đề đã được tìm thấy ngay cả sau khi tạo DN: $1 
+
 schema_title=Tải xuống lược đồ LDAP
 schema_desc=Trước khi Webmin có thể sử dụng máy chủ LDAP để lưu trữ người dùng và nhóm, nó phải được cấu hình để sử dụng lược đồ bên dưới. Điều này thường có thể được thực hiện bằng cách lưu định nghĩa lược đồ trong <tt>/etc/ldap/schema</tt> hoặc <tt>/etc/openldap/schema</tt> dưới dạng <tt>webmin.schema</tt>, sau đó cấu hình máy chủ để tải tệp lược đồ đó.
 schema_download=Tải xuống tệp lược đồ: <a href=$1>$1</a>
+
 twofactor_err=Không thể thiết lập xác thực hai yếu tố
 twofactor_euser=Không tìm thấy người dùng Webmin của bạn!
 twofactor_title=Xác thực hai yếu tố

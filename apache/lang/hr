@@ -56,6 +56,7 @@ index_fmode1=Virtualni poslužiteljski dokument $1
 index_fmode1d=Novi dokument pod virtualnim poslužiteljskim direktorijem $1
 index_fmode2=Odabrani dokumenat..
 index_delete=Izbriši Odabrane Poslužitelje
+
 cvirt_ecannot=Nije Vam dozvoljeno kreirati virtualni poslužitelj
 cvirt_err=Neuspjelo kreiranje virtualnog poslužitelja
 cvirt_eaddr1=Adresa nije unešena
@@ -68,6 +69,7 @@ cvirt_eroot3=Nije Vam dozvoljeno koristiti izvorni direktorij '$1'
 cvirt_etaken=Virtualni poslužitelj s jednakim nazivom i ulazom već postoji
 cvirt_efile=Neuspjeli upis u $1 : $2
 cvirt_emissing=Novi virtualni poslužitelje dodan je na $1, ali ovaj dokument Apache ne može koristiti. Provjerite <a href='$2'>postavke modula</a> i provjerite je li 'Dokument ili direktorij koji se dodaje virtualnom posluižitelju' ispravan.
+
 etype=Nije Vam dozvoljeno uređivati opcije ovog tipa
 efailed=Sprtemanje $1 nije uspjelo
 apache_apply=Dodaj Promjene
@@ -77,6 +79,7 @@ auth_return=kontrola pristupa
 default_serv=dodijeljeni poslužitelj
 bytes=bajtovi
 eafter=Vertifikacija postavki nije uspjela : $1 Promjena nije spremljena.
+
 global_ecannot=Nije Vam dozvoljeno uređivati globalne opcije
 global_mime=Globalna lista MIME tipova
 global_mimedesc=Kliknite na MIME tip s liste iznad da ga uredite, ili koristite link na dnu stranice da dodate novi tip na listu.
@@ -84,6 +87,7 @@ global_type=Tip
 global_ext=Ekstenzije
 global_add=Dodaj novi MIME tip.
 global_return=MIME tip
+
 mime_ecannot=Nije Vam dozvoljeno uređiovati mime tipove
 mime_edit=Uredi MIME Tip
 mime_add=Dodaj MIME Tip
@@ -92,6 +96,7 @@ mime_type=MIME Tip
 mime_ext=Ekstenzije
 mime_err=Neuspjeli pokušaj spremanja MIME tipa
 mime_etype='$1' nije valaljani MIME tip
+
 virt_ecannot=Ne možete uređivati ovaj virtualni poslužitelj
 virt_title=Opcije Virtualnog Poslužitelja
 virt_header=Za $1
@@ -117,6 +122,7 @@ virt_path=Putanja
 virt_return=indeks poslužitelja
 virt_euser=Nije VAm dopušteno mijenjati korisnika ni grupu za ovaj virtualni poslužitelj.
 virt_header2=$1 za $2
+
 vserv_title=Postavke Virtualnog Poslužitelja
 vserv_ecannot=Ne možete uređivati ovu adresu virtualnog poslužitelja
 vserv_addr=Adresa
@@ -135,10 +141,12 @@ vserv_eport='$1' nije valjani ulaz
 vserv_eroot='$1' nije valjan izvor dokumenta
 vserv_ename='$1' nije valajn naziv poslužitelja
 vserv_eaddrs=Nsu unešene virtualne adrese poslužitelja
+
 show_title=Pravila
 show_edit=Dodaj Apache pravila
 show_these=Ručno uređivana pravila
 show_ok=Uredi
+
 manual_configs=Uredi Konfiguracijski Dokumente
 manual_title=Uredi Pravila
 manual_header=Koristi tekstni okvir iznad za ručno uređivanje Apache pravila u $1 koja dodaju ovom virtualno poslužitelju, direktoriju ili dokumentima.
@@ -148,6 +156,7 @@ manual_efile=Neispravan Apache konfiguracijski dokument
 manual_etest=Pronađena greška na dokumentu s postavkama : $1
 manual_editfile=Uredi konfiguracijski dokument:
 manual_switch=Uredi
+
 dir_title=Opcije Po Direktoriju
 dir_header=Za $1 na $2
 dir_show=Prikaži Propise
@@ -163,6 +172,7 @@ dir_re=Usporedba regexp
 dir_path=Putanja
 dir_return=indeks direktorija
 dir_header2=$1 za $2
+
 type_0=Procesi i Ograničenja
 type_1=Umrežavanje i Adrese
 type_2=Apache Moduli
@@ -184,6 +194,7 @@ type_17=Automatski Virtualni Hostovi
 type_18=Filteri
 type_19=Jezici
 type_20=Mapa Slika
+
 htaccess_title=Dokumenti s Opcijama Po Direktoriju
 htaccess_ecannot=Ne možete uređivati htaccess dokumente
 htaccess_file=Postojeći dokument s opcijama
@@ -196,6 +207,7 @@ htaccess_return=lista dokumenata s opcijama
 htaccess_edir='$1' nije valajn direktorij
 htaccess_ecreate=Nije vam dozvoljeno kreirati ovaj dokument s opcijama
 htaccess_edelete=Nije vam dozvoljeno brisati ovaj dokument s opcijama
+
 htindex_ecannot=Nije Vam dozvoljeno uređivati ovaj dokument s opcijama
 htindex_title=Dokument s Opcijama Po Direktoriju
 htindex_delete=Izbriši Dokument
@@ -211,12 +223,14 @@ htindex_path=Putanja
 htindex_header=Za $1
 htindex_header2=$1 za dokument s opcijama $2
 htindex_return=indeks dokumenta s opcijama
+
 htfile_title=Opcije Po Dokumentu
 htfile_header=Za $1 u $2
 htfile_show=Prikaži Propise
 htfile_edit=Uredi Propise
 htfile_apply=Opcije dodane na ..
 htfile_header2=$1 za $2
+
 reconfig_title=Ponovno-Podesi Poznate Module
 reconfig_ecannot=Nije Vam dopušteno ponovno podešavati apache
 reconfig_ever=Neusojelo dobavljenje izvršive verzije Apache poslužitelja $1.Provjerire Vaše <a href='$2'>postavke modula</a> da budete sigurnida je ovo sigurna putanja.
@@ -224,11 +238,13 @@ reconfig_desc1=Izmijenjena je Vaša Apache konfiguracija, ili nije ispitana od s
 reconfig_desc2=Iznad se nalazi lista Apache modula podržanih od Webmin-a, skupa s onim koji su trenutno instalirani. Ako koristite dinamičko punjenje modula onda možda budete morali odabrati one koji se dinamički pune.
 reconfig_desc3=Ako niste sigurni koje module na Vašem sustavu podržava Apache, samo Konfiguriraj kao Webmin može normalno pokrenuti podržane module automatski.
 reconfig_ok=Podesi
+
 defines_title=Uredi Definirane Parametre
 defines_ecannot=Nije vam dopušteno
 defines_desc=Kada se pokrene Apache, parametri mu se mogu prenijeti sa <tt>-D</tt> naredbom. Zato što ti parametri mogu utjecati na to koji propisi se koriste u Vašim dokumentina s postavkama, Webmin koji su prenešeni na Apache kada se on pokrene. U desno polje unesite parametre koji se koriste na Vašem sustavu.
 defines_config=Primjetite da sljedeći definirani parametri su već poznati : $1
 defines_list=Definirani parametri
+
 authu_ecannot='$1' nije dozvoljen korisnički tekstualni dokument
 authu_title=Lista Korisnika
 authu_header=U dokumentu $1
@@ -250,6 +266,7 @@ authu_sync=Opcija koja se nalazi iznad dopušta Vam da podesite Webmin automatsk
 authu_screate=Dodaj korisnika kada se doda Unix korisnik
 authu_sdelete=Izbriši korisnika kada se izbriše Unix korisnik
 authu_smodify=Promijeni korisnika kada se promijeni Unix korisnik
+
 authg_ecannot='$1' nije dozvoljen tekstualni dokument grupama
 authg_title=Lista Grupe
 authg_header=U dokumentu $1
@@ -267,22 +284,26 @@ authg_err=Neuspjeli pokušaj da se sačuva grupa
 authg_euser=Nije unešen naziv grupe
 authg_euser2=Naziv grupe ne može sadržavati :
 authg_edup=Grupa s nazivom $1 već postoji
+
 stop_err=Neuspjelo zaustavljanje apache-a
 stop_ecannot=Nije VAm dozvoljeno zaustaviti apache
 stop_epid=Neuspjelo otvaranje PDI dokumenta
 stop_epid2=Neispravan PID dokument $1
 stop_esig=Neuspjelo slanje SIGTERM procesu $1
+
 start_err=Neuspjelo pokretanje apache-a
 start_ecannot=Nije VAm dozvoljeno pokrenuti apache
 start_ecmd=$1 neuspio : $2
 start_eunknown=Nepoznat razlog
 start_eafter=Nije se pojavio Apache za pokretanje
+
 restart_err=Neuspjelo dodavanje promjena
 restart_epid=Neuspjelo otvaranje PDI dokumenta $1
 restart_epid2=Neispravan PDI dokument $1
 restart_esig=Neuspjelo slanje SIGHUP procesu $1
 restart_eunknown=Nepoznat razlog
 restart_ecannot=Nije VAm dozvoljeno dodavati promjene
+
 acl_virts=Virtualni poslužitelji koje korisnik može urediti
 acl_vall=Svi poslužitelji
 acl_vsel=Odabrano..
@@ -305,6 +326,7 @@ acl_dirs=Apache propisi dostupni<br><font size=-1>(Mterija tipova limita je izna
 acl_dirs0=Sve
 acl_dirs1=Samo izlistano ..
 acl_dirs2=Sve prihvaćene liste ..
+
 core_maxconc=Maksimalan broj istodobnih zahtjeva
 core_maxkeep=Maksimalan broj živih veza
 core_maxreq=maksimalan broj zahtjeva po poslužiteljskom procesu
@@ -486,10 +508,12 @@ core_infilter=Dodaj ulazne filtere za sve dokumente
 core_outfilter=Dodaj izlazni filter za sve dokumente
 core_defchar=Znakovi postavljeni za dokument
 core_edefchar=Nepostojeći ili neispravni znak postavljen za dokument
+
 mod_negotiation_cache=Dohvati dokumente s izravnim sadržajem
 mod_negotiation_pri=Prioriteti jezikaza višestruke poglede
 mod_negotiation_def=Dodijeljen
 mod_negotiation_epri=Nedostaju prioriteti jezika
+
 mod_cgi_logname=CGI Skripta Zapisa
 mod_cgi_none=Ništa
 mod_cgi_elogname=Neispravna CGI skripta pristupnog dokumenta
@@ -499,6 +523,7 @@ mod_cgi_elogsize=CGI veličina pristupa mora biti cijeli broj
 mod_cgi_post=Maksimum prijavljene veličine podataka
 mod_cgi_epost=Poslana veličina podataka mora biti cijeli broj
 mod_cgi_eunder=CGI skripta zapisa nije unutar dopuštenog diretorija
+
 mod_alias_from=Iz
 mod_alias_to=Prema
 mod_alias_status=Status
@@ -522,6 +547,7 @@ mod_alias_cgi2=inačice CGI direktorija
 mod_alias_rcgi=Regexp CGI inačice direktorija
 mod_alias_rcgi2=regexp CGI inačica direktorija
 mod_alias_estatus='$1' nije valaljan status
+
 mod_proxy_proxy=Ponašaj se kao opunomoćenik?
 mod_proxy_req=Zahtjevi
 mod_proxy_forw=Prema
@@ -591,11 +617,13 @@ mod_proxy_timeout=Opunomoćeni zahtjev vremenskog ograničenja u sekundama
 mod_proxy_etimeout=Vrijeme isteka opunomoćenog zahtjeva mora biti broj sekundi
 mod_proxy_via=Postavi Preko: zaglavlja
 mod_proxy_not=Ništa
+
 mod_log_agent_default=Dodijeljen
 mod_log_agent_file=Dokument..
 mod_log_agent_program=Program..
 mod_log_agent_log=Zapis dokument pretraživača
 mod_log_agent_efile=$1 nije valjan agent zapis naziva dokumenta
+
 mod_log_config_common=Uobičajeni Format Zapisa
 mod_log_config_named=Imenovani zapisi formata
 mod_log_config_nick=Nadimak
@@ -613,6 +641,7 @@ mod_log_config_enofilprog=Nedostaje zapis naziv dokumenta ili program
 mod_log_config_efilprog='$1' nije dopušteni zapis naziva dokumenta ili programa
 mod_log_config_eifset=Opcija 'Ako je postavljeno' ne može biti korištena s dodijeljenim vrijednostima formata zapisa
 mod_log_config_edir=Direktorij za azpis dokumenta '$1' ne postoji
+
 mod_log_referer_default=Dodijeljeni
 mod_log_referer_file=Dokument..
 mod_log_referer_program=Program..
@@ -620,7 +649,9 @@ mod_log_referer_log=Zapis dokumenta
 mod_log_referer_nolog=Ne zapisuj reference sa
 mod_log_referer_elog=$1 nije valajni zapis naziva dokumenta
 mod_log_referer_edir=zapis nije unutar dopuštenog direktorija
+
 mod_status_msg=Prikaži opsežnu informaciju o statusu
+
 mod_mime_ext=Ekstenzija
 mod_mime_xtype=Dodatni MIME tipovi
 mod_mime_mtype=MIME tip
@@ -653,6 +684,7 @@ mod_mime_outfilter=Izlazni filteri
 mod_mime_infilter=Ulazni filteri
 mod_mime_filters=Filteri za dodavanje
 mod_mime_efext=Nije data ekstenzija za filter(e) $1
+
 mod_setenvif_header=Zaglavlje
 mod_setenvif_match=Podudarnost
 mod_setenvif_case=Usporedi slučajeve
@@ -663,11 +695,13 @@ mod_setenvif_eheader=Neispravno zaglavlje zahtjeva '$1'
 mod_setenvif_eregex=Neispravan redovni izraz '$1'
 mod_setenvif_evar=Neispravan naziv varijable '$1'
 mod_setenvif_clear=Izbriši
+
 mod_userdir_default=Dodijeljen
 mod_userdir_all=Svi dostupni korisnici
 mod_userdir_except=Svi korisnici prihvaćeni
 mod_userdir_dir=Korisnički WWW directorij
 mod_userdir_edir=Nije Vam dopuštene koristiti određeni korisnički WWW directorij
+
 mod_imap_action=Aktivnost na neispravnom korištenju mapa sa slikama
 mod_imap_default=Dodijeljen
 mod_imap_godefurl=Idi na dodijeljeni URL
@@ -687,8 +721,10 @@ mod_imap_refurl=Navedeni URL
 mod_imap_url=URL...
 mod_imap_defbase=Dodijeljena baza za mapu sa slikama
 mod_imap_eurl='$1' nije valajan URL
+
 mod_speling_autocorr=Automatski ispravi pogrešno napisane URL-ove?
 mod_speling_default=Dodijeljen
+
 mod_actions_mime=Upravljački sklop / MIME tip
 mod_actions_cgiurl=CGI skripta URL
 mod_actions_mimecgi=Upravljački sklop ili MIME tip CGA akcije
@@ -698,10 +734,13 @@ mod_actions_httpcgi=HTTP metoda CGI akcija
 mod_actions_emime='$1' nije valjan upravljački sklop MIME tipa
 mod_actions_ecgi='$1' nije valjana CGI skripta
 mod_actions_enometh=Mrtoda nie odabrana za CGi skriptu '$1'
+
 mod_include_incl=Obradi sadržaje dokumenata sa izvršavajućim bitom?
 mod_include_set=Da i postavi zadnje namješteni datum
 mod_include_default=Dodijeljeni
+
 mod_dir_txt=Direktorij indeks dokumenti
+
 mod_autoindex_default=Dodijeljeni
 mod_autoindex_asc=Ulazni
 mod_autoindex_descend=Opadajući
@@ -710,6 +749,7 @@ mod_autoindex_date=Datum
 mod_autoindex_size=Veličina
 mod_autoindex_desc=Opis
 mod_autoindex_sort=Sortiraj indeks direktorij po
+
 browsermatch_regexp=Odaberi regex
 browsermatch_case=Usporedi događaje?
 browsermatch_var=Postavi varijablu
@@ -717,6 +757,7 @@ browsermatch_value=Vrijednost
 browsermatch_txt=Varijeble postavljene na temelju tipa pretraživača
 browsermatch_evar=Neispravan naziv varijable '$1'
 browsermatch_clear=Očisti
+
 autoindex_fname=Naziv dokumenta
 autoindex_mime=MIME tip
 autoindex_enc=Dešifriram
@@ -770,9 +811,11 @@ autoindex_sicon=Prikaži ikone dokumenata
 autoindex_srules=Prikaži &lt;hr&gt; linije
 autoindex_track=Uvrsti ETag - ove u zaglavlje
 autoindex_version=Sortiraj prema verziji stringova
+
 mod_mime_magic_file=MIME magični brojevi dokumenta
 mod_mime_magic_none=Ništa
 mod_mime_magic_efile=Neispravan MIME magični broj naziv dokumenta
+
 mod_env_var=Varijabla
 mod_env_value=Vrijednost
 mod_env_pass=Prođi kroz
@@ -783,6 +826,7 @@ mod_env_passall=Prijeđi preko svih okruženja varijabli na CGI
 mod_env_default=Dodijeljen
 mod_env_evar='$1' nije valjan naziv varijable
 mod_env_evalue='$1' nije valajni naziv vrijednosti varijable
+
 mod_access_order=Poredak provjere pristupa:
 mod_access_denyallow=Negiraj onda dopusti
 mod_access_allowdeny=Dopusti a onda negiraj
@@ -805,6 +849,7 @@ mod_access_epip='$1' nije valaljana djelomična IP adresa
 mod_access_emask='$1' nije valaljan mrežni/mrežna-maska par
 mod_access_ecidr='$1' nije valaljan matični/CIDR par
 mod_access_evar='$1' nije valaljano ime varijable
+
 mod_auth_ufile=Korisnički tekstualni dokument
 mod_auth_uedit=Uredi korisnike
 mod_auth_gfile=Grupa tekstualnih dokumenata
@@ -815,6 +860,7 @@ mod_auth_eudir=Korisnički tekstualni dokument nije pod dopuštenim direktorijem
 mod_auth_egdir=Grupa tekstualnih dokumenata nije pod dopuštenim direktorijem
 mod_auth_eufile=Neispravan naziv korisničkog tekstualnog dokumenta
 mod_auth_egfile=Neispravan naziv grupe tekstualnih dokumenata
+
 mod_auth_dbm_ufile=KOrisnički DBM dokument
 mod_auth_dbm_gfile=Grupa DBM dokumenta
 mod_auth_dbm_pass=Prijeđi preko grešaka na sljedeći modul?
@@ -825,6 +871,7 @@ mod_auth_dbm_egfile=Neispravan naziv grupe DBM dokumenata
 mod_auth_dbm_type=DBM tip baze podataka
 mod_auth_dbm_gtype=DBM grupni tip baze podataka
 mod_auth_dbm_default=Dodijeljeni DBM format
+
 mod_cern_meta_process=Obradi metadokumente zaglavlja
 mod_cern_meta_dir=Poddirektorij za zaglavlje metadokumenata
 mod_cern_meta_default=Dodijeljeni
@@ -832,6 +879,7 @@ mod_cern_meta_edir=Neispravn metadokument s nazivom poddirektorija
 mod_cern_meta_suffix=Sufiks dokumenta za zaglavlje metadokumenta
 mod_cern_meta_default2=Dodijeljeni
 mod_cern_meta_esuffix=Neispravan sufiks metadokumenta
+
 mod_ssl_enable=Omogući SSL?
 mod_ssl_proto=SSL protokoli
 mod_ssl_cfile=Certifikat/privatni ključ dokumenta
@@ -855,6 +903,7 @@ mod_ssl_builtin=Daj znak za spremnost na početku
 mod_ssl_passsc=Izvrši skriptu $1
 mod_ssl_epassph=Nije unešena SSL lozinka
 mod_ssl_epasssc=NEdostaje ili je neispravna skripta SSL lozinke
+
 mod_apachessl_notssl=Negiraj SSL pristup
 mod_apachessl_forcessl=Forsirati SSL/neSSL pristup?
 mod_apachessl_capath=Putanja prema direktoriju s certifikatom Autorizacije Certifikata u
@@ -887,6 +936,7 @@ mod_apachessl_nov2=Onemogući SSL verziju 2
 mod_apachessl_fake=Simuliraj osnovne korisničke autentikacijske pristupe, koristeći nazive certifikata
 mod_apachessl_cdnfile=Dokument nad DN klijentom je provjeren
 mod_apachessl_ecdnfile=Dokument koji je nedostajao na DN klijentu je provjeren
+
 log_global=Izmijenjene globalne $1 opcije
 log_virtc=Kreirani poslužitelj $1
 log_virts=Ponovo postavljeni poslužitelj $1
@@ -927,8 +977,10 @@ log_stop=Zaustavljen webserver
 log_apply=Dodane promjene
 log_manual=Ručno uređen dokument s postavkama $1
 log_virts_delete=Izbrisani $1 virtualni poslužitelj
+
 search_title=Pronađi Poslužitelje
 search_notfound=Nisu pronađeni poklapajući virtualni poslužitelji
+
 mod_php_value=PHP Konfiguracijske Vrijednosti
 mod_php_flag=PHP Konfiguracijske Zastave
 mod_php_admin_value=PHP Admin Konfiguracijske Vrijednosti
@@ -937,6 +989,7 @@ mod_php_name_header=Postavke
 mod_php_value_header=Vrijednost
 mod_php_ename='$1'je neispravan naziv
 mod_php_evalue='$1'je neispravna vrijednost za $2
+
 mod_vhost_alias_root=Automatski virtualni naziv izvora hosta
 mod_vhost_alias_ip=Iskoristi IP adrese umjesto naziva hosta?
 mod_vhost_alias_none=Ništa
@@ -944,12 +997,14 @@ mod_vhost_alias_script=Automatski virtualni host cgi-bin
 mod_vhost_alias_eroot=Nedostaje ili neispravan virtualni izvor hosta
 mod_vhost_alias_eroot2=Izvor virtualnog host direktorija nije dozvoljen
 mod_vhost_alias_escript=Nedostaje ili neispravan virualan host cgi-bin
+
 worker_minspare=Minimum rezervnih niti
 worker_maxspare=Maksimum rezervnih niti
 worker_eminspare=Minimalan broj rezervnih niti mora biti cijeli broj
 worker_emaxspare=Maksimalan broj rezervnih niti mora biti cijeli broj
 worker_threads=Rezervne niti po child procesu
 worker_ethreads=Broj niti po child procesu mora biti cijeli broj
+
 perchild_sthreads=POčetne niti po child procesu
 perchild_esthreads=Broj niti po child procesu mora biti cijeli broj
 perchild_numservers=Broj child procesa
@@ -965,6 +1020,7 @@ perchild_gid=GDI
 perchild_enum=Broj procesa mora biti ne-nula cijeli broj
 perchild_euid=UID mora biti cijeli broj
 perchild_egid=GID mora biti cijeli broj
+
 cache_enable=Aktiviraj?
 cache_type=uhvati i spremi
 cache_disk=Disk
@@ -985,12 +1041,14 @@ cache_eminos=Minimum veličine objekta za uhvatiti mora biti broj bajtova
 cache_emaxos=Maksimum veličine objekta za uhvatiti mora biti broj bajtova
 cache_maxoc=Maksimum objekata za uhvatiti u memoriji
 cache_emaxoc=Broj objekata za uhvatiti u memoriji mora biti cijeli broj
+
 suexec_su=Pokreni CGI programe kao
 suexec_none=Korisnik iz globanih postavki
 suexec_user=Unix korisnik
 suexec_group=i grupa
 suexec_euser=Nedostaje ili neispravni korisnik za pokretanje CGI programa kao
 suexec_egroup=Nedostaje ili neispravna grupa za pokretanje CGI programa kao
+
 filter_name=Naziv
 filter_intype=Ulazni MIME tip
 filter_outtype=Izlazni MIME tip
@@ -1000,11 +1058,13 @@ filter_in=Ulazne Definicije Filtera
 filter_out=Izlazne Definicije Filtera
 filter_ename=Neispravan naziv filtera '$1'
 filter_ecmd=Nedostaje naredba za filter '$1'
+
 cdir_err=Neuspjelo kreiranje dnevnih opcija direktorija
 cdir_err2=Neuspjelo spremanje dnevnih opcija direktorija
 cdir_epath=Nepostojeća putanja
 cdir_eproxy=Zamjenske opcije ne mogu biti kreirane s omogućavanjem podudarajućh regexp opcijama
 cdir_ecannot=Nije Vam dopušteno kreirati dnevne opcije direktorija za date putanje
+
 mod_band_enable=Omogućeno ograničenje propusnosti?
 mod_band_bw=Limit (bajti/sekunde)
 mod_band_client=Za klijente
@@ -1023,24 +1083,30 @@ mod_band_epulse=Nepostojeći ili neispravan interval između ograničenih paketa
 mod_band_dir=Propusnost ograničenih direktorija s dokumentima koji sadrže podatke
 mod_band_edir=Nedostaje ili ne postoji direktorij s dokumentom o propusnosti podataka
 mod_band_esubdir=NEdostaje traženi poddirektorija <tt>$1</tt> pod direktorijem s dokumentom o propusnosti podataka
+
 mod_dav_active=WebDAV omogućen
 mod_dav_inf=Dopusti beskonačne širine DAV PROPFIND zahtjeva?
 mod_dav_timeout=Minimum DAV vermensko ograničenje u sekundama
 mod_dav_etimeout=Nedostaje ili neispravno DAV vremensko ograničenje
+
 delete_err=Neuspjelo brisanje virtualnih poslužitelja
 delete_enone=Ništa nije odabrano
 delete_ecannot=Nije Vam dopušteno brisati poslužitelje
 delete_ecannot2=Nije Vam dopušteno uređivati poslužitelj $1
+
 syslog_desc=Apahe greška pristupa
+
 mod_auth_basic_pass=Prijeđi preko osnovnih grešaka pristupa na sljedeći modul?
 mod_auth_basic_prov=Osnovni pristup korisničkih tipova dokumenata
 mod_auth_basic_file=TEkstualna datoteka
 mod_auth_basic_dbm=DBM baza podataka
+
 mod_auth_digest_pass=Prijeđi preko prikaza grešaka u pristupu na sljedeći modul?
 mod_auth_digest_prov=Prikaži tipove korisničkih pristupnih dokumenta
 mod_auth_digest_al=Hash algoritam
 mod_auth_digest_domain=URL-ovi i putanje u istoj domeni
 mod_auth_digest_edomain=Nedostaju URL-ovi i putanje u istoj domeni
+
 mods_title=Podesi Apache Module
 mods_mod=Modul
 mods_state=Trenutno stanje

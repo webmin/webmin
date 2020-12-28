@@ -15,6 +15,7 @@ index_sha1=SHA1 encryption is enabled in the module configuration, but the $1 Pe
 index_digest2=Digest encryption is enabled in the module configuration, but the $1 command or $2 Perl module needed for it is not installed.
 index_cpan=<a href='$1'>Click here</a> to download and install it now.
 index_delete=選択したディレクトリの保護を解除
+
 dir_title1=Add Protected Directory
 dir_title2=保護されたディレクトリの編集
 dir_header=ディレクトリの保護オプション
@@ -57,6 +58,7 @@ dir_delete=保護の解除
 dir_delete2=保護の解除と設定ファイルの削除
 dir_delete3=保護の解除と設定ファイルの削除
 dir_apache=Apache の設定の編集
+
 edit_title1=ユーザの作成
 edit_title2=ユーザの編集
 edit_header=Web 認証ユーザの詳細
@@ -68,11 +70,13 @@ edit_pass0=設定
 edit_passfrom=Change from
 edit_passto=to new password
 edit_dom=Digest realm
+
 gedit_title1=Create Group
 gedit_title2=Edit Group
 gedit_header=Web authentication group details
 gedit_group=Group name
 gedit_members=Members of group
+
 save_err=Failed to save user
 save_euser1=Missing username
 save_euser2=Username cannot contain the : character
@@ -81,16 +85,19 @@ save_eclash=A user with the same name already exists
 save_eoldpass=Old password is not correct
 save_title=User Saved
 save_edom=Missing or invalid digest realm
+
 gsave_err=Failed to save group
 gsave_egroup1=Missing group name
 gsave_egroup2=Group name cannot contain the : character or spaces
 gsave_eclash=A group with the same name already exists
+
 acl_dirs=Allowed directories
 acl_user=Create .htaccess and htusers files as Unix user
 acl_same=Same as Webmin login
 acl_home=Include Unix user's home directory?
 acl_sync=Can setup Unix user synchronization?
 acl_uonly=Can add and change protected directories?
+
 log_create_dir=Added directory $1
 log_modify_dir=Modified directory $1
 log_delete_dir=Deleted directory $1
@@ -101,6 +108,7 @@ log_create_group=Created group $1
 log_modify_group=Modified group $1
 log_delete_group=Deleted group $1
 log_delete_dirs=Deleted $1 directories
+
 search_title=検索結果
 search_err=検索失敗
 search_edir=ディレクトリがないか、絶対パスが無効です

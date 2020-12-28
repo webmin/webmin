@@ -2,6 +2,7 @@ index_title=Vgetty - Contestador Automático
 index_ecmd=El comando Vgetty $1 no se encontró en su sistema. Puede que no esté instalado, o que su <a href='$2'>configuración del módulo</a> sea incorrecta.
 index_econfig=El archivo de configuración de Vgetty $1 no se encontró en su sistema. Puede que no esté instalado, o que su <a href='$2'>configuración del módulo</a> sea incorrecta.
 index_return=índice de contestador automático
+
 vgetty_title=Configuración de Puerto Serie
 vgetty_desc=Para que su servidor conteste llamadas de voz con un modem conectado a un puerto serie, debe estar listado abajo. Cuando añade un puerto a esta lista, el programa $1 será configurado para responder llamadas y reproducir un mensaje.
 vgetty_add=Añadir un nuevo pueto serie
@@ -32,6 +33,7 @@ vgetty_erings=Número de tonos falta o no válido
 vgetty_erings2=El número de tonos debe ser al menos 2
 vgetty_eans=No se seleccionaron modos de respuesta
 vgetty_eclash=El puerto serie $1 ya está en uso
+
 options_title=Opciones de Contestador Automático
 options_header=Opciones para todos los puerto serie
 options_maxlen=Máximo tamaño de mensaje
@@ -68,6 +70,7 @@ options_eprog=Programa a ejecutar falta o no existe
 options_eowner=Usuario Unix para archivos de mensaje falta o no válido
 options_egroup=Grupo Unix para archivos de mensaje falta o no válido
 options_emode=Permisos octales para archivos de mensaje faltan o no válidos
+
 received_title=Mensajes Recibidos
 recieved_desc=Los mensajes de voz que han sido recibidos por su servidor están listados abajo. Para escuchar un mensaje, pulse en la fecha/hora de la primera columna.
 received_none=No se encontraron mensajes de voz recibidos.
@@ -79,9 +82,12 @@ received_delete=Borrar mensajes seleccionados
 received_move=Convertir los seleccionados a saludos
 received_all=Seleccionar todo
 received_invert=Invertir selección
+
 listen_efile=¡Nombre de archivo de mensaje no válido!
 listen_epath=El mensaje de correo de voz ya no existe
+
 delete_efile=¡Nombre de archivo de mensaje no válido!
+
 messages_title=Mensajes de Saludo
 messages_desc=Esta página lista los mensajes de saludo que se reproducirán cuando un llamante se conecte con su servidor de contestador automático. Si tiene más de uno, se utilizará uno escogido de forma aleatoria.
 messages_file=Nombre de archivo
@@ -89,12 +95,15 @@ messages_none=No hay mensajes de saludo accesibles.
 messages_updesc=Este formulario le permite subir un archivo WAV de mensaje de saludo adicional, que será convertido al formato elegido para utilizarlo con su modem. La tasa de muestreo del WAV subido debería ser la misma que la de los mensajes recibidos, así como el formato seleccionado.
 messages_upload=Subir mensaje
 messages_fmt=convertir a
+
 pvfdesc=$1, $2 bits
+
 upload_err=Fallo al añadir mensaje
 upload_emessage=No se seleccionó archivo WAV
 upload_ewav=Fallo al convertir archivo WAV : $1
 upload_epvf=Fallo al crear archivo RMD : $1
 upload_esame=El archivo de mensaje $1 ya existe
+
 log_apply=Configuración aplicada
 log_upload=Subido mensaje de saludo $1
 log_move=$1 mensajes recibidos se convirtieron

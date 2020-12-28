@@ -57,6 +57,7 @@ index_reposdisable=Lumpuhkan Repositori
 index_reposenable=Dayakan Repositori
 index_reposdelete=Padamkan Repositori
 index_repoheader=Pilihan repositori pakej baru
+
 update_title=Kemas kini Pakej
 update_title2=Pasang Pakej
 update_enone=Tiada pakej yang dipilih
@@ -94,9 +95,11 @@ update_none=Tiada
 update_ops=Membina senarai lengkap pakej ..
 update_rebootdesc=Salah satu pakej yang dipasang memerlukan reboot untuk diterapkan sepenuhnya.
 update_reboot=Reboot Sekarang
+
 sched_title=Kemas kini Berjadual
 sched_yes=Pemeriksaan yang dijadualkan untuk kemas kini kini aktif.
 sched_no=Pemeriksaan yang dijadualkan untuk kemas kini telah dilumpuhkan.
+
 log_update=Dipasang $1 pakej yang dikemas kini
 log_sched=Kemas kini dijadualkan yang diaktifkan
 log_unsched=Pembaharuan berjadual yang cacat
@@ -108,11 +111,13 @@ log_enable_repo=Repositori pakej dinamik $1
 log_disable_repo=Repositori pakej kurang upaya $1 
 log_delete_repo=Repositori pakej yang dibuang $1 
 log_create_repo=Repositori pakej yang dibuat $1 
+
 refresh_title=Pakej yang Menyegarkan
 refresh_clearing=Cache pakej pembersihan ..
 refresh_done=.. selesai
 refresh_available=Mengambil semula pakej yang ada ..
 refresh_done3=.. mendapati $1 kemas kini yang mungkin
+
 view_title=Butiran Pakej
 view_header=Maklumat pakej kemas kini
 view_name=Nama pakej
@@ -126,12 +131,14 @@ view_changelog=Changelog untuk versi yang ada
 view_software=Uruskan Pakej
 view_update=Pakej Kemaskini
 view_install=Pasang Pakej
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)
 system_webmin=Modul Webmin
 system_usermin=Modul Usermin
 system_tgz=Webmin atau Usermin tar.gz
+
 repos_err_disable=Gagal melumpuhkan repositori
 repos_err_enable=Gagal membolehkan repositori
 repos_err_delete=Gagal memadamkan repositori

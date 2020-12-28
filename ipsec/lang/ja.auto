@@ -25,12 +25,15 @@ index_up=接続を開始：
 index_updesc=このボタンの横にあるリストから接続を選択し、クリックしてすぐに確立を試みます。
 index_nopol=ネットワークポリシーが見つかりませんでした-<a href='$1'>ネットワーク設定</a>が間違っている可能性があります。
 index_import=ファイルから接続をインポートします。
+
 stop_err=IPsecサーバーを停止できませんでした
 start_err=IPsecサーバーの起動に失敗しました
 restart_err=IPsecサーバーの再起動に失敗しました
 start_elog=次のエラーがログに記録されました： $1
+
 newkey_err=キーを生成できませんでした
 newkey_ehost=ホスト名がないか、無効です
+
 edit_title1=接続を作成
 edit_title2=接続を編集
 edit_header=IPsec VPN接続の詳細
@@ -101,6 +104,7 @@ edit_unit_s=秒
 edit_unit_m=分
 edit_unit_h=時間
 edit_unit_d=日々
+
 config_title=サーバー構成
 config_header=グローバルVPNサーバー設定
 config_ifaces=IPsecのネットワークインターフェイス
@@ -118,6 +122,7 @@ config_nat=NATトラバーサルを有効にしますか？
 config_err=サーバー構成を保存できませんでした
 config_eri=実際のインターフェイス「$1」が複数回リストされています
 config_enone=ネットワークインターフェイスが指定されていません
+
 showkey_title=公開鍵を表示
 showkey_desc1=以下に示す公開RSAキーは、このホストに関連するセクションで、このシステムに接続している他のシステムの構成にコピーする必要があります。
 showkey_desc2=以下に示す値を使用して、このホストのDNS KEYレコードを作成し、ホストに接続している他のシステムが公開キーを検索できるようにします。
@@ -125,6 +130,7 @@ showkey_flags=旗
 showkey_proto=プロトコル
 showkey_alg=アルゴリズム
 showkey_key=キーデータ
+
 policy_desc_block=ブロックされたネットワーク
 policy_desc_clear=交通ネットワークのクリア
 policy_desc_private=暗号化されたネットワーク
@@ -145,6 +151,7 @@ policy_mask=プレフィックス
 policy_err=ネットワークを保存できませんでした
 policy_enet=行 $1の無効なネットワークIPアドレス
 policy_emask=行 $2のプレフィックス長が無効です
+
 save_err=接続を保存できませんでした
 save_ename=接続名が欠落しているか無効です
 save_ekeying=キーイング再試行の欠落または無効数
@@ -164,6 +171,7 @@ save_eleftcert=ローカルサーバー証明書が見つからないか無効�
 save_erightcert=リモートサーバー証明書が見つからないか無効です
 save_ekeylife=接続キーの有効期間がないか、無効です
 save_eikelifetime=キーイングチャネルの有効期間がないか、無効です
+
 log_create_conn=接続 $1を作成しました
 log_delete_conn=接続 $1を削除しました
 log_modify_conn=変更された接続 $1
@@ -182,8 +190,10 @@ log_delete_secret=$1の秘密キーを削除しました
 log_create_secret_nn=任意のホスト用に作成された秘密鍵
 log_modify_secret_nn=ホストの変更された秘密鍵
 log_delete_secret_nn=ホストの秘密鍵を削除しました
+
 up_title=接続を開始
 up_cmd=コマンド $1で接続を開始します ..
+
 export_title=構成のエクスポート
 export_desc=このフォームは、接続 $1の構成ファイルセクションをエクスポートするために使用できるため、相手側のサーバーに簡単にインポートできます。
 export_print=ブラウザで構成を表示する
@@ -193,11 +203,13 @@ export_err=構成のエクスポートに失敗しました
 export_efile=ファイル名がありません
 export_esave=ファイルへの書き込みに失敗しました： $1
 export_done=接続 $1から $2（$3バイト）へのエクスポートされた構成。
+
 import_title=インポート設定
 import_desc=このフォームを使用して、別のシステムのモジュールのエクスポート機能によって作成されたものなど、接続の構成ファイルセクションをインポートできます。
 import_upload=アップロードファイルからインポート ..
 import_file=サーバー側ファイルからインポート ..
 import_ok=今すぐインポート
+
 import_err=構成のインポートに失敗しました
 import_eupload=アップロードするファイルが選択されていません
 import_efile=サーバー側のファイルが入力されていません
@@ -207,6 +219,7 @@ import_eclash=$1という接続が既に存在します。
 import_done1=新しいIPsec接続 $1を正常に追加しました。
 import_done2=IPsec接続 $1を正常に更新しました。
 import_over=同じ名前の既存の接続を上書きしますか？
+
 secrets_title=秘密鍵
 secrets_none=秘密鍵が見つかりませんでした！
 secrets_name=の秘密
@@ -220,6 +233,7 @@ secrets_mod=モジュラス $1
 secrets_newpsk=新しい共有秘密鍵を作成します。
 secrets_newrsa=新しいRSAキーを作成します。
 secrets_return=秘密鍵リスト
+
 secret_title1=秘密鍵を作成する
 secret_title2=秘密鍵の編集
 secret_header=秘密鍵の詳細

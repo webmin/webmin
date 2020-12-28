@@ -9,17 +9,21 @@ index_edit=hoitaa
 index_manual=Muokkaa manuaalisesti
 index_anyfile=Muokkaa muuta PHP-asetustiedostoa:
 index_return=kokoonpanotiedostot
+
 file_global=Globaali PHP-kokoonpano
 file_eread= $1:$2  : n lukeminen epäonnistui
+
 manual_title=Muokkaa kokoonpanoa manuaalisesti
 manual_desc=Tätä sivua voidaan käyttää PHP-määritystiedoston manuaaliseen muokkaamiseen. Tämä on tehtävä huolellisesti, koska muutoksille ei suoriteta syntaksia tai muuta voimassaolon tarkistusta.
 manual_err=Asetustiedostoa ei voitu muokata
 manual_edata=Uutta sisältöä ei ole annettu
+
 list_title=Hallitse PHP-määrityksiä
 list_ecannot=Et voi hallita tätä PHP-asetustiedostoa
 list_return=PHP-määritykset
 list_format_ini=INI-muoto
 list_format_fpm=FPM-muoto
+
 vars_title=PHP-muuttujat
 vars_header=PHP-muuttujien luonti- ja lainausvaihtoehdot
 vars_magic=Lainaatko kaikki syötemuuttujat?
@@ -28,6 +32,7 @@ vars_register=Muutetaanko kaikki syötteet globaaleiksi muuttujiksi?
 vars_args=Muutetaanko komentoriviparametrit globaaleiksi muuttujiksi?
 vars_long=Luodaan vanhanaikaisia taulukkoja, kuten <tt>HTTP_GET_VARS</tt>?
 vars_err=PHP-muuttuja-asetusten tallentaminen epäonnistui
+
 dirs_title=Hakemistoasetukset
 dirs_header=PHP-skripti- ja laajennushakemistoasetukset
 dirs_include=Etsi hakemistoja sisältyy
@@ -39,6 +44,7 @@ dirs_err=Hakemistoasetusten tallentaminen epäonnistui
 dirs_eincs=Ei sisällä syötettyjä hakuhakemistoja
 dirs_eutmp=Puuttuva tai virheellinen väliaikaisten tiedostojen hakemisto
 dirs_eext=Puuttuvat laajennushakemisto
+
 db_title=Tietokannan asetukset
 db_header1=MySQL-tietokantayhteysasetukset
 db_persist=Sallivatko pysyvät tietokantayhteydet?
@@ -57,6 +63,7 @@ db_emaxlinks=Puuttuva tai virheellinen kokonaismäärä yhteyksiä
 db_etimeout=Puuttuva tai virheellinen yhteyden aikakatkaisu
 db_ehost=Puuttuva tai virheellinen MySQL-palvelin-isäntä
 db_eport=Puuttuva tai virheellinen MySQL-palvelinportti
+
 session_title=Istuntovaihtoehdot
 session_header=Vaihtoehdot PHP-istunnon seurannalle
 session_handler=Istunnon tallennusmekanismi
@@ -73,6 +80,7 @@ session_epath=Puuttuva tai virheellinen istunto tiedostojen hakemisto
 session_elife=Puuttuva tai virheellinen evästeen käyttöikä
 session_emaxlife=Puuttuva tai virheellinen istunnon koko elinaika
 session_eredis=Puuttuva tai poistettu käytöstä uudelleenlaajennus
+
 safe_title=Vikasietotilan asetukset
 safe_header=Turvalliset tiedostojen käyttötilan asetukset
 safe_on=Ota suojattu tila käyttöön?
@@ -85,6 +93,7 @@ safe_err=Vikasietotilan asetusten tallentaminen epäonnistui
 safe_einclude=Puuttuva tai virheellinen sallittu hakemisto mukana oleville tiedostoille
 safe_eexec=Puuttuva tai virheellinen sallittu hakemisto suoritetuille ohjelmille
 safe_ebasedir=Puuttuva tai virheellinen hakemisto tiedostotoiminnoista
+
 limits_title=Resurssien rajoitukset
 limits_header=Muisti- ja siirtorajan vaihtoehdot
 limits_mem=Suurin muistivaraus
@@ -98,6 +107,7 @@ limits_epost=Puuttuva tai virheellinen HTTP-POST-koko on virheellinen
 limits_eupload=Puuttuva tai virheellinen tiedostojen lähetyskoko suurin
 limits_eexec=Puuttuva tai virheellinen enimmäissuoritusaika
 limits_einput=Puuttuva tai virheellinen syötteen jäsentämisaika
+
 errors_title=Virhe kirjautumisessa
 errors_header=Virhesanoman näyttö ja kirjausasetukset
 errors_display=Näytä virheilmoitukset?
@@ -128,6 +138,7 @@ errors_err=Virhelokiin tallennus epäonnistui
 errors_ereporting=Virhetyyppistä lauseketta ei annettu
 errors_emaxlen=Puuttuva tai virheellinen kirjattujen virheiden enimmäiskoko
 errors_efile=Puuttuu virhelokitiedosto
+
 misc_title=Muut asetukset
 misc_header=Muut PHP-asetukset
 misc_short=Sallivat PHP-skriptit, jotka alkavat &lt;? ?
@@ -148,6 +159,7 @@ misc_include=Sallivatko kauko-ohjaimen avaaminen
 misc_path=CGI-korjaustiedon tiedot?
 misc_timezone=PHP-aikavyöhyke
 misc_charset=Oletusmerkki
+
 log_manual=Muokkaa tiedostoa $1 manuaalisesti
 log_vars=Muutetut PHP-muuttujat $1 : ssä
 log_dirs=Muutettu hakemistoasetukset $1 : ssa
@@ -157,6 +169,7 @@ log_safe=Vikasietotilan vaihtoehdot $1 : ssä
 log_limits=Muutetut resurssirajat $1 : ssä
 log_errors=Muutos virheilmoituksessa $1 : ssä
 log_misc=Muutti $1 : n muita asetuksia
+
 acl_global=Voiko muokata PHP: n globaalia kokoonpanoa?
 acl_anyfile=Voiko mitä tahansa tiedostoa muokata PHP-kokoonpanona?
 acl_manual=Voiko konfigurointitiedostoja muokata manuaalisesti?

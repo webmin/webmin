@@ -7,6 +7,7 @@ index_restart=重新启动Webmin
 index_restartmsg=单击此按钮以重新启动Webmin服务器进程。如果您最近升级了Perl，则可能有必要。
 index_refresh=刷新模块
 index_refreshmsg=重新检查所有已安装服务器的Webmin模块，并更新“未使用的模块”类别中显示的模块。
+
 access_ip=允许的IP地址
 access_local=在列表中包括本地网络
 access_elibwrap=由于没有安装$1 Perl模块，因此无法使用TCP-wrappers进行IP访问控制。
@@ -16,6 +17,7 @@ access_eip6='$1'不是完整的IPv6或网络地址
 access_ecidr6='$1'不是有效的IPv6网络大小
 access_ecidr8=IPv6网络大小'$1'必须被8整除
 access_trust=信任代理提供的远程IP地址吗？
+
 bind_desc2=此表单可用于更改Webmin侦听的端口号，或使其仅侦听系统上的单个IP地址。您也可以将其配置为接受多个端口上的连接，或侦听多个IP地址。注意-更改端口或绑定地址后，您的Web浏览器可能会提示您重新登录。
 bind_sockets=监听IP和端口
 bind_firewall=在防火墙上打开新端口？
@@ -41,6 +43,7 @@ bind_eipv6=除非安装了$1 Perl模块，否则无法启用IPv6
 bind_redirecting=重定向到新URL ..
 bind_elsof=新端口$1已被另一个进程使用
 bind_eonsystem=IP地址$1在此系统上未激活，因此无法使用
+
 log_status=正在记录活动？
 log_clf=使用合并的日志格式（包括引荐来源网址和用户代理）？
 log_clear2=定期清除日志文件？
@@ -57,6 +60,7 @@ log_login=在操作日志中包括Webmin登录名和注销名？
 log_email=通过电子邮件将记录的操作发送至
 log_emailnone=不要发送
 log_inmodsemail=发送电子邮件以进行以下操作
+
 proxy_ehttp2=HTTP代理服务器必须作为URL输入，例如$1
 proxy_eftp2=FTP代理服务器必须作为URL输入，例如$1
 proxy_bind=HTTP连接的源IP地址
@@ -89,6 +93,7 @@ proxy_return=代理服务器和下载
 proxy_tabproxy=代理
 proxy_tabdown=正在下载
 proxy_fallback=如果代理已关闭，请尝试直接请求？
+
 ui_rgb=<font color=＃ff0000>RR</font> <font color=＃00ff00>GG</font> <font color=＃0000ff>BB</font>十六进制颜色
 ui_sysinfo4=代替浏览器标题
 ui_ergb='$1'的十六进制颜色值无效
@@ -121,6 +126,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/yyyy（即16/09/2001）
 ui_dateformat_mm/dd/yyyy=毫米/日/年（即2001年9月16日）
 ui_dateformat_yyyy/mm/dd=yyyy/mm/dd（即2001/09/16）
 ui_ehostnamedisplay=显示主机名缺失或无效
+
 mods_installsource=从安装
 mods_grantto=授予访问权限
 mods_standard=来自<a href='$1' target=_new>www.webmin.com</a>的标准模块
@@ -147,6 +153,7 @@ mods_tabinstall=安装
 mods_tabclone=克隆
 mods_tabdelete=删除
 mods_tabexport=出口
+
 install_enotar=在系统上找不到提取Webmin模块所需的<tt>tar</tt>命令
 install_edep2=模块$1至少需要模块$3的模块$2
 install_line3=$2中的$1（$3 kB），从视图中隐藏
@@ -154,9 +161,11 @@ install_ebunzip=文件被bzip压缩，但是在系统上未找到$1命令
 install_ebunzip2=无法压缩文件：$1
 install_err4=无法安装标准模块
 install_emissing=指定的模块不存在
+
 delete_rusure3=您确定要删除模块克隆$2吗？
 delete_acls=从用户中删除并重置访问控制设置？
 delete_enone=未选择模块
+
 os_desc3=该页面显示Webmin在安装时检测到的操作系统以及当前检测到的系统。如果它们不同，则可以选择更新Webmin的OS信息，如果您最近进行了升级，则可能需要更新。
 os_webmin=符合Webmin的操作系统
 os_iwebmin=Webmin使用的内部OS代码
@@ -173,12 +182,14 @@ os_eiversion=缺少内部操作系统版本
 os_incorrect=警告-您的系统实际上正在运行$1版本$2。
 os_fix=更新检测到的操作系统
 os_usermin=同时更新Usermin OS
+
 lang_accept=使用浏览器指定的语言？
 lang_charset=HTML页面的字符集
 lang_chardef=由语言决定
 lang_charover=强制字符集
 lang_err=保存语言失败
 lang_echarset=缺少字符或外观无效的字符集
+
 ssl_cpan=或者，您可以让Webmin为您<a href='$1'>下载并安装</a>所需的Net::SSLeay Perl模块。
 ssl_emessage=来自Perl的错误消息是：$1
 ssl_on=启用SSL？
@@ -279,6 +290,7 @@ ssl_letsnotrenew=仅手动续订
 ssl_staging=让我们加密服务器
 ssl_staging0=真实
 ssl_staging1=暂存（仅测试）
+
 newkey_err=无法创建SSL密钥
 newkey_ecn=缺少或无效的服务器名称
 newkey_ecns=没有输入服务器名称
@@ -291,16 +303,19 @@ newkey_ok=成功生成以下SSL密钥：
 newkey_esize=密钥大小丢失或无效
 newkey_edays=到期前缺少或无效的天数
 newkey_ecountry=国家/地区代码必须为两个字母
+
 newcsr_err=无法创建SSL CSR
 newcsr_efile=缺少CSR文件名
 newcsr_title=产生企业社会责任
 newcsr_ok=成功生成以下SSL证书请求：
 newcsr_ok2=此CSR必须发送给签名机构，签名机构将返回签名证书。可以使用<b>上传证书</b>标签使用上方的密钥进行安装。
+
 startpage_intro2=此页面使您可以控制Webmin主菜单的外观。某些选项仅在使用默认主题时才有效。
 startpage_gotonone=&lt;无&gt;
 startpage_gotomodule=登录后，始终进入模块
 startpage_webminup=在“系统信息”页面上显示Webmin更新？
 startpage_moduleup=在“系统信息”页面上显示模块更新？
+
 upgrade_descdeb=通过此表，您可以通过升级Debian软件包将整个Webmin安装升级到新版本。您可以从本地.deb文件，上载的文件或最新版本的<a href=http://www.webmin.com/>www.webmin.com</a>安装。与手动升级一样，所有配置设置和第三方模块都将保留。
 upgrade_descsun-pkg=该表格使您可以将整个Webmin安装从Sun提供的Solaris软件包升级到新版本。您可以从本地Solaris软件包文件或上载的文件进行安装。可以在<a href=http://www.sun.com/bigadmin/content/webmin/>http://www.sun.com/bigadmin/content/webmin/</a>中找到最新的软件包。与手动升级一样，所有配置设置和第三方模块都将保留。
 upgrade_descgentoo=通过删除当前的Gentoo Emerge软件包并安装新的软件包，此表单使您可以将整个Webmin安装升级到新版本。您可以从本地Gentoo软件包文件，上载的文件或Emerge存储库中的最新版本进行安装。与手动升级一样，所有配置设置和第三方模块都将保留。
@@ -336,10 +351,12 @@ upgrade_tabupdate=更新模块
 upgrade_tabsched=预定的更新
 upgrade_src=从升级Webmin
 upgrade_opts=升级选项
+
 newmod_desc=Webmin升级后，新版本中的任何新模块将被授予一个或多个用户。该表格允许您设置接收新模块的用户。在命令行或使用上面的表单升级时，将应用此设置。
 newmod_header=新模块补助
 newmod_def=默认行为-将新模块授予<tt>root</tt>或<tt>admin</tt>
 newmod_users=将新模块授予：
+
 update_third=同时更新非核心模块
 update_checksig=检查非Webmin存储库上的签名
 update_user=登录以更新服务器
@@ -352,6 +369,7 @@ update_enomodsig=无法下载模块的签名文件：$1
 update_ebadmodsig=模块签名检查失败：$1
 update_src=从升级模块
 update_opts=模块更新选项
+
 ca_alt=其他网域
 ca_city=城市或地区
 ca_issuer_cn=发行人名称
@@ -359,6 +377,7 @@ ca_issuer_o=发行人组织
 ca_issuer_email=发行人的电子邮件地址
 ca_type=证书类别
 ca_notafter=有效期至
+
 session_ptimeout=密码超时
 session_pblock=登录块失败
 session_blockuser=阻止$1以上的用户登录失败，持续$2秒。
@@ -394,11 +413,13 @@ session_sha512=使用SHA512加密
 session_emd5mod=无法使用MD5加密，因为未安装Perl $1模块。
 session_esha512mod=由于未安装Perl $1模块，因此无法使用SHA512加密。
 session_blocklock=同时锁定登录失败的用户
+
 categories_code=ID
 categories_name=显示的描述
 categories_lang=编辑语言类别：
 categories_langok=更改
 categories_custom=自订
+
 log_osdn=更改了下载选项
 log_twofactor=更改了两因素身份验证选项
 log_newkey=创建了新的SSL密钥
@@ -421,6 +442,7 @@ log_onedelete_webmincron=模块$1中已删除的预定函数
 log_letsencrypt=从“加密”请求新的SSL证书
 log_letsencryptdns=为$1创建了“让我们加密DNS记录”
 log_letsencryptcleanup=删除了让我们加密$1的DNS记录
+
 themes_none=无-由主题决定
 themes_overdesc=覆盖层通过更改颜色，背景和图标来修改主题的外观。它们不会更改布局。
 themes_overlay=当前叠加：
@@ -429,19 +451,24 @@ themes_taboverlay=更改叠加
 themes_tabinstall=安装主题
 themes_tabdelete=删除主题
 themes_tabexport=导出主题
+
 themes_ok2=主题叠加成功更改..重定向到Webmin索引页面。
 themes_return=主题清单
 themes_err4=更改叠加主题失败
 themes_eoverlay=所选的叠加层与当前的全局主题不兼容
+
 themes_desc4=可以使用以下表单将已安装的主题导出为wbt.gz文件。然后可以将主题文件安装到另一个运行Webmin的系统上。
 themes_exportmods=导出主题
 themes_exportok=导出所选主题
+
 referers_none2=警告：这使您的系统容易受到XSS攻击！
 referers_err=无法保存引荐来源
 referers_ehost='$1'不是有效的受信任主机名
+
 update_fixes=解决问题
 update_mtype=模块$1无法更新，因为它是从$2软件包安装的
 update_emins=缺少或无效的分钟来更新
+
 anon_title=匿名模块访问
 anon_desc=该页面允许您授予对选定Webmin模块和路径的访问权限，而无需客户端登录。对于您在下面输入的每个模块路径（例如<tt>/custom</tt>或<tt>/passwd</tt>），您还必须输入Webmin用户的名称，该用户的权限将用于访问模块。
 anon_desc2=在授予匿名访问权限时，您应该非常小心，因为IP访问控制不足或对错误模块的访问权限可能会让攻击者接管您的系统。
@@ -450,15 +477,19 @@ anon_user=Webmin用户
 anon_err=保存匿名访问失败
 anon_eurl=“$1”不是有效的URL路径
 anon_euser=URL路径“$1”的Webmin用户丢失或无效
+
 enogpg=未安装GnuPG
+
 standard_failed=无法下载模块列表：$1
 standard_header=标准Webmin模块
 standard_warn=警告-您没有运行最新的Webmin版本$1，因此这些模块可能无法安装。
 standard_eurl=无效的标准模块网址
+
 third_failed=无法下载模块列表：$1
 third_header=第三方Webmin模块
 third_eurl=无效的第三方模块网址
 third_title=选择第三方模块
+
 lock_title=文件锁定
 lock_desc=默认情况下，Webmin将获得对其修改的任何文件的锁定，以防止多个进程同时进行修改，这可能导致文件损坏。如果导致问题，此页面允许您有选择地或完全禁用锁定。
 lock_header=文件锁定设置
@@ -469,6 +500,7 @@ lock_except=锁定除..外的所有文件和目录。
 lock_err=保存文件锁定失败
 lock_edir='$1'不是绝对路径
 lock_edirs=没有输入文件或目录
+
 ipkey_title1=创建SSL密钥
 ipkey_title2=编辑SSL密钥
 ipkey_header=IP专用的SSL密钥详细信息
@@ -478,6 +510,7 @@ ipkey_eip2='$1'不是有效的IP地址或主机名
 ipkey_eips=没有输入IP地址
 ipkey_eextracas=没有输入其他证书文件
 ipkey_eextraca=附加证书文件$1不存在
+
 descs_title=模块标题
 descs_info=该页面允许您为Webmin模块指定备用标题，以覆盖其标准说明。
 descs_mod=模组
@@ -487,11 +520,13 @@ descs_cdesc=克隆标题
 descs_err=保存模块标题失败
 descs_edesc=模块“$1”的标题丢失
 descs_etitle=克隆“$1”的标题丢失
+
 export_err=导出模块失败
 export_ecmd=缺少所需的命令$1
 export_efile=丢失或无效的导出文件
 export_done=成功将所选模块导出到$1。
 export_title=导出模块
+
 advanced_title=高级选项
 advanced_header=进阶和实验选项
 advanced_temp=临时文件目录
@@ -535,10 +570,13 @@ advanced_listdir=列出没有索引文件的目录？
 advanced_headers=额外的HTTP标头
 advanced_eheader=标头的格式必须类似于<tt>Header：Value</tt>
 advanced_sortconfigs=保存按其键排序的配置文件？
+
 syslog_errorlog=Webmin错误日志
+
 clear_title=清除下载缓存
 clear_done=已成功清除包含来自 $2 URL的文件的$1的Webmin缓存。
 clear_none=Webmin下载缓存中当前没有URL。
+
 savekey_err=保存新密钥失败
 savekey_ekey=PEM格式密钥缺失或无效
 savekey_ecert=PEM格式证书缺失或无效
@@ -548,6 +586,7 @@ savekey_title=上传现有密钥
 savekey_done2=提供的SSL密钥已保存在$1中，证书已保存在$2中。
 savekey_done=提供的SSL密钥和证书已保存在文件$1中。
 savekey_done3=提供的链接SSL证书已保存在文件$1中。
+
 cache_title=缓存的URL
 cache_search=查找包含以下内容的网址：
 cache_ok=搜索
@@ -560,8 +599,10 @@ cache_delete=从缓存中清除所选内容
 cache_err=无法刷新缓存的URL
 cache_enone=未选择
 cache_efile=无效的文件名
+
 restart_title=重新启动Webmin
 restart_done=Webmin服务器进程现在正在重新启动-请等待几秒钟，然后再继续。
+
 mobile_title=移动设备选项
 mobile_header=移动浏览器的选项
 mobile_theme=移动浏览器的主题
@@ -570,6 +611,7 @@ mobile_nosession=强制使用HTTP身份验证？
 mobile_agents=移动浏览器的其他用户代理
 mobile_err=无法保存移动设备选项
 mobile_prefixes=移动浏览器的URL主机名前缀
+
 blocked_title=被阻止的主机和用户
 blocked_type=类型
 blocked_who=主机名或用户名
@@ -581,9 +623,11 @@ blocked_host=客户主机
 blocked_clear=清除所有方块
 blocked_cleardesc=单击此按钮以通过重新启动Webmin服务器进程来清除所有当前的主机和用户块。
 blocked_restarting=Webmin服务器进程现在正在重新启动，以清除被阻止的主机和用户-请等待几秒钟，然后继续。
+
 refreshmods_title=刷新模块
 refreshmods_installed=检查可用的Webmin模块 ..
 refeshmods_counts=..找到了已安装应用程序的$2，未安装$1。
+
 debug_title=调试日志文件
 debug_header=Webmin调试日志文件选项
 debug_enabled=启用了调试日志？
@@ -611,6 +655,7 @@ debug_cmd=命令行
 debug_cron=后台工作
 debug_inmods=编写调试日志的模块
 debug_emodules=没有要调试的模块可供选择
+
 notif_passexpired=您的Webmin密码已过期！您将被迫在下次登录时更改它。
 notif_passchange=您的Webmin密码最后一次在$1上更改，并且必须在$2天内更改。
 notif_passlock=您的Webmin密码最后一次在$1上更改，如果未更改，您的帐户将在$2天被锁定。
@@ -626,6 +671,7 @@ notify_updatedesc=解决问题
 notif_updateok=立即安装更新
 notif_reboot=最近的软件包更新（例如新的内核版本）要求重新启动才能完全应用。
 notif_rebootok=马上重启
+
 status_title=后台状态收集
 status_header=状态收集作业设置
 status_interval=在后台收集系统状态？
@@ -637,6 +683,7 @@ status_temp=收集驱动器温度？
 status_units=温度单位
 status_celsius=摄氏温度
 status_fahrenheit=华氏温度
+
 sendmail_title=发送邮件
 sendmail_desc=该页面控制Webmin如何发送电子邮件，例如来自计划的备份或后台监视。它还会影响使用“读取用户邮件”模块发送的电子邮件。
 sendmail_header=邮件发送选项
@@ -677,12 +724,14 @@ sendmail_url=用于电子邮件的Webmin URL
 sendmail_url_def=默认值（$1）
 sendmail_url_custom=自定义网址
 sendmail_eurl=自定义网址缺失或无效
+
 testmail_title=发送测试电子邮件
 testmail_err=无法发送测试消息
 testmail_eto=没有输入目的地地址
 testmail_sending=正在将消息从$1发送到$2 ..
 testmail_done=..消息已发送。检查目标地址的邮箱，以确保它已实际传递。
 testmail_failed=..发送失败：$1
+
 web_title=Web服务器选项
 web_header=Webmin内置Web服务器的选项
 web_expires=客户端的静态文件缓存时间
@@ -694,6 +743,7 @@ web_expirespaths=基于URL路径的客户端缓存时间
 web_expirespath=路径正则表达式
 web_expirestime=缓存时间（以秒为单位）
 web_eexpires2=$1行中缺少或非数字的客户端缓存时间
+
 webmincron_title=Webmin预定功能
 webmincron_emodule=未安装Webmin Cron Jobs模块！
 webmincron_module=Webmin模块
@@ -717,6 +767,7 @@ webmincron_when1=具体时间
 webmincron_secs=秒
 webmincron_err=保存预定功能失败
 webmincron_einterval=间隔必须大于零秒
+
 twofactor_title=两要素认证
 twofactor_header=两因素身份验证选项
 twofactor_provider=认证提供者
@@ -755,6 +806,7 @@ twofactor_secret1=随机产生
 twofactor_secret0=使用16个字符的密钥
 twofactor_esecret=密钥长度必须恰好为16个字符，并且只能包含字母和数字
 twofactor_esession=除非基于会话的身份验证处于活动状态，否则不能使用两因素身份验证
+
 letsencrypt_title=让我们加密证书申请
 letsencrypt_err=申请证书失败
 letsencrypt_ecmds=在您的系统上找不到“让我们加密”客户端命令<tt>certbot</tt>或<tt>python</tt>命令
@@ -788,5 +840,6 @@ letsencrypt_ecsr=无法生成CSR：$1
 letsencrypt_ekeygen=无法生成私钥：$1
 letsencrypt_enative=本地的Let's Encrypt客户端（certbot）先前在此系统上使用，并且必须用于以后的所有证书请求
 letsencrypt_eacmedns=仅官方的Let's Encrypt客户端支持基于DNS的验证
+
 announce_hide=隐藏此公告
 alert_hide=隐藏警报

@@ -6,6 +6,7 @@ index_stop=Berhenti Proses QMail
 index_stopmsg=Klik butang ini untuk menghentikan proses QMail latar belakang yang bertanggungjawab untuk menghantar mel gilir. Tanpa proses ini, mel tidak akan dihantar atau dihantar ke sistem anda dengan betul.
 index_start=Mula Proses QMail
 index_startmsg=Klik butang ini untuk memulakan proses QMail latar belakang yang bertanggungjawab untuk menghantar mel gilir. Tanpa proses ini, mel tidak akan dihantar atau dihantar ke sistem anda dengan betul.
+
 opts_title=Pilihan QMail
 opts_me=Nama hos tempatan
 opts_helo=Nama hos untuk SMTP HELO
@@ -24,6 +25,7 @@ opts_etoremote=Masa tunggu sambutan keluar SMTP tidak sah
 opts_ebytes=Saiz mesej maksimum tidak sah
 opts_etimeout=Masa tamat data masuk SMTP tidak sah
 opts_elocalip=Nama hos alamat IP tempatan tidak sah
+
 aliases_title=Mail Aliases
 aliases_addr=Alamat
 aliases_to=Alias to ..
@@ -38,6 +40,7 @@ aliases_return=senarai alias
 aliases_toomany=Terdapat terlalu banyak alias mel pada sistem anda untuk dipaparkan pada halaman ini.
 aliases_go=Cari pencocokan alias:
 aliases_delete=Padam Aliases terpilih
+
 aform_type0=Tiada
 aform_type1=Alamat emel
 aform_type2=Direktori mel
@@ -52,6 +55,7 @@ aform_val=Alias to
 aform_afile=Edit ..
 aform_novirt=&lt;Semua domain&gt;
 aform_return=alias
+
 asave_err=Gagal menyimpan alias
 asave_eaddr='$1' bukan alamat yang sah
 asave_ealready=Alias untuk '$1' sudah wujud
@@ -62,13 +66,16 @@ asave_etype4='$1' bukan program yang sah atau tidak wujud
 asave_etype5=Fail autoreply '$1' tidak sah
 asave_etype4none=Tiada program yang diberikan
 asave_etype6=Fail penapis '$1' tidak sah
+
 adelete_err=Gagal memadamkan nama alias
 adelete_enone=Tiada yang dipilih
+
 locals_title=Domain Lokal
 locals_domains=Domain setempat untuk pelayan ini
 locals_desc=Qmail akan menerima untuk penghantaran ke e-mel pengguna tempatan ke domain dan nama host yang disenaraikan dalam kotak teks ke kiri. Sekiranya anda mahukan pelayan mel anda mengendalikan domain e-mel berganda, mereka semua harus disenaraikan dalam borang ini.
 locals_only=Hanya nama hos tempatan $1 
 locals_sel=Domain yang disenaraikan di bawah ..
+
 rcpts_title=Diterima Domain
 rcpts_domains=Diterima domain tempatan dan relay
 rcpts_all=Mana-mana domain
@@ -76,9 +83,11 @@ rcpts_sel=Domain yang disenaraikan di bawah ..
 rcpts_desc=Qmail akan menerima penghantaran mel atau penghantaran mel hanya kepada domain dan nama host yang disenaraikan dalam kotak teks ke kiri. Anda juga boleh memasukkan wildcards yang sepadan dengan semua host dalam domain seperti <tt>.foo.com</tt>. Jika anda mahu pelayan mel anda menyampaikan e-mel kepada pelanggan, anda mesti menerima mel dari mana-mana domain.
 rcpts_domains2=Tambahan domain tempatan dan relay
 rcpts_desc2=Jika anda mempunyai sejumlah besar domain yang diterima, yang kurang digunakan biasanya harus dimasukkan ke dalam kotak teks ini. Umumnya, 50 domain pertama anda yang dibenarkan harus dimasukkan ke dalam kotak teks atas, dan sisanya menjadi yang satu ini.
+
 bads_title=Alamat yang ditolak
 bads_addresses=Alamat e-mel ditolak
 bads_desc=QMail akan menolak mel untuk penghantaran atau penyampaian dari mana-mana alamat yang disenaraikan di dalam kotak teks ke kiri, yang mesti dimasukkan sebagai <tt>username @ domainname</tt>. Jika anda mahu menolak mel dari seluruh domain, ia harus dimasukkan sebagai <tt>@domainname</tt>.
+
 routes_title=Routing Domain
 routes_toomany=Terdapat terlalu banyak laluan domain pada sistem anda untuk dipaparkan pada halaman ini.
 routes_go=Cari laluan domain yang sepadan:
@@ -88,19 +97,24 @@ routes_direct=Hantar secara langsung
 routes_defroute=Menyampaikan semua surat keluar lain melalui:
 routes_return=laluan domain
 routes_delete=Padamkan Laluan Domain Terpilih
+
 rform_edit=Edit Laluan Domain
 rform_create=Buat Laluan Domain
 rform_from=Mel untuk hos atau domain
 rform_to=Hantar melalui pelayan SMTP
 rform_port=Port SMTP
+
 rsave_err=Gagal menyimpan laluan domain
 rsave_efrom='$1' bukan nama domain yang sah
 rsave_eto='$1' bukan pelayan SMTP yang sah
 rsave_eport='$1' bukan nombor port yang sah
+
 rdelete_err=Gagal memadamkan laluan domain
+
 percents_title=Domain Alamat %
 percents_domains=Domain yang menyokong alamat % 
 percents_desc=QMail akan menerima e-mel dengan alamat dalam format <tt>user%firstdomain@seconddomain</tt> jika <tt>seconddomain</tt> disenaraikan dalam kotak teks ke kiri. Mesej dalam format ini akan dihantar kepada <tt>user@firstdomain</tt> oleh pelayan mel ini.
+
 virts_title=Mappings Maya
 virts_toomany=Terdapat terlalu banyak pemetaan maya pada sistem anda untuk dipaparkan pada halaman ini.
 virts_go=Cari pemetaan maya yang hampir sama:
@@ -111,6 +125,7 @@ virts_none=Tidak maya
 virts_desc=Pemetaan maya digunakan oleh QMail untuk mengendalikan e-mel ke domain yang berlainan pada pelayan anda, dengan menyediakan teks ke bahagian pengguna alamat e-mel sebelum diproses selanjutnya. Anda boleh menggunakannya untuk menyediakan domain maya maya dengan membuat pemetaan maya baru untuk domain, kemudian gunakan halaman <a href='$1'>Aliases Mail</a> untuk membuat alias di dalam domain tersebut.
 virts_return=pemetaan maya
 virts_delete=Padam Muka Maya Dipilih
+
 vform_edit=Edit Pemetaan Maya
 vform_create=Buat Pemetaan Maya
 vform_from=Mel untuk alamat
@@ -121,13 +136,17 @@ vform_to=Bersedia untuk nama pengguna
 vform_none=Tiada apa-apa
 vform_prepend=Awalan yang ditentukan
 vform_auto=Awalan yang dipilih secara automatik
+
 vsave_err=Gagal menyimpan pemetaan maya
 vsave_edomain='$1' bukan domain e-mel yang sah
 vsave_euser='$1' bukan nama pengguna e-mel yang sah
 vsave_eprepend='$1' bukan awalan pemetaan yang sah
 vsave_eboth=Anda tidak boleh memilih kedua-dua 'Mana-mana alamat yang tidak sepadan dengan pemetaan maya lain' dan 'Tidak ada'
+
 vdelete_err=Gagal memadam pemetaan maya
+
 stop_err=proses penghantaran qmail tidak lagi berjalan
+
 log_stop=Berhenti proses QMail
 log_start=Memulakan proses QMail
 log_opts=Menukar pilihan QMail
@@ -158,6 +177,7 @@ log_delete_assigns=Dihapus $1 pengguna mel
 log_delmail=Dihapus $1 mesej daripada $2 
 log_movemail=Memindahkan $1 mesej dari $2 hingga $3 
 log_send=Hantar surat kepada $1 
+
 rfile_title=Edit Fail Autoreply
 rfile_desc=Gunakan kawasan teks di bawah untuk mengedit mesej autoreply dalam $1. Mesej itu mungkin mengandungi makro $SUBJECT, $FROM, $TO, $DATE dan $BODY yang akan diperluaskan apabila autoreply diaktifkan.
 rfile_desc2=Anda juga boleh menetapkan tajuk surat yang menambah atau menggantikan lalai yang digunakan dalam autoreply dengan meletakkan garis seperti: <br><tt> Dari: foo@bar.com </tt><br> <tt>Subjek: Pada hari cuti</tt> <br> di bahagian atas mesej, dipisahkan dari tubuh dengan satu baris kosong.
@@ -176,6 +196,7 @@ rfile_from=Daripada: alamat untuk balasan
 rfile_auto=Automatik (berdasarkan alamat penerima)
 rfile_efrom=Kehilangan Daripada: alamat
 rfile_fromdesc=A Dari: alamat harus selalu ditentukan jika mungkin, kerana kaedah automatik mungkin tidak boleh dipercayai.
+
 ffile_title=Edit Fail Penapis
 ffile_desc=Gunakan borang di bawah untuk menetapkan peraturan penapis dalam fail $1.
 ffile_efile=Anda tidak dibenarkan mengedit $1.
@@ -191,6 +212,7 @@ ffile_other=Jika tidak, hantar ke $1
 ffile_err=Gagal menyimpan fail penapis
 ffile_ematch=Perlawanan yang tiada
 ffile_eaction=Alamat penghantaran yang hilang
+
 queue_title=Giliran Mail
 queue_count=$1 mesej
 queue_none=Tiada mesej mel giliran untuk penghantaran
@@ -206,10 +228,12 @@ queue_all=Pilih semua
 queue_invert=Invert selection
 queue_refresh=Muatkan Gilir Mel
 queue_refreshdesc=Muat semula halaman ini untuk menunjukkan status semasa gilir mel.
+
 qview_title=Mesej Terdiri
 qview_desc=Dari fail $1 
 qview_headers=Tajuk surat
 qview_attach=Lampiran
+
 assigns_title=Tugasan Pengguna Mel
 assigns_return=tugasan pengguna mel
 assigns_toomany=Terdapat terlalu banyak pengguna mel pada sistem anda untuk dipaparkan pada halaman ini.
@@ -221,6 +245,7 @@ assigns_gid=GID
 assigns_home=Direktori rumah
 assigns_desc=Tugasan pengguna mel membolehkan anda membuat peti mel untuk pengguna yang tidak ditakrifkan dalam senarai pengguna Unix. Setiap tugasan akan menghantar mel untuk nama pengguna atau corak nama pengguna yang dipilih, seolah-olah ia dihantar ke peti mel pengguna Unix sebenar.
 assigns_delete=Padamkan Pengguna Mel Dipilih
+
 sform_edit=Edit pengguna mel
 sform_create=Buat pengguna mel
 sform_address=Alamat nama pengguna
@@ -230,15 +255,19 @@ sform_user=Pengguna Unix
 sform_uid=UID
 sform_gid=GID
 sform_home=Direktori rumah
+
 ssave_err=Gagal menyimpan pengguna mel
 ssave_eaddress=Nama pengguna alamat hilang atau tidak sah
 ssave_euser=Pengguna Unix yang hilang atau tidak sah
 ssave_euid=UID tiada atau tidak sah
 ssave_egid=GID hilang atau tidak sah
 ssave_ehome=Direktori rumah hilang atau tidak sah
+
 sdelete_err=Gagal memadamkan pengguna mel
+
 delete_egone=Mesej yang beratur tidak lagi wujud
 delete_ebogus=Nama fail beratur tidak sah
+
 boxes_title=Peti mel pengguna
 boxes_user=Pengguna
 boxes_size=Saiz peti mel
@@ -248,6 +277,7 @@ boxes_sent=Menghantar surat
 boxes_ecannot=Anda tidak dibenarkan membaca e-mel
 boxes_toomany=Terdapat terlalu banyak pengguna pada sistem anda untuk menyenaraikan semua peti mel mereka.
 boxes_go=Lihat mel untuk pengguna:
+
 mail_title=E-mel Pengguna
 mail_from=Dari
 mail_date=Tarikh
@@ -286,6 +316,7 @@ mail_forward=Teruskan
 mail_rfc=Dari baris
 mail_move=Berpindah ke:
 mail_eexists=Mesej tidak lagi wujud!
+
 view_title=Baca E-mel
 view_desc=Mesej $1 dalam $2 
 view_desc2=Mesej $1 untuk pengguna $2 
@@ -309,6 +340,7 @@ view_mark1=Baca
 view_mark2=Khas
 view_return=e-mel asal
 view_sub=Melampirkan E-mel
+
 compose_title=Tulis E-mel
 reply_title=Balas kepada E-mel
 forward_title=Hantar E-mel
@@ -319,6 +351,7 @@ reply_mailforward=Mesej yang dihantar
 reply_attach2=Lampiran Pelanggan dan pelayan
 reply_send=Hantar surat
 reply_ecannot=Anda tidak dibenarkan menghantar e-mel sebagai pengguna ini
+
 send_err=Gagal menghantar mel
 send_eto=Hilang Untuk alamat
 send_efrom=Kehilangan Daripada alamat
@@ -331,6 +364,7 @@ send_eattach=Lampiran tidak boleh melebihi saiz $1 kB.
 send_eperms=Pengguna $1 tidak dapat membaca $2 
 send_eperms2=Anda tidak dibenarkan menghantar fail $1 
 send_epath=Sendmail executable $1 tidak wujud.
+
 delete_title=Padam Mail
 delete_rusure=Adakah anda pasti mahu memadamkan mesej $1 terpilih dari $2 ? Ini mungkin mengambil sedikit masa untuk fail mel yang besar. Sehingga penghapusan selesai, tiada tindakan lain yang perlu dilakukan.
 delete_rusure2=Adakah anda pasti mahu memadamkan mesej ini daripada $1 ? Ini mungkin mengambil sedikit masa untuk fail mel yang besar. Sehingga penghapusan selesai, tiada tindakan lain yang perlu dilakukan.
@@ -339,6 +373,7 @@ delete_ecannot=Anda kini dibenarkan untuk memadamkan mel dari pengguna ini
 delete_enone=Tiada mel yang dipilih untuk dipadamkan
 delete_emnone=Tiada mel yang dipilih untuk ditandakan
 delete_nobutton=Tiada butang diklik
+
 search_title=Keputusan Carian
 search_ecannot=Anda tidak dibenarkan untuk mencari e-mel pengguna ini
 search_ematch=Anda mesti memasukkan teks untuk menandingi.
@@ -346,6 +381,7 @@ search_efield=Anda mesti memilih jenis carian.
 search_none=Tiada mesej dijumpai.
 search_results2=$1 mel mesej yang sepadan $2 ..
 search_results3=$1 mesej mel tidak sepadan $2 ..
+
 match_from=Daripada: perlawanan
 match_subject=Subjek: perlawanan
 match_to=Kepada: perlawanan
@@ -363,6 +399,7 @@ match_!date=Tarikh: tidak sepadan
 match_!body=Badan tidak sepadan
 match_!size=Saiz kurang daripada
 match_!headers=Tajuk tidak sepadan
+
 delq_titles=Memadam Mesej
 delq_rusure=Adakah anda pasti mahu memadamkan mesej $1 mesej yang terpilih?
 delq_confirm=Padam Mesej

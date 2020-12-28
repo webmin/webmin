@@ -10,6 +10,7 @@ index_range=Hasilkan laporan untuk julat tarikh
 index_view=Lihat Laporan Generasi
 index_viewdesc=Lihat laporan yang dihasilkan paling baru dalam direktori $1.
 index_return=indeks modul
+
 log_title=Sumber Log dan Laporan Destinasi
 log_header=Sumber fail log Squid dan menghasilkan pilihan laporan
 log_access_log=Fail log sotong sumber
@@ -30,6 +31,7 @@ log_elastlog=Tiada atau tidak nombor
 log_eemail=Alamat e-mel yang hilang atau tidak sah
 log_emailx=Program e-mel yang hilang atau tidak wujud
 log_squidguard_log_path=Fail log SquidGuard
+
 style_title=Laporkan Gaya
 style_header=Gaya laporan HTML dan pilihan warna
 style_title2=Tajuk laporan
@@ -54,6 +56,7 @@ style_efont=Nama fon yang hilang atau tidak sah
 style_esize=Lebar dan ketinggian imej yang hilang atau tidak sah
 style_language=Bahasa laporan
 style_charset=Laporkan set aksara
+
 report_title=Laporkan Laporan
 report_header=Laporkan kandungan dan pilihan generasi
 report_resolve_ip=Selesaikan alamat IP?
@@ -134,6 +137,7 @@ report_echar=Ruang tidak dibenarkan
 report_estring=Teks penggantian atau tidak sah
 report_eselect=Tiada apa yang dipilih
 report_eenter=Tiada apa-apa yang dimasukkan
+
 sched_title=Penjanaan Laporan Berjadual
 sched_header=Pilihan pelaporan berjadual
 sched_sched=Laporan berjadual didayakan?
@@ -148,9 +152,11 @@ sched_rsel=Mereka dari $1 hingga $2 hari yang lalu
 sched_err=Gagal menyimpan penerbitan laporan terjadual
 sched_erfrom=Nombor permulaan yang hilang atau tidak sah hari yang lalu
 sched_erto=Nombor akhir yang hilang atau tidak sah yang lalu
+
 view_title=Laporan Sarg
 view_efile=Nama fail yang tidak sah!
 view_eopen=Gagal membuka fail laporan
+
 gen_title=Hasilkan Laporan
 gen_header=Sekarang menghasilkan laporan Sarg dari fail log Squid $1 dan semua versi yang diputar ..
 gen_done=.. selesai
@@ -160,6 +166,7 @@ gen_view=Lihat laporan yang lengkap.
 gen_err=Gagal menghasilkan laporan
 gen_efrom=Hilang atau tidak sah dari hari ke hari
 gen_eto=Hilang atau tidak sah ke hari
+
 webmin_log_log=Sumber log dikemaskini dan laporkan pilihan destinasi
 webmin_log_report=Pilihan laporan yang dikemas kini
 webmin_log_style=Pilihan gaya laporan yang dikemas kini

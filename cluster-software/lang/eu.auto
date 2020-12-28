@@ -21,6 +21,7 @@ index_thost=hostname
 index_tdesc=deskribapena
 index_tcount=paketeak
 index_ttype=OS motakoa
+
 install_err=Ezin izan da paketea instalatu
 install_elocal=Ez da tokiko fitxategirik eman
 install_elocal2='$1' ez da existitzen
@@ -37,6 +38,7 @@ install_ok=Instalatu
 install_erus=Zerbitzari honek eguneratze sistema desberdin bat erabiltzen du zerbitzari nagusiarekin ($1 versus $2)
 install_eupdate=Errore bat gertatu da zehaztutako eguneratzeak instalatzean
 install_ealready=$1 bertsioa dagoeneko instalatuta dago
+
 add_title=Gehitu zerbitzariak
 add_msg=$1 gehitzen ..
 add_gmsg=Zerbitzariak gehitzen $1 taldean.
@@ -45,6 +47,7 @@ add_gerr=Ezin izan da taldea gehitzean
 add_echeck=$1 zerbitzariak ez du software paketeen modulurik
 add_esystem=$1 zerbitzaria ez da makina honen pakete sistema bera erabiltzen
 add_ok=$1 gehitu da $2 paketeekin.
+
 search_title=Paketeen bilaketa
 search_nomatch=Ez da paketerik $1 ekin bat
 search_none=Bat ere ez
@@ -56,6 +59,7 @@ search_return=bilaketaren emaitzak
 search_delete=Desinstalatu hautatutako paketeak honetatik:
 search_selall=Hautatu guztiak
 search_invert=Alderantzizko hautapena
+
 host_title=Kudeatutako zerbitzaria
 host_header=Softwarearen kudeatutako zerbitzariaren xehetasunak
 host_name=Ostalariaren izena
@@ -70,6 +74,7 @@ host_count=Paketeak instalatu dira
 host_os=OS Webmin-etik
 host_return=zerbitzariaren xehetasunak
 host_system=Pakete sistema
+
 edit_title=Editatu paketea
 edit_details=Paketearen xehetasunak $1 etik aurrera
 edit_desc=deskribapena
@@ -88,6 +93,7 @@ edit_all=&lt;ostalari guztiak&gt;
 edit_donthave=&lt;ez duten ostalariak&gt;
 edit_have=&lt;duten ostalariak&gt;
 edit_group=$1 eko kideak
+
 list_title=Pakete-fitxategiak
 list_files=$1 paketearen fitxategiak $2 an
 list_path=Path
@@ -97,6 +103,7 @@ list_type=Mota
 list_size=Tamaina
 list_status=Egoera
 list_ok=Ados
+
 refresh_title=Eguneratu paketeen zerrendak
 refresh_header=Zerbitzari guztietatik paketeen zerrendak berriro eskatzea ..
 refresh_header4=$2 ko kideen pakete zerrendak berriro eskatzea.
@@ -108,6 +115,7 @@ refresh_4=$1 freskatu (aldaketarik gabe)
 refresh_done=.. egin
 refresh_del=$1 kendu da zerbitzariaren zerrendatik
 refresh_failed=Ezin izan da $1 : $2 freskatu
+
 delete_err=Ezin izan da $1 paketea ezabatu
 delete_epack=$1 paketea ez da existitzen
 delete_title=Paketea ezabatu
@@ -120,6 +128,7 @@ delete_error=Ezin izan da $1 : $2 ezabatu
 delete_success=$1 etik ezabatu da
 delete_done=.. egin
 delete_header=$1 paketea ezabatzen ..
+
 do_title=Instalatu paketea
 do_header=$1 ostalari guztietan instalatzen ..
 do_header3=$1 instalatzea oraindik ez daukaten ostalarietan ..
@@ -140,6 +149,7 @@ do_arch=Arkitektura
 do_inst=Instalatutako
 do_none=Bat ere ez
 do_edeleted=Instalatu fitxategia ezabatu da - itzuli moduluaren indizera eta saiatu berriro.
+
 compare_title=Konparatu Paketeak
 compare_desc=Inprimaki hau bi zerbitzari edo gehiagotan instalatutako paketeak konparatzeko erabil daiteke eta eskuragarri dauden bertsio edo paketeen arteko desadostasunak aurkitzeko.
 compare_hosts=Konparatzeko zerbitzariak
@@ -154,6 +164,7 @@ compare_showall=Paketeak erakusteko
 compare_showall1=guztiak
 compare_showall0=Desorekak bakarrik
 compare_got=Ados
+
 deletes_err=Ezin izan da paketeak ezabatu
 deletes_enone=Ez da paketerik hautatu
 deletes_title=Paketeak ezabatu

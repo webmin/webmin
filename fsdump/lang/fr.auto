@@ -23,6 +23,7 @@ index_follow=Après $1
 index_forcetar=Au format TAR
 index_delete=Supprimer les sauvegardes sélectionnées
 index_nostrftime=Avertissement - certains travaux de sauvegarde utilisent % dans leurs noms de fichiers, mais la substitution strftime n'est pas activée sur la page Configuration du module.
+
 dump_dir=Répertoire à sauvegarder
 dump_dirs=Répertoires à sauvegarder
 dump_fs=Système de fichiers
@@ -108,6 +109,7 @@ dump_remount=Remonter avec l'option <tt>noatime</tt> pendant la sauvegarde?
 dump_eftpupdate=L'ajout de fichiers à une archive existante n'est pas possible lors de l'utilisation de FTP.
 dump_eleveldir=Seules les sauvegardes de niveau 0 sont autorisées pour les répertoires qui ne sont pas des points de montage du système de fichiers
 dump_eupdatedir=Le fichier <tt>/etc/dumpdates</tt> ne peut être mis à jour que pour les répertoires qui sont des points de montage du système de fichiers
+
 edit_err=Impossible de créer la sauvegarde
 edit_edir=Répertoire de sauvegarde manquant
 edit_efs=Les systèmes de fichiers de type $1 ne peuvent pas être sauvegardés par ce module
@@ -132,9 +134,11 @@ edit_tolevel=$1 à $2 (niveau $3)
 edit_special=Calendrier de sauvegarde
 edit_when=Quand sauvegarder
 edit_clone=Cloner
+
 save_err=Impossible d'enregistrer la sauvegarde
 save_edir=Répertoire de sauvegarde manquant ou non valide
 save_efs=Le répertoire de sauvegarde ne peut pas passer à un autre système de fichiers
+
 backup_title=Sauvegarder maintenant
 backup_desc=Exécution de la sauvegarde de $1 vers $2 ..
 backup_reverify=.. Achevée. Vérification de la sauvegarde en cours ..
@@ -147,6 +151,7 @@ backup_notape=.. la sauvegarde a dépassé la capacité d'une seule bande. Le ch
 backup_egone=La sauvegarde n'existe pas!
 backup_bg=Démarrage du processus de sauvegarde en arrière-plan. Vous pouvez suivre sa progression dans la section <b>Exécution des tâches de sauvegarde</b> sur la page principale du module, et vous serez informé de son état final par e-mail.
 backup_ecannot=Vous n'êtes pas autorisé à sauvegarder ce répertoire
+
 restore_title=Restaurer la sauvegarde
 restore_err=Impossible de restaurer la sauvegarde
 restore_ecommand=La commande $1 nécessaire pour restaurer les sauvegardes du système de fichiers $2 est introuvable sur votre système. Il n'est peut-être pas actuellement installé.
@@ -190,6 +195,7 @@ restore_gzip=Décompresser l'archive?
 restore_keep=N'écrasez pas les fichiers?
 restore_emulti=Les restaurations multi-fichiers ne peuvent pas être effectuées à partir d'un périphérique à bande
 restore_emulti2=Les restaurations multi-fichiers ne peuvent pas être effectuées à partir d'un serveur distant
+
 log_create=Configuration de sauvegarde créée pour $1 
 log_modify=Configuration de sauvegarde modifiée pour $1 
 log_delete=Configuration de sauvegarde supprimée pour $1 
@@ -197,13 +203,16 @@ log_backup=Sauvegardé de $1 à $2
 log_bgbackup=Démarrage de la sauvegarde de $1 vers $2 
 log_restore=Sauvegarde restaurée à partir de $1 
 log_kill=Sauvegarde interrompue pour $1 
+
 kill_err=Impossible de terminer la sauvegarde
 kill_egone=Ne fonctionne plus!
 kill_ecannot=Vous n'êtes pas autorisé à mettre fin à cette sauvegarde
+
 newtape_err=Impossible de signaler une nouvelle bande
 newtape_egone=La sauvegarde n'est plus en cours d'exécution!
 newtape_estatus=La sauvegarde n'attend plus une nouvelle bande
 newtape_ecannot=Vous n'êtes pas autorisé à gérer cette sauvegarde
+
 acl_edit=Peut créer et modifier des sauvegardes?
 acl_restore=Peut restaurer des sauvegardes?
 acl_cmds=Peut modifier les commandes avant et après?
@@ -211,8 +220,10 @@ acl_extra=Peut modifier des paramètres de ligne de commande supplémentaires?
 acl_dirs=Répertoires autorisés pour les sauvegardes
 acl_all=Tous les répertoires
 acl_list=Seulement listé ..
+
 delete_err=Impossible de supprimer les sauvegardes
 delete_enone=Aucune sélection
+
 email_already=La sauvegarde est déjà en cours d'exécution avec le PID $1.
 email_ebefore=La commande avant la sauvegarde a échoué!
 email_verify=Vérification de la sauvegarde ..
@@ -220,5 +231,6 @@ email_eafter=La commande après sauvegarde a échoué!
 email_subject=Sauvegarde de $1 sur $2 
 email_ok=Sauvegarde réussie
 email_failed=La sauvegarde a échoué!
+
 newtape_subject=Changement de bande $1 pour la sauvegarde de $2 sur $3 
 newtape_body=La sauvegarde de $2 sur $3 a atteint la quantité maximale de données autorisée sur la bande $1. Vous devrez charger une nouvelle bande et cliquer sur le lien «Tape Loaded» dans le module de sauvegarde du système de fichiers de Webmin pour que la sauvegarde se poursuive.

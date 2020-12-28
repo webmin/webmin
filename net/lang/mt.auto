@@ -7,6 +7,7 @@ index_delete2=Ħassar l-Interfaces Magħżula
 index_delete3=Ħassar u Applika Interfaces Magħżula
 index_apply2=Applika Interfaces Magħżula
 index_vmin=Virtualmin
+
 ifcs_title=Interfaces tan-Netwerk
 ifcs_now=Attiv Issa
 ifcs_activedesc=L-interfaces elenkati f’din it-tabella bħalissa huma attivi fis-sistema. F'ħafna każijiet, għandek teditjahom taħt it-tab <b>Attivat fil-Boot</b>.
@@ -55,6 +56,7 @@ ifcs_linkyes=Konnessi
 ifcs_linkno=Imqabbad
 ifcs_speed=Veloċità tal-interface
 ifcs_duplex=, $1 duplex
+
 aifc_create=Oħloq Interfaċċa Attiva
 aifc_edit=Editja Interfaċċa Attiva
 aifc_desc1=Parametri Attivi tal-Interfaċċa
@@ -79,6 +81,7 @@ aifc_eaddress6=L-indirizz IPv6 fir-ringiela $1 mhux validu
 aifc_enetmask6=Netmask tal-IPv6 fir-ringiela $1 għandu jkun numru sħiħ bejn 1 u 128
 aifc_eclash6=L-indirizz IPv6 fir-ringiela $1 diġà qed jintuża mill-interface $2 
 aifc_eaddresses6=L-ebda indirizzi IPv6 ma daħlu
+
 bifc_create=Oħloq Bootup Interface
 bifc_act=Attiva mill-ibbutjar?
 bifc_edit=Editja l-Interfaċċa tal-Bootup
@@ -110,6 +113,7 @@ bifc_bridgestp=Protokoll Tree Spanning
 bifc_bridgefd=Dewmien 'il quddiem
 bifc_bridgewait=Dewmien biex tkun disponibbli
 bifc_ebond=L-interface tal-bonds għandu jkun numru
+
 bonding_add=Żid Interfaċċa tal-irbit ġdida.
 bonding_create=Oħloq Interfaċċa tat-Tgħaqqid
 bonding_teamparts=Imsieħba fl-għaqda
@@ -121,11 +125,14 @@ bonding_miimon=Intervall Mii-Monitoring
 bonding_miimondesc=(Ħalli vojt biex tiddiżattiva l-monitoraġġ tal-link)
 bonding_updelay=Updelay
 bonding_downdelay=Downdelay
+
 vlan_add=Żid Vlan Tagged Interface
 vlan_physical=Apparat Fiżiku
 vlan_id=ID Vlan
 vlan_create=Oħloq VLAN Interface
+
 bridge_create=Oħloq Interfaċċa Bridge
+
 routes_title=Rotot u Passi
 routes_boot=Konfigurazzjoni tar-rotta attivata fi <i>boot time</i>
 routes_now=Konfigurazzjoni tar-rotta attivata issa
@@ -194,6 +201,7 @@ routes_tabboot=Konfigurazzjoni tal-ħin tal-ibbutjar
 routes_tabactive=Konfigurazzjoni attiva
 routes_descactive=Din it-taqsima telenka r-rotot li s-sistema attwalment ikkonfigurat, u tippermettilek iżżid jew tneħħi rotot attivi fuq xi sistemi. Oqgħod attent billi tagħmel dan, peress li bidliet mhux korretti jistgħu jnaqqsu s-sistema li tħaddem Webmin mill-bqija tan-netwerk.
 routes_descboot=Din it-taqsima tippermettilek li tikkonfigura r-rotot li huma attivati meta s-sistema tibda, jew meta s-settings tan-netwerk jerġgħu jiġu applikati għal kollox.
+
 dns_title=Name Hosts u DNS Client
 dns_options=Għażliet tal-Klijent DNS
 dns_hostname=L-isem tal-host
@@ -211,6 +219,7 @@ dns_edomain="$1" mhux isem ta 'dominju validu
 dns_esearch=L-ebda dominju għal tfittxija ma ngħata
 dns_hoststoo=Aġġorna l-isem tal-host fl-indirizzi tal-host jekk inbidlet?
 dns_dhcp=Hostname huwa stabbilit minn server DHCP?
+
 hosts_title=Indirizzi tal-Ospitanti
 hosts_active=Abilitata?
 hosts_ip=Indirizz IP
@@ -222,6 +231,7 @@ hosts_detail=Ospitanti u Indirizzi
 hosts_return=lista ta 'indirizzi ospitanti
 hosts_ecannot=M'għandekx permess teditja l-indirizzi tal-ospitanti
 hosts_delete=Ħassar l-Indirizzi tal-Ospitanti Magħżula
+
 ipnodes_title=Indirizzi ta 'Ospitanti IPv6
 ipnodes_ip=Indirizz IPv6
 ipnodes_host=Ismijiet tal-host
@@ -233,6 +243,7 @@ ipnodes_return=Lista ta 'indirizzi ospitanti IPv6
 ipnodes_ecannot=M'għandekx permess teditja l-indirizzi tal-host IPv6
 ipnodes_none=L-ebda indirizzi ospitanti IPv6 ma ġew definiti s'issa.
 ipnodes_delete=Ħassar l-Indirizzi tal-Ospitanti magħżula IPv6
+
 log_create_host=Indirizz tal-ospitanti maħluq $1 
 log_delete_host=Indirett imħassar $1 
 log_modify_host=Indirizz tal-host modifikat $1 
@@ -256,6 +267,7 @@ log_apply_bfics=Attivat $1 interface għall-ħin tal-bidu
 log_create_route=Ir-rotta attiva maħluqa għal $1 
 log_create_defroute=Inħolqot rotta default attiv
 log_delete_routes=Rotot imħassra $1 attivi
+
 acl_ifcs=Tista 'teditja l-interfejs tan-netwerk?
 acl_routes=Tista 'teditja r-rotta u l-gateways?
 acl_dns=Tista 'teditja l-issettjar tal-klijent DNS?
@@ -273,6 +285,7 @@ acl_virt=Tista 'żżid interfaces virtwali?
 acl_delete=Tista 'tħassar l-interfaces?
 acl_hide=Aħbi interfejs li ma jistgħux jeditjaw?
 acl_sysinfo=Uri l-interfejs tan-netwerk disponibbli fid-Dashboard
+
 interfaces_title1=Agħżel Interfaces. ..
 interfaces_all=L-Interfaces kollha. ..
 interfaces_sel=Interfaces magħżula
@@ -280,7 +293,9 @@ interfaces_ok=kollox sew
 interfaces_cancel=Ikkanċella
 interfaces_clear=Ċari
 interfaces_title2=Agħżel Utent. ..
+
 apply_ecannot=M'għandekx permess tapplika l-konfigurazzjoni
+
 mod_egone=L-interfaċċa m'għadhiex attiva!
 mod_title=Interfaċċa Attiva
 mod_desc=L-interface $1 qed jintuża għal $2, u għalhekk ma jistax jiġi ġestit bl-użu ta 'dan il-modulu.
@@ -292,6 +307,7 @@ mod_pptpc=il-konnessjoni PPTP $1
 mod_zones=interface virtwali għaż-żona <tt>$1</tt>
 mod_virtualmin=is-server Virtualmin <tt>$1</tt>
 mod_reseller=il-bejjiegħ mill-ġdid ta 'Virtualmin <tt>$1</tt>
+
 range_edit=Editja l-Firxa tal-Indirizz
 range_create=Oħloq Firxa ta 'Indirizz
 range_header=L-għażliet tal-interface tal-firxa tal-indirizzi
@@ -307,13 +323,17 @@ range_eend=Indirizz IP li jispiċċa nieqes jew invalidu
 range_enum=L-ewwel numru ta 'interface virtwali nieqes jew mhux numeriku
 range_eclass=L-indirizzi tal-bidu u tat-tmiem għandhom ikunu fl-istess netwerk tal-klassi C
 range_ebefore=L-indirizz finali għandu jkun ogħla mill-indirizz tal-bidu
+
 chooser_any=&lt;Kwalunkwe&gt;
 chooser_other=Oħrajn ..
+
 dafics_err=Ma rnexxielux jiddeattiva l-interfejs
 daifcs_enone=L-ebda magħżul
 daifcs_egone=L-interface m'għadux jeżisti!
+
 dbifcs_err=Naqset milli tħassar l-interfejs
 dbifcs_err2=Ma rnexxielux jattiva l-interfaces
+
 hdelete_err=Ma rnexxielhiex tħassar l-indirizzi tal-host
 hdelete_enone=L-ebda magħżul
 idelete_err=Naqset milli tħassar l-indirizzi tal-host IPv6

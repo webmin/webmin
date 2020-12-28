@@ -5,6 +5,7 @@ index_delete=Silme seçildi
 index_joingroup=Gruba ekle:
 index_eulist=Kullanıcılar listelenemedi: $1 
 index_eglist=Gruplar listelenemedi: $1 
+
 edit_title3=Güvenli Webmin Kullanıcısı Oluşturun
 edit_readonly=Bu Webmin kullanıcısı $1 modülü tarafından yönetildiği için düzenlenmemelidir. Bu uyarıyı atlamak ve kullanıcıyı yine de düzenlemek için <a href='$2'>burayı tıklayın</a> - ancak manuel değişikliklerin üzerine yazılabileceğini unutmayın!
 edit_cloneof=Webmin kullanıcısını kopyalama
@@ -51,6 +52,7 @@ edit_safe=Ayrıcalık seviyesi
 edit_safe0=kısıtlanmamış
 edit_safe1=Yalnızca güvenli modüller
 edit_unsafe=Kısıtlamasız olarak sıfırla
+
 save_eunixname='$1' kullanıcı adı bir Unix kullanıcısı değil ve bu nedenle güvenli modda kullanılamıyor
 save_eoverlay=Bir tema yerleştirilmedikçe tema yer paylaşımı seçilemez
 save_epass=Şifre geçerli değil: $1 
@@ -60,13 +62,18 @@ save_edays=Seçime izin verilecek gün yok
 save_ehours=İzin vermek için eksik veya geçersiz zamanlar
 save_ehours2=İzin vermek için başlangıç zamanı bitmeden olmalıdır
 save_etemp=<a href='$1'>kullanıcılardan yeni şifreler girmelerini istemediklerinde</a> bir sonraki girişte şifre değişikliğini zorlama seçeneği kullanılamaz
+
 delete_eanonuser=Bu kullanıcı anonim modül erişimi için kullanılıyor
+
 cert_etempdir=Geçersiz sertifika dosyası
+
 acl_rbac=RBAC'den erişim kontrolü ayarları alınıyor mu?
 acl_rbacyes=Evet (aşağıdaki ayarları geçersiz kılar)
+
 acl_times=İzin verilen giriş zamanlarını değiştirebilir mi?
 acl_pass=Şifre kısıtlamalarını değiştirebilir mi?
 acl_sql=Kullanıcı ve grup veritabanını yapılandırabilir mi?
+
 log_delete_users=$1 Webmin kullanıcıları silindi
 log_delete_groups=$1 Webmin grupları silindi
 log_joingroup=$2 grubuna $1 Webmin kullanıcıları eklendi
@@ -76,16 +83,21 @@ log_sync=Unix kullanıcı senkronizasyonu değiştirildi
 log_sql=Değişen kullanıcı ve grup veritabanı
 log_twofactor=İki faktörlü $2 ile kayıtlı $1 kullanıcısı
 log_onefactor=İki faktörlü kimlik doğrulama için kaydı iptal edilen $1 kullanıcısı
+
 gedit_members=Üye kullanıcılar ve gruplar
 gedit_desc=Grup açıklaması
 gedit_egone=Seçilen grup artık mevcut değil!
+
 gsave_edesc=Geçersiz açıklama -: karakterine izin verilmiyor
+
 convert_sync2=Gelecekte şifre Unix kullanıcısıyla senkronize edilsin mi?
 convert_user=Unix kullanıcısı
 convert_action=Eylem alındı
 convert_done= $1 kullanıcılar dönüştürüldü, $2 geçersiz, $3 zaten var, $4 hariç tutulur.
 convert_users=Dönüştürülecek kullanıcılar
+
 sync_when=Ne zaman senkronize edilir
+
 unix_err=Unix kimlik doğrulaması kaydedilemedi
 unix_sel=Aşağıda listelenen Unix kullanıcılarının oturum açmasına izin ver..
 unix_mode=İzin vermek
@@ -104,6 +116,7 @@ unix_esudo=$1 komutu yüklü değil
 unix_esudomod=<tt>sudo</tt> kimlik doğrulaması için gerekli olmayan $1 Perl modülü kurulu değil
 unix_header=Unix kullanıcı kimlik doğrulama ayarları
 unix_utable=İzin verilen Unix kullanıcıları
+
 sessions_host=IP adresi
 sessions_actions=Hareketler..
 sessions_logouts=Oturumu kapatılmış oturumları da göster..
@@ -112,13 +125,16 @@ sessions_this=Bu giriş
 sessions_in=Giriş
 sessions_out=Çıkış yapıldı
 sessions_kill=Bağlantıyı kes..
+
 logins_title=Son Webmin girişleri
+
 rbac_title=RBAC Kurulumu
 rbac_desc=Webmin'in RBAC entegrasyonu, kullanıcı modülünün ve ACL izinlerinin Webmin'in kendi yapılandırma dosyalarından ziyade bir RBAC (Rol Tabanlı Erişim Kontrolü) veritabanından belirlenmesi için bir yol sağlar. RBAC desteği etkinleştirildikten sonra, <b>RBAC tüm modülleri ve ACL'leri</b> seçeneğini belirleyen herhangi bir kullanıcının yetenekleri, Webmin'in kendi erişim kontrol ayarları yerine RBAC tarafından belirlenir.
 rbac_esolaris=RBAC şu anda yalnızca Solaris'te desteklenmektedir ve bu nedenle bu $1 sisteminde kullanılamaz.
 rbac_eperl=RBAC entegrasyonu için gereken $1 Perl modülü kurulu değil. Şimdi yüklemek için <a href='$2'>burayı tıklayın</a>.
 rbac_ecpan=RBAC entegrasyonu için gerekli $1 modülünü kurmak için Webmin'in Perl Modülleri sayfasına erişiminiz yok.
 rbac_ok=RBAC entegrasyonu bu sistemde mevcuttur ve Webmin Kullanıcısını Düzenle sayfasında her kullanıcı için etkinleştirilebilir.
+
 udeletes_err=Kullanıcılar silinemedi
 udeletes_jerr=Gruba kullanıcı eklenemedi
 udeletes_enone=Hiçbiri seçilmedi
@@ -127,11 +143,13 @@ udeletes_rusure=Seçilen $1 kullanıcıları silmek istediğinizden emin misiniz
 udeletes_users=Seçilen kullanıcılar: $1 
 udeletes_ok=Kullanıcıları Sil
 udeletes_ereadonly=Seçilen kullanıcılardan biri düzenlenemez olarak işaretlendi
+
 gdeletes_err=Gruplar silinemedi
 gdeletes_title=Grupları Sil
 gdeletes_rusure=Seçilen $1 gruplarını ve içerdikleri $2 kullanıcıları silmek istediğinizden emin misiniz? Tüm erişim kontrolü ayarları ve kullanıcı bilgileri kaybolacaktır.
 gdeletes_users=Seçilen gruplar: $1 
 gdeletes_ok=Grupları Sil
+
 pass_title=Şifre Kısıtlamaları
 pass_ecannot=Şifre kısıtlamalarını düzenleme izniniz yok
 pass_header=Webmin şifre uygulama seçenekleri
@@ -154,6 +172,7 @@ pass_eminsize=Eksik veya sayısal olmayan minimum şifre uzunluğu
 pass_emaxdays=Değiştirmeden önce eksik veya sayısal olmayan gün sayısı
 pass_elockdays=Hesabın kilitlenmesinden önceki gün sayısı veya sayısal olmayan sayı
 pass_eoldblock=Reddedilecek eksik veya sayısal olmayan eski şifre sayısı
+
 cpass_minsize=En az $1 harf uzunluğunda olmalı
 cpass_notre=İzin verilmeyen bir desenle eşleşir
 cpass_re=Gerekli bir desenle eşleşmiyor
@@ -161,6 +180,7 @@ cpass_name=Kullanıcı adını içerir
 cpass_dict=Sözlük kelimesi
 cpass_spellcmd=Sözlük kelimelerini kontrol etmek için gereken $1 veya $2 komutları yüklü değildir
 cpass_old=Eski şifreler tekrar kullanılamaz
+
 sql_title=Kullanıcı ve Grup Veritabanı
 sql_ecannot=Kullanıcı ve grup veritabanını yapılandırma izniniz yok
 sql_header=Kullanıcılar ve gruplar için veritabanı arka uç seçenekleri
@@ -203,21 +223,25 @@ sql_dnerr=Kullanıcı ve grup veritabanı ayarları geçerli, ancak Webmin için
 sql_dnerr2=Otomatik olarak oluşturulması için aşağıdaki <b>DN Oluştur</b> düğmesini tıklayın veya LDAP sunucunuza manuel olarak ekleyin.
 sql_makedn=DN oluştur
 sql_schema=LDAP Şemasını İndirin
+
 make_title=Kullanıcı ve Grup Tabloları Oluşturma
 make_err=Kullanıcı ve grup tabloları oluşturulamadı
 make_exec=SQL $1 yürütülüyor.
 make_failed=.. oluşturma başarısız oldu: $1 
 make_done=.. bitti
 make_still=Tablo oluşturulduktan sonra bile bazı sorunlar bulundu: $1 
+
 makedn_title=LDAP DN oluştur
 makedn_eoc=Yapısal nesne sınıfı bulunamadı!
 makedn_exec=Üst DN $1 oluşturuluyor..
 makedn_failed=.. oluşturma başarısız oldu: $1 
 makedn_done=.. bitti
 makedn_still=DN oluşturulduktan sonra bile bazı sorunlar bulundu: $1 
+
 schema_title=LDAP Şemasını İndirin
 schema_desc=Webmin'in kullanıcıları ve grupları depolamak için bir LDAP sunucusunu kullanabilmesi için önce aşağıdaki şemayı kullanacak şekilde yapılandırılması gerekir. Bu genellikle <tt>/etc/ldap/schema</tt> veya <tt>/etc/openldap/schema</tt> içindeki şema tanımının <tt>webmin.schema</tt> olarak kaydedilmesiyle yapılabilir, daha sonra sunucuyu bu şema dosyasını yükleyecek şekilde yapılandırın.
 schema_download=Şema dosyasını indir: <a href=$1>$1</a>
+
 twofactor_err=İki faktörlü kimlik doğrulaması ayarlanamadı
 twofactor_euser=Webmin kullanıcınız bulunamadı!
 twofactor_title=İki Faktörlü Kimlik Doğrulama

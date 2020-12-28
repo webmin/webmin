@@ -42,6 +42,7 @@ index_dscsi=SCSI apparaat $1 controller $2
 index_draid=RAID niveau $1
 index_dparts=Partities
 index_none2=Er zijn geen harddisken gevonden op uw systeem.
+
 bytes=bytes
 megabytes=megabytes
 extended=Uitgebreide
@@ -63,6 +64,7 @@ select_smart=Compaq Smart Array $1 schijf $2
 select_smartpart=Compaq Smart Array $1 schijf $2 partitie $3
 select_promise=Promise RAID schijf $1
 select_ppart=Promise RAID schijf $1 partitie $2
+
 edit_title=Bewerk Partitie
 create_title=Maak Partitie
 edit_ecannot=U bent niet bevoegd deze harddisk te bewerken
@@ -105,6 +107,7 @@ edit_newmount2=Mount Partitie
 edit_mountas=als
 edit_mountmsg=Mount deze partitie aan een nieuwe directory op uw systeem, zodat het gebruikt kan worden om data in op te slaan. Een filesysteem moet al gemaakt zijn op de partitie.
 edit_mountmsg2=Mount deze partitie als virtueel geheugen op uw systeem, om de hoeveelheid geheugen te vergroten.
+
 mkfs_title=Nieuw Filesysteem
 mkfs_ecannot=U bent niet bevoegd om een nieuw filesysteem te maken op deze harddisk.
 mkfs_desc1=Indien u klikt op de knop onderaan dit formulier zal er een nieuw $1 filesysteem gemaakt worden op apparaat $2. Alle data op deze partitie zal permanent gewist worden.
@@ -115,6 +118,7 @@ mkfs_err=Mislukt om filesysteem te maken
 mkfs_exec=Uitvoeren opdracht $1 ..
 mkfs_failed=.. opdracht mislukt!
 mkfs_ok=.. opdracht voltooid.
+
 fsck_title=Repareer Filesysteem
 fsck_ecannot=U bent niet bevoegd om fsck op deze harddisk uit te voeren
 fsck_desc1=Als u klikt op de <tt>Repareer Filesysteem</tt> knop zal er een poging gedaan worden op het beschadigde $1 filesysteem op $2 te mounten op $3 en te repareren. Als er niets beschadigt is zullen er geen veranderingen gemaakt worden.
@@ -127,6 +131,7 @@ fsck_err3=Fouten gevonden en gecorrigeerd - rebooten nodig
 fsck_err4=Fouten gevonden en NIET gecorrigeerd
 fsck_err16=Opdracht regel fout
 fsck_unknown=Onbekende code $1 terug gekregen
+
 tunefs_title=Tune Filesysteem
 tunefs_ecannot=U bent niet bevoegd om dit filesysteem te tunen
 tunefs_desc=Dit formulier staat u toe om diverse parameters te veranderen van het $1 filesysteem op $2 om te mounten op $3.
@@ -148,10 +153,12 @@ tunefs_err=Mislukt om filesysteem te tunen
 tunefs_exec=Uitvoeren van opdracht $1 ..
 tunefs_failed=.. opdracht mislukt!
 tunefs_ok=.. opdracht voltooid
+
 reboot_title=Reboot
 reboot_msg=Nu aan het rebooten ..
 reboot_ok=Reboot Nu
 reboot_why=U heeft de partitie tafel op $1 verandert. Deze veranderingen zullen pas in werking treden nadat u het systeem ge-reboot heeft.
+
 save_err=Mislukt om partitie op te slaan
 save_ecannot=U bent niet bevoegd om deze harddisk te bewerken
 save_estart='$1' is geen geldige cilinder start
@@ -160,6 +167,7 @@ save_emin=De cilinder moet beginnen met >= $1
 save_emax=De cilinder moet eindigen op <= $1
 save_eminmax=Het getal waarop de cilinder start moet lager zijn dan waarop hij eindigt
 save_eoverlap=Overlap gedetecteerde met partitie $1 ($2 to $3)
+
 ext2_b=Blok Grote
 ext2_f=Gefragmenteerde grote
 ext2_i=Bytes per inode
@@ -167,6 +175,7 @@ ext2_m=Gereserveerde blokken
 ext2_g=Blokken per groep
 ext2_c=Controleer op slechte blokken?
 ext3_j=Journaal file grote
+
 msdos_ff=Aantal FAT's
 msdos_F=FAT grote
 msdos_F_other=Andere..
@@ -175,21 +184,28 @@ msdos_n=Volume naam
 msdos_r=Root ingangen
 msdos_s=Cluster grote
 msdos_c=Controleren op slechte blokken?
+
 minix_n=Filenaam lengte
 minix_i=Aantal inodes
 minix_b=Aantal blokken
 minix_c=Controleer op slechte blokken?
+
 reiserfs_force=Forceer aanmaken filesysteem
 reiserfs_hash=Hash functie
+
 xfs_force=Forceer aanmaken filesysteem
 xfs_b=Blok grote
+
 jfs_s=Log grote
 jfs_c=Controleren op slechte blokken?
+
 fatx_none=Er zijn geen opties beschikbaar voor de FATX file systemen.
+
 acl_disks=Deze gebruiker mag schijven partitioneren en formatteren
 acl_dall=Alle schijven
 acl_dsel=Geselecteerd.
 acl_view=Mag niet bewerkbare schijven bekijken?
+
 hdparm_title=Bewerk IDE Parameters
 hdparm_on=Aan
 hdparm_off=Uit
@@ -218,9 +234,11 @@ hdparm_performing=Performance
 hdparm_buf1=Buffer cache:
 hdparm_buf2=Gebufferd:
 hdparm_speedres=Snelheid test resultaten
+
 blink_title=Identificeer Harddisk
 blink_desc=De LED van de harddisk zal nu 60 keer oplichten.
 blink_back=Ga Terug
+
 log_modify=$1 Gewijzigd
 log_create=Gemaakt $1
 log_delete=Verwijderd $1
@@ -228,6 +246,7 @@ log_mkfs=Aangemaakt $1 filesysteem op $2
 log_tunefs=Ge-tuned $1 filesysteem op $2
 log_fsck=Gerepareerd $1 filesysteem op $2
 log_hdparm=Gewijzigde IDE parameters voor $1
+
 fs_ext2=Linux Native
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -237,9 +256,11 @@ fs_ext3=Nieuwe Linux Native
 fs_ext4=Nieuwe Linux Native
 fs_xfs=SGI
 fs_jfs=IBM Journalling
+
 delete_title=Verwijder Partitie
 delete_rusure=Weet u zeker dat u $1 ( $2 ) wilt verwijderen ? De data op deze partitie gaat voorgoed verloren.
 delete_ok=Verwijder nu
+
 disk_title=Bewerk Harddisk Partities
 disk_egone=Harddisk bestaat niet langer!
 disk_no=Nummer
@@ -257,11 +278,13 @@ disk_model=<b>Merk en model:</b> $1
 disk_cylinders=<b>Cilinders:</b> $1
 disk_table=<b>Partitie formaat :</b> $1
 disk_return=Lijst met partities
+
 relabel_title=Wis Partities
 relabel_warn=Weet u zeker dat u alle partities wilt wissen op $1 ($2) door het herschrijven van de harddisk label? Alle bestaande data en filesystemen zullen word verwijdert!
 relabel_parts=Bestaande partities
 relabel_noparts=Nog niets aangemaakt
 relabel_table=Partitie tabel formaat
 relabel_ok=Wis en Her-Label
+
 table_msdos=MS-DOS (Standaard partitie formaat)
 table_gpt=GPT (Voor 2T of grotere harddisken)

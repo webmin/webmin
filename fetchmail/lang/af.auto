@@ -25,6 +25,7 @@ index_header=Gebruikers met Fetchmail-konfigurasies
 index_search=Wys Fetchmail-konfigurasie vir:
 index_show=Wys
 index_toomany=Daar is te veel gebruikers op u stelsel om te vertoon.
+
 poll_create=Voeg bediener by
 poll_edit=Bewerk bediener
 poll_header=Opsies vir e-posbedieners
@@ -64,18 +65,22 @@ poll_ecannot=U mag nie die fetchmail-opstelling van hierdie gebruiker wysig nie
 poll_efile=Slegs gebruikers se fetchmail-konfigurasielêers kan geredigeer word
 poll_eusername=Gebruiker bestaan nie!
 poll_foruser=Vir gebruiker $1 
+
 stop_err=Kon nie e-pos stop nie
 stop_ecannot=U mag nie stop-pos stop nie
 start_err=Kon nie met e-pos begin nie
 start_einterval=Kontrolinterval ontbreek of ongeldig
 start_ecannot=U mag nie met e-pos stuur nie
+
 check_title=Kontroleer bedieners
 check_exec=Kyk na e-pos op bediener (s) met opdrag $1.
 check_ok=.. kontrole voltooi.
 check_failed=.. kontrole misluk!
+
 global_title=Oorspronklike stellings
 global_header=Verstekinstellings vir alle bedieners
 global_err=Kon nie standaardinstellings stoor nie
+
 log_create_poll_file=Bediener $1 bygevoeg in lêer $2 
 log_modify_poll_file=Gewysigde bediener $1 in lêer $2 
 log_delete_poll_file=Bediener $1 in lêer $2 is uitgevee
@@ -94,6 +99,7 @@ log_stop=Gestop fetchmail-dememon
 log_create_cron=Geskeduleerde kontrolering is geaktiveer
 log_update_cron=Gewysigde geskeduleerde ondersoek
 log_delete_cron=Geskeduleerde kontrolering is gedeaktiveer
+
 acl_users=Kan fetchmail-opstelling wysig vir
 acl_all=Alle gebruikers
 acl_this=Huidige webmin gebruiker
@@ -101,6 +107,7 @@ acl_only=Slegs gebruikers
 acl_except=Almal behalwe gebruikers
 acl_cron=Kan geskeduleerde kontrole opgestel word?
 acl_daemon=Kan Fetchmail-dememon opgestel word?
+
 cron_title=Geplande kontrole
 cron_desc=Hierdie bladsy kan gebruik word om 'n Cron-taak in te skakel of te deaktiveer om die e-posbedieners in u Fetchmail-opset op 'n gewone skedule na te gaan. Gebruik 'n beter Cron-taak as die Fetchmail-demoon, want dit hoef nie weer met die opstart te begin nie.
 cron_header=Geskeduleerde haal-pos-instellings
@@ -119,8 +126,10 @@ cron_email=E-posadres ontbreek of ongeldig
 cron_euser=Unix-gebruiker ontbreek of ongeldig
 cron_errors=Slegs afvoer as 'n fout voorkom?
 cron_ecannot2=U mag nie geskeduleerde kontrole opstel nie
+
 user_title=Fetchmail-opstelling
 user_header=Vir gebruiker $1 
 user_return=gebruiker se konfigurasie
+
 email_ok=Haal afvoer
 email_failed=Fetchmail-fout

@@ -14,6 +14,7 @@ index_ro_rw=alle Hosts Lesezugriff, ausgewählte Hosts Schreibzugriff
 index_sel_rw=ausgewählte Hosts Schreibzugriff
 index_all_rw=alle Hosts Schreibzugriff
 index_sel_root=ausgewählte Hosts root Zugriff
+
 edit_title=Export bearbeiten
 create_title=Export erstellen
 edit_details=Export Details
@@ -56,6 +57,7 @@ edit_anon_access=Anonymer Benutzer
 edit_anon_notset=Nicht definiert
 edit_anon_noaccess=Kein Zugriff
 edit_async=Asynchrones Schreiben
+
 save_err=Fehler beim Speichern der Exporte
 save_edir=Verzeichnis '$1' existiert nicht
 save_enetgroup=Fehlende oder ungültige Netzgruppe
@@ -65,6 +67,7 @@ save_ehost='$2' - '$1' ist kein gültiger Host-Name
 save_enohost='$1' - Es sind keine Host-Namen aufgelistet
 save_euids=UIDs, denen nicht getraut wird, müssen eine durch Kommata getrennte Liste mit Nummern oder Bereichen sein
 save_egids=GIDs, denen nicht getraut wird, müssen eine durch Kommata getrennte Liste mit Nummern oder Bereichen sein
+
 log_modify=Modifizierte NFS-Exporte $1
 log_modify_l=Modifizierte NFS-Exporte $1 bis $2
 log_delete=Gelöschte NFS-Exporte

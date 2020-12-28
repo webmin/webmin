@@ -9,6 +9,7 @@ index_today=仅今日
 index_time=在 $1 和 $2 之间
 index_search=搜索
 index_return=搜索方式
+
 search_title=搜索结果
 search_date=日期
 search_time=时间
@@ -25,6 +26,7 @@ search_critm=来自模块 $1
 search_critt=在 $1 和 $2 之间
 search_critt2=在 $1 上
 search_config=改变模块配置
+
 view_title=行动详述
 view_header=被记录的行动 $1 详述
 view_action=描述

@@ -1,6 +1,7 @@
 check_econfig=Docelowy plik konfiguracyjny iSCSI $1 nie został znaleziony w twoim systemie.
 check_eietadm=W systemie nie znaleziono komendy administrowania docelowego iSCSI $1.
 check_einit=Uruchomienie $1 nie istnieje
+
 index_title=Obiekt docelowy iSCSI
 index_clink=Być może nie jest zainstalowany lub konfiguracja modułu <a href='$1'></a> jest nieprawidłowa.
 index_stop=Zatrzymaj obiekt docelowy iSCSI
@@ -22,8 +23,10 @@ index_noluns=Żaden
 index_nousers=Każdy
 index_nullio=Dysk RAM $1 sektorów
 index_size=Całkowity rozmiar
+
 dtargets_err=Nie udało się usunąć celów
 dtargets_enone=Nie wybrano!
+
 target_title1=Utwórz cel iSCSI
 target_title2=Edytuj cel iSCSI
 target_header=Opcje urządzeń współdzielonych iSCSI
@@ -68,11 +71,13 @@ target_noalias=Żaden
 target_hdigest=Suma kontrolna nagłówka
 target_ddigest=Suma kontrolna danych
 target_nodigest=Żaden
+
 auth_title=Ustawienia uwierzytelnienia
 auth_header=Domyślne opcje uwierzytelniania dla wszystkich celów
 auth_iuser=Uwierzytelnianie przez klientów
 auth_ouser=Uwierzytelnianie do klientów
 auth_err=Nie udało się zapisać ustawień uwierzytelniania
+
 conn_title=Ustawienia połączenia
 conn_header=Domyślne opcje połączenia dla wszystkich celów
 conn_sessions=Maksymalna liczba równoczesnych sesji
@@ -91,6 +96,7 @@ conn_emaxrecv=Brakująca lub nienumeryczna maksymalna długość segmentu odbior
 conn_emaxxmit=Brakująca lub nienumeryczna maksymalna długość segmentu transmisji
 conn_emaxburst=Brakujący lub nienumeryczny maksymalny rozmiar serii klienta
 conn_efirstburst=Brakujący lub nienumeryczny maksymalny rozmiar niezamówionych danych klienta
+
 timeout_title=Ustawienia limitu czasu
 timeout_header=Opcje limitu czasu klienta
 timeout_nopi=Przerwa między pingami w stanie bezczynności
@@ -98,6 +104,7 @@ timeout_nopinone=Nigdy nie pinguj
 timeout_secs=sekundy
 timeout_nopt=Czas czekać na odpowiedź ping
 timeout_noptnone=Taki sam jak czas pingowania
+
 addr_title=Adres serwera i port
 addr_header=Opcje sieciowe serwera iSCSI
 addr_addr=Słuchaj na adres IP
@@ -110,18 +117,21 @@ addr_err=Nie udało się zapisać adresu serwera
 addr_eaddr=Adres do nasłuchiwania musi być adresem IP
 addr_eport=Port do nasłuchiwania musi być liczbą
 addr_edebug=Poziom debugowania musi być liczbą
+
 initiators_title=Dozwolone adresy klientów
 initiators_none=Nie zdefiniowano jeszcze dozwolonego adresu klienta. Żadni klienci nie będą mogli się połączyć.
 initiators_ips=Dozwoleni klienci
 initiators_title1=Dodaj dozwolone adresy klientów
 initiators_title2=Edytuj dozwolone adresy klientów
 initiators_header=Dozwolono klientów iSCSI dla celu
+
 targets_title=Dozwolone adresy serwerów
 targets_none=Nie zdefiniowano jeszcze dozwolonego adresu serwera. Żadni klienci nie będą mogli się połączyć.
 targets_ips=Dozwolone interfejsy serwera
 targets_title1=Dodaj dozwolone adresy serwerów
 targets_title2=Edytuj dozwolone adresy serwerów
 targets_header=Dozwolony interfejs serwera iSCSI dla celu
+
 allow_target=Nazwa docelowa
 allow_move=Ruszaj się
 allow_delete=Usuń wybrane
@@ -133,17 +143,21 @@ allow_return=dozwolone cele i adresy
 allow_err=Nie udało się zapisać dozwolonych adresów
 allow_eaddr=Adres $1 jest nieprawidłowy. Musi to być adres IPv4, sieć/maska IPv4 lub adres IPv6 w nawiasach kwadratowych.
 allow_eaddrs=Brak wprowadzonych adresów
+
 dallow_err=Nie udało się usunąć dozwolonych adresów
 dallow_enone=Nie wybrano
+
 manual_title=Edytuj plik konfiguracyjny
 manual_desc=Użyj pola tekstowego poniżej, aby edytować plik konfiguracyjny serwera iSCSI $1. Zachowaj ostrożność, ponieważ twoja weryfikacja nie zostanie przeprowadzona!
 manual_err=Nie udało się zapisać pliku konfiguracyjnego
 manual_edata=Nie wpisano treści!
+
 start_err=Nie udało się uruchomić serwera iSCSI
 stop_err=Nie udało się zatrzymać serwera iSCSI
 restart_err=Nie można zrestartować serwera iSCSI
 atboot_err=Nie można włączyć podczas uruchamiania
 atboot_einit=Skrypt początkowy $1 nie istnieje
+
 log_create_target=Utworzono cel $1 
 log_delete_target=Usunięto cel $1 
 log_modify_target=Zmodyfikowany cel $1 

@@ -10,6 +10,7 @@ index_hosts=Šeimininkai
 index_cmd=Komanda
 index_delete=Išštrinti pasirinktus
 index_none=nė vienas
+
 edit_title1allow=Sukurti leidimo taisyklę
 edit_title2allow=Redaguoti Leisti taisyklę
 edit_title1deny=Sukurti paneigimo taisyklę
@@ -22,9 +23,11 @@ edit_hosts=Nuotoliniai šeimininkai
 edit_hostsexcept=Išskyrus šeimininkus
 edit_cmd=„Shell“ komandos
 edit_efound=„$1“ demonas nerastas xinetd konfigūracijoje.
+
 save_errtitle=Įrašymo taisyklės klaida
 save_ehost=Pagrindiniame kompiuterio įvestyje yra blogų simbolių
 save_ecmd=Komandos įvestyje yra blogų simbolių
 save_eservice=Demonų vardai turi blogus simbolius
+
 del_errtitle=Klaida ištrinant taisykles
 del_enone=Nėra taisyklių, kurias būtų galima ištrinti

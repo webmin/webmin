@@ -21,6 +21,7 @@ index_hdparm=Ändra IDE-parametrar
 index_use=Använd
 index_free=Ledig
 index_return=disklista
+
 bytes=bytes
 extended=Utökad
 opt_default=Standard
@@ -31,6 +32,7 @@ select_part=$1 disk $2 partition $3
 select_fd=Diskettstation $1
 select_mylex=Mylex-RAID $1 disk $2
 select_mpart=Mylex-RAID $1 disk $2 partition $3
+
 edit_title=Ändra partition
 create_title=Skapa partition
 edit_ecannot=Du får inte ändra på denna disk
@@ -63,6 +65,7 @@ edit_fsckmsg=Använder programmet $1 för att reparera filsystemet så att det k
 edit_tune=Tune filsystem
 edit_tunemsg=Detta tillåter dig att justera diverse parametrar på ett existerande filsystem.
 edit_none=Inget
+
 mkfs_title=Nytt filsystem
 mkfs_ecannot=Du får inte bygga upp ett nytt filsystem på denna disk
 mkfs_desc1=När du trycker på knappen längst ned kommer ett nytt $1-filsystem att byggas på disk $2. Alla data på denna partition kommer att raderas permanent.
@@ -73,6 +76,7 @@ mkfs_err=Det gick inte att skapa filsystem
 mkfs_exec=Utför kommando $1 ...
 mkfs_failed=... kommandot gick inte att utföra!
 mkfs_ok=... kommandot utfört.
+
 fsck_title=Reparera filsystem
 fsck_ecannot=Du får inte fsck:a denna disk
 fsck_desc1=När du trycker på <tt>Reparera filsystem</tt>-knappen kommer det skadade $1-filsystemet på $2 för montering på $3 att repareras. Om filsystemet inte är skadat kommer inget att ändras.
@@ -85,6 +89,7 @@ fsck_err3=fel upptäcktes och rättades till - nu måste du starta om
 fsck_err4=fel upptäcktes MEN de rättades inte till
 fsck_err16=fel i kommandoraden
 fsck_unknown=okänd returkod $1
+
 tunefs_title=Justera filsystem
 tunefs_ecannot=Du får inte justera detta filsystem
 tunefs_desc=I detta formulär kan du justera diverse parametrar på $1-filsystemet på $2 för montering på $3. Filer som redan finns på detta filsystem kommer inte att påverkas.
@@ -106,10 +111,12 @@ tunefs_err=Misslyckades att justera filsystem
 tunefs_exec=Utför kommando $1 ...
 tunefs_failed=... kommandot gick inte att utföra!
 tunefs_ok=... kommandot utfört.
+
 reboot_title=Omstart
 reboot_msg=Startar om nu ...
 reboot_ok=Starta om nu
 reboot_why=Du har ändrat partitionstabellen för $1. För att denna ändring ska tas i drift på ett korrekt sätt måste du starta om systemet.
+
 save_err=Det gick inte att spara partitionen
 save_ecannot=Du får inte ändra på denna disk
 save_estart='$1' är inte en giltig startcylinder
@@ -118,27 +125,33 @@ save_emin=Startcylindern måste vara >= $1
 save_emax=Slutcylindern måste vara <= $1
 save_eminmax=Startcylindern måste vara ett mindre tal än slutcylindern
 save_eoverlap=Detta överlappar med partition $1 ($2 - $3)
+
 ext2_b=Blockstorlek
 ext2_f=Fragmentstorlek
 ext2_i=Bytes per inode
 ext2_m=Reserverade block
 ext2_g=Block per grupp
 ext2_c=Söka efter skadade block?
+
 msdos_F=FAT-storlek
 msdos_i=Volym-ID
 msdos_n=Volymnamn
 msdos_r=Root-poster
 msdos_s=Klusterstorlek
 msdos_c=Söka efter skadade block?
+
 minix_n=Filnamnslängd
 minix_i=Antal inoder
 minix_b=Antal block
 minix_c=Söka efter skadade block?
+
 reiserfs_force=Forcera skapande av filsystem
 reiserfs_hash=Hash-funktion
+
 acl_disks=Diskar som denna användare får partitionera och formatera
 acl_dall=Alla diskar
 acl_dsel=Angivna ...
+
 hdparm_title=Ändra IDE-parametrar
 hdparm_on=På
 hdparm_off=Av
@@ -167,6 +180,7 @@ hdparm_performing=Utför
 hdparm_buf1=Buffert-cache:
 hdparm_buf2=Buffrat:
 hdparm_speedres=Resultat från hastighetstest
+
 log_modify=Ändrade $1
 log_create=Skapade $1
 log_delete=Tog bort $1

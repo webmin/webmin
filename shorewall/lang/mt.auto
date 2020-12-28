@@ -19,6 +19,7 @@ index_dump=Uri dump
 index_dumpdesc=Ikklikkja din il-buttuna biex tara l-informazzjoni dwar it-traċċar ta 'Shorewall mill-kmand <tt>shorewall dump</tt>.
 index_check=Iċċekkja l-Firewall
 index_checkdesc=Ikklikkja din il-buttuna biex ikollok Shorewall tivvalida l-konfigurazzjoni tal-firewall tiegħek bil-kmand <tt>shorewall check</tt>.
+
 list_move=Tmexxi
 list_add=Żid
 list_auto=Awtomatiku
@@ -30,6 +31,7 @@ list_manual=Editja Manwal il-Fajl
 list_manualdesc=Ikklikkja din il-buttuna biex teditja manwalment il-fajl Shorewall $1, li fih huma maħżuna l-iskrizzjonijiet ta 'hawn fuq.
 list_ecannot=M'għandekx permess teditja din it-tabella Shorewall.
 list_delete=Ħassar Magħżul
+
 restart_err=Ma rnexxielux japplika l-konfigurazzjoni
 refresh_err=Naqset milli tiffriska l-konfigurazzjoni
 start_err=Naqset milli tibda firewall
@@ -41,6 +43,7 @@ check_title=Iċċekkja l-Firewall
 check_ok=.. Il-konfigurazzjoni tal-firewall tiegħek tidher OK.
 check_failed=.. nstab żball fil-konfigurazzjoni tal-firewall tiegħek!
 check_cmd=Iċċekkjar tal-konfigurazzjoni ..
+
 zones_title=Żoni tan-Netwerk
 zones_desc=Iż-żoni elenkati f'din il-paġna jirrappreżentaw netwerks differenti li jistgħu jintlaħqu mis-sistema tiegħek. Madankollu, l-entrati hawn ma għandhom l-ebda effett fuq il-firewall - minflok, huma biss jiddefinixxu l-ismijiet u d-deskrizzjonijiet taż-żona.
 zones_add=Żid żona ta 'netwerk ġdida.
@@ -69,6 +72,7 @@ zones_firewall=Sistema tal-firewall
 zones_eopts=Għażliet ta 'żona mhux validi
 zones_eopts_in=Għażliet mhux validi li jidħlu fiż-żona
 zones_eopts_out=Għażliet ta 'ħruġ mhux validi fiż-żona
+
 policy_title=Politiki Default
 policy_desc=Din il-paġna jippermettilek li tikkonfigura l-azzjonijiet default għat-traffiku bejn żoni ta 'firewall differenti. Dawn jistgħu jiġu mwarrba għal ospiti partikolari jew tipi ta 'traffiku fuq il-paġna tar-Regoli tal-Firewall.
 policy_add=Żid politika tal-inadempjenza ġdida.
@@ -89,6 +93,7 @@ policy_ulog=Idħol għal ULOG
 policy_efw=&lt;Firewall&gt; jista 'jintgħażel kemm għaż-żoni tas-sors kif ukoll għad-destinazzjoni
 policy_elimit=Numru tal-limitu tat-traffiku nieqes jew invalidu
 policy_eburst=Numru tat-traffiku nieqes jew invalidu
+
 rules_title=Regoli tal-firewall
 rules_desc=Din it-tabella telenka eċċezzjonijiet għall-politiki ta 'inadempjenza għal ċerti tipi ta' traffiku, sorsi jew destinazzjonijiet. L-azzjoni magħżula għandha tkun applikata għal pakketti li jaqblu mal-kriterji magħżula minflok il-livell default.
 rules_add=Żid regola firewall ġdida.
@@ -135,6 +140,7 @@ rules_eaction=L-ebda azzjoni magħżula
 rules_macro=Parametru tal-azzjoni makro
 rules_none2=Xejn
 rules_emacro=Parametru makro nieqes jew invalidu
+
 tos_title=Tipi ta 'Servizz
 tos_desc=Din il-paġna tiddefinixxi tipi ta 'servizzi IP għal tipi partikolari ta' traffiku, li jistgħu jintużaw biex jgħollu jew inaqqsu l-prijoritajiet tagħhom.
 tos_add=Żid tip ġdid ta 'servizz.
@@ -153,6 +159,7 @@ tos_edit=Edit Tip ta 'Servizz
 tos_create=Oħloq Tip ta 'Servizz
 tos_header=Dettalji tat-tip ta 'servizz
 tos_err=Ma rnexxielux isalva tip ta 'servizz
+
 interfaces_title=Interfaces tan-Netwerk
 interfaces_desc=Kull waħda mill-interfaces tan-netwerk fis-sistema tiegħek li trid Shorewall biex timmaniġġja għandha tkun elenkata f'din il-paġna, u marbuta maż-żona li hija konnessa magħha. L-interface tal-loopback <tt>lo</tt> qatt ma għandu jkun elenkat.
 interfaces_add=Żid interface għan-netwerk il-ġdid.
@@ -169,6 +176,7 @@ interfaces_header=Dettalji tal-interface għan-netwerk
 interfaces_err=Ma rnexxielux isalva l-interface tan-netwerk
 interfaces_eiface=L-isem tal-interface nieqes jew invalidu
 interfaces_ebroad=Indirizz ta 'xandir nieqes jew invalidu
+
 masq_title=Masquerading
 masq_desc=L-entrati f'din il-paġna jistabbilixxu traduzzjoni tal-indirizz tan-netwerk għat-traffiku li jgħaddi bejn xi netwerk u interface partikolari.
 masq_add=Żid regola masquerading ġdida.
@@ -199,6 +207,7 @@ masq_emnete=Lista tan-netwerks ta 'eċċezzjoni vojta
 masq_esnat=Indirizz IP SNAT invalidu
 masq_eports=Lista ta 'portijiet nieqsa jew invalidi separati bil-virgola
 masq_eipsec=Għażliet IPsec Nieqsa
+
 nat_title=NAT statiku
 nat_desc=L-iskrizzjonijiet tat-traduzzjoni tal-indirizz statiku f'din it-tabella jistgħu jintużaw biex tissettja korrispondenza 1-1 bejn indirizz estern fuq il-firewall tiegħek u indirizz RFC1918 ta 'magna wara l-firewall tiegħek. NAT statiku spiss jintuża biex jippermetti konnessjonijiet ma 'server intern minn barra n-netwerk tiegħek.
 nat_add=Żid entrata statika ġdida NAT.
@@ -217,6 +226,7 @@ nat_local=Attiva għas-sistema tal-firewall?
 nat_eext=Indirizz IP estern invalidu
 nat_eint=Indirizz IP intern invalidu
 nat_evirt=Numru ta 'interface virtwali mhux validu
+
 proxyarp_title=Proxy ARP
 proxyarp_desc=Din il-paġna jippermettilek li tikkonfigura s-sistema tiegħek biex twieġeb it-talbiet tal-ARP għal indirizzi IP minbarra tagħha stess, sabiex tkun tista 'tibgħat pakketti lil dawk l-indirizzi lejn id-destinazzjonijiet reali tagħhom.
 proxyarp_add=Żid indirizz proxy ġdid ARP.
@@ -233,6 +243,7 @@ proxyarp_err=Ma rnexxielux isalva l-proxy ARP
 proxyarp_have=Ir-rotta li tospita teżisti?
 proxyarp_eaddr=Indirizz nieqes jew invalidu lill-ARP
 proxyarp_pers=Tħallix ir-rotta anki meta twaqqaf firewall?
+
 routestopped_title=Meta waqaf
 routestopped_desc=B'default, meta Shorewall jitwaqqaf, din tiċħad l-aċċess mill-ospiti kollha. Din il-paġna jippermettilek tiddefinixxi l-ospiti jew netwerks li xorta se jkunu aċċessibbli.
 routestopped_add=Żid indirizz waqaf ġdid.
@@ -248,6 +259,7 @@ routestopped_err=Ma rnexxielux isalva l-indirizz waqaf
 routestopped_eaddr=L-ebda indirizzi ma daħlu
 routestopped_all=L-indirizzi kollha
 routestopped_list=Elenki ta 'indirizzi u netwerks ..
+
 tunnels_title=Mina VPN
 tunnels_desc=Din il-paġna telenka mini VPN li jgħaddu mill-firewall tiegħek, u għalhekk għandhom ikunu permessi mill-konfigurazzjoni Shorewall.
 tunnels_add=Żid mina VPN ġdida.
@@ -278,6 +290,7 @@ tunnels_generic_l=Ġeneriku, għall-protokoll ..
 tunnels_gsel=Żoni elenkati
 tunnels_eopenvpn=Numru tal-port mhux validu għall-mina OpenVPN
 tunnels_egeneric=Protokoll jew protokoll nieqes: port għal mina ġenerika
+
 hosts_title=Żoni Ospitanti
 hosts_desc=Din il-paġna telenka ospiti u netwerks li huma parti minn żoni partikolari. Ġeneralment m'għandekx għalfejn tagħmel xi tibdil f'din il-lista.
 hosts_add=Żid ospitanti ta 'żona ġdida.
@@ -297,8 +310,10 @@ hosts_ip=Indirizz jew netwerk $1
 hosts_mac=Indirizz MAC $1 
 hosts_ipset=Sett tal-IP $1 
 hosts_any=Kull ospitanti
+
 edit_before=Qabel id-dħul $1 
 edit_after=Wara d-dħul $1 
+
 blacklist_title=Hosts bil-Lista l-Iswed
 blacklist_desc=Din il-paġna telenka ospiti u servizzi li se jiġu mblukkati jekk it-traffiku minnhom jasal fuq interface bl-għażla <b>lista sewda</b> ssettjata.
 blacklist_add=Żid ospitanti ġdid tal-lista sewda.
@@ -321,6 +336,7 @@ blacklist_eproto=Protokoll nieqes jew invalidu
 blacklist_eports=Numru tal-port mhux validu jew lista tal-portijiet separati bil-virgola
 blacklist_eports2=Il-portijiet jistgħu jiġu speċifikati biss għall-protokolli TCP u UDP
 blacklist_return=Hosts tal-lista s-sewda
+
 providers_title=Fornituri ta 'Rotta Addizzjonali
 providers_desc=Din il-paġna tiddefinixxi tabelli ta 'rotta addizzjonali. Dawn huma meħtieġa jekk ikollok konnessjonijiet għal iktar minn ISP wieħed jew għal konnessjonijiet multipli għall-istess ISP, jew immexxi l-Klamar bħala prokura trasparenti fuq host minbarra l-firewall.
 providers_add=Żid fornitur ta 'rotta ġdid.
@@ -353,6 +369,7 @@ providers_emark=Numru tal-marka tal-fornitur nieqes jew invalidu
 providers_edup=Fornitur li nieqes għad-duplikat
 providers_egateway=Gate nieqes jew invalidu
 providers_return=lista tal-fornituri tar-rotta
+
 route_rules_title=Regoli ta 'Rotta
 route_rules_desc=Il-paġna tikkontrolla liema traffiku huwa indirizzat lejn il-fornituri definiti fuq il-paġna ta ’Fornituri ta’ Rotta Addizzjonali.
 route_rules_ip=Indirizz IP, netwerk jew interface
@@ -378,17 +395,21 @@ route_rules_emark=Il-marka tal-fuljett trid tkun fil-format tan-numru jew tan-nu
 route_rules_return=lista tar-regoli tar-rotta
 route_rules_edit=Editja r-Regola tar-Rotta
 route_rules_create=Oħloq Regola ta 'Rotta
+
 manual_desc=Din il-formola tista 'tintuża biex teditja manwalment il-fajl Shorewall $1. Oqgħod attent, peress li l-ebda kontroll tas-sintassi ma jsir fuq il-bidliet.
 manual_reset=Annulla
 manual_err=Ma rnexxielux isalva fajl tal-mejda
 manual_efile=L-isem tal-mejda mhux validu!
 manual_edata=Ma ddaħħal l-ebda kontenut tal-fajl tal-mejda.
+
 acl_nochange=Tista 'tapplika, twaqqaf u tibda konfigurazzjoni ta' Shorewall?
 acl_files=Tabelli Shorewall disponibbli
 acl_all=Kollha
 acl_sel=Magħżula hawn taħt ..
+
 delete_err=Ma rnexxielhiex tħassar ir-ringieli
 delete_enone=L-ebda ringiela magħżula
+
 opts_routeback=Aċċetta t-traffiku lura biex tospita
 opts_source=Ħalli minn ospitanti għal kwalunkwe destinazzjoni
 opts_dest=Ħallih jospita minn kwalunkwe sors
@@ -406,6 +427,7 @@ opts_proxyarp=Agħti proxy ARP
 opts_arp_filter=Irrispondi biss għat-talbiet tal-ARP għall-interface IP
 opts_detectnets=Żona ta 'Taylor li tinkludi biss ostakli bir-rotta
 opts_upnp=Agħmel mill-ġdid il-pakketti permezz UPNP
+
 comment_add=Żid kumment ġdid.
 comment_edit=Editja Kumment
 comment_create=Oħloq kumment
@@ -413,6 +435,7 @@ comment_header=Dettalji ta 'kummenti fit-tabella
 comment_msg=Messaġġ
 comment_err=Ma rnexxielux isalva kumment
 comment_enone=Ma daħal l-ebda messaġġ
+
 log_create_table=Id-dħul miżjud fit-tabella $1 
 log_modify_table=Dħul modifikat fit-tabella $1 
 log_delete_table=Id-dħul imħassar mit-tabella $1 
@@ -428,6 +451,7 @@ log_start=Beda firewall
 log_refresh=Firewall aġġornat
 log_restart=Bidu mill-ġdid firewall
 log_clear=Firewall imnaddaf
+
 shorewall_conf_title=Fajl konfigurazzjoni kaptan
 shorewall_conf_desc=Din il-paġna jippermettilek li tikkonfigura l-varjabbli tal-konfigurazzjoni globali. NOTA: Tibdil fl-ordni tal-varjabbli hawn mhux irrakkomandat jekk tixtieq tippreserva l-pożizzjoni relattiva tal-kummenti fil-fajl tal-konfigurazzjoni.
 shorewall_conf_add=Żid varjabbli ta 'konfigurazzjoni ġdida.
@@ -441,6 +465,7 @@ shorewall_conf_create=Oħloq varjabbli ta 'konfigurazzjoni
 shorewall_conf_header=Dettalji tal-varjabbli tal-konfigurazzjoni
 shorewall_conf_err=Ma rnexxielux isalva varjabbli tal-konfigurazzjoni
 shorewall_conf_varname=Isem varjabbli mhux validu (irid ikun isem varjabbli tal-qoxra validu)
+
 params_title=Parametri personalizzati
 params_desc=Din il-paġna jippermettilek li tikkonfigura l-parametri tad-dwana ta 'Shorewall. NOTA: Tibdil fl-ordni tal-parametri hawn mhux irrakkomandat jekk tixtieq tippreserva l-pożizzjoni relattiva tal-kummenti fil-fajl tal-konfigurazzjoni.
 params_add=Żid parametru custom ġdid.

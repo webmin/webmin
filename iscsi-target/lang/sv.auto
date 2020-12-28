@@ -1,6 +1,7 @@
 check_econfig=Målkonfigurationsfilen iSCSI $1 hittades inte på ditt system.
 check_eietadm=ISCSI-måladministrationskommandot $1 hittades inte på ditt system.
 check_einit=Uppstartsåtgärd $1 finns inte
+
 index_title=iSCSI-mål
 index_clink=Kanske är den inte installerad, eller är din <a href='$1'>modulkonfiguration</a> felaktig.
 index_stop=Stoppa iSCSI-mål
@@ -22,8 +23,10 @@ index_noluns=Ingen
 index_nousers=Några
 index_nullio=RAM-disk på $1 sektorer
 index_size=Total storlek
+
 dtargets_err=Det gick inte att ta bort mål
 dtargets_enone=Ingen vald!
+
 target_title1=Skapa iSCSI-mål
 target_title2=Redigera iSCSI-mål
 target_header=iSCSI-delade enhetsalternativ
@@ -68,11 +71,13 @@ target_noalias=Ingen
 target_hdigest=Header-kontrollsumma
 target_ddigest=Datakontrollsumma
 target_nodigest=Ingen
+
 auth_title=Autentiseringsinställningar
 auth_header=Standardverifieringsalternativ för alla mål
 auth_iuser=Autentisering av klienter
 auth_ouser=Autentisering till klienter
 auth_err=Det gick inte att spara autentiseringsinställningar
+
 conn_title=Anslutningsinställningar
 conn_header=Standardanslutningsalternativ för alla mål
 conn_sessions=Maximal samtidiga sessioner
@@ -91,6 +96,7 @@ conn_emaxrecv=Saknad eller icke-numerisk maximal mottagningssegmentlängd
 conn_emaxxmit=Saknad eller icke-numerisk maximal sändningssegmentlängd
 conn_emaxburst=Saknad eller icke-numerisk maximal klientstorlek
 conn_efirstburst=Saknad eller icke-numerisk maximal klient-oönskad datastorlek
+
 timeout_title=Timeout-inställningar
 timeout_header=Alternativ för klient timeout
 timeout_nopi=Intervall mellan pingar när den är inaktiv
@@ -98,6 +104,7 @@ timeout_nopinone=Ping aldrig
 timeout_secs=sekunder
 timeout_nopt=Dags att vänta på ping-svar
 timeout_noptnone=Samma som pingtid
+
 addr_title=Serveradress och port
 addr_header=iSCSI-serverns nätverksalternativ
 addr_addr=Lyssna på IP-adress
@@ -110,18 +117,21 @@ addr_err=Det gick inte att spara serveradressen
 addr_eaddr=Adress att lyssna på måste vara en IP-adress
 addr_eport=Port för att lyssna på måste vara ett nummer
 addr_edebug=Felsökningsnivå måste vara ett nummer
+
 initiators_title=Tillåtna klientadresser
 initiators_none=Ingen tillåten klientadress har definierats än. Inga klienter kommer att kunna ansluta.
 initiators_ips=Tillåtna klienter
 initiators_title1=Lägg till tillåtna klientadresser
 initiators_title2=Redigera tillåtna klientadresser
 initiators_header=Tillåtna iSCSI-klienter för mål
+
 targets_title=Tillåtna serveradresser
 targets_none=Ingen tillåten serveradress har definierats än. Inga klienter kommer att kunna ansluta.
 targets_ips=Tillåtna servergränssnitt
 targets_title1=Lägg till tillåtna serveradresser
 targets_title2=Redigera tillåtna serveradresser
 targets_header=Tillåtet iSCSI-servergränssnitt för mål
+
 allow_target=Målnamn
 allow_move=Flytta
 allow_delete=Radera valda
@@ -133,17 +143,21 @@ allow_return=tillåtna mål och adresser
 allow_err=Det gick inte att spara tillåtna adresser
 allow_eaddr=Adress $1 är inte giltig. Det måste vara antingen en IPv4-adress, IPv4-nätverk/mask eller IPv6-adress i fyrkantiga parenteser.
 allow_eaddrs=Inga adresser som tillåts anges
+
 dallow_err=Det gick inte att ta bort tillåtna adresser
 dallow_enone=Ingen vald
+
 manual_title=Redigera konfigurationsfil
 manual_desc=Använd textrutan nedan för att redigera iSCSI-serverkonfigurationsfilen $1. Var försiktig, eftersom ingen validering utförs på din input!
 manual_err=Det gick inte att spara konfigurationsfilen
 manual_edata=Inget innehåll anges!
+
 start_err=Det gick inte att starta iSCSI-servern
 stop_err=Det gick inte att stoppa iSCSI-servern
 restart_err=Det gick inte att starta om iSCSI-servern
 atboot_err=Det gick inte att aktivera vid start
 atboot_einit=Init-skriptet $1 finns inte
+
 log_create_target=Skapat mål $1 
 log_delete_target=Raderat mål $1 
 log_modify_target=Ändrat mål $1 

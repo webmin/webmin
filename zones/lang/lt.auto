@@ -4,6 +4,7 @@ index_none=Dar nebuvo apibrėžtos zonos.
 index_add=Pridėkite naują zoną.
 index_return=zonų sąrašas
 index_zones=Esamos zonos
+
 edit_title=Redaguoti zoną
 edit_common=Bendroji zonų konfigūracija
 edit_name=Zonos pavadinimas
@@ -57,20 +58,26 @@ edit_attrnone=Dar nebuvo apibrėžta jokių bendrų požymių.
 edit_attradd=Pridėkite naują bendrąjį atributą.
 edit_webmin=Atidarykite „Webmin“
 edit_brand=Prekės ženklas
+
 ui_cancel=Atšaukti
+
 save_err=Nepavyko išsaugoti zonos
 save_epool=Trūksta arba netinkamas fondas
 save_ewebmin=„Webmin“ šioje zonoje neveikia
+
 reboot_title=Perkrovimo zona
 reboot_rusure=Ar tikrai norite perkrauti zoną $1 ? Visi joje vykstantys procesai bus paleisti iš naujo.
 reboot_err=Nepavyko iš naujo paleisti zonos
 reboot_doing=Dabar perkrovimo zona ..
+
 reboot_failed=.. nepavyko :
 reboot_ok=.. baigta.
+
 halt_title=Išjungimo zona
 halt_rusure=Ar tikrai norite uždaryti $1 zoną? Visi jame vykstantys procesai bus sustabdyti.
 halt_err=Nepavyko išjungti zonos
 halt_doing=Dabar uždaroma zona ..
+
 boot_title=Paleidimo zona
 boot_err=Nepavyko įkelti įkrovos zonos
 boot_doing=Dabar įkeliama zona ..
@@ -78,10 +85,12 @@ delete_title=Ištrinti zoną
 delete_rusure=Ar tikrai norite ištrinti zoną $1 ? Bus prarasti visi jos privačiose failų sistemose esantys failai.
 delete_err=Nepavyko ištrinti zonos
 delete_doing=Dabar naikinama zona ..
+
 uninstall_title=Pašalinti sistemą
 uninstall_rusure=Ar tikrai norite išinstaliuoti sistemos programinę įrangą iš $1 zonos? Bus prarasti visi jos privačiose failų sistemose esantys failai.
 uninstall_err=Nepavyko išinstaliuoti sistemos programinės įrangos iš zonos
 uninstall_doing=Dabar išdiegti sistemą iš zonos ..
+
 install_title=Įdiekite sistemą
 install_doing=Dabar diegiame sistemą į zoną ..
 net_title1=Sukurti tinklo sąsają
@@ -96,6 +105,7 @@ net_enetmask=Netinkamas tinklo maskavimas
 net_eaddress=Neteisingas IP adresas
 net_egone=Sąsaja nebeegzistuoja!
 net_eclash=Šioje zonoje jau yra tinklo sąsaja su tuo pačiu IP adresu
+
 pkg_title1=Pridėti paketų katalogą
 pkg_title2=Redaguoti paketų katalogą
 pkg_header=Paveldimos pakuotės katalogo informacija
@@ -107,6 +117,7 @@ pkg_eclash=Pakuotės katalogas jau yra šioje zonoje
 pkg_inherit=Paveldėkite paketus iš globalios zonos
 pkg_inherit_yes=Taip (negausios šaknies zona)
 pkg_inherit_no=Ne (visa šaknies zona)
+
 fs_title1=Sukurkite failų sistemą
 fs_title2=Redaguoti failų sistemą
 fs_header=Papildoma failų sistemos informacija
@@ -128,6 +139,7 @@ fs_eoptions=Netinkamos prijungimo parinktys (turi būti kableliais atskirtas są
 fs_egone=Failo sistema nebeegzistuoja!
 fs_mount=Sumontuoti sukūrus?
 fs_eclash=Šioje zonoje jau yra failų sistema, naudojanti tą patį katalogą
+
 rctl_title1=Sukurti išteklių valdymą
 rctl_title2=Redaguoti išteklių valdymą
 rctl_header=Išteklių valdymo rūšis ir apribojimai
@@ -148,6 +160,7 @@ rctl_elimit=Ne skaičius
 rctl_eaction=$1 eilutėje nepasirinktas joks signalas
 rctl_evalues=Neįvestos ribos
 rctl_eclash=Toje pačioje medžiagoje valdiklis jau yra šioje zonoje
+
 attr_title1=Sukurkite bendrąjį atributą
 attr_title2=Redaguoti bendrąjį atributą
 attr_header=Informacija apie bendrąją zonos atributą
@@ -165,6 +178,7 @@ attr_euint=Vertė nėra teigiamas sveikasis skaičius
 attr_eboolean=Vertė nėra „teisinga“ ar „klaidinga“
 attr_egone=Atributas nebeegzistuoja!
 attr_eclash=Šioje zonoje jau yra atributas tuo pačiu pavadinimu
+
 status_running=Bėgimas
 status_installed=Sustabdyta
 status_configured=Neįdiegta
@@ -172,13 +186,16 @@ status_incomplete=Įdiegta
 status_ready=Parengta
 status_down=Žemyn
 status_shutting_down=Išsijungia
+
 list_name=Zonos pavadinimas
 list_id=ID Nr.
 list_path=Zonos katalogas
 list_status=Statusas
 list_actions=Veiksmai
+
 zone_in=$1 zonoje
 pool_none=Nė vienas
+
 create_title=Sukurti zoną
 create_header=Nauja zona
 create_path=Zonos failų katalogas
@@ -239,6 +256,7 @@ create_erouter=Trūksta arba netinkamas numatytasis maršrutizatoriaus IP adresa
 create_removingpkgs=pašalinami paveldimi paketų katalogai. ..
 create_brand=Prekės ženklas
 create_brandmsg=Prekės ženklo zona
+
 log_create_zone=Sukurta zona $1 
 log_delete_zone=Ištrinta zona $1 
 log_save_zone=Modifikuota $1 zonos konfigūracija
@@ -262,6 +280,7 @@ log_delete_rctl=Ištrinta išteklių kontrolė $1 zonoje $2
 log_create_attr=Sukurtas bendras atributas $1 zonoje $2 
 log_modify_attr=Modifikuotas bendrasis atributas $1 zonoje $2 
 log_delete_attr=Ištrintas bendrasis atributas $1 zonoje $2 
+
 webmin_eperl=„Perl“ nėra įdiegtas $1 
 webmin_eroot=Katalogas $1 neegzistuoja arba jame nėra „Webmin“.
 webmin_title=Įdiekite „Webmin“

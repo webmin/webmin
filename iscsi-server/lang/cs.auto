@@ -1,5 +1,6 @@
 check_etargets=Konfigurační soubor serveru iSCSI $1 nebyl ve vašem systému nalezen.
 check_eserver=Program serveru iSCSI $1 nebyl ve vašem systému nalezen.
+
 index_title=Server iSCSI
 index_clink=Možná není nainstalována nebo je vaše <a href='$1'>konfigurace modulu</a> nesprávná.
 index_stop=Zastavte server iSCSI
@@ -11,6 +12,7 @@ index_restartdesc=Klepnutím na toto tlačítko použijete aktuální konfigurac
 index_atboot=Začít při spuštění?
 index_atbootdesc=Změňte tuto možnost, abyste určili, zda je server iSCSI spuštěn v době spuštění, či nikoli. Pokud není při spuštění spuštěn a je vybrána možnost Ano, bude vytvořen nový iniciační skript.
 index_return=index modulu
+
 extents_title=Zařízení ke sdílení
 extents_none=Dosud nebyla vytvořena žádná zařízení ke sdílení.
 extents_name=Název zařízení
@@ -25,6 +27,7 @@ extents_denone=Nebyl vybrán žádný
 extents_einuse=Zařízení $1 nelze odstranit, protože je používáno : $2 
 extents_drusure=Opravdu chcete odebrat následující zařízení: $1 ? Jejich obsah bude zachován, ale již nebude přístupný klientům iSCSI.
 extents_sure=Odstraňte zařízení
+
 extent_create=Vytvořte zařízení ke sdílení
 extent_edit=Upravit zařízení ke sdílení
 extent_egone=Zařízení ke sdílení $1 neexistuje!
@@ -50,6 +53,7 @@ extent_estart=Začátek rozsahu musí být číslo
 extent_esize=Velikost rozsahu musí být číslo
 extent_esizemax=Konec rozsahu nemůže být větší než velikost zařízení $1 
 extent_einuse=Toto zařízení nelze odstranit, protože je používáno : $1 
+
 devices_title=Kombinace zařízení
 devices_none=Dosud nebyly vytvořeny žádné kombinace zařízení.
 devices_name=Název kombinace
@@ -65,6 +69,7 @@ devices_denone=Nebyl vybrán žádný
 devices_einuse=Kombinace $1 nelze odstranit, protože ji používá : $2 
 devices_drusure=Opravdu chcete odebrat následující kombinace zařízení: $1 ? Jejich obsah bude zachován, ale již nebude přístupný klientům iSCSI.
 devices_sure=Odstranit kombinace zařízení
+
 device_create=Vytvořit kombinaci zařízení
 device_edit=Upravit kombinaci zařízení
 device_egone=Kombinace zařízení $1 neexistuje!
@@ -81,6 +86,7 @@ device_sure=Odstranit kombinaci zařízení
 device_einuse=Tuto kombinaci zařízení nelze odstranit, protože ji používá : $1 
 device_eextents=Nebyla vybrána žádná členská zařízení
 device_eself=Jedno z vybraných vybraných zařízení obsahuje toto zařízení!
+
 targets_title=Sdílení cílů
 targets_none=Dosud nebyly vytvořeny žádné cíle sdílení.
 targets_name=Název cíle
@@ -96,6 +102,7 @@ targets_derr=Smazání cílů sdílení se nezdařilo
 targets_denone=Nebyl vybrán žádný
 targets_drusure=Opravdu chcete odebrat následující cíle sdílení: $1 ? Žádná data nebudou ztracena, ale nebudou již přístupná klientům iSCSI.
 targets_sure=Smazat cíle sdílení
+
 target_create=Vytvořit cíle sdílení
 target_edit=Upravit cíle sdílení
 target_egone=Cíl sdílení $1 neexistuje!
@@ -112,6 +119,7 @@ target_rusure=Opravdu chcete odstranit cíl sdílení $1 ? Žádná data nebudou
 target_sure=Smazat cíl
 target_enetwork=Chybějící nebo neplatná síť, se kterou chcete sdílet
 target_emask=Chybějící nebo neplatná maska sítě, se kterou chcete sdílet
+
 opts_title=Možnosti serveru iSCSI
 opts_header=Možnosti pro všechny cíle iSCSI
 opts_ip4=Přijměte připojení IPv4
@@ -124,10 +132,12 @@ opts_err=Možnosti se nepodařilo uložit
 opts_ename=Chybějící nebo neplatné jméno - jsou povolena pouze písmena, čísla, pomlčka, tečka a podtržítko
 opts_eport=Chybějící nebo nečíselné číslo portu
 opts_esess=Chybějící nebo nečíselné maximální relace
+
 manual_title=Upravit konfigurační soubor
 manual_desc=Pomocí textového pole níže upravte konfigurační soubor serveru iSCSI $1. Buďte opatrní, protože na vašem vstupu nebude provedena žádná validace!
 manual_err=Uložení konfiguračního souboru se nezdařilo
 manual_edata=Nebyl zadán žádný obsah!
+
 users_title=Ověřování iSCSI
 users_none=Zatím nebyl vytvořen žádný uživatel iSCSI. Klienti budou mít přístup ke sdíleným zařízením bez ověření.
 users_add=Přidejte nového uživatele iSCSI.
@@ -135,6 +145,7 @@ users_delete=Smazat vybrané uživatele
 users_name=Uživatelské jméno
 users_mode=Metoda ověřování
 users_return=seznam uživatelů
+
 user_create=Vytvořte uživatele iSCSI
 user_edit=Upravit uživatele iSCSI
 user_header=Podrobnosti o uživateli iSCSI
@@ -145,13 +156,16 @@ user_egone=Uživatel již neexistuje!
 user_err=Uložení uživatele iSCSI se nezdařilo
 user_euser=Chybějící nebo neplatné uživatelské jméno - mezery a dvojtečky nejsou povoleny
 user_epass=Chybějící nebo neplatné heslo - mezery a dvojtečky nejsou povoleny
+
 desc_extent=Zařízení ke sdílení $1 
 desc_device=Kombinace zařízení $1 
 desc_target=Cíl sdílení $1 
+
 start_err=Spuštění serveru iSCSI se nezdařilo
 stop_err=Zastavení serveru iSCSI se nezdařilo
 restart_err=Restartování serveru iSCSI se nezdařilo
 atboot_err=Při spuštění se nepodařilo povolit
+
 log_create_extent=Vytvořeno zařízení ke sdílení $1 
 log_modify_extent=Aktualizováno zařízení pro sdílení $1 
 log_delete_extent=Odstraněné zařízení ke sdílení $1 

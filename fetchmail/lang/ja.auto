@@ -14,6 +14,7 @@ index_header=Fetchmail構成のユーザー
 index_search=次のFetchmail構成を表示します。
 index_show=公演
 index_toomany=システム上に表示するユーザーが多すぎます。
+
 poll_auth=認証方法
 poll_usually=通常はありません
 poll_ssl=SSLモードで接続しますか？
@@ -33,18 +34,22 @@ poll_ecannot=このユーザーのfetchmail設定を編集することは許可�
 poll_efile=ユーザーのfetchmail構成ファイルのみを編集できます
 poll_eusername=ユーザーは存在しません！
 poll_foruser=ユーザー $1の場合
+
 stop_err=fetchmailを停止できませんでした
 stop_ecannot=fetchmailを停止することはできません
 start_err=fetchmailを開始できませんでした
 start_einterval=チェック間隔が欠落しているか無効です
 start_ecannot=fetchmailを開始することはできません
+
 check_title=サーバーの確認
 check_exec=コマンド $1でサーバー上のメールを確認しています ..
 check_ok=..チェック完了。
 check_failed=..チェックに失敗しました！
+
 global_title=デフォルトの設定
 global_header=すべてのサーバーのデフォルト設定
 global_err=デフォルト設定を保存できませんでした
+
 log_create_poll_file=ファイル $2にサーバー $1を追加しました
 log_modify_poll_file=ファイル $2のサーバー $1を変更しました
 log_delete_poll_file=ファイル $2のサーバー $1を削除しました
@@ -63,6 +68,7 @@ log_stop=fetchmailデーモンを停止しました
 log_create_cron=スケジュールされたチェックを有効にしました
 log_update_cron=変更されたスケジュール済みチェック
 log_delete_cron=スケジュールされたチェックを無効にしました
+
 acl_users=fetchmailの設定を編集できます
 acl_all=すべてのユーザー
 acl_this=現在のwebminユーザー
@@ -70,6 +76,7 @@ acl_only=ユーザーのみ
 acl_except=ユーザーを除くすべて
 acl_cron=スケジュールされたチェックを構成できますか？
 acl_daemon=Fetchmailデーモンを構成できますか？
+
 cron_title=定期点検
 cron_desc=このページを使用して、Cronジョブを有効または無効にして、Fetchmail構成内のメールサーバーを定期的に確認できます。ブート時に再起動する必要がないため、Fetchmailデーモンの実行よりも優れたCronジョブを使用します。
 cron_header=スケジュールされたFetchmail設定
@@ -88,8 +95,10 @@ cron_email=メールアドレスが見つからないか無効です
 cron_euser=Unixユーザーが見つからないか無効です
 cron_errors=エラーが発生した場合にのみ出力しますか？
 cron_ecannot2=スケジュールされたチェックを構成することはできません
+
 user_title=Fetchmailの構成
 user_header=ユーザー $1の場合
 user_return=ユーザーの構成
+
 email_ok=Fetchmailの出力
 email_failed=Fetchmailエラー

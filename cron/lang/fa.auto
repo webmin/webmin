@@ -18,31 +18,40 @@ index_ok=جستجو کردن
 index_searchres=مشاغل کرون مطابق با$1 ..
 index_reset=تنظیم مجدد جستجو
 index_econfigcheck=مشاغل Cron روی سیستم شما قابل مدیریت نیست ، زیرا پیکربندی ماژول معتبر نیست :$1
+
 edit_next=زمان اجرای بعدی
 edit_comment=شرح
 edit_range=محدوده تاریخ برای اجرای
 edit_saverun=اکنون ذخیره و اجرا کنید
 edit_clone=کلون کار
+
 save_eidx=کار Cron با موفقیت ذخیره شد ، اما آنطور که پیدا نشد ، قابل اجرا نیست!
+
 acl_uid=کاربران دارای محدوده UID
 acl_hourly=مشاغل را حداکثر ساعتی محدود کنید؟
 acl_hourlydef=مطابق تنظیمات ماژول تنظیم شده است
+
 log_kill=کار Cron برای$1 پایان یافت
 log_kill_l=کار Cron "$2" برای$1 پایان یافت
 log_crons_delete=کار$1 Cron حذف شد
 log_crons_disable=غیرفعال کردن$1 کار شغلی
 log_crons_enable=مشاغل$1 Cron فعال شد
+
 when_interval=هر$1 ثانیه
 when_boot=در زمان راه اندازی
+
 ucwhen_interval=هر$1 ثانیه
 ucwhen_boot=در زمان راه اندازی
+
 range_all=هر تاریخ اجرا کنید
 range_start=فقط از$1 اجرا شود
 range_end=به$1
 range_estart=تاریخ شروع نامعتبر یا نامعتبر برای اجرای آن است
 range_eend=تاریخ پایان نامعتبر یا نامعتبر برای اجرا است
+
 delete_err=کار Cron حذف نشد
 delete_enone=هیچ یک انتخاب نشده است
+
 manual_title=ویرایش دستی Cron Jobs
 manual_edit=پرونده Cron برای ویرایش:
 manual_ok=ویرایش کنید

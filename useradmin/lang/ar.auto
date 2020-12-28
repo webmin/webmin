@@ -50,11 +50,13 @@ index_mass=حذف المستخدمين المحددين
 index_mass2=تعطيل المحدد
 index_mass3=تمكين المحدد
 index_gmass=حذف المجموعات المختارة
+
 search_title=نتائج البحث
 search_notfound=لم يتم العثور على مستخدمين متطابقين
 search_found=Found $1 matching users ..
 search_gnotfound=لم يتم العثور على مجموعات مطابقة
 search_gfound=Found $1 matching groups ..
+
 uedit_title=تحرير العضو
 uedit_title2=إنشاء مستخدم
 uedit_details=بيانات المستخدم
@@ -132,6 +134,7 @@ uedit_uid_calc=محسوب
 uedit_disabled=تم تعطيل تسجيل الدخول مؤقتًا
 uedit_sys=النظام الافتراضي
 uedit_clone=استنساخ المستخدم
+
 usave_err=فشل في حفظ المستخدم
 usave_eedit=لا يمكنك تعديل هذا المستخدم
 usave_ecreate=لا يمكنك إنشاء مستخدمين جدد
@@ -185,6 +188,7 @@ usave_epasswd_same=كلمة المرور تحتوي على أو نفس اسم ا
 usave_epasswd_mindays=Password was changed less than $1 days ago
 usave_epasswd_cmd=فشل أمر التحقق من صحة كلمة المرور
 usave_eothers=The user was successfully saved, but an error occured in another module : $1
+
 gedit_title=تحرير المجموعة
 gedit_title2=إنشاء مجموعة
 gedit_details=تفاصيل المجموعة
@@ -207,6 +211,7 @@ gedit_selu=المستخدمين في المجموعة
 gedit_pri=أعضاء المجموعة الأساسية
 gedit_prinone=ليس لدى المستخدمين هذه المجموعة كمجموعة أساسية
 gedit_clone=استنساخ المجموعة
+
 gsave_err=فشل في حفظ المجموعة
 gsave_eedit=لا يمكنك تعديل هذه المجموعة
 gsave_ecreate=لا يمكنك إنشاء مجموعات جديدة
@@ -223,6 +228,7 @@ usave_egidused=Group $1 is already using GID $2
 gsave_egidused2=GID قيد الاستخدام بالفعل
 usave_efromroot=لا يمكنك نقل الدليل الرئيسي من /
 usave_etoroot=لا يمكنك نقل الدليل الرئيسي إلى /
+
 logins_title=تسجيلات تسجيل الدخول
 logins_head=Recorded logins for $1
 logins_from=تسجيل الدخول من
@@ -235,6 +241,7 @@ logins_none=لا تسجيلات تسجيل
 logins_elist=غير مسموح لك بسرد معلومات تسجيل الدخول
 logins_elistu=You are not allowed to list logins for '$1'
 logins_local=محلي
+
 udel_title=مسح المستخدم
 udel_err=فشل في حذف المستخدم
 udel_enum=رقم المستخدم غير صحيح
@@ -257,6 +264,7 @@ udel_del2=حذف دليل المستخدم والدليل الرئيسي
 udel_others=WARNING! Home directory $1 contains $2 files owned by other users.
 udel_dothers=حذف المستخدم في وحدات أخرى؟
 udel_root=تحذير! إذا تم حذف المستخدم الجذر ، فقد لا تتمكن من إدارة نظامك في المستقبل.
+
 gdel_title=حذف المجموعة
 gdel_err=فشل في حذف المجموعة
 gdel_eroot=غير مسموح لك بحذف مجموعات النظام (تلك التي لها رقم تعريف عمومي أقل من أو تساوي 10).
@@ -270,6 +278,7 @@ gdel_sure=Are you sure you want to delete the group $1 ?
 gdel_del=حذف المجموعة
 gdel_dothers=حذف المجموعة في وحدات أخرى؟
 gdel_other=الحذف من الوحدات الأخرى ..
+
 many_title=إنشاء عدة مستخدمين
 many_desc=يسمح لك هذا النموذج بإنشاء العديد من المستخدمين مرة واحدة إما من ملف نصي تم تحميله أو محلي. يحدد كل سطر في الملف مستخدمًا واحدًا بالتنسيق التالي:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -293,6 +302,7 @@ many_eshell=Invalid shell at line $1 : $2
 many_emkdir=Failed to create home directory $1 : $2
 many_egtaken=Group name already in use at line $1 : $2
 many_ok=Created user $1
+
 acl_uedit=المستخدمين يونيكس الذين يمكن تحريرها
 acl_uedit_all=جميع المستخدمين
 acl_uedit_none=لا مستخدمين
@@ -352,6 +362,7 @@ acl_udelete=يمكن حذف المستخدمين؟
 acl_gdelete=يمكن حذف المجموعات؟
 acl_urename=يمكن إعادة تسمية المستخدمين؟
 acl_grename=يمكن إعادة تسمية المجموعات؟
+
 log_urename=Renamed user $1 to $2
 log_umodify=Modified user $1
 log_ucreate=Created user $1
@@ -370,6 +381,7 @@ log_ugbatch=تم تنفيذ ملف مجموعة الدفعي الذي تم تح�
 log_ugbatch_l=Executed uploaded group batch file ($1 created, $2 modified, $3 deleted)
 log_delete_users=Deleted $1 users
 log_delete_groups=Deleted $1 groups
+
 batch_title=تنفيذ ملف دفعي
 batch_ecannot=لا يمكنك استخدام نموذج الملف الدفعي
 batch_desc=يتيح لك هذا النموذج إنشاء أو تعديل أو حذف العديد من المستخدمين مرة واحدة من ملف نصي تم تحميله أو محلي. يحدد كل سطر في الملف إجراءً واحدًا يجب اتخاذه ، وفقًا لحقله الأول. تنسيقات الخط هي :
@@ -428,12 +440,14 @@ batch_eexpire=Invalid expiry day on line $1 : $2
 batch_echange=Invalid password change day on line $1 : $2
 batch_instr=التعليمات وتنسيق الدفعة
 batch_header=خيارات إنشاء وتحديث وحذف المستخدم الدفعي
+
 who_title=تسجيل المستخدمين
 who_user=مستخدم يونيكس
 who_tty=TTY
 who_when=تسجيل الدخول في
 who_from=تسجيل الدخول من
 who_none=لا يوجد مستخدمون حاليا بتسجيل الدخول.
+
 export_title=تصدير ملف دفعي
 export_desc=يسمح لك هذا النموذج بإنشاء ملف دفعي يحتوي على بعض أو كل المستخدمين المتاحين على النظام. يمكن استخدام الملف في صفحة "تنفيذ ملف الدُفعات" على نظام آخر لإعادة إنشاء المستخدمين الذين تم تصديرهم ، على افتراض أنه يستخدم تنسيق ملف الدُفعات المحدد.
 export_header=خيارات تصدير المستخدم الدفعي
@@ -454,6 +468,7 @@ export_done=Successfully exported $1 users to the file $2 ($3).
 export_pft=تنسيق ملف دفعي
 export_who=المستخدمين للتصدير
 export_ecannot=غير مسموح لك بتصدير المستخدمين
+
 gexport_title=تصدير مجموعات دفعة الملف
 gexport_desc=يسمح لك هذا النموذج بإنشاء ملف دفعي يحتوي على بعض أو كل المجموعات المتوفرة على النظام. يمكن استخدام الملف في صفحة Execute Group Batch File على نظام آخر لإعادة إنشاء المجموعات المصدرة.
 gexport_header=خيارات تصدير مجموعة الدُفعات
@@ -462,6 +477,7 @@ gexport_ecannot=غير مسموح لك بتصدير المجموعات
 gexport_err=فشل في تصدير ملف دفعي للمجموعة
 gexport_egid=GID الأول غير صالح في النطاق
 gexport_egid2=GID الثاني غير صالح في النطاق
+
 pft_0=Classic <tt>passwd</tt> file only
 pft_1=BSD <tt>master.passwd</tt> file
 pft_2=Standard <tt>passwd</tt> and <tt>shadow</tt> files
@@ -469,6 +485,7 @@ pft_3=Unixware <tt>passwd</tt> file
 pft_4=AIX <tt>passwd</tt> and <tt>security</tt> files
 pft_5=OpenServer <tt>passwd</tt> and short <tt>shadow</tt> files
 pft_6=قاعدة بيانات MacOS NetInfo
+
 umass_title=حذف المستخدمين
 umass_err=فشل في حذف المستخدمين
 umass_sure=Are you sure you want to delete the $1 selected users? Their home directories contain $2 of files.
@@ -480,6 +497,7 @@ umass_del1=حذف المستخدمين
 umass_del2=حذف المستخدمين والدلائل الرئيسية
 umass_eroot=غير مسموح لك بحذف مستخدمي النظام (أولئك الذين لديهم UID أقل من أو يساوي 10).
 umass_doing=Deleting user $1 ..
+
 gmass_title=حذف المجموعات
 gmass_err=فشل في حذف المجموعات
 gmass_sure=Are you sure you want to delete the $1 selected groups?
@@ -489,16 +507,19 @@ gmass_del=حذف المجموعات
 gmass_eroot=غير مسموح لك بحذف مجموعات النظام (تلك التي لها رقم تعريف عمومي أقل من أو تساوي 10).
 gmass_doing=Deleting group $1 ..
 gmass_eprimary=The group $1 cannot be deleted, as it is the primary group of user $2.
+
 dmass_title=تعطيل المستخدمين
 dmass_sure=Are you sure you want to disable the $1 selected users? They can be re-enabled later with no loss of their passwords or data.
 dmass_dis=تعطيل المستخدمين
 dmass_pass=قفل كلمة المرور مؤقتًا ..
 dmass_doing=Disabling user $1 ..
 dmass_already=.. معطل بالفعل!
+
 emass_title=تمكين المستخدمين
 emass_pass=فتح كلمة المرور ..
 emass_doing=Enabling user $1 ..
 emass_already=.. ممكن بالفعل!
+
 gbatch_title=تنفيذ مجموعة دفعة الملف
 gbatch_ecannot=لا يمكنك استخدام نموذج ملف دُفعات المجموعة
 gbatch_desc=يسمح لك هذا النموذج بإنشاء أو تعديل أو حذف العديد من المجموعات مرة واحدة من ملف نصي تم تحميله أو محلي. يحدد كل سطر في الملف إجراءً واحدًا يجب اتخاذه ، وفقًا لحقله الأول. تنسيقات الخط هي :

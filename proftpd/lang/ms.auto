@@ -27,7 +27,9 @@ index_global=Konfigurasi Global
 index_create=Buat pelayan maya
 index_version=Versi ProFTPd $1 
 index_proftpd=ProFTPd
+
 efailed=Gagal menyimpan $1 
+
 type_0=Pilihan Rangkaian
 type_1=Pilihan Pembalakan
 type_2=Fail dan Direktori
@@ -35,6 +37,7 @@ type_3=Kawalan Akses
 type_4=Pelbagai
 type_5=Pengguna dan Kumpulan
 type_6=Pengesahan
+
 virt_title=Pilihan Pelayan Maya
 virt_header1=Untuk $1 
 virt_header2=Untuk pelayan lalai
@@ -50,6 +53,7 @@ virt_cmds=Arahan FTP
 virt_return=pelayan maya
 virt_virt=Konfigurasikan Pelayan Maya
 virt_edit=Edit Arahan
+
 vserv_title=Konfigurasikan Pelayan Maya
 vserv_addr=Alamat
 vserv_name=Nama pelayan
@@ -58,6 +62,7 @@ vserv_delete=Padam pelayan maya
 vserv_eaddr=Alamat yang hilang atau tidak sah
 vserv_eport=Nombor port hilang atau tidak sah
 vserv_ename=Nama pelayan yang hilang
+
 anon_title=Pilihan FTP tanpa nama
 anon_header1=Dalam pelayan maya $1 
 anon_header2=Dalam pelayan lalai
@@ -65,6 +70,7 @@ anon_anon=Konfigurasi FTP Anonim
 anon_return=pilihan FTP anonim
 anon_header3=Untuk FTP tanpa nama di pelayan maya $1 
 anon_header4=Untuk FTP tanpa nama dalam pelayan lalai
+
 aserv_title=Konfigurasi FTP Anonim
 aserv_create=Persediaan FTP Tanpa Nama
 aserv_root=Had kepada direktori
@@ -75,6 +81,7 @@ aserv_eroot=Direktori chroot yang hilang atau tidak sah
 aserv_euser=Pengguna Unix yang hilang atau tidak sah
 aserv_egroup=Kumpulan Unix yang hilang atau tidak sah
 aserv_desc=FTP tanpa nama belum lagi disediakan untuk pelayan maya ini. Gunakan borang ini untuk menetapkan pilihan konfigurasi permulaan.
+
 dir_title=Pilihan Per-Direktori
 dir_header2=Untuk direktori $1 dalam pelayan lalai
 dir_header1=Untuk direktori $1 dalam pelayan maya $2 
@@ -85,6 +92,7 @@ dir_header=Pilihan per-perintah
 dir_dir=Konfigurasi Direktori
 dir_header4=Untuk direktori $1 dalam FTP tanpa nama
 dir_header5=Untuk direktori $1 secara global
+
 manual_title=Edit Arahan
 manual_header=Gunakan kotak teks di bawah untuk mengedit arahan ProFTPD secara manual dalam $1 yang digunakan untuk pelayan maya, direktori atau arahan ini.
 manual_configs=Edit Fail Config
@@ -92,6 +100,7 @@ manual_ecannot=Anda tidak dibenarkan mengedit arahan secara manual
 manual_file=Edit Arahan dalam Fail:
 manual_efile=Fail konfigurasi ProFTPd tidak sah
 manual_etest=Kesilapan fail konfigurasi dikesan : $1 
+
 limit_title=Pilihan Per-Perintah
 limit_header4=Untuk arahan $1 dalam direktori $2 
 limit_header2=Untuk arahan $1 dalam pelayan lalai
@@ -103,17 +112,20 @@ limit_return=opsyen per-arahan
 limit_header5=Untuk arahan $1 dalam FTP tanpa nama
 limit_header6=Untuk arahan $1 dalam fail $2 
 limit_header7=Untuk arahan $1 secara global
+
 lserv_title=Mengkonfigurasi Perintah
 lserv_cmd=Arahan FTP
 lserv_delete=Padam konfigurasi perintah
 lserv_err=Gagal menyimpan arahan
 lserv_ecmd=Tiada perintah yang dipilih
+
 dserv_title=Konfigurasi Direktori
 dserv_dir=Laluan direktori
 dserv_err=Gagal menyimpan direktori
 dserv_edir=Jalan direktori yang tiada
 dserv_delete=Padam config direktori
 dserv_eanondir=Direktori mestilah di bawah direktori FTP tanpa nama
+
 mod_core_type=Jenis pelayan
 mod_core_inetd=Jalankan dari Inetd
 mod_core_stand=Daemon berdiri sendiri
@@ -301,6 +313,7 @@ mod_core_duser=Tolak pengguna
 mod_core_eip='$1' bukan alamat IP yang sah
 mod_core_enet='$1' bukan alamat rangkaian yang sah
 mod_core_ehost='$1' bukan nama hos yang sah
+
 mod_ls_fakegroup=Kumpulan palsu dalam senarai direktori?
 mod_ls_fakeuser=Pengguna palsu dalam senarai direktori?
 mod_ls_fakemode=Kebenaran palsu dalam senarai direktori
@@ -317,6 +330,7 @@ mod_ls_efakeuser=Pengguna palsu atau tidak sah tidak dapat
 mod_ls_efakegroup=Kumpulan palsu atau tidak sah palsu
 mod_ls_options=Pilihan senarai direktori
 mod_ls_strict=Mengatasi pilihan pengguna?
+
 mod_auth_chdir=Direktori log masuk awal
 mod_auth_echdir=Direktori awal yang hilang atau tidak sah
 mod_auth_chroot=Hadkan pengguna ke direktori
@@ -330,7 +344,9 @@ mod_auth_egroups=Tiada kumpulan Unix untuk chroot yang dimasukkan
 mod_auth_echroot=Direktori chroot yang hilang atau tidak sah
 mod_auth_login=Jangan minta kata laluan jika login ditolak?
 mod_auth_root=Benarkan log masuk dengan root?
+
 mod_site_chmod=Benarkan perintah chmod?
+
 mod_unixpw_ufile=Fail kata laluan Unix alternatif
 mod_unixpw_eufile=Fail kata laluan Unix atau tidak sah
 mod_unixpw_gfile=Fail kumpulan Unix alternatif
@@ -338,6 +354,7 @@ mod_unixpw_egfile=Fail kumpulan Unix atau tidak sah
 mod_unixpw_none=Tiada
 mod_unixpw_pam=Sentiasa merawat PAM sebagai authorative?
 mod_unixpw_persist=Simpan fail kata laluan terus dengan berterusan?
+
 mod_log_syslog=Kesilapan log untuk fail
 mod_log_sysdef=Log sistem
 mod_log_esyslog=Fail log hilang atau tidak sah
@@ -354,19 +371,25 @@ mod_log_fmt=Format rentetan
 mod_log_format=Format log tersuai
 mod_log_enickname=Nama format yang hilang atau tidak sah
 mod_log_efmt=Rangkaian format yang tiada
+
 mod_pam_pam=Gunakan PAM untuk pengesahan?
 mod_pam_config=Pengesahan menggunakan perkhidmatan PAM
 mod_pam_econfig=Perkhidmatan PAM hilang atau tidak sah
+
 mod_readme_display=Beritahu pengguna fail readme matching
 mod_readme_none=Tiada
 mod_readme_edisplay=Fail fail readme hilang
+
 start_err=Gagal memulakan pelayan FTP
 start_einetd=Anda tidak boleh memulakan daemon pelayan apabila dalam mod inetd.
+
 stop_err=Gagal menghentikan pelayan FTP
 stop_einetd=Anda tidak boleh menghentikan daemon pelayan semasa dalam mod inetd.
 stop_erun=Tidak berlari
+
 apply_err=Gagal menggunakan konfigurasi FTP
 apply_egone=Tidak lagi berjalan
+
 ftpaccess_title=Fail Per-Direktori Pilihan
 ftpaccess_desc=Pilihan per direktori tambahan boleh ditentukan dalam fail (biasanya dipanggil <tt>.ftpaccess</tt>) di setiap direktori. Pilihannya dikenakan ke semua fail dalam direktori itu dan mana-mana sub-direktori, melainkan ditimpa oleh fail pilihan lain.
 ftpaccess_create=Buat Fail Pilihan
@@ -374,8 +397,10 @@ ftpaccess_find=Cari Fail Pilihan
 ftpaccess_auto=Di bawah nama tanpa nama
 ftpaccess_from=Dari direktori
 ftpaccess_return=senarai fail pilihan
+
 ftpusers_title=Pengguna FTP yang ditolak
 ftpusers_desc=Jika didayakan di bawah ikon <tt>Pengesahan</tt>, pengguna yang disenaraikan di bawah dari fail $1 akan dinafikan akses masuk kepada pengguna FTP.
+
 ftpindex_title=Fail Pilihan Per Direktori
 ftpindex_delete=Padam fail
 ftpindex_opts=Pilihan Per-Direktori
@@ -385,8 +410,10 @@ ftpindex_addlimit=Tambah pilihan per-perintah untuk ..
 ftpindex_header2=$1 dalam $2 
 ftpindex_return=fail pilihan per direktori
 ftpindex_header=Untuk $1 
+
 find_err=Gagal mencari fail pilihan
 find_eanon=FTP tanpa nama tidak disediakan dalam mana-mana pelayan maya
+
 log_global=Pilihan global $1 berubah
 log_ftpusers=Ditukar menafikan pengguna FTP
 log_virtc=Server yang dibuat $1 
@@ -420,6 +447,7 @@ log_anonm=FTP anonymous disunting secara manual untuk pelayan $1
 log_anon=Menukar $1 dalam FTP tanpa nama untuk pelayan $2 
 log_start=Bermula proftpd
 log_apply=Perubahan yang digunakan
+
 eafter=Pengesahan konfigurasi gagal: $1 Perubahan belum disimpan.
 proftpd_apply=Terapkan Perubahan
 proftpd_stop=Hentikan ProFTPd

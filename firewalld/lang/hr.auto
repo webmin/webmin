@@ -30,6 +30,7 @@ index_return=popis zona
 index_ezones=Nisu pronađene FirewallD zone!
 index_none=U ovoj zoni još nema dozvoljenih ulaza ili usluga.
 index_ifaces=Primjena pravila na sučelja:
+
 port_edit=Uredi port
 port_create=Dodajte port
 port_header=Dopuštene mogućnosti priključaka
@@ -45,11 +46,13 @@ port_eport=Nedostaje ili nevažeći broj ili naziv porta
 port_eportlow=Niski port mora biti broj
 port_eporthigh=Visoki port mora biti broj
 port_eportrange=Niski port mora biti ispod visokog
+
 serv_edit=Usluga uređivanja
 serv_create=Dodavanje usluge
 serv_header=Dopuštene opcije usluge
 serv_name=Usluga koja dopušta
 serv_err=Spremanje usluge nije uspjelo
+
 forward_edit=Uredi naprijed
 forward_create=Stvori naprijed
 forward_header=Opcije prosljeđivanja luka
@@ -61,10 +64,13 @@ forward_dstaddr=Adresa odredišta
 forward_dstlocal=Ovaj sustav
 forward_edstaddr=Nevažeća odredišna adresa IPv4
 forward_eneither=Odredišna adresa ili port ili oba moraju biti unesena
+
 check_ecmd=Naredba FirewallD kontrole $1 nije pronađena u vašem sustavu
+
 delete_err=Brisanje pravila nije uspjelo
 delete_enone=Nijedan nije odabran!
 delete_edel=Uklanjanje $1 nije uspjelo : $2 
+
 zone_title=Stvori zonu
 zone_header=Nove opcije zona
 zone_name=Naziv zone
@@ -77,12 +83,16 @@ zone_mode4=Portovi koji se koriste za virtualni hosting
 zone_err=Nije uspjelo stvaranje zone
 zone_ename=Nedostaje ili nevažeće ime zone
 zone_eclash=Zona s istim nazivom već postoji
+
 delzone_title=Izbriši zonu
 delzone_err=Brisanje zone nije uspjelo
 delzone_edefault=Zadana zona ne može se ukloniti
 delzone_rusure=Jeste li sigurni da želite izbrisati zonu $1 koja sadrži $2 priključka i $3 usluge?
+
 defzone_err=Nije uspjelo napraviti zonu zadanu
+
 restart_err=Konfiguracija nije primijenjena
+
 stop_err=Zaustavljanje FirewallD-a nije uspjelo
 start_err=Pokretanje FirewallD-a nije uspjelo
 log_stop=Zaustavljen firewallD

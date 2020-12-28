@@ -13,6 +13,7 @@ index_applydesc=Klik op hierdie knoppie om die huidige SpamAssassin-opstelling t
 index_cpan=Omdat SpamAssassin 'n Perl-module is, kan u dit ook outomaties installeer met behulp van Webmin se <a href='$2'>Perl Modules</a> module om $1 van CPAN af te laai.
 index_spamassassin=Spam Assassin
 index_ecannot=U mag nie die SpamAssassin-konfigurasielêer $1 bestuur nie
+
 white_title=Toegestane en geweierde adresse
 white_desc=Die tabelle op hierdie bladsy stel u in staat om van: en na: adresse vir e-posse te spesifiseer wat altyd of nooit as strooipos gekategoriseer word nie. Enige ander e-posadres sal soos gewoonlik deur SpamAssassin se reëls verwerk word. Alle e-posadresse kan wildkaarte bevat, soos *@foo.com of *.foo.com om by alle domeine te pas.
 white_from=Senders moet nooit as strooipos klassifiseer nie
@@ -44,6 +45,7 @@ white_tabham=Toegestane adresse
 white_tabspam=Adresse geweier
 white_tabsome=Bestemmingsadresse
 white_tabimport=Voer adresse in
+
 score_title=Strooiposklassifikasie
 score_desc=SpamAssassin ken 'n telling aan elke boodskap toe op grond van die inhoud en opskrifte. Die opsies op hierdie bladsy bepaal die punt waarbo 'n boodskap as strooipos beskou word, en sommige van die metodes waardeur die telling bereken word.
 score_header=Opmerkings vir spam-boodskappe
@@ -77,6 +79,7 @@ score_emxdelay=Sekondes ontbreek of ongeldig om tussen MX-tjeks te wag
 score_etimeout=Sekondes ontbreek of ongeldig om te wag vir RBL-vrae
 score_ereceived=Ontbrekende of ongeldige aantal Ontvangde: kopkaarte om met RBL te kontroleer
 score_bayes=Gebruik Bayes-leerklassifikasie?
+
 report_title=Boodskapwysiging
 report_desc=Die opsies op hierdie bladsy beheer die wysigings wat SpamAssassin aanbring in die opskrifte en inhoud van alle boodskappe wat dit ontleed, en wysigings wat dit aan diegene wat as strooipos geklassifiseer word, aanbring.
 report_header=Opsies vir die wysiging van ontleed en gemorspos
@@ -109,6 +112,7 @@ report_addspam=Gemorspos
 report_addham=ham
 report_addall=Almal
 report_eaddheader=Bykomende of ekstra ongekopte kopkop om $1 by te voeg
+
 user_title=Verskeie gebruikersopsies
 user_desc=Die opsies op hierdie bladsy hou meestal verband met die paaie en instellings wat SpamAssassin gebruik vir die eksterne spam-identifikasiepakkette Razor, DCC en Pyzor. U kan ook vir SpamAssassin sê of dit DNS-soek kan doen of nie.
 user_header=Diverse opsies op gebruikersvlak
@@ -131,6 +135,7 @@ user_err=Kon nie gebruikersopsies stoor nie
 user_etimeout='$1' is nie 'n geldige time-out nie
 user_epath='$1' is nie 'n geldige kliëntprogrampad nie
 user_emax='$1' is nie 'n geldige tjeksumtelling nie
+
 header_title=Kop- en lyftoetse
 header_desc=Op hierdie bladsy kan u addisionele toetse definieer wat SpamAssassin op e-pos sal toepas, gebaseer op boodskapopskrifte, die inhoud van die liggaam, URL's wat in die liggaam gevind word, of kombinasies van ander toetse. Die naam wat aan elke toets toegeken word, is aan u, maar is gewoonlik iets soos CONTAINS_FOO. Die werklike telling wat SpamAssassin voeg by boodskappe wat ooreenstem met 'n toets, kan gestel word deur u eie of ingeboude toetsname in die tabelle onderaan die bladsy in te voer.
 header_switch=Skakel oor na eenvoudige modus ..
@@ -164,6 +169,7 @@ header_eeval='$1' is nie 'n geldige evalueringsfunksie nie
 header_eheader='$1' is nie 'n geldige e-poskop nie
 header_eregexp='$1' is nie 'n geldige reëlmatige uitdrukking nie (moet soos / uitdrukking /) wees
 header_emeta=Toetsuitdrukking vir toets '$1' ontbreek
+
 priv_title=Diverse bevoorregte opsies
 priv_desc=Die opsies hierop kan slegs wêreldwyd gestel word, eerder as in die konfigurasielêers van individuele gebruikers. Hulle beheer met paaie na verskillende konfigurasie- en meldlêers.
 priv_header=Instellings vir verskillende voorregte-vlak
@@ -183,6 +189,7 @@ priv_eargs='$1' is nie 'n geldige lys argumente nie
 priv_emscore='$1' is nie 'n geldige telling vir die hoogste frase nie
 priv_ephrase='$1' is nie 'n geldige spam-frase met twee woorde nie
 priv_escore=Ontbrekende of ongeldige telling vir strooiposfrase '$1'
+
 usually=Gewoonlik $1 
 ecannot=U mag nie hierdie bladsy gebruik nie
 setup_title=Installeer Procmail vir SpamAssassin
@@ -202,11 +209,13 @@ setup_drop1=Gebruiker van Unix van ontvanger
 setup_drop0=<tt>wortel</tt> gebruiker
 setup_ok=Installeer Procmail vir SpamAssassin
 setup_email=Stuur na e-pos adres
+
 setup_err=Kon nie SpamAssassin opstel nie
 setup_efile=Mbox-formaatlêer ontbreek of ongeldig
 setup_emaildir=Ontbrekende of ongeldige Qmail-posgids
 setup_emhdir=MH-posadres ontbreek of ongeldig
 setup_eemail=E-posadres ontbreek of ongeldig
+
 log_white=Gewysigde adresse word toegelaat en geweier
 log_score=Gewysigde spam-klassifikasie
 log_report=Gewysigde boodskapwysiging
@@ -217,12 +226,14 @@ log_setup=Installeer Procmail vir SpamAssassin
 log_procmail=Procmail-opstelling verander
 log_import=$1 toegelate adresse ingevoer
 log_manual=Handmatig geredigeerde konfigurasielêer
+
 import_title=Voer adresse in
 import_err=Kon nie adresse invoer nie
 import_efile=Geen lêer om uit te voer nie
 import_enone=Geen e-posadresse word in die lêer gevind nie
 import_ok1=$2 e-posadresse is in die lêer gevind, waarvan $1 nuut was en bygevoeg is tot die toegelate adreslys.
 import_ok2=$1 e-posadresse is in die lêer gevind, maar hulle was almal reeds in die toegelate adreslys.
+
 mail_title=Strooipos
 mail_desc=Hierdie bladsy bevat 'n lys van boodskappe wat as strooipos geklassifiseer is en wag op aksie. Boodskappe wat verkeerd geïdentifiseer is, kan na u inkassie geskuif word, terwyl die boodskappe wat regtig gemorspos is, uitgevee kan word.
 mail_level=telling
@@ -240,10 +251,13 @@ mail_will=Outomatiese opdatering binne $1 minute
 mail_wills=Outomatiese opdatering binne $1 sekondes
 mail_delall=Vee alle strooipos uit
 mail_search3=Soek vir die telling hierbo:
+
 process_eclean=Kon nie die SpamAssassin-opskrifte uit hierdie e-pos verwyder nie
 process_ereport=Kon nie e-pos aan SpamAssassin rapporteer nie : $1 
+
 apply_err=Kon nie veranderinge toepas nie
 apply_none=Geen SpamAssassin-demoonprosesse gevind nie!
+
 acl_avail=Ikone beskikbaar vir die gebruiker
 acl_file=SpamAssassin-konfigurasielêer om te redigeer
 acl_filedef=Globale konfigurasielêer
@@ -251,8 +265,10 @@ acl_awl=Toegestane gebruikers vir outomatiese witlysredigering
 acl_awl0=Alle gebruikers
 acl_awl1=Slegs gelysde gebruikers $1 
 acl_awl2=Slegs lede van groepe $1 
+
 search_escore=Ontbrekende of ongeldige spam-telling
 search_results5=$1 e-posboodskappe met spam is hoër as $2.
+
 razor_title=Stel 'n skeermes-strooipopspeler op
 razor_desc=Vipul's Razor is 'n samewerkende stelsel vir die opsporing en rapportering van spam, wat die klassifikasie van spam wat na u adres gestuur word, kan verbeter. Voordat dit gebruik kan word, moet u egter op die onderstaande vorm registreer vir 'n Razor-rekening.
 razor_user=Gebruik van die skeermes
@@ -267,6 +283,7 @@ razor_epass=Wagwoord ontbreek
 razor_doing=Probeer nou om Razor te registreer en op te stel.
 razor_done=.. klaar.
 razor_failed=.. misluk! Kyk na die foutuitset hierbo vir die rede waarom.
+
 amavisd_title=Aflewering van Amavisd-strooipos
 amavisd_desc=Die vorm kan gebruik word om die Amavisd-opstelling te verander wat bepaal wat gebeur met boodskappe wat as strooipos geklassifiseer word.
 amavis_ok=Verander Amavisd-aflewering
@@ -304,9 +321,11 @@ amavis_quarantine_today=Gemorspos in Quarantine vandag (24 uur)
 amavis_quarantine_week=Strooipos hierdie week (7 dae) in kwarantyn
 amavis_quarantine_month=Gemorspos hierdie maand (30 dae) in kwarantyn
 amavis_quarantine_total=Totale aantal strooipos in kwarantyn
+
 procmail_title=Procmail-strooipos aflewering
 procmail_ok=Verander Procmail-aflewering
 procmail_desc=Die vorm kan gebruik word om die Procmail-konfigurasie te verander wat bepaal wat gebeur met boodskappe wat as strooipos geklassifiseer word.
+
 simple_title=Kop- en lyftoetse
 simple_desc=Op hierdie bladsy kan u addisionele toetse definieer wat SpamAssassin op e-pos sal toepas, gebaseer op boodskapopskrifte, die inhoud van die liggaam, URL's wat in die liggaam gevind word. Die naam wat aan elke toets toegeken word, is aan u, maar is gewoonlik iets soos CONTAINS_FOO.
 simple_switch=Skakel oor na gevorderde modus ..
@@ -317,8 +336,10 @@ simple_regexp=Pas uitdrukking
 simple_score=Telling om toe te pas
 simple_describe=beskrywing
 simple_err=Kon nie boodskaptoetse stoor nie
+
 before_ecmd=Die opdrag voor stoor misluk : $1 
 after_ecmd=Na-besparing opdrag misluk : $1 
+
 connect_emysql=Kon nie die databasisbestuurder $1 laai nie
 connect_elogin=Kon nie by die databasis $1:$2 aanmeld nie.
 connect_equery=Die databasis $1 bevat nie die voorkeurtabel $2 nie
@@ -326,9 +347,11 @@ connect_eldapmod=Perl-module $1 wat nodig is om met LDAP te kommunikeer, is nie 
 connect_eldap=Kon nie aan LDAP-bediener $1 op poort $2 koppel nie
 connect_eldaplogin=Kon nie by LDAP-bediener $1 aanmeld as $2 : $3 nie
 connect_ebase=LDAP-basis DN $1 is nie geldig nie : $2 
+
 eldap=LDAP-werking misluk : $1 
 esql=SQL misluk : $1 
 ldap_euser=Kon nie LDAP-gebruikersvoorwerp vir $1 vind nie
+
 db_title=SQL- en LDAP-databasisse
 db_header=Opstel van databasisopsies vir stoor
 db_dsn=Stoor gebruikerskonfigurasies in
@@ -364,6 +387,7 @@ db_eldapport=Ontbrekende of ongeldige LDAP-bedienerspoortnommer
 db_eldapdn=Ontbrekende of ongeldige basis-DN - geen spasies word toegelaat nie
 db_eldapattr=SpamAssassin-kenmerk ontbreek of ongeldig
 db_eldapuid=Ontbrekende of ongeldige gebruikersnaamkenmerk
+
 awl_title=Bestuur outomatiese witlyste
 awl_search=Soek witlys vir:
 awl_ok=Soek
@@ -389,6 +413,7 @@ awl_deleteone=Vee outomatiese witlys uit
 awl_deleteonedesc=Verwyder alle inskrywings vir outomatiese witlys vir die gebruiker $1.
 awl_deleteall=Vee alle outomatiese witlys uit
 awl_deletealldesc=Verwyder alle inskrywings vir outomatiese witlys vir alle gebruikers op die stelsel.
+
 dawl_err=Kon nie uit die outomatiese witlys uitvee nie
 dawl_eopen=Kon nie die witlys oopmaak nie
 dawl_enone=Geen adresse om uit te vee gekies nie
@@ -396,6 +421,7 @@ dawl_ecannot=U mag nie die outomatiese witlys vir hierdie gebruiker bestuur nie
 dawl_doing=Vee outomatiese witlys vir alle gebruikers uit ..
 dawl_done=.. $2 inskrywings van $1 gebruikers verwyder.
 dawl_title=Vee alle outomatiese witlys uit
+
 manual_title=Wysig konfiglêers
 manual_file=Wysig konfigurasielêer:
 manual_ok=OK

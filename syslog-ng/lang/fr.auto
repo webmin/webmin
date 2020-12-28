@@ -9,6 +9,7 @@ index_start=Démarrez Syslog-NG
 index_startdesc=Cliquez sur ce bouton pour démarrer le démon Syslog-NG, en utilisant la configuration actuelle.
 index_return=index du module
 index_version=Syslog-NG $1 
+
 options_title=Options de journalisation
 options_header=Options pour tous les fichiers journaux
 options_secs=secondes
@@ -55,6 +56,7 @@ options_esync=Nombre de messages manquant ou invalide à mettre en mémoire tamp
 options_estats=Temps manquant ou non numérique pour attendre entre les messages de statistiques
 options_elog_fifo_size=Nombre de messages manquant ou invalide à mettre en mémoire tampon
 options_elog_msg_size=Taille maximale des messages de journal manquante ou non numérique
+
 destinations_title=Destinations de journal
 destinations_name=Nom de destination
 destinations_type=Écrire à
@@ -77,6 +79,7 @@ destinations_add=Ajoutez une nouvelle destination de journal.
 destinations_return=destinations de journal
 destinations_desc=Journal d'un autre module
 destinations_cmd=Sortie de $1 
+
 destination_header=Options de destination du journal
 destination_title1=Créer une destination de journal
 destination_title2=Modifier la destination du journal
@@ -117,17 +120,22 @@ destination_enet_localip=Adresse IP locale manquante ou invalide
 destination_enet_localport=Numéro de port local manquant ou invalide
 destination_enet_host=Hôte ou adresse de serveur Syslog manquant ou non valide
 destination_eunix=Nom de socket Unix manquant
+
 ddelete_err=Impossible de supprimer les destinations
 ddelete_enone=Aucune sélection
 ddelete_eused=La destination $1 ne peut pas être supprimée, car elle est utilisée par une cible de journal
+
 sdelete_err=Impossible de supprimer les sources
 sdelete_enone=Aucune sélection
 sdelete_eused=La source de journal $1 ne peut pas être supprimée, car elle est utilisée par une cible de journal
+
 fdelete_err=Impossible de supprimer les filtres
 fdelete_enone=Aucune sélection
 fdelete_eused=Le filtre de journal $1 ne peut pas être supprimé, car il est utilisé par une cible de journal
+
 ldelete_err=Impossible de supprimer les cibles de journal
 ldelete_enone=Aucune sélection
+
 filters_title=Filtres de journaux
 filters_name=Nom du filtre
 filters_desc=Conditions
@@ -144,6 +152,7 @@ filters_program=programme <tt>$1</tt>
 filters_match=correspond à "$1"
 filters_host=à partir du nom d'hôte <tt>$1</tt>
 filters_netmask=de l'expéditeur <tt>$1</tt>
+
 filter_title1=Créer un filtre de journal
 filter_title2=Modifier le filtre de journal
 filter_header=Détails des spécifications du filtre de journal
@@ -169,6 +178,7 @@ filter_enet=Adresse IP réseau manquante ou non valide
 filter_emask=Masque de réseau manquant ou invalide
 filter_ebool=Erreur dans l'expression complexe
 filter_egone=Le filtre n'existe plus!
+
 logs_title=Cibles de journal
 logs_source=Sources
 logs_filter=Filtres
@@ -177,6 +187,7 @@ logs_add=Ajoutez une nouvelle cible de journal.
 logs_delete=Supprimer les cibles de journaux sélectionnées
 logs_return=consigner les cibles
 logs_none=Aucun
+
 log_title1=Créer une cible de journal
 log_title2=Modifier la cible du journal
 log_header=Consigner les sélections de source, de filtre et de destination
@@ -190,6 +201,7 @@ log_flags=Options cibles
 log_egone=La cible de journal n'existe plus!
 log_err=Échec de l'enregistrement de la cible du journal
 log_esource=Aucune source sélectionnée
+
 sources_title=Sources de journal
 sources_none=Aucune source n'a encore été définie!
 sources_add=Ajoutez une nouvelle source de journal.
@@ -207,6 +219,7 @@ sources_typen=Flux de soleil
 sources_typenw=Serveur Syslog
 sources_return=sources de journal
 sources_none2=Aucun
+
 source_title1=Créer une source de journal
 source_title2=Modifier la source du journal
 source_header=Options de source de journal
@@ -243,15 +256,20 @@ source_door=Nom de fichier de la porte
 source_esun_streams_name=Nom de fichier des flux Sun manquant ou non valide
 source_edoor=Nom de fichier de porte Sun streams manquant ou non valide
 source_transport=Protocole réseau
+
 view_title=Afficher le fichier journal
 view_header=$1 dernières lignes de $2 
 view_empty=Le fichier journal est vide
 view_refresh=Rafraîchir
 view_filter=Afficher uniquement les lignes avec le texte $1 
+
 apply_err=Impossible d'appliquer la configuration
 apply_egone=Ne pas courrir!
+
 start_err=Impossible de démarrer le serveur Syslog-NG
+
 stop_err=Impossible d'arrêter le serveur Syslog-NG
+
 log_create_destination=Destination de journal créée $1 
 log_modify_destination=Destination de journal modifiée $1 
 log_delete_destination=Destination de journal supprimée $1 

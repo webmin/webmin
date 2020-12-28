@@ -1,6 +1,7 @@
 index_title=Serwer poczty Postfix
 index_epath=W systemie nie zainstalowano polecenia kontrolnego Postfiksa $1. Byc może Twoja <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa lub nie zainstalowano Postfiksa.
 index_postfix=Postfix
+
 internal_error=Błąd wewnętrzny
 index_econfig=Polecenie konfiguracyjne Postfiksa $1 nie istnieje. Byc może Twoja <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
 index_stop=Zatrzymaj Postfiksa
@@ -9,7 +10,9 @@ index_stopmsg=Naciśnij ten przycisk, aby zatrzymać działający serwer pocztow
 index_startmsg=Naciśnij ten przycisk, aby uruchomić serwer pocztowy Postfix. Dopóki go nie uruchomisz, poczta z innych systemów nie będzie doręczana lokalnym użytkownikom, ani też klienci nie będą mogli korzystać z tego systemu jako serwera poczty.
 index_version=Postfix wersja $1
 opts_err=Nie udało się zachować opcji
+
 check_error=Błąd podczas sprawdzania bieżącej konfiguracji Postfiksa. Popraw konfigurację ręcznie.
+
 address_rewriting_title=Przepisywanie i maskowanie adresów
 address_rewriting_ecannot=Nie masz uprawnień do zmiany przepisywania i maskowania adresów
 aliases_title=Aliasy pocztowe
@@ -35,8 +38,10 @@ aliases_type4=Program $1
 aliases_type5=Plik auto-odpowiedzi
 aliases_none=Żaden
 aliases_delete=Usuń wybrane aliasy
+
 postfinger_title=Sprawdzanie konfiguracji
 postfinger_show=Pokaż
+
 aform_type0=Żaden
 aform_type1=Adres e-mail
 aform_type2=Adres w pliku
@@ -51,8 +56,11 @@ aform_val=Alias do
 aform_afile=Edytuj..
 aform_return=alias
 aform_cmt=Opis
+
 asave_err=Błąd zapisywania aliasu
+
 afile_undo=Cofnij zmiany
+
 ffile_from=od
 ffile_to=do
 ffile_subject=temat
@@ -60,11 +68,13 @@ ffile_cc=CC
 ffile_body=body
 ffile_what0=nie pasuje
 ffile_what1=pasuje
+
 general_title=Opcje ogólne
 general_title_sensible=Najczęściej używane opcje ogólne
 general_title_others=Inne opcje ogólne
 general_ecannot=Nie masz uprawnień do zmiany opcji ogólnych
 what_is_it=Co to jest?
+
 opts_default=Domyślnie
 opts_none=Brak
 opts_relayhost=Wysyłać pocztę wychodzącą poprzez host
@@ -81,9 +91,11 @@ opts_mail_owner=Właściciel poczty
 opts_default_privs=Domyślne uprawnienia programu doręczającego
 opts_inet_interfaces=Interfejsy sieciowe dla poczty przychodzącej
 opts_all_interfaces=Wszystkie
+
 opts_local_recipient_maps=Odrzucać nieznanych użytkowników lokalnych
 opts_no=Nie
 opts_save=Zachowaj i zastosuj
+
 opts_allow_percent_hack=Przepisywać "uzytkownik%domena" na "uzytkownik@domena"
 opts_append_at_myorigin=Przepisywać "uzytkownik" na "uzytkownik@$mydomain"
 opts_append_dot_mydomain=Przepisywać "uzytkownik@host" na "uzytkownik@host.$mydomain"
@@ -93,13 +105,17 @@ opts_swap_bangpath=Przepisywać "miejsce!uzytkownik" na "uzytkownik@miejsce"
 opts_masquerade_domains=Maskowanie adresów
 opts_masquerade_exceptions=Wyjątki dla maskowania
 index_return=konfiguracji Postfiksa
+
 opts_alias_maps=Bazy aliasów wykorzystywane przez lokalny program doręczający
 opts_alias_database=Bazy aliasów tworzone poleceniem "newaliases"
 aliases_warning=Uwaga: <ul><li>gdy pierwsze pole jest wypełnione, do tworzenia odpowiednich baz danych używane jest domyślne polecenie generowania aliasów Postfiksa; <li>w przeciwnym razie używane jest polecenie zgodności z Sendmailem "newaliases", korzysta ono z baz danych z drugiego pola.</ul>
+
 aliases_name=Nazwa
 aliases_value=Alias dla...
+
 new_alias=Utwórz nowy alias
 new_aliasmsg=Naciśnij ten przycisk, aby utworzyć nowy alias
+
 local_delivery_ecannot=Nie masz uprawnień do zmiany opcji doręczania lokalnego
 local_delivery_title=Doręczanie lokalne
 opts_local_transport=Nazwa metody ekspedycji dla doręczeń lokalnych
@@ -125,6 +141,7 @@ opts_local_destination_recipient_limit=Maksymalna liczba odbiorców dla doręcza
 opts_local_destination_recipient_limit_default=Domyślna
 opts_prepend_delivered_header=Dołączać <tt>Delivered-To:</tt> gdy...
 opts_prepend_delivered_header_default=Domyślnie
+
 resource_title=Ogólna kontrola zasobów
 resource_ecannot=Nie masz uprawnień do zmiany parametrów kontroli zasobów
 opts_bounce_size_limit=Maksymalny rozmiar zwracanej wiadomości
@@ -143,6 +160,7 @@ opts_qmgr_message_recipient_limit=Maksymalna liczba odbiorców w pamięci
 opts_queue_minfree=Minimalna ilość wolnego miejsca na systemie plikowym kolejki
 opts_stale_lock_time=Maksymalny czas, po którym trwała blokada jest zwalniana
 opts_transport_retry_time=Czas pomiędzy próbami połączenia z niedziałającą MDT w sekundach
+
 opts_always_bcc=Adresy, które otrzymują ukrytą kopię każdej wiadomości
 opts_always_bcc_none=Brak
 opts_daemon_timeout=Czas przeterminowania obsługi połączenia
@@ -178,6 +196,7 @@ opts_trigger_timeout=Maksymalny czas na uruchomienie kopii demona
 opts_delay_warning_time=Czas, po którym wysyłane jest ostrzeżenie o niedoręczeniu w godzinach
 opts_delay_warning_time_default2=Domyślne
 opts_content_filter_default=Żaden
+
 smtpd_title=Opcje serwera SMTP
 smtpd_ecannot=Nie masz uprawnień do zmiany opcji serwera SMTP
 opts_disable_vrfy_command=Wyłącz polecenie SMTP VRFY
@@ -204,6 +223,7 @@ opts_relay_domains_reject_code=Odpowiedź serwera SMTP przy zabronionym przekazy
 opts_unknown_address_reject_code=Odpowiedź serwera SMTP przy odrzuceniu nieznanej domeny
 opts_unknown_client_reject_code=Odpowiedź serwera SMTP przy odrzuceniu nieznanego klienta
 opts_unknown_hostname_reject_code=Odpowiedź serwera SMTP przy odrzuceniu nieznanej nazwy hosta
+
 smtp_title=Opcje klienta SMTP
 smtp_ecannot=Nie masz uprawnień do zmiany opcji klienta SMTP
 opts_best_mx_transport=Akcja, gdy host jest MX-em o najwyższym priorytecie
@@ -222,6 +242,7 @@ opts_smtp_data_init_timeout=Czas przeterminowania dla oczekiwania na odpowiedź 
 opts_smtp_data_xfer_timeout=Czas przeterminowania dla oczekiwania na odpowiedź na przesłanie treści wiadomości
 opts_smtp_data_done_timeout=Czas przeterminowania dla oczekiwania na odpowiedź na kończącą "."
 opts_smtp_quit_timeout=Czas przeterminowania dla oczekiwania na odpowiedź na QUIT
+
 rate_title=Parametry doręczania
 rate_ecannot=Nie masz uprawnień do zmiany opcji parametrów doręczania
 opts_default_destination_concurrency_limit=Maks. liczba jednoczesnych doręczeń do tego samego miejsca przeznaczenia
@@ -232,17 +253,20 @@ opts_maximal_queue_lifetime=Maks. czas (dni) przetrzymywania wiadomości w kole
 opts_minimal_backoff_time=Min. czas (sek.) pomiędzy próbami doręczenia odroczonej wiadomości
 opts_queue_run_delay=Czas (sek.) pomiędzy przeszukaniami kolejki odroczeń
 opts_defer_transports=Metody ekspedycji, za pomocą których nie należy doręczać
+
 debug_title=Właściwości debugowania
 debug_ecannot=Nie masz uprawnień do zmiany funkcji debugowania
 opts_debug_peer_list=Lista wzorców dla domen/sieci, dla których włączony jest pełny dziennik
 opts_debug_peer_level=Poziom logów dla pasujących pozycji z powyższej listy
 debug_version=Moduł Postfiksa dla Webmina - wersja $1
+
 ldap_title=Zapytania LDAP
 ldap_ecannot=Nie masz uprawnień do zmiany opcji zapytań LDAP
 ldap_non_existent=Wszystko wskazuje na to, że w Twoim systemie Postfiksa brak obsługi LDAP
 opts_ldap_lookup_timeout=Czas przeterminiwania dla zapytań do bazy danych LDAP
 opts_ldap_search_base=Przeszukiwana baza danych LDAP
 opts_ldap_server_host=Nazwa hosta serwera LDAP
+
 canonical_title=Podstawianie kanoniczne
 canonical_ecannot=Nie masz uprawnień do zmiany konfiguracji podstawiania kanonicznego
 opts_canonical_maps=Tabele przeszukiwania podstawiania adresów
@@ -253,6 +277,7 @@ edit_recipient_canonical_maps=Zmień podstawienia kanoniczne odbiorców
 edit_sender_canonical_maps=Zmień podstawienia kanoniczne nadawców
 edit_canonical_maps_general=Naciśnij jeden z tych przycisków, aby zmienić podstawienia kanoniczne
 canonical_edit_title=Zmień podstawienie kanoniczne
+
 mapping_name=Nazwa
 mapping_value=Podstawienie...
 new_mapping=Nowe podstawienie
@@ -267,29 +292,37 @@ map_delete_create=Nie można usunąć właśnie tworzonego podstawienia
 maps_internal_error=Podstawianie: błąd wewnętrzny
 maps_cant_write=Brak praw zapisu
 help_map_format=Z jakiego formatu korzystać?
+
 virtual_title=Domeny wirtualne
 virtual_ecannot=Nie masz uprawnień do zmiany konfiguracji podstawiania domen wirtualnych
 opts_virtual_maps=Tabele przeszukiwania podstawiania domen
 virtual_return=wirtualnych domen
+
 transport_title=Podstawianie ekspedycji
 transport_ecannot=Nie masz uprawnień do zmiany konfiguracji podstawiania metod ekspedycji
 opts_transport_maps=Tabele przeszukiwania podstawiania metod ekspedycji
+
 relocated_title=Podstawianie przeniesionych
 relocated_ecannot=Nie masz uprawnień do zmiany konfiguracji podstawiania przeniesionych
 opts_relocated_maps=Tabele przeszukiwania podstawiania przeniesionych
 opts_content_filter=Filtr zawartości e-mail
+
 map_click=Kliknij na dowolnym podstawieniu, aby zmienić jego właściwości:
 no_map=(Nie zdefiniowano żadnych podstawień. Aby zmienić podstawienie, musisz je najpierw zdefiniować)
 no_map2=Nie zdefiniowano żadnych podstawień. Aby zmienić podstawienie, musisz je najpierw zdefiniować.
+
 stop_efailed=Nie udało się zatrzymać Postfiksa
 stop_ecannot=Nie masz uprawnień do zatrzymywania Postfiksa
+
 reload_efailed=Nie udało się przeładować Postfiksa.
 reload_ecannot=Nie masz uprawnień do przeładowywania Postfiksa
+
 query_get_efailed=Nie udało się zażądać od polecenia konfiguracyjnego Postfiksa podania bieżącej wartości parametru $1: <tt>$2</tt>
 query_set_efailed=Nie udało się zażądać od polecenia konfiguracyjnego Postfiksa ustawienia bieżącej wartości parametru $1 na $2: <tt>$3</tt>
 regenerate_ecannot=Nie masz uprawnień generacji aliasów
 regenerate_alias_efailed=Nie udało się ponownie wygenerować aliasów: <tt>$1</tt>
 regenerate_table_efailed=Nie udało się ponownie wygenerować tablicy $1: <tt>$2</tt>
+
 acl_resource=Może zmieniać zasoby?
 acl_aliases=Może zmieniać aliasy?
 acl_aliases_options=Może zmieniać opcje aliasów?
@@ -308,22 +341,29 @@ acl_debug=Może zmieniać opcje uruchamiania?
 acl_ldap=Może zmieniać ustawienia LDAP?
 acl_boxes=Może czytać e-maile użytkowników?
 acl_bcc=Może edytować mapowanie BCC?
+
 boxes_title=Skrzynki użytkownika
 boxes_user=Użytkownik
 boxes_size=Rozmiar skrzynki
 boxes_none=Brak e-maili
 boxes_return=skrzynek
+
 forward_title=Przekierowanie e-maili
+
 qview_desc=Z pliku $1
 qview_headers=Nagłówki e-maila
+
 after_err=Błąd konfiguracji Postfix : $1
+
 header_title=Sprawdzanie nagłówka
 header_name=Wyrażenie regularne
 header_dunno=Nic nie rób
 header_filter=Zastosuj filtr ..
 header_ignore=Ignoruj
+
 delq_titles=Kasowanie wiadomości
 delq_confirm=Usuń wiadomości
+
 master_title=Procesy serwera
 master_name=Nazwa procesu
 master_private=Prywatne?
@@ -333,13 +373,18 @@ master_unlimit=Nielimitowane
 master_return=procesów serwera
 master_max2=Maks. liczba procesów
 master_name2=Nazwa/port serwera
+
 delete_enone=Nic nie wybrano
+
 cmanual_title=Edycja plików konfiguracyjnych
 cmanual_ecannot=Nie masz uprawnień do edycji pliku konfiguracyjnego Postfix
+
 cmanual_ok=Edytuj
 cmanual_file=Edycja pliku konfiguracyjnego:
 cmanual_edata=Nic nie wpisano
+
 edit_map_file=Edytuj plik mapy
+
 log_aliases=Zmieniono opcje aliasu
 log_bcc=Zmieniono opcje BCC map
 log_body=Zmieniono opcje sprawdzania
@@ -347,14 +392,17 @@ log_alias_create=Utworzono alias $1
 log_alias_modify=Zmodyfikowano alias $1
 log_alias_delete=Usunięto alias $1
 log_backend=Zaktualizowano plik konfiguracji dla map $!
+
 opts_smtpd_sasl_auth_enable=Wymagać uwierzytelnianie SASL SMTP?
 opts_smtpd_tls_cert_file=Plik certyfikatu TLS
 opts_smtpd_tls_key_file=Plik prywatnego klucza TLS
 opts_smtpd_use_tls=Włączyć szyfrowanie TLS?
+
 client_title=Ograniczenia klienta SMTP
 client_restrict=Ograniczenia klienta
 client_restrict1=Domyślnie (zezwalaj wszystkim)
 client_restrict0=Wybrane poniżej ..
 client_return=ograniczeń klienta SMTP
+
 bcc_title=Mapowanie BCC (Ukryte do wiadomości)
 bcc_ecannot=Nie możesz edytować mapowania BCC

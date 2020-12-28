@@ -19,10 +19,13 @@ index_samba=سامبا؟
 index_cyrus=IMAP؟
 index_users=کاربران LDAP
 index_groups=گروه های LDAP
+
 imap_econn=اتصال به سرور IMAP $1 انجام نشد
 imap_elogin=ورود به سرور IMAP $1 به عنوان $2 : $3 انجام نشد
 conn_eldap_host=هیچ پرونده پیکربندی مشتری LDAP در سیستم شما یافت نشد ، بنابراین سرور LDAP باید در صفحه تنظیمات ماژول تنظیم شود
 conn_elogin=هیچ پرونده پیکربندی مشتری LDAP در سیستم شما یافت نشد ، بنابراین ورود به سیستم LDAP باید در صفحه پیکربندی ماژول تنظیم شود
+conn_efile_open=پرونده اعتبارات پیوند LDAP باز نشد:
+
 uedit_cap=قابلیت های کاربر
 uedit_samba=سامبا وارد شوید؟
 uedit_cyrus=ورود به سرور IMAP؟
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=آخرین بروزرسانی رمز عبور
 uedit_sambapwdcanchange=رمز عبور می تواند تغییر کند
 uedit_sambabadpasswordcount=تعداد کلمه عبور بد
 uedit_sambaacctflags=پرچم حساب
+
 usave_eadd=افزودن کاربر به پایگاه داده LDAP انجام نشد :$1
 usave_emod=اصلاح کاربر در پایگاه داده LDAP انجام نشد :$1
 usave_emoddn=تغییر نام کاربر در بانک اطلاعاتی LDAP انجام نشد :$1
@@ -66,26 +70,33 @@ usave_eattrdupu=کاربر$1 قبلاً از$2 $3 استفاده می کند
 usave_eattrdupg=گروه$1 قبلاً از$2 $3 استفاده می کند
 usave_ereal=نام واقعی وجود ندارد
 usave_equota=سهمیه IMAP موجود نیست یا نامعتبر است
+
 search_err=جستجو برای$1 زیر$2 انجام نشد :$3
+
 gedit_dn=LDAP DN گروه
 gedit_return=جزئیات گروه
 gedit_cap=قابلیت های گروه
 gedit_samba=گروه سامبا؟
+
 gsave_egone=گروه دیگر وجود ندارد!
 gsave_edelete=حذف گروه از پایگاه داده LDAP انجام نشد :$1
 gsave_eadd=افزودن گروه به بانک اطلاعاتی LDAP انجام نشد :$1
 gsave_emod=اصلاح گروه در پایگاه داده LDAP انجام نشد :$1
 gsave_emoddn=تغییر نام گروه در پایگاه داده LDAP انجام نشد :$1
+
 gdel_group=حذف ورودی گروه LDAP ..
+
 udel_pass=حذف ورودی کاربر LDAP ..
 udel_book=حذف از دفترچه آدرس ..
 udel_imap=حذف پوشه IMAP ..
 udel_warnimap=صندوق پستی موجود در هنگام حذف فهرست خانه حذف می شود!
 udel_failed=.. ناموفق!  :$1
+
 raw_title=ویژگی های LDAP
 raw_name=نام مشخصه
 raw_value=ارزش های
 raw_for=برای$1
+
 batch_samba=حساب سامبا را برای کاربران جدید ایجاد کنید؟
 batch_imap=برای کاربران جدید حساب IMAP ایجاد کنید؟
 batch_descafter3=در خطوط <b>ایجاد</b> و <b>تغییر</b> ، می توانید زمینه های اضافی حاوی ویژگی های LDAP را با نام <i name=<i> مقدار </i> با اضافه کردن گزینه اضافه کنید. به کاربران جدید یا اصلاح شده اختصاص داده می شود.

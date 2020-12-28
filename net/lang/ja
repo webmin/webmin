@@ -2,6 +2,7 @@ index_title=ネットワーク設定
 index_return=ネットワーク設定
 index_apply=変更を適用する
 index_applydesc=このボタンをクリックすると、再起動時の用に現在の起動時のインターフェース及びルーティング設定をアクティブにします。 <b>注意</b> - この操作はシステムをネットワークからアクセス不能にする可能性があります。Webminからも切断される可能性があります。
+
 ifcs_title=ネットワーク インターフェイス
 ifcs_now=インターフェイス アクティブ
 ifcs_name=ホスト名
@@ -29,6 +30,7 @@ ifcs_all=全てのインターフェース
 ifcs_ecannot=ネットワークインターフェースを編集する権限がありません
 ifcs_ecannot_this=このネットワークインターフェースを編集する権限がありません
 ifcs_range=範囲 $1
+
 aifc_create=アクティブ インターフェイスを作成
 aifc_edit=アクティブ インターフェイスを編集
 aifc_desc1=アクティブ インターフェイス パラメータ
@@ -48,6 +50,7 @@ aifc_ebroad='$1' は無効なブロードキャスト アドレスです
 aifc_emtu='$1' は無効な MTU です
 aifc_ehard='$1' は無効なハードウェア アドレスです
 aifc_eexist=インターフェイス '$1' は存在しません
+
 bifc_create=起動 インターフェイスを作成
 bifc_edit=起動 インターフェイスを編集
 bifc_desc1=起動時の インターフェイス パラメータ
@@ -69,6 +72,7 @@ bifc_err4=インターフェースの非アクティブ化に失敗しました
 bifc_capply=作成と適用
 bifc_eapply=DHCPまたはBOOTPを使用するインターフェースはアクティブ化できません
 bifc_edhcpmain=DHCPは第一ネットワークインターフェースにのみ使用できます
+
 routes_title=ルーティングとゲートウェイ
 routes_boot=ルーティング設定は<i>起動時</i>にアクティブになりました
 routes_now=ルーティング設定が有効になりました
@@ -104,6 +108,7 @@ routes_eclash2=$1のデフォルトルートは一つだけ定義できます
 routes_none2=無し
 routes_auto=自動
 routes_gwmetric=インターフェイスメトリック
+
 dns_title=DNS クライアント
 dns_options=DNS クライアント オプション
 dns_hostname=ホスト名
@@ -120,6 +125,7 @@ dns_ens='$1' は有効なネームサーバのIPアドレスではありませ�
 dns_edomain='$1'は有効なドメイン名ではありません
 dns_esearch=検索するドメインが与えられていません
 dns_hoststoo=ホストアドレスが変更されたら ホスト名を更新しますか?
+
 hosts_title=ホスト アドレス
 hosts_ip=IP アドレス
 hosts_host=ホスト名
@@ -129,6 +135,7 @@ hosts_create=ホスト アドレスを作成
 hosts_detail=ホストとアドレス
 hosts_return=ホスト アドレス リスト
 hosts_ecannot=ホストアドレスを編集する権限がありません
+
 log_create_host=ホスト アドレス $1 を作成しました
 log_delete_host=ホストアドレス $1 を削除しました
 log_modify_host=ホストアドレス $1 を変更しました
@@ -141,6 +148,7 @@ log_create_bifc=インターフェイス $1 アドレス $2 を作成しまし�
 log_modify_bifc=インターフェイス $1 アドレス $2 を変更しました
 log_delete_bifc=インターフェイス $1 アドレス $2 を削除しました
 log_dyn=動的
+
 acl_ifcs=ネットワークインターフェースの編集を許可しますか?
 acl_routes=ルーティングとゲートウェイの編集を許可しますか?
 acl_dns=DNSクライアント設定の編集を許可しますか?
@@ -148,6 +156,7 @@ acl_hosts=ホストアドレスの編集を許可しますか?
 acl_view=表示のみ
 acl_ifcs_only=このインターフェースのみ
 acl_apply=設定を適用を許可しますか?
+
 interfaces_title1=インターフェースを選択...
 interfaces_all=全てのインターフェース...
 interfaces_sel=選択したインターフェース
@@ -155,7 +164,9 @@ interfaces_ok=OK
 interfaces_cancel=キャンセル
 interfaces_clear=クリア
 interfaces_title2=ユーザを選択...
+
 apply_ecannot=設定を適用する権限がありません
+
 mod_egone=インターフェースはアクティブではありません!
 mod_title=アクティブインターフェース
 mod_desc=$1 インターフェースは$2に使用されているため、このモジュールでは管理できません
@@ -164,6 +175,7 @@ mod_ppp=$1へのPPPダイヤルアップ接続
 mod_adsl=ADSL PPP 接続
 mod_pptps=クライアント$1からのPPTP接続
 mod_pptpc=$1へのPPTP接続
+
 range_edit=アドレス範囲の編集
 range_create=アドレス範囲の作成
 range_header=アドレス範囲 インターフェースオプション

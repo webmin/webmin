@@ -21,6 +21,7 @@ index_mailfromnone=ברירת מחדל (<tt>שורש</strong>)
 index_program=הפקודה לפעול כאשר מתגלים בעיות
 index_programnone=אל תריץ אף אחד
 index_monitor=מעקב מופעל?
+
 linear=ליניארי (שרשור)
 raid0=RAID0 (פסים)
 raid1=RAID1 (שיקוף)
@@ -29,6 +30,7 @@ raid5=RAID5 (זוגיות מבוזרת)
 raid6=RAID6 (זוגיות מבוזרת כפולה)
 raid10=RAID10 (פסים ומראות)
 blocks=חסימות
+
 create_title=צור התקן RAID
 create_header=אפשרויות התקני RAID
 create_device=קובץ מכשיר
@@ -62,6 +64,7 @@ create_o2_layout=2 עותקים אופסטיים
 create_n3_layout=3 עותקים ליד
 create_f3_layout=3 עותקים רחוקים
 create_o3_layout=3 עותקים אופסטיים
+
 view_title=מכשיר RAID
 view_header=אפשרויות התקני RAID
 view_device=קובץ מכשיר
@@ -117,6 +120,7 @@ view_mountmsg=היכנס לספרייה ולחץ על כפתור זה כדי ל�
 view_mountmsg2=לחץ על כפתור זה כדי להשתמש במכשיר RAID זה לזיכרון וירטואלי במערכת שלך.
 view_blocks=$1 חסימות
 view_sparegroup=קבוצת חילוף
+
 mkfs_title=צור מערכת קבצים
 mkfs_header2=טופס זה מאפשר לבנות מערכת קבצים $2 חדשה ב- $1. <b>כל</b> הנתונים הקיימים יימחקו!
 mkfs_options=אפשרויות מערכת לינוקס חדשות
@@ -124,6 +128,7 @@ mkfs_err=יצירת מערכת הקבצים נכשלה
 mkfs_exec=מבצע את הפקודה $1 ..
 mkfs_failed=הפקודה נכשלה!
 mkfs_ok=הפקודה הושלמה.
+
 emkraid=<tt>mkraid</tt> נכשל : $1 
 eraidstop=<tt>פשיטת עצירה</strong> נכשל : $1 
 eraidstart=<tt>פשיטת התחל</b> נכשל : $1 
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=יצר $1 מכשיר RAID $2 
 log_stop=התקן RAID מבוטל $1 
 log_start=התקן RAID מופעל $1 
@@ -147,14 +153,17 @@ log_grow=מכשיר RAID מבוגר $1 לסך הכל $2 דיסקים
 log_convert_to_raid6=המיר את התקן RAID5 $1 למכשיר RAID6
 log_convert_to_raid5=המיר מכשיר RAID6 $1 למכשיר RAID5
 log_notif=אפשרויות התראה על RAID מעודכנות
+
 notif_err=שמירת אפשרויות ההתראה על RAID נכשלה
 notif_emailaddr=כתובת התראה חסרה או לא חוקית
 notif_emailfrom=כתובת חסרה או לא חוקית מהכתובת
 notif_eprogram=תוכנית חסרה או לא קיימת להפעלה
+
 delete_title=מחק מערך RAID
 delete_rusure=האם אתה בטוח שברצונך למחוק את מערך RAID $1, המשתמש ב- $2 של שטח דיסק?
 delete_ok=כן, מחק אותו
 delete_eidx=לא נבחר מערך RAID!
+
 remove_title=הסר את המחיצה ממערך RAID
 remove_rusure=האם אתה בטוח שברצונך להסיר את המחיצה $2 ממערך RAID $1 ?
 remove_ok=כן, הסר אותו

@@ -2,6 +2,7 @@ check_econfigset=Geen iSCSI TGTd-configuratiebestand ingesteld!
 check_econfig=Het iSCSI TGTd-configuratiebestand $1 is niet gevonden op uw systeem.
 check_etgtadm=De iSCSI TGTd-beheeropdracht $1 is niet gevonden op uw systeem.
 check_einit=Opstartactie $1 bestaat niet
+
 index_title=iSCSI TGTd
 index_clink=Misschien is het niet geïnstalleerd of is uw <a href='$1'>moduleconfiguratie</a> onjuist.
 index_stop=Stop iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=Toegestane gebruikers
 index_size=Totale grootte
 index_noluns=Geen
 index_nousers=Ieder
+
 dtargets_err=Kan doelen niet verwijderen
 dtargets_enone=Geen geselecteerd!
+
 target_title1=Maak een iSCSI-doel aan
 target_title2=Bewerk iSCSI-doel
 target_header=iSCSI-opties voor gedeelde apparaten
@@ -74,11 +77,13 @@ target_direct=Directe apparaattoegang
 target_cache=Cache schrijft naar apparaat?
 target_eaddr=Ongeldig toegestaan IP-adres
 target_eaname=Ongeldige toegestane naam van initiator
+
 start_err=Kan iSCSI TGTd niet starten
 stop_err=Kan iSCSI TGTd niet stoppen
 restart_err=Kan iSCSI TGTd niet herstarten
 atboot_err=Kan niet inschakelen bij opstarten
 atboot_einit=Init-script $1 bestaat niet
+
 log_create_target=Doel $1 gemaakt
 log_delete_target=Doel $1 verwijderd
 log_modify_target=Gewijzigd doel $1 
@@ -89,6 +94,7 @@ log_restart=Herstart iSCSI-server
 log_atboot=Ingeschakeld iSCSI-server tijdens het opstarten
 log_delboot=ISCSI-server uitgeschakeld tijdens het opstarten
 log_manual=Handmatig bewerkt configuratiebestand
+
 manual_title=Configuratiebestand bewerken
 manual_file=Selecteer bestand om te bewerken:
 manual_ok=Open

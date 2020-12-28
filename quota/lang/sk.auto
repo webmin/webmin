@@ -1,4 +1,5 @@
 quota_unlimited=neobmedzený
+
 acl_fss=Súbory, ktoré môže tento používateľ upravovať
 acl_fall=Všetky súborové systémy
 acl_fsel=Vybraný ..
@@ -24,9 +25,11 @@ acl_maxblocks=Maximálna povolená bloková kvóta
 acl_maxfiles=Maximálna povolená kvóta súboru
 acl_unlimited=neobmedzený
 acl_email=Je možné nastaviť e-mailové upozornenia?
+
 activate_eallow=V tomto súborovom systéme nemôžete povoliť alebo zakázať kvóty
 activate_eon=Kvóty sa nepodarilo zapnúť
 activate_eoff=Kvóty sa nepodarilo vypnúť
+
 check_title=Skontrolujte kvóty
 check_return=Zoznam $1 
 check_ecannot=V tomto súborovom systéme nemôžete skontrolovať kvóty
@@ -34,11 +37,13 @@ check_running=Teraz sa spúšťa príkaz <tt>quotacheck</tt> na kontrolu použit
 check_done=... Hotový.
 check_rgroup=skupina
 check_ruser=užívateľ
+
 cgroup_efail=Kvóty sa nepodarilo skopírovať
 cgroup_ecannot=Kvóty nemôžete kopírovať
 cgroup_egallow=Nemáte oprávnenie kopírovať kvóty tejto skupiny
 cgroup_enogroup=Žiadne skupiny na kopírovanie
 cgroup_eallowto=Nemáte povolenie kopírovať kvóty na '$1'
+
 cgform_title=Skopírujte kvóty
 cgform_return=skupinová kvóta
 cgform_ecannot=Kvóty nemôžete kopírovať
@@ -48,11 +53,13 @@ cgform_all=Všetky skupiny vo vašom systéme
 cgform_select=Vybrané skupiny
 cgform_contain=Skupiny obsahujúce používateľov
 cgform_doit=kópie
+
 cuser_efail=Kvóty sa nepodarilo skopírovať
 cuser_ecannot=Kvóty nemôžete kopírovať
 cuser_euallow=Nemáte povolenie kopírovať kvóty tohto používateľa
 cuser_enouser=Žiadni používatelia na kopírovanie
 cuser_eallowto=Nemáte povolenie kopírovať kvóty na '$1'
+
 cuform_title=Skopírujte kvóty
 cuform_return=užívateľská kvóta
 cuform_ecannot=Kvóty nemôžete kopírovať
@@ -62,6 +69,7 @@ cuform_all=Všetci používatelia vo vašom systéme
 cuform_select=Vybraní používatelia
 cuform_members=Členovia vybraných skupín
 cuform_doit=kópie
+
 egroup_title=Upraviť kvótu skupiny
 egroup_freturn=zoznam súborových systémov
 egroup_greturn=zoznam skupín
@@ -80,6 +88,7 @@ egroup_hflimit=Pevný limit súboru
 egroup_update=aktualizovať
 egroup_listall=Zoznam všetkých kvót
 egroup_listalldesc=Kliknutím na toto tlačidlo zobrazíte zoznam všetkých súborových systémov, na ktoré má táto skupina diskové kvóty, s odkazmi na ich úpravu.
+
 euser_title=Upraviť kvótu používateľa
 euser_freturn=zoznam súborových systémov
 euser_ureturn=zoznam používateľov
@@ -102,6 +111,7 @@ euser_hflimit=Pevný limit súboru
 euser_update=aktualizovať
 euser_listall=Zoznam všetkých kvót
 euser_listalldesc=Kliknutím na toto tlačidlo zobrazíte zoznam všetkých súborových systémov, v ktorých má tento užívateľ diskové kvóty, s odkazmi na ich úpravu.
+
 gfilesys_title=Skupinové kvóty
 gfilesys_return=zoznam súborových systémov
 gfilesys_ecannot=Kvóty pre „$1“ nemôžete upraviť
@@ -120,6 +130,7 @@ gfilesys_copy=Skopírujte kvóty
 gfilesys_editdesc=Zobrazte a upravte kvóty pre túto skupinu v niektorých ďalších súborových systémoch, pre ktoré momentálne nemá kvóty.
 gfilesys_copydesc=Skopírujte limity kvóty pre túto skupinu vo všetkých súborových systémoch do niektorých alebo do všetkých ostatných skupín.
 gfilesys_enone=Nebol zadaný žiadny názov skupiny
+
 ggracef_title=Grace Times
 ggracef_return=zoznam skupín
 ggracef_ecannot=V tomto súborovom systéme nemôžete upraviť doby odkladu
@@ -128,9 +139,11 @@ ggracef_graces=Skupinové milosti pre <tt>$1</tt>
 ggracef_block=Pre blokovú kvótu
 ggracef_file=Kvóta súboru
 ggracef_update=aktualizovať
+
 ggraces_esave=Nepodarilo sa uložiť milosti
 ggraces_eedit=V tomto súborovom systéme nemôžete upraviť doby odkladu
 ggraces_enumber='$1' nie je číslo
+
 index_quser=Používateľské kvóty
 index_qgroup=Skupinové kvóty
 index_qboth=Kvóty používateľov a skupín
@@ -154,6 +167,7 @@ index_egroup=Upraviť skupinové kvóty:
 index_egroupdesc=Zadajte alebo vyberte skupinu a kliknutím na toto tlačidlo zobrazíte kvóty na všetky súborové systémy.
 index_nosupport=Kvóty nemôžu podporovať žiadne miestne systémy súborov.
 index_mountmod=Kvóty pre súborový systém môžete povoliť v module <a href='$1'>Diskové a sieťové súbory</a>.
+
 lgroups_failed=Zoznam skupín sa nepodaril
 lgroups_tablist=Zoznam skupín
 lgroups_eallow=V tomto súborovom systéme nemôžete upravovať kvóty
@@ -182,13 +196,17 @@ lgroups_tofixed=Adresa 1
 lgroups_emailheader=E-mail skupinám blížiacim sa kvóte
 lgroups_email=Chcete poslať e-mail skupinám?
 lgroups_tovirt=Vlastník domény Virtualmin
+
 sgroup_egroup=Nemáte oprávnenie upravovať kvóty pre túto skupinu
 sgroup_efs=V tomto súborovom systéme nemôžete upravovať kvóty
+
 ssync_ecannot=Pre tento súborový systém nemôžete nastaviť predvolenú kvótu
+
 suser_euser=Nemáte oprávnenie upravovať kvóty pre tohto používateľa
 suser_efs=V tomto súborovom systéme nemôžete upravovať kvóty
 suser_emaxblocks=Nemáte povolenie na pridelenie blokových limitov nad $1 
 suser_emaxfiles=Nemáte povolenie na pridelenie limitov súborov nad $1 
+
 ufilesys_title=Kvóty používateľov
 ufilesys_return=zoznam súborových systémov
 ufilesys_ecannot=Kvóty pre „$1“ nemôžete upraviť
@@ -208,6 +226,7 @@ ufilesys_copydesc=Skopírujte limity kvóty pre tohto používateľa vo všetký
 ufilesys_copy=Skopírujte kvóty
 ufilesys_grace=milosť
 ufilesys_enone=Nezadané žiadne používateľské meno
+
 ugracef_title=Grace Times
 ugracef_return=zoznam používateľov
 ugracef_ecannot=V tomto súborovom systéme nemôžete upraviť doby odkladu
@@ -216,9 +235,11 @@ ugracef_graces=User Grace Times for <tt>$1</tt>
 ugracef_block=Pre blokovú kvótu
 ugracef_file=Kvóta súboru
 ugracef_update=aktualizovať
+
 ugraces_esave=Nepodarilo sa uložiť milosti
 ugraces_eedit=V tomto súborovom systéme nemôžete upraviť doby odkladu
 ugraces_enumber='$1' nie je číslo
+
 lusers_failed=Nepodarilo sa uviesť používateľov
 lusers_tablist=Zoznam používateľov
 lusers_tabdefault=Predvolené kvóty
@@ -264,12 +285,14 @@ lusers_from=Od: adresa pre e-mail
 lusers_mass=Aktualizácia vybraných používateľov
 lusers_cc=Pošlite tiež e-mail na adresu
 lusers_nocc=nikto
+
 grace_seconds=sekundy
 grace_minutes=minúty
 grace_hours=hodiny
 grace_days=Dni
 grace_weeks=týždne
 grace_months=mesiaca
+
 log_activate_u=Povolené užívateľské kvóty na $1 
 log_activate_g=Povolené skupinové kvóty na $1 
 log_activate_ug=Povolené kvóty používateľov a skupín na $1 
@@ -287,6 +310,7 @@ log_check=Kontrolované kvóty na $1
 log_copy_u=Skopírované kvóty používateľa $1 
 log_copy_g=Skopírované kvóty skupiny $1 
 log_support=Povolená podpora kvót pre $1 
+
 email_err=Možnosti e-mailu sa nepodarilo uložiť
 email_ecannot=Nemáte dovolené upravovať možnosti e-mailu
 email_einterval=Chýbajúci alebo neplatný interval
@@ -299,6 +323,7 @@ gemail_msg=Využitie disku pre skupinu $1 v súborovom systéme $2 dosiahlo $3% 
 email_subject=Disková kvóta bola prekročená
 gemail_subject=Disková kvóta bola prekročená
 email_eto=Chýba cieľová e-mailová adresa
+
 umass_title=Aktualizujte používateľské kvóty
 umass_header=Zmeny kvót sa vzťahujú na vybraných používateľov
 umass_sblocks=Limit mäkkých blokov
@@ -315,6 +340,7 @@ umass_esfiles=Chýbajúci alebo neplatný limit pre mäkké súbory
 umass_ehfiles=Chýbajúci alebo neplatný limit pevného súboru
 umass_count=Zmeny uvedené nižšie sa vzťahujú na vybratých používateľov $1.
 umass_err=Aktualizácia užívateľských kvót zlyhala
+
 gmass_title=Aktualizovať skupinové kvóty
 gmass_header=Zmeny kvót sa vzťahujú na vybrané skupiny
 gmass_count=Zmeny uvedené nižšie sa vzťahujú na vybrané skupiny: $1.

@@ -3,6 +3,7 @@ connect_elogin=Failed to login to the database $1 : $2.
 index_title=خادم بريد Postfix
 index_epath=The Postfix control command $1 is not installed on your system. Maybe your <a href='$2'>module configuration</a> is incorrect, or Postfix is not installed.
 index_postfix=بوستفيكس
+
 internal_error=خطأ داخلي
 index_econfig=The Postfix config command $1 does not exist. Maybe your <a href='$2'>module configuration</a> is incorrect.
 index_esuper=The Postfix supervisor command $1 does not exist. Maybe your <a href='$2'>module configuration</a> is incorrect.
@@ -14,8 +15,10 @@ index_startmsg=انقر فوق هذا الزر لبدء خادم بريد Postfi
 index_reloadmsg=انقر فوق هذا الزر لجعل Postfix يعيد قراءة جميع ملفات التكوين الخاصة به. قد يكون ذلك مفيدًا إذا تم تعديل ملفات تهيئة Postfix يدويًا.
 index_version=Postfix version $1
 opts_err=فشل في حفظ الخيارات
+
 check_error=خطأ أثناء التحقق من تكوين Postfix الحالي. الرجاء إصلاح تكوين Postfix يدويًا.
 check_manual=قم بتحرير ملف تكوين Postfix يدويًا.
+
 address_rewriting_title=إعادة كتابة العنوان والتنكر
 address_rewriting_ecannot=غير مسموح لك بتحرير إعادة كتابة العنوان والتنكر
 aliases_title=الأسماء المستعارة للبريد
@@ -42,9 +45,11 @@ aliases_type5=Autoreply file $1
 aliases_type6=Apply filter file $1
 aliases_none=لا شيء
 aliases_delete=حذف الأسماء المستعارة المحددة
+
 postfinger_title=تحقق التكوين
 postfinger_show=تبين
 postfinger_ecannot=غير مسموح لك بالتحقق من تكوين Postfix
+
 mailclean_title=تنظيف MailQueue
 mailclean_ecannot=لا امتيازات لتنظيف MailQueues
 mailclean_active=نشط قائمة انتظار
@@ -53,6 +58,7 @@ mailclean_deferred=مؤجل قائمة الانتظار
 mailclean_defer=تأجيل قائمة انتظار
 mailclean_all=جميع قوائم الانتظار
 mailclean_search=دالة البحث
+
 aform_type0=لا شيء
 aform_type1=عنوان البريد الإلكتروني
 aform_type2=عناوين في الملف
@@ -68,6 +74,7 @@ aform_val=الاسم المستعار ل
 aform_afile=تعديل ..
 aform_return=الاسم المستعار
 aform_cmt=وصف
+
 asave_err=فشل في حفظ الاسم المستعار
 asave_eaddr='$1' is not a valid address
 asave_ealready=An alias for '$1' already exists
@@ -78,11 +85,13 @@ asave_etype4='$1' is not a valid program or does not exist
 asave_etype5=Autoreply file '$1' is not valid
 asave_etype4none=لا يوجد برنامج معين
 asave_etype6=Filter file '$1' is not valid
+
 afile_title=تحرير ملف العنوان
 afile_desc=Use the text area below to edit the addresses in the file $1.
 afile_efile=You are not allowed to edit $1.
 afile_undo=التراجع عن التغييرات
 afile_ewrite=Failed to write to addresses file : $1
+
 ffile_title=تحرير تصفية الملف
 ffile_desc=Use the form below to setup filter rules in the file $1.
 ffile_efile=You are not allowed to edit $1.
@@ -98,6 +107,7 @@ ffile_other=Otherwise forward to $1
 ffile_err=فشل في حفظ ملف التصفية
 ffile_ematch=مباراة مفقودة
 ffile_eaction=عنوان إعادة التوجيه مفقود
+
 rfile_title=تحرير ملف رد تلقائي
 rfile_desc=Use the text area below to edit the autoreply message in $1. The message may contain the macros $SUBJECT, $FROM, $TO, $DATE and $BODY which will be expanded when the autoreply is activated.
 rfile_desc2=You can also set mail headers that add to or replace the defaults used in the autoreply by putting lines like:<br><tt>From: foo@bar.com</tt><br><tt>Subject: On holiday</tt><br>at the top of the message, separated from the body by a single blank line.
@@ -116,11 +126,13 @@ rfile_from=من: عنوان للرد
 rfile_auto=تلقائي (بناءً على عنوان المستلم)
 rfile_efrom=مفقود من: العنوان
 rfile_fromdesc=من: يجب دائمًا تحديد العنوان حيثما كان ذلك ممكنًا ، لأن الطريقة التلقائية قد لا تكون موثوقة.
+
 general_title=خيارات عامة
 general_title_sensible=معظم الخيارات العامة مفيدة
 general_title_others=خيارات عامة أخرى
 general_ecannot=غير مسموح لك بتحرير الخيارات العامة
 what_is_it=ما هذا؟
+
 opts_default=إفتراضي
 opts_none=لا شيء
 opts_nomap=لم يتم تعيين خريطة
@@ -140,10 +152,12 @@ opts_mail_owner=مالك البريد
 opts_default_privs=الحقوق الافتراضية لوكيل التسليم
 opts_inet_interfaces=واجهات الشبكة لتلقي البريد
 opts_all_interfaces=الكل
+
 opts_local_recipient_maps=رفض المستخدمين المحليين غير المعروفين
 opts_no=لا
 opts_save=حفظ وتطبيق
 opts_edir=You are only allowed to specify map files under $1
+
 opts_allow_percent_hack=أعد كتابة "user٪domain" إلى "user@domain"
 opts_append_at_myorigin=أعد كتابة "مستخدم" إلى "user@$mydomain"
 opts_append_dot_mydomain=أعد كتابة "user@host" إلى "user@host.$mydomain"
@@ -153,13 +167,17 @@ opts_swap_bangpath=أعد كتابة "site! user" إلى "user @ site"
 opts_masquerade_domains=العنوان يتنكر
 opts_masquerade_exceptions=تنكر استثناءات
 index_return=التكوين postfix
+
 opts_alias_maps=قواعد بيانات الاسم المستعار المستخدمة من قبل وكيل التسليم المحلي
 opts_alias_database=قواعد بيانات الاسم المستعار المبنية بواسطة أمر "newaliases"
 aliases_warning=Warning: <ul><li>when the first field is not empty, the default Postfix aliases-generation command is used to build up the corresponding databases ; <li>else the Sendmail compatibility command &quot;newaliases&quot; is used, this will use the second field's databases.</ul>
+
 aliases_name=اسم
 aliases_value=الاسم المستعار ل. ..
+
 new_alias=إنشاء اسم مستعار جديد
 new_aliasmsg=انقر فوق هذا الزر لإنشاء اسم مستعار جديد
+
 local_delivery_ecannot=غير مسموح لك بتحرير خيارات التسليم المحلية
 local_delivery_title=توصيل محلي
 opts_local_transport=اسم النقل للتسليم المحلي
@@ -185,6 +203,7 @@ opts_local_destination_recipient_limit=الحد الأقصى لعدد المست
 opts_local_destination_recipient_limit_default=إفتراضي
 opts_prepend_delivered_header=Prepend a <tt>Delivered-To:</tt> when...
 opts_prepend_delivered_header_default=إفتراضي
+
 resource_title=التحكم في الموارد العامة
 resource_ecannot=غير مسموح لك بتحرير معلمات التحكم في الموارد
 opts_bounce_size_limit=الحد الأقصى لحجم الرسالة المرتدة
@@ -204,6 +223,7 @@ opts_qmgr_message_recipient_limit=الحد الأقصى لعدد المستلم�
 opts_queue_minfree=دقيقة المساحة الحرة في نظام الملفات قائمة الانتظار
 opts_stale_lock_time=الحد الأقصى للوقت الذي يتم بعده قفل القفل
 opts_transport_retry_time=الوقت بالثواني بين محاولات الاتصال MDT مقطوعة
+
 opts_always_bcc=العنوان الذي يتلقى نسخة مخفية لكل رسالة
 opts_always_bcc_none=لا شيء
 opts_daemon_timeout=مهلة معالجة الطلبات
@@ -242,6 +262,7 @@ opts_trigger_timeout=أقصى وقت لإرسال المشغل إلى البرن
 opts_delay_warning_time=الوقت بالساعات قبل إرسال تحذير لعدم التسليم
 opts_delay_warning_time_default2=Postfix الافتراضي
 opts_content_filter_default=لا شيء
+
 smtpd_title=خيارات خادم SMTP
 smtpd_ecannot=غير مسموح لك بتحرير خيارات خادم SMTP
 opts_disable_vrfy_command=تعطيل الأمر SMTP VRFY
@@ -273,6 +294,7 @@ smtpd_nomap=لم يتم إدخال خريطة للعناوين المسموح ب
 smtpd_nomap2=لم يتم إدخال خريطة للقيود المفروضة على عناوين المرسلين.
 smtpd_map=العناوين المسموح بها للترحيل
 smtpd_map2=القيود المفروضة على عناوين المرسل
+
 smtp_title=خيارات عميل SMTP
 smtp_ecannot=غير مسموح لك بتحرير خيارات عميل SMTP
 opts_best_mx_transport=العمل عند إدراجها كأفضل مضيف MX
@@ -293,6 +315,7 @@ opts_smtp_data_done_timeout=مهلة في انتظار الإجابة على ا�
 opts_smtp_quit_timeout=مهلة في انتظار الإجابة على QUIT
 opts_smtp_use_tls=استخدم TLS لاتصالات SMTP
 opts_smtp_sasl_security_options=خيارات الأمان SASL
+
 rate_title=معدلات التسليم
 rate_ecannot=غير مسموح لك بتحرير خيارات معدلات التسليم
 opts_default_destination_concurrency_limit=أقصى عدد من عمليات التسليم الموازية إلى نفس الوجهة
@@ -303,18 +326,21 @@ opts_maximal_queue_lifetime=أقصى وقت (أيام) في قائمة الان�
 opts_minimal_backoff_time=دقيقة من الوقت (ثانية) بين محاولات تسليم رسالة مؤجلة
 opts_queue_run_delay=الوقت (بالثواني) بين مسح قائمة الانتظار المؤجلة
 opts_defer_transports=وسائل النقل التي لا ينبغي تسليمها
+
 debug_title=ميزات التصحيح
 debug_ecannot=غير مسموح لك بتحرير ميزات تصحيح الأخطاء
 opts_debug_peer_list=قائمة بأنماط المجال / الشبكة التي تم تمكين السجل المطوّل لها
 opts_debug_peer_level=مطوّل مستوى التسجيل عند مطابقة القائمة أعلاه
 debug_version=Postfix Module for Webmin - Version $1
 opts_edebug=مستوى تسجيل مطوّل مفقود أو غير صالح - يجب أن يكون رقمًا أكبر من الصفر
+
 ldap_title=عمليات البحث LDAP
 ldap_ecannot=غير مسموح لك بتحرير خيارات بحث LDAP
 ldap_non_existent=يبدو أن LDAP غير موجود في نظام Postfix
 opts_ldap_lookup_timeout=مهلة لعمليات البحث في قاعدة بيانات LDAP
 opts_ldap_search_base=قاعدة بيانات LDAP للبحث
 opts_ldap_server_host=اسم مضيف خادم LDAP
+
 canonical_title=رسم الخرائط الكنسي
 canonical_ecannot=غير مسموح لك بتحرير تكوين التعيين المتعارف عليه
 opts_canonical_maps=جداول البحث عن عنوان التعيين
@@ -328,6 +354,7 @@ canonical_edit_title=تحرير خريطة الكنسي
 canonical_return_sender=إرسال خرائط متعارف عليها
 canonical_return_recipient=خرائط المتلقي الكنسي
 canonical_return=الخرائط الكنسي
+
 mapping_name=اسم
 mapping_value=خرائط ل. ..
 mapping_delete=احذف المختار
@@ -355,6 +382,7 @@ mapping_toomany=There are $1 map entries, which is above the display limit of $2
 mapping_find=إظهار التعيينات المطابقة:
 mapping_search=بحث
 mapping_match=Map file entries matching <tt>$1</tt> ..
+
 virtual_title=المجالات الافتراضية
 virtual_ecannot=غير مسموح لك بتحرير تكوين تعيين النطاقات الافتراضية
 opts_virtual_maps=جداول البحث عن خرائط المجال
@@ -362,29 +390,44 @@ opts_virtual_alias_maps=جداول البحث عن خرائط المجال
 opts_virtual_alias_domains=مجالات لتنفيذ تعيين الظاهري ل
 virtual_same=من الجداول تعيين المجال
 virtual_return=المجالات الافتراضية
+
 transport_title=رسم الخرائط النقل
 transport_ecannot=غير مسموح لك بتحرير تكوين تعيين النقل
 opts_transport_maps=جداول البحث عن خرائط النقل
 transport_return=خرائط النقل
+
+sni_title=تعيين الشهادة
+sni_ecannot=غير مسموح لك بتحرير تكوين تعيين الشهادة
+opts_sni_maps=جداول بحث تعيين الشهادات
+sni_return=خرائط الشهادات
+sni_dom=اسم المضيف
+sni_certs=ملفات الشهادات
+
 relocated_title=نقل الخرائط
 relocated_ecannot=غير مسموح لك بتحرير تكوين التعيين المنقول
 relocated_return=نقل الخرائط
 opts_relocated_maps=تم نقل جداول البحث عن الخرائط
 opts_content_filter=مرشح محتوى البريد الإلكتروني
+
 map_click=انقر فوق أي تعيين لتعديل خصائصه:
 no_map=(لا توجد خريطة محددة حاليًا. حدد الخريطة أولاً ، ثم يمكنك تعديلها)
 no_map2=لا توجد خريطة محددة حاليًا. حدد الخريطة أولاً ، ثم يمكنك تحريرها.
+
 stop_efailed=فشل في إيقاف Postfix
 stop_ecannot=غير مسموح لك بإيقاف Postfix
+
 start_efailed=فشل في بدء Postfix
 start_ecannot=غير مسموح لك ببدء تشغيل Postfix
+
 reload_efailed=فشل في إعادة تحميل Postfix
 reload_ecannot=غير مسموح لك بإعادة تحميل Postfix
+
 query_get_efailed=Failed to query Postfix config command to get the current value of parameter $1: <tt>$2</tt>
 query_set_efailed=Failed to query Postfix config command to set the current value of parameter $1 to $2: <tt>$3</tt>
 regenerate_ecannot=غير مسموح لك بتجديد الأسماء المستعارة
 regenerate_alias_efailed=Failed to regenerate aliases: <tt>$1</tt>
 regenerate_table_efailed=Failed to regenerate table $1: <tt>$2</tt>
+
 acl_resource=يمكن تحرير الموارد؟
 acl_aliases=يمكن تعديل الأسماء المستعارة؟
 acl_aliases_options=يمكن تعديل خيارات الأسماء المستعارة؟
@@ -393,6 +436,7 @@ acl_address_rewriting=يمكن تعديل إعادة كتابة العنوان؟
 acl_canonical=يمكن تعديل الكنسي؟
 acl_virtual=يمكن تحرير الظاهري؟
 acl_transport=يمكن تحرير النقل؟
+acl_sni=هل يمكن تحرير الشهادات؟
 acl_relocated=يمكن تعديل نقل؟
 acl_header=يمكن تعديل الشيكات رأس؟
 acl_local_delivery=يمكن تعديل التسليم المحلي؟
@@ -411,6 +455,7 @@ acl_postfinger=يمكن التحقق من التكوين postfix؟
 acl_manual=يمكن تحرير ملف التكوين؟
 acl_dir=الدليل المسموح به لملفات الخريطة
 acl_bcc=يمكن تعديل تعيين BCC؟
+
 boxes_title=صناديق بريد المستخدم
 boxes_user=المستعمل
 boxes_size=حجم صندوق البريد
@@ -420,6 +465,7 @@ boxes_sent=البريد المرسل
 boxes_ecannot=غير مسموح لك بقراءة البريد الإلكتروني
 boxes_toomany=هناك الكثير من المستخدمين على نظامك لسرد جميع صناديق البريد الخاصة بهم.
 boxes_go=عرض البريد للمستخدم:
+
 mail_title=البريد الالكتروني للمستخدم
 mail_from=من عند
 mail_date=تاريخ
@@ -458,6 +504,7 @@ mail_forward=إلى الأمام
 mail_rfc=من الخط
 mail_move=الانتقال إلى:
 mail_eexists=الرسالة لم تعد موجودة!
+
 view_title=قراءة البريد الإلكتروني
 view_desc=Message $1 in $2
 view_desc2=Message $1 for user $2
@@ -486,6 +533,7 @@ view_body=رسالة نصية
 view_afile=اسم المرفق
 view_atype=نوع المرفق
 view_asize=حجم الملف
+
 compose_title=يؤلف البريد الإلكتروني
 reply_title=الرد على البريد الإلكتروني
 forward_title=إعادة توجيه البريد الإلكتروني
@@ -496,6 +544,7 @@ reply_mailforward=رسائل معاد توجيهها
 reply_attach2=المرفقات العميل والخادم
 reply_send=ارسل بريد
 reply_ecannot=غير مسموح لك بإرسال بريد كهذا المستخدم
+
 send_err=فشل في إرسال البريد
 send_eto=مفقود لمعالجة
 send_efrom=مفقود من العنوان
@@ -509,6 +558,7 @@ send_eperms=User $1 cannot read $2
 send_eperms2=You are not allowed to send file $1
 send_epath=Sendmail executable $1 does not exist.
 send_ewrapper=Postfix برنامج واجهة mailmail غير موجود
+
 search_title=نتائج البحث
 search_ecannot=غير مسموح لك بالبحث في البريد الإلكتروني لهذا المستخدم
 search_ematch=يجب عليك إدخال نص لمطابقته.
@@ -516,6 +566,7 @@ search_efield=يجب عليك تحديد نوع البحث.
 search_none=لا توجد رسائل.
 search_results2=$1 mail messages matching $2 ..
 search_results3=$1 mail messages not matching $2 ..
+
 match_from=من: المباريات
 match_subject=الموضوع: المباريات
 match_to=إلى: المباريات
@@ -533,6 +584,7 @@ match_!date=التاريخ: غير متطابق
 match_!body=الجسم لا يتطابق
 match_!size=حجم أقل من
 match_!headers=الرؤوس لا تتطابق
+
 mailq_title=قائمة انتظار البريد
 mailq_count=$1 messages
 mailq_none=لا توجد رسائل بريد قائمة الانتظار حاليًا للتسليم
@@ -561,15 +613,20 @@ mailq_active=نشيط
 mailq_deferred=المؤجلة
 mailq_hold=عقد مختارة
 mailq_unhold=إلغاء الحجز المحدد
+
 flushq_title=قائمة الانتظار فلوش
 flushq_desc=Forcing the attempted delivery of mail with the command $1 ..
+
 qview_title=رسالة في قائمة الانتظار
 qview_desc=From file $1
 qview_headers=رؤوس البريد
 qview_attach=مرفقات
+
 after_err=Postfix configuration error : $1
+
 searchq_title=قائمة انتظار نتائج البحث
 searchq_none=لم يتم العثور على رسائل في قائمة الانتظار.
+
 header_title=الشيكات رأس
 header_ecannot=غير مسموح لك بتحرير اختبارات الرأس
 header_eregexp=The header checks map must be in the format <tt>regexp:</tt><i>filename</i>
@@ -588,15 +645,18 @@ header_reject=رفض (مع رسالة خطأ..)
 header_warn=تحذير سجل (مع رسالة..)
 header_ename=تعبير عادي غير صالح - يجب أن يكون مثل / شيء /
 header_return=الشيكات رأس
+
 body_title=الشيكات الجسم
 body_ecannot=غير مسموح لك بتحرير عمليات فحص النص
 body_eregexp=The body checks map must be in the format <tt>regexp:</tt><i>filename</i>
 opts_body_checks=جداول فحص نص الرسالة
 body_return=الشيكات الجسم
+
 dependent_title=المرسل المعين النقل الخرائط
 dependent_ecannot=غير مسموح لك بتحرير تعيينات النقل المعتمدة على المرسل
 dependent_eregexp=The sender dependent transports map must be in the format <tt>regexp:</tt><i>filename</i>
 dependent_return=المرسل تعيينات النقل التابعة
+
 manual_title=تحرير ملف الخريطة
 manual_file=حدد ملف خريطة لتحريره:
 manual_change=يتغيرون
@@ -604,9 +664,11 @@ manual_editing=Use the text box below to manually edit the mappings in $1. Be ca
 manual_err=فشل في حفظ ملف الخريطة
 manual_efile=اسم خريطة غير صالح!
 manual_ecannot=غير مسموح لك بتحرير ملفات الخريطة يدويًا
+
 delq_titles=حذف الرسائل
 delq_rusure=Are you sure you want to delete the $1 selected queued messages?
 delq_confirm=حذف الرسائل
+
 master_title=عمليات الخادم
 master_name=اسم العملية
 master_enabled=تمكين؟
@@ -647,8 +709,10 @@ master_einet=لا يمكن تحديد عنوان المضيف للاستماع �
 master_ecommand=مفقود أمر عملية الخادم
 master_ewakeup=وقت الإيقاظ مفقود أو غير صالح
 master_emaxprocs=مفقود أو غير صالح أقصى عدد من العمليات
+
 delete_err=فشل في حذف التعيينات
 delete_enone=لا شيء محدد
+
 cmanual_title=تحرير ملفات التكوين
 cmanual_ecannot=غير مسموح لك بتحرير ملف التكوين Postfix
 cmanual_ok=تعديل
@@ -656,10 +720,12 @@ cmanual_efile=الملف المحدد ليس جزءًا من تكوين Postfix
 cmanual_file=تحرير ملف التكوين:
 cmanual_edata=لا شيء دخل!
 cmanual_err=فشل في حفظ ملف التكوين
+
 access_return=خريطة الوصول الجدول
 edit_map_file=تحرير ملف الخريطة
 opts_reject_rbl_client=البحث في قوائم Realtime Black (RBL)
 opts_check_sender_access=تحقق من جدول خريطة وصول المرسل
+
 log_misc=تغيير الخيارات العامة
 log_opts=تغيير عنوان إعادة الكتابة والتنكر
 log_aliases=خيارات الأسماء المستعارة التي تم تغييرها
@@ -667,6 +733,7 @@ log_canonical=تغيير خيارات تعيين الكنسي
 log_virtual=تغيير خيارات المجال الظاهري
 log_bcc=تم تغيير خيارات خريطة BCC
 log_transport=خيارات تعيين النقل المتغيرة
+log_sni=تغيير خيارات تعيين الشهادة
 log_dependent=تم تغيير خيارات العناوين التابعة للمرسل
 log_relocated=تم تغيير خيارات نقل الخرائط
 log_header=تغيير خيارات الاختيار رأس
@@ -744,6 +811,7 @@ log_sender_dependent_default_transport_maps_modify=Modified sender dependent add
 log_sender_dependent_default_transport_maps_delete=Deleted sender dependent address $1
 log_delete_sender_dependent_default_transport_mapss=Deleted $1 sender dependent addresses
 log_manual_sender_dependent_default_transport_mapss=Manually edited sender dependent addresses in $1
+
 sasl_title=مصادقة SMTP والتشفير
 opts_smtpd_sasl_auth_enable=تتطلب مصادقة SMTP SASL؟
 opts_smtp_sasl_auth_enable=استخدام مصادقة SMTP SASL؟
@@ -790,6 +858,7 @@ sasl_nologin=لا حاجة
 sasl_userpass=Login as $1 with password $2
 sasl_elogin=تسجيل دخول SMTP مفقود أو غير صالح (لا يسمح بوجود مسافات أو نقطتين)
 sasl_epass=كلمة مرور SMTP غير صالحة (لا توجد مسافات مسموح بها)
+
 client_title=قيود عميل SMTP
 client_ecannot=غير مسموح لك بتحرير قيود عميل SMTP
 client_restrict=قيود العميل
@@ -799,6 +868,7 @@ client_other=قيود أخرى :
 client_err=فشل في حفظ قيود العميل
 client_evalue=Missing value for restriction $1
 client_return=قيود عميل SMTP
+
 chooser_title=اختر خريطة المصدر
 chooser_header=Map source $1
 chooser_none=لا شيء
@@ -854,6 +924,7 @@ chooser_elquery_filter=Missing query filter for map $1
 chooser_elresult_attribute=Missing or invalid result attribute name for map $1
 chooser_elbind_dn=Missing login for LDAP server for map $1
 chooser_elbind_pw=Missing password for LDAP server for map $1
+
 mysql_ecfile=MySQL configuration file $1 was not found
 mysql_ecfile2=Could not find table in MySQL configuration file $1
 mysql_edriver=Failed to load the database driver $1
@@ -865,6 +936,7 @@ mysql_eupdate=SQL update failed : $1
 mysql_elist=SQL query failed : $1
 mysql_esource=No MySQL source named $1 was found
 mysql_eneed=The MySQL configuration parameter $1 was not found. Webmin needs this to figure out which table and fields to query.
+
 ldap_ecfile=LDAP configuration file $1 was not found
 ldap_eldapmod=Perl module $1 needed to communicate with LDAP is not installed or not loadable
 ldap_eldap=Failed to connect to LDAP server $1 on port $2
@@ -875,6 +947,7 @@ ldap_edelete=LDAP delete of $1 failed : $2
 ldap_equery=LDAP search of $1 failed : $2
 ldap_erename=LDAP rename of $1 to $2 failed : $3
 ldap_emodify=LDAP modify of $1 failed : $2
+
 bcc_title=تعيين BCC
 bcc_ecannot=غير مسموح لك بتحرير تعيينات BCC
 opts_sender_bcc_maps=إرسال جداول بحث تعيين BCC المرسل

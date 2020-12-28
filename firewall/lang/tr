@@ -65,6 +65,7 @@ index_reset=Güvenlik Duvarını Yeniden Başlat
 index_resetdesc=Bütün varolan güvenlik duvarı kurallarını temizlemek ve ana başlangıç yapılandırması için yeni kuralları oluşturmak için bu tuşu tıklayınız.
 index_cluster=Küme Sunucuları
 index_clusterdesc=Güvenlik duvarı yapılandırmasının otomatik olarak kopyalanacağı ek webmin sunucularını bu tuşa basarak kurabilirsiniz.
+
 desc_p=protokol $1 dir
 desc_p!=protokol $1 değildir
 desc_s=kaynak $1'dir
@@ -114,9 +115,14 @@ desc_tos!=servis alanın tipi $1 değildir
 desc_conds=Eğer $1
 desc_and=ve
 desc_always=Her zaman
+
 redhat_eoutput=$1 komutuyla IP tablo statüsüne erişimde bir hata meydana geldi. Bu, sisteminizde IP tablolarının yerine IP zincirlerinin kullanıldığına işarettir.
+
 gentoo_escript=Gentoo IPtabloları başlatma betiği $1 sisteminizde bulunamadı.
+
 eiptables=Bilinmeyen IP tabloları $1 satırında saklanır
+eip6tables=Bilinmeyen IP tabloları $1 satırında saklanır
+
 edit_title1=Kural Ekle
 edit_title2=Kuralı Düzenle
 edit_title3=Klonlama Kuralı
@@ -177,6 +183,7 @@ edit_args=Ek parametreler
 edit_mods=Ek IP tabloları modülleri
 edit_rwith=ICMP tipiyle birlikte reddet
 edit_rwithtype=$1 tipi
+
 save_err=Kuralı kaydederken hata oluştu
 save_echain=Çalıştırmak için zincir eksik ya da geçersizdir
 save_esource=Adres ya da ağ kaynağı eksik ya da geçersizdir
@@ -219,23 +226,28 @@ save_espfrom=SNAT için başlangıç portu geçersizdir
 save_espto=SNAT için bitiş portu eksik ya da geçersizdir
 save_estates=Bağlantı durumu seçilmedi
 save_ecanjump=Bu eylemi kullanmaya izniniz yoktur
+
 delete_title=Zinciri Sil
 delete_rusure=$1 zincirini silmek istediğinizden emin misiniz? bununla beraber $2 kuralları da silinecektir.
 delete_ok=Şimdi Sil
 delete_ecannot=Zincirleri silmeye izinli değilsiniz
+
 clear_title=Zinciri Temizle
 clear_rusure=$1 zincirinden bütün $2 kurallarını silmek istediğinizden emin misiniz ?
 clear_ecannot=Zincirleri silmenize izin verilmiyor
+
 new_err=Zincir oluşturulurken hata oluştu
 new_ename=Zincir adı geçersiz ya da eksiktir
 new_etaken=Bu isimde bir zincir zaten mevcuttur
 new_ecannot=Zincir oluşturma izniniz yoktur
+
 apply_err=Yapılandırmayı uygularken hata oluştu
 apply_ecannot=Yapılandırmayı uygulamaya yetkiniz yoktur
 apply_remote=$1'deki hata : $2
 unapply_err=Yapılandırma geri alırken hata oluştug
 unapply_ecannot=Yapılandırmayı geri almanıza izin verilmiyor
 bootup_ecannot=Ön yüklemede güvenlik duvarını aktifleştirme ya da pasifleştirme izniniz yoktur
+
 log_create_rule=$2 tablosunda $1 zincirine kural eklendi
 log_modify_rule=$2 tablosunun $1 zincirindeki kural değiştirildi
 log_delete_rule=$2 tablosunun $1 zincirindeki kural silindi
@@ -255,8 +267,10 @@ log_add_host=$1 küme sunucusu eklendi
 log_add_group=$1 grubundan küme sunucuları eklendi
 log_delete_host=Küme sunucusu $1 taşındı
 log_delete_group=$1 küme sunucusu taşındı
+
 setup_eiface=Hiçbir dış ağ arabirimi girilmedi
 setup_ecannot=Güvenlik duvarını kurmaya izniniz yoktur
+
 acl_tables=İzin verilen IP tabloları
 acl_apply=Yapılandırmayı uygulayayım mı?
 acl_unapply=Yapılandırmayı geri alabilir miyim?
@@ -268,9 +282,11 @@ acl_jall=Hepsi
 acl_newchain=Yeni zincirler oluşturayım mı?
 acl_delchain=Zincirleri sileyim ya da temizleyeyim mi?
 acl_policy=Varsayılan kuralları değiştireyim mi?
+
 etable=Bu IP tablosunu düzenlemeye izniniz yoktur
 ejump=Bu kuralı düzenlemeye izniniz yoktur
 ecluster=Güvenlik duvarı kümesini yönetmeye izinli değilsiniz
+
 cluster_title=Küme Güvenlik Duvarı Sunucuları
 cluster_none=Güvenlik duvarı kümesine henüz eklenen bir sunucu yoktur.
 cluster_host=Host adı
@@ -281,6 +297,7 @@ cluster_gadd=Gruptaki sunucuları ekle
 cluster_need=Sunucuları buradan yönetmeye başlamadan önce Webmin Sunucular Dizin modülüne, giriş ve şifresiyle beraber eklemelisiniz.
 cluster_return=küme sunucuları
 cluster_delete=Seçili Olanları Kaldır
+
 add_title=Sunucuları Ekle
 add_msg=$1'i ekliyor ..
 add_gmsg=$1 grubundaki sunucuları ekliyor ..
@@ -289,5 +306,5 @@ add_gerr=Grubu eklerken hata oluştu
 add_echeck=$1 sunucusu Linux güvenlik duvarı modülüne sahip değildir
 add_emissing=$1 sunucusunda $2 güvenlik duvarı komutu eksiktir
 add_ok=$1, $2 aktif güvenlik duvarı kuralıyla eklendi.
+
 policy_ecannot=Bu zincir için var olan kuralı değiştirme izniniz yoktur
-eip6tables=Bilinmeyen IP tabloları $1 satırında saklanır

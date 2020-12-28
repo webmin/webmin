@@ -3,8 +3,10 @@ index_clink=אולי הוא לא מותקן, או <a href='$1'>תצורת המו
 index_return=אינדקס מודול
 index_atboot=מתחילים באתחול?
 index_atbootdesc=שנה אפשרות זו כדי לקבוע אם לקוח iSCSI מופעל בזמן האתחול או לא. זה נדרש להתקנה אוטומטית של מערכות קבצים המורכבות משרתי iSCSI.
+
 check_econfig=קובץ התצורה של לקוח iSCSI $1 לא נמצא במערכת שלך.
 check_eiscsiadm=תוכנית ניהול הלקוחות של iSCSI $1 לא נמצאה במערכת שלך.
+
 auth_title=אפשרויות אימות
 auth_header=אימות לקוח ושרת iSCSI
 auth_name=שם יוזם מערכת מקומי
@@ -29,6 +31,7 @@ auth_edpassword=סיסמת הגילוי חסרה לשרת
 auth_edusername_in=שם משתמש לגילוי חסר ללקוח
 auth_edpassword_in=סיסמת הגילוי חסרה עבור הלקוח
 auth_egen=יצירת שם חדש נכשלה!
+
 timeout_title=פסק זמן של iSCSI
 timeout_header=אפשרויות פסק זמן לקוח של iSCSI
 timeout_timeout=זמן להמתין לפני שנכשלו בפקודות SCSI
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=זמן חסר או לא מספרי לחכות לפינ
 timeout_eabort_timeout=זמן חסר או לא מספרי להמתין לתגובת הפלה לפני שנכשל
 timeout_elu_reset_timeout=זמן חסר או לא מספרי להמתין לתגובת יחידות לוגיות לפני שנכשל
 timeout_etgt_reset_timeout=זמן חסר או לא מספרי להמתין לתגובת היעד לפני שנכשל
+
 iscsi_title=אפשרויות iSCSI
 iscsi_header=אפשרויות iSCSI אחרות
 iscsi_startup=להתחבר להפעלות בזמן האתחול?
@@ -62,6 +66,7 @@ iscsi_err=שמירת אפשרויות iSCSI נכשלה
 iscsi_eretry=מספר פעמים חסר או לא מספרי כדי לנסות להתחבר מחדש
 iscsi_ecmds=פקודות מקסימליות חסרות או לא מספריות בתור לכל הפעלה
 iscsi_equeue=פקודות מקסימליות חסרות או לא מספריות בתור למכשיר
+
 ifaces_title=ממשקי iSCSI
 ifaces_elist=רשימת הממשקים נכשלה : $1 
 ifaces_name=שם הממשק
@@ -78,11 +83,13 @@ ifaces_hwaddress=כתובת MAC
 ifaces_ifacename=ממשק המקור
 ifaces_ipaddressdef=אוטומטי
 ifaces_notset=אוטומטי
+
 iadd_err=הוספת ממשק נכשלה
 iadd_eclash=ממשק בשם $1 כבר קיים
 iadd_eipaddress=כתובת IP מקור חסרת או לא חוקית
 iadd_ehwaddress=כתובת MAC חסרה או לא חוקית
 iadd_ename=שם הממשק חסר או מכיל תווים לא חוקיים
+
 difaces_err=הסרת הממשקים נכשלה
 difaces_enone=לא נבחר
 difaces_edelete=הסרת הממשק $1 נכשלה : $2 
@@ -93,6 +100,7 @@ difaces_confirm=הסר את הממשקים
 difaces_target=יעד iSCSI
 difaces_ip=שרת iSCSI
 difaces_users=חיבור כלשהו המשתמש בממשקים אלה פעיל כרגע ולא יפעל כשמוסרים את הממשקים :
+
 conns_title=חיבורי iSCSI
 conns_elist=רשימת החיבורים נכשלה : $1 
 conns_ip=IP של שרת
@@ -113,6 +121,7 @@ conns_return=רשימת חיבורים
 conns_iface=ממשק iSCSI
 conns_ifacedef=בחר באופן אוטומטי
 conns_ifaceerr=אחזור הממשקים נכשל : $1 
+
 add_title=הוסף חיבור iSCSI
 add_err=הוספת חיבור iSCSI נכשלה
 add_ehost=שם מארח חסר או שלא ניתן לפתור אותו
@@ -129,6 +138,7 @@ add_on=$1 על $2
 add_auth=התחברות לשרת
 add_auth1=השתמש בשיטת אימות ברירת מחדל
 add_auth0=התחבר כ- $2 באמצעות הסיסמה $3 בשיטה $1 
+
 dconns_err=ניתוק החיבורים נכשל
 dconns_enone=לא נבחר
 dconns_edelete=הסרת היעד $2 מהמארח $1 נכשלה : $3 
@@ -142,6 +152,7 @@ dconns_use=בשימוש על ידי
 dconns_size=גודל מחיצה
 dconns_confirm=הסר חיבורים
 dconns_unused=לא בשימוש
+
 vconn_title=חיבור iSCSI
 vconn_egone=החיבור שנבחר כבר לא קיים!
 vconn_header=פרטי חיבור iSCSI
@@ -160,8 +171,10 @@ vconn_device3=שם מכשיר קבוע
 vconn_delete=נתק את החיבור
 vconn_users=המשתמשים הנוכחיים
 vconn_size=גודל דיסק
+
 atboot_err=ההפעלה נכשלה בזמן האתחול
 atboot_einit=לא קיימת פעולת אתחול בשם $1 
+
 log_auth=אפשרויות אימות שמורות
 log_timeout=אפשרויות פסק זמן שמורות
 log_iscsi=אפשרויות iSCSI שמורות

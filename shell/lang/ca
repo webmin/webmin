@@ -8,7 +8,9 @@ index_pok=Executa l'ordre anterior
 index_edit=Edita l'anterior
 index_trunced=La sortida total de $2 s'ha truncat a $1.
 index_timedout=S'ha cancel·lat l'ordre després de $1 segons d'execució.
+
 acl_user=Executa les ordres com a usuari
 acl_user_def=Usuari Webmin actual
+
 log_run=S'ha executat l'ordre $1
 log_clear=S'ha netejat l'historial d'ordres

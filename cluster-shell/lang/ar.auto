@@ -9,12 +9,14 @@ index_all=&lt;جميع المضيفين&gt;
 index_group=أعضاء$1
 index_clear=تاريخ واضح
 index_edit=تحرير السابق
+
 run_title=الأمر Run
 run_err=فشل في تشغيل الأمر
 run_ecmd=لم يتم إدخال أي أمر
 run_failed=فشل في التشغيل على $1 : $2 
 run_success=الإخراج من$1 ..
 run_enone=لا يوجد خوادم للتشغيل على المحدد
+
 log_clear=تم مسح محفوظات الأوامر
 log_run=تم تشغيل$1 على$2 ملقمات
 log_run_l=تم تشغيل$1 على$2

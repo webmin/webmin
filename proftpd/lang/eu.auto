@@ -27,7 +27,9 @@ index_global=Konfigurazio globala
 index_create=Sortu zerbitzari birtuala
 index_version=ProFTPd $1 bertsioa
 index_proftpd=ProFTPd
+
 efailed=Ezin izan da $1 gordetzea
+
 type_0=Sareko aukerak
 type_1=Logging Aukerak
 type_2=Fitxategiak eta Direktorioak
@@ -35,6 +37,7 @@ type_3=Sarbide-kontrola
 type_4=Denetarik
 type_5=Erabiltzailea eta Taldea
 type_6=Autentifikazioa
+
 virt_title=Zerbitzari birtualaren aukerak
 virt_header1=$1 erako
 virt_header2=Zerbitzari lehenetsirako
@@ -50,6 +53,7 @@ virt_cmds=FTP komandoak
 virt_return=zerbitzari birtuala
 virt_virt=Konfiguratu zerbitzari birtuala
 virt_edit=Editatu Zuzentarauak
+
 vserv_title=Konfiguratu zerbitzari birtuala
 vserv_addr=Helbidea
 vserv_name=Zerbitzariaren izena
@@ -58,6 +62,7 @@ vserv_delete=Ezabatu zerbitzari birtuala
 vserv_eaddr=Helbide falta edo baliogabea
 vserv_eport=Ataka-zenbaki falta edo baliogabea
 vserv_ename=Zerbitzariaren izena falta da
+
 anon_title=FTP Aukera anonimoak
 anon_header1=$1 zerbitzari birtualan
 anon_header2=Zerbitzari lehenetsian
@@ -65,6 +70,7 @@ anon_anon=Konfiguratu FTP anonimoak
 anon_return=FTP aukera anonimoak
 anon_header3=FTP anonimo bat $1 zerbitzari birtualan
 anon_header4=Zerbitzari lehenetsian FTP anonimoentzat
+
 aserv_title=Konfiguratu FTP anonimoak
 aserv_create=Ezarri FTP anonimo bat
 aserv_root=Direktoriora mugatu
@@ -75,6 +81,7 @@ aserv_eroot=Chroot direktorio falta edo baliogabea
 aserv_euser=Unix-eko erabiltzaile falta edo baliogabea
 aserv_egroup=Unix talde falta edo baliogabea
 aserv_desc=FTP anonimoak oraindik ez du zerbitzari birtual hau konfiguratu. Erabili formulario hau hasierako konfigurazio aukerak ezartzeko.
+
 dir_title=Direktorio bakoitzeko aukerak
 dir_header2=Zerbitzari lehenetsian $1 direktoriorako
 dir_header1=$1 direktoriorako $2 zerbitzari birtualerako
@@ -85,6 +92,7 @@ dir_header=Komando bakoitzeko aukerak
 dir_dir=Konfiguratu direktorio
 dir_header4=FTP anonimoko $1 direktoriorako
 dir_header5=$1 direktorio globalean
+
 manual_title=Editatu Zuzentarauak
 manual_header=Erabil itzazu beheko testu-koadroa eskuz editatzeko zerbitzari, direktorio edo komando birtual honi aplikatzen zaizkion $1 eko ProFTPD zuzentarauak.
 manual_configs=Editatu Konfigurazio fitxategiak
@@ -92,6 +100,7 @@ manual_ecannot=Ezin duzu eskuz editatu direktibak
 manual_file=Editatu arauak Fitxategian:
 manual_efile=ProFTPd konfigurazio fitxategi baliogabea
 manual_etest=Konfigurazio fitxategiaren akatsa hauteman da : $1 
+
 limit_title=Komandoko Aukerak
 limit_header4=$1 komandoetarako $2 direktoriorako
 limit_header2=$1 komandoak zerbitzari lehenetsian
@@ -103,17 +112,20 @@ limit_return=komando bakoitzeko aukerak
 limit_header5=$1 komandoak FTP anonimoan
 limit_header6=$1 komandoetarako $2 fitxategian
 limit_header7=$1 komandoak mundu mailan
+
 lserv_title=Konfiguratu komandoak
 lserv_cmd=FTP komandoak
 lserv_delete=Ezabatu komandoak konfiguratu
 lserv_err=Ezin izan da aginduak gordetzea
 lserv_ecmd=Ez da komando hautatu
+
 dserv_title=Konfiguratu direktorio
 dserv_dir=Direktorioaren bidea
 dserv_err=Ezin izan da direktorioaren gordetzea
 dserv_edir=Direktorioaren bidea falta da
 dserv_delete=Ezabatu direktorioaren konfigurazioa
 dserv_eanondir=Direktorioak FTP direktorio anonimoaren azpian egon behar du
+
 mod_core_type=Zerbitzari mota
 mod_core_inetd=Exekutatu Inetd-etik
 mod_core_stand=Bakarrik daemon
@@ -301,6 +313,7 @@ mod_core_duser=Erabiltzaileei uko egin
 mod_core_eip='$1' ez da baliozko IP helbide bat
 mod_core_enet='$1' ez da baliozko sareko helbidea
 mod_core_ehost='$1' ez da baliozko ostalari izena
+
 mod_ls_fakegroup=Talde faltsuak direktorioen zerrendetan?
 mod_ls_fakeuser=Erabiltzaile faltsuak direktorioen zerrendetan?
 mod_ls_fakemode=Gida faltsuak direktorioen zerrendetan
@@ -317,6 +330,7 @@ mod_ls_efakeuser=Erabiltzaile faltsua falta edo baliogabea da
 mod_ls_efakegroup=Gezurrezko talde faltsua edo falta da
 mod_ls_options=Direktorioen zerrendako aukerak
 mod_ls_strict=Erabiltzailearen aukerak alboratu?
+
 mod_auth_chdir=Hasierako hasiera direktorioa
 mod_auth_echdir=Hasierako direktorio falta edo baliogabea
 mod_auth_chroot=Erabiltzaileak direktorioetara mugatu
@@ -330,7 +344,9 @@ mod_auth_egroups=Ez da sartu Unro talde bat txrootetarako
 mod_auth_echroot=Chroot direktorio falta edo baliogabea
 mod_auth_login=Ez eskatu pasahitzik saioa ukatzen bada?
 mod_auth_root=Baimendu saioa root bidez?
+
 mod_site_chmod=Baimendu chmod komandoa?
+
 mod_unixpw_ufile=Ordezko Unix pasahitz fitxategia
 mod_unixpw_eufile=Unix pasahitz fitxategia falta edo baliogabea
 mod_unixpw_gfile=Ordezko Unix taldeko fitxategia
@@ -338,6 +354,7 @@ mod_unixpw_egfile=Falta da edo baliogabea Unix taldeko fitxategia
 mod_unixpw_none=Bat ere ez
 mod_unixpw_pam=Beti tratatu PAM autorakotzat?
 mod_unixpw_persist=Pasahitz fitxategia irekita mantendu?
+
 mod_log_syslog=Fitxategiak erregistratzeko akatsak
 mod_log_sysdef=Sistemaren erregistroa
 mod_log_esyslog=Falta fitxategiko erregistroa edo baliogabea
@@ -354,19 +371,25 @@ mod_log_fmt=Formatu katea
 mod_log_format=Neurrira egindako erregistro formatuak
 mod_log_enickname=Formatuaren izen falta edo baliogabea
 mod_log_efmt=Formatu-katea falta da
+
 mod_pam_pam=Erabili PAM autentifikaziorako?
 mod_pam_config=Autentifikatu PAM zerbitzua erabiliz
 mod_pam_econfig=PAM zerbitzu falta edo baliogabea
+
 mod_readme_display=Erabiltzaileei irakurritako fitxategiak bat datozela jakinarazi
 mod_readme_none=Bat ere ez
 mod_readme_edisplay=Irakurtzeko fitxategi eredua falta da
+
 start_err=Huts egin du FTP zerbitzaria abiaraztean
 start_einetd=Ezin duzu zerbitzariaren demona abiarazi inetd moduan dagoenean.
+
 stop_err=Ezin izan da FTP zerbitzaria gelditu
 stop_einetd=Ezin duzu zerbitzariaren demona gelditu inetd moduan.
 stop_erun=Ez da exekutatzen
+
 apply_err=Ezin izan da FTP konfigurazioa aplikatu
 apply_egone=Jada ez da martxan
+
 ftpaccess_title=Direktorio bakoitzeko Aukerak fitxategiak
 ftpaccess_desc=Direktorio bakoitzeko aukera gehigarriak fitxategi batean (normalean <tt>.ftpaccess</tt>) deitzen dira direktorio bakoitzean. Aukerak direktorio horretako fitxategi guztiei eta azpidirektorio guztiei aplikatzen zaizkie, beste aukeretako fitxategi batek gainbegiratu ezean.
 ftpaccess_create=Sortu Aukerak Fitxategia
@@ -374,8 +397,10 @@ ftpaccess_find=Bilatu Aukerak fitxategiak
 ftpaccess_auto=Anonimoen azpian
 ftpaccess_from=Direktorioan
 ftpaccess_return=aukeren fitxategi zerrenda
+
 ftpusers_title=FTP erabiltzaileak ukatu dira
 ftpusers_desc=<tt>Autentifikazioa</tt> ikonoan gaituta badago, $1 fitxategian agertzen diren beheko erabiltzaileei FTP erabiltzailearen sarbidea ukatuko zaie.
+
 ftpindex_title=Direktorio bakoitzeko aukeren fitxategia
 ftpindex_delete=Ezabatu Fitxategia
 ftpindex_opts=Direktorio bakoitzeko aukerak
@@ -385,8 +410,10 @@ ftpindex_addlimit=Gehitu komando bakoitzeko aukerak ..
 ftpindex_header2=$1 $2 an
 ftpindex_return=direktorio bakoitzeko aukeren fitxategia
 ftpindex_header=$1 erako
+
 find_err=Ezin izan da aukerak fitxategiak aurkitu
 find_eanon=FTP anonimoak ez du zerbitzari birtualetan konfiguratuta
+
 log_global=$1 aukera globala aldatu da
 log_ftpusers=Aldatu egin dira ukatutako FTP erabiltzaileak
 log_virtc=$1 zerbitzaria sortu da
@@ -420,6 +447,7 @@ log_anonm=$1 zerbitzarirako FTP anonimoak eskuz editatu ditu
 log_anon=$1 aldatu da $2 zerbitzariaren FTP anonimoan
 log_start=Proftpd hasi zen
 log_apply=Aplikatutako aldaketak
+
 eafter=Konfigurazioaren egiaztapena huts egin da: $1 Aldaketak ez dira gorde.
 proftpd_apply=Aplikatu aldaketak
 proftpd_stop=Utzi ProFTPd

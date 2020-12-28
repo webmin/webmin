@@ -12,6 +12,7 @@ index_return=lista de sistemas de arquivos
 index_none=Você não tem acesso a nenhum sistema de arquivos montado.
 index_mount2=Montar com senha:
 index_root=Sistema de arquivos raiz
+
 edit_title=Editar montagem
 create_title=Criar montagem
 edit_err=Erro ao editar montagem
@@ -56,6 +57,7 @@ edit_ecannot=Você não tem permissão para editar este sistema de arquivos
 edit_ecannot2=Você não tem permissão para criar novos sistemas de arquivos
 edit_3_or_lower=3 (ou menos)
 edit_advanced=Modo Avançado
+
 save_err=Erro ao salvar montagem
 save_edir=$1' não é um diretório
 save_edirname=$1' não é um nome de diretório válido
@@ -72,8 +74,10 @@ save_apply=Aplicar à Lista Permanente
 save_fapply=Forçar Desmontagem
 save_eremount=Erro ao remontar: $1
 save_enone=Você não escolheu salvar ou montar
+
 swap_err=Erro ao criar arquivo de swap
 swap_esize=$1' não é um tamanho válido
+
 nfs_server=Escolha um Servidor NFS..
 nfs_select=Escolha um servidor NFS a partir do qual montar..
 nfs_ip=Endereço IP
@@ -85,6 +89,7 @@ nfs_seldir=Selecione um diretório NFS para montar..
 nfs_seldirv4=Para fazer uma montagem NFSv4, você deve escolher '/'
 nfs_dir=Diretório
 nfs_clients=Clientes
+
 smb_choose=Escolha um Servidor SMB..
 smb_elist=Falha ao recuperar lista de servidores de $1. É possível que o servidor não permita navegação.
 smb_ehost=O servidor $1 não existe
@@ -99,6 +104,7 @@ smb_sel2=Escolha uma cota para montar..
 smb_share=Cota
 smb_comment=Comentário
 smb_noshares=Não há cotas disponíveis no servidor $1
+
 solaris_scsidev=Controlador SCSI $1 alvo $2 unidade $3 partição $4
 solaris_idedev=Controlador IDE $1 drive $2 partição $3
 solaris_mddev=Dispositivo RAID $1
@@ -231,6 +237,7 @@ solaris_efstyp2=Erro ao verificar tipo de sistema de arquivos: $1
 solaris_ecachedir=$1' não é um diretório de cache válido
 solaris_efmode=$1' não é um modo de arquivo octal válido
 solaris_edmode=$1' não é um modo de diretório octal válido
+
 linux_eamd=AMD falhou
 linux_eauto=Automontagem falhou: $1
 linux_esmbconn=Erro ao conectar com o servidor
@@ -363,6 +370,7 @@ linux_codepage=Página de código
 linux_iocharset=Grupo de caracteres de IO
 linux_ecodepage=Página de código inválida ou não preenchida
 linux_eiocharset=Grupo de caracteres de IO inválido ou não preenchido
+
 log_mount=$3 montado
 log_mount_l=Montado $2 $1 em $3
 log_umount=$3 desmontado
@@ -376,7 +384,9 @@ log_modify_l=Modificada montagem $2 $1 em $3
 log_delete=Montagem $3 removida
 log_delete_l=Removida montagem $2 $1 em $3
 log_swap=Arquivo de swap $1 criado
+
 unmount_err=Erro ao desmontar $1
+
 mount_err=Erro ao montar $1
 irix_nhost=Nome de host NFS
 irix_ndir=Diretório NFS
@@ -407,6 +417,7 @@ irix_rock=Usar extensões Rock Ridge?
 irix_nofsck=Verificar sistema de arquivos ao iniciar?
 irix_auto=Fonte de montagem automática
 irix_automap=Arquivo de mapa
+
 irix_ehost=O host '$1' não existe
 irix_eloss=O host '$1' caiu
 irix_eshowmount=O host '$1' caiu ou não suporta NFS
@@ -424,9 +435,11 @@ irix_efstyp2=Erro ao obter tipo de sistema de arquivos $1: $2
 irix_efstyp=O tipo de sistema de arquivos em $1 é $2, e não $3
 irix_eautomap=O arquivo de mapa de automontagem '$1' não existe
 irix_eauthmap2=Arquivo de mapa de automontagem inválido ou não preenchido
+
 irix_devroot=Partição root
 irix_devswap=Partição de swap
 irix_autohosts=Todas as exportações NFS
+
 acl_only=Só permitir montagem e desmontagem?
 acl_fs=Sistemas de arquivo que podem ser editados
 acl_types=Tipos de sistemas de arquivo que podem ser usados
@@ -439,7 +452,9 @@ acl_hide=Ocultar sistemas de arquivos não editáveis?
 acl_simple=Exibir formulário de montagem simples?
 acl_simopts=Exibir opções de sistemas de arquivos simplificadas?
 acl_browse=Exibir botões de navegação para arquivo e cota?
+
 egcc=O compilador GCC ou CC, necessário para fazer um programa que lista os sistemas de arquivo montados no seu sistema, não está disponível.
 ecompile=Um erro ocorreu ao compilar um programa para listar sistemas de arquivos no seu sistema: $1
+
 freebsd_eaddr=Endereço de servidor inválido ou não preenchido
 freebsd_eworkgroup=Grupo de trabalho inválido ou não preenchido

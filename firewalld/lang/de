@@ -30,6 +30,7 @@ index_return=Liste an Zonen
 index_ezones=Keine FirewallD Zonen gefunden!
 index_none=Diese Zone hat bisher keine erlaubten Ports oder Dienste.
 index_ifaces=Wende Regeln an Schnittstelle an:
+
 port_edit=Editiere erlaubten Port
 port_create=Füge erlaubten Port hinzu
 port_header=Erlaubten Port Optionen
@@ -45,11 +46,13 @@ port_eport=Fehlender oder ungültiger Portnummer oder Name
 port_eportlow=Niedriger Port muss eine Zahl sein
 port_eporthigh=Hoher Port muss eine Zahl sein
 port_eportrange=Niedriger Port muss unter dem hohen Port liegen
+
 serv_edit=Editiere Dienst
 serv_create=Füge Dienst hinzu
 serv_header=Erlaubte Dienste Optionen
 serv_name=Dienste zu erlauben
 serv_err=Fehlgeschlagen Dienst zu speichern
+
 forward_edit=Edit Forward
 forward_create=Create Forward
 forward_header=Port forwarding options
@@ -61,10 +64,13 @@ forward_dstaddr=Destination address
 forward_dstlocal=This system
 forward_edstaddr=Invalid IPv4 destination address
 forward_eneither=Either a destination address or port or both must be entered
+
 check_ecmd=Der FirewallD Steuer-Befehl $1 wurde auf Ihrem System nicht gefunden
+
 delete_err=Fehlgeschlagen Regel zu löschen
 delete_enone=Nichts ausgewählt!
 delete_edel=Entfernen von $1 fehlgeschlagen : $2
+
 zone_title=Erstelle Zone
 zone_header=Neue Zonen Optionen
 zone_name=Zonen-Namen
@@ -77,12 +83,16 @@ zone_mode4=Port, welche für das virtuelle Hosting verwendet werden
 zone_err=Fehlgeschlagen Zonen zu erstellen
 zone_ename=Fehlender oder ungültiger Zonen-Name
 zone_eclash=Eine Zone mit dem gleichen Namen ist bereits vorhanden
+
 delzone_title=Lösche Zone
 delzone_err=Fehlgeschlagen Zone zu löschen
 delzone_edefault=Die Standardzone kann nicht entfernt werden
 delzone_rusure=Sind Sie sich sicher die Zone $1, welche $2 Ports und $3 Dienste enthält, zu löschen?
+
 defzone_err=Fehlgeschlagen Zone zum Standard zu setzen
+
 restart_err=Fehlgeschlagen Konfiguration anzuwenden
+
 stop_err=Fehlgeschlagen FirewallD zu stoppen
 start_err=Fehlgeschlagen FirewallD zu starten
 log_stop=FirewallD gestoppt

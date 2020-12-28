@@ -14,6 +14,7 @@ index_ro_rw=alle værter læser adgang, valgte værter skriver adgang
 index_sel_rw=valgte værter skriver adgang
 index_all_rw=alle værter skriver adgang
 index_sel_root=valgte værter root-adgang
+
 edit_title=Rediger eksport
 create_title=Opret eksport
 edit_details=Eksporter detaljer
@@ -56,6 +57,7 @@ edit_anon_access=Anonym bruger
 edit_anon_notset=Ikke indstillet
 edit_anon_noaccess=Ingen adgang
 edit_async=Asynkron skriver
+
 save_err=Eksporten kunne ikke gemmes
 save_edir=Directory '$1' findes ikke
 save_enetgroup=Ugyldig eller manglende netgruppe
@@ -65,6 +67,7 @@ save_ehost='$2' - '$1' er ikke et gyldigt værtsnavn
 save_enohost='$1' - Du har ikke vist nogen værter
 save_euids=UID'er, der ikke har tillid til, skal være en kommasepareret liste over numre eller intervaller
 save_egids=GID'er, der ikke har tillid til, skal være en kommasepareret liste over numre eller intervaller
+
 log_modify=Ændret NFS-eksport $1 
 log_modify_l=Ændret NFS-eksport $1 til $2 
 log_delete=NFS-eksport $1 er slettet

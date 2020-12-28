@@ -52,6 +52,7 @@ index_sadd=Oħloq servizz ta 'sistema ġdid.
 index_always=Dejjem
 index_ladd=Oħloq aġent ta 'tnedija ġdid.
 index_lname=Isem tal-aġent
+
 edit_title=Azzjoni Editja
 create_title=Oħloq Azzjoni
 edit_ecannot=M'għandekx permess teditja azzjonijiet ta 'l-istartjar
@@ -85,6 +86,7 @@ edit_statusnow=Uri l-Istatus
 edit_return=azzjoni
 edit_status=Bdiet issa?
 edit_unknown=Mhux magħruf
+
 save_err=Ma rnexxielux isalva azzjoni
 save_ecannot=M'għandekx permess teditja azzjonijiet ta 'l-istartjar
 save_ealready=Azzjoni msejħa "$1" diġà teżisti
@@ -93,6 +95,7 @@ save_ename=Isem ta 'azzjoni nieqes jew invalidu
 save_eclash=Azzjoni bl-istess isem diġà teżisti
 save_escript=L-ebda skritt ta 'azzjoni ma daħal
 save_estartcmd=Nieqes il-kmand tal-bootup
+
 ss_ecannot=M'għandekx permess tibda jew twaqqaf azzjonijiet ta 'bootup
 ss_start=Ibda l-Azzjoni
 ss_stop=Waqqaf l-Azzjoni
@@ -103,21 +106,25 @@ ss_exec=Eżekuzzjoni ta ' $1 ..
 ss_doingstart=Azzjoni li tibda $1 ..
 ss_doingstop=Azzjoni ta ’waqfien $1 ..
 ss_doingstatus=Stat li qed jitlob l-azzjoni $1 ..
+
 shutdown_ecannot=M'għandekx permess tingħalaq is-sistema
 shutdown_title=Għalaq
 shutdown_rusure=Int żgur li trid tingħalaq is-sistema bil-kmand $1 ?
 shutdown_ok=Sistema ta 'għeluq
 shutdown_exec=Tagħlaq bil-kmand $1 ..
+
 reboot_ecannot=M'għandekx permess tirristartja s-sistema
 reboot_title=Irristartja
 reboot_rusure=Int żgur li trid terġa 'tibda s-sistema bil-kmand $1 ?
 reboot_ok=Reboot System
 reboot_exec=Tirranġa l-bidu bil-kmand $1 ..
+
 acl_script=Tista 'teditja l-iskritt tal-istartjar?
 acl_actions=Tista 'tmexxi, teditja, toħloq u tħassar azzjonijiet?
 acl_runonly=Mexxi biss
 acl_reboot=Tista 'terġa' tibda s-sistema?
 acl_shutdown=Tista 'tintefa s-sistema?
+
 log_rename=Azzjoni msejħa mill-ġdid $1 sa $2 
 log_modify=Azzjoni modifikata $1 
 log_create=Azzjoni maħluqa $1 
@@ -138,6 +145,7 @@ log_massrestart=Azzjonijiet li bdew mill-ġdid $1
 log_massenable=Azzjonijiet attivati $1 
 log_massdisable=Azzjonijiet b'diżabilità $1 
 log_telinit=Qalbu għal runlevel $1 
+
 edit_hostconfig_startup=L-iskript $1 jiġi mħaddem fil-ħin tal-bidu tas-sistema jekk din l-azzjoni tkun attiva. Tista 'teditjaha hawn taħt
 edit_hostconfig_plist=Il-fajl $1 jistabbilixxi ċerti parametri fir-rigward tal-iscript boot. Tista 'teditjaha hawn taħt
 edit_hostconfig_new=Oħloq Azzjoni Ġdida
@@ -149,6 +157,7 @@ edit_hostconfig_array=L-oqsma $1, $2, u $3 huma oqsma array u jista 'jkun fihom 
 edit_hostconfig_further=Wara l-ħolqien ta 'l-azzjoni ta' l-istartjar il-ġdida, inti tkun mgħoddija lejn paġna fejn tista 'tweak l-iskritt ta' l-istartjar u l-lista tal-parametri jekk meħtieġ.
 edit_hostconfig_hostconfig=Il-file $1 jikkontrolla s-servizzi u d-daemons kollha fis-sistema li huma mibdija mill-bidu tas-sistema. Tista 'teditjaha hawn taħt
 edit_hostconfig_title=Edit Hostconfig
+
 mass_enone=L-ebda azzjoni magħżula
 mass_enone2=L-ebda servizzi magħżula
 mass_start=Azzjonijiet Bidu
@@ -169,9 +178,11 @@ mass_udisable=Iddiżattiva s-servizz $1 fil-mument tal-bidu.
 mass_ustarting=Servizz tal-bidu $1 ..
 mass_ustopping=Servizz ta ’waqfien $1 ..
 mass_urestarting=Irristartja s-servizz $1 ..
+
 change_err=M'għandekx permess taqleb ir-runlevels
 change_title=Iswiċċ Runlevel
 change_cmd=Qlib lejn runlevel $1 bil-kmand $2. Dan jista 'jieħu ftit taż-żmien, u Webmin jista' jkun li m'għadux disponibbli wara li qalbu.
+
 mode_init=SysV init
 mode_osx=MacOS
 mode_local=Skritt boot wieħed
@@ -180,6 +191,7 @@ mode_rc=Skripts FreeBSD RC
 mode_upstart=Upstart
 mode_systemd=Systemd
 mode_launchd=Tnedija
+
 upstart_title1=Oħloq Servizz Upstart
 upstart_title2=Editja s-Servizz Upstart
 upstart_egone=Servizz m'għadux jeżisti!
@@ -204,6 +216,7 @@ upstart_eserver=L-ebda kmand tas-server ma daħal
 upstart_eserver2=Il-kmand tas-server ma jeżistix
 upstart_eserver3=Kmand ta 'server wieħed biss jista' jiddaħħal
 upstart_return=servizz upstart
+
 systemd_title1=Oħloq Servizz Systemd
 systemd_title2=Editja s-Servizz Systemd
 systemd_egone=Servizz m'għadux jeżisti!
@@ -227,6 +240,7 @@ systemd_edesc=Deskrizzjoni tas-servizz nieqsa
 systemd_return=servizz systemd
 systemd_econf=Ma daħlet l-ebda konfigurazzjoni tas-sistema
 systemd_estart=Jieqfu l-kmandi biex titħaddem fil-bidu
+
 launchd_title1=Oħloq aġent Launchd
 launchd_title2=Editja Launchd Agent
 launchd_egone=Aġent m'għadux jeżisti!
@@ -247,4 +261,5 @@ launchd_eclash=Aġent bl-istess isem diġà jeżisti
 launchd_return=aġent li jitnieda
 launchd_econf=L-ebda konfigurazzjoni ta 'tnedija ma daħlet
 launchd_estart=Nieqes il-kmand tas-server
+
 syslog_journalctl=SystemD zkuk

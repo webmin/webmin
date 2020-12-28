@@ -54,6 +54,7 @@ cvirt_eroot2=创建目录'$1'：$2 失败
 cvirt_eroot3=您未被允许使用根目录'$1'
 cvirt_etaken=一个使用相同名称和端口的虚拟服务器已经存在
 cvirt_efile=写入 $1 ： $2 失败
+
 etype=您未被允许编辑这种类型的选项
 efailed=保存 $1 失败
 apache_apply=应用修改
@@ -63,6 +64,7 @@ auth_return=访问控制
 default_serv=默认服务器
 bytes=字节
 eafter=验证配置失败 ：尚未保存对 $1 的修改
+
 global_ecannot=您未被允许编辑全局选项
 global_mime=全局MIME类型列表
 global_mimedesc=从下面的列表中点击一个MIME类型对其进行编辑，或使用本页底部的链接添加一个新类型到此列表中。
@@ -70,6 +72,7 @@ global_type=类型
 global_ext=扩展名
 global_add=添加新MIME类型
 global_return=MIME类型
+
 mime_ecannot=您未被允许编辑MIME类型
 mime_edit=编辑MIME类型
 mime_add=添加MIME类型
@@ -78,6 +81,7 @@ mime_type=MIME类型
 mime_ext=扩展名
 mime_err=保存MIME类型失败
 mime_etype='$1' 不是有效的MIME类型
+
 virt_ecannot=您不能编辑此虚拟服务器
 virt_title=虚拟服务器选项
 virt_header=为 $1
@@ -97,6 +101,7 @@ virt_regexp=正则表达式？
 virt_return=服务器索引
 virt_euser=您未被允许修改此虚拟服务器上的用户或组。
 virt_header2=为 $2 的 $1
+
 vserv_title=虚拟服务器配置
 vserv_ecannot=您不能编辑此虚拟服务器的地址
 vserv_addr=地址
@@ -115,10 +120,12 @@ vserv_eport='$1'不是有效的端口
 vserv_eroot='$1'不是有效的文档根目录
 vserv_ename='$1'不是有效的服务器名称
 vserv_eaddrs=没有输入虚拟服务器地址
+
 show_title=指令
 show_edit=编辑Apache指令：
 show_these=手工编辑指令
 show_ok=编辑
+
 manual_configs=编辑配置文件
 manual_title=编辑指令
 manual_header=使用下面的文本框手工编辑应用于此虚拟服务器、目录或文件的 $1 中的 Apache 指令。
@@ -126,6 +133,7 @@ manual_ecannot=您未被允许手工编辑此指令
 manual_file=编辑文件中的指令：
 manual_efile=Apache配置文件无效
 manual_etest=检测到配置文件错误：$1
+
 dir_title=按目录选项
 dir_header=为在 $2 上的 $1
 dir_show=显示指令
@@ -140,6 +148,7 @@ dir_exact=精确匹配
 dir_re=匹配正则表达式
 dir_return=目录索引
 dir_header2=为 $2 的 $1
+
 type_0=进程和限度
 type_1=网络和地址
 type_2=Apache模块
@@ -161,6 +170,7 @@ type_17=自动虚拟主机
 type_18=过滤器
 type_19=语言
 type_20=图形映射
+
 htaccess_title=按目录设置的选项文件
 htaccess_ecannot=您不能编辑 htaccess 文件
 htaccess_desc=可以在一个文件（通常被称为<tt>。htaccess</tt>）中指定更多的按目录设置的选项。除非被另一个选项文件覆盖，否则这些选项应用于此目录及其任意子目录下的所有文件。
@@ -172,9 +182,11 @@ htaccess_return=选项文件列表
 htaccess_edir='$1' 不是有效的目录
 htaccess_ecreate=您未被允许创建此选项文件
 htaccess_edelete=您未被允许删除此选项文件
+
 htindex_ecannot=您未被允许编辑这个选项文件
 htindex_title=按目录设置的选项文件
 htindex_delete=删除文件
+
 htindex_show=显示指令
 htindex_edit=编辑指令
 htindex_opts=按目录设置的选项
@@ -186,12 +198,14 @@ htindex_re=匹配正则表达式
 htindex_header=用于 $1
 htindex_header2=用于选项文件 $2 的 $1
 htindex_return=选项文件索引
+
 htfile_title=按文件设置的选项
 htfile_header=为 $2 中的 $1
 htfile_show=显示指令
 htfile_edit=编辑指令
 htfile_apply=选项应用于…
 htfile_header2=为 $2 的 $1
+
 reconfig_title=重新配置已知的模块
 reconfig_ecannot=您未被允许重新配置Apache
 reconfig_ever=无法得到这个版本的Apache服务器执行文件 $1。请检查您的 <a href='$2'>模块配置</a>，确定此路径是正确的。
@@ -199,10 +213,12 @@ reconfig_desc1=您的Apache配置已改变，或者尚未经过Webmin检查。�
 reconfig_desc2=下面是Webmin支持的所有Apache模块列表，当前已安装的那些模块已被选中。如果您正在使用动态装载模块，那么您需要选择那些动态装载的模块。
 reconfig_desc3=如果不确定您的系统中Apache 支持哪些模块，尽管配置，因为Webmin通常能自动计算出所支持的模块。
 reconfig_ok=配置
+
 defines_title=编辑已定义的参数
 defines_ecannot=您未被允许编辑 httpd 的定义
 defines_desc=当Apache启动时， 参数可通过命令行选项<tt>-D</tt>被传递给Apache。因为这些参数会影响系统选择使用配置文件中的指令，所以Webmin必须知道在Apache启动时哪些参数被传递给它。请在右边的文本字段中输入您的系统所使用的参数。
 defines_config=注意： 下面定义的参数已知：$1
+
 authu_ecannot='$1' 不是已认可的用户文本文件
 authu_title=用户列表
 authu_header=在文件$1中
@@ -224,6 +240,7 @@ authu_sync=下面的选项允许你配置Webmin在<tt>用户和组</tt> 模块�
 authu_screate=添加一个Unix用户的同时添加一个用户
 authu_sdelete=删除一个Unix用户的同时删除此用户
 authu_smodify=修改一个Unix用户的同时修改此用户
+
 authg_ecannot='$1'不是得被许可的组文本文件
 authg_title=组列表
 authg_header=在文件$1中
@@ -241,20 +258,24 @@ authg_err=保存组失败
 authg_euser=未输入组名
 authg_euser2=组名不能包含符号：
 authg_edup=组'$1'已存在
+
 stop_err=停止Apache失败
 stop_ecannot=您未被允许停止Apache
 stop_epid=打开PID文件$1失败
 stop_epid2=无效的PID文件$1
 stop_esig=发送SIGTERM信息给进程 $1 失败
+
 start_err=启动apache失败
 start_ecannot=您未被允许启动apache
 start_ecmd=$1 失败：$2
 start_eunknown=不明原因
+
 restart_err=应用修改失败
 restart_epid=打开PID文件$1失败
 restart_epid2=PID文件$1无效
 restart_esig=发送SIGHUP信号给进程 $1 失败
 restart_eunknown=不明原因
+
 acl_virts=此用户可以编辑的虚拟服务器
 acl_vall=所有服务器
 acl_vsel=选择的…
@@ -270,6 +291,7 @@ acl_dir=限制到目录的文件
 acl_types=可用的指令类型
 acl_all=全部
 acl_sel=选择的…
+
 core_maxconc=最大并发请求数
 core_maxkeep=每个连接的最大活动请求数
 core_maxreq=每个服务器进程的最大请求数
@@ -447,10 +469,12 @@ core_infilter=对所有文件应用输入过滤器
 core_outfilter=对所有文件应用输出过滤器
 core_defchar=文件的字符集
 core_edefchar=缺少文件字符集或字符集无效
+
 mod_negotiation_cache=高速缓存内容协商的文档？
 mod_negotiation_pri=多视图的语言优先级
 mod_negotiation_def=默认
 mod_negotiation_epri=缺少语言优先级
+
 mod_cgi_logname=CGI 脚本日志
 mod_cgi_none=无
 mod_cgi_elogname=无效的 CGI 描述日志文件
@@ -460,6 +484,7 @@ mod_cgi_elogsize=CGI 日志的大小必须是整数
 mod_cgi_post=记录的最大提交数据大小
 mod_cgi_epost=提交数据大小必须是整数
 mod_cgi_eunder=CGI 脚本日志没有在允许的目录下
+
 mod_alias_from=从
 mod_alias_to=到
 mod_alias_status=状态
@@ -482,6 +507,7 @@ mod_alias_cgi2=CGI目录别名
 mod_alias_rcgi=正则表达式CGI 目录别名
 mod_alias_rcgi2=正则表达式CGI目录别名
 mod_alias_estatus='$1' 不是有效的状态
+
 mod_proxy_proxy=是否充当代理服务器？
 mod_proxy_req=请求
 mod_proxy_forw=转发至
@@ -550,11 +576,13 @@ mod_proxy_preserve=保持原来的主机：文件头
 mod_proxy_timeout=代理请求超时秒数
 mod_proxy_etimeout=代理请求超时必须是一个有效的秒数
 mod_proxy_via=设置通过：头
+
 mod_log_agent_default=默认
 mod_log_agent_file=文件…
 mod_log_agent_program=程序…
 mod_log_agent_log=浏览日志文件
 mod_log_agent_efile=$1 不是有效的代理日志文件名
+
 mod_log_config_common=通用日志格式
 mod_log_config_named=命名日志格式
 mod_log_config_nick=昵称
@@ -571,6 +599,7 @@ mod_log_config_eformat=没有给出 $1 的日志格式
 mod_log_config_enofilprog=未输入日志文件或程序
 mod_log_config_efilprog='$1'为未经许可的日志文件或程序 '$1'
 mod_log_config_eifset='If set' 选项不能与默认日志格式一起使用
+
 mod_log_referer_default=默认
 mod_log_referer_file=文件…
 mod_log_referer_program=程序…
@@ -578,7 +607,9 @@ mod_log_referer_log=参照日志文件
 mod_log_referer_nolog=不要从记录参照
 mod_log_referer_elog=$1不是有效参考日志文件
 mod_log_referer_edir=参考日志没有在允许的目录下
+
 mod_status_msg=显示扩展的状态信息
+
 mod_mime_ext=扩展名
 mod_mime_xtype=扩展MIME类型
 mod_mime_mtype=MIME 类型
@@ -611,6 +642,7 @@ mod_mime_outfilter=输出过滤器
 mod_mime_infilter=输入过滤器
 mod_mime_filters=要应用的过滤器
 mod_mime_efext=没有为滤器 $1 提供扩展名
+
 mod_setenvif_header=头
 mod_setenvif_match=匹配
 mod_setenvif_case=区分大小写
@@ -621,10 +653,12 @@ mod_setenvif_eheader=无效的请求头 '$1'
 mod_setenvif_eregex=无效的正则表达式 '$1'
 mod_setenvif_evar=无效的变量名 '$1'
 mod_setenvif_clear=清除
+
 mod_userdir_default=默认
 mod_userdir_all=所有用户均可访问
 mod_userdir_except=所有用户除了
 mod_userdir_dir=用户 WWW 目录
+
 mod_imap_action=在错误使用的图像映射上操作
 mod_imap_default=默认
 mod_imap_godefurl=转到默认 URL
@@ -644,8 +678,10 @@ mod_imap_refurl=参照 URL
 mod_imap_url=URL…
 mod_imap_defbase=图像映射图的默认根
 mod_imap_eurl='$1'不是有效的URL
+
 mod_speling_autocorr=是否自动校正拼写错误的URL？
 mod_speling_default=默认
+
 mod_actions_mime=处理程序 / MIME 类型
 mod_actions_cgiurl=CGI 脚本 URL
 mod_actions_mimecgi=处理程序或 MIME 类型 CGI 动作
@@ -655,10 +691,13 @@ mod_actions_httpcgi=HTTP 方法 CGI 动作
 mod_actions_emime='$1'不是有效的处理程序或MIME类型
 mod_actions_ecgi='$1'不是有效的CGI脚本
 mod_actions_enometh=没有为CGI脚本选择方法 '$1'
+
 mod_include_incl=进程包含带执行位的文件吗？
 mod_include_set=是，并设置最后修改日期
 mod_include_default=默认
+
 mod_dir_txt=目录索引文件
+
 mod_autoindex_default=默认
 mod_autoindex_asc=升序
 mod_autoindex_descend=降序
@@ -667,6 +706,7 @@ mod_autoindex_date=日期
 mod_autoindex_size=大小
 mod_autoindex_desc=描述
 mod_autoindex_sort=目录索引分类依据
+
 browsermatch_regexp=浏览器正则表达式
 browsermatch_case=区分大小写吗？
 browsermatch_var=设置变量
@@ -674,6 +714,7 @@ browsermatch_value=值
 browsermatch_txt=基于浏览器类型的变量集
 browsermatch_evar=无效的变量名 '$1'
 browsermatch_clear=清除
+
 autoindex_fname=文件名
 autoindex_mime=MIME 类型
 autoindex_enc=编码
@@ -727,9 +768,11 @@ autoindex_sicon=显示文件图标
 autoindex_srules=显示 &lt;hr&gt;；行
 autoindex_track=头中包含ETags
 autoindex_version=根据版本数字串排序
+
 mod_mime_magic_file=MIME魔法数字文件
 mod_mime_magic_none=无
 mod_mime_magic_efile=无效的 MIME魔法数字文件
+
 mod_env_var=变量
 mod_env_value=值
 mod_env_pass=跳过
@@ -740,6 +783,7 @@ mod_env_passall=将所有环境变量传送至 CGI
 mod_env_default=默认
 mod_env_evar='$1'不是有效的变量名
 mod_env_evalue='$1'不是有效的变量值
+
 mod_access_order=访问检查次序：
 mod_access_denyallow=先禁止后允许
 mod_access_allowdeny=先允许后禁止
@@ -762,6 +806,7 @@ mod_access_epip='$1'不是有效的部分IP地址
 mod_access_emask='$1'不是有效的网络/掩码对
 mod_access_ecidr='$1'不是有效的网络/CIDR对
 mod_access_evar='$1'不是有效的变量名
+
 mod_auth_ufile=用户文本文件
 mod_auth_uedit=编辑用户
 mod_auth_gfile=组文本文件
@@ -772,6 +817,7 @@ mod_auth_eudir=用户文本文件不在允许的目录下
 mod_auth_egdir=组文本文件不在允许的目录下
 mod_auth_eufile=无效的用户文本文件名
 mod_auth_egfile=无效的组文本文件名
+
 mod_auth_dbm_ufile=用户 DBM 文件
 mod_auth_dbm_gfile=组 DBM 文件
 mod_auth_dbm_pass=是否将故障传送给下一个模块？
@@ -780,6 +826,7 @@ mod_auth_dbm_eufile=无效的用户 DBF 文本文件名
 mod_auth_dbm_egfile=无效的组 DBF 文件名
 mod_auth_dbm_type=DBM 文件类型
 mod_auth_dbm_default=默认的DBM 格式
+
 mod_cern_meta_process=处理头的元文件？？
 mod_cern_meta_dir=头的原文件的子目录
 mod_cern_meta_default=默认
@@ -787,6 +834,7 @@ mod_cern_meta_edir=无效的原文件子目录名
 mod_cern_meta_suffix=头的原文件的文件后缀
 mod_cern_meta_default2=默认
 mod_cern_meta_esuffix=无效的原文件后缀
+
 mod_ssl_enable=启动SSL？
 mod_ssl_proto=SSL 协议
 mod_ssl_cfile=证书/私钥文件
@@ -804,6 +852,7 @@ mod_ssl_ecdepth=证书深度值必须是整数
 mod_ssl_log=SSL 日志文件
 mod_ssl_elog=缺少 SSL 日志文件
 mod_ssl_onlyssl=仅允许 SSL 访问
+
 log_global=已改变的全局 $1 选项
 log_virtc=已创建的服务器 $1
 log_virts=已重新配置的服务器 $1
@@ -842,25 +891,30 @@ log_start=已启动的 Web 服务器
 log_stop=已停止的 Web 服务器
 log_apply=已应用的更改
 log_manual=已手动编辑过的配置文件 $1
+
 search_title=查找服务器
 search_notfound=没有找到匹配的虚拟服务器
+
 mod_php_value=PHP 配置值
 mod_php_flag=PHP 配置标志
 mod_php_name_header=设置
 mod_php_value_header=值
 mod_php_evalue='$1'对于$2来说是一个无效的值
+
 mod_vhost_alias_root=自动的虚拟主机根
 mod_vhost_alias_ip=使用IP地址而不是主机名称？
 mod_vhost_alias_none=无
 mod_vhost_alias_script=自动虚拟主机cgi-bin
 mod_vhost_alias_eroot=未输入或无效的虚拟主机根
 mod_vhost_alias_escript=未输入或无效的虚拟主机cgi-bin
+
 worker_minspare=最小的空闲线程
 worker_maxspare=最大的空闲线程
 worker_eminspare=最小的空闲线程必须是整数
 worker_emaxspare=最大的空闲线程必须是一个整数
 worker_threads=每一子进程的线程数
 worker_ethreads=每一子进程的线程数必须是整数
+
 perchild_sthreads=每个子进程的初始线程数
 perchild_esthreads=每个子进程的初始线程数必须是整数
 perchild_numservers=子进程数
@@ -876,6 +930,7 @@ perchild_gid=GID
 perchild_enum=进程数必须数一个非零整数
 perchild_euid=UID 必须是整数
 perchild_egid=GID 必须是整数
+
 cache_enable=激活？
 cache_type=高速缓冲内存
 cache_disk=磁盘
@@ -896,12 +951,14 @@ cache_eminos=在内存中缓存的最小目标大小必须是有效的字节数
 cache_emaxos=在内存中缓存的最小目标大小必须是有效的字节数
 cache_maxoc=可在内存中缓存的最大目标数量
 cache_emaxoc=可在内存中缓存的目标数量必须是整数
+
 suexec_su=执行CGI 程序作为
 suexec_none=来自全局配置的用户
 suexec_user=Unix 用户
 suexec_group=和组
 suexec_euser=缺少要执行CGI程序的用户或用户无效
 suexec_egroup=缺少要执行CGI程序的组或组无效
+
 filter_name=名称
 filter_intype=输入MIME 类型
 filter_outtype=输出MIME 类型
@@ -911,6 +968,7 @@ filter_in=输入过滤器定义
 filter_out=输出过滤器定义
 filter_ename=无效的过滤器名'$1'
 filter_ecmd=缺少用于过滤器'$1'的命令
+
 cdir_err=无法创建按目录设置的选项
 cdir_err2=无法保存按目录设置的选项
 cdir_epath=缺少路径

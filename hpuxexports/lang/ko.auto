@@ -14,6 +14,7 @@ index_ro_rw=모든 호스트 읽기 액세스, 선택된 호스트 쓰기 액세
 index_sel_rw=선택된 호스트 쓰기 권한
 index_all_rw=모든 호스트 쓰기 권한
 index_sel_root=선택된 호스트 루트 액세스
+
 edit_title=내보내기 편집
 create_title=내보내기 만들기
 edit_details=수출 세부 사항
@@ -56,6 +57,7 @@ edit_anon_access=익명의 사용자
 edit_anon_notset=미 설정
 edit_anon_noaccess=접근 금지
 edit_async=비동기 쓰기
+
 save_err=내보내기를 저장하지 못했습니다
 save_edir='$1'디렉토리가 존재하지 않습니다
 save_enetgroup=넷 그룹이 잘못되었거나 누락되었습니다
@@ -65,6 +67,7 @@ save_ehost='$2'- '$1'은 (는) 유효한 호스트 이름이 아닙니다.
 save_enohost='$1'-호스트를 나열하지 않았습니다
 save_euids=신뢰할 수없는 UID는 쉼표로 구분 된 숫자 또는 범위 목록이어야합니다.
 save_egids=신뢰할 수없는 GID는 쉼표로 구분 된 숫자 또는 범위 목록이어야합니다.
+
 log_modify=수정 된 NFS 내보내기 $1 
 log_modify_l=NFS 내보내기 $1 을 (를) $2 (으)로 수정했습니다.
 log_delete=NFS 내보내기 $1 을 (를) 삭제했습니다.

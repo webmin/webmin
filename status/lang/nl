@@ -19,6 +19,7 @@ index_refsel=Ververs Geselecteerde
 index_group=Leden van $1
 index_tmpls=Bewerk Email Templates
 index_tmplsdesc=Bekijk en bewerk templates die gebruikt worden om email berichten mee te versturen indien er een service uit gaat.
+
 type_apache=Apache Webserver
 type_inetd=Internet en RPC Server
 type_xinetd=Uitgebreide Internet Server
@@ -69,6 +70,7 @@ type_dns=DNS Lookup
 type_query=SQL Query
 type_alive=Levend Systeem
 type_rssh=Remote SSH
+
 mon_create=Maak Monitor
 mon_edit=Bewerk Monitor
 mon_header=Monitor details
@@ -133,6 +135,7 @@ mon_changes0=Toon iedere gebeurtenis
 mon_changes1=Toon alleen wijzigingen
 mon_all=Toon alle historische gebeurtenissen
 mon_nochanges=Er waren geen status wijzigingen in de laatste $1 historische gebeurtenissen
+
 sched_title=Geplande Monitoring
 sched_header=Geplande achtergrond monitor opties
 sched_mode=Geplande controle aangezet?
@@ -174,16 +177,19 @@ sched_smscarrier=Telefoon op carrier
 sched_smsnumber=met nummer
 sched_esmsnumber=Ontbrekende of niet-numerieke SMS nummer
 sched_esmsname=Ontbrekende of ongeldig lijkend SMS nummer
+
 up_since=Aan sinds $1
 depends_mod=De module $1 is niet geinstalleerd op uw systeem
 depends_os=De module $1 word niet ondersteund op uw systeem
 depends_remote=De module $1 word niet ondersteund op server $2
+
 tcp_host=Host om naar te verbinden
 tcp_port=Poort om naar te verbinden
 tcp_alarm=Verbinding time-out
 tcp_ehost=Ontbrekende of ongeldige hostnaam
 tcp_eport=Ontbrekend of ongeldig poort nummer
 tcp_ealarm=Ontbrekende of ongeldige verbinding time-out
+
 http_url=URL voor aanvraag
 http_alarm=Verbinding time-out
 http_eurl=Ontbrekende of ongeldige URL
@@ -198,11 +204,13 @@ http_regexp=Pagina moet overeenkomen met regexp
 http_eregexp=Geen reguliere expressie voor overeenkomstige pagina ingevuld
 http_none2=Niet overeenkomend
 http_ehead=De HEAD aanvraag methoden kan niet worden gebruikt wanneer gecontroleerd word op een reguliere expressie
+
 ping_host=Host om te pingen
 ping_wait=Tijd om te wachten op een reactie
 ping_ehost=Ontbrekende of ongeldige hostnaam
 ping_ewait=Ontbrekende of ongeldige wacht tijd
 ping_econfig=Er is geen ping opdracht ingesteld in de Module Config
+
 proc_pid=Werkend met PIDs $1
 proc_cmd=Opdracht om te controleren voor
 proc_not=Mislukt wanneer het proces is
@@ -214,8 +222,10 @@ proc_ethresh=Ontbrekende of ongeldige aantal processen
 proc_asuser=Uitvoeren als gebruiker
 proc_anyuser=Iedere gebruiker
 proc_easuser=Gebruiker voor uit te voeren proces als dit niet bestaat
+
 exec_cmd=Opdracht om de exit status te controleren van
 exec_ecmd=Ontbrekende opdracht
+
 file_file=File of directory om te controleren
 file_test=Uit te voeren test
 file_test_0=Moet bestaan
@@ -227,6 +237,7 @@ file_efile=Ontbrekende file of directory naam om te controleren
 file_esize=Ongeldige file grote
 file_elarge=Files zijn te lang : $1
 file_esmall=Files zijn te klein : $1
+
 traffic_iface=Interface om te monitoren
 traffic_bytes=Maximum bytes/seconden
 traffic_dir=Richting om te monitoren
@@ -236,6 +247,7 @@ traffic_dir2=Alleen uitgaand
 traffic_desc=Deze monitor houd al het netwerk verkeer bij op een geselecteerde interface, en laat de monitor zien als uitgeschakeld indien het verkeer over het aan bytes per seconden gaat, hieronder ingevuld. Dit werkt alleen echt goed wanneer de geplande monitoring is ingesteld op een korte interval, zoals iedere 5 minuten.
 traffic_eifaces=Uw besturing systeem heeft niet een /proc/net/dev file
 traffic_ebytes=Ontbrekende of ongeldig aantal bytes/seconden
+
 space_fs=Filesysteem om te controleren
 space_min2=Minimum vrije ruimte
 space_mode0=Absolute grote
@@ -251,6 +263,7 @@ space_ierr=Nog maar $1 inodes vrij
 space_merr=Alleen $1 ruimte vrij
 space_perr=Alleen $1% vrij
 space_dferr=Mislukt om de filesysteem grote te verkrijgen
+
 load_time=Belasting gemiddelde om te controleren
 load_1=1 minuut
 load_5=5 minuten
@@ -259,6 +272,7 @@ load_max=Maximum belasting gemiddelde
 load_emax=Ontbrekende of ongeldig maximum belasting gemiddelde
 load_ecmd=De <tt>uptime</tt> opdracht is niet gevonden op uw systeem
 load_efmt=Het resultaat van de <tt>uptime</tt> opdracht kon niet worden verwerkt
+
 log_create=Maak monitor $1
 log_modify=Gemodificeerde monitor $1
 log_delete=Verwijder monitor $1
@@ -269,10 +283,14 @@ log_tmpl_modify=Gemodificeerde email template $1
 log_tmpl_delete=Verwijderde email template $1
 log_tmpl_deletes=Verwijderde $1 email templates
 log_refresh=Vernieuwde monitor status
+
 acl_edit=Mag monitors maken en bewerken?
 acl_sched=Mag planning van monitors veranderen?
+
 change_file=File of directory om te monitoren (mislukt wanneer verandert)
+
 jabber_eparser=De Perl module $1 is niet geinstalleerd op uw systeem.
+
 memory_min2=Minimum vrij geheugen
 memory_emin=Ontbrekende of ongeldige hoeveelheid vrij geheugen
 memory_eproc=Webmin weet niet hoe het vrije geheugen te controleren is op uw systeem
@@ -282,7 +300,9 @@ memory_freelow=Er is maar $1 echt geheugen vrij
 memory_freelowswap=Er is maar $1 virtueel geheugen vrij
 memory_minswap=Minimum vrij virtueel geheugen
 memory_eminswap=Ontbrekend of ongeldige hoeveelheid vrij virtueel geheugen
+
 proftpd_etype=Deze monitor kan niet worden gebruikt indien ProFTPD alleen staand werkt
+
 mailserver_to=Stuur email naar adres
 mailserver_timeout=Time-out en interval
 mailserver_units_0=Seconden
@@ -290,20 +310,25 @@ mailserver_units_1=Minuten
 mailserver_units_2=Uren
 mailserver_units_3=Dagen
 mailserver_desc=Het adres hieronder moet van de auto-antwoorder zijn die antwoord aan het bron adres met dezelfde Onderwerp: regel.
+
 oldfile_file=File om te monitoren (mislukt indien het niet verandert)
 oldfile_diff=Mislukt indien het niet verandert voor
 oldfile_secs=seconden
+
 raid_device=RAID apparaat
 raid_edevice=Geen RAID apparaat geselecteerd
 raid_bad=Slechte harddisk gedetecteerd
 raid_resync=Op dit moment nasynchroniseren
 raid_notfound=RAID apparaat $1 is niet gevonden
 raid_other=Andere ..
+
 iface_iface=Interface om te controleren
+
 refresh_title=Ververs Status
 refresh_doing=Ververs de status van alle monitoren ..
 refresh_doing2=Verversen van de status van $1 geselecteerde monitors ..
 refresh_done=.. klaar.
+
 sensors_name=Sensor om te controleren
 sensors_value=Mislukt wanneer
 sensors_value0=Systeem geeft een waarschuwing's indicatie
@@ -314,6 +339,7 @@ sensors_none=Geen sensors zijn gedetecteerd op uw systeem. U moet de <tt>sensors
 sensors_cur=$1 (op dit moment $2 $3)
 sensors_emin=Ontbrekende of ongeldige minimum waarde
 sensors_emax=Ontbrekende of ongeldige maximum waarde
+
 nut_ups=NUT UPS om te controleren
 nut_name=Attributen om te controleren
 nut_value=Mislukte wanneer
@@ -324,6 +350,7 @@ nut_eups=Geen USP om te controleren ingevuld
 nut_cur=$1 (op dit moment $2)
 nut_emin=Ontbrekende of ongeldige minimum waarde
 nut_emax=Ontbrekende of ongeldige maximum waarde
+
 mailq_system=Email server
 mailq_qmailadmin=Qmail
 mailq_postfix=Postfix
@@ -332,6 +359,7 @@ mailq_size=Maximum email wachtrij grote
 mailq_esize=Ontbrekende of ongeldige maximum wachtrij grote
 mailq_toomany=Uit - $1 berichten in wachtrij
 mailq_ok=Aan - $1 berichten in wachtrij
+
 dns_server=DNS server
 dns_host=Hostnaam om op te zoeken
 dns_address=Verwacht IP adres
@@ -339,6 +367,7 @@ dns_eserver=Ontbrekende of ongeldige DNS server
 dns_ehost=Ontbrekende of ongeldig lijkende hostnaam om op te zoeken
 dns_eaddress=Ontbrekend of ongeldig verwacht IP adres
 dns_ecmds=Noch de <tt>nslookup</tt> of de <tt>dig</tt> opdrachten zijn geinstalleerd op uw systeem
+
 monitor_sub_down=$1 uitgeschakeld op $2
 monitor_pager_down=$1: "$2" is uitgeschakeld $3
 monitor_snmp_down=$1: $2
@@ -369,8 +398,10 @@ monitor_sub3=Service monitor : $1 services
 monitor_run1=Werkend $1 op $2 ..
 monitor_run2=Werkend $1 ..
 monitor_runerr=Mislukt om $1 aan te zetten op $2 : $3
+
 deletes_egone=Één van de geselecteerde monitors bestaat niet langer
 deletes_enone=Geen monitors geselecteerd
+
 ftp_host=FTP server host
 ftp_port=FTP poort
 ftp_user=Login als gebruiker
@@ -387,6 +418,7 @@ ftp_econn=TLS FTP verbinding mislukte
 ftp_econn2=TLS FTP verbinding mislukte : $1
 ftp_elogin=TLS FTP login mislukte : $1
 ftp_etlsfile=TLS FTP download mislukte : $1
+
 query_driver=SQL database type
 query_db=Database naam
 query_host=Database server host
@@ -407,9 +439,12 @@ query_elogin=Login mislukte : $1
 query_eprepare=SQL fout : $1
 query_eexecute=SQL mislukte : $1
 query_ewrong=Incorrect resultaat : $1
+
 consume_rate=Maximum verbruik ratio (per seconden)
 consume_high=Verbruik ratio is $1 / seconden
+
 alive_up=Aan voor $1
+
 rssh_host=SSH server host
 rssh_ruser=Login als gebruiker
 rssh_rpass=Login met wachtwoord
@@ -425,6 +460,7 @@ rssh_error=SSH fout
 rssh_haspass=Wachtwoord
 rssh_port=SSH server poort
 rssh_eport=Ontbrekende of ongeldig poort nummer
+
 tmpls_title=Email Templates
 tmpls_ecannot=U bent niet bevoegd om email templates te bewerken
 tmpls_none=Er zijn geen email templates gedefinieerd. Alle waarschuwingen worden verstuurd met gebruik van de Webmin standaard berichten.
@@ -433,6 +469,7 @@ tmpls_email=Email bericht
 tmpls_add=Toevoegen van een nieuwe email template.
 tmpls_return=templates lijst
 tmpls_delete=Verwijder Geselecteerde Templates
+
 tmpl_title1=Email Template Aanmaken
 tmpl_title2=Bewerk Email Template
 tmpl_header=Waarschuwing's email template bericht
@@ -457,9 +494,11 @@ tmpl_esms=Ontbrekend SMS bericht
 tmpl_esnmp=Ontbrekend SNMP bericht
 tmpl_err2=Mislukt om email template te verwijderen
 tmpl_eusers=Het is in gebruik door de volgende monitors : $1
+
 dtmpls_err=Mislukt om templates te verwijderen
 dtmpls_enone=Niets geselecteerd
 dtmpls_eusers=$1 is in gebruik door de volgende monitors : $2
+
 sslcert_src=Certificaat locatie
 sslcert_url=Van HTTPS URL
 sslcert_file=Van file op de server
@@ -477,6 +516,7 @@ sslcert_eend=Niet geldig na $1
 sslcert_left=Aan - $1 dagen tot expiratie
 sslcert_ematch=Hostnaam $1 komt niet overeen met certificaat $2
 sslcert_emismatch=Certificaat hostnaam controle kan alleen worden gebruikt wanneer een URL word gecontroleerd.
+
 du_dir=Directory naar monitor
 du_max=Maximum grote
 du_edir=Ontbrekende of niet absoluut directory pad

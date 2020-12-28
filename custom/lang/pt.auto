@@ -10,6 +10,7 @@ index_actform=Formato
 index_actrun=Corre
 index_actsql=Formato
 index_acted=Aberto
+
 edit_desc2=Descrição HTML
 edit_id=ID do comando
 edit_dir=Executar no diretório
@@ -40,6 +41,7 @@ edit_format4=Faça o download quando possível
 edit_servers=Executar em servidores Webmin
 edit_this=este servidor
 edit_clone=Clone
+
 save_edir=Diretório ausente ou inválido
 save_eorder=Os pedidos na página principal devem ser um número
 save_etimeout=Tempo máximo de espera ausente ou inválido
@@ -47,6 +49,7 @@ save_eusermin=Comandos executados em outros servidores não podem ser executados
 save_eformat=Tipo MIME de saída inválido
 save_eopts=Arquivo de opções ausente para o parâmetro $1 
 save_eopts2=O arquivo de opções ou o valor padrão para o parâmetro $1 não pode conter :
+
 run_out2=Saída do comando ..
 run_outon=Saída de $1 em $2 ..
 run_out2on=Saída do comando em $2 ..
@@ -56,6 +59,7 @@ run_eupload=Nenhum arquivo para upload selecionado
 run_emust=Valor ausente para o parâmetro '$1'
 run_timeout=Falha ao concluir o comando antes do tempo limite de $1 segundo.
 run_failed=Falha no comando com o status de saída $1 
+
 log_modify=Comando modificado $1 
 log_create=Comando criado $1 
 log_delete=Comando excluído $1 
@@ -64,11 +68,13 @@ log_modify_edit=Editor de arquivo modificado $1
 log_create_edit=Editor de arquivos criado $1 
 log_delete_edit=Editor de arquivos excluídos $1 
 log_save_edit=Arquivo salvo $1 
+
 acl_cmds=Comandos que este usuário pode executar
 acl_call=Todos os comandos
 acl_csel=Selecionado ..
 acl_cexcept=Todos, exceto selecionados.
 acl_edit=Pode criar e editar comandos?
+
 file_ecannot=Você não tem permissão para editar arquivos
 fcreate_title=Criar editor de arquivo
 fedit_title=Editar editor de arquivos
@@ -92,6 +98,7 @@ file_egroup=Nome de grupo ausente ou inválido
 file_eperms=Permissões octais ausentes ou inválidas
 file_envs=Substituir variáveis de ambiente no nome do arquivo?
 file_id=ID do editor
+
 view_err=Falha ao editar o arquivo
 view_ecannot=Você não tem permissão para editar este arquivo
 view_title=Editar arquivo
@@ -100,10 +107,12 @@ view_header=Editando arquivo $1
 view_ebeforeedit=Falha no comando de edição anterior : $1 
 view_ebefore=O comando antes de salvar falhou : $1 
 view_eafter=Falha no comando pós-salvamento : $1 
+
 form_ecannot=Você não tem permissão para executar este comando
 form_title=Executar comando
 form_exec=Executar
 form_edit=Editar
+
 sql_title1=Criar comando SQL
 sql_title2=Comando Editar SQL
 sql_header=Detalhes do comando SQL
@@ -119,6 +128,7 @@ sql_err=Falha ao salvar o comando SQL
 sql_esql=Nenhum SQL inserido
 sql_ehost=Host do servidor de banco de dados ausente ou inválido
 sql_edb=Nome de banco de dados ausente ou inválido
+
 srun_title=Executar comando SQL
 srun_err=Falha ao executar o comando SQL
 srun_edriver=Não foi possível carregar o driver DBI

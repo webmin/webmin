@@ -16,6 +16,7 @@ index_cancel=Atšaukti ryšį
 index_canceldesc=Šiuo metu ADSL klientas bando užmegzti ryšį. Spustelėkite šį mygtuką, norėdami atšaukti bandymą su komanda $1.
 index_cdemand=Atšaukti pagal pareikalavimą
 index_cdemanddesc=ADSL klientas šiuo metu laukia užklausos dėl prisijungimo. Spustelėkite šį mygtuką, kad sustabdytumėte jį su komanda $1.
+
 index_header=ADSL kliento konfigūravimo parinktys
 index_desc=Žemiau pateikti nustatymai taikomi visiems naujiems ADSL ryšiams, kuriuos užveda jūsų sistema. Jei juos pakeisite, kad pakeitimai įsigaliotų, ryšys turi būti nutrauktas ir vėl paleistas.
 index_eth=Eterneto sąsaja
@@ -36,11 +37,13 @@ index_fw_standalone=Vienam šeimininkui
 index_fw_masquerade=NAT vartai
 index_connect=Laikas bandyti prisijungti
 index_forever=Amžinai
+
 start_err=Nepavyko užmegzti ADSL ryšio
 start_title=Paleiskite ADSL
 start_ip=Buvo užmegztas ADSL ryšys su IP adresu $1.
 start_demand=Kadangi įjungtas režimas „prisijungti pagal pareikalavimą“, jūsų ADSL ryšys bus užmegztas tik prireikus.
 start_bg=ADSL ryšys nebuvo užmegztas per 20 sekundžių. ADSL klientas toliau bandys prisijungti fone, kol pavyks.
+
 save_err=Nepavyko išsaugoti ADSL konfigūracijos
 save_eeth=Trūksta arba netinkamo eterneto sąsajos
 save_etimeout=Trūksta arba netinkamas laiko tarpas pareikalavus
@@ -49,10 +52,12 @@ save_econnect=Trūksta arba netinkamas ryšio laikas
 save_emss=Trūksta arba netinkamas didžiausias paketo dydis
 save_title=Išsaugoti konfigūraciją
 save_desc=Jūsų ADSL kliento konfigūracija sėkmingai išsaugota, tačiau ji nebus naudojama tol, kol vėl neprisijungsite.
+
 stop_err=Nepavyko išjungti ADSL ryšio
 stop_title=Išjunkite ADSL
 stop_ok=Jūsų ADSL ryšys buvo sėkmingai išjungtas.
 stop_failed=Dėl tam tikrų priežasčių jūsų ADSL ryšys vis dar aktyvus!
+
 log_save=Išsaugota kliento konfigūracija
 log_stop=Išjunkite ADSL
 log_start=Paleido ADSL

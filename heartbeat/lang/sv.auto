@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Skriptet för att begära resurser från den andra noden
 index_version=Hjärtslagversion $1 
 index_noversion=Varning - Versionen av Heartbeat installerad på ditt system kunde inte upptäckas automatiskt. Du bör ställa in den på <a href='$1'>modulkonfiguration</a> -sidan.
 index_status=Hjärtslagstatus
+
 conf_title=Konfigurationsalternativ
 conf_header=Konfigurationsalternativ för hjärtslag
 conf_serials=Seriella hjärtslagsportar
@@ -54,6 +55,7 @@ conf_auto_on=$ {Conf_enabled}
 conf_auto_off=$ {Conf_disabled}
 conf_auto_legacy=Äldre läge
 conf_auto_=$ {Default}
+
 res_title=Klusterresurser
 res_node=Primär nod
 res_ips=IP-adresser
@@ -67,6 +69,7 @@ res_getserv=Skaffa resurs
 res_hbdown=Hjärtslag ner
 res_up=UPP
 res_down=NER
+
 node_create=Lägg till klusterresurs
 node_edit=Redigera Cluster Resource
 node_header=Detaljer om klusterresurs
@@ -83,6 +86,7 @@ node_enone=Primär nod saknas eller ogiltig
 node_eip='$1' är inte en giltig IP-adress
 node_ecidr='$1' är inte en giltig CIDR
 node_ebroad='$1' är inte en giltig sändningsadress
+
 auth_title=Autentiseringsnycklar
 auth_header=Verifiering av klusternod
 auth_mode=Autentiseringsläge
@@ -92,6 +96,8 @@ auth_md5=MD5 med lösenord
 auth_err=Det gick inte att spara autentiseringsnycklar
 auth_emd5=Saknat eller ogiltigt MD5-lösenord
 auth_esha1=SHA1-lösenord saknas eller
+
 start_err=Det gick inte att starta hjärtslag
+
 apply_err=Det gick inte att tillämpa ändringar
 apply_epid=Processen körs inte längre

@@ -14,6 +14,7 @@ index_restart=Mulakan semula Daemon Pelanggan Klien LDAP
 index_restartdesc=Terapkan konfigurasi semasa dengan memulakan semula daemon klien LDAP setempat.
 index_atboot=Mulakan Klien LDAP Pada Boot
 index_atbootdesc=Perubahan sama ada daemon klien LDAP dimulakan apabila sistem boot atau tidak.
+
 server_title=Konfigurasi Server LDAP
 server_header=Pelayan LDAP dan pilihan log masuk
 server_host=Nama hos pelayan LDAP
@@ -51,6 +52,7 @@ server_etimelimit=Had masa sambungan yang tidak ada atau tidak sah
 server_ecacert=Fail sijil CA yang hilang atau tidak sah
 server_euport=Port hilang atau tidak sah untuk pelayan $1 
 server_euri=Tiada pelayan LDAP yang dimasukkan
+
 base_title=Pangkalan Carian LDAP
 base_header=Lokasi carian direktori LDAP
 base_base=Pangkalan carian global
@@ -86,6 +88,7 @@ base_enetmasks=Tiada pangkalan untuk nama netmask
 base_ealiases=Tiada pangkalan untuk alias e-mel
 base_enetgroup=Tiada pangkalan untuk kumpulan iklan
 base_etimelimit=Had masa carian yang tiada atau tidak sah
+
 pam_title=Pilihan Pengesahan
 pam_header=PAT pengesahan dan tetapan kata laluan
 pam_filter=Penapis LDAP tambahan
@@ -106,10 +109,12 @@ pam_efilter=Tiada penapis LDAP tambahan
 pam_elogin=Atribut LDAP yang hilang atau tidak sah untuk nama pengguna
 pam_egroupdn=Kumpulan LDAP yang hilang untuk memaksa keahlian
 pam_emember=Atribut LDAP yang hilang atau tidak sah untuk ahli kumpulan
+
 switch_title=Perkhidmatan Menggunakan LDAP
 switch_service=Perkhidmatan
 switch_srcs=Sumber data
 switch_return=perkhidmatan menggunakan LDAP
+
 ldap_emodule=Modul $1 Perl diperlukan untuk bercakap dengan pelayan LDAP tidak dipasang. <a href='$2'>Klik di sini</a> untuk memuat turun Webmin dan pasangnya sekarang.
 ldap_emodule2=Modul $1 Perl diperlukan untuk bercakap dengan pelayan LDAP tidak dipasang.
 ldap_econf=Fail konfigurasi klien LDAP $1 tidak dijumpai pada sistem anda
@@ -119,6 +124,7 @@ ldap_elogin=Gagal mengikat pelayan LDAP $1 sebagai $2 : $3
 ldap_anon=tanpa nama
 ldap_eparse=Tidak dapat menghuraikan pelayan LDAP URI $1 
 ldap_etls=Gagal menukar ke mod TLS : $1 
+
 browser_title=Pelayar LDAP
 browser_econn=Penyemak imbas LDAP tidak boleh digunakan : $1 
 browser_base=Pelayaran:
@@ -129,6 +135,7 @@ browser_attrs=Atribut objek
 browser_parent=Semak imbas Ibu Bapa
 browser_none=Tiada
 browser_sel=okey
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Pencetak pengguna
 order_xfn=XFN
 order_mdns4=Multicast DNS
 order_mdns4_minimal=Multicast DNS (minima)
+
 desc_aliases=Alias Sendmail
 desc_mail=Alias Sendmail
 desc_hosts=Alamat hos
@@ -177,6 +185,7 @@ desc_printers=Pencetak
 desc_ipnodes=Nod IP
 desc_timezone=Timezones
 desc_locale=Tempatan
+
 eswitch_title=Edit Perkhidmatan
 eswitch_egone=Perkhidmatan tidak wujud!
 eswitch_header=Butiran perkhidmatan
@@ -196,6 +205,7 @@ eswitch_continue=Teruskan carian
 eswitch_none=Tiada
 eswitch_err=Gagal menyimpan perkhidmatan
 eswitch_enone=Tiada sumber terpilih!
+
 log_server=Konfigurasi pelayan LDAP yang diubahsuai
 log_base=Pangkalan carian LDAP yang diubahsuai
 log_pam=Pilihan pengesahan yang diubahsuai
@@ -205,6 +215,7 @@ log_delboot=Dump pengguna daemon LDAP pada waktu boot
 log_start=Memulakan daemon klien LDAP
 log_stop=Menghentikan daemon klien LDAP
 log_restart=Memulihkan daemon klien LDAP
+
 check_title=Mengesahkan Konfigurasi LDAP
 check_base=Mencari pangkalan LDAP untuk pengguna ..
 check_ebase=.. tidak berasaskan dijumpai dalam konfigurasi pelanggan!

@@ -3,6 +3,7 @@ connect_elogin=Nepavyko prisijungti prie duomenų bazės $1:$2.
 index_title=„Postfix“ pašto serveris
 index_epath=Jūsų sistemoje neįdiegta „Postfix“ valdymo komanda $1. Galbūt jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga arba Postfix neįdiegtas.
 index_postfix=Pašto indeksas
+
 internal_error=Vidinė klaida
 index_econfig=„Postfix“ konfigūravimo komanda $1 neegzistuoja. Galbūt jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
 index_esuper=„Postfix“ vadovo komandos $1 nėra. Galbūt jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
@@ -14,8 +15,10 @@ index_startmsg=Spustelėkite šį mygtuką, kad paleistumėte „Postfix“ paš
 index_reloadmsg=Spustelėkite šį mygtuką, jei norite, kad „Postfix“ perskaitytų visus jo konfigūracijos failus. Tai gali būti naudinga, jei „Postfix“ konfigūracijos failai buvo modifikuoti rankiniu būdu.
 index_version=Postfix versija $1
 opts_err=Nepavyko išsaugoti parinkčių
+
 check_error=Klaida tikrinant dabartinę „Postfix“ konfigūraciją. Neautomatiškai pataisykite „Postfix“ konfigūraciją.
 check_manual=Rankiniu būdu redaguokite „Postfix“ konfigūracijos failą.
+
 address_rewriting_title=Adreso perrašymas ir maskavimas
 address_rewriting_ecannot=Jums neleidžiama redaguoti adreso perrašymo ir maskavimo
 aliases_title=Pašto slapyvardžiai
@@ -42,9 +45,11 @@ aliases_type5=Automatiškai atsakyti failas $1
 aliases_type6=Taikyti filtro failą $1
 aliases_none=Nė vienas
 aliases_delete=Ištrinti pasirinktus slapyvardžius
+
 postfinger_title=Konfigūracijos patikrinimas
 postfinger_show=Rodyti
 postfinger_ecannot=Jums neleidžiama patikrinti „Postfix“ konfigūracijos
+
 mailclean_title=Švari „MailQueue“
 mailclean_ecannot=Nėra privilegijų valyti „MailQueues“
 mailclean_active=Aktyvi eilė
@@ -53,6 +58,7 @@ mailclean_deferred=Atidedama eilė
 mailclean_defer=Atidėti eilę
 mailclean_all=Visos eilės
 mailclean_search=Paieškos eilutė
+
 aform_type0=Nė vienas
 aform_type1=Elektroninio pašto adresas
 aform_type2=Adresai byloje
@@ -68,6 +74,7 @@ aform_val=Pseudonimas
 aform_afile=Redaguoti ..
 aform_return=slapyvardis
 aform_cmt=apibūdinimas
+
 asave_err=Nepavyko išsaugoti slapyvardžio
 asave_eaddr=„$1“ nėra teisingas adresas
 asave_ealready=„$1“ slapyvardis jau yra
@@ -78,11 +85,13 @@ asave_etype4=„$1“ nėra tinkama programa arba jos nėra
 asave_etype5=„$1“ automatinio atsakymo failas negalioja
 asave_etype4none=Neįteikta jokia programa
 asave_etype6=Filtras „$1“ netinkamas
+
 afile_title=Redaguoti adreso failą
 afile_desc=Norėdami redaguoti adresus faile $1, naudokite žemiau esantį teksto lauką.
 afile_efile=Jums neleidžiama redaguoti $1.
 afile_undo=Anuliuoti pakeitimus
 afile_ewrite=Nepavyko įrašyti į adresų failą : $1
+
 ffile_title=Redaguoti filtro failą
 ffile_desc=Norėdami nustatyti filtro taisykles faile $1, naudokite žemiau esančią formą.
 ffile_efile=Jums neleidžiama redaguoti $1.
@@ -98,6 +107,7 @@ ffile_other=Priešingu atveju persiųskite $1
 ffile_err=Nepavyko išsaugoti filtro failo
 ffile_ematch=Trūksta rungtynių
 ffile_eaction=Trūksta persiuntimo adreso
+
 rfile_title=Redaguoti automatinio atsakymo failą
 rfile_desc=Norėdami redaguoti automatinio atsakymo pranešimą $1, naudokite žemiau esantį teksto lauką. Pranešime gali būti makrokomandos $SUBJECT, $FROM, $TO, $DATE ir $BODY, kurios bus išplėstos suaktyvinus automatinį atsakymą.
 rfile_desc2=Taip pat galite nustatyti pašto antraštes, kurios prideda arba pakeičia automatiniame atsakyme naudojamus numatytuosius parametrus, įvesdami tokias eilutes: <br><tt> Iš: foo@bar.com </tt><br> <tt>Tema: Atostogų metu</tt> <br> pranešimo viršuje, atskirtą nuo turinio viena tuščia eilute.
@@ -116,11 +126,13 @@ rfile_from=Nuo: atsakymo adresas
 rfile_auto=Automatinis (pagal gavėjo adresą)
 rfile_efrom=Trūksta nuo: adresas
 rfile_fromdesc=A Nuo: adresas visada turėtų būti nurodytas, jei įmanoma, nes automatinis metodas gali būti nepatikimas.
+
 general_title=Bendrosios parinktys
 general_title_sensible=Naudingiausios bendrosios parinktys
 general_title_others=Kitos bendrosios parinktys
 general_ecannot=Jums neleidžiama redaguoti bendrųjų parinkčių
 what_is_it=Kas tai?
+
 opts_default=Numatytas
 opts_none=Nė vienas
 opts_nomap=Nenustatytas žemėlapis
@@ -140,10 +152,12 @@ opts_mail_owner=Pašto savininkas
 opts_default_privs=Numatytosios pristatymo agento teisės
 opts_inet_interfaces=Tinklo sąsajos laiškams priimti
 opts_all_interfaces=Visi
+
 opts_local_recipient_maps=Atmeskite nežinomus vietinius vartotojus
 opts_no=Ne
 opts_save=Išsaugoti ir pritaikyti
 opts_edir=Žemėlapio failus leidžiama nurodyti tik skiltyje $1
+
 opts_allow_percent_hack=Perrašykite „vartotojo%domenas“ į „vartotojas@domenas“
 opts_append_at_myorigin=Perrašykite „user“ į „user@$mydomain“
 opts_append_dot_mydomain=Parašykite „user@host“ į „user@host.$mydomain“
@@ -153,13 +167,17 @@ opts_swap_bangpath=Parašykite „site! User“ į „user @ site“
 opts_masquerade_domains=Adresų maskavimas
 opts_masquerade_exceptions=Maskuojamosios išimtys
 index_return=Postfix konfigūracija
+
 opts_alias_maps=Vietinio pristatymo agento naudojamos slapyvardžių duomenų bazės
 opts_alias_database=Alias duomenų bazės, kurias sukūrė komanda „newaliases“
 aliases_warning=Įspėjimas: <ul><li> kai pirmasis laukas nėra tuščias, atitinkamoms duomenų bazėms kurti naudojama numatytoji „Postfix“ slapyvardžių generavimo komanda; <li>kitu atveju naudojama „Sendmail“ suderinamumo komanda „newaliases“, tai bus naudojamos antrojo lauko duomenų bazės.</ul>
+
 aliases_name=vardas
 aliases_value=Slapyvardis. ..
+
 new_alias=Sukurkite naują slapyvardį
 new_aliasmsg=Spustelėkite šį mygtuką, norėdami sukurti naują slapyvardį
+
 local_delivery_ecannot=Jums neleidžiama redaguoti vietinių pristatymo variantų
 local_delivery_title=Vietinis pristatymas
 opts_local_transport=Vietinių siuntų gabenimo pavadinimas
@@ -185,6 +203,7 @@ opts_local_destination_recipient_limit=Maksimalus gavėjų skaičius vietiniame 
 opts_local_destination_recipient_limit_default=Numatytas
 opts_prepend_delivered_header=Pridėkite <tt>Pristatytas:</tt>, kai. ..
 opts_prepend_delivered_header_default=Numatytas
+
 resource_title=Bendroji išteklių kontrolė
 resource_ecannot=Neleidžiama redaguoti išteklių valdymo parametrų
 opts_bounce_size_limit=Maksimalus atmesto pranešimo dydis
@@ -204,6 +223,7 @@ opts_qmgr_message_recipient_limit=Maksimalus atmintyje esančių gavėjų skaič
 opts_queue_minfree=Mažiausia laisva vieta eilės failų sistemoje
 opts_stale_lock_time=Maksimalus laikas, per kurį atleidžiamas pasenęs užraktas
 opts_transport_retry_time=Laikas sekundėmis nuo bandymų susisiekti su pažeistu MDT
+
 opts_always_bcc=Adresas, iš kurio gaunama kiekvieno failo kopija
 opts_always_bcc_none=Nė vienas
 opts_daemon_timeout=Prašymų tvarkymo laikas
@@ -242,6 +262,7 @@ opts_trigger_timeout=Maksimalus laikas nusiųsti gaiduką demonui
 opts_delay_warning_time=Laikas valandomis iki įspėjimo apie nepristatymą išsiuntimo
 opts_delay_warning_time_default2=„Postfix“ numatytasis nustatymas
 opts_content_filter_default=Nė vienas
+
 smtpd_title=SMTP serverio parinktys
 smtpd_ecannot=Jums neleidžiama redaguoti SMTP serverio parinkčių
 opts_disable_vrfy_command=Išjungti komandą SMTP VRFY
@@ -273,6 +294,7 @@ smtpd_nomap=Kol kas nebuvo įvestas leidžiamų adresų, skirtų perduoti, žem�
 smtpd_nomap2=Dar neįvestas siuntėjų adresų apribojimų žemėlapis.
 smtpd_map=Leidžiami persiųsti adresai
 smtpd_map2=Siuntėjo adresų apribojimai
+
 smtp_title=SMTP kliento parinktys
 smtp_ecannot=Jums neleidžiama redaguoti SMTP kliento parinkčių
 opts_best_mx_transport=Veiksmas, kai jis nurodytas kaip geriausias MX pagrindinis kompiuteris
@@ -293,6 +315,7 @@ opts_smtp_data_done_timeout=Laikas, per kurį laukiama atsakymo pabaigos.
 opts_smtp_quit_timeout=Laikas, per kurį laukiama atsakymo į QUIT
 opts_smtp_use_tls=SMTP ryšiams naudokite TLS
 opts_smtp_sasl_security_options=SASL saugos galimybės
+
 rate_title=Pristatymo kainos
 rate_ecannot=Jums neleidžiama redaguoti pristatymo kainų parinkčių
 opts_default_destination_concurrency_limit=Maksimalus lygiagrečių pristatymų į tą pačią paskirties vietą skaičius
@@ -303,18 +326,21 @@ opts_maximal_queue_lifetime=Maksimalus laikas (dienomis) eilėje iki pranešimo 
 opts_minimal_backoff_time=Min. Laikas (sekundėmis) tarp bandymų pateikti atidėtą pranešimą
 opts_queue_run_delay=Laikas (sekundėmis) nuo atidėtos eilės nuskaitymo
 opts_defer_transports=Transportas, kurio nereikėtų pristatyti
+
 debug_title=Derinimo funkcijos
 debug_ecannot=Jums neleidžiama redaguoti derinimo funkcijų
 opts_debug_peer_list=Domenų / tinklo modelių, kuriuose įgalintas išsamus žurnalas, sąrašas
 opts_debug_peer_level=Išskirtinis registravimo lygis, kai atitikiate aukščiau pateiktą sąrašą
 debug_version=„Webmin Postfix“ modulis - $1 versija
 opts_edebug=Trūksta arba netinkamas išsamios registravimo lygis - skaičius turi būti didesnis nei nulis
+
 ldap_title=LDAP peržiūros
 ldap_ecannot=Jums neleidžiama redaguoti LDAP paieškos parinkčių
 ldap_non_existent=Panašu, kad jūsų „Postfix“ sistemoje LDAP nėra
 opts_ldap_lookup_timeout=LDAP duomenų bazės paieškų laikas
 opts_ldap_search_base=LDAP duomenų bazėje ieškoti
 opts_ldap_server_host=LDAP serverio pagrindinio kompiuterio vardas
+
 canonical_title=Kanoninis žemėlapių sudarymas
 canonical_ecannot=Jums neleidžiama redaguoti kanoninio žemėlapio konfigūracijos
 opts_canonical_maps=Adresų žemėlapių paieškos lentelės
@@ -328,6 +354,7 @@ canonical_edit_title=Redaguoti kanoninį žemėlapį
 canonical_return_sender=siuntėjo kanoniniai žemėlapiai
 canonical_return_recipient=gavėjų kanoniniai žemėlapiai
 canonical_return=kanoniniai žemėlapiai
+
 mapping_name=vardas
 mapping_value=Žemėlapiai į. ..
 mapping_delete=Išštrinti pasirinktus
@@ -355,6 +382,7 @@ mapping_toomany=Yra $1 žemėlapio įrašų, tai yra daugiau nei $2 rodymo riba.
 mapping_find=Rodyti atitikmenis, atitinkančius:
 mapping_search=Paieška
 mapping_match=Žemėlapio failo įrašai, atitinkantys <tt>$1</tt> ..
+
 virtual_title=Virtualūs domenai
 virtual_ecannot=Jums neleidžiama redaguoti virtualių domenų žemėlapių konfigūracijos
 opts_virtual_maps=Domenų žemėlapių paieškos lentelės
@@ -362,29 +390,44 @@ opts_virtual_alias_maps=Domenų žemėlapių paieškos lentelės
 opts_virtual_alias_domains=Domenai, skirti atlikti virtualų žemėlapių sudarymą
 virtual_same=Iš domenų žemėlapių lentelių
 virtual_return=virtualūs domenai
+
 transport_title=Transporto žemėlapiai
 transport_ecannot=Jums neleidžiama redaguoti transporto žemėlapio konfigūracijos
 opts_transport_maps=Transporto žemėlapių paieškos lentelės
 transport_return=transporto žemėlapiai
+
+sni_title=Pažymėjimų susiejimas
+sni_ecannot=Jums neleidžiama redaguoti pažymėjimo susiejimo konfigūracijos
+opts_sni_maps=Pažymėjimų atvaizdavimo paieškos lentelės
+sni_return=pažymėjimų žemėlapiai
+sni_dom=Pagrindinio kompiuterio vardas
+sni_certs=Pažymėjimo bylos
+
 relocated_title=Perkeltas žemėlapis
 relocated_ecannot=Jums neleidžiama redaguoti perkeltos žemėlapių konfigūracijos
 relocated_return=perkelti žemėlapiai
 opts_relocated_maps=Perkeltos žemėlapių paieškos lentelės
 opts_content_filter=El. Pašto turinio filtras
+
 map_click=Spustelėkite bet kurį žemėlapį, kad galėtumėte redaguoti jo ypatybes:
 no_map=(Šiuo metu žemėlapis nėra apibrėžtas. Pirmiausia apibrėžkite žemėlapį, tada galėsite jį redaguoti)
 no_map2=Šiuo metu žemėlapis nėra apibrėžtas. Pirmiausia apibrėžkite žemėlapį, tada galėsite jį redaguoti.
+
 stop_efailed=Nepavyko sustabdyti „Postfix“
 stop_ecannot=Jums neleidžiama sustoti „Postfix“
+
 start_efailed=Nepavyko paleisti „Postfix“
 start_ecannot=Jums neleidžiama pradėti „Postfix“
+
 reload_efailed=Nepavyko iš naujo įkelti „Postfix“
 reload_ecannot=Jums neleidžiama iš naujo įkelti „Postfix“
+
 query_get_efailed=Nepavyko užklausti „Postfix config“ komandos, norint gauti dabartinę parametro $1 reikšmę: <tt>$2</tt>
 query_set_efailed=Nepavyko užklausti „Postfix“ konfigūravimo komandos, norint nustatyti dabartinę parametro $1 reikšmę į $2: <tt>$3</tt>
 regenerate_ecannot=Jums neleidžiama atkurti slapyvardžių
 regenerate_alias_efailed=Nepavyko sugeneruoti slapyvardžių: <tt>$1</tt>
 regenerate_table_efailed=Nepavyko sugeneruoti lentelės $1: <tt>$2</tt>
+
 acl_resource=Ar galima redaguoti išteklius?
 acl_aliases=Ar galite redaguoti slapyvardžius?
 acl_aliases_options=Ar galima redaguoti slapyvardžių parinktis?
@@ -393,6 +436,7 @@ acl_address_rewriting=Ar galima redaguoti adreso perrašymą?
 acl_canonical=Ar gali redaguoti kanoniką?
 acl_virtual=Ar galima redaguoti virtualiai?
 acl_transport=Ar galima redaguoti transportą?
+acl_sni=Ar galima redaguoti sertifikatus?
 acl_relocated=Ar gali redaguoti perkėlimą?
 acl_header=Ar galima redaguoti antraščių patikrinimus?
 acl_local_delivery=Ar galite redaguoti pristatymą vietoje?
@@ -411,6 +455,7 @@ acl_postfinger=Ar galima patikrinti pašto indekso konfigūraciją?
 acl_manual=Ar galima redaguoti konfigūracijos failą?
 acl_dir=Leidžiamas žemėlapių failų katalogas
 acl_bcc=Ar galima redaguoti BCC žemėlapius?
+
 boxes_title=Vartotojo pašto dėžutės
 boxes_user=Vartotojas
 boxes_size=Pašto dėžutės dydis
@@ -420,6 +465,7 @@ boxes_sent=Išsiųsti laiškai
 boxes_ecannot=Jums neleidžiama skaityti el. Laiškų
 boxes_toomany=Jūsų sistemoje yra per daug vartotojų, kad galėtų išvardyti visas jų pašto dėžutes.
 boxes_go=Peržiūrėti vartotojo el. Paštą:
+
 mail_title=Vartotojo el. Paštas
 mail_from=Iš
 mail_date=Data
@@ -458,6 +504,7 @@ mail_forward=Persiųsti
 mail_rfc=Iš eilutės
 mail_move=Pereiti prie:
 mail_eexists=Pranešimo nebeegzistuoja!
+
 view_title=Skaityti el. Laišką
 view_desc=$1 pranešimas $2
 view_desc2=Pranešimas $1 vartotojui $2
@@ -486,6 +533,7 @@ view_body=Pranešimo tekstas
 view_afile=Priedo pavadinimas
 view_atype=Priedo tipas
 view_asize=Failo dydis
+
 compose_title=Sukurti el. Laišką
 reply_title=Atsakyti el. Paštu
 forward_title=Persiųsti el. Laišką
@@ -496,6 +544,7 @@ reply_mailforward=Persiuntė pranešimus
 reply_attach2=Kliento ir serverio priedai
 reply_send=Išsiųsti laišką
 reply_ecannot=Jums neleidžiama siųsti laiškų kaip šiam vartotojui
+
 send_err=Nepavyko išsiųsti laiškų
 send_eto=Nėra adreso
 send_efrom=Nėra adreso
@@ -509,6 +558,7 @@ send_eperms=Vartotojas $1 negali skaityti $2
 send_eperms2=Jums neleidžiama siųsti failo $1
 send_epath=„Sendmail“ vykdomasis $1 neegzistuoja.
 send_ewrapper=„Postfix sendmail“ sąsajos programos nėra
+
 search_title=Paieškos rezultatai
 search_ecannot=Jums neleidžiama ieškoti šio vartotojo el. Pašto
 search_ematch=Turite įvesti tekstą, kad atitiktumėte.
@@ -516,6 +566,7 @@ search_efield=Turite pasirinkti paieškos tipą.
 search_none=Nerasta jokių pranešimų.
 search_results2=$1 pašto žinutės, atitinkančios $2 ..
 search_results3=$1 pašto pranešimai, neatitinkantys $2 ..
+
 match_from=Iš: degtukai
 match_subject=Tema: degtukai
 match_to=Kam: rungtynės
@@ -533,6 +584,7 @@ match_!date=Data: nesutampa
 match_!body=Kūnas nesutampa
 match_!size=Dydis yra mažesnis nei
 match_!headers=Antraštės nesutampa
+
 mailq_title=Pašto eilė
 mailq_count=$1 žinutės
 mailq_none=Šiuo metu pašto pristatymo eilės nėra
@@ -561,15 +613,20 @@ mailq_active=Aktyvus
 mailq_deferred=Atidėtas
 mailq_hold=Laikykite pažymėtą
 mailq_unhold=Panaikinti pasirinkimą
+
 flushq_title=Praplaukite eilę
 flushq_desc=Priversti bandyti siųsti laiškus komanda $1 ..
+
 qview_title=Eilė eilėje
 qview_desc=Iš failo $1
 qview_headers=Pašto antraštės
 qview_attach=Priedai
+
 after_err=Postfix konfigūracijos klaida : $1
+
 searchq_title=Eilės paieškos rezultatai
 searchq_none=Nerasta jokių eilėje esančių pranešimų.
+
 header_title=Antraštės tikrinimai
 header_ecannot=Jums neleidžiama redaguoti antraštės patikrinimų
 header_eregexp=Antraštės tikrinimo žemėlapis turi būti formatu <tt>regexp:</tt> <i>failo vardas</i>
@@ -588,15 +645,18 @@ header_reject=Atmesti (su klaidos pranešimu..)
 header_warn=Įspėjimas apie žurnalą (su pranešimu..)
 header_ename=Netinkama reguliarioji išraiška - turi būti kaip / kažkas /
 header_return=antraščių patikrinimai
+
 body_title=Kūno patikrinimai
 body_ecannot=Jums neleidžiama redaguoti kūno patikrinimų
 body_eregexp=Kūno tikrinimo žemėlapis turi būti <tt>regexp:://tt><i> failo vardas </i>
 opts_body_checks=Pranešimų kūno tikrinimo lentelės
 body_return=kūno patikrinimai
+
 dependent_title=Siuntėjo priklausomas transporto žemėlapis
 dependent_ecannot=Jums neleidžiama redaguoti nuo siuntėjo priklausančių transporto žemėlapių
 dependent_eregexp=Siuntėjo priklausomas gabenimo žemėlapis turi būti tokio formato: <tt>regexp:</tt> <i>failo vardas</i>
 dependent_return=nuo siuntėjo priklausomi transporto žemėlapiai
+
 manual_title=Redaguoti žemėlapio failą
 manual_file=Pasirinkite žemėlapio failą, kurį norite redaguoti:
 manual_change=Keisti
@@ -604,9 +664,11 @@ manual_editing=Naudokite žemiau esantį teksto lauką, norėdami rankiniu būdu
 manual_err=Nepavyko išsaugoti žemėlapio failo
 manual_efile=Netinkamas žemėlapio failo vardas!
 manual_ecannot=Jums neleidžiama rankiniu būdu redaguoti žemėlapio failų
+
 delq_titles=Pranešimų trynimas
 delq_rusure=Ar tikrai norite ištrinti $1 pasirinktus eilės pranešimus?
 delq_confirm=Ištrinti pranešimus
+
 master_title=Serverio procesai
 master_name=Proceso pavadinimas
 master_enabled=Įjungtas?
@@ -647,8 +709,10 @@ master_einet=Pagrindinio kompiuterio adresą, kurio reikia klausytis, galima nur
 master_ecommand=Trūksta serverio proceso komandos
 master_ewakeup=Trūksta arba netinkamas žadinimo laikas
 master_emaxprocs=Trūksta arba netinkamas maksimalus procesų skaičius
+
 delete_err=Nepavyko ištrinti atvaizdų
 delete_enone=Nepasirinkta
+
 cmanual_title=Redaguoti konfigūravimo failus
 cmanual_ecannot=Jums neleidžiama redaguoti „Postfix“ konfigūracijos failo
 cmanual_ok=Redaguoti
@@ -656,10 +720,12 @@ cmanual_efile=Pasirinktas failas nėra „Postfix“ konfigūracijos dalis
 cmanual_file=Redaguoti konfigūracijos failą:
 cmanual_edata=Niekas neįėjo!
 cmanual_err=Nepavyko išsaugoti konfigūracijos failo
+
 access_return=prieigos žemėlapių lentelė
 edit_map_file=Redaguoti žemėlapio failą
 opts_reject_rbl_client=„Realtime Black Lists“ (RBL) peržiūros
 opts_check_sender_access=Patikrinkite siuntėjo prieigos žemėlapių lentelę
+
 log_misc=Pakeistos bendrosios parinktys
 log_opts=Pakeistas adreso perrašymas ir maskavimas
 log_aliases=Pakeistos slapyvardžių parinktys
@@ -667,6 +733,7 @@ log_canonical=Kanoninių žemėlapių parinkčių keitimas
 log_virtual=Pakeistos virtualiojo domeno parinktys
 log_bcc=Pakeistos BCC žemėlapio parinktys
 log_transport=Pakeistos transporto žemėlapių parinktys
+log_sni=Keisti pažymėjimo susiejimo parinktis
 log_dependent=Pakeistos priklausomos nuo siuntėjo adreso parinktys
 log_relocated=Pakeistos perkėlimo žemėlapių parinktys
 log_header=Pakeistos antraštės tikrinimo parinktys
@@ -744,6 +811,7 @@ log_sender_dependent_default_transport_maps_modify=Modifikuotas siuntėjo adresa
 log_sender_dependent_default_transport_maps_delete=Ištrintas priklausantis nuo siuntėjo adresas $1
 log_delete_sender_dependent_default_transport_mapss=Ištrinti $1 priklausomi nuo siuntėjo adresai
 log_manual_sender_dependent_default_transport_mapss=Neautomatiškai redaguojami nuo siuntėjo priklausantys adresai $1
+
 sasl_title=SMTP autentifikavimas ir šifravimas
 opts_smtpd_sasl_auth_enable=Reikalauti SASL SMTP autentifikavimo?
 opts_smtp_sasl_auth_enable=Naudoti SASL SMTP autentifikavimą?
@@ -790,6 +858,7 @@ sasl_nologin=Nereikia
 sasl_userpass=Prisijunkite kaip $1 su slaptažodžiu $2
 sasl_elogin=Trūksta arba netinkamas prisijungimas prie SMTP (neleidžiama naudoti tarpų ar dvitaškių)
 sasl_epass=Neteisingas SMTP slaptažodis (tarpų neleidžiama)
+
 client_title=SMTP kliento apribojimai
 client_ecannot=Jums neleidžiama redaguoti SMTP kliento apribojimų
 client_restrict=Kliento apribojimai
@@ -799,6 +868,7 @@ client_other=Kiti apribojimai :
 client_err=Nepavyko išsaugoti kliento apribojimų
 client_evalue=Trūksta apribojimo vertės $1
 client_return=SMTP kliento apribojimai
+
 chooser_title=Pasirinkite Žemėlapio šaltinis
 chooser_header=Žemėlapio šaltinis $1
 chooser_none=Nė vienas
@@ -854,6 +924,7 @@ chooser_elquery_filter=Trūksta žemėlapio užklausos filtro $1
 chooser_elresult_attribute=Nėra žemėlapio $1 rezultato atributo pavadinimo arba jis netinkamas
 chooser_elbind_dn=Trūksta prisijungimo prie LDAP serverio žemėlapiui $1
 chooser_elbind_pw=Trūksta žemėlapio LDAP serverio slaptažodžio $1
+
 mysql_ecfile=„MySQL“ konfigūracijos failas $1 nerastas
 mysql_ecfile2=Nepavyko rasti lentelės „MySQL“ konfigūracijos faile $1
 mysql_edriver=Nepavyko įkelti duomenų bazės tvarkyklės $1
@@ -865,6 +936,7 @@ mysql_eupdate=Nepavyko atnaujinti SQL : $1
 mysql_elist=SQL užklausa nepavyko : $1
 mysql_esource=Nerastas MySQL šaltinis pavadinimu $1
 mysql_eneed=„MySQL“ konfigūracijos parametras $1 nerastas. „Webmin“ to reikia norint išsiaiškinti, kurią lentelę ir laukus pateikti užklausoms.
+
 ldap_ecfile=LDAP konfigūracijos failas $1 nerastas
 ldap_eldapmod=„Perl“ modulis $1, reikalingas bendravimui su LDAP, neįdiegtas arba neįkeltas
 ldap_eldap=Nepavyko prisijungti prie LDAP serverio $1 prievado $2
@@ -875,6 +947,7 @@ ldap_edelete=Nepavyko ištrinti $1 LDAP : $2
 ldap_equery=Nepavyko ieškoti LDAP $1 : $2 
 ldap_erename=Nepavyko pervadinti $1 į $2 : $3 
 ldap_emodify=Nepavyko modifikuoti $1 LDAP : $2
+
 bcc_title=BCC žemėlapių sudarymas
 bcc_ecannot=Jums neleidžiama redaguoti BCC žemėlapių
 opts_sender_bcc_maps=Siuntėjo BCC žemėlapių paieškos lentelės

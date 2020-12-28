@@ -7,6 +7,7 @@ index_restart=Indítsa újra a Webmin alkalmazást
 index_restartmsg=Kattintson erre a gombra a Webmin szerver folyamatának újraindításához. Erre akkor lehet szükség, ha nemrégiben frissítette a Perl szolgáltatást.
 index_refresh=Frissítse a modulokat
 index_refreshmsg=Ellenőrizze újra az összes Webmin modult a telepített kiszolgálók számára, és frissítse azokat, amelyek a 'Nem használt modulok' kategóriában jelennek meg.
+
 access_ip=Megengedett IP-címek
 access_local=Helyezze be a helyi hálózatot a listába
 access_libwrap=Ellenőrizze a TCP-wrappers <tt>hosts.allow</tt> és <tt>hosts.deny</tt> fájlokat is?
@@ -18,6 +19,7 @@ access_ecidr6=A '$1' nem érvényes IPv6 hálózati méret
 access_ecidr8=Az '$1' IPv6 hálózat méretének 8-dal el kell osztani
 access_always=Megoldja a hostneveket minden kérésre?
 access_trust=Megbízik-e a proxyk által biztosított távoli IP-cím?
+
 bind_desc2=Ez az űrlap felhasználható annak a portnak a megváltoztatására, amelyet a Webmin hallgat, vagy a rendszer egyetlen IP-címén hallgathatja meg. Azt is konfigurálhatja, hogy több porton keresztül fogadja el a kapcsolatokat, vagy több IP-címen hallgassa meg. Megjegyzés: a port vagy a kötési cím megváltoztatása után a böngésző kérheti újbóli bejelentkezését.
 bind_sockets=Hallgassa meg az IP-ket és a portokat
 bind_firewall=Nyisson új portokat a tűzfalon?
@@ -43,6 +45,7 @@ bind_eipv6=Az IPv6 csak akkor engedélyezhető, ha a $1 Perl modul telepítve va
 bind_redirecting=Átirányítás új URL-re ..
 bind_elsof=Az új $1 portot már egy másik folyamat használja
 bind_eonsystem=A $1 IP-cím nem aktív ezen a rendszeren, ezért nem használható
+
 log_desc2=Ha a naplózás engedélyezve van, a Webmin a $1 fájlba részletesebb felhasználói tevékenységi naplót is ír. Ez a napló megnézhető és elemezhető a Webmin Műveletek Napló moduljával, hogy pontosan megnézze, hogy az egyes Webmin felhasználók mit csináltak.
 log_status=A naplózás aktív?
 log_clf=Használ kombinált naplóformátumot (ideértve az hivatkozót és a felhasználói ügynököt)?
@@ -66,6 +69,7 @@ log_login=Tartalmazza a Webmin bejelentkezéseit és kijelentkezését a művele
 log_email=A naplózott tevékenységeket küldje el e-mailben a
 log_emailnone=Ne küldje el
 log_inmodsemail=Küldjön e-mailt a
+
 proxy_user=Felhasználónév a proxy számára
 proxy_pass=A proxy jelszava
 proxy_ehttp2=A HTTP proxy szervert URL-ként kell megadni, például a $1
@@ -100,6 +104,7 @@ proxy_return=proxykiszolgálók és letöltések
 proxy_tabproxy=proxyzásnál
 proxy_tabdown=A letöltés
 proxy_fallback=Próbálkozzon a közvetlen kéréssel, ha a proxy működik?
+
 ui_title=Felhasználói felület
 ui_desc=Ez az űrlap lehetővé teszi az összes modul által használt felhasználói felület beállításainak szerkesztését. A színek beírásakor mindegyiket meg kell adni a szokásos RGB rendszer használatával, ahol minden érték hexa szám 00-tól ff-ig.
 ui_header=A felhasználói felület lehetőségei
@@ -144,6 +149,7 @@ ui_dateformat_dd/mm/yyyy=éééé/hh/nn (azaz 2001.09.16.)
 ui_dateformat_mm/dd/yyyy=éééé/hh/nn (azaz 2001.09.16.)
 ui_dateformat_yyyy/mm/dd=éééé/hh/nn (azaz 2001/09/16)
 ui_ehostnamedisplay=Hiányzó vagy érvénytelen megjelenített gazdagépnév
+
 mods_installsource=Telepítés innen:
 mods_grantto=Hozzáférést biztosít a
 mods_standard=Szabványos modul a <a href='$1' target=_new>www.webmin.com</a> webhelyről
@@ -172,6 +178,7 @@ mods_tabinstall=Telepítés
 mods_tabclone=Clone
 mods_tabdelete=Töröl
 mods_tabexport=Export
+
 install_enotar=A Webmin modulok kibontásához szükséges <tt>tar</tt> parancs nem található a rendszerén
 install_eusermin=A $1 modul a Usermin, nem pedig a Webmin számára készült
 install_edep2=A $1 modulhoz szükség van legalább a $2 modul $3 verziójára.
@@ -190,11 +197,13 @@ install_cat=A $1 kategória alatt.
 install_eneither=Az RPM nem tartalmaz webmin modult vagy témát
 install_err4=Nem sikerült telepíteni a szabványos modult
 install_emissing=A megadott modul nem létezik
+
 delete_rusure=Biztosan törli a $2 modul (oka) t? A $1 kB fájlokat örökre törlik.
 delete_rusure2=Biztosan törli a $2 témát? A $1 kB fájlokat örökre törlik.
 delete_rusure3=Biztosan törli a $2 modul klónjait?
 delete_acls=Eltávolítja a felhasználóktól és alaphelyzetbe állítja a hozzáférés-vezérlési beállításokat?
 delete_enone=Nincs kiválasztva modul
+
 os_desc3=Ez az oldal megjeleníti a Webmin által a telepítéskor észlelt operációs rendszert és a jelenleg észlelt rendszert. Ha ezek különböznek, akkor dönthet úgy, hogy frissíti a Webmin operációs rendszerének adatait, amelyre szükség lehet, ha nemrégiben frissítettél.
 os_desc2=Megváltoztathatja a Webmin által használt keresési útvonalat is a programok futtatásakor, és a megosztott könyvtár elérési útját átadhatja bármelyik programnak.
 os_webmin=Operációs rendszer a Webmin szerint
@@ -214,12 +223,14 @@ os_eiversion=Hiányzik a belső operációs rendszer verziója
 os_incorrect=Figyelem - A rendszer valójában $1 $2 verziót fut.
 os_fix=Frissítse a felismert operációs rendszert
 os_usermin=Frissítse a Usermin operációs rendszert is
+
 lang_accept=Használja a böngésző által megadott nyelvet?
 lang_charset=Karakterkészlet a HTML oldalakhoz
 lang_chardef=Nyelv határozza meg
 lang_charover=Karakterkészlet kényszerítése
 lang_err=Nem sikerült a nyelv mentése
 lang_echarset=Hiányzó vagy érvénytelen karakterkészlet
+
 ssl_essl=Úgy tűnik, hogy a Net::SSLeay perl modul nincs telepítve a rendszerére. Az OpenSSL könyvtár és a Net::SSLeay telepítéséhez kövesse <a href='$1'>ezeket az utasításokat</a> a Webmin webhelyről.
 ssl_cpan=Alternatív megoldásként a Webmin <a href='$1'>letöltheti és telepítheti</a> a szükséges Net::SSLeay Perl modult.
 ssl_emessage=A Perl által küldött hibaüzenet a következő volt : $1
@@ -321,6 +332,7 @@ ssl_letsnotrenew=Csak manuálisan kell megújítani
 ssl_staging=Titkosítsuk a szervert
 ssl_staging0=Igazi
 ssl_staging1=Szakasz (csak teszt)
+
 newkey_err=Nem sikerült létrehozni az SSL kulcsot
 newkey_ecn=Hiányzó vagy érvénytelen szervernév
 newkey_ecns=Nincs megadva szerver neve
@@ -333,11 +345,13 @@ newkey_ok=A következő SSL kulcs sikeresen előállítva :
 newkey_esize=Hiányzó vagy érvénytelen kulcsméret
 newkey_edays=Hiányzó vagy érvénytelen napok száma a lejárat előtt
 newkey_ecountry=Az országkódnak két betűből kell állnia
+
 newcsr_err=Nem sikerült létrehozni az SSL CSR-t
 newcsr_efile=Hiányzik a CSR fájlnév
 newcsr_title=CSR generálása
 newcsr_ok=A következő SSL tanúsítványkérés sikeresen létrehozva :
 newcsr_ok2=Ezt a CSR-t el kell küldeni az aláíró hatóságnak, aki visszaadja az aláírt tanúsítványt. Ez a fenti gombbal telepíthető a <b>Tanúsítvány feltöltése</b> lapon.
+
 startpage_intro2=Ezen az oldalon szabályozhatja a Webmin főmenü megjelenését. Egyes lehetőségek csak akkor lehetnek hatékonyak, ha az alapértelmezett témát használja.
 startpage_gotoone=Ugrás közvetlenül a modul modulra, ha a felhasználónak csak egy van?
 startpage_deftab=Alapértelmezett kategória
@@ -346,6 +360,7 @@ startpage_gotonone=&lt;Nincs&gt;
 startpage_gotomodule=A bejelentkezés után mindig lépjen a modulba
 startpage_webminup=Megjeleníti a Webmin frissítéseit a Rendszerinformációk oldalon?
 startpage_moduleup=Megjeleníti a modul frissítéseit a Rendszerinformációk oldalon?
+
 upgrade_title=Frissítse a Webmin szoftvert
 upgrade_desc=Ez az űrlap lehetővé teszi a teljes Webmin-telepítés frissítését új verzióra. Telepíthet helyi fájlból, feltöltött fájlból vagy a legfrissebb verzióról a <a href=http://www.webmin.com/>www.webmin.com</a> webhelyen. A kézi frissítéshez hasonlóan a konfigurációs beállításokat és a harmadik fél moduljait is megőrzik.
 upgrade_descrpm=Ez az űrlap lehetővé teszi, hogy a webmin teljes telepítését új verzióra frissítse az RPM frissítési opciójával. Telepíthet helyi RPM-fájlból, feltöltött fájlból vagy a legfrissebb verzióról a <a href=http://www.webmin.com/>www.webmin.com</a> webhelyen. A kézi frissítéshez hasonlóan a konfigurációs beállításokat és a harmadik fél moduljait is megőrzik.
@@ -410,10 +425,12 @@ upgrade_tabupdate=Modulok frissítése
 upgrade_tabsched=Ütemezett frissítés
 upgrade_src=Frissítse a Webmin-t innen:
 upgrade_opts=Frissítési lehetőségek
+
 newmod_desc=A Webmin frissítésekor az új verzió minden új modulját egy vagy több felhasználó kapja meg. Ez az űrlap lehetővé teszi az új modulokat fogadó felhasználók beállítását. Ez a beállítás akkor lesz érvényes, ha frissítést hajt végre a parancssorban, vagy használja a fenti űrlapot.
 newmod_header=Új modul támogatások
 newmod_def=Alapértelmezett viselkedés - adjon új modulokat a <tt>gyökér</tt> vagy <tt>admin</tt> számára
 newmod_users=Adjon új modulokat :
+
 update_desc1=Ez az űrlap lehetővé teszi a Webmin modulok frissítését, amelyek hibákat vagy biztonsági lyukakat találtak a <a href=http://www.webmin.com/updates.html>Webmin frissítések</a> oldalon vagy más forrásból. Ez összehasonlítja a jelenleg telepített modulokat a frissítésre elérhető modulokkal, és opcionálisan automatikusan letölti és telepíti az elavult modulokat.
 update_header1=Frissítse a modulokat most
 update_header2=Frissítse a modulokat az ütemezés szerint
@@ -440,6 +457,7 @@ update_enomodsig=Nem sikerült letölteni a modul aláírási fájlját : $1
 update_ebadmodsig=A modul aláírásának ellenőrzése sikertelen : $1
 update_src=Frissítsen a modulokról
 update_opts=Modulfrissítési lehetőségek
+
 ca_title=Tanúsító hatóság
 ca_old=Meglévő igazolás
 ca_header1=Hozzon létre új CA tanúsítványt
@@ -471,6 +489,7 @@ ca_eminiserv=Az SSL kliens tanúsítványokat csak a miniserv alatt támogatják
 ca_eversion=A rendszerre telepített Perl Net::SSLeay modul verziója nem támogatja az SSL kliens tanúsítványokat.
 ca_essleay=A $1 SSL adminisztrációs parancs nem található a rendszerén. Lehet, hogy meg kell változtatnia az elérési utat a Webmin Users modul konfigurációjában.
 ca_essl=Az SSL tanúsítás csak akkor állítható be, ha a webszerver SSL módban fut.
+
 session_title=Hitelesítés
 session_desc1=Ha engedélyezve van, akkor a jelszó időtúllépése megvédi a Webmin szervert a brute-force jelszó-krakkoló támadásoktól, mivel folyamatosan növekvő késleltetést ad hozzá ugyanazon felhasználó minden sikertelen bejelentkezési kísérlete között.
 session_header=Hitelesítés és munkamenet lehetőségek
@@ -534,10 +553,12 @@ session_sha512=Használjon SHA512 titkosítást
 session_emd5mod=Az MD5 titkosítás nem használható, mivel a Perl $1 modul nincs telepítve.
 session_esha512mod=Az SHA512 titkosítás nem használható, mivel a Perl $1 modul nincs telepítve.
 session_blocklock=Zárja be a sikertelen bejelentkezéssel rendelkező felhasználókat is
+
 assignment_title=A modulok újbóli hozzárendelése
 assignment_header=Modulkategória-hozzárendelések
 assignment_ok=Kategóriák módosítása
 assignment_desc=Ez az űrlap lehetővé teszi annak konfigurálását, hogy az egyes modulok mely kategóriákban jelenjenek meg a Webmin indexoldalán.
+
 categories_title=Kategóriák szerkesztése
 categories_header=Kategória azonosítója és leírása
 categories_desc=Ez az űrlap lehetővé teszi a meglévő Webmin kategóriák átnevezését és újak létrehozását, amelyekhez modulokat rendelhet. A táblázat felső része a beépített kategóriák leírásának megváltoztatására szolgál, míg az alsó rész az új kategória-azonosítók és leírások hozzáadásához.
@@ -550,6 +571,7 @@ categories_name=Megjelenített leírás
 categories_lang=Kategóriák szerkesztése nyelven:
 categories_langok=változás
 categories_custom=Egyedi
+
 log_access=Megváltozott az IP hozzáférés vezérlése
 log_bind=Megváltozott port és cím
 log_log=Megváltozott naplózási beállítások
@@ -595,6 +617,7 @@ log_onedelete_webmincron=Törölt ütemezett funkció a $1 modulból
 log_letsencrypt=Új SSL tanúsítványt kért a Let's Encrypttől
 log_letsencryptdns=Létrehoztuk a Encrypt DNS rekordot a $1 számára
 log_letsencryptcleanup=Eltávolítva Titkosítsuk a $1 DNS-rekordját
+
 themes_title=Webmin témák
 themes_desc=A témák szabályozzák a Webmin felhasználói felületének megjelenését, beleértve az ikonokat, a színeket, a hátteret és az oldalak elrendezését. Az alábbi választómező segítségével kiválaszthatja a rendszerre telepített témákat.
 themes_sel=Aktuális téma :
@@ -610,6 +633,7 @@ themes_taboverlay=Az overlay megváltoztatása
 themes_tabinstall=Téma telepítése
 themes_tabdelete=Témák törlése
 themes_tabexport=Témák exportálása
+
 themes_err1=Nem sikerült a téma telepítése a $1 könyvtárból
 themes_efile=A fájl nem létezik
 themes_err2=A feltöltött téma telepítése nem sikerült
@@ -635,9 +659,11 @@ themes_delok=A törölni kívánt téma :
 themes_return=témák listája
 themes_err4=Nem sikerült megváltoztatni az overlay témát
 themes_eoverlay=A kiválasztott fedvény nem kompatibilis a jelenlegi globális témával
+
 themes_desc4=A telepített témák wbt.gz fájlként exportálhatók az alábbi űrlap segítségével. Ezután egy témafájl telepíthető egy másik rendszerre, amelyen a Webmin fut.
 themes_exportmods=Témák exportálásra
 themes_exportok=Kiválasztott témák exportálása
+
 referers_title=Megbízható hivatkozók
 referers_desc=Ezen az oldalon konfigurálhatja a Webmin hivatkozási ellenőrzési támogatását, amelyet arra használnak, hogy megakadályozzák más webhelyek rosszindulatú linkeit, amelyek arra készteti a böngészőt, hogy veszélyes tevékenységeket tegyen a Webmin segítségével. Ha azonban a saját webhelyén van linkek a Webminhez, amelyeket nem szeretne figyelmeztetni, akkor vegye fel ezeket a webhelyeket az alábbi listába.
 referers_list=Megbízható webhelyek
@@ -646,6 +672,7 @@ referers_none2=VIGYÁZAT: Ez megnyitja a rendszert az XSS támadásokig!
 referers_referer=A hivatkozási ellenőrzés engedélyezve van?
 referers_err=Nem sikerült menteni a hivatkozókat
 referers_ehost=A '$1' nem érvényes megbízható gazdagépnév
+
 update_err=Nem sikerült frissíteni a modulokat
 update_eurl=Hiányzó vagy érvénytelen frissítési URL
 update_title=Frissítse a modulokat
@@ -666,6 +693,7 @@ update_rv=A frissített Webmin modulok ellenőrzése a $1 webhelyről
 update_eemail=Meg kell adnia egy e-mail címet, ha csak azt mutatja meg, amit frissíteni fog.
 update_subject=A Webmin modulok frissítési jelentése
 update_version=Letölthető a Webmin új verziója ($1 verzió). A jövőbeli frissítések csak a legújabb verzióra kerülnek kiadásra.
+
 anon_title=Névtelen hozzáférés a modulhoz
 anon_desc=Ez az oldal lehetővé teszi a hozzáférést a kiválasztott Webmin modulokhoz és útvonalakhoz anélkül, hogy az ügyfeleknek bejelentkezniük kellene. Minden alább megadott modul elérési úthoz (például <tt>/custom</tt> vagy <tt>/passwd</tt>) be kell írnia annak a Webmin-felhasználónak a nevét is, amelynek engedélyével a modult.
 anon_desc2=Nagyon óvatosnak kell lennie anonim hozzáférés megadásakor, mivel az IP-hozzáférés elégtelen vezérlése vagy a rossz modulhoz való hozzáférés engedélyezése esetén a támadók átvehetik a rendszerét.
@@ -674,15 +702,19 @@ anon_user=Webmin felhasználó
 anon_err=Nem sikerült menteni a névtelen hozzáférést
 anon_eurl=A '$1' nem érvényes URL-elérési út
 anon_euser=Hiányzó vagy érvénytelen Webmin felhasználó a (z) '$1' URL elérési úthoz
+
 enogpg=A GnuPG nincs telepítve
+
 standard_failed=Nem sikerült letölteni a modulok listáját : $1
 standard_header=Szabványos Webmin modulok
 standard_warn=Figyelem! Nem a $1 Webmin legújabb verzióját futtatja, így ezek a modulok valószínűleg nem fognak telepíteni.
 standard_eurl=Érvénytelen a szabványos modulok URL-je
+
 third_failed=Nem sikerült letölteni a modulok listáját : $1
 third_header=Harmadik fél Webmin moduljai
 third_eurl=Érvénytelen harmadik fél moduljainak URL-je
 third_title=Válassza a Harmadik fél modulját
+
 lock_title=Fájl zárolása
 lock_desc=Alapértelmezés szerint a Webmin zárolást szerez minden módosított fájlnál, hogy megakadályozza a többszörös folyamatok egyidejű módosítását, amely fájlok sérüléséhez vezethet. Ez az oldal lehetővé teszi a zárolás szelektív vagy teljes letiltását, ha ez problémát okoz.
 lock_header=A fájl zárolási beállításai
@@ -693,6 +725,7 @@ lock_except=Zárjon be minden fájlt és könyvtárat, kivéve ..
 lock_err=Nem sikerült menteni a fájlzárat
 lock_edir=Az '$1' nem abszolút út
 lock_edirs=Nincs megadva fájl vagy könyvtár
+
 ipkey_title1=Hozzon létre SSL kulcsot
 ipkey_title2=Szerkessze az SSL kulcsot
 ipkey_header=IP-specifikus SSL kulcs részletei
@@ -702,6 +735,7 @@ ipkey_eip2=A '$1' nem érvényes IP-cím vagy gazdagépnév
 ipkey_eips=Nincs megadva IP-cím
 ipkey_eextracas=Nincs megadva további tanúsítványfájl
 ipkey_eextraca=A $1 kiegészítő tanúsítványfájl nem létezik
+
 descs_title=Modul címei
 descs_info=Ezen az oldalon megadhat alternatív címeket a Webmin modulokhoz, felülbírálva a szabványos leírásokat.
 descs_mod=modul
@@ -711,11 +745,13 @@ descs_cdesc=Klón címe
 descs_err=Nem sikerült menteni a modul címeit
 descs_edesc=Hiányzik a (z) '$1' modul címe
 descs_etitle=Hiányzik a (z) '$1' klón címe
+
 export_err=Nem sikerült a modulok exportálása
 export_ecmd=Hiányzik a $1 parancs
 export_efile=Hiányzó vagy érvénytelen exportfájl
 export_done=A kiválasztott modulok sikeresen exportálódtak a $1 fájlba.
 export_title=Export modulok
+
 advanced_title=Haladó beállítások
 advanced_header=Speciális és kísérleti lehetőségek
 advanced_temp=Ideiglenes fájlok könyvtára
@@ -759,10 +795,13 @@ advanced_listdir=Könyvtárak felsorolása indexfájl nélkül?
 advanced_headers=Extra HTTP fejlécek
 advanced_eheader=A fejléceket a következőképpen kell formázni: <tt>Fejléc: Érték</tt>
 advanced_sortconfigs=Mentheti a konfigurációs fájlokat a kulcsok szerint rendezve?
+
 syslog_errorlog=Webmin hibanapló
+
 clear_title=Töltse le a letöltési gyorsítótárat
 clear_done=A $1 fájlokat tartalmazó $2 URL-eket tartalmazó Webmin gyorsítótár sikeresen ürült.
 clear_none=A Webmin letöltési gyorsítótárában jelenleg nincs URL.
+
 savekey_err=Az új kulcs mentése nem sikerült
 savekey_ekey=Hiányzó vagy érvénytelen PEM formátum kulcs
 savekey_ecert=Hiányzik vagy érvénytelen PEM formátumú tanúsítvány
@@ -772,6 +811,7 @@ savekey_title=Töltse fel a létező kulcsot
 savekey_done2=A mellékelt SSL kulcsot a $1 fájlba mentettük, a tanúsítványt pedig a $2 fájlba.
 savekey_done=A mellékelt SSL kulcsot és a tanúsítványt a $1 fájlba mentettük.
 savekey_done3=A mellékelt láncolt SSL tanúsítványt a $1 fájlba mentettük.
+
 cache_title=Gyorsítótárazott URL-ek
 cache_search=Keressen URL-eket, amelyek tartalmazzák:
 cache_ok=Keresés
@@ -784,8 +824,10 @@ cache_delete=A gyorsítótárból kiválasztott öblítés
 cache_err=Nem sikerült a tárolt URL-ek kitöltése
 cache_enone=Egy sincs kiválasztva
 cache_efile=Érvénytelen fáljnév
+
 restart_title=A Webmin újraindítása
 restart_done=A Webmin szerver folyamata most újraindul - kérjük, várjon néhány másodpercet, mielőtt folytatná.
+
 mobile_title=Mobil eszköz opciói
 mobile_header=Opciók a mobil böngészők számára
 mobile_theme=Téma a mobil böngészők számára
@@ -794,6 +836,7 @@ mobile_nosession=Kényszeríti a HTTP-hitelesítés használatát?
 mobile_agents=További felhasználói ügynökök a mobil böngészők számára
 mobile_err=Nem sikerült menteni a mobil eszköz beállításait
 mobile_prefixes=URL gazdagépnév előtagok a mobil böngészők számára
+
 blocked_title=Blokkolt gépek és felhasználók
 blocked_type=típus
 blocked_who=Gazdagépnév vagy felhasználónév
@@ -805,9 +848,11 @@ blocked_host=Ügyfél host
 blocked_clear=Az összes blokk törlése
 blocked_cleardesc=Kattintson erre a gombra az összes jelenlegi gazdagép és felhasználói blokk törléséhez a Webmin szerver folyamatának újraindításával.
 blocked_restarting=A Webmin szerver folyamata most újraindul a blokkolt gépek és felhasználók törlése érdekében - várjon néhány másodpercet, mielőtt folytatná.
+
 refreshmods_title=Frissítse a modulokat
 refreshmods_installed=A használható Webmin modulok ellenőrzése ..
 refeshmods_counts=.. $2 található telepített alkalmazásokkal, $1 nincs telepítve.
+
 debug_title=Naplófájl hibakeresése
 debug_header=A Webmin hibakeresési naplófájljának beállításai
 debug_enabled=A hibakeresési napló engedélyezve van?
@@ -835,6 +880,7 @@ debug_cmd=Parancs sor
 debug_cron=Háttér munkahelyek
 debug_inmods=Modulok hibakeresési naplók írásához
 debug_emodules=Nincs kiválasztott modul a hibakereséshez
+
 notif_passexpired=Webmin jelszava lejárt! A következő bejelentkezéskor kénytelen lesz megváltoztatni.
 notif_passchange=Webmin jelszavát legutóbb a $1 napon változtattad meg, és $2 nap alatt kell megváltoztatni.
 notif_passlock=Webmin jelszavát utoljára megváltoztatta a $1 napon, és fiókját a $2 napokban zárolják, ha nem változtatja meg.
@@ -850,6 +896,7 @@ notify_updatedesc=Javítja a problémát
 notif_updateok=Telepítse a frissítéseket most
 notif_reboot=A legfrissebb csomagfrissítések (például egy új kernelverzió) újraindítást igényelnek a teljes körű alkalmazáshoz.
 notif_rebootok=Indítsa újra most
+
 status_title=Háttérállapot-gyűjtemény
 status_header=Állapotgyűjtő munka beállításai
 status_interval=Gyűjti a rendszer állapotát a háttérben?
@@ -861,6 +908,7 @@ status_temp=Összegyűjti a hajtási hőmérsékleteket?
 status_units=Hőmérsékleti egységek
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+
 sendmail_title=E-mail küldés
 sendmail_desc=Ez az oldal szabályozza, hogy a Webmin hogyan küldjön e-maileket, például az ütemezett biztonsági mentésekből vagy a háttérfigyelésből. Ez befolyásolja a Felhasználói levelek olvasása modul segítségével küldött e-maileket.
 sendmail_header=Levélküldési lehetőségek
@@ -901,12 +949,14 @@ sendmail_url=Webmin URL e-mailben történő használatra
 sendmail_url_def=Alapértelmezett ($1)
 sendmail_url_custom=Egyéni URL
 sendmail_eurl=Hiányzó vagy érvénytelen egyéni URL
+
 testmail_title=Teszt e-mail küldése
 testmail_err=Nem sikerült a tesztüzenet küldése
 testmail_eto=Nincs megadva rendeltetési hely címe
 testmail_sending=Üzenet küldése a $1 címről a $2 oldalra.
 testmail_done=.. üzenet elküldve. Ellenőrizze a célcím postaládáját, hogy megbizonyosodjon arról, hogy valóban kézbesítették-e.
 testmail_failed=.. küldés sikertelen : $1
+
 web_title=Webszerver beállítások
 web_header=Beállítások a Webmin beépített webszerveréhez
 web_expires=Statikus fájlok ügyféloldali gyorsítótárideje
@@ -918,6 +968,7 @@ web_expirespaths=Ügyféloldali gyorsítótáridők az URL-út alapján
 web_expirespath=A reguláris kifejezés elérési útja
 web_expirestime=Gyorsítótár idő másodpercben
 web_eexpires2=Hiányzó vagy nem numerikus ügyféloldali gyorsítótár-idő a $1 sorban
+
 webmincron_title=Webmin ütemezett funkciók
 webmincron_emodule=A Webmin Cron Jobs modul nincs telepítve!
 webmincron_module=Webmin modul
@@ -941,6 +992,7 @@ webmincron_when1=Konkrét időpontok
 webmincron_secs=másodperc
 webmincron_err=Nem sikerült menteni az ütemezett funkciót
 webmincron_einterval=Az intervallumnak nullánál nagyobb másodpercszámnak kell lennie
+
 twofactor_title=Két tényezős hitelesítés
 twofactor_header=Két tényezős hitelesítési lehetőségek
 twofactor_provider=Hitelesítés-szolgáltató
@@ -979,6 +1031,7 @@ twofactor_secret1=Véletlenszerűen generált
 twofactor_secret0=Használjon 16 karakterből álló billentyűt
 twofactor_esecret=A titkos kulcsnak pontosan 16 karakter hosszúnak kell lennie, és csak betűket és számokat tartalmazhat
 twofactor_esession=Két tényezős hitelesítés csak akkor használható, ha a munkamenet-alapú hitelesítés aktív
+
 letsencrypt_title=Titkosítsuk a tanúsítványkérést
 letsencrypt_err=Nem sikerült tanúsítványt kérni
 letsencrypt_ecmds=Sem a <tt>certbot</tt>, sem a <tt>python</tt> parancsot nem titkosítottuk az ügyfélnek a rendszeren.
@@ -1012,5 +1065,6 @@ letsencrypt_ecsr=A CSR létrehozása nem sikerült : $1
 letsencrypt_ekeygen=Nem sikerült létrehozni a privát kulcsot : $1
 letsencrypt_enative=A natív Let's Encrypt klienst (certbot) korábban használták a rendszerben, és azt minden jövőbeli tanúsítványkéréshez használni kell
 letsencrypt_eacmedns=Csak a hivatalos Let's Encrypt kliens támogatja a DNS-alapú érvényesítést
+
 announce_hide=Elrejteni ezt a bejelentést
 alert_hide=Alert elrejtése

@@ -7,6 +7,7 @@ index_dsize=总尺寸
 index_dmodel=制作和建模
 index_dparts=切片
 index_return=磁盘列表
+
 disk_title=编辑磁盘
 disk_egone=磁盘不再存在！
 disk_no=切片
@@ -31,9 +32,11 @@ disk_return=磁盘详细信息和片列表
 disk_add=创建一个新的切片。
 disk_smart=显示SMART状态
 disk_smartdesc=显示SMART检测到的该驱动器的当前状态，并检查是否存在磁盘错误。
+
 select_device=$1个设备 $2
 select_slice=$1设备 $2切片 $3
 select_part=$1设备 $2切片 $3分区 $4
+
 slice_title=编辑切片
 slice_egone=所选切片不存在！
 slice_ssize=切片尺寸
@@ -58,6 +61,7 @@ slice_return=切片详细信息和分区列表
 slice_err=修改切片失败
 slice_header=切片详细信息
 slice_suse=直接由
+
 dslice_title=删除切片
 dslice_rusure=您确定要删除切片 $1吗？其中的所有分区和文件系统也将被删除。
 dslice_warn=警告-此切片当前由 $1使用
@@ -65,6 +69,7 @@ dslice_confirm=立即删除
 dslice_deleting=删除切片 $1 ..
 dslice_failed=..删除失败： $1
 dslice_done=..完成
+
 nslice_title=创建切片
 nslice_header=新切片详细信息
 nslice_number=切片编号
@@ -86,6 +91,7 @@ nslice_done=..切片已添加
 nslice_parting=在 $2的片 $1中创建默认分区。
 nslice_pfailed=..分区创建失败： $1
 nslice_pdone=..分区已添加
+
 npart_title=创建分区
 npart_header=新分区详细信息
 npart_letter=分区信
@@ -98,6 +104,7 @@ npart_emax=结束块不能大于 $1个块的切片大小
 npart_creating=在 $2上创建分区 $1 ..
 npart_failed=..分区创建失败： $1
 npart_done=..分区已添加
+
 part_title=编辑分区
 part_egone=分区不再存在！
 part_header=分区详细信息
@@ -124,6 +131,7 @@ part_newmount2=挂载分区
 part_mountmsg=将此设备挂载到系统上的新目录中，以便可以用来存储文件。设备上必须已经创建了文件系统。
 part_mountmsg2=将此设备挂载为系统上的虚拟内存，以增加可用内存量。
 part_cannotedit=由于当前正在使用该分区，因此无法对其进行修改。
+
 dpart_title=删除分区
 dpart_rusure=您确定要删除分区 $1吗？其中的任何文件系统也将被删除。
 dpart_warn=警告- $1当前正在使用此分区
@@ -131,6 +139,7 @@ dpart_confirm=立即删除
 dpart_deleting=删除分区 $1 ..
 dpart_failed=..删除失败： $1
 dpart_done=..完成
+
 newfs_title=创建文件系统
 newfs_header=新文件系统详细信息
 newfs_free=保留根的空间
@@ -145,11 +154,13 @@ newfs_elabel=标签缺失或无效
 newfs_creating=在 $1上创建文件系统 ..
 newfs_failed=..创建失败！
 newfs_done=..创建成功
+
 fsck_title=检查文件系统
 fsck_err=检查文件系统失败
 fsck_checking=正在检查 $1上的文件系统。
 fsck_failed=..检查失败！
 fsck_done=..检查完成，没有发现错误
+
 log_create_slice=已创建切片 $1
 log_delete_slice=切片 $1已删除
 log_modify_slice=修改的切片 $1

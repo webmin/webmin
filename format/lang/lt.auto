@@ -15,6 +15,7 @@ index_use=Naudokite
 index_free=Laisvas
 index_format=Šis diskas nėra suformatuotas
 index_return=disko sąrašas
+
 edit_ecannot=Jums neleidžiama redaguoti šio disko
 edit_title=Redaguoti skaidinį
 edit_header=Informacija apie skaidinį
@@ -56,6 +57,7 @@ edit_tunedesc2=Negalite suderinti failų sistemos šiame skaidinyje, nes ji dar 
 edit_tunedesc3=Šiame skirsnyje negalima sureguliuoti failų sistemos, nes ji šiuo metu yra sujungta. Norėdami išmontuoti, pirmiausia naudokite <a href=/mount/>failų sistemų modulį</a>.
 edit_tunedesc4=Negalite sureguliuoti šio skaidinio failų sistemos, nes jame nėra failų sistemos.
 edit_tunedesc5=Šiame skirsnyje negalima sureguliuoti failų sistemos, nes galima suderinti tik <tt>UFS</tt> failų sistemas.
+
 save_ecannot=Jums neleidžiama redaguoti šio disko
 save_edelete=Nepavyko ištrinti skaidinio
 save_esave=Nepavyko išsaugoti skaidinio
@@ -64,6 +66,7 @@ save_eend=„$1“ nėra galiojantis cilindras
 save_estartmin=Pradinis cilindras turi būti> 0
 save_eendmax=Galinis cilindras turi būti < $1 
 save_estartend=Pradinis cilindras turi būti mažesnis už galinį
+
 newfs_title=Sukurkite failų sistemą
 newfs_ecannot=Jums neleidžiama formatuoti šio disko
 newfs_desc=Spustelėjus mygtuką šios formos apačioje, įrenginyje $2 bus pastatytas naujas $1. Visi šio skaidinio duomenys bus visam laikui ištrinti.
@@ -89,6 +92,7 @@ newfs_err=Nepavyko sukurti failų sistemos
 newfs_exec=Vykdoma komanda $1.
 newfs_failed=.. komanda nepavyko!
 newfs_ok=.. komanda baigta.
+
 fsck_title=Pataisykite failų sistemą
 fsck_ecannot=Jums neleidžiama taisyti šio disko
 fsck_desc=Spustelėję mygtuką <b>Remontas</b>, patikrinsite ir pasirinktinai pataisysite $1 $2. Tikrinimo ir taisymo lygį lemia jūsų pasirinkimas žemiau.
@@ -106,6 +110,7 @@ fsck_37=procesas užmuštas tikrinimo metu
 fsck_39=aptiktos neištaisomos klaidos!
 fsck_40=klaidų neaptikta
 fsck_unknown=Nežinoma klaida
+
 tunefs_title=Derinti failų sistemą
 tunefs_ecannot=Jums neleidžiama derinti šio disko
 tunefs_desc=Ši forma leidžia jums koreguoti įvairius $1 parametrus $2. Esami šios failų sistemos failai nebus pažeisti.
@@ -122,6 +127,7 @@ tunefs_err=Nepavyko suderinti failų sistemos
 tunefs_exec=Vykdoma komanda $1.
 tunefs_failed=.. komanda nepavyko!
 tunefs_ok=.. komanda baigta.
+
 select_device=SCSI valdiklis $1 taikinys $2 vienetas $3 
 select_idedevice=IDE įrenginys $1 
 select_part=SCSI valdiklis $1 taikinys $2 vienetas $3 skaidinys $4 
@@ -131,10 +137,13 @@ esun=Skirsnius galima modifikuoti tik naudojant „Sun“ aparatūrą
 emounted=Diskai turi įmontuotas pertvaras
 elast=Paskutinio skaidinio negalima pašalinti
 eformat=<tt>formatas</tt> nerado jokių diskų!
+
 fstype_ufs=„Solaris Unix“ failų sistema
 fstype_unknown=Nežinoma failų sistema
+
 acl_disks=Diskai, kuriuos šis vartotojas gali skaidyti ir formatuoti
 acl_dall=Visi diskai
 acl_dsel=Pasirinkta ..
 acl_view=Ar galite redaguoti diskus ir skaidinius?
+
 ecannot=Jums neleidžiama redaguoti skaidinių

@@ -26,6 +26,7 @@ index_start=Begin die beplande bedienerbediener
 index_startdesc=Begin die <tt>atd</tt> agtergrondbedienerproses wat geskeduleerde opdragte uitvoer. Dit is nodig om opdragte op hul bepaalde tye uit te voer.
 index_boot=Begin bediener by opstart?
 index_bootdesc=Verander hierdie instelling om die geskeduleerde opdragbediener tydens die opstarttyd van die stelsel in of uit te skakel.
+
 edit_title=Geplande opdrag
 edit_cmd=Volledige skrif om uit te voer
 edit_shortcmd=Opdrag om uit te voer
@@ -35,6 +36,7 @@ edit_run=Begin nou
 edit_ejob=Geplande opdrag bestaan nie meer nie!
 edit_ecannot=U mag nie hierdie geskeduleerde opdrag wysig nie
 edit_showfull=Wys volledige teks.
+
 create_err=Kon nie die skeduleopdrag skep nie
 create_euser=Gebruikernaam ontbreek of ongeldig
 create_edate=Datum of tyd ontbreek of ongeldig
@@ -43,22 +45,28 @@ create_efuture=Datum en tyd is in die verlede
 create_edir=Ontbrekende of ongeldige gids
 create_ecannot=U mag nie geskeduleerde opdragte vir hierdie gebruiker skep nie
 create_eallow=Die gespesifiseerde gebruiker mag nie geskeduleerde opdragte uitvoer nie
+
 delete_err=Kon nie die opdrag kanselleer nie
 delete_egone=Opdrag is reeds uitgevoer of uitgevee
+
 acl_users=Kan geskeduleerde opdragte vir
 acl_all=Alle gebruikers
 acl_this=Huidige Webmin-gebruiker
 acl_only=Slegs gebruikers
 acl_except=Almal behalwe gebruikers
 acl_allow=Kan redigering by gebruikers toegelaat word?
+
 run_title=Begin opdrag
 run_output=Afvoer vanaf geskeduleerde opdrag ..
 run_none=Geen uitset gegenereer nie
+
 allow_err=Kon nie toegelate gebruikers stoor nie
 allow_ecannot=U mag nie toegelate gebruikers bestuur nie
 allow_eusers=Geen gebruikers het ingeskryf nie
+
 deletes_err=Kon nie opdragte kanselleer nie
 deletes_enone=Geen gekies nie
+
 log_allow=Toegestane gebruikers verander
 log_create_job=Die geskeduleerde opdrag vir $1 geskep
 log_delete_job=Die geskeduleerde opdrag vir $1 gekanselleer
@@ -68,5 +76,6 @@ log_stop=Gestopte bediener met geskeduleerde opdragte gestop
 log_start=Die bediener vir geskeduleerde opdragte is begin
 log_bootup=Skakel die beplande bediener-bediener by die opstart aan
 log_bootdown=Gedeaktiveerde bediener vir geskeduleerde opdragte tydens die opstart
+
 stop_err=Kon nie bediener stop nie
 start_err=Kon nie bediener begin nie

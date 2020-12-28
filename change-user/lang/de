@@ -20,6 +20,7 @@ index_d1=$1
 index_dlang=der Sprache, in welcher die Module angezeigt werden
 index_dtheme=das Design, welches die Darstellung von Webmin kontrolliert
 index_dpass=dem Passwort, welches zum Anmelden erforderlich ist,
+
 change_title=Ändere die Einstellungen
 change_user=Modifiziere das Passwort des Webmin-Benutzers ..
 change_done=.. erledigt
@@ -30,6 +31,7 @@ change_epass2=Neue Passwörter stimmen nicht überein
 change_epass=Neues Passwort ist ungültig : $1
 change_eoverlay=Sie können kein ein Thema Overlay auswählen, sofern ein UI theme gewählt wurde
 change_eoverlay2=Das ausgewählte Thema Overlay ist nicht kompatibel mit dem gewählten UI Thema
+
 acl_lang=Darf Sprache ändern?
 acl_theme=Darf Design ändern?
 acl_pass=Darf das Passwort ändern, wenn das in Webmin so eingestellt ist?

@@ -65,6 +65,7 @@ index_checkconfig=Maak seker dat die chroot-gids korrek op die <a href='$1'>modu
 index_eexpired=Waarskuwing: Die volgende sones het DNSSEC-handtekeninge verval : $1
 index_eexpired_conf=Outomatiese ondertekening moet heraktiveer word op die $1 bladsy.
 index_eexpired_mod=Gebruik die $1 module om DNSSEC vir hierdie domeine óf te deaktiveer, of kyk waarom ondertekening misluk.
+
 master_title=Edit Master Zone
 master_inview=$1 sig $2 
 master_ecannot=U mag nie hierdie sone wysig nie
@@ -146,6 +147,7 @@ master_defttl=Standaard lewendige tyd vir rekords
 master_edefttl='$1' is nie 'n geldige standaardtyd vir lewering van rekords nie
 master_esoagone=Geen SOA-rekord gevind nie!
 master_einclude=Bykomende sjabloonlêer bestaan nie
+
 delete_title=Vee sone uit
 delete_mesg=Is u seker dat u die sone $1 wil verwyder? Alle rekords en die sone-lêer sal uitgevee word.
 delete_mesg2=Is u seker dat u die wortelsone wil uitvee? U DNS-bediener kan moontlik nie meer adresse op die internet opsoek nie.
@@ -157,6 +159,7 @@ delete_errslave=Meestersone is OK uitgevee, maar die volgende foute het by slawe
 delete_ezone=Sone is nie op slawebediener gevind nie
 delete_vwarn=Hierdie sone word geassosieer met die Virtualmin-domein $1, en moet dus nie hier uitgevee word nie!
 delete_vwarn2=Hierdie sone word met die Virtualmin-domein $1 en $2 ander geassosieer, en moet dus nie hier uitgevee word nie!
+
 mcreate_title=Skep Meestersone
 mcreate_ecannot=U kan nie meestersones skep nie
 mcreate_opts=Nuwe meestersone-opsies
@@ -171,6 +174,7 @@ mcreate_auto=outomatiese
 mcreate_err=Kon nie hoofsone skep nie
 mcreate_ednssecsize=Kon nie die sleutelgrootte bereken nie : $1
 mcreate_ednssec=Opname van opnames is geslaag, maar DNSSEC het misluk : $1
+
 slave_title=Redigeer Slavesone
 stub_title=Wysig Stubsone
 slave_ecannot=U mag nie hierdie sone wysig nie
@@ -202,6 +206,7 @@ slave_applymsg2=Klik op hierdie knoppie om die sone vanaf die meesterbediener we
 slave_last=Laaste oorgedra : $1
 slave_never=nooit
 slave_xfer=Toetssone-oordrag
+
 screate_title1=Skep slawesone
 screate_title2=Skep stubsone
 screate_ecannot1=U mag nie slawesones skep nie
@@ -214,6 +219,7 @@ screate_rev=Omgekeerde (adresse na name)
 screate_dom=Domeinnaam / Netwerk
 screate_err1=Kon nie slawesone skep nie
 screate_err2=Kon nie stoppelsone skep nie
+
 recs_ecannot=U mag nie rekords in hierdie sone wysig nie
 recs_ecannottype=U mag nie hierdie soort rekords redigeer nie
 recs_title=$1 Rekords
@@ -231,6 +237,7 @@ recs_drev=Vee ook terugskakels uit?
 recs_none=Die domein het nog geen $1 rekords nie.
 recs_nosearch=Geen rekords ooreenstem met u soektog nie.
 recs_needsearch=Voer 'n soektog in om passende rekords te vind.
+
 edit_title=Wysig $1
 edit_header=In $1
 edit_edit=Redigeer $1 Record
@@ -306,6 +313,7 @@ edit_edmarcpct=Persentasie boodskappe moet 'n heelgetal tussen 0 en 100 wees
 edit_edmarcrua=Totale terugvoeradres ontbreek
 edit_edmarcruf=Ontbrekende forensiese inligtingsadres
 edit_ecaavalue2=Domeinnaam ontbreek of ongeldig
+
 text_title=Redigeer rekordlêer
 text_title2=Kyk na rekordlêer
 text_desc3=Met hierdie vorm kan u die DNS-rekordlêer $1 handmatig wysig. Geen sintaksis sal deur Webmin gedoen word nie.
@@ -315,6 +323,7 @@ text_ecannot=U mag nie rekordlêers wysig nie
 text_none=Die lêer is egter tans leeg, waarskynlik omdat die sone nog nie van die meesterbediener af oorgedra is nie.
 text_soa=Verhoog die reeksnommer outomaties
 text_rawformat=Hierdie sone is in rou binêre formaat, en kan dus nie as teks vertoon word nie.
+
 restart_err=Kon nie veranderinge toepas nie
 restart_ecannot=U mag nie BIND herbegin nie
 restart_epidfile=Kon nie BIND PID vind in $1
@@ -323,10 +332,12 @@ restart_erunning2=BIND blyk nie op die slawebediener te werk nie $1
 restart_endc=NDC-opdrag misluk : $1
 restart_ecmd=Herbegin-opdrag misluk : $1
 restart_eversion=Slawebediener $1 voer nie die Webmin-weergawe aan nie $2 of hoër.
+
 start_ecannot=U mag nie BIND begin nie
 start_error=Kon nie BIND begin nie : $1
 stop_epid=BIND loop nie
 stop_ecannot=U mag nie BIND stop nie
+
 fwd_title=Redigeer vooruit sone
 fwd_ecannot=U mag nie hierdie sone wysig nie
 fwd_opts=Sone-opsies
@@ -335,12 +346,14 @@ fwd_forward=Probeer u ander bedieners?
 fwd_check=Gaan name na?
 fwd_err=Opslaan van opsies is misluk
 fwd_delmsg=Klik op hierdie knoppie om hierdie sone van u DNS-bediener te verwyder. Opnames daarin sal dan deur die normale resolusieproses opgespoor word.
+
 delegation_title=Wysig delegasiesone
 delegation_ecannot=U mag nie hierdie sone wysig nie
 delegation_opts=Sone-opsies
 delegation_err=Opslaan van opsies is misluk
 delegation_noopts=Delegasiesones het geen instelbare opsies nie.
 delegation_delmsg=Klik op hierdie knoppie om hierdie sone van u DNS-bediener te verwyder. Rekordtipes anders as NS sal dan deur BIND erken word.
+
 fcreate_title=Skep vorentoe sone
 fcreate_ecannot=U mag nie voorwaartsones skep nie
 fcreate_opts=Nuwe opsies voorwaartsone
@@ -350,10 +363,12 @@ fcreate_rev=Omgekeerde (adresse na name)
 fcreate_dom=Domeinnaam / Netwerk
 fcreate_masters=Meesterbedieners
 fcreate_err=Kon nie voorwaartse sone skep nie
+
 dcreate_title=Skep slegs 'n delegasie-sone
 dcreate_ecannot=U mag nie delegeringsones skep nie
 dcreate_opts=Nuwe opsies vir delegasiesone
 dcreate_err=Kon nie delegeringsone skep nie
+
 create_enet='$1' is nie 'n geldige netwerk nie
 create_edom='$1' is nie 'n geldige domeinnaam nie
 create_edom2='$1' moet 'n domein wees, nie 'n netwerk nie
@@ -363,9 +378,11 @@ create_efile3=Kon nie '$1' skep nie : $2
 create_efile4=Lêer $1 bestaan reeds
 create_emaster='$1' is nie 'n geldige hoofbedienaaradres nie
 create_enone=U moet ten minste een hoofbediener betree
+
 boot_err=Aflaai het misluk
 boot_egzip=Die wortelsone-lêer is saamgepers, maar die <tt>gzip</tt> -opdrag is nie op u stelsel geïnstalleer nie!
 boot_egzip2=Die samedrukking van die wortelsone-lêer het misluk : $1
+
 type_A=adres
 type_AAAA=IPv6-adres
 type_NS=Naam bediener
@@ -386,6 +403,7 @@ type_SRV=Diensadres
 type_ALL=Alle rekordtipes
 type_KEY=Publieke sleutel
 type_CAA=Sertifikaatowerheid
+
 edit_A=adres
 edit_AAAA=IPv6-adres
 edit_NS=Naam bediener
@@ -405,6 +423,7 @@ edit_NSEC3PARAM=DNSSEC Parameters
 edit_TLSA=SSL-sertifikaat
 edit_SSHFP=SSH-publieke sleutel
 edit_CAA=Sertifikaatowerheid
+
 recs_defttl=Verstek TTL
 recs_A=adres
 recs_AAAA=IPv6-adres
@@ -427,6 +446,7 @@ recs_TLSA=SSL-sertifikaat
 recs_SSHFP=SSH-publieke sleutel
 recs_CAA=Sertifikaatowerheid
 recs_delete=Verwyder geselekteerde
+
 value_A1=adres
 value_AAAA1=IPv6-adres
 value_NS1=Naam bediener
@@ -503,6 +523,7 @@ value_CAA3=CA domeinnaam
 value_caa_issue=Enkele domein sertifikaat
 value_caa_issuewild=Wildcard cert
 value_caa_iodef=URL vir beleidskending
+
 tlsa_usage0=Sertifikaatowerheid
 tlsa_usage1=Einde entiteit
 tlsa_usage2=Vertrou anker
@@ -512,12 +533,14 @@ tlsa_selector1=Inligting oor die publieke sleutel
 tlsa_match0=Ongekookte inhoud
 tlsa_match1=SHA-256 het gehardloop
 tlsa_match2=SHA-512 is gehaas
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDS
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 warn=waarsku
 fail=Fail
 ignore=ignoreer
@@ -531,6 +554,7 @@ listed=Gelys ..
 eip='$1' is nie 'n geldige IP-adres nie
 eport='$1' is nie 'n geldige poortnommer nie
 eipacl='$1' is nie 'n geldige IP-adres of ACL-naam nie
+
 acl_zones=Domeine wat hierdie gebruiker kan wysig
 acl_zall=Alle sones
 acl_zsel=Geselekteerde sones ..
@@ -575,6 +599,7 @@ acl_ztypes_master=meester
 acl_ztypes_slave=Slaaf / stomp
 acl_ztypes_delegation=afvaardiging
 acl_ztypes_forward=vorentoe
+
 servers_title=Ander DNS-bedieners
 servers_ip=IP adres
 servers_bogus=Ignoreer vals bediener?
@@ -586,6 +611,7 @@ servers_keys=Gebruik DNS-sleutels
 servers_err=Kon nie ander DNS-bedieners stoor nie
 servers_eip='$1' is nie 'n geldige IP-adres nie
 servers_etrans='$1' is nie 'n geldige aantal maksimum oordragte nie
+
 logging_title=Teken en foute
 logging_ecannot=U mag nie logging opstel nie
 logging_header=Globale aantekeninge en foutopsies
@@ -624,6 +650,7 @@ logging_efile=Ontbrekende lêernaam ontbreek
 logging_efile2=Log-lêernaam moet 'n absolute pad wees
 logging_ever='$1' is nie 'n geldige aantal weergawes nie
 logging_esize='$1' is nie 'n geldige loggrootte nie
+
 acls_title=Lyste vir toegangsbeheer
 acls_ecannot=U mag nie globale acls wysig nie
 acls_name=ACL Naam
@@ -631,6 +658,7 @@ acls_values=Passende adresse, netwerke en ACL's
 acls_err=Kon nie toegangsbeheerlyste stoor nie
 acls_ename='$1' is nie 'n geldige ACL-naam nie
 acls_eline=Elke IP-adres moet op 'n aparte reël vir ACL '$1' ingevoer word
+
 files_title=Lêers en gidse
 files_ecannot=U mag nie lêers konfigureer nie
 files_header=Opsies vir globale lêers en kaarte
@@ -640,6 +668,7 @@ files_pid=Verwerk ID-lêer
 files_xfer=Pad na sone-oordragprogram
 files_err=Kon nie lêers en kaarteopsies stoor nie
 files_efile=Ontbrekende of ongeldige lêernaam
+
 forwarding_title=Stuur en oordragte
 forwarding_ecannot=U mag nie aanstuur- en oordragopsies wysig nie
 forwarding_header=Opsies vir globale versending en sone-oordrag
@@ -658,6 +687,7 @@ forwarding_etrans=Vermiste of ongeldige maksimum gelyktydige oordragte
 forwarding_minutes=minute
 forwarding_ip=IP adres
 forwarding_port=Port
+
 net_title=Adresse en topologie
 net_ecannot=U mag nie die adres- en topologie-opsies wysig nie
 net_header=Opsies vir globale adres en topologie
@@ -683,6 +713,7 @@ net_taddrdef=Naaste IP
 net_etport='N Oordragbronpoort kan nie sonder 'n adres gespesifiseer word nie
 net_eaddr='$1' is nie 'n geldige IPv4-adres nie
 net_eaddr6='$1' is nie 'n geldige IPv6-adres nie
+
 controls_title=Beheer-koppelvlak-opsies
 controls_ecannot=U mag nie die beheeropsies wysig nie
 controls_header=Beheeropsies
@@ -704,6 +735,7 @@ controls_eunixpath=Ontbrekende of ongeldige FIFO-lêerpad
 controls_eunixperm=Oktale lêertoestemmings ontbreek of ongeldig
 controls_eunixowner=Ontbrekende of ongeldige lêer-eienaar
 controls_eunixgroup=Ontbrekende of ongeldige lêergroep
+
 controls_inet=Toegang tot internetpoort
 controls_unix=Unix FIFO-toegang
 controls_port=hawe
@@ -717,6 +749,7 @@ controls_efile=FIFO-lêernaam ontbreek of ongeldig
 controls_eperms=FIFO-toestemmings ontbreek of ongeldig
 controls_eowner=UID van die EIEU-eienaar ontbreek of ongeldig
 controls_egroup=GIF van die EIEU-eienaar ontbreek of ongeldig
+
 keys_title=DNS-sleutels
 keys_id=Sleutel-ID
 keys_alg=algoritme
@@ -725,6 +758,7 @@ keys_ecannot=U mag nie DNS-sleutels wysig nie
 keys_err=Kon nie DNS-sleutels stoor nie
 keys_ekey='$1' is nie 'n geldige sleutel-ID nie
 keys_esecret=Ontbrekende of ongeldige base-64-geënkodeerde geheim vir sleutel $1
+
 misc_title=Diverse opsies
 misc_ecannot=U mag nie verskillende opsies wysig nie
 misc_header=Diverse wêreldwye opsies
@@ -744,6 +778,7 @@ misc_esize='$1' is nie 'n geldige grootte nie
 misc_efiles='$1' is nie 'n geldige aantal maksimum oop lêers nie
 misc_emins='$1' is nie 'n geldige aantal minute nie
 misc_mins=mins
+
 zonedef_title=Sone standaarde
 zonedef_msg=Standaarde vir nuwe meestersones
 zonedef_err=Kon nie gebreke van sone stoor nie
@@ -767,10 +802,13 @@ zonedef_size=Aanvanklike sleutelgrootte
 zonedef_single=Aantal sleutels om te skep
 zonedef_two=Sonesleutel en toonsoortteken
 zonedef_one=Sonesleutel
+
 find_title=Soek sones
 find_match=Sones wat ooreenstem met $1 ..
 find_none=Geen sones gevind nie.
+
 efirst=Slegte eerste opdrag op lyn $1 in $2
+
 findfree_title=Vind gratis IP's
 findfree_desc=Vind gratis IP's
 findfree_nofind=U kan nie gratis IP's soek nie
@@ -782,8 +820,10 @@ findfree_cf=Beskou <em>freeXXX</em> gasheername as gratis IP's?
 findfree_search=Soek
 findfree_msg=$1 gratis IP-adresse gevind
 findfree_msg2=(waarvan $1 soos <i>freeXXX</i>, $2 is soos <i>freemac</i>)
+
 free_title=Gratis IP-adresse
 free_ip=IP adres
+
 log_servers=Ander DNS-bedieners verander
 log_logging=Verander logging en foute
 log_acls=Veranderde toegangsbeheerlyste
@@ -840,14 +880,17 @@ log_sign=Opgedateerde DNSSEC-handtekeninge vir sone $1
 log_resign=DNSSEC-sleutel vir sone $1
 log_trusted=DNSSEC-verifikasie verander
 log_dnssec=Verander die ondertekening van die DNSSEC-sleutel
+
 convert_err=Kon nie sone omskakel nie
 convert_efile='N Rekordlêer moet gespesifiseer word voordat 'n slawesone na 'n meester omgeskakel kan word.
 convert_efilesize=Rekordlêer $1 bestaan nie of is leeg
 convert_ebinary=Die opdrag wat nodig is om van 'n binêre slawesone na 'n teksformaatmeester om te skakel, is nie geïnstalleer nie
 convert_ecompile=Konvertering van binêre tot teksformaat het misluk : $1
+
 whois_title=WHOIS-inligting
 whois_header=Afvoer vanaf opdrag $1 ..
 whois_ecannot=U mag nie WHOIS-inligting opsoek nie
+
 view_title=Wysig klante-aansig
 view_opts=Besonderhede oor klante sien
 view_opts2=Opsies vir besigtigingsones
@@ -858,6 +901,7 @@ view_recursion=Doen volledige rekursiewe soek vir kliënte?
 view_ecannot=U mag nie hierdie aansig wysig nie
 view_delete=Vee uit
 view_deletemsg=Klik op hierdie knoppie om die aansig te verwyder. U kan kies uit die bewegingsones wat dit in 'n ander aansig bevat, of dit ook uitvee.
+
 vcreate_title=Skep kliëntaansig
 vcreate_match_all=Alle kliënte
 vcreate_match_sel=Geadresseerde adresse, netwerke en ACL's.
@@ -866,6 +910,7 @@ vcreate_ename=Naam of ongeldige kyknaam ontbreek
 vcreate_etaken=Kyknaam is reeds geneem
 vcreate_eclass=Klasnaam ontbreek of ongeldig
 vcreate_ecannot=U mag nie sienings skep nie
+
 hint_title=Wysig wortelsone
 hint_desc=Die wortelsone word deur u DNS-bediener gebruik om kontak met die wortelbedieners op die internet te maak, sodat dit name kan oplos in domeine wat nie deur u DNS-bediener hanteer word nie, soos <tt>.com</tt> of <tt>.net. au</tt>. Tensy u DNS-bediener vir gebruik op 'n interne netwerk is of u alle navrae na 'n ander bediener stuur, moet u hierdie wortelsone nie uitvee nie.
 hint_move=Skuif na kyk:
@@ -874,6 +919,7 @@ hint_refetch=Laai die Root Nameservers weer af
 hint_refetchdesc=Klik op hierdie knoppie om te laat dat Webmin die wortelsone-lêer van die bron af op die Intern FTP-bediener aflaai.
 hint_delete=Vee wortelsone uit
 hint_deletedesc=Klik op hierdie knoppie om hierdie wortelsone te verwyder. Daarsonder kan u naambediener nie ander domeine oplos as dié waarvoor dit sekondêr is nie.
+
 hcreate_title=Skep wortelsone
 hcreate_desc=Die wortelsone word deur u DNS-bediener gebruik om kontak met die wortelbedieners op die internet te maak, sodat dit name kan oplos in domeine wat nie deur u DNS-bediener hanteer word nie, soos <tt>.com</tt> of <tt>.net. au</tt>. As u verskeie aansigte gebruik, moet u moontlik 'n aparte wortelsone in elke aansig hê sodat alle kliënte die internetdomeine behoorlik kan oplos.
 hcreate_header=Wortelsone besonderhede
@@ -887,6 +933,7 @@ hcreate_efile='$1' is nie 'n toelaatbare wortellêer nie
 hcreate_efile2=Ontbrekende of ongeldige wortellêer
 mcreate_erecs=Nie 'n geldige bestaande wortelsone-lêer nie
 hcreate_err=Kon nie wortelsone skep nie
+
 vdelete_title=Vee uit
 vdelete_mesg=Is u seker dat u die kliëntweergawe $1 wil verwyder? Al die sones in hierdie aansig sal óf uitgevee word (saam met hul sone-lêers) of na 'n ander aansig verskuif word, afhangende van u keuse hieronder.
 vdelete_mesg2=Is u seker dat u die kliëntweergawe $1 wil verwyder?
@@ -894,6 +941,7 @@ vdelete_newview=Sones binne hierdie aansig
 vdelete_root=Beweeg uit uitsigte
 vdelete_delete=Skrap heeltemal
 vdelete_move=Beweeg om te sien
+
 gen_title=Rekordgenerators
 gen_desc=Op hierdie bladsy kan u kragopwekkers definieer, wat elk 'n aantal rekords in hierdie sone met behulp van 'n inkrementerende toonbank sal skep. Dit kan nuttig wees om dele van die omgekeerde sone na 'n ander bediener te delegeer.
 gen_range=verskeidenheid
@@ -913,7 +961,9 @@ gen_evalue=Ontbrekende of ongeldige gasheernaampatroon vir kragopwekker $1
 gen_title2=Gegenereerde rekords
 gen_raw=Stel lêer lyn op
 gen_ecannot=U mag nie rekordgenerators wysig nie
+
 refetch_err=Kon nie die wortelsone weer aflaai nie
+
 slaves_title=Cluster Slave Servers
 slaves_none=Geen bedieners is tot die DNS-groep saamgevoeg nie.
 slaves_host=gasheernaam
@@ -941,6 +991,7 @@ slaves_sec=Skep sekondêr op slaaf wanneer u plaaslik skep?
 slaves_name=Naam vir NS-rekord
 slaves_same=Dieselfde as gasheernaam
 slaves_header=Cluster slawe bediener opsies
+
 add_title=Voeg bedieners by
 add_msg=Voeg $1 by.
 add_gmsg=Sit bedieners in die groep $1
@@ -958,6 +1009,7 @@ add_createok=Opstel $1 met $2 nuwe slawesones.
 add_ename=Ontbrekende of ongeldige NS-rekordnaam
 add_egname='N NS-rekordnaam kan nie gespesifiseer word wanneer 'n groep bygevoeg word nie
 add_emyip=Kon nie die IP-adres van hierdie stelsel uitwerk nie. U moet die <b>standaard-meesterbediener-IP vir afgeleë slawe-sone</b> op die Module Config-bladsy instel.
+
 mass_title=Skep sones uit bondellêer
 mass_desc=Op hierdie bladsy kan u verskeie sones tegelyk skep vanuit 'n opgelaaide teks of aan die serverkant. Elke reël in die lêer moet die volgende formaat hê: <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p> Die <i>tipe</i> moet een van <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> of <tt>forward</tt>. Die <i>lêernaam</i> is opsioneel en sal outomaties bereken word as dit ontbreek. Die <i>meester-IP's moet</i> slegs vir slawe-sones gegee word.
 mass_local=Plaaslike bondellêer
@@ -989,6 +1041,7 @@ mass_emips=Meester IP-adresse ontbreek
 mass_addedslaves=$1 by slawe bedieners bygevoeg OK.
 mass_eonslave=Foute het voorgekom op slawe bedieners : $1
 mass_eviewcannot=U mag nie sones by hierdie aansig voeg nie
+
 massdelete_title=Vee sones uit
 massdelete_rusure=Is u seker dat u die $1 geselekteerde sones wil verwyder? ($2)
 massdelete_ok=Vee nou uit
@@ -998,6 +1051,7 @@ massdelete_slaves=Vee zone $1 van slawe-bedieners uit.
 massdelete_failed=.. sommige slawe het misluk :
 massdelete_vwarn=Sommige sones word met die Virtualmin-domein $1 geassosieer, en moet daarom nie hier uitgevee word nie!
 massdelete_vwarn2=Sommige sones word met die Virtualmin-domein $1 en $2 ander geassosieer, en moet daarom nie hier uitgevee word nie!
+
 rndc_title=Opstel van RNDC
 rndc_desc=Hierdie bladsy kan gebruik word om BIND op te stel vir beheer deur die RNDC-program, sodat individuele sones verfris kan word sonder om 'n volledige BIND-herbegin hoef te doen.
 rndc_desc2=Dit lyk asof RNDC reeds behoorlik opgestel is, en u hoef waarskynlik nie hierdie vorm te gebruik nie.
@@ -1008,11 +1062,13 @@ rndc_ok=Ja, instel RNDC
 rndc_err=Kon nie RNDC opstel nie
 rndc_ekey=Kon nie die sleutel in rndc.conf vind nie
 rndc_esecret=Kon geen geheim vind in rndc.conf
+
 drecs_err=Kon nie rekords uitvee nie
 drecs_enone=Geen gekies nie
 drecs_title=Vee rekords uit
 drecs_rusure=Is u seker dat u die $1 geselekteerde rekords uit $2 wil verwyder?
 drecs_ok=Vee nou uit
+
 manual_title=Wysig konfiglêer
 manual_ecannot=U mag nie die BIND-konfigurasielêer wysig nie
 manual_ok=wysig
@@ -1020,7 +1076,9 @@ manual_efile=Die geselekteerde lêer is nie deel van die BIND-opset nie
 manual_file=Wysig konfigurasielêer:
 manual_edata=Niks het ingekom nie!
 manual_err=Kon nie die konfigurasielêer stoor nie
+
 syslog_desc=BIND DNS-bedienerboodskappe
+
 umass_err=Kon nie die sones opdateer nie
 umass_enone=Geen gekies nie
 umass_title=Opdateer rekords in sones op
@@ -1039,6 +1097,7 @@ umass_done=.. opgedateer $1 passende rekords uit $2.
 umass_none=.. geen ooreenstemmende rekords uit $1 om gevind te word nie.
 umass_egone=Sone bestaan nie
 emass_emx='$1' is nie 'n e-posbediener se prioriteitsnommer nie, gevolg deur 'n geldige gasheernaam
+
 rdmass_err=Kon nie rekords in sones uitvee nie
 rdmass_enone=Geen gekies nie
 rdmass_title=Verwyder rekords in sones
@@ -1055,6 +1114,7 @@ rdmass_done=.. $1 passende rekords uit $2 geskrap.
 rdmass_none=.. geen ooreenstemmende rekords uit $1 om gevind te verwyder.
 rdmass_ok=Vee rekords uit
 rdmass_sel=Rekords vernoem
+
 rmass_err=Kon nie rekords byvoeg nie
 rmass_enone=Geen gekies nie
 rmass_title=Voeg rekord by die sones
@@ -1074,18 +1134,22 @@ rmass_esign=.. gedoen, maar ondertekening misluk : $1
 rmass_eclash=.. daar bestaan reeds 'n rekord met dieselfde naam en waarde $1.
 rmass_eclash2=.. daar bestaan reeds 'n rekord met dieselfde naam en dieselfde waarde $1.
 rmass_clash=Skep selfs al is daar rekord?
+
 check_title=Gaan rekords na
 check_ecannot=U mag nie rekords nagaan nie
 check_errs=Die volgende foute is in die rekordlêer $1 gevind.
 check_allok=Geen foute is gevind in die rekordlêer $1.
+
 ncheck_title=Gaan BIND Config na
 ncheck_ecannot=U mag nie die BIND-konfigurasie nagaan nie
 ncheck_errs=Die volgende foute is in die BIND-konfigurasielêer $1 of sone-lêers waarna verwys is, gevind.
 ncheck_allok=Geen foute is gevind in die BIND-konfigurasielêer $1 of sone-lêers waarna verwys is nie.
+
 links_restart=Pas konfigurasie toe
 links_stop=Stop BIND
 links_start=Begin BIND
 links_apply=Sone toepas
+
 dnssec_title=DNSSEC-ondertekening van die sleutel
 dnssec_ecannot=U mag nie DNSSEC opstel nie
 dnssec_header=Die belangrikste ondertekenopsies
@@ -1096,6 +1160,7 @@ dnssec_secs=sekondes
 dnssec_desc=Sones wat met DNSSEC onderteken is, het meestal twee sleutels - 'n sonesleutel wat gereeld weer opgewek en geteken moet word, en 'n toonsoortteken wat konstant bly. Met hierdie bladsy kan u Webmin instel om hierdie herondertekening outomaties uit te voer.
 dnssec_err=Kon nie die ondertekening van DNSSEC-sleutel stoor nie
 dnssec_eperiod=Ontbrekende of ongeldige aantal dae tussen hertekens
+
 dnssectools_title=DNSSEC-gereedskap-outomatisering
 dt_conf_title=DNSSEC-gereedskap-outomatisering
 dt_enable_title=DNSSEC-gereedskap-outomatisering
@@ -1160,6 +1225,7 @@ dt_status_inKSKroll=In KSK rol
 dt_status_inZSKroll=In ZSK-rol
 dt_status_signed=onderteken
 dt_status_unsigned=Unsigned
+
 zonekey_title=Opstel van DNSSEC-sleutel
 zonekey_desc=Hierdie sone het nog nie 'n DNSSEC-onderteken-sleutel nie. U kan hierdie vorm gebruik om Webmin een te laat skep, sodat kliënte wat hierdie sone oplos, beskerm word teen DNS-valsmaakaanvalle.
 zonekey_header=Nuwe sleutelopsies van DNSSEC
@@ -1193,9 +1259,12 @@ zonekey_sign=Teken sone
 zonekey_signdesc=Teken hierdie sone onmiddellik weer aan, sodat alle wysigings aan rekords wat met die hand gemaak is, by die ondertekeningrekords opgeneem word.
 zonekey_resign=Sone onderteken
 zonekey_resigndesc=Genereer 'n nuwe sone-onderteken-sleutel, teken dit met die hoofsleutel van die sone en teken alle rekords weer aan.
+
 sign_err=Kon nie sone teken nie
 sign_emsg=DNSSEC-ondertekening na verandering van rekords het misluk : $1
+
 resign_err=Kon nie sone heraanmeld nie
+
 trusted_title=DNSSEC-verifikasie
 trusted_ecannot=U mag nie DNSSEC-verifikasie opstel nie
 trusted_esupport=U weergawe van BIND ondersteun nie DNSSEC-verifikasie nie
@@ -1230,6 +1299,7 @@ trusted_setup=Dat DNSSEC nuttig kan wees om die meerderheid van die ondertekende
 trusted_ok=Stel DLV op en stel DNSSEC-verifikasie in staat
 trusted_warning=Waarskuwing! U BIND DNSSEC-kliëntkonfigurasie bevat verouderde sleutels wat in Oktober 2017 sal ophou werk. Gebruik die <a href='$1'>BIND DNSSEC-verifikasiebladsy</a> om die konfigurasie aan te pas, of klik op die knoppie hieronder.
 trusted_fix=Fix DNSSEC-konfigurasie
+
 xfer_title=Toetssone-oordrag
 xfer_doing=Toets oordrag van slawesone vanaf $1
 xfer_failed=.. vanaf $1: Misluk : $2

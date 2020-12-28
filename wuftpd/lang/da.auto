@@ -9,6 +9,7 @@ index_startmsg=Klik på denne knap for at starte FTP-serveren med den aktuelle k
 index_startmsg2=Klik på denne knap for at starte FTP-serveren med den aktuelle konfiguration. Du kan også konfigurere serveren, der skal startes automatisk efter behov ved hjælp af inetd eller et lignende program.
 index_return=FTP-serverindstillinger
 index_version=WU-FTPd version $1 
+
 class_title=Brugere og klasser
 class_header=Brugerklasser og brugerindstillinger
 class_class=Brugerklasser
@@ -31,6 +32,7 @@ class_err=Kunne ikke gemme brugerklasser
 class_eclass='$1' er ikke et gyldigt klassens navn
 class_etypes=Ingen typer valgt til klasse '$1'
 class_eaddrs=Ingen adresser indtastet for klassen '$1'
+
 message_title=Meddelelser og bannere
 message_header=Meddelelser, bannere og README-filer
 message_message=Meddelelsesfiler
@@ -59,6 +61,7 @@ message_eclass=Klasse '$1' findes ikke
 message_ebanner='$1' er ikke en gyldig login-bannerfil
 message_ehostname=Manglende eller ugyldigt værtsnavn
 message_eemail=Manglende eller ugyldig e-mail-adresse
+
 acl_title=Begrænsninger og adgangskontrol
 acl_header=Begrænsninger og adgangskontrolmuligheder
 acl_deny=Nægt adgang fra
@@ -105,6 +108,7 @@ acl_elmsg='$1' er ikke en gyldig fejlmeddelelsesfil
 acl_efbcount='$1' er ikke et gyldigt antal filer eller bytes
 acl_elimit='$1' er ikke en gyldig tidsbegrænsning
 acl_efails='$1' er ikke et gyldigt antal loginfejl
+
 net_title=Netværk
 net_header=Netværksindstillinger
 net_tcp=TCP-vinduesstørrelser
@@ -122,6 +126,7 @@ net_eip='$1' er ikke en gyldig IP-adresse
 net_enet='$1' er ikke en gyldig netværksadresse
 net_ecidr='$1' er ikke et gyldigt antal netværksbits
 net_eport='$1' er ikke et gyldigt portnummer
+
 log_title=Logning
 log_header=Logningsindstillinger
 log_commands=Log alle kommandoer til
@@ -139,6 +144,7 @@ log_syslog=Systemlog
 log_xferlog=XFER-logfil
 log_sysxfer=Begge destinationer
 log_err=Kunne ikke gemme loggingsindstillinger
+
 alias_title=Aliaser og stier
 alias_header=Alias og stiindstillinger
 alias_alias=CD katalog aliaser
@@ -149,6 +155,7 @@ alias_err=Kunne ikke gemme aliaser og stier
 alias_efrom='$1' er ikke et gyldigt aliasnavn
 alias_eto='$1' er ikke et gyldigt alias-bibliotek
 alias_ecdpath='$1' er ikke et gyldigt cd-søgekatalog
+
 anon_title=Anonym FTP
 anon_eftp=Advarsel - dit system har ikke en <tt>ftp</tt> bruger, og derfor er anonym FTP sandsynligvis ikke konfigureret.
 anon_header=Anonyme FTP-indstillinger
@@ -171,6 +178,7 @@ anon_uids=For Unix-brugere
 anon_err=Kunne ikke gemme anonyme FTP-indstillinger
 anon_edir='$1' er ikke et gyldigt bibliotek
 anon_egroup='$1' er ikke en gyldig gruppe
+
 perm_title=Tilladelser
 perm_header=Tilladelsesmuligheder
 perm_perms=Kommandobegrænsninger
@@ -192,7 +200,9 @@ perm_err=Kunne ikke gemme tilladelser
 perm_echar='$1' er ikke et gyldigt tegnsæt regulært udtryk
 perm_etypes=Ingen brugertyper valgt
 perm_emesg='$1' er ikke en gyldig fejlmeddelelsesfil
+
 host_title=Værtsadgangskontrol
+
 misc_title=Diverse muligheder
 misc_header=Diverse muligheder
 misc_lslong=Kommando med lang liste
@@ -213,6 +223,7 @@ misc_elsplain=Manglende almindelig fortegnelseskommando
 misc_eshutdown=Manglende meddelelse om nedlukning
 misc_enice='$1' er ikke et gyldigt pænt niveau
 misc_eumask='$1' er ikke en gyldig umask
+
 log_class=Ændrede brugere og klasser
 log_message=Ændrede meddelelser og bannere
 log_acl=Ændrede grænser og adgangskontrol

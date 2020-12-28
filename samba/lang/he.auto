@@ -6,6 +6,7 @@ index_printershare=מדפסת לשתף
 index_shareconf=שתף תצורה
 index_version=גרסת סמבה $1 
 index_samba=סמבה
+
 index_sharename=שיתוף שם
 index_path=נתיב
 index_security=אבטחה
@@ -42,12 +43,14 @@ index_stopmsg=לחץ על כפתור זה כדי לכבות את שרתי Samba 
 index_stopmsg_wb=לחץ על כפתור זה כדי לכבות את שרתי Winbind הפועלים במערכת שלך.
 index_einclude=אזהרה - קובץ התצורה של Samba $1 מכיל את ההנחיה $2 או $3. זה עשוי לגרום לוובמין לשנות את הקובץ בצורה שגויה.
 index_delete=מחק מניות שנבחרו
+
 config_mins=דקות
 config_secs=שניות
 config_bytes=ביטים
 config_never=לעולם לא
 config_all=את כל
 config_neither=לא זה ולא זה
+
 global_title=תצורה גלובלית
 global_unixnetwork=יוניקס נטוורקינג
 global_winnetwork=רשתות חלונות
@@ -60,6 +63,7 @@ global_password=סיסמאות מוצפנות
 global_users=משתמשי סמבה
 global_group=קבוצות סמבה
 global_bind=אפשרויות Winbind
+
 error_nosamba=שרת הסמבה ההפעלה <tt>$1</tt> לא נמצא. Samba לא מותקן במערכת שלך או ש <a href="$2">תצורת המודול</a> שלך שגויה.
 error_version=Webmin לא הצליח להשיג את גרסת שרת הסמבה שלך <tt>$1</tt>. בדוק את <a href="$2">תצורת המודול</a> שלך כדי לוודא שזה הנתיב הנכון.
 error_config=קובץ התצורה $1 לא נמצא. סביר להניח שסמבה לא מותקנת במערכת שלך, או ש <a href="$2">תצורת המודול</a> שלך שגויה.
@@ -67,6 +71,7 @@ error_include=Webmin אינה יכולה להתמודד עם קבצי config ש�
 error_delshare=מחיקת השיתוף נכשלה
 error_delcopy=המניה '$1' מעותקת משיתוף זה
 error_savename=שמירת שמות הקבצים נכשלה
+
 convert_title=המרת משתמשים
 convert_msg=טופס זה מאפשר לך לסנכרן את רשימת המשתמשים של יוניקס וסמבה. כאשר סמבה משתמש <a href=$1>בסיסמאות מוצפנות</a>, משתמשים ברשימה נפרדת של משתמשים וסיסמאות במקום רשימת המשתמשים במערכת.
 convert_noconv=אל תמיר או הסר משתמשים אלה:
@@ -83,6 +88,7 @@ convert_cannot=לא ניתן להמיר משתמשי יוניקס למשתמשי
 convert_who=יוניקס משתמשים להמרה
 convert_who0=רק משתמשים רשומים או טווחי UID
 convert_who1=כולם למעט משתמשים רשומים וטווחי UID
+
 misc_title=אפשרויות שונות
 misc_debug=רמת ניפוי באגים
 misc_cachecall=מטמון <tt>getwd ()</tt> שיחות?
@@ -96,6 +102,7 @@ misc_chroot=<tt>ספריית chroot ()</tt>
 misc_smbrun=נתיב ל <b>smbrun</tt>
 misc_clienttime=קיזוז זמן לקוח
 misc_readprediction=לקרוא חיזוי?
+
 net_title=אפשרויות רשת יוניקס
 net_idle=זמן סרק לפני הניתוק
 net_trustlist=קובץ מארחים/משתמשים מהימנים
@@ -111,6 +118,7 @@ net_maxpacket=גודל מנה מקסימאלי
 net_listen=האזן בכתובת
 net_ip=כתובת ה - IP
 net_socket=אפשרויות שקע
+
 passwd_title=אפשרויות סיסמא
 passwd_encrypt=משתמשים בסיסמאות מוצפנות?
 passwd_allownull=אפשר סיסמאות בטלות?
@@ -124,11 +132,13 @@ passwd_send=שלח
 passwd_map=מיפוי שם משתמש
 passwd_unixuser=משתמשי יוניקס
 passwd_winuser=משתמשי חלונות
+
 print_title=אפשרויות הדפסה
 print_style=סגנון הדפסה יוניקס
 print_show=להציג את כל המדפסות?
 print_printcap=קובץ Printcap
 print_cachetime=זמן זיכרון המטמון של מדפסת
+
 smb_title=אפשרויות רשת של Windows
 smb_workgroup=קבוצת עבודה
 smb_wins=מצב WINS
@@ -159,14 +169,17 @@ smb_nowhere=בשום מקום
 smb_fromlist=מהרשימה. ..
 smb_ip=כתובת ה - IP
 smb_asworkgroup=<b>כקבוצת עבודה</b> (לא חובה)
+
 create_title=צור עותק
 create_msg=שיתוף עותק ירש את כל ערכי ברירת המחדל שלו מהשיתוף שתבחר. אם חלוקת המקור משתנה, כך גם העותק.
 create_from=שתף להעתקה מ-:
 create_name=שם שיתוף חדש:
+
 smbuser_title=משתמשי סמבה
 smbuser_list=רשימת המשתמשים בסמבה
 smbuser_nouser=לא הוגדרו משתמשי סמבה.
 smbuser_cannot=לא ניתן לרשום משתמשי סמבה
+
 euser_title=ערוך את משתמש סמבה
 euser_name=שם משתמש
 euser_uid=יוניקס UID
@@ -185,6 +198,7 @@ euser_locked=החשבון נעול
 euser_nopwrequired=אין צורך בסיסמה
 euser_disable=חשבון מושבת
 euser_trust=חשבון אמון בתחנת עבודה
+
 fmisc_title=ברירות מחדל שונות לקובץ
 fmisc_for=לשיתוף <tt>$1</tt>
 fmisc_lockfile=האם נעילת קבצים?
@@ -202,6 +216,7 @@ fmisc_conncmd=פקודה להפעלת Connect
 fmisc_disconncmd=פקודה להפעלת ניתוק
 fmisc_rootconn=פקודה להפעלה על חיבור <i>כשורש</i>
 fmisc_rootdisconn=פקודה להפעלת ניתוק <i>כשורש</i>
+
 fname_title1=ברירות מחדל של שמות קבצים
 fname_title2=ערוך שמות קבצים
 fname_option=אפשרויות שמות קבצים
@@ -216,6 +231,7 @@ fname_hide=להסתיר קבצי נקודה?
 fname_archive=שמור את דגל הארכיון של DOS?
 fname_hidden=לשמור DOS מוסתר?
 fname_system=שמור דגל מערכת DOS?
+
 fperm_title1=ברירות מחדל של הרשאות קבצים
 fperm_title2=ערוך הרשאות קבצים
 fperm_option=אפשרויות הרשאת קבצים
@@ -228,6 +244,7 @@ fperm_link=לאפשר קישורים sym sym לשתף בחוץ?
 fperm_delro=האם ניתן למחוק קבצי קריאה?
 fperm_forcefile=כפה על מצב קובץ יוניקס
 fperm_forcedir=כפה על מצב מדריך יוניקס
+
 share_title1=ברירות מחדל לשיתוף קבצים
 share_title2=ערוך שתף קבצים
 share_title3=צור שיתוף קבצים
@@ -251,6 +268,7 @@ share_naming=שמות קבצים
 share_misc=אפשרויות שונות
 share_samedesc1=הערה - הגדרות אלה משפיעות גם על ברירות המחדל של כל שיתופי הקבצים.
 share_samedesc2=הערה - הגדרות אלה משפיעות גם על ברירות המחדל של כל שיתופי המדפסת.
+
 print_title1=ברירות מחדל של אפשרות למדפסת
 print_title2=ערוך אפשרויות מדפסת
 print_option=אפשרויות מדפסת
@@ -262,6 +280,7 @@ print_delete=מחק את פקודת העבודה
 print_pause=השהה את פקודת העבודה
 print_unresume=בטל את המשך פקודת העבודה
 print_driver=מנהל מדפסת
+
 pshare_title1=ברירות מחדל לשיתוף מדפסת
 pshare_title2=ערוך שתף מדפסת
 pshare_title3=צור שיתוף מדפסת
@@ -270,6 +289,7 @@ pshare_name=שיתוף שם
 pshare_all=כל המדפסות משתפות
 pshare_unixprn=מדפסת יוניקס
 pshare_spool=ספריית סלילים
+
 sec_index1=ברירת מחדל לאבטחה
 sec_index2=ערוך אבטחה
 sec_writable=ניתן לכתוב?
@@ -292,6 +312,7 @@ sec_rouser=קרא משתמשים בלבד
 sec_rogroup=קרא קבוצות בלבד
 sec_rwuser=קרא/כתוב משתמשים
 sec_rwgroup=קרא/כתוב קבוצות
+
 esync_title=סנכרון משתמש
 esync_msg=ניתן להגדיר את Webmin כך ששינויים ברשימת המשתמשים של יוניקס יוחלו אוטומטית על רשימת המשתמשים בסמבה. זה יעבוד רק כאשר מודול <b>משתמשים וקבוצות</b> Webmin משמש להוספה, מחיקה או שינוי של משתמשים.
 esync_add=הוסף משתמש סמבה כשמוסיפים משתמש יוניקס
@@ -303,6 +324,7 @@ esync_gid=קבוצה SID או RID למשתמשים חדשים
 esync_apply=להגיש מועמדות
 esync_cannot=לא ניתן להגדיר סנכרון משתמש
 esync_egid=חסרה קבוצת SID או RID
+
 mkpass_title=המרת משתמשים
 mkpass_convfail=המרת משתמש נכשלה
 mkpass_msg=ממיר משתמשי יוניקס. ..
@@ -315,10 +337,12 @@ mkpass_passfail=הגדרת הסיסמה נכשלה
 mkpass_user=שם משתמש
 mkpass_action=ננקטה פעולה
 mkpass_skipcount=משתמשים $1 דילגו על המרה.
+
 savecopy_fail=יצירת העותק נכשלה
 savecopy_global=לא ניתן להשתמש בשם 'גלובלי' לשיתוף
 savecopy_exist=מניה בשם '$1' כבר קיימת
 savecopy_ename=לא הוזן שם שיתוף
+
 saveuser_fail=שמירת המשתמש נכשלה
 saveuser_uid='$1' אינו Unix UID חוקי
 saveuser_colon=שם אמיתי אינו יכול להכיל את התו :
@@ -326,10 +350,13 @@ saveuser_home=ספריית הבית '$1' אינה קיימת
 saveuser_shell=$1 אינו פגז תקף
 saveuser_pass=שינוי הסיסמה נכשל באמצעות smbpasswd : $1 
 saveuser_ews=לא ניתן להפעיל אפשרות 'חשבון אמון בתחנת עבודה' למשתמשים קיימים
+
 savefmisc_fail=שמירת אפשרויות שונות נכשלה
 savefmisc_number='$1' אינו מספר תקין של חיבורים
+
 savefperm_fail=שמירת הרשאות הקבצים נכשלה
 savefperm_mode='$1' אינו מצב קובץ יוניקס תקף
+
 savefshare_fail=שמירת השיתוף נכשלה
 savefshare_nopath=לא ניתן נתיב
 savefshare_exist=מניה בשם '$1' כבר קיימת
@@ -339,6 +366,7 @@ savefshare_owner=בעלים חסרים או לא חוקיים עבור ספרי�
 savefshare_group=קבוצה חסרה או לא חוקית עבור ספרייה חדשה
 savefshare_perms=הרשאות חסרות או לא חוקיות לספריה חדשה
 savefshare_emkdir=יצירת תיקיה נכשלה : $1 
+
 savemisc_fail=שמירת אפשרויות נכשלה
 savemisc_lockdir=הספריה המכילה את ספריית הנעילה אינה קיימת
 savemisc_logdir=הספרייה המכילה את קובץ היומן אינה קיימת
@@ -347,37 +375,48 @@ savemisc_overlap='$1' אינו גודל קריאה חופף חופף
 savemisc_chroot=ספריית ה- chroot '$1' אינה קיימת
 savemisc_smbrun=תוכנית smbrun '$1' אינה קיימת או אינה ניתנת להפעלה
 savemisc_time='$1' אינו קיזוז זמן תקף
+
 savenet_fail=שמירת אפשרויות נכשלה
 savenet_timeout='$1' אינו פסק זמן לניתוק תקף
 savenet_ip='$1' אינו בתים IP חוקי
 savenet_keep='$1' אינו מרווח שמירה תקף
 savenet_maxxmit='$1' אינו גודל מנות מקסימלי תקף
+
 savepass_fail=שמירת אפשרויות נכשלה
 savepass_nopass=הגרסה שלך לסמבה אינה תומכת בסיסמאות מוצפנות
 savepass_passwd=לא ניתנה תוכנית לשינוי סיסמה
 savepass_level='$1' אינו הפרש חוקי של סיסמא
 savepass_chat=רצף הצ'אט של שינוי הסיסמה ריק
+
 savepopts_fail=שמירת אפשרויות המדפסת נכשלה
 savepopts_number=שטח פנוי מינימלי חייב להיות מספר
+
 saveprint_fail=שמירת אפשרויות נכשלה
 saveprint_printcap=קובץ printcap '$1' אינו קיים
 saveprint_cache='$1' אינו זמן מטמון תקף
+
 savepshare_fail=שמירת שיתוף המדפסת נכשלה
 savepshare_exist=מניה בשם '$1' כבר קיימת
 savepshare_name='$1' אינו שם שיתוף תקף
 savepshare_global=לא ניתן להשתמש בשם 'גלובלי' לשיתוף
+
 savesec_fail=שמירת האבטחה נכשלה
+
 savesmb_fail=שמירת אפשרויות נכשלה
 savesmb_size='$1' אינו גודל דיסק תקף
 savesmb_oslevel='$1' אינו בראש סדר העדיפויות של דפדפן הראשי
 savesmb_server=עליך להזין שרת סיסמאות
+
 start_err=הפעלת שרתי סמבה נכשלה
 start_fail=$1 נכשל
 start_err_wb=הפעלת שרתי Winbind נכשלה
+
 restart_err=ההפעלה מחדש של שרתי Samba נכשלה
 restart_err_wb=ההפעלה מחדש של שרתי Winbind נכשלה
+
 swats_fail=שמירת שם המשתמש נכשלה
 swats_user=שם משתמש SWAT חסר
+
 viewu_index=המשתמשים הנוכחיים
 viewu_list=משתמשים נוכחיים של $1 
 viewu_share=שתף
@@ -394,6 +433,7 @@ viewu_ecmd=נראה כי תוכנית הסטטוס של Samba $1 אינה מות
 viewu_kill=נתק משתמשים שנבחרו
 viewu_enone=לא נבחרו משתמשים
 viewu_refresh=רענן עמוד.
+
 log_apply=שרתי סמבה הפעלו מחדש
 log_apply_wb=שרתי Winbind הופעלו מחדש
 log_stop=שרתי סמבה עצרו
@@ -435,6 +475,7 @@ log_modify_group=קבוצת סמבה שונה 1
 log_delete_group=קבוצת סמבה נמחקה $1 
 log_gsync=סנכרון קבוצתי של יוניקס מוגדר
 log_manual=עריכה ידנית של קובץ התצורה $1 
+
 swat_title=התחברות SWAT
 swat_list=התחברות SWAT
 swat_msg1=שם המשתמש והסיסמה הנוכחיים שלך ב- SWAT שגויים. השתמש בטופס למטה כדי להתחבר שוב.
@@ -446,6 +487,7 @@ swat_password=סיסמה
 swat_login=התחברות
 swat_clear=ברור
 swat_logout=יציאה מ- SWAT
+
 eacl_aviol=הפרת בקרת גישה
 eacl_np=אין לך הרשאות ל
 eacl_papply=הפעל מחדש את השירות הזה
@@ -481,6 +523,7 @@ eacl_pafs=גש לשיתוף קבצים זה
 eacl_paps=גש לשיתוף מדפסת זה
 eacl_pcps=ליצור שיתוף מדפסת - -
 eacl_pcfs=ליצור שיתוף קבצים - -
+
 acl_apply=האם ניתן להחיל שינויים ולעצור את סמבה?
 acl_view_all_con=האם אתה יכול להציג את כל החיבורים?
 acl_kill_con=האם ניתן להסיר חיבורים?
@@ -527,6 +570,7 @@ acl_maint_groups=האם ניתן להציג, לערוך ולהוסיף קבוצ�
 acl_maint_gsync=האם ניתן לשמור על סינכרון יוניקס אוטומטי לקבוצות סמבה?
 acl_winbind=האם יכול להיקשר לדומיינים?
 acl_bind=האם ניתן לגשת לאפשרויות winbind?
+
 groups_title=קבוצות סמבה
 groups_name=שם קבוצה
 groups_unix=קבוצת יוניקס
@@ -542,6 +586,7 @@ groups_return=רשימת קבוצות
 groups_add=הוסף קבוצת סמבה חדשה.
 groups_ecannot=אינך מורשה להציג או לערוך קבוצות סמבה
 groups_cannot=לא ניתן לרשום קבוצות סמבה
+
 gedit_title2=ערוך את קבוצת סמבה
 gedit_title1=צור קבוצת סמבה
 gedit_header=פרטי קבוצת סמבה
@@ -554,11 +599,13 @@ gedit_unix=קבוצת יוניקס
 gedit_unixgr=קבוצה ..
 gedit_none=אף אחד
 gedit_set=רשום ..
+
 gsave_err=שמירת הקבוצה נכשלה
 gsave_eunix=שם קבוצה או GID חסר או לא חוקי
 gsave_ename=שם הקבוצה חסר
 gsave_epriv=חסרות הרשאות קבוצתיות
 gsave_elocal=ניתן להגדיר הרשאות לקבוצות מקומיות בלבד
+
 gsync_title=סנכרון קבוצתי
 gsync_msg=ניתן להגדיר את Webmin כך ששינויים ברשימת הקבוצות של יוניקס יוחלו אוטומטית על רשימת קבוצות הסמבה. זה יעבוד רק כאשר מודול <b>משתמשים וקבוצות</b> Webmin משמש להוספה, מחיקה או שינוי של קבוצות.
 gsync_add=הוסף קבוצת סמבה כשמוסיפים קבוצה של יוניקס
@@ -569,10 +616,12 @@ gsync_type=סוג הקבוצות החדשות
 gsync_priv=הרשאות לקבוצות חדשות (אם מקומיות)
 gsync_ecannot=אינך רשאי להגדיר סנכרון קבוצתי
 gsync_cannot=לא ניתן להגדיר סנכרון קבוצתי
+
 check_user1=$1 : סיסמאות מוצפנות אינן מופעלות בדף <a href='$2'>אימות</a>.
 check_user2=$1 : לא קובץ הסיסמה של סמבה או הנתיב ל- pdbedit מוגדרים בדף <a href='$2'>תצורת מודול</a>.
 check_group1=$1 : קבוצות נתמכות רק בגירסת סמבה 3.
 check_group2=$1 : לא הנתיב לפקודות smbgroupedit או רשת מוגדר בדף <a href='$2'>תצורת מודול</a>.
+
 winbind_title=נקשר לדומיין
 winbind_ecannot=אינך מורשה להתחייב לדומיינים
 winbind_msg=ניתן להשתמש בטופס זה כדי לקשור את שרת הסמבה שלך לתחום Windows, המנוהל בדרך כלל על ידי שרת אחר.
@@ -588,6 +637,7 @@ winbind_edom=שם תחום חסר
 winbind_cmd=מחייב לתחום עם פקודה $1 ..
 winbind_failed=.. נכשל! ראה את הפלט למעלה מהסיבה שבגללה.
 winbind_ok=.. שלם.
+
 bind_title=אפשרויות Winbind
 bind_ecannot=אינך רשאי לערוך אפשרויות winbind
 bind_header=אפשרויות כריכת תחום של Windows
@@ -606,9 +656,11 @@ bind_erealm=תחום קרברוס לא חוקי
 bind_ecache=זמן מטמון חסר או לא חוקי
 bind_euid=טווח UID לא חוקי - חייב להיות כמו 20000-30000
 bind_egid=טווח GID לא חוקי - חייב להיות כמו 20000-30000
+
 manual_title=ערוך קובץ תצורה
 manual_desc=עריכת קובץ התצורה של סמבה $1 ..
 manual_err=שמירת קובץ התצורה נכשלה
 manual_edata=שום דבר לא נכנס!
+
 delete_err=מחיקת השיתופים נכשלה
 delete_enone=לא נבחר

@@ -14,6 +14,7 @@ index_restart=Starta om LDAP-klientdemon
 index_restartdesc=Använd den aktuella konfigurationen genom att starta om den lokala LDAP-klientdemon.
 index_atboot=Starta LDAP-klient vid start
 index_atbootdesc=Ändrar om LDAP-klientdemonet startas när systemet startas upp eller inte.
+
 server_title=LDAP-serverkonfiguration
 server_header=LDAP-server och inloggningsalternativ
 server_host=LDAP-serverns värdsnamn
@@ -51,6 +52,7 @@ server_etimelimit=Saknad eller ogiltig tidsgräns för anslutning
 server_ecacert=Saknad eller ogiltig CA-certifikatfil
 server_euport=Saknad eller ogiltig port för server $1 
 server_euri=Inga LDAP-servrar anges
+
 base_title=LDAP-sökbaser
 base_header=LDAP-katalogsökplatser
 base_base=Global sökbas
@@ -86,6 +88,7 @@ base_enetmasks=Saknas bas för nätmasknamn
 base_ealiases=Saknas bas för e-postalias
 base_enetgroup=Saknas bas för nätgrupper
 base_etimelimit=Saknad eller ogiltig söktid
+
 pam_title=Autentiseringsalternativ
 pam_header=PAM-autentisering och lösenordsinställningar
 pam_filter=Ytterligare LDAP-filter
@@ -106,10 +109,12 @@ pam_efilter=Saknar ytterligare LDAP-filter
 pam_elogin=Saknat eller ogiltigt LDAP-attribut för användarnamn
 pam_egroupdn=Saknar LDAP-grupp för att tvinga medlemskap i
 pam_emember=Saknat eller ogiltigt LDAP-attribut för gruppmedlemmar
+
 switch_title=Tjänster med LDAP
 switch_service=Service
 switch_srcs=Datakällor
 switch_return=tjänster som använder LDAP
+
 ldap_emodule=Modulen $1 Perl som behövs för att prata med LDAP-servern är inte installerad. <a href='$2'>Klicka här</a> för att ladda ner Webmin och installera det nu.
 ldap_emodule2=Modulen $1 Perl som behövs för att prata med LDAP-servern är inte installerad.
 ldap_econf=LDAP-klientkonfigurationsfilen $1 hittades inte på ditt system
@@ -119,6 +124,7 @@ ldap_elogin=Det gick inte att binda till LDAP-servern $1 som $2 : $3
 ldap_anon=anonym
 ldap_eparse=Det gick inte att analysera LDAP-servern URI $1 
 ldap_etls=Det gick inte att byta till TLS-läge : $1 
+
 browser_title=LDAP-webbläsare
 browser_econn=LDAP-webbläsaren kan inte användas : $1 
 browser_base=Bläddring:
@@ -129,6 +135,7 @@ browser_attrs=Objektattribut
 browser_parent=Bläddra i förälder
 browser_none=Ingen
 browser_sel=OK
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Användarskrivare
 order_xfn=XFN
 order_mdns4=Multicast DNS
 order_mdns4_minimal=Multicast DNS (minimal)
+
 desc_aliases=Sendmail alias
 desc_mail=Sendmail alias
 desc_hosts=Värdadresser
@@ -177,6 +185,7 @@ desc_printers=skrivare
 desc_ipnodes=IP-noder
 desc_timezone=Tidszoner
 desc_locale=lokaler
+
 eswitch_title=Redigera tjänsten
 eswitch_egone=Tjänsten finns inte!
 eswitch_header=Serviceinformation
@@ -196,6 +205,7 @@ eswitch_continue=Fortsätt söka
 eswitch_none=Ingen
 eswitch_err=Det gick inte att spara tjänsten
 eswitch_enone=Inga källor valda!
+
 log_server=Modifierad LDAP-serverkonfiguration
 log_base=Modifierade LDAP-sökbaser
 log_pam=Ändrade autentiseringsalternativ
@@ -205,6 +215,7 @@ log_delboot=Inaktiverad LDAP-klientdemon vid starttid
 log_start=Startade LDAP-klientdemon
 log_stop=Stoppad LDAP-klientdemon
 log_restart=Omstartad LDAP-klientdemon
+
 check_title=Validera LDAP-konfiguration
 check_base=Hitta LDAP-bas för användare ..
 check_ebase=.. ingen bas finns i klientkonfiguration!

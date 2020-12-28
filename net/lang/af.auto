@@ -7,6 +7,7 @@ index_delete2=Vee geselekteerde koppelvlakke uit
 index_delete3=Verwyder en pas geselekteerde koppelvlakke toe
 index_apply2=Pas geselekteerde raakvlakke toe
 index_vmin=Virtualmin
+
 ifcs_title=Netwerk-koppelvlakke
 ifcs_now=Nou aktief
 ifcs_activedesc=Interfaces wat in hierdie tabel gelys word, is tans aktief op die stelsel. In die meeste gevalle moet u dit onder die tabblad <b>Geaktiveer by opstart</b> wysig.
@@ -55,6 +56,7 @@ ifcs_linkyes=verbind
 ifcs_linkno=Dis-verbind
 ifcs_speed=Interface spoed
 ifcs_duplex=, $1 dupleks
+
 aifc_create=Skep 'n aktiewe koppelvlak
 aifc_edit=Wysig die aktiewe koppelvlak
 aifc_desc1=Aktiewe koppelvlakparameters
@@ -79,6 +81,7 @@ aifc_eaddress6=IPv6-adres in ry $1 is nie geldig nie
 aifc_enetmask6=IPv6 netmasker in ry $1 moet 'n heelgetal tussen 1 en 128 wees
 aifc_eclash6=IPv6-adres in ry $1 word reeds deur koppelvlak $2 gebruik
 aifc_eaddresses6=Geen IPv6-adresse ingevoer nie
+
 bifc_create=Skep opstart-koppelvlak
 bifc_act=Aktiveer by opstart?
 bifc_edit=Redigeer opstart-koppelvlak
@@ -110,6 +113,7 @@ bifc_bridgestp=Spanning van boomprotokol
 bifc_bridgefd=Vertraging vorentoe
 bifc_bridgewait=Uitstel om beskikbaar te wees
 bifc_ebond=Die verbandkoppelvlak moet 'n nommer wees
+
 bonding_add=Voeg 'n nuwe bindingsvlak.
 bonding_create=Skep bindingsvlak
 bonding_teamparts=Saamwerk vennote
@@ -121,11 +125,14 @@ bonding_miimon=Mii-moniteringsinterval
 bonding_miimondesc=(Laat leeg om skakelmonitering uit te skakel)
 bonding_updelay=Updelay
 bonding_downdelay=Downdelay
+
 vlan_add=Voeg Vlan gemerkte koppelvlak by
 vlan_physical=Fisiese apparaat
 vlan_id=Vlan ID
 vlan_create=Skep VLAN-koppelvlak
+
 bridge_create=Skep brug-koppelvlak
+
 routes_title=Roete en gateways
 routes_boot=Roetekonfigurasie geaktiveer tydens <i>opstartyd</i>
 routes_now=Roetekonfigurasie is nou geaktiveer
@@ -194,6 +201,7 @@ routes_tabboot=Opstart tydkonfigurasie
 routes_tabactive=Aktiewe konfigurasie
 routes_descactive=Hierdie afdeling lys roetes wat die stelsel tans opgestel het, en laat u toe om aktiewe roetes op sommige stelsels by te voeg of te verwyder. Wees versigtig deur dit te doen, aangesien verkeerde veranderinge die stelsel wat Webmin met die res van die netwerk afskakel, kan afsny.
 routes_descboot=Met hierdie afdeling kan u die roetes instel wat geaktiveer word wanneer die stelsel begin, of wanneer die netwerkinstellings weer toegepas word.
+
 dns_title=Gasheernaam en DNS-kliënt
 dns_options=DNS-kliënt-opsies
 dns_hostname=gasheernaam
@@ -211,6 +219,7 @@ dns_edomain='$1' is nie 'n geldige domeinnaam nie
 dns_esearch=Geen domeine om te soek gegee nie
 dns_hoststoo=Dateer gasheernaam in gasheeradresse op as dit verander is?
 dns_dhcp=Gasheernaam word opgestel deur DHCP-bediener?
+
 hosts_title=Gasheeradresse
 hosts_active=In staat gestel?
 hosts_ip=IP adres
@@ -222,6 +231,7 @@ hosts_detail=Gasheer en adresse
 hosts_return=gasheer adresse lys
 hosts_ecannot=U mag nie gasheeradresse wysig nie
 hosts_delete=Vee geselekteerde gasheeradresse uit
+
 ipnodes_title=IPv6 gasheeradresse
 ipnodes_ip=IPv6-adres
 ipnodes_host=gasheername
@@ -233,6 +243,7 @@ ipnodes_return=IPv6-gasheeradresselys
 ipnodes_ecannot=U mag nie IPv6-gasheeradresse wysig nie
 ipnodes_none=Geen IPv6-gasheeradresse is nog gedefinieër nie.
 ipnodes_delete=Verwyder geselekteerde IPv6-gasheeradresse
+
 log_create_host=Skep gasheeradres $1 
 log_delete_host=Gasheeradres $1 is uitgevee
 log_modify_host=Gewysigde gasheeradres $1 
@@ -256,6 +267,7 @@ log_apply_bfics=Aktiveer $1 -opstart-tyd-koppelvlakke
 log_create_route=Aktiewe roete vir $1 geskep
 log_create_defroute=Skep aktiewe standaardroete
 log_delete_routes=$1 aktiewe roetes is uitgevee
+
 acl_ifcs=Kan netwerk koppelvlakke redigeer?
 acl_routes=Kan routing en gateways verander?
 acl_dns=Kan DNS-kliëntinstellings verander?
@@ -273,6 +285,7 @@ acl_virt=Kan virtuele koppelvlakke bygevoeg word?
 acl_delete=Kan koppelvlakke verwyder word?
 acl_hide=Versteek nie-bewerkbare koppelvlakke?
 acl_sysinfo=Wys beskikbare netwerk-koppelvlakke op Dashboard
+
 interfaces_title1=Kies koppelvlakke. ..
 interfaces_all=Alle koppelvlakke. ..
 interfaces_sel=Geselekteerde koppelvlakke
@@ -280,7 +293,9 @@ interfaces_ok=OK
 interfaces_cancel=kanselleer
 interfaces_clear=duidelik
 interfaces_title2=Kies gebruiker. ..
+
 apply_ecannot=U mag nie die konfigurasie toepas nie
+
 mod_egone=Die koppelvlak is nie meer aktief nie!
 mod_title=Aktiewe koppelvlak
 mod_desc=Die $1 -koppelvlak word vir $2 gebruik, en kan dus nie met hierdie module bestuur word nie.
@@ -292,6 +307,7 @@ mod_pptpc=die PPTP-verbinding $1
 mod_zones='n virtuele koppelvlak vir sone <tt>$1</tt>
 mod_virtualmin=die Virtualmin-bediener <tt>$1</tt>
 mod_reseller=die Virtualmin-herverkoper <tt>$1</tt>
+
 range_edit=Wysig adresreeks
 range_create=Skep adresreeks
 range_header=Interface-opsies vir adresreekse
@@ -307,13 +323,17 @@ range_eend=IP-adres ontbreek of ongeldig
 range_enum=Ontbrekende of nie-numeriese eerste virtuele koppelvlak nommer
 range_eclass=Begin- en eindadres moet binne dieselfde klas C-netwerk wees
 range_ebefore=Die eindadres moet hoër wees as die beginadres
+
 chooser_any=&lt;Any&gt;
 chooser_other=Ander ..
+
 dafics_err=Kon nie koppelvlakke deaktiveer nie
 daifcs_enone=Geen gekies nie
 daifcs_egone=Koppelvlak bestaan nie meer nie!
+
 dbifcs_err=Kon nie koppelvlakke uitvee nie
 dbifcs_err2=Kon nie koppelvlakke aktiveer nie
+
 hdelete_err=Kon nie gasheeradresse uitvee nie
 hdelete_enone=Geen gekies nie
 idelete_err=Kon nie IPv6-gasheeradresse uitvee nie

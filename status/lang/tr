@@ -14,6 +14,7 @@ index_oldtime=$1 'de yapılan son zamanlandırılmış kontrolün sonucu
 index_esnmp=Modüll <a href='$3'>Modül Yapılandırması</a> sayfasında SNMP paketleri gönderecek şekilde yapılandırılmış, fakat $1 Perl modülü kurulmamış.<a href='$2'>Burayı tıklayarak</a> indirip kurabilirsiniz
 index_refresh=Durumu Yenile
 index_refreshdesc=Bütün izleyici durumlarını, bir sonraki zamanlandırılmış güncellemeyi beklemek yerine hemen günceller
+
 type_apache=Apache Web Sunucusu
 type_inetd=İntervet ve RPC Sunucusu
 type_xinetd=Genişletilmiş İnternet Sunucusu
@@ -52,6 +53,7 @@ type_mailserver=Mail Sunucu Cevabı
 type_sshd=SSH Sunucusu
 type_raid=RAID Aygıtı Durumu
 type_iface=Ağ Arayüzü Durumu
+
 mon_create=İzleyici Oluştur
 mon_edit=İzleyici Düzenle
 mon_header=İzleyici ayrıntıları
@@ -86,6 +88,7 @@ mon_runon1=Uzak makine
 mon_oninfo=Not: Komutlar sadece e-posta gönderildiğinde çalışacaktır
 mon_fails=Raporlamadan önceki hata sayısı
 mon_efails=Hata sayısı girilmemiş ya da yanlış girilmiş
+
 sched_title=Zamanlandırılmış İzleme
 sched_header=Zamanlandırılmış arkaplanda izleme seçeneklerde
 sched_mode=Zamanlandırılmış kontrol aktif mi?
@@ -117,16 +120,19 @@ sched_smtp_prog=Yerel sendmail programı
 sched_smtp_server=SMTP sunucusu
 sched_esmtp=SMTP sunucusu girilmemiş ya da yanlış girilmiş
 sched_esmtpcmd=SMTP komutu $1 'de hata oluştu : $2
+
 up_since=$1 'den bu yana açık
 depends_mod=$1 modülü sisteminizde kurulu değil
 depends_os=$1 modülü sisteminiz tarafından desteklenmemektedir
 depends_remote=$1 modülü $2 sunucusunda desteklenmemektedir
+
 tcp_host=Bağlanılacak makine
 tcp_port=Bağlanılacak port
 tcp_alarm=Bağlantı gecikme süresi
 tcp_ehost=Makine adı girilmemiş ya da yanlış girilmiş
 tcp_eport=Port numarası girilmemiş ya da yanlış girilmiş
 tcp_ealarm=Bağlantı gecikme süresi girilmemiş ya da yanlış girilmiş
+
 http_url=İstek yapılacak URL
 http_alarm=Bağlantı gecikme süresi
 http_eurl=URL girilmemiş ya da yanlış girilmiş
@@ -137,11 +143,13 @@ http_user=Kullanıcı adı
 http_pass=parola
 http_euser=Kullanıcı adı girilmemiş
 http_method=HTTP istek metodu
+
 ping_host=Ping atılacak makine
 ping_wait=Cevap için beklenecek süre
 ping_ehost=Makine adı girilmemiş ya da yanlış girilmiş
 ping_ewait=Bekleme süresi girilmemiş ya da yanlış girilmiş
 ping_econfig=Modül Yapılandırmasında ping komutu girilmemiş
+
 proc_pid=$1 PID'leri ile çalışıyorsa
 proc_cmd=Kontrol edilecek komut
 proc_not=Eğer işlem bu durumda ise hata ver
@@ -150,8 +158,10 @@ proc_not1=Çalışıyor
 proc_ecmd=Komut girilmemiş
 proc_thresh=İşlemin çalışıyor kabul edilebilmesi için kaç tane çalışıyor olması gerekiyor
 proc_ethresh=İşlem sayısı girilmemiş ya da yanlış girilmiş
+
 exec_cmd=Kontrol komutunun çıkış durumu
 exec_ecmd=Komut bulunamadı
+
 file_file=Kontrol edilecek dosya
 file_test=Uygulanacak test
 file_test_0=Dosya mevcut olmalı
@@ -161,6 +171,7 @@ file_test_3=Dosya bundan daha lüçük olmalı
 file_bytes=byte
 file_efile=Kontrol edilecek dosya bulunamadı
 file_esize=Geçersiz dosya boyutu
+
 traffic_iface=İzlenecek arayüz
 traffic_bytes=Maksimum byte/saniye
 traffic_dir=İzlenecek yön
@@ -170,12 +181,14 @@ traffic_dir2=Sadece giden
 traffic_desc=Bu izleyici seçili arayüzdeki ağ trafiğini kontrol eder ve arayüz kapanırsa ya da trafik girilen saniyedeki byte değerini aşarsa durumu kapalı olarak gösterir. Bu özellik, zamanlandırılmış izleme 5 dakika gibi kısa bir aralığa ayarlanmışsa iyi çalışır.
 traffic_eifaces=İşletim sisteminiz /proc/net/dev dosyasına sahip değil
 traffic_ebytes=Byte/saniye değeri girilmemiş ya da yanlış girilmiş
+
 space_fs=Kontrol edilecek dosya sistemi
 space_desc=$1 boş
 space_nofs=Dosya sistemi bağlı değil
 space_other=Diğer..
 space_emin=Boş disk alanı girilmemiş ya da yanlış girilmiş
 space_eother=Dosya sistemi girilmemiş ya da yanlış girilmiş
+
 load_time=Kontrol edilecek yüklenme süresi
 load_1=1 dakika
 load_5=5 dakika
@@ -184,17 +197,24 @@ load_max=Maksimum sistem yüklenme yüzdesi
 load_emax=Maksimum sistem yüklenme yüzdesi girilmemiş ya da yanlış girilmiş
 load_ecmd=<tt>uptime</tt> komutu sisteminizde bulunamadı
 load_efmt=<tt>uptime</tt> komutunun çıktısı okunamadı
+
 log_create=İzleyici $1 oluşturuldu
 log_modify=İzleyici $1 değiştirildi
 log_delete=İzleyici $1 silindi
 log_sched=Zamanlandırılmış izleme değiştirildi
+
 acl_edit=İzleyici oluşturabilsin ve düzenleyebilsin mi?
 acl_sched=Zamanlandırılmış izleyiciyi değiştirebilsin mi?
+
 change_file=İzlenecek dosya (değiştirildiyse hata oluşacaktır)
+
 jabber_eparser=Perl modülü $1 sisteminizde kurulu değil
+
 memory_emin=Boş alan değeri girilmemiş ya da yanlış girilmiş
 memory_eproc=Webmin işletim sisteminizde kullanılmayan bellği nasıl bulacağını bilmiyor
+
 proftpd_etype=Bu izleyici ProFTPD yalnız başına çalışıyorsa kullanılamaz
+
 mailserver_to=Bu adrese e-posta gönder
 mailserver_timeout=Gecikme süresi ve aralığı
 mailserver_units_0=Saniye
@@ -202,19 +222,24 @@ mailserver_units_1=Dakika
 mailserver_units_2=Saat
 mailserver_units_3=Gün
 mailserver_desc=Aşağıdaki adres aynı Başlık: satırına sahip mailleri, gönderen kişiye cevaplayacak bir otomatik cevaplayıcıya sahip olmalıdır.
+
 oldfile_file=İzlecek dosya (değiştirilmediyse hata ver)
 oldfile_diff=Bu süredir değiştirilmediyse hata ver
 oldfile_secs=san
+
 raid_device=RAID aygıtı
 raid_edevice=Bir RAID aygıtı seçilmedi
 raid_bad=Hatalı disk bulundu
 raid_resync=Senkronize ediliyor
 raid_notfound=RAID aygıtı $1 bulunamadı
 raid_other=Diğer..
+
 iface_iface=Kontrol edilecek arayüz
+
 refresh_title=Durumu Yenile
 refresh_doing=Bütün izleyicilerin durumları yenileniyor ..
 refresh_done=.. tamamlandı.
+
 sensors_cmd=<tt>sensors</tt> komutu sisteminizde bulunamadı. Bu izleyici işlem yapabilmek için lm_sensors paketine ihtiyaç duymaktadır.
 sensors_emin=Minimum değer girilmemiş ya da yanlış girilmiş
 sensors_emax=Maksimum değer girilmemiş ya da yanlış girilmiş

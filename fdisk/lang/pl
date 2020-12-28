@@ -21,6 +21,7 @@ index_hdparm=Zmień parametry IDE
 index_use=Używana przez
 index_free=Wolne
 index_return=listy dysków
+
 bytes=bajtów
 extended=Rozszerzona
 opt_default=Domyślne
@@ -31,6 +32,7 @@ select_part=Partycja $3 na dysku $1 $2
 select_fd=Dyskietka $1
 select_mylex=Urządzenie Mylex RAID $1 $2
 select_mpart=Partycja $3 urządzenia Mylex RAID $1 $2
+
 edit_title=Zmień partycję
 create_title=Utwórz partycję
 edit_ecannot=Nie masz uprawnień do zmian tego dysku
@@ -63,6 +65,7 @@ edit_fsckmsg=Wywołuje program $1 w celu naprawy systemu plików tak, by mógł
 edit_tune=Dostosuj system plików
 edit_tunemsg=Pozwala zmienić różne parametry istniejącego systemu plików.
 edit_none=Brak
+
 mkfs_title=Nowy system plików
 mkfs_ecannot=Nie masz uprawnień do tworzenia nowych systemów plików na tym dysku.
 mkfs_desc1=Naciśnięcie przycisku w dolnej części tego formularza spowoduje utworzenie nowego systemu plików $1 na urządzeniu $2. Wszystkie dane na tej partycji zostaną nieodwracalnie zniszczone.
@@ -73,6 +76,7 @@ mkfs_err=Nie udało się utworzyć systemu plików
 mkfs_exec=Wykonywanie polecenia $1 ..
 mkfs_failed=.. nie powiodło się!
 mkfs_ok=.. zakończono.
+
 fsck_title=Napraw system plików
 fsck_ecannot=Nie masz uprawnień do uruchomienia <tt>fsck</tt> dla tego dysku.
 fsck_desc1=Naciskając na przycisk <tt>Napraw system plików</tt> podejmiesz próbę naprawienia uszkodzonego systemu plików $1 na $2 w celu zamontowania go na $3. Jeśli system nie jest uszkodzony, żadne zmiany nie będą wykonanae.
@@ -85,6 +89,7 @@ fsck_err3=znaleziono i naprawiono błędy - niezbędny restart
 fsck_err4=znaleziono błędy, ale ich NIE naprawiono
 fsck_err16=błąd polecenia
 fsck_unknown=nieznany kod powrotu $1
+
 tunefs_title=Dostosuj system plików
 tunefs_ecannot=Nie masz uprawnień do dostosowania tego systemu plików.
 tunefs_desc=Za pomocą tego formularza możesz dostroić różne parametry systemu plików $1 na $2 montowanego na $3. Nie naruszy to istniejących na tym systemie plików.
@@ -106,10 +111,12 @@ tunefs_err=Nie udało się dostosować systemu plików
 tunefs_exec=Wykonywanie polecenia $1 ..
 tunefs_failed=.. nie powiodło się!
 tunefs_ok=.. zakończono.
+
 reboot_title=Restartuj
 reboot_msg=Restartuj teraz ..
 reboot_ok=Restartuj teraz
 reboot_why=Zmieniłeś tablicę partycji na $1. Aby ta zmiana odniosła właściwy skutek trzeba zrestartować system.
+
 save_err=Nie udało się zachować partycji
 save_ecannot=Nie masz uprawnień do zmian tego dysku.
 save_estart='$1' nie jest poprawnym cylindrem początkowym.
@@ -118,6 +125,7 @@ save_emin=Cylinder początkowy musi być >= $1.
 save_emax=Cylinder końcowy musi być <= $1.
 save_eminmax=Cylinder początkowy musi być mniejszy niż końcowy.
 save_eoverlap=Stwierdzono nakładanie się z partycją $1 ($2 do $3).
+
 ext2_b=Rozmiar bloku
 ext2_f=Rozmiar fragmentu
 ext2_i=Bajtów na i-węzeł
@@ -125,22 +133,27 @@ ext2_m=Bloków zarezerwowanych
 ext2_g=Bloków na grupę
 ext2_c=Sprawdzać poprawność nośnika?
 ext3_j=Rozmiar pliku dziennika
+
 msdos_F=Rozmiar FAT-u
 msdos_i=Nr ID wolumenu
 msdos_n=Nazwa wolumenu
 msdos_r=Wpisów w katalogu głównym
 msdos_s=Rozmiar klastra
 msdos_c=Sprawdzać poprawność nośnika?
+
 minix_n=Rozmiar systemu plików
 minix_i=Liczba i-węzłów
 minix_b=Liczba bloków
 minix_c=Sprawdzać poprawność nośnika?
+
 reiserfs_force=Wymusić utworzenie systemu plików
 reiserfs_hash=Funkcja haszy
+
 acl_disks=Dyski, które użytkownik może partycjonować i formatować
 acl_dall=Wszystkie dyski
 acl_dsel=Wybrane..
 acl_view=Może przeglądać niemodyfikowalne dyski?
+
 hdparm_title=Zmień ustawienia IDE
 hdparm_on=Włączone
 hdparm_off=Wyłączone
@@ -169,6 +182,7 @@ hdparm_performing=Trwa
 hdparm_buf1=Odczyt samych buforów:
 hdparm_buf2=Odczyt bufowany:
 hdparm_speedres=Wyniki testu szybkości
+
 log_modify=Zmieniono $1
 log_create=Utworzono $1
 log_delete=Usunięto $1

@@ -35,7 +35,9 @@ index_upgradeon=Poslužitelji za nadogradnju
 index_update=Obnovi Module
 index_updateon=Poslužitelji za nadopunu
 index_updatedesc=Ova forma dopušta Vam da Webmin module na kojima su pronađene greške ili propuste u sigurnosti nadograđujete iz stranice <a href=http://www.webmin.com/updates.html>Webmin Nadopune</a> ili iz nekog drugog izvora.
+
 this_server=ovaj poslužitelj
+
 add_title=Dodaj Poslužitelje
 add_msg=Doadjem $1 ..
 add_gmsg=Dodajem poslužitelje u grupu $1 ..
@@ -45,6 +47,7 @@ add_echeck=Poslužitelj $1 nema Webmin modul s postavkama
 add_echeck2=Poslužitelj $1 nema Webmin korisnički modul
 add_eversion=Poslužitelj $1 ne izvršava Webmin verziju $2 ili verziju iznad
 add_ok=Dodan $1 sa $2 modulima, $3 temama, $4 korisnicima i $5 grupama.
+
 refresh_title=Obnovi Modul i Korisničku Liste
 refresh_header=Ponovni zahtjev za modulom, korisnikom i listom grupa sa svih poslužitelja ..
 refresh_header4=Ponovni zahtjev za modulom, korisnikom i listom grupa od svih članova iz $2 ..
@@ -60,6 +63,7 @@ refresh_g2=Uklonjeno $1 grupa.
 refresh_done=.. gotovo
 refresh_del=Uklonjen $1 s liste poslužitelja
 refresh_failed=Neuspjelo obnavljanje $1 : $2
+
 host_title=Vođeni Poslužitelj
 host_header=Detalji vođenja Webmin poslužitelja
 host_name=Naziv hosta
@@ -77,6 +81,7 @@ host_header_u=Webmin korisnici
 host_header_g=Webmin grupa
 host_return=detalji poslužitelja
 host_version2=Verzija
+
 edit_title_mod=Uredi Module
 edit_title_theme=Uredi Teme
 edit_header_mod=Webmin detalji modual iz $1
@@ -100,6 +105,7 @@ edit_acl=Uredi ACL za
 edit_uacl=Korisnici $1 na $2
 edit_gacl=Grupa $1 na $2
 edit_config=Uredi postavke na
+
 install_err=Neuspjela instalacija modula
 install_title=Modul Instalacije
 install_elocal=Nije dat lokalni dokument
@@ -120,6 +126,7 @@ do_failed=Neuspjela instalacija na  $1 : $2
 do_success_mod=Instalirani modul  $1 na $2
 do_success_theme=Instalirana tema $2 na $1
 do_done=.. gotovo
+
 delete_err=Neuspjelo brisanje modula $1
 delete_epack=Modul $1 više ne postoji
 delete_title=Izbriši Modul
@@ -137,6 +144,7 @@ delete_edepends=Modul(i) $1 ovisr o tome.
 delete_egone=Modul više ne postoji
 delete_esuccess=Uspješno brisanje iz $1 : $2
 delete_acls=Ukloni sve korisnike i poništi postavke kontrole pristupa?
+
 user_title1=Kreiraj Webmin Korisnika
 user_header1=Novi Webmin korisnički detalji
 user_name=Korisničko ime
@@ -195,11 +203,13 @@ user_all=&lt;svi hostovi&gt;
 user_donthave=&lt;hostovi koji ga nemaju&gt;
 user_have=&lt;hostovi koji ga nemaju&gt;
 user_ofgroup=Članovi iz $1
+
 udelete_title=Brišem Korisnika
 udelete_doing=Brišem korisnika $1 sa svih poslužitelja ..
 udelete_success=Uspješno brisanje iz $1
 udelete_failed=Neuspjelo brisanje iz $1 : $2
 udelete_done=.. gotovo
+
 group_title1=Kreiraj Grupu
 group_header1=Novi Webmin detalji grupe
 group_name=Naziv grupe
@@ -227,6 +237,7 @@ group_failed2=Neuspjela nadopuna grupe na $1 : $2
 group_return=detalji grupe
 group_nomems=Nema članova
 group_servers=Poslužitelj(i) na koje treba kreirati
+
 gdelete_title=Izbriši Grupu
 gdelete_desc=Jeste li sigurni da želite izbrisati grupu $1 i sve njene članove $2 sa svih hostova ?
 gdelete_ok=Izbriši Grupu
@@ -235,6 +246,7 @@ gdelete_success=Uspješno izbrisano iz $1
 gdelete_failed=Neuspjelo brisanje iz $1 : $2
 gdelete_done=.. gotovo
 gdelete_esub=Ova grupa ima podgrupe $1, tako da ne može biti izbrisana.
+
 acl_title=Modul Kontrola Pristupa
 acl_title2=Za korisnika $1 u $2 na $3
 acl_title3=Za grupu $1 u $2 na $3
@@ -253,6 +265,7 @@ acl_doing2=Postavljam kontrolu pristupa za $1 na $2 ..
 acl_success=Uspješno postavljena kontrola pristupa na $1
 acl_failed=Neuspjelo postavljenje kontrole pristupa na $1 : $2
 acl_done=.. gotovo
+
 sync_title=Sinkroniziraj Poslužitelje
 sync_desc=Ova forma dopušta Vam kreiranje Webmin korisnika i grupa na poslužiteljima koji ih   trenutno nemaju, u svrhu sinkronizacije izvještaja kroz sve poslužitelje u skupini.
 sync_hosts=Poslužitelji za sinkronizaciju
@@ -276,6 +289,7 @@ sync_gcreate=Dodajem Webmin grupu $1 ..
 sync_acl=Kopiram ACL dokumente za $1 ..
 sync_test=Prikaži samo ono što će biti napravljeno?
 sync_restart=Ponovno pokreni Webmin ..
+
 upgrade_title=Nadograđeni Webmin
 upgrade_header=Nadogradnja Webmina-a na svim hostovima ...
 upgrade_header2=Nadograđujem Webmin na $1 ..
@@ -294,6 +308,7 @@ upgrade_failed=Neuspjela instalacija na $1 : $2
 upgrade_done=.. gotovo
 upgrade_efast=Samo poslužitelji koji koriste brzi RCP mod mogu biti nadograđivani
 upgrade_ereconn=Neuspjelo ponovno uspostavljenje veze s Webmin-om nakon nadogradnje! : $1
+
 update_title=Nadopuni Module
 update_header=Nadopuni module na svim hostovima
 update_header5=Nadopuni module na $2 ..
@@ -301,6 +316,7 @@ update_header4=Nadopuni module na članovima iz $2 ..
 update_onhost=Rezultat nadopune na $1 ..
 update_failed=.. nadopuna nije uspjela : $1
 update_none=nadopune nisu pronađene.
+
 config_title=Uredi Postavke Modula
 config_enone=Ni jedan host s instaliranim modulom nije odabran
 config_ethis=MOdul nije instaliran na ovom poslužitelju

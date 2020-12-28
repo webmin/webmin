@@ -1,4 +1,5 @@
 quota_unlimited=Rajoittamaton
+
 acl_fss=Tiedostojärjestelmät, joita tämä käyttäjä voi muokata
 acl_fall=Kaikki tiedostojärjestelmät
 acl_fsel=Valitut ..
@@ -24,9 +25,11 @@ acl_maxblocks=Suurin rakeistettava lohkonkiintiö
 acl_maxfiles=Suurin sallittava kiintiö
 acl_unlimited=Rajoittamaton
 acl_email=Voivatko sähköposti-ilmoitukset asettaa?
+
 activate_eallow=Sinulla ei ole oikeutta ottaa käyttöön tai poistaa käytöstä kiintiöitä tässä tiedostojärjestelmässä
 activate_eon=Kiintiöiden käyttöönotto epäonnistui
 activate_eoff=Kiintiöiden sulkeminen epäonnistui
+
 check_title=Tarkista kiintiöt
 check_return=$1 -luettelo
 check_ecannot=Et voi tarkistaa kiintiöitä tässä tiedostojärjestelmässä
@@ -34,11 +37,13 @@ check_running=<tt>quotacheck</tt> -komento on nyt käynnissä tarkistaaksesi est
 check_done=... Valmis.
 check_rgroup=ryhmä
 check_ruser=käyttäjä
+
 cgroup_efail=Kiintiöiden kopiointi epäonnistui
 cgroup_ecannot=Et voi kopioida kiintiöitä
 cgroup_egallow=Et voi kopioida tämän ryhmän kiintiöitä
 cgroup_enogroup=Ei ryhmiä, joihin kopioida
 cgroup_eallowto=Sinulla ei ole oikeutta kopioida kiintiöitä '$1'
+
 cgform_title=Kopioi kiintiöt
 cgform_return=ryhmäkiintiö
 cgform_ecannot=Et voi kopioida kiintiöitä
@@ -48,11 +53,13 @@ cgform_all=Kaikki järjestelmän ryhmät
 cgform_select=Valitut ryhmät
 cgform_contain=Ryhmät, jotka sisältävät käyttäjiä
 cgform_doit=Kopio
+
 cuser_efail=Kiintiöiden kopiointi epäonnistui
 cuser_ecannot=Et voi kopioida kiintiöitä
 cuser_euallow=Et voi kopioida tämän käyttäjän kiintiöitä
 cuser_enouser=Ei käyttäjiä, joihin kopioida
 cuser_eallowto=Sinulla ei ole oikeutta kopioida kiintiöitä '$1'
+
 cuform_title=Kopioi kiintiöt
 cuform_return=käyttäjäkiintiö
 cuform_ecannot=Et voi kopioida kiintiöitä
@@ -62,6 +69,7 @@ cuform_all=Kaikki järjestelmän käyttäjät
 cuform_select=Valitut käyttäjät
 cuform_members=Valittujen ryhmien jäsenet
 cuform_doit=Kopio
+
 egroup_title=Muokkaa ryhmäkiintiötä
 egroup_freturn=tiedostojärjestelmäluettelo
 egroup_greturn=ryhmäluettelo
@@ -80,6 +88,7 @@ egroup_hflimit=Kiintolevyn raja
 egroup_update=Päivittää
 egroup_listall=Lista kaikki kiintiöt
 egroup_listalldesc=Napsauta tätä painiketta, jos haluat nähdä luettelon kaikista tiedostojärjestelmistä, joille tällä ryhmällä on levykiintiöt, ja linkkejä niiden muokkaamiseen.
+
 euser_title=Muokkaa käyttäjäkiintiötä
 euser_freturn=tiedostojärjestelmäluettelo
 euser_ureturn=käyttäjäluettelo
@@ -102,6 +111,7 @@ euser_hflimit=Kiintolevyn rajoitus
 euser_update=Päivittää
 euser_listall=Lista kaikki kiintiöt
 euser_listalldesc=Napsauttamalla tätä painiketta saat näkyviin luettelon kaikista tiedostojärjestelmistä, joissa tällä käyttäjällä on levykiintiöt, ja linkkejä niiden muokkaamiseen.
+
 gfilesys_title=Ryhmäkiintiöt
 gfilesys_return=tiedostojärjestelmäluettelo
 gfilesys_ecannot=Et voi muokata '$1' -kiintiöitä
@@ -120,6 +130,7 @@ gfilesys_copy=Kopioi kiintiöt
 gfilesys_editdesc=Tarkastele ja muokkaa tämän ryhmän kiintiöitä jollain muulla tiedostojärjestelmällä, jolla sillä ei tällä hetkellä ole kiintiöitä.
 gfilesys_copydesc=Kopioi kaikkien tiedostojärjestelmien tämän ryhmän kiintiörajoitukset joihinkin tai kaikkiin muihin ryhmiin.
 gfilesys_enone=Ryhmän nimeä ei annettu
+
 ggracef_title=Grace Times
 ggracef_return=ryhmäluettelo
 ggracef_ecannot=Armoaikoja ei voi muokata tässä tiedostojärjestelmässä
@@ -128,9 +139,11 @@ ggracef_graces=Ryhmän armoajat <tt>$1</tt>
 ggracef_block=Blokkikiintiölle
 ggracef_file=Tiedostokiintiölle
 ggracef_update=Päivittää
+
 ggraces_esave=Armoaikojen tallentaminen epäonnistui
 ggraces_eedit=Armoaikoja ei voi muokata tässä tiedostojärjestelmässä
 ggraces_enumber='$1' ei ole numero
+
 index_quser=Käyttäjäkiintiöt
 index_qgroup=Ryhmäkiintiöt
 index_qboth=Käyttäjä- ja ryhmäkiintiöt
@@ -154,6 +167,7 @@ index_egroup=Muokkaa ryhmäkiintiöitä:
 index_egroupdesc=Kirjoita tai valitse ryhmä ja napsauta tätä painiketta nähdäksesi sen kiintiöt kaikissa tiedostojärjestelmissä.
 index_nosupport=Mikään paikallinen tiedostojärjestelmä ei voi tukea kiintiöitä.
 index_mountmod=Voit ottaa tiedostojärjestelmän kiintiöt käyttöön <a href='$1'>levy- ja verkkotiedostojärjestelmät</a> -moduulissa.
+
 lgroups_failed=Ryhmien luettelointi epäonnistui
 lgroups_tablist=Ryhmäluettelo
 lgroups_eallow=Et voi muokata kiintiöitä tässä tiedostojärjestelmässä
@@ -182,13 +196,17 @@ lgroups_tofixed=Osoite 1
 lgroups_emailheader=Sähköposti kiintiöitä lähentäville ryhmille
 lgroups_email=Lähetä sähköpostia ryhmille?
 lgroups_tovirt=Virtualmin-verkkotunnuksen omistaja
+
 sgroup_egroup=Et voi muokata tämän ryhmän kiintiöitä
 sgroup_efs=Et voi muokata kiintiöitä tässä tiedostojärjestelmässä
+
 ssync_ecannot=Et voi asettaa oletuskiintiötä tälle tiedostojärjestelmälle
+
 suser_euser=Et voi muokata tämän käyttäjän kiintiöitä
 suser_efs=Et voi muokata kiintiöitä tässä tiedostojärjestelmässä
 suser_emaxblocks=Et voi myöntää lohkon rajoituksia, jotka ylittävät $1 
 suser_emaxfiles=Et voi myöntää tiedostorajoja, jotka ylittävät $1 
+
 ufilesys_title=Käyttäjäkiintiöt
 ufilesys_return=tiedostojärjestelmäluettelo
 ufilesys_ecannot=Et voi muokata '$1' -kiintiöitä
@@ -208,6 +226,7 @@ ufilesys_copydesc=Kopioi kaikille tiedostojärjestelmille tämän käyttäjän k
 ufilesys_copy=Kopioi kiintiöt
 ufilesys_grace=armo
 ufilesys_enone=Käyttäjätunnusta ei annettu
+
 ugracef_title=Grace Times
 ugracef_return=käyttäjäluettelo
 ugracef_ecannot=Armoaikoja ei voi muokata tässä tiedostojärjestelmässä
@@ -216,9 +235,11 @@ ugracef_graces=Käyttäjän armoajat <tt>$1</tt>
 ugracef_block=Blokkikiintiölle
 ugracef_file=Tiedostokiintiölle
 ugracef_update=Päivittää
+
 ugraces_esave=Armoaikojen tallentaminen epäonnistui
 ugraces_eedit=Armoaikoja ei voi muokata tässä tiedostojärjestelmässä
 ugraces_enumber='$1' ei ole numero
+
 lusers_failed=Käyttäjien luettelointi epäonnistui
 lusers_tablist=Käyttäjäluettelo
 lusers_tabdefault=Oletuskiintiöt
@@ -264,12 +285,14 @@ lusers_from=Alkaen: sähköpostiosoite
 lusers_mass=Päivitä valitut käyttäjät
 lusers_cc=Lähetä sähköpostia myös
 lusers_nocc=ei kukaan
+
 grace_seconds=sekuntia
 grace_minutes=Pöytäkirja
 grace_hours=tuntia
 grace_days=päivää
 grace_weeks=viikkoa
 grace_months=Kuukaudet
+
 log_activate_u=Käytössä $1 käyttäjien kiintiöt
 log_activate_g=Ryhmäkiintiöt käytössä $1 : llä
 log_activate_ug=Käytössä $1 käyttäjien ja ryhmien kiintiöt
@@ -287,6 +310,7 @@ log_check=Tarkastettu kiintiöt prosentilla 1
 log_copy_u=Kopioitu käyttäjän $1 kiintiöt
 log_copy_g=Kopioitu ryhmän $1 kiintiöt
 log_support=Ota kiintiötuki käyttöön $1 : lle
+
 email_err=Sähköpostivaihtoehtojen tallentaminen epäonnistui
 email_ecannot=Sinulla ei ole oikeutta muokata sähköpostivaihtoehtoja
 email_einterval=Puuttuva tai virheellinen aikaväli
@@ -299,6 +323,7 @@ gemail_msg=Ryhmän $1 levyn käyttö tiedostojärjestelmässä $2 on saavuttanut
 email_subject=levykiintiö ylitetty
 gemail_subject=levykiintiö ylitetty
 email_eto=Puuttuu kohde-sähköpostiosoite
+
 umass_title=Päivitä käyttäjäkiintiöt
 umass_header=Kiintiön muutokset koskevat valittuja käyttäjiä
 umass_sblocks=Pehmeän lohkon raja
@@ -315,6 +340,7 @@ umass_esfiles=Puuttuva tai virheellinen pehmeän tiedoston rajoitus
 umass_ehfiles=Puuttuva tai virheellinen kiintolevyraja
 umass_count=Alla olevat muutokset koskevat $1 valittua käyttäjää ..
 umass_err=Käyttäjäkiintiöiden päivitys epäonnistui
+
 gmass_title=Päivitä ryhmäkiintiöt
 gmass_header=Kiintiön muutokset koskevat valittuja ryhmiä
 gmass_count=Alla olevat muutokset koskevat $1 valittuja ryhmiä.

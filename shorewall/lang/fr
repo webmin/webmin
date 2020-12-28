@@ -18,6 +18,7 @@ index_statusdesc=Cliquez ce bouton pour visualiser les tables et règles Shorewa
 index_dump=Afficher le dump
 index_check=Vérifier le Firewall
 index_checkdesc=Cliquez ce bouton pour tester les règles shorewall avant de les appliquer avec la commande "<tt>shorewall check</tt>".
+
 list_move=Déplacer
 list_auto=Automatique
 list_none=Aucun
@@ -28,6 +29,7 @@ list_manual=Éditer le fichier manuellement
 list_manualdesc=Cliquez sur ce bouton pour pouvoir éditer manuellement le fichier $1 de Shorewall dans lequel sont enregistrées les entrées ci-dessus.
 list_ecannot=Vous n'êtes pas autorisé à édition cette table de Shorewall
 list_delete=Supprimer la sélection
+
 restart_err=L'application de la configuration a échoué
 refresh_err=Le raffraichissement de la configuration a échoué
 start_err=Le démarrage du firewall a échoué
@@ -38,6 +40,7 @@ check_title=Vérification du Firewall
 check_ok=..la configuration de votre firewall semble correcte.
 check_failed=..une erreur a été trouvé dans la configuration de votre firewall !
 check_cmd=Vérification de la configuration...
+
 zones_title=Zones Réseau
 zones_desc=Les zones listées sur cette page représentent les différents réseaux connectables depuis votre système. Néanmoins, ces entrées n'ont aucun effet sur le firewall - elles définissent juste leurs noms et leurs descriptions.
 zones_add=Ajouter une nouvelle zone réseau.
@@ -59,6 +62,7 @@ zones_edesc=Description de zone manquante
 zones_ipv4=IPv4
 zones_ipsec=IPsec
 zones_eopts=Les options de la zone sont invalides
+
 policy_title=Règles par Défaut
 policy_desc=Cette page vous permet de définir les règles par défaut à appliquer sur le trafic entre les différentes zones du firewall. Elles pourront être modifié pour certaines machines ou certains type de trafic sur la page "Règles Firewall".<br><br>Pour plus de détails voir <A HREF="http://www.shorewall.net/">le site Web Shorewall</A>
 policy_add=Ajouter une nouvelle règle par défaut
@@ -79,6 +83,7 @@ policy_ulog=Logue dans ULOG
 policy_efw=&lt;Firewall&gt; ne peut être selectionné en source ET en destination
 policy_elimit=Trafic Limite manquant ou invalide
 policy_eburst=Burst Trafic manquant ou invalide
+
 rules_title=Règles Firewall
 rules_desc=Cette table liste les exceptions apportées aux règles par défaut pour certains types de trafic, sources ou destinations. Les actions choisies seront appliquées aux paquets IP correspondant aux critères choisis à la place de ceux définis par défaut.<br><br>Pour plus de détails voir <A HREF="http://www.shorewall.net/">le site Web Shorewall</A>
 rules_add=Ajouter une nouvelle règle firewall
@@ -117,6 +122,7 @@ rules_norate=Aucune limite
 rules_noset=Tous les utilisateurs
 rules_eaction=Aucune action n'est sélectionnée
 rules_none2=Aucun
+
 tos_title=Types de Services
 tos_desc=Cette page défini les types de service IP (ToS) par type de trafic pouvant être utilisé pour augmenter ou diminuer la priorité des paquets.<br><br>Pour plus de détails voir <A HREF="http://www.shorewall.net/">le site Web Shorewall</A>
 tos_add=Ajouter un nouveau type de service
@@ -135,6 +141,7 @@ tos_edit=Editer un Type de Service
 tos_create=Créer un nouveau Type de Service
 tos_header=Détails du Type de Service
 tos_err=Enregistrement du type de service impossible
+
 interfaces_title=Interfaces Réseau
 interfaces_desc=Toutes les interfaces réseau que vous voulez gérer avec Shorewall doivent être listées ici et associée avec la zone à connecter. L'interface de loopback <tt>lo</tt> ne doit jamais être listée ici.
 interfaces_add=Ajouter une nouvelle interface réseau
@@ -151,6 +158,7 @@ interfaces_header=Détails de l'Interface Réseau
 interfaces_err=Enregistrement des interface réseau impossible
 interfaces_eiface=Nom d'interface manquante ou invalide
 interfaces_ebroad=Adresse de broadcast manquante ou invalide
+
 masq_title=Masquerading
 masq_desc=Les entrées listées sur cette page définissent les translation d'adresses réseau en masquerade routés entre certains réseaux et une interface particulière.<br><br>Pour plus de détails voir <A HREF="http://www.shorewall.net/">le site Web Shorewall</A>
 masq_add=Ajouter une nouvelle règle de masquerading
@@ -178,6 +186,7 @@ masq_emnet=Adresse de sous-réseau manquante ou invalide
 masq_emnete=Liste d'exception réseau vide
 masq_esnat=Invalide adresse SNAT IP
 masq_eipsec=Option IPsec manquants
+
 nat_title=NAT Statique
 nat_desc=La liste de translation statique d'adresse dans cette table est utilisée pour définir une correspondance exacte entre une adresse IP externe et l'adresse RFC1918 d'une machine derrière le firewall. Le NAT Statique est souvent utilisé pour permettre une connection sur un serveur interne depuis l'extérieur.<br><br>Pour plus de détails voir <A HREF="http://www.shorewall.net/">le site Web Shorewall</A>
 nat_add=Ajouter une nouvelle entrée NAT Statique
@@ -196,6 +205,7 @@ nat_local=Actif pour le firewall ?
 nat_eext=Invalide adresse IP externe
 nat_eint=Invalide adresse IP interne
 nat_evirt=Invalide numéro d'interface virtuelle
+
 proxyarp_title=Proxy ARP
 proxyarp_desc=Cette page vous permet de configurer votre système pour répondre aux requêtes sur des adresses IP autres que les siennes, ainsi il pourra faire suivre les paquets de ces adresses vers leur destinations réelles.<br><br>Pour plus de détails voir <A HREF="http://www.shorewall.net/">le site Web Shorewall</A>
 proxyarp_add=Ajouter une nouvelle adresse Proxy ARP
@@ -210,6 +220,7 @@ proxyarp_header=Détails de l'adresse Proxy ARP
 proxyarp_err=Enregistrement des adresses Proxy ARP impossible
 proxyarp_have=La route vers la machine existe ?
 proxyarp_eaddr=Adresse Proxy ARP manquante ou invalide
+
 routestopped_title=Quand Arrêté
 routestopped_desc=Par défaut lorsque Shorewall est stoppé il bloque l'accès à TOUTES les machines sur le système. Cette page permet de définir les machines ou réseaux pouvant avoir accès après l'arrêt.
 routestopped_add=Ajouter une nouvelle adresse
@@ -224,6 +235,7 @@ routestopped_err=Enregistrement des adresse d'accès impossible
 routestopped_eaddr=Pas d'adresse saisie
 routestopped_all=Toutes les adresses
 routestopped_list=Adresses et réseaux listés...
+
 tunnels_title=Tunnels VPN
 tunnels_desc=Cette page liste les tunnels VPN passant au travers du firewall et devant être autorisés dans la configuration de Shorewall.<br><br>Pour plus de détails voir <A HREF="http://www.shorewall.net/">le site Web Shorewall</A>
 tunnels_add=Ajouter un nouveau tunnel VPN
@@ -253,6 +265,7 @@ tunnels_generic=Générique
 tunnels_generic_l=Générique, pour le protocole ...
 tunnels_gsel=Zones listées
 tunnels_eopenvpn=Le numéro de port du tunnel OpenVPN est invalide
+
 hosts_0=Zone
 hosts_1=Interface
 hosts_2=Adresse IP ou réseau
@@ -260,14 +273,17 @@ hosts_opts=Options du hôte
 hosts_ip=Adresse ou réseau $1
 hosts_mac=Adresse MAC $1
 hosts_any=N'importe quel hôte
+
 edit_before=Avant l'entrée $1
 edit_after=Après l'entrée $1
+
 blacklist_add=Ajouter un nouveau hôte à blacklister.
 blacklist_0=Hôte ou réseau
 blacklist_1=Protocole
 blacklist_2=Portes
 blacklist_host=Hôte ou réseau
 blacklist_proto=Protocole
+
 providers_0=Nom
 providers_1=Numéro
 providers_3=Interface
@@ -281,22 +297,28 @@ providers_err=Échec lors de la sauvegarde du fournisseur de routage
 providers_ename=Nom du fournisseur manquant ou invalide
 providers_enumber=Numéro du fournisseur manquant ou invalide
 providers_egateway=Passerelle manquante ou invalide
+
 acl_nochange=Peut appliquer, arrêter et démarrer la configuration Shorewall ?
+
 opts_ipsec=Zone IPsec
 opts_dhcp=L'interface utilise DHCP
 opts_proxyarp=Activer Proxy ARP
+
 comment_add=Ajouter un nouveau commentaire.
 comment_edit=Éditer un commentaire
 comment_create=Créer un commentaire
 comment_msg=Message
 comment_err=Échec de sauvegarde du commentaire
 comment_enone=Aucun message n'a été saisi
+
 log_stop=Pare-feu arrêté
 log_start=Pare-feu démarré
 log_restart=Pare-feu redémarré
+
 shorewall_conf_0=Variable
 shorewall_conf_1=Valeure
 shorewall_conf_2=Commentaire
+
 params_add=Ajouter un nouveau paramètre personnalisé.
 params_0=Paramètre
 params_1=Valeure

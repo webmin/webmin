@@ -14,6 +14,7 @@ index_restart=Reinicia el Dimoni Client LDAP
 index_restartdesc=Aplica la configuració actual reiniciant el dimoni client LDAP local.
 index_atboot=Inicia el Client LDAP Client En Engegar
 index_atbootdesc=Canvia si el dimoni client LDAP s'ha d'iniciar en engegar el sistema o no.
+
 server_title=Configuració del Servidor LDAP
 server_header=Servidor LDAP i opcions d'entrada
 server_host=Noms de host dels servidors LDAP
@@ -51,6 +52,7 @@ server_etimelimit=Hi falta el límit de temps de connexió o bé és invàlid
 server_ecacert=Hi falta el fitxer de certificats CA o bé és invàlid
 server_euport=Hi falta el port del servidor $1 o bé és invàlid
 server_euri=No has introduït cap servidor LDAP
+
 base_title=Bases de Recerca LDAP
 base_header=Ubicacions de recerca de directoris LDAP
 base_base=Base de recerca global
@@ -86,6 +88,7 @@ base_enetmasks=Hi falta la base dels noms de màscares
 base_ealiases=Hi falta la base dels àlies de correu
 base_enetgroup=Hi falta la base dels grups de xarxa
 base_etimelimit=Hi falta el límit de temps de recerca
+
 pam_title=Opcions d'autenticació
 pam_header=Autenticació PAM i configuració de contrasenyes
 pam_filter=Filtre LDAP addicional
@@ -106,10 +109,12 @@ pam_efilter=Hi falta el filtre LDAP addicional
 pam_elogin=Hi falta l'atribut LDAP del nom d'usuari o bé és invàlid
 pam_egroupdn=Hi falta el grup LDAP per forçar-ne la pertinença
 pam_emember=Hi falta l'atribut LDAP dels membres del grup
+
 switch_title=Serveis que Utilitzen LDAP
 switch_service=Servei
 switch_srcs=Origen de les dades
 switch_return=als serveis que utilitzen LDAP
+
 ldap_emodule=El mòdul Perl $1 necessari per parlar amb el servidor LDAP no està instal·lat. Fes clic <a href='$2'>aquí</a> per fer que Webmin el descarregui i l'instal·li ara.
 ldap_emodule2=El mòdul Perl $1 necessari per parlar amb el servidor LDAP no està instal·lat.
 ldap_econf=No s'ha trobat al sistema el fitxer $1 de configuració del client LDAP
@@ -119,6 +124,7 @@ ldap_elogin=No s'ha pogut vincular el servidor LDAP $1 com a $2: $3
 ldap_anon=anònim
 ldap_eparse=No s'ha pogut analitzar l'URI $1 del servidor LDAP
 ldap_etls=No s'ha pogut canviar al mode TLS: $1
+
 browser_title=Explorador LDAP
 browser_econn=No es pot utilitzar l'explorador LDAP: $1
 browser_base=Explorant:
@@ -129,6 +135,7 @@ browser_attrs=Atributs de l'objecte
 browser_parent=Explora el pare
 browser_none=Cap
 browser_sel=Bé
+
 order_nisplus=NIS+
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=impressores d'usuaris
 order_xfn=XFN
 order_mdns4=DNS multiretransmissió
 order_mdns4_minimal=DNS multiretransmissió (mínim)
+
 desc_aliases=Àlies de sendmail
 desc_mail=Àlies de sendmail
 desc_hosts=Adreces de hosts
@@ -177,6 +185,7 @@ desc_printers=Impressores
 desc_ipnodes=Nodes IP
 desc_timezone=Zones horàries
 desc_locale=Localitzacions
+
 eswitch_title=Edició de Servei
 eswitch_egone=El servei no existeix!
 eswitch_header=Detalls del servei
@@ -196,6 +205,7 @@ eswitch_continue=Continua la recerca
 eswitch_none=Cap
 eswitch_err=No s'ha pogut desar el servei
 eswitch_enone=No has seleccionat cap origen!
+
 log_server=S'ha modificat la configuració del servidor LDAP
 log_base=S'han modificat les bases de recerca LDAP
 log_pam=S'han modificat les opcions d'autenticació
@@ -205,6 +215,7 @@ log_delboot=S'ha desactivat el dimoni client LDAP en engegar el sistema
 log_start=S'ha iniciat el dimoni client LDAP
 log_stop=S'ha aturat el dimoni client LDAP
 log_restart=S'ha reiniciar el dimoni client LDAP
+
 check_title=Validació de Configuració LDAP
 check_base=S'està buscant la base LDAP dels usuaris...
 check_ebase=...no s'ha trobat cap base a la configuració del client!

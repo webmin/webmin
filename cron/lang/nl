@@ -27,6 +27,7 @@ index_ok=Zoeken
 index_searchres=Cron taken die overeenkomen met $1..
 index_reset=Reset Zoeken
 index_econfigcheck=Cron jobs kunnen niet beheerd worden op uw systeem, omdat de module configuratie niet geldig is : $1
+
 edit_title=Bewerk Cron Opdracht
 create_title=Maak Cron Opdracht Aan
 edit_ecannot=U bent niet bevoegd om de cron opdrachten voor deze gebruiken
@@ -64,6 +65,7 @@ lcedit_special_weekly=wekelijks (op zondag)
 lcedit_special_monthly=maandelijks (op de 1e)
 lcedit_special_yearly=jaarlijks (op 1 jan)
 lcedit_special_reboot=wanneer systeem boot
+
 save_err=Fout bij het opslaan van cron opdrachten
 save_ecmd=U heeft geen uit te voeren commando ingevuld
 save_euser=U moet een gebruiker selecteren
@@ -72,6 +74,7 @@ save_eallow=De gebruiker '$1' is niet bevoegd om cron te benaderen
 save_ecannot=U bent niet bevoegd om cron opdrachten aan te maken of te bewerken voor '$1'
 save_enone=U heeft geen $1 gekozen om uit te voeren
 save_ecannot2=U bent niet bevoegd om cron taken aan te maken
+
 allow_title=Control Cron Toegang
 allow_desc=Dit formulier stelt u in staat om aan te geven welke gebruikers cron opdrachten aanmaken uitvoeren.
 allow_ecannot=U kunt niet de gebruikers toegang tot cron beheren
@@ -80,6 +83,7 @@ allow_all2=Weiger alle gebruikers behalve root
 allow_all3=Accepteer alle gebruikers
 allow_allow=Accepteer alleen gebruikers in de lijst
 allow_deny=Weiger alleen de gebruikers in de lijst
+
 env_title1=Bewerk Omgevingsvariabele
 env_title2=Omgevingsvariabele Aanmaken
 env_name=Variabel naam
@@ -95,11 +99,13 @@ env_where2=Omgevingsvariabele verplaatsen
 env_top=Voor alle Crontaken voor gebruiker
 env_bot=Na alle Crontaken
 env_leave=Huidige positie
+
 exec_title=Cron Opdracht Uitvoeren
 exec_ecannot=U bent niet bevoegd om cron opdrachten voor deze gebruiker uit te voeren
 exec_cmd=Uitvoer van opdracht $1 ..
 exec_cmdbg=Uitvoeren van opdracht $1 als een achtergrond proces
 exec_none=Geen uitvoer gegenereerd
+
 acl_users=Kan cron opdrachten bewerken voor
 acl_all=Alle gebruikers
 acl_this=Huidige Webmin gebruiker
@@ -115,6 +121,7 @@ acl_move=Kan Crontaken verplaatsen?
 acl_kill=Kan Crontaken stoppen?
 acl_hourly=Limiet voor aantal jobs per uur?
 acl_hourlydef=Zoals gezet in de Module Config
+
 log_modify=Gewijzigde cron opdracht voor $1
 log_modify_l=Gewijzigde cron opdracht "$2" voor $1
 log_create=Aangemaakt cron opdracht voor $1
@@ -132,21 +139,26 @@ log_move=Cron taak verplaatst voor $1
 log_crons_delete=$1 Cron taken verwijderd
 log_crons_disable=Uitschakelen $1 Cron taken
 log_crons_enable=Aanzetten $1 Cron taken
+
 ecopy=Er is een fout gevonden in de nieuwe Cron configuratie: $1 $2
+
 when_min=iedere minuut
 when_hour=Ieder uur om $1 over het hele uur
 when_day=iedere dag om $2:$1
 when_month=iedere maand op de $3e dag om $2:$1
 when_weekday=iedere $3 om $2:$1
 when_cron=op cron tijd $1
+
 ucwhen_min=Iedere minuut
 ucwhen_hour=Ieder uur om $1 over het hele uur
 ucwhen_day=Iedere dag om $2:$1
 ucwhen_month=Iedere maand op de $3e dag om $2:$1
 ucwhen_weekday=Iedere $3 om $2:$1
 ucwhen_cron=Op cron tijd $1
+
 move_err=Fout bij het verplaatsen van Cron taak
 move_etype=Deze taak kan niet worden verplaatst
+
 kill_err=Fout bij het beëindigen van Cron taak
 kill_ecannot=U bent niet bevoegd om deze taak te beëindigen
 kill_egone=Wordt niet meer uitgevoerd
@@ -155,10 +167,12 @@ kill_title=Beëindig Cron Taak
 kill_rusure=Weet u zeker dat u het proces $1 met PID $2 wilt beëindigen?
 kill_rusure2=Weet u zeker dat u het proces $1 met PID $2 en alle subprocessen, wilt beëindigen?
 kill_ok=Ja, Beëindig Het
+
 range_all=Uitvoeren op alle dagen
 range_start=Alleen uitvoeren van $1
 range_end=tot $1
 range_estart=Ontbrekende of ongeldige start datum in uitvoerbereik
 range_eend=Ontbrekende of ongeldige einddatum in uitvoerbereik
+
 delete_err=Fout bij het verwijderen van Cron taken
 delete_enone=Niet geselecteerd

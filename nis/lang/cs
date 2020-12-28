@@ -1,6 +1,7 @@
 index_title=NIS klient a server
 index_return=NIS menu
 index_enis=Váš počítač neumožňuje, aby byla nainstalována podpora NIS klienta a serveru
+
 client_title=NIS klient
 client_header=Konfiguace NIS klienta
 client_domain=NIS doména
@@ -14,8 +15,10 @@ client_edomain=Chybějící nebo nesprávné jméno domény
 client_eserver='$1' není platné jméno serveru
 client_eypwhich=Chyba při napojování k NIS doméně
 client_ehosts='$1' není v souboru hostů
+
 switch_title=Klientské služby
 switch_service=Služba
+
 order_= 
 order_nisplus=NIS+
 order_nis=NIS
@@ -27,6 +30,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=Uživatelské tiskárny
 order_xfn=XFN
+
 server_title=NIS server
 server_header=Nastavení NIS serveru
 server_boot=Povolit NIS server?
@@ -60,6 +64,7 @@ server_solaris=Poznámka - v Solarisu, klientské a serverové NIS domény jsou 
 server_edir=Neplatný adresář zdrojových souborů
 server_epwdir=Neplatný adresář zdrojových souborů hesel
 server_enis=Váš počítač neumožňuje, aby byla nainstalována podpora NIS serveru.
+
 tables_title=NIS tabulky
 tables_switch=Editovat NIS tabulku :
 tables_header=$1 NIS tabulka z $2
@@ -76,6 +81,7 @@ tables_search=Hledat
 tables_nomatch=Žádné záznamy neodpovídají vaší podmínce hledání
 tables_build=Přestavět NIS tabulky
 tables_buildmsg=Klepnutím na tlačítko přestavíte NIS databáze z dat v tabulce. Pokud jste provedli jakékoliv změny, budete muset tento úkon provést, jinak nebudou tyto změny pro NIS klienty k dispozici.
+
 desc_aliases=Aliasy v Sendmailu
 desc_mail=Aliasy v Sendmailu
 desc_hosts=Adresa hosta
@@ -111,6 +117,7 @@ desc_printers=Tiskárny
 desc_ipnodes=IP nody
 desc_timezone=Časové zóny
 desc_locale=Lokální
+
 hosts_title=Adresa hosta
 hosts_ip=IP adresa
 hosts_name=Jméno hosta
@@ -119,6 +126,7 @@ hosts_err=Chyba při ukládání hosta
 hosts_eip=Chybějící nebo nesprávná IP adresa
 hosts_ename=Chybějící nebo nesprávné jméno hosta
 hosts_aliases=Aliases
+
 group_name=Jméno skupiny
 group_gid=ID skupiny
 group_members=Členové skupiny
@@ -129,6 +137,7 @@ group_none=Není vyžadováno žádné heslo
 group_encrypted=Předkryptované heslo
 group_clear=NPředkryptované heslo
 group_err=Chyba při ukládání skupiny
+
 passwd_name=Uživatelské jméno
 passwd_uid=ID uživatele
 passwd_real=Skutečné jméno
@@ -166,6 +175,7 @@ passwd_emax=Neplatný maximální počet dnů
 passwd_emin=Neplatný minimální počet dnů
 passwd_einactive=Neplatný počet neaktivních dnů
 passwd_eexpiry=Neplatné datum vypršení
+
 services_name=Název služby
 services_proto=Protokol
 services_port=Port
@@ -174,6 +184,7 @@ services_header=Nastavení Inetd síťové služby
 services_err=Chyba při ukládání služby
 services_ename=Chybějící nebo nesprávný název služby
 services_eport=Chybějící nebo nesprávný port
+
 protocols_name=Jméno protokolu
 protocols_number=Číslo
 protocols_aliases=Aliasy
@@ -182,6 +193,7 @@ protocols_header=Nastavení síťového protokolu
 protocols_err=Chyba při ukládání protokolu
 protocols_ename=Chybějící nebo nesprávné jméno
 protocols_enumber=Chybějící nebo nesprávné číslo
+
 netgroup_name=Název síťové skupiny
 netgroup_members=Členové
 netgroup_title=Síťová skupina
@@ -196,6 +208,7 @@ netgroup_ename=Chybějící nebo nesprávné jméno síťové skupiny
 netgroup_ehost=Chybějící nebo nesprávný host v řádku $1
 netgroup_euser=Chybějící nebo nesprávný uživatel v řádku $1
 netgroup_edom=Chybějící nebo nesprávná NIS doména v řádku $1
+
 ethers_mac=Ethernet adresa
 ethers_ip=IP adresa
 ethers_title=Ethernet adresa
@@ -203,6 +216,7 @@ ethers_header=Nastavení ethernet mapování
 ethers_err=Chyba při ukládání ethernet adresy
 ethers_emac=Neplatná ethernet adresa
 ethers_eip=Neplatná IP adresa
+
 rpc_name=Název programu
 rpc_number=Číslo
 rpc_aliases=Aliasy
@@ -211,6 +225,7 @@ rpc_header=Detaily RPC programu
 rpc_err=Chyba při ukládání RPC programu
 rpc_ename=Chybějící nebo nesprávný název programu
 rpc_enumber=Chybějící nebo nesprávné číslo
+
 networks_title=Síťová adresa
 networks_ip=IP adresa
 networks_name=Název sítě
@@ -219,6 +234,7 @@ networks_err=Chyba při ukládání sítě
 networks_eip=Chybějící nebo nesprávná IP adresa
 networks_ename=Chybějící nebo nesprávný název
 networks_aliases=Aliasy
+
 netmasks_net=Síťová adresa
 netmasks_mask=Síťová maska
 netmasks_title=Síťová maska
@@ -226,6 +242,7 @@ netmasks_header=Detaily síťové masky
 netmasks_err=Chyba při ukládání síťové masky
 netmasks_enet=Chybějící nebo nesprávná síťová adresa
 netmasks_emask=Chybějící nebo nesprávná síťová maska
+
 aliases_from=Adresa
 aliases_to=Alias pro
 aliases_title=Alias v Sendmailu
@@ -233,6 +250,7 @@ aliases_header=Detaily aliasu v Sendmailu
 aliases_err=Chyba při ukládání aliasu
 aliases_efrom=Chybějící nebo nesprávná adresa
 aliases_eto=Chybějící v adresách
+
 security_title=Zabezpečení server
 security_header=Nastavní zabezpečení NIS serveru
 security_ok=Uložit a použít

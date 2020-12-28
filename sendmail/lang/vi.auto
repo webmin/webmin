@@ -11,6 +11,7 @@ index_version2=Phiên bản gửi thư $1, cấu hình $2
 index_xversion=Phiên bản gửi thư $1 
 index_version=Cấu hình gửi thư $1 
 index_sendmail=Gửi thư
+
 opts_title=Tùy chọn gửi thư
 opts_ecannot=Bạn không được phép chỉnh sửa tùy chọn sendmail
 opts_ds=Gửi thư đi qua máy chủ
@@ -57,6 +58,7 @@ opts_qso=Sắp xếp hàng đợi thư theo
 opts_priority=Sự ưu tiên
 opts_host=Tên máy chủ
 opts_time=Thời gian nhận
+
 aliases_title=Bí danh thư
 aliases_ecannot=Bạn không được phép chỉnh sửa bí danh
 aliases_enofile=Không có tệp bí danh nào được xác định trong cấu hình Sendmail của bạn
@@ -73,6 +75,7 @@ aliases_return=danh sách bí danh
 aliases_toomany=Có quá nhiều bí danh thư trên hệ thống của bạn để hiển thị trên trang này.
 aliases_go=Tìm bí danh phù hợp:
 aliases_delete=Xóa các bí danh đã chọn
+
 aform_ecannot=Bạn không được phép chỉnh sửa bí danh này
 aform_type0=không ai
 aform_type1=Địa chỉ email
@@ -90,11 +93,13 @@ aform_val=Bí danh để
 aform_afile=Biên tập ..
 aform_return=bí danh
 aform_cmt=Sự miêu tả
+
 afile_title=Chỉnh sửa tập tin địa chỉ
 afile_desc=Sử dụng vùng văn bản bên dưới để chỉnh sửa địa chỉ trong tệp $1.
 afile_efile=Bạn không được phép chỉnh sửa $1.
 afile_undo=Hoàn tác thay đổi
 afile_ewrite=Không thể ghi vào tệp địa chỉ : $1 
+
 ffile_title=Chỉnh sửa tập tin bộ lọc
 ffile_desc=Sử dụng mẫu dưới đây để thiết lập quy tắc lọc trong tệp $1.
 ffile_efile=Bạn không được phép chỉnh sửa $1.
@@ -110,6 +115,7 @@ ffile_other=Nếu không thì chuyển tiếp tới $1
 ffile_err=Không thể lưu tệp bộ lọc
 ffile_ematch=Trận đấu mất tích
 ffile_eaction=Thiếu địa chỉ chuyển tiếp
+
 rfile_title=Chỉnh sửa tập tin tự động
 rfile_desc=Sử dụng vùng văn bản bên dưới để chỉnh sửa thông báo tự động trong $1. Thông báo có thể chứa các macro $ SUB DỰ ÁN, $ TỪ, $ ĐẾN, $ NGÀY và $ CƠ THỂ sẽ được mở rộng khi tính năng tự động được kích hoạt.
 rfile_desc2=Bạn cũng có thể đặt các tiêu đề thư thêm hoặc thay thế các mặc định được sử dụng trong tự động trả lời bằng cách đặt các dòng như: <br><tt> Từ: foo@bar.com </tt><br> <tt>Chủ đề: Vào kỳ nghỉ</tt> <br> ở đầu tin nhắn, được phân tách khỏi phần thân bằng một dòng trống duy nhất.
@@ -129,6 +135,7 @@ rfile_from=Từ: địa chỉ để trả lời
 rfile_auto=Tự động (dựa trên địa chỉ người nhận)
 rfile_efrom=Thiếu từ: địa chỉ
 rfile_fromdesc=Địa chỉ From: phải luôn được chỉ định khi có thể, vì phương thức tự động có thể không đáng tin cậy.
+
 asave_err=Không thể lưu bí danh
 asave_ecannot2=Bạn không được phép chỉnh sửa bí danh
 asave_ecannot=Bạn không được phép chỉnh sửa bí danh này
@@ -145,9 +152,11 @@ asave_etype5=Tệp tự động '$1' không hợp lệ
 asave_etype4none=Không có chương trình nào
 asave_etype6=Tệp bộ lọc '$1' không hợp lệ
 asave_esame=Bạn chỉ được phép tạo một bí danh có cùng tên với thông tin đăng nhập webmin của bạn
+
 adelete_err=Không thể xóa bí danh
 adelete_enone=Không được chọn
 adelete_ecannot=Bạn không được phép xóa bí danh $1 
+
 cws_title=Tên miền địa phương
 cws_ecannot=Bạn không được phép chỉnh sửa tên miền địa phương
 cws_domains=Tên miền được xử lý bởi máy chủ này
@@ -156,6 +165,7 @@ cws_desc2=Lưu ý rằng chỉ bao gồm một tên miền trong danh sách thư
 cws_err=Không thể lưu tên miền cục bộ
 cws_ehost='$1' không phải là tên miền hoặc máy chủ hợp lệ
 cws_eip='$1' là địa chỉ IP, không phải tên miền
+
 masq_title=Masquerading tên miền
 masq_ecannot=Bạn không được phép cấu hình hóa trang
 masq_domain=Giả trang như miền
@@ -167,12 +177,14 @@ masq_err=Không thể lưu tên miền giả mạo
 masq_edomain='$1' không phải là miền hợp lệ để giả trang thành
 masq_ehost='$1' không phải là tên miền hoặc máy chủ hợp lệ
 masq_eip='$1' là địa chỉ IP, không phải tên miền
+
 trusts_title=Người dùng đáng tin cậy
 trusts_ecannot=Bạn không được phép chỉnh sửa người dùng đáng tin cậy
 trusts_users=Người dùng cục bộ được tin cậy bởi sendmail
 trusts_desc=Nếu người dùng cục bộ cố gắng gửi email, sendmail sẽ chỉ cho phép người dùng cung cấp địa chỉ <tt>From:</tt> khác nếu người dùng có trong danh sách bên dưới. Hạn chế này tồn tại để ngăn người dùng giả mạo email với <tt>Từ:</tt> địa chỉ nguồn gốc từ hệ thống của bạn.
 trusts_err=Không thể lưu người dùng đáng tin cậy
 trusts_euser='$1' không phải là người dùng hợp lệ
+
 virtusers_title=Địa chỉ ánh xạ
 virtusers_ecannot=Bạn không được phép chỉnh sửa ánh xạ địa chỉ
 virtusers_efeature=Cấu hình sendmail của bạn không bật tính năng ánh xạ địa chỉ (<tt>virtuser</tt>). <a href='$1'>Nhấp vào đây</a> để thiết lập các tính năng gửi thư.
@@ -190,6 +202,7 @@ virtusers_return=danh sách bản đồ địa chỉ
 virtusers_toomany=Có quá nhiều ánh xạ địa chỉ trên hệ thống của bạn để hiển thị trên trang này.
 virtusers_go=Tìm ánh xạ địa chỉ phù hợp:
 virtusers_delete=Xóa ánh xạ địa chỉ đã chọn
+
 vform_edit=Chỉnh sửa ánh xạ địa chỉ
 vform_create=Tạo bản đồ địa chỉ
 vform_for=Gửi thư cho
@@ -206,6 +219,7 @@ vform_err_tempfail=Thất bại tạm thời
 vform_err_protocol=Lỗi giao thức
 vform_end=Di chuyển đến cuối
 vform_ecannot=Bạn không được phép chỉnh sửa ánh xạ địa chỉ này
+
 vsave_ecannot=Bạn không được phép chỉnh sửa ánh xạ địa chỉ
 vsave_ecannot2=Bạn không được phép chỉnh sửa ánh xạ địa chỉ này
 vsave_emax=Bạn không được phép tạo nhiều hơn $1 ánh xạ địa chỉ
@@ -221,8 +235,10 @@ vsave_eaddr='$1' không phải là địa chỉ hợp lệ
 vsave_ecannot4=Bạn không được phép tạo ánh xạ tới các miền
 vsave_edomdom=Chỉ một tên miền có thể được ánh xạ sang tên miền khác
 vsave_ecannot5=Bạn không được phép tạo ánh xạ trả về lỗi
+
 vdelete_err=Không thể xóa ánh xạ địa chỉ
 vdelete_ecannot=Bạn không được phép xóa ánh xạ cho $1 
+
 mailers_title=Định tuyến tên miền
 mailers_cannot=Bạn không được phép chỉnh sửa định tuyến tên miền
 mailers_edirective=Tệp cấu hình sendmail của bạn không có chỉ thị cần thiết cho định tuyến tên miền.
@@ -236,6 +252,7 @@ mailers_delivery=Chuyển
 mailers_to=Gửi đến ..
 mailers_return=danh sách định tuyến tên miền
 mailers_delete=Xóa các tuyến miền được chọn
+
 mform_edit=Chỉnh sửa định tuyến
 mform_create=Tạo định tuyến
 mform_for=Gửi thư cho
@@ -259,12 +276,15 @@ mform_procmail=Procmail
 mform_mail11=Thư điện tử11
 mform_error=lỗi
 mform_ecannot=Bạn không được phép chỉnh sửa định tuyến tên miền
+
 msave_ecannot=Bạn không được phép chỉnh sửa định tuyến tên miền
 msave_err=Không thể lưu định tuyến tên miền
 msave_edomain='$1' không phải là máy chủ hoặc miền hợp lệ
 msave_edup=Định tuyến tên miền cho '$1' đã được xác định
+
 mdelete_err=Không thể xóa bộ định tuyến miền
 mdelete_ecannot=Bạn không được phép xóa tuyến đường cho $1 
+
 generics_title=Địa chỉ gửi đi
 generics_cannot=Bạn không được phép chỉnh sửa địa chỉ đi
 generics_econfig=Tệp cấu hình sendmail của bạn không có chỉ thị cần thiết cho ánh xạ địa chỉ đi.
@@ -278,11 +298,13 @@ generics_return=danh sách bản đồ địa chỉ
 generics_toomany=Có quá nhiều địa chỉ gửi đi trên hệ thống của bạn để hiển thị trên trang này.
 generics_go=Tìm địa chỉ gửi phù hợp:
 generics_delete=Xóa địa chỉ gửi đi đã chọn
+
 gform_edit=Chỉnh sửa bản đồ
 gform_create=Tạo bản đồ
 gform_from=Thư đến từ
 gform_to=Thay đổi thành
 gform_ecannot=Bạn không được phép chỉnh sửa địa chỉ gửi đi này
+
 gsave_ecannot=Bạn không được phép chỉnh sửa địa chỉ đi
 gsave_ecannot2=Bạn không được phép chỉnh sửa địa chỉ gửi đi này
 gsave_ecannot3=Bạn không được phép lưu địa chỉ gửi đi này
@@ -291,8 +313,10 @@ gsave_efrom='$1' không hợp lệ từ địa chỉ
 gsave_ematch=Địa chỉ từ không khớp với '$1'
 gsave_eto='$1' không phải là địa chỉ mới hợp lệ
 gsave_ealready=Ánh xạ địa chỉ đi cho '$1' đã tồn tại
+
 gdelete_err=Không thể xóa ánh xạ địa chỉ đi
 gdelete_ecannot=Bạn không được phép xóa ánh xạ cho $1 
+
 cgs_title=Tên miền gửi đi
 cgs_ecannot=Bạn không được phép chỉnh sửa tên miền đi
 cgs_header=Tên miền địa chỉ gửi đi
@@ -300,6 +324,7 @@ cgs_desc=Ngoài thư được gửi bởi người dùng cục bộ, sendmail s�
 cgs_err=Không thể lưu tên miền gửi đi
 cgs_ehost='$1' không phải là tên miền hoặc máy chủ hợp lệ
 cgs_eip='$1' là địa chỉ IP, không phải tên miền
+
 domains_title=Ánh xạ tên miền
 domains_ecannot=Bạn không được phép chỉnh sửa ánh xạ tên miền
 domains_econfig=Tệp cấu hình sendmail của bạn không có chỉ thị cần thiết cho ánh xạ tên miền.
@@ -310,17 +335,21 @@ domains_from=Từ tên miền ..
 domains_to=Để tên miền ..
 domains_return=danh sách bản đồ tên miền
 domains_delete=Xóa ánh xạ tên miền đã chọn
+
 dform_edit=Chỉnh sửa bản đồ
 dform_create=Tạo bản đồ
 dform_from=Từ tên miền
 dform_to=Đến miền
 dform_ecannot=Bạn không được phép chỉnh sửa ánh xạ tên miền
+
 dsave_ecannot=Bạn không được phép chỉnh sửa ánh xạ tên miền
 dsave_err=Không thể lưu ánh xạ tên miền
 dsave_edomain='$1' không phải là một tên miền hợp lệ
 dsave_ealready=Ánh xạ tên miền cho '$1' đã tồn tại
+
 ddelete_err=Không thể xóa ánh xạ tên miền
 ddelete_ecannot=Bạn không được phép xóa ánh xạ cho $1 
+
 access_title=Kiểm soát thư rác
 access_ecannot=Bạn không được phép cấu hình kiểm soát thư rác
 access_efeature=Cấu hình sendmail của bạn không có tính năng kiểm soát thư rác (<tt>access_db</tt>). <a href='$1'>Nhấp vào đây</a> để thiết lập các tính năng gửi thư.
@@ -333,6 +362,7 @@ access_return=danh sách kiểm soát thư rác
 access_toomany=Có quá nhiều quy tắc kiểm soát thư rác trên hệ thống của bạn để hiển thị trên trang này.
 access_go=Tìm quy tắc kiểm soát thư rác phù hợp:
 access_delete=Xóa các quy tắc kiểm soát thư rác được chọn
+
 sform_edit=Chỉnh sửa quy tắc kiểm soát thư rác
 sform_create=Tạo quy tắc kiểm soát thư rác
 sform_source=Nguồn thư
@@ -354,6 +384,7 @@ sform_discard=Hủy âm thầm
 sform_err=Mã lỗi
 sform_msg=Thông điệp
 sform_ecannot=Bạn không được phép chỉnh sửa quy tắc kiểm soát thư rác này
+
 ssave_err=Không thể lưu quy tắc kiểm soát thư rác
 ssave_etype0='$1' không phải là địa chỉ hợp lệ
 ssave_etype1='$1' không phải là địa chỉ mạng hợp lệ
@@ -362,8 +393,10 @@ ssave_etype3='$1' không phải là miền hợp lệ
 ssave_ecode='$1' không phải là mã lỗi SMTP hợp lệ
 ssave_ealready=Quy tắc kiểm soát spam cho '$1' đã tồn tại
 ssave_ecannot2=Bạn không được phép lưu quy tắc kiểm soát thư rác này
+
 sdelete_err=Không thể xóa các quy tắc kiểm soát thư rác
 sdelete_ecannot=Bạn không được phép xóa quy tắc cho $1 
+
 relay_title=Rơle miền
 relay_ecannot=Bạn không được phép chỉnh sửa tên miền chuyển tiếp
 relay_eversion=Chỉ các phiên bản sendmail 8,9 trở lên mới hỗ trợ tính năng miền chuyển tiếp.
@@ -372,6 +405,7 @@ relay_desc1=Trừ khi được phép bởi các quy tắc <a href='$1'>kiểm so
 relay_desc2=Nếu hệ thống của bạn đang phục vụ như một cổng cho một số tên miền không thể truy cập trực tiếp từ bên ngoài mạng của bạn (sử dụng tính năng <a href='$1'>định tuyến tên miền</a>), thì tất cả các tên miền đó sẽ được liệt kê ở đây.
 relay_err=Không thể lưu tên miền chuyển tiếp
 relay_edomain='$1' không phải là một tên miền hợp lệ
+
 mailq_title=Hàng đợi thư
 mailq_count=$1 tin nhắn
 mailq_ecannot=Bạn không được phép xem hàng đợi thư
@@ -401,12 +435,15 @@ mailq_search=Tìm tin nhắn xếp hàng ở đâu
 mailq_quar=Cách ly
 mailq_refresh=Làm mới hàng đợi thư
 mailq_refreshdesc=Tải lại trang này để hiển thị trạng thái hiện tại của hàng đợi thư.
+
 flushq_title=Hàng đợi
 flushq_desc=Buộc gửi thử tất cả các tin nhắn bằng lệnh $1 ..
 flushq_desc2=Buộc gửi phân phối $1 tin nhắn đã chọn ..
 flushq_ecannot=Bạn không được phép xóa hàng đợi thư
+
 searchq_title=Kết quả tìm kiếm xếp hàng
 searchq_none=Không tìm thấy tin nhắn xếp hàng.
+
 delq_err=Không thể xóa tin nhắn
 delq_ecannot=Bạn không được phép gửi tin nhắn
 delq_locked=Tệp hiện đang bị khóa để gửi
@@ -422,6 +459,7 @@ delq_force=Buộc xóa
 delq_ecannot2=bạn không thể xóa tin nhắn này
 delq_rusure=Bạn có chắc chắn muốn xóa $1 tin nhắn được xếp hàng đã chọn không?
 delq_confirm=Xóa tin nhắn
+
 boxes_title=Hộp thư người dùng
 boxes_user=Người sử dụng
 boxes_size=Kích thước hộp thư
@@ -431,6 +469,7 @@ boxes_sent=Gửi mail
 boxes_ecannot=Bạn không được phép đọc email
 boxes_toomany=Có quá nhiều người dùng trên hệ thống của bạn để liệt kê tất cả các hộp thư của họ.
 boxes_go=Xem thư cho người dùng:
+
 mail_title=Email người dùng
 mail_from=Từ
 mail_date=Ngày
@@ -471,6 +510,7 @@ mail_move=Chuyển tới:
 mail_copy=Sao chép vào:
 mail_rfc=Từ dòng
 mail_eexists=Tin nhắn không còn tồn tại!
+
 view_title=Đọc mail
 view_desc=Tin nhắn $1 trong $2 
 view_desc2=Tin nhắn $1 cho người dùng $2 
@@ -501,6 +541,7 @@ view_egone=Tin nhắn này không còn tồn tại
 view_afile=Tên tập tin đính kèm
 view_atype=Kiểu đính kèm
 view_asize=Kích thước tập tin
+
 compose_title=Soạn email
 reply_title=Trả lời email
 forward_title=Chuyển tiếp email
@@ -512,6 +553,7 @@ reply_attach2=Tệp đính kèm phía máy khách và máy chủ
 reply_send=Gửi thư
 reply_ecannot=Bạn không được phép gửi thư như người dùng này
 reply_body=Tin nhắn văn bản
+
 send_err=Không thể gửi thư
 send_eto=Thiếu địa chỉ
 send_efrom=Thiếu từ địa chỉ
@@ -524,6 +566,7 @@ send_eattach=Tệp đính kèm không thể có tổng kích thước $1 kB.
 send_eperms=Người dùng $1 không thể đọc $2 
 send_eperms2=Bạn không được phép gửi tệp $1 
 send_epath=Sendmail thực thi $1 không tồn tại.
+
 delete_title=Xóa thư
 delete_rusure=Bạn có chắc chắn muốn xóa $1 tin nhắn đã chọn khỏi $2 không? Điều này có thể mất một thời gian cho một tập tin thư lớn. Cho đến khi xóa xong, không nên thực hiện hành động nào khác.
 delete_rusure2=Bạn có chắc chắn muốn xóa tin nhắn này từ $1 không? Điều này có thể mất một thời gian cho một tập tin thư lớn. Cho đến khi xóa xong, không nên thực hiện hành động nào khác.
@@ -536,6 +579,7 @@ delete_emoveuser=Người dùng di chuyển thư đến không tồn tại
 delete_emovecannot=Bạn không được phép chuyển thư đến người dùng được chỉ định
 delete_emovenone=Không có thư được chọn để di chuyển
 delete_nobutton=Không có nút bấm
+
 search_title=kết quả tìm kiếm
 search_ecannot=Bạn không được phép tìm kiếm email của người dùng này
 search_ematch=Bạn phải nhập văn bản để phù hợp với.
@@ -549,6 +593,7 @@ search_results4=$1 thư phù hợp với tìm kiếm của bạn ..
 search_local=Trong các thư mục địa phương
 search_all=Trong tất cả các thư mục
 search_eboolean=Các tìm kiếm Boolean sử dụng cả 'và' và 'hoặc' không được hỗ trợ
+
 file_title=Chỉnh sửa tập tin Sendmail
 file_desc=Sử dụng hộp văn bản bên dưới để chỉnh sửa thủ công tệp Sendmail $1.
 file_undo=Hoàn tác thay đổi
@@ -564,6 +609,7 @@ file_emode=Chế độ không xác định!
 file_err=Không thể chỉnh sửa tập tin
 file_ealias=Định dạng không hợp lệ cho dòng tệp bí danh : $1 
 file_etab=Định dạng không hợp lệ cho dòng tệp bản đồ : $1 
+
 acl_opts=Có thể chỉnh sửa tùy chọn sendmail?
 acl_ports=Có thể chỉnh sửa cổng mạng?
 acl_cws=Có thể chỉnh sửa tên miền địa phương?
@@ -630,6 +676,7 @@ acl_usersm=Người dùng phù hợp
 acl_asame=Giống như tên người dùng
 acl_usersu=Với UID trong phạm vi
 acl_spam=Địa chỉ kiểm soát thư rác người dùng này có thể chỉnh sửa
+
 log_opts=Thay đổi tùy chọn sendmail
 log_ports=Thay đổi cổng mạng
 log_alias_create=Đã tạo bí danh $1 
@@ -680,6 +727,7 @@ log_delete_domains=Đã xóa $1 ánh xạ tên miền
 log_delete_accesses=Đã xóa $1 mục kiểm soát thư rác
 log_delete_generics=Đã xóa $1 địa chỉ gửi đi
 log_delete_mailers=Đã xóa $1 tuyến đường tên miền
+
 match_from=Từ: trận đấu
 match_subject=Chủ đề: trận đấu
 match_to=Tới: trận đấu
@@ -699,6 +747,7 @@ match_!status=Trạng thái không khớp
 match_!body=Cơ thể không phù hợp
 match_!size=Kích thước nhỏ hơn
 match_!headers=Tiêu đề không khớp
+
 features_title=Cấu hình Sendmail M4
 features_desc=Trang này liệt kê các mục liên quan từ tệp cấu hình Sendmail M4 $1, từ đó tệp cấu hình thực tế $2 được tạo.
 features_type=Nhập cảnh
@@ -718,6 +767,7 @@ features_efeatures=Không tìm thấy thư mục cơ sở cấu hình Sendmail M
 features_econfig=Vị trí của thư mục cơ sở Sendmail M4 và tệp cấu hình M4 chưa được đặt trong cấu hình mô-đun <a href='$1'>của bạn</a>. Nếu bạn đã cài đặt Sendmail từ nguồn, chúng sẽ nằm trong thư mục nguồn gốc.
 features_move=Di chuyển
 features_manual=Chỉnh sửa tập tin theo cách thủ công
+
 feature_add=Thêm mục cấu hình
 feature_edit=Chỉnh sửa mục cấu hình
 feature_header=Chi tiết nhập cấu hình M4
@@ -738,12 +788,15 @@ feature_emailer=Người gửi thư $1 đã tồn tại
 feature_eostype=Loại hệ điều hành đã được xác định là $1 
 feature_manual=Chỉnh sửa tệp M4
 feature_mdesc=Trang cho phép bạn chỉnh sửa thủ công tệp cấu hình Sendmail M4 $1. Hãy cẩn thận, vì không có kiểm tra cú pháp sẽ được thực hiện trên các chỉnh sửa của bạn.
+
 feat_access_db=Tập tin kiểm soát thư rác
 feat_virtusertable=Ánh xạ địa chỉ
 feat_mailertable=Định tuyến tên miền
 feat_genericstable=Địa chỉ gửi đi
 feat_domaintable=Ánh xạ tên miền
+
 mailer_local=Giao hàng Unix cục bộ
+
 build_title=Xây dựng lại cấu hình Sendmail
 build_em4=Lệnh $1 cần thiết để xây dựng lại tệp cấu hình Sendmail không được tìm thấy trên hệ thống của bạn.
 build_ebuild=Không thể xây dựng cấu hình : $1 
@@ -752,13 +805,16 @@ build_rusure2=Xin lưu ý rằng nếu bạn đã thực hiện các thay đổi
 build_ok=Vâng, thay thế nó ngay bây giờ
 build_diff=Những thay đổi sau sẽ được thực hiện đối với tệp cấu hình Sendmail của bạn ..
 build_nodiff=Tập tin cấu hình sendmail của bạn đã được cập nhật.
+
 stop_err=Không thể dừng gửi thư
 stop_ecannot=Bạn không được phép dừng sendmail
 stop_epid=Sendmail dường như không chạy
 restart_epids=Không thể tìm thấy quy trình sendmail
 restart_ekill=Không thể báo hiệu các quy trình gửi thư : $1 
+
 start_err=Không thể bắt đầu sendmail
 start_ecannot=Bạn không được phép bắt đầu sendmail
+
 ports_title=Cổng mạng
 ports_name=Tên cổng
 ports_addr=Nghe theo địa chỉ

@@ -26,6 +26,7 @@ index_start=Hasi programatutako komandoen zerbitzaria
 index_startdesc=Hasi programatutako komandoak exekutatzen dituen <tt>atd</tt> atzeko planoko zerbitzariaren prozesua. Hori beharrezkoa da aginduak zehaztutako orduetan exekutatzeko.
 index_boot=Zerbitzaria abiarazi nahi al duzu?
 index_bootdesc=Aldatu ezarpen hau programatutako komandoen zerbitzaria abiaraztean gaitzeko edo desgaitzeko.
+
 edit_title=Programatutako Agindua
 edit_cmd=Gidoi osoa exekutatu
 edit_shortcmd=Exekutatzeko agindua
@@ -35,6 +36,7 @@ edit_run=Exekutatu orain
 edit_ejob=Planifikatutako komandoa ez da existitzen!
 edit_ecannot=Ez duzu baimenik aurreikusitako komando hau editatzeko
 edit_showfull=Erakutsi script osoa.
+
 create_err=Ezin izan da sortu ordutegiaren komandoa
 create_euser=Erabiltzaile-izena falta edo baliogabea
 create_edate=Data edo denbora falta edo baliogabea
@@ -43,22 +45,28 @@ create_efuture=Data eta ordua iraganean daude
 create_edir=Direktorio falta edo baliogabea
 create_ecannot=Ez duzu baimenik erabiltzaile honetarako aurreikusitako komandoak sortzeko
 create_eallow=Zehaztutako erabiltzaileari ez zaio baimena programatutako aginduak exekutatzeko
+
 delete_err=Ezin izan da komandoa bertan behera utzi
 delete_egone=Komandoa dagoeneko exekutatu edo ezabatu da
+
 acl_users=Komando programatuak edita ditzakezu
 acl_all=Erabiltzaile guztiak
 acl_this=Uneko Webmin erabiltzailea
 acl_only=Erabiltzaileak bakarrik
 acl_except=Guztiak erabiltzaileak izan ezik
 acl_allow=Editatzeko baimendua erabiltzaileei?
+
 run_title=Komandoa exekutatzen
 run_output=Programatutako komandoaren irteera ..
 run_none=Ez da irteerarik sortu
+
 allow_err=Ezin izan da erabiltzaile baimenduak gorde
 allow_ecannot=Ezin duzu baimendutako erabiltzaileak kudeatu
 allow_eusers=Ez da erabiltzaileik sartu
+
 deletes_err=Ezin izan da komandoak ezeztatu
 deletes_enone=Ez da hautatu
+
 log_allow=Aldatutako baimendutako erabiltzaileak
 log_create_job=Komando programatua sortu da $1 erako
 log_delete_job=$1 programaren agindua bertan behera utzi da
@@ -68,5 +76,6 @@ log_stop=Programatutako komandoen zerbitzaria gelditu da
 log_start=Programatutako komandoen zerbitzaria hasi da
 log_bootup=Programatutako komandoen zerbitzaria gaituta dago abioan
 log_bootdown=Desgaituta dago programatutako komandoen zerbitzaria abioan
+
 stop_err=Ezin izan da zerbitzaria gelditu
 start_err=Ezin izan da zerbitzaria abiarazi

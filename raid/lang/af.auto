@@ -21,6 +21,7 @@ index_mailfromnone=Standaard (<tt>wortel</tt>)
 index_program=Opdrag om te loop wanneer probleme opgespoor word
 index_programnone=Moenie hardloop nie
 index_monitor=Monitering aangeskakel?
+
 linear=Lineêr (saamgevoeg)
 raid0=RAID0 (Gestreep)
 raid1=RAID1 (weerspieël)
@@ -29,6 +30,7 @@ raid5=RAID5 (Distribution Parity)
 raid6=RAID6 (Dual Distribution Parity)
 raid10=RAID10 (Gestreep en gespieël)
 blocks=blokke
+
 create_title=Skep RAID-toestel
 create_header=RAID-opsieopsies
 create_device=Toestellêer
@@ -62,6 +64,7 @@ create_o2_layout=2 Offset kopieë
 create_n3_layout=3 Naby kopieë
 create_f3_layout=3 Ver kopieë
 create_o3_layout=3 Offset kopieë
+
 view_title=RAID-toestel
 view_header=RAID-opsieopsies
 view_device=Toestellêer
@@ -117,6 +120,7 @@ view_mountmsg=Voer 'n gids in en klik op hierdie knoppie om na 'n vorm te gaan v
 view_mountmsg2=Klik op hierdie knoppie om hierdie RAID-toestel vir virtuele geheue op u stelsel te gebruik.
 view_blocks=$1 blokke
 view_sparegroup=Onderdele groep
+
 mkfs_title=Skep lêerstelsel
 mkfs_header2=Met hierdie vorm kan u 'n nuwe $2 -lêerstelsel op $1 bou. <b>Alle</b> bestaande data sal uitgevee word!
 mkfs_options=Nuwe Linux-lêerstelsel-opsies
@@ -124,6 +128,7 @@ mkfs_err=Kon nie lêerstelsel skep nie
 mkfs_exec=Voer opdrag $1 uit.
 mkfs_failed=.. opdrag misluk!
 mkfs_ok=.. opdrag voltooi.
+
 emkraid=<tt>mkraid</tt> misluk : $1 
 eraidstop=<tt>aanval</tt> misluk : $1 
 eraidstart=<tt>aanval</tt> misluk : $1 
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=Skep $1 RAID-toestel $2 
 log_stop=Gedeaktiveerde RAID-toestel $1 
 log_start=RAID-toestel $1 geaktiveer
@@ -147,14 +153,17 @@ log_grow=Groeide RAID-toestel $1 tot 'n totaal van $2 skywe
 log_convert_to_raid6=Het RAID5-toestel $1 na 'n RAID6-toestel omgeskakel
 log_convert_to_raid5=Het RAID6-toestel $1 na 'n RAID5-toestel omgeskakel
 log_notif=Opgedateer RAID-probleemkennisgewingsopsies
+
 notif_err=Kon nie RAID-probleemkennisgewingopsies stoor nie
 notif_emailaddr=Ontbrekende of ongeldige kennisgewingadres
 notif_emailfrom=Ontbrekend of ongeldig Vanaf adres
 notif_eprogram=Program ontbreek of bestaan nie om te loop nie
+
 delete_title=Vee RAID-skikking uit
 delete_rusure=Is u seker dat u die RAID-skikking $1, wat $2 van skyfspasie gebruik, wil verwyder?
 delete_ok=Ja, verwyder dit
 delete_eidx=Geen RAID-skikking is gekies nie!
+
 remove_title=Verwyder die partisie van RAID Array
 remove_rusure=Is u seker dat u partisie $2 van RAID-skikking $1 wil verwyder?
 remove_ok=Ja, verwyder dit

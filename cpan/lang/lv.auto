@@ -28,6 +28,7 @@ index_tabinstall=Instalējiet moduli
 index_tabsuggest=Ieteiktie moduļi
 index_allmods2=Trūkst moduļu, kurus izmanto Webmin
 index_wantmods=Instalējamie moduļi
+
 download_err=Neizdevās instalēt moduli
 download_elocal=Vietējā lieta nav dota
 download_elocal2='$1' nepastāv
@@ -65,6 +66,7 @@ download_ebuild=Vienam vai vairākiem Perl moduļiem ir jāveido $1, bet šis Pe
 download_yum=Perl moduļa $1 instalēšana no paketes $2.
 download_missingok=CPAN trūkst moduļu
 download_fallback=Dažus moduļus neizdevās instalēt no pakotnēm, tā vietā mēģinot instalēt no avota.
+
 install_title=Instalējiet moduli
 install_untar=Neapgriezts moduļa fails
 install_make=Kompilācijas modulis
@@ -84,11 +86,13 @@ install_err2=Moduli var instalēt arī no CPAN ar komandu $1.
 install_exec=Tiek izpildīts $1.
 install_efile=Moduļa fails $1 vairs nepastāv
 install_needunlink=Jūs varat mēģināt instalēt vēlreiz, dodoties atpakaļ uz iepriekšējo lapu un izvēloties dažādas iespējas. Pretējā gadījumā <a href='$1'>noklikšķiniet šeit, lai izdzēstu pagaidu pakotnes failus</a>, lai ietaupītu vietu diskā.
+
 cpan_sel=Moduļi zem $1.
 cpan_title=Atlasiet moduli Perl
 cpan_search=Atrodiet nosauktos moduļus
 cpan_match=Moduļi, kas atbilst $1.
 cpan_none=Sakritības nav atrastas.
+
 edit_title=Informācija par moduli
 edit_header=Informācija par moduļiem
 edit_mod=Moduļa nosaukums
@@ -105,6 +109,7 @@ edit_method=Uzstādīta no plkst
 edit_rpm=RPM pakotne $1 
 edit_debian=Debian pakotne $1 
 edit_manual=Manuāla Perl moduļa instalēšana
+
 uninstall_title=Atinstalējiet moduli
 uninstall_rusure=Vai tiešām vēlaties atinstalēt Perl moduli $1 ? Tiks izdzēsti šādi faili :
 uninstall_rusure2=Vai tiešām vēlaties atinstalēt Perl moduli $1 un apakšmoduli (-us) $2 ? <br> Tiks izdzēsti šādi faili :
@@ -112,7 +117,9 @@ uninstall_ok=Atinstalēt tūlīt
 uninstall_rpm=Modulis tiks noņemts, atinstalējot paketi $1 RPM.
 uninstall_debian=Modulis tiks noņemts, atinstalējot paketi $1 Debian.
 uninstall_err=Neizdevās atinstalēt moduli
+
 delete_efile=Nederīgs pakotnes fails!
+
 uninstalls_title=Atinstalējiet moduļus
 uninstalls_err=Neizdevās atinstalēt moduļus
 uninstalls_enone=Nav atlasīts

@@ -38,6 +38,7 @@ index_restartdesc=Kliknite ovaj gumb kako biste aktivirali trenutnu konfiguracij
 index_iptables=Postavljanje preusmjeravanja luka
 index_squid=Linija proxy poslužitelja
 index_manual=Uređivanje konfiguracijskih datoteka
+
 manual_title=Uređivanje konfiguracijskih datoteka
 manual_file=Odaberite konfiguracijsku datoteku za uređivanje:
 manual_change=Promijeniti
@@ -45,6 +46,7 @@ manual_editing=Upotrijebite donji tekstni okvir da biste ručno uredili konfigur
 manual_err=Konfiguriranje datoteke nije uspjelo
 manual_efile=Nevažeće ime konfiguracijske datoteke!
 manual_ecannot=Nije vam dopušteno ručno uređivanje konfiguracijskih datoteka
+
 buttsave=Uštedjeti
 buttdel=Izbrisati
 buttcreat=Stvoriti
@@ -54,6 +56,7 @@ default=Zadano
 none=nijedan
 on=Na
 off=od
+
 acl_header1=Stvorite ACL
 acl_header2=Uredi ACL
 acl_name=ACL Naziv
@@ -109,6 +112,7 @@ acl_file=Spremite ACL vrijednosti u datoteku
 acl_nofile=Konfiguracija lignje
 acl_infile=Odvojena datoteka
 acl_keep=Samo koristite postojeći sadržaj datoteke?
+
 aclsave_failsave=Spremanje ACL-a nije uspjelo
 aclsave_faildel=Brisanje ACL-a nije uspjelo
 aclsave_epr=Ovaj ACL koristi se proxy ograničenjem
@@ -128,11 +132,13 @@ aclsave_eemin=Nevažeći završetak min
 aclsave_efile=Nije vam dopušteno pisati u ACL datoteku '$1'
 aclsave_enofile=Nije unesen naziv ACL datoteke
 aclsave_ealready=ACL datoteka već postoji
+
 cach_ecannot=Nije vam dopušteno pristupiti podacima upravitelja predmemorije
 cach_err=greška
 cach_nfound=Program za upravljanje predmemorijom lignje <tt>$1</tt> nije pronađen u vašem sustavu. Možda je vaša <a href=/config.cgi?$2>konfiguracija modula</a> netočna.
 cach_return=indeks lignji
 cach_esame=<b>Squid cachemgr.cgi izvršni</b> postavljen je na Webmin-ov program cachemgr.cgi, a ne onaj koji isporučuje Squid.
+
 chown_header=Promijeni vlasništvo
 chown_stop=Zaustavljanje lignje. ..
 chown_done=.. Gotovo
@@ -140,6 +146,7 @@ chown_chown=Promjena vlasništva. ..
 chown_restart=Ponovno pokretanje lignje. ..
 chown_failrestart=Ponovno pokretanje lignje nije uspjelo ..
 chown_return=indeks lignji
+
 clear_ecannot=Nije vam dopušteno da očistite i obnovite predmemoriju
 clear_header=Očistite i ponovno izgradite predmemoriju
 clear_msgclear=Jeste li sigurni da želite očistiti i obnoviti Squid cache? Ovo će izbrisati <b>sve</b> datoteke koje ste spremili i ponovo pokrenuti Squid poslužitelj.
@@ -153,6 +160,7 @@ clear_failrestart=Ponovno pokretanje lignje nije uspjelo ..
 clear_return=indeks lignji
 clear_url=Uklonite jedan URL iz predmemorije:
 clear_ok=Ukloniti
+
 eacl_ecannot=Nije vam dopušteno uređivanje kontrole pristupa
 eacl_header=Kontrola pristupa
 eacl_acls=Popisi kontrole pristupa
@@ -169,8 +177,10 @@ eacl_nopr=Nisu definirana ograničenja proxyja.
 eacl_addpr=Dodajte ograničenje proxyja.
 eacl_noprr=Nisu definirana ograničenja odgovora proxyja
 eacl_addprr=Dodajte ograničenje odgovora proxyja.
+
 eacl_replypr=Odgovorite na ograničenja proxyja
 eacl_replynopr=Nisu definirana ograničenja proxy odgovora
+
 eacl_icpr=Ograničenja ICP-a
 eacl_noicpr=Nisu definirana ICP ograničenja
 eacl_addicpr=Dodajte ICP ograničenje.
@@ -187,6 +197,7 @@ eacl_eclass=Nije odabrana nijedna programska klasa
 eacl_cname=Unesite ime
 eacl_file=Iz datoteke $1
 eacl_hdelete=Izbrišite odabrana ograničenja
+
 eadm_ecannot=Nije vam dopušteno uređivanje administrativnih opcija
 eadm_header=Opcije administracije
 eadm_aao=Opcije administracije i najave
@@ -213,6 +224,7 @@ eadm_caf=Datoteka najavne predmemorije
 eadm_annp=Period najave
 eadm_buttsave=Uštedjeti
 eadm_return=indeks lignji
+
 eauth_ecannot=Nije vam dopušteno uređivanje provjere autentičnosti proxyja
 eauth_header=Autentifikacija proxyja
 eauth_aopt=Opcije provjere autentičnosti
@@ -226,6 +238,7 @@ eauth_pusers=Korisnici proxyja
 eauth_nopusers=Trenutno nije definiran nijedan proxy korisnik.
 eauth_addpuser=Dodajte novog proxy korisnika.
 eauth_return=indeks lignji
+
 ec_ecannot=Nije vam dopušteno uređivanje predmemorijskih opcija
 ec_header=Opcije predmemorije
 ec_cro=Mogućnosti predmemoriranja i traženja
@@ -280,6 +293,7 @@ ec_return=indeks lignji
 ec_maxreplies=Maksimalne veličine tijela odgovora
 ec_maxrn=Veličina (kB)
 ec_maxracls=Za zahtjeve koji odgovaraju ACL-ovima (ostavite prazan za sve)
+
 ech_header=Stvorite Host predmemorije
 ech_header1=Uređivanje domaćina predmemorije
 ech_cho=Opcije domaćina predmemorije
@@ -324,6 +338,7 @@ ech_origin=Tretirati domaćina kao poslužitelj porijekla?
 ech_force=Domaćin prisiljavanja: zaglavlje u
 ech_same=nepromijenjen
 ech_ssl=Spajanje pomoću SSL-a?
+
 eicp_ecannot=Nije vam dopušteno uređivanje drugih predmemorija
 eicp_header=Ostali predmemorije
 eicp_opcs=Ostali proxy poslužitelji predmemorije
@@ -361,6 +376,7 @@ eicp_ttype=Tip
 eicp_tpport=Proxy port
 eicp_tiport=ICP port
 eicp_delete=Izbrišite odabrane predmemorije
+
 elogs_ecannot=Nije vam dopušteno uređivanje zapisnika
 elogs_header=sječa drveta
 elogs_lalo=Mogućnosti zapisivanja i zapisivanja
@@ -394,6 +410,7 @@ elogs_notset=Nespreman
 elogs_dont=Ne prijavi se
 elogs_file=Datoteka $1
 elogs_squid=Standard lignje
+
 emem_ecannot=Nije vam dopušteno uređivanje potrošnje memorije
 emem_dheader=Memorija i upotreba diska
 emem_header=Upotreba memorije
@@ -419,6 +436,7 @@ emem_lfuda=Najmanje često korišteni dinamički
 emem_hlru=Heap se najmanje često koristi
 emem_return=indeks lignji
 emem_mrp=Pravila zamjene memorije
+
 emisc_ecannot=Nije vam dopušteno uređivanje raznih opcija
 emisc_header=Ostale mogućnosti
 emisc_mo=Ostale mogućnosti
@@ -455,6 +473,7 @@ emisc_wccpin=WCCP dolazna adresa
 emisc_wccpout=WCCP izlazna adresa
 emisc_none=nijedan
 emisc_virtual=Virtualan
+
 eports_ecannot=Nije vam dopušteno uređivanje portova i umrežavanja
 eports_header=Portovi i umrežavanje
 eports_pano=Portovi i mogućnosti umrežavanja
@@ -480,6 +499,7 @@ eports_unc=Izvode li se nečista SSL-ova?
 eports_checkhost=Potvrdite imena hostova u URL-ovima?
 eports_underscore=Želite li dopustiti podcrtavanje u imenima domaćina?
 eports_all=svi
+
 eprogs_ecannot=Nije vam dopušteno uređivanje pomoćnih programa
 eprogs_header=Programi za pomoć
 eprogs_chpo=Mogućnosti programa za pomoć predmemoriranjem
@@ -508,6 +528,7 @@ eprogs_ttl=Vrijeme predmemoriranja autentičnosti
 eprogs_aittl=Provjerite vrijeme predmemorije IP-a
 eprogs_realm=Područje provjere autentičnosti
 eprogs_return=indeks lignji
+
 euser_header=Stvorite proxy korisnika
 euser_header1=Uređivanje proxy korisnika
 euser_pud=Pojedinosti o proxyju
@@ -516,6 +537,7 @@ euser_p=Zaporka
 euser_u1=nepromijenjen
 euser_e=Omogućeno?
 euser_return=popis korisnika
+
 ahttp_header=Stvorite ograničenje proxyja
 ahttp_header1=Uređivanje ograničenja proxyja
 ahttp_pr=Ograničenje proxyja
@@ -525,10 +547,13 @@ ahttp_d=poreći
 ahttp_ma=Odgovaraju ACL-ovi
 ahttp_dma=Ne odgovaraju ACL-ovima
 ahttp_return=ACL popis
+
 ahttp_replyheader=Stvorite ograničenje odgovora proxyja
 ahttp_replyheader1=Uredi ograničenje odgovora proxyja
 ahttp_replypr=Ograničenje odgovora proxyja
+
 sahttp_ftspr=Spremanje ograničenja odgovora proxyja nije uspjelo
+
 aicp_header=Stvorite ICP ograničenje
 aicp_header1=Uređivanje ICP ograničenja
 aicp_ir=Ograničenje ICP-a
@@ -538,7 +563,9 @@ aicp_d=poreći
 aicp_ma=Odgovaraju ACL-ovi
 aicp_dma=Ne odgovaraju ACL-ovima
 aicp_return=ACL popis
+
 saicp_ftsir=Spremanje ICP ograničenja nije uspjelo
+
 icache_ecannot=Nije vam dopušteno inicijalizirati predmemoriju
 icache_ftic=Inicijalizacija predmemorije nije uspjela
 icache_ymcautrsa=Morate odabrati korisnika za pokretanje lignje kao
@@ -546,7 +573,9 @@ icache_euser=Korisnik za pokretanje lignje kao što ne postoji
 icache_itscwtc=Inicijaliziranje predmemorije lignje naredbom <tt>$1</tt>.
 icache_return=indeks lignji
 icache_title=Inicijalizirajte predmemoriju
+
 restart_ftrs=Ponovno konfiguriranje lignji nije uspjelo
+
 sadmin_ftsao=Spremanje administrativnih opcija nije uspjelo
 sadmin_header=Promijeni vlasništvo
 sadmin_msg1=Promijenili ste korisnika ili grupu na kojoj se radi lignja. Da bi ovo pravilno stupilo na snagu, trebalo bi ažurirati vlasništvo nad svim predmemoriranim datotekama i zapisnicima i ponovno pokrenuti lignje.
@@ -556,10 +585,12 @@ sadmin_inavea='$1' nije valjana adresa e-pošte
 sadmin_inavh='$1' nije valjano ime računala
 sadmin_inavap='$1' nije valjano razdoblje najave
 sadmin_inavp="$1" nije važeći port
+
 sauth_ftsao=Spremanje opcija provjere autentičnosti nije uspjelo
 sauth_iomuf=Nevažeće ili nedostajuće ime datoteke korisnika
 sauth_iomd=Nevažeća ili nedostajuća domena
 sauth_msg1=Vaša verzija Squid nije sastavljena s podrškom za proxy provjeru identiteta
+
 scache_ftsco=Spremanje opcija predmemorije nije uspjelo
 scache_emsg0=Morate unijeti barem jedan direktorij predmemorije
 scache_emsg1=Predmemorija direktorija "$1" ne postoji
@@ -577,14 +608,17 @@ scache_emsg12="$1" nije važeća veličina direktorija
 scache_emsg13="$1" nije važeći domaćin
 scache_emsg14="$1" nije važeći port
 scache_emaxrs=Nevažeća maksimalna veličina tijela u retku $1
+
 schost_ftsc=Spremanje predmemorije nije uspjelo
 schost_emsg1='$1' nije valjano ime hosta predmemorije
 schost_emsg2="$1" nije važeći proxy port
 schost_emsg3="$1" nije važeći ICP priključak
 schost_emsg4="$1" nije valjano vrijeme za život
 schost_emsg5='$1' nije valjano ponderiranje
+
 sicp_ftsco=Spremanje opcija predmemorije nije uspjelo
 sicp_emsg1="$1" nije valjano isteklo vrijeme
+
 slogs_ftslo=Spremanje opcija zapisivanja nije uspjelo
 slogs_emsg1='$1' nije apsolutno ime datoteke
 slogs_emsg2='$1' nije valjano ime datoteke
@@ -594,20 +628,24 @@ slogs_emsg5='$1' nije valjan popis opcija za uklanjanje pogrešaka
 slogs_efname=Nevažeće ime formata u retku $1
 slogs_effmt=Nedostaje format zapisa u retku $1
 slogs_eafile=Nedostaje ili nevažeća datoteka dnevnika u retku $1
+
 smem_ftsmo=Spremanje opcija memorije nije uspjelo
 smem_emsg1='$1' nije važeća veličina predmemorije
 smem_emsg2="$1" nije važeća oznaka visokog vodostaja
 smem_emsg3=„$1“ nije valjana oznaka s malo vode
 smem_emsg4='$1' nije važeća veličina objekta
+
 smisc_ftso=Spremanje opcija nije uspjelo
 smisc_emsg1='$1' nije važeći broj rotacija
 smisc_emsg2='$1' nije valjana domena
 smisc_emsg3='$1' nije važeći proxy
 smisc_emsg4='$1' nije važeći broj hmelja
+
 sport_ftspo=Spremanje opcija vrata nije uspjelo
 sport_emsg1='$1' nije važeći broj priključka
 sport_emsg2='$1' nije valjana adresa
 sport_emsg3='$1' nije važeća veličina međuspremnika
+
 sprog_ftshpo=Spremanje opcija pomoćnih programa nije uspjelo
 sprog_emsg1=Nedostaju opcije FTP-a
 sprog_emsg2='$1' nije valjan program
@@ -620,19 +658,23 @@ sprog_emsg8='$1' nije valjana IP adresa
 sprog_emsg9='$1' nije valjano vrijeme predmemorije
 sprog_emsg10="$1" nije važeći TTL
 sprog_echildren=Broj programa mora biti broj veći od nule
+
 suser_ftsu=Spremanje korisnika nije uspjelo
 suser_emsg1=Nevažeće ili nedostaje korisničko ime
 suser_etaken=korisničko ime je već u upotrebi
+
 start_ftsq=Nije uspjelo pokretanje lignje
 start_ecannot=Lignje vam nije dopušteno pokretanje
 stop_ftsq=Zaustavljanje lignje nije uspjelo
 stop_ecannot=Liganj vam nije dopušteno zaustaviti
+
 calamaris_ecannot=Nije vam dopušteno pristup analizi Calamaris dnevnika
 calamaris_title=Analiza dnevnika Calamaris
 calamaris_last=Ograničavanje analize na posljednje $1 retke dnevnika ..
 calamaris_eprog=Izvršni format calamaris $1 nije pronađen. Možda nije instaliran na vašem sustavu ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
 calamaris_elogs=Imenik dnevnika $1 ne sadrži nijednu <tt>access.log</tt> datoteku. Možda lignja još nije pokrenuta ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
 calamaris_gen=Izvješće generirano na $1
+
 lib_emsg1='$1' nije valjana IP adresa
 lib_seconds=sekundi
 lib_minutes=minuta
@@ -680,6 +722,7 @@ lib_aclmuip=Maks. IP adresa korisnika
 lib_buttac=Primijeni promjene
 lib_buttss=Zaustavi lignju
 lib_buttss1=Pokrenite lignje
+
 log_ports=Izmijenjene su portove i mogućnosti umrežavanja
 log_icp=Promijenjene su druge mogućnosti predmemorije
 log_mem=Izmijenjene su mogućnosti korištenja memorije
@@ -734,25 +777,31 @@ log_pools_delete=Izbrisani $1 parovi odgode
 log_delay_create=Dodan je ACL za bazen kašnjenja $1
 log_delay_modify=Izmijenjeni ACL za bazen kašnjenja $1
 log_delay_delete=Izbrisan je ACL za bazen kašnjenja $1
+
 log_delay_move=Premješten ACL za spremnik odgode $1
 log_refresh_create=Stvoreno je pravilo osvježavanja za $1
 log_refresh_modify=Izmijenjeno pravilo osvježavanja za $1
 log_refresh_delete=Izbrisano je pravilo osvježavanja za $1
+
 log_refresh_move=Premješteno je pravilo osvježavanja za $1
 log_refreshes_delete=Izbrisana $1 pravila za osvježavanje
 log_iptables=Ažurirano postavljanje preusmjeravanja vrata
 log_purge=Uklonjen je URL $1 iz predmemorije
 log_cachemgr=Izmijenjene lozinke upravitelja predmemorije
+
 acl_root=Korijenski imenik za ACL datoteke
 acl_sections=Dopuštene stranice za konfiguraciju
 acl_start=Mogu li pokrenuti i zaustaviti lignje?
 acl_restart=Mogu li primijeniti konfiguraciju lignje?
+
 always_create=Izrada izravnog dohvaćanja
 always_edit=Uređivanje izravnog dohvaćanja
 always_header=Izravno dohvaća zahtjeve koji odgovaraju ACL-ovima
+
 never_create=Stvorite neizravni dohvat
 never_edit=Uređivanje neizravnog dohvaćanja
 never_header=Nikada izravno dohvatite zahtjeve koji odgovaraju ACL-ovima
+
 delay_title=Odgoditi bazene
 delay_add=Dodajte novi bazen kašnjenja.
 delay_num=Broj
@@ -802,11 +851,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=MB
 pool_unit5=MB
+
 dpool_err=Brisanje bazena kašnjenja nije uspjelo
 dpool_enone=Nijedna nije odabrana
+
 apool_header=Dodajte ACL bazen odgode
 apool_header1=Uređivanje ACL bazena odgode
 apool_pr=ACL bazen odgode
+
 authparam_title=Programi provjere autentičnosti
 authparam_header=Opcije programa vanjske provjere autentičnosti
 authparam_ttl=Vrijeme je za spremanje lozinki za
@@ -849,6 +901,7 @@ ext_ecache=Nedostaje ili nije važeća veličina predmemorije
 ext_eprogram=Unesen je nevažeći programski put
 ext_eclash=Vrsta vanjskog programa s istim nazivom već postoji
 ext_eused=Ovaj vanjski program koristi ACL
+
 header_title=Kontrola pristupa zaglavlja
 header_none=Još nisu definirana pravila kontrole pristupa zaglavlja.
 header_name=HTTP zaglavlje
@@ -868,6 +921,7 @@ header_err=Spremanje pravila kontrole pristupa zaglavlja nije uspjelo
 header_ename=Nedostaje ili nevaljano ime zaglavlja
 header_request_header_access=Zatraži zaglavlja
 header_reply_header_access=Odgovori zaglavlja
+
 refresh_title=Osvježi pravila
 refresh_none=Još nisu definirana pravila osvježavanja.
 refresh_re=Redovan izraz
@@ -894,6 +948,7 @@ refresh_epc=Postotak koji nedostaje ili je nevažeći
 refresh_delete=Izbrišite odabrana pravila za osvježavanje
 drefresh_err=Brisanje pravila za osvježavanje nije uspjelo
 drefesh_enone=Nijedna nije odabrana
+
 iptables_title=Postavljanje preusmjeravanja luka
 iptables_inst0=Naredbe vatrozida IPtables potrebne za postavljanje preusmjeravanja vrata ne izgleda da su instalirane na vašem sustavu. Pogledajte <a href='$1'>Linux vatrozid</a> modul za više pojedinosti.
 iptables_inst1=Čini se da <a href='$1'>Linux vatrozid</a> modul nije u potpunosti postavljen na vašem sustavu. Ovaj modul koristi ovaj modul za postavljanje preusmjeravanja vrata Frox.
@@ -908,18 +963,23 @@ iptables_enet=Nedostaje ili neispravna mrežna adresa (treba biti poput 192.168.
 iptables_eiface=Nedostaje ili nije valjano mrežno sučelje
 iptables_eapply=Primjena vatrozida nije uspjela : $1
 iptables_eapply2=Primjena lignje nije uspjela : $1
+
 syslog_access=Dnevnik pristupa lignjama
 syslog_cache=Zapisnik keširanja lignje
 syslog_store=Dnevnik trgovine spremnika lignja
+
 purge_err=Brisanje URL-a iz predmemorije nije uspjelo
 purge_title=Izbriši predmemorirani URL
 purge_doing=Brisanje URL-a $1 ..
 purge_done=.. gotovo.
 purge_failed=.. neuspjeh! Pogledajte gornju poruku pogreške zbog razloga.
+
 dhttp_err=Brisanje proxy ograničenja nije uspjelo
 dhttp_enone=Nijedna nije odabrana
+
 dicp_err=Brisanje ICP ograničenja nije uspjelo
 dicp_enone=Nijedna nije odabrana
+
 cachemgr_title=Lozinke upravitelja predmemorije
 cachemgr_ecannot=Nije vam dopušteno uređivanje lozinki upravitelja predmemorije
 cachemgr_def1=Nisu potrebne lozinke

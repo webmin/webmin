@@ -23,6 +23,7 @@ index_follow=Na $1
 index_forcetar=In TAR formaat
 index_delete=Verwijder Geselecteerde Backups
 index_nostrftime=Waarschuwing - sommige backup jobs gebruiken % in hun filenamen, maar strftime substitutie is niet aangezet op de Module Config pagina.
+
 dump_dir=Directory om te backuppen
 dump_dirs=Directory's om te backuppen
 dump_fs=Filesysteem
@@ -106,6 +107,7 @@ dump_remount=Her-mount met <tt>noatime</tt> optie gedurende backup?
 dump_eftpupdate=Files toevoegen aan een bestaande archief is niet mogelijk met gebruik van FTP.
 dump_eleveldir=Alleen niveau 0 backups zijn toegestaan voor directory's die geen filesysteem mount points zijn
 dump_eupdatedir=De <tt>/etc/dumpdates</tt> file kan alleen worden geupdate voor directory's die filesysteem mount points zijn
+
 edit_err=Mislukt om backup te maken
 edit_edir=Ontbrekende backup directory
 edit_efs=File systemen van het type $1 kunnen niet worden gebackupt door deze module
@@ -127,9 +129,11 @@ edit_restore=Herstellen ..
 edit_to=$1 naar $2
 edit_tolevel=$1 naar $2 (level $3)
 edit_special=Backup planning
+
 save_err=Mislukt om backup op te slaan
 save_edir=Ontbrekende of ongeldige backup directory
 save_efs=Backup directory kan niet verandert worden naar een ander filesysteem
+
 backup_title=Backup Nu
 backup_desc=Uitvoering van backup $1 naar $2 ..
 backup_reverify=.. compleet. Nu backup aan het verificeren ..
@@ -142,6 +146,7 @@ backup_notape=.. backup overschreed de capaciteit van een enkele tape. Het verwi
 backup_egone=Backup bestaat niet!
 backup_bg=Achtergrond backup proces word gestart. U kunt dit proces volgen in de <b>Werkende Backup Jobs</b> sectie op de module hoofd pagina, en zult op de hoogte gebracht worden via email over de eind resultaten.
 backup_ecannot=U bent niet bevoegd om deze directory te backuppen
+
 restore_title=Herstellen Backup
 restore_err=Mislukt om backup te herstellen
 restore_ecommand=De opdracht $1 die nodig is voor het herstellen van $2 filesysteem backups is niet gevonden op uw systeem. Misschien is dit nog niet geinstalleerd.
@@ -185,6 +190,7 @@ restore_gzip=Decomprimeer archief?
 restore_keep=Files niet overschrijven?
 restore_emulti=Multi-file herstellen kan niet gedaan worden van een tape apparaat
 restore_emulti2=Multi-file herstellen kan niet gedaan worden van een remote server
+
 log_create=Gemaakte backup config voor $1
 log_modify=Gemodificeerde backup config voor $1
 log_delete=Verwijderde backup config voor $1
@@ -192,13 +198,16 @@ log_backup=Backup van $1 naar $2
 log_bgbackup=Gestarten backup van $1 naar $2
 log_restore=Herstelde backup van $1
 log_kill=Afgebroken backup voor $1
+
 kill_err=Mislukt om backup te beeindigen
 kill_egone=Niet langer werkend!
 kill_ecannot=U bent niet bevoegd om deze backup te beeindigen
+
 newtape_err=Mislukt om een signaal te geven voor een nieuwe tape
 newtape_egone=Backup werkt niet meer!
 newtape_estatus=Backup wacht niet meer op een nieuwe tape
 newtape_ecannot=U bent niet bevoegd om deze backup te beheren
+
 acl_edit=Mag backups maken en bewerken?
 acl_restore=Mag backups terugzetten?
 acl_cmds=Mag voor- en na opdrachten bewerken?
@@ -206,8 +215,10 @@ acl_extra=Mag extra Opdracht-regel parameters bewerken?
 acl_dirs=Toegestane directory's voor backups
 acl_all=Alle directory's
 acl_list=Alleen in de lijst ..
+
 delete_err=Mislukt om backups weg te gooien
 delete_enone=Niets geselecteerd
+
 email_already=Backup is reeds aan het werk met PID $1.
 email_ebefore=Opdracht voor de backup mislukte?
 email_verify=Controleren van backup ..
@@ -215,5 +226,6 @@ email_eafter=Opdracht na de backup mislukte?
 email_subject=Backup van $1 op $2
 email_ok=Backup succesvol
 email_failed=Backup mislukte!
+
 newtape_subject=Tape veranderde $1 voor backup van $2 op $3
 newtape_body=De backup van $2 op $3 heeft de maximale grote bereikt die is toegestaan op de tape $1. U moet een nieuwe tape plaatsen en op de 'Tape Geladen' link klikken in Webmin's Filesysteem Backup module om de backup verder te laten gaan.

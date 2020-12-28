@@ -44,6 +44,7 @@ right_upsec=Υπάρχουν διαθέσιμες ενημερώσεις πακ�
 right_recollect=Ανανεώστε τις πληροφορίες συστήματος
 right_vvirtualmin=Έκδοση Virtualmin
 right_vvm2=Έκδοση Cloudmin
+
 acl_show=Πληροφορίες συστήματος για εμφάνιση
 acl_showall=Τα παντα
 acl_showsel=Μόνο επιλεγμένα ..

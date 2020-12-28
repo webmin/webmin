@@ -1,10 +1,13 @@
 index_screate=Utwórz nowego bezpiecznego użytkownika.
+
 edit_title3=Utwórz bezpiecznego użytkownika Webmin
 edit_safe=Poziom uprawnień
 edit_safe0=Nieograniczony
 edit_safe1=Tylko bezpieczne moduły
 edit_unsafe=Zresetuj do nieograniczonego
+
 save_eunixname=Nazwa użytkownika „$1” nie jest użytkownikiem systemu Unix, dlatego nie można jej używać w trybie awaryjnym
+
 sessions_actions=Działania..
 sessions_logouts=Pokaż także wylogowane sesje.
 sessions_state=Stan
@@ -12,4 +15,5 @@ sessions_this=Ten login
 sessions_in=Zalogowany
 sessions_out=Wylogowano
 sessions_kill=Rozłączyć się..
+
 logins_title=Ostatnie logowanie Webmina

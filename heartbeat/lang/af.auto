@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Die skrip om hulpbronne van die ander node ($1) aan te v
 index_version=Hartklopweergawe $1 
 index_noversion=Waarskuwing - die weergawe van Heartbeat wat op u stelsel geïnstalleer is, kon nie outomaties opgespoor word nie. U moet dit op die <a href='$1'>module-opstelling</a> instel.
 index_status=Hartslagstatus
+
 conf_title=Opstellingsopsies
 conf_header=Opsies vir hartklopkonfigurasies
 conf_serials=Seriële hartklop-poorte
@@ -54,6 +55,7 @@ conf_auto_on=$ {Conf_enabled}
 conf_auto_off=$ {Conf_disabled}
 conf_auto_legacy=Legacy-modus
 conf_auto_=$ {Verstek}
+
 res_title=Cluster Resources
 res_node=Primêre knooppunt
 res_ips=IP-adresse
@@ -67,6 +69,7 @@ res_getserv=Kry hulpbronne
 res_hbdown=Hartslag neer
 res_up=UP
 res_down=DOWN
+
 node_create=Voeg klusterhulpbronne by
 node_edit=Wysig klusterhulpbron
 node_header=Besonderhede oor groepehulpbronne
@@ -83,6 +86,7 @@ node_enone=Primêre knooppunt ontbreek of ongeldig
 node_eip='$1' is nie 'n geldige IP-adres nie
 node_ecidr='$1' is nie 'n geldige CIDR nie
 node_ebroad='$1' is nie 'n geldige uitsaaiadres nie
+
 auth_title=Verifikasie sleutels
 auth_header=Cluster node-verifikasie
 auth_mode=Verifikasiemodus
@@ -92,6 +96,8 @@ auth_md5=MD5 met wagwoord
 auth_err=Kon nie stawingsleutels stoor nie
 auth_emd5=MD5-wagwoord ontbreek of ongeldig
 auth_esha1=SHA1-wagwoord ontbreek of ongeldig
+
 start_err=Kon nie hartklop begin nie
+
 apply_err=Kon nie veranderinge toepas nie
 apply_epid=Proses loop nie meer nie

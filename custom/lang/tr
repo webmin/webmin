@@ -8,6 +8,7 @@ index_return=komutlar
 index_cmd=Komut
 index_desc=Açıklama
 index_ed=Düzenle..
+
 edit_title=Komutu Değiştir
 create_title=Komut Oluştur
 edit_ecannot=Komutları değiştirmek için izininiz yoktur
@@ -43,6 +44,7 @@ edit_timeout=Komutun bekleyeceği maksimum süre?
 edit_timeoutdef=Daima
 edit_secs=saniye
 edit_clear=Çevresel değişkenler temizlensin mi?
+
 save_err=Komutun kaydedilmesinde hata oluştu
 save_ecannot=Komutları değiştirmek için izininiz yoktur
 save_ecmd=Komut girilmedi
@@ -51,6 +53,7 @@ save_edesc=Açıklama girilmedi
 save_euser=Kayıp ya da yanlış kullanıcı
 save_eorder=Ana sayfadaki sıralaması bir numara olmalıdır
 save_etimeout=Eksik ya da geçersiz maksimum bekleme süresi
+
 run_err=Komutun çalıştırılmasında hata oluştu
 run_ecannot=Bu komutu çalıştırmak için izininiz yoktur
 run_euser=Kayıp ya da yanlış kullanıcı
@@ -62,6 +65,7 @@ run_noout=Çıktı oluşturulmadı
 run_ecmduser=Komutu çalıştıracak '$1' kullanıcısı mevcut değil
 run_eopt=Geçersiz seçenek seçildi
 run_timeout=Komut $1 saniye bekleme süresinden sonra durduruldu.
+
 log_modify=$1 komutu değiştirildi
 log_create=$1 komutu oluşturuldu
 log_delete=$1 komutu silindi
@@ -70,11 +74,13 @@ log_modify_edit=Dosya düzenleyicisi $1 değiştirildi
 log_create_edit=Dosya düzenleyicisi $1 oluşturuldu
 log_delete_edit=Dosya düzenleyicisi $1 silindi
 log_save_edit=$1 dosyası kaydedildi
+
 acl_cmds=Bu kullanıcının çalıştırabileceği komutlar
 acl_call=Bütün komutlar
 acl_csel=Seçililer..
 acl_cexcept=Seçililer hariç hepsi..
 acl_edit=Komut oluşturabilir ve düzenleyebilir mi?
+
 file_ecannot=Dosyaları düzenlemek için izininiz yoktur
 fcreate_title=Dosya Düzenleyicisi Oluştur
 fedit_title=Dosya Düzenleyicisini Düzenle
@@ -96,10 +102,12 @@ file_euser=Eksik ya da geçersiz kullanıcı adı
 file_egroup=Eksik ya da geçersiz grup adı
 file_eperms=Eksik ya da geçersiz sekizli izinler
 file_envs=Çevresel değişkenler dosya adında yerleştirilsin mi?
+
 view_err=Dosya düzenlenirkenb hata oluştu
 view_ecannot=Bu dosyayı düzenlemek için izininiz yoktur
 view_title=Dosya Düzenle
 view_efile=$1'e yazmada hata oluştu : $2
+
 form_ecannot=Bu komutu çalıştırmak için izininiz yoktur
 form_title=Komut Çalıştır
 form_exec=Çalıştır

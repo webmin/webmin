@@ -25,6 +25,7 @@ index_echeckupdate=Ez da eguneratze sistemarik hauteman!
 index_filter=Iragazi paketeak
 index_filterclear=Garbitu iragazkia
 index_filtered=<tt>$1</tt> paketeak <tt>$2</tt> bistaratzen ari dira
+
 search_title=Paketeen bilaketa
 search_nomatch=Ez da paketerik $1 ekin bat
 search_none=Bat ere ez
@@ -37,6 +38,7 @@ search_esearch=Ez duzu ezer bilatu bila!
 search_delete=Desinstalatu hautatutako paketeak
 search_selall=Hautatu guztiak
 search_invert=Alderantzizko hautapena
+
 edit_title=Editatu paketea
 edit_details=Paketearen xehetasunak
 edit_desc=deskribapena
@@ -53,6 +55,7 @@ edit_uninst=Desinstalatu
 edit_uninstdesc=Kendu pakete hau zure sistematik.
 edit_return=paketearen xehetasunak
 edit_egone=Paketea ez dago jada instalatuta
+
 list_title=Pakete-fitxategiak
 list_files=$1 Paketearen fitxategiak
 list_path=Path
@@ -64,6 +67,7 @@ list_status=Egoera
 list_ok=Ados
 list_view=(Ikusi)
 list_eview=Ezin izan da $1 ireki : $2 
+
 delete_err=Ezin izan da $1 paketea ezabatu
 delete_epack=$1 paketea ez da existitzen
 delete_title=Paketea ezabatu
@@ -75,6 +79,7 @@ delete_noscripts=Gidatu desinstalatu gidoiak?
 delete_efile=Ezabatzeko temp fitxategi baliogabea
 delete_purge=Ezabatu konfigurazio fitxategiak?
 delete_depstoo=Erabili gabeko mendekotasunak ere kendu al dituzu?
+
 file_title=Fitxategiaren informazioa
 file_notfound=Ez dago $1 inguruko informazioa
 file_path=Path
@@ -88,6 +93,7 @@ file_pack=Package
 file_class=Class
 file_desc=deskribapena
 file_none=Bat ere ez
+
 install_err=Ezin izan da paketea instalatu
 install_elocal=Ez da tokiko fitxategirik eman
 install_elocal2='$1' ez da existitzen
@@ -101,6 +107,7 @@ install_title=Instalatu paketea
 install_header=Instalatu paketea
 install_packs=Instalatu beharreko paketea
 install_ok=Instalatu
+
 do_err=Ezin izan da $1 paketea instalatu
 do_title=Instalatu paketea
 do_efailed=Instalazioa huts egin du : $1 
@@ -117,10 +124,12 @@ do_arch=Arkitektura
 do_inst=Instalatutako
 do_none=Bat ere ez
 do_files=Pakete-fitxategiak
+
 pkgadd_root=Erro sustatzailea
 pkgadd_eroot=Ez da '$1' erro erroa direktoriorik
 pkgadd_unknown=ezezaguna
 pkgadd_manager=Sistema V Paketeen Kudeatzailea
+
 rpm_upgrade=Eguneratu paketea?
 rpm_replacepkgs=Idatzi paketea?
 rpm_nodeps=Mendekotasunak alde batera utzi?
@@ -138,10 +147,12 @@ rpm_find=Bilatu rpmfind.net ..
 rpm_findrpm=Paketearen fitxategiaren izena
 rpm_finddistro=Banaketa
 rpm_finddesc=deskribapena
+
 bsd_unknown=ezezaguna
 bsd_scripts=Instalatu script-ak aurrez bidali eta argitaratu ondoren?
 bsd_force=Instalatu behar al duzu aurrez aurreko baldintzak falta badira?
 bsd_manager=$1 Pakete Kudeatzailea
+
 slack_unclass=Beste
 slack_unknown=ezezaguna
 slack_missing=Falta
@@ -149,12 +160,14 @@ slack_root=Erro sustatzailea
 slack_eroot=Erroko direktorio falta edo baliogabea
 slack_manager=Slackware Paketeen Kudeatzailea
 slack_edir=$1 Slackware paketeen direktorio falta
+
 debian_unknown=ezezaguna
 debian_depends=Ezikusi mendekotasun arazoak?
 debian_conflicts=Pakete gatazkak ezikusi?
 debian_overwrite=Idatzi beste fitxategi batzuetako fitxategiak?
 debian_downgrade=Pakete berriagoarekin ordeztu zaharra?
 debian_manager=Debian DPKG
+
 log_install_package=$1 pakete instalatua
 log_install_apt_l=Instalatutako $1 paketeak (k) APT-tik
 log_install_apt=APT-tik $2 paketea instalatu da
@@ -173,6 +186,7 @@ log_upgrade_yum_l=YUM-tik $1 pakete / k berrituak
 log_upgrade_yum=YUM-tik $2 pakete berritu du
 log_check_rhn_l=$1 pakete (k) berritu Redhat Sarean
 log_check_rhn=Redhat Sareko $2 pakete berritu ditu
+
 rhn_input=Redhat Sareko Paketea
 rhn_find=Bilatu RHN
 rhn_install=$1 komandoarekin paketea (k) instalatzea.
@@ -200,6 +214,7 @@ rhn_eproxy=Proxy zerbitzari falta edo baliogabea
 rhn_skip=Saltatu paketeekin bat datozenak
 rhn_nonefound=Ez dago paketerik eskuragarri eguneratzeko.
 rhn_name=Redhat Sarea
+
 apt_input=Paketea APT-tik
 apt_install=$1 komandoarekin paketea (k) instalatzea.
 apt_ok=.. instalatu osoa.
@@ -229,6 +244,7 @@ apt_repo_url=Biltegiaren oinarrizko URLa
 apt_repo_path=Banaketa bideen osagaiak
 apt_repo_eurl=Oinarriaren URL falta edo baliogabea
 apt_repo_epath=Falta den banaketa bidea
+
 yum_input=YUM-en paketea
 yum_install=$1 komandoarekin paketea (k) instalatzea.
 yum_ok=.. instalatu osoa.
@@ -259,6 +275,7 @@ yum_repo_ename=Falta da biltegiaren izena
 yum_repo_eurl=Biltegiaren URL falta edo baliogabea
 yum_repo_egpg=GPG cert fitxategia falta da edo ez da existitzen
 yum_repo_efile=Biltegiaren fitxategia lehendik dago!
+
 urpmi_name=urpmi
 urpmi_input=URPMI-ren paketea
 urpmi_find=Arakatu URPMI.
@@ -273,6 +290,7 @@ urpmi_upgradeok=.. osatu.
 urpmi_install=$1 komandoarekin paketea (k) instalatzea.
 urpmi_ok=.. instalatu osoa.
 urpmi_failed=.. instalazioa huts egin du!
+
 rpm_missing=Falta
 rpm_checkfail=Huts egin du $1 egiaztatzeak
 rpm_md5=MD5
@@ -284,6 +302,7 @@ rpm_user=erabiltzailearen jabetza
 rpm_perm=baimenak
 rpm_group=talde titulartasuna
 rpm_erpm=$1 RPM ez da aurkitu : $2 
+
 soft_reg=Fitxategi arrunta
 soft_dir=Directory
 soft_spec=Fitxategi berezia
@@ -295,6 +314,7 @@ soft_euncompress=Fitxategia konprimituta dago, baina <tt>uncompress</tt> komando
 soft_euncmsg=Ezin izan da fitxategia deskonprimitu : $1 
 soft_egzip=Fitxategia gzipped da, baina gzip komandoa ez da zure sisteman aurkitu.
 soft_egzmsg=Huts egin du gunzip fitxategian : $1 
+
 aix_unknown=ezezaguna
 aix_device=INPUT gailua / direktoriorako softwarea
 aix_software=SOFTWARE instalatu
@@ -312,6 +332,7 @@ aix_accept=Onartu lizentzia hitzarmen berriak?
 aix_license=Aurreikusi LIZENTZIA hitzarmen berriak?
 aix_clean=Garbiketa instalatzeko porrota?
 aix_manager=AIX Paketeen Kudeatzailea
+
 emerge_input=Portage biltegitik
 emerge_find=Bilatu ..
 emerge_install=Paketea instalatzen $1 komandoarekin.
@@ -327,6 +348,7 @@ emerge_noreplace=Ordezkatu dauden paketeak ordezkatu?
 emerge_onlydeps=Mendekotasunak bakarrik instalatu?
 emerge_title=Bilatu Portage
 emerge_name=Portage
+
 cygwin_fmissing=Fitxategia falta da
 cygwin_lmissing=Esteka puntuan dagoen fitxategia falta da
 cygwin_estat=Huts egin du estat fitxategian: $1 
@@ -336,6 +358,7 @@ cygwin_badpostscript=Abisua: ez dirudi exekutatu den script hau
 cygwin_pkgexists=$1 paketea dagoeneko badago.
 cygwin_warnuse=Abisua: hau ez da Cygwin softwarea kudeatzeko interfaze ofiziala. Erabili zure ardurapean.
 cygwin_edb=Cygwin paketeen $1 datu basea falta da
+
 deletes_err=Ezin izan da paketeak ezabatu
 deletes_enone=Ez da paketerik hautatu
 deletes_title=Paketeak ezabatu
@@ -346,6 +369,7 @@ deletes_failed2=Desinstalazioak huts egin du : $1
 deletes_success2=.. Desinstalazioa amaitu da.
 deletes_rusure=Ziur $1 paketeak desinstalatu nahi duzula?
 deletes_ok=Ezabatu guztiak
+
 csw_input=CSW-ren paketea
 csw_install=$1 komandoarekin paketea (k) instalatzea.
 csw_ok=.. instalatu osoa.
@@ -360,20 +384,24 @@ csw_name=CSW
 csw_form=Eguneratu paketeak
 csw_upgrade=Eguneratu instalatutako pakete guztiak
 csw_updatedesc=Instalatutako pakete guztiak berritzea $1 komandoarekin.
+
 missing_msg=$1 paketeak automatikoki instalatu dezake Webmin-ek $2 erabiliz.
 missing_now=Instalatu orain
+
 find_title=Bilatu paketea
 find_search=Aurkitu paketeekin bat datozenak:
 find_name=izena
 find_version=Bertsio
 find_desc=deskribapena
 find_none=Ez da zure bilaketarekin bat datorren paketeik aurkitu.
+
 msi_users=Aplikazio berria eskuragarri jarri
 msi_users0=Inork
 msi_users1=Egungo erabiltzailea
 msi_users2=Erabiltzaile guztiak
 msi_missing=Ez da existitzen
 msi_size=Tamaina okerra
+
 hpux_create_target_path=Sortu xede bidea?
 hpux_mount_all_filesystems=Fitxategi sistema guztiak muntatu?
 hpux_reinstall=Instalatu berriro?
@@ -389,6 +417,7 @@ hpux_enforce_dependencies=Mendekotasunak betetzea?
 hpux_enforce_scripts=Gidoiak betetzea?
 hpux_enforce_dsa=Disko-espazioaren azterketa betetzea?
 hpux_root=Erro sustatzailea
+
 ports_install=FreeBSD portuak $1 instalatzea ..
 ports_failed=.. portu batzuek huts egin dute
 ports_ok=.. instalatu osoa
@@ -399,18 +428,22 @@ ports_form=Eguneratu Portuen datu-basea
 ports_apply=Deskargatu azken argazkia
 ports_upgrade=Ataka-argazkia deskargatzen du
 ports_running=$1 komandoa exekutatzen ari da.
+
 pkg_install=FreeBSD paketeak $1 instalatzea ..
 pkg_failed=.. Pakete batzuek huts egin dute
 pkg_ok=.. instalatu osoa
 pkg_find=Bilatu pkgng
 pkg_input=Paketea pkgng-tik
+
 pkgsrc_install=$1 pkgsrc paketeak instalatzen ..
 pkgsrc_failed=.. Pakete batzuek huts egin dute
 pkgsrc_ok=.. instalatu osoa
 pkgsrc_find=Bilatu pkgng
 pkgsrc_input=Paketea pkgsrc-tik
+
 log_IPKG_update=IPKG datu-basea eguneratua
 log_IPKG_upgrade=Instalatutako IPKG paketeak berritu dituzte
+
 IPKG_name=IPKG
 IPKG_input=Paketea IPKG-tik
 IPKG_find=Arakatu IPKG ..

@@ -1,7 +1,11 @@
 category_=Przybory
+
 longcategory_=Moduły, które wykonują inne różnorodne zadania
+
 fail=Nie powiodło się
+
 config_emodule=Moduł nie istnieje
+
 log_email_subject=Działanie Webmina w $1
 log_email_global=Globalna akcja Webmin
 log_email_desc=Ten e-mail został wysłany przez Webmin w odpowiedzi na akcję użytkownika.
@@ -13,6 +17,7 @@ log_email_user=Wykonane przez użytkownika: $1
 log_email_script=Skrypt Webmin: $1
 log_email_session=Identyfikator sesji: $1
 log_email_remote=Adres klienta: $1
+
 nice_size_PB=PB
 nice_size_PiB=PiB
 nice_size_TB=TB
@@ -24,7 +29,9 @@ nice_size_MiB=MiB
 nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bajty
+
 langauto_include=Uwzględnij tłumaczenia maszynowe
+
 file_truncated_message=pobrano $1 danych, obcięto $2 z $3 
 file_truncated_message_head=pobrano początek $1 danych, obcięto $2 z $3 
 file_truncated_message_tail=pobrane zakończenie $1 danych, obcięte $2 z $3 

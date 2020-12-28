@@ -16,6 +16,7 @@ index_add=Crie um novo banco de dados.
 index_users=Usuário, Grupos e Permissões
 index_return=lista de banco de dados
 index_esql=O programa cliente do PostgreSQL $1 não foi encontrado no seu sistema. Talvez o PostgreSQL não esteja instalado ou sua configuração do módulo <a href='$2'></a> esteja incorreta.
+
 index_ehba=O arquivo de configuração do host do PostgreSQL $1 não foi encontrado no seu sistema. Talvez o PostgreSQL não tenha sido inicializado ou sua configuração do módulo <a href='$2'></a> esteja incorreta.
 index_superuser=O programa cliente PostgreSQL psql não pôde ser executado no seu sistema. Talvez o PostgreSQL não esteja instalado ou sua configuração do módulo <a href='$1'></a> esteja incorreta.
 index_eversion=O banco de dados PostgreSQL no seu sistema é a versão $1, mas o Webmin suporta apenas as versões $2 e acima.
@@ -48,10 +49,12 @@ index_gist=Árvore de Pesquisa de Índice Generalizado
 index_jump=Ou edite o banco de dados:
 index_jumpok=Aberto
 index_edithosts=Configurar sistemas host permitidos
+
 login_err=Falha na autenticação
 login_ecannot=Você não tem permissão para configurar o logon do banco de dados
 login_elogin=Login de administração ausente
 login_epass=Nome de usuário ou senha de administração incorreta
+
 dbase_title=Editar banco de dados
 dbase_noconn=Esse banco de dados não está aceitando conexões no momento, portanto, nenhuma ação pode ser executada nele.
 dbase_header=Tabelas, índices, visualizações e sequências de banco de dados
@@ -78,6 +81,7 @@ dbase_jump=Editar tabela:
 dbase_vjump=Editar visualização:
 dbase_ijump=Editar índice:
 dbase_sjump=Editar sequência:
+
 table_title=Editar tabela
 table_title2=Criar a tabela
 table_opts=Opções de campo
@@ -105,6 +109,7 @@ table_eblob=Nenhum tamanho é necessário para o campo BLOB $1
 table_csv=Exportar como CSV
 table_index=Criar índice
 table_delete=Excluir campos selecionados
+
 field_title1=Adicionar campo
 field_title2=Modificar campo
 field_in=Na tabela $1 no banco de dados $2 
@@ -123,6 +128,7 @@ field_esize='$1' não é um tamanho de campo válido
 field_eenum=Nenhum valor enumerado inserido
 field_efield='$1' não é um nome de campo válido
 field_ekey=Os campos que permitem nulos não podem fazer parte da chave primária
+
 exec_title=Executar SQL
 exec_header=Digite o comando SQL para executar no banco de dados $1 ..
 exec_old=Ou selecione um comando SQL anterior :
@@ -152,21 +158,25 @@ exec_tabexec=Executar SQL
 exec_tabfile=Executar SQL do arquivo
 exec_tabimport=Importar arquivo de texto
 exec_return=executar formulário SQL
+
 stop_err=Falha ao parar o servidor de banco de dados
 stop_epidfile=Falha ao abrir o arquivo PID $1 
 stop_ekill=Falha ao eliminar o processo $1 : $2 
 stop_ecannot=Você não tem permissão para parar o servidor de banco de dados
 start_err=Falha ao iniciar o servidor de banco de dados
 start_ecannot=Você não tem permissão para iniciar o servidor de banco de dados
+
 ddrop_err=Falha ao descartar o banco de dados
 ddrop_title=Soltar banco de dados
 ddrop_rusure=Tem certeza de que deseja descartar o banco de dados $1 ? $2 tabelas contendo $3 linhas de dados serão excluídas.
 ddrop_mysql=Como esse é o banco de dados mestre, sua remoção provavelmente fará com que seu servidor PostgreSQL não seja utilizável!
 ddrop_ok=Soltar banco de dados
+
 tdrop_err=Falha ao descartar a tabela
 tdrop_title=Drop Table
 tdrop_rusure=Tem certeza de que deseja soltar a tabela $1 no banco de dados $2 ? $3 linhas de dados serão excluídas.
 tdrop_ok=Drop Table
+
 view_title=Dados da tabela
 view_pos=Linhas $1 a $2 de $3 
 view_none=Esta tabela não contém dados
@@ -201,6 +211,7 @@ view_set=Defina para o conteúdo do arquivo.
 view_warn=Aviso - é improvável que o upload de arquivos e a exibição do conteúdo dos campos <tt>text</tt> ou <tt>bytea</tt> funcionem, a menos que os módulos Perl $1 e $2 estejam instalados e em uso.
 view_adv=Busca Avançada
 view_sqlrun=Resultados gerados pela consulta SQL : $1 
+
 newdb_title=Criar banco de dados
 newdb_header=Novas opções de banco de dados
 newdb_db=Nome do banco de dados
@@ -215,6 +226,7 @@ newdb_encoding=Codificação do conjunto de caracteres
 newdb_eencoding=Codificação do conjunto de caracteres ausente
 newdb_template=Banco de dados de modelos
 newdb_notemplate=Nenhum
+
 user_title=Usuários do PostgreSQL
 user_vwarning=AVISO: Esse usuário do PostgreSQL é o logon de administração do domínio $1 do Virtualmin. Alterar as configurações aqui pode causar erros no Virtualmin.
 user_ecannot=Você não tem permissão para editar usuários
@@ -244,6 +256,7 @@ user_sync_delete=Exclua um usuário do PostgreSQL quando o usuário Unix corresp
 user_delete=Excluir selecionado
 user_derr=Falha ao excluir usuários
 user_enone=Nenhum usuário selecionado
+
 host_ecannot=Você não tem permissão para editar hosts permitidos
 host_title=Hosts permitidos
 host_desc=Quando um cliente se conecta ao banco de dados, os hosts listados abaixo são processados em ordem até que um corresponda e o cliente seja permitido ou negado.
@@ -299,8 +312,10 @@ host_derr=Falha ao excluir hosts permitidos
 host_enone=Nenhum host selecionado
 host_manual=Editar arquivo de configuração
 host_manualdesc=Clique neste botão para editar manualmente o arquivo de configuração de hosts permitido.
+
 manual_title=Editar arquivo de configuração
 manual_err=Falha ao salvar o arquivo de configuração
+
 grant_title=Privilégios concedidos
 grant_tvi=Objeto
 grant_type=Tipo
@@ -328,6 +343,7 @@ grant_none=Não existem tabelas, visualizações, sequências ou índices para c
 grant_toomany=Existem muitos objetos para exibir. Encontre objetos correspondentes:
 grant_showing=Mostrando objetos correspondentes a $1 ..
 grant_delete=Redefinir bolsas selecionadas
+
 group_title=Grupos PostgreSQL
 group_ecannot=Você não tem permissão para editar grupos
 group_name=Nome do grupo
@@ -347,6 +363,7 @@ group_etaken=O nome do grupo já está em uso
 group_none=Nenhum grupo PostgreSQL existe atualmente.
 group_derr=Falha ao excluir grupos
 group_enone=Nenhum grupo selecionado
+
 esql=Falha no SQL $1 : $2 
 log_start=Servidor PostgreSQL iniciado
 log_stop=Servidor PostgreSQL parado
@@ -403,6 +420,7 @@ log_backup_l=Backup do banco de dados $1 no arquivo $2
 log_backup_all=Backup de todos os bancos de dados
 log_backup_all_l=Backup de todos os bancos de dados no arquivo $2 
 log_manual=Arquivo de configuração de hosts permitidos editado manualmente
+
 acl_dbs=Bancos de dados que este usuário pode gerenciar
 acl_dbscannot=Este controle de acesso entrará em vigor após o início do servidor de banco de dados PostgreSQL.
 acl_dall=Todos os bancos de dados
@@ -423,13 +441,17 @@ acl_cmds=Pode editar antes e depois dos comandos de backup?
 acl_views=Pode visualizar e gerenciar visualizações?
 acl_indexes=Pode visualizar e gerenciar índices?
 acl_seqs=Pode visualizar e gerenciar sequências?
+
 fdrop_err=Falha ao excluir campos
 fdrop_enone=Nenhum selecionado
 fdrop_eall=Você não pode excluir todos os campos de uma tabela!
+
 setup_err=Falha ao inicializar o banco de dados
 setup_ecannot=Você não tem permissão para inicializar o banco de dados
+
 dbase_bkup=Cópia de segurança
 dbase_rstr=Restaurar
+
 restore_title=Restaurar banco de dados
 restore_header=Restaurar opções de banco de dados
 restore_db=Nome do banco de dados
@@ -452,6 +474,7 @@ restore_tables=Tabelas para restaurar
 restore_tables1=Tudo no arquivo de backup
 restore_tables0=Tabelas listadas
 restore_failed=Falha na restauração : $1 
+
 backup_title=Banco de dados de backup
 backup_title2=Fazer backup de todos os bancos de dados
 backup_header1=Destino de backup
@@ -500,17 +523,21 @@ backup_ebefore=O comando antes do backup falhou!
 backup_cmode=Quando executar comandos
 backup_cmode1=Antes/depois de todos os bancos de dados
 backup_cmode0=Antes/depois de cada banco de dados
+
 r_command=Comando não suportado
+
 adv_title=Busca Avançada
 adv_and=Encontre registros que correspondam a todos os critérios.
 adv_or=Encontre registros que correspondam a qualquer critério.
 adv_ok=Procure agora
+
 tdrops_enone=Nenhuma tabela a ser selecionada
 tdrops_err=Falha ao descartar tabela (s)
 tdrops_ok=Solta
 tdrops_title=Soltar selecionado
 tdrops_rusure=Tem certeza de que deseja soltar $1 tabela (s) selecionada (s) no banco de dados $2 ? $3 linhas de dados serão excluídas.
 tdrops_rusure2=Tem certeza de que deseja soltar $1 tabela (s) selecionada (s) no banco de dados $2 ?
+
 ddrops_err=Falha ao descartar bancos de dados
 ddrops_title=Soltar bancos de dados
 ddrops_rusure=Tem certeza de que deseja eliminar os $1 bancos de dados selecionados? $2 tabelas contendo $3 linhas de dados serão excluídas.
@@ -518,6 +545,7 @@ ddrops_mysql=Como o banco de dados mestre está selecionado, a eliminação prov
 ddrops_ok=Soltar bancos de dados
 ddrops_enone=Nenhum banco de dados selecionado
 ddrops_ecannotdb=Você não tem permissão para descartar o banco de dados $1 
+
 csv_title=Exportar arquivo CSV
 csv_header=Opções de exportação de CSV
 csv_dest=Destino de exportação
@@ -538,6 +566,7 @@ csv_done=A exportação de CSV para $1 está concluída. O tamanho do arquivo re
 csv_headers=Incluir nomes de colunas no CSV?
 csv_cols=Colunas a serem incluídas no CSV
 csv_ecols=Nenhuma coluna selecionada
+
 import_title=Importar dados
 import_uploadout=Importando dados do arquivo carregado.
 import_fileout=Importando dados do arquivo $1 ..
@@ -545,6 +574,7 @@ import_eupload=Arquivo de importação enviado ausente
 import_efile=Nome de arquivo de importação ausente
 import_done=.. criou $1 linhas, ignorou $2 duplicatas.
 import_erow=.. nenhum campo encontrado na linha $1 
+
 index_title1=Criar índice
 index_header1=Opções de índice
 index_name=Nome do índice
@@ -562,6 +592,7 @@ index_ecols=Nenhum campo selecionado
 index_title2=Editar índice
 index_header=Índice $1 no banco de dados $2 
 index_ecannot=Você não tem permissão para gerenciar índices
+
 view_title1=Criar vista
 view_title2=Editar visualização
 view_header1=Ver detalhes
@@ -576,6 +607,7 @@ view_eclash=Já existe uma visualização com o mesmo nome
 view_equery=Consulta SQL ausente
 view_ecols=Nenhum nome de coluna digitado
 view_ecannot=Você não tem permissão para gerenciar visualizações
+
 seq_title1=Criar sequência
 seq_title2=Editar sequência
 seq_header1=Incrementando opções de sequência
@@ -595,5 +627,6 @@ seq_emin=Valor mínimo ausente ou inválido
 seq_emax=Valor máximo ausente ou inválido
 seq_ecache=Número de valores ausente ou inválido para armazenar em cache
 seq_ecannot=Você não tem permissão para gerenciar sequências
+
 dgrant_err=Falha ao redefinir concessões
 dgrant_enone=Nenhum objeto selecionado

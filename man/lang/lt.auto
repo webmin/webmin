@@ -30,6 +30,7 @@ index_other_google=„Google“ paieškos variklis
 index_other_kde=KDE dokumentacija
 index_and=Suderinti visus
 index_or=Suderinkite bet kurį
+
 search_efor=Nėra rankinio puslapio, kuriame būtų galima ieškoti įvesto
 search_title=Paieškos rezultatai
 search_desc=apibūdinimas
@@ -47,24 +48,32 @@ search_none=Nerasta dokumentų, atitinkančių $1.
 search_for=$1 
 search_google=„Google“ paieškos rezultatas
 search_doxfer=„Webmin“ internetinė dokumentacija
+
 howto_title=HOWTO dokumentas
 howto_header=HOWTO dokumento byla $1 
 howto_epath=Netinkamas HOWTO dokumento kelias
+
 doc_title=Pakuotės dokumentai
 doc_header=Paketo dokumento failas $1 
 doc_epath=Netinkamas paketo dokumentacijos kelias
+
 man_title=Rankinis puslapis
 man_header=Neautomatinis puslapis, skirtas $1 ($2)
 man_noentry=Vadovo $1 puslapis neegzistuoja!
 man_epath=Rankinis puslapis negali būti kelias!
+
 kernel_title=Branduolio dokumentas
 kernel_header=Branduolio dokumento failas $1 
 kernel_epath=Netinkamas branduolio dokumento kelias
+
 kde_title=KDE dokumentacija
 kde_header=KDE dokumento failas $1 
 kde_epath=Netinkamas KDE dokumentacijos kelias
+
 perl_title=„Perlo“ modulis
 perl_header=„Perl“ modulio $1 dokumentacija
 perl_emod=Neteisingas „Perl“ modulio pavadinimas
+
 acl_allow=Ar galima redaguoti leidžiamus paieškos tipus?
+
 check_ecannot=Jums neleidžiama redaguoti leistinų paieškos tipų

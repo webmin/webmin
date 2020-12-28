@@ -7,6 +7,7 @@ index_delete2=Padam Interface yang Dipilih
 index_delete3=Padam dan Guna Antaramuka Terpilih
 index_apply2=Guna Antaramuka Terpilih
 index_vmin=Virtualmin
+
 ifcs_title=Antaramuka Rangkaian
 ifcs_now=Aktif sekarang
 ifcs_activedesc=Antara muka yang disenaraikan dalam jadual ini kini aktif pada sistem. Dalam kebanyakan kes, anda perlu mengeditnya di bawah tab <b>Diaktifkan pada Boot</b>.
@@ -55,6 +56,7 @@ ifcs_linkyes=Disambungkan
 ifcs_linkno=Dis disambungkan
 ifcs_speed=Kelajuan antara muka
 ifcs_duplex=, $1 dupleks
+
 aifc_create=Buat Antara Muka Aktif
 aifc_edit=Edit Antara Muka Aktif
 aifc_desc1=Parameter Antara Muka Aktif
@@ -79,6 +81,7 @@ aifc_eaddress6=Alamat IPv6 dalam baris $1 tidak sah
 aifc_enetmask6=Netmask IPv6 dalam baris $1 mestilah integer antara 1 dan 128
 aifc_eclash6=Alamat IPv6 dalam baris $1 sudah digunakan oleh antara muka $2 
 aifc_eaddresses6=Tiada alamat IPv6 yang dimasukkan
+
 bifc_create=Buat Antara Muka Bootup
 bifc_act=Aktifkan pada boot?
 bifc_edit=Edit Antara Muka Bootup
@@ -110,6 +113,7 @@ bifc_bridgestp=Protokol Pelupusan Pokok
 bifc_bridgefd=Kelewatan Teruskan
 bifc_bridgewait=Kelewatan untuk menjadi tersedia
 bifc_ebond=Antara muka bon mestilah nombor
+
 bonding_add=Tambah Interface ikatan baru.
 bonding_create=Buat Antara Muka Ikatan
 bonding_teamparts=Teaming Partners
@@ -121,11 +125,14 @@ bonding_miimon=Mii-Pemantauan Selang
 bonding_miimondesc=(Biarkan kosong untuk mematikan pemantauan pautan)
 bonding_updelay=Kemas kini
 bonding_downdelay=Downdelay
+
 vlan_add=Tambah Antara Muka Vlan Tagged
 vlan_physical=Peranti Fizikal
 vlan_id=ID Vlan
 vlan_create=Buat Antara Muka VLAN
+
 bridge_create=Buat Antara Muka Jambatan
+
 routes_title=Routing and Gateways
 routes_boot=Konfigurasi penghalaan diaktifkan pada <i>masa boot</i>
 routes_now=Konfigurasi penghalaan diaktifkan sekarang
@@ -194,6 +201,7 @@ routes_tabboot=Konfigurasi masa boot
 routes_tabactive=Konfigurasi aktif
 routes_descactive=Bahagian ini menyenaraikan laluan sistem yang telah dikonfigurasikan pada masa ini, dan membolehkan anda menambah atau mengalih keluar laluan aktif pada sesetengah sistem. Berhati-hati melakukan ini, kerana perubahan yang salah boleh memotong sistem yang berjalan di Webmin dari seluruh rangkaian.
 routes_descboot=Seksyen ini membolehkan anda mengkonfigurasi laluan yang diaktifkan apabila sistem menaikkan atau apabila tetapan rangkaian dipulihkan sepenuhnya.
+
 dns_title=Nama hos dan DNS Pelanggan
 dns_options=Pilihan Pelanggan DNS
 dns_hostname=Nama hos
@@ -211,6 +219,7 @@ dns_edomain='$1' bukan nama domain yang sah
 dns_esearch=Tiada domain untuk carian yang diberikan
 dns_hoststoo=Kemas kini nama hos dalam alamat hos jika diubah?
 dns_dhcp=Nama hos ditetapkan oleh pelayan DHCP?
+
 hosts_title=Alamat Hos
 hosts_active=Dihidupkan?
 hosts_ip=Alamat IP
@@ -222,6 +231,7 @@ hosts_detail=Hos dan Alamat
 hosts_return=senarai alamat hos
 hosts_ecannot=Anda tidak dibenarkan mengedit alamat tuan rumah
 hosts_delete=Padamkan Alamat Host Terpilih
+
 ipnodes_title=Alamat Host IPv6
 ipnodes_ip=Alamat IPv6
 ipnodes_host=Nama hos
@@ -233,6 +243,7 @@ ipnodes_return=Senarai alamat hos IPv6
 ipnodes_ecannot=Anda tidak dibenarkan untuk mengedit alamat hos IPv6
 ipnodes_none=Tiada alamat hos IPv6 telah ditakrifkan lagi.
 ipnodes_delete=Padamkan Alamat Host IPv6 Dipilih
+
 log_create_host=Alamat hos yang dibuat $1 
 log_delete_host=Alamat hos dipadam $1 
 log_modify_host=Alamat hos diubah suai $1 
@@ -256,6 +267,7 @@ log_apply_bfics=Pengaktifan $1 antara muka boot masa
 log_create_route=Buat laluan aktif untuk $1 
 log_create_defroute=Membuat laluan lalai aktif
 log_delete_routes=Dihapus $1 laluan aktif
+
 acl_ifcs=Bolehkah mengedit antara muka rangkaian?
 acl_routes=Bolehkah mengedit routing dan gateway?
 acl_dns=Boleh mengedit tetapan klien DNS?
@@ -273,6 +285,7 @@ acl_virt=Bolehkah menambah antara muka maya?
 acl_delete=Boleh memadamkan antara muka?
 acl_hide=Sembunyikan antara muka yang tidak boleh diedit?
 acl_sysinfo=Tunjukkan antara muka rangkaian yang tersedia di Dashboard
+
 interfaces_title1=Pilih antara muka. ..
 interfaces_all=Semua Interface. ..
 interfaces_sel=Antara muka yang dipilih
@@ -280,7 +293,9 @@ interfaces_ok=okey
 interfaces_cancel=Batalkan
 interfaces_clear=Jelas
 interfaces_title2=Pilih Pengguna. ..
+
 apply_ecannot=Anda tidak dibenarkan memohon konfigurasi
+
 mod_egone=Antara muka tidak lagi aktif!
 mod_title=Antara muka aktif
 mod_desc=Antarmuka $1 sedang digunakan untuk $2, dan oleh itu tidak boleh diuruskan menggunakan modul ini.
@@ -292,6 +307,7 @@ mod_pptpc=sambungan PPTP $1
 mod_zones=antara muka maya untuk zon <tt>$1</tt>
 mod_virtualmin=pelayan Virtualmin <tt>$1</tt>
 mod_reseller=reseller Virtualmin <tt>$1</tt>
+
 range_edit=Edit Julat Alamat
 range_create=Buat Julat Alamat
 range_header=Pilihan antaramuka pelbagai alamat
@@ -307,13 +323,17 @@ range_eend=Alamat IP hujung atau tidak sah
 range_enum=Nombor antara maya pertama yang hilang atau bukan angka
 range_eclass=Memulakan dan menamatkan alamat mesti berada dalam rangkaian kelas C yang sama
 range_ebefore=Alamat akhir mestilah lebih tinggi daripada alamat permulaan
+
 chooser_any=&lt;Any&gt;
 chooser_other=Lain ..
+
 dafics_err=Gagal untuk menghidupkan antara muka
 daifcs_enone=Tiada yang dipilih
 daifcs_egone=Antara muka tidak lagi wujud!
+
 dbifcs_err=Gagal memadam antara muka
 dbifcs_err2=Gagal mengaktifkan antara muka
+
 hdelete_err=Gagal memadamkan alamat tuan rumah
 hdelete_enone=Tiada yang dipilih
 idelete_err=Gagal memadamkan alamat hos IPv6

@@ -20,6 +20,7 @@ index_d1=$1
 index_dlang=ngôn ngữ mà các mô-đun được hiển thị trong
 index_dtheme=chủ đề kiểm soát sự xuất hiện của Webmin
 index_dpass=mật khẩu được sử dụng để đăng nhập với
+
 change_title=Thay đổi cài đặt
 change_user=Sửa đổi đăng nhập Webmin ..
 change_done=.. làm xong
@@ -30,6 +31,7 @@ change_epass2=mật khẩu mới không khớp
 change_epass=Mật khẩu mới không hợp lệ : $1 
 change_eoverlay=Bạn không thể chọn lớp phủ chủ đề trừ khi chủ đề UI cũng được chọn
 change_eoverlay2=Lớp phủ chủ đề đã chọn không tương thích với chủ đề UI được chọn
+
 acl_lang=Có thể thay đổi ngôn ngữ?
 acl_theme=Có thể thay đổi chủ đề?
 acl_pass=Có thể thay đổi mật khẩu (khi được đặt trong Webmin) không?

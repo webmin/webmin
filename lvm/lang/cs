@@ -13,6 +13,7 @@ index_addsnap=Vytvořit nového zástupce.
 index_return=skupiny svazků
 index_init=Toto může být způsobeno tím, že LVM nebyl doposud aktivován. <a href='$1'>Aktivujte ho teď</a>, abyste se mohli podívat na skupiny svazků.
 index_eversion=Webmin podporuje pouze LVM verze 1.0 a vyšší. Výstup z $1 na vašem systému byl : $2
+
 lv_edit=Editovat logický svazek
 lv_edit_snap=Editovat zástupce
 lv_create=Vytvořit logický svazek
@@ -57,6 +58,7 @@ lv_mkfsdesc=Vyberte typ souborového systému a klepnutím na toto tlačítko vy
 lv_toobig=Nová velikost svazku má $1 blocků ($2 v každém bloku), avšak je pouze $3 volných ve skupině svazků.
 lv_snapof=Zástupce logického svazku
 lv_nosnap=Nelze určit!
+
 mkfs_title=Vytvoření souborového systému
 mkfs_desc=Tento formulář umožňuje vystavět nový $2 ($1) systém na logickém svazku $3. Všechna existující data budou smazána.
 mkfs_header=Nastavení nového souborového systému
@@ -64,13 +66,16 @@ mkfs_err=Chyba při vytváření souborového systému
 mkfs_exec=Spouští se příkaz $1 ..
 mkfs_failed=.. příkaz byl neúspěšný!
 mkfs_ok=.. příkaz byl proveden.
+
 resize_title=Změna velikosti souborového svazku
 resize_mesg=U souborového systému $1 na logickém disku nemůže být změněna velikost. Chcete-li změnit velikost logického svazku, musíte znovu vytvořit souborový systém. To však smaže všechna data na něm.
 resize_mesg2=Webmin neví, jaký druh souborového systému se na vašem svazku nachází, je-li tam vůbec nějaký. Chcete-li změnit velikost logického svazku, musíte znovu vytvořit souborový systém. To však smaže všechna data na něm.
 resize_fs=Stala se chyba během změny velikosti $1 souborového systému na vašem svazku : $2  Chcete-li právě teď změnit velikost logického svazku, musíte znovu vytvořit souborový systém. To však smaže všechna data na něm.
 resize_ok=Změnit velikost souborového svazku
+
 init_title=Activace LVM
 init_cmd=Běží příkaz $1 ..
+
 pv_edit=Editovat fyzický svazek
 pv_create=Přidat fyzický svazek
 pv_vg=Do skupiny svazků $1
@@ -91,6 +96,7 @@ pv_rusure=Skutečně chcete odstranit zařízení pro fyzický svazek $1 z jeho 
 pv_deleteok=Odstranit svazek
 pv_eother=Chybějící nebo nesprávné zařízení disku
 pv_raid=RAID zařízení $1
+
 vg_edit=Editovat skupinu svazků
 vg_create=Vytvořit skupinu svazků
 vg_name=Název skupiny svazků
@@ -107,6 +113,7 @@ vg_cannot=Tato skupina svazků nemůže být smazána, protože doposud má $1 l
 vg_deleteok=Smazat
 vg_ename=Chybějící nebo nesprávný název skupiny svazků
 vg_epesize=Chybějící nebo nesprávná velikost alokačního bloku
+
 log_create_vg=Vytvořena skupina svazků $1
 log_modify_vg=Modifikována skupina svazků $1
 log_delete_vg=Smazána skupina svazků $1

@@ -25,12 +25,15 @@ index_up=Aloita yhteys:
 index_updesc=Valitse yhteys tämän painikkeen vieressä olevasta luettelosta ja napsauta sitä yrittääksesi sen välittömää luomista.
 index_nopol=Verkkokäytäntöjä ei löytynyt - ehkä <a href='$1'>verkkoasetuksesi</a> on väärä.
 index_import=Tuo yhteys tiedostosta.
+
 stop_err=IPsec-palvelimen pysäyttäminen epäonnistui
 start_err=IPsec-palvelimen käynnistäminen epäonnistui
 restart_err=IPsec-palvelimen käynnistäminen epäonnistui
 start_elog=Seuraavat virheet rekisteröitiin : $1 
+
 newkey_err=Avaimen luonti epäonnistui
 newkey_ehost=Puuttuva tai virheellinen isäntänimi
+
 edit_title1=Luo yhteys
 edit_title2=Muokkaa yhteyttä
 edit_header=IPsec VPN -yhteystiedot
@@ -101,6 +104,7 @@ edit_unit_s=sekuntia
 edit_unit_m=min
 edit_unit_h=tuntia
 edit_unit_d=päivää
+
 config_title=Palvelimen kokoonpano
 config_header=Yleiset VPN-palvelimen asetukset
 config_ifaces=Verkkoliitännät IPsec: lle
@@ -118,6 +122,7 @@ config_nat=Ota NAT-läpikulku käyttöön?
 config_err=Palvelimen kokoonpanon tallentaminen epäonnistui
 config_eri=Todellinen käyttöliittymä '$1' on lueteltu useita kertoja
 config_enone=Verkkoliitäntöjä ei määritetty
+
 showkey_title=Näytä julkinen avain
 showkey_desc1=Seuraavaksi esitetty julkinen RSA-avain olisi kopioitava tähän isäntään liittyvien muiden järjestelmien kokoonpanoon tähän isäntään liittyvässä osassa.
 showkey_desc2=Seuraavia arvoja voidaan käyttää luomaan DNS-KEY-tietue tälle isäntälle, jotta muut siihen yhdistävät järjestelmät voivat etsiä julkista avaintaan.
@@ -125,6 +130,7 @@ showkey_flags=Liput
 showkey_proto=protokolla
 showkey_alg=algoritmi
 showkey_key=Avaintiedot
+
 policy_desc_block=Estetyt verkot
 policy_desc_clear=Poista liikenneverkot
 policy_desc_private=Salatut verkot
@@ -145,6 +151,7 @@ policy_mask=Etuliite
 policy_err=Verkkojen tallentaminen epäonnistui
 policy_enet=Virheellinen verkon IP-osoite rivillä $1 
 policy_emask=Virheellinen etuliitteen pituus rivillä $2 
+
 save_err=Yhteyden tallentaminen epäonnistui
 save_ename=Puuttuva tai virheellinen yhteysnimi
 save_ekeying=Puuttuva tai virheellinen näppäinnäyttökertojen lukumäärä
@@ -164,6 +171,7 @@ save_eleftcert=Puuttuva tai virheellinen paikallisen palvelimen varmenne
 save_erightcert=Puuttuva tai virheellinen etäpalvelimen varmenne
 save_ekeylife=Puuttuva tai virheellinen yhteysavaimen käyttöikä
 save_eikelifetime=Puuttuva tai virheellinen avainkanavan käyttöikä
+
 log_create_conn=Luotu yhteys $1 
 log_delete_conn=Poistettu yhteys $1 
 log_modify_conn=Muokattu yhteys $1 
@@ -182,8 +190,10 @@ log_delete_secret=Poistettu salainen avain kohteelle $1
 log_create_secret_nn=Luotu salainen avain mille tahansa isäntälle
 log_modify_secret_nn=Muokattu salainen avain mille tahansa isäntälle
 log_delete_secret_nn=Poistettu salainen avain jokaiselle isäntälle
+
 up_title=Aloita yhteys
 up_cmd=Yhteyden aloittaminen komennolla $1 ..
+
 export_title=Vie kokoonpano
 export_desc=Tätä lomaketta voidaan käyttää yhteyden $1 määritystiedosto-osan viemiseen, jotta se voidaan tuoda helposti palvelimeen toisessa päässä.
 export_print=Näytä kokoonpano selaimessa
@@ -193,11 +203,13 @@ export_err=Kokoonpanon vieminen epäonnistui
 export_efile=Puuttuu tiedostonimi
 export_esave=Tiedostoon kirjoittaminen epäonnistui : $1 
 export_done=Viedyt yhteydet $1 - $2 ($3 tavua).
+
 import_title=Tuo kokoonpano
 import_desc=Tätä lomaketta voidaan käyttää määritystiedosto-osan tuontiin yhteydelle, kuten moduulin vientiominaisuuden toiseen järjestelmään luoma osa.
 import_upload=Tuo ladattavasta tiedostosta ..
 import_file=Tuo palvelinpuolen tiedostosta ..
 import_ok=Tuo nyt
+
 import_err=Kokoonpanon tuonti epäonnistui
 import_eupload=Lähetettävää tiedostoa ei ole valittu
 import_efile=Palvelinpuolen tiedostoa ei annettu
@@ -207,6 +219,7 @@ import_eclash=Yhteys nimeltä $1 on jo olemassa.
 import_done1=Lisätty uusi IPsec-yhteys $1 onnistuneesti.
 import_done2=IPsec-yhteyden $1 päivitys onnistui.
 import_over=Korvataanko olemassa oleva yhteys samalla nimellä?
+
 secrets_title=Salaiset avaimet
 secrets_none=Salaisuusavaimia ei löytynyt!
 secrets_name=Salainen
@@ -220,6 +233,7 @@ secrets_mod=Moduli $1
 secrets_newpsk=Luo uusi jaettu salainen avain.
 secrets_newrsa=Luo uusi RSA-avain.
 secrets_return=salainen avainluettelo
+
 secret_title1=Luo salainen avain
 secret_title2=Muokkaa salaa avainta
 secret_header=Salaiset avaintiedot

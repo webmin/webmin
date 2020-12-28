@@ -25,6 +25,7 @@ index_resetdesc=Kliknutím na toto tlačidlo vymažete všetky existujúce pravi
 index_cluster=Clusterové servery
 index_clusterdesc=Kliknutím na toto tlačidlo nastavíte ďalšie servery Webmin, na ktoré sa automaticky skopíruje konfigurácia brány firewall.
 index_return=pravidlá brány firewall
+
 index_num=Num
 index_action=akčné
 index_desc=podmienka
@@ -37,6 +38,7 @@ index_delete=Zmaž označené
 index_existing=Webmin zistil momentálne platné pravidlá brány firewall IPFW $1, ktoré nie sú zaznamenané v súbore $2. Pravidlá boli pravdepodobne nastavené zo skriptu, ktorý tento modul nevie čítať a upravovať. <p> Ak chcete tento modul použiť na správu brány firewall IPFW, kliknite na tlačidlo nižšie a skonvertujte existujúce pravidlá do uloženého súboru. a potom zakážte existujúci skript brány firewall.
 index_saveex=Uložte pravidlá brány Firewall
 index_headerex=Existujúca konfigurácia brány firewall
+
 action_allow=<font color=#00aa00>Povoliť</font>
 action_deny=<font color=#ff0000>Drop</font>
 action_reject=<font color=#ff4400>Reject</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Drop packet</font>
 laction_reject=<font color=#ff4400>Vrátiť odmietnutie ICMP</font>
 laction_reset=<font color=#ff4400>Reset TCP connection</font>
 laction_skipto=Preskočiť na pravidlo
+
 edit_title1=Vytvoriť pravidlo
 edit_title2=Upraviť pravidlo $1 
 edit_header1=Pravidlo konania
@@ -114,6 +117,7 @@ edit_src-addr=Zo zdrojovej adresy ..
 edit_src-port=Zo zdrojového portu ..
 edit_dst-addr=Na cieľovú adresu ..
 edit_dst-port=Do cieľového prístavu ..
+
 save_err=Nepodarilo sa uložiť pravidlo
 save_enum=Chýbajúce alebo neplatné číslo pravidla
 save_eskipto=Chýbajúce alebo neplatné číslo pravidla, na ktoré sa má preskočiť
@@ -144,7 +148,9 @@ save_etcpflags=Príznaky TCP je možné zadať, iba ak je protokolom TCP
 save_elimit=Chýba alebo neplatný maximálny limit
 save_edstport=Chýba alebo je neplatný cieľový port
 save_esrcport=Chýba alebo je neplatný zdrojový port
+
 apply_err=Nepodarilo sa použiť konfiguráciu
+
 desc_if=Ak $1 
 desc_and=a
 desc_always=vždy
@@ -191,6 +197,7 @@ desc_where=kde $1
 desc_all=pre všetky pakety
 desc_in=prichádza paket
 desc_out=paket je odchádzajúci
+
 log_create_rule=Vytvorené pravidlo $1 
 log_delete_rule=Odstránené pravidlo $1 
 log_modify_rule=Upravené pravidlo $1 
@@ -206,6 +213,7 @@ log_convert=Prevedené aktívne pravidlá brány firewall
 log_setup=Vykonané počiatočné nastavenie brány firewall
 log_unapply=Obnovená konfigurácia brány firewall
 log_delsel=Odstránené pravidlá $1 
+
 cluster_title=Servery Firewall klastra
 cluster_none=Do klastra brány firewall zatiaľ neboli pridané žiadne servery.
 cluster_host=Meno hosťa
@@ -216,6 +224,7 @@ cluster_gadd=Pridajte servery do skupiny
 cluster_need=Predtým, ako ich budete môcť spravovať, musíte do modulu Webmin Servers Index pridať servery s prihlasovacím menom a heslom.
 cluster_return=klastrové servery
 cluster_delete=Vymazať označené
+
 add_title=Pridať servery
 add_msg=Pridáva sa $1 ..
 add_gmsg=Pridávanie serverov do skupiny $1 ..

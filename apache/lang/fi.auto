@@ -57,6 +57,7 @@ index_fmode1=Virtuaalipalvelintiedosto $1
 index_fmode1d=Uusi tiedosto virtuaalipalvelimien hakemistossa $1
 index_fmode2=Valittu tiedosto ..
 index_delete=Poista valitut palvelimet
+
 cvirt_ecannot=Et voi luoda virtuaalipalvelinta
 cvirt_err=Virtuaalipalvelimen luominen epäonnistui
 cvirt_eaddr1=Osoitetta ei annettu
@@ -70,6 +71,7 @@ cvirt_eroot4=Ei Apache-määrityksessä määritettyä käyttäjää
 cvirt_etaken=Virtuaalipalvelin, jolla on sama nimi ja portti, on jo olemassa
 cvirt_efile=Kirjoittaminen kohtaan $1 epäonnistui : $2
 cvirt_emissing=Uusi virtuaalipalvelin lisättiin tiedostoon $1, mutta Apache ei käytä tätä tiedostoa. Tarkista <a href='$2'>moduulin kokoonpano</a> ja varmista, että 'Tiedosto tai hakemisto, johon virtuaalipalvelimia lisätään' on oikein.
+
 etype=Tämän tyyppisiä vaihtoehtoja ei saa muokata
 efailed=$1 tallentaminen epäonnistui
 apache_apply=Ota muutokset käyttöön
@@ -80,6 +82,7 @@ default_serv=oletuspalvelin
 bytes=tavua
 eafter=Kokoonpanon tarkistus epäonnistui: $1 Muutoksia ei ole tallennettu.
 enewline=Virheellinen merkki arvossa
+
 global_ecannot=Et voi muokata globaaleja vaihtoehtoja
 global_mime=Globaali MIME-tyyppiluettelo
 global_mimedesc=Napsauta MIME-tyyppiä alla olevasta luettelosta muokataksesi sitä tai lisää sivun alalaidassa oleva linkki lisätäksesi uuden tyypin luetteloon.
@@ -87,6 +90,7 @@ global_type=Tyyppi
 global_ext=laajennukset
 global_add=Lisää uusi MIME-tyyppi.
 global_return=MIME-tyypit
+
 mime_ecannot=Mime-tyyppejä ei voi muokata
 mime_edit=Muokkaa MIME-tyyppiä
 mime_add=Lisää MIME-tyyppi
@@ -95,6 +99,7 @@ mime_type=MIME-tyyppi
 mime_ext=laajennukset
 mime_err=MIME-tyypin tallentaminen epäonnistui
 mime_etype='$1' ei ole kelvollinen MIME-tyyppi
+
 virt_ecannot=Et voi muokata tätä virtuaalipalvelinta
 virt_eprotocol=Sinun on valittava vähintään yksi käyttökelpoinen SSL/TLS-protokollaversio
 virt_title=Virtuaalipalvelimen asetukset
@@ -121,6 +126,7 @@ virt_path=polku
 virt_return=palvelinhakemisto
 virt_euser=Et voi muuttaa tämän virtuaalipalvelimen käyttäjää tai ryhmää.
 virt_header2=$1 $2
+
 vserv_title=Virtuaalipalvelimen kokoonpano
 vserv_virtualmin=Tämä Apache-virtuaalinen isäntä kuuluu Virtualmin-palvelimeen <tt>$1</tt>, joten osoitetta, porttia, perushakemistoa ja isäntänimeä ei voida muuttaa täällä.
 vserv_ecannot=Et voi muokata tämän virtuaalipalvelimen osoitetta
@@ -140,10 +146,12 @@ vserv_eport='$1' ei ole kelvollinen portti
 vserv_eroot='$1' ei ole kelvollinen asiakirjan juuri
 vserv_ename='$1' ei ole kelvollinen palvelimen nimi
 vserv_eaddrs=Virtuaalipalvelimen osoitteita ei ole annettu
+
 show_title=direktiivit
 show_edit=Muokkaa Apache-direktiiviä:
 show_these=Muokkaa direktiivejä manuaalisesti
 show_ok=Muokata
+
 manual_configs=Muokkaa asetustiedostoja
 manual_title=Muokkaa direktiivejä
 manual_header=Käytä alla olevaa tekstikenttää muokataksesi manuaalisesti Apache-direktiivejä $1 -ssa, jotka koskevat tätä virtuaalipalvelinta, hakemistoa tai tiedostoja.
@@ -153,6 +161,7 @@ manual_efile=Virheellinen Apache-määritystiedosto
 manual_etest=Konfigurointitiedoston virhe havaittu : $1
 manual_editfile=Muokkaa asetustiedostoa:
 manual_switch=Muokata
+
 dir_title=Hakemistokohtaiset asetukset
 dir_proxyall=Kaikki välityspalvelinpyynnöt
 dir_header=$1 -kohdassa $2
@@ -169,6 +178,7 @@ dir_re=Ottelun uusinta
 dir_path=polku
 dir_return=hakemistohakemisto
 dir_header2=$1 $2
+
 type_0=Prosessit ja rajoitukset
 type_1=Verkottuminen ja osoitteet
 type_2=Apache-moduulit
@@ -190,6 +200,7 @@ type_17=Automaattiset virtuaaliset isännät
 type_18=Suodattimet
 type_19=Kieli (kielet
 type_20=Kuvakartat
+
 htaccess_title=Hakemistokohtaiset asetukset-tiedostot
 htaccess_ecannot=Htaccess-tiedostoja ei voi muokata
 htaccess_file=Nykyiset vaihtoehtoiset tiedostot
@@ -205,6 +216,7 @@ htaccess_edelete=Et voi poistaa tätä vaihtoehtoista tiedostoa
 htaccess_eempty=Optio-tiedostohakemistoa ei ole annettu
 htaccess_eabsolute=Asetukset-tiedostohakemiston on oltava ehdoton polku
 htaccess_err=Asetustiedoston luominen epäonnistui
+
 htindex_ecannot=Tätä asetustiedostoa ei saa muokata
 htindex_title=Hakemistokohtaiset asetukset-tiedosto
 htindex_delete=Poista tiedosto
@@ -220,12 +232,14 @@ htindex_path=polku
 htindex_header=$1
 htindex_header2=$1 vaihtoehtoiselle tiedostolle $2
 htindex_return=asetukset tiedostohakemisto
+
 htfile_title=Tiedostokohtaiset asetukset
 htfile_header=$1 -kohdassa $2
 htfile_show=Näytä direktiivit
 htfile_edit=Muokkaa direktiivejä
 htfile_apply=Vaihtoehdot koskevat ..
 htfile_header2=$1 $2
+
 reconfig_title=Määritä tunnetut moduulit uudelleen
 reconfig_ecannot=Sinulla ei ole oikeutta määrittää apachetta uudelleen
 reconfig_ever=Apache-palvelimen version suorittamisen $1 versio epäonnistui. Tarkista <a href='$2'>moduulin kokoonpano</a> ja varmista, että tämä on oikea polku.
@@ -233,11 +247,13 @@ reconfig_desc1=Apache-kokoonpanosi on muuttunut tai Webmin ei ole vielä tutkinu
 reconfig_desc2=Alla on luettelo kaikista Webmin tukemista Apache-moduuleista, nykyisin asennetuilla. Jos käytät dynaamisesti ladattuja moduuleja, sinun on ehkä valittava ne, jotka ladataan dynaamisesti.
 reconfig_desc3=Jos et ole varma, mitä moduuleja Apache tukee järjestelmässäsi, määritä vain, koska Webmin pystyy yleensä kehittämään tuetut moduulit automaattisesti.
 reconfig_ok=Määritä
+
 defines_title=Muokkaa määritettyjä parametreja
 defines_ecannot=Et voi muokata httpd-määrityksiä
 defines_desc=Kun Apache käynnistetään, parametrit voidaan siirtää sille komentorivivalinnalla <tt>-D</tt>. Koska nämä parametrit voivat vaikuttaa määritystiedostoihin käytettyihin direktiiveihin, Webmin on tiedettävä, mitkä ne välitetään Apachelle, kun se käynnistetään. Kirjoita järjestelmässäsi käytetyt parametrit oikealla olevaan tekstikenttään.
 defines_config=Huomaa, että seuraavat määritellyt parametrit ovat jo tiedossa : $1
 defines_list=Määritetyt parametrit
+
 authu_ecannot='$1' ei ole sallittu käyttäjien tekstitiedosto
 authu_title=Käyttäjäluettelo
 authu_header=Tiedostossa $1
@@ -259,6 +275,7 @@ authu_sync=Alla olevien asetusten avulla voit määrittää Webminin lisäämä�
 authu_screate=Lisää käyttäjä, kun Unix-käyttäjä on lisätty
 authu_sdelete=Poista käyttäjä, kun Unix-käyttäjä poistetaan
 authu_smodify=Vaihda käyttäjä, kun Unix-käyttäjä vaihdetaan
+
 authg_ecannot='$1' ei ole sallittu ryhmien tekstitiedosto
 authg_title=Ryhmäluettelo
 authg_header=Tiedostossa $1
@@ -276,22 +293,26 @@ authg_err=Ryhmän tallentaminen epäonnistui
 authg_euser=Ryhmän nimeä ei annettu
 authg_euser2=Ryhmän nimi ei voi sisältää :
 authg_edup=Ryhmä nimeltä '$1' on jo olemassa
+
 stop_err=Apachen lopettaminen epäonnistui
 stop_ecannot=Sinulla ei ole oikeutta lopettaa apachetta
 stop_epid=PID-tiedoston $1 avaaminen epäonnistui
 stop_epid2=Virheellinen PID-tiedosto $1
 stop_esig=SIGTERM: n lähettäminen epäonnistui käsittelemään $1
+
 start_err=Apachen aloittaminen epäonnistui
 start_ecannot=Sinulla ei ole oikeutta aloittaa apachea
 start_ecmd=$1 epäonnistui : $2
 start_eunknown=Tuntematon syy
 start_eafter=Apache ei näytä toimivan
+
 restart_err=Muutosten asettaminen epäonnistui
 restart_epid=PID-tiedoston $1 avaaminen epäonnistui
 restart_epid2=Virheellinen PID-tiedosto $1
 restart_esig=SIGHUP-tiedoston lähettäminen epäonnistui käsittelemään $1
 restart_eunknown=Tuntematon syy
 restart_ecannot=Et saa tehdä muutoksia
+
 acl_virts=Virtuaalipalvelimia, joita tämä käyttäjä voi muokata
 acl_vall=Kaikki palvelimet
 acl_vsel=Valitut ..
@@ -314,6 +335,7 @@ acl_dirs=Apache-direktiivit saatavilla <br><font size=-1> (Ellei tyyppirajoitust
 acl_dirs0=Kaikki
 acl_dirs1=Vain listattu ..
 acl_dirs2=Kaikki paitsi luetellut ..
+
 core_maxconc=Suurin samanaikainen pyyntö
 core_maxkeep=Suurin sallittu säilytysarvo per yhteys
 core_maxreq=Enimmäispyynnöt palvelinprosessia kohti
@@ -499,10 +521,12 @@ core_infilter=Käytä tulosuodattimia kaikkiin tiedostoihin
 core_outfilter=Käytä tulostesuodattimia kaikkiin tiedostoihin
 core_defchar=Asiakirjojen merkistö
 core_edefchar=Puuttuva tai virheellinen merkistö dokumenteille
+
 mod_negotiation_cache=Välimuistissa neuvotellut asiakirjat?
 mod_negotiation_pri=Kielen prioriteetti moninäkymissä
 mod_negotiation_def=oletusarvo
 mod_negotiation_epri=Puuttuvat kielen prioriteetit
+
 mod_cgi_logname=CGI-skriptiloki
 mod_cgi_none=Ei mitään
 mod_cgi_elogname=Virheellinen CGI-skriptilokitiedosto
@@ -512,6 +536,7 @@ mod_cgi_elogsize=CGI-lokin koon on oltava kokonaisluku
 mod_cgi_post=Kirjattujen viestien enimmäiskoko
 mod_cgi_epost=Viestitietojen koon on oltava kokonaisluku
 mod_cgi_eunder=CGI-skriptiloki ei ole sallitussa hakemistossa
+
 mod_alias_from=alkaen
 mod_alias_to=jotta
 mod_alias_status=Tila
@@ -535,6 +560,7 @@ mod_alias_cgi2=CGI-hakemiston alias
 mod_alias_rcgi=Regexp CGI -hakemiston aliakset
 mod_alias_rcgi2=regexp CGI-hakemiston alias
 mod_alias_estatus='$1' ei ole kelvollinen tila
+
 mod_proxy_proxy=Toimivat välityspalvelimena?
 mod_proxy_req=Pyynnöt
 mod_proxy_forw=Eteenpäin
@@ -605,11 +631,13 @@ mod_proxy_timeout=Välityspalvelimen pyynnön aikakatkaisu sekunneissa
 mod_proxy_etimeout=Välityspalvelimen pyynnön aikakatkaisun on oltava sekunneja
 mod_proxy_via=Aseta Via: otsikot
 mod_proxy_not=Ei mitään
+
 mod_log_agent_default=oletusarvo
 mod_log_agent_file=Tiedosto ..
 mod_log_agent_program=Ohjelmoida ..
 mod_log_agent_log=Selaimen lokitiedosto
 mod_log_agent_efile=$1 ei ole kelvollinen agenttilokin tiedostonimi
+
 mod_log_config_common=Yhteinen lokimuoto
 mod_log_config_named=Nimetyt lokimuodot
 mod_log_config_nick=Nimimerkki
@@ -628,6 +656,7 @@ mod_log_config_enofilprog=Puuttuu lokitiedostonimi tai ohjelma
 mod_log_config_efilprog='$1' ei ole sallittu lokitiedostonimi tai ohjelma
 mod_log_config_eifset='Jos asetettu' -asetusta ei voida käyttää oletusloki-muodossa
 mod_log_config_edir=Lokitiedoston '$1' hakemistoa ei ole
+
 mod_log_referer_default=oletusarvo
 mod_log_referer_file=Tiedosto ..
 mod_log_referer_program=Ohjelmoida ..
@@ -635,7 +664,9 @@ mod_log_referer_log=Viittaajan lokitiedosto
 mod_log_referer_nolog=Älä kirjaa viitteitä
 mod_log_referer_elog=$1 ei ole kelvollinen referer-lokitiedostonimi
 mod_log_referer_edir=viiteloki ei ole sallitun hakemiston alla
+
 mod_status_msg=Näytä laajennetut tilatiedot
+
 mod_mime_ext=laajennukset
 mod_mime_xtype=Extra MIME -tyypit
 mod_mime_mtype=MIME-tyyppi
@@ -668,6 +699,7 @@ mod_mime_outfilter=Lähtösuodattimet
 mod_mime_infilter=Tulosuodattimet
 mod_mime_filters=Käytettävät suodattimet
 mod_mime_efext=Suodattimille $1 ei ole annettu laajennuksia
+
 mod_setenvif_header=ylätunniste
 mod_setenvif_match=Ottelu
 mod_setenvif_case=Ottelun tapaus
@@ -678,11 +710,13 @@ mod_setenvif_eheader=Virheellinen pyynnön otsikko '$1'
 mod_setenvif_eregex=Virheellinen säännöllinen lauseke '$1'
 mod_setenvif_evar=Virheellinen muuttujan nimi '$1'
 mod_setenvif_clear=Asia selvä
+
 mod_userdir_default=oletusarvo
 mod_userdir_all=Kaikille käyttäjille on pääsy
 mod_userdir_except=Kaikki käyttäjät paitsi
 mod_userdir_dir=Käyttäjän WWW-hakemisto
 mod_userdir_edir=Et voi käyttää määritettyä käyttäjän WWW-hakemistoa
+
 mod_imap_action=Toimenpide kuvakarttojen väärään käyttöön
 mod_imap_default=oletusarvo
 mod_imap_godefurl=Siirry oletus-URL-osoitteeseen
@@ -702,8 +736,10 @@ mod_imap_refurl=Viittaava URL
 mod_imap_url=URL-osoitetta. ..
 mod_imap_defbase=Oletuspohja kuvakarttoille
 mod_imap_eurl='$1' ei ole kelvollinen URL-osoite
+
 mod_speling_autocorr=Korjaako väärin kirjoitetut URL-osoitteet automaattisesti?
 mod_speling_default=oletusarvo
+
 mod_actions_mime=Käsittelijä / MIME-tyyppi
 mod_actions_cgiurl=CGI-komentosarjan URL-osoite
 mod_actions_mimecgi=Käsittely- tai MIME-tyyppiset CGI-toimet
@@ -713,10 +749,13 @@ mod_actions_httpcgi=HTTP-menetelmän CGI-toimet
 mod_actions_emime='$1' ei ole kelvollinen käsittelijä tai MIME-tyyppi
 mod_actions_ecgi='$1' ei ole kelvollinen CGI-skripti
 mod_actions_enometh=CGI-skriptille '$1' ei ole valittu menetelmää
+
 mod_include_incl=Prosessi sisältää tiedostoissa, joissa on suoritusbitti?
 mod_include_set=Kyllä ja aseta viimeksi muokattu päivämäärä
 mod_include_default=oletusarvo
+
 mod_dir_txt=Hakemistotiedostot
+
 mod_autoindex_default=oletusarvo
 mod_autoindex_asc=nouseva
 mod_autoindex_descend=Laskeva
@@ -725,6 +764,7 @@ mod_autoindex_date=Päivämäärä
 mod_autoindex_size=Koko
 mod_autoindex_desc=Kuvaus
 mod_autoindex_sort=Lajittele hakemistohakemisto
+
 browsermatch_regexp=Selaimen regex
 browsermatch_case=Ottelu tapaus?
 browsermatch_var=Aseta muuttuja
@@ -732,6 +772,7 @@ browsermatch_value=Arvo
 browsermatch_txt=Muuttujat asetettu selaintyypin perusteella
 browsermatch_evar=Virheellinen muuttujan nimi '$1'
 browsermatch_clear=Asia selvä
+
 autoindex_fname=Tiedoston nimi
 autoindex_mime=MIME-tyyppi
 autoindex_enc=koodaus
@@ -785,9 +826,11 @@ autoindex_sicon=Näytä tiedostokuvakkeet
 autoindex_srules=Näytä &lt;hr&gt; rivit
 autoindex_track=Lisää ETags otsikkoon
 autoindex_version=Lajittele version mukaan
+
 mod_mime_magic_file=MIME maagisten numeroiden tiedosto
 mod_mime_magic_none=Ei mitään
 mod_mime_magic_efile=Virheellinen MIME-maagisten numeroiden tiedostonimi
+
 mod_env_var=muuttuja
 mod_env_value=Arvo
 mod_env_pass=Kulkea läpi
@@ -798,6 +841,7 @@ mod_env_passall=Siirrä kaikki ympäristömuuttujat CGI: ille
 mod_env_default=oletusarvo
 mod_env_evar='$1' ei ole kelvollinen muuttujan nimi
 mod_env_evalue='$1' ei ole kelvollinen muuttujan arvo
+
 mod_access_order=Kulunvalvontajärjestys:
 mod_access_denyallow=Estä sitten sallia
 mod_access_allowdeny=Salli sitten kieltää
@@ -820,6 +864,7 @@ mod_access_epip='$1' ei ole kelvollinen osittainen IP-osoite
 mod_access_emask='$1' ei ole kelvollinen verkko / verkkomaski-pari
 mod_access_ecidr='$1' ei ole kelvollinen verkko / CIDR-pari
 mod_access_evar='$1' ei ole kelvollinen muuttujan nimi
+
 mod_auth_ufile=Käyttäjän tekstitiedosto
 mod_auth_uedit=Muokkaa käyttäjiä
 mod_auth_gfile=Ryhmitä tekstitiedosto
@@ -830,6 +875,7 @@ mod_auth_eudir=Käyttäjän tekstitiedosto ei ole sallitussa hakemistossa
 mod_auth_egdir=Ryhmätekstitiedosto ei ole sallitussa hakemistossa
 mod_auth_eufile=Virheellinen käyttäjän tekstitiedoston nimi
 mod_auth_egfile=Virheellinen ryhmän tekstitiedoston nimi
+
 mod_auth_dbm_ufile=Käyttäjän DBM-tiedosto
 mod_auth_dbm_gfile=Ryhmitä DBM-tiedosto
 mod_auth_dbm_pass=Hyväksytäänkö viat seuraavalle moduulille?
@@ -840,6 +886,7 @@ mod_auth_dbm_egfile=Virheellinen ryhmän DBM-tiedostonimi
 mod_auth_dbm_type=DBM-tietokantatyyppi
 mod_auth_dbm_gtype=DBM-ryhmätietokantatyyppi
 mod_auth_dbm_default=Oletus DBM-muoto
+
 mod_cern_meta_process=Prosessoi otsikkotiedostot
 mod_cern_meta_dir=Otsikko-metatiedostojen alihakemisto
 mod_cern_meta_default=oletusarvo
@@ -847,6 +894,7 @@ mod_cern_meta_edir=Virheellinen meta-tiedoston alihakemiston nimi
 mod_cern_meta_suffix=Tiedoston pääte otsikkotiedostoille
 mod_cern_meta_default2=oletusarvo
 mod_cern_meta_esuffix=Virheellinen metafile -liite
+
 mod_ssl_enable=Ota SSL käyttöön?
 mod_ssl_proto=SSL-protokollat
 mod_ssl_cfile=Varmenne / yksityinen avaintiedosto
@@ -874,6 +922,7 @@ mod_ssl_passsc=Suorita komentosarja $1
 mod_ssl_epassph=SSL-salasanaa ei annettu
 mod_ssl_epasssc=Puuttuva tai virheellinen SSL-salasanakomentosarja
 mod_ssl_ecerton=Kun SSL on käytössä, varmennetiedosto on valittava
+
 mod_apachessl_notssl=Estä SSL-käyttö
 mod_apachessl_forcessl=Pakota SSL / notSSL-käyttö?
 mod_apachessl_capath=Polku hakemistoon varmennusviranomaisten sertifikaateilla
@@ -906,6 +955,7 @@ mod_apachessl_nov2=Poista SSL-versio 2 käytöstä
 mod_apachessl_fake=Simuloi käyttäjän todennuksen perustunnuksia varmenteen nimellä
 mod_apachessl_cdnfile=Tiedosto asiakkaan DN: tä vastaan tarkistetaan
 mod_apachessl_ecdnfile=Puuttuva tiedosto asiakkaan DN: tä vastaan tarkistetaan
+
 log_global=Muutetut globaalit $1 -asetukset
 log_virtc=Luotu palvelin $1
 log_virts=Konfiguroitu palvelin $1
@@ -946,8 +996,10 @@ log_stop=Pysäytetty verkkopalvelin
 log_apply=Sovelletut muutokset
 log_manual=Manuaalisesti muokattu asetustiedosto $1
 log_virts_delete=Poistettu $1 virtuaalipalvelimet
+
 search_title=Etsi palvelimia
 search_notfound=Vastaavia virtuaalipalvelimia ei löytynyt
+
 mod_php_value=PHP-määritysarvot
 mod_php_flag=PHP-kokoonpanoliput
 mod_php_admin_value=PHP-järjestelmänvalvojan kokoonpanoarvot
@@ -956,6 +1008,7 @@ mod_php_name_header=asetus
 mod_php_value_header=Arvo
 mod_php_ename='$1' on virheellinen nimi
 mod_php_evalue='$1' on virheellinen arvo $2
+
 mod_vhost_alias_root=Automaattinen virtuaalinen isäntäjuuri
 mod_vhost_alias_ip=Käytätkö IP-osoitetta isäntänimen sijasta?
 mod_vhost_alias_none=Ei mitään
@@ -963,12 +1016,14 @@ mod_vhost_alias_script=Automaattinen virtuaalinen isäntä cgi-bin
 mod_vhost_alias_eroot=Puuttuva tai virheellinen virtuaalinen isäntäjuuri
 mod_vhost_alias_eroot2=Virtuaalinen isäntäjuurikansio ei ole sallittu
 mod_vhost_alias_escript=Puuttuva tai virheellinen virtuaalinen isäntä cgi-bin
+
 worker_minspare=Minimi varalangat
 worker_maxspare=Maksimi varalangat
 worker_eminspare=Minimi varalankojen on oltava kokonaisluku
 worker_emaxspare=Suurimpien varalankojen on oltava kokonaisluku
 worker_threads=Langat lapsiprosessia kohti
 worker_ethreads=Lankojen lukumäärää lasten prosessia kohti on oltava kokonaisluku
+
 perchild_sthreads=Alkulangat lapsiprosessia kohti
 perchild_esthreads=Lankojen lukumäärää lasten prosessia kohti on oltava kokonaisluku
 perchild_numservers=Lasten prosessien lukumäärä
@@ -984,6 +1039,7 @@ perchild_gid=GID
 perchild_enum=Prosessin numeron on oltava nolla kokonaisluku
 perchild_euid=UID: n on oltava kokonaisluku
 perchild_egid=GID: n on oltava kokonaisluku
+
 cache_enable=Aktiivinen?
 cache_type=Välimuisti
 cache_disk=Levy
@@ -1004,12 +1060,14 @@ cache_eminos=Objektin vähimmäiskoko välimuistissa on oltava useita tavuja
 cache_emaxos=Objektin enimmäiskoko välimuistissa on oltava useita tavuja
 cache_maxoc=Välimuistissa olevien kohteiden enimmäismäärä
 cache_emaxoc=Välimuistiin tallennettavien objektien lukumäärän on oltava kokonaisluku
+
 suexec_su=Suorita CGI-ohjelmat nimellä
 suexec_none=Käyttäjä globaalista kokoonpanosta
 suexec_user=Unix-käyttäjä
 suexec_group=ja ryhmä
 suexec_euser=Puuttuva tai virheellinen käyttäjä ajamaan CGI-ohjelmia nimellä
 suexec_egroup=Puuttuva tai virheellinen ryhmä CGI-ohjelmien suorittamiseen nimellä
+
 filter_name=Nimi
 filter_intype=Syötä MIME-tyyppi
 filter_outtype=Lähtö MIME-tyyppi
@@ -1019,11 +1077,13 @@ filter_in=Tulosuodattimen määritelmät
 filter_out=Tulosuodattimen määritelmät
 filter_ename=Virheellinen suodattimen nimi '$1'
 filter_ecmd=Puuttuva komento suodattimelle '$1'
+
 cdir_err=Hakemistokohtaisten asetusten luominen epäonnistui
 cdir_err2=Hakemistokohtaisten asetusten tallentaminen epäonnistui
 cdir_epath=Puuttuva polku
 cdir_eproxy=Välityspalvelimen asetuksia ei voida luoda, kun ottelun regexp-asetus on käytössä
 cdir_ecannot=Et voi luoda hakemistokohtaisia vaihtoehtoja annetulle polulle
+
 mod_band_enable=Kaistanleveyden rajoittaminen käytössä?
 mod_band_bw=Raja (tavu / s)
 mod_band_client=Asiakkaille
@@ -1042,24 +1102,30 @@ mod_band_epulse=Puuttuva tai virheellinen aikaväli rajoitettujen pakettien väl
 mod_band_dir=Kaistanleveyttä rajoittava datatiedostohakemisto
 mod_band_edir=Puuttuva tai puuttuva kaistanleveystiedostot-hakemisto
 mod_band_esubdir=Vaadittava alihakemisto <tt>$1</tt> kaistanleveystiedostot-hakemistosta
+
 mod_dav_active=WebDAV käytössä?
 mod_dav_inf=Sallitaanko ääretön syvyys DAV PROPFIND -pyyntöihin?
 mod_dav_timeout=Minimi DAV-aikakatkaisu sekunneissa
 mod_dav_etimeout=Puuttuva tai virheellinen DAV-aikakatkaisu
+
 delete_err=Virtuaalipalvelimien poistaminen epäonnistui
 delete_enone=Mitään ei ole valittu
 delete_ecannot=Et voi poistaa palvelimia
 delete_ecannot2=Et voi muokata palvelinta $1
+
 syslog_desc=Apache-virheloki
+
 mod_auth_basic_pass=Siirretäänkö peruskirjautumisvirheet seuraavalle moduulille?
 mod_auth_basic_prov=Sisäänkirjautumisen käyttäjän tiedostotyypit
 mod_auth_basic_file=Tekstitiedosto
 mod_auth_basic_dbm=DBM-tietokanta
+
 mod_auth_digest_pass=Siirretäänkö sulatetun kirjautumisen epäonnistumiset seuraavaan moduuliin?
 mod_auth_digest_prov=Tiivistelmän sisäänkirjautumisen käyttäjän tiedostotyypit
 mod_auth_digest_al=Hajautusalgoritmi
 mod_auth_digest_domain=URL-osoitteet ja polut samassa verkkotunnuksessa
 mod_auth_digest_edomain=Puuttuvat URL-osoitteet ja polut samassa verkkotunnuksessa
+
 mods_title=Asenna Apache-moduulit
 mods_mod=Moduuli
 mods_state=Nykyinen tila

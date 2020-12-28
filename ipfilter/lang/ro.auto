@@ -43,8 +43,10 @@ index_natnone=Încă nu au fost definite reguli de traducere a adreselor de reț
 index_nataction=Mod NAT
 index_natfrom=Pachete care se potrivesc
 index_natto=Traducere
+
 dir_in=care sosește
 dir_out=De ieșire
+
 action_pass=<font color=#00aa00>Treceți</font>
 action_block=<font color=#ff0000>Block</font>
 action_skip=Ocolire
@@ -57,6 +59,7 @@ action_map=Cartografierea
 action_rdr=Redirecţiona
 action_bimap=Cartografierea bidirecțională
 action_map-block=Mapare bloc
+
 laction_pass=<font color=#00aa00>Treceți pachetul</font>
 laction_block=<font color=#ff0000>Bloc pachet, cu cod ICMP</font>
 laction_log=Pachete de jurnal, la nivel
@@ -65,6 +68,7 @@ laction_skip=Săriți regulile următoare
 laction_auth=Autorizarea spațiului utilizatorului
 laction_preauth=Verificați autorizarea anterioară
 laction_call=Funcția nucleului de apel
+
 edit_title1=Creați o regulă
 edit_title2=Editează regula
 edit_header1=Acțiunea regulilor
@@ -130,6 +134,7 @@ edit_icmp=Tip ICMP
 edit_icmpany=&lt;Orice tip&gt;
 edit_icmpcode=și cod
 edit_codeany=&lt;Orice cod&gt;
+
 save_err=Reglarea nu a reușit să salveze
 save_ehostfrom=Numele gazdă sursă lipsă sau nevalid
 save_ehostto=Numele gazdă de destinație lipsă sau nevalid
@@ -158,11 +163,13 @@ save_eto=Interfață lipsă sau nevalidă pentru a trimite mai departe
 save_etoip=Adresa IP nevalidă pentru a fi trimisă mai departe
 save_ereplyto=Interfață lipsă sau nevalidă pentru a răspunde
 save_ereplytoip=Adresa IP nevalidă pentru a răspunde
+
 apply_err=Eroare la aplicarea configurației
 apply_remote=Eroare de la $1 : $2 
 unapply_err=Nu a putut reveni configurația
 unapply_ein=Eroare la obținerea regulilor de introducere
 unapply_eout=Eroare la obținerea regulilor de ieșire
+
 desc_if=Dacă $1 
 desc_and=și
 desc_always=Mereu
@@ -196,6 +203,7 @@ desc_rdr=Adrese IP $1 port $2
 desc_dport1=portul este $1
 desc_dport2=portul este cuprins între $1 și $2 
 desc_nattoiface=adresa de interfață
+
 log_create_rule=Regula $1 creată
 log_delete_rule=S-a șters regula $1 
 log_modify_rule=Regula $1 modificată
@@ -224,6 +232,7 @@ log_add_host=S-a adăugat serverul de cluster $1
 log_add_group=S-au adăugat servere de cluster din grupul $1 
 log_delete_host=Serverul de cluster a fost eliminat $1 
 log_delete_group=Șters serverele de cluster $1 
+
 cluster_title=Cluster Firewall Servers
 cluster_none=Încă nu au fost adăugate servere la clusterul firewall.
 cluster_host=Numele gazdei
@@ -234,6 +243,7 @@ cluster_gadd=Adăugați servere în grup
 cluster_need=Pentru a putea fi gestionate aici, trebuie să adăugați servere cu o autentificare și parolă în modulul Index Web Servers.
 cluster_return=serverele de cluster
 cluster_delete=Sterge selectia
+
 add_title=Adăugați servere
 add_msg=Se adaugă $1 ..
 add_gmsg=Adăugarea serverelor în grupul $1 ..
@@ -242,6 +252,7 @@ add_gerr=Eroare la adăugarea grupului
 add_echeck=Serverul $1 nu are modulul IPFilter Firewall
 add_emissing=Serverul $1 lipsește comanda firewallului $2 
 add_ok=S-a adăugat $1, cu $2 reguli de firewall active.
+
 nat_title1=Creați regula NAT
 nat_title2=Editează regula NAT
 nat_action=Mod NAT
@@ -300,4 +311,5 @@ nat_edport2=Portul inițial care lipsește sau este incorect
 net_erdrip=„$1” nu este o adresă IP de destinație validă
 nat_erdrips=Nu au fost introduse IP-uri de destinație
 nat_erdrport=Portul de destinație lipsă sau nevalid
+
 boot_esmf=Serviciul SMF $1 nu există sau nu se află într-o stare cunoscută

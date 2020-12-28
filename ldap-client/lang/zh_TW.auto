@@ -14,6 +14,7 @@ index_restart=重新啟動LDAP客戶端守護程序
 index_restartdesc=通過重新啟動本地LDAP客戶端守護程序來應用當前配置。
 index_atboot=在啟動時啟動LDAP客戶端
 index_atbootdesc=更改系統啟動時是否啟動LDAP客戶端守護程序。
+
 server_title=LDAP服務器配置
 server_header=LDAP服務器和登錄選項
 server_host=LDAP服務器主機名
@@ -51,6 +52,7 @@ server_etimelimit=缺少或無效的連接時間限制
 server_ecacert=缺少或無效的CA證書文件
 server_euport=服務器 $1的端口丟失或無效
 server_euri=沒有輸入LDAP服務器
+
 base_title=LDAP搜索基礎
 base_header=LDAP目錄搜索位置
 base_base=全球搜尋基地
@@ -86,6 +88,7 @@ base_enetmasks=網絡掩碼名稱的缺少基數
 base_ealiases=缺少電子郵件別名的基礎
 base_enetgroup=網絡組的基礎不足
 base_etimelimit=缺少或無效的搜索時間限制
+
 pam_title=驗證選項
 pam_header=PAM身份驗證和密碼設置
 pam_filter=附加LDAP過濾器
@@ -106,10 +109,12 @@ pam_efilter=缺少其他LDAP過濾器
 pam_elogin=用戶名的LDAP屬性缺失或無效
 pam_egroupdn=缺少LDAP組以強制加入
 pam_emember=群組成員的LDAP屬性缺失或無效
+
 switch_title=使用LDAP的服務
 switch_service=服務
 switch_srcs=數據源
 switch_return=使用LDAP的服務
+
 ldap_emodule=未安裝與LDAP服務器對話所需的 $1 Perl模塊。 <a href='$2'>單擊此處</a>立即下載並安裝Webmin。
 ldap_emodule2=未安裝與LDAP服務器對話所需的 $1 Perl模塊。
 ldap_econf=在系統上找不到LDAP客戶端配置文件 $1
@@ -119,6 +124,7 @@ ldap_elogin=未能綁定到LDAP服務器 $1作為 $2 : $3
 ldap_anon=匿名
 ldap_eparse=無法解析LDAP服務器URI $1
 ldap_etls=未能切換到TLS模式： $1
+
 browser_title=LDAP瀏覽器
 browser_econn=不能使用LDAP瀏覽器： $1
 browser_base=瀏覽：
@@ -129,6 +135,7 @@ browser_attrs=對象屬性
 browser_parent=瀏覽父級
 browser_none=沒有
 browser_sel=好
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=域名解析
@@ -142,6 +149,7 @@ order_user=用戶打印機
 order_xfn=XFN
 order_mdns4=組播DNS
 order_mdns4_minimal=組播DNS（最小）
+
 desc_aliases=Sendmail別名
 desc_mail=Sendmail別名
 desc_hosts=主機地址
@@ -177,6 +185,7 @@ desc_printers=印表機
 desc_ipnodes=IP節點
 desc_timezone=時區
 desc_locale=語言環境
+
 eswitch_title=編輯服務
 eswitch_egone=服務不存在！
 eswitch_header=服務詳情
@@ -196,6 +205,7 @@ eswitch_continue=繼續搜尋
 eswitch_none=沒有
 eswitch_err=保存服務失敗
 eswitch_enone=未選擇來源！
+
 log_server=修改的LDAP服務器配置
 log_base=修改後的LDAP搜索庫
 log_pam=修改的身份驗證選項
@@ -205,6 +215,7 @@ log_delboot=引導時禁用了LDAP客戶端守護程序
 log_start=啟動LDAP客戶端守護程序
 log_stop=停止的LDAP客戶端守護程序
 log_restart=重新啟動LDAP客戶端守護程序
+
 check_title=驗證LDAP配置
 check_base=查找用戶的LDAP基礎 ..
 check_ebase=..在客戶端配置中找不到基礎！

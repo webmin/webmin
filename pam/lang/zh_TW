@@ -4,6 +4,7 @@ index_desc=描述
 index_add=新增PAM伺服項目
 index_return=服務列表
 index_none=在您的系統目錄 $1中找不到PAM的組態檔案，也許沒有安裝PAM，或著 <a href='$2'>模組設定</a> 不正確
+
 desc_su=切換使用者
 desc_login=本地或遠端登入
 desc_samba=Samba Windows檔案伺服器
@@ -61,6 +62,7 @@ desc_printconf-gui=Redhat列表機組態工具
 desc_rhn_register=Redhat網路註冊
 desc_system-auth=一般身份認證
 desc_cups=CUPS printing
+
 edit_title=編輯PAM服務
 edit_header=PAM服務項目內容
 edit_name=服務名稱
@@ -77,6 +79,7 @@ edit_none=沒有PAM模組指定給這個步驟
 edit_delete=刪除PAM服務項目
 edit_move=移動
 edit_return=PAM服務項目
+
 pam_pwdb.so=Unix密碼身份認證
 pam_securetty.so=檢查root安全TTY
 pam_nologin.so=檢查<tt>/etc/nologin</tt>檔案
@@ -118,6 +121,7 @@ pam_desgold.so=DESGold 智慧卡身份認證
 pam_console.so=只檢查終端機
 pam_xauth.so=X身份認證
 pam_stack.so=呼叫其他PAM服務項目
+
 control_requisite=必要的
 control_required=所要求的
 control_sufficient=足夠的
@@ -126,6 +130,7 @@ control_desc_requisite=在身份認證錯誤時立刻結束
 control_desc_required=在身份認證錯誤後直到結束後才停止
 control_desc_sufficient=身份認證正確後立刻成功
 control_desc_optional=不管成功或錯誤都忽略
+
 create_title=新增PAM服務項目
 create_header=新增PAM服務項目選項
 create_name=服務名稱
@@ -134,6 +139,7 @@ create_mods=初始PAM模組
 create_0=無
 create_1=Unix身份認證
 create_2=阻止任何人進入
+
 mod_edit=編輯PAM模組
 mod_create=加入PAM模組
 mod_header=PAM模組選項
@@ -147,10 +153,12 @@ mod_type_password=更改密碼
 mod_control=失敗層級
 mod_args=模組衝突
 mod_err=儲存模組失敗
+
 pwdb_shadow=使用遮蔽密碼檔案?
 pwdb_nullok=允許無密碼?
 pwdb_md5=使用 MD5編碼的密碼?
 pwdb_nodelay=在登入失敗後拒絕?
+
 listfile_item=搜尋檔案
 listfile_item_user=使用者名稱
 listfile_item_tty=TTY
@@ -167,51 +175,64 @@ listfile_apply=限制檢查
 listfile_all=所有使用者
 listfile_user=只有使用者
 listfile_group=只有群組
+
 cracklib_type=提示密碼類型
 cracklib_retry=在失敗之前最大可恢復的
 cracklib_eretry=沒有輸入或無效的沒有輸入或無效的可恢復數字
 cracklib_etype=沒有輸入或無效的密碼類型
+
 rhosts_equiv=讀取 <tt>/etc/hosts.equiv</tt>檔案?
 rhosts_rhosts=讀取使用者的 <tt>.rhosts</tt>檔案?
 rhosts_promiscuous=<tt>+</tt> 允許所有主機進入?
 rhosts_suppress=紀錄身份認證失敗?
+
 env_var=變數名稱
 env_def=預設值
 env_over=忽略值
 env_evar=變數名稱不能有空白
+
 securetty_ttys=安全TTY
+
 shells_shells=有效的使用者shell
+
 tally_deny=在拒絕進入前嘗試錯誤
 tally_reset=在成功後重設錯誤計算數目
 tally_edeny=沒有輸入或無效的嘗試錯誤數目
 tally_magic=錯誤計算數目應用在<tt>root</tt>?
 tally_root=<tt>root</tt> account可被拒絕?
+
 time_services=服務
 time_ttys=TTY
 time_users=使用者
 time_times=進入時間
 time_info=所有的錯誤可以包含多個用 | 分隔數值，而且數值可以使用萬用字元 * 和代表否定的 ! 。
+
 group_services=服務
 group_ttys=TTY
 group_users=使用者
 group_times=進入時間
 group_groups=加入群組
 group_info=所有的錯誤可以包含多個用 | 分隔數值，而且數值可以使用萬用字元 * 和代表否定的 ! 。
+
 wheel_group=檢查群組會員
 wheel_group_def=預設(<tt>wheel</tt> 或 GID 0)
 wheel_trust=群組成員以futher身份認證通過?
 wheel_deny=將允許的群組成員改成拒絕?
 wheel_egroup=沒有輸入或無效的群組名稱
+
 motd_file=顯示檔案
 motd_file_def=預設(<tt>/etc/motd</tt>)
 motd_efile=沒有輸入或無效的檔案名稱
+
 mail_nopen=在登入顯示郵件通知?
 mail_close=在登出顯示郵件通知?
 mail_empty=通知當郵件檔案是空的?
 mail_noenv=設定 $MAIL 環境變數?
 mail_dir=郵件spool目錄
 mail_edir=沒有輸入或無效的郵件spool目錄
+
 stack_service=在PAM服務項目上檢查密碼
+
 log_pam_create=新增PAM服務項目 $1
 log_pam_delete=刪除PAM服務項目 $1
 log_mod_create=加入PAM模組$1到服務項目 $2

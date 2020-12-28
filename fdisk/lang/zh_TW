@@ -19,6 +19,7 @@ index_addlog=增加邏輯分割區 (logical)
 index_addext=增加延伸分割區 (extended)
 index_hdparm=編輯 IDE 參數
 index_return=磁碟列表
+
 extended=延伸分割區
 opt_default=預設
 opt_error='$1' 不是一個有效的 $2
@@ -27,6 +28,7 @@ select_part=$1 磁碟 $2 分割區 $3
 select_fd=軟碟 $1
 select_mylex=Mylex 磁碟陣列 $1 磁碟 $2
 select_mpart=Mylex 磁碟陣列 $1 磁碟 $2 分割區 $3
+
 edit_title=編輯分割區
 create_title=建立分割區
 edit_ecannot=您不被允許編輯這個磁碟
@@ -52,6 +54,7 @@ edit_fsck=修復檔案系統
 edit_fsckmsg=呼叫 $1 程式以修復這個檔案系統, 然後這個檔案系統才能被掛載. 如果您沒有正確的關機的話, 這個動作將是必要的.
 edit_tune=調整檔案系統
 edit_tunemsg=允許您變更一個存在的檔案系統的相關參數.
+
 mkfs_title=新增檔案系統
 mkfs_ecannot=您不被允許在這個磁碟上建立一個新的檔案系統
 mkfs_desc1=按下這個表單底部的按鈕將會建立一個新的 $1 檔案系統在磁碟 $2 上. 所有在這個檔案系統上的檔案將會被永久的刪除.
@@ -62,6 +65,7 @@ mkfs_err=建立檔案系統失敗
 mkfs_exec=執行命令 $1 中...
 mkfs_failed=... 命令失敗!
 mkfs_ok=... 完成.
+
 fsck_title=修復檔案系統
 fsck_ecannot=您不被允許在這個磁碟上執行 fsck
 fsck_desc1=按下<tt>修復檔案系統</tt>按鈕將會修復損壞的 $1 檔案系統在 $2 上, 並用以掛載於 $3. 如果檔案系統沒有損壞, 將不會有任何變更.
@@ -74,6 +78,7 @@ fsck_err3=找到錯誤並修正完畢 - 需要重新開機
 fsck_err4=找到錯誤, 但無法修復
 fsck_err16=命令行錯誤
 fsck_unknown=未知的傳回值 $1
+
 tunefs_title=調整檔案系統
 tunefs_ecannot=您不被允許調整檔案系統
 tunefs_desc=這個表單可以讓您調整$1 檔案系統在 $2 上, 並用以掛載於 $3 的相關選項. 現存於檔案系統上的檔案將不會受到影響.
@@ -95,10 +100,12 @@ tunefs_err=調整檔案系統失敗
 tunefs_exec=執行命令 $1 中...
 tunefs_failed=... 命令失敗!
 tunefs_ok=... 命令完成.
+
 reboot_title=重新啟動系統
 reboot_msg=重新啟動中...
 reboot_ok=立刻重新啟動系統
 reboot_why=您已經變更了 $1 上面的分割區. 為了要讓這個變更能正確的產生效果, 您必須要重新啟動系統.
+
 save_err=儲存分割區失敗
 save_ecannot=您不被允許編輯這個磁碟
 save_estart='$1' 不是一個有效的起點 cylinder 值
@@ -107,23 +114,28 @@ save_emin=起點 cylinder 值必須 >= $1
 save_emax=終點 cylinder 值必須 <= $1
 save_eminmax=起點的 cylinder 值必須比終點 cylinder 值小
 save_eoverlap=在分割區 $1 發現重疊($2 與 $3)
+
 ext2_b=區塊大小
 ext2_f=碎片大小
 ext2_i=每個節點的位元組
 ext2_m=保留的區塊
 ext2_g=每個群組的區塊
 ext2_c=是否檢查損壞的區塊?
+
 msdos_F=FAT 大小
 msdos_i=儲存體編號
 msdos_n=儲存體名稱
 msdos_r=根目錄進入點
 msdos_s=Cluster 大小
 msdos_c=是否檢查損壞的區塊?
+
 minix_n=檔名長度
 minix_i=節點數
 minix_b=區塊數
 minix_c=是否檢查損壞的區塊?
+
 acl_disks=這個使用者可以分割與格式化的磁碟
+
 hdparm_title=編輯 IDE 參數
 hdparm_on=開
 hdparm_off=關

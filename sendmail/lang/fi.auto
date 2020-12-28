@@ -11,6 +11,7 @@ index_version2=Sendmail-versio $1, config $2
 index_xversion=Sendmail-versio $1 
 index_version=Lähetyspostiasetukset $1 
 index_sendmail=Lähetä postia
+
 opts_title=Sendmail-asetukset
 opts_ecannot=Et voi muokata lähetysasetuksia
 opts_ds=Lähetä lähtevä posti isännän kautta
@@ -57,6 +58,7 @@ opts_qso=Lajittele postijono
 opts_priority=prioriteetti
 opts_host=hostname
 opts_time=Vastaanotettu aika
+
 aliases_title=Postin aliakset
 aliases_ecannot=Et voi muokata aliaksia
 aliases_enofile=Sendmail-määrityksessä ei määritetä aliaksia
@@ -73,6 +75,7 @@ aliases_return=alias luettelo
 aliases_toomany=Järjestelmässäsi on liian monta postin aliaksia, jotta sitä voidaan näyttää tällä sivulla.
 aliases_go=Etsi aliakset, jotka vastaavat:
 aliases_delete=Poista valitut aliakset
+
 aform_ecannot=Et voi muokata tätä aliasta
 aform_type0=Ei mitään
 aform_type1=Sähköpostiosoite
@@ -90,11 +93,13 @@ aform_val=Alias
 aform_afile=Muokata ..
 aform_return=alias
 aform_cmt=Kuvaus
+
 afile_title=Muokkaa osoitetiedostoa
 afile_desc=Muokkaa tiedoston $1 osoitteita alla olevan tekstialueen avulla.
 afile_efile=Sinulla ei ole oikeutta muokata tuotetta $1.
 afile_undo=Peru muutokset
 afile_ewrite=Osoitetiedostoon kirjoittaminen epäonnistui : $1 
+
 ffile_title=Muokkaa suodatustiedostoa
 ffile_desc=Asenna alla olevan lomakkeen suodatussäännöt tiedostoon $1.
 ffile_efile=Sinulla ei ole oikeutta muokata tuotetta $1.
@@ -110,6 +115,7 @@ ffile_other=Muutoin eteenpäin $1 : een
 ffile_err=Suodatustiedoston tallentaminen epäonnistui
 ffile_ematch=Puuttuu ottelu
 ffile_eaction=Puuttuva edelleenlähetysosoite
+
 rfile_title=Muokkaa automaattisen vastauksen tiedostoa
 rfile_desc=Käytä alla olevaa tekstialuetta muokataksesi automaattivastausviestiä $1 : ssä. Viesti voi sisältää makroja $SUBJECT, $FROM, $TO, $DATE ja $BODY, joita laajennetaan, kun automaattinen vastaus aktivoidaan.
 rfile_desc2=Voit myös asettaa posti otsikot, jotka lisäävät tai korvaavat automaattisessa vastauksessa käytetyt oletusasetukset asettamalla rivit kuten: <br><tt> Lähettäjä: foo@bar.com </tt><br> <tt>Aihe: lomalla</tt> <br> viestin yläosassa, erotettuna rungosta yhdellä tyhjellä rivillä.
@@ -129,6 +135,7 @@ rfile_from=Lähettäjä: vastausosoite
 rfile_auto=Automaattinen (perustuu vastaanottajan osoitteeseen)
 rfile_efrom=Puuttuu: osoite
 rfile_fromdesc=Alkaen: Osoite on aina määritettävä, kun mahdollista, koska automaattinen menetelmä ei ehkä ole luotettava.
+
 asave_err=Aliaksen tallentaminen epäonnistui
 asave_ecannot2=Et voi muokata aliaksia
 asave_ecannot=Et voi muokata tätä aliasta
@@ -145,9 +152,11 @@ asave_etype5=Automaattivastaustiedosto '$1' ei kelpaa
 asave_etype4none=Ohjelmaa ei ole annettu
 asave_etype6=Suodata tiedosto '$1' ei kelpaa
 asave_esame=Voit luoda vain aliaksen, jolla on sama nimi kuin Webmin-kirjautumistunnuksellasi
+
 adelete_err=Aliasten poistaminen epäonnistui
 adelete_enone=Mitään ei ole valittu
 adelete_ecannot=Et voi poistaa aliasta $1 
+
 cws_title=Paikalliset verkkotunnukset
 cws_ecannot=Et voi muokata paikallisia verkkotunnuksia
 cws_domains=Verkkotunnukset, joita tämä palvelin käsittelee
@@ -156,6 +165,7 @@ cws_desc2=Huomaa, että pelkästään verkkotunnuksen sisällyttäminen luettelo
 cws_err=Paikallisten verkkotunnusten tallentaminen epäonnistui
 cws_ehost='$1' ei ole kelvollinen isäntä- tai verkkotunnus
 cws_eip='$1' on IP-osoite, ei verkkotunnus
+
 masq_title=Verkkotunnuksen naamiointi
 masq_ecannot=Et voi määrittää naamiointia
 masq_domain=Naamiaiset verkkotunnuksena
@@ -167,12 +177,14 @@ masq_err=Verkkotunnuksen naamiointi tallennus epäonnistui
 masq_edomain='$1' ei ole kelvollinen verkkotunnus naamioimiseksi nimellä
 masq_ehost='$1' ei ole kelvollinen isäntä- tai verkkotunnus
 masq_eip='$1' on IP-osoite, ei verkkotunnus
+
 trusts_title=Luotetut käyttäjät
 trusts_ecannot=Et voi muokata luotettavia käyttäjiä
 trusts_users=Paikalliset käyttäjät, joihin luotettavuus on sendmail
 trusts_desc=Jos paikallinen käyttäjä yrittää lähettää sähköpostia, sendmail antaa käyttäjän antaa toisen <tt>Lähettäjä:</tt> -osoitteen vain, jos käyttäjä on alla olevassa luettelossa. Tämä rajoitus on tarkoitettu estämään käyttäjiä väärentämästä sähköpostia väärennetyllä <tt>Lähettäjä:</tt> -osoitteella, joka on peräisin järjestelmästäsi.
 trusts_err=Luotettujen käyttäjien tallentaminen epäonnistui
 trusts_euser='$1' ei ole kelvollinen käyttäjä
+
 virtusers_title=Osoitekuvaukset
 virtusers_ecannot=Et voi muokata osoitekarttoja
 virtusers_efeature=Lähetyspostiasetuksissasi ei ole osoitteen kartoitus (<tt>virtuser</tt>) -ominaisuutta käytössä. <a href='$1'>Napsauta tätä</a> asettaaksesi sendmail-ominaisuudet.
@@ -190,6 +202,7 @@ virtusers_return=osoitteiden kartoitusluettelo
 virtusers_toomany=Järjestelmässäsi on liian monta osoitekarttaa, jotta se voidaan näyttää tällä sivulla.
 virtusers_go=Löydä vastaavia osoitekarttoja:
 virtusers_delete=Poista valitut osoitetiedot
+
 vform_edit=Muokkaa osoitetietokarttaa
 vform_create=Luo osoitteiden kartoitus
 vform_for=Lähetä sähköpostia
@@ -206,6 +219,7 @@ vform_err_tempfail=Väliaikainen vika
 vform_err_protocol=Protokollavirhe
 vform_end=Siirrä loppuun
 vform_ecannot=Et voi muokata tätä osoitekarttaa
+
 vsave_ecannot=Et voi muokata osoitekarttoja
 vsave_ecannot2=Et voi muokata tätä osoitekarttaa
 vsave_emax=Et voi luoda enempää kuin $1 -osoitekarttoja
@@ -221,8 +235,10 @@ vsave_eaddr='$1' ei ole kelvollinen osoite
 vsave_ecannot4=Et voi luoda kartoituksia verkkotunnuksiin
 vsave_edomdom=Vain verkkotunnus voidaan yhdistää toiseen verkkotunnukseen
 vsave_ecannot5=Et voi luoda kartoituksia, jotka palauttavat virheen
+
 vdelete_err=Osoitekarttojen poistaminen epäonnistui
 vdelete_ecannot=Et voi poistaa kartan $1 : tä
+
 mailers_title=Verkkotunnuksen reititys
 mailers_cannot=Et voi muokata verkkotunnuksen reititystä
 mailers_edirective=Sendmail-määritystiedostollasi ei ole tarvittavaa direktiiviä verkkotunnuksen reitittämistä varten.
@@ -236,6 +252,7 @@ mailers_delivery=Toimitus
 mailers_to=Lähetä ..
 mailers_return=verkkotunnuksen reititysluettelo
 mailers_delete=Poista valitut toimialuereitit
+
 mform_edit=Muokkaa reititystä
 mform_create=Luo reititys
 mform_for=Lähetä sähköpostia
@@ -259,12 +276,15 @@ mform_procmail=procmaililla
 mform_mail11=DECnet mail11
 mform_error=Virhe
 mform_ecannot=Et voi muokata verkkotunnuksen reititystä
+
 msave_ecannot=Et voi muokata verkkotunnuksen reititystä
 msave_err=Verkkotunnuksen reitityksen tallentaminen epäonnistui
 msave_edomain='$1' ei ole kelvollinen isäntä tai verkkotunnus
 msave_edup=Verkkotunnuksen reititys kohteelle '$1' on jo määritelty
+
 mdelete_err=Verkkotunnuksen reitittimen poistaminen epäonnistui
 mdelete_ecannot=Et voi poistaa reittiä kohteelle $1 
+
 generics_title=Lähtevät osoitteet
 generics_cannot=Et voi muokata lähteviä osoitteita
 generics_econfig=Sendmail-määritystiedostollasi ei ole tarvittavaa direktiiviä lähtevän osoitteen kartoittamiseksi.
@@ -278,11 +298,13 @@ generics_return=osoitteiden kartoitusluettelo
 generics_toomany=Järjestelmässäsi on liian monta lähtevän osoitteen näkymistä tällä sivulla.
 generics_go=Etsi lähteviä osoitteita, jotka vastaavat:
 generics_delete=Poista valitut lähtevät osoitteet
+
 gform_edit=Muokkaa karttaa
 gform_create=Luo kartoitus
 gform_from=Postitse
 gform_to=Vaihda kohtaan
 gform_ecannot=Et voi muokata tätä lähtevää osoitetta
+
 gsave_ecannot=Et voi muokata lähteviä osoitteita
 gsave_ecannot2=Et voi muokata tätä lähtevää osoitetta
 gsave_ecannot3=Sinulla ei ole oikeutta tallentaa tätä lähtevää osoitetta
@@ -291,8 +313,10 @@ gsave_efrom='$1' ei kelpaa osoitteesta
 gsave_ematch=Lähettäjän osoite ei vastaa '$1'
 gsave_eto='$1' ei ole kelvollinen uusi osoite
 gsave_ealready='$1' lähtevän osoitteen kartoitus on jo olemassa
+
 gdelete_err=Lähtevien osoitteiden kuvausten poistaminen epäonnistui
 gdelete_ecannot=Et voi poistaa kartan $1 : tä
+
 cgs_title=Lähtevät verkkotunnukset
 cgs_ecannot=Et voi muokata lähteviä verkkotunnuksia
 cgs_header=Lähtevien osoitteiden verkkotunnukset
@@ -300,6 +324,7 @@ cgs_desc=Paikallisten käyttäjien lähettämien postien lisäksi sendmail suori
 cgs_err=Lähtevien verkkotunnusten tallentaminen epäonnistui
 cgs_ehost='$1' ei ole kelvollinen isäntä- tai verkkotunnus
 cgs_eip='$1' on IP-osoite, ei verkkotunnus
+
 domains_title=Verkkotunnuksen kartoitus
 domains_ecannot=Et voi muokata verkkotunnuksen kartoitusta
 domains_econfig=Sendmail-määritystiedostollasi ei ole tarvittavaa direktiiviä verkkotunnuksen kartoittamiseksi.
@@ -310,17 +335,21 @@ domains_from=Verkkotunnuksesta ..
 domains_to=Verkkotunnukseksi ..
 domains_return=verkkotunnuksen kartoitusluettelo
 domains_delete=Poista valitut verkkotunnukset
+
 dform_edit=Muokkaa karttaa
 dform_create=Luo kartoitus
 dform_from=Verkkotunnuksesta
 dform_to=Verkkotunnukseen
 dform_ecannot=Et voi muokata verkkotunnuksen kartoitusta
+
 dsave_ecannot=Et voi muokata verkkotunnuksen kartoitusta
 dsave_err=Verkkotunnuksen kartoituksen tallentaminen epäonnistui
 dsave_edomain='$1' ei ole kelvollinen verkkotunnus
 dsave_ealready=Verkkotunnuksen kartoitus kohteelle '$1' on jo olemassa
+
 ddelete_err=Verkkotunnuksen kuvausten poistaminen epäonnistui
 ddelete_ecannot=Et voi poistaa kartan $1 : tä
+
 access_title=Roskapostin hallinta
 access_ecannot=Et voi määrittää roskapostin hallintaa
 access_efeature=Sendmail-määrityksissäsi ei ole roskapostin valvontaa (<tt>access_db</tt>) käytössä. <a href='$1'>Napsauta tätä</a> asettaaksesi sendmail-ominaisuudet.
@@ -333,6 +362,7 @@ access_return=roskapostin hallintaluettelo
 access_toomany=Järjestelmässäsi on liian monta roskapostinhallintasääntöä, jotta sitä voidaan näyttää tällä sivulla.
 access_go=Löydä roskapostin hallintasäännöt, jotka vastaavat:
 access_delete=Poista valitut roskapostinhallintasäännöt
+
 sform_edit=Muokkaa roskapostin hallintasääntöä
 sform_create=Luo roskapostin hallintasääntö
 sform_source=Postilähde
@@ -354,6 +384,7 @@ sform_discard=Hävitä hiljaa
 sform_err=Virhekoodi
 sform_msg=Viesti
 sform_ecannot=Et voi muokata tätä roskapostin valvontasääntöä
+
 ssave_err=Roskapostin hallintasäännön tallentaminen epäonnistui
 ssave_etype0='$1' ei ole kelvollinen osoite
 ssave_etype1='$1' ei ole kelvollinen verkko-osoite
@@ -362,8 +393,10 @@ ssave_etype3='$1' ei ole kelvollinen verkkotunnus
 ssave_ecode='$1' ei ole kelvollinen SMTP-virhekoodi
 ssave_ealready='$1n' roskapostinhallintasääntö on jo olemassa
 ssave_ecannot2=Et voi tallentaa tätä roskapostin valvontasääntöä
+
 sdelete_err=Roskapostin valvontasääntöjen poistaminen epäonnistui
 sdelete_ecannot=Et voi poistaa sääntöä kohdasta $1 
+
 relay_title=Välitysalueet
 relay_ecannot=Et voi muokata välitysdomeeneja
 relay_eversion=Vain sendmail-versiot 8.9 ja uudemmat tukevat välitysalueiden ominaisuutta.
@@ -372,6 +405,7 @@ relay_desc1=Ellei <a href='$1'>roskapostin hallinta</a> -säännöt salli, sendm
 relay_desc2=Jos järjestelmääsi käytetään yhdyskäytävänä useille verkkotunnuksille, joihin ei pääse suoraan verkon ulkopuolelta (käyttämällä <a href='$1'>verkkotunnuksen reititys</a> -ominaisuutta), kaikki nämä verkkotunnukset on lueteltava tässä.
 relay_err=Välitysdomainien tallentaminen epäonnistui
 relay_edomain='$1' ei ole kelvollinen verkkotunnus
+
 mailq_title=Postijono
 mailq_count=$1 viestiä
 mailq_ecannot=Et voi katsella postijonoa
@@ -401,12 +435,15 @@ mailq_search=Etsi jonossa olevat viestit missä
 mailq_quar=karanteeniobjekteja
 mailq_refresh=Päivitä postijono
 mailq_refreshdesc=Lataa tämä sivu uudelleen, jos haluat nähdä postijonon nykyisen tilan.
+
 flushq_title=Huuhtelujono
 flushq_desc=Kaikkien viestien toimittamisyrityksen pakottaminen komennolla $1.
 flushq_desc2=$1 valittujen viestien toimittamisyrityksen pakottaminen ..
 flushq_ecannot=Postijonoa ei saa tyhjentää
+
 searchq_title=Jonohaun tulokset
 searchq_none=Jonossa olevia viestejä ei löytynyt.
+
 delq_err=Viestin poistaminen epäonnistui
 delq_ecannot=Sinulla ei ole oikeutta poistaa viestejä
 delq_locked=Tiedosto on tällä hetkellä lukittu lähettämistä varten
@@ -422,6 +459,7 @@ delq_force=Pakota poisto joka tapauksessa
 delq_ecannot2=et voi poistaa tätä viestiä
 delq_rusure=Haluatko varmasti poistaa valitut jonossa olevat $1 viestit?
 delq_confirm=Poista viestit
+
 boxes_title=Käyttäjän postilaatikot
 boxes_user=käyttäjä
 boxes_size=Postilaatikon koko
@@ -431,6 +469,7 @@ boxes_sent=Lähetetty posti
 boxes_ecannot=Et saa lukea sähköpostia
 boxes_toomany=Järjestelmässäsi on liian monta käyttäjää luetteloimaan kaikki heidän postilaatikkonsa.
 boxes_go=Näytä käyttäjän posti:
+
 mail_title=Käyttäjän sähköposti
 mail_from=alkaen
 mail_date=Päivämäärä
@@ -471,6 +510,7 @@ mail_move=Muuttaa:
 mail_copy=Kopioi:
 mail_rfc=Linjalta
 mail_eexists=Viestiä ei enää ole!
+
 view_title=Lue sähköposti
 view_desc=Viesti $1 $2 : ssa
 view_desc2=Viesti $1 käyttäjälle $2 
@@ -501,6 +541,7 @@ view_egone=Tätä viestiä ei enää ole
 view_afile=Liitteen nimi
 view_atype=Liitetyyppi
 view_asize=Tiedoston koko
+
 compose_title=Kirjoita sähköposti
 reply_title=Vastaa sähköpostiin
 forward_title=Lähetä edelleen
@@ -512,6 +553,7 @@ reply_attach2=Asiakas- ja palvelinpuolen liitteet
 reply_send=Lähetä postia
 reply_ecannot=Sinulla ei ole oikeutta lähettää postia tällä käyttäjällä
 reply_body=Viestin teksti
+
 send_err=Postin lähettäminen epäonnistui
 send_eto=Puuttuu osoite
 send_efrom=Puuttuu osoitteesta
@@ -524,6 +566,7 @@ send_eattach=Liitteiden koko voi olla enintään $1 kt.
 send_eperms=Käyttäjä $1 ei voi lukea $2 
 send_eperms2=Sinulla ei ole oikeutta lähettää tiedostoa $1 
 send_epath=Sendmail-suoritettavaa $1 ei ole olemassa.
+
 delete_title=Poista viesti
 delete_rusure=Haluatko varmasti poistaa valitut $1 viestit kohdasta $2 ? Tämä voi viedä jonkin aikaa suuren postitiedoston luomiseen. Muita toimia ei pidä suorittaa, ennen kuin poisto on päättynyt.
 delete_rusure2=Haluatko varmasti poistaa tämän viestin kohdasta $1 ? Tämä voi viedä jonkin aikaa suuren postitiedoston luomiseen. Muita toimia ei pidä suorittaa, ennen kuin poisto on päättynyt.
@@ -536,6 +579,7 @@ delete_emoveuser=Käyttäjää, johon posti siirretään, ei ole
 delete_emovecannot=Et voi siirtää sähköpostia määritetylle käyttäjälle
 delete_emovenone=Ei siirrettävää sähköpostia valittu
 delete_nobutton=Yhtään painiketta ei napsautettu
+
 search_title=Hakutulokset
 search_ecannot=Et voi tehdä hakuja tämän käyttäjän sähköpostista
 search_ematch=Sinun on kirjoitettava teksti, jota haluat verrata.
@@ -549,6 +593,7 @@ search_results4=$1 sähköpostiviestiä, joka vastaa hakuasi ..
 search_local=Paikallisissa kansioissa
 search_all=Kaikissa kansioissa
 search_eboolean=Boolen hakuja, jotka käyttävät sekä "että" ja "tai", ei tueta
+
 file_title=Muokkaa Sendmail-tiedostoa
 file_desc=Käytä alla olevaa tekstikenttää muokataksesi manuaalisesti Sendmail-tiedostoa $1.
 file_undo=Peru muutokset
@@ -564,6 +609,7 @@ file_emode=Tuntematon tila!
 file_err=Tiedoston muokkaaminen epäonnistui
 file_ealias=Virheellinen tiedostolinjan muoto : $1 
 file_etab=Karttatiedorivin muoto on virheellinen : $1 
+
 acl_opts=Voiko muokata lähetysasetuksia?
 acl_ports=Voiko verkkoportteja muokata?
 acl_cws=Voiko muokata paikallisia verkkotunnuksia?
@@ -630,6 +676,7 @@ acl_usersm=Käyttäjät vastaavat
 acl_asame=Sama kuin käyttäjänimi
 acl_usersu=UID: n kantama-alueella
 acl_spam=Roskapostin hallintaosoitteet, joita tämä käyttäjä voi muokata
+
 log_opts=Muutetut lähetysasetukset
 log_ports=Vaihda verkkoportit
 log_alias_create=Luotu alias $1 
@@ -680,6 +727,7 @@ log_delete_domains=Poistettu $1 verkkotunnuksen kuvaus
 log_delete_accesses=Poistettu $1 roskapostin hallintamerkinnät
 log_delete_generics=Poistettu $1 lähtevät osoitteet
 log_delete_mailers=Poistettu $1 verkkotunnuksen reitit
+
 match_from=Alkaen: ottelut
 match_subject=Aihe: ottelut
 match_to=Vastaanottaja: ottelut
@@ -699,6 +747,7 @@ match_!status=Tila ei vastaa
 match_!body=Runko ei vastaa
 match_!size=Koko on alle
 match_!headers=Otsikot eivät täsmää
+
 features_title=Sendmail M4 -kokoonpano
 features_desc=Tällä sivulla luetellaan asiaankuuluvat merkinnät Sendmail M4 -määritystiedostosta $1, josta todellinen asetustiedosto $2 on rakennettu.
 features_type=Merkinnän tyyppi
@@ -718,6 +767,7 @@ features_efeatures=Sendmail M4 -kokoonpanoperushakemistoa $2 ei löydy järjeste
 features_econfig=Sendmail M4 -kantahakemiston ja M4-konfigurointitiedoston sijainteja ei ole vielä määritetty <a href='$1'>-moduulin kokoonpanossa</a>. Jos olet asentanut Sendmail -lähteen, niiden tulee olla alkuperäisessä lähdehakemistossa.
 features_move=Liikkua
 features_manual=Muokkaa tiedostoa manuaalisesti
+
 feature_add=Lisää kokoonpanotieto
 feature_edit=Muokkaa kokoonpanotietoa
 feature_header=M4-määritystietojen tiedot
@@ -738,12 +788,15 @@ feature_emailer=Postilaite $1 on jo olemassa
 feature_eostype=OS-tyyppi on jo määritelty nimellä $1 
 feature_manual=Muokkaa M4-tiedostoa
 feature_mdesc=Sivulla voit muokata manuaalisesti Sendmail M4 -määritystiedostoa $1. Ole varovainen, koska muutoksillesi ei suoriteta syntaksitarkistusta.
+
 feat_access_db=Roskapostin valvontatiedosto
 feat_virtusertable=Osoitekartta
 feat_mailertable=Verkkotunnuksen reititys
 feat_genericstable=Lähtevät osoitteet
 feat_domaintable=Verkkotunnuksen kartoitus
+
 mailer_local=Paikallinen Unix-toimitus
+
 build_title=Rakenna Sendmail-kokoonpano uudelleen
 build_em4=Järjestelmästäsi ei löydy komentoa $1, jota tarvitaan Sendmail-asetustiedoston uudelleenrakentamiseen.
 build_ebuild=Kokoonpanon luominen epäonnistui : $1 
@@ -752,13 +805,16 @@ build_rusure2=Huomaa, että jos olet tehnyt muutoksia Sendmailiin Sendmail Optio
 build_ok=Kyllä, korvaa se nyt
 build_diff=Seuraavat muutokset tehdään Sendmail-asetustiedostoosi.
 build_nodiff=Sendmail-määritystiedostosi on jo ajan tasalla.
+
 stop_err=Lähetyspostin lopettaminen epäonnistui
 stop_ecannot=Sinulla ei ole oikeutta lopettaa sendmailia
 stop_epid=Sendmail ei näytä toimivan
 restart_epids=Sendmail-prosesseja ei löytynyt
 restart_ekill=Lähetysprosessien signalointi epäonnistui : $1 
+
 start_err=Lähetyspostin aloittaminen epäonnistui
 start_ecannot=Sinulla ei ole oikeutta aloittaa sendmailia
+
 ports_title=Verkkoportit
 ports_name=Sataman nimi
 ports_addr=Kuuntele osoitteessa

@@ -180,6 +180,7 @@ whats_this_NSTATE=Palvelun seuraava tila, hyödyllinen palvelun siirtyessä. '-'
 whats_this_SCOPE=Palvelun ilmentymän laajuusnimi. Katso: smf (5). Katso: svcs (1).
 whats_this_STIME=Aika (jos tänään) tai päivämäärä, jolloin palvelu tuli nykyiseen tilaan. Katso: smf (5). Katso: svcs (1).
 whats_this_Select=Tarkista täältä luettelo palveluista, jotka haluat ottaa käyttöön/poistaa käytöstä/päivittää jne.
+
 whats_this_service_detail=Määritä/muokkaa ylätason palvelutietoja täällä: palvelun nimi, versionumero, paketin nimi manifestille ja vakaudelle. Katso: smf (5). Katso: svccfg (1M). Katso: service_bundle (4).
 whats_this_bundle_name=Palvelupaketin nimi manifestissa. Yhdessä manifestissa voidaan yhdistää useita palveluita, mutta nimi tässä ei ole tärkeä. Jo olemassa olevien palveluiden osalta se asetetaan vientiin, koska svccfg tekee tämän, kun se vie manifestin SMF-arkistosta. Katso: svccfg (1M). Katso: service_bundle (4).
 whats_this_service_name=Palvelun nimi. Yleensä on käytettävä muotoa [yleinen_palvelun luokka]/[nimi]. Jo toimitettuihin luokkiin kuuluvat sovellukset (korkeamman tason sovellukset), virstanpylväs (kokoelma muita palveluita, kuten nimipalvelut), alusta (alustakohtaiset palvelut), järjestelmä (Solaris-järjestelmäpalvelut), laite (laitekohtaiset palvelut), verkko (verkko-/Internet-palvelut) ja sivusto (sivustokohtaiset kuvaukset). Voit myös määrittää oman kurssiluokan, mutta useimpien palvelujen tulisi mahtua mukavasti johonkin edellä mainituista. Katso: smf (5).

@@ -15,6 +15,7 @@ index_actform=Formularz
 index_actrun=Uruchom
 index_actsql=Formularz
 index_acted=Otwórz
+
 edit_title=Zmień polecenie
 create_title=Utwórz polecenie
 edit_ecannot=Nie masz uprawnień do zmiany poleceń
@@ -65,6 +66,7 @@ edit_format3=Przekierowanie do formularza
 edit_servers=Uruchom na serwerach Webmin
 edit_this=ten serwer
 edit_clone=Klonuj
+
 save_err=Nie udało się zachować polecenia
 save_ecannot=Nie masz uprawnień do zmieniania poleceń
 save_ecmd=Nie podano polecenia
@@ -75,6 +77,7 @@ save_eorder=Kolejność na stronie głównej musi być numeryczna
 save_etimeout=Nieprawidłowy lub nieistniejący maksymalny czas oczekiwania
 save_eusermin=Komendy uruchomione na innym serwerze nie mogą być uruchomione w Usermin
 save_eformat=Błędny typ wyjściowy MIME
+
 run_err=Nie udało sie uruchomic polecenia
 run_ecannot=Nie masz uprawnień do uruchamiania tego polecenia
 run_euser=Nie podano lub niepoprawny użytkownik
@@ -90,6 +93,7 @@ run_eopt=Wybrano błędną opcję
 run_eupload=Nie wybrano pliku do wysłania
 run_emust=Brakująca wartość parametru '$1'
 run_timeout=Polecenie zatrzymane po $1 sekundach oczekiwania.
+
 log_modify=Zmieniono polecenie $1
 log_create=Utworzono polecenie $1
 log_delete=Usunięto polecenie $1
@@ -98,11 +102,13 @@ log_modify_edit=Zmieniono edytor pliku $1
 log_create_edit=Utworzono edytor pliku $1
 log_delete_edit=Usunięto edytor pliku $1
 log_save_edit=Zachowano plik $1
+
 acl_cmds=Polecenia, które ten użytkownik może uruchamiać
 acl_call=Wszystkie
 acl_csel=Wybrane..
 acl_cexcept=Wszystkie, z wyjątkiem wybranych..
 acl_edit=Czy może tworzyć i zmieniać polecenia?
+
 file_ecannot=Nie masz uprawnień do modyfikacji plików
 fcreate_title=Utwórz edytor pliku
 fedit_title=Zmień edytor pliku
@@ -126,6 +132,7 @@ file_egroup=Nie podana lub niepoprawna nazwa grupy
 file_eperms=Nie podana lub niepoprawna ósemkowa wartość praw dostępu
 file_envs=Zamienić zmienne środowiskowe w pliku?
 file_id=Editor ID
+
 view_err=Nie udało się zmodyfikować pliku
 view_ecannot=Nie masz uprawnień do modyfikacji tego pliku
 view_title=Modyfikuj plik
@@ -134,10 +141,12 @@ view_header=Edycja pliku $1
 view_ebeforeedit=Polecenie 'Przed edytowaniem' nie powiodła się : $!
 view_ebefore=Polecenie 'Przed zapisaniem' nie powiodła się : $!
 view_eafter=Polecenie 'Po zapisaniem' nie powiodła się : $!
+
 form_ecannot=Nie masz uprawnień do wykonywania tego polecenia
 form_title=Wykonaj polecenie
 form_exec=Wykonaj
 form_edit=Edytuj
+
 sql_title1=Utwórz polecenie SQL
 sql_title2=Edytuj polecenie SQL
 sql_header=Szczegóły polecenia SQL
@@ -153,6 +162,7 @@ sql_err=Zapisanie polecenia SQL nie powiodło się
 sql_esql=Nie wprowadzono SQL
 sql_ehost=Nieprawidłowy lub nieistniejący host serwera bazy danych
 sql_edb=Nieprawidłowa lub nieistniejąca nazwa bazy danych
+
 srun_title=Wykonaj komendę SQL
 srun_err=Wykonywanie polecenia SQL nie powiodło się
 srun_edriver=Nie można załadować sterownika DBI

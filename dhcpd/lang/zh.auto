@@ -20,13 +20,19 @@ index_match1=包含
 index_match2=火柴
 index_dhcpd=ISC DHCPd
 index_delete=删除所选
+
 butt_leases=列表租赁
+
 esub_desc=子网描述
 esub_fopeer=故障转移对等
+
 esh_pools=共享网络的地址池
 esh_desc=共享网络说明
+
 ehost_desc=主机说明
+
 egroup_desc=团体简介
+
 listl_network=在网络 $1 / $2中
 listl_lfnotcont2=DHCPd租约文件<tt>$1</tt>不包含当前处于活动状态的任何租约。
 listl_unknown=未知
@@ -39,14 +45,19 @@ listl_used=已分配
 listl_pc=百分比
 listl_err=删除租约失败
 listl_enone=未选择
+
 listl_refresh=刷新清单
+
 restart_conftext=$2中 $1附近的行：
+
 sopt_edname='$1'不是有效的选项名称
 sopt_ednum='$1'不是有效的选项号
 sopt_edtype='$1'不是有效的选项类型
 sopt_ecval=自定义选项“$1”的值缺失
 sopt_ecip=自定义选项'$1'的值必须是IP地址
+
 ssub_invalidfopeer=不是有效的故障转移对等方
+
 plib_toffset=时间偏移
 plib_serverid=DHCP服务器标识符
 plib_unclients=允许未知的客户？
@@ -57,6 +68,7 @@ plib_eexpr=DHCP配置的此部分包含表达式指令 $1，Webmin不能对其�
 plib_auth_subnet=服务器对该子网具有权威性？
 plib_auth_shared-network=服务器对此共享网络具有权威性？
 plib_auth_global=服务器对所有子网都具有权威性？
+
 eopt_domsearch=要搜索的DNS域
 eopt_toffset=时间偏移
 eopt_cname=名称
@@ -68,9 +80,11 @@ eopt_slpa=SLP目录代理IP
 eopt_slpaips=仅这些IP？
 eopt_slps=SLP服务范围
 eopt_slpsonly=仅此范围？
+
 log_stop=停止的DHCP服务器
 log_delete_subnets=已删除 $1子网和共享网络
 log_delete_hosts=已删除 $1主机和主机组
+
 keys_edit=编辑TSIG密钥
 keys_create=创建的TSIG密钥
 keys_title=DNS密钥
@@ -81,14 +95,18 @@ keys_ecannot=您无权编辑DNS密钥
 keys_err=无法保存DNS密钥
 keys_ekey='$1'不是有效的密钥ID
 keys_esecret=密钥 $1的base-64编码机密丢失或无效
+
 eacl_uniqh=创建具有重复硬件地址的主机
 eacl_uniqi=创建具有重复IP地址的主机
+
 acl_zones=可以编辑动态DNS区域吗？
 acl_per_grp_acls=启用每组ACL？
 acl_per_sha_acls=启用按共享网络的ACL？
+
 iface_title=网络接口
 iface_desc=DHCP服务器只能在连接到以下所选接口之一的网络上分配IP地址。必须包括所有已定义子网的网络接口。如果未选择任何一项，则DHCP服务器将尝试自动查找一个。
 iface_listen=监听界面
+
 lookup_ehost=不存在名称，IP地址或MAC地址 $1的主机
 lookup_ehostname=没有输入主机名，IP地址或MAC地址
 lookup_egroup=不存在名称或域名为 $1的组
@@ -97,6 +115,7 @@ lookup_esubnet=不存在具有地址或地址/网络掩码 $1的子网
 lookup_esubnetname=没有输入子网地址或地址/网络掩码
 lookup_eshared=不存在名称为 $1的共享网络
 lookup_esharedname=没有输入共享的网络名称
+
 zone_key=DNS区域
 index_addzone=添加一个新的DNS区域。
 index_zone=区
@@ -112,16 +131,21 @@ zone_faildel=删除区域失败
 zone_failsave=保存区域失败
 zone_tsigkey=TSIG密钥
 zone_ecannot=您无权编辑DNS区域
+
 plib_clientupdates=客户可以更新自己的记录吗？
+
 text_title=dhcpd.conf
 text_editor=文本编辑器
 text_return=主菜单
 text_undo=撤消
 text_ecannot=您无权编辑配置文件
+
 index_buttetext=手动编辑配置
 index_text=手动编辑配置文件文本
+
 stop_err=无法停止DHCP服务器
 stop_ekill=没有运行！
+
 sdelete_err=删除子网和共享网络失败
 sdelete_enone=未选择
 sdelete_title=删除子网和共享网络
@@ -129,6 +153,7 @@ sdelete_rusure1=您确定要删除 $1所选子网和 $2共享网络吗？网络�
 sdelete_rusure2=您确定要删除 $1个选定的子网吗？子网中的任何其他对象也将丢失。
 sdelete_rusure3=您确定要删除 $2选定的共享网络吗？网络中的任何子网或其他对象也将丢失。
 sdelete_ok=立即删除
+
 hdelete_err=删除主机和组失败
 hdelete_enone=未选择
 hdelete_title=删除主机和组

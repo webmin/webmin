@@ -38,6 +38,7 @@ index_restartdesc=Fes clic sobre aquest botó per activar la configuració actua
 index_iptables=Configuració del Redireccionament de Ports
 index_squid=Servidor Proxy Squid
 index_manual=Edició de Fitxers de Configuració
+
 manual_title=Edició de Fitxers de Configuració
 manual_file=Selecciona un fitxer de configuració per editar:
 manual_change=Canvia
@@ -45,6 +46,7 @@ manual_editing=Utilitza la caixa de text de sota per editar manualment les confi
 manual_err=No s'ha pogut desar el fitxer de configuració
 manual_efile=Nom invàlid de fitxer de configuració!
 manual_ecannot=No tens permís per editar manualment fitxers de configuració
+
 buttsave=Desa
 buttdel=Suprimeix
 buttcreat=Crea
@@ -54,6 +56,7 @@ default=Defecte
 none=Cap
 on=Activat
 off=Desactivat
+
 acl_header1=Creació d'ACL
 acl_header2=Edició d'ACL
 acl_name=Nom d'ACL
@@ -109,6 +112,7 @@ acl_file=Emmagatzema els valors de l'ACL al fitxer
 acl_nofile=Configuració de Squid
 acl_infile=Fitxer a part
 acl_keep=Utilitza contingut del fitxer
+
 aclsave_failsave=No s'ha pogut desar l'ACL
 aclsave_faildel=No s'ha pogut suprimir l'ACL
 aclsave_epr=Aquesta ACL està en ús per una redirecció proxy
@@ -128,11 +132,13 @@ aclsave_eemin=Minut final invàlid
 aclsave_efile=No tens permís per escriure al fitxer d'ACL '$1'
 aclsave_enofile=No has introduït cap nom de fitxer d'ACL
 aclsave_ealready=Ja existeix un fitxer d'ACL
+
 cach_ecannot=No tens permís per accedir a les estadístiques de gestió del cau
 cach_err=Error
 cach_nfound=No s'ha trobat al sistema el programa <tt>$1</tt> de gestió del cau de Squid. Pot ser que la <a href=/config.cgi?$2 >configuració del mòdul</a> sigui incorrecta.
 cach_return=a l'índex de squid
 cach_esame=L'<b>executable cachemgr.cgi de Squid</b> està configurat al programa cachemgr.cgi de Webmin, no el que ve amb Squid.
+
 chown_header=Canvi de Propietari
 chown_stop=S'està aturant squid...
 chown_done=... Fet
@@ -140,6 +146,7 @@ chown_chown=S'està canviant de propietari...
 chown_restart=S'està reiniciant Squid...
 chown_failrestart=No s'ha pogut reiniciar Squid...
 chown_return=a l'índex de squid
+
 clear_ecannot=No tens permís per esborrar i reconstruir el cau
 clear_header=Neteja i Reconstrucció del Cau
 clear_msgclear=Segur que vols netejar i reconstruir el cau de Squid? Això esborrarà <b>tots</b> els fitxers que hi ha al cau i reiniciarà el servidor Squid.
@@ -153,6 +160,7 @@ clear_failrestart=No s'ha pogut reiniciar Squid...
 clear_return=a l'índex de squid
 clear_url=Elimina un URL del cau:
 clear_ok=Elimina
+
 eacl_ecannot=No tens permís per editar el control d'accés
 eacl_header=Control d'Accés
 eacl_acls=Llistes de control d'accés
@@ -169,8 +177,10 @@ eacl_nopr=No hi ha cap restricció de proxy definida.
 eacl_addpr=Afegeix restricció de proxy.
 eacl_noprr=No hi ha cap restricció de resposta de proxy definida
 eacl_addprr=Afegeix restricció de resposta de proxy.
+
 eacl_replypr=Restriccions de proxy de resposta
 eacl_replynopr=No hi ha cap restricció de proxy de resposta definida
+
 eacl_icpr=Restriccions ICP
 eacl_noicpr=No hi ha cap restricció ICP definida
 eacl_addicpr=Afegeix restricció ICP.
@@ -187,6 +197,7 @@ eacl_eclass=No has seleccionat cap classe de programa
 eacl_cname=Nom del tipus
 eacl_file=Del fitxer $1
 eacl_hdelete=Suprimeix les Restriccions Seleccionades
+
 eadm_ecannot=No tens permís per editar les opcions administratives
 eadm_header=Opcions Administratives
 eadm_aao=Opcions Administratives i d'Anunci
@@ -213,6 +224,7 @@ eadm_caf=Fitxer d'anunci del cau
 eadm_annp=Període d'anunci
 eadm_buttsave=Desa
 eadm_return=a l'índex de squid
+
 eauth_ecannot=No tens permís per editar l'autenticació de proxy
 eauth_header=Autenticació de Proxy
 eauth_aopt=Opcions d'Autenticació
@@ -226,6 +238,7 @@ eauth_pusers=Usuaris de Proxy
 eauth_nopusers=Actualment no hi ha cap usuari de proxy definit.
 eauth_addpuser=Afegeix un nou usuari de proxy.
 eauth_return=a l'índex de squid
+
 ec_ecannot=No tens permís per editar les opcions del cau
 ec_header=Opcions del Cau
 ec_cro=Opcions del cau i Peticions
@@ -280,6 +293,7 @@ ec_return=a l'índex de squid
 ec_maxreplies=Mides màximes del cos de la resposta
 ec_maxrn=Mida (Kb)
 ec_maxracls=Per a les peticions que coincideixin amb les ACLs (deixa-ho buit per totes)
+
 ech_header=Creació de Host Cau
 ech_header1=Edició de Host Cau
 ech_cho=Opcions de Host Cau
@@ -324,6 +338,7 @@ ech_origin=Tracta el host com el servidor origen
 ech_force=Força la capçalera Host: a
 ech_same=Sense canvis
 ech_ssl=Connecta utilitzant SSL
+
 eicp_ecannot=No tens permís per editar els altres caus
 eicp_header=Altres Caus
 eicp_opcs=Altres servidors de cau proxy
@@ -361,6 +376,7 @@ eicp_ttype=Tipus
 eicp_tpport=Port de proxy
 eicp_tiport=Port ICP
 eicp_delete=Suprimeix els Caus Seleccionats
+
 elogs_ecannot=No tens permís per editar els registres
 elogs_header=Registres
 elogs_lalo=Registres i Opcions de Fitxers de Registre
@@ -394,6 +410,7 @@ elogs_notset=No establert
 elogs_dont=No registris
 elogs_file=Fitxer $1
 elogs_squid=Estàndard de Squid
+
 emem_ecannot=No tens permís per editar l'ús de la memòria
 emem_dheader=Ús de la Memòria i el Disc
 emem_header=Ús de la Memòria
@@ -419,6 +436,7 @@ emem_lfuda=Menys recentment utilitzada dinàmica
 emem_hlru=Menys recentment utilitzada de pila
 emem_return=a l'índex de squid
 emem_mrp=Política de substitució a la memòria
+
 emisc_ecannot=No tens permís per editar les opcions miscel·lànies
 emisc_header=Opcions Miscel.lànies
 emisc_mo=Opcions Miscel·lànies
@@ -455,6 +473,7 @@ emisc_wccpin=Adreça WCCP d'entrada
 emisc_wccpout=Adreça WCCP de sortida
 emisc_none=Cap
 emisc_virtual=Virtual
+
 eports_ecannot=No tens permís per editar els ports i la xarxa
 eports_header=Ports i Xarxa
 eports_pano=Opcions de Ports i Xarxa
@@ -480,6 +499,7 @@ eports_unc=Fes tancaments bruts de SSL
 eports_checkhost=Valida els noms de host als URLs
 eports_underscore=Permet subguions als noms de host
 eports_all=Tots
+
 eprogs_ecannot=No tens permís per editar els programes auxiliars
 eprogs_header=Programes Auxiliars
 eprogs_chpo=Opcions de Programes Auxiliars del Cau
@@ -508,6 +528,7 @@ eprogs_ttl=Temps cau de l'autenticació
 eprogs_aittl=Temps de cau de l'autenticació IP
 eprogs_realm=Reialme d'autenticació
 eprogs_return=a l'índex de squid
+
 euser_header=Creació d'Usuari de Proxy
 euser_header1=Edició d'Usuari de Proxy
 euser_pud=Detalls d'Usuari de Proxy
@@ -516,6 +537,7 @@ euser_p=Contrasenya
 euser_u1=Sense canvis
 euser_e=Activat
 euser_return=a la llista d'usuaris
+
 ahttp_header=Creació de Restricció de Proxy
 ahttp_header1=Edició de Restricció de Proxy
 ahttp_pr=Restricció de Proxy
@@ -525,10 +547,13 @@ ahttp_d=Denega
 ahttp_ma=Fes coincidir les ACLs
 ahttp_dma=No facis coincidir les ACLs
 ahttp_return=a la llista d'ACLs
+
 ahttp_replyheader=Creació de Restricció de Resposta de Proxy
 ahttp_replyheader1=Edició de Restricció de Resposta de Proxy
 ahttp_replypr=Restricció de Resposta de Proxy
+
 sahttp_ftspr=No s'ha pogut desar la restricció de resposta de proxy
+
 aicp_header=Creació de Restricció ICP
 aicp_header1=Edició de Restricció ICP
 aicp_ir=Restricció ICP
@@ -538,7 +563,9 @@ aicp_d=Denega
 aicp_ma=Fes coincidir les ACLs
 aicp_dma=No facis coincidir les ACLs
 aicp_return=a la llista d'ACLs
+
 saicp_ftsir=No s'ha pogut desar la restricció ICP
+
 icache_ecannot=No tens permís per inicialitzar el cau
 icache_ftic=No s'ha pogut inicialitzar el cau
 icache_ymcautrsa=Has de triar un usuari sota el qual s'executa Squid
@@ -546,7 +573,9 @@ icache_euser=L'usuari d'execució de Squid no existeix
 icache_itscwtc=S'està inicialitzant el cau de Squid amb l'ordre <tt>$1</tt>...
 icache_return=a l'índex de squid
 icache_title=Inicialització del Cau
+
 restart_ftrs=No s'ha pogut reconfigurar Squid
+
 sadmin_ftsao=No s'han pogut desar les opcions administratives
 sadmin_header=Canvi de Propietat
 sadmin_msg1=Has canviat l'usuari o el grup sota el qual s'executa Squid. Per tal que això tingui efecte, cal actualitzar la propietat de tots els fitxers de registre i del cau, i reiniciar Squid.
@@ -556,10 +585,12 @@ sadmin_inavea='$1' no és una adreça de correu vàlida
 sadmin_inavh='$1' no és un nom de host vàlid
 sadmin_inavap='$1' no és un període d'anunci vàlid
 sadmin_inavp='$1' no és un port vàlid
+
 sauth_ftsao=No s'han pogut desar les opcions d'autenticació
 sauth_iomuf=Hi falta el nom del fitxer d'usuaris o bé no és vàlid
 sauth_iomd=Hi falta el domini o bé no és vàlid
 sauth_msg1=La teva versió de Squid no s'ha compilat amb suport per autenticació de proxy
+
 scache_ftsco=No s'han pogut desar les opcions del cau
 scache_emsg0=Has d'introduir almenys un directori cau
 scache_emsg1=El directori cau '$1' no existeix
@@ -577,14 +608,17 @@ scache_emsg12='$1' no és una mida de directori vàlida
 scache_emsg13='$1' no és un host vàlid
 scache_emsg14='$1' no és port vàlid
 scache_emaxrs=Mida màxima del cos invàlida a la fila $1
+
 schost_ftsc=No s'ha pogut desar el cau
 schost_emsg1='$1' no és un nom de host cau vàlid
 schost_emsg2='$1' no és un port de proxy vàlid
 schost_emsg3='$1' no és un port ICP vàlid
 schost_emsg4='$1' no és temps de vida vàlid
 schost_emsg5='$1' no és un pesatge vàlid
+
 sicp_ftsco=No s'han pogut desar les opcions del cau
 sicp_emsg1='$1' no és un temps límit vàlid
+
 slogs_ftslo=No s'han pogut desar les opcions de registre
 slogs_emsg1='$1' no és un nom de fitxer absolut
 slogs_emsg2='$1' no és un nom de fitxer vàlid
@@ -594,20 +628,24 @@ slogs_emsg5='$1' no és una llista d'opcions de depuració vàlida
 slogs_efname=Nom de format invàlid a la fila $1
 slogs_effmt=Falta el format del registre a la fila $1
 slogs_eafile=Falta el fitxer de registre a la fila $1 o bé és invàlid
+
 smem_ftsmo=No s'han pogut desar les opcions de memòria
 smem_emsg1='$1' no és una mida del cau vàlida
 smem_emsg2='$1' no és una marca d'aigües alta vàlida
 smem_emsg3='$1' no és una marca d'aigües baixa vàlida
 smem_emsg4='$1' no és una mida d'objecte vàlida
+
 smisc_ftso=No s'han pogut desar les opcions
 smisc_emsg1='$1' no és un nombre de rotacions vàlid
 smisc_emsg2='$1' no és un domini vàlid
 smisc_emsg3='$1' no és una proxy vàlida
 smisc_emsg4='$1' no és un nombre de salts vàlid
+
 sport_ftspo=No s'han pogut desar les opcions del port
 sport_emsg1='$1' no és un número de port vàlid
 sport_emsg2='$1' no és una adreça vàlida
 sport_emsg3='$1' no és una mida de buffer vàlida
+
 sprog_ftshpo=No s'han pogut desar les opcions dels programes auxiliars
 sprog_emsg1=Hi falten opcions FTP
 sprog_emsg2='$1' no és un programa vàlid
@@ -620,19 +658,23 @@ sprog_emsg8='$1' no és una adreça IP vàlida
 sprog_emsg9='$1' no és un temps cau vàlid
 sprog_emsg10='$1' no és un TTL vàlid
 sprog_echildren=El nombre de programes ha de ser un número major que zero
+
 suser_ftsu=No s'ha pogut desar l'usuari
 suser_emsg1=Hi falta el nom d'usuari o bé no és vàlid
 suser_etaken=El nom d'usuari ja està en ús
+
 start_ftsq=No s'ha pogut iniciar Squid
 start_ecannot=No tens permís per iniciar Squid
 stop_ftsq=No s'ha pogut aturar Squid
 stop_ecannot=No tens permís per aturar Squid
+
 calamaris_ecannot=No tens permís per accedir a l'anàlisi de registres Calamaris
 calamaris_title=Anàlisi de Registres Calamaris
 calamaris_last=S'està limitant l'anàlisi a les darreres $1 línies dels registres...
 calamaris_eprog=No s'ha trobat l'executable calamaris $1. Potser no està instal·lat, o pot ser que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 calamaris_elogs=El directori de registre $1 no conté cap fitxer <tt>access.log</tt>. Pot ser que Squid encara no s'hagi executat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 calamaris_gen=Informe generat el $1
+
 lib_emsg1='$1' no és una adreça IP vàlida
 lib_seconds=segons
 lib_minutes=minuts
@@ -680,6 +722,7 @@ lib_aclmuip=IP Màxima de l'Usuari
 lib_buttac=Aplica els Canvis
 lib_buttss=Atura Squid
 lib_buttss1=Inicia Squid
+
 log_ports=S'han canviat les opcions de ports i xarxa
 log_icp=S'han canviat les altre opcions del cau
 log_mem=S'han canviat les opcions d'ús de memòria
@@ -734,25 +777,31 @@ log_pools_delete=S'han suprimit $1 pools de retard
 log_delay_create=S'ha afegit l'ACL del pool de retard $1
 log_delay_modify=S'ha modificat l'ACL del pool de retard $1 
 log_delay_delete=S'ha suprimit l'ACL del pool de retard $1
+
 log_delay_move=S'ha desplaçat l'ACL del pool de retard $1
 log_refresh_create=S'ha creat la regla de refresc de $1
 log_refresh_modify=S'ha modificat la regla de refresc de $1
 log_refresh_delete=S'ha suprimit la regla de refresc de $1
+
 log_refresh_move=S'ha refrescat la regla de $1
 log_refreshes_delete=S'han suprimit $1 regles de refresc
 log_iptables=S'ha actualitzat la configuració del redireccionament de ports
 log_purge=S'ha eliminat l'URL $1 del cau
 log_cachemgr=S'han canviat les contrasenyes del gestor del cau
+
 acl_root=Directori arrel dels fitxers ACL
 acl_sections=Pàgines de configuració permeses
 acl_start=Pot iniciar i aturar Squid
 acl_restart=Pot aplicar la configuració de Squid
+
 always_create=Crea Accés Directe
 always_edit=Edita Accés Directe
 always_header=Accedeix directament a les peticions que coincideixen amb les ACLs
+
 never_create=Crea Accés Indirecte
 never_edit=Edita Accés Indirecte
 never_header=No accedeixis mai directament a les peticions que coincideixen amb les ACLs
+
 delay_title=Pools de retard
 delay_add=Afegeix un nou pool de retard.
 delay_num=Número
@@ -802,11 +851,14 @@ pool_unit2=Kb
 pool_unit3=Kb
 pool_unit4=Mb
 pool_unit5=Mb
+
 dpool_err=No s'han pogut suprimir els pools de retard
 dpool_enone=No has seleccionat cap pool de retard
+
 apool_header=Afegeix ACL de Pool de Retard
 apool_header1=Edita ACL de Pool de Retard
 apool_pr=ACL de pool de retard
+
 authparam_title=Programes d'Autenticació
 authparam_header=Opcions de programa d'autenticació
 authparam_ttl=Temps de cau de les contrasenyes
@@ -849,6 +901,7 @@ ext_ecache=Hi falta la mida del cau o bé és invàlida
 ext_eprogram=Has introduït un camí de programa incorrecte
 ext_eclash=Ja existeix un tipus de programa externs amb el mateix nom
 ext_eused=Aquest programa extern ja està en ús per part 
+
 header_title=Control d'Accés de Capçaleres
 header_none=Encara no s'ha definit cap regla d'accés de capçalera
 header_name=Capçalera HTTP
@@ -868,6 +921,7 @@ header_err=No s'ha pogut desar la regla de control d'accés de capçalera
 header_ename=Hi falta el nom de capçalera o bé és invàlid
 header_request_header_access=Capçaleres de Petició
 header_reply_header_access=Capçaleres de Resposta
+
 refresh_title=Regles de Refresc
 refresh_none=Encara no s'ha definit cap regla de refresc.
 refresh_re=Expressió regular
@@ -894,6 +948,7 @@ refresh_epc=Hi falta el percentatge d'edat o bé és invàlid
 refresh_delete=Suprimeix les Regles de Refresc Seleccionades
 drefresh_err=No s'han pogut suprimir les regles de refresc
 drefesh_enone=No has seleccionat cap regla de refresc
+
 iptables_inst0=No sembla que estiguin instal·lades al sistema les ordres necessàries per a configurar el redireccionament de ports. Mira el mòdul <a href='$1'>Tallafoc Linux</a> per a més detalls.
 iptables_inst1=No sembla que el mòdul <a href='$1'>Tallafoc Linux</a> estigui completament configurat en aquest sistema. Aquest mòdul fa ús d'aquell per a configurar el redireccionament de ports Frox.
 iptables_desc=Squid pot dur a terme procuració HTTP transparent per a les peticions sobre el port $1 configurant les regles del tallafoc per redireccionar-les automàticament al port $2, que és el que escolta Squid. Això només funcionarà si el sistema que està executant Squid també és l'encaminador de la teva xarxa. Això es pot fer afegint una regla d'IPtables al tallafoc, assumint que està gestionat amb el mòdul <a href='$3'>Tallafoc Linux</a>.
@@ -907,18 +962,23 @@ iptables_enet=Hi falta l'adreça de xarxa o bé és invàlida (hauria de ser com
 iptables_eiface=Hi falta la interfície de xarxa o bé és invàlida
 iptables_eapply=L'aplicació del tallafoc ha fallat: $1
 iptables_eapply2=L'aplicació de Squid ha fallat: $1
+
 syslog_access=Registre d'accés de Squid
 syslog_cache=Registre del cau de Squid
 syslog_store=Registre d'emmagatzematge d'objectes de Squid
+
 purge_err=No s'ha pogut treure l'URL del cau
 purge_title=S'ha tret l'URL del cau
 purge_doing=S'està traient l'URL $1...
 purge_done=...fet.
 purge_failed=...ha fallat! Vegeu el missatge d'error de sobre per saber-ne les causes.
+
 dhttp_err=No s'han pogut suprimir les restriccions de proxy
 dhttp_enone=No has seleccionat cap restricció de proxy
+
 dicp_err=No s'han pogut suprimir les restriccions ICP
 dicp_enone=No has seleccionat cap restricció ICP
+
 cachemgr_title=Contrasenyes del Gestor del Cau
 cachemgr_ecannot=No tens permís per editar les contrasenyes del gestor del cau
 cachemgr_def1=No calen contrasenyes

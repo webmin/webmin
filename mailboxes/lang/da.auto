@@ -2,6 +2,7 @@ index_title=Læs brugerpost
 index_none=Du har ikke tilladelse til at læse e-mail for nogen brugere på dette system.
 index_header=Brugerpostkasser
 index_empty=Ingen mail
+index_return=brugerliste
 index_esystem=Ingen af de understøttede postserver (Exim, Qmail, Postfix og Sendmail) blev fundet på dit system. Du skal justere <a href='$1'>modulkonfiguration</a> for at indstille mailserveren og muligvis mailstier manuelt.
 index_esystem2=Mailserveren, der er indstillet i <a href='$1'>modulkonfiguration</a>, blev ikke fundet på dit system. Du skal justere konfigurationen for at bruge den rigtige server.
 index_esystem3=Der opstod en fejl ved henvendelse til postsystemet, der er konfigureret i <a href='$1'>modulkonfiguration</a>: $2.
@@ -19,6 +20,7 @@ index_eperl=Det Perl-modul $1, der kræves til den valgte SMTP-godkendelsestilst
 index_file=Læs Mail i File eller Maildir:
 index_nousers=Ingen brugere blev fundet!
 index_nousersmail=Ingen brugere med e-mail blev fundet.
+
 mail_title=Bruger-e-mail
 mail_from=Fra
 mail_date=Dato
@@ -75,6 +77,7 @@ mail_fromfilter=Opret filter efter afsender
 mail_tofilter=Opret filter efter modtager
 mail_subfilter=Opret filter efter emne
 mail_unknown=Ukendt
+
 mail_sign=Skilt med nøglen
 mail_nosign=&lt;Skriv ikke&gt;
 mail_crypt=Krypter til
@@ -109,6 +112,7 @@ mail_selread=Vælg læst.
 mail_selunread=Vælg ulæst.
 mail_selspecial=Vælg special.
 mail_specialsync=Synkroniseret special
+
 view_title=Læs e-mail
 view_desc=Besked $1 i $2
 view_desc2=Meddelelse $1 for bruger $2
@@ -150,6 +154,7 @@ view_sub=Vedhæftet e-mail
 view_sub2=Vedhæftet e-mail fra $1
 view_egone=Denne meddelelse findes ikke længere
 view_eugone=Denne bruger findes ikke
+
 view_gnupg=GnuPG-signaturverifikation
 view_gnupg_0=Underskrift af $1 er gyldig.
 view_gnupg_1=Underskrift af $1 er gyldig, men tillidskæden kunne ikke oprettes.
@@ -186,7 +191,9 @@ view_images=Vis billeder
 view_raw=Se rå meddelelse
 view_aall=Gem alle vedhæftede filer som ZIP.
 view_aslideshow=Vis alle billeder.
+
 compose_title=Skriv e-mail
+
 reply_title=Svar på e-mail
 forward_title=Videresend e-mail
 enew_title=Rediger e-mail
@@ -216,9 +223,11 @@ reply_addattach=Tilføj vedhæftningsfelt.
 reply_addssattach=Tilføj vedhæftningsfelt på serversiden.
 reply_html0=Skriv tekst
 reply_html1=Skriv HTML
+
 reply_spell=Kontroller for stavefejl?
 reply_draft=Gem som kladde
 reply_save=Gem og rediger
+
 send_err=Kunne ikke sende mail
 send_eto=Mangler til adresse
 send_efrom=Mangler fra adresse
@@ -235,6 +244,7 @@ send_eperms2=Du har ikke tilladelse til at sende fil $1
 send_epath=Sendmail-eksekverbar $1 findes ikke.
 send_efile=Kunne ikke læse vedhæftning $1 : $2 
 send_done=.. Færdig.
+
 send_epass=Du kan ikke underskrive en meddelelse, fordi din adgangssætning ikke er konfigureret endnu i GnuPG-modulet.
 send_esign=Kunne ikke underskrive besked : $1
 send_ekey=Kunne ikke finde nøglen til e-mail-adresse $1
@@ -246,6 +256,7 @@ send_espell=Følgende stavefejl blev fundet i din meddelelse ..
 send_draft=Mail til $1 gemt i kladdemappen.
 send_drafting=Gemmer mail til $1 i kladde-mappen ..
 send_eattachsize=E-mailvedhæftningen overskred den maksimalt tilladte størrelse på $1 bytes
+
 delete_title=Slet mail
 delete_rusure=Er du sikker på, at du vil slette de $1 valgte meddelelser fra $2? Det kan tage lidt tid for en stor postfil. Indtil sletningen er afsluttet, skal der ikke udføres nogen anden handling.
 delete_rusure2=Er du sikker på, at du vil slette denne besked fra $1? Det kan tage lidt tid for en stor postfil. Indtil sletningen er afsluttet, skal der ikke udføres nogen anden handling.
@@ -268,6 +279,7 @@ delete_nobutton=Der blev ikke klikket på nogen knap
 delete_ereport=Rapporteringen kunne ikke rapporteres som spam : $1
 delete_errc=Kunne ikke kopiere mail
 delete_errm=Kunne ikke flytte post
+
 confirm_title=Bekræft Slet
 confirm_warn=Er du sikker på, at du vil slette de $1 valgte meddelelser fra denne mappe?
 confirm_warnf=Er du sikker på, at du vil slette de $1 valgte meddelelser fra mappen <b>$2</b>?
@@ -277,6 +289,7 @@ confirm_warn4=Indtil sletningen er afsluttet, skal der ikke udføres nogen anden
 confirm_ok=Slet nu
 confirm_warnall=Er du sikker på, at du vil slette alle meddelelser i denne mappe?
 confirm_warnallf=Er du sikker på, at du vil slette alle meddelelser i mappen <b>$1</b>?
+
 search_title=Søgeresultater
 search_ecannot=Du har ikke tilladelse til at søge på denne brugers e-mail
 search_ematch=Du skal indtaste tekst for at matche mod.
@@ -305,16 +318,19 @@ search_nolatest=Alt i mappe
 search_latestnum=Kun seneste
 search_elatest=Manglende eller ugyldigt antal meddelelser til søgning
 search_withstatus=, med status $1
+
 folder_inbox=Indbakke
 folder_sent=Sendt post
 folder_drafts=Kladder
 folder_trash=Affald
+
 detach_err=Kunne ikke fjerne filen
 detach_edir=Ingen fil eller bibliotek, der skal gemmes i den indtastede
 detach_eopen=Kunne ikke åbne $1 : $2 
 detach_ewrite=Kunne ikke skrive til $1 : $2 
 detach_title=Fjern fil
 detach_ok=Skrivede vedhæftning til serversidefilen $1 ($2).
+
 sform_title=Avanceret søgning
 sform_header=Avancerede e-mail-søgemuligheder
 sform_andmode=Kriterietilstand
@@ -339,6 +355,7 @@ sform_headers=enhver overskrift
 sform_allmsg=hele beskeden
 sform_size=meddelelsesstørrelse
 sform_return=avanceret søgningsformular
+
 find_enone=Der blev ikke fundet nogen brugere, der matchede din søgning
 find_title=Søgeresultater
 find_results=Brugere, der matcher søgningen efter $1 ..
@@ -351,6 +368,7 @@ find_incount=E-mails
 find_sentcount=Sendt
 find_fcount=mapper
 find_in=$1 ind $2
+
 acl_none=Ingen
 acl_same=Bruger med samme navn
 acl_all=Alle
@@ -376,12 +394,15 @@ acl_usersu=Med UID inden for rækkevidde
 acl_sec=Inkluder sekundære grupper?
 acl_dir=Kan læse mailfiler i biblioteket
 acl_dirauto=Beslut automatisk (hvor som helst, hvis alle brugere er synlige, intet andet sted)
+
 log_delmail=Slettet $1 beskeder fra $2
 log_movemail=Flyttet $1 beskeder fra $2 til $3
 log_copymail=Kopieret $1 beskeder fra $2 til $3
 log_send=Sendt mail til $1
 log_read=Læs mail til $1
+
 emodified=Denne mappe er blevet ændret siden den sidst blev vist! Gå tilbage til <a href='$1'>e-mail-listen</a>, og prøv igen.
+
 razor_title=Rapportering som spam
 razor_title2=Rapporter som Ham
 razor_report=Rapportering af denne meddelelse til Razor og andre SpamAssassin-spam-blokerende databaser ..
@@ -391,14 +412,18 @@ razor_done=.. Færdig
 razor_err=.. mislykkedes! Se fejlmeddelelsen ovenfor af grunden til.
 razor_moved=.. færdig og flyttet til mappe $1.
 razor_deleted=.. færdig, og slettet besked også.
+
 ham_title=Rapporter som Ham
 ham_report=Rapportering af denne meddelelse som ikke-spam til Razor og andre SpamAssassin-databaser ..
+
 black_title=Afviser afsender
 black_done=Føjede e-mail-adressen $1 til SpamAssassins liste over afviste adresser.
 black_already=E-mail-adressen $1 findes allerede på SpamAssassins liste over afviste adresser.
+
 white_title=Tillader afsender
 white_done=Føjede e-mail-adressen $1 til SpamAssassins tilladte adresseliste.
 white_already=E-mail-adressen $1 findes allerede på SpamAssassins tilladte adresseliste.
+
 ldap_emod=Manglende Perl-modul $1 er nødvendig for at oprette forbindelse til LDAP
 ldap_econn=Kunne ikke oprette forbindelse til LDAP-server $1 port $2
 ldap_elogin=Kunne ikke binde til LDAP-server $1 som $2 : $3 
@@ -406,12 +431,15 @@ ldap_ehost=Ingen LDAP-server er indstillet i modulkonfiguration
 ldap_eport=Ingen gyldig LDAP-serverport sat i modulkonfiguration
 ldap_euser=Intet LDAP-login er sat i modulkonfiguration
 ldap_ebase=Intet LDAP-base-DN er indstillet i modulkonfiguration
+
 delall_title=Slet al e-mail
 delall_rusure=Er du sikker på, at du vil slette al e-mail fra $1? $2 meddelelser i alt $3 vil blive slettet for evigt.
 delall_ok=Slet nu
+
 slide_title=Vedhæftede billeder
 slide_prev=Tidligere
 slide_next=Næste
+
 left_mail=Post
 left_search=Søg:
 left_folders=Administrer mapper

@@ -15,6 +15,7 @@ index_header2=Restaurar configuración ahora
 index_now2=Restaurar Ahora
 index_apply=¿Aplicar configuraciones?
 index_jobs=Copias de Seguridad Planificadas
+
 edit_title1=Crear Copia de Seguridad Planificada
 edit_title2=Editar Copia de Seguridad Planificada
 edit_header=Opciones de copia de seguridad programada
@@ -34,9 +35,11 @@ edit_nofiles=Archivos de configuración de servidor
 edit_run=Salvar y hacer Copia de Seguridad Ahora
 edit_return=formulario de copia seguridad
 edit_other=Otros archivos listados ..
+
 save_err=Fallo al salvar copia de seguridad
 save_emods=No se seleccionaron módulos
 save_ewebmin=No se seleccionaron archivos de configuración ni de webmin ni de servidor
+
 backup_mode0=Archivo local
 backup_mode1=Servidor FTP
 backup_mode2=Servidor SSH
@@ -52,6 +55,7 @@ backup_egunzip=La copia de seguridad está comprimida, pero <tt>gunzip</tt> no e
 backup_euntar=Un-TAR falló : $1
 backup_enone2=Ninguno de los archivos para los módulos seleccionados están en la copia de seguridad
 backup_epre2=El módulo $1 rechazó la restauración : $2
+
 backup_err=Copia de seguridad falló
 backup_edest=Archivo local absoluto no válido o no introducido
 backup_eserver1=Servidor FTP no válido o no introducido
@@ -64,21 +68,25 @@ backup_title=Configuración de Copia Seguridad
 backup_doing=Comenzando copia de seguridad de los archivos de configuración de módulo a $1
 backup_failed=.. falló! $1
 backup_done=.. completo. El tamaño final de la copia de seguridad fue $1, y contiene $2 archivos.
+
 restore_err=Falló restauración
 restore_title=Restaurar Configuración
 restore_doing=Comenzando la restauración de los archivos de configuración de módulo desde $1 ..
 restore_failed=.. falló! $1
 restore_done=.. completo. $1 archivos se restauraron.
+
 nice_ftp=$2 en $1 vía FTP
 nice_ssh=$2 en $1 vía SSH
 nice_upload=archivo cargado
 nice_download=navegador
+
 log_backup=Se realizó la copia de seguridad de $1 módulos a $2
 log_restore=Se restauraron $1 módulos desde $2
 log_create_backup=Se creó copia de seguridad de $1 módulos a $2
 log_modify_backup=Se modificó copia de seguridad de $1 módulos a $2
 log_delete_backup=Se borró copia de seguridad de $1 módulos a $2
 log_run_backup=Se ejecutó la copia de seguridad de $1 módulos a $2
+
 run_title=Copia de Seguridad de Configuraciones
 run_doing=Comenzando copia de seguridad de $1 módulos a $2 ..
 run_ok=.. copia de seguridad completada con éxito.

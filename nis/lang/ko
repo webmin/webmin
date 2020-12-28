@@ -1,6 +1,7 @@
 index_title=NIS 클라이언트 및 서버
 index_return=NIS 메뉴
 index_enis=시스템에 NIS 클라이언트 또는 서버 지원 기능이 설치되어 있지 않습니다.
+
 client_title=NIS 클라이언트
 client_header=NIS 클라이언트 구성
 client_domain=NIS 도메인
@@ -15,8 +16,10 @@ client_edomain=없거나 잘못된 도메인 이름
 client_eserver='$1'은(는) 유효한 서버 이름이 아닙니다
 client_eypwhich=NIS 도메인에 바인드하지 못했습니다
 client_ehosts='$1'이(가) 호스트 파일에 없습니다
+
 switch_title=클라이언트 서비스
 switch_service=서비스
+
 order_= 
 order_nisplus=NIS+
 order_nis=NIS
@@ -28,6 +31,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=사용자 프린터
 order_xfn=XFN
+
 server_title=NIS 서버
 server_header=NIS 서버 옵션
 server_boot=NIS 서버를 사용 가능으로 설정합니까?
@@ -60,6 +64,7 @@ server_ebootdom=도메인을 설정하지 않으면 이 NIS 서버를 사용 가
 server_solaris=참고 - Solaris에서는 클라이언트와 서버의 NIS 도메인이 항상 같습니다. 따라서 도메인을 설정하지 않으면 서버가 작동하지 않습니다.
 server_edir=잘못된 암호 소스 파일 디렉토리
 server_enis=시스템에 NIS 서버 지원 기능이 설치되어 있지 않습니다.
+
 tables_title=NIS 테이블
 tables_switch=NIS 테이블 편집:
 tables_header=$2의 $1 NIS 테이블
@@ -71,6 +76,7 @@ tables_return=NIS 테이블
 tables_text=테이블 수동 편집
 tables_emaster=시스템이 마스터 NIS 서버로서 실행되고 있지 않으므로 NIS 테이블을 편집할 수 없습니다.
 tables_eslave=시스템이 마스터 서버로부터 모든 테이블을 받는 NIS 슬레이브이므로 NIS 테이블을 편집할 수 없습니다.
+
 desc_aliases=Sendmail 별칭
 desc_mail=Sendmail 별칭
 desc_hosts=호스트 주소
@@ -103,6 +109,7 @@ desc_printers=프린터
 desc_ipnodes=IP 노드
 desc_timezone=표준 시간대
 desc_locale=로케일
+
 hosts_title=호스트 주소
 hosts_ip=IP 주소
 hosts_name=호스트 이름
@@ -111,6 +118,7 @@ hosts_err=호스트를 저장하지 못했습니다
 hosts_eip=없거나 잘못된 IP 주소
 hosts_ename=없거나 잘못된 호스트 이름
 hosts_aliases=별칭
+
 group_name=그룹 이름
 group_gid=그룹 ID
 group_members=구성원
@@ -121,6 +129,7 @@ group_none=암호 필요 없음
 group_encrypted=미리 암호화된 암호
 group_clear=일반 암호
 group_err=그룹을 저장하지 못했습니다
+
 passwd_name=사용자 이름
 passwd_uid=사용자 ID
 passwd_real=실제 이름
@@ -158,6 +167,7 @@ passwd_emax=잘못된 최대 일 수
 passwd_emin=잘못된 최소 일 수
 passwd_einactive=잘못된 비활성 일 수
 passwd_eexpiry=잘못된 만료 날짜
+
 services_name=서비스 이름
 services_proto=프로토콜
 services_port=포트
@@ -166,6 +176,7 @@ services_header=Inetd 네트워크 서비스 옵션
 services_err=서비스를 저장하지 못했습니다
 services_ename=없거나 잘못된 서비스 이름
 services_eport=없거나 잘못된 포트
+
 protocols_name=프로토콜 이름
 protocols_number=번호
 protocols_aliases=별칭
@@ -174,6 +185,7 @@ protocols_header=네트워크 프로토콜 옵션
 protocols_err=프로토콜을 저장하지 못했습니다
 protocols_ename=없거나 잘못된 이름
 protocols_enumber=없거나 잘못된 번호
+
 netgroup_name=넷그룹 이름
 netgroup_members=구성원
 netgroup_title=네트워크 그룹
@@ -188,6 +200,7 @@ netgroup_ename=없거나 잘못된 넷그룹 이름
 netgroup_ehost=행 $1에 호스트가 없거나 잘못됨
 netgroup_euser=행 $1에 사용자가 없거나 잘못됨
 netgroup_edom=행 $1에 NIS 도메인이 없거나 잘못됨
+
 ethers_mac=이더넷 주소
 ethers_ip=IP 주소
 ethers_title=이더넷 주소
@@ -195,6 +208,7 @@ ethers_header=이더넷 매핑 옵션
 ethers_err=이더넷 주소를 저장하지 못했습니다
 ethers_emac=잘못된 이더넷 주소
 ethers_eip=잘못된 IP 주소
+
 rpc_name=프로그램 이름
 rpc_number=번호
 rpc_aliases=별칭
@@ -203,6 +217,7 @@ rpc_header=RPC 프로그램 정보
 rpc_err=RPC 프로그램을 저장하지 못했습니다
 rpc_ename=없거나 잘못된 프로그램 이름
 rpc_enumber=없거나 잘못된 번호
+
 networks_title=네트워크 주소
 networks_ip=IP 주소
 networks_name=네트워크 이름
@@ -211,6 +226,7 @@ networks_err=네트워크를 저장하지 못했습니다
 networks_eip=없거나 잘못된 IP 주소
 networks_ename=없거나 잘못된 이름
 networks_aliases=별칭
+
 netmasks_net=네트워크 주소
 netmasks_mask=넷마스크
 netmasks_title=넷마스크
@@ -218,6 +234,7 @@ netmasks_header=네트워크 마스크 상세 정보
 netmasks_err=넷마스크를 저장하지 못했습니다
 netmasks_enet=없거나 잘못된 네트워크 주소
 netmasks_emask=없거나 잘못된 넷마스크
+
 aliases_from=주소
 aliases_to=별칭 대상
 aliases_title=Sendmail 별칭
@@ -225,6 +242,7 @@ aliases_header=Sendmail 별칭 상세 정보
 aliases_err=별칭을 저장하지 못했습니다
 aliases_efrom=없거나 잘못된 주소
 aliases_eto=없는 대상 주소
+
 security_title=서버 보안
 security_header=NIS 서버 보안 옵션
 security_ok=저장 및 적용

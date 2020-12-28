@@ -13,6 +13,7 @@ index_addsnap=新增一個 snapshot.
 index_return=容體群組
 index_init=這也許是因為LVM尚未被啟動 <a href='$1'>現在啟動</a>來瀏覽全部容體群組
 index_eversion=Webmin只支援 LVM版本1.0以上，在您的系統上顯示的表單 $1 是 : $2
+
 lv_edit=Edit邏輯容體
 lv_edit_snap=編輯Snapshot
 lv_create=新增邏輯容體
@@ -57,6 +58,7 @@ lv_mkfsdesc=選取一種檔案類型和點擊這個按鈕來新增一個檔案�
 lv_toobig=新的容體大小是 $1磁區 (of $2 each)， 但只勝 $3 在此容體群組上。
 lv_snapof=Snapshot的邏輯容體
 lv_nosnap=無法確定!
+
 mkfs_title=新增檔案系統
 mkfs_desc=這個表單允許您建立一個新的 $2 ($1) 檔案系統在邏輯容體 $3上， 所有存在的資料將被清除。
 mkfs_header=新增檔案系統選項
@@ -64,13 +66,16 @@ mkfs_err=新增檔案系統錯誤
 mkfs_exec=執行指令 $1 ..
 mkfs_failed=.. 指令錯誤!
 mkfs_ok=.. 指令完成
+
 resize_title=重設邏輯容體大小
 resize_mesg=這個 $1檔案系統在邏輯容體上無法變更大小，如果想變更邏輯容體大小， 您必須重新建立檔案系統，這將會清除所有在上面的資料。
 resize_mesg2=Webmin 不知道是何種檔案系統在這邏輯容體上，如果有的話， 如果想變更邏輯容體大小， 您必須重新建立檔案系統，這將會清除所有在上面的資料。
 resize_fs=一個重設檔案系統 $1 大小的錯誤在這邏輯容體上 : $2  如果只變更邏輯容體大小， 您必須重新建立檔案系統，這將會清除所有在上面的資料。
 resize_ok=重設邏輯容體大小
+
 init_title=啟動 LVM
 init_cmd=執行指令 $1 ..
+
 pv_edit=編輯實體群組
 pv_create=加入到容體群組
 pv_vg=In 容體群組 $1
@@ -89,6 +94,7 @@ pv_rusure=您確定要刪除實體群組裝置 $1從這容體群組? 這將會�
 pv_deleteok=移除容體
 pv_eother=沒有輸入或錯誤的磁碟裝置
 pv_raid=RAID 裝置 $1
+
 vg_edit=編輯容體群組
 vg_create=新增容體群組
 vg_name=容體群組 name
@@ -105,6 +111,7 @@ vg_cannot=這個容體群組無法刪除因為它還包含 $1邏輯容體.
 vg_deleteok=現在刪除
 vg_ename=沒有輸入或錯誤的容體群組名稱
 vg_epesize=沒有輸入或錯誤的磁區分配大小
+
 log_create_vg=新增容體群組 $1
 log_modify_vg=修改容體群組 $1
 log_delete_vg=刪除容體群組 $1

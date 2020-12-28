@@ -2,6 +2,7 @@ check_econfigset=Neįvestas „iSCSI TGTd“ konfigūracijos failas!
 check_econfig=„ISCSI TGTd“ konfigūracijos failas $1 jūsų sistemoje nerastas.
 check_etgtadm=„ISCSI TGTd“ administravimo komanda $1 jūsų sistemoje nerasta.
 check_einit=Paleidimo veiksmas $1 neegzistuoja
+
 index_title=„iSCSI TGTd“
 index_clink=Galbūt jis neįdiegtas, arba <a href='$1'>modulio konfigūracija</a> yra neteisinga.
 index_stop=Sustabdykite „iSCSI TGTd“
@@ -24,8 +25,10 @@ index_users=Leidžiami vartotojai
 index_size=Visas dydis
 index_noluns=Nė vienas
 index_nousers=Bet kokia
+
 dtargets_err=Nepavyko ištrinti taikinių
 dtargets_enone=Nepasirinkta!
+
 target_title1=Sukurkite „iSCSI“ taikinį
 target_title2=Redaguoti „iSCSI“ tikslą
 target_header=„iSCSI“ bendro naudojimo įrenginio parinktys
@@ -74,11 +77,13 @@ target_direct=Tiesioginė prieiga prie įrenginio
 target_cache=Talpyklą rašo įrenginyje?
 target_eaddr=Neteisingas leidžiamas IP adresas
 target_eaname=Netinkamas leidžiamas iniciatoriaus vardas
+
 start_err=Nepavyko paleisti „iSCSI TGTd“
 stop_err=Nepavyko sustabdyti „iSCSI TGTd“
 restart_err=Nepavyko iš naujo paleisti „iSCSI TGTd“
 atboot_err=Nepavyko įgalinti įkrovos metu
 atboot_einit=Pradinio scenarijaus $1 neegzistuoja
+
 log_create_target=Sukurtas tikslas $1 
 log_delete_target=Ištrintas $1 tikslas
 log_modify_target=Pakeistas tikslas $1 
@@ -89,6 +94,7 @@ log_restart=Iš naujo paleistas „iSCSI“ serveris
 log_atboot=Įjungta „iSCSI“ serverio įkrovos metu
 log_delboot=Išjungtas „iSCSI“ serveris įkrovos metu
 log_manual=Rankiniu būdu redaguojamas konfigūracijos failas
+
 manual_title=Redaguoti konfigūracijos failą
 manual_file=Pasirinkite failą, kurį norite redaguoti:
 manual_ok=Atviras

@@ -14,6 +14,7 @@ index_search=Prikažite usluge koje odgovaraju:
 index_sok=traži
 index_toomany=Na ovoj se stranici prikazuje previše internetskih usluga.
 index_none=Nijedna internetska usluga ne odgovara vašoj potrazi.
+
 error_restart=Ponovno pokretanje servisa Inetd nije uspjelo
 error_saverpc=Spremanje RPC programa nije uspjelo
 error_invalidprgname='$1' nije valjano ime programa
@@ -43,6 +44,7 @@ error_nameexist=Usluga s imenom $1 i protokolom $2 već postoji
 error_inetservice=Internetska usluga s imenom $1 i protokolom $2 već postoji
 error_smfservice=Ažuriranje smf usluge nije uspjelo s cmd '$1', kôd pogreške $2 
 error_smf_cmdfield=Za smf, naziv datoteke '$1' mora odgovarati prvom argumentu naredbenog polja, tj. Biti '$2'
+
 editrpc_title1=Napravite RPC program
 editrpc_title2=Uređivanje RPC programa
 editrpc_detail=Pojedinosti o programu RPC
@@ -69,6 +71,7 @@ editrpc_execasuser=Izvrši kao korisnik
 editrpc_max=Maksimalno po minutu
 editrpc_default=Zadano
 editrpc_execasgrp=Izvršite kao grupa
+
 editserv_title1=Stvorite internetski servis
 editserv_title2=Uređivanje internetske usluge
 editserv_detail=Pojedinosti o internetskoj usluzi
@@ -82,6 +85,7 @@ editserv_wrapper=TCP-omot
 editserv_inetd=Unutarnji <tt>inetd</tt>
 editserv_qm=Naredba možda ne postoji?
 editserv_ename=Ne postoji usluga s tim imenom i protokolom
+
 log_apply=Primijenjene promjene
 log_create_serv=Stvorena usluga $1 
 log_modify_serv=Izmijenjena usluga $1 
@@ -95,6 +99,7 @@ log_delete_serv_l=Izbrisana usluga $1 na priključku $2
 log_create_prog_l=Stvorena usluga $1 na portalu $2 za program $3 
 log_modify_prog_l=Izmijenjena usluga $1 na priključku $2 za program $3 
 log_delete_prog_l=Izbrisana usluga $1 na priključku $2 za program $3 
+
 log_create_rpc=Izrađen RPC $1 
 log_modify_rpc=Izmijenjeni RPC $1 
 log_delete_rpc=Izbrisan RPC $1 

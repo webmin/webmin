@@ -10,6 +10,7 @@ index_hosts=میزبان
 index_cmd=کمانڈ
 index_delete=منتخب کردہ کو حذف کریں
 index_none=کوئی نہیں
+
 edit_title1allow=اجازت دیں اصول بنائیں
 edit_title2allow=اصول کی اجازت دیں
 edit_title1deny=انکار رول بنائیں
@@ -22,9 +23,11 @@ edit_hosts=ریموٹ میزبان
 edit_hostsexcept=سوائے میزبانوں کے
 edit_cmd=شیل حکم دیتا ہے
 edit_efound=ڈیمون '$1' xinetd تشکیل میں نہیں مل سکی۔
+
 save_errtitle=بچانے کے اصول میں خرابی
 save_ehost=میزبان ان پٹ میں خراب حرف ہوتے ہیں
 save_ecmd=کمانڈ ان پٹ میں خراب حرف ہوتے ہیں
 save_eservice=ڈیمون ناموں میں خراب حرف ہوتے ہیں
+
 del_errtitle=قواعد کو حذف کرنے میں خرابی
 del_enone=حذف کرنے کے لئے کوئی اصول نشان زد نہیں

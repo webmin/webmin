@@ -16,6 +16,7 @@ index_digest2=Digesten enkriptazioa gaituta dago moduluaren konfigurazioan, bain
 index_cpan=<a href='$1'>Egin klik hemen</a> deskargatzeko eta orain instalatzeko.
 index_delete=Aukeratu aukeratutako zuzendaritzak
 index_remove=Ez babestu eta kendu fitxategiak
+
 dir_title1=Gehitu Babestutako direktorio
 dir_title2=Editatu Babestutako direktorio
 dir_header=Babestutako direktorioen aukerak
@@ -60,6 +61,7 @@ dir_delete3=Fitxategia babestu eta ezabatu
 dir_apache=Editatu Apache aukerak
 dir_efiledir='$1' direktorio bat da, eta beraz, ezin da erabiltzaile fitxategi gisa erabili
 dir_egfiledir='$1' direktorio bat da, eta beraz ezin da talde fitxategi gisa erabili
+
 edit_title1=Erabiltzailea Sortu
 edit_title2=Erabiltzailea editatu
 edit_header=Web autentifikazioaren erabiltzailearen xehetasunak
@@ -71,11 +73,13 @@ edit_pass0=Ezarrita
 edit_passfrom=Aldatu bertatik
 edit_passto=pasahitz berriari
 edit_dom=Digestio-eremua
+
 gedit_title1=Sortu Taldea
 gedit_title2=Editatu Taldea
 gedit_header=Web autentifikazio taldearen xehetasunak
 gedit_group=Taldearen izena
 gedit_members=Taldeko kideak
+
 save_err=Huts egin du erabiltzailea gordetzean
 save_euser1=Erabiltzaile izena falta da
 save_euser2=Erabiltzaile-izenak ezin du: karakterea
@@ -84,16 +88,19 @@ save_eclash=Izen berdina duen erabiltzailea lehendik dago
 save_eoldpass=Pasahitz zaharra ez da zuzena
 save_title=Erabiltzaileak gordeta
 save_edom=Digestioaren eremua falta edo baliogabea da
+
 gsave_err=Huts egin du taldea gordetzean
 gsave_egroup1=Taldearen izena falta da
 gsave_egroup2=Taldearen izenak ezin ditu: karakterea edo espazioak
 gsave_eclash=Izen bera duen taldea dagoeneko
+
 acl_dirs=Onartutako direktorioak
 acl_user=Sortu.htaccess eta htusers fitxategiak Unix erabiltzaile gisa
 acl_same=Webmin saioa hasteko gauza bera
 acl_home=Sartu Unix erabiltzailearen etxeko direktorio?
 acl_sync=Konfigura daiteke Unix erabiltzailearen sinkronizazioa?
 acl_uonly=Babestutako direktorioak gehitu eta aldatu al daitezke?
+
 log_create_dir=$1 direktorioa gehitu da
 log_modify_dir=$1 direktorio aldatua
 log_delete_dir=$1 direktorio ezabatua
@@ -104,6 +111,7 @@ log_create_group=$1 taldea sortu da
 log_modify_group=$1 aldatutako taldea
 log_delete_group=$1 talde ezabatu da
 log_delete_dirs=$1 direktorio ezabatuak
+
 search_title=Bilaketaren emaitzak
 search_err=Bilaketa huts egin du
 search_edir=Falta den direktorio absolutua falta edo baliogabea da

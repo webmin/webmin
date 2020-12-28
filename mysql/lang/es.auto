@@ -18,6 +18,7 @@ index_showing=Mostrando bases de datos que coinciden con $1 ..
 index_emsg=El mensaje de error completo de MySQL fue : $1 
 index_jump=O edite la base de datos:
 index_jumpok=Abierto
+
 dbase_header=Tablas de bases de datos, índices y vistas
 dbase_empty=Base de datos vacía
 dbase_none2=No hay tablas que coincidan con su búsqueda.
@@ -36,8 +37,10 @@ dbase_type=Tipo
 dbase_typetable=Tabla 1)
 dbase_typeindex=Índice
 dbase_typeview=Ver
+
 ddrop_rusure2=¿Está seguro de que desea vaciar la base de datos $1 ? Se eliminarán $2 tablas que contienen $3 filas de datos.
 ddrop_empty2=Eliminar todas las tablas
+
 ddrops_err=Error al descartar bases de datos
 ddrops_title=Eliminar bases de datos
 ddrops_rusure=¿Está seguro de que desea eliminar las bases de datos $1 seleccionadas? Se eliminarán $2 tablas que contienen $3 filas de datos.
@@ -46,18 +49,21 @@ ddrops_mysql=Debido a que la base de datos maestra está seleccionada, su caída
 ddrops_ok=Eliminar bases de datos
 ddrops_enone=No hay bases de datos seleccionadas
 ddrops_ecannotdb=No tiene permiso para soltar la base de datos $1 
+
 table_csv=Exportar como CSV
 table_index=Crear índice
 table_copy2=Copiar campos de la base de datos
 table_copy2t=y mesa
 table_epnull=El campo de clave primaria $1 no puede permitir nulos
 table_delete=Eliminar campos seleccionados
+
 tdrops_enone=No hay tablas que descartar seleccionadas
 tdrops_err=Error al descartar tablas
 tdrops_ok=soltar
 tdrops_title=Soltar seleccionado
 tdrops_rusure=¿Está seguro de que desea colocar $1 tablas seleccionadas en la base de datos $2 ? Se eliminarán $3 filas de datos.
 tdrops_rusure2=¿Está seguro de que desea colocar $1 tablas seleccionadas en la base de datos $2 ?
+
 field_current=Tiempo actual
 field_defval=Valor
 field_defdef=MySQL por defecto
@@ -66,6 +72,7 @@ field_defempty=Cuerda vacía
 field_defleave=No cambies
 field_dmode0=Ninguna
 field_dmode1=Nulo
+
 view_refresh=Actualizar
 view_match4=mas grande que
 view_match5=menos que
@@ -77,6 +84,7 @@ view_sortreset=Restablecer orden
 view_go=Vamos
 view_adv=Búsqueda Avanzada
 view_sqlrun=Resultados generados por la consulta SQL : $1 
+
 users_syncwhen=Cuando sincronizar
 users_delete=Eliminar seleccionado
 users_derr=Error al eliminar usuarios
@@ -85,6 +93,7 @@ users_ssl=Certificado
 users_dtitle=Eliminar permisos de usuario
 users_drusure=¿Está seguro de que desea eliminar los $1 permisos de usuario MySQL seleccionados?
 users_dok=Eliminar usuarios
+
 user_vwarning=ADVERTENCIA: Este usuario de MySQL es el inicio de sesión de administración para el dominio Virtualmin $1. Cambiar cualquier configuración aquí puede causar errores en Virtualmin.
 user_locked=Bloqueado
 user_priv_select=Seleccionar datos de la tabla
@@ -133,24 +142,29 @@ user_emax_user_connections=El número máximo de inicios de sesión simultáneos
 user_emax_connections=Las conexiones máximas por hora deben ser un número
 user_emax_updates=Las actualizaciones máximas por hora deben ser un número
 user_emax_questions=Las consultas máximas por hora deben ser un número
+
 dbs_derr=Error al eliminar los permisos de la base de datos
 dbs_enone=No hay bases de datos seleccionadas
 dbs_dtitle=Eliminar permisos de la base de datos
 dbs_drusure=¿Está seguro de que desea eliminar los permisos de base de datos MySQL seleccionados $1 ?
 dbs_dok=Eliminar permisos
+
 hosts_derr=Error al eliminar los permisos del host
 hosts_enone=No hay hosts seleccionados
 hosts_dtitle=Eliminar permisos de host
 hosts_drusure=¿Está seguro de que desea eliminar los $1 permisos de host MySQL seleccionados?
 hosts_dok=Eliminar permisos
 hosts_return=permisos de host
+
 host_sel=Seleccionado
 host_otherdb=Patrón a juego
+
 newdb_tname=Llamado
 newdb_charset=Conjunto de caracteres
 newdb_collation=Orden de clasificación
 newdb_str=con campos debajo
 newdb_ecannot2=No está permitido crear más bases de datos.
+
 exec_header2a=Esto también se puede usar para restaurar una copia de seguridad de MySQL, que es solo un archivo de comandos SQL.
 exec_edit=Editar anterior
 exec_format=Formato de archivo
@@ -164,23 +178,29 @@ exec_iheader=Opciones de importación de archivos de texto
 exec_created=Se crearon $1 tablas.
 exec_inserted=Se insertaron $1 registros.
 exec_cs=Conjunto de caracteres para datos
+
 tprivs_derr=Error al eliminar los permisos de la tabla
 tprivs_enone=No hay tablas seleccionadas
 tprivs_dtitle=Eliminar permisos de tabla
 tprivs_drusure=¿Está seguro de que desea eliminar los $1 permisos de tabla MySQL seleccionados?
 tprivs_dok=Eliminar permisos
+
 tpriv_edb=Nombre de base de datos faltante o no válido
+
 cprivs_add2=Agregar nuevos permisos :
 cprivs_derr=Error al eliminar permisos de campo
 cprivs_enone=No hay campos seleccionados
 cprivs_dtitle=Eliminar permisos de columna
 cprivs_drusure=¿Está seguro de que desea eliminar los permisos de columna MySQL seleccionados $1 ?
 cprivs_dok=Eliminar permisos
+
 cpriv_edb=Nombre de base de datos faltante o no válido
+
 acl_max=Sí, como mucho
 acl_indexes=¿Puede ver y administrar índices?
 acl_views=¿Puede ver y administrar vistas?
 acl_files=¿Se puede ejecutar SQL desde archivos locales?
+
 log_cnf=Se modificó la configuración del servidor MySQL
 log_kill=Conexiones de base de datos $1 eliminadas
 log_vars=Variables del sistema $1 modificadas
@@ -202,6 +222,7 @@ log_backup_all_l=Copia de seguridad de todas las bases de datos en el archivo $2
 log_set=Variables $1 variables MySQL
 log_root=Se modificó la contraseña de administración
 log_manual=Archivo de configuración editado manualmente
+
 backup_title2=Copia de seguridad de todas las bases de datos
 backup_desc3=Este formulario le permite hacer una copia de seguridad de todas las bases de datos como archivos de declaraciones SQL. Para restaurar una copia de seguridad, puede usar el formulario Ejecutar SQL para ejecutar los comandos en uno de los archivos.
 backup_header1=Destino de respaldo
@@ -256,10 +277,12 @@ backup_bodyspace=Tamaño del sistema de archivos: $1 Espacio libre : $2
 backup_bodyall=todos
 backup_edownloadall=Solo se puede descargar una única copia de seguridad de la base de datos
 backup_edownloadsave=El modo de descarga no se puede usar para copias de seguridad programadas
+
 adv_title=Búsqueda Avanzada
 adv_and=Encuentra registros que coincidan con todos los criterios.
 adv_or=Encuentra registros que coincidan con cualquier criterio.
 adv_ok=Buscar ahora
+
 csv_title=Exportar archivo CSV
 csv_header=Opciones de exportación CSV
 csv_dest=Destino de exportación
@@ -280,6 +303,7 @@ csv_done=La exportación de CSV a $1 ha finalizado. El tamaño del archivo resul
 csv_headers=¿Incluir nombres de columna en CSV?
 csv_cols=Columnas para incluir en CSV
 csv_ecols=No hay columnas seleccionadas
+
 cnf_title=Configuración del servidor MySQL
 cnf_efile=El archivo de configuración de MySQL $1 no se encontró en su sistema. Es posible que deba ajustar la <a href='$2'>configuración del módulo</a> para usar la ruta correcta.
 cnf_header=Opciones de servidor MySQL
@@ -321,11 +345,13 @@ cnf_restart=Guardar y reiniciar MySQL
 cnf_fpt=¿Archivo separado para cada tabla InnoDB?
 cnf_ilt=Tiempo de espera de bloqueo InnoDB (en segundos)
 cnf_eilt=El tiempo de espera de bloqueo de InnoDB debe ser un número entero
+
 manual_title=Editar archivos de configuración
 manual_file=Editar archivo de configuración:
 manual_ok=Okay
 manual_efile=¡Archivo de configuración inválido!
 manual_err=Error al guardar el archivo de configuración
+
 index_title1=Crear índice
 index_header1=Opciones de índice
 index_name=Nombre del índice
@@ -341,12 +367,15 @@ index_ecols=No hay campos seleccionados
 index_title2=Editar índice
 index_header=Índice $1 en la base de datos $2 
 index_ecannot=No tiene permiso para administrar índices
+
 syslog_desc=Mensajes de error de MySQL
 syslog_desc2=Mensaje de error de MySQL
 syslog_logdesc=Consultas MySQL
+
 fdrop_err=Error al eliminar campos
 fdrop_enone=Ninguna seleccionada
 fdrop_eall=¡No puede eliminar todos los campos de una tabla!
+
 view_title1=Crear vista
 view_title2=Editar vista
 view_header1=Ver detalles
@@ -372,6 +401,7 @@ view_cascaded=Vistas subyacentes
 view_local=Esta vista solo
 view_nocheck=Ninguna
 view_ecannot=No tiene permiso para administrar vistas
+
 procs_title=Conexiones de bases de datos
 procs_id=CARNÉ DE IDENTIDAD
 procs_user=Nombre de usuario
@@ -383,9 +413,11 @@ procs_query=Consulta en ejecución
 procs_kill=Eliminar conexiones seleccionadas
 procs_ecannot=No tiene permiso para ver conexiones de bases de datos
 procs_none=No hay otras conexiones de cliente de base de datos en este momento.
+
 kill_err=Error al eliminar las conexiones de la base de datos
 kill_ecannot=No tiene permiso para administrar conexiones de bases de datos
 kill_enone=Ninguna seleccionada
+
 vars_title=Variables del sistema MySQL
 vars_desc=Advertencia: las variables establecidas en esta página se restablecerán a sus valores predeterminados cuando se reinicie MySQL. La configuración permanente debe realizarse en la página <a href='$1'>Configuración del servidor MySQL</a>.
 vars_ecannot=No tiene permiso para editar variables del sistema
@@ -396,10 +428,12 @@ vars_search=Mostrar coincidencia de variables:
 vars_ok=Buscar
 vars_none2=No hay variables del sistema que coincidan con su búsqueda.
 vars_none=¡No se encontraron variables del sistema!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
 compat_postgresql=PostgreSQL
+
 compat_oracle=Oráculo
 compat_mssql=Microsoft SQL
 compat_db2=DB2
@@ -407,7 +441,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=Opciones clave
 compat_no_table_options=Opciones de mesa
 compat_no_field_options=Opciones de campo
+
 config_echarset=Juego de caracteres faltante o de aspecto no válido
+
 root_title=Cambiar contraseña de administración
 root_header=Nueva contraseña de administración
 root_user=Inicio de sesión de administración
@@ -420,6 +456,7 @@ root_epass1=No se ingresó una nueva contraseña
 root_epass2=Las contraseñas no coinciden
 root_none=¡Sin contraseña!
 root_auto=Automático (generalmente <tt>root</tt>)
+
 mysqlpass_err=Modo seguro de MySQL
 mysqlpass_esafecmd=No se encontró el comando $1 necesario para iniciar MySQL con la autenticación deshabilitada
 mysqlpass_eshutdown=Error de apagado : $1 

@@ -155,8 +155,10 @@ menu_bookmarks=סימניות
 notallowed=אינך רשאי לגשת $1. הספריות המותרות הן : $2 
 error_upload_emax=הקובץ שהועלה גדול מהגבול של $1 
 extract_etype=סוג קובץ ארכיב לא נתמך
+
 info_total1=סה"כ: קובץ $1 וספריית $2 
 info_total2=סה"כ: $1 קבצים וספרייה $2 
 info_total3=סה"כ: קובץ $1 ו- $2 ספריות
 info_total4=סה"כ: $1 קבצים ו- $2 ספריות
+
 ownership=בעלים

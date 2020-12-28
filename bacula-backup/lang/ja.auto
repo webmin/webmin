@@ -29,12 +29,14 @@ index_fd=ファイルデーモンの構成
 index_groups=Baculaグループの構成
 index_actions=バックアップおよび復元アクション
 index_ocmin=<a href=$2 target=_new>Linmin</a> </a>による寄稿
+
 connect_emysql=データベースDBIドライバ $1のロードに失敗しました
 connect_elogin=データベース $1へのログインに失敗しました： $2。
 connect_equery=データベース $1には、Baculaテーブルが含まれていないようです。
 connect_equery2=これは、インストールされたSQLite Perlモジュールが新しすぎて、Baculaで使用されている古いSQLiteデータベース形式をサポートしていないためである可能性があります。
 connect_equery3=データベース $1には、OC Baculaグループテーブルが含まれていないようです。
 esql=SQLエラー： $1
+
 check_edir=Baculaの設定ディレクトリ $1がシステムに見つかりませんでした。
 check_ebacula=Bacula制御コマンド $1が見つかりませんでした。
 check_econsole=Baculaコンソールコマンド $1が見つかりませんでした。
@@ -43,12 +45,14 @@ check_eclient=このシステムは、ディレクターではなく<a href='$2'
 check_econfigs=$1でBacula構成ファイルが見つかりませんでした
 check_eservers=Webminサーバーグループが定義されていません
 check_engmod=OpenCountry Baculaグループモジュールがインストールされていません
+
 proc_bacula-sd=ストレージデーモン
 proc_bacula-fd=ファイルデーモン
 proc_bacula-dir=Bacula Directorデーモン
 proc_bareos-sd=ストレージデーモン
 proc_bareos-fd=ファイルデーモン
 proc_bareos-dir=Bacula Directorデーモン
+
 stop_err=Baculaを停止できませんでした
 start_err=Baculaを開始できませんでした
 start_einit=$1の初期化スクリプトが見つかりません
@@ -57,6 +61,7 @@ restart_err=Baculaの再起動に失敗しました
 apply_err=構成を適用できませんでした
 apply_failed=構成エラーが検出されました
 apply_problem=構成を適用できませんでした： $1
+
 jobs_title=バックアップジョブ
 jobs_none=バックアップジョブはまだ定義されていません。
 jobs_name=職種名
@@ -69,6 +74,7 @@ jobs_add=新しいバックアップジョブを追加します。
 jobs_delete=選択したジョブを削除
 jobs_return=ジョブのリスト
 jobs_derr=ジョブを削除できませんでした
+
 filesets_title=ファイルセット
 filesets_none=バックアップファイルセットはまだ定義されていません。
 filesets_name=ファイルセット名
@@ -78,6 +84,7 @@ filesets_delete=選択したファイルセットを削除
 filesets_return=ファイルセットのリスト
 filesets_derr=ファイルセットを削除できませんでした
 filesets_ednone=何も選択されていません
+
 fileset_title1=ファイルセットを作成
 fileset_title2=ファイルセットを編集
 fileset_header=バックアップファイルセットの詳細
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;デフォルトの圧縮レベル&gt;
 fileset_lzo=LZO圧縮
 fileset_gzip=Gzipレベル $1
 fileset_onefs=バックアップを1つのファイルシステムに制限しますか？
+
 clients_title=バックアップクライアント
 clients_none=バックアップクライアントはまだ定義されていません。
 clients_name=クライアント名
@@ -106,6 +114,7 @@ clients_add=新しいバックアップクライアントを追加します。
 clients_delete=選択したクライアントを削除
 clients_return=クライアントのリスト
 clients_derr=クライアントを削除できませんでした
+
 client_title1=バックアップクライアントを作成
 client_title2=バックアップクライアントの編集
 client_header=バックアップするクライアントの詳細
@@ -128,6 +137,7 @@ client_efileret=ファイル保持期間がないか、無効です
 client_ejobret=ジョブの保持期間がないか、無効です
 client_echild=このクライアントは $1によって使用されているため削除できません
 client_status=ステータスを表示
+
 job_title1=バックアップジョブを作成する
 job_title2=バックアップジョブの編集
 job_header=バックアップジョブの詳細
@@ -156,6 +166,7 @@ job_before=ジョブの前のコマンド
 job_after=ジョブ後のコマンド
 job_cbefore=ジョブの前のコマンド（クライアント上）
 job_cafter=ジョブ後のコマンド（クライアント上）
+
 schedules_title=バックアップスケジュール
 schedules_none=バックアップスケジュールはまだ定義されていません。
 schedules_name=スケジュール名
@@ -164,6 +175,7 @@ schedules_add=新しいバックアップスケジュールを追加します。
 schedules_delete=選択したスケジュールを削除
 schedules_return=スケジュールのリスト
 schedules_derr=スケジュールを削除できませんでした
+
 schedule_title1=バックアップスケジュールを作成する
 schedule_title2=バックアップスケジュールの編集
 schedule_header=バックアップスケジュールの詳細
@@ -177,6 +189,7 @@ schedule_ename=スケジュール名が欠落しているか無効です
 schedule_eclash=同じ名前のスケジュールが既に存在します
 schedule_etimes=行 $1にバックアップ時間がありません
 schedule_echild=このスケジュールは $1によって使用されているため削除できません
+
 backup_title=バックアップジョブを実行する
 backup_header=バックアップジョブの詳細
 backup_job=実行するジョブ
@@ -191,11 +204,13 @@ backup_running=..バックアップジョブが実行中です。完了すると
 backup_running2=..バックアップジョブがバックグラウンドで開始されました。
 backup_done=..バックアップが完了しました。
 backup_failed=..バックアップは正常に完了しませんでした。詳細については、上記のエラーメッセージを確認してください。
+
 gbackup_title=Baculaグループのバックアップジョブを実行する
 gbackup_run=$2クライアントでバックアップジョブ $1を開始しています ..
 gbackup_on=クライアント $1でバックアップジョブを実行しています：
 gbackup_header=Baculaグループのバックアップジョブの詳細
 gbackup_jd=$1（グループ $3のファイルセット $2）
+
 dirstatus_title=監督の地位
 dirstatus_sched=スケジュールされたバックアップジョブ
 dirstatus_name=職種名
@@ -216,12 +231,14 @@ dirstatus_status2=状態
 dirstatus_donenone=バックアップジョブは実行されていません。
 dirstatus_cancel=選択したジョブをキャンセル
 dirstatus_refresh=リストを更新
+
 clientstatus_title=クライアントの状態
 clientstatus_err=$1からステータスを取得できませんでした： $2
 clientstatus_msg=$1からのステータス： $2
 clientstatus_show=クライアントのステータスを表示：
 clientstatus_ok=OK
 clientstatus_on=$1（$2で）
+
 storages_title=ストレージデーモン
 storages_none=ストレージデーモンはまだ定義されていません。
 storages_name=ストレージ名
@@ -232,6 +249,7 @@ storages_add=新しいストレージデーモンを追加します。
 storages_delete=選択したストレージデーモンを削除する
 storages_return=ストレージデーモンのリスト
 storages_derr=ストレージデーモンの削除に失敗しました
+
 storage_title1=ストレージデーモンの作成
 storage_title2=ストレージデーモンの編集
 storage_header=リモートストレージデーモンの詳細
@@ -255,6 +273,7 @@ storage_emedia=メディアタイプ名がありません
 storage_emaxjobs=最大同時ジョブ数がありません
 storage_echild=このクライアントは $1によって使用されているため削除できません
 storage_status=ステータスを表示
+
 devices_title=ストレージデバイス
 devices_none=ストレージデバイスはまだ定義されていません。
 devices_name=装置名
@@ -264,6 +283,7 @@ devices_add=新しいストレージデバイスを追加します。
 devices_delete=選択したストレージデバイスを削除する
 devices_return=ストレージデバイスのリスト
 devices_derr=ストレージデバイスを削除できませんでした
+
 device_title1=ストレージデバイスの作成
 device_title2=ストレージデバイスの編集
 device_header=ファイルストレージデバイスの詳細
@@ -282,11 +302,13 @@ device_eclash=同じ名前のストレージデバイスが既に存在します
 device_emedia=メディアタイプ名がありません
 device_edevice=アーカイブデバイスまたはディレクトリが見つからないか無効です
 device_echild=このクライアントは $1によって使用されているため削除できません
+
 storagestatus_title=ストレージデーモンのステータス
 storagestatus_err=$1からステータスを取得できませんでした： $2
 storagestatus_msg=$1からのステータス： $2
 storagestatus_show=ストレージデーモンのステータスを表示します。
 storagestatus_ok=OK
+
 label_title=ラベルボリューム
 label_header=ラベルを付けるボリュームの詳細
 label_storage=ラベルを付けるストレージデーモン
@@ -302,6 +324,7 @@ label_done=..ラベル付けに成功しました。
 label_epool=..プールが見つかりませんでした！
 label_err=ラベルに失敗しました
 label_elabel=ラベルが入力されていません
+
 pools_title=ボリュームプール
 pools_none=ボリュームプールはまだ定義されていません。
 pools_name=プール名
@@ -311,6 +334,7 @@ pools_add=新しいボリュームプールを追加します。
 pools_delete=選択したボリュームプールを削除する
 pools_return=ボリュームプールのリスト
 pools_derr=ボリュームプールを削除できませんでした
+
 pool_title1=ボリュームプールの作成
 pool_title2=ボリュームプールの編集
 pool_header=バックアップボリュームプールの詳細
@@ -332,6 +356,7 @@ pool_ereten=保持期間の欠落または無効
 pool_status=ボリュームを表示
 pool_autolabel=ボリュームのプレフィックスに自動的にラベルを付ける
 pool_maxvolsize=最大ボリュームサイズ（5ギガバイトの場合は5Gなど）
+
 poolstatus_title=プール内のボリューム
 poolstatus_show=プール内のボリュームを表示：
 poolstatus_ok=OK
@@ -345,9 +370,11 @@ poolstatus_status=バックアップモード
 poolstatus_none=現在、このバックアッププールにボリュームはありません。
 poolstatus_never=決して
 poolstatus_delete=選択したボリュームを削除
+
 dvolumes_err=ボリュームを削除できませんでした
 dvolumes_enone=何も選択されていません
 dvolumes_ebacula=Baculaエラー： $1
+
 mount_title=マウントまたはアンマウント
 mount_header=ストレージのマウントまたはマウント解除オプション
 mount_storage=ストレージデバイス
@@ -365,8 +392,10 @@ unmount_failed=..アンマウントに失敗しました！理由については
 mount_return=マウントフォーム
 mount_err=ストレージデバイスのマウントに失敗しました
 mount_eslot=スロット番号が欠落しているか無効です
+
 cancel_err=ジョブをキャンセルできませんでした
 cancel_enone=何も選択されていません
+
 gjobs_title=Baculaグループのバックアップジョブ
 gjobs_none=Baculaグループのバックアップジョブはまだ定義されていません。
 gjobs_add=新しいBaculaグループのバックアップジョブを追加します。
@@ -374,10 +403,12 @@ gjobs_delete=選択したジョブを削除
 gjobs_return=Baculaグループの仕事のリスト
 gjobs_derr=Baculaグループのジョブを削除できませんでした
 gjobs_client=バックアップするBaculaグループ
+
 gjob_title1=Baculaグループのバックアップジョブを作成する
 gjob_title2=Baculaグループのバックアップジョブを編集
 gjob_header=Baculaグループのバックアップジョブの詳細
 gjob_client=バックアップするBaculaグループ
+
 groups_title=バキュラグループ
 groups_none=Baculaによるバックアップ用のBaculaグループはまだ選択されていません。
 groups_name=グループ名
@@ -391,6 +422,7 @@ groups_derr=グループを削除できませんでした
 groups_noadd=バックアップ用に選択するBaculaグループは存在しません。
 groups_info=$1（$2メンバー）
 groups_already=すべてのBaculaグループはすでに追加されています。
+
 group_title1=Baculaグループを作成
 group_title2=Baculaグループを編集
 group_header=バックアップするBaculaグループの詳細
@@ -401,11 +433,13 @@ group_port=Bacula FDポート
 group_err=Baculaグループを保存できませんでした
 group_eclash=同じ名前のグループが既に存在します
 group_members=Baculaグループのホスト
+
 sync_title=Baculaグループの同期
 sync_header=Baculaグループの自動クライアント同期オプション
 sync_sched=スケジュールどおりに同期しますか？
 sync_schedyes=はい、以下で選択した時間に ..
 sync_err=Baculaグループの同期を保存できませんでした
+
 log_create_client=バックアップクライアント $1を作成しました
 log_modify_client=変更されたバックアップクライアント $1
 log_delete_client=バックアップクライアント $1を削除しました
@@ -464,6 +498,7 @@ log_director=保存されたグローバルBaculaディレクター構成
 log_file=保存されたBaculaファイルデーモン構成
 log_storagec=保存されたBaculaストレージデーモン構成
 log_fixpass=Baculaコンソールプログラムのパスワードを修正
+
 director_title=ディレクター構成
 director_header=グローバルBaculaディレクターオプション
 director_name=監督名
@@ -477,6 +512,7 @@ director_ename=監督名の欠落または無効
 director_eport=ポート番号が欠落しているか無効です
 director_ejobs=並行ジョブの欠落または無効数
 director_edir=存在しない、または存在しない作業ディレクトリ
+
 tls_enable=TLS暗号化を有効にしますか？
 tls_require=TLS接続のみを受け入れますか？
 tls_verify=TLSクライアントを確認しますか？
@@ -488,6 +524,7 @@ tls_ecert=TLS証明書ファイルが存在しないか存在しない
 tls_ekey=TLSキーファイルが存在しないか存在しない
 tls_ecacert=TLS CA証明書ファイルが存在しないか存在しない
 tls_ecerts=TLSを有効にするには、証明書、キー、およびCAファイルを指定する必要があります
+
 file_title=ファイルデーモンの構成
 file_header=Baculaファイルデーモンオプション
 file_name=ファイルデーモン名
@@ -500,6 +537,7 @@ file_ename=ファイルデーモン名が欠落しているか無効です
 file_eport=ポート番号が欠落しているか無効です
 file_ejobs=並行ジョブの欠落または無効数
 file_edir=存在しない、または存在しない作業ディレクトリ
+
 fdirectors_title=ファイルデーモンディレクター
 fdirectors_none=取締役はまだ定義されていません。
 fdirectors_name=監督名
@@ -508,6 +546,7 @@ fdirectors_add=新しいディレクターを追加します。
 fdirectors_delete=選択したディレクターを削除
 fdirectors_return=取締役のリスト
 fdirectors_derr=ディレクターを削除できませんでした
+
 fdirector_title1=ファイルデーモンディレクターの作成
 fdirector_title2=ファイルデーモンディレクターの編集
 fdirector_header=リモートディレクターの制御の詳細
@@ -519,6 +558,7 @@ fdirector_err=ファイルデーモンディレクタの保存に失敗しまし
 fdirector_ename=監督名がありません
 fdirector_eclash=同じ名前のディレクターが既に存在します
 fdirector_epass=パスワードがありません
+
 sdirectors_title=ストレージデーモンディレクター
 sdirectors_none=取締役はまだ定義されていません。
 sdirectors_name=監督名
@@ -527,6 +567,7 @@ sdirectors_add=新しいディレクターを追加します。
 sdirectors_delete=選択したディレクターを削除
 sdirectors_return=取締役のリスト
 sdirectors_derr=ディレクターを削除できませんでした
+
 sdirector_title1=ストレージデーモンディレクターの作成
 sdirector_title2=ストレージデーモンディレクターの編集
 sdirector_header=リモートディレクターの制御の詳細
@@ -538,6 +579,7 @@ sdirector_err=ストレージデーモンディレクタの保存に失敗しま
 sdirector_ename=監督名がありません
 sdirector_eclash=同じ名前のディレクターが既に存在します
 sdirector_epass=パスワードがありません
+
 storagec_title=ストレージデーモンの構成
 storagec_header=Baculaストレージデーモンオプション
 storagec_name=デーモン名
@@ -550,6 +592,7 @@ storagec_ename=ストレージデーモン名が欠落しているか無効で�
 storagec_eport=ポート番号が欠落しているか無効です
 storagec_ejobs=並行ジョブの欠落または無効数
 storagec_edir=存在しない、または存在しない作業ディレクトリ
+
 chooser_title=スケジュールを選択
 chooser_monthsh=実行する月
 chooser_months=年の月
@@ -574,11 +617,13 @@ chooser_emonthsrange=選択した月は連続している必要があります
 chooser_eweekdaysrange=選択した平日は連続している必要があります
 chooser_eweekdaynumsrange=選択した平日番号は連続している必要があります
 chooser_edaysrange=月の選択された日は連続している必要があります
+
 weekdaynum_1=最初
 weekdaynum_2=第二
 weekdaynum_3=三番
 weekdaynum_4=第4
 weekdaynum_5=5番目
+
 restore_title=バックアップを復元
 restore_title2=Baculaグループへのバックアップの復元
 restore_title3=Bacula Group Backupの復元

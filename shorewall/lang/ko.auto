@@ -19,6 +19,7 @@ index_dump=덤프 표시
 index_dumpdesc=<tt>shorewall dump</tt> 명령에서 Shorewall 추적 정보를 보려면이 버튼을 클릭하십시오.
 index_check=방화벽 확인
 index_checkdesc=Shorewall에서 <tt>shorewall check</tt> 명령으로 방화벽 구성을 확인하도록하려면이 버튼을 클릭하십시오.
+
 list_move=움직임
 list_add=더하다
 list_auto=자동적 인
@@ -30,6 +31,7 @@ list_manual=수동으로 파일 편집
 list_manualdesc=이 항목을 저장하는 Shorewall 파일 $1 을 (를) 수동으로 편집하려면이 단추를 클릭하십시오.
 list_ecannot=이 Shorewall 테이블을 편집 할 수 없습니다.
 list_delete=선택된 것을 지워 라
+
 restart_err=구성을 적용하지 못했습니다
 refresh_err=구성을 새로 고치지 못했습니다.
 start_err=방화벽을 시작하지 못했습니다
@@ -41,6 +43,7 @@ check_title=방화벽 확인
 check_ok=.. 방화벽 구성이 정상으로 보입니다.
 check_failed=.. 방화벽 구성에서 오류가 발견되었습니다!
 check_cmd=구성 확인 ..
+
 zones_title=네트워크 영역
 zones_desc=이 페이지에 나열된 영역은 시스템에서 연결할 수있는 다른 네트워크를 나타냅니다. 그러나 여기의 항목은 실제로 방화벽에 영향을 미치지 않습니다. 대신 영역 이름과 설명 만 정의합니다.
 zones_add=새 네트워크 영역을 추가하십시오.
@@ -69,6 +72,7 @@ zones_firewall=방화벽 시스템
 zones_eopts=유효하지 않은 영역 옵션
 zones_eopts_in=유효하지 않은 영역 수신 옵션
 zones_eopts_out=유효하지 않은 영역 발신 옵션
+
 policy_title=기본 정책
 policy_desc=이 페이지에서는 다른 방화벽 영역 간의 트래픽에 대한 기본 작업을 구성 할 수 있습니다. 방화벽 규칙 페이지에서 특정 호스트 또는 트래픽 유형에 대해 재정의 할 수 있습니다.
 policy_add=새로운 기본 정책을 추가하십시오.
@@ -89,6 +93,7 @@ policy_ulog=ULOG에 로그인
 policy_efw=&lt;방화벽&gt;은 소스 및 대상 영역 모두에 대해 선택할 수 있습니다
 policy_elimit=교통 제한 번호가 없거나 유효하지 않습니다
 policy_eburst=교통 버스트 번호가 없거나 잘못되었습니다
+
 rules_title=방화벽 규칙
 rules_desc=이 표에는 특정 유형의 트래픽, 소스 또는 대상에 대한 기본 정책에 대한 예외가 나열되어 있습니다. 선택한 조치는 기본값 대신 선택한 기준과 일치하는 패킷에 적용됩니다.
 rules_add=새로운 방화벽 규칙을 추가하십시오.
@@ -135,6 +140,7 @@ rules_eaction=선택된 조치가 없습니다
 rules_macro=매크로 동작 매개 변수
 rules_none2=없음
 rules_emacro=누락되거나 잘못된 매크로 매개 변수
+
 tos_title=서비스 유형
 tos_desc=이 페이지는 특정 유형의 트래픽에 대한 IP 서비스 유형을 정의하며 우선 순위를 높이거나 낮추는 데 사용할 수 있습니다.
 tos_add=새로운 유형의 서비스를 추가하십시오.
@@ -153,6 +159,7 @@ tos_edit=서비스 유형 편집
 tos_create=서비스 유형 생성
 tos_header=서비스 세부 사항 유형
 tos_err=서비스 유형을 저장하지 못했습니다
+
 interfaces_title=네트워크 인터페이스
 interfaces_desc=Shorewall이 관리 할 시스템의 각 네트워크 인터페이스가이 페이지에 나열되고 연결된 영역과 연결되어야합니다. 루프백 인터페이스 <tt>lo</tt>는 절대로 나열되지 않아야합니다.
 interfaces_add=새로운 네트워크 인터페이스를 추가하십시오.
@@ -169,6 +176,7 @@ interfaces_header=네트워크 인터페이스 세부 사항
 interfaces_err=네트워크 인터페이스를 저장하지 못했습니다
 interfaces_eiface=인터페이스 이름이 없거나 유효하지 않습니다
 interfaces_ebroad=브로드 캐스트 주소가 없거나 잘못되었습니다
+
 masq_title=가장 무도회
 masq_desc=이 페이지의 항목은 일부 네트워크와 특정 인터페이스간에 라우팅되는 트래픽에 대한 네트워크 주소 변환을 설정합니다.
 masq_add=새 마스 쿼 레이 딩 규칙을 추가하십시오.
@@ -199,6 +207,7 @@ masq_emnete=빈 예외 네트워크 목록
 masq_esnat=잘못된 SNAT IP 주소
 masq_eports=쉼표로 구분 된 포트 목록이 없거나 잘못되었습니다.
 masq_eipsec=누락 된 IPsec 옵션
+
 nat_title=정적 NAT
 nat_desc=이 표의 정적 네트워크 주소 변환 항목을 사용하면 방화벽의 외부 주소와 방화벽 뒤에있는 시스템의 RFC1918 주소 사이의 1-1 대응 관계를 설정할 수 있습니다. 정적 NAT는 종종 네트워크 외부에서 내부 서버에 연결하는 데 사용됩니다.
 nat_add=새로운 정적 NAT 항목을 추가하십시오.
@@ -217,6 +226,7 @@ nat_local=방화벽 시스템에 활성화되어 있습니까?
 nat_eext=잘못된 외부 IP 주소
 nat_eint=잘못된 내부 IP 주소
 nat_evirt=잘못된 가상 인터페이스 번호
+
 proxyarp_title=프록시 ARP
 proxyarp_desc=이 페이지에서는 자체 주소 이외의 IP 주소에 대한 ARP 요청에 응답하도록 시스템을 구성하여 해당 주소로 패킷을 실제 대상으로 전달할 수 있습니다.
 proxyarp_add=새 프록시 ARP 주소를 추가하십시오.
@@ -233,6 +243,7 @@ proxyarp_err=프록시 ARP를 저장하지 못했습니다
 proxyarp_have=호스트로의 경로가 존재합니까?
 proxyarp_eaddr=ARP에 누락되거나 잘못된 주소
 proxyarp_pers=방화벽이 중지 된 경우에도 경로를 떠나시겠습니까?
+
 routestopped_title=멈출 때
 routestopped_desc=기본적으로 Shorewall이 중지되면 모든 호스트의 액세스가 거부됩니다. 이 페이지에서는 여전히 액세스 가능한 호스트 또는 네트워크를 정의 할 수 있습니다.
 routestopped_add=중지 된 새 주소를 추가하십시오.
@@ -248,6 +259,7 @@ routestopped_err=중지 된 주소를 저장하지 못했습니다
 routestopped_eaddr=주소가 입력되지 않았습니다
 routestopped_all=모든 주소
 routestopped_list=나열된 주소 및 네트워크 ..
+
 tunnels_title=VPN 터널
 tunnels_desc=이 페이지에는 방화벽을 통과하는 VPN 터널이 나열되어 있으므로 Shorewall 구성에서 허용해야합니다.
 tunnels_add=새로운 VPN 터널을 추가하십시오.
@@ -278,6 +290,7 @@ tunnels_generic_l=프로토콜의 일반
 tunnels_gsel=상장 지역
 tunnels_eopenvpn=OpenVPN 터널의 잘못된 포트 번호
 tunnels_egeneric=일반 터널 용 프로토콜 또는 프로토콜 : 포트가 없습니다.
+
 hosts_title=존 호스트
 hosts_desc=이 페이지에는 특정 영역의 일부인 호스트 및 네트워크가 나열됩니다. 일반적으로이 목록을 변경할 필요는 없습니다.
 hosts_add=새 영역 호스트를 추가하십시오.
@@ -297,8 +310,10 @@ hosts_ip=주소 또는 네트워크 $1
 hosts_mac=MAC 주소 $1 
 hosts_ipset=IP 세트 $1 
 hosts_any=모든 호스트
+
 edit_before=입학 전 $1 
 edit_after=입장 후 $1 
+
 blacklist_title=블랙리스트 호스트
 blacklist_desc=이 페이지에는 <b>블랙리스트</b> 옵션이 설정된 인터페이스에 트래픽이 도착하면 차단 될 호스트 및 서비스가 나열됩니다.
 blacklist_add=새 블랙리스트 호스트를 추가하십시오.
@@ -321,6 +336,7 @@ blacklist_eproto=누락되었거나 잘못된 프로토콜
 blacklist_eports=유효하지 않은 포트 번호 또는 쉼표로 구분 된 포트 목록
 blacklist_eports2=TCP 및 UDP 프로토콜에 대해서만 포트를 지정할 수 있습니다
 blacklist_return=블랙리스트 호스트
+
 providers_title=추가 라우팅 제공 업체
 providers_desc=이 페이지는 추가 라우팅 테이블을 정의합니다. 둘 이상의 ISP에 연결하거나 동일한 ISP에 대한 여러 연결이 있거나 방화벽 이외의 호스트에서 투명 프록시로 Squid를 실행하는 경우에 필요합니다.
 providers_add=새 라우팅 공급자를 추가하십시오.
@@ -353,6 +369,7 @@ providers_emark=공급자 마크 번호가 없거나 유효하지 않습니다
 providers_edup=복제 할 공급자가 없습니다.
 providers_egateway=게이트웨이가 없거나 유효하지 않습니다
 providers_return=라우팅 제공 업체 목록
+
 route_rules_title=라우팅 규칙
 route_rules_desc=이 페이지는 추가 라우팅 공급자 페이지에 정의 된 공급자로 라우팅되는 트래픽을 제어합니다.
 route_rules_ip=IP 주소, 네트워크 또는 인터페이스
@@ -378,17 +395,21 @@ route_rules_emark=패킷 표시는 숫자 또는 숫자/마스크 형식이어�
 route_rules_return=라우팅 규칙 목록
 route_rules_edit=라우팅 규칙 편집
 route_rules_create=라우팅 규칙 생성
+
 manual_desc=이 양식을 사용하여 Shorewall 파일 $1 을 수동으로 편집 할 수 있습니다. 변경 사항에 대해 구문 검사가 수행되지 않으므로주의하십시오.
 manual_reset=실행 취소
 manual_err=테이블 파일을 저장하지 못했습니다
 manual_efile=유효하지 않은 테이블 이름!
 manual_edata=테이블 파일 내용이 입력되지 않았습니다.
+
 acl_nochange=Shorewall 구성을 적용, 중지 및 시작할 수 있습니까?
 acl_files=사용 가능한 Shorewall 테이블
 acl_all=모두
 acl_sel=아래에서 선택 ..
+
 delete_err=행을 삭제하지 못했습니다.
 delete_enone=선택된 행이 없습니다
+
 opts_routeback=호스트에게 다시 트래픽 허용
 opts_source=호스트에서 모든 목적지로 허용
 opts_dest=모든 소스에서 호스팅 허용
@@ -406,6 +427,7 @@ opts_proxyarp=프록시 ARP 활성화
 opts_arp_filter=인터페이스 IP에 대한 ARP 요청에만 응답
 opts_detectnets=라우팅 된 호스트 만 포함하는 Taylor 영역
 opts_upnp=UPNP를 통한 패킷 재 맵핑
+
 comment_add=새로운 코멘트를 추가하십시오.
 comment_edit=댓글 수정
 comment_create=댓글 작성
@@ -413,6 +435,7 @@ comment_header=테이블 주석 세부 사항
 comment_msg=메시지
 comment_err=댓글을 저장하지 못했습니다
 comment_enone=메시지가 입력되지 않았습니다
+
 log_create_table=$1 테이블에 항목을 추가했습니다.
 log_modify_table=$1 테이블의 수정 된 항목
 log_delete_table=$1 테이블에서 삭제 된 항목
@@ -428,6 +451,7 @@ log_start=방화벽 시작
 log_refresh=새로 고침 된 방화벽
 log_restart=방화벽 재시작
 log_clear=방화벽 제거
+
 shorewall_conf_title=마스터 구성 파일
 shorewall_conf_desc=이 페이지에서 전역 구성 변수를 구성 할 수 있습니다. 참고 : 구성 파일에서 주석의 상대 위치를 유지하려면 여기에서 변수 순서를 변경하지 않는 것이 좋습니다.
 shorewall_conf_add=새로운 구성 변수를 추가하십시오.
@@ -441,6 +465,7 @@ shorewall_conf_create=구성 변수 생성
 shorewall_conf_header=구성 변수 세부 사항
 shorewall_conf_err=구성 변수를 저장하지 못했습니다
 shorewall_conf_varname=유효하지 않은 변수 이름 (유효한 쉘 변수 이름이어야 함)
+
 params_title=맞춤 매개 변수
 params_desc=이 페이지에서는 Shorewall의 사용자 정의 매개 변수를 구성 할 수 있습니다. 참고 : 구성 파일에서 주석의 상대 위치를 유지하려면 여기에서 매개 변수 순서를 변경하지 않는 것이 좋습니다.
 params_add=새로운 맞춤 매개 변수를 추가하십시오.

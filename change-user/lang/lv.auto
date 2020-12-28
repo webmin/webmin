@@ -20,6 +20,7 @@ index_d1=$1
 index_dlang=valoda, kurā tiek parādīti moduļi
 index_dtheme=tēma, kas kontrolē Webmin izskatu
 index_dpass=paroli, ko izmanto, lai pieteiktos ar
+
 change_title=Iestatījumu maiņa
 change_user=Tiek mainīta Webmin pieteikšanās ..
 change_done=.. darīts
@@ -30,6 +31,7 @@ change_epass2=Jaunas paroles nesakrīt
 change_epass=Jaunā parole nav derīga : $1 
 change_eoverlay=Motīva pārklājumu nevar atlasīt, ja nav izvēlēta arī lietotāja saskarne
 change_eoverlay2=Atlasītā motīva pārklājums nav savietojams ar izvēlēto lietotāja interfeisa motīvu
+
 acl_lang=Vai var mainīt valodu?
 acl_theme=Vai var mainīt tēmu?
 acl_pass=Vai var mainīt paroli (ja tā ir iestatīta Webmin)?

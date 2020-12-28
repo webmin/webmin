@@ -33,11 +33,13 @@ index_mass=Supprimer l'(les) utilisateur(s) sélectionné(s)
 index_mass2=Désactiver sélection
 index_mass3=Activer sélection
 index_gmass=Supprimer le(s) groupe(s) sélectionné(s)
+
 search_title=Résultats d'une recherche
 search_notfound=Aucun utilisateur correspondant trouvé
 search_found=$1 utilisateurs correspondants trouvés ..
 search_gnotfound=Aucun groupe correspondant trouvé
 search_gfound=$1 groupes correspondants trouvés ..
+
 uedit_title=Modification d'un utilisateur
 uedit_title2=Création d'un utilisateur
 uedit_details=Détails de l'utilisateur
@@ -108,6 +110,7 @@ uedit_forcechange=Forcer le changement lors de la prochaine connexion ?
 uedit_uid_def=Automatique
 uedit_uid_calc=Calculé
 uedit_disabled=Nom de connexion temporairement désactivé
+
 usave_err=Impossible d'enregistrer l'utilisateur
 usave_eedit=Vous n'êtes pas autorisé à modifier cet utilisateur
 usave_ecreate=Vous n'êtes pas autorisé à créer de nouveaux utilisateurs
@@ -157,6 +160,7 @@ usave_epasswd_re=Le mot de passe ne correspondre pas à l'expression régulière
 usave_epasswd_dict=Le mot de passe est un mot du dictionnaire
 usave_epasswd_same=Le mot de passe contient ou est identique au nom d'utilisateur
 usave_eothers=L'utilisateur a été enregistré avec succès, mais une erreur s'est produite dans un autre module : $1
+
 gedit_title=Modification d'un groupe
 gedit_title2=Création d'un groupe
 gedit_details=Détails du groupe
@@ -171,6 +175,7 @@ gedit_cothers=Créer un groupe dans d'autres modules ?
 gedit_mothers=Modifier un groupe dans d'autres modules ?
 gedit_gid_calc=Calculé
 gedit_gid_def=Automatique
+
 gsave_err=Impossible d'enregistrer le groupe
 gsave_eedit=Vous n'êtes pas autorisé à modifier ce groupe
 gsave_ecreate=Vous n'êtes pas autorisé à créer de nouveaux groupes
@@ -186,6 +191,7 @@ usave_ehigid=Le GID doit être inférieur ou égal à $1
 usave_egidused=Le groupe $1 utilise déjà le GID $2
 usave_efromroot=Vous ne pouvez pas déplacer le répertoire personnel à partir de /
 usave_etoroot=Vous ne pouvez pas changer le répertoire personnel en /
+
 logins_title=Connexions enregistrées
 logins_head=Connexions enregistrées pour $1
 logins_from=Connexion à partir de
@@ -198,6 +204,7 @@ logins_none=Pas de connexions enregistrées
 logins_elist=Vous n'êtes pas autorisé à répertorier des connexions
 logins_elistu=Vous n'êtes pas autorisé à répertorier des connexions pour '$1'
 logins_local=Local
+
 udel_title=Suppression d'un utilisateur
 udel_err=Impossible de supprimer l'utilisateur
 udel_enum=Numéro d'utilisateur invalide
@@ -219,6 +226,7 @@ udel_del2=Supprimer l'utilisateur et son répertoire personnel
 udel_others=<b>AVERTISSEMENT !</b> Le répertoire utilisateur $1 contient $2 fichiers appartenant à d'autres utilisateurs.
 udel_dothers=Supprimer l'utilisateur dans d'autres modules ?
 udel_root=<b>Avertissement !</b> Si l'utilisateur root est supprimé, il se peut que vous ne puissiez plus administrer votre système à l'avenir.
+
 gdel_title=Suppression d'un groupe
 gdel_err=Impossible de supprimer le groupe
 gdel_eroot=Vous n'êtes pas autorisé à supprimer des groupes système (ceux qui ont un UID inférieur ou égal à 10)
@@ -232,6 +240,7 @@ gdel_sure=Êtes-vous sûr de vouloir supprimer le groupe $1 ?
 gdel_del=Supprimer le groupe
 gdel_dothers=Supprimer le groupe dans d'autres modules ?
 gdel_other=Suppression à partir d'autres modules en cours...
+
 many_title=Création d'utilisateurs multiples
 many_desc=Ce formulaire vous permet de créer un grand nombre d'utilisateurs à la fois à partir d'un fichier texte déposé sur le serveur ou local. Chaque ligne du fichier représente un utilisateur dans le format suivant :
 many_desc2=nom_utilisateur:mot_de_passe:uid:gid:nom_reel:repertoire_personnel:interpreteur:min:max:avertissement:inactif:expire
@@ -255,6 +264,7 @@ many_eshell=Interpréteur de commandes invalide à la ligne $1 : $2
 many_emkdir=Impossible de créer le répertoire personnel $1 : $2
 many_egtaken=Nom de groupe déjà en cours d'utilisation à la ligne $1 : $2
 many_ok=Créé l'utilisateur $1
+
 acl_uedit=Utilisateurs Unix pouvant être modifiés
 acl_uedit_all=Tous les utilisateurs
 acl_uedit_none=Aucun utilisateur
@@ -314,6 +324,7 @@ acl_udelete=Peut supprimer des utilisateurs?
 acl_gdelete=Peut supprimer des groupes?
 acl_urename=Peut renommer des utilisateurs?
 acl_grename=Peut renommer des groupes?
+
 log_urename=Renommé l'utilisateur $1 en $2
 log_umodify=Modifié l'utilisateur $1
 log_ucreate=Créé l'utilisateur $1
@@ -326,6 +337,7 @@ log_batch=Exécuté le fichier de traitement par lots $1
 log_batch_l=Exécuté le fichier de traitement par lots $1 (créé $2, modifié $3, supprimé $4)
 log_ubatch=Exécuté le fichier de traitement par lots téléchargé
 log_ubatch_l=Exécuté le fichier de traitement par lots téléchargé (créé $1, modifié $2, supprimé $3)
+
 batch_title=Exécution d'un fichier de traitement par lots
 batch_ecannot=Vous ne pouvez pas utiliser le formulaire du fichier de traitement par lots
 batch_desc=Ce formulaire vous permet de créer, modifier ou supprimer de nombreux utilisateurs à la fois, à partir d'un fichier texte déposé sur le serveur ou local. Chaque ligne contenue dans le fichier spécifie une action à effectuer, en fonction de son premier champ. Les formats des lignes sont :
@@ -376,12 +388,14 @@ batch_edaccess=Vous n'êtes pas autorisé à supprimer l'utilisateur à la ligne
 batch_crypt=Les mots de passe sont-ils déjà chiffrés ?
 batch_return=au formulaire de traitement par lots
 batch_eother=Mais une erreur s'est produite dans un autre module : $1
+
 who_title=Utilisateurs connectés
 who_user=Utilisateur Unix
 who_tty=TTY
 who_when=Connecté le
 who_from=Connecté à partir de
 who_none=Aucun utilisateur n'est connecté actuellement.
+
 export_title=Exportation d'un fichier de traitement par lots
 export_desc=Ce formulaire vous permet de créer un fichier de traitement par lots contenant certains ou la totalité des utilisateurs disponibles sur le serveur. Le fichier peut être utilisé pour exporter la page <b>Exportation du fichier de traitement par lots</b> sur un autre système pour recréer les utilisateurs exportés, en supposant qu'il utilise le format du fichier de traitement par lots sélectionné.
 export_to=Destination du fichier de traitement par lots
@@ -395,6 +409,7 @@ export_eopen=Impossible d'ouvrir le fichier de sortie : $!
 export_done=Exporté avec succès $1 utilisateurs dans le fichier $2 ($3 octets).
 export_pft=Format du fichier de traitement par lots
 export_who=Utilisateurs à exporter
+
 pft_0=Fichier <tt>mot_de_passe/tt> classique seulement
 pft_1=Fichier <tt>master.passwd</tt> BSD
 pft_2=Fichiers <tt>passwd</tt> et <tt>shadow</tt> standard
@@ -402,6 +417,7 @@ pft_3=Fichier <tt>passwd</tt> Unixware
 pft_4=Fichiers <tt>passwd</tt> et <tt>security</tt> AIX
 pft_5=Fichiers OpenServer <tt>passwd</tt> et <tt>shadow</tt> courts OpenServer
 pft_6=Base de données NetInfo MacOS
+
 umass_title=Suppression d'utilisateurs
 umass_err=Impossible de supprimer les utilisateurs
 umass_sure=Êtes-vous sûr de vouloir supprimer le(s) $1 utilisateur(s) sélectionné(s) ? Leurs répertoires personnels contiennent $2 de fichiers.
@@ -411,6 +427,7 @@ umass_del1=Supprimer les utilisateurs
 umass_del2=Supprimer les utilisateurs et leur répertoire personnel
 umass_eroot=Vous n'êtes pas autorisé à supprimer des utilisateurs système (ceux qui ont un UID inférieur ou égal à 10)
 umass_doing=Suppression de l'utilisateur $1 en cours..
+
 gmass_title=Suppression de groupes
 gmass_err=Impossible de supprimer les groupes
 gmass_sure=Êtes-vous sûr de vouloir supprimer le(s) $1 groupe(s) sélectionné(s) ?
@@ -420,12 +437,14 @@ gmass_del=Supprimer les groupes
 gmass_eroot=Vous n'êtes pas autorisé à supprimer des groupes système (ceux qui ont un GID inférieur ou égal à 10).
 gmass_doing=Suppression du groupe $1 en cours...
 gmass_eprimary=Le groupe $1 ne peut pas être supprimé, car il est le groupe primaire de l'utilisateur $2.
+
 dmass_title=Désactiver les utilisateurs
 dmass_sure=Êtes-vous sur de vouloir désactiver les $1 utilisateurs sélectionnés? Ils pourront être réactivés ultérieurement sans modifier leurs mots de passe ni perte de données.
 dmass_dis=Désactiver les utilisateurs
 dmass_pass=Verrouillage temporaire du mot de passe ..
 dmass_doing=Désactivation en cours de l'utilisateur $1 ..
 dmass_already=.. déjà désactivé!
+
 emass_title=Activer les utilisateurs
 emass_pass=Déverrouillage du mot de passe ..
 emass_doing=Actiivation en cours de l'utilisateur $1 ..

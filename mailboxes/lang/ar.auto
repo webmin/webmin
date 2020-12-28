@@ -2,6 +2,7 @@ index_title=قراءة بريد المستخدم
 index_none=غير مسموح لك بقراءة البريد الإلكتروني لأي مستخدم على هذا النظام.
 index_header=علب بريد المستخدم
 index_empty=لا يوجد بريد
+index_return=قائمة المستخدم
 index_esystem=None of the supported mail servers (Exim, Qmail, Postfix and Sendmail) were detected on your system. You will need to adjust the <a href='$1'>module configuration</a> to set the mail server and possibly mail paths manually.
 index_esystem2=The mail server set in the <a href='$1'>module configuration</a> was not found on your system. You will need to adjust the configuration to use the correct server.
 index_esystem3=An error occurred contacting the mail system set in the <a href='$1'>module configuration</a> : $2.
@@ -19,6 +20,7 @@ index_eperl=The Perl module $1 needed for the selected SMTP authentication mode 
 index_file=قراءة البريد في ملف أو Maildir:
 index_nousers=لم يتم العثور على المستخدمين!
 index_nousersmail=لم يتم العثور على المستخدمين الذين لديهم بريد إلكتروني.
+
 mail_title=البريد الالكتروني للمستخدم
 mail_from=من عند
 mail_date=تاريخ
@@ -75,6 +77,7 @@ mail_fromfilter=إنشاء مرشح من قبل المرسل
 mail_tofilter=إنشاء مرشح من قبل المتلقي
 mail_subfilter=إنشاء مرشح حسب الموضوع
 mail_unknown=مجهول
+
 mail_sign=التوقيع مع المفتاح
 mail_nosign=&lt;لا توقع&gt;
 mail_crypt=تشفير ل
@@ -109,6 +112,7 @@ mail_selread=حدد القراءة.
 mail_selunread=اختر غير مقروء.
 mail_selspecial=اختر خاص.
 mail_specialsync=مزامنة خاصة
+
 view_title=قراءة البريد الإلكتروني
 view_desc=Message $1 in $2
 view_desc2=Message $1 for user $2
@@ -150,6 +154,7 @@ view_sub=البريد الالكتروني المرفق
 view_sub2=Attached email from $1
 view_egone=هذه الرسالة لم تعد موجودة
 view_eugone=هذا المستخدم غير موجود
+
 view_gnupg=التحقق من توقيع GnuPG
 view_gnupg_0=Signature by $1 is valid.
 view_gnupg_1=Signature by $1 is valid, but trust chain could not be established.
@@ -186,7 +191,9 @@ view_images=عرض الصور
 view_raw=عرض الرسالة الخام
 view_aall=احفظ جميع المرفقات كـ ZIP.
 view_aslideshow=عرض كل الصور
+
 compose_title=يؤلف البريد الإلكتروني
+
 reply_title=الرد على البريد الإلكتروني
 forward_title=إعادة توجيه البريد الإلكتروني
 enew_title=تحرير البريد الإلكتروني
@@ -216,9 +223,11 @@ reply_addattach=إضافة حقل مرفق.
 reply_addssattach=إضافة حقل مرفق جانب الخادم.
 reply_html0=تأليف النص
 reply_html1=يؤلف HTML
+
 reply_spell=تحقق من وجود أخطاء إملائية؟
 reply_draft=حفظ كمسودة
 reply_save=حفظ وتحرير
+
 send_err=فشل في إرسال البريد
 send_eto=مفقود لمعالجة
 send_efrom=مفقود من العنوان
@@ -235,6 +244,7 @@ send_eperms2=You are not allowed to send file $1
 send_epath=Sendmail executable $1 does not exist.
 send_efile=Failed to read attachment $1 : $2
 send_done=.. فعله.
+
 send_epass=لا يمكنك توقيع رسالة لأن عبارة المرور الخاصة بك لم يتم إعدادها بعد في وحدة GnuPG.
 send_esign=Failed to sign message : $1
 send_ekey=Couldn't find key for email address $1
@@ -246,6 +256,7 @@ send_espell=تم العثور على الأخطاء الإملائية التا�
 send_draft=Mail to $1 saved in drafts folder.
 send_drafting=Saving mail to $1 in drafts folder ..
 send_eattachsize=The mail attachment exceeded the maximum allowed size of $1 bytes
+
 delete_title=حذف البريد
 delete_rusure=Are you sure you want to delete the $1 selected messages from $2? This may take some time for a large mail file. Until the deletion has finished, no other action should be performed.
 delete_rusure2=Are you sure you want to delete this message from $1? This may take some time for a large mail file. Until the deletion has finished, no other action should be performed.
@@ -268,6 +279,7 @@ delete_nobutton=لا زر النقر
 delete_ereport=Failed to report as spam : $1
 delete_errc=فشل في نسخ البريد
 delete_errm=فشل في نقل البريد
+
 confirm_title=تأكيد الحذف
 confirm_warn=Are you sure you want to delete the $1 selected messages from this folder?
 confirm_warnf=Are you sure you want to delete the $1 selected messages from the folder <b>$2</b>?
@@ -277,6 +289,7 @@ confirm_warn4=حتى يتم الانتهاء من الحذف ، يجب عدم ت
 confirm_ok=احذف الان
 confirm_warnall=هل تريد بالتأكيد حذف جميع الرسائل في هذا المجلد؟
 confirm_warnallf=Are you sure you want to delete all of the messages in the folder <b>$1</b>?
+
 search_title=نتائج البحث
 search_ecannot=غير مسموح لك بالبحث في البريد الإلكتروني لهذا المستخدم
 search_ematch=يجب عليك إدخال نص لمطابقته.
@@ -305,16 +318,19 @@ search_nolatest=كل ما في المجلد
 search_latestnum=الأحدث فقط
 search_elatest=عدد الرسائل المفقودة أو غير الصحيحة للبحث
 search_withstatus=, with status $1
+
 folder_inbox=صندوق الوارد
 folder_sent=البريد المرسل
 folder_drafts=المسودات
 folder_trash=قمامة، يدمر، يهدم
+
 detach_err=فشل في فصل الملف
 detach_edir=لا يوجد ملف أو دليل للحفظ في الإدخال
 detach_eopen=Failed to open $1 : $2
 detach_ewrite=Failed to write to $1 : $2
 detach_title=فصل الملف
 detach_ok=Wrote attachment to server-side file $1 ($2).
+
 sform_title=البحث المتقدم
 sform_header=خيارات بحث البريد الإلكتروني المتقدمة
 sform_andmode=وضع المعايير
@@ -339,6 +355,7 @@ sform_headers=أي رأس
 sform_allmsg=الرسالة كاملة
 sform_size=حجم الرسالة
 sform_return=شكل بحث متقدم
+
 find_enone=لم يتم العثور على المستخدمين الذين يطابقون بحثك
 find_title=نتائج البحث
 find_results=Users matching search for $1 ..
@@ -351,6 +368,7 @@ find_incount=رسائل البريد الإلكتروني
 find_sentcount=أرسلت
 find_fcount=المجلدات
 find_in=$1 in $2
+
 acl_none=لا شيء
 acl_same=المستخدم بنفس الاسم
 acl_all=الكل
@@ -376,12 +394,15 @@ acl_usersu=مع UID في النطاق
 acl_sec=تشمل المجموعات الثانوية؟
 acl_dir=يمكن قراءة ملفات البريد في الدليل
 acl_dirauto=اتخاذ قرار تلقائيًا (في أي مكان إذا كان جميع المستخدمين مرئيين ، في أي مكان خلاف ذلك)
+
 log_delmail=Deleted $1 messages from $2
 log_movemail=Moved $1 messages from $2 to $3
 log_copymail=Copied $1 messages from $2 to $3
 log_send=Sent mail to $1
 log_read=Read mail for $1
+
 emodified=This folder has been modified since it was last viewed! Return to the <a href='$1'>mail list</a> and try again.
+
 razor_title=الإبلاغ كبريد مزعج
 razor_title2=الإبلاغ عن لحم الخنزير
 razor_report=الإبلاغ عن هذه الرسالة إلى Razor وغيرها من قواعد SpamAssassin لحظر البريد العشوائي ..
@@ -391,14 +412,18 @@ razor_done=.. فعله
 razor_err=.. فشل! انظر رسالة الخطأ أعلاه لمعرفة السبب.
 razor_moved=.. done, and moved to folder $1.
 razor_deleted=.. القيام به ، وحذف الرسالة أيضا.
+
 ham_title=الإبلاغ عن لحم الخنزير
 ham_report=الإبلاغ عن هذه الرسالة كغير مرغوب فيها إلى Razor وقواعد بيانات SpamAssassin الأخرى ..
+
 black_title=إنكار المرسل
 black_done=Added the email address $1 to SpamAssassin's denied addresses list.
 black_already=The email address $1 is already on SpamAssassin's denied addresses list.
+
 white_title=السماح للمرسل
 white_done=Added the email address $1 to SpamAssassin's allowed addresses list.
 white_already=The email address $1 is already on SpamAssassin's allowed addresses list.
+
 ldap_emod=Missing Perl module $1 needed for connecting to LDAP
 ldap_econn=Failed to connect to LDAP server $1 port $2
 ldap_elogin=Failed to bind to LDAP server $1 as $2 : $3
@@ -406,12 +431,15 @@ ldap_ehost=لم يتم تعيين خادم LDAP في تكوين الوحدة ا�
 ldap_eport=لم يتم تعيين منفذ خادم LDAP صالح في تكوين الوحدة النمطية
 ldap_euser=لم يتم تعيين تسجيل دخول LDAP في تكوين الوحدة النمطية
 ldap_ebase=لم يتم تعيين DN LD الأساسي في تكوين الوحدة النمطية
+
 delall_title=حذف كل البريد
 delall_rusure=Are you sure you want to delete all email from $1? $2 messages totaling $3 will be deleted forever.
 delall_ok=احذف الان
+
 slide_title=الصور المرفقة
 slide_prev=السابق
 slide_next=التالى
+
 left_mail=بريد
 left_search=بحث:
 left_folders=إدارة المجلدات

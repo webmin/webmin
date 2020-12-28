@@ -12,6 +12,7 @@ index_ereq_resource_cmd=시스템에서 다른 노드 ($1)의 리소스를 요�
 index_version=하트 비트 버전 $1 
 index_noversion=경고-시스템에 설치된 하트 비트 버전을 자동으로 감지 할 수 없습니다. <a href='$1'>모듈 구성</a> 페이지에서 설정해야합니다.
 index_status=하트 비트 상태
+
 conf_title=구성 옵션
 conf_header=하트 비트 구성 옵션
 conf_serials=직렬 하트 비트 포트
@@ -54,6 +55,7 @@ conf_auto_on=$ {conf_enabled}
 conf_auto_off=$ {conf_disabled}
 conf_auto_legacy=레거시 모드
 conf_auto_=$ {default}
+
 res_title=클러스터 리소스
 res_node=기본 노드
 res_ips=IP 주소
@@ -67,6 +69,7 @@ res_getserv=자원 확보
 res_hbdown=하트 비트 다운
 res_up=쪽으로
 res_down=내려가는
+
 node_create=클러스터 리소스 추가
 node_edit=클러스터 리소스 편집
 node_header=클러스터 자원 세부 사항
@@ -83,6 +86,7 @@ node_enone=기본 노드가 없거나 유효하지 않습니다
 node_eip='$1'은 (는) 유효한 IP 주소가 아닙니다
 node_ecidr='$1'은 (는) 유효한 CIDR이 아닙니다.
 node_ebroad='$1'은 (는) 유효한 브로드 캐스트 주소가 아닙니다.
+
 auth_title=인증 키
 auth_header=클러스터 노드 인증
 auth_mode=인증 모드
@@ -92,6 +96,8 @@ auth_md5=비밀번호가있는 MD5
 auth_err=인증 키를 저장하지 못했습니다
 auth_emd5=MD5 비밀번호가 없거나 잘못되었습니다
 auth_esha1=SHA1 비밀번호가 없거나 잘못되었습니다
+
 start_err=하트 비트를 시작하지 못했습니다
+
 apply_err=변경 사항을 적용하지 못했습니다
 apply_epid=프로세스가 더 이상 실행되지 않습니다

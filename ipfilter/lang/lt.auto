@@ -43,8 +43,10 @@ index_natnone=Kol kas nėra apibrėžtos tinklo adresų vertimo taisyklės.
 index_nataction=NAT režimas
 index_natfrom=Paketai suderinti
 index_natto=Vertimas
+
 dir_in=Įeinantis
 dir_out=Išeinantis
+
 action_pass=<font color=#00aa00>Perduoti</font>
 action_block=<font color=#ff0000>Blokuoti</font>
 action_skip=Praleisti
@@ -57,6 +59,7 @@ action_map=Žemėlapių sudarymas
 action_rdr=Peradresuoti
 action_bimap=Dvikryptis žemėlapių sudarymas
 action_map-block=Blokuoti atvaizdą
+
 laction_pass=<font color=#00aa00>Perduokite paketą</font>
 laction_block=<font color=#ff0000>Blokuoti paketą su ICMP kodu</font>
 laction_log=Žurnalo paketas lygiu
@@ -65,6 +68,7 @@ laction_skip=Praleisti kitas taisykles
 laction_auth=Vartotojo vietos patvirtinimas
 laction_preauth=Patikrinkite ankstesnį leidimą
 laction_call=Skambučio branduolio funkcija
+
 edit_title1=Sukurti taisyklę
 edit_title2=Redaguoti taisyklę
 edit_header1=Taisyklių veiksmas
@@ -130,6 +134,7 @@ edit_icmp=ICMP tipas
 edit_icmpany=&lt;Bet koks tipas&gt;
 edit_icmpcode=ir kodas
 edit_codeany=&lt;Bet koks kodas&gt;
+
 save_err=Nepavyko išsaugoti taisyklės
 save_ehostfrom=Trūksta arba netinkamas šaltinio pagrindinio kompiuterio vardas
 save_ehostto=Trūksta arba netinkamas paskirties kompiuterio vardas
@@ -158,11 +163,13 @@ save_eto=Trūksta arba netinkama sąsaja, kurią reikia išsiųsti
 save_etoip=Netinkamas IP adresas, kurį reikia išsiųsti
 save_ereplyto=Trūksta arba netinkama sąsaja, į kurią reikia atsakyti
 save_ereplytoip=Netinkamas IP adresas, į kurį reikia atsakyti
+
 apply_err=Nepavyko pritaikyti konfigūracijos
 apply_remote=Klaida nuo $1 : $2 
 unapply_err=Nepavyko atkurti konfigūracijos
 unapply_ein=Nepavyko gauti įvesties taisyklių
 unapply_eout=Nepavyko gauti išvesties taisyklių
+
 desc_if=Jei $1 
 desc_and=ir
 desc_always=Visada
@@ -196,6 +203,7 @@ desc_rdr=IP adresai $1 prievadas $2
 desc_dport1=prievadas yra $1 
 desc_dport2=prievadas yra nuo $1 iki $2 
 desc_nattoiface=sąsajos adresas
+
 log_create_rule=Sukurta $1 taisyklė
 log_delete_rule=Ištrinta $1 taisyklė
 log_modify_rule=Modifikuota $1 taisyklė
@@ -224,6 +232,7 @@ log_add_host=Pridėtas klasterio serveris $1
 log_add_group=Pridėta klasterio serverių iš grupės $1 
 log_delete_host=Pašalintas klasterio serveris $1 
 log_delete_group=Pašalinti $1 grupių serveriai
+
 cluster_title=Klasterio ugniasienės serveriai
 cluster_none=Prie ugniasienės klasterio dar nebuvo pridėta jokių serverių.
 cluster_host=Pagrindinio kompiuterio vardas
@@ -234,6 +243,7 @@ cluster_gadd=Įtraukite serverius į grupę
 cluster_need=„Webmin“ serverių rodyklės modulyje turite pridėti serverius su prisijungimo vardu ir slaptažodžiu, kad juos būtų galima valdyti čia.
 cluster_return=klasterių serveriai
 cluster_delete=Pašalinti pasirinktą
+
 add_title=Pridėti serverius
 add_msg=Pridedama $1 ..
 add_gmsg=Serverių pridėjimas grupėje $1 ..
@@ -242,6 +252,7 @@ add_gerr=Nepavyko pridėti grupės
 add_echeck=Serveris $1 neturi IPFilter užkardos modulio
 add_emissing=$1 serveriui trūksta užkardos komandos $2 
 add_ok=Pridėta $1 su $2 aktyviomis ugniasienės taisyklėmis.
+
 nat_title1=Sukurti NAT taisyklę
 nat_title2=Redaguoti NAT taisyklę
 nat_action=NAT režimas
@@ -300,4 +311,5 @@ nat_edport2=Trūksta arba netinkamo pirminio prievado pabaigos
 net_erdrip=„$1“ nėra teisingas paskirties IP adresas
 nat_erdrips=Neįvestas paskirties IP
 nat_erdrport=Trūksta arba netinkamas paskirties prievadas
+
 boot_esmf=SMF paslauga $1 neegzistuoja arba nėra žinomos būklės

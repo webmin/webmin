@@ -2,6 +2,7 @@ check_econfigset=Nincs beállítva iSCSI TGTd konfigurációs fájl!
 check_econfig=A (z) $1 iSCSI TGTd konfigurációs fájl nem található a rendszerén.
 check_etgtadm=A (z) $1 iSCSI TGTd adminisztrációs parancs nem található a rendszeren.
 check_einit=$1 indító művelet nem létezik
+
 index_title=iSCSI TGTd
 index_clink=Lehet, hogy nincs telepítve, vagy a <a href='$1'>modul konfigurációja</a> helytelen.
 index_stop=Állítsa le az iSCSI TGTd-t
@@ -24,8 +25,10 @@ index_users=Engedélyezett felhasználók
 index_size=Teljes méret
 index_noluns=Egyik sem
 index_nousers=Bármi
+
 dtargets_err=Nem sikerült a célok törlése
 dtargets_enone=Egy sincs kiválasztva!
+
 target_title1=Hozzon létre iSCSI célt
 target_title2=Az iSCSI Target szerkesztése
 target_header=iSCSI megosztott eszközbeállítások
@@ -74,11 +77,13 @@ target_direct=Közvetlen hozzáférés az eszközhöz
 target_cache=Cache ír az eszközre?
 target_eaddr=Érvénytelen megengedett IP-cím
 target_eaname=Érvénytelen engedélyezett kezdeményező neve
+
 start_err=Az iSCSI TGTd indítása nem sikerült
 stop_err=Az iSCSI TGTd megállítása nem sikerült
 restart_err=Az iSCSI TGTd újraindítása nem sikerült
 atboot_err=Az indításkor nem sikerült engedélyezni
 atboot_einit=A (z) $1 Init szkript nem létezik
+
 log_create_target=Létrehozta a (z) $1 célt
 log_delete_target=Törölve a (z) $1 célt
 log_modify_target=Módosított $1 cél
@@ -89,6 +94,7 @@ log_restart=Indította újra az iSCSI szervert
 log_atboot=Engedélyezve van az iSCSI szerver indításkor
 log_delboot=Letiltott iSCSI szerver a rendszerindításkor
 log_manual=Kézzel szerkesztett konfigurációs fájl
+
 manual_title=A konfigurációs fájl szerkesztése
 manual_file=Válassza ki a szerkeszteni kívánt fájlt:
 manual_ok=Nyisd ki

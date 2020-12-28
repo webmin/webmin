@@ -21,6 +21,7 @@ index_thost=nome de anfitrião
 index_tdesc=Descrição
 index_tcount=Pacotes
 index_ttype=Tipo de SO
+
 install_err=Falha ao instalar o pacote
 install_elocal=Nenhum arquivo local fornecido
 install_elocal2='$1' não existe
@@ -37,6 +38,7 @@ install_ok=Instalar
 install_erus=Este servidor usa um sistema de atualização diferente para o servidor mestre ($1 versus $2)
 install_eupdate=Ocorreu um erro ao instalar as atualizações especificadas
 install_ealready=A versão $1 já está instalada
+
 add_title=Adicionar servidores
 add_msg=Adicionando $1 ..
 add_gmsg=Adicionando servidores no grupo $1 ..
@@ -45,6 +47,7 @@ add_gerr=Falha ao adicionar grupo
 add_echeck=O servidor $1 não possui o módulo de pacotes de software
 add_esystem=O servidor $1 não está usando o mesmo sistema de pacotes que esta máquina
 add_ok=Adicionado $1 com $2 pacotes.
+
 search_title=Pesquisa de Pacotes
 search_nomatch=Nenhum pacote corresponde a $1 
 search_none=Nenhum
@@ -56,6 +59,7 @@ search_return=Procurar Resultados
 search_delete=Desinstalar pacotes selecionados de:
 search_selall=Selecionar tudo
 search_invert=Seleção invertida
+
 host_title=Servidor gerenciado
 host_header=Detalhes do servidor gerenciado por software
 host_name=Nome de anfitrião
@@ -70,6 +74,7 @@ host_count=Pacotes instalados
 host_os=SO do Webmin
 host_return=detalhes do servidor
 host_system=Sistema de pacotes
+
 edit_title=Editar pacote
 edit_details=Detalhes do pacote de $1 
 edit_desc=Descrição
@@ -88,6 +93,7 @@ edit_all=&lt;todos os hosts&gt;
 edit_donthave=&lt;hosts que não o possuem&gt;
 edit_have=&lt;hosts que o possuem&gt;
 edit_group=Membros de $1 
+
 list_title=Arquivos de pacote
 list_files=Arquivos para o pacote $1 em $2 
 list_path=Caminho
@@ -97,6 +103,7 @@ list_type=Tipo
 list_size=Tamanho
 list_status=Status
 list_ok=Está bem
+
 refresh_title=Atualizar listas de pacotes
 refresh_header=Solicitando novamente listas de pacotes de todos os servidores.
 refresh_header4=Solicitando novamente listas de pacotes de membros de $2 ..
@@ -108,6 +115,7 @@ refresh_4=$1 atualizado (sem alterações)
 refresh_done=.. feito
 refresh_del=$1 removido da lista de servidores
 refresh_failed=Falha ao atualizar $1 : $2 
+
 delete_err=Falha ao excluir o pacote $1 
 delete_epack=O pacote $1 não existe
 delete_title=Excluir pacote
@@ -120,6 +128,7 @@ delete_error=Falha ao excluir de $1 : $2
 delete_success=Excluído de $1.
 delete_done=.. feito
 delete_header=Excluindo o pacote $1 ..
+
 do_title=Instalar pacote
 do_header=Instalando $1 em todos os hosts.
 do_header3=Instalando $1 em hosts que ainda não o possuem ..
@@ -140,6 +149,7 @@ do_arch=Arquitetura
 do_inst=Instalado
 do_none=Nenhum
 do_edeleted=O arquivo de instalação foi excluído - retorne ao índice do módulo e tente novamente.
+
 compare_title=Comparar Pacotes
 compare_desc=Este formulário pode ser usado para comparar os pacotes instalados em dois ou mais servidores e encontrar quaisquer discrepâncias entre versões ou pacotes disponíveis.
 compare_hosts=Servidores para comparar
@@ -154,6 +164,7 @@ compare_showall=Pacotes para mostrar
 compare_showall1=Todos
 compare_showall0=Apenas incompatibilidades
 compare_got=Está bem
+
 deletes_err=Falha ao excluir pacotes
 deletes_enone=Nenhum pacote selecionado
 deletes_title=Excluir pacotes

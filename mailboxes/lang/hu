@@ -9,6 +9,7 @@ index_system1=Levelező szerver: Sendmail
 index_system0=Levelező szerver: Postfix
 index_contains=tartalom
 index_file=Levél olvasása fájlból:
+
 mail_title=Levelek
 mail_from=Feladó
 mail_date=Dátum
@@ -45,6 +46,7 @@ mail_fchange=Módosít
 mail_indexlink=Vissza a postafiókba
 mail_deleteall=Összes törlése
 mail_unknown=Ismeretlen
+
 mail_folders=Mappák kezelése
 mail_loginheader=POP3 szerver belépés
 mail_loginheader2=IMAP szerver belépés
@@ -63,6 +65,7 @@ mail_return2=Levelek
 mail_selread=Olvasott kijelölése
 mail_selunread=Olvasatlan kijelölése
 mail_selspecial=Speciális kijelölése
+
 view_title=Olvasás
 view_desc=$1 üzenet a $2 postafiókban
 view_desc2=$1 üzenet $2 felhasználónak
@@ -94,6 +97,7 @@ view_markas1=Olvasott
 view_markas2=Speciális
 view_return=Eredeti levél
 view_sub=Csatolmány
+
 view_folder=Vissza a postafiókba
 view_detach=Fájl leválasztása:
 view_dall=&lt;Minden fájl&gt;
@@ -107,7 +111,9 @@ view_ashtml=HTML nézet
 view_images=Képek megjelenítése
 view_raw=Nyers üzenet megjelenítése
 view_aslideshow=Minden kép mentése.
+
 compose_title=Levél (email) létrehozása
+
 reply_title=Válasz levél
 forward_title=Továbbított levél
 enew_title=Levél módosítása
@@ -126,19 +132,25 @@ reply_tabsigning=Aláírás
 reply_taboptions=Beállítások
 reply_addattach=További mezők hozzáadása...
 reply_html1=HTML létrehozása
+
 reply_draft=Mentés piszkozatként
 reply_save=Mentés és módosítás
+
 delete_title=Levél törlése
 delete_ok=Törlés
+
 confirm_title=Törlés megerősítése
 confirm_ok=Törlés
+
 search_all=Összes mappában
 search_attach=Szeretne csatolmányokat?
 search_allstatus=Minden
+
 folder_inbox=Bejövő levelek
 folder_sent=Elküldött levelek
 folder_drafts=Piszkozatok
 folder_trash=Kuka
+
 find_user=Felhasználó
 find_real=Teljes név
 find_group=Csoport
@@ -147,12 +159,17 @@ find_size=Levél mérete
 find_incount=Levelek
 find_sentcount=Küld
 find_fcount=Mappák
+
 acl_none=Nincs
 acl_all=Összes
 acl_unlimited=Korlátlan
+
 log_read=Levél olvasása: $1
+
 razor_done=.. kész
+
 delall_title=Összes levél törlése
 delall_ok=Törlés
+
 slide_prev=Előző
 slide_next=Következő

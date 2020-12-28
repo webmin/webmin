@@ -17,6 +17,7 @@ index_restartmsg=לחץ על כפתור זה כדי להחיל את התצורה
 index_comments=אזהרה - קובץ ה- Jabber config $1 שלך מכיל הערות, שיוסרו אם יבוצעו שינויים בתצורה באמצעות מודול זה.
 index_return=תפריט ג'אבר
 index_version=גרסת ג'אבר $1 
+
 general_title=אפשרויות כלליות
 general_header=אפשרויות שרת ג'אבר גלובליות
 general_host=שם המארח של השרת שלך
@@ -32,6 +33,7 @@ general_eelogfmt=פורמט יומן שגיאות חסר
 general_erlog=קובץ יומן תנועה חסר או לא חוקי
 general_erlogfmt=פורמט חסר ביומן התעבורה חסר
 general_epidfile=קובץ זיהוי תהליכים חסר או לא חוקי
+
 messages_title=הודעות
 messages_header=הודעת שרת ג'אבר ללקוחות
 messages_wsubject=נושא הודעת ברוך הבא
@@ -44,6 +46,7 @@ messages_vcard2jud=לשלוח vCard לספריית המשתמשים של ג'אב
 messages_err=שמירת ההודעות נכשלה
 messages_evcard=XML לא חוקי של vCard : $1 
 messages_etag=שרת vCard XML אינו מתחיל ב- &lt;vCard&gt;
+
 modules_title=מודולי ג'אבר
 modules_desc=המודולים המפורטים להלן משמשים לעיבוד הודעות שהתקבלו על ידי מנהל ההפעלה של ג'אבר. עליך לשנות רשימה זו רק אם אתה יודע מה אתה עושה.
 modules_header=מודולים של מנהל שרת ג'אבר
@@ -52,6 +55,7 @@ modules_so=ספריה משותפת
 modules_err=שמירת מודולי Jabber נכשלה
 modules_emod='$1' אינו שם מודול תקף
 modules_eso=הספרייה המשותפת '$1' אינה קיימת
+
 karma_title=בקרת תנועה בקרמה
 karma_header=אפשרויות בקרת תעבורה
 karma_rate=טיפול חיבור מוגזם
@@ -80,6 +84,7 @@ karma_epenalty=תקופות עונש חסרות או לא תקפות
 karma_erestore=תקופות שחזור חסרות או לא חוקיות
 karma_epoints=מספר חיבורים חסר או לא חוקי
 karma_etime=זמן חסר או לא חוקי לחסימה עבור
+
 ips_title=בקרת גישה IP
 ips_header=בקרת גישת IP של שרת ג'אבר
 ips_allow=כתובות IP של לקוחות מורשים
@@ -89,10 +94,12 @@ ips_none=אף אחד
 ips_sel=כתובות/רשתות רשומות ..
 ips_err=שמירת בקרת הגישה ל- IP נכשלה
 ips_eaddr='$1' אינו כתובת IP חוקית או כתובת IP/מסיכת רשת
+
 file_title=ערוך קובץ תצורה
 file_desc=השתמש בטופס שלהלן כדי לערוך ישירות את קובץ ה- Jabber. יש לעשות זאת רק אם אתה מבין את תבנית תצורת XML.
 file_header=ערוך את קובץ התצורה של ג'אבר
 file_err=שמירת קובץ התצורה נכשלה
+
 admin_title=משתמשים אדמיניסטרטיביים
 admin_header=משתמשי ניהול שרתים
 admin_read=קרא מנהלי גישה לקריאה
@@ -100,11 +107,13 @@ admin_write=כתוב מנהלי גישה
 admin_reply=הגש באופן אוטומטי להודעות מנהל?
 admin_rsubject=נושא באופן אוטומטי
 admin_rbody=שלח הודעה אוטומטית
+
 filter_title=מסנני משתמש
 filter_header=הרשאות סינון משתמשים
 filter_max=כללי סינון מרביים
 filter_conds=תנאי סינון מורשים
 filter_acts=פעולות סינון מותרות
+
 restart_err=החלת השינויים נכשלה
 stop_err=לא הצליח לעצור את ג'אבר
 stop_epid=לא מצא את תהליך ג'אבר

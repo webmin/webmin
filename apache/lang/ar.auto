@@ -56,6 +56,7 @@ index_fmode1=Virtual servers file $1
 index_fmode1d=New file under virtual servers directory $1
 index_fmode2=الملف المحدد ..
 index_delete=حذف الخوادم المحددة
+
 cvirt_ecannot=غير مسموح لك بإنشاء خادم افتراضي
 cvirt_err=فشل في تكوين خادم افتراضي
 cvirt_eaddr1=لم يتم إدخال عنوان
@@ -69,6 +70,7 @@ cvirt_eroot4=لم يتم تعريف المستخدم في تكوين Apache
 cvirt_etaken=يوجد خادم افتراضي بنفس الاسم والمنفذ
 cvirt_efile=Failed to write to $1 : $2
 cvirt_emissing=The new virtual server was added to $1, but this file is not used by Apache. Check the <a href='$2'>module configuration</a> and make sure the 'File or directory to add virtual servers to' is correct.
+
 etype=غير مسموح لك بتحرير خيارات من هذا النوع
 efailed=Failed to save $1
 apache_apply=تطبيق التغييرات
@@ -79,6 +81,7 @@ default_serv=الخادم الافتراضي
 bytes=بايت
 eafter=Configuration verification failed : $1 Changes have not been saved.
 enewline=حرف غير صالح في القيمة
+
 global_ecannot=غير مسموح لك بتحرير الخيارات العامة
 global_mime=قائمة أنواع MIME العالمية
 global_mimedesc=انقر فوق نوع MIME من القائمة أدناه لتعديله ، أو استخدم الرابط الموجود في أسفل الصفحة لإضافة نوع جديد إلى القائمة.
@@ -86,6 +89,7 @@ global_type=اكتب
 global_ext=ملحقات
 global_add=إضافة نوع MIME جديد.
 global_return=أنواع MIME
+
 mime_ecannot=غير مسموح لك بتحرير أنواع mime
 mime_edit=تحرير نوع MIME
 mime_add=إضافة نوع MIME
@@ -94,6 +98,7 @@ mime_type=نوع التمثيل الصامت
 mime_ext=ملحقات
 mime_err=فشل في حفظ نوع MIME
 mime_etype='$1' is not a valid MIME type
+
 virt_ecannot=لا يمكنك تحرير هذا الخادم الظاهري
 virt_eprotocol=يجب عليك تحديد إصدار بروتوكول SSL/TLS واحد صالح على الأقل
 virt_title=خيارات الخادم الافتراضية
@@ -120,6 +125,7 @@ virt_path=مسار
 virt_return=مؤشر الخادم
 virt_euser=غير مسموح لك بتغيير المستخدم أو المجموعة لهذا الخادم الظاهري.
 virt_header2=$1 for $2
+
 vserv_title=تكوين الخادم الظاهري
 vserv_virtualmin=This Apache virtual host belongs to the Virtualmin server <tt>$1</tt>, so the address, port, base directory and hostname cannot be changed here.
 vserv_ecannot=لا يمكنك تعديل عنوان هذا الخادم الظاهري
@@ -139,10 +145,12 @@ vserv_eport='$1' is not a valid port
 vserv_eroot='$1' is not a valid document root
 vserv_ename='$1' is not a valid server name
 vserv_eaddrs=لم يتم إدخال عناوين الخادم الافتراضية
+
 show_title=توجيهات
 show_edit=تحرير توجيه Apache:
 show_these=تحرير التوجيهات يدويا
 show_ok=تعديل
+
 manual_configs=تحرير ملفات التكوين
 manual_title=تحرير التوجيهات
 manual_header=Use the text box below to manually edit the Apache directives in $1 that apply to this virtual server, directory or files.
@@ -152,6 +160,7 @@ manual_efile=ملف التكوين Apache غير صالح
 manual_etest=Configuration file error detected : $1
 manual_editfile=تحرير ملف التكوين:
 manual_switch=تعديل
+
 dir_title=لكل دليل الخيارات
 dir_proxyall=جميع طلبات الوكيل
 dir_header=For $1 on $2
@@ -168,6 +177,7 @@ dir_re=تطابق regexp
 dir_path=مسار
 dir_return=فهرس الدليل
 dir_header2=$1 for $2
+
 type_0=العمليات والحدود
 type_1=الشبكات والعناوين
 type_2=وحدات اباتشي
@@ -189,6 +199,7 @@ type_17=المضيفين الظاهري التلقائي
 type_18=مرشحات
 type_19=اللغات
 type_20=خرائط الصور
+
 htaccess_title=لكل دليل خيارات الملفات
 htaccess_ecannot=لا يمكنك تحرير ملفات htaccess
 htaccess_file=ملفات الخيارات الحالية
@@ -204,6 +215,7 @@ htaccess_edelete=غير مسموح لك بحذف ملف الخيارات هذا
 htaccess_eempty=لم يتم إدخال دليل ملف الخيارات
 htaccess_eabsolute=يجب أن يكون دليل ملف الخيارات مسارًا مطلقًا
 htaccess_err=فشل في إنشاء ملف خيارات
+
 htindex_ecannot=غير مسموح لك بتحرير ملف الخيارات هذا
 htindex_title=لكل دليل خيارات الملف
 htindex_delete=حذف ملف
@@ -219,12 +231,14 @@ htindex_path=مسار
 htindex_header=For $1
 htindex_header2=$1 for options file $2
 htindex_return=مؤشر ملف الخيارات
+
 htfile_title=لكل ملف الخيارات
 htfile_header=For $1 in $2
 htfile_show=عرض التوجيهات
 htfile_edit=تحرير التوجيهات
 htfile_apply=تنطبق الخيارات على ..
 htfile_header2=$1 for $2
+
 reconfig_title=إعادة تكوين الوحدات النمطية المعروفة
 reconfig_ecannot=غير مسموح لك بإعادة تكوين apache
 reconfig_ever=Failed to get the version of Apache server executable $1. Check your <a href='$2'>module configuration</a> to make sure this is the correct path.
@@ -232,11 +246,13 @@ reconfig_desc1=تم تغيير تكوين Apache الخاص بك ، أو لم ي
 reconfig_desc2=فيما يلي قائمة بجميع وحدات Apache المدعومة من Webmin ، مع تحديد الوحدات المثبتة حاليًا. إذا كنت تستخدم وحدات محملة بشكل حيوي ، فقد تحتاج إلى تحديد تلك التي تم تحميلها بشكل حيوي.
 reconfig_desc3=إذا لم تكن متأكدًا من الوحدات النمطية التي يدعمها Apache على نظامك ، فيمكنك فقط Configure as Webmin تكوين الوحدات المدعومة تلقائيًا.
 reconfig_ok=تهيئة
+
 defines_title=تحرير معلمات محددة
 defines_ecannot=غير مسموح لك بتحرير تعريفات httpd
 defines_desc=When Apache is started, parameters can be passed to it with the <tt>-D</tt> command line option. Because these parameters can affect which directives are used in your config files, Webmin needs to know which ones are passed to Apache when it is started up. Enter the parameters used on your system into the text field on the right.
 defines_config=Note that the following defined parameters are already known : $1
 defines_list=المعلمات المحددة
+
 authu_ecannot='$1' is not an allowed users text file
 authu_title=قائمة المستخدم
 authu_header=In file $1
@@ -258,6 +274,7 @@ authu_sync=The options below allow you to configure Webmin to automatically add,
 authu_screate=أضف مستخدمًا عند إضافة مستخدم Unix
 authu_sdelete=احذف المستخدم عند حذف مستخدم Unix
 authu_smodify=قم بتغيير المستخدم عند تغيير مستخدم Unix
+
 authg_ecannot='$1' is not an allowed groups text file
 authg_title=قائمة المجموعة
 authg_header=In file $1
@@ -275,22 +292,26 @@ authg_err=فشل في حفظ المجموعة
 authg_euser=لم يتم إدخال اسم المجموعة
 authg_euser2=لا يمكن أن يحتوي اسم المجموعة على :
 authg_edup=A group called '$1' already exists
+
 stop_err=فشل في وقف اباتشي
 stop_ecannot=غير مسموح لك بإيقاف اباتشي
 stop_epid=Failed to open PID file $1
 stop_epid2=Invalid PID file $1
 stop_esig=Failed to send SIGTERM to process $1
+
 start_err=فشل في بدء اباتشي
 start_ecannot=غير مسموح لك ببدء اباتشي
 start_ecmd=$1 failed : $2
 start_eunknown=سبب غير معلوم
 start_eafter=لا يبدو أن أباتشي يعمل
+
 restart_err=فشل في تطبيق التغييرات
 restart_epid=Failed to open PID file $1
 restart_epid2=Invalid PID file $1
 restart_esig=Failed to send SIGHUP to process $1
 restart_eunknown=سبب غير معلوم
 restart_ecannot=غير مسموح لك بتطبيق التغييرات
+
 acl_virts=خوادم افتراضية يمكن لهذا المستخدم تحريرها
 acl_vall=جميع الخوادم
 acl_vsel=المحدد ..
@@ -313,6 +334,7 @@ acl_dirs=Apache directives available<br><font size=-1>(Subject to types limit ab
 acl_dirs0=الكل
 acl_dirs1=المدرجة فقط ..
 acl_dirs2=كل ما عدا المدرجة ..
+
 core_maxconc=الحد الأقصى للطلبات المتزامنة
 core_maxkeep=الحد الأقصى keepalives لكل اتصال
 core_maxreq=الحد الأقصى للطلبات لكل عملية خادم
@@ -498,10 +520,12 @@ core_infilter=تطبيق مرشحات الإدخال لجميع الملفات
 core_outfilter=تطبيق مرشحات الإخراج لجميع الملفات
 core_defchar=مجموعة الأحرف للمستندات
 core_edefchar=مجموعة أحرف مفقودة أو غير صالحة للمستندات
+
 mod_negotiation_cache=ذاكرة التخزين المؤقت وثائق التفاوض المحتوى؟
 mod_negotiation_pri=أولوية اللغة للعديد من وجهات النظر
 mod_negotiation_def=إفتراضي
 mod_negotiation_epri=أولويات اللغة المفقودة
+
 mod_cgi_logname=سجل CGI النصي
 mod_cgi_none=لا شيء
 mod_cgi_elogname=ملف سجل البرنامج النصي CGI غير صالح
@@ -511,6 +535,7 @@ mod_cgi_elogsize=يجب أن يكون حجم سجل CGI عددًا صحيحًا
 mod_cgi_post=الحد الأقصى لحجم بيانات تسجيل الدخول
 mod_cgi_epost=يجب أن يكون حجم بيانات المشاركة عددًا صحيحًا
 mod_cgi_eunder=سجل البرنامج النصي CGI ليس ضمن الدليل المسموح به
+
 mod_alias_from=من عند
 mod_alias_to=إلى
 mod_alias_status=الحالة
@@ -534,6 +559,7 @@ mod_alias_cgi2=دليل CGI الاسم المستعار
 mod_alias_rcgi=الأسماء المستعارة دليل CGI Regexp
 mod_alias_rcgi2=regexp CGI دليل الاسم المستعار
 mod_alias_estatus='$1' is not a valid status
+
 mod_proxy_proxy=بمثابة خادم وكيل؟
 mod_proxy_req=طلبات
 mod_proxy_forw=الي
@@ -604,11 +630,13 @@ mod_proxy_timeout=مهلة طلب الوكيل بالثواني
 mod_proxy_etimeout=يجب أن تكون مهلة طلب الوكيل عددًا من الثواني
 mod_proxy_via=تعيين عن طريق: الرؤوس
 mod_proxy_not=لا شيء
+
 mod_log_agent_default=إفتراضي
 mod_log_agent_file=ملف ..
 mod_log_agent_program=برنامج ..
 mod_log_agent_log=ملف سجل المتصفح
 mod_log_agent_efile=$1 is not a valid agent log filename
+
 mod_log_config_common=تنسيق السجل المشترك
 mod_log_config_named=تنسيقات السجل المسماة
 mod_log_config_nick=كنية
@@ -627,6 +655,7 @@ mod_log_config_enofilprog=اسم ملف السجل المفقود أو البر�
 mod_log_config_efilprog='$1' is not an allowed log filename or program
 mod_log_config_eifset=لا يمكن استخدام خيار "If set" مع تنسيق السجل الافتراضي
 mod_log_config_edir=Directory for log file '$1' does not exist
+
 mod_log_referer_default=إفتراضي
 mod_log_referer_file=ملف ..
 mod_log_referer_program=برنامج ..
@@ -634,7 +663,9 @@ mod_log_referer_log=ملف سجل الإحالة
 mod_log_referer_nolog=لا تقم بتسجيل الدخول من المراجع
 mod_log_referer_elog=$1 is not a valid referer log filename
 mod_log_referer_edir=سجل المرجع ليس ضمن الدليل المسموح به
+
 mod_status_msg=عرض معلومات الحالة الموسعة
+
 mod_mime_ext=ملحقات
 mod_mime_xtype=أنواع MIME إضافية
 mod_mime_mtype=نوع التمثيل الصامت
@@ -667,6 +698,7 @@ mod_mime_outfilter=مرشحات الإخراج
 mod_mime_infilter=مرشحات الإدخال
 mod_mime_filters=مرشحات لتطبيق
 mod_mime_efext=No extensions given for filter(s) $1
+
 mod_setenvif_header=رأس
 mod_setenvif_match=مباراة
 mod_setenvif_case=حالة مباراة
@@ -677,11 +709,13 @@ mod_setenvif_eheader=Invalid request header '$1'
 mod_setenvif_eregex=Invalid regular expression '$1'
 mod_setenvif_evar=Invalid variable name '$1'
 mod_setenvif_clear=واضح
+
 mod_userdir_default=إفتراضي
 mod_userdir_all=جميع المستخدمين يمكن الوصول إليها
 mod_userdir_except=جميع المستخدمين باستثناء
 mod_userdir_dir=دليل مستخدم WWW
 mod_userdir_edir=غير مسموح لك باستخدام دليل مستخدم WWW المحدد
+
 mod_imap_action=اتخاذ إجراء بشأن الاستخدام غير الصحيح لتصور الصور
 mod_imap_default=إفتراضي
 mod_imap_godefurl=انتقل إلى عنوان URL الافتراضي
@@ -701,8 +735,10 @@ mod_imap_refurl=إشارة URL
 mod_imap_url=URL. ..
 mod_imap_defbase=القاعدة الافتراضية لصور الصور
 mod_imap_eurl='$1' is not a valid URL
+
 mod_speling_autocorr=تصحيح عناوين URL التي بها أخطاء إملائية تلقائيًا؟
 mod_speling_default=إفتراضي
+
 mod_actions_mime=نوع المعالج / MIME
 mod_actions_cgiurl=CGI النصي URL
 mod_actions_mimecgi=معالج أو نوع MIME إجراءات CGI
@@ -712,10 +748,13 @@ mod_actions_httpcgi=إجراءات HTTP طريقة CGI
 mod_actions_emime='$1' is not a valid handler or MIME type
 mod_actions_ecgi='$1' is not a valid CGI script
 mod_actions_enometh=No method chosen for CGI script '$1'
+
 mod_include_incl=وتشمل عملية على الملفات مع تنفيذ بت؟
 mod_include_set=نعم وضبط تاريخ آخر تعديل
 mod_include_default=إفتراضي
+
 mod_dir_txt=دليل فهرس الملفات
+
 mod_autoindex_default=إفتراضي
 mod_autoindex_asc=تصاعدي
 mod_autoindex_descend=تنازلي
@@ -724,6 +763,7 @@ mod_autoindex_date=تاريخ
 mod_autoindex_size=بحجم
 mod_autoindex_desc=وصف
 mod_autoindex_sort=فرز مؤشر الدليل حسب
+
 browsermatch_regexp=متصفح ريجكس
 browsermatch_case=حالة مباراة؟
 browsermatch_var=ضبط المتغير
@@ -731,6 +771,7 @@ browsermatch_value=القيمة
 browsermatch_txt=مجموعة المتغيرات بناءً على نوع المتصفح
 browsermatch_evar=Invalid variable name '$1'
 browsermatch_clear=واضح
+
 autoindex_fname=اسم الملف
 autoindex_mime=نوع التمثيل الصامت
 autoindex_enc=التشفير
@@ -784,9 +825,11 @@ autoindex_sicon=عرض أيقونات الملف
 autoindex_srules=إظهار &lt;hr&gt; خطوط
 autoindex_track=تضمين ETags في الرأس
 autoindex_version=فرز حسب سلاسل الإصدار
+
 mod_mime_magic_file=MIME ملف الأرقام السحرية
 mod_mime_magic_none=لا شيء
 mod_mime_magic_efile=اسم سحري غير صالح لـ MIME
+
 mod_env_var=متغير
 mod_env_value=القيمة
 mod_env_pass=يمر من خلال
@@ -797,6 +840,7 @@ mod_env_passall=تمرير جميع متغيرات البيئة إلى CGIs
 mod_env_default=إفتراضي
 mod_env_evar='$1' is not a valid variable name
 mod_env_evalue='$1' is not a valid variable value
+
 mod_access_order=ترتيب التحقق من الوصول:
 mod_access_denyallow=رفض ثم السماح
 mod_access_allowdeny=السماح ثم رفض
@@ -819,6 +863,7 @@ mod_access_epip='$1' is not a valid partial IP address
 mod_access_emask='$1' is not a valid network/netmask pair
 mod_access_ecidr='$1' is not a valid network/CIDR pair
 mod_access_evar='$1' is not a valid variable name
+
 mod_auth_ufile=ملف نصي المستخدم
 mod_auth_uedit=تحرير المستخدمين
 mod_auth_gfile=ملف نصي المجموعة
@@ -829,6 +874,7 @@ mod_auth_eudir=الملف النصي للمستخدم ليس ضمن الدليل
 mod_auth_egdir=الملف النصي للمجموعة ليس ضمن الدليل المسموح به
 mod_auth_eufile=اسم ملف نصي للمستخدم غير صالح
 mod_auth_egfile=اسم ملف نص المجموعة غير صالح
+
 mod_auth_dbm_ufile=ملف DBM المستخدم
 mod_auth_dbm_gfile=مجموعة ملف DBM
 mod_auth_dbm_pass=تمرير الفشل إلى الوحدة التالية؟
@@ -839,6 +885,7 @@ mod_auth_dbm_egfile=اسم ملف DBM للمجموعة غير صالح
 mod_auth_dbm_type=DBM نوع قاعدة البيانات
 mod_auth_dbm_gtype=قاعدة بيانات مجموعة DBM
 mod_auth_dbm_default=تنسيق DBM الافتراضي
+
 mod_cern_meta_process=ملفات تعريف رأس العملية
 mod_cern_meta_dir=دليل فرعي لملف تعريف الرأس
 mod_cern_meta_default=إفتراضي
@@ -846,6 +893,7 @@ mod_cern_meta_edir=اسم دليل ملف تعريف غير صالح
 mod_cern_meta_suffix=لاحقة الملف لملف تعريف الرأس
 mod_cern_meta_default2=إفتراضي
 mod_cern_meta_esuffix=لاحقة ملف تعريف غير صالح
+
 mod_ssl_enable=تمكين SSL؟
 mod_ssl_proto=بروتوكولات SSL
 mod_ssl_cfile=شهادة / ملف مفتاح خاص
@@ -873,6 +921,7 @@ mod_ssl_passsc=Execute script $1
 mod_ssl_epassph=لم يتم إدخال كلمة مرور SSL
 mod_ssl_epasssc=برنامج نصي كلمة مرور SSL مفقود أو غير صالح
 mod_ssl_ecerton=عند تمكين SSL ، يجب تحديد ملف الشهادة
+
 mod_apachessl_notssl=رفض وصول SSL
 mod_apachessl_forcessl=فرض وصول SSL / notSSL؟
 mod_apachessl_capath=المسار إلى الدليل مع شهادات المراجع المصدقة في
@@ -905,6 +954,7 @@ mod_apachessl_nov2=تعطيل SSL الإصدار 2
 mod_apachessl_fake=يحاكي عمليات تسجيل دخول المصادقة الأساسية للمستخدم ، باستخدام اسم الشهادة
 mod_apachessl_cdnfile=يتم فحص الملف ضد العميل DN
 mod_apachessl_ecdnfile=يتم فحص ملف مفقود ضد DN العميل
+
 log_global=Changed global $1 options
 log_virtc=Created server $1
 log_virts=Reconfigured server $1
@@ -945,8 +995,10 @@ log_stop=توقف خادم الويب
 log_apply=التغييرات المطبقة
 log_manual=Manually edited configuration file $1
 log_virts_delete=Deleted $1 virtual servers
+
 search_title=البحث عن الخوادم
 search_notfound=لم يتم العثور على خوادم افتراضية مطابقة
+
 mod_php_value=قيم تكوين PHP
 mod_php_flag=أعلام التكوين PHP
 mod_php_admin_value=قيم تكوين مشرف PHP
@@ -955,6 +1007,7 @@ mod_php_name_header=ضبط
 mod_php_value_header=القيمة
 mod_php_ename='$1' is an invalid name
 mod_php_evalue='$1' is an invalid value for $2
+
 mod_vhost_alias_root=الجذر التلقائي الظاهري المضيف
 mod_vhost_alias_ip=استخدام عنوان IP بدلا من اسم المضيف؟
 mod_vhost_alias_none=لا شيء
@@ -962,12 +1015,14 @@ mod_vhost_alias_script=المضيف الظاهري التلقائي CGI بن
 mod_vhost_alias_eroot=جذر مضيف ظاهري أو غير صالح
 mod_vhost_alias_eroot2=دليل جذر المضيف الظاهري غير مسموح به
 mod_vhost_alias_escript=المضيف الظاهري مفقود أو غير صالح cgi-bin
+
 worker_minspare=الحد الأدنى من المواضيع الغيار
 worker_maxspare=المواضيع الغيار القصوى
 worker_eminspare=يجب أن يكون الحد الأدنى لخيوط الغيار عددًا صحيحًا
 worker_emaxspare=يجب أن يكون الحد الأقصى لخيوط الغيار عددًا صحيحًا
 worker_threads=المواضيع لكل عملية الطفل
 worker_ethreads=يجب أن يكون عدد مؤشرات الترابط لكل عملية تابعة عددًا صحيحًا
+
 perchild_sthreads=المواضيع الأولية لكل عملية تابعة
 perchild_esthreads=يجب أن يكون عدد مؤشرات الترابط لكل عملية تابعة عددًا صحيحًا
 perchild_numservers=عدد العمليات الفرعية
@@ -983,6 +1038,7 @@ perchild_gid=دائرة المخابرات العامة
 perchild_enum=يجب أن يكون رقم العملية عددًا صحيحًا غير صفري
 perchild_euid=يجب أن يكون UID عددًا صحيحًا
 perchild_egid=يجب أن يكون GID عددًا صحيحًا
+
 cache_enable=نشيط؟
 cache_type=متجر مخبأ
 cache_disk=أسطوانة
@@ -1003,12 +1059,14 @@ cache_eminos=يجب أن يكون الحد الأدنى لحجم الكائن إ
 cache_emaxos=يجب أن يكون الحد الأقصى لحجم الكائن إلى ذاكرة التخزين المؤقت عددًا من وحدات البايت
 cache_maxoc=الحد الأقصى للكائنات إلى ذاكرة التخزين المؤقت في الذاكرة
 cache_emaxoc=يجب أن يكون عدد الكائنات التي يجب تخزينها في الذاكرة المؤقتة عددًا صحيحًا
+
 suexec_su=قم بتشغيل برامج CGI كـ
 suexec_none=مستخدم من التكوين العالمي
 suexec_user=مستخدم يونيكس
 suexec_group=و المجموعة
 suexec_euser=مستخدم مفقود أو غير صالح لتشغيل برامج CGI كـ
 suexec_egroup=مجموعة مفقودة أو غير صالحة لتشغيل برامج CGI كـ
+
 filter_name=اسم
 filter_intype=نوع MIME الإدخال
 filter_outtype=نوع إخراج MIME
@@ -1018,11 +1076,13 @@ filter_in=تعريفات مرشح الإدخال
 filter_out=تعريفات مرشح الإخراج
 filter_ename=Invalid filter name '$1'
 filter_ecmd=Missing command for filter '$1'
+
 cdir_err=فشل في تكوين خيارات لكل دليل
 cdir_err2=فشل في حفظ خيارات الدليل
 cdir_epath=الطريق المفقود
 cdir_eproxy=لا يمكن إنشاء خيارات الوكيل مع تمكين خيار مطابقة إعادة الحساب
 cdir_ecannot=غير مسموح لك بإنشاء خيارات لكل دليل للمسار المحدد
+
 mod_band_enable=الحد من عرض النطاق الترددي تمكين؟
 mod_band_bw=الحد (بايت / ثانية)
 mod_band_client=للعملاء
@@ -1041,24 +1101,30 @@ mod_band_epulse=فاصل زمني مفقود أو غير صالح بين الح�
 mod_band_dir=الحد من عرض النطاق الترددي دليل ملفات البيانات
 mod_band_edir=دليل ملفات بيانات النطاق الترددي مفقود أو غير موجود
 mod_band_esubdir=Missing required subdirectory <tt>$1</tt> under bandwidth data files directory
+
 mod_dav_active=تم تمكين WebDAV؟
 mod_dav_inf=هل تسمح بعمق غير محدود لطلبات DAV PROPFIND؟
 mod_dav_timeout=الحد الأدنى لمهلة DAV بالثواني
 mod_dav_etimeout=مهلة DAV مفقودة أو غير صالحة
+
 delete_err=فشل في حذف الخوادم الافتراضية
 delete_enone=لا شيء محدد
 delete_ecannot=غير مسموح لك بحذف الخوادم
 delete_ecannot2=You are not allowed to edit the server $1
+
 syslog_desc=سجل خطأ اباتشي
+
 mod_auth_basic_pass=تمرير فشل تسجيل الدخول الأساسية إلى الوحدة التالية؟
 mod_auth_basic_prov=أنواع ملفات المستخدم الأساسية لتسجيل الدخول
 mod_auth_basic_file=ملف نصي
 mod_auth_basic_dbm=قاعدة بيانات DBM
+
 mod_auth_digest_pass=تمرير فشل تسجيل الدخول إلى الوحدة النمطية التالي؟
 mod_auth_digest_prov=هضم أنواع تسجيل دخول المستخدم الملف
 mod_auth_digest_al=خوارزمية التجزئة
 mod_auth_digest_domain=عناوين URL والمسارات في نفس المجال
 mod_auth_digest_edomain=عناوين URL والمسارات المفقودة في نفس المجال
+
 mods_title=تكوين وحدات اباتشي
 mods_mod=وحدة
 mods_state=الوضع الحالي

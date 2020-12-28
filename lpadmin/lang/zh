@@ -14,6 +14,7 @@ index_stopmsg=点击这个按钮停止正在运行的打印调度程序进程。
 index_start=启动打印调度程序
 index_startmsg=点击这个按钮启动打印调度程序进程。这样会允许本机和远程的用户在您的系统进行打印操作。
 index_return=打印机列表
+
 edit_eedit=您没有修改这台打印机的权限
 edit_eadd=您没有添加打印机的权限
 edit_add=创建打印机
@@ -55,6 +56,7 @@ edit_port=端口
 edit_direct=直接 TCP 联接
 edit_dport=端口
 edit_driver=打印机驱动程序
+
 save_err=保存打印机失败
 save_eadd=您没有添加打印机的权限
 save_eedit=您没有修改此打印机的权限
@@ -71,6 +73,7 @@ save_erqueue='$1'不是一个有效的远程队列名
 save_eremote=不能被远程Unix打印机所使用的驱动程序
 save_edhost=直接主机 '$1' 不存在
 save_edport=丢失或无效的直接端口
+
 jobs_title=打印任务
 jobs_header=打印任务在$1
 jobs_id=任务ID
@@ -83,15 +86,20 @@ jobs_cancelview=点击以上列表中的一个任务ID取消该任务,或者点�
 jobs_none=在$1没有打印任务
 jobs_all=取消所有的打印任务
 jobs_bytes=字节
+
 cancel_ecannot=您无权取消打印任务
 cancel_err=取消打印任务失败
 cancel_egone=打印任务$1已不存在
+
 view_ecannot=您不能查看这个打印任务
 view_egone=这个打印任务已不存在
+
 start_ecannot=您没有启动打印调度程序的权限
 start_err=启动打印调度程序失败
+
 stop_ecannot=您没有停止打印调度程序的权限
 stop_err=停止打印调度程序失败
+
 webmin_none=空
 webmin_nonemsg=Postscripte或文本打印机
 webmin_remotemsg=远程打印机
@@ -102,6 +110,7 @@ webmin_uniprint=统一打印驱动程序
 webmin_edrivers=在$1得不到驱动程序。使用ghostscript的Webmin打印机驱动程序无效。
 webmin_egs=没有找到命令$1,使用ghostscript的Webmin打印机驱动程序不可用。
 webmin_edriver='$1'不存在
+
 caldera_none=空
 caldera_nonemsg=远程或原始打印机
 caldera_prog=程序
@@ -115,6 +124,7 @@ caldera_uniprint=统一打印驱动程序
 caldera_eprog='$1'不存在
 caldera_edriver=没有选择打印机驱动程序
 caldera_eres=没有选择分辨率
+
 redhat_none=空
 redhat_nonemsg=Postscript或文本打印机
 redhat_prog=程序
@@ -132,6 +142,7 @@ redhat_edriver=没有选择打印机驱动程序
 redhat_ehmargin=没有或无效的左右缩进
 redhat_evmargin=没有或无效的上下缩进
 redhat_eres=没有选择分辨率
+
 suse_none=无
 suse_nonemsg=Postscript 或文本打印机
 suse_prog=程序
@@ -143,7 +154,9 @@ suse_paper=纸张大小
 suse_method=过滤器方式
 suse_auto=自动
 suse_ascii=ASCII
+
 estop=停止 lpd : $1 失败
+
 acl_printers=该用户可以配置的打印机
 acl_add=可以添加新的打印机？
 acl_cancel=可以查看和取消打印任务？
@@ -152,6 +165,7 @@ acl_listed=只在选定的打印机..
 acl_pall=所有打印机
 acl_psel=已选择的..
 acl_view=显示不能配置的打印机？
+
 log_stop=中断的打印调度程序
 log_start=启动的打印调度程序
 log_cancel_job=$1 上取消的的打印任务 $2
@@ -162,23 +176,30 @@ log_delete=在 $2 上删除了打印机 $1
 log_create_l=在 $2 上安装了 $3 打印机 $1
 log_modify_l=在 $2 上更新了 $3 打印机 $1
 log_delete_l=在 $2 上删除了 $3 打印机 $1
+
 linux_paralel=并口 $1
 linux_serial=串口 $1(COM$1)
 linux_null=空设备
 linux_usb=USB 打印机 $1
+
 freebsd_paralel=并口
 freebsd_serial=串口 $1(COM$1)
+
 openbsd_paralel=并口
 openbsd_serial=串口 $1(COM$1)
+
 unixware_paralel=并口 $1
 unixware_serial=串口 $1
 unixware_null=空设备
+
 hpux_paralel=并口 $1
 hpux_serial=串口 $1
 hpux_null=空设备
+
 lprng_paralel=并口 $1
 lprng_serial=串口 $1
 lprng_null=空设备
+
 solaris_paralel=并口 $1
 solaris_uparalel=Ultra 5/10 并口
 solaris_serial=串口 $1

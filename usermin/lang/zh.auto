@@ -16,11 +16,14 @@ index_esame=在<a href='$2'>模块配置</a>页面上设置的Usermin配置目�
 index_eroot=Usermin配置目录 $1存在，但它所指向的程序根目录 $2不存在！您应该手动下载并重新安装Usermin。
 index_restart=重新启动Usermin
 index_restartmsg=单击此按钮以重新启动Usermin服务器进程。如果您最近升级了Perl，则可能有必要。
+
 access_title=IP访问控制
 access_desc=使用此表单，可以将Usermin服务器配置为拒绝或仅允许从某些IP地址进行访问。也可以输入主机名（例如foo.bar.com）和IP网络（例如10.254.3.0或10.254.1.0/255.255.255.128或10.254.1.0/25或10.254.1.5-10.254.97.127）。您应该将对服务器的访问限制为受信任的地址，尤其是可以从Internet访问的服务器。否则，任何猜出您的密码的人都将完全控制您的系统。
+
 bind_title=端口和地址
 bind_desc2=此表格可用于更改Usermin侦听的端口号，或仅在系统上的单个IP地址上侦听此端口号。您也可以将其配置为接受多个端口上的连接，或侦听多个IP地址。注意-更改端口或绑定地址后，您的Web浏览器可能会提示您重新登录。
 bind_erestart=使用新的地址和端口设置启动Usermin时发生错误： $1
+
 mods_title=Usermin模块
 umods_title=Usermin模块
 mods_desc1=可以使用右侧的表单在安装后添加Usermin模块。模块通常分布在<tt>.wbm</tt>文件中，每个文件可以包含一个或多个模块。如果操作系统支持，也可以从RPM文件安装模块。
@@ -41,15 +44,18 @@ mods_desc3=可以使用以下表格删除现有模块。删除模块后，必须
 mods_delete=删除模块
 mods_deleteok=删除所选模块
 mods_desc4=可以使用以下表格将安装的模块导出为wbm.gz文件。然后可以将模块文件安装到运行Usermin的另一个系统上。
+
 os_title=操作系统和环境
 os_desc3=此页面显示Usermin在安装时检测到的操作系统以及当前检测到的系统。如果它们不同，则可以选择更新Usermin的OS信息，如果您最近进行了升级，则可能有必要。
 os_desc2=您还可以更改Usermin在运行程序时使用的搜索路径，并将共享库路径传递给任何程序。
 os_usermin=根据Usermin的操作系统
 os_iusermin=Usermin使用的内部操作系统代码
 os_update=更新Usermin以使用检测到的操作系统
+
 lang_title=语言
 lang_title2=用户语言
 lang_intro=该页面允许您选择Usermin用来显示标题，提示和消息的语言
+
 session_title=认证方式
 session_desc1=启用此功能后，密码超时会在同一用户每次失败的登录尝试之间添加一个持续扩展的延迟，从而保护您的Usermin服务器免受暴力破解密码的攻击。
 session_desc2=启用会话身份验证后，Usermin将跟踪每个登录用户的会话，从而可以自动注销空闲用户。请注意，启用或禁用会话身份验证可能会强制所有用户重新登录。
@@ -73,6 +79,7 @@ session_blank=是否提示用户使用空密码进行首次登录？
 session_homedir=登录后创建丢失的主目录？
 session_homedir_perms=新目录的权限
 session_ehomedir_perms=八进制主目录权限丢失或无效
+
 themes_title=Usermin主题
 themes_desc=主题控制Usermin用户界面的外观，包括图标，颜色，背景以及可能的页面布局。下面的选择框可用于选择系统上安装的主题之一，这将是Usermin用户的默认主题。
 themes_sel=当前主题：
@@ -101,7 +108,9 @@ themes_eirpm=RPM安装失败： $1
 themes_ok=主题已成功更改..重定向到Webmin索引页面。
 themes_delete=该表格可用于删除系统上当前未使用的主题之一。
 themes_delok=要删除的主题：
+
 themes_desc4=可以使用以下表单将已安装的主题导出为wbt.gz文件。然后可以将主题文件安装到另一个运行Usermin的系统上。
+
 configs_ecannot=您无权配置此模块
 configs_title=Usermin模块配置
 configs_header=可配置模块
@@ -115,8 +124,10 @@ configs_global=全局模块配置
 configs_globaldesc=此表格中的设置适用于模块的所有用户，通常设置与模块使用的程序和文件相关的选项。
 configs_user=默认用户首选项
 configs_userdesc=此表单中的设置定义了该模块的用户可编辑首选项的默认值。除非您另外指定，否则它们可以被单个用户覆盖。
+
 acl_title=可用模块
 acl_desc=使用此页面选择对用户可见的已安装Usermin模块。
+
 ssl_title=SSL加密
 ssl_desc1=运行Usermin的主机似乎已安装SSLeay Perl模块。使用此功能，Usermin支持浏览器和服务器之间的SSL加密通信。如果用户正在通过Internet访问Usermin服务器，那么您绝对应该考虑使用SSL来防止攻击者捕获其密码。
 ssl_desc2=警告-仅在具有支持SSL的浏览器且没有防火墙阻止浏览器与Usermin主机之间的<tt>https</tt>请求时，才打开SSL支持。
@@ -125,18 +136,23 @@ ssl_hole=因为您当前正在使用每个人都可以访问的默认Usermin SSL
 ssl_savekey=此表单允许您上载现有的PEM格式SSL私钥和证书，以供Usermin服务器使用。
 ssl_copycert=从Webmin复制证书
 ssl_copycertdesc=复制SSL证书，私钥，CA证书和Webmin使用的其他设置。
+
 ca_email=电子邮件地址
 ca_ou=部门
 ca_o=组织
 ca_sp=州
 ca_c=国家代码
+
 newkey_ok=已为Usermin成功生成以下SSL密钥。
+
 stop_err=无法停止Usermin
 stop_ekill=无法终止进程： $1
 stop_efile=已经停止了
 stop_ecannot=您不允许停止Usermin
+
 start_err=无法启动Usermin
 start_ecannot=您不允许启动Usermin
+
 users_title=允许的用户和组
 users_desc=使用此表单，可以将Usermin配置为限制允许哪些UNIX用户和组登录。要指定Unix组的所有主要成员，请在列表中输入<tt>@groupname</tt>。
 users_desc2=要匹配一系列UID，请在列表中输入<tt>start-end</tt>，<tt>start-</tt>或<tt>-end</tt>。
@@ -150,10 +166,12 @@ users_euser=“$1”不是有效的用户名
 users_egroup='$1'不是有效的群组名称
 users_shells=拒绝其外壳不在文件中的用户
 users_eshells=缺少或不存在的shell文件
+
 defacl_title=访问控制选项
 defacl_desc=该页面允许您配置适用于Usermin模块和用户的各种访问控制选项。这些选项与Webmin用户模块中每个用户的全局ACL中的选项相似。
 defacl_header=Usermin用户的访问控制选项
 defacl_err=无法保存访问控制选项
+
 install_err1=无法从 $1安装模块
 install_efile=文件不存在
 install_err2=无法安装上传的模块
@@ -180,6 +198,7 @@ install_erpm=不是Usermin模块或主题RPM
 install_eirpm=RPM安装失败： $1
 install_cat=在类别 $1下。
 install_eneither=RPM不包含usermin模块或主题
+
 delete_err=删除模块失败
 delete_edep=无法删除模块 $1，因为模块 $2依赖于它
 delete_desc1=$1（$2的克隆）
@@ -189,6 +208,7 @@ delete_msg=以下模块已成功从Usermin安装中删除：
 delete_rusure=您确定要删除模块 $2吗？ $1 KB文件将被永久删除。
 delete_rusure2=您确定要删除主题 $2吗？ $1 KB文件将被永久删除。
 delete_enone=未选择模块
+
 ui_title=用户界面
 ui_desc=此表单使您可以编辑所有Usermin模块使用的用户界面选项。
 ui_header=用户界面选项
@@ -230,6 +250,7 @@ ui_hnm1=网址中的主机名
 ui_hnm2=网址中的域名
 ui_hnm3=其他名字 ..
 ui_tabs=分类模块？
+
 upgrade_title=升级Usermin
 upgrade_title2=安装Usermin
 upgrade_desc=此表单使您可以将整个Usermin安装升级到新版本。您可以从本地文件，上传的文件或最新版本的<a href=http://www.usermin.com/>www.usermin.com</a>安装。与手动升级一样，所有配置设置和第三方模块都将保留。
@@ -263,6 +284,7 @@ upgrade_done=..升级完成。
 upgrade_failed=..升级失败！
 upgrade_updates=此新版本的Usermin有 $1更新。 <a href='$2'>单击此处</a>立即自动下载并安装它们。
 upgrade_eupdates=无法下载更新列表： $1
+
 update_desc1=通过此表单，您可以从<a href=http://www.usermin.com/uupdates.html>Usermin Updates</a>页面或其他来源升级已发现包含错误或安全漏洞的Usermin模块。这会将当前安装的模块与可更新的模块进行比较，并有选择地自动下载和安装所有过时的模块。
 update_header1=立即更新模块
 update_header2=按计划更新模块
@@ -279,10 +301,12 @@ update_sched=每 $2天在 $1：00更新一次模块
 update_none=此版本没有Usermin更新。
 update_failed=无法安装模块： $1
 update_desc2=该表格用于安排<a href=http://www.usermin.com/uupdates.html>Usermin Updates</a>页面或其他来源中包含错误或安全漏洞的Usermin模块的自动更新。尽管此服务很有用，但您应谨慎使用它，因为如果更新服务器遭到破坏，它可能会让攻击者接管您的系统。
+
 assignment_title=重新分配模块
 assignment_header=模块类别分配
 assignment_ok=变更类别
 assignment_desc=此表单使您可以配置每个模块在Usermin索引页上显示的类别。
+
 categories_title=编辑类别
 categories_header=类别ID和描述
 categories_desc=通过此表单，您可以重命名现有的Usermin类别并创建新的类别来分配模块。该表的顶部用于更改内置类别的描述，而底部用于添加新的类别ID和描述。
@@ -292,6 +316,7 @@ categories_edesc=缺少 $1的描述
 categories_ecat=类别ID $1已被使用
 categories_code=ID
 categories_name=显示的描述
+
 log_access=更改了IP访问控制
 log_bind=更改的端口和地址
 log_log=更改了日志记录选项
@@ -327,6 +352,7 @@ log_restrict_create=已为 $1创建限制
 log_restrict_modify=修改了 $1的限制
 log_restrict_delete=已删除 $1的限制
 log_restrict_move=$1的限制已移动
+
 log_all=所有用户
 log_group=组 $1
 log_switch=切换到Usermin用户 $1
@@ -334,6 +360,7 @@ log_logout=更改自动注销时间
 log_dav=更改了DAV服务器设置
 log_advanced=更改了高级选项
 log_mobile=更改了移动设备选项
+
 update_err=无法更新模块
 update_eurl=缺少更新网址或更新网址无效
 update_title=更新模块
@@ -352,6 +379,7 @@ update_rv=从 $1检查更新的Usermin模块
 update_eemail=如果仅显示要更新的内容，则必须输入电子邮件地址。
 update_subject=Usermin模块更新报告
 update_version=现在可以下载新版本的Usermin（版本 $1）。将来的更新将仅针对最新版本发布。
+
 restrict_title=模块限制
 restrict_desc=该页面允许您控制哪些Usermin模块可用于不同的用户和组。列表中所有模块的增减均适用，而不仅仅是与每个用户匹配的第一个模块。<br>在<a href='$1'>可用模块</a>页面上未选择的模块将永远不可用。用户，即使在此处选择了他们。
 restrict_who=Usermin用户
@@ -384,6 +412,7 @@ restrict_egroup=群组名称缺失或无效
 restrict_efile=缺少，不存在或非绝对的用户和组文件
 restrict_move=移动
 bootup_ecannot=您无权配置启动
+
 acl_icons=允许的配置页面
 acl_mods=可以配置模块
 acl_all=所有模块
@@ -391,10 +420,12 @@ acl_sel=在下面选择 ..
 acl_stop=可以停止并启动Usermin吗？
 acl_bootup=可以在启动时配置启动吗？
 acl_ecannot=您无权使用此页面
+
 clone_err=克隆模块失败
 clone_elink=符号链接失败： $1
 clone_ecopy=无法复制配置： $1
 clone_desc=$1的克隆
+
 sessions_title=当前登录会话
 sessions_desc=下面列出了当前的Usermin会话登录。要取消现有会话并强制用户再次登录，请单击其会话ID。
 sessions_id=会话ID
@@ -404,12 +435,15 @@ sessions_login=登录于
 sessions_none=当前没有用户登录到Usermin。
 sessions_switch=切换到Usermin用户：
 sessions_ok=开关
+
 referers_title=值得信赖的推荐人
 referers_desc=该页面允许您配置Usermin的引荐来源网址检查支持，该支持用于防止来自其他网站的恶意链接欺骗您的用户的浏览器使用Usermin做危险的事情。但是，如果您不想从自己的网站链接到Usermin，则应将这些网站添加到下面的列表中。
+
 anon_title=匿名模块访问
 anon_desc=该页面允许您授予对选定的Usermin模块和路径的访问权限，而无需客户端登录。对于在下面输入的每个模块路径（例如/ commands或/ changepass），还必须输入Unix用户的名称，该用户的权限将用于访问该模块。
 anon_user=Unix用户
 anon_euser=URL路径“$1”的Unix用户丢失或无效
+
 logout_title=自动登出时间
 logout_desc=此页面可用于为不同的Usermin用户配置不同的不活动注销时间。必须以分钟为单位输入超时，并且超时为零意味着匹配用户的会话将永远不会自动注销。
 logout_type=类型
@@ -424,6 +458,7 @@ logout_egroup=第 $1行中的组缺失或无效
 logout_efile=第 $1行中缺少文件或文件不存在
 logout_etime=第 $1行中缺少超时或无效超时
 logout_ecannot=您无权配置注销时间
+
 dav_title=DAV服务器
 dav_header=DAV服务器选项
 dav_path=是否启用DAV？
@@ -444,16 +479,22 @@ dav_users=可以使用DAV的用户
 dav_users1=所有用户
 dav_users0=下面列出的用户和组。
 dav_eusers=没有用户输入
+
 syslog_errorlog=Usermin错误日志
+
 descs_title=模块标题
 descs_info=该页面允许您为Usermin模块指定备用标题，以覆盖其标准说明。
+
 advanced_title=高级选项
 advanced_pass=使密码可用于Usermin程序吗？<br><font size=-1>（启用会话身份验证后不起作用）</font>
+
 blocked_title=被阻止的主机和用户
 blocked_none=当前没有主机或用户被Usermin阻止。
 blocked_user=Usermin用户
 blocked_cleardesc=单击此按钮，通过重新启动Usermin服务器进程来清除所有当前主机和用户块。
+
 mobile_title=移动设备选项
+
 copycert_err=无法从Webmin复制SSL设置
 copycert_essl=未启用SSL
 copycert_ekeyfile=Webmin中未设置私钥文件

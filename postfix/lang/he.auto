@@ -3,6 +3,7 @@ connect_elogin=Failed to login to the database $1 : $2.
 index_title=שרת דואר Postfix
 index_epath=The Postfix control command $1 is not installed on your system. Maybe your <a href='$2'>module configuration</a> is incorrect, or Postfix is not installed.
 index_postfix=Postfix
+
 internal_error=שגיאה פנימית
 index_econfig=The Postfix config command $1 does not exist. Maybe your <a href='$2'>module configuration</a> is incorrect.
 index_esuper=The Postfix supervisor command $1 does not exist. Maybe your <a href='$2'>module configuration</a> is incorrect.
@@ -14,8 +15,10 @@ index_startmsg=לחץ על כפתור זה כדי להפעיל את שרת הד�
 index_reloadmsg=לחץ על כפתור זה כדי לקרוא את Postfix מחדש את כל קבצי התצורה שלו. זה יכול להיות שימושי אם קבצי התצורה של Postfix שונו באופן ידני.
 index_version=Postfix version $1
 opts_err=שמירת האפשרויות נכשלה
+
 check_error=שגיאה בעת בדיקת תצורת Postfix הנוכחית. אנא תקן ידנית את תצורת Postfix.
 check_manual=ערוך ידני את קובץ התצורה של Postfix.
+
 address_rewriting_title=כתיבה מחדש וכתיבה מתחזה
 address_rewriting_ecannot=אינך רשאי לערוך שכתובת כתובות ולתחפושות
 aliases_title=כינויי דואר
@@ -42,9 +45,11 @@ aliases_type5=Autoreply file $1
 aliases_type6=Apply filter file $1
 aliases_none=אף אחד
 aliases_delete=מחק כינויים נבחרים
+
 postfinger_title=בדיקת תצורה
 postfinger_show=הופעה
 postfinger_ecannot=אינך רשאי לבדוק את תצורת Postfix
+
 mailclean_title=נקה את MailQueue
 mailclean_ecannot=אין הרשאות לנקות את MailQueues
 mailclean_active=תור פעיל
@@ -53,6 +58,7 @@ mailclean_deferred=תור נדחה
 mailclean_defer=תור לדחות
 mailclean_all=כל התורים
 mailclean_search=מחרוזת חיפוש
+
 aform_type0=אף אחד
 aform_type1=כתובת דוא"ל
 aform_type2=כתובות בקובץ
@@ -68,6 +74,7 @@ aform_val=כינוי ל
 aform_afile=ערוך ..
 aform_return=כינוי
 aform_cmt=תיאור
+
 asave_err=שמירת הכינוי נכשלה
 asave_eaddr='$1' is not a valid address
 asave_ealready=An alias for '$1' already exists
@@ -78,11 +85,13 @@ asave_etype4='$1' is not a valid program or does not exist
 asave_etype5=Autoreply file '$1' is not valid
 asave_etype4none=לא ניתן תוכנית
 asave_etype6=Filter file '$1' is not valid
+
 afile_title=ערוך קובץ כתובת
 afile_desc=Use the text area below to edit the addresses in the file $1.
 afile_efile=You are not allowed to edit $1.
 afile_undo=בטל שינויים
 afile_ewrite=Failed to write to addresses file : $1
+
 ffile_title=ערוך את קובץ הסינון
 ffile_desc=Use the form below to setup filter rules in the file $1.
 ffile_efile=You are not allowed to edit $1.
@@ -98,6 +107,7 @@ ffile_other=Otherwise forward to $1
 ffile_err=שמירת קובץ המסנן נכשלה
 ffile_ematch=משחק חסר
 ffile_eaction=כתובת חסרה
+
 rfile_title=ערוך קובץ להפעלה אוטומטית
 rfile_desc=Use the text area below to edit the autoreply message in $1. The message may contain the macros $SUBJECT, $FROM, $TO, $DATE and $BODY which will be expanded when the autoreply is activated.
 rfile_desc2=You can also set mail headers that add to or replace the defaults used in the autoreply by putting lines like:<br><tt>From: foo@bar.com</tt><br><tt>Subject: On holiday</tt><br>at the top of the message, separated from the body by a single blank line.
@@ -116,11 +126,13 @@ rfile_from=מאת: כתובת לתשובה
 rfile_auto=אוטומטי (מבוסס על כתובת הנמען)
 rfile_efrom=חסר מהכתובת
 rfile_fromdesc=כתובת תמיד צריכה להיות מוגדרת במידת האפשר, מכיוון שהשיטה האוטומטית עשויה להיות לא אמינה.
+
 general_title=אפשרויות כלליות
 general_title_sensible=האפשרויות הכלליות השימושיות ביותר
 general_title_others=אפשרויות כלליות אחרות
 general_ecannot=אינך רשאי לערוך אפשרויות כלליות
 what_is_it=מה זה?
+
 opts_default=ברירת מחדל
 opts_none=אף אחד
 opts_nomap=אין ערכת מפה
@@ -140,10 +152,12 @@ opts_mail_owner=בעל דואר
 opts_default_privs=זכויות ברירת מחדל של סוכן המסירה
 opts_inet_interfaces=ממשקי רשת לקבלת דואר
 opts_all_interfaces=את כל
+
 opts_local_recipient_maps=דחה משתמשים מקומיים לא מוכרים
 opts_no=לא
 opts_save=שמור והחל
 opts_edir=You are only allowed to specify map files under $1
+
 opts_allow_percent_hack=שכתב "תחום%משתמש" ל"משתמש @ דומיין "
 opts_append_at_myorigin=שכתב "משתמש" ל- "user@$mydomain"
 opts_append_dot_mydomain=שכתב "user@host" ל- "user@host.$mydomain"
@@ -153,13 +167,17 @@ opts_swap_bangpath=לשכתב "אתר! משתמש" ל- "user @ site"
 opts_masquerade_domains=כתובת מתחפשת
 opts_masquerade_exceptions=חריגים מתחפשים
 index_return=תצורת Postfix
+
 opts_alias_maps=מסדי נתונים של כינוי המשמשים את סוכן המסירה המקומי
 opts_alias_database=מסדי נתונים של כינוי שנבנו על ידי הפקודה "newaliases"
 aliases_warning=Warning: <ul><li>when the first field is not empty, the default Postfix aliases-generation command is used to build up the corresponding databases ; <li>else the Sendmail compatibility command &quot;newaliases&quot; is used, this will use the second field's databases.</ul>
+
 aliases_name=שם
 aliases_value=כינוי ל. ..
+
 new_alias=צור כינוי חדש
 new_aliasmsg=לחץ על כפתור זה כדי ליצור כינוי חדש
+
 local_delivery_ecannot=אינך רשאי לערוך אפשרויות משלוח מקומיות
 local_delivery_title=משלוח מקומי
 opts_local_transport=שם ההובלה למשלוחים מקומיים
@@ -185,6 +203,7 @@ opts_local_destination_recipient_limit=המספר המרבי של נמענים �
 opts_local_destination_recipient_limit_default=ברירת מחדל
 opts_prepend_delivered_header=Prepend a <tt>Delivered-To:</tt> when...
 opts_prepend_delivered_header_default=ברירת מחדל
+
 resource_title=בקרת משאבים כללית
 resource_ecannot=אינך רשאי לערוך פרמטרים לבקרת משאבים
 opts_bounce_size_limit=גודל מקסימלי של ההודעה הניתרה
@@ -204,6 +223,7 @@ opts_qmgr_message_recipient_limit=המספר המרבי של נמענים בזי
 opts_queue_minfree=מינימום מקום פנוי במערכת הקבצים בתור
 opts_stale_lock_time=זמן מקסימאלי שלאחריו משתחרר נעילה מעופשת
 opts_transport_retry_time=הזמן בשניות בין ניסיונות ליצור קשר עם MDT שבור
+
 opts_always_bcc=כתובת שמקבלת עותק מוסתר של כל הודעה
 opts_always_bcc_none=אף אחד
 opts_daemon_timeout=פסק זמן לטיפול בבקשות
@@ -242,6 +262,7 @@ opts_trigger_timeout=זמן מקסימלי לשלוח טריגר לדמון
 opts_delay_warning_time=זמן בשעות לפני שליחת אזהרה ללא משלוח
 opts_delay_warning_time_default2=ברירת המחדל של Postfix
 opts_content_filter_default=אף אחד
+
 smtpd_title=אפשרויות שרת SMTP
 smtpd_ecannot=אינך רשאי לערוך את אפשרויות שרת ה- SMTP
 opts_disable_vrfy_command=השבת את הפקודה SMTP VRFY
@@ -273,6 +294,7 @@ smtpd_nomap=טרם הוזנה מפה לכתובות מותרות למעבר מח
 smtpd_nomap2=טרם הוזנה מפה להגבלות על כתובות שולח.
 smtpd_map=כתובות מותרות למעבר מחדש
 smtpd_map2=הגבלות על כתובות השולח
+
 smtp_title=אפשרויות לקוח SMTP
 smtp_ecannot=אינך רשאי לערוך את אפשרויות לקוח ה- SMTP
 opts_best_mx_transport=פעולה כאשר היא מופיעה כמארחת ה- MX הטובה ביותר
@@ -293,6 +315,7 @@ opts_smtp_data_done_timeout=פסק זמן בהמתנה לתשובה לסיום "
 opts_smtp_quit_timeout=פסק זמן בהמתנה לתשובה ל- QUIT
 opts_smtp_use_tls=השתמש ב- TLS לחיבורי SMTP
 opts_smtp_sasl_security_options=אפשרויות אבטחה של SASL
+
 rate_title=שיעורי משלוח
 rate_ecannot=אינך רשאי לערוך את אפשרויות תעריפי המסירה
 opts_default_destination_concurrency_limit=המספר המרבי של משלוחים מקבילים לאותו יעד
@@ -303,18 +326,21 @@ opts_maximal_queue_lifetime=אין אפשרות למסור זמן מקסימלי
 opts_minimal_backoff_time=זמן (שניות) בין הניסיונות להעביר מסר נדחה
 opts_queue_run_delay=זמן (שניות) בין סריקת התור הנדחה
 opts_defer_transports=הובלות שאסור לספק
+
 debug_title=מאפייני ניפוי באגים
 debug_ecannot=אינך רשאי לערוך את תכונות הבאגים
 opts_debug_peer_list=רשימת דפוסי תחום / רשת שעבורם מופעל יומן מילולי
 opts_debug_peer_level=רמת רישום מילולית בהתאמה לרשימה שלמעלה
 debug_version=Postfix Module for Webmin - Version $1
 opts_edebug=רמת כניסה מילולית חסרת או לא חוקית - חייבת להיות מספר גדול מאפס
+
 ldap_title=בדיקות LDAP
 ldap_ecannot=אינך רשאי לערוך את אפשרויות בדיקת LDAP
 ldap_non_existent=נראה ש- LDAP אינו קיים במערכת Postfix שלך
 opts_ldap_lookup_timeout=פסק זמן לחיפושים במסדי נתונים של LDAP
 opts_ldap_search_base=מסד נתונים LDAP לחיפוש
 opts_ldap_server_host=שם מארח של שרת LDAP
+
 canonical_title=מיפוי קנוני
 canonical_ecannot=אינך רשאי לערוך את תצורת המיפוי הקנונית
 opts_canonical_maps=טבלאות בדיקת מיפוי כתובות
@@ -328,6 +354,7 @@ canonical_edit_title=ערוך את המפה הקנונית
 canonical_return_sender=שולח מפות קנוניות
 canonical_return_recipient=מפות קנוניות של מקבל
 canonical_return=מפות קנוניות
+
 mapping_name=שם
 mapping_value=מפות ל. ..
 mapping_delete=מחק את הנבחר
@@ -355,6 +382,7 @@ mapping_toomany=There are $1 map entries, which is above the display limit of $2
 mapping_find=הצג מיפויים תואמים:
 mapping_search=לחפש
 mapping_match=Map file entries matching <tt>$1</tt> ..
+
 virtual_title=דומיינים וירטואליים
 virtual_ecannot=אינך רשאי לערוך את תצורת מיפוי הדומיינים הווירטואליים
 opts_virtual_maps=טבלאות בדיקת מיפוי דומיינים
@@ -362,29 +390,44 @@ opts_virtual_alias_maps=טבלאות בדיקת מיפוי דומיינים
 opts_virtual_alias_domains=דומיינים לביצוע מיפוי וירטואלי עבור
 virtual_same=מטבלאות מיפוי דומיינים
 virtual_return=תחומים וירטואליים
+
 transport_title=מיפוי תחבורה
 transport_ecannot=אינך רשאי לערוך את תצורת מיפוי התעבורה
 opts_transport_maps=טבלאות בדיקת מיפוי תעבורה
 transport_return=מפות תובלה
+
+sni_title=מיפוי אישורים
+sni_ecannot=אינך רשאי לערוך את תצורת מיפוי האישורים
+opts_sni_maps=טבלאות בדיקת מיפוי אישורים
+sni_return=מפות תעודות
+sni_dom=שם מארח
+sni_certs=קבצי אישורים
+
 relocated_title=מיפוי מחדש
 relocated_ecannot=אינך רשאי לערוך את תצורת המיפוי שהועברה מחדש
 relocated_return=מפות שהועברו מחדש
 opts_relocated_maps=טבלאות בדיקת מיפוי מחדש
 opts_content_filter=מסנן תוכן בדוא"ל
+
 map_click=לחץ על כל מיפוי כדי לערוך את המאפיינים שלו:
 no_map=(כרגע לא מוגדרת שום מפה. הגדירו תחילה מפה ואז תוכלו לערוך אותה)
 no_map2=כרגע לא מוגדרת מפה. הגדירו תחילה מפה ואז תוכלו לערוך אותה.
+
 stop_efailed=עצירת Postfix נכשלה
 stop_ecannot=אינך מורשה להפסיק את Postfix
+
 start_efailed=ההפעלה של Postfix נכשלה
 start_ecannot=אינך מורשה להתחיל את Postfix
+
 reload_efailed=טעינה מחדש של Postfix נכשלה
 reload_ecannot=אינך מורשה לטעון מחדש את Postfix
+
 query_get_efailed=Failed to query Postfix config command to get the current value of parameter $1: <tt>$2</tt>
 query_set_efailed=Failed to query Postfix config command to set the current value of parameter $1 to $2: <tt>$3</tt>
 regenerate_ecannot=אינך מורשה לחדש את הכינויים
 regenerate_alias_efailed=Failed to regenerate aliases: <tt>$1</tt>
 regenerate_table_efailed=Failed to regenerate table $1: <tt>$2</tt>
+
 acl_resource=האם ניתן לערוך משאבים?
 acl_aliases=האם ניתן לערוך כינויים?
 acl_aliases_options=האם ניתן לערוך אפשרויות כינויים?
@@ -393,6 +436,7 @@ acl_address_rewriting=האם ניתן לערוך שכתובת כתובות?
 acl_canonical=האם ניתן לערוך קנונית?
 acl_virtual=האם ניתן לערוך וירטואלי?
 acl_transport=האם ניתן לערוך תחבורה?
+acl_sni=האם ניתן לערוך אישורים?
 acl_relocated=האם ניתן לערוך מחדש?
 acl_header=האם ניתן לערוך בדיקות כותרות?
 acl_local_delivery=האם ניתן לערוך משלוח מקומי?
@@ -411,6 +455,7 @@ acl_postfinger=האם ניתן לבדוק את תצורת הפוסטפיקס?
 acl_manual=האם ניתן לערוך קובץ config?
 acl_dir=מדריך מורשה לקבצי מפות
 acl_bcc=האם ניתן לערוך מיפוי BCC?
+
 boxes_title=תיבות דואר של משתמשים
 boxes_user=משתמש
 boxes_size=גודל תיבת דואר
@@ -420,6 +465,7 @@ boxes_sent=שלח מייל
 boxes_ecannot=אינך מורשה לקרוא דוא"ל
 boxes_toomany=יש יותר מדי משתמשים במערכת שלך בכדי לרשום את כל תיבות הדואר שלהם.
 boxes_go=הצגת דואר למשתמש:
+
 mail_title=דוא"ל משתמש
 mail_from=מ
 mail_date=תאריך
@@ -458,6 +504,7 @@ mail_forward=קדימה
 mail_rfc=מקו
 mail_move=לעבור ל:
 mail_eexists=ההודעה כבר לא קיימת!
+
 view_title=קרא דוא"ל
 view_desc=Message $1 in $2
 view_desc2=Message $1 for user $2
@@ -486,6 +533,7 @@ view_body=הודעת טקסט
 view_afile=שם קובץ מצורף
 view_atype=סוג קובץ מצורף
 view_asize=גודל הקובץ
+
 compose_title=כתוב מייל אלקטרוני
 reply_title=תגובה לדוא"ל
 forward_title=העברת דוא"ל
@@ -496,6 +544,7 @@ reply_mailforward=הודעות שהועברו
 reply_attach2=קבצים מצורפים בצד הלקוח ושרת
 reply_send=שלח מייל
 reply_ecannot=אינך רשאי לשלוח דואר כמשתמש זה
+
 send_err=שליחת הדואר נכשלה
 send_eto=כתובת חסרה
 send_efrom=כתובת חסרה
@@ -509,6 +558,7 @@ send_eperms=User $1 cannot read $2
 send_eperms2=You are not allowed to send file $1
 send_epath=Sendmail executable $1 does not exist.
 send_ewrapper=תוכנית ממשק Sendmail של Postfix אינה קיימת
+
 search_title=תוצאות חיפוש
 search_ecannot=אינך רשאי לחפש בדוא"ל של משתמש זה
 search_ematch=עליך להזין טקסט כדי להתאים.
@@ -516,6 +566,7 @@ search_efield=עליך לבחור סוג חיפוש.
 search_none=לא נמצאו הודעות.
 search_results2=$1 mail messages matching $2 ..
 search_results3=$1 mail messages not matching $2 ..
+
 match_from=מאת: גפרורים
 match_subject=נושא: גפרורים
 match_to=אל: גפרורים
@@ -533,6 +584,7 @@ match_!date=תאריך: לא תואם
 match_!body=הגוף לא תואם
 match_!size=גודל הוא פחות מ
 match_!headers=כותרות אינן תואמות
+
 mailq_title=תור דואר
 mailq_count=$1 messages
 mailq_none=כרגע אין הודעות דואר בתור למסירה
@@ -561,15 +613,20 @@ mailq_active=פעיל
 mailq_deferred=נדחה
 mailq_hold=החזק את הנבחר
 mailq_unhold=בחרו בביטול ההמתנה
+
 flushq_title=תור סומק
 flushq_desc=Forcing the attempted delivery of mail with the command $1 ..
+
 qview_title=הודעה בתור
 qview_desc=From file $1
 qview_headers=כותרות דואר
 qview_attach=קבצים מצורפים
+
 after_err=Postfix configuration error : $1
+
 searchq_title=תוצאות חיפוש בתור
 searchq_none=לא נמצאו הודעות בתור.
+
 header_title=בדיקות כותרות
 header_ecannot=אינך רשאי לערוך בדיקות כותרות
 header_eregexp=The header checks map must be in the format <tt>regexp:</tt><i>filename</i>
@@ -588,15 +645,18 @@ header_reject=דחה (עם הודעת שגיאה..)
 header_warn=אזהרת יומן (עם הודעה..)
 header_ename=ביטוי רגיל לא חוקי - חייב להיות כמו / משהו /
 header_return=בדיקות כותרות
+
 body_title=בדיקות גוף
 body_ecannot=אינך רשאי לערוך בדיקות גוף
 body_eregexp=The body checks map must be in the format <tt>regexp:</tt><i>filename</i>
 opts_body_checks=טבלאות בדיקת גוף ההודעה
 body_return=בדיקות גוף
+
 dependent_title=מיפוי תחבורה תלוי בשולח
 dependent_ecannot=אינך רשאי לערוך מיפוי תעבורה תלוי שולח
 dependent_eregexp=The sender dependent transports map must be in the format <tt>regexp:</tt><i>filename</i>
 dependent_return=מיפוי תובלה תלוי בשולח
+
 manual_title=ערוך את קובץ המפה
 manual_file=בחר קובץ מפה לעריכה:
 manual_change=שינוי
@@ -604,9 +664,11 @@ manual_editing=Use the text box below to manually edit the mappings in $1. Be ca
 manual_err=שמירת קובץ המפה נכשלה
 manual_efile=שם קובץ לא חוקי של מפה!
 manual_ecannot=אינך מורשה לערוך ידנית קבצי מפות
+
 delq_titles=מחיקת הודעות
 delq_rusure=Are you sure you want to delete the $1 selected queued messages?
 delq_confirm=מחק הודעות
+
 master_title=תהליכי שרת
 master_name=שם התהליך
 master_enabled=מופעל?
@@ -647,8 +709,10 @@ master_einet=ניתן לציין כתובת מארח להאזנה לה רק עב
 master_ecommand=פקודת תהליך שרת חסרה
 master_ewakeup=זמן ההשכמה חסר או לא תקף
 master_emaxprocs=מספר התהליכים המרבי חסר או לא חוקי
+
 delete_err=מחיקת המיפויים נכשלה
 delete_enone=לא נבחר
+
 cmanual_title=ערוך קבצי תצורה
 cmanual_ecannot=אינך רשאי לערוך את קובץ התצורה של Postfix
 cmanual_ok=ערוך
@@ -656,10 +720,12 @@ cmanual_efile=הקובץ שנבחר אינו חלק מתצורת Postfix
 cmanual_file=ערוך קובץ תצורה:
 cmanual_edata=שום דבר לא נכנס!
 cmanual_err=שמירת קובץ התצורה נכשלה
+
 access_return=גישה למפת שולחן
 edit_map_file=ערוך את קובץ המפה
 opts_reject_rbl_client=חיפושים של רשימות שחורות בזמן אמת (RBL)
 opts_check_sender_access=בדוק את טבלת מפת הגישה לשולח
+
 log_misc=אפשרויות כלליות השתנו
 log_opts=שינויים מחדש של כתובות והתחפשות
 log_aliases=אפשרויות כינויים ששונו
@@ -667,6 +733,7 @@ log_canonical=שינוי אפשרויות מיפוי קאנוניות
 log_virtual=אפשרויות דומיין וירטואליות השתנו
 log_bcc=אפשרויות מפות BCC השתנו
 log_transport=אפשרויות מיפוי תעבורה השתנו
+log_sni=שנה אפשרויות מיפוי אישורים
 log_dependent=אפשרויות כתובות תלויות שולח השתנו
 log_relocated=אפשרויות המיפוי של מיקום מחדש השתנו
 log_header=אפשרויות בדיקת כותרות השתנו
@@ -744,6 +811,7 @@ log_sender_dependent_default_transport_maps_modify=Modified sender dependent add
 log_sender_dependent_default_transport_maps_delete=Deleted sender dependent address $1
 log_delete_sender_dependent_default_transport_mapss=Deleted $1 sender dependent addresses
 log_manual_sender_dependent_default_transport_mapss=Manually edited sender dependent addresses in $1
+
 sasl_title=אימות והצפנה של SMTP
 opts_smtpd_sasl_auth_enable=זקוק לאימות SASL SMTP?
 opts_smtp_sasl_auth_enable=משתמשים באימות SML של SASL?
@@ -790,6 +858,7 @@ sasl_nologin=אף אחד לא צריך
 sasl_userpass=Login as $1 with password $2
 sasl_elogin=כניסה ל- SMTP חסרה או לא חוקית (אין רווחים או מושבים)
 sasl_epass=סיסמת SMTP לא חוקית (אין רווחים מותר)
+
 client_title=הגבלות לקוח SMTP
 client_ecannot=אינך רשאי לערוך הגבלות על לקוח SMTP
 client_restrict=מגבלות לקוח
@@ -799,6 +868,7 @@ client_other=הגבלות אחרות :
 client_err=שמירת מגבלות הלקוח נכשלה
 client_evalue=Missing value for restriction $1
 client_return=מגבלות לקוח SMTP
+
 chooser_title=בחר מקור מפה
 chooser_header=Map source $1
 chooser_none=אף אחד
@@ -854,6 +924,7 @@ chooser_elquery_filter=Missing query filter for map $1
 chooser_elresult_attribute=Missing or invalid result attribute name for map $1
 chooser_elbind_dn=Missing login for LDAP server for map $1
 chooser_elbind_pw=Missing password for LDAP server for map $1
+
 mysql_ecfile=MySQL configuration file $1 was not found
 mysql_ecfile2=Could not find table in MySQL configuration file $1
 mysql_edriver=Failed to load the database driver $1
@@ -865,6 +936,7 @@ mysql_eupdate=SQL update failed : $1
 mysql_elist=SQL query failed : $1
 mysql_esource=No MySQL source named $1 was found
 mysql_eneed=The MySQL configuration parameter $1 was not found. Webmin needs this to figure out which table and fields to query.
+
 ldap_ecfile=LDAP configuration file $1 was not found
 ldap_eldapmod=Perl module $1 needed to communicate with LDAP is not installed or not loadable
 ldap_eldap=Failed to connect to LDAP server $1 on port $2
@@ -875,6 +947,7 @@ ldap_edelete=LDAP delete of $1 failed : $2
 ldap_equery=LDAP search of $1 failed : $2
 ldap_erename=LDAP rename of $1 to $2 failed : $3
 ldap_emodify=LDAP modify of $1 failed : $2
+
 bcc_title=מיפוי BCC
 bcc_ecannot=אינך רשאי לערוך מיפוי BCC
 opts_sender_bcc_maps=שולח בדיקות מיפוי של שולח BCC

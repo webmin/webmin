@@ -12,10 +12,12 @@ index_restart=Znova zaženite Fail2Ban Server
 index_restartdesc=Kliknite ta gumb, če želite uporabiti trenutno konfiguracijo s ponovnim zagonom strežnika Fail2Ban.
 index_return=kazalo modula
 index_header=Fail2Ban modul
+
 check_edir=Konfiguracijski imenik $1 ne obstaja
 check_econf=Konfiguracijska datoteka $2 v $1 ne obstaja
 check_eclient=Ukaza odjemalca $1 ni bilo mogoče najti
 check_eserver=Ukaza strežnika $1 ni bilo mogoče najti
+
 filters_title=Dnevni filtri
 filters_name=Ime filtra
 filters_re=Vsakdanje izražanje
@@ -25,6 +27,7 @@ filters_return=seznam filtrov
 filters_derr=Izbris filtrov ni uspel
 filters_enone=Izbrana ni nobena
 filters_einuse=Filtra $1 ni mogoče izbrisati, saj ga uporabljajo zapori : $2 
+
 filter_title1=Ustvari filter
 filter_title2=Uredi filter
 filter_desc=Uporabite <i>&lt;HOST&gt;</i> v rednih izrazih, kjer bi se moralo pojaviti ime gostitelja ali IP naslov.
@@ -39,6 +42,7 @@ filter_ename=Manjkajoče ali neveljavno ime filtra
 filter_eclash=Ime filtra je že v uporabi
 filter_efail=Vstavljen ni noben regularni izraz, ki bi se ujemal
 filter_einuse=Tega filtra ni mogoče izbrisati, saj ga uporabljajo zapori : $1 
+
 actions_title=Ujemanje dejanj
 actions_name=Ime akcije
 actions_ban=Ukaz prepovedi
@@ -48,6 +52,7 @@ actions_return=seznam dejanj
 actions_derr=Dejavnosti ni bilo mogoče izbrisati
 actions_enone=Izbrana ni nobena
 actions_einuse=Dejanja $1 ni mogoče izbrisati, saj ga uporabljajo zapori : $2 
+
 action_title1=Ustvari ujemanje dejanja
 action_title2=Urejanje dejanja ujemanja
 action_header=Ujemite podrobnosti o dejanjih
@@ -64,6 +69,7 @@ action_ban=Ukaz za prepoved IP-ja
 action_unban=Ukaz za prepoved IP-ja
 action_desc=<i>&lt;ip&gt;</i> nadomeščen bo s IP naslovom prepovedan.
 action_einuse=Tega dejanja ni mogoče izbrisati, saj ga uporabljajo zapori : $1 
+
 jails_title=Filtrirajte akcijske zapore
 jails_add=Dodajte nov zapor.
 jails_name=Ime zapora
@@ -76,6 +82,7 @@ jails_defdesc=Uredite privzete nastavitve in omejitve, ki veljajo za vse zgoraj 
 jails_return=seznam zapor
 jails_derr=Zapora ni bilo mogoče izbrisati
 jails_enone=Izbrana ni nobena
+
 jail_title1=Ustvari zapor
 jail_title2=Uredite zapor
 jail_header=Filtrirajte podrobnosti o zaporu
@@ -115,13 +122,16 @@ jail_banaction=Uporablja se privzeto dejanje
 jail_defprotocol=Privzeti protokol za dejanja
 jail_edestemail=Manjkajoči ali neveljavni privzeti e-poštni naslov za obvestila
 jail_eignoreip=IP naslov je neveljaven
+
 jaildef_title=Privzete možnosti zapora
 jaildef_header=Privzete vrednosti za vse ječe
 jaildef_err=Privzetih možnosti zapora ni bilo mogoče shraniti
 jaildef_egone=Zapora DEFAULT ni bilo mogoče najti!
+
 start_err=Zagon strežnika ni uspel
 stop_err=Zaustavitev strežnika ni uspela
 restart_err=Ponovnega zagona strežnika ni bilo mogoče
+
 log_create_filter=Ustvarjen filter $1 
 log_update_filter=Spremenjen filter $1 
 log_delete_filter=Izbrisan filter $1 
@@ -139,6 +149,7 @@ log_atboot=Omogočeno Fail2Ban ob zagonu
 log_delboot=Onemogočeno Fail2Ban ob zagonu
 log_manual=Urejena konfiguracijska datoteka $1 
 log_jaildef=Spremenjene privzete možnosti zapora
+
 config_title=Globalna konfiguracija
 config_edef=V konfiguracijski datoteki ni mogoče najti razdelka Definicije!
 config_header=Konfigurirajte nastavitve za Fail2Ban
@@ -151,10 +162,12 @@ config_socket=Vtičnica za komunikacijo s strežnikom
 config_err=Globalne konfiguracije ni bilo mogoče shraniti
 config_elogtarget=Datoteka za pisanje dnevnikov mora biti absolutna pot
 config_esocket=Datoteka vtičnic mora biti absolutna pot
+
 manual_title=Uredi konfiguriranje datotek
 manual_desc=Datoteka za urejanje:
 manual_ok=v redu
 manual_efile=Izbrana datoteka ni del konfiguracije Fail2Ban!
 manual_err=Konfiguracijske datoteke ni bilo mogoče urediti
 manual_edata=Vnešena ni bila nobena vsebina konfiguracijske datoteke
+
 syslog_logtarget=Dnevnik dejanj Fail2Ban

@@ -9,6 +9,7 @@ index_restart=Berrabiarazi Webmin
 index_restartmsg=Egin klik botoi honetan Webmin zerbitzariaren prozesua berriro hasteko. Hori beharrezkoa izan daiteke Perl berriki berritu baduzu.
 index_refresh=Eguneratu moduluak
 index_refreshmsg=Instalatu zerbitzarientzako Webmin modulu guztiak, eta eguneratu 'Erabili gabeko moduluak' kategorian agertzen direnak.
+
 access_title=IP Sarbide Kontrola
 access_desc=Webmin zerbitzaria konfiguratu daiteke formulario hau erabiliz IP helbide jakin batzuetatik sarbidea ukatzeko edo baimentzeko. Ostalari izenak (foo.bar.com bezalakoak) eta IP sareak (10.254.3.0 edo 10.254.1.0/255.255.255.128 edo 10.254.1.0/25 edo 10.254.1.5-10.254.97.127) ere sar daitezke. Zure zerbitzariaren sarbidea konfiantzazko helbideetara mugatu beharko zenuke, batez ere Internetetik eskuragarri badago. Bestela, zure pasahitza asmatzen duen edonork zure sistemaren kontrol osoa izango du.
 access_ip=IP helbide baimenduak
@@ -33,6 +34,7 @@ access_ehost=Ezin izan da '$1' helbideko IP helbidea aurkitu
 access_eself=Zure IP helbidea ($1) ukatuko litzateke
 access_always=Ebatzi ostalariaren izenak eskaera guztietan?
 access_trust=Fidatu proxyek emandako urruneko IP helbidean?
+
 bind_title=Portuak eta helbideak
 bind_desc2=Inprimaki hau erabil daiteke Webmin-ek entzuten duen ataka zenbakia aldatzeko edo zure sisteman IP helbide bakar batetan entzuteko. Hainbat portutan konexioak onartzeko edo IP helbideetan entzuteko ere konfigura dezakezu. Oharra: zure web-arakatzaileak berriro saioa hasteko eskatu dezake portua edo loteslearen helbidea aldatu ondoren.
 bind_header=IP helbideak eta portuak
@@ -61,6 +63,7 @@ bind_eipv6=IPv6 ezin da gaitu $1 Perl modulua instalatuta badago
 bind_redirecting=URL berrira birbideratzen ..
 bind_elsof=$1 ataka berria dagoeneko beste prozesu batek erabiltzen ari da
 bind_eonsystem=$1 IP helbidea ez dago sistema honetan aktiboa, eta beraz ezin da erabili
+
 log_title=Saio
 log_desc=Webmin konfigura daiteke web zerbitzari hitsen erregistroa idazteko, CLF erregistro formatu estandarrean. Logging gaituta badago, IP helbideak edo ostalariaren izenak erregistratzen diren ala ez eta erregistro fitxategia zenbat aldiz garbitzen den aukeratu dezakezu. Gaituta dagoenean, erregistroak $1 fitxategian idazten dira.
 log_desc2=Logging gaituta dagoenean, Webmin-ek erabiltzaileen ekintzen erregistro zehatzagoa idatziko du $1 fitxategian. Erregistro hau Webmin Actions Log erregistroarekin ikusi eta aztertu daiteke Webmin erabiltzaile bakoitzak zer egin duen ikusteko.
@@ -92,6 +95,7 @@ log_login=Webmin saioak eta saioak sartzea ekintzen erregistroan?
 log_email=Bidali erregistratutako ekintzak mezu elektroniko bidez
 log_emailnone=Ez bidali
 log_inmodsemail=Bidali posta elektronikoa ekintzetarako
+
 proxy_title=Proxy zerbitzariak eta deskargak
 proxy_desc=Webmin exekutatzen ari den ostalaria nolabaiteko suebaki baten atzean badago, proxy zerbitzaria konfiguratu behar duzu web eta FTP guneak sartzeko erabiliko duen. Zenbait moduluk, esaterako <tt>Software Paketeak</tt>, proxy hauek erabiliko dituzte fitxategiak edo programak deskargatzerakoan.
 proxy_header=Proxy zerbitzariak
@@ -134,6 +138,7 @@ proxy_return=proxy zerbitzariak eta deskargak
 proxy_tabproxy=proxy
 proxy_tabdown=Deskargen
 proxy_fallback=Probatu zuzeneko eskaera proxy-a behera badago?
+
 ui_title=Erabiltzaile interfazea
 ui_desc=Inprimaki honek modulu guztiek erabilitako erabiltzailearen interfazearen aukerak editatzeko aukera ematen du. Koloreak sartzerakoan, bakoitza RGB sistema estandarra erabiliz zehaztu behar da, non balio bakoitza 00- ff-etik hasieran zenbakia den.
 ui_header=Erabiltzailearen interfazearen aukerak
@@ -183,6 +188,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/aaaa (hau da, 2001/09/16)
 ui_dateformat_mm/dd/yyyy=mm/dd/aaaa (hau da, 2001/09/16)
 ui_dateformat_yyyy/mm/dd=aaaa/mm/dd (hau da, 2001/09/16)
 ui_ehostnamedisplay=Bistaratutako ostalariaren izen falta edo baliogabea
+
 mods_title=Webmin moduluak
 mods_desc1=Webmin moduluak instalatu ondoren gehitu daitezke inprimakia eskuinean erabiliz. Moduluak normalean <tt>.wbm</tt> fitxategietan banatzen dira, eta bakoitzak modulu bat edo gehiago eduki ditzake. Moduluak RPM fitxategietatik ere instala daitezke zure sistema eragileak onartzen badu.
 mods_installsource=Instalatu bertatik
@@ -226,6 +232,7 @@ mods_tabinstall=Instalatu
 mods_tabclone=Clone
 mods_tabdelete=Ezabatu
 mods_tabexport=Export
+
 install_err1=Ezin izan da $1 modulua instalatu
 install_efile=Fitxategia ez da existitzen
 install_err2=Ezin izan da kargatutako modulua instalatu
@@ -259,10 +266,12 @@ install_cat=$1 kategorian.
 install_eneither=RPM-k ez du webmin modulu edo gairik
 install_err4=Ezin izan da modulu estandarra instalatu
 install_emissing=Zehaztutako modulua ez da existitzen
+
 clone_err=Huts egin du modulua klonatzerakoan
 clone_elink=symlink huts egin du : $1
 clone_ecopy=huts egin du konfigurazioa kopiatzean : $1
 clone_desc=$1 klona
+
 delete_err=Ezin izan da moduluak ezabatu
 delete_edep=$1 modulua ezin da ezabatu, $2 modulua haren araberakoa baita
 delete_desc1=$1 ($2)
@@ -274,6 +283,7 @@ delete_rusure2=Ziur $2 gaia ezabatu nahi duzula? $1 fitxategien kB betiko ezabat
 delete_rusure3=Ziur modulu klonak ezabatu nahi dituzula $2?
 delete_acls=Erabiltzaileetatik kendu eta sarbidea kontrolatzeko ezarpenak berrezarri?
 delete_enone=Ez da modulu hautatu
+
 os_title=Sistema Eragilea eta Ingurumena
 os_desc3=Orrialde honetan Webmin-ek detektatutako sistema eragilea eta une honetan hautematen den sistema agertzen dira. Ezberdinak badira, aukera dezakezu Webminen OS sistemaren informazioa eguneratuta edukitzea, eta hori beharrezkoa izan daiteke berriki berritu baduzu.
 os_desc2=Programak exekutatzean Webmin-ek erabiltzen duen bilaketa bidea alda dezakezu eta liburutegi partekatutako bidea edozein programetara pasatu.
@@ -296,6 +306,7 @@ os_eiversion=Barne sistema eragilearen bertsioa falta da
 os_incorrect=Abisua - Zure sistema $1 bertsioan dago $2.
 os_fix=Eguneratu detektatutako sistema eragilea
 os_usermin=Era berean, eguneratu Usermin OS
+
 lang_title=Hizkuntza
 lang_title2=Webmin hizkuntza
 lang_lang=Bistaratzea hizkuntzan
@@ -307,6 +318,7 @@ lang_chardef=Hizkuntzaren arabera zehaztua
 lang_charover=Indar karaktere multzoa
 lang_err=Huts egin du hizkuntza gordetzean
 lang_echarset=Falta edo itxura baliogabea duen karaktere-multzoa
+
 ssl_title=SSL enkriptatzea
 ssl_essl=Ez dirudi Net::SSLeay perl modulua zure sisteman instalatuta dagoela. OpenSSL liburutegia eta Net::SSLeay instalatzeko, jarraitu <a href='$1'>argibide hauek</a> Webmin webgunetik.
 ssl_cpan=Bestela, Webmin <a href='$1'>deskargatu eta instalatu dezakezu</a> behar duzun Net::SSLeay Perl modulua zuretzat.
@@ -412,6 +424,7 @@ ssl_letsnotrenew=Eskuz bakarrik berritu
 ssl_staging=Dezagun enkriptatu zerbitzaria
 ssl_staging0=Real
 ssl_staging1=Eszenaratzea (proba bakarrik)
+
 newkey_err=Huts egin du SSL gakoa sortzerakoan
 newkey_ecn=Zerbitzariaren izen falta edo baliogabea
 newkey_ecns=Ez da zerbitzariaren izenik sartu
@@ -424,11 +437,13 @@ newkey_ok=SSL gakoa ondo sortu da :
 newkey_esize=Gakoen tamaina falta edo baliogabea da
 newkey_edays=Falta edo iraungitako egun kopurua baliogabea
 newkey_ecountry=Herrialdearen kodiziak bi letrak izan behar ditu
+
 newcsr_err=Huts egin du SSL CSR sortzerakoan
 newcsr_efile=CSR fitxategiaren izena falta da
 newcsr_title=Sortu EGE
 newcsr_ok=Ondoko SSL ziurtagiri eskaera sortu da :
 newcsr_ok2=EGE hori sinatzeko agintari bati bidali behar zaio, hark izenpetutako ziurtagiria itzuliko du. Goiko teklarekin instala daiteke <b>kargatu ziurtagiria</b> fitxa erabiliz.
+
 startpage_title=Aurkibidearen orrialdearen aukerak
 startpage_intro2=Orrialde honek Webmin menu nagusiaren itxura kontrolatzeko aukera ematen du. Aukera batzuk gai lehenetsiak bakarrik eraginkorrak izan daitezke.
 startpage_tabs=Moduluak sailkatu?
@@ -442,6 +457,7 @@ startpage_gotonone=&lt;Bat ere ez&gt;
 startpage_gotomodule=Saioa hasi ondoren, joan modulura
 startpage_webminup=Erakutsi Webmin eguneratzeak sistemaren informazioa orrian?
 startpage_moduleup=Erakutsi moduluaren eguneratzeak sistemaren informazioa orrian?
+
 upgrade_title=Berritu Webmin
 upgrade_desc=Inprimaki honek zure Webmin instalazio osoa bertsio berrira eguneratzeko aukera ematen du. Tokiko fitxategietatik, kargatutako fitxategitik edo azken bertsiotik instala dezakezu <a href=http://www.webmin.com/>www.webmin.com</a>. Eskuzko berritzearekin gertatzen den bezala, zure konfigurazioko ezarpen guztiak eta hirugarrenen moduluak mantenduko dira.
 upgrade_descrpm=Inprimaki honek zure webmin instalazio osoa bertsio berrira eguneratzeko aukera ematen dizu RPM bertsio berritzeko aukera erabiliz. Tokiko RPM fitxategitik, kargatutako fitxategitik edo azken bertsiotik instala dezakezu <a href=http://www.webmin.com/>www.webmin.com</a>. Eskuzko berritzearekin gertatzen den bezala, zure konfigurazioko ezarpen guztiak eta hirugarrenen moduluak mantenduko dira.
@@ -506,10 +522,12 @@ upgrade_tabupdate=Eguneratzeko moduluak
 upgrade_tabsched=Eguneratutako egutegia
 upgrade_src=Eguneratu webmin
 upgrade_opts=Berritzeko aukerak
+
 newmod_desc=Webmin eguneratzen denean, bertsio berrian modulu berririk erabiltzaile bati edo gehiagori emango zaie. Inprimaki honek modulu berriak jasotzen dituzten erabiltzaileak ezar ditzakezu. Ezarpen hau komando lerroan eguneratzean edo goiko inprimakia erabiltzen denean aplikatuko da.
 newmod_header=Modulu berrien diru-laguntzak
 newmod_def=Portaera lehenetsia - eman modulu berriak <tt>root</tt> edo <tt>admin</tt>
 newmod_users=Eman modulu berriak :
+
 update_desc1=Inprimaki honi esker, <a href=http://www.webmin.com/updates.html>Webmin Eguneratzeak</a> orrialdetik akatsak edo segurtasun zuloak aurkitu dituzten Webmin moduluak eguneratu daitezke. Honek gaur egun instalatutako moduluak eguneratzeko erabilgarri daudenekin alderatuko ditu eta, aukeran, automatikoki deskargatu eta zaharkituta dauden moduluak instalatuko ditu.
 update_header1=Eguneratu moduluak orain
 update_header2=Eguneratu moduluak ordutegian
@@ -536,6 +554,7 @@ update_enomodsig=Ezin izan da moduluko sinadura fitxategia deskargatu : $1
 update_ebadmodsig=Moduluen sinadura egiaztapena huts egin da : $1
 update_src=Berritu bertsioko moduluak:
 update_opts=Moduluak eguneratzeko aukerak
+
 ca_title=Ziurtagiri Agintaritza
 ca_old=Existitzen den ziurtagiria
 ca_header1=Sortu CA ziurtagiri berria
@@ -567,6 +586,7 @@ ca_eminiserv=SSL bezeroaren ziurtagiriak miniserv-ean bakarrik onartzen dira.
 ca_eversion=Zure sisteman instalatutako Perl Net::SSLeay moduluaren bertsioak ez du SSL bezero ziurtagiriak onartzen.
 ca_essleay=SSL administrazio komandoa $1 ez da zure sisteman aurkitu. Baliteke ibilbidea aldatu behar izatea Webmin Users moduluaren konfigurazioan.
 ca_essl=SSL ziurtagiria webgune zerbitzaria SSL moduan exekutatzen denean bakarrik konfigura daiteke.
+
 session_title=Autentifikazioa
 session_desc1=Gaituta dagoenean, pasahitzen denborak babesten du zure Webmin zerbitzaria, pasahitzak gordetzeko eraso bruteen kontrako erasoetatik, etengabe zabaltzen den atzerapena gehituz erabiltzaile berarentzako saiakera huts egin duen bakoitzean.
 session_header=Autentifikazio eta saio aukerak
@@ -630,10 +650,12 @@ session_sha512=Erabili SHA512 enkriptatzea
 session_emd5mod=MD5 enkriptatzea ezin da erabili, Perl $1 modulua ez dagoelako instalatuta.
 session_esha512mod=SHA512 enkriptatzea ezin da erabili, Perl $1 modulua ez dagoelako instalatuta.
 session_blocklock=Era berean, blokeatu erabiltzaileek huts egin duten saioak
+
 assignment_title=Moduluak berriro esleitu
 assignment_header=Moduluen kategoriako esleipenak
 assignment_ok=Kategoriak aldatu
 assignment_desc=Inprimaki honen bidez, modulu bakoitza Webmin aurkibidearen orrialdean azaltzen den konfigura dezakezu.
+
 categories_title=Editatu Kategoriak
 categories_header=Kategoria IDa eta deskribapenak
 categories_desc=Inprimaki honi esker, lehendik dauden Webmin kategoriak berrizendatu eta beste batzuk sor ditzakezu, moduluak esleitzeko. Taularen goiko zatia inkorporatutako kategorien deskribapenak aldatzeko da, eta beheko zatia kategoriako identifikazio eta deskripzio berriak gehitzeko da.
@@ -646,6 +668,7 @@ categories_name=Bistaratutako deskribapena
 categories_lang=Editatu kategoriak hizkuntzan:
 categories_langok=Aldaketa
 categories_custom=pertsonalizatua
+
 log_access=IP sarbide-kontrola aldatu da
 log_bind=Aldatutako portua eta helbidea
 log_log=Aldaketa erregistratzeko aukerak
@@ -691,6 +714,7 @@ log_onedelete_webmincron=Programatutako funtzioa ezabatu da $1 moduluan
 log_letsencrypt=SSL ziurtagiri berria eskatu dugu Let's Encrypt-en
 log_letsencryptdns=Sortu dezagun DNS erregistroa $1 -rako
 log_letsencryptcleanup=Kendu Dezagun enkriptatu DNS erregistroa $1 -rentzat
+
 themes_title=Webmin Gaiak
 themes_desc=Gaiek Webmin erabiltzailearen interfazearen itxura kontrolatzen dute, ikonoak, koloreak, atzeko planoak eta orrien diseinua barne. Beheko hautatutako laukia zure sisteman instalatutako gairen bat aukeratzeko erabil daiteke.
 themes_sel=Oraingo gaia :
@@ -706,6 +730,7 @@ themes_taboverlay=Aldatu gainjarpena
 themes_tabinstall=Instalatu gaia
 themes_tabdelete=Ezabatu gaiak
 themes_tabexport=Gaiak esportatu
+
 themes_err1=Ezin izan da $1 gaia instalatu
 themes_efile=Fitxategia ez da existitzen
 themes_err2=Ezin izan da kargatutako gaia instalatu
@@ -731,9 +756,11 @@ themes_delok=Ezabatu beharreko gaia :
 themes_return=gaien zerrenda
 themes_err4=Ezin izan da aldaketen gaia aldatu
 themes_eoverlay=Hautatutako gainjartzea ez da bateragarria egungo munduarekin
+
 themes_desc4=Instalatutako gaiak wbt.gz fitxategi gisa esportatu daitezke beheko formularioa erabiliz. Gai fitxategia Webmin erabiltzen duen beste sistema batean instala daiteke.
 themes_exportmods=Esportatu beharreko gaiak
 themes_exportok=Aukeratutako hautatutako gaiak
+
 referers_title=Erreferente fidagarriak
 referers_desc=Orrialde honek Webmin-eko erreferentzi laguntza egiaztatzeko konfigura dezakezu, arakatzailea zure Webgunearekin gauza arriskutsuak egiten dituzten beste webgune batzuetako esteka maltzurrak ekiditeko. Nolanahi ere, Webmin-ekin estekak baldin badituzu abisatu nahi ez dituzun webguneetatik beherako zerrendan gehitu beharko zenituzke.
 referers_list=Konfiantzazko webguneak
@@ -742,6 +769,7 @@ referers_none2=KONTUZ: Honek zure sistema XSS erasoetara irekitzen du!
 referers_referer=Erreferentziako egiaztapena gaituta dago?
 referers_err=Huts egin du arbitroak gordetzean
 referers_ehost='$1' ez da baliozko ostalari-izen fidagarria
+
 update_err=Huts egin du moduluak eguneratzean
 update_eurl=Eguneratzeko URL falta edo baliogabea
 update_title=Eguneratzeko moduluak
@@ -762,6 +790,7 @@ update_rv=Webmin modulu eguneratuak kontsultatzen $1
 update_eemail=Helbide elektronikoa idatzi behar duzu eguneratuko litzatekeena soilik erakusten bada.
 update_subject=Webmin moduluak eguneratzeko txostena
 update_version=Deskargatzeko eskuragarri dago Webmin ($1) bertsio berria. Etorkizuneko eguneratzeak azken bertsiorako soilik kaleratuko dira.
+
 anon_title=Sarbide anonimoak
 anon_desc=Orrialde honek hautatutako Webmin modulu eta bideetara sartzeko aukera ematen du bezeroak saioa hasi beharrik izan gabe. Jarraian sartzen duzun moduluko bide bakoitzerako (adibidez, <tt>/custom</tt> edo <tt>/passwd</tt>) Webmin erabiltzaile baten izena ere idatzi behar duzu, haren baimenak sartzeko erabiliko baita modulua.
 anon_desc2=Kontu handiz ibili beharko duzu sarbide anonimoa ematean, izan ere, IP sarbide kontrol nahikoa edo gaizki modulurako sarbidea emateak erasotzaileei zure sistema bereganatzea baimendu diezaieke.
@@ -770,15 +799,19 @@ anon_user=Webmin erabiltzailea
 anon_err=Ezin izan da sarbide anonimoa gorde
 anon_eurl='$1' ez da baliozko URL bidea
 anon_euser=Webmin erabiltzailearen falta edo baliogabea URL bidea '$1'
+
 enogpg=GnuPG ez dago instalatuta
+
 standard_failed=Ezin izan da moduluen zerrenda deskargatu : $1
 standard_header=Webmin modulu estandarrak
 standard_warn=Abisua: ez zara Webmin azken bertsioa exekutatzen $1, beraz, modulu hauek ez dira instalatuko seguruenik.
 standard_eurl=Modulu estandarren URL baliogabea
+
 third_failed=Ezin izan da moduluen zerrenda deskargatu : $1
 third_header=Hirugarrenen Webmin moduluak
 third_eurl=Hirugarrenen moduluen URL baliogabea
 third_title=Hautatu hirugarrenen modulua
+
 lock_title=Fitxategien blokeoa
 lock_desc=Berez, Webminek aldatzen duen edozein fitxategian blokeoa lortuko du hainbat prozedurekin batera aldaketak eragozteko, eta horrek fitxategien ustelkeria ekar lezake. Orrialde honek blokeoa modu selektiboan edo guztiz desgaitu dezakezu, arazoak sortzen baditu.
 lock_header=Fitxategiak blokeatzeko ezarpenak
@@ -789,6 +822,7 @@ lock_except=Blokeatu fitxategi eta direktorio guztiak ..
 lock_err=Huts egin du fitxategien blokeoa gordetzean
 lock_edir='$1' ez da bide absolutua
 lock_edirs=Ez da fitxategirik edo direktoriorik sartu
+
 ipkey_title1=Sortu SSL gakoa
 ipkey_title2=Editatu SSL gakoa
 ipkey_header=IParen berariazko SSL gakoen xehetasunak
@@ -798,6 +832,7 @@ ipkey_eip2='$1' ez da baliozko IP helbidea edo ostalariaren izena
 ipkey_eips=Ez da IP helbiderik sartu
 ipkey_eextracas=Ez da ziurtagiri gehigarririk sartu
 ipkey_eextraca=Ez dago ziurtagiri fitxategi osagarria $1
+
 descs_title=Moduluen tituluak
 descs_info=Orrialde honek Webmin moduluen ordezko izenburuak zehazteko aukera ematen du, deskribapen estandarrak gainidazteko.
 descs_mod=modulua
@@ -807,11 +842,13 @@ descs_cdesc=Klonearen izenburua
 descs_err=Ezin izan da moduluaren tituluak gordetzea
 descs_edesc='$1' moduluko izenburua falta da
 descs_etitle='$1' klonari izenburua falta zaio
+
 export_err=Ezin izan da moduluak esportatu
 export_ecmd=Falta da $1 komandoa
 export_efile=Esportazio fitxategi falta edo baliogabea
 export_done=Hautatutako moduluak $1 esportatu ditu.
 export_title=Esportazio moduluak
+
 advanced_title=Aukera aurreratuak
 advanced_header=Aukera aurreratuak eta esperimentalak
 advanced_temp=Aldi baterako fitxategien direktorio
@@ -855,10 +892,13 @@ advanced_listdir=Zerrendako direktoriorik aurkibiderik gabeko fitxategirik?
 advanced_headers=HTTP goiburu gehigarriak
 advanced_eheader=Goiburuak <tt>Goiburua: balioa</tt> bezalako formateatu behar dira
 advanced_sortconfigs=Gorde ezazu bere gakoen arabera ordenatutako fitxategiak?
+
 syslog_errorlog=Webmin akatsen erregistroa
+
 clear_title=Garbitu deskargatu memoria
 clear_done=$2 URLetako fitxategien $1 dituen Webmin cachea ondo garbitu da.
 clear_none=Une honetan ez dago URLrik Webmin deskargatzeko cachean.
+
 savekey_err=Huts egin du gako berria gordetzean
 savekey_ekey=PEM formatuaren gako falta edo baliogabea
 savekey_ecert=PEM formatuaren ziurtagiri falta edo baliogabea
@@ -868,6 +908,7 @@ savekey_title=Kargatu lehendik dagoen gakoa
 savekey_done2=Hornitutako SSL gakoa $1 gorde da eta $2 en ziurtagiria.
 savekey_done=SSL gakoa eta ziurtagiria $1 fitxategian gorde dira.
 savekey_done3=SSL ziurtagiri kateatua $1 fitxategian gorde da.
+
 cache_title=Memorizatutako URLak
 cache_search=Bilatu hemengo URLak:
 cache_ok=Search
@@ -880,8 +921,10 @@ cache_delete=Sakatu hautatuta Cache-tik
 cache_err=Huts egin du cacheko URLak itxi gabe
 cache_enone=Ez da hautatu
 cache_efile=Fitxategi-izen baliogabea
+
 restart_title=Webmin berrabiarazten
 restart_done=Webmin zerbitzariaren prozesua berrabiarazten ari da. Mesedez, itxaron segundo batzuk jarraitu aurretik.
+
 mobile_title=Gailu mugikorrerako aukerak
 mobile_header=Arakatzaile mugikorretarako aukerak
 mobile_theme=Nabigatzaile mugikorrentzako gaia
@@ -890,6 +933,7 @@ mobile_nosession=HTTP autentikazioaren erabilera behartu?
 mobile_agents=Mugikorretarako arakatzaileen erabiltzaile eragileak
 mobile_err=Ezin izan da gailu mugikorraren aukerak gorde
 mobile_prefixes=Nabigatzaile mugikorretarako URL ostalariaren aurrizkiak
+
 blocked_title=Erabiltzaile eta erabiltzaile blokeatuak
 blocked_type=Mota
 blocked_who=Ostalariaren izena edo erabiltzaile izena
@@ -901,9 +945,11 @@ blocked_host=Bezero ostalaria
 blocked_clear=Garbitu bloke guztiak
 blocked_cleardesc=Egin klik botoi honetan uneko ostalari eta erabiltzaile bloke guztiak garbitzeko, Webmin zerbitzariaren prozesua berrabiaraziz.
 blocked_restarting=Webmin zerbitzariaren prozesua berriro hasten da blokeatutako ostalariak eta erabiltzaileak garbitzeko. Mesedez itxaron segundo batzuk jarraitu aurretik.
+
 refreshmods_title=Eguneratu moduluak
 refreshmods_installed=Webmin modulu erabilgarriak egiaztatzen ..
 refeshmods_counts=.. aurkitu da $2 instalatutako aplikazioekin, $1 ez da instalatu.
+
 debug_title=Arazketa erregistroko fitxategia
 debug_header=Webmin arazketa erregistro fitxategiaren aukerak
 debug_enabled=Arazketa erregistroa gaituta dago?
@@ -931,6 +977,7 @@ debug_cmd=Komando lerroa
 debug_cron=Aurrekariak lanpostuak
 debug_inmods=Arazketa erregistroak idazteko moduluak
 debug_emodules=Ez dago modulurik hautatuta arazteko
+
 notif_passexpired=Zure Webmin pasahitza iraungi da! Hurrengo saioa hastera aldatu beharko zara.
 notif_passchange=Zure Webmin pasahitza $1 egunetan aldatu da eta $2 egunetan aldatu behar da.
 notif_passlock=Zure Webmin pasahitza $1 egunetan aldatu da, eta zure kontua $2 egunetan blokeatuko da aldatzen ez bada.
@@ -946,6 +993,7 @@ notify_updatedesc=Arazoak konpontzen ditu
 notif_updateok=Instalatu eguneraketak orain
 notif_reboot=Paketeen eguneratze berriek (hala nola, nukleo bertsio berria) berrabiarazpena guztiz aplikatu behar dute.
 notif_rebootok=Berrabiarazi orain
+
 status_title=Atzeko planoaren egoera bilduma
 status_header=Egoera bilketaren lanaren ezarpenak
 status_interval=Bildu sistemaren egoera atzealdean?
@@ -957,6 +1005,7 @@ status_temp=Bildu diskoko tenperaturak?
 status_units=Tenperaturak egiteko unitateak
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+
 sendmail_title=Posta elektronikoa bidaltzen
 sendmail_desc=Orrialde honek Webminak posta elektronikoa nola bidaltzen duen kontrolatzen du, hala nola, babeskopia programatuetatik edo atzeko planoko jarraipenetatik. Irakurri Erabiltzailearen posta modulua erabiliz bidalitako mezu elektronikoak ere eragina du.
 sendmail_header=Posta bidaltzeko aukerak
@@ -997,12 +1046,14 @@ sendmail_url=Webmin URLa posta elektronikoan erabiltzeko
 sendmail_url_def=Lehenetsia ($1)
 sendmail_url_custom=URL pertsonalizatua
 sendmail_eurl=URL pertsonalizatua falta da edo baliogabea da
+
 testmail_title=Bidali proba elektronikoa
 testmail_err=Ezin izan da proba-mezua bidali
 testmail_eto=Ez da helburuko helbiderik sartu
 testmail_sending=$1 mezua bidaltzen $2 ..
 testmail_done=.. mezua bidali da. Begiratu helbideko postontzia benetan entregatu dela ziurtatzeko.
 testmail_failed=.. huts egin du bidaltzeak : $1
+
 web_title=Web zerbitzariaren aukerak
 web_header=Webmin-ek integratutako web zerbitzariaren aukerak
 web_expires=Fitxategi estatikoetarako bezeroaren cache denbora
@@ -1014,6 +1065,7 @@ web_expirespaths=Bezeroaren alboko katxeko aldiz URL bidean oinarritutakoak
 web_expirespath=Bidea adierazpen erregularra
 web_expirestime=Cache denbora segundo batzuetan
 web_eexpires2=Bezeroaren alboko cache-denbora edo ez-zenbaki bat falta da errenkadan $1
+
 webmincron_title=Webmin programatutako funtzioak
 webmincron_emodule=Webmin Cron Jobs modulua ez dago instalatuta!
 webmincron_module=Webmin modulua
@@ -1037,6 +1089,7 @@ webmincron_when1=Ordutegi zehatzak
 webmincron_secs=segundutan
 webmincron_err=Ezin izan da programatutako funtzioa gorde
 webmincron_einterval=Tarteak zero baino segundo gehiago izan behar du
+
 twofactor_title=Bi faktoreen autentikazioa
 twofactor_header=Bi faktoreen autentikazio aukerak
 twofactor_provider=Autentifikazio hornitzailea
@@ -1075,6 +1128,7 @@ twofactor_secret1=Ausaz sortu da
 twofactor_secret0=Erabili 16 karaktere gakoa
 twofactor_esecret=Gako sekretuak 16 karaktere luze izan behar ditu eta letrak eta zenbakiak bakarrik eduki behar ditu
 twofactor_esession=Bi faktoreren autentikazioa ezin da erabili saioan oinarritutako autentikazioa aktibatuta egon ezean
+
 letsencrypt_title=Zifratu Ziurtagiri Eskaera
 letsencrypt_err=Ezin izan da ziurtagiria eskatu
 letsencrypt_ecmds=Ez ditzagun zure sistemako Letrak enkriptatu <tt>certbot</tt> edo <tt>python</tt> komandoa
@@ -1108,5 +1162,6 @@ letsencrypt_ecsr=Huts egin du CSR sortzen denean : $1
 letsencrypt_ekeygen=Ezin izan da gako pribatua sortzen : $1
 letsencrypt_enative=Let's Encrypt bezero jatorria (certbot) lehenago erabili zen sistema honetan eta etorkizunean ziurtagiri-eskaera guztietarako erabili behar da
 letsencrypt_eacmedns=Letrak Encrypt bezero ofizialak soilik onartzen ditu DNSetan oinarritutako balioztapena
+
 announce_hide=Ezkutatu iragarki hau
 alert_hide=Alerta ezkutatu

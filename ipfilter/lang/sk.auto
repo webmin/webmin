@@ -43,8 +43,10 @@ index_natnone=Zatiaľ neboli definované žiadne pravidlá pre preklad sieťový
 index_nataction=Režim NAT
 index_natfrom=Balíčky na zápas
 index_natto=preklad
+
 dir_in=prichádzajúce
 dir_out=Vychádzajúce
+
 action_pass=<font color=#00aa00>Pass</font>
 action_block=<font color=#ff0000>Block</font>
 action_skip=skip
@@ -57,6 +59,7 @@ action_map=mapovanie
 action_rdr=presmerovanie
 action_bimap=Obojsmerné mapovanie
 action_map-block=Blokové mapovanie
+
 laction_pass=<font color=#00aa00>Pass paket</font>
 laction_block=<font color=#ff0000>Blokovať paket s kódom ICMP</font>
 laction_log=Paket denníka na úrovni
@@ -65,6 +68,7 @@ laction_skip=Preskočiť ďalšie pravidlá
 laction_auth=Autorizácia v užívateľskom priestore
 laction_preauth=Skontrolujte predchádzajúcu autorizáciu
 laction_call=Zavolajte funkciu jadra
+
 edit_title1=Vytvoriť pravidlo
 edit_title2=Upraviť pravidlo
 edit_header1=Pravidlo konania
@@ -130,6 +134,7 @@ edit_icmp=Typ ICMP
 edit_icmpany=&lt;Akýkoľvek typ&gt;
 edit_icmpcode=a kód
 edit_codeany=&lt;Ľubovoľný kód&gt;
+
 save_err=Nepodarilo sa uložiť pravidlo
 save_ehostfrom=Chýba alebo je neplatný zdrojový názov hostiteľa
 save_ehostto=Chýbajúci alebo neplatný cieľový názov hostiteľa
@@ -158,11 +163,13 @@ save_eto=Chýbajúce alebo neplatné rozhranie na odoslanie
 save_etoip=Neplatná adresa IP na odoslanie
 save_ereplyto=Chýbajúce alebo neplatné rozhranie, na ktoré môžete odpovedať
 save_ereplytoip=Neplatná adresa IP, na ktorú môžete odpovedať
+
 apply_err=Nepodarilo sa použiť konfiguráciu
 apply_remote=Chyba od $1 : $2 
 unapply_err=Nepodarilo sa vrátiť konfiguráciu
 unapply_ein=Nepodarilo sa získať pravidlá vstupu
 unapply_eout=Nepodarilo sa získať pravidlá výstupu
+
 desc_if=Ak $1 
 desc_and=a
 desc_always=vždy
@@ -196,6 +203,7 @@ desc_rdr=IP adresy $1 port $2
 desc_dport1=port je $1 
 desc_dport2=port je medzi $1 a $2 
 desc_nattoiface=adresa rozhrania
+
 log_create_rule=Vytvorené pravidlo $1 
 log_delete_rule=Odstránené pravidlo $1 
 log_modify_rule=Upravené pravidlo $1 
@@ -224,6 +232,7 @@ log_add_host=Pridaný klastrový server $1
 log_add_group=Pridané klastrové servery zo skupiny $1 
 log_delete_host=Server klastra $1 bol odstránený
 log_delete_group=Odstránené klastrové servery $1 
+
 cluster_title=Servery Firewall klastra
 cluster_none=Do klastra brány firewall zatiaľ neboli pridané žiadne servery.
 cluster_host=Meno hosťa
@@ -234,6 +243,7 @@ cluster_gadd=Pridajte servery do skupiny
 cluster_need=Predtým, ako ich budete môcť spravovať, musíte do modulu Webmin Servers Index pridať servery s prihlasovacím menom a heslom.
 cluster_return=klastrové servery
 cluster_delete=Vymazať označené
+
 add_title=Pridať servery
 add_msg=Pridáva sa $1 ..
 add_gmsg=Pridávanie serverov do skupiny $1 ..
@@ -242,6 +252,7 @@ add_gerr=Nepodarilo sa pridať skupinu
 add_echeck=Server $1 nemá modul brány firewall IPFilter
 add_emissing=Serveru $1 chýba príkaz brány firewall $2 
 add_ok=Pridané $1, s $2 aktívnymi pravidlami brány firewall.
+
 nat_title1=Vytvorte pravidlo NAT
 nat_title2=Upraviť pravidlo NAT
 nat_action=Režim NAT
@@ -300,4 +311,5 @@ nat_edport2=Chýba alebo je neplatný koncový pôvodný port
 net_erdrip=$1 nie je platná cieľová adresa IP
 nat_erdrips=Nezadali sa žiadne cieľové adresy IP
 nat_erdrport=Chýba alebo je neplatný cieľový port
+
 boot_esmf=Služba SMF $1 neexistuje alebo nie je v známom stave

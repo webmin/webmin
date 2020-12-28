@@ -20,6 +20,7 @@ index_nostrftime=Cảnh báo - một số công việc sao lưu sử dụng % tr
 index_tabsched=Sao lưu theo lịch trình
 index_tabbackup=Sao lưu ngay
 index_tabrestore=Khôi phục ngay
+
 edit_title1=Tạo sao lưu theo lịch trình
 edit_title2=Chỉnh sửa sao lưu theo lịch trình
 edit_header=Tùy chọn sao lưu theo lịch trình
@@ -44,9 +45,11 @@ edit_return=hình thức dự phòng
 edit_other=Các tập tin được liệt kê khác ..
 edit_pre=Lệnh dự phòng
 edit_post=Lệnh hậu dự phòng
+
 save_err=Không thể lưu bản sao lưu
 save_emods=Không có mô-đun được chọn
 save_ewebmin=Cả tệp cấu hình máy chủ và webmin đều không được chọn
+
 backup_mode0=Tập tin cục bộ
 backup_mode1=Máy chủ ftp
 backup_mode2=Máy chủ SSH
@@ -63,6 +66,7 @@ backup_egunzip=Sao lưu được nén, nhưng <tt>gunzip</tt> chưa được cà
 backup_euntar=Un-TAR thất bại : $1 
 backup_enone2=Không có tệp nào cho các mô-đun được chọn nằm trong bản sao lưu
 backup_epre2=Mô-đun $1 bị từ chối khôi phục : $2 
+
 backup_err=Sao lưu thất bại
 backup_edest=Thiếu hoặc không hợp lệ tệp cục bộ tuyệt đối
 backup_eserver1=Máy chủ FTP bị thiếu hoặc không hợp lệ
@@ -78,6 +82,7 @@ backup_title=Cấu hình sao lưu
 backup_doing=Bắt đầu sao lưu các tệp cấu hình mô-đun thành $1 ..
 backup_failed=.. thất bại! $1 
 backup_done=.. hoàn thành. Kích thước sao lưu cuối cùng là $1, chứa $2 tệp.
+
 restore_err=Khôi phục thất bại
 restore_emods=Không có mô-đun hoặc tập tin khác được chọn
 restore_title=Khôi phục cấu hình
@@ -86,22 +91,26 @@ restore_testing=Trích xuất nội dung sao lưu từ $1 ..
 restore_failed=.. thất bại! $1 
 restore_done=.. hoàn thành. $1 tập tin đã được khôi phục.
 restore_done2=.. tập tin trong bản sao lưu là :
+
 nice_ftp=$2 trên $1 qua FTP
 nice_ftpp=$2 trên $1 cổng $3 qua FTP
 nice_ssh=$2 trên $1 qua SSH
 nice_sshp=$2 trên $1 cổng $3 qua SSH
 nice_upload=tập tin tải lên
 nice_download=trình duyệt
+
 log_backup=Đã sao lưu $1 mô đun thành $2 
 log_restore=Đã khôi phục $1 mô-đun từ $2 
 log_create_backup=Đã tạo bản sao lưu của các mô-đun $1 thành $2 
 log_modify_backup=Sao lưu đã sửa đổi mô-đun $1 thành $2 
 log_delete_backup=Đã xóa bản sao lưu của mô-đun $1 thành $2 
 log_run_backup=Đã thực hiện sao lưu các mô đun $1 thành $2 
+
 run_title=Cấu hình sao lưu
 run_doing=Bắt đầu sao lưu mô-đun $1 thành $2 ..
 run_ok=.. sao lưu hoàn tất thành công.
 run_failed=.. sao lưu thất bại! Xem thông báo lỗi ở trên để biết lý do tại sao.
+
 email_mods=Sao lưu mô-đun :
 email_failed=đến $1 không thành công :
 email_ok=đến $1 đã thành công.

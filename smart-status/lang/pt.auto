@@ -25,6 +25,7 @@ index_family=Família modelo
 index_serial=Número de série
 index_capacity=Capacidade
 index_norm=Normalizado:
+
 monitor_type=Verificação de unidade SMART
 monitor_type2=Desgaste do SSD
 monitor_drive=Dirija para verificar
@@ -40,14 +41,17 @@ monitor_wearlevel=Falha se o nível de desgaste cair abaixo
 monitor_ewearlevel=Porcentagem inválida do nível de desgaste
 monitor_nowearout=O drive não relata um indicador de desgaste do SSD
 monitor_wornout=O nível de desgaste caiu para $1 
+
 short_title=Autoteste curto
 short_doing=Iniciando um autoteste curto de $1 ..
 short_failed=.. falhou!
 short_ok=.. teste iniciado OK. Veja o status do inversor na página principal do módulo para obter os resultados.
+
 ext_title=Autoteste estendido
 ext_doing=Iniciando o autoteste estendido de $1 ..
 ext_failed=.. falhou!
 ext_ok=.. teste iniciado OK. Veja o status do inversor na página principal do módulo para obter os resultados.
+
 data_title=Teste de Coleta de Dados
 data_doing=Iniciando a coleta de dados offline em $1 ..
 data_failed=.. falhou!

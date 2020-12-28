@@ -18,10 +18,12 @@ index_version=Phiên bản PPPd $1
 index_boot=Kết nối khi khởi động:
 index_noboot=&lt;Không kết nối&gt;
 index_bootdesc=Thay đổi tùy chọn này để kiểm soát xem kết nối VPN PPTP được chọn có bắt đầu lúc khởi động hay không.
+
 disc_err=Không thể ngắt kết nối đường hầm
 disc_egone=Không còn hoạt động
 disc_ekill=Không thể giết quá trình pppd
 disc_done=Đường hầm $1 đã được ngắt kết nối thành công.
+
 conn_err=Không thể kết nối đường hầm
 conn_egone=Đường hầm không còn tồn tại
 cone_ealready=Đã kết nối
@@ -32,6 +34,7 @@ conn_ok=.. kết nối được kích hoạt thành công bằng giao diện $1.
 conn_timeout=.. Kết nối thất bại! Kiểm tra các thông điệp tường trình dưới đây để biết thông tin tại sao.
 conn_routes=Thêm tuyến bằng lệnh ..
 conn_mppe=Giao thức MPPE để mã hóa VPN yêu cầu hỗ trợ nhân daemon và kernel. Tuy nhiên, các lỗi trên cho thấy rằng một hoặc cả hai không có sẵn trên hệ thống của bạn. Nếu máy chủ PPTP không yêu cầu MPPE, hãy thử tắt tất cả các tùy chọn liên quan đến nó trên trang <a href='$1'>tùy chọn PPP toàn cầu</a>.
+
 edit_title1=Thêm đường hầm PPTP
 edit_title2=Chỉnh sửa đường hầm PPTP
 edit_header=Tùy chọn đường hầm VPN PPTP
@@ -60,6 +63,7 @@ edit_file=Tệp tùy chọn PPP
 edit_none=không ai
 edit_global=Tập tin toàn cầu tiêu chuẩn
 edit_ofile=Tập tin khác ..
+
 save_err=Không thể lưu đường hầm
 save_ename=Tên đường hầm bị thiếu
 save_eserver=Máy chủ bị thiếu hoặc không hợp lệ để kết nối với
@@ -75,6 +79,7 @@ save_egw2=Cổng không hợp lệ cho máy chủ trong tuyến $1
 save_erename=Không thể đặt lại tên tệp đường hầm
 save_eclash=Một đường hầm hoặc ngang hàng ngang hàng với cùng tên đã tồn tại
 save_efile=Tệp tùy chọn PPP bị thiếu hoặc không hợp lệ
+
 opts_title=Tùy chọn PPP toàn cầu
 opts_desc=Các cài đặt bên dưới được lấy từ $1 và sẽ áp dụng cho tất cả các đường hầm được đặt để sử dụng tệp tùy chọn PPP toàn cầu tiêu chuẩn.
 opts_header=Tùy chọn PPP cho tất cả các đường hầm
@@ -84,6 +89,7 @@ opts_err=Không thể lưu các tùy chọn PPP toàn cầu
 opts_emtu=Thiếu kích thước gói gửi tối đa hoặc không hợp lệ
 opts_emru=Thiếu kích thước gói nhận tối đa hoặc không hợp lệ
 opts_msdesc=Các tùy chọn bên dưới cho phép mã hóa MPPE, được sử dụng bởi các máy chủ Windows VPN. Tuy nhiên, MPPE yêu cầu hỗ trợ trong cả daemon PPP và nhân hệ điều hành.
+
 mppe_mppe-40=Sử dụng mã hóa MPPE 40 bit?
 mppe_mppe-128=Sử dụng mã hóa MPPE 128 bit?
 mppe_mppe-stateless=Cho phép chế độ MPPE không trạng thái?
@@ -95,6 +101,7 @@ mppe_d1=Được phép
 mppe_mppe-stateful=Kích hoạt chế độ MPPE trạng thái?
 mppe_old=Cảnh báo - Các chỉ thị MPPE kiểu cũ $1 đã được tìm thấy trong tệp cấu hình của bạn, mặc dù trình nền PPP của bạn hỗ trợ các chỉ thị kiểu mới.
 mppe_new=Cảnh báo - Các chỉ thị MPPE kiểu mới $1 đã được tìm thấy trong tệp cấu hình của bạn, mặc dù trình nền PPP của bạn chỉ hỗ trợ các chỉ thị kiểu cũ.
+
 log_create=Đã tạo đường hầm PPTP $1 
 log_update=Đường hầm PPTP được sửa đổi $1 
 log_delete=Đã xóa đường hầm PPTP $1 

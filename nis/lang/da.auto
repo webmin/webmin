@@ -2,6 +2,7 @@ index_title=NIS klient og server
 index_return=NIS-menu
 index_enis=Din maskine ser ikke ud til at have NIS-klient- eller serverstøtte installeret.
 index_enis2=Kun klientservicefunktionen i dette modul kan bruges.
+
 client_title=NIS-klient
 client_header=NIS-klientkonfiguration
 client_domain=NIS domæne
@@ -17,10 +18,12 @@ client_eserver='$1' er ikke et gyldigt servernavn
 client_eypwhich=kunne ikke binde til NIS-domæne
 client_ehosts='$1' er ikke i værtsfilen
 client_enis=Din maskine ser ikke ud til at have NIS-klientsupport installeret.
+
 switch_title=Kundeservices
 switch_service=Service
 switch_srcs=Data kilder
 switch_return=klienttjenester
+
 order_=&nbsp;
 order_nisplus=NIS +
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=Brugerprintere
 order_xfn=XFN
+
 server_title=NIS-server
 server_header=NIS-serverindstillinger
 server_boot=Aktivér NIS-server?
@@ -65,6 +69,7 @@ server_solaris=Bemærk - på Solaris er klient- og server-NIS-domænerne altid d
 server_edir=Ugyldigt kildefilkatalog
 server_epwdir=Ugyldigt bibliotek for adgangskodekildefiler
 server_enis=Din maskine ser ikke ud til at have NIS-server support installeret.
+
 tables_title=NIS-borde
 tables_switch=Rediger NIS-tabel :
 tables_header=$1 NIS-tabel fra $2 
@@ -81,6 +86,7 @@ tables_search=Søg
 tables_nomatch=Ingen poster matchede din søgning
 tables_build=Genopbyg NIS-borde
 tables_buildmsg=Klik på denne knap for at genopbygge NIS-databaserne fra tabeldataene. Hvis du har foretaget ændringer, skal du gøre dette for at gøre dem tilgængelige for NIS-klienter.
+
 desc_aliases=Sendmail aliaser
 desc_mail=Sendmail aliaser
 desc_hosts=Værtsadresser
@@ -116,6 +122,7 @@ desc_printers=Printere
 desc_ipnodes=IP-noder
 desc_timezone=Tidszoner
 desc_locale=locales
+
 hosts_title=Værtsadresse
 hosts_ip=IP-adresse
 hosts_name=Værtsnavn
@@ -124,6 +131,7 @@ hosts_err=Kunne ikke gemme værten
 hosts_eip=Manglende eller ugyldig IP-adresse
 hosts_ename=Manglende eller ugyldigt værtsnavn
 hosts_aliases=aliasser
+
 group_name=Gruppe navn
 group_gid=Gruppe-id
 group_members=Gruppemedlemmer
@@ -134,6 +142,7 @@ group_none=Ingen adgangskode kræves
 group_encrypted=Forkrypteret adgangskode
 group_clear=Normal adgangskode
 group_err=Gruppen blev ikke gemt
+
 passwd_name=Brugernavn
 passwd_uid=bruger ID
 passwd_real=Rigtige navn
@@ -171,6 +180,7 @@ passwd_emax=Ugyldigt maksimum antal dage
 passwd_emin=Ugyldigt minimum antal dage
 passwd_einactive=Ugyldigt antal inaktive dage
 passwd_eexpiry=Ugyldig udløbsdato
+
 services_name=Servicenavn
 services_proto=protokol
 services_port=Havn
@@ -179,6 +189,7 @@ services_header=Indstillinger for netværkstjeneste
 services_err=Kunne ikke gemme tjenesten
 services_ename=Manglende eller ugyldigt servicenavn
 services_eport=Manglende eller ugyldig port
+
 protocols_name=Protokolnavn
 protocols_number=Nummer
 protocols_aliases=aliasser
@@ -187,6 +198,7 @@ protocols_header=Indstillinger for netværksprotokol
 protocols_err=Kunne ikke gemme protokollen
 protocols_ename=Manglende eller ugyldigt navn
 protocols_enumber=Manglende eller ugyldigt nummer
+
 netgroup_name=Netgruppens navn
 netgroup_members=Medlemmer
 netgroup_title=Network Group
@@ -201,6 +213,7 @@ netgroup_ename=Manglende eller ugyldigt netgruppens navn
 netgroup_ehost=Manglende eller ugyldig vært i række $1 
 netgroup_euser=Manglende eller ugyldig bruger i række $1 
 netgroup_edom=Manglende eller ugyldigt NIS-domæne i række $1 
+
 ethers_mac=Ethernet-adresse
 ethers_ip=IP-adresse
 ethers_title=Ethernet-adresse
@@ -208,6 +221,7 @@ ethers_header=Ethernet-kortlægningsmuligheder
 ethers_err=Kunne ikke gemme ethernet-adresse
 ethers_emac=Ugyldig Ethernet-adresse
 ethers_eip=Ugyldig IP-adresse
+
 rpc_name=Programnavn
 rpc_number=Nummer
 rpc_aliases=aliasser
@@ -216,6 +230,7 @@ rpc_header=Detaljer om RPC-programmet
 rpc_err=Kunne ikke gemme RPC-programmet
 rpc_ename=Manglende eller ugyldigt programnavn
 rpc_enumber=Manglende eller ugyldigt nummer
+
 networks_title=Netværksadresse
 networks_ip=IP-adresse
 networks_name=Netværksnavn
@@ -224,6 +239,7 @@ networks_err=Kunne ikke gemme netværket
 networks_eip=Manglende eller ugyldig IP-adresse
 networks_ename=Manglende eller ugyldigt navn
 networks_aliases=aliasser
+
 netmasks_net=Netværksadresse
 netmasks_mask=netmaske
 netmasks_title=netmaske
@@ -231,6 +247,7 @@ netmasks_header=Detaljer om netværksmaske
 netmasks_err=Kunne ikke gemme netmasken
 netmasks_enet=Manglende eller ugyldig netværksadresse
 netmasks_emask=Manglende eller ugyldig netmaske
+
 aliases_from=Adresse
 aliases_to=Alias til
 aliases_title=Sendmail-alias
@@ -238,6 +255,7 @@ aliases_header=Sendmail alias detaljer
 aliases_err=Kunne ikke gemme alias
 aliases_efrom=Manglende eller ugyldig adresse
 aliases_eto=Mangler til adresser
+
 security_title=Server sikkerhed
 security_header=NIS-serversikkerhedsindstillinger
 security_ok=Gem og anvend
@@ -266,6 +284,7 @@ security_sec_des=Kræv DES
 security_ehost='$1' er ikke et gyldigt værtsnavn
 security_emap='$1' er ikke et gyldigt NIS-bord
 security_efield='$1' er ikke et gyldigt feltnummer
+
 eswitch_title=Rediger service
 eswitch_egone=Service findes ikke!
 eswitch_header=Serviceoplysninger

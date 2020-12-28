@@ -12,10 +12,12 @@ index_restart=Fail2Ban Sunucusunu Yeniden Başlat
 index_restartdesc=Fail2Ban sunucusunu yeniden başlatarak geçerli yapılandırmayı uygulamak için bu düğmeyi tıklatın.
 index_return=modül dizini
 index_header=Fail2Ban modülü
+
 check_edir=$1 yapılandırma dizini mevcut değil
 check_econf=$1 içindeki $2 yapılandırma dosyası mevcut değil
 check_eclient=$1 istemci komutu bulunamadı
 check_eserver=$1 sunucu komutu bulunamadı
+
 filters_title=Günlük Filtreleri
 filters_name=Filtre adı
 filters_re=Düzenli ifade
@@ -25,6 +27,7 @@ filters_return=filtre listesi
 filters_derr=Filtreler silinemedi
 filters_enone=Hiçbiri seçilmedi
 filters_einuse=$1 filtresi, hapishaneler tarafından kullanıldığı için silinemiyor : $2 
+
 filter_title1=Filtre Oluştur
 filter_title2=Filtreyi Düzenle
 filter_desc=Bir ana bilgisayar adının veya IP adresinin görünmesi gereken normal ifadelerde <i>&lt;HOST&gt;</i> kullanın.
@@ -39,6 +42,7 @@ filter_ename=Eksik veya geçersiz filtre adı
 filter_eclash=Filtre adı zaten kullanılıyor
 filter_efail=Eşleşecek normal ifade girilmedi
 filter_einuse=Bu filtre, hapishaneler tarafından kullanıldığı için silinemez : $1 
+
 actions_title=Maç İşlemleri
 actions_name=İşlem adı
 actions_ban=Yasakla komutu
@@ -48,6 +52,7 @@ actions_return=eylemler listesi
 actions_derr=İşlemler silinemedi
 actions_enone=Hiçbiri seçilmedi
 actions_einuse=$1 işlemi, hapishaneler tarafından kullanıldığı için silinemiyor : $2 
+
 action_title1=Eşleme İşlemi Oluştur
 action_title2=Eşleşme İşlemini Düzenle
 action_header=Eylem ayrıntılarını eşleştir
@@ -64,6 +69,7 @@ action_ban=Bir IP'yi yasaklama komutu
 action_unban=Bir IP'nin yasağını kaldırma komutu
 action_desc=<i>&lt;ip&gt;</i> yerine IP adresi yasaklandı.
 action_einuse=Bu eylem, hapishaneler tarafından kullanıldığı için silinemez : $1 
+
 jails_title=Filtre Hapishaneleri
 jails_add=Yeni bir hapishane ekle.
 jails_name=Hapishane adı
@@ -76,6 +82,7 @@ jails_defdesc=Gerekli eşleşmelerin sayısı ve bir IP'nin yasaklanacağı zama
 jails_return=hapishane listesi
 jails_derr=Hapishaneler silinemedi
 jails_enone=Hiçbiri seçilmedi
+
 jail_title1=Hapis Yarat
 jail_title2=Hapishaneyi Düzenle
 jail_header=Eylem hapishane ayrıntılarını filtrele
@@ -115,13 +122,16 @@ jail_banaction=Uygulanacak varsayılan eylem
 jail_defprotocol=Eylemler için varsayılan protokol
 jail_edestemail=Eksik veya geçersiz varsayılan bildirim e-posta adresi
 jail_eignoreip=Yoksaymak için geçersiz IP adresi
+
 jaildef_title=Varsayılan Hapishane Seçenekleri
 jaildef_header=Tüm hapishaneler için varsayılanlar
 jaildef_err=Varsayılan hapishane seçenekleri kaydedilemedi
 jaildef_egone=VARSAYILAN hapishane bulunamadı!
+
 start_err=Sunucu başlatılamadı
 stop_err=Sunucu durdurulamadı
 restart_err=Sunucu yeniden başlatılamadı
+
 log_create_filter=$1 filtresi oluşturuldu
 log_update_filter=Değiştirilmiş filtre $1 
 log_delete_filter=$1 filtre silindi
@@ -139,6 +149,7 @@ log_atboot=Önyükleme zamanında Fail2Ban etkinleştirildi
 log_delboot=Önyükleme zamanında Fail2Ban devre dışı
 log_manual=$1 düzenlenmiş yapılandırma dosyası
 log_jaildef=Değiştirilmiş varsayılan hapishane seçenekleri
+
 config_title=Global Yapılandırma
 config_edef=Yapılandırma dosyasında Tanım bölümü bulunamadı!
 config_header=Fail2Ban için yapılandırma ayarları
@@ -151,10 +162,12 @@ config_socket=Sunucu ile iletişim için soket
 config_err=Genel yapılandırma kaydedilemedi
 config_elogtarget=Günlükleri yazılacak dosya mutlak bir yol olmalıdır
 config_esocket=Soket dosyası mutlak bir yol olmalıdır
+
 manual_title=Yapılandırma Dosyalarını Düzenle
 manual_desc=Düzenlenecek dosya:
 manual_ok=tamam
 manual_efile=Seçilen dosya Fail2Ban yapılandırmasının bir parçası değil!
 manual_err=Yapılandırma dosyası düzenlenemedi
 manual_edata=Hiçbir yapılandırma dosyası içeriği girilmedi
+
 syslog_logtarget=Fail2Ban eylem günlüğü

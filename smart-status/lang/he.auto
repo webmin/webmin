@@ -25,6 +25,7 @@ index_family=משפחת דוגמניות
 index_serial=מספר סידורי
 index_capacity=קיבולת
 index_norm=מנורמל:
+
 monitor_type=בדיקת כונן SMART
 monitor_type2=SSD Wearout
 monitor_drive=סע לבדוק
@@ -40,14 +41,17 @@ monitor_wearlevel=כשל אם רמת הבלאי נופלת מתחת
 monitor_ewearlevel=אחוז רמת בלאי לא חוקי
 monitor_nowearout=Drive אינו מדווח על מחוון אריגת SSD
 monitor_wornout=רמת הבלאי ירדה ל- $1 
+
 short_title=מבחן עצמי קצר
 short_doing=החל מבדיקה עצמית קצרה של $1 ..
 short_failed=.. נכשל!
 short_ok=.. הבדיקה התחילה בסדר. ראה את מצב הכונן בעמוד הראשי של המודול לקבלת התוצאות.
+
 ext_title=מבחן עצמי מורחב
 ext_doing=החל מבדיקה עצמית מורחבת של $1 ..
 ext_failed=.. נכשל!
 ext_ok=.. הבדיקה התחילה בסדר. ראה את מצב הכונן בעמוד הראשי של המודול לקבלת התוצאות.
+
 data_title=מבחן איסוף נתונים
 data_doing=החל באיסוף נתונים לא מקוון ב- $1.
 data_failed=.. נכשל!

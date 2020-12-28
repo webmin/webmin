@@ -5,6 +5,7 @@ index_eenvpass=Klientský program MySQL $1 nepřijímá hesla předaná pomocí 
 index_ecnf=Ve vašem systému nebyl nalezen konfigurační soubor MySQL $1. Pomocí stránky <a href='$2'>konfigurace modulu</a> nastavte správnou cestu.
 index_nodbs3=Vášmu hledání neodpovídají žádné databáze MySQL.
 index_mysqlstatus=Spouštěcí skript MySQL
+
 dbase_header=Databázové tabulky, indexy a pohledy
 dbase_empty=Prázdná databáze
 dbase_name=název
@@ -14,25 +15,30 @@ dbase_type=Typ
 dbase_typetable=Stůl 1)
 dbase_typeindex=Index
 dbase_typeview=Pohled
+
 ddrop_rusure2=Opravdu chcete vyprázdnit databázi $1 ? Tabulky $2 obsahující $3 řádky dat budou smazány.
 ddrop_empty2=Odstranit všechny tabulky
+
 field_current=Aktuální čas
 field_defval=Hodnota
 field_defdef=MySQL výchozí
 field_defnone=Žádné výchozí nastavení
 field_defempty=Prázdný řetězec
 field_defleave=Neměňte
+
 view_refresh=Obnovit
 view_match4=větší než
 view_match5=méně než
 view_searchheadnot=Výsledky hledání pro ne $1 v poli $2 ..
 view_go=Jít
 view_sqlrun=Výsledky generované dotazem SQL : $1 
+
 users_syncwhen=Kdy synchronizovat
 users_ssl=Osvědčení
 users_dtitle=Smazat uživatelská oprávnění
 users_drusure=Opravdu chcete odstranit $1 vybraná uživatelská oprávnění MySQL?
 users_dok=Smazat uživatele
+
 user_vwarning=UPOZORNĚNÍ: Tento uživatel MySQL je administrační přihlašovací jméno pro doménu Virtualmin $1. Změna zde uvedených nastavení může způsobit chyby ve Virtualmin.
 user_locked=Zamčené
 user_priv_select=Vyberte data tabulky
@@ -81,26 +87,35 @@ user_emax_user_connections=Maximální souběžné přihlášení musí být č�
 user_emax_connections=Maximální počet připojení za hodinu musí být číslo
 user_emax_updates=Maximální aktualizace za hodinu musí být číslo
 user_emax_questions=Maximální počet dotazů za hodinu musí být číslo
+
 dbs_dtitle=Odstranit oprávnění databáze
 dbs_drusure=Opravdu chcete odstranit $1 vybraná oprávnění databáze MySQL?
 dbs_dok=Smazat oprávnění
+
 hosts_dtitle=Odstranit oprávnění hostitele
 hosts_drusure=Opravdu chcete odstranit $1 vybraná oprávnění hostitele MySQL?
 hosts_dok=Smazat oprávnění
 hosts_return=oprávnění hostitele
+
 newdb_collation=Pořadí řazení
+
 exec_created=Byly vytvořeny tabulky $1.
 exec_inserted=Bylo vloženo $1 záznamů.
 exec_cs=Znaková sada pro data
+
 tprivs_dtitle=Smazat oprávnění tabulky
 tprivs_drusure=Opravdu chcete smazat $1 vybraná oprávnění tabulky MySQL?
 tprivs_dok=Smazat oprávnění
+
 cprivs_dtitle=Odstranit oprávnění sloupce
 cprivs_drusure=Opravdu chcete odstranit $1 vybraná oprávnění sloupce MySQL?
 cprivs_dok=Smazat oprávnění
+
 acl_files=Je možné provádět SQL z lokálních souborů?
+
 log_root=Změněno heslo pro správu
 log_manual=Ručně upravený konfigurační soubor
+
 backup_prefix=Předpona názvu souboru
 backup_eprefix=Předpona názvu souboru nesmí obsahovat /
 backup_noprefix=Žádný
@@ -127,6 +142,7 @@ backup_bodyspace=Velikost souborového systému: $1 Volné místo : $2
 backup_bodyall=Všechno
 backup_edownloadall=Lze stáhnout pouze jednu zálohu databáze
 backup_edownloadsave=Režim stahování nelze použít pro naplánované zálohování
+
 cnf_stor=Výchozí modul úložiště tabulky
 cnf_key_buffer_size=Velikost vyrovnávací paměti klíče
 cnf_query_cache_size=Velikost mezipaměti dotazu v bajtech
@@ -139,13 +155,17 @@ cnf_restart=Uložit a restartovat MySQL
 cnf_fpt=Samostatný soubor pro každou tabulku InnoDB?
 cnf_ilt=Časový limit zámku InnoDB (v sekundách)
 cnf_eilt=Časový limit zámku InnoDB musí být celé číslo
+
 manual_title=Upravit konfigurační soubory
 manual_file=Upravit konfigurační soubor:
 manual_ok=OK
 manual_efile=Neplatný konfigurační soubor!
 manual_err=Uložení konfiguračního souboru se nezdařilo
+
 syslog_desc2=Chybová zpráva MySQL
+
 vars_desc=Varování - Proměnné nastavené na této stránce budou po restartování MySQL obnoveny na výchozí hodnoty. Na stránce <a href='$1'>MySQL Server Configuration</a> je třeba provést trvalé nastavení.
+
 root_title=Změňte heslo pro správu
 root_header=Nové heslo pro správu
 root_user=Přihlášení administrace
@@ -158,6 +178,7 @@ root_epass1=Nebylo zadáno žádné nové heslo
 root_epass2=Hesla se neshodují
 root_none=Žádné heslo!
 root_auto=Automaticky (obvykle <tt>root</tt>)
+
 mysqlpass_err=Bezpečný režim MySQL
 mysqlpass_esafecmd=Příkaz $1 potřebný ke spuštění MySQL s deaktivovaným ověřováním nebyl nalezen
 mysqlpass_eshutdown=Vypnutí se nezdařilo : $1 

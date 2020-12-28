@@ -6,6 +6,7 @@ index_printershare=printera koplietošana
 index_shareconf=koplietot konfigurāciju
 index_version=Samba versija $1 
 index_samba=Samba
+
 index_sharename=Akcijas nosaukums
 index_path=Ceļš
 index_security=Drošība
@@ -42,12 +43,14 @@ index_stopmsg=Noklikšķiniet uz šīs pogas, lai izslēgtu darbojasjošos Samba
 index_stopmsg_wb=Noklikšķiniet uz šīs pogas, lai izslēgtu darbojasjošos Winbind serverus jūsu sistēmā.
 index_einclude=Brīdinājums - jūsu Samba konfigurācijas failā $1 ir $2 vai $3 direktīva. Tas var izraisīt Webmin nepareizu faila modifikāciju.
 index_delete=Dzēst atlasītās akcijas
+
 config_mins=Mins
 config_secs=Sek
 config_bytes=Baiti
 config_never=Nekad
 config_all=Visi
 config_neither=Neviens
+
 global_title=Globālā konfigurācija
 global_unixnetwork=Unix tīklošana
 global_winnetwork=Windows tīklošana
@@ -60,6 +63,7 @@ global_password=Šifrētas paroles
 global_users=Samba lietotāji
 global_group=Samba grupas
 global_bind=Winbind opcijas
+
 error_nosamba=Samba servera izpildāmā <tt>$1</tt> netika atrasts. Vai nu Samba nav instalēta jūsu sistēmā, vai arī <a href="$2">moduļa konfigurācija</a> ir nepareiza.
 error_version=Webmin neizdevās iegūt jūsu izpildāmā Samba servera versiju <tt>$1</tt>. Pārbaudiet <a href="$2">moduļa konfigurāciju</a>, lai pārliecinātos, ka tas ir pareizais ceļš.
 error_config=Konfigurācijas fails $1 netika atrasts. Visticamāk, Samba nav instalēta jūsu sistēmā, vai arī <a href="$2">moduļa konfigurācija</a> ir nepareiza.
@@ -67,6 +71,7 @@ error_include=Webmin nevar apstrādāt Samba konfigurācijas failus, kas izmanto
 error_delshare=Neizdevās izdzēst kopīgošanu
 error_delcopy=Akcija “$1” tiek kopēta no šīs akcijas
 error_savename=Neizdevās saglabāt failu nosaukšanu
+
 convert_title=Lietotāju konvertēšana
 convert_msg=Šī forma ļauj sinhronizēt Unix un Samba lietotāju sarakstu. Kad Samba izmanto <a href=$1>šifrētas paroles</a>, sistēmas lietotāju saraksta vietā tiek izmantots atsevišķs lietotāju un paroļu saraksts.
 convert_noconv=Nekonvertēt vai noņemt šos lietotājus:
@@ -83,6 +88,7 @@ convert_cannot=Unix lietotājus nevar pārveidot par Samba lietotājiem
 convert_who=Unix lietotāji konvertēšanai
 convert_who0=Tikai uzskaitītie lietotāji vai UID diapazoni
 convert_who1=Visi, izņemot uzskaitītos lietotājus un UID diapazonus
+
 misc_title=Dažādas iespējas
 misc_debug=Atkļūdošanas līmenis
 misc_cachecall=Kešatmiņa <tt>getwd ()</tt> prasa?
@@ -96,6 +102,7 @@ misc_chroot=<tt>chroot ()</tt> direktorijs
 misc_smbrun=Ceļš uz <tt>smbrun</tt>
 misc_clienttime=Klienta laika nobīde
 misc_readprediction=Lasīt prognozi?
+
 net_title=Unix tīkla iespējas
 net_idle=Gaidīšanas laiks pirms atvienošanas
 net_trustlist=Uzticamu saimnieku/lietotāju fails
@@ -111,6 +118,7 @@ net_maxpacket=Maksimālais pakas lielums
 net_listen=Klausieties uz adresi
 net_ip=IP adrese
 net_socket=Kontaktligzdas iespējas
+
 passwd_title=Paroles opcijas
 passwd_encrypt=Vai izmantot šifrētas paroles?
 passwd_allownull=Vai atļaut nulle paroles?
@@ -124,11 +132,13 @@ passwd_send=Sūtīt
 passwd_map=Lietotājvārda kartēšana
 passwd_unixuser=Unix lietotāji
 passwd_winuser=Windows lietotāji
+
 print_title=Drukāšanas opcijas
 print_style=Unix drukas stils
 print_show=Rādīt visus printerus?
 print_printcap=Printcap fails
 print_cachetime=Printera statusa kešatmiņas laiks
+
 smb_title=Windows tīkla iespējas
 smb_workgroup=Darba grupa
 smb_wins=WINS režīms
@@ -159,14 +169,17 @@ smb_nowhere=Nekur
 smb_fromlist=No saraksta. ..
 smb_ip=IP adrese
 smb_asworkgroup=<b>Kā darba grupa</b> (nav obligāti)
+
 create_title=Izveidot kopiju
 create_msg=Kopiju kopija mantos visas tā noklusējuma vērtības no jūsu izvēlētās kopijas. Ja tiek mainīta avota daļa, tiks mainīta arī kopija.
 create_from=Koplietot, lai kopētu no:
 create_name=Jauns akcijas nosaukums:
+
 smbuser_title=Samba lietotāji
 smbuser_list=Samba lietotāju saraksts
 smbuser_nouser=Nav definēts neviens Samba lietotājs.
 smbuser_cannot=Samba lietotājus nevar uzskaitīt
+
 euser_title=Rediģēt Samba lietotāju
 euser_name=Lietotājvārds
 euser_uid=Unix UID
@@ -185,6 +198,7 @@ euser_locked=Konts ir bloķēts
 euser_nopwrequired=Parole nav nepieciešama
 euser_disable=Konts ir atspējots
 euser_trust=Darbstacijas trasta konts
+
 fmisc_title=Dažādi faila noklusējumi
 fmisc_for=Akcijai <tt>$1</tt>
 fmisc_lockfile=Vai failu bloķēšana?
@@ -202,6 +216,7 @@ fmisc_conncmd=Komanda palaist savienojumu
 fmisc_disconncmd=Komandu, lai darbotos atvienot
 fmisc_rootconn=Komanda palaist savienojumu <i>kā saknes</i>
 fmisc_rootdisconn=Komandu, lai darbotos atvienot <i>kā saknes</i>
+
 fname_title1=Failu nosaukšanas noklusējumi
 fname_title2=Rediģēt faila nosaukšanu
 fname_option=Failu nosaukšanas opcijas
@@ -216,6 +231,7 @@ fname_hide=Vai paslēpt punktveida failus?
 fname_archive=Vai saglabāt DOS arhīva karogu?
 fname_hidden=Vai saglabāt DOS slēpto karogu?
 fname_system=Vai saglabāt DOS sistēmas karodziņu?
+
 fperm_title1=Failu atļauju noklusējumi
 fperm_title2=Rediģēt faila atļaujas
 fperm_option=Failu atļauju opcijas
@@ -228,6 +244,7 @@ fperm_link=Vai atļaut saiknes ārpus koplietošanas?
 fperm_delro=Vai var izdzēst tikai lasāmus failus?
 fperm_forcefile=Piespiest Unix faila režīmu
 fperm_forcedir=Piespiest Unix direktorijas režīmu
+
 share_title1=Failu koplietošanas noklusējumi
 share_title2=Rediģēt failu koplietošanu
 share_title3=Izveidot failu koplietošanu
@@ -251,6 +268,7 @@ share_naming=Failu nosaukšana
 share_misc=Dažādas iespējas
 share_samedesc1=Piezīme. Šie iestatījumi ietekmē arī visu failu koplietošanu.
 share_samedesc2=Piezīme. Šie iestatījumi ietekmē arī visu printera koplietošanu.
+
 print_title1=Noklusētās printera opcijas
 print_title2=Rediģēt printera opcijas
 print_option=Printera opcijas
@@ -262,6 +280,7 @@ print_delete=Dzēst darba komandu
 print_pause=Pauzēt darba komandu
 print_unresume=Neatstāj darba komandu
 print_driver=Printera draiveris
+
 pshare_title1=Noklusējuma printera koplietošana
 pshare_title2=Rediģēt printera koplietošanu
 pshare_title3=Izveidot printera koplietošanu
@@ -270,6 +289,7 @@ pshare_name=Akcijas nosaukums
 pshare_all=Visi printeri dalās
 pshare_unixprn=Unix printeris
 pshare_spool=Spolīšu katalogs
+
 sec_index1=Drošības noklusējumi
 sec_index2=Rediģēt drošību
 sec_writable=Uzrakstāms?
@@ -292,6 +312,7 @@ sec_rouser=Tikai lasāmie lietotāji
 sec_rogroup=Lasīt tikai grupas
 sec_rwuser=Lasīt/rakstīt lietotājus
 sec_rwgroup=Lasīt/rakstīt grupas
+
 esync_title=Lietotāja sinhronizācija
 esync_msg=Webmin var konfigurēt tā, lai izmaiņas Unix lietotāju sarakstā tiktu automātiski piemērotas Samba lietotāju sarakstam. Tas darbosies tikai tad, ja modulis <b>Lietotāji un grupas</b> Webmin tiek izmantots lietotāju pievienošanai, dzēšanai vai mainīšanai.
 esync_add=Pievienojiet Samba lietotāju, kad tiek pievienots Unix lietotājs
@@ -303,6 +324,7 @@ esync_gid=Grupas SID vai RID jauniem lietotājiem
 esync_apply=Piesakies
 esync_cannot=Lietotāja sinhronizāciju nevar konfigurēt
 esync_egid=Trūkst grupas SID vai RID
+
 mkpass_title=Lietotāju konvertēšana
 mkpass_convfail=Neizdevās konvertēt lietotāju
 mkpass_msg=Notiek Unix lietotāju konvertēšana. ..
@@ -315,10 +337,12 @@ mkpass_passfail=Neizdevās iestatīt paroli
 mkpass_user=Lietotājvārds
 mkpass_action=Darbība veikta
 mkpass_skipcount=$1 lietotāji tika izlaisti reklāmguvumu veikšanai.
+
 savecopy_fail=Neizdevās izveidot kopiju
 savecopy_global=Nosaukumu “global” nevar izmantot akcijai
 savecopy_exist=Akcija ar nosaukumu “$1” jau pastāv
 savecopy_ename=Nav ievadīts neviens akcijas nosaukums
+
 saveuser_fail=Neizdevās saglabāt lietotāju
 saveuser_uid='$1' nav derīgs Unix UID
 saveuser_colon=Īstajā vārdā nevar būt rakstzīme :
@@ -326,10 +350,13 @@ saveuser_home=Mājas direktorija '$1' neeksistē
 saveuser_shell=$1 nav derīgs apvalks
 saveuser_pass=Neizdevās mainīt paroli, izmantojot smbpasswd : $1 
 saveuser_ews=Esošajiem lietotājiem nevar iespējot opciju “Darbstacijas uzticamības konts”
+
 savefmisc_fail=Neizdevās saglabāt dažādas iespējas
 savefmisc_number='$1' nav derīgs savienojumu skaits
+
 savefperm_fail=Neizdevās saglabāt failu atļaujas
 savefperm_mode='$1' nav derīgs Unix faila režīms
+
 savefshare_fail=Neizdevās saglabāt kopīgošanu
 savefshare_nopath=Ceļš nav dots
 savefshare_exist=Akcija ar nosaukumu “$1” jau pastāv
@@ -339,6 +366,7 @@ savefshare_owner=Trūkst vai nav derīgs jaunā direktorija īpašnieks
 savefshare_group=Trūkst vai nav derīga jaunā direktorija grupa
 savefshare_perms=Trūkst vai nav derīgas jaunā direktorija atļaujas
 savefshare_emkdir=Neizdevās izveidot direktoriju : $1 
+
 savemisc_fail=Neizdevās saglabāt opcijas
 savemisc_lockdir=Mape, kurā ir bloķēšanas direktorija, neeksistē
 savemisc_logdir=Direktorija, kurā ir žurnālfails, neeksistē
@@ -347,37 +375,48 @@ savemisc_overlap='$1' nav derīgs lasāmā izmēra pārklāšanās
 savemisc_chroot=Chroot direktorija “$1” neeksistē
 savemisc_smbrun=Smbrun programma '$1' neeksistē vai nav izpildāma
 savemisc_time='$1' nav derīgs laika nobīde
+
 savenet_fail=Neizdevās saglabāt opcijas
 savenet_timeout='$1' nav derīgs atvienošanas noildze
 savenet_ip='$1' nav derīgs IP baits
 savenet_keep='$1' nav derīgs saglabāšanas intervāls
 savenet_maxxmit='$1' nav derīgs maksimālais paketes lielums
+
 savepass_fail=Neizdevās saglabāt opcijas
 savepass_nopass=Jūsu Samba versija neatbalsta šifrētas paroles
 savepass_passwd=Parole netiek mainīta
 savepass_level='$1' nav pareiza paroles atšķirība
 savepass_chat=Paroles maiņas tērzēšanas secība ir tukša
+
 savepopts_fail=Neizdevās saglabāt printera opcijas
 savepopts_number=Minimālajai brīvajai vietai jābūt skaitlim
+
 saveprint_fail=Neizdevās saglabāt opcijas
 saveprint_printcap=Printcap fails '$1' neeksistē
 saveprint_cache='$1' nav derīgs kešatmiņas laiks
+
 savepshare_fail=Neizdevās saglabāt printera koplietošanu
 savepshare_exist=Akcija ar nosaukumu “$1” jau pastāv
 savepshare_name=“$1” nav derīgs akcijas nosaukums
 savepshare_global=Nosaukumu “global” nevar izmantot akcijai
+
 savesec_fail=Neizdevās saglabāt drošību
+
 savesmb_fail=Neizdevās saglabāt opcijas
 savesmb_size=“$1” nav derīgs diska lielums
 savesmb_oslevel='$1' nav derīga galvenā pārlūka prioritāte
 savesmb_server=Jums jāievada paroles serveris
+
 start_err=Neizdevās palaist Samba serverus
 start_fail=$1 neizdevās
 start_err_wb=Neizdevās palaist Winbind serverus
+
 restart_err=Neizdevās restartēt Samba serverus
 restart_err_wb=Neizdevās restartēt Winbind serverus
+
 swats_fail=Neizdevās saglabāt lietotājvārdu
 swats_user=Trūkst SWAT lietotājvārda
+
 viewu_index=Pašreizējie lietotāji
 viewu_list=Pašreizējie $1 lietotāji
 viewu_share=Dalies
@@ -394,6 +433,7 @@ viewu_ecmd=Šķiet, ka Samba statusa programma $1 nav instalēta jūsu sistēmā
 viewu_kill=Atvienojiet atlasītos lietotājus
 viewu_enone=Nav atlasīts neviens lietotājs
 viewu_refresh=Atsvaidzināt lapu.
+
 log_apply=Restartēti Samba serveri
 log_apply_wb=Restartēti Winbind serveri
 log_stop=Apturēti Samba serveri
@@ -435,6 +475,7 @@ log_modify_group=Pārveidota Samba grupa $1
 log_delete_group=Dzēsa $1 grupas Samba
 log_gsync=Konfigurēta Unix grupas sinhronizācija
 log_manual=Manuāli rediģēts konfigurācijas fails $1 
+
 swat_title=SWAT pieteikšanās
 swat_list=SWAT pieteikšanās
 swat_msg1=Jūsu pašreizējais SWAT lietotājvārds un parole nav pareiza. Izmantojiet zemāk esošo formu, lai vēlreiz pieteiktos.
@@ -446,6 +487,7 @@ swat_password=Parole
 swat_login=Pieslēgties
 swat_clear=Skaidrs
 swat_logout=SWAT atteikšanās
+
 eacl_aviol=Piekļuves kontroles pārkāpums
 eacl_np=Jums nav atļauju
 eacl_papply=restartējiet šo pakalpojumu
@@ -481,6 +523,7 @@ eacl_pafs=piekļūt šai faila kopīgošanai
 eacl_paps=piekļūt šai printera koplietošanai
 eacl_pcps=izveidot printera koplietošanu
 eacl_pcfs=izveidot failu koplietošana
+
 acl_apply=Vai var piemērot izmaiņas un apturēt Samba?
 acl_view_all_con=Vai var apskatīt visus savienojumus?
 acl_kill_con=Vai var noņemt savienojumus?
@@ -527,6 +570,7 @@ acl_maint_groups=Vai var apskatīt, rediģēt un pievienot grupas?
 acl_maint_gsync=Vai var uzturēt automātisko Unix un Samba grupu sinhronizāciju?
 acl_winbind=Vai var saistīties ar domēniem?
 acl_bind=Vai var piekļūt Winbind opcijām?
+
 groups_title=Samba grupas
 groups_name=Grupas nosaukums
 groups_unix=Unix grupa
@@ -542,6 +586,7 @@ groups_return=grupu saraksts
 groups_add=Pievienojiet jaunu Samba grupu.
 groups_ecannot=Jums nav atļauts skatīt vai rediģēt Samba grupas
 groups_cannot=Samba grupas nevar uzskaitīt
+
 gedit_title2=Rediģēt Samba grupu
 gedit_title1=Izveidojiet Samba grupu
 gedit_header=Samba grupas informācija
@@ -554,11 +599,13 @@ gedit_unix=Unix grupa
 gedit_unixgr=Grupa ..
 gedit_none=Nav
 gedit_set=Sarakstā ..
+
 gsave_err=Neizdevās saglabāt grupu
 gsave_eunix=Trūkst vai nav derīgs Unix grupas nosaukums vai GID
 gsave_ename=Trūkst grupas nosaukuma
 gsave_epriv=Trūkst grupas privilēģiju
 gsave_elocal=Privilēģijas var iestatīt tikai vietējām grupām
+
 gsync_title=Grupu sinhronizācija
 gsync_msg=Webmin var konfigurēt tā, lai izmaiņas Unix grupu sarakstā tiktu automātiski piemērotas Samba grupas sarakstam. Tas darbosies tikai tad, ja modulis <b>Lietotāji un grupas</b> Webmin tiek izmantots grupu pievienošanai, dzēšanai vai mainīšanai.
 gsync_add=Kad tiek pievienota Unix grupa, pievienojiet Samba grupu
@@ -569,10 +616,12 @@ gsync_type=Jauno grupu tips
 gsync_priv=Privilēģijas jaunām grupām (ja vietējās)
 gsync_ecannot=Jums nav atļauts konfigurēt grupas sinhronizāciju
 gsync_cannot=Grupu sinhronizāciju nevar konfigurēt
+
 check_user1=$1 : <a href='$2'>autentifikācija</a> nav iespējota šifrētas paroles.
 check_user2=$1 : Lapā <a href='$2'>moduļa konfigurācija</a> nav iestatīts ne Samba paroles fails, ne ceļš uz pdbedit.
 check_group1=$1 : grupas tiek atbalstītas tikai Samba 3. versijā.
 check_group2=$1 : Lapā <a href='$2'>Moduļa konfigurācija</a> nav iestatīts ceļš uz smbgroupedit vai tīkla komandām.
+
 winbind_title=Saistīties ar domēnu
 winbind_ecannot=Jums nav atļauts saistīties ar domēniem
 winbind_msg=Šo veidlapu var izmantot, lai piesaistītu jūsu Samba serveri Windows domēnam, kuru parasti pārvalda cits serveris.
@@ -588,6 +637,7 @@ winbind_edom=Trūkst domēna vārda
 winbind_cmd=Saistīšana domēnā ar komandu $1.
 winbind_failed=.. neizdevās! Iemeslu, kāpēc tā, skat. Iepriekš minētajā iznākumā.
 winbind_ok=.. pabeigts.
+
 bind_title=Winbind opcijas
 bind_ecannot=Jums nav atļauts rediģēt Winbind opcijas
 bind_header=Windows domēna iesiešanas iespējas
@@ -606,9 +656,11 @@ bind_erealm=Nederīga Kerberos sfēra
 bind_ecache=Trūkst vai nav derīgs kešatmiņas laiks
 bind_euid=Nederīgs UID diapazons - jābūt tādam, kā 20000-30000
 bind_egid=Nederīgs GID diapazons - jābūt tādam, kā 20000-30000
+
 manual_title=Rediģēt konfigurācijas failu
 manual_desc=Rediģēt Samba konfigurācijas failu $1.
 manual_err=Neizdevās saglabāt konfigurācijas failu
 manual_edata=Nekas nav ienācis
+
 delete_err=Neizdevās izdzēst kopīgošanu
 delete_enone=Nav atlasīts

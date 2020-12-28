@@ -1,4 +1,5 @@
 cvirt_ecannot=Du har ikke tilladelse til at oprette virtuelle servere
+
 cvirt_err=Kunne ikke oprette virtuel server
 cvirt_eaddr1=Ingen adresse angivet
 cvirt_eaddr2='$1' er ikke en gyldig adresse
@@ -10,13 +11,16 @@ cvirt_eroot3=Du har ikke tilladelse til at bruge rod mappen '$1'
 cvirt_etaken=En virtuel server med det samme navn og den samme port eksisterer allerede
 cvirt_efile=Kunne ikke skrive til $1 : $2
 cvirt_emissing=Den nye virtuelle server blev tilføjet til $1, men denne fil bruges ikke af Apache. Tjek <a href='$2'>modulkonfigurationen</<> og vær sikker på at 'Fil eller mappe som virtuel server skal tilføjes' er korrekt.
+
 apache_apply=Anvend ændringer
 apache_stop=Stop Apache
 apache_start=Start Apache
 auth_return=adgangskontrol
 default_serv=standard server
 bytes=bytes
+
 defines_config=Vær opmærksom på at de følgende definerede paramtre allerede er kendte : $1
+
 authu_ecannot='$1' er ikke en tilladt brugers tekstfil
 authu_title=Brugerliste
 authu_header=I fil $1
@@ -38,6 +42,7 @@ authu_sync=Indstillingerne nedenunder giver dig mulighed for at konfigurer Webmi
 authu_screate=Tilføj en ny bruger når en Unix bruger tilføjes
 authu_sdelete=Slet brugeren når en Unix bruger slettes
 authu_smodify=Ændre brugeren når en Unix bruger ændres
+
 authg_ecannot='$1' er ikke en tilladt gruppes tekstfil
 authg_title=Gruppeliste
 authg_header=I fil $1
@@ -55,6 +60,7 @@ authg_err=Kunne ikke gemme gruppe
 authg_euser=Intet gruppenavn angivet
 authg_euser2=Gruppenavn kan ikke indeholde et :
 authg_edup=En gruppe kaldet '$1' eksisterer allerede
+
 acl_virts=Virtuelle servere som denne bruger kan redigere
 acl_vall=Alle servere
 acl_vsel=Valgte..
@@ -76,6 +82,7 @@ acl_dirs=Apache direktiver tilgængelige<br><font size=-1>(Subjekt tor type begr
 acl_dirs0=Alle
 acl_dirs1=Kun listede ..
 acl_dirs2=Alle undtagen listede ..
+
 core_maxconc=Maksimal konkurrent efterspørgsler
 core_maxkeep=Maksimale hold-i-live pr forbindelse
 core_maxreq=Maksimale efterspørgsler pr serverproces
@@ -253,6 +260,7 @@ core_infilter=Anvend inputfiltre for alle filer
 core_outfilter=Anvend outputfilter for alle filer
 core_defchar=Karaktersæt for dokumenter
 core_edefchar=Manglende eller ugyldig Karaktersæt for dokumenter
+
 browsermatch_regexp=Browser regex
 browsermatch_case=Match versal?
 browsermatch_var=Sæt variabel
@@ -260,6 +268,7 @@ browsermatch_value=Værdi
 browsermatch_txt=Variabler sat baseret på browsertype
 browsermatch_evar=Ugyldig variabelnavn '$1'
 browsermatch_clear=Ryd
+
 autoindex_fname=Filnavn
 autoindex_mime=MIME type
 autoindex_enc=Kodning
@@ -313,6 +322,7 @@ autoindex_sicon=Vis filikoner
 autoindex_srules=Vis &lt;hr&gt; linjer
 autoindex_track=Inkluder ETags i header
 autoindex_version=Sorter på versionsdstrenge
+
 cache_enable=Aktiv?
 cache_type=Cache gem
 cache_disk=Disk
@@ -333,6 +343,7 @@ cache_eminos=Minums objektstørrelse til at cache skal være et antal bytes
 cache_emaxos=Maksimaæ objektstørrelse til cache skal være et antal bytes
 cache_maxoc=Maksimal antal objekter der skal caches i hukommelsen
 cache_emaxoc=Antal objekter der caches i memory skal være et heltal
+
 cdir_err=Kunne ikke oprette per-directory indstilling
 cdir_err2=Kunne ikke gemme per-directory indstilling
 cdir_epath=Maglende sti

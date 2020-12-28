@@ -1,5 +1,6 @@
 index_euser=$1 RBAC konfigurazio fitxategia ez da zure sisteman aurkitu. Agian RBAC ez dago instalatuta edo <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 index_return=moduluaren aurkibidea
+
 users_title=Erabiltzaileen atributuak
 users_user=Erabiltzaile izena
 users_profiles=Emandako profilak
@@ -10,6 +11,7 @@ users_return=erabiltzaileen atributuen zerrenda
 users_type=Mota
 users_role=Role
 users_project=Proiektua
+
 user_title1=Sortu erabiltzaile-atributuak
 user_title2=Erabiltzaileen atributuak aldatu
 user_header=Unix erabiltzaileari emandako atributuak
@@ -35,6 +37,7 @@ user_eauth='$1' ez da baliozko baimena
 user_ecannot=Ezin duzu erabiltzaile hau editatu
 user_erole=Ezin duzu '$1' rola esleitu
 user_eprof=Ezin duzu profila '$1' esleitu
+
 auths_title=Baimenak
 auths_name=Baimenaren izena
 auths_desc=deskribapena
@@ -42,8 +45,10 @@ auths_none=Oraindik ez da baimenik zehaztu.
 auths_add=Gehitu baimen berria.
 auths_return=baimenen zerrenda
 auths_ecannot=Ezin duzu baimenak editatu
+
 authc_name=Baimen
 authc_desc=deskribapena
+
 auth_title1=Sortu Baimena
 auth_title2=Editatu baimena
 auth_header=Baimenaren pribilegioaren xehetasunak
@@ -57,6 +62,7 @@ auth_edesc=Deskribapen luzea baliogabea
 auth_eclash=Izen bera duen baimena badago dagoeneko
 auth_einuseu=Baimen hau $1 erabiltzaileak erabiltzen du eta beraz ezin da ezabatu
 auth_einusep=Baimen hau $1 profila erabiltzen ari da eta, beraz, ezin da ezabatu
+
 profs_title=profilak
 profs_name=Perfilaren izena
 profs_desc=deskribapena
@@ -65,6 +71,7 @@ profs_none=Oraindik ez da profilik zehaztu.
 profs_add=Gehitu profil berria.
 profs_return=profilen zerrenda
 profs_ecannot=Ezin duzu profilak editatu
+
 prof_title1=Sortu profila
 prof_title2=Editatu profila
 prof_header=Baimenaren profilaren xehetasunak
@@ -81,6 +88,7 @@ prof_einuseu=Profil hau $1 erabiltzailea erabiltzen ari da eta, beraz, ezin da e
 prof_einusep=Profila $1 profila erabiltzen ari da eta, beraz, ezin da ezabatu
 prof_einusee=Profil honek $1 lotutako exekuzio profilak ditu eta beraz ezin dira ezabatu
 prof_none=Ez dago profil erabilgarririk
+
 execs_title=Exekuzio Profilak
 execs_name=Profile
 execs_policy=Segurtasun politika
@@ -92,6 +100,7 @@ execs_none=Oraindik ez dira exekuzio profilak zehaztu.
 execs_add=Gehitu exekuzio profil berria.
 execs_return=exekuzio profilen zerrenda
 execs_ecannot=Ezin duzu exekuzio profilak editatu
+
 exec_title1=Sortu Exekuzio Profila
 exec_title2=Editatu exekuzio profila
 exec_header=Exekuzio profilaren xehetasunak
@@ -113,6 +122,7 @@ exec_erruid=Erabiltzaile falta edo baliogabea da
 exec_errgid=Talde falta edo baliogabea da
 exec_erreuid=Erabiltzaile eraginkorra falta edo baliogabea da
 exec_erregid=Talde falta edo baliogabea da exekutatzeko
+
 policy_title=Sistema Politikak
 policy_header=Sistemaren politika orokorraren ezarpenak
 policy_auths=Erabiltzaile guztientzako baimenak
@@ -126,16 +136,20 @@ policy_err=Huts egin du sistemaren gidalerroak gordetzean
 policy_eallow=Ez da hautatutako baimenik ematen
 policy_eclash=Baliogabetu eta xahutzeko algoritmoa ezin dira biak aldi berean hautatu
 policy_ecannot=Ezin duzu sistemaren gidalerroak editatu
+
 attr_none=Ez da erabiltzaile atributurik definitu
 attr_nonenormal=Ez da Unix-eko erabiltzaileik zehaztu
 attr_nonerole=Ez dago eskuragarri eginkizunik
+
 help_epath=Laguntza-fitxategi bide baliogabea!
 help_link=(Laguntza..)
+
 crypt___unix__=Unix kripta
 crypt_1=BSD MD5
 crypt_2a=BSD Flowfish
 crypt_md5=Eguzkiaren MD5
 crypt_rot13=ROT13
+
 log_create_user=Erabiltzaileen atributuak sortu dira $1 erako
 log_modify_user=Erabiltzaileen atributuak $1 aldatzeko
 log_delete_user=$1 erabiltzailearen atributuak ezabatu dira
@@ -152,6 +166,7 @@ log_create_project=$1 proiektua sortua
 log_modify_project=$1 aldatutako proiektua
 log_delete_project=$1 proiektua ezabatu da
 log_policy=Sistemaren politikak aldatu dira
+
 acl_roles=Rolak editatu al ditzake?
 acl_users=Erabiltzaileen atributuak editatu al ditzake?
 acl_roleassign=Rolak eslei ditzake
@@ -166,6 +181,7 @@ acl_profs=Profilak editatu al ditzakezu?
 acl_ro=Ikusi bakarrik
 acl_execs=Editatu ahal izango dituzu exekuzio profilak?
 acl_projects=Proiektuak editatu al ditzake?
+
 projects_title=Proiektuak
 projects_name=izena
 projects_id=NAN
@@ -184,6 +200,7 @@ projects_exceptusers=Erabiltzaile guztiak $1 izan ezik
 projects_exceptgroups=Talde guztiak $1 izan ezik
 projects_onlyusers=$1 bakarrik
 projects_onlygroups=$1 bakarrik
+
 project_title1=Sortu Proiektua
 project_title2=Editatu proiektua
 project_header=Proiektuaren xehetasunak eta kideak
@@ -219,6 +236,7 @@ project_egroupscannot=Ez dago hautaturik baztertzeko taldeik
 project_elimit=$1 errenkadan muga falta edo baliogabea
 project_epool=Falta da edo ez da baliozkoa proiektuaren pool izenarekin
 project_erss=Gehieneko memoria falta edo baliogabea
+
 prctl_title=Baliabideen kontrolak
 prctl_ok=Erakutsi mugak honetarako:
 prctl_mode0=Prozesua NANa

@@ -5,6 +5,7 @@ index_user=Pakeisti vartotojo slaptažodį:
 index_euseradmin=Šis modulis negali būti naudojamas, nes jūsų sistemoje neįdiegtas arba nepalaikomas modulis Vartotojai ir Grupės.
 index_toomany=Jūsų sistemoje rodoma per daug vartotojų. Žemiau įveskite vartotojo, kurio slaptažodį norite pakeisti, vardą.
 index_none=Jūs neturite prieigos prie jokių vartotojų, norėdami pakeisti savo slaptažodžius.
+
 passwd_title=Pakeisti slaptažodį
 passwd_header=„Unix“ vartotojo slaptažodžio keitimas
 passwd_for=Keičiamas slaptažodis
@@ -23,7 +24,9 @@ passwd_erepeat=Nauji slaptažodžiai nėra tie patys
 passwd_ecmd=$1 nepavyko : $2 
 passwd_ok=$1 vartotojo slaptažodis buvo sėkmingai pakeistas. Jei tai yra jūsų dabartinis „Webmin“ vartotojas, galite būti priversti prisijungti dar kartą.
 passwd_ok2=$1 vartotojo slaptažodis buvo sėkmingai pakeistas.
+
 log_passwd=Pakeistas vartotojo $1 slaptažodis
+
 acl_repeat=Vėl reikia įvesti naują slaptažodį?
 acl_self=Visada leisti pakeisti savo slaptažodį?
 acl_old=Ar reikia įvesti seną slaptažodį?

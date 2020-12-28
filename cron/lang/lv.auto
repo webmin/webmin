@@ -31,6 +31,7 @@ index_ok=Meklēt
 index_searchres=Krona darbi, kas atbilst $1.
 index_reset=Atiestatīt meklēšanu.
 index_econfigcheck=Krona darbus nevar pārvaldīt jūsu sistēmā, jo moduļa konfigurācija nav derīga : $1 
+
 edit_title=Rediģēt Kronu Darbu
 create_title=Izveidot Krona darbu
 edit_ecannot=Jums nav atļauts rediģēt cron darbus šim lietotājam
@@ -70,6 +71,7 @@ lcedit_special_weekly=katru nedēļu (svētdien)
 lcedit_special_monthly=katru mēnesi (1. datumā)
 lcedit_special_yearly=katru gadu (1. janvārī)
 lcedit_special_reboot=kad sistēma zābaki
+
 save_err=Neizdevās saglabāt cron darbu
 save_ecmd=Jūs neievadījāt komandu izpildīšanai
 save_euser=Jums jāizvēlas lietotājs
@@ -79,6 +81,7 @@ save_ecannot=Jums nav atļauts izveidot vai rediģēt cron darbus par “$1”
 save_enone=Jūs neizvēlējāties izpildīšanai nevienu $1 
 save_ecannot2=Jums nav atļauts izveidot cron darba vietas
 save_eidx=Cron darbs tika veiksmīgi saglabāts, bet to nevar palaist, jo tas netika atrasts!
+
 allow_title=Kontrolējiet piekļuvi Cron
 allow_desc=Šī forma ļauj jums kontrolēt, kuri lietotāji var izveidot un palaist cron darbus.
 allow_ecannot=Jūs nevarat kontrolēt lietotāja piekļuvi cron
@@ -87,6 +90,7 @@ allow_all2=Liegt visiem lietotājiem, izņemot root
 allow_all3=Atļaut visiem lietotājiem
 allow_allow=Atļaut tikai uzskaitītos lietotājus
 allow_deny=Noraidīt tikai uzskaitītos lietotājus
+
 env_title1=Rediģēt vides mainīgo
 env_title2=Izveidot vides mainīgo
 env_name=Mainīgais nosaukums
@@ -102,11 +106,13 @@ env_where2=Pārvietot vides mainīgo
 env_top=Pirms visiem Cron darbiem lietotājam
 env_bot=Pēc visiem Cron darbiem
 env_leave=Pašreizējais stāvoklis
+
 exec_title=Izpildiet Kronu darbu
 exec_ecannot=Jums nav atļauts izpildīt cron darbus šim lietotājam
 exec_cmd=Izvade no komandas $1.
 exec_cmdbg=Komandas $1 palaišana kā fona process.
 exec_none=Netika ģenerēta izvade
+
 acl_users=Var rediģēt cron darbus domēnā
 acl_all=Visi lietotāji
 acl_this=Pašreizējais Webmin lietotājs
@@ -122,6 +128,7 @@ acl_move=Vai var pārvietot Cron darbus?
 acl_kill=Vai var izbeigt Cron darbus?
 acl_hourly=Ierobežot darbu skaitu ne vairāk kā stundā?
 acl_hourlydef=Kā noteikts moduļa konfigurācijā
+
 log_modify=Modificēts Krona darbs $1 
 log_modify_l=Pārveidots Krona darbs “$2” $1 
 log_create=Izveidots Krona darbs $1 
@@ -139,7 +146,9 @@ log_move=Pārvietots Krona darbs $1
 log_crons_delete=Dzēsti $1 Cron darbi
 log_crons_disable=Atspējoti $1 Cron darbi
 log_crons_enable=Iespējoti $1 Cron darbi
+
 ecopy=Jaunajā Krona konfigurācijā tika atklāta kļūda: $1 $2 
+
 when_min=katru minūti
 when_hour=katru stundu $1 pēc stundas
 when_day=katru dienu $2:$1 
@@ -148,6 +157,7 @@ when_weekday=katrs $3 pie $2:$1
 when_cron=krona laikā $1 
 when_interval=ik pēc $1 sekundēm
 when_boot=palaišanas laikā
+
 ucwhen_min=Katru minūti
 ucwhen_hour=Katru stundu $1 pēc stundas
 ucwhen_day=Katru dienu $2:$1 
@@ -156,8 +166,10 @@ ucwhen_weekday=Katru $3 pie $2:$1
 ucwhen_cron=Krona laikā $1 
 ucwhen_interval=Katru $1 sekundi
 ucwhen_boot=Sākuma laikā
+
 move_err=Neizdevās pārvietot Kronas darbu
 move_etype=Šo darbu nevar pārvietot
+
 kill_err=Neizdevās pārtraukt Kronas darbu
 kill_ecannot=Jums nav atļauts pārtraukt šo darbu
 kill_egone=Vairs neskrienu
@@ -166,13 +178,16 @@ kill_title=Izbeidziet Kronu Darbu
 kill_rusure=Vai tiešām vēlaties pārtraukt procesu $1 ar PID $2 ?
 kill_rusure2=Vai tiešām vēlaties pārtraukt procesu $1 ar PID $2 un visiem tā apakšprocesiem?
 kill_ok=Jā, izbeidziet to
+
 range_all=Palaist jebkurā datumā
 range_start=Rādīt tikai no $1 
 range_end=uz $1 
 range_estart=Trūkst vai nav derīgs sākuma datums rādīšanas diapazonā
 range_eend=Trūkst vai nav derīgs beigu datums rādāmā diapazonā
+
 delete_err=Neizdevās izdzēst Cron darbus
 delete_enone=Nav atlasīts
+
 manual_title=Manuāli rediģēt Krona darbu
 manual_edit=Cron fails rediģēšanai:
 manual_ok=Rediģēt

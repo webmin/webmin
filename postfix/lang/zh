@@ -1,5 +1,6 @@
 index_title=Postfix邮件代理
 index_epath=你的系统上没有安装Postfix控制命令 $1。可能你的 <a href='$2'>模块配置</a>不正确，或者没有安装postfix。
+
 internal_error=内部错误
 index_econfig=Postfix配置命令 $1 不存在。 可能你的 <a href='$2'>模块配置</a>不正确。
 index_stop=停止Postfix
@@ -7,7 +8,9 @@ index_start=启动Postfix
 index_stopmsg=按下这个按钮以停止正在运行的Postfix邮件服务器。这将阻止从其他系统投递邮件到本地用户，也防止使用这个系统作为邮件服务器的客户也不能发信。
 index_startmsg=按下这个按钮将启动Postfix邮件服务器。直到启动完成前，从其他系统无法投递邮件到本地用户，客户也不能使用这个系统作为邮件服务器。
 opts_err=保存选项失败。
+
 check_error=检查当前Postfix配置时出错。请手动修复Postfix配置。
+
 address_rewriting_title=地址重写和伪装
 address_rewriting_ecannot=你没有编辑地址重写和伪装的权力。
 aliases_title=邮件别名
@@ -22,11 +25,13 @@ alias_save=保存别名
 alias_save_err=保存别名失败
 alias_delete_create=是否删除正在创建的别名！？
 delete_alias=删除别名
+
 general_title=一般选项
 general_title_sensible=最有用的一般选项
 general_title_others=其他一般选项
 general_ecannot=你没有编辑一般选项的权力
 what_is_it=这是什么？
+
 opts_default=缺省
 opts_none=无
 opts_relayhost=通过主机外发邮件
@@ -43,9 +48,11 @@ opts_mail_owner=邮件属主
 opts_default_privs=投递代理的缺省权限
 opts_inet_interfaces=接受邮件的网络接口
 opts_all_interfaces=所有
+
 opts_local_recipient_maps=拒绝未知的本地用户
 opts_no=否
 opts_save=保存并应用
+
 opts_allow_percent_hack=重写 "user%domain" 成 "user@domain"
 opts_append_at_myorigin=重写 "user" 成 "user@$mydomain"
 opts_append_dot_mydomain=重写 "user@host" 成 "user@host.$mydomain"
@@ -55,13 +62,17 @@ opts_swap_bangpath=重写 "site!user" 成 "user@site"
 opts_masquerade_domains=地址伪装
 opts_masquerade_exceptions=伪装例外
 index_return=Postfix配置
+
 opts_alias_maps=本地投递代理使用别名数据库
 opts_alias_database=由by "newaliases" 命令生成的别名数据库
 aliases_warning=警告：<ul><li>如果第一个字段非空，将使用缺省的Postfix的aliases-generation命令来生成相应的数据库；<li>否则将使用Sendmail兼容命令"newaliases"，这将用到第二个字段的数据库。</ul>
+
 aliases_name=名称
 aliases_value=别名为...
+
 new_alias=创建新别名
 new_aliasmsg=点击这个按钮将创建新别名
+
 local_delivery_ecannot=你没有编辑本地投递选项的权力
 local_delivery_title=本地投递
 opts_local_transport=本地投递使用的名字
@@ -87,6 +98,7 @@ opts_local_destination_recipient_limit=每一本地消息投递的最大接受�
 opts_local_destination_recipient_limit_default=缺省
 opts_prepend_delivered_header=在以下情况下，前加 <tt>Delivered-To:</tt>
 opts_prepend_delivered_header_default=缺省
+
 resource_title=一般的资源控制
 resource_ecannot=你没有编辑资源控制参数的权力
 opts_bounce_size_limit=退回消息的最大尺寸
@@ -105,6 +117,7 @@ opts_qmgr_message_recipient_limit=内存中最大的接受者数
 opts_queue_minfree=队列文件系统中的最小剩余空间
 opts_stale_lock_time=释放过期锁之前的最大时间
 opts_transport_retry_time=尝试连接一个断开的MDT的时间间隔
+
 opts_always_bcc=接受每一条消息的 bcc的地址
 opts_always_bcc_none=无
 opts_daemon_timeout=处理请求的超时
@@ -137,6 +150,7 @@ opts_relocated_maps_default=缺省(禁用)
 opts_sun_mailtool_compatibility=禁用邮箱上的内核文件锁
 opts_trigger_timeout=给守护程序发送触发器的最多次数
 opts_delay_warning_time=由于无法投递而发送警告的等待时间(小时)
+
 smtpd_title=SMTP服务器选项
 smtpd_ecannot=你没有编辑SMTP服务器选项的权力
 opts_disable_vrfy_command=禁用SMTP VRFY命令
@@ -163,6 +177,7 @@ opts_relay_domains_reject_code=当禁止转发时SMTP服务器响应
 opts_unknown_address_reject_code=当未知域拒绝时SMTP服务器响应
 opts_unknown_client_reject_code=当未知的客户拒绝时SMTP服务器响应
 opts_unknown_hostname_reject_code=当未知的主机拒绝时SMTP服务器响应
+
 smtp_title=SMTP客户选项
 smtp_ecannot=你没有编辑SMTP客户选项的权力
 opts_best_mx_transport=当列入最好的MX主机时的动作
@@ -181,6 +196,7 @@ opts_smtp_data_init_timeout=等待对DATA的答复超时
 opts_smtp_data_xfer_timeout=等待对传输消息正文的答复超时
 opts_smtp_data_done_timeout=等待对结束"."的答复超时
 opts_smtp_quit_timeout=等待对QUIT的答复超时
+
 rate_title=投递速度
 rate_ecannot=你没有编辑投递速度选项的权力
 opts_default_destination_concurrency_limit=到同一目标的最大并行投递数
@@ -191,16 +207,19 @@ opts_maximal_queue_lifetime=不可投递的消息在队列中保留的最大时�
 opts_minimal_backoff_time=投递延迟消息重复尝试之间的最短时间(秒)
 opts_queue_run_delay=扫描延迟队列的时间间隔(秒)
 opts_defer_transports=不应投递的传输次数
+
 debug_title=调试特性
 debug_ecannot=你没有编辑调试特性的权力
 opts_debug_peer_list=启用了冗长日志的域/网络类型列表
 opts_debug_peer_level=当上表匹配的冗长日志级别
+
 ldap_title=LDAP查找
 ldap_ecannot=你没有编辑LDAP查找选项的权力
 ldap_non_existent=你的Postfix系统上不存在LDAP
 opts_ldap_lookup_timeout=LDAP数据库查询超时
 opts_ldap_search_base=查询的LDAP数据库
 opts_ldap_server_host=LDAP服务器主机名
+
 canonical_title=规范映射配置
 canonical_ecannot=你没有编辑规范映射配置的权力
 opts_canonical_maps=地址映射查找表
@@ -211,6 +230,7 @@ edit_recipient_canonical_maps=编辑收信人规范映射表
 edit_sender_canonical_maps=编辑发信人规范映射表
 edit_canonical_maps_general=点击任一按钮编辑规范映射表
 canonical_edit_title=编辑规范映射表
+
 mapping_name=名字
 mapping_value=映射到...
 new_mapping=新映射
@@ -224,14 +244,18 @@ map_delete_create=不能删除正在创建的映射
 maps_internal_error=映射：内部错误
 maps_cant_write=不能写入
 help_map_format=我应该使用什么格式？
+
 virtual_title=虚拟域
 virtual_ecannot=你没有编辑虚拟域映射配置的权力
 opts_virtual_maps=域映射查找表
+
 transport_title=传输映射
 transport_ecannot=你没有编辑传输映射配置的权力
 opts_transport_maps=传输映射查找表
+
 relocated_title=重定向映射
 relocated_ecannot=你没有编辑重定向映射配置的权力
 opts_relocated_maps=重定向映射查找表
+
 map_click=点击任何一个映射编辑其属性
 no_map=(当前没有定义映射。首先定义一个映射，然后可以编辑它)

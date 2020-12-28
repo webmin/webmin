@@ -65,6 +65,7 @@ index_checkconfig=Prepričajte se, da je imenik chroot pravilno nastavljen na st
 index_eexpired=Opozorilo: Naslednjim območjem je potekel podpis DNSSEC : $1
 index_eexpired_conf=Samodejno podpisovanje bi bilo treba ponovno omogočiti na strani $1.
 index_eexpired_mod=Z modulom $1 bodisi onemogočite DNSSEC za te domene ali preverite, zakaj podpisuje neuspešno.
+
 master_title=Uredi glavno cono
 master_inview=$1 v pogledu $2 
 master_ecannot=Ni vam dovoljeno urejati te cone
@@ -146,6 +147,7 @@ master_defttl=Privzeti čas za življenje za zapise
 master_edefttl='$1' ni veljaven privzeti čas za življenje za zapise
 master_esoagone=Ni SOA zapisa!
 master_einclude=Dodatna datoteka predloge ne obstaja
+
 delete_title=Zbriši cono
 delete_mesg=Ali ste prepričani, da želite izbrisati cono $1? Vsi zapisi in zonska datoteka bodo izbrisani.
 delete_mesg2=Ali ste prepričani, da želite izbrisati korensko območje? Vaš strežnik DNS morda ne bo mogel več iskati naslovov v internetu.
@@ -157,6 +159,7 @@ delete_errslave=Nadzorna cona je izbrisana V redu, na robovih pa so se pojavile 
 delete_ezone=Cone ni bilo mogoče najti na pomožnem strežniku
 delete_vwarn=To območje je povezano z domeno Virtualmin $1, zato ga tukaj ne bi smeli izbrisati!
 delete_vwarn2=Ta cona je povezana z domeno Virtualmin $1 in $2 drugi, zato je tukaj ne smete izbrisati!
+
 mcreate_title=Ustvari glavno cono
 mcreate_ecannot=Ne morete ustvariti glavnih con
 mcreate_opts=Nove možnosti glavne cone
@@ -171,6 +174,7 @@ mcreate_auto=Samodejno
 mcreate_err=Ustvarjanja glavnega območja ni bilo mogoče
 mcreate_ednssecsize=Ni bilo mogoče izračunati velikosti ključa : $1
 mcreate_ednssec=Ustvarjanje zapisov je uspelo, vendar DNSSEC ni uspel : $1
+
 slave_title=Uredi podrejeno cono
 stub_title=Uredite Stub Zone
 slave_ecannot=Ni vam dovoljeno urejati te cone
@@ -202,6 +206,7 @@ slave_applymsg2=Kliknite ta gumb, da prisilite ponovni prenos cone z glavnega st
 slave_last=Nazadnje preneseno : $1
 slave_never=Nikoli
 slave_xfer=Prenos preskusne cone
+
 screate_title1=Ustvari podrejeno cono
 screate_title2=Ustvari Stub cono
 screate_ecannot1=Ni vam dovoljeno ustvarjati podrejenih območij
@@ -214,6 +219,7 @@ screate_rev=Reverse (naslovi imen)
 screate_dom=Ime domene / omrežje
 screate_err1=Ni bilo mogoče ustvariti podrejenega območja
 screate_err2=Ni bilo mogoče ustvariti območja škrbine
+
 recs_ecannot=Na tem območju ne smete urejati zapisov
 recs_ecannottype=Te vrste zapisov ni dovoljeno urejati
 recs_title=$1 Zapisi
@@ -231,6 +237,7 @@ recs_drev=Ali želite izbrisati tudi revers?
 recs_none=Domena še nima $1 zapisov.
 recs_nosearch=Noben zapis se ne ujema z vašim iskanjem.
 recs_needsearch=Vnesite iskanje za iskanje ujemajočih se zapisov.
+
 edit_title=Uredi $1
 edit_header=V $1
 edit_edit=Uredi $1 Snemanje
@@ -306,6 +313,7 @@ edit_edmarcpct=Odstotek sporočil mora biti celo število med 0 in 100
 edit_edmarcrua=Manjka skupni povratni naslov
 edit_edmarcruf=Manjka naslov forenzičnih informacij
 edit_ecaavalue2=Manjkajoče ali neveljavno ime domene
+
 text_title=Uredi datoteko zapisov
 text_title2=Oglejte si datoteko zapisov
 text_desc3=Ta obrazec vam omogoča ročno urejanje datoteke zapisov DNS $1. Webmin ne bo preveril skladnje.
@@ -315,6 +323,7 @@ text_ecannot=Nimate dovoljenja za urejanje zapisov
 text_none=Vendar je datoteka trenutno prazna, verjetno zato, ker cona še ni bila prenesena z glavnega strežnika.
 text_soa=Samodejno povečajte serijsko številko
 text_rawformat=To območje je v surovi binarni obliki, zato ga ni mogoče prikazati kot besedilo.
+
 restart_err=Spremembe ni bilo mogoče uporabiti
 restart_ecannot=Ni vam dovoljeno znova zagnati BIND
 restart_epidfile=Ni mogoče najti BIND PID v $1
@@ -323,10 +332,12 @@ restart_erunning2=Zdi se, da BIND ne deluje na pomožnem strežniku $1
 restart_endc=Ukaza NDC ni uspelo : $1
 restart_ecmd=Ukaz ponovnega zagona ni uspel : $1
 restart_eversion=Podrejeni strežnik $1 ne izvaja različice Webmin $2 ali višje.
+
 start_ecannot=Ne smete zagnati BIND
 start_error=Ni bilo mogoče zagnati BIND : $1
 stop_epid=BIND se ne izvaja
 stop_ecannot=BIND ne smete ustaviti
+
 fwd_title=Uredi območje za naprej
 fwd_ecannot=Ni vam dovoljeno urejati te cone
 fwd_opts=Možnosti cone
@@ -335,12 +346,14 @@ fwd_forward=Ali želite poskusiti z drugimi strežniki?
 fwd_check=Preveri imena?
 fwd_err=Možnosti ni bilo mogoče shraniti
 fwd_delmsg=Kliknite ta gumb, da izbrišete to območje s strežnika DNS. Zapisi v njem bodo nato pregledani z običajnim postopkom ločljivosti.
+
 delegation_title=Uredi območje delegacije
 delegation_ecannot=Ni vam dovoljeno urejati te cone
 delegation_opts=Možnosti cone
 delegation_err=Možnosti ni bilo mogoče shraniti
 delegation_noopts=Območja delegiranja nimajo možnosti nastavitve.
 delegation_delmsg=Kliknite ta gumb, da izbrišete to območje s strežnika DNS. Vrste zapisov, ki niso v NS, bo nato BIND prepoznal.
+
 fcreate_title=Ustvari naprej cono
 fcreate_ecannot=Ne smete ustvarjati območij naprej
 fcreate_opts=Nove možnosti za prednjo cono
@@ -350,10 +363,12 @@ fcreate_rev=Reverse (naslovi imen)
 fcreate_dom=Ime domene / omrežje
 fcreate_masters=Glavni strežniki
 fcreate_err=Ni bilo mogoče ustvariti območja naprej
+
 dcreate_title=Ustvari območje samo za delegacijo
 dcreate_ecannot=Ni vam dovoljeno ustvariti območij prenosa
 dcreate_opts=Nove možnosti območja prenosa
 dcreate_err=Ni bilo mogoče ustvariti območja prenosa
+
 create_enet='$1' ni veljavno omrežje
 create_edom='$1' ni veljavno ime domene
 create_edom2='$1' mora biti domena in ne omrežje
@@ -363,9 +378,11 @@ create_efile3=Ni bilo mogoče ustvariti '$1' : $2
 create_efile4=Datoteka $1 že obstaja
 create_emaster='$1' ni veljaven naslov glavnega strežnika
 create_enone=Vnesti morate vsaj en glavni strežnik
+
 boot_err=Prenos ni uspel
 boot_egzip=Datoteka korenske cone je stisnjena, vendar ukaz <tt>gzip</tt> ni nameščen v vašem sistemu!
 boot_egzip2=Nekompresija datoteke korenske cone ni uspela : $1
+
 type_A=Naslov
 type_AAAA=Naslov IPv6
 type_NS=Strežnik imen
@@ -386,6 +403,7 @@ type_SRV=Naslov storitve
 type_ALL=Vse vrste zapisov
 type_KEY=Javni ključ
 type_CAA=Organ za potrjevanje
+
 edit_A=Naslov
 edit_AAAA=Naslov IPv6
 edit_NS=Strežnik imen
@@ -405,6 +423,7 @@ edit_NSEC3PARAM=DNSSEC Parametri
 edit_TLSA=SSL potrdilo
 edit_SSHFP=Javni ključ SSH
 edit_CAA=Organ za potrjevanje
+
 recs_defttl=Privzeta TTL
 recs_A=Naslov
 recs_AAAA=Naslov IPv6
@@ -427,6 +446,7 @@ recs_TLSA=SSL potrdilo
 recs_SSHFP=Javni ključ SSH
 recs_CAA=Organ za potrjevanje
 recs_delete=Izbriši izbrano
+
 value_A1=Naslov
 value_AAAA1=Naslov IPv6
 value_NS1=Strežnik imen
@@ -503,6 +523,7 @@ value_CAA3=Ime domene CA
 value_caa_issue=Cert enojne domene
 value_caa_issuewild=Wildcard cert
 value_caa_iodef=URL za kršitev pravilnika
+
 tlsa_usage0=Organ za potrjevanje
 tlsa_usage1=Končni subjekt
 tlsa_usage2=Zaupajte sidru
@@ -512,12 +533,14 @@ tlsa_selector1=Informacije o javnem ključu
 tlsa_match0=Neodprta vsebina
 tlsa_match1=SHA-256 je razrezan
 tlsa_match2=SHA-512 je razgaljal
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 warn=Opozorilo
 fail=Neuspeh
 ignore=Ignoriraj
@@ -531,6 +554,7 @@ listed=Seznami ..
 eip='$1' ni veljaven naslov IP
 eport='$1' ni veljavna številka vrat
 eipacl='$1' ni veljaven IP naslov ali ACL ime
+
 acl_zones=Domene, ki jih ta uporabnik lahko ureja
 acl_zall=Vse cone
 acl_zsel=Izbrana območja ..
@@ -575,6 +599,7 @@ acl_ztypes_master=Mojster
 acl_ztypes_slave=Suženj / škrbino
 acl_ztypes_delegation=Delegacija
 acl_ztypes_forward=Naprej
+
 servers_title=Drugi strežniki DNS
 servers_ip=IP naslov
 servers_bogus=Ali želite prezreti lažni strežnik?
@@ -586,6 +611,7 @@ servers_keys=Uporabite tipke DNS
 servers_err=Drugih strežnikov DNS ni bilo mogoče shraniti
 servers_eip='$1' ni veljaven naslov IP
 servers_etrans='$1' ni veljavno število največjih prenosov
+
 logging_title=Beleženje in napake
 logging_ecannot=Nimate dovoljenja za konfiguriranje beleženja
 logging_header=Možnosti globalnega beleženja in napak
@@ -624,6 +650,7 @@ logging_efile=Manjka ime datoteke dnevnika
 logging_efile2=Ime datoteke dnevnika mora biti absolutna pot
 logging_ever='$1' ni veljavno število različic
 logging_esize='$1' ni veljavna velikost dnevnika
+
 acls_title=Seznami nadzora dostopa
 acls_ecannot=Nimate dovoljenja za urejanje globalnih acls
 acls_name=ACL ime
@@ -631,6 +658,7 @@ acls_values=Ujemanje naslovov, omrežij in ACL-jev
 acls_err=Seznamov za nadzor dostopa ni bilo mogoče shraniti
 acls_ename='$1' ni veljavno ime ACL
 acls_eline=Vsak naslov IP mora biti vpisan v ločeno vrstico za ACL '$1'
+
 files_title=Datoteke in imeniki
 files_ecannot=Ni vam dovoljeno konfigurirati datotek
 files_header=Možnosti globalnih datotek in imenikov
@@ -640,6 +668,7 @@ files_pid=Datoteka ID procesa
 files_xfer=Program za prenos poti v cono
 files_err=Možnosti datotek in imenikov ni bilo mogoče shraniti
 files_efile=Manjkajoče ali neveljavno ime datoteke
+
 forwarding_title=Posredovanje in prenosi
 forwarding_ecannot=Možnosti posredovanja in prenosa ne morete urejati
 forwarding_header=Možnosti globalnega posredovanja in prenosa v cono
@@ -658,6 +687,7 @@ forwarding_etrans=Manjkajoči ali neveljavni največji sočasni prenosi
 forwarding_minutes=minut
 forwarding_ip=IP naslov
 forwarding_port=Pristanišče
+
 net_title=Naslovi in topologija
 net_ecannot=Nimate možnosti urejanja naslovov in možnosti topologije
 net_header=Možnosti globalnega naslova in topologije
@@ -683,6 +713,7 @@ net_taddrdef=Najbližji IP
 net_etport=Vrata za prenos ne morete določiti brez naslova
 net_eaddr='$1' ni veljaven naslov IPv4
 net_eaddr6='$1' ni veljaven naslov IPv6
+
 controls_title=Možnosti nadzornega vmesnika
 controls_ecannot=Ne morete urejati možnosti nadzora
 controls_header=Možnosti nadzora
@@ -704,6 +735,7 @@ controls_eunixpath=Manjkajoča ali neveljavna pot datoteke FIFO
 controls_eunixperm=Manjkajoča ali neveljavna dovoljenja za oktalno datoteko
 controls_eunixowner=Manjkajoči ali neveljaven lastnik datoteke
 controls_eunixgroup=Manjkajoča ali neveljavna skupina datotek
+
 controls_inet=Dostop do internetnih vrat
 controls_unix=Unix FIFO dostop
 controls_port=pristanišče
@@ -717,6 +749,7 @@ controls_efile=Manjkajoče ali neveljavno ime datoteke FIFO
 controls_eperms=Manjkajoča ali neveljavna dovoljenja FIFO
 controls_eowner=Manjkajoči ali neveljavni UID lastnika FIFO
 controls_egroup=Manjkajoči ali neveljaven GID lastnika FIFO
+
 keys_title=DNS tipke
 keys_id=ID ključa
 keys_alg=Algoritem
@@ -725,6 +758,7 @@ keys_ecannot=Nimate dovoljenja za urejanje tipk DNS
 keys_err=DNS ključev ni bilo mogoče shraniti
 keys_ekey='$1' ni veljaven ID ključa
 keys_esecret=Manjkajoča ali neveljavna skrivnost zakodirane osnovne-64 za ključ $1
+
 misc_title=Razne možnosti
 misc_ecannot=Nimate dovoljenja za urejanje raznih možnosti
 misc_header=Razne globalne možnosti
@@ -744,6 +778,7 @@ misc_esize='$1' ni veljavna velikost
 misc_efiles='$1' ni veljavno število največ odprtih datotek
 misc_emins='$1' ni veljavno število minut
 misc_mins=min
+
 zonedef_title=Privzete točke cone
 zonedef_msg=Privzete nastavitve za nove glavne cone
 zonedef_err=Shranjevanja privzetih nastavitev ni bilo mogoče
@@ -767,10 +802,13 @@ zonedef_size=Začetna velikost ključa
 zonedef_single=Število tipk za ustvarjanje
 zonedef_two=Ključ cone in ključ za podpisovanje
 zonedef_one=Samo ključ cone
+
 find_title=Poišči cone
 find_match=Območja, ki se ujemajo $1.
 find_none=Nobene cone ni mogoče najti.
+
 efirst=Slaba prva direktiva v vrstici $1 v $2
+
 findfree_title=Poiščite brezplačne IP-je
 findfree_desc=Poiščite brezplačne IP-je
 findfree_nofind=Ne morete iskati brezplačnih IP-jev
@@ -782,8 +820,10 @@ findfree_cf=Ali menite <em>freeXXX</em> imena gostiteljev kot brezplačna IP-ja?
 findfree_search=Iskanje
 findfree_msg=Najden $1 prosti IP naslovi
 findfree_msg2=(od katerih je $1 kot <i>freeXXX</i>, $2 kot <i>freemac</i>)
+
 free_title=Brezplačni naslovi IP
 free_ip=IP naslov
+
 log_servers=Spremenjeni drugi strežniki DNS
 log_logging=Spremenjena beleženje in napake
 log_acls=Spremenjeni seznami nadzora dostopa
@@ -840,14 +880,17 @@ log_sign=Posodobljeni podpisi DNSSEC za cono $1
 log_resign=Ponovno podpisan ključ DNSSEC za cono $1
 log_trusted=Spremenjeno preverjanje DNSSEC
 log_dnssec=Spremenite ponovno podpisovanje ključa DNSSEC
+
 convert_err=Območja ni bilo mogoče pretvoriti
 convert_efile=Pred pretvorbo podrejenega območja v nadrejeni mora biti podana datoteka zapisov.
 convert_efilesize=Datoteka zapisov $1 ne obstaja ali je prazna
 convert_ebinary=Ukaz, potreben za pretvorbo iz binarnega podrejenega območja v glavno besedilno obliko, ni nameščen
 convert_ecompile=Pretvorba zapisa v obliki binarne datoteke v besedilo ni uspela : $1
+
 whois_title=Informacije WHOIS
 whois_header=Izhod iz ukaza $1.
 whois_ecannot=Nimate dovoljenja za iskanje WHOIS informacij
+
 view_title=Urejanje pogleda odjemalca
 view_opts=Podrobnosti o stranki
 view_opts2=Možnosti za prikazane cone
@@ -858,6 +901,7 @@ view_recursion=Ali za stranke izvajajo celotne rekurzivne poizvedbe?
 view_ecannot=Tega pogleda ni dovoljeno urejati
 view_delete=Izbriši pogled
 view_deletemsg=Kliknite ta gumb, da izbrišete pogled. Izberete lahko premikajoče se cone, ki jih vsebuje, v drug pogled ali pa jih tudi izbrišete.
+
 vcreate_title=Ustvari pogled stranke
 vcreate_match_all=Vse stranke
 vcreate_match_sel=Navedeni naslovi, omrežja in ACL-ji.
@@ -866,6 +910,7 @@ vcreate_ename=Manjkajoče ali neveljavno ime pogleda
 vcreate_etaken=Ime za ogled je že posneto
 vcreate_eclass=Manjkajoče ali neveljavno ime razreda
 vcreate_ecannot=Ni vam dovoljeno ustvarjati pogledov
+
 hint_title=Urejanje korenske cone
 hint_desc=Korenovno območje vaš strežnik DNS uporablja za vzpostavitev stika s korenskimi strežniki v internetu, tako da lahko razreši imena v domenah, ki jih vaš strežnik DNS ne obravnava, na primer <tt>.com</tt> ali <tt>.net. au</tt>. Če vaš strežnik DNS ni za uporabo v notranjem omrežju ali če vse poizvedbe posredujete drugemu strežniku, tega korenskega območja ne smete izbrisati.
 hint_move=Premakni za ogled:
@@ -874,6 +919,7 @@ hint_refetch=Ponovno naložite Root Nameservers
 hint_refetchdesc=Kliknite ta gumb, če želite, da Webmin znova prenese datoteko korenskega območja iz svojega vira na strežnik Internic FTP.
 hint_delete=Izbriši korensko cono
 hint_deletedesc=Kliknite ta gumb, da odstranite to korensko območje. Brez nje vaš strežnik imen ne bo mogel razrešiti domen na internetu, razen tistih, za katere je sekundarni.
+
 hcreate_title=Ustvari korensko cono
 hcreate_desc=Korenovno območje vaš strežnik DNS uporablja za vzpostavitev stika s korenskimi strežniki v internetu, tako da lahko razreši imena v domenah, ki jih vaš strežnik DNS ne obravnava, na primer <tt>.com</tt> ali <tt>.net. au</tt>. Če uporabljate več pogledov, boste morda morali imeti v vsakem pogledu ločeno korensko območje, da lahko vse stranke pravilno rešijo internetne domene.
 hcreate_header=Podrobnosti o korenski coni
@@ -887,6 +933,7 @@ hcreate_efile='$1' ni dovoljena korenska datoteka
 hcreate_efile2=Manjkajoča ali neveljavna korenska datoteka
 mcreate_erecs=Ni veljavna obstoječa datoteka korenskega območja
 hcreate_err=Ustvarjanja korenskega območja ni bilo mogoče
+
 vdelete_title=Izbriši pogled
 vdelete_mesg=Ali ste prepričani, da želite izbrisati pogled odjemalca $1? Vsa območja v tem pogledu bodo bodisi izbrisana (skupaj z njihovimi datotekami o conah) ali prestavljena na drug pogled, odvisno od izbire spodaj.
 vdelete_mesg2=Ali ste prepričani, da želite izbrisati pogled odjemalca $1?
@@ -894,6 +941,7 @@ vdelete_newview=Območja v tem pogledu
 vdelete_root=Premakni se od pogledov
 vdelete_delete=Izbriši v celoti
 vdelete_move=Premakni za ogled
+
 gen_title=Generatorji zapisov
 gen_desc=Ta stran vam omogoča, da določite generatorje, od katerih bo vsak ustvaril več zapisov v tem območju s pomočjo naraščajočega števca. To je lahko koristno za delegiranje delov povratne cone na drug strežnik.
 gen_range=Domet
@@ -913,7 +961,9 @@ gen_evalue=Manjkajoči ali neveljaven vzorec imena gostitelja za generator $1
 gen_title2=Generirani zapisi
 gen_raw=Konfigurirajte vrstico datoteke
 gen_ecannot=Ne morete urejati generatorjev zapisov
+
 refetch_err=Ponovnega prenosa korenskega območja ni bilo mogoče
+
 slaves_title=Cluster Slave strežniki
 slaves_none=V skupino DNS še ni bil dodan noben strežnik.
 slaves_host=Ime gostitelja
@@ -941,6 +991,7 @@ slaves_sec=Ali ustvarjate sekundarno v suženju, ko ustvarjate lokalno?
 slaves_name=Ime za NS zapis
 slaves_same=Enako kot ime gostitelja
 slaves_header=Možnosti strežnika podrejenih gruč
+
 add_title=Dodaj strežnike
 add_msg=Dodajanje $1.
 add_gmsg=Dodajanje strežnikov v skupino $1.
@@ -958,6 +1009,7 @@ add_createok=Nastavite $1 z $2 novimi podrejenimi območji.
 add_ename=Manjkajoče ali neveljavno ime zapisa NS
 add_egname=Ime zapisa zapisa NS ni mogoče določiti pri dodajanju skupine
 add_emyip=IP-naslova tega sistema ni bilo mogoče razbrati. Na strani Konfiguracija modula nastavite <b>Privzeti IP glavnega strežnika za oddaljene podrejene cone</b>.
+
 mass_title=Ustvari cone iz paketne datoteke
 mass_desc=Ta stran omogoča ustvarjanje več con hkrati iz naložene besedilne datoteke na strani strežnika. Vsaka vrstica v datoteki mora imeti naslednjo obliko: <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p> <i>Vrsta</i> mora biti ena od <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> ali <tt>forward</tt>. Ime <i>datoteke</i> ni obvezno in se samodejno izračuna, če manjka. <i>Glavni IP-ji</i> morajo biti navedeni samo za podrejene cone.
 mass_local=Lokalna paketna datoteka
@@ -989,6 +1041,7 @@ mass_emips=Manjka glavni IP naslovi
 mass_addedslaves=$1 je v podrejene strežnike v redu.
 mass_eonslave=Prišlo je do napak, ustvarjenih na pomožnih strežnikih : $1
 mass_eviewcannot=V ta pogled ne smete dodati območij
+
 massdelete_title=Izbriši cone
 massdelete_rusure=Ali ste prepričani, da želite izbrisati izbrana območja $1? ($2)
 massdelete_ok=Izbriši zdaj
@@ -998,6 +1051,7 @@ massdelete_slaves=Brisanje cone $1 s podrejenih strežnikov ..
 massdelete_failed=.. nekateri sužnji niso uspeli :
 massdelete_vwarn=Nekatere cone so povezane z domeno Virtualmin $1, zato jih tukaj ne bi smeli izbrisati!
 massdelete_vwarn2=Nekatere cone so povezane z domeno Virtualmin $1 in $2, zato jih tukaj ne bi smeli izbrisati!
+
 rndc_title=Nastavite RNDC
 rndc_desc=To stran lahko uporabite za nastavitev BIND-ja za nadzor s strani programa RNDC, tako da se lahko posamezne cone osvežijo, ne da bi morali opraviti popoln ponovni zagon BIND-ja.
 rndc_desc2=Zdi se, da je RNDC že pravilno nastavljen, zato vam verjetno ni treba uporabljati tega obrazca.
@@ -1008,11 +1062,13 @@ rndc_ok=Da, nastavite RNDC
 rndc_err=Nastavitev RNDC ni uspela
 rndc_ekey=Ključa ni bilo mogoče najti v rndc.conf
 rndc_esecret=V rndc.conf ni bilo mogoče najti skrivnosti
+
 drecs_err=Brisanja zapisov ni bilo mogoče
 drecs_enone=Izbrana ni nobena
 drecs_title=Izbriši zapise
 drecs_rusure=Ali ste prepričani, da želite izbrisati izbrane zapise $1 iz $2?
 drecs_ok=Izbriši zdaj
+
 manual_title=Uredi datoteko za konfiguriranje
 manual_ecannot=Nimate dovoljenja za urejanje konfiguracijske datoteke BIND
 manual_ok=Uredi
@@ -1020,7 +1076,9 @@ manual_efile=Izbrana datoteka ni del konfiguracije BIND
 manual_file=Urejanje konfiguracijske datoteke:
 manual_edata=Nič ni vneseno!
 manual_err=Konfiguracijske datoteke ni bilo mogoče shraniti
+
 syslog_desc=Sporočila strežnika BIND DNS
+
 umass_err=Območja ni bilo mogoče posodobiti
 umass_enone=Izbrana ni nobena
 umass_title=Posodobite zapise v conah
@@ -1039,6 +1097,7 @@ umass_done=.. posodobljeno $1 ujemanje zapisov iz $2.
 umass_none=.. ni najdenih nobenih zapisov iz $1, ki bi jih bilo mogoče najti.
 umass_egone=Cona ne obstaja
 emass_emx='$1' ni številka prioritete e-poštnega strežnika, ki ji sledi veljavno ime gostitelja
+
 rdmass_err=Brisanja zapisov na območjih ni bilo mogoče
 rdmass_enone=Izbrana ni nobena
 rdmass_title=Brisanje zapisov v conah
@@ -1055,6 +1114,7 @@ rdmass_done=.. izbris $1 ujemanje zapisov iz $2.
 rdmass_none=.. nobenega ujemajočih se zapisov iz $1 za brisanje najdeno.
 rdmass_ok=Izbriši zapise
 rdmass_sel=Zapisi poimenovani
+
 rmass_err=Ni bilo mogoče dodati zapisov
 rmass_enone=Izbrana ni nobena
 rmass_title=Dodaj zapis v cone
@@ -1074,18 +1134,22 @@ rmass_esign=.. končano, vendar podpis ni uspel : $1
 rmass_eclash=.. Zapis z istim imenom in vrednostjo $1 že obstaja.
 rmass_eclash2=.. Zapis z istim imenom in isto vrednostjo $1 že obstaja.
 rmass_clash=Ustvari, tudi če zapis že obstaja?
+
 check_title=Preverite zapise
 check_ecannot=Ni vam dovoljeno preverjati zapisov
 check_errs=Naslednje napake so bile najdene v datoteki zapisov $1.
 check_allok=V datoteki zapisov $1 ni bilo najdenih napak.
+
 ncheck_title=Preverite BIND Config
 ncheck_ecannot=Preverjanje konfiguracije BIND vam ni dovoljeno
 ncheck_errs=Naslednje napake so bile najdene v konfiguracijski datoteki BIND $1 ali v referenčnih zonah.
 ncheck_allok=V konfiguracijski datoteki BIND $1 ali v referenčnih območjih ni bilo najdenih napak.
+
 links_restart=Uporabi konfiguracijo
 links_stop=Ustavite BIND
 links_start=Začnite BIND
 links_apply=Uporabi cono
+
 dnssec_title=Ponovno podpisovanje ključa DNSSEC
 dnssec_ecannot=Niste dovoljeni za konfiguriranje DNSSEC
 dnssec_header=Ključne možnosti ponovnega podpisa
@@ -1096,6 +1160,7 @@ dnssec_secs=sekund
 dnssec_desc=Območja, podpisana z DNSSEC, imajo običajno dve tipki - zonski ključ, ki ga je treba znova generirati in podpisovati redno, in ključ za podpisovanje tipk, ki ostane stalen. Na tej strani lahko konfigurirate Webmin za samodejno izvajanje tega ponovnega podpisa.
 dnssec_err=Ponovnega podpisa ključa DNSSEC ni bilo mogoče shraniti
 dnssec_eperiod=Manjkajoče ali neveljavno število dni med ponovnimi znaki
+
 dnssectools_title=DNSSEC-Avtomatizacija orodij
 dt_conf_title=DNSSEC-Avtomatizacija orodij
 dt_enable_title=DNSSEC-Avtomatizacija orodij
@@ -1160,6 +1225,7 @@ dt_status_inKSKroll=V KSK Roll
 dt_status_inZSKroll=V ZSK Roll
 dt_status_signed=Podpisano
 dt_status_unsigned=Nepodpisano
+
 zonekey_title=Nastavite ključ DNSSEC
 zonekey_desc=To območje še nima podpisne tipke DNSSEC. S tem obrazcem lahko Webmin ustvari enega, tako da so stranke, ki rešujejo to cono, zaščitene pred napadi DNS-a.
 zonekey_header=Nove možnosti tipk DNSSEC
@@ -1193,9 +1259,12 @@ zonekey_sign=Prijavna cona
 zonekey_signdesc=Ta območje takoj ponovno podpišite, tako da bodo vse spremembe zapisov, narejene ročno, vključene v zapise o podpisovanju.
 zonekey_resign=Ponovno prijavi cono
 zonekey_resigndesc=Ustvarite nov ključ za podpisovanje v cono, podpišite ga z glavnim ključem cone in ponovno podpišite vse zapise.
+
 sign_err=Področja ni bilo mogoče podpisati
 sign_emsg=DNSSEC podpisovanje po neuspešni spremembi zapisov : $1
+
 resign_err=Cone ni bilo mogoče ponovno podpisati
+
 trusted_title=Preverjanje DNSSEC
 trusted_ecannot=Ni vam dovoljeno konfigurirati preverjanja DNSSEC
 trusted_esupport=Vaša različica BIND ne podpira preverjanja DNSSEC
@@ -1230,6 +1299,7 @@ trusted_setup=Da bi bil DNSSEC uporaben za preverjanje večine podpisanih con na
 trusted_ok=Nastavite DLV in omogočite preverjanje DNSSEC
 trusted_warning=Opozorilo! Konfiguracija odjemalca BIND DNSSEC vsebuje zastarele ključe, ki bodo prenehali delovati oktobra 2017. Za prilagoditev konfiguracije uporabite <a href='$1'>stran za preverjanje BIND DNSSEC</a> ali kliknite spodnji gumb.
 trusted_fix=Popravite konfiguracijo DNSSEC
+
 xfer_title=Prenos preskusne cone
 xfer_doing=Testiranje prenosa podrejenega območja iz $1.
 xfer_failed=.. od $1: Ni uspelo : $2

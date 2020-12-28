@@ -4,6 +4,7 @@ index_desc=Penerangan
 index_add=Tambah perkhidmatan PAM baharu.
 index_return=senarai perkhidmatan
 index_none=Tiada fail konfigurasi PAM ditemui pada sistem anda dalam direktori $1. Mungkin PAM tidak disokong, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
+
 desc_su=Ubah Pengguna
 desc_su-l=Tukar pengguna (dengan log masuk)
 desc_login=Log masuk setempat atau jauh
@@ -87,6 +88,7 @@ desc_common-account=Pengesahan akaun biasa
 desc_common-auth=Pengesahan biasa
 desc_common-password=Perubahan kata laluan biasa
 desc_common-session=Persediaan sesi biasa
+
 edit_title=Edit Perkhidmatan PAM
 edit_header=Butiran perkhidmatan PAM
 edit_name=Nama perkhidmatan
@@ -107,6 +109,7 @@ edit_move=Pindah
 edit_return=Perkhidmatan PAM
 edit_inc=Sertakan perkhidmatan $1 
 edit_iheader=Termasuk perkhidmatan PAM
+
 pam_pwdb.so=Pengesahan kata laluan Unix
 pam_securetty.so=Periksa TTY selamat untuk root
 pam_nologin.so=cek <tt>/etc/nologin</tt>
@@ -149,6 +152,7 @@ pam_console.so=Semak konsol sahaja
 pam_xauth.so=Pengesahan X
 pam_stack.so=Hubungi perkhidmatan PAM lain
 pam_foreground.so=Persediaan konsol
+
 control_requisite=Keperluan
 control_required=Dikehendaki
 control_sufficient=Cukup
@@ -157,6 +161,7 @@ control_desc_requisite=Gagal pengesahan segera pada kegagalan
 control_desc_required=Gagal pengesahan pada akhir kegagalan
 control_desc_sufficient=Berjaya mengesahkan segera pada kejayaan
 control_desc_optional=Kejayaan atau kegagalan diabaikan
+
 create_title=Buat Perkhidmatan PAM
 create_header=Pilihan perkhidmatan PAM baharu
 create_name=Nama perkhidmatan
@@ -165,6 +170,7 @@ create_mods=Modul PAM awal
 create_0=Tiada
 create_1=Pengesahan Unix
 create_2=Tolak semua akses
+
 mod_edit=Edit Modul PAM
 mod_create=Tambah Modul PAM
 mod_header=Pilihan modul PAM
@@ -178,10 +184,12 @@ mod_type_password=Perubahan kata laluan
 mod_control=Tahap kegagalan
 mod_args=Hujah-hujah modul
 mod_err=Gagal menyimpan modul
+
 pwdb_shadow=Gunakan fail kata laluan bayangan?
 pwdb_nullok=Terima kata laluan yang tidak sah?
 pwdb_md5=Gunakan kata laluan yang disulitkan MD5?
 pwdb_nodelay=Kelewatan selepas login gagal?
+
 unix_nullok_secure=Terima kata laluan tidak sah pada TTYs selamat?
 unix_min=Panjang kata laluan minima
 unix_nomin=Tiada
@@ -190,6 +198,7 @@ unix_nomax=Tiada had
 unix_obscure=Cegah penggunaan kata laluan yang mudah?
 unix_emin=Panjang kata laluan minima atau tidak sah
 unix_emax=Panjang kata laluan maksimum atau tidak sah
+
 listfile_item=Cari fail untuk
 listfile_item_user=Nama pengguna
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=Periksa had
 listfile_all=Semua pengguna
 listfile_user=Hanya pengguna
 listfile_group=Hanya kumpulan
+
 cracklib_type=Jenis kata laluan dalam prompt
 cracklib_retry=Pengambilan maksimum sebelum kegagalan
 cracklib_eretry=Bilangan pengambilan semula yang hilang atau tidak sah
 cracklib_etype=Jenis kata laluan yang hilang atau tidak sah
+
 rhosts_equiv=Baca fail <tt>/etc/hosts.equiv</tt>?
 rhosts_rhosts=Baca fail <tt>.rhosts</tt> pengguna?
 rhosts_promiscuous=Kemasukan <tt>+</tt> membolehkan semua tuan rumah?
 rhosts_suppress=Kegagalan pengesahan log?
+
 env_var=Nama berubah
 env_def=Nilai asal
 env_over=Nilai override
 env_evar=Nama ubah tidak boleh mengandungi ruang
+
 securetty_ttys=TTY selamat
+
 shells_shells=Cakera pengguna yang sah
+
 tally_deny=Percubaan gagal sebelum menafikan akses
 tally_reset=Menetapkan semula kegagalan kegagalan pada kejayaan
 tally_edeny=Bilangan percubaan gagal atau tidak sah
 tally_magic=Kira kegagalan terpakai untuk <tt>root</tt>?
 tally_root=akaun <tt>root</tt> boleh dinafikan?
+
 time_services=Perkhidmatan
 time_ttys=TTYs
 time_users=Pengguna
 time_times=Masa capaian
 time_info=Semua medan boleh mengandungi pelbagai nilai yang dipisahkan oleh |, dan nilai boleh menggunakan * sebagai wildcard atau! sebagai penasihat.
+
 group_services=Perkhidmatan
 group_ttys=TTYs
 group_users=Pengguna
 group_times=Masa capaian
 group_groups=Tambah kumpulan
 group_info=Semua medan boleh mengandungi pelbagai nilai yang dipisahkan oleh |, dan nilai boleh menggunakan * sebagai wildcard atau! sebagai penasihat.
+
 wheel_group=Semak keanggotaan kumpulan
 wheel_group_def=Lalai (<tt>roda</tt> atau GID 0)
 wheel_trust=Ahli kumpulan memintas pengesahan selanjutnya?
 wheel_deny=Tolak daripada membenarkan ahli kumpulan?
 wheel_egroup=Nama kumpulan yang hilang atau tidak sah
+
 motd_file=Fail untuk dipaparkan
 motd_file_def=Lalai (<tt>/etc/motd</tt>)
 motd_efile=Nama fail yang hilang atau tidak sah
+
 mail_nopen=Paparkan pemberitahuan mel semasa login?
 mail_close=Paparkan pemberitahuan mel pada log keluar?
 mail_empty=Beritahu jika fail mel kosong?
 mail_noenv=Tetapkan pembolehubah persekitaran $ MAIL?
 mail_dir=Direktori jet mel
 mail_edir=Direktori rol mel yang hilang atau tidak sah
+
 stack_service=Lulus cek ke perkhidmatan PAM
+
 log_pam_create=Perkhidmatan PAM yang dibuat $1 
 log_pam_delete=Perkhidmatan PAM dipadam $1 
 log_mod_create=Modul PAM yang ditambah $1 ke perkhidmatan $2 
@@ -262,6 +284,7 @@ log_inc_create=Ditambah termasuk $1 untuk perkhidmatan $2
 log_inc_modify=Diubah suai termasuk $1 untuk perkhidmatan $2 
 log_inc_delete=Dihapus termasuk $1 untuk perkhidmatan $2 
 log_incs=Dikemas kini termasuk untuk perkhidmatan $1 
+
 inc_edit=Edit Perkhidmatan Termasuk
 inc_create=Buat Perkhidmatan Termasuk
 inc_header=Termasuk butiran perkhidmatan PAM

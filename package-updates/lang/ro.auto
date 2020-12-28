@@ -57,6 +57,7 @@ index_reposdisable=Dezactivați depozitele
 index_reposenable=Activați depozitele
 index_reposdelete=Ștergeți depozitele
 index_repoheader=Opțiuni noi pentru depozit de pachete
+
 update_title=Actualizați pachetele
 update_title2=Instalați pachete
 update_enone=Nu au fost selectate pachete
@@ -94,9 +95,11 @@ update_none=Nici unul
 update_ops=Construirea listei complete de pachete ..
 update_rebootdesc=Unul dintre pachetele instalate necesită o repornire a fi aplicată complet.
 update_reboot=Restarteaza acum
+
 sched_title=Actualizare programată
 sched_yes=Verificarea programată a actualizărilor este acum activă.
 sched_no=Verificarea programată a actualizărilor a fost dezactivată.
+
 log_update=Pachetele actualizate $1 au fost instalate
 log_sched=Activarea actualizărilor programate
 log_unsched=Dezactivarea actualizărilor programate
@@ -108,11 +111,13 @@ log_enable_repo=Depozitul de pachete activat $1
 log_disable_repo=Depozitul de pachete dezactivat $1 
 log_delete_repo=Depozitul pachetelor șterse $1 
 log_create_repo=Depozitul de pachete creat $1 
+
 refresh_title=Pachetele de actualizare
 refresh_clearing=Ștergerea cache-urilor pachetului ..
 refresh_done=.. Terminat
 refresh_available=Recuperarea pachetelor disponibile ..
 refresh_done3=.. găsit $1 actualizări posibile
+
 view_title=Detalii pachet
 view_header=Informații actualizate despre pachet
 view_name=Numele pachetului
@@ -126,12 +131,14 @@ view_changelog=Changelog pentru versiunea disponibilă
 view_software=Gestionează pachetul
 view_update=Pachetul de actualizare
 view_install=Instalează pachetul
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)
 system_webmin=Modul Webmin
 system_usermin=Modulul Usermin
 system_tgz=Webmin sau Usermin tar.gz
+
 repos_err_disable=Nu a reușit să dezactiveze depozitele
 repos_err_enable=Nu a reușit să activeze depozitele
 repos_err_delete=Nu a reușit să ștergi depozitele

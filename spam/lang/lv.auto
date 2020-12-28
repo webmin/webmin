@@ -13,6 +13,7 @@ index_applydesc=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējo SpamAss
 index_cpan=Tā kā SpamAssassin ir Perl modulis, varat to arī automātiski instalēt, izmantojot Webmin moduli <a href='$2'>Perl Modules</a>, lai lejupielādētu $1 no CPAN.
 index_spamassassin=SpamAssassin
 index_ecannot=Jums nav atļauts pārvaldīt SpamAssassin konfigurācijas failu $1 
+
 white_title=Atļautās un noraidītās adreses
 white_desc=Šīs lapas tabulas ļauj jums norādīt No: un Kam: adreses e-pastam, kas vienmēr vai nekad nav klasificēts kā surogātpasts. Visi citi e-pasti tiks apstrādāti kā parasti saskaņā ar SpamAssassin noteikumiem. Visās e-pasta adresēs var būt aizstājējzīmes, piemēram, *@foo.com vai *.foo.com, lai tās atbilstu veseliem domēniem.
 white_from=Sūtītāji nekad neklasificē kā surogātpastu
@@ -44,6 +45,7 @@ white_tabham=Atļautās adreses
 white_tabspam=Liegtas adreses
 white_tabsome=Galamērķa adreses
 white_tabimport=Importēt adreses
+
 score_title=Surogātpastu klasifikācija
 score_desc=SpamAssassin katram ziņojumam piešķir punktu skaitu, pamatojoties uz tā saturu un galvenēm. Šīs lapas opcijas nosaka punktu skaitu, virs kura ziņojums tiek uzskatīts par surogātpastu, un dažas no metodēm, ar kuru palīdzību tiek aprēķināts šis rezultāts.
 score_header=Surogātpasta ziņojumu klasifikācijas iespējas
@@ -77,6 +79,7 @@ score_emxdelay=Trūkst vai nav derīgas sekundes, lai gaidītu starp MX pārbaud
 score_etimeout=Trūkst vai nav derīgas sekundes, lai gaidītu RBL vaicājumus
 score_ereceived=Trūkst vai nav derīgs saņemto skaits: galvenes, kuras jāpārbauda RBL
 score_bayes=Vai izmantojat Bajesijas mācību klasifikatoru?
+
 report_title=Ziņojuma modifikācija
 report_desc=Šīs lapas opcijas kontrolē modifikācijas, kuras SpamAssassin veic visu analizēto ziņojumu galvenēs un pamattekstā, kā arī modifikācijas, kuras tā veic tiem, kas klasificēti kā surogātpasts.
 report_header=Analizētas un surogātpastu modifikācijas iespējas
@@ -109,6 +112,7 @@ report_addspam=Spams
 report_addham=Šķiņķis
 report_addall=Visi
 report_eaddheader=Trūkst vai nav derīga papildu galvene, lai pievienotu $1 
+
 user_title=Dažādas lietotāja iespējas
 user_desc=Šīs lapas opcijas galvenokārt ir saistītas ar ceļiem un iestatījumiem, kurus SpamAssassin izmanto ārējām surogātpasta identifikācijas pakotnēm Razor, DCC un Pyzor. Varat arī pateikt SpamAssassin, vai tā spēs veikt DNS meklēšanu vai nē.
 user_header=Dažādas lietotāja līmeņa iespējas
@@ -131,6 +135,7 @@ user_err=Neizdevās saglabāt lietotāja opcijas
 user_etimeout='$1' nav derīgs taimauts
 user_epath=“$1” nav derīgs klienta programmas ceļš
 user_emax='$1' nav derīgs kontrolsummu skaits
+
 header_title=Galvas un ķermeņa testi
 header_desc=Šī lapa ļauj jums noteikt papildu testus, kurus SpamAssassin piemēros e-pastam, pamatojoties uz ziņojumu galvenēm, pamattekstu saturu, pamattekstā atrodamajiem URL vai citu testu kombinācijām. Katram testam piešķirtais nosaukums ir atkarīgs no jums, bet parasti tas ir kaut kas līdzīgs CONTAINS_FOO. Faktisko rezultātu, ko SpamAssassin pievieno ziņojumiem, kuri atbilst testam, var iestatīt, lapas apakšdaļā esošajās tabulās ievadot savus vai iebūvētos testu nosaukumus.
 header_switch=Pārslēgties uz vienkāršo režīmu ..
@@ -164,6 +169,7 @@ header_eeval='$1' nav derīga novērtēšanas funkcija
 header_eheader='$1' nav derīga e-pasta galvene
 header_eregexp='$1' nav derīga regulārā izteiksme (tai jābūt kā / izteiksmei /)
 header_emeta=Trūkst testa izteiciena testam “$1”
+
 priv_title=Dažādas priviliģētās iespējas
 priv_desc=Šajā opcijas var iestatīt tikai globāli, nevis atsevišķu lietotāju konfigurācijas failos. Viņi kontrolē, izmantojot ceļus uz dažādām konfigurācijas un žurnālfailiem.
 priv_header=Dažādi privilēģiju līmeņa iestatījumi
@@ -183,6 +189,7 @@ priv_eargs=“$1” nav derīgs argumentu saraksts
 priv_emscore=“$1” nav derīgs augstākais frāzes vērtējums
 priv_ephrase=“$1” nav derīga divu vārdu surogātpasta frāze
 priv_escore=Trūkst vai nav derīgs surogātpasta frāzes “$1” vērtējums
+
 usually=Parasti $1 
 ecannot=Jums nav atļauts izmantot šo lapu
 setup_title=Iestatīt Procmail vietnei SpamAssassin
@@ -202,11 +209,13 @@ setup_drop1=Saņēmēja Unix lietotājs
 setup_drop0=<tt>saknes</tt> lietotājs
 setup_ok=Iestatīt Procmail vietnei SpamAssassin
 setup_email=Pārsūtīt uz e-pasta adresi
+
 setup_err=Neizdevās iestatīt SpamAssassin
 setup_efile=Trūkst vai nav derīgs mbox formāta fails
 setup_emaildir=Trūkst vai nav derīgs Qmail pasta katalogs
 setup_emhdir=Trūkst vai nav derīgs MH pasta katalogs
 setup_eemail=Trūkst vai nav derīga e-pasta adrese
+
 log_white=Pārveidotas atļautās un noraidītās adreses
 log_score=Modificēta surogātpasta klasifikācija
 log_report=Pārveidota ziņojuma modifikācija
@@ -217,12 +226,14 @@ log_setup=Iestatīt Procmail vietnei SpamAssassin
 log_procmail=Mainīta Procmail konfigurācija
 log_import=Importētās $1 atļautās adreses
 log_manual=Manuāli rediģēts konfigurācijas fails
+
 import_title=Importēt adreses
 import_err=Neizdevās importēt adreses
 import_efile=No atlasītā faila nav jāimportē
 import_enone=Failā nav atrasta neviena e-pasta adrese
 import_ok1=Failā tika atrastas $2 e-pasta adreses, no kurām $1 bija jaunas un ir pievienotas visu atļauto adrešu sarakstam.
 import_ok2=Failā tika atrastas $1 e-pasta adreses, taču tās visas jau bija atļauto adrešu sarakstā.
+
 mail_title=Surogātpasts
 mail_desc=Šajā lapā ir uzskaitīti ziņojumi, kas klasificēti kā surogātpasts, un gaida kādu darbību. Nepareizi identificētus ziņojumus var pārvietot uz mapi Iesūtne, savukārt tos, kas patiešām ir surogātpasts, var izdzēst.
 mail_level=Rezultāts
@@ -240,10 +251,13 @@ mail_will=Automātiska atsvaidzināšana $1 minūtēs
 mail_wills=Automātiska atsvaidzināšana pēc $1 sekundēm
 mail_delall=Dzēst visu surogātpastu
 mail_search3=Meklējiet rezultātu augstāk:
+
 process_eclean=Noņemot SpamAssassin galvenes no šī e-pasta, radās kļūda
 process_ereport=Neizdevās ziņot par e-pastu SpamAssassin : $1 
+
 apply_err=Neizdevās piemērot izmaiņas
 apply_none=Netika atrasts SpamAssassin dēmonu process!
+
 acl_avail=Lietotājam pieejamās ikonas
 acl_file=SpamAssassin konfigurācijas fails rediģēšanai
 acl_filedef=Globālais konfigurācijas fails
@@ -251,8 +265,10 @@ acl_awl=Atļauts lietotājiem automātiskā baltā saraksta rediģēšana
 acl_awl0=Visi lietotāji
 acl_awl1=Tikai uzskaitītie lietotāji $1 
 acl_awl2=Tikai grupu $1 dalībnieki
+
 search_escore=Trūkst vai nav derīgs surogātpasta rādītājs
 search_results5=$1 pasta ziņas ar surogātpastu $2 vai vairāk.
+
 razor_title=Iestatīt skuvekļa surogātpasta detektoru
 razor_desc=Vipul's Razor ir sadarbības surogātpasta atklāšanas un ziņošanas sistēma, kas var uzlabot uz jūsu adresi nosūtītās surogātpasta klasifikāciju. Tomēr, pirms to var izmantot, jums jāreģistrējas Razor kontam, izmantojot zemāk esošo veidlapu.
 razor_user=Skuvekļa lietotājvārds
@@ -267,6 +283,7 @@ razor_epass=Trūkst paroles
 razor_doing=Tagad mēģinu reģistrēt un iestatīt Razor.
 razor_done=.. darīts.
 razor_failed=.. neizdevās! Iemeslu, kāpēc to darīt, skatiet iepriekš parādītajā kļūdas izvadē.
+
 amavisd_title=Amavisd surogātpasta piegāde
 amavisd_desc=Veidlapu var izmantot, lai mainītu Amavisd konfigurāciju, kas nosaka, kas notiek ar ziņojumiem, kas klasificēti kā surogātpasts.
 amavis_ok=Mainīt Amavisd piegādi
@@ -304,9 +321,11 @@ amavis_quarantine_today=Surogātpasti karantīnā šodien (24 stundas)
 amavis_quarantine_week=Surogātpasti karantīnā šonedēļ (7 dienas)
 amavis_quarantine_month=Surogātpasta vēstules karantīnā šajā mēnesī (30 dienas)
 amavis_quarantine_total=Kopējais surogātpasta vēstuļu skaits karantīnā
+
 procmail_title=Procmail surogātpasta piegāde
 procmail_ok=Mainīt Procmail piegādi
 procmail_desc=Veidlapu var izmantot, lai mainītu Procmail konfigurāciju, kas nosaka, kas notiek ar ziņojumiem, kas klasificēti kā surogātpasts.
+
 simple_title=Galvas un ķermeņa testi
 simple_desc=Šī lapa ļauj jums noteikt papildu testus, kurus SpamAssassin piemēros e-pastam, pamatojoties uz ziņojumu galvenēm, pamattekstu saturu un pamattekstā atrodamajiem URL. Katram testam piešķirtais nosaukums ir atkarīgs no jums, bet parasti tas ir kaut kas līdzīgs CONTAINS_FOO.
 simple_switch=Pārslēgties uz uzlaboto režīmu ..
@@ -317,8 +336,10 @@ simple_regexp=Sakritības izteiksme
 simple_score=Rezultāts jāpiemēro
 simple_describe=Apraksts
 simple_err=Neizdevās saglabāt ziņojumu testus
+
 before_ecmd=Pirms saglabāšanas komanda neizdevās : $1 
 after_ecmd=Komanda pēc saglabāšanas neizdevās : $1 
+
 connect_emysql=Neizdevās ielādēt datu bāzes draiveri $1 
 connect_elogin=Neizdevās pieteikties datu bāzē $1:$2.
 connect_equery=Datu bāzē $1 nav preferenču tabulas $2 
@@ -326,9 +347,11 @@ connect_eldapmod=Perl modulis $1, kas nepieciešams saziņai ar LDAP, nav instal
 connect_eldap=Neizdevās izveidot savienojumu ar LDAP serveri $1 ostā $2 
 connect_eldaplogin=Neizdevās pieteikties LDAP serverī $1 kā $2 : $3 
 connect_ebase=LDAP bāze DN $1 nav derīga : $2 
+
 eldap=LDAP darbība neizdevās : $1 
 esql=SQL neizdevās : $1 
 ldap_euser=Nevarēju atrast LDAP lietotāja objektu $1 
+
 db_title=SQL un LDAP datu bāzes
 db_header=Konfigurācijas datu bāzes datu bāzes iespējas
 db_dsn=Saglabājiet lietotāja konfigurācijas
@@ -364,6 +387,7 @@ db_eldapport=Trūkst vai nav derīgs LDAP servera porta numurs
 db_eldapdn=Trūkst vai nav derīga pamata DN - atstarpes nav atļautas
 db_eldapattr=Trūkst vai nav derīgs atribūts SpamAssassin
 db_eldapuid=Trūkst vai nav derīgs lietotājvārds
+
 awl_title=Pārvaldiet automātiskos baltos sarakstus
 awl_search=Meklēt baltajā sarakstā:
 awl_ok=Meklēt
@@ -389,6 +413,7 @@ awl_deleteone=Notīrīt automātisko balto sarakstu
 awl_deleteonedesc=Noņemiet visus lietotāja $1 baltā saraksta ierakstus.
 awl_deleteall=Notīrīt visus automātiskos baltos sarakstus
 awl_deletealldesc=Noņemiet visus automātiskā baltā saraksta ierakstus visiem sistēmas lietotājiem.
+
 dawl_err=Neizdevās izdzēst no automātiskā baltā saraksta
 dawl_eopen=Nevarēja atvērt balto sarakstu
 dawl_enone=Nav atlasīto adrešu dzēšanai
@@ -396,6 +421,7 @@ dawl_ecannot=Jums nav atļauts pārvaldīt šī lietotāja automātisko balto sa
 dawl_doing=Visu lietotāju automātisko balto sarakstu dzēšana.
 dawl_done=.. izdzēsa $2 ierakstus no $1 lietotājiem.
 dawl_title=Dzēst visus automātiskos baltos sarakstus
+
 manual_title=Rediģēt konfigurācijas failus
 manual_file=Rediģēt konfigurācijas failu:
 manual_ok=labi

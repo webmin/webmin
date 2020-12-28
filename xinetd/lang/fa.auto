@@ -25,6 +25,7 @@ index_estart=دستور شروع Xinetd $1 وجود ندارد. شاید نصب 
 index_noport=ناشناخته
 index_enable=انتخاب را فعال کنید
 index_disable=غیرفعال شده انتخاب شده است
+
 serv_create=ایجاد سرویس اینترنت
 serv_edit=سرویس اینترنت را ویرایش کنید
 serv_header1=گزینه های شبکه خدمات
@@ -78,19 +79,24 @@ serv_enice=سطح خوب وجود ندارد یا نامعتبر است
 serv_ecps0=تعداد اتصالات در هر ثانیه یا نامعتبر است
 serv_ecps1=تأخیر نامعتبر یا نامعتبر است
 serv_etimes=زمان دسترسی باید به فرمت HH باشد: MM-HH: MM
+
 sock_stream=جریان
 sock_dgram=دیتاگرام
 sock_raw=خام
 sock_seqpacket=دیتاگرام متوالی
+
 proto_=پیش فرض
 proto_ip=IP (پروتکل اینترنت)
 proto_tcp=TCP (پروتکل کنترل انتقال)
 proto_udp=UDP (پروتکل داده های کاربر)
+
 restart_err=اعمال تغییرات انجام نشد
 restart_ekill=ارسال سیگنال USR2 به PID $1 : $2 انجام نشد
 restart_epid=دیگر در حال اجرا نیست
+
 start_err=شروع به کار xinetd انجام نشد
 start_estart=$1 شکست خورد :$2
+
 defs_title=گزینه های پیش فرض
 defs_header=گزینه های پیش فرض برای خدمات
 defs_log=حالت ورود به سیستم Xinetd
@@ -115,6 +121,7 @@ defs_err=گزینه های پیش فرض ذخیره نشد
 defs_efile=نام پرونده ورود نامعتبر یا نامعتبر است
 defs_esoft=محدودیت نرم یا نامعتبر است
 defs_ehard=محدودیت نامعتبر یا نامعتبر است
+
 log_create_serv=خدمات $2 ایجاد شد$1
 log_modify_serv=سرویس$2 اصلاح شده$1
 log_delete_serv=سرویس$2 حذف شد$1
@@ -125,5 +132,6 @@ log_enable=سرویس$1 فعال شد
 log_disable=سرویس$1 غیرفعال شد
 log_enable_l=سرویس های فعال شده$1
 log_disable_l=خدمات غیرفعال$1
+
 config_dirdef=پرونده پیکربندی Xinetd
 config_dirto=پرونده جدید در فهرست

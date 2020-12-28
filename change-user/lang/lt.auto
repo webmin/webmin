@@ -20,6 +20,7 @@ index_d1=$1
 index_dlang=kalba, kuria moduliai rodomi
 index_dtheme=tema, kontroliuojanti „Webmin“ išvaizdą
 index_dpass=slaptažodis, naudojamas prisijungiant su
+
 change_title=Pakeitus nustatymus
 change_user=Modifikuojamas „Webmin“ prisijungimas ..
 change_done=.. padaryta
@@ -30,6 +31,7 @@ change_epass2=Nauji slaptažodžiai nesutampa
 change_epass=Naujas slaptažodis negalioja : $1 
 change_eoverlay=Temos perdengimo negalima pasirinkti, jei taip pat nėra pasirinkta vartotojo sąsajos tema
 change_eoverlay2=Pasirinkta temos perdanga nesuderinama su pasirinkta vartotojo sąsajos tema
+
 acl_lang=Ar gali pakeisti kalbą?
 acl_theme=Ar galima pakeisti temą?
 acl_pass=Ar galima pakeisti slaptažodį (kai jis nustatytas „Webmin“)?

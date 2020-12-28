@@ -8,6 +8,7 @@ index_none=Hiçbir önyükleme seçeneği tanımlanmadı. Grub'u kurmadan önce 
 index_efile=$1 GRUB menü dosyası sisteminizde bulunamadı. Belki GRUB yüklü değil veya <a href='$2'>modül yapılandırması</a> yanlış.
 index_epath=GRUB yürütülebilir $1 sisteminizde bulunamadı. Belki GRUB yüklü değil veya <a href='$2'>modül yapılandırması</a> yanlış.
 index_return=seçenekler listesi
+
 title_add=Önyükleme Seçeneği Ekle
 title_edit=Önyükleme Seçeneğini Düzenle
 title_header=Önyükleme menüsü seçenek ayrıntıları
@@ -36,6 +37,7 @@ title_echain=Eksik veya geçersiz zincir yükleyici dosyası
 title_edev=Desteklenmeyen kök bölümleme aygıtı $1 
 title_einitrd=İlk ramdisk dosya adı eksik
 title_lock=Şifre kilitlendi mi?
+
 global_title=Global Seçenekler
 global_header=Global önyükleme menüsü seçenekleri
 global_default=Varsayılan önyükleme seçeneği
@@ -56,12 +58,14 @@ global_edev=Desteklenmeyen yükleme diski/bölümü $1
 global_eother=Eksik veya geçersiz disk/bölüm
 global_epassword=Eksik veya geçersiz önyükleme parolası
 global_epasswordfile=Alternatif menü dosya adı eksik
+
 install_title=GRUB'u yükle
 install_err=GRUB yüklenemedi
 install_efind=Menü dosyası bulunamadı
 install_desc=$1 ve $3 komutlarıyla GRUB'u $1 üzerine yükleme.
 install_ok=.. yükleme tamamlandı.
 install_failed=.. yükleme başarısız!
+
 log_create_title=$1 önyükleme seçeneği oluşturuldu
 log_delete_title=$1 silinen önyükleme seçeneği
 log_modify_title=Değiştirilmiş önyükleme seçeneği $1 

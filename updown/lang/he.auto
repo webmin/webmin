@@ -40,6 +40,7 @@ index_descfetch=דף זה מיועד להורדת קובץ מהמערכת שמפ
 index_email=לשלוח דוא"ל בסיום ההורדות?
 index_emailto=כן, לכתובת
 index_email2=לשלוח דוא"ל בסיום ההעלאה?
+
 upload_title=העלה קבצים
 upload_err=העלאת קבצים נכשלה
 upload_edir=מדריך חסר לטעינה אליו
@@ -63,6 +64,7 @@ upload_saving=שומר קובץ $1 ..
 upload_saved=.. כתב $1 
 upload_unzipping=מחלץ קובץ $1 ..
 upload_unzipdone=.. $1 
+
 download_err=שמירת ההורדה נכשלה
 download_enone=לא הוזנו כתובות URL להורדה
 download_eurl='$1' אינה כתובת אתר חוקית
@@ -74,9 +76,11 @@ download_failed=ההורדה נכשלה : $1
 download_eaccess=אינך מורשה להוריד קבצים ל- $1 
 download_eucannot=אינך מורשה להוריד קבצים כמשתמש $1 
 download_egcannot=הקבוצה שנבחרה אינה מכילה את המשתמש שנבחר
+
 cancel_err=ביטול ההורדות נכשל
 cancel_enone=לא נבחר
 cancel_ecannot=אינך רשאי לבטל הורדות למשתמש $1 
+
 log_cancel=בוטל $1 הורדות
 log_upload_l=קבצים שהועלו $1 
 log_upload=העלה $1 קובץ
@@ -84,6 +88,7 @@ log_download_l=כתובות URL שהורדו $1
 log_download=$1 URL (ים) שהורדו
 log_sdownload_l=קבע את הורדת ה- URL (ים) $1 
 log_sdownload=קבע את ההורדה של $1 URL (ים)
+
 acl_users=יכולים להעלות ולהוריד קבצים כמשתמשים
 acl_all=כל המשתמשים
 acl_this=משתמש נוכחי Webmin
@@ -98,6 +103,7 @@ acl_max=גודל העלאה מקסימלי
 acl_unlim=ללא הגבלה
 acl_b=בתים
 acl_fetch=האם ניתן להוריד קבצים למחשב האישי?
+
 fetch_err=הורדת הקובץ נכשלה
 fetch_ecannot=אינך מורשה להוריד קבצים למחשב האישי
 fetch_efile=לא הוזן שם קובץ
@@ -106,6 +112,7 @@ fetch_eopen=פתיחת הקובץ נכשלה : $1
 fetch_eaccess=אינך מורשה להוריד קבצים מ- $1 
 fetch_ezip=לא ניתן להוריד ספרייה אלא אם כן מותקנת הפקודה <tt>zip</tt>
 fetch_eroot=לא ניתן להוריד את ספריית השורש!
+
 email_downmsg=ההורדה הבאה הסתיימה :
 email_downurl=כתובת אתר: $1 
 email_downerr=הודעת שגיאה: $1 

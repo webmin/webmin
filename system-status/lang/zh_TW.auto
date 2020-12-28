@@ -44,6 +44,7 @@ right_upsec=提供 $1個軟件包更新，其中 $2個是安全更新
 right_recollect=刷新系統信息
 right_vvirtualmin=Virtualmin版本
 right_vvm2=Cloudmin版本
+
 acl_show=顯示的系統信息
 acl_showall=一切
 acl_showsel=僅選擇 ..

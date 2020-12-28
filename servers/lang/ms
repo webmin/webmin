@@ -18,6 +18,7 @@ index_defpass=Kata laluan lalai
 index_defport=Port Webmin
 index_auto=Cari pelayan secara automatik
 index_automsg=Klik butang ini untuk tetapan penemuan berkala pelayan Webmin baharu secara automatik dalam rangkaian anda
+
 edit_title=Sunting Pelayan
 create_title=Daftar Pelayan
 edit_details=Butiran pelayan
@@ -52,6 +53,7 @@ edit_baduser=Log masuk dinafi
 edit_invalid=Pengguna tidak boleh melakukan RPC
 edit_version=Larikan Webmin $1
 edit_same=Hanya terdapat bukan dalam mod sesi pengesahan, dan apabila kata laluan disediakan untuk program Webmin.
+
 save_err=Gagal menyimpan pelayan
 save_ehost=Nama hos hilang atau tidak sah
 save_eport=Port hilang atau tidak sah
@@ -59,6 +61,7 @@ save_euser=Nama pengguna hilang
 save_epass=Kata laluan hilang
 save_egroup=Nama grup hilang
 save_elogin=Log masuk atau kata laluan tidah sah kepada hos
+
 find_title=Mencari Pelayan
 find_new=Temui pelayan baharu pada $1
 find_already=Pelayan yang dikenali ditemui pada $1
@@ -68,15 +71,19 @@ find_none=Tiada pelayan menjawab imbasan.
 find_ecannot=Anda tidak dibenar mencari pelayan
 find_scanning=Mengesan pelayan dalam rangkaian $1 ..
 find_broading=Menyiarkan pelayan pada alamat $1 ..
+
 log_modify=Pelayan $1 diubah suai
 log_create=Pelayan $1 didaftar
 log_delete=Pelayan $1 dipadam
 log_find=Temui pelayan $1
+
 link_elogin=Gagal untuk log masuk ke $1 sebagai $2
 link_ecannot=Anda tidak dibenar menggunakan pelayan ini
 link_essl=Anda tidak mempunyai modul perl Net::SSLeay yang dipasang
 link_eautologin=Log masuk atau kata laluan untuk $1 tidak sah.  <a href='$2'>Klik sini</a> untuk mencuba lagi.
+
 lib_other=Lain
+
 acl_edit=Boleh sunting pelayan?
 acl_find=Boleh cari pelayan?
 acl_servers=Boleh guna pelayan
@@ -88,16 +95,20 @@ acl_forcefast=Paksa mod RPC ke lalai dengan cepat?
 acl_forcetype=Paksa jenis OS ke lalai?
 acl_forcelink=Paksa Jenis login ke lalai?
 acl_links=Boleh menyambung kepada pelayan melalui?
+
 login_title=Log masuk ke Pelayan
 login_desc=Anda perlu masukkan nama pengguna dan kata laluan untuk log masuk ke pelayan Webmin $1.
 login_header=Pengesahan Webmin
 login_user=Nama pengguna
 login_pass=Kata laluan
 login_login=Log masuk
+
 this_server=pelayan ini
+
 delete_err=Gagal untuk memadam pelayan
 delete_enone=Tiada dipilih
 delete_ecannot=Anda tidak dibenarkan untuk memadam pelayan
+
 auto_title=Cari pelayan secara automatik
 auto_header=Pilihan pendaftaran pelayan secara automatik
 auto_sched=Periksa pelayan baharu?
@@ -123,8 +134,10 @@ auto_smtp=Hantar melalaui pelayan SMTP
 auto_self=Sistem ini
 auto_esmtp=Pelayan SMTP hilang atau tidak sah
 auto_findself=Daftar sistem ini juga?
+
 config_deftype=Jenis sistem lalai
 config_typeauto=Automatik
+
 email_regsubject=Sistem $1 telah didaftarkan
 email_reg=Sistem ini $1 telah berjaya didaftar secara automatik.
 email_unregsubject=Sistem $1 dikeluarkan

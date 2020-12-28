@@ -19,6 +19,7 @@ index_dump=Pokaži smetišče
 index_dumpdesc=Kliknite ta gumb, če si želite ogledati informacije o sledenju storitve Shorewall iz ukaza <tt>izpis strežnega zidu</tt>.
 index_check=Preverite požarni zid
 index_checkdesc=Kliknite ta gumb, če želite Shorewall potrditi konfiguracijo požarnega zidu z ukazom <tt>preverjanje obrežnega zidu</tt>.
+
 list_move=Premakni se
 list_add=Dodaj
 list_auto=Samodejno
@@ -30,6 +31,7 @@ list_manual=Ročno urejanje datoteke
 list_manualdesc=Kliknite ta gumb, če želite ročno urediti datoteko Shorewall $1, v kateri so shranjeni zgornji vnosi.
 list_ecannot=Te tabele Shorewall ne smete urejati.
 list_delete=Izbriši izbrano
+
 restart_err=Konfiguracije ni bilo mogoče uporabiti
 refresh_err=Konfiguracije ni bilo mogoče osvežiti
 start_err=Zagon požarnega zidu ni uspel
@@ -41,6 +43,7 @@ check_title=Preverite požarni zid
 check_ok=.. vaša konfiguracija požarnega zida izgleda v redu.
 check_failed=.. v konfiguraciji požarnega zida je bila najdena napaka!
 check_cmd=Preverjanje konfiguracije ..
+
 zones_title=Omrežne cone
 zones_desc=Območja, navedena na tej strani, predstavljajo različna omrežja, ki so dostopna v vašem sistemu. Vendar vpisi tukaj dejansko ne vplivajo na požarni zid - namesto tega samo definirajo imena območij in opise.
 zones_add=Dodajte novo omrežno območje.
@@ -69,6 +72,7 @@ zones_firewall=Sistem požarnega zidu
 zones_eopts=Neveljavne možnosti cone
 zones_eopts_in=Neveljavne možnosti dohodne cone
 zones_eopts_out=Neveljavne možnosti za odhodne cone
+
 policy_title=Privzete usmeritve
 policy_desc=Na tej strani lahko konfigurirate privzeta dejanja za promet med različnimi območji požarnega zidu. Na strani s pravili požarnega zidu jih je mogoče preglasiti za določene gostitelje ali vrste prometa.
 policy_add=Dodajte nov privzeti pravilnik.
@@ -89,6 +93,7 @@ policy_ulog=Prijavite se v ULOG
 policy_efw=&lt;Firewall&gt; lahko izberete tako za izvorno kot ciljno območje
 policy_elimit=Manjkajoča ali neveljavna omejitev prometa
 policy_eburst=Manjkajoča ali neveljavna številka porušitve prometa
+
 rules_title=Pravila požarnega zidu
 rules_desc=Ta tabela navaja izjeme privzetih pravilnikov za določene vrste prometa, vire ali cilje. Izbrano dejanje bo namesto privzetih uporabljeno za pakete, ki ustrezajo izbranim kriterijem.
 rules_add=Dodajte novo pravilo požarnega zidu.
@@ -135,6 +140,7 @@ rules_eaction=Ni izbrano nobeno dejanje
 rules_macro=Parameter makro dejanja
 rules_none2=Noben
 rules_emacro=Manjkajoč ali neveljaven makro parameter
+
 tos_title=Vrste storitev
 tos_desc=Ta stran določa vrste storitev IP za določene vrste prometa, s katerimi lahko povečate ali znižate svoje prioritete.
 tos_add=Dodajte novo vrsto storitve.
@@ -153,6 +159,7 @@ tos_edit=Uredi vrsto storitve
 tos_create=Ustvari vrsto storitve
 tos_header=Podrobnosti o vrsti storitve
 tos_err=Ni bilo mogoče shraniti vrste storitve
+
 interfaces_title=Omrežni vmesniki
 interfaces_desc=Vsak omrežni vmesnik v vašem sistemu, za katerega želite, da upravlja Shorewall, mora biti naveden na tej strani in povezan z območjem, na katerega je povezan. Vmesnika zanke <tt>lo</tt> ne sme biti nikoli navedeno.
 interfaces_add=Dodajte nov omrežni vmesnik.
@@ -169,6 +176,7 @@ interfaces_header=Podrobnosti o omrežnem vmesniku
 interfaces_err=Omrežnega vmesnika ni bilo mogoče shraniti
 interfaces_eiface=Manjkajoče ali neveljavno ime vmesnika
 interfaces_ebroad=Manjkajoč ali neveljaven naslov oddaje
+
 masq_title=Maskiranje
 masq_desc=Vnosi na tej strani nastavljajo prevajanje omrežnih naslovov za promet, usmerjen med nekim omrežjem in določenim vmesnikom.
 masq_add=Dodajte novo pravilo maskiranja.
@@ -199,6 +207,7 @@ masq_emnete=Seznam praznih mrež izjem
 masq_esnat=Neveljaven IP-naslov SNAT
 masq_eports=Manjkajoč ali neveljaven seznam vrat, ločenih z vejicami
 masq_eipsec=Manjkajo možnosti IPsec
+
 nat_title=Statični NAT
 nat_desc=Stavke prevajanja statičnih omrežnih naslovov v tej tabeli lahko uporabite za nastavitev korespondence 1-1 med zunanjim naslovom na požarnem zidu in naslovom RFC1918 naprave, ki stoji za vašim požarnim zidom. Statični NAT se pogosto uporablja za omogočanje povezav z notranjim strežnikom zunaj vašega omrežja.
 nat_add=Dodajte nov statični vnos NAT.
@@ -217,6 +226,7 @@ nat_local=Aktivno za požarni zid?
 nat_eext=Neveljaven zunanji IP naslov
 nat_eint=Neveljaven notranji naslov IP
 nat_evirt=Neveljavna številka virtualnega vmesnika
+
 proxyarp_title=Proxy ARP
 proxyarp_desc=Ta stran vam omogoča, da sistem nastavite tako, da odgovarja na ARP zahteve za IP naslove, ki niso njihovi lastni, tako da lahko pakete posreduje na te naslove na njihove dejanske cilje.
 proxyarp_add=Dodajte nov proxy ARP naslov.
@@ -233,6 +243,7 @@ proxyarp_err=Proxyja ARP proxyja ni bilo mogoče shraniti
 proxyarp_have=Pot do gostitelja obstaja?
 proxyarp_eaddr=Manjkajoči ali neveljaven naslov za ARP
 proxyarp_pers=Zapustiti pot tudi, ko se požarni zid ustavi?
+
 routestopped_title=Ko je ustavljeno
 routestopped_desc=Ko je Shorewall privzeto zaustavljen, bo onemogočil dostop vsem gostiteljem. Ta stran vam omogoča, da določite gostitelje ali omrežja, ki bodo še vedno dostopna.
 routestopped_add=Dodajte nov zaustavljen naslov.
@@ -248,6 +259,7 @@ routestopped_err=Ustavljenega naslova ni bilo mogoče shraniti
 routestopped_eaddr=Ni vnesenih naslovov
 routestopped_all=Vsi naslovi
 routestopped_list=Navedeni naslovi in omrežja ..
+
 tunnels_title=VPN predori
 tunnels_desc=Na tej strani so navedeni tuneli VPN, ki gredo skozi vaš požarni zid, zato jih mora dovoliti konfiguracija Shorewall.
 tunnels_add=Dodajte nov tunel VPN.
@@ -278,6 +290,7 @@ tunnels_generic_l=Splošno, za protokol ..
 tunnels_gsel=Navedene cone
 tunnels_eopenvpn=Neveljavna številka vrat za tunel OpenVPN
 tunnels_egeneric=Manjka protokol ali protokol: vrata za generični tunel
+
 hosts_title=Gostitelji cone
 hosts_desc=Ta stran vsebuje gostitelje in omrežja, ki so del določenih con. Na splošno na tem seznamu ni treba spreminjati nobenih sprememb.
 hosts_add=Dodajte novega gostitelja cone.
@@ -297,8 +310,10 @@ hosts_ip=Naslov ali omrežje $1
 hosts_mac=MAC naslov $1 
 hosts_ipset=IP set $1 
 hosts_any=Vsak gostitelj
+
 edit_before=Pred vnosom $1 
 edit_after=Po vnosu $1 
+
 blacklist_title=Gostitelji črnega seznama
 blacklist_desc=Ta stran vsebuje gostitelje in storitve, ki bodo blokirani, če promet z njih prispe na vmesnik z nastavljeno možnostjo <b>črni seznam</b>.
 blacklist_add=Dodajte novega gostitelja črnega seznama.
@@ -321,6 +336,7 @@ blacklist_eproto=Manjkajoči ali neveljaven protokol
 blacklist_eports=Neveljavna številka vrat ali vejice, ločeni z vejicami
 blacklist_eports2=Vrata je mogoče določiti samo za protokole TCP in UDP
 blacklist_return=gostitelji na črnem seznamu
+
 providers_title=Dodatni ponudniki poti
 providers_desc=Ta stran določa dodatne tabele usmerjanja. Te so potrebne, če imate povezave z več ponudniki internetnih storitev ali več povezav do istega ponudnika internetnih storitev ali izvajate Squid kot prozoren proxy na gostitelju, ki ni požarni zid.
 providers_add=Dodajte novega ponudnika usmerjanja.
@@ -353,6 +369,7 @@ providers_emark=Manjkajoča ali neveljavna številka oznake ponudnika
 providers_edup=Manjka ponudnik za podvajanje
 providers_egateway=Manjkajoči ali neveljaven prehod
 providers_return=seznam ponudnikov poti
+
 route_rules_title=Pravila za usmerjanje
 route_rules_desc=Stran nadzoruje, kateri promet se preusmeri na ponudnike, definirane na strani Dodatni ponudniki poti.
 route_rules_ip=IP naslov, omrežje ali vmesnik
@@ -378,17 +395,21 @@ route_rules_emark=Oznaka paketa mora biti v obliki številke ali številke/maske
 route_rules_return=seznam pravil usmerjanja
 route_rules_edit=Urejanje pravila za usmerjanje
 route_rules_create=Ustvari pravilo usmerjanja
+
 manual_desc=Ta obrazec lahko uporabite za ročno urejanje datoteke Shorewall $1. Bodite previdni, saj ne bo preverjanja skladnje glede sprememb.
 manual_reset=Razveljavi
 manual_err=Datoteke tabele ni bilo mogoče shraniti
 manual_efile=Neveljavno ime tabele!
 manual_edata=Vnešena ni bila nobena datoteka tabele.
+
 acl_nochange=Ali lahko uporabite, ustavite in zaženete konfiguracijo Shorewall?
 acl_files=Na voljo mize Shorewall
 acl_all=Vse
 acl_sel=Izbrano spodaj ..
+
 delete_err=Brisanja vrstic ni uspelo
 delete_enone=Izbrana ni nobena vrstica
+
 opts_routeback=Sprejmite promet nazaj do gostitelja
 opts_source=Dovoli gostitelju do katerega koli cilja
 opts_dest=Dovoli gostovanje iz katerega koli vira
@@ -406,6 +427,7 @@ opts_proxyarp=Omogoči proxy ARP
 opts_arp_filter=Odgovorite samo na zahteve ARP za IP vmesnika
 opts_detectnets=Taylor cona vključuje samo usmerjene gostitelje
 opts_upnp=Ponovno odpremite pakete prek UPNP
+
 comment_add=Dodajte nov komentar.
 comment_edit=Uredi komentar
 comment_create=Ustvari komentar
@@ -413,6 +435,7 @@ comment_header=Podrobnosti komentarja tabele
 comment_msg=Sporočilo
 comment_err=Komentarja ni bilo mogoče shraniti
 comment_enone=Nobeno sporočilo ni vneseno
+
 log_create_table=Dodan vnos v tabelo $1 
 log_modify_table=Spremenjen vnos v tabeli $1 
 log_delete_table=Izbrisan je vnos iz tabele $1 
@@ -428,6 +451,7 @@ log_start=Začeten požarni zid
 log_refresh=Osvežen požarni zid
 log_restart=Ponovno zaščiten zid
 log_clear=Odpravljen požarni zid
+
 shorewall_conf_title=Glavna konfiguracijska datoteka
 shorewall_conf_desc=Na tej strani lahko konfigurirate spremenljivke globalne konfiguracije. OPOMBA: Spreminjanje vrstnega reda spremenljivk tukaj ni priporočljivo, če želite ohraniti relativni položaj komentarjev v konfiguracijski datoteki.
 shorewall_conf_add=Dodajte novo konfiguracijsko spremenljivko.
@@ -441,6 +465,7 @@ shorewall_conf_create=Ustvari konfiguracijsko spremenljivko
 shorewall_conf_header=Podrobnosti spremenljivke konfiguracije
 shorewall_conf_err=Konfiguracijske spremenljivke ni bilo mogoče shraniti
 shorewall_conf_varname=Neveljavno ime spremenljivke (mora biti veljavno ime spremenljivke lupine)
+
 params_title=Parametri po meri
 params_desc=Na tej strani lahko konfigurirate parametre po meri Shorewall. OPOMBA: Spreminjanje vrstnega reda parametrov tukaj ni priporočljivo, če želite ohraniti relativni položaj komentarjev v konfiguracijski datoteki.
 params_add=Dodajte nov parameter po meri.

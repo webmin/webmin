@@ -7,6 +7,7 @@ index_dsize=Teljes méret
 index_dmodel=Gyártmány és modell
 index_dparts=szeletek
 index_return=lemezek listája
+
 disk_title=Szerkesztés a lemezen
 disk_egone=A lemez már nem létezik!
 disk_no=Szelet
@@ -31,9 +32,11 @@ disk_return=lemez adatai és a szeletek listája
 disk_add=Hozzon létre egy új szelet.
 disk_smart=A SMART Status megjelenítése
 disk_smartdesc=Mutassa meg a meghajtó SMART által észlelt aktuális állapotát, és ellenőrizze, hogy vannak-e lemezhibák.
+
 select_device=$1 eszköz $2 
 select_slice=$1 eszköz $2 szelet $3 
 select_part=$1 eszköz $2 szelet $3 partíció $4 
+
 slice_title=Szelet szerkesztése
 slice_egone=A kiválasztott szelet nem létezik!
 slice_ssize=Szelet mérete
@@ -58,6 +61,7 @@ slice_return=részletek és a partíciók listája
 slice_err=A szelet módosítása nem sikerült
 slice_header=Szelet részletei
 slice_suse=Közvetlenül a
+
 dslice_title=Törölje a szelet
 dslice_rusure=Biztosan törli a (z) $1 szelet? A partíciókat és a fájlrendszereket is törli.
 dslice_warn=Figyelem - ezt a szeletet jelenleg használja : $1 
@@ -65,6 +69,7 @@ dslice_confirm=Törlés most
 dslice_deleting=$1 szelet törlése ..
 dslice_failed=.. a törlés sikertelen : $1 
 dslice_done=.. Kész
+
 nslice_title=Szelet létrehozása
 nslice_header=Új szelet részletei
 nslice_number=Szelet száma
@@ -86,6 +91,7 @@ nslice_done=.. szelet hozzáadva
 nslice_parting=Hozzon létre alapértelmezett partíciókat a $2 szeleten $1.
 nslice_pfailed=.. A partíció létrehozása sikertelen : $1 
 nslice_pdone=.. partíció hozzáadva
+
 npart_title=Partíció létrehozása
 npart_header=Új partíció részletei
 npart_letter=Partíció levél
@@ -98,6 +104,7 @@ npart_emax=A záró blokk nem lehet nagyobb, mint a (z) $1 blokk szelet mérete
 npart_creating=$1 partíció létrehozása a $2 -en.
 npart_failed=.. A partíció létrehozása sikertelen : $1 
 npart_done=.. partíció hozzáadva
+
 part_title=Partíció szerkesztése
 part_egone=A partíció már nem létezik!
 part_header=Partíció részletei
@@ -124,6 +131,7 @@ part_newmount2=Mount válaszfal
 part_mountmsg=Helyezze ezt az eszközt a rendszer új könyvtárába, hogy fájlok tárolására használható legyen. A fájlrendszert már létre kell hozni az eszközön.
 part_mountmsg2=Szerelje fel ezt az eszközt virtuális memóriaként a rendszerére, hogy növelje a rendelkezésre álló memória mennyiségét.
 part_cannotedit=Ezt a partíciót nem lehet módosítani, mivel jelenleg használatban van.
+
 dpart_title=Törölje a partíciót
 dpart_rusure=Biztosan törli a (z) $1 partíciót? A benne lévő fájlrendszereket is törli.
 dpart_warn=Figyelem - ezt a partíciót jelenleg a $1 használja
@@ -131,6 +139,7 @@ dpart_confirm=Törlés most
 dpart_deleting=A (z) $1 partíció törlése ..
 dpart_failed=.. a törlés sikertelen : $1 
 dpart_done=.. Kész
+
 newfs_title=Filesystem létrehozása
 newfs_header=Új fájlrendszer-részletek
 newfs_free=Helyet foglalni a gyökér számára
@@ -145,11 +154,13 @@ newfs_elabel=Hiányzó vagy érvénytelen címke
 newfs_creating=Fájlrendszer létrehozása a $1 -en.
 newfs_failed=.. a létrehozás sikertelen!
 newfs_done=.. sikeresen létrehozva
+
 fsck_title=Ellenőrizze a fájlrendszert
 fsck_err=Nem sikerült ellenőrizni a fájlrendszert
 fsck_checking=A (z) $1 fájlrendszerének ellenőrzése ..
 fsck_failed=.. ellenőrzés sikertelen!
 fsck_done=.. Az ellenőrzés hibával nem történt
+
 log_create_slice=Létrehozva a (z) $1 szelet
 log_delete_slice=$1 szelet törölve
 log_modify_slice=Módosított $1 szelet

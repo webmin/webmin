@@ -12,6 +12,7 @@ index_return=görev listesi
 index_env=Çevresel değişken
 index_move=Taşı
 index_run=Çalışıyor mu?
+
 edit_title=Zamanlandırılmış Görev Özelliklerini Değiştir
 create_title=Zamanlandırılmış Görev Oluştur
 edit_ecannot=Bu kullanıcının zamanlandırılmış görevlerin özelliklerini değiştirmeye hakki yoktur
@@ -46,6 +47,7 @@ lcedit_special_weekly=haftalık (Pazar günü)
 lcedit_special_monthly=aylık (1. günü)
 lcedit_special_yearly=yıllık (1 Ocak'ta)
 lcedit_special_reboot=sistem açıldığında
+
 save_err=Zamanlandırılmış görevin kaydedilmesinde hata oluştu
 save_ecmd=Çalıştırılacak bir komut girmediniz
 save_euser=Bir kullanıcı seçmelisiniz
@@ -54,6 +56,7 @@ save_eallow='$1' kullanıcısının görevi çalıştırmasına izin veriledi
 save_ecannot='$1' için zamanlandırılmış görev oluşturmanıza izin verilmemiştir
 save_enone=Çalıştırmak için herhangi bir $1 seçmediniz
 save_ecannot2=Cron işi oluşturmak için izininiz yoktur
+
 allow_title=Zamanlandırılmış Görev Kontrolü
 allow_desc=Bu form hangi kullanıcıların zamanlandırılmış görev oluşturabileceğini veya çalıştırabileceğini belirlemek için kullanılır
 allow_ecannot=Zamanlandırılmış görevde kullanıcı izinlerini kontrol edemezsiniz
@@ -62,6 +65,7 @@ allow_all2=Root hariç bütün kullanıcıları reddet
 allow_all3=Bütün kullanıcılara izin ver
 allow_allow=Listelenmiş kullanıcılara izin ver
 allow_deny=Listelenmiş kullanıcıları reddet
+
 env_title1=Çevresel Değişkeni Düzenle
 env_title2=Çevresel Değişken Oluştur
 env_name=Değişken İsmi
@@ -77,11 +81,13 @@ env_where2=Çevresel değişkeni taşı
 env_top=Kullanıcının bütün Cron işlerinden önce
 env_bot=Bütün Cron işlerinden sonra
 env_leave=Mevcut pozisyon
+
 exec_title=Zamanlandırılmış Görevi Çalıştır
 exec_ecannot=Bu kullanıcının zamanlandırılmış görevi çalıştırmya hakkı yoktur
 exec_cmd=$1 komutunun çıktısı..
 exec_cmdbg=$1 komutu arkaplanda çalışıyor
 exec_none=Çıktı oluşturulmadı
+
 acl_users=Zamanlandırılmış görevleri değiştirebilsin
 acl_all=Bütün kullanıcılar
 acl_this=Mevcut webmin kullanıcısı
@@ -95,6 +101,7 @@ acl_create=Cron işi oluşturabilir mi?
 acl_delete=Cron işlerini silebilir mi?
 acl_move=Cron işlerini taşıyabilir mi?
 acl_kill=Cron işlerini durdurabilir mi?
+
 log_modify=$1 için cron işi değiştirildi
 log_modify_l=$1 için cron işi '$2' değiştirildi
 log_create=$1 için cron işi oluşturuldu
@@ -107,21 +114,26 @@ log_env_create=$1 için çevresel değişken oluşturuldu
 log_env_modify=$1 için çevresel değişken değiştirildi
 log_env_delete=$1 için çevresel değişken silindi
 log_move=$1 için Cron işi taşındı
+
 ecopy=Yeni Cron yapılandırmasında bir hata bulundu : $1 $2
+
 when_min=her dakika
 when_hour=her saat, saati $1 geçe
 when_day=her gün $2:$1 'de
 when_month=her ayın $3 gününde $2:$1 'de
 when_weekday=her $3 saat $2:$1
 when_cron=cron işi $1 'de
+
 ucwhen_min=Her dakika
 ucwhen_hour=Her saati $1 geçe
 ucwhen_day=Her gün $2:$1 de
 ucwhen_month=Her ayın $3 . günü saat $2:$1 'de
 ucwhen_weekday=Her $3 'te saat $2:$1 'de
 ucwhen_cron=Cron işi $1'de
+
 move_err=Cron işinin taşınmasında hata oluştu
 move_etype=Bu iş taşınamaz
+
 kill_err=Cron işinin durdurulmasında hata oluştu 
 kill_ecannot=Bu işi durdurmak için izininiz yoktur
 kill_egone=Artık çalışmıyor

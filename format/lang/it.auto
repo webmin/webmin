@@ -15,6 +15,7 @@ index_use=Uso
 index_free=Gratuito
 index_format=Questo disco non è formattato
 index_return=elenco dei dischi
+
 edit_ecannot=Non sei autorizzato a modificare questo disco
 edit_title=Modifica partizione
 edit_header=Dettagli della partizione
@@ -56,6 +57,7 @@ edit_tunedesc2=Non è possibile ottimizzare il file system su questa partizione 
 edit_tunedesc3=Non è possibile ottimizzare il file system su questa partizione perché è attualmente montato. Utilizzare il <a href=/mount/>modulo filesystems</a> per smontarlo per primo.
 edit_tunedesc4=Non è possibile ottimizzare il filesystem su questa partizione perché non ha un filesystem.
 edit_tunedesc5=Non è possibile ottimizzare il file system su questa partizione perché è possibile ottimizzare solo i file system <tt>UFS</tt>.
+
 save_ecannot=Non sei autorizzato a modificare questo disco
 save_edelete=Impossibile eliminare la partizione
 save_esave=Impossibile salvare la partizione
@@ -64,6 +66,7 @@ save_eend='$1' non è un cilindro finale valido
 save_estartmin=Il cilindro di partenza deve essere> 0
 save_eendmax=Il cilindro finale deve essere < $1 
 save_estartend=Il cilindro di partenza deve essere inferiore alla fine
+
 newfs_title=Crea filesystem
 newfs_ecannot=Non è consentito formattare questo disco
 newfs_desc=Facendo clic sul pulsante nella parte inferiore di questo modulo verrà creato un nuovo $1 sul dispositivo $2. Tutti i dati su questa partizione verranno definitivamente cancellati.
@@ -89,6 +92,7 @@ newfs_err=Impossibile creare il file system
 newfs_exec=Esecuzione del comando $1 ..
 newfs_failed=.. comando fallito!
 newfs_ok=.. comando completato.
+
 fsck_title=Ripara il filesystem
 fsck_ecannot=Non è consentito riparare questo disco
 fsck_desc=Facendo clic sul pulsante <b>Ripara</b> si verificherà e facoltativamente si riparerà $1 su $2. Il livello di controllo e riparazione è determinato dalla vostra scelta di seguito.
@@ -106,6 +110,7 @@ fsck_37=processo interrotto durante il controllo
 fsck_39=errori irreversibili rilevati!
 fsck_40=nessun errore rilevato
 fsck_unknown=errore sconosciuto
+
 tunefs_title=Tune Filesystem
 tunefs_ecannot=Non è consentito ottimizzare questo disco
 tunefs_desc=Questo modulo consente di regolare vari parametri di $1 su $2. I file esistenti su questo filesystem non saranno danneggiati.
@@ -122,6 +127,7 @@ tunefs_err=Ottimizzazione del filesystem
 tunefs_exec=Esecuzione del comando $1 ..
 tunefs_failed=.. comando fallito!
 tunefs_ok=.. comando completato.
+
 select_device=Controller SCSI $1 target $2 unità $3 
 select_idedevice=Dispositivo IDE $1 
 select_part=Controller SCSI $1 target $2 unità $3 partizione $4 
@@ -131,10 +137,13 @@ esun=Le partizioni possono essere modificate solo su hardware Sun
 emounted=Il disco ha montato partizioni
 elast=L'ultima partizione non può essere rimossa
 eformat=<tt>format</tt> non ha trovato alcun disco!
+
 fstype_ufs=File system Unix di Solaris
 fstype_unknown=Filesystem sconosciuto
+
 acl_disks=Dischi che questo utente può partizionare e formattare
 acl_dall=Tutti i dischi
 acl_dsel=Selezionato ..
 acl_view=È possibile modificare dischi e partizioni?
+
 ecannot=Non puoi modificare le partizioni

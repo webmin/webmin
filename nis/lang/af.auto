@@ -2,6 +2,7 @@ index_title=NIS kliënt en bediener
 index_return=NIS spyskaart
 index_enis=Dit lyk nie asof u masjien NIS-kliënt of bedienerondersteuning geïnstalleer het nie.
 index_enis2=Slegs die klantediensfunksie van hierdie module is bruikbaar.
+
 client_title=NIS Kliënt
 client_header=NIS kliënt konfigurasie
 client_domain=NIS domein
@@ -17,10 +18,12 @@ client_eserver='$1' is nie 'n geldige bedienernaam nie
 client_eypwhich=kon nie by die NIS-domein bind nie
 client_ehosts='$1' is nie in die hosts-lêer nie
 client_enis=Dit lyk nie asof u masjien NIS-kliëntondersteuning geïnstalleer het nie.
+
 switch_title=Kliëntediens
 switch_service=diens
 switch_srcs=Data bronne
 switch_return=kliëntediens
+
 order_=&nbsp;
 order_nisplus=NIS +
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=Gebruikerdrukkers
 order_xfn=XFN
+
 server_title=NIS bediener
 server_header=NIS bediener opsies
 server_boot=Aktiveer NIS-bediener?
@@ -65,6 +69,7 @@ server_solaris=Opmerking - op Solaris is die kliënt- en bediener-NIS-domeine al
 server_edir=Ongeldige brongidslêergids
 server_epwdir=Ongeldige lêergids vir wagwoordbronne
 server_enis=Dit lyk nie of u masjien NIS-bediener-ondersteuning geïnstalleer het nie.
+
 tables_title=NIS Tafels
 tables_switch=Wysig NIS-tabel :
 tables_header=$1 NIS-tabel vanaf $2 
@@ -81,6 +86,7 @@ tables_search=Soek
 tables_nomatch=Geen rekords ooreenstem met u soektog nie
 tables_build=Herbou NIS-tafels
 tables_buildmsg=Klik op hierdie knoppie om die NIS-databasisse van die tabeldata te herbou. As u veranderings aangebring het, moet u dit doen om dit aan NIS-kliënte beskikbaar te stel.
+
 desc_aliases=Sendmail-aliasse
 desc_mail=Sendmail-aliasse
 desc_hosts=Gasheeradresse
@@ -116,6 +122,7 @@ desc_printers=drukkers
 desc_ipnodes=IP-nodes
 desc_timezone=Tydsones
 desc_locale=locales
+
 hosts_title=Gasheeradres
 hosts_ip=IP adres
 hosts_name=gasheernaam
@@ -124,6 +131,7 @@ hosts_err=Kon nie gasheer stoor nie
 hosts_eip=IP-adres ontbreek of ongeldig
 hosts_ename=Ontbrekende of ongeldige gasheernaam
 hosts_aliases=aliasse
+
 group_name=Groepnaam
 group_gid=Groep-ID
 group_members=Groeplede
@@ -134,6 +142,7 @@ group_none=Geen wagwoord nodig nie
 group_encrypted=Voorgeënkripteerde wagwoord
 group_clear=Normale wagwoord
 group_err=Kon nie groep stoor nie
+
 passwd_name=Gebruikersnaam
 passwd_uid=Gebruiker-ID
 passwd_real=Regte naam
@@ -171,6 +180,7 @@ passwd_emax=Ongeldige maksimum aantal dae
 passwd_emin=Ongeldige minimum aantal dae
 passwd_einactive=Ongeldige aantal onaktiewe dae
 passwd_eexpiry=Ongeldige vervaldatum
+
 services_name=Diensnaam
 services_proto=Protokol
 services_port=Port
@@ -179,6 +189,7 @@ services_header=Inetd netwerkdiensopsies
 services_err=Kon nie die diens stoor nie
 services_ename=Diensnaam ontbreek of ongeldig
 services_eport=Poort ontbreek of ongeldig
+
 protocols_name=Protokolnaam
 protocols_number=aantal
 protocols_aliases=aliasse
@@ -187,6 +198,7 @@ protocols_header=Netwerkprotokolopsies
 protocols_err=Kon nie protokol stoor nie
 protocols_ename=Naam of ongeldige naam ontbreek
 protocols_enumber=Ontbrekende of ongeldige nommer
+
 netgroup_name=Netgroepnaam
 netgroup_members=lede
 netgroup_title=Netwerkgroep
@@ -201,6 +213,7 @@ netgroup_ename=Netgroepnaam ontbreek of ongeldig
 netgroup_ehost=Ontbrekende of ongeldige gasheer in ry $1 
 netgroup_euser=Gebruiker ontbreek of ongeldig in ry $1 
 netgroup_edom=NIS-domein in ry $1 ontbreek of ongeldig
+
 ethers_mac=Ethernet-adres
 ethers_ip=IP adres
 ethers_title=Ethernet-adres
@@ -208,6 +221,7 @@ ethers_header=Opsies vir Ethernet-kartering
 ethers_err=Kon nie ethernet-adres stoor nie
 ethers_emac=Ongeldige eternetadres
 ethers_eip=Ongeldige IP-adres
+
 rpc_name=Programnaam
 rpc_number=aantal
 rpc_aliases=aliasse
@@ -216,6 +230,7 @@ rpc_header=RPC-programbesonderhede
 rpc_err=Kon nie die RPC-program stoor nie
 rpc_ename=Programnaam ontbreek of ongeldig
 rpc_enumber=Ontbrekende of ongeldige nommer
+
 networks_title=Netwerkadres
 networks_ip=IP adres
 networks_name=Netwerk naam
@@ -224,6 +239,7 @@ networks_err=Kon nie netwerk stoor nie
 networks_eip=IP-adres ontbreek of ongeldig
 networks_ename=Naam of ongeldige naam ontbreek
 networks_aliases=aliasse
+
 netmasks_net=Netwerkadres
 netmasks_mask=netmask
 netmasks_title=netmask
@@ -231,6 +247,7 @@ netmasks_header=Netwerkmasker besonderhede
 netmasks_err=Kon nie netmasker stoor nie
 netmasks_enet=Ontbrekende of ongeldige netwerkadres
 netmasks_emask=Netmasker ontbreek of ongeldig
+
 aliases_from=adres
 aliases_to=Alias na
 aliases_title=Sendmail-alias
@@ -238,6 +255,7 @@ aliases_header=Sendmail alias besonderhede
 aliases_err=Kon nie alias stoor nie
 aliases_efrom=Adres ontbreek of ongeldig
 aliases_eto=Ontbreek aan adresse
+
 security_title=Bedienersekuriteit
 security_header=NIS bediener sekuriteit opsies
 security_ok=Stoor en pas toe
@@ -266,6 +284,7 @@ security_sec_des=Vereis DES
 security_ehost='$1' is nie 'n geldige gasheernaam nie
 security_emap='$1' is nie 'n geldige NIS-tabel nie
 security_efield='$1' is nie 'n geldige veldnommer nie
+
 eswitch_title=Redigeer diens
 eswitch_egone=Diens bestaan nie!
 eswitch_header=Diensbesonderhede

@@ -25,6 +25,7 @@ index_header=Konfiguracje użytkowników z Fetchmail
 index_search=Wyświetl konfigurację Fetchmail dla:
 index_show=Wyświetl
 index_toomany=Istnieje zbyt wiele użytkowników, aby ich wyświetlić.
+
 poll_create=Dodaj serwer
 poll_edit=Zmień serwer
 poll_header=Opcje serwera poczty
@@ -64,18 +65,22 @@ poll_ecannot=TNie masz uprawnień do edycji konfiguracji dla tego użytkownika f
 poll_efile=Tylko konfiguracja użytkownika Fetchmail może być edytowana
 poll_eusername=Użytkownik nie istnieje!
 poll_foruser=Dla użytkownika $1
+
 stop_err=Nie udało się zatrzymać fetchmaila
 stop_ecannot=Nie masz uprawnień do zatrzymania Fetchmail
 start_err=Nie udało się uruchomić fetchmaila
 start_einterval=Nie podany lub niepoprawny okres sprawdzania
 start_ecannot=Nie masz uprawnień do uruchomienia Fetchmail
+
 check_title=Sprawdzanie serwerów
 check_exec=Sprawdzanie poczty na serwerze(ach) za pomocą polecenia $1 ..
 check_ok=.. zakończono.
 check_failed=.. sprawdzenie się nie powiodło!
+
 global_title=Ustawienia domyślne
 global_header=Ustawienia domyślne dla wszystkich serwerów
 global_err=Nie udało się zachować ustawień domyślnych
+
 log_create_poll_file=Dodano serwer $1 w pliku $2
 log_modify_poll_file=Zmieniono serwer $1 w pliku $2
 log_delete_poll_file=Usunięto serwer $1 w pliku $2
@@ -94,6 +99,7 @@ log_stop=Zatrzymano serwer fetchmaila
 log_create_cron=Włączono zaplanowane sprawdzanie
 log_update_cron=Zmodyfikowano zaplanowane sprawdzanie
 log_delete_cron=Wyłączono zaplanowane sprawdzanie
+
 acl_users=Może edytować konfigurację Fetchmail dla
 acl_all=Wszyscy użytkownicy
 acl_this=Aktualny użytkownik Webmina
@@ -101,6 +107,7 @@ acl_only=Tylko użytkownicy
 acl_except=Wszyscy z wyjątkiem użytkowników
 acl_cron=Może konfigurować zaplanowane sprawdzanie?
 acl_daemon=Może konfigurować daemona Fetchmail?
+
 cron_title=Harmonogram sprawdzania
 cron_desc=Ta strona pozwala na włączanie lub wyłączanie zadania Cron do zaplanowanego sprawdzania serwerów e-mail przez Fetchmail. Korzystając z Crona nie ma potrzeby uruchamiania daemona Fetchmail przy starcie systemu, ponieważ zostanie on uruchomiony przy wykonywaniu zadania.
 cron_header=Ustawienia harmonogramu Fetchmail
@@ -119,8 +126,10 @@ cron_email=Brakujący lub nieprawidłowy adres e-mail
 cron_euser=Brakujący lub nieprawidłowy użytkownik Unix
 cron_errors=Dane wyjściowe tylko jeżeli wystąpi błąd?
 cron_ecannot2=Nie masz uprawnień do konfigurowania zaplanowanego sprawdzania
+
 user_title=Konfiguracja Fetchmail
 user_header=Dla użytkownika $1
 user_return=konfiguracji użytkownika
+
 email_ok=Dane wyjściowe Fetchmail
 email_failed=Błąd Fetchmail

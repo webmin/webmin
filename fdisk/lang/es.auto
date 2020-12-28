@@ -21,8 +21,10 @@ index_dscsi=Dispositivo SCSI $1 controlador $2
 index_draid=Nivel RAID $1 
 index_dparts=Particiones
 index_none2=No se encontraron discos en este sistema.
+
 select_nvme=Unidad de estado sólido NVME $1 unidad $2 
 select_nvmepart=NVME SSD $1 unidad $2 partición $3 
+
 edit_mountiscsi=Dispositivo compartido iSCSI $1 
 edit_name=Nombre de partición
 edit_volid=ID de volumen
@@ -31,16 +33,22 @@ edit_newmount2=Partición de montaje
 edit_mountas=como
 edit_mountmsg=Monte esta partición en el nuevo directorio de su sistema, de modo que pueda usarse para almacenar archivos. Ya debe haberse creado un sistema de archivos en la partición.
 edit_mountmsg2=Monte esta partición como memoria virtual en su sistema, para aumentar la cantidad de memoria disponible.
+
 msdos_F_other=Otro ..
+
 btrfs_l=Tamaño de la hoja
 btrfs_n=Tamaño de nodo
 btrfs_s=Tamaño del sector
+
 fatx_none=No hay opciones disponibles para los sistemas de archivos FATX.
+
 blink_title=Identificar unidad
 blink_desc=El LED de actividad de la unidad ahora se encenderá sesenta veces
 blink_back=Regresa
+
 fs_ext4=Nuevo nativo de Linux
 fs_btrfs=BTR
+
 disk_title=Editar particiones de disco
 disk_egone=¡El disco ya no existe!
 disk_no=Número
@@ -61,11 +69,13 @@ disk_table=<b>Formato de tabla de partición:</b> $1
 disk_notable=<b>Formato de tabla de partición:</b> Ninguno creado
 disk_needtable=No se pueden crear particiones sin una tabla de particiones.
 disk_return=lista de particiones
+
 relabel_title=Limpiar particiones
 relabel_warn=¿Está seguro de que desea borrar todas las particiones en $1 ($2) reescribiendo la etiqueta del disco? ¡Todos los datos y sistemas de archivos existentes se perderán!
 relabel_parts=Particiones existentes
 relabel_noparts=Ninguno creado todavía
 relabel_table=Formato de tabla de particiones
 relabel_ok=Limpie y vuelva a etiquetar
+
 table_msdos=MS-DOS (formato de partición estándar)
 table_gpt=GPT (para discos 2T o más grandes)

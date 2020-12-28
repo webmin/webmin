@@ -17,6 +17,7 @@ index_tabsync=Masa selari pelayan
 index_desctime=Borang ini adalah untuk mengubah masa terkini sistem, yang digunakan oleh kesemua proses aktif. Boleh juga digunakan pada sistem operasi yang mempunyai jam perkakasan berasingan.
 index_desczone=Borang ini membolehkan anda untuk menetapkan zon masa lalai sistem, yang digunakan untuk menukar masa sistem kepada format yang boleh dibaca manusia.
 index_descsync=Borang ini adalah untuk mengkonfigurasi sistem menyegerakkan masa secara automatik dengan pelayan capaian jauh. Penyegerakan akan dilakukan dengan menggunakan masa <tt>Unix</tt> atau protokol NTP, bergantung kepada arahan yang dipasang dan apa yang disokong oleh sistem capaian jauh.
+
 action_save=Simpan
 action_apply=Terapkan
 action_sync=Tetapkan masa sistem kepada masa perkakasan
@@ -24,6 +25,7 @@ action_sync_s=Tetapkan masa perkakasan kepada masa sistem
 action_timeserver_sys=Segerakkan masa sistem
 action_timeserver_hw=Segerakkan masa perkakasan
 action_savezone=Ubah zon masa
+
 acl_sys=Pengguna boleh menyunting masa sistem
 acl_hw=Pengguna boleh sunting masa perkakasan
 acl_timezone=Pengguna boleh menetapkan zon waktu?
@@ -34,8 +36,10 @@ acl_error=Anda memiliki capaian kepada modul sistem masa, tetapi tidak boleh men
 acl_nosys=Anda tidak dibenar menyunting masa sistem
 acl_nohw=Anda tidak dibenar menyunting masa perkakasan
 acl_nontp=Anda tidak dibenarkan untuk diselaraskan dengan pelayan masa
+
 sys_title=Masa Sistem
 hw_title=Masa Perkakasan
+
 day=Hari
 month=Bulan
 date=Tarikh
@@ -43,12 +47,14 @@ hour=Jam
 year=Tahun
 minute=Minit
 second=Saat
+
 error_cnf=Ralat : arahan $1 tidak ditemui
 error_hw=Tidak dapat tetapkan masa perkakasan : $1
 error_sync=Tidak dapat segerakkan masa sistem : $1
 error_ediff=Perbezaan pelayan masa dengan masa tempatan adalah terlalu besar : $1 hari
 error_entp=Penyegerakan masa NTP telah gagal : $1
 error_etimeserver=Tiada pelayan masa untuk diselaraskan dengan memasuki
+
 log_set_date=Tetapkan sistem masa kepada $1
 log_set_hwclock=Tetapkan jam perkakasan kepada $1
 log_remote_date=Ambil masa sistem daripada $2
@@ -58,6 +64,7 @@ log_remote_hwclock_l=Ambil masa perkakasan $1 daripada $2
 log_sync=Segerakkan masa sistem dengan masa perkakasan
 log_sync_s=Segerakkan sistem perkakasan dengan masa sistem
 log_timezone=Mengubah zon masa kepada $1
+
 timezone_err=Gagal untuk menyimpan zon masa
 timezone_ecannot=Anda tidak dibenarkan untuk menukar zon masa
 timezone_enone=Tiada zon dipilih

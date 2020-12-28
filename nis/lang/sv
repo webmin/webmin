@@ -1,6 +1,7 @@
 index_title=NIS-klient och -server
 index_return=NIS-meny
 index_enis=Det verkar inte som att något NIS-klient- eller -serverstöd har installerats på din maskin.
+
 client_title=NIS-klient
 client_header=Inställningar för NIS-klient
 client_domain=NIS-domän
@@ -15,8 +16,10 @@ client_edomain=Domännamnet saknas eller är felaktigt
 client_eserver='$1' är inte ett giltigt servernamn
 client_eypwhich=det gick inte att binda till en NIS-domän
 client_ehosts='$1' finns inte i hosts-filen
+
 switch_title=Klienttjänster
 switch_service=Tjänst
+
 order_= 
 order_nisplus=NIS+
 order_nis=NIS
@@ -28,6 +31,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=Skrivare
 order_xfn=XFN
+
 server_title=NIS-server
 server_header=Inställningar för NIS-server
 server_boot=Slå på NIS-server?
@@ -60,6 +64,7 @@ server_ebootdom=Den här NIS-servern går inte att slå på om du inte först an
 server_solaris=Observera att klient- och serverdomän för NIS alltid är samma på Solaris, och servern fungerar inte om du inte anger en domän.
 server_edir=Ogiltig katalog för lösenordskällfiler
 server_enis=Det verkar inte som att något NIS-serverstöd har installerats på din maskin.
+
 tables_title=NIS-tabeller
 tables_switch=Ändra NIS-tabell
 tables_header=$1 NIS-tabell från $2
@@ -71,6 +76,7 @@ tables_return=NIS-tabeller
 tables_text=Ändra tabellen för hand
 tables_emaster=Du får inte ändra i NIS-tabellerna, eftersom systemet just nu inte kör som en NIS-masterserver.
 tables_eslave=Du får inte ändra i NIS-tabellerna eftersom systemet är en NIS-slav, som får alla tabeller från sin masterserver.
+
 desc_aliases=Sendmail-alias
 desc_mail=Sendmail-alias
 desc_hosts=Datoradresser
@@ -100,6 +106,7 @@ desc_printcap=Skrivare
 desc_adjunct=Extra användarinformation
 desc_printers=Skrivare
 desc_ipnodes=IP-noder
+
 hosts_title=Datoradress
 hosts_ip=IP-adress
 hosts_name=Datornamn
@@ -108,6 +115,7 @@ hosts_err=Det gick inte att spara datorn
 hosts_eip=IP-adress saknas eller är felaktig
 hosts_ename=Datornamn saknas eller är felaktigt
 hosts_aliases=Alias
+
 group_name=Gruppnamn
 group_gid=Grupp-ID
 group_members=Medlemmar
@@ -118,6 +126,7 @@ group_none=Ingen lösenord behövs
 group_encrypted=Förkrypterat lösenord
 group_clear=Normalt lösenord
 group_err=Det gick inte att spara gruppen
+
 passwd_name=Användarnamn
 passwd_uid=Användar-ID
 passwd_real=Verkligt namn
@@ -155,6 +164,7 @@ passwd_emax=Det maximala antalet dagar är ogiltigt
 passwd_emin=Det minimala antalet dagar är ogiltigt
 passwd_einactive=Antalet dagar för inaktivitet är ogiltigt
 passwd_eexpiry=Datum då lösenordet upphör att gälla är ogiltigt
+
 services_name=Tjänstenamn
 services_proto=Protokoll
 services_port=Port
@@ -163,6 +173,7 @@ services_header=Inställningar för inetd-nätverkstjänst
 services_err=Det gick inte att spara tjänsten
 services_ename=Tjänstenamnet saknas eller är felaktigt
 services_eport=Port saknas eller är felaktig
+
 protocols_name=Protokollnamn
 protocols_number=Nummer
 protocols_aliases=Alias
@@ -171,6 +182,7 @@ protocols_header=Inställningar för nätverksprotokoll
 protocols_err=Det gick inte att spara protokoll
 protocols_ename=Namnet saknas eller är felaktigt
 protocols_enumber=Numret saknas eller är felaktigt
+
 netgroup_name=Nätgruppsnamn
 netgroup_members=Medlemmar
 netgroup_title=Nätverksgrupp
@@ -185,6 +197,7 @@ netgroup_ename=Nätgruppsnamn saknas eller är felaktigt
 netgroup_ehost=På rad $1 saknas dator eller också är den felaktigt angiven
 netgroup_euser=På rad $1 saknas användare eller också är den felaktigt angiven
 netgroup_edom=På rad $1 saknas NIS-domän eller också är den felaktigt angiven
+
 ethers_mac=Ethernet-adress
 ethers_ip=IP-adress
 ethers_title=Ethernet-adress
@@ -192,6 +205,7 @@ ethers_header=Inställningar för ethernet-uppslagning
 ethers_err=Det gick inte att spara ethernet-adressen
 ethers_emac=Ethernet-adressen är ogiltig
 ethers_eip=IP-adressen är ogiltig
+
 rpc_name=Programnamn
 rpc_number=Nummer
 rpc_aliases=Alias
@@ -200,6 +214,7 @@ rpc_header=Information om RPC-program
 rpc_err=Det gick inte att spara RPC-program
 rpc_ename=Programnamnet saknas eller är felaktigt
 rpc_enumber=Numret saknas eller är felaktigt
+
 networks_title=Nätverksadress
 networks_ip=IP-adress
 networks_name=Nätverksnamn
@@ -208,6 +223,7 @@ networks_err=Det gick inte att spara nätverket
 networks_eip=IP-adressen saknas eller är felaktigt angiven
 networks_ename=Namnet saknas eller är felaktigt
 networks_aliases=Alias
+
 netmasks_net=Nätverksadress
 netmasks_mask=Nätmask
 netmasks_title=Nätmask
@@ -215,6 +231,7 @@ netmasks_header=Information om nätmasken
 netmasks_err=Det gick inte att spara nätmasken
 netmasks_enet=Nätverksadressen saknas eller är felaktig
 netmasks_emask=Nätmasken saknas eller är felaktig
+
 aliases_from=Adress
 aliases_to=Alias för
 aliases_title=Sendmail-alias
@@ -222,6 +239,7 @@ aliases_header=Information om sendmail-alias
 aliases_err=Det gick inte att spara alias
 aliases_efrom=Adressen saknas eller är felaktig
 aliases_eto=Mottagaradress saknas
+
 security_title=Serverskydd
 security_header=Inställningar för NIS-serverskydd
 security_ok=Spara och ta i drift

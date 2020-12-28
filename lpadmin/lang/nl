@@ -24,6 +24,7 @@ index_style=Print systeem : $1
 index_cluster=Cluster Servers
 index_clusterdesc=Klik op deze knop om meer Webmin servers in te stellen waarop printers zullen worden aangemaakt, bijgewerkt en verwijderd.
 index_delete=Verwijder Geselecteerde Printers
+
 style_solaris=Solaris
 style_linux=Linux LPR
 style_freebsd=FreeBSD LPR
@@ -33,6 +34,7 @@ style_unixware=UnixWare
 style_cups=CUPS
 style_irix=IRIX
 style_aix=AIX
+
 edit_eedit=U bent niet bevoegd om printers te bewerken
 edit_eadd=U bent niet bevoegd om printers toe te voegen
 edit_add=Printer Toevoegen
@@ -76,7 +78,9 @@ edit_direct=Directe TCP verbinding
 edit_dport=Poort
 edit_driver=Printer Stuurprogramma
 edit_check=Controleren of externe server actief is?
+
 blocks=blokken
+
 save_err=Fout bij het opslaan van printer
 save_eadd=U bent niet bevoegd printers toe te voegen
 save_eedit=U bent niet bevoegd deze printer te wijzigen
@@ -98,6 +102,7 @@ save_evalid=Het afdruk systeem weigerde deze printer
 save_errslave=Printer succesvol aangemaakt op dit systeem, echter de volgende fouten deden zich voor op cluster systemen: $1
 save_egone=Geen printer met de naam '$1' gevonden
 save_errdelslave=Printer succesvol verwijderd van dit systeem, echter de volgende fouten deden zich voor op cluster systemen: $1
+
 jobs_title=Afdruktaken
 jobs_header=Afdruktaken op $1
 jobs_id=Taak ID
@@ -114,17 +119,23 @@ jobs_test=Print Test Pagina
 jobs_cancelsel=Annuleer Geselecteerde Printopdrachten
 jobs_on=Op printer $1
 jobs_return=Lijst met printopdrachten
+
 cancel_ecannot=U bent niet bevoegd om afdruktaken af te breken
 cancel_err=Afbreken afdruktaak is mislukt
 cancel_egone=Afdruktaak $1 bestaat niet meer
+
 view_ecannot=U bent niet bevoegd om deze afdruktaak te bekijken
 view_egone=Deze afdruktaak bestaat niet meer
+
 start_ecannot=U bent niet bevoegd de taakplanner te starten
 start_err=Fout bij het starten van de taakplanner
+
 stop_ecannot=U bent niet bevoegd de taakplanner te stoppen
 stop_err=Fout bij het stoppen van de taakplanner
+
 restart_ecannot=U bent niet bevoegd de taakplanner te herstarten
 restart_err=Fout bij het herstarten van taakplanner
+
 webmin_none=Geen
 webmin_nonemsg=Postscript of tekst printer
 webmin_remotemsg=Externe printer
@@ -135,6 +146,7 @@ webmin_uniprint=Uniprint stuurprogramma
 webmin_edrivers=Kon het stuurprogramma van $1 niet vinden. Webmin printer stuurprogramma's op basis van ghostscript zijn niet beschikbaar
 webmin_egs=De opdracht $1 is niet gevonden. Webmin printer drivers op basis van ghostscript zijn niet beschikbaar
 webmin_edriver='$1' bestaat niet
+
 caldera_none=Geen
 caldera_nonemsg=Printer op afstand of raw printer
 caldera_prog=Programma
@@ -148,6 +160,7 @@ caldera_uniprint=Uniprint driver
 caldera_eprog='$1' bestaat niet
 caldera_edriver=Geen printer driver geselecteerd
 caldera_eres=Geen resolutie geselecteerd
+
 redhat_none=Geen
 redhat_nonemsg=Postscript of tekst printer
 redhat_prog=Programma
@@ -166,6 +179,7 @@ redhat_ehmargin=Ontbrekende of ongeldige linker/rechter marge
 redhat_evmargin=Ontbrekende of ongeldige boven/onder marge
 redhat_eres=Geen resolutie geselecteerd
 redhat_printer2=Printer model en stuurprogramma
+
 suse_none=Geen
 suse_nonemsg=Postscript of tekst printer
 suse_prog=Programma
@@ -182,7 +196,9 @@ suse_extra=Extra ghostscript opties
 suse_yast2=YAST2 driver
 suse_edriver=Geen printer type geselecteerd
 suse_eres=Ontbrekende of ongeldige resolutie
+
 estop=Fout bij het stoppen van lpd: $1
+
 acl_printers=Printers die deze gebruiker mag configureren
 acl_add=Mag nieuwe printers toevoegen?
 acl_cancel=Mag afdruktaken afbreken?
@@ -198,6 +214,7 @@ acl_user_all=Alle gebruikers
 acl_user_this=Huidige Webmin gebruiker
 acl_delete=Mag printers verwijderen
 acl_cluster=Mag printer clusters beheren?
+
 log_stop=Print taakplanner gestopt
 log_start=Print taakplanner gestart
 log_restart=Print taakplanner herstart
@@ -210,37 +227,45 @@ log_delete=Printer $1 verwijderd op $2
 log_create_l=$3 printer $1 aangemaakt op $2
 log_modify_l=$3 printer $1 op $2 gewijzigd
 log_delete_l=$3 printer $1 op $2 verwijderd
+
 linux_paralel=Parallelle Poort $1
 linux_serial=Seriële Poort $1 (COM $1)
 linux_null=Null Apparaat
 linux_usb=USB printer $1
 linux_ecmd=De opdracht $1 kon niet worden gevonden op uw systeem, dit geeft aan dat het Linux afdruk systeem niet is geinstalleerd.
 linux_espool=De spool directory $1 is niet aanwezig op uw systeem, dit geeft aan dat het Linux afdruk systeem niet is geinstalleerd.
+
 freebsd_paralel=Parallelle Poort
 freebsd_serial=Seriële Poort $1 (COM $1)
 freebsd_ecmd=De opdracht $1 kon niet worden gevonden op uw systeem, dit geeft aan dat het FreeBSD afdruk systeem niet is geinstalleerd.
 freebsd_espool=De spool directory $1 is niet aanwezig op uw systeem, dit geeft aan dat het FreeBSD afdruk systeem niet is geinstalleerd.
+
 openbsd_paralel=Parallelle Poort
 openbsd_serial=Seriële Poort $1 (COM $1)
+
 unixware_paralel=Parallelle Poort $1
 unixware_serial=Seriële Poort $1
 unixware_null=Null Apparaat
 unixware_ecmd=De opdracht $1 kon niet worden gevonden op uw systeem, dit geeft aan dat het UnixWare afdruk systeem niet is geinstalleerd.
+
 hpux_paralel=Parallel $1
 hpux_serial=Seriële Poort $1
 hpux_null=Null Apparaat
 hpux_ecmd=De opdracht $1 kon niet worden gevonden op uw systeem, dit geeft aan dat het HPUX afdruk systeem niet is geinstalleerd.
 hpux_eiface=De interface scripts directory $1 is niet aanwezig op uw systeem, dit geeft aan dat het HPUX afdruk systeem niet is geinstalleerd.
+
 lprng_paralel=Parallelle Poort $1
 lprng_serial=Seriële Poort $1 (COM $1)
 lprng_null=Null Device
 lprng_ecmd=De opdracht $1 kon niet worden gevonden op uw systeem, dit geeft aan dat het LPRng afdruk systeem niet is geinstalleerd.
 lprng_espool=De spool directory $1 is niet aanwezig op uw systeem, dit geeft aan dat het LPRng afdruk systeem niet is geinstalleerd.
+
 solaris_paralel=Parallelle Poort
 solaris_uparalel=Ultra 5/10 Parallelle Poort
 solaris_serial=Seriële Poort $1
 solaris_null=Null Apparaat
 solaris_ecmd=De opdracht $1 kon niet worden gevonden op uw systeem, dit geeft aan dat het Solaris afdruk systeem niet is geinstalleerd.
+
 test_title=Print Test Pagina
 test_ecannot=U bent niet bevoegd om een test pagina af te drukken
 test_desc=Met dit formulier kunt u een test pagina afdrukken op printer $1. Selecteer het type test pagina dat u wilt printen :
@@ -252,6 +277,7 @@ test_print=Print pagina
 test_exec=Afdrukken test pagina met opdracht $1 ..
 test_failed=.. opdracht mislukt!
 test_ok=.. opdracht beëindigd.
+
 cups_none=Geen
 cups_nonemsg=Externe of raw printer
 cups_prog=Programma
@@ -259,11 +285,14 @@ cups_driver=CUPS driver
 cups_eprog='$1' is geen geldig programma
 cups_opts=Opties voor $1
 cups_ecmd=De opdracht $1 kon niet worden gevonden op uw systeem, dit geeft aan dat het CUPS afdruk systeem niet is geinstalleerd.
+
 irix_ecmd=De opdracht $1 kon niet worden gevonden op uw systeem, dit geeft aan dat het IRIX afdruk systeem niet is geinstalleerd.
 irix_eiface=De interface scripts directory $1 is niet aanwezig op uw systeem, dit geeft aan dat het IRIX afdruk systeem niet is geinstalleerd.
+
 aix_port=Printer poort $1
 aix_edesc=Ongeldige omschrijving - Alleen letters en cijfers zijn toegestaan, geen spaties
 aix_ecmd=De AIX printer server $1 kon niet worden gevonden. Het is wellicht niet geinstalleerd, of er is een ander afdruk systeem in gebruik.
+
 cluster_title=Cluster Printer Servers
 cluster_none=Er zijn nog geen servers toegevoegd aan de printer cluster.
 cluster_host=Hostnaam
@@ -275,6 +304,7 @@ cluster_need=U moet servers met login en wachtwoord toevoegen in de Webmin Serve
 cluster_return=cluster servers
 cluster_delete=Selectie Verwijderen
 cluster_ecannot=U bent niet bevoegd om cluster printer servers te beheren
+
 add_title=Servers Toevoegen
 add_msg=Toevoegen van $1 ..
 add_gmsg=Toevoegen van servers aan groep $1 ..

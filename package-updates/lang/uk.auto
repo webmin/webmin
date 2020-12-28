@@ -57,6 +57,7 @@ index_reposdisable=Вимкнути сховища
 index_reposenable=Увімкнути сховища
 index_reposdelete=Видалити сховища
 index_repoheader=Нові параметри сховища пакетів
+
 update_title=Оновлення пакетів
 update_title2=Встановити пакети
 update_enone=Не вибрано жодних пакетів
@@ -94,9 +95,11 @@ update_none=Жоден
 update_ops=Складання повного списку пакунків ..
 update_rebootdesc=Один із встановлених пакетів вимагає перезавантаження повністю.
 update_reboot=Перезавантажте негайно
+
 sched_title=Заплановане оновлення
 sched_yes=Планова перевірка оновлень зараз активна.
 sched_no=Планова перевірка оновлень вимкнена.
+
 log_update=Встановлено оновлені $1 пакети
 log_sched=Увімкнено заплановані оновлення
 log_unsched=Вимкнено заплановані оновлення
@@ -108,11 +111,13 @@ log_enable_repo=Увімкнено сховище пакетів $1
 log_disable_repo=Вимкнено сховище пакетів $1 
 log_delete_repo=Видалений сховище пакунків $1 
 log_create_repo=Створено сховище пакетів $1 
+
 refresh_title=Освіжаючі пакети
 refresh_clearing=Очищення кеш-пакетів ..
 refresh_done=.. зроблено
 refresh_available=Повторне завантаження доступних пакетів ..
 refresh_done3=.. знайдено $1 можливих оновлень
+
 view_title=Інформація про пакет
 view_header=Оновлена інформація про пакет
 view_name=Назва пакету
@@ -126,12 +131,14 @@ view_changelog=Журнал змін для доступної версії
 view_software=Управління пакетом
 view_update=Оновити пакет
 view_install=Встановити пакет
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)
 system_webmin=Модуль Webmin
 system_usermin=Модуль Usermin
 system_tgz=Webmin або Usermin tar.gz
+
 repos_err_disable=Не вдалося вимкнути сховища
 repos_err_enable=Не вдалося ввімкнути сховища
 repos_err_delete=Не вдалося видалити сховища

@@ -13,15 +13,21 @@ index_start=Planlanmış Komutlar Sunucusunu Başlat
 index_startdesc=Zamanlanmış komutları çalıştıran <tt>atd</tt> arka plan sunucusu işlemini başlatın. Bu, komutların belirtilen zamanlarda çalıştırılması için gereklidir.
 index_boot=Önyüklemede Sunucu Başlatılsın mı?
 index_bootdesc=Sistem önyükleme zamanında zamanlanmış komut sunucusunu başlatmayı etkinleştirmek veya devre dışı bırakmak için bu ayarı değiştirin.
+
 edit_shortcmd=Yürütme komutu
 edit_showfull=Komut dosyasının tamamını göster.
+
 create_eallow=Belirtilen kullanıcının zamanlanmış komutları çalıştırmasına izin verilmiyor
+
 acl_allow=Kullanıcılara düzenlemeye izin verilebilir mi?
+
 allow_err=İzin verilen kullanıcılar kaydedilemedi
 allow_ecannot=İzin verilen kullanıcıları yönetme izniniz yok
 allow_eusers=Kullanıcı girmedi
+
 deletes_err=Komutlar iptal edilemedi
 deletes_enone=Hiçbiri seçilmedi
+
 log_allow=İzin verilen kullanıcılar değiştirildi
 log_create_job=$1 için zamanlanmış komut oluşturuldu
 log_delete_job=$1 için zamanlanmış komut iptal edildi
@@ -31,5 +37,6 @@ log_stop=Programlanmış komut sunucusu durduruldu
 log_start=Zamanlanmış komut sunucusu başlatıldı
 log_bootup=Önyüklemede zamanlanmış komut sunucusu etkinleştirildi
 log_bootdown=Önyüklemede devre dışı bırakılan zamanlanmış komut sunucusu
+
 stop_err=Sunucu durdurulamadı
 start_err=Sunucu başlatılamadı

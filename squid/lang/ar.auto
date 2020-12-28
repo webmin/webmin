@@ -38,6 +38,7 @@ index_restartdesc=انقر فوق هذا الزر لتنشيط تكوين Squid 
 index_iptables=إعداد منفذ إعادة توجيه
 index_squid=خادم وكيل الحبار
 index_manual=تحرير ملفات التكوين
+
 manual_title=تحرير ملفات التكوين
 manual_file=حدد ملف التكوين لتحريره:
 manual_change=يتغيرون
@@ -45,6 +46,7 @@ manual_editing=Use the text box below to manually edit the configs in $1. Be car
 manual_err=فشل في حفظ ملف التكوين
 manual_efile=اسم ملف التكوين غير صالح!
 manual_ecannot=غير مسموح لك بتحرير ملفات التكوين يدويًا
+
 buttsave=حفظ
 buttdel=حذف
 buttcreat=خلق
@@ -54,6 +56,7 @@ default=إفتراضي
 none=لا شيء
 on=على
 off=إيقاف
+
 acl_header1=إنشاء ACL
 acl_header2=تحرير ACL
 acl_name=اسم دوري أبطال آسيا
@@ -109,6 +112,7 @@ acl_file=تخزين القيم ACL في الملف
 acl_nofile=التكوين الحبار
 acl_infile=ملف منفصل
 acl_keep=مجرد استخدام محتويات الملف الموجودة؟
+
 aclsave_failsave=فشل في حفظ ACL
 aclsave_faildel=فشل في حذف ACL
 aclsave_epr=يتم استخدام قائمة التحكم بالوصول هذه بواسطة تقييد الوكيل
@@ -128,11 +132,13 @@ aclsave_eemin=دقيقة نهاية غير صالحة
 aclsave_efile=You are not allowed to write to the ACL file '$1'
 aclsave_enofile=لم يتم إدخال اسم ملف ACL
 aclsave_ealready=ملف ACL موجود بالفعل
+
 cach_ecannot=غير مسموح لك بالوصول إلى إحصائيات مدير ذاكرة التخزين المؤقت
 cach_err=خطأ
 cach_nfound=The Squid cache manager program <tt>$1</tt> was not found on your system. Maybe your <a href=/config.cgi?$2 >module configuration</a> is incorrect.
 cach_return=مؤشر الحبار
 cach_esame=The <b>Squid cachemgr.cgi executable</b> is set to Webmin's cachemgr.cgi program, not the one supplied by Squid.
+
 chown_header=تغيير الملكية
 chown_stop=وقف الحبار. ..
 chown_done=.. منجز
@@ -140,6 +146,7 @@ chown_chown=تغيير الملكية. ..
 chown_restart=إعادة بدء Squid. ..
 chown_failrestart=فشل في إعادة تشغيل Squid ..
 chown_return=مؤشر الحبار
+
 clear_ecannot=غير مسموح لك بمسح ذاكرة التخزين المؤقت وإعادة بنائها
 clear_header=مسح وإعادة بناء ذاكرة التخزين المؤقت
 clear_msgclear=Are you sure you want to clear and rebuild your Squid cache? This will delete <b>all</b> the files you have cached and re-start your Squid server.
@@ -153,6 +160,7 @@ clear_failrestart=فشل في إعادة تشغيل Squid ..
 clear_return=مؤشر الحبار
 clear_url=إزالة عنوان URL واحد من ذاكرة التخزين المؤقت:
 clear_ok=إزالة
+
 eacl_ecannot=غير مسموح لك بتحرير التحكم في الوصول
 eacl_header=صلاحية التحكم صلاحية الدخول
 eacl_acls=قوائم التحكم في الوصول
@@ -169,8 +177,10 @@ eacl_nopr=لم يتم تحديد قيود الوكيل.
 eacl_addpr=إضافة تقييد الوكيل.
 eacl_noprr=لم يتم تحديد قيود الرد الوكيل
 eacl_addprr=إضافة تقييد الرد الوكيل.
+
 eacl_replypr=الرد قيود الوكيل
 eacl_replynopr=لم يتم تحديد قيود وكيل الرد
+
 eacl_icpr=قيود برنامج المقارنات الدولية
 eacl_noicpr=لم يتم تحديد قيود برنامج المقارنات الدولية
 eacl_addicpr=إضافة قيود برنامج المقارنات الدولية.
@@ -187,6 +197,7 @@ eacl_eclass=لم يتم تحديد فئة البرنامج
 eacl_cname=أكتب اسم
 eacl_file=From file $1
 eacl_hdelete=حذف القيود المحددة
+
 eadm_ecannot=غير مسموح لك بتحرير الخيارات الإدارية
 eadm_header=خيارات إدارية
 eadm_aao=خيارات إدارية وإعلان
@@ -213,6 +224,7 @@ eadm_caf=مخبأ يعلن الملف
 eadm_annp=فترة الإعلان
 eadm_buttsave=حفظ
 eadm_return=مؤشر الحبار
+
 eauth_ecannot=غير مسموح لك بتحرير مصادقة الوكيل
 eauth_header=مصادقة الوكيل
 eauth_aopt=خيارات المصادقة
@@ -226,6 +238,7 @@ eauth_pusers=المستخدمين الوكيل
 eauth_nopusers=لم يتم تعريف مستخدمي بروكسي حاليا.
 eauth_addpuser=إضافة مستخدم وكيل جديد.
 eauth_return=مؤشر الحبار
+
 ec_ecannot=غير مسموح لك بتحرير خيارات ذاكرة التخزين المؤقت
 ec_header=خيارات ذاكرة التخزين المؤقت
 ec_cro=التخزين المؤقت وطلب الخيارات
@@ -280,6 +293,7 @@ ec_return=مؤشر الحبار
 ec_maxreplies=أقصى أحجام الجسم الرد
 ec_maxrn=الحجم (كيلو بايت)
 ec_maxracls=لطلبات مطابقة قوائم ACL (اتركها فارغة للجميع)
+
 ech_header=إنشاء ذاكرة التخزين المؤقت المضيف
 ech_header1=تحرير ذاكرة التخزين المؤقت المضيف
 ech_cho=خيارات المضيف ذاكرة التخزين المؤقت
@@ -324,6 +338,7 @@ ech_origin=علاج المضيف كخادم الأصل؟
 ech_force=مضيف القوة: رأس إلى
 ech_same=دون تغيير
 ech_ssl=الاتصال باستخدام SSL؟
+
 eicp_ecannot=غير مسموح لك بتحرير ذاكرة التخزين المؤقت الأخرى
 eicp_header=مخابئ أخرى
 eicp_opcs=خوادم التخزين المؤقت الوكيل الأخرى
@@ -361,6 +376,7 @@ eicp_ttype=اكتب
 eicp_tpport=منفذ وكيل
 eicp_tiport=منفذ ICP
 eicp_delete=حذف ذاكرة التخزين المؤقت المحددة
+
 elogs_ecannot=غير مسموح لك بتحرير التسجيل
 elogs_header=تسجيل
 elogs_lalo=خيارات التسجيل و Logfile
@@ -394,6 +410,7 @@ elogs_notset=غير مضبوط
 elogs_dont=لا تقم بتسجيل الدخول
 elogs_file=File $1
 elogs_squid=الحبار القياسية
+
 emem_ecannot=غير مسموح لك بتحرير استخدام الذاكرة
 emem_dheader=استخدام الذاكرة والقرص
 emem_header=استخدام الذاكرة
@@ -419,6 +436,7 @@ emem_lfuda=ديناميكية الأقل استخداما
 emem_hlru=كومة الأقل استخداما في كثير من الأحيان
 emem_return=مؤشر الحبار
 emem_mrp=سياسة استبدال الذاكرة
+
 emisc_ecannot=غير مسموح لك بتحرير خيارات متنوعة
 emisc_header=الخيارات المتنوعة
 emisc_mo=الخيارات المتنوعة
@@ -455,6 +473,7 @@ emisc_wccpin=WCCP العنوان الوارد
 emisc_wccpout=WCCP العنوان الصادر
 emisc_none=لا شيء
 emisc_virtual=افتراضية
+
 eports_ecannot=غير مسموح لك بتحرير المنافذ والشبكات
 eports_header=الموانئ والشبكات
 eports_pano=منافذ وخيارات الشبكات
@@ -480,6 +499,7 @@ eports_unc=هل إغلاق SSL نجس؟
 eports_checkhost=التحقق من صحة أسماء المضيفين في عناوين المواقع؟
 eports_underscore=هل تسمح بتسطير أسفل السطر في أسماء المضيف؟
 eports_all=الكل
+
 eprogs_ecannot=غير مسموح لك بتحرير برامج المساعدة
 eprogs_header=برامج المساعدة
 eprogs_chpo=خيارات برنامج مساعد ذاكرة التخزين المؤقت
@@ -508,6 +528,7 @@ eprogs_ttl=مصادقة وقت التخزين المؤقت
 eprogs_aittl=مصادقة وقت ذاكرة التخزين المؤقت IP
 eprogs_realm=مجال المصادقة
 eprogs_return=مؤشر الحبار
+
 euser_header=إنشاء مستخدم وكيل
 euser_header1=تحرير وكيل المستخدم
 euser_pud=وكيل تفاصيل المستخدم
@@ -516,6 +537,7 @@ euser_p=كلمه السر
 euser_u1=دون تغيير
 euser_e=تمكين؟
 euser_return=قائمة المستخدمين
+
 ahttp_header=إنشاء تقييد الوكيل
 ahttp_header1=تحرير تقييد الوكيل
 ahttp_pr=تقييد الوكيل
@@ -525,10 +547,13 @@ ahttp_d=أنكر
 ahttp_ma=تطابق ACLs
 ahttp_dma=لا تتطابق مع قوائم ACL
 ahttp_return=قائمة ACL
+
 ahttp_replyheader=إنشاء تقييد رد الوكيل
 ahttp_replyheader1=تحرير تقييد الرد الوكيل
 ahttp_replypr=تقييد الرد الوكيل
+
 sahttp_ftspr=فشل في حفظ قيود الرد الوكيل
+
 aicp_header=إنشاء تقييد برنامج المقارنات الدولية
 aicp_header1=تحرير تقييد برنامج المقارنات الدولية
 aicp_ir=تقييد برنامج المقارنات الدولية
@@ -538,7 +563,9 @@ aicp_d=أنكر
 aicp_ma=تطابق ACLs
 aicp_dma=لا تتطابق مع قوائم ACL
 aicp_return=قائمة ACL
+
 saicp_ftsir=فشل في حفظ قيود برنامج المقارنات الدولية
+
 icache_ecannot=غير مسموح لك بتهيئة ذاكرة التخزين المؤقت
 icache_ftic=فشل في تهيئة ذاكرة التخزين المؤقت
 icache_ymcautrsa=يجب عليك اختيار مستخدم لتشغيل Squid كـ
@@ -546,7 +573,9 @@ icache_euser=المستخدم لتشغيل الحبار كما هو غير مو�
 icache_itscwtc=Initializing the Squid cache with the command <tt>$1</tt> ..
 icache_return=مؤشر الحبار
 icache_title=تهيئة ذاكرة التخزين المؤقت
+
 restart_ftrs=فشل في إعادة تكوين الحبار
+
 sadmin_ftsao=فشل في حفظ الخيارات الإدارية
 sadmin_header=تغيير الملكية
 sadmin_msg1=لقد قمت بتغيير المستخدم أو المجموعة التي يعمل عليها Squid. لكي يصبح هذا ساري المفعول بشكل صحيح ، يجب تحديث ملكية كل ملفات التخزين المؤقت وملفات السجل وإعادة تشغيل Squid.
@@ -556,10 +585,12 @@ sadmin_inavea='$1' is not a valid email address
 sadmin_inavh='$1' is not a valid hostname
 sadmin_inavap='$1' is not a valid announcement period
 sadmin_inavp='$1' is not a valid port
+
 sauth_ftsao=فشل في حفظ خيارات المصادقة
 sauth_iomuf=اسم مستخدم غير صالح أو مفقود
 sauth_iomd=مجال غير صالح أو مفقود
 sauth_msg1=لم يتم تجميع إصدار Squid الخاص بك مع دعم لمصادقة الوكيل
+
 scache_ftsco=فشل في حفظ خيارات ذاكرة التخزين المؤقت
 scache_emsg0=يجب إدخال دليل ذاكرة التخزين المؤقت واحد على الأقل
 scache_emsg1=The cache directory '$1' does not exist
@@ -577,14 +608,17 @@ scache_emsg12='$1' is not a valid directory size
 scache_emsg13='$1' is not a valid host
 scache_emsg14='$1' is not a valid port
 scache_emaxrs=Invalid maximum body size in row $1
+
 schost_ftsc=فشل في حفظ ذاكرة التخزين المؤقت
 schost_emsg1='$1' is not a valid cache hostname
 schost_emsg2='$1' is not a valid proxy port
 schost_emsg3='$1' is not a valid ICP port
 schost_emsg4='$1' is not a valid time-to-live
 schost_emsg5='$1' is not a valid weighting
+
 sicp_ftsco=فشل في حفظ خيارات ذاكرة التخزين المؤقت
 sicp_emsg1='$1' is not a valid timeout
+
 slogs_ftslo=فشل في حفظ خيارات التسجيل
 slogs_emsg1='$1' is not an absolute filename
 slogs_emsg2='$1' is not a valid filename
@@ -594,20 +628,24 @@ slogs_emsg5='$1' is not a valid debug options list
 slogs_efname=Invalid format name in row $1
 slogs_effmt=Missing log format in row $1
 slogs_eafile=Missing or invalid log file in row $1
+
 smem_ftsmo=فشل في حفظ خيارات الذاكرة
 smem_emsg1='$1' is not a valid cache size
 smem_emsg2='$1' is not a valid high-water mark
 smem_emsg3='$1' is not a valid low-water mark
 smem_emsg4='$1' is not a valid object size
+
 smisc_ftso=فشل في حفظ الخيارات
 smisc_emsg1='$1' is not a valid number of rotations
 smisc_emsg2='$1' is not a valid domain
 smisc_emsg3='$1' is not a valid proxy
 smisc_emsg4='$1' is not a valid number of hops
+
 sport_ftspo=فشل في حفظ خيارات المنفذ
 sport_emsg1='$1' is not a valid port number
 sport_emsg2='$1' is not a valid address
 sport_emsg3='$1' is not a valid buffer size
+
 sprog_ftshpo=فشل في حفظ خيارات برنامج المساعد
 sprog_emsg1=خيارات FTP المفقودة
 sprog_emsg2='$1' is not a valid program
@@ -620,19 +658,23 @@ sprog_emsg8='$1' is not a valid IP address
 sprog_emsg9='$1' is not a valid cache time
 sprog_emsg10='$1' is not a valid TTL
 sprog_echildren=يجب أن يكون عدد البرامج أكبر من الصفر
+
 suser_ftsu=فشل في حفظ المستخدم
 suser_emsg1=اسم المستخدم غير صالح أو مفقود
 suser_etaken=هذا الاسم مستخدم من قبل شخص ما
+
 start_ftsq=فشل في بدء الحبار
 start_ecannot=غير مسموح لك ببدء Squid
 stop_ftsq=فشل في وقف الحبار
 stop_ecannot=غير مسموح لك بإيقاف Squid
+
 calamaris_ecannot=غير مسموح لك بالوصول إلى تحليل سجل Calamaris
 calamaris_title=تحليل سجل Calamaris
 calamaris_last=Limiting analysis to last $1 lines of logs ..
 calamaris_eprog=The calamaris executable $1 was not found. Maybe it is not installed on your system, or your <a href='$2'>module configuration</a> is incorrect.
 calamaris_elogs=The log directory $1 does not contain any <tt>access.log</tt> files. Maybe squid has not been run yet, or your <a href='$2'>module configuration</a> is incorrect.
 calamaris_gen=Report generated on $1
+
 lib_emsg1='$1' is not a valid IP address
 lib_seconds=ثواني
 lib_minutes=الدقائق
@@ -680,6 +722,7 @@ lib_aclmuip=ماكس مستخدم IP
 lib_buttac=تطبيق التغييرات
 lib_buttss=وقف الحبار
 lib_buttss1=بدء الحبار
+
 log_ports=المنافذ المتغيرة وخيارات الشبكات
 log_icp=تم تغيير خيارات ذاكرة التخزين المؤقت الأخرى
 log_mem=تغيير خيارات استخدام الذاكرة
@@ -734,25 +777,31 @@ log_pools_delete=Deleted $1 delay pools
 log_delay_create=Added ACL for delay pool $1
 log_delay_modify=Modified ACL for delay pool $1
 log_delay_delete=Deleted ACL for delay pool $1
+
 log_delay_move=Moved ACL for delay pool $1
 log_refresh_create=Created refresh rule for $1
 log_refresh_modify=Modified refresh rule for $1
 log_refresh_delete=Deleted refresh rule for $1
+
 log_refresh_move=Moved refresh rule for $1
 log_refreshes_delete=Deleted $1 refresh rules
 log_iptables=تم تحديث إعداد إعادة توجيه المنفذ
 log_purge=Removed URL $1 from cache
 log_cachemgr=تم تغيير كلمات مرور مدير التخزين المؤقت
+
 acl_root=دليل الجذر لملفات ACL
 acl_sections=صفحات التكوين المسموح بها
 acl_start=يمكن أن تبدأ وتتوقف الحبار؟
 acl_restart=يمكن تطبيق التكوين الحبار؟
+
 always_create=إنشاء إحضار مباشر
 always_edit=تحرير الجلب المباشر
 always_header=جلب طلبات مطابقة ACLs مباشرة
+
 never_create=إنشاء إحضار غير مباشر
 never_edit=تحرير جلب غير مباشر
 never_header=عدم إحضار طلبات مطابقة ACLs أبدًا
+
 delay_title=تأخير برك
 delay_add=إضافة تجمع تأخير جديد.
 delay_num=رقم
@@ -802,11 +851,14 @@ pool_unit2=كيلوبايت
 pool_unit3=كيلو بايت
 pool_unit4=ميغابايت
 pool_unit5=MB
+
 dpool_err=فشل في حذف تجمعات التأخير
 dpool_enone=لا شيء محدد
+
 apool_header=إضافة تأخير بركة ACL
 apool_header1=تحرير تأخير تجمع ACL
 apool_pr=تأخير تجمع ACL
+
 authparam_title=برامج المصادقة
 authparam_header=خيارات برنامج المصادقة الخارجية
 authparam_ttl=الوقت لتخزين كلمات السر مؤقتا ل
@@ -849,6 +901,7 @@ ext_ecache=حجم ذاكرة التخزين المؤقت مفقود أو غير 
 ext_eprogram=تم إدخال مسار برنامج غير صالح
 ext_eclash=يوجد بالفعل نوع برنامج خارجي بنفس الاسم
 ext_eused=هذا البرنامج الخارجي قيد الاستخدام من قبل ACL
+
 header_title=رأس التحكم في الوصول
 header_none=لم يتم تحديد قواعد التحكم في الوصول إلى الرأس حتى الآن.
 header_name=رأس HTTP
@@ -868,6 +921,7 @@ header_err=فشل في حفظ قاعدة التحكم في الوصول للرأ
 header_ename=اسم رأس مفقود أو غير صالح
 header_request_header_access=طلب رؤوس
 header_reply_header_access=الرد على الرؤوس
+
 refresh_title=تحديث القواعد
 refresh_none=لم يتم تحديد قواعد التحديث بعد.
 refresh_re=تعبير عادي
@@ -894,6 +948,7 @@ refresh_epc=النسبة المئوية للعمر مفقود أو غير صال
 refresh_delete=حذف قواعد التحديث المحددة
 drefresh_err=فشل في حذف قواعد التحديث
 drefesh_enone=لا شيء محدد
+
 iptables_title=إعداد منفذ إعادة توجيه
 iptables_inst0=The IPtables firewall commands needed to setup port redirection do not appear to be installed on your system. See the <a href='$1'>Linux Firewall</a> module for more details.
 iptables_inst1=The <a href='$1'>Linux Firewall</a> module does not appear to have been fully setup on your system. This module makes use of that one to setup Frox port redirection.
@@ -908,18 +963,23 @@ iptables_enet=عنوان الشبكة مفقود أو غير صالح (يجب أ
 iptables_eiface=واجهة الشبكة مفقودة أو غير صالحة
 iptables_eapply=Apply firewall failed : $1
 iptables_eapply2=Apply Squid failed : $1
+
 syslog_access=سجل وصول الحبار
 syslog_cache=سجل التخزين المؤقت الحبار
 syslog_store=سجل مخزن كائن الحبار
+
 purge_err=أخفق مسح عنوان URL من ذاكرة التخزين المؤقت
 purge_title=مسح عنوان URL المخزن مؤقتًا
 purge_doing=Clearing URL $1 ..
 purge_done=.. فعله.
 purge_failed=.. فشل! انظر رسالة الخطأ أعلاه لمعرفة السبب.
+
 dhttp_err=فشل في حذف قيود الوكيل
 dhttp_enone=لا شيء محدد
+
 dicp_err=فشل في حذف قيود برنامج المقارنات الدولية
 dicp_enone=لا شيء محدد
+
 cachemgr_title=مدير ذاكرة التخزين المؤقت كلمات السر
 cachemgr_ecannot=غير مسموح لك بتحرير كلمات مرور مدير التخزين المؤقت
 cachemgr_def1=لا كلمات المرور المطلوبة

@@ -4,6 +4,7 @@ index_desc=Popis
 index_add=Přidat novou PAM službu
 index_return=seznam služeb
 index_none=Nebylynelzeny žádné soubory s PAM konfigurací ve vašem systému v adresáři $1.Možná není PAM podporována, nebo vaše <a href='$2'>konfigurace modulu</a>není správná.
+
 desc_su=Zapnutí uživatele
 desc_login=Locální nebo vzdálené přihlášení
 desc_samba=Samba Windows souborový server
@@ -61,6 +62,7 @@ desc_printconf-gui=Redhat printer konfigurační nástroj
 desc_rhn_register=Redhat síťové registrace
 desc_system-auth=Společná autentikace
 desc_cups=CUPS tisk
+
 edit_title=Editace PAM služby
 edit_header=Detaily PAM služby
 edit_name=Název služby
@@ -77,6 +79,7 @@ edit_none=Nejsou specifikovány žádné PAM modul v tomto kroku
 edit_delete=Smazat PAM službu
 edit_move=Přesunout
 edit_return=PAM služba
+
 pam_pwdb.so=Autentikace Unix hesla
 pam_securetty.so=Bezpečnostní TTY kontrola pro root
 pam_nologin.so=<tt>/etc/nologin</tt> kontrola souboru
@@ -118,6 +121,7 @@ pam_desgold.so=DESGold smartcard autentikace
 pam_console.so=Kontrola pouze console
 pam_xauth.so=X autentikace
 pam_stack.so=Zavolat jinou PAM službu
+
 control_requisite=Potřeba
 control_required=Požadováno
 control_sufficient=Dostatečný
@@ -126,6 +130,7 @@ control_desc_requisite=Opustit autentikaci na počátku nezdaru
 control_desc_required=Opustit autentikaci na konci nezdaru
 control_desc_sufficient=Pokračovat v autentikaci na počátku úspěchu
 control_desc_optional=Úspěch či nezdar je ingorován
+
 create_title=Vytvoření PAM služby
 create_header=Nastavení nové PAM služby
 create_name=Název služby
@@ -134,6 +139,7 @@ create_mods=Počáteční PAM moduly
 create_0=Nic
 create_1=Unix autentikace
 create_2=Zakázat všechny přístupy
+
 mod_edit=Editovat PAM modul
 mod_create=Přidat PAM modul
 mod_header=Nastavení PAM modulu
@@ -147,10 +153,12 @@ mod_type_password=Změna hesla
 mod_control=Úroveň chyby
 mod_args=MArgumenty modulu
 mod_err=Chyba při ukládání modulu
+
 pwdb_shadow=Požít shadow soubor hesel?
 pwdb_nullok=Akceptovat null hesla?
 pwdb_md5=Použít MD5-encrypted hesla?
 pwdb_nodelay=Posečkat po chybném přihlášení?
+
 listfile_item=Hledat soubor pro
 listfile_item_user=Uživatel
 listfile_item_tty=TTY
@@ -167,51 +175,64 @@ listfile_apply=Omezit kontrolu na
 listfile_all=Všechny uživatele
 listfile_user=Pouze uživatele
 listfile_group=Pouze skupinu
+
 cracklib_type=Typ hesla v promptu
 cracklib_retry=Maximum opakovaných pokusů pře nezdarem
 cracklib_eretry=Chybějící nebo nesprávná hodnota opakovaných pokusů
 cracklib_etype=Chybějící nebo nesprávný typ hesla
+
 rhosts_equiv=Číst soubor <tt>/etc/hosts.equiv</tt>?
 rhosts_rhosts=Číst uživatelské <tt>.rhosts</tt> soubory?
 rhosts_promiscuous=<tt>+</tt> zápis povoluje všechny hosty?
 rhosts_suppress=Logovat neúspěšné autentikace?
+
 env_var=Jméno proměnné
 env_def=Výchozí value
 env_over=Přepsat value
 env_evar=Jméno proměnné nesmí obsahovat mezery
+
 securetty_ttys=Zabezpečení TTYs
+
 shells_shells=Platné shelly uživatele
+
 tally_deny=Nezdařené pokusy před zakázáním přístupu
 tally_reset=Resetovat čítač nezdařených přístupů
 tally_edeny=Chybějící nebo nsprávný počet nezdařených pokusů
 tally_magic=Čítač nezdařených přístupů se použije pro <tt>root</tt>?
 tally_root=Může být <tt>root</tt> účet znepřístupněn?
+
 time_services=Služby
 time_ttys=TTYs
 time_users=Uživatelé
 time_times=Časy přístupu
 time_info=Všechna pole mohou obsahovat vícenásobné hodnoty oddělené |, a zárověň hodnoty mohou obsahovat * jako zástupný znak či ! jako negaci.
+
 group_services=Služby
 group_ttys=TTYs
 group_users=Uživatelé
 group_times=Časy přístupu
 group_groups=Přidat skupiny
 group_info=Všechna pole mohou obsahovat vícenásobné hodnoty oddělené |, a zárověň hodnoty mohou obsahovat * jako zástupný znak či ! jako negaci.
+
 wheel_group=Kontrolovat členství ve skupině
 wheel_group_def=Výchozí (<tt>wheel</tt> nebo GID 0)
 wheel_trust=Členové skupiny přeskočí přes autentikaci?
 wheel_deny=Zakázat namísto povolení u členů skupiny?
 wheel_egroup=Chybějící nebo nesprávné jméno skupiny
+
 motd_file=Soubor k zobrazení
 motd_file_def=Výchozí (<tt>/etc/motd</tt>)
 motd_efile=Chybějící nebo nesprávné jméno souboru
+
 mail_nopen=Zobrazit notifikaci mailu při přihlášení?
 mail_close=Zobrazit notifikaci mailu při  při odhlášení?
 mail_empty=Ověřit, zda je mailový soubor prázdný?
 mail_noenv=Nastavit $MAIL ystémovou proměnnou?
 mail_dir=Spool adresář pro mail
 mail_edir=Chybějící nebo nesprávný spoll adresář pro mail
+
 stack_service=Přeskočit kontrolu pro PAM službu
+
 log_pam_create=Vytvořena PAM služba $1
 log_pam_delete=Smazána PAM služba $1
 log_mod_create=Přidán PAM modul $1 pve službě $2

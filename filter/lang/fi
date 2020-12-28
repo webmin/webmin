@@ -27,6 +27,7 @@ index_aliasme=Note - The system is also configured forward all email to :
 index_period=Automaattisten vastausten välinen minimiaika
 index_noperiod=Ei minimiä
 index_mins=minuuttia
+
 edit_title1=Luo suodatin
 edit_title2=Muokkaa suodatinta
 edit_header1=Suodattimen ehto

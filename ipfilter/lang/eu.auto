@@ -43,8 +43,10 @@ index_natnone=Oraindik ez dira sareko helbideen itzulpen arauak zehaztu.
 index_nataction=NAT modua
 index_natfrom=Bat egiteko paketeak
 index_natto=Itzulpena
+
 dir_in=Sarrerako
 dir_out=Irteerako
+
 action_pass=<font color=#00aa00>Pasatu</font>
 action_block=<font color=#ff0000>Blokea</font>
 action_skip=jauzi
@@ -57,6 +59,7 @@ action_map=Mapping
 action_rdr=redirect
 action_bimap=Biderazioaren kartografia
 action_map-block=Blokeen mapeketa
+
 laction_pass=<font color=#00aa00>Pasatu paketea</font>
 laction_block=<font color=#ff0000>Blokeatu paketea, ICMP kodea</font> rekin
 laction_log=Erregistro paketea, mailan
@@ -65,6 +68,7 @@ laction_skip=Saltatu hurrengo arauak
 laction_auth=Erabiltzaile-espazioaren baimena
 laction_preauth=Egiaztatu aurreko baimena
 laction_call=Deitu nukleoaren funtzioa
+
 edit_title1=Sortu araua
 edit_title2=Editatu araua
 edit_header1=Arauaren ekintza
@@ -130,6 +134,7 @@ edit_icmp=ICMP motakoa
 edit_icmpany=&lt;Edozein motatakoa&gt;
 edit_icmpcode=eta kodea
 edit_codeany=&lt;Edozein kode&gt;
+
 save_err=Huts egin du araua gordetzean
 save_ehostfrom=Iturburu-ostalariaren izen falta edo baliogabea
 save_ehostto=Helmuga ostalariaren izen falta edo baliogabea
@@ -158,11 +163,13 @@ save_eto=Interfazea falta edo baliogabea da bidaltzeko
 save_etoip=IP helbide baliogabea bidaltzeko
 save_ereplyto=Interfazea falta edo baliogabea da erantzuteko
 save_ereplytoip=IP helbide baliogabea
+
 apply_err=Ezin izan da konfigurazioa aplikatu
 apply_remote=Errorea $1 : $2 -tik
 unapply_err=Ezin izan da konfigurazioa berrabiarazi
 unapply_ein=Ezin izan da sarrera-arauak eskuratu
 unapply_eout=Ezin izan da irteera-arauak eskuratu
+
 desc_if=$1 bada
 desc_and=eta
 desc_always=beti
@@ -196,6 +203,7 @@ desc_rdr=IP helbideak $1 ataka $2
 desc_dport1=portua $1 da
 desc_dport2=portua $1 eta $2 artean dago
 desc_nattoiface=interfazearen helbidea
+
 log_create_rule=$1 araua sortu da
 log_delete_rule=$1 araua ezabatu da
 log_modify_rule=$1 araua aldatu da
@@ -224,6 +232,7 @@ log_add_host=$1 cluster zerbitzaria gehitu da
 log_add_group=$1 taldeko kluster zerbitzariak gehitu dira
 log_delete_host=$1 cluster zerbitzaria kendu da
 log_delete_group=$1 kluster zerbitzariak kendu dira
+
 cluster_title=Firewall Zerbitzari klusterrak
 cluster_none=Ez da oraindik zerbitzaririk gehitu firewall klusterra.
 cluster_host=hostname
@@ -234,6 +243,7 @@ cluster_gadd=Gehitu zerbitzariak taldean
 cluster_need=Saioa hasi eta pasahitza duten zerbitzariak gehitu behar dituzu Webmin Servers Index moduluan hemen kudeatu aurretik.
 cluster_return=kluster zerbitzariak
 cluster_delete=Kendu Hautatuta
+
 add_title=Gehitu zerbitzariak
 add_msg=$1 gehitzen ..
 add_gmsg=Zerbitzariak gehitzen $1 taldean.
@@ -242,6 +252,7 @@ add_gerr=Ezin izan da taldea gehitzean
 add_echeck=$1 zerbitzariak ez du IPFilter Firewall modulurik
 add_emissing=$1 zerbitzaria $2 firewall komandoa falta da
 add_ok=$1 gehitu da, $2 firewall arau aktiboekin.
+
 nat_title1=Sortu NAT araua
 nat_title2=Editatu NAT araua
 nat_action=NAT modua
@@ -300,4 +311,5 @@ nat_edport2=Falta edo baliogabea da jatorrizko portua amaitzea
 net_erdrip='$1' ez da helmuga baliozko IP helbidea
 nat_erdrips=Ez da helburuko IPrik sartu
 nat_erdrport=Helmugako ataka falta edo baliogabea
+
 boot_esmf=$1 SMF zerbitzua ez dago edo ez dago egoera ezagun batean

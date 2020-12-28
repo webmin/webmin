@@ -5,6 +5,7 @@ index_user=Promijeni lozinku za korisnika:
 index_euseradmin=Ovaj modul ne može biti korišten jer KOrisnici i Grupe modula nisu instalirani ili nemaju potporu na Vašem sustavu.
 index_toomany=Previše je korisnika na Vašem sustavu za prikaz. Unesite iznad naziv korisnika čiju lozinku želite promijeniti..
 index_none=Nemate pravo mijenjati lozinku ni jednog korisnika.
+
 passwd_title=Promijeni Lozinku
 passwd_header=Mijenjam Unix korisničku lozinku
 passwd_for=Mijenjam lozinku za
@@ -23,7 +24,9 @@ passwd_erepeat=Nove lozinke nisu jednake
 passwd_ecmd=$1 neuspjelo : $2
 passwd_ok=Lozinka zabkorisnika $1 uspješno je promijenjena. Ako je ovo vaš trenutni Webmin korisnik, možda ćete se morati ponovno prijaviti. 
 passwd_ok2=Lozinka za korisnika $1 usoješno je promijenjena.
+
 log_passwd=Promijeni lozinku za korisnika $1
+
 acl_repeat=Morate unijeti novu lozinku ponovno?
 acl_old=Morate unijeti staru lozinku?
 acl_old_this=Samo za druge korisnike

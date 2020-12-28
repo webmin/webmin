@@ -65,6 +65,7 @@ index_checkconfig=Make sure that the chroot directory is set correctly on the <a
 index_eexpired=Warning : The following zones have expired DNSSEC signatures : $1
 index_eexpired_conf=Automatic signing should be re-enabled on the $1 page.
 index_eexpired_mod=Use the $1 module to either disable DNSSEC for these domains, or check why signing is failing.
+
 master_title=ماسٹر زون میں ترمیم کریں
 master_inview=$1 ملاحظہ میں$2
 master_ecannot=آپ کو اس زون میں ترمیم کرنے کی اجازت نہیں ہے
@@ -146,6 +147,7 @@ master_defttl=پہلے سے طے شدہ ریکارڈوں کے لئے وقت رہ
 master_edefttl='$1' is not a valid default time-to-live for records
 master_esoagone=ایس او اے کا کوئی ریکارڈ نہیں ملا!
 master_einclude=اضافی ٹیمپلیٹ فائل موجود نہیں ہے
+
 delete_title=زون کو حذف کریں
 delete_mesg=Are you sure you want to delete the zone $1 ? All records and the zone file will be deleted.
 delete_mesg2=کیا آپ واقعی روٹ زون کو حذف کرنا چاہتے ہیں؟ ہوسکتا ہے کہ آپ کا DNS سرور انٹرنیٹ پر پتے تلاش کرنے کے قابل نہ ہو۔
@@ -157,6 +159,7 @@ delete_errslave=Master zone deleted OK, but the following errors occurred on sla
 delete_ezone=غلام سرور پر زون نہیں ملا
 delete_vwarn=یہ زون ورچوئل مین ڈومین$1 کے ساتھ وابستہ ہے ، اور اسی لئے یہاں حذف نہیں ہونا چاہئے!
 delete_vwarn2=یہ زون ورچوئل مین ڈومین$1 اور$2 دیگر کے ساتھ وابستہ ہے ، اور اس لئے یہاں حذف نہیں ہونا چاہئے!
+
 mcreate_title=ماسٹر زون بنائیں
 mcreate_ecannot=آپ ماسٹر زون نہیں بنا سکتے
 mcreate_opts=ماسٹر زون کے نئے اختیارات
@@ -171,6 +174,7 @@ mcreate_auto=خودکار
 mcreate_err=ماسٹر زون بنانے میں ناکام
 mcreate_ednssecsize=Failed to compute key size : $1
 mcreate_ednssec=Record creation succeeded, but DNSSEC failed : $1
+
 slave_title=غلام زون میں ترمیم کریں
 stub_title=اسٹب زون میں ترمیم کریں
 slave_ecannot=آپ کو اس زون میں ترمیم کرنے کی اجازت نہیں ہے
@@ -202,6 +206,7 @@ slave_applymsg2=ماسٹر سرور سے زون کی دوبارہ منتقلی �
 slave_last=Last transferred : $1
 slave_never=کبھی نہیں
 slave_xfer=ٹیسٹ زون کی منتقلی
+
 screate_title1=غلام زون بنائیں
 screate_title2=اسٹب زون بنائیں
 screate_ecannot1=آپ کو غلام زون بنانے کی اجازت نہیں ہے
@@ -214,6 +219,7 @@ screate_rev=الٹ (ناموں کے پتے)
 screate_dom=ڈومین کا نام / نیٹ ورک
 screate_err1=غلام زون بنانے میں ناکام
 screate_err2=اسٹب زون بنانے میں ناکام
+
 recs_ecannot=آپ کو اس زون میں ریکارڈوں میں ترمیم کرنے کی اجازت نہیں ہے
 recs_ecannottype=آپ کو اس قسم کے ریکارڈوں میں ترمیم کرنے کی اجازت نہیں ہے
 recs_title=$1 Records
@@ -231,6 +237,7 @@ recs_drev=الٹ بھی حذف کریں؟
 recs_none=The domain does not have any $1 records yet.
 recs_nosearch=کوئی ریکارڈ آپ کی تلاش سے مماثل نہیں ہے۔
 recs_needsearch=مماثل ریکارڈ تلاش کرنے کے لئے تلاش درج کریں۔
+
 edit_title=Edit $1
 edit_header=In $1
 edit_edit=Edit $1 Record
@@ -306,6 +313,7 @@ edit_edmarcpct=پیغامات کی فی صد 0 اور 100 کے درمیان ای
 edit_edmarcrua=غائب مجموعی تاثرات کا پتہ
 edit_edmarcruf=غیر قانونی معلومات کا پتہ غائب ہے
 edit_ecaavalue2=غائب یا غلط نظر آنے والا ڈومین نام
+
 text_title=ریکارڈ فائل میں ترمیم کریں
 text_title2=ریکارڈ فائل دیکھیں
 text_desc3=This form allows you to manually edit the DNS records file $1. No syntax checking will be done by Webmin.
@@ -315,6 +323,7 @@ text_ecannot=آپ کو ریکارڈ فائلوں میں ترمیم کرنے کی
 text_none=تاہم فی الحال فائل خالی ہے ، شاید اس لئے کہ زون ابھی ماسٹر سرور سے منتقل نہیں ہوا ہے۔
 text_soa=سیریل نمبر خود بخود بڑھائیں
 text_rawformat=یہ زون خام ثنائی شکل میں ہے ، اور اسی طرح اسے متن کے بطور ظاہر نہیں کیا جاسکتا۔
+
 restart_err=تبدیلیاں لاگو کرنے میں ناکام
 restart_ecannot=آپ کو BIND دوبارہ شروع کرنے کی اجازت نہیں ہے
 restart_epidfile=Could not find BIND PID in $1
@@ -323,10 +332,12 @@ restart_erunning2=BIND does not appear to be running on the slave server $1
 restart_endc=NDC command failed : $1
 restart_ecmd=Restart command failed : $1
 restart_eversion=Slave server $1 is not running Webmin version $2 or above.
+
 start_ecannot=آپ کو BIND شروع کرنے کی اجازت نہیں ہے
 start_error=Failed to start BIND : $1
 stop_epid=BIND نہیں چل رہا ہے
 stop_ecannot=آپ کو BIND روکنے کی اجازت نہیں ہے
+
 fwd_title=فارورڈ زون میں ترمیم کریں
 fwd_ecannot=آپ کو اس زون میں ترمیم کرنے کی اجازت نہیں ہے
 fwd_opts=زون کے اختیارات
@@ -335,12 +346,14 @@ fwd_forward=دوسرے سرور آزمائیں؟
 fwd_check=نام چیک کریں؟
 fwd_err=اختیارات کو بچانے میں ناکام
 fwd_delmsg=اپنے DNS سرور سے اس زون کو حذف کرنے کے لئے اس بٹن پر کلک کریں۔ اس کے بعد اس میں موجود ریکارڈز کو معمول کے حل کے عمل کو استعمال کرتے ہوئے دیکھا جائے گا۔
+
 delegation_title=وفد کے زون میں ترمیم کریں
 delegation_ecannot=آپ کو اس زون میں ترمیم کرنے کی اجازت نہیں ہے
 delegation_opts=زون کے اختیارات
 delegation_err=اختیارات کو بچانے میں ناکام
 delegation_noopts=وفد کے زونوں کے پاس ترتیب کے قابل کوئی اختیارات نہیں ہیں۔
 delegation_delmsg=اپنے DNS سرور سے اس زون کو حذف کرنے کے لئے اس بٹن پر کلک کریں۔ اس میں NS کے علاوہ کسی اور طرح کی اقسام BIND کے ذریعہ پہچانی جائیں گی۔
+
 fcreate_title=فارورڈ زون بنائیں
 fcreate_ecannot=آپ کو فارورڈ زون بنانے کی اجازت نہیں ہے
 fcreate_opts=نئے فارورڈ زون کے اختیارات
@@ -350,10 +363,12 @@ fcreate_rev=الٹ (ناموں کے پتے)
 fcreate_dom=ڈومین کا نام / نیٹ ورک
 fcreate_masters=ماسٹر سرورز
 fcreate_err=فارورڈ زون بنانے میں ناکام
+
 dcreate_title=وفد صرف زون بنائیں
 dcreate_ecannot=آپ کو وفد کے زون بنانے کی اجازت نہیں ہے
 dcreate_opts=نئے وفد کے زون کے اختیارات
 dcreate_err=وفد کا زون بنانے میں ناکام
+
 create_enet='$1' is not a valid network
 create_edom='$1' is not a valid domain name
 create_edom2='$1' must be a domain, not a network
@@ -363,9 +378,11 @@ create_efile3=Failed to create '$1' : $2
 create_efile4=File $1 already exists
 create_emaster='$1' is not a valid master server address
 create_enone=آپ کو کم از کم ایک ماسٹر سرور درج کرنا ہوگا
+
 boot_err=ڈاؤن لوڈ ناکام
 boot_egzip=The root zone file is compressed, but the <tt>gzip</tt> command is not installed on your system!
 boot_egzip2=Uncompression of root zone file failed : $1
+
 type_A=پتہ
 type_AAAA=IPv6 ایڈریس
 type_NS=نام سرور
@@ -386,6 +403,7 @@ type_SRV=خدمت کا پتہ
 type_ALL=تمام ریکارڈ کی اقسام
 type_KEY=عوامی کلید
 type_CAA=سرٹیفکیٹ اتھارٹی
+
 edit_A=پتہ
 edit_AAAA=IPv6 ایڈریس
 edit_NS=نام سرور
@@ -405,6 +423,7 @@ edit_NSEC3PARAM=DNSSEC پیرامیٹرز
 edit_TLSA=SSL سرٹیفکیٹ
 edit_SSHFP=ایس ایس ایچ پبلک کی
 edit_CAA=سرٹیفکیٹ اتھارٹی
+
 recs_defttl=ڈیفالٹ ٹی ٹی ایل
 recs_A=پتہ
 recs_AAAA=IPv6 ایڈریس
@@ -427,6 +446,7 @@ recs_TLSA=SSL سرٹیفکیٹ
 recs_SSHFP=ایس ایس ایچ پبلک کی
 recs_CAA=سرٹیفکیٹ اتھارٹی
 recs_delete=منتخب کردہ کو حذف کریں
+
 value_A1=پتہ
 value_AAAA1=IPv6 ایڈریس
 value_NS1=نام سرور
@@ -503,6 +523,7 @@ value_CAA3=CA ڈومین نام
 value_caa_issue=ایک ڈومین سند
 value_caa_issuewild=وائلڈ کارڈ سند
 value_caa_iodef=پالیسی کی خلاف ورزی کا URL
+
 tlsa_usage0=سرٹیفکیٹ اتھارٹی
 tlsa_usage1=آخر ہستی
 tlsa_usage2=ٹرسٹ اینکر
@@ -512,12 +533,14 @@ tlsa_selector1=عوامی کلیدی معلومات
 tlsa_match0=ناشدہ مشمولات
 tlsa_match1=SHA-256 نے ہیش کیا
 tlsa_match2=SHA-512 نے ہیش کیا
+
 sshfp_alg1=آر ایس اے
 sshfp_alg2=ڈی ایس اے
 sshfp_alg3=ای سی ڈی ایس اے
 sshfp_alg4=ایڈ 25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 warn=انتباہ
 fail=ناکامی
 ignore=نظر انداز کریں
@@ -531,6 +554,7 @@ listed=درج ..
 eip='$1' is not a valid IP address
 eport='$1' is not a valid port number
 eipacl='$1' is not a valid IP address or ACL name
+
 acl_zones=ڈومینز جس میں یہ صارف ترمیم کرسکتا ہے
 acl_zall=تمام زون
 acl_zsel=منتخب زون ..
@@ -575,6 +599,7 @@ acl_ztypes_master=ماسٹر
 acl_ztypes_slave=غلام / ضد
 acl_ztypes_delegation=وفد
 acl_ztypes_forward=آگے
+
 servers_title=دوسرے DNS سرورز
 servers_ip=IP پتہ
 servers_bogus=بوگس سرور کو نظرانداز کریں؟
@@ -586,6 +611,7 @@ servers_keys=DNS چابیاں استعمال کریں
 servers_err=دوسرے DNS سرورز کو محفوظ کرنے میں ناکام
 servers_eip='$1' is not a valid IP address
 servers_etrans='$1' is not a valid number of maximum transfers
+
 logging_title=لاگنگ اور نقائص
 logging_ecannot=آپ کو لاگنگ کی تشکیل کی اجازت نہیں ہے
 logging_header=عالمی لاگنگ اور غلطی کے اختیارات
@@ -624,6 +650,7 @@ logging_efile=لاپتہ فائل کا نام
 logging_efile2=لاگ فائل نام ایک مطلق راستہ ہونا چاہئے
 logging_ever='$1' is not a valid number of versions
 logging_esize='$1' is not a valid log size
+
 acls_title=کنٹرول لسٹس تک رسائی حاصل کریں
 acls_ecannot=آپ کو عالمی acls میں ترمیم کرنے کی اجازت نہیں ہے
 acls_name=ACL نام
@@ -631,6 +658,7 @@ acls_values=ملاپ کے پتے ، نیٹ ورکس اور ACLs
 acls_err=رسائی کنٹرول کی فہرستوں کو بچانے میں ناکام
 acls_ename='$1' is not a valid ACL name
 acls_eline=Each IP address must be entered on a separate line for ACL '$1'
+
 files_title=فائلیں اور ڈائرکٹریاں
 files_ecannot=آپ کو فائلوں کو ترتیب دینے کی اجازت نہیں ہے
 files_header=عالمی فائلوں اور ڈائریکٹریوں کے اختیارات
@@ -640,6 +668,7 @@ files_pid=عمل ID فائل
 files_xfer=زون ٹرانسفر پروگرام کا راستہ
 files_err=فائلوں اور ڈائریکٹریوں کے اختیارات کو بچانے میں ناکام
 files_efile=غائب یا غلط فائل نام
+
 forwarding_title=فارورڈنگ اور ٹرانسفر
 forwarding_ecannot=آپ کو فارورڈنگ اور منتقلی کے اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
 forwarding_header=عالمی منتقلی اور زون کی منتقلی کے اختیارات
@@ -658,6 +687,7 @@ forwarding_etrans=لاپتہ یا زیادہ سے زیادہ سمورتی ٹرا
 forwarding_minutes=منٹ
 forwarding_ip=IP پتہ
 forwarding_port=پورٹ
+
 net_title=پتے اور ٹوپولاجی
 net_ecannot=آپ کو ایڈریس اور ٹوپولاجی کے اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
 net_header=عالمی ایڈریس اور ٹوپولاجی کے اختیارات
@@ -683,6 +713,7 @@ net_taddrdef=قریب ترین IP
 net_etport=کسی ایڈریس کے بغیر ٹرانسفر سورس پورٹ کی وضاحت نہیں کی جاسکتی
 net_eaddr='$1' is not a valid IPv4 address
 net_eaddr6='$1' is not a valid IPv6 address
+
 controls_title=انٹرفیس کے اختیارات کو کنٹرول کریں
 controls_ecannot=آپ کو اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
 controls_header=کنٹرول کے اختیارات
@@ -704,6 +735,7 @@ controls_eunixpath=FIFO فائل کا راستہ غائب یا غلط
 controls_eunixperm=اوکٹل فائل کی اجازتیں غائب یا غلط ہیں
 controls_eunixowner=گمشدہ یا غلط فائل مالک
 controls_eunixgroup=گمشدہ یا غلط فائل گروپ
+
 controls_inet=انٹرنیٹ پورٹ تک رسائی
 controls_unix=یونکس فیفو تک رسائی
 controls_port=بندرگاہ
@@ -717,6 +749,7 @@ controls_efile=FIFO فائل کا نام غائب یا غلط ہے
 controls_eperms=FIFO اجازتیں یا گم شدہ
 controls_eowner=لاپتہ یا غلط FIFO مالک UID
 controls_egroup=FIFO مالک GID لاپتہ یا غلط
+
 keys_title=ڈی این ایس کیز
 keys_id=کلیدی شناخت
 keys_alg=الگورتھم
@@ -725,6 +758,7 @@ keys_ecannot=آپ کو DNS چابیاں میں ترمیم کرنے کی اجاز
 keys_err=ڈی این ایس کیز کو محفوظ کرنے میں ناکام
 keys_ekey='$1' is not a valid key ID
 keys_esecret=Missing or invalid base-64 encoded secret for key $1
+
 misc_title=متفرق اختیارات
 misc_ecannot=آپ کو متفرق اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
 misc_header=متنوع عالمی اختیارات
@@ -744,6 +778,7 @@ misc_esize='$1' is not a valid size
 misc_efiles='$1' is not a valid number of maximum open files
 misc_emins='$1' is not a valid number of minutes
 misc_mins=منٹ
+
 zonedef_title=زون ڈیفالٹس
 zonedef_msg=نئے ماسٹر زون کے لئے پہلے سے طے شدہ
 zonedef_err=زون ڈیفالٹس کو بچانے میں ناکام
@@ -767,10 +802,13 @@ zonedef_size=ابتدائی کلیدی سائز
 zonedef_single=چابیاں بنانے کی تعداد
 zonedef_two=زون کی اور کلید دستخط کرنے والی کلید
 zonedef_one=صرف زون کی
+
 find_title=زون تلاش کریں
 find_match=Zones matching $1 ..
 find_none=کوئی زون نہیں ملا۔
+
 efirst=Bad first directive at line $1 in $2
+
 findfree_title=مفت IP تلاش کریں
 findfree_desc=مفت IP تلاش کریں
 findfree_nofind=آپ مفت IP تلاش نہیں کرسکتے ہیں
@@ -782,8 +820,10 @@ findfree_cf=Consider <em>freeXXX</em> hostnames as free IPs?
 findfree_search=تلاش کریں
 findfree_msg=Found $1 free IP addresses
 findfree_msg2=(of which $1 are like <i>freeXXX</i>, $2 like <i>freemac</i>)
+
 free_title=مفت IP پتے
 free_ip=IP پتہ
+
 log_servers=دوسرے DNS سرورز کو تبدیل کر دیا گیا
 log_logging=لاگ ان اور غلطیاں تبدیل ہوگئیں
 log_acls=تبدیل کنٹرول لائن کی فہرستیں
@@ -840,14 +880,17 @@ log_sign=Updated DNSSEC signatures for zone $1
 log_resign=Re-signed DNSSEC key for zone $1
 log_trusted=تبدیل DNSSEC توثیق
 log_dnssec=DNSSEC کلید پر دوبارہ دستخط تبدیل کریں
+
 convert_err=زون میں تبدیلی کرنے میں ناکام
 convert_efile=اس سے پہلے کہ ایک غلام زون کو ماسٹر میں تبدیل کیا جاسکے ، ایک ریکارڈ فائل کی وضاحت کی جانی چاہئے۔
 convert_efilesize=Records file $1 does not exist or is empty
 convert_ebinary=بائنری غلام زون سے ٹیکسٹ فارمیٹ ماسٹر میں تبدیل کرنے کے لئے درکار کمانڈ انسٹال نہیں ہے
 convert_ecompile=Binary to text format conversion failed : $1
+
 whois_title=WHOIS معلومات
 whois_header=Output from command $1 ..
 whois_ecannot=آپ کو WHOIS معلومات دیکھنے کی اجازت نہیں ہے
+
 view_title=کلائنٹ کے نظارے میں ترمیم کریں
 view_opts=کلائنٹ کے نظارے کی تفصیلات
 view_opts2=نقطہ نظر میں زون کے لئے اختیارات
@@ -858,6 +901,7 @@ view_recursion=کیا موکلوں کے لئے مکمل تکرار کی تلاش
 view_ecannot=آپ کو اس نظارے میں ترمیم کرنے کی اجازت نہیں ہے
 view_delete=منظر کو حذف کریں
 view_deletemsg=نقطہ نظر کو حذف کرنے کے لئے اس بٹن پر کلک کریں۔ آپ کے پاس متحرک زون کا انتخاب ہوگا جس میں اس میں ایک اور نظریہ شامل ہے ، یا انہیں حذف کرنا بھی ہے۔
+
 vcreate_title=کلائنٹ کا نظارہ بنائیں
 vcreate_match_all=تمام مؤکل
 vcreate_match_sel=درج پتے ، نیٹ ورک اور ACLs ..
@@ -866,6 +910,7 @@ vcreate_ename=لاپتہ یا نامعلوم نام
 vcreate_etaken=نام دیکھیں پہلے ہی لیا گیا ہے
 vcreate_eclass=کلاس کا نام غائب ہے
 vcreate_ecannot=آپ کو آراء بنانے کی اجازت نہیں ہے
+
 hint_title=روٹ زون میں ترمیم کریں
 hint_desc=The root zone is used by your DNS server to contact the root servers on the internet, so that it can resolve names in domains not handled by your DNS server, like <tt>.com</tt> or <tt>.net.au</tt>. Unless your DNS server is for use on an internal network or you are forwarding all queries to another server, you should not delete this root zone.
 hint_move=دیکھنے کیلئے منتقل کریں:
@@ -874,6 +919,7 @@ hint_refetch=جڑ نامسرس کو دوبارہ ڈاؤن لوڈ کریں
 hint_refetchdesc=انٹرمین ایف ٹی پی سرور پر موجود ویب سائٹ کے ذریعہ سے روٹ زون فائل کو دوبارہ ڈاؤن لوڈ کرنے کے ل this اس بٹن پر کلک کریں۔
 hint_delete=روٹ زون کو حذف کریں
 hint_deletedesc=اس جڑ زون کو دور کرنے کے لئے اس بٹن پر کلک کریں۔ اس کے بغیر ، آپ کا نام محفوظ کرنے والا انٹرنیٹ پر ڈومینز کو حل کرنے کے قابل نہیں ہوگا اس کے علاوہ کہ یہ ثانوی ہے۔
+
 hcreate_title=روٹ زون بنائیں
 hcreate_desc=The root zone is used by your DNS server to contact the root servers on the internet, so that it can resolve names in domains not handled by your DNS server, like <tt>.com</tt> or <tt>.net.au</tt>. If you are using multiple views, you may need to have a separate root zone in each view so that all clients can resolve internet domains properly.
 hcreate_header=روٹ زون کی تفصیلات
@@ -887,6 +933,7 @@ hcreate_efile='$1' is not an allowable root file
 hcreate_efile2=گم شدہ یا غلط روٹ فائل
 mcreate_erecs=ایک صحیح روٹ زون فائل نہیں ہے
 hcreate_err=روٹ زون بنانے میں ناکام
+
 vdelete_title=منظر کو حذف کریں
 vdelete_mesg=Are you sure you want to delete the client view $1 ? All the zones in this view will either be deleted (along with their zone files) or moved to another view depending on your selection below.
 vdelete_mesg2=Are you sure you want to delete the client view $1 ?
@@ -894,6 +941,7 @@ vdelete_newview=اس قول کے اندر زونز
 vdelete_root=خیالات سے ہٹ جائیں
 vdelete_delete=مکمل طور پر حذف کریں
 vdelete_move=دیکھنے کے ل Move منتقل کریں
+
 gen_title=ریکارڈ بنانے والے
 gen_desc=یہ صفحہ آپ کو جنریٹرز کی وضاحت کرنے کی اجازت دیتا ہے ، جن میں سے ہر ایک بڑھتے ہوئے کاؤنٹر کا استعمال کرکے اس زون میں متعدد ریکارڈ تخلیق کرے گا۔ یہ ریورس زون کے کچھ حصوں کو کسی دوسرے سرور کے حوالے کرنے کے لئے کارآمد ثابت ہوسکتا ہے۔
 gen_range=رینج
@@ -913,7 +961,9 @@ gen_evalue=Missing or invalid hostname pattern for generator $1
 gen_title2=پیدا ریکارڈ
 gen_raw=فائل لائن تشکیل دیں
 gen_ecannot=آپ کو ریکارڈ جنریٹرز میں ترمیم کرنے کی اجازت نہیں ہے
+
 refetch_err=روٹ زون کو دوبارہ ڈاؤن لوڈ کرنے میں ناکام
+
 slaves_title=کلسٹر غلام سرورز
 slaves_none=ابھی تک DNS کلسٹر میں کوئی سرور شامل نہیں کیا گیا ہے۔
 slaves_host=میزبان کا نام
@@ -941,6 +991,7 @@ slaves_sec=مقامی طور پر تخلیق کرتے وقت غلام پر سی�
 slaves_name=این ایس ریکارڈ کے لئے نام
 slaves_same=میزبان نام کی طرح
 slaves_header=کلسٹر غلام سرور کے اختیارات
+
 add_title=سرورز شامل کریں
 add_msg=Adding $1 ..
 add_gmsg=Adding servers in group $1 ..
@@ -958,6 +1009,7 @@ add_createok=Setup $1 with $2 new slave zones.
 add_ename=این ایس ریکارڈ نام غائب یا غلط
 add_egname=کسی گروپ کو شامل کرتے وقت این ایس ریکارڈ نام کی وضاحت نہیں کی جاسکتی ہے
 add_emyip=Could not work out this system's IP address. You should set the <b>Default master server IP for remote slave zones</b> on the Module Config page.
+
 mass_title=بیچ فائل سے زون بنائیں
 mass_desc=This page allows you to create multiple zones at once from an uploaded or server-side text file. Each line in the file must have the following format:<p></p><tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt><p></p>The <i>type</i> must be one of <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> or <tt>forward</tt>. The <i>filename</i> is optional, and will be computed automatically if missing. The <i>master IPs</i> only need to be given for slave zones.
 mass_local=مقامی بیچ فائل
@@ -989,6 +1041,7 @@ mass_emips=لاپتہ ماسٹر IP پتے
 mass_addedslaves=Added $1 to slave servers OK.
 mass_eonslave=Errors occurred created on slave servers : $1
 mass_eviewcannot=آپ کو اس نظارے میں زون شامل کرنے کی اجازت نہیں ہے
+
 massdelete_title=زونز کو حذف کریں
 massdelete_rusure=Are you sure you want to delete the $1 selected zones? ($2)
 massdelete_ok=ابھی حذف کریں
@@ -998,6 +1051,7 @@ massdelete_slaves=Deleting zone $1 from slave servers ..
 massdelete_failed=.. کچھ غلام ناکام ہوگئے :
 massdelete_vwarn=کچھ زونز ورچوئل مین ڈومین$1 کے ساتھ وابستہ ہیں ، اور اس لئے یہاں حذف نہیں ہونا چاہئے!
 massdelete_vwarn2=کچھ زونز ورچوئل مین ڈومین$1 اور$2 دیگر کے ساتھ وابستہ ہیں ، اور اس لئے یہاں حذف نہیں ہونا چاہئے!
+
 rndc_title=RNDC سیٹ اپ کریں
 rndc_desc=اس صفحے کو RNDC پروگرام کے ذریعہ BIND کو کنٹرول کے ل set استعمال کیا جاسکتا ہے ، تاکہ انفرادی زون کو مکمل BIND دوبارہ شروع کرنے کی ضرورت کے بغیر تازہ دم کیا جاسکے۔
 rndc_desc2=ایسا لگتا ہے کہ RNDC پہلے سے ٹھیک طرح سے ترتیب دیا گیا ہے ، لہذا آپ کو شاید یہ فارم استعمال کرنے کی ضرورت نہیں ہے۔
@@ -1008,11 +1062,13 @@ rndc_ok=ہاں ، آر این ڈی سی سیٹ اپ کریں
 rndc_err=RNDC ترتیب دینے میں ناکام
 rndc_ekey=rndc.conf میں کلید نہیں مل سکی
 rndc_esecret=rndc.conf میں خفیہ نہیں مل سکا
+
 drecs_err=ریکارڈز کو حذف کرنے میں ناکام
 drecs_enone=کوئی بھی منتخب نہیں ہوا
 drecs_title=ریکارڈز کو حذف کریں
 drecs_rusure=Are you sure you want to delete the $1 selected records from $2?
 drecs_ok=ابھی حذف کریں
+
 manual_title=کنفگ فائل میں ترمیم کریں
 manual_ecannot=آپ کو BIND کنفگ فائل میں ترمیم کرنے کی اجازت نہیں ہے
 manual_ok=ترمیم
@@ -1020,7 +1076,9 @@ manual_efile=منتخب فائل BIND کنفیگریشن کا حصہ نہیں ہ
 manual_file=کنفگ فائل میں ترمیم کریں:
 manual_edata=کچھ داخل نہیں ہوا!
 manual_err=کنفگ فائل کو محفوظ کرنے میں ناکام
+
 syslog_desc=BIND DNS سرور پیغامات
+
 umass_err=زون کو اپ ڈیٹ کرنے میں ناکام
 umass_enone=کوئی بھی منتخب نہیں ہوا
 umass_title=زون میں ریکارڈ کو اپ ڈیٹ کریں
@@ -1039,6 +1097,7 @@ umass_done=.. updated $1 matching records out of $2.
 umass_none=.. no matching records out of $1 to update found.
 umass_egone=زون موجود نہیں ہے
 emass_emx='$1' is not a mail server priority number followed by a valid hostname
+
 rdmass_err=زون میں ریکارڈز کو حذف کرنے میں ناکام
 rdmass_enone=کوئی بھی منتخب نہیں ہوا
 rdmass_title=زون میں ریکارڈز کو حذف کریں
@@ -1055,6 +1114,7 @@ rdmass_done=.. deleted $1 matching records out of $2.
 rdmass_none=.. no matching records out of $1 to delete found.
 rdmass_ok=ریکارڈز کو حذف کریں
 rdmass_sel=ریکارڈ رکھے گئے
+
 rmass_err=ریکارڈ شامل کرنے میں ناکام
 rmass_enone=کوئی بھی منتخب نہیں ہوا
 rmass_title=زون میں ریکارڈ شامل کریں
@@ -1074,18 +1134,22 @@ rmass_esign=.. done, but signing failed : $1
 rmass_eclash=.. a record with the same name and value $1 already exists.
 rmass_eclash2=.. a record with the same name and the same value $1 already exists.
 rmass_clash=چاہے ریکارڈ پہلے سے موجود ہو؟
+
 check_title=ریکارڈ چیک کریں
 check_ecannot=آپ کو ریکارڈ چیک کرنے کی اجازت نہیں ہے
 check_errs=The following errors were found in the records file $1 ..
 check_allok=No errors were found in the records file $1.
+
 ncheck_title=BIND تشکیل چیک کریں
 ncheck_ecannot=آپ کو BIND کنفیگریشن چیک کرنے کی اجازت نہیں ہے
 ncheck_errs=The following errors were found in the BIND configuration file $1 or referenced zone files ..
 ncheck_allok=No errors were found in the BIND configuration file $1 or referenced zone files.
+
 links_restart=ترتیب کا اطلاق کریں
 links_stop=بند کرو
 links_start=BIND شروع کریں
 links_apply=زون کا اطلاق کریں
+
 dnssec_title=DNSSEC کلید پر دوبارہ دستخط کرنا
 dnssec_ecannot=آپ کو DNSSEC تشکیل کرنے کی اجازت نہیں ہے
 dnssec_header=کلید پر دوبارہ دستخط کرنے کے اختیارات
@@ -1096,6 +1160,7 @@ dnssec_secs=سیکنڈ
 dnssec_desc=DNSSEC کے ساتھ دستخط شدہ زونوں میں عام طور پر دو بٹنیں ہوتی ہیں۔ ایک زون کی کلی جس کو دوبارہ تیار کرنا چاہئے اور باقاعدگی سے اس پر دستخط کرنا ضروری ہے ، اور ایک کلیدی دستخطی کلید جو مستقل رہتی ہے۔ یہ صفحہ آپ کو خود بخود دوبارہ دستخط کرنے کے ل Web ویبمین کو ترتیب دینے کی سہولت دیتا ہے۔
 dnssec_err=DNSSEC کلید پر دوبارہ دستخط کرنے سے بچانے میں ناکام
 dnssec_eperiod=دوبارہ علامتوں کے مابین دن کی گمشدگی یا غلط تعداد
+
 dnssectools_title=DNSSEC - ٹولز آٹومیشن
 dt_conf_title=DNSSEC - ٹولز آٹومیشن
 dt_enable_title=DNSSEC - ٹولز آٹومیشن
@@ -1160,6 +1225,7 @@ dt_status_inKSKroll=کے ایس کے رول میں
 dt_status_inZSKroll=زیڈ ایس کے رول میں
 dt_status_signed=دستخط شدہ
 dt_status_unsigned=دستخط شدہ
+
 zonekey_title=DNSSEC کلید کو سیٹ اپ کریں
 zonekey_desc=اس زون میں ابھی تک DNSSEC پر دستخط کرنے کی کلید موجود نہیں ہے۔ آپ ویب فارم کو بنانے کے ل one اس فارم کو استعمال کرسکتے ہیں ، تاکہ اس زون کو حل کرنے والے مؤکلین DNS سپوفنگ حملوں سے محفوظ رہیں۔
 zonekey_header=نئے DNSSEC کلیدی اختیارات
@@ -1193,9 +1259,12 @@ zonekey_sign=سائن زون
 zonekey_signdesc=فوری طور پر اس زون پر دوبارہ دستخط کریں ، تاکہ دستی طور پر کی گئی ریکارڈوں میں کسی قسم کی تبدیلیوں کو دستخطی ریکارڈ میں شامل کیا جائے۔
 zonekey_resign=دوبارہ دستخط شدہ زون
 zonekey_resigndesc=ایک نئی زون پر دستخط کرنے والی کلید بنائیں ، زون کے ماسٹر کلید سے اس پر دستخط کریں ، اور تمام ریکارڈوں پر دوبارہ دستخط کریں۔
+
 sign_err=زون پر دستخط کرنے میں ناکام
 sign_emsg=DNSSEC signing after records change failed : $1
+
 resign_err=زون پر دوبارہ دستخط کرنے میں ناکام
+
 trusted_title=DNSSEC کی توثیق
 trusted_ecannot=آپ کو DNSSEC تصدیق کی تشکیل کی اجازت نہیں ہے
 trusted_esupport=آپ کا BIND کا ورژن DNSSEC تصدیق کی حمایت نہیں کرتا ہے
@@ -1230,6 +1299,7 @@ trusted_setup=For DNSSEC to be useful to verify the majority of signed zones on 
 trusted_ok=DLV مرتب کریں اور DNSSEC کی توثیق کو فعال کریں
 trusted_warning=Warning! Your BIND DNSSEC client configuration contains out of date keys that will stop working in October 2017. Either use the <a href='$1'>BIND DNSSEC Verification page</a> to adjust the configuration, or click the button below.
 trusted_fix=DNSSEC کنفیگریشن کو درست کریں
+
 xfer_title=ٹیسٹ زون کی منتقلی
 xfer_doing=Testing transfer of slave zone from $1 ..
 xfer_failed=.. from $1 : Failed : $2

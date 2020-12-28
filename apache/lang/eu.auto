@@ -57,6 +57,7 @@ index_fmode1=Zerbitzari birtualak $1 fitxategia
 index_fmode1d=Fitxategi berria zerbitzari birtualen direktorioko $1
 index_fmode2=Hautatutako fitxategia
 index_delete=Ezabatu hautatutako zerbitzariak
+
 cvirt_ecannot=Ezin duzu zerbitzari birtualik sortu
 cvirt_err=Ezin izan da zerbitzari birtuala sortu
 cvirt_eaddr1=Ez da helbiderik sartu
@@ -70,6 +71,7 @@ cvirt_eroot4=Ez da erabiltzaileik zehaztu Apache konfigurazioan
 cvirt_etaken=Izen eta portu bera duen zerbitzari birtuala dagoeneko
 cvirt_efile=Huts egin du $1 idaztean : $2
 cvirt_emissing=Zerbitzari birtual berria $1 gehitu zen, baina fitxategi hau ez da Apache-k erabiltzen. Egiaztatu <a href='$2'>moduluaren konfigurazioa</a> eta ziurtatu 'Zerbitzari birtualak gehitzeko fitxategia edo direktorioa zuzena dela.
+
 etype=Ezin duzu mota honetako aukerak editatu
 efailed=Huts egin du $1 gordetzean
 apache_apply=Aplikatu aldaketak
@@ -80,6 +82,7 @@ default_serv=zerbitzari lehenetsia
 bytes=byte
 eafter=Konfigurazioaren egiaztapena huts egin da: $1 Aldaketak ez dira gorde.
 enewline=Karaktere balio baliogabea
+
 global_ecannot=Ezin duzu aukera globalak editatu
 global_mime=MIME motaen zerrenda globala
 global_mimedesc=Egin klik MIME motako zerrendan beheko zerrendan editatzeko edo erabili orriaren beheko estekan zerrendan mota berri bat gehitzeko.
@@ -87,6 +90,7 @@ global_type=Mota
 global_ext=Extensions
 global_add=Gehitu MIME mota berri bat.
 global_return=MIME motak
+
 mime_ecannot=Ezin duzu mimo motak editatu
 mime_edit=Editatu MIME mota
 mime_add=Gehitu MIME Mota
@@ -95,6 +99,7 @@ mime_type=MIME Mota
 mime_ext=Extensions
 mime_err=Huts egin du MIME mota gordetzean
 mime_etype='$1' ez da baliozko MIME mota
+
 virt_ecannot=Ezin duzu zerbitzari birtual hau editatu
 virt_eprotocol=Gutxienez SSL/TLS protokolo erabilgarri bat aukeratu behar duzu
 virt_title=Zerbitzari birtualaren aukerak
@@ -121,6 +126,7 @@ virt_path=Path
 virt_return=zerbitzariaren indizea
 virt_euser=Ezin duzu erabiltzailea edo taldea aldatu zerbitzari birtual honetarako.
 virt_header2=$1 for $2
+
 vserv_title=Zerbitzari birtualaren konfigurazioa
 vserv_virtualmin=Apache ostalari birtual hau Virtualmin zerbitzariaren <tt>$1</tt> da, beraz, helbidea, portua, oinarrizko direktorio eta ostalariaren izena ezin dira aldatu hemen.
 vserv_ecannot=Ezin duzu zerbitzari birtualaren helbidea editatu
@@ -140,10 +146,12 @@ vserv_eport='$1' ez da baliozko ataka
 vserv_eroot='$1' ez da baliozko dokumentu erro bat
 vserv_ename='$1' ez da baliozko zerbitzariaren izena
 vserv_eaddrs=Ez da zerbitzariaren helbide birtualik sartu
+
 show_title=zuzentarau
 show_edit=Editatu Apache zuzentzailea:
 show_these=Eskuz editatu direktibak
 show_ok=Editatu
+
 manual_configs=Editatu Konfiguratu fitxategiak
 manual_title=Editatu Zuzentarauak
 manual_header=Erabil itzazu beheko testu-koadroa eskuz editatzeko $1 fitxategi hau zerbitzari, direktorio edo fitxategi birtual honetan aplikatzeko.
@@ -153,6 +161,7 @@ manual_efile=Apache konfigurazio fitxategi baliogabea
 manual_etest=Konfigurazio fitxategiaren akatsa hauteman da : $1
 manual_editfile=Editatu konfigurazio fitxategia:
 manual_switch=Editatu
+
 dir_title=Direktorio bakoitzeko aukerak
 dir_proxyall=Proxy eskaera guztiak
 dir_header=$1 on $2
@@ -169,6 +178,7 @@ dir_re=Lotu regexp
 dir_path=Path
 dir_return=direktorio-indizea
 dir_header2=$1 for $2
+
 type_0=Prozesuak eta Mugak
 type_1=Sareak eta helbideak
 type_2=Apache moduluak
@@ -190,6 +200,7 @@ type_17=Ostalari birtual automatikoak
 type_18=iragazkiak
 type_19=Hizkuntzak
 type_20=Irudi-mapak
+
 htaccess_title=Direktorio bakoitzeko Aukerak fitxategiak
 htaccess_ecannot=Ezin duzu htaccess fitxategiak editatu
 htaccess_file=Dauden aukeren fitxategiak
@@ -205,6 +216,7 @@ htaccess_edelete=Ezin duzu aukera fitxategi hau ezabatu
 htaccess_eempty=Ez da aukera fitxategi direktoriorik sartu
 htaccess_eabsolute=Aukerak fitxategi direktorioak bide absolutua izan behar du
 htaccess_err=Huts egin du aukerak fitxategia sortzerakoan
+
 htindex_ecannot=Ezin duzu aukera fitxategi hau editatu
 htindex_title=Direktorio bakoitzeko aukeren fitxategia
 htindex_delete=Ezabatu Fitxategia
@@ -220,12 +232,14 @@ htindex_path=Path
 htindex_header=$1
 htindex_header2=$1 $2 aukerak aukeratzeko
 htindex_return=aukeren fitxategiaren aurkibidea
+
 htfile_title=Fitxategi bakoitzeko aukerak
 htfile_header=$1 for $2
 htfile_show=Erakutsi zuzentarauak
 htfile_edit=Editatu Zuzentarauak
 htfile_apply=Aukerak aplikatuko dira ..
 htfile_header2=$1 for $2
+
 reconfig_title=Ezagutzen diren moduluak berriro konfiguratu
 reconfig_ecannot=Ezin duzu apache berriro konfiguratu
 reconfig_ever=Huts egin du Apache zerbitzariaren bertsioa exekutagarria $1. Egiaztatu <a href='$2'>moduluaren konfigurazioa</a> ziurtatzeko bide egokia dela.
@@ -233,11 +247,13 @@ reconfig_desc1=Zure Apache konfigurazioa aldatu da edo oraindik ez du Webmin-ek 
 reconfig_desc2=Jarraian, Webmin-ek onartzen dituen Apache moduluen zerrenda bat da, une honetan instalatuta daudenekin hautatuta. Dinamikoki kargatutako moduluak erabiltzen ari bazara, beharbada dinamikoki kargatutakoak hautatu beharko dituzu.
 reconfig_desc3=Ez badakizu zer modulu Apache-k zure sisteman onartzen dituen, konfiguratu Webmin gisa normalean onartzen diren moduluak automatikoki funtziona ditzakeela.
 reconfig_ok=Konfiguratu
+
 defines_title=Editatu Definitutako parametroak
 defines_ecannot=Ezin duzu httpd definitzen editatu
 defines_desc=Apache abiarazten denean, parametroak <tt>-D</tt> komando lerroko aukerarekin pasa daitezke. Parametro hauek zure konfigurazio fitxategietan zuzentarauak izan ditzaketenez, Webmin-ek jakingo du zer pasatzen zaion Apacheri abiaraztean. Sartu zure sisteman erabilitako parametroak eskuineko testu-eremuan.
 defines_config=Kontuan izan ondoren zehaztutako parametroak ezagutzen direla : $1
 defines_list=Definitutako parametroak
+
 authu_ecannot='$1' ez da erabiltzaileen testu fitxategi baimendua
 authu_title=Erabiltzaileen zerrenda
 authu_header=$1 fitxategian
@@ -259,6 +275,7 @@ authu_sync=Beheko aukerek aukera ematen dute Webmin erabiltzaile bat automatikok
 authu_screate=Gehitu erabiltzaile bat Unix erabiltzaile bat gehitzen denean
 authu_sdelete=Ezabatu erabiltzailea Unix erabiltzailea ezabatzen denean
 authu_smodify=Erabiltzailea aldatu Unix erabiltzailea aldatzen denean
+
 authg_ecannot='$1' ez da baimendutako taldeen testu fitxategia
 authg_title=Taldeen zerrenda
 authg_header=$1 fitxategian
@@ -276,22 +293,26 @@ authg_err=Huts egin du taldea gordetzean
 authg_euser=Ez da talde izenik sartu
 authg_euser2=Taldearen izenak ezin du :
 authg_edup=Dagoeneko '$1' izeneko taldea dago
+
 stop_err=Huts egin du apache gelditzeko
 stop_ecannot=Ezin duzu apache gelditu
 stop_epid=Ezin izan da $1 PID fitxategia ireki
 stop_epid2=PID fitxategi baliogabea $1
 stop_esig=Huts egin du SIGTERM bidaltzean $1 prozesatzeko
+
 start_err=Huts egin du apache abiarazteak
 start_ecannot=Ezin duzu apache hasi
 start_ecmd=$1 huts egin du : $2
 start_eunknown=Arrazoi ezezaguna
 start_eafter=Apache ez dirudi exekutatzen ari denik
+
 restart_err=Ezin izan dira aldaketak aplikatu
 restart_epid=Ezin izan da $1 PID fitxategia ireki
 restart_epid2=PID fitxategi baliogabea $1
 restart_esig=Ezin izan da SIGHUP bidali $1 prozesatzeko
 restart_eunknown=Arrazoi ezezaguna
 restart_ecannot=Ezin duzu aldaketarik aplikatu
+
 acl_virts=Erabiltzaile honek editatu ditzakezun zerbitzari birtualak
 acl_vall=Zerbitzari guztiak
 acl_vsel=Hautatutako ..
@@ -314,6 +335,7 @@ acl_dirs=Apache zuzentzaileak eskuragarri daude <font size=-1>(Aurreko muga mote
 acl_dirs0=guztiak
 acl_dirs1=Zerrenda bakarra ..
 acl_dirs2=Zerrendatu guztiak ..
+
 core_maxconc=Gehienezko aldi baterako eskaerak
 core_maxkeep=Gehienezko konexioak
 core_maxreq=Zerbitzari bakoitzeko gehienezko eskaerak
@@ -499,10 +521,12 @@ core_infilter=Aplikatu sarrera iragazkiak fitxategi guztiei
 core_outfilter=Aplikatu irteerako iragazkiak fitxategi guztiei
 core_defchar=Dokumentuen multzoa
 core_edefchar=Dokumentuentzako karaktere multzo falta edo baliogabea
+
 mod_negotiation_cache=Edukiaren negoziatu cachea?
 mod_negotiation_pri=Ikuspegi anitzeko hizkuntza lehentasuna
 mod_negotiation_def=Default
 mod_negotiation_epri=Hizkuntzaren lehentasunak falta dira
+
 mod_cgi_logname=CGI Script erregistroa
 mod_cgi_none=Bat ere ez
 mod_cgi_elogname=CGI script fitxategi baliogabea
@@ -512,6 +536,7 @@ mod_cgi_elogsize=CGI erregistroaren tamaina oso bat izan behar du
 mod_cgi_post=Gehitutako erregistratutako mezuen tamaina
 mod_cgi_epost=Bidali datuen tamaina oso bat izan behar du
 mod_cgi_eunder=CGI script erregistroa ez dago onartutako direktorioaren azpian
+
 mod_alias_from=aurrera
 mod_alias_to=to
 mod_alias_status=Egoera
@@ -535,6 +560,7 @@ mod_alias_cgi2=CGI direktorioen ezizena
 mod_alias_rcgi=Regexp CGI direktorioen aliasak
 mod_alias_rcgi2=regexp CGI direktorio alias
 mod_alias_estatus='$1' ez da baliozko egoera
+
 mod_proxy_proxy=Proxy zerbitzari gisa jarduten duzu?
 mod_proxy_req=eskaerak
 mod_proxy_forw=Aurrera bidali
@@ -605,11 +631,13 @@ mod_proxy_timeout=Proxy eskaera iraungitzea segundo batzuetan
 mod_proxy_etimeout=Proxy eskaeraren iraupena segundo batzuk izan behar da
 mod_proxy_via=Ezarri Via: goiburuak
 mod_proxy_not=Bat ere ez
+
 mod_log_agent_default=Default
 mod_log_agent_file=File ..
 mod_log_agent_program=Programa ..
 mod_log_agent_log=Arakatzailearen erregistro fitxategia
 mod_log_agent_efile=$1 ez da baliozko agenteen fitxategi-izena
+
 mod_log_config_common=Erregistro arruntaren formatua
 mod_log_config_named=Izena erregistro formatuak
 mod_log_config_nick=ezizena
@@ -628,6 +656,7 @@ mod_log_config_enofilprog=Fitxategiaren izena edo programa falta da
 mod_log_config_efilprog='$1' ez da baimendutako erregistro-fitxategi izena edo programa
 mod_log_config_eifset="Ezarrita" aukera ezin da erregistro formatu lehenetsiarekin erabili
 mod_log_config_edir=Ez dago '$1' fitxategiaren erregistroetarako direktoriorik
+
 mod_log_referer_default=Default
 mod_log_referer_file=File ..
 mod_log_referer_program=Programa ..
@@ -635,7 +664,9 @@ mod_log_referer_log=Hozkailuaren erregistro fitxategia
 mod_log_referer_nolog=Ez erregistratu erreferentzietatik
 mod_log_referer_elog=$1 ez da baliozko hasierako fitxategi-izena
 mod_log_referer_edir=Bidaia erregistroa ez dago baimendutako direktorioaren azpian
+
 mod_status_msg=Bistaratu egoera hedatuari buruzko informazioa
+
 mod_mime_ext=Extensions
 mod_mime_xtype=MIME estra motak
 mod_mime_mtype=MIME mota
@@ -668,6 +699,7 @@ mod_mime_outfilter=Irteerako iragazkiak
 mod_mime_infilter=Sarrera iragazkiak
 mod_mime_filters=Aplikatu beharreko iragazkiak
 mod_mime_efext=Ez da luzapenik iragazkientzat $1
+
 mod_setenvif_header=Goiburuko
 mod_setenvif_match=Match
 mod_setenvif_case=Loturen kasua
@@ -678,11 +710,13 @@ mod_setenvif_eheader='$1' goiburu baliogabearen eskaera
 mod_setenvif_eregex='$1' adierazpen erregular baliogabea
 mod_setenvif_evar='$1' aldagai izen baliogabea
 mod_setenvif_clear=Garbitu
+
 mod_userdir_default=Default
 mod_userdir_all=Erabiltzaile guztiak irisgarriak
 mod_userdir_except=Erabiltzaile guztiak izan ezik
 mod_userdir_dir=Erabiltzaileen WWW direktorioa
 mod_userdir_edir=Ez duzu baimendutako zehaztutako erabiltzailearen WWW direktorioa erabiltzea
+
 mod_imap_action=Irudi-irudien erabilera okerrari buruzko ekintza
 mod_imap_default=Default
 mod_imap_godefurl=Joan URL lehenetsira
@@ -702,8 +736,10 @@ mod_imap_refurl=URL erreferentzia
 mod_imap_url=URL. ..
 mod_imap_defbase=Lehenetsitako irudien oinarriak
 mod_imap_eurl='$1' ez da baliozko URL bat
+
 mod_speling_autocorr=Gaizki idatzitako URLak automatikoki zuzentzea?
 mod_speling_default=Default
+
 mod_actions_mime=Kudeatzailea / MIME mota
 mod_actions_cgiurl=CGI script URL
 mod_actions_mimecgi=Kudeatzailea edo MIME motako CGI ekintzak
@@ -713,10 +749,13 @@ mod_actions_httpcgi=HTTP metodoaren CGI ekintzak
 mod_actions_emime='$1' ez da baliozko kudeatzailea edo MIME mota
 mod_actions_ecgi='$1' ez da baliozko CGI script bat
 mod_actions_enometh=Ez da metodorik aukeratu '$1' CGI scriptrako.
+
 mod_include_incl=Prozesua bit exekutatzeko fitxategietan sartzen al da?
 mod_include_set=Bai, eta azken aldatutako data zehaztu
 mod_include_default=Default
+
 mod_dir_txt=Directory index fitxategiak
+
 mod_autoindex_default=Default
 mod_autoindex_asc=Goruntz
 mod_autoindex_descend=Beheranzko
@@ -725,6 +764,7 @@ mod_autoindex_date=data
 mod_autoindex_size=Tamaina
 mod_autoindex_desc=deskribapena
 mod_autoindex_sort=Ordenatu indizearen arabera
+
 browsermatch_regexp=Arakatzailearen erregex
 browsermatch_case=Bat datorren kasua?
 browsermatch_var=Ezarri aldagaia
@@ -732,6 +772,7 @@ browsermatch_value=Balio
 browsermatch_txt=Arakatzaile motaren arabera ezarritako aldagaiak
 browsermatch_evar='$1' aldagai izen baliogabea
 browsermatch_clear=Garbitu
+
 autoindex_fname=Fitxategi izena
 autoindex_mime=MIME mota
 autoindex_enc=Encoding
@@ -785,9 +826,11 @@ autoindex_sicon=Erakutsi fitxategiaren ikonoak
 autoindex_srules=Erakutsi &lt;hr&gt; lerroak
 autoindex_track=Sartu ETag-ak goiburuan
 autoindex_version=Sailkatu bertsioaren kateen arabera
+
 mod_mime_magic_file=MIME zenbaki magikoen fitxategia
 mod_mime_magic_none=Bat ere ez
 mod_mime_magic_efile=Baliogabeko MIME zenbakiaren fitxategi-izen baliogabea
+
 mod_env_var=aldakorra
 mod_env_value=Balio
 mod_env_pass=Pasatu
@@ -798,6 +841,7 @@ mod_env_passall=Pasatu inguruneko aldagai guztiak KPIetara
 mod_env_default=Default
 mod_env_evar='$1' ez da baliozko aldagaiaren izena
 mod_env_evalue='$1' ez da balio aldagai baliozkoa
+
 mod_access_order=Sarbidea egiaztatzeko agindua:
 mod_access_denyallow=Uko egin gero
 mod_access_allowdeny=Onartu gero ukatu
@@ -820,6 +864,7 @@ mod_access_epip='$1' ez da baliozko IP helbide partziala
 mod_access_emask='$1' ez da baliozko sare / netmask bikotea
 mod_access_ecidr='$1' ez da baliozko sare / CIDR bikotea
 mod_access_evar='$1' ez da baliozko aldagaiaren izena
+
 mod_auth_ufile=Erabiltzailearen testu fitxategia
 mod_auth_uedit=Erabiltzaileak editatu
 mod_auth_gfile=Taldearen testu fitxategia
@@ -830,6 +875,7 @@ mod_auth_eudir=Erabiltzailearen testu fitxategia ez dago baimendutako direktorio
 mod_auth_egdir=Taldeko testu fitxategia ez dago baimendutako direktorioaren azpian
 mod_auth_eufile=Erabiltzailearen testu fitxategiaren izena baliogabea
 mod_auth_egfile=Taldearen testu fitxategiaren izen baliogabea
+
 mod_auth_dbm_ufile=Erabiltzailea DBM fitxategia
 mod_auth_dbm_gfile=Taldearen DBM fitxategia
 mod_auth_dbm_pass=Hutsegiteak hurrengo modulura pasatu?
@@ -840,6 +886,7 @@ mod_auth_dbm_egfile=DBM fitxategiaren izen baliogabea
 mod_auth_dbm_type=DBM datu-base mota
 mod_auth_dbm_gtype=DBM taldeko datu base mota
 mod_auth_dbm_default=Lehenetsitako DBM formatua
+
 mod_cern_meta_process=Prozesatu goiburuko metafiloak
 mod_cern_meta_dir=Goiburu metafileentzako azpidirektorioa
 mod_cern_meta_default=Default
@@ -847,6 +894,7 @@ mod_cern_meta_edir=Metafile azpidirektorioaren izena baliogabea
 mod_cern_meta_suffix=Fitxategiaren atzizkia goiburuetako metafileentzako
 mod_cern_meta_default2=Default
 mod_cern_meta_esuffix=Metafile atzizkia baliogabea
+
 mod_ssl_enable=SSL gaitu?
 mod_ssl_proto=SSL protokoloak
 mod_ssl_cfile=Ziurtagiri / gako pribatuko fitxategia
@@ -874,6 +922,7 @@ mod_ssl_passsc=Idatzi script $1
 mod_ssl_epassph=Ez da SSL pasahitzik sartu
 mod_ssl_epasssc=SSL pasahitz baten script falta edo baliogabea
 mod_ssl_ecerton=SSL gaituta dagoenean, ziurtagiri fitxategi bat aukeratu behar da
+
 mod_apachessl_notssl=Ukatu SSL sarbidea
 mod_apachessl_forcessl=SSL / notSSL sarbidea behartu?
 mod_apachessl_capath=Ziurtagiriaren agintarien ziurtagiriak dituzten direktoriora joateko bidea
@@ -906,6 +955,7 @@ mod_apachessl_nov2=Desgaitu SSL 2. bertsioa
 mod_apachessl_fake=Erabiltzailearen oinarrizko autentifikazio logotipoak simulatzen ditu, ziurtagiri izena erabiliz
 mod_apachessl_cdnfile=Bezeroaren DNaren aurkako fitxategia egiaztatu da
 mod_apachessl_ecdnfile=Fitxategia falta da bezeroaren DNaren aurka
+
 log_global=$1 aukera globalak aldatu dira
 log_virtc=$1 zerbitzaria sortu da
 log_virts=Konfiguratutako zerbitzaria $1
@@ -946,8 +996,10 @@ log_stop=Gelditutako web-zerbitzaria
 log_apply=Aplikatutako aldaketak
 log_manual=Eskuz editatutako konfigurazio fitxategia $1
 log_virts_delete=$1 zerbitzari birtualak ezabatu dira
+
 search_title=Aurkitu zerbitzariak
 search_notfound=Ez da bat datorren zerbitzari birtualik aurkitu
+
 mod_php_value=PHP konfigurazio balioak
 mod_php_flag=PHP konfigurazio banderak
 mod_php_admin_value=PHP Admin Konfigurazio Balioak
@@ -956,6 +1008,7 @@ mod_php_name_header=Entorno
 mod_php_value_header=Balio
 mod_php_ename='$1' izen baliogabea da
 mod_php_evalue='$1' balio baliogabea da $2
+
 mod_vhost_alias_root=Ostalari birtualaren erro automatikoa
 mod_vhost_alias_ip=Erabili IP helbidea ostalariaren izenaren ordez?
 mod_vhost_alias_none=Bat ere ez
@@ -963,12 +1016,14 @@ mod_vhost_alias_script=Ostalari birtual automatikoa cgi-bin
 mod_vhost_alias_eroot=Ostalari erro birtual falta edo baliogabea
 mod_vhost_alias_eroot2=Ez da onartzen ostalari erro direktorio birtuala
 mod_vhost_alias_escript=Ostalari birtualaren falta edo baliogabea
+
 worker_minspare=Gutxieneko ordezko hariak
 worker_maxspare=Gehienezko ordezko hariak
 worker_eminspare=Gutxieneko ordezko hariak oso oso bat izan behar du
 worker_emaxspare=Gehienezko ordezko hariak oso oso bat izan behar du
 worker_threads=Haurrak prozesuaren hariak
 worker_ethreads=Haurren prozesuko hari kopurua oso oso bat izan behar du
+
 perchild_sthreads=Haur prozesuaren hasierako hariak
 perchild_esthreads=Haurren prozesuko hari kopurua oso oso bat izan behar du
 perchild_numservers=Haurren prozesu kopurua
@@ -984,6 +1039,7 @@ perchild_gid=GID
 perchild_enum=Prozesuaren zenbakiak zero ez diren zenbaki osoak izan behar du
 perchild_euid=UID zenbaki oso bat izan behar du
 perchild_egid=GID zenbaki oso bat izan behar du
+
 cache_enable=Aktiboak?
 cache_type=Cache denda
 cache_disk=Disko
@@ -1004,12 +1060,14 @@ cache_eminos=Cachearen gutxieneko objektuen tamaina byte kopurua izan behar da
 cache_emaxos=Cachearen gehieneko objektuaren tamaina byte kopurua izan behar da
 cache_maxoc=Gehienezko objektuak memorian gordetzeko
 cache_emaxoc=Memoria gordetzeko objektu kopurua oso bat izan behar da
+
 suexec_su=Exekutatu CGI programak gisa
 suexec_none=Erabiltzailea konfigurazio globaleko
 suexec_user=Unix erabiltzailea
 suexec_group=eta taldea
 suexec_euser=Erabiltzaile falta da edo CGI programak exekutatzeko
 suexec_egroup=Talde falta edo baliogabea da CGI programak exekutatzeko
+
 filter_name=izena
 filter_intype=Sarrera MIME mota
 filter_outtype=Irteera MIME mota
@@ -1019,11 +1077,13 @@ filter_in=Sarrera iragazkiaren definizioak
 filter_out=Irteerako iragazkiaren definizioak
 filter_ename=Iragazki baliogabearen izena '$1'
 filter_ecmd='$1' iragazkiaren komando falta
+
 cdir_err=Ezin izan da direktorio bakoitzeko aukerak sortu
 cdir_err2=Ezin izan da direktorio bakoitzeko aukerak gorde
 cdir_epath=Falta den bidea
 cdir_eproxy=Proxy aukerak ezin dira bat etorri partidaren regexp aukerarekin gaituta
 cdir_ecannot=Ezin duzu emandako bideko direktorio bakoitzeko aukerak sortu
+
 mod_band_enable=Banda zabalera mugatzea gaituta dago?
 mod_band_bw=Muga (bytes / sec)
 mod_band_client=Bezeroentzat
@@ -1042,24 +1102,30 @@ mod_band_epulse=Pakete mugatuen arteko hutsunea edo baliogabea da
 mod_band_dir=Banda zabalera datu fitxategien direktorio mugatzailea
 mod_band_edir=Falta edo ez dago banda zabalera datu fitxategien direktorio
 mod_band_esubdir=Beharrezko <tt>$1</tt> azpidirektorioa falta da banda zabalera datu fitxategien direktorioan
+
 mod_dav_active=WebDAV gaituta dago?
 mod_dav_inf=Sakonera infinitua baimendu DAV PROPFIND eskaerak?
 mod_dav_timeout=DAV gutxieneko denbora iraupena segundo batzuetan
 mod_dav_etimeout=DAV edo denbora baliogabea falta da
+
 delete_err=Ezin izan da zerbitzari birtualak ezabatu
 delete_enone=Ez da hautatu
 delete_ecannot=Ezin duzu zerbitzariak ezabatu
 delete_ecannot2=Ezin duzu $1 zerbitzaria editatu
+
 syslog_desc=Apache errore erregistroa
+
 mod_auth_basic_pass=Oinarrizko saioa hasteko hutsegiteak hurrengo modulura pasatu?
 mod_auth_basic_prov=Erabiltzaileen fitxategi motak
 mod_auth_basic_file=Testu fitxategia
 mod_auth_basic_dbm=DBM datu-basea
+
 mod_auth_digest_pass=Pasatu digest moduluaren akatsak hurrengo modulura?
 mod_auth_digest_prov=Digeritu hasierako erabiltzaile fitxategi motak
 mod_auth_digest_al=Hashing algoritmoa
 mod_auth_digest_domain=URL eta bideak domeinu berean
 mod_auth_digest_edomain=URLak eta bideak falta dira domeinu berean
+
 mods_title=Konfiguratu Apache moduluak
 mods_mod=modulua
 mods_state=Egungo egoera

@@ -27,6 +27,7 @@ index_delete=Lösche ausgewählte
 index_joingroup=Zur Gruppe hinzufügen:
 index_eulist=Fehlgeschlagen Benutzer aufzulisten : $1
 index_eglist=Fehlgeschlagen Gruppen aufzulisten : $1
+
 edit_title=Webminbenutzer bearbeiten
 edit_title2=Webminbenutzer anlegen
 edit_title3=Erzeuge sicheren Webmin Benutzer
@@ -115,6 +116,7 @@ edit_safe=Privileg Stufe
 edit_safe0=Unbeschränkt
 edit_safe1=Nur Sichere Module
 edit_unsafe=Zurücksetzen auf unbeschränkt
+
 save_err=Fehler beim Speichern des Benutzers
 save_ename='$1' ist kein gültiger Benutzername
 save_eunixname='$1' ist kein System Benuter und kann daher nicht im sicheren Modus genutzt werden
@@ -145,11 +147,13 @@ save_edays=Keinen erlaubten Tag ausgewählt
 save_ehours=Vermisse erlaubte Zeit oder ungültiger Wert
 save_ehours2=Erlaubte Start Zeit muss vor dem Ende sein
 save_etemp=Die Option, ein Kennwortänderung bei der nächsten Anmeldung erzwingen, kann nicht benutzt werden, es sei denn <a href='$1'>Benutzer werden aufgefordert ein neues Passwort eingeben</a> aktiviert ist
+
 delete_err=Fehler beim Löschen des Benutzers
 delete_eself=Sie können sich selber nicht löschen
 delete_ecannot=Sie haben keine Berechtigung Benutzer zu löschen
 delete_euser=Sie haben keine Berechtigung diesen Benutzer zu löschen
 delete_eanonuser=Dieser Benutzer wird für anonymen Modul-Zugriff verwendet
+
 cert_title=Zertifikatsanfrage
 cert_issue=Zertifikat ausstellen
 cert_header=Details des neuen Zertifikats
@@ -169,6 +173,7 @@ cert_ekey=Ein neuer SSL-Schlüssel wurde nicht von Ihrem Browser übertragen - v
 cert_eca=Das Erstellen der Zertifikatsautorität schlug fehl : $1
 cert_already=Warnung - Sie benutzen bereits das Zertifikat $1.
 cert_etempdir=Ungültige Zertifikatdatei
+
 acl_title=Modulzugriffskontrolle
 acl_title2=Für $1 in $2
 acl_title3=Für Gruppe $1 in $2
@@ -177,6 +182,7 @@ acl_config=Darf Modulkonfiguration bearbeiten?
 acl_reset=Zurücksetzen auf Vollzugriff
 acl_rbac=Beziehe ACL-Einstellungen von RBAC?
 acl_rbacyes=Ja (übergehe Einstellungen unten)
+
 acl_uall=Alle Benutzer
 acl_uthis=Diesen Benutzer
 acl_usel=Ausgewählte Benutzer ..
@@ -216,6 +222,7 @@ acl_switch=Darf den Benutzer wechseln?
 acl_times=Kann erlaubte Anmeldezeit ändern?
 acl_pass=Kann Kennwort Einschränkungen ändern?
 acl_sql=Kann Benutzer- und Gruppendatenbank zu konfigurieren?
+
 log_modify=Webminbenutzer $1 modifiziert
 log_rename=Webminbenutzer $1 zu $2 umbenannt
 log_create=Webminbenutzer $1 erzeugt
@@ -238,6 +245,7 @@ log_sync=Ändere Unixbenutzer-Syncronisation
 log_sql=Benutzer- und Gruppendatenbank geändert
 log_twofactor=Benutzer $1 mit 2-Faktor-Anbieter $2 angemeldet
 log_onefactor=Benutzer $1 für die 2-Faktor-Authentifizierung abgemeldet
+
 gedit_ecannot=Sie sind nicht berechtigt Gruppen zu bearbeiten
 gedit_title=Bearbeite Webmingruppe
 gedit_title2=Erzeuge Webmingruppe
@@ -247,6 +255,7 @@ gedit_modules=Erlaubte Module
 gedit_members=Mitgliederbenutzer und -gruppen
 gedit_desc=Gruppenbeschreibung
 gedit_egone=Ausgewählte Gruppe existiert nicht mehr!
+
 gdelete_err=Fehler beim Löschen einer Gruppe
 gdelete_ecannot=Sie sind nicht berechtigt Gruppen zu löschen
 gdelete_euser=Sie können Ihre eigene Gruppe nicht löschen
@@ -254,11 +263,13 @@ gdelete_esub=Gruppen, die Untergruppen enthalten, können nicht gelöscht werden
 gdelete_title=Gruppe löschen
 gdelete_desc=Sind Sie sicher, dass Sie die Gruppe $1 und Benutzer $2 löschen wollen?
 gdelete_ok=Gruppe löschen
+
 gsave_err=Fehler beim Speichern der Gruppe
 gsave_ename=Fehlender oder ungültiger Gruppenname
 gsave_enamewebmin=Der Gruppenname 'webmin' ist für interne Zwecke reserviert
 gsave_edup=Gruppenname wird bereits benutzt
 gsave_edesc=Ungültige Beschreibung - das : Zeichen ist nicht erlaubt
+
 convert_title=Benutzer konvertieren
 convert_ecannot=Sie sind nicht berechtigt Unixbenutzer zu konvertieren
 convert_nogroups=Auf Ihrem System wurden keine Webmingruppen definiert. Wenigstens eine Gruppe muss vor der Konvertierung angelegt sein, um Rechte für die konvertierten Benutzer zu definieren.
@@ -287,6 +298,7 @@ convert_user=Unix Benutzer
 convert_action=Durchgeführe Aktionen
 convert_done=$1 Benutzer umgewandelt, $2 ungültig, $3 gibt es bereits, $4 ausgeschlossen.
 convert_users=Benutzer zum konvertieren
+
 sync_title=Unixbenutzer-Synchronisation
 sync_desc=Dieses Formular erlaubt Ihnen die Konfiguration der automatischen Synchronisation von Unixbenutzern die durch Webmin erzeugt wurden und Benutzern in diesem Modul.
 sync_nogroups=Es wurden keine Webmingruppen auf Ihrem System definiert. Wenigstens eine Gruppe muss angelegt sein, um den Zugriff für erzeugte Benutzer einzustellen.
@@ -297,6 +309,7 @@ sync_delete=Lösche den passenden Webminbenutzer wenn ein Unixbenutzer gelöscht
 sync_group=Zuweisung neuer Benutzer zur Webmingruppe
 sync_unix=Setze Passwort für neue Benutzer auf das Unixpasswort
 sync_ecannot=Sie sind nicht berechtigt die Benutzer-Synchronisation zu bearbeiten.
+
 unix_title=Unixbenutzer Authentifizierung
 unix_err=Fehler beim Speichern der Unix Authentifizierung
 unix_desc=Diese Seite erlaubt Ihnen Webmin zu konfigurieren, um Anmeldeversuche gegen die System-Benutzerliste und PAM abzugleichen. Dies kann nützlich sein, wenn Sie eine große Anzahl bestehender Unixbenutzer haben, denen Sie Zugriff auf Webmin geben wollen.
@@ -329,6 +342,7 @@ unix_esudo=Der $1 Befehl ist nicht installiert
 unix_esudomod=Das Perl-Modul $1, welches zur <tt>sudo</tt> Authentifizierung verwendet wird, ist nicht installiert
 unix_header=Unix Benutzer Authentifizierungseinstellungen
 unix_utable=Erlaubte Unix Benutzer
+
 sessions_title=Aktuell angemeldete Sitzungen
 sessions_id=Sitzungs-ID
 sessions_user=Webminbenutzer
@@ -342,21 +356,26 @@ sessions_this=Dieser Login
 sessions_in=Eingeloggt
 sessions_out=Ausgeloggt
 sessions_kill=Getrennt..
+
 logins_title=Aktuelle Webmin-Logins
+
 hide_title=Verberge nicht benutzte Module
 hide_desc=Das folgende Modul wird von der Zugriffskontrollliste für $1 entfernt, da die entsprechenden Server nicht auf Ihrem System installiert sind.
 hide_ok=Verberge Module jetzt
 hide_none=Nichts zu verbergen - $1 hat keinen Zugriff zu irgendeinem Modul dessen entsprechender Server nicht auf Ihrem System installiert ist.
 hide_desc2=Bedenken Sie, dass dieses Modul nicht automatisch sichtbar wird, wenn der entsprechende Server nachträglich installiert wird. Sie müssen den Zugriff über dieses Modul erneut einrichten.
 hide_clone=(Klone $1)
+
 switch_euser=Sie dürfen nicht zu diesem Benutzer wechseln
 switch_eold=Existierende Sitzung nicht gefunden!
+
 rbac_title=Setup RBAC
 rbac_desc=Die RBAC (Role Based Access Control)-Integration in die Webmin-Software unterstützt die Verlagerung von ACLs auf bestimmte oder alle Module in eine RBAC-Datenbank. Wenn RBAC einmal aktiviert wurde, dann werden für jeden Benutzer für den die <b>RBAC Steuerung aller Module und ACLs</b>-Option ausgewählt wurde alle Möglichkeiten durch RBAC und nicht mehr durch Webmin geregelt.
 rbac_esolaris=RBAC wird derzeit nur von Solaris unterstützt und kann auf diesem $1 System nicht genutzt werden.
 rbac_eperl=Das Perl-Modul $1 wird für die RBAC-Integration benötigt, ist jedoch nicht installiert. Sie können dies über das <a href='$2'>CPAN-Modul</a> nachholen.
 rbac_ecpan=Sie haben keinen Zugriff auf die Webmin-Perl-Modulseite um das für die RBAC-Integration benötigte Modul $1 zu installieren.
 rbac_ok=RBAC-Integration ist auf Ihrem System verfügbar und kann pro Benutzer im Benutzer- und Gruppenmodul angewandt werden.
+
 udeletes_err=Konnte Benutzer nicht löschen
 udeletes_jerr=Fehler beim Nutzer zu Gruppe hinzufügen
 udeletes_enone=Nichts ausgewählt
@@ -365,11 +384,13 @@ udeletes_rusure=Sind Sie sicher, dass Sie die $1 ausgewählten Benutzer löschen
 udeletes_users=Ausgewählte Benutzer: $1
 udeletes_ok=Benutzer löschen
 udeletes_ereadonly=Einer der ausgewählten Benutzer ist als nicht bearbeitbar markiert.
+
 gdeletes_err=Konnte Gruppen nicht löschen
 gdeletes_title=Gruppe löschen
 gdeletes_rusure=Sind Sie sicher, dass Sie die $1 ausgewählten Gruppen, inklusive der darin enthaltenen $2 Benutzer, löschen möchten? Sämtliche Benutzer- und zugehörige Sicherheitseinstellungen gehen definitiv und nicht wiederherstellbar verloren.
 gdeletes_users=Ausgewählte Gruppen: $1
 gdeletes_ok=Gruppe löschen
+
 pass_title=Kennwort Einschränkungen
 pass_ecannot=Es ist Ihnen nicht erlaubt Passwortrestriktionen zu editieren
 pass_header=Optionen der Webmin-Kennwort-Erzwingung
@@ -392,6 +413,7 @@ pass_eminsize=Vermisse minimale Kennwortlänge oder der Wert ist nicht numerisch
 pass_emaxdays=Vermisse Anzahl von Tagen bevor das Kennwort geändert wird oder der Wert ist nicht numerisch
 pass_elockdays=Vermisse Anzahl von Tagen bevor der Zugang gesperrt wird oder der Wert ist nicht numerisch
 pass_eoldblock=Vermisse Anzahl von Tage bevor ein Kennwort zurückgeweisen wird oder der Wert ist nicht numerisch
+
 cpass_minsize=Muss mindestens $1 Zeichen lang sein
 cpass_notre=Entspricht einen nicht erlaubten Muster
 cpass_re=Entspricht nicht einem erforderlichen Muster
@@ -399,6 +421,7 @@ cpass_name=Enthält den Benutzernamen
 cpass_dict=Ist ein Wort aus dem Wörterbuch
 cpass_spellcmd=Entweder der $1 oder $2 Befehl muss installiert sein um eine Wörterbuchprüfung durchzuführen
 cpass_old=Alte Kennwörter können nicht wieder verwendet werden
+
 sql_title=Benutzer- und Gruppendatenbank
 sql_ecannot=Es ist Ihnen nicht erlaubt die Benutzer und Gruppen Datenbank zu konfigurieren
 sql_header=Optionen für Datenbank-Backend für Benutzer und Gruppen
@@ -441,21 +464,25 @@ sql_dnerr=Benutzer- und Gruppen-Datenbank-Einstellungen sind gültig, aber die L
 sql_dnerr2=Klicken auf den <b>Erstellen DN</b> Button unten, um es automatisch zu erstellen, oder füge es manuell Ihrem LDAP-Server zu.
 sql_makedn=Erstelle DN
 sql_schema=Download LDAP Schema
+
 make_title=Erstelle Benutzer- und Gruppentabellen
 make_err=Fehlgeschlagen Benutzer- und Gruppentabellen zu erstellen
 make_exec=Ausführe SQL $1 ..
 make_failed=.. Erstellen fehlgeschlagen : $1
 make_done=.. fertig
 make_still=Einige Probleme wurden auch nach Erstellung der Tabelle gefunden: $1
+
 makedn_title=Erstelle LDAP DN
 makedn_eoc=Keine strukturelle Objektklassen gefunden!
 makedn_exec=Erstelle übergeordnete DN $1 ..
 makedn_failed=.. Erstellung fehlgeschlagen : $1
 makedn_done=.. fertig
 makedn_still=Einige Probleme wurden auch nach DN Erstellung gefunden : $1
+
 schema_title=Download LDAP-Schema
 schema_desc=Bevor Webmin ein LDAP-Server verwenden kann um Benutzer und Gruppen zu speichern, muss konfiguriert werden, das Schema unten zu verwenden. Dies kann in der Regel durch Speicherung der Schema-Definition in <tt>/etc/ldap/schema</tt> oder <tt>/etc/openldap/schema</tt> als <tt>webmin.schema</tt>, anschließend kann die Konfiguration des Servers erfolgen, das Schema-Datei zu laden.
 schema_download=Download Schema-Datei : <a href=$1>$1</a>
+
 twofactor_err=Fehlgeschlagen 2-Faktor-Authentifizierung einzurichten
 twofactor_euser=Ihr Webmin-Benutzer wurde nicht gefunden!
 twofactor_title=2-Faktor-Authentifizierung

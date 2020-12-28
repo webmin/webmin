@@ -12,6 +12,7 @@ index_return=lista de sistemas de arquivos
 index_none=Você não tem acesso a nenhum sistema de arquivos montado.
 index_mount2=Monte com senha:
 index_root=Sistema de arquivos raiz
+
 edit_title=Editar montagem
 create_title=Criar montagem
 edit_err=Falha ao editar montagem
@@ -58,6 +59,7 @@ edit_ecannot=Você não tem permissão para editar este sistema de arquivos
 edit_ecannot2=Você não tem permissão para adicionar novos sistemas de arquivos
 edit_3_or_lower=3 (ou inferior)
 edit_advanced=Modo avançado
+
 save_err=Falha ao salvar montagem
 save_edir='$1' não é um diretório
 save_edirname='$1' não é um nome de diretório válido
@@ -74,8 +76,10 @@ save_apply=Aplicar à lista permanente
 save_fapply=Forçar Desmontagem
 save_eremount=Falha na remontagem : $1
 save_enone=Você não escolheu salvar ou montar
+
 swap_err=Falha ao criar arquivo de troca
 swap_esize='$1' não é um tamanho válido
+
 nfs_server=Escolha Servidor NFS.
 nfs_select=Selecione um servidor NFS para montar a partir de ..
 nfs_ip=Endereço de IP
@@ -87,6 +91,7 @@ nfs_seldir=Selecione um diretório NFS para montar.
 nfs_seldirv4=Para uma montagem NFSv4, você deve selecionar '/'
 nfs_dir=Diretório
 nfs_clients=Clientes
+
 smb_choose=Escolha Servidor CIFS.
 smb_elist=Falha ao recuperar a lista de servidores de $1. Talvez o servidor não permita a navegação
 smb_eworkgroup=Nenhum grupo de trabalho definido na página Configuração do módulo
@@ -103,6 +108,7 @@ smb_sel2=Selecione um compartilhamento para montar.
 smb_share=Compartilhar
 smb_comment=Comente
 smb_noshares=Não há compartilhamentos de arquivos disponíveis no servidor $1
+
 solaris_scsidev=Controlador SCSI $1 target $2 unidade $3 partição $4
 solaris_idedev=Controlador IDE $1 unidade $2 partição $3
 solaris_mddev=Dispositivo RAID $1
@@ -240,6 +246,7 @@ solaris_efstyp2=Falha ao verificar o tipo de sistema de arquivos : $1
 solaris_ecachedir='$1' não é um diretório de cache válido
 solaris_efmode='$1' não é um modo de arquivo octal válido
 solaris_edmode='$1' não é um modo de diretório octal válido
+
 linux_eamd=AMD falhou
 linux_eauto=Falha na montagem automática : $1
 linux_esmbconn=Falha ao conectar ao servidor
@@ -361,6 +368,7 @@ linux_noenforce=Sim, mas não imponha
 linux_df=Incluir blocos reservados no tamanho do sistema de arquivos?
 linux_noatime=Evitar atualizar os últimos horários de acesso?
 linux_netdev=Aguarde até que as interfaces de rede estejam ativadas?
+linux_nofail=Continuar a inicialização mesmo se a montagem falhar?
 linux_ecname=Nome netbios do cliente ausente ou inválido
 linux_emname=Nome do host ou endereço IP do servidor ausente ou inválido
 linux_bind=Diretório original
@@ -386,6 +394,7 @@ linux_nounix=Desativar extensões CIFS Unix?
 linux_noserverino=Gerar números de inode no lado do cliente?
 linux_cvers=Versão CIFS
 linux_ecvers=A versão CIFS deve ser um número
+
 log_mount=Montado $3
 log_mount_l=Montada $2 $1 em $3
 log_umount=$3 não montado
@@ -399,7 +408,9 @@ log_modify_l=$2 modificada mount $1 em $3
 log_delete=Montagem excluída $3
 log_delete_l=Excluído $2 monte $1 em $3
 log_swap=Arquivo de troca criado $1
+
 unmount_err=Falha ao desmontar $1
+
 mount_err=Falha ao montar $1
 irix_nhost=Nome do host NFS
 irix_ndir=Diretório NFS
@@ -430,6 +441,7 @@ irix_rock=Usar extensões Rock Ridge?
 irix_nofsck=Verificar sistema de arquivos na inicialização?
 irix_auto=Fonte do Automounter
 irix_automap=Arquivo de mapa
+
 irix_ehost=O host '$1' não existe
 irix_eloss=O host '$1' caiu
 irix_eshowmount=O host '$1' não suporta NFS
@@ -447,9 +459,11 @@ irix_efstyp2=Falha ao obter o tipo de sistema de arquivos $1 : $2
 irix_efstyp=O tipo de sistema de arquivos em $1 é $2, não $3
 irix_eautomap=O arquivo de mapa do montador automático '$1' não existe
 irix_eauthmap2=Arquivo de mapa do montador automático ausente ou inválido
+
 irix_devroot=Partição raiz
 irix_devswap=Trocar partição
 irix_autohosts=Todas as exportações NFS
+
 acl_only=Permitir apenas montar e desmontar?
 acl_fs=Sistemas de arquivos que podem ser editados
 acl_types=Tipos de sistema de arquivos que podem ser usados
@@ -462,8 +476,10 @@ acl_hide=Ocultar sistemas de arquivos não editáveis?
 acl_simple=Mostrar formulário de montagem simples?
 acl_simopts=Mostrar opções simplificadas do sistema de arquivos?
 acl_browse=Mostrar arquivo e compartilhar botões de navegação?
+
 egcc=O compilador GCC ou CC necessário para criar um programa para listar sistemas de arquivos montados em seu sistema não está disponível.
 ecompile=Ocorreu um erro ao criar um programa para listar sistemas de arquivos montados em seu sistema : $1
+
 freebsd_eaddr=Endereço do servidor ausente ou inválido
 freebsd_eworkgroup=Grupo de trabalho ausente ou inválido
 freebsd_ide=Disco rígido IDE
@@ -477,8 +493,10 @@ freebsd_idedev=Dispositivo IDE $1, fatia $2, partição $3
 freebsd_scsidev=Dispositivo SCSI $1, fatia $2, partição $3
 freebsd_edevpath=Outro dispositivo deve ser um caminho absoluto, como <tt>/dev/cdrom</tt>
 freebsd_edevfile=O arquivo do dispositivo '$1' não existe
+
 cswap_file=O arquivo de troca $1 não existe.
 cswap_size=Crie e monte um arquivo de troca com tamanho
+
 acl_sysinfo=Mostrar dados de disco disponíveis no Painel?
 sysinfo_total=Total
 sysinfo_dev=ID de dispositivo

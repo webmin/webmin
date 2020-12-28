@@ -19,6 +19,7 @@ index_dump=显示转储
 index_dumpdesc=单击此按钮可通过<tt>shorewall6 dump</tt>命令查看Shorewall跟踪信息。
 index_check=检查防火墙
 index_checkdesc=单击此按钮可使Shorewall使用<tt>shorewall6 check</tt>命令验证您的防火墙配置。
+
 list_move=移动
 list_add=加
 list_auto=自动
@@ -30,6 +31,7 @@ list_manual=手动编辑文件
 list_manualdesc=单击此按钮以手动编辑Shorewall文件 $1，上面的条目存储在其中。
 list_ecannot=您无权编辑此Shorewall表。
 list_delete=删除所选
+
 restart_err=应用配置失败
 refresh_err=刷新配置失败
 start_err=无法启动防火墙
@@ -41,6 +43,7 @@ check_title=检查防火墙
 check_ok=..您的防火墙配置看起来不错。
 check_failed=..在您的防火墙配置中发现错误！
 check_cmd=检查配置 ..
+
 zones_title=网络区域
 zones_desc=此页面上列出的区域代表系统可以访问的不同网络。但是，此处的条目实际上对防火墙没有任何影响-而是仅定义区域名称和描述。
 zones_add=添加一个新的网络区域。
@@ -72,6 +75,7 @@ zones_firewall=防火墙系统
 zones_eopts=无效的区域选项
 zones_eopts_in=无效的区域传入选项
 zones_eopts_out=无效的区域传出选项
+
 policy_title=默认策略
 policy_desc=该页面允许您配置不同防火墙区域之间流量的默认操作。在“防火墙规则”页面上，可以为特定主机或流量类型覆盖它们。
 policy_add=添加新的默认策略。
@@ -92,6 +96,7 @@ policy_ulog=登录到ULOG
 policy_efw=可以为源区域和目标区域选择&lt;防火墙&gt;
 policy_elimit=流量限制编号缺失或无效
 policy_eburst=丢失或无效的流量突发编号
+
 rules_title=防火墙规则
 rules_desc=下表列出了某些类型的流量，源或目标的默认策略例外。所选动作将应用于与所选条件匹配的数据包，而不是默认值。
 rules_add=添加新的防火墙规则。
@@ -138,6 +143,7 @@ rules_eaction=未选择任何动作
 rules_macro=宏动作参数
 rules_none2=没有
 rules_emacro=宏参数缺失或无效
+
 tos_title=服务类型
 tos_desc=该页面为特定类型的流量定义IP服务类型，可用于提高或降低其优先级。
 tos_add=添加一种新的服务。
@@ -156,6 +162,7 @@ tos_edit=修改服务类型
 tos_create=创建服务类型
 tos_header=服务详情类型
 tos_err=保存服务类型失败
+
 interfaces_title=网络接口
 interfaces_desc=您希望Shorewall管理的系统上的每个网络接口都应在此页面上列出，并与它所连接的区域相关联。回传接口<tt>lo</tt>绝不能列出。
 interfaces_add=添加一个新的网络接口。
@@ -171,6 +178,7 @@ interfaces_header=网络接口详细信息
 interfaces_err=无法保存网络接口
 interfaces_eiface=接口名称缺失或无效
 interfaces_ebroad=广播地址缺失或无效
+
 masq_title=伪装
 masq_desc=该页面上的条目为在某些网络和特定接口之间路由的流量设置了网络地址转换。
 masq_add=添加新的伪装规则。
@@ -201,6 +209,7 @@ masq_emnete=空异常网络列表
 masq_esnat=无效的SNAT IP地址
 masq_eports=缺少或无效的逗号分隔端口列表
 masq_eipsec=缺少IPsec选项
+
 nat_title=静态NAT
 nat_desc=该表中的静态网络地址转换条目可用于在防火墙上的外部地址与防火墙后的计算机的RFC1918地址之间建立1-1对应关系。静态NAT通常用于允许从网络外部连接到内部服务器。
 nat_add=添加一个新的静态NAT条目。
@@ -219,6 +228,7 @@ nat_local=对防火墙系统有效吗？
 nat_eext=无效的外部IP地址
 nat_eint=内部IP地址无效
 nat_evirt=无效的虚拟接口号
+
 proxyndp_title=代理NDP
 proxyndp_desc=该页面允许您将系统配置为回答对NDP的IP地址请求，而不是其自身的IP地址，以便它可以将数据包转发到这些地址的真实目的地。
 proxyndp_add=添加一个新的代理NDP地址。
@@ -235,6 +245,7 @@ proxyndp_err=保存代理NDP失败
 proxyndp_have=主机路由存在吗？
 proxyndp_eaddr=NDP地址丢失或无效
 proxyndp_pers=即使防火墙停止也要离开路由吗？
+
 routestopped_title=停止时
 routestopped_desc=默认情况下，当Shorewall停止时，它将拒绝所有主机的访问。该页面允许您定义仍可访问的主机或网络。
 routestopped_add=添加一个新的停止地址。
@@ -250,6 +261,7 @@ routestopped_err=无法保存停止的地址
 routestopped_eaddr=没有输入地址
 routestopped_all=所有地址
 routestopped_list=列出的地址和网络 ..
+
 tunnels_title=VPN隧道
 tunnels_desc=此页面列出了通过防火墙的VPN隧道，因此Shorewall配置必须允许。
 tunnels_add=添加新的VPN隧道。
@@ -282,6 +294,7 @@ tunnels_generic_l=通用，用于协议。
 tunnels_gsel=列出的区域
 tunnels_eopenvpn=OpenVPN通道的端口号无效
 tunnels_egeneric=缺少协议或协议：通用隧道的端口
+
 hosts_title=区域主机
 hosts_desc=此页面列出了属于特定区域的主机和网络。通常，您无需对此列表进行任何更改。
 hosts_add=添加一个新的区域主机。
@@ -301,8 +314,10 @@ hosts_ip=地址或网络 $1
 hosts_mac=MAC地址 $1
 hosts_ipset=IP设定 $1
 hosts_any=任何主机
+
 edit_before=进入 $1之前
 edit_after=输入后 $1
+
 blacklist_title=黑名单主机
 blacklist_desc=此页面列出了主机和服务，如果来自主机和服务的流量到达设置了<b>黑名单</b>选项的接口，则将被阻止。
 blacklist_add=添加新的黑名单主机。
@@ -325,6 +340,7 @@ blacklist_eproto=协议缺失或无效
 blacklist_eports=无效的端口号或逗号分隔的端口列表
 blacklist_eports2=只能为TCP和UDP协议指定端口
 blacklist_return=黑名单主机
+
 providers_title=其他路由提供者
 providers_desc=此页面定义其他路由表。如果您有一个以上的ISP连接或同一个ISP的多个连接，或者在防火墙以外的主机上将Squid作为透明代理运行，则需要这些。
 providers_add=添加一个新的路由提供程序。
@@ -359,17 +375,21 @@ providers_enumber=提供者编号缺失或无效
 providers_emark=提供者标记号缺失或无效
 providers_edup=缺少提供者以重复
 providers_egateway=网关丢失或无效
+
 manual_desc=此表单可用于手动编辑Shorewall文件 $1。注意，因为不会对更改进行语法检查。
 manual_reset=撤消
 manual_err=保存表文件失败
 manual_efile=无效的表名！
 manual_edata=没有输入表文件内容。
+
 acl_nochange=可以申请，停止和启动Shorewall配置吗？
 acl_files=可用的岸壁表
 acl_all=所有
 acl_sel=在下面选择 ..
+
 delete_err=删除行失败
 delete_enone=未选择任何行
+
 opts_routeback=接受流量返回主机
 opts_source=允许从主机到任何目的地
 opts_dest=允许从任何来源托管
@@ -386,12 +406,14 @@ opts_proxyndp=启用代理NDP
 opts_ndp_filter=仅响应接口IP的NDP请求
 opts_detectnets=泰勒区域仅包含路由主机
 opts_upnp=通过UPNP重新映射数据包
+
 opts_dhcp=接口使用DHCP
 opts_forward=设置转发
 opts_ignore=忽略上/下事件
 opts_optional=接口是可选的
 opts_required=需要界面
 opts_bridge=接口是桥梁
+
 comment_add=添加新评论。
 comment_edit=编辑评论
 comment_create=建立评论
@@ -399,6 +421,7 @@ comment_header=表注释详细信息
 comment_msg=信息
 comment_err=无法保存评论
 comment_enone=没有输入消息
+
 log_create_table=已将条目添加到 $1表中
 log_modify_table=$1表中的已修改条目
 log_delete_table=已从 $1表中删除条目
@@ -414,6 +437,7 @@ log_start=启动防火墙
 log_refresh=刷新防火墙
 log_restart=重新启动防火墙
 log_clear=清除防火墙
+
 shorewall_conf_title=主配置文件
 shorewall_conf_desc=该页面允许您配置全局配置变量。注意：如果要保留注释在配置文件中的相对位置，建议不要在此处更改变量的顺序。
 shorewall_conf_add=添加一个新的配置变量。
@@ -427,6 +451,7 @@ shorewall_conf_create=创建配置变量
 shorewall_conf_header=配置变量详细信息
 shorewall_conf_err=保存配置变量失败
 shorewall_conf_varname=无效的变量名（必须是有效的shell变量名）
+
 params_title=自订参数
 params_desc=该页面允许您配置Shorewall的自定义参数。注意：如果要保留注释在配置文件中的相对位置，建议不要在此处更改参数的顺序。
 params_add=添加一个新的自定义参数。

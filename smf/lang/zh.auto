@@ -180,6 +180,7 @@ whats_this_NSTATE=服务的下一个状态，在服务转换时有用。 “-”
 whats_this_SCOPE=服务实例的作用域名称。请参阅：smf（5）。请参阅：svcs（1）。
 whats_this_STIME=服务进入当前状态的时间（如果是今天）或日期。请参阅：smf（5）。请参阅：svcs（1）。
 whats_this_Select=在此处检查要启用/禁用/刷新等服务的列表。
+
 whats_this_service_detail=在此处指定/编辑顶级服务信息：服务名称，版本号，用于清单和稳定性的捆绑包名称。请参阅：smf（5）。请参阅：svccfg（1M）。请参阅：service_bundle（4）。
 whats_this_bundle_name=清单中的服务捆绑包名称。多个服务可以捆绑在一个清单中，但是这里的名称并不重要。对于已经存在的服务，它将设置为导出，因为这是svccfg从SMF存储库导出清单时所做的。请参阅：svccfg（1M）。请参阅：service_bundle（4）。
 whats_this_service_name=服务名称。惯例是使用[general_service_category]/[name]格式。已经提供的类别包括应用程序（高级应用程序），里程碑（其他服务的集合，例如名称服务），平台（特定于平台的服务），系统（Solaris系统服务），设备（特定于设备的服务），网络（网络/互联网服务）和站点（站点特定的描述）。当然，您也可以指定自己的类别，但是大多数服务应该可以满足上述条件之一。请参阅：smf（5）。

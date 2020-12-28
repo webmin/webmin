@@ -45,6 +45,7 @@ index_ondate=Data
 index_charset=Set automat de caractere pentru mesaj
 index_subject=Subiectul mesajului automat
 index_nowebmin=Acest modul este utilizat numai în Usermin. Dacă este vizibil în Webmin, tema pe care o utilizați este incompletă.
+
 edit_title1=Creați filtru
 edit_title2=Editează filtrul
 edit_header1=Stare pentru filtru
@@ -71,6 +72,7 @@ edit_amode7=Salvați în folderul nou numit
 edit_nobounce=Suprimați redirecționarea mesajelor de respingere
 edit_apply=Afișați potrivirea e-mailului în dosar:
 edit_move=Aplicați la e-mail în dosar:
+
 save_err=Salvarea filtrului nu a reușit
 save_egone=Filtrul nu mai există!
 save_econdheader=Antet de e-mail lipsă sau nevalid
@@ -89,8 +91,10 @@ save_enewfolder3=Există deja un folder cu același nume
 save_estart=Data de începere automată nevalidă
 save_eend=Data de încheiere automată a incorecte
 save_echarset=Set de caractere care lipsește sau este incorect
+
 delete_err=Ștergerea filtrelor nu a reușit
 delete_enone=Nimic selectat
+
 aliases_type1=Adresa 1
 aliases_type2=Adrese din fișierul $1 
 aliases_type3=Fișierul $1 
@@ -101,6 +105,7 @@ aliases_your=Căsuța dvs. poștală
 aliases_delete=Ștergeți e-mailul
 aliases_other=Cutie poștală a utilizatorului $1 
 aliases_auto=Răspuns automat cu mesajul $1 
+
 auto_title=Răspuns automat prin e-mail
 auto_header=Opțiuni automate de răspuns prin e-mail
 auto_enabled=Răspuns automat activat?
@@ -111,12 +116,14 @@ auto_charsetdef=Din limbajul actual
 auto_charsetother=Alt set de caractere
 auto_period=Interval minim între răspunsuri
 auto_err=Nu a reușit să salveze răspunsul automat
+
 forward_title=Redirecționare email
 forward_header=Opțiuni de expediere prin e-mail
 forward_enabled=Redirecționare prin e-mail activată?
 forward_to=Transmite către adrese
 forward_cont=De asemenea, livrați normal?
 forward_err=Nu a reușit să salvați redirecționarea prin e-mail
+
 move_err=Eroare la aplicarea filtrului
 move_esrc=Dosarul sursă $1 nu există!
 move_edest=Dosarul destinație $1 nu există!

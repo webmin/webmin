@@ -155,8 +155,10 @@ menu_bookmarks=Preferits
 notallowed=No tens permís per accedir a $1. Els directoris permesos són: $2
 error_upload_emax=El fitxer pujat és més gran que el límit de $1
 extract_etype=Tipus de fitxer d'arxiu no suportat
+
 info_total1=Total: $1 fitxer i $2 directori
 info_total2=Total: $1 fitxers i $2 directori
 info_total3=Total: $1 fitxer i $2 directoris
 info_total4=Total: $1 fitxers i $2 directoris
+
 ownership=Propietari

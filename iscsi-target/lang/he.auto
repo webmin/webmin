@@ -1,6 +1,7 @@
 check_econfig=קובץ תצורת היעד של iSCSI $1 לא נמצא במערכת שלך.
 check_eietadm=פקודת ניהול היעד iSCSI $1 לא נמצאה במערכת שלך.
 check_einit=פעולת אתחול $1 אינה קיימת
+
 index_title=יעד iSCSI
 index_clink=אולי הוא לא מותקן, או <a href='$1'>תצורת המודול</a> שלך שגויה.
 index_stop=עצור את יעד ה- iSCSI
@@ -22,8 +23,10 @@ index_noluns=אף אחד
 index_nousers=כל
 index_nullio=דיסק RAM של מגזרים $1 
 index_size=גודל כולל
+
 dtargets_err=מחיקת יעדים נכשלה
 dtargets_enone=לא נבחר!
+
 target_title1=צור יעד iSCSI
 target_title2=ערוך יעד iSCSI
 target_header=אפשרויות התקן משותפות של iSCSI
@@ -68,11 +71,13 @@ target_noalias=אף אחד
 target_hdigest=בדיקת כותרת ראש
 target_ddigest=בדיקת נתונים
 target_nodigest=אף אחד
+
 auth_title=הגדרות אימות
 auth_header=אפשרויות אימות ברירת מחדל עבור כל היעדים
 auth_iuser=אימות על ידי לקוחות
 auth_ouser=אימות ללקוחות
 auth_err=שמירת הגדרות האימות נכשלה
+
 conn_title=הגדרות חיבור
 conn_header=אפשרויות חיבור ברירת מחדל עבור כל היעדים
 conn_sessions=מפגשים מקסימאליים במקביל
@@ -91,6 +96,7 @@ conn_emaxrecv=אורך קטע הקבלה המרבי חסר או שאינו מס�
 conn_emaxxmit=אורך קטע ההעברה המרבי חסר או שאינו מספרי
 conn_emaxburst=גודל פרץ לקוח מרבי חסר או לא מספרי
 conn_efirstburst=גודל נתונים מקסימלי חסר או בלתי מספרי של לקוח חסר גודל
+
 timeout_title=הגדרות פסק זמן
 timeout_header=אפשרויות פסק זמן של לקוח
 timeout_nopi=מרווח בין פינגס כאשר אינו פעיל
@@ -98,6 +104,7 @@ timeout_nopinone=אף פעם לא פינג
 timeout_secs=שניות
 timeout_nopt=זמן לחכות לתגובת פינג
 timeout_noptnone=זהה לזמן פינג
+
 addr_title=כתובת ויציאה של השרת
 addr_header=אפשרויות רשת iSCSI ברשת
 addr_addr=האזן בכתובת IP
@@ -110,18 +117,21 @@ addr_err=שמירת כתובת השרת נכשלה
 addr_eaddr=כתובת להאזנה עליה חייבת להיות כתובת IP
 addr_eport=הנמל להאזנה עליו חייב להיות מספר
 addr_edebug=רמת הבאג 'חייבת להיות מספר
+
 initiators_title=כתובות לקוח מותרות
 initiators_none=טרם הוגדרה כתובת לקוח מותרת. אף לקוחות לא יוכלו להתחבר.
 initiators_ips=לקוחות מורשים
 initiators_title1=הוסף כתובות לקוח מותרות
 initiators_title2=ערוך כתובות לקוח המותרים
 initiators_header=לקוחות iSCSI מורשים למטרה
+
 targets_title=כתובות שרת מותרות
 targets_none=טרם הוגדרה כתובת שרת מותרת. אף לקוחות לא יוכלו להתחבר.
 targets_ips=ממשקי שרת מותרים
 targets_title1=הוסף כתובות שרת מורשות
 targets_title2=ערוך כתובות שרת מורשות
 targets_header=ממשק שרת iSCSI מותר למטרה
+
 allow_target=שם היעד
 allow_move=מהלך \ לזוז \ לעבור
 allow_delete=מחק את הנבחר
@@ -133,17 +143,21 @@ allow_return=יעדים וכתובות מותרות
 allow_err=שמירת כתובות מותר נכשלה
 allow_eaddr=הכתובת $1 אינה תקפה. זו חייבת להיות כתובת IPv4, רשת/מסכה IPv4 או כתובת IPv6 בסוגריים מרובעים.
 allow_eaddrs=אין כתובות לאפשר להזין
+
 dallow_err=מחיקת כתובות מותרות נכשלה
 dallow_enone=לא נבחר
+
 manual_title=ערוך את קובץ התצורה
 manual_desc=השתמש בתיבת הטקסט שלהלן כדי לערוך את קובץ התצורה של שרת iSCSI $1. היזהר, מכיוון שלא יתבצע אימות בכניסה שלך!
 manual_err=שמירת קובץ התצורה נכשלה
 manual_edata=לא הוזן תוכן!
+
 start_err=הפעלת שרת iSCSI נכשלה
 stop_err=עצירת שרת iSCSI נכשלה
 restart_err=ההפעלה מחדש של שרת iSCSI נכשלה
 atboot_err=ההפעלה נכשלה
 atboot_einit=סקריפט Init $1 אינו קיים
+
 log_create_target=יצר יעד $1 
 log_delete_target=היעד $1 נמחק
 log_modify_target=יעד שונה 1

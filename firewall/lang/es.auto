@@ -3,6 +3,7 @@ index_title_v6=Cortafuegos IPv6
 index_editing=Archivo de reglas $1 
 index_evalid=¡ADVERTENCIA! Su configuración actual de IPtables no es válida : $1 
 index_comm=Comentario
+index_no_comment=
 index_jump_reject=<font color=#ff4400>Rechazar</font>
 index_jump_log=Paquete de registro
 index_crename=Cambiar nombre de cadena
@@ -34,6 +35,9 @@ index_ipset_size=Talla
 index_ipvxmode=Cambiar la versión del protocolo IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
+desc_icmpv6-type=El tipo de ICMP es $1 
+desc_icmpv6-type!=El tipo de ICMP no es $1 
 desc_mac-source=la dirección de ethernet es $1 
 desc_mac-source!=la dirección de ethernet no es $1 
 desc_ctstate=el estado de conexión es $1 
@@ -45,7 +49,9 @@ desc_physdev-out!=la interfaz física de salida no es $1
 desc_args--match-set=$2 está contenido en el conjunto de IP $1 
 desc_src=fuente
 desc_dest=destino
+
 redhat_einstalled=No se encontró ninguna acción de arranque <tt>iptables (6)</tt>, lo que indica que el paquete IPtables no está instalado en su sistema
+
 edit_cmt=Comentario de regla
 edit_state_untracked=Sin seguimiento
 edit_state_snat=Fuente NATd
@@ -59,17 +65,23 @@ edit_physdevout=Interfaz física saliente
 edit_physdevisin=Paquete entrante en la interfaz del puente
 edit_physdevisout=Paquete saliente en la interfaz del puente
 edit_physdevisbridged=Se está puenteando el paquete
+
 save_etcpflags2=Debe seleccionar al menos un indicador TCP de la segunda fila
 save_ecanjump=No tienes permiso para usar esta acción
 save_ephysdevin=Interfaz física entrante faltante o inválida
 save_ephysdevout=Interfaz física saliente faltante o inválida
+
 delete_ecannot=No tienes permiso para eliminar cadenas
+
 clear_ecannot=No está permitido limpiar cadenas
+
 new_ecannot=No tienes permitido crear cadenas
+
 apply_ecannot=No tiene permitido aplicar la configuración
 apply_remote=Error de $1 : $2 
 unapply_ecannot=No está permitido revertir la configuración
 bootup_ecannot=No está permitido habilitar o deshabilitar el firewall en el arranque
+
 log_rename_chain=Cadena renombrada $1 en la tabla $2 
 log_delsel_chain=Se eliminaron $3 reglas de la cadena $1 en la tabla $2 
 log_movesel_chain=Se movieron $3 reglas de la cadena $1 en la tabla $2 
@@ -78,7 +90,9 @@ log_add_group=Se agregaron servidores de clúster del grupo $1
 log_delete_host=Se eliminó el servidor de clúster $1 
 log_delete_group=Se eliminaron $1 servidores de clúster
 log_openports=Puertos de firewall abiertos $1 
+
 setup_ecannot=No tienes permiso para configurar el firewall
+
 acl_tables=IPtables permitidas
 acl_apply=¿Se puede aplicar la configuración?
 acl_unapply=¿Se puede cancelar la aplicación de la configuración?
@@ -90,9 +104,11 @@ acl_jall=Todos
 acl_newchain=¿Se pueden crear nuevas cadenas?
 acl_delchain=¿Se pueden eliminar o borrar cadenas?
 acl_policy=¿Se puede cambiar la política predeterminada?
+
 etable=No tienes permiso para editar esta IPtable
 ejump=No tienes permiso para editar esta regla
 ecluster=No tiene permiso para administrar el clúster de firewall
+
 cluster_title=Servidores de firewall de clúster
 cluster_none=Aún no se han agregado servidores al clúster de firewall.
 cluster_host=Nombre de host
@@ -103,6 +119,7 @@ cluster_gadd=Agregar servidores en grupo
 cluster_need=Debe agregar servidores con un nombre de usuario y contraseña en el módulo Índice de servidores Webmin antes de que puedan administrarse aquí.
 cluster_return=servidores de clúster
 cluster_delete=Eliminar selección
+
 add_title=Agregar servidores
 add_msg=Añadiendo $1 ..
 add_gmsg=Agregando servidores en el grupo $1 ..
@@ -112,13 +129,16 @@ add_echeck=El servidor $1 no tiene el módulo de firewall de Linux
 add_emissing=Al servidor $1 le falta el comando de firewall $2 
 add_ok=Se agregó $1, con $2 reglas de firewall activas.
 add_enone=No hay servidores para agregar seleccionados!
+
 policy_ecannot=No tiene permiso para cambiar la política predeterminada para esta cadena
+
 move_title=Mover Reglas
 move_count=Reglas seleccionadas
 move_chain=Cambio actual
 move_dest=Cadena de destino
 move_ok=Muévete ahora
 move_header=Opciones de movimiento de regla
+
 rename_title=Cambiar nombre de cadena
 rename_count=Reglas en cadena
 rename_chain=Nombre actual
@@ -128,5 +148,3 @@ rename_header=Opciones de cambio de nombre de cadena
 rename_adjust=¿Modificar otras reglas que saltan a esta cadena?
 rename_none=Ninguna
 rename_ecannot=No está permitido cambiar el nombre de las cadenas.
-desc_icmpv6-type=El tipo de ICMP es $1 
-desc_icmpv6-type!=El tipo de ICMP no es $1 

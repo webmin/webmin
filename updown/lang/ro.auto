@@ -40,6 +40,7 @@ index_descfetch=Această pagină este pentru descărcarea unui fișier din siste
 index_email=Trimiteți e-mail când se descarcă?
 index_emailto=Da, să mă adresez
 index_email2=Trimiteți e-mail atunci când încărcările sunt terminate?
+
 upload_title=Încărca fișiere
 upload_err=Nu a putut încărca fișierele
 upload_edir=Lipsește directorul pentru încărcare
@@ -63,6 +64,7 @@ upload_saving=Salvarea fișierului $1 ..
 upload_saved=.. a scris $1 
 upload_unzipping=Extragerea fișierului $1 ..
 upload_unzipdone=.. $1 
+
 download_err=Nu a reușit salvarea descărcării
 download_enone=Nu s-au introdus URL-uri de descărcare
 download_eurl=„$1” nu este o adresă URL validă
@@ -74,9 +76,11 @@ download_failed=Descărcare eșuată : $1
 download_eaccess=Nu aveți voie să descărcați fișierele pe $1 
 download_eucannot=Nu aveți voie să descărcați fișiere ca utilizator $1 
 download_egcannot=Grupul selectat nu conține utilizatorul selectat
+
 cancel_err=Nu a reușit anularea descărcărilor
 cancel_enone=Nimic selectat
 cancel_ecannot=Nu aveți voie să anulați descărcările pentru utilizator $1 
+
 log_cancel=Anulat $1 descărcări
 log_upload_l=Fișier (e) încărcat (i) $1 
 log_upload=Încărcați $1 fișiere (e)
@@ -84,6 +88,7 @@ log_download_l=Adresa URL descărcată $1
 log_download=$1 URL (e) descărcate
 log_sdownload_l=Programarea descărcării URL-urilor $1 
 log_sdownload=Programarea descărcării de $1 URL (e)
+
 acl_users=Poate încărca și descărca fișiere ca utilizatori
 acl_all=Toți utilizatorii
 acl_this=Utilizator curent Webmin
@@ -98,6 +103,7 @@ acl_max=Dimensiunea maximă a încărcării
 acl_unlim=Nelimitat
 acl_b=bytes
 acl_fetch=Se pot descărca fișiere pe computer?
+
 fetch_err=Descărcarea fișierului nu a reușit
 fetch_ecannot=Nu aveți voie să descărcați fișiere pe un computer
 fetch_efile=Nu a fost introdus niciun nume de fișier
@@ -106,6 +112,7 @@ fetch_eopen=Nu a putut fi deschis fișierul : $1
 fetch_eaccess=Nu aveți voie să descărcați fișierele de la $1 
 fetch_ezip=Un director nu poate fi descărcat decât dacă este instalată comanda <tt>zip</tt>
 fetch_eroot=Directorul rădăcină nu poate fi descărcat!
+
 email_downmsg=Următoarea descărcare a finalizat :
 email_downurl=URL: $1 
 email_downerr=Mesaj de eroare: $1 

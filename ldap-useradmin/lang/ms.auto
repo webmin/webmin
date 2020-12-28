@@ -19,10 +19,13 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=Pengguna LDAP
 index_groups=Kumpulan LDAP
+
 imap_econn=Gagal menyambung ke pelayan IMAP $1 
 imap_elogin=Gagal masuk ke pelayan IMAP $1 sebagai $2 : $3 
 conn_eldap_host=Tiada fail konfigurasi klien LDAP ditemui pada sistem anda, jadi pelayan LDAP mesti ditetapkan pada halaman Module Config
 conn_elogin=Tiada fail konfigurasi klien LDAP ditemui pada sistem anda, jadi log masuk LDAP mesti ditetapkan pada halaman Module Config
+conn_efile_open=Tidak dapat membuka fail kelayakan ikatan LDAP:
+
 uedit_cap=Keupayaan pengguna
 uedit_samba=Login samba?
 uedit_cyrus=Login pelayan IMAP?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=Kemas kini Kata Laluan Terakhir
 uedit_sambapwdcanchange=Kata laluan boleh berubah
 uedit_sambabadpasswordcount=Kira kata laluan yang buruk
 uedit_sambaacctflags=Bendera akaun
+
 usave_eadd=Gagal menambah pengguna ke pangkalan data LDAP : $1 
 usave_emod=Gagal untuk mengubah suai pengguna dalam pangkalan data LDAP : $1 
 usave_emoddn=Gagal menamakan semula pengguna dalam pangkalan data LDAP : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=Pengguna $1 sudah menggunakan $2 $3
 usave_eattrdupg=Kumpulan $1 sudah menggunakan $2 $3 
 usave_ereal=Nama sebenar hilang
 usave_equota=Kuota IMAP yang hilang atau tidak sah
+
 search_err=Cari $1 di bawah $2 gagal : $3 
+
 gedit_dn=LDAP DN Kumpulan
 gedit_return=butiran kumpulan
 gedit_cap=Keupayaan kumpulan
 gedit_samba=Kumpulan Samba?
+
 gsave_egone=Kumpulan tidak lagi wujud!
 gsave_edelete=Gagal memadam kumpulan dari pangkalan data LDAP : $1 
 gsave_eadd=Gagal menambah kumpulan ke pangkalan data LDAP : $1 
 gsave_emod=Gagal untuk mengubahsuai kumpulan dalam pangkalan data LDAP : $1 
 gsave_emoddn=Gagal menamakan semula kumpulan dalam pangkalan data LDAP : $1 
+
 gdel_group=Memadam kemasukan kumpulan LDAP ..
+
 udel_pass=Memadam kemasukan pengguna LDAP ..
 udel_book=Memadam dari buku alamat ..
 udel_imap=Memadam folder IMAP ..
 udel_warnimap=Kotak pos mel sedia ada akan dipadamkan apabila memadam direktori rumah!
 udel_failed=.. gagal!  : $1 
+
 raw_title=Atribut LDAP
 raw_name=Nama Atribut
 raw_value=Nilai
 raw_for=Untuk $1 
+
 batch_samba=Buat akaun Samba untuk pengguna baru?
 batch_imap=Buat akaun IMAP untuk pengguna baru?
 batch_descafter3=Dalam baris <b>buat</b> dan <b>ubah suai</b>, anda boleh memilih tambahan bidang yang mengandungi atribut LDAP dalam format <i>nama</i> = <i>nilai</i>, ke akan diberikan kepada pengguna baru atau diubah suai.

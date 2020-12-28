@@ -8,10 +8,13 @@ index_start=Iniciar el servidor de comandos programados
 index_startdesc=Inicie el proceso del servidor en segundo plano <tt>atd</tt> que ejecuta comandos programados. Esto es necesario para que los comandos se ejecuten en los momentos especificados.
 index_boot=¿Iniciar servidor en el arranque?
 index_bootdesc=Cambie esta configuración para habilitar o deshabilitar el inicio del servidor de comandos programados en el momento del inicio del sistema.
+
 edit_shortcmd=Comando para ejecutar
 edit_showfull=Mostrar guión completo.
+
 deletes_err=Error al cancelar comandos
 deletes_enone=Ninguna seleccionada
+
 log_allow=Usuarios permitidos modificados
 log_create_job=Comando programado creado para $1 
 log_delete_job=Comando programado cancelado para $1 
@@ -21,5 +24,6 @@ log_stop=Servidor de comandos programados detenido
 log_start=Servidor de comandos programados iniciado
 log_bootup=Servidor de comandos programados habilitado en el arranque
 log_bootdown=Servidor de comandos programados deshabilitado en el arranque
+
 stop_err=No se pudo detener el servidor
 start_err=No se pudo iniciar el servidor

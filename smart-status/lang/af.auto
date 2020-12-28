@@ -25,6 +25,7 @@ index_family=Modelfamilie
 index_serial=Reeksnommer
 index_capacity=kapasiteit
 index_norm=genormaliseer:
+
 monitor_type=SMART Drive Check
 monitor_type2=SSD Wearout
 monitor_drive=Ry om na te gaan
@@ -40,14 +41,17 @@ monitor_wearlevel=Misluk as die slytasievlak onder is
 monitor_ewearlevel=Ongeldige slytasiepersentasie
 monitor_nowearout=Drive meld nie 'n SSD-wearout-aanwyser aan nie
 monitor_wornout=Dravlak het tot $1 gedaal
+
 short_title=Kort selftoets
 short_doing=Begin kort selftoets van $1.
 short_failed=.. misluk!
 short_ok=.. toets begin OK. U kan die resultate op die hoofblad van die module sien.
+
 ext_title=Uitgebreide selftoets
 ext_doing=Begin met uitgebreide selftoets van $1.
 ext_failed=.. misluk!
 ext_ok=.. toets begin OK. U kan die resultate op die hoofblad van die module sien.
+
 data_title=Toets van data-insameling
 data_doing=Begin vanlyn data-insameling op $1.
 data_failed=.. misluk!

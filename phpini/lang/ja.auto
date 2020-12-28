@@ -9,17 +9,21 @@ index_edit=管理する
 index_manual=手動で編集
 index_anyfile=他のPHP構成ファイルを編集します。
 index_return=構成ファイル
+
 file_global=グローバルPHP設定
 file_eread=$1の読み取りに失敗しました： $2
+
 manual_title=構成を手動で編集する
 manual_desc=このページを使用して、PHP構成ファイルを手動で編集できます。変更に対して構文やその他の妥当性検査は実行されないため、これは慎重に行う必要があります。
 manual_err=構成ファイルの編集に失敗しました
 manual_edata=新しいコンテンツは入力されていません
+
 list_title=PHP構成の管理
 list_ecannot=このPHP構成ファイルを管理することは許可されていません
 list_return=PHPの構成
 list_format_ini=INI形式
 list_format_fpm=FPMフォーマット
+
 vars_title=PHP変数
 vars_header=PHP変数の作成と引用オプション
 vars_magic=すべての入力変数を引用しますか？
@@ -28,6 +32,7 @@ vars_register=すべての入力をグローバル変数に変換しますか？
 vars_args=コマンドラインパラメータをグローバル変数に変換しますか？
 vars_long=<tt>HTTP_GET_VARS</tt>のような古いスタイルの配列を作成しますか？
 vars_err=PHP変数設定の保存に失敗しました
+
 dirs_title=ディレクトリ設定
 dirs_header=PHPスクリプトおよび拡張機能のディレクトリ設定
 dirs_include=インクルードのディレクトリを検索
@@ -39,6 +44,7 @@ dirs_err=ディレクトリ設定を保存できませんでした
 dirs_eincs=検索ディレクトリを含めない
 dirs_eutmp=一時ファイルディレクトリが見つからないか無効です
 dirs_eext=拡張機能ディレクトリがありません
+
 db_title=データベース設定
 db_header1=MySQLデータベース接続設定
 db_persist=永続的なデータベース接続を許可しますか？
@@ -57,6 +63,7 @@ db_emaxlinks=最大合計接続数がないか、無効です
 db_etimeout=接続タイムアウトがないか、無効です
 db_ehost=デフォルトのMySQLサーバーホストがないか、無効です
 db_eport=デフォルトのMySQLサーバーポートがないか、無効です
+
 session_title=セッションオプション
 session_header=PHPセッショントラッキングのオプション
 session_handler=セッション保存メカニズム
@@ -73,6 +80,7 @@ session_epath=セッションファイルのディレクトリが見つからな
 session_elife=Cookieの有効期間がないか、無効です
 session_emaxlife=最大セッション存続期間がないか、無効です
 session_eredis=redis拡張機能がないか、無効になっています
+
 safe_title=セーフモードオプション
 safe_header=安全なファイルアクセスモードオプション
 safe_on=セーフモードを有効にしますか？
@@ -85,6 +93,7 @@ safe_err=セーフモードオプションを保存できませんでした
 safe_einclude=インクルードファイルの許可されたディレクトリが見つからないか無効です
 safe_eexec=実行されたプログラムの許可されたディレクトリがないか、無効です
 safe_ebasedir=ファイル操作用のディレクトリが見つからないか無効です
+
 limits_title=リソース制限
 limits_header=メモリおよび転送制限オプション
 limits_mem=最大メモリ割り当て
@@ -98,6 +107,7 @@ limits_epost=最大HTTP POSTサイズがないか、無効です
 limits_eupload=最大ファイルアップロードサイズがないか、無効です
 limits_eexec=最大実行時間が欠落しているか無効です
 limits_einput=最大入力解析時間がないか、無効です
+
 errors_title=エラーログ
 errors_header=エラーメッセージの表示とログオプション
 errors_display=エラーメッセージを表示しますか？
@@ -128,6 +138,7 @@ errors_err=エラーログの保存に失敗しました
 errors_ereporting=エラータイプ式が入力されていません
 errors_emaxlen=ログに記録されたエラーの最大サイズがないか、無効です
 errors_efile=エラーログファイルがありません
+
 misc_title=その他の設定
 misc_header=その他のPHP設定
 misc_short=&lt;？で始まるPHPスクリプトを許可します？
@@ -148,6 +159,7 @@ misc_include=リモートインクルードのオープンを許可しますか�
 misc_path=CGI Fix Path Info？
 misc_timezone=PHPタイムゾーン
 misc_charset=デフォルトの文字セット
+
 log_manual=ファイル $1を手動で編集します
 log_vars=$1のPHP変数を変更しました
 log_dirs=$1のディレクトリ設定を変更しました
@@ -157,6 +169,7 @@ log_safe=$1のセーフモードオプションを変更しました
 log_limits=$1のリソース制限を変更しました
 log_errors=$1のエラーログを変更しました
 log_misc=$1の他の設定を変更しました
+
 acl_global=グローバルなPHP構成を編集できますか？
 acl_anyfile=PHP構成として任意のファイルを編集できますか？
 acl_manual=構成ファイルを手動で編集できますか？

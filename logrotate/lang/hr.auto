@@ -19,11 +19,13 @@ index_force=Rotacija dnevnika sile
 index_forcedesc=Prisilite odmah rotaciju svih datoteka dnevnika, čak i ako još nije vrijeme.
 index_logrotate=Logrotate
 index_delete=Izbrišite odabrane rotacije zapisnika
+
 period_daily=Dnevno
 period_weekly=Tjedni
 period_monthly=Mjesečno
 period_never=Nikada
 period_bytes=bajtova
+
 edit_title1=Uredi datoteku dnevnika
 edit_title2=Stvorite datoteku dnevnika
 edit_header=Podaci o zakrenutim datotekama dnevnika
@@ -62,8 +64,10 @@ edit_pre=Naredbe za pokretanje prije rotacije
 edit_default=Zadano ($1)
 edit_sharedscripts=Samo skripte pokrenuti samo jednom za sve datoteke?
 edit_now=Zakreni odmah
+
 global_title=Opcije
 global_header=Zadane opcije za sve datoteke dnevnika
+
 save_err=Spremanje dnevnika nije uspjelo
 save_efile=Nedostaje ili nevažeće ime datoteke dnevnika
 save_esize=Nedostaje ili neispravna maksimalna veličina
@@ -81,6 +85,7 @@ save_eerrors=Nedostaje adresa e-pošte za poruke o pogrešci
 save_epre=Skripta prije rotacije ne može sadržavati <tt>endcript</tt> ili <tt>endrotate</tt> redak
 save_epost=Skripta nakon rotacije ne može sadržavati <tt>endcript</tt> ili <tt>endrotate</tt> redak
 save_enofiles=Nema unesenih datoteka za rotaciju
+
 log_modify_sched=Izmijenjen rotacijski zapisnik Cron posao
 log_create_sched=Izrađen zadatak rotacije dnevnika Cron
 log_delete_sched=Izbrisan zadatak rotacije dnevnika Cron
@@ -89,6 +94,7 @@ log_create=Dodana je rotacija za datoteku dnevnika $1
 log_modify=Izmijenjeno zakretanje datoteke dnevnika $1 
 log_delete=Izbrisana rotacija za datoteku dnevnika $1 
 log_delete_logs=Izbrisana rotacija za $1 datoteke zapisa
+
 sched_title=Raspored rotacije trupaca
 sched_desc=Da bi se izvršilo okretanje dnevnika konfigurirano pomoću ovog modula, Cron mora izvršavati naredbu $1 prema redovitom rasporedu (obično svakodnevno).
 sched_runparts=Trenutno se naredba za rotaciju dnevnika izvodi iz skripte $1 $2 i ne može se prilagoditi.
@@ -98,10 +104,12 @@ sched_enabled=Omogućeno, ponekad dolje ..
 sched_save=Ažurirajte posao Cron
 sched_err=Spremanje rasporeda rotacije nije uspjelo
 sched_when=Vremena za pokretanje
+
 force_title=Rotacija dnevnika sile
 force_doing=Prisiljavanje na rotaciju svih datoteka dnevnika ..
 force_doingone=Prisiljavanje na trenutno okretanje jedne datoteke zapisa ..
 force_done=.. gotovo.
 force_failed=.. neuspjeh! Pogledajte izlazni razlog za razlog zašto.
+
 delete_err=Brisanje zapisa nije uspjelo
 delete_enone=Nijedna nije odabrana

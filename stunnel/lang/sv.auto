@@ -21,6 +21,7 @@ index_eversion=Versionen av STunnel installerad på ditt system är $1, men den 
 index_conf=Från konfigurationsfilen $1 
 index_noconf=Ingen konfigurationsfil!
 index_delete=Radera valda tunnlar
+
 edit_title=Redigera SSL-tunnel
 create_title=Skapa SSL-tunnel
 edit_header1=Alternativ för källkällor
@@ -47,6 +48,7 @@ edit_tcpw=TCP-wrappers namn
 edit_auto=Automatisk
 edit_iface=Utgående källadress
 edit_type=Springa från
+
 save_err=Det gick inte att spara SSL-tunneln
 save_enclash=Servicenamnet $2 används redan på port $1.
 save_einetd=Det finns redan en inetd-tjänst som heter $1.
@@ -61,6 +63,7 @@ save_etcpw=Saknas eller ogiltigt TCP-wrappers namn
 save_eiface=Saknad eller ogiltig utgående källadress
 save_exinetd=Det finns redan en xinetd-tjänst som heter $1 
 save_export=Porten $1 används redan av xinetd-tjänsten $2 
+
 log_apply=Tillämpade ändringar
 log_create=Skapad SSL-tunnel $1 
 log_delete=Raderad SSL-tunnel $1 

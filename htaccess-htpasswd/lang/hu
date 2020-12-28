@@ -15,6 +15,7 @@ index_sha1=SHA1 kódolás engedélyezve lett a modul konfigurációjában, de a 
 index_cpan=<a href='$1'>Kattintson ide</a> hogy letöltse és installálja.
 index_delete=Védettség levétele a kiválasztott könyvtárakról
 index_remove=Védettség levétele és fájlok törlése
+
 dir_title1=Védett könyvtár hozzáadása
 dir_title2=Védett könyvtár szerkesztése
 dir_header=Védett könyvtár beállításai
@@ -54,6 +55,7 @@ dir_erequire_group=Nincs olyan csoport akinek engedélyezve lenne a belépés
 dir_delete=Védettség levétele
 dir_delete2=Védettség levétele és fájlok törlése
 dir_delete3=Védettség levétele és fájl törlése
+
 edit_title1=Új felhasználó
 edit_title2=Felhasználó szerkesztése
 edit_header=Weben ellenőrzött felhasználó részletezése
@@ -65,11 +67,13 @@ edit_pass0=Beállítás mint
 edit_passfrom=Módosítás erre
 edit_passto=új jelszóba
 edit_dom=Kivonatkód kódja
+
 gedit_title1=Új csoport létrehozása
 gedit_title2=Csoport szerkesztése
 gedit_header=Weben ellenőrzött csoport részletezése
 gedit_group=Csoport név
 gedit_members=Tagja a csoportnak
+
 save_err=Nem lehet a felhasználót menteni
 save_euser1=Hibás felhasználói név
 save_euser2=A felhasználói név nem tartalmazhatja a : karaktert
@@ -78,15 +82,18 @@ save_eclash=Egy felhasználó ilyen névvel már létezik
 save_eoldpass=A régi jelszó nem jó
 save_title=Felhasználó mentve
 save_edom=Nem létező vagy hibás kivonat kódsorozat
+
 gsave_err=Nem sikerült menteni a csoportot
 gsave_egroup1=Hibás csoport név
 gsave_egroup2=A csoport név nem tartalmazhat : karaktert vagy szóközt
 gsave_eclash=Ugyanilyen névvel már létezik egy csoport
+
 acl_dirs=Engedélyezett könyvtárak
 acl_user=Unix felhasználóként hozzam létre a .htaccess és htusers fileokat
 acl_same=Ugyanaz mint a Webmin belépésnél
 acl_home=A Unix felhasználó könyvtárát is belevegyem?
 acl_sync=Beállíthatom a Unix felhasználó szinkrinizálását?
+
 log_create_dir=Hozzáadott könyvtár $1
 log_modify_dir=Módosított könyvtár $1
 log_delete_dir=Törölt könyvtár $1
@@ -97,6 +104,7 @@ log_create_group=Létrehozott csoport $1
 log_modify_group=Módosított csoport $1
 log_delete_group=Törölt csoport $1
 log_delete_dirs=$1 könyvtár törlése
+
 search_title=Keresés eredménye
 search_err=A keresés sikertelen
 search_edir=Hiányzó vagy érvénytelen abszolult könyvtár a kereséshez

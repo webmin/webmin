@@ -9,6 +9,7 @@ index_sync=Sincronizar y Aplicar
 index_hardware2=Poner hora hardware también
 index_tzheader=Zona Horaria
 index_tz=Cambiar zona horaria a
+
 action_save=Salvar
 action_apply=Aplicar
 action_sync=Sicronizar hora del sistema con la hora de hardware
@@ -16,6 +17,7 @@ action_sync_s=Sincronizar hora de hardware con la hora del sistema
 action_timeserver_sys=Sincronizar hora del sistema
 action_timeserver_hw=Sincronizar hora de hardware
 action_savezone=Cambiar zona horaria
+
 acl_sys=¿Los usuarios pueden editar la hora del sistema?
 acl_hw=¿Los usuarios pueden editar la hora de hardware?
 acl_timezone=¿El usuario puede establecer la zona horaria?
@@ -26,18 +28,22 @@ acl_error=Tiene acceso al módulo de hora del sistema pero no puede editar ni la
 acl_nosys=No está autorizado a editar la hora del sistema
 acl_nohw=No está autorizado a editar la hora de hardware
 acl_nontp=No está autorizado a sincronizar con un servidor de hora
+
 sys_title=Hora del Sistema
 hw_title=Hora de Hardware
+
 day=Día
 month=Mes
 date=Fecha
 hour=Hora
 year=Año
+
 error_cnf=Error : comando $1 no hallado
 error_hw=No puedo poner la hora de hardware : $1
 error_sync=No puedo sincronizar con la hora del sistema: $1
 error_ediff=La diferencia del servidor de hora con la hora local es demasiado grande : $1 días
 error_entp=Fallo en sincronización horaria NTP : $1
+
 log_set_date=Puesta hora de sistema a $1
 log_set_hwclock=Puesto reloj de hardware a $1
 log_remote_date=Se tomó la hora de sistema de $2
@@ -47,6 +53,7 @@ log_remote_hwclock_l=Se tomó la hora de hardware $1 de $2
 log_sync=Hora de sistema sicronizada con hora de hardware
 log_sync_s=Hora de hardware sincronizada con hora de sistema
 log_timezone=Cambiada zona horaria a $1
+
 timezone_err=Fallo al salvar zona horaria
 timezone_ecannot=No está autorizado a cambia la zona horaria
 timezone_enone=No se seleccionó zona

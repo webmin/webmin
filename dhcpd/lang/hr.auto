@@ -64,12 +64,14 @@ index_match1=sadrži
 index_match2=šibice
 index_dhcpd=ISC DHCPd
 index_delete=Obriši odabrano
+
 butt_save=Uštedjeti
 butt_eco=Uređivanje opcija klijenta
 butt_vco=Pogledajte Opcije klijenta
 butt_del=Izbrisati
 butt_create=Stvoriti
 butt_leases=Lista najmova
+
 esub_crheader=Stvorite podmrežu
 esub_edheader=Uređivanje podmreže
 esub_tabhdr=Pojedinosti podmreže
@@ -83,12 +85,14 @@ esub_groups=Grupe izravno u ovoj podmreži
 esub_pools=Popisi adresa za podmrežu
 esub_pool=Bazen $1 
 esub_poolnone=Nije definiran skup adresa
+
 esub_pooladd=Dodajte skup adresa.
 esub_none=nijedan
 esub_return=popis podmreže
 esub_retshar=zajednička mreža
 esub_desc=Opis podmreže
 esub_fopeer=Neuspjeh vršnjak
+
 esh_crheader=Stvorite zajedničku mrežu
 esh_eheader=Uređivanje zajedničke mreže
 esh_tabhdr=Pojedinosti o zajedničkoj mreži
@@ -99,6 +103,7 @@ esh_subn=Podmreže u ovoj zajedničkoj mreži
 esh_return=popis podmreže
 esh_pools=Popisi adresa za zajedničku mrežu
 esh_desc=Opis zajedničke mreže
+
 ehost_crheader=Stvorite domaćina
 ehost_eheader=Uredi domaćina
 ehost_tabhdr=Pojedinosti domaćina
@@ -119,6 +124,7 @@ ehost_retgroup=skupina
 ehost_retsubn=podmreže
 ehost_retshar=zajednička mreža
 ehost_desc=Opis domaćina
+
 egroup_crheader=Stvorite grupu domaćina
 egroup_eheader=Uređivanje grupe domaćina
 egroup_tblhdr=Pojedinosti o grupi
@@ -129,6 +135,7 @@ egroup_return=popis domaćina
 egroup_retsubn=podmreže
 egroup_retshar=zajednička mreža
 egroup_desc=Opis grupe
+
 default=Zadano
 secs=sekundi
 none=nijedan
@@ -157,20 +164,24 @@ listl_pc=Postotak
 listl_err=Izbrisani najmovi nisu uspjeli
 listl_enone=Nijedna nije odabrana
 listl_refresh=Osvježi popis
+
 restart_errmsg1=Ponovno pokretanje dhcpd-a nije uspjelo
 restart_errmsg2=Proces signalizacije nije uspio
 start_failstart=Dhcpd nije uspio
 restart_conftext=Linije oko $1 u $2  :
+
 sgroup_faildel=Brisanje grupe nije uspjelo
 sgroup_failsave=Spremanje grupe nije uspjelo
 sgroup_invassign=grupa dodijeljena neispravnom odjeljku
 sgroup_echanged=Sadržaj konfiguracijske datoteke je promijenjen. Pokušajte ponovo.
+
 shost_faildel=Brisanje računala nije uspjelo
 shost_failsave=Spremanje domaćina nije uspjelo
 shost_invalidhn=nije valjano ime računala
 shost_invalidhwa='$1' nije valjana $2 adresa
 shost_invalidaddr='$1' sadrži nevažeće ime računala ili IP adresu
 shost_invassign=host dodijeljen neispravnom odjeljku
+
 sopt_failsave=Spremanje opcija klijenta nije uspjelo
 sopt_invalidip=nije valjana IP adresa
 sopt_invalidint=nije cijeli broj
@@ -180,10 +191,12 @@ sopt_ednum='$1' nije važeći broj opcije
 sopt_edtype='$1' nije važeća opcija opcije
 sopt_ecval=Nedostaje vrijednost za prilagođenu opciju "$1"
 sopt_ecip=Vrijednost prilagođene opcije "$1" mora biti IP adresa
+
 sshared_faildel=Brisanje zajedničke mreže nije uspjelo
 sshared_failsave=Nije uspjelo spremanje zajedničke mreže
 sshared_invalidsname=Nedostaje ili nije valjano zajedničko ime mreže.
 sshared_nosubnet=Zajednička mreža '$1' ne sadrži nijednu podmrežu.
+
 ssub_faildel=Brisanje podmreže nije uspjelo
 ssub_failsave=Spremanje podmreže nije uspjelo
 ssub_invalidsubaddr=nije valjana adresa podmreže
@@ -191,6 +204,7 @@ ssub_invalidnmask=nije valjana mrežna maska
 ssub_invalidipr=nije valjana IP adresa raspona
 ssub_nosubnet=Zajednička mreža '$1' ne sadrži nijednu podmrežu.
 ssub_invalidfopeer=nije valjani vršnjak iz presijecanja
+
 plib_deflt=Zadano vrijeme najma
 plib_bfname=Naziv datoteke za pokretanje
 plib_maxlt=Maksimalno vrijeme najma
@@ -244,6 +258,7 @@ plib_eexpr=Ovaj odjeljak DHCP konfiguracije sadrži naredbu izraza $1, koju Webm
 plib_auth_subnet=Poslužitelj je mjerodavan za ovu podmrežu?
 plib_auth_shared-network=Poslužitelj je autoritativan za ovu zajedničku mrežu?
 plib_auth_global=Poslužitelj je autoritativan za sve podmreže?
+
 eopt_header=Klijentske mogućnosti
 eopt_subtitle=Za podmrežu $1 
 eopt_returnsub=podmreže
@@ -289,6 +304,7 @@ eopt_slpa=IP-ovi agenta SLP direktorija
 eopt_slpaips=Ovi IP-ovi samo?
 eopt_slps=Opseg SLP usluge
 eopt_slpsonly=Ovaj opseg samo?
+
 log_apply=Primijenjene promjene
 log_start=Pokrenut DHCP poslužitelj
 log_stop=Zaustavljen DHCP poslužitelj
@@ -311,6 +327,7 @@ log_options_group=Izmijenjene opcije za grupu domaćina $1
 log_delete_lease=Izbrisani zakup za $1 
 log_delete_subnets=Izbrisane $1 podmreže i zajedničke mreže
 log_delete_hosts=Izbrisani $1 domaćini i grupe domaćina
+
 keys_edit=Uredi TSIG tipku
 keys_create=Stvorio TSIG ključeve
 keys_title=DNS ključevi
@@ -321,12 +338,14 @@ keys_ecannot=Nije vam dopušteno uređivanje DNS ključeva
 keys_err=Spremanje DNS ključeva nije uspjelo
 keys_ekey='$1' nije važeći ID ključa
 keys_esecret=Nedostaje ili je neispravna tajna kodirana baza-64 za ključ $1 
+
 pool_edit=Uređivanje bazena adresa
 pool_create=Izrađen bazen bazena
 pool_header=Opcije adresnog bazena
 pool_allow=Klijenti to dopuštaju
 pool_deny=Klijenti zanijekati
 pool_return=podmreže
+
 cdel_header=Upozorenje
 cdel_shared1=zajednička mreža
 cdel_shared2=zajednička mreža
@@ -344,6 +363,7 @@ cdel_txt=Brisanjem $1 '$2' izbrisat će se i njegov sadržaj:
 cdel_confirm=Želite li stvarno izbrisati ovaj $1 ?
 cdel_eunknown=Nepoznata pogreška
 cdel_return=popis domaćina i mreže
+
 eacl_aviol=Kršenje kontrole pristupa
 eacl_np=Nemate dopuštenja za
 eacl_pdh=izbriši host
@@ -369,6 +389,7 @@ eacl_pdl=izbrisati najmove
 eacl_psl=pogledajte najmove
 eacl_pglob=uređivanje globalnih opcija
 eacl_papply=ponovno pokrenite ovu uslugu
+
 acl_apply=Mogu li primijeniti promjene?
 acl_r_leases=Mogu li pregledati najmove?
 acl_w_leases=Može li ukloniti zakup?
@@ -398,9 +419,11 @@ acl_err=Pogreška prilikom spremanja ACL popisa
 acl_ernow=Ako želite omogućiti pristup pisanju u globalnim ACL-ovima za neki tip objekta, također morate omogućiti pristup čitanja za ovu vrstu objekta.
 acl_normal=normalan
 acl_paranoic=paranoic
+
 iface_title=Mrežno sučelje
 iface_desc=DHCP poslužitelj može dodijeliti IP adrese samo na mrežama spojenim na jedno od dolje odabranih sučelja. Mrežno sučelje za sve definirane podmreže mora biti uključeno. Ako nije odabran nijedan, DHCP poslužitelj će pokušati automatski pronaći njega.
 iface_listen=Slušajte na sučeljima
+
 lookup_ehost=Ne postoji domaćin s imenom, IP adresom ili MAC adresom $1 
 lookup_ehostname=Nije upisano ime računala, IP adresa ili MAC adresa
 lookup_egroup=Ne postoji grupa s imenom ili domenom $1 
@@ -409,6 +432,7 @@ lookup_esubnet=Ne postoji podmreža s adresom ili adresom/mrežnom maskom $1
 lookup_esubnetname=Nije unešena adresa podmreže ili adresa/mrežna maska
 lookup_eshared=Ne postoji zajednička mreža s imenom $1 
 lookup_esharedname=Nije upisano zajedničko ime mreže
+
 zone_key=DNS zone
 index_addzone=Dodajte novu DNS zonu.
 index_zone=Zona
@@ -424,16 +448,21 @@ zone_faildel=Brisanje zone nije uspjelo
 zone_failsave=Spremanje zone nije uspjelo
 zone_tsigkey=TSIG tipka
 zone_ecannot=Nije vam dopušteno uređivanje DNS zona
+
 plib_clientupdates=Mogu li klijenti ažurirati svoje zapise?
+
 text_title=dhcpd.conf
 text_editor=Uređivač teksta
 text_return=glavni izbornik
 text_undo=poništiti
 text_ecannot=Nije vam dopušteno uređivanje konfiguracijske datoteke
+
 index_buttetext=Ručno uređivanje konfiguracije
 index_text=Ručno uređivanje konfiguracijske datoteke
+
 stop_err=Zaustavljanje DHCP poslužitelja nije uspjelo
 stop_ekill=Ne trčim!
+
 sdelete_err=Brisanje podmreža i zajedničkih mreža nije uspjelo
 sdelete_enone=Nijedna nije odabrana
 sdelete_title=Izbrišite podmreže i zajedničke mreže
@@ -441,6 +470,7 @@ sdelete_rusure1=Jeste li sigurni da želite izbrisati odabrane podmreže i $1 di
 sdelete_rusure2=Jeste li sigurni da želite izbrisati odabrane podmreže $1 ? Svi ostali objekti unutar podmreže također će se izgubiti.
 sdelete_rusure3=Jeste li sigurni da želite izbrisati $2 odabrane zajedničke mreže? Bilo koja podmreža ili drugi objekti unutar mreža također će se izgubiti.
 sdelete_ok=Izbriši sada
+
 hdelete_err=Brisanje domaćina i grupa nije uspjelo
 hdelete_enone=Nijedna nije odabrana
 hdelete_title=Izbriši hostove i grupe

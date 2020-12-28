@@ -44,6 +44,7 @@ index_dscsi=Controlador de dispositivo SCSI $1 $2
 index_draid=Nível RAID $1 
 index_dparts=Partições
 index_none2=Nenhum disco foi encontrado neste sistema.
+
 bytes=bytes
 megabytes=megabytes
 extended=Estendido
@@ -67,6 +68,7 @@ select_promise=Unidade RAID prometida $1
 select_ppart=Unidade RAID prometida $1 partição $2 
 select_nvme=Unidade SSD NVME $1 $2 
 select_nvmepart=Unidade SSD NVME $1 unidade $2 partição $3 
+
 edit_title=Editar partição
 create_title=Criar partição
 edit_ecannot=Você não tem permissão para editar este disco
@@ -110,6 +112,7 @@ edit_newmount2=Montagem de partição
 edit_mountas=Como
 edit_mountmsg=Monte esta partição no novo diretório do seu sistema, para que possa ser usada para armazenar arquivos. Um sistema de arquivos já deve ter sido criado na partição.
 edit_mountmsg2=Monte esta partição como memória virtual no seu sistema, para aumentar a quantidade de memória disponível.
+
 mkfs_title=Novo sistema de arquivos
 mkfs_ecannot=Você não tem permissão para criar um novo sistema de arquivos neste disco
 mkfs_desc1=Clicar no botão na parte inferior deste formulário criará um novo sistema de arquivos $1 no dispositivo $2. Todos os dados nesta partição serão apagados permanentemente.
@@ -120,6 +123,7 @@ mkfs_err=Falha ao criar sistema de arquivos
 mkfs_exec=Executando o comando $1 ..
 mkfs_failed=.. comando falhou!
 mkfs_ok=.. comando concluído.
+
 fsck_title=Reparar sistema de arquivos
 fsck_ecannot=Você não tem permissão para fsck este disco
 fsck_desc1=Clicar no botão <tt>Reparar sistema de arquivos</tt> tentará reparar o sistema de arquivos $1 danificado em $2 para montagem em $3. Se o sistema de arquivos não estiver danificado, nenhuma alteração será feita.
@@ -132,6 +136,7 @@ fsck_err3=erros encontrados e corrigidos - é necessário reiniciar
 fsck_err4=erros encontrados, mas NÃO corrigidos
 fsck_err16=erro de linha de comando
 fsck_unknown=código de retorno desconhecido $1 
+
 tunefs_title=Ajustar sistema de arquivos
 tunefs_ecannot=Você não tem permissão para ajustar este sistema de arquivos
 tunefs_desc=Este formulário permite ajustar vários parâmetros do sistema de arquivos $1 em $2 para montagem em $3. Os arquivos existentes neste sistema de arquivos não serão afetados.
@@ -153,10 +158,12 @@ tunefs_err=Falha ao ajustar o sistema de arquivos
 tunefs_exec=Executando o comando $1 ..
 tunefs_failed=.. comando falhou!
 tunefs_ok=.. comando concluído.
+
 reboot_title=Reiniciar
 reboot_msg=Reiniciando agora ..
 reboot_ok=Reinicie agora
 reboot_why=Você alterou a tabela de partição em $1. Para que essa alteração entre em vigor corretamente, seu sistema deve ser reiniciado.
+
 save_err=Falha ao salvar a partição
 save_ecannot=Você não tem permissão para editar este disco
 save_estart='$1' não é um cilindro inicial válido
@@ -165,6 +172,7 @@ save_emin=O cilindro de partida deve ser> = $1
 save_emax=O cilindro final deve ser <= $1 
 save_eminmax=O cilindro inicial deve ser menor que o final
 save_eoverlap=Sobreposição detectada com a partição $1 ($2 a $3)
+
 ext2_b=Tamanho do bloco
 ext2_f=Tamanho do fragmento
 ext2_i=Bytes por inode
@@ -172,6 +180,7 @@ ext2_m=Blocos reservados
 ext2_g=Blocos por grupo
 ext2_c=Verificar blocos defeituosos?
 ext3_j=Tamanho do arquivo de diário
+
 msdos_ff=Número de GAT
 msdos_F=Tamanho FAT
 msdos_F_other=De outros ..
@@ -180,24 +189,32 @@ msdos_n=Nome do volume
 msdos_r=Entradas raiz
 msdos_s=Tamanho do cluster
 msdos_c=Verificar blocos defeituosos?
+
 minix_n=Comprimento do nome do arquivo
 minix_i=Número de inodes
 minix_b=Número de blocos
 minix_c=Verificar blocos defeituosos?
+
 reiserfs_force=Forçar a criação do sistema de arquivos
 reiserfs_hash=Função hash
+
 xfs_force=Forçar a criação do sistema de arquivos
 xfs_b=Tamanho do bloco
+
 jfs_s=Tamanho do log
 jfs_c=Verificar blocos defeituosos?
+
 btrfs_l=Tamanho da folha
 btrfs_n=Tamanho do nó
 btrfs_s=Tamanho do setor
+
 fatx_none=Nenhuma opção está disponível para sistemas de arquivos FATX.
+
 acl_disks=Discos que este usuário pode particionar e formatar
 acl_dall=Todos os discos
 acl_dsel=Selecionado ..
 acl_view=Pode visualizar discos não editáveis?
+
 hdparm_title=Editar parâmetros do IDE
 hdparm_on=Em
 hdparm_off=Fora
@@ -226,9 +243,11 @@ hdparm_performing=Realizando
 hdparm_buf1=Cache do buffer:
 hdparm_buf2=Buffered:
 hdparm_speedres=Resultados do teste de velocidade
+
 blink_title=Identifique o Drive
 blink_desc=O LED de atividade da unidade agora acenderá sessenta vezes
 blink_back=Volte
+
 log_modify=$1 modificado
 log_create=Criado $1 
 log_delete=$1 excluído
@@ -236,6 +255,7 @@ log_mkfs=Sistema de arquivos $1 criado em $2
 log_tunefs=Sistema de arquivos $1 ajustado em $2 
 log_fsck=$1 sistema de arquivos reparado em $2 
 log_hdparm=Parâmetros IDE modificados para $1 
+
 fs_ext2=Nativo Linux antigo
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -246,9 +266,11 @@ fs_ext4=Novo Linux nativo
 fs_xfs=SGI
 fs_jfs=IBM Journalling
 fs_btrfs=BTR
+
 delete_title=Excluir partição
 delete_rusure=Tem certeza de que deseja excluir $1 ($2)? Os dados nesta partição podem ser perdidos para sempre.
 delete_ok=Excluir agora
+
 disk_title=Editar partições de disco
 disk_egone=O disco não existe mais!
 disk_no=Número
@@ -269,11 +291,13 @@ disk_table=<b>Formato da tabela de partição:</b> $1
 disk_notable=<b>Formato da tabela de partição:</b> Nenhum criado
 disk_needtable=Nenhuma partição pode ser criada sem uma tabela de partição.
 disk_return=lista de partições
+
 relabel_title=Limpar partições
 relabel_warn=Tem certeza de que deseja limpar todas as partições em $1 ($2) reescrevendo o rótulo do disco? Todos os dados e sistemas de arquivos existentes serão perdidos!
 relabel_parts=Partições existentes
 relabel_noparts=Nenhum criado ainda
 relabel_table=Formato da tabela de partição
 relabel_ok=Limpar e rotular novamente
+
 table_msdos=MS-DOS (formato de partição padrão)
 table_gpt=GPT (para discos 2T ou maiores)

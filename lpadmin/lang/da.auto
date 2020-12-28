@@ -24,6 +24,7 @@ index_style=Udskrivningssystem: $1
 index_cluster=Cluster-servere
 index_clusterdesc=Klik på denne knap for at konfigurere yderligere Webmin-servere, hvorpå printere oprettes, opdateres og slettes.
 index_delete=Slet valgte printere
+
 style_solaris=Solaris
 style_linux=Linux LPR
 style_freebsd=FreeBSD LPR
@@ -33,6 +34,7 @@ style_unixware=UnixWare
 style_cups=CUPS
 style_irix=IRIX
 style_aix=AIX
+
 edit_eedit=Du har ikke tilladelse til at redigere denne printer
 edit_eadd=Det er ikke tilladt at tilføje printere
 edit_add=Opret printer
@@ -76,7 +78,9 @@ edit_direct=Direkte TCP-forbindelse
 edit_dport=Havn
 edit_driver=Printerdriver
 edit_check=Kontroller, om ekstern server er op?
+
 blocks=blokke
+
 save_err=Kunne ikke gemme printeren
 save_eadd=Det er ikke tilladt at tilføje printere
 save_eedit=Du har ikke tilladelse til at redigere denne printer
@@ -98,6 +102,7 @@ save_evalid=Printersystemet tillader ikke denne printer
 save_errslave=Printer oprettet OK på dette system, men følgende fejl opstod på klyngesystemer : $1 
 save_egone=Ingen printer med navnet '$1' blev fundet
 save_errdelslave=Printer slettet OK på dette system, men følgende fejl opstod på klyngesystemer : $1 
+
 jobs_title=Printjob
 jobs_header=Udskriftsjob på $1 
 jobs_id=Job-id
@@ -114,17 +119,23 @@ jobs_test=Udskriv testside
 jobs_cancelsel=Annuller valgte job
 jobs_on=På printer $1 
 jobs_return=liste over udskriftsjob
+
 cancel_ecannot=Du har ikke tilladelse til at annullere udskriftsjob
 cancel_err=Kunne ikke annullere udskriftsjob
 cancel_egone=Udskriftsjob $1 findes ikke længere
+
 view_ecannot=Du kan ikke se dette udskriftsjob
 view_egone=Dette udskriftsjob findes ikke længere
+
 start_ecannot=Du har ikke tilladelse til at starte planlæggeren
 start_err=Kunne ikke starte scheduler
+
 stop_ecannot=Du har ikke tilladelse til at stoppe planlæggeren
 stop_err=Kunne ikke stoppe scheduler
+
 restart_ecannot=Du har ikke tilladelse til at genstarte planlæggeren
 restart_err=Kunne ikke genstarte scheduler
+
 webmin_none=Ingen
 webmin_nonemsg=Efterskrift eller tekstprinter
 webmin_remotemsg=Fjernprinter
@@ -135,6 +146,7 @@ webmin_uniprint=Uniprint-driver
 webmin_edrivers=Kunne ikke hente chauffører fra $1. Webmin-printerdrivere, der bruger ghostscript, er ikke tilgængelige
 webmin_egs=Kommandoen $1 blev ikke fundet. Webmin-printerdrivere, der bruger ghostscript, er ikke tilgængelige
 webmin_edriver='$1' findes ikke
+
 caldera_none=Ingen
 caldera_nonemsg=Ekstern printer eller rå printer
 caldera_prog=Program
@@ -148,6 +160,7 @@ caldera_uniprint=Uniprint-driver
 caldera_eprog='$1' findes ikke
 caldera_edriver=Ingen printerdriver valgt
 caldera_eres=Ingen opløsning valgt
+
 redhat_none=Ingen
 redhat_nonemsg=Efterskrift eller tekstprinter
 redhat_prog=Program
@@ -166,6 +179,7 @@ redhat_ehmargin=Manglende eller ugyldig højre/venstre margen
 redhat_evmargin=Manglende eller ugyldig øverste/nederste margin
 redhat_eres=Ingen opløsning valgt
 redhat_printer2=Printermodel og driver
+
 suse_none=Ingen
 suse_nonemsg=Efterskrift eller tekstprinter
 suse_prog=Program
@@ -182,7 +196,9 @@ suse_extra=Ekstra ghostscript-indstillinger
 suse_yast2=YAST2 driver
 suse_edriver=Ingen printertype valgt
 suse_eres=Manglende eller ugyldig opløsning
+
 estop=Kunne ikke stoppe lpd : $1 
+
 acl_printers=Printere, som denne bruger kan konfigurere
 acl_add=Kan tilføje nye printere?
 acl_cancel=Kan annullere udskriftsjob?
@@ -198,6 +214,7 @@ acl_user_all=Alle brugere
 acl_user_this=Nuværende Webmin-bruger
 acl_delete=Kan du slette printere?
 acl_cluster=Kan administrere printerklynge?
+
 log_stop=Stoppet printplanlægning
 log_start=Startet printplanlægning
 log_restart=Genstartet printplanlægning
@@ -210,37 +227,45 @@ log_delete=Slet printer $1 på $2
 log_create_l=Oprettet $3 printer $1 på $2 
 log_modify_l=Ændret $3 printer $1 på $2 
 log_delete_l=Slet $3 printer $1 på $2 
+
 linux_paralel=Parallelport $1 
 linux_serial=Seriel port $1 (COM $1)
 linux_null=Nul enhed
 linux_usb=USB-printer $1 
 linux_ecmd=Kommandoen $1 blev ikke fundet på dit system, hvilket indikerer, at Linux-printersystemet ikke er installeret.
 linux_espool=Spoolkataloget $1 findes ikke på dit system, hvilket indikerer, at Linux-printersystemet ikke er installeret.
+
 freebsd_paralel=Parallel havn
 freebsd_serial=Seriel port $1 (COM $1)
 freebsd_ecmd=Kommandoen $1 blev ikke fundet på dit system, hvilket indikerer, at FreeBSD-udskrivningssystemet ikke er installeret.
 freebsd_espool=Spoolkataloget $1 findes ikke på dit system, hvilket indikerer, at FreeBSD-printersystemet ikke er installeret.
+
 openbsd_paralel=Parallel havn
 openbsd_serial=Seriel port $1 (COM $1)
+
 unixware_paralel=Parallelport $1 
 unixware_serial=Seriel port $1 
 unixware_null=Nul enhed
 unixware_ecmd=Kommandoen $1 blev ikke fundet på dit system, hvilket indikerer, at UnixWare-udskrivningssystemet ikke er installeret.
+
 hpux_paralel=Parallel $1 
 hpux_serial=Serien $1 
 hpux_null=Nul enhed
 hpux_ecmd=Kommandoen $1 blev ikke fundet på dit system, hvilket indikerer, at HPUX-printersystemet ikke er installeret.
 hpux_eiface=Interface-scripts-biblioteket $1 findes ikke på dit system, hvilket indikerer, at HPUX-printersystemet ikke er installeret.
+
 lprng_paralel=Parallelport $1 
 lprng_serial=Seriel port $1 (COM $1)
 lprng_null=Nul enhed
 lprng_ecmd=Kommandoen $1 blev ikke fundet på dit system, hvilket indikerer, at LPRng-printersystemet ikke er installeret.
 lprng_espool=Spoolkataloget $1 findes ikke på dit system, hvilket indikerer, at LPRng-printersystemet ikke er installeret.
+
 solaris_paralel=Parallel havn
 solaris_uparalel=Ultra 5/10 parallelport
 solaris_serial=Seriel port $1 
 solaris_null=Nul enhed
 solaris_ecmd=Kommandoen $1 blev ikke fundet på dit system, hvilket indikerer, at Solaris-udskrivningssystemet ikke er installeret.
+
 test_title=Udskriv testside
 test_ecannot=Du må ikke udskrive testsider
 test_desc=Denne formular giver dig mulighed for at udskrive en testside for printer $1. Vælg den type side, du vil udskrive :
@@ -252,6 +277,7 @@ test_print=Udskriv side
 test_exec=Udskrivning af testside med kommando $1 ..
 test_failed=.. kommandoen mislykkedes!
 test_ok=.. kommandoen fuldført.
+
 cups_none=Ingen
 cups_nonemsg=Ekstern printer eller rå printer
 cups_prog=Program
@@ -259,11 +285,14 @@ cups_driver=CUPS-driver
 cups_eprog='$1' er ikke et gyldigt program
 cups_opts=Valgmuligheder for $1 
 cups_ecmd=Kommandoen $1 blev ikke fundet på dit system, hvilket indikerer, at CUPS-udskrivningssystemet ikke er installeret.
+
 irix_ecmd=Kommandoen $1 blev ikke fundet på dit system, hvilket indikerer, at IRIX-udskrivningssystemet ikke er installeret.
 irix_eiface=Interface-scripts-biblioteket $1 findes ikke på dit system, hvilket indikerer, at IRIX-printersystemet ikke er installeret.
+
 aix_port=Printerport $1 
 aix_edesc=Ugyldig beskrivelse - kun bogstaver og tal er tilladt og ingen mellemrum
 aix_ecmd=AIX-printerserveren $1 blev ikke fundet. Måske er det ikke installeret, eller et andet printersystem er i brug.
+
 cluster_title=Clusterprintservere
 cluster_none=Der er endnu ikke tilføjet nogen servere til printerklyngen.
 cluster_host=Værtsnavn
@@ -275,6 +304,7 @@ cluster_need=Du skal tilføje servere med et login og password i Webmin Servers 
 cluster_return=klyngeservere
 cluster_delete=Fjern valgte
 cluster_ecannot=Du har ikke tilladelse til at administrere klyngeprintservere
+
 add_title=Tilføj servere
 add_msg=Tilføjer $1 ..
 add_gmsg=Tilføjelse af servere i gruppe $1 ..

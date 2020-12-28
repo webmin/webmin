@@ -51,11 +51,13 @@ index_mass=Ištrinti pasirinktus vartotojus
 index_mass2=Išjungti pasirinktą
 index_mass3=Įgalinti pasirinktą
 index_gmass=Ištrinti pasirinktas grupes
+
 search_title=Paieškos rezultatai
 search_notfound=Nerasta atitinkančių vartotojų
 search_found=Rasta $1 atitinkančių vartotojų ..
 search_gnotfound=Nerasta atitikmenų grupių
 search_gfound=Rasta $1 atitikimo grupių.
+
 uedit_title=Redaguoti vartotoją
 uedit_title2=Sukurti vartotoją
 uedit_details=Informacija apie vartotoją
@@ -133,6 +135,7 @@ uedit_uid_calc=Apskaičiuota
 uedit_disabled=Prisijungimas laikinai išjungtas
 uedit_sys=Numatytoji sistema
 uedit_clone=Klono vartotojas
+
 usave_err=Nepavyko išsaugoti vartotojo
 usave_eedit=Negalite redaguoti šio vartotojo
 usave_ecreate=Negalite kurti naujų vartotojų
@@ -186,6 +189,7 @@ usave_epasswd_same=Slaptažodis yra arba sutampa su vartotojo vardu
 usave_epasswd_mindays=Slaptažodis buvo pakeistas mažiau nei prieš $1 dienos
 usave_epasswd_cmd=Nepavyko įvesti slaptažodžio patvirtinimo komandos
 usave_eothers=Vartotojas buvo sėkmingai išsaugotas, tačiau kitame modulyje įvyko klaida : $1
+
 gedit_title=Redaguoti grupę
 gedit_title2=Sukurti grupę
 gedit_details=Informacija apie grupę
@@ -208,6 +212,7 @@ gedit_selu=Vartotojai grupėje
 gedit_pri=Pradinės grupės nariai
 gedit_prinone=Nei vienas vartotojas neturi šios grupės
 gedit_clone=Klonų grupė
+
 gsave_err=Nepavyko išsaugoti grupės
 gsave_eedit=Negalite redaguoti šios grupės
 gsave_ecreate=Negalite kurti naujų grupių
@@ -224,6 +229,7 @@ usave_egidused=Grupė $1 jau naudoja GID $2
 gsave_egidused2=GID jau naudojamas
 usave_efromroot=Namų katalogo negalima perkelti iš /
 usave_etoroot=Negalite perkelti pagrindinio katalogo į /
+
 logins_title=Įrašyti prisijungimai
 logins_head=Įrašyti $1 prisijungimai
 logins_from=Prisijungimas nuo
@@ -236,6 +242,7 @@ logins_none=Neįrašyta jokių prisijungimų
 logins_elist=Jums neleidžiama registruotis
 logins_elistu=Jums neleidžiama išvardyti „$1“ prisijungimų.
 logins_local=Vietinis
+
 udel_title=Ištrinti vartotoją
 udel_err=Nepavyko ištrinti vartotojo
 udel_enum=Netinkamas vartotojo numeris
@@ -258,6 +265,7 @@ udel_del2=Ištrinkite vartotojo ir namų katalogą
 udel_others=DĖMESIO! Pagrindiniame kataloge $1 yra $2 failai, priklausantys kitiems vartotojams.
 udel_dothers=Ištrinti vartotoją kituose moduliuose?
 udel_root=Įspėjimas! Jei pagrindinis vartotojas bus ištrintas, galbūt ateityje negalėsite administruoti savo sistemos.
+
 gdel_title=Ištrinti grupę
 gdel_err=Nepavyko ištrinti grupės
 gdel_eroot=Jums neleidžiama ištrinti sistemos grupių (tų, kurių GID yra mažesnis arba lygus 10).
@@ -271,6 +279,7 @@ gdel_sure=Ar tikrai norite ištrinti grupę $1?
 gdel_del=Ištrinti grupę
 gdel_dothers=Ištrinti grupę kituose moduliuose?
 gdel_other=Ištrinama iš kitų modulių ..
+
 many_title=Sukurkite kelis vartotojus
 many_desc=Ši forma leidžia sukurti daug vartotojų vienu metu iš įkelto arba vietinio tekstinio failo. Kiekviena failo eilutė nurodo vieną vartotoją tokiu formatu:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -294,6 +303,7 @@ many_eshell=Netinkamas apvalkalas eilutėje $1 : $2
 many_emkdir=Nepavyko sukurti namų katalogo $1 : $2 
 many_egtaken=Grupės pavadinimas jau naudojamas eilutėje $1 : $2 
 many_ok=Sukurtas vartotojas $1
+
 acl_uedit=„Unix“ vartotojai, kuriuos galima redaguoti
 acl_uedit_all=Visi vartotojai
 acl_uedit_none=Nėra vartotojų
@@ -353,6 +363,7 @@ acl_udelete=Ar galima ištrinti vartotojus?
 acl_gdelete=Ar galima ištrinti grupes?
 acl_urename=Ar galima pervardyti vartotojus?
 acl_grename=Ar galima pervardyti grupes?
+
 log_urename=Pervardytas vartotojas $1 į $2
 log_umodify=Modifikuotas vartotojas $1
 log_ucreate=Sukurtas vartotojas $1
@@ -371,6 +382,7 @@ log_ugbatch=Vykdytas įkeltas grupės paketinis failas
 log_ugbatch_l=Vykdytas įkeltas grupės paketinis failas ($1 sukurtas, $2 modifikuotas, $3 ištrintas)
 log_delete_users=Ištrinti $1 vartotojai
 log_delete_groups=Ištrintos $1 grupės
+
 batch_title=Vykdyti paketinį failą
 batch_ecannot=Negalite naudoti paketinio failo formos
 batch_desc=Ši forma leidžia jums sukurti, modifikuoti ar ištrinti daug vartotojų iš įkelto ar vietinio tekstinio failo vienu metu. Kiekvienoje failo eilutėje nurodomas vienas veiksmas, kurį reikia atlikti, atsižvelgiant į pirmąjį jo lauką. Linijų formatai yra šie :
@@ -429,12 +441,14 @@ batch_eexpire=Netinkama galiojimo diena eilutėje $1 : $2
 batch_echange=Netinkama slaptažodžio keitimo diena eilutėje $1 : $2 
 batch_instr=Instrukcijos ir siuntos formatas
 batch_header=Grupinės vartotojo kūrimo, atnaujinimo ir naikinimo parinktys
+
 who_title=Prisijungę vartotojai
 who_user=„Unix“ vartotojas
 who_tty=TTY
 who_when=Prisijungta
 who_from=Prisijungęs iš
 who_none=Šiuo metu nėra prisijungę.
+
 export_title=Eksportuoti paketinį failą
 export_desc=Ši forma leidžia jums sukurti paketinį failą, kuriame yra keli arba visi sistemos vartotojai. Failas gali būti naudojamas kitos sistemos puslapyje Vykdyti paketinį failą, norint iš naujo sukurti eksportuotus vartotojus, darant prielaidą, kad jis naudoja pasirinktą paketinio failo formatą.
 export_header=Pakeisti vartotojo eksporto parinktis
@@ -455,6 +469,7 @@ export_done=Sėkmingai eksportuoti $1 vartotojai į failą $2 ($3).
 export_pft=Pakeitinio failo formatas
 export_who=Eksportuoti skirti vartotojai
 export_ecannot=Jums neleidžiama eksportuoti vartotojų
+
 gexport_title=Eksportuoti grupių paketinį failą
 gexport_desc=Ši forma leidžia jums sukurti paketinį failą, kuriame yra visos arba visos sistemos sistemos. Failas gali būti naudojamas kitos sistemos puslapyje Vykdyti grupės paketinį failą iš naujo sukurti eksportuotas grupes.
 gexport_header=Grupinių grupių eksporto parinktys
@@ -463,6 +478,7 @@ gexport_ecannot=Jums neleidžiama eksportuoti grupių
 gexport_err=Nepavyko eksportuoti grupės paketinio failo
 gexport_egid=Netinkamas pirmasis diapazono GID
 gexport_egid2=Neteisingas antrasis GID diapazone
+
 pft_0=Tik klasikinis <tt>passwd</tt> failas
 pft_1=BSD <tt>master.passwd</tt> failas
 pft_2=Standartiniai <tt>passwd</tt> ir <tt>shadow</tt> failai
@@ -470,6 +486,7 @@ pft_3=„Unixware“ <tt>„passwd</tt>“ failas
 pft_4=AIX <tt>passwd</tt> ir <tt>security</tt> failai
 pft_5=OpenServer <tt>passwd</tt> ir trumpi <tt>šešėliai</tt> failai
 pft_6=„MacOS NetInfo“ duomenų bazė
+
 umass_title=Ištrinti vartotojus
 umass_err=Nepavyko ištrinti vartotojų
 umass_sure=Ar tikrai norite ištrinti $1 pasirinktus vartotojus? Jų namų kataloguose yra $2 failų.
@@ -481,6 +498,7 @@ umass_del1=Ištrinti vartotojus
 umass_del2=Ištrinkite vartotojus ir namų katalogus
 umass_eroot=Jums neleidžiama ištrinti sistemos vartotojų (tų, kurių UID yra mažesnis arba lygus 10).
 umass_doing=Ištrinamas vartotojas $1.
+
 gmass_title=Ištrinti grupes
 gmass_err=Nepavyko ištrinti grupių
 gmass_sure=Ar tikrai norite ištrinti $1 pasirinktas grupes?
@@ -490,16 +508,19 @@ gmass_del=Ištrinti grupes
 gmass_eroot=Jums neleidžiama ištrinti sistemos grupių (tų, kurių GID yra mažesnis arba lygus 10).
 gmass_doing=Ištrinama grupė $1.
 gmass_eprimary=Grupės $1 negalima ištrinti, nes tai yra pagrindinė vartotojo grupė $2.
+
 dmass_title=Išjungti vartotojus
 dmass_sure=Ar tikrai norite išjungti pasirinktus $1 vartotojus? Vėliau jas galima vėl įjungti neprarandant slaptažodžių ar duomenų.
 dmass_dis=Išjungti vartotojus
 dmass_pass=Laikinai užrakinti slaptažodį ..
 dmass_doing=Išjungiamas vartotojo $1 ..
 dmass_already=.. jau neįgalus!
+
 emass_title=Įgalinti vartotojus
 emass_pass=Atrakinamas slaptažodis ..
 emass_doing=Įgalinamas vartotojo $1 ..
 emass_already=.. jau įgalinta!
+
 gbatch_title=Vykdyti grupės paketinį failą
 gbatch_ecannot=Negalite naudoti grupės paketinio failo formos
 gbatch_desc=Ši forma leidžia jums sukurti, modifikuoti ar ištrinti daug grupių iš įkelto ar vietinio tekstinio failo vienu metu. Kiekvienoje failo eilutėje nurodomas vienas veiksmas, kurį reikia atlikti, atsižvelgiant į pirmąjį jo lauką. Linijų formatai yra šie :

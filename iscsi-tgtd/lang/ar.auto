@@ -2,6 +2,7 @@ check_econfigset=لم يتم تعيين ملف تكوين iSCSI TGTd!
 check_econfig=لم يتم العثور على ملف تكوين iSCSI TGTd $1 على نظامك.
 check_etgtadm=لم يتم العثور على أمر إدارة iSCSI TGTd $1 على نظامك.
 check_einit=إجراء التمهيد$1 غير موجود
+
 index_title=بروتوكول iSCSI TGTd
 index_clink=ربما لم يتم تثبيته أو أن <a href='$1'>تهيئة الوحدة النمطية</a> غير صحيحة.
 index_stop=إيقاف iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=المستخدمون المسموح لهم
 index_size=الحجم الإجمالي
 index_noluns=لا يوجد
 index_nousers=أي
+
 dtargets_err=فشل في حذف الأهداف
 dtargets_enone=لم يتم التحديد!
+
 target_title1=إنشاء هدف iSCSI
 target_title2=تحرير هدف iSCSI
 target_header=خيارات الجهاز المشتركة لـ iSCSI
@@ -74,11 +77,13 @@ target_direct=الوصول المباشر للجهاز
 target_cache=يكتب ذاكرة التخزين المؤقت على الجهاز؟
 target_eaddr=عنوان IP المسموح به غير صالح
 target_eaname=اسم البادئ المسموح به غير صالح
+
 start_err=فشل بدء تشغيل iSCSI TGTd
 stop_err=فشل إيقاف iSCSI TGTd
 restart_err=فشلت إعادة تشغيل iSCSI TGTd
 atboot_err=فشل التمكين عند التمهيد
 atboot_einit=البرنامج النصي الأولي$1 غير موجود
+
 log_create_target=الهدف الذي تم إنشاؤه$1
 log_delete_target=الهدف المحذوف$1
 log_modify_target=هدف معدل$1
@@ -89,6 +94,7 @@ log_restart=تمت إعادة تشغيل خادم iSCSI
 log_atboot=تمكين خادم iSCSI في وقت التمهيد
 log_delboot=تم تعطيل خادم iSCSI في وقت التمهيد
 log_manual=ملف التكوين الذي تم تحريره يدويًا
+
 manual_title=تحرير ملف التكوين
 manual_file=حدد ملفًا لتحريره:
 manual_ok=افتح

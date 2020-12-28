@@ -20,6 +20,7 @@ index_d1=$1
 index_dlang=il-lingwa li l-moduli huma murija
 index_dtheme=it-tema li tikkontrolla d-dehra ta ’Webmin
 index_dpass=il-password użata biex tidħol magħha
+
 change_title=Nibdlu l-issettjar
 change_user=Timmodifika login Webmin ..
 change_done=.. sar
@@ -30,6 +31,7 @@ change_epass2=Passwords ġodda ma jaqblux
 change_epass=Password ġdida mhix valida : $1 
 change_eoverlay=Ma tistax tagħżel overlay tat-tema sakemm ma tintgħażelx ukoll tema UI
 change_eoverlay2=L-overlay tat-tema magħżul mhux kompatibbli mat-tema tal-UI magħżula
+
 acl_lang=Tista 'tbiddel il-lingwa?
 acl_theme=Tista 'tbiddel it-tema?
 acl_pass=Tista 'tibdel il-password (meta ssettjat fil-Webmin)?

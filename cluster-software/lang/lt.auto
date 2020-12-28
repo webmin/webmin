@@ -21,6 +21,7 @@ index_thost=Pagrindinio kompiuterio vardas
 index_tdesc=apibūdinimas
 index_tcount=Pakuotės
 index_ttype=OS tipas
+
 install_err=Nepavyko įdiegti paketo
 install_elocal=Vietinė byla nepateikta
 install_elocal2=„$1“ neegzistuoja
@@ -37,6 +38,7 @@ install_ok=Diegti
 install_erus=Šis serveris naudoja kitokią pagrindinio serverio atnaujinimo sistemą ($1 palyginti su $2)
 install_eupdate=Diegiant nurodytus atnaujinimus įvyko klaida
 install_ealready=$1 versija jau įdiegta
+
 add_title=Pridėti serverius
 add_msg=Pridedama $1 ..
 add_gmsg=Serverių pridėjimas grupėje $1 ..
@@ -45,6 +47,7 @@ add_gerr=Nepavyko pridėti grupės
 add_echeck=Serveris $1 neturi programinės įrangos paketų modulio
 add_esystem=Serveris $1 nenaudoja tos pačios paketų sistemos kaip šis aparatas
 add_ok=Pridėta $1 su $2 paketais.
+
 search_title=Pakuotės paieška
 search_nomatch=Nei vienas paketas neatitiko $1 
 search_none=Nė vienas
@@ -56,6 +59,7 @@ search_return=Paieškos rezultatai
 search_delete=Pašalinkite pasirinktus paketus iš:
 search_selall=Pasirinkti viską
 search_invert=Apverskite pasirinkimą
+
 host_title=Tvarko serveris
 host_header=Programinės įrangos valdomo serverio informacija
 host_name=Pagrindinio kompiuterio vardas
@@ -70,6 +74,7 @@ host_count=Įdiegti paketai
 host_os=OS iš „Webmin“
 host_return=serverio duomenys
 host_system=Pakuotės sistema
+
 edit_title=Redaguoti paketą
 edit_details=Informacija apie paketą iš $1 
 edit_desc=apibūdinimas
@@ -88,6 +93,7 @@ edit_all=&lt;visi šeimininkai&gt;
 edit_donthave=&lt;šeimininkai, kurie to neturi&gt;
 edit_have=&lt;šeimininkai, kurie tai turi&gt;
 edit_group=$1 nariai
+
 list_title=Pakuotės failai
 list_files=$2 paketo failai $2 
 list_path=Kelias
@@ -97,6 +103,7 @@ list_type=Tipas
 list_size=Dydis
 list_status=Statusas
 list_ok=Gerai
+
 refresh_title=Atnaujinti paketų sąrašus
 refresh_header=Pakartotinai paprašykite paketų sąrašų iš visų serverių ..
 refresh_header4=Pakartotinai paprašykite paketų sąrašų iš $2 narių.
@@ -108,6 +115,7 @@ refresh_4=Atnaujinta $1 (be pakeitimų)
 refresh_done=.. padaryta
 refresh_del=$1 pašalintas iš serverių sąrašo
 refresh_failed=Nepavyko atnaujinti $1 : $2 
+
 delete_err=Nepavyko ištrinti paketo $1 
 delete_epack=Paketas $1 neegzistuoja
 delete_title=Ištrinti paketą
@@ -120,6 +128,7 @@ delete_error=Nepavyko ištrinti iš $1 : $2
 delete_success=Ištrinta iš $1.
 delete_done=.. padaryta
 delete_header=Ištrinamas paketas $1 ..
+
 do_title=Įdiekite paketą
 do_header=Diegiama $1 visuose kompiuteriuose.
 do_header3=Įdiegiame $1 pagrindiniuose kompiuteriuose, kurie to dar neturi.
@@ -140,6 +149,7 @@ do_arch=Architektūra
 do_inst=Įdiegta
 do_none=Nė vienas
 do_edeleted=Įdiegimo failas buvo ištrintas - grįžkite į modulio rodyklę ir bandykite dar kartą.
+
 compare_title=Palyginkite paketus
 compare_desc=Ši forma gali būti naudojama norint palyginti paketus, įdiegtus dviejuose ar daugiau serverių, ir rasti bet kokius neatitikimus tarp galimų versijų ar paketų.
 compare_hosts=Serveriai palyginti
@@ -154,6 +164,7 @@ compare_showall=Parduodami paketai
 compare_showall1=Visi
 compare_showall0=Tik neatitikimai
 compare_got=Gerai
+
 deletes_err=Nepavyko ištrinti paketų
 deletes_enone=Nepasirinktas paketas
 deletes_title=Ištrinti paketus

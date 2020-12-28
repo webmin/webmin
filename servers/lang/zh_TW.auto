@@ -17,6 +17,7 @@ index_auto=自動查找服務器
 index_automsg=單擊此按鈕可以設置自動定期發現網絡上的新Webmin服務器。
 index_search=顯示匹配的服務器：
 index_ok=搜索
+
 edit_realhost=真實主機名
 edit_portnone=沒有設置
 edit_checkssl=檢查遠程SSL證書？
@@ -40,11 +41,13 @@ edit_baduser=登錄被拒絕
 edit_invalid=用戶無法執行RPC
 edit_version=運行Webmin $1
 edit_same=僅在會話身份驗證模式下以及密碼對Webmin程序可用時可用。
+
 save_ehost2=主機不存在
 save_eport2=如果選擇帶有登錄名的鏈接類型，則必須提供端口
 save_egroup=群組名稱缺失
 save_elogin=無效的主機登錄名或密碼
 save_egroup2=無效的新群組名稱
+
 find_but=在 $1找到新服務器，但是認證失敗： $2
 find_already2=在 $1找到了已知的服務器主機
 find_skip=忽略 $1處的服務器
@@ -55,16 +58,20 @@ find_ecannot=不允許您找到服務器
 find_scanning=掃描網絡 $1..中的服務器
 find_broading=在地址 $1..上廣播服務器
 find_eport=端口號缺失或無效
+
 log_modify=修改後的服務器 $1
 log_create=註冊的服務器 $1
 log_delete=伺服器 $1已刪除
 log_find=找到服務器 $1
 log_deletes=已刪除 $1台服務器
+
 link_elogin=無法以 $2身份登錄 $1
 link_ecannot=您無權使用此服務器
 link_essl=您沒有安裝perl Net::SSLeay庫
 link_eautologin=$1的無效登錄名或密碼。 <a href='$2'>單擊此處</a>重試。
+
 lib_other=其他
+
 acl_edit=可以編輯服務器嗎？
 acl_find=可以找到服務器嗎？
 acl_servers=可以使用服務器
@@ -76,6 +83,7 @@ acl_forcefast=強制將快速RPC模式設置為默認值？
 acl_forcetype=強制將操作系統類型設置為默認值？
 acl_forcelink=強制登錄類型為默認值？
 acl_links=可以連接到服務器嗎？
+
 login_title=登錄服務器
 login_desc=您必須提供用戶名和密碼才能登錄Webmin服務器 $1。
 login_header=Webmin認證
@@ -83,13 +91,16 @@ login_user=用戶名
 login_pass=密碼
 login_login=登錄
 login_esame=與該服務器使用相同登錄名的選項只能在未處於會話身份驗證模式下以及Webmin程序可以使用密碼時使用。
+
 this_server=這個服務器
+
 delete_err=刪除服務器失敗
 delete_enone=未選擇
 delete_ecannot=您不允許刪除服務器
 delete_title=刪除服務器
 delete_rusure=您確定要刪除 $1個所選服務器嗎？
 delete_confirm=立即刪除
+
 auto_title=自動查找服務器
 auto_header=服務器自動註冊選項
 auto_sched=檢查新服務器？
@@ -115,8 +126,10 @@ auto_smtp=通過SMTP服務器發送
 auto_self=這個系統
 auto_esmtp=缺少或無效的SMTP服務器
 auto_findself=也註冊這個系統嗎？
+
 config_deftype=默認系統類型
 config_typeauto=自動
+
 email_regsubject=系統 $1已註冊
 email_reg=系統 $1已自動註冊。
 email_unregsubject=系統 $1未註冊

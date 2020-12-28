@@ -16,6 +16,7 @@ index_cancel=Annuller forbindelse
 index_canceldesc=ADSL-klienten prøver i øjeblikket at oprette en forbindelse. Klik på denne knap for at annullere forsøget med kommandoen $1.
 index_cdemand=Annuller on-demand
 index_cdemanddesc=ADSL-klienten venter i øjeblikket på en anmodning om anmodning om forbindelse. Klik på denne knap for at stoppe den med kommandoen $1.
+
 index_header=ADSL-klientkonfigurationsindstillinger
 index_desc=Indstillingerne nedenfor gælder for enhver ny ADSL-forbindelse, der er startet af dit system. Hvis du ændrer dem, skal forbindelsen lukkes og genstartes for at ændringerne kan træde i kraft.
 index_eth=Ethernet-interface
@@ -36,11 +37,13 @@ index_fw_standalone=Til enkelt vært
 index_fw_masquerade=Til NAT gateway
 index_connect=Tid til at prøve forbindelse
 index_forever=For evigt
+
 start_err=Kunne ikke starte ADSL-forbindelse
 start_title=Start ADSL
 start_ip=Der er oprettet en ADSL-forbindelse med IP-adresse $1.
 start_demand=Da connect on demand-tilstand er aktiveret, startes din ADSL-forbindelse kun, når det er nødvendigt.
 start_bg=ADSL-forbindelsen blev ikke startet inden for 20 sekunder. ADSL-klienten fortsætter med at forsøge at oprette forbindelse i baggrunden, indtil det lykkes.
+
 save_err=Kunne ikke gemme ADSL-konfiguration
 save_eeth=Manglende eller ugyldig Ethernet-interface
 save_etimeout=Manglende eller ugyldig timeout efter anmodning
@@ -49,10 +52,12 @@ save_econnect=Manglende eller ugyldig timeout for forbindelse
 save_emss=Manglende eller ugyldig maksimal pakkestørrelse
 save_title=Gem konfiguration
 save_desc=Din ADSL-klientkonfiguration er blevet gemt, men bliver ikke brugt, før du opretter forbindelse igen.
+
 stop_err=Kunne ikke lukke ADSL-forbindelsen
 stop_title=Luk ADSL
 stop_ok=Din ADSL-forbindelse blev lukket.
 stop_failed=Din ADSL-forbindelse er stadig aktiv af en eller anden grund!
+
 log_save=Gemt klientkonfiguration
 log_stop=Luk ADSL
 log_start=Startede ADSL

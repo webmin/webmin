@@ -29,12 +29,14 @@ index_fd=File Daemon-konfiguration
 index_groups=Bacula-gruppekonfiguration
 index_actions=Sikkerhedskopier og gendan handlinger
 index_ocmin=Bidraget af <a href=$2 target=_new>Linmin</a> </a>
+
 connect_emysql=Kunne ikke indlæse databasens DBI-driver $1 
 connect_elogin=Kunne ikke logge ind på databasen $1:$2.
 connect_equery=Databasen $1 ser ikke ud til at indeholde Bacula-tabeller.
 connect_equery2=Dette kan skyldes, at SQLite Perl-modulet, der er installeret, er for nyt og ikke understøtter det ældre SQLite-databaseformat, der bruges af Bacula.
 connect_equery3=Databasen $1 ser ikke ud til at indeholde OC Bacula-gruppetabeller.
 esql=SQL-fejl : $1 
+
 check_edir=Bacula-konfigurationsmappen $1 blev ikke fundet på dit system.
 check_ebacula=Bacula-kontrolkommandoen $1 blev ikke fundet.
 check_econsole=Bacula-konsolkommandoen $1 blev ikke fundet.
@@ -43,12 +45,14 @@ check_eclient=Dette system ser ud til at være en <a href='$2'>Bacula-klient</a>
 check_econfigs=Der blev ikke fundet nogen Bacula-konfigurationsfiler i $1 
 check_eservers=Der er ikke defineret nogen Webmin-servergrupper
 check_engmod=OpenCountry Bacula-gruppemodulet er ikke installeret
+
 proc_bacula-sd=Opbevaring dæmon
 proc_bacula-fd=Fil-dæmon
 proc_bacula-dir=Bacula Director daemon
 proc_bareos-sd=Opbevaring dæmon
 proc_bareos-fd=Fil-dæmon
 proc_bareos-dir=Bacula Director daemon
+
 stop_err=Kunne ikke stoppe Bacula
 start_err=Kunne ikke starte Bacula
 start_einit=Der blev ikke fundet noget init-script til $1 
@@ -57,6 +61,7 @@ restart_err=Kunne ikke genstarte Bacula
 apply_err=Kunne ikke anvende konfiguration
 apply_failed=Der blev fundet en konfigurationsfejl
 apply_problem=Kunne ikke anvende konfiguration : $1 
+
 jobs_title=Backupjob
 jobs_none=Der er endnu ikke defineret nogen sikkerhedskopieringsjob.
 jobs_name=Job navn
@@ -69,6 +74,7 @@ jobs_add=Tilføj et nyt backupjob.
 jobs_delete=Slet valgte job
 jobs_return=liste over job
 jobs_derr=Kunne ikke slette job
+
 filesets_title=Filsæt
 filesets_none=Der er ikke defineret nogen sikkerhedskopifilsæt endnu.
 filesets_name=Filsætnavn
@@ -78,6 +84,7 @@ filesets_delete=Slet valgte filsæt
 filesets_return=liste over filsæt
 filesets_derr=Kunne ikke slette filsæt
 filesets_ednone=Ingen valgt
+
 fileset_title1=Opret filsæt
 fileset_title2=Rediger filsæt
 fileset_header=Detaljer om sikkerhedskopieringsfil
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;Standard komprimeringsniveau&gt;
 fileset_lzo=LZO-komprimering
 fileset_gzip=Gzip-niveau $1 
 fileset_onefs=Begrænse sikkerhedskopi til et filsystem?
+
 clients_title=Backup-klienter
 clients_none=Der er endnu ikke defineret nogen backup-klienter.
 clients_name=Kundenavn
@@ -106,6 +114,7 @@ clients_add=Tilføj en ny backup-klient.
 clients_delete=Slet valgte klienter
 clients_return=liste over klienter
 clients_derr=Kunne ikke slette klienter
+
 client_title1=Opret backup-klient
 client_title2=Rediger sikkerhedskopi-klient
 client_header=Detaljer om klienten, der skal sikkerhedskopieres
@@ -128,6 +137,7 @@ client_efileret=Manglende eller ugyldig filopbevaringsperiode
 client_ejobret=Manglende eller ugyldig jobopbevaringsperiode
 client_echild=Denne klient kan ikke slettes, da den bruges af $1 
 client_status=Vis status
+
 job_title1=Opret sikkerhedskopieringsjob
 job_title2=Rediger sikkerhedskopieringsjob
 job_header=Detaljer om sikkerhedskopieringsopgaver
@@ -156,6 +166,7 @@ job_before=Kommando inden job
 job_after=Kommando efter job
 job_cbefore=Kommando før job (på klient)
 job_cafter=Kommando efter job (på klient)
+
 schedules_title=Backupplaner
 schedules_none=Der er endnu ikke defineret nogen sikkerhedskopier.
 schedules_name=Planlæg navn
@@ -164,6 +175,7 @@ schedules_add=Tilføj en ny backupplan.
 schedules_delete=Slet valgte planer
 schedules_return=liste over tidsplaner
 schedules_derr=Kunne ikke slette skemaer
+
 schedule_title1=Opret sikkerhedskopieringsplan
 schedule_title2=Rediger sikkerhedskopieringsplan
 schedule_header=Detaljer om sikkerhedskopieringsskema
@@ -177,6 +189,7 @@ schedule_ename=Manglende eller ugyldigt tidsplannavn
 schedule_eclash=Der findes allerede en tidsplan med samme navn
 schedule_etimes=Manglende sikkerhedstider i række $1 
 schedule_echild=Denne plan kan ikke slettes, da den bruges af $1 
+
 backup_title=Kør sikkerhedskopieringsjob
 backup_header=Detaljer om sikkerhedskopieringsopgaver
 backup_job=Job at køre
@@ -191,11 +204,13 @@ backup_running=.. backupjobet kører nu. Når det er afsluttet, vises resultater
 backup_running2=.. sikkerhedskopieringsjobbet er startet i baggrunden.
 backup_done=.. sikkerhedskopiering komplet.
 backup_failed=.. sikkerhedskopien blev ikke fuldført. Tjek fejlmeddelelsen ovenfor for detaljer.
+
 gbackup_title=Kør Bacula Group Backup Job
 gbackup_run=Start af backupjob $1 på $2 klienter ..
 gbackup_on=Køres backupjob på klient $1  :
 gbackup_header=Oplysninger om Bacula-gruppe backup-job
 gbackup_jd=$1 (Filsæt $2 på gruppe $3)
+
 dirstatus_title=Direktørstatus
 dirstatus_sched=Planlagte sikkerhedskopieringsjob
 dirstatus_name=Job navn
@@ -216,12 +231,14 @@ dirstatus_status2=status
 dirstatus_donenone=Der er ikke kørt nogen sikkerhedskopieringsjob.
 dirstatus_cancel=Annuller valgte job
 dirstatus_refresh=Opdater liste
+
 clientstatus_title=Klientstatus
 clientstatus_err=Kunne ikke hente status fra $1 : $2 
 clientstatus_msg=Status fra $1 : $2 
 clientstatus_show=Vis klientens status:
 clientstatus_ok=Okay
 clientstatus_on=$1 (på $2)
+
 storages_title=Opbevaring dæmoner
 storages_none=Der er endnu ikke defineret nogen lagringsdemoner.
 storages_name=Lagringsnavn
@@ -232,6 +249,7 @@ storages_add=Tilføj en ny lagerdemon.
 storages_delete=Slet valgte lagringsdæmoner
 storages_return=liste over opbevaring dæmoner
 storages_derr=Kunne ikke slette lagringsdemoner
+
 storage_title1=Opret Storage Daemon
 storage_title2=Rediger Storage Daemon
 storage_header=Detaljer om fjernlagringsdemon
@@ -255,6 +273,7 @@ storage_emedia=Manglende medietype navn
 storage_emaxjobs=Manglende maksimale samtidige job
 storage_echild=Denne klient kan ikke slettes, da den bruges af $1 
 storage_status=Vis status
+
 devices_title=Lagringsenheder
 devices_none=Der er endnu ikke defineret nogen lagerenheder.
 devices_name=Enhedsnavn
@@ -264,6 +283,7 @@ devices_add=Tilføj en ny lagerenhed.
 devices_delete=Slet valgte lagringsenheder
 devices_return=liste over lagerenheder
 devices_derr=Kunne ikke slette lagringsenheder
+
 device_title1=Opret lagringsenhed
 device_title2=Rediger lagerenhed
 device_header=Detaljer om fillagringsenhed
@@ -282,11 +302,13 @@ device_eclash=En lagerenhed med samme navn findes allerede
 device_emedia=Manglende medietype navn
 device_edevice=Manglende eller ugyldig arkivenhed eller katalog
 device_echild=Denne klient kan ikke slettes, da den bruges af $1 
+
 storagestatus_title=Storage Daemon Status
 storagestatus_err=Kunne ikke hente status fra $1 : $2 
 storagestatus_msg=Status fra $1 : $2 
 storagestatus_show=Vis status for opbevaring daemon:
 storagestatus_ok=Okay
+
 label_title=Etiketvolumen
 label_header=Detaljer om volumen til etiketten
 label_storage=Opbevaring dæmon til etiketten
@@ -302,6 +324,7 @@ label_done=.. mærkning vellykket.
 label_epool=.. kunne ikke finde pool!
 label_err=Etiketten mislykkedes
 label_elabel=Ingen etiket er indtastet
+
 pools_title=Volume Pools
 pools_none=Der er endnu ikke defineret nogen volumenpooler.
 pools_name=Pool navn
@@ -311,6 +334,7 @@ pools_add=Tilføj en ny volumenpulje.
 pools_delete=Slet valgte volumenpuljer
 pools_return=liste over volumenpooler
 pools_derr=Kunne ikke slette volumenpuljer
+
 pool_title1=Opret volumenpulje
 pool_title2=Rediger lydstyrkepulje
 pool_header=Detaljer om sikkerhedskopieringsvolumen pool
@@ -332,6 +356,7 @@ pool_ereten=Manglende eller ugyldig opbevaringsperiode
 pool_status=Vis bind
 pool_autolabel=Mærk automatisk mængde præfiks
 pool_maxvolsize=Maksimal volumenstørrelse (f.eks. 5G for 5 Gigabyte)
+
 poolstatus_title=Mængder i puljen
 poolstatus_show=Vis bind i poolen:
 poolstatus_ok=Okay
@@ -345,9 +370,11 @@ poolstatus_status=Backuptilstand
 poolstatus_none=Der er i øjeblikket ingen bind i denne backup-pool.
 poolstatus_never=Aldrig
 poolstatus_delete=Slet valgte bind
+
 dvolumes_err=Kunne ikke slette bindene
 dvolumes_enone=Ingen valgt
 dvolumes_ebacula=Bacula-fejl : $1 
+
 mount_title=Montering eller afmontering
 mount_header=Opbevaringsmontering eller fjern montering
 mount_storage=Lagerenhed
@@ -365,8 +392,10 @@ unmount_failed=.. un-mount mislykkedes! Se fejlmeddelelsen ovenfor af grunden ti
 mount_return=monter form
 mount_err=Kunne ikke montere lagerenheden
 mount_eslot=Manglende eller ugyldigt slotnummer
+
 cancel_err=Kunne ikke annullere job
 cancel_enone=Ingen valgt
+
 gjobs_title=Bacula Group Backup Jobs
 gjobs_none=Der er endnu ikke defineret nogen sikkerhedskopieringsjob for Bacula-gruppe.
 gjobs_add=Tilføj et nyt backup-job i Bacula-gruppen.
@@ -374,10 +403,12 @@ gjobs_delete=Slet valgte job
 gjobs_return=liste over job i Bacula-gruppen
 gjobs_derr=Kunne ikke slette Bacula-gruppejob
 gjobs_client=Bacula-gruppe til sikkerhedskopi
+
 gjob_title1=Opret Bacula Group Backup Job
 gjob_title2=Rediger Bacula Group Backup Job
 gjob_header=Oplysninger om Bacula-gruppe backup-job
 gjob_client=Bacula-gruppe til sikkerhedskopi
+
 groups_title=Bacula-grupper
 groups_none=Der er endnu ikke valgt nogen Bacula-grupper til sikkerhedskopiering af Bacula.
 groups_name=Gruppe navn
@@ -391,6 +422,7 @@ groups_derr=Kunne ikke slette grupper
 groups_noadd=Der findes ingen Bacula-grupper, der skal vælges til sikkerhedskopiering.
 groups_info=$1 ($2 medlemmer)
 groups_already=Alle Bacula-grupper er allerede tilføjet.
+
 group_title1=Opret Bacula Group
 group_title2=Rediger Bacula Group
 group_header=Detaljer om Bacula-gruppen, der skal sikkerhedskopieres
@@ -401,11 +433,13 @@ group_port=Bacula FD-port
 group_err=Kunne ikke gemme Bacula-gruppen
 group_eclash=En gruppe med samme navn findes allerede
 group_members=Værter i Bacula-gruppen
+
 sync_title=Bacula-gruppesynkronisering
 sync_header=Automatiske Bacula-gruppe klientsynkroniseringsindstillinger
 sync_sched=Synkroniseres efter planen?
 sync_schedyes=Ja, til tider valgt nedenfor ..
 sync_err=Kunne ikke gemme Bacula-gruppesynkronisering
+
 log_create_client=Oprettede backup-klient $1 
 log_modify_client=Ændret backup-klient $1 
 log_delete_client=Sletet backupklient $1 
@@ -464,6 +498,7 @@ log_director=Gemt global Bacula-direktørkonfiguration
 log_file=Gemt Bacula-fildemonskonfiguration
 log_storagec=Gemt Bacula-opbevaring daemon konfiguration
 log_fixpass=Fast Bacula-konsol-programadgangskode
+
 director_title=Direktørkonfiguration
 director_header=Globale Bacula-direktørindstillinger
 director_name=Instruktør navn
@@ -477,6 +512,7 @@ director_ename=Manglende eller ugyldigt instruktørnavn
 director_eport=Manglende eller ugyldigt portnummer
 director_ejobs=Manglende eller ugyldigt antal samtidige job
 director_edir=Manglende eller ikke-eksisterende arbejdsmappe
+
 tls_enable=Vil du aktivere TLS-kryptering?
 tls_require=Kun acceptere TLS-forbindelser?
 tls_verify=Bekræfte TLS-klienter?
@@ -488,6 +524,7 @@ tls_ecert=Manglende eller ikke-eksisterende TLS-certifikatfil
 tls_ekey=Manglende eller ikke-eksisterende TLS-nøglefil
 tls_ecacert=Manglende eller ikke-eksisterende TLS CA-certifikatfil
 tls_ecerts=For at TLS skal være aktiveret, skal certifikat-, nøgle- og CA-filer specificeres
+
 file_title=File Daemon-konfiguration
 file_header=Valg af Bacula-fil-dæmon
 file_name=File daemon navn
@@ -500,6 +537,7 @@ file_ename=Manglende eller ugyldigt fildemons navn
 file_eport=Manglende eller ugyldigt portnummer
 file_ejobs=Manglende eller ugyldigt antal samtidige job
 file_edir=Manglende eller ikke-eksisterende arbejdsmappe
+
 fdirectors_title=File Daemon-direktører
 fdirectors_none=Der er endnu ikke defineret nogen direktører.
 fdirectors_name=Instruktør navn
@@ -508,6 +546,7 @@ fdirectors_add=Tilføj en ny instruktør.
 fdirectors_delete=Slet valgte direktører
 fdirectors_return=liste over direktører
 fdirectors_derr=Kunne ikke slette direktører
+
 fdirector_title1=Opret File Daemon Director
 fdirector_title2=Rediger File Daemon Director
 fdirector_header=Detaljer om kontrol af fjerndirektør
@@ -519,6 +558,7 @@ fdirector_err=Kunne ikke gemme filedemon-direktøren
 fdirector_ename=Manglende instruktørnavn
 fdirector_eclash=Der findes allerede en instruktør med samme navn
 fdirector_epass=Manglende adgangskode
+
 sdirectors_title=Storage Daemon-direktører
 sdirectors_none=Der er endnu ikke defineret nogen direktører.
 sdirectors_name=Instruktør navn
@@ -527,6 +567,7 @@ sdirectors_add=Tilføj en ny instruktør.
 sdirectors_delete=Slet valgte direktører
 sdirectors_return=liste over direktører
 sdirectors_derr=Kunne ikke slette direktører
+
 sdirector_title1=Opret Storage Daemon Director
 sdirector_title2=Rediger Storage Daemon Director
 sdirector_header=Detaljer om kontrol af fjerndirektør
@@ -538,6 +579,7 @@ sdirector_err=Kunne ikke gemme opbevaring af dæmondirektør
 sdirector_ename=Manglende instruktørnavn
 sdirector_eclash=Der findes allerede en instruktør med samme navn
 sdirector_epass=Manglende adgangskode
+
 storagec_title=Storage Daemon-konfiguration
 storagec_header=Valg af Bacula-opbevaring daemon
 storagec_name=Daemon navn
@@ -550,6 +592,7 @@ storagec_ename=Manglende eller ugyldigt lagedemon-navn
 storagec_eport=Manglende eller ugyldigt portnummer
 storagec_ejobs=Manglende eller ugyldigt antal samtidige job
 storagec_edir=Manglende eller ikke-eksisterende arbejdsmappe
+
 chooser_title=Vælg tidsplan
 chooser_monthsh=Måneder at udføre
 chooser_months=Måneder af året
@@ -574,11 +617,13 @@ chooser_emonthsrange=De valgte måneder skal være sammenhængende
 chooser_eweekdaysrange=De valgte ugedage skal være sammenhængende
 chooser_eweekdaynumsrange=Valgte antal ugedage skal være sammenhængende
 chooser_edaysrange=De valgte dage i måneden skal være sammenhængende
+
 weekdaynum_1=Først
 weekdaynum_2=Anden
 weekdaynum_3=Tredje
 weekdaynum_4=Fjerde
 weekdaynum_5=femte
+
 restore_title=Gendan sikkerhedskopi
 restore_title2=Gendan sikkerhedskopi til Bacula-gruppen
 restore_title3=Gendan Bacula Group Backup

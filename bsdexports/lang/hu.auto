@@ -9,9 +9,12 @@ index_apply=Módosítások elfogadása
 index_applydesc=Kattintson erre a gombra az aktuális fájl exportálási konfiguráció alkalmazásához. Ez a fent felsorolt összes könyvtárat elérhetővé teszi a megadott lehetőségekkel.
 index_return=export lista
 index_echeck=Az NFS szerver nem használható ebben a rendszeren : $1 
+
 check_ecmd=A (z) $1 NFS szerver parancs nincs telepítve
+
 delete_err=Az export törlése nem sikerült
 delete_enone=Egy sincs kiválasztva
+
 edit_title1=Exportálás szerkesztése
 edit_title2=Exportálás létrehozása
 edit_header1=Exportálási lehetőségek
@@ -31,6 +34,7 @@ edit_clients=Ügyfeleink
 edit_hosts=Házigazdák / hálózati csoportok
 edit_network=Hálózat
 edit_mask=Maszk
+
 save_err=Az exportálás mentése nem sikerült
 save_edir=A '$1' nem könyvtár, vagy nem létezik
 save_enone=Legalább egy könyvtárat meg kell adnia az exportáláshoz
@@ -44,4 +48,5 @@ save_enetwork=A '$1' nem érvényes hálózat
 save_enetmask=A '$1' nem érvényes hálómaszk
 save_esame1=A <tt>$1</tt> könyvtárat már exportálják a <tt>$2</tt> könyvtárba. Az operációs rendszer nem engedélyezi az azonos <i>helyi</i> fájlrendszer könyvtárainak külön-külön exportálását ugyanarra a gazdagépre
 save_esame2=A <tt>$1</tt> könyvtárat már exportálják a <tt>$2</tt> könyvtárba. Az operációs rendszer nem engedélyezi az azonos <i>helyi</i> fájlrendszer könyvtárainak külön-külön exportálását ugyanarra a hálózatra
+
 restart_err=Nem sikerült alkalmazni a módosításokat

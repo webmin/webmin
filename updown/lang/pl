@@ -40,6 +40,7 @@ index_descfetch=Ta strona służy do pobierania plików z serwera do twojego kom
 index_email=Wysłać e-mail, gdy pobieranie zostanie zakończone?
 index_emailto=Tak, na adres
 index_email2=Wysłać e-mail, gdy wysyłanie zostanie zakończone?
+
 upload_title=Wysyłanie plików
 upload_err=Błąd wysyłania plików
 upload_edir=Brakujący katalog do wysłania
@@ -63,6 +64,7 @@ upload_saving=Zapisywanie pliku $1 ..
 upload_saved=.. zapisano $1
 upload_unzipping=Wypakowywanie pliku $1 ..
 upload_unzipdone=.. $1
+
 download_err=Niepowodzenie podczas zapisywania
 download_enone=Nie wpisano adresu URL
 download_eurl=adres URL '$1' jest niepoprawny
@@ -74,9 +76,11 @@ download_failed=Niepowodzenie pobierania : $1
 download_eaccess=Nie możesz pobierać plików do $1
 download_eucannot=Nie możesz pobierać plików jako użytkownik $1
 download_egcannot=Wybrana grupa nie zawiera wybranego użytkownika
+
 cancel_err=Niepowodzenie anulowania pobierań
 cancel_enone=Nie zaznaczono
 cancel_ecannot=Nie możesz anulować pobierania dla użytkownika $1
+
 log_cancel=Anulowano $1 pobieranie
 log_upload_l=Wysłano plik(i) $1
 log_upload=Wysłano $1 plik(ów)
@@ -84,6 +88,7 @@ log_download_l=Pobrano URL $1
 log_download=Pobrano $1 URL
 log_sdownload_l=Zaplanowano pobranie z URL $1
 log_sdownload=Zaplanowano pobranie z $1 URL
+
 acl_users=Może wysyłać i pobierać pliki tylko jako użytkownicy
 acl_all=Wszyscy użytkownicy
 acl_this=Aktualny użytkownik Webmina
@@ -98,6 +103,7 @@ acl_max=Maksymalny rozmiar wysłanego pliku
 acl_unlim=Bez limitu
 acl_b=bajtów
 acl_fetch=Może pobierać pliki na PC?
+
 fetch_err=Błąd pobierania pliku
 fetch_ecannot=Nie masz uprawnień do pobierania plików do PC
 fetch_efile=Nie wpisano nazwy pliku
@@ -106,6 +112,7 @@ fetch_eopen=Błąd otwierania pliku : $1
 fetch_eaccess=Nie masz uprawnień do pobierania plików z $1
 fetch_ezip=Katalog nie może zostać pobrany, chyba że polecenie <tt>zip</tt> jest zainstalowane
 fetch_eroot=Katalog główny nie może zostać pobrany!
+
 email_downmsg=Poniższe pliki zostały pobrane :
 email_downurl=URL: $1
 email_downerr=Błąd: $1

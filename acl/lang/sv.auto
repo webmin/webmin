@@ -3,6 +3,7 @@ index_twofactor=Tvåfaktorautentisering
 index_joingroup=Lägg till i gruppen:
 index_eulist=Det gick inte att lista användare: $1 
 index_eglist=Det gick inte att lista grupper: $1 
+
 edit_title3=Skapa säker Webmin-användare
 edit_twofactor=Tvåfaktors autentiseringstyp
 edit_twofactorprov=Använda leverantör $1 med ID $2 
@@ -19,32 +20,43 @@ edit_safe=Privileginivå
 edit_safe0=Obegränsad
 edit_safe1=Endast säkra moduler
 edit_unsafe=Återställ till obegränsad
+
 save_eunixname=Användarnamnet '$1' är inte en Unix-användare och kan därför inte användas i säkert läge
 save_eoverlay=Ett temaöverlägg kan inte väljas om inte ett tema är det
 save_eminsize=Saknad eller icke-numerisk minsta lösenordslängd
 save_etemp=Alternativet att tvinga lösenordsändring vid nästa inloggning kan inte användas om <a href='$1'>uppmanar användare att ange nya lösenord</a> är aktiverat
+
 delete_eanonuser=Den här användaren används för anonym modulåtkomst
+
 cert_etempdir=Ogiltig certifikatfil
+
 acl_pass=Kan ändra lösenordsbegränsningar?
 acl_sql=Kan konfigurera användar- och gruppdatabas?
+
 log_joingroup=Lade till $1 Webmin-användare för att gruppera $2 
 log_unix=Ändrad unix användarautentisering
 log_sync=Ändrad unix användarsynkronisering
 log_sql=Ändrad användare och gruppdatabas
 log_twofactor=Registrerad användare $1 med tvåfaktureleverantör $2 
 log_onefactor=Inskrivna användare $1 för tvåfaktorautentisering
+
 gedit_desc=Gruppbeskrivning
 gedit_egone=Den valda gruppen finns inte längre!
+
 gsave_edesc=Ogiltig beskrivning -: -tecknet är inte tillåtet
+
 convert_sync2=Synkronisera lösenord med Unix-användare i framtiden?
 convert_user=Unix-användare
 convert_action=Åtgärder som vidtagits
 convert_done= $1 användare konverterade, $2 ogiltig, $3 finns redan, $4 uteslutet.
 convert_users=Användare att konvertera
+
 sync_when=När du ska synkronisera
+
 unix_restrict2=Ytterligare begränsningar
 unix_header=Unix inställningar för användarautentisering
 unix_utable=Tillåtna Unix-användare
+
 sessions_actions=Handlingar..
 sessions_logouts=Visa även utloggade sessioner..
 sessions_state=stat
@@ -52,12 +64,17 @@ sessions_this=Den här inloggningen
 sessions_in=Inloggad
 sessions_out=Utloggad
 sessions_kill=Koppla ifrån..
+
 logins_title=Senaste inloggningar på Webmin
+
 udeletes_jerr=Det gick inte att lägga till användare i gruppen
+
 pass_ecannot=Du får inte redigera lösenordsbegränsningar
 pass_regexps=Lösenord för vanliga uttryck måste matcha
 pass_regdesc=Mänsklig läsbar beskrivning för reguljärt uttryck
+
 cpass_spellcmd=Varken kommandona $1 eller $2 för att kontrollera om ordlistor är installerade
+
 sql_title=Användar- och gruppdatabas
 sql_ecannot=Du får inte konfigurera användar- och gruppdatabasen
 sql_header=Alternativ för databasbackend för användare och grupper
@@ -100,21 +117,25 @@ sql_dnerr=Användar- och gruppdatabasinställningar är giltiga, men LDAP DN som
 sql_dnerr2=Klicka på <b>Skapa DN</b> -knappen nedan för att skapa den automatiskt, eller lägg till den till din LDAP-server manuellt.
 sql_makedn=Skapa DN
 sql_schema=Ladda ner LDAP-schema
+
 make_title=Skapa användar- och grupptabeller
 make_err=Det gick inte att skapa användar- och grupptabeller
 make_exec=Utför SQL $1..
 make_failed=.. skapelsen misslyckades: $1 
 make_done=.. Gjort
 make_still=Vissa problem hittades även efter skapandet av tabellen: $1 
+
 makedn_title=Skapa LDAP DN
 makedn_eoc=Inga strukturella objektklasser hittade!
 makedn_exec=Skapa förälder DN $1..
 makedn_failed=.. skapelsen misslyckades: $1 
 makedn_done=.. Gjort
 makedn_still=Vissa problem hittades även efter skapandet av DN: $1 
+
 schema_title=Ladda ner LDAP-schema
 schema_desc=Innan Webmin kan använda en LDAP-server för att lagra användare och grupper måste den konfigureras för att använda schemat nedan. Detta kan vanligtvis göras genom att spara schemadefinitionen i <tt>/etc/ldap/schema</tt> eller <tt>/etc/openldap/schema</tt> som <tt>webmin.schema</tt>, konfigurera sedan servern för att ladda schemafilen.
 schema_download=Ladda ner schemafil: <a href=$1>$1</a>
+
 twofactor_err=Det gick inte att konfigurera tvåfaktorautentisering
 twofactor_euser=Din Webmin-användare hittades inte!
 twofactor_title=Tvåfaktorautentisering

@@ -23,6 +23,7 @@ index_follow=Selepas $1
 index_forcetar=Dalam format TAR
 index_delete=Padamkan Cadangan Terpilih
 index_nostrftime=Amaran - beberapa kerja sandaran menggunakan % dalam nama fail mereka, tetapi penggantian strftime tidak didayakan pada halaman Module Config.
+
 dump_dir=Direktori untuk sandaran
 dump_dirs=Direktori untuk sandaran
 dump_fs=Sistem fail
@@ -108,6 +109,7 @@ dump_remount=Mengemas kini dengan pilihan <tt>noatime</tt> semasa sandaran?
 dump_eftpupdate=Menambah fail ke arkib sedia ada tidak mungkin apabila menggunakan FTP.
 dump_eleveldir=Hanya tahap 0 sandaran dibenarkan untuk direktori yang bukan titik mount sistem fail
 dump_eupdatedir=Fail <tt>/etc/dumpdates</tt> hanya boleh dikemas kini untuk direktori yang mempunyai titik mount sistem fail
+
 edit_err=Gagal membuat sandaran
 edit_edir=Direktori sandaran hilang
 edit_efs=Filesystem jenis $1 tidak dapat disokong oleh modul ini
@@ -132,9 +134,11 @@ edit_tolevel=$1 hingga $2 (tahap $3)
 edit_special=Jadual sandaran
 edit_when=Bila hendak membuat sandaran
 edit_clone=Clone
+
 save_err=Gagal menyimpan sandaran
 save_edir=Direktori cadangan hilang atau tidak sah
 save_efs=Direktori sandaran tidak boleh diubah ke sistem fail yang berbeza
+
 backup_title=Backup Now
 backup_desc=Melaksanakan sandaran $1 hingga $2 ..
 backup_reverify=.. lengkap. Sekarang mengesahkan sandaran ..
@@ -147,6 +151,7 @@ backup_notape=.. sandaran melebihi kapasiti pita tunggal. Perubahan pita hanya d
 backup_egone=Backup tidak wujud!
 backup_bg=Memulakan proses sandaran latar belakang. Anda boleh memantau kemajuannya dalam bahagian <b>Running Backup Jobs</b> pada halaman utama modul, dan akan dimaklumkan tentang status terakhirnya melalui e-mel.
 backup_ecannot=Anda tidak dibenarkan untuk membuat cadangan direktori ini
+
 restore_title=Pulihkan Backup
 restore_err=Gagal memulihkan sandaran
 restore_ecommand=Perintah $1 diperlukan untuk mengembalikan $2 sandaran sistem fail tidak ditemui pada sistem anda. Mungkin ia tidak dipasang pada masa ini.
@@ -190,6 +195,7 @@ restore_gzip=Arkib uncompress?
 restore_keep=Jangan menimpa fail?
 restore_emulti=Pemulihan berbilang fail tidak dapat dilakukan dari peranti pita
 restore_emulti2=Pemulihan berbilang fail tidak dapat dilakukan dari pelayan jauh
+
 log_create=Konfigurasi sandaran yang dibuat untuk $1 
 log_modify=Konfigurasi sandaran yang diubah suai untuk $1 
 log_delete=Konfigurasi sandaran yang dipadamkan untuk $1 
@@ -197,13 +203,16 @@ log_backup=Disokong $1 hingga $2
 log_bgbackup=Bermula sandaran $1 hingga $2 
 log_restore=Disokong sandaran dari $1 
 log_kill=Backup yang ditamatkan untuk $1 
+
 kill_err=Gagal menamatkan sandaran
 kill_egone=Tidak lagi berlari!
 kill_ecannot=Anda tidak dibenarkan menamatkan cadangan ini
+
 newtape_err=Gagal menandakan pita baru
 newtape_egone=Backup tidak lagi berjalan!
 newtape_estatus=Backup tidak lagi menunggu pita baru
 newtape_ecannot=Anda tidak dibenarkan untuk menguruskan sandaran ini
+
 acl_edit=Bolehkah membuat dan mengedit sandaran?
 acl_restore=Boleh memulihkan sandaran?
 acl_cmds=Boleh mengedit sebelum dan selepas arahan?
@@ -211,8 +220,10 @@ acl_extra=Boleh mengedit parameter baris arahan tambahan?
 acl_dirs=Membenarkan direktori untuk sandaran
 acl_all=Semua direktori
 acl_list=Hanya tersenarai ..
+
 delete_err=Gagal memadamkan sandaran
 delete_enone=Tiada yang dipilih
+
 email_already=Backup sudah berjalan dengan PID $1.
 email_ebefore=Arahan sebelum sandaran gagal!
 email_verify=Mengesahkan sandaran ..
@@ -220,5 +231,6 @@ email_eafter=Perintah selepas sandaran gagal!
 email_subject=Sandaran $1 pada $2 
 email_ok=Backup berjaya
 email_failed=Backup gagal!
+
 newtape_subject=Perubahan pita $1 untuk sandaran $2 pada $3 
 newtape_body=Cadangan $2 pada $3 telah mencapai jumlah maksimum data yang dibenarkan pada pita $1. Anda perlu memuatkan pita baru dan memukul pautan 'Tape Loaded' dalam modul Backup Filesystem Backup Webmin untuk sandaran untuk diteruskan.

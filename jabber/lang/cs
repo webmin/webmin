@@ -14,6 +14,7 @@ index_restartmsg=Klepnutím na toto tlačítko se použije aktuální konfigurac
 index_comments=Upozornění - váš konfigurační soubor Jabberu $1 obsahuje komentáře, které budou odstraněny, jakmile se provedou jakékoliv změny v konfiguraci pomocí tohoto modulu.
 index_return=Menu Jabberu
 index_version=Jabber verze $1
+
 general_title=Hlavní nastavení
 general_header=Globální nastavení Jabber serveru
 general_host=Jméno hosta vašeho serveru
@@ -29,6 +30,7 @@ general_eelogfmt=Chybějící log formát chyb
 general_erlog=Chybějící nebo nesprávný log soubor přenosů
 general_erlogfmt=Chybějící log formát přenosů
 general_epidfile=Chybějící nebo nesprávný PID soubor
+
 messages_title=Zprávy
 messages_header=Zpráva Jabber serveru pro klienty
 messages_wsubject=Předmět uvítací zprávy
@@ -41,6 +43,7 @@ messages_vcard2jud=Poslat vCard do Jabber uživatelského adresáře?
 messages_err=Chyba při ukládání zpráv
 messages_evcard=Neplatný vCard XML : $1
 messages_etag=Server vCard XML nezačíná pomocí &lt;vCard&gt;
+
 modules_title=Moduly Jabberu
 modules_desc=Níže uvedené moduly jsou použity za účelem vykonávání zpráv přijatých manažerem Jabber relací. Tento seznam můžete měnit pouze v případě, pokud víte, co děláte.
 modules_header=Moduly manažeru Jabber serverových relací
@@ -49,6 +52,7 @@ modules_so=Sdílená knihovna
 modules_err=Chyba při ukládání Jabber modulů
 modules_emod='$1' není platný název modulu
 modules_eso=Sdílená knihovna '$1' neexistuje
+
 karma_title=Karma kontrola přenosů
 karma_header=Nastavení kontroly dávky přenosu
 karma_rate=Udržování nadměrného připojení
@@ -77,6 +81,7 @@ karma_epenalty=Chybějící nebo nesprávné trestné periody
 karma_erestore=Chybějící nebo nesprávná obnovovací periody
 karma_epoints=Chybějící nebo nesprávný počet připojení
 karma_etime=Chybějící nebo nesprávný čas blokování pro
+
 ips_title=Kontrola IP přístupu
 ips_header=Kontrola IP přístupu Jabber serveru
 ips_allow=Povolení IPs klientů
@@ -86,10 +91,12 @@ ips_none=Nic
 ips_sel=Uvedené adresy/síťové masky ..
 ips_err=Chyba při ukládání kontroly IP přístupů
 ips_eaddr='$1' není platná IP adresa nebo IP adresa/síťová maska
+
 file_title=Editace konfiguračního souboru
 file_desc=Použitím níže uvedeného formuláře editujete přímo konfigurační soubor Jabberu. Tento postup můžete využít pouze v případě, pokud rozumíte XML konfiguračnímu formátu.
 file_header=Editovat konfigurační soubor Jabberu
 file_err=Chyba při ukládání konfiguračního souboru
+
 admin_title=Administrativa uživatelů
 admin_header=Uživatelé administrující server
 admin_read=Administrátoři s povolením čtení
@@ -97,11 +104,13 @@ admin_write=Administrátoři s povolením zápisu
 admin_reply=Automaticky odpovídat na zprávy administrátorům?
 admin_rsubject=Předmět automatické odpovědi
 admin_rbody=Zpráva automatické odpovědi
+
 filter_title=Filtry uživatelů
 filter_header=Práva uživatelských filtrů
 filter_max=Maximální počet pravidel ve filru
 filter_conds=Povolující podmínky filtru
 filter_acts=Povolené akce filtru
+
 restart_err=Chyba při aplikaci změn
 stop_err=Chyba při ukončení Jabberu
 start_err=Chyba při spuštění Jabberu

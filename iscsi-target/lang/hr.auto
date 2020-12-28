@@ -1,6 +1,7 @@
 check_econfig=ISCSI ciljna datoteka konfiguracije $1 nije pronađena u vašem sustavu.
 check_eietadm=Naredba iSCSI ciljne administracije $1 nije pronađena u vašem sustavu.
 check_einit=Radnja za pokretanje $1 ne postoji
+
 index_title=iSCSI Cilj
 index_clink=Možda nije instaliran ili je vaša <a href='$1'>konfiguracija modula</a> netočna.
 index_stop=Zaustavite iSCSI cilj
@@ -22,8 +23,10 @@ index_noluns=nijedan
 index_nousers=bilo koji
 index_nullio=RAM disk od $1 sektora
 index_size=Ukupna veličina
+
 dtargets_err=Brisanje ciljeva nije uspjelo
 dtargets_enone=Nijedan nije odabran!
+
 target_title1=Stvorite iSCSI cilj
 target_title2=Uređivanje iSCSI cilja
 target_header=Opcije zajedničkog uređaja iSCSI
@@ -68,11 +71,13 @@ target_noalias=nijedan
 target_hdigest=Kontrolni zbroj zaglavlja
 target_ddigest=Provjera podataka
 target_nodigest=nijedan
+
 auth_title=Postavke provjere autentičnosti
 auth_header=Zadane mogućnosti provjere autentičnosti za sve ciljeve
 auth_iuser=Autentifikacija od strane klijenata
 auth_ouser=Autentifikacija klijentima
 auth_err=Postavke provjere autentičnosti nisu spremljene
+
 conn_title=Postavke veze
 conn_header=Zadane mogućnosti povezivanja za sve ciljeve
 conn_sessions=Maksimalno istodobne sesije
@@ -91,6 +96,7 @@ conn_emaxrecv=Najveća duljina segmenta prijema koja nedostaje ili nije brojčan
 conn_emaxxmit=Maksimalna duljina ili ne-numerička duljina segmenta prijenosa
 conn_emaxburst=Nedostaje ili ne numerička maksimalna veličina praska klijenta
 conn_efirstburst=Nedostaje ili ne numerička maksimalna veličina podataka za koju korisnik ne traži
+
 timeout_title=Postavke istekanja
 timeout_header=Opcije vremenskog ograničenja klijenta
 timeout_nopi=Interval između pingova u praznom hodu
@@ -98,6 +104,7 @@ timeout_nopinone=Nikad ping
 timeout_secs=sekundi
 timeout_nopt=Vrijeme je za pričekati na ping odgovor
 timeout_noptnone=Isto kao i vrijeme pinga
+
 addr_title=Adresa i poslužitelj poslužitelja
 addr_header=Opcije umrežavanja iSCSI poslužitelja
 addr_addr=Slušajte na IP adresi
@@ -110,18 +117,21 @@ addr_err=Spremanje adrese poslužitelja nije uspjelo
 addr_eaddr=Adresa koju želite slušati mora biti IP adresa
 addr_eport=Luka za slušanje mora biti broj
 addr_edebug=Razina uklanjanja pogrešaka mora biti broj
+
 initiators_title=Dopuštene adrese klijenta
 initiators_none=Još nije definirana dozvoljena adresa klijenta. Nijedan se klijent neće moći povezati.
 initiators_ips=Dopušteno klijentima
 initiators_title1=Dodajte dopuštene adrese klijenta
 initiators_title2=Uređivanje dopuštenih adresa klijenta
 initiators_header=Dozvoljeni iSCSI klijentima za ciljanje
+
 targets_title=Dopuštene adrese poslužitelja
 targets_none=Još nije definirana dozvoljena adresa poslužitelja. Nijedan se klijent neće moći povezati.
 targets_ips=Dopuštena sučelja poslužitelja
 targets_title1=Dodajte dopuštene adrese poslužitelja
 targets_title2=Uređivanje dopuštenih adresa poslužitelja
 targets_header=Dozvoljeno je iSCSI sučelje poslužitelja za cilj
+
 allow_target=Naziv cilja
 allow_move=Pomicati
 allow_delete=Obriši odabrano
@@ -133,17 +143,21 @@ allow_return=dozvoljeni ciljevi i adrese
 allow_err=Spremanje dopuštenih adresa nije uspjelo
 allow_eaddr=Adresa $1 nije valjana. To mora biti ili IPv4 adresa, IPv4 mreža/maska ili IPv6 adresa u uglatim zagradama.
 allow_eaddrs=Nema unesenih adresa
+
 dallow_err=Brisanje dopuštenih adresa nije uspjelo
 dallow_enone=Nijedna nije odabrana
+
 manual_title=Uređivanje konfiguracijske datoteke
 manual_desc=Upotrijebite tekstualni okvir u nastavku za uređivanje konfiguracijske datoteke poslužitelja iSCSI $1. Budite oprezni jer neće biti izvršena provjera valjanosti na vašem unosu!
 manual_err=Spremanje konfiguracijske datoteke nije uspjelo
 manual_edata=Sadržaj nije unesen!
+
 start_err=Nije uspio pokretanje iSCSI poslužitelja
 stop_err=Zaustavljanje poslužitelja iSCSI nije uspjelo
 restart_err=Ponovno pokretanje iSCSI poslužitelja nije uspjelo
 atboot_err=Nije omogućeno pri pokretanju
 atboot_einit=Init skripta $1 ne postoji
+
 log_create_target=Izrađen cilj $1 
 log_delete_target=Izbrisani cilj $1 
 log_modify_target=Izmijenjeni cilj $1 

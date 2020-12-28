@@ -25,6 +25,7 @@ index_family=Modellfamilj
 index_serial=Serienummer
 index_capacity=Kapacitet
 index_norm=normaliseras:
+
 monitor_type=SMART Drive Check
 monitor_type2=SSD Wearout
 monitor_drive=Kör för att kontrollera
@@ -40,14 +41,17 @@ monitor_wearlevel=Misslyckas om slitagenivån faller under
 monitor_ewearlevel=Ogiltig förslitningsnivå
 monitor_nowearout=Drive rapporterar inte en SSD-wearout-indikator
 monitor_wornout=Slitagivån har sjunkit till $1 
+
 short_title=Kort självtest
 short_doing=Starta kort självtest på $1 ..
 short_failed=.. misslyckades!
 short_ok=.. testet började OK. Se enhetsstatus på modulens startsida för resultat.
+
 ext_title=Utökat självtest
 ext_doing=Starta utökat självtest på $1 ..
 ext_failed=.. misslyckades!
 ext_ok=.. testet började OK. Se enhetsstatus på modulens startsida för resultat.
+
 data_title=Test för datainsamling
 data_doing=Starta datainsamling offline $1 ..
 data_failed=.. misslyckades!

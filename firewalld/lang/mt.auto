@@ -30,6 +30,7 @@ index_return=lista taż-żoni
 index_ezones=L-ebda żoni FirewallD ma nstabu!
 index_none=Din iż-żona għad m'għandha l-ebda port jew servizzi permessi.
 index_ifaces=Applika r-regoli għall-interfaces:
+
 port_edit=Editja l-Port
 port_create=Żid Port
 port_header=Għażliet permessi tal-port
@@ -45,11 +46,13 @@ port_eport=Numru jew isem tal-port nieqes jew invalidu
 port_eportlow=Port baxx għandu jkun numru
 port_eporthigh=Port għoli għandu jkun numru
 port_eportrange=Port baxx għandu jkun taħt il-port għoli
+
 serv_edit=Servizz Editja
 serv_create=Żid Servizz
 serv_header=Għażliet ta 'servizz permessi
 serv_name=Servizz li jippermetti
 serv_err=Ma rnexxielux isalva s-servizz
+
 forward_edit=Editja Quddiem
 forward_create=Oħloq Quddiem
 forward_header=Għażliet ta 'trażmissjoni tal-port
@@ -61,10 +64,13 @@ forward_dstaddr=Indirizz tad-destinazzjoni
 forward_dstlocal=Din is-sistema
 forward_edstaddr=Indirizz ta 'destinazzjoni IPv4 mhux validu
 forward_eneither=Jew l-indirizz tad-destinazzjoni jew il-port jew it-tnejn iridu jiddaħħlu
+
 check_ecmd=Il-kmand tal-kontroll FirewallD $1 ma nstabx fis-sistema tiegħek
+
 delete_err=Naqset milli tħassar ir-regoli
 delete_enone=Xejn magħżula!
 delete_edel=Tneħħija ta ' $1 naqset : $2 
+
 zone_title=Oħloq Żona
 zone_header=Għażliet ta 'żona ġdida
 zone_name=Isem taż-żona
@@ -77,12 +83,16 @@ zone_mode4=Portijiet użati għall-akkoljenza virtwali
 zone_err=Ma rnexxielux joħloq żona
 zone_ename=Isem taż-żona nieqes jew invalidu
 zone_eclash=Żona bl-istess isem diġà teżisti
+
 delzone_title=Ħassar Żona
 delzone_err=Naqset milli tħassar iż-żona
 delzone_edefault=Iż-żona default ma tistax titneħħa
 delzone_rusure=Int żgur li trid tħassar iż-żona $1, li fiha $2 portijiet u servizzi $3 ?
+
 defzone_err=Naqset milli tagħmel iż-żona default
+
 restart_err=Ma rnexxielux japplika l-konfigurazzjoni
+
 stop_err=Naqset milli twaqqaf FirewallD
 start_err=Naqset milli tibda FirewallD
 log_stop=Waqaf FirewallD

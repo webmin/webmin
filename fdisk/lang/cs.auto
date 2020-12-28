@@ -6,28 +6,36 @@ index_relabel=Vymazat oddíly
 index_relabeldesc=Odstraňte všechny stávající oddíly a vytvořte novou tabulku oddílů v jiném formátu.
 index_relabel2=Vytvořte tabulku oddílů
 index_relabeldesc2=Na tomto disku vytvořte novou prázdnou tabulku oddílů, aby bylo možné přidat oddíly.
+
 select_nvme=Jednotka NVME SSD $1 
 select_nvmepart=Jednotka NVME SSD $1 $2 partition $3 
+
 edit_mountiscsi=Sdílené zařízení iSCSI $1 
 edit_name=Název oddílu
+
 btrfs_l=Velikost listu
 btrfs_n=Velikost uzlu
 btrfs_s=Velikost sektoru
+
 blink_title=Identifikujte disk
 blink_desc=Kontrolka aktivity jednotky se nyní rozsvítí šedesátkrát
 blink_back=Vraťte se
+
 fs_ext4=Nový Linux Native
 fs_btrfs=BTR
+
 disk_iscsi=Sdílené zařízení iSCSI $1 
 disk_table=<b>Formát tabulky oddílů:</b> $1 
 disk_notable=<b>Formát tabulky oddílů:</b> Nebyl vytvořen
 disk_needtable=Žádné oddíly nelze vytvořit bez tabulky oddílů.
 disk_return=seznam oddílů
+
 relabel_title=Vymazat oddíly
 relabel_warn=Opravdu chcete vymazat všechny oddíly na $1 ($2) přepsáním štítku disku? Všechna stávající data a souborové systémy budou ztraceny!
 relabel_parts=Existující oddíly
 relabel_noparts=Zatím žádný nebyl vytvořen
 relabel_table=Formát tabulky oddílů
 relabel_ok=Vymazat a znovu označit
+
 table_msdos=MS-DOS (standardní formát oddílu)
 table_gpt=GPT (pro 2T nebo větší disky)

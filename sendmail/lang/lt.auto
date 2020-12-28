@@ -11,6 +11,7 @@ index_version2=„Sendmail“ versija $1, konfigūracija $2
 index_xversion=$1 „sendmail“ versija
 index_version=„Sendmail“ konfigūracija $1 
 index_sendmail=Išsiųsti laišką
+
 opts_title=„Sendmail“ parinktys
 opts_ecannot=Jums neleidžiama redaguoti „sendmail“ parinkčių
 opts_ds=Siųskite siunčiamus laiškus per pagrindinį kompiuterį
@@ -57,6 +58,7 @@ opts_qso=Rūšiuokite pašto eilę pagal
 opts_priority=Prioritetas
 opts_host=Pagrindinio kompiuterio vardas
 opts_time=Laikas gautas
+
 aliases_title=Pašto slapyvardžiai
 aliases_ecannot=Jums neleidžiama redaguoti slapyvardžių
 aliases_enofile=„Sendmail“ konfigūracijoje nėra apibrėžtas slapyvardžių failas
@@ -73,6 +75,7 @@ aliases_return=slapyvardžių sąrašas
 aliases_toomany=Jūsų sistemoje yra per daug pašto slapyvardžių, kad būtų rodomi šiame puslapyje.
 aliases_go=Rasti slapyvardžius, atitinkančius:
 aliases_delete=Ištrinti pasirinktus slapyvardžius
+
 aform_ecannot=Jums neleidžiama redaguoti šio slapyvardžio
 aform_type0=Nė vienas
 aform_type1=Elektroninio pašto adresas
@@ -90,11 +93,13 @@ aform_val=Pseudonimas
 aform_afile=Redaguoti ..
 aform_return=slapyvardis
 aform_cmt=apibūdinimas
+
 afile_title=Redaguoti adreso failą
 afile_desc=Norėdami redaguoti adresus faile $1, naudokite žemiau esančią teksto sritį.
 afile_efile=Jums neleidžiama redaguoti $1.
 afile_undo=Anuliuoti pakeitimus
 afile_ewrite=Nepavyko parašyti adresų failo : $1 
+
 ffile_title=Redaguoti filtro failą
 ffile_desc=Norėdami nustatyti filtro taisykles faile $1, naudokite žemiau esančią formą.
 ffile_efile=Jums neleidžiama redaguoti $1.
@@ -110,6 +115,7 @@ ffile_other=Priešingu atveju nukreipkite į $1
 ffile_err=Nepavyko išsaugoti filtro failo
 ffile_ematch=Trūksta rungtynių
 ffile_eaction=Trūksta persiuntimo adreso
+
 rfile_title=Redaguoti automatinio atsakymo failą
 rfile_desc=Norėdami redaguoti $1 automatinio atsakymo pranešimą, naudokite žemiau esantį teksto lauką. Pranešime gali būti makrokomandos $SUBJECT, $FROM, $TO, $DATE ir $BODY, kurios bus išplėstos suaktyvinus automatinį atsakymą.
 rfile_desc2=Taip pat galite nustatyti pašto antraštes, kurios prideda arba pakeičia automatiniame atsakyme naudojamus numatytuosius parametrus, įvesdami tokias eilutes: <br><tt> Iš: foo@bar.com </tt><br> <tt>Tema: Atostogų metu</tt> <br> pranešimo viršuje, atskirtą nuo turinio viena tuščia eilute.
@@ -129,6 +135,7 @@ rfile_from=Nuo: atsakymo adresas
 rfile_auto=Automatinis (pagal gavėjo adresą)
 rfile_efrom=Trūksta nuo: adresas
 rfile_fromdesc=A Nuo: adresas visada turėtų būti nurodytas, jei įmanoma, nes automatinis metodas gali būti nepatikimas.
+
 asave_err=Nepavyko išsaugoti slapyvardžio
 asave_ecannot2=Jums neleidžiama redaguoti slapyvardžių
 asave_ecannot=Jums neleidžiama redaguoti šio slapyvardžio
@@ -145,9 +152,11 @@ asave_etype5=„$1“ automatinio atsakymo failas negalioja
 asave_etype4none=Neįteikta jokia programa
 asave_etype6=Filtras „$1“ netinkamas
 asave_esame=Jums leidžiama kurti tik slapyvardį tuo pačiu vardu, kaip ir prisijungus prie „Webmin“
+
 adelete_err=Nepavyko ištrinti slapyvardžių
 adelete_enone=Nepasirinkta
 adelete_ecannot=Jums neleidžiama ištrinti slapyvardžio $1 
+
 cws_title=Vietos domenai
 cws_ecannot=Jums neleidžiama redaguoti vietinių domenų
 cws_domains=Domenai, kuriuos tvarko šis serveris
@@ -156,6 +165,7 @@ cws_desc2=Atminkite, kad vien tik domeno įtraukimo į sąrašą nepakanka. Taip
 cws_err=Nepavyko išsaugoti vietinių domenų
 cws_ehost=„$1“ nėra teisingas pagrindinio kompiuterio ar domeno vardas
 cws_eip=„$1“ yra IP adresas, o ne domenas
+
 masq_title=Domenų maskavimas
 masq_ecannot=Jums neleidžiama konfigūruoti maskavimo
 masq_domain=Maskaradas kaip domenas
@@ -167,12 +177,14 @@ masq_err=Nepavyko išsaugoti maskavimo domeno
 masq_edomain=„$1“ nėra tinkamas domenas, norint maskuotis kaip
 masq_ehost=„$1“ nėra teisingas pagrindinio kompiuterio ar domeno vardas
 masq_eip=„$1“ yra IP adresas, o ne domenas
+
 trusts_title=Patikimi vartotojai
 trusts_ecannot=Jums neleidžiama redaguoti patikimų vartotojų
 trusts_users=Vietiniai vartotojai, kuriais pasitikima „sendmail“
 trusts_desc=Jei vietinis vartotojas bando siųsti el. Laiškus, „sendmail“ vartotojui leis pateikti kitą <tt>Nuo:</tt> adresą tik tuo atveju, jei vartotojas yra žemiau esančiame sąraše. Šis apribojimas galioja siekiant neleisti vartotojams falsifikuoti el. Laiškus su padirbtais <tt>From:</tt> adresais, kilusiais iš jūsų sistemos.
 trusts_err=Nepavyko išsaugoti patikimų vartotojų
 trusts_euser=„$1“ nėra teisingas vartotojas
+
 virtusers_title=Adresų žemėlapiai
 virtusers_ecannot=Jums neleidžiama redaguoti adresų žemėlapių
 virtusers_efeature=Jūsų pašto pašto konfigūracijoje neįgalinta adresų žemėlapių sudarymo (<tt>virtuser</tt>) funkcija. <a href='$1'>Spustelėkite čia</a>, kad nustatytumėte „sendmail“ funkcijas.
@@ -190,6 +202,7 @@ virtusers_return=adresų žemėlapių sąrašas
 virtusers_toomany=Jūsų sistemoje yra per daug adresų žemėlapių, kad būtų rodomi šiame puslapyje.
 virtusers_go=Raskite adresų atitikmenis, atitinkančius:
 virtusers_delete=Ištrinti pasirinktus adresų žemėlapius
+
 vform_edit=Redaguoti adresų žemėlapius
 vform_create=Sukurti adresų žemėlapius
 vform_for=Paštas
@@ -206,6 +219,7 @@ vform_err_tempfail=Laikinas gedimas
 vform_err_protocol=Protokolo klaida
 vform_end=Judėti iki galo
 vform_ecannot=Jums neleidžiama redaguoti šio adreso žemėlapio
+
 vsave_ecannot=Jums neleidžiama redaguoti adresų žemėlapių
 vsave_ecannot2=Jums neleidžiama redaguoti šio adreso žemėlapio
 vsave_emax=Jums neleidžiama sukurti daugiau nei $1 adresų žemėlapių
@@ -221,8 +235,10 @@ vsave_eaddr=„$1“ nėra teisingas adresas
 vsave_ecannot4=Jums neleidžiama kurti priskyrimų domenams
 vsave_edomdom=Tik domeną galima priskirti kitam domenui
 vsave_ecannot5=Jums neleidžiama kurti atvaizdų, kurie parodytų klaidą
+
 vdelete_err=Nepavyko ištrinti adresų žemėlapių
 vdelete_ecannot=Jums neleidžiama ištrinti $1 žemėlapių
+
 mailers_title=Domenų maršrutizavimas
 mailers_cannot=Jums neleidžiama redaguoti domeno maršruto
 mailers_edirective=Jūsų „sendmail“ konfigūracijos faile nėra būtinos domenų nukreipimo direktyvos.
@@ -236,6 +252,7 @@ mailers_delivery=Pristatymas
 mailers_to=Siųsti į ..
 mailers_return=domenų maršrutų sąrašas
 mailers_delete=Ištrinti pasirinktus domeno maršrutus
+
 mform_edit=Redaguoti maršrutą
 mform_create=Sukurti maršrutą
 mform_for=Paštas
@@ -259,12 +276,15 @@ mform_procmail=Procmail
 mform_mail11=DECnet paštas11
 mform_error=Klaida
 mform_ecannot=Jums neleidžiama redaguoti domeno maršruto
+
 msave_ecannot=Jums neleidžiama redaguoti domeno maršruto
 msave_err=Nepavyko išsaugoti domeno maršruto
 msave_edomain=„$1“ nėra tinkamas pagrindinis kompiuteris ar domenas
 msave_edup=„$1“ domeno maršrutas jau apibrėžtas
+
 mdelete_err=Nepavyko ištrinti domeno maršrutizatoriaus
 mdelete_ecannot=Jums neleidžiama ištrinti $1 maršruto
+
 generics_title=Siunčiami adresai
 generics_cannot=Jums neleidžiama redaguoti siunčiamų adresų
 generics_econfig=Jūsų „sendmail“ konfigūracijos faile nėra būtinos išeinančio adreso žymėjimo direktyvos.
@@ -278,11 +298,13 @@ generics_return=adresų žemėlapių sąrašas
 generics_toomany=Jūsų sistemoje yra per daug išeinančių adresų, kad būtų galima rodyti šiame puslapyje.
 generics_go=Raskite siunčiamus adresus, atitinkančius:
 generics_delete=Ištrinti pasirinktus siunčiamus adresus
+
 gform_edit=Redaguoti atvaizdą
 gform_create=Kurti žemėlapius
 gform_from=Paštas iš
 gform_to=Pakeisti į
 gform_ecannot=Jums neleidžiama redaguoti šio išeinančio adreso
+
 gsave_ecannot=Jums neleidžiama redaguoti siunčiamų adresų
 gsave_ecannot2=Jums neleidžiama redaguoti šio išeinančio adreso
 gsave_ecannot3=Jums neleidžiama išsaugoti šio siunčiamo adreso
@@ -291,8 +313,10 @@ gsave_efrom=„$1“ negalioja pagal adresą
 gsave_ematch=Iš adresas neatitinka „$1“
 gsave_eto=„$1“ nėra galiojantis naujas adresas
 gsave_ealready=„$1“ išeinančio adreso žemėlapis jau yra
+
 gdelete_err=Nepavyko ištrinti siunčiamų adresų žemėlapių
 gdelete_ecannot=Jums neleidžiama ištrinti $1 žemėlapių
+
 cgs_title=Siunčiami domenai
 cgs_ecannot=Jums neleidžiama redaguoti siunčiamų domenų
 cgs_header=Siunčiamų adresų domenai
@@ -300,6 +324,7 @@ cgs_desc=Išskyrus vietinių vartotojų siunčiamus laiškus, „sendmail“ vyk
 cgs_err=Nepavyko išsaugoti išeinančių domenų
 cgs_ehost=„$1“ nėra teisingas pagrindinio kompiuterio ar domeno vardas
 cgs_eip=„$1“ yra IP adresas, o ne domenas
+
 domains_title=Domenų žemėlapiai
 domains_ecannot=Jums neleidžiama redaguoti domenų žemėlapių
 domains_econfig=Jūsų „sendmail“ konfigūracijos faile nėra būtinos direktyvos domenų žemėlapiams nustatyti.
@@ -310,17 +335,21 @@ domains_from=Iš domeno ..
 domains_to=Į domeną ..
 domains_return=domenų žemėlapių sąrašas
 domains_delete=Ištrinti pasirinktus domenų žemėlapius
+
 dform_edit=Redaguoti atvaizdą
 dform_create=Kurti žemėlapius
 dform_from=Iš domeno
 dform_to=Į domeną
 dform_ecannot=Jums neleidžiama redaguoti domenų žemėlapių
+
 dsave_ecannot=Jums neleidžiama redaguoti domenų žemėlapių
 dsave_err=Nepavyko išsaugoti domenų žemėlapių
 dsave_edomain=„$1“ nėra teisingas domeno vardas
 dsave_ealready=Domeno žemėlapis, skirtas „$1“, jau yra
+
 ddelete_err=Nepavyko ištrinti domenų atvaizdų
 ddelete_ecannot=Jums neleidžiama ištrinti $1 žemėlapių
+
 access_title=Šlamšto kontrolė
 access_ecannot=Jums neleidžiama konfigūruoti šlamšto kontrolės
 access_efeature=Jūsų „sendmail“ konfigūracijoje neįgalinta šlamšto valdymo (<tt>prieigos_db</tt>) funkcija. <a href='$1'>Spustelėkite čia</a>, kad nustatytumėte „sendmail“ funkcijas.
@@ -333,6 +362,7 @@ access_return=šlamšto kontrolės sąrašas
 access_toomany=Jūsų sistemoje yra per daug šlamšto kontrolės taisyklių, kad būtų rodomos šiame puslapyje.
 access_go=Raskite šlamšto kontrolės taisykles atitinkančias taisykles:
 access_delete=Ištrinkite pasirinktas šlamšto kontrolės taisykles
+
 sform_edit=Redaguoti šlamšto kontrolės taisyklę
 sform_create=Sukurkite šlamšto kontrolės taisyklę
 sform_source=Pašto šaltinis
@@ -354,6 +384,7 @@ sform_discard=Atmeskite tyliai
 sform_err=Klaidos kodas
 sform_msg=Žinutė
 sform_ecannot=Jums neleidžiama redaguoti šios šlamšto kontrolės taisyklės
+
 ssave_err=Nepavyko išsaugoti šlamšto kontrolės taisyklės
 ssave_etype0=„$1“ nėra teisingas adresas
 ssave_etype1=„$1“ nėra tinkamas tinklo adresas
@@ -362,8 +393,10 @@ ssave_etype3=„$1“ nėra galiojantis domenas
 ssave_ecode=„$1“ nėra galiojantis SMTP klaidos kodas
 ssave_ealready=„$1“ šlamšto kontrolės taisyklė jau egzistuoja
 ssave_ecannot2=Jums neleidžiama išsaugoti šios šlamšto kontrolės taisyklės
+
 sdelete_err=Nepavyko ištrinti šlamšto kontrolės taisyklių
 sdelete_ecannot=Jums neleidžiama ištrinti $1 taisyklės
+
 relay_title=Relių domenai
 relay_ecannot=Jums neleidžiama redaguoti perdavimo domenų
 relay_eversion=Tik „sendmail“ 8.9 ir naujesnės versijos palaiko perdavimo domenų funkciją.
@@ -372,6 +405,7 @@ relay_desc1=Išskyrus atvejus, kai to leidžia <a href='$1'>šlamšto kontrolės
 relay_desc2=Jei jūsų sistema tarnauja kaip vartai keliems domenams, kurie nėra tiesiogiai pasiekiami iš jūsų tinklo (naudojant <a href='$1'>domenų nukreipimo</a> funkciją), tada visi šie domenai turėtų būti išvardyti čia.
 relay_err=Nepavyko išsaugoti perdavimo domenų
 relay_edomain=„$1“ nėra teisingas domeno vardas
+
 mailq_title=Pašto eilė
 mailq_count=$1 žinutės
 mailq_ecannot=Jums neleidžiama žiūrėti pašto eilės
@@ -401,12 +435,15 @@ mailq_search=Raskite eilėje esančius pranešimus kur
 mailq_quar=Karantinas
 mailq_refresh=Atnaujinti pašto eilę
 mailq_refreshdesc=Iš naujo įkelkite šį puslapį, kad būtų parodyta dabartinė pašto eilės būsena.
+
 flushq_title=Praplaukite eilę
 flushq_desc=Visus pranešimus bandant pristatyti naudojant komandą $1.
 flushq_desc2=Priverstinis bandymas pristatyti $1 pasirinktus pranešimus ..
 flushq_ecannot=Jums neleidžiama praplauti pašto eilės
+
 searchq_title=Eilės paieškos rezultatai
 searchq_none=Nerasta jokių eilėje esančių pranešimų.
+
 delq_err=Nepavyko ištrinti pranešimo
 delq_ecannot=Jums neleidžiama ištuštinti pranešimų
 delq_locked=Šiuo metu failas užrakintas, kad būtų galima siųsti
@@ -422,6 +459,7 @@ delq_force=Bet kokiu atveju priversti ištrinti
 delq_ecannot2=šio pranešimo ištrinti negalite
 delq_rusure=Ar tikrai norite ištrinti $1 pasirinktus eilės pranešimus?
 delq_confirm=Ištrinti pranešimus
+
 boxes_title=Vartotojo pašto dėžutės
 boxes_user=Vartotojas
 boxes_size=Pašto dėžutės dydis
@@ -431,6 +469,7 @@ boxes_sent=Išsiųsti laiškai
 boxes_ecannot=Jums neleidžiama skaityti el. Laiškų
 boxes_toomany=Jūsų sistemoje yra per daug vartotojų, kad galėtų išvardyti visas jų pašto dėžutes.
 boxes_go=Peržiūrėti vartotojo el. Paštą:
+
 mail_title=Vartotojo el. Paštas
 mail_from=Iš
 mail_date=Data
@@ -471,6 +510,7 @@ mail_move=Pereiti prie:
 mail_copy=Nukopijuoti:
 mail_rfc=Iš eilutės
 mail_eexists=Pranešimo nebeegzistuoja!
+
 view_title=Skaityti el. Laišką
 view_desc=$1 pranešimas $2 
 view_desc2=$2 vartotojo $2 pranešimas
@@ -501,6 +541,7 @@ view_egone=Ši žinutė nebeegzistuoja
 view_afile=Priedo pavadinimas
 view_atype=Priedo tipas
 view_asize=Failo dydis
+
 compose_title=Sukurti el. Laišką
 reply_title=Atsakyti el. Paštu
 forward_title=Persiųsti el. Laišką
@@ -512,6 +553,7 @@ reply_attach2=Kliento ir serverio pusės priedai
 reply_send=Išsiųsti laišką
 reply_ecannot=Jums neleidžiama siųsti laiškų kaip šiam vartotojui
 reply_body=Pranešimo tekstas
+
 send_err=Nepavyko išsiųsti laiškų
 send_eto=Nėra adreso
 send_efrom=Nėra adreso
@@ -524,6 +566,7 @@ send_eattach=Priedų dydis negali viršyti $1 kB.
 send_eperms=$1 vartotojas negali nuskaityti $2 
 send_eperms2=Jums neleidžiama siųsti failo $1 
 send_epath=„Sendmail“ vykdomasis $1 neegzistuoja.
+
 delete_title=Ištrinti paštą
 delete_rusure=Ar tikrai norite ištrinti $1 pasirinktus pranešimus iš $2 ? Didelio pašto failo sukūrimas gali šiek tiek užtrukti. Kol naikinimas nebus baigtas, jokie kiti veiksmai neturėtų būti atliekami.
 delete_rusure2=Ar tikrai norite ištrinti šį pranešimą iš $1 ? Didelio pašto failo sukūrimas gali šiek tiek užtrukti. Kol naikinimas nebus baigtas, jokie kiti veiksmai neturėtų būti atliekami.
@@ -536,6 +579,7 @@ delete_emoveuser=Vartotojas, į kurį perkelti el
 delete_emovecannot=Jums neleidžiama perkelti laiškų nurodytam vartotojui
 delete_emovenone=Nepasirinktas joks paštas
 delete_nobutton=Nepaspaudė nė vieno mygtuko
+
 search_title=Paieškos rezultatai
 search_ecannot=Jums neleidžiama ieškoti šio vartotojo el. Pašto
 search_ematch=Turite įvesti tekstą, kad atitiktumėte.
@@ -549,6 +593,7 @@ search_results4=$1 pašto žinutės, atitinkančios jūsų paiešką ..
 search_local=Vietiniuose aplankuose
 search_all=Visuose aplankuose
 search_eboolean=Būklės paieškos naudojant 'ir' ir 'arba' nepalaikomos
+
 file_title=Redaguoti „Sendmail“ failą
 file_desc=Norėdami rankiniu būdu redaguoti „Sendmail“ failą $1, naudokite žemiau esantį teksto lauką.
 file_undo=Anuliuoti pakeitimus
@@ -564,6 +609,7 @@ file_emode=Nežinomas režimas!
 file_err=Nepavyko redaguoti failo
 file_ealias=Netinkamas slapyvardžių failo eilutės formatas : $1 
 file_etab=Netinkamas žemėlapio failo eilutės formatas : $1 
+
 acl_opts=Ar galima redaguoti „sendmail“ parinktis?
 acl_ports=Ar galima redaguoti tinklo prievadus?
 acl_cws=Ar galite redaguoti vietinius domenus?
@@ -630,6 +676,7 @@ acl_usersm=Vartotojų atitikimas
 acl_asame=Tas pats, kas vartotojo vardas
 acl_usersu=Su UID diapazone
 acl_spam=Šlamšto kontrolės adresai, kuriuos šis vartotojas gali redaguoti
+
 log_opts=Pakeistos „sendmail“ parinktys
 log_ports=Keisti tinklo prievadus
 log_alias_create=Sukurtas slapyvardis $1 
@@ -680,6 +727,7 @@ log_delete_domains=Ištrinta $1 domeno atvaizdavimas
 log_delete_accesses=Ištrinti $1 šlamšto kontrolės įrašai
 log_delete_generics=Ištrinti $1 siunčiami adresai
 log_delete_mailers=Ištrinti $1 domeno maršrutai
+
 match_from=Iš: degtukai
 match_subject=Tema: degtukai
 match_to=Kam: rungtynės
@@ -699,6 +747,7 @@ match_!status=Būsena nesutampa
 match_!body=Kūnas nesutampa
 match_!size=Dydis yra mažesnis nei
 match_!headers=Antraštės nesutampa
+
 features_title=„Sendmail M4“ konfigūracija
 features_desc=Šiame puslapyje pateikiami atitinkami įrašai iš „Sendmail M4“ konfigūracijos failo $1, iš kurio pastatytas tikrasis konfigūracijos failas $2.
 features_type=Įrašo tipas
@@ -718,6 +767,7 @@ features_efeatures=„Sendmail M4“ konfigūracijos bazinis katalogas $2 nerast
 features_econfig=Pagrindinio katalogo „Sendmail M4“ ir M4 konfigūracijos failo vietos dar nenustatytos jūsų <a href='$1'>modulio konfigūracijoje</a>. Jei įdiegėte „Sendmail“ iš šaltinio, jie turėtų būti originaliame šaltinio kataloge.
 features_move=Judėk
 features_manual=Redaguoti failą rankiniu būdu
+
 feature_add=Pridėti konfigūracijos įrašą
 feature_edit=Redaguoti konfigūracijos įrašą
 feature_header=M4 konfigūracijos įrašo informacija
@@ -738,12 +788,15 @@ feature_emailer=Laiškas $1 jau yra
 feature_eostype=OS tipas jau apibrėžtas kaip $1 
 feature_manual=Redaguoti M4 failą
 feature_mdesc=Šis puslapis leidžia jums rankiniu būdu redaguoti „Sendmail M4“ konfigūracijos failą $1. Būkite atsargūs, nes pakeitimai nebus tikrinami sintaksėje.
+
 feat_access_db=Šlamšto kontrolės failas
 feat_virtusertable=Adresų žemėlapis
 feat_mailertable=Domenų maršrutizavimas
 feat_genericstable=Siunčiami adresai
 feat_domaintable=Domenų žemėlapiai
+
 mailer_local=Vietinis „Unix“ pristatymas
+
 build_title=Atkurkite „Sendmail“ konfigūraciją
 build_em4=Komanda $1, reikalinga „Sendmail“ konfigūracijos failo atstatymui, jūsų sistemoje nerasta.
 build_ebuild=Nepavyko sukurti konfigūracijos : $1 
@@ -752,13 +805,16 @@ build_rusure2=Atminkite, kad jei „Sendmail“ puslapyje pakeitėte „Sendmail
 build_ok=Taip, pakeisk dabar
 build_diff=„Sendmail“ konfigūracijos faile bus atlikti šie pakeitimai.
 build_nodiff=Jūsų „sendmail“ konfigūracijos failas jau atnaujintas.
+
 stop_err=Nepavyko sustabdyti „sendmail“
 stop_ecannot=Jums neleidžiama nutraukti „sendmail“
 stop_epid=Panašu, kad „Sendmail“ neveikia
 restart_epids=Nepavyko rasti „sendmail“ procesų
 restart_ekill=Nepavyko signalizuoti „sendmail“ procesų : $1 
+
 start_err=Nepavyko pradėti „sendmail“
 start_ecannot=Jums neleidžiama pradėti siųsti pašto
+
 ports_title=Tinklo prievadai
 ports_name=Uosto pavadinimas
 ports_addr=Klausykite pagal adresą

@@ -3,8 +3,10 @@ index_clink=Mungkin ia tidak dipasang, atau konfigurasi modul <a href='$1'>anda<
 index_return=indeks modul
 index_atboot=Mula boot?
 index_atbootdesc=Tukar opsyen ini untuk mengawal sama ada pelanggan iSCSI dimulakan pada masa boot atau tidak. Ini diperlukan untuk sistem fail yang dipasang dari pelayan iSCSI untuk dipasang secara automatik.
+
 check_econfig=Fail konfigurasi klien iSCSI $1 tidak dijumpai pada sistem anda.
 check_eiscsiadm=Program administrasi klien iSCSI $1 tidak ditemukan pada sistem anda.
+
 auth_title=Pilihan Pengesahan
 auth_header=klien iSCSI dan pengesahan pelayan
 auth_name=Nama pemula sistem tempatan
@@ -29,6 +31,7 @@ auth_edpassword=Tiada kata laluan penemuan untuk pelayan
 auth_edusername_in=Nama pengguna penemuan yang hilang untuk klien
 auth_edpassword_in=Tiada kata laluan penemuan untuk klien
 auth_egen=Gagal menjana nama baru!
+
 timeout_title=Timeout iSCSI
 timeout_header=pilihan masa tamat klien iSCSI
 timeout_timeout=Masa menunggu sebelum gagal mematikan arahan SCSI
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Masa yang hilang atau tidak angka untuk menunggu ping 
 timeout_eabort_timeout=Masa yang hilang atau bukan angka untuk menunggu sambutan abort sebelum gagal
 timeout_elu_reset_timeout=Masa yang hilang atau tidak berangka untuk menunggu tindak balas unit logik sebelum gagal
 timeout_etgt_reset_timeout=Masa yang hilang atau tidak berangka untuk menunggu tindak balas sasaran sebelum gagal
+
 iscsi_title=Pilihan iSCSI
 iscsi_header=Pilihan iSCSI lain
 iscsi_startup=Sambungkan sesi pada masa boot?
@@ -62,6 +66,7 @@ iscsi_err=Gagal menyimpan pilihan iSCSI
 iscsi_eretry=Nombor kali hilang atau bukan nombor untuk mencuba semula login
 iscsi_ecmds=Perintah maksima yang hilang atau tidak berurutan beratur setiap sesi
 iscsi_equeue=Perintah maksima yang hilang atau tidak berurutan beratur setiap peranti
+
 ifaces_title=Antara muka iSCSI
 ifaces_elist=Gagal menyenaraikan antara muka : $1 
 ifaces_name=Nama antara muka
@@ -78,11 +83,13 @@ ifaces_hwaddress=Alamat MAC
 ifaces_ifacename=Antara muka sumber
 ifaces_ipaddressdef=Automatik
 ifaces_notset=Automatik
+
 iadd_err=Gagal menambah antara muka
 iadd_eclash=Antara muka yang bernama $1 sudah wujud
 iadd_eipaddress=Alamat IP sumber yang hilang atau tidak sah
 iadd_ehwaddress=Alamat MAC hilang atau tidak sah
 iadd_ename=Nama antara muka hilang atau mengandungi aksara tidak sah
+
 difaces_err=Gagal untuk mengalih keluar antara muka
 difaces_enone=Tiada yang dipilih
 difaces_edelete=Pembuangan antara muka $1 gagal : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Keluarkan Interfaces
 difaces_target=sasaran iSCSI
 difaces_ip=pelayan iSCSI
 difaces_users=Sesetengah sambungan menggunakan antara muka ini pada masa ini aktif, dan akan gagal untuk beroperasi apabila antara muka dikeluarkan :
+
 conns_title=iSCSI Connections
 conns_elist=Gagal menyenaraikan sambungan : $1 
 conns_ip=IP pelayan
@@ -113,6 +121,7 @@ conns_return=senarai sambungan
 conns_iface=antara muka iSCSI
 conns_ifacedef=Pilih secara automatik
 conns_ifaceerr=Gagal untuk mengambil antara muka : $1 
+
 add_title=Tambah sambungan iSCSI
 add_err=Gagal menambah sambungan iSCSI
 add_ehost=Nama tuan rumah yang hilang atau tidak dapat diselesaikan
@@ -129,6 +138,7 @@ add_on=$1 pada $2
 add_auth=Masuk ke pelayan
 add_auth1=Gunakan kaedah pengesahan lalai
 add_auth0=Masuk sebagai $2 dengan kata laluan $3 menggunakan kaedah $1 
+
 dconns_err=Gagal memutuskan sambungan
 dconns_enone=Tiada yang dipilih
 dconns_edelete=Pembuangan sasaran $2 dari hos $1 gagal : $3 
@@ -142,6 +152,7 @@ dconns_use=Digunakan oleh
 dconns_size=Saiz partition
 dconns_confirm=Keluarkan Sambungan
 dconns_unused=Tidak digunakan
+
 vconn_title=Sambungan iSCSI
 vconn_egone=Sambungan yang dipilih tidak lagi wujud!
 vconn_header=butiran sambungan iSCSI
@@ -160,8 +171,10 @@ vconn_device3=Nama peranti malar
 vconn_delete=Putuskan Sambungan
 vconn_users=Pengguna semasa
 vconn_size=Saiz cakera
+
 atboot_err=Gagal membolehkan pada masa boot
 atboot_einit=Tiada tindakan boot bernama $1 wujud
+
 log_auth=Pilihan pengesahan yang disimpan
 log_timeout=Pilihan masa tamat yang disimpan
 log_iscsi=Pilihan iSCSI yang disimpan

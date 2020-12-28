@@ -19,6 +19,7 @@ index_amode1=Gli utenti elencati:
 index_amode2=Tutti eccetto gli utenti elencati:
 index_delete=Elimina i comandi selezionati
 index_noat=Il comando $1 non è stato trovato sul tuo sistema - probabilmente non è installato o non è disponibile per il tuo sistema operativo.
+
 edit_title=Comando pianificato
 edit_cmd=Script completo da eseguire
 edit_shortcmd=Comando da eseguire
@@ -28,6 +29,7 @@ edit_run=Esegui adesso
 edit_ejob=Questo comando pianificato non esiste più!
 edit_ecannot=Non hai i permessi per modificare questo comando pianificato
 edit_showfull=Mostra intero script.
+
 create_err=Creazione del comando pianificato non riuscita
 create_euser=Nome utente invalido o mancante
 create_edate=Orario o giorno mancanti o non validi
@@ -36,22 +38,28 @@ create_efuture=Orario e giorno sono nel passato
 create_edir=Directory mancante o non valida
 create_ecannot=Non sei autorizzato a creare comandi pianificati per questo utente
 create_eallow=L'utente specificato non è autorizzato ad eseguire comandi pianificati
+
 delete_err=Cancellazione del comando non riuscita
 delete_egone=Comando in esecuzione o già cancellato
+
 acl_users=Può modificare comandi pianificati per
 acl_all=Tutti gli utenti
 acl_this=Utenti Webmin attuali
 acl_only=Solo utenti
 acl_except=Tutti tranne gli utenti
 acl_allow=Può modificare gli utenti autorizzati?
+
 run_title=Comando in esecuzione
 run_output=Output del comando pianificato:
 run_none=Nessun output generato
+
 allow_err=Salvataggio degli utenti autorizzati non riuscito
 allow_ecannot=Non hai i permessi per gestire gli utenti autorizzati
 allow_eusers=Nessun utente inserito
+
 deletes_err=Eliminazione del comando non riuscita
 deletes_enone=Nessuna selezione
+
 log_allow=Cambiati utenti abilitati
 log_create_job=Creato comando pianificato per $1
 log_delete_job=Cancellato comando pianificati per $1

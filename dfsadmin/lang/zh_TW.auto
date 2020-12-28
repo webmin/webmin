@@ -8,6 +8,7 @@ index_none=當前在該系統上沒有目錄導出。
 index_apply=應用更改
 index_applydesc=單擊此按鈕以應用當前文件共享配置。這將使上面列出的所有目錄都具有指定的選項。
 index_return=股份清單
+
 edit_title1=編輯分享
 edit_title2=建立分享
 edit_header1=分享詳細資料
@@ -30,6 +31,7 @@ edit_anon1=無法進入
 edit_aclok=允許ACL？
 edit_public=WebNFS共享？
 edit_index=WebNFS索引文件
+
 save_err=無法保存共享
 save_edirectory='$1'不是有效的目錄名稱
 save_edirectory2=目錄'$1'不存在
@@ -38,8 +40,12 @@ save_ero=您未列出任何主機與之共享只讀
 save_eroot=您沒有列出要與之共享根目錄的任何主機
 save_ealready=目錄“$1”已被共享
 save_ehost=主機“$1”不存在
+
 acl_view=可以編輯NFS共享嗎？
+
 ecannot=您無權管理NFS共享
+
 delete_err=刪除共享失敗
 delete_enone=未選擇
+
 restart_err=無法應用更改

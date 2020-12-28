@@ -12,6 +12,7 @@ index_eprog=Выкананы сервер NFS у вашай сістэме не 
 index_delete=Выдаліць выбраны экспарт
 index_disable=Адключыць абранае
 index_enable=Уключыць абранае
+
 edit_title=Рэдагаваць экспарт
 create_title=Стварыць экспарт
 edit_details=Экспарт дэталяў
@@ -65,6 +66,7 @@ edit_sec_krb5i=Цэласнасць Кербераса
 edit_sec_krb5p=Канфідэнцыяльнасць Kerberos
 edit_sec_lipkey=LIPKEY
 edit_sec_spkm=СПКМ
+
 save_err=Не ўдалося захаваць экспарт
 save_edir=Каталог "$1" не існуе
 save_epfs=Шлях псеўдафайлавай сістэмы "$1" не падобны на абсалютны шлях
@@ -78,6 +80,7 @@ save_pfs='$1' ужо экспартуецца ў каталог
 save_create_dir=Немагчыма стварыць каталог "$1"
 save_eanonuid=Няправільнае імя ананімнага доступу
 save_eanongid=Няправільнае імя групы доступу
+
 exports_webnfs=Кліенты WebNFS
 exports_ngroup=Сеткавая група $1 
 exports_net=Сетка $1 
@@ -85,6 +88,7 @@ exports_all=Усе
 exports_hosts=Хосты $1 
 exports_host=Вядучы $1 
 exports_gss=Аўтэнтыфікаваная сетка: $1 
+
 log_modify=Мадыфікаваны экспарт NFS $1 
 log_modify_l=Зменены экспарт NFS $1 да $2 
 log_delete=Выдалены экспарт NFS $1 

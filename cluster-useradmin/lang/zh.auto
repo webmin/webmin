@@ -17,6 +17,7 @@ index_tdesc=描述
 index_tucount=用户数
 index_tgcount=团体
 index_ttype=操作系统类型
+
 add_title=添加服务器
 add_msg=正在添加 $1 ..
 add_gmsg=在组 $1中添加服务器 ..
@@ -26,6 +27,7 @@ add_echeck=服务器 $1没有用户和组模块
 add_epft=服务器 $1不使用与此主机相同的用户文件格式
 add_egft=服务器 $1不使用与此主机相同的组文件格式
 add_ok=已向 $1添加了 $2用户和 $3组。
+
 host_title=受管服务器
 host_header=软件管理的服务器详细信息
 host_name=主机名
@@ -34,8 +36,7 @@ host_delete=从托管列表中删除
 host_refresh=刷新用户和组
 host_users=用户数
 host_groups=组数
-host_ulist=服务器上的用户
-host_glist=服务器上的群组
+
 host_return=服务器详细信息
 refresh_title=刷新用户和组
 refresh_header=从所有服务器重新请求用户和组列表。
@@ -49,6 +50,7 @@ refresh_gdel=删除 $1个群组
 refresh_done=..完成
 refresh_del=已从服务器列表中删除 $1
 refresh_failed=无法刷新 $1 : $2
+
 uedit_host=来自 $1的详细信息
 uedit_leave=不要改变
 uedit_set=调成
@@ -66,6 +68,7 @@ uedit_servers=要在其上创建的服务器
 uedit_all=&lt;所有主机&gt;
 uedit_donthave=&lt;没有他的主人&gt;
 uedit_group=$1的成员
+
 usave_einuse=$1上已经存在一个具有相同名称的用户
 usave_esecgid=辅助组 $1不存在
 usave_con=在 $1上创建 ..
@@ -88,16 +91,20 @@ usave_header=在所有主机上创建用户 $1。
 usave_header5=在 $2上创建用户 $1 ..
 usave_header4=在组 $2的成员上创建用户 $1 ..
 usave_header3=在没有他的主机上创建用户 $1 ..
+
 search_hosts=主持人
+
 udel_on=正在从 $1..中删除
 udel_servs=删除主目录（如果存在）
 udel_others=删除其他模块中的用户？
 udel_dothers=删除其他模块 ..
 udel_gone=用户不再存在。
 udel_failed=删除用户失败： $1
+
 gdel_on=正在从 $1..中删除
 gdel_gone=用户不再存在。
 gdel_failed=删除组失败： $1
+
 gsave_create=添加组文件条目 ..
 gsave_con=在 $1上创建 ..
 gsave_euser=用户 $1不存在
@@ -110,10 +117,12 @@ gsave_header=在所有主机上创建组 $1 ..
 gsave_header5=在 $2上创建组 $1 ..
 gsave_header4=在组 $2的成员上创建组 $1 ..
 gsave_header3=在没有主机的主机上创建组 $1 ..
+
 gedit_host=来自 $1的详细信息
 gedit_add=新增使用者
 gedit_del=删除用户
 gedit_donthave=&lt;没有主机的主机&gt;
+
 sync_title=同步服务器
 sync_desc=通过此表单，您可以在当前没有用户和服务器的服务器上创建用户和组，以使帐户在群集中的所有服务器上同步。
 sync_hosts=要同步的服务器
@@ -141,6 +150,7 @@ sync_test=只显示会做什么？
 sync_makehome=创建主目录？
 sync_copy=将文件复制到主目录？
 sync_others=在其他模块中创建用户？
+
 log_create_user=已创建用户 $1
 log_delete_user=已删除用户 $1
 log_modify_user=修改的用户 $1

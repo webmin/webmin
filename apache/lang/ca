@@ -57,6 +57,7 @@ index_fmode1=Fitxer de servidors virtuals $1
 index_fmode1d=Nou fitxer sota el directori de servidors virtuals $1
 index_fmode2=Fitxers seleccionats...
 index_delete=Suprimeix els Servidors Seleccionats
+
 cvirt_ecannot=No tens permís per crear un servidor virtual
 cvirt_err=No s'ha pogut crear el servidor virtual
 cvirt_eaddr1=No has introduït cap adreça
@@ -70,6 +71,7 @@ cvirt_eroot4=No hi ha cap usuari definit a la configuració d'Apache
 cvirt_etaken=Ja existeix un servidor virtual amb el mateix nom i el mateix port
 cvirt_efile=No s'ha pogut escriure a $1: $2
 cvirt_emissing=S'ha afegit el nou servidor virtual a $1, però Apache no està utilitzant aquest fitxer. Comprova la <a href='$2'>configuració del mòdul</a> i assegura't que el 'Fitxer o directori on s'afegeixen els servidors virtuals' és correcte.
+
 etype=No tens permís per editar opcions d'aquesta mena
 efailed=No s'ha pogut desar $1
 apache_apply=Aplica els Canvis
@@ -79,6 +81,7 @@ auth_return=al control d'accés
 default_serv=servidor per defecte
 bytes=bytes
 eafter=La verificació de la configuració ha fallat: No han estat salvats $1 canvis.
+
 global_ecannot=No tens permís per editar les opcions globals
 global_mime=Llista de tipus MIME globals
 global_mimedesc=Fes clic sobre un tipus MIME de la llista de sota per editar-lo, o bé utilitza l'enllaç del peu de la pàgina per afegir-ne un de nou a la llista.
@@ -86,6 +89,7 @@ global_type=Tipus
 global_ext=Extensions
 global_add=Afegeix un nou tipus MIME.
 global_return=als tipus MIME
+
 mime_ecannot=No tens permís per editar tipus MIME
 mime_edit=Edició de tipus MIME
 mime_add=Afegeix tipus MIME
@@ -94,6 +98,7 @@ mime_type=Tipus MIME
 mime_ext=Extensions
 mime_err=No s'ha pogut desar el tipus MIME
 mime_etype='$1' no és un tipus MIME vàlid
+
 virt_ecannot=No pots editar aquest servidor virtual
 virt_title=Opcions del Servidor Virtual
 virt_header=$1
@@ -119,6 +124,7 @@ virt_path=Camí
 virt_return=a l'índex de servidors
 virt_euser=No tens permís per canviar l'usuari o el grup d'aquest servidor virtual.
 virt_header2=$1 de $2
+
 vserv_title=Configuració de Servidor Virtual
 vserv_virtualmin=Aquest host virtual Apache pertany al servidor Virtualmin <tt>$1</tt>, així que l'adreça, el port, el directori base i el nom de host no es poden canviar des d'aquí.
 vserv_ecannot=No pots editar l'adreça d'aquest servidor virtual
@@ -138,10 +144,12 @@ vserv_eport='$1' no és un port vàlid
 vserv_eroot='$1' no és una arrel de documents vàlida
 vserv_ename='$1' no és un nom de servidor vàlid
 vserv_eaddrs=No has introduït cap adreça del servidor virtual
+
 show_title=Directives
 show_edit=Edita la directiva Apache:
 show_these=Edita les directives manualment
 show_ok=Edita
+
 manual_configs=Edita els Fitxers de Configuració
 manual_title=Edició de Directives
 manual_header=Utilitza la caixa de text de sota per editar manualment les directives Apache de $1 que s'apliquen a aquest servidor virtual, directori or fitxers.
@@ -151,6 +159,7 @@ manual_efile=Fitxer de configuració Apache invàlid
 manual_etest=S'ha detectat un error al fitxer de configuració: $1
 manual_editfile=Edita el fitxer de configuració:
 manual_switch=Edita
+
 dir_title=Opcions de Directori
 dir_proxyall=Totes les peticions de proxy
 dir_header=$1 a $2
@@ -167,6 +176,7 @@ dir_re=Coincidència amb l'expressió
 dir_path=Camí
 dir_return=a l'índex de directoris
 dir_header2=$1 de $2
+
 type_0=Processos i Límits
 type_1=Xarxa i Adreces
 type_2=Mòduls Apache
@@ -188,6 +198,7 @@ type_17=Hosts Virtuals Automàtics
 type_18=Filtres
 type_19=Idiomes
 type_20=Mapes d'Imatges
+
 htaccess_title=Fitxers d'Opcions de Directori
 htaccess_ecannot=No pots editar els fitxers htaccess
 htaccess_file=Fitxers d'opcions existents
@@ -203,6 +214,7 @@ htaccess_edelete=No tens permís per suprimir aquest fitxer d'opcions
 htaccess_eempty=No has introduït cap fitxer d'opcions per directori
 htaccess_eabsolute=El fitxer d'opcions per directori ha de ser un camí absolut
 htaccess_err=No s'ha pogut crear el fitxer d'opcions
+
 htindex_ecannot=No tens permís per editar aquest fitxer d'opcions
 htindex_title=Fitxer d'Opcions de Directori
 htindex_delete=Suprimeix el Fitxer
@@ -218,12 +230,14 @@ htindex_path=Camí
 htindex_header=$1
 htindex_header2=$1 del fitxer d'opcions $2
 htindex_return=a l'índex de fitxers d'opcions
+
 htfile_title=Opcions de Fitxers
 htfile_header=$1 a $2
 htfile_show=Mostra les Directives
 htfile_edit=Edita les Directives
 htfile_apply=Les opcions s'apliquen a...
 htfile_header2=$1 de $2
+
 reconfig_title=Reconfiguració de Mòduls Coneguts
 reconfig_ecannot=No tens permís per reconfigurar l'Apache
 reconfig_ever=No s'ha pogut esbrinar la versió de l'executable servidor d'Apache $1. Comprova la <a href='$2'>configuració del mòdul</a> per assegurar que aquest és el camí correcte.
@@ -231,11 +245,13 @@ reconfig_desc1=La configuració d'Apache ha canviat, o bé Webmin encara no l'ha
 reconfig_desc2=A sota hi ha una llista de mòduls Apache suportats per Webmin tal que tots aquells mòduls instal·lats estan seleccionats. Si estàs utilitzant mòduls carregats dinàmicament, llavors pot ser que hagis de seleccionar aquells que es carreguen dinàmicament.
 reconfig_desc3=Si no estàs segur/a de quins mòduls estan suportats per Apache, configura-ho de totes maneres, Webmin normalment pot determinar automàticament quins són els mòduls suportats.
 reconfig_ok=Configura
+
 defines_title=Edició de Paràmetres Definits
 defines_ecannot=No tens permís per editar definicions HTTPD
 defines_desc=Quan s'inicia l'Apache, se li poden passar paràmetres amb l'opció de la línia d'ordres <tt>-D</tt>. Com que aquests paràmetres poden afectar les directives que s'utilitzen dins del fitxer de configuració, Webmin ha de saber quines se li passen a l'Apache quan s'executa. Introdueix aquests paràmetres a la caixa de text de la dreta.
 defines_config=Tingues en compte que els paràmetres següents ja són coneguts: $1
 defines_list=Paràmetres definits
+
 authu_ecannot='$1' no és un fitxer de text d'usuaris permès
 authu_title=Llista d'Usuaris
 authu_header=Fitxer $1
@@ -257,6 +273,7 @@ authu_sync=Les opcions de sota permeten configurar Webmin per afegir, actualitza
 authu_screate=Afegeix un usuari quan s'afegeixi un usuari Unix
 authu_sdelete=Suprimeix un usuari quan se suprimeixi un usuari Unix
 authu_smodify=Canvia un usuari quan es canviï un usuari Unix
+
 authg_ecannot='$1' no és un fitxer de text de grups permès
 authg_title=Llista de Grups
 authg_header=Fitxer $1
@@ -274,22 +291,26 @@ authg_err=No s'ha pogut desar el grup
 authg_euser=No has introduït el nom del grup
 authg_euser2=El nom del grup no pot contenir:
 authg_edup=Ja existeix un grup anomenat '$1'
+
 stop_err=No s'ha pogut aturar l'Apache
 stop_ecannot=No tens permís per aturar l'Apache
 stop_epid=No s'ha pogut obrir el fitxer de PID $1
 stop_epid2=Fitxer de PID $1 invàlid
 stop_esig=No s'ha pogut enviar SIGTERM al procés $1
+
 start_err=No s'ha pogut iniciar l'Apache
 start_ecannot=No tens permís per iniciar l'Apache
 start_ecmd=$1 ha fallat: $2
 start_eunknown=Motiu desconegut
 start_eafter=Sembla que Apache no s'està executant
+
 restart_err=No s'ha pogut aplicar els canvis
 restart_epid=No s'ha pogut obrir el fitxer de PID $1
 restart_epid2=Fitxer de PID $1 invàlid
 restart_esig=No s'ha pogut enviar SIGHUP al procés $1
 restart_eunknown=Motiu desconegut
 restart_ecannot=No tens permís per aplicar els canvis
+
 acl_virts=Servidors virtuals que aquest usuari pot editar
 acl_vall=Tots els servidors
 acl_vsel=Seleccionats...
@@ -312,6 +333,7 @@ acl_dirs=Directives Apache disponibles<br><font size=-1>(Subjectes al límit de 
 acl_dirs0=Totes
 acl_dirs1=Només les llistades
 acl_dirs2=Totes excepte les llistades
+
 core_maxconc=Nombre màxim de peticions concurrents
 core_maxkeep=Nombre màxim de <i>keepalives</i> per connexió
 core_maxreq=Nombre màxim de peticions per procés servidor
@@ -496,10 +518,12 @@ core_infilter=Aplica els filtres d'entrada per a tots els fitxers
 core_outfilter=Aplica els filtres de sortida per a tots els fitxers
 core_defchar=Joc de caràcters dels documents
 core_edefchar=Hi falta el joc de caràcters dels documents o bé és invàlid
+
 mod_negotiation_cache=Posa al cau els documents amb contingut negociat
 mod_negotiation_pri=Prioritat d'idioma per a vistes múltiples
 mod_negotiation_def=Defecte
 mod_negotiation_epri=Hi falten les prioritats d'idioma
+
 mod_cgi_logname=Registre de scripts CGI
 mod_cgi_none=Cap
 mod_cgi_elogname=Fitxer de registres de scripts CGI invàlid
@@ -509,6 +533,7 @@ mod_cgi_elogsize=La mida del fitxer de registres de CGIs ha de ser un enter
 mod_cgi_post=Mida màxima de les dades POST registrades
 mod_cgi_epost=La mida màxima de les dades POST ha de ser un enter
 mod_cgi_eunder=Els registres dels CGIs no són al directori permès
+
 mod_alias_from=De
 mod_alias_to=A
 mod_alias_status=Estat
@@ -532,6 +557,7 @@ mod_alias_cgi2=Àlies del directori CGI
 mod_alias_rcgi=Expressions regulars d'àlies del directori CGI
 mod_alias_rcgi2=Expressió regular d'àlies del directori CGI
 mod_alias_estatus='$1' no és un estat vàlid
+
 mod_proxy_proxy=Actua com a servidor proxy
 mod_proxy_req=Peticions
 mod_proxy_forw=Redirecciona a
@@ -602,11 +628,13 @@ mod_proxy_timeout=Temps límit de petició de proxy en segons
 mod_proxy_etimeout=El temps límit de petició de proxy ha de ser un nombre de segons
 mod_proxy_via=Envia les capçaleres Via:
 mod_proxy_not=Cap
+
 mod_log_agent_default=Defecte
 mod_log_agent_file=Fitxer...
 mod_log_agent_program=Programa...
 mod_log_agent_log=Explora el fitxer de registre
 mod_log_agent_efile=$1 no és un nom de fitxer de registre vàlid
+
 mod_log_config_common=Format Comú de Registre
 mod_log_config_named=Formats de registre amb nom
 mod_log_config_nick=Àlies
@@ -625,6 +653,7 @@ mod_log_config_enofilprog=Hi falta el nom del fitxer de registre o del programa
 mod_log_config_efilprog='$1' no és un nom permès de fitxer ni de programa
 mod_log_config_eifset=L'opció 'If set' no es pot utilitzar amb el format de registre per defecte
 mod_log_config_edir=El directori del fitxer de registre '$1' no existeix
+
 mod_log_referer_default=Defecte
 mod_log_referer_file=Fitxer...
 mod_log_referer_program=Programa...
@@ -632,7 +661,9 @@ mod_log_referer_log=Fitxer de registres de referències
 mod_log_referer_nolog=No registris les referències de
 mod_log_referer_elog=$1 no és un nom de registres de referències vàlid
 mod_log_referer_edir=El registre de referències no és al directori permès
+
 mod_status_msg=Mostra la informació d'estat ampliada
+
 mod_mime_ext=Extensions
 mod_mime_xtype=Tipus MIME extra
 mod_mime_mtype=Tipus MIME
@@ -665,6 +696,7 @@ mod_mime_outfilter=Filtres de sortida
 mod_mime_infilter=Filtres d'entrada
 mod_mime_filters=Filtres a aplicar
 mod_mime_efext=No has donat cap extensió per al(s) filtre(s) $1
+
 mod_setenvif_header=Capçalera
 mod_setenvif_match=Coincideix amb
 mod_setenvif_case=Sensible a caixa
@@ -675,11 +707,13 @@ mod_setenvif_eheader=Capçalera de petició '$1' invàlida
 mod_setenvif_eregex=Expressió regular '$1' invàlida
 mod_setenvif_evar=Nom de variable '$1' invàlid
 mod_setenvif_clear=Neteja
+
 mod_userdir_default=Defecte
 mod_userdir_all=Tots els usuaris accessibles
 mod_userdir_except=Tots els usuaris excepte
 mod_userdir_dir=Directori WWW d'usuaris
 mod_userdir_edir=No tens permís per utilitzar el directori WWW especificat
+
 mod_imap_action=Acció en cas d'ús incorrecte dels mapes d'imatges
 mod_imap_default=Defecte
 mod_imap_godefurl=Ves a l'URL per defecte
@@ -699,8 +733,10 @@ mod_imap_refurl=URL referenciador
 mod_imap_url=URL...
 mod_imap_defbase=Base dels mapes d'imatges per defecte
 mod_imap_eurl='$1' no és un URL vàlid
+
 mod_speling_autocorr=Corregeix URLs mal escrits automàticament
 mod_speling_default=Defecte
+
 mod_actions_mime=Gestor / Tipus MIME
 mod_actions_cgiurl=URL de scripts CGI
 mod_actions_mimecgi=Accions CGI del gestor o tipus MIME
@@ -710,10 +746,13 @@ mod_actions_httpcgi=Accions CGI del mètode HTTP
 mod_actions_emime='$1' no és un gestor o un tipus MIME vàlid
 mod_actions_ecgi='$1' no és un script CGI vàlid
 mod_actions_enometh=No has triat cap mètode per al script CGI '$1'
+
 mod_include_incl=Processa les inclusions dels fitxers amb bit d'execució
 mod_include_set=Sí, i estableix la data de la darrera modificació
 mod_include_default=Defecte
+
 mod_dir_txt=Fitxers de llistat del directori
+
 mod_autoindex_default=Defecte
 mod_autoindex_asc=Ascendent
 mod_autoindex_descend=Descendent
@@ -722,6 +761,7 @@ mod_autoindex_date=Data
 mod_autoindex_size=Mida
 mod_autoindex_desc=Descripció
 mod_autoindex_sort=Ordena el llistat del directori per
+
 browsermatch_regexp=Expressió regular del navegador
 browsermatch_case=Sensible a caixa
 browsermatch_var=Estableix la variable
@@ -729,6 +769,7 @@ browsermatch_value=Valor
 browsermatch_txt=Conjunt de variables basat en el tipus de navegador
 browsermatch_evar=Nom de variable '$1' invàlid
 browsermatch_clear=Neteja
+
 autoindex_fname=Nom de fitxer
 autoindex_mime=Tipus MIME
 autoindex_enc=Codificació
@@ -782,9 +823,11 @@ autoindex_sicon=Mostra les icones de fitxers
 autoindex_srules=Mostra les línies &lt;hr&gt;
 autoindex_track=Inclou ETags a la capçalera
 autoindex_version=Ordena per cadenes de versió
+
 mod_mime_magic_file=Fitxer de números màgics MIME
 mod_mime_magic_none=Cap
 mod_mime_magic_efile=Nom del fitxer de números màgics MIME invàlid
+
 mod_env_var=Variable
 mod_env_value=Valor
 mod_env_pass=Transparent
@@ -795,6 +838,7 @@ mod_env_passall=Passa totes les variables d'entorn als CGIs
 mod_env_default=Defecte
 mod_env_evar='$1' no és un nom de variable vàlid
 mod_env_evalue='$1' no és un valor de variable vàlid
+
 mod_access_order=Ordre de comprovació de l'accés:
 mod_access_denyallow=Denega, després permet
 mod_access_allowdeny=Permet, després denega
@@ -817,6 +861,7 @@ mod_access_epip='$1' no és una adreça IP parcial vàlida
 mod_access_emask='$1' no és una parella xarxa/màscara vàlida
 mod_access_ecidr='$1' no és una parella xarxa/CIDR vàlida
 mod_access_evar='$1' no és un nom de variable vàlid
+
 mod_auth_ufile=Fitxer de text d'usuaris
 mod_auth_uedit=Edita els usuaris
 mod_auth_gfile=Fitxer de text de grups
@@ -827,6 +872,7 @@ mod_auth_eudir=El fitxer de text d'usuaris no és al directori permès
 mod_auth_egdir=El fitxer de text de grups no és al directori permès
 mod_auth_eufile=Nom de fitxer de text d'usuaris invàlid
 mod_auth_egfile=Nom de fitxer de text de grups invàlid
+
 mod_auth_dbm_ufile=Fitxer DBM d'usuaris
 mod_auth_dbm_gfile=Fitxer DBM de grups
 mod_auth_dbm_pass=Passa els errors al mòdul següent
@@ -837,6 +883,7 @@ mod_auth_dbm_egfile=Nom del fitxer DBM de grups invàlid
 mod_auth_dbm_type=Tipus de base de dades DBM
 mod_auth_dbm_gtype=Tipus de base de dades de grups DBM
 mod_auth_dbm_default=Format DBM per defecte
+
 mod_cern_meta_process=Processa els metafitxers de capçalera
 mod_cern_meta_dir=Subdirectori dels metafitxers de capçalera
 mod_cern_meta_default=Defecte
@@ -844,6 +891,7 @@ mod_cern_meta_edir=Nom del subdirectori dels metafitxers de capçalera
 mod_cern_meta_suffix=Sufix de fitxer dels metafitxers de capçalera
 mod_cern_meta_default2=Defecte
 mod_cern_meta_esuffix=Sufix de metafitxer invàlid
+
 mod_ssl_enable=Activa SSL
 mod_ssl_proto=Protocols SSL
 mod_ssl_cfile=Fitxer de certificats/claus privades
@@ -871,6 +919,7 @@ mod_ssl_passsc=Executa el script $1
 mod_ssl_epassph=No has introduït cap contrasenya SSL
 mod_ssl_epasssc=Hi falta el script de contrasenya SSL o bé és invàlid
 mod_ssl_ecerton=Quan SSL està activat, cal seleccionar un fitxer de certificat
+
 mod_apachessl_notssl=Denega l'accés SSL
 mod_apachessl_forcessl=Força l'accés SSL/no SSL
 mod_apachessl_capath=Camí del directori amb els certificats de les Autoritats Certificadores de
@@ -903,6 +952,7 @@ mod_apachessl_nov2=Desactiva SSL versió 2
 mod_apachessl_fake=Simula entrades amb autenticació bàsica de l'usuari, utilitzant el nom del certificat
 mod_apachessl_cdnfile=Fitxer amb el qual es comprova el DN client
 mod_apachessl_ecdnfile=Hi falta el fitxer de comprovació del client DN
+
 log_global=S'han canviat les opcions globals $1
 log_virtc=S'ha creat el servidor $1
 log_virts=S'ha reconfigurat el servidor $1
@@ -943,8 +993,10 @@ log_stop=S'ha aturat el servidor web
 log_apply=S'han aplicat els canvis
 log_manual=S'ha editat manualment el fitxer de configuració $1
 log_virts_delete=S'han suprimit $1 servidors virtuals
+
 search_title=Recerca de Servidors
 search_notfound=No s'ha trobat cap servidor virtual que coincideixi
+
 mod_php_value=Valors de la Configuració PHP
 mod_php_flag=Paràmetres de Configuració PHP
 mod_php_admin_value=Valors de la Configuració de PHP Admin
@@ -953,6 +1005,7 @@ mod_php_name_header=Paràmetre
 mod_php_value_header=Valor
 mod_php_ename='$1' no és un nom vàlid
 mod_php_evalue='$1' no és un valor de $2 vàlid
+
 mod_vhost_alias_root=Arrel del host virtual automàtica
 mod_vhost_alias_ip=Utilitza l'adreça IP en lloc del nom de host
 mod_vhost_alias_none=Cap
@@ -960,12 +1013,14 @@ mod_vhost_alias_script=Cgi-bin del host virtual automàtic
 mod_vhost_alias_eroot=Hi falta l'arrel de host virtual o bé no és vàlida
 mod_vhost_alias_eroot2=El directori arrel del host virtual no està permès
 mod_vhost_alias_escript=Hi falta el cgi-bin del host virtual
+
 worker_minspare=Nombre mínim de fils lliures
 worker_maxspare=Nombre màxim de fils lliures
 worker_eminspare=El nombre mínim de fils lliures ha de ser un enter
 worker_emaxspare=El nombre màxim de fils lliures ha de ser un enter
 worker_threads=Fils per procés fill
 worker_ethreads=El nombre de fils per procés fill ha de ser un enter
+
 perchild_sthreads=Fils inicials per procés fill
 perchild_esthreads=El nombre de fils per procés fill ha de ser un enter
 perchild_numservers=Nombre de processos fills
@@ -981,6 +1036,7 @@ perchild_gid=GID
 perchild_enum=El número de procés ha de ser en enter diferent de zero
 perchild_euid=El UID ha de ser un enter
 perchild_egid=El GID ha de ser un enter
+
 cache_enable=Actiu
 cache_type=Emmagatzematge del cau
 cache_disk=Disc
@@ -1001,12 +1057,14 @@ cache_eminos=La mida mínima d'objecte per desar en memòria ha de ser un nombre
 cache_emaxos=La mida màxima d'objecte per desar en memòria ha de ser un nombre de bytes
 cache_maxoc=Nombre màxim d'objectes per desar al cau de memòria
 cache_emaxoc=El nombre màxim d'objectes per desar al cau de memòria ha de ser un enter
+
 suexec_su=Executa els programes CGI com a
 suexec_none=Usuari de la configuració global
 suexec_user=L'usuari Unix
 suexec_group=i el grup
 suexec_euser=Hi falta l'usuari d'execució de programes CGI o bé és invàlid
 suexec_egroup=Hi falta el grup d'execució de programes CGI o bé és invàlid
+
 filter_name=Nom
 filter_intype=Tipus MIME d'entrada
 filter_outtype=Tipus MIME de sortida
@@ -1016,11 +1074,13 @@ filter_in=Definicions del Filtre d'Entrada
 filter_out=Definicions del Filtre de Sortida
 filter_ename=Nom de filtre '$1' invàlid
 filter_ecmd=Hi falta l'ordre del filtre '$1'
+
 cdir_err=No s'ha pogut crear les opcions per directori
 cdir_err2=No s'ha pogut desar les opcions per directori
 cdir_epath=Hi falta el camí
 cdir_eproxy=No es poden crear opcions de proxy amb l'expressió de patrons de coincidència activada
 cdir_ecannot=No tens permís per crear opcions per directori per al camí donat
+
 mod_band_enable=Limitació d'amplada de banda activada
 mod_band_bw=Límit (bytes/seg)
 mod_band_client=Per als clients
@@ -1039,24 +1099,30 @@ mod_band_epulse=Hi falta l'interval entre paquets limitats o bé és invàlid
 mod_band_dir=Directori de fitxers de dades de límits d'amplada de banda
 mod_band_edir=Hi falta el directori de fitxers de dades d'amplada de banda o bé no existeix
 mod_band_esubdir=Hi falta el subdirectori <tt>$1</tt> necessari sota el directori de fitxers de dades d'amplada de banda
+
 mod_dav_active=WebDAV activat
 mod_dav_inf=Permet una profunditat infinita de les peticions PROPFIND de DAV
 mod_dav_timeout=Temps límit mínim de DAV en segons
 mod_dav_etimeout=Hi falta el temps límit DAV o bé és invàlid
+
 delete_err=No s'ha pogut suprimir els servidors virtuals
 delete_enone=No n'has seleccionat cap
 delete_ecannot=No tens permís per suprimir servidors
 delete_ecannot2=No tens permís editar el servidor $1
+
 syslog_desc=Registre d'errors d'Apache
+
 mod_auth_basic_pass=Passa els errors bàsics d'entrada al mòdul següent
 mod_auth_basic_prov=Tipus de fitxers d'entrada d'usuari bàsics
 mod_auth_basic_file=Fitxer de text
 mod_auth_basic_dbm=Base de dades DBM
+
 mod_auth_digest_pass=Passa els errors de resum d'entrada al mòdul següent
 mod_auth_digest_prov=Tipus de fitxers d'entrada d'usuari de resum
 mod_auth_digest_al=Algoritme de hashing
 mod_auth_digest_domain=URLs i camins en el mateix domini
 mod_auth_digest_edomain=URLs i camins en el mateix domini que falten
+
 mods_title=Configuració de Mòduls d'Apache
 mods_mod=Mòdul
 mods_state=Estat actual

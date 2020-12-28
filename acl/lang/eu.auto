@@ -4,6 +4,7 @@ index_twofactor=Bi faktoreen autentikazioa
 index_joingroup=Taldeari gehitu:
 index_eulist=Ezin izan da erabiltzaileak zerrendatu: $1 
 index_eglist=Huts egin du taldeen zerrendak: $1 
+
 edit_title3=Sortu Webmin erabiltzaile segurua
 edit_twofactor=Bi faktoreen autentikazio mota
 edit_twofactorprov=Hornitzailea $1 erabiliz $2 
@@ -21,28 +22,39 @@ edit_safe=Pribilegio maila
 edit_safe0=mugarik gabeko
 edit_safe1=Modulu seguruak bakarrik
 edit_unsafe=Berrezarri mugarik gabekoetara
+
 save_eunixname='$1' erabiltzailea ez da Unix erabiltzailea eta, beraz, ezin da modu seguruan erabili
 save_etemp=Pasahitz aldaketa hurrengo behartzeko aukera ezin da erabili <a href='$1'>erabiltzaileek pasahitz berriak sartzeko eskatuko duten</a> gaituta ez badago
+
 delete_eanonuser=Erabiltzaile hau modulu anonimoetarako sarbidea erabiltzen ari da
+
 cert_etempdir=Ziurtagiri fitxategi baliogabea
+
 acl_pass=Pasahitz murrizketak alda ditzakezu?
 acl_sql=Erabiltzaileen eta taldeen datu-basea konfiguratu al dezakezu?
+
 log_joingroup=Gehitu dira $1 Webmin erabiltzaileak $2 
 log_sql=Erabiltzaileen eta taldeen datu baseak aldatu dira
 log_twofactor=Matrikulatutako erabiltzailea $1 bi faktore hornitzaile $2 
 log_onefactor=Bi erabiltzaileak bi faktoreen autentikaziorako matrikulatutako erabiltzailea $1 
+
 gedit_desc=Taldearen deskribapena
 gedit_egone=Hautatutako taldea ez dago jada!
+
 gsave_edesc=Deskribapen baliogabea - the: pertsonaia ez da onartzen
+
 convert_sync2=Sinkronizatu pasahitza Unix erabiltzailearekin etorkizunean?
 convert_user=Unix erabiltzailea
 convert_action=Egindako ekintza
 convert_done= $1 erabiltzaile bihurtu dira, $2 baliogabeak dira, $3 lehendik daude, $4 baztertuta.
 convert_users=Erabiltzaileak bihurtzeko
+
 sync_when=Noiz sinkronizatu
+
 unix_restrict2=Murrizketa osagarriak
 unix_header=Unix erabiltzailearen autentifikazio ezarpenak
 unix_utable=Onartutako Unix erabiltzaileak
+
 sessions_actions=Ekintzak..
 sessions_logouts=Erakutsi itxitako saioak ere..
 sessions_state=Estatu
@@ -50,9 +62,13 @@ sessions_this=Saioa hasiera
 sessions_in=Saioa hasi
 sessions_out=Saioa amaitu
 sessions_kill=Deskonektatu..
+
 logins_title=Webminen azken saioak
+
 udeletes_jerr=Huts egin du erabiltzaileak taldean gehitzerakoan
+
 pass_ecannot=Ezin duzu pasahitzen murrizketak editatu
+
 sql_title=Erabiltzaileen eta Taldearen datu-basea
 sql_ecannot=Ezin duzu erabiltzailearen eta taldearen datu-basea konfiguratu
 sql_header=Datu baseen backend aukerak erabiltzaile eta taldeentzat
@@ -95,21 +111,25 @@ sql_dnerr=Erabiltzaileen eta taldeen datu-basearen ezarpenak baliozkoak dira, ba
 sql_dnerr2=Egin klik azpian <b>Sortu DN</b> botoian automatikoki sortzeko edo gehitzeko eskuz LDAP zerbitzarira.
 sql_makedn=Sortu DN
 sql_schema=Deskargatu LDAP eskema
+
 make_title=Sortu erabiltzaile eta talde taulak
 make_err=Ezin izan da erabiltzaile eta talde taulak sortu
 make_exec=SQL $1 exekutatzea..
 make_failed=.. sorrerak huts egin du: $1 
 make_done=.. egin
 make_still=Taula sortu ondoren ere aurkitu dira arazo batzuk: $1 
+
 makedn_title=LDAP DN sortu
 makedn_eoc=Ez da objektu estrukturarik aurkitu!
 makedn_exec=Guraso DN $1 sortzen.
 makedn_failed=.. sorrerak huts egin du: $1 
 makedn_done=.. egin
 makedn_still=DN sortu eta gero arazo batzuk aurkitu dira: $1 
+
 schema_title=Deskargatu LDAP eskema
 schema_desc=Webmin-ek LDAP zerbitzaria erabil dezake erabiltzaileak eta taldeak gordetzeko, beheko eskema erabiltzeko konfiguratuta egon behar du. Normalean eskemaren definizioa <tt>/etc/ldap/schema</tt> edo <tt>/etc/openldap/schema</tt> gisa <tt>webmin.schema</tt> gisa gordeta egin daiteke; gero zerbitzaria konfiguratu eskema fitxategi hori kargatzeko.
 schema_download=Deskargatu eskemaren fitxategia: <a href=$1>$1</a>
+
 twofactor_err=Ezin izan da bi faktoreen autentikazioa konfiguratu
 twofactor_euser=Ez da zure Webmin erabiltzailea aurkitu!
 twofactor_title=Bi faktoreen autentikazioa

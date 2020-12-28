@@ -51,11 +51,13 @@ index_mass=Poista valitut käyttäjät
 index_mass2=Poista valitut käytöstä
 index_mass3=Ota valitut käyttöön
 index_gmass=Poista valitut ryhmät
+
 search_title=Hakutulokset
 search_notfound=Vastaavia käyttäjiä ei löytynyt
 search_found=Löytyi $1 vastaavia käyttäjiä ..
 search_gnotfound=Vastaavia ryhmiä ei löytynyt
 search_gfound=Löytyi $1 vastaavia ryhmiä ..
+
 uedit_title=Muokkaa käyttäjää
 uedit_title2=Luo käyttäjä
 uedit_details=Käyttäjän tiedot
@@ -133,6 +135,7 @@ uedit_uid_calc=laskettu
 uedit_disabled=Sisäänkirjautuminen on väliaikaisesti poistettu käytöstä
 uedit_sys=Järjestelmän oletusarvo
 uedit_clone=Kloonin käyttäjä
+
 usave_err=Käyttäjän tallentaminen epäonnistui
 usave_eedit=Et voi muokata tätä käyttäjää
 usave_ecreate=Et voi luoda uusia käyttäjiä
@@ -186,6 +189,7 @@ usave_epasswd_same=Salasana sisältää tai on sama kuin käyttäjänimi
 usave_epasswd_mindays=Salasana vaihdettiin vähemmän kuin $1 päivää sitten
 usave_epasswd_cmd=Salasanan tarkistuskomento epäonnistui
 usave_eothers=Käyttäjän tallennus onnistui, mutta virhe toisessa moduulissa : $1
+
 gedit_title=Muokkaa ryhmää
 gedit_title2=Luo ryhmä
 gedit_details=Ryhmän yksityiskohdat
@@ -208,6 +212,7 @@ gedit_selu=Ryhmän käyttäjät
 gedit_pri=Ensisijaiset ryhmän jäsenet
 gedit_prinone=Yhdelläkään käyttäjällä ei ole tätä ryhmää ensisijaisena
 gedit_clone=Klooniryhmä
+
 gsave_err=Ryhmän tallentaminen epäonnistui
 gsave_eedit=Et voi muokata tätä ryhmää
 gsave_ecreate=Et voi luoda uusia ryhmiä
@@ -224,6 +229,7 @@ usave_egidused=Ryhmä $1 käyttää jo GID: tä $2
 gsave_egidused2=GID on jo käytössä
 usave_efromroot=Et voi siirtää kotihakemistoa /
 usave_etoroot=Et voi siirtää kotihakemistoa /
+
 logins_title=Tallennetut kirjautumiset
 logins_head=Tallennetut tunnukset $1
 logins_from=Kirjaudu sisään
@@ -236,6 +242,7 @@ logins_none=Ei kirjautuneita
 logins_elist=Et voi lukea kirjautumistietoja
 logins_elistu=Et voi lukea kirjautumisia '$1'
 logins_local=paikallinen
+
 udel_title=Poista käyttäjä
 udel_err=Käyttäjän poistaminen epäonnistui
 udel_enum=Virheellinen käyttäjänumero
@@ -258,6 +265,7 @@ udel_del2=Poista käyttö- ja kotihakemisto
 udel_others=VAROITUS! Kotihakemisto $1 sisältää $2 tiedostoja, jotka ovat muiden käyttäjien omistamia.
 udel_dothers=Poistetaanko käyttäjä muista moduuleista?
 udel_root=Varoitus! Jos pääkäyttäjä poistetaan, et ehkä pysty hallitsemaan järjestelmääsi tulevaisuudessa.
+
 gdel_title=Poista ryhmä
 gdel_err=Ryhmän poistaminen epäonnistui
 gdel_eroot=Et voi poistaa järjestelmäryhmiä (sellaisia, joiden GID on alle 10 tai yhtä suuri).
@@ -271,6 +279,7 @@ gdel_sure=Haluatko varmasti poistaa ryhmän $1?
 gdel_del=Poista ryhmä
 gdel_dothers=Poistetaanko ryhmä muista moduuleista?
 gdel_other=Poistetaan muista moduuleista ..
+
 many_title=Luo useita käyttäjiä
 many_desc=Tämän lomakkeen avulla voit luoda useita käyttäjiä kerralla joko ladatusta tai paikallisesta tekstitiedostosta. Tiedoston jokainen rivi määrittelee yhden käyttäjän seuraavassa muodossa:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -294,6 +303,7 @@ many_eshell=Virheellinen kuori rivillä $1 : $2
 many_emkdir=Kotihakemiston luominen epäonnistui $1 : $2 
 many_egtaken=Ryhmän nimi on jo käytössä rivillä $1 : $2 
 many_ok=Luotu käyttäjä $1
+
 acl_uedit=Unix-käyttäjät, joita voi muokata
 acl_uedit_all=Kaikki käyttäjät
 acl_uedit_none=Ei käyttäjiä
@@ -353,6 +363,7 @@ acl_udelete=Voiko käyttäjiä poistaa?
 acl_gdelete=Voiko ryhmiä poistaa?
 acl_urename=Voivatko käyttäjät nimetä uudelleen?
 acl_grename=Voiko ryhmiä nimetä uudelleen?
+
 log_urename=Uudelleennimetty käyttäjä $1 arvoksi $2
 log_umodify=Muokattu käyttäjä $1
 log_ucreate=Luotu käyttäjä $1
@@ -371,6 +382,7 @@ log_ugbatch=Suoritettu lähetetty ryhmäerä tiedosto
 log_ugbatch_l=Suoritettu lähetetty ryhmäerä tiedosto ($1 luotu, $2 muokattu, $3 poistettu)
 log_delete_users=Poistetut $1 -käyttäjät
 log_delete_groups=Poistetut $1 ryhmät
+
 batch_title=Suorita eräajotiedosto
 batch_ecannot=Erätiedostomuotoa ei voi käyttää
 batch_desc=Tämän lomakkeen avulla voit luoda, muokata tai poistaa useita käyttäjiä kerralla ladatusta tai paikallisesta tekstitiedostosta. Tiedoston jokainen rivi määrittelee yhden suoritettavan toimenpiteen sen ensimmäisestä kentästä riippuen. Rivimuodot ovat :
@@ -429,12 +441,14 @@ batch_eexpire=Virheellinen voimassaolopäivä rivillä $1 : $2
 batch_echange=Virheellinen salasananvaihtopäivä rivillä $1 : $2 
 batch_instr=Ohjeet ja erämuoto
 batch_header=Eräkäyttäjän luomis-, päivitys- ja poistamisasetukset
+
 who_title=Sisäänkirjautuneet käyttäjät
 who_user=Unix-käyttäjä
 who_tty=TTY
 who_when=Kirjautunut sisään
 who_from=Kirjautunut sisään
 who_none=Yhtään käyttäjää ei ole tällä hetkellä kirjautunut sisään.
+
 export_title=Vie erätiedosto
 export_desc=Tämän lomakkeen avulla voit luoda eräajotiedoston, joka sisältää jotkut tai kaikki järjestelmän käytettävissä olevista käyttäjistä. Tiedostoa voidaan käyttää toisen järjestelmän Suorita erätiedosto-sivulla vietyjen käyttäjien luomiseen uudelleen olettaen, että se käyttää valittua kohdetiedostomuotoa.
 export_header=Erä käyttäjän vientivaihtoehdot
@@ -455,6 +469,7 @@ export_done=$1 -käyttäjien vienti onnistuneesti tiedostoon $2 ($3).
 export_pft=Erä tiedostomuoto
 export_who=Viejät
 export_ecannot=Sinulla ei ole oikeutta viedä käyttäjiä
+
 gexport_title=Vie ryhmien erätiedosto
 gexport_desc=Tämän lomakkeen avulla voit luoda eräajotiedoston, joka sisältää jotkut tai kaikki järjestelmän käytettävissä olevista ryhmistä. Tiedostoa voidaan käyttää toisen järjestelmän Suorita ryhmäerä -sivulla vietyjen ryhmien luomiseen uudelleen.
 gexport_header=Eräryhmien vientivaihtoehdot
@@ -463,6 +478,7 @@ gexport_ecannot=Sinulla ei ole oikeutta viedä ryhmiä
 gexport_err=Ryhmän eräajotiedoston vieminen epäonnistui
 gexport_egid=Virheellinen ensimmäinen GID alueella
 gexport_egid2=Virheellinen toinen GID alueella
+
 pft_0=Vain klassinen <tt>passwd</tt>-tiedosto
 pft_1=BSD <tt>master.passwd</tt> tiedosto
 pft_2=Tavalliset <tt>passwd</tt>- ja <tt>shadow</tt> -tiedostot
@@ -470,6 +486,7 @@ pft_3=Unixware <tt>passwd</tt>-tiedosto
 pft_4=AIX <tt>passwd</tt> ja <tt>security</tt> tiedostot
 pft_5=OpenServer <tt>passwd</tt> ja lyhyet <tt>varjo</tt> tiedostot
 pft_6=MacOS NetInfo-tietokanta
+
 umass_title=Poista käyttäjät
 umass_err=Käyttäjien poistaminen epäonnistui
 umass_sure=Haluatko varmasti poistaa $1 valitut käyttäjät? Heidän kotihakemistonsa sisältävät $2 tiedostoja.
@@ -481,6 +498,7 @@ umass_del1=Poista käyttäjät
 umass_del2=Poista käyttäjät ja kotihakemistot
 umass_eroot=Et voi poistaa järjestelmän käyttäjiä (käyttäjät, joiden UID on pienempi tai yhtä suuri kuin 10).
 umass_doing=Poistetaan käyttäjä $1 ..
+
 gmass_title=Poista ryhmät
 gmass_err=Ryhmien poistaminen epäonnistui
 gmass_sure=Haluatko varmasti poistaa $1 valitut ryhmät?
@@ -490,16 +508,19 @@ gmass_del=Poista ryhmät
 gmass_eroot=Et voi poistaa järjestelmäryhmiä (sellaisia, joiden GID on alle 10 tai yhtä suuri).
 gmass_doing=Poistetaan ryhmä $1 ..
 gmass_eprimary=Ryhmää $1 ei voida poistaa, koska se on käyttäjän $2 ensisijainen ryhmä.
+
 dmass_title=Poista käyttäjät käytöstä
 dmass_sure=Haluatko varmasti poistaa $1 valitut käyttäjät käytöstä? Ne voidaan ottaa käyttöön uudelleen myöhemmin menettämättä salasanoja tai tietoja.
 dmass_dis=Poista käyttäjät käytöstä
 dmass_pass=Lukitaan salasana väliaikaisesti ..
 dmass_doing=Poista käyttäjän $1 käytöstä.
 dmass_already=.. jo poistettu käytöstä!
+
 emass_title=Ota käyttäjät käyttöön
 emass_pass=Salasanan lukituksen avaaminen ..
 emass_doing=Mahdollistaa käyttäjän $1 ..
 emass_already=.. on jo käytössä!
+
 gbatch_title=Suorita ryhmäerä
 gbatch_ecannot=Ryhmän eräajotiedostoa ei voi käyttää
 gbatch_desc=Tämän lomakkeen avulla voit luoda, muokata tai poistaa useita ryhmiä kerralla ladatusta tai paikallisesta tekstitiedostosta. Tiedoston jokainen rivi määrittelee yhden suoritettavan toimenpiteen sen ensimmäisestä kentästä riippuen. Rivimuodot ovat :

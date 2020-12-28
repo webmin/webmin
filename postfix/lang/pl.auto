@@ -1,11 +1,16 @@
 connect_emysql=Nie udało się załadować sterownika bazy danych $1
 connect_elogin=Nie udało się zalogować do bazy danych $1:$2.
+
 index_esuper=Komenda administratora Postfix $1 nie istnieje. Może Twoja <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
 index_reload=Załaduj ponownie konfigurację
 index_reloadmsg=Kliknij ten przycisk, aby Postfix ponownie odczytał wszystkie swoje pliki konfiguracyjne. Może to być przydatne, jeśli pliki konfiguracyjne Postfix zostały ręcznie zmodyfikowane.
+
 check_manual=Ręcznie edytuj plik konfiguracyjny Postfix.
+
 aliases_type6=Zastosuj plik filtru $1
+
 postfinger_ecannot=Nie wolno sprawdzać konfiguracji Postfix
+
 mailclean_title=Wyczyść MailQueue
 mailclean_ecannot=Brak uprawnień do czyszczenia MailQueues
 mailclean_active=Kolejka aktywna
@@ -14,7 +19,9 @@ mailclean_deferred=Odroczona kolejka
 mailclean_defer=Odroczona kolejka
 mailclean_all=Wszystkie kolejki
 mailclean_search=Szukana fraza
+
 aform_type4=Kanał do programu
+
 asave_eaddr=„$1” nie jest prawidłowym adresem
 asave_ealready=Alias dla „$1” już istnieje
 asave_etype1=„$1” nie jest prawidłowym adresem e-mail
@@ -24,10 +31,12 @@ asave_etype4=„$1” nie jest prawidłowym programem lub nie istnieje
 asave_etype5=Plik odpowiedzi „$1” jest nieprawidłowy
 asave_etype4none=Nie podano programu
 asave_etype6=Plik filtru „$1” jest nieprawidłowy
+
 afile_title=Edytuj plik adresu
 afile_desc=Użyj pola tekstowego poniżej, aby edytować adresy w pliku $1.
 afile_efile=Nie możesz edytować $1.
 afile_ewrite=Nie udało się zapisać do pliku adresów : $1
+
 ffile_title=Edytuj plik filtru
 ffile_desc=Skorzystaj z poniższego formularza, aby skonfigurować reguły filtrów w pliku $1.
 ffile_efile=Nie możesz edytować $1.
@@ -36,6 +45,7 @@ ffile_other=W przeciwnym razie przejdź do $1
 ffile_err=Nie udało się zapisać pliku filtru
 ffile_ematch=Brakujący mecz
 ffile_eaction=Brak adresu do przekazania
+
 rfile_title=Edytuj plik odpowiedzi automatycznej
 rfile_desc=Użyj pola tekstowego poniżej, aby edytować wiadomość z automatyczną odpowiedzią w $1. Wiadomość może zawierać makra $SUBJECT, $FROM, $TO, $DATE i $BODY, które zostaną rozwinięte po aktywowaniu odpowiedzi automatycznej.
 rfile_desc2=Możesz także ustawić nagłówki wiadomości, które dodają lub zastępują wartości domyślne używane w odpowiedzi automatycznej, wstawiając wiersze takie jak: <br><tt> Od: foo@bar.com </tt><br> <tt>Temat: W wakacje</tt> <br> u góry wiadomości, oddzielone od treści pojedynczym pustym wierszem.
@@ -54,25 +64,34 @@ rfile_from=Od: adres do odpowiedzi
 rfile_auto=Automatyczny (na podstawie adresu odbiorcy)
 rfile_efrom=Brakuje od: adres
 rfile_fromdesc=Adres Od: należy zawsze podawać w miarę możliwości, ponieważ metoda automatyczna może nie być wiarygodna.
+
 opts_nomap=Nie ustawiono mapy
 opts_setmap=Specyfikacje map
 opts_notify_classes_sel=Wybrane poniżej
+
 opts_edir=Możesz określić pliki map tylko w $1
+
 opts_mailbox_size_limit=Maksymalny rozmiar skrzynki pocztowej
+
 opts_mynetworks_subnet=Ta sama podsieć IP
 opts_mynetworks_class=Ta sama klasa sieci
 opts_mynetworks_host=Tylko komputer lokalny
+
 opts_relay_recipient_maps=Mapa dozwolonych adresów do przekazywania
 smtpd_nomap=Nie wprowadzono jeszcze mapy dozwolonych adresów do przekazywania.
 smtpd_nomap2=Nie wprowadzono jeszcze mapy ograniczeń adresów nadawców.
 smtpd_map=Dozwolone adresy do przekazywania
 smtpd_map2=Ograniczenia adresów nadawców
+
 opts_smtp_use_tls=Użyj TLS do połączeń SMTP
 opts_smtp_sasl_security_options=Opcje bezpieczeństwa SASL
+
 opts_edebug=Brakujący lub nieprawidłowy poziom rejestrowania pełnego - musi być liczbą większą od zera
+
 canonical_return_sender=mapy kanoniczne nadawcy
 canonical_return_recipient=odbiorca map kanonicznych
 canonical_return=mapy kanoniczne
+
 mapping_delete=Usuń wybrane
 mapping_cmt=Opis
 mapping_ecannot=Możesz edytować mapy tylko w $1
@@ -86,13 +105,26 @@ mapping_toomany=Istnieje $1 wpisy mapy, które przekraczają limit wyświetlania
 mapping_find=Pokaż pasujące odwzorowania:
 mapping_search=Szukaj
 mapping_match=Zamapuj wpisy plików pasujące do <tt>$1</tt> ..
+
 opts_virtual_alias_maps=Tabele wyszukiwania odwzorowań domen
 opts_virtual_alias_domains=Domeny do wykonania mapowania wirtualnego
 virtual_same=Z tabel mapowania domen
+
 transport_return=mapy transportowe
+
+sni_title=Mapowanie certyfikatów
+sni_ecannot=Nie możesz edytować konfiguracji mapowania certyfikatów
+opts_sni_maps=Tabele odnośników mapowania certyfikatów
+sni_return=mapy certyfikatów
+sni_dom=Nazwa hosta
+sni_certs=Pliki certyfikatów
+
 relocated_return=przeniesione mapy
+
 start_efailed=Nie udało się uruchomić Postfix
 start_ecannot=Nie możesz uruchomić Postfix
+
+acl_sni=Czy można edytować certyfikaty?
 acl_sasl=Czy można edytować uwierzytelnianie SMTP?
 acl_client=Czy można edytować ograniczenia klienta SMTP?
 acl_master=Czy można edytować procesy serwera?
@@ -101,10 +133,12 @@ acl_mailq=Czy można zarządzać kolejką pocztową?
 acl_postfinger=Czy mogę sprawdzić konfigurację Postfiksa?
 acl_manual=Czy mogę edytować plik konfiguracyjny?
 acl_dir=Dozwolony katalog dla plików map
+
 boxes_sent=Wysłany mail
 boxes_ecannot=Nie możesz czytać wiadomości e-mail
 boxes_toomany=W systemie jest zbyt wielu użytkowników, aby wyświetlić wszystkie ich skrzynki pocztowe.
 boxes_go=Wyświetl pocztę dla użytkownika:
+
 mail_title=E-mail użytkownika
 mail_from=Od
 mail_date=Data
@@ -143,6 +177,7 @@ mail_forward=Naprzód
 mail_rfc=Z linii
 mail_move=Przenieś do:
 mail_eexists=Wiadomość już nie istnieje!
+
 view_title=Czytaj email
 view_desc=Wiadomość $1 w $2
 view_desc2=Wiadomość $1 dla użytkownika $2
@@ -171,6 +206,7 @@ view_body=Wiadomość tekstowa
 view_afile=Nazwa załącznika
 view_atype=Typ załącznika
 view_asize=Rozmiar pliku
+
 compose_title=Komponować wiadomość e-mail
 reply_title=Odpowiedz na e-mail
 enew_title=Edytuj adres e-mail
@@ -180,6 +216,7 @@ reply_mailforward=Przekazywane wiadomości
 reply_attach2=Załączniki po stronie klienta i serwera
 reply_send=Wyślij maila
 reply_ecannot=Nie możesz wysyłać poczty jako ten użytkownik
+
 send_err=Nie udało się wysłać poczty
 send_eto=Brak adresu
 send_efrom=Brak adresu od
@@ -193,6 +230,7 @@ send_eperms=Użytkownik $1 nie może odczytać $2
 send_eperms2=Nie możesz wysłać pliku $1
 send_epath=Plik wykonywalny Sendmail $1 nie istnieje.
 send_ewrapper=Program interfejsu Postfix sendmail nie istnieje
+
 search_title=Wyniki wyszukiwania
 search_ecannot=Nie możesz przeszukiwać wiadomości e-mail tego użytkownika
 search_ematch=Musisz wpisać tekst, aby dopasować.
@@ -200,6 +238,7 @@ search_efield=Musisz wybrać typ wyszukiwania.
 search_none=Nie znaleziono wiadomości.
 search_results2=$1 wiadomości e-mail pasujące $2 ..
 search_results3=$1 wiadomości e-mail niepasujące $2 ..
+
 match_from=Od: mecze
 match_subject=Temat: mecze
 match_to=Do: mecze
@@ -217,6 +256,7 @@ match_!date=Data: nie pasuje
 match_!body=Ciało nie pasuje
 match_!size=Rozmiar jest mniejszy niż
 match_!headers=Nagłówki się nie zgadzają
+
 mailq_title=Kolejka pocztowa
 mailq_count=$1 wiadomości
 mailq_none=Żadne wiadomości e-mail nie są obecnie w kolejce do dostarczenia
@@ -245,12 +285,16 @@ mailq_active=Aktywny
 mailq_deferred=Odroczony
 mailq_hold=Przytrzymaj wybrane
 mailq_unhold=Un-Hold Selected
+
 flushq_title=Kolejka do spłukiwania
 flushq_desc=Wymuszanie próby dostarczenia poczty za pomocą polecenia $1 ..
+
 qview_title=Wiadomość w kolejce
 qview_attach=Załączniki
+
 searchq_title=Wyniki wyszukiwania w kolejce
 searchq_none=Nie znaleziono wiadomości w kolejce.
+
 header_ecannot=Nie możesz edytować kontroli nagłówków
 header_eregexp=Mapa kontroli nagłówków musi mieć format <tt>regexp:</tt> <i>nazwa_pliku</i>
 opts_header_checks=Tabele sprawdzania nagłówków MIME
@@ -264,15 +308,18 @@ header_reject=Odrzuć (z komunikatem o błędzie..)
 header_warn=Ostrzeżenie dziennika (z komunikatem..)
 header_ename=Nieprawidłowe wyrażenie regularne - musi być jak / coś /
 header_return=kontrole nagłówków
+
 body_title=Kontrole ciała
 body_ecannot=Nie możesz edytować kontroli ciała
 body_eregexp=Mapa kontroli treści musi mieć format <tt>regexp:</tt> <i>nazwa_pliku</i>
 opts_body_checks=Tabele sprawdzające treść wiadomości
 body_return=kontrole ciała
+
 dependent_title=Mapowanie transportu zależne od nadawcy
 dependent_ecannot=Nie możesz edytować map transportowych zależnych od nadawcy
 dependent_eregexp=Mapa transportów zależna od nadawcy musi mieć format <tt>regexp:</tt> <i>nazwa_pliku</i>
 dependent_return=mapowania transportu zależne od nadawcy
+
 manual_title=Edytuj plik mapy
 manual_file=Wybierz plik mapy do edycji:
 manual_change=Zmiana
@@ -280,7 +327,9 @@ manual_editing=Użyj pola tekstowego poniżej, aby ręcznie edytować mapowania 
 manual_err=Nie udało się zapisać pliku mapy
 manual_efile=Nieprawidłowa nazwa pliku mapy!
 manual_ecannot=Nie możesz ręcznie edytować plików map
+
 delq_rusure=Czy na pewno chcesz usunąć wybrane w kolejce wiadomości $1?
+
 master_enabled=Włączony?
 master_type=Rodzaj transportu
 master_unpriv=Nieuprzywilejowany?
@@ -312,17 +361,22 @@ master_einet=Adres hosta, na którym należy nasłuchiwać, można określić ty
 master_ecommand=Brak polecenia procesu serwera
 master_ewakeup=Brakujący lub nieprawidłowy czas budzenia
 master_emaxprocs=Brakująca lub nieprawidłowa maksymalna liczba procesów
+
 delete_err=Nie udało się usunąć mapowań
+
 cmanual_efile=Wybrany plik nie jest częścią konfiguracji Postfix
 cmanual_err=Nie udało się zapisać pliku konfiguracyjnego
+
 access_return=tabela map dostępu
 opts_reject_rbl_client=Wyszukiwanie czarnych list w czasie rzeczywistym (RBL)
 opts_check_sender_access=Sprawdź tabelę map dostępu do nadawcy
+
 log_misc=Zmieniono opcje ogólne
 log_opts=Zmieniono przepisywanie i maskowanie adresów
 log_canonical=Zmiana kanonicznych opcji mapowania
 log_virtual=Zmieniono opcje domeny wirtualnej
 log_transport=Zmieniono opcje mapowania transportu
+log_sni=Zmień opcje mapowania certyfikatów
 log_dependent=Zmieniono opcje adresu zależne od nadawcy
 log_relocated=Zmieniono opcje mapowania lokalizacji
 log_header=Zmieniono opcje sprawdzania nagłówka
@@ -395,6 +449,7 @@ log_sender_dependent_default_transport_maps_modify=Zmodyfikowany adres zależny 
 log_sender_dependent_default_transport_maps_delete=Usunięto adres zależny od nadawcy $1
 log_delete_sender_dependent_default_transport_mapss=Usunięte $1 adresy zależne od nadawcy
 log_manual_sender_dependent_default_transport_mapss=Ręcznie edytowane adresy zależne od nadawcy w $1
+
 sasl_title=Uwierzytelnianie i szyfrowanie SMTP
 opts_smtp_sasl_auth_enable=Używać uwierzytelnienia SASL SMTP?
 opts_smtpd_tls_auth_only=Zezwolić na uwierzytelnianie SASL przez niebezpieczne połączenia?
@@ -437,10 +492,12 @@ sasl_nologin=Nie potrzebne
 sasl_userpass=Zaloguj się jako $1 za pomocą hasła $2
 sasl_elogin=Brakujące lub nieprawidłowe logowanie SMTP (bez spacji i dwukropków)
 sasl_epass=Nieprawidłowe hasło SMTP (bez spacji)
+
 client_ecannot=Nie możesz edytować ograniczeń klienta SMTP
 client_other=Inne ograniczenia :
 client_err=Nie udało się zapisać ograniczeń klienta
 client_evalue=Brak wartości ograniczenia $1
+
 chooser_title=Wybierz źródło mapy
 chooser_header=Źródło mapy $1
 chooser_none=Żaden
@@ -496,6 +553,7 @@ chooser_elquery_filter=Brak filtru zapytań dla mapy $1
 chooser_elresult_attribute=Brak lub niepoprawna nazwa atrybutu wyniku dla mapy $1
 chooser_elbind_dn=Brak logowania do serwera LDAP dla mapy $1
 chooser_elbind_pw=Brakuje hasła do serwera LDAP dla mapy $1
+
 mysql_ecfile=Plik konfiguracyjny MySQL $1 nie został znaleziony
 mysql_ecfile2=Nie można znaleźć tabeli w pliku konfiguracyjnym MySQL $1
 mysql_edriver=Nie udało się załadować sterownika bazy danych $1
@@ -507,6 +565,7 @@ mysql_eupdate=Aktualizacja SQL nie powiodła się : $1
 mysql_elist=Zapytanie SQL nie powiodło się : $1
 mysql_esource=Nie znaleziono źródła MySQL o nazwie $1
 mysql_eneed=Nie znaleziono parametru konfiguracyjnego MySQL $1. Webmin potrzebuje tego, aby dowiedzieć się, do której tabeli i pól należy wysłać zapytanie.
+
 ldap_ecfile=Plik konfiguracyjny LDAP $1 nie został znaleziony
 ldap_eldapmod=Moduł Perla $1 potrzebny do komunikacji z LDAP nie jest zainstalowany lub nie można go załadować
 ldap_eldap=Nie można połączyć się z serwerem LDAP $1 na porcie $2
@@ -517,6 +576,7 @@ ldap_edelete=Usunięcie LDAP $1 nie powiodło się : $2
 ldap_equery=Wyszukiwanie LDAP $1 nie powiodło się : $2
 ldap_erename=Zmiana nazwy LDAP na $1 na $2 nie powiodła się : $3
 ldap_emodify=Modyfikacja LDAP $1 nie powiodła się : $2
+
 opts_sender_bcc_maps=Tablice wyszukiwania odwzorowań BCC nadawcy
 opts_recipient_bcc_maps=Odbiorcze tabele wyszukiwania odwzorowań BCC
 bcc_sender=Odwzorowania nadawców

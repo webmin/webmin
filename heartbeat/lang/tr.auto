@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Diğer düğümden ($1) kaynak talep eden komut dosyası
 index_version=Kalp atışı sürümü $1 
 index_noversion=Uyarı - Sisteminizde kurulu olan Kalp Atışı sürümü otomatik olarak algılanamadı. <a href='$1'>modül yapılandırması</a> sayfasında ayarlamanız gerekir.
 index_status=Kalp atışı durumu
+
 conf_title=Konfigürasyon Seçenekleri
 conf_header=Kalp atışı yapılandırma seçenekleri
 conf_serials=Seri kalp atışı bağlantı noktaları
@@ -54,6 +55,7 @@ conf_auto_on=$ {Conf_enabled}
 conf_auto_off=$ {Conf_disabled}
 conf_auto_legacy=Eski mod
 conf_auto_=$ {Varsayılan}
+
 res_title=Küme Kaynakları
 res_node=Birincil Düğüm
 res_ips=IP Adresleri
@@ -67,6 +69,7 @@ res_getserv=Kaynak Alın
 res_hbdown=Kalp atışı
 res_up=YUKARI
 res_down=AŞAĞI
+
 node_create=Küme Kaynağı Ekle
 node_edit=Küme Kaynağını Düzenle
 node_header=Küme kaynağı ayrıntıları
@@ -83,6 +86,7 @@ node_enone=Eksik veya geçersiz birincil düğüm
 node_eip='$1' geçerli bir IP adresi değil
 node_ecidr='$1' geçerli bir CIDR değil
 node_ebroad='$1' geçerli bir yayın adresi değil
+
 auth_title=Kimlik Doğrulama Anahtarları
 auth_header=Küme düğümü kimlik doğrulaması
 auth_mode=Kimlik Doğrulama Modu
@@ -92,6 +96,8 @@ auth_md5=Şifreli MD5
 auth_err=Kimlik doğrulama anahtarları kaydedilemedi
 auth_emd5=Eksik veya geçersiz MD5 şifresi
 auth_esha1=Eksik veya geçersiz SHA1 şifresi
+
 start_err=Kalp atışı başlatılamadı
+
 apply_err=Değişiklikler uygulanamadı
 apply_epid=İşlem artık çalışmıyor

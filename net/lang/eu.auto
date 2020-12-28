@@ -7,6 +7,7 @@ index_delete2=Ezabatu hautatutako interfazeak
 index_delete3=Ezabatu eta aplikatu hautatutako interfazeak
 index_apply2=Aplikatu hautatutako interfazeak
 index_vmin=Virtualmin
+
 ifcs_title=Sareko interfazeak
 ifcs_now=Orain aktiboa
 ifcs_activedesc=Taula honetan agertzen diren interfazeak sisteman daude aktibatuta. Gehienetan, <b>Aktibatuta Abiarazi</b> fitxan editatu beharko zenituzke.
@@ -55,6 +56,7 @@ ifcs_linkyes=Konektatuta
 ifcs_linkno=Dis konektatutako
 ifcs_speed=Interfazearen abiadura
 ifcs_duplex=, $1 duplex
+
 aifc_create=Sortu interfaze aktiboa
 aifc_edit=Editatu interfaze aktiboa
 aifc_desc1=Interfaze aktiboaren parametroak
@@ -79,6 +81,7 @@ aifc_eaddress6=$1 errenkadan IPv6 helbidea ez da baliozkoa
 aifc_enetmask6=$1 errenkadako IPv6 sareko sareak 1 eta 128 arteko zenbaki osoak izan behar ditu
 aifc_eclash6=$1 errenkadan IPv6 helbidea dagoeneko erabilita dago $2 interfazean
 aifc_eaddresses6=Ez da IPv6 helbiderik sartu
+
 bifc_create=Sortu Bootup interfazea
 bifc_act=Aktibatu abian?
 bifc_edit=Editatu abioko interfazea
@@ -110,6 +113,7 @@ bifc_bridgestp=Spanning Tree Protokoloa
 bifc_bridgefd=Aurrera atzerapena
 bifc_bridgewait=Atzerapena eskuragarri izateko
 bifc_ebond=Bonuen interfazeak zenbaki bat izan behar du
+
 bonding_add=Gehitu lotura-interfaze berria.
 bonding_create=Sortu lotura-interfaze bat
 bonding_teamparts=Taldekideak
@@ -121,11 +125,14 @@ bonding_miimon=Mii-Monitoring Tartea
 bonding_miimondesc=(Utzi hutsik esteken jarraipena desgaitzeko)
 bonding_updelay=Updelay
 bonding_downdelay=Downdelay
+
 vlan_add=Gehitu Vlan Tagged Interface
 vlan_physical=Gailu fisikoa
 vlan_id=Vlan IDa
 vlan_create=Sortu VLAN interfazea
+
 bridge_create=Sortu Bridge interfazea
+
 routes_title=Bideratze eta atebide
 routes_boot=Bideo konfigurazioa <i>abiarazi den momentuan</i> aktibatuta dago
 routes_now=Bideratze konfigurazioa orain aktibatuta dago
@@ -194,6 +201,7 @@ routes_tabboot=Abiarazi denboraren konfigurazioa
 routes_tabactive=Konfigurazio aktiboa
 routes_descactive=Atal honetan sistemak konfiguratutako ibilbideak zerrendatzen ditu eta zenbait sistemetan ibilbide aktiboak gehitu edo kentzeko aukera ematen du. Kontuz ibili hau egitean, aldaketa okerrek sareko gainerako Webminak exekutatzen dituen sistema moztu baitezakete.
 routes_descboot=Atal honek sistema abiarazten denean edo sareko ezarpenak guztiz aplikatzen direnean aktibatzen diren ibilbideak konfiguratu ahal izango dituzu.
+
 dns_title=Ostalariaren izena eta DNS bezeroa
 dns_options=DNS bezeroaren aukerak
 dns_hostname=hostname
@@ -211,6 +219,7 @@ dns_edomain='$1' ez da baliozko domeinu izena
 dns_esearch=Ez dago domeinurik bilatzeko bilaketarik
 dns_hoststoo=Eguneratu ostalariaren izena ostalariaren helbideetan aldatzen bada?
 dns_dhcp=Ostalariaren izena DHCP zerbitzariak ezarrita dago?
+
 hosts_title=Ostalariaren helbideak
 hosts_active=Gaituta?
 hosts_ip=IP helbidea
@@ -222,6 +231,7 @@ hosts_detail=Ostalaria eta helbideak
 hosts_return=ostalariaren helbideen zerrenda
 hosts_ecannot=Ezin duzu ostalariaren helbideak editatu
 hosts_delete=Ezabatu hautatutako ostalariaren helbideak
+
 ipnodes_title=IPv6 ostalariaren helbideak
 ipnodes_ip=IPv6 helbidea
 ipnodes_host=ostalariak
@@ -233,6 +243,7 @@ ipnodes_return=IPv6 ostalariaren helbideen zerrenda
 ipnodes_ecannot=Ezin duzu IPv6 ostalariaren helbideak editatu
 ipnodes_none=Oraindik ez da IPv6 ostalariaren helbiderik zehaztu.
 ipnodes_delete=Ezabatu hautatutako IPv6 ostalariaren helbideak
+
 log_create_host=$1 ostalariaren helbidea sortu da
 log_delete_host=$1 ostalariaren helbidea ezabatu da
 log_modify_host=$1 ostalariaren helbidea aldatua
@@ -256,6 +267,7 @@ log_apply_bfics=$1 abiarazteko denbora-interfazeak aktibatu dira
 log_create_route=Bide aktiboa sortu da $1 erako
 log_create_defroute=Bide lehenetsi aktiboa sortu da
 log_delete_routes=$1 ibilbide aktibo ezabatu dira
+
 acl_ifcs=Sareko interfazeak editatu al ditzake?
 acl_routes=Editatu al ditzakezu bideratzeak eta atebideak?
 acl_dns=DNS bezeroaren ezarpenak editatu al ditzake?
@@ -273,6 +285,7 @@ acl_virt=Interfaze birtualak gehi ditzakezu?
 acl_delete=Interfazeak ezaba al ditzake?
 acl_hide=Editatu gabeko interfazeak ezkutatu?
 acl_sysinfo=Erakutsi sareko interfaze erabilgarriak Arbelean
+
 interfaces_title1=Aukeratu interfazeak. ..
 interfaces_all=Interfaze guztiak. ..
 interfaces_sel=Aukeratutako interfazeak
@@ -280,7 +293,9 @@ interfaces_ok=Ados
 interfaces_cancel=Utzi
 interfaces_clear=Garbitu
 interfaces_title2=Hautatu Erabiltzailea. ..
+
 apply_ecannot=Ezin duzu konfigurazioa aplikatu
+
 mod_egone=Interfazea ez dago aktibo!
 mod_title=Interfaze aktiboa
 mod_desc=$1 interfazea $2 erabiltzen ari da eta, beraz, ezin da modulu hau erabiliz kudeatu.
@@ -292,6 +307,7 @@ mod_pptpc=$1 PPTP konexioa
 mod_zones=interfazea, <tt>$1</tt> gunerako
 mod_virtualmin=Virtualmin zerbitzaria <tt>$1</tt>
 mod_reseller=Virtualmin saltzailea <tt>$1</tt>
+
 range_edit=Editatu helbide-barrutia
 range_create=Sortu helbide-tartea
 range_header=Helbide-barrutiaren interfazearen aukerak
@@ -307,13 +323,17 @@ range_eend=Falta den IP helbidea amaitzen da edo baliogabea
 range_enum=Falta den edo zenbakizko lehen interfaze birtual zenbakia
 range_eclass=Hasierako eta amaitzeko helbideak C klaseko sare berekoak izan behar dute
 range_ebefore=Amaierako helbidea hasierako helbidea baino handiagoa izan behar da
+
 chooser_any=&lt;Any&gt;
 chooser_other=Beste ..
+
 dafics_err=Huts egin du interfazeak desaktibatzeko
 daifcs_enone=Ez da hautatu
 daifcs_egone=Interfazea jada ez dago!
+
 dbifcs_err=Ezin izan da interfazeak ezabatu
 dbifcs_err2=Huts egin du interfazeak aktibatzeko
+
 hdelete_err=Ezin izan da ostalariaren helbideak ezabatu
 hdelete_enone=Ez da hautatu
 idelete_err=Ezin izan da IPv6 ostalariaren helbideak ezabatu

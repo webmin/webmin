@@ -39,7 +39,9 @@ index_thost=主機名
 index_tdesc=描述
 index_tver=版
 index_ttype=操作系統類型
+
 this_server=這個服務器
+
 add_title=添加服務器
 add_msg=正在添加 $1 ..
 add_gmsg=將服務器添加到組 $1 ..
@@ -49,6 +51,7 @@ add_echeck=服務器 $1沒有Webmin配置模塊
 add_echeck2=服務器 $1沒有Webmin用戶模塊
 add_eversion=服務器 $1未運行Webmin版本 $2或更高版本。
 add_ok=為 $1添加了 $2模塊， $3主題， $4用戶和 $5組。
+
 refresh_title=刷新模塊和用戶列表
 refresh_header=從所有服務器重新請求模塊，用戶和組列表。
 refresh_header4=從 $2的成員重新請求模塊，用戶和組列表。
@@ -64,6 +67,7 @@ refresh_g2=已刪除 $1組。
 refresh_done=..完成
 refresh_del=已從服務器列表中刪除 $1
 refresh_failed=無法刷新 $1 : $2
+
 host_title=受管服務器
 host_header=託管的Webmin服務器詳細信息
 host_name=主機名
@@ -81,6 +85,7 @@ host_header_u=Webmin用戶
 host_header_g=Webmin組
 host_return=服務器詳細信息
 host_version2=版
+
 edit_title_mod=編輯模塊
 edit_title_theme=編輯主題
 edit_header_mod=$1中的Webmin模塊詳細信息
@@ -104,6 +109,7 @@ edit_acl=編輯的ACL
 edit_uacl=$2上的用戶 $1
 edit_gacl=在 $2上將 $1組
 edit_config=在上編輯配置
+
 install_err=無法安裝模塊
 install_title=安裝模塊
 install_elocal=沒有提供本地文件
@@ -124,6 +130,7 @@ do_failed=無法在 $1上安裝： $2
 do_success_mod=已在 $1上安裝模塊 $2
 do_success_theme=已在 $1上安裝主題 $2
 do_done=..完成
+
 delete_err=刪除模塊 $1失敗
 delete_epack=模塊 $1不存在
 delete_title=刪除模塊
@@ -141,6 +148,7 @@ delete_edepends=模塊 $1依賴於此。
 delete_egone=模塊不再存在
 delete_esuccess=已成功從 $1刪除： $2
 delete_acls=從用戶中刪除並重置訪問控制設置？
+
 user_title1=創建Webmin用戶
 user_header1=新的Webmin用戶詳細信息
 user_name=用戶名
@@ -200,11 +208,13 @@ user_all=&lt;所有主機&gt;
 user_donthave=&lt;沒有主機的主機&gt;
 user_have=&lt;擁有它的主機&gt;
 user_ofgroup=$1的成員
+
 udelete_title=刪除用戶
 udelete_doing=從所有主機中刪除用戶 $1。
 udelete_success=已成功從 $1刪除
 udelete_failed=無法從 $1刪除： $2
 udelete_done=..完成
+
 group_title1=創建組
 group_header1=新的Webmin組詳細信息
 group_name=組的名字
@@ -232,6 +242,7 @@ group_failed2=無法更新 $1上的組： $2
 group_return=組詳細信息
 group_nomems=沒有成員
 group_servers=要在其上創建的服務器
+
 gdelete_title=刪除群組
 gdelete_desc=您確定要從所有主機中刪除組 $1及其成員用戶 $2嗎？
 gdelete_ok=刪除群組
@@ -240,6 +251,7 @@ gdelete_success=已成功從 $1刪除
 gdelete_failed=無法從 $1刪除： $2
 gdelete_done=..完成
 gdelete_esub=該組具有子組 $1，因此無法刪除。
+
 acl_title=模塊訪問控制
 acl_title2=對於 $3上 $2中的用戶 $1
 acl_title3=對於 $3上的 $2中的組 $1
@@ -258,6 +270,7 @@ acl_doing2=為 $2上的 $1設置訪問控制。
 acl_success=在 $1上成功設置訪問控制
 acl_failed=無法在 $1上設置訪問控制： $2
 acl_done=..完成
+
 sync_title=同步服務器
 sync_desc=此表單允許您在當前沒有Webmin用戶和組的服務器上創建Webmin用戶和組，以使帳戶在群集中的所有服務器之間同步。
 sync_hosts=要同步的服務器
@@ -281,6 +294,7 @@ sync_gcreate=正在添加Webmin組 $1 ..
 sync_acl=正在復制 $1的ACL文件。
 sync_test=只顯示會做什麼？
 sync_restart=重新啟動Webmin ..
+
 upgrade_title=升級Webmin
 upgrade_header=在所有主機上升級Webmin ..
 upgrade_header2=在 $1..上升級Webmin
@@ -299,6 +313,7 @@ upgrade_failed=無法在 $1上安裝： $2
 upgrade_done=..完成
 upgrade_efast=只有使用快速RPC模式的服務器才能升級
 upgrade_ereconn=升級後無法重新連接到Webmin！ ： $1
+
 update_title=更新模塊
 update_header=更新模塊所有主機 ..
 update_header5=正在 $2..上更新模塊
@@ -306,6 +321,7 @@ update_header4=正在 $2..的成員上更新模塊
 update_onhost=$1..的更新結果
 update_failed=..更新失敗： $1
 update_none=..找不到更新。
+
 config_title=編輯模塊配置
 config_enone=未選擇安裝了模塊的主機
 config_ethis=該服務器上未安裝模塊

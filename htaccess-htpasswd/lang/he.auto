@@ -16,6 +16,7 @@ index_digest2=קידוד עיכול מופעל בתצורת המודול, אך �
 index_cpan=<a href='$1'>לחץ כאן</a> כדי להוריד ולהתקין אותה כעת.
 index_delete=בטל את ההגנה על ספריות שנבחרו
 index_remove=בטל את ההגנה והסר קבצים
+
 dir_title1=הוסף מדריך מוגן
 dir_title2=ערוך את המדריך המוגן
 dir_header=אפשרויות ספריות מוגנות
@@ -60,6 +61,7 @@ dir_delete3=בטל את ההגנה והסר את הקובץ
 dir_apache=ערוך אפשרויות Apache
 dir_efiledir='$1' הוא ספרייה, ולכן לא ניתן להשתמש בו כקובץ משתמשים
 dir_egfiledir='$1' הוא ספרייה, ולכן לא ניתן להשתמש בו כקובץ קבוצות
+
 edit_title1=צור משתמש
 edit_title2=ערוך משתמש
 edit_header=פרטי משתמש באימות אינטרנט
@@ -71,11 +73,13 @@ edit_pass0=מכוון ל
 edit_passfrom=שנה מ-
 edit_passto=לסיסמא חדשה
 edit_dom=תחום עיכול
+
 gedit_title1=צור קבוצה
 gedit_title2=ערוך קבוצה
 gedit_header=פרטי קבוצת אימות אינטרנט
 gedit_group=שם קבוצה
 gedit_members=חברי הקבוצה
+
 save_err=שמירת המשתמש נכשלה
 save_euser1=שם משתמש חסר
 save_euser2=שם משתמש אינו יכול להכיל את התו:
@@ -84,16 +88,19 @@ save_eclash=משתמש עם אותו שם כבר קיים
 save_eoldpass=הסיסמה הישנה אינה נכונה
 save_title=המשתמש נשמר
 save_edom=תחום עיכול חסר או לא תקף
+
 gsave_err=שמירת הקבוצה נכשלה
 gsave_egroup1=שם הקבוצה חסר
 gsave_egroup2=שם הקבוצה אינו יכול להכיל את התו או הרווחים
 gsave_eclash=קבוצה עם אותו שם כבר קיימת
+
 acl_dirs=ספריות מותרות
 acl_user=צור קבצי.htaccess ו- htusers כמשתמש יוניקס
 acl_same=זהה להתחברות Webmin
 acl_home=לכלול את ספריית הבית של המשתמש של יוניקס?
 acl_sync=האם ניתן להגדיר את סנכרון המשתמש של יוניקס?
 acl_uonly=האם ניתן להוסיף ולשנות ספריות מוגנות?
+
 log_create_dir=התווסף מדריך $1 
 log_modify_dir=ספרייה שונה 1
 log_delete_dir=המדריך $1 נמחק
@@ -104,6 +111,7 @@ log_create_group=נוצר קבוצה $1
 log_modify_group=קבוצה שונה $1 
 log_delete_group=הקבוצה נמחקה 1
 log_delete_dirs=ספריות $1 נמחקו
+
 search_title=תוצאות חיפוש
 search_err=החיפוש נכשל
 search_edir=ספריה מוחלטת חסרה או לא חוקית לחיפוש

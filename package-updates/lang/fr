@@ -44,6 +44,7 @@ index_count=$1 paquet(s) correspondant(s) trouvé ..
 index_search=Paquets correspondants trouvés :
 index_searchok=Rechercher
 index_clear=Afficher tout
+
 update_title=Mise à jour de paquets
 update_pkg=Mise à jour $1 ...
 update_pkg2=Installation $1 ..
@@ -79,18 +80,22 @@ update_none=Aucun
 update_ops=Construction de la liste complète des mises à jour ...
 update_rebootdesc=Une des mises à jour requiert un redémarrage pour être appliquée.
 update_reboot=Redémarrer maintenant
+
 sched_title=Planification des mises à jour
 sched_yes=La planification des mises ) jour est active.
 sched_no=La planification des mises à jour n'est pas active.
+
 log_update=$1 mise(s) à jour installée(s)
 log_sched=Activation de la planification des mises à jour
 log_unsched=Désactivation de la planification des mises à jour
 log_refresh=Rafraichissement des paquets disponibles
+
 refresh_title=Rafraichissement des paquets
 refresh_clearing=Nettoyage du cache des paquets...
 refresh_done=.. fait
 refresh_available=Re-tester si des paquets sont disponibles...
 refresh_done3=.. $1 mise(s) à jour possible(s)
+
 view_title=Détails du paquets
 view_header=Information sur la mise à jour du paquet
 view_name=Nom du paquet
@@ -104,6 +109,7 @@ view_changelog=Changelog pour la version disponible
 view_software=Gestion des paquets
 view_update=Mise à jour des paquets
 view_install=Installation des paquets
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)

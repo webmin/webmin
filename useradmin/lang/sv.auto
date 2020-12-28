@@ -30,8 +30,10 @@ index_mass=Radera valda användare
 index_mass2=Inaktivera vald
 index_mass3=Aktivera vald
 index_gmass=Radera valda grupper
+
 search_found=Hittade $1 matchande användare ..
 search_gfound=Hittade $1 matchande grupper ..
+
 gid=Grupp
 gidnum=Grupp-ID
 office=Kontor
@@ -59,6 +61,7 @@ uedit_uid_calc=Beräknad
 uedit_disabled=Inloggning tillfälligt inaktiverad
 uedit_sys=Systemfel
 uedit_clone=Klonanvändare
+
 usave_elength=Användarnamnet kan inte vara längre än $1 bokstäver
 usave_ere=Användarnamn matchar inte regexp $1
 usave_euuid=Du får inte ändra användarnas UID
@@ -80,6 +83,7 @@ usave_epasswd_same=Lösenordet innehåller eller är samma som användarnamn
 usave_epasswd_mindays=Lösenordet ändrades mindre än $1 dagar sedan
 usave_epasswd_cmd=Lösenordvalideringskommando misslyckades
 usave_eothers=Användaren sparades framgångsrikt, men ett fel inträffade i en annan modul : $1
+
 gedit_desc=Beskrivning
 gedit_oneperline=(En per rad)
 gedit_egone=Den valda gruppen finns inte längre!
@@ -92,21 +96,25 @@ gedit_selu=Användare i grupp
 gedit_pri=Primära gruppmedlemmar
 gedit_prinone=Inga användare har denna grupp som sin primära
 gedit_clone=Clone Group
+
 gsave_elength=Gruppnamnet kan inte vara längre än $1 bokstäver
 gsave_eggid=Du får inte ändra gruppernas GID
 gsave_eallgid=Alla tillåtna GID har tilldelats
 gsave_eothers=Gruppen sparades framgångsrikt, men ett fel inträffade i en annan modul : $1
 gsave_egidused2=GID används redan
+
 udel_enum=Ogiltigt användarnummer
 udel_eroot=Du får inte ta bort systemanvändare (de med en UID som är mindre än eller lika med 10).
 udel_ugroupother=Ta bort den här användargruppen i andra moduler ..
 udel_failed=.. misslyckades!  : $1
 udel_dothers=Radera användare i andra moduler?
 udel_root=Varning! Om rotanvändaren raderas kanske du inte kan administrera ditt system i framtiden.
+
 gdel_eroot=Du får inte ta bort systemgrupper (de med ett GID mindre än eller lika med 10).
 gdel_enum=Ogiltigt gruppnummer
 gdel_dothers=Radera grupp i andra moduler?
 gdel_other=Ta bort från andra moduler ..
+
 acl_uedit_gid=Användare med GID inom räckvidd
 acl_uedit_sec=Inkludera sekundära grupper?
 acl_uedit_this=Endast den här användaren
@@ -134,6 +142,7 @@ acl_udelete=Kan radera användare?
 acl_gdelete=Kan radera grupper?
 acl_urename=Kan byta namn på användare?
 acl_grename=Kan döpa namn på grupper?
+
 log_batch=Körd batchfil $1
 log_batch_l=Exekverad batchfil $1 ($2 skapad, $3 modifierad, $4 borttagna)
 log_ubatch=Exekverad laddad batchfil
@@ -144,6 +153,7 @@ log_ugbatch=Exekverad uppladdad gruppbatchfil
 log_ugbatch_l=Exekverad uppladdad gruppbatchfil ($1 skapad, $2 modifierad, $3 raderad)
 log_delete_users=Raderade $1 användare
 log_delete_groups=Raderade $1 -grupper
+
 batch_ecannot=Du kan inte använda batchfilformuläret
 batch_desc6=<b>create</b>:username:passwd:uid:gid:realname:homedir:shell:class:change:expire<p><b>modify</b>:oldusername:username:passwd:uid:gid:realname:homedir:shell:class:change:expire<p><b>delete</b>:username
 batch_desc5=<b>create</b>:username:passwd:uid:gid:realname:homedir:shell:min:max<p><b>modify</b>:oldusername:username:passwd:uid:gid:realname:homedir:shell:min:max<p><b>delete</b>:username
@@ -172,12 +182,14 @@ batch_eexpire=Ogiltig utgångsdag på rad $1 : $2
 batch_echange=Ogiltigt lösenordsändringsdag på rad $1 : $2 
 batch_instr=Instruktioner och batchformat
 batch_header=Batchalternativ för att skapa, uppdatera och radera
+
 who_title=Inloggade användare
 who_user=Unix-användare
 who_tty=TTY
 who_when=Loggad in kl
 who_from=Loggad in från
 who_none=Inga användare är för närvarande inloggade.
+
 export_title=Exportera batchfil
 export_desc=Detta formulär låter dig skapa en batchfil som innehåller några eller alla tillgängliga användare på systemet. Filen kan användas på sidan Exekvera batchfil i ett annat system för att återskapa de exporterade användarna under förutsättning att den använder det valda batchfilformatet.
 export_header=Batchexportalternativ för användare
@@ -198,6 +210,7 @@ export_done=Exporterad $1 användare till filen $2 ($3).
 export_pft=Batchfilformat
 export_who=Användare att exportera
 export_ecannot=Du får inte exportera användare
+
 gexport_title=Exportera gruppbatchfil
 gexport_desc=Detta formulär låter dig skapa en batchfil som innehåller några eller alla tillgängliga grupper på systemet. Filen kan användas på sidan Kör gruppbatchfil i ett annat system för att skapa de exporterade grupperna igen.
 gexport_header=Alternativ för gruppgruppsexport
@@ -206,6 +219,7 @@ gexport_ecannot=Du får inte exportera grupper
 gexport_err=Det gick inte att exportera gruppbatchfilen
 gexport_egid=Ogiltig första GID inom räckvidd
 gexport_egid2=Ogiltig andra GID inom räckvidd
+
 pft_0=Endast klassisk <tt>passwd</tt> -fil
 pft_1=BSD <tt>master.passwd</tt> -fil
 pft_2=Standard <tt>passwd</tt> och <tt>skugga</tt> filer
@@ -213,6 +227,7 @@ pft_3=Unixware <tt>passwd</tt> -fil
 pft_4=AIX <tt>passwd</tt> och <tt>säkerhets</tt> filer
 pft_5=OpenServer <tt>passwd</tt> och korta <tt>skugga</tt> filer
 pft_6=MacOS NetInfo-databas
+
 umass_title=Radera användare
 umass_err=Det gick inte att ta bort användare
 umass_sure=Är du säker på att du vill ta bort de $1 valda användarna? Deras hemkataloger innehåller $2 filer.
@@ -224,6 +239,7 @@ umass_del1=Radera användare
 umass_del2=Radera användare och hemkataloger
 umass_eroot=Du får inte ta bort systemanvändare (de med en UID som är mindre än eller lika med 10).
 umass_doing=Ta bort användare $1 ..
+
 gmass_title=Radera grupper
 gmass_err=Det gick inte att ta bort grupper
 gmass_sure=Är du säker på att du vill ta bort de $1 markerade grupperna?
@@ -233,16 +249,19 @@ gmass_del=Radera grupper
 gmass_eroot=Du får inte ta bort systemgrupper (de med ett GID mindre än eller lika med 10).
 gmass_doing=Ta bort grupp $1 ..
 gmass_eprimary=Gruppen $1 kan inte raderas, eftersom det är den primära gruppen för användare $2.
+
 dmass_title=Inaktivera användare
 dmass_sure=Är du säker på att du vill inaktivera $1 valda användare? De kan aktiveras senare utan att deras lösenord eller data går förlorade.
 dmass_dis=Inaktivera användare
 dmass_pass=Låser lösenord tillfälligt ..
 dmass_doing=Inaktiverar användare $1 ..
 dmass_already=.. redan inaktiverad!
+
 emass_title=Aktivera användare
 emass_pass=Låser upp lösenord ..
 emass_doing=Aktiverar användare $1 ..
 emass_already=.. redan aktiverat!
+
 gbatch_title=Kör gruppbatchfil
 gbatch_ecannot=Du kan inte använda gruppsatsformuläret
 gbatch_desc=Detta formulär låter dig skapa, ändra eller radera många grupper samtidigt från en uppladdad eller lokal textfil. Varje rad i filen anger en åtgärd som ska vidtas, beroende på det första fältet. Linjeformaten är :

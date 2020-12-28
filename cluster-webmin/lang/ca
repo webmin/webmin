@@ -39,7 +39,9 @@ index_thost=Nom de host
 index_tdesc=Descripció
 index_tver=Versió
 index_ttype=Tipus de SO
+
 this_server=aquest servidor
+
 add_title=Addició de Servidors
 add_msg=S'està afegint $1...
 add_gmsg=S'estan afegint servidors al grup $1 ..
@@ -49,6 +51,7 @@ add_echeck=El servidor $1 no té el mòdul de configuració de Webmin
 add_echeck2=El servidor $1 no té el mòdul d'Usuaris de Webmin
 add_eversion=El servidor $1 no està executant Webmin versió $2.
 add_ok=S'ha afegit $1 amb $2 mòduls, $3 temes, $4 usuaris i $5 grups.
+
 refresh_title=Refresc de Mòdul i Llistes d'Usuaris
 refresh_header=S'estan tornant a demanar les llistes de mòduls, usuaris i grups de tots els servidors...
 refresh_header4=S'estan tornant a demanar les llistes de mòduls, usuaris i grups dels membres de $2...
@@ -64,6 +67,7 @@ refresh_g2=S'han eliminat $1 grups.
 refresh_done=...fet
 refresh_del=S'ha eliminat $1 de la llista de servidors
 refresh_failed=No s'ha pogut refrescar $1: $2
+
 host_title=Servidor Gestionat
 host_header=Detalls del servidor Webmin gestionat
 host_name=Nom del host
@@ -81,6 +85,7 @@ host_header_u=Usuaris Webmin
 host_header_g=Grups Webmin
 host_return=als detalls del servidor
 host_version2=Versió
+
 edit_title_mod=Edició de Mòdul
 edit_title_theme=Edició de Tema
 edit_header_mod=Detalls del mòdul Webmin de: $1
@@ -104,6 +109,7 @@ edit_acl=Edita
 edit_uacl=ACL de l'usuari $1 de $2
 edit_gacl=ACL del grup $1 de $2
 edit_config=Edita la configuració de
+
 install_err=No s'ha pogut instal·lar el mòdul
 install_title=Instal·lació de Mòdul
 install_elocal=No has donat cap fitxer local
@@ -124,6 +130,7 @@ do_failed=No s'ha pogut instal·lar sobre $1: $2
 do_success_mod=S'ha instal·lat el mòdul $2 a $1
 do_success_theme=S'ha instal·lat el tema $2 a $1
 do_done=...fet
+
 delete_err=No s'ha pogut suprimir el mòdul $1
 delete_epack=El mòdul $1 no existeix
 delete_title=Supressió de Mòdul
@@ -141,6 +148,7 @@ delete_edepends=El(s) mòdul(s) $1 en depenen.
 delete_egone=El mòdul ja no existeix
 delete_esuccess=S'ha suprimit amb èxit de $1: $2
 delete_acls=Elimina dels usuaris i reinicia els valors de control d'accés
+
 user_title1=Creació d'Usuari Webmin
 user_header1=Detalls del nou usuari Webmin
 user_name=Usuari
@@ -200,11 +208,13 @@ user_all=&lt;tots els hosts&gt;
 user_donthave=&lt;hosts que no ho tenen&gt;
 user_have=&lt;hosts que no ho tenen&gt;
 user_ofgroup=Membres de $1
+
 udelete_title=Supressió d'usuari
 udelete_doing=S'està suprimint l'usuari $1 de tots els hosts...
 udelete_success=Esborrat de $1 amb èxit
 udelete_failed=No s'ha pogut suprimir de $1: $2
 udelete_done=...fet
+
 group_title1=Creació de Grup
 group_header1=Detalls del nou grup Webmin
 group_name=Nom del grup
@@ -232,6 +242,7 @@ group_failed2=No s'ha pogut actualitzar el grup a $1: $2
 group_return=als detalls del grup
 group_nomems=No hi ha cap membre
 group_servers=Servidor(s) per crear-hi
+
 gdelete_title=Supressió de Grup
 gdelete_desc=Segur que vols suprimir el grup $1 i els seus usuaris membres $2 de tots els hosts?
 gdelete_ok=Suprimeix el Grup
@@ -240,6 +251,7 @@ gdelete_success=S'ha suprimit amb èxit de $1
 gdelete_failed=No s'ha pogut suprimir de $1: $2
 gdelete_done=...fet
 gdelete_esub=Aquest grup té els subgrups $1, a per tant no es pot suprimir.
+
 acl_title=Control d'Accés al Mòdul
 acl_title2=De l'usuari $1 de $2 a $3
 acl_title3=Del grup $1 de $2 a $3
@@ -258,6 +270,7 @@ acl_doing2=S'està establint el control d'accés de $1 a $2 ..
 acl_success=S'ha establert amb èxit el control d'accés a $1
 acl_failed=No s'ha pogut establir el control d'accés a $1: $2
 acl_done=...fet
+
 sync_title=Sincronització de Servidors
 sync_desc=Aquest formulari permet crear usuaris i grups Webmin als servidors que actualment no els tenen, per tal de sincronitzar els comptes a través de tots els servidors del clúster.
 sync_hosts=Servidors to sincronitzar
@@ -281,6 +294,7 @@ sync_gcreate=S'està afegint el grup Webmin $1...
 sync_acl=S'estan copiant els fitxers ACL de $1...
 sync_test=Mostra només el que es faria
 sync_restart=S'està reiniciant Webmin...
+
 upgrade_title=Actualització de Webmin
 upgrade_header=S'està actualitzant Webmin a tots els hosts...
 upgrade_header2=S'està actualitzant Webmin a $1...
@@ -299,6 +313,7 @@ upgrade_failed=No s'ha pogut instal·lar a $1: $2
 upgrade_done=...fet
 upgrade_efast=Només es poden actualitzar els servidors que utilitzen el mode RPC ràpid
 upgrade_ereconn=No s'ha pogut reconnectar amb Webmin després de l'actualització!: $1
+
 update_title=Actualització de Mòduls
 update_header=S'estan actualitzant els mòduls a tots els hosts...
 update_header5=S'estan actualitzant els mòduls a $2...
@@ -306,6 +321,7 @@ update_header4=S'estan actualitzant els mòduls als membres de $2...
 update_onhost=Resultats de l'actualització a $1...
 update_failed=...l'actualització ha fallat: $1
 update_none=...no s'ha trobat cap actualització.
+
 config_title=Edició de Configuració de Mòdul
 config_enone=No has seleccionat cap host que tingui el mòdul instal·lat
 config_ethis=El mòdul no està instal·lat en aquest servidor
