@@ -10,7 +10,8 @@ local $wait = defined($_[0]->{'wait'}) ? $_[0]->{'wait'} : 5;
 local $ip = &to_ipaddress($_[0]->{'host'}) ||
 	    &to_ip6address($_[0]->{'host'});
 return { 'up' => 0 } if (!$ip);
-local $ipv6 = &to_ip6address($_[0]->{'host'}) &&
+local $ipv6 = &check_ip6address($_[0]->{'host'}) ||
+	      &to_ip6address($_[0]->{'host'}) &&
 	      !&to_ipaddress($_[0]->{'host'});
 if ($config{'pinger'} || $ipv6) {
 	# Call a ping command if configured, or if using IPv6 since the built-

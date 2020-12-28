@@ -2603,8 +2603,9 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 		if ($on_windows) {
 			# Run the CGI program, and feed it input
 			chdir($ENV{"PWD"});
-			local $qqueryargs = join(" ", map { "\"$_\"" }
-						 split(/\s+/, $queryargs));
+			local $qqueryargs = join(" ",
+				map { s/([<>|&"^])/^$1/g; "\"$_\"" }
+				    split(/\s+/, $queryargs));
 			if ($first =~ /(perl|perl.exe)$/i) {
 				# On Windows, run with Perl
 				open(CGIOUTr, "$perl_path \"$full\" $qqueryargs <$infile |");
