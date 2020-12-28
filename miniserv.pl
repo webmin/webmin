@@ -1588,7 +1588,15 @@ if ($method eq 'POST' &&
 	$clen = $header{"content-length"};
 	$clen_read = $clen > $config{'max_post'} ? $config{'max_post'} : $clen;
 	while(length($posted_data) < $clen_read) {
-		$buf = &read_data($clen_read - length($posted_data));
+		alarm(60);
+		$SIG{'ALRM'} = sub { die "timeout" };
+		eval {
+			$buf = &read_data($clen_read - length($posted_data));
+			};
+		alarm(0);
+		if ($@) {
+			&http_error(500, "Timeout reading POST request");
+			}
 		if (!length($buf)) {
 			&http_error(500, "Failed to read POST request");
 			}
