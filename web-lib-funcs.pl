@@ -195,7 +195,7 @@ if ($sorted_by && $sorted_by_sectioning_preserved) {
     my @block;
 
     # Build blocks of line's key separated with a new line break
-    @lines = ($model =~ m/(.*?)$join|(^\s*$)/gm);
+    @lines = (($model =~ m/(.*?)$join|(^\s*$)/gm), undef, undef);
     for (my $line = 0; $line < scalar(@lines) - 1; $line += 2) {
         if ($lines[$line] =~ /\S+/) {
             push(@block, $lines[$line]);
