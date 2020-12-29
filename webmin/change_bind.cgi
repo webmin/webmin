@@ -114,6 +114,14 @@ else {
 		&error($text{'bind_emaxconns_per_ip'});
 	$miniserv{'maxconns_per_ip'} = $in{'maxconns_per_ip'};
 	}
+if ($in{'maxconns_per_net_def'}) {
+	delete($miniserv{'maxconns_per_net'});
+	}
+else {
+	$in{'maxconns_per_net'} =~ /^\d+$/ && $in{'maxconns_per_net'} > 1 ||
+		&error($text{'bind_emaxconns_per_net'});
+	$miniserv{'maxconns_per_net'} = $in{'maxconns_per_net'};
+	}
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
 

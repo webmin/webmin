@@ -788,6 +788,9 @@ while(1) {
 	foreach my $ip (keys %ipconnmap) {
 		$ipconnmap{$ip} = [ grep { $childpids{$_} } @{$ipconnmap{$ip}}];
 		}
+	foreach my $net (keys %netconnmap) {
+		$netconnmap{$net} = [ grep { $childpids{$_} } @{$netconnmap{$net}}];
+		}
 
 	# run the unblocking procedure to check if enough time has passed to
 	# unblock hosts that never been blocked because of password failures
@@ -887,12 +890,23 @@ while(1) {
 				&get_address_ip($acptaddr, $ipv6fhs{$s});
 			print DEBUG "peera=$peera peerp=$peerp\n";
 
-			# check the number of connections from this IP
+			# Check the number of connections from this IP
 			$ipconnmap{$peera} ||= [ ];
 			$ipconns = $ipconnmap{$peera};
 			if ($config{'maxconns_per_ip'} >= 0 &&
 			    @$ipconns > $config{'maxconns_per_ip'}) {
-				print STDERR "Too many connections (",scalar(@$ipconns),") from $peera\n";
+				print STDERR "Too many connections (",scalar(@$ipconns),") from IP $peera\n";
+				close(SOCK);
+				next;
+				}
+
+			# Also check the number of connections from the network
+			($peernet = $peera) =~ s/\.\d+$/\.0/;
+			$netconnmap{$peernet} ||= [ ];
+			$netconns = $netconnmap{$peernet};
+			if ($config{'maxconns_per_net'} >= 0 &&
+			    @$netconns > $config{'maxconns_per_net'}) {
+				print STDERR "Too many connections (",scalar(@$netconns),") from network $peernet\n";
 				close(SOCK);
 				next;
 				}
@@ -996,6 +1010,7 @@ while(1) {
 				}
 			push(@childpids, $handpid);
 			push(@$ipconns, $handpid);
+			push(@$netconns, $handpid);
 			if ($need_pipes) {
 				close($PASSINw); close($PASSOUTr);
 				push(@passin, $PASSINr);
@@ -4681,6 +4696,7 @@ my %vital = ("port", 80,
 	  "password_change", "/password_change.cgi",
 	  "maxconns", 50,
 	  "maxconns_per_ip", 25,
+	  "maxconns_per_net", 35,
 	  "pam", "webmin",
 	  "sidname", "sid",
 	  "unauth", "^/unauthenticated/ ^/robots.txt\$ ^[A-Za-z0-9\\-/_]+\\.jar\$ ^[A-Za-z0-9\\-/_]+\\.class\$ ^[A-Za-z0-9\\-/_]+\\.gif\$ ^[A-Za-z0-9\\-/_]+\\.png\$ ^[A-Za-z0-9\\-/_]+\\.conf\$ ^[A-Za-z0-9\\-/_]+\\.ico\$ ^/robots.txt\$",

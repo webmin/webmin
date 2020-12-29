@@ -72,6 +72,9 @@ print &ui_table_row($text{'bind_maxconns'},
 print &ui_table_row($text{'bind_maxconns_per_ip'},
     &ui_opt_textbox("maxconns_per_ip", $miniserv{'maxconns_per_ip'}, 5,
 		    $text{'default'}." (25)"));
+print &ui_table_row($text{'bind_maxconns_per_net'},
+    &ui_opt_textbox("maxconns_per_net", $miniserv{'maxconns_per_net'}, 5,
+		    $text{'default'}." (35)"));
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
