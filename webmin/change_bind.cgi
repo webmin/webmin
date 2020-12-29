@@ -98,6 +98,22 @@ else {
 	$miniserv{'host'} = $in{'hostname'};
 	}
 $miniserv{'no_resolv_myname'} = $in{'no_resolv_myname'};
+if ($in{'maxconns_def'}) {
+	delete($miniserv{'maxconns'});
+	}
+else {
+	$in{'maxconns'} =~ /^\d+$/ && $in{'maxconns'} > 1 ||
+		&error($text{'bind_emaxconns'});
+	$miniserv{'maxconns'} = $in{'maxconns'};
+	}
+if ($in{'maxconns_per_ip_def'}) {
+	delete($miniserv{'maxconns_per_ip'});
+	}
+else {
+	$in{'maxconns_per_ip'} =~ /^\d+$/ && $in{'maxconns_per_ip'} > 1 ||
+		&error($text{'bind_emaxconns_per_ip'});
+	$miniserv{'maxconns_per_ip'} = $in{'maxconns_per_ip'};
+	}
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
 
