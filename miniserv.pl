@@ -782,6 +782,12 @@ while(1) {
 		@childpids = grep { $_ != $pid } @childpids;
 		} while($pid != 0 && $pid != -1);
 	@childpids = grep { kill(0, $_) } @childpids;
+	my %childpids = map { $_, 1 } @childpids;
+
+	# Clean up connection counts from IPs that are no longer in use
+	foreach my $ip (keys %ipconnmap) {
+		$ipconnmap{$ip} = [ grep { $childpids{$_} } @{$ipconnmap{$ip}}];
+		}
 
 	# run the unblocking procedure to check if enough time has passed to
 	# unblock hosts that never been blocked because of password failures
@@ -876,17 +882,27 @@ while(1) {
 			if (!$acptaddr) { next; }
 			binmode(SOCK);
 
+			# Work out IP and port of client
+			local ($peerb, $peera, $peerp) =
+				&get_address_ip($acptaddr, $ipv6fhs{$s});
+			print DEBUG "peera=$peera peerp=$peerp\n";
+
+			# check the number of connections from this IP
+			$ipconnmap{$peera} ||= [ ];
+			$ipconns = $ipconnmap{$peera};
+			if ($config{'maxconns_per_ip'} >= 0 &&
+			    @$ipconns > $config{'maxconns_per_ip'}) {
+				print STDERR "Too many connections (",scalar(@$ipconns),") from $peera\n";
+				close(SOCK);
+				next;
+				}
+
 			# create pipes
 			local ($PASSINr, $PASSINw, $PASSOUTr, $PASSOUTw);
 			if ($need_pipes) {
 				($PASSINr, $PASSINw, $PASSOUTr, $PASSOUTw) =
 					&allocate_pipes();
 				}
-
-			# Work out IP and port of client
-			local ($peerb, $peera, $peerp) =
-				&get_address_ip($acptaddr, $ipv6fhs{$s});
-			print DEBUG "peera=$peera peerp=$peerp\n";
 
 			# Work out the local IP
 			(undef, $locala) = &get_socket_ip(SOCK, $ipv6fhs{$s});
@@ -979,6 +995,7 @@ while(1) {
 				exit;
 				}
 			push(@childpids, $handpid);
+			push(@$ipconns, $handpid);
 			if ($need_pipes) {
 				close($PASSINw); close($PASSOUTr);
 				push(@passin, $PASSINr);
@@ -4663,6 +4680,7 @@ my %vital = ("port", 80,
 	  "password_form", "/password_form.cgi",
 	  "password_change", "/password_change.cgi",
 	  "maxconns", 50,
+	  "maxconns_per_ip", 25,
 	  "pam", "webmin",
 	  "sidname", "sid",
 	  "unauth", "^/unauthenticated/ ^/robots.txt\$ ^[A-Za-z0-9\\-/_]+\\.jar\$ ^[A-Za-z0-9\\-/_]+\\.class\$ ^[A-Za-z0-9\\-/_]+\\.gif\$ ^[A-Za-z0-9\\-/_]+\\.png\$ ^[A-Za-z0-9\\-/_]+\\.conf\$ ^[A-Za-z0-9\\-/_]+\\.ico\$ ^/robots.txt\$",
