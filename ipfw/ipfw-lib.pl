@@ -65,14 +65,14 @@ sub get_config
 {
 local $file = $_[0] || $ipfw_file;
 local $fmt = &get_ipfw_format();
-if ($_[0] =~ /\|$/) {
+if ($file =~ /\|$/) {
 	# When getting from command, there is never an 'add'
 	$fmt = 0;
 	}
 local @rv;
 local $cmt;
 local $lnum = -1;
-open(LIST, "<".$file);
+open(LIST, $file =~ /\|$/ ? $file : "<".$file);
 while(<LIST>) {
 	${$_[1]} .= $_ if ($_[1]);
 	$lnum++;
