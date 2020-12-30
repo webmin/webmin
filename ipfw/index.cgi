@@ -19,7 +19,7 @@ if ($?) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 	&ui_print_endpage(
 		&ui_config_link('index_elist',
-			[ "<tt>$config{'ipfw'} list</tt>",
+			[ "<tt>$config{'ipfw'} show</tt>",
 			  "<pre>$out</pre>", undef ]));
 	}
 
