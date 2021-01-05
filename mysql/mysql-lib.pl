@@ -76,9 +76,11 @@ use DBI;
 EOF
 }
 
-my ($rver, $rvariant) = &get_remote_mysql_variant();
-if ($rvariant ne 'mysql') {
-	$text = map { $text{$_} =~ s/MySQL/MariaDB/g } %text;
+# Fix text if we're running MariaDB
+if ($mysql_version =~ /mariadb/i) {
+	foreach my $t (keys %text) {
+		$text{$t} =~ s/MySQL/MariaDB/g;
+		}
 	}
 
 if (&compare_version_numbers($mysql_version, "5.5") >= 0) {
