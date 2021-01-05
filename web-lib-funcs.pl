@@ -3925,7 +3925,8 @@ if (!$main::get_system_hostname[$m]) {
 		if ($fromfile && $fromfile !~ /\./) {
 			my $lref = &read_file_lines("/etc/resolv.conf", 1);
 			foreach my $l (@$lref) {
-				if ($l =~ /^(search|domain)\s+(\S+)/) {
+				if ($l =~ /^(search|domain)\s+(\S+)/ &&
+				    $2 ne "invalid") {
 					$dname = $2;
 					last;
 					}
