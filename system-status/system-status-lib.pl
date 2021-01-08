@@ -89,7 +89,7 @@ if (defined(&proc::get_cpu_io_usage)) {
 	}
 
 # Regenerate OS cache
-if ($manual) {
+if ($manual eq 'manual') {
 	if (&foreign_available('webmin')) {
 		&foreign_require("webmin");
 		&webmin::detect_operating_system();

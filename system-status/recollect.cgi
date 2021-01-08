@@ -4,5 +4,5 @@
 use strict;
 use warnings;
 require './system-status-lib.pl';
-&scheduled_collect_system_info(1);
+&scheduled_collect_system_info('manual');
 &redirect($ENV{'HTTP_REFERER'});
