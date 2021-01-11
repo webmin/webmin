@@ -44,6 +44,7 @@ while(my $line = <EXP>) {
 			$exp{'active'} = $active;
 			$exp{'dir'} = $dir;
 			$exp{'host'} = $1;
+			$exp{'options'} = { };
 			my $ostr = $2;
 			$rest = $3;
 			while($ostr =~ /^([a-z_]+)=([0-9,\-]+)\s*,\s*(.*)$/ ||
