@@ -95,6 +95,7 @@ foreach (@lines) {
 			push(@{$section->{'members'}}, $dir);
 			$section->{'eline'} = $lnum;
 			}
+		$dir->{'value'} =~ s/\s+$//;
 
 		# Fix up references to other variables
 		my @w = split(/\s+/, $dir->{'value'});
