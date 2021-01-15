@@ -487,7 +487,7 @@ return ( { 'id' => 'tmobile',
            'domain' => 'sms.mycricket.com' },
          { 'id' => 'googlefi',
            'desc' => 'Google Fi',
-           'domain' => 'messages.fi.google.com' },
+           'domain' => 'msg.fi.google.com' },
         );
 }
 
