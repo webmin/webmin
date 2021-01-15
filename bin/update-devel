@@ -15,7 +15,7 @@ use Cwd qw(cwd);
 my %opt;
 GetOptions('help|h'      => \$opt{'help'},
            'product|p=s' => \$opt{'product'},
-           'theme|t!'   => \$opt{'theme'});
+           'theme|p:s'   => \$opt{'theme'});
 pod2usage(0) if ($opt{'help'} || !$opt{'product'});
 
 # Get current path
@@ -38,8 +38,9 @@ if ($p =~ /^webmin$|^usermin$/i) {
         $path =~ s/webmin/$p/;
     }
     my $cmd = "cd $path && ./update-from-repo.sh -force";
-    if ($opt{'theme'}) {
-        $cmd = "cd $path/authentic-theme && ./theme-update.sh -force";
+    if (defined($opt{'theme'})) {
+        my $tver = $opt{'theme'} ? " -release:$opt{'theme'}" : "";
+        $cmd = "cd $path/authentic-theme && ./theme-update.sh$tver -force";
     } 
     system($cmd);
 } else {

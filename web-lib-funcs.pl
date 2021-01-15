@@ -1614,13 +1614,27 @@ elsif ($ENV{'REQUEST_URI'} =~ /json-error=1/) {
 	}
 else {
 	&header($text{'error'}, "");
-	print "<hr>\n";
-	print "<h3 data-fatal-error-text>",($main::whatfailed ? "$main::whatfailed : " : ""),
-		     @_,"</h3>\n";
+	my $hh = $miniserv::page_capture;
+	print "<hr>\n" if ($hh);
+	 if ($hh) {
+		print "<h3 data-fatal-error-text>",($main::whatfailed ? "$main::whatfailed : " : ""),
+			     @_,"</h3>\n";
+		}
+	else {
+		print "<b data-fatal-error-text>$text{'error'}: ",($main::whatfailed ? "$main::whatfailed : " : ""),
+			     @_,"</b><br><br>\n";
+		}
 	if ($gconfig{'error_stack'}) {
 		# Show call stack
-		print "<h3>$text{'error_stack'}</h3>\n";
-		print "<table>\n";
+		print "<style>\n";
+		print "table.config-error-stack caption, table.config-error-stack > tbody > tr:first-child > td > b {color: #151515;font-weight:bold;text-align: left;}\n";
+		print "table.config-error-stack > tbody > tr:first-child > td > b {border-bottom: 1px solid #151515;}\n";
+		print "table.config-error-stack > tbody > tr:first-child > td {height: 25px;vertical-align:top;font-size: 100%;font-family: unset}\n";
+		print "table.config-error-stack {border: 1px dashed #151515}\n";
+		print "table.config-error-stack {margin-left: 12px;}\n" if ($hh);
+		print "table.config-error-stack tr td {padding: 0 10px !important; font-family: monospace; font-size: 90%;}\n";
+		print "</style>\n";
+		print "<table class=\"config-error-stack\"><caption>$text{'error_stack'}</caption>\n";
 		print "<tr> <td><b>$text{'error_file'}</b></td> ",
 		      "<td><b>$text{'error_line'}</b></td> ",
 		      "<td><b>$text{'error_sub'}</b></td> </tr>\n";
@@ -1633,7 +1647,7 @@ else {
 			}
 		print "</table>\n";
 		}
-	print "<hr>\n";
+	print "<hr>\n" if ($hh);
 	if ($ENV{'HTTP_REFERER'} && $main::completed_referers_check) {
 		&footer("javascript:history.back()", $text{'error_previous'});
 		}
