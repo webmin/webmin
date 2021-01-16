@@ -11,3 +11,4 @@ history_show=50
 history_purge=30
 sysinfo=0
 sysinfo_users=0
+pinger=linux
