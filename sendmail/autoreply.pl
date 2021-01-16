@@ -104,6 +104,7 @@ $rheader{'X-Webmin-Autoreply'} = 1;
 $rheader{'X-Originally-To'} = $header{'to'};
 chop($host = `hostname`);
 $rheader{'Message-Id'} = "<".time().".".$$."\@".$host.">";
+$rheader{'Auto-Submitted'} = 'auto-replied';
 
 # read the autoreply file (or alternate)
 if (open(AUTO, "<".$ARGV[0]) ||
