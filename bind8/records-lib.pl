@@ -327,10 +327,27 @@ return @rv;
 # Add a new record of some type to some zone file
 sub create_record
 {
-my $fn = &make_chroot(&absolute_path($_[0]));
+my ($file, @rec) = @_;
+my $fn = &make_chroot(&absolute_path($file));
 &is_raw_format_records($fn) && &error("Raw format zone files cannot be edited");
 my $lref = &read_file_lines($fn);
-push(@$lref, &make_record(@_[1..$#_]));
+push(@$lref, &make_record(@rec));
+&flush_file_lines($fn);
+}
+
+# create_multiple_records(file, &records)
+# Create records from structures 
+sub create_multiple_records
+{
+my ($file, $recs) = @_;
+my $fn = &make_chroot(&absolute_path($file));
+&is_raw_format_records($fn) && &error("Raw format zone files cannot be edited");
+my $lref = &read_file_lines($fn);
+foreach my $r (@$recs) {
+	push(@$lref, &make_record($r->{'name'}, $r->{'ttl'}, $r->{'class'},
+			          $r->{'type'}, join(" ", @{$r->{'values'}}),
+			          $r->{'comment'}));
+	}
 &flush_file_lines($fn);
 }
 
@@ -350,11 +367,27 @@ splice(@$lref, $_[1]->{'line'}, $lines, &make_record(@_[2..$#_]));
 # Deletes a record in some zone file
 sub delete_record
 {
-my $fn = &make_chroot(&absolute_path($_[0]));
+my ($file, $r) = @_;
+my $fn = &make_chroot(&absolute_path($file));
 &is_raw_format_records($fn) && &error("Raw format zone files cannot be edited");
 my $lref = &read_file_lines($fn);
-my $lines = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
-splice(@$lref, $_[1]->{'line'}, $lines);
+my $lines = $r->{'eline'} - $r->{'line'} + 1;
+splice(@$lref, $r->{'line'}, $lines);
+&flush_file_lines($fn);
+}
+
+# delete_multiple_records(file, &records)
+# Delete many records from the same file at once
+sub delete_multiple_records
+{
+my ($file, $recs) = @_;
+my $fn = &make_chroot(&absolute_path($file));
+&is_raw_format_records($fn) && &error("Raw format zone files cannot be edited");
+my $lref = &read_file_lines($fn);
+foreach my $r (sort { $b->{'line'} <=> $a->{'line'} } @$recs) {
+	my $lines = $r->{'eline'} - $r->{'line'} + 1;
+	splice(@$lref, $r->{'line'}, $lines);
+	}
 &flush_file_lines($fn);
 }
 

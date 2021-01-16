@@ -3491,25 +3491,27 @@ return $out if ($tries >= 10);
 
 # Merge records back into original file, by deleting all NSEC and RRSIG records
 # and then copying over
-for(my $i=$#recs; $i>=0; $i--) {
-	if ($recs[$i]->{'type'} eq 'NSEC' ||
-	    $recs[$i]->{'type'} eq 'NSEC3' ||
-	    $recs[$i]->{'type'} eq 'RRSIG' ||
-	    $recs[$i]->{'type'} eq 'NSEC3PARAM') {
-		&delete_record($fn, $recs[$i]);
+my @delrecs;
+foreach my $r (@recs) {
+	if ($r->{'type'} eq 'NSEC' ||
+	    $r->{'type'} eq 'NSEC3' ||
+	    $r->{'type'} eq 'RRSIG' ||
+	    $r->{'type'} eq 'NSEC3PARAM') {
+		push(@delrecs, $r);
 		}
 	}
+&delete_multiple_records($fn, \@delrecs);
 my @signedrecs = &read_zone_file($fn.".webmin-signed", $dom);
+my @addrecs;
 foreach my $r (@signedrecs) {
 	if ($r->{'type'} eq 'NSEC' ||
 	    $r->{'type'} eq 'NSEC3' ||
 	    $r->{'type'} eq 'RRSIG' ||
 	    $r->{'type'} eq 'NSEC3PARAM') {
-		&create_record($fn, $r->{'name'}, $r->{'ttl'}, $r->{'class'},
-			       $r->{'type'}, join(" ", @{$r->{'values'}}),
-			       $r->{'comment'});
+		push(@addrecs, $r);
 		}
 	}
+&create_multiple_records($fn, \@addrecs);
 &unlink_file($signed);
 return undef;
 }
