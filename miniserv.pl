@@ -2128,10 +2128,10 @@ if ($config{'userfile'}) {
 				&write_data("\r\n");
 				&reset_byte_count();
 				&write_data("<html>\n");
-				&write_data("<head><title>Unauthorized</title></head>\n");
-				&write_data("<body><h2 style='color: #de0000; margin-bottom: -8px;'>Unauthorized</h2>\n");
-				&write_data("A password is required to access this\n");
-				&write_data("web server. Please try again. <p>\n");
+				&write_data("<head><title>401 &mdash; Unauthorized</title></head>\n");
+				&write_data("<body><h2 @{[get_error_style('heading')]}>401 &mdash; Unauthorized</h2>\n");
+				&write_data("<p @{[get_error_style('content')]}>A password is required to access this\n");
+				&write_data("web server. Please try again.</p> <p>\n");
 				&write_data("</body></html>\n");
 				&log_request($loghost, undef, $reqline, 401, &byte_count());
 				return 0;
@@ -2387,10 +2387,11 @@ if (-d _) {
 	&write_keep_alive(0);
 	&write_data("\r\n");
 	&reset_byte_count();
-	&write_data("<h2 style='color: #de0000; margin-bottom: -8px;'>Index of $simple</h2>\n");
-	&write_data("<pre>\n");
+	&write_data("<h2 @{[get_error_style('heading')]}>Index of $simple</h2>\n");
+	&write_data("<pre @{[get_error_style('content')]}>\n");
 	&write_data(sprintf "%-35.35s %-20.20s %-10.10s\n",
 			"Name", "Last Modified", "Size");
+	&write_data("</pre>\n");
 	&write_data("<hr>\n");
 	opendir(DIR, $full);
 	while($df = readdir(DIR)) {
@@ -2805,10 +2806,13 @@ else {
 	&write_keep_alive(0);
 	&write_data("\r\n");
 	&reset_byte_count();
-	&write_data("<h2 style='color: #de0000; margin-bottom: -8px;'>Error - $msg</h2>\n");
+	&write_data("<html>\n");
+	&write_data("<head><title>$code &mdash; $msg</title></head>\n");
+	&write_data("<body><h2 @{[get_error_style('heading')]}>Error &mdash; $msg</h2>\n");
 	if ($body) {
-		&write_data("<p>$body</p>\n");
+		&write_data("<p @{[get_error_style('content')]}>$body</p>\n");
 		}
+	&write_data("</body></html>\n");
 	}
 &log_request($loghost, $authuser, $reqline, $code, &byte_count())
 	if ($reqline);
@@ -3130,7 +3134,7 @@ local($idx, $more, $rv);
 while(($idx = index($main::read_buffer, "\n")) < 0) {
 	if (length($main::read_buffer) > 100000 && !$nolimit) {
 		&http_error(414, "Request too long",
-		    "Received excessive line <pre>".&html_strip($main::read_buffer)."</pre>");
+		    "Received excessive line <pre @{[get_error_style('content')]}>".&html_strip($main::read_buffer)."</pre>");
 		}
 
 	# need to read more..
@@ -6457,8 +6461,26 @@ while(1) {
 return $line;
 }
 
+# getenv(env_key)
+# Returns env var disregard of case
 sub getenv
 {
-    my ($key) = @_;
-    return $ENV{ uc($key) } || $ENV{ lc($key) };
+my ($key) = @_;
+return $ENV{ uc($key) } || $ENV{ lc($key) };
+}
+
+# get_error_style(style_for)
+# Returns a style for error messages
+sub get_error_style
+{
+my ($type) = @_;
+my $style = ' style="font-family:Lucida Console,Courier,monospace;white-space:pre-wrap;';
+if ($type eq 'heading') {
+	$style .= 'color:#f12b2b;font-size:14px;padding:5px 2.5px 0;transform:scale(1,1.5);text-transform:uppercase;';
+	}
+if ($type eq 'content') {
+	$style .= 'font-size:12.5px;padding-left:2.5px;transform:scale(1,1.2);';
+	}
+$style .= '"';
+return $style;
 }
