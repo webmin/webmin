@@ -1621,20 +1621,31 @@ else {
 			     @_,"</h3>\n";
 		}
 	else {
-		print "<b data-fatal-error-text>$text{'error'}: ",($main::whatfailed ? "$main::whatfailed : " : ""),
-			     @_,"</b><br><br>\n";
+		my $error_what = ($main::whatfailed ? "$main::whatfailed: " : "");
+		my $error_html = join(",", @_);
+		my $error_text;
+		if ($error_html !~ /<pre.*?>/) {
+			$error_text = " &mdash; $error_html";
+			$error_html = undef;
+			}
+		print "<title>$text{'error'}</title><h3 @{[miniserv::get_error_style('heading', 'padding:0;')]} data-fatal-error-text>$text{'error'}$error_text</h3>$error_html<br>\n";
 		}
 	if ($gconfig{'error_stack'}) {
 		# Show call stack
 		print "<style>\n";
 		print "table.config-error-stack caption, table.config-error-stack > tbody > tr:first-child > td > b {color: #151515;font-weight:bold;text-align: left;}\n";
 		print "table.config-error-stack > tbody > tr:first-child > td > b {border-bottom: 1px solid #151515;}\n";
-		print "table.config-error-stack > tbody > tr:first-child > td {height: 25px;vertical-align:top;font-size: 100%;font-family: unset}\n";
+		print "table.config-error-stack > tbody > tr:first-child > td {height: 25px;vertical-align:top;font-size:14px;font-family:unset;transform:scale(1,1.2);text-transform:uppercase;}\n";
 		print "table.config-error-stack {border: 1px dashed #151515}\n";
-		print "table.config-error-stack {margin-left: 12px;}\n" if ($hh);
-		print "table.config-error-stack tr td {padding: 0 10px !important; font-family: monospace; font-size: 90%;}\n";
+		print "table.config-error-stack {margin-left: 12px;width:auto}\n" if ($hh);
+		print "table.config-error-stack tr:not(:first-child) td {font-size: 90%;}\n" if ($hh);
+		print "table.config-error-stack tr td {padding: 1px 10px!important;font-family:Lucida Console,Courier,monospace;font-size:13px;transform:scale(1,1.15);}\n";
+		print "table.config-error-stack > tbody > tr:first-child > td{font-size:96%; font-size: 96%;padding-top:3px!important;padding-bottom:7px!important;}\n" if ($hh);
 		print "</style>\n";
-		print "<table class=\"config-error-stack\"><caption>$text{'error_stack'}</caption>\n";
+		my $caption_no_header_style =
+		    &miniserv::get_error_style('heading', "padding:0 0 10px 0;" . ($hh ? "color: #222;font-size:98%;" : "") . "");
+		print "<hr>\n" if ($hh);
+		print "<table class=\"config-error-stack\"><caption$caption_no_header_style>$text{'error_stack'}</caption>\n";
 		print "<tr> <td><b>$text{'error_file'}</b></td> ",
 		      "<td><b>$text{'error_line'}</b></td> ",
 		      "<td><b>$text{'error_sub'}</b></td> </tr>\n";
@@ -3777,7 +3788,7 @@ else {
 	delete($ENV{'FOREIGN_ROOT_DIRECTORY'});
 	}
 @INC = @OLDINC;
-if ($@) { &error("Require $mod/$files[0] failed : <pre>$@</pre>"); }
+if ($@) { &error("<pre @{[miniserv::get_error_style('content')]}>Require $mod/$files[0] failed : $@</pre>"); }
 return 1;
 }
 

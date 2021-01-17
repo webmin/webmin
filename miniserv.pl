@@ -2808,7 +2808,7 @@ else {
 	&reset_byte_count();
 	&write_data("<html>\n");
 	&write_data("<head><title>$code &mdash; $msg</title></head>\n");
-	&write_data("<body><h2 @{[get_error_style('heading')]}>Error &mdash; $msg</h2>\n");
+	&write_data("<body @{[get_error_style('body')]}><h2 @{[get_error_style('heading')]}>Error &mdash; $msg</h2>\n");
 	if ($body) {
 		&write_data("<p @{[get_error_style('content')]}>$body</p>\n");
 		}
@@ -6473,14 +6473,17 @@ return $ENV{ uc($key) } || $ENV{ lc($key) };
 # Returns a style for error messages
 sub get_error_style
 {
-my ($type) = @_;
-my $style = ' style="font-family:Lucida Console,Courier,monospace;white-space:pre-wrap;';
+my ($type, $extra_style) = @_;
+my $style = ' style="font-family:Lucida Console,Courier,monospace;';
 if ($type eq 'heading') {
-	$style .= 'color:#f12b2b;font-size:14px;padding:5px 2.5px 0;transform:scale(1,1.5);text-transform:uppercase;';
+	$style .= 'color:#f12b2b;font-size:14px;padding:5px 2.5px 0;transform:scale(1,1.5);text-transform:uppercase;white-space:pre-wrap;font-weight:500;';
 	}
 if ($type eq 'content') {
-	$style .= 'font-size:12.5px;padding-left:2.5px;transform:scale(1,1.2);';
+	$style .= 'font-size:12.5px;padding-left:2.5px;white-space:pre-wrap;';
 	}
-$style .= '"';
+if ($type eq 'body') {
+	$style .= 'font-size:12.5px;';
+	}
+$style .= "$extra_style\"";
 return $style;
 }
