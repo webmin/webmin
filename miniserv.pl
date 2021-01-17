@@ -4158,10 +4158,10 @@ $authuser = $vu if ($ok);
 # check if the test cookie is set
 if ($header{'cookie'} !~ /testing=1/ && $vu &&
     !$config{'no_testing_cookie'} && !$notest) {
-	&http_error(500, "No cookies",
-	   "Your browser does not support cookies, ".
-	   "which are required for this web server to ".
-	   "work in session authentication mode");
+	&http_error(500, "Cache issue or no cookies support",
+	   "Please clear your browser's cache for the given ".
+	   "domain and/or try incognito tab; double check ".
+	   "to have cookies support enabled.");
 	}
 
 # check with main process for delay
