@@ -26,7 +26,8 @@ else {
 
 my %minfo = $in{'mod'} ? &get_module_info($in{'mod'})
 		       : ( 'desc' => $text{'index_global'} );
-my $below = &text($in{'group'} ? 'acl_title3' : 'acl_title2', "<tt>$who</tt>",
+my $below = &text($in{'group'} ? 'acl_title3' : 'acl_title2', 
+	          "<tt>".&html_escape($who)."</tt>",
 	          "<tt>$minfo{'desc'}</tt>");
 &ui_print_header($below, $text{'acl_title'}, "",
 		 -r &help_file($in{'mod'}, "acl_info") ?
