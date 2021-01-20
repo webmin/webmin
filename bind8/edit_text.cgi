@@ -27,7 +27,8 @@ print &ui_hidden("zone", $in{'zone'});
 print &ui_hidden("view", $in{'view'});
 print &ui_table_row(undef, &ui_textarea("text", $text, 20, 80,
 					undef, 0, "style='width:100%'"), 2);
-print &ui_table_row(undef, &ui_checkbox("soa", 1, $text{'text_soa'}, 1), 2);
+print &ui_table_row(undef, &ui_checkbox("soa", $config{'updserial_on'},
+					$text{'text_soa'}, 1), 2);
 print &ui_table_end();
 print &ui_form_end($access{'ro'} ? [ ] : [ [ undef, $text{'save'} ] ]);
 

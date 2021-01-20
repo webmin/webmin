@@ -21,6 +21,8 @@ index_ever=The MySQL client program $1 does not appear to be the correct version
 index_nouser=Your Webmin account is configured to connect to the MySQL server as user $1, but this user has been denied access. 
 index_db=Database name
 index_tables=Tables
+index_indexes=Indexes
+index_views=Views
 index_elibrary=The MySQL client program $1 could not be run because it could not find the MySQL shared libraries. Check the <a href='$2'>module configuration</a> and make sure the <i>Path to MySQL shared libraries</i> is set.
 index_version=$2 version $1
 index_version2=$3 version $1 on $2

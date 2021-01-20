@@ -205,12 +205,25 @@ else {
 		@checks = @titles;
 		if ($displayconfig{'style'} == 1) {
 			# Show as DB names and table counts
+			my (@tables, @indexes, @views);
+			my $sv = &supports_views();
+			foreach my $db (@titles) {
+				my @t = &list_tables($db);
+				my @i = &list_indexes($db);
+				my @v = $sv ? &list_views($db) : ( );
+				push(@tables, scalar(@t));
+				push(@indexes, scalar(@i));
+				push(@views, scalar(@v));
+				}
 			@tables = map { @t = &list_tables($_); scalar(@t) }
 				      @titles;
 			@titles = map { &html_escape($_) } @titles;
 			&split_table([ "", $text{'index_db'},
-				       $text{'index_tables'} ],
-				     \@checks, \@links, \@titles, \@tables)
+				       $text{'index_tables'},
+				       $text{'index_indexes'},
+				       $text{'index_views'} ],
+				     \@checks, \@links, \@titles, \@tables,
+				     \@indexes, \@views)
 				if (@titles);
 			}
 		elsif ($displayconfig{'style'} == 2) {
