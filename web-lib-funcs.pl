@@ -3257,18 +3257,22 @@ it cannot be resolved.
 =cut
 sub to_ipaddress
 {
-if (&check_ipaddress($_[0])) {
-	return $_[0];	# Already in v4 format
+my ($host) = @_;
+my @rv;
+if (&check_ipaddress($host)) {
+	@rv = ( $host );	# Already in v4 format
 	}
-elsif (&check_ip6address($_[0])) {
-	return undef;	# A v6 address cannot be converted to v4
+elsif (&check_ip6address($host)) {
+	@rv = ( );		# A v6 address cannot be converted to v4
 	}
 else {
-	my $hn = gethostbyname($_[0]);
-	return undef if (!$hn);
-	local @ip = unpack("CCCC", $hn);
-	return join("." , @ip);
+	my @hns = gethostbyname($host);
+	foreach my $hn (@hns[4..$#hns]) {
+		my @ip = unpack("CCCC", $hn);
+		push(@rv, join("." , @ip));
+		}
 	}
+return wantarray ? @rv : $rv[0];
 }
 
 =head2 to_ip6address(hostname)
