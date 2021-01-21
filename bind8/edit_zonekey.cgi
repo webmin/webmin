@@ -2,7 +2,7 @@
 # Display the signing key for a zone, or offer to set one up
 use strict;
 use warnings;
-our (%access, %in, %text, $in);
+our (%access, %in, %text, $in, %config);
 
 require './bind8-lib.pl';
 &ReadParse();
@@ -101,7 +101,7 @@ else {
 
 	# Key algorithm
 	print &ui_table_row($text{'zonekey_alg'},
-		&ui_select("alg", "RSASHA256",
+		&ui_select("alg", $config{'tmpl_dnssecalg'} || "RSASHA256",
 			   [ &list_dnssec_algorithms() ]));
 
 	# Key size
