@@ -3124,53 +3124,60 @@ if ($gconfig{'debug_what_net'}) {
 	&webmin_debug_log('TCP', "host=$host port=$port");
 	}
 
-# Lookup IP address for the host. Try v4 first, and failing that v6
-my $ip;
+# Lookup all IPv4 and v6 addresses for the host
+my @ips = &to_ipaddress($host);
+my $v6 = &to_ip6address($host);
+push(@ips, $v6) if ($v6);
+if (!@ips) {
+	my $msg = "Failed to lookup IP address for $host";
+	if ($err) { $$err = $msg; return 0; }
+	else { &error($msg); }
+	}
+
+# Try each of the resolved IPs
+my $msg;
 my $proto = getprotobyname("tcp");
-if ($ip = &to_ipaddress($host)) {
-	# Create IPv4 socket and connection
-	if (!socket($fh, PF_INET(), SOCK_STREAM, $proto)) {
-		my $msg = "Failed to create socket : $!";
-		if ($err) { $$err = $msg; return 0; }
-		else { &error($msg); }
-		}
-	my $addr = inet_aton($ip);
-	if ($gconfig{'bind_proxy'}) {
-		# BIND to outgoing IP
-		if (!bind($fh, pack_sockaddr_in(0, inet_aton($bindip)))) {
-			my $msg = "Failed to bind to source address : $!";
-			if ($err) { $$err = $msg; return 0; }
-			else { &error($msg); }
+foreach my $ip (@ips) {
+	$msg = undef;
+	if (&check_ipaddress($ip)) {
+		# Create IPv4 socket and connection
+		if (!socket($fh, PF_INET(), SOCK_STREAM, $proto)) {
+			$msg = "Failed to create socket : $!";
+			next;
+			}
+		my $addr = inet_aton($ip);
+		if ($gconfig{'bind_proxy'}) {
+			# BIND to outgoing IP
+			if (!bind($fh, pack_sockaddr_in(0, inet_aton($bindip)))) {
+				$msg = "Failed to bind to source address : $!";
+				next;
+				}
+			}
+		if (!connect($fh, pack_sockaddr_in($port, $addr))) {
+			$msg = "Failed to connect to $host:$port : $!";
+			next;
 			}
 		}
-	if (!connect($fh, pack_sockaddr_in($port, $addr))) {
-		my $msg = "Failed to connect to $host:$port : $!";
-		if ($err) { $$err = $msg; return 0; }
-		else { &error($msg); }
+	else {
+		# Create IPv6 socket and connection
+		if (!&supports_ipv6()) {
+			$msg = "IPv6 connections are not supported";
+			next;
+			}
+		if (!socket($fh, PF_INET6(), SOCK_STREAM, $proto)) {
+			$msg = "Failed to create IPv6 socket : $!";
+			next;
+			}
+		my $addr = inet_pton(AF_INET6(), $ip);
+		if (!connect($fh, pack_sockaddr_in6($port, $addr))) {
+			$msg = "Failed to IPv6 connect to $host:$port : $!";
+			next;
+			}
 		}
+	last;	# If we got this far, it worked
 	}
-elsif ($ip = &to_ip6address($host)) {
-	# Create IPv6 socket and connection
-	if (!&supports_ipv6()) {
-		$msg = "IPv6 connections are not supported";
-		if ($err) { $$err = $msg; return 0; }
-		else { &error($msg); }
-		}
-	if (!socket($fh, PF_INET6(), SOCK_STREAM, $proto)) {
-		my $msg = "Failed to create IPv6 socket : $!";
-		if ($err) { $$err = $msg; return 0; }
-		else { &error($msg); }
-		}
-	my $addr = inet_pton(AF_INET6(), $ip);
-	if (!connect($fh, pack_sockaddr_in6($port, $addr))) {
-		my $msg = "Failed to IPv6 connect to $host:$port : $!";
-		if ($err) { $$err = $msg; return 0; }
-		else { &error($msg); }
-		}
-	}
-else {
-	# Resolution failed
-	my $msg = "Failed to lookup IP address for $host";
+if ($msg) {
+	# Last attempt failed
 	if ($err) { $$err = $msg; return 0; }
 	else { &error($msg); }
 	}
