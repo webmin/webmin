@@ -2534,6 +2534,7 @@ my $h = &make_http_connection($host, $port, $ssl, "GET", $page, \@headers);
 alarm(0) if ($timeout);
 $h = $main::download_timed_out if ($main::download_timed_out);
 if (!ref($h)) {
+	$h ||= "Unknown error";
 	if ($error) { $$error = $h; return; }
 	else { &error(&html_escape($h)); }
 	}
@@ -2562,6 +2563,7 @@ $timeout = 60 if (!defined($timeout));
 alarm($timeout) if ($timeout);
 ($line = &read_http_connection($h)) =~ tr/\r\n//d;
 if ($line !~ /^HTTP\/1\..\s+(200|30[0-9]|400)(\s+|$)/) {
+	$line ||= "Failed to read HTTP response line";
 	alarm(0) if ($timeout);
 	&close_http_connection($h);
 	if ($error) { ${$error} = $line; return; }
@@ -3126,8 +3128,7 @@ if ($gconfig{'debug_what_net'}) {
 
 # Lookup all IPv4 and v6 addresses for the host
 my @ips = &to_ipaddress($host);
-my $v6 = &to_ip6address($host);
-push(@ips, $v6) if ($v6);
+push(@ips, &to_ip6address($host));
 if (!@ips) {
 	my $msg = "Failed to lookup IP address for $host";
 	if ($err) { $$err = $msg; return 0; }
@@ -3289,25 +3290,30 @@ Converts a hostname to IPv6 address, or returns undef if it cannot be resolved.
 =cut
 sub to_ip6address
 {
-if (&check_ip6address($_[0])) {
-	return $_[0];	# Already in v6 format
+my ($host) = @_;
+my @rv;
+if (&check_ip6address($host)) {
+	@rv = ( $host );	# Already in v6 format
 	}
-elsif (&check_ipaddress($_[0])) {
-	return undef;	# A v4 address cannot be v6
+elsif (&check_ipaddress($host)) {
+	@rv = ( );		# A v4 address cannot be v6
 	}
 elsif (!&supports_ipv6()) {
-	return undef;	# Cannot lookup
+	@rv = ( );		# v6 lookups not supported
 	}
 else {
 	# Perform IPv6 DNS lookup
-	my $inaddr;
-	(undef, undef, undef, $inaddr) =
-	    getaddrinfo($_[0], undef, AF_INET6(), SOCK_STREAM);
-	return undef if (!$inaddr);
-	my $addr;
-	(undef, $addr) = unpack_sockaddr_in6($inaddr);
-	return inet_ntop(AF_INET6(), $addr);
+	my @ai = getaddrinfo($host, undef, AF_INET6(), SOCK_STREAM);
+	while(@ai) {
+		(undef, undef, undef, $inaddr, undef, @ai) = @ai;
+		if ($inaddr) {
+			my $addr;
+			(undef, $addr) = unpack_sockaddr_in6($inaddr);
+			push(@rv, inet_ntop(AF_INET6(), $addr));
+			}
+		}
 	}
+return wantarray ? @rv : $rv[0];
 }
 
 =head2 to_hostname(ipv4|ipv6-address)
@@ -7700,7 +7706,8 @@ else {
 	}
 }
 
-=head2 make_http_connection(host, port, ssl, method, page, [&headers])
+=head2 make_http_connection(host, port, ssl, method, page, [&headers],
+			    [&certreqs])
 
 Opens a connection to some HTTP server, maybe through a proxy, and returns
 a handle object. The handle can then be used to send additional headers
