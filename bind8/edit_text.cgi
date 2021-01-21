@@ -3,7 +3,7 @@
 # Display a form for manually editing a records file
 use strict;
 use warnings;
-our (%access, %text, %in);
+our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';
 &ReadParse();
