@@ -102,6 +102,7 @@ else {
 	&lock_file($ENV{'MINISERV_CONFIG'});
 	$miniserv{'userdb'} = $str;
 	$miniserv{'userdb_addto'} = $in{'addto'};
+	$miniserv{'userdb_nocache'} = $in{'nocache'};
 	&put_miniserv_config(\%miniserv);
 	&unlock_file($ENV{'MINISERV_CONFIG'});
 	&reload_miniserv();

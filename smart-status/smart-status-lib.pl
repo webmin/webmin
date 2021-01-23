@@ -141,7 +141,8 @@ Returns a list, each element of which is a unit, controller and list of subdisks
 sub list_megaraid_subdisks
 {
 local ($adap) = @_;
-local $out = &backquote_command("megacli -pdlist -a$adap");
+return () if (!&has_command("megacli"));
+local $out = &backquote_command("megacli -pdlist -a$adap 2>/dev/null");
 return () if ($?);
 my @rv;
 foreach my $l (split(/\r?\n/, $out)) {
