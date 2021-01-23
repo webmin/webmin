@@ -96,6 +96,11 @@ print &ui_table_row(undef,
 		  [ [ 0, $text{'sql_addto0'} ],
 		    [ 1, $text{'sql_addto1'} ] ]), 2);
 
+print &ui_table_row(undef,
+	&ui_radio("nocache", int($miniserv{'userdb_nocache'} || 0),
+		  [ [ 0, $text{'sql_nocache0'} ],
+		    [ 1, $text{'sql_nocache1'} ] ]), 2);
+
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);
 

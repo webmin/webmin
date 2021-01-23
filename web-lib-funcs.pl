@@ -10769,7 +10769,9 @@ sub connect_userdb
 {
 my ($str) = @_;
 my @rv;
-if ($main::connect_userdb_cache{$str}) {
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+if (!$miniserv{'userdb_nocache'} && $main::connect_userdb_cache{$str}) {
 	@rv = @{$main::connect_userdb_cache{$str}};
 	$main::connect_userdb_cache_time{$str} = time();
 	return wantarray ? @rv : $rv[0];
@@ -10841,8 +10843,10 @@ elsif ($proto eq "ldap") {
 else {
 	return "Unknown protocol $proto";
 	}
-$main::connect_userdb_cache{$str} = \@rv;
-$main::connect_userdb_cache_time{$str} = time();
+if (!$miniserv{'userdb_nocache'}) {
+	$main::connect_userdb_cache{$str} = \@rv;
+	$main::connect_userdb_cache_time{$str} = time();
+	}
 return wantarray ? @rv : $rv[0];
 }
 
