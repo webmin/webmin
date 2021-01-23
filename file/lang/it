@@ -1,6 +1,6 @@
 index_title=File Manager
 index_nojava=Questo modulo richiede java per funzionare, il tuo browser non supporta java
-index_eremote=Non esiste un utente Unix corrispondente all' login Webmin $1.
+index_eremote=Non esiste un utente Unix corrispondente al nome utente Webmin $1.
 index_index=Torna alla <a href='$1'>pagina principale di Webmin</a>.
 switch_euser=L'utente Unix non esiste!
 top_ret=Indice
@@ -205,7 +205,7 @@ list_edir=Elenco di $1 non riuscito : $2
 move_eto=Non sei autorizzato a muovere in '$1'
 move_afrom=Non sei autorizzato a muovere '$1'
 acl_user=Accesso file sul server come utente
-acl_user_def=Uguale al login Webmin
+acl_user_def=Uguale al nome utente Webmin
 acl_umask=Umask per i nuovi file
 acl_follow=Seguire sempre i link simbolici?
 acl_fyes=Se il proprietario corrisponde
