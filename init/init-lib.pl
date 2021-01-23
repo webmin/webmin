@@ -549,7 +549,7 @@ elsif ($init_mode eq "systemd") {
 	else {
 		my $out = &backquote_command("systemctl is-enabled ".
 					quotemeta($unit)." 2>&1");
-		if ($out =~ /no such file/i) {
+		if (lc($out) =~ /no such file/) {
 			return 0;
 			}
 		else {
