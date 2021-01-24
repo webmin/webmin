@@ -546,6 +546,17 @@ elsif ($init_mode eq "systemd") {
 		# Exists .. but is it started at boot?
 		return lc($1) eq 'enabled' || lc($1) eq 'static' ? 2 : 1;
 		}
+	else {
+		my $out = &backquote_command("systemctl is-enabled ".
+					quotemeta($unit)." 2>&1");
+		if (lc($out) =~ /no such file/) {
+			return 0;
+			}
+		else {
+			$out =~ s/^\s+|\s+$//g;
+			return $out eq 'enabled' ? 2 : 1;
+			}
+		}
 	}
 if ($init_mode eq "init" || $init_mode eq "upstart" ||
     $init_mode eq "systemd") {
