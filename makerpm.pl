@@ -109,6 +109,7 @@ mkdir -p %{buildroot}/etc/sysconfig/daemons
 mkdir -p %{buildroot}/etc/rc.d/{rc0.d,rc1.d,rc2.d,rc3.d,rc5.d,rc6.d}
 mkdir -p %{buildroot}/etc/init.d
 mkdir -p %{buildroot}/etc/pam.d
+mkdir -p %{buildroot}/usr/bin
 cp -rp * %{buildroot}/usr/libexec/webmin
 cp webmin-daemon %{buildroot}/etc/sysconfig/daemons/webmin
 cp webmin-init %{buildroot}/etc/init.d/webmin
@@ -119,6 +120,7 @@ ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc5.d/S99webmin
 ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc0.d/K10webmin
 ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc1.d/K10webmin
 ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc6.d/K10webmin
+ln -s /usr/libexec/webmin/bin/webmin %{buildroot}/usr/bin
 echo rpm >%{buildroot}/usr/libexec/webmin/install-type
 
 %clean
