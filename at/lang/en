@@ -55,6 +55,7 @@ acl_this=Current Webmin user
 acl_only=Only users
 acl_except=All except users
 acl_allow=Can edit allowed At users?
+acl_stop=Can stop and start <tt>atd</tt>?
 
 run_title=Running Command
 run_output=Output from scheduled command ..
@@ -79,5 +80,8 @@ log_bootdown=Disabled scheduled commands server at boot
 
 stop_err=Failed to stop server
 start_err=Failed to start server
+stop_ecannot=You are not allowed to stop the server
+start_ecannot=You are not allowed to start the server
+bootup_ecannot=You are not allowed to enable the server at boot
 
 __norefs=1

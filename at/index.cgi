@@ -140,7 +140,7 @@ if ($access{'allow'} && $config{'allow_file'}) {
 # If there is an init script that runs an atd server, show status
 &foreign_require("init");
 my $init = defined(&get_init_name) ? &get_init_name() : undef;
-if ($init) {
+if ($access{'stop'} && $init) {
 	print &ui_hr();
 	print &ui_buttons_start();
 

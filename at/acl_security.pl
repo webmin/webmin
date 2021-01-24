@@ -21,7 +21,10 @@ print &ui_table_row($text{'acl_users'},
 	]), 3);
 
 print &ui_table_row($text{'acl_allow'},
-	&ui_yesno_radio("allow", $o->{'allow'}));
+	&ui_yesno_radio("allow", $o->{'allow'}), 3);
+
+print &ui_table_row($text{'acl_stop'},
+	&ui_yesno_radio("stop", $o->{'stop'}), 3);
 }
 
 # acl_security_save(&options)
@@ -34,5 +37,6 @@ $o->{'users'} = $in{'mode'} == 0 || $in{'mode'} == 3 ? "" :
 		$in{'mode'} == 1 ? $in{'userscan'}
 				 : $in{'userscannot'};
 $o->{'allow'} = $in{'allow'};
+$o->{'stop'} = $in{'stop'};
 }
 

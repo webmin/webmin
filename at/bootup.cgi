@@ -4,6 +4,7 @@
 require './at-lib.pl';
 &ReadParse();
 &foreign_require("init");
+$access{'stop'} || &error($text{'bootup_ecannot'});
 $init = &get_init_name();
 if ($in{'boot'}) {
 	&init::enable_at_boot($init);
