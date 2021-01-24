@@ -210,11 +210,8 @@ elsif ($two eq "BZ") {
 
 # Check if this is an RPM webmin module or theme
 my ($type, $redirect_to);
-$type = "";
-if (open(TYPE, "<$root_directory/install-type")) {
-	chop($type = <TYPE>);
-	close(TYPE);
-	}
+$type = &read_file_contents("$root_directory/install-type");
+chop($type) if ($type);
 my $out;
 if ($type eq 'rpm' && $file =~ /\.rpm$/i &&
     ($out = &backquote_command("rpm -qp $file 2>/dev/null"))) {
