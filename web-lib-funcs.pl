@@ -1027,11 +1027,11 @@ if (@_ > 0) {
 	}
 print "$tconfig{'headhtml'}\n" if ($tconfig{'headhtml'});
 if ($tconfig{'headinclude'}) {
-  my ($theme, $overlay) = split(' ', $gconfig{'theme'});
-  my $file_contents = read_file_contents("$root_directory/$overlay/$tconfig{'headinclude'}");;
-  $file_contents = replace_meta($file_contents);
-  print $file_contents;
-  }
+	my ($theme, $overlay) = split(' ', $gconfig{'theme'});
+	my $file_contents = read_file_contents("$root_directory/$overlay/$tconfig{'headinclude'}");;
+	$file_contents = replace_meta($file_contents);
+	print $file_contents;
+	}
 print "</head>\n";
 my $bgcolor = defined($tconfig{'cs_page'}) ? $tconfig{'cs_page'} :
 		 defined($gconfig{'cs_page'}) ? $gconfig{'cs_page'} : "ffffff";
@@ -1053,13 +1053,13 @@ my $prebody = $tconfig{'prebody'};
 if ($prebody) {
 	$prebody = replace_meta($prebody);
 	print "$prebody\n";
+}
+if ($tconfig{'prebodyinclude'}) {
+	my ($theme, $overlay) = split(' ', $gconfig{'theme'});
+	my $file_contents = read_file_contents("$root_directory/$overlay/$tconfig{'prebodyinclude'}");
+	$file_contents = replace_meta($file_contents);
+	print $file_contents;
 	}
-	if ($tconfig{'prebodyinclude'}) {
-    my ($theme, $overlay) = split(' ', $gconfig{'theme'});
-    my $file_contents = read_file_contents("$root_directory/$overlay/$tconfig{'prebodyinclude'}");
-    $file_contents = replace_meta($file_contents);
-    print $file_contents;
-		}
 if (@_ > 1) {
 	print $tconfig{'preheader'};
 	my %this_module_info = &get_module_info(&get_module_name());
@@ -4897,7 +4897,8 @@ $main::initial_module_name ||= $module_name;
 
 # Set some useful variables
 my $current_themes;
-$current_themes = $ENV{'MOBILE_DEVICE'} && defined($gconfig{'mobile_theme'}) ?
+$current_themes = $ENV{'THEME_DIRS'} ? $ENV{'THEME_DIRS'} :
+		  $ENV{'MOBILE_DEVICE'} && defined($gconfig{'mobile_theme'}) ?
 		    $gconfig{'mobile_theme'} :
 		  defined($remote_user_attrs{'theme'}) ?
 		    $remote_user_attrs{'theme'} :
