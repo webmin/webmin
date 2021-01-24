@@ -4714,6 +4714,8 @@ if ($gconfig{'path'}) {
 		# Include OS too
 		$ENV{'PATH'} = $gconfig{'path'}.$path_separator.$ENV{'PATH'};
 		}
+	$ENV{'PATH'} = join($path_separator,
+			&unique(split($path_separator, $ENV{'PATH'})));
 	}
 $ENV{$gconfig{'ld_env'}} = $gconfig{'ld_path'} if ($gconfig{'ld_env'});
 
