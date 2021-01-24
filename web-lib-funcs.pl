@@ -4897,8 +4897,7 @@ $main::initial_module_name ||= $module_name;
 
 # Set some useful variables
 my $current_themes;
-$current_themes = $ENV{'THEME_DIRS'} ? $ENV{'THEME_DIRS'} :
-		  $ENV{'MOBILE_DEVICE'} && defined($gconfig{'mobile_theme'}) ?
+$current_themes = $ENV{'MOBILE_DEVICE'} && defined($gconfig{'mobile_theme'}) ?
 		    $gconfig{'mobile_theme'} :
 		  defined($remote_user_attrs{'theme'}) ?
 		    $remote_user_attrs{'theme'} :
@@ -4907,6 +4906,11 @@ $current_themes = $ENV{'THEME_DIRS'} ? $ENV{'THEME_DIRS'} :
 		  defined($gconfig{'theme_'.$base_remote_user}) ?
 		    $gconfig{'theme_'.$base_remote_user} :
 		    $gconfig{'theme'};
+# Prevent breakage on inconsistent configuration
+my $env_theme_dirs = $ENV{'THEME_DIRS'};
+if (!$env_theme_dirs || ($env_theme_dirs && $current_themes ne $env_theme_dirs)) {
+	$current_themes = $env_theme_dirs;
+	}
 @current_themes = split(/\s+/, $current_themes);
 $current_theme = $current_themes[0];
 @theme_root_directories = map { "$root_directory/$_" } @current_themes;
