@@ -11362,6 +11362,30 @@ elsif ($cgi) {
 return $url;
 }
 
+=head2 trim(string, left_right_only)
+
+Trims the string
+
+=item string parameter is a strig
+=item left_right_only parameter, if defined to 1 will only trim the beginning of the string, defined to -1 will trim only the end
+
+=cut
+sub trim
+{
+my ($str, $lr) = @_;
+if (!$lr) {
+	$str =~ s/^\s+//;
+    $str =~ s/\s+$//;
+	}
+elsif ($lr  == -1) {
+	$str =~ s/\s+$//;
+	}
+elsif ($lr == 1) {
+	$str =~ s/^\s+//;
+	}
+return $str;
+}
+
 $done_web_lib_funcs = 1;
 
 1;
