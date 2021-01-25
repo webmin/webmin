@@ -25,9 +25,13 @@ while(<PKGINFO>) {
 			$packages{$i,'epoch'} = $1;
 			$packages{$i,'version'} = $2;
 			}
-		if ($packages{$i,'name'} =~ /^(\S+):(\S+)$/) {
+		if ($packages{$i,'name'} =~ /^(\S+):(\S+)$/ ||
 			$packages{$i,'name'} = $1;
 			$packages{$i,'arch'} = $2;
+			}
+		if ($packages{$i,'desc'} =~ /^(all|amd64|x86|arm)\s+(\S.*)/) {
+			$packages{$i,'arch'} = $1;
+			$packages{$i,'desc'} = $2;
 			}
 		$i++;
 		}
