@@ -11366,7 +11366,7 @@ return $url;
 
 Trims the string
 
-=item string parameter is a strig
+=item string parameter is a string
 =item left_right_only parameter, if defined to 1 will only trim the beginning of the string, defined to -1 will trim only the end
 
 =cut
