@@ -2461,7 +2461,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	$ENV{"ANONYMOUS_USER"} = "1" if ($validated == 3 || $validated == 4);
 	$ENV{"DOCUMENT_ROOT"} = $roots[0];
 	$ENV{"THEME_ROOT"} = $preroots[0];
-	$ENV{"THEME_DIRS"} = join(" ", @themes);
+	$ENV{"THEME_DIRS"} = join(" ", @themes) || "";
 	$ENV{"DOCUMENT_REALROOT"} = $realroot;
 	$ENV{"GATEWAY_INTERFACE"} = "CGI/1.1";
 	$ENV{"SERVER_PROTOCOL"} = "HTTP/1.0";
@@ -6353,7 +6353,7 @@ if (!$pid) {
 	$ENV{"WEBMIN_CRON"} = 1;
 	$ENV{"DOCUMENT_ROOT"} = $root0;
 	$ENV{"THEME_ROOT"} = $root0."/".$config{"preroot"};
-	$ENV{"THEME_DIRS"} = $config{"preroot"};
+	$ENV{"THEME_DIRS"} = $config{"preroot"} || "";
 	$ENV{"DOCUMENT_REALROOT"} = $root0;
 	$ENV{"MINISERV_CONFIG"} = $config_file;
 	$ENV{"HTTPS"} = "ON" if ($use_ssl);
