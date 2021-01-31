@@ -1,6 +1,6 @@
 name=HTAccess Files
 desc=Protected Web Directories
 depends=useradmin apache
-longdesc=Create .htaccess and htpasswd files to protect web-acessible directories.
+longdesc=Create .htaccess and htpasswd files to protect web-accessible directories.
 readonly=1
 library=htaccess-lib.pl
