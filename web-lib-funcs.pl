@@ -4226,8 +4226,10 @@ if ($userdb) {
 		# Find the group in the SQL DB
 		my $cmd = $dbh->prepare(
 			"select id from webmin_group where name = ?");
-		$cmd && $cmd->execute($g) ||
+		if (!$cmd || !$cmd->execute($g)) {
+			&disconnect_userdb($userdb, $dbh);
 			&error(&text('egroupdbacl', $dbh->errstr));
+			}
 		my ($id) = $cmd->fetchrow();
 		$foundindb = 1 if (defined($id));
 		$cmd->finish();
@@ -4237,8 +4239,10 @@ if ($userdb) {
 			my $cmd = $dbh->prepare(
 			    "select attr,value from webmin_group_acl ".
 			    "where id = ? and module = ?");
-			$cmd && $cmd->execute($id, $m) ||
-			    &error(&text('egroupdbacl', $dbh->errstr));
+			if (!$cmd || !$cmd->execute($id, $m)) {
+				&disconnect_userdb($userdb, $dbh);
+				&error(&text('egroupdbacl', $dbh->errstr));
+				}
 			while(my ($a, $v) = $cmd->fetchrow()) {
 				$rv{$a} = $v;
 				}
@@ -4253,6 +4257,7 @@ if ($userdb) {
                                   $args->{'groupclass'}.'))',
 			scope => 'sub');
 		if (!$rv || $rv->code) {
+			&disconnect_userdb($userdb, $dbh);
 			&error(&text('egroupdbacl',
 				     $rv ? $rv->error : "Unknown error"));
 			}
@@ -4266,6 +4271,7 @@ if ($userdb) {
 				filter => '(cn='.$ldapm.')',
 				scope => 'one');
 			if (!$rv || $rv->code) {
+				&disconnect_userdb($userdb, $dbh);
 				&error(&text('egroupdbacl',
 				     $rv ? $rv->error : "Unknown error"));
 				}
@@ -4336,8 +4342,10 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 		# Find the user in the SQL DB
 		my $cmd = $dbh->prepare(
 			"select id from webmin_user where name = ?");
-		$cmd && $cmd->execute($u) ||
+		if (!$cmd || !$cmd->execute($u)) {
+			&disconnect_userdb($userdb, $dbh);
 			&error(&text('euserdbacl2', $dbh->errstr));
+			}
 		my ($id) = $cmd->fetchrow();
 		$foundindb = 1 if (defined($id));
 		$cmd->finish();
@@ -4346,8 +4354,10 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 		if ($foundindb) {
 			my $cmd = $dbh->prepare("delete from webmin_user_acl ".
 						"where id = ? and module = ?");
-			$cmd && $cmd->execute($id, $m) ||
-			    &error(&text('euserdbacl', $dbh->errstr));
+			if (!$cmd || !$cmd->execute($id, $m)) {
+				&disconnect_userdb($userdb, $dbh);
+				&error(&text('euserdbacl', $dbh->errstr));
+				}
 			$cmd->finish();
 			if ($_[0]) {
 				my $cmd = $dbh->prepare(
@@ -4356,9 +4366,13 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 				$cmd || &error(&text('euserdbacl2',
 						     $dbh->errstr));
 				foreach my $a (keys %{$_[0]}) {
-					$cmd->execute($id,$m,$a,$_[0]->{$a}) ||
-					    &error(&text('euserdbacl2',
-							 $dbh->errstr));
+					if (!$cmd->execute($id,$m,$a,
+							   $_[0]->{$a})) {
+						&disconnect_userdb(
+							$userdb, $dbh);
+						&error(&text('euserdbacl2',
+							     $dbh->errstr));
+						}
 					$cmd->finish();
 					}
 				}
@@ -4372,6 +4386,7 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
                                   $args->{'userclass'}.'))',
 			scope => 'sub');
 		if (!$rv || $rv->code) {
+			&disconnect_userdb($userdb, $dbh);
 			&error(&text('euserdbacl',
 				     $rv ? $rv->error : "Unknown error"));
 			}
@@ -4386,6 +4401,7 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 				filter => '(cn='.$ldapm.')',
 				scope => 'one');
 			if (!$rv || $rv->code) {
+				&disconnect_userdb($userdb, $dbh);
 				&error(&text('euserdbacl',
 				     $rv ? $rv->error : "Unknown error"));
 				}
@@ -4409,6 +4425,7 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 						attr => \@attrs);
 				}
 			if (!$rv || $rv->code) {
+				&disconnect_userdb($userdb, $dbh);
 				&error(&text('euserdbacl2',
 				     $rv ? $rv->error : "Unknown error"));
 				}
@@ -4475,8 +4492,10 @@ if ($userdb) {
 		# Find the group in the SQL DB
 		my $cmd = $dbh->prepare(
 			"select id from webmin_group where name = ?");
-		$cmd && $cmd->execute($g) ||
+		if (!$cmd || !$cmd->execute($g)) {
+			&disconnect_userdb($userdb, $dbh);
 			&error(&text('egroupdbacl2', $dbh->errstr));
+			}
 		my ($id) = $cmd->fetchrow();
 		$foundindb = 1 if (defined($id));
 		$cmd->finish();
@@ -4485,19 +4504,28 @@ if ($userdb) {
 		if ($foundindb) {
 			my $cmd = $dbh->prepare("delete from webmin_group_acl ".
 						"where id = ? and module = ?");
-			$cmd && $cmd->execute($id, $m) ||
-			    &error(&text('egroupdbacl', $dbh->errstr));
+			if (!$cmd || !$cmd->execute($id, $m)) {
+				&disconnect_userdb($userdb, $dbh);
+				&error(&text('egroupdbacl', $dbh->errstr));
+				}
 			$cmd->finish();
 			if ($_[0]) {
 				my $cmd = $dbh->prepare(
 				    "insert into webmin_group_acl ".
 				    "(id,module,attr,value) values (?,?,?,?)");
-				$cmd || &error(&text('egroupdbacl2',
+				if (!$cmd) {
+					&disconnect_userdb($userdb, $dbh);
+					&error(&text('egroupdbacl2',
 						     $dbh->errstr));
+					}
 				foreach my $a (keys %{$_[0]}) {
-					$cmd->execute($id,$m,$a,$_[0]->{$a}) ||
-					    &error(&text('egroupdbacl2',
-							 $dbh->errstr));
+					if (!$cmd->execute($id,$m,$a,
+							   $_[0]->{$a})) {
+						&disconnect_userdb(
+							$userdb, $dbh);
+						&error(&text('egroupdbacl2',
+							     $dbh->errstr));
+						}
 					$cmd->finish();
 					}
 				}
@@ -4511,6 +4539,7 @@ if ($userdb) {
                                   $args->{'groupclass'}.'))',
 			scope => 'sub');
 		if (!$rv || $rv->code) {
+			&disconnect_userdb($userdb, $dbh);
 			&error(&text('egroupdbacl',
 				     $rv ? $rv->error : "Unknown error"));
 			}
@@ -4525,6 +4554,7 @@ if ($userdb) {
 				filter => '(cn='.$ldapm.')',
 				scope => 'one');
 			if (!$rv || $rv->code) {
+				&disconnect_userdb($userdb, $dbh);
 				&error(&text('egroupdbacl',
 				     $rv ? $rv->error : "Unknown error"));
 				}
@@ -4548,6 +4578,7 @@ if ($userdb) {
 						attr => \@attrs);
 				}
 			if (!$rv || $rv->code) {
+				&disconnect_userdb($userdb, $dbh);
 				&error(&text('egroupdbacl2',
 				     $rv ? $rv->error : "Unknown error"));
 				}
