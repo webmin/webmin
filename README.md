@@ -10,11 +10,11 @@
 
 **Webmin** is a web-based system administration tool for Unix-like servers, and services with over _1,000,000_ installations worldwide. Using it, it is possible to configure operating system internals, such as users, disk quotas, services or configuration files, as well as modify, and control open-source apps, such as BIND DNS Server, Apache HTTP Server, PHP, MySQL, and [many more](https://doxfer.webmin.com/Webmin/Introduction). 
 
-![](https://github.com/webmin-devel/webmin/blob/master/media/webmin-demo-basic.gif?raw=true)
+[![Quick UI overview 2021](https://rostovtsev.io/pub/media/screenshots/webmin-2021-screenshot-updated.png)](https://www.youtube.com/watch?v=daYG6O4AsEw&feature=emb_logo)
 
 Usability can be expanded by installing modules, which can be custom made. Aside from this, there are two other major projects that extend its functionality:
 
-* [Virtualmin](https://www.virtualmin.com) is a powerful, flexible, most popular, and most comprehensive web-hosting control panel for Linux, and BSD systems, with over _100,000_ installations worldwide. It is available in an open-source community-supported version, and a more feature-filled version with premium support;
+* [Virtualmin](https://www.virtualmin.com) is a powerful, flexible, most popular, and most comprehensive web-hosting control panel for Linux, and BSD systems, with over _150,000_ installations worldwide. It is available in an open-source community-supported version, and a more feature-filled version with premium support;
 * [Usermin](https://github.com/webmin/usermin) presents and controls a subset of user-centred features, rather than administrator-level tasks.
 
 Webmin includes _116_ [standard modules](https://doxfer.webmin.com/Webmin/Webmin_Modules), and there are at least as many third-party modules.
