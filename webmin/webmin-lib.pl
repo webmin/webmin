@@ -1131,6 +1131,7 @@ my %miniserv;
 # Need OS upgrade
 my %realos = &detect_operating_system(undef, 1);
 if (($realos{'os_version'} ne $gconfig{'os_version'} ||
+     $realos{'real_os_version'} ne $gconfig{'real_os_version'} ||
      $realos{'os_type'} ne $gconfig{'os_type'}) &&
     $realos{'os_version'} && $realos{'os_type'} &&
     &foreign_available("webmin")) {

@@ -19,7 +19,7 @@ if (!-e $historic_info_dir) {
 	}
 our $get_collected_info_cache;
 
-# collect_system_info([manual])
+# collect_system_info([manual-refesh-no-cache-even-for-heavy])
 # Returns a hash reference containing system information
 sub collect_system_info
 {
@@ -99,26 +99,30 @@ if (defined($manual) && $manual eq 'manual') {
 return $info;
 }
 
-# get_collected_info()
+# get_collected_info([manual-refesh-no-cache])
 # Returns the most recently collected system information, or the current info
 sub get_collected_info
 {
-if ($get_collected_info_cache) {
-	# Already in RAM
-	return $get_collected_info_cache;
-	}
-my @st = stat($collected_info_file);
-my $i = $config{'collect_interval'} || 'none';
-if ($i ne 'none' && @st && $st[9] > time() - $i * 60 * 2) {
-	my $infostr = &read_file_contents($collected_info_file);
-	if ($infostr) {
-		my $info = &unserialise_variable($infostr);
-		if (ref($info) eq 'HASH' && keys(%$info) > 0) {
-			$get_collected_info_cache = $info;
+my ($manual) = @_;
+if (!defined($manual) ||
+     defined($manual) && $manual ne 'manual') {
+	if ($get_collected_info_cache) {
+		# Already in RAM
+		return $get_collected_info_cache;
+		}
+	my @st = stat($collected_info_file);
+	my $i = $config{'collect_interval'} || 'none';
+	if ($i ne 'none' && @st && $st[9] > time() - $i * 60 * 2) {
+		my $infostr = &read_file_contents($collected_info_file);
+		if ($infostr) {
+			my $info = &unserialise_variable($infostr);
+			if (ref($info) eq 'HASH' && keys(%$info) > 0) {
+				$get_collected_info_cache = $info;
+				}
 			}
 		}
 	}
-$get_collected_info_cache ||= &collect_system_info();
+$get_collected_info_cache ||= &collect_system_info($manual);
 return $get_collected_info_cache;
 }
 
