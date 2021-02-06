@@ -44,7 +44,7 @@ if (!$access{'bootonly'}) {
 		     &ui_link("edit_aifc.cgi?new=1",$text{'ifcs_add'}));
 		}
 	print &ui_links_row(\@links);
-	print &ui_columns_start( ( "" ),
+	print &ui_columns_start([ "",
 				  $text{'ifcs_name'},
 				  $text{'ifcs_type'},
 				  $text{'ifcs_ip'},
