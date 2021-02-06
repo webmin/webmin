@@ -10803,13 +10803,26 @@ sub connect_userdb
 {
 my ($str) = @_;
 my @rv;
+
+# Is there a cached connection already we can re-use?
 my %miniserv;
 &get_miniserv_config(\%miniserv);
 if (!$miniserv{'userdb_nocache'} && $main::connect_userdb_cache{$str}) {
+	my $timeout = defined($miniserv{'userdb_cache_timeout'}) ?
+				$miniserv{'userdb_cache_timeout'} : 60;
 	@rv = @{$main::connect_userdb_cache{$str}};
-	$main::connect_userdb_cache_time{$str} = time();
-	return wantarray ? @rv : $rv[0];
+	if (time() - $main::connect_userdb_cache_time{$str} > $timeout) {
+		# Yes, but it's already timed out. Force close it, and make a new
+		# connection
+		&disconnect_userdb($str, $rv[0], 1);
+		}
+	else {
+		# Use the cache
+		$main::connect_userdb_cache_time{$str} = time();
+		return wantarray ? @rv : $rv[0];
+		}
 	}
+
 my ($proto, $user, $pass, $host, $prefix, $args) = &split_userdb_string($str);
 if ($proto eq "mysql") {
 	# Connect to MySQL with DBI
