@@ -10892,9 +10892,13 @@ Closes a handle opened by connect_userdb
 sub disconnect_userdb
 {
 my ($str, $h, $force) = @_;
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+my $timeout = defined($miniserv{'userdb_cache_timeout'}) ?
+			$miniserv{'userdb_cache_timeout'} : 60;
 if ($force ||
     !$main::connect_userdb_cache{$str} ||
-    time() - $main::connect_userdb_cache_time{$str} > 60) {
+    time() - $main::connect_userdb_cache_time{$str} > $timeout) {
 	if ($str =~ /^(mysql|postgresql):/) {
 		# DBI disconnnect
 		if (!$h->{'AutoCommit'}) {
