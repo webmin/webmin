@@ -33,8 +33,8 @@ if (!$access{'bootonly'}) {
 		print &ui_form_start("delete_aifcs.cgi", "post");
 		push(@links, &select_all_link("d"),
 			     &select_invert_link("d") );
-		push(@tds, "width=5 valign=top");
 		}
+	push(@tds, "width=5 valign=top");
 	push(@tds, "width=20% valign=top", "width=20% valign=top",
 		   "width=20% valign=top", "width=20% valign=top");
 	push(@tds, "width=20% valign=top") if (&supports_address6());
@@ -44,7 +44,7 @@ if (!$access{'bootonly'}) {
 		     &ui_link("edit_aifc.cgi?new=1",$text{'ifcs_add'}));
 		}
 	print &ui_links_row(\@links);
-	print &ui_columns_start([ $access{'ifcs'} >= 2 ? ( "" ) : ( ),
+	print &ui_columns_start( ( "" ),
 				  $text{'ifcs_name'},
 				  $text{'ifcs_type'},
 				  $text{'ifcs_ip'},
