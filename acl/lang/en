@@ -466,6 +466,10 @@ sql_dnerr=User and group database settings are valid, but the LDAP DN needed by 
 sql_dnerr2=Click the <b>Create DN</b> button below to have it create automatically, or add it to your LDAP server manually.
 sql_makedn=Create DN
 sql_schema=Download LDAP Schema
+sql_timeout_def=Use default connection timeout (60 seconds)
+sql_timeout_for=Close cached connections after
+sql_timeout_secs=seconds
+sql_etimeout=Cached connection timeout must be a number
 
 make_title=Create User and Group Tables
 make_err=Failed to create user and group tables
