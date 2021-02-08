@@ -25,7 +25,7 @@ while(<PKGINFO>) {
 			$packages{$i,'epoch'} = $1;
 			$packages{$i,'version'} = $2;
 			}
-		if ($packages{$i,'name'} =~ /^(\S+):(\S+)$/ ||
+		if ($packages{$i,'name'} =~ /^(\S+):(\S+)$/) {
 			$packages{$i,'name'} = $1;
 			$packages{$i,'arch'} = $2;
 			}
