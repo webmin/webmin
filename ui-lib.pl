@@ -2460,28 +2460,17 @@ Returns HTML for a text string, with its color determined by $type.
 
 sub ui_text_color
 {
-my ($text, $type, $class) = @_;
-my ($rv, $color);
+my ($text, $type) = @_;
+my ($color);
 
 if (defined (&theme_ui_text_color)) {
     return &theme_ui_text_color(@_);
     }
-
-if ($type eq "success") { $color = "3c763d"; }
-elsif ($type eq "info") { $color = "31708f"; }
-elsif ($type eq "warn") { $color = "8a6d3b"; }
-elsif ($type eq "danger") { $color = "a94442"; }
-
-my $style;
-$style = " style=\"color: #$color\"" if (!$class);
-if ($class) {
-	my $c = $class == 1 ? 'text' : $class;
-	$class = "$c-$type";
-}
-
-$rv .= "<span class='ui_text_color text_type_$type $class'$style>$text</span>\n";
-
-return $rv;
+if ($type eq "success") { $color = "#3c763d"; }
+elsif ($type eq "info") { $color = "#31708f"; }
+elsif ($type eq "warn") { $color = "#8a6d3b"; }
+elsif ($type eq "danger") { $color = "#a94442"; }
+return "<span class=\"ui_text_color text_type_$type\" style=\"color: $color\">$text</span>\n";
 }
 
 =head2 ui_alert_box(msg, type)
