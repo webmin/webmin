@@ -43,10 +43,10 @@ unless (opendir ( DIR, $cwd )) {
         foreach my $aclsStr (split(/\n\n/, $output)) {
             $aclsStr =~ /#\s+file:\s*(.*)/;
             my ($file)  = ($aclsStr =~ /#\s+file:\s*(.*)/);
-            my @aclsA = ($aclsStr =~ /^(?!#)([\w:-]+)/gm);
+            my @aclsA = ($aclsStr =~ /^(?!(#|user::|group::|other::))([\w\:\-\_]+)/gm);
             push(@aclsArr, [$file, \@aclsA]);
         }
-        %acls = map {$_->[0] => ('<span data-acls>' . join("<br>", @{$_->[1]}) . '</span>')} @aclsArr;
+        %acls = map {$_->[0] => ('<span data-acls>' . join("<br>", (grep /\S/, @{ $_->[1] })) . '</span>')} @aclsArr;
     }
 
     # List attributes
