@@ -14,14 +14,22 @@ sub get_attr_status {
   return has_command('lsattr');
 }
 
+sub get_acls_status {
+  return has_command('getfacl');
+}
+
+sub get_list_acls_command {
+  return has_command('getfacl') . " -p ";
+}
+
 sub get_attr_command {
   return 'lsattr -d ';
 }
 
 sub get_selinux_status {
-  # return 1;
   return is_selinux_enabled();
 }
+
 sub get_selinux_command_type {
   my $out = backquote_command("ls --help 2>&1 </dev/null");
   return $out =~ /--scontext/ ? 1 : 0;
@@ -291,6 +299,7 @@ sub print_interface {
     push @ui_columns, ('<span data-head-size>' . $text{'size'} . '</span>') if($userconfig{'columns'} =~ /size/);
     push @ui_columns, ('<span data-head-owner_user>' . $text{'ownership'} . '</span>') if($userconfig{'columns'} =~ /owner_user/);
     push @ui_columns, ('<span data-head-permissions>' . $text{'permissions'} . '</span>') if($userconfig{'columns'} =~ /permissions/);
+    push @ui_columns, ('<span data-head-acls>' . $text{'acls'} . '</span>') if(get_acls_status() && $userconfig{'columns'} =~ /acls/);
     push @ui_columns, ('<span data-head-attributes>' . $text{'attributes'} . '</span>') if(get_attr_status() && $userconfig{'columns'} =~ /attributes/);
     push @ui_columns, ('<span data-head-selinux>' . $text{'selinux'} . '</span>') if(get_selinux_status() && $userconfig{'columns'} =~ /selinux/);
     push @ui_columns, ('<span data-head-last_mod_time>' . $text{'last_mod_time'} . '</span>') if($userconfig{'columns'} =~ /last_mod_time/);
@@ -301,8 +310,9 @@ sub print_interface {
         if ($count > scalar(@list)) { last; }
         my $class = $count & 1 ? "odd" : "even";
         my $link = $list[$count - 1][0];
-        my $selinux;
+        my $acls;
         my $attributes;
+        my $selinux;
         $link =~ s/\Q$cwd\E\///;
         $link =~ s/^\///g;
         $vlink = html_escape($link);
@@ -326,6 +336,10 @@ sub print_interface {
 
         if(get_attr_status() && $userconfig{'columns'} =~ /attributes/) {
           $attributes = $list[$count - 1][18];
+        }
+
+        if(get_acls_status() && $userconfig{'columns'} =~ /acls/) {
+          $acls = $list[$count - 1][19];
         }
 
         $mod_time = POSIX::strftime('%Y/%m/%d - %T', localtime($list[$count - 1][10]));
@@ -381,6 +395,7 @@ sub print_interface {
         push @row_data, $size if($userconfig{'columns'} =~ /size/);
         push @row_data, $user.':'.$group if($userconfig{'columns'} =~ /owner_user/);
         push @row_data, $permissions if($userconfig{'columns'} =~ /permissions/);
+        push @row_data, $acls if(get_acls_status() && $userconfig{'columns'} =~ /acls/);
         push @row_data, $attributes if(get_attr_status() && $userconfig{'columns'} =~ /attributes/);
         push @row_data, $selinux if(get_selinux_status() && $userconfig{'columns'} =~ /selinux/);
         push @row_data, $mod_time if($userconfig{'columns'} =~ /last_mod_time/);

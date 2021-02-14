@@ -25,7 +25,7 @@ size=Size
 owner_user=Owner user
 owner_group=Owner group
 permissions=Mode
-selinux=Security context
+selinux=Security Context
 attributes=Attributes
 last_mod_time=Modified
 rename=Rename
@@ -162,3 +162,4 @@ info_total3=Total: $1 file and $2 directories
 info_total4=Total: $1 files and $2 directories
 
 ownership=Owner
+acls=Access Control List

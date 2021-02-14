@@ -152,8 +152,9 @@ a.pages {
     margin-bottom: 10px;
 }
 
-span[data-attributes="s"],
-span[data-attributes="x"] {
+span[data-acls],
+span[data-attributes],
+span[data-secontext] {
   font-family: monospace;
-  font-size: 10px;
+  font-size: 11px;
 }
