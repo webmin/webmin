@@ -10,9 +10,6 @@ use Encode qw(decode encode);
 use File::Basename;
 eval "use File::MimeInfo";
 
-sub get_attr_status {
-  return has_command('lsattr');
-}
 
 sub get_acls_status {
   return has_command('getfacl');
@@ -20,6 +17,10 @@ sub get_acls_status {
 
 sub get_list_acls_command {
   return has_command('getfacl') . " -p ";
+}
+
+sub get_attr_status {
+  return has_command('lsattr');
 }
 
 sub get_attr_command {
