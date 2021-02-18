@@ -16,18 +16,6 @@ $letsencrypt_chain_urls = [
 	"https://letsencrypt.org/certs/lets-encrypt-r3-cross-signed.pem",
 	];
 
-sub get_letsencrypt_python_cmd
-{
-return &has_command("python3") || &has_command("python30") ||
-       &has_command("python3.9") || &has_command("python39") ||
-       &has_command("python3.8") || &has_command("python38") ||
-       &has_command("python3.7") || &has_command("python37") ||
-       &has_command("python3.6") || &has_command("python36") ||
-       &has_command("python2.7") || &has_command("python27") ||
-       &has_command("python2.6") || &has_command("python26") ||
-       &has_command("python");
-}
-
 # check_letsencrypt()
 # Returns undef if all dependencies are installed, or an error message
 sub check_letsencrypt
@@ -36,7 +24,7 @@ if (&has_command($letsencrypt_cmd)) {
 	# Use official client
 	return undef;
 	}
-my $python = &get_letsencrypt_python_cmd();
+my $python = &get_python_cmd();
 if (!$python || !&has_command("openssl")) {
         return $text{'letsencrypt_ecmds'};
         }
@@ -293,7 +281,7 @@ else {
 	&copy_source_dest($csr, "/tmp/lets.csr", 1);
 
 	# Find a reasonable python version
-	my $python = &get_letsencrypt_python_cmd();
+	my $python = &get_python_cmd();
 
 	# Request the cert and key
 	my $cert = &transname();

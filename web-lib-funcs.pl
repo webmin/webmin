@@ -11419,15 +11419,33 @@ sub trim
 my ($str, $lr) = @_;
 if (!$lr) {
 	$str =~ s/^\s+//;
-    $str =~ s/\s+$//;
+	$str =~ s/\s+$//;
 	}
-elsif ($lr  == -1) {
+elsif ($lr == -1) {
 	$str =~ s/\s+$//;
 	}
 elsif ($lr == 1) {
 	$str =~ s/^\s+//;
 	}
 return $str;
+}
+
+=head2 get_python_cmd
+
+Returns the full path to the python command, preferring higher versions if
+available.
+
+=cut
+sub get_python_cmd
+{
+return &has_command("python3") || &has_command("python30") ||
+       &has_command("python3.9") || &has_command("python39") ||
+       &has_command("python3.8") || &has_command("python38") ||
+       &has_command("python3.7") || &has_command("python37") ||
+       &has_command("python3.6") || &has_command("python36") ||
+       &has_command("python2.7") || &has_command("python27") ||
+       &has_command("python2.6") || &has_command("python26") ||
+       &has_command("python");
 }
 
 $done_web_lib_funcs = 1;
