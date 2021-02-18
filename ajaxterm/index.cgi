@@ -16,7 +16,7 @@ our $module_name;
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
 # Check for python
-my $python = &has_command("python");
+my $python = &get_python_cmd();
 if (!$python) {
 	&ui_print_endpage(&text('index_epython', "<tt>python</tt>"));
 	}
