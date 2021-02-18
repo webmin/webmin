@@ -40,13 +40,13 @@ sub list_system_info
             my $mask  = &html_escape($a->{'netmask'})   || $text{'ifcs_nonetmask'};
             my $broad = &html_escape($a->{'broadcast'}) || "";
             my $status =
-              $a->{'up'} ? ui_text_color($text{'ifcs_act'}, 'success', 1) : ui_text_color($text{'ifcs_down'}, 'danger', 1);
+              $a->{'up'} ? &ui_text_color($text{'ifcs_act'}, 'success') : &ui_text_color($text{'ifcs_down'}, 'danger');
             $open = 1 if (!$a->{'up'});
 
-            $html_rows .= ui_columns_row([$name, $type, $speed, $ip, $ipv6, $mask, $broad, $status]);
+            $html_rows .= &ui_columns_row([$name, $type, $speed, $ip, $ipv6, $mask, $broad, $status]);
         }
 
-        $html_start = ui_columns_start(
+        $html_start = &ui_columns_start(
             [ucwords($text{'ifcs_name'}),
              ucwords($text{'ifcs_type'}),
              $is_speed && ucwords($text{'ifcs_speed'}),
@@ -56,7 +56,7 @@ sub list_system_info
              ucwords($text{'ifcs_broad'}),
              ucwords($text{'ifcs_act'}),
             ]);
-        $html_end .= ui_columns_end();
+        $html_end .= &ui_columns_end();
         $html = ($html_start . $html_rows . $html_end) if ($html_rows);
     }
     return (

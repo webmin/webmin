@@ -12,9 +12,10 @@ unless (opendir ( DIR, $cwd )) {
 } else {
     &ui_print_header(undef, $module_info{'name'}, "", undef, 0 , 0, 0, "<a href='config.cgi?path=".&urlize($path)."' data-config-pagination='$userconfig{'per_page'}'>$text{'module_config'}</a>");
 
+    my %acls;
+    my %attributes;
     my $setype = get_selinux_command_type();
     my %secontext;
-    my %attributes;
 
     # Push file names with full paths to array, filtering out "." and ".."
     @list = map { &simplify_path("$cwd/$_") } grep { $_ ne '.' && $_ ne '..' } readdir(DIR);
@@ -34,13 +35,27 @@ unless (opendir ( DIR, $cwd )) {
         @list = keys %hash;
     }
 
+    # List ACLs
+    if ($userconfig{'columns'} =~ /acls/ && get_acls_status()) {
+        my $command = get_list_acls_command() . " " . join(' ', map {quotemeta("$_")} @list);
+        my $output  = `$command`;
+        my @aclsArr;
+        foreach my $aclsStr (split(/\n\n/, $output)) {
+            $aclsStr =~ /#\s+file:\s*(.*)/;
+            my ($file)  = ($aclsStr =~ /#\s+file:\s*(.*)/);
+            my @aclsA = ($aclsStr =~ /^(?!#)([\w\:\-\_]+)/gm);
+            push(@aclsArr, [$file, \@aclsA]);
+        }
+        %acls = map {$_->[0] => ('<span data-acls>' . join("<br>", (grep /\S/, @{ $_->[1] })) . '</span>')} @aclsArr;
+    }
+
     # List attributes
     if ( $userconfig{'columns'} =~ /attributes/ && get_attr_status() ) {
         my $command = get_attr_command() . join( ' ', map { quotemeta("$_") } @list );
         my $output = `$command`;
         my @attributesArr =
           map { [ split( /\s+/, $_, 2 ) ] } split( /\n/, $output );
-        %attributes = map { $_->[1] => ('<span data-attributes="x">' . $_->[0] . '</span>') } @attributesArr;
+        %attributes = map { $_->[1] => ('<span data-attributes>' . $_->[0] . '</span>') } @attributesArr;
     }
 
     # List security context
@@ -51,11 +66,11 @@ unless (opendir ( DIR, $cwd )) {
         my $delimiter = ( $setype ? '\n' : ',' );
         my @searray =
           map { [ split( /\s+/, $_, 2 ) ] } split( /$delimiter/, $output );
-        %secontext = map { $_->[1] => ($_->[0] eq "?" ? undef : ('<span>' . $_->[0] . '</span>') ) } @searray;
+        %secontext = map { $_->[1] => ($_->[0] eq "?" ? undef : ('<span data-secontext>' . $_->[0] . '</span>') ) } @searray;
     }
 
     # Get info about directory entries
-    @info = map { [ $_, lstat($_), &clean_mimetype($_), -d, -l $_, $secontext{$_}, $attributes{$_} ] } @list;
+    @info = map { [ $_, lstat($_), &clean_mimetype($_), -d, -l $_, $secontext{$_}, $attributes{$_}, $acls{$_} ] } @list;
 
     # Filter out folders
     @folders = map {$_} grep {$_->[15] == 1 } @info;
