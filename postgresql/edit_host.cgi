@@ -84,7 +84,9 @@ if ($v >= 7.3) {
 	}
 
 # Authentication type
-foreach $a ('password', 'crypt', ($v >= 7.2 ? ( 'md5' ) : ( )),
+foreach $a ('password',
+	    ($v < 8.4 ? ( 'crypt' ) : ( )),
+	    ($v >= 7.2 ? ( 'md5' ) : ( )),
 	    'trust', 'reject', 'ident', 'krb4', 'krb5',
 	    ($v >= 7.3 ? ( 'pam' ) : ( )),
 	    ($v >= 9.0 ? ( 'peer' ) : ( )) ) {
