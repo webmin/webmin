@@ -282,6 +282,7 @@ while(<PKG>) {
 		}
 	}
 close(PKG);
+@rv = grep { $_->{'arch'} ne 'src' } @rv;
 &set_yum_security_field(\%done);
 return @rv;
 }
@@ -328,7 +329,7 @@ local %done;
 
 while(<PKG>) {
         s/\r|\n//g;
-	if (/^(\S+)\.([^\.]+)\s+(\S+)\s+(\S+)/) {
+	if (/^(\S+)\.([^\.]+)\s+(\S+)\s+(\S+)/ && $2 ne 'src') {
 		local $pkg = { 'name' => $1,
 			       'arch' => $2,
 			       'version' => $3,
