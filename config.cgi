@@ -41,7 +41,12 @@ if (-r "$mdir/config_info.pl") {
 	}
 if (!$func) {
 	# Use config.info to create config inputs
-	&generate_config(\%newconfig, "$mdir/config.info", $m);
+	my $cdir;
+	foreach my $d (map { $_."/".$m } @theme_root_directories) {
+		$cdir = $d if (-r $d."/config.info");
+		}
+	$cdir ||= $mdir;
+	&generate_config(\%newconfig, "$cdir/config.info", $m);
 	}
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
