@@ -150,6 +150,11 @@ if ($letsencrypt_cmd) {
 	&print_tempfile(TEMP, "text = True\n");
 	&close_tempfile(TEMP);
 	my $dir = $letsencrypt_cmd;
+	my $cmd_ver = &get_certbot_major_version($letsencrypt_cmd);
+	my $old_flags;
+	if ($cmd_ver < 1.11) {
+		$old_flags = " --manual-public-ip-logging-ok";
+		}
 	$dir =~ s/\/[^\/]+$//;
 	$size ||= 2048;
 	my $out;
@@ -163,7 +168,7 @@ if ($letsencrypt_cmd) {
 			" --webroot-path ".quotemeta($webroot).
 			" --duplicate".
 			" --force-renewal".
-			" --manual-public-ip-logging-ok".
+			"$old_flags".
 			" --non-interactive".
 			" --agree-tos".
 			" --config $temp".
@@ -185,7 +190,7 @@ if ($letsencrypt_cmd) {
 			" --manual-cleanup-hook $cleanup_hook".
 			" --duplicate".
 			" --force-renewal".
-			" --manual-public-ip-logging-ok".
+			"$old_flags".
 			" --non-interactive".
 			" --agree-tos".
 			" --config $temp".
@@ -404,6 +409,17 @@ while ($bd =~ /\./) {
 	$bd =~ s/^[^\.]+\.//;
 	}
 return ( );
+}
+
+# Returns Let's Encrypt client major version, such as 1.11 or 0.40
+sub get_certbot_major_version
+{
+my ($cmd) = @_;
+my $out = &backquote_command("$cmd --version");
+if ($out && $out =~ /\s*(\d+\.\d+)\s*/) {
+	return $1;
+	}
+	return 0;
 }
 
 1;
