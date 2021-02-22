@@ -134,6 +134,7 @@ sub get_paths {
     } else {
         &read_file_cached("$confdir/.config", \%userconfig);
     }
+    &load_module_preferences(&get_module_name(), \%userconfig);
 }
 
 sub print_template {
