@@ -40,6 +40,7 @@ print &ui_table_row($text{'config_columns_to_display'},
 print &ui_table_row($text{'config_per_page'}, ui_textbox("per_page", $config{'per_page'}, 80));
 print &ui_table_row($text{'config_disable_pagination'}, &ui_checkbox('disable_pagination', 1, '', $config{'disable_pagination'}));
 print &ui_table_row($text{'config_toolbar_style'}, &ui_yesno_radio('menu_style', $config{'menu_style'}, 1, 0));
+print &ui_table_row($text{'file_detect_encoding'}, &ui_yesno_radio('config_portable_module_filemanager_editor_detect_encoding', $config{'config_portable_module_filemanager_editor_detect_encoding'}, 'true', 'false'));
 print &ui_table_row($text{'config_bookmarks'}, &ui_textarea("bookmarks", $bookmarks, 5, 40));
 
 print &ui_table_end();

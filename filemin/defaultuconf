@@ -2,3 +2,4 @@ columns=size,owner_user,permissions,last_mod_time
 per_page=50
 disable_pagination=0
 menu_style=1
+config_portable_module_filemanager_editor_detect_encoding=true

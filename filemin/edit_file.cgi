@@ -19,16 +19,17 @@ eval "use Encode::Detect::Detector;";
 if (!$@) {
     $encoding_name = Encode::Detect::Detector::detect($data);
 }
-my $forced = ($data =~ /(.*\n)(.*\n)(.*\n)/);
-$forced = (($1 . $2 . $3) =~ /coding[=:]\s*([-\w.]+)/);
-if ((lc(get_charset()) eq "utf-8" && ($encoding_name && lc($encoding_name) ne "utf-8")) || $forced) {
-    if ($forced) {
-        $encoding_name = "$1";
-    }
-    if ($userconfig{'config_portable_module_filemanager_editor_detect_encoding'} ne 'false') {
+if ($userconfig{'config_portable_module_filemanager_editor_detect_encoding'} ne 'false') {
+    my $forced = ($data =~ /(.*\n)(.*\n)(.*\n)/);
+    $forced = (($1 . $2 . $3) =~ /coding[=:]\s*([-\w.]+)/);
+    if ((lc(get_charset()) eq "utf-8" && ($encoding_name && lc($encoding_name) ne "utf-8")) || $forced) {
+        if ($forced) {
+            $encoding_name = "$1";
+        }
         eval {$data = Encode::encode('utf-8', Encode::decode($encoding_name, $data))};
     }
 }
+
 my $file_binary = -s $file >= 128 && -B $file;
 &ui_print_header(undef, $text{'edit_file'}, "");
 $head = "<link rel='stylesheet' type='text/css' href='unauthenticated/css/style.css' />";
@@ -51,7 +52,6 @@ if ($current_theme ne 'authentic-theme') {
 print $head;
 
 print ui_table_start(&html_escape("$path/$in{'file'}"), undef, 1);
-
 print &ui_form_start("save_file.cgi", "post", undef, "data-encoding=\"$encoding_name\" data-binary=\"$file_binary\"");
 print &ui_hidden("file", $in{'file'}), "\n";
 print &ui_hidden("encoding", $encoding_name), "\n";
