@@ -162,3 +162,5 @@ info_total3=I alt: $1 fil og $2 mapper
 info_total4=I alt: $1 filer og $2 mapper
 
 ownership=Ejer
+acls=Adgangskontroliste
+file_detect_encoding=Registrer automatisk filkodning

@@ -162,3 +162,5 @@ info_total3=Totaal: $1 lêer en $2 -kaarte
 info_total4=Totaal: $1 lêers en $2 -kaarte
 
 ownership=Eienaar
+acls=Toegangsbeheerlys
+file_detect_encoding=Bespeur lêerkodering outomaties

@@ -162,3 +162,5 @@ info_total3=Skupaj: $1 datoteka in $2 imeniki
 info_total4=Skupaj: $1 datotek in $2 imenikov
 
 ownership=Lastnik
+acls=Seznam nadzora dostopa
+file_detect_encoding=Samodejno zaznaj kodiranje datotek

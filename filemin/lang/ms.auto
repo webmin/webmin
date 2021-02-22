@@ -162,3 +162,5 @@ info_total3=Jumlah: $1 fail dan $2 direktori
 info_total4=Jumlah: $1 fail dan $2 direktori
 
 ownership=Pemilik
+acls=Senarai Kawalan Akses
+file_detect_encoding=Mengesan pengekodan fail secara automatik

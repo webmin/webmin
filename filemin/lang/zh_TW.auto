@@ -162,3 +162,5 @@ info_total3=總計： $1個文件和 $2個目錄
 info_total4=總計： $1個文件和 $2個目錄
 
 ownership=所有者
+acls=訪問控制列表
+file_detect_encoding=自動檢測文件編碼

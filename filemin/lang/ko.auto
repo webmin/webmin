@@ -162,3 +162,5 @@ info_total3=총계 : $1 파일 및 $2 디렉토리
 info_total4=총계 : $1 개 파일 및 $2 개 디렉토리
 
 ownership=소유자
+acls=액세스 제어 목록
+file_detect_encoding=파일 인코딩 자동 감지

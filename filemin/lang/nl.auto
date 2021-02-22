@@ -162,3 +162,5 @@ info_total3=Totaal: $1 bestand en $2 mappen
 info_total4=Totaal: $1 bestanden en $2 mappen
 
 ownership=Eigenaar
+acls=Toegangscontrole lijst
+file_detect_encoding=Automatisch bestandscodering detecteren

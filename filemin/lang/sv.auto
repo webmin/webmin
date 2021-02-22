@@ -162,3 +162,5 @@ info_total3=Totalt: $1 fil och $2 kataloger
 info_total4=Totalt: $1 filer och $2 kataloger
 
 ownership=Ägare
+acls=Åtkomstkontrollista
+file_detect_encoding=Identifiera filkodning automatiskt

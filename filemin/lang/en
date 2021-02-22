@@ -163,3 +163,4 @@ info_total4=Total: $1 files and $2 directories
 
 ownership=Owner
 acls=Access Control List
+file_detect_encoding=Automatically detect file encoding

@@ -162,3 +162,5 @@ info_total3=Celkem: $1 soubor a $2 adresáře
 info_total4=Celkem: $1 souborů a $2 adresářů
 
 ownership=Majitel
+acls=Seznam řízení přístupu
+file_detect_encoding=Automaticky detekovat kódování souborů

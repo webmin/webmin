@@ -162,3 +162,5 @@ info_total3=Total: $1 fajl u $2 direttorji
 info_total4=Total: $1 fajls u $2 direttorji
 
 ownership=Sid il-prodott
+acls=Lista tal-Kontroll tal-Aċċess
+file_detect_encoding=Skopri awtomatikament il-kodifikazzjoni tal-fajl

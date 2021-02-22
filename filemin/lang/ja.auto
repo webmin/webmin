@@ -162,3 +162,5 @@ info_total3=合計： $1ファイルと $2ディレクトリ
 info_total4=合計： $1ファイルと $2ディレクトリ
 
 ownership=オーナー
+acls=アクセス制御リスト
+file_detect_encoding=ファイルエンコーディングを自動的に検出
