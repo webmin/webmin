@@ -41,6 +41,7 @@ if (!$func) {
 	}
 &write_file("$config_directory/$m/config", \%newconfig);
 &unlock_file("$config_directory/$m/config");
+&save_module_preferences($m, \%newconfig);
 
 # Call any post-config save function
 local $pfn = "${m}::config_post_save";

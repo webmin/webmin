@@ -1394,6 +1394,38 @@ if (!$_[0]) {
 print "</html>\n";
 }
 
+=head2 load_module_preferences(module, &config)
+
+Check if user preferences can be loaded for given
+module based on module's prefs.info special file
+
+=cut
+sub load_module_preferences
+{
+my ($module, $curr_config) = @_;
+my $module_dir = &module_root_directory($module);
+my $module_prefs_conf = "$module_dir/prefs.info";
+if (-r $module_prefs_conf) {
+	my %module_prefs_conf_allowed;
+	&read_file($module_prefs_conf, \%module_prefs_conf_allowed);
+	my $current_user_prefs = "$config_directory/$module/prefs.$remote_user";
+	if (-r $current_user_prefs) {
+		if ($module_prefs_conf_allowed{'allowed'} eq "*") {
+			&read_file($current_user_prefs, \%$curr_config);
+			}
+		else {
+			my %newconfigtmp;
+			&read_file($current_user_prefs, \%newconfigtmp);
+			foreach my $key (keys %newconfigtmp) {
+			if (grep(/^$key$/, split(",", $module_prefs_conf_allowed{'allowed'}))) {
+					$curr_config->{$key} = $newconfigtmp{$key};
+					}
+				}
+			}
+		}
+	}
+}
+
 =head2 load_theme_library
 
 Immediately loads the current theme's theme.pl file. Not generally useful for
@@ -4905,6 +4937,7 @@ if ($module_name) {
 		}
 	%config = ( );
 	&read_file_cached($module_config_file, \%config);
+	&load_module_preferences($module_name, \%config);
 
 	# Create a module-specific var directory
 	my $var_base = "$var_directory/modules";

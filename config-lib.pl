@@ -361,5 +361,35 @@ foreach my $c (@$info_order) {
 return @new_order;
 }
 
+# save_module_preferences(module, &config)
+# Check which user preferences can be save for
+# given module based on module's prefs.info file
+sub save_module_preferences
+{
+my ($module, $curr_config) = @_;
+my $module_dir = &module_root_directory($module);
+my $module_prefs_conf = "$module_dir/prefs.info";
+if (-r $module_prefs_conf) {
+	my %module_prefs_conf_allowed;
+	&read_file($module_prefs_conf, \%module_prefs_conf_allowed);
+	mkdir("$config_directory/$module", 0700);
+	my $user_prefs_file = "$config_directory/$module/prefs.$remote_user";
+	&lock_file($user_prefs_file);
+	if ($module_prefs_conf_allowed{'allowed'} eq "*") {
+		&write_file($user_prefs_file, \%$curr_config);
+		}
+	else {
+		my %newconfigtmp;
+		foreach my $key (keys %{$curr_config}) {
+			if (grep(/^$key$/, split(",", $module_prefs_conf_allowed{'allowed'}))) {
+				$newconfigtmp->{$key} = $curr_config->{$key};
+				}
+			}
+		&write_file($user_prefs_file, \%$newconfigtmp);
+		}
+	&unlock_file($user_prefs_file);
+	}
+}
+
 1;
 

@@ -28,7 +28,7 @@ print &ui_hidden("module", $m),"\n";
 print &ui_table_start(&text('config_header', $module_info{'desc'}),
 		      "width=100%", 2);
 &read_file("$config_directory/$m/config", \%newconfig);
-
+&load_module_preferences($m, \%newconfig);
 $mdir = &module_root_directory($m);
 if (-r "$mdir/config_info.pl") {
 	# Module has a custom config editor
