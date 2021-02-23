@@ -1408,7 +1408,7 @@ my $module_prefs_conf = "$module_dir/prefs.info";
 if (-r $module_prefs_conf) {
 	my %module_prefs_conf_allowed;
 	&read_file($module_prefs_conf, \%module_prefs_conf_allowed);
-	my $current_user_prefs = "$config_directory/$module/prefs.$remote_user";
+	my $current_user_prefs = "$module_config_directory/prefs.$remote_user";
 	if (-r $current_user_prefs) {
 		if ($module_prefs_conf_allowed{'allowed'} eq "*") {
 			&read_file($current_user_prefs, \%$curr_config);
