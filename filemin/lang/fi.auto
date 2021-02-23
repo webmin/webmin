@@ -164,3 +164,4 @@ info_total4=Yhteensä: $1 tiedostoa ja $2 hakemistoa
 ownership=Omistaja
 acls=Kulunvalvontaluettelo
 file_detect_encoding=Tunnista tiedostojen koodaus automaattisesti
+index_return=tiedostoluettelo

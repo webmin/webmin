@@ -164,3 +164,4 @@ info_total4=Total: $1 fajls u $2 direttorji
 ownership=Sid il-prodott
 acls=Lista tal-Kontroll tal-Aċċess
 file_detect_encoding=Skopri awtomatikament il-kodifikazzjoni tal-fajl
+index_return=elenkar tal-fajl

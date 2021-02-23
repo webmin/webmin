@@ -164,3 +164,4 @@ info_total4=Guztira: $1 fitxategi eta $2 direktorio
 ownership=Jabea
 acls=Sarbide Kontrol Zerrenda
 file_detect_encoding=Automatikoki detektatu fitxategien kodeketa
+index_return=fitxategi zerrenda

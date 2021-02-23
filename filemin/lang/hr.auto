@@ -164,3 +164,4 @@ info_total4=Ukupno: $1 datoteka i $2 direktorije
 ownership=Vlasnik
 acls=Popis kontrole pristupa
 file_detect_encoding=Automatski otkrij kodiranje datoteka
+index_return=popis datoteka

@@ -164,3 +164,4 @@ info_total4=Celkom: $1 súborov a $2 adresárov
 ownership=vlastník
 acls=Zoznam riadenia prístupu
 file_detect_encoding=Automaticky zistiť kódovanie súborov
+index_return=zoznam súborov

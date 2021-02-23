@@ -164,3 +164,4 @@ info_total4=Total: $1 fișiere și $2 directoare
 ownership=Proprietar
 acls=Lista de control acces
 file_detect_encoding=Detectează automat codificarea fișierului
+index_return=listarea fișierelor

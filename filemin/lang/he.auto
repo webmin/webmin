@@ -164,3 +164,4 @@ info_total4=סה"כ: $1 קבצים ו- $2 ספריות
 ownership=בעלים
 acls=גש לרשימת השליטה
 file_detect_encoding=זיהוי אוטומטי של קידוד קבצים
+index_return=רישום קבצים

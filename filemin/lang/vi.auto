@@ -164,3 +164,4 @@ info_total4=Tổng cộng: $1 tệp và $2 thư mục
 ownership=Chủ nhân
 acls=Danh sách điều khiển truy cập
 file_detect_encoding=Tự động phát hiện mã hóa tệp
+index_return=danh sách hồ sơ

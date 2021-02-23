@@ -164,3 +164,4 @@ info_total4=Iš viso: $1 failai ir $2 katalogai
 ownership=Savininkas
 acls=Prieigos kontrolės sąrašas
 file_detect_encoding=Automatiškai aptikti failų kodavimą
+index_return=failų sąrašas

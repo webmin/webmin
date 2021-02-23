@@ -1,2 +1,3 @@
 acls=Llista de control d’accés
 file_detect_encoding=Detecta automàticament la codificació de fitxers
+index_return=llistat de fitxers

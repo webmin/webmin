@@ -164,3 +164,4 @@ info_total4=Kopā: $1 faili un $2 direktoriji
 ownership=Īpašnieks
 acls=Piekļuves kontroles saraksts
 file_detect_encoding=Automātiski noteikt failu kodējumu
+index_return=failu saraksts

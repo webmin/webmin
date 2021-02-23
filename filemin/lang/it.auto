@@ -164,3 +164,4 @@ info_total4=Totale: $1 file e $2 directory
 ownership=Proprietario
 acls=Elenco di controllo degli accessi
 file_detect_encoding=Rileva automaticamente la codifica dei file
+index_return=elenco dei file

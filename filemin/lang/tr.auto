@@ -164,3 +164,4 @@ info_total4=Toplam: $1 dosya ve $2 dizin
 ownership=Sahip
 acls=Erişim kontrol Listesi
 file_detect_encoding=Dosya kodlamasını otomatik olarak algıla
+index_return=dosya listesi

@@ -164,3 +164,4 @@ info_total4=Összesen: $1 fájl és $2 könyvtár
 ownership=Tulajdonos
 acls=Beléptető lista
 file_detect_encoding=A fájlkódolás automatikus észlelése
+index_return=fájl felsorolása
