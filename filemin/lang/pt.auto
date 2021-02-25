@@ -124,7 +124,6 @@ http_downloading=Baixando
 http_done=$1 a $2 baixados.
 uploading=A carregar, aguarde. ..
 acl_allowed_paths=Permitir acesso a diretórios
-acl_allowed_paths2=(Para usuários não root)
 acl_allowed_for_edit=Tipos de mim permitidos para edição pelo editor incorporado
 acl_work_as=Acessar arquivos como usuário Unix
 acl_root=Raiz (conceda com cuidado a usuários não confiáveis!)

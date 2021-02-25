@@ -124,7 +124,6 @@ http_downloading=Laster ned
 http_done=Lastet ned $1 til $2
 uploading=Laster opp, vennligst vent...
 acl_allowed_paths=Tillatte stier
-acl_allowed_paths2=(For ikke-root brukere)
 acl_allowed_for_edit=Minetyper tillatt for redigering av innebygd editor
 acl_work_as=Les filer som Unix bruker
 acl_root=Root (vær forsiktig med å gi tilgang til ikke-betrodde brukere!)

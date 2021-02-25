@@ -124,7 +124,6 @@ http_downloading=Memuat turun
 http_done=Muat turun $1 hingga $2.
 uploading=Memuat naik, sila tunggu. ..
 acl_allowed_paths=Benarkan akses kepada direktori
-acl_allowed_paths2=(Untuk pengguna bukan akar)
 acl_allowed_for_edit=Mimetype dibenarkan untuk diedit oleh editor terbina
 acl_work_as=Akses fail sebagai pengguna Unix
 acl_root=Root (memberi perhatian kepada pengguna yang tidak dipercayai!)

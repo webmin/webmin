@@ -124,7 +124,6 @@ http_downloading=ดาวน์โหลด
 http_done=ดาวน์โหลด $1 ถึง $2 
 uploading=กำลังอัปโหลดโปรดรอ. ..
 acl_allowed_paths=อนุญาตให้เข้าถึงไดเรกทอรี
-acl_allowed_paths2=(สำหรับผู้ใช้ที่ไม่ใช่รูท)
 acl_allowed_for_edit=Mimetypes อนุญาตให้แก้ไขได้โดย builtin editor
 acl_work_as=เข้าถึงไฟล์ในฐานะผู้ใช้ Unix
 acl_root=รูท (ให้ด้วยความระมัดระวังต่อผู้ใช้ที่ไม่น่าเชื่อถือ!)

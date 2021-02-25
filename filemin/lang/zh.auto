@@ -124,7 +124,6 @@ http_downloading=正在下载
 http_done=已将 $1下载到 $2。
 uploading=上载中，请稍候. ..
 acl_allowed_paths=允许访问目录
-acl_allowed_paths2=（对于非root用户）
 acl_allowed_for_edit=内置编辑器允许编辑的Mimetypes
 acl_work_as=以Unix用户访问文件
 acl_root=根（小心不信任的用户！）

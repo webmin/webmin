@@ -124,7 +124,6 @@ http_downloading=Đang tải xuống
 http_done=Đã tải xuống $1 đến $2.
 uploading=Đang tải lên, vui lòng đợi. ..
 acl_allowed_paths=Cho phép truy cập vào thư mục
-acl_allowed_paths2=(Dành cho người dùng không root)
 acl_allowed_for_edit=Mimetypes được phép chỉnh sửa bởi trình soạn thảo dựng sẵn
 acl_work_as=Truy cập tệp dưới dạng người dùng Unix
 acl_root=Root (cấp quyền chăm sóc cho người dùng không đáng tin cậy!)

@@ -124,7 +124,6 @@ http_downloading=Laddar ner
 http_done=Nedladdat $1 till $2.
 uploading=Laddar upp, vänta. ..
 acl_allowed_paths=Tillåt åtkomst till kataloger
-acl_allowed_paths2=(För icke-root-användare)
 acl_allowed_for_edit=Mimetyper tillåtna för redigering av den inbyggda redigeraren
 acl_work_as=Få åtkomst till filer som Unix-användare
 acl_root=Rot (bevilja med försiktighet till icke-betrodda användare!)

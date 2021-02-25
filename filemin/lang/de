@@ -124,7 +124,6 @@ http_downloading=Wird heruntergeladen
 http_done=$1 von $2 heruntergeladen.
 uploading=Hochladen, bitte warten ...
 acl_allowed_paths=Zugang zu Verzeichnissen erlauben
-acl_allowed_paths2=(Nur für root-Benutzer
 acl_allowed_for_edit=Mimetypen erlaubt zum Editieren von engebautenEditor
 acl_work_as=Auf Dateien als System-Benutzer zugreifen
 acl_root=Root (nicht vertrauenswürdigen Benutzern mit Vorsicht zu gewähren!)

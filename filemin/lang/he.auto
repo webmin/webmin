@@ -124,7 +124,6 @@ http_downloading=מוריד
 http_done=הורדת $1 ל- $2.
 uploading=מעלה, אנא המתן. ..
 acl_allowed_paths=אפשר גישה לספריות
-acl_allowed_paths2=(למשתמשים שאינם שורש)
 acl_allowed_for_edit=סוגי mimet מותר לערוך על ידי עורך מובנה
 acl_work_as=גישה לקבצים כמשתמש יוניקס
 acl_root=שורש (הענק בזהירות למשתמשים שאינם מהימנים!)

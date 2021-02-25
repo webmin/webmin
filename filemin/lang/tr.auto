@@ -124,7 +124,6 @@ http_downloading=İndirilmesi
 http_done=$1 - $2 arasında indirildi.
 uploading=Yükleniyor... Lütfen Bekleyin. ..
 acl_allowed_paths=Dizinlere erişime izin ver
-acl_allowed_paths2=(Kök olmayan kullanıcılar için)
 acl_allowed_for_edit=Yerleşik düzenleyici tarafından düzenlemeye izin verilen mime türleri
 acl_work_as=Dosyalara Unix kullanıcısı olarak erişin
 acl_root=Kök (güvenilir olmayan kullanıcılara özenle verin!)

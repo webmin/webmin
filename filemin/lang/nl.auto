@@ -124,7 +124,6 @@ http_downloading=Downloaden
 http_done=$1 tot $2 gedownload.
 uploading=Uploaden, even geduld. ..
 acl_allowed_paths=Sta toegang tot mappen toe
-acl_allowed_paths2=(Voor niet-rootgebruikers)
 acl_allowed_for_edit=Mimetypes toegestaan voor bewerking door ingebouwde editor
 acl_work_as=Toegang tot bestanden als Unix-gebruiker
 acl_root=Root (wees voorzichtig met niet-vertrouwde gebruikers!)

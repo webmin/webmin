@@ -124,7 +124,6 @@ http_downloading=다운로드 중
 http_done=$1 을 (를) $2 에 다운로드했습니다.
 uploading=업로드 중입니다. 잠시만 기다려주세요. ..
 acl_allowed_paths=디렉토리 접근 허용
-acl_allowed_paths2=(루트가 아닌 사용자의 경우)
 acl_allowed_for_edit=내장 편집기로 편집 할 수있는 Mimetypes
 acl_work_as=Unix 사용자로 파일에 액세스
 acl_root=루트 (신뢰할 수없는 사용자에게주의를 기울임)

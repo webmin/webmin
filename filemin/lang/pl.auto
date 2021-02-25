@@ -124,7 +124,6 @@ http_downloading=Ściąganie
 http_done=Pobrano $1 do $2.
 uploading=Wgrywanie... Proszę Czekać. ..
 acl_allowed_paths=Zezwalaj na dostęp do katalogów
-acl_allowed_paths2=(Dla użytkowników innych niż root)
 acl_allowed_for_edit=Mimetypes dozwolone do edycji przez wbudowany edytor
 acl_work_as=Uzyskaj dostęp do plików jako użytkownik systemu Unix
 acl_root=Root (udzielaj ostrożnie niezaufanym użytkownikom!)

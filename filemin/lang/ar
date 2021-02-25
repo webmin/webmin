@@ -124,7 +124,6 @@ http_downloading=تحميل
 http_done=تم تنزيل $1 إلى $2.
 uploading=التحميل ، يرجى الانتظار ...
 acl_allowed_paths=السماح بالوصول إلى الأدلة
-acl_allowed_paths2=(للمستخدمين غير root)
 acl_allowed_for_edit=أنواع Mimetypes مسموح بها للتحرير بواسطة محرر مدمج
 acl_work_as=الوصول إلى الملفات كمستخدم Unix
 acl_root=root (منح مع الرعاية للمستخدمين غير الموثوق بهم!)

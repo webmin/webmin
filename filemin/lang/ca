@@ -124,7 +124,6 @@ http_downloading=S'està descarregant
 http_done=S'ha descarregat $1 a $2.
 uploading=S'està pujant, espera si et plau...
 acl_allowed_paths=Permet l'accés als directoris
-acl_allowed_paths2=(Per a usuaris no root)
 acl_allowed_for_edit=Tipus MIME permesos per a editar amb l'editor integrat
 acl_work_as=Accedeix als fitxers com l'usuari Unix
 acl_root=Root (compte amb els usuaris no fiables!)

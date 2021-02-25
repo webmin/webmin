@@ -124,7 +124,6 @@ http_downloading=Atsisiuntimas
 http_done=Atsisiųsta nuo $1 iki $2.
 uploading=Įkeliama, palaukite. ..
 acl_allowed_paths=Leisti pasiekti katalogus
-acl_allowed_paths2=(Ne root vartotojams)
 acl_allowed_for_edit=Įrenginio redaktorius gali redaguoti pamėgdytus tipus
 acl_work_as=Prieikite prie failų kaip „Unix“ vartotojas
 acl_root=Šaknis (atsargiai suteikite nepatikimiems vartotojams!)

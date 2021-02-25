@@ -124,7 +124,6 @@ http_downloading=Downloading
 http_done=Downloaded $1 to $2.
 uploading=Uploading, please wait...
 acl_allowed_paths=Allow access to directories
-acl_allowed_paths2=(For non-root users)
 acl_allowed_for_edit=Mimetypes allowed for edit by builtin editor
 acl_work_as=Access files as Unix user
 acl_root=Root (grant with care to un-trusted users!)
