@@ -66,7 +66,8 @@ sub get_paths {
     }
 
     # Get and check allowed paths
-    @allowed_paths = split(/\s+/, $access{'allowed_paths'});
+    my @allowed_paths_arr = split(/\s+/, $access{'allowed_paths'});
+    @allowed_paths = @allowed_paths_arr;
     if (&get_product_name() eq 'usermin') {
         # Add paths from Usermin config
         push(@allowed_paths, split(/\t+/, $config{'allowed_paths'}));
@@ -75,8 +76,21 @@ sub get_paths {
         # Assume any directory can be accessed
         $base = "/";
         @allowed_paths = ( $base );
+
+        # Assume limited to certain dirs only
+        my $allowed_paths_number = scalar(@allowed_paths_arr);
+        if (
+            $allowed_paths_number &&
+            $allowed_paths_arr[0] ne '$ROOT' &&
+            ($allowed_paths_arr[0] ne '$HOME' ||
+            ($allowed_paths_arr[0] eq '$HOME' && $allowed_paths_number > 1))
+        ) {
+            @allowed_paths = map { $_ eq '$HOME' ? $remote_user_info[7] : $_ }
+                             @allowed_paths_arr;
+            @allowed_paths = grep { $_ ne '$ROOT' } @allowed_paths;
+        }
     } else {
-        @allowed_paths = map { $_ eq '$HOME' ? @remote_user_info[7] : $_ }
+        @allowed_paths = map { $_ eq '$HOME' ? $remote_user_info[7] : $_ }
                              @allowed_paths;
         @allowed_paths = map { s/\$USER/$remote_user/g; $_ } @allowed_paths;
         @allowed_paths = &unique(@allowed_paths);
@@ -435,6 +449,28 @@ sub get_paste_buffer_file
         &make_dir($tmpdir, 0700) if (!-d $tmpdir);
         return $tmpdir."/.buffer";
     }
+}
+
+# test_allowed_paths()
+# Check if we need to test allowed paths to limit listing
+sub test_allowed_paths
+{
+    my $allowed_paths_number = scalar(@allowed_paths);
+    if (
+        # Test for regular users
+        ($remote_user_info[0] ne 'root' && $allowed_paths[0] ne '$ROOT') ||
+
+        # Test for privileged users
+        ($remote_user_info[0] eq 'root' && $allowed_paths_number &&
+            $allowed_paths[0] ne '$ROOT' &&
+            ($allowed_paths[0] ne '$HOME' ||
+            ($allowed_paths[0] eq '$HOME' && $allowed_paths_number > 1)))
+
+        )
+    {
+        return 1;
+    }
+    return 0;
 }
 
 # check_allowed_path(file)

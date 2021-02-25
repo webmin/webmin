@@ -3,9 +3,17 @@ require 'filemin-lib.pl';
 sub acl_security_form {
     my ($access) = @_;
 
+    # Check if user we're editing ACLs for is root capable user
+    # and later display default `$HOME` as `/` to avoid confusion
+    my @given_user = getpwnam($in{'user'});
+    if ((!defined($given_user[0]) ||
+        $base_remote_user eq 'root') &&
+        $access->{'allowed_paths'} eq '$HOME') {
+        $access->{'allowed_paths'} = '/';
+    }
+
     # Directories the user can access
-    print &ui_table_row($text{'acl_allowed_paths'}."<br>\n".
-			$text{'acl_allowed_paths2'},
+    print &ui_table_row($text{'acl_allowed_paths'}."\n",
 	ui_textarea("allowed_paths",
 		    join("\n", split(/\s+/, $access->{'allowed_paths'})),
 		    10, 80, undef, undef, "style='width: 100%'"), 2);

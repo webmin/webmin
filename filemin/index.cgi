@@ -22,7 +22,7 @@ unless (opendir ( DIR, $cwd )) {
     closedir(DIR);
 
     # Filter out not allowed entries
-    if($remote_user_info[0] ne 'root' && $allowed_paths[0] ne '$ROOT') {
+    if(test_allowed_paths()) {
         # Leave only allowed
         for $path (@allowed_paths) {
             my $slashed = $path;
