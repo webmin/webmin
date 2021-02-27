@@ -151,7 +151,7 @@ menu_file=File
 menu_edit=Edit
 menu_tools=Tools
 menu_bookmarks=Bookmarks
-notallowed=You are not allowed to access $1. The allowed directories are : $2
+notallowed=You are not allowed to access $1. The only allowed directories are: $2
 error_upload_emax=Uploaded file is larger than the limit of $1
 extract_etype=Unsupported archive file type
 
