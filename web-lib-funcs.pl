@@ -1394,41 +1394,34 @@ if (!$_[0]) {
 print "</html>\n";
 }
 
-=head2 load_module_preferences(module, &config, [get_acl])
+=head2 load_module_preferences(module, &config)
 
 Check if user preferences can be loaded for given
 module based on module's prefs.info special file.
-In case of get, it will return module's prefs acls.
 
 =cut
 sub load_module_preferences
 {
-my ($module, $curr_config, $get_acl) = @_;
-my $module_dir = &module_root_directory($module);
-my $module_prefs_conf = "$module_dir/prefs.info";
-if (-r $module_prefs_conf) {
-	my %module_prefs_conf_allowed;
-	&read_file($module_prefs_conf, \%module_prefs_conf_allowed);
-	return $module_prefs_conf_allowed{$get_acl} if ($get_acl);
-	my $current_user_prefs = "$config_directory/$module/prefs.$remote_user";
-	if (-r $current_user_prefs) {
-		if ($module_prefs_conf_allowed{'allowed'} eq "*") {
-			&read_file($current_user_prefs, \%$curr_config);
-			}
-		else {
-			my %newconfigtmp;
-			&read_file($current_user_prefs, \%newconfigtmp);
-			foreach my $key (keys %newconfigtmp) {
-			if (grep(/^$key$/, split(",", $module_prefs_conf_allowed{'allowed'}))) {
-					$curr_config->{$key} = $newconfigtmp{$key};
-					}
+my ($module, $curr_config) = @_;
+my $module_prefs_acls = &get_module_preferences_acl($module, 'allowed');
+my $current_user_prefs = "$config_directory/$module/prefs.$remote_user";
+if ($module_prefs_acls) {
+	if ($module_prefs_acls eq "*") {
+		&read_file($current_user_prefs, \%$curr_config);
+		}
+	else {
+		my %newconfigtmp;
+		&read_file($current_user_prefs, \%newconfigtmp);
+		foreach my $key (keys %newconfigtmp) {
+		if (grep(/^$key$/, split(",", $module_prefs_acls))) {
+				$curr_config->{$key} = $newconfigtmp{$key};
 				}
 			}
 		}
 	}
 }
 
-=head2 get_module_preferences_acl(module)
+=head2 get_module_preferences_acl(module, type)
 
 Return one of module's prefs params (if described by module in prefs.info).
 
@@ -1436,7 +1429,14 @@ Return one of module's prefs params (if described by module in prefs.info).
 sub get_module_preferences_acl
 {
 my ($module, $type) = @_;
-return &load_module_preferences($module, undef, $type || 'allowed');
+my $module_dir = &module_root_directory($module);
+my $module_prefs_conf_file = "$module_dir/prefs.info";
+if (-r $module_prefs_conf_file) {
+	my %module_prefs_conf;
+	&read_file($module_prefs_conf_file, \%module_prefs_conf);
+	return $module_prefs_conf{$type};
+	}
+return undef;
 }
 
 =head2 load_theme_library
@@ -4245,7 +4245,7 @@ if (defined(&theme_get_module_acl)) {
 
 # In case module's config expected to be user-based
 # only, we must not consider `noconfig` option at all.
-if (&get_module_preferences_acl($m) eq "*") {
+if (&get_module_preferences_acl($m, 'allowed') eq "*") {
 	$rv{'noconfig'} = 0;
 	}
 return %rv;
