@@ -73,7 +73,6 @@ Name: webmin
 Version: $ver
 Release: $rel
 Provides: %{name}-%{version} perl(WebminCore)
-PreReq: /bin/sh /usr/bin/perl /bin/rm
 Requires: /bin/sh /usr/bin/perl /bin/rm perl(Net::SSLeay) perl(Time::Local) perl(Encode::Detect) perl(Data::Dumper) openssl unzip tar
 AutoReq: 0
 License: Freeware
@@ -130,6 +129,7 @@ echo rpm >%{buildroot}/usr/libexec/webmin/install-type
 %files
 %defattr(-,root,root)
 /usr/libexec/webmin
+/usr/bin/webmin
 %config /etc/sysconfig/daemons/webmin
 /etc/init.d/webmin
 /etc/rc.d/rc2.d/S99webmin
