@@ -62,6 +62,8 @@ else {
 	@clients = ( [ $in{'client'}, $in{'job'} ] );
 	}
 
+$dbh->disconnect();
+
 foreach $clientjob (@clients) {
 	$client = $clientjob->[0];
 	$job = $clientjob->[1];
