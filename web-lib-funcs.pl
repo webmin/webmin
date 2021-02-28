@@ -1405,7 +1405,7 @@ sub load_module_preferences
 my ($module, $curr_config) = @_;
 my $module_prefs_acls = &get_module_preferences_acl($module, 'allowed');
 my $current_user_prefs = "$config_directory/$module/prefs.$remote_user";
-if ($module_prefs_acls) {
+if ($module_prefs_acls && -r $current_user_prefs) {
 	if ($module_prefs_acls eq "*") {
 		&read_file($current_user_prefs, \%$curr_config);
 		}
