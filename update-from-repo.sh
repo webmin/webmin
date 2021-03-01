@@ -314,7 +314,7 @@ fi
     # start processing pulled source
     # add latest changeset date to original version, works with git 1.7+
     if [[ "${RRELEASE}" == "" ]] ; then
-        version="`head -c -1 ${TEMP}/version``cd ${TEMP}; date -d @$(${GIT} log -n1 --format='%at') '+%m%d%H%M'`"
+        version="`head -n 1 ${TEMP}/version``cd ${TEMP}; ${GIT} log -n1 --pretty='format:%cd' --date=format:'%m%d%H%M'`"
     else
         version="${RRELEASE}"
     fi
