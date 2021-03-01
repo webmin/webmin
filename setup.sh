@@ -28,8 +28,12 @@ if [ $? != "0" ]; then
 	exit 1;
 fi
 
+spaces_count_def=10
+verleneach=$(expr ${#ver} / 2)
+space_count=$(expr $spaces_count_def - $verleneach)
+space_count_cond="$(printf "%*s%s" $space_count)"
 echo "***********************************************************************"
-echo "*            Welcome to the Webmin setup script, version $ver        *"
+echo "* $space_count_cond Welcome to the Webmin setup script, version $ver $space_count_cond *"
 echo "***********************************************************************"
 echo "Webmin is a web-based interface that allows Unix-like operating"
 echo "systems and common Unix services to be easily administered."
