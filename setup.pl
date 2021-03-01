@@ -19,9 +19,12 @@ open(VERSION, "$wadir/version") ||
 	&errorexit("Cannot find the Webmin install directory");
 chop($ver = <VERSION>);
 close(VERSION);
-
+my $spaces_count_def = 10;
+my $verleneach = int(length($ver) / 2);
+my $space_count = int($spaces_count_def - $verleneach);
+my $space_count_cond = " " x $space_count;
 print "***********************************************************************\n";
-print "*            Welcome to the Webmin setup script, version $ver        *\n";
+print "* $space_count_cond Welcome to the Webmin setup script, version $ver $space_count_cond *\n";
 print "***********************************************************************\n";
 print "Webmin is a web-based interface that allows Unix-like operating\n";
 print "systems and common Unix services to be easily administered.\n";
