@@ -5712,6 +5712,7 @@ opendir(DIR, $root_directory);
 foreach my $m (readdir(DIR)) {
 	my %tinfo;
 	next if ($m =~ /^\./);
+	next if (-l "$root_directory/$m");
 	next if (!&read_file_cached("$root_directory/$m/theme.info", \%tinfo));
 	next if (!&check_os_support(\%tinfo));
 	foreach my $o (@lang_order_list) {
