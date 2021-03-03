@@ -142,6 +142,11 @@ while($d = readdir(DIR)) {
 	}
 closedir(DIR);
 
+# Make blue-theme a symlink instead of a copy
+if (!$min && -r "$tardir/gray-theme") {
+	system("cd $tardir && ln -s gray-theme blue-theme");
+	}
+
 # Remove useless .bak, test and other files, and create the tar.gz file
 print "Creating webmin-$vfile.tar.gz\n";
 system("cd $tardir ; tar cvhf - $dir 2>/dev/null | gzip -c >webmin-$vfile.tar.gz");
