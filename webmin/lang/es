@@ -9,7 +9,7 @@ index_restart=Reiniciar Webmin
 index_restartmsg=Pulse este botón para reiniciar el proceso servidor de Webmin. Esto podría ser necesario si ha actualizado recientemente Perl.
 
 access_title=Control de Acceso a IP
-access_desc=El servidor Webmin puede ser configurado para denegar o permitir el acceso desde sólo ciertas direcciones IP, mediante este formulario. Se pueden introducir tanto nombres de máquinas (p.ej. foo.bar.com) como de redes IP (p.ej. 10.254.3.0 o 10.254.1.0/255.255.255.128). Debes de limitar el acceso a tu servidor a direcciones de confianza, especialmente si es accesible desde Internet. De otra manera, cualquiera que adivine tu clave de acceso tendrá control completo de tu sistema.
+access_desc=El servidor Webmin puede ser configurado para denegar o permitir el acceso desde sólo ciertas direcciones IP, mediante este formulario. Se pueden introducir tanto nombres de máquinas (p.ej. foo.bar.com) como de redes IP (p.ej. 10.254.3.0 o 10.254.1.0/255.255.255.128 o 2001:DB8::A0BC:0001 o 2001:DB8::/32). Debes de limitar el acceso a tu servidor a direcciones de confianza, especialmente si es accesible desde Internet. De otra manera, cualquiera que adivine tu clave de acceso tendrá control completo de tu sistema.
 access_header=Opciones de Control de Acceso
 access_all=Permitir desde todas las direcciones
 access_allow=Sólo permitir desde las direcciones listadas

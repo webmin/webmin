@@ -11,7 +11,7 @@ index_refresh=Penyegaran Modul
 index_refreshmsg=Semak semula kesemua modul Webmin yang dipasang pada pelayan, dan mengemas kini kegunaan modul yang sebelumnya dalam kategori 'Modul yang tidak digunakan'.
 
 access_title=Kawalan Capaian IP
-access_desc=Pelayan Webmin boleh dikonfigurasikan untuk menafikan atau membenarkan akses hanya dari alamat IP tertentu dengan menggunakan borang ini. Nama hos (seperti foo.bar.com) dan rangkaian IP (seperti 10.254.3.0 atau 10.254.1.0/255.255.255.128 atau 10.254.1.0/25 atau 10.254.1.5-10.254.97.127) juga boleh dimasukkan. Anda harus menghadkan capaian ke pelayan anda dari alamat yang boleh dipercayai, terutamanya jika ia boleh dicapai dari Internet. Jika tidak, sesiapa sahaja yang meneka kata laluan anda akan mempunyai kawalan penuh terhadap sistem anda.
+access_desc=Pelayan Webmin boleh dikonfigurasikan untuk menafikan atau membenarkan akses hanya dari alamat IP tertentu dengan menggunakan borang ini. Nama hos (seperti foo.bar.com) dan rangkaian IP (seperti 10.254.3.0 atau 10.254.1.0/255.255.255.128 atau 10.254.1.0/25 atau 10.254.1.5-10.254.97.127 atau 2001:DB8::A0BC:0001 atau 2001:DB8::/32) juga boleh dimasukkan. Anda harus menghadkan capaian ke pelayan anda dari alamat yang boleh dipercayai, terutamanya jika ia boleh dicapai dari Internet. Jika tidak, sesiapa sahaja yang meneka kata laluan anda akan mempunyai kawalan penuh terhadap sistem anda.
 access_ip=Membernarkan Alamat IP
 access_local=Termasuk rangkaian tempatan dalam senarai
 access_header=Pilihan kawalan capaian

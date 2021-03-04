@@ -11,7 +11,7 @@ index_refresh=Actualiser les modules
 index_refreshmsg=Vérifiez à nouveau tous les modules Webmin pour les serveurs installés et mettez à jour ceux qui apparaissent dans la catégorie 'Modules non utilisés'.
 
 access_title=Contrôle d'accès IP
-access_desc=Le serveur Webmin peut être configuré pour refuser ou autoriser l'accès uniquement à partir de certaines adresses IP à l'aide de ce formulaire. Les noms d'hôte (comme foo.bar.com) et les réseaux IP (comme 10.254.3.0 ou 10.254.1.0/255.255.255.128 ou 10.254.1.0/25 ou 10.254.1.5-10.254.97.127) peuvent également être saisis. Vous devez limiter l'accès à votre serveur aux adresses de confiance, en particulier s'il est accessible depuis Internet. Sinon, toute personne qui devine votre mot de passe aura le contrôle total de votre système.
+access_desc=Le serveur Webmin peut être configuré pour refuser ou autoriser l'accès uniquement à partir de certaines adresses IP à l'aide de ce formulaire. Les noms d'hôte (comme foo.bar.com) et les réseaux IP (comme 10.254.3.0 ou 10.254.1.0/255.255.255.128 ou 10.254.1.0/25 ou 10.254.1.5-10.254.97.127 ou 2001:DB8::A0BC:0001 ou 2001:DB8::/32) peuvent également être saisis. Vous devez limiter l'accès à votre serveur aux adresses de confiance, en particulier s'il est accessible depuis Internet. Sinon, toute personne qui devine votre mot de passe aura le contrôle total de votre système.
 access_ip=Adresses IP autorisées
 access_local=Inclure le réseau local dans la liste
 access_header=Options de contrôle d'accès

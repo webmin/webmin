@@ -11,7 +11,7 @@ index_refresh=Module de actualizare
 index_refreshmsg=Verificați din nou toate modulele Webmin pentru serverele instalate și actualizați cele care apar în categoria „Module neutilizate”.
 
 access_title=Control acces IP
-access_desc=Serverul Webmin poate fi configurat pentru a refuza sau permite accesul numai de la anumite adrese IP folosind acest formular. Numele de gazdă (cum ar fi foo.bar.com) și rețelele IP (cum ar fi 10.254.3.0 sau 10.254.1.0/255.255.255.128 sau 10.254.1.0/25 sau 10.254.1.5-10.254.97.127) pot fi de asemenea introduse. Ar trebui să vă limitați accesul la serverul dvs. la adrese de încredere, mai ales dacă este accesibil de pe Internet. În caz contrar, oricine ghicește parola dvs. va avea controlul complet asupra sistemului dvs.
+access_desc=Serverul Webmin poate fi configurat pentru a refuza sau permite accesul numai de la anumite adrese IP folosind acest formular. Numele de gazdă (cum ar fi foo.bar.com) și rețelele IP (cum ar fi 10.254.3.0 sau 10.254.1.0/255.255.255.128 sau 10.254.1.0/25 sau 10.254.1.5-10.254.97.127 sau 2001:DB8::A0BC:0001 sau 2001:DB8::/32) pot fi de asemenea introduse. Ar trebui să vă limitați accesul la serverul dvs. la adrese de încredere, mai ales dacă este accesibil de pe Internet. În caz contrar, oricine ghicește parola dvs. va avea controlul complet asupra sistemului dvs.
 access_ip=Adrese IP permise
 access_local=Includeți rețeaua locală în listă
 access_header=Opțiuni de control de acces

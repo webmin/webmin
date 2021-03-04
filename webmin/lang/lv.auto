@@ -11,7 +11,7 @@ index_refresh=Atsvaidziniet moduļus
 index_refreshmsg=Pārbaudiet visus Webmin moduļus instalētajiem serveriem un atjauniniet tos, kas parādās kategorijā Neizmantotie moduļi.
 
 access_title=IP piekļuves kontrole
-access_desc=Webmin serveri var konfigurēt, lai liegtu piekļuvi vai atļautu piekļuvi tikai no noteiktām IP adresēm, izmantojot šo veidlapu. Var ievadīt arī resursdatorus (piemēram, foo.bar.com) un IP tīklus (piemēram, 10.254.3.0 vai 10.254.1.0/255.255.255.128 vai 10.254.1.0/25 vai 10.254.1.5-10.254.97.127). Jums vajadzētu ierobežot piekļuvi serverim ar uzticamām adresēm, it īpaši, ja tas ir pieejams no interneta. Pretējā gadījumā ikviens, kurš uzminēs jūsu paroli, pilnībā kontrolēs jūsu sistēmu.
+access_desc=Webmin serveri var konfigurēt, lai liegtu piekļuvi vai atļautu piekļuvi tikai no noteiktām IP adresēm, izmantojot šo veidlapu. Var ievadīt arī resursdatorus (piemēram, foo.bar.com) un IP tīklus (piemēram, 10.254.3.0 vai 10.254.1.0/255.255.255.128 vai 10.254.1.0/25 vai 10.254.1.5-10.254.97.127 vai 2001:DB8::A0BC:0001 vai 2001:DB8::/32). Jums vajadzētu ierobežot piekļuvi serverim ar uzticamām adresēm, it īpaši, ja tas ir pieejams no interneta. Pretējā gadījumā ikviens, kurš uzminēs jūsu paroli, pilnībā kontrolēs jūsu sistēmu.
 access_ip=Atļautās IP adreses
 access_local=Sarakstā iekļaujiet vietējo tīklu
 access_header=Piekļuves kontroles iespējas

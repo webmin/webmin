@@ -11,7 +11,7 @@ index_refresh=Oppfrisk moduler
 index_refreshmsg=Sjekk alle Webmin moduler på nytt, etter installerte tjenere, og oppdater de som forekommer i kategorien 'Ubrukte moduler'.
 
 access_title=IP Tilgangs kontroll
-access_desc=Webmin tjeneren kan settes opp til æ nekte eller tillate tilgang fra spesifikke IP adresser. Vertsnavn (som foo.bar.com) og IP nettverk (som 10.254.3.0 eller 10.254.1.0/255.255.255.128) kan også brukes. Du bør begrense tilgangen på tjeneren til de adressene du stoler på, spesielt hvis tjeneren kan nås fra internett. Ellers alle som gjetter passordet ditt vil ha full kontroll over tjeneren......
+access_desc=Webmin tjeneren kan settes opp til æ nekte eller tillate tilgang fra spesifikke IP adresser. Vertsnavn (som foo.bar.com) og IP nettverk (som 10.254.3.0 eller 10.254.1.0/255.255.255.128 eller 2001:DB8::A0BC:0001 eller 2001:DB8::/32) kan også brukes. Du bør begrense tilgangen på tjeneren til de adressene du stoler på, spesielt hvis tjeneren kan nås fra internett. Ellers alle som gjetter passordet ditt vil ha full kontroll over tjeneren......
 access_ip=Tillatte IP adresser
 access_local=Ta med lokalt nettverk i listen
 access_header=Innstillinger for tilgangskontroll

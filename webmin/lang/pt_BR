@@ -11,7 +11,7 @@ index_refresh=Atualizar Módulos
 index_refreshmsg=Verificar novamente todos os módulos para servidores instalados, e atualizar aqueles que aparecerem na categoria 'Módulos não-usados'.
 
 access_title=Controle de Acesso por IP
-access_desc=O servidor Webmin pode ser configurado para negar ou permitir o acesso somente para certos endereços IP usando este formulário. Nomes de computador (como foo.bar.com) e redes IP (como 10.254.3.0 ou 10.254.1.0/255.255.255.128) podem também ser especificados. Você deve limitar o acesso a seu servidor somente para usuários confiáveis, especialmente caso o mesmo seja acessível a partir da Internet. De outra forma, qualquer pessoa que conheça sua senha terá controle total de seu sistema.
+access_desc=O servidor Webmin pode ser configurado para negar ou permitir o acesso somente para certos endereços IP usando este formulário. Nomes de computador (como foo.bar.com) e redes IP (como 10.254.3.0 ou 10.254.1.0/255.255.255.128 ou 2001:DB8::A0BC:0001 ou 2001:DB8::/32) podem também ser especificados. Você deve limitar o acesso a seu servidor somente para usuários confiáveis, especialmente caso o mesmo seja acessível a partir da Internet. De outra forma, qualquer pessoa que conheça sua senha terá controle total de seu sistema.
 access_ip=Endereços IP permitidos
 access_header=Controle de Acesso
 access_all=Permitir para todos os endereços

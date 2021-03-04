@@ -2,7 +2,7 @@ index_title=Webmin-inställningar
 index_return=webmin-inställningar
 
 access_title=IP-åtkomstkontroll
-access_desc=Webmin-servern kan ställas in att neka eller tillåta åtkomst från vissa IP-adresser i detta formulär. Datornamn (t ex foo.bar.com) och IP-nätverk (t ex 10.254.3.0 eller 10.254.1.0/255.255.255.128) kan också anges. Tillgängligheten bör begränsas till adresser du litar på, speciellt om servern går att komma åt från Internet. Om du inte gör detta kommer vem som helst som lyckas gissa sig till ditt lösenord att komma åt hela ditt system.
+access_desc=Webmin-servern kan ställas in att neka eller tillåta åtkomst från vissa IP-adresser i detta formulär. Datornamn (t ex foo.bar.com) och IP-nätverk (t ex 10.254.3.0 eller 10.254.1.0/255.255.255.128 eller 2001:DB8::A0BC:0001 eller 2001:DB8::/32) kan också anges. Tillgängligheten bör begränsas till adresser du litar på, speciellt om servern går att komma åt från Internet. Om du inte gör detta kommer vem som helst som lyckas gissa sig till ditt lösenord att komma åt hela ditt system.
 access_ip=Tillåtna IP adresser
 access_local=Inkludera lokalt nätverk i listan
 access_header=Åtkomstkontroll

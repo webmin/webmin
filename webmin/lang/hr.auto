@@ -11,7 +11,7 @@ index_refresh=Osvježite module
 index_refreshmsg=Ponovno provjerite sve Webmin module za instalirane poslužitelje i ažurirajte one koji se pojavljuju u kategoriji 'Neiskorišteni moduli'.
 
 access_title=IP kontrola pristupa
-access_desc=Webmin poslužitelj može se konfigurirati za uskraćivanje ili dopuštanje pristupa samo s određene IP adrese pomoću ovog obrasca. Mogu se unijeti i nazivi hosta (poput foo.bar.com) i IP mreže (poput 10.254.3.0 ili 10.254.1.0/255.255.255.128 ili 10.254.1.0/25 ili 10.254.1.5-10.254.97.127). Trebali biste ograničiti pristup svom poslužitelju na pouzdanim adresama, posebno ako je on dostupan s Interneta. Inače će svatko tko pogodi vašu lozinku imati potpunu kontrolu nad vašim sustavom.
+access_desc=Webmin poslužitelj može se konfigurirati za uskraćivanje ili dopuštanje pristupa samo s određene IP adrese pomoću ovog obrasca. Mogu se unijeti i nazivi hosta (poput foo.bar.com) i IP mreže (poput 10.254.3.0 ili 10.254.1.0/255.255.255.128 ili 10.254.1.0/25 ili 10.254.1.5-10.254.97.127 ili 2001:DB8::A0BC:0001 ili 2001:DB8::/32). Trebali biste ograničiti pristup svom poslužitelju na pouzdanim adresama, posebno ako je on dostupan s Interneta. Inače će svatko tko pogodi vašu lozinku imati potpunu kontrolu nad vašim sustavom.
 access_ip=Dopuštene IP adrese
 access_local=Uključite lokalnu mrežu u popis
 access_header=Opcije kontrole pristupa

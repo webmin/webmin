@@ -20,3 +20,4 @@ core
 # makedist.pl
 tarballs/
 minimal/
+.DS_Store

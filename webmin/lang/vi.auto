@@ -11,7 +11,7 @@ index_refresh=Làm mới mô-đun
 index_refreshmsg=Kiểm tra lại tất cả các mô-đun Webmin cho các máy chủ đã cài đặt và cập nhật các mô-đun xuất hiện trong danh mục 'Mô-đun không sử dụng'.
 
 access_title=Kiểm soát truy cập IP
-access_desc=Máy chủ Webmin có thể được cấu hình để từ chối hoặc chỉ cho phép truy cập từ một số địa chỉ IP nhất định bằng biểu mẫu này. Tên máy chủ (như foo.bar.com) và mạng IP (như 10.254.3.0 hoặc 10.254.1.0/255.255.255.128 hoặc 10.254.1.0/25 hoặc 10.254.1.5-10.254.97.127) cũng có thể được nhập. Bạn nên giới hạn quyền truy cập vào máy chủ của mình đến các địa chỉ đáng tin cậy, đặc biệt nếu có thể truy cập từ Internet. Nếu không, bất cứ ai đoán mật khẩu của bạn sẽ có toàn quyền kiểm soát hệ thống của bạn.
+access_desc=Máy chủ Webmin có thể được cấu hình để từ chối hoặc chỉ cho phép truy cập từ một số địa chỉ IP nhất định bằng biểu mẫu này. Tên máy chủ (như foo.bar.com) và mạng IP (như 10.254.3.0 hoặc 10.254.1.0/255.255.255.128 hoặc 10.254.1.0/25 hoặc 10.254.1.5-10.254.97.127 hoặc 2001:DB8::A0BC:0001 hoặc 2001:DB8::/32) cũng có thể được nhập. Bạn nên giới hạn quyền truy cập vào máy chủ của mình đến các địa chỉ đáng tin cậy, đặc biệt nếu có thể truy cập từ Internet. Nếu không, bất cứ ai đoán mật khẩu của bạn sẽ có toàn quyền kiểm soát hệ thống của bạn.
 access_ip=Địa chỉ IP được phép
 access_local=Bao gồm mạng cục bộ trong danh sách
 access_header=Tùy chọn kiểm soát truy cập

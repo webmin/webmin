@@ -9,7 +9,7 @@ index_restart=Webmin'i Yeniden Başlat
 index_restartmsg=Bu butonu tıklayarak Webmin sunucusunu yeniden başlatabilirsiniz. Eğer Perl'i güncellediyseniz bu işlem gerekli olabilir.
 
 access_title=IP Erişim Kontrolü
-access_desc=Webmin Sunucusu bu formu kullanarak sadece belirtilen IP adreslerinden girilmesini sağlayabilir. Buraya bilgiler makine isimleri (gelecek.com.tr gibi) veya IP numarası/Alt ağ maskesi (212.45.76.93/255.255.255.0 gibi) şeklinde girilmiş olmalıdır. Eğer internetten bağlanmak isterseniz güvenli olması açısından sadece belirli IP'lerden girilmesini sağlayabilirsiniz. Aksi takdirde başka birisi sizin şifrenizi öğrendiğinde sisteminizin kontrolünü ele geçirecektir.
+access_desc=Webmin Sunucusu bu formu kullanarak sadece belirtilen IP adreslerinden girilmesini sağlayabilir. Buraya bilgiler makine isimleri (gelecek.com.tr gibi) veya IP numarası/Alt ağ maskesi (212.45.76.93/255.255.255.0 veya 2001:DB8::A0BC:0001 veya 2001:DB8::/32 gibi) şeklinde girilmiş olmalıdır. Eğer internetten bağlanmak isterseniz güvenli olması açısından sadece belirli IP'lerden girilmesini sağlayabilirsiniz. Aksi takdirde başka birisi sizin şifrenizi öğrendiğinde sisteminizin kontrolünü ele geçirecektir.
 access_header=Erişim kontrol seçenekleri
 access_all=Bütün adreslerden kabul et
 access_allow=Sadece listedeki adreslerden kabul et

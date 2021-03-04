@@ -2,7 +2,7 @@ index_title=Webmin beállítása
 index_return=a Webmin beállításához
 
 access_title=IP hozzáférés-vezérlés
-access_desc=A Webmin kiszolgáló beállítható úgy, hogy egyes IP címekről tiltja vagy engedélyezi a hozzáférést az alábbi űrlap használatával. Hostnevek (pl. foo.bar.com) és IP hálózatok (pl. 10.254.3.0 vagy 10.254.1.0/255.255.255.128) egyaránt megadhatók. Ajánlott korlátozni a gépéhez történő hozzáférést megbízható címekre, különösen ha az elérhető az Internet-en keresztül, különben bárki, aki megsejti az Ön jelszavát, szabad kezet kap a rendszer irányítása felett.
+access_desc=A Webmin kiszolgáló beállítható úgy, hogy egyes IP címekről tiltja vagy engedélyezi a hozzáférést az alábbi űrlap használatával. Hostnevek (pl. foo.bar.com) és IP hálózatok (pl. 10.254.3.0 vagy 10.254.1.0/255.255.255.128 vagay 2001:DB8::A0BC:0001 vagay 2001:DB8::/32) egyaránt megadhatók. Ajánlott korlátozni a gépéhez történő hozzáférést megbízható címekre, különösen ha az elérhető az Internet-en keresztül, különben bárki, aki megsejti az Ön jelszavát, szabad kezet kap a rendszer irányítása felett.
 access_header=Hozzáférés-vezérlés
 access_all=Engedélyezés minden címről
 access_allow=Csak a listában szereplő címekről engedélyezett

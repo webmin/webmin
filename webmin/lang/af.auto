@@ -11,7 +11,7 @@ index_refresh=Verfris modules
 index_refreshmsg=Kontroleer alle Webmin-modules vir geïnstalleerde bedieners en werk die wat in die kategorie 'Ongebruikte modules' verskyn, op.
 
 access_title=IP-toegangsbeheer
-access_desc=Die Webmin-bediener kan gekonfigureer word om slegs toegang tot sekere IP-adresse te weier of toe te laat op hierdie vorm. Gasheername (soos foo.bar.com) en IP-netwerke (soos 10.254.3.0 of 10.254.1.0/255.255.255.128 of 10.254.1.0/25 of 10.254.1.5-10.254.97.127) kan ook ingevoer word. U moet toegang tot u bediener tot betroubare adresse beperk, veral as dit vanaf die internet toeganklik is. Andersins, sal elkeen wat u wagwoord raai volledige beheer oor u stelsel hê.
+access_desc=Die Webmin-bediener kan gekonfigureer word om slegs toegang tot sekere IP-adresse te weier of toe te laat op hierdie vorm. Gasheername (soos foo.bar.com) en IP-netwerke (soos 10.254.3.0 of 10.254.1.0/255.255.255.128 of 10.254.1.0/25 of 10.254.1.5-10.254.97.127 of 2001:DB8::A0BC:0001 of 2001:DB8::/32) kan ook ingevoer word. U moet toegang tot u bediener tot betroubare adresse beperk, veral as dit vanaf die internet toeganklik is. Andersins, sal elkeen wat u wagwoord raai volledige beheer oor u stelsel hê.
 access_ip=Toegestane IP-adresse
 access_local=Sluit plaaslike netwerk in die lys in
 access_header=Opsies vir toegangsbeheer

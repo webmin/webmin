@@ -11,7 +11,7 @@ index_refresh=Moduli ta ’Aġġornament
 index_refreshmsg=Iċċekkja mill-ġdid il-moduli Webmin kollha għas-servers installati u aġġorna dawk li jidhru fil-kategorija 'Moduli mhux użati'.
 
 access_title=Kontroll tal-Aċċess IP
-access_desc=Is-server Webmin jista 'jiġi kkonfigurat biex jiċħad jew jippermetti aċċess biss minn ċerti indirizzi IP billi juża din il-formola. Ismijiet ospitanti (bħal foo.bar.com) u netwerks IP (bħal 10.254.3.0 jew 10.254.1.0/255.255.255.128 jew 10.254.1.0/25 jew 10.254.1.5-10.254.97.127) jistgħu wkoll jiddaħħlu. Għandek tillimita l-aċċess għas-server tiegħek għal indirizzi fdati, speċjalment jekk tkun aċċessibbli mill-Internet. Inkella, kull min jivvinta l-password tiegħek ikollu kontroll sħiħ tas-sistema tiegħek.
+access_desc=Is-server Webmin jista 'jiġi kkonfigurat biex jiċħad jew jippermetti aċċess biss minn ċerti indirizzi IP billi juża din il-formola. Ismijiet ospitanti (bħal foo.bar.com) u netwerks IP (bħal 10.254.3.0 jew 10.254.1.0/255.255.255.128 jew 10.254.1.0/25 jew 10.254.1.5-10.254.97.127 jew 2001:DB8::A0BC:0001 jew 2001:DB8::/32) jistgħu wkoll jiddaħħlu. Għandek tillimita l-aċċess għas-server tiegħek għal indirizzi fdati, speċjalment jekk tkun aċċessibbli mill-Internet. Inkella, kull min jivvinta l-password tiegħek ikollu kontroll sħiħ tas-sistema tiegħek.
 access_ip=Indirizzi IP permessi
 access_local=Inkludi netwerk lokali fil-lista
 access_header=Għażliet ta 'kontroll ta' aċċess
