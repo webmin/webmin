@@ -61,7 +61,7 @@ sub get_paths {
         &switch_to_unix_user(\@remote_user_info);
     }
     else {
-        # The Webmin user we are connected as
+        # Run as the Webmin user we are connected as
         &switch_to_remote_user();
     }
 
@@ -71,13 +71,16 @@ sub get_paths {
         # Add paths from Usermin config
         push(@allowed_paths, split(/\t+/, $config{'allowed_paths'}));
     }
-    if($remote_user_info[0] eq 'root' || $allowed_paths[0] eq '$ROOT') {
-        # Assume any directory can be accessed
+    if ($remote_user_info[0] eq 'root' && @allowed_paths == 1 &&
+        ($allowed_paths[0] eq '$HOME' || $allowed_paths[0] eq '$ROOT')) {
+	# If the user is running as root and the only allowed path is $HOME
+	# or $ROOT, assume that all files are allowed
         $base = "/";
         @allowed_paths = ( $base );
     } else {
-        @allowed_paths = map { $_ eq '$HOME' ? @remote_user_info[7] : $_ }
-                             @allowed_paths;
+	# Resolve actual allowed paths
+        @allowed_paths = map { $_ eq '$HOME' ? @remote_user_info[7] :
+			       $_ eq '$ROOT' ? '/' : $_ } @allowed_paths;
         @allowed_paths = map { s/\$USER/$remote_user/g; $_ } @allowed_paths;
         @allowed_paths = &unique(@allowed_paths);
 	@allowed_paths = map { my $p = $_; $p =~ s/\/\.\//\//; $p }
@@ -459,6 +462,14 @@ my ($f) = @_;
 my $t = mimetype($f);
 eval { utf8::encode($t) if (utf8::is_utf8($t)) };
 return $t;
+}
+
+sub test_allowed_paths
+{
+if (@allowed_paths == 1 && $allowed_paths[0] eq '/') {
+	return 0;
+	}
+return 1;
 }
 
 1;
