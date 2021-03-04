@@ -9,7 +9,7 @@ index_restart=Riavvia Webmin
 index_restartmsg=Clicca su questo pulsante per riavviare il processo server di Webmin. Questo potrebbe essere necessario dopo un aggiornamento di Perl.
 
 access_title=Controllo degli accessi IP
-access_desc=Il server Webmin può essere configurato in modo da impedire o consentire l'accesso ad indirizzi IP predefiniti utilizzando questa pagina. Possono essere inseriti anche nomi di host (come foo.bar.com) e reti IP (come 10.254.3.0 o 10.254.1.0/255.255.255.128). Dovresti limitare l'accesso al tuo server ad indirizzi sicuri, specialmente se accessibile tramite internet. In caso contrario, chiunque scopra la tua password potrà avere controllo completo del tuo sistema.
+access_desc=Il server Webmin può essere configurato in modo da impedire o consentire l'accesso ad indirizzi IP predefiniti utilizzando questa pagina. Possono essere inseriti anche nomi di host (come foo.bar.com) e reti IP (come 10.254.3.0 o 10.254.1.0/255.255.255.128 o 2001:DB8::A0BC:0001 o 2001:DB8::/32). Dovresti limitare l'accesso al tuo server ad indirizzi sicuri, specialmente se accessibile tramite internet. In caso contrario, chiunque scopra la tua password potrà avere controllo completo del tuo sistema.
 access_ip=Permetti l'accesso a Webmin
 access_header=Opzioni di controllo degli accessi IP
 access_all=da qualunque indirizzo IP

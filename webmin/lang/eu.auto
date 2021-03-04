@@ -11,7 +11,7 @@ index_refresh=Eguneratu moduluak
 index_refreshmsg=Instalatu zerbitzarientzako Webmin modulu guztiak, eta eguneratu 'Erabili gabeko moduluak' kategorian agertzen direnak.
 
 access_title=IP Sarbide Kontrola
-access_desc=Webmin zerbitzaria konfiguratu daiteke formulario hau erabiliz IP helbide jakin batzuetatik sarbidea ukatzeko edo baimentzeko. Ostalari izenak (foo.bar.com bezalakoak) eta IP sareak (10.254.3.0 edo 10.254.1.0/255.255.255.128 edo 10.254.1.0/25 edo 10.254.1.5-10.254.97.127) ere sar daitezke. Zure zerbitzariaren sarbidea konfiantzazko helbideetara mugatu beharko zenuke, batez ere Internetetik eskuragarri badago. Bestela, zure pasahitza asmatzen duen edonork zure sistemaren kontrol osoa izango du.
+access_desc=Webmin zerbitzaria konfiguratu daiteke formulario hau erabiliz IP helbide jakin batzuetatik sarbidea ukatzeko edo baimentzeko. Ostalari izenak (foo.bar.com bezalakoak) eta IP sareak (10.254.3.0 edo 10.254.1.0/255.255.255.128 edo 10.254.1.0/25 edo 10.254.1.5-10.254.97.127 edo 2001:DB8::A0BC:0001 edo 2001:DB8::/32) ere sar daitezke. Zure zerbitzariaren sarbidea konfiantzazko helbideetara mugatu beharko zenuke, batez ere Internetetik eskuragarri badago. Bestela, zure pasahitza asmatzen duen edonork zure sistemaren kontrol osoa izango du.
 access_ip=IP helbide baimenduak
 access_local=Sartu tokiko sarea zerrendan
 access_header=Sarbide kontrol aukerak

@@ -11,7 +11,7 @@ index_refresh=Opdater moduler
 index_refreshmsg=Kontroller alle Webmin-moduler for installerede servere igen, og opdater dem, der vises i kategorien 'Ubenyttede moduler'.
 
 access_title=IP-adgangskontrol
-access_desc=Webmin-serveren kan konfigureres til at afvise eller kun give adgang fra bestemte IP-adresser ved hjælp af denne formular. Værtsnavne (som foo.bar.com) og IP-netværk (som 10.254.3.0 eller 10.254.1.0/255.255.255.128 eller 10.254.1.0/25 eller 10.254.1.5-10.254.97.127) kan også indtastes. Du skal begrænse adgangen til din server til betroede adresser, især hvis den er tilgængelig fra Internettet. Ellers har enhver, der gætter din adgangskode, fuldstændig kontrol over dit system.
+access_desc=Webmin-serveren kan konfigureres til at afvise eller kun give adgang fra bestemte IP-adresser ved hjælp af denne formular. Værtsnavne (som foo.bar.com) og IP-netværk (som 10.254.3.0 eller 10.254.1.0/255.255.255.128 eller 10.254.1.0/25 eller 10.254.1.5-10.254.97.127 eller 2001:DB8::A0BC:0001 eller 2001:DB8::/32) kan også indtastes. Du skal begrænse adgangen til din server til betroede adresser, især hvis den er tilgængelig fra Internettet. Ellers har enhver, der gætter din adgangskode, fuldstændig kontrol over dit system.
 access_ip=Tilladte IP-adresser
 access_local=Medtag lokalt netværk på listen
 access_header=Indstillinger for adgangskontrol

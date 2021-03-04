@@ -11,7 +11,7 @@ index_refresh=Ververs Modules
 index_refreshmsg=Opnieuw alle Webmin modules controleren voor geinstalleerde servers, en de servers updaten die in de 'niet gebruikte' modules categorie zitten.
 
 access_title=IP Toegang Controle
-access_desc=De Webmin server kan via deze functie worden geconfigureerd om alleen toegang te verlenen of te weigeren vanaf bepaalde IP adressen. Hostnamen (zoals foo.bar.com) en IP netwerken (zoals 10.254.3.0 of 10.254.1.0/255.255.255.128 of 10.254.1.0/25 of 10.254.1.5-10.254.97.127) kunnen ook ingevuld worden. U zou de toegang tot uw server moeten beperken tot vertrouwde adressen, zeker wanneer het systeem vanaf het Internet bereikbaar is. Anders heeft iedereen die uw wachtwoord raadt volledige toegang tot uw systeem.
+access_desc=De Webmin server kan via deze functie worden geconfigureerd om alleen toegang te verlenen of te weigeren vanaf bepaalde IP adressen. Hostnamen (zoals foo.bar.com) en IP netwerken (zoals 10.254.3.0 of 10.254.1.0/255.255.255.128 of 10.254.1.0/25 of 10.254.1.5-10.254.97.127 of 2001:DB8::A0BC:0001 of 2001:DB8::/32) kunnen ook ingevuld worden. U zou de toegang tot uw server moeten beperken tot vertrouwde adressen, zeker wanneer het systeem vanaf het Internet bereikbaar is. Anders heeft iedereen die uw wachtwoord raadt volledige toegang tot uw systeem.
 access_ip=Toegestane IP adressen
 access_local=Zet het locale netwerk in de lijst
 access_header=Toegang controle opties

@@ -9,7 +9,7 @@ index_restart=Restartovat Webmin
 index_restartmsg=Klepnutím na toto tlačítko restartujete Webmin proces na serveru. Doporučujeme tento krok, pokud jste povyšovali Perl.
 
 access_title=IP Přístup
-access_desc=Webmin server může být pomocí tohoto formuláře nakonfigurován jako povolený nebo zakázaný pouze z určitých IP adres. Můžou být použity jména počítačů (např. foo.bar.com) a sítí (např 10.254.3.0 nebo 10.254.1.0/255.255.255.128). Takto lze limitovat přístup na váš server z "přátelských" adres, zvláště, je-li přístupný z Internetu. V opačném případě každý, kdo zná heslo má pak kompletní přístup na váš systém.
+access_desc=Webmin server může být pomocí tohoto formuláře nakonfigurován jako povolený nebo zakázaný pouze z určitých IP adres. Můžou být použity jména počítačů (např. foo.bar.com) a sítí (např 10.254.3.0 nebo 10.254.1.0/255.255.255.128 nebo 2001:DB8::A0BC:0001 nebo 2001:DB8::/32). Takto lze limitovat přístup na váš server z "přátelských" adres, zvláště, je-li přístupný z Internetu. V opačném případě každý, kdo zná heslo má pak kompletní přístup na váš systém.
 access_ip=Povolené IP adresy
 access_header=Nastavení přístupu
 access_all=Povolit ze všech adres

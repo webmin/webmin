@@ -11,7 +11,7 @@ index_refresh=Refresca els Mòduls
 index_refreshmsg=Recomprova tots els mòduls Webmin dels servidors instal·lats, i actualitza aquells que apareixen a la categoria de 'Mòduls no utilitzats'
 
 access_title=Control d'Accés IP
-access_desc=Amb aquest formulari, es pot configurar el servidor Webmin per a denegar o permetre l'accés només des de certes adreces. També s'hi poden introduir noms de hosts (com ara foo.bar.com) i xarxes IP (com ara  10.254.3.0 o 10.254.1.0/255.255.255.128 o 10.254.1.0/25 o 10.254.1.5-10.254.97.127). Hauries de limitar l'accés al servidor a adreces fiables, sobretot si és accessible des d'Internet. Altrament, qualsevol que endevini la teva contrasenya tindrà el control absolut del sistema.
+access_desc=Amb aquest formulari, es pot configurar el servidor Webmin per a denegar o permetre l'accés només des de certes adreces. També s'hi poden introduir noms de hosts (com ara foo.bar.com) i xarxes IP (com ara  10.254.3.0 o 10.254.1.0/255.255.255.128 o 10.254.1.0/25 o 10.254.1.5-10.254.97.127 o 2001:DB8::A0BC:0001 o 2001:DB8::/32). Hauries de limitar l'accés al servidor a adreces fiables, sobretot si és accessible des d'Internet. Altrament, qualsevol que endevini la teva contrasenya tindrà el control absolut del sistema.
 access_ip=Adreces IP permeses
 access_local=Inclou la xarxa local a la llista
 access_header=Opcions de control d'accés

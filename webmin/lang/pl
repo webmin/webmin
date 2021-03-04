@@ -11,7 +11,7 @@ index_refresh=Odśwież moduły
 index_refreshmsg=Szukaj zainstalowanych modułów serwerów i aktualizuj te, które znajdują się w kategorii 'Nie-używane moduły'.
 
 access_title=Kontrola dostępu IP
-access_desc=Za pomocą tej strony Webmin może być skonfigurowany tak, by zakazać lub zezwolić na dostęp spod określonych adresów IP. Można wprowadzać nazwy komputerów (jak foo.bar.com) i sieci IP (jak 10.254.3.0 czy 10.254.1.0/255.255.255.128). Powinieneś ograniczyć dostęp jedynie do "zaufanych" adresów, szczególnie jeżeli sieć jest dostępna z Internetu. W przeciwnym wypadku ktoś kto zgadnie lub podsłucha hasło będzie w stanie przejąć kontrolę nad komputerem.
+access_desc=Za pomocą tej strony Webmin może być skonfigurowany tak, by zakazać lub zezwolić na dostęp spod określonych adresów IP. Można wprowadzać nazwy komputerów (jak foo.bar.com) i sieci IP (jak 10.254.3.0 czy 10.254.1.0/255.255.255.128 czy 2001:DB8::A0BC:0001 czy 2001:DB8::/32). Powinieneś ograniczyć dostęp jedynie do "zaufanych" adresów, szczególnie jeżeli sieć jest dostępna z Internetu. W przeciwnym wypadku ktoś kto zgadnie lub podsłucha hasło będzie w stanie przejąć kontrolę nad komputerem.
 access_ip=Dozwolone adresy IP
 access_local=Dołącz sieć lokalną do listy
 access_header=Kontrola dostępu

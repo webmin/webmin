@@ -11,7 +11,7 @@ index_refresh=Atnaujinkite modulius
 index_refreshmsg=Dar kartą patikrinkite visus įdiegtus „Webmin“ modulius ir atnaujinkite tuos, kurie pateikiami kategorijoje „Nenaudojami moduliai“.
 
 access_title=IP prieigos kontrolė
-access_desc=„Webmin“ serverį galima sukonfigūruoti taip, kad naudojant šią formą būtų uždrausta arba leidžiama prieiga tik iš tam tikrų IP adresų. Taip pat galima įvesti pagrindinius kompiuterių pavadinimus (pvz., Foo.bar.com) ir IP tinklus (pvz., 10.254.3.0 arba 10.254.1.0/255.255.255.128 arba 10.254.1.0/25 arba 10.254.1.5-10.254.97.127). Turėtumėte apriboti prieigą prie savo serverio tik patikimais adresais, ypač jei jis pasiekiamas iš interneto. Priešingu atveju visi, atspėję jūsų slaptažodį, turės visišką jūsų sistemos valdymą.
+access_desc=„Webmin“ serverį galima sukonfigūruoti taip, kad naudojant šią formą būtų uždrausta arba leidžiama prieiga tik iš tam tikrų IP adresų. Taip pat galima įvesti pagrindinius kompiuterių pavadinimus (pvz., Foo.bar.com) ir IP tinklus (pvz., 10.254.3.0 arba 10.254.1.0/255.255.255.128 arba 10.254.1.0/25 arba 10.254.1.5-10.254.97.127 arba 2001:DB8::A0BC:0001 arba 2001:DB8::/32). Turėtumėte apriboti prieigą prie savo serverio tik patikimais adresais, ypač jei jis pasiekiamas iš interneto. Priešingu atveju visi, atspėję jūsų slaptažodį, turės visišką jūsų sistemos valdymą.
 access_ip=Leidžiami IP adresai
 access_local=Į sąrašą įtraukite vietinį tinklą
 access_header=Prieigos kontrolės parinktys

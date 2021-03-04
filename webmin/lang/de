@@ -11,7 +11,7 @@ index_refresh=Aktualisiere Module
 index_refreshmsg=Überprüfe erneut alle Webmin Module für installierte Server und aktualisiere diejenigen, die in der 'Nicht benutzte Module' Kategorie angezeigt werden.
 
 access_title=IP-Zugriffskontrolle
-access_desc=Der Webmin-Server kann mit diesem Formular konfiguriert werden, um Anfragen von bestimmten IPs abzuweisen oder nur bestimmte IPs zuzulassen. Host-Namen (wie foo.bar.de) und IP-Netzwerke (wie 10.254.3.0 oder 10.254.1.0/255.255.255.128) können auch angegeben werden. Sie sollten den Zugriff auf Ihren Server auf vertraute Adressen beschränken, besonders, wenn der Server im Internet verfügbar ist. Anderenfalls hat jeder, der Ihr Passwort errät, vollständige Kontrolle über Ihr System.
+access_desc=Der Webmin-Server kann mit diesem Formular konfiguriert werden, um Anfragen von bestimmten IPs abzuweisen oder nur bestimmte IPs zuzulassen. Host-Namen (wie foo.bar.de) und IP-Netzwerke (wie 10.254.3.0 oder 10.254.1.0/255.255.255.128 oder 2001:DB8::A0BC:0001 oder 2001:DB8::/32) können auch angegeben werden. Sie sollten den Zugriff auf Ihren Server auf vertraute Adressen beschränken, besonders, wenn der Server im Internet verfügbar ist. Anderenfalls hat jeder, der Ihr Passwort errät, vollständige Kontrolle über Ihr System.
 access_ip=Erlaubte IP-Adressen
 access_local=Beziehe lokales Netzwerk in Liste ein
 access_header=Zugriffskontrolle

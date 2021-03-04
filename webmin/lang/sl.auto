@@ -11,7 +11,7 @@ index_refresh=Osvežite module
 index_refreshmsg=Ponovno preverite vse module Webmin za nameščene strežnike in posodobite tiste, ki so prikazani v kategoriji »Neuporabljeni moduli«.
 
 access_title=Nadzor dostopa IP
-access_desc=Strežnik Webmin je lahko konfiguriran tako, da zavrača ali dovoli dostop samo z določenih naslovov IP s pomočjo tega obrazca. Vnesete lahko tudi imena gostiteljev (kot foo.bar.com) in omrežja IP (na primer 10.254.3.0 ali 10.254.1.0/255.255.255.128 ali 10.254.1.0/25 ali 10.254.1.5-10.254.97.127). Omejite dostop do svojega strežnika na zaupanja vredne naslove, še posebej, če je dostopen z interneta. V nasprotnem primeru bo vsak, ki ugane vaše geslo, imel popoln nadzor nad vašim sistemom.
+access_desc=Strežnik Webmin je lahko konfiguriran tako, da zavrača ali dovoli dostop samo z določenih naslovov IP s pomočjo tega obrazca. Vnesete lahko tudi imena gostiteljev (kot foo.bar.com) in omrežja IP (na primer 10.254.3.0 ali 10.254.1.0/255.255.255.128 ali 10.254.1.0/25 ali 10.254.1.5-10.254.97.127 ali 2001:DB8::A0BC:0001 ali 2001:DB8::/32). Omejite dostop do svojega strežnika na zaupanja vredne naslove, še posebej, če je dostopen z interneta. V nasprotnem primeru bo vsak, ki ugane vaše geslo, imel popoln nadzor nad vašim sistemom.
 access_ip=Dovoljeni naslovi IP
 access_local=Na seznam vključite lokalno omrežje
 access_header=Možnosti nadzora dostopa

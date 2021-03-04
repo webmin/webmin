@@ -9,7 +9,7 @@ index_restart=Reštartovať Webmin
 index_restartmsg=Stlačte toto tlačidlo pre zreštartovanie Webminu. Toto môže byť potrebné ak ste aktualizovali Perl.
 
 access_title=Riadenie prístupu cez IP
-access_desc=Webmin môže byť nastavený tak, aby akceptoval požiadavky alebo zakazoval požiadavky z rôznych IP adries uvedených v tomto zozname. Formát IP adries a mien môže byť: foo.bar.com, alebo 10.254.3.0, alebo 10.254.1.0/255.255.255.128.
+access_desc=Webmin môže byť nastavený tak, aby akceptoval požiadavky alebo zakazoval požiadavky z rôznych IP adries uvedených v tomto zozname. Formát IP adries a mien môže byť: foo.bar.com, alebo 10.254.3.0, alebo 10.254.1.0/255.255.255.128, alebo 10.254.1.0/24, alebo 2001:DB8::A0BC:0001, alebo 2001:DB8::/32.
 access_ip=Povolené IP adresy
 access_header=Riadenie prístupu
 access_all=Povoliť zo všetkých adries
