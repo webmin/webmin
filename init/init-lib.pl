@@ -550,8 +550,8 @@ elsif ($init_mode eq "systemd") {
 		my $out = &backquote_command("systemctl is-enabled ".
 					quotemeta($unit)." 2>&1");
 		$out = &trim($out);
-		return 2 if ($out =~ /.*^enabled$/mi);
-		return 1 if ($out =~ /.*^disabled$/mi);
+		return 2 if ($out eq "enabled");
+		return 1 if ($out eq "disabled");
 		}
 	}
 if ($init_mode eq "init" || $init_mode eq "upstart" ||
