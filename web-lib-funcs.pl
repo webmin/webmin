@@ -6968,6 +6968,29 @@ else {
 return wantarray ? ($ok, $err) : $ok;
 }
 
+=head2 move_source_dest(source, dest)
+
+Move some file or directory to a new location. Returns 1 on success, or 0
+on failure - also sets $! on failure.
+
+=cut
+sub move_source_dest
+{
+my ($ok, $err);
+eval "use File::Copy";
+if (!$@) {
+	my ($src, $dst) = @_;
+	$ok = move($src, $dst);
+	if (!$ok && $!) {
+		$err = $!;
+		}
+	return wantarray ? ($ok, $err) : $ok;
+	}
+else {
+	error("The File::Copy Perl module is not available on your system : $@");
+	}
+}
+
 =head2 remote_session_name(host|&server)
 
 Generates a session ID for some server. For this server, this will always
