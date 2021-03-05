@@ -46,6 +46,21 @@ my ($href, $text, $class, $tags) = @_;
 return ("<a class='ui_link".($class ? " ".$class : "")."' href='$href'".($tags ? " ".$tags : "").">$text</a>");
 }
 
+=head2 ui_help(title)
+
+Returns HTML for help bubble tooltip
+
+=item title - tooltip title
+
+=cut
+
+sub ui_help
+{
+return &theme_ui_help(@_) if (defined(&theme_ui_help));
+my ($title) = @_;
+return ("<sup class=\"tooltip\" aria-label=\"$title\" data-tooltip><samp>?</samp></sup>");
+}
+
 =head2 ui_img(src, alt, title, [class], [tags])
 
 Returns HTML for an <img src>.

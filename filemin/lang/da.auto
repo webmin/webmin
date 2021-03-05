@@ -124,6 +124,7 @@ http_downloading=Downloading
 http_done=Downloadet $1 til $2.
 uploading=Uploader, vent venligst. ..
 acl_allowed_paths=Tillad adgang til mapper
+acl_allowed_paths_explain=For root-kompatibel bruger, hvis tilladt bibliotek kun er indstillet til $HOME, svarer det til / (fuld diskadgang)
 acl_allowed_for_edit=Mimetyper tilladt at redigere af den indbyggede editor
 acl_work_as=Få adgang til filer som Unix-bruger
 acl_root=Root (bevilg med omhu til ikke-betroede brugere!)

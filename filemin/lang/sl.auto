@@ -124,6 +124,7 @@ http_downloading=Prenašanje
 http_done=Preneseni od $1 do $2.
 uploading=Nalaganje, počakajte. ..
 acl_allowed_paths=Dovoli dostop do imenikov
+acl_allowed_paths_explain=Če je dovoljeni imenik za uporabnika s korenskim dostopom nastavljen samo na $HOME, bo enakovreden / (popoln dostop do diska)
 acl_allowed_for_edit=Mimetipi, ki jih omogoča urejanje urejevalnika
 acl_work_as=Do datotek dostopate kot Unixov uporabnik
 acl_root=Root (dodelite previdno uporabnikom brez zaupanja!)

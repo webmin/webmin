@@ -124,6 +124,7 @@ http_downloading=Descărcarea
 http_done=Descărcat $1 la $2.
 uploading=Se încarcă, vă rugăm să așteptați. ..
 acl_allowed_paths=Permiteți accesul la directoare
+acl_allowed_paths_explain=Pentru utilizatorii cu capacitate de root, dacă directorul permis este setat doar la $HOME, va fi echivalent cu / (acces complet la disc)
 acl_allowed_for_edit=Tipuri permise pentru editare de către editorul încorporat
 acl_work_as=Accesați fișierele ca utilizator Unix
 acl_root=Root (acordare cu grijă pentru utilizatori care nu au încredere!)

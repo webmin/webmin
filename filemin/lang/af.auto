@@ -124,6 +124,7 @@ http_downloading=aflaai
 http_done=$1 tot $2 afgelaai.
 uploading=Laai op, wag asseblief. ..
 acl_allowed_paths=Laat toegang tot kaarte toe
+acl_allowed_paths_explain=As die toegelate gids slegs ingestel is op $HOME vir gebruikers met wortels, sal dit gelykstaande wees aan / (volledige skyf toegang)
 acl_allowed_for_edit=Mimetipes word toegelaat vir redigering deur ingeboude redakteur
 acl_work_as=Verkry toegang tot lêers as Unix-gebruiker
 acl_root=Wortel (gee sorgvuldig aan onbetroubare gebruikers!)

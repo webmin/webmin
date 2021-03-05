@@ -124,6 +124,7 @@ http_downloading=Tniżżil
 http_done=Niżżilt $1 sa $2.
 uploading=Tella, jekk jogħġbok stenna. ..
 acl_allowed_paths=Ħalli aċċess għad-direttorji
+acl_allowed_paths_explain=Għal utent kapaċi għall-għeruq, jekk id-direttorju permess huwa ssettjat biss għal $HOME, ikun ekwivalenti għal / (aċċess sħiħ għad-diska)
 acl_allowed_for_edit=Tipi permessi għall-editjar minn editur builtin
 acl_work_as=Aċċess għall-fajls bħala utent Unix
 acl_root=Għerq (għotja b'attenzjoni lil utenti mhux fdati!)

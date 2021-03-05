@@ -124,6 +124,7 @@ http_downloading=Lejupielāde
 http_done=Lejupielādēts no $1 līdz $2.
 uploading=Notiek augšupielāde, lūdzu, uzgaidiet. ..
 acl_allowed_paths=Ļaut piekļūt direktorijiem
+acl_allowed_paths_explain=Lietotājam, kas spēj root, ja atļautais direktorijs ir iestatīts tikai uz $HOME, tas būs ekvivalents / (pilna piekļuve diskam)
 acl_allowed_for_edit=Iebūvēto redaktoru atļauts rediģēt atdarinājumus
 acl_work_as=Piekļūstiet failiem kā Unix lietotājs
 acl_root=Sakne (piešķiriet uzmanīgi neuzticamiem lietotājiem!)

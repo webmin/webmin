@@ -124,6 +124,7 @@ http_downloading=Deskargen
 http_done=$1 etik $2 deskargatu dira.
 uploading=Kargatzen, itxaron. ..
 acl_allowed_paths=Baimendu direktorioetara sarbidea
+acl_allowed_paths_explain=Root gaitasuna duen erabiltzailearentzat, baimendutako direktorioa $HOME gisa soilik ezarrita badago, (disko osorako sarbidea) baliokidea izango da.
 acl_allowed_for_edit=Eraiki editatu editore editoreak baimendutako tipografia
 acl_work_as=Sartu fitxategiak Unix erabiltzaile gisa
 acl_root=Erro (laguntza eman konfiantzarik ez duten erabiltzaileei arretaz!)

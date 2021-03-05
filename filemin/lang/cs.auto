@@ -124,6 +124,7 @@ http_downloading=Stahování
 http_done=Staženo $1 až $2.
 uploading=Nahrávání, čekejte prosím. ..
 acl_allowed_paths=Povolit přístup k adresářům
+acl_allowed_paths_explain=Pro uživatele s oprávněním root, pokud je povolený adresář nastaven pouze na $HOME, bude to ekvivalent / (plný přístup k disku)
 acl_allowed_for_edit=Mimetypy byly povoleny pro úpravy vestavěným editorem
 acl_work_as=Přístup k souborům jako uživatel Unix
 acl_root=Root (udělejte opatrně nedůvěryhodným uživatelům!)

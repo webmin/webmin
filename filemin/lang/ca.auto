@@ -1,3 +1,5 @@
+acl_allowed_paths_explain=Per a usuaris capaços d'arrel, si el directori permès només s'estableix a $HOME, serà equivalent a / (accés complet al disc)
+
 acls=Llista de control d’accés
 file_detect_encoding=Detecta automàticament la codificació de fitxers
 index_return=llistat de fitxers

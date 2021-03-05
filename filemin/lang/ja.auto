@@ -124,6 +124,7 @@ http_downloading=ダウンロード中
 http_done=$1を $2にダウンロードしました。
 uploading=アップロードしています。お待ちください. ..
 acl_allowed_paths=ディレクトリへのアクセスを許可する
+acl_allowed_paths_explain=ルート対応ユーザーの場合、許可されたディレクトリが$HOMEのみに設定されていると、/（フルディスクアクセス）と同等になります。
 acl_allowed_for_edit=組み込みエディターによる編集が許可されているMIMEタイプ
 acl_work_as=Unixユーザーとしてファイルにアクセスする
 acl_root=ルート（信頼されていないユーザーに注意して付与してください！）

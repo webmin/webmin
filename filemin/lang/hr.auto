@@ -124,6 +124,7 @@ http_downloading=preuzimanje
 http_done=Preuzeto $1 do $2.
 uploading=Prijenos, pričekajte. ..
 acl_allowed_paths=Dopusti pristup direktorijima
+acl_allowed_paths_explain=Za korisnike s root sposobnošću, ako je dopušteni direktorij postavljen samo na $HOME, bit će ekvivalentan / (puni pristup disku)
 acl_allowed_for_edit=Mimetipi dopušteni za uređivanje pomoću uređenog uređivača
 acl_work_as=Pristupite datotekama kao Unix korisnik
 acl_root=Korijen (dajte pažljivo korisnicima bez povjerenja!)

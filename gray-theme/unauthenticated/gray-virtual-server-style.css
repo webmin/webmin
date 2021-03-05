@@ -185,3 +185,70 @@ br[data-x-br] {
   display: block;
   font-size: 42%;
 }
+
+.tooltip {
+    margin: auto 0 auto 5px;
+    font-size: 70%;
+    cursor: help;
+    color: #d0e0fb;
+    background-color: #00000099;
+    border-radius: 50%;
+    padding: 1px 3px;
+    vertical-align: super;
+    opacity: .8;
+}
+
+[data-tooltip][aria-label] {
+    position: relative;
+}
+
+[data-tooltip][aria-label]::after {
+    content: "";
+    pointer-events: none;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-color: black;
+    border-width: 0;
+    border-style: solid;
+    opacity: 0;
+    visibility: none;
+    margin-bottom: 5px;
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-right-color: transparent;
+    border-left-width: 10px;
+    border-left-color: transparent;
+    bottom: 100%;
+    right: 50%;
+    transform: translateX(50%)
+}
+
+[data-tooltip][aria-label]::before {
+    bottom: calc(15px + 100%);
+    right: 50%;
+    transform: translateX(50%);
+    font-size: 11px;
+    font-weight: normal;
+    text-shadow: none;
+    content: attr(aria-label);
+    pointer-events: none;
+    word-wrap: initial;
+    max-width: 50vw;
+    width: max-content;
+    position: absolute;
+    color: white;
+    background: black;
+    padding: 4px 8px;
+    border-radius: 50px;
+    opacity: 0;
+    visibility: none;
+    text-align: center;
+}
+
+[data-tooltip][aria-label]:hover::before,
+[data-tooltip][aria-label]:hover::after {
+    visibility: visible;
+    opacity: 1;
+    transition-duration: .5s
+}

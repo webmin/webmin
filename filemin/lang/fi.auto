@@ -124,6 +124,7 @@ http_downloading=lataaminen
 http_done=Ladattu $1 - $2.
 uploading=Lähetetään, odota. ..
 acl_allowed_paths=Salli pääsy hakemistoihin
+acl_allowed_paths_explain=Jos root-yhteensopivalle käyttäjälle on sallittu hakemisto vain $HOME, se vastaa / (koko levyn käyttöoikeus)
 acl_allowed_for_edit=Sisältöeditori voi muokata tyyppejä
 acl_work_as=Käytä tiedostoja Unix-käyttäjänä
 acl_root=Juuri (myöntä huolellisesti epäluotettaville käyttäjille!)

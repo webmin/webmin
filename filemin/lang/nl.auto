@@ -124,6 +124,7 @@ http_downloading=Downloaden
 http_done=$1 tot $2 gedownload.
 uploading=Uploaden, even geduld. ..
 acl_allowed_paths=Sta toegang tot mappen toe
+acl_allowed_paths_explain=Voor root-compatibele gebruikers, als de toegestane map alleen is ingesteld op $HOME, is deze gelijk aan / (volledige schijftoegang)
 acl_allowed_for_edit=Mimetypes toegestaan voor bewerking door ingebouwde editor
 acl_work_as=Toegang tot bestanden als Unix-gebruiker
 acl_root=Root (wees voorzichtig met niet-vertrouwde gebruikers!)
