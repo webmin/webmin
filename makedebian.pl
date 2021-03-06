@@ -157,7 +157,8 @@ system("cp $copyright_file $debian_copyright_file");
 # Create the config files file, for those we don't want to replace
 open(CONF, ">$conffiles_file");
 print CONF "/etc/pam.d/$baseproduct\n";
-print CONF "/etc/init.d/$baseproduct\n";
+#print CONF "/etc/init.d/$baseproduct\n";	# Put this back sometime after
+						# 1.973 has been out for a while
 close(CONF);
 chmod(0644, $conffiles_file);
 
