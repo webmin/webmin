@@ -75,8 +75,7 @@ if ($access{'theme'}) {
 			  [ [ 1, &text('index_themeglobal', $tname)."<br>" ],
 			    [ 0, $text{'index_themeset'} ] ])." ".
 		&ui_select("theme", $user->{'theme'},
-			[ [ '', $text{'index_themedef'} ],
-			  map { [ $_->{'dir'}, $_->{'desc'} ] }
+			[ map { [ $_->{'dir'}, $_->{'desc'} ] }
 			      @themes ]), undef, [ "valign=top","valign=top" ]);
 
 	# Overlay, if any
