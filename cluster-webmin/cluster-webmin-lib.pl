@@ -147,7 +147,7 @@ sub all_themes
 {
 local %done;
 return sort { $a->{'desc'} cmp $b->{'desc'} }
-	grep { ! -l "$root_directory/$_->{'dir'}" && !$done{$_->{'dir'}}++ }
+	grep { !$done{$_->{'dir'}}++ }
 	 map { @{$_->{'themes'}} } @{$_[0]};
 }
 
