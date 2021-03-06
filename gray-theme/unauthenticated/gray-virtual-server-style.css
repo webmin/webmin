@@ -186,7 +186,7 @@ br[data-x-br] {
   font-size: 42%;
 }
 
-.tooltip {
+.ui_help {
     margin: auto 0 auto 5px;
     font-size: 70%;
     cursor: help;

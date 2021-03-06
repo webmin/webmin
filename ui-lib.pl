@@ -48,9 +48,9 @@ return ("<a class='ui_link".($class ? " ".$class : "")."' href='$href'".($tags ?
 
 =head2 ui_help(title)
 
-Returns HTML for help bubble tooltip
+Returns HTML for help tooltip bubble
 
-=item title - tooltip title
+=item title - help tooltip title
 
 =cut
 
@@ -58,7 +58,7 @@ sub ui_help
 {
 return &theme_ui_help(@_) if (defined(&theme_ui_help));
 my ($title) = @_;
-return ("<sup class=\"tooltip\" aria-label=\"$title\" data-tooltip><samp>?</samp></sup>");
+return ("<sup class=\"ui_help\" aria-label=\"$title\" data-tooltip><samp>?</samp></sup>");
 }
 
 =head2 ui_img(src, alt, title, [class], [tags])
