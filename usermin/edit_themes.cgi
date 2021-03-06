@@ -7,8 +7,8 @@ $access{'themes'} || &error($text{'acl_ecannot'});
 &ReadParse();
 &ui_print_header(undef, $text{'themes_title'}, "");
 
-@themes = &list_visible_themes();
 &get_usermin_config(\%uconfig);
+@themes = &list_visible_themes($uconfig{'theme'});
 $prog = "edit_themes.cgi?mode=";
 
 # Start tabs
