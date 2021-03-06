@@ -1394,10 +1394,19 @@ $cmd =~ s/^\s*\[.*\]\s+\|\|\s+//;
 while($cmd =~ s/(\d*)(<|>)((\/\S+)|&\d+)\s*$//) { }
 $cmd =~ s/^\((.*)\)\s*$/$1/;
 $cmd =~ s/\s+$//;
+my $eos;
 if ($config{'match_mode'} == 1) {
 	$cmd =~ s/\s.*$//;
+	$eos = '$';
 	}
-($proc) = grep { $_->{'args'} =~ /\Q$cmd\E/ &&
+else {
+	my $cmd_ = $cmd;
+	$cmd_ =~ s/\s.*$//;
+	if ($cmd_ eq $cmd) {
+		$eos = '$';
+		}
+	}
+($proc) = grep { $_->{'args'} =~ /\Q$cmd\E$eos/ &&
 		 (!$config{'match_user'} || $_->{'user'} eq $_[0]->{'user'}) }
 		@procs;
 if (!$proc && $cmd =~ /^$config_directory\/(.*\.pl)(.*)$/) {
