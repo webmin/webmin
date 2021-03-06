@@ -31,10 +31,10 @@ if ($server->{'id'}) {
 	print &ui_table_row($text{'host_type'}, $t ? $t->[1] : "");
 	}
 
-print &ui_table_row($text{'host_users'},
+print &ui_table_row($text{'host_userscount'},
 	scalar(@{$host->{'users'}}));
 
-print &ui_table_row($text{'host_groups'},
+print &ui_table_row($text{'host_groupscount'},
 	scalar(@{$host->{'groups'}}));
 
 print &ui_table_end();
