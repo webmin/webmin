@@ -143,8 +143,8 @@ while($d = readdir(DIR)) {
 closedir(DIR);
 
 # Make blue-theme a symlink instead of a copy
-if (!$min && -r "$tardir/gray-theme") {
-	system("cd $tardir && ln -s gray-theme blue-theme");
+if (!$min && -r "$tardir/$dir/gray-theme") {
+	system("cd $tardir/$dir && ln -s gray-theme blue-theme");
 	}
 
 # Remove useless .bak, test and other files, and create the tar.gz file
