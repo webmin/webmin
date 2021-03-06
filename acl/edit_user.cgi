@@ -218,7 +218,6 @@ my @overlays = grep { $_->{'overlay'} } @all;
 if ($access{'theme'}) {
 	# Current theme
 	my @topts = ( );
-	push(@topts, [ "", $text{'edit_themedef'} ]);
 	foreach my $t (@themes) {
 		push(@topts, [ $t->{'dir'}, $t->{'desc'} ]);
 		}
