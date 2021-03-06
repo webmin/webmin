@@ -7,7 +7,7 @@ $access{'themes'} || &error($text{'acl_ecannot'});
 &ReadParse();
 &ui_print_header(undef, $text{'themes_title'}, "");
 
-@themes = &list_themes();
+@themes = &list_visible_themes();
 &get_usermin_config(\%uconfig);
 $prog = "edit_themes.cgi?mode=";
 
