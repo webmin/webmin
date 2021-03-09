@@ -110,6 +110,8 @@ mkdir -p %{buildroot}/etc/init.d
 mkdir -p %{buildroot}/etc/pam.d
 mkdir -p %{buildroot}/usr/bin
 cp -rp * %{buildroot}/usr/libexec/webmin
+rm %{buildroot}/usr/libexec/webmin/blue-theme
+cp -rp %{buildroot}/usr/libexec/webmin/gray-theme %{buildroot}/usr/libexec/webmin/blue-theme
 cp webmin-daemon %{buildroot}/etc/sysconfig/daemons/webmin
 cp webmin-init %{buildroot}/etc/init.d/webmin
 cp webmin-pam %{buildroot}/etc/pam.d/webmin
