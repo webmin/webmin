@@ -3161,10 +3161,13 @@ my ($zone) = @_;
 my @rv;
 if (!$access{'ro'} && $access{'apply'}) {
 	my $r = $ENV{'REQUEST_METHOD'} eq 'POST' ? 0 : 1;
-	my $zone_name;
+	my $link_params;
 	if ($zone) {
-		$zone_name = "&" . "zone=$zone->{'name'}&type=$zone->{'type'}";
-	}
+		$link_params = "&" . "zone=$zone->{'name'}&type=$zone->{'type'}";
+		if ($zone->{'viewindex'}) {
+			$link_params .= "&view=$zone->{'viewindex'}";
+			}
+		}
 	if (&is_bind_running()) {
 		if ($zone && ($access{'apply'} == 1 || $access{'apply'} == 2)) {
 			# Apply this zone
@@ -3175,16 +3178,16 @@ if (!$access{'ro'} && $access{'apply'}) {
 			}
 		# Apply whole config
 		if ($access{'apply'} == 1 || $access{'apply'} == 3) {
-			push(@rv, &ui_link("restart.cgi?return=$r$zone_name", $text{'links_restart'}) );
+			push(@rv, &ui_link("restart.cgi?return=$r$link_params", $text{'links_restart'}) );
 			}
 		if ($access{'apply'} == 1) {
 			# Stop BIND
-			push(@rv, &ui_link("stop.cgi?return=$r$zone_name", $text{'links_stop'}) );
+			push(@rv, &ui_link("stop.cgi?return=$r$link_params", $text{'links_stop'}) );
 			}
 		}
 	elsif ($access{'apply'} == 1) {
 		# Start BIND
-		push(@rv, &ui_link("start.cgi?return=$r$zone_name", $text{'links_start'}));
+		push(@rv, &ui_link("start.cgi?return=$r$link_params", $text{'links_start'}));
 		}
 	}
 return join('<br>', @rv);

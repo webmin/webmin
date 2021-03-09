@@ -13,6 +13,9 @@ my $redir_targ = ($in{'type'} eq "master" ? "edit_master.cgi" :
 my $zone;
 if ($in{'zone'}) {
 	$zone = "?zone=$in{'zone'}";
-}
+	if ($in{'view'}) {
+		$zone .= "&view=$in{'view'}";
+		}
+	}
 &redirect($zone && $in{'return'} ? "$redir_targ$zone" : "");
 
