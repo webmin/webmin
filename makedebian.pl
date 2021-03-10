@@ -93,7 +93,9 @@ if ($< == 0) {
 	}
 
 # Create the link to webmin command
-system("ln -s /usr/share/$baseproduct/bin/webmin $bin_dir/webmin");
+if ($product eq "webmin") {
+	system("ln -s /usr/share/$baseproduct/bin/webmin $bin_dir/webmin");
+	}
 
 # Create the control file
 $size = int(`du -sk $tmp_dir`);
