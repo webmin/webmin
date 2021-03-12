@@ -6,6 +6,7 @@ $no_acl_check++;
 delete($ENV{'FOREIGN_MODULE_NAME'});
 delete($ENV{'SCRIPT_NAME'});
 delete($ENV{'SERVER_ROOT'});
+delete($ENV{'LANG'});
 require './status-lib.pl';
 
 # Check if the monitor should be run now
