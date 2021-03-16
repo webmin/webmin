@@ -3351,7 +3351,8 @@ else {
 	eval {
 		my @ai = getaddrinfo($host, undef, AF_INET6(), SOCK_STREAM);
 		while(@ai) {
-			my (undef, undef, undef, $inaddr, undef, @newai) = @ai;
+			my ($inaddr, @newai);
+			(undef, undef, undef, $inaddr, undef, @newai) = @ai;
 			if ($inaddr) {
 				my $addr;
 				(undef, $addr) = unpack_sockaddr_in6($inaddr);
