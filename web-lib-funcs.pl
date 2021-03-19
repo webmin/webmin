@@ -7125,7 +7125,7 @@ return &$main::remote_error_handler("Failed to transfer file : $error")
 	if ($error);
 open(FILE, "<".$localfile) ||
 	return &$main::remote_error_handler("Failed to open $localfile : $!");
-while(read(FILE, $got, 1024) > 0) {
+while(read(FILE, $got, 32768) > 0) {
 	print TWRITE $got;
 	}
 close(FILE);
@@ -7163,7 +7163,7 @@ return &$main::remote_error_handler("Failed to transfer file : $error")
 my $got;
 open(FILE, ">$localfile") ||
 	return &$main::remote_error_handler("Failed to open $localfile : $!");
-while(read(TREAD, $got, 1024) > 0) {
+while(read(TREAD, $got, 32768) > 0) {
 	print FILE $got;
 	}
 close(FILE);
