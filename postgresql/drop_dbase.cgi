@@ -8,7 +8,8 @@ require './postgresql-lib.pl';
 &can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});
 if ($in{'confirm'}) {
 	# Drop the database
-	&execute_sql_logged($config{'basedb'}, "drop database \"$in{'db'}\"");
+	&execute_sql_logged($config{'basedb'},
+			    "drop database ".&quote_table($in{'db'}));
 	&delete_database_backup_job($in{'db'});
 	&webmin_log("delete", "db", $in{'db'});
 	&redirect("");
@@ -19,7 +20,8 @@ else {
 	@tables = &list_tables($in{'db'});
 	$rows = 0;
 	foreach $t (@tables) {
-		$d = &execute_sql($in{'db'}, "select count(*) from $t");
+		$d = &execute_sql($in{'db'},
+				  "select count(*) from ".&quote_table($t));
 		$rows += $d->{'data'}->[0]->[0];
 		}
 
