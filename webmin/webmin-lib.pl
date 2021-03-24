@@ -2751,8 +2751,8 @@ my @rv;
 my %done;
 foreach my $theme (&list_themes()) {
 	my $iscurr = $curr && $theme->{'dir'} eq $curr;
-	next if (-l $root_directory."/".$theme->{'dir'} &&
-		 !$iscurr);
+	my $lnk = readlink($root_directory."/".$theme->{'dir'});
+	next if ($lnk && $lnk !~ /^\// && $lnk !~ /^\.\.\// && !$iscurr);
 	next if ($done{$theme->{'desc'}}++ && !$iscurr);
 	push(@rv, $theme);
 	}
