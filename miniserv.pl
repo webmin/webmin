@@ -4704,8 +4704,7 @@ sub read_any_file
 {
 my ($realfile) = @_;
 my $rv;
-return $rv if (! -r $realfile);
-open(my $fh, "<".$realfile);
+open(my $fh, "<".$realfile) || return $rv;
 local $/;
 $rv = <$fh>;
 close($fh);
