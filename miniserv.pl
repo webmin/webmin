@@ -2128,9 +2128,9 @@ if ($config{'userfile'}) {
 				&write_data("\r\n");
 				&reset_byte_count();
 				&write_data("<html>\n");
-				&write_data("<head><title>401 &mdash; Unauthorized</title></head>\n");
-				&write_data("<body><h2 @{[get_error_style('heading')]}>401 &mdash; Unauthorized</h2>\n");
-				&write_data("<p @{[get_error_style('content')]}>A password is required to access this\n");
+				&write_data("<head>".&embed_error_styles($roots[0])."<title>401 &mdash; Unauthorized</title></head>\n");
+				&write_data("<body><h2 class=\"err-head\">401 &mdash; Unauthorized</h2>\n");
+				&write_data("<p class=\"err-content\">A password is required to access this\n");
 				&write_data("web server. Please try again.</p> <p>\n");
 				&write_data("</body></html>\n");
 				&log_request($loghost, undef, $reqline, 401, &byte_count());
@@ -2389,8 +2389,8 @@ if (-d _) {
 	&write_keep_alive(0);
 	&write_data("\r\n");
 	&reset_byte_count();
-	&write_data("<h2 @{[get_error_style('heading')]}>Index of $simple</h2>\n");
-	&write_data("<pre @{[get_error_style('content')]}>\n");
+	&write_data("".&embed_error_styles($roots[0])."<h2 class=\"err-head\">Index of $simple</h2>\n");
+	&write_data("<pre class=\"err-content\">\n");
 	&write_data(sprintf "%-35.35s %-20.20s %-10.10s\n",
 			"Name", "Last Modified", "Size");
 	&write_data("</pre>\n");
@@ -2810,10 +2810,10 @@ else {
 	&write_data("\r\n");
 	&reset_byte_count();
 	&write_data("<html>\n");
-	&write_data("<head><title>$code &mdash; $msg</title></head>\n");
-	&write_data("<body @{[get_error_style('body')]}><h2 @{[get_error_style('heading')]}>Error &mdash; $msg</h2>\n");
+	&write_data("<head>".&embed_error_styles($roots[0])."<title>$code &mdash; $msg</title></head>\n");
+	&write_data("<body class=\"err-body\"><h2 class=\"err-head\">Error &mdash; $msg</h2>\n");
 	if ($body) {
-		&write_data("<p @{[get_error_style('content')]}>$body</p>\n");
+		&write_data("<p class=\"err-content\">$body</p>\n");
 		}
 	&write_data("</body></html>\n");
 	}
@@ -2822,6 +2822,23 @@ else {
 &log_error($msg, $body ? " : $body" : "") if (!$noerr);
 shutdown(SOCK, 1);
 exit if (!$noexit);
+}
+
+# embed_error_styles()
+# Returns HTML styles for nicer errors. For internal use only.
+sub embed_error_styles
+{
+my ($root) = @_;
+if ($root) {
+	my $err_style = &read_any_file("$root/unauthenticated/errors.css");
+	if ($err_style) {
+		$err_style =~ s/[\n\r]//g;
+		$err_style =~ s/\s+/ /g;
+		$err_style = "<style data-err type=\"text/css\">$err_style</style>";
+		return "\n$err_style\n";
+		}
+	}
+return undef;
 }
 
 sub get_type
@@ -3137,7 +3154,7 @@ local($idx, $more, $rv);
 while(($idx = index($main::read_buffer, "\n")) < 0) {
 	if (length($main::read_buffer) > 100000 && !$nolimit) {
 		&http_error(414, "Request too long",
-		    "Received excessive line <pre @{[get_error_style('content')]}>".&html_strip($main::read_buffer)."</pre>");
+		    "Received excessive line <pre class=\"err-content\">".&html_strip($main::read_buffer)."</pre>");
 		}
 
 	# need to read more..
@@ -4679,6 +4696,19 @@ while(<CONF>) {
 	}
 close(CONF);
 return %rv;
+}
+
+# read_any_file(file)
+# Reads any given file and returns its content
+sub read_any_file
+{
+my ($realfile) = @_;
+my $rv;
+open(my $fh, "<".$realfile) || return $rv;
+local $/;
+$rv = <$fh>;
+close($fh);
+return $rv;
 }
 
 # update_vital_config()
@@ -6471,23 +6501,4 @@ sub getenv
 {
 my ($key) = @_;
 return $ENV{ uc($key) } || $ENV{ lc($key) };
-}
-
-# get_error_style(style_for)
-# Returns a style for error messages
-sub get_error_style
-{
-my ($type, $extra_style) = @_;
-my $style = ' style="font-family:Lucida Console,Courier,monospace;';
-if ($type eq 'heading') {
-	$style .= 'color:#f12b2b;font-size:14px;padding:5px 2.5px 0;transform:scale(1,1.5);text-transform:uppercase;white-space:pre-wrap;font-weight:500;';
-	}
-if ($type eq 'content') {
-	$style .= 'font-size:12.5px;padding-left:2.5px;white-space:pre-wrap;';
-	}
-if ($type eq 'body') {
-	$style .= 'font-size:12.5px;';
-	}
-$style .= "$extra_style\"";
-return $style;
 }

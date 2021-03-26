@@ -1659,9 +1659,16 @@ elsif ($ENV{'REQUEST_URI'} =~ /json-error=1/) {
 	}
 else {
 	&header($text{'error'}, "");
-	my $hh = $miniserv::page_capture;
+	my $hh = $miniserv::page_capture ? " captured" : "";
+	my $err_style = &read_file_contents("$root_directory/unauthenticated/errors.css");
+	if ($err_style) {
+		$err_style =~ s/[\n\r]//g;
+		$err_style =~ s/\s+/ /g;
+		$err_style = "<style data-err type=\"text/css\">$err_style</style>";
+		print "\n$err_style\n";
+		}
 	print "<hr>\n" if ($hh);
-	 if ($hh) {
+	if ($hh) {
 		print "<h3 data-fatal-error-text>",($main::whatfailed ? "$main::whatfailed : " : ""),
 			     @_,"</h3>\n";
 		}
@@ -1673,32 +1680,22 @@ else {
 			$error_text = " &mdash; $error_html";
 			$error_html = undef;
 			}
-		print "<title>$text{'error'}</title><h3 @{[miniserv::get_error_style('heading', 'padding:0;')]} data-fatal-error-text>$text{'error'}$error_text</h3>$error_html<br>\n";
+		print "<title>$text{'error'}</title><h3 class=\"err-head\" data-fatal-error-text>$text{'error'}$error_text</h3>$error_html<br>\n";
 		}
 	if ($gconfig{'error_stack'}) {
 		# Show call stack
-		print "<style>\n";
-		print "table.config-error-stack caption, table.config-error-stack > tbody > tr:first-child > td > b {color: #151515;font-weight:bold;text-align: left;}\n";
-		print "table.config-error-stack > tbody > tr:first-child > td > b {border-bottom: 1px solid #151515;}\n";
-		print "table.config-error-stack > tbody > tr:first-child > td {height: 25px;vertical-align:top;font-size:14px;font-family:unset;transform:scale(1,1.2);text-transform:uppercase;}\n";
-		print "table.config-error-stack {border: 1px dashed #151515}\n";
-		print "table.config-error-stack {margin-left: 12px;width:auto}\n" if ($hh);
-		print "table.config-error-stack tr:not(:first-child) td {font-size: 90%;}\n" if ($hh);
-		print "table.config-error-stack tr td {padding: 1px 10px!important;font-family:Lucida Console,Courier,monospace;font-size:13px;transform:scale(1,1.15);}\n";
-		print "table.config-error-stack > tbody > tr:first-child > td{font-size:96%; font-size: 96%;padding-top:3px!important;padding-bottom:7px!important;}\n" if ($hh);
-		print "</style>\n";
-		my $caption_no_header_style =
-		    &miniserv::get_error_style('heading', "padding:0 0 10px 0;" . ($hh ? "color: #222;font-size:98%;" : "") . "");
+		my $cls_err_caption = " class=\"err-head$hh\"";
+		my $cls_err_td = $hh ? " class=\"@{[&trim($hh)]}\"" : "";
 		print "<hr>\n" if ($hh);
-		print "<table class=\"config-error-stack\"><caption$caption_no_header_style>$text{'error_stack'}</caption>\n";
-		print "<tr> <td><b>$text{'error_file'}</b></td> ",
-		      "<td><b>$text{'error_line'}</b></td> ",
-		      "<td><b>$text{'error_sub'}</b></td> </tr>\n";
+		print "<table class=\"err-stack$hh\"><caption$cls_err_caption>$text{'error_stack'}</caption>\n";
+		print "<tr> <td$cls_err_td><b>$text{'error_file'}</b></td> ",
+		      "<td$cls_err_td><b>$text{'error_line'}</b></td> ",
+		      "<td$cls_err_td><b>$text{'error_sub'}</b></td> </tr>\n";
 		for($i=0; my @stack = caller($i); $i++) {
 			print "<tr>\n";
-			print "<td>$stack[1]</td>\n";
-			print "<td>$stack[2]</td>\n";
-			print "<td>$stack[3]</td>\n";
+			print "<td$cls_err_td>$stack[1]</td>\n";
+			print "<td$cls_err_td>$stack[2]</td>\n";
+			print "<td$cls_err_td>$stack[3]</td>\n";
 			print "</tr>\n";
 			}
 		print "</table>\n";
@@ -3854,7 +3851,7 @@ else {
 	delete($ENV{'FOREIGN_ROOT_DIRECTORY'});
 	}
 @INC = @OLDINC;
-if ($@) { &error("<pre @{[miniserv::get_error_style('content')]}>Require $mod/$files[0] failed : $@</pre>"); }
+if ($@) { &error("<pre class=\"err-content\">Require $mod/$files[0] failed : $@</pre>"); }
 return 1;
 }
 
@@ -11040,7 +11037,7 @@ foreach my $e (@_) {
 return @rv;
 }
 
-=head2 list_combined_webmin_menu(&data, &in)
+=head2 list_combined_webmin_menu(&data, &in, [$mod])
 
 Returns an array of objects, each representing a menu item that a theme should
 render such as on a left menu. Each object is a hash ref with the following
@@ -11084,16 +11081,18 @@ possible keys :
 
 The &data parameter is a hash ref of additional information that the theme
 supplies to all modules. The &in param is the CGI inputs from the menu, for
-use where the menu has a form that submits to itself.
+use where the menu has a form that submits to itself, and [$mod] param binds
+a function return to a given module call
 
 =cut
 sub list_combined_webmin_menu
 {
-my ($data, $in) = @_;
+my ($data, $in, $mod) = @_;
 foreach my $m (&get_available_module_infos()) {
 	my $dir = &module_root_directory($m->{'dir'});
 	my $mfile = "$dir/webmin_menu.pl";
 	next if (!-r $mfile);
+	next if (defined($mod) && $mod ne $m->{'dir'});
 	eval {
 		local $main::error_must_die = 1;
 		&foreign_require($m->{'dir'}, "webmin_menu.pl");
