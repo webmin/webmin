@@ -11037,7 +11037,7 @@ foreach my $e (@_) {
 return @rv;
 }
 
-=head2 list_combined_webmin_menu(&data, &in)
+=head2 list_combined_webmin_menu(&data, &in, [$mod])
 
 Returns an array of objects, each representing a menu item that a theme should
 render such as on a left menu. Each object is a hash ref with the following
@@ -11081,16 +11081,18 @@ possible keys :
 
 The &data parameter is a hash ref of additional information that the theme
 supplies to all modules. The &in param is the CGI inputs from the menu, for
-use where the menu has a form that submits to itself.
+use where the menu has a form that submits to itself, and [$mod] param binds
+a function return to a given module call
 
 =cut
 sub list_combined_webmin_menu
 {
-my ($data, $in) = @_;
+my ($data, $in, $mod) = @_;
 foreach my $m (&get_available_module_infos()) {
 	my $dir = &module_root_directory($m->{'dir'});
 	my $mfile = "$dir/webmin_menu.pl";
 	next if (!-r $mfile);
+	next if (defined($mod) && $mod ne $m->{'dir'});
 	eval {
 		local $main::error_must_die = 1;
 		&foreign_require($m->{'dir'}, "webmin_menu.pl");
