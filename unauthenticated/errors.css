@@ -23,6 +23,7 @@
 .err-body {
     font-size: 12.5px;
 }
+
 .err-head[data-fatal-error-text] {
   padding: 0;
 }
@@ -75,6 +76,7 @@
 .err-stack caption.err-head {
   padding:0 0 10px 0;
 }
+
 .err-stack caption.err-head.captured {
   color: #222;
   font-size:98%;
