@@ -11,6 +11,14 @@ if ($gconfig{'os_version'} >= 3.1 &&
 	$has_new_debian_iptables = 1;
 	$ip6tables_save_file = "/etc/ip6tables.up.rules";
 	$iptables_save_file = "/etc/iptables.up.rules";
+	$debian_init_script = "ip${ipvx}tables";
+	}
+elsif (-d "/etc/iptables") {
+	# Ubuntu 20 uses files in /etc/iptables if iptables-persistent is
+	# installed
+	$ip6tables_save_file = "/etc/iptables/rules.v6";
+	$iptables_save_file = "/etc/iptables/rules.v4";
+	$debian_init_script = $ipvx == 4 ? "iptables" : "ip6tables";
 	}
 else {
 	# Older Debians use an init script
@@ -18,6 +26,7 @@ else {
 	$debian_ip6tables_dir = "/var/lib/ip6tables";
 	$debian_iptables_dir = "/var/lib/iptables";
 	if ($has_debian_iptables) {
+		$debian_init_script = "iptables";
 		mkdir($debian_ip6tables_dir, 0755) if (!-d $debian_ip6tables_dir);
 		mkdir($debian_iptables_dir, 0755) if (!-d $debian_iptables_dir);
 		$iptables_save_file = "$debian_iptables_dir/active";
@@ -29,9 +38,10 @@ else {
 # Applies the current iptables configuration from the save file
 sub apply_iptables
 {
-if ($has_debian_iptables) {
-	local $out = &backquote_logged("cd / ; /etc/init.d/ip${ipvx}tables start 2>&1");
-	return $? ? "<pre>$out</pre>" : undef;
+if ($debian_init_script) {
+	&foreign_require("init");
+	my ($ok, $err) = &init::restart_action($debian_init_script);
+	return $ok ? undef : &html_escape($err);
 	}
 else {
 	return &iptables_restore();
@@ -43,6 +53,7 @@ else {
 sub unapply_iptables
 {
 if ($has_debian_iptables) {
+	# On some debian versions the init script can do this
 	$out = &backquote_logged("cd / ; /etc/init.d/ip${ipvx}tables save active 2>&1 </dev/null");
 	return $? ? "<pre>$out</pre>" : undef;
 	}
@@ -54,10 +65,10 @@ else {
 # started_at_boot()
 sub started_at_boot
 {
-&foreign_require("init", "init-lib.pl");
-if ($has_debian_iptables) {
+&foreign_require("init");
+if ($debian_init_script) {
 	# Check Debian init script
-	return &init::action_status("ip${ipvx}tables") == 2;
+	return &init::action_status($debian_init_script) == 2;
 	}
 elsif ($has_new_debian_iptables) {
 	# Check network interface config
@@ -80,9 +91,12 @@ else {
 
 sub enable_at_boot
 {
-&foreign_require("init", "init-lib.pl");
-if ($has_debian_iptables) {
-	&init::enable_at_boot("ip${ipvx}tables");	 # Assumes init script exists
+&foreign_require("init");
+if ($debian_init_script) {
+	# Enable the init script (assumes it exists)
+	&init::action_status($debian_init_script) > 0 ||
+		&error("Bootup action $debian_init_script does not exist");
+	&init::enable_at_boot($debian_init_script);
 	}
 elsif ($has_new_debian_iptables) {
 	# Add to network interface config
@@ -102,9 +116,10 @@ else {
 
 sub disable_at_boot
 {
-&foreign_require("init", "init-lib.pl");
-if ($has_debian_iptables) {
-	&init::disable_at_boot("ip${ipvx}tables");
+&foreign_require("init");
+if ($debian_init_script) {
+	# Turn off the init script
+	&init::disable_at_boot($debian_init_script);
 	}
 elsif ($has_new_debian_iptables) {
 	# Remove from network interface config
