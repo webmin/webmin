@@ -94,7 +94,8 @@ else {
 	foreach my $f (@files) {
 		open($fh3, "<$f->[0]");
 		my $buf;
-		while(read($fh3, $buf, 1024) > 0) {
+		my $bs = &get_buffer_size();
+		while(read($fh3, $buf, $bs) > 0) {
 			print $fh2 $buf;
 			}
 		close($fh3);

@@ -42,7 +42,8 @@ else {
 	@st = stat($p);
 	print "Content-length: $st[7]\n";
 	print "Content-type: $type\n\n";
-	while(read(FILE, $buf, 1024)) {
+	my $bs = &get_buffer_size();
+	while(read(FILE, $buf, $bs)) {
 		print $buf;
 		}
 	close(FILE);

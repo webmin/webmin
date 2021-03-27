@@ -223,7 +223,8 @@ elsif ($header{'content-type'} &&
 	}
 else {
 	# Just pass through
-	while(my $buf = &read_http_connection($con, 1024)) {
+	my $bs = &get_buffer_size();
+	while(my $buf = &read_http_connection($con, $bs)) {
 		print $buf;
 		}
 	}
