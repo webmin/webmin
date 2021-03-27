@@ -28,7 +28,7 @@ use vars qw($module_index_name $number_to_month_map $month_to_number_map
 	    $umask_already $default_charset $licence_status $os_type
 	    $licence_message $script_name $loaded_theme_oo_library
 	    $done_web_lib_funcs $os_version $module_index_link
-	    $called_from_webmin_core $ipv6_module_error $default_bufsize);
+	    $called_from_webmin_core $ipv6_module_error);
 
 =head2 read_file(file, &hash, [&order], [lowercase], [split-char])
 
@@ -635,7 +635,8 @@ my ($in, $out) = @_;
 $in = &callers_package($in);
 $out = &callers_package($out);
 my $buf;
-while(read($in, $buf, $default_bufsize) > 0) {
+my $bs = &get_buffer_size();
+while(read($in, $buf, $bs) > 0) {
 	(print $out $buf) || return 0;
 	}
 return 1;
@@ -7122,7 +7123,8 @@ return &$main::remote_error_handler("Failed to transfer file : $error")
 	if ($error);
 open(FILE, "<".$localfile) ||
 	return &$main::remote_error_handler("Failed to open $localfile : $!");
-while(read(FILE, $got, $default_bufsize) > 0) {
+my $bs = &get_buffer_size();
+while(read(FILE, $got, $bs) > 0) {
 	print TWRITE $got;
 	}
 close(FILE);
@@ -7160,7 +7162,8 @@ return &$main::remote_error_handler("Failed to transfer file : $error")
 my $got;
 open(FILE, ">$localfile") ||
 	return &$main::remote_error_handler("Failed to open $localfile : $!");
-while(read(TREAD, $got, $default_bufsize) > 0) {
+my $bs = &get_buffer_size();
+while(read(TREAD, $got, $bs) > 0) {
 	print FILE $got;
 	}
 close(FILE);
@@ -11524,6 +11527,18 @@ return &has_command("python3") || &has_command("python30") ||
        &has_command("python2.7") || &has_command("python27") ||
        &has_command("python2.6") || &has_command("python26") ||
        &has_command("python");
+}
+
+=head2 get_buffer_size
+
+Returns the buffer size for read/write operations
+
+=cut
+sub get_buffer_size
+{
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+return $miniserv{'bufsize'} || 32768;
 }
 
 $done_web_lib_funcs = 1;
