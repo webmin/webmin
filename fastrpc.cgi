@@ -151,7 +151,7 @@ while(1) {
 			if (open(FILE, ">$file")) {
 				binmode(FILE);
 				print STDERR "fastrpc: tcpwrite $file writing\n" if ($gconfig{'rpcdebug'});
-				while(read(TRANS, $buf, $default_bufsize) > 0) {
+				while(read(TRANS, $buf, $WebminCore::default_bufsize) > 0) {
 					local $ok = (print FILE $buf);
 					if (!$ok) {
 						$err = "Write to $file failed : $!";
@@ -180,7 +180,7 @@ while(1) {
 		local ($data, $got);
 		open(FILE, "<$arg->{'file'}");
 		binmode(FILE);
-		while(read(FILE, $got, $default_bufsize) > 0) {
+		while(read(FILE, $got, $WebminCore::default_bufsize) > 0) {
 			$data .= $got;
 			}
 		close(FILE);
