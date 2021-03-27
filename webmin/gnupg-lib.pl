@@ -139,7 +139,7 @@ sub encrypt_data
 my $srcfile = &transname();
 my @keys = ref($_[2]) eq 'ARRAY' ? @{$_[2]} : ( $_[2] );
 my $rcpt = join(" ", map { "--recipient ".quotemeta($_->{'name'}->[0]) } @keys);
-&write_entire_file($srcfile, $_[0]);
+&write_file_contents($srcfile, $_[0]);
 my $dstfile = &transname();
 my $ascii = $_[3] ? "--armor" : "";
 my $comp = $config{'compress'} eq '' ? "" :
@@ -176,7 +176,7 @@ else {
 sub decrypt_data
 {
 my $srcfile = &transname();
-&write_entire_file($srcfile, $_[0]);
+&write_file_contents($srcfile, $_[0]);
 my $dstfile = &transname();
 &clean_language();
 my $cmd = "$gpgpath --output ".quotemeta($dstfile).
@@ -234,7 +234,7 @@ else {
 sub sign_data
 {
 my $srcfile = &transname();
-&write_entire_file($srcfile, $_[0]);
+&write_file_contents($srcfile, $_[0]);
 my $dstfile = &transname();
 my $cmd;
 if ($_[3] == 0) {
@@ -293,7 +293,7 @@ else {
 sub verify_data
 {
 my $datafile = &transname();
-&write_entire_file($datafile, $_[0]);
+&write_file_contents($datafile, $_[0]);
 my $cmd;
 my $sigfile;
 if (!$_[1]) {
@@ -301,7 +301,7 @@ if (!$_[1]) {
 	}
 else {
 	$sigfile = &transname();
-	&write_entire_file($sigfile, $_[1]);
+	&write_file_contents($sigfile, $_[1]);
 	$cmd = "$gpgpath --verify ".quotemeta($sigfile)." ".quotemeta($datafile);
 	}
 #local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
@@ -331,15 +331,6 @@ elsif ($out =~ /Good signature from "(.*)"/i) {
 else {
 	return (4, $out);
 	}
-}
-
-# write_entire_file(file, data)
-sub write_entire_file
-{
-my $fh;
-&open_tempfile($fh, ">$_[0]");
-&print_tempfile($fh, $_[1]);
-&close_tempfile($fh);
 }
 
 # get_trust_level(&key)
