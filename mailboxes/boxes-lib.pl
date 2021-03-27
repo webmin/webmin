@@ -2634,7 +2634,8 @@ if (!$headersonly) {
 	# Read the mail body
 	if ($endmode == 0) {
 		# Till EOF
-		while(read($fh, $buf, 1024) > 0) {
+		my $bs = &get_buffer_size();
+		while(read($fh, $buf, $bs) > 0) {
 			$mail->{'size'} += length($buf);
 			$mail->{'body'} .= $buf;
 			$lc = ($buf =~ tr/\n/\n/);

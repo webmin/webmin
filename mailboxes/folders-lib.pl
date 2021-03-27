@@ -1357,7 +1357,8 @@ elsif ($src->{'type'} == 1 && $dest->{'type'} == 0) {
 	foreach my $f (@files) {
 		&open_as_mail_user(SOURCE, $f);
 		print DEST $fromline;
-		while(read(SOURCE, $buf, 1024) > 0) {
+		my $bs = &get_buffer_size();
+		while(read(SOURCE, $buf, $bs) > 0) {
 			print DEST $buf;
 			}
 		close(SOURCE);
