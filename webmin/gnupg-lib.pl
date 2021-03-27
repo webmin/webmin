@@ -159,7 +159,7 @@ while(1) {
 close($fh);
 &reset_environment();
 unlink($srcfile);
-my $dst = &read_entire_file($dstfile);
+my $dst = &read_file_contents($dstfile);
 unlink($dstfile);
 if ($dst) {
 	${$_[1]} = $dst;
@@ -207,7 +207,7 @@ while(1) {
 close($fh);
 &reset_environment();
 unlink($srcfile);
-my $dst = &read_entire_file($dstfile);
+my $dst = &read_file_contents($dstfile);
 unlink($dstfile);
 if (!$keyid) {
 	return $text{'gnupg_ecryptid'};
@@ -272,7 +272,7 @@ while(1) {
 	}
 close($fh);
 unlink($srcfile);
-my $dst = &read_entire_file($dstfile);
+my $dst = &read_file_contents($dstfile);
 unlink($dstfile);
 if ($error || $seen_pass > 1) {
 	return "<pre>$wait_for_input</pre>";
@@ -331,18 +331,6 @@ elsif ($out =~ /Good signature from "(.*)"/i) {
 else {
 	return (4, $out);
 	}
-}
-
-# read_entire_file(file)
-sub read_entire_file
-{
-my ($rv, $buf);
-open(FILE, "<".$_[0]) || return undef;
-while(read(FILE, $buf, 1024) > 0) {
-	$rv .= $buf;
-	}
-close(FILE);
-return $rv;
 }
 
 # write_entire_file(file, data)
