@@ -53,13 +53,14 @@ if ($in{'scale'}) {
 	($jpegin, $jpegout) = &pipeopen("pnmscale $scale 2>/dev/null | cjpeg");
 	print $jpegin $type;
 	print $jpegin $size;
-	while(read($pnmout, $buf, 32768)) {
+	my $bs = &get_buffer_size();
+	while(read($pnmout, $buf, $bs)) {
 		print $jpegin $buf;
 		}
 	close($jpegin);
 	close($pnmout);
 	print "Content-type: image/jpeg\n\n";
-	while(read($jpegout, $buf, 32768)) {
+	while(read($jpegout, $buf, $bs)) {
 		print $buf;
 		}
 	close($jpegout);

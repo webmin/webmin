@@ -30,7 +30,8 @@ if ($in{'to'} == 0) {
 	print "Content-type: application/octet-stream\n\n";
 	open(TEMP, "<$temp");
         my $buf;         
-        while(read(TEMP, $buf, 32768)) {
+	my $bs = &get_buffer_size();
+        while(read(TEMP, $buf, $bs)) {
                 print $buf;
                 }
 	close(TEMP);

@@ -3074,7 +3074,8 @@ if (&should_switch_to_mail_user()) {
 	&open_as_mail_user(SRC, $src) || return 0;
 	&open_as_mail_user(DST, ">$dst") || return 0;
 	my $buf;
-	while(read(SRC, $buf, 32768) > 0) {
+	my $bs = &get_buffer_size();
+	while(read(SRC, $buf, $bs) > 0) {
 		print DST $buf;
 		}
 	close(SRC);
