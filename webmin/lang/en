@@ -898,6 +898,8 @@ advanced_listdir=List directories without an index file?
 advanced_headers=Extra HTTP headers
 advanced_eheader=Headers must be formatted like <tt>Header: Value</tt>
 advanced_sortconfigs=Save config files sorted by its keys?
+advanced_bufsize=Network buffer size in bytes
+advanced_ebufsize=Network buffer size must be a number greater than zero
 
 syslog_errorlog=Webmin error log
 

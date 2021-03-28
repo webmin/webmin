@@ -104,6 +104,16 @@ else {
 	$miniserv{'precache'} = $in{'precache'};
 	}
 
+# Save buffer size
+if ($in{'bufsize_def'}) {
+	delete($miniserv{'bufsize'});
+	}
+else {
+	$in{'bufsize'} =~ /^\d+$/ && $in{'bufsize'} > 0 ||
+		&error($text{'advanced_ebufsize'});
+	$miniserv{'bufsize'} = $in{'bufsize'};
+	}
+
 &lock_file($ENV{'MINISERV_CONFIG'});
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});

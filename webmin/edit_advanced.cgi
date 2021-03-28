@@ -105,7 +105,12 @@ print &ui_table_row($text{'advanced_headers'},
 
 # Sort config file's keys alphabetically
 print &ui_table_row($text{'advanced_sortconfigs'},
-	    &ui_yesno_radio("sortconfigs", $gconfig{'sortconfigs'}));
+	&ui_yesno_radio("sortconfigs", $gconfig{'sortconfigs'}));
+
+# Network buffer size
+print &ui_table_row($text{'advanced_bufsize'},
+	&ui_opt_textbox("bufsize", $miniserv{'bufsize'}, 6,
+			$text{'default'}." (32768)"));
 
 
 print &ui_table_end();
