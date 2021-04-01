@@ -7222,6 +7222,7 @@ sub remote_rpc_call
 {
 my $serv;
 my $sn = &remote_session_name($_[0]);	# Will be undef for local connection
+my $tostr = &serialise_variable($_[1]);
 if (ref($_[0])) {
 	# Server structure was given
 	$serv = $_[0];
@@ -7387,7 +7388,6 @@ if ($serv->{'fast'} || !$sn) {
 		}
 	# Got a connection .. send off the request
 	my $fh = $fast_fh_cache{$sn};
-	my $tostr = &serialise_variable($_[1]);
 	print $fh length($tostr)," $fh\n";
 	print $fh $tostr;
 	my $rstr = <$fh>;
