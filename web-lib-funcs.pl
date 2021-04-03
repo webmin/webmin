@@ -146,7 +146,7 @@ Write out the contents of a hash as name=value lines. The parameters are :
 =cut
 sub write_file
 {
-my ($file, 
+my ($file,
     $data_hash,
     $join_char,
     $sort,
@@ -161,7 +161,7 @@ if ($sort || $gconfig{'sortconfigs'}) {
     foreach $k (sort keys %{$data_hash}) {
         (print ARFILE $k,$join,$data_hash->{$k},"\n") ||
             &error(&text("efilewrite", $realfile, $!));
-        
+
         }
     }
 else {
@@ -958,7 +958,7 @@ if (!$gconfig{'no_frame_options'}) {
 	print "X-Frame-Options: SAMEORIGIN\n";
 	}
 if (!$gconfig{'no_content_security_policy'}) {
-	print "Content-Security-Policy: script-src 'self' 'unsafe-inline' 'unsafe-eval'; frame-src 'self'; child-src 'self' blob:\n";
+	print "Content-Security-Policy: script-src 'self' 'unsafe-inline' 'unsafe-eval'; frame-src 'self'; child-src 'self'\n";
 	}
 print "X-Content-Type-Options: nosniff\n";
 if (defined($cs)) {
@@ -1652,8 +1652,8 @@ elsif ($ENV{'REQUEST_URI'} =~ /json-error=1/) {
 	my $error_message = join(",", @_);
 	my $error = ($error_what . $error_message);
 	%jerror = (error => $error,
-		   error_fatal => 1, 
-		   error_what => $error_what, 
+		   error_fatal => 1,
+		   error_what => $error_what,
 		   error_message => $error_message
 		  );
 	print_json(\%jerror);
@@ -1936,9 +1936,9 @@ sub make_date
 {
 &load_theme_library();
 if (defined(&theme_make_date) &&
-    !$main::theme_prevent_make_date && 
+    !$main::theme_prevent_make_date &&
     (($main::header_content_type eq "text/html" &&
-    $main::webmin_script_type eq "web") || 
+    $main::webmin_script_type eq "web") ||
     $main::theme_allow_make_date)) {
 	return &theme_make_date(@_);
 	}
@@ -5292,7 +5292,7 @@ if (!defined($auto)) {
 	my $glangauto = $gconfig{'langauto'};
 	if (defined($glangauto)) {
 		$auto = $glangauto;
-		} 
+		}
 	else {
 		my ($clanginfo) = grep { $_->{'lang'} eq $current_lang }
 			&list_languages();
@@ -5328,14 +5328,14 @@ my ($dir) = ($_[1] || "lang");
 foreach my $o (@lang_order_list) {
 	my $ok = &read_file_cached_with_stat("$root/$dir/$o", \%text);
 	my $ok_auto;
-	$ok_auto = &read_file_cached_with_stat("$root/$dir/$o.auto", \%text) 
+	$ok_auto = &read_file_cached_with_stat("$root/$dir/$o.auto", \%text)
 		if ($auto && -r "$root/$dir/$o.auto");
 	return () if (!$ok && !$ok_auto && $o eq $default_lang);
 	}
 if ($ol) {
 	foreach my $o (@lang_order_list) {
 		&read_file_cached("$root/$ol/$o", \%text);
-		&read_file_cached("$root/$ol/$o.auto", \%text) 
+		&read_file_cached("$root/$ol/$o.auto", \%text)
 			if ($auto && -r "$root/$ol/$o.auto");
 		}
 	}
@@ -8997,10 +8997,10 @@ if (!$ucd) {
 
 =head2 nice_size(bytes, [minimal], [decimal])
 
-Converts a number of bytes into a number followed by a suffix like GiB, 
-MiB or kiB (or GB, MB, kB, if optional parameter [decimal] is set to true). 
-Output value is clipped to two decimal digits. The optional [minimal] parameter 
-sets the smallest units to use - so you could pass 1024*1024 to never show 
+Converts a number of bytes into a number followed by a suffix like GiB,
+MiB or kiB (or GB, MB, kB, if optional parameter [decimal] is set to true).
+Output value is clipped to two decimal digits. The optional [minimal] parameter
+sets the smallest units to use - so you could pass 1024*1024 to never show
 bytes or kB.
 
 =cut
@@ -10546,7 +10546,7 @@ if ($fsize <= $limit || !$limit) {
 # Starting and ending number of bytes to read
 my $split = !$opts->{'head'} && !$opts->{'tail'};
 
-# Make it a half of a limit, to 
+# Make it a half of a limit, to
 # grab both head and tail eaquly
 $limit = $limit / 2 if ($split);
 
@@ -11434,7 +11434,7 @@ print convert_to_json(@_);
 
 =head2 get_referer_relative()
 
-Returns relative URL based on referer omitting origin part. 
+Returns relative URL based on referer omitting origin part.
 Should be used instead for redirects with submitted forms
 
 =cut
@@ -11450,7 +11450,7 @@ return $referer;
 
 =head2 get_webmin_email_url([module], [cgi], [force-default], [force-host])
 
-Returns the base URL for accessing this Webmin system, for use in URLs. 
+Returns the base URL for accessing this Webmin system, for use in URLs.
 
 =cut
 sub get_webmin_email_url

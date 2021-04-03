@@ -71,6 +71,9 @@ print <<EOF;
 		\$('#jstree').jstree({
 			'plugins' : [ 'checkbox' ],
 			'core' : {
+				'animation': 100,
+				'worker' : false,
+				'force_text': true,
 				'data' : {
 					'url' : function (node) {
 						const r = [];
