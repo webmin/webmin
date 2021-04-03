@@ -3799,4 +3799,19 @@ else {
 	}
 }
 
+# remove_spam_subject(&mail)
+# Removes the [spam] prefix from the subject, if there is one
+sub remove_spam_subject
+{
+my ($mail) = @_;
+my $rv = 0;
+foreach my $h (@{$mail->{'headers'}}) {
+	if (lc($h->[0]) eq 'subject' && $h->[1] =~ /^\[spam\]\s*(.*)$/i) {
+		$h->[1] = $1;
+		$rv = 1;
+		}
+	}
+return $rv;
+}
+
 1;
