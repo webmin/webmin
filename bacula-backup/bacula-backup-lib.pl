@@ -417,9 +417,10 @@ return @rv;
 
 # bacula_file_button(filesfield, [jobfield], [volume])
 # Pops up a window for selecting multiple files, using a tree-like view
+# Brackets around "window" are to hijack Authentic Theme replacement of popups with modals ("undefined")
 sub bacula_file_button
 {
-return "<input type=button onClick='ifield = form.$_[0]; jfield = form.$_[1]; chooser = window.open(\"treechooser.cgi?volume=".&urlize($_[2])."&files=\"+escape(ifield.value)+\"&job=\"+escape(jfield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbar=no,width=500,height=400\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+return "<input type=button onClick='ifield = form.$_[0]; jfield = form.$_[1]; chooser = (window).open(\"treechooser.cgi?volume=".&urlize($_[2])."&files=\"+escape(ifield.value)+\"&job=\"+escape(jfield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbar=no,width=500,height=400\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
 sub tape_select
