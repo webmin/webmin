@@ -7438,7 +7438,6 @@ if ($serv->{'fast'} || !$sn) {
 	}
 else {
 	# Call rpc.cgi on remote server
-	my $tostr = &serialise_variable($_[1]);
 	my $error = 0;
 	my $con = &make_http_connection($ip, $serv->{'port'},
 					$serv->{'ssl'}, "POST", "/rpc.cgi");
