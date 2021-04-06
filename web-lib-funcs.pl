@@ -5619,7 +5619,41 @@ if (defined(&theme_get_module_info)) {
 	%rv = &theme_get_module_info(\%rv, $_[0], $_[1], $_[2]);
 	}
 
+# Apply module overrides
+&get_module_overrides($_[0], \%rv);
+
 return %rv;
+}
+
+=head2 get_module_overrides($mod, \data)
+
+Checks for module specific overrides if exist in
+module.overrides file and executes defined subs
+
+=cut
+sub get_module_overrides
+{
+my ($mod, $data) = @_;
+return if (!$mod);
+
+my $mdir = &module_root_directory($mod);
+
+# Call module specific overrides
+if (-r "$mdir/module.overrides" && !$main::get_module_overrides_done++) {
+	my %overrides;
+	&read_file_cached("$mdir/module.overrides", \%overrides);
+	my $funcs = $overrides{'funcs'};
+	if ($funcs) {
+		eval {
+			local $main::error_must_die = 1;
+			my @funcs = split(/\s+/, $funcs);
+			&foreign_require($mod);
+			foreach my $func (@funcs) {
+				&foreign_call($mod, $func, \%{$data});
+				};
+			}
+		}
+	}
 }
 
 =head2 get_all_module_infos(cachemode)
