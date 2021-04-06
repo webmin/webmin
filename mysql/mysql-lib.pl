@@ -1881,7 +1881,7 @@ if ($err) {
 
 # Override function to substitute module's name
 sub override_check_variant
-{	
+{
 my ($rv) = @_;
 my $mysql_version;
 chop($mysql_version = &read_file_contents(
