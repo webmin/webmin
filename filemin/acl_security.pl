@@ -59,6 +59,7 @@ sub acl_security_save {
         $access->{'work_as_user'} = $in->{'acl_user'};
     }
     $access->{'max'} = $in->{'max_def'} ? undef : $in{'max'};
+    $access->{'_module_acl_func'} = 'save_module_acl_usermin';
 }
 
 sub acl_security_noconfig {

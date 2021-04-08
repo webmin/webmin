@@ -4497,10 +4497,19 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 	}
 
 if (!$foundindb) {
-	# Save ACL to local file
 	if (!-d "$config_directory/$m") {
 		mkdir("$config_directory/$m", 0755);
 		}
+
+	# Check if module's custom acls save func is called
+	my $module_acl_func = $_[0]->{'_module_acl_func'};
+	if ($module_acl_func) {
+		delete($_[0]->{'_module_acl_func'});
+		&foreign_require($m, "$m-lib.pl");
+		&foreign_call($m, $module_acl_func, ($m, $u, $_[0], $_[3]));
+		}
+
+	# Save ACL to local file
 	if ($_[0]) {
 		&write_file("$config_directory/$m/$u.acl", $_[0]);
 		}
