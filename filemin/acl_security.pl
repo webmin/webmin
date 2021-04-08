@@ -30,6 +30,13 @@ sub acl_security_form {
     print &ui_table_row($text{'acl_max'},
 	&ui_opt_textbox("max", $access->{'max'}, 10, $text{'acl_unlimited'}).
 	" ".$text{'acl_bytes'}, 3);
+
+    # Update for Usermin
+    if (&foreign_installed("usermin")) {
+        print &ui_table_hr();
+        print &ui_table_row($text{'acl_update_usermin'},
+            &ui_yesno_radio('save_usermin_acls', 0)."<br><br>");
+        }
 }
 
 sub acl_security_save {
@@ -59,7 +66,9 @@ sub acl_security_save {
         $access->{'work_as_user'} = $in->{'acl_user'};
     }
     $access->{'max'} = $in->{'max_def'} ? undef : $in{'max'};
-    $access->{'_module_acl_func'} = 'save_module_acl_usermin';
+
+    $access->{'_module_acl_func'} = 'save_module_acl_usermin'
+        if ($in{'save_usermin_acls'});
 }
 
 sub acl_security_noconfig {

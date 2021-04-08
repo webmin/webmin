@@ -133,6 +133,7 @@ acl_user=Specific Unix user
 acl_euser=Selected Unix user does not exist!
 acl_epath=Path $1 does not exist
 acl_max=Maximum size for uploaded files
+acl_update_usermin=Update access control options for Usermin
 acl_unlimited=Unlimited
 acl_bytes=bytes
 search=Search
