@@ -5639,20 +5639,13 @@ return if (!$mod);
 my $mdir = &module_root_directory($mod);
 
 # Call module specific overrides
-if (-r "$mdir/module.overrides") {
-	my %overrides;
-	&read_file_cached("$mdir/module.overrides", \%overrides);
-	my $funcs = $overrides{'funcs'};
-	if ($funcs) {
-		eval {
-			local $main::error_must_die = 1;
-			my @funcs = split(/\s+/, $funcs);
-			&foreign_require($mod, "$mod-lib.pl");
-			foreach my $func (@funcs) {
-				&foreign_call($mod, $func, \%{$data});
-				}
-			};
-		}
+my $call = 'module_overrides';
+if (-r "$mdir/$call.pl") {
+	eval {
+		local $main::error_must_die = 1;
+		&foreign_require($mod, "$call.pl");
+		&foreign_call($mod, $call, \%{$data});
+		};
 	}
 }
 
