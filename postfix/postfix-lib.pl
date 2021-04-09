@@ -813,8 +813,8 @@ sub get_maps
 			    # A comment line
 			    $cmt = &is_table_comment($_);
 			    }
-			elsif (/^\s*(\/[^\/]*\/[a-z]*)\s+([^#]*)/ ||
-			       /^\s*([^\s]+)\s+([^#]*)/) {
+			elsif (/^\s*(\/[^\/]*\/[a-z]*)\s+(.*)/ ||
+			       /^\s*([^\s]+)\s+(.*)/) {
 			    # An actual map
 			    $number++;
 			    my %map;
