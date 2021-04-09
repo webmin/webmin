@@ -472,27 +472,4 @@ if (@allowed_paths == 1 && $allowed_paths[0] eq '/') {
 return 1;
 }
 
-sub save_module_acl_usermin
-{   
-my ($mod, $user, $acls) = @_;
-my $uconfig_directory;
-if (&foreign_installed("usermin")) {
-    &foreign_require("usermin");
-    my %uminiserv;
-    &usermin::get_usermin_miniserv_config(\%uminiserv);
-    $uconfig_directory = $uminiserv{'env_WEBMIN_CONFIG'};
-    }
-if (!-d $uconfig_directory) {
-    return;
-    }
-elsif (!-d "$uconfig_directory/$mod") {
-    mkdir("$uconfig_directory/$mod", 0755);
-    }
-my $aclfile = "$uconfig_directory/$mod/$user.acl";
-&lock_file($aclfile);
-&write_file($aclfile, $acls);
-&set_ownership_permissions(undef, undef, 0640, $aclfile);
-&unlock_file($aclfile);
-}
-
 1;
