@@ -5644,7 +5644,7 @@ if (-r "$mdir/$call.pl") {
 	eval {
 		local $main::error_must_die = 1;
 		&foreign_require($mod, "$call.pl");
-		&foreign_call($mod, $call, \%{$data});
+		&foreign_call($mod, $call, $data);
 		};
 	}
 }
