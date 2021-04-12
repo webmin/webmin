@@ -501,6 +501,8 @@ sub compare_zones
 my @sp0 = split(/\./, lc($_[0] || ""));
 my @sp1 = split(/\./, lc($_[1] || ""));
 for(my $i=0; $i<@sp0 || $i<@sp1; $i++) {
+	$sp0[$i] = "" if (!defined($sp0[$i]));
+	$sp1[$i] = "" if (!defined($sp1[$i]));
 	if ($sp0[$i] =~ /^\d+$/ && $sp1[$i] =~ /^\d+$/) {
 		return -1 if ($sp0[$i] < $sp1[$i]);
 		return 1 if ($sp0[$i] > $sp1[$i]);
