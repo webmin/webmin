@@ -5614,12 +5614,39 @@ if ($rv{'longdesc'}) {
 	$rv{'index_link'} = 'index.cgi';
 	}
 
+# Apply module overrides
+&get_module_overrides($_[0], \%rv);
+
 # Call theme-specific override function
 if (defined(&theme_get_module_info)) {
 	%rv = &theme_get_module_info(\%rv, $_[0], $_[1], $_[2]);
 	}
 
 return %rv;
+}
+
+=head2 get_module_overrides($mod, \data)
+
+Checks for module specific overrides if exist in
+module.overrides file and executes defined subs
+
+=cut
+sub get_module_overrides
+{
+my ($mod, $data) = @_;
+return if (!$mod);
+
+my $mdir = &module_root_directory($mod);
+
+# Call module specific overrides
+my $call = 'module_overrides';
+if (-r "$mdir/$call.pl") {
+	eval {
+		local $main::error_must_die = 1;
+		&foreign_require($mod, "$call.pl");
+		&foreign_call($mod, $call, $data);
+		};
+	}
 }
 
 =head2 get_all_module_infos(cachemode)
