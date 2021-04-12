@@ -60,7 +60,7 @@ if (@zones == 1 && $access{'zones'} ne '*' && !$access{'defaults'} &&
 	exit;
 	}
 
-my $chroot = &get_chroot();
+my $chroot = &get_chroot() || "";
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 	&restart_links().'<br>'.
 	&help_search_link("bind", "doc", "google"), undef, undef,
