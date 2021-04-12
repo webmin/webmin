@@ -1,5 +1,5 @@
 # logrotate-lib.pl
-# Common functions for parsing the logrotate configuration file
+# Common functions for parsing the logrotate configuration file.
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
