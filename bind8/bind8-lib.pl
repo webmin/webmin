@@ -3161,9 +3161,9 @@ my ($zone) = @_;
 my @rv;
 if (!$access{'ro'} && $access{'apply'}) {
 	my $r = $ENV{'REQUEST_METHOD'} eq 'POST' ? 0 : 1;
-	my $link_params;
+	my $link_params = "";
 	if ($zone) {
-		$link_params = "&" . "zone=$zone->{'name'}&type=$zone->{'type'}";
+		$link_params = "&zone=$zone->{'name'}&type=$zone->{'type'}";
 		if ($zone->{'viewindex'}) {
 			$link_params .= "&view=$zone->{'viewindex'}";
 			}
