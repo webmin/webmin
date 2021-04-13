@@ -308,6 +308,12 @@ sub create_webmin_init
 {
 local $res = &has_command("ip${ipvx}tables-restore");
 local $ipt = &has_command("ip${ipvx}tables");
+local $out = &backquote_command("$res -h 2>&1 </dev/null");
+if ($out =~ /\s+-w\s+/) {
+	# Supports the wait flag, in case two instances are run at once
+	$res .= " -w";
+	$ipt .= " -w";
+	}
 local $start = "$res <$ipvx_save";
 local $stop = "$ipt -t filter -F\n".
 	      "$ipt -t nat -F\n".
@@ -321,7 +327,8 @@ local $stop = "$ipt -t filter -F\n".
 	      "$ipt -t mangle -P PREROUTING ACCEPT\n".
 	      "$ipt -t mangle -P OUTPUT ACCEPT";
 &foreign_require("init", "init-lib.pl");
-&init::enable_at_boot("webmin-ip${ipvx}tables", "Load ip${ipvx}tables save file",
+&init::enable_at_boot("webmin-ip${ipvx}tables",
+		      "Load ip${ipvx}tables save file",
 		      $start, $stop, undef, { 'exit' => 1 });
 }
 
