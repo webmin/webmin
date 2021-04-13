@@ -12,6 +12,7 @@ $access{'sync'} && $access{'create'} && $access{'delete'} ||
 &lock_file("$module_config_directory/config");
 $config{'sync_create'} = $in{'create'};
 $config{'sync_delete'} = $in{'delete'};
+$config{'sync_modify'} = $in{'modify'};
 $config{'sync_unix'} = $in{'unix'};
 $config{'sync_group'} = $in{'group'};
 &write_file("$module_config_directory/config", \%config);

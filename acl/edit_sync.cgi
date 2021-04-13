@@ -26,6 +26,8 @@ print &ui_table_row($text{'sync_when'},
 	"<br>\n".
 	&ui_checkbox("delete", 1, $text{'sync_delete'}, $config{'sync_delete'}).
 	"<br>\n".
+	&ui_checkbox("modify", 1, $text{'sync_modify'}, $config{'sync_modify'}).
+	"<br>\n".
 	&ui_checkbox("unix", 1, $text{'sync_unix'}, $config{'sync_unix'}));
 
 # Assign new users to group

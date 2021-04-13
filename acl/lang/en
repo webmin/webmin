@@ -306,6 +306,7 @@ sync_when=When to synchronize
 sync_create=Create a Webmin user when a Unix user is created.
 sync_update=Update the matching Webmin user when a Unix user is updated.
 sync_delete=Delete the matching Webmin user when a Unix user is deleted.
+sync_modify=Rename the matching Webmin user when a Unix user is renamed.
 sync_group=Assign new users to Webmin group
 sync_unix=Set password for new users to Unix authentication.
 sync_ecannot=You are not allowed to configure user synchronization.
