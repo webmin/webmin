@@ -63,6 +63,12 @@ bind_eipv6=IPv6 cannot be enabled unless the $1 Perl module is installed
 bind_redirecting=מפנה לכתובת אתר חדשה ..
 bind_elsof=New port $1 is already in use by another process
 bind_eonsystem=The IP address $1 is not active on this system, and so cannot be used
+bind_maxconns=סך כל החיבורים המקבילים
+bind_maxconns_per_ip=מקסימום חיבורים מקבילים לכל IP
+bind_maxconns_per_net=מקסימום חיבורים מקבילים לכל רשת
+bind_emaxconns=חיבורים מרביים במקביל חייבים להיות מספר גדול מ- 1
+bind_emaxconns_per_ip=חיבורים מרביים בו זמנית לכל IP חייבים להיות מספר גדול מ- 1
+bind_emaxconns_per_net=חיבורים מרביים בו זמנית לכל רשת חייבים להיות מספר גדול מ -1
 
 log_title=רישום
 log_desc=Webmin can be configured to write a log of web server hits, in the standard CLF log file format. If logging is enabled, you can also choose whether IP addresses or hostnames are recorded, and how often the log file is cleared. When enabled, logs are written to the file $1.
@@ -892,6 +898,8 @@ advanced_listdir=רשימת ספריות ללא קובץ אינדקס?
 advanced_headers=כותרות HTTP נוספות
 advanced_eheader=Headers must be formatted like <tt>Header: Value</tt>
 advanced_sortconfigs=לשמור קבצי config ממוינים לפי מפתחותיהם?
+advanced_bufsize=גודל מאגר הרשת בתים
+advanced_ebufsize=גודל חיץ הרשת חייב להיות מספר גדול מאפס
 
 syslog_errorlog=יומן שגיאות Webmin
 

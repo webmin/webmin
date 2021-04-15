@@ -16,6 +16,12 @@ bind_eipv6=IPv6 nelze povolit, pokud není nainstalován modul $1 Perl
 bind_redirecting=Přesměrování na novou adresu URL.
 bind_elsof=Nový port $1 je již používán jiným procesem
 bind_eonsystem=IP adresa $1 není v tomto systému aktivní, a proto ji nelze použít
+bind_maxconns=Maximální celkový počet souběžných připojení
+bind_maxconns_per_ip=Maximální počet souběžných připojení na IP
+bind_maxconns_per_net=Maximální počet souběžných připojení na síť
+bind_emaxconns=Maximální počet souběžných připojení musí být číslo větší než 1
+bind_emaxconns_per_ip=Maximální počet souběžných připojení na IP musí být číslo větší než 1
+bind_emaxconns_per_net=Maximální počet souběžných připojení v síti musí být číslo větší než 1
 
 log_global=&lt;Globální akce&gt;
 log_sched=Protokolovat naplánované funkce?
@@ -188,6 +194,8 @@ advanced_listdir=Seznam adresářů bez indexového souboru?
 advanced_headers=Extra záhlaví HTTP
 advanced_eheader=Záhlaví musí být formátována jako <tt>Záhlaví: Hodnota</tt>
 advanced_sortconfigs=Uložit konfigurační soubory seřazené podle jeho klíčů?
+advanced_bufsize=Velikost vyrovnávací paměti sítě v bajtech
+advanced_ebufsize=Velikost vyrovnávací paměti sítě musí být číslo větší než nula
 
 savekey_echain=Chybějící nebo neplatný zřetězený certifikát formátu PEM
 savekey_done3=Dodaný zřetězený SSL certifikát byl uložen do souboru $1.

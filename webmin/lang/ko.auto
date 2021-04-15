@@ -16,6 +16,12 @@ bind_eipv6=$1 Perl 모듈이 설치되어 있지 않으면 IPv6을 사용할 수
 bind_redirecting=새 URL로 리디렉션
 bind_elsof=다른 프로세스에서 새 포트 $1을 이미 사용하고 있습니다.
 bind_eonsystem=이 시스템에서 IP 주소 $1이 (가) 활성화되어 있지 않으므로 사용할 수 없습니다
+bind_maxconns=최대 총 동시 연결
+bind_maxconns_per_ip=IP 당 최대 동시 연결
+bind_maxconns_per_net=네트워크 당 최대 동시 연결
+bind_emaxconns=최대 동시 연결 수는 1보다 커야합니다.
+bind_emaxconns_per_ip=IP 당 최대 동시 연결 수는 1보다 커야합니다.
+bind_emaxconns_per_net=네트워크 당 최대 동시 연결 수는 1보다 커야합니다.
 
 log_global=&lt;글로벌 액션&gt;
 log_sched=예약 된 기능을 기록 하시겠습니까?
@@ -184,6 +190,8 @@ advanced_listdir=색인 파일이없는 디렉토리를 나열 하시겠습니�
 advanced_headers=추가 HTTP 헤더
 advanced_eheader=헤더는 <tt>헤더 : 값</tt>과 같은 형식이어야합니다.
 advanced_sortconfigs=구성 파일을 키별로 정렬하여 저장 하시겠습니까?
+advanced_bufsize=네트워크 버퍼 크기 (바이트)
+advanced_ebufsize=네트워크 버퍼 크기는 0보다 큰 숫자 여야합니다.
 
 savekey_echain=PEM 형식 체인 인증서가 없거나 잘못되었습니다
 savekey_done3=제공된 체인 SSL 인증서가 $1 파일에 저장되었습니다.

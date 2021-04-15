@@ -1,6 +1,13 @@
 access_ecidr8=Saiz rangkaian IPv6 '$1' mesti dibahagikan dengan 8
 access_trust=Percayakan alamat IP jauh yang disediakan oleh proksi?
 
+bind_maxconns=Jumlah sambungan serentak maksimum
+bind_maxconns_per_ip=Sambungan serentak maksimum setiap IP
+bind_maxconns_per_net=Sambungan serentak maksimum setiap rangkaian
+bind_emaxconns=Sambungan serentak maksimum mestilah nombor lebih besar daripada 1
+bind_emaxconns_per_ip=Sambungan serentak maksimum per IP mestilah bilangan yang lebih besar daripada 1
+bind_emaxconns_per_net=Sambungan serentak maksimum setiap rangkaian mestilah nombor yang lebih besar daripada 1
+
 log_global=&lt;Tindakan global&gt;
 log_sched=Fungsi berjadual log?
 log_email=Hantar tindakan log melalui e-mel kepada
@@ -72,6 +79,8 @@ advanced_listdir=Senarai direktori tanpa fail indeks?
 advanced_headers=Tajuk tambahan HTTP
 advanced_eheader=Tajuk mesti diformat seperti <tt>Tajuk: Nilai</tt>
 advanced_sortconfigs=Simpan fail config disusun dengan kuncinya?
+advanced_bufsize=Saiz penyangga rangkaian dalam bait
+advanced_ebufsize=Saiz penyangga rangkaian mestilah nombor yang lebih besar daripada sifar
 
 status_units=Unit untuk suhu
 status_celsius=Celsius

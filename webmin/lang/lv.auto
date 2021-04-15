@@ -63,6 +63,12 @@ bind_eipv6=IPv6 nevar iespējot, ja nav instalēts modulis $1 Perl
 bind_redirecting=Novirzīšana uz jaunu URL ..
 bind_elsof=Jauns ports $1 jau tiek izmantots citā procesā
 bind_eonsystem=IP adrese $1 šajā sistēmā nav aktīva, tāpēc to nevar izmantot
+bind_maxconns=Maksimālais kopējais vienlaicīgais savienojums
+bind_maxconns_per_ip=Maksimālais vienlaicīgais savienojums vienā IP
+bind_maxconns_per_net=Maksimālais vienlaicīgais savienojums vienā tīklā
+bind_emaxconns=Maksimālajam vienlaicīgajam savienojumam jābūt skaitlim, kas lielāks par 1
+bind_emaxconns_per_ip=Maksimālajam vienlaicīgajam savienojumam vienam IP jābūt skaitlim, kas lielāks par 1
+bind_emaxconns_per_net=Maksimālajam vienlaicīgajam savienojumam vienā tīklā jābūt skaitlim, kas lielāks par 1
 
 log_title=Mežizstrāde
 log_desc=Webmin var konfigurēt rakstīt tīmekļa servera triecienu žurnālu standarta CLF žurnāla faila formātā. Ja reģistrēšana ir iespējota, varat arī izvēlēties, vai tiek ierakstītas IP adreses vai resursdatoru nosaukumi un cik bieži žurnāla fails tiek notīrīts. Pēc ieslēgšanas žurnāli tiek ierakstīti failā $1.
@@ -892,6 +898,8 @@ advanced_listdir=Sarakstu direktorijas bez indeksa faila?
 advanced_headers=Papildu HTTP galvenes
 advanced_eheader=Galvenes jāformatē, piemēram, <tt>Header: Value</tt>
 advanced_sortconfigs=Vai saglabāt konfigurācijas failus, kas sakārtoti pēc tā taustiņiem?
+advanced_bufsize=Tīkla bufera lielums baitos
+advanced_ebufsize=Tīkla bufera lielumam jābūt skaitlim, kas lielāks par nulli
 
 syslog_errorlog=Webmin kļūdu žurnāls
 

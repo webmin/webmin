@@ -63,6 +63,12 @@ bind_eipv6=IPv6 negalima įgalinti, jei neįdiegtas $1 „Perl“ modulis
 bind_redirecting=Peradresuojama į naują URL ..
 bind_elsof=Naujas prievadas $1 jau naudojamas kituose procesuose
 bind_eonsystem=IP adresas $1 šioje sistemoje neaktyvus, todėl jo negalima naudoti
+bind_maxconns=Didžiausias bendras vienu metu esantis ryšys
+bind_maxconns_per_ip=Maksimalus vienu metu esantis ryšys per IP
+bind_maxconns_per_net=Didžiausias vienu metu esančių ryšių skaičius tinkle
+bind_emaxconns=Didžiausias lygiagrečių ryšių skaičius turi būti didesnis nei 1
+bind_emaxconns_per_ip=Didžiausias vienu metu esančių IP ryšių skaičius turi būti didesnis nei 1
+bind_emaxconns_per_net=Didžiausias vienu metu esančių tinklų ryšių skaičius turi būti didesnis nei 1
 
 log_title=Medienos ruoša
 log_desc=„Webmin“ gali būti sukonfigūruotas rašyti žiniatinklio serverio įvykių žurnalą standartiniu CLF žurnalo failo formatu. Jei įgalinta registracija, taip pat galite pasirinkti, ar įrašomi IP adresai, ar pagrindiniai vardai, ir kaip dažnai žurnalas yra išvalomas. Kai įjungta, žurnalai įrašomi į failą $1.
@@ -892,6 +898,8 @@ advanced_listdir=Pateikti katalogus be rodyklės failo?
 advanced_headers=Papildomos HTTP antraštės
 advanced_eheader=Antraštės turi būti suformatuotos taip, kaip <tt>Antraštė: vertė</tt>
 advanced_sortconfigs=Išsaugoti konfigūracijos failus, surūšiuotus pagal raktus?
+advanced_bufsize=Tinklo buferio dydis baitais
+advanced_ebufsize=Tinklo buferio dydis turi būti didesnis nei nulis
 
 syslog_errorlog=„Webmin“ klaidų žurnalas
 

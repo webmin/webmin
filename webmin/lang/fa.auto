@@ -19,6 +19,12 @@ bind_eipv6=IPv6 cannot be enabled unless the $1 Perl module is installed
 bind_redirecting=هدایت به URL جدید ..
 bind_elsof=New port $1 is already in use by another process
 bind_eonsystem=The IP address $1 is not active on this system, and so cannot be used
+bind_maxconns=حداکثر کل اتصالات همزمان
+bind_maxconns_per_ip=حداکثر اتصالات همزمان در هر IP
+bind_maxconns_per_net=حداکثر اتصالات همزمان در هر شبکه
+bind_emaxconns=حداکثر اتصالات همزمان باید عددی بزرگتر از 1 باشد
+bind_emaxconns_per_ip=حداکثر اتصالات همزمان در هر IP باید عددی بزرگتر از 1 باشد
+bind_emaxconns_per_net=حداکثر اتصالات همزمان در هر شبکه باید عددی بیشتر از 1 باشد
 
 log_status=ورود به سیستم فعال است؟
 log_clear2=به طور دوره ای پرونده های سیاه را پاک کنید؟
@@ -371,6 +377,8 @@ advanced_listdir=لیست های دایرکتوری را بدون یک فایل 
 advanced_headers=هدرهای اضافی HTTP
 advanced_eheader=Headers must be formatted like <tt>Header: Value</tt>
 advanced_sortconfigs=ذخیره فایل های پیکربندی مرتب شده بر اساس کلیدهای آن؟
+advanced_bufsize=اندازه بافر شبکه در بایت
+advanced_ebufsize=اندازه بافر شبکه باید عددی بزرگتر از صفر باشد
 
 syslog_errorlog=ورود به سیستم خطای وبمین
 

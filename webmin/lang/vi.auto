@@ -63,6 +63,12 @@ bind_eipv6=IPv6 không thể được bật trừ khi cài đặt $1 Perl đư�
 bind_redirecting=Chuyển hướng đến URL mới ..
 bind_elsof=Cổng mới $1 đã được sử dụng bởi một quy trình khác
 bind_eonsystem=Địa chỉ IP $1 không hoạt động trên hệ thống này và vì vậy không thể sử dụng
+bind_maxconns=Tổng số kết nối đồng thời tối đa
+bind_maxconns_per_ip=Các kết nối đồng thời tối đa trên mỗi IP
+bind_maxconns_per_net=Các kết nối đồng thời tối đa trên mỗi mạng
+bind_emaxconns=Các kết nối đồng thời tối đa phải là một số lớn hơn 1
+bind_emaxconns_per_ip=Các kết nối đồng thời tối đa trên mỗi IP phải là một số lớn hơn 1
+bind_emaxconns_per_net=Các kết nối đồng thời tối đa trên mỗi mạng phải là một số lớn hơn 1
 
 log_title=Ghi nhật ký
 log_desc=Webmin có thể được cấu hình để viết nhật ký các lần truy cập máy chủ web, ở định dạng tệp nhật ký CLF tiêu chuẩn. Nếu đăng nhập được bật, bạn cũng có thể chọn xem địa chỉ IP hoặc tên máy chủ được ghi lại và tần suất xóa tệp nhật ký. Khi được bật, nhật ký được ghi vào tệp $1.
@@ -892,6 +898,8 @@ advanced_listdir=Liệt kê các thư mục không có tệp chỉ mục?
 advanced_headers=Tiêu đề HTTP thêm
 advanced_eheader=Các tiêu đề phải được định dạng như <tt>Tiêu đề: Giá trị</tt>
 advanced_sortconfigs=Lưu tập tin cấu hình được sắp xếp theo các phím của nó?
+advanced_bufsize=Kích thước bộ đệm mạng tính bằng byte
+advanced_ebufsize=Kích thước bộ đệm mạng phải là một số lớn hơn 0
 
 syslog_errorlog=Nhật ký lỗi webmin
 

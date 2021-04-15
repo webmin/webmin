@@ -16,6 +16,12 @@ bind_eipv6=IPv6 non può essere abilitato a meno che non sia installato il modul
 bind_redirecting=Reindirizzamento al nuovo URL ..
 bind_elsof=La nuova porta $1 è già in uso da un altro processo
 bind_eonsystem=L'indirizzo IP $1 non è attivo su questo sistema, quindi non può essere utilizzato
+bind_maxconns=Numero massimo di connessioni simultanee totali
+bind_maxconns_per_ip=Numero massimo di connessioni simultanee per IP
+bind_maxconns_per_net=Numero massimo di connessioni simultanee per rete
+bind_emaxconns=Il numero massimo di connessioni simultanee deve essere un numero maggiore di 1
+bind_emaxconns_per_ip=Il numero massimo di connessioni simultanee per IP deve essere un numero maggiore di 1
+bind_emaxconns_per_net=Il numero massimo di connessioni simultanee per rete deve essere un numero maggiore di 1
 
 log_global=&lt;Azioni globali&gt;
 log_sched=Registra le funzioni pianificate?
@@ -188,6 +194,8 @@ advanced_listdir=Elenca le directory senza un file indice?
 advanced_headers=Intestazioni HTTP extra
 advanced_eheader=Le intestazioni devono essere formattate come <tt>Intestazione: valore</tt>
 advanced_sortconfigs=Salvare i file di configurazione ordinati per le sue chiavi?
+advanced_bufsize=Dimensione del buffer di rete in byte
+advanced_ebufsize=La dimensione del buffer di rete deve essere un numero maggiore di zero
 
 savekey_echain=Certificato concatenato in formato PEM mancante o non valido
 savekey_done3=Il certificato SSL concatenato fornito è stato salvato nel file $1.

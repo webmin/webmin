@@ -63,6 +63,12 @@ bind_eipv6=IPv6 ezin da gaitu $1 Perl modulua instalatuta badago
 bind_redirecting=URL berrira birbideratzen ..
 bind_elsof=$1 ataka berria dagoeneko beste prozesu batek erabiltzen ari da
 bind_eonsystem=$1 IP helbidea ez dago sistema honetan aktiboa, eta beraz ezin da erabili
+bind_maxconns=Gehienezko aldi baterako konexio totalak
+bind_maxconns_per_ip=IP bakoitzeko gehieneko konexio aldiberekoak
+bind_maxconns_per_net=Sare bakoitzeko gehieneko aldi bereko konexioak
+bind_emaxconns=Aldibereko gehieneko konexioak 1 baino handiagoa izan behar du
+bind_emaxconns_per_ip=IP bakoitzeko gehieneko konexio simultaneoak 1 baino handiagoa izan behar du
+bind_emaxconns_per_net=Sareko gehieneko aldi bereko konexioak 1 baino handiagoa izan behar du
 
 log_title=Saio
 log_desc=Webmin konfigura daiteke web zerbitzari hitsen erregistroa idazteko, CLF erregistro formatu estandarrean. Logging gaituta badago, IP helbideak edo ostalariaren izenak erregistratzen diren ala ez eta erregistro fitxategia zenbat aldiz garbitzen den aukeratu dezakezu. Gaituta dagoenean, erregistroak $1 fitxategian idazten dira.
@@ -892,6 +898,8 @@ advanced_listdir=Zerrendako direktoriorik aurkibiderik gabeko fitxategirik?
 advanced_headers=HTTP goiburu gehigarriak
 advanced_eheader=Goiburuak <tt>Goiburua: balioa</tt> bezalako formateatu behar dira
 advanced_sortconfigs=Gorde ezazu bere gakoen arabera ordenatutako fitxategiak?
+advanced_bufsize=Sare buffer tamaina byteetan
+advanced_ebufsize=Sare bufferrak zero baino zenbaki handiagoa izan behar du
 
 syslog_errorlog=Webmin akatsen erregistroa
 

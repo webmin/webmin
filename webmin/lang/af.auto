@@ -63,6 +63,12 @@ bind_eipv6=IPv6 kan nie geaktiveer word nie, tensy die $1 Perl-module geïnstall
 bind_redirecting=Verwys na nuwe URL ..
 bind_elsof=Nuwe poort $1 word reeds deur 'n ander proses gebruik
 bind_eonsystem=Die IP-adres $1 is nie aktief op hierdie stelsel nie, en kan dus nie gebruik word nie
+bind_maxconns=Maksimum totale gelyktydige verbindings
+bind_maxconns_per_ip=Maksimum gelyktydige verbindings per IP
+bind_maxconns_per_net=Maksimum gelyktydige verbindings per netwerk
+bind_emaxconns=Maksimum gelyktydige verbindings moet 'n getal groter as 1 wees
+bind_emaxconns_per_ip=Maksimum gelyktydige verbindings per IP moet 'n getal groter as 1 wees
+bind_emaxconns_per_net=Maksimum gelyktydige verbindings per netwerk moet 'n getal groter as 1 wees
 
 log_title=meld
 log_desc=Webmin kan gekonfigureer word om 'n logboek van treffers op die webbediener te skryf, in die standaard CLF-loglêerformaat. As aanmelding aangeskakel is, kan u ook kies of IP-adresse of gasheername opgeneem word, en hoe gereeld die loglêer verwyder word. As dit geaktiveer is, word logs na die lêer $1 geskryf.
@@ -892,6 +898,8 @@ advanced_listdir=Lys kaarte sonder 'n indekslêer?
 advanced_headers=Ekstra HTTP-opskrifte
 advanced_eheader=Opskrifte moet geformateer word soos <tt>Header: Waarde</tt>
 advanced_sortconfigs=Stoor config-lêers gesorteer volgens sy sleutels?
+advanced_bufsize=Netwerkbuffergrootte in grepe
+advanced_ebufsize=Netwerkbuffergrootte moet 'n getal groter as nul wees
 
 syslog_errorlog=Webmin-foutlogboek
 

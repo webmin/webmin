@@ -63,6 +63,12 @@ bind_eipv6=IPv6: ta ei voi ottaa käyttöön, ellei $1 Perl-moduulia ole asennet
 bind_redirecting=Uudelleenohjaaminen uuteen URL-osoitteeseen ..
 bind_elsof=Uusi portti $1 on jo toisen prosessin käytössä
 bind_eonsystem=IP-osoite $1 ei ole aktiivinen tässä järjestelmässä, joten sitä ei voida käyttää
+bind_maxconns=Suurin mahdollinen samanaikainen yhteys
+bind_maxconns_per_ip=Suurin mahdollinen samanaikainen yhteys IP-osoitetta kohti
+bind_maxconns_per_net=Suurin mahdollinen samanaikainen yhteys verkkoa kohti
+bind_emaxconns=Suurimpien samanaikaisten yhteyksien on oltava suurempi kuin 1
+bind_emaxconns_per_ip=IP-yhteyksien maksimimäärän on oltava suurempi kuin 1
+bind_emaxconns_per_net=Samanaikaisia yhteyksiä saa olla enintään yhtä verkkoa kohti
 
 log_title=hakkuu
 log_desc=Webmin voidaan määrittää kirjoittamaan lokipalvelin Web-palvelimen osumia tavallisessa CLF-lokitiedostomuodossa. Jos kirjaaminen on käytössä, voit myös valita, tallennetaanko IP-osoitteet vai isäntänimet ja kuinka usein lokitiedosto tyhjennetään. Kun tämä on käytössä, lokit kirjoitetaan tiedostoon $1.
@@ -892,6 +898,8 @@ advanced_listdir=Listaa luettelot ilman hakemistotiedostoa?
 advanced_headers=Ylimääräiset HTTP-otsikot
 advanced_eheader=Otsikot on muotoiltava kuten <tt>Otsikko: Arvo</tt>
 advanced_sortconfigs=Tallennetaanko konfigurointitiedostot sen avaimien mukaan lajiteltuina?
+advanced_bufsize=Verkkopuskurin koko tavuina
+advanced_ebufsize=Verkkopuskurin koon on oltava suurempi kuin nolla
 
 syslog_errorlog=Webmin-virheloki
 

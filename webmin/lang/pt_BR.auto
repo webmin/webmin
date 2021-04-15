@@ -13,6 +13,12 @@ bind_eipv6=O IPv6 não pode ser ativado a menos que o módulo Perl $1 esteja ins
 bind_redirecting=Redirecionando para o novo URL.
 bind_elsof=A nova porta $1 já está sendo usada por outro processo
 bind_eonsystem=O endereço IP $1 não está ativo neste sistema e, portanto, não pode ser usado
+bind_maxconns=Máximo total de conexões simultâneas
+bind_maxconns_per_ip=Máximo de conexões simultâneas por IP
+bind_maxconns_per_net=Máximo de conexões simultâneas por rede
+bind_emaxconns=O máximo de conexões simultâneas deve ser um número maior que 1
+bind_emaxconns_per_ip=O máximo de conexões simultâneas por IP deve ser um número maior que 1
+bind_emaxconns_per_net=O máximo de conexões simultâneas por rede deve ser um número maior que 1
 
 log_global=&lt;Ações globais&gt;
 log_sched=Registrar funções agendadas?
@@ -152,6 +158,8 @@ advanced_listdir=Listar diretórios sem um arquivo de índice?
 advanced_headers=Cabeçalhos HTTP extras
 advanced_eheader=Cabeçalhos devem ser formatados como <tt>Cabeçalho: Valor</tt>
 advanced_sortconfigs=Salvar arquivos de configuração classificados por suas chaves?
+advanced_bufsize=Tamanho do buffer de rede em bytes
+advanced_ebufsize=O tamanho do buffer de rede deve ser um número maior que zero
 
 savekey_echain=Certificado encadeado em formato PEM inválido ou ausente
 savekey_done3=O certificado SSL encadeado fornecido foi salvo no arquivo $1.

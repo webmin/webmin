@@ -1,3 +1,10 @@
+bind_maxconns=الحد الأقصى لإجمالي الاتصالات المتزامنة
+bind_maxconns_per_ip=الحد الأقصى من الاتصالات المتزامنة لكل IP
+bind_maxconns_per_net=الحد الأقصى من الاتصالات المتزامنة لكل شبكة
+bind_emaxconns=يجب أن يكون الحد الأقصى للاتصالات المتزامنة رقمًا أكبر من 1
+bind_emaxconns_per_ip=يجب أن يكون الحد الأقصى للاتصالات المتزامنة لكل IP رقمًا أكبر من 1
+bind_emaxconns_per_net=يجب أن يكون الحد الأقصى للاتصالات المتزامنة لكل شبكة رقمًا أكبر من 1
+
 log_sched=تسجيل وظائف المقرر؟
 
 proxy_title=خوادم بروكسي وتنزيلات
@@ -774,6 +781,8 @@ advanced_listdir=قائمة الدلائل دون ملف الفهرس؟
 advanced_headers=رؤوس HTTP إضافية
 advanced_eheader=Headers must be formatted like <tt>Header: Value</tt>
 advanced_sortconfigs=حفظ ملفات التكوين مرتبة حسب مفاتيحها؟
+advanced_bufsize=حجم المخزن المؤقت للشبكة بالبايت
+advanced_ebufsize=يجب أن يكون حجم المخزن المؤقت للشبكة رقمًا أكبر من الصفر
 
 syslog_errorlog=سجل خطأ Webmin
 

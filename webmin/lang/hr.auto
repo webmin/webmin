@@ -63,6 +63,12 @@ bind_eipv6=IPv6 ne može biti omogućen ako nije instaliran $1 Perl modul
 bind_redirecting=Preusmjeravanje na novi URL ..
 bind_elsof=Novi port $1 već koristi drugi postupak
 bind_eonsystem=IP adresa $1 nije aktivna u ovom sustavu, pa se ne može koristiti
+bind_maxconns=Maksimalan ukupan broj istodobnih veza
+bind_maxconns_per_ip=Maksimalni istodobni priključci po IP-u
+bind_maxconns_per_net=Maksimalni istodobni priključci po mreži
+bind_emaxconns=Maksimalni broj istodobnih veza mora biti broj veći od 1
+bind_emaxconns_per_ip=Maksimalni broj istodobnih veza po IP-u mora biti broj veći od 1
+bind_emaxconns_per_net=Maksimalni broj istodobnih veza po mreži mora biti broj veći od 1
 
 log_title=sječa drveta
 log_desc=Webmin se može konfigurirati za pisanje dnevnika učitavanja web poslužitelja, u standardnom formatu datoteke CLF zapisa. Ako je prijava omogućena, također možete odabrati jesu li zapisane IP adrese ili imena računala i koliko često se briše datoteka zapisa. Kad je omogućeno, zapisnici se zapisuju u datoteku $1.
@@ -892,6 +898,8 @@ advanced_listdir=Popis direktorija bez datoteke indeksa?
 advanced_headers=Dodatna HTTP zaglavlja
 advanced_eheader=Zaglavlja moraju biti formatirana kao <tt>Zaglavlje: Vrijednost</tt>
 advanced_sortconfigs=Spremi konfiguracijske datoteke razvrstane po njezinim tipkama?
+advanced_bufsize=Veličina mrežnog međuspremnika u bajtovima
+advanced_ebufsize=Veličina mrežnog međuspremnika mora biti broj veći od nule
 
 syslog_errorlog=Dnevnik grešaka Webmin
 

@@ -43,6 +43,12 @@ bind_eipv6=除非安装了$1 Perl模块，否则无法启用IPv6
 bind_redirecting=重定向到新URL ..
 bind_elsof=新端口$1已被另一个进程使用
 bind_eonsystem=IP地址$1在此系统上未激活，因此无法使用
+bind_maxconns=最大并发连接总数
+bind_maxconns_per_ip=每个IP的最大并发连接数
+bind_maxconns_per_net=每个网络的最大并发连接数
+bind_emaxconns=最大并发连接数必须大于1
+bind_emaxconns_per_ip=每个IP的最大并发连接数必须大于1
+bind_emaxconns_per_net=每个网络的最大并发连接数必须大于1
 
 log_status=正在记录活动？
 log_clf=使用合并的日志格式（包括引荐来源网址和用户代理）？
@@ -570,6 +576,8 @@ advanced_listdir=列出没有索引文件的目录？
 advanced_headers=额外的HTTP标头
 advanced_eheader=标头的格式必须类似于<tt>Header：Value</tt>
 advanced_sortconfigs=保存按其键排序的配置文件？
+advanced_bufsize=网络缓冲区大小（以字节为单位）
+advanced_ebufsize=网络缓冲区大小必须为大于零的数字
 
 syslog_errorlog=Webmin错误日志
 

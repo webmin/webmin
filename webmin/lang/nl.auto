@@ -4,6 +4,12 @@ access_trust=Vertrouwen op afstand IP-adres verstrekt door proxy's?
 
 bind_elsof=Nieuwe poort $1 wordt al door een ander proces gebruikt
 bind_eonsystem=Het IP-adres $1 is niet actief op dit systeem en kan dus niet worden gebruikt
+bind_maxconns=Maximaal totaal aantal gelijktijdige verbindingen
+bind_maxconns_per_ip=Maximaal aantal gelijktijdige verbindingen per IP
+bind_maxconns_per_net=Maximaal aantal gelijktijdige verbindingen per netwerk
+bind_emaxconns=Het maximum aantal gelijktijdige verbindingen moet een getal zijn dat groter is dan 1
+bind_emaxconns_per_ip=Het maximum aantal gelijktijdige verbindingen per IP moet een getal zijn dat groter is dan 1
+bind_emaxconns_per_net=Het maximum aantal gelijktijdige verbindingen per netwerk moet een getal zijn dat groter is dan 1
 
 log_global=&lt;Wereldwijde acties&gt;
 log_sched=Geplande functies loggen?
@@ -96,6 +102,8 @@ advanced_listdir=Lijst met mappen zonder indexbestand?
 advanced_headers=Extra HTTP-headers
 advanced_eheader=Kopteksten moeten worden opgemaakt zoals <tt>Koptekst: waarde</tt>
 advanced_sortconfigs=Configuratiebestanden opslaan gesorteerd op sleutels?
+advanced_bufsize=Netwerkbuffergrootte in bytes
+advanced_ebufsize=De grootte van de netwerkbuffer moet een getal zijn dat groter is dan nul
 
 notif_reboot=Recente pakketupdates (zoals een nieuwe kernelversie) vereisen een herstart om volledig te worden toegepast.
 notif_rebootok=Herstart nu

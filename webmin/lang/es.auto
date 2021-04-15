@@ -18,6 +18,12 @@ bind_eipv6=IPv6 no se puede habilitar a menos que el módulo Perl $1 esté insta
 bind_redirecting=Redireccionando a una nueva URL.
 bind_elsof=El nuevo puerto $1 ya está en uso por otro proceso
 bind_eonsystem=La dirección IP $1 no está activa en este sistema, por lo que no se puede usar
+bind_maxconns=Conexiones simultáneas totales máximas
+bind_maxconns_per_ip=Número máximo de conexiones simultáneas por IP
+bind_maxconns_per_net=Número máximo de conexiones simultáneas por red
+bind_emaxconns=El número máximo de conexiones simultáneas debe ser mayor que 1
+bind_emaxconns_per_ip=El número máximo de conexiones simultáneas por IP debe ser mayor que 1
+bind_emaxconns_per_net=El número máximo de conexiones simultáneas por red debe ser superior a 1
 
 log_status=¿Registro activo?
 log_clear2=Periódicamente borrar archivos de registro?
@@ -330,6 +336,8 @@ advanced_listdir=¿Listar directorios sin un archivo de índice?
 advanced_headers=Encabezados HTTP adicionales
 advanced_eheader=Los encabezados deben estar formateados como <tt>Encabezado: Valor</tt>
 advanced_sortconfigs=¿Guardar archivos de configuración ordenados por sus claves?
+advanced_bufsize=Tamaño del búfer de red en bytes
+advanced_ebufsize=El tamaño del búfer de red debe ser un número mayor que cero
 
 syslog_errorlog=Registro de errores de Webmin
 

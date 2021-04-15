@@ -45,6 +45,12 @@ bind_eipv6=Az IPv6 csak akkor engedélyezhető, ha a $1 Perl modul telepítve va
 bind_redirecting=Átirányítás új URL-re ..
 bind_elsof=Az új $1 portot már egy másik folyamat használja
 bind_eonsystem=A $1 IP-cím nem aktív ezen a rendszeren, ezért nem használható
+bind_maxconns=Maximális összes egyidejű kapcsolat
+bind_maxconns_per_ip=IP-nként maximális egyidejű kapcsolat
+bind_maxconns_per_net=Maximális egyidejű kapcsolat hálózatonként
+bind_emaxconns=Az egyidejű kapcsolatok maximális számának nagyobbnak kell lennie, mint 1
+bind_emaxconns_per_ip=Az IP-nkénti maximális egyidejű kapcsolatnak 1-nél nagyobb számnak kell lennie
+bind_emaxconns_per_net=A hálózatonkénti maximális egyidejű kapcsolatnak 1-nél nagyobb számnak kell lennie
 
 log_desc2=Ha a naplózás engedélyezve van, a Webmin a $1 fájlba részletesebb felhasználói tevékenységi naplót is ír. Ez a napló megnézhető és elemezhető a Webmin Műveletek Napló moduljával, hogy pontosan megnézze, hogy az egyes Webmin felhasználók mit csináltak.
 log_status=A naplózás aktív?
@@ -795,6 +801,8 @@ advanced_listdir=Könyvtárak felsorolása indexfájl nélkül?
 advanced_headers=Extra HTTP fejlécek
 advanced_eheader=A fejléceket a következőképpen kell formázni: <tt>Fejléc: Érték</tt>
 advanced_sortconfigs=Mentheti a konfigurációs fájlokat a kulcsok szerint rendezve?
+advanced_bufsize=A hálózati puffer mérete bájtokban
+advanced_ebufsize=A hálózati puffer méretének nullánál nagyobb számnak kell lennie
 
 syslog_errorlog=Webmin hibanapló
 

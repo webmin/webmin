@@ -63,6 +63,12 @@ bind_eipv6=L-IPv6 ma jistax ikun attivat sakemm il-modulu $1 Perl ikun installat
 bind_redirecting=Rindirizzar lejn URL ġdid ..
 bind_elsof=Port ġdid $1 diġà qed jintuża bi proċess ieħor
 bind_eonsystem=L-indirizz IP $1 mhuwiex attiv fuq din is-sistema, u għalhekk ma jistax jintuża
+bind_maxconns=Konnessjonijiet konkorrenti totali massimi
+bind_maxconns_per_ip=Konnessjonijiet massimi konkorrenti għal kull IP
+bind_maxconns_per_net=Konnessjonijiet massimi simultanji għal kull netwerk
+bind_emaxconns=Konnessjonijiet massimi simultanji għandhom ikunu numru akbar minn 1
+bind_emaxconns_per_ip=Konnessjonijiet massimi simultanji għal kull IP għandhom ikunu numru akbar minn 1
+bind_emaxconns_per_net=Konnessjonijiet massimi konkorrenti għal kull netwerk għandhom ikunu numru akbar minn 1
 
 log_title=Qtugħ
 log_desc=Webmin jista 'jiġi kkonfigurat biex jikteb log ta' hits tas-server tal-web, fil-format standard tal-fajl log CLF. Jekk l-illoggjar huwa attivat, tista 'wkoll tagħżel jekk l-indirizzi IP jew il-hostnames huma rreġistrati, u kemm-il darba l-fajl tal-ġurnal jitneħħa. Meta jkun attivat, iz-zkuk huma miktuba fuq il-fajl $1.
@@ -892,6 +898,8 @@ advanced_listdir=Lista tad-direttorji mingħajr fajl ta 'indiċi?
 advanced_headers=Intestaturi HTTP żejda
 advanced_eheader=L-intestaturi għandhom ikunu fformattjati bħal <tt>Intestatura: Valur</tt>
 advanced_sortconfigs=Issejvja l-fajls config issortjati skont iċ-ċwievet tagħha?
+advanced_bufsize=Daqs tal-buffer tan-netwerk f'bytes
+advanced_ebufsize=Id-daqs tal-buffer tan-netwerk għandu jkun numru akbar minn żero
 
 syslog_errorlog=Log ta 'żbalji Webmin
 

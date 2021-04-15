@@ -63,6 +63,12 @@ bind_eipv6=IPv6 nu poate fi activat decât dacă este instalat modulul $1 Perl
 bind_redirecting=Redirecționarea către o adresă URL nouă ..
 bind_elsof=Portul nou $1 este deja folosit de un alt proces
 bind_eonsystem=Adresa IP $1 nu este activă pe acest sistem, deci nu poate fi utilizată
+bind_maxconns=Conexiuni simultane maxime totale
+bind_maxconns_per_ip=Conexiuni maxime simultane pe IP
+bind_maxconns_per_net=Conexiuni maxime simultane pe rețea
+bind_emaxconns=Conexiunile simultane maxime trebuie să fie mai mari decât 1
+bind_emaxconns_per_ip=Conexiunile simultane maxime pe IP trebuie să fie mai mari decât 1
+bind_emaxconns_per_net=Conexiunile simultane maxime pe rețea trebuie să fie mai mari decât 1
 
 log_title=Logare
 log_desc=Webmin poate fi configurat pentru a scrie un jurnal de accesări pe serverul web, în formatul standard al fișierului jurnal CLF. Dacă logarea este activată, puteți alege, de asemenea, dacă sunt înregistrate adrese IP sau nume de gazdă și cât de des este șters fișierul jurnal. Când este activat, jurnalele sunt scrise în fișierul $1.
@@ -892,6 +898,8 @@ advanced_listdir=Listă directoare fără fișier index?
 advanced_headers=Anteturi HTTP suplimentare
 advanced_eheader=Anteturile trebuie să fie formatate ca <tt>Antet: valoare</tt>
 advanced_sortconfigs=Salvați fișierele configurate sortate după cheile sale?
+advanced_bufsize=Dimensiunea bufferului de rețea în octeți
+advanced_ebufsize=Dimensiunea bufferului de rețea trebuie să fie un număr mai mare decât zero
 
 syslog_errorlog=Jurnal de erori Webmin
 

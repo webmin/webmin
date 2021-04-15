@@ -18,6 +18,12 @@ bind_eipv6=$1 Perl modülü kurulu olmadığı sürece IPv6 etkinleştirilemez
 bind_redirecting=Yeni URL'ye yönlendiriliyor ..
 bind_elsof=Yeni bağlantı noktası $1 başka bir işlem tarafından zaten kullanılıyor
 bind_eonsystem=$1 IP adresi bu sistemde etkin değil ve bu nedenle kullanılamıyor
+bind_maxconns=Maksimum toplam eşzamanlı bağlantı
+bind_maxconns_per_ip=IP başına maksimum eşzamanlı bağlantı
+bind_maxconns_per_net=Ağ başına maksimum eşzamanlı bağlantı
+bind_emaxconns=Maksimum eşzamanlı bağlantı sayısı 1'den büyük olmalıdır
+bind_emaxconns_per_ip=IP başına maksimum eşzamanlı bağlantı sayısı 1'den büyük olmalıdır
+bind_emaxconns_per_net=Ağ başına maksimum eşzamanlı bağlantı sayısı 1'den büyük olmalıdır
 
 log_status=Günlük kaydı etkin mi?
 log_clear2=Günlük dosyaları periyodik olarak temizlensin mi?
@@ -400,6 +406,8 @@ advanced_listdir=Dizin dosyası olmadan dizinler listelenir mi?
 advanced_headers=Ekstra HTTP başlıkları
 advanced_eheader=Üstbilgiler <tt>Üstbilgi: Değer</tt> gibi biçimlendirilmelidir
 advanced_sortconfigs=Yapılandırma dosyaları anahtarlarına göre sıralanmış olarak kaydedilsin mi?
+advanced_bufsize=Bayt cinsinden ağ arabellek boyutu
+advanced_ebufsize=Ağ arabellek boyutu sıfırdan büyük bir sayı olmalıdır
 
 syslog_errorlog=Webmin hata günlüğü
 

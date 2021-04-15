@@ -17,6 +17,12 @@ bind_eipv6=IPv6 nie je možné povoliť, pokiaľ nie je nainštalovaný modul $1
 bind_redirecting=Prebieha presmerovanie na novú adresu URL.
 bind_elsof=Nový port $1 sa už používa v inom procese
 bind_eonsystem=Adresa IP $1 nie je v tomto systéme aktívna, a preto ju nemožno použiť
+bind_maxconns=Maximálny celkový počet súčasných pripojení
+bind_maxconns_per_ip=Maximálny počet súbežných pripojení na jednu adresu IP
+bind_maxconns_per_net=Maximálny počet súčasných pripojení na sieť
+bind_emaxconns=Maximálny počet súčasných pripojení musí byť číslo väčšie ako 1
+bind_emaxconns_per_ip=Maximálny počet súbežných pripojení na jednu adresu IP musí byť číslo väčšie ako 1
+bind_emaxconns_per_net=Maximálny počet súbežných pripojení v sieti musí byť číslo väčšie ako 1
 
 log_global=&lt;Globálne akcie&gt;
 log_sched=Zaznamenávať naplánované funkcie?
@@ -246,6 +252,8 @@ advanced_listdir=Zoznam adresárov bez indexového súboru?
 advanced_headers=Extra hlavičky HTTP
 advanced_eheader=Hlavičky musia byť formátované ako <tt>Hlavička: Hodnota</tt>
 advanced_sortconfigs=Uložiť konfiguračné súbory zoradené podľa kľúčov?
+advanced_bufsize=Veľkosť vyrovnávacej pamäte siete v bajtoch
+advanced_ebufsize=Veľkosť vyrovnávacej pamäte siete musí byť číslo väčšie ako nula
 
 syslog_errorlog=Denník chýb Webmin
 

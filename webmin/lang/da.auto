@@ -63,6 +63,12 @@ bind_eipv6=IPv6 kan ikke aktiveres, medmindre $1 Perl-modulet er installeret
 bind_redirecting=Omdirigerer til ny URL ..
 bind_elsof=Ny port $1 er allerede i brug af en anden proces
 bind_eonsystem=IP-adressen $1 er ikke aktiv på dette system, og kan derfor ikke bruges
+bind_maxconns=Maksimalt antal samtidige forbindelser
+bind_maxconns_per_ip=Maksimale samtidige forbindelser pr. IP
+bind_maxconns_per_net=Maksimum samtidige forbindelser pr. Netværk
+bind_emaxconns=Maksimum samtidige forbindelser skal være et tal større end 1
+bind_emaxconns_per_ip=Maksimum samtidige forbindelser pr. IP skal være et tal større end 1
+bind_emaxconns_per_net=Maksimum samtidige forbindelser pr. Netværk skal være et tal større end 1
 
 log_title=Logning
 log_desc=Webmin kan konfigureres til at skrive en log over webserverhits i standard CLF logfilformat. Hvis logning er aktiveret, kan du også vælge, om IP-adresser eller hostnavne skal optages, og hvor ofte logfilen ryddes. Når det er aktiveret, skrives logfiler til filen $1.
@@ -892,6 +898,8 @@ advanced_listdir=Viser mapper uden en indeksfil?
 advanced_headers=Ekstra HTTP-headere
 advanced_eheader=Overskrifter skal formateres som <tt>Header: Værdi</tt>
 advanced_sortconfigs=Gemme konfigurationsfiler sorteret efter dens nøgler?
+advanced_bufsize=Netværksbufferstørrelse i byte
+advanced_ebufsize=Netværksbufferstørrelse skal være et tal større end nul
 
 syslog_errorlog=Webmin fejllogg
 

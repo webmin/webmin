@@ -1,3 +1,13 @@
+bind_maxconns=Maksimalt antall samtidige tilkoblinger
+bind_maxconns_per_ip=Maksimum samtidige tilkoblinger per IP
+bind_maxconns_per_net=Maksimum samtidige tilkoblinger per nettverk
+bind_emaxconns=Maksimum samtidige tilkoblinger må være et tall større enn 1
+bind_emaxconns_per_ip=Maksimum samtidige tilkoblinger per IP må være et tall større enn 1
+bind_emaxconns_per_net=Maksimum samtidige tilkoblinger per nettverk må være et tall større enn 1
+
+advanced_bufsize=Nettverksbufferstørrelse i byte
+advanced_ebufsize=Nettverksbufferstørrelse må være et tall som er større enn null
+
 sendmail_url=Webmin URL for bruk i e-post
 sendmail_url_def=Standard ($1)
 sendmail_url_custom=Egendefinert nettadresse

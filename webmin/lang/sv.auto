@@ -42,6 +42,12 @@ bind_eipv6=IPv6 kan inte aktiveras om inte $1 Perl-modulen är installerad
 bind_redirecting=Omdirigerar till ny URL ..
 bind_elsof=Ny port $1 används redan av en annan process
 bind_eonsystem=IP-adressen $1 är inte aktiv i det här systemet och kan därför inte användas
+bind_maxconns=Maximalt antal samtidiga anslutningar
+bind_maxconns_per_ip=Maximala samtidiga anslutningar per IP
+bind_maxconns_per_net=Maximala samtidiga anslutningar per nätverk
+bind_emaxconns=Maximala samtidiga anslutningar måste vara ett tal större än 1
+bind_emaxconns_per_ip=Maximala samtidiga anslutningar per IP måste vara ett tal större än 1
+bind_emaxconns_per_net=Maximala samtidiga anslutningar per nätverk måste vara ett nummer större än 1
 
 log_status=Loggar aktivt?
 log_clf=Använd kombinerat loggformat (inklusive referent och användaragent)?
@@ -626,6 +632,8 @@ advanced_listdir=Lista kataloger utan en indexfil?
 advanced_headers=Extra HTTP-rubriker
 advanced_eheader=Rubriker måste formateras som <tt>Header: Value</tt>
 advanced_sortconfigs=Spara konfigurationsfiler sorterade efter dess nycklar?
+advanced_bufsize=Nätverksbuffertstorlek i byte
+advanced_ebufsize=Nätverksbuffertstorleken måste vara ett tal större än noll
 
 syslog_errorlog=Webmin-fellogg
 

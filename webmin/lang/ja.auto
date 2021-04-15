@@ -10,6 +10,12 @@ bind_eipv6=$1 Perlモジュールがインストールされていない場合�
 bind_redirecting=新しいURLへのリダイレクト ..
 bind_elsof=新しいポート$1はすでに別のプロセスで使用されています
 bind_eonsystem=IPアドレス$1はこのシステムでアクティブではないため、使用できません
+bind_maxconns=同時接続の最大合計
+bind_maxconns_per_ip=IPあたりの最大同時接続数
+bind_maxconns_per_net=ネットワークあたりの最大同時接続数
+bind_emaxconns=最大同時接続数は1より大きい数である必要があります
+bind_emaxconns_per_ip=IPあたりの最大同時接続数は1より大きい数である必要があります
+bind_emaxconns_per_net=ネットワークあたりの最大同時接続数は1より大きい数である必要があります
 
 log_global=&lt;グローバルアクション&gt;
 log_sched=スケジュールされた機能を記録しますか？
@@ -112,6 +118,8 @@ advanced_listdir=インデックスファイルなしでディレクトリをリ
 advanced_headers=追加のHTTPヘッダー
 advanced_eheader=ヘッダーは、<tt>Header：Value</tt>のような形式にする必要があります
 advanced_sortconfigs=キーでソートされた構成ファイルを保存しますか？
+advanced_bufsize=ネットワークバッファサイズ（バイト単位）
+advanced_ebufsize=ネットワークバッファサイズはゼロより大きい数値である必要があります
 
 savekey_echain=PEM形式のチェーン証明書が欠落しているか無効です
 savekey_done3=提供された連鎖SSL証明書は、ファイル$1に保存されています。

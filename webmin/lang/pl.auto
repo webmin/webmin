@@ -1,5 +1,12 @@
 access_ecidr8=Rozmiar sieci IPv6 „$1” musi być podzielny przez 8
 
+bind_maxconns=Maksymalna łączna liczba jednoczesnych połączeń
+bind_maxconns_per_ip=Maksymalna liczba jednoczesnych połączeń na adres IP
+bind_maxconns_per_net=Maksymalna liczba jednoczesnych połączeń na sieć
+bind_emaxconns=Maksymalna liczba jednoczesnych połączeń musi być większa niż 1
+bind_emaxconns_per_ip=Maksymalna liczba jednoczesnych połączeń na adres IP musi być większa niż 1
+bind_emaxconns_per_net=Maksymalna liczba jednoczesnych połączeń na sieć musi być większa niż 1
+
 log_global=&lt;Działania globalne&gt;
 log_sched=Zalogować zaplanowane funkcje?
 log_email=Wyślij zarejestrowane działania pocztą e-mail na adres
@@ -54,6 +61,8 @@ advanced_listdir=Wyświetlać katalogi bez pliku indeksu?
 advanced_headers=Dodatkowe nagłówki HTTP
 advanced_eheader=Nagłówki muszą być sformatowane jak <tt>Header: Value</tt>
 advanced_sortconfigs=Zapisać pliki konfiguracyjne posortowane według kluczy?
+advanced_bufsize=Rozmiar bufora sieciowego w bajtach
+advanced_ebufsize=Rozmiar bufora sieciowego musi być liczbą większą niż zero
 
 sendmail_port=Port SMTP
 sendmail_ssl0=Nigdy nie szyfruj

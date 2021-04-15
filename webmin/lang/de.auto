@@ -1,3 +1,13 @@
+bind_maxconns=Maximale Anzahl gleichzeitiger Verbindungen
+bind_maxconns_per_ip=Maximale gleichzeitige Verbindungen pro IP
+bind_maxconns_per_net=Maximale gleichzeitige Verbindungen pro Netzwerk
+bind_emaxconns=Die maximale Anzahl gleichzeitiger Verbindungen muss größer als 1 sein
+bind_emaxconns_per_ip=Die maximale Anzahl gleichzeitiger Verbindungen pro IP muss größer als 1 sein
+bind_emaxconns_per_net=Die maximale Anzahl gleichzeitiger Verbindungen pro Netzwerk muss größer als 1 sein
+
+advanced_bufsize=Netzwerkpuffergröße in Bytes
+advanced_ebufsize=Die Netzwerkpuffergröße muss eine Zahl größer als Null sein
+
 sendmail_port=SMTP-Port
 sendmail_ssl0=Niemals verschlüsseln
 sendmail_ssl1=Verwenden Sie immer TLS
