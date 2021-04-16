@@ -47,6 +47,7 @@ my @zones = grep { $_->{'type'} ne 'view' &&
 		&can_edit_zone($_) &&
 		(!$access{'ro'} || $_->{'name'} ne '.') } @allzones;
 my @views = grep { $_->{'type'} eq 'view' } @allzones;
+@views = sort { $a->{'name'} cmp $b->{'name'} } @views;
 my @hashint = grep { $_->{'type'} ne 'view' &&
 		  $_->{'name'} eq '.' } @allzones;
 
