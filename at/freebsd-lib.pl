@@ -6,7 +6,7 @@ our (%config);
 sub list_atjobs
 {
 my @rv;
-opendir(my $DIR, $config{'at_dir'});
+opendir(my $DIR, $config{'at_dir'}) || return ();
 while(my $f = readdir($DIR)) {
 	my $p = "$config{'at_dir'}/$f";
 	if ($f =~ /^c(\S{5})(\S+)$/) {

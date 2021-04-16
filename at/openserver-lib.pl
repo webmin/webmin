@@ -5,7 +5,7 @@ use POSIX;
 sub list_atjobs
 {
 local @rv;
-opendir(DIR, $config{'at_dir'});
+opendir(DIR, $config{'at_dir'}) || return ();
 while($f = readdir(DIR)) {
 	local $p = "$config{'at_dir'}/$f";
 	if ($f =~ /^(\d+)\.a(\S+)$/) {
