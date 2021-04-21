@@ -34,3 +34,4 @@ updserial_def=0
 other_slaves=1
 updserial_man=1
 master_ttl=1
+dnssec_info=1
