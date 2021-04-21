@@ -227,6 +227,7 @@ else {
 	$gconfig{'os_version'} = $os_version;
 	$gconfig{'real_os_type'} = $real_os_type;
 	$gconfig{'real_os_version'} = $real_os_version;
+	$gconfig{'referers_none'} = 1;
 	$path_separator = $gconfig{'os_type'} eq 'windows' ? ';' : ':';
 	$null_file = $gconfig{'os_type'} eq 'windows' ? "NUL" : "/dev/null";
 	unlink($temp);
