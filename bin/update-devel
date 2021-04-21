@@ -15,7 +15,7 @@ use Cwd qw(cwd);
 my %opt;
 GetOptions('help|h'      => \$opt{'help'},
            'product|p=s' => \$opt{'product'},
-           'theme|p:s'   => \$opt{'theme'});
+           'theme|t:s'   => \$opt{'theme'});
 pod2usage(0) if ($opt{'help'} || !$opt{'product'});
 
 # Get current path
