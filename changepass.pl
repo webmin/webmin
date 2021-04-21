@@ -6,7 +6,7 @@
 usage() if (@ARGV != 3);
 
 my ($config, $user, $pass) = @ARGV;
-my $status = system("webmin passwd --config $config --user $user --pass $pass");
+my $status = system("/usr/bin/webmin passwd --config $config --user $user --pass $pass");
 exit $status;
 
 sub usage
