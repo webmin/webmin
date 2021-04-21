@@ -5,7 +5,8 @@ sub list_system_info
 {
 my ($data, $in) = @_;
 my @rv;
-if (&foreign_available($module_name) && $access{'defaults'}) {
+if (&foreign_available($module_name) && $access{'defaults'} &&
+    $config{'dnssec_info'}) {
 	# Show DNSSEC client config errors
 	my $err = &check_dnssec_client();
 	if ($err) {
@@ -14,7 +15,8 @@ if (&foreign_available($module_name) && $access{'defaults'}) {
 			    'warning' => $err });
 		}
 	}
-if (&foreign_available($module_name) && !$access{'noconfig'}) {
+if (&foreign_available($module_name) && !$access{'noconfig'} &&
+    $config{'dnssec_info'}) {
 	# Show DNSSEC expired domains
 	my @exps = &list_dnssec_expired_domains();
 	if (@exps) {

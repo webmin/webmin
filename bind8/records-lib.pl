@@ -323,6 +323,24 @@ while($i < @tok) {
 return @rv;
 }
 
+# files_in_zone_file(file)
+# Quickly finds all includes in a zone file
+sub files_in_zone_file
+{
+my ($file) = @_;
+my @rv = ( $file );
+my $fh;
+open($fh, "<", $file);
+while(<$fh>) {
+	if (/^\$include\s+(\S+)/) {
+		my $inc = $1;
+		push(@rv, &files_in_zone_file($inc));
+		}
+	}
+close($fh);
+return @rv;
+}
+
 # create_record(file, name, ttl, class, type, values, comment)
 # Add a new record of some type to some zone file
 sub create_record
