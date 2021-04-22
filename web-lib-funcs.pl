@@ -5546,9 +5546,11 @@ Returns a hash containg details of the given module. Some useful keys are :
 =cut
 sub get_module_info
 {
-return () if ($_[0] =~ /^\./);
+my ($mod, $noclone, $forcache) = @_;
+
+return () if ($mod =~ /^\./);
 my (%rv, $clone, $o);
-my $mdir = &module_root_directory($_[0]);
+my $mdir = &module_root_directory($mod);
 my $auto = load_language_auto();
 &read_file_cached("$mdir/module.info", \%rv) || return ();
 if (-l $mdir) {
@@ -5577,12 +5579,12 @@ foreach $o (@lang_order_list) {
 	}
 
 # Apply overrides if this is a cloned module
-if ($clone && !$_[1] && $config_directory) {
+if ($clone && !$noclone && $config_directory) {
 	$rv{'clone'} = $rv{'desc'};
 	$rv{'cloneof'} = $clone;
-	&read_file("$config_directory/$_[0]/clone", \%rv);
+	&read_file("$config_directory/$mod/clone", \%rv);
 	}
-$rv{'dir'} = $_[0];
+$rv{'dir'} = $mod;
 my %module_categories;
 &read_file_cached("$config_directory/webmin.cats", \%module_categories);
 my $pn = &get_product_name();
@@ -5591,26 +5593,34 @@ if (defined($rv{'category_'.$pn})) {
 	$rv{'category'} = $rv{'category_'.$pn};
 	}
 $rv{'realcategory'} = $rv{'category'};
-$rv{'category'} = $module_categories{$_[0]}
-	if (defined($module_categories{$_[0]}));
+$rv{'category'} = $module_categories{$mod}
+	if (defined($module_categories{$mod}));
+
+# Apply overrides from local configuration files, such as for the title
+my %overs;
+&read_file("$config_directory/$mod/module.info.overrides", \%overs);
+foreach my $o (keys %overs) {
+	$rv{'original_'.$o} = $rv{$o};
+	$rv{$o} = $overs{$o};
+	}
 
 # Apply site-specific description overrides
 $rv{'realdesc'} = $rv{'desc'};
 my %descs;
 &read_file_cached("$config_directory/webmin.descs", \%descs);
-if ($descs{$_[0]}) {
-	$rv{'desc'} = $descs{$_[0]};
+if ($descs{$mod}) {
+	$rv{'desc'} = $descs{$mod};
 	}
 foreach my $o (@lang_order_list) {
-	my $ov = $descs{$_[0]." ".$o} || $descs{$_[0]."_".$o};
+	my $ov = $descs{$mod." ".$o} || $descs{$mod."_".$o};
 	$rv{'desc'} = $ov if ($ov);
 	}
 
-if (!$_[2]) {
+if (!$forcache) {
 	# Apply per-user description override
 	my %gaccess = &get_module_acl(undef, "");
-	if ($gaccess{'desc_'.$_[0]}) {
-		$rv{'desc'} = $gaccess{'desc_'.$_[0]};
+	if ($gaccess{'desc_'.$mod}) {
+		$rv{'desc'} = $gaccess{'desc_'.$mod};
 		}
 	}
 
@@ -5621,7 +5631,7 @@ if ($rv{'longdesc'}) {
 
 # Call theme-specific override function
 if (defined(&theme_get_module_info)) {
-	%rv = &theme_get_module_info(\%rv, $_[0], $_[1], $_[2]);
+	%rv = &theme_get_module_info(\%rv, $mod, $noclone, $forcache);
 	}
 
 return %rv;

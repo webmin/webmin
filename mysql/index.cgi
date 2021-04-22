@@ -54,6 +54,7 @@ elsif (!$mysql_version) {
 	exit;
 	}
 &save_mysql_version($mysql_version);
+&create_module_info_overrides();
 
 # Check if MYSQL_PWD works
 ($r, $rout) = &is_mysql_running();

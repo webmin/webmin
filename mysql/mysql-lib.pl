@@ -1879,5 +1879,18 @@ if ($err) {
 &error_setup($text{'login_err'});
 }
 
+# create_module_info_overrides()
+# Update the overrides file used for module.info to reflect MariaDB
+sub create_module_info_overrides
+{
+my %info = &get_module_info(&get_module_name(), 0, 1);
+my %overs;
+if ($mysql_version =~ /mariadb/i) {
+	$overs{'desc'} = $info{'original_desc'} || $info{'desc'};
+	$overs{'desc'} =~ s/MySQL/MariaDB/g;
+	}
+&write_file("$module_config_directory/module.info.override", \%overs);
+}
+
 1;
 
