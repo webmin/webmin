@@ -17,7 +17,7 @@ if ($status != 0) {
 		}
 	else {
 		print "Error: $!\n";		
-	}
+		}
 }
 exit $status;
 
