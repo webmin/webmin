@@ -2,11 +2,23 @@
 # changepass.pl
 # Script for the user to change their webmin password
 
+# Get Webmin directory
+my $cwd = $0;
+$cwd =~ s/(.*)\/.*/$1/;
+
 # Check command line arguments
 usage() if (@ARGV != 3);
 
 my ($config, $user, $pass) = @ARGV;
-my $status = system("/usr/bin/webmin passwd --config $config --user $user --pass $pass");
+my $status = system("$cwd/bin/webmin passwd --config $config --user $user --pass $pass");
+if ($status != 0) {
+	if ($! =~ /no such file/i) {
+		print "Error: Webmin CLI command cannot be found\n";
+		}
+	else {
+		print "Error: $!\n";		
+	}
+}
 exit $status;
 
 sub usage
