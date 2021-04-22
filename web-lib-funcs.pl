@@ -3791,7 +3791,7 @@ if ($main::licence_module) {
 return 1;
 }
 
-=head2 foreign_require(module, [file], [package])
+=head2 foreign_require(module, [file], [package], [chdir-flag])
 
 Brings in functions from another module, and places them in the Perl namespace
 with the same name as the module. The parameters are :
@@ -3802,13 +3802,15 @@ with the same name as the module. The parameters are :
 
 =item package - Perl package to place the module's functions and global variables in.
 
+=item chdir - If set to 1, always chdir to the module's dir. If set to 0, never do it. If unset, decide automatically.
+
 If the original module name contains dashes, they will be replaced with _ in
 the package name.
 
 =cut
 sub foreign_require
 {
-my ($mod, $file, $pkg) = @_;
+my ($mod, $file, $pkg, $chdir) = @_;
 $pkg ||= $mod || "global";
 $pkg =~ s/[^A-Za-z0-9]/_/g;
 my @files;
@@ -3836,7 +3838,10 @@ $mdir =~ /^(.*)$/; # untaint, part 1
 $mdir = $1; 	   # untaint, part 2
 $mdir && -d $mdir || &error("Module $mod does not exist");
 @INC = &unique($mdir, @INC);
-if (!&get_module_name() && $mod) {
+if (!defined($chdir)) {
+	$chdir = !&get_module_name() && $mod ? 1 : 0;
+	}
+if ($chdir) {
 	chdir($mdir);
 	}
 my $old_fmn = $ENV{'FOREIGN_MODULE_NAME'};
@@ -5614,39 +5619,12 @@ if ($rv{'longdesc'}) {
 	$rv{'index_link'} = 'index.cgi';
 	}
 
-# Apply module overrides
-&get_module_overrides($_[0], \%rv);
-
 # Call theme-specific override function
 if (defined(&theme_get_module_info)) {
 	%rv = &theme_get_module_info(\%rv, $_[0], $_[1], $_[2]);
 	}
 
 return %rv;
-}
-
-=head2 get_module_overrides($mod, \data)
-
-Checks for module specific overrides if exist in
-module.overrides file and executes defined subs
-
-=cut
-sub get_module_overrides
-{
-my ($mod, $data) = @_;
-return if (!$mod);
-
-my $mdir = &module_root_directory($mod);
-
-# Call module specific overrides
-my $call = 'module_overrides';
-if (-r "$mdir/$call.pl") {
-	eval {
-		local $main::error_must_die = 1;
-		&foreign_require($mod, "$call.pl");
-		&foreign_call($mod, $call, $data);
-		};
-	}
 }
 
 =head2 get_all_module_infos(cachemode)
