@@ -5598,7 +5598,7 @@ $rv{'category'} = $module_categories{$mod}
 
 # Apply overrides from local configuration files, such as for the title
 my %overs;
-&read_file("$config_directory/$mod/module.info.overrides", \%overs);
+&read_file("$config_directory/$mod/module.info.override", \%overs);
 foreach my $o (keys %overs) {
 	$rv{'original_'.$o} = $rv{$o};
 	$rv{$o} = $overs{$o};
