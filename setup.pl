@@ -227,7 +227,6 @@ else {
 	$gconfig{'os_version'} = $os_version;
 	$gconfig{'real_os_type'} = $real_os_type;
 	$gconfig{'real_os_version'} = $real_os_version;
-	$gconfig{'referers_none'} = 1;
 	$path_separator = $gconfig{'os_type'} eq 'windows' ? ';' : ':';
 	$null_file = $gconfig{'os_type'} eq 'windows' ? "NUL" : "/dev/null";
 	unlink($temp);
@@ -620,6 +619,11 @@ if ($makeboot) {
 # If password delays are not specifically disabled, enable them
 if (!defined($miniserv{'passdelay'}) && $os_type ne 'windows') {
 	$miniserv{'passdelay'} = 1;
+	}
+
+# Turn on referer checks
+if (!defined($gconfig{'referers_none'})) {
+	$gconfig{'referers_none'} = 1;
 	}
 
 # Save configs
