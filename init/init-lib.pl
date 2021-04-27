@@ -2291,24 +2291,30 @@ my $cfile = &get_systemd_root($name)."/".$name;
 &print_tempfile(CFILE, "PIDFile=$pidfile\n") if ($pidfile);
 
 # Opts
-&print_tempfile(CFILE, "ExecStop=$kill -HUP \$MAINPID\n") if ($opts->{'stop'} eq '0');
-&print_tempfile(CFILE, "ExecReload=$kill -HUP \$MAINPID\n") if ($opts->{'reload'} eq '0');
-&print_tempfile(CFILE, "ExecStop=$opts->{'stop'}\n") if ($opts->{'stop'});
-&print_tempfile(CFILE, "ExecReload=$opts->{'reload'}\n") if ($opts->{'reload'});
-&print_tempfile(CFILE, "Type=$opts->{'type'}\n") if ($opts->{'type'});
-&print_tempfile(CFILE, "Environment=\"$opts->{'env'}\"\n") if ($opts->{'env'});
-&print_tempfile(CFILE, "User=$opts->{'user'}\n") if ($opts->{'user'});
-&print_tempfile(CFILE, "Group=$opts->{'group'}\n") if ($opts->{'group'});
-&print_tempfile(CFILE, "KillMode=$opts->{'killmode'}\n") if ($opts->{'killmode'});
-&print_tempfile(CFILE, "WorkingDirectory=$opts->{'workdir'}\n") if ($opts->{'workdir'});
-&print_tempfile(CFILE, "TimeoutSec=$opts->{'timeout'}\n") if ($opts->{'timeout'});
-&print_tempfile(CFILE, "StandardOutput=file:$opts->{'logstd'}\n") if ($opts->{'logstd'});
-&print_tempfile(CFILE, "StandardError=file:$opts->{'logerr'}\n") if ($opts->{'logerr'});
+if (ref($opts)) {
+	&print_tempfile(CFILE, "ExecStop=$kill -HUP \$MAINPID\n") if ($opts->{'stop'} eq '0');
+	&print_tempfile(CFILE, "ExecReload=$kill -HUP \$MAINPID\n") if ($opts->{'reload'} eq '0');
+	&print_tempfile(CFILE, "ExecStop=$opts->{'stop'}\n") if ($opts->{'stop'});
+	&print_tempfile(CFILE, "ExecReload=$opts->{'reload'}\n") if ($opts->{'reload'});
+	&print_tempfile(CFILE, "Type=$opts->{'type'}\n") if ($opts->{'type'});
+	&print_tempfile(CFILE, "Environment=\"$opts->{'env'}\"\n") if ($opts->{'env'});
+	&print_tempfile(CFILE, "User=$opts->{'user'}\n") if ($opts->{'user'});
+	&print_tempfile(CFILE, "Group=$opts->{'group'}\n") if ($opts->{'group'});
+	&print_tempfile(CFILE, "KillMode=$opts->{'killmode'}\n") if ($opts->{'killmode'});
+	&print_tempfile(CFILE, "WorkingDirectory=$opts->{'workdir'}\n") if ($opts->{'workdir'});
+	&print_tempfile(CFILE, "TimeoutSec=$opts->{'timeout'}\n") if ($opts->{'timeout'});
+	&print_tempfile(CFILE, "StandardOutput=file:$opts->{'logstd'}\n") if ($opts->{'logstd'});
+	&print_tempfile(CFILE, "StandardError=file:$opts->{'logerr'}\n") if ($opts->{'logerr'});
+	}
 
 &print_tempfile(CFILE, "\n");
 &print_tempfile(CFILE, "[Install]\n");
-&print_tempfile(CFILE, "WantedBy=multi-user.target\n") if (!$opts->{'wantedby'});
-&print_tempfile(CFILE, "WantedBy=$opts->{'wantedby'}\n") if ($opts->{'wantedby'});
+if (ref($opts) && $opts->{'wantedby'}) {
+	&print_tempfile(CFILE, "WantedBy=$opts->{'wantedby'}\n");
+	}
+else {
+	&print_tempfile(CFILE, "WantedBy=multi-user.target\n");
+	}
 &close_tempfile(CFILE);
 &restart_systemd();
 }
