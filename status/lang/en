@@ -160,6 +160,7 @@ sched_offset=with offset
 sched_warn=Send email when
 sched_warn1=When a service changes status
 sched_warn0=When a service goes down
+sched_warn3=As long as the service is up
 sched_warn2=Any time service is down
 sched_single=Send one email per service?
 sched_hours=Run monitor during hours
