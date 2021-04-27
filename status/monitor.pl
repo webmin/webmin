@@ -168,6 +168,11 @@ foreach $serv (@services) {
 			$suffix = "isdown";
 			$out = &run_on_command($serv, $serv->{'ondown'}, $r);
 			}
+		elsif ($warn == 3 && $up == 1) {
+			# Service is up now
+			$suffix = "isup";
+			$out = &run_on_command($serv, $serv->{'onup'}, $r);
+			}
 
 		# If something happened, notify people
 		if ($suffix &&
