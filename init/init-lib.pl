@@ -699,7 +699,7 @@ if ($init_mode eq "systemd" && (!-r "$config{'init_dir'}/$_[0]" ||
 				"unless a command is given");
 		&create_systemd_service($unit, $_[1], $_[2], $_[3], undef,
 					$_[5]->{'fork'}, $_[5]->{'pidfile'},
-					$_[5]->{'exit'});
+					$_[5]->{'exit'}, $_[5]->{'opts'});
 		}
 	&system_logged("systemctl unmask ".
 		       quotemeta($unit)." >/dev/null 2>&1");
@@ -2261,11 +2261,12 @@ Create a new systemd service with the given details.
 =cut
 sub create_systemd_service
 {
-my ($name, $desc, $start, $stop, $restart, $forks, $pidfile, $exits) = @_;
+my ($name, $desc, $start, $stop, $restart, $forks, $pidfile, $exits, $opts) = @_;
 $start =~ s/\r?\n/ ; /g;
 $stop =~ s/\r?\n/ ; /g;
 $restart =~ s/\r?\n/ ; /g;
 my $sh = &has_command("sh") || "sh";
+my $kill = &has_command("kill") || "kill";
 if ($start =~ /<|>/) {
 	$start = "$sh -c '$start'";
 	}
@@ -2288,9 +2289,25 @@ my $cfile = &get_systemd_root($name)."/".$name;
 &print_tempfile(CFILE, "Type=oneshot\n",
 		       "RemainAfterExit=yes\n") if ($exits);
 &print_tempfile(CFILE, "PIDFile=$pidfile\n") if ($pidfile);
+
+# Opts
+&print_tempfile(CFILE, "ExecStop=$kill -HUP \$MAINPID\n") if ($opts->{'stop'} eq '0');
+&print_tempfile(CFILE, "ExecReload=$kill -HUP \$MAINPID\n") if ($opts->{'reload'} eq '0');
+&print_tempfile(CFILE, "ExecStop=$opts->{'stop'}\n") if ($opts->{'stop'});
+&print_tempfile(CFILE, "ExecReload=$opts->{'reload'}\n") if ($opts->{'reload'});
+&print_tempfile(CFILE, "Type=$opts->{'type'}\n") if ($opts->{'type'});
+&print_tempfile(CFILE, "User=$opts->{'user'}\n") if ($opts->{'user'});
+&print_tempfile(CFILE, "Group=$opts->{'group'}\n") if ($opts->{'group'});
+&print_tempfile(CFILE, "KillMode=$opts->{'killmode'}\n") if ($opts->{'killmode'});
+&print_tempfile(CFILE, "WorkingDirectory=$opts->{'workdir'}\n") if ($opts->{'workdir'});
+&print_tempfile(CFILE, "TimeoutSec=$opts->{'timeout'}\n") if ($opts->{'timeout'});
+&print_tempfile(CFILE, "StandardOutput=file:$opts->{'logstd'}\n") if ($opts->{'logstd'});
+&print_tempfile(CFILE, "StandardError=file:$opts->{'logerr'}\n") if ($opts->{'logerr'});
+
 &print_tempfile(CFILE, "\n");
 &print_tempfile(CFILE, "[Install]\n");
-&print_tempfile(CFILE, "WantedBy=multi-user.target\n");
+&print_tempfile(CFILE, "WantedBy=multi-user.target\n") if (!$opts->{'wantedby'});
+&print_tempfile(CFILE, "WantedBy=$opts->{'wantedby'}\n") if ($opts->{'wantedby'});
 &close_tempfile(CFILE);
 &restart_systemd();
 }
