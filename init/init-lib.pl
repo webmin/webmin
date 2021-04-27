@@ -2296,6 +2296,7 @@ my $cfile = &get_systemd_root($name)."/".$name;
 &print_tempfile(CFILE, "ExecStop=$opts->{'stop'}\n") if ($opts->{'stop'});
 &print_tempfile(CFILE, "ExecReload=$opts->{'reload'}\n") if ($opts->{'reload'});
 &print_tempfile(CFILE, "Type=$opts->{'type'}\n") if ($opts->{'type'});
+&print_tempfile(CFILE, "Environment=\"$opts->{'env'}\"\n") if ($opts->{'env'});
 &print_tempfile(CFILE, "User=$opts->{'user'}\n") if ($opts->{'user'});
 &print_tempfile(CFILE, "Group=$opts->{'group'}\n") if ($opts->{'group'});
 &print_tempfile(CFILE, "KillMode=$opts->{'killmode'}\n") if ($opts->{'killmode'});
