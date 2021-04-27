@@ -160,6 +160,7 @@ sched_offset=avec un décalage
 sched_warn=Envoyer un message électronique quand
 sched_warn1=Un service change d'état
 sched_warn0=Un service s'arrête
+sched_warn3=Tant que le service est actif
 sched_warn2=Chaque fois qu'un service s'arrête
 sched_single=Envoyer un message électronique par service ?
 sched_hours=Exécuter le moniteur aux heures suivantes
