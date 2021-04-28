@@ -36,7 +36,7 @@ init_eaction=Geen actie geselecteerd
 
 monitor_sub_isup=$1 gestegen ten opzichte van $2 
 monitor_pager_isup=$1 : "$2" is $3 gestegen
-monitor_snmp_isup= $1:$2 
+monitor_snmp_isup=$1:$2 
 monitor_email_isup=Monitor op $1 voor '$2' heeft gedetecteerd dat de service op $3 is gestegen
 monitor_email_stat=Huidige status: $1 
 

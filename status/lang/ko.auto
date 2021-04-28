@@ -78,7 +78,7 @@ refresh_doing2=선택된 모니터 $1 의 상태를 새로 고칩니다.
 
 monitor_sub_isup=$2 에 $1 
 monitor_pager_isup=$1 : "$2"가 $3 상승했습니다
-monitor_snmp_isup= $1:$2 
+monitor_snmp_isup=$1:$2 
 monitor_email_isup=$1 에서 '$2'에 대한 모니터가 서비스가 $3 에서 작동 중임을 감지했습니다.
 monitor_email_stat=현재 상태 : $1 
 

@@ -9,5 +9,5 @@ init_eaction=No s'ha seleccionat cap acció
 
 monitor_sub_isup=$1 més a $2 
 monitor_pager_isup=$1 : "$2" ha pujat $3 
-monitor_snmp_isup= $1:$2 
+monitor_snmp_isup=$1:$2 
 monitor_email_isup=El monitor de $1 de "$2" ha detectat que el servei ha augmentat a $3 

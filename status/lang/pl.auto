@@ -155,7 +155,7 @@ monitor_email_timed=Upłynął limit czasu monitora $1 dla „$2” na $3
 monitor_email_isdown=Monitoruj $1 w poszukiwaniu „$2” wykrył, że usługa nie działa przy $3 
 monitor_sub_isup=$1 w górę na $2 
 monitor_pager_isup=$1 : „$2” wzrósł o $3 
-monitor_snmp_isup= $1:$2 
+monitor_snmp_isup=$1:$2 
 monitor_email_isup=Monitor $1 pod kątem „$2” wykrył, że usługa działa na poziomie $3 
 monitor_email_stat=Obecny status: $1 
 

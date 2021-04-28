@@ -45,7 +45,7 @@ init_eaction=Nincs kiválasztva művelet
 
 monitor_sub_isup=$1 fent $2 
 monitor_pager_isup=$1 : A (z) "$2" $3 feljebb van
-monitor_snmp_isup= $1:$2 
+monitor_snmp_isup=$1:$2 
 monitor_email_isup=A (z) "$2" $1 -es figyelője észlelte, hogy a szolgáltatás $3 -on van
 monitor_email_stat=Jelenlegi állapot: $1 
 

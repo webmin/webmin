@@ -85,7 +85,7 @@ refresh_doing2=Aktualizace stavu vybraných monitorů $1.
 
 monitor_sub_isup=$1 až $2 
 monitor_pager_isup=$1 : „$2“ vzrostl o $3 
-monitor_snmp_isup= $1:$2 
+monitor_snmp_isup=$1:$2 
 monitor_email_isup=Monitor na $1 pro „$2“ zjistil, že služba vzrostla na $3 
 monitor_email_stat=Aktuální stav: $1 
 

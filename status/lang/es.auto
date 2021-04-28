@@ -114,7 +114,7 @@ nut_eups=No hay USP para verificar ingresado
 
 monitor_sub_isup=$1 hasta $2 
 monitor_pager_isup=$1 : "$2" ha subido $3 
-monitor_snmp_isup= $1:$2 
+monitor_snmp_isup=$1:$2 
 monitor_email_isup=El monitor en $1 para '$2' ha detectado que el servicio está activo en $3 
 monitor_runerr=Error al ejecutar $1 en $2 : $3 
 monitor_email_stat=Estado actual: $1 
