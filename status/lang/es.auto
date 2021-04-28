@@ -41,6 +41,7 @@ mon_all=Mostrar todos los eventos históricos
 mon_nochanges=No se produjeron cambios de estado en los últimos $1 eventos históricos.
 
 sched_pnone=No envíes paginas
+sched_warn3=Mientras el servicio esté activo
 sched_eemailserver=Su servidor de correo no está instalado : $1 
 sched_sms=Enviar SMS a
 sched_smsno=Nadie
@@ -111,6 +112,10 @@ refresh_doing2=Actualización del estado de $1 monitores seleccionados.
 
 nut_eups=No hay USP para verificar ingresado
 
+monitor_sub_isup=$1 hasta $2 
+monitor_pager_isup=$1 : "$2" ha subido $3 
+monitor_snmp_isup= $1:$2 
+monitor_email_isup=El monitor en $1 para '$2' ha detectado que el servicio está activo en $3 
 monitor_runerr=Error al ejecutar $1 en $2 : $3 
 monitor_email_stat=Estado actual: $1 
 

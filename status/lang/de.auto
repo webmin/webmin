@@ -1,1 +1,8 @@
 mon_virtualmin=Warnung! Dieser Monitor ist der Virtualmin-Domäne $1 zugeordnet und sollte daher hier nicht bearbeitet oder gelöscht werden.
+
+sched_warn3=Solange der Service läuft
+
+monitor_sub_isup=$1 auf $2 
+monitor_pager_isup=$1 : "$2" ist um $3 gestiegen
+monitor_snmp_isup= $1:$2 
+monitor_email_isup=Die Überwachung von $1 auf '$2' hat festgestellt, dass der Dienst bei $3 aktiv ist

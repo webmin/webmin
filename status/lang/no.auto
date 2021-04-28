@@ -1,0 +1,6 @@
+sched_warn3=Så lenge tjenesten er oppe
+
+monitor_sub_isup=$1 opp på $2 
+monitor_pager_isup=$1 : "$2" er opp $3 
+monitor_snmp_isup= $1:$2 
+monitor_email_isup=Monitor på $1 for '$2' har oppdaget at tjenesten er oppe på $3 

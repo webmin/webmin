@@ -15,6 +15,7 @@ mon_changes1=Csak a változások megjelenítése
 mon_all=Az összes történelmi esemény megjelenítése
 mon_nochanges=Az utóbbi $1 történelmi eseményekben nem történt állapotváltozás.
 
+sched_warn3=Amíg a szolgáltatás fennáll
 sched_subject=Tárgy sor az SMS-ekhez
 sched_subject0=Nincs (riasztás van a testben)
 sched_subject1=Figyelmeztető szöveg (hagyja a testet üresen)
@@ -42,6 +43,10 @@ file_eperm=Rossz engedélyekkel rendelkező fájlok : $1
 init_action=Ellenőrzési művelet
 init_eaction=Nincs kiválasztva művelet
 
+monitor_sub_isup=$1 fent $2 
+monitor_pager_isup=$1 : A (z) "$2" $3 feljebb van
+monitor_snmp_isup= $1:$2 
+monitor_email_isup=A (z) "$2" $1 -es figyelője észlelte, hogy a szolgáltatás $3 -on van
 monitor_email_stat=Jelenlegi állapot: $1 
 
 sslcert_edown=A webszerver nem működik

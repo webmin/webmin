@@ -27,6 +27,7 @@ mon_nochanges=Nie nastąpiły żadne zmiany statusu w ostatnich $1 wydarzeniach 
 
 sched_pager=Raport o stanie strony na numer
 sched_pnone=Nie wysyłaj stron
+sched_warn3=Tak długo, jak usługa jest dostępna
 sched_warn2=Za każdym razem, gdy usługa jest wyłączona
 sched_smtp=Wyślij pocztę przez
 sched_smtp_prog=Lokalny serwer pocztowy
@@ -152,6 +153,10 @@ monitor_email_un=Monitoruj $1 w poszukiwaniu „$2” wykrył, że usługa zosta
 monitor_email_webmin=Monitoruj $1 w poszukiwaniu „$2” wykrył, że Webmin nie działa przy $3 
 monitor_email_timed=Upłynął limit czasu monitora $1 dla „$2” na $3 
 monitor_email_isdown=Monitoruj $1 w poszukiwaniu „$2” wykrył, że usługa nie działa przy $3 
+monitor_sub_isup=$1 w górę na $2 
+monitor_pager_isup=$1 : „$2” wzrósł o $3 
+monitor_snmp_isup= $1:$2 
+monitor_email_isup=Monitor $1 pod kątem „$2” wykrył, że usługa działa na poziomie $3 
 monitor_email_stat=Obecny status: $1 
 
 ftp_user=Zaloguj się jako użytkownik

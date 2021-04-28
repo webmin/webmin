@@ -22,6 +22,7 @@ mon_changes1=変更のみを表示
 mon_all=すべての履歴イベントを表示
 mon_nochanges=最後の $1履歴イベントでステータスの変更は発生しませんでした。
 
+sched_warn3=サービスが稼働している限り
 sched_esmsname=SMS番号が見つからないか無効です
 sched_subject=SMSメッセージの件名行
 sched_subject0=なし（アラートは本体にあります）
@@ -73,6 +74,10 @@ init_eaction=アクションが選択されていません
 
 refresh_doing2=$1個の選択したモニターのステータスを更新しています ..
 
+monitor_sub_isup=$2で $1アップ
+monitor_pager_isup=$1：「$2」は増加しています $3
+monitor_snmp_isup=$1:$2
+monitor_email_isup='$2'の $1を監視すると、サービスが $3で稼働していることが検出されました
 monitor_email_stat=現在のステータス： $1
 
 deletes_enone=モニターが選択されていません

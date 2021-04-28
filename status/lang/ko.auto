@@ -23,6 +23,7 @@ mon_changes1=변경 사항 만 표시
 mon_all=모든 역사적 사건 표시
 mon_nochanges=마지막 $1 기록 이벤트에서 상태 변경이 발생하지 않았습니다.
 
+sched_warn3=서비스가 작동하는 한
 sched_esmsname=누락되거나 잘못된 SMS 번호
 sched_subject=SMS 메시지 제목
 sched_subject0=없음 (경고는 본문에 있음)
@@ -75,6 +76,10 @@ init_eaction=선택된 조치가 없습니다
 
 refresh_doing2=선택된 모니터 $1 의 상태를 새로 고칩니다.
 
+monitor_sub_isup=$2 에 $1 
+monitor_pager_isup=$1 : "$2"가 $3 상승했습니다
+monitor_snmp_isup= $1:$2 
+monitor_email_isup=$1 에서 '$2'에 대한 모니터가 서비스가 $3 에서 작동 중임을 감지했습니다.
 monitor_email_stat=현재 상태 : $1 
 
 deletes_enone=선택된 모니터가 없습니다

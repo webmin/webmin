@@ -6,6 +6,7 @@ type_ldap=LDAP-verbinding
 mon_virtualmin=Waarschuwing! Deze monitor is gekoppeld aan het Virtualmin-domein $1 en mag hier dus niet worden bewerkt of verwijderd.
 mon_etype=Ongeldige naam voor monitortype
 
+sched_warn3=Zolang de service is afgelopen
 sched_subject=Onderwerpregel voor sms-berichten
 sched_subject0=Geen (waarschuwing zit in het lichaam)
 sched_subject1=Waarschuwingstekst (laat het lichaam leeg)
@@ -33,6 +34,10 @@ file_eperm=Bestanden met verkeerde rechten : $1
 init_action=Actie om te controleren
 init_eaction=Geen actie geselecteerd
 
+monitor_sub_isup=$1 gestegen ten opzichte van $2 
+monitor_pager_isup=$1 : "$2" is $3 gestegen
+monitor_snmp_isup= $1:$2 
+monitor_email_isup=Monitor op $1 voor '$2' heeft gedetecteerd dat de service op $3 is gestegen
 monitor_email_stat=Huidige status: $1 
 
 ldap_edriver=De Perl-module $1 is niet geïnstalleerd

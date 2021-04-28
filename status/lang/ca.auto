@@ -2,5 +2,12 @@ type_init=Acció d'arrencada
 
 mon_virtualmin=Atenció! Aquest monitor està associat amb el domini Virtualmin $1 i, per tant, no s'hauria d'editar ni suprimir aquí.
 
+sched_warn3=Sempre que el servei estigui activat
+
 init_action=Acció de comprovar
 init_eaction=No s'ha seleccionat cap acció
+
+monitor_sub_isup=$1 més a $2 
+monitor_pager_isup=$1 : "$2" ha pujat $3 
+monitor_snmp_isup= $1:$2 
+monitor_email_isup=El monitor de $1 de "$2" ha detectat que el servei ha augmentat a $3 
