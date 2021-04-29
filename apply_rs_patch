@@ -17,8 +17,3 @@ mv -v rs_resources/RootSecure_Mag_glass.png authentic-theme/unauthenticated/css/
 
 # Code patches
 patch --verbose -p0 < patches/httpOnly.patch
-
-# Change webmin registration endpoint
-if $prod ; then
-    sed -i -e 's|register-sensor-dev|register-sensor|' rootsecure-registration/rootsecure-registration-lib.pl
-fi

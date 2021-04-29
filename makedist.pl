@@ -31,7 +31,7 @@ $zipdir = "zips";
 	  "config-macos", "LICENCE",
 	  "session_login.cgi", "acl_security.pl",
 	  "defaultacl", "rpc.cgi", "date_chooser.cgi", "switch_skill.cgi",
-	  "install-module.pl", "LICENCE.ja", 
+	  "install-module.pl", "LICENCE.ja",
 	  "favicon.ico", "config-netbsd", "fastrpc.cgi",
 	  "defaulttheme", "feedback.cgi", "feedback_form.cgi",
 	  "javascript-lib.pl", "webmin-pam", "webmin-debian-pam", "maketemp.pl",
@@ -79,7 +79,6 @@ else {
 	  "shorewall6", "iscsi-server", "iscsi-client", "gray-theme",
 	  "iscsi-target", "iscsi-tgtd", "bsdfdisk", "fail2ban",
 	  "authentic-theme", "firewalld", "filemin", "firewall6",
-	  "rootsecure-registration",
 	  );
 	}
 @dirlist = ( "WebminUI", "JSON" );
@@ -108,7 +107,7 @@ foreach $m (@mlist) {
 		next if ($f =~ /^\./ || $f =~ /\.git$/ ||
 		         $f =~ /\.(tar|wbm|wbt)\.gz$/ ||
 			 $f eq "README.md" || $f =~ /^makemodule.*\.pl$/ ||
-			 $f eq "linux.sh" || $f eq "freebsd.sh" || 
+			 $f eq "linux.sh" || $f eq "freebsd.sh" ||
 			 $f eq "LICENCE" || $f eq "version");
 		$flist .= " $m/$f";
 		}
@@ -245,7 +244,7 @@ while(<ARFILE>) {
 close(ARFILE);
 return 1;
 }
- 
+
 # write_file(file, array)
 # Write out the contents of an associative array as name=value lines
 sub write_file
@@ -263,4 +262,3 @@ sub usage
 {
 die "usage: makedist.pl [-minimal] <version>";
 }
-

@@ -358,15 +358,9 @@ echo acl=RootSecure Users > /etc/$baseproduct/webmin.descs
 echo "rsadmin:x::::::::0::::" >> /etc/$baseproduct/miniserv.users
 
 cat - <<EOF_ACL > /etc/$baseproduct/webmin.acl
-root: acl adsl-client ajaxterm apache at backup-config bacula-backup bandwidth bind8 burner change-user cluster-copy cluster-cron cluster-passwd cluster-shell cluster-software cluster-useradmin cluster-usermin cluster-webmin cpan cron custom dfsadmin dhcpd dovecot exim exports fail2ban fdisk fetchmail filemin filter firewall firewall6 firewalld fsdump grub heartbeat htaccess-htpasswd idmapd inetd init inittab ipfilter ipfw ipsec iscsi-client iscsi-server iscsi-target iscsi-tgtd jabber krb5 ldap-client ldap-server ldap-useradmin logrotate lpadmin lvm mailboxes mailcap man mon mount mysql net nis openslp package-updates pam pap passwd phpini postfix postgresql ppp-client pptp-client pptp-server proc procmail proftpd qmailadmin quota raid samba sarg sendmail servers shell shorewall shorewall6 smart-status smf software spam squid sshd status stunnel syslog-ng syslog system-status tcpwrappers telnet time tunnel updown useradmin usermin vgetty webalizer webmin webmincron webminlog wuftpd xinetd rootsecure-registration file
-rsadmin: rootsecure-registration acl net
+root: acl adsl-client ajaxterm apache at backup-config bacula-backup bandwidth bind8 burner change-user cluster-copy cluster-cron cluster-passwd cluster-shell cluster-software cluster-useradmin cluster-usermin cluster-webmin cpan cron custom dfsadmin dhcpd dovecot exim exports fail2ban fdisk fetchmail filemin filter firewall firewall6 firewalld fsdump grub heartbeat htaccess-htpasswd idmapd inetd init inittab ipfilter ipfw ipsec iscsi-client iscsi-server iscsi-target iscsi-tgtd jabber krb5 ldap-client ldap-server ldap-useradmin logrotate lpadmin lvm mailboxes mailcap man mon mount mysql net nis openslp package-updates pam pap passwd phpini postfix postgresql ppp-client pptp-client pptp-server proc procmail proftpd qmailadmin quota raid samba sarg sendmail servers shell shorewall shorewall6 smart-status smf software spam squid sshd status stunnel syslog-ng syslog system-status tcpwrappers telnet time tunnel updown useradmin usermin vgetty webalizer webmin webmincron webminlog wuftpd xinetd file
+rsadmin: acl net
 EOF_ACL
-
-mkdir -p /etc/$baseproduct/rootsecure-registration/
-cat - <<EOF_RSCFG > /etc/$baseproduct/rootsecure-registration/config
-rootsecure_conf=/etc/rs_registration.conf
-rootsecure_uuid=/rootsecure/uuid
-EOF_RSCFG
 
 mkdir -p /etc/$baseproduct/acl
 cat - <<EOF_ACL > /etc/$baseproduct/acl/rsadmin.acl
@@ -550,5 +544,3 @@ foreach $rest (split(/\n/, $_[0])) {
 	}
 return @rv;
 }
-
-
